@@ -71,22 +71,24 @@ export default function TabLayout() {
       <Tabs.Screen
         name="profile"
         options={{
-          tabBarIcon: ({ color, focused, size }) =>
-            profile?.avatar_url ? (
+          tabBarIcon: ({ color, focused, size }) => {
+            const sz = size ?? 24;
+            return profile?.avatar_url ? (
               <View style={{
-                width: 26, height: 26, borderRadius: 13,
+                width: sz, height: sz, borderRadius: sz / 2,
                 borderWidth: focused ? 2 : 1.5,
                 borderColor: focused ? accent : '#9896B8',
                 overflow: 'hidden',
               }}>
                 <Image
                   source={{ uri: profile.avatar_url }}
-                  style={{ width: 26, height: 26 }}
+                  style={{ width: sz, height: sz }}
                 />
               </View>
             ) : (
-              <UserCircle size={size ?? 24} color={color} weight="fill" />
-            ),
+              <UserCircle size={sz} color={color} weight="fill" />
+            );
+          },
         }}
       />
     </Tabs>
