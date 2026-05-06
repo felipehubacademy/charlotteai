@@ -473,15 +473,12 @@ export default function OnboardingScreen() {
               onPress={goLogin}
               activeOpacity={0.85}
               style={{
-                borderRadius: 16,
-                height: 54,
-                alignItems: 'center',
-                justifyContent: 'center',
-                borderWidth: 2,
-                borderColor: C.navy,
+                backgroundColor: 'transparent',
+                borderRadius: 14, paddingVertical: 15, alignItems: 'center',
+                borderWidth: 1.5, borderColor: C.border,
               }}
             >
-              <AppText style={{ fontSize: 16, fontWeight: '700', color: C.navy }}>
+              <AppText style={{ fontSize: 15, fontWeight: '700', color: C.navy }}>
                 Já tenho uma conta
               </AppText>
             </TouchableOpacity>
