@@ -3,7 +3,6 @@ import {
   View,
   FlatList,
   TouchableOpacity,
-  Image,
   Animated,
   StyleSheet,
   ActivityIndicator,
@@ -30,7 +29,7 @@ export interface Message {
   isTyping?: boolean;
   isRecording?: boolean;
   timestamp?: Date;
-  messageType?: 'text' | 'audio' | 'image' | 'pronunciation_score';
+  messageType?: 'text' | 'audio' | 'pronunciation_score';
   technicalFeedback?: string;
   pronunciationData?: PronunciationData; // score card data
   isDemonstration?: boolean;             // Charlotte demonstrating a word via TTS
@@ -228,19 +227,8 @@ const MessageBubble: React.FC<{
             </AppText>
           )}
 
-          {/* Image */}
-          {message.messageType === 'image' && !!message.audioUrl && (
-            <View className={message.content ? 'mt-3 pt-3 border-t border-white/10' : ''}>
-              <Image
-                source={{ uri: message.audioUrl }}
-                className="w-32 h-32 rounded-lg"
-                resizeMode="cover"
-              />
-            </View>
-          )}
-
           {/* Audio player */}
-          {hasAudio && message.messageType !== 'image' && (
+          {hasAudio && (
             <View
               style={{
                 flexDirection: 'row', alignItems: 'center', gap: 10,
