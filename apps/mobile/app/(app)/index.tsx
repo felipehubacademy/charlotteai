@@ -56,7 +56,7 @@ import { VocabFAB } from '@/components/vocabulary/VocabFAB';
 import { getWeeklyChallenge, fetchWeeklyData, WeeklyChallengeState } from '@/lib/weeklyChallenge';
 import { localMidnightUTC, localTodayStr } from '@/lib/dateUtils';
 import { HomeData, Mission, buildMissions } from '@/lib/missions';
-import { greetingCache, resetGreetingCache } from '@/lib/greetingCache';
+import { greetingCache, resetGreetingCache, prefetchGreeting } from '@/lib/greetingCache';
 
 const API_BASE_URL =
   (Constants.expoConfig?.extra?.apiBaseUrl as string) ?? 'https://charlotte.hubacademybr.com';
@@ -977,11 +977,12 @@ export default function HomeScreen() {
   // the profile loads — before this component even mounts. This effect just
   // reads from the cache or waits for the in-flight request to resolve.
   useEffect(() => {
-    // Reset if level changed (e.g. after placement test)
-    if (greetingCache.level && greetingCache.level !== level) {
+    // Reset + refetch if level changed (e.g. after placement test assigned Inter/Advanced)
+    if (greetingCache.level && greetingCache.level !== level && profile) {
       resetGreetingCache();
       setAiGreeting(null);
       setGreetingLoading(true);
+      prefetchGreeting(profile);
     }
 
     // Restore cached greeting immediately on remount (no dots on navigation)
