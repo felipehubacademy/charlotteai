@@ -112,7 +112,7 @@ export default function SignupScreen() {
 
             <TouchableOpacity
               style={{ marginTop: 4, paddingVertical: 6 }}
-              onPress={() => router.back()}
+              onPress={() => router.replace('/(auth)/login')}
             >
               <AppText style={{ color: C.navyLight, fontSize: 13 }}>
                 Voltar para o login
