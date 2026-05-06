@@ -98,6 +98,7 @@ export default function VocabularyTab() {
   const [ttsLoading,   setTtsLoading]   = useState<string | null>(null);
   const [tipAdded,     setTipAdded]     = useState(false);
   const [addingTip,    setAddingTip]    = useState(false);
+  const [tipTtsLoading, setTipTtsLoading] = useState(false);
   const playerRef = useRef<ReturnType<typeof createAudioPlayer> | null>(null);
 
   // Today's tip, seeded by calendar day
@@ -114,6 +115,24 @@ export default function VocabularyTab() {
   };
 
   const openAdd = () => router.push({ pathname: '/(app)/add-word', params: { source: 'manual' } });
+
+  const handleTipTts = useCallback(async () => {
+    if (tipTtsLoading) return;
+    setTipTtsLoading(true);
+    try {
+      const res = await fetch(`${API_BASE}/api/tts-cached?term=${encodeURIComponent(tip.term.trim())}`);
+      if (!res.ok) throw new Error('TTS fetch failed');
+      const { url } = await res.json();
+      await setAudioModeAsync({ playsInSilentMode: true });
+      try { playerRef.current?.remove(); } catch { /* ignore */ }
+      const player = createAudioPlayer({ uri: url });
+      playerRef.current = player;
+      player.play();
+      await Haptics.impactAsync(Haptics.ImpactFeedbackStyle.Light);
+    } catch { /* silencioso */ } finally {
+      setTipTtsLoading(false);
+    }
+  }, [tipTtsLoading, tip.term]);
 
   const handleAddTip = useCallback(async () => {
     if (!userId || addingTip) return;
@@ -363,9 +382,18 @@ export default function VocabularyTab() {
           </TouchableOpacity>
         </View>
 
-        <AppText style={{ fontSize: 20, fontWeight: '900', color: '#16153A', marginBottom: 2 }}>
-          {tip.term}
-        </AppText>
+        <View style={{ flexDirection: 'row', alignItems: 'center', gap: 10, marginBottom: 2 }}>
+          <AppText style={{ fontSize: 20, fontWeight: '900', color: '#16153A' }}>
+            {tip.term}
+          </AppText>
+          <TouchableOpacity
+            onPress={handleTipTts}
+            hitSlop={{ top: 8, bottom: 8, left: 8, right: 8 }}
+            style={{ opacity: tipTtsLoading ? 0.4 : 1 }}
+          >
+            <SpeakerHigh size={18} color={tipStyle.color} weight="fill" />
+          </TouchableOpacity>
+        </View>
         <AppText style={{ fontSize: 13, color: '#4B4A72', lineHeight: 19, marginBottom: 6 }}>
           {isPt && tip.meaningPt ? tip.meaningPt : tip.meaning}
         </AppText>

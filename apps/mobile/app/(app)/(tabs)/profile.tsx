@@ -67,6 +67,7 @@ interface SettingRowProps {
   chevron?: boolean;
 }
 
+// Row inside a SettingGroup card — no own card styling
 function SettingRow({ icon, label, value, valueColor, onPress, destructive = false, chevron }: SettingRowProps) {
   return (
     <TouchableOpacity
@@ -76,14 +77,12 @@ function SettingRow({ icon, label, value, valueColor, onPress, destructive = fal
         flexDirection: 'row', alignItems: 'center',
         justifyContent: 'space-between',
         paddingHorizontal: 14, paddingVertical: 14,
-        backgroundColor: C.card, borderRadius: 14,
-        marginBottom: 6, borderWidth: 1, borderColor: C.border,
-        minHeight: 52, ...cardShadow,
+        minHeight: 52,
       }}
     >
       <View style={{ flexDirection: 'row', alignItems: 'center', gap: 12 }}>
         <View style={{
-          width: 36, height: 36, borderRadius: 10,
+          width: 34, height: 34, borderRadius: 9,
           backgroundColor: destructive ? 'rgba(220,38,38,0.08)' : 'rgba(22,21,58,0.05)',
           alignItems: 'center', justifyContent: 'center',
         }}>
@@ -104,6 +103,27 @@ function SettingRow({ icon, label, value, valueColor, onPress, destructive = fal
         )}
       </View>
     </TouchableOpacity>
+  );
+}
+
+// Card wrapper that groups multiple SettingRows with dividers
+function SettingGroup({ children }: { children: React.ReactNode }) {
+  const rows = React.Children.toArray(children);
+  return (
+    <View style={{
+      backgroundColor: C.card, borderRadius: 16,
+      borderWidth: 1, borderColor: C.border,
+      overflow: 'hidden', marginBottom: 8, ...cardShadow,
+    }}>
+      {rows.map((child, i) => (
+        <React.Fragment key={i}>
+          {child}
+          {i < rows.length - 1 && (
+            <View style={{ height: 1, backgroundColor: C.border, marginLeft: 60 }} />
+          )}
+        </React.Fragment>
+      ))}
+    </View>
   );
 }
 
@@ -391,37 +411,41 @@ export default function ProfileTab() {
 
         {/* Account */}
         <SectionTitle label={isPt ? 'Conta' : 'Account'} />
-        <SettingRow
-          icon={<ShieldCheck size={18} color={accessLabel.color} weight="duotone" />}
-          label={isPt ? 'Acesso' : 'Access'}
-          value={accessLabel.text}
-          valueColor={accessLabel.color}
-        />
-        <SettingRow
-          icon={<Key size={18} color={C.navyMid} weight="duotone" />}
-          label={isPt ? 'Alterar senha' : 'Change password'}
-          onPress={() => router.push('/(app)/change-password')}
-          chevron
-        />
-        <SettingRow
-          icon={<GraduationCap size={18} color={accent} weight="duotone" />}
-          label={isPt ? 'Refazer teste de nível' : 'Retake placement test'}
-          onPress={handleRetakePlacementTest}
-          chevron
-        />
+        <SettingGroup>
+          <SettingRow
+            icon={<ShieldCheck size={18} color={accessLabel.color} weight="duotone" />}
+            label={isPt ? 'Acesso' : 'Access'}
+            value={accessLabel.text}
+            valueColor={accessLabel.color}
+          />
+          <SettingRow
+            icon={<Key size={18} color={C.navyMid} weight="duotone" />}
+            label={isPt ? 'Alterar senha' : 'Change password'}
+            onPress={() => router.push('/(app)/change-password')}
+            chevron
+          />
+          <SettingRow
+            icon={<GraduationCap size={18} color={accent} weight="duotone" />}
+            label={isPt ? 'Refazer teste de nível' : 'Retake placement test'}
+            onPress={handleRetakePlacementTest}
+            chevron
+          />
+        </SettingGroup>
 
         {/* Subscription */}
         {!profile?.is_institutional && (
           <>
             <SectionTitle label={isPt ? 'Assinatura' : 'Subscription'} />
-            <SettingRow
-              icon={restoringPurchases
-                ? <ActivityIndicator size={18} color={C.navyMid} />
-                : <ArrowsClockwise size={18} color={C.navyMid} weight="duotone" />}
-              label={isPt ? 'Restaurar compras' : 'Restore purchases'}
-              onPress={restoringPurchases ? undefined : handleRestorePurchases}
-              chevron
-            />
+            <SettingGroup>
+              <SettingRow
+                icon={restoringPurchases
+                  ? <ActivityIndicator size={18} color={C.navyMid} />
+                  : <ArrowsClockwise size={18} color={C.navyMid} weight="duotone" />}
+                label={isPt ? 'Restaurar compras' : 'Restore purchases'}
+                onPress={restoringPurchases ? undefined : handleRestorePurchases}
+                chevron
+              />
+            </SettingGroup>
           </>
         )}
 
@@ -430,12 +454,12 @@ export default function ProfileTab() {
           <>
             <SectionTitle label={isPt ? 'Uso' : 'Usage'} />
             <View style={{
-              backgroundColor: C.card, borderRadius: 14, borderWidth: 1,
-              borderColor: C.border, padding: 14, marginBottom: 6, ...cardShadow,
+              backgroundColor: C.card, borderRadius: 16, borderWidth: 1,
+              borderColor: C.border, padding: 16, marginBottom: 8, ...cardShadow,
             }}>
-              <View style={{ flexDirection: 'row', alignItems: 'center', gap: 12, marginBottom: 10 }}>
+              <View style={{ flexDirection: 'row', alignItems: 'center', gap: 12, marginBottom: 12 }}>
                 <View style={{
-                  width: 36, height: 36, borderRadius: 10,
+                  width: 34, height: 34, borderRadius: 9,
                   backgroundColor: 'rgba(22,21,58,0.05)',
                   alignItems: 'center', justifyContent: 'center',
                 }}>
@@ -457,7 +481,7 @@ export default function ProfileTab() {
                   width: `${Math.min(100, (voiceUsage.secondsUsed / voiceUsage.poolTotal) * 100)}%` as `${number}%`,
                 }} />
               </View>
-              <AppText style={{ fontSize: 11, color: C.navyLight, marginTop: 5 }}>
+              <AppText style={{ fontSize: 11, color: C.navyLight, marginTop: 6 }}>
                 {isPt
                   ? `Renova em 1/${String(new Date(new Date().getFullYear(), new Date().getMonth() + 1, 1).getMonth() + 1).padStart(2, '0')}`
                   : `Resets ${new Date(new Date().getFullYear(), new Date().getMonth() + 1, 1).toLocaleDateString('en', { month: 'short', day: 'numeric' })}`}
@@ -470,12 +494,14 @@ export default function ProfileTab() {
         {profile?.beta_features?.includes('karaoke') && (
           <>
             <SectionTitle label="Beta" />
-            <SettingRow
-              icon={<Microphone size={18} color={C.navyMid} weight="duotone" />}
-              label="Read Aloud (Karaoke)"
-              onPress={() => router.push('/(app)/karaoke-exercise' as any)}
-              chevron
-            />
+            <SettingGroup>
+              <SettingRow
+                icon={<Microphone size={18} color={C.navyMid} weight="duotone" />}
+                label="Read Aloud (Karaoke)"
+                onPress={() => router.push('/(app)/karaoke-exercise' as any)}
+                chevron
+              />
+            </SettingGroup>
           </>
         )}
 
@@ -483,84 +509,92 @@ export default function ProfileTab() {
         {profile?.is_admin && (
           <>
             <SectionTitle label="Tour" />
-            <SettingRow
-              icon={<Play size={18} color={C.navyMid} weight="duotone" />}
-              label={isPt ? 'Refazer tour da Home' : 'Replay Home tour'}
-              onPress={async () => { await resetTour('HOME'); }}
-              chevron
-            />
-            <SettingRow
-              icon={<Play size={18} color={C.navyMid} weight="duotone" />}
-              label={isPt ? 'Refazer tour da Sessão' : 'Replay Learn Session tour'}
-              onPress={async () => { await resetTour('learn-session-grammar'); await resetTour('learn-session-pron'); }}
-              chevron
-            />
-            <SettingRow
-              icon={<Play size={18} color={C.navyMid} weight="duotone" />}
-              label={isPt ? 'Refazer tour do Vocab Review' : 'Replay Vocab Review tour'}
-              onPress={async () => { await resetTour('vocab-review'); }}
-              chevron
-            />
-            <SettingRow
-              icon={<Play size={18} color={C.navyMid} weight="duotone" />}
-              label={isPt ? 'Refazer tour da Trilha' : 'Replay Trail tour'}
-              onPress={async () => { await resetTour('learn-trail'); }}
-              chevron
-            />
-            <SettingRow
-              icon={<Play size={18} color={C.navyMid} weight="duotone" />}
-              label={isPt ? 'Refazer tour do Vocabulário' : 'Replay Vocabulary tour'}
-              onPress={async () => { await resetTour('my-vocabulary'); }}
-              chevron
-            />
+            <SettingGroup>
+              <SettingRow
+                icon={<Play size={18} color={C.navyMid} weight="duotone" />}
+                label={isPt ? 'Refazer tour da Home' : 'Replay Home tour'}
+                onPress={async () => { await resetTour('HOME'); }}
+                chevron
+              />
+              <SettingRow
+                icon={<Play size={18} color={C.navyMid} weight="duotone" />}
+                label={isPt ? 'Refazer tour da Sessão' : 'Replay Learn Session tour'}
+                onPress={async () => { await resetTour('learn-session-grammar'); await resetTour('learn-session-pron'); }}
+                chevron
+              />
+              <SettingRow
+                icon={<Play size={18} color={C.navyMid} weight="duotone" />}
+                label={isPt ? 'Refazer tour do Vocab Review' : 'Replay Vocab Review tour'}
+                onPress={async () => { await resetTour('vocab-review'); }}
+                chevron
+              />
+              <SettingRow
+                icon={<Play size={18} color={C.navyMid} weight="duotone" />}
+                label={isPt ? 'Refazer tour da Trilha' : 'Replay Trail tour'}
+                onPress={async () => { await resetTour('learn-trail'); }}
+                chevron
+              />
+              <SettingRow
+                icon={<Play size={18} color={C.navyMid} weight="duotone" />}
+                label={isPt ? 'Refazer tour do Vocabulário' : 'Replay Vocabulary tour'}
+                onPress={async () => { await resetTour('my-vocabulary'); }}
+                chevron
+              />
+            </SettingGroup>
           </>
         )}
 
         {/* Legal */}
         <SectionTitle label="Legal" />
-        <SettingRow
-          icon={<ShieldWarning size={18} color={C.navyMid} weight="duotone" />}
-          label={isPt ? 'Política de Privacidade' : 'Privacy Policy'}
-          onPress={() => Linking.openURL('https://charlotte.hubacademybr.com/privacidade')}
-          chevron
-        />
-        <SettingRow
-          icon={<FileText size={18} color={C.navyMid} weight="duotone" />}
-          label={isPt ? 'Termos de Uso' : 'Terms of Use'}
-          onPress={() => Linking.openURL('https://charlotte.hubacademybr.com/termos')}
-          chevron
-        />
+        <SettingGroup>
+          <SettingRow
+            icon={<ShieldWarning size={18} color={C.navyMid} weight="duotone" />}
+            label={isPt ? 'Política de Privacidade' : 'Privacy Policy'}
+            onPress={() => Linking.openURL('https://charlotte.hubacademybr.com/privacidade')}
+            chevron
+          />
+          <SettingRow
+            icon={<FileText size={18} color={C.navyMid} weight="duotone" />}
+            label={isPt ? 'Termos de Uso' : 'Terms of Use'}
+            onPress={() => Linking.openURL('https://charlotte.hubacademybr.com/termos')}
+            chevron
+          />
+        </SettingGroup>
 
         {/* About */}
         <SectionTitle label={isPt ? 'Sobre' : 'About'} />
-        <SettingRow
-          icon={<DeviceMobile size={18} color={C.navyMid} weight="duotone" />}
-          label="Charlotte"
-          value={`v${Constants.expoConfig?.version ?? '1.0.0'}`}
-        />
-        <SettingRow
-          icon={<Buildings size={18} color={C.navyMid} weight="duotone" />}
-          label="Hub Academy"
-        />
+        <SettingGroup>
+          <SettingRow
+            icon={<DeviceMobile size={18} color={C.navyMid} weight="duotone" />}
+            label="Charlotte"
+            value={`v${Constants.expoConfig?.version ?? '1.0.0'}`}
+          />
+          <SettingRow
+            icon={<Buildings size={18} color={C.navyMid} weight="duotone" />}
+            label="Hub Academy"
+          />
+        </SettingGroup>
 
         {/* Session */}
         <SectionTitle label={isPt ? 'Sessão' : 'Session'} />
-        <SettingRow
-          icon={<SignOut size={18} color={C.error} weight="duotone" />}
-          label={isPt ? 'Sair da conta' : 'Sign out'}
-          onPress={handleSignOut}
-          destructive
-          chevron
-        />
-        <SettingRow
-          icon={deletingAccount
-            ? <ActivityIndicator size={18} color={C.error} />
-            : <Trash size={18} color={C.error} weight="duotone" />}
-          label={isPt ? 'Excluir minha conta' : 'Delete my account'}
-          onPress={deletingAccount ? undefined : handleDeleteAccount}
-          destructive
-          chevron
-        />
+        <SettingGroup>
+          <SettingRow
+            icon={<SignOut size={18} color={C.error} weight="duotone" />}
+            label={isPt ? 'Sair da conta' : 'Sign out'}
+            onPress={handleSignOut}
+            destructive
+            chevron
+          />
+          <SettingRow
+            icon={deletingAccount
+              ? <ActivityIndicator size={18} color={C.error} />
+              : <Trash size={18} color={C.error} weight="duotone" />}
+            label={isPt ? 'Excluir minha conta' : 'Delete my account'}
+            onPress={deletingAccount ? undefined : handleDeleteAccount}
+            destructive
+            chevron
+          />
+        </SettingGroup>
 
         <View style={{ paddingVertical: 28, alignItems: 'center', gap: 4 }}>
           <AppText style={{ fontSize: 11, color: C.navyLight, letterSpacing: 0.2 }}>

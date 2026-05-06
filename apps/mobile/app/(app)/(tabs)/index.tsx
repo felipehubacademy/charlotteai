@@ -10,7 +10,7 @@ import {
 import Svg, { Circle } from 'react-native-svg';
 import { router, useFocusEffect } from 'expo-router';
 import { SafeAreaView } from 'react-native-safe-area-context';
-import { Fire, Lightning, Trophy, Plus } from 'phosphor-react-native';
+import { Fire, Lightning, Trophy } from 'phosphor-react-native';
 import * as SecureStore from 'expo-secure-store';
 import { AppText } from '@/components/ui/Text';
 import { useAuth } from '@/hooks/useAuth';
@@ -407,24 +407,6 @@ export default function HomeTab() {
 
       </ScrollView>
 
-      {/* FAB — Add Word */}
-      <TouchableOpacity
-        onPress={() => router.push({ pathname: '/(app)/add-word', params: { source: 'manual' } })}
-        style={{
-          position: 'absolute',
-          bottom: Platform.OS === 'ios' ? 96 : 76,
-          right: 20,
-          width: 52, height: 52, borderRadius: 26,
-          backgroundColor: C.navy,
-          alignItems: 'center', justifyContent: 'center',
-          ...Platform.select({
-            ios:     { shadowColor: C.navy, shadowOpacity: 0.25, shadowRadius: 10, shadowOffset: { width: 0, height: 4 } },
-            android: { elevation: 6 },
-          }),
-        }}
-      >
-        <Plus size={24} color="#FFFFFF" weight="bold" />
-      </TouchableOpacity>
 
     </View>
   );

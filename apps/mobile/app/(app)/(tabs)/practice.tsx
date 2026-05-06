@@ -46,6 +46,7 @@ const CHAT_UNLOCK_XP   = 2800;
 interface ModeCard {
   mode: ChatMode | 'live';
   title: string;
+  description: string;
   route?: '/(app)/grammar' | '/(app)/pronunciation' | '/(app)/chat';
   accentColor: string;
   accentBg: string;
@@ -105,6 +106,7 @@ export default function PracticeTab() {
     {
       mode: 'grammar' as const,
       title: isPt ? 'Gramática' : 'Grammar',
+      description: isPt ? 'Regras e exercícios' : 'Rules & exercises',
       route: '/(app)/grammar' as const,
       accentColor: levelAccent, accentBg: levelAccentBg,
       icon: <TextT size={32} color={levelAccent} weight="fill" />,
@@ -113,6 +115,7 @@ export default function PracticeTab() {
     {
       mode: 'pronunciation' as const,
       title: isPt ? 'Pronúncia' : 'Pronunciation',
+      description: isPt ? 'Fala e pronúncia' : 'Speaking & feedback',
       route: '/(app)/pronunciation' as const,
       accentColor: levelAccent, accentBg: levelAccentBg,
       icon: <Microphone size={32} color={levelAccent} weight="fill" />,
@@ -124,6 +127,7 @@ export default function PracticeTab() {
     {
       mode: 'chat' as const,
       title: 'Free Chat',
+      description: isPt ? 'Conversa livre' : 'Free conversation',
       route: '/(app)/chat' as const,
       accentColor: levelAccent, accentBg: levelAccentBg,
       icon: <ChatTeardropText size={32} color={levelAccent} weight="fill" />,
@@ -135,6 +139,7 @@ export default function PracticeTab() {
     {
       mode: 'live' as const,
       title: 'Live Voice',
+      description: isPt ? 'Chamada em tempo real' : 'Real-time voice call',
       accentColor: C.orange, accentBg: 'rgba(255,107,53,0.10)',
       icon: <Phone size={32} color={hasLive ? C.orange : C.navyLight} weight="fill" />,
       locked: !hasLive, lockLevel: 'Intermediate',
@@ -201,10 +206,6 @@ export default function PracticeTab() {
           contentContainerStyle={{ padding: H_PAD, paddingBottom: 40 }}
           showsVerticalScrollIndicator={false}
         >
-          <AppText style={{ fontSize: 13, color: C.navyLight, marginBottom: 20 }}>
-            {isPt ? 'Escolha como quer praticar hoje' : 'Choose how you want to practise today'}
-          </AppText>
-
           {/* 2x2 grid */}
           <View style={{ flexDirection: 'row', flexWrap: 'wrap', gap: CARD_GAP }}>
             {modeCards.map((card) => (
@@ -248,19 +249,21 @@ export default function PracticeTab() {
                   </AppText>
 
                   {/* Sub info */}
-                  {card.mode === 'live' && liveUsageLine && !card.locked && (
-                    <AppText style={{ fontSize: 11, color: C.navyLight, fontWeight: '600' }}>
-                      {liveUsageLine}
-                    </AppText>
-                  )}
-                  {card.locked && card.lockLevel && (
-                    <AppText style={{ fontSize: 11, color: C.navyLight, fontWeight: '600' }}>
-                      {card.lockLevel}
+                  {!card.locked && (
+                    <AppText style={{ fontSize: 12, color: C.navyLight, fontWeight: '500' }}>
+                      {card.mode === 'live' && liveUsageLine
+                        ? liveUsageLine
+                        : card.description}
                     </AppText>
                   )}
                   {card.locked && card.lockXP !== undefined && card.currentXP !== undefined && (
                     <AppText style={{ fontSize: 11, color: C.navyLight, fontWeight: '600' }}>
                       {card.currentXP.toLocaleString()}/{card.lockXP.toLocaleString()} XP
+                    </AppText>
+                  )}
+                  {card.locked && card.lockLevel && card.lockXP === undefined && (
+                    <AppText style={{ fontSize: 11, color: C.navyLight, fontWeight: '600' }}>
+                      {card.lockLevel}
                     </AppText>
                   )}
                 </View>

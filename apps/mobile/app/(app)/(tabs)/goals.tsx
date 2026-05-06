@@ -52,16 +52,15 @@ function SectionHeader({ label, badge, isPt }: { label: string; badge?: string; 
   );
 }
 
-function MissionNode({ mission, alignRight, showConnector, isPt, onPress }: {
+function MissionNode({ mission, alignRight, isPt, onPress }: {
   mission: Mission;
   alignRight: boolean;
-  showConnector: boolean;
   isPt?: boolean;
   onPress?: () => void;
 }) {
   const NODE = 58;
   return (
-    <View style={{ marginBottom: showConnector ? 10 : 0 }}>
+    <View>
       <View style={{ flexDirection: alignRight ? 'row-reverse' : 'row', alignItems: 'center' }}>
 
         {/* Circle node */}
@@ -223,7 +222,7 @@ export default function GoalsTab() {
           <ActivityIndicator size="large" color={C.navy} />
         </View>
       ) : (
-        <ScrollView contentContainerStyle={{ paddingBottom: 40 }} showsVerticalScrollIndicator={false}>
+        <ScrollView contentContainerStyle={{ paddingBottom: 80 }} showsVerticalScrollIndicator={false}>
 
           {/* Daily Missions */}
           <SectionHeader
@@ -233,14 +232,21 @@ export default function GoalsTab() {
           />
           <View style={{ paddingHorizontal: 20 }}>
             {missions.map((m, index) => (
-              <MissionNode
-                key={m.id}
-                mission={m}
-                alignRight={index % 2 === 1}
-                showConnector={index < missions.length - 1}
-                isPt={isPt}
-                onPress={() => router.push(m.destination as any)}
-              />
+              <View key={m.id}>
+                <MissionNode
+                  mission={m}
+                  alignRight={index % 2 === 1}
+                  isPt={isPt}
+                  onPress={() => router.push(m.destination as any)}
+                />
+                {index < missions.length - 1 && (
+                  <View style={{ alignSelf: 'center', alignItems: 'center', paddingVertical: 3, gap: 3 }}>
+                    {[0, 1, 2].map(i => (
+                      <View key={i} style={{ width: 2, height: 6, backgroundColor: C.navyGhost, borderRadius: 1 }} />
+                    ))}
+                  </View>
+                )}
+              </View>
             ))}
           </View>
 
