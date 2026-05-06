@@ -794,6 +794,7 @@ export async function sendCharlotteMessages(supabase: any): Promise<void> {
     const streakMap = Object.fromEntries((progRows ?? []).map((r: any) => [r.user_id, r.streak_days ?? 0]));
 
     // Fetch today XP from charlotte_practices
+    const today = new Date().toISOString().split('T')[0];
     const { data: todayRows } = await supabase
       .from('charlotte_practices')
       .select('user_id, xp_earned')
