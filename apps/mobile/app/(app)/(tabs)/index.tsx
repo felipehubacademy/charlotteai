@@ -1,6 +1,6 @@
 // app/(app)/(tabs)/index.tsx
 // New Home tab — beta only (beta_features includes 'new_layout').
-// Header (streak/XP/rank pills + gear) + Charlotte hero card + TrailContent inline.
+// Header (streak/XP/rank pills) + Charlotte hero card + TrailContent inline.
 
 import React, { useState, useCallback, useEffect, useRef, useMemo } from 'react';
 import {
@@ -10,8 +10,7 @@ import {
 import Svg, { Circle } from 'react-native-svg';
 import { router, useFocusEffect } from 'expo-router';
 import { SafeAreaView } from 'react-native-safe-area-context';
-import { Fire, Lightning, Trophy, Gear, Plus } from 'phosphor-react-native';
-import { useSafeAreaInsets } from 'react-native-safe-area-context';
+import { Fire, Lightning, Trophy, Plus } from 'phosphor-react-native';
 import * as SecureStore from 'expo-secure-store';
 import { AppText } from '@/components/ui/Text';
 import { useAuth } from '@/hooks/useAuth';
@@ -110,8 +109,6 @@ export default function HomeTab() {
   const { profile, isFreshLogin } = useAuth();
   const { openPaywall }           = usePaywallContext();
   const { colors: T }             = useTheme();
-  const insets                    = useSafeAreaInsets();
-
   const userId    = profile?.id ?? '';
   const level     = (profile?.charlotte_level ?? 'Novice') as UserLevel;
   const name      = profile?.name ?? profile?.email?.split('@')[0] ?? 'Student';
@@ -335,13 +332,6 @@ export default function HomeTab() {
             </TouchableOpacity>
           )}
 
-          {/* Settings */}
-          <TouchableOpacity
-            onPress={() => router.push('/(app)/configuracoes')}
-            hitSlop={{ top: 12, bottom: 12, left: 12, right: 12 }}
-          >
-            <Gear size={22} color={C.navyMid} />
-          </TouchableOpacity>
         </View>
       </SafeAreaView>
 

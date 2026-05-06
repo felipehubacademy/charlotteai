@@ -9,7 +9,7 @@ import {
   View, ScrollView, TouchableOpacity, TextInput,
   ActivityIndicator, Alert, Platform, Modal,
 } from 'react-native';
-import { SafeAreaView, useSafeAreaInsets } from 'react-native-safe-area-context';
+import { SafeAreaView } from 'react-native-safe-area-context';
 import { router, useFocusEffect } from 'expo-router';
 import {
   MagnifyingGlass, Trash, Plus, SpeakerHigh, SpeakerSlash,
@@ -82,7 +82,6 @@ function reviewLabel(nextReview: string | null, isPt: boolean): { label: string;
 
 export default function VocabularyTab() {
   const { profile, session } = useAuth();
-  const insets = useSafeAreaInsets();
   const level  = profile?.charlotte_level ?? 'Inter';
   const isPt   = level === 'Novice';
   const userId = session?.user?.id;

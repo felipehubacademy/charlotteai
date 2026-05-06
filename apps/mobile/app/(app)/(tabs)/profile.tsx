@@ -12,7 +12,7 @@ import {
   User, Key, DeviceMobile, GraduationCap, Buildings,
   SignOut, ShieldCheck, CheckCircle, Microphone, FileText,
   ShieldWarning, ArrowsClockwise, Trash, PencilSimple,
-  CaretRight, Play, BookOpen,
+  CaretRight, Play,
 } from 'phosphor-react-native';
 import { useTour } from '@/lib/tourContext';
 import { AppText } from '@/components/ui/Text';
