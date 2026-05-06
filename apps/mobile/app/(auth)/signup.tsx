@@ -68,23 +68,15 @@ export default function SignupScreen() {
     return (
       <SafeAreaView style={{ flex: 1, backgroundColor: C.bg }}>
         <View style={{ flex: 1, justifyContent: 'center', alignItems: 'center', paddingHorizontal: 32 }}>
-          <View style={{
-            backgroundColor: C.card,
-            borderRadius: 24,
-            padding: 36,
-            alignItems: 'center',
-            gap: 16,
-            width: '100%',
-            shadowColor: C.navy, shadowOpacity: 0.08,
-            shadowRadius: 20, shadowOffset: { width: 0, height: 4 },
-            borderWidth: 1, borderColor: C.border,
-          }}>
+
+          {/* Avatar com badge de check */}
+          <View style={{ marginBottom: 32 }}>
             <View style={{
-              width: 96, height: 96, borderRadius: 48,
+              width: 120, height: 120, borderRadius: 60,
               borderWidth: 3, borderColor: C.green,
               overflow: 'hidden', backgroundColor: C.navy,
-              shadowColor: C.green, shadowOpacity: 0.3,
-              shadowRadius: 16, shadowOffset: { width: 0, height: 4 },
+              shadowColor: C.green, shadowOpacity: 0.25,
+              shadowRadius: 20, shadowOffset: { width: 0, height: 6 },
             }}>
               <Image
                 source={require('@/assets/charlotte-avatar.png')}
@@ -92,33 +84,46 @@ export default function SignupScreen() {
                 resizeMode="cover"
               />
             </View>
-
+            {/* Badge de check no canto inferior direito */}
             <View style={{
-              width: 52, height: 52, borderRadius: 26,
+              position: 'absolute', bottom: 2, right: 2,
+              width: 36, height: 36, borderRadius: 18,
               backgroundColor: C.green,
               alignItems: 'center', justifyContent: 'center',
+              borderWidth: 3, borderColor: C.bg,
             }}>
-              <CheckCircle size={28} color={C.navy} weight="fill" />
+              <CheckCircle size={20} color={C.navy} weight="fill" />
             </View>
-
-            <AppText style={{ fontSize: 22, fontWeight: '800', color: C.navy, textAlign: 'center', letterSpacing: -0.3 }}>
-              Verifique seu e-mail
-            </AppText>
-            <AppText style={{ fontSize: 14, color: C.navyMid, textAlign: 'center', lineHeight: 21 }}>
-              Enviamos um link de confirmacao para{'\n'}
-              <AppText style={{ fontWeight: '700', color: C.navy }}>{email}</AppText>
-              {'\n\n'}Clique no link para ativar sua conta.
-            </AppText>
-
-            <TouchableOpacity
-              style={{ marginTop: 4, paddingVertical: 6 }}
-              onPress={() => router.replace('/(auth)/login')}
-            >
-              <AppText style={{ color: C.navyLight, fontSize: 13 }}>
-                Voltar para o login
-              </AppText>
-            </TouchableOpacity>
           </View>
+
+          {/* Textos */}
+          <AppText style={{ fontSize: 26, fontWeight: '800', color: C.navy, textAlign: 'center', letterSpacing: -0.5, marginBottom: 12 }}>
+            Verifique seu e-mail
+          </AppText>
+          <AppText style={{ fontSize: 15, color: C.navyMid, textAlign: 'center', lineHeight: 23, marginBottom: 6 }}>
+            Enviamos um link de confirmação para
+          </AppText>
+          <AppText style={{ fontSize: 15, fontWeight: '700', color: C.navy, textAlign: 'center', marginBottom: 20 }}>
+            {email}
+          </AppText>
+          <AppText style={{ fontSize: 14, color: C.navyLight, textAlign: 'center', lineHeight: 21, marginBottom: 48 }}>
+            Clique no link para ativar sua conta.
+          </AppText>
+
+          {/* Botão sólido */}
+          <TouchableOpacity
+            style={{
+              backgroundColor: C.navy,
+              borderRadius: 14, paddingVertical: 16,
+              alignItems: 'center', width: '100%',
+            }}
+            onPress={() => router.replace('/(auth)/login')}
+          >
+            <AppText style={{ color: C.bg, fontWeight: '800', fontSize: 15 }}>
+              Ir para o login
+            </AppText>
+          </TouchableOpacity>
+
         </View>
       </SafeAreaView>
     );
