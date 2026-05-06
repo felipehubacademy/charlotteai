@@ -344,7 +344,7 @@ export default function VocabularyTab() {
         <View style={{ flexDirection: 'row', alignItems: 'center', justifyContent: 'space-between', marginBottom: 10 }}>
           <View style={{ flexDirection: 'row', alignItems: 'center', gap: 6 }}>
             <AppText style={{ fontSize: 11, fontWeight: '500', color: tipStyle.color, opacity: 0.75 }}>
-              {isPt ? 'dica do dia' : 'tip of the day'} ·
+              {isPt ? 'Dica do dia' : 'Tip of the day'} ·
             </AppText>
             <View style={{
               backgroundColor: `${tipStyle.color}18`, borderRadius: 8,
