@@ -83,6 +83,7 @@ export default function TabLayout() {
                 <Image
                   source={{ uri: profile.avatar_url }}
                   style={{ width: sz, height: sz }}
+                  resizeMode="cover"
                 />
               </View>
             ) : (
