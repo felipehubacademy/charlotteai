@@ -603,6 +603,10 @@ export default function LearnSessionScreen() {
           setPronStatus('listening');
           return;
         }
+        // Registra a sessão no expo-audio antes do módulo nativo configurar a AVAudioSession.
+        // Sem isso, o setAudioModeAsync do reset não consegue sobrescrever o estado que o
+        // ExpoSpeechRecognitionModule deixa — causa earpiece persistente no iOS.
+        await setAudioModeAsync({ allowsRecording: true, playsInSilentMode: true });
         ExpoSpeechRecognitionModule.start({ lang: 'en-US', interimResults: true, continuous: true });
       } else {
         // Recorder — for Azure (shadowing) or Whisper fallback (repeat without ASR)
