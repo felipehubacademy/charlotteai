@@ -4,7 +4,7 @@
 // in (app)/_layout.tsx and push on top of these tabs without the tab bar.
 
 import { Tabs } from 'expo-router';
-import { Platform } from 'react-native';
+import { Platform, View, Image } from 'react-native';
 import { House, Lightning, Notepad, Rocket, UserCircle } from 'phosphor-react-native';
 import { useAuth } from '@/hooks/useAuth';
 import { UserLevel } from '@/lib/levelConfig';
@@ -71,9 +71,22 @@ export default function TabLayout() {
       <Tabs.Screen
         name="profile"
         options={{
-          tabBarIcon: ({ color, size }) => (
-            <UserCircle size={size ?? 24} color={color} weight="fill" />
-          ),
+          tabBarIcon: ({ color, focused, size }) =>
+            profile?.avatar_url ? (
+              <View style={{
+                width: 26, height: 26, borderRadius: 13,
+                borderWidth: focused ? 2 : 1.5,
+                borderColor: focused ? accent : '#9896B8',
+                overflow: 'hidden',
+              }}>
+                <Image
+                  source={{ uri: profile.avatar_url }}
+                  style={{ width: 26, height: 26 }}
+                />
+              </View>
+            ) : (
+              <UserCircle size={size ?? 24} color={color} weight="fill" />
+            ),
         }}
       />
     </Tabs>
