@@ -127,7 +127,12 @@ const CHAT_UNLOCK_XP   = 2800; // modulo 8 completo @ 80% — 35 topics
 
 // ── Helpers ───────────────────────────────────────────────────
 
-function charlotteMessage(firstName: string, streak: number, todayXP: number, isPortuguese = false): string {
+function charlotteMessage(firstName: string, streak: number, todayXP: number, isPortuguese = false, isNewUser = false): string {
+  if (isNewUser) {
+    return isPortuguese
+      ? `Oi, ${firstName}! Que bom ter você aqui. Vamos começar?`
+      : `Hey ${firstName}! Great to have you here. Let's get started.`;
+  }
   const now   = new Date();
   const h     = now.getHours();
   const seed  = localTodayStr().split('-').reduce((acc, p) => acc * 100 + parseInt(p, 10), 0);
@@ -977,7 +982,24 @@ export default function HomeScreen() {
   // the profile loads — before this component even mounts. This effect just
   // reads from the cache or waits for the in-flight request to resolve.
   useEffect(() => {
-    // Reset + refetch if level changed (e.g. after placement test assigned Inter/Advanced)
+    if (!userId || !name) return;
+
+    const isNewUser   = !profile?.first_welcome_done;
+    const isPt        = level === 'Novice';
+    const fallback    = charlotteMessage(firstName, data?.streakDays ?? 0, data?.todayXP ?? 0, isPt, isNewUser);
+    const showFallback = () => {
+      // Once fallback is shown it is never replaced — user already read it.
+      setAiGreeting(prev => prev ?? fallback);
+      setGreetingLoading(false);
+    };
+
+    // ── New user: skip API entirely, show hardcoded immediately ───────────
+    if (isNewUser) {
+      showFallback();
+      return;
+    }
+
+    // ── Reset + refetch if level changed after placement test ─────────────
     if (greetingCache.level && greetingCache.level !== level && profile) {
       resetGreetingCache();
       setAiGreeting(null);
@@ -985,46 +1007,56 @@ export default function HomeScreen() {
       prefetchGreeting(profile);
     }
 
-    // Restore cached greeting immediately on remount (no dots on navigation)
+    // ── Restore cached greeting immediately on remount ────────────────────
     if (greetingCache.text) {
       setAiGreeting(greetingCache.text);
       setGreetingLoading(false);
       return;
     }
 
-    // Profile not loaded yet — wait
-    if (!userId || !name) return;
-
-    // Pre-fetch already completed with no result (API error) — show fallback
+    // ── API already finished with no result → fallback ────────────────────
     if (greetingCache.fetched && !greetingCache.pending) {
-      setGreetingLoading(false);
+      showFallback();
       return;
     }
 
-    // Pre-fetch is in-flight (fired by AuthProvider) — poll until it resolves.
+    // ── API in-flight: poll + 3s timeout ──────────────────────────────────
     // Dots mínimo de 600ms — sensação de Charlotte "digitando" sem ser lento.
     const minDotsMs  = 600;
     const fetchStart = Date.now();
+    let   settled    = false;
+
+    const resolve = (text: string) => {
+      if (settled) return;
+      settled = true;
+      const elapsed = Date.now() - fetchStart;
+      const delay   = Math.max(0, minDotsMs - elapsed);
+      setTimeout(() => {
+        unstable_batchedUpdates(() => {
+          setAiGreeting(text);
+          setGreetingLoading(false);
+        });
+      }, delay);
+    };
 
     const poll = setInterval(() => {
       if (greetingCache.text) {
         clearInterval(poll);
-        const elapsed = Date.now() - fetchStart;
-        const delay   = Math.max(0, minDotsMs - elapsed);
-        setTimeout(() => {
-          unstable_batchedUpdates(() => {
-            setAiGreeting(greetingCache.text);
-            setGreetingLoading(false);
-          });
-        }, delay);
+        resolve(greetingCache.text);
       } else if (!greetingCache.pending) {
-        // API finished with no valid message — show fallback
         clearInterval(poll);
-        setGreetingLoading(false);
+        resolve(fallback);
       }
     }, 50);
 
-    return () => clearInterval(poll);
+    // 3s timeout — if API hasn't responded, show fallback and lock it.
+    // If API comes back later, `settled = true` prevents overwrite.
+    const timeout = setTimeout(() => {
+      clearInterval(poll);
+      resolve(fallback);
+    }, 3000);
+
+    return () => { clearInterval(poll); clearTimeout(timeout); };
   // NOTE: 'data' removed from deps intentionally — having it caused the effect to re-run
   // every time fetchData completed, interfering with the in-flight async setAiGreeting call.
   }, [userId, name, level, profile]); // eslint-disable-line
