@@ -469,8 +469,19 @@ export default function OnboardingScreen() {
           </TouchableOpacity>
 
           {isLast && (
-            <TouchableOpacity onPress={goLogin} style={{ alignItems: 'center', paddingVertical: 4 }}>
-              <AppText style={{ fontSize: 14, color: C.navyLight, fontWeight: '600' }}>
+            <TouchableOpacity
+              onPress={goLogin}
+              activeOpacity={0.85}
+              style={{
+                borderRadius: 16,
+                height: 54,
+                alignItems: 'center',
+                justifyContent: 'center',
+                borderWidth: 2,
+                borderColor: C.navy,
+              }}
+            >
+              <AppText style={{ fontSize: 16, fontWeight: '700', color: C.navy }}>
                 Já tenho uma conta
               </AppText>
             </TouchableOpacity>
