@@ -793,15 +793,23 @@ export async function sendCharlotteMessages(supabase: any): Promise<void> {
     const xpMap     = Object.fromEntries((progRows ?? []).map((r: any) => [r.user_id, r.total_xp ?? 0]));
     const streakMap = Object.fromEntries((progRows ?? []).map((r: any) => [r.user_id, r.streak_days ?? 0]));
 
-    // Fetch today XP from charlotte_practices
-    const today = new Date().toISOString().split('T')[0];
+    // Fetch last 48h of practices — covers all user timezones regardless of UTC offset.
+    // XP is then counted per user based on their own local date (same pattern used everywhere).
+    const since48h = new Date(Date.now() - 48 * 60 * 60 * 1000).toISOString();
     const { data: todayRows } = await supabase
       .from('charlotte_practices')
-      .select('user_id, xp_earned')
-      .gte('created_at', `${today}T00:00:00Z`);
+      .select('user_id, xp_earned, created_at')
+      .gte('created_at', since48h)
+      .in('user_id', allowedIds);
+    const userTzMap = Object.fromEntries(cuUsers.map((u: any) => [String(u.id), u.timezone as string]));
     const todayXpMap: Record<string, number> = {};
     for (const r of (todayRows ?? [])) {
-      todayXpMap[r.user_id] = (todayXpMap[r.user_id] ?? 0) + (r.xp_earned ?? 0);
+      const tz          = userTzMap[r.user_id] ?? DEFAULT_TZ;
+      const localToday  = localDateForTz(tz);
+      const practiceDay = new Intl.DateTimeFormat('en-CA', { timeZone: tz }).format(new Date(r.created_at));
+      if (practiceDay === localToday) {
+        todayXpMap[r.user_id] = (todayXpMap[r.user_id] ?? 0) + (r.xp_earned ?? 0);
+      }
     }
 
     // Generate 2 pools (Novice PT + Advanced EN) — 2 GPT calls total
