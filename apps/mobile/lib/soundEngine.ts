@@ -265,8 +265,7 @@ class SoundEngine {
       await setAudioModeAsync({
         allowsRecording: false,
         playsInSilentMode: true,
-        interruptionMode: 'mixWithOthers',
-        shouldRouteThroughEarpiece: false,
+        interruptionMode: 'doNotMix',
       }).catch(() => {});
 
       const player = createAudioPlayer({ uri });

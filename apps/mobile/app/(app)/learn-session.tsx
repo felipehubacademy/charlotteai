@@ -483,7 +483,7 @@ export default function LearnSessionScreen() {
           }
         }
       }
-      await setAudioModeAsync({ allowsRecording: false, playsInSilentMode: true, shouldRouteThroughEarpiece: false }).catch(() => {});
+      await setAudioModeAsync({ allowsRecording: false, playsInSilentMode: true, interruptionMode: 'doNotMix' }).catch(() => {});
     } catch {}
 
     // Always transition to listening — record button must always appear
@@ -632,10 +632,10 @@ export default function LearnSessionScreen() {
       recordingRef.current = false;
       if (isRepeat && ASR_AVAILABLE) {
         ExpoSpeechRecognitionModule.abort();
-        await setAudioModeAsync({ allowsRecording: false, playsInSilentMode: true, shouldRouteThroughEarpiece: false });
+        await setAudioModeAsync({ allowsRecording: false, playsInSilentMode: true, interruptionMode: 'doNotMix' });
       } else {
         try { await recorder.stop(); } catch {}
-        await setAudioModeAsync({ allowsRecording: false, playsInSilentMode: true, shouldRouteThroughEarpiece: false });
+        await setAudioModeAsync({ allowsRecording: false, playsInSilentMode: true, interruptionMode: 'doNotMix' });
       }
       setPronStatus('listening');
       return;
@@ -652,7 +652,7 @@ export default function LearnSessionScreen() {
         // Give ~300ms for final result event to fire
         await new Promise(r => setTimeout(r, 300));
         // Restore speaker routing — ASR leaves iOS audio session in earpiece mode
-        await setAudioModeAsync({ allowsRecording: false, playsInSilentMode: true, shouldRouteThroughEarpiece: false });
+        await setAudioModeAsync({ allowsRecording: false, playsInSilentMode: true, interruptionMode: 'doNotMix' });
 
         const transcript = speechTranscriptRef.current;
         const pct = transcript ? wordMatchPercent(transcript, currentStep.phrase.text ?? '') : 0;
@@ -678,7 +678,7 @@ export default function LearnSessionScreen() {
       } else if (isRepeat && !ASR_AVAILABLE) {
         // ── REPEAT fallback: Whisper transcription (no native ASR) ──
         await recorder.stop();
-        await setAudioModeAsync({ allowsRecording: false, playsInSilentMode: true, shouldRouteThroughEarpiece: false });
+        await setAudioModeAsync({ allowsRecording: false, playsInSilentMode: true, interruptionMode: 'doNotMix' });
         const audioUri = recorder.uri;
         if (!audioUri) { setPronStatus('error'); return; }
 
@@ -715,7 +715,7 @@ export default function LearnSessionScreen() {
       } else {
         // ── SHADOWING: Azure, only pronunciationScore ─────────────
         await recorder.stop();
-        await setAudioModeAsync({ allowsRecording: false, playsInSilentMode: true, shouldRouteThroughEarpiece: false });
+        await setAudioModeAsync({ allowsRecording: false, playsInSilentMode: true, interruptionMode: 'doNotMix' });
         const audioUri = recorder.uri;
         if (!audioUri) { setPronStatus('error'); return; }
 
