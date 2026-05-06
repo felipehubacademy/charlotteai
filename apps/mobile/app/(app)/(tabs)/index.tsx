@@ -422,7 +422,7 @@ export default function HomeTab() {
         onPress={() => router.push({ pathname: '/(app)/add-word', params: { source: 'manual' } })}
         style={{
           position: 'absolute',
-          bottom: insets.bottom + 90,
+          bottom: Platform.OS === 'ios' ? 96 : 76,
           right: 20,
           width: 52, height: 52, borderRadius: 26,
           backgroundColor: C.navy,

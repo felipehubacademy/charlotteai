@@ -460,7 +460,7 @@ export default function VocabularyTab() {
         </View>
       ) : (
         <ScrollView
-          contentContainerStyle={{ paddingHorizontal: 16, paddingBottom: insets.bottom + 90, gap: 8 }}
+          contentContainerStyle={{ paddingHorizontal: 16, paddingBottom: Platform.OS === 'ios' ? 112 : 92, gap: 8 }}
           showsVerticalScrollIndicator={false}
         >
           {filtered.map((item) => {
@@ -554,7 +554,7 @@ export default function VocabularyTab() {
         onPress={openAdd}
         style={{
           position: 'absolute',
-          bottom: insets.bottom + 90,
+          bottom: Platform.OS === 'ios' ? 96 : 76,
           right: 20,
           width: 52, height: 52, borderRadius: 26,
           backgroundColor: levelAccent,
