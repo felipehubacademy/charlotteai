@@ -335,76 +335,71 @@ export default function HomeTab() {
         </View>
       </SafeAreaView>
 
-      {/* Scrollable content */}
-      <ScrollView
-        style={{ flex: 1 }}
-        contentContainerStyle={{ paddingBottom: 40 }}
-        showsVerticalScrollIndicator={false}
-        refreshControl={<RefreshControl refreshing={refreshing} onRefresh={onRefresh} tintColor={C.navy} />}
-      >
+      {/* Charlotte hero card — fixed */}
+      <View style={{ marginHorizontal: 20, marginTop: 8 }}>
+        <View style={{ borderRadius: 22, backgroundColor: T.card, overflow: 'hidden', ...cardShadow }}>
+          {/* Navy strip with bust + chat bubble */}
+          <View style={{ backgroundColor: C.navy, paddingRight: 20, flexDirection: 'row', alignItems: 'center', minHeight: 140 }}>
+            <Image
+              source={require('@/assets/charlotte-bust.png')}
+              style={{ width: 118, height: 165, marginBottom: -15, flexShrink: 0, alignSelf: 'flex-end' }}
+              resizeMode="contain"
+            />
+            <View style={{ flex: 1, paddingLeft: 10, paddingVertical: 16, justifyContent: 'center' }}>
+              <View style={{ backgroundColor: '#3B3A5A', borderRadius: 18, borderTopLeftRadius: 0, paddingHorizontal: 14, paddingVertical: greetingLoading ? 10 : 12, alignSelf: 'flex-start' }}>
+                {greetingLoading || !aiGreeting ? (
+                  <TypingDots />
+                ) : (
+                  <AppText style={{ fontSize: 14, color: '#FFFFFF', lineHeight: 21, fontWeight: '500' }}>
+                    {aiGreeting}
+                  </AppText>
+                )}
+              </View>
+            </View>
+          </View>
 
-        {/* Charlotte hero card */}
-        <View style={{ marginHorizontal: 20, marginTop: 8 }}>
-          <View style={{ borderRadius: 22, backgroundColor: T.card, overflow: 'hidden', ...cardShadow }}>
-            {/* Navy strip with bust + chat bubble */}
-            <View style={{ backgroundColor: C.navy, paddingRight: 20, flexDirection: 'row', alignItems: 'center', minHeight: 140 }}>
-              <Image
-                source={require('@/assets/charlotte-bust.png')}
-                style={{ width: 118, height: 165, marginBottom: -15, flexShrink: 0, alignSelf: 'flex-end' }}
-                resizeMode="contain"
-              />
-              <View style={{ flex: 1, paddingLeft: 10, paddingVertical: 16, justifyContent: 'center' }}>
-                <View style={{ backgroundColor: '#3B3A5A', borderRadius: 18, borderTopLeftRadius: 0, paddingHorizontal: 14, paddingVertical: greetingLoading ? 10 : 12, alignSelf: 'flex-start' }}>
-                  {greetingLoading || !aiGreeting ? (
-                    <TypingDots />
-                  ) : (
-                    <AppText style={{ fontSize: 14, color: '#FFFFFF', lineHeight: 21, fontWeight: '500' }}>
-                      {aiGreeting}
-                    </AppText>
-                  )}
+          {/* Divider */}
+          <View style={{ height: 1, backgroundColor: C.navyGhost }} />
+
+          {/* XP progress — tappable → stats screen */}
+          <TouchableOpacity
+            onPress={() => router.push({ pathname: '/(app)/stats', params: statsParams })}
+            activeOpacity={0.75}
+            style={{ padding: 20 }}
+          >
+            <View style={{ flexDirection: 'row', alignItems: 'center', gap: 14 }}>
+              <XPRing todayXP={todayXP} goal={getDailyGoal(todayXP)} />
+              <View style={{ flex: 1 }}>
+                <View style={{ flexDirection: 'row', justifyContent: 'space-between', marginBottom: 7 }}>
+                  <AppText style={{ fontSize: 11, color: C.navyMid, fontWeight: '700', textTransform: 'uppercase', letterSpacing: 0.7 }}>
+                    {isPt ? 'XP de hoje' : "Today's XP"}
+                  </AppText>
+                  <AppText style={{ fontSize: 11, fontWeight: '800', color: C.greenDark }}>
+                    {todayXP} / {getDailyGoal(todayXP)}
+                  </AppText>
+                </View>
+                <View style={{ height: 8, backgroundColor: C.navyGhost, borderRadius: 4, overflow: 'hidden' }}>
+                  <View style={{
+                    height: '100%',
+                    width: `${(todayXP / getDailyGoal(todayXP)) * 100}%` as any,
+                    backgroundColor: C.greenDark,
+                    borderRadius: 4,
+                  }} />
                 </View>
               </View>
             </View>
-
-            {/* Divider */}
-            <View style={{ height: 1, backgroundColor: C.navyGhost }} />
-
-            {/* XP progress — tappable → stats screen */}
-            <TouchableOpacity
-              onPress={() => router.push({ pathname: '/(app)/stats', params: statsParams })}
-              activeOpacity={0.75}
-              style={{ padding: 20 }}
-            >
-              <View style={{ flexDirection: 'row', alignItems: 'center', gap: 14 }}>
-                <XPRing todayXP={todayXP} goal={getDailyGoal(todayXP)} />
-                <View style={{ flex: 1 }}>
-                  <View style={{ flexDirection: 'row', justifyContent: 'space-between', marginBottom: 7 }}>
-                    <AppText style={{ fontSize: 11, color: C.navyMid, fontWeight: '700', textTransform: 'uppercase', letterSpacing: 0.7 }}>
-                      {isPt ? 'XP de hoje' : "Today's XP"}
-                    </AppText>
-                    <AppText style={{ fontSize: 11, fontWeight: '800', color: C.greenDark }}>
-                      {todayXP} / {getDailyGoal(todayXP)}
-                    </AppText>
-                  </View>
-                  <View style={{ height: 8, backgroundColor: C.navyGhost, borderRadius: 4, overflow: 'hidden' }}>
-                    <View style={{
-                      height: '100%',
-                      width: `${(todayXP / getDailyGoal(todayXP)) * 100}%` as any,
-                      backgroundColor: C.greenDark,
-                      borderRadius: 4,
-                    }} />
-                  </View>
-                </View>
-              </View>
-            </TouchableOpacity>
-          </View>
+          </TouchableOpacity>
         </View>
+      </View>
 
-        {/* Learning trail — inline, full scroll */}
-        <View style={{ marginTop: 24 }}>
-          <TrailContent userId={userId} level={level} />
-        </View>
-
+      {/* Learning trail — scrollable below fixed hero */}
+      <ScrollView
+        style={{ flex: 1 }}
+        contentContainerStyle={{ paddingTop: 24, paddingBottom: 40 }}
+        showsVerticalScrollIndicator={false}
+        refreshControl={<RefreshControl refreshing={refreshing} onRefresh={onRefresh} tintColor={C.navy} />}
+      >
+        <TrailContent userId={userId} level={level} />
       </ScrollView>
 
 
