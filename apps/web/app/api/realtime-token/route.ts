@@ -10,11 +10,13 @@ import { createClient } from '@supabase/supabase-js';
 const MODEL = 'gpt-4o-realtime-preview-2024-12-17';
 const POOL_SECONDS = 30 * 60; // 1 800 s
 
-function thisMonthFirstDay(): string {
-  const d    = new Date();
-  const yyyy = d.getFullYear();
-  const mm   = String(d.getMonth() + 1).padStart(2, '0');
-  return `${yyyy}-${mm}-01`;
+function thisMonthFirstDayInTz(tz: string): string {
+  const parts = new Intl.DateTimeFormat('en-US', {
+    timeZone: tz, year: 'numeric', month: '2-digit',
+  }).formatToParts(new Date());
+  const y = parts.find(p => p.type === 'year')?.value ?? '';
+  const m = parts.find(p => p.type === 'month')?.value ?? '';
+  return `${y}-${m}-01`;
 }
 
 export async function POST(request: NextRequest) {
@@ -45,24 +47,29 @@ export async function POST(request: NextRequest) {
 
         const { data, error: dbErr } = await supabase
           .from('charlotte_users')
-          .select('live_voice_seconds_used, live_voice_reset_date')
+          .select('live_voice_seconds_used, live_voice_reset_date, is_institutional, timezone')
           .eq('id', user.id)
           .single();
 
         if (!dbErr && data) {
-          const thisMonth    = thisMonthFirstDay();
-          const needsReset   = !data.live_voice_reset_date || data.live_voice_reset_date < thisMonth;
-          const secondsUsed  = needsReset ? 0 : (data.live_voice_seconds_used ?? 0);
-          const remaining    = Math.max(0, POOL_SECONDS - secondsUsed);
+          if (data.is_institutional) {
+            console.log(`✅ Institutional user ${user.id}: Live Voice unlimited`);
+          } else {
+            const tz           = (data as any).timezone || 'UTC';
+            const thisMonth    = thisMonthFirstDayInTz(tz);
+            const needsReset   = !data.live_voice_reset_date || data.live_voice_reset_date < thisMonth;
+            const secondsUsed  = needsReset ? 0 : (data.live_voice_seconds_used ?? 0);
+            const remaining    = Math.max(0, POOL_SECONDS - secondsUsed);
 
-          if (remaining <= 0) {
-            console.warn('⛔ Live Voice pool exhausted for user:', user.id);
-            return NextResponse.json(
-              { error: 'monthly_pool_exhausted', message: 'Monthly Live Voice allowance used up.' },
-              { status: 403 }
-            );
+            if (remaining <= 0) {
+              console.warn('⛔ Live Voice pool exhausted for user:', user.id);
+              return NextResponse.json(
+                { error: 'monthly_pool_exhausted', message: 'Monthly Live Voice allowance used up.' },
+                { status: 403 }
+              );
+            }
+            console.log(`✅ Pool check: ${remaining}s remaining for user ${user.id}`);
           }
-          console.log(`✅ Pool check: ${remaining}s remaining for user ${user.id}`);
         }
       } catch (poolErr) {
         // Falha na verificação do pool → deixa passar (client-side é o backstop)

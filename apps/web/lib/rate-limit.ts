@@ -11,6 +11,42 @@ function getServiceClient() {
   return createClient(supabaseUrl, supabaseKey);
 }
 
+// ── Timezone helpers (server-side, no external deps) ─────────────────────────
+
+/** Today's date as YYYY-MM-DD in the given IANA timezone. */
+function localDateInTz(tz: string): string {
+  return new Intl.DateTimeFormat('en-CA', { timeZone: tz }).format(new Date());
+}
+
+/**
+ * UTC offset in ms for a timezone at a given moment.
+ * Positive = west of UTC (e.g. America/Sao_Paulo = +10_800_000).
+ * Negative = east of UTC (e.g. Asia/Tokyo = -32_400_000).
+ */
+function tzOffsetMs(tz: string, date: Date): number {
+  const dtf = new Intl.DateTimeFormat('en-US', {
+    timeZone: tz,
+    year: 'numeric', month: '2-digit', day: '2-digit',
+    hour: '2-digit', minute: '2-digit', second: '2-digit',
+    hour12: false,
+  });
+  const parts = dtf.formatToParts(date);
+  const get = (t: string) => parseInt(parts.find(p => p.type === t)?.value ?? '0', 10);
+  let hour = get('hour');
+  if (hour === 24) hour = 0;
+  const localAsUTC = new Date(Date.UTC(get('year'), get('month') - 1, get('day'), hour, get('minute'), get('second')));
+  return date.getTime() - localAsUTC.getTime();
+}
+
+/** UTC Date for midnight (00:00:00) of the next local day in the given timezone. */
+function nextMidnightInTz(todayLocalStr: string, tz: string): Date {
+  const [y, m, d] = todayLocalStr.split('-').map(Number);
+  // Use noon tomorrow for offset lookup to avoid DST-at-midnight edge cases
+  const noonTomorrow = new Date(Date.UTC(y, m - 1, d + 1, 12, 0, 0));
+  const offsetMs = tzOffsetMs(tz, noonTomorrow);
+  return new Date(Date.UTC(y, m - 1, d + 1) + offsetMs);
+}
+
 // ── Limits ───────────────────────────────────────────────────────────────────
 const LIMITS = {
   trial:  { hour: 15, day: 40  },
@@ -73,7 +109,7 @@ export async function checkRateLimit(
     const [{ data: userData }, { data: row }] = await Promise.all([
       supabase
         .from('charlotte_users')
-        .select('subscription_status, is_institutional')
+        .select('subscription_status, is_institutional, timezone')
         .eq('id', userId)
         .maybeSingle(),
       supabase
@@ -89,7 +125,8 @@ export async function checkRateLimit(
     const limits    = isTrial ? LIMITS.trial : LIMITS.paid;
     const now       = new Date();
     const nowIso    = now.toISOString();
-    const todayDate = now.toISOString().split('T')[0];
+    const tz        = (userData as any)?.timezone || 'UTC';
+    const todayDate = localDateInTz(tz);
 
     // Resolve current counts (reset stale windows)
     let hourCount = 0;
@@ -120,8 +157,7 @@ export async function checkRateLimit(
 
     // Check daily limit
     if (dayCount >= limits.day) {
-      const midnight     = new Date(todayDate);
-      midnight.setDate(midnight.getDate() + 1); // next midnight UTC
+      const midnight      = nextMidnightInTz(todayDate, tz);
       const retryAfterSec = Math.max(1, Math.ceil((midnight.getTime() - now.getTime()) / 1000));
       return {
         error:       'rate_limited',

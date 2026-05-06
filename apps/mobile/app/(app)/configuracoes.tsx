@@ -464,20 +464,24 @@ export default function ConfiguracoesScreen() {
                     {isPt ? 'Live Voice este mês' : 'Live Voice this month'}
                   </AppText>
                   <AppText style={{ fontSize: 12, color: C.navyLight, marginTop: 2 }}>
-                    {`${Math.min(Math.ceil(voiceUsage.secondsUsed / 60), Math.floor(voiceUsage.poolTotal / 60))} / ${Math.floor(voiceUsage.poolTotal / 60)} min ${isPt ? 'utilizados' : 'used'}`}
+                    {voiceUsage.isUnlimited
+                      ? (isPt ? 'Ilimitado' : 'Unlimited')
+                      : `${Math.min(Math.ceil(voiceUsage.secondsUsed / 60), Math.floor(voiceUsage.poolTotal / 60))} / ${Math.floor(voiceUsage.poolTotal / 60)} min ${isPt ? 'utilizados' : 'used'}`}
                   </AppText>
                 </View>
               </View>
-              {/* Progress bar */}
-              <View style={{ height: 5, backgroundColor: 'rgba(22,21,58,0.07)', borderRadius: 3, overflow: 'hidden' }}>
-                <View style={{
-                  height: 5, borderRadius: 3,
-                  backgroundColor: voiceUsage.secondsRemaining < 60 ? C.error
-                    : voiceUsage.secondsRemaining < 120 ? '#F97316'
-                    : C.greenDark,
-                  width: `${Math.min(100, (voiceUsage.secondsUsed / voiceUsage.poolTotal) * 100)}%` as `${number}%`,
-                }} />
-              </View>
+              {/* Progress bar — oculta para usuários ilimitados */}
+              {!voiceUsage.isUnlimited && (
+                <View style={{ height: 5, backgroundColor: 'rgba(22,21,58,0.07)', borderRadius: 3, overflow: 'hidden' }}>
+                  <View style={{
+                    height: 5, borderRadius: 3,
+                    backgroundColor: voiceUsage.secondsRemaining < 60 ? C.error
+                      : voiceUsage.secondsRemaining < 120 ? '#F97316'
+                      : C.greenDark,
+                    width: `${Math.min(100, (voiceUsage.secondsUsed / voiceUsage.poolTotal) * 100)}%` as `${number}%`,
+                  }} />
+                </View>
+              )}
               <AppText style={{ fontSize: 11, color: C.navyLight, marginTop: 6 }}>
                 {isPt
                   ? `Renova em 1/${String(new Date(new Date().getFullYear(), new Date().getMonth() + 1, 1).getMonth() + 1).padStart(2,'0')}`

@@ -15,7 +15,7 @@ import { AppText } from '@/components/ui/Text';
 import { useAuth } from '@/hooks/useAuth';
 import { supabase } from '@/lib/supabase';
 import { LEVEL_CONFIG, UserLevel, ChatMode } from '@/lib/levelConfig';
-import { getLiveVoiceStatus, getPoolForLevel } from '@/lib/liveVoiceUsage';
+import { getLiveVoiceStatus, getPoolForLevel, UNLIMITED_POOL_SECONDS } from '@/lib/liveVoiceUsage';
 import { soundEngine } from '@/lib/soundEngine';
 import LiveVoiceModal from '@/components/voice/LiveVoiceModal';
 
@@ -95,12 +95,13 @@ export default function PracticeTab() {
 
   const liveUsageLine = useMemo(() => {
     if (!hasLive || liveVoiceRemaining === null) return null;
+    if (liveVoiceRemaining >= UNLIMITED_POOL_SECONDS) return isPt ? 'Ilimitado' : 'Unlimited';
     const totalSec = getPoolForLevel(level);
     const totalMin = Math.floor(totalSec / 60);
     const usedSec  = Math.max(0, totalSec - liveVoiceRemaining);
     const usedMin  = Math.ceil(usedSec / 60);
     return `${usedMin}/${totalMin} min`;
-  }, [hasLive, liveVoiceRemaining, level]);
+  }, [hasLive, liveVoiceRemaining, level, isPt]);
 
   const modeCards: ModeCard[] = useMemo(() => [
     {

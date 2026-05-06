@@ -19,6 +19,9 @@ export const POOL_BY_LEVEL: Record<string, number> = {
 /** Fallback — se nível desconhecido, usa o menor. */
 export const LIVE_VOICE_POOL_SECONDS = 30 * 60; // legado: usado pelo LiveVoiceModal
 
+/** Sentinel para usuários institucionais — Live Voice ilimitado. */
+export const UNLIMITED_POOL_SECONDS = 999_999;
+
 export function getPoolForLevel(level: string): number {
   return POOL_BY_LEVEL[level] ?? POOL_BY_LEVEL.Novice;
 }
@@ -32,8 +35,9 @@ export function getPoolForLevel(level: string): number {
 export interface LiveVoiceStatus {
   secondsUsed:      number;
   secondsRemaining: number;
-  poolTotal:        number;  // pool total para o nível
-  resetDate:        string;  // 'YYYY-MM-01'
+  poolTotal:        number;    // pool total para o nível
+  resetDate:        string;    // 'YYYY-MM-01'
+  isUnlimited?:     boolean;   // true para usuários institucionais
 }
 
 // ── Funções públicas ─────────────────────────────────────────────────────────
@@ -53,11 +57,21 @@ export async function getLiveVoiceStatus(level?: string): Promise<LiveVoiceStatu
 
   const { data, error } = await supabase
     .from('charlotte_users')
-    .select('live_voice_seconds_used, live_voice_reset_date, charlotte_level')
+    .select('live_voice_seconds_used, live_voice_reset_date, charlotte_level, is_institutional')
     .eq('id', user.id)
     .single();
 
   if (error) throw error;
+
+  if (data.is_institutional) {
+    return {
+      secondsUsed:      0,
+      secondsRemaining: UNLIMITED_POOL_SECONDS,
+      poolTotal:        UNLIMITED_POOL_SECONDS,
+      resetDate:        localMonthStartStr(),
+      isUnlimited:      true,
+    };
+  }
 
   const userLevel = level ?? data.charlotte_level ?? 'Novice';
   const poolTotal = getPoolForLevel(userLevel);
