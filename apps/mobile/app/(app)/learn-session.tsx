@@ -628,6 +628,7 @@ export default function LearnSessionScreen() {
       recordingRef.current = false;
       if (isRepeat && ASR_AVAILABLE) {
         ExpoSpeechRecognitionModule.abort();
+        await setAudioModeAsync({ allowsRecording: false, playsInSilentMode: true, shouldRouteThroughEarpiece: false });
       } else {
         try { await recorder.stop(); } catch {}
         await setAudioModeAsync({ allowsRecording: false, playsInSilentMode: true, shouldRouteThroughEarpiece: false });
@@ -646,6 +647,8 @@ export default function LearnSessionScreen() {
         ExpoSpeechRecognitionModule.stop();
         // Give ~300ms for final result event to fire
         await new Promise(r => setTimeout(r, 300));
+        // Restore speaker routing — ASR leaves iOS audio session in earpiece mode
+        await setAudioModeAsync({ allowsRecording: false, playsInSilentMode: true, shouldRouteThroughEarpiece: false });
 
         const transcript = speechTranscriptRef.current;
         const pct = transcript ? wordMatchPercent(transcript, currentStep.phrase.text ?? '') : 0;
