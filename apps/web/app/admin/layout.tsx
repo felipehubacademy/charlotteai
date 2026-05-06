@@ -7,6 +7,8 @@ import { Users, BarChart2, ChevronLeft, ChevronRight, Shield, Bell, LogOut } fro
 
 // ── Design tokens ───────────────────────────────────────────────────────────
 const ADMIN_CSS = `
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap');
+
 .admin-root {
   --bg:  #F6F6FA;
   --s1:  #FFFFFF;
@@ -42,8 +44,8 @@ const ADMIN_CSS = `
   --sh2: 0 4px 20px rgba(0,0,0,0.10), 0 1px 4px rgba(0,0,0,0.06);
   --sh3: 0 24px 64px rgba(0,0,0,0.14);
 
-  --font-sans: -apple-system, 'Segoe UI', 'Helvetica Neue', Arial, sans-serif;
-  --font-mono: 'SF Mono', 'JetBrains Mono', 'Fira Code', Consolas, monospace;
+  --font-sans: 'Inter', -apple-system, 'Segoe UI', 'Helvetica Neue', Arial, sans-serif;
+  --font-mono: 'Inter', -apple-system, 'Segoe UI', sans-serif;
 
   font-family: var(--font-sans);
   color: var(--t1);
