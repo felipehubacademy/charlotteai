@@ -341,18 +341,18 @@ export default function VocabularyTab() {
         borderWidth: 1, borderColor: `${tipStyle.color}25`,
         ...cardShadow,
       }}>
-        <View style={{ flexDirection: 'row', alignItems: 'center', justifyContent: 'space-between', marginBottom: 8 }}>
+        <View style={{ flexDirection: 'row', alignItems: 'center', justifyContent: 'space-between', marginBottom: 10 }}>
           <View style={{ flexDirection: 'row', alignItems: 'center', gap: 6 }}>
             <View style={{
               backgroundColor: `${tipStyle.color}18`, borderRadius: 8,
               paddingHorizontal: 8, paddingVertical: 3,
             }}>
-              <AppText style={{ fontSize: 10, fontWeight: '800', color: tipStyle.color, textTransform: 'capitalize', letterSpacing: 0.5 }}>
+              <AppText style={{ fontSize: 11, fontWeight: '800', color: tipStyle.color, textTransform: 'capitalize' }}>
                 {tip.type}
               </AppText>
             </View>
-            <AppText style={{ fontSize: 10, fontWeight: '700', color: tipStyle.color, letterSpacing: 0.6, textTransform: 'uppercase' }}>
-              {isPt ? 'Dica do dia' : 'Tip of the day'}
+            <AppText style={{ fontSize: 11, fontWeight: '500', color: tipStyle.color, opacity: 0.75 }}>
+              · {isPt ? 'dica do dia' : 'tip of the day'}
             </AppText>
           </View>
           <TouchableOpacity
@@ -581,7 +581,7 @@ export default function VocabularyTab() {
         onPress={openAdd}
         style={{
           position: 'absolute',
-          bottom: Platform.OS === 'ios' ? 96 : 76,
+          bottom: 16,
           right: 20,
           width: 52, height: 52, borderRadius: 26,
           backgroundColor: levelAccent,
