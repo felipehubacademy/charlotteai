@@ -43,7 +43,7 @@ import { AppText } from '@/components/ui/Text';
 import { useAuth } from '@/hooks/useAuth';
 import { supabase } from '@/lib/supabase';
 import { LEVEL_CONFIG, UserLevel, ChatMode } from '@/lib/levelConfig';
-import { getLiveVoiceStatus, getPoolForLevel, UNLIMITED_POOL_SECONDS } from '@/lib/liveVoiceUsage';
+import { getLiveVoiceStatus, getPoolForLevel } from '@/lib/liveVoiceUsage';
 import { soundEngine } from '@/lib/soundEngine';
 import { identifyUser, track } from '@/lib/analytics';
 import { useTheme } from '@/lib/theme';
@@ -1125,15 +1125,7 @@ export default function HomeScreen() {
     {
       mode: 'live' as const,
       title: 'Live Voice',
-      sub: (() => {
-        if (!hasLive || liveVoiceRemaining === null) return '';
-        if (liveVoiceRemaining >= UNLIMITED_POOL_SECONDS) return isPt ? 'Ilimitado' : 'Unlimited';
-        const totalSec = getPoolForLevel(level);
-        const totalMin = Math.floor(totalSec / 60);
-        const usedSec  = Math.max(0, totalSec - liveVoiceRemaining);
-        const usedMin  = Math.ceil(usedSec / 60);
-        return `${usedMin}/${totalMin} min`;
-      })(),
+      sub: '',
       accentColor: C.orange,
       accentBg: 'rgba(255,107,53,0.10)',
       icon: <Phone size={26} color={hasLive ? C.orange : C.navyLight} weight="fill" />,

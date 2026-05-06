@@ -15,7 +15,7 @@ import { AppText } from '@/components/ui/Text';
 import { useAuth } from '@/hooks/useAuth';
 import { supabase } from '@/lib/supabase';
 import { LEVEL_CONFIG, UserLevel, ChatMode } from '@/lib/levelConfig';
-import { getLiveVoiceStatus, getPoolForLevel, UNLIMITED_POOL_SECONDS } from '@/lib/liveVoiceUsage';
+import { getLiveVoiceStatus, getPoolForLevel } from '@/lib/liveVoiceUsage';
 import { soundEngine } from '@/lib/soundEngine';
 import LiveVoiceModal from '@/components/voice/LiveVoiceModal';
 
@@ -93,17 +93,7 @@ export default function PracticeTab() {
   const hasChat    = level !== 'Novice' ? config.tabs.includes('chat')          : totalXP >= CHAT_UNLOCK_XP;
   const hasLive    = level === 'Advanced' || level === 'Inter';
 
-  const liveUsageLine = useMemo(() => {
-    if (!hasLive || liveVoiceRemaining === null) return null;
-    if (liveVoiceRemaining >= UNLIMITED_POOL_SECONDS) return isPt ? 'Ilimitado' : 'Unlimited';
-    const totalSec = getPoolForLevel(level);
-    const totalMin = Math.floor(totalSec / 60);
-    const usedSec  = Math.max(0, totalSec - liveVoiceRemaining);
-    const usedMin  = Math.ceil(usedSec / 60);
-    return `${usedMin}/${totalMin} min`;
-  }, [hasLive, liveVoiceRemaining, level, isPt]);
-
-  const modeCards: ModeCard[] = useMemo(() => [
+const modeCards: ModeCard[] = useMemo(() => [
     {
       mode: 'grammar' as const,
       title: isPt ? 'Gramática' : 'Grammar',
@@ -252,9 +242,7 @@ export default function PracticeTab() {
                   {/* Sub info */}
                   {!card.locked && (
                     <AppText style={{ fontSize: 12, color: C.navyLight, fontWeight: '500' }}>
-                      {card.mode === 'live' && liveUsageLine
-                        ? liveUsageLine
-                        : card.description}
+                      {card.description}
                     </AppText>
                   )}
                   {card.locked && card.lockXP !== undefined && card.currentXP !== undefined && (
