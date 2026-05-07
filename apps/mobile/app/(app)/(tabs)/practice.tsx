@@ -210,8 +210,8 @@ export default function PracticeTab() {
   const liveUsageLine = useMemo((): string | null => {
     if (!hasLive || liveVoiceRemaining === null) return null;
     if (liveVoiceRemaining === 0) return isPt ? 'Limite atingido' : 'Monthly limit reached';
-    // Institucional: secondsRemaining chega como UNLIMITED_POOL_SECONDS (999_999)
-    if (liveVoiceRemaining >= UNLIMITED_POOL_SECONDS) return isPt ? 'Ilimitado' : 'Unlimited';
+    // Institucional: sem limite — não exibe contador
+    if (liveVoiceRemaining >= UNLIMITED_POOL_SECONDS) return null;
     const totalPool = getPoolForLevel(level);
     const usedMin  = Math.round((totalPool - liveVoiceRemaining) / 60);
     const totalMin = Math.round(totalPool / 60);
