@@ -90,8 +90,8 @@ interface RecentPractice {
 const FIRST_TIME_REASONS: Record<string, { en: string; pt: string }> = {
   grammar:       { en: 'Start with Grammar — the foundation of great English.', pt: 'Comece pela Gramática — a base de um inglês sólido.' },
   pronunciation: { en: 'Try Pronunciation — hear yourself improve in real time.', pt: 'Experimente a Pronúncia — ouça sua evolução em tempo real.' },
-  chat:          { en: 'Jump into Free Chat — English the way it\'s actually spoken.', pt: 'Entre no Free Chat — inglês do jeito que é falado de verdade.' },
-  live:          { en: 'Try Live Voice — a real-time AI conversation, just like a call.', pt: 'Experimente o Live Voice — uma conversa em tempo real com IA.' },
+  chat:          { en: 'Jump into Free Chat — have a real conversation with Charlotte.', pt: 'Entre no Free Chat — uma conversa de verdade com a Charlotte.' },
+  live:          { en: 'Try Live Voice — talk with Charlotte in real time, just like a call.', pt: 'Experimente o Live Voice — fale com a Charlotte em tempo real.' },
 };
 
 function buildSuggestion(
@@ -236,7 +236,7 @@ export default function PracticeTab() {
     },
     {
       mode: 'chat', title: 'Free Chat',
-      description: isPt ? 'Conversa livre com IA' : 'Open conversation with AI',
+      description: isPt ? 'Conversa livre com Charlotte' : 'Free conversation with Charlotte',
       route: '/(app)/chat', accentColor: accent,
       locked: !hasChat,
       lockLevel:  level === 'Novice' ? undefined : 'Intermediate',
@@ -245,7 +245,7 @@ export default function PracticeTab() {
     },
     {
       mode: 'live', title: 'Live Voice',
-      description: liveUsageLine ?? (isPt ? 'Chamada em tempo real' : 'Real-time voice call'),
+      description: liveUsageLine ?? (isPt ? 'Chamada em tempo real com Charlotte' : 'Real-time call with Charlotte'),
       accentColor: C.orange,
       locked: !hasLive, lockLevel: 'Intermediate',
     },
