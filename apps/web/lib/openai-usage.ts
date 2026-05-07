@@ -67,12 +67,13 @@ export const PRICING = {
     textOutput: 5.00,
   },
 
-  // OpenAI TTS — $0.015/1k chars (tts-1) e $0.030/1k chars (tts-1-hd)
-  'tts-1': {
-    perChar: 0.000015,         // USD / character
-  },
-  'tts-1-hd': {
-    perChar: 0.000030,         // USD / character
+  // OpenAI TTS — gpt-4o-mini-tts: $0.60/1M input tokens + $12/1M audio output tokens
+  // Estimativa conservadora: ~50 input tokens + ~500 audio tokens por resposta de 200 chars
+  // => custo medio ~$0.006 por chamada (6-12x mais barato que ElevenLabs)
+  // Modelo legado (deprecated): tts-1 e tts-1-hd — nao usar em producao
+  'gpt-4o-mini-tts': {
+    input:  0.60,    // USD / 1M input tokens (texto)
+    output: 12.00,   // USD / 1M output tokens (audio)
   },
 
   // ElevenLabs TTS — Creator plan ~$0.30 / 1 000 chars

@@ -53,7 +53,7 @@ async function ttsOpenAI(text: string): Promise<Buffer> {
       'Content-Type': 'application/json',
     },
     body: JSON.stringify({
-      model: 'tts-1-hd',
+      model: 'gpt-4o-mini-tts',
       input: text,
       voice: 'nova',       // clara, natural, boa para ensino de ingles
       response_format: 'mp3',
@@ -85,7 +85,7 @@ export async function POST(request: NextRequest) {
       buffer = await ttsOpenAI(text);
       logOpenAIUsage({
         endpoint:     '/api/tts',
-        model:        'tts-1-hd',
+        model:        'gpt-4o-mini-tts',
         promptTokens: text.length,
         userId:       userId || undefined,
         meta,
