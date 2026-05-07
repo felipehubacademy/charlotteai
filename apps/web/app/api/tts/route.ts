@@ -26,19 +26,10 @@ async function getUserProfile(userId: string): Promise<{ betaFeatures: string[];
   };
 }
 
-const TTS_INSTRUCTIONS: Record<string, { instructions: string; speed: number }> = {
-  Novice: {
-    instructions: 'Warm, patient. Speak slowly and clearly.',
-    speed: 0.85,
-  },
-  Inter: {
-    instructions: 'Friendly and casual, like a genuine friend.',
-    speed: 1.0,
-  },
-  Advanced: {
-    instructions: 'Sharp, direct, naturally expressive.',
-    speed: 1.05,
-  },
+const TTS_INSTRUCTIONS: Record<string, string> = {
+  Novice:   'Warm, patient and encouraging. Speak slowly and clearly.',
+  Inter:    'Warm, friendly and natural. Like talking to a good friend.',
+  Advanced: 'Confident, expressive and engaging. Natural and energetic.',
 };
 
 // ── ElevenLabs ───────────────────────────────────────────────────────────────
@@ -62,7 +53,7 @@ async function ttsElevenLabs(text: string): Promise<Buffer> {
 }
 
 // ── OpenAI TTS ───────────────────────────────────────────────────────────────
-async function ttsOpenAI(text: string, config: { instructions: string; speed: number }): Promise<Buffer> {
+async function ttsOpenAI(text: string, instructions: string): Promise<Buffer> {
   if (!OPENAI_API_KEY) throw new Error('OPENAI_API_KEY not set');
   const res = await fetch('https://api.openai.com/v1/audio/speech', {
     method: 'POST',
@@ -75,8 +66,7 @@ async function ttsOpenAI(text: string, config: { instructions: string; speed: nu
       input: text,
       voice: 'coral',
       response_format: 'mp3',
-      speed: config.speed,
-      instructions: config.instructions,
+      instructions,
     }),
   });
   if (!res.ok) throw new Error(`OpenAI TTS error: ${await res.text()}`);
@@ -96,14 +86,14 @@ export async function POST(request: NextRequest) {
     // Seleciona provider e configuracao vocal com base no perfil do usuario
     const { betaFeatures, level } = userId ? await getUserProfile(userId) : { betaFeatures: [], level: 'Novice' };
     const useOpenAI = betaFeatures.includes('openai_tts');
-    const ttsConfig = TTS_INSTRUCTIONS[level] ?? TTS_INSTRUCTIONS.Inter;
+    const ttsInstructions = TTS_INSTRUCTIONS[level] ?? TTS_INSTRUCTIONS.Inter;
 
     const meta = { source: source ?? null, provider: useOpenAI ? 'openai' : 'elevenlabs' };
     console.log(`TTS: ${useOpenAI ? 'OpenAI nova (beta)' : 'ElevenLabs Rachel'} — ${text.length} chars`);
 
     let buffer: Buffer;
     if (useOpenAI) {
-      buffer = await ttsOpenAI(text, ttsConfig);
+      buffer = await ttsOpenAI(text, ttsInstructions);
       logOpenAIUsage({
         endpoint:     '/api/tts',
         model:        'gpt-4o-mini-tts',
