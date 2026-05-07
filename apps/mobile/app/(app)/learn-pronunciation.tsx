@@ -234,7 +234,8 @@ export default function LearnPronunciationScreen() {
       if (!res.ok) return null;
       const data = await res.json();
       if (!data.audio) return null;
-      const uri = `${FileSystem.cacheDirectory}learn_tts_${Date.now()}.mp3`;
+      const ext = data.mimeType === 'audio/wav' ? 'wav' : 'mp3';
+      const uri = `${FileSystem.cacheDirectory}learn_tts_${Date.now()}.${ext}`;
       await FileSystem.writeAsStringAsync(uri, data.audio, { encoding: 'base64' as any });
       return uri;
     } catch {

@@ -62,7 +62,7 @@ async function ttsOpenAI(text: string, instructions: string): Promise<Buffer> {
       model: 'gpt-4o-mini-tts',
       input: text,
       voice: 'coral',
-      response_format: 'mp3',
+      response_format: 'wav',
       instructions,
     }),
   });
@@ -103,7 +103,7 @@ export async function POST(request: NextRequest) {
       logElevenLabsUsage({ endpoint: '/api/tts', charCount: text.length, userId: userId || undefined, meta });
     }
 
-    return NextResponse.json({ audio: buffer.toString('base64'), mimeType: 'audio/mp3' });
+    return NextResponse.json({ audio: buffer.toString('base64'), mimeType: useOpenAI ? 'audio/wav' : 'audio/mp3' });
 
   } catch (error: any) {
     console.error('TTS error:', error);
