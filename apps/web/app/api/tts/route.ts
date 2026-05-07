@@ -55,7 +55,7 @@ async function ttsOpenAI(text: string): Promise<Buffer> {
     body: JSON.stringify({
       model: 'gpt-4o-mini-tts',
       input: text,
-      voice: 'coral',      // coral: mais calorosa e expressiva que nova
+      voice: 'shimmer',    // shimmer: beta test — comparar com coral
       response_format: 'mp3',
       instructions:
         'You are Charlotte, a warm and encouraging English tutor. ' +
