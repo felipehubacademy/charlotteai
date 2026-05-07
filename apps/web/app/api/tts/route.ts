@@ -62,7 +62,7 @@ async function ttsElevenLabs(text: string): Promise<Buffer> {
 }
 
 // ── OpenAI TTS ───────────────────────────────────────────────────────────────
-async function ttsOpenAI(text: string): Promise<Buffer> {
+async function ttsOpenAI(text: string, config: { instructions: string; speed: number }): Promise<Buffer> {
   if (!OPENAI_API_KEY) throw new Error('OPENAI_API_KEY not set');
   const res = await fetch('https://api.openai.com/v1/audio/speech', {
     method: 'POST',
@@ -75,8 +75,8 @@ async function ttsOpenAI(text: string): Promise<Buffer> {
       input: text,
       voice: 'coral',
       response_format: 'mp3',
-      speed: ttsConfig.speed,
-      instructions: ttsConfig.instructions,
+      speed: config.speed,
+      instructions: config.instructions,
     }),
   });
   if (!res.ok) throw new Error(`OpenAI TTS error: ${await res.text()}`);
@@ -103,7 +103,7 @@ export async function POST(request: NextRequest) {
 
     let buffer: Buffer;
     if (useOpenAI) {
-      buffer = await ttsOpenAI(text);
+      buffer = await ttsOpenAI(text, ttsConfig);
       logOpenAIUsage({
         endpoint:     '/api/tts',
         model:        'gpt-4o-mini-tts',
