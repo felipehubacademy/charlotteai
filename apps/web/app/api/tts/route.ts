@@ -63,7 +63,6 @@ async function ttsOpenAI(text: string, instructions: string): Promise<Buffer> {
       input: text,
       voice: 'coral',
       response_format: 'wav',
-      instructions,
     }),
   });
   if (!res.ok) throw new Error(`OpenAI TTS error: ${await res.text()}`);
