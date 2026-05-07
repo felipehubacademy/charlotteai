@@ -33,8 +33,8 @@ export default function TabLayout() {
           backgroundColor: '#FFFFFF',
           borderTopColor: 'rgba(22,21,58,0.08)',
           borderTopWidth: 1,
-          height: Platform.OS === 'ios' ? 80 : 60 + insets.bottom,
-          paddingTop: 8,
+          height: Platform.OS === 'ios' ? 80 : 56 + insets.bottom,
+          paddingTop: Platform.OS === 'ios' ? 8 : 4,
           paddingBottom: Platform.OS === 'android' ? insets.bottom : 0,
         },
       }}

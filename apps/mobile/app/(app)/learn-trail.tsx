@@ -325,12 +325,13 @@ export default function LearnTrailScreen() {
                   const current  = isCurrent(mIdx, tIdx);
                   // First topic of every module stays locked until the module mini-lesson is done
                   const miniLessonRequired = tIdx === 0 && !(introDone[mIdx] ?? false);
-                  const locked   = miniLessonRequired || isLocked(mIdx, tIdx);
+                  // Completed topics are never locked — user can always review
+                  const locked   = !complete && (miniLessonRequired || isLocked(mIdx, tIdx));
                   const hasContent = topicHasContent(level, mIdx, tIdx);
 
                   // If locked and no content, show coming soon
                   const comingSoon = locked && !hasContent;
-                  const canTap = !locked && (current || complete) && hasContent;
+                  const canTap = !locked && hasContent;
 
                   return (
                     <TouchableOpacity

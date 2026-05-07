@@ -43,7 +43,7 @@ const C = {
 
 const shadow = Platform.select({
   ios:     { shadowColor: 'rgba(22,21,58,0.10)', shadowOpacity: 1, shadowRadius: 10, shadowOffset: { width: 0, height: 2 } },
-  android: { elevation: 2 },
+  android: {},
 });
 
 const LEVEL_LABELS: Record<TrailLevel, string> = {
@@ -253,10 +253,11 @@ export function TrailContent({ userId, level }: TrailContentProps) {
                   const complete   = isTopicComplete(mIdx, tIdx);
                   const current    = isCurrent(mIdx, tIdx);
                   const miniLessonRequired = tIdx === 0 && !(introDone[mIdx] ?? false);
-                  const locked     = miniLessonRequired || isLocked(mIdx, tIdx);
+                  // Completed topics are never locked — user can always review
+                  const locked     = !complete && (miniLessonRequired || isLocked(mIdx, tIdx));
                   const hasContent = topicHasContent(level, mIdx, tIdx);
                   const comingSoon = locked && !hasContent;
-                  const canTap     = !locked && (current || complete) && hasContent;
+                  const canTap     = !locked && hasContent;
 
                   return (
                     <TouchableOpacity
