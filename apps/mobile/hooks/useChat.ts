@@ -65,7 +65,7 @@ async function fetchTTS(text: string, userId?: string): Promise<string | null> {
     const response = await fetch(`${API_BASE_URL}/api/tts`, {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify({ text, ...(userId ? { userId } : {}) }),
+      body: JSON.stringify({ text, source: 'chat', ...(userId ? { userId } : {}) }),
     });
     if (!response.ok) {
       const err = await response.text();

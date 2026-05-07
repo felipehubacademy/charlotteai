@@ -273,7 +273,7 @@ export default function KaraokeExerciseScreen() {
       await FileSystem.deleteAsync(localUri, { idempotent: true });
       const res = await fetch(`${API_BASE_URL}/api/tts`, {
         method: 'POST', headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({ text, ...(userId ? { userId } : {}) }),
+        body: JSON.stringify({ text, source: 'karaoke', ...(userId ? { userId } : {}) }),
       });
       if (!res.ok) return null;
       const d = await res.json();
