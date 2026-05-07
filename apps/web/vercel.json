@@ -1,10 +1,4 @@
 {
-  "crons": [
-    {
-      "path": "/api/cron/trial",
-      "schedule": "0 */6 * * *"
-    }
-  ],
   "functions": {
     "app/api/notifications/scheduler/route.ts": {
       "maxDuration": 120
