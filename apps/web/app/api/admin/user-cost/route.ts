@@ -1,3 +1,5 @@
+export const dynamic = 'force-dynamic';
+
 /**
  * GET /api/admin/user-cost?userId=X&from=ISO&to=ISO
  * Retorna breakdown de custo por endpoint/serviço para um usuário específico.

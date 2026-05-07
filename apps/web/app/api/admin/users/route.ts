@@ -1,3 +1,5 @@
+export const dynamic = 'force-dynamic';
+
 /**
  * app/api/admin/users/route.ts
  * Admin API — list, create, update and delete charlotte users.

@@ -1,3 +1,5 @@
+export const dynamic = 'force-dynamic';
+
 /**
  * app/api/admin/metrics/route.ts
  * Admin metrics dashboard — Camada 1 (receita/retencao) + Camada 2 (custo OpenAI).
