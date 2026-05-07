@@ -52,13 +52,16 @@ export async function GET(req: NextRequest) {
 
   // ── 1. Trial expirando nas próximas 48h ──────────────────────────────────
   // Compara timestamps absolutos UTC — correto para usuários em qualquer fuso.
+  // trial_warning_sent_at = null garante deduplicacao: cron pode rodar a cada hora
+  // sem reenviar email para quem ja recebeu o aviso.
   const { data: expiring } = await db
     .from('charlotte_users')
     .select('id, name, email, trial_ends_at')
     .eq('subscription_status', 'trial')
     .eq('is_institutional', false)
     .gt('trial_ends_at', nowISO)
-    .lte('trial_ends_at', in48hISO);
+    .lte('trial_ends_at', in48hISO)
+    .is('trial_warning_sent_at', null);
 
   for (const user of expiring ?? []) {
     const expiresAt = formatDatePT(user.trial_ends_at);
@@ -67,8 +70,16 @@ export async function GET(req: NextRequest) {
       expiresAt,
     });
     const ok = await sendEmail({ to: user.email, subject, html });
-    if (ok) results.expiring++;
-    else     results.errors++;
+    if (ok) {
+      results.expiring++;
+      // Marca como enviado para nao reenviar em proximas execucoes
+      await db
+        .from('charlotte_users')
+        .update({ trial_warning_sent_at: nowISO })
+        .eq('id', user.id);
+    } else {
+      results.errors++;
+    }
   }
 
   // ── 2. Trial vencido: atualiza DB e envia email ───────────────────────────
