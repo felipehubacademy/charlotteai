@@ -86,7 +86,7 @@ export async function POST(request: NextRequest) {
     const ttsInstructions = TTS_INSTRUCTIONS;
 
     const meta = { source: source ?? null, provider: useOpenAI ? 'openai' : 'elevenlabs' };
-    console.log(`TTS: ${useOpenAI ? 'OpenAI nova (beta)' : 'ElevenLabs Rachel'} — ${text.length} chars`);
+    console.log(`TTS: ${useOpenAI ? 'OpenAI coral/wav (beta)' : 'ElevenLabs Rachel/mp3'} — ${text.length} chars`);
 
     let buffer: Buffer;
     if (useOpenAI) {
