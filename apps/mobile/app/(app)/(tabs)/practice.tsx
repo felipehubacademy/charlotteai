@@ -1,9 +1,9 @@
 // app/(app)/(tabs)/practice.tsx
 // Practice tab — Charlotte's smart suggestion + full-width secondary mode cards.
 
-import React, { useState, useCallback, useMemo } from 'react';
+import React, { useState, useCallback, useMemo, useRef, useEffect } from 'react';
 import {
-  View, ScrollView, TouchableOpacity, Alert, Platform, ActivityIndicator, Image,
+  View, TouchableOpacity, Alert, Platform, ActivityIndicator, Animated, Easing,
 } from 'react-native';
 import { SafeAreaView } from 'react-native-safe-area-context';
 import { router, useFocusEffect } from 'expo-router';
@@ -172,6 +172,18 @@ export default function PracticeTab() {
   const isPt   = level === 'Novice';
   const accent = level === 'Novice' ? '#D97706' : level === 'Inter' ? '#7C3AED' : '#0F766E';
 
+  const floatAnim = useRef(new Animated.Value(0)).current;
+  useEffect(() => {
+    const anim = Animated.loop(
+      Animated.sequence([
+        Animated.timing(floatAnim, { toValue: -8, duration: 2200, useNativeDriver: true, easing: Easing.inOut(Easing.sin) }),
+        Animated.timing(floatAnim, { toValue:  0, duration: 2200, useNativeDriver: true, easing: Easing.inOut(Easing.sin) }),
+      ])
+    );
+    anim.start();
+    return () => anim.stop();
+  }, []);
+
   const [totalXP,            setTotalXP]            = useState(0);
   const [liveVoiceRemaining, setLiveVoiceRemaining] = useState<number | null>(null);
   const [recentPractices,    setRecentPractices]    = useState<RecentPractice[]>([]);
@@ -333,21 +345,15 @@ export default function PracticeTab() {
               {/* Accent top strip */}
               <View style={{ height: 3, backgroundColor: suggestion.card.accentColor }} />
 
-              {/* Charlotte bust + suggestion content */}
-              <View style={{ minHeight: 160 }}>
-                {/* Charlotte — ancorada no canto inferior esquerdo */}
-                <Image
-                  source={require('@/assets/charlotte-bust.png')}
-                  style={{ position: 'absolute', bottom: 0, left: 0, width: 108, height: 152 }}
-                  resizeMode="contain"
-                />
-                {/* Conteúdo deslocado à direita para não sobrepor Charlotte */}
-                <View style={{ paddingLeft: 116, paddingRight: 20, paddingTop: 22, paddingBottom: 18 }}>
+              {/* Charlotte + conteúdo */}
+              <View style={{ minHeight: 168 }}>
+                {/* Conteúdo à esquerda — padding direito deixa espaço para Charlotte */}
+                <View style={{ paddingLeft: 20, paddingRight: 122, paddingTop: 22, paddingBottom: 18 }}>
                   <AppText style={{
                     fontSize: 10, fontWeight: '700',
                     color: 'rgba(255,255,255,0.38)',
                     letterSpacing: 1.4, textTransform: 'uppercase',
-                    marginBottom: 10,
+                    marginBottom: 12,
                   }}>
                     {isPt ? 'Charlotte sugere' : 'Charlotte suggests'}
                   </AppText>
@@ -359,14 +365,25 @@ export default function PracticeTab() {
                     }}>
                       {getModeIcon(suggestion.card.mode, suggestion.card.accentColor, 18)}
                     </View>
-                    <AppText style={{ fontSize: 21, fontWeight: '900', color: '#FFFFFF', flex: 1, lineHeight: 26 }}>
+                    <AppText style={{ fontSize: 22, fontWeight: '900', color: '#FFFFFF', flex: 1, lineHeight: 28 }}>
                       {suggestion.card.title}
                     </AppText>
                   </View>
-                  <AppText style={{ fontSize: 12, color: 'rgba(255,255,255,0.55)', lineHeight: 18 }}>
+                  <AppText style={{ fontSize: 12, color: 'rgba(255,255,255,0.55)', lineHeight: 19 }}>
                     {suggestion.reason}
                   </AppText>
                 </View>
+
+                {/* Charlotte — direita, espelhada, animação float */}
+                <Animated.Image
+                  source={require('@/assets/charlotte-bust.png')}
+                  style={{
+                    position: 'absolute', bottom: 0, right: 0,
+                    width: 112, height: 158,
+                    transform: [{ scaleX: -1 }, { translateY: floatAnim }],
+                  }}
+                  resizeMode="contain"
+                />
               </View>
 
               {/* Divider + CTA */}
