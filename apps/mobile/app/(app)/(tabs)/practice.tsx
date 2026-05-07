@@ -316,10 +316,7 @@ export default function PracticeTab() {
           <ActivityIndicator size="large" color={C.navy} />
         </View>
       ) : (
-        <ScrollView
-          contentContainerStyle={{ padding: 20, paddingBottom: 40 }}
-          showsVerticalScrollIndicator={false}
-        >
+        <View style={{ flex: 1, padding: 20, gap: 10 }}>
 
           {/* ── Hero suggestion card ── */}
           {suggestion && (
@@ -330,7 +327,6 @@ export default function PracticeTab() {
                 borderRadius: 22,
                 backgroundColor: C.navy,
                 overflow: 'hidden',
-                marginBottom: 16,
                 ...cardShadow,
               }}
             >
@@ -338,15 +334,12 @@ export default function PracticeTab() {
               <View style={{ height: 3, backgroundColor: suggestion.card.accentColor }} />
 
               {/* Charlotte bust + suggestion content */}
-              <View style={{ flexDirection: 'row', alignItems: 'flex-end', paddingRight: 20, minHeight: 160 }}>
-                {/* Charlotte bust — same pattern as Home tab */}
+              <View style={{ flexDirection: 'row', alignItems: 'flex-end', paddingRight: 20 }}>
                 <Image
                   source={require('@/assets/charlotte-bust.png')}
                   style={{ width: 108, height: 152, marginBottom: -1, flexShrink: 0, alignSelf: 'flex-end' }}
                   resizeMode="contain"
                 />
-
-                {/* Right: label + mode + reason */}
                 <View style={{ flex: 1, paddingLeft: 14, paddingTop: 22, paddingBottom: 18, justifyContent: 'center' }}>
                   <AppText style={{
                     fontSize: 10, fontWeight: '700',
@@ -356,8 +349,6 @@ export default function PracticeTab() {
                   }}>
                     {isPt ? 'Charlotte sugere' : 'Charlotte suggests'}
                   </AppText>
-
-                  {/* Mode icon + title */}
                   <View style={{ flexDirection: 'row', alignItems: 'center', gap: 10, marginBottom: 10 }}>
                     <View style={{
                       width: 38, height: 38, borderRadius: 11,
@@ -370,27 +361,19 @@ export default function PracticeTab() {
                       {suggestion.card.title}
                     </AppText>
                   </View>
-
-                  {/* Reason */}
                   <AppText style={{ fontSize: 12, color: 'rgba(255,255,255,0.55)', lineHeight: 18 }}>
                     {suggestion.reason}
                   </AppText>
                 </View>
               </View>
 
-              {/* Divider + CTA row */}
+              {/* Divider + CTA */}
               <View style={{ height: 1, backgroundColor: 'rgba(255,255,255,0.07)', marginHorizontal: 20 }} />
-              <View style={{
-                flexDirection: 'row', alignItems: 'center',
-                justifyContent: 'flex-end',
-                paddingHorizontal: 20, paddingVertical: 14,
-              }}>
+              <View style={{ flexDirection: 'row', justifyContent: 'flex-end', paddingHorizontal: 20, paddingVertical: 14 }}>
                 <View style={{
                   flexDirection: 'row', alignItems: 'center',
                   backgroundColor: suggestion.card.accentColor,
-                  borderRadius: 10,
-                  paddingVertical: 9, paddingHorizontal: 16,
-                  gap: 6,
+                  borderRadius: 10, paddingVertical: 9, paddingHorizontal: 16, gap: 6,
                 }}>
                   <AppText style={{ fontSize: 13, fontWeight: '800', color: '#FFFFFF' }}>
                     {isPt ? 'Começar agora' : 'Start now'}
@@ -401,66 +384,54 @@ export default function PracticeTab() {
             </TouchableOpacity>
           )}
 
-          {/* ── Other modes — full-width stacked ── */}
-          <View style={{ gap: 10 }}>
-            {otherCards.map(card => (
-              <TouchableOpacity
-                key={card.mode}
-                onPress={() => handlePress(card)}
-                activeOpacity={card.locked ? 0.6 : 0.78}
-                style={{
-                  flexDirection: 'row',
-                  alignItems: 'center',
-                  backgroundColor: C.card,
-                  borderRadius: 18,
-                  padding: 16,
-                  borderWidth: 1,
-                  borderColor: card.locked ? C.border : a(card.accentColor, 0.14),
-                  gap: 14,
-                  opacity: card.locked ? 0.55 : 1,
-                  ...cardShadow,
-                }}
-              >
-                {/* Icon */}
-                <View style={{
-                  width: 48, height: 48, borderRadius: 14, flexShrink: 0,
-                  backgroundColor: card.locked ? C.navyGhost : a(card.accentColor, 0.12),
-                  alignItems: 'center', justifyContent: 'center',
-                }}>
-                  {card.locked
-                    ? <Lock size={20} color={C.navyLight} weight="fill" />
-                    : getModeIcon(card.mode, card.accentColor, 22)
+          {/* ── Other modes — flex:1 para preencher o restante da tela ── */}
+          {otherCards.map(card => (
+            <TouchableOpacity
+              key={card.mode}
+              onPress={() => handlePress(card)}
+              activeOpacity={card.locked ? 0.6 : 0.78}
+              style={{
+                flex: 1,
+                flexDirection: 'row',
+                alignItems: 'center',
+                backgroundColor: C.card,
+                borderRadius: 18,
+                paddingHorizontal: 16,
+                borderWidth: 1,
+                borderColor: card.locked ? C.border : a(card.accentColor, 0.14),
+                gap: 14,
+                opacity: card.locked ? 0.55 : 1,
+                ...cardShadow,
+              }}
+            >
+              <View style={{
+                width: 48, height: 48, borderRadius: 14, flexShrink: 0,
+                backgroundColor: card.locked ? C.navyGhost : a(card.accentColor, 0.12),
+                alignItems: 'center', justifyContent: 'center',
+              }}>
+                {card.locked
+                  ? <Lock size={20} color={C.navyLight} weight="fill" />
+                  : getModeIcon(card.mode, card.accentColor, 22)
+                }
+              </View>
+              <View style={{ flex: 1 }}>
+                <AppText style={{ fontSize: 15, fontWeight: '700', color: card.locked ? C.navyLight : C.navy, marginBottom: 3 }}>
+                  {card.title}
+                </AppText>
+                <AppText style={{ fontSize: 12, color: C.navyLight, fontWeight: '500' }}>
+                  {card.locked && card.lockXP !== undefined && card.currentXP !== undefined
+                    ? `${card.currentXP.toLocaleString()} / ${card.lockXP.toLocaleString()} XP`
+                    : card.locked && card.lockLevel
+                      ? `Unlocks at ${card.lockLevel}`
+                      : card.description
                   }
-                </View>
+                </AppText>
+              </View>
+              {!card.locked && <CaretRight size={16} color={C.navyLight} weight="bold" />}
+            </TouchableOpacity>
+          ))}
 
-                {/* Text */}
-                <View style={{ flex: 1 }}>
-                  <AppText style={{
-                    fontSize: 15, fontWeight: '700',
-                    color: card.locked ? C.navyLight : C.navy,
-                    marginBottom: 3,
-                  }}>
-                    {card.title}
-                  </AppText>
-                  <AppText style={{ fontSize: 12, color: C.navyLight, fontWeight: '500' }}>
-                    {card.locked && card.lockXP !== undefined && card.currentXP !== undefined
-                      ? `${card.currentXP.toLocaleString()} / ${card.lockXP.toLocaleString()} XP`
-                      : card.locked && card.lockLevel
-                        ? `Unlocks at ${card.lockLevel}`
-                        : card.description
-                    }
-                  </AppText>
-                </View>
-
-                {/* Right indicator */}
-                {!card.locked && (
-                  <CaretRight size={16} color={C.navyLight} weight="bold" />
-                )}
-              </TouchableOpacity>
-            ))}
-          </View>
-
-        </ScrollView>
+        </View>
       )}
 
       {showLiveVoice && (
