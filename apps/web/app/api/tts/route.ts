@@ -1,22 +1,71 @@
-// app/api/tts/route.ts — ElevenLabs TTS (Rachel) for Charlotte's audio responses
-// Used as fallback when pre-generated CDN files are not available.
+// app/api/tts/route.ts — TTS para respostas de audio da Charlotte.
+// Provider selecionado por beta_features do usuario:
+//   - "openai_tts" → OpenAI tts-1-hd (nova) — beta, ~10x mais barato
+//   - default       → ElevenLabs Multilingual v2 (Rachel)
 
 import { NextRequest, NextResponse } from 'next/server';
-import { logElevenLabsUsage } from '@/lib/openai-usage';
+import { logElevenLabsUsage, logOpenAIUsage } from '@/lib/openai-usage';
+import { getSupabaseAdmin } from '@/lib/supabase-admin';
 
 export const dynamic = 'force-dynamic';
 
 const ELEVENLABS_API_KEY = process.env.ELEVENLABS_API_KEY;
-const VOICE_ID = '21m00Tcm4TlvDq8ikWAM'; // Rachel — clear American English
+const OPENAI_API_KEY     = process.env.OPENAI_API_KEY;
+const ELEVENLABS_VOICE   = '21m00Tcm4TlvDq8ikWAM'; // Rachel
 
+async function getUserBetaFeatures(userId: string): Promise<string[]> {
+  const supabase = getSupabaseAdmin();
+  const { data } = await supabase
+    .from('charlotte_users')
+    .select('beta_features')
+    .eq('id', userId)
+    .single();
+  return (data?.beta_features as string[]) ?? [];
+}
+
+// ── ElevenLabs ───────────────────────────────────────────────────────────────
+async function ttsElevenLabs(text: string): Promise<Buffer> {
+  if (!ELEVENLABS_API_KEY) throw new Error('ELEVENLABS_API_KEY not set');
+  const res = await fetch(`https://api.elevenlabs.io/v1/text-to-speech/${ELEVENLABS_VOICE}`, {
+    method: 'POST',
+    headers: {
+      'xi-api-key': ELEVENLABS_API_KEY,
+      'Content-Type': 'application/json',
+      'Accept': 'audio/mpeg',
+    },
+    body: JSON.stringify({
+      text,
+      model_id: 'eleven_multilingual_v2',
+      voice_settings: { stability: 0.55, similarity_boost: 0.80, style: 0.10, use_speaker_boost: true },
+    }),
+  });
+  if (!res.ok) throw new Error(`ElevenLabs error: ${await res.text()}`);
+  return Buffer.from(await res.arrayBuffer());
+}
+
+// ── OpenAI TTS ───────────────────────────────────────────────────────────────
+async function ttsOpenAI(text: string): Promise<Buffer> {
+  if (!OPENAI_API_KEY) throw new Error('OPENAI_API_KEY not set');
+  const res = await fetch('https://api.openai.com/v1/audio/speech', {
+    method: 'POST',
+    headers: {
+      'Authorization': `Bearer ${OPENAI_API_KEY}`,
+      'Content-Type': 'application/json',
+    },
+    body: JSON.stringify({
+      model: 'tts-1-hd',
+      input: text,
+      voice: 'nova',       // clara, natural, boa para ensino de ingles
+      response_format: 'mp3',
+    }),
+  });
+  if (!res.ok) throw new Error(`OpenAI TTS error: ${await res.text()}`);
+  return Buffer.from(await res.arrayBuffer());
+}
+
+// ── Handler ──────────────────────────────────────────────────────────────────
 export async function POST(request: NextRequest) {
   try {
-    if (!ELEVENLABS_API_KEY) {
-      console.error('TTS: ELEVENLABS_API_KEY not set');
-      return NextResponse.json({ error: 'ElevenLabs API key not configured' }, { status: 500 });
-    }
-    console.log('TTS: using ElevenLabs Rachel');
-
     const body = await request.json();
     const { text, userId, source } = body as { text: string; userId?: string; source?: string };
 
@@ -24,43 +73,32 @@ export async function POST(request: NextRequest) {
       return NextResponse.json({ error: 'Missing text field' }, { status: 400 });
     }
 
-    const res = await fetch(`https://api.elevenlabs.io/v1/text-to-speech/${VOICE_ID}`, {
-      method: 'POST',
-      headers: {
-        'xi-api-key': ELEVENLABS_API_KEY,
-        'Content-Type': 'application/json',
-        'Accept': 'audio/mpeg',
-      },
-      body: JSON.stringify({
-        text,
-        model_id: 'eleven_multilingual_v2',
-        voice_settings: {
-          stability: 0.55,
-          similarity_boost: 0.80,
-          style: 0.10,
-          use_speaker_boost: true,
-        },
-      }),
-    });
+    // Seleciona provider com base em beta_features
+    const betaFeatures = userId ? await getUserBetaFeatures(userId) : [];
+    const useOpenAI    = betaFeatures.includes('openai_tts');
 
-    if (!res.ok) {
-      const err = await res.text();
-      console.error('ElevenLabs TTS error:', err);
-      return NextResponse.json({ error: 'Failed to synthesize speech' }, { status: 500 });
+    const meta = { source: source ?? null, provider: useOpenAI ? 'openai' : 'elevenlabs' };
+    console.log(`TTS: ${useOpenAI ? 'OpenAI nova (beta)' : 'ElevenLabs Rachel'} — ${text.length} chars`);
+
+    let buffer: Buffer;
+    if (useOpenAI) {
+      buffer = await ttsOpenAI(text);
+      logOpenAIUsage({
+        endpoint:     '/api/tts',
+        model:        'tts-1-hd',
+        promptTokens: text.length,
+        userId:       userId || undefined,
+        meta,
+      });
+    } else {
+      buffer = await ttsElevenLabs(text);
+      logElevenLabsUsage({ endpoint: '/api/tts', charCount: text.length, userId: userId || undefined, meta });
     }
 
-    const buffer = Buffer.from(await res.arrayBuffer());
-    const base64 = buffer.toString('base64');
-
-    logElevenLabsUsage({ endpoint: '/api/tts', charCount: text.length, userId: userId || undefined, meta: source ? { source } : undefined });
-
-    return NextResponse.json({ audio: base64, mimeType: 'audio/mp3' });
+    return NextResponse.json({ audio: buffer.toString('base64'), mimeType: 'audio/mp3' });
 
   } catch (error: any) {
     console.error('TTS error:', error);
-    return NextResponse.json(
-      { error: 'Failed to synthesize speech', details: error?.message },
-      { status: 500 }
-    );
+    return NextResponse.json({ error: 'Failed to synthesize speech', details: error?.message }, { status: 500 });
   }
 }

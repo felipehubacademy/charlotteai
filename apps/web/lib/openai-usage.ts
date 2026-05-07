@@ -67,6 +67,14 @@ export const PRICING = {
     textOutput: 5.00,
   },
 
+  // OpenAI TTS — $0.015/1k chars (tts-1) e $0.030/1k chars (tts-1-hd)
+  'tts-1': {
+    perChar: 0.000015,         // USD / character
+  },
+  'tts-1-hd': {
+    perChar: 0.000030,         // USD / character
+  },
+
   // ElevenLabs TTS — Creator plan ~$0.30 / 1 000 chars
   'eleven_multilingual_v2': {
     perChar: 0.000300,         // USD / character
