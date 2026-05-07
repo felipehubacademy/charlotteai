@@ -13,15 +13,33 @@ const ELEVENLABS_API_KEY = process.env.ELEVENLABS_API_KEY;
 const OPENAI_API_KEY     = process.env.OPENAI_API_KEY;
 const ELEVENLABS_VOICE   = '21m00Tcm4TlvDq8ikWAM'; // Rachel
 
-async function getUserBetaFeatures(userId: string): Promise<string[]> {
+async function getUserProfile(userId: string): Promise<{ betaFeatures: string[]; level: string }> {
   const supabase = getSupabaseAdmin();
   const { data } = await supabase
     .from('charlotte_users')
-    .select('beta_features')
+    .select('beta_features, charlotte_level')
     .eq('id', userId)
     .single();
-  return (data?.beta_features as string[]) ?? [];
+  return {
+    betaFeatures: (data?.beta_features as string[]) ?? [],
+    level:        (data?.charlotte_level as string) ?? 'Novice',
+  };
 }
+
+const TTS_INSTRUCTIONS: Record<string, { instructions: string; speed: number }> = {
+  Novice: {
+    instructions: 'Warm, patient. Speak slowly and clearly.',
+    speed: 0.85,
+  },
+  Inter: {
+    instructions: 'Friendly and casual, like a genuine friend.',
+    speed: 1.0,
+  },
+  Advanced: {
+    instructions: 'Sharp, direct, naturally expressive.',
+    speed: 1.05,
+  },
+};
 
 // ── ElevenLabs ───────────────────────────────────────────────────────────────
 async function ttsElevenLabs(text: string): Promise<Buffer> {
@@ -55,13 +73,10 @@ async function ttsOpenAI(text: string): Promise<Buffer> {
     body: JSON.stringify({
       model: 'gpt-4o-mini-tts',
       input: text,
-      voice: 'coral',      // coral: mais expressiva, aprovada em teste A/B
+      voice: 'coral',
       response_format: 'mp3',
-      instructions:
-        'You are Charlotte, a warm and encouraging English tutor. ' +
-        'Speak naturally and expressively — enthusiastic when praising, ' +
-        'gentle when correcting, clear and engaging when teaching. ' +
-        'Use a friendly American English accent. Never sound robotic or flat.',
+      speed: ttsConfig.speed,
+      instructions: ttsConfig.instructions,
     }),
   });
   if (!res.ok) throw new Error(`OpenAI TTS error: ${await res.text()}`);
@@ -78,9 +93,10 @@ export async function POST(request: NextRequest) {
       return NextResponse.json({ error: 'Missing text field' }, { status: 400 });
     }
 
-    // Seleciona provider com base em beta_features
-    const betaFeatures = userId ? await getUserBetaFeatures(userId) : [];
-    const useOpenAI    = betaFeatures.includes('openai_tts');
+    // Seleciona provider e configuracao vocal com base no perfil do usuario
+    const { betaFeatures, level } = userId ? await getUserProfile(userId) : { betaFeatures: [], level: 'Novice' };
+    const useOpenAI = betaFeatures.includes('openai_tts');
+    const ttsConfig = TTS_INSTRUCTIONS[level] ?? TTS_INSTRUCTIONS.Inter;
 
     const meta = { source: source ?? null, provider: useOpenAI ? 'openai' : 'elevenlabs' };
     console.log(`TTS: ${useOpenAI ? 'OpenAI nova (beta)' : 'ElevenLabs Rachel'} — ${text.length} chars`);

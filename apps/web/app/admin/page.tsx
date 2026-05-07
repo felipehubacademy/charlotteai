@@ -24,7 +24,7 @@ interface Form {
   email: string; password: string; name: string; charlotte_level: string;
   is_institutional: boolean; is_active: boolean; subscription_status: string;
   must_change_password: boolean; placement_test_done: boolean;
-  beta_karaoke: boolean; beta_new_layout: boolean;
+  beta_karaoke: boolean; beta_new_layout: boolean; beta_openai_tts: boolean;
   is_admin: boolean;
 }
 
@@ -129,7 +129,7 @@ const EMPTY_FORM: Form = {
   email: '', password: '', name: '', charlotte_level: '',
   is_institutional: false, is_active: true,
   subscription_status: 'none', must_change_password: false,
-  placement_test_done: false, beta_karaoke: false, beta_new_layout: false, is_admin: false,
+  placement_test_done: false, beta_karaoke: false, beta_new_layout: false, beta_openai_tts: false, is_admin: false,
 };
 
 // ════════════════════════════════════════════════════════════════════════════
@@ -236,6 +236,7 @@ export default function AdminUsersPage() {
       placement_test_done: u.placement_test_done,
       beta_karaoke: (u.beta_features ?? []).includes('karaoke'),
       beta_new_layout: (u.beta_features ?? []).includes('new_layout'),
+      beta_openai_tts: (u.beta_features ?? []).includes('openai_tts'),
       is_admin: u.is_admin ?? false,
     });
     setFormErr(''); setModal('edit');
@@ -276,6 +277,7 @@ export default function AdminUsersPage() {
       const betaFeatures = [
         ...(form.beta_karaoke ? ['karaoke'] : []),
         ...(form.beta_new_layout ? ['new_layout'] : []),
+        ...(form.beta_openai_tts ? ['openai_tts'] : []),
       ];
       const body: any = {
         id: selected.id, name: form.name || null,
@@ -620,6 +622,7 @@ export default function AdminUsersPage() {
                       { key: 'must_change_password', label: 'Forçar troca de senha no próximo login' },
                       { key: 'beta_karaoke',        label: 'Beta: Karaoke (Read Aloud)' },
                       { key: 'beta_new_layout',     label: 'Beta: New Layout (Tab Nav)' },
+                      { key: 'beta_openai_tts',     label: 'Beta: OpenAI TTS (coral, gpt-4o-mini-tts)' },
                       { key: 'is_admin',            label: 'Admin (tour replay + OTA)' },
                     ] as { key: keyof Form; label: string }[]).map(({ key, label }) => (
                       <label key={key} style={{ display: 'flex', alignItems: 'center', gap: 10, cursor: 'pointer', fontSize: 13.5, color: 'var(--t2)' }}>
