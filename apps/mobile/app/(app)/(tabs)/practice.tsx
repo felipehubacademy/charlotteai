@@ -334,13 +334,15 @@ export default function PracticeTab() {
               <View style={{ height: 3, backgroundColor: suggestion.card.accentColor }} />
 
               {/* Charlotte bust + suggestion content */}
-              <View style={{ flexDirection: 'row', alignItems: 'flex-end', paddingRight: 20 }}>
+              <View style={{ minHeight: 160 }}>
+                {/* Charlotte — ancorada no canto inferior esquerdo */}
                 <Image
                   source={require('@/assets/charlotte-bust.png')}
-                  style={{ width: 108, height: 152, marginBottom: -1, flexShrink: 0, alignSelf: 'flex-end' }}
+                  style={{ position: 'absolute', bottom: 0, left: 0, width: 108, height: 152 }}
                   resizeMode="contain"
                 />
-                <View style={{ flex: 1, paddingLeft: 14, paddingTop: 22, paddingBottom: 18, justifyContent: 'center' }}>
+                {/* Conteúdo deslocado à direita para não sobrepor Charlotte */}
+                <View style={{ paddingLeft: 116, paddingRight: 20, paddingTop: 22, paddingBottom: 18 }}>
                   <AppText style={{
                     fontSize: 10, fontWeight: '700',
                     color: 'rgba(255,255,255,0.38)',
