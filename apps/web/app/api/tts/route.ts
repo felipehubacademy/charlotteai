@@ -55,8 +55,13 @@ async function ttsOpenAI(text: string): Promise<Buffer> {
     body: JSON.stringify({
       model: 'gpt-4o-mini-tts',
       input: text,
-      voice: 'nova',       // clara, natural, boa para ensino de ingles
+      voice: 'coral',      // coral: mais calorosa e expressiva que nova
       response_format: 'mp3',
+      instructions:
+        'You are Charlotte, a warm and encouraging English tutor. ' +
+        'Speak naturally and expressively — enthusiastic when praising, ' +
+        'gentle when correcting, clear and engaging when teaching. ' +
+        'Use a friendly American English accent. Never sound robotic or flat.',
     }),
   });
   if (!res.ok) throw new Error(`OpenAI TTS error: ${await res.text()}`);
