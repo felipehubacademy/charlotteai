@@ -14,7 +14,7 @@ import { AppText } from '@/components/ui/Text';
 import { useAuth } from '@/hooks/useAuth';
 import { supabase } from '@/lib/supabase';
 import { LEVEL_CONFIG, UserLevel, ChatMode } from '@/lib/levelConfig';
-import { getLiveVoiceStatus, getPoolForLevel } from '@/lib/liveVoiceUsage';
+import { getLiveVoiceStatus, getPoolForLevel, UNLIMITED_POOL_SECONDS } from '@/lib/liveVoiceUsage';
 import { soundEngine } from '@/lib/soundEngine';
 import LiveVoiceModal from '@/components/voice/LiveVoiceModal';
 
@@ -210,8 +210,9 @@ export default function PracticeTab() {
   const liveUsageLine = useMemo((): string | null => {
     if (!hasLive || liveVoiceRemaining === null) return null;
     if (liveVoiceRemaining === 0) return isPt ? 'Limite atingido' : 'Monthly limit reached';
+    // Institucional: secondsRemaining chega como UNLIMITED_POOL_SECONDS (999_999)
+    if (liveVoiceRemaining >= UNLIMITED_POOL_SECONDS) return isPt ? 'Ilimitado' : 'Unlimited';
     const totalPool = getPoolForLevel(level);
-    if (totalPool >= 999_999) return isPt ? 'Ilimitado' : 'Unlimited';
     const usedMin  = Math.round((totalPool - liveVoiceRemaining) / 60);
     const totalMin = Math.round(totalPool / 60);
     return isPt ? `${usedMin}/${totalMin} min usados` : `${usedMin}/${totalMin} min used`;
