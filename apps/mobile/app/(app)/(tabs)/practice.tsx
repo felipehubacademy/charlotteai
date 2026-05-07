@@ -1,5 +1,5 @@
 // app/(app)/(tabs)/practice.tsx
-// Practice tab — Charlotte's smart suggestion + 3 compact mode cards.
+// Practice tab — Charlotte's smart suggestion + full-width secondary mode cards.
 
 import React, { useState, useCallback, useMemo } from 'react';
 import {
@@ -44,6 +44,7 @@ const C = {
   navy:      '#16153A',
   navyMid:   '#4B4A72',
   navyLight: '#9896B8',
+  navyGhost: 'rgba(22,21,58,0.06)',
   border:    'rgba(22,21,58,0.10)',
   orange:    '#FF6B35',
 };
@@ -58,7 +59,6 @@ const cardShadow = Platform.select({
 const PRONUN_UNLOCK_XP = 1920;
 const CHAT_UNLOCK_XP   = 2800;
 
-// Maps each mode to practice_type values stored in charlotte_practices
 const MODE_TYPES: Record<string, string[]> = {
   grammar:       ['grammar'],
   pronunciation: ['pronunciation', 'audio_message'],
@@ -71,6 +71,7 @@ const MODE_TYPES: Record<string, string[]> = {
 interface ModeCard {
   mode:        ChatMode | 'live';
   title:       string;
+  description: string;
   route?:      '/(app)/grammar' | '/(app)/pronunciation' | '/(app)/chat';
   accentColor: string;
   locked?:     boolean;
@@ -86,6 +87,13 @@ interface RecentPractice {
 
 // ── Suggestion algorithm ──────────────────────────────────────────────────────
 
+const FIRST_TIME_REASONS: Record<string, { en: string; pt: string }> = {
+  grammar:       { en: 'Start with Grammar — the foundation of great English.', pt: 'Comece pela Gramática — a base de um inglês sólido.' },
+  pronunciation: { en: 'Try Pronunciation — hear yourself improve in real time.', pt: 'Experimente a Pronúncia — ouça sua evolução em tempo real.' },
+  chat:          { en: 'Jump into Free Chat — English the way it\'s actually spoken.', pt: 'Entre no Free Chat — inglês do jeito que é falado de verdade.' },
+  live:          { en: 'Try Live Voice — a real-time AI conversation, just like a call.', pt: 'Experimente o Live Voice — uma conversa em tempo real com IA.' },
+};
+
 function buildSuggestion(
   cards:         ModeCard[],
   recent:        RecentPractice[],
@@ -100,7 +108,6 @@ function buildSuggestion(
   );
   if (!available.length) return null;
 
-  // Days since last practice per mode
   const daysSince: Record<string, number> = {};
   for (const card of available) {
     const types = MODE_TYPES[card.mode] ?? [];
@@ -116,8 +123,8 @@ function buildSuggestion(
     const days = daysSince[card.mode] ?? 0;
     let s = Math.min(days, 7) * 10;
     if (days === 999) s += 20;
-    if (hour >= 6  && hour < 12 && card.mode === 'grammar')                              s += 10;
-    if (hour >= 12 && hour < 18 && card.mode === 'chat')                                 s += 10;
+    if (hour >= 6  && hour < 12 && card.mode === 'grammar')                                  s += 10;
+    if (hour >= 12 && hour < 18 && card.mode === 'chat')                                     s += 10;
     if (hour >= 18 && hour <= 22 && (card.mode === 'pronunciation' || card.mode === 'live')) s += 10;
     return s;
   };
@@ -126,10 +133,10 @@ function buildSuggestion(
   const days = daysSince[best.mode] ?? 0;
 
   let reason: string;
+
   if (days === 999) {
-    reason = isPt
-      ? `Você ainda não experimentou ${best.title} — comece hoje.`
-      : `You haven't tried ${best.title} yet — give it a shot today.`;
+    const first = FIRST_TIME_REASONS[best.mode];
+    reason = isPt ? first.pt : first.en;
   } else if (days >= 3) {
     reason = isPt
       ? `Você não pratica ${best.title} há ${days} ${days === 1 ? 'dia' : 'dias'} — hora de voltar.`
@@ -199,14 +206,27 @@ export default function PracticeTab() {
   const hasChat    = level !== 'Novice' ? config.tabs.includes('chat')          : totalXP >= CHAT_UNLOCK_XP;
   const hasLive    = level === 'Advanced' || level === 'Inter';
 
+  // Live Voice usage line — handles unlimited pool
+  const liveUsageLine = useMemo((): string | null => {
+    if (!hasLive || liveVoiceRemaining === null) return null;
+    if (liveVoiceRemaining === 0) return isPt ? 'Limite atingido' : 'Monthly limit reached';
+    const totalPool = getPoolForLevel(level);
+    if (totalPool >= 999_999) return isPt ? 'Ilimitado' : 'Unlimited';
+    const usedMin  = Math.round((totalPool - liveVoiceRemaining) / 60);
+    const totalMin = Math.round(totalPool / 60);
+    return isPt ? `${usedMin}/${totalMin} min usados` : `${usedMin}/${totalMin} min used`;
+  }, [hasLive, liveVoiceRemaining, level, isPt]);
+
   const modeCards: ModeCard[] = useMemo(() => [
     {
       mode: 'grammar', title: isPt ? 'Gramática' : 'Grammar',
+      description: isPt ? 'Regras e exercícios' : 'Rules & exercises',
       route: '/(app)/grammar', accentColor: accent,
       locked: !hasGrammar, lockLevel: 'Intermediate',
     },
     {
       mode: 'pronunciation', title: isPt ? 'Pronúncia' : 'Pronunciation',
+      description: isPt ? 'Fala e feedback em tempo real' : 'Speaking & real-time feedback',
       route: '/(app)/pronunciation', accentColor: accent,
       locked: !hasPronun,
       lockLevel:  level === 'Novice' ? undefined : 'Intermediate',
@@ -215,6 +235,7 @@ export default function PracticeTab() {
     },
     {
       mode: 'chat', title: 'Free Chat',
+      description: isPt ? 'Conversa livre com IA' : 'Open conversation with AI',
       route: '/(app)/chat', accentColor: accent,
       locked: !hasChat,
       lockLevel:  level === 'Novice' ? undefined : 'Intermediate',
@@ -223,10 +244,11 @@ export default function PracticeTab() {
     },
     {
       mode: 'live', title: 'Live Voice',
+      description: liveUsageLine ?? (isPt ? 'Chamada em tempo real' : 'Real-time voice call'),
       accentColor: C.orange,
       locked: !hasLive, lockLevel: 'Intermediate',
     },
-  ], [isPt, accent, hasGrammar, hasPronun, hasChat, hasLive, totalXP, level]);
+  ], [isPt, accent, hasGrammar, hasPronun, hasChat, hasLive, totalXP, level, liveUsageLine]);
 
   const suggestion = useMemo(
     () => buildSuggestion(modeCards, recentPractices, liveVoiceRemaining, isPt),
@@ -242,7 +264,11 @@ export default function PracticeTab() {
     if (card.locked) {
       if (card.lockXP !== undefined && card.currentXP !== undefined) {
         const pct = Math.min(100, Math.round((card.currentXP / card.lockXP) * 100));
-        Alert.alert(card.title, `Para desbloquear ${card.title} você precisa de ${card.lockXP.toLocaleString('pt-BR')} XP.\n\nProgresso: ${card.currentXP.toLocaleString('pt-BR')} / ${card.lockXP.toLocaleString('pt-BR')} XP (${pct}%)`, [{ text: 'Entendido' }]);
+        Alert.alert(
+          card.title,
+          `Para desbloquear ${card.title} você precisa de ${card.lockXP.toLocaleString('pt-BR')} XP.\n\nProgresso: ${card.currentXP.toLocaleString('pt-BR')} / ${card.lockXP.toLocaleString('pt-BR')} XP (${pct}%)`,
+          [{ text: 'Entendido' }],
+        );
       } else {
         Alert.alert(
           isPt ? `Recurso ${card.lockLevel}` : `${card.lockLevel} Feature`,
@@ -259,7 +285,9 @@ export default function PracticeTab() {
         const totalMin = Math.floor(getPoolForLevel(level) / 60);
         Alert.alert(
           isPt ? 'Limite mensal atingido' : 'Monthly limit reached',
-          isPt ? `Você usou seus ${totalMin} min de Live Voice deste mês.` : `You've used your ${totalMin}-min monthly allowance.`,
+          isPt
+            ? `Você usou seus ${totalMin} min de Live Voice deste mês.`
+            : `You've used your ${totalMin}-min monthly allowance.`,
           [{ text: 'OK' }],
         );
       } else {
@@ -293,130 +321,126 @@ export default function PracticeTab() {
         >
 
           {/* ── Hero suggestion card ── */}
-          {suggestion ? (
+          {suggestion && (
             <TouchableOpacity
               onPress={() => handlePress(suggestion.card)}
               activeOpacity={0.85}
               style={{
                 borderRadius: 22,
                 backgroundColor: C.navy,
-                padding: 22,
-                marginBottom: 12,
+                overflow: 'hidden',
+                marginBottom: 16,
                 ...cardShadow,
               }}
             >
-              {/* Charlotte suggests label */}
-              <AppText style={{
-                fontSize: 10, fontWeight: '700',
-                color: 'rgba(255,255,255,0.40)',
-                letterSpacing: 1.2, textTransform: 'uppercase',
-                marginBottom: 20,
-              }}>
-                {isPt ? 'Charlotte sugere' : 'Charlotte suggests'}
-              </AppText>
+              {/* Accent top strip */}
+              <View style={{ height: 3, backgroundColor: suggestion.card.accentColor }} />
 
-              {/* Mode icon */}
-              <View style={{
-                width: 54, height: 54, borderRadius: 16,
-                backgroundColor: 'rgba(255,255,255,0.10)',
-                alignItems: 'center', justifyContent: 'center',
-                marginBottom: 16,
-              }}>
-                {getModeIcon(suggestion.card.mode, '#FFFFFF', 26)}
-              </View>
-
-              {/* Mode title */}
-              <AppText style={{
-                fontSize: 26, fontWeight: '900', color: '#FFFFFF',
-                marginBottom: 8, lineHeight: 32,
-              }}>
-                {suggestion.card.title}
-              </AppText>
-
-              {/* Reason */}
-              <AppText style={{
-                fontSize: 14, color: 'rgba(255,255,255,0.60)',
-                lineHeight: 22, marginBottom: 24,
-              }}>
-                {suggestion.reason}
-              </AppText>
-
-              {/* CTA button */}
-              <View style={{
-                flexDirection: 'row', alignItems: 'center',
-                alignSelf: 'flex-start',
-                backgroundColor: suggestion.card.accentColor,
-                borderRadius: 12,
-                paddingVertical: 11, paddingHorizontal: 20,
-                gap: 6,
-              }}>
-                <AppText style={{ fontSize: 14, fontWeight: '800', color: '#FFFFFF' }}>
-                  {isPt ? 'Começar agora' : 'Start now'}
+              <View style={{ padding: 22 }}>
+                {/* Label */}
+                <AppText style={{
+                  fontSize: 10, fontWeight: '700',
+                  color: 'rgba(255,255,255,0.38)',
+                  letterSpacing: 1.4, textTransform: 'uppercase',
+                  marginBottom: 18,
+                }}>
+                  {isPt ? 'Charlotte sugere' : 'Charlotte suggests'}
                 </AppText>
-                <CaretRight size={13} color="#FFFFFF" weight="bold" />
+
+                {/* Icon + title row */}
+                <View style={{ flexDirection: 'row', alignItems: 'center', gap: 16, marginBottom: 14 }}>
+                  <View style={{
+                    width: 56, height: 56, borderRadius: 16,
+                    backgroundColor: a(suggestion.card.accentColor, 0.18),
+                    alignItems: 'center', justifyContent: 'center',
+                  }}>
+                    {getModeIcon(suggestion.card.mode, suggestion.card.accentColor, 26)}
+                  </View>
+                  <AppText style={{ fontSize: 28, fontWeight: '900', color: '#FFFFFF', flex: 1, lineHeight: 34 }}>
+                    {suggestion.card.title}
+                  </AppText>
+                </View>
+
+                {/* Reason */}
+                <AppText style={{
+                  fontSize: 14, color: 'rgba(255,255,255,0.58)',
+                  lineHeight: 22, marginBottom: 22,
+                }}>
+                  {suggestion.reason}
+                </AppText>
+
+                {/* CTA */}
+                <View style={{
+                  flexDirection: 'row', alignItems: 'center',
+                  alignSelf: 'flex-start',
+                  backgroundColor: suggestion.card.accentColor,
+                  borderRadius: 12,
+                  paddingVertical: 11, paddingHorizontal: 20,
+                  gap: 6,
+                }}>
+                  <AppText style={{ fontSize: 14, fontWeight: '800', color: '#FFFFFF' }}>
+                    {isPt ? 'Começar agora' : 'Start now'}
+                  </AppText>
+                  <CaretRight size={13} color="#FFFFFF" weight="bold" />
+                </View>
               </View>
             </TouchableOpacity>
-          ) : null}
+          )}
 
-          {/* ── Compact other modes ── */}
-          <View style={{ flexDirection: 'row', gap: 10 }}>
+          {/* ── Other modes — full-width stacked ── */}
+          <View style={{ gap: 10 }}>
             {otherCards.map(card => (
               <TouchableOpacity
                 key={card.mode}
                 onPress={() => handlePress(card)}
                 activeOpacity={card.locked ? 0.6 : 0.78}
                 style={{
-                  flex: 1,
+                  flexDirection: 'row',
+                  alignItems: 'center',
                   backgroundColor: C.card,
                   borderRadius: 18,
-                  paddingVertical: 18,
-                  paddingHorizontal: 8,
+                  padding: 16,
                   borderWidth: 1,
-                  borderColor: card.locked ? C.border : a(card.accentColor, 0.15),
-                  alignItems: 'center',
-                  gap: 10,
+                  borderColor: card.locked ? C.border : a(card.accentColor, 0.14),
+                  gap: 14,
                   opacity: card.locked ? 0.55 : 1,
                   ...cardShadow,
                 }}
               >
                 {/* Icon */}
                 <View style={{
-                  width: 40, height: 40, borderRadius: 12,
-                  backgroundColor: card.locked ? 'rgba(22,21,58,0.05)' : a(card.accentColor, 0.12),
+                  width: 48, height: 48, borderRadius: 14, flexShrink: 0,
+                  backgroundColor: card.locked ? C.navyGhost : a(card.accentColor, 0.12),
                   alignItems: 'center', justifyContent: 'center',
                 }}>
                   {card.locked
-                    ? <Lock size={18} color={C.navyLight} weight="fill" />
-                    : getModeIcon(card.mode, card.accentColor, 20)
+                    ? <Lock size={20} color={C.navyLight} weight="fill" />
+                    : getModeIcon(card.mode, card.accentColor, 22)
                   }
                 </View>
 
-                {/* Title */}
-                <AppText style={{
-                  fontSize: 11, fontWeight: '700',
-                  color: card.locked ? C.navyLight : C.navy,
-                  textAlign: 'center', lineHeight: 15,
-                }}>
-                  {card.title}
-                </AppText>
+                {/* Text */}
+                <View style={{ flex: 1 }}>
+                  <AppText style={{
+                    fontSize: 15, fontWeight: '700',
+                    color: card.locked ? C.navyLight : C.navy,
+                    marginBottom: 3,
+                  }}>
+                    {card.title}
+                  </AppText>
+                  <AppText style={{ fontSize: 12, color: C.navyLight, fontWeight: '500' }}>
+                    {card.locked && card.lockXP !== undefined && card.currentXP !== undefined
+                      ? `${card.currentXP.toLocaleString()} / ${card.lockXP.toLocaleString()} XP`
+                      : card.locked && card.lockLevel
+                        ? `Unlocks at ${card.lockLevel}`
+                        : card.description
+                    }
+                  </AppText>
+                </View>
 
-                {/* Lock sub-info */}
-                {card.locked && card.lockXP !== undefined && card.currentXP !== undefined && (
-                  <AppText style={{ fontSize: 10, color: C.navyLight, fontWeight: '600', textAlign: 'center' }}>
-                    {card.currentXP.toLocaleString()}/{card.lockXP.toLocaleString()}
-                  </AppText>
-                )}
-                {card.locked && card.lockLevel && card.lockXP === undefined && (
-                  <AppText style={{ fontSize: 10, color: C.navyLight, fontWeight: '600', textAlign: 'center' }}>
-                    {card.lockLevel}
-                  </AppText>
-                )}
-
-                {/* Live Voice remaining minutes */}
-                {!card.locked && card.mode === 'live' && liveVoiceRemaining !== null && liveVoiceRemaining > 0 && (
-                  <AppText style={{ fontSize: 10, color: card.accentColor, fontWeight: '700', textAlign: 'center' }}>
-                    {Math.floor(liveVoiceRemaining / 60)}min
-                  </AppText>
+                {/* Right indicator */}
+                {!card.locked && (
+                  <CaretRight size={16} color={C.navyLight} weight="bold" />
                 )}
               </TouchableOpacity>
             ))}
