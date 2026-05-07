@@ -77,7 +77,7 @@ async function fetchTTS(text: string, userId?: string): Promise<string | null> {
       console.warn('❌ TTS response missing audio field:', JSON.stringify(data).slice(0, 200));
       return null;
     }
-    const ext = data.mimeType === 'audio/wav' ? 'wav' : 'mp3';
+    const ext = data.mimeType === 'audio/flac' ? 'flac' : data.mimeType === 'audio/wav' ? 'wav' : 'mp3';
     const uri = `${FileSystem.cacheDirectory}tts_${Date.now()}.${ext}`;
     await FileSystem.writeAsStringAsync(uri, data.audio, {
       encoding: 'base64' as any,

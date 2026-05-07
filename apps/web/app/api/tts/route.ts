@@ -62,7 +62,7 @@ async function ttsOpenAI(text: string, instructions: string): Promise<Buffer> {
       model: 'gpt-4o-mini-tts',
       input: text,
       voice: 'coral',
-      response_format: 'wav',
+      response_format: 'flac',
     }),
   });
   if (!res.ok) throw new Error(`OpenAI TTS error: ${await res.text()}`);
@@ -85,7 +85,7 @@ export async function POST(request: NextRequest) {
     const ttsInstructions = TTS_INSTRUCTIONS;
 
     const meta = { source: source ?? null, provider: useOpenAI ? 'openai' : 'elevenlabs' };
-    console.log(`TTS: ${useOpenAI ? 'OpenAI coral/wav (beta)' : 'ElevenLabs Rachel/mp3'} — ${text.length} chars`);
+    console.log(`TTS: ${useOpenAI ? 'OpenAI coral/flac (beta)' : 'ElevenLabs Rachel/mp3'} — ${text.length} chars`);
 
     let buffer: Buffer;
     if (useOpenAI) {
@@ -102,7 +102,7 @@ export async function POST(request: NextRequest) {
       logElevenLabsUsage({ endpoint: '/api/tts', charCount: text.length, userId: userId || undefined, meta });
     }
 
-    return NextResponse.json({ audio: buffer.toString('base64'), mimeType: useOpenAI ? 'audio/wav' : 'audio/mp3' });
+    return NextResponse.json({ audio: buffer.toString('base64'), mimeType: useOpenAI ? 'audio/flac' : 'audio/mp3' });
 
   } catch (error: any) {
     console.error('TTS error:', error);
