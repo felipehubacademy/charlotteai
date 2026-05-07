@@ -26,11 +26,8 @@ async function getUserProfile(userId: string): Promise<{ betaFeatures: string[];
   };
 }
 
-const TTS_INSTRUCTIONS: Record<string, string> = {
-  Novice:   'Warm, patient and encouraging. Speak slowly and clearly.',
-  Inter:    'Warm, friendly and natural. Like talking to a good friend.',
-  Advanced: 'Confident, expressive and engaging. Natural and energetic.',
-};
+// Instructions identicas ao primeiro teste aprovado — nao alterar sem teste A/B
+const TTS_INSTRUCTIONS = 'You are Charlotte, a warm and encouraging English tutor. Speak naturally and expressively — enthusiastic when praising, gentle when correcting, clear and engaging when teaching. Use a friendly American English accent. Never sound robotic or flat.';
 
 // ── ElevenLabs ───────────────────────────────────────────────────────────────
 async function ttsElevenLabs(text: string): Promise<Buffer> {
@@ -86,7 +83,7 @@ export async function POST(request: NextRequest) {
     // Seleciona provider e configuracao vocal com base no perfil do usuario
     const { betaFeatures, level } = userId ? await getUserProfile(userId) : { betaFeatures: [], level: 'Novice' };
     const useOpenAI = betaFeatures.includes('openai_tts');
-    const ttsInstructions = TTS_INSTRUCTIONS[level] ?? TTS_INSTRUCTIONS.Inter;
+    const ttsInstructions = TTS_INSTRUCTIONS;
 
     const meta = { source: source ?? null, provider: useOpenAI ? 'openai' : 'elevenlabs' };
     console.log(`TTS: ${useOpenAI ? 'OpenAI nova (beta)' : 'ElevenLabs Rachel'} — ${text.length} chars`);
