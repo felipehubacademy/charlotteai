@@ -88,10 +88,10 @@ interface RecentPractice {
 // ── Suggestion algorithm ──────────────────────────────────────────────────────
 
 const FIRST_TIME_REASONS: Record<string, { en: string; pt: string }> = {
-  grammar:       { en: 'Start with Grammar — the foundation of great English.', pt: 'Comece pela Gramática — a base de um inglês sólido.' },
-  pronunciation: { en: 'Try Pronunciation — hear yourself improve in real time.', pt: 'Experimente a Pronúncia — ouça sua evolução em tempo real.' },
-  chat:          { en: 'Jump into Free Chat — have a real conversation with Charlotte.', pt: 'Entre no Free Chat — uma conversa de verdade com a Charlotte.' },
-  live:          { en: 'Try Live Voice — talk with Charlotte in real time, just like a call.', pt: 'Experimente o Live Voice — fale com a Charlotte em tempo real.' },
+  grammar:       { en: "You haven't tried Grammar yet — give it a shot today.",       pt: 'Você ainda não tentou a Gramática — experimente hoje.' },
+  pronunciation: { en: "You haven't tried Pronunciation yet — give it a shot today.", pt: 'Você ainda não tentou a Pronúncia — experimente hoje.' },
+  chat:          { en: "You haven't tried Free Chat yet — give it a shot today.",      pt: 'Você ainda não tentou o Free Chat — experimente hoje.' },
+  live:          { en: "You haven't tried Live Voice yet — give it a shot today.",     pt: 'Você ainda não tentou o Live Voice — experimente hoje.' },
 };
 
 function buildSuggestion(
@@ -143,20 +143,20 @@ function buildSuggestion(
       : `You haven't practiced ${best.title} in ${days} ${days === 1 ? 'day' : 'days'} — time to pick it up again.`;
   } else if (hour >= 6 && hour < 12 && best.mode === 'grammar') {
     reason = isPt
-      ? 'Manhã é o melhor momento para estudar — sua concentração está no pico.'
-      : 'Morning is the best time for grammar — your focus is at its peak.';
+      ? 'Manhã é o melhor momento para gramática — seu cérebro está afiado.'
+      : 'Morning is the best time for a grammar session — your brain is sharp.';
   } else if (hour >= 18 && (best.mode === 'pronunciation' || best.mode === 'live')) {
     reason = isPt
       ? 'À noite é ótimo para praticar fala — sem pressa, sem pressão.'
-      : 'Evenings are great for speaking practice — no rush, no pressure.';
+      : 'Evening is great for speaking practice — no rush, no pressure.';
   } else if (hour >= 12 && hour < 18 && best.mode === 'chat') {
     reason = isPt
-      ? 'Use o que aprendeu em uma conversa livre — é assim que a fluência acontece.'
-      : "Apply what you've learned in a free conversation — that's how fluency happens.";
+      ? 'Boa tarde para uma conversa com a Charlotte — aplique o que aprendeu.'
+      : 'Good afternoon for a chat with Charlotte — put what you learned to use.';
   } else {
     reason = isPt
-      ? `Continue praticando ${best.title} — consistência é tudo.`
-      : `Keep at ${best.title} — consistency is everything.`;
+      ? `Você não pratica ${best.title} há ${Math.min(daysSince[best.mode] ?? 0, 7)} dias — hora de voltar.`
+      : `You haven't practiced ${best.title} in ${Math.min(daysSince[best.mode] ?? 0, 7)} days — time to pick it up again.`;
   }
 
   return { card: best, reason };
