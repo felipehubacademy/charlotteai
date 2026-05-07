@@ -15,6 +15,14 @@ import { CURRICULUM, TrailLevel, topicHasContent, totalTopics } from '@/data/cur
 import { MODULE_INTROS } from '@/data/moduleIntros';
 import { useLearnProgress } from '@/hooks/useLearnProgress';
 
+// ── Color helper — converts #RRGGBB + alpha to rgba() for Android compatibility ──
+function a(hex: string, alpha: number): string {
+  const r = parseInt(hex.slice(1, 3), 16);
+  const g = parseInt(hex.slice(3, 5), 16);
+  const b = parseInt(hex.slice(5, 7), 16);
+  return `rgba(${r},${g},${b},${alpha})`;
+}
+
 // ── Palette ─────────────────────────────────────────────────────────────────
 const C = {
   bg:          '#F4F3FA',
@@ -110,7 +118,7 @@ export function TrailContent({ userId, level }: TrailContentProps) {
         <View style={{ flexDirection: 'row', alignItems: 'center', gap: 10, marginBottom: 14 }}>
           <View style={{
             width: 40, height: 40, borderRadius: 12,
-            backgroundColor: accent + '18',
+            backgroundColor: a(accent, 0.094),
             alignItems: 'center', justifyContent: 'center',
           }}>
             <BookOpen size={22} color={accent} weight="fill" />
@@ -186,17 +194,17 @@ export function TrailContent({ userId, level }: TrailContentProps) {
                       activeOpacity={introLocked ? 1 : 0.75}
                       style={{
                         flexDirection: 'row', alignItems: 'center', gap: 14,
-                        backgroundColor: done ? C.card : introLocked ? C.card : accent + '0E',
+                        backgroundColor: done ? C.card : introLocked ? C.card : a(accent, 0.055),
                         borderRadius: 14, padding: 14,
                         borderWidth: introLocked ? 1 : 1.5,
-                        borderColor: introLocked ? C.border : done ? C.border : accent + '35',
+                        borderColor: introLocked ? C.border : done ? C.border : a(accent, 0.208),
                         opacity: introLocked ? 0.55 : 1,
                         ...shadow,
                       }}
                     >
                       <View style={{
                         width: 36, height: 36, borderRadius: 10,
-                        backgroundColor: introLocked ? 'rgba(22,21,58,0.05)' : done ? C.greenBg : accent + '20',
+                        backgroundColor: introLocked ? 'rgba(22,21,58,0.05)' : done ? C.greenBg : a(accent, 0.125),
                         alignItems: 'center', justifyContent: 'center', flexShrink: 0,
                       }}>
                         {introLocked
@@ -212,7 +220,7 @@ export function TrailContent({ userId, level }: TrailContentProps) {
                         </AppText>
                         <View style={{ flexDirection: 'row', gap: 6, marginTop: 5 }}>
                           <View style={{
-                            backgroundColor: introLocked ? 'rgba(22,21,58,0.05)' : accent + '15',
+                            backgroundColor: introLocked ? 'rgba(22,21,58,0.05)' : a(accent, 0.082),
                             borderRadius: 6, paddingHorizontal: 7, paddingVertical: 3,
                             flexDirection: 'row', alignItems: 'center', gap: 3,
                           }}>
@@ -227,7 +235,7 @@ export function TrailContent({ userId, level }: TrailContentProps) {
                         <View style={{
                           backgroundColor: done ? 'transparent' : accent,
                           borderRadius: 10, paddingHorizontal: 12, paddingVertical: 8,
-                          borderWidth: done ? 1 : 0, borderColor: accent + '40',
+                          borderWidth: done ? 1 : 0, borderColor: a(accent, 0.25),
                           flexDirection: 'row', alignItems: 'center', gap: 4,
                         }}>
                           <AppText style={{ fontSize: 12, fontWeight: '800', color: done ? accent : '#FFF' }}>
@@ -265,7 +273,7 @@ export function TrailContent({ userId, level }: TrailContentProps) {
                     >
                       <View style={{
                         width: 36, height: 36, borderRadius: 10,
-                        backgroundColor: complete ? C.greenBg : (!locked && current) ? accent + '18' : C.ghost,
+                        backgroundColor: complete ? C.greenBg : (!locked && current) ? a(accent, 0.094) : C.ghost,
                         alignItems: 'center', justifyContent: 'center', flexShrink: 0,
                       }}>
                         {complete ? (
@@ -333,7 +341,7 @@ export function TrailContent({ userId, level }: TrailContentProps) {
                         <View style={{
                           backgroundColor: 'transparent', borderRadius: 10,
                           paddingHorizontal: 12, paddingVertical: 8,
-                          borderWidth: 1, borderColor: accent + '50',
+                          borderWidth: 1, borderColor: a(accent, 0.314),
                           flexDirection: 'row', alignItems: 'center', gap: 4,
                         }}>
                           <AppText style={{ fontSize: 12, fontWeight: '800', color: accent }}>

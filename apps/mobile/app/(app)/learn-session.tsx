@@ -46,6 +46,14 @@ import { checkLevelPromotion, promoteUserLevel, NEXT_LEVEL } from '@/lib/levelPr
 import PromotionModal from '@/components/ui/PromotionModal';
 import { supabase } from '@/lib/supabase';
 
+// ── Color helper — rgba() for Android hex+alpha compatibility ──
+function a(hex: string, alpha: number): string {
+  const r = parseInt(hex.slice(1, 3), 16);
+  const g = parseInt(hex.slice(3, 5), 16);
+  const b = parseInt(hex.slice(5, 7), 16);
+  return `rgba(${r},${g},${b},${alpha})`;
+}
+
 // ── Palette ────────────────────────────────────────────────────
 const C = {
   bg:        '#F4F3FA',
@@ -1054,7 +1062,7 @@ export default function LearnSessionScreen() {
                 flexDirection: 'row', alignItems: 'center', gap: 5,
                 paddingHorizontal: 10, paddingVertical: 4, borderRadius: 10,
                 backgroundColor: accentBg, borderWidth: 1,
-                borderColor: accent + '33',
+                borderColor: a(accent, 0.2),
               }}>
                 {currentStep.kind === 'grammar'
                   ? <BookOpen  size={12} color={accent} weight="fill" />
@@ -1465,7 +1473,7 @@ export default function LearnSessionScreen() {
                 </AppText>
               )}
               {(currentStep.phrase.type === 'listen_write' || currentStep.phrase.type === 'minimal_pairs') && pronStatus !== 'result' && (
-                <View style={{ height: 4, backgroundColor: accent + '33', borderRadius: 2, marginBottom: 24 }} />
+                <View style={{ height: 4, backgroundColor: a(accent, 0.2), borderRadius: 2, marginBottom: 24 }} />
               )}
 
               {/* sentence_stress: show tappable words */}
@@ -1532,7 +1540,7 @@ export default function LearnSessionScreen() {
                     style={{
                       flexDirection: 'row', alignItems: 'center', justifyContent: 'center', gap: 10,
                       backgroundColor: accentBg, borderRadius: 16, borderWidth: 1.5,
-                      borderColor: accent + '40', paddingVertical: 14, marginBottom: 16,
+                      borderColor: a(accent, 0.25), paddingVertical: 14, marginBottom: 16,
                     }}
                   >
                     {isPlaying

@@ -5,6 +5,7 @@
 
 import { Tabs } from 'expo-router';
 import { Platform, View, Image } from 'react-native';
+import { useSafeAreaInsets } from 'react-native-safe-area-context';
 import { House, Lightning, Notepad, Rocket, UserCircle } from 'phosphor-react-native';
 import { useAuth } from '@/hooks/useAuth';
 import { UserLevel } from '@/lib/levelConfig';
@@ -19,6 +20,7 @@ export default function TabLayout() {
   const { profile } = useAuth();
   const level  = (profile?.charlotte_level ?? 'Inter') as UserLevel;
   const accent = LEVEL_ACCENT[level];
+  const insets = useSafeAreaInsets();
 
   return (
     <Tabs
@@ -31,8 +33,9 @@ export default function TabLayout() {
           backgroundColor: '#FFFFFF',
           borderTopColor: 'rgba(22,21,58,0.08)',
           borderTopWidth: 1,
-          height: Platform.OS === 'ios' ? 80 : 60,
+          height: Platform.OS === 'ios' ? 80 : 60 + insets.bottom,
           paddingTop: 8,
+          paddingBottom: Platform.OS === 'android' ? insets.bottom : 0,
         },
       }}
     >
