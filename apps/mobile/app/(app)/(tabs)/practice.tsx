@@ -3,7 +3,7 @@
 
 import React, { useState, useCallback, useMemo } from 'react';
 import {
-  View, ScrollView, TouchableOpacity, Alert, Platform, ActivityIndicator,
+  View, ScrollView, TouchableOpacity, Alert, Platform, ActivityIndicator, Image,
 } from 'react-native';
 import { SafeAreaView } from 'react-native-safe-area-context';
 import { router, useFocusEffect } from 'expo-router';
@@ -336,52 +336,65 @@ export default function PracticeTab() {
               {/* Accent top strip */}
               <View style={{ height: 3, backgroundColor: suggestion.card.accentColor }} />
 
-              <View style={{ padding: 22 }}>
-                {/* Label */}
-                <AppText style={{
-                  fontSize: 10, fontWeight: '700',
-                  color: 'rgba(255,255,255,0.38)',
-                  letterSpacing: 1.4, textTransform: 'uppercase',
-                  marginBottom: 18,
-                }}>
-                  {isPt ? 'Charlotte sugere' : 'Charlotte suggests'}
-                </AppText>
+              {/* Charlotte bust + suggestion content */}
+              <View style={{ flexDirection: 'row', alignItems: 'flex-end', paddingRight: 20, minHeight: 160 }}>
+                {/* Charlotte bust — same pattern as Home tab */}
+                <Image
+                  source={require('@/assets/charlotte-bust.png')}
+                  style={{ width: 108, height: 152, marginBottom: -1, flexShrink: 0, alignSelf: 'flex-end' }}
+                  resizeMode="contain"
+                />
 
-                {/* Icon + title row */}
-                <View style={{ flexDirection: 'row', alignItems: 'center', gap: 16, marginBottom: 14 }}>
-                  <View style={{
-                    width: 56, height: 56, borderRadius: 16,
-                    backgroundColor: a(suggestion.card.accentColor, 0.18),
-                    alignItems: 'center', justifyContent: 'center',
+                {/* Right: label + mode + reason */}
+                <View style={{ flex: 1, paddingLeft: 14, paddingTop: 22, paddingBottom: 18, justifyContent: 'center' }}>
+                  <AppText style={{
+                    fontSize: 10, fontWeight: '700',
+                    color: 'rgba(255,255,255,0.38)',
+                    letterSpacing: 1.4, textTransform: 'uppercase',
+                    marginBottom: 10,
                   }}>
-                    {getModeIcon(suggestion.card.mode, suggestion.card.accentColor, 26)}
+                    {isPt ? 'Charlotte sugere' : 'Charlotte suggests'}
+                  </AppText>
+
+                  {/* Mode icon + title */}
+                  <View style={{ flexDirection: 'row', alignItems: 'center', gap: 10, marginBottom: 10 }}>
+                    <View style={{
+                      width: 38, height: 38, borderRadius: 11,
+                      backgroundColor: a(suggestion.card.accentColor, 0.20),
+                      alignItems: 'center', justifyContent: 'center', flexShrink: 0,
+                    }}>
+                      {getModeIcon(suggestion.card.mode, suggestion.card.accentColor, 18)}
+                    </View>
+                    <AppText style={{ fontSize: 21, fontWeight: '900', color: '#FFFFFF', flex: 1, lineHeight: 26 }}>
+                      {suggestion.card.title}
+                    </AppText>
                   </View>
-                  <AppText style={{ fontSize: 28, fontWeight: '900', color: '#FFFFFF', flex: 1, lineHeight: 34 }}>
-                    {suggestion.card.title}
+
+                  {/* Reason */}
+                  <AppText style={{ fontSize: 12, color: 'rgba(255,255,255,0.55)', lineHeight: 18 }}>
+                    {suggestion.reason}
                   </AppText>
                 </View>
+              </View>
 
-                {/* Reason */}
-                <AppText style={{
-                  fontSize: 14, color: 'rgba(255,255,255,0.58)',
-                  lineHeight: 22, marginBottom: 22,
-                }}>
-                  {suggestion.reason}
-                </AppText>
-
-                {/* CTA */}
+              {/* Divider + CTA row */}
+              <View style={{ height: 1, backgroundColor: 'rgba(255,255,255,0.07)', marginHorizontal: 20 }} />
+              <View style={{
+                flexDirection: 'row', alignItems: 'center',
+                justifyContent: 'flex-end',
+                paddingHorizontal: 20, paddingVertical: 14,
+              }}>
                 <View style={{
                   flexDirection: 'row', alignItems: 'center',
-                  alignSelf: 'flex-start',
                   backgroundColor: suggestion.card.accentColor,
-                  borderRadius: 12,
-                  paddingVertical: 11, paddingHorizontal: 20,
+                  borderRadius: 10,
+                  paddingVertical: 9, paddingHorizontal: 16,
                   gap: 6,
                 }}>
-                  <AppText style={{ fontSize: 14, fontWeight: '800', color: '#FFFFFF' }}>
+                  <AppText style={{ fontSize: 13, fontWeight: '800', color: '#FFFFFF' }}>
                     {isPt ? 'Começar agora' : 'Start now'}
                   </AppText>
-                  <CaretRight size={13} color="#FFFFFF" weight="bold" />
+                  <CaretRight size={12} color="#FFFFFF" weight="bold" />
                 </View>
               </View>
             </TouchableOpacity>
