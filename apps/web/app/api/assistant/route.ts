@@ -57,7 +57,11 @@ interface AssistantRequest {
   userName?: string;
   messageType?: 'text' | 'audio';
   conversationContext?: string;
-  mode?: 'grammar' | 'pronunciation' | 'chat'; // Chat mode (RN app only — optional for backward compat)
+  mode?: 'grammar' | 'pronunciation' | 'chat' | 'explain_error'; // Chat mode (RN app only — optional for backward compat)
+  // explain_error extras
+  exerciseType?: string;
+  userAnswer?: string;
+  correctAnswer?: string;
 }
 
 // ✅ Interface atualizada para incluir dados de gramática
@@ -131,6 +135,10 @@ async function handleAssistantPOST(request: NextRequest, userId: string | null) 
     }
     if (mode === 'pronunciation') {
       return await handlePronunciationMode(transcription, pronunciationData, userLevel, userName);
+    }
+    if (mode === 'explain_error') {
+      const { exerciseType, userAnswer, correctAnswer } = body;
+      return await handleExplainError(transcription, userAnswer ?? '', correctAnswer ?? '', exerciseType ?? 'grammar', userLevel, userName);
     }
     // mode === 'chat' or undefined → fall through to existing logic (unchanged)
 
@@ -3035,6 +3043,86 @@ function generateEncouragement(score: number): string {
 // Detect "explain more" requests (sent by the Explain more button)
 function isExplainMoreRequest(text: string): boolean {
   return /please explain that correction|me explique melhor essa corre/i.test(text);
+}
+
+// ── EXPLAIN ERROR MODE ────────────────────────────────────────────────────────
+const EXPLAIN_ERROR_PROMPTS: Record<string, string> = {
+  Novice: `Você é Charlotte, professora de inglês. Responda SEMPRE em português. Sem emojis. Sem markdown (sem **, sem ##, sem listas com -).
+
+O aluno errou um exercício. Você receberá:
+- A frase/pergunta do exercício
+- O que ele respondeu (errado)
+- A resposta correta
+
+Explique de forma simples e direta:
+1. Por que a resposta dele estava errada (em 1 frase)
+2. Por que a resposta correta é a certa (regra ou significado, em 1-2 frases)
+3. Um exemplo curto usando a forma correta
+
+Tom: calmo, encorajador, como uma professora paciente. Máximo 5 linhas. Sem numeração na resposta.`,
+
+  Inter: `You are Charlotte, an English teacher. Plain text only — no markdown, no **, no ##.
+
+The student made an error in a grammar exercise. You will receive:
+- The exercise sentence/question
+- What the student answered (wrong)
+- The correct answer
+
+Explain concisely:
+1. Why their answer was wrong (1 sentence)
+2. Why the correct answer is right — the rule or meaning (1-2 sentences)
+3. One short example using the correct form
+
+Be direct and encouraging. Maximum 5 lines. No numbered list in the response.`,
+
+  Advanced: `You are Charlotte, a precise English teacher. Plain text only — no markdown, no **, no ##.
+
+The student made an error in a grammar exercise. You will receive the exercise, their wrong answer, and the correct answer.
+
+Explain briefly:
+- The specific rule or concept they missed
+- Why the correct answer applies here
+- One natural example sentence
+
+Collegial, direct tone. Maximum 4 lines.`,
+};
+
+async function handleExplainError(
+  sentence: string,
+  userAnswer: string,
+  correctAnswer: string,
+  exerciseType: string,
+  userLevel: 'Novice' | 'Inter' | 'Advanced',
+  userName?: string,
+): Promise<NextResponse> {
+  try {
+    const systemPrompt = EXPLAIN_ERROR_PROMPTS[userLevel] ?? EXPLAIN_ERROR_PROMPTS.Inter;
+    const userMessage = [
+      `Exercise: "${sentence}"`,
+      `Student's answer: "${userAnswer}"`,
+      `Correct answer: "${correctAnswer}"`,
+      `Exercise type: ${exerciseType}`,
+    ].join('\n');
+
+    const response = await openai.chat.completions.create({
+      model: 'gpt-4o-mini',
+      messages: [
+        { role: 'system', content: systemPrompt },
+        { role: 'user', content: userMessage },
+      ],
+      max_tokens: userLevel === 'Advanced' ? 180 : 220,
+      temperature: 0.5,
+    });
+
+    const feedback = response.choices[0]?.message?.content ?? '';
+    return NextResponse.json({
+      success: true,
+      result: { feedback, technicalFeedback: '', xpAwarded: 0, tips: [], encouragement: '' },
+    });
+  } catch (error: any) {
+    console.error('handleExplainError error:', error);
+    return NextResponse.json({ success: false, error: error?.message ?? 'Explain error failed' }, { status: 500 });
+  }
 }
 
 const GRAMMAR_SYSTEM_PROMPTS: Record<string, string> = {

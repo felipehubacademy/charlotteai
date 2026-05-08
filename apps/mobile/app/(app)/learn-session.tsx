@@ -4,7 +4,7 @@ import { useAchievementsContext } from '@/components/achievements/AchievementsPr
 import {
   View, ScrollView, TouchableOpacity, TextInput,
   KeyboardAvoidingView, Platform, Animated,
-  ActivityIndicator, Pressable,
+  ActivityIndicator, Pressable, Modal,
 } from 'react-native';
 import { SafeAreaView, useSafeAreaInsets } from 'react-native-safe-area-context';
 import { router, useLocalSearchParams } from 'expo-router';
@@ -12,6 +12,7 @@ import {
   ArrowLeft, ArrowRight, CheckCircle, XCircle,
   LightbulbFilament, BookOpen, Microphone,
   SpeakerHigh, Play, Pause, ArrowsClockwise,
+  Question, ThumbsUp, ThumbsDown,
 } from 'phosphor-react-native';
 import AnimatedXPBadge from '@/components/ui/AnimatedXPBadge';
 import * as SecureStore from 'expo-secure-store';
@@ -312,6 +313,13 @@ export default function LearnSessionScreen() {
   const [wordOrderPool, setWordOrderPool]     = useState<string[]>([]);
   const feedbackAnim = useRef(new Animated.Value(0)).current;
 
+  // ── Explain error modal ──────────────────────────────────────────────────────
+  const [showExplain, setShowExplain]         = useState(false);
+  const [explainLoading, setExplainLoading]   = useState(false);
+  const [explainContent, setExplainContent]   = useState<string | null>(null);
+  const [explainRating, setExplainRating]     = useState<1 | -1 | null>(null);
+  const explainIdRef = useRef<string | null>(null); // DB row id for thumb update
+
   // ── Pronunciation state ────────────────────────────────────
   type PronStatus = 'loading_audio' | 'listening' | 'recording' | 'assessing' | 'result' | 'error' | 'retry';
   type PronFeedbackState = 'correct' | 'close' | 'error';
@@ -367,6 +375,68 @@ export default function LearnSessionScreen() {
     : currentStep.kind === 'grammar' ? C.gold : C.violet;
   const accentBg     = !currentStep ? C.goldBg
     : currentStep.kind === 'grammar' ? C.goldBg : C.violetBg;
+
+  // ── Explain error ────────────────────────────────────────────────────────────
+  const fetchExplainError = useCallback(async () => {
+    if (!currentStep || currentStep.kind !== 'grammar') return;
+    const ex = currentStep.exercise;
+    setShowExplain(true);
+    setExplainLoading(true);
+    setExplainContent(null);
+    setExplainRating(null);
+    explainIdRef.current = null;
+    try {
+      const res = await fetch(`${API_BASE_URL}/api/assistant`, {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json', ...(userId ? { 'x-user-id': userId } : {}) },
+        body: JSON.stringify({
+          transcription: ex.sentence ?? (ex as any).question ?? '',
+          userAnswer,
+          correctAnswer: ex.answer ?? '',
+          exerciseType: ex.type,
+          userLevel: level,
+          mode: 'explain_error',
+        }),
+      });
+      const data = await res.json();
+      const text = data?.result?.feedback ?? '';
+      setExplainContent(text);
+
+      // Persist for analytics
+      if (userId && text) {
+        const { data: row } = await supabase
+          .from('explain_feedback')
+          .insert({
+            user_id: userId,
+            exercise_type: ex.type,
+            level,
+            sentence: ex.sentence ?? (ex as any).question ?? '',
+            user_answer: userAnswer,
+            correct_answer: ex.answer ?? '',
+            explanation: text,
+          })
+          .select('id')
+          .single();
+        if (row?.id) explainIdRef.current = row.id;
+      }
+    } catch {
+      setExplainContent(isPortuguese
+        ? 'Não foi possível carregar a explicação. Tente novamente.'
+        : 'Could not load the explanation. Please try again.');
+    } finally {
+      setExplainLoading(false);
+    }
+  }, [currentStep, userAnswer, userId, level, isPortuguese]);
+
+  const saveExplainRating = useCallback(async (rating: 1 | -1) => {
+    setExplainRating(rating);
+    if (!explainIdRef.current) return;
+    await supabase
+      .from('explain_feedback')
+      .update({ rating })
+      .eq('id', explainIdRef.current)
+      .catch(() => {});
+  }, []);
 
   // ── Tour 2: pronúncia — dispara na primeira vez que chega num step de pron ──
   useEffect(() => {
@@ -1840,7 +1910,7 @@ export default function LearnSessionScreen() {
           )}
 
           {/* Why / Por quê */}
-          <View style={{ padding: 12, backgroundColor: 'rgba(22,21,58,0.06)', borderRadius: 12, marginBottom: 16 }}>
+          <View style={{ padding: 12, backgroundColor: 'rgba(22,21,58,0.06)', borderRadius: 12, marginBottom: !isCorrect ? 10 : 16 }}>
             <AppText style={{ fontSize: 11, fontWeight: '700', color: isCorrect ? C.green : C.red, textTransform: 'uppercase', letterSpacing: 0.7, marginBottom: 4 }}>
               {isPortuguese ? 'Por quê' : 'Why'}
             </AppText>
@@ -1848,6 +1918,24 @@ export default function LearnSessionScreen() {
               {currentStep.exercise.explanation}
             </AppText>
           </View>
+
+          {/* Explain my error button — wrong answers only */}
+          {!isCorrect && (
+            <TouchableOpacity
+              onPress={fetchExplainError}
+              activeOpacity={0.8}
+              style={{
+                flexDirection: 'row', alignItems: 'center', justifyContent: 'center', gap: 6,
+                borderWidth: 1.5, borderColor: 'rgba(220,38,38,0.35)',
+                borderRadius: 12, paddingVertical: 11, marginBottom: 16,
+              }}
+            >
+              <Question size={16} color={C.red} weight="bold" />
+              <AppText style={{ fontSize: 13, fontWeight: '700', color: C.red }}>
+                {isPortuguese ? 'Por que errei?' : 'Explain my error'}
+              </AppText>
+            </TouchableOpacity>
+          )}
 
           {/* Next button */}
           <TouchableOpacity
@@ -1947,6 +2035,99 @@ export default function LearnSessionScreen() {
           </Animated.View>
         );
       })()}
+
+      {/* ── Explain Error Modal ──────────────────────────────────────────────── */}
+      <Modal
+        visible={showExplain}
+        transparent
+        animationType="slide"
+        onRequestClose={() => setShowExplain(false)}
+      >
+        <View style={{ flex: 1, justifyContent: 'flex-end', backgroundColor: 'rgba(0,0,0,0.45)' }}>
+          <View style={{
+            backgroundColor: '#FFF',
+            borderTopLeftRadius: 24, borderTopRightRadius: 24,
+            paddingHorizontal: 24, paddingTop: 20,
+            paddingBottom: insets.bottom + 24,
+          }}>
+            {/* Handle */}
+            <View style={{ width: 36, height: 4, borderRadius: 2, backgroundColor: 'rgba(22,21,58,0.15)', alignSelf: 'center', marginBottom: 20 }} />
+
+            {/* Header */}
+            <View style={{ flexDirection: 'row', alignItems: 'center', gap: 8, marginBottom: 16 }}>
+              <View style={{ width: 32, height: 32, borderRadius: 16, backgroundColor: 'rgba(220,38,38,0.1)', alignItems: 'center', justifyContent: 'center' }}>
+                <Question size={17} color={C.red} weight="bold" />
+              </View>
+              <AppText style={{ fontSize: 16, fontWeight: '800', color: C.navy, flex: 1 }}>
+                {isPortuguese ? 'Por que errei?' : 'Explain my error'}
+              </AppText>
+              <TouchableOpacity onPress={() => setShowExplain(false)} hitSlop={{ top: 10, bottom: 10, left: 10, right: 10 }}>
+                <XCircle size={22} color="rgba(22,21,58,0.3)" weight="fill" />
+              </TouchableOpacity>
+            </View>
+
+            {/* Content */}
+            {explainLoading ? (
+              <View style={{ gap: 10, marginBottom: 24 }}>
+                {[1, 0.7, 0.5].map((opacity, i) => (
+                  <View key={i} style={{ height: 14, borderRadius: 7, backgroundColor: `rgba(22,21,58,${opacity * 0.1})`, width: `${85 - i * 15}%` }} />
+                ))}
+                <ActivityIndicator size="small" color={C.red} style={{ marginTop: 8 }} />
+              </View>
+            ) : (
+              <View style={{ marginBottom: 20 }}>
+                <AppText style={{ fontSize: 14, color: C.navy, lineHeight: 22 }}>
+                  {explainContent ?? ''}
+                </AppText>
+              </View>
+            )}
+
+            {/* Thumbs feedback */}
+            {!explainLoading && explainContent && (
+              <View style={{ flexDirection: 'row', alignItems: 'center', gap: 8, marginBottom: 20 }}>
+                <AppText style={{ fontSize: 12, color: 'rgba(22,21,58,0.45)', flex: 1 }}>
+                  {isPortuguese ? 'Esta explicação foi útil?' : 'Was this helpful?'}
+                </AppText>
+                <TouchableOpacity
+                  onPress={() => saveExplainRating(1)}
+                  style={{
+                    width: 36, height: 36, borderRadius: 18, alignItems: 'center', justifyContent: 'center',
+                    backgroundColor: explainRating === 1 ? 'rgba(61,136,0,0.15)' : 'rgba(22,21,58,0.06)',
+                  }}
+                >
+                  <ThumbsUp size={18} color={explainRating === 1 ? C.green : 'rgba(22,21,58,0.35)'} weight={explainRating === 1 ? 'fill' : 'regular'} />
+                </TouchableOpacity>
+                <TouchableOpacity
+                  onPress={() => saveExplainRating(-1)}
+                  style={{
+                    width: 36, height: 36, borderRadius: 18, alignItems: 'center', justifyContent: 'center',
+                    backgroundColor: explainRating === -1 ? 'rgba(220,38,38,0.12)' : 'rgba(22,21,58,0.06)',
+                  }}
+                >
+                  <ThumbsDown size={18} color={explainRating === -1 ? C.red : 'rgba(22,21,58,0.35)'} weight={explainRating === -1 ? 'fill' : 'regular'} />
+                </TouchableOpacity>
+              </View>
+            )}
+
+            {/* Continue button */}
+            <TouchableOpacity
+              onPress={() => { setShowExplain(false); handleNext(); }}
+              activeOpacity={0.85}
+              style={{
+                backgroundColor: C.navy, borderRadius: 14, paddingVertical: 15,
+                flexDirection: 'row', alignItems: 'center', justifyContent: 'center', gap: 8,
+              }}
+            >
+              <AppText style={{ fontSize: 15, fontWeight: '800', color: '#FFF' }}>
+                {stepIdx + 1 >= totalSteps
+                  ? (isPortuguese ? 'Concluir' : 'Finish')
+                  : (isPortuguese ? 'Continuar' : 'Continue')}
+              </AppText>
+              {stepIdx + 1 < totalSteps && <ArrowRight size={18} color="#FFF" weight="bold" />}
+            </TouchableOpacity>
+          </View>
+        </View>
+      </Modal>
 
     </SafeAreaView>
   );
