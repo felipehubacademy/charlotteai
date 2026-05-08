@@ -34,6 +34,7 @@ import {
   LightbulbFilament,
   Notepad,
 } from 'phosphor-react-native';
+import { useVideoPlayer, VideoView } from 'expo-video';
 import * as SecureStore from 'expo-secure-store';
 import * as Haptics from 'expo-haptics';
 import Constants from 'expo-constants';
@@ -585,6 +586,11 @@ export default function HomeScreen() {
   const scrollViewRef       = useRef<any>(null);
   const headerRef           = useRef<any>(null);
   const charlotteCardRef    = useRef<any>(null);
+  const greetingPlayer = useVideoPlayer(require('@/assets/charlotte-greeting.mp4'), p => {
+    p.loop = true;
+    p.muted = true;
+    p.play();
+  });
   const goalsBannerRef      = useRef<any>(null);
   const learnTrailRef       = useRef<any>(null);
   const reviewCardRef       = useRef<any>(null);
@@ -1287,11 +1293,14 @@ export default function HomeScreen() {
               minHeight: 140,
             }}>
               {/* Bust — bottom edge flush com o strip */}
-              <Image
-                source={require('@/assets/charlotte-bust.png')}
-                style={{ width: 118, height: 165, marginBottom: -15, flexShrink: 0, alignSelf: 'flex-end' }}
-                resizeMode="contain"
-              />
+              <View style={{ width: 118, height: 165, marginBottom: -15, flexShrink: 0, alignSelf: 'flex-end', overflow: 'hidden' }}>
+                <VideoView
+                  player={greetingPlayer}
+                  style={{ width: 118, height: Math.round(118 * 16 / 9) }}
+                  contentFit="cover"
+                  nativeControls={false}
+                />
+              </View>
 
               {/* Chat bubble */}
               <View style={{ flex: 1, paddingLeft: 10, paddingVertical: 16, justifyContent: 'center' }}>
