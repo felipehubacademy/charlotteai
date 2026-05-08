@@ -211,8 +211,8 @@ export default function GoalsTab() {
     p.play();
   });
 
-  const VIDEO_W = 100;
-  const VIDEO_H = Math.round(VIDEO_W * 16 / 9); // 178px
+  const VIDEO_W = 130;
+  const VIDEO_H = Math.round(VIDEO_W * 16 / 9); // 231px
 
   return (
     <View style={{ flex: 1, backgroundColor: C.bg }}>
@@ -324,13 +324,15 @@ export default function GoalsTab() {
       )}
 
       {/* Charlotte de pé na borda inferior — pés alinhados com o navbar */}
-      <View style={{ position: 'absolute', bottom: 0, right: 20, width: VIDEO_W, height: VIDEO_H, overflow: 'hidden', borderRadius: 1 }} pointerEvents="none">
+      <View style={{ position: 'absolute', bottom: 0, left: 0, right: 0, alignItems: 'center' }} pointerEvents="none">
+      <View style={{ width: VIDEO_W, height: VIDEO_H, overflow: 'hidden', borderRadius: 1 }}>
         <VideoView
           player={goalsPlayer}
           style={{ width: VIDEO_W, height: VIDEO_H }}
           contentFit="cover"
           nativeControls={false}
         />
+      </View>
       </View>
     </View>
   );
