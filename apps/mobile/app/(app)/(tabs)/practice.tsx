@@ -1,9 +1,9 @@
 // app/(app)/(tabs)/practice.tsx
 // Practice tab — Charlotte's smart suggestion + full-width secondary mode cards.
 
-import React, { useState, useCallback, useMemo, useRef, useEffect } from 'react';
+import React, { useState, useCallback, useMemo } from 'react';
 import {
-  View, TouchableOpacity, Alert, Platform, ActivityIndicator, Animated, Easing,
+  View, TouchableOpacity, Alert, Platform, ActivityIndicator, Image,
 } from 'react-native';
 import { SafeAreaView } from 'react-native-safe-area-context';
 import { router, useFocusEffect } from 'expo-router';
@@ -172,18 +172,6 @@ export default function PracticeTab() {
   const isPt   = level === 'Novice';
   const accent = level === 'Novice' ? '#D97706' : level === 'Inter' ? '#7C3AED' : '#0F766E';
 
-  const floatAnim = useRef(new Animated.Value(0)).current;
-  useEffect(() => {
-    const anim = Animated.loop(
-      Animated.sequence([
-        Animated.timing(floatAnim, { toValue: -8, duration: 2200, useNativeDriver: true, easing: Easing.inOut(Easing.sin) }),
-        Animated.timing(floatAnim, { toValue:  0, duration: 2200, useNativeDriver: true, easing: Easing.inOut(Easing.sin) }),
-      ])
-    );
-    anim.start();
-    return () => anim.stop();
-  }, []);
-
   const [totalXP,            setTotalXP]            = useState(0);
   const [liveVoiceRemaining, setLiveVoiceRemaining] = useState<number | null>(null);
   const [recentPractices,    setRecentPractices]    = useState<RecentPractice[]>([]);
@@ -348,14 +336,13 @@ export default function PracticeTab() {
               {/* Charlotte corpo inteiro + conteúdo */}
               <View style={{ flexDirection: 'row', minHeight: 200 }}>
 
-                {/* Charlotte — esquerda, corpo inteiro, animação float */}
-                <Animated.Image
+                {/* Charlotte — esquerda, corpo inteiro */}
+                <Image
                   source={require('@/assets/charlotte-pointing-left.png')}
                   style={{
                     width: 130, height: 210,
                     alignSelf: 'flex-end',
                     marginBottom: -1,
-                    transform: [{ translateY: floatAnim }],
                   }}
                   resizeMode="contain"
                 />
