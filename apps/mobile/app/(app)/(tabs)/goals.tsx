@@ -227,6 +227,18 @@ export default function GoalsTab() {
         </View>
       </SafeAreaView>
 
+      {/* Charlotte de pé na borda inferior — antes do ScrollView para conteudo rolar por cima */}
+      <View style={{ position: 'absolute', bottom: -40, left: 0, right: 0, alignItems: 'center' }} pointerEvents="none">
+        <View style={{ width: VIDEO_W, height: VIDEO_H, overflow: 'hidden', borderRadius: 1 }}>
+          <VideoView
+            player={goalsPlayer}
+            style={{ width: VIDEO_W, height: VIDEO_H }}
+            contentFit="cover"
+            nativeControls={false}
+          />
+        </View>
+      </View>
+
       {loading ? (
         <View style={{ flex: 1, alignItems: 'center', justifyContent: 'center' }}>
           <ActivityIndicator size="large" color={C.navy} />
@@ -323,17 +335,6 @@ export default function GoalsTab() {
         </ScrollView>
       )}
 
-      {/* Charlotte de pé na borda inferior — pés alinhados com o navbar */}
-      <View style={{ position: 'absolute', bottom: -40, left: 0, right: 0, alignItems: 'center' }} pointerEvents="none">
-      <View style={{ width: VIDEO_W, height: VIDEO_H, overflow: 'hidden', borderRadius: 1 }}>
-        <VideoView
-          player={goalsPlayer}
-          style={{ width: VIDEO_W, height: VIDEO_H }}
-          contentFit="cover"
-          nativeControls={false}
-        />
-      </View>
-      </View>
     </View>
   );
 }
