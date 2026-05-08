@@ -4,7 +4,7 @@
 
 import React, { useCallback, useState } from 'react';
 import {
-  View, ScrollView, TouchableOpacity, ActivityIndicator, Platform,
+  View, TouchableOpacity, ActivityIndicator, Platform,
 } from 'react-native';
 import { useVideoPlayer, VideoView } from 'expo-video';
 import { SafeAreaView } from 'react-native-safe-area-context';
@@ -244,7 +244,7 @@ export default function GoalsTab() {
           <ActivityIndicator size="large" color={C.navy} />
         </View>
       ) : (
-        <ScrollView contentContainerStyle={{ paddingBottom: 200 }} showsVerticalScrollIndicator={false}>
+        <View style={{ flex: 1 }}>
 
           {/* Daily Missions */}
           <SectionHeader
@@ -332,7 +332,7 @@ export default function GoalsTab() {
               </View>
             </>
           )}
-        </ScrollView>
+        </View>
       )}
 
     </View>
