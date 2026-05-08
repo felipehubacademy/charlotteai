@@ -32,6 +32,7 @@ const C = {
   bg:        '#F4F3FA',
   card:      '#FFFFFF',
   navy:      '#16153A',
+  heroStrip: '#18193D',
   navyMid:   '#4B4A72',
   navyLight: '#9896B8',
   navyGhost: 'rgba(22,21,58,0.06)',
@@ -345,12 +346,12 @@ export default function HomeTab() {
       <View style={{ marginHorizontal: 20, marginTop: 8 }}>
         <View style={{ borderRadius: 22, backgroundColor: T.card, overflow: 'hidden', ...cardShadow }}>
           {/* Navy strip with bust + chat bubble */}
-          <View style={{ backgroundColor: C.navy, paddingRight: 20, flexDirection: 'row', alignItems: 'center', minHeight: 140 }}>
+          <View style={{ backgroundColor: C.heroStrip, paddingRight: 20, flexDirection: 'row', alignItems: 'center', minHeight: 140 }}>
             {/* borderRadius força clipping no Android (overflow:hidden sozinho nao funciona com VideoView) */}
-            <View style={{ width: 118, height: 165, marginBottom: -15, flexShrink: 0, alignSelf: 'flex-end', overflow: 'hidden', borderRadius: 1, backgroundColor: C.navy }}>
+            <View style={{ width: 118, height: 165, marginBottom: -15, flexShrink: 0, alignSelf: 'flex-end', overflow: 'hidden', borderRadius: 1, backgroundColor: C.heroStrip }}>
               <VideoView
                 player={greetingPlayer}
-                style={{ width: 118, height: Math.round(118 * 16 / 9), backgroundColor: C.navy }}
+                style={{ width: 118, height: Math.round(118 * 16 / 9), backgroundColor: C.heroStrip }}
                 contentFit="cover"
                 nativeControls={false}
               />
