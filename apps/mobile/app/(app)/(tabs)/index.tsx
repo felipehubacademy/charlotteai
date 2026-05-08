@@ -346,10 +346,11 @@ export default function HomeTab() {
         <View style={{ borderRadius: 22, backgroundColor: T.card, overflow: 'hidden', ...cardShadow }}>
           {/* Navy strip with bust + chat bubble */}
           <View style={{ backgroundColor: C.navy, paddingRight: 20, flexDirection: 'row', alignItems: 'center', minHeight: 140 }}>
-            <View style={{ width: 118, height: 165, marginBottom: -15, flexShrink: 0, alignSelf: 'flex-end', overflow: 'hidden' }}>
+            {/* borderRadius força clipping no Android (overflow:hidden sozinho nao funciona com VideoView) */}
+            <View style={{ width: 118, height: 165, marginBottom: -15, flexShrink: 0, alignSelf: 'flex-end', overflow: 'hidden', borderRadius: 1, backgroundColor: C.navy }}>
               <VideoView
                 player={greetingPlayer}
-                style={{ width: 118, height: Math.round(118 * 16 / 9) }}
+                style={{ width: 118, height: Math.round(118 * 16 / 9), backgroundColor: C.navy }}
                 contentFit="cover"
                 nativeControls={false}
               />
