@@ -49,7 +49,7 @@ function parseRange(req: NextRequest): { from: Date; to: Date; days: number } {
 // Segmentation filters (?level=Novice&plan=monthly&institutional=no).
 function parseFilters(req: NextRequest) {
   const level  = req.nextUrl.searchParams.get('level') || null;         // Novice | Inter | Advanced
-  const plan   = req.nextUrl.searchParams.get('plan')  || null;         // trial | monthly | yearly
+  const plan   = req.nextUrl.searchParams.get('plan')  || null;         // trial | monthly | yearly | institutional
   return { level, plan };
 }
 
@@ -174,6 +174,7 @@ export async function GET(req: NextRequest) {
   if (filters.plan) {
     // 'trial' filters by status; 'monthly' / 'yearly' filters by product.
     if (filters.plan === 'trial') users = users.filter(u => u.subscription_status === 'trial');
+    else if (filters.plan === 'institutional') users = users.filter(u => u.is_institutional);
     else if (filters.plan === 'monthly' || filters.plan === 'yearly') {
       users = users.filter(u => u.subscription_product === filters.plan);
     }

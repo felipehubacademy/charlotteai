@@ -1005,6 +1005,7 @@ export default function MetricsPage() {
             <option value="trial">Trial</option>
             <option value="monthly">Monthly</option>
             <option value="yearly">Yearly</option>
+            <option value="institutional">Institucional</option>
           </select>
           <button onClick={fetch_} disabled={loading} className="adm-btn-sm ghost" style={{ marginLeft: 4 }}>
             <RefreshCw size={13} style={{ animation: loading ? 'spin 1s linear infinite' : 'none' }} />
