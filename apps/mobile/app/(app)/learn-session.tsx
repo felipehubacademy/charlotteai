@@ -2040,7 +2040,7 @@ export default function LearnSessionScreen() {
       <Modal
         visible={showExplain}
         transparent
-        animationType="slide"
+        animationType="fade"
         onRequestClose={() => setShowExplain(false)}
       >
         <View style={{ flex: 1, justifyContent: 'flex-end', backgroundColor: 'rgba(0,0,0,0.45)' }}>
