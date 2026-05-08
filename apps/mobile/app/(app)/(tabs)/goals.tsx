@@ -228,7 +228,7 @@ export default function GoalsTab() {
       </SafeAreaView>
 
       {/* Charlotte de pé na borda inferior — antes do ScrollView para conteudo rolar por cima */}
-      <View style={{ position: 'absolute', bottom: -40, left: 0, right: 0, alignItems: 'center' }} pointerEvents="none">
+      <View style={{ position: 'absolute', bottom: -10, left: 0, right: 0, alignItems: 'center' }} pointerEvents="none">
         <View style={{ width: VIDEO_W, height: VIDEO_H, overflow: 'hidden', borderRadius: 1 }}>
           <VideoView
             player={goalsPlayer}
