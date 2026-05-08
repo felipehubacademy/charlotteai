@@ -368,7 +368,8 @@ export default function HomeTab() {
             </View>
           </View>
 
-          {/* Divider */}
+          {/* Divider + XP — zIndex:1 para ficar sobre o overflow da Charlotte */}
+          <View style={{ zIndex: 1, backgroundColor: T.card }}>
           <View style={{ height: 1, backgroundColor: C.navyGhost }} />
 
           {/* XP progress — tappable → stats screen */}
@@ -399,6 +400,7 @@ export default function HomeTab() {
               </View>
             </View>
           </TouchableOpacity>
+          </View>
         </View>
       </View>
 
