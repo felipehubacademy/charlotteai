@@ -19,7 +19,7 @@ import { UserLevel } from '@/lib/levelConfig';
 import { localMidnightUTC } from '@/lib/dateUtils';
 
 const C = {
-  bg:        '#F4F3FA',
+  bg:        '#F7F6FD',
   card:      '#FFFFFF',
   navy:      '#16153A',
   navyMid:   '#4B4A72',
