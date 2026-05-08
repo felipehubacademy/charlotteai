@@ -336,19 +336,8 @@ export default function PracticeTab() {
               {/* Charlotte corpo inteiro + conteúdo */}
               <View style={{ flexDirection: 'row', minHeight: 200 }}>
 
-                {/* Charlotte — esquerda, corpo inteiro */}
-                <Image
-                  source={require('@/assets/charlotte-pointing-left.png')}
-                  style={{
-                    width: 130, height: 210,
-                    alignSelf: 'flex-end',
-                    marginBottom: -1,
-                  }}
-                  resizeMode="contain"
-                />
-
-                {/* Conteúdo à direita */}
-                <View style={{ flex: 1, paddingRight: 20, paddingTop: 22, paddingBottom: 18, justifyContent: 'space-between' }}>
+                {/* Conteúdo à esquerda */}
+                <View style={{ flex: 1, paddingLeft: 20, paddingTop: 22, paddingBottom: 18, justifyContent: 'space-between' }}>
                   {/* Topo: label + modo + razão */}
                   <View>
                     <AppText style={{
@@ -389,6 +378,17 @@ export default function PracticeTab() {
                     <CaretRight size={12} color="#FFFFFF" weight="bold" />
                   </View>
                 </View>
+
+                {/* Charlotte — direita, corpo inteiro */}
+                <Image
+                  source={require('@/assets/charlotte-pointing-left.png')}
+                  style={{
+                    width: 130, height: 210,
+                    alignSelf: 'flex-end',
+                    marginBottom: -1,
+                  }}
+                  resizeMode="contain"
+                />
               </View>
             </TouchableOpacity>
           )}
