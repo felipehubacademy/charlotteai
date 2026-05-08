@@ -11,6 +11,7 @@ import Svg, { Circle } from 'react-native-svg';
 import { router, useFocusEffect } from 'expo-router';
 import { SafeAreaView } from 'react-native-safe-area-context';
 import { Fire, Lightning, Trophy } from 'phosphor-react-native';
+import { useVideoPlayer, VideoView } from 'expo-video';
 import * as SecureStore from 'expo-secure-store';
 import { AppText } from '@/components/ui/Text';
 import { useAuth } from '@/hooks/useAuth';
@@ -136,6 +137,11 @@ export default function HomeTab() {
   // Streak sound — same pattern as legacy home
   const isFreshLoginRef  = useRef(isFreshLogin);
   const pendingStreakRef  = useRef(false);
+  const greetingPlayer = useVideoPlayer(require('@/assets/charlotte-greeting.mp4'), p => {
+    p.loop = true;
+    p.muted = true;
+    p.play();
+  });
   useEffect(() => { isFreshLoginRef.current = isFreshLogin; }, [isFreshLogin]);
   useEffect(() => {
     if (!isFreshLogin && pendingStreakRef.current) {
@@ -340,11 +346,14 @@ export default function HomeTab() {
         <View style={{ borderRadius: 22, backgroundColor: T.card, overflow: 'hidden', ...cardShadow }}>
           {/* Navy strip with bust + chat bubble */}
           <View style={{ backgroundColor: C.navy, paddingRight: 20, flexDirection: 'row', alignItems: 'center', minHeight: 140 }}>
-            <Image
-              source={require('@/assets/charlotte-bust.png')}
-              style={{ width: 118, height: 165, marginBottom: -15, flexShrink: 0, alignSelf: 'flex-end' }}
-              resizeMode="contain"
-            />
+            <View style={{ width: 118, height: 165, marginBottom: -15, flexShrink: 0, alignSelf: 'flex-end', overflow: 'hidden' }}>
+              <VideoView
+                player={greetingPlayer}
+                style={{ width: 118, height: Math.round(118 * 16 / 9) }}
+                contentFit="cover"
+                nativeControls={false}
+              />
+            </View>
             <View style={{ flex: 1, paddingLeft: 10, paddingVertical: 16, justifyContent: 'center' }}>
               <View style={{ backgroundColor: '#3B3A5A', borderRadius: 18, borderTopLeftRadius: 0, paddingHorizontal: 14, paddingVertical: greetingLoading ? 10 : 12, alignSelf: 'flex-start' }}>
                 {greetingLoading || !aiGreeting ? (
