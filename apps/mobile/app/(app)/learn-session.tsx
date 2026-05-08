@@ -12,7 +12,7 @@ import {
   ArrowLeft, ArrowRight, CheckCircle, XCircle,
   LightbulbFilament, BookOpen, Microphone,
   SpeakerHigh, Play, Pause, ArrowsClockwise,
-  Question, ThumbsUp, ThumbsDown,
+  ThumbsUp, ThumbsDown, ChatCircle,
 } from 'phosphor-react-native';
 import AnimatedXPBadge from '@/components/ui/AnimatedXPBadge';
 import * as SecureStore from 'expo-secure-store';
@@ -1930,7 +1930,7 @@ export default function LearnSessionScreen() {
                 borderRadius: 12, paddingVertical: 11, marginBottom: 16,
               }}
             >
-              <Question size={16} color={C.red} weight="bold" />
+              <ChatCircle size={16} color={C.red} weight="bold" />
               <AppText style={{ fontSize: 13, fontWeight: '700', color: C.red }}>
                 {isPortuguese ? 'Por que errei?' : 'Explain my error'}
               </AppText>
@@ -2056,7 +2056,7 @@ export default function LearnSessionScreen() {
             {/* Header */}
             <View style={{ flexDirection: 'row', alignItems: 'center', gap: 8, marginBottom: 16 }}>
               <View style={{ width: 32, height: 32, borderRadius: 16, backgroundColor: 'rgba(220,38,38,0.1)', alignItems: 'center', justifyContent: 'center' }}>
-                <Question size={17} color={C.red} weight="bold" />
+                <ChatCircle size={17} color={C.red} weight="bold" />
               </View>
               <AppText style={{ fontSize: 16, fontWeight: '800', color: C.navy, flex: 1 }}>
                 {isPortuguese ? 'Por que errei?' : 'Explain my error'}
