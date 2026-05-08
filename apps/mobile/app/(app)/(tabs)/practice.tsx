@@ -345,59 +345,62 @@ export default function PracticeTab() {
               {/* Accent top strip */}
               <View style={{ height: 3, backgroundColor: suggestion.card.accentColor }} />
 
-              {/* Charlotte + conteúdo */}
-              <View style={{ minHeight: 168 }}>
-                {/* Conteúdo à esquerda — padding direito deixa espaço para Charlotte */}
-                <View style={{ paddingLeft: 20, paddingRight: 122, paddingTop: 22, paddingBottom: 18 }}>
-                  <AppText style={{
-                    fontSize: 10, fontWeight: '700',
-                    color: 'rgba(255,255,255,0.38)',
-                    letterSpacing: 1.4, textTransform: 'uppercase',
-                    marginBottom: 12,
-                  }}>
-                    {isPt ? 'Charlotte sugere' : 'Charlotte suggests'}
-                  </AppText>
-                  <View style={{ flexDirection: 'row', alignItems: 'center', gap: 10, marginBottom: 10 }}>
-                    <View style={{
-                      width: 38, height: 38, borderRadius: 11,
-                      backgroundColor: a(suggestion.card.accentColor, 0.20),
-                      alignItems: 'center', justifyContent: 'center', flexShrink: 0,
-                    }}>
-                      {getModeIcon(suggestion.card.mode, suggestion.card.accentColor, 18)}
-                    </View>
-                    <AppText style={{ fontSize: 22, fontWeight: '900', color: '#FFFFFF', flex: 1, lineHeight: 28 }}>
-                      {suggestion.card.title}
-                    </AppText>
-                  </View>
-                  <AppText style={{ fontSize: 12, color: 'rgba(255,255,255,0.55)', lineHeight: 19 }}>
-                    {suggestion.reason}
-                  </AppText>
-                </View>
+              {/* Charlotte corpo inteiro + conteúdo */}
+              <View style={{ flexDirection: 'row', minHeight: 200 }}>
 
-                {/* Charlotte — direita, espelhada, animação float */}
+                {/* Charlotte — esquerda, corpo inteiro, animação float */}
                 <Animated.Image
-                  source={require('@/assets/charlotte-bust.png')}
+                  source={require('@/assets/charlotte-pointing-left.png')}
                   style={{
-                    position: 'absolute', bottom: 0, right: 0,
-                    width: 112, height: 158,
-                    transform: [{ scaleX: -1 }, { translateY: floatAnim }],
+                    width: 130, height: 210,
+                    alignSelf: 'flex-end',
+                    marginBottom: -1,
+                    transform: [{ translateY: floatAnim }],
                   }}
                   resizeMode="contain"
                 />
-              </View>
 
-              {/* Divider + CTA */}
-              <View style={{ height: 1, backgroundColor: 'rgba(255,255,255,0.07)', marginHorizontal: 20 }} />
-              <View style={{ flexDirection: 'row', justifyContent: 'flex-end', paddingHorizontal: 20, paddingVertical: 14 }}>
-                <View style={{
-                  flexDirection: 'row', alignItems: 'center',
-                  backgroundColor: suggestion.card.accentColor,
-                  borderRadius: 10, paddingVertical: 9, paddingHorizontal: 16, gap: 6,
-                }}>
-                  <AppText style={{ fontSize: 13, fontWeight: '800', color: '#FFFFFF' }}>
-                    {isPt ? 'Começar agora' : 'Start now'}
-                  </AppText>
-                  <CaretRight size={12} color="#FFFFFF" weight="bold" />
+                {/* Conteúdo à direita */}
+                <View style={{ flex: 1, paddingRight: 20, paddingTop: 22, paddingBottom: 18, justifyContent: 'space-between' }}>
+                  {/* Topo: label + modo + razão */}
+                  <View>
+                    <AppText style={{
+                      fontSize: 10, fontWeight: '700',
+                      color: 'rgba(255,255,255,0.38)',
+                      letterSpacing: 1.4, textTransform: 'uppercase',
+                      marginBottom: 10,
+                    }}>
+                      {isPt ? 'Charlotte sugere' : 'Charlotte suggests'}
+                    </AppText>
+                    <View style={{ flexDirection: 'row', alignItems: 'center', gap: 8, marginBottom: 8 }}>
+                      <View style={{
+                        width: 34, height: 34, borderRadius: 10,
+                        backgroundColor: a(suggestion.card.accentColor, 0.20),
+                        alignItems: 'center', justifyContent: 'center', flexShrink: 0,
+                      }}>
+                        {getModeIcon(suggestion.card.mode, suggestion.card.accentColor, 16)}
+                      </View>
+                      <AppText style={{ fontSize: 20, fontWeight: '900', color: '#FFFFFF', flex: 1, lineHeight: 26 }}>
+                        {suggestion.card.title}
+                      </AppText>
+                    </View>
+                    <AppText style={{ fontSize: 12, color: 'rgba(255,255,255,0.55)', lineHeight: 18 }}>
+                      {suggestion.reason}
+                    </AppText>
+                  </View>
+
+                  {/* Botão — fundo, alinhado à esquerda do conteúdo */}
+                  <View style={{
+                    flexDirection: 'row', alignItems: 'center', alignSelf: 'flex-start',
+                    backgroundColor: suggestion.card.accentColor,
+                    borderRadius: 10, paddingVertical: 8, paddingHorizontal: 14,
+                    gap: 5, marginTop: 14,
+                  }}>
+                    <AppText style={{ fontSize: 13, fontWeight: '800', color: '#FFFFFF' }}>
+                      {isPt ? 'Começar agora' : 'Start now'}
+                    </AppText>
+                    <CaretRight size={12} color="#FFFFFF" weight="bold" />
+                  </View>
                 </View>
               </View>
             </TouchableOpacity>
