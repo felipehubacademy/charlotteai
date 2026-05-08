@@ -354,6 +354,8 @@ export default function HomeTab() {
                 contentFit="cover"
                 nativeControls={false}
               />
+              {/* cobre a costura direita — cor do strip sobre compressao do video */}
+              <View style={{ position: 'absolute', right: 0, top: 0, bottom: 0, width: 18, backgroundColor: C.navy }} />
             </View>
             <View style={{ flex: 1, paddingLeft: 10, paddingVertical: 16, justifyContent: 'center' }}>
               <View style={{ backgroundColor: '#3B3A5A', borderRadius: 18, borderTopLeftRadius: 0, paddingHorizontal: 14, paddingVertical: greetingLoading ? 10 : 12, alignSelf: 'flex-start' }}>
