@@ -232,7 +232,7 @@ export default function GoalsTab() {
           <ActivityIndicator size="large" color={C.navy} />
         </View>
       ) : (
-        <ScrollView contentContainerStyle={{ paddingBottom: 80 }} showsVerticalScrollIndicator={false}>
+        <ScrollView contentContainerStyle={{ paddingBottom: 200 }} showsVerticalScrollIndicator={false}>
 
           {/* Daily Missions */}
           <SectionHeader
@@ -324,7 +324,7 @@ export default function GoalsTab() {
       )}
 
       {/* Charlotte de pé na borda inferior — pés alinhados com o navbar */}
-      <View style={{ position: 'absolute', bottom: 0, left: 0, right: 0, alignItems: 'center' }} pointerEvents="none">
+      <View style={{ position: 'absolute', bottom: -40, left: 0, right: 0, alignItems: 'center' }} pointerEvents="none">
       <View style={{ width: VIDEO_W, height: VIDEO_H, overflow: 'hidden', borderRadius: 1 }}>
         <VideoView
           player={goalsPlayer}
