@@ -6,6 +6,7 @@ import React, { useCallback, useState } from 'react';
 import {
   View, ScrollView, TouchableOpacity, ActivityIndicator, Platform,
 } from 'react-native';
+import { useVideoPlayer, VideoView } from 'expo-video';
 import { SafeAreaView } from 'react-native-safe-area-context';
 import { router, useFocusEffect } from 'expo-router';
 import { CheckCircle } from 'phosphor-react-native';
@@ -204,6 +205,15 @@ export default function GoalsTab() {
 
   const doneMissions = missions.filter(m => m.completed).length;
 
+  const goalsPlayer = useVideoPlayer(require('@/assets/charlotte-goals.mp4'), p => {
+    p.loop = true;
+    p.muted = true;
+    p.play();
+  });
+
+  const VIDEO_W = 100;
+  const VIDEO_H = Math.round(VIDEO_W * 16 / 9); // 178px
+
   return (
     <View style={{ flex: 1, backgroundColor: C.bg }}>
       <SafeAreaView edges={['top']} style={{ backgroundColor: C.card }}>
@@ -312,6 +322,16 @@ export default function GoalsTab() {
           )}
         </ScrollView>
       )}
+
+      {/* Charlotte de pé na borda inferior — pés alinhados com o navbar */}
+      <View style={{ position: 'absolute', bottom: 0, right: 20, width: VIDEO_W, height: VIDEO_H, overflow: 'hidden', borderRadius: 1 }} pointerEvents="none">
+        <VideoView
+          player={goalsPlayer}
+          style={{ width: VIDEO_W, height: VIDEO_H }}
+          contentFit="cover"
+          nativeControls={false}
+        />
+      </View>
     </View>
   );
 }
