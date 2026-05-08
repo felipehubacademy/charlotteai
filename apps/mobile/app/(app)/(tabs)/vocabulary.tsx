@@ -1,5 +1,5 @@
 // app/(app)/(tabs)/vocabulary.tsx
-// Vocabulary tab — Tip of the Day + review prompt modal + searchable word list.
+// Vocabulary tab — Vocabulary of the Day + review prompt modal + searchable word list.
 // On focus: if words are due → modal "X words to review. Review now?"
 //   "Revisar" → /(app)/vocab-review  |  "Ver lista" → dismiss modal, show list
 // Word card: collapsed = term + /phonetic/ + speaker icon, tap → expand full details.
@@ -162,7 +162,7 @@ export default function VocabularyTab() {
         example:   tip.example,
         example_translation: isPt && tip.examplePt ? tip.examplePt : null,
         category:  TIP_CATEGORY_MAP[tip.type] ?? 'word',
-        source:    'tip_of_day',
+        source:    'vocab_of_day',
       });
 
       if (error) throw error;
@@ -333,7 +333,7 @@ export default function VocabularyTab() {
         </View>
       </SafeAreaView>
 
-      {/* Tip of the Day */}
+      {/* Vocabulary of the Day */}
       <View style={{
         marginHorizontal: 16, marginTop: 14, marginBottom: 2,
         backgroundColor: tipStyle.bg,
@@ -344,7 +344,7 @@ export default function VocabularyTab() {
         <View style={{ flexDirection: 'row', alignItems: 'center', justifyContent: 'space-between', marginBottom: 10 }}>
           <View style={{ flexDirection: 'row', alignItems: 'center', gap: 6 }}>
             <AppText style={{ fontSize: 11, fontWeight: '500', color: tipStyle.color, opacity: 0.75 }}>
-              {isPt ? 'Dica do dia' : 'Tip of the day'} ·
+              {isPt ? 'Vocabulário do dia' : 'Vocabulary of the day'} ·
             </AppText>
             <View style={{
               backgroundColor: `${tipStyle.color}18`, borderRadius: 8,
