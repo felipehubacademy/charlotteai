@@ -4,14 +4,13 @@
 
 import React, { useState, useCallback, useEffect, useRef, useMemo } from 'react';
 import {
-  View, ScrollView, TouchableOpacity, Image, Platform, Modal,
+  View, ScrollView, TouchableOpacity, Image, Platform,
   ActivityIndicator, RefreshControl, Animated, unstable_batchedUpdates,
 } from 'react-native';
 import Svg, { Circle } from 'react-native-svg';
 import { router, useFocusEffect } from 'expo-router';
 import { SafeAreaView } from 'react-native-safe-area-context';
-import { Fire, Lightning, Trophy, Lightbulb, X, Notepad, CaretRight } from 'phosphor-react-native';
-import { getTip, TIP_STYLE } from '@/lib/tips';
+import { Fire, Lightning, Trophy } from 'phosphor-react-native';
 import { useVideoPlayer, VideoView } from 'expo-video';
 import * as SecureStore from 'expo-secure-store';
 import { AppText } from '@/components/ui/Text';
@@ -126,12 +125,6 @@ export default function HomeTab() {
     return days > 0 ? days : 0;
   }, [profile]);
 
-  const accent     = level === 'Novice' ? '#D97706' : level === 'Inter' ? '#7C3AED' : '#0F766E';
-  const daySeed    = localTodayStr().split('-').reduce((acc, p) => acc * 100 + parseInt(p, 10), 0);
-  const tip        = getTip(level, daySeed);
-  const tipStyle   = TIP_STYLE[tip.type];
-
-  const [showTipModal,    setShowTipModal]    = useState(false);
   const [streak,          setStreak]          = useState(0);
   const [totalXP,         setTotalXP]         = useState(0);
   const [todayXP,         setTodayXP]         = useState(0);
@@ -420,115 +413,6 @@ export default function HomeTab() {
       >
         <TrailContent userId={userId} level={level} />
       </ScrollView>
-
-      {/* Vocabulary of the day — barra fixa acima do tab bar */}
-      <TouchableOpacity
-        onPress={() => setShowTipModal(true)}
-        activeOpacity={0.75}
-        style={{
-          backgroundColor: C.card,
-          borderTopWidth: 1,
-          borderTopColor: C.navyGhost,
-          paddingHorizontal: 20,
-          paddingVertical: 10,
-          flexDirection: 'row',
-          alignItems: 'center',
-          gap: 12,
-        }}
-      >
-        <View style={{
-          width: 36, height: 36, borderRadius: 12,
-          backgroundColor: tipStyle.bg,
-          alignItems: 'center', justifyContent: 'center', flexShrink: 0,
-        }}>
-          <Lightbulb size={18} color={tipStyle.color} weight="fill" />
-        </View>
-        <View style={{ flex: 1 }}>
-          <AppText style={{ fontSize: 9, fontWeight: '700', color: C.navyLight, textTransform: 'uppercase', letterSpacing: 0.9, marginBottom: 3 }}>
-            {isPt ? 'Vocabulário do dia' : 'Vocabulary of the day'}
-          </AppText>
-          <View style={{ flexDirection: 'row', alignItems: 'center', gap: 6, marginBottom: 2 }}>
-            <View style={{ backgroundColor: tipStyle.bg, borderRadius: 6, paddingHorizontal: 6, paddingVertical: 2 }}>
-              <AppText style={{ fontSize: 10, fontWeight: '700', color: tipStyle.color, textTransform: 'capitalize' }}>
-                {tip.type}
-              </AppText>
-            </View>
-            <AppText style={{ fontSize: 13, fontWeight: '700', color: C.navy }}>
-              {tip.term}
-            </AppText>
-          </View>
-          <AppText style={{ fontSize: 12, color: C.navyMid, lineHeight: 16 }} numberOfLines={1}>
-            {isPt && tip.meaningPt ? tip.meaningPt : tip.meaning}
-          </AppText>
-        </View>
-        <CaretRight size={16} color={C.navyLight} weight="bold" />
-      </TouchableOpacity>
-
-      {/* Modal vocab completo */}
-      <Modal visible={showTipModal} transparent animationType="fade" onRequestClose={() => setShowTipModal(false)}>
-        <TouchableOpacity
-          style={{ flex: 1, backgroundColor: 'rgba(22,21,58,0.52)', justifyContent: 'center', padding: 24 }}
-          activeOpacity={1}
-          onPress={() => setShowTipModal(false)}
-        >
-          <TouchableOpacity activeOpacity={1} onPress={() => {}}>
-            <View style={{ backgroundColor: C.card, borderRadius: 24, padding: 24 }}>
-
-              <View style={{ flexDirection: 'row', justifyContent: 'space-between', alignItems: 'flex-start', marginBottom: 18 }}>
-                <View style={{ backgroundColor: tipStyle.bg, borderRadius: 8, paddingHorizontal: 10, paddingVertical: 5 }}>
-                  <AppText style={{ fontSize: 12, fontWeight: '700', color: tipStyle.color, textTransform: 'capitalize' }}>
-                    {tip.type}
-                  </AppText>
-                </View>
-                <TouchableOpacity onPress={() => setShowTipModal(false)} hitSlop={{ top: 12, bottom: 12, left: 12, right: 12 }}>
-                  <X size={20} color={C.navyLight} weight="bold" />
-                </TouchableOpacity>
-              </View>
-
-              <AppText style={{ fontSize: 26, fontWeight: '800', color: C.navy, marginBottom: 8, letterSpacing: -0.5 }}>
-                {tip.term}
-              </AppText>
-
-              <AppText style={{ fontSize: 15, color: C.navyMid, lineHeight: 23, marginBottom: 20 }}>
-                {isPt && tip.meaningPt ? tip.meaningPt : tip.meaning}
-              </AppText>
-
-              <View style={{ backgroundColor: tipStyle.bg, borderRadius: 16, padding: 16 }}>
-                <AppText style={{ fontSize: 10, fontWeight: '700', color: tipStyle.color, textTransform: 'uppercase', letterSpacing: 0.8, marginBottom: 8 }}>
-                  {isPt ? 'Exemplo' : 'Example'}
-                </AppText>
-                <AppText style={{ fontSize: 15, color: C.navy, fontStyle: 'italic', lineHeight: 23 }}>
-                  "{tip.example}"
-                </AppText>
-                {isPt && tip.examplePt && (
-                  <AppText style={{ fontSize: 14, color: C.navyMid, fontStyle: 'italic', lineHeight: 22, marginTop: 8 }}>
-                    "{tip.examplePt}"
-                  </AppText>
-                )}
-              </View>
-
-              <TouchableOpacity
-                onPress={() => {
-                  setShowTipModal(false);
-                  router.push({ pathname: '/(app)/add-word', params: { term: tip.term, source: 'vocab_of_day' } });
-                }}
-                style={{
-                  marginTop: 16,
-                  backgroundColor: accent,
-                  borderRadius: 12, paddingVertical: 12,
-                  flexDirection: 'row', alignItems: 'center', justifyContent: 'center', gap: 6,
-                }}
-              >
-                <Notepad size={16} color="#FFFFFF" weight="fill" />
-                <AppText style={{ color: '#FFFFFF', fontWeight: '700', fontSize: 14 }}>
-                  {isPt ? '+ Salvar na minha lista' : '+ Add to my list'}
-                </AppText>
-              </TouchableOpacity>
-
-            </View>
-          </TouchableOpacity>
-        </TouchableOpacity>
-      </Modal>
 
     </View>
   );
