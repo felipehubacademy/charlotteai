@@ -51,7 +51,13 @@ export async function GET(req: NextRequest) {
     .maybeSingle();
 
   if (cached?.audio_url) {
-    return NextResponse.json({ url: cached.audio_url, cached: true });
+    // Valida que o arquivo ainda existe no Storage antes de retornar
+    const check = await fetch(cached.audio_url, { method: 'HEAD' });
+    if (check.ok) {
+      return NextResponse.json({ url: cached.audio_url, cached: true });
+    }
+    // Arquivo deletado do Storage — limpa cache e regenera
+    await supabase.from('tts_cache').delete().eq('term', normalizedTerm);
   }
 
   // ── 2. Generate via ElevenLabs ─────────────────────────────────────────────
