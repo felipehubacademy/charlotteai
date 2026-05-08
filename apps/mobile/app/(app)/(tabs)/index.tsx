@@ -356,7 +356,7 @@ export default function HomeTab() {
                 nativeControls={false}
               />
             </View>
-            <View style={{ flex: 1, paddingLeft: 10, paddingVertical: 16, justifyContent: 'center' }}>
+            <View style={{ flex: 1, paddingLeft: 2, paddingVertical: 16, justifyContent: 'center' }}>
               <View style={{ backgroundColor: '#3B3A5A', borderRadius: 18, borderTopLeftRadius: 0, paddingHorizontal: 14, paddingVertical: greetingLoading ? 10 : 12, alignSelf: 'flex-start' }}>
                 {greetingLoading || !aiGreeting ? (
                   <TypingDots />
