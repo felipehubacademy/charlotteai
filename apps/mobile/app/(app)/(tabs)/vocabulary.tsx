@@ -155,12 +155,23 @@ export default function VocabularyTab() {
         return;
       }
 
+      // Busca fonética via enrich-term (best-effort — não bloqueia se falhar)
+      let phonetic: string | null = null;
+      try {
+        const enrichRes = await fetch(`${API_BASE}/api/enrich-term?term=${encodeURIComponent(tip.term.trim())}`);
+        if (enrichRes.ok) {
+          const enrichData = await enrichRes.json();
+          phonetic = enrichData?.data?.phonetic ?? null;
+        }
+      } catch { /* silencioso */ }
+
       const { error } = await supabase.from('user_vocabulary').insert({
         user_id:   userId,
         term:      tip.term.trim(),
         definition: isPt && tip.meaningPt ? tip.meaningPt : tip.meaning,
         example:   tip.example,
         example_translation: isPt && tip.examplePt ? tip.examplePt : null,
+        phonetic,
         category:  TIP_CATEGORY_MAP[tip.type] ?? 'word',
         source:    'vocab_of_day',
       });
@@ -492,7 +503,6 @@ export default function VocabularyTab() {
         >
           {filtered.map((item) => {
             const isOpen = expanded === item.id;
-            const rev    = reviewLabel(item.next_review_at, isPt);
             const isTtsLoading = ttsLoading === item.id;
 
             return (
@@ -504,18 +514,8 @@ export default function VocabularyTab() {
               >
                 {/* Collapsed row — always visible */}
                 <View style={{ flexDirection: 'row', alignItems: 'center', paddingHorizontal: 16, paddingVertical: 14, gap: 12 }}>
-                  {/* Term + phonetic */}
-                  <View style={{ flex: 1 }}>
-                    <AppText style={{ fontSize: 16, fontWeight: '700', color: C.navy }}>{item.term}</AppText>
-                    {item.phonetic && (
-                      <AppText style={{ fontSize: 12, color: C.muted, marginTop: 1 }}>{item.phonetic}</AppText>
-                    )}
-                  </View>
-
-                  {/* Review badge */}
-                  <View style={{ backgroundColor: rev.bg, borderRadius: 8, paddingHorizontal: 8, paddingVertical: 3 }}>
-                    <AppText style={{ fontSize: 10, fontWeight: '700', color: rev.color }}>{rev.label}</AppText>
-                  </View>
+                  {/* Term only — sem fonética, sem badge de review */}
+                  <AppText style={{ flex: 1, fontSize: 16, fontWeight: '700', color: C.navy }}>{item.term}</AppText>
 
                   {/* Speaker icon */}
                   <TouchableOpacity
@@ -540,6 +540,9 @@ export default function VocabularyTab() {
                 {isOpen && (
                   <View style={{ paddingHorizontal: 16, paddingBottom: 14, gap: 8, borderTopWidth: 1, borderTopColor: C.border }}>
                     <View style={{ height: 8 }} />
+                    {item.phonetic && (
+                      <AppText style={{ fontSize: 13, color: C.muted, marginTop: -4, marginBottom: 2 }}>{item.phonetic}</AppText>
+                    )}
                     <AppText style={{ fontSize: 14, color: C.navyMid, lineHeight: 20 }}>
                       {item.definition}
                     </AppText>
