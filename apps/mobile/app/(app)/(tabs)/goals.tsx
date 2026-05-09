@@ -31,6 +31,8 @@ const C = {
   shadow:    'rgba(22,21,58,0.08)',
 };
 
+const isAndroid = Platform.OS === 'android';
+
 const cardShadow = Platform.select({
   ios:     { shadowColor: C.shadow, shadowOpacity: 1, shadowRadius: 16, shadowOffset: { width: 0, height: 4 } },
   android: { elevation: 4 },
@@ -38,8 +40,8 @@ const cardShadow = Platform.select({
 
 function SectionHeader({ label, badge, isPt }: { label: string; badge?: string; isPt?: boolean }) {
   return (
-    <View style={{ flexDirection: 'row', alignItems: 'center', paddingHorizontal: 20, marginTop: 28, marginBottom: 16 }}>
-      <AppText style={{ fontSize: 17, fontWeight: '800', color: C.navy, flex: 1 }}>
+    <View style={{ flexDirection: 'row', alignItems: 'center', paddingHorizontal: 20, marginTop: isAndroid ? 14 : 28, marginBottom: isAndroid ? 8 : 16 }}>
+      <AppText style={{ fontSize: isAndroid ? 15 : 17, fontWeight: '800', color: C.navy, flex: 1 }}>
         {label}
       </AppText>
       {badge ? (
@@ -59,7 +61,7 @@ function MissionNode({ mission, alignRight, isPt, onPress }: {
   isPt?: boolean;
   onPress?: () => void;
 }) {
-  const NODE = 58;
+  const NODE = isAndroid ? 46 : 58;
   return (
     <View>
       <View style={{ flexDirection: alignRight ? 'row-reverse' : 'row', alignItems: 'center' }}>
@@ -88,7 +90,7 @@ function MissionNode({ mission, alignRight, isPt, onPress }: {
             flex: 1,
             backgroundColor: C.card,
             borderRadius: 16,
-            padding: 11,
+            padding: isAndroid ? 8 : 11,
             borderWidth: 1,
             borderColor: mission.completed ? `${mission.accentColor}30` : C.border,
             ...cardShadow,
@@ -283,7 +285,7 @@ export default function GoalsTab() {
                   borderWidth: 1, borderColor: weeklyState.challenge.color + '25',
                   ...cardShadow,
                 }}>
-                  <View style={{ paddingHorizontal: 18, paddingVertical: 16 }}>
+                  <View style={{ paddingHorizontal: 18, paddingVertical: isAndroid ? 10 : 16 }}>
                     <View style={{ flexDirection: 'row', alignItems: 'center', justifyContent: 'space-between', marginBottom: 8 }}>
                       <View style={{ flexDirection: 'row', alignItems: 'center', gap: 8 }}>
                         <AppText style={{
