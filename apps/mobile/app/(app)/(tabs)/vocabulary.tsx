@@ -22,6 +22,7 @@ import { AppText } from '@/components/ui/Text';
 import { supabase } from '@/lib/supabase';
 import { useAuth } from '@/hooks/useAuth';
 import { getTip, TIP_STYLE, Tip } from '@/lib/tips';
+import { localTodayStr } from '@/lib/dateUtils';
 
 const API_BASE = (Constants.expoConfig?.extra?.apiBaseUrl as string) ?? 'https://charlotte.hubacademybr.com';
 
@@ -101,8 +102,11 @@ export default function VocabularyTab() {
   const [tipTtsLoading, setTipTtsLoading] = useState(false);
   const playerRef = useRef<ReturnType<typeof createAudioPlayer> | null>(null);
 
-  // Today's tip, seeded by calendar day
-  const dateSeed = useMemo(() => Math.floor(Date.now() / 86400000), []);
+  // Today's tip, seeded by local calendar day (not UTC — avoids day flip at 21h BRT)
+  const dateSeed = useMemo(() => {
+    const s = localTodayStr(); // YYYY-MM-DD in device timezone
+    return s.split('-').reduce((acc, p) => acc * 100 + parseInt(p, 10), 0);
+  }, []);
   const tip: Tip  = useMemo(() => getTip(level, dateSeed), [level, dateSeed]);
   const tipStyle  = TIP_STYLE[tip.type] ?? { bg: '#F4F3FA', color: '#16153A' };
 
