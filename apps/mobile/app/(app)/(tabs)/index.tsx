@@ -10,10 +10,10 @@ import {
 import Svg, { Circle } from 'react-native-svg';
 import { router, useFocusEffect } from 'expo-router';
 import { SafeAreaView } from 'react-native-safe-area-context';
-import { Fire, Lightning, Trophy } from 'phosphor-react-native';
 import { useVideoPlayer, VideoView } from 'expo-video';
 import * as SecureStore from 'expo-secure-store';
 import { AppText } from '@/components/ui/Text';
+import { HeaderPills } from '@/components/ui/HeaderPills';
 import { useAuth } from '@/hooks/useAuth';
 import { supabase } from '@/lib/supabase';
 import { UserLevel } from '@/lib/levelConfig';
@@ -294,53 +294,15 @@ export default function HomeTab() {
   return (
     <View style={{ flex: 1, backgroundColor: C.bg }}>
 
-      {/* Safe-area + header */}
-      <SafeAreaView edges={['top']} style={{ backgroundColor: T.card }}>
-        <View style={{
-          flexDirection: 'row', alignItems: 'center',
-          paddingHorizontal: 20, height: 52,
-          backgroundColor: T.card,
-          borderBottomWidth: 1, borderBottomColor: C.navyGhost,
-        }}>
-          {/* Stats pills → stats screen */}
-          <TouchableOpacity
-            onPress={() => router.push({ pathname: '/(app)/stats', params: statsParams })}
-            activeOpacity={0.7}
-            style={{ flexDirection: 'row', alignItems: 'center', gap: 8 }}
-            hitSlop={{ top: 10, bottom: 10, left: 4, right: 4 }}
-          >
-            <View style={{ flexDirection: 'row', alignItems: 'center', gap: 5, backgroundColor: streak ? 'rgba(251,146,60,0.12)' : 'rgba(22,21,58,0.05)', borderRadius: 20, paddingHorizontal: 10, paddingVertical: 5 }}>
-              <Fire size={15} color={streak ? C.orange : C.navyLight} weight="fill" />
-              <AppText style={{ fontSize: 13, fontWeight: '800', color: streak ? C.orange : C.navyLight }}>{streak}</AppText>
-            </View>
-            <View style={{ flexDirection: 'row', alignItems: 'center', gap: 5, backgroundColor: totalXP > 0 ? 'rgba(61,136,0,0.10)' : 'rgba(22,21,58,0.05)', borderRadius: 20, paddingHorizontal: 10, paddingVertical: 5 }}>
-              <Lightning size={15} color={totalXP > 0 ? C.greenDark : C.navyLight} weight="fill" />
-              <AppText style={{ fontSize: 13, fontWeight: '800', color: totalXP > 0 ? C.greenDark : C.navyLight }}>{totalXP.toLocaleString()}</AppText>
-            </View>
-            <View style={{ flexDirection: 'row', alignItems: 'center', gap: 5, backgroundColor: rank ? 'rgba(234,179,8,0.12)' : 'rgba(22,21,58,0.05)', borderRadius: 20, paddingHorizontal: 10, paddingVertical: 5 }}>
-              <Trophy size={15} color={rank ? C.gold : C.navyLight} weight="fill" />
-              <AppText style={{ fontSize: 13, fontWeight: '800', color: rank ? C.gold : C.navyLight }}>{rank ? `#${rank}` : '—'}</AppText>
-            </View>
-          </TouchableOpacity>
-
-          <View style={{ flex: 1 }} />
-
-          {/* Trial badge */}
-          {trialDaysLeft !== null && (
-            <TouchableOpacity
-              onPress={openPaywall} activeOpacity={0.75}
-              hitSlop={{ top: 8, bottom: 8, left: 8, right: 8 }}
-              style={{ flexDirection: 'row', alignItems: 'center', gap: 5, backgroundColor: 'rgba(61,136,0,0.10)', borderRadius: 20, paddingHorizontal: 10, paddingVertical: 5, marginRight: 10, borderWidth: 1, borderColor: 'rgba(61,136,0,0.20)' }}
-            >
-              <View style={{ width: 6, height: 6, borderRadius: 3, backgroundColor: '#3D8800' }} />
-              <AppText style={{ fontSize: 12, fontWeight: '700', color: '#3D8800' }}>
-                {isPt ? `${trialDaysLeft}d grátis` : `${trialDaysLeft}d trial`}
-              </AppText>
-            </TouchableOpacity>
-          )}
-
-        </View>
-      </SafeAreaView>
+      <HeaderPills
+        streak={streak}
+        totalXP={totalXP}
+        rank={rank}
+        statsParams={statsParams}
+        trialDaysLeft={trialDaysLeft}
+        onPaywallOpen={openPaywall}
+        isPt={isPt}
+      />
 
       {/* Charlotte hero card — fixed */}
       <View style={{ marginHorizontal: 20, marginTop: 8 }}>
