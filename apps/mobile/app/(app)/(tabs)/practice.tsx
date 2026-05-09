@@ -231,31 +231,36 @@ function ModeChip(props: {
   );
 }
 
-// ── Trail connector (SVG curved dotted path) ──────────────────────────────────
+// ── Trail connectors (linhas retas tracejadas) ────────────────────────────────
 
-const NODE  = 52;
-const CURVE = 22;
+const NODE       = 52;
+const NODE_GAP   = 16;  // largura da linha horizontal node↔card
+const ROW_GAP    = 56;  // altura da linha vertical entre fileiras
 
-// L-curve: começa no topo (abaixo do node anterior), desce, curva no canto e vai
-// até o lado oposto na base (acima do próximo node).
-function TrailConnector({ direction, width }: { direction: 'lr' | 'rl'; width: number }) {
-  const h  = 44;
-  const cx = NODE / 2;
-  const rx = width - NODE / 2;
-
-  const d = direction === 'lr'
-    ? `M ${cx} 0 L ${cx} ${h - CURVE} Q ${cx} ${h} ${cx + CURVE} ${h} L ${rx} ${h}`
-    : `M ${rx} 0 L ${rx} ${h - CURVE} Q ${rx} ${h} ${rx - CURVE} ${h} L ${cx} ${h}`;
-
+// Linha horizontal tracejada de node até card (largura fixa).
+function HLine() {
   return (
-    <Svg width={width} height={h} style={{ marginTop: -8, marginBottom: -8 }}>
+    <Svg width={NODE_GAP} height={2}>
       <Path
-        d={d}
-        fill="none"
+        d={`M 0 1 L ${NODE_GAP} 1`}
         stroke={C.navyLight}
         strokeWidth={2}
-        strokeDasharray="5 6"
-        strokeLinecap="round"
+        strokeDasharray="4 4"
+        opacity={0.45}
+      />
+    </Svg>
+  );
+}
+
+// Linha vertical tracejada na coluna do node atual, ligando à próxima fileira.
+function VLine({ x, totalWidth }: { x: number; totalWidth: number }) {
+  return (
+    <Svg width={totalWidth} height={ROW_GAP}>
+      <Path
+        d={`M ${x} 0 L ${x} ${ROW_GAP}`}
+        stroke={C.navyLight}
+        strokeWidth={2}
+        strokeDasharray="4 4"
         opacity={0.45}
       />
     </Svg>
@@ -280,61 +285,57 @@ function TrailPath({ cards, daysSince, liveRemaining, level, isPt, onPress }: Tr
     <View onLayout={e => setContainerW(e.nativeEvent.layout.width)}>
       {containerW > 0 && cards.map((card, index) => {
         const isRight = index % 2 === 1;
-
-        const nodeRow = (
-          <TouchableOpacity
-            key={card.mode}
-            onPress={() => onPress(card)}
-            activeOpacity={card.locked ? 0.6 : 0.78}
-            style={{
-              flexDirection: isRight ? 'row-reverse' : 'row',
-              alignItems: 'center',
-              opacity: card.locked ? 0.55 : 1,
-              gap: 14,
-            }}
-          >
-            <View style={{
-              width: NODE, height: NODE, borderRadius: NODE / 2, flexShrink: 0,
-              backgroundColor: card.locked ? C.navyGhost : a(card.accentColor, 0.10),
-              borderWidth: 2,
-              borderColor: card.locked ? C.border : a(card.accentColor, 0.40),
-              alignItems: 'center', justifyContent: 'center',
-            }}>
-              {card.locked
-                ? <Lock size={20} color={C.navyLight} weight="fill" />
-                : getModeIcon(card.mode, card.accentColor, 22)
-              }
-            </View>
-
-            <View style={{
-              flex: 1,
-              backgroundColor: C.card,
-              borderRadius: 16,
-              padding: 12,
-              borderWidth: 1,
-              borderColor: C.border,
-              ...cardShadow,
-            }}>
-              <View style={{ flexDirection: 'row', alignItems: 'center', gap: 8, marginBottom: 2 }}>
-                <AppText style={{ fontSize: 15, fontWeight: '800', color: card.locked ? C.navyMid : C.navy, flex: 1 }}>
-                  {card.title}
-                </AppText>
-                <ModeChip card={card} daysSince={daysSince[card.mode]} liveRemaining={liveRemaining} level={level} isPt={isPt} />
-              </View>
-              <AppText style={{ fontSize: 12, color: C.navyLight, fontWeight: '500' }}>
-                {card.description}
-              </AppText>
-            </View>
-          </TouchableOpacity>
-        );
-
-        const hasNext = index < cards.length - 1;
-        const direction = isRight ? 'rl' : 'lr';
+        const isLast  = index === cards.length - 1;
+        const lineX   = isRight ? containerW - NODE / 2 : NODE / 2;
 
         return (
           <React.Fragment key={card.mode}>
-            {nodeRow}
-            {hasNext && <TrailConnector direction={direction} width={containerW} />}
+            <TouchableOpacity
+              onPress={() => onPress(card)}
+              activeOpacity={card.locked ? 0.6 : 0.78}
+              style={{
+                flexDirection: isRight ? 'row-reverse' : 'row',
+                alignItems: 'center',
+                opacity: card.locked ? 0.55 : 1,
+              }}
+            >
+              <View style={{
+                width: NODE, height: NODE, borderRadius: NODE / 2, flexShrink: 0,
+                backgroundColor: card.locked ? C.navyGhost : a(card.accentColor, 0.10),
+                borderWidth: 2,
+                borderColor: card.locked ? C.border : a(card.accentColor, 0.40),
+                alignItems: 'center', justifyContent: 'center',
+              }}>
+                {card.locked
+                  ? <Lock size={20} color={C.navyLight} weight="fill" />
+                  : getModeIcon(card.mode, card.accentColor, 22)
+                }
+              </View>
+
+              <HLine />
+
+              <View style={{
+                flex: 1,
+                backgroundColor: C.card,
+                borderRadius: 16,
+                padding: 12,
+                borderWidth: 1,
+                borderColor: C.border,
+                ...cardShadow,
+              }}>
+                <View style={{ flexDirection: 'row', alignItems: 'center', gap: 8, marginBottom: 2 }}>
+                  <AppText style={{ fontSize: 15, fontWeight: '800', color: card.locked ? C.navyMid : C.navy, flex: 1 }}>
+                    {card.title}
+                  </AppText>
+                  <ModeChip card={card} daysSince={daysSince[card.mode]} liveRemaining={liveRemaining} level={level} isPt={isPt} />
+                </View>
+                <AppText style={{ fontSize: 12, color: C.navyLight, fontWeight: '500' }}>
+                  {card.description}
+                </AppText>
+              </View>
+            </TouchableOpacity>
+
+            {!isLast && <VLine x={lineX} totalWidth={containerW} />}
           </React.Fragment>
         );
       })}
