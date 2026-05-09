@@ -5,6 +5,7 @@ import React, { useState, useCallback, useMemo } from 'react';
 import {
   View, TouchableOpacity, Alert, Platform, ActivityIndicator, Image,
 } from 'react-native';
+import Svg, { Path } from 'react-native-svg';
 import { SafeAreaView } from 'react-native-safe-area-context';
 import { router, useFocusEffect } from 'expo-router';
 import {
@@ -160,6 +161,128 @@ function buildSuggestion(
   }
 
   return { card: best, reason };
+}
+
+// ── Trail connector (SVG curved dotted path) ──────────────────────────────────
+
+const NODE = 52;           // node circle diameter
+const CURVE = 22;          // corner radius
+
+// Draws the L-shaped curved dotted connector between two nodes.
+// direction: 'lr' = left node → right node | 'rl' = right node → left node
+function TrailConnector({ direction, width }: { direction: 'lr' | 'rl'; width: number }) {
+  const h = 44;            // total connector height
+  const cx = NODE / 2;     // center x of left node
+  const rx = width - NODE / 2; // center x of right node
+
+  // lr: down from left, curve, across, up to right
+  // rl: down from right, curve, across, up to left
+  const d = direction === 'lr'
+    ? `M ${cx} 0 L ${cx} ${h - CURVE} Q ${cx} ${h} ${cx + CURVE} ${h} L ${rx - CURVE} ${h} Q ${rx} ${h} ${rx} ${h - CURVE} L ${rx} 0`
+    : `M ${rx} 0 L ${rx} ${h - CURVE} Q ${rx} ${h} ${rx - CURVE} ${h} L ${cx + CURVE} ${h} Q ${cx} ${h} ${cx} ${h - CURVE} L ${cx} 0`;
+
+  return (
+    <Svg width={width} height={h} style={{ marginVertical: -2 }}>
+      <Path
+        d={d}
+        fill="none"
+        stroke={C.navyLight}
+        strokeWidth={2}
+        strokeDasharray="5 6"
+        strokeLinecap="round"
+        opacity={0.35}
+      />
+    </Svg>
+  );
+}
+
+// ── Trail path component ───────────────────────────────────────────────────────
+
+interface TrailPathProps {
+  cards:    ModeCard[];
+  onPress:  (card: ModeCard) => void;
+  isPt:     boolean;
+}
+
+function TrailPath({ cards, onPress, isPt }: TrailPathProps) {
+  const [containerW, setContainerW] = React.useState(0);
+
+  return (
+    <View
+      style={{ flex: 1, justifyContent: 'center' }}
+      onLayout={e => setContainerW(e.nativeEvent.layout.width)}
+    >
+      {containerW > 0 && cards.map((card, index) => {
+        const isRight = index % 2 === 1; // alternates: 0=left, 1=right, 2=left
+
+        const nodeRow = (
+          <TouchableOpacity
+            key={card.mode}
+            onPress={() => onPress(card)}
+            activeOpacity={card.locked ? 0.6 : 0.78}
+            style={{
+              flexDirection: isRight ? 'row-reverse' : 'row',
+              alignItems: 'center',
+              opacity: card.locked ? 0.50 : 1,
+              gap: 14,
+            }}
+          >
+            {/* Circle node */}
+            <View style={{
+              width: NODE, height: NODE, borderRadius: NODE / 2, flexShrink: 0,
+              backgroundColor: card.locked ? C.navyGhost : a(card.accentColor, 0.10),
+              borderWidth: 2,
+              borderColor: card.locked ? C.border : a(card.accentColor, 0.40),
+              alignItems: 'center', justifyContent: 'center',
+            }}>
+              {card.locked
+                ? <Lock size={20} color={C.navyLight} weight="fill" />
+                : getModeIcon(card.mode, card.accentColor, 22)
+              }
+            </View>
+
+            {/* Text */}
+            <View style={{ flex: 1 }}>
+              <AppText style={{ fontSize: 15, fontWeight: '700', color: card.locked ? C.navyLight : C.navy, textAlign: isRight ? 'right' : 'left' }}>
+                {card.title}
+              </AppText>
+              <AppText style={{ fontSize: 12, color: C.navyLight, fontWeight: '500', marginTop: 2, textAlign: isRight ? 'right' : 'left' }}>
+                {card.locked && card.lockXP !== undefined && card.currentXP !== undefined
+                  ? `${card.currentXP.toLocaleString()} / ${card.lockXP.toLocaleString()} XP`
+                  : card.locked && card.lockLevel
+                    ? (isPt ? `Disponível no ${card.lockLevel}` : `Unlocks at ${card.lockLevel}`)
+                    : card.description
+                }
+              </AppText>
+            </View>
+
+            {/* Caret */}
+            {!card.locked && (
+              <CaretRight
+                size={15}
+                color={C.navyLight}
+                weight="bold"
+                style={isRight ? { transform: [{ scaleX: -1 }] } : undefined}
+              />
+            )}
+          </TouchableOpacity>
+        );
+
+        // Connector between this node and the next
+        const hasNext = index < cards.length - 1;
+        const direction = isRight ? 'rl' : 'lr'; // next node is on the opposite side
+
+        return (
+          <React.Fragment key={card.mode}>
+            {nodeRow}
+            {hasNext && (
+              <TrailConnector direction={direction} width={containerW} />
+            )}
+          </React.Fragment>
+        );
+      })}
+    </View>
+  );
 }
 
 // ── Component ─────────────────────────────────────────────────────────────────
@@ -393,52 +516,8 @@ export default function PracticeTab() {
             </TouchableOpacity>
           )}
 
-          {/* ── Other modes — flex:1 para preencher o restante da tela ── */}
-          {otherCards.map(card => (
-            <TouchableOpacity
-              key={card.mode}
-              onPress={() => handlePress(card)}
-              activeOpacity={card.locked ? 0.6 : 0.78}
-              style={{
-                flex: 1,
-                flexDirection: 'row',
-                alignItems: 'center',
-                backgroundColor: C.card,
-                borderRadius: 18,
-                paddingHorizontal: 16,
-                borderWidth: 1,
-                borderColor: card.locked ? C.border : a(card.accentColor, 0.14),
-                gap: 14,
-                opacity: card.locked ? 0.55 : 1,
-                ...cardShadow,
-              }}
-            >
-              <View style={{
-                width: 48, height: 48, borderRadius: 14, flexShrink: 0,
-                backgroundColor: card.locked ? C.navyGhost : a(card.accentColor, 0.12),
-                alignItems: 'center', justifyContent: 'center',
-              }}>
-                {card.locked
-                  ? <Lock size={20} color={C.navyLight} weight="fill" />
-                  : getModeIcon(card.mode, card.accentColor, 22)
-                }
-              </View>
-              <View style={{ flex: 1 }}>
-                <AppText style={{ fontSize: 15, fontWeight: '700', color: card.locked ? C.navyLight : C.navy, marginBottom: 3 }}>
-                  {card.title}
-                </AppText>
-                <AppText style={{ fontSize: 12, color: C.navyLight, fontWeight: '500' }}>
-                  {card.locked && card.lockXP !== undefined && card.currentXP !== undefined
-                    ? `${card.currentXP.toLocaleString()} / ${card.lockXP.toLocaleString()} XP`
-                    : card.locked && card.lockLevel
-                      ? `Unlocks at ${card.lockLevel}`
-                      : card.description
-                  }
-                </AppText>
-              </View>
-              {!card.locked && <CaretRight size={16} color={C.navyLight} weight="bold" />}
-            </TouchableOpacity>
-          ))}
+          {/* ── Trail path ── */}
+          <TrailPath cards={otherCards} onPress={handlePress} isPt={isPt} />
 
         </View>
       )}
