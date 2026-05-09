@@ -528,7 +528,18 @@ function XPRing({ todayXP, goal }: { todayXP: number; goal: number }) {
 //  HOME SCREEN
 // ──────────────────────────────────────────────────────────────
 
+// Wrapper: resolve beta redirect ANTES de qualquer hook do HomeScreen principal.
+// Sem isso, o early return no meio dos hooks viola as React Rules of Hooks
+// e causa "Rendered fewer hooks than expected" ao carregar o perfil.
 export default function HomeScreen() {
+  const { profile } = useAuth();
+  if (profile?.beta_features?.includes('new_layout')) {
+    return <Redirect href="/(app)/(tabs)" />;
+  }
+  return <HomeScreenContent />;
+}
+
+function HomeScreenContent() {
   const { profile, isFreshLogin } = useAuth();
   const { openPaywall } = usePaywallContext();
   const insets = useSafeAreaInsets();
@@ -544,11 +555,6 @@ export default function HomeScreen() {
   const { triggerToast } = useXPToast();
   const levelAccent: string = level === 'Novice' ? '#D97706' : level === 'Inter' ? '#7C3AED' : '#0F766E';
   const levelAccentBg: string = level === 'Novice' ? '#FFFBEB' : level === 'Inter' ? '#F5F3FF' : '#F0FDFA';
-
-  // Beta: new tab-based layout
-  if (profile?.beta_features?.includes('new_layout')) {
-    return <Redirect href="/(app)/(tabs)" />;
-  }
 
   // Trial badge — days remaining for non-institutional users on trial
   const trialDaysLeft = useMemo(() => {
