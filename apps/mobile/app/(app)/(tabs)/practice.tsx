@@ -375,7 +375,7 @@ export default function PracticeTab() {
     return days > 0 ? days : 0;
   }, [profile]);
 
-  const greetingPlayer = useVideoPlayer(require('@/assets/charlotte-greeting.mp4'), p => {
+  const pointingPlayer = useVideoPlayer(require('@/assets/charlotte-pointing-left.mp4'), p => {
     p.loop = true;
     p.muted = true;
     p.play();
@@ -578,18 +578,18 @@ export default function PracticeTab() {
             >
               <View style={{ height: 3, backgroundColor: suggestion.card.accentColor }} />
 
-              {/* Navy strip: vídeo + balão de fala */}
-              <View style={{ backgroundColor: C.heroStrip, flexDirection: 'row', alignItems: 'center', minHeight: 140, paddingRight: 20 }}>
+              {/* Navy strip: balão de fala + vídeo (Charlotte à direita apontando pra esquerda) */}
+              <View style={{ backgroundColor: C.heroStrip, flexDirection: 'row-reverse', alignItems: 'center', minHeight: 140, paddingLeft: 20 }}>
                 <View style={{ width: 118, height: 165, marginBottom: -15, flexShrink: 0, alignSelf: 'flex-end', overflow: 'hidden', borderRadius: 1, backgroundColor: C.heroStrip }}>
                   <VideoView
-                    player={greetingPlayer}
+                    player={pointingPlayer}
                     style={{ width: 118, height: Math.round(118 * 16 / 9), backgroundColor: C.heroStrip }}
                     contentFit="cover"
                     nativeControls={false}
                   />
                 </View>
                 <View style={{ flex: 1, paddingVertical: 16 }}>
-                  <View style={{ backgroundColor: '#3B3A5A', borderRadius: 18, borderTopLeftRadius: 0, paddingHorizontal: 14, paddingVertical: 12, alignSelf: 'flex-start' }}>
+                  <View style={{ backgroundColor: '#3B3A5A', borderRadius: 18, borderTopRightRadius: 0, paddingHorizontal: 14, paddingVertical: 12, alignSelf: 'flex-end' }}>
                     <AppText style={{ fontSize: 13, color: '#FFFFFF', lineHeight: 19, fontWeight: '500' }}>
                       {suggestion.reason}
                     </AppText>
