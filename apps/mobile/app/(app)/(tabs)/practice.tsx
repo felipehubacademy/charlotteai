@@ -236,17 +236,19 @@ function ModeChip(props: {
 const NODE  = 52;
 const CURVE = 22;
 
+// L-curve: começa no topo (abaixo do node anterior), desce, curva no canto e vai
+// até o lado oposto na base (acima do próximo node).
 function TrailConnector({ direction, width }: { direction: 'lr' | 'rl'; width: number }) {
-  const h  = 36;
+  const h  = 44;
   const cx = NODE / 2;
   const rx = width - NODE / 2;
 
   const d = direction === 'lr'
-    ? `M ${cx} 0 L ${cx} ${h - CURVE} Q ${cx} ${h} ${cx + CURVE} ${h} L ${rx - CURVE} ${h} Q ${rx} ${h} ${rx} ${h - CURVE} L ${rx} 0`
-    : `M ${rx} 0 L ${rx} ${h - CURVE} Q ${rx} ${h} ${rx - CURVE} ${h} L ${cx + CURVE} ${h} Q ${cx} ${h} ${cx} ${h - CURVE} L ${cx} 0`;
+    ? `M ${cx} 0 L ${cx} ${h - CURVE} Q ${cx} ${h} ${cx + CURVE} ${h} L ${rx} ${h}`
+    : `M ${rx} 0 L ${rx} ${h - CURVE} Q ${rx} ${h} ${rx - CURVE} ${h} L ${cx} ${h}`;
 
   return (
-    <Svg width={width} height={h} style={{ marginVertical: -2 }}>
+    <Svg width={width} height={h} style={{ marginTop: -8, marginBottom: -8 }}>
       <Path
         d={d}
         fill="none"
@@ -254,7 +256,7 @@ function TrailConnector({ direction, width }: { direction: 'lr' | 'rl'; width: n
         strokeWidth={2}
         strokeDasharray="5 6"
         strokeLinecap="round"
-        opacity={0.35}
+        opacity={0.45}
       />
     </Svg>
   );
