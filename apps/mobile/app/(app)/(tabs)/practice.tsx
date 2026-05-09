@@ -71,9 +71,14 @@ const cardShadow = Platform.select({
 const PRONUN_UNLOCK_XP = 1920;
 const CHAT_UNLOCK_XP   = 2800;
 
+// practice_type values gravados em charlotte_practices, por modo:
+//   grammar      → grammar_message (useChat com mode='grammar')
+//   pronunciation→ audio_message   (useChat ao enviar áudio)
+//   chat         → text_message    (useChat com mode='chat')
+//   live         → não grava em charlotte_practices (uso é trackado em charlotte_users.live_voice_seconds_used)
 const MODE_TYPES: Record<string, string[]> = {
-  grammar:       ['grammar'],
-  pronunciation: ['pronunciation', 'audio_message'],
+  grammar:       ['grammar_message', 'grammar'],
+  pronunciation: ['audio_message', 'pronunciation'],
   chat:          ['text_message', 'chat'],
   live:          ['live_voice'],
 };
