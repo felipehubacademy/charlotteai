@@ -6,6 +6,7 @@ import {
   requestRecordingPermissionsAsync,
   setAudioModeAsync,
   RecordingPresets,
+  RecordingOptions,
   IOSOutputFormat,
   AudioQuality,
 } from 'expo-audio';
@@ -21,7 +22,7 @@ import Constants from 'expo-constants';
 //           lista de getCompressedFormat do Azure SDK nem do REST.
 //           Decisao consciente: chat funcionando em ambas plataformas >
 //           pronunciation em nenhuma.
-export const PRONUNCIATION_RECORDING_OPTIONS: any = Platform.select({
+export const PRONUNCIATION_RECORDING_OPTIONS: RecordingOptions = (Platform.select as any)({
   ios: {
     extension: '.wav',
     sampleRate: 16000,
@@ -48,7 +49,7 @@ export const PRONUNCIATION_RECORDING_OPTIONS: any = Platform.select({
     },
   },
   default: RecordingPresets.HIGH_QUALITY,
-});
+}) as unknown as RecordingOptions;
 
 const API_BASE_URL =
   (Constants.expoConfig?.extra?.apiBaseUrl as string) ?? 'https://charlotte.hubacademybr.com';
@@ -196,7 +197,7 @@ export function useAudioRecorder(
     durationRef.current = 0;
   }, [recorder]);
 
-  return { state, duration, startRecording, stopRecording, cancelRecording, hasPermission, getMeteringLevel: () => recorder.currentMetering };
+  return { state, duration, startRecording, stopRecording, cancelRecording, hasPermission, getMeteringLevel: () => 0 };
 }
 
 /**

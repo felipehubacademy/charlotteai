@@ -135,7 +135,7 @@ export function AddWordModal({
       const reader = new FileReader();
       reader.onloadend = async () => {
         const base64 = (reader.result as string).split(',')[1];
-        const { FileSystem } = await import('expo-file-system/legacy');
+        const FileSystem = await import('expo-file-system/legacy');
         const uri = FileSystem.cacheDirectory + 'vocab_tts.mp3';
         await FileSystem.writeAsStringAsync(uri, base64, { encoding: FileSystem.EncodingType.Base64 });
         const player = createAudioPlayer({ uri });

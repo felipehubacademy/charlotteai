@@ -431,11 +431,12 @@ export default function LearnSessionScreen() {
   const saveExplainRating = useCallback(async (rating: 1 | -1) => {
     setExplainRating(rating);
     if (!explainIdRef.current) return;
-    await supabase
-      .from('explain_feedback')
-      .update({ rating })
-      .eq('id', explainIdRef.current)
-      .catch(() => {});
+    try {
+      await supabase
+        .from('explain_feedback')
+        .update({ rating })
+        .eq('id', explainIdRef.current);
+    } catch { /* fire-and-forget */ }
   }, []);
 
   // ── Tour 2: pronúncia — dispara na primeira vez que chega num step de pron ──

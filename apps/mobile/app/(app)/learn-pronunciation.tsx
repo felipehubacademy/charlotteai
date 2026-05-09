@@ -18,7 +18,7 @@ import { useTotalXP } from '@/hooks/useTotalXP';
 import { AppText } from '@/components/ui/Text';
 import CharlotteAvatar from '@/components/ui/CharlotteAvatar';
 import Constants from 'expo-constants';
-import { useAudioRecorder, RecordingPresets, IOSOutputFormat, AudioQuality } from 'expo-audio';
+import { useAudioRecorder, RecordingPresets, RecordingOptions, IOSOutputFormat, AudioQuality } from 'expo-audio';
 import { useMessageAudioPlayer } from '@/hooks/useMessageAudioPlayer';
 
 // ── Palette ────────────────────────────────────────────────────
@@ -191,7 +191,7 @@ export default function LearnPronunciationScreen() {
   const isPlaying = playingMessageId === charlottePlayId;
 
   // Preset otimizado para Azure Speech: iOS → WAV PCM 16kHz mono, Android → OGG/OPUS 16kHz mono
-  const PRONUNCIATION_PRESET = Platform.select({
+  const PRONUNCIATION_PRESET = (Platform.select as any)({
     ios: {
       extension: '.wav',
       sampleRate: 16000,
@@ -216,7 +216,7 @@ export default function LearnPronunciationScreen() {
       },
     },
     default: RecordingPresets.HIGH_QUALITY,
-  } as any)!;
+  }) as unknown as RecordingOptions;
 
   const recorder     = useAudioRecorder(PRONUNCIATION_PRESET); // 10s max handled by recordingRef
   const recordingRef = useRef(false);
