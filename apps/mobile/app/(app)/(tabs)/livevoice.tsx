@@ -4,13 +4,14 @@
 
 import React, { useState, useCallback, useMemo } from 'react';
 import {
-  View, ScrollView, TouchableOpacity, ActivityIndicator,
-  RefreshControl,
+  View, ScrollView, TouchableOpacity, ActivityIndicator, Image,
+  RefreshControl, Modal,
 } from 'react-native';
+import { SafeAreaView, useSafeAreaInsets } from 'react-native-safe-area-context';
 import Svg, { Circle } from 'react-native-svg';
 import { useFocusEffect } from 'expo-router';
 import { useVideoPlayer, VideoView } from 'expo-video';
-import { Phone } from 'phosphor-react-native';
+import { Phone, ChatCircle, X } from 'phosphor-react-native';
 import { AppText } from '@/components/ui/Text';
 import { HeaderPills } from '@/components/ui/HeaderPills';
 import { useAuth } from '@/hooks/useAuth';
@@ -26,13 +27,13 @@ import LiveVoiceModal from '@/components/voice/LiveVoiceModal';
 // Tela full navy — todos os elementos em stack sobre o mesmo fundo.
 
 const C = {
-  navy:        '#07071C',  // bg principal — mais escuro que o card-mode pra dar peso
-  navyMid:     '#1E1D45',
+  navy:        '#18193D',  // mesmo do hero da Home (heroStrip)
+  navyMid:     '#3B3A5A',  // tom do balão de fala
   navyLight:   'rgba(255,255,255,0.55)',
-  navyGhost:   'rgba(255,255,255,0.08)',
+  navyGhost:   'rgba(255,255,255,0.10)',
   textWhite:   '#FFFFFF',
-  textMuted:   'rgba(255,255,255,0.7)',
-  textDim:     'rgba(255,255,255,0.45)',
+  textMuted:   'rgba(255,255,255,0.78)',
+  textDim:     'rgba(255,255,255,0.48)',
   greenAccent: '#A3FF3C',
   greenDark:   '#3D8800',
   gold:        '#F59E0B',
@@ -46,6 +47,7 @@ interface LastCall {
   started_at:       string;
   duration_seconds: number;
   summary:          string | null;
+  transcript:       string | null;
 }
 
 // ── Pool ring ─────────────────────────────────────────────────────────────────
@@ -106,7 +108,9 @@ function PoolRing({ used, total, isUnlimited, isPt }: {
 
 // ── Last call (texto solto, sem card) ─────────────────────────────────────────
 
-function LastCallSection({ call, isPt }: { call: LastCall; isPt: boolean }) {
+function LastCallSection({ call, isPt, onPress }: {
+  call: LastCall; isPt: boolean; onPress: () => void;
+}) {
   const days = Math.floor((Date.now() - new Date(call.started_at).getTime()) / 86_400_000);
   const minutes = Math.round(call.duration_seconds / 60);
 
@@ -114,15 +118,140 @@ function LastCallSection({ call, isPt }: { call: LastCall; isPt: boolean }) {
                   : days === 1 ? (isPt ? 'Ontem' : 'Yesterday')
                   : isPt ? `há ${days} dias` : `${days} days ago`;
 
+  const hasTranscript = !!(call.transcript && call.transcript.trim().length > 0);
+
   return (
-    <View style={{ alignItems: 'center', paddingHorizontal: 32 }}>
+    <TouchableOpacity
+      onPress={onPress}
+      activeOpacity={hasTranscript ? 0.7 : 1}
+      disabled={!hasTranscript}
+      style={{ alignItems: 'center', paddingHorizontal: 32 }}
+    >
       <AppText style={{ fontSize: 10, color: C.textDim, fontWeight: '700', textTransform: 'uppercase', letterSpacing: 1.5, marginBottom: 6 }}>
         {isPt ? 'Última chamada' : 'Last call'} · {whenLabel} · {minutes} min
       </AppText>
       <AppText style={{ fontSize: 14, color: C.textMuted, textAlign: 'center', lineHeight: 20 }} numberOfLines={2}>
         {call.summary ?? (isPt ? 'Sem resumo disponível.' : 'No summary available.')}
       </AppText>
-    </View>
+      {hasTranscript && (
+        <AppText style={{ fontSize: 11, color: C.greenAccent, fontWeight: '700', marginTop: 8, textTransform: 'uppercase', letterSpacing: 1 }}>
+          {isPt ? 'Ver conversa →' : 'View conversation →'}
+        </AppText>
+      )}
+    </TouchableOpacity>
+  );
+}
+
+// ── Transcript modal ──────────────────────────────────────────────────────────
+// Parse transcript ("User: text\nCharlotte: text\n...") em turnos e renderiza
+// as bolhas no padrão visual da chamada.
+
+function TranscriptModal({ call, isOpen, onClose, isPt }: {
+  call: LastCall | null; isOpen: boolean; onClose: () => void; isPt: boolean;
+}) {
+  const insets = useSafeAreaInsets();
+
+  const turns = useMemo(() => {
+    if (!call?.transcript) return [] as Array<{ role: 'user' | 'assistant'; text: string }>;
+    return call.transcript.split('\n').reduce((acc, line) => {
+      const m = line.match(/^(User|Charlotte):\s*(.+)$/);
+      if (m) {
+        acc.push({ role: m[1] === 'User' ? 'user' : 'assistant', text: m[2] });
+      } else if (acc.length > 0) {
+        // Linha de continuação — append na última
+        acc[acc.length - 1].text += '\n' + line;
+      }
+      return acc;
+    }, [] as Array<{ role: 'user' | 'assistant'; text: string }>);
+  }, [call?.transcript]);
+
+  if (!call) return null;
+
+  return (
+    <Modal visible={isOpen} animationType="slide" onRequestClose={onClose}>
+      <View style={{ flex: 1, backgroundColor: '#FFFFFF' }}>
+        <SafeAreaView edges={['top']} style={{ backgroundColor: '#FFFFFF' }}>
+          <View style={{
+            flexDirection: 'row', alignItems: 'center',
+            paddingHorizontal: 16, height: 56,
+            backgroundColor: '#FFFFFF',
+            borderBottomWidth: 1, borderBottomColor: 'rgba(22,21,58,0.10)',
+          }}>
+            <View style={{ width: 36, height: 36, borderRadius: 10, backgroundColor: 'rgba(124,58,237,0.10)', alignItems: 'center', justifyContent: 'center' }}>
+              <ChatCircle size={20} color="#7C3AED" weight="fill" />
+            </View>
+            <View style={{ flex: 1, alignItems: 'center' }}>
+              <AppText style={{ fontSize: 9, fontWeight: '700', color: '#9896B8', textTransform: 'uppercase', letterSpacing: 1 }}>Charlotte</AppText>
+              <AppText style={{ fontSize: 15, fontWeight: '800', color: '#16153A', letterSpacing: -0.3 }}>
+                {isPt ? 'Transcrição da Chamada' : 'Call Transcript'}
+              </AppText>
+            </View>
+            <TouchableOpacity onPress={onClose} hitSlop={{ top: 12, bottom: 12, left: 12, right: 12 }}
+              style={{ width: 36, height: 36, borderRadius: 18, alignItems: 'center', justifyContent: 'center' }}>
+              <X size={20} color="#4B4A72" weight="bold" />
+            </TouchableOpacity>
+          </View>
+        </SafeAreaView>
+
+        <ScrollView
+          style={{ flex: 1, backgroundColor: '#F4F3FA' }}
+          contentContainerStyle={{ padding: 16, paddingBottom: 16 + insets.bottom, gap: 12 }}
+          showsVerticalScrollIndicator={false}
+        >
+          {/* Resumo da chamada no topo */}
+          {call.summary && (
+            <View style={{
+              backgroundColor: '#F0F0FB', borderRadius: 12, padding: 14,
+              borderLeftWidth: 3, borderLeftColor: '#7C3AED',
+              marginBottom: 4,
+            }}>
+              <AppText style={{ fontSize: 10, fontWeight: '700', color: '#7C3AED', textTransform: 'uppercase', letterSpacing: 1, marginBottom: 4 }}>
+                {isPt ? 'Resumo' : 'Summary'}
+              </AppText>
+              <AppText style={{ fontSize: 14, color: '#16153A', lineHeight: 20 }}>
+                {call.summary}
+              </AppText>
+            </View>
+          )}
+
+          {turns.length === 0 ? (
+            <View style={{ alignItems: 'center', paddingTop: 60, paddingHorizontal: 24 }}>
+              <AppText style={{ color: '#9896B8', fontSize: 14, textAlign: 'center', lineHeight: 20 }}>
+                {isPt ? 'Transcrição não disponível para esta chamada.' : 'No transcript available for this call.'}
+              </AppText>
+            </View>
+          ) : (
+            turns.map((turn, i) => {
+              const isUser = turn.role === 'user';
+              return (
+                <View key={i} style={{ flexDirection: 'row', justifyContent: isUser ? 'flex-end' : 'flex-start', marginBottom: 4 }}>
+                  {!isUser && (
+                    <Image
+                      source={require('@/assets/charlotte-avatar.png')}
+                      style={{ width: 28, height: 28, borderRadius: 14, marginRight: 8, marginTop: 2, flexShrink: 0, backgroundColor: '#16153A' }}
+                    />
+                  )}
+                  <View style={{
+                    maxWidth: '78%',
+                    backgroundColor: isUser ? '#A3FF3C' : '#FFFFFF',
+                    borderRadius: 18,
+                    borderBottomRightRadius: isUser ? 4 : 18,
+                    borderBottomLeftRadius: isUser ? 18 : 4,
+                    paddingHorizontal: 14, paddingVertical: 10,
+                    shadowColor: 'rgba(22,21,58,0.08)', shadowOpacity: 1, shadowRadius: 6, shadowOffset: { width: 0, height: 2 },
+                    elevation: 2,
+                  }}>
+                    <AppText style={{ fontSize: 14, fontWeight: '500', color: '#16153A', lineHeight: 20 }}>
+                      {turn.text}
+                    </AppText>
+                  </View>
+                </View>
+              );
+            })
+          )}
+        </ScrollView>
+      </View>
+    </Modal>
   );
 }
 
@@ -146,6 +275,7 @@ export default function LiveVoiceTab() {
   const [poolUnlimited,   setPoolUnlimited]   = useState(false);
   const [lastCall,        setLastCall]        = useState<LastCall | null>(null);
   const [showLiveVoice,   setShowLiveVoice]   = useState(false);
+  const [showTranscript,  setShowTranscript]  = useState(false);
   const [loading,         setLoading]         = useState(true);
   const [refreshing,      setRefreshing]      = useState(false);
 
@@ -184,7 +314,7 @@ export default function LiveVoiceTab() {
           .eq('user_id', userId)
           .gte('earned_at', todayISO),
         supabase.from('charlotte_live_calls')
-          .select('id,started_at,duration_seconds,summary')
+          .select('id,started_at,duration_seconds,summary,transcript')
           .eq('user_id', userId)
           .order('started_at', { ascending: false })
           .limit(1)
@@ -264,70 +394,81 @@ export default function LiveVoiceTab() {
       ) : (
         <ScrollView
           style={{ flex: 1 }}
-          contentContainerStyle={{ flexGrow: 1, alignItems: 'center', paddingTop: 28, paddingBottom: 32, gap: 24 }}
+          contentContainerStyle={{ flexGrow: 1, paddingBottom: 28 }}
           showsVerticalScrollIndicator={false}
           refreshControl={<RefreshControl refreshing={refreshing} onRefresh={onRefresh} tintColor={C.textWhite} />}
         >
 
-          {/* ── Charlotte avatar grande (circular, sem moldura/card) ── */}
-          <View style={{
-            width: 220, height: 220, borderRadius: 110,
-            overflow: 'hidden',
-            borderWidth: 3, borderColor: accent,
-            backgroundColor: C.navyMid,
-          }}>
-            <VideoView
-              player={liveVoicePlayer}
-              style={{ width: '100%', height: '100%', backgroundColor: C.navyMid }}
-              contentFit="cover"
-              nativeControls={false}
-            />
+          {/* ── Hero: balão à esquerda + Charlotte solta à direita ── */}
+          <View style={{ flexDirection: 'row', alignItems: 'flex-end', minHeight: 240, paddingLeft: 24, paddingRight: 0, paddingTop: 24 }}>
+            <View style={{ flex: 1, paddingBottom: 36, paddingRight: 8 }}>
+              <View style={{
+                backgroundColor: C.navyMid,
+                borderRadius: 20, borderTopLeftRadius: 4,
+                paddingHorizontal: 16, paddingVertical: 14,
+                alignSelf: 'flex-start',
+              }}>
+                <AppText style={{ fontSize: 10, fontWeight: '700', color: 'rgba(255,255,255,0.5)', textTransform: 'uppercase', letterSpacing: 1.4, marginBottom: 4 }}>
+                  Charlotte
+                </AppText>
+                <AppText style={{ fontSize: 17, color: '#FFFFFF', lineHeight: 23, fontWeight: '600' }}>
+                  {isPt ? 'Vamos conversar?' : 'Want to talk?'}
+                </AppText>
+              </View>
+            </View>
+
+            <View style={{ width: 180, height: 240, alignSelf: 'flex-end', overflow: 'hidden', backgroundColor: 'transparent' }}>
+              <VideoView
+                player={liveVoicePlayer}
+                style={{ width: 180, height: Math.round(180 * 16 / 9), backgroundColor: 'transparent' }}
+                contentFit="cover"
+                nativeControls={false}
+              />
+            </View>
           </View>
 
-          {/* ── Saudação ── */}
-          <View style={{ alignItems: 'center', gap: 6 }}>
-            <AppText style={{ fontSize: 22, fontWeight: '800', color: C.textWhite, letterSpacing: 0.3 }}>
-              Charlotte
-            </AppText>
-            <AppText style={{ fontSize: 15, fontWeight: '500', color: C.textMuted }}>
-              {isPt ? 'Vamos conversar?' : 'Want to talk?'}
-            </AppText>
-          </View>
-
-          {/* ── Pool ring ── */}
-          <PoolRing used={poolUsed} total={poolTotal} isUnlimited={poolUnlimited} isPt={isPt} />
-
-          {/* ── Last call (texto solto, sem card) ── */}
-          {lastCall && <LastCallSection call={lastCall} isPt={isPt} />}
-
-          {/* Spacer pra empurrar o botão pro fim em telas grandes */}
-          <View style={{ flex: 1, minHeight: 12 }} />
-
-          {/* ── Start button (redondo grande, igual end-call mas accent) ── */}
-          <View style={{ alignItems: 'center', gap: 12 }}>
+          {/* ── Start button (redondo grande, no centro) ── */}
+          <View style={{ alignItems: 'center', gap: 12, marginTop: 20, marginBottom: 28 }}>
             <TouchableOpacity
               onPress={startCall}
               disabled={isLimitReached}
               activeOpacity={0.85}
               style={{
-                width: 84, height: 84, borderRadius: 42,
+                width: 96, height: 96, borderRadius: 48,
                 backgroundColor: isLimitReached ? C.navyGhost : accent,
                 alignItems: 'center', justifyContent: 'center',
                 shadowColor: isLimitReached ? 'transparent' : accent,
-                shadowOffset: { width: 0, height: 6 },
-                shadowOpacity: 0.45, shadowRadius: 14,
-                elevation: 8,
+                shadowOffset: { width: 0, height: 8 },
+                shadowOpacity: 0.5, shadowRadius: 18,
+                elevation: 10,
                 opacity: isLimitReached ? 0.6 : 1,
               }}
             >
-              <Phone size={32} color={isLimitReached ? C.textDim : '#FFFFFF'} weight="fill" />
+              <Phone size={36} color={isLimitReached ? C.textDim : '#FFFFFF'} weight="fill" />
             </TouchableOpacity>
-            <AppText style={{ fontSize: 13, fontWeight: '700', color: isLimitReached ? C.textDim : C.textWhite, letterSpacing: 0.5 }}>
+            <AppText style={{ fontSize: 13, fontWeight: '700', color: isLimitReached ? C.textDim : C.textWhite, letterSpacing: 0.5, textTransform: 'uppercase' }}>
               {isLimitReached
                 ? (isPt ? 'Limite atingido' : 'Limit reached')
                 : (isPt ? 'Começar agora' : 'Start now')
               }
             </AppText>
+          </View>
+
+          {/* ── Last call (texto solto, sem card) ── */}
+          {lastCall && (
+            <LastCallSection
+              call={lastCall}
+              isPt={isPt}
+              onPress={() => setShowTranscript(true)}
+            />
+          )}
+
+          {/* Spacer pra colar o pool no fim */}
+          <View style={{ flex: 1, minHeight: 24 }} />
+
+          {/* ── Pool ring (rodapé) ── */}
+          <View style={{ alignItems: 'center', paddingTop: 16, paddingBottom: 8 }}>
+            <PoolRing used={poolUsed} total={poolTotal} isUnlimited={poolUnlimited} isPt={isPt} />
           </View>
 
         </ScrollView>
@@ -345,6 +486,13 @@ export default function LiveVoiceTab() {
           }}
         />
       )}
+
+      <TranscriptModal
+        call={lastCall}
+        isOpen={showTranscript}
+        isPt={isPt}
+        onClose={() => setShowTranscript(false)}
+      />
 
     </View>
   );

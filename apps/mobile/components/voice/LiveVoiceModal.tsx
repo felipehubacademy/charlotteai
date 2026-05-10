@@ -967,7 +967,7 @@ export default function LiveVoiceModal({
                       saveCallRecord(secsUsed);
                       sessionAccumSecs.current = 0;
                       disconnect();
-                      setShowTranscript(true);
+                      onClose();
                     }
                   }, 12000);
                 }
@@ -1047,7 +1047,7 @@ export default function LiveVoiceModal({
                     saveCallRecord(secsUsed);
                     sessionAccumSecs.current = 0;
                     disconnect();
-                    setShowTranscript(true);
+                    onClose();
                   }
                 }, 7000);
               }
@@ -1218,14 +1218,8 @@ export default function LiveVoiceModal({
       ]);
       charlotteTextAccRef.current = '';
     }
-    const wasConnected = wasConnectedRef.current;
     disconnect();
-    // Always show transcript if call was ever connected (even if empty — helps debug)
-    if (wasConnected) {
-      setShowTranscript(true);
-    } else {
-      onClose();
-    }
+    onClose();
   }, [disconnect, onClose]);
 
   const handleMute = React.useCallback(() => {
