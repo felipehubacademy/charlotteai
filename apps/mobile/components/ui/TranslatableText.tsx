@@ -1,10 +1,10 @@
 import React, { useState, useRef } from 'react';
 import {
-  View, TouchableOpacity, Modal, Dimensions,
-  StyleSheet, Platform,
+  View, TouchableOpacity, Modal, StyleSheet,
 } from 'react-native';
 import { AppText } from '@/components/ui/Text';
 import { translate, translatePhrase } from '@/lib/noviceDictionary';
+import { TooltipBalloon } from '@/components/ui/TooltipBalloon';
 
 interface Token {
   display: string;      // text to show (with trailing punctuation)
@@ -49,69 +49,21 @@ function parseTokens(text: string): Token[] {
   return tokens;
 }
 
-function TooltipBalloon({
+function WordTooltip({
   tooltip,
   onDismiss,
 }: {
   tooltip: TooltipState;
   onDismiss: () => void;
 }) {
-  const BALLOON_W = 160;
-  const ARROW_SIZE = 7;
-  const BALLOON_PADDING = 10;
-  const screenW = Dimensions.get('window').width;
-
-  // Center balloon over the word
-  let left = tooltip.pageX + tooltip.wordWidth / 2 - BALLOON_W / 2;
-  left = Math.max(8, Math.min(left, screenW - BALLOON_W - 8));
-
-  // Arrow position relative to balloon left
-  const arrowLeft = tooltip.pageX + tooltip.wordWidth / 2 - left - ARROW_SIZE;
-
-  // Balloon above the word
-  const top = tooltip.pageY - 48 - ARROW_SIZE;
-
   return (
     <Modal transparent visible animationType="fade" onRequestClose={onDismiss}>
       <TouchableOpacity style={StyleSheet.absoluteFill} onPress={onDismiss} activeOpacity={1}>
-        <View
-          pointerEvents="none"
-          style={{
-            position: 'absolute',
-            left,
-            top,
-            width: BALLOON_W,
-            backgroundColor: '#16153A',
-            borderRadius: 10,
-            paddingHorizontal: BALLOON_PADDING,
-            paddingVertical: 9,
-            shadowColor: '#000',
-            shadowOpacity: 0.25,
-            shadowRadius: 8,
-            shadowOffset: { width: 0, height: 3 },
-            elevation: 8,
-          }}
-        >
-          <AppText style={{ color: '#FFFFFF', fontSize: 13, fontWeight: '700', textAlign: 'center' }}>
-            {tooltip.translation}
-          </AppText>
-          {/* Arrow pointing down */}
-          <View
-            style={{
-              position: 'absolute',
-              bottom: -ARROW_SIZE,
-              left: Math.max(8, Math.min(arrowLeft, BALLOON_W - ARROW_SIZE * 2 - 8)),
-              width: 0,
-              height: 0,
-              borderLeftWidth: ARROW_SIZE,
-              borderRightWidth: ARROW_SIZE,
-              borderTopWidth: ARROW_SIZE,
-              borderLeftColor: 'transparent',
-              borderRightColor: 'transparent',
-              borderTopColor: '#16153A',
-            }}
-          />
-        </View>
+        <TooltipBalloon
+          text={tooltip.translation}
+          anchor={{ x: tooltip.pageX, y: tooltip.pageY, width: tooltip.wordWidth }}
+          width={160}
+        />
       </TouchableOpacity>
     </Modal>
   );
@@ -185,7 +137,7 @@ export function TranslatableText({ text, style }: Props) {
       </View>
 
       {tooltip && (
-        <TooltipBalloon tooltip={tooltip} onDismiss={() => setTooltip(null)} />
+        <WordTooltip tooltip={tooltip} onDismiss={() => setTooltip(null)} />
       )}
     </>
   );

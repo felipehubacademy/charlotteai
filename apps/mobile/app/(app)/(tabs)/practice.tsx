@@ -3,7 +3,7 @@
 // pill no topo. Substitui o trail antigo + as 3 rotas separadas
 // (/grammar, /pronunciation, /chat) que viraram redirects.
 
-import React, { useCallback, useState, useMemo, useEffect } from 'react';
+import React, { useCallback, useState, useMemo, useEffect, useRef } from 'react';
 import {
   Alert, View, TouchableOpacity, KeyboardAvoidingView, Platform, Modal,
   Pressable, Animated, Easing, ScrollView, Dimensions,
@@ -12,12 +12,15 @@ import { Question, X, ClockCounterClockwise, XCircle, CaretRight, Trash } from '
 import { useLocalSearchParams, router, useFocusEffect } from 'expo-router';
 import { useSafeAreaInsets } from 'react-native-safe-area-context';
 import { useBottomTabBarHeight } from '@react-navigation/bottom-tabs';
+import * as SecureStore from 'expo-secure-store';
 import { useAuth } from '@/hooks/useAuth';
 import { HeaderPills } from '@/components/ui/HeaderPills';
 import { AppText } from '@/components/ui/Text';
 import ChatBox from '@/components/chat/ChatBox';
 import ChatInputBar from '@/components/chat/ChatInputBar';
 import AchievementNotification from '@/components/achievements/AchievementNotification';
+import { TooltipAnchor } from '@/components/ui/TooltipBalloon';
+import { PracticeSuggestionTooltip } from '@/components/practice/PracticeSuggestionTooltip';
 import { useChat } from '@/hooks/useChat';
 import { useMessageAudioPlayer } from '@/hooks/useMessageAudioPlayer';
 import { usePaywallContext } from '@/lib/paywallContext';
@@ -170,11 +173,76 @@ export default function PracticeTab() {
 
   useFocusEffect(useCallback(() => { fetchSessions(); }, [fetchSessions]));
 
+  // ── Sugestão diária (tooltip ancorado no pill) ──
+  // Lógica: ignora modo atual. Prioriza atrasado (d>=3 e !=999, mais antigo
+  // primeiro), depois novo (d===999, Free Chat preferido). Todos recentes →
+  // não sugere. Mostra 1x/dia (SecureStore flag por data).
+  const [suggestionAnchor, setSuggestionAnchor] = useState<TooltipAnchor | null>(null);
+  const [suggestionMode,   setSuggestionMode]   = useState<Mode | null>(null);
+  const [suggestionShown,  setSuggestionShown]  = useState(false);
+  const pillRefs = useRef<Partial<Record<Mode, View | null>>>({});
+
+  const suggestedMode = useMemo<Mode | null>(() => {
+    const others = MODES.filter(m => m.id !== mode);
+    if (others.some(m => daysSince[m.id] < 0)) return null;     // ainda carregando
+    const overdue = others
+      .filter(m => daysSince[m.id] >= 3 && daysSince[m.id] !== 999)
+      .sort((a, b) => daysSince[b.id] - daysSince[a.id]);
+    if (overdue[0]) return overdue[0].id;
+    const fresh = others.filter(m => daysSince[m.id] === 999);
+    if (fresh.length) return (fresh.find(m => m.id === 'chat') ?? fresh[0]).id;
+    return null;
+  }, [mode, daysSince]);
+
+  const suggestionText = useMemo(() => {
+    if (!suggestionMode) return '';
+    const labels: Record<Mode, { pt: string; en: string }> = {
+      chat:          { pt: 'Free Chat',  en: 'Free Chat' },
+      grammar:       { pt: 'Gramática',  en: 'Grammar' },
+      pronunciation: { pt: 'Pronúncia',  en: 'Pronunciation' },
+    };
+    const l = labels[suggestionMode];
+    return isPt ? `Que tal praticar ${l.pt} hoje?` : `Try ${l.en} today?`;
+  }, [suggestionMode, isPt]);
+
+  // Carrega flag "já mostrado hoje" 1x ao montar
+  useEffect(() => {
+    SecureStore.getItemAsync(`practice_suggestion_${localTodayStr()}`)
+      .then(v => { if (v) setSuggestionShown(true); })
+      .catch(() => {});
+  }, []);
+
+  // Quando suggestedMode aparece e ainda não foi mostrado hoje, mede o pill
+  useEffect(() => {
+    if (!suggestedMode || suggestionShown) return;
+    const t = setTimeout(() => {
+      const ref = pillRefs.current[suggestedMode];
+      if (!ref) return;
+      ref.measureInWindow((x, y, w) => {
+        if (!w) return;     // layout ainda não pronto
+        setSuggestionAnchor({ x, y, width: w });
+        setSuggestionMode(suggestedMode);
+        setSuggestionShown(true);
+        SecureStore
+          .setItemAsync(`practice_suggestion_${localTodayStr()}`, '1')
+          .catch(() => {});
+      });
+    }, 600);
+    return () => clearTimeout(t);
+  }, [suggestedMode, suggestionShown]);
+
+  const dismissSuggestion = useCallback(() => {
+    setSuggestionAnchor(null);
+    setSuggestionMode(null);
+  }, []);
+
   // Auto-fecha drawer/help/etc ao sair da tab (não persiste ao voltar)
   useFocusEffect(useCallback(() => {
     return () => {
       setShowHistory(false);
       setShowHelp(false);
+      setSuggestionAnchor(null);
+      setSuggestionMode(null);
     };
   }, []));
 
@@ -183,6 +251,10 @@ export default function PracticeTab() {
   // - outro → outro: só troca (state local zera via effect do useChat)
   const handleModeSwitch = useCallback(async (newMode: Mode) => {
     if (newMode === mode) return;
+    // Limpa tooltip de sugestão se estiver visível (evita ficar ancorado num
+    // pill que já não faz sentido após a troca).
+    setSuggestionAnchor(null);
+    setSuggestionMode(null);
 
     if (mode === 'chat' && messages.length >= 2) {
       Alert.alert(
@@ -284,6 +356,7 @@ export default function PracticeTab() {
               return (
                 <TouchableOpacity
                   key={m.id}
+                  ref={(r) => { pillRefs.current[m.id] = r as unknown as View | null; }}
                   onPress={() => handleModeSwitch(m.id)}
                   activeOpacity={0.7}
                   style={{
@@ -400,6 +473,14 @@ export default function PracticeTab() {
       />
       </View>
       {/* /body wrapper */}
+
+      {/* ── Sugestão diária ancorada no pill (overlay, sem bloquear toque) ── */}
+      <PracticeSuggestionTooltip
+        visible={!!suggestionAnchor && !!suggestionMode}
+        text={suggestionText}
+        anchor={suggestionAnchor}
+        onAutoDismiss={dismissSuggestion}
+      />
 
       {/* ── Achievement notification (grammar + pronunciation) ── */}
       {(mode === 'grammar' || mode === 'pronunciation') && (
