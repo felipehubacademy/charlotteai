@@ -30,7 +30,7 @@ import LiveVoiceModal from '@/components/voice/LiveVoiceModal';
 // Nomes textWhite/textMuted/textDim mantidos pra evitar refactor massivo,
 // mas os VALORES agora são escuros (legado naming).
 const C = {
-  stage:       '#F9F8FF',  // lavanda muito claro
+  stage:       '#FAF9FF',  // lavanda muito claro
   panel:       '#FFFFFF',
   navyMid:     '#3B3A5A',
   navyLight:   'rgba(22,21,58,0.55)',
