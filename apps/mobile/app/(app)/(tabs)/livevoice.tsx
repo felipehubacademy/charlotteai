@@ -557,20 +557,28 @@ export default function LiveVoiceTab() {
   const isLimitReached = !poolUnlimited && poolUsed >= poolTotal;
   const statsParams = { sessionXP: String(todayXP), totalXP: String(totalXP), userId, userLevel: level, userName: profile?.name ?? 'Student' };
 
-  // Charlotte responsiva. Android tem tab bar mais alta (relativamente) e menos
-  // chrome no topo — precisa ser menor pra tudo caber. iOS mantém maior.
+  // Charlotte responsiva — calculada do espaço REAL disponível na tela.
+  // Antes (multiplicador fixo 0.55 do screenH) overflowava em telas menores
+  // tipo iPhone 13 — Charlotte ficava grande demais e empurrava CTA pra
+  // grudar na tab bar.
   const screenW = Dimensions.get('window').width;
   const screenH = Dimensions.get('window').height;
   const isAndroid = Platform.OS === 'android';
-  const charH   = isAndroid
-    ? Math.min(450, Math.round(screenH * 0.48))
-    : Math.min(480, Math.round(screenH * 0.55));
-  const charW   = Math.round(charH * 9 / 16);
-  const drawerW = Math.round(screenW * 0.82);
 
   // Altura da tab bar (React Navigation) — usada pra offsetar conteúdo do fundo.
-  // Diferente de safeArea — é a altura visual da própria tab bar.
   const tabBarHeight = useBottomTabBarHeight();
+  const insets = useSafeAreaInsets();
+
+  // Espaço usável = screen - safe areas - HeaderPills (52) - tab bar
+  const usableHeight = screenH - insets.top - 52 - tabBarHeight;
+  // Espaço fixo dentro da tela: header título(70) + drawer(56) + CTA(84) +
+  // min spacer flex(32) + spacer Android extra (32 se Android)
+  const RESERVED = 70 + 56 + 84 + 32 + (isAndroid ? 32 : 0);
+
+  // Charlotte: máximo 480, mínimo 280, fit dentro do que sobra
+  const charH   = Math.min(480, Math.max(280, usableHeight - RESERVED));
+  const charW   = Math.round(charH * 9 / 16);
+  const drawerW = Math.round(screenW * 0.82);
 
   return (
     <View style={{ flex: 1, backgroundColor: C.stage }}>
