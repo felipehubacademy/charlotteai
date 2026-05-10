@@ -586,25 +586,24 @@ export default function LiveVoiceTab() {
               </View>
             </View>
 
-            {/* ── Botão drawer pequeno (acima do CTA, esquerda) ── */}
-            {recentCalls.length > 0 && (
-              <View style={{ paddingHorizontal: 24, marginBottom: 12 }}>
-                <TouchableOpacity
-                  onPress={() => setShowCallsDrawer(true)}
-                  accessibilityLabel={isPt ? 'Ver chamadas anteriores' : 'View previous calls'}
-                  hitSlop={{ top: 8, bottom: 8, left: 8, right: 8 }}
-                  style={{
-                    width: 44, height: 44, borderRadius: 22,
-                    backgroundColor: '#FFFFFF',
-                    borderWidth: 1, borderColor: 'rgba(22,21,58,0.10)',
-                    alignItems: 'center', justifyContent: 'center',
-                    alignSelf: 'flex-start',
-                  }}
-                >
-                  <ClockCounterClockwise size={20} color={C.textMuted} weight="regular" />
-                </TouchableOpacity>
-              </View>
-            )}
+            {/* ── Botão drawer (sempre visível pra estabilidade de layout).
+                Drawer mostra empty state quando recentCalls.length === 0. ── */}
+            <View style={{ paddingHorizontal: 24, marginBottom: 12 }}>
+              <TouchableOpacity
+                onPress={() => setShowCallsDrawer(true)}
+                accessibilityLabel={isPt ? 'Ver chamadas anteriores' : 'View previous calls'}
+                hitSlop={{ top: 8, bottom: 8, left: 8, right: 8 }}
+                style={{
+                  width: 44, height: 44, borderRadius: 22,
+                  backgroundColor: '#FFFFFF',
+                  borderWidth: 1, borderColor: 'rgba(22,21,58,0.10)',
+                  alignItems: 'center', justifyContent: 'center',
+                  alignSelf: 'flex-start',
+                }}
+              >
+                <ClockCounterClockwise size={20} color={C.textMuted} weight="regular" />
+              </TouchableOpacity>
+            </View>
 
             {/* ── CTA primário: Conversar com Charlotte ── */}
             <TouchableOpacity
