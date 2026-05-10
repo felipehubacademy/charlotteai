@@ -6,13 +6,14 @@ import React, { useState, useCallback, useMemo } from 'react';
 import {
   View, ScrollView, TouchableOpacity, ActivityIndicator, Image,
   RefreshControl, Modal, Pressable, Dimensions, Animated, Easing, Platform,
+  Alert,
 } from 'react-native';
 import { useSafeAreaInsets } from 'react-native-safe-area-context';
 import Svg, { Circle } from 'react-native-svg';
 import { useFocusEffect } from 'expo-router';
 import { useBottomTabBarHeight } from '@react-navigation/bottom-tabs';
 import { useVideoPlayer, VideoView } from 'expo-video';
-import { Phone, XCircle, ClockCounterClockwise, CaretRight } from 'phosphor-react-native';
+import { Phone, XCircle, ClockCounterClockwise, CaretRight, Trash } from 'phosphor-react-native';
 import { AppText } from '@/components/ui/Text';
 import { HeaderPills } from '@/components/ui/HeaderPills';
 import { useAuth } from '@/hooks/useAuth';
@@ -135,9 +136,10 @@ function PoolRing({ used, total, isUnlimited, isPt }: {
 }
 
 // ── Item da lista do drawer ───────────────────────────────────────────────────
+// Card clicável (abre transcrição) + botão lixeira separado (com confirmação).
 
-function CallListItem({ call, isPt, onPress }: {
-  call: LastCall; isPt: boolean; onPress: () => void;
+function CallListItem({ call, isPt, onPress, onDelete }: {
+  call: LastCall; isPt: boolean; onPress: () => void; onDelete: () => void;
 }) {
   const days = Math.floor((Date.now() - new Date(call.started_at).getTime()) / 86_400_000);
   const minutes = Math.round(call.duration_seconds / 60);
@@ -147,41 +149,68 @@ function CallListItem({ call, isPt, onPress }: {
                   : days === 1 ? (isPt ? 'Ontem' : 'Yesterday')
                   : isPt ? `há ${days} dias` : `${days} days ago`;
 
+  const handleDeletePress = () => {
+    Alert.alert(
+      isPt ? 'Excluir conversa?' : 'Delete conversation?',
+      isPt ? 'Esta ação não pode ser desfeita.' : 'This cannot be undone.',
+      [
+        { text: isPt ? 'Cancelar' : 'Cancel', style: 'cancel' },
+        { text: isPt ? 'Excluir' : 'Delete', style: 'destructive', onPress: onDelete },
+      ],
+    );
+  };
+
   return (
-    <TouchableOpacity
-      onPress={onPress}
-      activeOpacity={hasTranscript ? 0.6 : 1}
-      disabled={!hasTranscript}
-      style={{
-        paddingVertical: 14, paddingHorizontal: 4,
-        borderBottomWidth: 1, borderBottomColor: 'rgba(22,21,58,0.06)',
-        flexDirection: 'row', alignItems: 'center', gap: 10,
-      }}
-    >
-      <View style={{ flex: 1 }}>
-        <View style={{ flexDirection: 'row', alignItems: 'center', gap: 8, marginBottom: 4 }}>
-          <AppText style={{ fontSize: 13, fontWeight: '800', color: '#16153A' }}>{whenLabel}</AppText>
-          <View style={{ width: 3, height: 3, borderRadius: 1.5, backgroundColor: 'rgba(22,21,58,0.3)' }} />
-          <AppText style={{ fontSize: 12, fontWeight: '600', color: 'rgba(22,21,58,0.55)' }}>{minutes} min</AppText>
+    <View style={{
+      paddingVertical: 14, paddingHorizontal: 4,
+      borderBottomWidth: 1, borderBottomColor: 'rgba(22,21,58,0.06)',
+      flexDirection: 'row', alignItems: 'center', gap: 8,
+    }}>
+      <TouchableOpacity
+        onPress={onPress}
+        activeOpacity={hasTranscript ? 0.6 : 1}
+        disabled={!hasTranscript}
+        style={{ flex: 1, flexDirection: 'row', alignItems: 'center', gap: 8 }}
+      >
+        <View style={{ flex: 1 }}>
+          <View style={{ flexDirection: 'row', alignItems: 'center', gap: 8, marginBottom: 4 }}>
+            <AppText style={{ fontSize: 13, fontWeight: '800', color: '#16153A' }}>{whenLabel}</AppText>
+            <View style={{ width: 3, height: 3, borderRadius: 1.5, backgroundColor: 'rgba(22,21,58,0.3)' }} />
+            <AppText style={{ fontSize: 12, fontWeight: '600', color: 'rgba(22,21,58,0.55)' }}>{minutes} min</AppText>
+          </View>
+          <AppText
+            style={{ fontSize: 13, color: 'rgba(22,21,58,0.7)', lineHeight: 18 }}
+            numberOfLines={2}
+          >
+            {call.summary ?? (isPt ? 'Sem resumo disponível.' : 'No summary available.')}
+          </AppText>
         </View>
-        <AppText
-          style={{ fontSize: 13, color: 'rgba(22,21,58,0.7)', lineHeight: 18 }}
-          numberOfLines={2}
-        >
-          {call.summary ?? (isPt ? 'Sem resumo disponível.' : 'No summary available.')}
-        </AppText>
-      </View>
-      {hasTranscript && <CaretRight size={14} color="rgba(22,21,58,0.3)" weight="bold" />}
-    </TouchableOpacity>
+        {hasTranscript && <CaretRight size={14} color="rgba(22,21,58,0.3)" weight="bold" />}
+      </TouchableOpacity>
+
+      <TouchableOpacity
+        onPress={handleDeletePress}
+        accessibilityLabel={isPt ? 'Excluir esta conversa' : 'Delete this conversation'}
+        hitSlop={{ top: 10, bottom: 10, left: 8, right: 8 }}
+        style={{
+          width: 36, height: 36, borderRadius: 18,
+          alignItems: 'center', justifyContent: 'center',
+        }}
+      >
+        <Trash size={16} color="rgba(220,38,38,0.7)" weight="regular" />
+      </TouchableOpacity>
+    </View>
   );
 }
 
 // ── Drawer lateral (in-screen, não cobre HeaderPills nem tab bar) ─────────────
 // Posicionado absoluto dentro do content area, com slide animation translateX.
 
-function CallsDrawer({ calls, isOpen, onClose, onSelectCall, isPt, drawerWidth }: {
+function CallsDrawer({ calls, isOpen, onClose, onSelectCall, onDeleteCall, isPt, drawerWidth }: {
   calls: LastCall[]; isOpen: boolean; onClose: () => void;
-  onSelectCall: (call: LastCall) => void; isPt: boolean; drawerWidth: number;
+  onSelectCall: (call: LastCall) => void;
+  onDeleteCall: (callId: string) => void;
+  isPt: boolean; drawerWidth: number;
 }) {
   const slideX = React.useRef(new Animated.Value(-drawerWidth)).current;
   const fade   = React.useRef(new Animated.Value(0)).current;
@@ -262,6 +291,7 @@ function CallsDrawer({ calls, isOpen, onClose, onSelectCall, isPt, drawerWidth }
                 call={call}
                 isPt={isPt}
                 onPress={() => onSelectCall(call)}
+                onDelete={() => onDeleteCall(call.id)}
               />
             ))}
           </ScrollView>
@@ -506,6 +536,18 @@ export default function LiveVoiceTab() {
     setRefreshing(false);
   }, [loadData]);
 
+  const handleDeleteCall = useCallback(async (callId: string) => {
+    // Otimista: remove da UI imediatamente, depois apaga no DB.
+    setRecentCalls(prev => prev.filter(c => c.id !== callId));
+    try {
+      await supabase.from('charlotte_live_calls').delete().eq('id', callId);
+    } catch (err) {
+      console.warn('[livevoice] failed to delete call:', err);
+      // Fallback: re-fetch pra reconciliar
+      loadData();
+    }
+  }, [loadData]);
+
   const startCall = useCallback(() => {
     if (!poolUnlimited && poolUsed >= poolTotal) return;
     soundEngine.setMuted(true);
@@ -649,6 +691,7 @@ export default function LiveVoiceTab() {
               setSelectedCall(call);
               setTimeout(() => setShowTranscript(true), 240);
             }}
+            onDeleteCall={handleDeleteCall}
           />
 
         </View>
