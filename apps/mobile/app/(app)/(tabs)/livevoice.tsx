@@ -504,10 +504,11 @@ export default function LiveVoiceTab() {
   const isLimitReached = !poolUnlimited && poolUsed >= poolTotal;
   const statsParams = { sessionXP: String(todayXP), totalXP: String(totalXP), userId, userLevel: level, userName: profile?.name ?? 'Student' };
 
-  // Charlotte responsiva — width até 58% da tela (resto vira coluna direita)
+  // Charlotte responsiva — altura até 55% da tela (cap 480), 9:16 ratio
   const screenW = Dimensions.get('window').width;
-  const charW   = Math.min(Math.round(screenW * 0.58), 250);
-  const charH   = Math.round(charW * 16 / 9);
+  const screenH = Dimensions.get('window').height;
+  const charH   = Math.min(480, Math.round(screenH * 0.55));
+  const charW   = Math.round(charH * 9 / 16);
   const drawerW = Math.round(screenW * 0.82);
 
   return (
@@ -530,11 +531,7 @@ export default function LiveVoiceTab() {
       ) : (
         <View style={{ flex: 1, backgroundColor: C.stage, position: 'relative' }}>
 
-          <ScrollView
-            style={{ flex: 1 }}
-            contentContainerStyle={{ flexGrow: 1, paddingBottom: 24 }}
-            showsVerticalScrollIndicator={false}
-          >
+          <View style={{ flex: 1 }}>
 
             {/* ── Header da tela: título + status row ── */}
             <View style={{ paddingHorizontal: 24, paddingTop: 18, paddingBottom: 12 }}>
@@ -552,8 +549,11 @@ export default function LiveVoiceTab() {
               </View>
             </View>
 
-            {/* ── Charlotte centralizada ── */}
-            <View style={{ alignItems: 'center', marginTop: 12, marginBottom: 24 }}>
+            {/* Spacer empurra Charlotte pra baixo */}
+            <View style={{ flex: 1 }} />
+
+            {/* ── Charlotte centralizada (maior, mais embaixo) ── */}
+            <View style={{ alignItems: 'center', marginBottom: 28 }}>
               <View style={{ width: charW, height: charH, overflow: 'hidden' }}>
                 <VideoView
                   player={liveVoicePlayer}
@@ -570,6 +570,26 @@ export default function LiveVoiceTab() {
               }} />
             </View>
 
+            {/* ── Botão drawer pequeno (acima do CTA, esquerda) ── */}
+            {recentCalls.length > 0 && (
+              <View style={{ paddingHorizontal: 24, marginBottom: 12 }}>
+                <TouchableOpacity
+                  onPress={() => setShowCallsDrawer(true)}
+                  accessibilityLabel={isPt ? 'Ver chamadas anteriores' : 'View previous calls'}
+                  hitSlop={{ top: 8, bottom: 8, left: 8, right: 8 }}
+                  style={{
+                    width: 44, height: 44, borderRadius: 22,
+                    backgroundColor: 'rgba(255,255,255,0.10)',
+                    borderWidth: 1, borderColor: 'rgba(255,255,255,0.18)',
+                    alignItems: 'center', justifyContent: 'center',
+                    alignSelf: 'flex-start',
+                  }}
+                >
+                  <ClockCounterClockwise size={20} color="#FFFFFF" weight="regular" />
+                </TouchableOpacity>
+              </View>
+            )}
+
             {/* ── CTA primário: Conversar com Charlotte ── */}
             <TouchableOpacity
               onPress={startCall}
@@ -577,6 +597,7 @@ export default function LiveVoiceTab() {
               activeOpacity={0.85}
               style={{
                 marginHorizontal: 24,
+                marginBottom: 24,
                 backgroundColor: isLimitReached ? C.navyGhost : accent,
                 borderRadius: 16, paddingVertical: 18,
                 flexDirection: 'row', alignItems: 'center', justifyContent: 'center', gap: 10,
@@ -596,52 +617,7 @@ export default function LiveVoiceTab() {
               </AppText>
             </TouchableOpacity>
 
-            {/* ── MAIS RECENTE: card da última chamada ── */}
-            {recentCalls.length > 0 && (
-              <View style={{ paddingHorizontal: 24, marginTop: 28 }}>
-                <AppText style={{ fontSize: 11, color: C.textDim, fontWeight: '800', textTransform: 'uppercase', letterSpacing: 1.5, marginBottom: 10 }}>
-                  {isPt ? 'Mais recente' : 'Most recent'}
-                </AppText>
-
-                <TouchableOpacity
-                  onPress={() => {
-                    setSelectedCall(recentCalls[0]);
-                    setShowTranscript(true);
-                  }}
-                  activeOpacity={0.7}
-                  disabled={!recentCalls[0].transcript}
-                  style={{
-                    backgroundColor: 'rgba(255,255,255,0.06)',
-                    borderRadius: 16, padding: 14,
-                    borderWidth: 1, borderColor: 'rgba(255,255,255,0.08)',
-                  }}
-                >
-                  <View style={{ flexDirection: 'row', alignItems: 'center', justifyContent: 'space-between', marginBottom: 6 }}>
-                    <AppText style={{ fontSize: 12, color: C.textMuted, fontWeight: '700' }}>
-                      {formatCallMeta(recentCalls[0], isPt)}
-                    </AppText>
-                    {recentCalls[0].transcript && <CaretRight size={14} color={C.textDim} weight="bold" />}
-                  </View>
-                  <AppText style={{ fontSize: 14, color: C.textWhite, lineHeight: 20, fontWeight: '500' }} numberOfLines={2}>
-                    {recentCalls[0].summary ?? (isPt ? 'Sem resumo disponível.' : 'No summary available.')}
-                  </AppText>
-                </TouchableOpacity>
-
-                {recentCalls.length > 1 && (
-                  <TouchableOpacity
-                    onPress={() => setShowCallsDrawer(true)}
-                    activeOpacity={0.6}
-                    style={{ paddingVertical: 12, alignSelf: 'flex-start' }}
-                  >
-                    <AppText style={{ fontSize: 13, color: C.greenAccent, fontWeight: '700' }}>
-                      {isPt ? `Ver todas (${recentCalls.length}) →` : `View all (${recentCalls.length}) →`}
-                    </AppText>
-                  </TouchableOpacity>
-                )}
-              </View>
-            )}
-
-          </ScrollView>
+          </View>
 
           {/* Drawer in-screen (absolute dentro do content area, não cobre header/tab) */}
           <CallsDrawer
