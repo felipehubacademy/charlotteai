@@ -255,168 +255,132 @@ export default function ChatInputBar({
   }
 
   // ══════════════════════════════════════════════════════════
-  //  PRONUNCIATION — big central mic, no pill
+  //  PRONUNCIATION — pill + mic button (mesmo layout do chat)
+  //  Idle: pill com label "Hold to record"
+  //  Recording: pill com waveform + timer (igual chat)
+  //  Preview: pill com play/pause + waveform + duration (igual chat)
   // ══════════════════════════════════════════════════════════
   if (mode === 'pronunciation') {
-
-    // Interpolations for the 3 pulse rings
-    const ringScale = (anim: Animated.Value) =>
-      anim.interpolate({ inputRange: [0, 1], outputRange: [1, 2.6] });
-    const ringOpacity = (anim: Animated.Value) =>
-      anim.interpolate({ inputRange: [0, 0.25, 1], outputRange: [0, 0.45, 0] });
-
     return (
-      <View style={[wrapper, { paddingHorizontal: 20 }]}>
+      <View style={wrapper}>
+        <View style={{ flexDirection: 'row', alignItems: 'flex-end', gap: 10 }}>
 
-        {/* ── Preview state — circular layout, same position as mic ── */}
-        {isPreview && (
-          <View style={{ alignItems: 'center', paddingVertical: 8, gap: 10 }}>
+          {/* Input pill — label idle / waveform recording / preview */}
+          <View style={[styles.pill, { flex: 1, paddingHorizontal: 16, paddingVertical: 8 }]}>
 
-            {/* Row: [X]  [Play/Pause]  [↑] */}
-            <View style={{ flexDirection: 'row', alignItems: 'center', gap: 24 }}>
+            {/* Audio preview (mesmo do chat) */}
+            {isPreview && (
+              <View style={{ flexDirection: 'row', alignItems: 'center', gap: 8, flex: 1 }}>
+                <TouchableOpacity
+                  onPress={() => { if (isPlaying) player.pause(); else player.play(); }}
+                  style={{ padding: 2 }}
+                  accessibilityLabel={isPlaying
+                    ? (isNovice ? 'Pausar / Pause' : 'Pause')
+                    : (isNovice ? 'Reproduzir / Play' : 'Play')}
+                  accessibilityRole="button"
+                >
+                  {isPlaying
+                    ? <Pause size={16} color={C.navy} weight="fill" />
+                    : <Play  size={16} color={C.navy} weight="fill" />
+                  }
+                </TouchableOpacity>
+                <View style={{ flex: 1, flexDirection: 'row', alignItems: 'center', height: 28, gap: 2 }}>
+                  {Array.from({ length: BAR_COUNT }).map((_, i) => (
+                    <View key={i} style={{
+                      flex: 1, height: 4 + ((i * 5) % 16), borderRadius: 2,
+                      backgroundColor: C.navy, opacity: isPlaying ? 0.6 : (0.2 + (i % 4) * 0.1),
+                    }} />
+                  ))}
+                </View>
+                <AppText style={{ color: C.navyLight, fontSize: 12, fontVariant: ['tabular-nums'] }}>
+                  {formatDuration(previewDur)}
+                </AppText>
+                <TouchableOpacity
+                  onPress={cancelPreview}
+                  style={{ padding: 2 }}
+                  accessibilityLabel={isNovice ? 'Cancelar / Cancel' : 'Cancel'}
+                  accessibilityRole="button"
+                >
+                  <X size={16} color={C.red} weight="bold" />
+                </TouchableOpacity>
+              </View>
+            )}
 
-              {/* Cancel */}
-              <TouchableOpacity
-                onPress={cancelPreview}
-                accessibilityLabel={isNovice ? 'Cancelar áudio / Cancel audio' : 'Cancel audio'}
-                accessibilityRole="button"
-                style={{
-                  width: 48, height: 48, borderRadius: 24,
-                  backgroundColor: `${C.red}18`,
-                  alignItems: 'center', justifyContent: 'center',
-                }}
-              >
-                <X size={22} color={C.red} weight="bold" />
-              </TouchableOpacity>
+            {/* Recording waveform (mesmo do chat) */}
+            {!isPreview && isRecording && (
+              <View style={{ flexDirection: 'row', alignItems: 'center', gap: 8, flex: 1 }}>
+                <View style={{ width: 8, height: 8, borderRadius: 4, backgroundColor: C.red, flexShrink: 0 }} />
+                <View style={{ flex: 1, flexDirection: 'row', alignItems: 'center', height: 28, gap: 2 }}>
+                  {barAnims.map((anim, i) => (
+                    <Animated.View key={i} style={{
+                      flex: 1, height: 22, borderRadius: 2,
+                      backgroundColor: C.navy, opacity: 0.4,
+                      transform: [{ scaleY: anim }],
+                    }} />
+                  ))}
+                </View>
+                <AppText style={{
+                  color: C.navy, fontSize: 13, minWidth: 36,
+                  ...(Platform.OS === 'ios' ? { fontVariant: ['tabular-nums'] } : { fontFamily: 'monospace' }),
+                }}>
+                  {formatDuration(duration)}
+                </AppText>
+                <TouchableOpacity
+                  onPress={() => { Haptics.impactAsync(Haptics.ImpactFeedbackStyle.Light); cancelRecording(); }}
+                  style={{ padding: 2 }}
+                  accessibilityLabel={isNovice ? 'Cancelar gravação / Cancel recording' : 'Cancel recording'}
+                  accessibilityRole="button"
+                >
+                  <X size={16} color={C.red} weight="bold" />
+                </TouchableOpacity>
+              </View>
+            )}
 
-              {/* Play / Pause — same size as mic button */}
-              <TouchableOpacity
-                onPress={() => { if (isPlaying) player.pause(); else player.play(); }}
-                activeOpacity={0.85}
-                accessibilityLabel={isPlaying
-                  ? (isNovice ? 'Pausar áudio / Pause audio' : 'Pause audio')
-                  : (isNovice ? 'Reproduzir áudio / Play audio' : 'Play audio')}
-                accessibilityRole="button"
-                style={{
-                  width: 80, height: 80, borderRadius: 40,
-                  backgroundColor: C.green,
-                  alignItems: 'center', justifyContent: 'center',
-                  ...Platform.select({
-                    ios: {
-                      shadowColor: C.green,
-                      shadowOpacity: 0.4,
-                      shadowRadius: 16,
-                      shadowOffset: { width: 0, height: 4 },
-                    },
-                    android: { elevation: 6 },
-                  }),
-                }}
-              >
-                {isPlaying
-                  ? <Pause size={34} color={C.navy} weight="fill" />
-                  : <Play  size={34} color={C.navy} weight="fill" />
-                }
-              </TouchableOpacity>
-
-              {/* Send */}
-              <TouchableOpacity
-                onPress={sendPreview}
-                accessibilityLabel={isNovice ? 'Enviar áudio / Send audio' : 'Send audio'}
-                accessibilityRole="button"
-                style={{
-                  width: 48, height: 48, borderRadius: 24,
-                  backgroundColor: C.navy,
-                  alignItems: 'center', justifyContent: 'center',
-                }}
-              >
-                <ArrowUp size={22} color={C.green} weight="bold" />
-              </TouchableOpacity>
-
-            </View>
-
-            {/* Duration below, same position as "Hold to record" label */}
-            <AppText style={{
-              fontSize: 12, color: C.navyLight, fontWeight: '500',
-              ...(Platform.OS === 'ios' ? { fontVariant: ['tabular-nums'] } : { fontFamily: 'monospace' }),
-            }}>
-              {formatDuration(previewDur)}
-            </AppText>
-
+            {/* Idle: label de instrução (não editável) */}
+            {!isPreview && !isRecording && (
+              <View style={{ flex: 1, justifyContent: 'center', minHeight: 28 }}>
+                <AppText style={{ color: C.navyLight, fontSize: 15, lineHeight: 22 }}>
+                  {isNovice ? 'Segure o microfone pra gravar' : 'Hold the mic to record'}
+                </AppText>
+              </View>
+            )}
           </View>
-        )}
 
-        {/* ── Idle + Recording: big mic button with pulse rings ── */}
-        {!isPreview && (
-          <View style={{ alignItems: 'center', paddingVertical: 8, gap: 10 }}>
-
-            {/* Button + rings container */}
-            <View style={{ width: 80, height: 80, alignItems: 'center', justifyContent: 'center' }}>
-
-              {/* Pulse rings — only while recording. Conditional render so
-                  Animated.Views are unmounted on release; Android's
-                  useNativeDriver animations don't always stop cleanly
-                  via Animated.loop.stop(), but unmount kills them. */}
-              {mode === 'pronunciation' && isRecording && [ring1, ring2, ring3].map((anim, i) => (
-                <Animated.View
-                  key={i}
-                  pointerEvents="none"
-                  style={{
-                    position: 'absolute',
-                    width: 80, height: 80, borderRadius: 40,
-                    borderWidth: 2,
-                    borderColor: C.red,
-                    transform: [{ scale: ringScale(anim) }],
-                    opacity: ringOpacity(anim),
-                  }}
-                />
-              ))}
-
-              {/* The mic button itself */}
-              <Pressable
-                onPressIn={micPressIn}
-                onPressOut={micPressOut}
-                disabled={disabled || isProcessing}
-                pressRetentionOffset={{ top: 60, bottom: 60, left: 60, right: 60 }}
-                accessibilityLabel={isNovice ? 'Gravar áudio — segure para gravar / Hold to record' : 'Hold to record audio'}
-                accessibilityRole="button"
-                style={{
-                  width: 80, height: 80, borderRadius: 40,
-                  backgroundColor: isRecording ? C.red : C.green,
-                  alignItems: 'center', justifyContent: 'center',
-                  opacity: (disabled || isProcessing) ? 0.45 : 1,
-                  ...Platform.select({
-                    ios: {
-                      shadowColor: isRecording ? C.red : C.green,
-                      shadowOpacity: isRecording ? 0.45 : 0.35,
-                      shadowRadius: isRecording ? 20 : 16,
-                      shadowOffset: { width: 0, height: 4 },
-                    },
-                    android: { elevation: (disabled || isProcessing) ? 0 : isRecording ? 10 : 6 },
-                  }),
-                }}
-              >
-                {isProcessing
-                  ? <Hourglass size={30} color={C.navy} weight="regular" />
-                  : <Microphone size={34} color={isRecording ? '#FFFFFF' : C.navy} weight="bold" />
-                }
-              </Pressable>
-            </View>
-
-            {/* Status label — fixed height so button never shifts */}
-            <AppText style={{
-              fontSize: 12, fontWeight: isRecording ? '700' : '500', letterSpacing: 0.2,
-              color: isRecording ? C.red : C.navyLight,
-              ...(isRecording && Platform.OS === 'ios' ? { fontVariant: ['tabular-nums'] } : {}),
-              ...(isRecording && Platform.OS !== 'ios' ? { fontFamily: 'monospace' } : {}),
-            }}>
-              {isProcessing ? (isNovice ? 'Processando...' : 'Processing...') : isRecording ? formatDuration(duration) : isNovice ? 'Segure para gravar' : 'Hold to record'}
-            </AppText>
-
-          </View>
-        )}
+          {/* Action button — preview: send | idle/recording: mic */}
+          {isPreview ? (
+            <TouchableOpacity
+              onPress={sendPreview}
+              style={[styles.actionBtn, { backgroundColor: C.green }]}
+              accessibilityLabel={isNovice ? 'Enviar áudio / Send audio' : 'Send audio'}
+              accessibilityRole="button"
+            >
+              <ArrowUp size={20} color={C.navy} weight="bold" />
+            </TouchableOpacity>
+          ) : (
+            <Pressable
+              onPressIn={micPressIn}
+              onPressOut={micPressOut}
+              disabled={disabled || isProcessing}
+              pressRetentionOffset={{ top: 30, bottom: 30, left: 30, right: 30 }}
+              style={[styles.actionBtn, {
+                backgroundColor: isRecording
+                  ? C.red
+                  : (disabled || isProcessing ? `${C.green}50` : C.green),
+              }]}
+              accessibilityLabel={isNovice ? 'Microfone — segure para gravar / Hold to record' : 'Hold to record audio'}
+              accessibilityRole="button"
+            >
+              {isProcessing
+                ? <Hourglass size={17} color={`${C.navy}60`} weight="regular" />
+                : <Microphone size={20} color={isRecording ? '#FFFFFF' : C.navy} weight="bold" />
+              }
+            </Pressable>
+          )}
+        </View>
       </View>
     );
   }
+
 
   // ══════════════════════════════════════════════════════════
   //  GRAMMAR — text pill + send button outside (disabled when empty)
@@ -426,8 +390,8 @@ export default function ChatInputBar({
       <View style={wrapper}>
         <View style={{ flexDirection: 'row', alignItems: 'flex-end', gap: 10 }}>
 
-          {/* Input pill */}
-          <View style={[styles.pill, { flex: 1, paddingHorizontal: 16, paddingVertical: 12 }]}>
+          {/* Input pill — mesma altura do chat/pronunciation */}
+          <View style={[styles.pill, { flex: 1, paddingHorizontal: 16, paddingVertical: 8 }]}>
             <TextInput
               value={text}
               onChangeText={setText}
