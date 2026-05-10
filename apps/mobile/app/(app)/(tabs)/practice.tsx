@@ -22,6 +22,7 @@ import AchievementNotification from '@/components/achievements/AchievementNotifi
 import { TooltipAnchor } from '@/components/ui/TooltipBalloon';
 import { PracticeSuggestionTooltip } from '@/components/practice/PracticeSuggestionTooltip';
 import { TopicPills, Topic } from '@/components/practice/TopicPills';
+import { PronunciationPhraseHint } from '@/components/practice/PronunciationPhraseHint';
 import { useChat } from '@/hooks/useChat';
 import { useMessageAudioPlayer } from '@/hooks/useMessageAudioPlayer';
 import { usePaywallContext } from '@/lib/paywallContext';
@@ -504,6 +505,15 @@ export default function PracticeTab() {
             accent={accent}
             disabled={isProcessing || !!rateLimited}
             onSelect={handleTopicSelect}
+          />
+        )}
+
+        {/* ── Pronunciation phrase hint (sempre Novice; toggle pra Inter/Adv) ── */}
+        {mode === 'pronunciation' && (
+          <PronunciationPhraseHint
+            userLevel={userLevel}
+            isPt={isPt}
+            accent={accent}
           />
         )}
 

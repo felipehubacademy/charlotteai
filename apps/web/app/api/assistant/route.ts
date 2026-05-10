@@ -882,12 +882,22 @@ async function handleNoviceTextMessage(
 LANGUAGE RULES (CRITICAL):
 - ALWAYS reply mostly in simple English, regardless of what language the student writes in.
 - Use only common words (top 1500-2000 most frequent English words).
-- For potentially difficult words or idioms, add a SHORT Portuguese translation in parentheses immediately after the word.
-  Example: "What's your favorite dish (prato favorito)?"
-  Example: "I went hiking (caminhada) last weekend."
-- If the student writes in Portuguese, do NOT switch to Portuguese. Acknowledge briefly in English ("Got it!" / "Cool!") and continue in simple English with PT hints in parens.
+- If the student writes in Portuguese, do NOT switch to Portuguese. Acknowledge briefly in English ("Got it!" / "Cool!") and continue in simple English.
 - Never write a full sentence in Portuguese. PT is only for word-level scaffolding inside parentheses.
 - Never apologize for using English. Just keep it simple and warm.
+
+PT-IN-PARENTHESES — STRICT CRITERIA (very important):
+- Use AT MOST ONE Portuguese translation in parentheses per reply, and ONLY when the word is genuinely hard for a Brazilian beginner.
+- DO NOT translate obvious cognates or near-identical words: family, important, social, music, computer, restaurant, internet, hospital, hotel, problem, idea, color, animal, doctor, supermarket, etc. The student already understands these.
+- DO NOT translate top-1000 frequent English words: the, is, like, eat, day, time, work, home, food, fun, watch, show, family, friend, school, house, car, etc.
+- DO translate less-frequent or abstract words: hiking (caminhada), cozy (aconchegante), awkward (constrangedor), gathering (encontro), commute (deslocamento).
+- DO translate idioms and phrasal verbs: hang out (passar tempo), look forward to (mal posso esperar), pick up (pegar/buscar).
+- If no word in your reply meets the criteria above, write the entire reply in plain simple English — no parentheses at all. Parens are the exception, not the default.
+- Examples:
+  GOOD: "What shows do you like to watch?" (no parens — all common words)
+  GOOD: "Sounds cozy (aconchegante)! Who do you go with?" (1 paren on a less-common word)
+  BAD:  "What's your favorite food (comida)?" (food is too common — never paren this)
+  BAD:  "Tell me about your family (família)." (cognate — never paren this)
 
 ${conversationContext ? `\n${conversationContext}\n` : ''}
 
@@ -1487,10 +1497,15 @@ Do you like these?`;
 LANGUAGE RULES (CRITICAL):
 - ALWAYS reply mostly in simple English (~80%), regardless of what language the student spoke.
 - Use only common words (top 1500-2000 most frequent English words).
-- For potentially difficult words, you may add a quick PT translation in parentheses — but use SPARINGLY in audio (sounds clunky if too many).
-  Example: "Tell me about your weekend (fim de semana)."
 - If the student spoke in Portuguese, do NOT switch to Portuguese. Acknowledge briefly in English ("Got it!" / "Cool!") and continue in simple English.
 - Never speak full sentences in Portuguese.
+
+PT-IN-PARENTHESES — STRICT (audio is even more strict than text):
+- Default: NO Portuguese in parens. Audio with parens sounds clunky when read aloud.
+- ONLY add a single PT word in parens if it's a genuinely hard, less-frequent word the student likely doesn't know.
+- NEVER paren obvious cognates (family, important, music, social, restaurant, hospital, etc.) — student already understands.
+- NEVER paren top-1000 common words (food, fun, day, time, work, home, watch, show, etc.).
+- If in doubt, leave the paren out entirely.
 
 ${conversationContext ? `\n${conversationContext}\n` : ''}
 
