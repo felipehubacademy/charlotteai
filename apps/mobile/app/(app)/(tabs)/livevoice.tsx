@@ -5,13 +5,13 @@
 import React, { useState, useCallback, useMemo } from 'react';
 import {
   View, ScrollView, TouchableOpacity, ActivityIndicator, Image,
-  RefreshControl, Modal,
+  RefreshControl, Modal, Pressable, Dimensions,
 } from 'react-native';
-import { SafeAreaView, useSafeAreaInsets } from 'react-native-safe-area-context';
+import { useSafeAreaInsets } from 'react-native-safe-area-context';
 import Svg, { Circle } from 'react-native-svg';
 import { useFocusEffect } from 'expo-router';
 import { useVideoPlayer, VideoView } from 'expo-video';
-import { Phone, ChatCircle, X } from 'phosphor-react-native';
+import { Phone, XCircle } from 'phosphor-react-native';
 import { AppText } from '@/components/ui/Text';
 import { HeaderPills } from '@/components/ui/HeaderPills';
 import { useAuth } from '@/hooks/useAuth';
@@ -142,14 +142,17 @@ function LastCallSection({ call, isPt, onPress }: {
   );
 }
 
-// ── Transcript modal ──────────────────────────────────────────────────────────
-// Parse transcript ("User: text\nCharlotte: text\n...") em turnos e renderiza
-// as bolhas no padrão visual da chamada.
+// ── Transcript bottom sheet ───────────────────────────────────────────────────
+// Mesmo padrão do "Por que errei?" da learn-session: sheet sobe do fundo,
+// dim overlay com tap-outside pra fechar. Parse "User: ...\nCharlotte: ..."
+// em turnos e renderiza bolhas iMessage.
 
 function TranscriptModal({ call, isOpen, onClose, isPt }: {
   call: LastCall | null; isOpen: boolean; onClose: () => void; isPt: boolean;
 }) {
   const insets = useSafeAreaInsets();
+  const screenH = Dimensions.get('window').height;
+  const sheetMaxH = Math.round(screenH * 0.85);
 
   const turns = useMemo(() => {
     if (!call?.transcript) return [] as Array<{ role: 'user' | 'assistant'; text: string }>;
@@ -168,89 +171,90 @@ function TranscriptModal({ call, isOpen, onClose, isPt }: {
   if (!call) return null;
 
   return (
-    <Modal visible={isOpen} animationType="slide" onRequestClose={onClose}>
-      <View style={{ flex: 1, backgroundColor: '#FFFFFF' }}>
-        <SafeAreaView edges={['top']} style={{ backgroundColor: '#FFFFFF' }}>
-          <View style={{
-            flexDirection: 'row', alignItems: 'center',
-            paddingHorizontal: 16, height: 56,
+    <Modal visible={isOpen} transparent animationType="fade" onRequestClose={onClose}>
+      <Pressable
+        onPress={onClose}
+        style={{ flex: 1, justifyContent: 'flex-end', backgroundColor: 'rgba(0,0,0,0.45)' }}
+      >
+        <Pressable
+          onPress={(e) => e.stopPropagation()}
+          style={{
             backgroundColor: '#FFFFFF',
-            borderBottomWidth: 1, borderBottomColor: 'rgba(22,21,58,0.10)',
-          }}>
-            <View style={{ width: 36, height: 36, borderRadius: 10, backgroundColor: 'rgba(124,58,237,0.10)', alignItems: 'center', justifyContent: 'center' }}>
-              <ChatCircle size={20} color="#7C3AED" weight="fill" />
-            </View>
-            <View style={{ flex: 1, alignItems: 'center' }}>
-              <AppText style={{ fontSize: 9, fontWeight: '700', color: '#9896B8', textTransform: 'uppercase', letterSpacing: 1 }}>Charlotte</AppText>
-              <AppText style={{ fontSize: 15, fontWeight: '800', color: '#16153A', letterSpacing: -0.3 }}>
-                {isPt ? 'Transcrição da Chamada' : 'Call Transcript'}
-              </AppText>
-            </View>
-            <TouchableOpacity onPress={onClose} hitSlop={{ top: 12, bottom: 12, left: 12, right: 12 }}
-              style={{ width: 36, height: 36, borderRadius: 18, alignItems: 'center', justifyContent: 'center' }}>
-              <X size={20} color="#4B4A72" weight="bold" />
+            borderTopLeftRadius: 24, borderTopRightRadius: 24,
+            maxHeight: sheetMaxH,
+            paddingBottom: insets.bottom,
+          }}
+        >
+          {/* Handle */}
+          <View style={{ width: 36, height: 4, borderRadius: 2, backgroundColor: 'rgba(22,21,58,0.15)', alignSelf: 'center', marginTop: 10, marginBottom: 14 }} />
+
+          {/* Header */}
+          <View style={{ flexDirection: 'row', alignItems: 'center', paddingHorizontal: 24, marginBottom: 16 }}>
+            <AppText style={{ fontSize: 16, fontWeight: '800', color: '#16153A', flex: 1 }}>
+              {isPt ? 'Conversa anterior' : 'Previous conversation'}
+            </AppText>
+            <TouchableOpacity onPress={onClose} hitSlop={{ top: 10, bottom: 10, left: 10, right: 10 }}>
+              <XCircle size={22} color="rgba(22,21,58,0.3)" weight="fill" />
             </TouchableOpacity>
           </View>
-        </SafeAreaView>
 
-        <ScrollView
-          style={{ flex: 1, backgroundColor: '#F4F3FA' }}
-          contentContainerStyle={{ padding: 16, paddingBottom: 16 + insets.bottom, gap: 12 }}
-          showsVerticalScrollIndicator={false}
-        >
-          {/* Resumo da chamada no topo */}
-          {call.summary && (
-            <View style={{
-              backgroundColor: '#F0F0FB', borderRadius: 12, padding: 14,
-              borderLeftWidth: 3, borderLeftColor: '#7C3AED',
-              marginBottom: 4,
-            }}>
-              <AppText style={{ fontSize: 10, fontWeight: '700', color: '#7C3AED', textTransform: 'uppercase', letterSpacing: 1, marginBottom: 4 }}>
-                {isPt ? 'Resumo' : 'Summary'}
-              </AppText>
-              <AppText style={{ fontSize: 14, color: '#16153A', lineHeight: 20 }}>
-                {call.summary}
-              </AppText>
-            </View>
-          )}
+          <ScrollView
+            style={{ maxHeight: sheetMaxH - 80 - insets.bottom }}
+            contentContainerStyle={{ paddingHorizontal: 24, paddingBottom: 24, gap: 12 }}
+            showsVerticalScrollIndicator={false}
+          >
+            {/* Resumo no topo */}
+            {call.summary && (
+              <View style={{
+                backgroundColor: '#F0F0FB', borderRadius: 12, padding: 14,
+                borderLeftWidth: 3, borderLeftColor: '#7C3AED',
+                marginBottom: 4,
+              }}>
+                <AppText style={{ fontSize: 10, fontWeight: '700', color: '#7C3AED', textTransform: 'uppercase', letterSpacing: 1, marginBottom: 4 }}>
+                  {isPt ? 'Resumo' : 'Summary'}
+                </AppText>
+                <AppText style={{ fontSize: 14, color: '#16153A', lineHeight: 20 }}>
+                  {call.summary}
+                </AppText>
+              </View>
+            )}
 
-          {turns.length === 0 ? (
-            <View style={{ alignItems: 'center', paddingTop: 60, paddingHorizontal: 24 }}>
-              <AppText style={{ color: '#9896B8', fontSize: 14, textAlign: 'center', lineHeight: 20 }}>
-                {isPt ? 'Transcrição não disponível para esta chamada.' : 'No transcript available for this call.'}
-              </AppText>
-            </View>
-          ) : (
-            turns.map((turn, i) => {
-              const isUser = turn.role === 'user';
-              return (
-                <View key={i} style={{ flexDirection: 'row', justifyContent: isUser ? 'flex-end' : 'flex-start', marginBottom: 4 }}>
-                  {!isUser && (
-                    <Image
-                      source={require('@/assets/charlotte-avatar.png')}
-                      style={{ width: 28, height: 28, borderRadius: 14, marginRight: 8, marginTop: 2, flexShrink: 0, backgroundColor: '#16153A' }}
-                    />
-                  )}
-                  <View style={{
-                    maxWidth: '78%',
-                    backgroundColor: isUser ? '#A3FF3C' : '#FFFFFF',
-                    borderRadius: 18,
-                    borderBottomRightRadius: isUser ? 4 : 18,
-                    borderBottomLeftRadius: isUser ? 18 : 4,
-                    paddingHorizontal: 14, paddingVertical: 10,
-                    shadowColor: 'rgba(22,21,58,0.08)', shadowOpacity: 1, shadowRadius: 6, shadowOffset: { width: 0, height: 2 },
-                    elevation: 2,
-                  }}>
-                    <AppText style={{ fontSize: 14, fontWeight: '500', color: '#16153A', lineHeight: 20 }}>
-                      {turn.text}
-                    </AppText>
+            {turns.length === 0 ? (
+              <View style={{ alignItems: 'center', paddingTop: 30, paddingHorizontal: 12 }}>
+                <AppText style={{ color: '#9896B8', fontSize: 14, textAlign: 'center', lineHeight: 20 }}>
+                  {isPt ? 'Transcrição não disponível para esta chamada.' : 'No transcript available for this call.'}
+                </AppText>
+              </View>
+            ) : (
+              turns.map((turn, i) => {
+                const isUser = turn.role === 'user';
+                return (
+                  <View key={i} style={{ flexDirection: 'row', justifyContent: isUser ? 'flex-end' : 'flex-start' }}>
+                    {!isUser && (
+                      <Image
+                        source={require('@/assets/charlotte-avatar.png')}
+                        style={{ width: 26, height: 26, borderRadius: 13, marginRight: 8, marginTop: 2, flexShrink: 0, backgroundColor: '#16153A' }}
+                      />
+                    )}
+                    <View style={{
+                      maxWidth: '78%',
+                      backgroundColor: isUser ? '#A3FF3C' : '#F4F3FA',
+                      borderRadius: 16,
+                      borderBottomRightRadius: isUser ? 4 : 16,
+                      borderBottomLeftRadius: isUser ? 16 : 4,
+                      paddingHorizontal: 13, paddingVertical: 9,
+                    }}>
+                      <AppText style={{ fontSize: 14, fontWeight: '500', color: '#16153A', lineHeight: 20 }}>
+                        {turn.text}
+                      </AppText>
+                    </View>
                   </View>
-                </View>
-              );
-            })
-          )}
-        </ScrollView>
-      </View>
+                );
+              })
+            )}
+          </ScrollView>
+        </Pressable>
+      </Pressable>
     </Modal>
   );
 }
