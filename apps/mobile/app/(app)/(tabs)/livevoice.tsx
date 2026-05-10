@@ -30,7 +30,7 @@ import LiveVoiceModal from '@/components/voice/LiveVoiceModal';
 // Nomes textWhite/textMuted/textDim mantidos pra evitar refactor massivo,
 // mas os VALORES agora são escuros (legado naming).
 const C = {
-  stage:       '#F7F6FD',  // mesmo bg do Goals
+  stage:       '#F9F8FF',  // lavanda muito claro
   panel:       '#FFFFFF',
   navyMid:     '#3B3A5A',
   navyLight:   'rgba(22,21,58,0.55)',
@@ -556,13 +556,14 @@ export default function LiveVoiceTab() {
             <View style={{ flex: 1 }} />
 
             {/* ── Charlotte centralizada ── */}
-            {/* Container 10px mais baixo que o vídeo, overflow:hidden corta a
-                faixa/artefato que aparece no fim do frame do Veo. */}
+            {/* Container 20px mais curto + vídeo deslocado -10 no topo:
+                corta 10px do topo E 10px do fundo (artefatos do Veo nas
+                duas pontas do frame). */}
             <View style={{ alignItems: 'center', marginBottom: 24 }}>
-              <View style={{ width: charW, height: charH - 10, overflow: 'hidden' }}>
+              <View style={{ width: charW, height: charH - 20, overflow: 'hidden' }}>
                 <VideoView
                   player={liveVoicePlayer}
-                  style={{ width: charW, height: charH, backgroundColor: 'transparent' }}
+                  style={{ width: charW, height: charH, marginTop: -10, backgroundColor: 'transparent' }}
                   contentFit="cover"
                   nativeControls={false}
                 />
