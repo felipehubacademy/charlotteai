@@ -20,15 +20,18 @@ interface Props {
   userLevel: PronunciationLevel;
   isPt:      boolean;
   accent:    string;
+  /** Fired sempre que uma frase nova é mostrada (refresh ou "Need an idea?"
+   *  no Inter/Adv). NOT chamado no auto-pick inicial pro Novice. */
+  onPhraseChange?: () => void;
 }
 
-export function PronunciationPhraseHint({ userLevel, isPt, accent }: Props) {
+export function PronunciationPhraseHint({ userLevel, isPt, accent, onPhraseChange }: Props) {
   const isNovice = userLevel === 'Novice';
   const [phrase, setPhrase] = useState<PronunciationPhrase | null>(null);
   // Novice: sempre visível. Inter/Adv: visível só após tocar "Need an idea?".
   const [shown, setShown] = useState(isNovice);
 
-  const refresh = useCallback(async () => {
+  const pickNext = useCallback(async () => {
     const lastId = await SecureStore
       .getItemAsync(`pronunciation_last_phrase_${userLevel}`)
       .catch(() => null);
@@ -39,14 +42,23 @@ export function PronunciationPhraseHint({ userLevel, isPt, accent }: Props) {
       .catch(() => {});
   }, [userLevel]);
 
-  useEffect(() => {
-    if (isNovice) refresh();
-  }, [isNovice, refresh]);
+  // Refresh manual (botão) — limpa chat E sorteia próxima.
+  const refresh = useCallback(async () => {
+    onPhraseChange?.();
+    await pickNext();
+  }, [pickNext, onPhraseChange]);
 
+  // Auto-pick inicial pro Novice — sem disparar onPhraseChange (welcome só).
+  useEffect(() => {
+    if (isNovice) pickNext();
+  }, [isNovice, pickNext]);
+
+  // Inter/Adv: "Need an idea?" também limpa o chat antes de revelar.
   const handleTapIdea = useCallback(() => {
+    onPhraseChange?.();
     setShown(true);
-    refresh();
-  }, [refresh]);
+    pickNext();
+  }, [pickNext, onPhraseChange]);
 
   // Inter/Adv: link discreto (alinhado à direita acima do mic)
   if (!shown && !isNovice) {

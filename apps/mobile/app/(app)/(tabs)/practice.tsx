@@ -84,7 +84,7 @@ export default function PracticeTab() {
   const {
     messages, isProcessing, isProcessingAudio, historyLoading,
     sessionXP, totalXP, rateLimited,
-    sendTextMessage, sendAudioMessage, sendSilentMessage,
+    sendTextMessage, sendAudioMessage, sendSilentMessage, resetMessages,
     activeSessionId, closeSession, loadSession,
   } = useChat({ userLevel, userName, userId, mode });
 
@@ -514,6 +514,7 @@ export default function PracticeTab() {
             userLevel={userLevel}
             isPt={isPt}
             accent={accent}
+            onPhraseChange={resetMessages}
           />
         )}
 

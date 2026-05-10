@@ -572,6 +572,11 @@ export function useChat({ userLevel, userName, userId, mode = 'chat' }: UseChatO
    */
   const sendPronunciationAudio = useCallback(
     async (audioUri: string, audioDuration: number) => {
+      // Pronunciation = exercício isolado. Cada novo áudio limpa a tentativa
+      // anterior — tela sempre mostra apenas a tentativa atual + score.
+      setMessages([buildWelcome('pronunciation', userLevel, userName)]);
+      contextManagerRef.current = new ConversationContextManager(userLevel, userName);
+
       setIsProcessing(true);
       setIsProcessingAudio(true);
 
@@ -961,6 +966,13 @@ export function useChat({ userLevel, userName, userId, mode = 'chat' }: UseChatO
     [isProcessing, mode, sendPronunciationAudio, addMessage, getAssistantResponse, deliverSequentially, userLevel, userId]
   );
 
+  // Reseta msgs pra welcome only (sem tocar no DB). Útil pra pronunciation
+  // refresh: usuário toca pra trocar de frase → tela limpa.
+  const resetMessages = useCallback(() => {
+    setMessages([buildWelcome(mode, userLevel, userName)]);
+    contextManagerRef.current = new ConversationContextManager(userLevel, userName);
+  }, [mode, userLevel, userName]);
+
   return {
     messages,
     isProcessing,
@@ -972,6 +984,7 @@ export function useChat({ userLevel, userName, userId, mode = 'chat' }: UseChatO
     sendTextMessage,
     sendSilentMessage,
     sendAudioMessage,
+    resetMessages,
     // Free Chat session management
     activeSessionId,
     closeSession,
