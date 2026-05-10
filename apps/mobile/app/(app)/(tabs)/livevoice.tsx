@@ -4,13 +4,13 @@
 
 import React, { useState, useCallback, useMemo } from 'react';
 import {
-  View, ScrollView, TouchableOpacity, ActivityIndicator, Platform,
+  View, ScrollView, TouchableOpacity, ActivityIndicator,
   RefreshControl,
 } from 'react-native';
 import Svg, { Circle } from 'react-native-svg';
 import { useFocusEffect } from 'expo-router';
 import { useVideoPlayer, VideoView } from 'expo-video';
-import { Phone, CaretRight } from 'phosphor-react-native';
+import { Phone } from 'phosphor-react-native';
 import { AppText } from '@/components/ui/Text';
 import { HeaderPills } from '@/components/ui/HeaderPills';
 import { useAuth } from '@/hooks/useAuth';
@@ -23,28 +23,21 @@ import { soundEngine } from '@/lib/soundEngine';
 import LiveVoiceModal from '@/components/voice/LiveVoiceModal';
 
 // ── Palette ───────────────────────────────────────────────────────────────────
+// Tela full navy — todos os elementos em stack sobre o mesmo fundo.
 
 const C = {
-  bg:        '#F4F3FA',
-  card:      '#FFFFFF',
-  heroStrip: '#18193D',
-  navy:      '#16153A',
-  navyMid:   '#4B4A72',
-  navyLight: '#9896B8',
-  navyGhost: 'rgba(22,21,58,0.06)',
-  border:    'rgba(22,21,58,0.10)',
-  greenDark: '#3D8800',
-  greenBg:   '#F0FFD9',
-  gold:      '#D97706',
-  goldBg:    '#FFFBEB',
-  red:       '#DC2626',
-  redBg:     'rgba(220,38,38,0.07)',
+  navy:        '#07071C',  // bg principal — mais escuro que o card-mode pra dar peso
+  navyMid:     '#1E1D45',
+  navyLight:   'rgba(255,255,255,0.55)',
+  navyGhost:   'rgba(255,255,255,0.08)',
+  textWhite:   '#FFFFFF',
+  textMuted:   'rgba(255,255,255,0.7)',
+  textDim:     'rgba(255,255,255,0.45)',
+  greenAccent: '#A3FF3C',
+  greenDark:   '#3D8800',
+  gold:        '#F59E0B',
+  red:         '#EF4444',
 };
-
-const cardShadow = Platform.select({
-  ios:     { shadowColor: 'rgba(22,21,58,0.08)', shadowOpacity: 1, shadowRadius: 14, shadowOffset: { width: 0, height: 4 } },
-  android: { elevation: 4 },
-}) as object;
 
 // ── Types ─────────────────────────────────────────────────────────────────────
 
@@ -56,27 +49,28 @@ interface LastCall {
 }
 
 // ── Pool ring ─────────────────────────────────────────────────────────────────
+// Versão dark: ring fino branco com progresso colorido, número grande no centro.
 
 function PoolRing({ used, total, isUnlimited, isPt }: {
   used: number; total: number; isUnlimited: boolean; isPt: boolean;
 }) {
-  const SIZE = 160, SW = 12;
+  const SIZE = 130, SW = 6;
   const r    = (SIZE - SW) / 2;
   const circ = 2 * Math.PI * r;
 
   const ratio = isUnlimited ? 0 : Math.min(used / total, 1);
   const color = isUnlimited
-    ? C.greenDark
+    ? C.greenAccent
     : ratio >= 0.85 ? C.red
     : ratio >= 0.6  ? C.gold
-                    : C.greenDark;
+                    : C.greenAccent;
 
   const usedMin  = Math.floor(used / 60);
   const totalMin = Math.floor(total / 60);
   const remainMin = totalMin - usedMin;
 
   return (
-    <View style={{ alignItems: 'center', justifyContent: 'center', height: SIZE }}>
+    <View style={{ alignItems: 'center', justifyContent: 'center', height: SIZE, width: SIZE }}>
       <Svg width={SIZE} height={SIZE} style={{ position: 'absolute', transform: [{ rotate: '-90deg' }] }}>
         <Circle cx={SIZE/2} cy={SIZE/2} r={r} stroke={C.navyGhost} strokeWidth={SW} fill="none" />
         {!isUnlimited && (
@@ -92,19 +86,16 @@ function PoolRing({ used, total, isUnlimited, isPt }: {
       <View style={{ alignItems: 'center' }}>
         {isUnlimited ? (
           <>
-            <AppText style={{ fontSize: 28, fontWeight: '900', color: C.greenDark }}>∞</AppText>
-            <AppText style={{ fontSize: 11, color: C.navyMid, fontWeight: '700', textTransform: 'uppercase', letterSpacing: 1, marginTop: 4 }}>
+            <AppText style={{ fontSize: 28, fontWeight: '900', color: C.greenAccent }}>∞</AppText>
+            <AppText style={{ fontSize: 10, color: C.textMuted, fontWeight: '700', textTransform: 'uppercase', letterSpacing: 1, marginTop: 2 }}>
               {isPt ? 'Ilimitado' : 'Unlimited'}
             </AppText>
           </>
         ) : (
           <>
-            <AppText style={{ fontSize: 32, fontWeight: '900', color: C.navy }}>{remainMin}</AppText>
-            <AppText style={{ fontSize: 11, color: C.navyMid, fontWeight: '700', textTransform: 'uppercase', letterSpacing: 1, marginTop: 2 }}>
+            <AppText style={{ fontSize: 30, fontWeight: '900', color: C.textWhite, lineHeight: 34 }}>{remainMin}</AppText>
+            <AppText style={{ fontSize: 10, color: C.textMuted, fontWeight: '700', textTransform: 'uppercase', letterSpacing: 1, marginTop: 2 }}>
               {isPt ? 'min restantes' : 'min remaining'}
-            </AppText>
-            <AppText style={{ fontSize: 11, color: C.navyLight, fontWeight: '500', marginTop: 4 }}>
-              {usedMin}/{totalMin} {isPt ? 'usados' : 'used'}
             </AppText>
           </>
         )}
@@ -113,39 +104,22 @@ function PoolRing({ used, total, isUnlimited, isPt }: {
   );
 }
 
-// ── Last call card ────────────────────────────────────────────────────────────
+// ── Last call (texto solto, sem card) ─────────────────────────────────────────
 
-function LastCallCard({ call, isPt }: { call: LastCall; isPt: boolean }) {
+function LastCallSection({ call, isPt }: { call: LastCall; isPt: boolean }) {
   const days = Math.floor((Date.now() - new Date(call.started_at).getTime()) / 86_400_000);
   const minutes = Math.round(call.duration_seconds / 60);
 
   const whenLabel = days === 0 ? (isPt ? 'Hoje' : 'Today')
                   : days === 1 ? (isPt ? 'Ontem' : 'Yesterday')
-                  : isPt ? `Há ${days} dias` : `${days} days ago`;
+                  : isPt ? `há ${days} dias` : `${days} days ago`;
 
   return (
-    <View style={{
-      backgroundColor: C.card,
-      borderRadius: 16,
-      padding: 16,
-      borderWidth: 1,
-      borderColor: C.border,
-      ...cardShadow,
-    }}>
-      <View style={{ flexDirection: 'row', alignItems: 'center', justifyContent: 'space-between', marginBottom: 8 }}>
-        <AppText style={{ fontSize: 11, fontWeight: '700', color: C.navyMid, textTransform: 'uppercase', letterSpacing: 1 }}>
-          {isPt ? 'Última chamada' : 'Last call'}
-        </AppText>
-        <View style={{ flexDirection: 'row', alignItems: 'center', gap: 8 }}>
-          <View style={{ backgroundColor: C.navyGhost, borderRadius: 10, paddingHorizontal: 8, paddingVertical: 3 }}>
-            <AppText style={{ fontSize: 11, fontWeight: '700', color: C.navyMid }}>{whenLabel}</AppText>
-          </View>
-          <View style={{ backgroundColor: C.navyGhost, borderRadius: 10, paddingHorizontal: 8, paddingVertical: 3 }}>
-            <AppText style={{ fontSize: 11, fontWeight: '700', color: C.navyMid }}>{minutes} min</AppText>
-          </View>
-        </View>
-      </View>
-      <AppText style={{ fontSize: 14, color: C.navy, lineHeight: 20 }}>
+    <View style={{ alignItems: 'center', paddingHorizontal: 32 }}>
+      <AppText style={{ fontSize: 10, color: C.textDim, fontWeight: '700', textTransform: 'uppercase', letterSpacing: 1.5, marginBottom: 6 }}>
+        {isPt ? 'Última chamada' : 'Last call'} · {whenLabel} · {minutes} min
+      </AppText>
+      <AppText style={{ fontSize: 14, color: C.textMuted, textAlign: 'center', lineHeight: 20 }} numberOfLines={2}>
         {call.summary ?? (isPt ? 'Sem resumo disponível.' : 'No summary available.')}
       </AppText>
     </View>
@@ -271,7 +245,7 @@ export default function LiveVoiceTab() {
   const statsParams = { sessionXP: String(todayXP), totalXP: String(totalXP), userId, userLevel: level, userName: profile?.name ?? 'Student' };
 
   return (
-    <View style={{ flex: 1, backgroundColor: C.bg }}>
+    <View style={{ flex: 1, backgroundColor: C.navy }}>
 
       <HeaderPills
         streak={streak}
@@ -285,87 +259,76 @@ export default function LiveVoiceTab() {
 
       {loading ? (
         <View style={{ flex: 1, alignItems: 'center', justifyContent: 'center' }}>
-          <ActivityIndicator size="large" color={C.navy} />
+          <ActivityIndicator size="large" color={C.greenAccent} />
         </View>
       ) : (
         <ScrollView
           style={{ flex: 1 }}
-          contentContainerStyle={{ padding: 20, paddingBottom: 40, gap: 18 }}
+          contentContainerStyle={{ flexGrow: 1, alignItems: 'center', paddingTop: 28, paddingBottom: 32, gap: 24 }}
           showsVerticalScrollIndicator={false}
-          refreshControl={<RefreshControl refreshing={refreshing} onRefresh={onRefresh} tintColor={C.navy} />}
+          refreshControl={<RefreshControl refreshing={refreshing} onRefresh={onRefresh} tintColor={C.textWhite} />}
         >
 
-          {/* ── Hero card: vídeo + balão ── */}
+          {/* ── Charlotte avatar grande (circular, sem moldura/card) ── */}
           <View style={{
-            borderRadius: 22,
-            backgroundColor: C.card,
+            width: 220, height: 220, borderRadius: 110,
             overflow: 'hidden',
-            ...cardShadow,
+            borderWidth: 3, borderColor: accent,
+            backgroundColor: C.navyMid,
           }}>
-            <View style={{ height: 3, backgroundColor: accent }} />
-
-            <View style={{ backgroundColor: C.heroStrip, flexDirection: 'row', alignItems: 'center', minHeight: 160, paddingRight: 20 }}>
-              <View style={{ width: 130, height: 180, marginBottom: -16, flexShrink: 0, alignSelf: 'flex-end', overflow: 'hidden', borderRadius: 1, backgroundColor: C.heroStrip }}>
-                <VideoView
-                  player={liveVoicePlayer}
-                  style={{ width: 130, height: Math.round(130 * 16 / 9), backgroundColor: C.heroStrip }}
-                  contentFit="cover"
-                  nativeControls={false}
-                />
-              </View>
-              <View style={{ flex: 1, paddingVertical: 18 }}>
-                <View style={{ backgroundColor: '#3B3A5A', borderRadius: 18, borderTopLeftRadius: 0, paddingHorizontal: 14, paddingVertical: 12, alignSelf: 'flex-start' }}>
-                  <AppText style={{ fontSize: 14, color: '#FFFFFF', lineHeight: 20, fontWeight: '500' }}>
-                    {isPt ? 'Vamos conversar?' : "Want to talk?"}
-                  </AppText>
-                </View>
-              </View>
-            </View>
+            <VideoView
+              player={liveVoicePlayer}
+              style={{ width: '100%', height: '100%', backgroundColor: C.navyMid }}
+              contentFit="cover"
+              nativeControls={false}
+            />
           </View>
 
-          {/* ── Pool ring ── */}
-          <View style={{
-            backgroundColor: C.card,
-            borderRadius: 22,
-            paddingVertical: 24,
-            alignItems: 'center',
-            ...cardShadow,
-          }}>
-            <PoolRing used={poolUsed} total={poolTotal} isUnlimited={poolUnlimited} isPt={isPt} />
-            <AppText style={{ fontSize: 12, color: C.navyLight, fontWeight: '500', marginTop: 12, textAlign: 'center', paddingHorizontal: 20 }}>
-              {poolUnlimited
-                ? (isPt ? 'Você tem chamadas ilimitadas neste plano.' : 'You have unlimited calls on this plan.')
-                : isLimitReached
-                  ? (isPt ? 'Limite mensal atingido. Renova no início do próximo mês.' : 'Monthly limit reached. Renews at the start of next month.')
-                  : (isPt ? 'O pool reseta no início de cada mês.' : 'Pool resets at the start of each month.')}
+          {/* ── Saudação ── */}
+          <View style={{ alignItems: 'center', gap: 6 }}>
+            <AppText style={{ fontSize: 22, fontWeight: '800', color: C.textWhite, letterSpacing: 0.3 }}>
+              Charlotte
+            </AppText>
+            <AppText style={{ fontSize: 15, fontWeight: '500', color: C.textMuted }}>
+              {isPt ? 'Vamos conversar?' : 'Want to talk?'}
             </AppText>
           </View>
 
-          {/* ── Last call summary ── */}
-          {lastCall && <LastCallCard call={lastCall} isPt={isPt} />}
+          {/* ── Pool ring ── */}
+          <PoolRing used={poolUsed} total={poolTotal} isUnlimited={poolUnlimited} isPt={isPt} />
 
-          {/* ── Start now button ── */}
-          <TouchableOpacity
-            onPress={startCall}
-            disabled={isLimitReached}
-            activeOpacity={0.85}
-            style={{
-              flexDirection: 'row', alignItems: 'center', justifyContent: 'center',
-              gap: 10,
-              backgroundColor: isLimitReached ? C.navyGhost : accent,
-              borderRadius: 16, paddingVertical: 18,
-              opacity: isLimitReached ? 0.5 : 1,
-            }}
-          >
-            <Phone size={20} color={isLimitReached ? C.navyMid : '#FFFFFF'} weight="fill" />
-            <AppText style={{ fontSize: 16, fontWeight: '800', color: isLimitReached ? C.navyMid : '#FFFFFF' }}>
+          {/* ── Last call (texto solto, sem card) ── */}
+          {lastCall && <LastCallSection call={lastCall} isPt={isPt} />}
+
+          {/* Spacer pra empurrar o botão pro fim em telas grandes */}
+          <View style={{ flex: 1, minHeight: 12 }} />
+
+          {/* ── Start button (redondo grande, igual end-call mas accent) ── */}
+          <View style={{ alignItems: 'center', gap: 12 }}>
+            <TouchableOpacity
+              onPress={startCall}
+              disabled={isLimitReached}
+              activeOpacity={0.85}
+              style={{
+                width: 84, height: 84, borderRadius: 42,
+                backgroundColor: isLimitReached ? C.navyGhost : accent,
+                alignItems: 'center', justifyContent: 'center',
+                shadowColor: isLimitReached ? 'transparent' : accent,
+                shadowOffset: { width: 0, height: 6 },
+                shadowOpacity: 0.45, shadowRadius: 14,
+                elevation: 8,
+                opacity: isLimitReached ? 0.6 : 1,
+              }}
+            >
+              <Phone size={32} color={isLimitReached ? C.textDim : '#FFFFFF'} weight="fill" />
+            </TouchableOpacity>
+            <AppText style={{ fontSize: 13, fontWeight: '700', color: isLimitReached ? C.textDim : C.textWhite, letterSpacing: 0.5 }}>
               {isLimitReached
                 ? (isPt ? 'Limite atingido' : 'Limit reached')
                 : (isPt ? 'Começar agora' : 'Start now')
               }
             </AppText>
-            {!isLimitReached && <CaretRight size={14} color="#FFFFFF" weight="bold" />}
-          </TouchableOpacity>
+          </View>
 
         </ScrollView>
       )}

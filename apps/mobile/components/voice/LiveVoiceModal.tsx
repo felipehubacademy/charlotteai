@@ -894,7 +894,8 @@ export default function LiveVoiceModal({
                   captionClearTimerRef.current = null;
                   setLiveCaption(delta);
                 } else {
-                  setLiveCaption(prev => (prev + delta).slice(-300));
+                  // Cap de segurança: 800 chars (cabe sentenças longas, evita memory growth)
+                  setLiveCaption(prev => (prev + delta).slice(-800));
                 }
                 // Nova caption chegou — dispensa tradução anterior se houver
                 if (translationDismissTimerRef.current) {
@@ -906,12 +907,15 @@ export default function LiveVoiceModal({
               break;
 
             case 'response.audio_transcript.done':
-              // Charlotte terminou a sentença atual. Schedule clear em 3.5s.
+              // Texto da resposta terminou de gerar. Mas o áudio ainda toca por
+              // ~1-3s — schedule clear longo (7s) pra caption ficar visível
+              // durante toda a reprodução. response.audio.done abaixo encurta o
+              // timer pra 2s quando o áudio realmente termina.
               if (captionClearTimerRef.current) clearTimeout(captionClearTimerRef.current);
               captionClearTimerRef.current = setTimeout(() => {
                 setLiveCaption('');
                 captionClearTimerRef.current = null;
-              }, 3500);
+              }, 7000);
               break;
 
             case 'response.done':
@@ -1014,6 +1018,14 @@ export default function LiveVoiceModal({
               //   3. Manter charlotteSpeakingRef=true por 500ms extras (drain do jitter buffer)
               responseActiveRef.current = false;
               lastCharlotteDoneRef.current = Date.now();
+              // Caption: áudio do servidor terminou; jitter buffer ainda toca por
+              // ~1-2s. Reagendar clear pra 2s a partir de agora (encurta os 7s
+              // que tinham sido agendados em audio_transcript.done).
+              if (captionClearTimerRef.current) clearTimeout(captionClearTimerRef.current);
+              captionClearTimerRef.current = setTimeout(() => {
+                setLiveCaption('');
+                captionClearTimerRef.current = null;
+              }, 2000);
               applyMute(true);
               setTimeout(() => {
                 if (!isMutedRef.current) applyMute(false);
