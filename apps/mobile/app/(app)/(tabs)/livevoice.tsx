@@ -556,7 +556,7 @@ export default function LiveVoiceTab() {
             <View style={{ flex: 1 }} />
 
             {/* ── Charlotte centralizada (maior, mais embaixo) ── */}
-            <View style={{ alignItems: 'center', marginBottom: 28 }}>
+            <View style={{ alignItems: 'center', marginBottom: 56 }}>
               <View style={{ width: charW, height: charH, overflow: 'hidden' }}>
                 <VideoView
                   player={liveVoicePlayer}
@@ -565,12 +565,6 @@ export default function LiveVoiceTab() {
                   nativeControls={false}
                 />
               </View>
-              {/* Sombra elíptica sutil sob os pés — efeito "no chão" */}
-              <View style={{
-                width: Math.round(charW * 0.7), height: 8, borderRadius: 4,
-                backgroundColor: 'rgba(22,21,58,0.18)',
-                marginTop: -2, opacity: 0.7,
-              }} />
             </View>
 
             {/* ── Botão drawer pequeno (acima do CTA, esquerda) ── */}
