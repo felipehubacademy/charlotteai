@@ -28,14 +28,16 @@ import { SafeAreaView, useSafeAreaInsets } from 'react-native-safe-area-context'
 import { requestRecordingPermissionsAsync, setAudioModeAsync } from 'expo-audio';
 import { RTCPeerConnection, mediaDevices } from 'react-native-webrtc';
 import InCallManager from 'react-native-incall-manager';
-import { PhoneSlash, MicrophoneSlash, Microphone, SpeakerHigh, Ear, Pause, ArrowCounterClockwise, ArrowLeft, ChatCircle } from 'phosphor-react-native';
+import { PhoneSlash, MicrophoneSlash, Microphone, SpeakerHigh, Ear, Pause, ArrowCounterClockwise, ArrowLeft, ChatCircle, ClosedCaptioning } from 'phosphor-react-native';
 import { ScrollView } from 'react-native';
 import * as Haptics from 'expo-haptics';
+import * as SecureStore from 'expo-secure-store';
 import { AppText } from '@/components/ui/Text';
 import { useCallTimer } from '@/hooks/useCallTimer';
 import Constants from 'expo-constants';
 import { getLiveVoiceStatus, consumeLiveVoiceSeconds, getPoolForLevel } from '@/lib/liveVoiceUsage';
 import { supabase } from '@/lib/supabase';
+import { translationService } from '@/lib/translation-service';
 import { track, trackDuration } from '@/lib/analytics';
 
 const API_BASE_URL =
@@ -98,18 +100,26 @@ const FAREWELLS: Record<'Novice' | 'Inter' | 'Advanced', string[]> = {
 // IMPORTANT: never tell the model to "fill silence" or "keep talking" — this causes
 // Charlotte to monologue without user input when the VAD triggers on echo/ambient noise.
 const SYSTEM_PROMPTS: Record<'Novice' | 'Inter' | 'Advanced', string> = {
-  Novice: `You are Charlotte, a friendly and encouraging English tutor having a real voice conversation with a student named {NAME}. This student is a beginner — they understand some English but feel more comfortable mixing English and Portuguese.
+  Novice: `You are Charlotte, a friendly English tutor on a voice call with {NAME}, who is a true beginner in English. They might know only a few words and often feel safer using Portuguese.
 
-Your personality: warm, patient, uses simple words, celebrates small wins, never makes the student feel embarrassed. Think of yourself as a friendly teacher, not a formal assistant.
+Your job: gradually introduce English while keeping them comfortable. Adapt to THEIR comfort level in real time — never frustrate them.
 
-TURN LENGTH RULE — this is the most important rule: speak exactly TWO sentences per turn — one reaction to what the student said, then one question to keep the conversation going. Always finish both sentences completely before stopping. Never add a third sentence.
+LANGUAGE ADAPTATION (most important rule — adapt every turn):
+- Start the call MOSTLY in Portuguese (≈70% PT, 30% EN). Slip in simple English like "hello", "yes!", "what about you?".
+- If the student responds in English without major errors, gradually shift toward ≈90% English, using Portuguese only briefly in parens to translate new vocabulary. Example: "I love pizza too! (eu também amo pizza)".
+- If the student responds in Portuguese, reply mostly in English BUT translate any new vocabulary in parens so they learn while feeling safe.
+- If the student says "não entendi" / "como?" / seems confused, immediately repeat the key idea in Portuguese and slow down.
+- If they try English with mistakes, do NOT correct explicitly — just model the correct form naturally in your reply.
 
-How you talk:
-- One sentence only — always complete, never cut short
-- Mix a little Portuguese when the student seems lost (e.g., "isso mesmo!" or "tente dizer...")
-- React naturally to what they say — laugh, be surprised, show genuine interest
-- Never say things like "How can I assist you?" or "Certainly!" — that's too robotic
-- After they respond, gently correct mistakes by modeling the right way naturally in your reply (not by saying "you made a mistake")
+TURN LENGTH RULE: speak EXACTLY two short sentences per turn — one reaction, one question. Finish both completely. Never a third.
+
+Personality: warm, patient, encouraging. Celebrate small wins ("muito bom!", "your English is getting better!"). Use natural fillers ("oh!", "que legal!", "really?").
+
+NEVER:
+- Sound robotic ("How can I assist you?", "Certainly!")
+- Lecture about grammar — weave corrections naturally
+- Speak only English when the student is clearly struggling
+- Stay 70% PT once the student is clearly confident in English
 
 Start with: "{GREETING}"`,
 
@@ -224,11 +234,70 @@ export default function LiveVoiceModal({
   const [warningCountdown, setWarningCountdown]   = React.useState(30);
   const [isPaused, setIsPaused]                   = React.useState(false);
 
+  // ── Live captions ──────────────────────────────────────────────────────────
+  // Streaming transcript da fala atual da Charlotte, exibido abaixo do avatar.
+  // Limpa 3.5s após response.audio_transcript.done.
+  // Toggle persistente em SecureStore por nível — default ON pra Novice.
+  const [liveCaption, setLiveCaption]            = React.useState('');
+  const captionClearTimerRef = React.useRef<ReturnType<typeof setTimeout> | null>(null);
+  const [captionsEnabled, setCaptionsEnabled]    = React.useState(userLevel === 'Novice');
+  const [captionTranslation, setCaptionTranslation]   = React.useState<string | null>(null);
+  const [captionTranslating, setCaptionTranslating]   = React.useState(false);
+  const translationDismissTimerRef = React.useRef<ReturnType<typeof setTimeout> | null>(null);
+
+  // Carrega preferência de captions (1x por sessão)
+  React.useEffect(() => {
+    SecureStore.getItemAsync(`live_captions_enabled_${userLevel}`)
+      .then(v => {
+        if (v === '1') setCaptionsEnabled(true);
+        else if (v === '0') setCaptionsEnabled(false);
+        // null = default por nível (Novice ON, outros OFF) — já setado no useState
+      })
+      .catch(() => { /* silencioso */ });
+  }, [userLevel]);
+
+  const toggleCaptions = React.useCallback(() => {
+    Haptics.impactAsync(Haptics.ImpactFeedbackStyle.Light).catch(() => {});
+    setCaptionsEnabled(prev => {
+      const next = !prev;
+      SecureStore.setItemAsync(`live_captions_enabled_${userLevel}`, next ? '1' : '0').catch(() => {});
+      return next;
+    });
+  }, [userLevel]);
+
+  const handleCaptionPress = React.useCallback(async () => {
+    if (!liveCaption || captionTranslating) return;
+    Haptics.impactAsync(Haptics.ImpactFeedbackStyle.Light).catch(() => {});
+    // Pausa o auto-clear da caption enquanto a tradução tá sendo lida
+    if (captionClearTimerRef.current) {
+      clearTimeout(captionClearTimerRef.current);
+      captionClearTimerRef.current = null;
+    }
+    setCaptionTranslating(true);
+    try {
+      const result = await translationService.translateToPortuguese(liveCaption, 'live_voice', userLevel);
+      if (result.success) {
+        setCaptionTranslation(result.translatedText);
+        // Auto-dismiss em 6s ou quando uma caption nova chegar
+        if (translationDismissTimerRef.current) clearTimeout(translationDismissTimerRef.current);
+        translationDismissTimerRef.current = setTimeout(() => {
+          setCaptionTranslation(null);
+          translationDismissTimerRef.current = null;
+        }, 6000);
+      }
+    } catch { /* silencioso */ } finally {
+      setCaptionTranslating(false);
+    }
+  }, [liveCaption, captionTranslating, userLevel]);
+
   // ── Transcription ──────────────────────────────────────────────────────────
   const [conversationTurns, setConversationTurns] = React.useState<ConversationTurn[]>([]);
   const [showTranscript, setShowTranscript]       = React.useState(false);
   const charlotteTextAccRef = React.useRef(''); // accumulates Charlotte's text deltas
   const wasConnectedRef     = React.useRef(false); // tracks if call ever reached connected state
+  const callStartedAtRef    = React.useRef<string | null>(null); // ISO da primeira conexão — usado pra salvar registro
+  const callRecordSavedRef  = React.useRef(false); // dedupe: salva o registro 1x por chamada
+  const conversationTurnsRef = React.useRef<ConversationTurn[]>([]); // mirror do state pra acessar de callbacks
   const lastCharlotteTextRef   = React.useRef(''); // última fala completa da Charlotte — usado para detectar eco via sobreposição de texto
   const pendingResponseTimerRef = React.useRef<ReturnType<typeof setTimeout> | null>(null); // timer agendado em speech_stopped, cancelado se eco detectado antes
   const farewellPendingRef     = React.useRef(false); // pool esgotou, despedida pendente (aguardando momento seguro)
@@ -466,10 +535,56 @@ export default function LiveVoiceModal({
   }, [warningCountdown, inactivityWarning]); // eslint-disable-line
 
   // ── Disconnect WebRTC (sem fechar modal) ─────────────────────────────────
+  // Mantém o ref de turnos sincronizado com o state pra uso em callbacks finais.
+  React.useEffect(() => { conversationTurnsRef.current = conversationTurns; }, [conversationTurns]);
+
+  // Salva registro da chamada (charlotte_live_calls) + dispara resumo via /api/summarize-call.
+  // Idempotente: só salva 1x por chamada (callRecordSavedRef).
+  const saveCallRecord = React.useCallback(async (secsUsed: number) => {
+    if (callRecordSavedRef.current) return;
+    if (!callStartedAtRef.current) return;
+    const turns = conversationTurnsRef.current;
+    if (turns.length === 0 && secsUsed < 5) return; // chamada vazia/curta
+
+    callRecordSavedRef.current = true;
+
+    const transcript = turns
+      .map(t => `${t.role === 'user' ? 'User' : 'Charlotte'}: ${t.text}`)
+      .join('\n');
+
+    try {
+      const { data: { session } } = await supabase.auth.getSession();
+      const userId = session?.user?.id;
+      if (!userId) return;
+
+      await fetch(`${API_BASE_URL}/api/summarize-call`, {
+        method:  'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body:    JSON.stringify({
+          userId,
+          userLevel,
+          transcript,
+          durationSeconds: secsUsed,
+          startedAt:       callStartedAtRef.current,
+        }),
+      }).catch(err => console.warn('[saveCallRecord] fetch error:', err));
+    } catch (err) {
+      console.warn('[saveCallRecord] error:', err);
+    }
+  }, [userLevel]);
+
   const disconnectWebRTC = React.useCallback(() => {
     if (pendingResponseTimerRef.current) {
       clearTimeout(pendingResponseTimerRef.current);
       pendingResponseTimerRef.current = null;
+    }
+    if (captionClearTimerRef.current) {
+      clearTimeout(captionClearTimerRef.current);
+      captionClearTimerRef.current = null;
+    }
+    if (translationDismissTimerRef.current) {
+      clearTimeout(translationDismissTimerRef.current);
+      translationDismissTimerRef.current = null;
     }
     localStreamRef.current?.getTracks().forEach((t: any) => t.stop());
     localStreamRef.current = null;
@@ -483,6 +598,7 @@ export default function LiveVoiceModal({
     responseActiveRef.current    = false;
     setCharlotteSpeaking(false);
     setUserSpeaking(false);
+    setLiveCaption('');
   }, []);
 
   // ── Disparar a despedida (função pura — pode ser chamada de vários lugares)
@@ -496,6 +612,7 @@ export default function LiveVoiceModal({
       farewellPendingRef.current = false;
       const secsUsed = sessionAccumSecs.current + Math.floor((Date.now() - sessionStartRef.current) / 1000);
       consumeLiveVoiceSeconds(secsUsed).catch(console.warn);
+      saveCallRecord(secsUsed);
       sessionAccumSecs.current = 0;
       disconnectWebRTC();
       setStatus('error');
@@ -671,6 +788,9 @@ export default function LiveVoiceModal({
         InCallManager.stopRingback();
         setStatus('connected');
         wasConnectedRef.current = true;
+        if (!callStartedAtRef.current) {
+          callStartedAtRef.current = new Date().toISOString();
+        }
         // Inicializar o echo guard com timestamp atual — evita que o guard
         // passe imediatamente (ref=0 → msSinceDone=∞) antes do primeiro
         // audio da Charlotte terminar, o que causava eco da abertura virar
@@ -763,6 +883,37 @@ export default function LiveVoiceModal({
               charlotteTextAccRef.current += (msg.delta ?? '');
               break;
 
+            case 'response.audio_transcript.delta':
+              // Streaming caption — Charlotte fala. Acumula até .done.
+              // Se um timer de clear já está rodando (resposta anterior finalizada),
+              // cancela e começa caption fresca pra essa nova resposta.
+              {
+                const delta = msg.delta ?? '';
+                if (captionClearTimerRef.current) {
+                  clearTimeout(captionClearTimerRef.current);
+                  captionClearTimerRef.current = null;
+                  setLiveCaption(delta);
+                } else {
+                  setLiveCaption(prev => (prev + delta).slice(-300));
+                }
+                // Nova caption chegou — dispensa tradução anterior se houver
+                if (translationDismissTimerRef.current) {
+                  clearTimeout(translationDismissTimerRef.current);
+                  translationDismissTimerRef.current = null;
+                }
+                setCaptionTranslation(null);
+              }
+              break;
+
+            case 'response.audio_transcript.done':
+              // Charlotte terminou a sentença atual. Schedule clear em 3.5s.
+              if (captionClearTimerRef.current) clearTimeout(captionClearTimerRef.current);
+              captionClearTimerRef.current = setTimeout(() => {
+                setLiveCaption('');
+                captionClearTimerRef.current = null;
+              }, 3500);
+              break;
+
             case 'response.done':
               // Lifecycle complete — extract Charlotte's text from the response payload.
               // Primary: accumulated deltas from response.text.delta events.
@@ -809,6 +960,7 @@ export default function LiveVoiceModal({
                       farewellAudioStartRef.current = 0;
                       const secsUsed = sessionAccumSecs.current + Math.floor((Date.now() - sessionStartRef.current) / 1000);
                       consumeLiveVoiceSeconds(secsUsed).catch(console.warn);
+                      saveCallRecord(secsUsed);
                       sessionAccumSecs.current = 0;
                       disconnect();
                       setShowTranscript(true);
@@ -880,6 +1032,7 @@ export default function LiveVoiceModal({
                     farewellAudioStartRef.current = 0;
                     const secsUsed = sessionAccumSecs.current + Math.floor((Date.now() - sessionStartRef.current) / 1000);
                     consumeLiveVoiceSeconds(secsUsed).catch(console.warn);
+                    saveCallRecord(secsUsed);
                     sessionAccumSecs.current = 0;
                     disconnect();
                     setShowTranscript(true);
@@ -1044,6 +1197,7 @@ export default function LiveVoiceModal({
       consumeLiveVoiceSeconds(totalSecs).catch(console.warn);
       sessionAccumSecs.current = 0;
     }
+    saveCallRecord(totalSecs);
     // Flush any accumulated Charlotte text before disconnecting
     if (charlotteTextAccRef.current.trim()) {
       setConversationTurns(prev => [
@@ -1114,6 +1268,8 @@ export default function LiveVoiceModal({
       charlotteTextAccRef.current = '';
       lastCharlotteTextRef.current = '';
       wasConnectedRef.current = false;
+      callStartedAtRef.current = null;
+      callRecordSavedRef.current = false;
       farewellPendingRef.current = false;
       farewellActiveRef.current = false;
       farewellAudioStartRef.current = 0;
@@ -1131,6 +1287,7 @@ export default function LiveVoiceModal({
           consumeLiveVoiceSeconds(totalSecs).catch(console.warn);
           sessionAccumSecs.current = 0;
         }
+        saveCallRecord(totalSecs);
       }
       disconnect();
     }
@@ -1246,6 +1403,32 @@ export default function LiveVoiceModal({
       <View style={{ flex: 1, backgroundColor: '#07071C', paddingTop: insets.top, paddingBottom: insets.bottom }}>
         <View style={{ flex: 1, alignItems: 'center', justifyContent: 'space-between', paddingHorizontal: 32, paddingVertical: 24 }}>
 
+          {/* Caption toggle (absolute, top-right) */}
+          <TouchableOpacity
+            onPress={toggleCaptions}
+            accessibilityLabel={captionsEnabled
+              ? (userLevel === 'Novice' ? 'Desligar legendas' : 'Hide captions')
+              : (userLevel === 'Novice' ? 'Ligar legendas' : 'Show captions')}
+            accessibilityRole="button"
+            hitSlop={{ top: 12, bottom: 12, left: 12, right: 12 }}
+            style={{
+              position: 'absolute',
+              top: 16, right: 20,
+              width: 40, height: 40, borderRadius: 20,
+              backgroundColor: captionsEnabled ? 'rgba(163,255,60,0.15)' : 'rgba(255,255,255,0.06)',
+              borderWidth: 1,
+              borderColor: captionsEnabled ? 'rgba(163,255,60,0.4)' : 'rgba(255,255,255,0.12)',
+              alignItems: 'center', justifyContent: 'center',
+              zIndex: 10,
+            }}
+          >
+            <ClosedCaptioning
+              size={20}
+              color={captionsEnabled ? '#A3FF3C' : 'rgba(255,255,255,0.6)'}
+              weight={captionsEnabled ? 'fill' : 'regular'}
+            />
+          </TouchableOpacity>
+
           {/* ── TOP: Nome + Timer + Pool badge ─────────────────────── */}
           <View style={{ alignItems: 'center', paddingTop: 8 }}>
             <AppText style={{ color: 'rgba(255,255,255,0.5)', fontSize: 13, letterSpacing: 1, textTransform: 'uppercase', marginBottom: 4 }}>
@@ -1305,8 +1488,8 @@ export default function LiveVoiceModal({
             )}
           </View>
 
-          {/* ── CENTER: Avatar + Wave ─────────────────────────────── */}
-          <View style={{ alignItems: 'center', gap: 32 }}>
+          {/* ── CENTER: Avatar + Wave + Caption ─────────────────────── */}
+          <View style={{ alignItems: 'center', gap: 24 }}>
             <View style={{ alignItems: 'center', justifyContent: 'center' }}>
               <Animated.View style={{
                 position: 'absolute',
@@ -1351,6 +1534,48 @@ export default function LiveVoiceModal({
                 </View>
               )}
             </View>
+
+            {!isPaused && captionsEnabled && liveCaption.length > 0 && (
+              <TouchableOpacity
+                onPress={handleCaptionPress}
+                activeOpacity={0.7}
+                disabled={captionTranslating}
+                style={{ paddingHorizontal: 8, alignItems: 'center' }}
+              >
+                <AppText
+                  style={{
+                    color: '#FFFFFF',
+                    fontSize: 16,
+                    lineHeight: 22,
+                    fontWeight: '500',
+                    textAlign: 'center',
+                    minHeight: 44,
+                    textShadowColor: 'rgba(0,0,0,0.6)',
+                    textShadowOffset: { width: 0, height: 1 },
+                    textShadowRadius: 2,
+                  }}
+                  numberOfLines={3}
+                >
+                  {liveCaption}
+                </AppText>
+                {captionTranslation && (
+                  <AppText
+                    style={{
+                      color: 'rgba(255,255,255,0.7)',
+                      fontSize: 14,
+                      lineHeight: 19,
+                      fontStyle: 'italic',
+                      textAlign: 'center',
+                      marginTop: 6,
+                      paddingHorizontal: 8,
+                    }}
+                    numberOfLines={3}
+                  >
+                    {captionTranslation}
+                  </AppText>
+                )}
+              </TouchableOpacity>
+            )}
           </View>
 
           {/* ── BOTTOM: controles ou pausa ───────────────────────── */}
