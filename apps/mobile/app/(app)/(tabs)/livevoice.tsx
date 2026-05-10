@@ -422,7 +422,7 @@ export default function LiveVoiceTab() {
     return days > 0 ? days : 0;
   }, [profile]);
 
-  const liveVoicePlayer = useVideoPlayer(require('@/assets/charlotte-goals.mp4'), p => {
+  const liveVoicePlayer = useVideoPlayer(require('@/assets/charlotte-livevoice.mp4'), p => {
     p.loop = true;
     p.muted = true;
     p.play();
@@ -555,9 +555,11 @@ export default function LiveVoiceTab() {
             {/* Spacer empurra Charlotte pra baixo */}
             <View style={{ flex: 1 }} />
 
-            {/* ── Charlotte centralizada (maior, mais embaixo) ── */}
-            <View style={{ alignItems: 'center', marginBottom: 56 }}>
-              <View style={{ width: charW, height: charH, overflow: 'hidden' }}>
+            {/* ── Charlotte centralizada ── */}
+            {/* Container 10px mais baixo que o vídeo, overflow:hidden corta a
+                faixa/artefato que aparece no fim do frame do Veo. */}
+            <View style={{ alignItems: 'center', marginBottom: 24 }}>
+              <View style={{ width: charW, height: charH - 10, overflow: 'hidden' }}>
                 <VideoView
                   player={liveVoicePlayer}
                   style={{ width: charW, height: charH, backgroundColor: 'transparent' }}
