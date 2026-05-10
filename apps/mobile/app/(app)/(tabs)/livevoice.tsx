@@ -26,19 +26,22 @@ import LiveVoiceModal from '@/components/voice/LiveVoiceModal';
 // ── Palette ───────────────────────────────────────────────────────────────────
 // Tela full navy — todos os elementos em stack sobre o mesmo fundo.
 
+// TESTE — bg claro mesmo do Goals (#F7F6FD) com elementos escuros.
+// Nomes textWhite/textMuted/textDim mantidos pra evitar refactor massivo,
+// mas os VALORES agora são escuros (legado naming).
 const C = {
-  stage:       '#18193D',  // mesmo do hero da Home (heroStrip)
-  panel:       '#0B0B1F',  // navy mais escuro que o palco — contraste claro
-  navyMid:     '#3B3A5A',  // tom do balão de fala (igual Home hero)
-  navyLight:   'rgba(255,255,255,0.55)',
-  navyGhost:   'rgba(255,255,255,0.10)',
-  textWhite:   '#FFFFFF',
-  textMuted:   'rgba(255,255,255,0.78)',
-  textDim:     'rgba(255,255,255,0.48)',
+  stage:       '#F7F6FD',  // mesmo bg do Goals
+  panel:       '#FFFFFF',
+  navyMid:     '#3B3A5A',
+  navyLight:   'rgba(22,21,58,0.55)',
+  navyGhost:   'rgba(22,21,58,0.08)',
+  textWhite:   '#16153A',  // legado: agora é texto primário escuro
+  textMuted:   '#4B4A72',
+  textDim:     '#9896B8',
   greenAccent: '#A3FF3C',
   greenDark:   '#3D8800',
-  gold:        '#F59E0B',
-  red:         '#EF4444',
+  gold:        '#D97706',
+  red:         '#DC2626',
 };
 
 // ── Types ─────────────────────────────────────────────────────────────────────
@@ -419,7 +422,7 @@ export default function LiveVoiceTab() {
     return days > 0 ? days : 0;
   }, [profile]);
 
-  const liveVoicePlayer = useVideoPlayer(require('@/assets/charlotte-livevoice.mp4'), p => {
+  const liveVoicePlayer = useVideoPlayer(require('@/assets/charlotte-goals.mp4'), p => {
     p.loop = true;
     p.muted = true;
     p.play();
@@ -541,7 +544,7 @@ export default function LiveVoiceTab() {
               <View style={{ flexDirection: 'row', alignItems: 'center', gap: 7, marginTop: 6 }}>
                 <View style={{
                   width: 8, height: 8, borderRadius: 4,
-                  backgroundColor: isLimitReached ? C.red : C.greenAccent,
+                  backgroundColor: isLimitReached ? C.red : C.greenDark,
                 }} />
                 <AppText style={{ fontSize: 13, color: C.textMuted, fontWeight: '500' }}>
                   {poolStatusLabel(isPt, isLimitReached, poolUnlimited, poolUsed, poolTotal)}
@@ -565,8 +568,8 @@ export default function LiveVoiceTab() {
               {/* Sombra elíptica sutil sob os pés — efeito "no chão" */}
               <View style={{
                 width: Math.round(charW * 0.7), height: 8, borderRadius: 4,
-                backgroundColor: 'rgba(0,0,0,0.35)',
-                marginTop: -2, opacity: 0.6,
+                backgroundColor: 'rgba(22,21,58,0.18)',
+                marginTop: -2, opacity: 0.7,
               }} />
             </View>
 
@@ -579,13 +582,13 @@ export default function LiveVoiceTab() {
                   hitSlop={{ top: 8, bottom: 8, left: 8, right: 8 }}
                   style={{
                     width: 44, height: 44, borderRadius: 22,
-                    backgroundColor: 'rgba(255,255,255,0.10)',
-                    borderWidth: 1, borderColor: 'rgba(255,255,255,0.18)',
+                    backgroundColor: '#FFFFFF',
+                    borderWidth: 1, borderColor: 'rgba(22,21,58,0.10)',
                     alignItems: 'center', justifyContent: 'center',
                     alignSelf: 'flex-start',
                   }}
                 >
-                  <ClockCounterClockwise size={20} color="#FFFFFF" weight="regular" />
+                  <ClockCounterClockwise size={20} color={C.textMuted} weight="regular" />
                 </TouchableOpacity>
               </View>
             )}
