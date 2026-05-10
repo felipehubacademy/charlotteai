@@ -256,8 +256,8 @@ export default function PracticeTab() {
       <View style={{ flex: 1, position: 'relative' }}>
       <KeyboardAvoidingView
         style={{ flex: 1 }}
-        behavior={Platform.OS === 'ios' ? 'padding' : 'height'}
-        keyboardVerticalOffset={tabBarHeight}
+        behavior="padding"
+        keyboardVerticalOffset={Platform.OS === 'ios' ? tabBarHeight + 12 : 0}
       >
         {/* ── Toggle pill (3 modos, hug content centered) ── */}
         <View style={{ alignItems: 'center', paddingTop: 12, paddingBottom: 8 }}>
