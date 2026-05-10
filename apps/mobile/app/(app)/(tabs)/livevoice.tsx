@@ -617,7 +617,7 @@ export default function LiveVoiceTab() {
               </AppText>
             </TouchableOpacity>
 
-            {/* Spacer explícito Android — padding/margin não estavam empurrando */}
+            {/* Spacer Android pra dar respiro acima da tab bar */}
             {Platform.OS === 'android' && <View style={{ height: 40 }} />}
 
           </View>
