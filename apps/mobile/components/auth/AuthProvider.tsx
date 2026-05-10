@@ -20,9 +20,7 @@ export interface AuthContextType {
   isAuthenticated: boolean;
   hasAccess: boolean;           // is_institutional OR active/trial subscription
   mustChangePassword: boolean;
-  isFreshLogin: boolean;        // true when SIGNED_IN fired (real login, not app resume)
   isPasswordRecovery: boolean;  // true when app opened via password reset email link
-  clearFreshLogin: () => void;  // call after welcome modal is shown
   clearPasswordRecovery: () => void; // call after reset-password screen handled
   signIn: (email: string, password: string) => Promise<void>;
   signUp: (email: string, password: string, name: string) => Promise<void>;
@@ -44,7 +42,6 @@ export function AuthProvider({ children }: { children: ReactNode }) {
   const [session, setSession] = useState<Session | null>(null);
   const [profile, setProfile] = useState<UserProfile | null>(null);
   const [isLoading, setIsLoading] = useState(true);
-  const [isFreshLogin, setIsFreshLogin] = useState(false);
   const [isPasswordRecovery, setIsPasswordRecovery] = useState(false);
   const sessionRef = useRef<Session | null>(null);
 
@@ -242,10 +239,6 @@ export function AuthProvider({ children }: { children: ReactNode }) {
           return;
         }
 
-        if (event === 'SIGNED_IN') {
-          setIsFreshLogin(true);
-        }
-
         if (event === 'PASSWORD_RECOVERY') {
           // Fired when detectSessionInUrl=true. Guard here as well in case the
           // flag is ever enabled, so the recovery screen always shows.
@@ -386,7 +379,6 @@ export function AuthProvider({ children }: { children: ReactNode }) {
 
   const mustChangePassword = profile?.must_change_password === true;
 
-  const clearFreshLogin = () => setIsFreshLogin(false);
   const clearPasswordRecovery = () => setIsPasswordRecovery(false);
 
   return (
@@ -397,9 +389,7 @@ export function AuthProvider({ children }: { children: ReactNode }) {
       isAuthenticated: !!session,
       hasAccess,
       mustChangePassword,
-      isFreshLogin,
       isPasswordRecovery,
-      clearFreshLogin,
       clearPasswordRecovery,
       signIn,
       signUp,

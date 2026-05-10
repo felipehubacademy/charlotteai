@@ -540,7 +540,7 @@ export default function HomeScreen() {
 }
 
 function HomeScreenContent() {
-  const { profile, isFreshLogin } = useAuth();
+  const { profile } = useAuth();
   const { openPaywall } = usePaywallContext();
   const insets = useSafeAreaInsets();
   const userId = profile?.id ?? '';
@@ -602,17 +602,6 @@ function HomeScreenContent() {
   const vocabFABRef         = useRef<any>(null);
   const tipBarRef           = useRef<any>(null);
   const practiceYRef        = useRef(0);
-  // Streak sound deferred while WelcomeModal voice-over is playing
-  const isFreshLoginRef   = React.useRef(isFreshLogin);
-  const pendingStreakRef  = React.useRef(false);
-  useEffect(() => { isFreshLoginRef.current = isFreshLogin; }, [isFreshLogin]);
-  // When WelcomeModal is dismissed (isFreshLogin → false), play any pending streak sound
-  useEffect(() => {
-    if (!isFreshLogin && pendingStreakRef.current) {
-      pendingStreakRef.current = false;
-      setTimeout(() => soundEngine.play('streak_alive').catch(() => {}), 800);
-    }
-  }, [isFreshLogin]);
   // streakSoundPlayed: uses module-level var so it survives component remounts
 
   const fetchData = useCallback(async () => {
@@ -698,8 +687,7 @@ function HomeScreenContent() {
     }
     setData(newData);
 
-    // 🔊 Som de streak — toca UMA VEZ POR DIA quando há streak ativo.
-    // Se o WelcomeModal estiver aberto (isFreshLogin=true), adia o som até ele fechar.
+    // Som de streak — toca UMA VEZ POR DIA quando há streak ativo.
     if (!_streakSoundPlayedThisSession && newData.streakDays > 0) {
       const today = localTodayStr(); // YYYY-MM-DD no fuso do device
       const streakKey = `streak_sound_played_${userId}`;
@@ -707,12 +695,7 @@ function HomeScreenContent() {
         if (lastPlayed !== today) {
           _streakSoundPlayedThisSession = true;
           SecureStore.setItemAsync(streakKey, today).catch(() => {});
-          if (isFreshLoginRef.current) {
-            // WelcomeModal está visível — aguardar dismissal para tocar depois
-            pendingStreakRef.current = true;
-          } else {
-            setTimeout(() => soundEngine.play('streak_alive').catch(() => {}), 800);
-          }
+          setTimeout(() => soundEngine.play('streak_alive').catch(() => {}), 800);
         } else {
           _streakSoundPlayedThisSession = true; // skip but mark so we don't check again
         }

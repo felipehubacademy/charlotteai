@@ -108,7 +108,7 @@ function XPRing({ todayXP, goal }: { todayXP: number; goal: number }) {
 // ── Home Tab ──────────────────────────────────────────────────────────────────
 
 export default function HomeTab() {
-  const { profile, isFreshLogin } = useAuth();
+  const { profile } = useAuth();
   const { openPaywall }           = usePaywallContext();
   const { colors: T }             = useTheme();
   const userId    = profile?.id ?? '';
@@ -135,21 +135,11 @@ export default function HomeTab() {
   const [aiGreeting,      setAiGreeting]      = useState<string | null>(null);
   const [greetingLoading, setGreetingLoading] = useState(true);
 
-  // Streak sound — same pattern as legacy home
-  const isFreshLoginRef  = useRef(isFreshLogin);
-  const pendingStreakRef  = useRef(false);
   const greetingPlayer = useVideoPlayer(require('@/assets/charlotte-greeting.mp4'), p => {
     p.loop = true;
     p.muted = true;
     p.play();
   });
-  useEffect(() => { isFreshLoginRef.current = isFreshLogin; }, [isFreshLogin]);
-  useEffect(() => {
-    if (!isFreshLogin && pendingStreakRef.current) {
-      pendingStreakRef.current = false;
-      setTimeout(() => soundEngine.play('streak_alive').catch(() => {}), 800);
-    }
-  }, [isFreshLogin]);
 
   // ── Data fetch ──────────────────────────────────────────────────────────────
   const fetchData = useCallback(async () => {
@@ -204,11 +194,7 @@ export default function HomeTab() {
           if (lastPlayed !== today) {
             _streakSoundPlayedThisSession = true;
             SecureStore.setItemAsync(streakKey, today).catch(() => {});
-            if (isFreshLoginRef.current) {
-              pendingStreakRef.current = true;
-            } else {
-              setTimeout(() => soundEngine.play('streak_alive').catch(() => {}), 800);
-            }
+            setTimeout(() => soundEngine.play('streak_alive').catch(() => {}), 800);
           } else {
             _streakSoundPlayedThisSession = true;
           }

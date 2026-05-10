@@ -4,7 +4,6 @@ import { useAuth } from '@/hooks/useAuth';
 import { PaywallModal } from '@/components/auth/PaywallModal';
 import { XPToastProvider } from '@/components/ui/XPToastProvider';
 import { AchievementsProvider } from '@/components/achievements/AchievementsProvider';
-import WelcomeModal from '@/components/ui/WelcomeModal';
 import { PaywallProvider } from '@/lib/paywallContext';
 import { TourProvider } from '@/lib/tourContext';
 import { AppErrorBoundary } from '@/components/AppErrorBoundary';
@@ -25,13 +24,6 @@ export default function AppLayout() {
     <XPToastProvider>
       <AchievementsProvider>
       <PaywallModal />
-      {profile && !mustChangePassword && profile.placement_test_done && (
-        <WelcomeModal
-          userId={profile.id}
-          userLevel={profile.charlotte_level}
-          userName={profile.name ?? profile.email?.split('@')[0] ?? 'Student'}
-        />
-      )}
       <Stack screenOptions={{ headerShown: false, animation: 'slide_from_right' }}>
         <Stack.Screen name="first-access" options={{ animation: 'none' }} />
         <Stack.Screen name="index" options={{ animation: 'none' }} />
