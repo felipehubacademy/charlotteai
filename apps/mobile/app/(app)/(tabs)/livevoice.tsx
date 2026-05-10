@@ -398,81 +398,79 @@ export default function LiveVoiceTab() {
       ) : (
         <ScrollView
           style={{ flex: 1 }}
-          contentContainerStyle={{ flexGrow: 1, paddingBottom: 28 }}
+          contentContainerStyle={{ flexGrow: 1, alignItems: 'center', paddingTop: 16, paddingBottom: 24 }}
           showsVerticalScrollIndicator={false}
           refreshControl={<RefreshControl refreshing={refreshing} onRefresh={onRefresh} tintColor={C.textWhite} />}
         >
 
-          {/* ── Hero: balão à esquerda + Charlotte solta à direita ── */}
-          <View style={{ flexDirection: 'row', alignItems: 'flex-end', minHeight: 240, paddingLeft: 24, paddingRight: 0, paddingTop: 24 }}>
-            <View style={{ flex: 1, paddingBottom: 36, paddingRight: 8 }}>
-              <View style={{
-                backgroundColor: C.navyMid,
-                borderRadius: 20, borderTopLeftRadius: 4,
-                paddingHorizontal: 16, paddingVertical: 14,
-                alignSelf: 'flex-start',
-              }}>
-                <AppText style={{ fontSize: 10, fontWeight: '700', color: 'rgba(255,255,255,0.5)', textTransform: 'uppercase', letterSpacing: 1.4, marginBottom: 4 }}>
-                  Charlotte
-                </AppText>
-                <AppText style={{ fontSize: 17, color: '#FFFFFF', lineHeight: 23, fontWeight: '600' }}>
-                  {isPt ? 'Vamos conversar?' : 'Want to talk?'}
-                </AppText>
-              </View>
-            </View>
-
-            <View style={{ width: 180, height: 240, alignSelf: 'flex-end', overflow: 'hidden', backgroundColor: 'transparent' }}>
-              <VideoView
-                player={liveVoicePlayer}
-                style={{ width: 180, height: Math.round(180 * 16 / 9), backgroundColor: 'transparent' }}
-                contentFit="cover"
-                nativeControls={false}
-              />
-            </View>
+          {/* ── Charlotte full body (centro, sem crop, proporção 9:16) ── */}
+          <View style={{
+            width: 160, height: 285,
+            overflow: 'hidden',
+            backgroundColor: 'transparent',
+          }}>
+            <VideoView
+              player={liveVoicePlayer}
+              style={{ width: 160, height: 285, backgroundColor: 'transparent' }}
+              contentFit="cover"
+              nativeControls={false}
+            />
           </View>
 
-          {/* ── Start button (redondo grande, no centro) ── */}
-          <View style={{ alignItems: 'center', gap: 12, marginTop: 20, marginBottom: 28 }}>
+          {/* ── Nome + status ── */}
+          <View style={{ alignItems: 'center', marginTop: 8, gap: 4 }}>
+            <AppText style={{ fontSize: 22, fontWeight: '800', color: C.textWhite, letterSpacing: 0.3 }}>
+              Charlotte
+            </AppText>
+            <AppText style={{ fontSize: 14, fontWeight: '500', color: C.textMuted }}>
+              {isPt ? 'Vamos conversar?' : 'Want to talk?'}
+            </AppText>
+          </View>
+
+          {/* ── Last call (texto compacto, clicável) ── */}
+          {lastCall && (
+            <View style={{ marginTop: 18 }}>
+              <LastCallSection
+                call={lastCall}
+                isPt={isPt}
+                onPress={() => setShowTranscript(true)}
+              />
+            </View>
+          )}
+
+          {/* Spacer */}
+          <View style={{ flex: 1, minHeight: 16 }} />
+
+          {/* ── Pool indicator (compacto inline) ── */}
+          <View style={{ alignItems: 'center', marginBottom: 18 }}>
+            <PoolRing used={poolUsed} total={poolTotal} isUnlimited={poolUnlimited} isPt={isPt} />
+          </View>
+
+          {/* ── Start button (rodapé, redondo grande) ── */}
+          <View style={{ alignItems: 'center', gap: 8 }}>
             <TouchableOpacity
               onPress={startCall}
               disabled={isLimitReached}
               activeOpacity={0.85}
               style={{
-                width: 96, height: 96, borderRadius: 48,
+                width: 84, height: 84, borderRadius: 42,
                 backgroundColor: isLimitReached ? C.navyGhost : accent,
                 alignItems: 'center', justifyContent: 'center',
                 shadowColor: isLimitReached ? 'transparent' : accent,
-                shadowOffset: { width: 0, height: 8 },
-                shadowOpacity: 0.5, shadowRadius: 18,
+                shadowOffset: { width: 0, height: 6 },
+                shadowOpacity: 0.5, shadowRadius: 16,
                 elevation: 10,
                 opacity: isLimitReached ? 0.6 : 1,
               }}
             >
-              <Phone size={36} color={isLimitReached ? C.textDim : '#FFFFFF'} weight="fill" />
+              <Phone size={32} color={isLimitReached ? C.textDim : '#FFFFFF'} weight="fill" />
             </TouchableOpacity>
-            <AppText style={{ fontSize: 13, fontWeight: '700', color: isLimitReached ? C.textDim : C.textWhite, letterSpacing: 0.5, textTransform: 'uppercase' }}>
+            <AppText style={{ fontSize: 12, fontWeight: '700', color: isLimitReached ? C.textDim : C.textWhite, letterSpacing: 1, textTransform: 'uppercase' }}>
               {isLimitReached
                 ? (isPt ? 'Limite atingido' : 'Limit reached')
                 : (isPt ? 'Começar agora' : 'Start now')
               }
             </AppText>
-          </View>
-
-          {/* ── Last call (texto solto, sem card) ── */}
-          {lastCall && (
-            <LastCallSection
-              call={lastCall}
-              isPt={isPt}
-              onPress={() => setShowTranscript(true)}
-            />
-          )}
-
-          {/* Spacer pra colar o pool no fim */}
-          <View style={{ flex: 1, minHeight: 24 }} />
-
-          {/* ── Pool ring (rodapé) ── */}
-          <View style={{ alignItems: 'center', paddingTop: 16, paddingBottom: 8 }}>
-            <PoolRing used={poolUsed} total={poolTotal} isUnlimited={poolUnlimited} isPt={isPt} />
           </View>
 
         </ScrollView>
