@@ -11,6 +11,7 @@ import {
 import { Question, X, ClockCounterClockwise, XCircle, CaretRight, Trash } from 'phosphor-react-native';
 import { useLocalSearchParams, router, useFocusEffect } from 'expo-router';
 import { useSafeAreaInsets } from 'react-native-safe-area-context';
+import { useBottomTabBarHeight } from '@react-navigation/bottom-tabs';
 import { useAuth } from '@/hooks/useAuth';
 import { HeaderPills } from '@/components/ui/HeaderPills';
 import { AppText } from '@/components/ui/Text';
@@ -95,6 +96,7 @@ export default function PracticeTab() {
   const [streak, setStreak] = useState(0);
   const [rank,   setRank]   = useState<number | null>(null);
   const insets = useSafeAreaInsets();
+  const tabBarHeight = useBottomTabBarHeight();
   const screenW = Dimensions.get('window').width;
   const drawerW = Math.round(screenW * 0.82);
 
@@ -167,6 +169,14 @@ export default function PracticeTab() {
   }, [userId, mode]);
 
   useFocusEffect(useCallback(() => { fetchSessions(); }, [fetchSessions]));
+
+  // Auto-fecha drawer/help/etc ao sair da tab (não persiste ao voltar)
+  useFocusEffect(useCallback(() => {
+    return () => {
+      setShowHistory(false);
+      setShowHelp(false);
+    };
+  }, []));
 
   // Trocar de modo:
   // - chat → outro: encerra session (vai pro histórico) + limpa state
@@ -247,7 +257,7 @@ export default function PracticeTab() {
       <KeyboardAvoidingView
         style={{ flex: 1 }}
         behavior={Platform.OS === 'ios' ? 'padding' : 'height'}
-        keyboardVerticalOffset={0}
+        keyboardVerticalOffset={tabBarHeight}
       >
         {/* ── Toggle pill (3 modos, hug content centered) ── */}
         <View style={{ alignItems: 'center', paddingTop: 12, paddingBottom: 8 }}>
@@ -520,7 +530,7 @@ function ChatSessionsDrawer({
     >
       <Animated.View
         pointerEvents={isOpen ? 'auto' : 'none'}
-        style={{ position: 'absolute', top: 0, left: 0, right: 0, bottom: 0, backgroundColor: 'rgba(0,0,0,0.4)', opacity: fade }}
+        style={{ position: 'absolute', top: 0, left: 0, right: 0, bottom: 0, backgroundColor: 'rgba(0,0,0,0.28)', opacity: fade }}
       >
         <Pressable style={{ flex: 1 }} onPress={onClose} />
       </Animated.View>

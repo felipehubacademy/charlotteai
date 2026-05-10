@@ -241,7 +241,7 @@ function CallsDrawer({ calls, isOpen, onClose, onSelectCall, onDeleteCall, isPt,
       {/* Backdrop dim — atrás do drawer */}
       <Animated.View
         pointerEvents={isOpen ? 'auto' : 'none'}
-        style={{ position: 'absolute', top: 0, left: 0, right: 0, bottom: 0, backgroundColor: 'rgba(0,0,0,0.4)', opacity: fade }}
+        style={{ position: 'absolute', top: 0, left: 0, right: 0, bottom: 0, backgroundColor: 'rgba(0,0,0,0.28)', opacity: fade }}
       >
         <Pressable style={{ flex: 1 }} onPress={onClose} />
       </Animated.View>
@@ -529,6 +529,14 @@ export default function LiveVoiceTab() {
   }, [userId, level]);
 
   useFocusEffect(useCallback(() => { loadData(); }, [loadData]));
+
+  // Auto-fecha drawer/transcript ao sair da tab (não persiste ao voltar)
+  useFocusEffect(useCallback(() => {
+    return () => {
+      setShowCallsDrawer(false);
+      setShowTranscript(false);
+    };
+  }, []));
 
   const onRefresh = useCallback(async () => {
     setRefreshing(true);
