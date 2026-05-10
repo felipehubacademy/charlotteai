@@ -23,6 +23,7 @@ import { usePaywallContext } from '@/lib/paywallContext';
 import { Achievement } from '@/lib/types/achievement';
 import { UserLevel } from '@/lib/levelConfig';
 import { supabase } from '@/lib/supabase';
+import { localTodayStr } from '@/lib/dateUtils';
 
 type Mode = 'chat' | 'grammar' | 'pronunciation';
 
@@ -31,6 +32,13 @@ const MODES: { id: Mode; labelPt: string; labelEn: string }[] = [
   { id: 'grammar',       labelPt: 'Gramática',     labelEn: 'Grammar' },
   { id: 'pronunciation', labelPt: 'Pronúncia',     labelEn: 'Pronunciation' },
 ];
+
+// practice_types gravados em charlotte_practices, agrupados por modo do toggle.
+const MODE_PRACTICE_TYPES: Record<Mode, string[]> = {
+  chat:          ['text_message', 'chat'],
+  grammar:       ['grammar_message', 'grammar'],
+  pronunciation: ['audio_message', 'pronunciation'],
+};
 
 const C = {
   bg:        '#F4F3FA',
@@ -79,9 +87,71 @@ export default function PracticeTab() {
   const [showHelp, setShowHelp] = useState(false);
   const [showHistory, setShowHistory] = useState(false);
   const [recentSessions, setRecentSessions] = useState<ChatSession[]>([]);
+  // daysSince por modo (-1 = nunca / não carregado, 0 = hoje, ...). 999 = nunca tentou
+  const [daysSince, setDaysSince] = useState<Record<Mode, number>>({
+    chat: -1, grammar: -1, pronunciation: -1,
+  });
+  // Streak + rank pra HeaderPills (mesmo padrão das outras tabs)
+  const [streak, setStreak] = useState(0);
+  const [rank,   setRank]   = useState<number | null>(null);
   const insets = useSafeAreaInsets();
   const screenW = Dimensions.get('window').width;
   const drawerW = Math.round(screenW * 0.82);
+
+  // Fetch das práticas dos últimos 30 dias pra calcular daysSince por mode
+  const fetchDaysSince = useCallback(async () => {
+    if (!userId) return;
+    const cutoff = new Date(Date.now() - 30 * 86_400_000).toISOString();
+    const { data } = await supabase
+      .from('charlotte_practices')
+      .select('practice_type, created_at')
+      .eq('user_id', userId)
+      .gte('created_at', cutoff)
+      .order('created_at', { ascending: false });
+
+    const result: Record<Mode, number> = { chat: 999, grammar: 999, pronunciation: 999 };
+    if (data) {
+      const now = Date.now();
+      for (const m of MODES) {
+        const types = MODE_PRACTICE_TYPES[m.id];
+        const last = data.find(p => types.includes(p.practice_type));
+        if (last) {
+          result[m.id] = Math.floor((now - new Date(last.created_at).getTime()) / 86_400_000);
+        }
+      }
+    }
+    setDaysSince(result);
+  }, [userId]);
+
+  useFocusEffect(useCallback(() => { fetchDaysSince(); }, [fetchDaysSince]));
+
+  // Fetch streak + rank pra header pills (mesmo padrão das outras tabs)
+  const fetchHeaderStats = useCallback(async () => {
+    if (!userId) return;
+    const [prog, leaderboardCount] = await Promise.all([
+      supabase.from('charlotte_progress')
+        .select('streak_days, last_practice_date, total_xp')
+        .eq('user_id', userId)
+        .maybeSingle(),
+      supabase.from('charlotte_leaderboard_cache')
+        .select('*', { count: 'exact', head: true })
+        .eq('user_level', userLevel)
+        .gt('total_xp', totalXP),
+    ]);
+
+    const userTotalXP = prog.data?.total_xp ?? 0;
+    const todayStr = localTodayStr();
+    const yesterdayStr = (() => {
+      const d = new Date(); d.setDate(d.getDate() - 1);
+      return `${d.getFullYear()}-${String(d.getMonth()+1).padStart(2,'0')}-${String(d.getDate()).padStart(2,'0')}`;
+    })();
+    const lastPractice = prog.data?.last_practice_date ?? null;
+    const alive = lastPractice === todayStr || lastPractice === yesterdayStr;
+    setStreak(alive ? (prog.data?.streak_days ?? 0) : 0);
+    setRank(userTotalXP > 0 ? (leaderboardCount.count ?? 0) + 1 : null);
+  }, [userId, userLevel, totalXP]);
+
+  useFocusEffect(useCallback(() => { fetchHeaderStats(); }, [fetchHeaderStats]));
 
   // Fetch das sessions encerradas (chat mode only)
   const fetchSessions = useCallback(async () => {
@@ -164,13 +234,16 @@ export default function PracticeTab() {
     <View style={{ flex: 1, backgroundColor: C.bg }}>
 
       <HeaderPills
-        streak={0}
+        streak={streak}
         totalXP={totalXP}
-        rank={null}
+        rank={rank}
         statsParams={statsParams}
         isPt={isPt}
       />
 
+      {/* Body wrapper — drawer absolute fica DENTRO deste wrapper, não cobre
+          HeaderPills (que tá acima) nem tab bar (que tá fora do screen). */}
+      <View style={{ flex: 1, position: 'relative' }}>
       <KeyboardAvoidingView
         style={{ flex: 1 }}
         behavior={Platform.OS === 'ios' ? 'padding' : 'height'}
@@ -190,6 +263,14 @@ export default function PracticeTab() {
           }}>
             {MODES.map(m => {
               const active = m.id === mode;
+              const d = daysSince[m.id];
+              // Dot só pra pills inativos. Verde = nunca tentou (novo);
+              // âmbar = 3+ dias sem praticar. Recentes (0-2) sem dot.
+              const dotColor =
+                active || d < 0 ? null
+                : d === 999 ? '#3D8800'      // novo (nunca tentou)
+                : d >= 3    ? '#D97706'      // atrasado
+                            : null;
               return (
                 <TouchableOpacity
                   key={m.id}
@@ -207,48 +288,20 @@ export default function PracticeTab() {
                   }}>
                     {isPt ? m.labelPt : m.labelEn}
                   </AppText>
+                  {dotColor && (
+                    <View style={{
+                      position: 'absolute',
+                      top: 4, right: 6,
+                      width: 6, height: 6, borderRadius: 3,
+                      backgroundColor: dotColor,
+                    }} />
+                  )}
                 </TouchableOpacity>
               );
             })}
           </View>
         </View>
 
-        {/* ── Botões flutuantes top-right: histórico (chat only) + ajuda ── */}
-        <View style={{
-          position: 'absolute',
-          top: 18, right: 16,
-          flexDirection: 'row', gap: 8,
-          zIndex: 5,
-        }}>
-          {mode === 'chat' && (
-            <TouchableOpacity
-              onPress={() => setShowHistory(true)}
-              style={{
-                width: 34, height: 34, borderRadius: 17,
-                backgroundColor: '#FFFFFF',
-                alignItems: 'center', justifyContent: 'center',
-                borderWidth: 1, borderColor: C.border,
-              }}
-              hitSlop={{ top: 8, bottom: 8, left: 8, right: 8 }}
-              accessibilityLabel={isPt ? 'Histórico de conversas' : 'Conversation history'}
-            >
-              <ClockCounterClockwise size={17} color={C.navyMid} weight="regular" />
-            </TouchableOpacity>
-          )}
-          <TouchableOpacity
-            onPress={() => setShowHelp(true)}
-            style={{
-              width: 34, height: 34, borderRadius: 17,
-              backgroundColor: '#FFFFFF',
-              alignItems: 'center', justifyContent: 'center',
-              borderWidth: 1, borderColor: C.border,
-            }}
-            hitSlop={{ top: 8, bottom: 8, left: 8, right: 8 }}
-            accessibilityLabel={isPt ? 'Ajuda' : 'Help'}
-          >
-            <Question size={17} color={C.navyMid} weight="regular" />
-          </TouchableOpacity>
-        </View>
 
         {/* ── Área de mensagens ── */}
         <View style={{ flex: 1 }}>
@@ -265,6 +318,49 @@ export default function PracticeTab() {
             playingMessageId={playingMessageId}
             onExplainMore={mode === 'grammar' ? handleExplainMore : undefined}
           />
+
+          {/* Botões flutuantes bottom-right: histórico (chat only) + ajuda */}
+          <View style={{
+            position: 'absolute',
+            bottom: 10, right: 12,
+            flexDirection: 'row', gap: 8,
+            zIndex: 5,
+          }}>
+            {mode === 'chat' && (
+              <TouchableOpacity
+                onPress={() => setShowHistory(true)}
+                style={{
+                  width: 34, height: 34, borderRadius: 17,
+                  backgroundColor: '#FFFFFF',
+                  alignItems: 'center', justifyContent: 'center',
+                  borderWidth: 1, borderColor: C.border,
+                  shadowColor: 'rgba(22,21,58,0.12)',
+                  shadowOpacity: 1, shadowRadius: 6, shadowOffset: { width: 0, height: 2 },
+                  elevation: 3,
+                }}
+                hitSlop={{ top: 8, bottom: 8, left: 8, right: 8 }}
+                accessibilityLabel={isPt ? 'Histórico de conversas' : 'Conversation history'}
+              >
+                <ClockCounterClockwise size={17} color={C.navyMid} weight="regular" />
+              </TouchableOpacity>
+            )}
+            <TouchableOpacity
+              onPress={() => setShowHelp(true)}
+              style={{
+                width: 34, height: 34, borderRadius: 17,
+                backgroundColor: '#FFFFFF',
+                alignItems: 'center', justifyContent: 'center',
+                borderWidth: 1, borderColor: C.border,
+                shadowColor: 'rgba(22,21,58,0.12)',
+                shadowOpacity: 1, shadowRadius: 6, shadowOffset: { width: 0, height: 2 },
+                elevation: 3,
+              }}
+              hitSlop={{ top: 8, bottom: 8, left: 8, right: 8 }}
+              accessibilityLabel={isPt ? 'Ajuda' : 'Help'}
+            >
+              <Question size={17} color={C.navyMid} weight="regular" />
+            </TouchableOpacity>
+          </View>
         </View>
 
         {/* ── Input bar — varia por modo ── */}
@@ -278,6 +374,22 @@ export default function PracticeTab() {
           rateLimited={rateLimited}
         />
       </KeyboardAvoidingView>
+
+      {/* ── Drawer de histórico (Free Chat only) — DENTRO do body wrapper ── */}
+      <ChatSessionsDrawer
+        sessions={recentSessions}
+        isOpen={showHistory}
+        isPt={isPt}
+        drawerWidth={drawerW}
+        topInset={0}
+        bottomInset={0}
+        activeSessionId={activeSessionId}
+        onClose={() => setShowHistory(false)}
+        onSelect={handleLoadSession}
+        onDelete={handleDeleteSession}
+      />
+      </View>
+      {/* /body wrapper */}
 
       {/* ── Achievement notification (grammar + pronunciation) ── */}
       {(mode === 'grammar' || mode === 'pronunciation') && (
@@ -342,20 +454,6 @@ export default function PracticeTab() {
           </Pressable>
         </Pressable>
       </Modal>
-
-      {/* ── Drawer de histórico (Free Chat only) ── */}
-      <ChatSessionsDrawer
-        sessions={recentSessions}
-        isOpen={showHistory}
-        isPt={isPt}
-        drawerWidth={drawerW}
-        topInset={insets.top}
-        bottomInset={insets.bottom}
-        activeSessionId={activeSessionId}
-        onClose={() => setShowHistory(false)}
-        onSelect={handleLoadSession}
-        onDelete={handleDeleteSession}
-      />
     </View>
   );
 }
@@ -393,7 +491,8 @@ function ChatSessionsDrawer({
   bottomInset: number;
   activeSessionId: string | null;
 }) {
-  const slideX = React.useRef(new Animated.Value(drawerWidth)).current;
+  // Slide da esquerda (mesmo padrão do CallsDrawer no LiveVoice)
+  const slideX = React.useRef(new Animated.Value(-drawerWidth)).current;
   const fade   = React.useRef(new Animated.Value(0)).current;
   const [mounted, setMounted] = useState(isOpen);
 
@@ -406,7 +505,7 @@ function ChatSessionsDrawer({
       ]).start();
     } else {
       Animated.parallel([
-        Animated.timing(slideX, { toValue: drawerWidth, duration: 200, easing: Easing.in(Easing.cubic), useNativeDriver: true }),
+        Animated.timing(slideX, { toValue: -drawerWidth, duration: 200, easing: Easing.in(Easing.cubic), useNativeDriver: true }),
         Animated.timing(fade,   { toValue: 0, duration: 160, useNativeDriver: true }),
       ]).start(() => setMounted(false));
     }
@@ -429,13 +528,13 @@ function ChatSessionsDrawer({
       <Animated.View
         style={{
           position: 'absolute',
-          top: 0, bottom: 0, right: 0,
+          top: 0, bottom: 0, left: 0,
           width: drawerWidth,
           backgroundColor: '#FFFFFF',
           paddingTop: topInset + 8,
           paddingBottom: bottomInset + 8,
           transform: [{ translateX: slideX }],
-          shadowColor: '#000', shadowOffset: { width: -4, height: 0 }, shadowOpacity: 0.2, shadowRadius: 8,
+          shadowColor: '#000', shadowOffset: { width: 4, height: 0 }, shadowOpacity: 0.2, shadowRadius: 8,
           elevation: 8,
         }}
       >

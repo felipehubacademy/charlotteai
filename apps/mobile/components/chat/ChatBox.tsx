@@ -6,12 +6,16 @@ import {
   Animated,
   StyleSheet,
   ActivityIndicator,
+  Pressable,
+  Modal,
+  Clipboard,
 } from 'react-native';
 import Svg, { Defs, Pattern, Circle, Rect } from 'react-native-svg';
 import {
   Play, Pause, SpeakerHigh,
   Globe, Microphone, ArrowsClockwise,
   ChatCenteredText, Lightbulb,
+  Copy, Question, X,
 } from 'phosphor-react-native';
 import { AppText } from '@/components/ui/Text';
 import CharlotteAvatar from '@/components/ui/CharlotteAvatar';
@@ -128,6 +132,7 @@ const MessageBubble: React.FC<{
   const [isTranslating, setIsTranslating] = React.useState(false);
   const [translationError, setTranslationError] = React.useState(false);
   const [transcription, setTranscription] = React.useState('');
+  const [showActions, setShowActions] = React.useState(false);
   const openAddWord = (termVal: string) => {
     router.push({ pathname: '/(app)/add-word', params: { term: termVal, source: 'charlotte' } });
   };
@@ -190,8 +195,10 @@ const MessageBubble: React.FC<{
       )}
       <View style={{ maxWidth: '78%', marginLeft: isUser ? 48 : 0, marginRight: isUser ? 0 : 8 }}>
 
-        {/* Bubble */}
-        <View
+        {/* Bubble — long-press abre action sheet pra msgs da Charlotte */}
+        <Pressable
+          onLongPress={!isUser ? () => setShowActions(true) : undefined}
+          delayLongPress={300}
           style={{
             paddingHorizontal: 14,
             paddingVertical: 10,
@@ -278,7 +285,7 @@ const MessageBubble: React.FC<{
               />
             </View>
           )}
-        </View>
+        </Pressable>
 
 
         {/* Action buttons below assistant messages */}
@@ -392,9 +399,83 @@ const MessageBubble: React.FC<{
       </View>
     </View>
 
+    {/* Action sheet (long-press na msg da Charlotte) */}
+    {!isUser && (
+      <Modal visible={showActions} transparent animationType="fade" onRequestClose={() => setShowActions(false)}>
+        <Pressable
+          onPress={() => setShowActions(false)}
+          style={{ flex: 1, justifyContent: 'flex-end', backgroundColor: 'rgba(0,0,0,0.4)' }}
+        >
+          <Pressable
+            onPress={(e) => e.stopPropagation()}
+            style={{
+              backgroundColor: '#FFFFFF',
+              borderTopLeftRadius: 24, borderTopRightRadius: 24,
+              paddingHorizontal: 8, paddingTop: 14, paddingBottom: 24,
+            }}
+          >
+            <View style={{ width: 36, height: 4, borderRadius: 2, backgroundColor: 'rgba(22,21,58,0.15)', alignSelf: 'center', marginBottom: 14 }} />
+
+            <ActionRow
+              icon={<Globe size={20} color="#4B4A72" weight="regular" />}
+              label={isNovice ? 'Traduzir' : 'Translate'}
+              onPress={() => {
+                setShowActions(false);
+                setTimeout(() => handleTranslation(), 200);
+              }}
+            />
+            <ActionRow
+              icon={<Copy size={20} color="#4B4A72" weight="regular" />}
+              label={isNovice ? 'Copiar' : 'Copy'}
+              onPress={() => {
+                Clipboard.setString(message.content || '');
+                setShowActions(false);
+              }}
+            />
+            {mode === 'grammar' && onExplainMore && message.id !== 'welcome-0' && !message.isExplainMore && (
+              <ActionRow
+                icon={<Question size={20} color="#4B4A72" weight="regular" />}
+                label={isNovice ? 'Me explique melhor' : 'Explain more'}
+                onPress={() => {
+                  setShowActions(false);
+                  setTimeout(() => onExplainMore(message.content || ''), 200);
+                }}
+              />
+            )}
+            <ActionRow
+              icon={<X size={20} color="#9896B8" weight="regular" />}
+              label={isNovice ? 'Cancelar' : 'Cancel'}
+              onPress={() => setShowActions(false)}
+              muted
+            />
+          </Pressable>
+        </Pressable>
+      </Modal>
+    )}
+
     </>
   );
 };
+
+function ActionRow({ icon, label, onPress, muted }: {
+  icon: React.ReactNode; label: string; onPress: () => void; muted?: boolean;
+}) {
+  return (
+    <TouchableOpacity
+      onPress={onPress}
+      style={{
+        flexDirection: 'row', alignItems: 'center', gap: 14,
+        paddingHorizontal: 16, paddingVertical: 14,
+        borderRadius: 12,
+      }}
+    >
+      {icon}
+      <AppText style={{ fontSize: 15, fontWeight: '600', color: muted ? '#9896B8' : '#16153A' }}>
+        {label}
+      </AppText>
+    </TouchableOpacity>
+  );
+}
 
 // Main ChatBox
 const ChatBox: React.FC<ChatBoxProps> = ({
