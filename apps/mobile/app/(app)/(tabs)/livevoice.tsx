@@ -10,6 +10,7 @@ import {
 import { useSafeAreaInsets } from 'react-native-safe-area-context';
 import Svg, { Circle } from 'react-native-svg';
 import { useFocusEffect } from 'expo-router';
+import { useBottomTabBarHeight } from '@react-navigation/bottom-tabs';
 import { useVideoPlayer, VideoView } from 'expo-video';
 import { Phone, XCircle, ClockCounterClockwise, CaretRight } from 'phosphor-react-native';
 import { AppText } from '@/components/ui/Text';
@@ -428,6 +429,13 @@ export default function LiveVoiceTab() {
     p.play();
   });
 
+  // Garante loop sempre ativo quando a tab volta a ficar visível.
+  // Sem isso, o player pode ficar pausado após navegação entre tabs.
+  useFocusEffect(useCallback(() => {
+    liveVoicePlayer.loop = true;
+    liveVoicePlayer.play();
+  }, [liveVoicePlayer]));
+
   const loadData = useCallback(async () => {
     if (!userId) return;
     try {
@@ -513,6 +521,10 @@ export default function LiveVoiceTab() {
   const charH   = Math.min(480, Math.round(screenH * 0.55));
   const charW   = Math.round(charH * 9 / 16);
   const drawerW = Math.round(screenW * 0.82);
+
+  // Altura da tab bar (React Navigation) — usada pra offsetar conteúdo do fundo.
+  // Diferente de safeArea — é a altura visual da própria tab bar.
+  const tabBarHeight = useBottomTabBarHeight();
 
   return (
     <View style={{ flex: 1, backgroundColor: C.stage }}>
@@ -617,10 +629,12 @@ export default function LiveVoiceTab() {
               </AppText>
             </TouchableOpacity>
 
-            {/* Spacer Android pra dar respiro acima da tab bar */}
-            {Platform.OS === 'android' && <View style={{ height: 40 }} />}
-
           </View>
+
+          {/* Spacer baseado na altura da tab bar do RN — funciona iOS e Android
+              independente de como o navigator renderiza o tab bar. 0.4 = ~40%
+              da altura visual da tab bar, dá respiro consistente. */}
+          <View style={{ height: tabBarHeight * 0.4 }} />
 
           {/* Drawer in-screen (absolute dentro do content area, não cobre header/tab) */}
           <CallsDrawer
