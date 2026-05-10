@@ -515,10 +515,11 @@ export default function LiveVoiceTab() {
   const isLimitReached = !poolUnlimited && poolUsed >= poolTotal;
   const statsParams = { sessionXP: String(todayXP), totalXP: String(totalXP), userId, userLevel: level, userName: profile?.name ?? 'Student' };
 
-  // Charlotte responsiva — altura até 55% da tela (cap 480), 9:16 ratio
+  // Charlotte responsiva — altura até 45% da tela (cap 420), 9:16 ratio
+  // Reduzida pra caber junto com header + drawer btn + CTA + spacer.
   const screenW = Dimensions.get('window').width;
   const screenH = Dimensions.get('window').height;
-  const charH   = Math.min(480, Math.round(screenH * 0.55));
+  const charH   = Math.min(420, Math.round(screenH * 0.45));
   const charW   = Math.round(charH * 9 / 16);
   const drawerW = Math.round(screenW * 0.82);
 
@@ -631,10 +632,9 @@ export default function LiveVoiceTab() {
 
           </View>
 
-          {/* DEBUG: spacer hardcodado amarelo, 80px. Se aparecer faixa amarela
-              entre CTA e tab bar, mecânica funciona — só preciso tunar valor.
-              Se não aparecer, tela tem problema de overflow/clipping. */}
-          <View style={{ height: 80, backgroundColor: '#FFD700' }} />
+          {/* DEBUG mantido amarelo pra confirmar fix do overflow.
+              32px = espaço suficiente acima da tab bar sem comprimir layout. */}
+          <View style={{ height: 32, backgroundColor: '#FFD700' }} />
 
           {/* Drawer in-screen (absolute dentro do content area, não cobre header/tab) */}
           <CallsDrawer
