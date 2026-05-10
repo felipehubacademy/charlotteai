@@ -6,7 +6,7 @@
 import { Tabs } from 'expo-router';
 import { Platform, View, Image } from 'react-native';
 import { useSafeAreaInsets } from 'react-native-safe-area-context';
-import { House, Lightning, Notepad, Rocket, UserCircle } from 'phosphor-react-native';
+import { House, Lightning, Notepad, Rocket, UserCircle, Phone } from 'phosphor-react-native';
 import { useAuth } from '@/hooks/useAuth';
 import { UserLevel } from '@/lib/levelConfig';
 
@@ -36,6 +36,10 @@ export default function TabLayout() {
           height: Platform.OS === 'ios' ? 80 : 44 + insets.bottom,
           paddingTop: Platform.OS === 'ios' ? 8 : 2,
           paddingBottom: Platform.OS === 'android' ? insets.bottom : 0,
+          paddingHorizontal: 4,
+        },
+        tabBarItemStyle: {
+          paddingHorizontal: 0,
         },
       }}
     >
@@ -44,6 +48,14 @@ export default function TabLayout() {
         options={{
           tabBarIcon: ({ color, size }) => (
             <House size={size ?? 24} color={color} weight="fill" />
+          ),
+        }}
+      />
+      <Tabs.Screen
+        name="livevoice"
+        options={{
+          tabBarIcon: ({ color, size }) => (
+            <Phone size={size ?? 24} color={color} weight="fill" />
           ),
         }}
       />
