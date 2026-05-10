@@ -46,16 +46,41 @@ async function savePractice(
   if (error) console.warn('⚠️ savePractice error:', error.message, error.code);
 }
 
-/** Persist a chat message for history and pedagogical analysis (fire-and-forget). */
+/** Persist a chat message for history and pedagogical analysis (fire-and-forget).
+ *  sessionId é opcional — só Free Chat agrupa em sessions. */
 function saveChatMessage(
   userId: string,
   role: 'user' | 'assistant',
   content: string,
   mode: ChatMode,
+  sessionId?: string | null,
 ): void {
   if (!userId) return;
-  supabase.from('chat_messages').insert({ user_id: userId, role, content, mode })
+  supabase.from('chat_messages')
+    .insert({ user_id: userId, role, content, mode, session_id: sessionId ?? null })
     .then(({ error }) => { if (error) console.warn('⚠️ saveChatMessage:', error.message); });
+
+  // Incrementa message_count na session (fire-and-forget) só pra Free Chat.
+  if (sessionId && mode === 'chat') {
+    supabase.rpc('increment_session_message_count', { session_id_param: sessionId })
+      .then(({ error }) => {
+        if (error) {
+          // RPC não existe ainda — fallback: SELECT + UPDATE atomico via supabase
+          supabase.from('charlotte_chat_sessions')
+            .select('message_count')
+            .eq('id', sessionId)
+            .single()
+            .then(({ data }) => {
+              if (data) {
+                supabase.from('charlotte_chat_sessions')
+                  .update({ message_count: (data.message_count ?? 0) + 1 })
+                  .eq('id', sessionId)
+                  .then(() => {});
+              }
+            });
+        }
+      });
+  }
 }
 
 /** Call TTS endpoint and save the mp3 to a local temp file. Returns local URI or null. */
@@ -111,6 +136,10 @@ export function useChat({ userLevel, userName, userId, mode = 'chat' }: UseChatO
   const [sessionXP, setSessionXP] = useState(0);
   const [totalXP, setTotalXP] = useState(0);
   const [rateLimited, setRateLimited] = useState<RateLimitState | null>(null);
+  // Free Chat: session ativa (null se não há nenhuma — primeira msg cria)
+  const [activeSessionId, setActiveSessionId] = useState<string | null>(null);
+  const activeSessionIdRef = useRef<string | null>(null);
+  React.useEffect(() => { activeSessionIdRef.current = activeSessionId; }, [activeSessionId]);
   const historyLoadedRef = useRef(false);
   const { checkForNewAchievements } = useAchievementsContext();
 
@@ -140,57 +169,180 @@ export function useChat({ userLevel, userName, userId, mode = 'chat' }: UseChatO
     new ConversationContextManager(userLevel, userName)
   );
 
-  // ── Load chat history on mount (chat mode only) ───────────────────────────
+  // ── Mode change reset — reseta state quando user troca de modo (não só mount) ──
+  const initialModeRef = useRef(mode);
+  React.useEffect(() => {
+    if (initialModeRef.current === mode) return;
+    initialModeRef.current = mode;
+    setMessages([buildWelcome(mode, userLevel, userName)]);
+    contextManagerRef.current = new ConversationContextManager(userLevel, userName);
+    setActiveSessionId(null);
+    activeSessionIdRef.current = null;
+    historyLoadedRef.current = false;
+    setHistoryLoading(mode === 'chat');
+  }, [mode, userLevel, userName]);
+
+  // ── Load active session + messages on mount (chat mode only) ──────────────
+  // Procura session aberta (ended_at IS NULL); se existe, carrega suas msgs.
+  // Se não, fica sem activeSessionId — primeira msg do user cria a session.
   React.useEffect(() => {
     if (!userId || mode !== 'chat' || historyLoadedRef.current) return;
     historyLoadedRef.current = true;
 
     supabase
-      .from('chat_messages')
-      .select('role, content, created_at')
+      .from('charlotte_chat_sessions')
+      .select('id')
       .eq('user_id', userId)
-      .eq('mode', 'chat')
-      .order('created_at', { ascending: false })
-      .limit(30)
-      .then(({ data, error }) => {
-        setHistoryLoading(false);
-        if (error) { console.warn('⚠️ load chat history:', error.message); setMessages([buildWelcome(mode, userLevel, userName)]); return; }
-        if (!data || data.length === 0) {
-          // No history — show welcome message
+      .is('ended_at', null)
+      .order('started_at', { ascending: false })
+      .limit(1)
+      .maybeSingle()
+      .then(({ data: sessionRow }) => {
+        if (!sessionRow) {
+          setHistoryLoading(false);
           setMessages([buildWelcome(mode, userLevel, userName)]);
           return;
         }
 
-        const history = [...data].reverse(); // oldest first
+        const sessionId = sessionRow.id;
+        setActiveSessionId(sessionId);
 
-        // Seed context manager so LLM has prior context
-        history.slice(-8).forEach(row => {
-          contextManagerRef.current.addMessage(row.role as 'user' | 'assistant', row.content, 'text');
-        });
+        supabase
+          .from('chat_messages')
+          .select('role, content, created_at')
+          .eq('user_id', userId)
+          .eq('session_id', sessionId)
+          .order('created_at', { ascending: true })
+          .then(({ data, error }) => {
+            setHistoryLoading(false);
+            if (error || !data || data.length === 0) {
+              setMessages([buildWelcome(mode, userLevel, userName)]);
+              return;
+            }
 
-        const historyMsgs: Message[] = history.map(row => ({
-          id: `hist-${row.created_at}`,
-          role: row.role as 'user' | 'assistant',
-          content: row.content,
-          messageType: 'text' as const,
-          timestamp: new Date(row.created_at),
-        }));
+            data.slice(-8).forEach(row => {
+              contextManagerRef.current.addMessage(row.role as 'user' | 'assistant', row.content, 'text');
+            });
 
-        // Add a subtle session separator after history
-        const separator: Message = {
-          id: 'session-sep',
-          role: 'assistant',
-          content: '— new session —',
-          messageType: 'text',
-          timestamp: new Date(),
-          isSeparator: true,
-        };
+            const historyMsgs: Message[] = data.map(row => ({
+              id: `hist-${row.created_at}`,
+              role: row.role as 'user' | 'assistant',
+              content: row.content,
+              messageType: 'text' as const,
+              timestamp: new Date(row.created_at),
+            }));
 
-        // Prepend welcome message so Charlotte's opening always shows at the top
-        // of the conversation (even when returning to prior history).
-        setMessages([buildWelcome(mode, userLevel, userName), ...historyMsgs, separator]);
+            setMessages([buildWelcome(mode, userLevel, userName), ...historyMsgs]);
+          });
       });
   }, [userId, mode]); // eslint-disable-line react-hooks/exhaustive-deps
+
+  // ── Garante uma session ativa (cria se não existe). Chamado antes de salvar. ──
+  const ensureSession = useCallback(async (): Promise<string | null> => {
+    if (mode !== 'chat') return null;
+    if (activeSessionIdRef.current) return activeSessionIdRef.current;
+    if (!userId) return null;
+
+    const { data, error } = await supabase
+      .from('charlotte_chat_sessions')
+      .insert({ user_id: userId })
+      .select('id')
+      .single();
+    if (error || !data) {
+      console.warn('⚠️ ensureSession failed:', error?.message);
+      return null;
+    }
+    activeSessionIdRef.current = data.id;
+    setActiveSessionId(data.id);
+    return data.id;
+  }, [mode, userId]);
+
+  // ── Encerra session ativa: marca ended_at + dispara summary + limpa state ──
+  const closeSession = useCallback(async (): Promise<void> => {
+    const sessionId = activeSessionIdRef.current;
+    if (!sessionId) {
+      // Mesmo sem session ativa, limpa state pra mensagens efêmeras
+      setMessages([buildWelcome(mode, userLevel, userName)]);
+      return;
+    }
+
+    activeSessionIdRef.current = null;
+    setActiveSessionId(null);
+
+    // Marca ended_at no DB
+    supabase.from('charlotte_chat_sessions')
+      .update({ ended_at: new Date().toISOString() })
+      .eq('id', sessionId)
+      .then(({ error }) => { if (error) console.warn('⚠️ closeSession update:', error.message); });
+
+    // Dispara summary via endpoint (fire-and-forget)
+    fetch(`${API_BASE_URL}/api/summarize-chat`, {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({ sessionId, userId, userLevel }),
+    }).catch(err => console.warn('⚠️ summarize-chat:', err));
+
+    // Limpa state local
+    setMessages([buildWelcome(mode, userLevel, userName)]);
+    contextManagerRef.current = new ConversationContextManager(userLevel, userName);
+  }, [mode, userLevel, userName, userId]);
+
+  // ── Carrega session específica (do drawer histórico) ──────────────────────
+  // Se já há outra session ativa diferente, encerra antes (evita 2 abertas).
+  const loadSession = useCallback(async (sessionId: string): Promise<void> => {
+    if (!userId) return;
+    if (activeSessionIdRef.current && activeSessionIdRef.current !== sessionId) {
+      // Encerra a session atual antes de abrir a nova
+      const prevId = activeSessionIdRef.current;
+      supabase.from('charlotte_chat_sessions')
+        .update({ ended_at: new Date().toISOString() })
+        .eq('id', prevId)
+        .then(() => {});
+      fetch(`${API_BASE_URL}/api/summarize-chat`, {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ sessionId: prevId, userId, userLevel }),
+      }).catch(() => {});
+    }
+
+    setHistoryLoading(true);
+    setActiveSessionId(sessionId);
+    activeSessionIdRef.current = sessionId;
+
+    // Reabre a session (se estava encerrada): user vai continuar conversando
+    supabase.from('charlotte_chat_sessions')
+      .update({ ended_at: null })
+      .eq('id', sessionId)
+      .then(({ error }) => { if (error) console.warn('⚠️ loadSession reopen:', error.message); });
+
+    const { data, error } = await supabase
+      .from('chat_messages')
+      .select('role, content, created_at')
+      .eq('user_id', userId)
+      .eq('session_id', sessionId)
+      .order('created_at', { ascending: true });
+
+    setHistoryLoading(false);
+    if (error || !data) {
+      setMessages([buildWelcome(mode, userLevel, userName)]);
+      return;
+    }
+
+    contextManagerRef.current = new ConversationContextManager(userLevel, userName);
+    data.slice(-8).forEach(row => {
+      contextManagerRef.current.addMessage(row.role as 'user' | 'assistant', row.content, 'text');
+    });
+
+    const historyMsgs: Message[] = data.map(row => ({
+      id: `hist-${row.created_at}`,
+      role: row.role as 'user' | 'assistant',
+      content: row.content,
+      messageType: 'text' as const,
+      timestamp: new Date(row.created_at),
+    }));
+
+    setMessages([buildWelcome(mode, userLevel, userName), ...historyMsgs]);
+  }, [mode, userLevel, userName, userId]);
 
   // Welcome message on mount — only for non-chat modes (chat shows history or welcome async)
   React.useEffect(() => {
@@ -238,7 +390,7 @@ export function useChat({ userLevel, userName, userId, mode = 'chat' }: UseChatO
           timestamp:   new Date(),
         };
         setMessages(prev => [...prev, rlMsg]);
-        saveChatMessage(userId, 'assistant', rlMsg.content, mode);
+        saveChatMessage(userId, 'assistant', rlMsg.content, mode, activeSessionIdRef.current);
         setRateLimited({
           type:        data.type ?? 'hourly',
           retryAfter:  data.retry_after ?? 3600,
@@ -306,6 +458,11 @@ export function useChat({ userLevel, userName, userId, mode = 'chat' }: UseChatO
     async (text: string) => {
       if (!text.trim() || isProcessing) return;
 
+      // Garante session ativa (Free Chat only). Idempotente: retorna a
+      // existente ou cria uma nova. Necessário antes do primeiro
+      // saveChatMessage pra associar msgs à session correta.
+      if (mode === 'chat') await ensureSession();
+
       const userMsg: Message = {
         id: generateId(),
         role: 'user',
@@ -319,7 +476,7 @@ export function useChat({ userLevel, userName, userId, mode = 'chat' }: UseChatO
       contextManagerRef.current.addMessage('user', text.trim(), 'text');
 
       // Save user message to history
-      saveChatMessage(userId, 'user', text.trim(), mode);
+      saveChatMessage(userId, 'user', text.trim(), mode, activeSessionIdRef.current);
 
       try {
         const result = await getAssistantResponse(text.trim(), 'text');
@@ -341,7 +498,7 @@ export function useChat({ userLevel, userName, userId, mode = 'chat' }: UseChatO
         );
 
         // Save assistant reply to history
-        saveChatMessage(userId, 'assistant', feedback, mode);
+        saveChatMessage(userId, 'assistant', feedback, mode, activeSessionIdRef.current);
 
         Haptics.notificationAsync(Haptics.NotificationFeedbackType.Success);
         soundEngine.play('xp_gained').catch(() => {}); // 🔊 XP ding
@@ -396,7 +553,8 @@ export function useChat({ userLevel, userName, userId, mode = 'chat' }: UseChatO
 
         await deliverSequentially([feedback.trim()], technicalFeedback, false, { isExplainMore: true });
 
-        saveChatMessage(userId, 'assistant', feedback, mode);
+        // sendSilentMessage é grammar — sem session (não persiste em chat history)
+        saveChatMessage(userId, 'assistant', feedback, mode, null);
 
         Haptics.notificationAsync(Haptics.NotificationFeedbackType.Success);
         soundEngine.play('xp_gained').catch(() => {});
@@ -576,8 +734,9 @@ export function useChat({ userLevel, userName, userId, mode = 'chat' }: UseChatO
           const scoreNote = pronunciationData
             ? ` [score:${pronunciationData.pronunciationScore} mispronounced:${mispronounced.join(',')}]`
             : '';
-          saveChatMessage(userId, 'user', transcription + scoreNote, 'pronunciation');
-          saveChatMessage(userId, 'assistant', feedback, 'pronunciation');
+          // Pronunciation — sem session (não persiste em chat history)
+          saveChatMessage(userId, 'user', transcription + scoreNote, 'pronunciation', null);
+          saveChatMessage(userId, 'assistant', feedback, 'pronunciation', null);
         }
 
         // ── 5a. Semantic check — POST-Azure, for demo feedback only ──
@@ -714,6 +873,9 @@ export function useChat({ userLevel, userName, userId, mode = 'chat' }: UseChatO
         return;
       }
 
+      // Free Chat audio: garante session ativa
+      if (mode === 'chat') await ensureSession();
+
       setIsProcessing(true);
       setIsProcessingAudio(true);
 
@@ -759,7 +921,7 @@ export function useChat({ userLevel, userName, userId, mode = 'chat' }: UseChatO
         contextManagerRef.current.addMessage('user', transcription, 'audio');
 
         // Save transcription as user message in chat history
-        saveChatMessage(userId, 'user', transcription, mode);
+        saveChatMessage(userId, 'user', transcription, mode, activeSessionIdRef.current);
 
         const audioResult = await getAssistantResponse(transcription, 'audio');
         if (!audioResult) return;
@@ -781,7 +943,7 @@ export function useChat({ userLevel, userName, userId, mode = 'chat' }: UseChatO
         );
 
         // Save assistant reply to chat history
-        saveChatMessage(userId, 'assistant', feedback, mode);
+        saveChatMessage(userId, 'assistant', feedback, mode, activeSessionIdRef.current);
 
         Haptics.notificationAsync(Haptics.NotificationFeedbackType.Success);
         setSessionXP(prev => prev + xpAwarded);
@@ -822,6 +984,10 @@ export function useChat({ userLevel, userName, userId, mode = 'chat' }: UseChatO
     sendTextMessage,
     sendSilentMessage,
     sendAudioMessage,
+    // Free Chat session management
+    activeSessionId,
+    closeSession,
+    loadSession,
   };
 }
 
