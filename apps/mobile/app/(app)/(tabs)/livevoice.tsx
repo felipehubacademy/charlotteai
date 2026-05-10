@@ -534,7 +534,7 @@ export default function LiveVoiceTab() {
       ) : (
         <View style={{ flex: 1, backgroundColor: C.stage, position: 'relative' }}>
 
-          <View style={{ flex: 1 }}>
+          <View style={{ flex: 1, paddingBottom: Platform.OS === 'android' ? 24 : 0 }}>
 
             {/* ── Header da tela: título + status row ── */}
             <View style={{ paddingHorizontal: 24, paddingTop: 18, paddingBottom: 12 }}>
@@ -597,7 +597,7 @@ export default function LiveVoiceTab() {
               activeOpacity={0.85}
               style={{
                 marginHorizontal: 24,
-                marginBottom: Platform.OS === 'android' ? 40 : 24,
+                marginBottom: 24,
                 backgroundColor: isLimitReached ? C.navyGhost : accent,
                 borderRadius: 16, paddingVertical: 18,
                 flexDirection: 'row', alignItems: 'center', justifyContent: 'center', gap: 10,
