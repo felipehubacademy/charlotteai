@@ -515,11 +515,14 @@ export default function LiveVoiceTab() {
   const isLimitReached = !poolUnlimited && poolUsed >= poolTotal;
   const statsParams = { sessionXP: String(todayXP), totalXP: String(totalXP), userId, userLevel: level, userName: profile?.name ?? 'Student' };
 
-  // Charlotte responsiva — altura até 45% da tela (cap 420), 9:16 ratio
-  // Reduzida pra caber junto com header + drawer btn + CTA + spacer.
+  // Charlotte responsiva. Android tem tab bar mais alta (relativamente) e menos
+  // chrome no topo — precisa ser menor pra tudo caber. iOS mantém maior.
   const screenW = Dimensions.get('window').width;
   const screenH = Dimensions.get('window').height;
-  const charH   = Math.min(420, Math.round(screenH * 0.45));
+  const isAndroid = Platform.OS === 'android';
+  const charH   = isAndroid
+    ? Math.min(420, Math.round(screenH * 0.45))
+    : Math.min(480, Math.round(screenH * 0.55));
   const charW   = Math.round(charH * 9 / 16);
   const drawerW = Math.round(screenW * 0.82);
 
@@ -632,9 +635,11 @@ export default function LiveVoiceTab() {
 
           </View>
 
-          {/* DEBUG mantido amarelo pra confirmar fix do overflow.
-              32px = espaço suficiente acima da tab bar sem comprimir layout. */}
-          <View style={{ height: 32, backgroundColor: '#FFD700' }} />
+          {/* Spacer Android apenas — iOS já tem espaço suficiente.
+              Mantido amarelo temporariamente pra confirmar via OTA. */}
+          {Platform.OS === 'android' && (
+            <View style={{ height: 32, backgroundColor: '#FFD700' }} />
+          )}
 
           {/* Drawer in-screen (absolute dentro do content area, não cobre header/tab) */}
           <CallsDrawer
