@@ -131,6 +131,13 @@ export default function PracticeTab() {
 
   useFocusEffect(useCallback(() => { fetchDaysSince(); }, [fetchDaysSince]));
 
+  // Refetch daysSince ao trocar de modo (focus only não cobre mode-switch
+  // dentro da tab) e quando uma nova msg é enviada (rastreado por messages.length).
+  useEffect(() => { fetchDaysSince(); }, [mode, fetchDaysSince]);
+  useEffect(() => {
+    if (messages.length > 1) fetchDaysSince();
+  }, [messages.length, fetchDaysSince]);
+
   // Fetch streak + rank pra header pills (mesmo padrão das outras tabs)
   const fetchHeaderStats = useCallback(async () => {
     if (!userId) return;
@@ -404,7 +411,7 @@ export default function PracticeTab() {
             isProcessingAudio={mode === 'chat' ? isProcessingAudio : false}
             historyLoading={historyLoading}
             userLevel={userLevel}
-            mode={mode === 'grammar' ? 'grammar' : undefined}
+            mode={mode}
             onPlayAudio={toggle}
             playingMessageId={playingMessageId}
             onExplainMore={mode === 'grammar' ? handleExplainMore : undefined}
