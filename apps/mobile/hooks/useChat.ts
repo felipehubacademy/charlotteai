@@ -1014,7 +1014,7 @@ function buildWelcome(mode: ChatMode, userLevel: string, userName: string): Mess
     chat: {
       Advanced: `Hey ${firstName}! Ready to practice? What's on your mind today?`,
       Inter: `Hi ${firstName}! Great to see you. Let's practice some English today!`,
-      Novice: `Olá ${firstName}! Vamos praticar inglês juntos hoje? Pode escrever em português se preferir!`,
+      Novice: `Hi ${firstName}! Let's practice English today. (Você pode escrever em português se quiser, mas vou responder em inglês simples.)`,
     },
   };
   return {
