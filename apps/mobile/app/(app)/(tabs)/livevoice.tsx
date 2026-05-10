@@ -5,7 +5,7 @@
 import React, { useState, useCallback, useMemo } from 'react';
 import {
   View, ScrollView, TouchableOpacity, ActivityIndicator, Image,
-  RefreshControl, Modal, Pressable, Dimensions,
+  RefreshControl, Modal, Pressable, Dimensions, Animated, Easing,
 } from 'react-native';
 import { useSafeAreaInsets } from 'react-native-safe-area-context';
 import Svg, { Circle } from 'react-native-svg';
@@ -149,67 +149,98 @@ function CallListItem({ call, isPt, onPress }: {
   );
 }
 
-// ── Drawer lateral com lista de chamadas anteriores ───────────────────────────
+// ── Drawer lateral (in-screen, não cobre HeaderPills nem tab bar) ─────────────
+// Posicionado absoluto dentro do content area, com slide animation translateX.
 
-function CallsDrawer({ calls, isOpen, onClose, onSelectCall, isPt }: {
+function CallsDrawer({ calls, isOpen, onClose, onSelectCall, isPt, drawerWidth }: {
   calls: LastCall[]; isOpen: boolean; onClose: () => void;
-  onSelectCall: (call: LastCall) => void; isPt: boolean;
+  onSelectCall: (call: LastCall) => void; isPt: boolean; drawerWidth: number;
 }) {
-  const insets = useSafeAreaInsets();
+  const slideX = React.useRef(new Animated.Value(-drawerWidth)).current;
+  const fade   = React.useRef(new Animated.Value(0)).current;
+  const [mounted, setMounted] = React.useState(isOpen);
+
+  React.useEffect(() => {
+    if (isOpen) {
+      setMounted(true);
+      Animated.parallel([
+        Animated.timing(slideX, { toValue: 0, duration: 240, easing: Easing.out(Easing.cubic), useNativeDriver: true }),
+        Animated.timing(fade,   { toValue: 1, duration: 200, useNativeDriver: true }),
+      ]).start();
+    } else {
+      Animated.parallel([
+        Animated.timing(slideX, { toValue: -drawerWidth, duration: 200, easing: Easing.in(Easing.cubic), useNativeDriver: true }),
+        Animated.timing(fade,   { toValue: 0, duration: 160, useNativeDriver: true }),
+      ]).start(() => setMounted(false));
+    }
+  }, [isOpen, drawerWidth, slideX, fade]);
+
+  if (!mounted) return null;
 
   return (
-    <Modal visible={isOpen} transparent animationType="fade" onRequestClose={onClose}>
-      <View style={{ flex: 1, flexDirection: 'row', backgroundColor: 'rgba(0,0,0,0.45)' }}>
-        {/* Drawer panel */}
-        <View style={{
-          width: '82%',
-          backgroundColor: '#FFFFFF',
-          paddingTop: insets.top + 8,
-          paddingBottom: insets.bottom + 8,
-        }}>
-          {/* Header */}
-          <View style={{
-            flexDirection: 'row', alignItems: 'center',
-            paddingHorizontal: 20, paddingVertical: 12,
-            borderBottomWidth: 1, borderBottomColor: 'rgba(22,21,58,0.08)',
-          }}>
-            <AppText style={{ fontSize: 16, fontWeight: '800', color: '#16153A', flex: 1 }}>
-              {isPt ? 'Conversas anteriores' : 'Previous conversations'}
-            </AppText>
-            <TouchableOpacity onPress={onClose} hitSlop={{ top: 10, bottom: 10, left: 10, right: 10 }}>
-              <XCircle size={22} color="rgba(22,21,58,0.3)" weight="fill" />
-            </TouchableOpacity>
-          </View>
+    <View
+      pointerEvents="box-none"
+      style={{ position: 'absolute', top: 0, left: 0, right: 0, bottom: 0, zIndex: 50 }}
+    >
+      {/* Backdrop dim — atrás do drawer */}
+      <Animated.View
+        pointerEvents={isOpen ? 'auto' : 'none'}
+        style={{ position: 'absolute', top: 0, left: 0, right: 0, bottom: 0, backgroundColor: 'rgba(0,0,0,0.4)', opacity: fade }}
+      >
+        <Pressable style={{ flex: 1 }} onPress={onClose} />
+      </Animated.View>
 
-          {/* Lista */}
-          {calls.length === 0 ? (
-            <View style={{ alignItems: 'center', paddingTop: 60, paddingHorizontal: 24 }}>
-              <AppText style={{ color: '#9896B8', fontSize: 14, textAlign: 'center', lineHeight: 20 }}>
-                {isPt ? 'Você ainda não fez nenhuma chamada.' : 'No calls yet.'}
-              </AppText>
-            </View>
-          ) : (
-            <ScrollView
-              style={{ flex: 1 }}
-              contentContainerStyle={{ paddingHorizontal: 20, paddingTop: 4 }}
-              showsVerticalScrollIndicator={false}
-            >
-              {calls.map(call => (
-                <CallListItem
-                  key={call.id}
-                  call={call}
-                  isPt={isPt}
-                  onPress={() => onSelectCall(call)}
-                />
-              ))}
-            </ScrollView>
-          )}
+      {/* Drawer panel — slide from left */}
+      <Animated.View
+        style={{
+          position: 'absolute',
+          top: 0, bottom: 0, left: 0,
+          width: drawerWidth,
+          backgroundColor: '#FFFFFF',
+          transform: [{ translateX: slideX }],
+          shadowColor: '#000', shadowOffset: { width: 4, height: 0 }, shadowOpacity: 0.2, shadowRadius: 8,
+          elevation: 8,
+        }}
+      >
+        {/* Header */}
+        <View style={{
+          flexDirection: 'row', alignItems: 'center',
+          paddingHorizontal: 18, paddingVertical: 14,
+          borderBottomWidth: 1, borderBottomColor: 'rgba(22,21,58,0.08)',
+        }}>
+          <AppText style={{ fontSize: 15, fontWeight: '800', color: '#16153A', flex: 1 }}>
+            {isPt ? 'Conversas anteriores' : 'Previous conversations'}
+          </AppText>
+          <TouchableOpacity onPress={onClose} hitSlop={{ top: 10, bottom: 10, left: 10, right: 10 }}>
+            <XCircle size={20} color="rgba(22,21,58,0.3)" weight="fill" />
+          </TouchableOpacity>
         </View>
 
-        {/* Backdrop (tap fora fecha) */}
-        <Pressable style={{ flex: 1 }} onPress={onClose} />
-      </View>
-    </Modal>
+        {/* Lista */}
+        {calls.length === 0 ? (
+          <View style={{ alignItems: 'center', paddingTop: 40, paddingHorizontal: 20 }}>
+            <AppText style={{ color: '#9896B8', fontSize: 13, textAlign: 'center', lineHeight: 19 }}>
+              {isPt ? 'Você ainda não fez nenhuma chamada.' : 'No calls yet.'}
+            </AppText>
+          </View>
+        ) : (
+          <ScrollView
+            style={{ flex: 1 }}
+            contentContainerStyle={{ paddingHorizontal: 18, paddingTop: 4, paddingBottom: 16 }}
+            showsVerticalScrollIndicator={false}
+          >
+            {calls.map(call => (
+              <CallListItem
+                key={call.id}
+                call={call}
+                isPt={isPt}
+                onPress={() => onSelectCall(call)}
+              />
+            ))}
+          </ScrollView>
+        )}
+      </Animated.View>
+    </View>
   );
 }
 
@@ -450,6 +481,12 @@ export default function LiveVoiceTab() {
   const isLimitReached = !poolUnlimited && poolUsed >= poolTotal;
   const statsParams = { sessionXP: String(todayXP), totalXP: String(totalXP), userId, userLevel: level, userName: profile?.name ?? 'Student' };
 
+  // Charlotte responsiva — width até 58% da tela (resto vira coluna direita)
+  const screenW = Dimensions.get('window').width;
+  const charW   = Math.min(Math.round(screenW * 0.58), 250);
+  const charH   = Math.round(charW * 16 / 9);
+  const drawerW = Math.round(screenW * 0.82);
+
   return (
     <View style={{ flex: 1, backgroundColor: C.stage }}>
 
@@ -468,109 +505,114 @@ export default function LiveVoiceTab() {
           <ActivityIndicator size="large" color={C.greenAccent} />
         </View>
       ) : (
-        <View style={{ flex: 1 }}>
+        <View style={{ flex: 1, backgroundColor: C.stage, position: 'relative' }}>
 
-          {/* ── PALCO: Charlotte (esquerda) + balão (direita), estilo Home hero ── */}
+          {/* ── Layout principal: Charlotte gigante esquerda + coluna direita ── */}
           <View style={{
-            flex: 0.62,
-            backgroundColor: C.stage,
+            flex: 1,
             flexDirection: 'row',
             alignItems: 'flex-end',
-            paddingTop: 16,
-            paddingRight: 20,
-            paddingLeft: 0,
           }}>
-            {/* Charlotte full body, esquerda, 9:16 exato (180×320 = sem crop) */}
-            <View style={{ width: 180, height: 320, alignSelf: 'flex-end', overflow: 'hidden' }}>
+            {/* Charlotte — full altura disponível, alinhada à esquerda, no chão */}
+            <View style={{ width: charW, height: charH, alignSelf: 'flex-end', overflow: 'hidden' }}>
               <VideoView
                 player={liveVoicePlayer}
-                style={{ width: 180, height: 320, backgroundColor: 'transparent' }}
+                style={{ width: charW, height: charH, backgroundColor: 'transparent' }}
                 contentFit="cover"
                 nativeControls={false}
               />
             </View>
 
-            {/* Balão à direita — canto sharp top-left pointing pra Charlotte */}
-            <View style={{ flex: 1, paddingBottom: 80, paddingLeft: 4 }}>
+            {/* Coluna direita: balão (topo), Start (meio), pool (rodapé) */}
+            <View style={{
+              flex: 1,
+              alignSelf: 'stretch',
+              paddingHorizontal: 16,
+              paddingTop: 24,
+              paddingBottom: 24,
+              alignItems: 'center',
+              justifyContent: 'space-between',
+            }}>
+              {/* Balão (topo da coluna) */}
               <View style={{
                 backgroundColor: C.navyMid,
                 borderRadius: 18, borderTopLeftRadius: 4,
-                paddingHorizontal: 16, paddingVertical: 14,
+                paddingHorizontal: 14, paddingVertical: 12,
                 alignSelf: 'flex-start',
                 maxWidth: '100%',
               }}>
-                <AppText style={{ fontSize: 16, color: '#FFFFFF', lineHeight: 22, fontWeight: '600' }}>
+                <AppText style={{ fontSize: 15, color: '#FFFFFF', lineHeight: 21, fontWeight: '600' }}>
                   {isPt ? 'Vamos conversar?' : 'Want to talk?'}
                 </AppText>
               </View>
-            </View>
 
-            {/* Botão flutuante top-left: histórico de chamadas */}
-            {recentCalls.length > 0 && (
-              <TouchableOpacity
-                onPress={() => setShowCallsDrawer(true)}
-                accessibilityLabel={isPt ? 'Ver chamadas anteriores' : 'View previous calls'}
-                hitSlop={{ top: 10, bottom: 10, left: 10, right: 10 }}
-                style={{
-                  position: 'absolute',
-                  top: 16, left: 16,
-                  width: 44, height: 44, borderRadius: 22,
-                  backgroundColor: 'rgba(255,255,255,0.10)',
-                  borderWidth: 1, borderColor: 'rgba(255,255,255,0.18)',
-                  alignItems: 'center', justifyContent: 'center',
-                }}
-              >
-                <ClockCounterClockwise size={22} color="#FFFFFF" weight="regular" />
-              </TouchableOpacity>
-            )}
+              {/* Start (meio, protagonista) */}
+              <View style={{ alignItems: 'center', gap: 10 }}>
+                <TouchableOpacity
+                  onPress={startCall}
+                  disabled={isLimitReached}
+                  activeOpacity={0.85}
+                  style={{
+                    width: 96, height: 96, borderRadius: 48,
+                    backgroundColor: isLimitReached ? C.navyGhost : accent,
+                    alignItems: 'center', justifyContent: 'center',
+                    shadowColor: isLimitReached ? 'transparent' : accent,
+                    shadowOffset: { width: 0, height: 8 },
+                    shadowOpacity: 0.55, shadowRadius: 20,
+                    elevation: 12,
+                    opacity: isLimitReached ? 0.6 : 1,
+                  }}
+                >
+                  <Phone size={36} color={isLimitReached ? C.textDim : '#FFFFFF'} weight="fill" />
+                </TouchableOpacity>
+                <AppText style={{ fontSize: 11, fontWeight: '800', color: isLimitReached ? C.textDim : C.textWhite, letterSpacing: 1.2, textTransform: 'uppercase', textAlign: 'center' }}>
+                  {isLimitReached
+                    ? (isPt ? 'Limite' : 'Limit')
+                    : (isPt ? 'Começar' : 'Start now')
+                  }
+                </AppText>
+              </View>
+
+              {/* Pool (rodapé, scale menor) */}
+              <View style={{ transform: [{ scale: 0.65 }], marginBottom: -16 }}>
+                <PoolRing used={poolUsed} total={poolTotal} isUnlimited={poolUnlimited} isPt={isPt} />
+              </View>
+            </View>
           </View>
 
-          {/* ── PAINEL: Start big (primário) + pool ring menor abaixo ── */}
-          <View style={{
-            flex: 0.38,
-            backgroundColor: C.panel,
-            borderTopLeftRadius: 28, borderTopRightRadius: 28,
-            paddingHorizontal: 24,
-            paddingTop: 28,
-            paddingBottom: 24,
-            alignItems: 'center',
-            justifyContent: 'flex-start',
-            gap: 20,
-          }}>
+          {/* Botão flutuante top-left: histórico de chamadas */}
+          {recentCalls.length > 0 && (
+            <TouchableOpacity
+              onPress={() => setShowCallsDrawer(true)}
+              accessibilityLabel={isPt ? 'Ver chamadas anteriores' : 'View previous calls'}
+              hitSlop={{ top: 10, bottom: 10, left: 10, right: 10 }}
+              style={{
+                position: 'absolute',
+                top: 14, left: 14,
+                width: 42, height: 42, borderRadius: 21,
+                backgroundColor: 'rgba(255,255,255,0.10)',
+                borderWidth: 1, borderColor: 'rgba(255,255,255,0.18)',
+                alignItems: 'center', justifyContent: 'center',
+                zIndex: 5,
+              }}
+            >
+              <ClockCounterClockwise size={20} color="#FFFFFF" weight="regular" />
+            </TouchableOpacity>
+          )}
 
-            {/* Start button — protagonista */}
-            <View style={{ alignItems: 'center', gap: 10 }}>
-              <TouchableOpacity
-                onPress={startCall}
-                disabled={isLimitReached}
-                activeOpacity={0.85}
-                style={{
-                  width: 104, height: 104, borderRadius: 52,
-                  backgroundColor: isLimitReached ? C.navyGhost : accent,
-                  alignItems: 'center', justifyContent: 'center',
-                  shadowColor: isLimitReached ? 'transparent' : accent,
-                  shadowOffset: { width: 0, height: 8 },
-                  shadowOpacity: 0.55, shadowRadius: 22,
-                  elevation: 12,
-                  opacity: isLimitReached ? 0.6 : 1,
-                }}
-              >
-                <Phone size={40} color={isLimitReached ? C.textDim : '#FFFFFF'} weight="fill" />
-              </TouchableOpacity>
-              <AppText style={{ fontSize: 13, fontWeight: '800', color: isLimitReached ? C.textDim : C.textWhite, letterSpacing: 1.2, textTransform: 'uppercase' }}>
-                {isLimitReached
-                  ? (isPt ? 'Limite atingido' : 'Limit reached')
-                  : (isPt ? 'Começar agora' : 'Start now')
-                }
-              </AppText>
-            </View>
-
-            {/* Pool ring — menor, secundário */}
-            <View style={{ transform: [{ scale: 0.6 }] }}>
-              <PoolRing used={poolUsed} total={poolTotal} isUnlimited={poolUnlimited} isPt={isPt} />
-            </View>
-
-          </View>
+          {/* Drawer in-screen (absolute dentro do content area, não cobre header/tab) */}
+          <CallsDrawer
+            calls={recentCalls}
+            isOpen={showCallsDrawer}
+            isPt={isPt}
+            drawerWidth={drawerW}
+            onClose={() => setShowCallsDrawer(false)}
+            onSelectCall={(call) => {
+              setShowCallsDrawer(false);
+              setSelectedCall(call);
+              setTimeout(() => setShowTranscript(true), 240);
+            }}
+          />
 
         </View>
       )}
@@ -593,19 +635,6 @@ export default function LiveVoiceTab() {
         isOpen={showTranscript}
         isPt={isPt}
         onClose={() => setShowTranscript(false)}
-      />
-
-      <CallsDrawer
-        calls={recentCalls}
-        isOpen={showCallsDrawer}
-        isPt={isPt}
-        onClose={() => setShowCallsDrawer(false)}
-        onSelectCall={(call) => {
-          setShowCallsDrawer(false);
-          setSelectedCall(call);
-          // pequeno delay pra modal de cima fechar antes do bottom sheet abrir
-          setTimeout(() => setShowTranscript(true), 220);
-        }}
       />
 
     </View>
