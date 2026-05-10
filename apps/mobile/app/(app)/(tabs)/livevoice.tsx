@@ -51,6 +51,29 @@ interface LastCall {
   transcript:       string | null;
 }
 
+// ── Helpers de label ──────────────────────────────────────────────────────────
+
+function poolStatusLabel(
+  isPt: boolean, isLimitReached: boolean, isUnlimited: boolean,
+  used: number, total: number,
+): string {
+  if (isLimitReached) return isPt ? 'Limite mensal atingido' : 'Monthly limit reached';
+  if (isUnlimited) return isPt ? 'Charlotte disponível · ilimitado' : 'Charlotte available · unlimited';
+  const remainMin = Math.max(0, Math.floor((total - used) / 60));
+  return isPt
+    ? `Charlotte disponível · ${remainMin} min restantes`
+    : `Charlotte available · ${remainMin} min left`;
+}
+
+function formatCallMeta(call: { started_at: string; duration_seconds: number }, isPt: boolean): string {
+  const days = Math.floor((Date.now() - new Date(call.started_at).getTime()) / 86_400_000);
+  const minutes = Math.round(call.duration_seconds / 60);
+  const whenLabel = days === 0 ? (isPt ? 'Hoje' : 'Today')
+                  : days === 1 ? (isPt ? 'Ontem' : 'Yesterday')
+                  : isPt ? `há ${days} dias` : `${days} days ago`;
+  return `${whenLabel} · ${minutes} min`;
+}
+
 // ── Pool ring ─────────────────────────────────────────────────────────────────
 // Versão dark: ring fino branco com progresso colorido, número grande no centro.
 
@@ -507,98 +530,118 @@ export default function LiveVoiceTab() {
       ) : (
         <View style={{ flex: 1, backgroundColor: C.stage, position: 'relative' }}>
 
-          {/* ── Layout principal: Charlotte gigante esquerda + coluna direita ── */}
-          <View style={{
-            flex: 1,
-            flexDirection: 'row',
-            alignItems: 'flex-end',
-          }}>
-            {/* Charlotte — full altura disponível, alinhada à esquerda, no chão */}
-            <View style={{ width: charW, height: charH, alignSelf: 'flex-end', overflow: 'hidden' }}>
-              <VideoView
-                player={liveVoicePlayer}
-                style={{ width: charW, height: charH, backgroundColor: 'transparent' }}
-                contentFit="cover"
-                nativeControls={false}
-              />
+          <ScrollView
+            style={{ flex: 1 }}
+            contentContainerStyle={{ flexGrow: 1, paddingBottom: 24 }}
+            showsVerticalScrollIndicator={false}
+          >
+
+            {/* ── Header da tela: título + status row ── */}
+            <View style={{ paddingHorizontal: 24, paddingTop: 18, paddingBottom: 12 }}>
+              <AppText style={{ fontSize: 26, fontWeight: '900', color: C.textWhite, letterSpacing: -0.3 }}>
+                Live Voice
+              </AppText>
+              <View style={{ flexDirection: 'row', alignItems: 'center', gap: 7, marginTop: 6 }}>
+                <View style={{
+                  width: 8, height: 8, borderRadius: 4,
+                  backgroundColor: isLimitReached ? C.red : C.greenAccent,
+                }} />
+                <AppText style={{ fontSize: 13, color: C.textMuted, fontWeight: '500' }}>
+                  {poolStatusLabel(isPt, isLimitReached, poolUnlimited, poolUsed, poolTotal)}
+                </AppText>
+              </View>
             </View>
 
-            {/* Coluna direita: balão (topo), Start (meio), pool (rodapé) */}
-            <View style={{
-              flex: 1,
-              alignSelf: 'stretch',
-              paddingHorizontal: 16,
-              paddingTop: 24,
-              paddingBottom: 24,
-              alignItems: 'center',
-              justifyContent: 'space-between',
-            }}>
-              {/* Balão (topo da coluna) */}
+            {/* ── Charlotte centralizada ── */}
+            <View style={{ alignItems: 'center', marginTop: 12, marginBottom: 24 }}>
+              <View style={{ width: charW, height: charH, overflow: 'hidden' }}>
+                <VideoView
+                  player={liveVoicePlayer}
+                  style={{ width: charW, height: charH, backgroundColor: 'transparent' }}
+                  contentFit="cover"
+                  nativeControls={false}
+                />
+              </View>
+              {/* Sombra elíptica sutil sob os pés — efeito "no chão" */}
               <View style={{
-                backgroundColor: C.navyMid,
-                borderRadius: 18, borderTopLeftRadius: 4,
-                paddingHorizontal: 14, paddingVertical: 12,
-                alignSelf: 'flex-start',
-                maxWidth: '100%',
-              }}>
-                <AppText style={{ fontSize: 15, color: '#FFFFFF', lineHeight: 21, fontWeight: '600' }}>
-                  {isPt ? 'Vamos conversar?' : 'Want to talk?'}
-                </AppText>
-              </View>
-
-              {/* Start (meio, protagonista) */}
-              <View style={{ alignItems: 'center', gap: 10 }}>
-                <TouchableOpacity
-                  onPress={startCall}
-                  disabled={isLimitReached}
-                  activeOpacity={0.85}
-                  style={{
-                    width: 96, height: 96, borderRadius: 48,
-                    backgroundColor: isLimitReached ? C.navyGhost : accent,
-                    alignItems: 'center', justifyContent: 'center',
-                    shadowColor: isLimitReached ? 'transparent' : accent,
-                    shadowOffset: { width: 0, height: 8 },
-                    shadowOpacity: 0.55, shadowRadius: 20,
-                    elevation: 12,
-                    opacity: isLimitReached ? 0.6 : 1,
-                  }}
-                >
-                  <Phone size={36} color={isLimitReached ? C.textDim : '#FFFFFF'} weight="fill" />
-                </TouchableOpacity>
-                <AppText style={{ fontSize: 11, fontWeight: '800', color: isLimitReached ? C.textDim : C.textWhite, letterSpacing: 1.2, textTransform: 'uppercase', textAlign: 'center' }}>
-                  {isLimitReached
-                    ? (isPt ? 'Limite' : 'Limit')
-                    : (isPt ? 'Começar' : 'Start now')
-                  }
-                </AppText>
-              </View>
-
-              {/* Pool (rodapé, scale menor) */}
-              <View style={{ transform: [{ scale: 0.65 }], marginBottom: -16 }}>
-                <PoolRing used={poolUsed} total={poolTotal} isUnlimited={poolUnlimited} isPt={isPt} />
-              </View>
+                width: Math.round(charW * 0.7), height: 8, borderRadius: 4,
+                backgroundColor: 'rgba(0,0,0,0.35)',
+                marginTop: -2, opacity: 0.6,
+              }} />
             </View>
-          </View>
 
-          {/* Botão flutuante top-left: histórico de chamadas */}
-          {recentCalls.length > 0 && (
+            {/* ── CTA primário: Conversar com Charlotte ── */}
             <TouchableOpacity
-              onPress={() => setShowCallsDrawer(true)}
-              accessibilityLabel={isPt ? 'Ver chamadas anteriores' : 'View previous calls'}
-              hitSlop={{ top: 10, bottom: 10, left: 10, right: 10 }}
+              onPress={startCall}
+              disabled={isLimitReached}
+              activeOpacity={0.85}
               style={{
-                position: 'absolute',
-                top: 14, left: 14,
-                width: 42, height: 42, borderRadius: 21,
-                backgroundColor: 'rgba(255,255,255,0.10)',
-                borderWidth: 1, borderColor: 'rgba(255,255,255,0.18)',
-                alignItems: 'center', justifyContent: 'center',
-                zIndex: 5,
+                marginHorizontal: 24,
+                backgroundColor: isLimitReached ? C.navyGhost : accent,
+                borderRadius: 16, paddingVertical: 18,
+                flexDirection: 'row', alignItems: 'center', justifyContent: 'center', gap: 10,
+                shadowColor: isLimitReached ? 'transparent' : accent,
+                shadowOffset: { width: 0, height: 6 },
+                shadowOpacity: 0.4, shadowRadius: 14,
+                elevation: 8,
+                opacity: isLimitReached ? 0.5 : 1,
               }}
             >
-              <ClockCounterClockwise size={20} color="#FFFFFF" weight="regular" />
+              <Phone size={20} color={isLimitReached ? C.textDim : '#FFFFFF'} weight="fill" />
+              <AppText style={{ fontSize: 15, fontWeight: '800', color: isLimitReached ? C.textDim : '#FFFFFF', letterSpacing: 0.3 }}>
+                {isLimitReached
+                  ? (isPt ? 'Limite atingido' : 'Limit reached')
+                  : (isPt ? 'Conversar com Charlotte' : 'Talk with Charlotte')
+                }
+              </AppText>
             </TouchableOpacity>
-          )}
+
+            {/* ── MAIS RECENTE: card da última chamada ── */}
+            {recentCalls.length > 0 && (
+              <View style={{ paddingHorizontal: 24, marginTop: 28 }}>
+                <AppText style={{ fontSize: 11, color: C.textDim, fontWeight: '800', textTransform: 'uppercase', letterSpacing: 1.5, marginBottom: 10 }}>
+                  {isPt ? 'Mais recente' : 'Most recent'}
+                </AppText>
+
+                <TouchableOpacity
+                  onPress={() => {
+                    setSelectedCall(recentCalls[0]);
+                    setShowTranscript(true);
+                  }}
+                  activeOpacity={0.7}
+                  disabled={!recentCalls[0].transcript}
+                  style={{
+                    backgroundColor: 'rgba(255,255,255,0.06)',
+                    borderRadius: 16, padding: 14,
+                    borderWidth: 1, borderColor: 'rgba(255,255,255,0.08)',
+                  }}
+                >
+                  <View style={{ flexDirection: 'row', alignItems: 'center', justifyContent: 'space-between', marginBottom: 6 }}>
+                    <AppText style={{ fontSize: 12, color: C.textMuted, fontWeight: '700' }}>
+                      {formatCallMeta(recentCalls[0], isPt)}
+                    </AppText>
+                    {recentCalls[0].transcript && <CaretRight size={14} color={C.textDim} weight="bold" />}
+                  </View>
+                  <AppText style={{ fontSize: 14, color: C.textWhite, lineHeight: 20, fontWeight: '500' }} numberOfLines={2}>
+                    {recentCalls[0].summary ?? (isPt ? 'Sem resumo disponível.' : 'No summary available.')}
+                  </AppText>
+                </TouchableOpacity>
+
+                {recentCalls.length > 1 && (
+                  <TouchableOpacity
+                    onPress={() => setShowCallsDrawer(true)}
+                    activeOpacity={0.6}
+                    style={{ paddingVertical: 12, alignSelf: 'flex-start' }}
+                  >
+                    <AppText style={{ fontSize: 13, color: C.greenAccent, fontWeight: '700' }}>
+                      {isPt ? `Ver todas (${recentCalls.length}) →` : `View all (${recentCalls.length}) →`}
+                    </AppText>
+                  </TouchableOpacity>
+                )}
+              </View>
+            )}
+
+          </ScrollView>
 
           {/* Drawer in-screen (absolute dentro do content area, não cobre header/tab) */}
           <CallsDrawer
