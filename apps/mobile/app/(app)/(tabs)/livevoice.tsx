@@ -529,12 +529,12 @@ export default function LiveVoiceTab() {
 
       {loading ? (
         <View style={{ flex: 1, alignItems: 'center', justifyContent: 'center' }}>
-          <ActivityIndicator size="large" color={C.greenAccent} />
+          <ActivityIndicator size="large" color={C.textWhite} />
         </View>
       ) : (
         <View style={{ flex: 1, backgroundColor: C.stage, position: 'relative' }}>
 
-          <View style={{ flex: 1, paddingBottom: Platform.OS === 'android' ? 24 : 0 }}>
+          <View style={{ flex: 1, paddingBottom: Platform.OS === 'android' ? 40 : 0 }}>
 
             {/* ── Header da tela: título + status row ── */}
             <View style={{ paddingHorizontal: 24, paddingTop: 18, paddingBottom: 12 }}>
