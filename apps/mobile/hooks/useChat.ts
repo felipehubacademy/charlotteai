@@ -541,6 +541,9 @@ export function useChat({ userLevel, userName, userId, mode = 'chat' }: UseChatO
     async (text: string) => {
       if (!text.trim() || isProcessing) return;
 
+      // Em chat mode garante session (idempotente). Em outros modos é noop.
+      if (mode === 'chat') await ensureSession();
+
       setIsProcessing(true);
       contextManagerRef.current.addMessage('user', text.trim(), 'text');
 
@@ -553,8 +556,9 @@ export function useChat({ userLevel, userName, userId, mode = 'chat' }: UseChatO
 
         await deliverSequentially([feedback.trim()], technicalFeedback, false, { isExplainMore: true });
 
-        // sendSilentMessage é grammar — sem session (não persiste em chat history)
-        saveChatMessage(userId, 'assistant', feedback, mode, null);
+        // Persiste só a resposta da Charlotte. Em chat mode, vincula à session
+        // ativa pra aparecer no histórico. Em grammar/pron, session_id é null.
+        saveChatMessage(userId, 'assistant', feedback, mode, activeSessionIdRef.current);
 
         Haptics.notificationAsync(Haptics.NotificationFeedbackType.Success);
         soundEngine.play('xp_gained').catch(() => {});
@@ -575,7 +579,7 @@ export function useChat({ userLevel, userName, userId, mode = 'chat' }: UseChatO
         setIsProcessing(false);
       }
     },
-    [isProcessing, getAssistantResponse, deliverSequentially, userLevel, userId, mode]
+    [isProcessing, getAssistantResponse, deliverSequentially, userLevel, userId, mode, ensureSession]
   );
 
   /**

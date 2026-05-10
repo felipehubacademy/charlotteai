@@ -21,6 +21,7 @@ import ChatInputBar from '@/components/chat/ChatInputBar';
 import AchievementNotification from '@/components/achievements/AchievementNotification';
 import { TooltipAnchor } from '@/components/ui/TooltipBalloon';
 import { PracticeSuggestionTooltip } from '@/components/practice/PracticeSuggestionTooltip';
+import { TopicPills, Topic } from '@/components/practice/TopicPills';
 import { useChat } from '@/hooks/useChat';
 import { useMessageAudioPlayer } from '@/hooks/useMessageAudioPlayer';
 import { usePaywallContext } from '@/lib/paywallContext';
@@ -298,6 +299,13 @@ export default function PracticeTab() {
     }
   }, [fetchSessions]);
 
+  // Tap em pill de tópico (Novice Free Chat) — silent prompt, Charlotte abre
+  // o tópico com pergunta. User não vê própria msg, só o typing indicator.
+  const handleTopicSelect = useCallback((topic: Topic) => {
+    if (isProcessing) return;
+    sendSilentMessage(topic.prompt);
+  }, [isProcessing, sendSilentMessage]);
+
   // Explain more (grammar only)
   const handleExplainMore = useCallback((_originalCorrection: string) => {
     const prompt = isPt
@@ -445,6 +453,16 @@ export default function PracticeTab() {
             </TouchableOpacity>
           </View>
         </View>
+
+        {/* ── Topic pills (Novice + Free Chat + conversa vazia) ── */}
+        {userLevel === 'Novice' && mode === 'chat' && messages.length <= 1 && (
+          <TopicPills
+            isPt={isPt}
+            accent={accent}
+            disabled={isProcessing || !!rateLimited}
+            onSelect={handleTopicSelect}
+          />
+        )}
 
         {/* ── Input bar — varia por modo ── */}
         <ChatInputBar
