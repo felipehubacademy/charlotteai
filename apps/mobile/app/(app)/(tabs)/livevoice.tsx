@@ -631,10 +631,10 @@ export default function LiveVoiceTab() {
 
           </View>
 
-          {/* Spacer baseado na altura da tab bar do RN — funciona iOS e Android
-              independente de como o navigator renderiza o tab bar. 0.4 = ~40%
-              da altura visual da tab bar, dá respiro consistente. */}
-          <View style={{ height: tabBarHeight * 0.4 }} />
+          {/* DEBUG: spacer hardcodado amarelo, 80px. Se aparecer faixa amarela
+              entre CTA e tab bar, mecânica funciona — só preciso tunar valor.
+              Se não aparecer, tela tem problema de overflow/clipping. */}
+          <View style={{ height: 80, backgroundColor: '#FFD700' }} />
 
           {/* Drawer in-screen (absolute dentro do content area, não cobre header/tab) */}
           <CallsDrawer
