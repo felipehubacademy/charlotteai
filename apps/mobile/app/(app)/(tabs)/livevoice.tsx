@@ -521,7 +521,7 @@ export default function LiveVoiceTab() {
   const screenH = Dimensions.get('window').height;
   const isAndroid = Platform.OS === 'android';
   const charH   = isAndroid
-    ? Math.min(420, Math.round(screenH * 0.45))
+    ? Math.min(450, Math.round(screenH * 0.48))
     : Math.min(480, Math.round(screenH * 0.55));
   const charW   = Math.round(charH * 9 / 16);
   const drawerW = Math.round(screenW * 0.82);
@@ -635,11 +635,8 @@ export default function LiveVoiceTab() {
 
           </View>
 
-          {/* Spacer Android apenas — iOS já tem espaço suficiente.
-              Mantido amarelo temporariamente pra confirmar via OTA. */}
-          {Platform.OS === 'android' && (
-            <View style={{ height: 32, backgroundColor: '#FFD700' }} />
-          )}
+          {/* Spacer Android pra dar respiro acima da tab bar */}
+          {Platform.OS === 'android' && <View style={{ height: 32 }} />}
 
           {/* Drawer in-screen (absolute dentro do content area, não cobre header/tab) */}
           <CallsDrawer
