@@ -573,8 +573,8 @@ export default function LiveVoiceTab() {
   // Espaço usável = screen - safe areas - HeaderPills (52) - tab bar
   const usableHeight = screenH - insets.top - 52 - tabBarHeight;
   // Espaço fixo dentro da tela: header título(70) + drawer(56) + CTA(84) +
-  // min spacer flex(32) + spacer Android extra (32 se Android)
-  const RESERVED = 70 + 56 + 84 + 32 + (isAndroid ? 32 : 0);
+  // min spacer flex(32) + spacer Android extra (16 se Android)
+  const RESERVED = 70 + 56 + 84 + 32 + (isAndroid ? 16 : 0);
 
   // Charlotte: máximo 480, mínimo 280, fit dentro do que sobra
   const charH   = Math.min(480, Math.max(280, usableHeight - RESERVED));
@@ -649,7 +649,7 @@ export default function LiveVoiceTab() {
                   backgroundColor: '#FFFFFF',
                   borderWidth: 1, borderColor: 'rgba(22,21,58,0.10)',
                   alignItems: 'center', justifyContent: 'center',
-                  alignSelf: 'flex-start',
+                  alignSelf: 'flex-end',
                 }}
               >
                 <ClockCounterClockwise size={20} color={C.textMuted} weight="regular" />
@@ -686,7 +686,7 @@ export default function LiveVoiceTab() {
           </View>
 
           {/* Spacer Android pra dar respiro acima da tab bar */}
-          {Platform.OS === 'android' && <View style={{ height: 32 }} />}
+          {Platform.OS === 'android' && <View style={{ height: 16 }} />}
 
           {/* Drawer in-screen (absolute dentro do content area, não cobre header/tab) */}
           <CallsDrawer
