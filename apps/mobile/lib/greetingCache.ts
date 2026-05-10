@@ -51,9 +51,15 @@ export function prefetchGreeting(profile: PrefetchProfile): void {
   // Kept for correctness in edge cases (e.g. onboarding interrupted).
   const isNewUser = !profile.first_welcome_done;
 
+  // 5-second abort: prevents the fetch from hanging forever when the server
+  // is slow or unreachable. The poll/timeout in HomeScreen then shows the fallback.
+  const controller = new AbortController();
+  const abortTimer = setTimeout(() => controller.abort(), 5_000);
+
   fetch(`${API_BASE_URL}/api/greeting`, {
     method:  'POST',
     headers: { 'Content-Type': 'application/json' },
+    signal:  controller.signal,
     body: JSON.stringify({
       firstName,
       streak:    0,   // stats not available yet; greeting falls back to motivational copy
@@ -69,6 +75,9 @@ export function prefetchGreeting(profile: PrefetchProfile): void {
     .then((json: { message?: string } | null) => {
       if (json?.message) greetingCache.text = json.message;
     })
-    .catch(() => { /* fail open — HomeScreen shows charlotteMessage fallback */ })
-    .finally(() => { greetingCache.pending = false; });
+    .catch(() => { /* fail open — HomeScreen shows hardcoded fallback */ })
+    .finally(() => {
+      clearTimeout(abortTimer);
+      greetingCache.pending = false;
+    });
 }

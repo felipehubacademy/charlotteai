@@ -20,7 +20,7 @@ import { UserLevel } from '@/lib/levelConfig';
 import { useTheme } from '@/lib/theme';
 import { usePaywallContext } from '@/lib/paywallContext';
 import { identifyUser, track } from '@/lib/analytics';
-import { greetingCache, resetGreetingCache } from '@/lib/greetingCache';
+import { greetingCache, resetGreetingCache, prefetchGreeting } from '@/lib/greetingCache';
 import { localTodayStr, localMidnightUTC } from '@/lib/dateUtils';
 import { soundEngine } from '@/lib/soundEngine';
 import { TrailContent } from '@/components/trail/TrailContent';
@@ -220,10 +220,11 @@ export default function HomeTab() {
 
   // ── AI Greeting ─────────────────────────────────────────────────────────────
   useEffect(() => {
-    if (greetingCache.level && greetingCache.level !== level) {
+    if (greetingCache.level && greetingCache.level !== level && profile) {
       resetGreetingCache();
       setAiGreeting(null);
       setGreetingLoading(true);
+      prefetchGreeting(profile);
     }
     if (greetingCache.text) {
       setAiGreeting(greetingCache.text);
@@ -231,29 +232,65 @@ export default function HomeTab() {
       return;
     }
     if (!userId || !name) return;
+
+    // Hardcoded fallback — used when API fails, times out, or returns empty.
+    const h = new Date().getHours();
+    const fallback = isPt
+      ? (h < 12 ? `Bom dia, ${firstName}! Pronto para praticar?`
+       : h < 18 ? `Boa tarde, ${firstName}! Vamos praticar um pouco?`
+                : `Boa noite, ${firstName}! Que tal uma sessão rápida?`)
+      : (h < 12 ? `Good morning, ${firstName}! Ready to practice?`
+       : h < 18 ? `Good afternoon, ${firstName}! Let's get some practice in.`
+                : `Good evening, ${firstName}! How about a quick session?`);
+
+    const showFallback = () => {
+      unstable_batchedUpdates(() => {
+        setAiGreeting(prev => prev ?? fallback);
+        setGreetingLoading(false);
+      });
+    };
+
+    // API already finished with no result — show fallback immediately.
     if (greetingCache.fetched && !greetingCache.pending) {
-      setGreetingLoading(false);
+      showFallback();
       return;
     }
+
+    // API in-flight: poll every 50ms + 3s hard timeout.
     const minDotsMs  = 600;
     const fetchStart = Date.now();
+    let   settled    = false;
+
+    const resolve = (text: string) => {
+      if (settled) return;
+      settled = true;
+      const elapsed = Date.now() - fetchStart;
+      const delay   = Math.max(0, minDotsMs - elapsed);
+      setTimeout(() => {
+        unstable_batchedUpdates(() => {
+          setAiGreeting(text || fallback);
+          setGreetingLoading(false);
+        });
+      }, delay);
+    };
+
     const poll = setInterval(() => {
       if (greetingCache.text) {
         clearInterval(poll);
-        const elapsed = Date.now() - fetchStart;
-        const delay   = Math.max(0, minDotsMs - elapsed);
-        setTimeout(() => {
-          unstable_batchedUpdates(() => {
-            setAiGreeting(greetingCache.text);
-            setGreetingLoading(false);
-          });
-        }, delay);
+        resolve(greetingCache.text);
       } else if (!greetingCache.pending) {
         clearInterval(poll);
-        setGreetingLoading(false);
+        resolve(fallback);
       }
     }, 50);
-    return () => clearInterval(poll);
+
+    // 3s safety net — same as legacy home.
+    const timeout = setTimeout(() => {
+      clearInterval(poll);
+      resolve(fallback);
+    }, 3000);
+
+    return () => { clearInterval(poll); clearTimeout(timeout); };
   }, [userId, name, level, profile]); // eslint-disable-line
 
   const onRefresh = useCallback(async () => {
