@@ -182,9 +182,12 @@ export function useChat({ userLevel, userName, userId, mode = 'chat' }: UseChatO
     setHistoryLoading(mode === 'chat');
   }, [mode, userLevel, userName]);
 
-  // ── Load active session + messages on mount (chat mode only) ──────────────
-  // Procura session aberta (ended_at IS NULL); se existe, carrega suas msgs.
-  // Se não, fica sem activeSessionId — primeira msg do user cria a session.
+  // ── Cold start (chat mode only) ──────────────────────────────────────────
+  // Padrão Claude/ChatGPT mobile: cold start = nova conversa.
+  // Se há session aberta no DB (app foi morto antes de fechar), encerra ela
+  // (ended_at + summary) e começa fresh. Background→foreground não passa por
+  // aqui (useChat fica mounted), então conversa continua naturalmente.
+  // Drawer mostra a session encerrada como histórico — user pode retomar.
   React.useEffect(() => {
     if (!userId || mode !== 'chat' || historyLoadedRef.current) return;
     historyLoadedRef.current = true;
@@ -198,42 +201,23 @@ export function useChat({ userLevel, userName, userId, mode = 'chat' }: UseChatO
       .limit(1)
       .maybeSingle()
       .then(({ data: sessionRow }) => {
-        if (!sessionRow) {
-          setHistoryLoading(false);
-          setMessages([buildWelcome(mode, userLevel, userName)]);
-          return;
-        }
+        setHistoryLoading(false);
+        setMessages([buildWelcome(mode, userLevel, userName)]);
 
-        const sessionId = sessionRow.id;
-        setActiveSessionId(sessionId);
+        if (!sessionRow) return;
 
-        supabase
-          .from('chat_messages')
-          .select('role, content, created_at')
-          .eq('user_id', userId)
-          .eq('session_id', sessionId)
-          .order('created_at', { ascending: true })
-          .then(({ data, error }) => {
-            setHistoryLoading(false);
-            if (error || !data || data.length === 0) {
-              setMessages([buildWelcome(mode, userLevel, userName)]);
-              return;
-            }
+        // Encerra session anterior (fire-and-forget) — drawer vai mostrar com summary
+        const prevId = sessionRow.id;
+        supabase.from('charlotte_chat_sessions')
+          .update({ ended_at: new Date().toISOString() })
+          .eq('id', prevId)
+          .then(({ error }) => { if (error) console.warn('⚠️ cold-start close:', error.message); });
 
-            data.slice(-8).forEach(row => {
-              contextManagerRef.current.addMessage(row.role as 'user' | 'assistant', row.content, 'text');
-            });
-
-            const historyMsgs: Message[] = data.map(row => ({
-              id: `hist-${row.created_at}`,
-              role: row.role as 'user' | 'assistant',
-              content: row.content,
-              messageType: 'text' as const,
-              timestamp: new Date(row.created_at),
-            }));
-
-            setMessages([buildWelcome(mode, userLevel, userName), ...historyMsgs]);
-          });
+        fetch(`${API_BASE_URL}/api/summarize-chat`, {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({ sessionId: prevId, userId, userLevel }),
+        }).catch(err => console.warn('⚠️ summarize-chat (cold-start):', err));
       });
   }, [userId, mode]); // eslint-disable-line react-hooks/exhaustive-deps
 

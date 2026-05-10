@@ -8,7 +8,7 @@ import {
   Alert, View, TouchableOpacity, KeyboardAvoidingView, Platform, Modal,
   Pressable, Animated, Easing, ScrollView, Dimensions,
 } from 'react-native';
-import { Question, X, ClockCounterClockwise, XCircle, CaretRight, Trash } from 'phosphor-react-native';
+import { Question, X, ClockCounterClockwise, XCircle, CaretRight, Trash, Plus } from 'phosphor-react-native';
 import { useLocalSearchParams, router, useFocusEffect } from 'expo-router';
 import { useSafeAreaInsets } from 'react-native-safe-area-context';
 import { useBottomTabBarHeight } from '@react-navigation/bottom-tabs';
@@ -313,6 +313,24 @@ export default function PracticeTab() {
     sendSilentMessage(topic.prompt);
   }, [isProcessing, sendSilentMessage]);
 
+  // Botão "+" — força nova conversa. Se vazia, no-op. Se tem msgs, confirma.
+  const handleNewSession = useCallback(() => {
+    if (messages.length <= 1) return;        // só welcome → já está em conversa nova
+    Alert.alert(
+      isPt ? 'Iniciar nova conversa?' : 'Start a new conversation?',
+      isPt
+        ? 'A conversa atual será salva no histórico e você poderá retomar depois.'
+        : 'The current conversation will be saved to history and you can resume it later.',
+      [
+        { text: isPt ? 'Cancelar' : 'Cancel', style: 'cancel' },
+        {
+          text: isPt ? 'Nova conversa' : 'New conversation',
+          onPress: async () => { await closeSession(); fetchSessions(); },
+        },
+      ],
+    );
+  }, [messages.length, isPt, closeSession, fetchSessions]);
+
   // Explain more (grammar only)
   const handleExplainMore = useCallback((_originalCorrection: string) => {
     const prompt = isPt
@@ -425,22 +443,40 @@ export default function PracticeTab() {
             zIndex: 5,
           }}>
             {mode === 'chat' && (
-              <TouchableOpacity
-                onPress={() => setShowHistory(true)}
-                style={{
-                  width: 34, height: 34, borderRadius: 17,
-                  backgroundColor: '#FFFFFF',
-                  alignItems: 'center', justifyContent: 'center',
-                  borderWidth: 1, borderColor: C.border,
-                  shadowColor: 'rgba(22,21,58,0.12)',
-                  shadowOpacity: 1, shadowRadius: 6, shadowOffset: { width: 0, height: 2 },
-                  elevation: 3,
-                }}
-                hitSlop={{ top: 8, bottom: 8, left: 8, right: 8 }}
-                accessibilityLabel={isPt ? 'Histórico de conversas' : 'Conversation history'}
-              >
-                <ClockCounterClockwise size={17} color={C.navyMid} weight="regular" />
-              </TouchableOpacity>
+              <>
+                <TouchableOpacity
+                  onPress={handleNewSession}
+                  style={{
+                    width: 34, height: 34, borderRadius: 17,
+                    backgroundColor: '#FFFFFF',
+                    alignItems: 'center', justifyContent: 'center',
+                    borderWidth: 1, borderColor: C.border,
+                    shadowColor: 'rgba(22,21,58,0.12)',
+                    shadowOpacity: 1, shadowRadius: 6, shadowOffset: { width: 0, height: 2 },
+                    elevation: 3,
+                  }}
+                  hitSlop={{ top: 8, bottom: 8, left: 8, right: 8 }}
+                  accessibilityLabel={isPt ? 'Nova conversa' : 'New conversation'}
+                >
+                  <Plus size={17} color={C.navyMid} weight="regular" />
+                </TouchableOpacity>
+                <TouchableOpacity
+                  onPress={() => setShowHistory(true)}
+                  style={{
+                    width: 34, height: 34, borderRadius: 17,
+                    backgroundColor: '#FFFFFF',
+                    alignItems: 'center', justifyContent: 'center',
+                    borderWidth: 1, borderColor: C.border,
+                    shadowColor: 'rgba(22,21,58,0.12)',
+                    shadowOpacity: 1, shadowRadius: 6, shadowOffset: { width: 0, height: 2 },
+                    elevation: 3,
+                  }}
+                  hitSlop={{ top: 8, bottom: 8, left: 8, right: 8 }}
+                  accessibilityLabel={isPt ? 'Histórico de conversas' : 'Conversation history'}
+                >
+                  <ClockCounterClockwise size={17} color={C.navyMid} weight="regular" />
+                </TouchableOpacity>
+              </>
             )}
             <TouchableOpacity
               onPress={() => setShowHelp(true)}
