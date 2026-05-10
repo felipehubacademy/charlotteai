@@ -1,34 +1,30 @@
-// Sugestão diária ancorada num pill do toggle de modos do Practice.
-// Auto-dismiss em 5s. Tap fora não fecha (pointerEvents='none'). Tocar no pill
-// sugerido fecha naturalmente via handleModeSwitch que limpa o state.
+// Sugestão diária ancorada ABAIXO do pill (seta pra cima). Persistente: só
+// fecha via botão X no balão ou ao tocar no pill sugerido (que dispara
+// dismiss via handleModeSwitch no practice.tsx). Sem auto-dismiss.
 
-import React, { useEffect } from 'react';
+import React from 'react';
 import { View, StyleSheet } from 'react-native';
 import { TooltipBalloon, TooltipAnchor } from '@/components/ui/TooltipBalloon';
 
 interface Props {
-  visible:    boolean;
-  text:       string;
-  anchor:     TooltipAnchor | null;
-  onAutoDismiss: () => void;
-  durationMs?: number;
+  visible: boolean;
+  text:    string;
+  anchor:  TooltipAnchor | null;
+  onClose: () => void;
 }
 
-export function PracticeSuggestionTooltip({
-  visible, text, anchor, onAutoDismiss,
-  durationMs = 5000,
-}: Props) {
-  useEffect(() => {
-    if (!visible) return;
-    const t = setTimeout(onAutoDismiss, durationMs);
-    return () => clearTimeout(t);
-  }, [visible, durationMs, onAutoDismiss]);
-
+export function PracticeSuggestionTooltip({ visible, text, anchor, onClose }: Props) {
   if (!visible || !anchor) return null;
 
   return (
-    <View style={StyleSheet.absoluteFill} pointerEvents="none">
-      <TooltipBalloon text={text} anchor={anchor} width={240} />
+    <View style={StyleSheet.absoluteFill} pointerEvents="box-none">
+      <TooltipBalloon
+        text={text}
+        anchor={anchor}
+        width={240}
+        arrowDirection="up"
+        onClose={onClose}
+      />
     </View>
   );
 }

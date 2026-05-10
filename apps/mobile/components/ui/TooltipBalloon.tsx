@@ -1,19 +1,22 @@
 import React from 'react';
-import { View, Dimensions } from 'react-native';
+import { View, Dimensions, TouchableOpacity } from 'react-native';
+import { X } from 'phosphor-react-native';
 import { AppText } from '@/components/ui/Text';
 
 export interface TooltipAnchor {
-  x:     number;
-  y:     number;
-  width: number;
+  x:       number;
+  y:       number;
+  width:   number;
+  height?: number;
 }
 
 interface Props {
-  text:           string;
-  anchor:         TooltipAnchor;
-  width?:         number;
+  text:            string;
+  anchor:          TooltipAnchor;
+  width?:          number;
   containerWidth?: number;
   arrowDirection?: 'up' | 'down';
+  onClose?:        () => void;
 }
 
 const ARROW_SIZE = 7;
@@ -24,6 +27,7 @@ export function TooltipBalloon({
   width           = 160,
   containerWidth,
   arrowDirection  = 'down',
+  onClose,
 }: Props) {
   const cw = containerWidth ?? Dimensions.get('window').width;
 
@@ -37,11 +41,11 @@ export function TooltipBalloon({
 
   const top = arrowDirection === 'down'
     ? anchor.y - 48 - ARROW_SIZE
-    : anchor.y + anchor.width;
+    : anchor.y + (anchor.height ?? 0) + ARROW_SIZE;
 
   return (
     <View
-      pointerEvents="none"
+      pointerEvents={onClose ? 'box-none' : 'none'}
       style={{
         position:        'absolute',
         left, top, width,
@@ -49,6 +53,7 @@ export function TooltipBalloon({
         borderRadius:    10,
         paddingHorizontal: 10,
         paddingVertical:   9,
+        paddingRight:      onClose ? 24 : 10,
         shadowColor:     '#000',
         shadowOpacity:   0.25,
         shadowRadius:    8,
@@ -61,6 +66,21 @@ export function TooltipBalloon({
       >
         {text}
       </AppText>
+      {onClose && (
+        <TouchableOpacity
+          onPress={onClose}
+          hitSlop={{ top: 10, bottom: 10, left: 10, right: 10 }}
+          style={{
+            position: 'absolute',
+            top: 6, right: 6,
+            width: 18, height: 18,
+            alignItems: 'center', justifyContent: 'center',
+          }}
+          accessibilityLabel="Fechar sugestão"
+        >
+          <X size={11} color="rgba(255,255,255,0.7)" weight="bold" />
+        </TouchableOpacity>
+      )}
       <View
         style={{
           position: 'absolute',

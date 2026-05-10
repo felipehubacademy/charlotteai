@@ -219,9 +219,9 @@ export default function PracticeTab() {
     const t = setTimeout(() => {
       const ref = pillRefs.current[suggestedMode];
       if (!ref) return;
-      ref.measureInWindow((x, y, w) => {
+      ref.measureInWindow((x, y, w, h) => {
         if (!w) return;     // layout ainda não pronto
-        setSuggestionAnchor({ x, y, width: w });
+        setSuggestionAnchor({ x, y, width: w, height: h });
         setSuggestionMode(suggestedMode);
         setSuggestionShown(true);
         SecureStore
@@ -492,12 +492,12 @@ export default function PracticeTab() {
       </View>
       {/* /body wrapper */}
 
-      {/* ── Sugestão diária ancorada no pill (overlay, sem bloquear toque) ── */}
+      {/* ── Sugestão diária ancorada ABAIXO do pill, fica até user fechar ── */}
       <PracticeSuggestionTooltip
         visible={!!suggestionAnchor && !!suggestionMode}
         text={suggestionText}
         anchor={suggestionAnchor}
-        onAutoDismiss={dismissSuggestion}
+        onClose={dismissSuggestion}
       />
 
       {/* ── Achievement notification (grammar + pronunciation) ── */}
