@@ -534,7 +534,7 @@ export default function LiveVoiceTab() {
       ) : (
         <View style={{ flex: 1, backgroundColor: C.stage, position: 'relative' }}>
 
-          <View style={{ flex: 1, paddingBottom: Platform.OS === 'android' ? 40 : 0 }}>
+          <View style={{ flex: 1 }}>
 
             {/* ── Header da tela: título + status row ── */}
             <View style={{ paddingHorizontal: 24, paddingTop: 18, paddingBottom: 12 }}>
@@ -616,6 +616,9 @@ export default function LiveVoiceTab() {
                 }
               </AppText>
             </TouchableOpacity>
+
+            {/* Spacer explícito Android — padding/margin não estavam empurrando */}
+            {Platform.OS === 'android' && <View style={{ height: 40 }} />}
 
           </View>
 
