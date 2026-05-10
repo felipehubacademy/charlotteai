@@ -540,10 +540,11 @@ export default function LiveVoiceTab() {
     // Otimista: remove da UI imediatamente, depois apaga no DB.
     setRecentCalls(prev => prev.filter(c => c.id !== callId));
     try {
-      await supabase.from('charlotte_live_calls').delete().eq('id', callId);
+      const { error } = await supabase.from('charlotte_live_calls').delete().eq('id', callId);
+      if (error) throw error;
     } catch (err) {
       console.warn('[livevoice] failed to delete call:', err);
-      // Fallback: re-fetch pra reconciliar
+      // Fallback: re-fetch pra reconciliar (registro volta se DB rejeitou)
       loadData();
     }
   }, [loadData]);
