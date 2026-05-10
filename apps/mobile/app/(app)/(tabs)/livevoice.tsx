@@ -5,7 +5,7 @@
 import React, { useState, useCallback, useMemo } from 'react';
 import {
   View, ScrollView, TouchableOpacity, ActivityIndicator, Image,
-  RefreshControl, Modal, Pressable, Dimensions, Animated, Easing,
+  RefreshControl, Modal, Pressable, Dimensions, Animated, Easing, Platform,
 } from 'react-native';
 import { useSafeAreaInsets } from 'react-native-safe-area-context';
 import Svg, { Circle } from 'react-native-svg';
@@ -597,7 +597,7 @@ export default function LiveVoiceTab() {
               activeOpacity={0.85}
               style={{
                 marginHorizontal: 24,
-                marginBottom: 24,
+                marginBottom: Platform.OS === 'android' ? 40 : 24,
                 backgroundColor: isLimitReached ? C.navyGhost : accent,
                 borderRadius: 16, paddingVertical: 18,
                 flexDirection: 'row', alignItems: 'center', justifyContent: 'center', gap: 10,
