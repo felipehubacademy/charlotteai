@@ -11,6 +11,7 @@
 import fs from 'fs';
 import path from 'path';
 import dotenv from 'dotenv';
+import { execSync } from 'child_process';
 
 dotenv.config({ path: path.resolve(__dirname, '../.env.local') });
 dotenv.config({ path: path.resolve(__dirname, '../.env') });
@@ -174,6 +175,67 @@ const SFX: SfxPrompt[] = [
   // xp_gained NAO esta aqui — decidido em product: vira somente haptico.
 ];
 
+// ── Normalizacao (ffmpeg-static) ──────────────────────────────────────────────
+// ElevenLabs Sound Effects entrega arquivos com peak variavel (-0 a -35 dB).
+// Normalizamos para target consistente sempre apos gerar.
+// Targets baseados em UX research (correct vs wrong tem delta de 4 dB).
+
+function getFfmpegPath(): string {
+  // ffmpeg-static esta no node_modules na raiz do monorepo
+  const root = path.resolve(__dirname, '../../..');
+  const bin  = path.join(root, 'node_modules', 'ffmpeg-static', 'ffmpeg');
+  if (!fs.existsSync(bin)) throw new Error(`ffmpeg-static not found at ${bin}`);
+  return bin;
+}
+
+function detectPeakDb(file: string, ffmpeg: string): number | null {
+  try {
+    const out = execSync(
+      `"${ffmpeg}" -i "${file}" -af volumedetect -vn -sn -dn -f null /dev/null`,
+      { stdio: ['ignore', 'pipe', 'pipe'] },
+    ).toString() + execSync(
+      `"${ffmpeg}" -i "${file}" -af volumedetect -vn -sn -dn -f null /dev/null 2>&1 || true`,
+      { stdio: ['ignore', 'pipe', 'pipe'] },
+    ).toString();
+    const m = out.match(/max_volume:\s*(-?\d+\.?\d*)\s*dB/);
+    return m ? parseFloat(m[1]) : null;
+  } catch {
+    // ffmpeg writes to stderr; capture differently
+    try {
+      const stderr = execSync(
+        `"${ffmpeg}" -i "${file}" -af volumedetect -vn -sn -dn -f null /dev/null 2>&1`,
+        { stdio: 'pipe' },
+      ).toString();
+      const m = stderr.match(/max_volume:\s*(-?\d+\.?\d*)\s*dB/);
+      return m ? parseFloat(m[1]) : null;
+    } catch (e: any) {
+      const stderr = (e.stdout?.toString() ?? '') + (e.stderr?.toString() ?? '');
+      const m = stderr.match(/max_volume:\s*(-?\d+\.?\d*)\s*dB/);
+      return m ? parseFloat(m[1]) : null;
+    }
+  }
+}
+
+function normalizeToPeak(file: string, targetDb: number, ffmpeg: string): void {
+  const peak = detectPeakDb(file, ffmpeg);
+  if (peak === null) { console.warn(`  norm  ${path.basename(file)}: could not detect peak`); return; }
+  const gain = targetDb - peak;
+  if (Math.abs(gain) < 0.5) { console.log(`  norm  ${path.basename(file)}: already at ${peak}dB (skip)`); return; }
+  const tmp = `${file}.tmp.mp3`;
+  execSync(
+    `"${ffmpeg}" -y -i "${file}" -af "volume=${gain}dB" -codec:a libmp3lame -b:a 96k "${tmp}"`,
+    { stdio: 'ignore' },
+  );
+  fs.renameSync(tmp, file);
+  console.log(`  norm  ${path.basename(file)}: ${peak}dB -> ${targetDb}dB (+${gain.toFixed(1)}dB)`);
+}
+
+// Target por categoria de som
+function targetDbFor(id: string): number {
+  if (id.startsWith('answer_wrong')) return -7; // 4 dB abaixo do correct (UX consensus)
+  return -3;                                     // alto, punchy — sweet spot para UI
+}
+
 // ── Core ──────────────────────────────────────────────────────────────────────
 
 async function generateSfx(spec: SfxPrompt, outputDir: string): Promise<void> {
@@ -212,10 +274,34 @@ async function generateSfx(spec: SfxPrompt, outputDir: string): Promise<void> {
   const buffer = Buffer.from(await res.arrayBuffer());
   fs.writeFileSync(outPath, buffer);
   console.log(`  ok    ${spec.id}.mp3 (${Math.round(buffer.length / 1024)}KB)`);
+
+  // Auto-normalizacao (ElevenLabs Sound Effects entrega peaks erraticos)
+  try {
+    const ffmpeg = getFfmpegPath();
+    normalizeToPeak(outPath, targetDbFor(spec.id), ffmpeg);
+  } catch (e: any) {
+    console.warn(`  WARN: skipping normalization for ${spec.id}: ${e.message}`);
+  }
 }
 
 async function main() {
   fs.mkdirSync(SFX_DIR, { recursive: true });
+
+  // Modo "normalize only" — re-aplica normalizacao em todos os MP3s existentes
+  // sem chamar a API. Util quando algum arquivo ficou baixo demais.
+  // Uso: npx tsx scripts/generate-musical-sfx.ts --normalize-only
+  if (process.argv.includes('--normalize-only')) {
+    console.log('── Normalize-only mode (no API calls) ─────────────');
+    const ffmpeg = getFfmpegPath();
+    const files = fs.readdirSync(SFX_DIR).filter(f => f.endsWith('.mp3'));
+    for (const f of files) {
+      // Deriva o ID do nome do arquivo para escolher o target
+      const id = f.replace('.mp3', '');
+      normalizeToPeak(path.join(SFX_DIR, f), targetDbFor(id), ffmpeg);
+    }
+    console.log('\nDone.');
+    return;
+  }
 
   console.log('── Musical SFX (ElevenLabs Sound Effects) ─────────');
   console.log(`Output: ${SFX_DIR}`);
