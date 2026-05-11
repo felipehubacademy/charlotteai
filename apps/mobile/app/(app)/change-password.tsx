@@ -139,7 +139,7 @@ export default function ChangePasswordScreen() {
                   alignItems: 'center', justifyContent: 'center',
                   marginBottom: 14,
                 }}>
-                  <ShieldCheck size={36} color={C.accent} weight="duotone" />
+                  <ShieldCheck size={36} color={C.accent} weight="regular" />
                 </View>
                 <AppText style={{ fontSize: 20, fontWeight: '800', color: C.navy, textAlign: 'center' }}>
                   {isPt ? 'Mantenha sua conta segura' : 'Keep your account secure'}
@@ -272,7 +272,7 @@ function PasswordField({
         borderColor: error ? C.error : C.border,
         paddingHorizontal: 12,
       }}>
-        <Lock size={16} color={C.navyLight} weight="duotone" style={{ marginRight: 8 }} />
+        <Lock size={16} color={C.navyLight} weight="regular" style={{ marginRight: 8 }} />
         <TextInput
           value={value}
           onChangeText={onChangeText}
@@ -335,7 +335,7 @@ function SuccessState({ isPt, onBack }: { isPt: boolean; onBack: () => void }) {
         alignItems: 'center', justifyContent: 'center',
         marginBottom: 20,
       }}>
-        <CheckCircle size={56} color={C.greenDark} weight="duotone" />
+        <CheckCircle size={56} color={C.greenDark} weight="regular" />
       </View>
       <AppText style={{ fontSize: 22, fontWeight: '800', color: C.navy, textAlign: 'center' }}>
         {isPt ? 'Senha alterada!' : 'Password changed!'}
