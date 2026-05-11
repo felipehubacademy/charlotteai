@@ -15,6 +15,7 @@ import {
   CaretRight, Play,
 } from 'phosphor-react-native';
 import { useTour } from '@/lib/tourContext';
+import { openLink } from '@/lib/openLink';
 import { AppText } from '@/components/ui/Text';
 import { useAuth } from '@/hooks/useAuth';
 import { supabase } from '@/lib/supabase';
@@ -554,13 +555,13 @@ export default function ProfileTab() {
           <SettingRow
             icon={<ShieldWarning size={18} color={C.navyMid} weight="duotone" />}
             label={isPt ? 'Política de Privacidade' : 'Privacy Policy'}
-            onPress={() => Linking.openURL('https://charlotte.hubacademybr.com/privacidade')}
+            onPress={() => openLink('https://charlotte.hubacademybr.com/privacidade')}
             chevron
           />
           <SettingRow
             icon={<FileText size={18} color={C.navyMid} weight="duotone" />}
             label={isPt ? 'Termos de Uso' : 'Terms of Use'}
-            onPress={() => Linking.openURL('https://charlotte.hubacademybr.com/termos')}
+            onPress={() => openLink('https://charlotte.hubacademybr.com/termos')}
             chevron
           />
         </SettingGroup>

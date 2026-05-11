@@ -81,6 +81,7 @@ export default ({ config }: ConfigContext): ExpoConfig => ({
     'expo-secure-store',
     'expo-updates',
     'expo-video',
+    'expo-web-browser',
     'expo-config-plugin-incall-manager',
     [
       'expo-splash-screen',

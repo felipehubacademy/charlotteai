@@ -1,6 +1,7 @@
 // configuracoes.tsx
 import React from 'react';
 import { View, ScrollView, TouchableOpacity, Alert, Platform, Linking, ActivityIndicator, Image } from 'react-native';
+import { openLink } from '@/lib/openLink';
 import AvatarCropModal from '@/components/ui/AvatarCropModal';
 import { router } from 'expo-router';
 import { SafeAreaView } from 'react-native-safe-area-context';
@@ -559,13 +560,13 @@ export default function ConfiguracoesScreen() {
         <SettingRow
           icon={<ShieldWarning size={18} color={C.navyMid} weight="duotone" />}
           label={isPt ? 'Política de Privacidade' : 'Privacy Policy'}
-          onPress={() => Linking.openURL('https://charlotte.hubacademybr.com/privacidade')}
+          onPress={() => openLink('https://charlotte.hubacademybr.com/privacidade')}
           chevron
         />
         <SettingRow
           icon={<FileText size={18} color={C.navyMid} weight="duotone" />}
           label={isPt ? 'Termos de Uso' : 'Terms of Use'}
-          onPress={() => Linking.openURL('https://charlotte.hubacademybr.com/termos')}
+          onPress={() => openLink('https://charlotte.hubacademybr.com/termos')}
           chevron
         />
 
