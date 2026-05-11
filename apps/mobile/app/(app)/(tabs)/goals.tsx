@@ -228,6 +228,7 @@ export default function GoalsTab() {
           style={{ flex: 1 }}
           contentContainerStyle={{ flexGrow: 1, paddingBottom: 24 }}
           showsVerticalScrollIndicator={false}
+          alwaysBounceVertical={false}
         >
           {/* Daily Missions — espaco gera scroll em telas pequenas, distribui em
               telas maiores via flex:1 + space-between no container interno. */}
