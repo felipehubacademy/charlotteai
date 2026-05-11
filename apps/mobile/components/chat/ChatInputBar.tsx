@@ -394,7 +394,12 @@ export default function ChatInputBar({
               onChangeText={setText}
               placeholder={isNovice ? 'Digite em inglês...' : 'Type in English...'}
               placeholderTextColor={C.navyLight}
-              style={{ color: C.navy, fontSize: 15, lineHeight: 22, maxHeight: 120, flex: 1, textAlignVertical: 'center' }}
+              style={{
+                color: C.navy, fontSize: 15, lineHeight: 22, maxHeight: 120, flex: 1,
+                textAlignVertical: 'center',                          // Android
+                paddingTop: Platform.OS === 'ios' ? 4 : 0,            // iOS centering nudge
+                paddingBottom: 0,
+              }}
               multiline
               returnKeyType="default"
               editable={!disabled}
@@ -506,7 +511,12 @@ export default function ChatInputBar({
               onChangeText={setText}
               placeholder={isNovice ? 'Digite em inglês...' : 'Type in English...'}
               placeholderTextColor={C.navyLight}
-              style={{ color: C.navy, fontSize: 15, lineHeight: 22, maxHeight: 120, flex: 1, textAlignVertical: 'center' }}
+              style={{
+                color: C.navy, fontSize: 15, lineHeight: 22, maxHeight: 120, flex: 1,
+                textAlignVertical: 'center',                          // Android
+                paddingTop: Platform.OS === 'ios' ? 4 : 0,            // iOS centering nudge
+                paddingBottom: 0,
+              }}
               multiline
               returnKeyType="default"
               editable={!disabled}
