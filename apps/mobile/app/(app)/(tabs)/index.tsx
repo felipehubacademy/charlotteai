@@ -30,6 +30,9 @@ import { NewLayoutWelcomeSheet } from '@/components/onboarding/NewLayoutWelcomeS
 
 // Module-level flag — persists for the JS session (like the legacy home screen)
 let _streakSoundPlayedThisSession = false;
+// Intro brand jingle: toca em todo cold start (1x por sessao JS — reset somente
+// quando o processo do app e recriado, igual padrao do Duolingo).
+let _introPlayedThisJsSession = false;
 
 const C = {
   bg:        '#F4F3FA',
@@ -182,6 +185,18 @@ export default function HomeTab() {
       setTodayXP(todayXPVal);
       setRank(userTotalXP > 0 ? computedRank : null);
 
+      // Brand intro jingle — toca em todo cold start (estilo Duolingo).
+      // intro_app dura ~3s; todos os outros sons da home sao deslocados se ele
+      // for tocar agora, para nao colidir audio.
+      const introWillPlay = !_introPlayedThisJsSession;
+      if (introWillPlay) {
+        _introPlayedThisJsSession = true;
+        setTimeout(() => soundEngine.play('intro_app').catch(() => {}), 400);
+      }
+      // Offset usado pra shiftar streak_alive e Tier 4 quando o intro toca primeiro.
+      // intro comeca em t=400 + dura ~3s => proximos sons sao em t=3500+
+      const introOffset = introWillPlay ? 3100 : 0;
+
       // Streak sound + Tier 4 (voz)
       if (!_streakSoundPlayedThisSession && streakDays > 0) {
         const today     = localTodayStr();
@@ -191,14 +206,14 @@ export default function HomeTab() {
           if (lastPlayed !== today) {
             _streakSoundPlayedThisSession = true;
             SecureStore.setItemAsync(streakKey, today).catch(() => {});
-            setTimeout(() => soundEngine.play('streak_alive').catch(() => {}), 800);
+            setTimeout(() => soundEngine.play('streak_alive').catch(() => {}), introOffset + 800);
 
             // Tier 4 — marcos de streak (somente no dia exato em que cruza)
-            // SFX streak_alive comeca em t=800 e dura ~1.2s, entao voz cai apos t=2200
+            // SFX streak_alive comeca em t=offset+800 e dura ~1.2s
             if (streakDays === 7) {
-              setTimeout(() => voiceSFX.play('streak_7_days').catch(() => {}), 2300);
+              setTimeout(() => voiceSFX.play('streak_7_days').catch(() => {}), introOffset + 2300);
             } else if (streakDays === 30) {
-              setTimeout(() => voiceSFX.play('streak_30_days').catch(() => {}), 2300);
+              setTimeout(() => voiceSFX.play('streak_30_days').catch(() => {}), introOffset + 2300);
             }
           } else {
             _streakSoundPlayedThisSession = true;
@@ -211,8 +226,7 @@ export default function HomeTab() {
             const diffMs = Date.now() - new Date(lastOpen).getTime();
             const diffDays = diffMs / (1000 * 60 * 60 * 24);
             if (diffDays >= 3) {
-              // SFX streak_alive em t=800 + 1.2s = 2000; voz cai depois disso
-              setTimeout(() => voiceSFX.play('welcome_back').catch(() => {}), 2300);
+              setTimeout(() => voiceSFX.play('welcome_back').catch(() => {}), introOffset + 2300);
             }
           }
           SecureStore.setItemAsync(lastOpenKey, new Date().toISOString()).catch(() => {});

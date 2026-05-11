@@ -47,7 +47,10 @@ const CATALOG: Entry[] = [
   { id: 'streak_alive',     mixkitId: 1107, title: 'Page forward single chime',          targetDb: -3 },
   { id: 'daily_goal',       mixkitId: 2059, title: 'Game level completed',               targetDb: -3 },
   { id: 'topic_complete',   mixkitId: 2992, title: 'Jubilant fanfare music tones',       targetDb: -3 },
-  { id: 'module_complete',  mixkitId: 2633, title: 'Sweeping sparkle presentation intro', targetDb: -3 },
+  { id: 'module_complete',  mixkitId: 2063, title: 'Completion of a level',              targetDb: -3 },
+
+  // ── Brand intro (toca 1x/dia no cold start do app) ────────────────────────
+  { id: 'intro_app',        mixkitId: 2633, title: 'Sweeping sparkle presentation intro', targetDb: -3 },
 ];
 
 // ── ffmpeg ───────────────────────────────────────────────────────────────────

@@ -33,7 +33,8 @@ export type SoundName =
   | 'answer_correct'
   | 'answer_wrong'
   | 'topic_complete'
-  | 'module_complete';
+  | 'module_complete'
+  | 'intro_app';
 
 // ── Síntese: nota com harmônicos + ADSR ──────────────────────────────────────
 
@@ -194,6 +195,15 @@ const MELODIES: Record<SoundName, Melody> = {
     { freq: NOTES.C6, durMs: 140, amp: 0.38, harmonics: 5, attackMs: 8,  releaseMs:  60 },
     { freq: NOTES.G5, durMs:  90, amp: 0.32, harmonics: 5, attackMs: 6,  releaseMs:  40 },
     { freq: NOTES.E6, durMs: 320, amp: 0.42, harmonics: 5, attackMs: 10, releaseMs: 150 },
+  ],
+
+  // ── Brand intro (toca em todo cold start) ────────────────────────────────
+  // Fallback PCM se CDN falhar: arpeggio sparkle ascendente em Do maior.
+  intro_app: [
+    { freq: NOTES.C5, durMs:  90, amp: 0.28, harmonics: 4, attackMs: 5, releaseMs: 40 },
+    { freq: NOTES.E5, durMs:  90, amp: 0.30, harmonics: 4, attackMs: 5, releaseMs: 40 },
+    { freq: NOTES.G5, durMs:  90, amp: 0.32, harmonics: 4, attackMs: 5, releaseMs: 40 },
+    { freq: NOTES.C6, durMs: 280, amp: 0.36, harmonics: 4, attackMs: 8, releaseMs: 120 },
   ],
 };
 
@@ -474,6 +484,7 @@ class SoundEngine {
       'streak_alive', 'daily_goal',
       'answer_correct', 'answer_wrong',
       'topic_complete', 'module_complete',
+      'intro_app',
       // xp_gained nao baixa — e no-op (so haptico)
     ];
     const downloads: Promise<unknown>[] = [];
