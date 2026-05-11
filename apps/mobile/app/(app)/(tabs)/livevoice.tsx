@@ -13,7 +13,7 @@ import Svg, { Circle } from 'react-native-svg';
 import { useFocusEffect } from 'expo-router';
 import { useBottomTabBarHeight } from '@react-navigation/bottom-tabs';
 import { useVideoPlayer, VideoView } from 'expo-video';
-import { Phone, XCircle, ClockCounterClockwise, CaretRight, Trash } from 'phosphor-react-native';
+import { Phone, XCircle, ClockCounterClockwise, CaretRight, Trash, Question, X } from 'phosphor-react-native';
 import { AppText } from '@/components/ui/Text';
 import { HeaderPills } from '@/components/ui/HeaderPills';
 import { useAuth } from '@/hooks/useAuth';
@@ -441,6 +441,7 @@ export default function LiveVoiceTab() {
   const [showCallsDrawer, setShowCallsDrawer] = useState(false);
   const [showLiveVoice,   setShowLiveVoice]   = useState(false);
   const [showTranscript,  setShowTranscript]  = useState(false);
+  const [showHelp,        setShowHelp]        = useState(false);
   const [loading,         setLoading]         = useState(true);
   const [refreshing,      setRefreshing]      = useState(false);
 
@@ -530,11 +531,12 @@ export default function LiveVoiceTab() {
 
   useFocusEffect(useCallback(() => { loadData(); }, [loadData]));
 
-  // Auto-fecha drawer/transcript ao sair da tab (não persiste ao voltar)
+  // Auto-fecha drawer/transcript/help ao sair da tab (não persiste ao voltar)
   useFocusEffect(useCallback(() => {
     return () => {
       setShowCallsDrawer(false);
       setShowTranscript(false);
+      setShowHelp(false);
     };
   }, []));
 
@@ -645,9 +647,12 @@ export default function LiveVoiceTab() {
               </View>
             </View>
 
-            {/* ── Botão drawer (sempre visível pra estabilidade de layout).
+            {/* ── Botões drawer + help (sempre visíveis pra estabilidade de layout).
                 Drawer mostra empty state quando recentCalls.length === 0. ── */}
-            <View style={{ paddingHorizontal: 24, marginBottom: 12 }}>
+            <View style={{
+              paddingHorizontal: 24, marginBottom: 12,
+              flexDirection: 'row', justifyContent: 'flex-end', gap: 10,
+            }}>
               <TouchableOpacity
                 onPress={() => setShowCallsDrawer(true)}
                 accessibilityLabel={isPt ? 'Ver chamadas anteriores' : 'View previous calls'}
@@ -657,10 +662,22 @@ export default function LiveVoiceTab() {
                   backgroundColor: '#FFFFFF',
                   borderWidth: 1, borderColor: 'rgba(22,21,58,0.10)',
                   alignItems: 'center', justifyContent: 'center',
-                  alignSelf: 'flex-end',
                 }}
               >
                 <ClockCounterClockwise size={20} color={C.textMuted} weight="regular" />
+              </TouchableOpacity>
+              <TouchableOpacity
+                onPress={() => setShowHelp(true)}
+                accessibilityLabel={isPt ? 'Ajuda' : 'Help'}
+                hitSlop={{ top: 8, bottom: 8, left: 8, right: 8 }}
+                style={{
+                  width: 44, height: 44, borderRadius: 22,
+                  backgroundColor: '#FFFFFF',
+                  borderWidth: 1, borderColor: 'rgba(22,21,58,0.10)',
+                  alignItems: 'center', justifyContent: 'center',
+                }}
+              >
+                <Question size={20} color={C.textMuted} weight="regular" />
               </TouchableOpacity>
             </View>
 
@@ -734,6 +751,74 @@ export default function LiveVoiceTab() {
         onClose={() => setShowTranscript(false)}
       />
 
+      {/* ── Help modal (bottom sheet) ── */}
+      <Modal visible={showHelp} transparent animationType="fade" onRequestClose={() => setShowHelp(false)}>
+        <Pressable
+          onPress={() => setShowHelp(false)}
+          style={{ flex: 1, justifyContent: 'flex-end', backgroundColor: 'rgba(0,0,0,0.4)' }}
+        >
+          <Pressable
+            onPress={(e) => e.stopPropagation()}
+            style={{
+              backgroundColor: '#FFFFFF',
+              borderTopLeftRadius: 24, borderTopRightRadius: 24,
+              paddingHorizontal: 24, paddingTop: 18, paddingBottom: 28,
+            }}
+          >
+            <View style={{ width: 36, height: 4, borderRadius: 2, backgroundColor: 'rgba(22,21,58,0.15)', alignSelf: 'center', marginBottom: 16 }} />
+
+            <View style={{ flexDirection: 'row', alignItems: 'center', marginBottom: 14 }}>
+              <AppText style={{ fontSize: 17, fontWeight: '800', color: C.textWhite, flex: 1 }}>
+                {isPt ? 'Como usar o Live Voice' : 'How Live Voice works'}
+              </AppText>
+              <TouchableOpacity onPress={() => setShowHelp(false)}>
+                <X size={20} color={C.textMuted} weight="bold" />
+              </TouchableOpacity>
+            </View>
+
+            <View style={{ gap: 14 }}>
+              <LVHelpRow
+                title={isPt ? 'Conversa em tempo real' : 'Real-time conversation'}
+                desc={isPt
+                  ? 'Toque em "Conversar" pra falar com a Charlotte por voz. Ela ouve, responde e mostra legendas em inglês na tela.'
+                  : 'Tap "Talk" to chat with Charlotte using your voice. She listens, replies, and shows English captions on screen.'}
+              />
+              <LVHelpRow
+                title={isPt ? 'Legendas e tradução' : 'Captions and translation'}
+                desc={isPt
+                  ? 'As legendas aparecem em inglês conforme a Charlotte fala. Toque na legenda pra ver a tradução em português.'
+                  : 'Captions appear in English as Charlotte speaks. Tap any caption to see the translation.'}
+              />
+              <LVHelpRow
+                title={isPt ? 'Pool mensal' : 'Monthly pool'}
+                desc={isPt
+                  ? 'Você tem uma quota de minutos por mês. O anel mostra quanto já usou. Ao zerar, o pool renova no início do próximo mês.'
+                  : 'You have a monthly minutes quota. The ring shows usage. When it hits zero, the pool resets next month.'}
+              />
+              <LVHelpRow
+                title={isPt ? 'Histórico de chamadas' : 'Call history'}
+                desc={isPt
+                  ? 'Cada chamada vira um resumo curto no drawer (ícone de relógio). Toque numa chamada pra ver a transcrição completa.'
+                  : 'Each call becomes a short summary in the drawer (clock icon). Tap a call to see the full transcript.'}
+              />
+            </View>
+          </Pressable>
+        </Pressable>
+      </Modal>
+
+    </View>
+  );
+}
+
+function LVHelpRow({ title, desc }: { title: string; desc: string }) {
+  return (
+    <View>
+      <AppText style={{ fontSize: 14, fontWeight: '800', color: '#1E1D45', marginBottom: 2 }}>
+        {title}
+      </AppText>
+      <AppText style={{ fontSize: 13, color: '#3B3A5A', lineHeight: 19 }}>
+        {desc}
+      </AppText>
     </View>
   );
 }
