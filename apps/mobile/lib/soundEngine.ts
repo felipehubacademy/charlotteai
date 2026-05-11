@@ -110,100 +110,21 @@ const NOTES: Record<string, number> = {
 
 type Melody = NoteSpec[];
 
-const MELODIES: Record<SoundName, Melody> = {
-  // ── XP gained: dois tons rápidos e ascendentes (tipo "coin" Duolingo) ──────
-  xp_gained: [
-    { freq: NOTES.E5, durMs:  70, amp: 0.28, harmonics: 2, attackMs: 4, releaseMs: 30 },
-    { freq: NOTES.A5, durMs: 110, amp: 0.30, harmonics: 2, attackMs: 4, releaseMs: 55 },
-  ],
-
-  // ── Achievement common: fanfara simples 3 notas ───────────────────────────
-  achievement_common: [
-    { freq: NOTES.C5, durMs:  95, amp: 0.30, harmonics: 3, attackMs: 5, releaseMs: 35 },
-    { freq: NOTES.E5, durMs:  95, amp: 0.30, harmonics: 3, attackMs: 5, releaseMs: 35 },
-    { freq: NOTES.G5, durMs: 160, amp: 0.32, harmonics: 3, attackMs: 5, releaseMs: 70 },
-  ],
-
-  // ── Achievement rare: 4 notas, harmônicos ricos ───────────────────────────
-  achievement_rare: [
-    { freq: NOTES.G4, durMs: 100, amp: 0.28, harmonics: 4, attackMs: 6, releaseMs: 40 },
-    { freq: NOTES.C5, durMs: 100, amp: 0.30, harmonics: 4, attackMs: 6, releaseMs: 40 },
-    { freq: NOTES.E5, durMs: 100, amp: 0.30, harmonics: 4, attackMs: 6, releaseMs: 40 },
-    { freq: NOTES.C6, durMs: 200, amp: 0.33, harmonics: 4, attackMs: 8, releaseMs: 90 },
-  ],
-
-  // ── Achievement epic: fanfara ascendente com crescendo ────────────────────
-  achievement_epic: [
-    { freq: NOTES.C5, durMs: 110, amp: 0.28, harmonics: 4, attackMs: 7, releaseMs: 40 },
-    { freq: NOTES.E5, durMs: 110, amp: 0.30, harmonics: 4, attackMs: 7, releaseMs: 40 },
-    { freq: NOTES.G5, durMs: 110, amp: 0.33, harmonics: 4, attackMs: 7, releaseMs: 40 },
-    { freq: NOTES.C6, durMs: 240, amp: 0.38, harmonics: 5, attackMs: 9, releaseMs:110 },
-  ],
-
-  // ── Achievement legendary: fanfara épica 5 notas (máximo impacto) ─────────
-  achievement_legendary: [
-    { freq: NOTES.C5, durMs: 120, amp: 0.30, harmonics: 5, attackMs: 8,  releaseMs:  45 },
-    { freq: NOTES.E5, durMs: 120, amp: 0.32, harmonics: 5, attackMs: 8,  releaseMs:  45 },
-    { freq: NOTES.G5, durMs: 120, amp: 0.35, harmonics: 5, attackMs: 8,  releaseMs:  45 },
-    { freq: NOTES.C6, durMs: 150, amp: 0.38, harmonics: 5, attackMs: 8,  releaseMs:  60 },
-    { freq: NOTES.E6, durMs: 300, amp: 0.42, harmonics: 5, attackMs: 10, releaseMs: 140 },
-  ],
-
-  // ── Streak alive: três notas quentes e staccato ───────────────────────────
-  streak_alive: [
-    { freq: NOTES.F4, durMs:  80, amp: 0.28, harmonics: 3, attackMs: 4, releaseMs: 30 },
-    { freq: NOTES.A4, durMs:  80, amp: 0.30, harmonics: 3, attackMs: 4, releaseMs: 30 },
-    { freq: NOTES.C5, durMs: 130, amp: 0.32, harmonics: 3, attackMs: 5, releaseMs: 60 },
-  ],
-
-  // ── Daily goal: melodia celebratória ascendente ───────────────────────────
-  daily_goal: [
-    { freq: NOTES.C5, durMs:  95, amp: 0.30, harmonics: 4, attackMs: 6, releaseMs: 35 },
-    { freq: NOTES.G5, durMs:  95, amp: 0.32, harmonics: 4, attackMs: 6, releaseMs: 35 },
-    { freq: NOTES.E5, durMs:  95, amp: 0.32, harmonics: 4, attackMs: 6, releaseMs: 35 },
-    { freq: NOTES.G5, durMs:  95, amp: 0.35, harmonics: 4, attackMs: 6, releaseMs: 35 },
-    { freq: NOTES.C6, durMs: 240, amp: 0.40, harmonics: 4, attackMs: 8, releaseMs:110 },
-  ],
-
+// PCM synth fallback APENAS para sons curtos e simples (1-2 notas).
+// Sons ricos (achievements, fanfares, sparkle sweeps) NAO tem fallback —
+// quando CDN falha, getUri() retorna null e o engine pula o play em silencio.
+// (PCM senoidal soa "pii pii" pra sons orquestrais — pior UX que silencio.)
+const MELODIES: Partial<Record<SoundName, Melody>> = {
   // ── Answer correct: "ding-ding" rápido e ascendente ──────────────────────
-  // Mais curto e discreto que xp_gained — não compete com o feedback visual
   answer_correct: [
     { freq: NOTES.G5, durMs:  45, amp: 0.24, harmonics: 2, attackMs: 3, releaseMs: 22 },
     { freq: NOTES.C6, durMs:  80, amp: 0.26, harmonics: 2, attackMs: 3, releaseMs: 45 },
   ],
 
   // ── Answer wrong: "bwomp" descendente, grave e curto ─────────────────────
-  // Deve comunicar "errado" sem ser punitivo — baixo, macio, breve
   answer_wrong: [
     { freq: NOTES.E4, durMs:  55, amp: 0.22, harmonics: 1, attackMs: 3, releaseMs: 28 },
     { freq: NOTES.C4, durMs: 100, amp: 0.20, harmonics: 1, attackMs: 3, releaseMs: 60 },
-  ],
-
-  // ── Topic complete: fanfara breve ascendente ─────────────────────────────
-  topic_complete: [
-    { freq: NOTES.C5, durMs: 100, amp: 0.30, harmonics: 4, attackMs: 6, releaseMs: 40 },
-    { freq: NOTES.E5, durMs: 100, amp: 0.32, harmonics: 4, attackMs: 6, releaseMs: 40 },
-    { freq: NOTES.G5, durMs: 100, amp: 0.34, harmonics: 4, attackMs: 6, releaseMs: 40 },
-    { freq: NOTES.C6, durMs: 220, amp: 0.38, harmonics: 4, attackMs: 8, releaseMs: 100 },
-  ],
-
-  // ── Module complete: celebracao cinematografica (maior que topic) ────────
-  module_complete: [
-    { freq: NOTES.C5, durMs: 120, amp: 0.30, harmonics: 5, attackMs: 8,  releaseMs:  45 },
-    { freq: NOTES.E5, durMs: 120, amp: 0.32, harmonics: 5, attackMs: 8,  releaseMs:  45 },
-    { freq: NOTES.G5, durMs: 120, amp: 0.35, harmonics: 5, attackMs: 8,  releaseMs:  45 },
-    { freq: NOTES.C6, durMs: 140, amp: 0.38, harmonics: 5, attackMs: 8,  releaseMs:  60 },
-    { freq: NOTES.G5, durMs:  90, amp: 0.32, harmonics: 5, attackMs: 6,  releaseMs:  40 },
-    { freq: NOTES.E6, durMs: 320, amp: 0.42, harmonics: 5, attackMs: 10, releaseMs: 150 },
-  ],
-
-  // ── Brand intro (toca em todo cold start) ────────────────────────────────
-  // Fallback PCM se CDN falhar: arpeggio sparkle ascendente em Do maior.
-  intro_app: [
-    { freq: NOTES.C5, durMs:  90, amp: 0.28, harmonics: 4, attackMs: 5, releaseMs: 40 },
-    { freq: NOTES.E5, durMs:  90, amp: 0.30, harmonics: 4, attackMs: 5, releaseMs: 40 },
-    { freq: NOTES.G5, durMs:  90, amp: 0.32, harmonics: 4, attackMs: 5, releaseMs: 40 },
-    { freq: NOTES.C6, durMs: 280, amp: 0.36, harmonics: 4, attackMs: 8, releaseMs: 120 },
   ],
 };
 
@@ -342,6 +263,7 @@ class SoundEngine {
 
     try {
       const uri = await this.getUri(name);
+      if (!uri) return; // CDN indisponivel e sem fallback PCM definido para este som
 
       // Toca mesmo em silent mode — app de aprendizado, usuario abre esperando
       // ouvir feedback. Se quiser silencio total, ha o toggle "Sons" em Preferencias.
@@ -374,6 +296,7 @@ class SoundEngine {
 
   private estimatePcmDurMs(name: SoundName): number {
     const melody = MELODIES[name];
+    if (!melody) return 1500; // default conservador (so usado quando uri eh .wav e MELODIES nao tem entry — nao deveria acontecer)
     return melody.reduce((sum, n) => sum + n.durMs, 0);
   }
 
@@ -419,22 +342,34 @@ class SoundEngine {
     }
   }
 
-  private async getUri(name: SoundName): Promise<string> {
+  private async getUri(name: SoundName): Promise<string | null> {
     const variant = this.pickVariant(name);
     const cacheKey = variant ? `${name}_v${variant}` : name;
 
     const cached = this.uriCache.get(cacheKey);
     if (cached) return cached;
 
+    // Tenta o CDN. Se OK, cacheia. Se falhar:
+    //   - SE existe MELODIES[name]: usa synth PCM como fallback mas NAO cacheia
+    //     (assim a proxima play tenta o CDN de novo — race condition durante
+    //      preload nao trava no fallback PCM pra sempre)
+    //   - SE NAO existe MELODIES (ex: intro_app que e Mixkit puro): retorna null
+    //     (engine ignora o play em vez de tocar "pii pii" sem sentido)
     const voiceUri = await this.tryVoiceUri(name, variant);
-    const uri = voiceUri ?? await this.synthUri(name);
-
-    this.uriCache.set(cacheKey, uri);
-    return uri;
+    if (voiceUri) {
+      this.uriCache.set(cacheKey, voiceUri);
+      return voiceUri;
+    }
+    if (MELODIES[name]) {
+      return await this.synthUri(name);
+    }
+    return null;
   }
 
   private async synthUri(name: SoundName): Promise<string> {
-    const base64 = buildMelodyWav(MELODIES[name]);
+    const melody = MELODIES[name];
+    if (!melody) throw new Error(`No MELODIES entry for ${name} — caller must check before invoking synthUri`);
+    const base64 = buildMelodyWav(melody);
     const uri    = `${FileSystem.cacheDirectory}sfx_v3_synth_${name}.wav`;
     await FileSystem.writeAsStringAsync(uri, base64, {
       encoding: FileSystem.EncodingType.Base64,
