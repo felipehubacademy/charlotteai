@@ -389,22 +389,23 @@ export default function ChatInputBar({
 
           {/* Input pill — mesma altura do chat/pronunciation */}
           <View style={[styles.pill, { flex: 1, paddingHorizontal: 16, paddingVertical: 8 }]}>
-            <TextInput
-              value={text}
-              onChangeText={setText}
-              placeholder={isNovice ? 'Digite em inglês...' : 'Type in English...'}
-              placeholderTextColor={C.navyLight}
-              style={{
-                color: C.navy, fontSize: 15, lineHeight: 22, maxHeight: 120, flex: 1,
-                textAlignVertical: 'center',                          // Android
-                paddingTop: Platform.OS === 'ios' ? 4 : 0,            // iOS centering nudge
-                paddingBottom: 0,
-              }}
-              multiline
-              returnKeyType="default"
-              editable={!disabled}
-              onSubmitEditing={hasText ? sendText : undefined}
-            />
+            <View style={{ flex: 1, justifyContent: 'center', minHeight: 28 }}>
+              <TextInput
+                value={text}
+                onChangeText={setText}
+                placeholder={isNovice ? 'Digite em inglês...' : 'Type in English...'}
+                placeholderTextColor={C.navyLight}
+                style={{
+                  color: C.navy, fontSize: 15, lineHeight: 22, maxHeight: 120,
+                  textAlignVertical: 'center',     // Android
+                  padding: 0,                      // iOS: remove default internal padding
+                }}
+                multiline
+                returnKeyType="default"
+                editable={!disabled}
+                onSubmitEditing={hasText ? sendText : undefined}
+              />
+            </View>
           </View>
 
           {/* Send button — sempre verde (consistente com mic dos outros modos),
@@ -506,22 +507,23 @@ export default function ChatInputBar({
 
           {/* Text input */}
           {!isPreview && !isRecording && (
-            <TextInput
-              value={text}
-              onChangeText={setText}
-              placeholder={isNovice ? 'Digite em inglês...' : 'Type in English...'}
-              placeholderTextColor={C.navyLight}
-              style={{
-                color: C.navy, fontSize: 15, lineHeight: 22, maxHeight: 120, flex: 1,
-                textAlignVertical: 'center',                          // Android
-                paddingTop: Platform.OS === 'ios' ? 4 : 0,            // iOS centering nudge
-                paddingBottom: 0,
-              }}
-              multiline
-              returnKeyType="default"
-              editable={!disabled}
-              onSubmitEditing={hasText ? sendText : undefined}
-            />
+            <View style={{ flex: 1, justifyContent: 'center', minHeight: 28 }}>
+              <TextInput
+                value={text}
+                onChangeText={setText}
+                placeholder={isNovice ? 'Digite em inglês...' : 'Type in English...'}
+                placeholderTextColor={C.navyLight}
+                style={{
+                  color: C.navy, fontSize: 15, lineHeight: 22, maxHeight: 120,
+                  textAlignVertical: 'center',     // Android
+                  padding: 0,                      // iOS: remove default internal padding
+                }}
+                multiline
+                returnKeyType="default"
+                editable={!disabled}
+                onSubmitEditing={hasText ? sendText : undefined}
+              />
+            </View>
           )}
         </View>
 
