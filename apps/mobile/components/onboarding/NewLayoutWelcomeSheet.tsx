@@ -3,9 +3,16 @@
 //
 // Aparece 1x por device. Flag em SecureStore: NEW_LAYOUT_WELCOME_DONE.
 // Mostrado a partir do primeiro foco na Home tab.
+//
+// Animação: content slide up + backdrop fade in (padrão Apple/Notion). RN
+// Modal animationType=fade fade tudo junto e o slide nativo desce a sombra
+// também — usamos animationType=none + Animated.Value manual.
 
-import React from 'react';
-import { Modal, Pressable, View, TouchableOpacity, Platform } from 'react-native';
+import React, { useEffect, useRef, useState } from 'react';
+import {
+  Modal, Pressable, View, TouchableOpacity, Platform, Dimensions,
+  Animated, Easing,
+} from 'react-native';
 import {
   House, Phone, Lightning, Notepad, Rocket, UserCircle,
 } from 'phosphor-react-native';
@@ -41,77 +48,118 @@ interface Props {
   onClose: () => void;
 }
 
+const SCREEN_H = Dimensions.get('window').height;
+
 export function NewLayoutWelcomeSheet({ visible, onClose }: Props) {
+  // Modal stays mounted enquanto animacao roda — desmonta no fim do fade-out
+  const [mounted, setMounted] = useState(false);
+  const backdropOpacity = useRef(new Animated.Value(0)).current;
+  const sheetTranslateY = useRef(new Animated.Value(SCREEN_H)).current;
+
+  useEffect(() => {
+    if (visible) {
+      setMounted(true);
+      Animated.parallel([
+        Animated.timing(backdropOpacity, { toValue: 1, duration: 220, useNativeDriver: true }),
+        Animated.timing(sheetTranslateY, {
+          toValue: 0,
+          duration: 320,
+          easing: Easing.out(Easing.cubic),
+          useNativeDriver: true,
+        }),
+      ]).start();
+    } else if (mounted) {
+      Animated.parallel([
+        Animated.timing(backdropOpacity, { toValue: 0, duration: 200, useNativeDriver: true }),
+        Animated.timing(sheetTranslateY, {
+          toValue: SCREEN_H,
+          duration: 260,
+          easing: Easing.in(Easing.cubic),
+          useNativeDriver: true,
+        }),
+      ]).start(() => setMounted(false));
+    }
+  }, [visible, mounted, backdropOpacity, sheetTranslateY]);
+
+  if (!mounted) return null;
+
   return (
-    <Modal visible={visible} transparent animationType="slide" onRequestClose={onClose}>
-      <Pressable
-        onPress={onClose}
-        style={{ flex: 1, justifyContent: 'flex-end', backgroundColor: 'rgba(0,0,0,0.45)' }}
+    <Modal visible transparent animationType="none" onRequestClose={onClose} statusBarTranslucent>
+      <Animated.View
+        style={{
+          flex: 1,
+          backgroundColor: 'rgba(0,0,0,0.45)',
+          opacity: backdropOpacity,
+          justifyContent: 'flex-end',
+        }}
       >
-        <Pressable
-          onPress={(e) => e.stopPropagation()}
-          style={{
-            backgroundColor: '#FFFFFF',
-            borderTopLeftRadius: 24,
-            borderTopRightRadius: 24,
-            paddingHorizontal: 24,
-            paddingTop: 16,
-            paddingBottom: Platform.OS === 'ios' ? 32 : 24,
-          }}
-        >
-          {/* Drag handle */}
-          <View style={{
-            width: 40, height: 4, borderRadius: 2,
-            backgroundColor: 'rgba(22,21,58,0.15)',
-            alignSelf: 'center', marginBottom: 18,
-          }} />
-
-          <AppText style={{ fontSize: 20, fontWeight: '800', color: C.navy, textAlign: 'center', marginBottom: 6 }}>
-            Bem-vindo ao novo layout
-          </AppText>
-          <AppText style={{ fontSize: 13, color: C.navyMid, textAlign: 'center', marginBottom: 22, paddingHorizontal: 8 }}>
-            As mesmas features de sempre, só reorganizadas nas abas embaixo. Aqui vai um mapa rápido:
-          </AppText>
-
-          <View style={{ gap: 14, marginBottom: 24 }}>
-            {TABS.map((t, i) => (
-              <View key={i} style={{ flexDirection: 'row', alignItems: 'center', gap: 12 }}>
-                <View style={{
-                  width: 36, height: 36, borderRadius: 10,
-                  backgroundColor: C.iconBg,
-                  alignItems: 'center', justifyContent: 'center',
-                  flexShrink: 0,
-                }}>
-                  <t.Icon size={20} color={C.iconColor} weight="fill" />
-                </View>
-                <View style={{ flex: 1 }}>
-                  <AppText style={{ fontSize: 14, fontWeight: '800', color: C.navy }}>
-                    {t.title}
-                  </AppText>
-                  <AppText style={{ fontSize: 12, color: C.navyMid, lineHeight: 17, marginTop: 1 }}>
-                    {t.desc}
-                  </AppText>
-                </View>
-              </View>
-            ))}
-          </View>
-
-          <TouchableOpacity
-            onPress={onClose}
-            activeOpacity={0.85}
+        <Pressable onPress={onClose} style={{ flex: 1 }} />
+        <Animated.View style={{ transform: [{ translateY: sheetTranslateY }] }}>
+          <Pressable
+            onPress={(e) => e.stopPropagation()}
             style={{
-              backgroundColor: C.green,
-              borderRadius: 16,
-              paddingVertical: 15,
-              alignItems: 'center',
+              backgroundColor: '#FFFFFF',
+              borderTopLeftRadius: 24,
+              borderTopRightRadius: 24,
+              paddingHorizontal: 24,
+              paddingTop: 16,
+              paddingBottom: Platform.OS === 'ios' ? 32 : 24,
             }}
           >
-            <AppText style={{ fontSize: 15, fontWeight: '800', color: C.navy }}>
-              Entendi, vamos lá
+            {/* Drag handle */}
+            <View style={{
+              width: 40, height: 4, borderRadius: 2,
+              backgroundColor: 'rgba(22,21,58,0.15)',
+              alignSelf: 'center', marginBottom: 18,
+            }} />
+
+            <AppText style={{ fontSize: 20, fontWeight: '800', color: C.navy, textAlign: 'center', marginBottom: 6 }}>
+              Bem-vindo ao novo layout
             </AppText>
-          </TouchableOpacity>
-        </Pressable>
-      </Pressable>
+            <AppText style={{ fontSize: 13, color: C.navyMid, textAlign: 'center', marginBottom: 22, paddingHorizontal: 8 }}>
+              As mesmas features de sempre, só reorganizadas nas abas embaixo. Aqui vai um mapa rápido:
+            </AppText>
+
+            <View style={{ gap: 14, marginBottom: 24 }}>
+              {TABS.map((t, i) => (
+                <View key={i} style={{ flexDirection: 'row', alignItems: 'center', gap: 12 }}>
+                  <View style={{
+                    width: 36, height: 36, borderRadius: 10,
+                    backgroundColor: C.iconBg,
+                    alignItems: 'center', justifyContent: 'center',
+                    flexShrink: 0,
+                  }}>
+                    <t.Icon size={20} color={C.iconColor} weight="fill" />
+                  </View>
+                  <View style={{ flex: 1 }}>
+                    <AppText style={{ fontSize: 14, fontWeight: '800', color: C.navy }}>
+                      {t.title}
+                    </AppText>
+                    <AppText style={{ fontSize: 12, color: C.navyMid, lineHeight: 17, marginTop: 1 }}>
+                      {t.desc}
+                    </AppText>
+                  </View>
+                </View>
+              ))}
+            </View>
+
+            <TouchableOpacity
+              onPress={onClose}
+              activeOpacity={0.85}
+              style={{
+                backgroundColor: C.green,
+                borderRadius: 16,
+                paddingVertical: 15,
+                alignItems: 'center',
+              }}
+            >
+              <AppText style={{ fontSize: 15, fontWeight: '800', color: C.navy }}>
+                Entendi, vamos lá
+              </AppText>
+            </TouchableOpacity>
+          </Pressable>
+        </Animated.View>
+      </Animated.View>
     </Modal>
   );
 }
