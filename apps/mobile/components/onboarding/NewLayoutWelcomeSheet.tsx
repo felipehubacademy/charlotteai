@@ -10,12 +10,13 @@
 
 import React, { useEffect, useRef, useState } from 'react';
 import {
-  Modal, Pressable, View, TouchableOpacity, Platform, Dimensions,
+  Modal, Pressable, View, TouchableOpacity, Dimensions,
   Animated, Easing,
 } from 'react-native';
 import {
   House, Phone, Lightning, Notepad, Rocket, UserCircle,
 } from 'phosphor-react-native';
+import { useBottomTabBarHeight } from '@react-navigation/bottom-tabs';
 import { AppText } from '@/components/ui/Text';
 
 const C = {
@@ -55,6 +56,9 @@ export function NewLayoutWelcomeSheet({ visible, onClose }: Props) {
   const [mounted, setMounted] = useState(false);
   const backdropOpacity = useRef(new Animated.Value(0)).current;
   const sheetTranslateY = useRef(new Animated.Value(SCREEN_H)).current;
+  // Tab bar height inclui safe area no Android — usamos pra deixar o navbar
+  // visivel debaixo do sheet (usuario ve os tabs sendo descritos).
+  const tabBarHeight = useBottomTabBarHeight();
 
   useEffect(() => {
     if (visible) {
@@ -85,16 +89,30 @@ export function NewLayoutWelcomeSheet({ visible, onClose }: Props) {
 
   return (
     <Modal visible transparent animationType="none" onRequestClose={onClose} statusBarTranslucent>
-      <Animated.View
-        style={{
-          flex: 1,
-          backgroundColor: 'rgba(0,0,0,0.45)',
-          opacity: backdropOpacity,
-          justifyContent: 'flex-end',
-        }}
-      >
-        <Pressable onPress={onClose} style={{ flex: 1 }} />
-        <Animated.View style={{ transform: [{ translateY: sheetTranslateY }] }}>
+      <View style={{ flex: 1 }}>
+        {/* Backdrop dim — ocupa só ATÉ o topo do tab bar. Area abaixo (onde
+            o tab bar vive na tela) fica transparente, deixando o navbar
+            do app visivel pro usuario conectar o conteudo do sheet aos
+            tabs descritos. */}
+        <Animated.View
+          style={{
+            position: 'absolute',
+            top: 0, left: 0, right: 0,
+            bottom: tabBarHeight,
+            backgroundColor: 'rgba(0,0,0,0.45)',
+            opacity: backdropOpacity,
+          }}
+        >
+          <Pressable onPress={onClose} style={{ flex: 1 }} />
+        </Animated.View>
+
+        {/* Sheet sit acima do tab bar */}
+        <Animated.View style={{
+          position: 'absolute',
+          left: 0, right: 0,
+          bottom: tabBarHeight,
+          transform: [{ translateY: sheetTranslateY }],
+        }}>
           <Pressable
             onPress={(e) => e.stopPropagation()}
             style={{
@@ -103,7 +121,7 @@ export function NewLayoutWelcomeSheet({ visible, onClose }: Props) {
               borderTopRightRadius: 24,
               paddingHorizontal: 24,
               paddingTop: 16,
-              paddingBottom: Platform.OS === 'ios' ? 32 : 24,
+              paddingBottom: 24,
             }}
           >
             {/* Drag handle */}
@@ -159,7 +177,7 @@ export function NewLayoutWelcomeSheet({ visible, onClose }: Props) {
             </TouchableOpacity>
           </Pressable>
         </Animated.View>
-      </Animated.View>
+      </View>
     </Modal>
   );
 }
