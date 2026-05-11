@@ -2,7 +2,7 @@
 // Live Voice tab — hero com video da Charlotte + ring de pool mensal +
 // resumo da última chamada + botão Start now. Beta only (new_layout).
 
-import React, { useState, useCallback, useMemo } from 'react';
+import React, { useState, useCallback, useMemo, useEffect, useRef } from 'react';
 import {
   View, ScrollView, TouchableOpacity, ActivityIndicator, Image,
   RefreshControl, Modal, Pressable, Dimensions, Animated, Easing, Platform,
@@ -16,6 +16,7 @@ import { useVideoPlayer, VideoView } from 'expo-video';
 import { Phone, XCircle, ClockCounterClockwise, CaretRight, Trash, Question, X } from 'phosphor-react-native';
 import { AppText } from '@/components/ui/Text';
 import { HeaderPills } from '@/components/ui/HeaderPills';
+import { useTour } from '@/lib/tourContext';
 import { useAuth } from '@/hooks/useAuth';
 import { usePaywallContext } from '@/lib/paywallContext';
 import { supabase } from '@/lib/supabase';
@@ -442,6 +443,11 @@ export default function LiveVoiceTab() {
   const [showLiveVoice,   setShowLiveVoice]   = useState(false);
   const [showTranscript,  setShowTranscript]  = useState(false);
   const [showHelp,        setShowHelp]        = useState(false);
+
+  const { startTour } = useTour();
+  const tourCharlotteRef = useRef<View>(null);
+  const tourCtaRef       = useRef<any>(null);
+  const tourActionsRef   = useRef<View>(null);
   const [loading,         setLoading]         = useState(true);
   const [refreshing,      setRefreshing]      = useState(false);
 
@@ -540,6 +546,34 @@ export default function LiveVoiceTab() {
     };
   }, []));
 
+  // Tour livevoice-new (1x via SecureStore TOUR_livevoice-new_DONE)
+  useEffect(() => {
+    if (loading) return;
+    const t = setTimeout(() => {
+      startTour('livevoice-new', [
+        {
+          ref: tourCharlotteRef,
+          spotlightRadius: 24,
+          title: 'Charlotte tá pronta',
+          description: 'Esta é sua tutora ao vivo. Toque no botão Conversar pra iniciar uma chamada de voz real com ela.',
+        },
+        {
+          ref: tourCtaRef,
+          spotlightRadius: 18,
+          title: 'Conversar com Charlotte',
+          description: 'Aqui você começa a chamada. Fale em inglês (ou português, se for Novice) — a Charlotte responde por voz e adapta ao seu nível.',
+        },
+        {
+          ref: tourActionsRef,
+          spotlightRadius: 16,
+          title: 'Histórico e ajuda',
+          description: 'Cada chamada vira um resumo no histórico (relógio). O ícone de ajuda explica como funciona o Live Voice.',
+        },
+      ], 'pt');
+    }, 900);
+    return () => clearTimeout(t);
+  }, [loading, startTour]);
+
   const onRefresh = useCallback(async () => {
     setRefreshing(true);
     await loadData();
@@ -636,7 +670,7 @@ export default function LiveVoiceTab() {
             {/* Container 20px mais curto + vídeo deslocado -10 no topo:
                 corta 10px do topo E 10px do fundo (artefatos do Veo nas
                 duas pontas do frame). */}
-            <View style={{ alignItems: 'center', marginBottom: 24 }}>
+            <View ref={tourCharlotteRef} collapsable={false} style={{ alignItems: 'center', marginBottom: 24 }}>
               <View style={{ width: charW, height: charH - 20, overflow: 'hidden' }}>
                 <VideoView
                   player={liveVoicePlayer}
@@ -649,7 +683,7 @@ export default function LiveVoiceTab() {
 
             {/* ── Botões drawer + help (sempre visíveis pra estabilidade de layout).
                 Drawer mostra empty state quando recentCalls.length === 0. ── */}
-            <View style={{
+            <View ref={tourActionsRef} collapsable={false} style={{
               paddingHorizontal: 24, marginBottom: 12,
               flexDirection: 'row', justifyContent: 'flex-end', gap: 10,
             }}>
@@ -683,6 +717,7 @@ export default function LiveVoiceTab() {
 
             {/* ── CTA primário: Conversar com Charlotte ── */}
             <TouchableOpacity
+              ref={tourCtaRef}
               onPress={startCall}
               disabled={isLimitReached}
               activeOpacity={0.85}

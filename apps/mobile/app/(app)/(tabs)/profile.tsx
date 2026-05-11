@@ -507,38 +507,50 @@ export default function ProfileTab() {
         )}
 
         {/* Tour — admin only */}
-        {profile?.is_admin && (
+        {profile?.beta_features?.includes('new_layout') && (
           <>
-            <SectionTitle label="Tour" />
+            <SectionTitle label="Tour (BETA)" />
             <SettingGroup>
               <SettingRow
                 icon={<Play size={18} color={C.navyMid} weight="regular" />}
-                label={isPt ? 'Refazer tour da Home' : 'Replay Home tour'}
-                onPress={async () => { await resetTour('HOME'); }}
+                label="Refazer tour da Home"
+                onPress={async () => { await resetTour('home-new'); }}
                 chevron
               />
               <SettingRow
                 icon={<Play size={18} color={C.navyMid} weight="regular" />}
-                label={isPt ? 'Refazer tour da Sessão' : 'Replay Learn Session tour'}
+                label="Refazer tour do Live Voice"
+                onPress={async () => { await resetTour('livevoice-new'); }}
+                chevron
+              />
+              <SettingRow
+                icon={<Play size={18} color={C.navyMid} weight="regular" />}
+                label="Refazer tour do Practice"
+                onPress={async () => { await resetTour('practice-new'); }}
+                chevron
+              />
+              <SettingRow
+                icon={<Play size={18} color={C.navyMid} weight="regular" />}
+                label="Refazer tour do Vocabulário"
+                onPress={async () => { await resetTour('vocabulary-new'); }}
+                chevron
+              />
+              <SettingRow
+                icon={<Play size={18} color={C.navyMid} weight="regular" />}
+                label="Refazer tour das Metas"
+                onPress={async () => { await resetTour('goals-new'); }}
+                chevron
+              />
+              <SettingRow
+                icon={<Play size={18} color={C.navyMid} weight="regular" />}
+                label="Refazer tour das mini-aulas"
                 onPress={async () => { await resetTour('learn-session-grammar'); await resetTour('learn-session-pron'); }}
                 chevron
               />
               <SettingRow
                 icon={<Play size={18} color={C.navyMid} weight="regular" />}
-                label={isPt ? 'Refazer tour do Vocab Review' : 'Replay Vocab Review tour'}
+                label="Refazer tour da Revisão SR"
                 onPress={async () => { await resetTour('vocab-review'); }}
-                chevron
-              />
-              <SettingRow
-                icon={<Play size={18} color={C.navyMid} weight="regular" />}
-                label={isPt ? 'Refazer tour da Trilha' : 'Replay Trail tour'}
-                onPress={async () => { await resetTour('learn-trail'); }}
-                chevron
-              />
-              <SettingRow
-                icon={<Play size={18} color={C.navyMid} weight="regular" />}
-                label={isPt ? 'Refazer tour do Vocabulário' : 'Replay Vocabulary tour'}
-                onPress={async () => { await resetTour('my-vocabulary'); }}
                 chevron
               />
             </SettingGroup>

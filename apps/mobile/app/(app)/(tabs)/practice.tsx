@@ -23,6 +23,7 @@ import { TooltipAnchor } from '@/components/ui/TooltipBalloon';
 import { PracticeSuggestionTooltip } from '@/components/practice/PracticeSuggestionTooltip';
 import { TopicPills, Topic } from '@/components/practice/TopicPills';
 import { PronunciationPhraseHint } from '@/components/practice/PronunciationPhraseHint';
+import { useTour } from '@/lib/tourContext';
 import { useChat } from '@/hooks/useChat';
 import { useMessageAudioPlayer } from '@/hooks/useMessageAudioPlayer';
 import { usePaywallContext } from '@/lib/paywallContext';
@@ -102,6 +103,12 @@ export default function PracticeTab() {
   const [rank,   setRank]   = useState<number | null>(null);
   const insets = useSafeAreaInsets();
   const tabBarHeight = useBottomTabBarHeight();
+
+  // Refs do tour
+  const { startTour } = useTour();
+  const tourToggleRef  = useRef<View>(null);
+  const tourInputRef   = useRef<View>(null);
+  const tourActionsRef = useRef<View>(null);
   const screenW = Dimensions.get('window').width;
   const drawerW = Math.round(screenW * 0.82);
 
@@ -131,6 +138,33 @@ export default function PracticeTab() {
   }, [userId]);
 
   useFocusEffect(useCallback(() => { fetchDaysSince(); }, [fetchDaysSince]));
+
+  // Tour practice-new (1x via SecureStore TOUR_practice-new_DONE)
+  useEffect(() => {
+    const t = setTimeout(() => {
+      startTour('practice-new', [
+        {
+          ref: tourToggleRef,
+          spotlightRadius: 20,
+          title: '3 modos de praticar',
+          description: 'Free Chat pra conversar, Gramática pra exercícios pontuais, Pronúncia pra falar. Toque pra trocar — o pontinho colorido mostra o que está em dia ou atrasado.',
+        },
+        {
+          ref: tourInputRef,
+          spotlightRadius: 18,
+          title: 'Como você responde',
+          description: 'Digite ou segure o microfone pra falar. No Free Chat, segure pra gravar áudio (deslize pra esquerda pra cancelar).',
+        },
+        {
+          ref: tourActionsRef,
+          spotlightRadius: 16,
+          title: 'Atalhos',
+          description: 'Nova conversa (+), histórico de conversas (relógio) e ajuda (?). No Free Chat suas conversas ficam salvas pra você retomar quando quiser.',
+        },
+      ], 'pt');
+    }, 700);
+    return () => clearTimeout(t);
+  }, [startTour]);
 
   // Refetch daysSince ao trocar de modo (focus only não cobre mode-switch
   // dentro da tab) e quando uma nova msg é enviada (rastreado por messages.length).
@@ -371,7 +405,7 @@ export default function PracticeTab() {
         keyboardVerticalOffset={Platform.OS === 'ios' ? tabBarHeight + insets.bottom + 12 : 0}
       >
         {/* ── Toggle pill (3 modos, hug content centered) ── */}
-        <View style={{ alignItems: 'center', paddingTop: 12, paddingBottom: 8 }}>
+        <View ref={tourToggleRef} collapsable={false} style={{ alignItems: 'center', paddingTop: 12, paddingBottom: 8 }}>
           <View style={{
             flexDirection: 'row',
             backgroundColor: '#FFFFFF',
@@ -442,7 +476,7 @@ export default function PracticeTab() {
           />
 
           {/* Botões flutuantes bottom-right: histórico (chat only) + ajuda */}
-          <View style={{
+          <View ref={tourActionsRef} collapsable={false} style={{
             position: 'absolute',
             bottom: 10, right: 12,
             flexDirection: 'row', gap: 8,
@@ -524,6 +558,7 @@ export default function PracticeTab() {
         )}
 
         {/* ── Input bar — varia por modo ── */}
+        <View ref={tourInputRef} collapsable={false}>
         <ChatInputBar
           onSendText={mode === 'pronunciation' ? () => {} : sendTextMessage}
           onSendAudio={mode === 'grammar' ? undefined : sendAudioMessage}
@@ -533,6 +568,7 @@ export default function PracticeTab() {
           userLevel={userLevel}
           rateLimited={rateLimited}
         />
+        </View>
       </KeyboardAvoidingView>
 
       {/* ── Drawer de histórico (Free Chat only) — DENTRO do body wrapper ── */}
