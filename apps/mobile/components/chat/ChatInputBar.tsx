@@ -1,10 +1,10 @@
 import React from 'react';
 import {
   View, TextInput, TouchableOpacity, Pressable,
-  Animated, Platform, Easing,
+  Animated, Platform, Easing, PanResponder,
 } from 'react-native';
 import { useAudioPlayer, useAudioPlayerStatus } from 'expo-audio';
-import { ArrowUp, Microphone, X, Play, Pause, Hourglass, Lock } from 'phosphor-react-native';
+import { ArrowUp, ArrowRight, Microphone, X, Play, Pause, Hourglass, Lock, Trash } from 'phosphor-react-native';
 import * as Haptics from 'expo-haptics';
 import { AppText } from '@/components/ui/Text';
 import { useAudioRecorder, PRONUNCIATION_RECORDING_OPTIONS } from '@/hooks/useAudioRecorder';
@@ -100,6 +100,83 @@ export default function ChatInputBar({
   const isPreview    = !!previewUri;
   const hasText      = text.trim().length > 0;
   const releasedRef  = React.useRef(false);
+
+  // ── Swipe-to-cancel (WhatsApp pattern) ───────────────────────────────────
+  // Mic acompanha drag esquerda; threshold 80px → cancela ao soltar.
+  const SWIPE_CANCEL_THRESHOLD = 80;
+  const micTranslateX = React.useRef(new Animated.Value(0)).current;
+  const [willCancel, setWillCancel] = React.useState(false);
+  const willCancelRef = React.useRef(false);
+  // Refs estáveis pras handlers (PanResponder.create captura closure só 1x).
+  const handlersRef = React.useRef({ startRecording, stopRecording, cancelRecording, onSendAudio, disabled, isProcessing, isPreview });
+  React.useEffect(() => {
+    handlersRef.current = { startRecording, stopRecording, cancelRecording, onSendAudio, disabled, isProcessing, isPreview };
+  });
+
+  const panResponder = React.useMemo(() => PanResponder.create({
+    onStartShouldSetPanResponder: () => true,
+    onMoveShouldSetPanResponder:  () => true,
+    onPanResponderGrant: async () => {
+      const h = handlersRef.current;
+      if (h.disabled || h.isProcessing || h.isPreview) return;
+      releasedRef.current = false;
+      willCancelRef.current = false;
+      setWillCancel(false);
+      micTranslateX.setValue(0);
+      Haptics.impactAsync(Haptics.ImpactFeedbackStyle.Medium);
+      await h.startRecording();
+      if (releasedRef.current) await h.cancelRecording();
+    },
+    onPanResponderMove: (_, gs) => {
+      const dx = Math.min(0, gs.dx);     // só esquerda
+      micTranslateX.setValue(dx);
+      const wantCancel = Math.abs(dx) >= SWIPE_CANCEL_THRESHOLD;
+      if (wantCancel !== willCancelRef.current) {
+        willCancelRef.current = wantCancel;
+        setWillCancel(wantCancel);
+        if (wantCancel) Haptics.impactAsync(Haptics.ImpactFeedbackStyle.Heavy);
+      }
+    },
+    onPanResponderRelease: async () => {
+      const h = handlersRef.current;
+      releasedRef.current = true;
+      Animated.timing(micTranslateX, { toValue: 0, duration: 150, useNativeDriver: true }).start();
+      if (willCancelRef.current) {
+        await h.cancelRecording();
+        willCancelRef.current = false;
+        setWillCancel(false);
+        return;
+      }
+      const res = await h.stopRecording();
+      if (res && res.duration >= 1) {
+        Haptics.impactAsync(Haptics.ImpactFeedbackStyle.Light);
+        if (h.onSendAudio) h.onSendAudio(res.uri, res.duration);
+      } else {
+        Haptics.notificationAsync(Haptics.NotificationFeedbackType.Warning);
+      }
+    },
+    onPanResponderTerminate: async () => {
+      const h = handlersRef.current;
+      Animated.timing(micTranslateX, { toValue: 0, duration: 150, useNativeDriver: true }).start();
+      if (willCancelRef.current) await h.cancelRecording();
+      willCancelRef.current = false;
+      setWillCancel(false);
+    },
+  }), [micTranslateX]);
+
+  // Pulse do dot vermelho durante recording
+  const dotPulse = React.useRef(new Animated.Value(1)).current;
+  React.useEffect(() => {
+    if (!isRecording) { dotPulse.setValue(1); return; }
+    const loop = Animated.loop(
+      Animated.sequence([
+        Animated.timing(dotPulse, { toValue: 0.3, duration: 600, useNativeDriver: true }),
+        Animated.timing(dotPulse, { toValue: 1,   duration: 600, useNativeDriver: true }),
+      ])
+    );
+    loop.start();
+    return () => loop.stop();
+  }, [isRecording, dotPulse]);
 
   // Wave animation (chat mode only)
   React.useEffect(() => {
@@ -260,119 +337,70 @@ export default function ChatInputBar({
   if (mode === 'pronunciation') {
     return (
       <View style={wrapper}>
-        <View style={{ flexDirection: 'row', alignItems: 'flex-end', gap: 10 }}>
+        <View style={{ flexDirection: 'row', alignItems: 'center', gap: 10 }}>
 
-          {/* Input pill — label idle / waveform recording / preview */}
-          <View style={[styles.pill, { flex: 1, paddingHorizontal: 16, paddingVertical: 8 }]}>
-
-            {/* Audio preview (mesmo do chat) */}
-            {isPreview && (
-              <View style={{ flexDirection: 'row', alignItems: 'center', gap: 8, flex: 1 }}>
-                <TouchableOpacity
-                  onPress={() => { if (isPlaying) player.pause(); else player.play(); }}
-                  style={{ padding: 2 }}
-                  accessibilityLabel={isPlaying
-                    ? (isNovice ? 'Pausar / Pause' : 'Pause')
-                    : (isNovice ? 'Reproduzir / Play' : 'Play')}
-                  accessibilityRole="button"
-                >
-                  {isPlaying
-                    ? <Pause size={16} color={C.navy} weight="fill" />
-                    : <Play  size={16} color={C.navy} weight="fill" />
-                  }
-                </TouchableOpacity>
-                <View style={{ flex: 1, flexDirection: 'row', alignItems: 'center', height: 28, gap: 2 }}>
-                  {Array.from({ length: BAR_COUNT }).map((_, i) => (
-                    <View key={i} style={{
-                      flex: 1, height: 4 + ((i * 5) % 16), borderRadius: 2,
-                      backgroundColor: C.navy, opacity: isPlaying ? 0.6 : (0.2 + (i % 4) * 0.1),
-                    }} />
-                  ))}
-                </View>
-                <AppText style={{ color: C.navyLight, fontSize: 12, fontVariant: ['tabular-nums'] }}>
-                  {formatDuration(previewDur)}
-                </AppText>
-                <TouchableOpacity
-                  onPress={cancelPreview}
-                  style={{ padding: 2 }}
-                  accessibilityLabel={isNovice ? 'Cancelar / Cancel' : 'Cancel'}
-                  accessibilityRole="button"
-                >
-                  <X size={16} color={C.red} weight="bold" />
-                </TouchableOpacity>
-              </View>
-            )}
-
-            {/* Recording waveform (mesmo do chat) */}
-            {!isPreview && isRecording && (
-              <View style={{ flexDirection: 'row', alignItems: 'center', gap: 8, flex: 1 }}>
-                <View style={{ width: 8, height: 8, borderRadius: 4, backgroundColor: C.red, flexShrink: 0 }} />
-                <View style={{ flex: 1, flexDirection: 'row', alignItems: 'center', height: 28, gap: 2 }}>
-                  {barAnims.map((anim, i) => (
-                    <Animated.View key={i} style={{
-                      flex: 1, height: 22, borderRadius: 2,
-                      backgroundColor: C.navy, opacity: 0.4,
-                      transform: [{ scaleY: anim }],
-                    }} />
-                  ))}
-                </View>
+          {!isRecording ? (
+            // IDLE: texto centralizado + arrow apontando pro mic, sem pill
+            <View style={{
+              flex: 1, flexDirection: 'row', alignItems: 'center',
+              justifyContent: 'center', gap: 8, paddingVertical: 12,
+            }}>
+              <AppText style={{ color: C.navyMid, fontSize: 14, fontWeight: '500' }}>
+                {isNovice ? 'Segure o microfone pra gravar' : 'Hold the mic to record'}
+              </AppText>
+              <ArrowRight size={16} color={C.greenDark} weight="bold" />
+            </View>
+          ) : (
+            // RECORDING: pill simples com dot pulsando + duration + slide hint
+            <View style={[styles.pill, {
+              flex: 1, paddingHorizontal: 16, paddingVertical: 12,
+              backgroundColor: willCancel ? `${C.red}15` : C.pill,
+              borderColor:     willCancel ? `${C.red}40` : C.border,
+            }]}>
+              <View style={{ flexDirection: 'row', alignItems: 'center', flex: 1, gap: 8 }}>
+                <Animated.View style={{
+                  width: 8, height: 8, borderRadius: 4,
+                  backgroundColor: C.red, opacity: dotPulse, flexShrink: 0,
+                }} />
                 <AppText style={{
                   color: C.navy, fontSize: 13, minWidth: 36,
                   ...(Platform.OS === 'ios' ? { fontVariant: ['tabular-nums'] } : { fontFamily: 'monospace' }),
                 }}>
                   {formatDuration(duration)}
                 </AppText>
-                <TouchableOpacity
-                  onPress={() => { Haptics.impactAsync(Haptics.ImpactFeedbackStyle.Light); cancelRecording(); }}
-                  style={{ padding: 2 }}
-                  accessibilityLabel={isNovice ? 'Cancelar gravação / Cancel recording' : 'Cancel recording'}
-                  accessibilityRole="button"
-                >
-                  <X size={16} color={C.red} weight="bold" />
-                </TouchableOpacity>
-              </View>
-            )}
-
-            {/* Idle: label de instrução (não editável) */}
-            {!isPreview && !isRecording && (
-              <View style={{ flex: 1, justifyContent: 'center', minHeight: 28 }}>
-                <AppText style={{ color: C.navyLight, fontSize: 15, lineHeight: 22 }}>
-                  {isNovice ? 'Segure o microfone pra gravar' : 'Hold the mic to record'}
+                <View style={{ flex: 1 }} />
+                <AppText style={{
+                  color:      willCancel ? C.red : C.navyLight,
+                  fontSize:   12,
+                  fontWeight: willCancel ? '700' : '500',
+                }}>
+                  {willCancel
+                    ? (isNovice ? 'Solte pra cancelar' : 'Release to cancel')
+                    : (isNovice ? '← Deslize pra cancelar' : '← Slide to cancel')}
                 </AppText>
               </View>
-            )}
-          </View>
-
-          {/* Action button — preview: send | idle/recording: mic */}
-          {isPreview ? (
-            <TouchableOpacity
-              onPress={sendPreview}
-              style={[styles.actionBtn, { backgroundColor: C.green }]}
-              accessibilityLabel={isNovice ? 'Enviar áudio / Send audio' : 'Send audio'}
-              accessibilityRole="button"
-            >
-              <ArrowUp size={20} color={C.navy} weight="bold" />
-            </TouchableOpacity>
-          ) : (
-            <Pressable
-              onPressIn={micPressIn}
-              onPressOut={micPressOut}
-              disabled={disabled || isProcessing}
-              pressRetentionOffset={{ top: 30, bottom: 30, left: 30, right: 30 }}
-              style={[styles.actionBtn, {
-                backgroundColor: isRecording
-                  ? C.red
-                  : (disabled || isProcessing ? `${C.green}50` : C.green),
-              }]}
-              accessibilityLabel={isNovice ? 'Microfone — segure para gravar / Hold to record' : 'Hold to record audio'}
-              accessibilityRole="button"
-            >
-              {isProcessing
-                ? <Hourglass size={17} color={`${C.navy}60`} weight="regular" />
-                : <Microphone size={20} color={isRecording ? '#FFFFFF' : C.navy} weight="bold" />
-              }
-            </Pressable>
+            </View>
           )}
+
+          {/* Mic com PanResponder (segura → grava | drag esquerda → cancela) */}
+          <Animated.View
+            {...panResponder.panHandlers}
+            style={[styles.actionBtn, {
+              backgroundColor: willCancel
+                ? C.red
+                : isRecording ? C.red
+                : (disabled || isProcessing ? `${C.green}50` : C.green),
+              transform: [{ translateX: micTranslateX }],
+            }]}
+            accessibilityLabel={isNovice ? 'Microfone — segure para gravar / Hold to record' : 'Hold to record audio'}
+            accessibilityRole="button"
+          >
+            {isProcessing
+              ? <Hourglass size={17} color={`${C.navy}60`} weight="regular" />
+              : willCancel
+                ? <Trash size={20} color="#FFFFFF" weight="bold" />
+                : <Microphone size={20} color={isRecording ? '#FFFFFF' : C.navy} weight="bold" />}
+          </Animated.View>
         </View>
       </View>
     );
@@ -387,25 +415,22 @@ export default function ChatInputBar({
       <View style={wrapper}>
         <View style={{ flexDirection: 'row', alignItems: 'flex-end', gap: 10 }}>
 
-          {/* Input pill — mesma altura do chat/pronunciation */}
-          <View style={[styles.pill, { flex: 1, paddingHorizontal: 16, paddingVertical: 8 }]}>
-            <View style={{ flex: 1, justifyContent: 'center', minHeight: 28 }}>
-              <TextInput
-                value={text}
-                onChangeText={setText}
-                placeholder={isNovice ? 'Digite em inglês...' : 'Type in English...'}
-                placeholderTextColor={C.navyLight}
-                style={{
-                  color: C.navy, fontSize: 15, lineHeight: 22, maxHeight: 120,
-                  textAlignVertical: 'center',     // Android
-                  padding: 0,                      // iOS: remove default internal padding
-                }}
-                multiline
-                returnKeyType="default"
-                editable={!disabled}
-                onSubmitEditing={hasText ? sendText : undefined}
-              />
-            </View>
+          {/* Input pill — single line (iOS centraliza nativo) */}
+          <View style={[styles.pill, { flex: 1, paddingHorizontal: 16, paddingVertical: 10 }]}>
+            <TextInput
+              value={text}
+              onChangeText={setText}
+              placeholder={isNovice ? 'Digite em inglês...' : 'Type in English...'}
+              placeholderTextColor={C.navyLight}
+              style={{
+                color: C.navy, fontSize: 15, flex: 1,
+                paddingVertical: 0, paddingHorizontal: 0,
+              }}
+              returnKeyType="send"
+              editable={!disabled}
+              onSubmitEditing={hasText ? sendText : undefined}
+              blurOnSubmit
+            />
           </View>
 
           {/* Send button — sempre verde (consistente com mic dos outros modos),
@@ -432,10 +457,13 @@ export default function ChatInputBar({
   // ══════════════════════════════════════════════════════════
   return (
     <View style={wrapper}>
-      <View style={{ flexDirection: 'row', alignItems: 'flex-end', gap: 10 }}>
+      <View style={{ flexDirection: 'row', alignItems: 'center', gap: 10 }}>
 
-        {/* Input pill — shows text OR waveform OR preview */}
-        <View style={[styles.pill, { flex: 1, paddingHorizontal: 16, paddingVertical: 8 }]}>
+        {/* Input pill — shows text OR recording UI OR preview */}
+        <View style={[styles.pill, {
+          flex: 1, paddingHorizontal: 16, paddingVertical: 10,
+          ...(isRecording && willCancel ? { backgroundColor: `${C.red}15`, borderColor: `${C.red}40` } : {}),
+        }]}>
 
           {/* Audio preview */}
           {isPreview && (
@@ -475,55 +503,48 @@ export default function ChatInputBar({
             </View>
           )}
 
-          {/* Recording waveform */}
+          {/* Recording: dot pulsando + duration + slide-to-cancel hint (sem waveform) */}
           {!isPreview && isRecording && (
-            <View style={{ flexDirection: 'row', alignItems: 'center', gap: 8, flex: 1 }}>
-              <View style={{ width: 8, height: 8, borderRadius: 4, backgroundColor: C.red, flexShrink: 0 }} />
-              <View style={{ flex: 1, flexDirection: 'row', alignItems: 'center', height: 28, gap: 2 }}>
-                {barAnims.map((anim, i) => (
-                  <Animated.View key={i} style={{
-                    flex: 1, height: 22, borderRadius: 2,
-                    backgroundColor: C.navy, opacity: 0.4,
-                    transform: [{ scaleY: anim }],
-                  }} />
-                ))}
-              </View>
+            <View style={{ flexDirection: 'row', alignItems: 'center', flex: 1, gap: 8 }}>
+              <Animated.View style={{
+                width: 8, height: 8, borderRadius: 4,
+                backgroundColor: C.red, opacity: dotPulse, flexShrink: 0,
+              }} />
               <AppText style={{
                 color: C.navy, fontSize: 13, minWidth: 36,
                 ...(Platform.OS === 'ios' ? { fontVariant: ['tabular-nums'] } : { fontFamily: 'monospace' }),
               }}>
                 {formatDuration(duration)}
               </AppText>
-              <TouchableOpacity
-                onPress={() => { Haptics.impactAsync(Haptics.ImpactFeedbackStyle.Light); cancelRecording(); }}
-                style={{ padding: 2 }}
-                accessibilityLabel={isNovice ? 'Cancelar gravação / Cancel recording' : 'Cancel recording'}
-                accessibilityRole="button"
-              >
-                <X size={16} color={C.red} weight="bold" />
-              </TouchableOpacity>
+              <View style={{ flex: 1 }} />
+              <AppText style={{
+                color:      willCancel ? C.red : C.navyLight,
+                fontSize:   12,
+                fontWeight: willCancel ? '700' : '500',
+              }}>
+                {willCancel
+                  ? (isNovice ? 'Solte pra cancelar' : 'Release to cancel')
+                  : (isNovice ? '← Deslize pra cancelar' : '← Slide to cancel')}
+              </AppText>
             </View>
           )}
 
-          {/* Text input */}
+          {/* Text input — single line, iOS centraliza nativo */}
           {!isPreview && !isRecording && (
-            <View style={{ flex: 1, justifyContent: 'center', minHeight: 28 }}>
-              <TextInput
-                value={text}
-                onChangeText={setText}
-                placeholder={isNovice ? 'Digite em inglês...' : 'Type in English...'}
-                placeholderTextColor={C.navyLight}
-                style={{
-                  color: C.navy, fontSize: 15, lineHeight: 22, maxHeight: 120,
-                  textAlignVertical: 'center',     // Android
-                  padding: 0,                      // iOS: remove default internal padding
-                }}
-                multiline
-                returnKeyType="default"
-                editable={!disabled}
-                onSubmitEditing={hasText ? sendText : undefined}
-              />
-            </View>
+            <TextInput
+              value={text}
+              onChangeText={setText}
+              placeholder={isNovice ? 'Digite em inglês...' : 'Type in English...'}
+              placeholderTextColor={C.navyLight}
+              style={{
+                color: C.navy, fontSize: 15, flex: 1,
+                paddingVertical: 0, paddingHorizontal: 0,
+              }}
+              returnKeyType="send"
+              editable={!disabled}
+              onSubmitEditing={hasText ? sendText : undefined}
+              blurOnSubmit
+            />
           )}
         </View>
 
@@ -550,23 +571,25 @@ export default function ChatInputBar({
             <ArrowUp size={20} color={C.navy} weight="bold" />
           </TouchableOpacity>
         ) : (
-          // No text, no preview: mic
-          <Pressable
-            onPressIn={micPressIn}
-            onPressOut={micPressOut}
-            disabled={disabled || isProcessing}
-            pressRetentionOffset={{ top: 30, bottom: 30, left: 30, right: 30 }}
+          // No text, no preview: mic com PanResponder (segure → grava | drag esquerda → cancela)
+          <Animated.View
+            {...panResponder.panHandlers}
             style={[styles.actionBtn, {
-              backgroundColor: disabled || isProcessing ? `${C.green}50` : C.green,
+              backgroundColor: willCancel
+                ? C.red
+                : isRecording ? C.red
+                : (disabled || isProcessing ? `${C.green}50` : C.green),
+              transform: [{ translateX: micTranslateX }],
             }]}
             accessibilityLabel={isNovice ? 'Microfone — segure para gravar / Hold to record' : 'Hold to record audio'}
             accessibilityRole="button"
           >
             {isProcessing
               ? <Hourglass size={17} color={`${C.navy}60`} weight="regular" />
-              : <Microphone size={20} color={C.navy} weight="bold" />
-            }
-          </Pressable>
+              : willCancel
+                ? <Trash size={20} color="#FFFFFF" weight="bold" />
+                : <Microphone size={20} color={isRecording ? '#FFFFFF' : C.navy} weight="bold" />}
+          </Animated.View>
         )}
       </View>
     </View>

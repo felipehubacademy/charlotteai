@@ -363,11 +363,12 @@ export default function PracticeTab() {
       <KeyboardAvoidingView
         style={{ flex: 1 }}
         behavior="padding"
-        // iOS: KAV pushes content up by (keyboardHeight - offset). Subtraimos
-        // insets.bottom porque o input bar perdeu esse padding interno (gap fix);
-        // resultado: push extra de 34px no iPhone com home indicator pra cobrir
-        // a perda. Sem esse ajuste o teclado corta o input bar.
-        keyboardVerticalOffset={Platform.OS === 'ios' ? tabBarHeight - insets.bottom + 12 : 0}
+        // iOS: KAV adiciona padding = (frame.bottom - keyboard.screenY) + offset.
+        // MAIOR offset = MAIS push. Como o input bar perdeu insets.bottom de
+        // padding interno (gap fix), precisamos somar insets.bottom aqui pra
+        // recuperar o push perdido. iPhone com home indicator: tabBarHeight 83
+        // + insets.bottom 34 + 12 = 129. Sem isso o teclado corta o input.
+        keyboardVerticalOffset={Platform.OS === 'ios' ? tabBarHeight + insets.bottom + 12 : 0}
       >
         {/* ── Toggle pill (3 modos, hug content centered) ── */}
         <View style={{ alignItems: 'center', paddingTop: 12, paddingBottom: 8 }}>
