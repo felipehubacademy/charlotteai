@@ -21,7 +21,6 @@ import * as Haptics from 'expo-haptics';
 import { AppText } from '@/components/ui/Text';
 import { supabase } from '@/lib/supabase';
 import { useAuth } from '@/hooks/useAuth';
-import { useTour } from '@/lib/tourContext';
 
 const C = {
   bg:        '#F4F3FA',
@@ -85,11 +84,6 @@ export default function MyVocabularyScreen() {
   // Level accent color — matches review-session and home screen
   const levelAccent = level === 'Novice' ? '#D97706' : level === 'Inter' ? '#7C3AED' : '#0F766E';
 
-  const { startTour } = useTour();
-  const tourSearchRef  = useRef<any>(null);
-  const tourFiltersRef = useRef<any>(null);
-  const tourCardRef    = useRef<any>(null);
-  const tourFABRef     = useRef<any>(null);
 
   const [items,     setItems]    = useState<VocabItem[]>([]);
   const [loading,   setLoading]  = useState(true);
@@ -121,46 +115,6 @@ export default function MyVocabularyScreen() {
   }, [userId]);
 
   useFocusEffect(useCallback(() => { load(); }, [load]));
-
-  useEffect(() => {
-    if (loading || items.length === 0) return;
-    const pt = isPt;
-    startTour('my-vocabulary', [
-      {
-        ref: tourSearchRef,
-        spotlightRadius: 12,
-        title: pt ? 'Buscar' : 'Search',
-        description: pt
-          ? 'Busque qualquer palavra ou definição salva na sua lista.'
-          : 'Search for any word or definition saved in your list.',
-      },
-      {
-        ref: tourFiltersRef,
-        spotlightRadius: 12,
-        title: pt ? 'Filtros' : 'Filters',
-        description: pt
-          ? 'Filtre por categoria: Palavras, Expressões ou Phrasals.'
-          : 'Filter by category: Words, Idioms, or Phrasals.',
-      },
-      {
-        ref: tourCardRef,
-        spotlightRadius: 14,
-        title: pt ? 'Suas palavras' : 'Your words',
-        description: pt
-          ? 'Toque no card para expandir: veja a definição completa, exemplo e quando a palavra volta para revisão.'
-          : 'Tap a card to expand: see the full definition, example, and when the word is due for review.',
-      },
-      {
-        ref: tourFABRef,
-        spotlightRadius: 30,
-        title: pt ? 'Adicionar palavra' : 'Add word',
-        description: pt
-          ? 'Adicione palavras a qualquer momento. Elas entram automaticamente no ciclo de revisão espaçada.'
-          : 'Add words at any time. They automatically enter the spaced repetition review cycle.',
-      },
-    ], pt ? 'pt' : 'en');
-  // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [loading, items.length]);
 
   const filtered = items.filter(i => {
     if (filter !== 'all' && i.category !== filter) return false;
@@ -211,7 +165,7 @@ export default function MyVocabularyScreen() {
 
       {/* Search bar + word count */}
       <View style={{ paddingHorizontal: 16, marginTop: 14, marginBottom: 10, flexDirection: 'row', alignItems: 'center', gap: 10 }}>
-        <View ref={tourSearchRef} collapsable={false} style={{
+        <View style={{
           flex: 1, flexDirection: 'row', alignItems: 'center', gap: 8,
           backgroundColor: C.inputBg, borderRadius: 12, paddingHorizontal: 12, paddingVertical: 9,
         }}>
@@ -234,7 +188,7 @@ export default function MyVocabularyScreen() {
 
       {/* Category filter chips */}
       <ScrollView
-        ref={tourFiltersRef}
+        
         horizontal
         showsHorizontalScrollIndicator={false}
         contentContainerStyle={{ paddingHorizontal: 16, paddingVertical: 2, alignItems: 'center' }}
@@ -308,7 +262,7 @@ export default function MyVocabularyScreen() {
             return (
               <TouchableOpacity
                 key={item.id}
-                ref={index === 0 ? tourCardRef : null}
+                
                 onPress={() => setExpanded(isOpen ? null : item.id)}
                 activeOpacity={0.78}
                 style={{ backgroundColor: C.card, borderRadius: 16, padding: 16, ...cardShadow }}
@@ -383,7 +337,7 @@ export default function MyVocabularyScreen() {
       {/* FAB */}
       {!loading && items.length > 0 && (
         <TouchableOpacity
-          ref={tourFABRef}
+          
           onPress={openAdd}
           style={{
             position: 'absolute', right: 20, bottom: insets.bottom + 20,

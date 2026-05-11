@@ -623,7 +623,7 @@ export default function AdminUsersPage() {
                       { key: 'beta_karaoke',        label: 'Beta: Karaoke (Read Aloud)' },
                       { key: 'beta_new_layout',     label: 'Beta: New Layout (Tab Nav)' },
                       { key: 'beta_openai_tts',     label: 'Beta: OpenAI TTS (coral, gpt-4o-mini-tts)' },
-                      { key: 'is_admin',            label: 'Admin (tour replay + OTA)' },
+                      { key: 'is_admin',            label: 'Admin (OTA + welcome reset)' },
                     ] as { key: keyof Form; label: string }[]).map(({ key, label }) => (
                       <label key={key} style={{ display: 'flex', alignItems: 'center', gap: 10, cursor: 'pointer', fontSize: 13.5, color: 'var(--t2)' }}>
                         <div

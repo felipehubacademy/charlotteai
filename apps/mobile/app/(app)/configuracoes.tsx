@@ -25,7 +25,6 @@ import {
   BookOpen,
   Play,
 } from 'phosphor-react-native';
-import { useTour } from '@/lib/tourContext';
 import { AppText } from '@/components/ui/Text';
 import { useAuth } from '@/hooks/useAuth';
 import { supabase } from '@/lib/supabase';
@@ -132,7 +131,6 @@ function SectionTitle({ label }: { label: string }) {
 export default function ConfiguracoesScreen() {
   const { profile, signOut, refreshProfile } = useAuth();
   const isPt = (profile?.charlotte_level ?? 'Novice') === 'Novice';
-  const { resetTour } = useTour();
   const [deletingAccount, setDeletingAccount]     = React.useState(false);
   const [restoringPurchases, setRestoringPurchases] = React.useState(false);
   const [voiceUsage, setVoiceUsage]               = React.useState<LiveVoiceStatus | null>(null);
@@ -501,55 +499,6 @@ export default function ConfiguracoesScreen() {
               icon={<Microphone size={18} color={C.greenDark} weight="duotone" />}
               label="Read Aloud (Karaoke)"
               onPress={() => router.push('/(app)/karaoke-exercise' as any)}
-              chevron
-            />
-          </>
-        )}
-
-        {/* Tour — admin only */}
-        {profile?.is_admin && (
-          <>
-            <SectionTitle label="Tour" />
-            <SettingRow
-              icon={<Play size={18} color={C.navyMid} weight="duotone" />}
-              label={isPt ? 'Refazer tour da Home' : 'Replay Home tour'}
-              onPress={async () => {
-                await resetTour('HOME');
-                router.back();
-              }}
-              chevron
-            />
-            <SettingRow
-              icon={<Play size={18} color={C.navyMid} weight="duotone" />}
-              label={isPt ? 'Refazer tour da Sessão de Aprendizado' : 'Replay Learn Session tour'}
-              onPress={async () => {
-                await resetTour('learn-session-grammar');
-                await resetTour('learn-session-pron');
-              }}
-              chevron
-            />
-            <SettingRow
-              icon={<Play size={18} color={C.navyMid} weight="duotone" />}
-              label={isPt ? 'Refazer tour do Vocab Review' : 'Replay Vocab Review tour'}
-              onPress={async () => {
-                await resetTour('vocab-review');
-              }}
-              chevron
-            />
-            <SettingRow
-              icon={<Play size={18} color={C.navyMid} weight="duotone" />}
-              label={isPt ? 'Refazer tour da Trilha' : 'Replay Learning Trail tour'}
-              onPress={async () => {
-                await resetTour('learn-trail');
-              }}
-              chevron
-            />
-            <SettingRow
-              icon={<Play size={18} color={C.navyMid} weight="duotone" />}
-              label={isPt ? 'Refazer tour do Meu Vocabulário' : 'Replay My Vocabulary tour'}
-              onPress={async () => {
-                await resetTour('my-vocabulary');
-              }}
               chevron
             />
           </>

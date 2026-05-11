@@ -14,7 +14,6 @@ import {
   ShieldWarning, ArrowsClockwise, Trash, PencilSimple,
   CaretRight, Play,
 } from 'phosphor-react-native';
-import { useTour } from '@/lib/tourContext';
 import { openLink } from '@/lib/openLink';
 import { AppText } from '@/components/ui/Text';
 import { useAuth } from '@/hooks/useAuth';
@@ -141,7 +140,6 @@ export default function ProfileTab() {
   const { profile, signOut, refreshProfile } = useAuth();
   const level  = (profile?.charlotte_level ?? 'Novice') as UserLevel;
   const isPt   = level === 'Novice';
-  const { resetTour } = useTour();
 
   const accent   = LEVEL_ACCENT[level];
   const accentBg = LEVEL_ACCENT_BG[level];
@@ -510,24 +508,12 @@ export default function ProfileTab() {
         {/* Tour — admin only */}
         {profile?.is_admin && (
           <>
-            <SectionTitle label="Tour" />
+            <SectionTitle label="Admin" />
             <SettingGroup>
               <SettingRow
                 icon={<Play size={18} color={C.navyMid} weight="regular" />}
                 label={isPt ? 'Refazer welcome do novo layout' : 'Replay new layout welcome'}
                 onPress={async () => { await SecureStore.deleteItemAsync('NEW_LAYOUT_WELCOME_DONE').catch(() => {}); }}
-                chevron
-              />
-              <SettingRow
-                icon={<Play size={18} color={C.navyMid} weight="regular" />}
-                label={isPt ? 'Refazer tour das mini-aulas' : 'Replay Learn Session tour'}
-                onPress={async () => { await resetTour('learn-session-grammar'); await resetTour('learn-session-pron'); }}
-                chevron
-              />
-              <SettingRow
-                icon={<Play size={18} color={C.navyMid} weight="regular" />}
-                label={isPt ? 'Refazer tour do Vocab Review' : 'Replay Vocab Review tour'}
-                onPress={async () => { await resetTour('vocab-review'); }}
                 chevron
               />
             </SettingGroup>

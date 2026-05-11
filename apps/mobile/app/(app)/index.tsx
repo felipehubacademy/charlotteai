@@ -50,7 +50,6 @@ import { useTheme } from '@/lib/theme';
 import { cacheHomeData, getCachedHomeData } from '@/lib/offlineCache';
 import { useNetworkStatus } from '@/hooks/useNetworkStatus';
 import { usePaywallContext } from '@/lib/paywallContext';
-import { useTour } from '@/lib/tourContext';
 import { getPendingReviews, ReviewItem } from '@/lib/spacedRepetition';
 import { VocabFAB } from '@/components/vocabulary/VocabFAB';
 import { getWeeklyChallenge, fetchWeeklyData, WeeklyChallengeState } from '@/lib/weeklyChallenge';
@@ -586,22 +585,7 @@ function HomeScreenContent() {
   // Prevent concurrent fetchData calls (race condition → double mission grants)
   const isFetchingRef = React.useRef(false);
 
-  // Tour
-  const { startTour }       = useTour();
   const scrollViewRef       = useRef<any>(null);
-  const headerRef           = useRef<any>(null);
-  const charlotteCardRef    = useRef<any>(null);
-  const goalsBannerRef      = useRef<any>(null);
-  const learnTrailRef       = useRef<any>(null);
-  const reviewCardRef       = useRef<any>(null);
-  const myVocabRef          = useRef<any>(null);
-  const grammarRef          = useRef<any>(null);
-  const pronunciationRef    = useRef<any>(null);
-  const chatRef             = useRef<any>(null);
-  const liveVoiceRef        = useRef<any>(null);
-  const vocabFABRef         = useRef<any>(null);
-  const tipBarRef           = useRef<any>(null);
-  const practiceYRef        = useRef(0);
   // streakSoundPlayed: uses module-level var so it survives component remounts
 
   const fetchData = useCallback(async () => {
@@ -737,118 +721,6 @@ function HomeScreenContent() {
   useFocusEffect(useCallback(() => {
     if (userId) fetchData();
   }, [fetchData]));
-
-  // Dispara o tour da home ao focar na tela (re-dispara após resetTour)
-  useFocusEffect(useCallback(() => {
-    if (!data) return;
-    const pt = level === 'Novice';
-    const scrollToPractice = async () => {
-      scrollViewRef.current?.scrollTo({ y: Math.max(0, practiceYRef.current - 100), animated: false });
-      await new Promise<void>(r => setTimeout(r, 180));
-    };
-    startTour('HOME', [
-      {
-        ref: headerRef,
-        spotlightRadius: 20,
-        title: pt ? 'Seu progresso' : 'Your progress',
-        description: pt
-          ? 'Sua sequência de dias, XP total e ranking global. Toque para ver seu histórico completo.'
-          : 'Your daily streak, total XP and global rank. Tap to see your full activity history.',
-      },
-      {
-        ref: charlotteCardRef,
-        spotlightRadius: 22,
-        title: pt ? 'Charlotte, sua tutora' : 'Charlotte, your tutor',
-        description: pt
-          ? 'A Charlotte te saúda com uma mensagem personalizada toda vez que você abre o app. O anel mostra sua meta de XP diária.'
-          : 'Charlotte greets you with a personalised message every time you open the app. The ring tracks your daily XP goal.',
-      },
-      {
-        ref: goalsBannerRef,
-        spotlightRadius: 14,
-        title: pt ? 'Metas diárias' : 'Goals',
-        description: pt
-          ? 'Missões diárias e desafio semanal com XP bônus. Complete para manter sua sequência.'
-          : 'Daily missions and weekly challenge with bonus XP. Complete them to keep your streak going.',
-      },
-      {
-        ref: learnTrailRef,
-        spotlightRadius: 18,
-        title: pt ? 'Trilha de Aprendizado' : 'Learning Trail',
-        description: pt
-          ? 'Lições estruturadas de gramática e pronúncia organizadas em módulos progressivos.'
-          : 'Structured grammar and pronunciation lessons organised in progressive modules.',
-      },
-      {
-        ref: reviewCardRef,
-        spotlightRadius: 18,
-        title: pt ? 'Revisão' : 'Review',
-        description: pt
-          ? 'Quando tiver tópicos ou vocabulário para revisar, este card acende com o número pendente.'
-          : 'When you have topics or vocabulary to review, this card lights up with the pending count.',
-      },
-      {
-        ref: myVocabRef,
-        spotlightRadius: 14,
-        title: pt ? 'Meu Vocabulário' : 'My Vocabulary',
-        description: pt
-          ? 'Todas as palavras que você salvou ficam aqui. Revise com flashcards pelo sistema de repetição espaçada.'
-          : 'All the words you have saved live here. Review them with flashcards using spaced repetition.',
-      },
-      {
-        ref: grammarRef,
-        spotlightRadius: 18,
-        title: pt ? 'Gramática' : 'Grammar',
-        description: pt
-          ? 'Escreva em inglês e a Charlotte corrige sua gramática em tempo real com explicações detalhadas.'
-          : 'Write in English and Charlotte corrects your grammar in real time with detailed explanations.',
-        onBeforeMeasure: scrollToPractice,
-      },
-      {
-        ref: pronunciationRef,
-        spotlightRadius: 18,
-        title: pt ? 'Pronúncia' : 'Pronunciation',
-        description: pt
-          ? 'Grave sua voz e receba análise detalhada de pronúncia palavra por palavra.'
-          : 'Record your voice and get a detailed word-by-word pronunciation analysis.',
-        onBeforeMeasure: scrollToPractice,
-      },
-      {
-        ref: chatRef,
-        spotlightRadius: 18,
-        title: 'Free Chat',
-        description: pt
-          ? 'Conversação livre em inglês — texto ou áudio. A Charlotte responde como uma parceira de conversa nativa.'
-          : 'Free conversation in English — text or audio. Charlotte responds like a native conversation partner.',
-        onBeforeMeasure: scrollToPractice,
-      },
-      {
-        ref: liveVoiceRef,
-        spotlightRadius: 18,
-        title: 'Live Voice',
-        description: pt
-          ? 'Conversa de voz em tempo real com IA. A experiência mais próxima de uma aula com professor nativo.'
-          : 'Real-time voice conversation with AI. The closest experience to a lesson with a native teacher.',
-        onBeforeMeasure: scrollToPractice,
-      },
-      {
-        ref: vocabFABRef,
-        spotlightRadius: 25,
-        title: pt ? 'Salvar palavra' : 'Save a word',
-        description: pt
-          ? 'Toque para adicionar uma palavra nova ao seu vocabulário sem sair da tela inicial.'
-          : 'Tap to add a new word to your vocabulary without leaving the home screen.',
-      },
-      {
-        ref: tipBarRef,
-        spotlightRadius: 0,
-        title: pt ? 'Vocabulário do dia' : 'Vocabulary of the day',
-        description: pt
-          ? 'Uma palavra, expressão ou idiom novo todo dia. Toque para ver os detalhes e adicionar ao seu vocabulário.'
-          : 'A new word, expression or idiom every day. Tap to see the details and add it to your vocabulary.',
-      },
-    ], pt ? 'pt' : 'en');
-  }, [data])); // eslint-disable-line
 
   const loadLiveVoicePool = useCallback(async () => {
     if (!userId) return;
@@ -1166,7 +1038,7 @@ function HomeScreenContent() {
         }}
       >
         {/* Stats pills — tappable group → stats modal */}
-        <View ref={headerRef} collapsable={false}>
+        <View>
         <TouchableOpacity
           onPress={() => router.push({ pathname: '/(app)/stats', params: { sessionXP: String(data?.todayXP ?? 0), totalXP: String(totalXP), userId: userId ?? '', userLevel: level ?? 'Inter', userName: name ?? '' } })}
           activeOpacity={0.7}
@@ -1261,7 +1133,7 @@ function HomeScreenContent() {
             Navy header + white body.
             She opens every session — coach, not mascot.
         ══════════════════════════════════════════ */}
-        <View ref={charlotteCardRef} collapsable={false} style={{ marginHorizontal: 20, marginTop: 8 }}>
+        <View style={{ marginHorizontal: 20, marginTop: 8 }}>
           <View style={{
             borderRadius: 22,
             backgroundColor: C.card,
@@ -1340,7 +1212,7 @@ function HomeScreenContent() {
             GOALS BANNER — taps to /goals
         ══════════════════════════════════════════ */}
         <TouchableOpacity
-          ref={goalsBannerRef}
+          
           onPress={() => router.push('/(app)/goals')}
           activeOpacity={0.78}
           style={{
@@ -1376,7 +1248,7 @@ function HomeScreenContent() {
 
           {/* Learning Trail card (left, half width) */}
           <TouchableOpacity
-            ref={learnTrailRef}
+            
             onPress={() => router.push('/(app)/learn-trail')}
             activeOpacity={0.72}
             style={{
@@ -1407,7 +1279,7 @@ function HomeScreenContent() {
 
           {/* Review card (right, half width) — two states */}
           <TouchableOpacity
-            ref={reviewCardRef}
+            
             onPress={() => {
               const srDue = pendingReviews.length > 0;
               const vocabDue = vocabDueCount > 0;
@@ -1476,7 +1348,7 @@ function HomeScreenContent() {
 
         {/* My Vocabulary quick link */}
         <TouchableOpacity
-          ref={myVocabRef}
+          
           onPress={() => router.push('/(app)/my-vocabulary')}
           activeOpacity={0.78}
           style={{
@@ -1506,21 +1378,21 @@ function HomeScreenContent() {
 
         <View
           style={{ paddingHorizontal: 20, gap: 10 }}
-          onLayout={e => { practiceYRef.current = e.nativeEvent.layout.y; }}
+          
         >
           <View style={{ flexDirection: 'row', gap: 10 }}>
-            <View ref={grammarRef} collapsable={false} style={{ flex: 1 }}>
+            <View style={{ flex: 1 }}>
               <PracticePortal card={modeCards[0]} onPress={() => handleCardPress(modeCards[0])} />
             </View>
-            <View ref={pronunciationRef} collapsable={false} style={{ flex: 1 }}>
+            <View style={{ flex: 1 }}>
               <PracticePortal card={modeCards[1]} onPress={() => handleCardPress(modeCards[1])} />
             </View>
           </View>
           <View style={{ flexDirection: 'row', gap: 10 }}>
-            <View ref={chatRef} collapsable={false} style={{ flex: 1 }}>
+            <View style={{ flex: 1 }}>
               <PracticePortal card={modeCards[2]} onPress={() => handleCardPress(modeCards[2])} />
             </View>
-            <View ref={liveVoiceRef} collapsable={false} style={{ flex: 1 }}>
+            <View style={{ flex: 1 }}>
               <PracticePortal card={modeCards[3]} onPress={() => handleCardPress(modeCards[3])} />
             </View>
           </View>
@@ -1532,7 +1404,7 @@ function HomeScreenContent() {
           BOTTOM TIP BAR — fixed, daily tip by level
       ══════════════════════════════════════════ */}
       <TouchableOpacity
-        ref={tipBarRef}
+        
         onPress={() => setShowTipModal(true)}
         activeOpacity={0.75}
         style={{
@@ -1670,7 +1542,7 @@ function HomeScreenContent() {
       </Modal>
 
       {/* FAB — adicionar palavra */}
-      <VocabFAB ref={vocabFABRef} bottom={68} color={C.navy} />
+      <VocabFAB bottom={68} color={C.navy} />
 
     </SafeAreaView>
   );

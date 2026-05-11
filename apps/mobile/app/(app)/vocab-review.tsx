@@ -29,7 +29,6 @@ import { AppText } from '@/components/ui/Text';
 import { supabase } from '@/lib/supabase';
 import { useAuth } from '@/hooks/useAuth';
 import { calcNextReview, SRRating } from '@/lib/spacedRepetition';
-import { useTour } from '@/lib/tourContext';
 import CharlotteAvatar from '@/components/ui/CharlotteAvatar';
 import { soundEngine } from '@/lib/soundEngine';
 import { createAudioPlayer, setAudioModeAsync } from 'expo-audio';
@@ -99,10 +98,6 @@ export default function VocabReview() {
   const levelAccent   = level === 'Novice' ? C.gold   : level === 'Inter' ? '#7C3AED' : '#0F766E';
   const levelAccentBg = level === 'Novice' ? C.goldBg : level === 'Inter' ? '#F5F3FF' : '#F0FDFA';
 
-  const { startTour } = useTour();
-  const tourProgressRef = useRef<any>(null);
-  const tourCardFrontRef = useRef<any>(null);
-  const tourTtsRef = useRef<any>(null);
 
   const [cards,    setCards]    = useState<VocabCard[]>([]);
   const [loading,  setLoading]  = useState(true);
@@ -150,39 +145,6 @@ export default function VocabReview() {
   }, [userId]);
 
   const current = cards[idx];
-
-  // ── Tour ────────────────────────────────────────────────────────────────────
-  useEffect(() => {
-    if (loading || cards.length === 0) return;
-    const pt = isPt;
-    startTour('vocab-review', [
-      {
-        ref: tourProgressRef,
-        spotlightRadius: 12,
-        title: pt ? 'Progresso da revisão' : 'Review progress',
-        description: pt
-          ? 'Cada ponto representa uma palavra na fila. O ponto atual está destacado.'
-          : 'Each dot represents a word in the queue. The current one is highlighted.',
-      },
-      {
-        ref: tourCardFrontRef,
-        spotlightRadius: 20,
-        title: pt ? 'Flashcard' : 'Flashcard',
-        description: pt
-          ? 'Tente lembrar o significado e toque para revelar. Depois de virar, avalie: Difícil, Ok ou Fácil — isso ajusta quando a palavra volta.'
-          : 'Try to recall the meaning, then tap to reveal. After flipping, rate it: Hard, Ok or Easy — this adjusts when the word comes back.',
-      },
-      {
-        ref: tourTtsRef,
-        spotlightRadius: 14,
-        title: pt ? 'Pronúncia nativa' : 'Native pronunciation',
-        description: pt
-          ? 'Toque para ouvir a palavra com pronúncia nativa. Use antes de virar para treinar o ouvido.'
-          : 'Tap to hear the word with native pronunciation. Use it before flipping to train your ear.',
-      },
-    ], pt ? 'pt' : 'en');
-  // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [loading, cards.length]);
 
   // ── Interpolations — real 3D flip ───────────────────────────────────────────
   const frontRotate = flipAnim.interpolate({ inputRange: [0, 1], outputRange: ['0deg', '180deg'] });
@@ -458,7 +420,7 @@ export default function VocabReview() {
           </TouchableOpacity>
           {/* Progress dots */}
           <View style={{ flex: 1, flexDirection: 'row', justifyContent: 'center', alignItems: 'center', gap: 6 }}>
-            <View ref={tourProgressRef} collapsable={false} style={{ flexDirection: 'row', alignItems: 'center', gap: 6 }}>
+            <View style={{ flexDirection: 'row', alignItems: 'center', gap: 6 }}>
             {cards.map((_, i) => (
               <View
                 key={i}
@@ -515,7 +477,7 @@ export default function VocabReview() {
               transform: [{ perspective: 1200 }, { rotateY: frontRotate }],
             }}>
             <TouchableOpacity
-              ref={tourCardFrontRef}
+              
               activeOpacity={0.95}
               onPress={handleFlip}
               style={{
@@ -535,7 +497,7 @@ export default function VocabReview() {
                   </AppText>
                 </View>
                 <TouchableOpacity
-                  ref={tourTtsRef}
+                  
                   onPress={handleTts}
                   disabled={ttsLoading}
                   hitSlop={{ top: 12, bottom: 12, left: 12, right: 12 }}
