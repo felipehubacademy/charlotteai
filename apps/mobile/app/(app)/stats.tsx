@@ -131,17 +131,22 @@ export default function StatsScreen() {
     if (!userId) return;
     setData(prev => ({ ...prev, loading: true, error: null }));
     try {
+      // Labels alinhados ao novo layout (Free Chat, Grammar, Pronunciation, etc).
       const typeLabels: Record<string, string> = {
-        text_message:      isPortuguese ? 'Conversa por texto'    : 'Text Chat',
-        audio_message:     isPortuguese ? 'Conversa por voz'      : 'Voice Chat',
-        live_voice:        isPortuguese ? 'Conversa ao vivo'      : 'Live Conversation',
-        pronunciation:     isPortuguese ? 'Pronúncia'             : 'Pronunciation',
-        grammar:           isPortuguese ? 'Gramática'             : 'Grammar',
-        learn_exercise:    isPortuguese ? 'Trilha de Aprendizado' : 'Learning Trail',
-        image_recognition: isPortuguese ? 'Prática'               : 'Practice',
+        text_message:      'Free Chat',
+        audio_message:     isPortuguese ? 'Free Chat (voz)' : 'Free Chat (voice)',
+        grammar:           isPortuguese ? 'Gramática'       : 'Grammar',
+        grammar_message:   isPortuguese ? 'Gramática'       : 'Grammar',
+        pronunciation:     isPortuguese ? 'Pronúncia'       : 'Pronunciation',
+        live_voice:        'Live Voice',
+        learn_exercise:    isPortuguese ? 'Trilha'          : 'Learning Trail',
+        sr_review:         isPortuguese ? 'Revisão'         : 'SR Review',
+        vocab_review:      isPortuguese ? 'Vocabulário'     : 'Vocabulary',
+        image_recognition: isPortuguese ? 'Reconhecimento'  : 'Recognition',
       };
       const getLabel = (type: string) => {
         if (type.startsWith('mission_reward_')) return isPortuguese ? 'Missão Concluída' : 'Mission Complete';
+        if (type.startsWith('weekly_reward_'))  return isPortuguese ? 'Recompensa Semanal' : 'Weekly Reward';
         return typeLabels[type] ?? (isPortuguese ? 'Prática' : 'Practice');
       };
 

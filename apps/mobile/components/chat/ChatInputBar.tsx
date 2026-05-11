@@ -351,34 +351,38 @@ export default function ChatInputBar({
               <ArrowRight size={16} color={C.greenDark} weight="bold" />
             </View>
           ) : (
-            // RECORDING: pill simples com dot pulsando + duration + slide hint
-            <View style={[styles.pill, {
-              flex: 1, paddingHorizontal: 16, paddingVertical: 12,
-              backgroundColor: willCancel ? `${C.red}15` : C.pill,
-              borderColor:     willCancel ? `${C.red}40` : C.border,
-            }]}>
-              <View style={{ flexDirection: 'row', alignItems: 'center', flex: 1, gap: 8 }}>
-                <Animated.View style={{
-                  width: 8, height: 8, borderRadius: 4,
-                  backgroundColor: C.red, opacity: dotPulse, flexShrink: 0,
-                }} />
-                <AppText style={{
-                  color: C.navy, fontSize: 13, minWidth: 36,
-                  ...(Platform.OS === 'ios' ? { fontVariant: ['tabular-nums'] } : { fontFamily: 'monospace' }),
-                }}>
-                  {formatDuration(duration)}
-                </AppText>
-                <View style={{ flex: 1 }} />
-                <AppText style={{
-                  color:      willCancel ? C.red : C.navyLight,
-                  fontSize:   12,
-                  fontWeight: willCancel ? '700' : '500',
-                }}>
-                  {willCancel
-                    ? (isNovice ? 'Solte pra cancelar' : 'Release to cancel')
-                    : (isNovice ? '← Deslize pra cancelar' : '← Slide to cancel')}
-                </AppText>
-              </View>
+            // RECORDING: inline (sem pill bg), igual idle. willCancel intensifica
+            // os cues vermelhos (dot maior, texto bold) sem precisar de bg.
+            <View style={{
+              flex: 1, flexDirection: 'row', alignItems: 'center',
+              gap: 8, paddingVertical: 12,
+            }}>
+              <Animated.View style={{
+                width: willCancel ? 10 : 8,
+                height: willCancel ? 10 : 8,
+                borderRadius: 5,
+                backgroundColor: C.red,
+                opacity: dotPulse,
+                flexShrink: 0,
+              }} />
+              <AppText style={{
+                color: willCancel ? C.red : C.navy,
+                fontSize: 13, minWidth: 36,
+                fontWeight: willCancel ? '700' : '500',
+                ...(Platform.OS === 'ios' ? { fontVariant: ['tabular-nums'] } : { fontFamily: 'monospace' }),
+              }}>
+                {formatDuration(duration)}
+              </AppText>
+              <View style={{ flex: 1 }} />
+              <AppText style={{
+                color:      willCancel ? C.red : C.navyMid,
+                fontSize:   12,
+                fontWeight: willCancel ? '700' : '500',
+              }}>
+                {willCancel
+                  ? (isNovice ? 'Solte pra cancelar' : 'Release to cancel')
+                  : (isNovice ? '← Deslize pra cancelar' : '← Slide to cancel')}
+              </AppText>
             </View>
           )}
 
