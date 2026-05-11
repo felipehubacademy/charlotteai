@@ -780,21 +780,15 @@ export default function LiveVoiceTab() {
               <LVHelpRow
                 title={isPt ? 'Conversa em tempo real' : 'Real-time conversation'}
                 desc={isPt
-                  ? 'Toque em "Conversar" pra falar com a Charlotte por voz. Ela ouve, responde e mostra legendas em inglês na tela.'
-                  : 'Tap "Talk" to chat with Charlotte using your voice. She listens, replies, and shows English captions on screen.'}
+                  ? 'Toque em "Conversar" pra falar com a Charlotte por voz. Ela ouve e responde como uma conversa natural.'
+                  : 'Tap "Talk" to chat with Charlotte using your voice. She listens and replies naturally.'}
               />
-              <LVHelpRow
-                title={isPt ? 'Legendas e tradução' : 'Captions and translation'}
-                desc={isPt
-                  ? 'As legendas aparecem em inglês conforme a Charlotte fala. Toque na legenda pra ver a tradução em português.'
-                  : 'Captions appear in English as Charlotte speaks. Tap any caption to see the translation.'}
-              />
-              <LVHelpRow
-                title={isPt ? 'Pool mensal' : 'Monthly pool'}
-                desc={isPt
-                  ? 'Você tem uma quota de minutos por mês. O anel mostra quanto já usou. Ao zerar, o pool renova no início do próximo mês.'
-                  : 'You have a monthly minutes quota. The ring shows usage. When it hits zero, the pool resets next month.'}
-              />
+              {!isPt && (
+                <LVHelpRow
+                  title="Captions and translation"
+                  desc="Captions appear in English as Charlotte speaks. Tap any caption to see the translation."
+                />
+              )}
               <LVHelpRow
                 title={isPt ? 'Histórico de chamadas' : 'Call history'}
                 desc={isPt
