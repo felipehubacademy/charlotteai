@@ -3,7 +3,6 @@ import {
   View, TextInput, TouchableOpacity, Pressable,
   Animated, Platform, Easing,
 } from 'react-native';
-import { useSafeAreaInsets } from 'react-native-safe-area-context';
 import { useAudioPlayer, useAudioPlayerStatus } from 'expo-audio';
 import { ArrowUp, Microphone, X, Play, Pause, Hourglass, Lock } from 'phosphor-react-native';
 import * as Haptics from 'expo-haptics';
@@ -67,11 +66,9 @@ export default function ChatInputBar({
     }, 1000);
     return () => clearInterval(t);
   }, [rateLimited]);
-  const insets = useSafeAreaInsets();
-  // Freeze the bottom inset at mount time — on Android, insets.bottom changes
-  // dynamically (0 ↔ navBarHeight) when the keyboard appears/disappears,
-  // causing the input bar to jump in height. Freezing prevents that.
-  const frozenBottomInset = React.useRef(insets.bottom).current;
+  // Bottom safe area é cuidado pela tab bar do expo-router (esta tela
+  // sempre vive em (tabs)). Usar insets.bottom aqui criava gap visível
+  // entre o input bar e a tab bar no Android (nav bar somava ~30-50px).
   const [text, setText]             = React.useState('');
   const [previewUri, setPreviewUri] = React.useState<string | null>(null);
   const [previewDur, setPreviewDur] = React.useState(0);
@@ -193,7 +190,7 @@ export default function ChatInputBar({
     borderTopColor: C.topBorder,
     paddingHorizontal: 14,
     paddingTop: 10,
-    paddingBottom: Math.max(frozenBottomInset, 10),
+    paddingBottom: 10,
   };
 
   // ── Rate-limited overlay (shared across all modes) ────────────────────────
@@ -405,20 +402,19 @@ export default function ChatInputBar({
             />
           </View>
 
-          {/* Send button — outside, always visible, dims when no text */}
+          {/* Send button — sempre verde (consistente com mic dos outros modos),
+              opacidade reduzida quando vazio sinaliza estado disabled. */}
           <TouchableOpacity
             onPress={sendText}
             disabled={disabled || !hasText}
             style={[
               styles.actionBtn,
-              { backgroundColor: hasText ? C.green : C.pill,
-                borderWidth: hasText ? 0 : 1, borderColor: C.border,
-              },
+              { backgroundColor: hasText ? C.green : `${C.green}50` },
             ]}
             accessibilityLabel={isNovice ? 'Enviar mensagem / Send message' : 'Send message'}
             accessibilityRole="button"
           >
-            <ArrowUp size={20} color={hasText ? C.navy : C.navyLight} weight="bold" />
+            <ArrowUp size={20} color={hasText ? C.navy : `${C.navy}60`} weight="bold" />
           </TouchableOpacity>
         </View>
       </View>
