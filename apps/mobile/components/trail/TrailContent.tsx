@@ -65,10 +65,13 @@ interface TrailContentProps {
   /** Renderiza o card-resumo no topo (default true). Home passa false porque
    *  ja renderiza o <TrailBanner /> dentro do hero fixo. */
   showBanner?: boolean;
+  /** Callback chamado com o ref do TopicRow "atual" — usado pelo Home pra
+   *  auto-scrollar a trilha ate a posicao do topico em andamento. */
+  onCurrentTopicRef?: (node: View | null) => void;
 }
 
 // ── Component ────────────────────────────────────────────────────────────────
-export function TrailContent({ userId, level, showBanner = true }: TrailContentProps) {
+export function TrailContent({ userId, level, showBanner = true, onCurrentTopicRef }: TrailContentProps) {
   const isPortuguese = level === 'Novice';
   const accent       = LEVEL_COLOR[level];
   const modules      = CURRICULUM[level];
@@ -267,6 +270,7 @@ export function TrailContent({ userId, level, showBanner = true }: TrailContentP
                   return (
                     <TouchableOpacity
                       key={tIdx}
+                      ref={(r) => { if (current && onCurrentTopicRef) onCurrentTopicRef(r as unknown as View | null); }}
                       onPress={() => canTap && handleStart(mIdx, tIdx)}
                       activeOpacity={canTap ? 0.75 : 1}
                       style={{

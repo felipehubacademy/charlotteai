@@ -6,6 +6,7 @@ import React, { useState, useCallback, useEffect, useRef, useMemo } from 'react'
 import {
   View, ScrollView, TouchableOpacity, Image, Platform,
   ActivityIndicator, RefreshControl, Animated, unstable_batchedUpdates,
+  findNodeHandle,
 } from 'react-native';
 import { router, useFocusEffect } from 'expo-router';
 import { SafeAreaView } from 'react-native-safe-area-context';
@@ -265,6 +266,30 @@ export default function HomeTab() {
     setRefreshing(false);
   }, [fetchData]);
 
+  // Auto-scroll pra trilha: quando o topico "atual" monta, mede sua posicao
+  // dentro do ScrollView e rola ate la. So roda 1x por mount (nao re-scrolla
+  // depois que user moveu manualmente).
+  const trailScrollRef = useRef<ScrollView>(null);
+  const trailScrolledRef = useRef(false);
+  const handleCurrentTopicRef = useCallback((node: View | null) => {
+    if (!node || trailScrolledRef.current || !trailScrollRef.current) return;
+    // Pequeno delay pra garantir que o layout do scrollview esta pronto
+    setTimeout(() => {
+      const sv = trailScrollRef.current;
+      if (!sv) return;
+      const handle = findNodeHandle(sv);
+      if (handle == null) return;
+      (node as any).measureLayout?.(
+        handle,
+        (_x: number, y: number) => {
+          sv.scrollTo({ y: Math.max(0, y - 24), animated: false });
+          trailScrolledRef.current = true;
+        },
+        () => {},
+      );
+    }, 60);
+  }, []);
+
   if (loading) {
     return (
       <View style={{ flex: 1, backgroundColor: C.bg }}>
@@ -330,12 +355,18 @@ export default function HomeTab() {
 
       {/* Learning trail — scrollable below fixed hero */}
       <ScrollView
+        ref={trailScrollRef}
         style={{ flex: 1 }}
         contentContainerStyle={{ paddingTop: 24, paddingBottom: 40 }}
         showsVerticalScrollIndicator={false}
         refreshControl={<RefreshControl refreshing={refreshing} onRefresh={onRefresh} tintColor={C.navy} />}
       >
-        <TrailContent userId={userId} level={level} showBanner={false} />
+        <TrailContent
+          userId={userId}
+          level={level}
+          showBanner={false}
+          onCurrentTopicRef={handleCurrentTopicRef}
+        />
       </ScrollView>
 
     </View>

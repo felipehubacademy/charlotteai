@@ -114,7 +114,7 @@ function XPDailyCard({ todayXP, isPt, onPress }: { todayXP: number; isPt: boolea
 
 function SectionHeader({ label, badge, isPt }: { label: string; badge?: string; isPt?: boolean }) {
   return (
-    <View style={{ flexDirection: 'row', alignItems: 'center', paddingHorizontal: 20, marginTop: isAndroid ? 14 : 28, marginBottom: isAndroid ? 8 : 16 }}>
+    <View style={{ flexDirection: 'row', alignItems: 'center', paddingHorizontal: 20, marginTop: isAndroid ? 26 : 28, marginBottom: isAndroid ? 8 : 16 }}>
       <AppText style={{ fontSize: isAndroid ? 15 : 17, fontWeight: '800', color: C.navy, flex: 1 }}>
         {label}
       </AppText>
