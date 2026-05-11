@@ -1,7 +1,14 @@
 // configuracoes.tsx
 import React from 'react';
-import { View, ScrollView, TouchableOpacity, Alert, Platform, Linking, ActivityIndicator, Image } from 'react-native';
+import { View, ScrollView, TouchableOpacity, Alert, Platform, Linking, ActivityIndicator, Image, Switch } from 'react-native';
 import { openLink } from '@/lib/openLink';
+import {
+  loadAudioPreferences,
+  getAudioPreferences,
+  setAudioPreference,
+  subscribeAudioPreferences,
+  type AudioPreferences,
+} from '@/lib/audioPreferences';
 import AvatarCropModal from '@/components/ui/AvatarCropModal';
 import { router } from 'expo-router';
 import { SafeAreaView } from 'react-native-safe-area-context';
@@ -24,6 +31,9 @@ import {
   PencilSimple,
   BookOpen,
   Play,
+  SpeakerHigh,
+  Vibrate,
+  ChatCircleText,
 } from 'phosphor-react-native';
 import { AppText } from '@/components/ui/Text';
 import { useAuth } from '@/hooks/useAuth';
@@ -116,6 +126,62 @@ function SettingRow({ icon, label, value, valueColor, onPress, destructive = fal
   );
 }
 
+interface SwitchRowProps {
+  icon: React.ReactNode;
+  label: string;
+  description?: string;
+  value: boolean;
+  onValueChange: (v: boolean) => void;
+}
+
+function SwitchRow({ icon, label, description, value, onValueChange }: SwitchRowProps) {
+  return (
+    <View
+      style={{
+        flexDirection: 'row',
+        alignItems: 'center',
+        justifyContent: 'space-between',
+        paddingHorizontal: 14,
+        paddingVertical: 12,
+        backgroundColor: C.card,
+        borderRadius: 14,
+        marginBottom: 6,
+        borderWidth: 1,
+        borderColor: C.border,
+        minHeight: 52,
+        ...C.shadow,
+      }}
+    >
+      <View style={{ flexDirection: 'row', alignItems: 'center', gap: 12, flex: 1 }}>
+        <View style={{
+          width: 36, height: 36, borderRadius: 10,
+          backgroundColor: 'rgba(163,255,60,0.12)',
+          alignItems: 'center', justifyContent: 'center',
+        }}>
+          {icon}
+        </View>
+        <View style={{ flex: 1 }}>
+          <AppText style={{ fontSize: 14, fontWeight: '600', color: C.navy }}>
+            {label}
+          </AppText>
+          {!!description && (
+            <AppText style={{ fontSize: 11, color: C.navyLight, marginTop: 2 }} numberOfLines={2}>
+              {description}
+            </AppText>
+          )}
+        </View>
+      </View>
+      <Switch
+        value={value}
+        onValueChange={onValueChange}
+        trackColor={{ false: 'rgba(22,21,58,0.15)', true: C.green }}
+        thumbColor={Platform.OS === 'android' ? (value ? C.greenDark : '#FFF') : undefined}
+        ios_backgroundColor="rgba(22,21,58,0.15)"
+      />
+    </View>
+  );
+}
+
 function SectionTitle({ label }: { label: string }) {
   return (
     <AppText style={{
@@ -135,11 +201,23 @@ export default function ConfiguracoesScreen() {
   const [restoringPurchases, setRestoringPurchases] = React.useState(false);
   const [voiceUsage, setVoiceUsage]               = React.useState<LiveVoiceStatus | null>(null);
   const [showAvatarModal, setShowAvatarModal]     = React.useState(false);
+  const [audioPrefs, setAudioPrefs]               = React.useState<AudioPreferences>(getAudioPreferences());
   React.useEffect(() => {
     getLiveVoiceStatus(profile?.charlotte_level ?? undefined)
       .then(setVoiceUsage)
       .catch(() => {});
   }, [profile?.charlotte_level]);
+
+  React.useEffect(() => {
+    // Garante que o cache foi populado (caso a tela abra antes do boot terminar)
+    loadAudioPreferences().then(setAudioPrefs).catch(() => {});
+    const unsub = subscribeAudioPreferences(setAudioPrefs);
+    return unsub;
+  }, []);
+
+  const togglePref = (key: keyof AudioPreferences) => (v: boolean) => {
+    setAudioPreference(key, v).catch(() => {});
+  };
 
   const handleRetakePlacementTest = () => {
     Alert.alert(
@@ -393,6 +471,30 @@ export default function ConfiguracoesScreen() {
             setShowAvatarModal(false);
             refreshProfile();
           }}
+        />
+
+        {/* Preferences */}
+        <SectionTitle label={isPt ? 'Preferências' : 'Preferences'} />
+        <SwitchRow
+          icon={<SpeakerHigh size={18} color={C.greenDark} weight="duotone" />}
+          label={isPt ? 'Sons' : 'Sounds'}
+          description={isPt ? 'Efeitos sonoros de acerto, erro e conquistas.' : 'Sound effects for correct, wrong and achievements.'}
+          value={audioPrefs.sfx}
+          onValueChange={togglePref('sfx')}
+        />
+        <SwitchRow
+          icon={<Vibrate size={18} color={C.greenDark} weight="duotone" />}
+          label={isPt ? 'Vibração' : 'Haptics'}
+          description={isPt ? 'Feedback tátil ao interagir com o app.' : 'Tactile feedback when interacting with the app.'}
+          value={audioPrefs.haptic}
+          onValueChange={togglePref('haptic')}
+        />
+        <SwitchRow
+          icon={<ChatCircleText size={18} color={C.greenDark} weight="duotone" />}
+          label={isPt ? 'Voz da Charlotte' : "Charlotte's voice cues"}
+          description={isPt ? 'Reações curtas em momentos especiais (não afeta a Charlotte no chat).' : 'Short reactions in special moments (does not affect Charlotte in chat).'}
+          value={audioPrefs.voice}
+          onValueChange={togglePref('voice')}
         />
 
         {/* Account */}

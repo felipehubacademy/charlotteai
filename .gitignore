@@ -40,3 +40,4 @@ yarn-error.log*
 # coverage
 coverage
 .env*.local
+apps/web/public/tts/sfx_backup_pre_musical/

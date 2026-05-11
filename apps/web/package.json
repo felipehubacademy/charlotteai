@@ -9,6 +9,8 @@
     "lint": "next lint",
     "type-check": "tsc --noEmit",
     "generate-tts": "npx tsx scripts/generate-tts.ts",
+    "generate-musical-sfx": "npx tsx scripts/generate-musical-sfx.ts",
+    "generate-voice-sfx": "npx tsx scripts/generate-voice-sfx.ts",
     "generate-splash": "npx tsx scripts/generate-splash.ts"
   },
   "dependencies": {

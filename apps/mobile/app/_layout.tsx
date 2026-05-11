@@ -13,13 +13,19 @@ import { AI_CONSENT_KEY } from '@/lib/aiConsent';
 // OfflineBanner desativado temporariamente — reimplementar com @react-native-community/netinfo
 // import { OfflineBanner } from '@/components/ui/OfflineBanner';
 import { soundEngine } from '@/lib/soundEngine';
+import { voiceSFX } from '@/lib/voiceSFX';
+import { loadAudioPreferences } from '@/lib/audioPreferences';
 import { ThemeProvider, useTheme } from '@/lib/theme';
 
 // Mantém a splash screen visível enquanto carrega
 SplashScreen.preventAutoHideAsync();
 
+// Carrega preferencias de audio antes de qualquer play. Resolve sincrono apos boot.
+loadAudioPreferences().catch(() => {});
+
 // Pré-gera e faz cache de todos os efeitos sonoros em background
 soundEngine.preload().catch(() => {});
+voiceSFX.preload().catch(() => {});
 
 /**
  * Handles all auth-based navigation at the ROOT level where the full

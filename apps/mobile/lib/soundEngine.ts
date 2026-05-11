@@ -15,6 +15,7 @@
 import { createAudioPlayer, setAudioModeAsync } from 'expo-audio';
 import * as FileSystem from 'expo-file-system/legacy';
 import Constants from 'expo-constants';
+import { getAudioPreferences } from './audioPreferences';
 
 // ── Constantes ────────────────────────────────────────────────────────────────
 
@@ -260,15 +261,39 @@ class SoundEngine {
   /** Toca um som. Fire-and-forget. */
   async play(name: SoundName): Promise<void> {
     if (this.muted) return;
+
+    // xp_gained agora e SOMENTE haptico (decisao de design: toca dezenas de vezes
+    // por sessao, som vira ruido. Os call sites ja disparam Haptics.Success).
+    if (name === 'xp_gained') return;
+
+    // Respeita preferencia do usuario.
+    if (!getAudioPreferences().sfx) return;
+
     try {
       const uri = await this.getUri(name);
+
+      // Respeita o modo silencioso do device para SFX (diferente do TTS da
+      // Charlotte, que continua tocando no silent mode via useMessageAudioPlayer).
       await setAudioModeAsync({
         allowsRecording: false,
-        playsInSilentMode: true,
-        interruptionMode: 'doNotMix',
+        playsInSilentMode: false,
+        interruptionMode: 'mixWithOthers',
       }).catch(() => {});
 
       const player = createAudioPlayer({ uri });
+
+      // Pitch variation para evitar fadiga auditiva em sons de alta frequencia.
+      // answer_correct/wrong tocam dezenas de vezes — variar ±2 semitons (rate
+      // 0.89..1.12) faz cada play soar levemente diferente.
+      if (name === 'answer_correct' || name === 'answer_wrong') {
+        try {
+          const semitones = (Math.random() * 4 - 2); // -2..+2
+          const rate = Math.pow(2, semitones / 12);   // 0.891..1.122
+          // expo-audio: setPlaybackRate(rate, pitchCorrection?)
+          (player as any).setPlaybackRate?.(rate, false);
+        } catch {}
+      }
+
       player.play();
       // Para voz da Charlotte: máx 2s. Para PCM sintetizado: duração estimada + folga.
       const maxDur = uri.includes('sfx_voice_') ? 2000 : this.estimatePcmDurMs(name) + 600;
