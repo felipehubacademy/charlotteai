@@ -6,6 +6,7 @@ import React, { useCallback, useState } from 'react';
 import {
   View, TouchableOpacity, ActivityIndicator, Platform, ScrollView,
 } from 'react-native';
+import Svg, { Circle } from 'react-native-svg';
 import { SafeAreaView } from 'react-native-safe-area-context';
 import { router, useFocusEffect } from 'expo-router';
 import { CheckCircle } from 'phosphor-react-native';
@@ -36,6 +37,80 @@ const cardShadow = Platform.select({
   ios:     { shadowColor: C.shadow, shadowOpacity: 1, shadowRadius: 16, shadowOffset: { width: 0, height: 4 } },
   android: { elevation: 4 },
 });
+
+// ── Daily XP card (movido do Home) ────────────────────────────────────────────
+
+const DAILY_XP_MILESTONES = [100, 200, 350, 500, 750, 1000];
+function getDailyGoal(xp: number): number {
+  for (const m of DAILY_XP_MILESTONES) { if (xp < m) return m; }
+  return Math.ceil((xp + 1) / 500) * 500;
+}
+
+function XPRing({ todayXP, goal }: { todayXP: number; goal: number }) {
+  const SIZE = 50, SW = 5;
+  const r    = (SIZE - SW) / 2;
+  const circ = 2 * Math.PI * r;
+  const prog = Math.min(todayXP / goal, 1);
+  return (
+    <View style={{ width: SIZE, height: SIZE, alignItems: 'center', justifyContent: 'center' }}>
+      <Svg width={SIZE} height={SIZE} style={{ position: 'absolute' }}>
+        <Circle cx={SIZE/2} cy={SIZE/2} r={r} stroke={C.navyGhost} strokeWidth={SW} fill="none" />
+        {prog > 0 && (
+          <Circle
+            cx={SIZE/2} cy={SIZE/2} r={r}
+            stroke={C.greenDark} strokeWidth={SW} fill="none"
+            strokeDasharray={circ} strokeDashoffset={circ * (1 - prog)}
+            strokeLinecap="round"
+            transform={`rotate(-90 ${SIZE/2} ${SIZE/2})`}
+          />
+        )}
+      </Svg>
+      <AppText style={{ fontSize: 12, fontWeight: '900', color: C.navy }}>{todayXP}</AppText>
+    </View>
+  );
+}
+
+function XPDailyCard({ todayXP, isPt, onPress }: { todayXP: number; isPt: boolean; onPress: () => void }) {
+  const goal = getDailyGoal(todayXP);
+  return (
+    <TouchableOpacity
+      onPress={onPress}
+      activeOpacity={0.75}
+      style={{
+        backgroundColor: C.card,
+        borderRadius: 18,
+        marginHorizontal: 20,
+        marginTop: isAndroid ? 12 : 20,
+        marginBottom: 8,
+        padding: 18,
+        borderWidth: 1, borderColor: C.border,
+        ...cardShadow,
+      }}
+    >
+      <View style={{ flexDirection: 'row', alignItems: 'center', gap: 14 }}>
+        <XPRing todayXP={todayXP} goal={goal} />
+        <View style={{ flex: 1 }}>
+          <View style={{ flexDirection: 'row', justifyContent: 'space-between', marginBottom: 7 }}>
+            <AppText style={{ fontSize: 11, color: C.navyMid, fontWeight: '700', textTransform: 'uppercase', letterSpacing: 0.7 }}>
+              {isPt ? 'XP de hoje' : "Today's XP"}
+            </AppText>
+            <AppText style={{ fontSize: 11, fontWeight: '800', color: C.greenDark }}>
+              {todayXP} / {goal}
+            </AppText>
+          </View>
+          <View style={{ height: 8, backgroundColor: C.navyGhost, borderRadius: 4, overflow: 'hidden' }}>
+            <View style={{
+              height: '100%',
+              width: `${(todayXP / goal) * 100}%` as any,
+              backgroundColor: C.greenDark,
+              borderRadius: 4,
+            }} />
+          </View>
+        </View>
+      </View>
+    </TouchableOpacity>
+  );
+}
 
 function SectionHeader({ label, badge, isPt }: { label: string; badge?: string; isPt?: boolean }) {
   return (
@@ -159,6 +234,8 @@ export default function GoalsTab() {
   const [missions,    setMissions]    = useState<Mission[]>([]);
   const [weeklyState, setWeeklyState] = useState<WeeklyChallengeState | null>(null);
   const [loading,     setLoading]     = useState(true);
+  const [todayXP,     setTodayXP]     = useState(0);
+  const [totalXP,     setTotalXP]     = useState(0);
 
   const fetchGoalsData = useCallback(async () => {
     if (!userId) return;
@@ -171,12 +248,14 @@ export default function GoalsTab() {
       ]);
 
       const practices = prac.data ?? [];
-      const todayXP   = practices.reduce((s, p) => s + (p.xp_earned ?? 0), 0);
+      const todayXPVal = practices.reduce((s, p) => s + (p.xp_earned ?? 0), 0);
+      setTodayXP(todayXPVal);
+      setTotalXP(prog.data?.total_xp ?? 0);
 
       const homeData: HomeData = {
         streakDays:    prog.data?.streak_days ?? 0,
         totalXP:       prog.data?.total_xp   ?? 0,
-        todayXP,
+        todayXP:       todayXPVal,
         rank:          null,
         todayMessages: practices.filter(p => ['text_message', 'audio_message'].includes(p.practice_type)).length,
         todayAudios:   practices.filter(p => p.practice_type === 'audio_message').length,
@@ -206,6 +285,17 @@ export default function GoalsTab() {
 
   const doneMissions = missions.filter(m => m.completed).length;
 
+  const userName = profile?.name ?? profile?.email?.split('@')[0] ?? 'Student';
+  const handleXPPress = useCallback(() => {
+    router.push({
+      pathname: '/(app)/stats',
+      params: {
+        sessionXP: String(todayXP), totalXP: String(totalXP),
+        userId: userId ?? '', userLevel: level, userName,
+      },
+    });
+  }, [todayXP, totalXP, userId, level, userName]);
+
   return (
     <View style={{ flex: 1, backgroundColor: C.bg }}>
       <SafeAreaView edges={['top']} style={{ backgroundColor: C.card }}>
@@ -230,6 +320,9 @@ export default function GoalsTab() {
           showsVerticalScrollIndicator={false}
           alwaysBounceVertical={false}
         >
+          {/* XP do dia — card proprio no topo (migrado do Home) */}
+          <XPDailyCard todayXP={todayXP} isPt={isPt} onPress={handleXPPress} />
+
           {/* Daily Missions — espaco gera scroll em telas pequenas, distribui em
               telas maiores via flex:1 + space-between no container interno. */}
           <SectionHeader
@@ -247,8 +340,8 @@ export default function GoalsTab() {
                   onPress={() => router.push(m.destination as any)}
                 />
                 {index < missions.length - 1 && (
-                  <View style={{ alignSelf: 'center', alignItems: 'center', paddingVertical: 8, gap: 5 }}>
-                    {[0, 1, 2, 3, 4, 5, 6, 7].map(i => (
+                  <View style={{ alignSelf: 'center', alignItems: 'center', paddingVertical: 6, gap: 4 }}>
+                    {[0, 1, 2, 3, 4, 5].map(i => (
                       <View key={i} style={{ width: 2, height: 6, backgroundColor: C.navyGhost, borderRadius: 1 }} />
                     ))}
                   </View>

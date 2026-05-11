@@ -62,10 +62,13 @@ const LEVEL_COLOR: Record<TrailLevel, string> = {
 interface TrailContentProps {
   userId:      string | undefined;
   level:       TrailLevel;
+  /** Renderiza o card-resumo no topo (default true). Home passa false porque
+   *  ja renderiza o <TrailBanner /> dentro do hero fixo. */
+  showBanner?: boolean;
 }
 
 // ── Component ────────────────────────────────────────────────────────────────
-export function TrailContent({ userId, level }: TrailContentProps) {
+export function TrailContent({ userId, level, showBanner = true }: TrailContentProps) {
   const isPortuguese = level === 'Novice';
   const accent       = LEVEL_COLOR[level];
   const modules      = CURRICULUM[level];
@@ -110,36 +113,38 @@ export function TrailContent({ userId, level }: TrailContentProps) {
   // ── Trail banner ──────────────────────────────────────────────────────────
   return (
     <View>
-      <View style={{
-        backgroundColor: C.card, borderRadius: 20, padding: 20,
-        marginHorizontal: 20, marginBottom: 24,
-        borderWidth: 1, borderColor: C.border, ...shadow,
-      }}>
-        <View style={{ flexDirection: 'row', alignItems: 'center', gap: 10, marginBottom: 14 }}>
-          <View style={{
-            width: 40, height: 40, borderRadius: 12,
-            backgroundColor: a(accent, 0.094),
-            alignItems: 'center', justifyContent: 'center',
-          }}>
-            <BookOpen size={22} color={accent} weight="fill" />
+      {showBanner && (
+        <View style={{
+          backgroundColor: C.card, borderRadius: 20, padding: 20,
+          marginHorizontal: 20, marginBottom: 24,
+          borderWidth: 1, borderColor: C.border, ...shadow,
+        }}>
+          <View style={{ flexDirection: 'row', alignItems: 'center', gap: 10, marginBottom: 14 }}>
+            <View style={{
+              width: 40, height: 40, borderRadius: 12,
+              backgroundColor: a(accent, 0.094),
+              alignItems: 'center', justifyContent: 'center',
+            }}>
+              <BookOpen size={22} color={accent} weight="fill" />
+            </View>
+            <View style={{ flex: 1 }}>
+              <AppText style={{ fontSize: 13, fontWeight: '800', color: C.navy }}>
+                {LEVEL_LABELS[level]}
+              </AppText>
+              <AppText style={{ fontSize: 12, color: C.navyLight, fontWeight: '500' }}>
+                {modules.length} {isPortuguese ? 'módulos' : 'modules'} · {total} {isPortuguese ? 'tópicos' : 'topics'}
+              </AppText>
+            </View>
+            <AppText style={{ fontSize: 18, fontWeight: '900', color: accent }}>{pct}%</AppText>
           </View>
-          <View style={{ flex: 1 }}>
-            <AppText style={{ fontSize: 13, fontWeight: '800', color: C.navy }}>
-              {LEVEL_LABELS[level]}
-            </AppText>
-            <AppText style={{ fontSize: 12, color: C.navyLight, fontWeight: '500' }}>
-              {modules.length} {isPortuguese ? 'módulos' : 'modules'} · {total} {isPortuguese ? 'tópicos' : 'topics'}
-            </AppText>
+          <View style={{ height: 6, backgroundColor: C.ghost, borderRadius: 3, overflow: 'hidden' }}>
+            <View style={{ height: 6, width: `${pct}%` as `${number}%`, backgroundColor: accent, borderRadius: 3 }} />
           </View>
-          <AppText style={{ fontSize: 18, fontWeight: '900', color: accent }}>{pct}%</AppText>
+          <AppText style={{ fontSize: 11, color: C.navyLight, fontWeight: '600', marginTop: 6 }}>
+            {completed} {isPortuguese ? 'de' : 'of'} {total} {isPortuguese ? 'tópicos concluídos' : 'topics completed'}
+          </AppText>
         </View>
-        <View style={{ height: 6, backgroundColor: C.ghost, borderRadius: 3, overflow: 'hidden' }}>
-          <View style={{ height: 6, width: `${pct}%` as `${number}%`, backgroundColor: accent, borderRadius: 3 }} />
-        </View>
-        <AppText style={{ fontSize: 11, color: C.navyLight, fontWeight: '600', marginTop: 6 }}>
-          {completed} {isPortuguese ? 'de' : 'of'} {total} {isPortuguese ? 'tópicos concluídos' : 'topics completed'}
-        </AppText>
-      </View>
+      )}
 
       {/* ── Modules ── */}
       {loading ? (

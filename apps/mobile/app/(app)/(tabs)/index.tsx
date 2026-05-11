@@ -7,7 +7,6 @@ import {
   View, ScrollView, TouchableOpacity, Image, Platform,
   ActivityIndicator, RefreshControl, Animated, unstable_batchedUpdates,
 } from 'react-native';
-import Svg, { Circle } from 'react-native-svg';
 import { router, useFocusEffect } from 'expo-router';
 import { SafeAreaView } from 'react-native-safe-area-context';
 import { useVideoPlayer, VideoView } from 'expo-video';
@@ -24,6 +23,7 @@ import { greetingCache, resetGreetingCache, prefetchGreeting } from '@/lib/greet
 import { localTodayStr, localMidnightUTC } from '@/lib/dateUtils';
 import { soundEngine } from '@/lib/soundEngine';
 import { TrailContent } from '@/components/trail/TrailContent';
+import { TrailBanner } from '@/components/trail/TrailBanner';
 
 // Module-level flag — persists for the JS session (like the legacy home screen)
 let _streakSoundPlayedThisSession = false;
@@ -47,14 +47,6 @@ const cardShadow = Platform.select({
   android: { elevation: 4 },
 });
 
-// ── Daily XP goal ─────────────────────────────────────────────────────────────
-
-const DAILY_XP_MILESTONES = [100, 200, 350, 500, 750, 1000];
-function getDailyGoal(xp: number): number {
-  for (const m of DAILY_XP_MILESTONES) { if (xp < m) return m; }
-  return Math.ceil((xp + 1) / 500) * 500;
-}
-
 // ── Typing dots ───────────────────────────────────────────────────────────────
 
 function TypingDots() {
@@ -75,32 +67,6 @@ function TypingDots() {
       {dots.map((dot, i) => (
         <Animated.View key={i} style={{ width: 6, height: 6, borderRadius: 3, backgroundColor: 'rgba(255,255,255,0.75)', opacity: dot }} />
       ))}
-    </View>
-  );
-}
-
-// ── XP ring ───────────────────────────────────────────────────────────────────
-
-function XPRing({ todayXP, goal }: { todayXP: number; goal: number }) {
-  const SIZE = 50, SW = 5;
-  const r    = (SIZE - SW) / 2;
-  const circ = 2 * Math.PI * r;
-  const prog = Math.min(todayXP / goal, 1);
-  return (
-    <View style={{ width: SIZE, height: SIZE, alignItems: 'center', justifyContent: 'center' }}>
-      <Svg width={SIZE} height={SIZE} style={{ position: 'absolute' }}>
-        <Circle cx={SIZE/2} cy={SIZE/2} r={r} stroke={C.navyGhost} strokeWidth={SW} fill="none" />
-        {prog > 0 && (
-          <Circle
-            cx={SIZE/2} cy={SIZE/2} r={r}
-            stroke={C.greenDark} strokeWidth={SW} fill="none"
-            strokeDasharray={circ} strokeDashoffset={circ * (1 - prog)}
-            strokeLinecap="round"
-            transform={`rotate(-90 ${SIZE/2} ${SIZE/2})`}
-          />
-        )}
-      </Svg>
-      <AppText style={{ fontSize: 12, fontWeight: '900', color: C.navy }}>{todayXP}</AppText>
     </View>
   );
 }
@@ -354,38 +320,10 @@ export default function HomeTab() {
             </View>
           </View>
 
-          {/* Divider + XP — zIndex:1 para ficar sobre o overflow da Charlotte */}
+          {/* Divider + TrailBanner — zIndex:1 para ficar sobre o overflow da Charlotte */}
           <View style={{ zIndex: 1, backgroundColor: T.card }}>
           <View style={{ height: 1, backgroundColor: C.navyGhost }} />
-
-          {/* XP progress — tappable → stats screen */}
-          <TouchableOpacity
-            onPress={() => router.push({ pathname: '/(app)/stats', params: statsParams })}
-            activeOpacity={0.75}
-            style={{ padding: 20 }}
-          >
-            <View style={{ flexDirection: 'row', alignItems: 'center', gap: 14 }}>
-              <XPRing todayXP={todayXP} goal={getDailyGoal(todayXP)} />
-              <View style={{ flex: 1 }}>
-                <View style={{ flexDirection: 'row', justifyContent: 'space-between', marginBottom: 7 }}>
-                  <AppText style={{ fontSize: 11, color: C.navyMid, fontWeight: '700', textTransform: 'uppercase', letterSpacing: 0.7 }}>
-                    {isPt ? 'XP de hoje' : "Today's XP"}
-                  </AppText>
-                  <AppText style={{ fontSize: 11, fontWeight: '800', color: C.greenDark }}>
-                    {todayXP} / {getDailyGoal(todayXP)}
-                  </AppText>
-                </View>
-                <View style={{ height: 8, backgroundColor: C.navyGhost, borderRadius: 4, overflow: 'hidden' }}>
-                  <View style={{
-                    height: '100%',
-                    width: `${(todayXP / getDailyGoal(todayXP)) * 100}%` as any,
-                    backgroundColor: C.greenDark,
-                    borderRadius: 4,
-                  }} />
-                </View>
-              </View>
-            </View>
-          </TouchableOpacity>
+          <TrailBanner userId={userId} level={level} flush />
           </View>
         </View>
       </View>
@@ -397,7 +335,7 @@ export default function HomeTab() {
         showsVerticalScrollIndicator={false}
         refreshControl={<RefreshControl refreshing={refreshing} onRefresh={onRefresh} tintColor={C.navy} />}
       >
-        <TrailContent userId={userId} level={level} />
+        <TrailContent userId={userId} level={level} showBanner={false} />
       </ScrollView>
 
     </View>
