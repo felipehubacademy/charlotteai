@@ -93,26 +93,28 @@ export default function ChangePasswordScreen() {
   };
 
   return (
-    <SafeAreaView style={{ flex: 1, backgroundColor: C.bg }} edges={['top', 'bottom']}>
-      {/* Header */}
-      <View style={{
-        height: 56,
-        flexDirection: 'row', alignItems: 'center',
-        paddingHorizontal: 8,
-        backgroundColor: C.card,
-        borderBottomWidth: 1, borderBottomColor: C.border,
-      }}>
-        <TouchableOpacity
-          onPress={() => router.back()}
-          style={{ padding: 10, borderRadius: 20, marginRight: 4 }}
-          hitSlop={{ top: 8, bottom: 8, left: 8, right: 8 }}
-        >
-          <CaretLeft size={22} color={C.navy} weight="bold" />
-        </TouchableOpacity>
-        <AppText style={{ fontSize: 17, fontWeight: '700', color: C.navy }}>
-          {isPt ? 'Alterar senha' : 'Change password'}
-        </AppText>
-      </View>
+    <View style={{ flex: 1, backgroundColor: C.bg }}>
+      {/* Safe area top na cor do header (branca) — sem barra lavender quebrada */}
+      <SafeAreaView edges={['top']} style={{ backgroundColor: C.card }}>
+        <View style={{
+          height: 56,
+          flexDirection: 'row', alignItems: 'center',
+          paddingHorizontal: 8,
+          backgroundColor: C.card,
+          borderBottomWidth: 1, borderBottomColor: C.border,
+        }}>
+          <TouchableOpacity
+            onPress={() => router.back()}
+            style={{ padding: 10, borderRadius: 20, marginRight: 4 }}
+            hitSlop={{ top: 8, bottom: 8, left: 8, right: 8 }}
+          >
+            <CaretLeft size={22} color={C.navy} weight="bold" />
+          </TouchableOpacity>
+          <AppText style={{ fontSize: 17, fontWeight: '700', color: C.navy }}>
+            {isPt ? 'Alterar senha' : 'Change password'}
+          </AppText>
+        </View>
+      </SafeAreaView>
 
       <KeyboardAvoidingView
         style={{ flex: 1 }}
@@ -123,6 +125,7 @@ export default function ChangePasswordScreen() {
           contentContainerStyle={{ paddingHorizontal: 20, paddingTop: 28, paddingBottom: 40 }}
           keyboardShouldPersistTaps="handled"
           showsVerticalScrollIndicator={false}
+          alwaysBounceVertical={false}
         >
           {success ? (
             <SuccessState isPt={isPt} onBack={() => router.back()} />
@@ -240,7 +243,7 @@ export default function ChangePasswordScreen() {
           )}
         </ScrollView>
       </KeyboardAvoidingView>
-    </SafeAreaView>
+    </View>
   );
 }
 
