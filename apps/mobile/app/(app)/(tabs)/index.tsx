@@ -6,7 +6,7 @@ import React, { useState, useCallback, useEffect, useRef, useMemo } from 'react'
 import {
   View, ScrollView, TouchableOpacity, Image, Platform,
   ActivityIndicator, RefreshControl, Animated, unstable_batchedUpdates,
-  findNodeHandle,
+  findNodeHandle, UIManager,
 } from 'react-native';
 import { router, useFocusEffect } from 'expo-router';
 import { SafeAreaView } from 'react-native-safe-area-context';
@@ -278,24 +278,43 @@ export default function HomeTab() {
   // depois que user moveu manualmente).
   const trailScrollRef = useRef<ScrollView>(null);
   const trailScrolledRef = useRef(false);
-  const handleCurrentTopicRef = useCallback((node: View | null) => {
-    if (!node || trailScrolledRef.current || !trailScrollRef.current) return;
-    // Pequeno delay pra garantir que o layout do scrollview esta pronto
-    setTimeout(() => {
-      const sv = trailScrollRef.current;
-      if (!sv) return;
-      const handle = findNodeHandle(sv);
-      if (handle == null) return;
-      (node as any).measureLayout?.(
-        handle,
-        (_x: number, y: number) => {
-          sv.scrollTo({ y: Math.max(0, y - 24), animated: false });
+
+  const tryScroll = useCallback((node: any, attempt = 0) => {
+    if (trailScrolledRef.current || !node || !trailScrollRef.current) return;
+    const sv = trailScrollRef.current as any;
+    const svHandle =
+      typeof sv.getInnerViewNode === 'function' ? sv.getInnerViewNode() :
+      findNodeHandle(sv);
+    const nodeHandle = findNodeHandle(node);
+    if (svHandle == null || nodeHandle == null) {
+      if (attempt < 5) requestAnimationFrame(() => tryScroll(node, attempt + 1));
+      return;
+    }
+    UIManager.measureLayout(
+      nodeHandle,
+      svHandle,
+      () => {
+        // Retry on error — layout may not be committed yet
+        if (attempt < 5) requestAnimationFrame(() => tryScroll(node, attempt + 1));
+      },
+      (_x: number, y: number) => {
+        if (y > 0) {
+          trailScrollRef.current?.scrollTo({ y: Math.max(0, y - 24), animated: false });
           trailScrolledRef.current = true;
-        },
-        () => {},
-      );
-    }, 60);
+        } else if (attempt < 5) {
+          // Ainda nao mediu — tenta de novo no proximo frame
+          requestAnimationFrame(() => tryScroll(node, attempt + 1));
+        }
+      },
+    );
   }, []);
+
+  const handleCurrentTopicRef = useCallback((node: View | null) => {
+    if (!node || trailScrolledRef.current) return;
+    // Dois RAFs garantem que o layout foi commitado nos dois lados
+    // (ScrollView interno + posicao do node).
+    requestAnimationFrame(() => requestAnimationFrame(() => tryScroll(node)));
+  }, [tryScroll]);
 
   if (loading) {
     return (
