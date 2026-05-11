@@ -96,7 +96,7 @@ function SettingRow({ icon, label, value, valueColor, onPress, destructive = fal
           </AppText>
         )}
         {(chevron || (!!onPress && !value)) && (
-          <CaretRight size={15} color={C.navyLight} weight="bold" />
+          <CaretRight size={15} color={C.navyLight} weight="regular" />
         )}
       </View>
     </TouchableOpacity>
@@ -332,7 +332,7 @@ export default function ProfileTab() {
                 alignItems: 'center', justifyContent: 'center',
                 borderWidth: 1.5, borderColor: C.card,
               }}>
-                <PencilSimple size={11} color="#FFF" weight="fill" />
+                <PencilSimple size={11} color="#FFF" weight="regular" />
               </View>
             </TouchableOpacity>
 
@@ -375,7 +375,7 @@ export default function ProfileTab() {
                   <AppText style={{ fontSize: 16, fontWeight: '800', color: C.navy }} numberOfLines={1}>
                     {profile?.name ?? profile?.email?.split('@')[0] ?? '—'}
                   </AppText>
-                  <PencilSimple size={14} color={C.navyLight} weight="fill" />
+                  <PencilSimple size={14} color={C.navyLight} weight="regular" />
                 </TouchableOpacity>
               )}
 

@@ -108,7 +108,7 @@ export default function ChangePasswordScreen() {
             style={{ padding: 10, borderRadius: 20, marginRight: 4 }}
             hitSlop={{ top: 8, bottom: 8, left: 8, right: 8 }}
           >
-            <CaretLeft size={22} color={C.navy} weight="bold" />
+            <CaretLeft size={22} color={C.navy} weight="regular" />
           </TouchableOpacity>
           <AppText style={{ fontSize: 17, fontWeight: '700', color: C.navy }}>
             {isPt ? 'Alterar senha' : 'Change password'}
@@ -200,8 +200,8 @@ export default function ChangePasswordScreen() {
                 {matchState !== 'idle' && (
                   <View style={{ flexDirection: 'row', alignItems: 'center', gap: 6, marginTop: 8 }}>
                     {matchState === 'match'
-                      ? <CheckCircle size={14} color={C.greenDark} weight="fill" />
-                      : <XCircle     size={14} color={C.error}     weight="fill" />}
+                      ? <CheckCircle size={14} color={C.greenDark} weight="regular" />
+                      : <XCircle     size={14} color={C.error}     weight="regular" />}
                     <AppText style={{
                       fontSize: 12, fontWeight: '600',
                       color: matchState === 'match' ? C.greenDark : C.error,
@@ -232,7 +232,7 @@ export default function ChangePasswordScreen() {
                   <ActivityIndicator color={C.navy} />
                 ) : (
                   <>
-                    <LockKey size={18} color={allValid ? C.navy : `${C.navy}80`} weight="bold" />
+                    <LockKey size={18} color={allValid ? C.navy : `${C.navy}80`} weight="regular" />
                     <AppText style={{ fontSize: 15, fontWeight: '800', color: allValid ? C.navy : `${C.navy}80` }}>
                       {isPt ? 'Alterar senha' : 'Change password'}
                     </AppText>
@@ -296,7 +296,7 @@ function PasswordField({
       </View>
       {error && (
         <View style={{ flexDirection: 'row', alignItems: 'center', gap: 6, marginTop: 6 }}>
-          <XCircle size={14} color={C.error} weight="fill" />
+          <XCircle size={14} color={C.error} weight="regular" />
           <AppText style={{ fontSize: 12, fontWeight: '600', color: C.error }}>{error}</AppText>
         </View>
       )}
@@ -308,7 +308,7 @@ function Rule({ done, label }: { done: boolean; label: string }) {
   return (
     <View style={{ flexDirection: 'row', alignItems: 'center', gap: 6 }}>
       {done
-        ? <CheckCircle size={14} color={C.greenDark} weight="fill" />
+        ? <CheckCircle size={14} color={C.greenDark} weight="regular" />
         : (
           <View style={{
             width: 14, height: 14, borderRadius: 7,
