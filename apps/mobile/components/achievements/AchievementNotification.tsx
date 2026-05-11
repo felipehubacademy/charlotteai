@@ -14,6 +14,7 @@ import {
 import { AppText } from '@/components/ui/Text';
 import { Achievement } from '@/lib/types/achievement';
 import { soundEngine, SoundName } from '@/lib/soundEngine';
+import { voiceSFX } from '@/lib/voiceSFX';
 import { shareAchievement } from '@/lib/shareUtils';
 import { GENERAL_ACHIEVEMENTS, LEVEL_ACHIEVEMENTS } from '@/lib/achievementsCatalog';
 import { ShareNetwork } from 'phosphor-react-native';
@@ -186,6 +187,14 @@ export default function AchievementNotification({ achievements, onDismiss, isPt 
 
     soundEngine.play(achievementSound(current.rarity)).catch(() => {});
     achievementHaptic(current.rarity).catch(() => {});
+
+    // Tier 4 — voz da Charlotte para conquistas de alto impacto.
+    // Atraso pequeno para a voz cair APOS o SFX musical (efeito cinematografico).
+    if (current.rarity === 'epic') {
+      setTimeout(() => voiceSFX.play('achievement_epic').catch(() => {}), 700);
+    } else if (current.rarity === 'legendary') {
+      setTimeout(() => voiceSFX.play('achievement_legendary').catch(() => {}), 900);
+    }
 
     // Backdrop fades in first (120ms), then card bounces in with overshoot
     Animated.timing(backdropAnim, { toValue: 1, duration: 120, useNativeDriver: true }).start(() => {

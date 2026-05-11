@@ -295,6 +295,9 @@ export default function PlacementTestScreen() {
 
   const insets = useSafeAreaInsets();
 
+  // Reset contador Tier 4 ao iniciar o teste
+  useEffect(() => { soundEngine.resetStreak(); }, []);
+
   const [phase, setPhase]         = useState<Phase>('intro');
   const [block, setBlock]         = useState<BlockNum>(1);
   const [blockQuestions, setBlockQuestions] = useState<AnyQuestion[]>(BLOCK1);

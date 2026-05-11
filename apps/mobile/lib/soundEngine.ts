@@ -16,6 +16,7 @@ import { createAudioPlayer, setAudioModeAsync } from 'expo-audio';
 import * as FileSystem from 'expo-file-system/legacy';
 import Constants from 'expo-constants';
 import { getAudioPreferences } from './audioPreferences';
+import { voiceSFX } from './voiceSFX';
 
 // ── Constantes ────────────────────────────────────────────────────────────────
 
@@ -254,9 +255,25 @@ function buildMelodyWav(melody: Melody): string {
 class SoundEngine {
   private uriCache = new Map<SoundName, string>(); // soundName → file URI
   private muted    = false;
+  private consecCorrect = 0; // contador de acertos consecutivos (sessao)
 
   /** Silencia todos os sons (ex: durante Live Voice). */
   setMuted(m: boolean) { this.muted = m; }
+
+  /** Reseta o contador de acertos consecutivos. Chamar ao iniciar uma sessao. */
+  resetStreak() { this.consecCorrect = 0; }
+
+  /** Atualiza contador e dispara interjeicoes Tier 4 nos marcos. */
+  private trackStreak(name: SoundName) {
+    if (name === 'answer_correct') {
+      this.consecCorrect += 1;
+      if      (this.consecCorrect === 3)  voiceSFX.play('streak_3').catch(() => {});
+      else if (this.consecCorrect === 5)  voiceSFX.play('streak_5').catch(() => {});
+      else if (this.consecCorrect === 10) voiceSFX.play('streak_10').catch(() => {});
+    } else if (name === 'answer_wrong') {
+      this.consecCorrect = 0;
+    }
+  }
 
   /** Toca um som. Fire-and-forget. */
   async play(name: SoundName): Promise<void> {
@@ -265,6 +282,11 @@ class SoundEngine {
     // xp_gained agora e SOMENTE haptico (decisao de design: toca dezenas de vezes
     // por sessao, som vira ruido. Os call sites ja disparam Haptics.Success).
     if (name === 'xp_gained') return;
+
+    // Tier 4 — voz da Charlotte. Roda ANTES do gate de prefs.sfx porque tem
+    // sua propria preferencia (prefs.voice).
+    this.trackStreak(name);
+    if (name === 'daily_goal') voiceSFX.play('daily_goal').catch(() => {});
 
     // Respeita preferencia do usuario.
     if (!getAudioPreferences().sfx) return;

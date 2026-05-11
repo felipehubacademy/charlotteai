@@ -104,6 +104,9 @@ export default function VocabReview() {
   const [idx,      setIdx]      = useState(0);
   const [flipped,  setFlipped]  = useState(false);
   const [phase,    setPhase]    = useState<'card' | 'summary'>('card');
+
+  // Reset contador Tier 4 ao iniciar a sessao
+  useEffect(() => { soundEngine.resetStreak(); }, []);
   const [ratings,  setRatings]  = useState<SRRating[]>([]);
   const [totalXP,  setTotalXP]  = useState(0);
   const [ttsLoading, setTtsLoading] = useState(false);

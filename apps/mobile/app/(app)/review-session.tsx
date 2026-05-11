@@ -266,6 +266,9 @@ export default function ReviewSession() {
   const levelAccent:   string = level === 'Novice' ? '#D97706' : level === 'Inter' ? '#7C3AED' : '#0F766E';
   const levelAccentBg: string = level === 'Novice' ? '#FFFBEB' : level === 'Inter' ? '#F5F3FF' : '#F0FDFA';
 
+  // Reset contador Tier 4 ao iniciar a sessao
+  useEffect(() => { soundEngine.resetStreak(); }, []);
+
   // ── State ──────────────────────────────────────────────────────────────────
   const [items,         setItems]         = useState<SRCardItem[]>([]);
   const [loading,       setLoading]       = useState(true);

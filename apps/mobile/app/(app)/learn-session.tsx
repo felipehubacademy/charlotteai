@@ -220,6 +220,10 @@ export default function LearnSessionScreen() {
 
   // ── Tour refs ──────────────────────────────────────────────
 
+  // Reset contador de acertos consecutivos ao iniciar a sessao
+  // (Tier 4 — voiceSFX dispara em 3/5/10 acertos seguidos)
+  useEffect(() => { soundEngine.resetStreak(); }, []);
+
   // Load saved step on mount (resume mid-topic)
   useEffect(() => {
     if (!resumeKey || stepLoadedRef.current) return;

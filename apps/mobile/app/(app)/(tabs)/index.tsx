@@ -23,6 +23,7 @@ import { identifyUser, track } from '@/lib/analytics';
 import { greetingCache, resetGreetingCache, prefetchGreeting } from '@/lib/greetingCache';
 import { localTodayStr, localMidnightUTC } from '@/lib/dateUtils';
 import { soundEngine } from '@/lib/soundEngine';
+import { voiceSFX } from '@/lib/voiceSFX';
 import { TrailContent } from '@/components/trail/TrailContent';
 import { TrailBanner } from '@/components/trail/TrailBanner';
 import { NewLayoutWelcomeSheet } from '@/components/onboarding/NewLayoutWelcomeSheet';
@@ -181,18 +182,38 @@ export default function HomeTab() {
       setTodayXP(todayXPVal);
       setRank(userTotalXP > 0 ? computedRank : null);
 
-      // Streak sound
+      // Streak sound + Tier 4 (voz)
       if (!_streakSoundPlayedThisSession && streakDays > 0) {
         const today     = localTodayStr();
         const streakKey = `streak_sound_played_${userId}`;
+        const lastOpenKey = `last_open_date_${userId}`;
         SecureStore.getItemAsync(streakKey).then(lastPlayed => {
           if (lastPlayed !== today) {
             _streakSoundPlayedThisSession = true;
             SecureStore.setItemAsync(streakKey, today).catch(() => {});
             setTimeout(() => soundEngine.play('streak_alive').catch(() => {}), 800);
+
+            // Tier 4 — marcos de streak (somente no dia exato em que cruza)
+            if (streakDays === 7) {
+              setTimeout(() => voiceSFX.play('streak_7_days').catch(() => {}), 1800);
+            } else if (streakDays === 30) {
+              setTimeout(() => voiceSFX.play('streak_30_days').catch(() => {}), 1800);
+            }
           } else {
             _streakSoundPlayedThisSession = true;
           }
+        }).catch(() => {});
+
+        // Welcome back — se ultimo acesso foi ha 3+ dias
+        SecureStore.getItemAsync(lastOpenKey).then(lastOpen => {
+          if (lastOpen) {
+            const diffMs = Date.now() - new Date(lastOpen).getTime();
+            const diffDays = diffMs / (1000 * 60 * 60 * 24);
+            if (diffDays >= 3) {
+              setTimeout(() => voiceSFX.play('welcome_back').catch(() => {}), 1400);
+            }
+          }
+          SecureStore.setItemAsync(lastOpenKey, new Date().toISOString()).catch(() => {});
         }).catch(() => {});
       }
     } catch (e) {
