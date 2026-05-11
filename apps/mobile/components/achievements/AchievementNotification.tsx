@@ -189,11 +189,11 @@ export default function AchievementNotification({ achievements, onDismiss, isPt 
     achievementHaptic(current.rarity).catch(() => {});
 
     // Tier 4 — voz da Charlotte para conquistas de alto impacto.
-    // Atraso pequeno para a voz cair APOS o SFX musical (efeito cinematografico).
+    // Delays alinhados com a duracao do SFX musical para nao colidir.
     if (current.rarity === 'epic') {
-      setTimeout(() => voiceSFX.play('achievement_epic').catch(() => {}), 700);
+      setTimeout(() => voiceSFX.play('achievement_epic').catch(() => {}), 1900); // SFX ~1.8s
     } else if (current.rarity === 'legendary') {
-      setTimeout(() => voiceSFX.play('achievement_legendary').catch(() => {}), 900);
+      setTimeout(() => voiceSFX.play('achievement_legendary').catch(() => {}), 2300); // SFX ~2.2s
     }
 
     // Backdrop fades in first (120ms), then card bounces in with overshoot

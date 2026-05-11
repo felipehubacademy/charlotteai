@@ -56,9 +56,11 @@ async function gen(id: string, text: string): Promise<void> {
       text,
       model_id: 'eleven_multilingual_v2',
       voice_settings: {
-        stability:         0.30,  // mais variacao = mais entusiasmo
+        // Configuracao agressiva para entrega energetica (Tier 4 nao pode soar
+        // desmotivado). Stability baixa = MUITA variacao, style maximo = drama alto.
+        stability:         0.15,
         similarity_boost:  0.85,
-        style:             0.70,  // entrega emocional alta
+        style:             0.90,
         use_speaker_boost: true,
       },
     }),

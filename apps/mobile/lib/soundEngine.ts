@@ -292,13 +292,16 @@ class SoundEngine {
   /** Reseta o contador de acertos consecutivos. Chamar ao iniciar uma sessao. */
   resetStreak() { this.consecCorrect = 0; }
 
-  /** Atualiza contador e dispara interjeicoes Tier 4 nos marcos. */
+  /** Atualiza contador e dispara interjeicoes Tier 4 nos marcos.
+   *  Voz cai com delay APOS o SFX terminar (~1s) para nao colidir audio. */
   private trackStreak(name: SoundName) {
     if (name === 'answer_correct') {
       this.consecCorrect += 1;
-      if      (this.consecCorrect === 3)  voiceSFX.play('streak_3').catch(() => {});
-      else if (this.consecCorrect === 5)  voiceSFX.play('streak_5').catch(() => {});
-      else if (this.consecCorrect === 10) voiceSFX.play('streak_10').catch(() => {});
+      const id =
+        this.consecCorrect === 3  ? 'streak_3'  :
+        this.consecCorrect === 5  ? 'streak_5'  :
+        this.consecCorrect === 10 ? 'streak_10' : null;
+      if (id) setTimeout(() => voiceSFX.play(id).catch(() => {}), 1100);
     } else if (name === 'answer_wrong') {
       this.consecCorrect = 0;
     }
@@ -315,12 +318,13 @@ class SoundEngine {
     // Tier 4 — voz da Charlotte. Roda ANTES do gate de prefs.sfx porque tem
     // sua propria preferencia (prefs.voice).
     this.trackStreak(name);
-    if (name === 'daily_goal') voiceSFX.play('daily_goal').catch(() => {});
-    // Marcos da trilha: voz com pequeno delay para cair APOS o SFX musical.
-    if (name === 'topic_complete') {
-      setTimeout(() => voiceSFX.play('topic_complete').catch(() => {}), 700);
+    // Delays calibrados para a voz cair APOS o SFX musical (sem colisao).
+    if (name === 'daily_goal') {
+      setTimeout(() => voiceSFX.play('daily_goal').catch(() => {}), 1600);
+    } else if (name === 'topic_complete') {
+      setTimeout(() => voiceSFX.play('topic_complete').catch(() => {}), 1500);
     } else if (name === 'module_complete') {
-      setTimeout(() => voiceSFX.play('module_complete').catch(() => {}), 1100);
+      setTimeout(() => voiceSFX.play('module_complete').catch(() => {}), 2100);
     }
 
     // Respeita preferencia do usuario.
