@@ -27,7 +27,9 @@ export type VoiceSfxId =
   | 'achievement_epic' // epic                   — "Wow!"
   | 'achievement_legendary' // legendary         — "Legendary!"
   | 'streak_7_days'    // marco 7 dias           — "Seven days strong!"
-  | 'streak_30_days';  // marco 30 dias          — "Thirty days!"
+  | 'streak_30_days'   // marco 30 dias          — "Thirty days!"
+  | 'topic_complete'   // topico finalizado      — "Topic done!"
+  | 'module_complete'; // modulo finalizado      — "Module complete!"
 
 const API_BASE = (Constants.expoConfig?.extra?.apiBaseUrl as string | undefined)
   ?? 'https://charlotte.hubacademybr.com';
@@ -113,6 +115,7 @@ class VoiceSFXEngine {
       'welcome_back', 'daily_goal',
       'achievement_epic', 'achievement_legendary',
       'streak_7_days', 'streak_30_days',
+      'topic_complete', 'module_complete',
     ];
     await Promise.all(ids.map(id => this.getUri(id).catch(() => {})));
   }

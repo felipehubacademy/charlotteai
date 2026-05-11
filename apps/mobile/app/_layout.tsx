@@ -23,6 +23,9 @@ SplashScreen.preventAutoHideAsync();
 // Carrega preferencias de audio antes de qualquer play. Resolve sincrono apos boot.
 loadAudioPreferences().catch(() => {});
 
+// Limpa caches de SFX pre-reformulacao (voz como SFX). Idempotente, roda uma vez por install.
+soundEngine.cleanLegacyCache().catch(() => {});
+
 // Pré-gera e faz cache de todos os efeitos sonoros em background
 soundEngine.preload().catch(() => {});
 voiceSFX.preload().catch(() => {});

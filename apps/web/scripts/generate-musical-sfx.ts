@@ -107,6 +107,27 @@ const SFX: SfxPrompt[] = [
       'long lush reverb tail. NO voice, NO speech. Mobile game ultimate reward sound.',
   },
 
+  // Marcos da trilha de aprendizado
+  {
+    id: 'topic_complete',
+    durationSeconds: 1.4,
+    promptInfluence: 0.75,
+    text:
+      'Bright topic-complete fanfare in C major: marimba and glockenspiel ' +
+      'ascending C5-E5-G5-C6 with a final sparkle, short warm reverb. ' +
+      'NO voice, NO speech. Pleasant lesson-finished sound for a learning app.',
+  },
+  {
+    id: 'module_complete',
+    durationSeconds: 2.0,
+    promptInfluence: 0.8,
+    text:
+      'Triumphant module-complete celebration in C major: ascending marimba ' +
+      'and bell arpeggio C5-E5-G5-C6-E6 with crescendo, soft choir pad and ' +
+      'warm strings underneath, sparkling shimmer at the end, lush reverb tail. ' +
+      'NO voice, NO speech. Bigger than a single topic but warm, not cinematic.',
+  },
+
   // xp_gained NAO esta aqui — decidido em product: vira somente haptico.
 ];
 

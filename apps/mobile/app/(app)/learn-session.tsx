@@ -834,8 +834,18 @@ export default function LearnSessionScreen() {
           }
         }
       }
-      // 🎉 Celebração de conclusão: som + vibração tripla
-      soundEngine.play('daily_goal').catch(() => {});
+      // Celebracao de conclusao: detecta se foi modulo completo (ultimo topico)
+      const moduleData = CURRICULUM[level]?.[moduleIndex];
+      const isLastTopic = !!moduleData && topicIndex === moduleData.topics.length - 1;
+      const isModuleComplete = isLastTopic && !params.reviewId;
+
+      if (isModuleComplete) {
+        // SFX grande + voz "Module complete!" (delay interno no soundEngine)
+        soundEngine.play('module_complete').catch(() => {});
+      } else {
+        // Topico finalizado: SFX curto + voz "Topic done!"
+        soundEngine.play('topic_complete').catch(() => {});
+      }
       Haptics.impactAsync(Haptics.ImpactFeedbackStyle.Heavy);
       setTimeout(() => Haptics.impactAsync(Haptics.ImpactFeedbackStyle.Heavy), 120);
       setTimeout(() => Haptics.notificationAsync(Haptics.NotificationFeedbackType.Success), 280);

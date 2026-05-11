@@ -31,7 +31,9 @@ export type SoundName =
   | 'streak_alive'
   | 'daily_goal'
   | 'answer_correct'
-  | 'answer_wrong';
+  | 'answer_wrong'
+  | 'topic_complete'
+  | 'module_complete';
 
 // ── Síntese: nota com harmônicos + ADSR ──────────────────────────────────────
 
@@ -175,6 +177,24 @@ const MELODIES: Record<SoundName, Melody> = {
     { freq: NOTES.E4, durMs:  55, amp: 0.22, harmonics: 1, attackMs: 3, releaseMs: 28 },
     { freq: NOTES.C4, durMs: 100, amp: 0.20, harmonics: 1, attackMs: 3, releaseMs: 60 },
   ],
+
+  // ── Topic complete: fanfara breve ascendente ─────────────────────────────
+  topic_complete: [
+    { freq: NOTES.C5, durMs: 100, amp: 0.30, harmonics: 4, attackMs: 6, releaseMs: 40 },
+    { freq: NOTES.E5, durMs: 100, amp: 0.32, harmonics: 4, attackMs: 6, releaseMs: 40 },
+    { freq: NOTES.G5, durMs: 100, amp: 0.34, harmonics: 4, attackMs: 6, releaseMs: 40 },
+    { freq: NOTES.C6, durMs: 220, amp: 0.38, harmonics: 4, attackMs: 8, releaseMs: 100 },
+  ],
+
+  // ── Module complete: celebracao cinematografica (maior que topic) ────────
+  module_complete: [
+    { freq: NOTES.C5, durMs: 120, amp: 0.30, harmonics: 5, attackMs: 8,  releaseMs:  45 },
+    { freq: NOTES.E5, durMs: 120, amp: 0.32, harmonics: 5, attackMs: 8,  releaseMs:  45 },
+    { freq: NOTES.G5, durMs: 120, amp: 0.35, harmonics: 5, attackMs: 8,  releaseMs:  45 },
+    { freq: NOTES.C6, durMs: 140, amp: 0.38, harmonics: 5, attackMs: 8,  releaseMs:  60 },
+    { freq: NOTES.G5, durMs:  90, amp: 0.32, harmonics: 5, attackMs: 6,  releaseMs:  40 },
+    { freq: NOTES.E6, durMs: 320, amp: 0.42, harmonics: 5, attackMs: 10, releaseMs: 150 },
+  ],
 };
 
 // ── WAV builder (44-byte header + PCM16 data) ─────────────────────────────────
@@ -287,6 +307,12 @@ class SoundEngine {
     // sua propria preferencia (prefs.voice).
     this.trackStreak(name);
     if (name === 'daily_goal') voiceSFX.play('daily_goal').catch(() => {});
+    // Marcos da trilha: voz com pequeno delay para cair APOS o SFX musical.
+    if (name === 'topic_complete') {
+      setTimeout(() => voiceSFX.play('topic_complete').catch(() => {}), 700);
+    } else if (name === 'module_complete') {
+      setTimeout(() => voiceSFX.play('module_complete').catch(() => {}), 1100);
+    }
 
     // Respeita preferencia do usuario.
     if (!getAudioPreferences().sfx) return;
@@ -317,8 +343,8 @@ class SoundEngine {
       }
 
       player.play();
-      // Para voz da Charlotte: máx 2s. Para PCM sintetizado: duração estimada + folga.
-      const maxDur = uri.includes('sfx_voice_') ? 2000 : this.estimatePcmDurMs(name) + 600;
+      // SFX musicais (CDN): ate 2.5s (legendary tem 2.2s). PCM sintetizado: estimado + folga.
+      const maxDur = uri.includes('sfx_v2_') ? 2500 : this.estimatePcmDurMs(name) + 600;
       setTimeout(() => {
         try { player.pause(); player.remove(); } catch {}
       }, maxDur);
@@ -332,10 +358,14 @@ class SoundEngine {
     return melody.reduce((sum, n) => sum + n.durMs, 0);
   }
 
-  // Tenta baixar o MP3 da voz da Charlotte do CDN.
-  // Retorna o URI local em cache, ou null se indisponível (404 / offline).
+  // Tenta baixar o MP3 do CDN (hoje sao SFX MUSICAIS — desde a reformulacao
+  // de audio em maio/2026; antes eram voz da Charlotte tocada como SFX).
+  //
+  // CACHE BUSTING: prefixo "sfx_v2_" para forcar re-download. Caches antigos
+  // (`sfx_voice_*.mp3` com a voz "Nice!"/"Outstanding!"/etc.) ficam orfaos
+  // e sao limpos por cleanLegacySfxCache() no boot.
   private async tryVoiceUri(name: SoundName): Promise<string | null> {
-    const localUri = `${FileSystem.cacheDirectory}sfx_voice_${name}.mp3`;
+    const localUri = `${FileSystem.cacheDirectory}sfx_v2_${name}.mp3`;
 
     const info = await FileSystem.getInfoAsync(localUri).catch(() => ({ exists: false }));
     if (info.exists) return localUri;
@@ -375,6 +405,27 @@ class SoundEngine {
       encoding: FileSystem.EncodingType.Base64,
     });
     return uri;
+  }
+
+  /**
+   * Remove caches de SFX da era pre-reformulacao (maio/2026):
+   *   - sfx_voice_*.mp3  (voz da Charlotte tocada como SFX — substituida por musical)
+   *   - sfx_*.wav        (PCM sintetizado — fallback antigo, agora irrelevante)
+   * Caches novos (`sfx_v2_*.mp3`) sao preservados.
+   */
+  async cleanLegacyCache(): Promise<void> {
+    const cacheDir = FileSystem.cacheDirectory;
+    if (!cacheDir) return;
+    try {
+      const files = await FileSystem.readDirectoryAsync(cacheDir).catch(() => [] as string[]);
+      const legacy = files.filter(f =>
+        (f.startsWith('sfx_voice_') && f.endsWith('.mp3')) ||
+        (f.startsWith('sfx_') && f.endsWith('.wav') && !f.startsWith('sfx_v2_'))
+      );
+      await Promise.all(legacy.map(f =>
+        FileSystem.deleteAsync(`${cacheDir}${f}`, { idempotent: true }).catch(() => {})
+      ));
+    } catch {}
   }
 
   /** Pré-gera e faz cache de todos os sons (chamar no splash/boot). */

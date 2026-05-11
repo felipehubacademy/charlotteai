@@ -31,6 +31,8 @@ const SFX: { id: string; text: string }[] = [
   { id: 'achievement_legendary', text: 'Legendary!'         },
   { id: 'streak_7_days',         text: 'Seven days strong!' },
   { id: 'streak_30_days',        text: 'Thirty days!'       },
+  { id: 'topic_complete',        text: 'Topic done!'        },
+  { id: 'module_complete',       text: 'Module complete!'   },
 ];
 
 async function gen(id: string, text: string): Promise<void> {
