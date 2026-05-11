@@ -9,7 +9,7 @@ import {
   ArrowLeft, ShareNetwork, Star, Lightning, Fire, Trophy,
   BookOpenText, CaretRight, Medal,
   Microphone, PencilLine, GraduationCap, Sun, CalendarCheck,
-  RocketLaunch, X, Lock, CheckCircle,
+  X, Lock, CheckCircle,
 } from 'phosphor-react-native';
 import { AppText } from '@/components/ui/Text';
 import { supabase } from '@/lib/supabase';
@@ -53,12 +53,6 @@ const MEDAL_COLORS = ['#EAB308', '#9CA3AF', '#B45309'];
 
 type Level = 'Novice' | 'Inter' | 'Advanced';
 
-interface RecentActivity {
-  type: string;
-  xp: number;
-  timestamp: Date;
-}
-
 interface TopEntry {
   userId: string;
   totalXp: number;
@@ -73,7 +67,6 @@ interface AchievementWithCategory extends Achievement {
 interface StatsData {
   streak: number;
   freshTotalXP: number;
-  recentActivity: RecentActivity[];
   achievements: AchievementWithCategory[];
   rank: number;
   top3: TopEntry[];
@@ -120,7 +113,7 @@ export default function StatsScreen() {
   const [badgeModal, setBadgeModal] = useState<{ catalog: CatalogEntry; earnedAt?: Date } | null>(null);
   const [data, setData] = useState<StatsData>({
     streak: 0, freshTotalXP: totalXP,
-    recentActivity: [], achievements: [],
+    achievements: [],
     rank: 0, top3: [], trailDone: 0,
     loading: true, error: null,
   });
@@ -131,36 +124,11 @@ export default function StatsScreen() {
     if (!userId) return;
     setData(prev => ({ ...prev, loading: true, error: null }));
     try {
-      // Labels alinhados ao novo layout (Free Chat, Grammar, Pronunciation, etc).
-      const typeLabels: Record<string, string> = {
-        text_message:      'Free Chat',
-        audio_message:     isPortuguese ? 'Free Chat (voz)' : 'Free Chat (voice)',
-        grammar:           isPortuguese ? 'Gramática'       : 'Grammar',
-        grammar_message:   isPortuguese ? 'Gramática'       : 'Grammar',
-        pronunciation:     isPortuguese ? 'Pronúncia'       : 'Pronunciation',
-        live_voice:        'Live Voice',
-        learn_exercise:    isPortuguese ? 'Trilha'          : 'Learning Trail',
-        sr_review:         isPortuguese ? 'Revisão'         : 'SR Review',
-        vocab_review:      isPortuguese ? 'Vocabulário'     : 'Vocabulary',
-        image_recognition: isPortuguese ? 'Reconhecimento'  : 'Recognition',
-      };
-      const getLabel = (type: string) => {
-        if (type.startsWith('mission_reward_')) return isPortuguese ? 'Missão Concluída' : 'Mission Complete';
-        if (type.startsWith('weekly_reward_'))  return isPortuguese ? 'Recompensa Semanal' : 'Weekly Reward';
-        return typeLabels[type] ?? (isPortuguese ? 'Prática' : 'Practice');
-      };
-
-      const [statsRes, historyRes, achievementsRes, learnProgressRes, levelUsersRes] = await Promise.all([
+      const [statsRes, achievementsRes, learnProgressRes, levelUsersRes] = await Promise.all([
         supabase.from('charlotte_progress')
           .select('streak_days,total_xp')
           .eq('user_id', userId)
           .maybeSingle(),
-        supabase.from('charlotte_practices')
-          .select('practice_type,xp_earned,created_at')
-          .eq('user_id', userId)
-          .not('practice_type', 'like', 'achievement_reward_%')
-          .order('created_at', { ascending: false })
-          .limit(5),
         supabase.from('user_achievements')
           .select('id,achievement_type,achievement_name,achievement_description,xp_bonus,rarity,category,earned_at')
           .eq('user_id', userId)
@@ -200,12 +168,6 @@ export default function StatsScreen() {
 
       const userRank = ((rankRes as any).count ?? 0) + 1;
 
-      const recentActivity: RecentActivity[] = (historyRes.data ?? []).map((p: any) => ({
-        type: getLabel(p.practice_type),
-        xp: p.xp_earned ?? 0,
-        timestamp: new Date(p.created_at),
-      }));
-
       const achievements: AchievementWithCategory[] = (achievementsRes.data ?? []).map((a: any) => ({
         id: a.id,
         code: a.achievement_type ?? '',
@@ -240,7 +202,6 @@ export default function StatsScreen() {
       setData({
         streak: statsRes.data?.streak_days ?? 0,
         freshTotalXP,
-        recentActivity,
         achievements,
         rank: userRank,
         top3,
@@ -628,69 +589,6 @@ export default function StatsScreen() {
                 </>
               )}
             </>
-          )}
-        </View>
-
-        {/* ── Section: Atividade Recente ───────────────────────────────────── */}
-        <View style={{
-          flexDirection: 'row', alignItems: 'center', justifyContent: 'space-between',
-          paddingHorizontal: 20, marginBottom: 12,
-        }}>
-          <AppText style={{ fontSize: 18, fontWeight: '800', color: C.navy }}>
-            {isPortuguese ? 'Atividade Recente' : 'Recent Activity'}
-          </AppText>
-          <TouchableOpacity
-            onPress={() => router.push({
-              pathname: '/(app)/activity' as any,
-              params: { userId, userLevel, userName },
-            })}
-          >
-            <CaretRight size={18} color={C.navyLight} weight="bold" />
-          </TouchableOpacity>
-        </View>
-
-        <View style={{
-          backgroundColor: C.card, borderRadius: 20, padding: 16,
-          marginHorizontal: 16, marginBottom: 8,
-        }}>
-          {data.recentActivity.length === 0 ? (
-            <View style={{ alignItems: 'center', paddingVertical: 24 }}>
-              <RocketLaunch size={32} color={C.navyLight} weight="fill" />
-              <AppText style={{ color: C.navyLight, fontSize: 13, fontWeight: '500', marginTop: 10 }}>
-                {isPortuguese ? 'Nenhuma atividade ainda' : 'No activity yet'}
-              </AppText>
-            </View>
-          ) : (
-            data.recentActivity.map((a, i) => (
-              <View
-                key={i}
-                style={{
-                  flexDirection: 'row', alignItems: 'center', justifyContent: 'space-between',
-                  paddingVertical: 10,
-                  borderBottomWidth: i < data.recentActivity.length - 1 ? 1 : 0,
-                  borderBottomColor: C.border,
-                }}
-              >
-                <View style={{ flex: 1 }}>
-                  <AppText style={{ color: C.navy, fontSize: 13, fontWeight: '600' }}>
-                    {a.type}
-                  </AppText>
-                  <AppText style={{ color: C.navyLight, fontSize: 11, fontWeight: '500', marginTop: 2 }}>
-                    {a.timestamp.toLocaleDateString([], { day: '2-digit', month: 'short' })}
-                    {' · '}
-                    {a.timestamp.toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' })}
-                  </AppText>
-                </View>
-                <View style={{
-                  backgroundColor: C.greenLight, paddingHorizontal: 10,
-                  paddingVertical: 4, borderRadius: 8,
-                }}>
-                  <AppText style={{ color: C.green, fontSize: 12, fontWeight: '800' }}>
-                    +{a.xp}
-                  </AppText>
-                </View>
-              </View>
-            ))
           )}
         </View>
 
