@@ -353,27 +353,17 @@ class SoundEngine {
 
       const player = createAudioPlayer({ uri });
 
-      // Pitch jitter anti-fadiga (research industry): ±50 cents (~±4% rate).
-      // Imperceptivel como "desafinado" mas quebra adaptacao auditiva.
-      // Aplicado em sons de alta repeticao (correct/wrong/xp).
-      if (name === 'answer_correct' || name === 'answer_wrong') {
-        try {
-          const cents = (Math.random() - 0.5) * 100; // -50..+50 cents
-          const rate = Math.pow(2, cents / 1200);    // 0.971..1.029
-          (player as any).setPlaybackRate?.(rate, false);
-        } catch {}
-
-        // Volume jitter ±1 dB (research: micro-variabilidade impede extincao do reward)
-        try {
-          const gainDb = (Math.random() - 0.5) * 2; // -1..+1 dB
-          const linear = Math.pow(10, gainDb / 20); // 0.891..1.122
-          (player as any).volume = Math.min(1, linear); // expo-audio clampa em 1
-        } catch {}
-      }
+      // DESLIGADOS — pitch+volume jitter estavam causando clipping/distorcao
+      // ("caixa de som furada") em answer_correct/wrong. O resampler do expo-audio
+      // soma alguns dB de pico ao alterar playback rate; combinado com volume
+      // jitter +1 dB e file normalizado a -3 dB, ultrapassa 0 dBFS.
+      // A anti-fadiga ja e razoavel via rotacao de 3 variantes (correct) / 2 (wrong).
+      // Se for necessario re-adicionar microvariacao, normalizar files a -6 dB
+      // para ter headroom.
 
       player.play();
       // SFX musicais (CDN): ate 2.5s (legendary tem 2.2s). PCM sintetizado: estimado + folga.
-      const maxDur = uri.includes('sfx_v2_') ? 2500 : this.estimatePcmDurMs(name) + 600;
+      const maxDur = uri.includes('sfx_v3_') ? 2500 : this.estimatePcmDurMs(name) + 600;
       setTimeout(() => {
         try { player.pause(); player.remove(); } catch {}
       }, maxDur);
@@ -402,14 +392,14 @@ class SoundEngine {
    * Tenta baixar o MP3 do CDN. Suporta variantes: sons com VARIANT_COUNT[name] > 1
    * tem arquivos `${name}_v${N}.mp3`. Sem variante = `${name}.mp3` direto.
    *
-   * CACHE BUSTING: prefixo "sfx_v2_" para forcar re-download. Caches antigos
+   * CACHE BUSTING: prefixo "sfx_v3_" para forcar re-download. Caches antigos
    * (`sfx_voice_*.mp3` com a voz "Nice!"/"Outstanding!"/etc.) ficam orfaos
    * e sao limpos por cleanLegacyCache() no boot.
    */
   private async tryVoiceUri(name: SoundName, variant: number | null): Promise<string | null> {
     const suffix = variant ? `_v${variant}` : '';
     const cdnName = `${name}${suffix}`;
-    const localUri = `${FileSystem.cacheDirectory}sfx_v2_${cdnName}.mp3`;
+    const localUri = `${FileSystem.cacheDirectory}sfx_v3_${cdnName}.mp3`;
 
     const info = await FileSystem.getInfoAsync(localUri).catch(() => ({ exists: false }));
     if (info.exists) return localUri;
@@ -445,7 +435,7 @@ class SoundEngine {
 
   private async synthUri(name: SoundName): Promise<string> {
     const base64 = buildMelodyWav(MELODIES[name]);
-    const uri    = `${FileSystem.cacheDirectory}sfx_v2_synth_${name}.wav`;
+    const uri    = `${FileSystem.cacheDirectory}sfx_v3_synth_${name}.wav`;
     await FileSystem.writeAsStringAsync(uri, base64, {
       encoding: FileSystem.EncodingType.Base64,
     });
@@ -456,8 +446,8 @@ class SoundEngine {
    * Remove caches obsoletos:
    *   - sfx_voice_*.mp3       (voz da Charlotte como SFX — substituida por musical)
    *   - sfx_*.wav (nao v2)    (PCM sintetizado antigo)
-   *   - sfx_v2_answer_correct.mp3 e sfx_v2_answer_wrong.mp3 (sem _vN — versao single antes das variantes)
-   * Caches novos (`sfx_v2_*_vN.mp3` e demais `sfx_v2_*.mp3` validos) sao preservados.
+   *   - sfx_v3_answer_correct.mp3 e sfx_v3_answer_wrong.mp3 (sem _vN — versao single antes das variantes)
+   * Caches novos (`sfx_v3_*_vN.mp3` e demais `sfx_v3_*.mp3` validos) sao preservados.
    */
   async cleanLegacyCache(): Promise<void> {
     const cacheDir = FileSystem.cacheDirectory;
@@ -466,7 +456,9 @@ class SoundEngine {
       const files = await FileSystem.readDirectoryAsync(cacheDir).catch(() => [] as string[]);
       const legacy = files.filter(f => {
         if (f.startsWith('sfx_voice_') && f.endsWith('.mp3')) return true;
-        if (f.startsWith('sfx_') && f.endsWith('.wav') && !f.startsWith('sfx_v2_')) return true;
+        if (f.startsWith('sfx_') && f.endsWith('.wav') && !f.startsWith('sfx_v3_')) return true;
+        // Cache v2 (era loud demais — files re-normalizados em v3 com headroom)
+        if (f.startsWith('sfx_v2_') && f.endsWith('.mp3')) return true;
         // Versoes single de answer_correct/wrong antes das variantes
         if (f === 'sfx_v2_answer_correct.mp3' || f === 'sfx_v2_answer_wrong.mp3') return true;
         return false;

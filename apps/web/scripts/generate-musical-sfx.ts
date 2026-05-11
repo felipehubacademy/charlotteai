@@ -31,11 +31,13 @@ interface Entry {
 
 const CATALOG: Entry[] = [
   // ── Quiz feedback (alta repeticao — 3 variantes correct + 2 wrong) ─────────
-  { id: 'answer_correct_v1', mixkitId: 2870, title: 'Correct answer tone',           targetDb: -3 },
-  { id: 'answer_correct_v2', mixkitId:  957, title: 'Correct positive notification', targetDb: -3 },
-  { id: 'answer_correct_v3', mixkitId: 2015, title: 'Winning chimes',                targetDb: -3 },
-  { id: 'answer_wrong_v1',   mixkitId: 2569, title: 'Negative tone interface tap',   targetDb: -7 },
-  { id: 'answer_wrong_v2',   mixkitId:  946, title: 'Wrong answer fail notification', targetDb: -7 },
+  // Targets mais conservadores que os demais SFX (-6 vs -3) para evitar
+  // clipping no resampler do expo-audio caso re-adicionemos pitch jitter
+  { id: 'answer_correct_v1', mixkitId: 2870, title: 'Correct answer tone',           targetDb: -6 },
+  { id: 'answer_correct_v2', mixkitId:  957, title: 'Correct positive notification', targetDb: -6 },
+  { id: 'answer_correct_v3', mixkitId: 2015, title: 'Winning chimes',                targetDb: -6 },
+  { id: 'answer_wrong_v1',   mixkitId: 2569, title: 'Negative tone interface tap',   targetDb: -10 },
+  { id: 'answer_wrong_v2',   mixkitId:  946, title: 'Wrong answer fail notification', targetDb: -10 },
 
   // ── Achievements (escalada de intensidade) ─────────────────────────────────
   { id: 'achievement_common',    mixkitId:  600, title: 'Achievement bell',          targetDb: -3 },
