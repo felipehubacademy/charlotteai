@@ -351,24 +351,19 @@ export default function ChatInputBar({
               <ArrowRight size={16} color={C.greenDark} weight="bold" />
             </View>
           ) : (
-            // RECORDING: inline (sem pill bg), igual idle. willCancel intensifica
-            // os cues vermelhos (dot maior, texto bold) sem precisar de bg.
+            // RECORDING: inline (sem pill bg), igual idle. Tamanho do dot e
+            // peso do contador NÃO mudam — só a cor do contador (navy→red).
             <View style={{
               flex: 1, flexDirection: 'row', alignItems: 'center',
               gap: 8, paddingVertical: 12,
             }}>
               <Animated.View style={{
-                width: willCancel ? 10 : 8,
-                height: willCancel ? 10 : 8,
-                borderRadius: 5,
-                backgroundColor: C.red,
-                opacity: dotPulse,
-                flexShrink: 0,
+                width: 8, height: 8, borderRadius: 4,
+                backgroundColor: C.red, opacity: dotPulse, flexShrink: 0,
               }} />
               <AppText style={{
                 color: willCancel ? C.red : C.navy,
-                fontSize: 13, minWidth: 36,
-                fontWeight: willCancel ? '700' : '500',
+                fontSize: 13, minWidth: 36, fontWeight: '500',
                 ...(Platform.OS === 'ios' ? { fontVariant: ['tabular-nums'] } : { fontFamily: 'monospace' }),
               }}>
                 {formatDuration(duration)}
