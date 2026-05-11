@@ -25,6 +25,7 @@ import { LEVEL_CONFIG, UserLevel } from '@/lib/levelConfig';
 import AvatarCropModal from '@/components/ui/AvatarCropModal';
 import Constants from 'expo-constants';
 import * as Updates from 'expo-updates';
+import * as SecureStore from 'expo-secure-store';
 
 const API_BASE_URL =
   (Constants.expoConfig?.extra?.apiBaseUrl as string) ?? 'https://charlotte.hubacademybr.com';
@@ -511,6 +512,12 @@ export default function ProfileTab() {
           <>
             <SectionTitle label="Tour" />
             <SettingGroup>
+              <SettingRow
+                icon={<Play size={18} color={C.navyMid} weight="regular" />}
+                label={isPt ? 'Refazer welcome do novo layout' : 'Replay new layout welcome'}
+                onPress={async () => { await SecureStore.deleteItemAsync('NEW_LAYOUT_WELCOME_DONE').catch(() => {}); }}
+                chevron
+              />
               <SettingRow
                 icon={<Play size={18} color={C.navyMid} weight="regular" />}
                 label={isPt ? 'Refazer tour das mini-aulas' : 'Replay Learn Session tour'}
