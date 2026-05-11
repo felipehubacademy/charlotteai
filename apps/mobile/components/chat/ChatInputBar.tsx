@@ -576,7 +576,9 @@ const styles = {
     flexDirection: 'row' as const,
     alignItems: 'center' as const,
     backgroundColor: '#F4F3FA',
-    borderRadius: 24,
+    // 9999 → RN clampa em 50% da menor dimensao, garantindo capsule mesmo
+    // quando o multiline TextInput cresce no Android.
+    borderRadius: 9999,
     borderWidth: 1,
     borderColor: 'rgba(22,21,58,0.09)',
     minHeight: 44,
