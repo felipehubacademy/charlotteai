@@ -55,7 +55,6 @@ const CATEGORIES: { key: VocabCategory; labelPt: string; labelEn: string }[] = [
   { key: 'word',         labelPt: 'Palavra',     labelEn: 'Word' },
   { key: 'idiom',        labelPt: 'Expressão',   labelEn: 'Idiom' },
   { key: 'phrasal_verb', labelPt: 'Phrasal',     labelEn: 'Phrasal' },
-  { key: 'grammar',      labelPt: 'Gramática',   labelEn: 'Grammar' },
 ];
 
 export default function AddWordScreen() {

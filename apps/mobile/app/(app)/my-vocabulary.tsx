@@ -65,7 +65,6 @@ const FILTERS: { key: VocabCategory; labelPt: string; labelEn: string }[] = [
   { key: 'word',         labelPt: 'Palavras',   labelEn: 'Words' },
   { key: 'idiom',        labelPt: 'Expressões', labelEn: 'Idioms' },
   { key: 'phrasal_verb', labelPt: 'Phrasals',   labelEn: 'Phrasals' },
-  { key: 'grammar',      labelPt: 'Gramática',  labelEn: 'Grammar' },
 ];
 
 function reviewLabel(nextReview: string | null, isPt: boolean): { label: string; color: string; bg: string } {
@@ -140,8 +139,8 @@ export default function MyVocabularyScreen() {
         spotlightRadius: 12,
         title: pt ? 'Filtros' : 'Filters',
         description: pt
-          ? 'Filtre por categoria: Palavras, Expressões, Phrasals ou Gramática.'
-          : 'Filter by category: Words, Idioms, Phrasals, or Grammar.',
+          ? 'Filtre por categoria: Palavras, Expressões ou Phrasals.'
+          : 'Filter by category: Words, Idioms, or Phrasals.',
       },
       {
         ref: tourCardRef,

@@ -70,7 +70,6 @@ const FILTERS: { key: VocabCategory; labelPt: string; labelEn: string }[] = [
   { key: 'word',         labelPt: 'Palavras',   labelEn: 'Words' },
   { key: 'idiom',        labelPt: 'Expressões', labelEn: 'Idioms' },
   { key: 'phrasal_verb', labelPt: 'Phrasals',   labelEn: 'Phrasals' },
-  { key: 'grammar',      labelPt: 'Gramática',  labelEn: 'Grammar' },
 ];
 
 function reviewLabel(nextReview: string | null, isPt: boolean): { label: string; color: string; bg: string } {
