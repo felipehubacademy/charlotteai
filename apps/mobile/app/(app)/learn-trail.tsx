@@ -60,7 +60,7 @@ export default function LearnTrailScreen() {
   const userId = profile?.id;
   const isPortuguese = level === 'Novice';
 
-  const { progress, loading, refetch, isTopicComplete, isCurrent, isLocked } = useLearnProgress(userId, level);
+  const { progress, loading, refetch, isTopicComplete, isCurrent, isLocked, isIntroDone, saveIntroDone } = useLearnProgress(userId, level);
 
 
   // Re-fetch progress whenever the trail screen gets focus (e.g. returning from learn-session)
@@ -69,25 +69,37 @@ export default function LearnTrailScreen() {
   const modules = CURRICULUM[level];
   const accent  = LEVEL_COLOR[level];
 
-  // ── Intro completion tracking ────────────────────────────────
-  const [introDone, setIntroDone] = useState<Record<number, boolean>>({});
-
-  const loadIntroDone = useCallback(async () => {
-    const levelIntros = MODULE_INTROS[level];
-    if (!levelIntros) return;
-    const results = await Promise.all(
-      Object.keys(levelIntros).map(async (k) => {
-        const mIdx = parseInt(k, 10);
-        const val = await SecureStore.getItemAsync(`intro_done_${userId}_${level}_${mIdx}`);
-        return [mIdx, val === '1'] as [number, boolean];
-      })
-    );
-    setIntroDone(Object.fromEntries(results));
-  }, [level, userId]);
-
-  // Load on mount and every time the screen regains focus (e.g. returning from Finish)
-  useEffect(() => { loadIntroDone(); }, [loadIntroDone]);
-  useFocusEffect(useCallback(() => { loadIntroDone(); }, [loadIntroDone]));
+  // ── One-time migration: SecureStore intro_done_* → DB intros_done ────────
+  // Após migrar pro banco (May/2026), faz uma varredura no SecureStore para
+  // não obrigar quem já completou mini-aulas a refazê-las. Idempotente e
+  // protegido por uma flag local pra rodar só uma vez por user/level.
+  useEffect(() => {
+    if (!userId || !progress) return;
+    const migrationKey = `intros_migrated_${userId}_${level}`;
+    let cancelled = false;
+    (async () => {
+      try {
+        if (await SecureStore.getItemAsync(migrationKey)) return;
+        const levelIntros = MODULE_INTROS[level];
+        if (!levelIntros) { await SecureStore.setItemAsync(migrationKey, '1'); return; }
+        for (const k of Object.keys(levelIntros)) {
+          if (cancelled) return;
+          const mIdx = parseInt(k, 10);
+          const oldKey = `intro_done_${userId}_${level}_${mIdx}`;
+          const val = await SecureStore.getItemAsync(oldKey);
+          if (val === '1' && !isIntroDone(mIdx)) {
+            await saveIntroDone(level, mIdx).catch(() => {});
+          }
+          if (val) await SecureStore.deleteItemAsync(oldKey).catch(() => {});
+        }
+        await SecureStore.setItemAsync(migrationKey, '1');
+        refetch();
+      } catch (e) {
+        console.warn('[learn-trail] intro migration error', e);
+      }
+    })();
+    return () => { cancelled = true; };
+  }, [userId, level, progress?.introsDone.length]); // eslint-disable-line react-hooks/exhaustive-deps
 
   // ── Progress counters ────────────────────────────────────────
   // Mini-lesson intros are NOT counted as progress — only regular topic completions.
@@ -198,7 +210,7 @@ export default function LearnTrailScreen() {
                 {(() => {
                   const intro = MODULE_INTROS[level]?.[mIdx];
                   if (!intro) return null;
-                  const done = introDone[mIdx] ?? false;
+                  const done = isIntroDone(mIdx);
 
                   // Lock mini-lesson for module N>0 until all topics in module N-1 are done.
                   // Module 0 is always accessible (entry point).
@@ -287,7 +299,7 @@ export default function LearnTrailScreen() {
                   const complete = isTopicComplete(mIdx, tIdx);
                   const current  = isCurrent(mIdx, tIdx);
                   // First topic of every module stays locked until the module mini-lesson is done
-                  const miniLessonRequired = tIdx === 0 && !(introDone[mIdx] ?? false);
+                  const miniLessonRequired = tIdx === 0 && !isIntroDone(mIdx);
                   // Completed topics are never locked — user can always review
                   const locked   = !complete && (miniLessonRequired || isLocked(mIdx, tIdx));
                   const hasContent = topicHasContent(level, mIdx, tIdx);

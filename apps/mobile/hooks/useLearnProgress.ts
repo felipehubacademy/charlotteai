@@ -10,6 +10,7 @@ export interface LearnProgressData {
   moduleIndex:      number;
   topicIndex:       number;
   completed:        CompletedKey[];
+  introsDone:       number[];
 }
 
 interface UseLearnProgressReturn {
@@ -18,7 +19,9 @@ interface UseLearnProgressReturn {
   refetch:          () => void;
   saveTopicComplete: (level: TrailLevel, moduleIndex: number, topicIndex: number) => Promise<void>;
   saveExercise:     (params: SaveExerciseParams) => Promise<void>;
+  saveIntroDone:    (level: TrailLevel, moduleIndex: number) => Promise<void>;
   isTopicComplete:  (moduleIndex: number, topicIndex: number) => boolean;
+  isIntroDone:      (moduleIndex: number) => boolean;
   isCurrent:        (moduleIndex: number, topicIndex: number) => boolean;
   isLocked:         (moduleIndex: number, topicIndex: number) => boolean;
 }
@@ -56,14 +59,14 @@ export function useLearnProgress(userId: string | undefined, level: TrailLevel):
       setLoading(true);
       const { data, error } = await supabase
         .from('learn_progress')
-        .select('module_index, topic_index, completed')
+        .select('module_index, topic_index, completed, intros_done')
         .eq('user_id', userId)
         .eq('level', level)
         .maybeSingle();
 
       if (error) {
         console.error('[useLearnProgress] fetch error', error);
-        setProgress({ moduleIndex: 0, topicIndex: 0, completed: [] });
+        setProgress({ moduleIndex: 0, topicIndex: 0, completed: [], introsDone: [] });
       } else if (!data) {
         // First time on this level — create row
         await supabase.from('learn_progress').insert({
@@ -72,13 +75,15 @@ export function useLearnProgress(userId: string | undefined, level: TrailLevel):
           module_index: 0,
           topic_index:  0,
           completed:    [],
+          intros_done:  [],
         });
-        setProgress({ moduleIndex: 0, topicIndex: 0, completed: [] });
+        setProgress({ moduleIndex: 0, topicIndex: 0, completed: [], introsDone: [] });
       } else {
         setProgress({
           moduleIndex: data.module_index,
           topicIndex:  data.topic_index,
-          completed:   (data.completed as CompletedKey[]) ?? [],
+          completed:   (data.completed   as CompletedKey[]) ?? [],
+          introsDone:  (data.intros_done as number[])       ?? [],
         });
       }
       setLoading(false);
@@ -166,7 +171,12 @@ export function useLearnProgress(userId: string | undefined, level: TrailLevel):
     if (error) {
       console.error('[useLearnProgress] save error', error);
     } else {
-      setProgress({ moduleIndex: nextModule, topicIndex: nextTopic, completed: newCompleted });
+      setProgress(p => ({
+        moduleIndex: nextModule,
+        topicIndex:  nextTopic,
+        completed:   newCompleted,
+        introsDone:  p?.introsDone ?? [],
+      }));
       // Schedule SR reviews on first-time completion only
       if (!alreadyDone) {
         const modules = CURRICULUM[lvl];
@@ -217,9 +227,42 @@ export function useLearnProgress(userId: string | undefined, level: TrailLevel):
     setTimeout(() => { checkForNewAchievements(); }, 1500);
   }, [userId, checkForNewAchievements]);
 
+  // ── Mark module intro (mini-lesson) as completed ─────────────────────────
+  const saveIntroDone = useCallback(async (lvl: TrailLevel, moduleIndex: number) => {
+    if (!userId) return;
+
+    // Read fresh state from DB so we don't overwrite intros done on other devices.
+    const { data: fresh } = await supabase
+      .from('learn_progress')
+      .select('intros_done')
+      .eq('user_id', userId)
+      .eq('level', lvl)
+      .maybeSingle();
+
+    const existing: number[] = (fresh?.intros_done as number[]) ?? [];
+    if (existing.includes(moduleIndex)) return; // idempotente
+
+    const newIntros = [...existing, moduleIndex].sort((a, b) => a - b);
+    const { error } = await supabase
+      .from('learn_progress')
+      .update({ intros_done: newIntros, updated_at: new Date().toISOString() })
+      .eq('user_id', userId)
+      .eq('level',   lvl);
+
+    if (error) {
+      console.error('[useLearnProgress] saveIntroDone error', error);
+      return;
+    }
+    setProgress(p => p ? { ...p, introsDone: newIntros } : p);
+  }, [userId]);
+
   // ── Derived helpers ──────────────────────────────────────────────────────
   const isTopicComplete = useCallback((moduleIndex: number, topicIndex: number) => {
     return (progress?.completed ?? []).some(k => k.m === moduleIndex && k.t === topicIndex);
+  }, [progress]);
+
+  const isIntroDone = useCallback((moduleIndex: number) => {
+    return (progress?.introsDone ?? []).includes(moduleIndex);
   }, [progress]);
 
   const isCurrent = useCallback((moduleIndex: number, topicIndex: number) => {
@@ -232,5 +275,5 @@ export function useLearnProgress(userId: string | undefined, level: TrailLevel):
     return true;
   }, [isTopicComplete, isCurrent]);
 
-  return { progress, loading, refetch, saveTopicComplete, saveExercise, isTopicComplete, isCurrent, isLocked };
+  return { progress, loading, refetch, saveTopicComplete, saveExercise, saveIntroDone, isTopicComplete, isIntroDone, isCurrent, isLocked };
 }

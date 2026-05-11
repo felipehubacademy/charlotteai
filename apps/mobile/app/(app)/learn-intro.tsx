@@ -19,12 +19,12 @@ import Constants from 'expo-constants';
 import { createAudioPlayer, setAudioModeAsync, AudioPlayer } from 'expo-audio';
 import { AudioStatus } from 'expo-audio/build/Audio.types';
 
-import * as SecureStore from 'expo-secure-store';
 import { AppText } from '@/components/ui/Text';
 import CharlotteAvatar from '@/components/ui/CharlotteAvatar';
 import { MODULE_INTROS } from '@/data/moduleIntros';
 import { TrailLevel } from '@/data/curriculum';
 import { useAuth } from '@/hooks/useAuth';
+import { useLearnProgress } from '@/hooks/useLearnProgress';
 
 // ── Config ─────────────────────────────────────────────────────
 const API_BASE_URL =
@@ -74,6 +74,7 @@ export default function LearnIntroScreen() {
   const C           = buildPalette(level);
   const { session } = useAuth();
   const userId      = session?.user?.id ?? '';
+  const { saveIntroDone } = useLearnProgress(userId, level as TrailLevel);
 
   const [slideIdx,     setSlideIdx]     = useState(0);
   const [audioLoading, setAudioLoading] = useState(false);
@@ -241,11 +242,12 @@ export default function LearnIntroScreen() {
       try { playerRef.current?.pause(); } catch {}
       goToSlide(slideIdx + 1);
     } else {
-      // Await the write so learn-trail's useFocusEffect reads the updated value
-      await SecureStore.setItemAsync(`intro_done_${userId}_${level}_${mIdx}`, '1').catch(() => {});
+      // Persist mini-lesson completion in DB (survives reinstall, syncs across devices).
+      // Await the write so learn-trail's useFocusEffect reads the updated value.
+      await saveIntroDone(level as TrailLevel, mIdx).catch(() => {});
       goToSession();
     }
-  }, [slideIdx, slides.length, goToSlide, goToSession, level, mIdx]);
+  }, [slideIdx, slides.length, goToSlide, goToSession, level, mIdx, saveIntroDone]);
 
   useEffect(() => {
     if (!intro || slides.length === 0) goToSession();
