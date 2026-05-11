@@ -108,6 +108,13 @@ export default function HomeTab() {
     p.play();
   });
 
+  // Garante loop sempre ativo quando a tab volta a ficar visível.
+  // Sem isso, o player pode ficar pausado após navegação entre tabs.
+  useFocusEffect(useCallback(() => {
+    greetingPlayer.loop = true;
+    greetingPlayer.play();
+  }, [greetingPlayer]));
+
   // ── Data fetch ──────────────────────────────────────────────────────────────
   const fetchData = useCallback(async () => {
     if (!userId) return;
