@@ -82,11 +82,7 @@ function SettingRow({ icon, label, value, valueColor, onPress, destructive = fal
       }}
     >
       <View style={{ flexDirection: 'row', alignItems: 'center', gap: 12 }}>
-        <View style={{
-          width: 34, height: 34, borderRadius: 9,
-          backgroundColor: destructive ? 'rgba(220,38,38,0.08)' : 'rgba(22,21,58,0.05)',
-          alignItems: 'center', justifyContent: 'center',
-        }}>
+        <View style={{ width: 22, alignItems: 'center', justifyContent: 'center' }}>
           {icon}
         </View>
         <AppText style={{ fontSize: 14, fontWeight: '600', color: destructive ? C.error : C.navy }}>
