@@ -89,7 +89,7 @@ function MissionNode({ mission, alignRight, isPt, onPress }: {
             flex: 1,
             backgroundColor: C.card,
             borderRadius: 16,
-            padding: isAndroid ? 8 : 11,
+            padding: isAndroid ? 12 : 16,
             borderWidth: 1,
             borderColor: mission.completed ? `${mission.accentColor}30` : C.border,
             ...cardShadow,
@@ -246,8 +246,8 @@ export default function GoalsTab() {
                   onPress={() => router.push(m.destination as any)}
                 />
                 {index < missions.length - 1 && (
-                  <View style={{ alignSelf: 'center', alignItems: 'center', paddingVertical: 14, gap: 4 }}>
-                    {[0, 1, 2, 3].map(i => (
+                  <View style={{ alignSelf: 'center', alignItems: 'center', paddingVertical: 8, gap: 5 }}>
+                    {[0, 1, 2, 3, 4, 5, 6, 7].map(i => (
                       <View key={i} style={{ width: 2, height: 6, backgroundColor: C.navyGhost, borderRadius: 1 }} />
                     ))}
                   </View>
