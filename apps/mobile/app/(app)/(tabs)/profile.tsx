@@ -1,10 +1,10 @@
 // app/(app)/(tabs)/profile.tsx
 // Profile tab — avatar, editable name, read-only email, level badge, settings.
 
-import React, { useState, useRef, useCallback } from 'react';
+import React, { useState, useRef, useCallback, useEffect } from 'react';
 import {
   View, ScrollView, TouchableOpacity, Alert, Platform,
-  Linking, ActivityIndicator, Image, TextInput,
+  Linking, ActivityIndicator, Image, TextInput, Switch,
 } from 'react-native';
 import { SafeAreaView } from 'react-native-safe-area-context';
 import { router, useFocusEffect } from 'expo-router';
@@ -12,8 +12,15 @@ import {
   User, Key, DeviceMobile, GraduationCap, Buildings,
   SignOut, ShieldCheck, CheckCircle, Microphone, FileText,
   ShieldWarning, ArrowsClockwise, Trash, PencilSimple,
-  CaretRight, Play,
+  CaretRight, Play, SpeakerHigh, Vibrate, ChatCircleText,
 } from 'phosphor-react-native';
+import {
+  loadAudioPreferences,
+  getAudioPreferences,
+  setAudioPreference,
+  subscribeAudioPreferences,
+  type AudioPreferences,
+} from '@/lib/audioPreferences';
 import { openLink } from '@/lib/openLink';
 import { AppText } from '@/components/ui/Text';
 import { useAuth } from '@/hooks/useAuth';
@@ -103,6 +110,47 @@ function SettingRow({ icon, label, value, valueColor, onPress, destructive = fal
   );
 }
 
+// Switch row — same paddings as SettingRow, swaps chevron for a Switch
+function SwitchRow({
+  icon, label, description, value, onValueChange,
+}: {
+  icon: React.ReactNode;
+  label: string;
+  description?: string;
+  value: boolean;
+  onValueChange: (v: boolean) => void;
+}) {
+  return (
+    <View style={{
+      flexDirection: 'row', alignItems: 'center',
+      justifyContent: 'space-between',
+      paddingHorizontal: 14, paddingVertical: 12,
+      minHeight: 52,
+    }}>
+      <View style={{ flexDirection: 'row', alignItems: 'center', gap: 12, flex: 1 }}>
+        <View style={{ width: 22, alignItems: 'center', justifyContent: 'center' }}>
+          {icon}
+        </View>
+        <View style={{ flex: 1 }}>
+          <AppText style={{ fontSize: 14, fontWeight: '600', color: C.navy }}>{label}</AppText>
+          {!!description && (
+            <AppText style={{ fontSize: 11, color: C.navyLight, marginTop: 2 }} numberOfLines={2}>
+              {description}
+            </AppText>
+          )}
+        </View>
+      </View>
+      <Switch
+        value={value}
+        onValueChange={onValueChange}
+        trackColor={{ false: 'rgba(22,21,58,0.15)', true: C.green }}
+        thumbColor={Platform.OS === 'android' ? (value ? C.greenDark : '#FFF') : undefined}
+        ios_backgroundColor="rgba(22,21,58,0.15)"
+      />
+    </View>
+  );
+}
+
 // Card wrapper that groups multiple SettingRows with dividers
 function SettingGroup({ children }: { children: React.ReactNode }) {
   const rows = React.Children.toArray(children);
@@ -151,7 +199,18 @@ export default function ProfileTab() {
   const [deletingAccount,    setDeletingAccount]    = useState(false);
   const [restoringPurchases, setRestoringPurchases] = useState(false);
   const [voiceUsage,         setVoiceUsage]         = useState<LiveVoiceStatus | null>(null);
+  const [audioPrefs,         setAudioPrefs]         = useState<AudioPreferences>(getAudioPreferences());
   const nameInputRef = useRef<TextInput>(null);
+
+  useEffect(() => {
+    loadAudioPreferences().then(setAudioPrefs).catch(() => {});
+    const unsub = subscribeAudioPreferences(setAudioPrefs);
+    return unsub;
+  }, []);
+
+  const togglePref = (key: keyof AudioPreferences) => (v: boolean) => {
+    setAudioPreference(key, v).catch(() => {});
+  };
 
   useFocusEffect(useCallback(() => {
     setNameValue(profile?.name ?? '');
@@ -425,6 +484,32 @@ export default function ProfileTab() {
             label={isPt ? 'Refazer teste de nível' : 'Retake placement test'}
             onPress={handleRetakePlacementTest}
             chevron
+          />
+        </SettingGroup>
+
+        {/* Preferences */}
+        <SectionTitle label={isPt ? 'Preferências' : 'Preferences'} />
+        <SettingGroup>
+          <SwitchRow
+            icon={<SpeakerHigh size={18} color={C.navyMid} weight="regular" />}
+            label={isPt ? 'Sons' : 'Sounds'}
+            description={isPt ? 'Efeitos de acerto, erro e conquistas.' : 'Sound effects for correct, wrong and achievements.'}
+            value={audioPrefs.sfx}
+            onValueChange={togglePref('sfx')}
+          />
+          <SwitchRow
+            icon={<Vibrate size={18} color={C.navyMid} weight="regular" />}
+            label={isPt ? 'Vibração' : 'Haptics'}
+            description={isPt ? 'Feedback tátil ao interagir com o app.' : 'Tactile feedback when interacting.'}
+            value={audioPrefs.haptic}
+            onValueChange={togglePref('haptic')}
+          />
+          <SwitchRow
+            icon={<ChatCircleText size={18} color={C.navyMid} weight="regular" />}
+            label={isPt ? 'Voz da Charlotte' : "Charlotte's voice cues"}
+            description={isPt ? 'Reações curtas em momentos especiais (não afeta a Charlotte no chat).' : 'Short reactions in special moments (does not affect Charlotte in chat).'}
+            value={audioPrefs.voice}
+            onValueChange={togglePref('voice')}
           />
         </SettingGroup>
 

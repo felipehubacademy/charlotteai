@@ -62,7 +62,7 @@ class VoiceSFXEngine {
 
       await setAudioModeAsync({
         allowsRecording: false,
-        playsInSilentMode: false, // respeita silent mode
+        playsInSilentMode: true, // app de aprendizado — toggle "Voz" em Preferencias se nao quiser
         interruptionMode: 'mixWithOthers',
       }).catch(() => {});
 

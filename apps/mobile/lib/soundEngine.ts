@@ -320,11 +320,11 @@ class SoundEngine {
     try {
       const uri = await this.getUri(name);
 
-      // Respeita o modo silencioso do device para SFX (diferente do TTS da
-      // Charlotte, que continua tocando no silent mode via useMessageAudioPlayer).
+      // Toca mesmo em silent mode — app de aprendizado, usuario abre esperando
+      // ouvir feedback. Se quiser silencio total, ha o toggle "Sons" em Preferencias.
       await setAudioModeAsync({
         allowsRecording: false,
-        playsInSilentMode: false,
+        playsInSilentMode: true,
         interruptionMode: 'mixWithOthers',
       }).catch(() => {});
 
