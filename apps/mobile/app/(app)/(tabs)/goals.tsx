@@ -4,9 +4,8 @@
 
 import React, { useCallback, useState } from 'react';
 import {
-  View, TouchableOpacity, ActivityIndicator, Platform,
+  View, TouchableOpacity, ActivityIndicator, Platform, ScrollView,
 } from 'react-native';
-import { useVideoPlayer, VideoView } from 'expo-video';
 import { SafeAreaView } from 'react-native-safe-area-context';
 import { router, useFocusEffect } from 'expo-router';
 import { CheckCircle } from 'phosphor-react-native';
@@ -207,15 +206,6 @@ export default function GoalsTab() {
 
   const doneMissions = missions.filter(m => m.completed).length;
 
-  const goalsPlayer = useVideoPlayer(require('@/assets/charlotte-goals.mp4'), p => {
-    p.loop = true;
-    p.muted = true;
-    p.play();
-  });
-
-  const VIDEO_W = 130;
-  const VIDEO_H = Math.round(VIDEO_W * 16 / 9); // 231px
-
   return (
     <View style={{ flex: 1, backgroundColor: C.bg }}>
       <SafeAreaView edges={['top']} style={{ backgroundColor: C.card }}>
@@ -229,32 +219,24 @@ export default function GoalsTab() {
         </View>
       </SafeAreaView>
 
-      {/* Charlotte de pé na borda inferior — antes do ScrollView para conteudo rolar por cima */}
-      <View style={{ position: 'absolute', bottom: -10, left: 0, right: 0, alignItems: 'center' }} pointerEvents="none">
-        <View style={{ width: VIDEO_W, height: VIDEO_H, overflow: 'hidden', borderRadius: 1 }}>
-          <VideoView
-            player={goalsPlayer}
-            style={{ width: VIDEO_W, height: VIDEO_H }}
-            contentFit="cover"
-            nativeControls={false}
-          />
-        </View>
-      </View>
-
       {loading ? (
         <View style={{ flex: 1, alignItems: 'center', justifyContent: 'center' }}>
           <ActivityIndicator size="large" color={C.navy} />
         </View>
       ) : (
-        <View style={{ flex: 1 }}>
-
-          {/* Daily Missions */}
+        <ScrollView
+          style={{ flex: 1 }}
+          contentContainerStyle={{ flexGrow: 1, paddingBottom: 24 }}
+          showsVerticalScrollIndicator={false}
+        >
+          {/* Daily Missions — espaco gera scroll em telas pequenas, distribui em
+              telas maiores via flex:1 + space-between no container interno. */}
           <SectionHeader
             label={isPt ? 'Missões do dia' : 'Daily Missions'}
             badge={`${doneMissions}/${missions.length}`}
             isPt={isPt}
           />
-          <View style={{ paddingHorizontal: 20 }}>
+          <View style={{ paddingHorizontal: 20, flexGrow: 1, justifyContent: 'space-evenly' }}>
             {missions.map((m, index) => (
               <View key={m.id}>
                 <MissionNode
@@ -264,8 +246,8 @@ export default function GoalsTab() {
                   onPress={() => router.push(m.destination as any)}
                 />
                 {index < missions.length - 1 && (
-                  <View style={{ alignSelf: 'center', alignItems: 'center', paddingVertical: 3, gap: 3 }}>
-                    {[0, 1, 2].map(i => (
+                  <View style={{ alignSelf: 'center', alignItems: 'center', paddingVertical: 14, gap: 4 }}>
+                    {[0, 1, 2, 3].map(i => (
                       <View key={i} style={{ width: 2, height: 6, backgroundColor: C.navyGhost, borderRadius: 1 }} />
                     ))}
                   </View>
@@ -334,7 +316,7 @@ export default function GoalsTab() {
               </View>
             </>
           )}
-        </View>
+        </ScrollView>
       )}
 
     </View>
