@@ -272,10 +272,19 @@ function buildMelodyWav(melody: Melody): string {
 
 // ── SoundEngine class ─────────────────────────────────────────────────────────
 
+// Quantas variantes existem por som no CDN. Engine rotaciona aleatorio sem
+// repetir consecutivo (anti-fadiga auditiva — research: 50 plays/sessao
+// degradam recompensa percebida em ~1 semana com sample unico).
+const VARIANT_COUNT: Partial<Record<SoundName, number>> = {
+  answer_correct: 3,
+  answer_wrong: 2,
+};
+
 class SoundEngine {
-  private uriCache = new Map<SoundName, string>(); // soundName → file URI
+  private uriCache = new Map<string, string>(); // variantKey -> file URI
   private muted    = false;
   private consecCorrect = 0; // contador de acertos consecutivos (sessao)
+  private lastVariant = new Map<SoundName, number>(); // para evitar repeticao consecutiva
 
   /** Silencia todos os sons (ex: durante Live Voice). */
   setMuted(m: boolean) { this.muted = m; }
@@ -330,15 +339,21 @@ class SoundEngine {
 
       const player = createAudioPlayer({ uri });
 
-      // Pitch variation para evitar fadiga auditiva em sons de alta frequencia.
-      // answer_correct/wrong tocam dezenas de vezes — variar ±2 semitons (rate
-      // 0.89..1.12) faz cada play soar levemente diferente.
+      // Pitch jitter anti-fadiga (research industry): ±50 cents (~±4% rate).
+      // Imperceptivel como "desafinado" mas quebra adaptacao auditiva.
+      // Aplicado em sons de alta repeticao (correct/wrong/xp).
       if (name === 'answer_correct' || name === 'answer_wrong') {
         try {
-          const semitones = (Math.random() * 4 - 2); // -2..+2
-          const rate = Math.pow(2, semitones / 12);   // 0.891..1.122
-          // expo-audio: setPlaybackRate(rate, pitchCorrection?)
+          const cents = (Math.random() - 0.5) * 100; // -50..+50 cents
+          const rate = Math.pow(2, cents / 1200);    // 0.971..1.029
           (player as any).setPlaybackRate?.(rate, false);
+        } catch {}
+
+        // Volume jitter ±1 dB (research: micro-variabilidade impede extincao do reward)
+        try {
+          const gainDb = (Math.random() - 0.5) * 2; // -1..+1 dB
+          const linear = Math.pow(10, gainDb / 20); // 0.891..1.122
+          (player as any).volume = Math.min(1, linear); // expo-audio clampa em 1
         } catch {}
       }
 
@@ -358,14 +373,29 @@ class SoundEngine {
     return melody.reduce((sum, n) => sum + n.durMs, 0);
   }
 
-  // Tenta baixar o MP3 do CDN (hoje sao SFX MUSICAIS — desde a reformulacao
-  // de audio em maio/2026; antes eram voz da Charlotte tocada como SFX).
-  //
-  // CACHE BUSTING: prefixo "sfx_v2_" para forcar re-download. Caches antigos
-  // (`sfx_voice_*.mp3` com a voz "Nice!"/"Outstanding!"/etc.) ficam orfaos
-  // e sao limpos por cleanLegacySfxCache() no boot.
-  private async tryVoiceUri(name: SoundName): Promise<string | null> {
-    const localUri = `${FileSystem.cacheDirectory}sfx_v2_${name}.mp3`;
+  /** Escolhe variante aleatoria evitando repetir a ultima usada para o mesmo som. */
+  private pickVariant(name: SoundName): number | null {
+    const count = VARIANT_COUNT[name];
+    if (!count || count < 2) return null; // sem variantes ou so 1 = nao precisa
+    const last = this.lastVariant.get(name) ?? -1;
+    let idx: number;
+    do { idx = Math.floor(Math.random() * count); } while (idx === last && count > 1);
+    this.lastVariant.set(name, idx);
+    return idx + 1; // arquivos sao _v1, _v2, ... (1-indexed)
+  }
+
+  /**
+   * Tenta baixar o MP3 do CDN. Suporta variantes: sons com VARIANT_COUNT[name] > 1
+   * tem arquivos `${name}_v${N}.mp3`. Sem variante = `${name}.mp3` direto.
+   *
+   * CACHE BUSTING: prefixo "sfx_v2_" para forcar re-download. Caches antigos
+   * (`sfx_voice_*.mp3` com a voz "Nice!"/"Outstanding!"/etc.) ficam orfaos
+   * e sao limpos por cleanLegacyCache() no boot.
+   */
+  private async tryVoiceUri(name: SoundName, variant: number | null): Promise<string | null> {
+    const suffix = variant ? `_v${variant}` : '';
+    const cdnName = `${name}${suffix}`;
+    const localUri = `${FileSystem.cacheDirectory}sfx_v2_${cdnName}.mp3`;
 
     const info = await FileSystem.getInfoAsync(localUri).catch(() => ({ exists: false }));
     if (info.exists) return localUri;
@@ -374,11 +404,10 @@ class SoundEngine {
       const API_BASE = (Constants.expoConfig?.extra?.apiBaseUrl as string | undefined)
         ?? 'https://charlotte.hubacademybr.com';
       const result = await FileSystem.downloadAsync(
-        `${API_BASE}/tts/sfx/${name}.mp3`,
+        `${API_BASE}/tts/sfx/${cdnName}.mp3`,
         localUri,
       );
       if (result.status === 200) return localUri;
-      // Arquivo não existe no servidor — limpa e cai no fallback PCM
       await FileSystem.deleteAsync(localUri, { idempotent: true }).catch(() => {});
       return null;
     } catch {
@@ -387,20 +416,22 @@ class SoundEngine {
   }
 
   private async getUri(name: SoundName): Promise<string> {
-    const cached = this.uriCache.get(name);
+    const variant = this.pickVariant(name);
+    const cacheKey = variant ? `${name}_v${variant}` : name;
+
+    const cached = this.uriCache.get(cacheKey);
     if (cached) return cached;
 
-    // Prefere voz da Charlotte; fallback para síntese PCM
-    const voiceUri = await this.tryVoiceUri(name);
+    const voiceUri = await this.tryVoiceUri(name, variant);
     const uri = voiceUri ?? await this.synthUri(name);
 
-    this.uriCache.set(name, uri);
+    this.uriCache.set(cacheKey, uri);
     return uri;
   }
 
   private async synthUri(name: SoundName): Promise<string> {
     const base64 = buildMelodyWav(MELODIES[name]);
-    const uri    = `${FileSystem.cacheDirectory}sfx_${name}.wav`;
+    const uri    = `${FileSystem.cacheDirectory}sfx_v2_synth_${name}.wav`;
     await FileSystem.writeAsStringAsync(uri, base64, {
       encoding: FileSystem.EncodingType.Base64,
     });
@@ -408,40 +439,51 @@ class SoundEngine {
   }
 
   /**
-   * Remove caches de SFX da era pre-reformulacao (maio/2026):
-   *   - sfx_voice_*.mp3  (voz da Charlotte tocada como SFX — substituida por musical)
-   *   - sfx_*.wav        (PCM sintetizado — fallback antigo, agora irrelevante)
-   * Caches novos (`sfx_v2_*.mp3`) sao preservados.
+   * Remove caches obsoletos:
+   *   - sfx_voice_*.mp3       (voz da Charlotte como SFX — substituida por musical)
+   *   - sfx_*.wav (nao v2)    (PCM sintetizado antigo)
+   *   - sfx_v2_answer_correct.mp3 e sfx_v2_answer_wrong.mp3 (sem _vN — versao single antes das variantes)
+   * Caches novos (`sfx_v2_*_vN.mp3` e demais `sfx_v2_*.mp3` validos) sao preservados.
    */
   async cleanLegacyCache(): Promise<void> {
     const cacheDir = FileSystem.cacheDirectory;
     if (!cacheDir) return;
     try {
       const files = await FileSystem.readDirectoryAsync(cacheDir).catch(() => [] as string[]);
-      const legacy = files.filter(f =>
-        (f.startsWith('sfx_voice_') && f.endsWith('.mp3')) ||
-        (f.startsWith('sfx_') && f.endsWith('.wav') && !f.startsWith('sfx_v2_'))
-      );
+      const legacy = files.filter(f => {
+        if (f.startsWith('sfx_voice_') && f.endsWith('.mp3')) return true;
+        if (f.startsWith('sfx_') && f.endsWith('.wav') && !f.startsWith('sfx_v2_')) return true;
+        // Versoes single de answer_correct/wrong antes das variantes
+        if (f === 'sfx_v2_answer_correct.mp3' || f === 'sfx_v2_answer_wrong.mp3') return true;
+        return false;
+      });
       await Promise.all(legacy.map(f =>
         FileSystem.deleteAsync(`${cacheDir}${f}`, { idempotent: true }).catch(() => {})
       ));
     } catch {}
   }
 
-  /** Pré-gera e faz cache de todos os sons (chamar no splash/boot). */
+  /** Pré-gera e faz cache de todos os sons + variantes (chamar no splash/boot). */
   async preload(): Promise<void> {
     const names: SoundName[] = [
-      'xp_gained',
-      'achievement_common',
-      'achievement_rare',
-      'achievement_epic',
-      'achievement_legendary',
-      'streak_alive',
-      'daily_goal',
-      'answer_correct',
-      'answer_wrong',
+      'achievement_common', 'achievement_rare', 'achievement_epic', 'achievement_legendary',
+      'streak_alive', 'daily_goal',
+      'answer_correct', 'answer_wrong',
+      'topic_complete', 'module_complete',
+      // xp_gained nao baixa — e no-op (so haptico)
     ];
-    await Promise.all(names.map(n => this.getUri(n).catch(() => {})));
+    const downloads: Promise<unknown>[] = [];
+    for (const name of names) {
+      const count = VARIANT_COUNT[name];
+      if (count && count > 1) {
+        for (let v = 1; v <= count; v++) {
+          downloads.push(this.tryVoiceUri(name, v).catch(() => null));
+        }
+      } else {
+        downloads.push(this.tryVoiceUri(name, null).catch(() => null));
+      }
+    }
+    await Promise.all(downloads);
   }
 }
 

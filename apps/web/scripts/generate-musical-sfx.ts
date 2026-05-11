@@ -32,24 +32,67 @@ interface SfxPrompt {
 }
 
 const SFX: SfxPrompt[] = [
-  // Tier 2 — feedback de quiz (curtissimo, < 400ms apos trim)
+  // ── Tier 2 — feedback de quiz (50×/sessao) ───────────────────────────────
+  // VARIANTES com rotacao em runtime + pitch/volume jitter para evitar fadiga.
+  // Engenharia baseada em: Duolingo F#5->A#5 (terca maior), Mario B5->E6,
+  // iOS Tri-tone (P5+oitava). Attack <10ms, decay <300ms, sem reverb longo.
+
+  // CORRECT — 3 variantes (mallet, bell, synth pluck)
   {
-    id: 'answer_correct',
+    id: 'answer_correct_v1',
     durationSeconds: 0.6,
     promptInfluence: 0.75,
     text:
-      'Soft warm marimba: two quick ascending notes in C major (G5 to C6), ' +
-      'gentle attack, light reverb tail, NO voice, NO speech, NO drums. ' +
-      'Pleasant satisfying feedback chime, app UI sound.',
+      'Short, bright, two-note ascending marimba chime struck with a hard mallet, ' +
+      'pitched high around 800Hz to 1200Hz, very fast sharp transient, ' +
+      'short controlled decay, dry, no reverb tail, punchy and prominent, ' +
+      'mobile app UI confirmation success sound effect, foreground, professional, ' +
+      'rewarding satisfying micro-feedback. NO voice, NO speech, NO drums.',
   },
   {
-    id: 'answer_wrong',
+    id: 'answer_correct_v2',
+    durationSeconds: 0.7,
+    promptInfluence: 0.75,
+    text:
+      'Crisp three-note ascending kalimba arpeggio in a major key, ' +
+      'bell-like metallic timbre with bright sparkle in upper harmonics around 4kHz, ' +
+      'fast attack, short controlled decay, subtle natural resonance, no reverb, ' +
+      'under one second total, mobile app notification chime, clean, ' +
+      'high-end UI success sound effect. NO voice, NO speech.',
+  },
+  {
+    id: 'answer_correct_v3',
     durationSeconds: 0.6,
+    promptInfluence: 0.75,
+    text:
+      'Quick two-note ascending plucked synth bell, glassy bright timbre with ' +
+      'shimmering high overtones around 4 to 6kHz, very fast attack, short percussive decay, ' +
+      'no reverb tail, energetic and rewarding, retro arcade coin-pickup feel ' +
+      'but modern, clean and dry, mobile game UI success sound effect, punchy.',
+  },
+
+  // WRONG — 2 variantes (thunk + dismissive pop)
+  {
+    id: 'answer_wrong_v1',
+    durationSeconds: 0.5,
     promptInfluence: 0.8,
     text:
-      'Soft muted wooden thunk: short low note in C major (around E4 to C4), ' +
-      'gentle non-punitive feel, very brief, dry, NO voice, NO speech, NO buzzer, NO harsh beep. ' +
-      'Subtle error feedback for a friendly learning app.',
+      'Short soft muted low thunk, dampened wooden bonk in the low-mid frequency ' +
+      'range around 200Hz to 300Hz, fast attack, very short decay, no pitch movement, ' +
+      'no reverb, clearly audible but gentle and non-alarming, mobile app ' +
+      'incorrect-answer feedback sound, neutral and dismissive, NOT harsh, NOT buzzy, ' +
+      'NOT a beep. NO voice, NO speech, NO distortion.',
+  },
+  {
+    id: 'answer_wrong_v2',
+    durationSeconds: 0.5,
+    promptInfluence: 0.8,
+    text:
+      'Short soft low pop like a finger flicking a closed cardboard box, ' +
+      'very brief muffled thud, fast attack and fast decay, low-mid frequency content ' +
+      'around 250Hz, no high sparkle, no reverb, clearly audible but unobtrusive, ' +
+      'mobile UI feedback sound for a minor negative event, neutral and gentle. ' +
+      'NO voice, NO speech, NO buzzer.',
   },
 
   // Tier 3 — eventos macro (cinematograficos, ate ~1.5s)
