@@ -3,13 +3,12 @@
 // Does NOT include its own ScrollView — caller provides scroll context.
 // Used by LearnTrailScreen (legacy) and the new HomeTab.
 
-import React, { useState, useEffect, useCallback } from 'react';
+import React, { useCallback } from 'react';
 import { View, TouchableOpacity, ActivityIndicator, Platform } from 'react-native';
 import { router, useFocusEffect } from 'expo-router';
 import {
   BookOpen, Microphone, CheckCircle, Lock, Play, CaretRight,
 } from 'phosphor-react-native';
-import * as SecureStore from 'expo-secure-store';
 import { AppText } from '@/components/ui/Text';
 import { CURRICULUM, TrailLevel, topicHasContent, totalTopics } from '@/data/curriculum';
 import { MODULE_INTROS } from '@/data/moduleIntros';
@@ -76,30 +75,13 @@ export function TrailContent({ userId, level, showBanner = true, onCurrentTopicR
   const accent       = LEVEL_COLOR[level];
   const modules      = CURRICULUM[level];
 
-  const { progress, loading, refetch, isTopicComplete, isCurrent, isLocked } =
+  const { progress, loading, refetch, isTopicComplete, isCurrent, isLocked, isIntroDone } =
     useLearnProgress(userId, level);
 
-  // Re-fetch when screen gets focus (e.g. returning from learn-session)
+  // Re-fetch when screen gets focus (e.g. returning from learn-session).
+  // intros_done is part of learn_progress now, so a single refetch covers both
+  // topic and mini-lesson completion state.
   useFocusEffect(useCallback(() => { refetch(); }, [refetch]));
-
-  // ── Intro completion tracking ─────────────────────────────────────────────
-  const [introDone, setIntroDone] = useState<Record<number, boolean>>({});
-
-  const loadIntroDone = useCallback(async () => {
-    const levelIntros = MODULE_INTROS[level];
-    if (!levelIntros) return;
-    const results = await Promise.all(
-      Object.keys(levelIntros).map(async (k) => {
-        const mIdx = parseInt(k, 10);
-        const val  = await SecureStore.getItemAsync(`intro_done_${userId}_${level}_${mIdx}`);
-        return [mIdx, val === '1'] as [number, boolean];
-      })
-    );
-    setIntroDone(Object.fromEntries(results));
-  }, [level, userId]);
-
-  useEffect(() => { loadIntroDone(); }, [loadIntroDone]);
-  useFocusEffect(useCallback(() => { loadIntroDone(); }, [loadIntroDone]));
 
   // ── Progress counters ─────────────────────────────────────────────────────
   const completed = progress?.completed.length ?? 0;
@@ -184,7 +166,7 @@ export function TrailContent({ userId, level, showBanner = true, onCurrentTopicR
                 {(() => {
                   const intro = MODULE_INTROS[level]?.[mIdx];
                   if (!intro) return null;
-                  const done = introDone[mIdx] ?? false;
+                  const done = isIntroDone(mIdx);
                   const introLocked = mIdx > 0 && (() => {
                     const prevMod = modules[mIdx - 1];
                     if (!prevMod) return false;
@@ -260,7 +242,7 @@ export function TrailContent({ userId, level, showBanner = true, onCurrentTopicR
                 {mod.topics.map((topic, tIdx) => {
                   const complete   = isTopicComplete(mIdx, tIdx);
                   const current    = isCurrent(mIdx, tIdx);
-                  const miniLessonRequired = tIdx === 0 && !(introDone[mIdx] ?? false);
+                  const miniLessonRequired = tIdx === 0 && !isIntroDone(mIdx);
                   // Completed topics are never locked — user can always review
                   const locked     = !complete && (miniLessonRequired || isLocked(mIdx, tIdx));
                   const hasContent = topicHasContent(level, mIdx, tIdx);
