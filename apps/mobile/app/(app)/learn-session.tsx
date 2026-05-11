@@ -1211,15 +1211,16 @@ export default function LearnSessionScreen() {
                   const inputWidth = userAnswer.length > 0
                     ? Math.min(userAnswer.length * 14 + 16, 240)
                     : 72;
+                  const sentenceTextStyle = { fontSize: 22, fontWeight: '500' as const, color: C.navy, lineHeight: 36 };
                   return (
                     <View style={{ marginBottom: isWordBank ? 24 : 16 }}>
                       {isFillGapAnswering ? (
                         /* Inline TextInput as the gap — no separate box below */
                         <View style={{ flexDirection: 'row', flexWrap: 'wrap', alignItems: 'flex-end', rowGap: 0 }}>
                           {before.length > 0 && (
-                            <AppText style={{ fontSize: 22, fontWeight: '500', color: C.navy, lineHeight: 36 }}>
-                              {before}
-                            </AppText>
+                            isPortuguese
+                              ? <TranslatableText text={before} style={sentenceTextStyle} />
+                              : <AppText style={sentenceTextStyle}>{before}</AppText>
                           )}
                           <TextInput
                             value={userAnswer}
@@ -1239,20 +1240,30 @@ export default function LearnSessionScreen() {
                             }}
                           />
                           {after.length > 0 && (
-                            <AppText style={{ fontSize: 22, fontWeight: '500', color: C.navy, lineHeight: 36 }}>
-                              {after}
-                            </AppText>
+                            isPortuguese
+                              ? <TranslatableText text={after} style={sentenceTextStyle} />
+                              : <AppText style={sentenceTextStyle}>{after}</AppText>
                           )}
                         </View>
                       ) : (
-                        /* Submitted state or word_bank: nested Text with coloured gap */
-                        <AppText style={{ fontSize: 22, fontWeight: '500', color: C.navy, lineHeight: 34 }}>
-                          {before}
-                          <AppText style={{ fontSize: 22, fontWeight: '700', color: gapColor, textDecorationLine: 'underline' }}>
+                        /* Submitted state or word_bank — flex-row pra inserir o
+                           gap inline, mas before/after usam TranslatableText pra
+                           Novice (palavras pontilhadas com tooltip). */
+                        <View style={{ flexDirection: 'row', flexWrap: 'wrap', alignItems: 'flex-end' }}>
+                          {before.length > 0 && (
+                            isPortuguese
+                              ? <TranslatableText text={before} style={sentenceTextStyle} />
+                              : <AppText style={sentenceTextStyle}>{before}</AppText>
+                          )}
+                          <AppText style={{ fontSize: 22, fontWeight: '700', color: gapColor, textDecorationLine: 'underline', lineHeight: 36 }}>
                             {gapAnswer}
                           </AppText>
-                          {after}
-                        </AppText>
+                          {after.length > 0 && (
+                            isPortuguese
+                              ? <TranslatableText text={after} style={sentenceTextStyle} />
+                              : <AppText style={sentenceTextStyle}>{after}</AppText>
+                          )}
+                        </View>
                       )}
                     </View>
                   );
