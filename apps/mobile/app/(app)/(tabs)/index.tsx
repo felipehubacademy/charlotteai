@@ -25,7 +25,7 @@ import { localTodayStr, localMidnightUTC } from '@/lib/dateUtils';
 import { soundEngine } from '@/lib/soundEngine';
 import { TrailContent } from '@/components/trail/TrailContent';
 import { TrailBanner } from '@/components/trail/TrailBanner';
-import { useTour } from '@/lib/tourContext';
+import { NewLayoutWelcomeSheet } from '@/components/onboarding/NewLayoutWelcomeSheet';
 
 // Module-level flag — persists for the JS session (like the legacy home screen)
 let _streakSoundPlayedThisSession = false;
@@ -102,6 +102,26 @@ export default function HomeTab() {
   const [refreshing,      setRefreshing]      = useState(false);
   const [aiGreeting,      setAiGreeting]      = useState<string | null>(null);
   const [greetingLoading, setGreetingLoading] = useState(true);
+  const [showWelcomeSheet, setShowWelcomeSheet] = useState(false);
+
+  // Welcome sheet do new layout — aparece 1x por device (flag SecureStore).
+  // Substitui os tours antigos: usuario ja conhece as features, so precisa
+  // saber pra qual tab cada uma migrou.
+  useEffect(() => {
+    if (loading) return;
+    SecureStore.getItemAsync('NEW_LAYOUT_WELCOME_DONE').then(v => {
+      if (!v) {
+        // Pequeno delay pra o conteudo render + auto-scroll settle antes do modal
+        const t = setTimeout(() => setShowWelcomeSheet(true), 700);
+        return () => clearTimeout(t);
+      }
+    }).catch(() => {});
+  }, [loading]);
+
+  const closeWelcomeSheet = useCallback(() => {
+    setShowWelcomeSheet(false);
+    SecureStore.setItemAsync('NEW_LAYOUT_WELCOME_DONE', '1').catch(() => {});
+  }, []);
 
   const greetingPlayer = useVideoPlayer(require('@/assets/charlotte-greeting.mp4'), p => {
     p.loop = true;
@@ -280,12 +300,6 @@ export default function HomeTab() {
   const trailScrollRef = useRef<ScrollView>(null);
   const trailScrolledRef = useRef(false);
 
-  // Refs do tour
-  const { startTour } = useTour();
-  const tourHeaderRef = useRef<View>(null);
-  const tourHeroRef   = useRef<View>(null);
-  const tourBannerRef = useRef<View>(null);
-  const tourTopicRef  = useRef<View | null>(null);
 
   const tryScroll = useCallback((node: any, attempt = 0) => {
     if (trailScrolledRef.current || !node || !trailScrollRef.current) return;
@@ -318,47 +332,11 @@ export default function HomeTab() {
   }, []);
 
   const handleCurrentTopicRef = useCallback((node: View | null) => {
-    tourTopicRef.current = node;  // expoe pro tour
     if (!node || trailScrolledRef.current) return;
     // Dois RAFs garantem que o layout foi commitado nos dois lados
     // (ScrollView interno + posicao do node).
     requestAnimationFrame(() => requestAnimationFrame(() => tryScroll(node)));
   }, [tryScroll]);
-
-  // Dispara tour home-new uma vez quando loading terminar (gated por
-  // SecureStore TOUR_home-new_DONE no tourContext).
-  useEffect(() => {
-    if (loading) return;
-    const t = setTimeout(() => {
-      startTour('home-new', [
-        {
-          ref: tourHeaderRef,
-          spotlightRadius: 20,
-          title: 'Seu progresso',
-          description: 'Sua sequência de dias, XP total e ranking global. Toque pra ver seu histórico completo.',
-        },
-        {
-          ref: tourHeroRef,
-          spotlightRadius: 22,
-          title: 'Charlotte, sua tutora',
-          description: 'A Charlotte te recebe aqui todo dia com uma saudação personalizada baseada no seu progresso.',
-        },
-        {
-          ref: tourBannerRef,
-          spotlightRadius: 18,
-          title: 'Seu progresso na trilha',
-          description: 'Quantos módulos e tópicos já completou, e quantos faltam. A porcentagem mostra o avanço total.',
-        },
-        {
-          ref: tourTopicRef,
-          spotlightRadius: 16,
-          title: 'Próximo passo',
-          description: 'A trilha já abre direto no tópico em andamento. Toque pra continuar de onde parou.',
-        },
-      ], 'pt');
-    }, 900);
-    return () => clearTimeout(t);
-  }, [loading, startTour]);
 
   if (loading) {
     return (
@@ -378,20 +356,18 @@ export default function HomeTab() {
   return (
     <View style={{ flex: 1, backgroundColor: C.bg }}>
 
-      <View ref={tourHeaderRef} collapsable={false}>
-        <HeaderPills
-          streak={streak}
-          totalXP={totalXP}
-          rank={rank}
-          statsParams={statsParams}
-          trialDaysLeft={trialDaysLeft}
-          onPaywallOpen={openPaywall}
-          isPt={isPt}
-        />
-      </View>
+      <HeaderPills
+        streak={streak}
+        totalXP={totalXP}
+        rank={rank}
+        statsParams={statsParams}
+        trialDaysLeft={trialDaysLeft}
+        onPaywallOpen={openPaywall}
+        isPt={isPt}
+      />
 
       {/* Charlotte hero card — fixed */}
-      <View ref={tourHeroRef} collapsable={false} style={{ marginHorizontal: 20, marginTop: 8 }}>
+      <View style={{ marginHorizontal: 20, marginTop: 8 }}>
         <View style={{ borderRadius: 22, backgroundColor: T.card, overflow: 'hidden', ...cardShadow }}>
           {/* Navy strip with bust + chat bubble */}
           <View style={{ backgroundColor: C.heroStrip, paddingRight: 20, flexDirection: 'row', alignItems: 'center', minHeight: 140 }}>
@@ -418,7 +394,7 @@ export default function HomeTab() {
           </View>
 
           {/* Divider + TrailBanner — zIndex:1 para ficar sobre o overflow da Charlotte */}
-          <View ref={tourBannerRef} collapsable={false} style={{ zIndex: 1, backgroundColor: T.card }}>
+          <View style={{ zIndex: 1, backgroundColor: T.card }}>
           <View style={{ height: 1, backgroundColor: C.navyGhost }} />
           <TrailBanner userId={userId} level={level} flush />
           </View>
@@ -440,6 +416,11 @@ export default function HomeTab() {
           onCurrentTopicRef={handleCurrentTopicRef}
         />
       </ScrollView>
+
+      <NewLayoutWelcomeSheet
+        visible={showWelcomeSheet}
+        onClose={closeWelcomeSheet}
+      />
 
     </View>
   );

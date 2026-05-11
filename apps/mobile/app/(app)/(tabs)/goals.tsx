@@ -2,7 +2,7 @@
 // Goals tab — Daily Missions + Weekly Challenge.
 // Tab version of app/(app)/goals.tsx (no back button).
 
-import React, { useCallback, useState, useEffect, useRef } from 'react';
+import React, { useCallback, useState } from 'react';
 import {
   View, TouchableOpacity, ActivityIndicator, Platform, ScrollView,
 } from 'react-native';
@@ -11,7 +11,6 @@ import { SafeAreaView } from 'react-native-safe-area-context';
 import { router, useFocusEffect } from 'expo-router';
 import { CheckCircle } from 'phosphor-react-native';
 import { AppText } from '@/components/ui/Text';
-import { useTour } from '@/lib/tourContext';
 import { useAuth } from '@/hooks/useAuth';
 import { supabase } from '@/lib/supabase';
 import { HomeData, Mission, buildMissions } from '@/lib/missions';
@@ -238,39 +237,6 @@ export default function GoalsTab() {
   const [todayXP,     setTodayXP]     = useState(0);
   const [totalXP,     setTotalXP]     = useState(0);
 
-  // Refs do tour
-  const { startTour } = useTour();
-  const tourXpRef       = useRef<any>(null);
-  const tourMissionsRef = useRef<View>(null);
-  const tourWeeklyRef   = useRef<View>(null);
-
-  useEffect(() => {
-    if (loading) return;
-    const t = setTimeout(() => {
-      startTour('goals-new', [
-        {
-          ref: tourXpRef,
-          spotlightRadius: 18,
-          title: 'XP do dia',
-          description: 'Anel mostra quanto falta pra sua meta diária. Toque pra ver detalhes em Estatísticas.',
-        },
-        {
-          ref: tourMissionsRef,
-          spotlightRadius: 16,
-          title: 'Missões diárias',
-          description: 'Pequenas tarefas que valem XP. Cada missão concluída marca verde — complete pra manter o ritmo.',
-        },
-        {
-          ref: tourWeeklyRef,
-          spotlightRadius: 16,
-          title: 'Desafio da semana',
-          description: 'Meta maior pra a semana inteira, com bônus de XP. Acompanha a barra de progresso aqui embaixo.',
-        },
-      ], 'pt');
-    }, 700);
-    return () => clearTimeout(t);
-  }, [loading, startTour]);
-
   const fetchGoalsData = useCallback(async () => {
     if (!userId) return;
     try {
@@ -355,9 +321,7 @@ export default function GoalsTab() {
           alwaysBounceVertical={false}
         >
           {/* XP do dia — card proprio no topo (migrado do Home) */}
-          <View ref={tourXpRef} collapsable={false}>
-            <XPDailyCard todayXP={todayXP} isPt={isPt} onPress={handleXPPress} />
-          </View>
+          <XPDailyCard todayXP={todayXP} isPt={isPt} onPress={handleXPPress} />
 
           {/* Daily Missions — espaco gera scroll em telas pequenas, distribui em
               telas maiores via flex:1 + space-between no container interno. */}
@@ -366,7 +330,7 @@ export default function GoalsTab() {
             badge={`${doneMissions}/${missions.length}`}
             isPt={isPt}
           />
-          <View ref={tourMissionsRef} collapsable={false} style={{ paddingHorizontal: 20, flexGrow: 1, justifyContent: 'space-evenly' }}>
+          <View style={{ paddingHorizontal: 20, flexGrow: 1, justifyContent: 'space-evenly' }}>
             {missions.map((m, index) => (
               <View key={m.id}>
                 <MissionNode
@@ -390,7 +354,7 @@ export default function GoalsTab() {
           {weeklyState && (
             <>
               <SectionHeader label={isPt ? 'Desafio da semana' : 'Weekly Challenge'} />
-              <View ref={tourWeeklyRef} collapsable={false} style={{ paddingHorizontal: 20, marginBottom: 4 }}>
+              <View style={{ paddingHorizontal: 20, marginBottom: 4 }}>
                 <View style={{
                   borderRadius: 18, overflow: 'hidden',
                   backgroundColor: weeklyState.challenge.bgColor,

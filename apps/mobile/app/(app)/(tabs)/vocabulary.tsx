@@ -4,7 +4,7 @@
 //   "Revisar" → /(app)/vocab-review  |  "Ver lista" → dismiss modal, show list
 // Word card: collapsed = term + /phonetic/ + speaker icon, tap → expand full details.
 
-import React, { useState, useCallback, useRef, useMemo, useEffect } from 'react';
+import React, { useState, useCallback, useRef, useMemo } from 'react';
 import {
   View, ScrollView, TouchableOpacity, TextInput,
   ActivityIndicator, Alert, Platform, Modal,
@@ -21,7 +21,6 @@ import Constants from 'expo-constants';
 import { AppText } from '@/components/ui/Text';
 import { supabase } from '@/lib/supabase';
 import { useAuth } from '@/hooks/useAuth';
-import { useTour } from '@/lib/tourContext';
 import { getTip, TIP_STYLE, Tip } from '@/lib/tips';
 import { localTodayStr } from '@/lib/dateUtils';
 
@@ -101,46 +100,6 @@ export default function VocabularyTab() {
   const [addingTip,    setAddingTip]    = useState(false);
   const [tipTtsLoading, setTipTtsLoading] = useState(false);
   const playerRef = useRef<ReturnType<typeof createAudioPlayer> | null>(null);
-
-  // Refs do tour
-  const { startTour } = useTour();
-  const tourSearchRef  = useRef<View>(null);
-  const tourFiltersRef = useRef<View>(null);
-  const tourCardRef    = useRef<View>(null);
-  const tourFabRef     = useRef<any>(null);
-
-  useEffect(() => {
-    if (loading) return;
-    const t = setTimeout(() => {
-      startTour('vocabulary-new', [
-        {
-          ref: tourSearchRef,
-          spotlightRadius: 14,
-          title: 'Buscar',
-          description: 'Encontre rapidamente qualquer palavra ou definição salva na sua lista.',
-        },
-        {
-          ref: tourFiltersRef,
-          spotlightRadius: 12,
-          title: 'Filtros',
-          description: 'Filtre por categoria: Palavras, Expressões ou Phrasals.',
-        },
-        {
-          ref: tourCardRef,
-          spotlightRadius: 16,
-          title: 'Sua palavra salva',
-          description: 'Cada card mostra definição, exemplo e quando você revisa de novo. Toque pra expandir, toque na seta pra ouvir.',
-        },
-        {
-          ref: tourFabRef,
-          spotlightRadius: 28,
-          title: 'Adicionar palavra',
-          description: 'Toque pra cadastrar uma palavra ou expressão nova no seu vocabulário pessoal.',
-        },
-      ], 'pt');
-    }, 700);
-    return () => clearTimeout(t);
-  }, [loading, startTour]);
 
   // Today's tip, seeded by local calendar day (not UTC — avoids day flip at 21h BRT)
   const dateSeed = useMemo(() => {
@@ -463,7 +422,7 @@ export default function VocabularyTab() {
       </View>
 
       {/* Search bar */}
-      <View ref={tourSearchRef} collapsable={false} style={{ paddingHorizontal: 16, marginTop: 14, marginBottom: 10, flexDirection: 'row', alignItems: 'center', gap: 10 }}>
+      <View style={{ paddingHorizontal: 16, marginTop: 14, marginBottom: 10, flexDirection: 'row', alignItems: 'center', gap: 10 }}>
         <View style={{ flex: 1, flexDirection: 'row', alignItems: 'center', gap: 8, backgroundColor: C.inputBg, borderRadius: 12, paddingHorizontal: 12, paddingVertical: 9 }}>
           <MagnifyingGlass size={16} color={C.muted} />
           <TextInput
@@ -482,7 +441,6 @@ export default function VocabularyTab() {
       </View>
 
       {/* Filter chips */}
-      <View ref={tourFiltersRef} collapsable={false}>
       <ScrollView
         horizontal showsHorizontalScrollIndicator={false}
         contentContainerStyle={{ paddingHorizontal: 16, paddingVertical: 2, alignItems: 'center' }}
@@ -508,7 +466,6 @@ export default function VocabularyTab() {
           );
         })}
       </ScrollView>
-      </View>
 
       {/* List */}
       {loading ? (
@@ -547,14 +504,13 @@ export default function VocabularyTab() {
           contentContainerStyle={{ paddingHorizontal: 16, paddingBottom: Platform.OS === 'ios' ? 112 : 92, gap: 8 }}
           showsVerticalScrollIndicator={false}
         >
-          {filtered.map((item, idx) => {
+          {filtered.map((item) => {
             const isOpen = expanded === item.id;
             const isTtsLoading = ttsLoading === item.id;
 
             return (
               <TouchableOpacity
                 key={item.id}
-                ref={idx === 0 ? tourCardRef : undefined}
                 onPress={() => setExpanded(isOpen ? null : item.id)}
                 activeOpacity={0.78}
                 style={{ backgroundColor: C.card, borderRadius: 16, overflow: 'hidden', ...cardShadow }}
@@ -628,7 +584,6 @@ export default function VocabularyTab() {
 
       {/* FAB — Add word */}
       <TouchableOpacity
-        ref={tourFabRef}
         onPress={openAdd}
         style={{
           position: 'absolute',
