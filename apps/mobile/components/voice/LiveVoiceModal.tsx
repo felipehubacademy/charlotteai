@@ -25,7 +25,7 @@ import {
   StatusBar,
 } from 'react-native';
 import { SafeAreaView, useSafeAreaInsets } from 'react-native-safe-area-context';
-import { requestRecordingPermissionsAsync, setAudioModeAsync } from 'expo-audio';
+import { requestRecordingPermissionsAsync, setAudioModeAsync, createAudioPlayer, type AudioPlayer } from 'expo-audio';
 import { RTCPeerConnection, mediaDevices } from 'react-native-webrtc';
 import InCallManager from 'react-native-incall-manager';
 import { PhoneSlash, MicrophoneSlash, Microphone, SpeakerHigh, Ear, Pause, ArrowCounterClockwise, ArrowLeft, ChatCircle, ClosedCaptioning } from 'phosphor-react-native';
@@ -355,6 +355,45 @@ export default function LiveVoiceModal({
   const dcRef             = React.useRef<any>(null);
   const localStreamRef    = React.useRef<any>(null);
 
+  // ── Ringback player (Android only) ───────────────────────────────────────
+  // No iOS, createAudioPlayer força AVAudioSession pra .playback e quebra
+  // o .voiceChat do WebRTC — Charlotte deixa de tocar e de ouvir. Android
+  // não tem esse conflito de sessão exclusiva, então usamos o MP3 custom
+  // só lá. iOS fica com InCallManager.startRingback('_DEFAULT_').
+  const ringbackPlayerRef = React.useRef<AudioPlayer | null>(null);
+
+  const startCustomRingback = React.useCallback(() => {
+    if (Platform.OS !== 'android') return false;
+    try {
+      if (!ringbackPlayerRef.current) {
+        const p = createAudioPlayer(require('@/assets/audio/ringback_mixkit_1393.mp3'));
+        p.loop = true;
+        ringbackPlayerRef.current = p;
+      }
+      ringbackPlayerRef.current.seekTo(0);
+      ringbackPlayerRef.current.play();
+      return true;
+    } catch (e) {
+      console.warn('[LiveVoice] startCustomRingback error:', e);
+      return false;
+    }
+  }, []);
+
+  const stopCustomRingback = React.useCallback(() => {
+    if (Platform.OS !== 'android') return;
+    try { ringbackPlayerRef.current?.pause(); } catch { /* silencioso */ }
+  }, []);
+
+  React.useEffect(() => {
+    return () => {
+      try {
+        ringbackPlayerRef.current?.pause();
+        ringbackPlayerRef.current?.remove();
+      } catch { /* silencioso */ }
+      ringbackPlayerRef.current = null;
+    };
+  }, []);
+
   // ── State refs ────────────────────────────────────────────────────────────
   const isMutedRef              = React.useRef(false);
   const isSpeakerRef            = React.useRef(true);
@@ -672,6 +711,7 @@ export default function LiveVoiceModal({
     dcRef.current = null;
     pcRef.current?.close();
     pcRef.current = null;
+    stopCustomRingback();
     InCallManager.stopRingback();
     InCallManager.stop(); // devolve o AVAudioSession ao estado anterior
     charlotteSpeakingRef.current = false;
@@ -810,7 +850,12 @@ export default function LiveVoiceModal({
       // durante a transição e acabar sem AEC.
       await new Promise(resolve => setTimeout(resolve, 500));
 
-      InCallManager.startRingback('_DEFAULT_');
+      // Android: MP3 custom via expo-audio (sem conflito de sessao).
+      // iOS: native _DEFAULT_ do InCallManager (expo-audio quebra o AVAudioSession
+      // do WebRTC). MP3 custom no iOS so depois do bundling via config plugin.
+      if (!startCustomRingback()) {
+        InCallManager.startRingback('_DEFAULT_');
+      }
       // startRingback no iOS reconfigura AVAudioSession internamente sem reaplica
       // o speaker override. O AVAudioPlayer do ringback inicializa em thread nativa,
       // então o setForceSpeakerphoneOn precisa de um delay para ter efeito.
@@ -842,7 +887,8 @@ export default function LiveVoiceModal({
               ? `Você usou seus ${Math.floor(levelPool / 60)} min de Live Voice deste mês. Volta no mês que vem!`
               : `You've used your ${Math.floor(levelPool / 60)}-min monthly Live Voice allowance. Come back next month!`
           );
-          InCallManager.stopRingback();
+          stopCustomRingback();
+      InCallManager.stopRingback();
           return;
         }
         throw new Error('Failed to get session token (403)');
@@ -876,7 +922,8 @@ export default function LiveVoiceModal({
       dcRef.current = dc;
 
       dc.onopen = () => {
-        InCallManager.stopRingback();
+        stopCustomRingback();
+      InCallManager.stopRingback();
         setStatus('connected');
         wasConnectedRef.current = true;
         if (!callStartedAtRef.current) {
@@ -1348,6 +1395,7 @@ export default function LiveVoiceModal({
       localStreamRef.current = null;
       dcRef.current?.close(); dcRef.current = null;
       pcRef.current?.close(); pcRef.current = null;
+      stopCustomRingback();
       InCallManager.stopRingback();
       console.error('[LiveVoice] connect error:', error);
       setStatus('error');
@@ -1369,6 +1417,7 @@ export default function LiveVoiceModal({
     dcRef.current = null;
     pcRef.current?.close();
     pcRef.current = null;
+    stopCustomRingback();
     InCallManager.stopRingback();
     InCallManager.stop(); // devolve o AVAudioSession ao estado anterior
     charlotteSpeakingRef.current = false;
