@@ -519,13 +519,14 @@ export default function LiveVoiceModal({
           let foundAudioLevel = false;
           stats.forEach((report: any) => {
             if (report.type !== 'inbound-rtp' || report.kind !== 'audio') return;
-            // Tentativa 1: audioLevel direto (W3C spec, varia por impl)
-            if (typeof report.audioLevel === 'number') {
-              level = report.audioLevel;
+            // Tentativa 1: audioLevel direto. No react-native-webrtc o campo
+            // VEM populado mas SEMPRE 0 — entao so usa se > 0.
+            if (typeof report.audioLevel === 'number' && report.audioLevel > 0) {
+              level = Math.max(level, report.audioLevel);
               foundAudioLevel = true;
-              return;
             }
-            // Tentativa 2: derivar de totalAudioEnergy/totalSamplesDuration
+            // Tentativa 2 (sempre tenta tambem): derivar de
+            // totalAudioEnergy/totalSamplesDuration via RMS = sqrt(dE/dt).
             const energy   = typeof report.totalAudioEnergy === 'number'    ? report.totalAudioEnergy    : null;
             const duration = typeof report.totalSamplesDuration === 'number' ? report.totalSamplesDuration : null;
             if (energy != null && duration != null) {
@@ -534,8 +535,8 @@ export default function LiveVoiceModal({
                 const dEnergy   = energy - prev.energy;
                 const dDuration = duration - prev.duration;
                 if (dDuration > 0 && dEnergy >= 0) {
-                  // RMS no intervalo. audioLevel = sqrt(energia / tempo)
-                  level = Math.min(1, Math.sqrt(dEnergy / dDuration));
+                  const derived = Math.min(1, Math.sqrt(dEnergy / dDuration));
+                  level = Math.max(level, derived);
                 }
               }
               lastAudioEnergyRef.current = { energy, duration };
@@ -1784,7 +1785,7 @@ export default function LiveVoiceModal({
           {/* O container do center tem altura suficiente para avatar + caption.
               Avatar fica visualmente centralizado; caption usa position absolute
               abaixo, então ligar/desligar caption não muda a posição do avatar. */}
-          <View style={{ alignItems: 'center', justifyContent: 'center', width: '100%', height: 280 }}>
+          <View style={{ alignItems: 'center', justifyContent: 'center', width: '100%', height: 360 }}>
             <View style={{ alignItems: 'center', justifyContent: 'center' }}>
               <Animated.View style={{
                 position: 'absolute',
@@ -1839,8 +1840,10 @@ export default function LiveVoiceModal({
                   // Ancorado pelo TOPO (top fixo), nao pelo BOTTOM. Assim o
                   // chip fica em y constante e o texto cresce pra baixo,
                   // sem empurrar o chip para dentro dos arcos.
+                  // top:285 esta abaixo do raio max do ring audio-reactivo
+                  // (avatar centro y=180 + max ring 96px = y=276 → margem 9px).
                   position: 'absolute',
-                  top: 200, left: 0, right: 0,
+                  top: 285, left: 0, right: 0,
                   paddingHorizontal: 16, alignItems: 'center',
                 }}
               >
