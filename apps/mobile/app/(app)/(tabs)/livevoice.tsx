@@ -567,11 +567,22 @@ export default function LiveVoiceTab() {
     // Otimista: remove da UI imediatamente, depois apaga no DB.
     setRecentCalls(prev => prev.filter(c => c.id !== callId));
     try {
-      const { error } = await supabase.from('charlotte_live_calls').delete().eq('id', callId);
+      // .select() apos delete retorna as rows que foram apagadas.
+      // Sem ele, supabase.delete() retorna sucesso mesmo se RLS bloqueou
+      // silenciosamente (0 rows match) — bug que fazia historico voltar
+      // no reload. Se nada apagado, faz re-fetch pra reconciliar UI.
+      const { data, error } = await supabase
+        .from('charlotte_live_calls')
+        .delete()
+        .eq('id', callId)
+        .select('id');
       if (error) throw error;
+      if (!data || data.length === 0) {
+        console.warn('[livevoice] delete returned 0 rows — likely RLS block or stale id:', callId);
+        loadData();
+      }
     } catch (err) {
       console.warn('[livevoice] failed to delete call:', err);
-      // Fallback: re-fetch pra reconciliar (registro volta se DB rejeitou)
       loadData();
     }
   }, [loadData]);

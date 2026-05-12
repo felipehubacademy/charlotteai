@@ -16,7 +16,8 @@
       "env": {
         "EXPO_PUBLIC_API_BASE_URL": "https://charlotte.hubacademybr.com",
         "EXPO_PUBLIC_SUPABASE_URL": "https://fnvjibzreepubageztoi.supabase.co",
-        "EXPO_PUBLIC_SUPABASE_ANON_KEY": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImZudmppYnpyZWVwdWJhZ2V6dG9pIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NDgzNTYyNTgsImV4cCI6MjA2MzkzMjI1OH0.lm1h39VOgl-VwxnpGEFkvFrNRGIEeA1sQFI7xTJTsnw"
+        "EXPO_PUBLIC_SUPABASE_ANON_KEY": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImZudmppYnpyZWVwdWJhZ2V6dG9pIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NDgzNTYyNTgsImV4cCI6MjA2MzkzMjI1OH0.lm1h39VOgl-VwxnpGEFkvFrNRGIEeA1sQFI7xTJTsnw",
+        "EXPO_PUBLIC_SENTRY_DSN": "https://d9f1faa767622e3483313649561eff26@o4511377124163585.ingest.us.sentry.io/4511377162633216"
       }
     },
     "preview": {
@@ -32,7 +33,8 @@
       "env": {
         "EXPO_PUBLIC_API_BASE_URL": "https://charlotte.hubacademybr.com",
         "EXPO_PUBLIC_SUPABASE_URL": "https://fnvjibzreepubageztoi.supabase.co",
-        "EXPO_PUBLIC_SUPABASE_ANON_KEY": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImZudmppYnpyZWVwdWJhZ2V6dG9pIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NDgzNTYyNTgsImV4cCI6MjA2MzkzMjI1OH0.lm1h39VOgl-VwxnpGEFkvFrNRGIEeA1sQFI7xTJTsnw"
+        "EXPO_PUBLIC_SUPABASE_ANON_KEY": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImZudmppYnpyZWVwdWJhZ2V6dG9pIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NDgzNTYyNTgsImV4cCI6MjA2MzkzMjI1OH0.lm1h39VOgl-VwxnpGEFkvFrNRGIEeA1sQFI7xTJTsnw",
+        "EXPO_PUBLIC_SENTRY_DSN": "https://d9f1faa767622e3483313649561eff26@o4511377124163585.ingest.us.sentry.io/4511377162633216"
       }
     },
     "testflight": {
@@ -45,7 +47,8 @@
       "env": {
         "EXPO_PUBLIC_API_BASE_URL": "https://charlotte.hubacademybr.com",
         "EXPO_PUBLIC_SUPABASE_URL": "https://fnvjibzreepubageztoi.supabase.co",
-        "EXPO_PUBLIC_SUPABASE_ANON_KEY": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImZudmppYnpyZWVwdWJhZ2V6dG9pIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NDgzNTYyNTgsImV4cCI6MjA2MzkzMjI1OH0.lm1h39VOgl-VwxnpGEFkvFrNRGIEeA1sQFI7xTJTsnw"
+        "EXPO_PUBLIC_SUPABASE_ANON_KEY": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImZudmppYnpyZWVwdWJhZ2V6dG9pIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NDgzNTYyNTgsImV4cCI6MjA2MzkzMjI1OH0.lm1h39VOgl-VwxnpGEFkvFrNRGIEeA1sQFI7xTJTsnw",
+        "EXPO_PUBLIC_SENTRY_DSN": "https://d9f1faa767622e3483313649561eff26@o4511377124163585.ingest.us.sentry.io/4511377162633216"
       }
     },
     "production": {
@@ -60,7 +63,8 @@
       "env": {
         "EXPO_PUBLIC_API_BASE_URL": "https://charlotte.hubacademybr.com",
         "EXPO_PUBLIC_SUPABASE_URL": "https://fnvjibzreepubageztoi.supabase.co",
-        "EXPO_PUBLIC_SUPABASE_ANON_KEY": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImZudmppYnpyZWVwdWJhZ2V6dG9pIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NDgzNTYyNTgsImV4cCI6MjA2MzkzMjI1OH0.lm1h39VOgl-VwxnpGEFkvFrNRGIEeA1sQFI7xTJTsnw"
+        "EXPO_PUBLIC_SUPABASE_ANON_KEY": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImZudmppYnpyZWVwdWJhZ2V6dG9pIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NDgzNTYyNTgsImV4cCI6MjA2MzkzMjI1OH0.lm1h39VOgl-VwxnpGEFkvFrNRGIEeA1sQFI7xTJTsnw",
+        "EXPO_PUBLIC_SENTRY_DSN": "https://d9f1faa767622e3483313649561eff26@o4511377124163585.ingest.us.sentry.io/4511377162633216"
       }
     }
   },
