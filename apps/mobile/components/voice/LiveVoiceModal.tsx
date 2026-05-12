@@ -1142,7 +1142,7 @@ export default function LiveVoiceModal({
       await pc.setLocalDescription(offer);
 
       const sdpRes = await fetch(
-        `https://api.openai.com/v1/realtime?model=${MODEL}`,
+        `https://api.openai.com/v1/realtime/calls?model=${MODEL}`,
         {
           method: 'POST',
           headers: {
