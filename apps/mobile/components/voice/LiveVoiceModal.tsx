@@ -488,55 +488,76 @@ export default function LiveVoiceModal({
   const loopRef     = React.useRef<Animated.CompositeAnimation | null>(null);
   const audioLevelIntervalRef = React.useRef<ReturnType<typeof setInterval> | null>(null);
 
-  // Audio level real do stream inbound (Charlotte). Lê pc.getStats() a cada
-  // 100ms e mapeia o `audioLevel` (0.0..1.0) para scale/opacity do ring.
-  // Roda apenas enquanto Charlotte está falando — quando ela para, ambient.
+  // Estado anterior do totalAudioEnergy/totalSamplesDuration usado como
+  // fallback quando o audioLevel direto nao vem populado no getStats().
+  // RMS energy = sqrt((energy_now - energy_prev) / (duration_now - duration_prev))
+  const lastAudioEnergyRef = React.useRef<{ energy: number; duration: number } | null>(null);
+
+  // Useffect unificado: gerencia tanto animacao ambient quanto audio-reactiva.
+  // Charlotte falando = poll getStats e seta ringScale/ringOpacity direto
+  // via setValue (sem fila de Animated.timing). Caso contrario, loop ambient.
   React.useEffect(() => {
+    // Limpa qualquer estado anterior antes de decidir
     if (audioLevelIntervalRef.current) {
       clearInterval(audioLevelIntervalRef.current);
       audioLevelIntervalRef.current = null;
     }
-
-    if (status !== 'connected' || !charlotteSpeaking || isPaused) return;
-
-    loopRef.current?.stop(); // mata animação ambient pra não brigar com reativa
-
-    audioLevelIntervalRef.current = setInterval(async () => {
-      try {
-        const pc = pcRef.current;
-        if (!pc?.getStats) return;
-        const stats = await pc.getStats();
-        let level = 0;
-        stats.forEach((report: any) => {
-          // inbound-rtp audio = stream da Charlotte chegando do servidor
-          if (report.type === 'inbound-rtp' && report.kind === 'audio') {
-            if (typeof report.audioLevel === 'number') level = report.audioLevel;
-          }
-        });
-        // audioLevel é 0..1. Mapeia para escala 1.0 (silêncio) → 1.25 (máximo)
-        // e opacidade 0.15 → 0.7. useNativeDriver pra performance.
-        const targetScale   = 1 + Math.min(level * 1.5, 0.25);
-        const targetOpacity = 0.15 + Math.min(level * 1.8, 0.55);
-        Animated.timing(ringScale,   { toValue: targetScale,   duration: 90, useNativeDriver: true }).start();
-        Animated.timing(ringOpacity, { toValue: targetOpacity, duration: 90, useNativeDriver: true }).start();
-      } catch { /* getStats pode falhar — ignora */ }
-    }, 100);
-
-    return () => {
-      if (audioLevelIntervalRef.current) {
-        clearInterval(audioLevelIntervalRef.current);
-        audioLevelIntervalRef.current = null;
-      }
-    };
-  }, [status, charlotteSpeaking, isPaused]);
-
-  React.useEffect(() => {
-    // Quando Charlotte ESTÁ falando, o useEffect acima cuida via getStats.
-    // Quando NÃO está falando ou em connecting/disconnected: animação ambient.
-    if (status === 'connected' && charlotteSpeaking && !isPaused) return;
-
     loopRef.current?.stop();
+    lastAudioEnergyRef.current = null;
 
+    // 1) Charlotte falando — audio-reactivo via getStats
+    if (status === 'connected' && charlotteSpeaking && !isPaused) {
+      audioLevelIntervalRef.current = setInterval(async () => {
+        try {
+          const pc = pcRef.current;
+          if (!pc?.getStats) return;
+          const stats = await pc.getStats();
+          let level = 0;
+          let foundAudioLevel = false;
+          stats.forEach((report: any) => {
+            if (report.type !== 'inbound-rtp' || report.kind !== 'audio') return;
+            // Tentativa 1: audioLevel direto (W3C spec, varia por impl)
+            if (typeof report.audioLevel === 'number') {
+              level = report.audioLevel;
+              foundAudioLevel = true;
+              return;
+            }
+            // Tentativa 2: derivar de totalAudioEnergy/totalSamplesDuration
+            const energy   = typeof report.totalAudioEnergy === 'number'    ? report.totalAudioEnergy    : null;
+            const duration = typeof report.totalSamplesDuration === 'number' ? report.totalSamplesDuration : null;
+            if (energy != null && duration != null) {
+              const prev = lastAudioEnergyRef.current;
+              if (prev) {
+                const dEnergy   = energy - prev.energy;
+                const dDuration = duration - prev.duration;
+                if (dDuration > 0 && dEnergy >= 0) {
+                  // RMS no intervalo. audioLevel = sqrt(energia / tempo)
+                  level = Math.min(1, Math.sqrt(dEnergy / dDuration));
+                }
+              }
+              lastAudioEnergyRef.current = { energy, duration };
+            }
+          });
+
+          if (__DEV__) console.log(`[LiveVoice] audioLevel=${level.toFixed(3)} src=${foundAudioLevel ? 'direct' : 'derived'}`);
+
+          // Mapeia: scale 1.0 (silencio) → 1.30 (max), opacidade 0.15 → 0.75
+          const targetScale   = 1 + Math.min(level * 2.0, 0.30);
+          const targetOpacity = 0.15 + Math.min(level * 2.5, 0.60);
+          ringScale.setValue(targetScale);
+          ringOpacity.setValue(targetOpacity);
+        } catch { /* getStats pode falhar entre estados — ignora */ }
+      }, 100);
+
+      return () => {
+        if (audioLevelIntervalRef.current) {
+          clearInterval(audioLevelIntervalRef.current);
+          audioLevelIntervalRef.current = null;
+        }
+      };
+    }
+
+    // 2) Connecting — pulse mais rapido (laranja)
     if (status === 'connecting') {
       loopRef.current = Animated.loop(
         Animated.sequence([
@@ -551,7 +572,11 @@ export default function LiveVoiceModal({
         ])
       );
       loopRef.current.start();
-    } else if (status === 'connected' && !isPaused) {
+      return () => loopRef.current?.stop();
+    }
+
+    // 3) Connected mas Charlotte nao fala — breathing ambient sutil
+    if (status === 'connected' && !isPaused) {
       loopRef.current = Animated.loop(
         Animated.sequence([
           Animated.parallel([
@@ -565,12 +590,12 @@ export default function LiveVoiceModal({
         ])
       );
       loopRef.current.start();
-    } else {
-      ringScale.setValue(1);
-      ringOpacity.setValue(0);
+      return () => loopRef.current?.stop();
     }
 
-    return () => loopRef.current?.stop();
+    // 4) Demais estados — ring apagado
+    ringScale.setValue(1);
+    ringOpacity.setValue(0);
   }, [status, charlotteSpeaking, isPaused]);
 
   const ringColor = status === 'connecting' ? '#F97316' : '#A3FF3C';
