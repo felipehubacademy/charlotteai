@@ -596,22 +596,13 @@ export default function LiveVoiceModal({
       return () => loopRef.current?.stop();
     }
 
-    // 3) Connected mas Charlotte nao fala — breathing ambient sutil
+    // 3) Connected mas Charlotte nao fala — RING TOTALMENTE PARADO.
+    //    Ring so se mexe quando Charlotte fala (audio-reactivo). Sem
+    //    breathing ambient — quietude e o sinal de "ela ta ouvindo voce".
     if (status === 'connected' && !isPaused) {
-      loopRef.current = Animated.loop(
-        Animated.sequence([
-          Animated.parallel([
-            Animated.timing(ringScale,   { toValue: 1.05, duration: 1800, useNativeDriver: true }),
-            Animated.timing(ringOpacity, { toValue: 0.22, duration: 1800, useNativeDriver: true }),
-          ]),
-          Animated.parallel([
-            Animated.timing(ringScale,   { toValue: 1, duration: 1800, useNativeDriver: true }),
-            Animated.timing(ringOpacity, { toValue: 0.10, duration: 1800, useNativeDriver: true }),
-          ]),
-        ])
-      );
-      loopRef.current.start();
-      return () => loopRef.current?.stop();
+      ringScale.setValue(1);
+      ringOpacity.setValue(0.18);
+      return;
     }
 
     // 4) Demais estados — ring apagado
