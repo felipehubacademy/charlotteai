@@ -41,3 +41,6 @@ yarn-error.log*
 coverage
 .env*.local
 apps/web/public/tts/sfx_backup_pre_musical/
+
+# Claude Code worktrees (temporários)
+.claude/worktrees/
