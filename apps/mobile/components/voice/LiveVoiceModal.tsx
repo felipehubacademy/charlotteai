@@ -1495,14 +1495,14 @@ export default function LiveVoiceModal({
   }, [loadPool, connect]);
 
   // ── StatusBar: imperativo para funcionar dentro de Modal no Android ─────────
-  // Sempre seta — inclusive quando fecha (isOpen=false) para restaurar o padrão
-  // da app e evitar race condition com o StatusBar declarativo da home screen.
+  // Sempre dark-content sobre bg claro (#FAF9FF), tanto na tela de chamada
+  // quanto no transcript. Restaura ao fechar.
   React.useEffect(() => {
-    const callActive = isOpen && !showTranscript;
-    const style = callActive ? 'light-content' : 'dark-content';
-    const bg    = callActive ? '#07071C' : '#FFFFFF';
-    StatusBar.setBarStyle(style, true);
-    if (Platform.OS === 'android') StatusBar.setBackgroundColor(bg, true);
+    StatusBar.setBarStyle('dark-content', true);
+    if (Platform.OS === 'android') {
+      const bg = isOpen && !showTranscript ? '#FAF9FF' : '#FFFFFF';
+      StatusBar.setBackgroundColor(bg, true);
+    }
   }, [isOpen, showTranscript]);
 
   // ── Lifecycle: abrir/fechar modal ─────────────────────────────────────────
@@ -1550,7 +1550,7 @@ export default function LiveVoiceModal({
   return (
     <Modal
       visible={isOpen}
-      animationType="slide"
+      animationType="fade"
       presentationStyle="fullScreen"
       transparent={false}
       hardwareAccelerated
@@ -1650,7 +1650,7 @@ export default function LiveVoiceModal({
         </View>
       ) : (
       <>
-      <View style={{ flex: 1, backgroundColor: '#07071C', paddingTop: insets.top, paddingBottom: insets.bottom }}>
+      <View style={{ flex: 1, backgroundColor: '#FAF9FF', paddingTop: insets.top, paddingBottom: insets.bottom }}>
         <View style={{ flex: 1, alignItems: 'center', justifyContent: 'space-between', paddingHorizontal: 32, paddingVertical: 24 }}>
 
           {/* Caption toggle (absolute, top-right) */}
@@ -1665,27 +1665,27 @@ export default function LiveVoiceModal({
               position: 'absolute',
               top: 16, right: 20,
               width: 40, height: 40, borderRadius: 20,
-              backgroundColor: captionsEnabled ? 'rgba(163,255,60,0.15)' : 'rgba(255,255,255,0.06)',
+              backgroundColor: captionsEnabled ? 'rgba(124,58,237,0.10)' : 'rgba(22,21,58,0.04)',
               borderWidth: 1,
-              borderColor: captionsEnabled ? 'rgba(163,255,60,0.4)' : 'rgba(255,255,255,0.12)',
+              borderColor: captionsEnabled ? 'rgba(124,58,237,0.35)' : 'rgba(22,21,58,0.10)',
               alignItems: 'center', justifyContent: 'center',
               zIndex: 10,
             }}
           >
             <ClosedCaptioning
               size={20}
-              color={captionsEnabled ? '#A3FF3C' : 'rgba(255,255,255,0.6)'}
+              color={captionsEnabled ? '#7C3AED' : 'rgba(22,21,58,0.55)'}
               weight={captionsEnabled ? 'fill' : 'regular'}
             />
           </TouchableOpacity>
 
           {/* ── TOP: Nome + Timer + Pool badge ─────────────────────── */}
           <View style={{ alignItems: 'center', paddingTop: 8 }}>
-            <AppText style={{ color: 'rgba(255,255,255,0.5)', fontSize: 13, letterSpacing: 1, textTransform: 'uppercase', marginBottom: 4 }}>
+            <AppText style={{ color: 'rgba(22,21,58,0.5)', fontSize: 13, letterSpacing: 1, textTransform: 'uppercase', marginBottom: 4 }}>
               Charlotte
             </AppText>
             {status === 'connected' && !isPaused && (
-              <AppText style={{ color: 'rgba(255,255,255,0.85)', fontSize: 15, letterSpacing: 2,
+              <AppText style={{ color: 'rgba(22,21,58,0.85)', fontSize: 15, letterSpacing: 2,
                 ...(Platform.OS === 'ios'
                   ? { fontVariant: ['tabular-nums'] }
                   : { fontFamily: 'monospace' }) }}>
@@ -1723,7 +1723,7 @@ export default function LiveVoiceModal({
               </View>
             )}
             {poolLoading && status === 'idle' && (
-              <AppText style={{ color: 'rgba(255,255,255,0.4)', fontSize: 12 }}>...</AppText>
+              <AppText style={{ color: 'rgba(22,21,58,0.4)', fontSize: 12 }}>...</AppText>
             )}
             {/* Aviso crítico apenas quando < 2 min — sem exibir créditos no header */}
             {!poolLoading && !poolExhausted && poolRemaining < 120 && (
@@ -1779,7 +1779,7 @@ export default function LiveVoiceModal({
               {isPaused && (
                 <View style={{
                   position: 'absolute',
-                  backgroundColor: 'rgba(7,7,28,0.7)',
+                  backgroundColor: 'rgba(255,255,255,0.75)',
                   width: 120, height: 120, borderRadius: 60,
                   alignItems: 'center', justifyContent: 'center',
                 }}>
@@ -1804,14 +1804,14 @@ export default function LiveVoiceModal({
                   paddingHorizontal: 8, paddingVertical: 2,
                   borderRadius: 8,
                   backgroundColor: captionSpeaker === 'user'
-                    ? 'rgba(163,255,60,0.18)'
-                    : 'rgba(255,255,255,0.14)',
+                    ? 'rgba(61,136,0,0.12)'
+                    : 'rgba(124,58,237,0.10)',
                   marginBottom: 6,
                 }}>
                   <AppText style={{
                     fontSize: 9, fontWeight: '800',
                     letterSpacing: 1,
-                    color: captionSpeaker === 'user' ? '#A3FF3C' : 'rgba(255,255,255,0.85)',
+                    color: captionSpeaker === 'user' ? '#3D8800' : '#7C3AED',
                   }}>
                     {captionSpeaker === 'user'
                       ? (userLevel === 'Novice' ? 'VOCÊ' : 'YOU')
@@ -1820,15 +1820,12 @@ export default function LiveVoiceModal({
                 </View>
                 <AppText
                   style={{
-                    color: captionSpeaker === 'user' ? '#A3FF3C' : '#FFFFFF',
+                    color: captionSpeaker === 'user' ? '#3D8800' : '#16153A',
                     fontSize: 16,
                     lineHeight: 22,
                     fontWeight: '500',
                     textAlign: 'center',
                     minHeight: 44,
-                    textShadowColor: 'rgba(0,0,0,0.6)',
-                    textShadowOffset: { width: 0, height: 1 },
-                    textShadowRadius: 2,
                   }}
                   numberOfLines={3}
                 >
@@ -1837,7 +1834,7 @@ export default function LiveVoiceModal({
                 {captionTranslation && (
                   <AppText
                     style={{
-                      color: 'rgba(255,255,255,0.7)',
+                      color: 'rgba(22,21,58,0.6)',
                       fontSize: 14,
                       lineHeight: 19,
                       fontStyle: 'italic',
@@ -1858,7 +1855,7 @@ export default function LiveVoiceModal({
           {isPaused ? (
             /* ── Estado pausado ── */
             <View style={{ alignItems: 'center', gap: 16 }}>
-              <AppText style={{ color: 'rgba(255,255,255,0.5)', fontSize: 13, textAlign: 'center' }}>
+              <AppText style={{ color: 'rgba(22,21,58,0.55)', fontSize: 13, textAlign: 'center' }}>
                 {userLevel === 'Novice'
                   ? 'Chamada pausada. O timer não correu enquanto esteve ausente.'
                   : 'Call paused. Timer stopped while you were away.'}
@@ -1922,15 +1919,15 @@ export default function LiveVoiceModal({
                   accessibilityRole="button"
                   style={{
                     width: 64, height: 64, borderRadius: 32,
-                    backgroundColor: isMuted ? 'rgba(239,68,68,0.15)' : 'rgba(255,255,255,0.08)',
+                    backgroundColor: isMuted ? 'rgba(239,68,68,0.12)' : 'rgba(22,21,58,0.06)',
                     borderWidth: 1,
-                    borderColor: isMuted ? 'rgba(239,68,68,0.4)' : 'rgba(255,255,255,0.12)',
+                    borderColor: isMuted ? 'rgba(239,68,68,0.4)' : 'rgba(22,21,58,0.10)',
                     alignItems: 'center', justifyContent: 'center',
                   }}
                 >
                   {isMuted
                     ? <MicrophoneSlash size={24} color="#ef4444" weight="regular" />
-                    : <Microphone     size={24} color="rgba(255,255,255,0.7)" weight="regular" />
+                    : <Microphone     size={24} color="rgba(22,21,58,0.65)" weight="regular" />
                   }
                 </TouchableOpacity>
 
@@ -1962,15 +1959,15 @@ export default function LiveVoiceModal({
                   accessibilityRole="button"
                   style={{
                     width: 64, height: 64, borderRadius: 32,
-                    backgroundColor: isSpeaker ? 'rgba(163,255,60,0.15)' : 'rgba(255,255,255,0.08)',
+                    backgroundColor: isSpeaker ? 'rgba(61,136,0,0.12)' : 'rgba(22,21,58,0.06)',
                     borderWidth: 1,
-                    borderColor: isSpeaker ? 'rgba(163,255,60,0.4)' : 'rgba(255,255,255,0.12)',
+                    borderColor: isSpeaker ? 'rgba(61,136,0,0.4)' : 'rgba(22,21,58,0.10)',
                     alignItems: 'center', justifyContent: 'center',
                   }}
                 >
                   {isSpeaker
-                    ? <SpeakerHigh size={24} color="#A3FF3C" weight="regular" />
-                    : <Ear        size={24} color="rgba(255,255,255,0.7)" weight="regular" />
+                    ? <SpeakerHigh size={24} color="#3D8800" weight="regular" />
+                    : <Ear        size={24} color="rgba(22,21,58,0.65)" weight="regular" />
                   }
                 </TouchableOpacity>
               </View>
