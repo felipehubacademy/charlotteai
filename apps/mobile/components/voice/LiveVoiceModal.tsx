@@ -270,10 +270,16 @@ export default function LiveVoiceModal({
   const [isPaused, setIsPaused]                   = React.useState(false);
 
   // ── Live captions ──────────────────────────────────────────────────────────
-  // Streaming transcript da fala atual da Charlotte, exibido abaixo do avatar.
+  // Streaming transcript: Charlotte (assistant) OU usuário (user). O speaker
+  // alterna conforme quem está falando — quando a Charlotte começa a falar
+  // a caption do usuário vai embora e vice-versa.
   // Limpa 3.5s após response.audio_transcript.done.
   // Toggle persistente em SecureStore por nível — default ON pra Novice.
   const [liveCaption, setLiveCaption]            = React.useState('');
+  const [captionSpeaker, setCaptionSpeaker]      = React.useState<'user' | 'assistant'>('assistant');
+  // Ref espelho do speaker pra leitura dentro do dc.onmessage (que captura
+  // a closure inicial — sem ref, captionSpeaker fica stale entre eventos).
+  const captionSpeakerRef = React.useRef<'user' | 'assistant'>('assistant');
   const captionClearTimerRef = React.useRef<ReturnType<typeof setTimeout> | null>(null);
   const [captionsEnabled, setCaptionsEnabled]    = React.useState(userLevel === 'Novice');
   const [captionTranslation, setCaptionTranslation]   = React.useState<string | null>(null);
@@ -999,11 +1005,15 @@ export default function LiveVoiceModal({
             case 'response.audio_transcript.delta':  // legacy alias (pre-GA)
             case 'response.output_audio_transcript.delta':
               // Streaming caption — Charlotte fala. Acumula até .done.
-              // Se um timer de clear já está rodando (resposta anterior finalizada),
-              // cancela e começa caption fresca pra essa nova resposta.
+              // Se a caption anterior era do usuário, descarta e começa fresca.
               {
                 const delta = msg.delta ?? '';
-                if (captionClearTimerRef.current) {
+                const wasUser = captionSpeakerRef.current === 'user';
+                captionSpeakerRef.current = 'assistant';
+                setCaptionSpeaker('assistant');
+                if (wasUser) {
+                  setLiveCaption(delta);
+                } else if (captionClearTimerRef.current) {
                   clearTimeout(captionClearTimerRef.current);
                   captionClearTimerRef.current = null;
                   setLiveCaption(delta);
@@ -1094,15 +1104,33 @@ export default function LiveVoiceModal({
 
             case 'conversation.item.input_audio_transcription.delta':
               // gpt-realtime-whisper emite deltas streaming enquanto o usuário
-              // ainda fala. Acumulamos por item_id para uso futuro (detecção
-              // precoce de eco, live caption do usuário). O canônico vem em
-              // .completed e sobrescreve o acumulado.
+              // ainda fala. Acumulamos por item_id (canônico vem em .completed
+              // e sobrescreve no histórico) e exibimos como live caption.
               {
                 const itemId = msg.item_id;
                 const delta  = msg.delta ?? '';
                 if (itemId && delta) {
                   const prev = userTranscriptDeltasRef.current.get(itemId) ?? '';
-                  userTranscriptDeltasRef.current.set(itemId, prev + delta);
+                  const next = prev + delta;
+                  userTranscriptDeltasRef.current.set(itemId, next);
+
+                  // Caption do usuário (se enabled e a Charlotte não está falando).
+                  if (!charlotteSpeakingRef.current) {
+                    captionSpeakerRef.current = 'user';
+                    setCaptionSpeaker('user');
+                    // Cancela qualquer timer de clear da fala anterior da Charlotte
+                    // e descarta tradução residual da caption anterior.
+                    if (captionClearTimerRef.current) {
+                      clearTimeout(captionClearTimerRef.current);
+                      captionClearTimerRef.current = null;
+                    }
+                    if (translationDismissTimerRef.current) {
+                      clearTimeout(translationDismissTimerRef.current);
+                      translationDismissTimerRef.current = null;
+                    }
+                    setCaptionTranslation(null);
+                    setLiveCaption(next.slice(-800));
+                  }
                 }
               }
               break;
@@ -1700,16 +1728,35 @@ export default function LiveVoiceModal({
               <TouchableOpacity
                 onPress={handleCaptionPress}
                 activeOpacity={0.7}
-                disabled={captionTranslating}
+                disabled={captionTranslating || captionSpeaker === 'user'}
                 style={{
                   // Absolute pra não empurrar o avatar pra cima.
                   position: 'absolute', bottom: 0, left: 0, right: 0,
                   paddingHorizontal: 16, alignItems: 'center',
                 }}
               >
+                {/* Mini chip indicando quem está falando. */}
+                <View style={{
+                  paddingHorizontal: 8, paddingVertical: 2,
+                  borderRadius: 8,
+                  backgroundColor: captionSpeaker === 'user'
+                    ? 'rgba(163,255,60,0.18)'
+                    : 'rgba(255,255,255,0.14)',
+                  marginBottom: 6,
+                }}>
+                  <AppText style={{
+                    fontSize: 9, fontWeight: '800',
+                    letterSpacing: 1,
+                    color: captionSpeaker === 'user' ? '#A3FF3C' : 'rgba(255,255,255,0.85)',
+                  }}>
+                    {captionSpeaker === 'user'
+                      ? (userLevel === 'Novice' ? 'VOCÊ' : 'YOU')
+                      : 'CHARLOTTE'}
+                  </AppText>
+                </View>
                 <AppText
                   style={{
-                    color: '#FFFFFF',
+                    color: captionSpeaker === 'user' ? '#A3FF3C' : '#FFFFFF',
                     fontSize: 16,
                     lineHeight: 22,
                     fontWeight: '500',
