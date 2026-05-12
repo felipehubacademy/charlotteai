@@ -635,10 +635,14 @@ export default function LiveVoiceModal({
     farewellActiveRef.current = true;
     farewellPendingRef.current = false;
 
-    // Desativar VAD — Charlotte não deve reagir a mais nada do usuário
+    // Desativar VAD — Charlotte não deve reagir a mais nada do usuário.
+    // GA: turn_detection ficou aninhado em audio.input + session.type obrigatório.
     sendEvent({
       type: 'session.update',
-      session: { turn_detection: null },
+      session: {
+        type: 'realtime',
+        audio: { input: { turn_detection: null } },
+      },
     });
 
     // Sorteia uma despedida do pool (varia a cada pool-exhausted)
@@ -654,7 +658,8 @@ export default function LiveVoiceModal({
         sendEvent({
           type: 'response.create',
           response: {
-            modalities: ['text', 'audio'],
+            // GA: modalities renamed to output_modalities (audio implies text too).
+            output_modalities: ['audio'],
             instructions: farewellInstruction,
             max_output_tokens: 80,
           },
@@ -805,27 +810,37 @@ export default function LiveVoiceModal({
         lastCharlotteDoneRef.current = Date.now();
 
         const greeting = getRandomGreeting(userLevel);
+        // GA shape: session needs type:'realtime', voice/format/transcription/
+        // turn_detection moved under audio.{input,output}, modalities renamed
+        // to output_modalities, max_response_output_tokens → max_output_tokens.
         dc.send(JSON.stringify({
           type: 'session.update',
           session: {
-            modalities: ['text', 'audio'],
+            type: 'realtime',
+            output_modalities: ['audio'],
             instructions: getSystemPrompt(userLevel, userName, greeting),
-            voice: 'coral',
-            input_audio_format: 'pcm16',
-            output_audio_format: 'pcm16',
-            max_response_output_tokens: 600,
-            input_audio_transcription: { model: 'whisper-1' },
-            turn_detection: {
-              // server_vad: threshold 0.90 filtra ruído de baixa energia.
-              // silence_duration 1500ms evita interrupção por pausas naturais.
-              // (semantic_vad foi testado mas causou latência alta e cortes
-              // em meio de resposta — provável incompatibilidade com o fluxo
-              // de create_response:false + response.cancel manual.)
-              type: 'server_vad',
-              threshold: 0.90,
-              prefix_padding_ms: 400,
-              silence_duration_ms: 1500,
-              create_response: false,
+            max_output_tokens: 600,
+            audio: {
+              input: {
+                format: 'pcm16',
+                transcription: { model: 'whisper-1' },
+                turn_detection: {
+                  // server_vad: threshold 0.90 filtra ruído de baixa energia.
+                  // silence_duration 1500ms evita interrupção por pausas naturais.
+                  // (semantic_vad foi testado mas causou latência alta e cortes
+                  // em meio de resposta — provável incompatibilidade com o fluxo
+                  // de create_response:false + response.cancel manual.)
+                  type: 'server_vad',
+                  threshold: 0.90,
+                  prefix_padding_ms: 400,
+                  silence_duration_ms: 1500,
+                  create_response: false,
+                },
+              },
+              output: {
+                format: 'pcm16',
+                voice: 'coral',
+              },
             },
           },
         }));
