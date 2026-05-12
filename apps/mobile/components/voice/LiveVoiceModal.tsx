@@ -808,7 +808,13 @@ export default function LiveVoiceModal({
       // Ele configura category=.playAndRecord + mode=.voiceChat, que é o que o
       // iOS precisa para ativar o Voice Processing I/O unit (AEC hardware).
       // Nenhum setAudioModeAsync é chamado no fluxo de chamada para não sobrescrever.
-      InCallManager.start({ media: 'audio' });
+      // No iOS, media:'audio' usa AVAudioSessionModeVoiceChat com default EARPIECE.
+      // O override pra speaker via setForceSpeakerphoneOn é resetado quando o
+      // WebRTC reconfigura o session durante SDP negotiation (issue #1438) —
+      // causando oscilação speaker↔earpiece. media:'video' usa VideoChat mode
+      // que tem DefaultToSpeaker embutido na categoria, sobrevivendo a reconfigs.
+      // No Android é irrelevante (AudioManager.setSpeakerphoneOn é sticky).
+      InCallManager.start({ media: Platform.OS === 'ios' ? 'video' : 'audio' });
 
       // 500ms para o AVAudioSession estabilizar no mode .voiceChat antes do
       // getUserMedia. Sem esse delay, o audio unit do mic pode ser criado
