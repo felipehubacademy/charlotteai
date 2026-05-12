@@ -1,7 +1,7 @@
 // app/api/summarize-call/route.ts
 // Resume a conversa de uma chamada Live Voice em 1-2 frases curtas
 // e persiste em charlotte_live_calls. Idioma do resumo segue o nível:
-// Novice → PT-BR, Inter → PT-BR, Advanced → EN.
+// Novice → PT-BR, Inter + Advanced → EN (regra global da app).
 
 import { NextRequest, NextResponse } from 'next/server';
 import OpenAI from 'openai';
@@ -60,7 +60,8 @@ export async function POST(request: NextRequest) {
       return NextResponse.json({ success: true, id: data.id, summary: null });
     }
 
-    const isPt = userLevel === 'Novice' || userLevel === 'Inter';
+    // Regra global: apenas Novice fala português. Inter e Advanced em inglês.
+    const isPt = userLevel === 'Novice';
     const summaryLang = isPt ? 'Brazilian Portuguese (PT-BR)' : 'English';
 
     const systemPrompt = `You are a language coach summarizing a practice conversation between a student and Charlotte (an AI English tutor). The student's level is ${userLevel}.

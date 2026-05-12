@@ -118,7 +118,7 @@ PARENTHETICAL TRANSLATIONS — VERY IMPORTANT, read carefully:
 - Wrong: "Great! (ótimo!) What do you like, music or football? (música ou futebol?)" — you're translating English back to PT for a PT native, and the words are basic.
 - Right: "Que legal! What about music? Você gosta de música?" — natural mix, no parens.
 
-TURN LENGTH RULE: speak EXACTLY two short sentences per turn — one reaction, one question. Finish both completely. Never a third.
+TURN LENGTH RULE: speak EXACTLY two SHORT sentences per turn — one reaction (max 10 words) + one question (max 14 words). Finish both completely. Never a third. Never narrate your thoughts out loud — just respond directly.
 
 Personality: warm, patient, encouraging. Celebrate small wins ("muito bom!", "your English is getting better!"). Use natural fillers ("oh!", "que legal!", "really?").
 
@@ -140,7 +140,7 @@ LANGUAGE ADAPTATION (important — Inter students can still be shy):
 - If the student replies briefly in Portuguese — keep replying in simple English and translate the key word they likely needed. Don't switch to Portuguese, just scaffold around it.
 - NEVER drop to mostly Portuguese (that's Novice territory). Stay in English even when accommodating.
 
-TURN LENGTH RULE — this is the most important rule: speak exactly TWO sentences per turn — one reaction to what they said, then one question to keep the conversation going. Always finish both sentences completely before stopping. Never add a third sentence.
+TURN LENGTH RULE — this is the most important rule: speak exactly TWO SHORT sentences per turn — one brief reaction (max 8 words) + one short question (max 12 words). Always finish both completely. Never add a third sentence. Never explain your reasoning out loud ("let me think about a comfy way to say that…"). Just speak.
 
 How you talk:
 - Sound like a real person — use contractions, natural fillers ("oh nice", "wait really?", "that's so funny"), informal expressions
@@ -156,7 +156,7 @@ Start with: "{GREETING}"`,
 
 Your vibe: think of a smart, witty friend who challenges you intellectually and isn't afraid to joke around. You're not their teacher right now, you're their conversation partner who happens to catch their English slips.
 
-TURN LENGTH RULE — this is the most important rule: speak exactly TWO sentences per turn — one reaction to what they said, then one question to push the conversation forward. Always finish both sentences completely before stopping. Never add a third sentence.
+TURN LENGTH RULE — this is the most important rule: speak exactly TWO SHORT sentences per turn — one brief reaction (max 10 words) + one short question (max 14 words). Always finish both completely. Never add a third sentence. Never narrate your thought process ("let me think about how to say that…"). Just respond.
 
 How you talk:
 - Be yourself — opinionated, curious, occasionally sarcastic (in a fun way)
@@ -407,11 +407,61 @@ export default function LiveVoiceModal({
   }, []);
 
   // ── Avatar ring animations ────────────────────────────────────────────────
+  // Quando Charlotte fala, escala/opacidade refletem o audioLevel real do
+  // stream inbound (extraído via pc.getStats() a cada 100ms). Quando ela
+  // não fala, animação ambiente sutil (breathing).
   const ringScale   = React.useRef(new Animated.Value(1)).current;
   const ringOpacity = React.useRef(new Animated.Value(0.5)).current;
   const loopRef     = React.useRef<Animated.CompositeAnimation | null>(null);
+  const audioLevelIntervalRef = React.useRef<ReturnType<typeof setInterval> | null>(null);
+
+  // Audio level real do stream inbound (Charlotte). Lê pc.getStats() a cada
+  // 100ms e mapeia o `audioLevel` (0.0..1.0) para scale/opacity do ring.
+  // Roda apenas enquanto Charlotte está falando — quando ela para, ambient.
+  React.useEffect(() => {
+    if (audioLevelIntervalRef.current) {
+      clearInterval(audioLevelIntervalRef.current);
+      audioLevelIntervalRef.current = null;
+    }
+
+    if (status !== 'connected' || !charlotteSpeaking || isPaused) return;
+
+    loopRef.current?.stop(); // mata animação ambient pra não brigar com reativa
+
+    audioLevelIntervalRef.current = setInterval(async () => {
+      try {
+        const pc = pcRef.current;
+        if (!pc?.getStats) return;
+        const stats = await pc.getStats();
+        let level = 0;
+        stats.forEach((report: any) => {
+          // inbound-rtp audio = stream da Charlotte chegando do servidor
+          if (report.type === 'inbound-rtp' && report.kind === 'audio') {
+            if (typeof report.audioLevel === 'number') level = report.audioLevel;
+          }
+        });
+        // audioLevel é 0..1. Mapeia para escala 1.0 (silêncio) → 1.25 (máximo)
+        // e opacidade 0.15 → 0.7. useNativeDriver pra performance.
+        const targetScale   = 1 + Math.min(level * 1.5, 0.25);
+        const targetOpacity = 0.15 + Math.min(level * 1.8, 0.55);
+        Animated.timing(ringScale,   { toValue: targetScale,   duration: 90, useNativeDriver: true }).start();
+        Animated.timing(ringOpacity, { toValue: targetOpacity, duration: 90, useNativeDriver: true }).start();
+      } catch { /* getStats pode falhar — ignora */ }
+    }, 100);
+
+    return () => {
+      if (audioLevelIntervalRef.current) {
+        clearInterval(audioLevelIntervalRef.current);
+        audioLevelIntervalRef.current = null;
+      }
+    };
+  }, [status, charlotteSpeaking, isPaused]);
 
   React.useEffect(() => {
+    // Quando Charlotte ESTÁ falando, o useEffect acima cuida via getStats.
+    // Quando NÃO está falando ou em connecting/disconnected: animação ambient.
+    if (status === 'connected' && charlotteSpeaking && !isPaused) return;
+
     loopRef.current?.stop();
 
     if (status === 'connecting') {
@@ -424,20 +474,6 @@ export default function LiveVoiceModal({
           Animated.parallel([
             Animated.timing(ringScale,   { toValue: 1, duration: 900, useNativeDriver: true }),
             Animated.timing(ringOpacity, { toValue: 0.45, duration: 900, useNativeDriver: true }),
-          ]),
-        ])
-      );
-      loopRef.current.start();
-    } else if (status === 'connected' && charlotteSpeaking && !isPaused) {
-      loopRef.current = Animated.loop(
-        Animated.sequence([
-          Animated.parallel([
-            Animated.timing(ringScale,   { toValue: 1.20, duration: 350, useNativeDriver: true }),
-            Animated.timing(ringOpacity, { toValue: 0.6,  duration: 350, useNativeDriver: true }),
-          ]),
-          Animated.parallel([
-            Animated.timing(ringScale,   { toValue: 1.06, duration: 350, useNativeDriver: true }),
-            Animated.timing(ringOpacity, { toValue: 0.25, duration: 350, useNativeDriver: true }),
           ]),
         ])
       );
@@ -1105,14 +1141,14 @@ export default function LiveVoiceModal({
               // do jitter buffer no iOS).
               responseActiveRef.current = false;
               lastCharlotteDoneRef.current = Date.now();
-              // Caption: áudio do servidor terminou; jitter buffer ainda toca por
-              // ~1-2s. Reagendar clear pra 2s a partir de agora (encurta os 7s
-              // que tinham sido agendados em audio_transcript.done).
+              // Caption: áudio do servidor terminou; jitter buffer no iOS pode
+              // ficar 2-4s atrás. 4000ms garante que a caption fique visível
+              // durante toda a reprodução restante (em vez de sumir antes).
               if (captionClearTimerRef.current) clearTimeout(captionClearTimerRef.current);
               captionClearTimerRef.current = setTimeout(() => {
                 setLiveCaption('');
                 captionClearTimerRef.current = null;
-              }, 2000);
+              }, 4000);
               applyMute(true);
               setTimeout(() => {
                 if (!isMutedRef.current) applyMute(false);
@@ -1581,8 +1617,11 @@ export default function LiveVoiceModal({
             )}
           </View>
 
-          {/* ── CENTER: Avatar + Wave + Caption ─────────────────────── */}
-          <View style={{ alignItems: 'center', gap: 24 }}>
+          {/* ── CENTER: Avatar (sempre fixo no centro) + Caption (flutuante abaixo) ── */}
+          {/* O container do center tem altura suficiente para avatar + caption.
+              Avatar fica visualmente centralizado; caption usa position absolute
+              abaixo, então ligar/desligar caption não muda a posição do avatar. */}
+          <View style={{ alignItems: 'center', justifyContent: 'center', width: '100%', height: 280 }}>
             <View style={{ alignItems: 'center', justifyContent: 'center' }}>
               <Animated.View style={{
                 position: 'absolute',
@@ -1633,7 +1672,11 @@ export default function LiveVoiceModal({
                 onPress={handleCaptionPress}
                 activeOpacity={0.7}
                 disabled={captionTranslating}
-                style={{ paddingHorizontal: 8, alignItems: 'center' }}
+                style={{
+                  // Absolute pra não empurrar o avatar pra cima.
+                  position: 'absolute', bottom: 0, left: 0, right: 0,
+                  paddingHorizontal: 16, alignItems: 'center',
+                }}
               >
                 <AppText
                   style={{
