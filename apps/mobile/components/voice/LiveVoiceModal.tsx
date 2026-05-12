@@ -1265,10 +1265,17 @@ export default function LiveVoiceModal({
                 console.log(`[LiveVoice] user transcript: completed="${completedText}" delta="${deltaText}" → "${userText}"`);
                 if (itemId) userTranscriptDeltasRef.current.delete(itemId);
                 const msSinceCharlotte = Date.now() - lastCharlotteDoneRef.current;
-                const isEcho = userText.length > 0
+                // Eco so e possivel logo apos a fala da Charlotte. Janela de
+                // 3s: depois disso o speaker ja drenou totalmente, qualquer
+                // fala do user e legitima (mesmo se compartilhar palavras).
+                // Threshold 0.75 (era 0.5): exige forte sobreposicao real,
+                // nao apenas 1-2 palavras comuns como "you", "and", "from".
+                const inEchoWindow = msSinceCharlotte < 3000;
+                const isEcho = inEchoWindow
+                  && userText.length > 0
                   && lastCharlotteTextRef.current.length > 0
                   && (
-                    wordOverlap(userText, lastCharlotteTextRef.current) >= 0.5
+                    wordOverlap(userText, lastCharlotteTextRef.current) >= 0.75
                     || isShortEcho(userText, lastCharlotteTextRef.current, msSinceCharlotte)
                   );
 
