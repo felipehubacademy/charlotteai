@@ -498,7 +498,6 @@ export default function LiveVoiceModal({
   // Charlotte falando = poll getStats e seta ringScale/ringOpacity direto
   // via setValue (sem fila de Animated.timing). Caso contrario, loop ambient.
   React.useEffect(() => {
-    console.log(`[LiveVoice ring] effect run status=${status} charlotteSpeaking=${charlotteSpeaking} isPaused=${isPaused}`);
     // Limpa qualquer estado anterior antes de decidir
     if (audioLevelIntervalRef.current) {
       clearInterval(audioLevelIntervalRef.current);
@@ -509,23 +508,13 @@ export default function LiveVoiceModal({
 
     // 1) Charlotte falando — audio-reactivo via getStats
     if (status === 'connected' && charlotteSpeaking && !isPaused) {
-      console.log('[LiveVoice ring] branch=AUDIO_REACTIVE');
       let tickCount = 0;
       audioLevelIntervalRef.current = setInterval(async () => {
         tickCount++;
         try {
           const pc = pcRef.current;
-          if (!pc?.getStats) {
-            if (tickCount % 10 === 1) console.log('[LiveVoice ring] no pc.getStats available');
-            return;
-          }
+          if (!pc?.getStats) return;
           const stats = await pc.getStats();
-          if (tickCount === 1) {
-            // Dump todos os report types disponíveis na primeira tick
-            const types: string[] = [];
-            stats.forEach((r: any) => types.push(`${r.type}/${r.kind ?? '-'}`));
-            console.log(`[LiveVoice ring] stats report types: ${types.join(', ')}`);
-          }
           let level = 0;
           let foundAudioLevel = false;
           stats.forEach((report: any) => {
@@ -1080,15 +1069,15 @@ export default function LiveVoiceModal({
         try {
           const msg = JSON.parse(event.data);
 
-          // DEBUG: lista todos os tipos de evento que chegam pelo data channel
-          // pra identificar qual evento sinaliza "Charlotte comecou a falar"
-          // no GA com WebRTC.
-          console.log(`[LiveVoice dc] event=${msg.type}`);
-
           switch (msg.type) {
             case 'response.audio.delta':            // legacy alias (pre-GA)
-            case 'response.output_audio.delta':
+            case 'response.output_audio.delta':     // legacy alias (pre-GA WebRTC)
+            case 'output_audio_buffer.started':     // GA WebRTC: audio buffer comecou
               // Charlotte started sending audio.
+              // No GA com WebRTC, audio vai pelo media track e nao tem evento
+              // .delta no data channel. O sinal de "comecou a falar" e o
+              // output_audio_buffer.started. .delta legacy mantido pra fallback.
+              //
               // Do NOT disable the mic — the user must be able to interrupt at any
               // moment by speaking. InCallManager (call mode) provides AEC so
               // Charlotte's speaker audio is suppressed before reaching the VAD.
