@@ -374,7 +374,7 @@ function TranscriptModal({ call, isOpen, onClose, isPt }: {
 
           <ScrollView
             style={{ flex: 1, minHeight: 0 }}
-            contentContainerStyle={{ paddingHorizontal: 24, paddingBottom: 24, gap: 4 }}
+            contentContainerStyle={{ paddingHorizontal: 24, paddingBottom: 24, gap: 10 }}
             showsVerticalScrollIndicator={true}
             nestedScrollEnabled
           >
