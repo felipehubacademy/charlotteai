@@ -1002,6 +1002,10 @@ export default function LiveVoiceModal({
             output_modalities: ['audio'],
             instructions: getSystemPrompt(userLevel, userName, greeting),
             max_output_tokens: 600,
+            // gpt-realtime-2 default reasoning_effort = 'low' — o chain-of-
+            // thought estava vazando pro audio ("Beleza, vou ouvir com calma..."
+            // repetido 4x). 'minimal' suprime o pensamento e responde direto.
+            reasoning_effort: 'minimal',
             audio: {
               input: {
                 // GA: format é objeto { type, rate } em vez de string 'pcm16'.
@@ -1185,6 +1189,7 @@ export default function LiveVoiceModal({
                 }
 
                 if (charlotteText) {
+                  console.log(`[LiveVoice] charlotte said: "${charlotteText.slice(0, 200)}"`);
                   setConversationTurns(prev => [...prev, { role: 'assistant', text: charlotteText }]);
                   lastCharlotteTextRef.current = charlotteText; // usado para detecção de eco
                 }
