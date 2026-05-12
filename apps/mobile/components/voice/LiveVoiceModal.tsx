@@ -1080,6 +1080,11 @@ export default function LiveVoiceModal({
         try {
           const msg = JSON.parse(event.data);
 
+          // DEBUG: lista todos os tipos de evento que chegam pelo data channel
+          // pra identificar qual evento sinaliza "Charlotte comecou a falar"
+          // no GA com WebRTC.
+          console.log(`[LiveVoice dc] event=${msg.type}`);
+
           switch (msg.type) {
             case 'response.audio.delta':            // legacy alias (pre-GA)
             case 'response.output_audio.delta':
