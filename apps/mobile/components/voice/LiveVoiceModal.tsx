@@ -493,6 +493,7 @@ export default function LiveVoiceModal({
   // RMS energy = sqrt((energy_now - energy_prev) / (duration_now - duration_prev))
   const lastAudioEnergyRef = React.useRef<{ energy: number; duration: number } | null>(null);
   const audioLevelLogCounterRef = React.useRef(0);
+  const smoothedLevelRef = React.useRef(0);
 
   // Useffect unificado: gerencia tanto animacao ambient quanto audio-reactiva.
   // Charlotte falando = poll getStats e seta ringScale/ringOpacity direto
@@ -505,6 +506,7 @@ export default function LiveVoiceModal({
     }
     loopRef.current?.stop();
     lastAudioEnergyRef.current = null;
+    smoothedLevelRef.current = 0;
 
     // 1) Charlotte falando — audio-reactivo via getStats
     if (status === 'connected' && charlotteSpeaking && !isPaused) {
@@ -543,18 +545,26 @@ export default function LiveVoiceModal({
             }
           });
 
-          // Log a cada 10 ticks (~1s) pra inspecao via logcat/console.app
-          // sem floodar. Ainda nao removido em prod ate confirmar funcionamento.
-          audioLevelLogCounterRef.current = (audioLevelLogCounterRef.current + 1) % 10;
-          if (audioLevelLogCounterRef.current === 0) {
-            console.log(`[LiveVoice] audioLevel=${level.toFixed(3)} src=${foundAudioLevel ? 'direct' : 'derived'}`);
-          }
+          // Smoothing exponencial: alpha=0.4 da reatividade rapida mas
+          // sem jerkiness entre ticks (especialmente quando level varia
+          // muito 0.05 -> 0.30 -> 0.10 num ciclo de 300ms).
+          smoothedLevelRef.current = smoothedLevelRef.current * 0.5 + level * 0.5;
+          const lv = smoothedLevelRef.current;
 
-          // Mapeia: scale 1.0 (silencio) → 1.30 (max), opacidade 0.15 → 0.75
-          const targetScale   = 1 + Math.min(level * 2.0, 0.30);
-          const targetOpacity = 0.15 + Math.min(level * 2.5, 0.60);
+          // Curva sqrt comprime range alto e estica range baixo —
+          // valores tipicos de fala (0.05-0.30) ficam bem distribuidos
+          // entre scale 1.0 e 1.25 em vez de saturar logo no 1.30.
+          const dispLevel = Math.sqrt(lv);  // 0.05→0.22, 0.20→0.45, 0.40→0.63
+          const targetScale   = 1 + Math.min(dispLevel * 0.40, 0.30);
+          const targetOpacity = 0.15 + Math.min(dispLevel * 0.70, 0.60);
           ringScale.setValue(targetScale);
           ringOpacity.setValue(targetOpacity);
+
+          // Log mais frequente (5 ticks = 500ms) com scale tambem
+          audioLevelLogCounterRef.current = (audioLevelLogCounterRef.current + 1) % 5;
+          if (audioLevelLogCounterRef.current === 0) {
+            console.log(`[LiveVoice] raw=${level.toFixed(3)} smooth=${lv.toFixed(3)} scale=${targetScale.toFixed(3)} src=${foundAudioLevel ? 'direct' : 'derived'}`);
+          }
         } catch (e: any) {
           if (tickCount % 20 === 1) console.warn(`[LiveVoice ring] getStats error: ${e?.message || e}`);
         }
