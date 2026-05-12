@@ -100,16 +100,23 @@ const FAREWELLS: Record<'Novice' | 'Inter' | 'Advanced', string[]> = {
 // IMPORTANT: never tell the model to "fill silence" or "keep talking" — this causes
 // Charlotte to monologue without user input when the VAD triggers on echo/ambient noise.
 const SYSTEM_PROMPTS: Record<'Novice' | 'Inter' | 'Advanced', string> = {
-  Novice: `You are Charlotte, a friendly English tutor on a voice call with {NAME}, who is a true beginner in English. They might know only a few words and often feel safer using Portuguese.
+  Novice: `You are Charlotte, a friendly English tutor on a voice call with {NAME}, who is a true beginner in English and a native Portuguese speaker. They might know only a few words of English and feel safer in Portuguese.
 
 Your job: gradually introduce English while keeping them comfortable. Adapt to THEIR comfort level in real time — never frustrate them.
 
 LANGUAGE ADAPTATION (most important rule — adapt every turn):
-- Start the call MOSTLY in Portuguese (≈70% PT, 30% EN). Slip in simple English like "hello", "yes!", "what about you?".
-- If the student responds in English without major errors, gradually shift toward ≈90% English, using Portuguese only briefly in parens to translate new vocabulary. Example: "I love pizza too! (eu também amo pizza)".
-- If the student responds in Portuguese, reply mostly in English BUT translate any new vocabulary in parens so they learn while feeling safe.
-- If the student says "não entendi" / "como?" / seems confused, immediately repeat the key idea in Portuguese and slow down.
-- If they try English with mistakes, do NOT correct explicitly — just model the correct form naturally in your reply.
+- Default: speak MOSTLY in Portuguese (≈70% PT, 30% EN). Slip in simple English phrases like "hello", "yes!", "very good!", "what about you?".
+- Only shift toward more English (60% EN, 40% PT) if the student has CLEARLY demonstrated sustained English ability over MULTIPLE turns — not just one short reply. One "I'm good" is NOT enough to shift.
+- If the student responds in Portuguese or hesitates, stay 70% PT.
+- If the student says "não entendi" / "como?" — repeat in Portuguese, slow down.
+- If they try English with mistakes, do NOT correct explicitly — model the correct form naturally.
+
+PARENTHETICAL TRANSLATIONS — VERY IMPORTANT, read carefully:
+- Parens (translations) are ONLY for introducing a NEW or DIFFICULT English word that the student likely doesn't know yet. Example: "Today we're going to chat (conversar)".
+- NEVER translate everyday Portuguese words. The student is a native Portuguese speaker — they already know "ótimo", "hoje", "música", "futebol", "legal", "obrigado", etc. Translating these is patronizing and weird.
+- NEVER use parens when the surrounding sentence is already mostly Portuguese. Parens only when you introduce an English word inside a sentence.
+- Wrong: "Great! (ótimo!) What do you like, music or football? (música ou futebol?)" — you're translating English back to PT for a PT native, and the words are basic.
+- Right: "Que legal! What about music? Você gosta de música?" — natural mix, no parens.
 
 TURN LENGTH RULE: speak EXACTLY two short sentences per turn — one reaction, one question. Finish both completely. Never a third.
 
@@ -119,7 +126,7 @@ NEVER:
 - Sound robotic ("How can I assist you?", "Certainly!")
 - Lecture about grammar — weave corrections naturally
 - Speak only English when the student is clearly struggling
-- Stay 70% PT once the student is clearly confident in English
+- Translate basic Portuguese words for a native Portuguese speaker
 
 Start with: "{GREETING}"`,
 
@@ -1044,13 +1051,19 @@ export default function LiveVoiceModal({
               // Se eco → cancelar response.create pendente (não adicionar ao histórico).
               // Se fala real → disparar response.create imediatamente (sem esperar fallback).
               {
-                // Preferir o transcript do .completed (canônico). Fallback
-                // para o acumulado de deltas caso o servidor não envie.
+                // Pega o transcript do .completed (canônico). Se vier vazio
+                // OU mais curto que o acumulado de deltas, usa o delta (mais
+                // completo). Isso protege contra finalização prematura do
+                // gpt-realtime-whisper que às vezes manda .completed só com
+                // a primeira palavra.
                 const itemId = msg.item_id;
-                let userText: string = (msg.transcript ?? '').trim();
-                if (!userText && itemId) {
-                  userText = (userTranscriptDeltasRef.current.get(itemId) ?? '').trim();
-                }
+                const completedText = (msg.transcript ?? '').trim();
+                const deltaText = itemId
+                  ? (userTranscriptDeltasRef.current.get(itemId) ?? '').trim()
+                  : '';
+                let userText: string =
+                  deltaText.length > completedText.length ? deltaText : completedText;
+                console.log(`[LiveVoice] user transcript: completed="${completedText}" delta="${deltaText}" → "${userText}"`);
                 if (itemId) userTranscriptDeltasRef.current.delete(itemId);
                 const isEcho = userText.length > 0
                   && lastCharlotteTextRef.current.length > 0
@@ -1085,10 +1098,11 @@ export default function LiveVoiceModal({
             case 'response.audio.done':              // legacy alias (pre-GA)
             case 'response.output_audio.done':
               // Último chunk de áudio entregue ao WebRTC.
-              // Estratégia anti-eco de 3 camadas:
-              //   1. Stampar lastCharlotteDoneRef agora (guard de 6000ms no speech_stopped)
-              //   2. Mutar fisicamente o mic por 2000ms — bloqueia eco de loudspeaker
-              //   3. Manter charlotteSpeakingRef=true por 500ms extras (drain do jitter buffer)
+              // Anti-eco: com near_field noise_reduction + gpt-realtime-whisper
+              // o sinal chega muito limpo no VAD. O mute físico que existia
+              // (2000ms) era o maior contribuidor de lag — usuário não conseguia
+              // falar logo após Charlotte. Reduzido para 500ms (apenas drain
+              // do jitter buffer no iOS).
               responseActiveRef.current = false;
               lastCharlotteDoneRef.current = Date.now();
               // Caption: áudio do servidor terminou; jitter buffer ainda toca por
@@ -1104,7 +1118,7 @@ export default function LiveVoiceModal({
                 if (!isMutedRef.current) applyMute(false);
                 charlotteSpeakingRef.current = false;
                 setCharlotteSpeaking(false);
-              }, 2000);
+              }, 500);
               // Despedida: servidor terminou de enviar o áudio. O playback ainda
               // está rolando no device — o jitter buffer do WebRTC no iOS pode
               // ficar 1-2s atrás do audio.done em condições normais, e até mais
