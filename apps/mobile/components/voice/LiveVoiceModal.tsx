@@ -492,6 +492,7 @@ export default function LiveVoiceModal({
   // fallback quando o audioLevel direto nao vem populado no getStats().
   // RMS energy = sqrt((energy_now - energy_prev) / (duration_now - duration_prev))
   const lastAudioEnergyRef = React.useRef<{ energy: number; duration: number } | null>(null);
+  const audioLevelLogCounterRef = React.useRef(0);
 
   // Useffect unificado: gerencia tanto animacao ambient quanto audio-reactiva.
   // Charlotte falando = poll getStats e seta ringScale/ringOpacity direto
@@ -539,7 +540,12 @@ export default function LiveVoiceModal({
             }
           });
 
-          if (__DEV__) console.log(`[LiveVoice] audioLevel=${level.toFixed(3)} src=${foundAudioLevel ? 'direct' : 'derived'}`);
+          // Log a cada 10 ticks (~1s) pra inspecao via logcat/console.app
+          // sem floodar. Ainda nao removido em prod ate confirmar funcionamento.
+          audioLevelLogCounterRef.current = (audioLevelLogCounterRef.current + 1) % 10;
+          if (audioLevelLogCounterRef.current === 0) {
+            console.log(`[LiveVoice] audioLevel=${level.toFixed(3)} src=${foundAudioLevel ? 'direct' : 'derived'}`);
+          }
 
           // Mapeia: scale 1.0 (silencio) → 1.30 (max), opacidade 0.15 → 0.75
           const targetScale   = 1 + Math.min(level * 2.0, 0.30);
