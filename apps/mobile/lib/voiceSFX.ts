@@ -1,45 +1,50 @@
 // lib/voiceSFX.ts
 // Interjeicoes vocais da Charlotte (Tier 4 do mapa sonoro).
-// Curtas, expressivas, com COOLDOWN agressivo para nao virar chato.
-//
-// Diferente do soundEngine (SFX musicais), este modulo:
-//   - Toca MP3s da voz da Rachel via ElevenLabs (gerados por generate-sfx-tts.ts)
-//   - Aplica cooldown global e por-id para evitar repeticao
-//   - Respeita preferencia 'voice' do usuario
+// Assets BUNDLED via Metro require() — zero CDN, zero latencia.
+// Cooldown agressivo no client para nao virar chato.
 //
 // Uso:
 //   import { voiceSFX } from '@/lib/voiceSFX';
 //   await voiceSFX.play('streak_3');     // "Nice!"
-//   await voiceSFX.play('streak_5');     // "You're on fire!"
 //   await voiceSFX.play('welcome_back'); // "Welcome back!"
 
 import { createAudioPlayer, setAudioModeAsync } from 'expo-audio';
-import * as FileSystem from 'expo-file-system/legacy';
-import Constants from 'expo-constants';
 import { getAudioPreferences } from './audioPreferences';
 
 export type VoiceSfxId =
-  | 'streak_3'         // 3 acertos seguidos     — "Nice!"
-  | 'streak_5'         // 5 acertos seguidos     — "You're on fire!"
-  | 'streak_10'        // 10 acertos seguidos    — "Incredible!"
-  | 'welcome_back'     // retorno apos X dias    — "Welcome back!"
-  | 'daily_goal'       // meta diaria concluida  — "Yes!"
-  | 'achievement_epic' // epic                   — "Wow!"
-  | 'achievement_legendary' // legendary         — "Legendary!"
-  | 'streak_7_days'    // marco 7 dias           — "Seven days strong!"
-  | 'streak_30_days'   // marco 30 dias          — "Thirty days!"
-  | 'topic_complete'   // topico finalizado      — "Topic done!"
-  | 'module_complete'; // modulo finalizado      — "Module complete!"
+  | 'streak_3'              // 3 acertos seguidos     — "Nice!"
+  | 'streak_5'              // 5 acertos seguidos     — "You're on fire!"
+  | 'streak_10'             // 10 acertos seguidos    — "Incredible!"
+  | 'welcome_back'          // retorno apos X dias    — "Welcome back!"
+  | 'daily_goal'            // meta diaria concluida  — "Yes!"
+  | 'achievement_epic'      // epic                   — "Wow!"
+  | 'achievement_legendary' // legendary              — "Legendary!"
+  | 'streak_7_days'         // marco 7 dias           — "Seven days strong!"
+  | 'streak_30_days'        // marco 30 dias          — "Thirty days!"
+  | 'topic_complete'        // topico finalizado      — "Topic done!"
+  | 'module_complete';      // modulo finalizado      — "Module complete!"
 
-const API_BASE = (Constants.expoConfig?.extra?.apiBaseUrl as string | undefined)
-  ?? 'https://charlotte.hubacademybr.com';
+// ── Catalogo de assets bundled ───────────────────────────────────────────────
+
+const BUNDLED: Record<VoiceSfxId, number> = {
+  streak_3:              require('../assets/audio/voice/streak_3.mp3'),
+  streak_5:              require('../assets/audio/voice/streak_5.mp3'),
+  streak_10:             require('../assets/audio/voice/streak_10.mp3'),
+  welcome_back:          require('../assets/audio/voice/welcome_back.mp3'),
+  daily_goal:            require('../assets/audio/voice/daily_goal.mp3'),
+  achievement_epic:      require('../assets/audio/voice/achievement_epic.mp3'),
+  achievement_legendary: require('../assets/audio/voice/achievement_legendary.mp3'),
+  streak_7_days:         require('../assets/audio/voice/streak_7_days.mp3'),
+  streak_30_days:        require('../assets/audio/voice/streak_30_days.mp3'),
+  topic_complete:        require('../assets/audio/voice/topic_complete.mp3'),
+  module_complete:       require('../assets/audio/voice/module_complete.mp3'),
+};
 
 // Cooldowns (ms)
-const GLOBAL_COOLDOWN_MS = 90_000; // nenhuma voz toca antes de 90s da ultima
-const PER_ID_COOLDOWN_MS = 30 * 60_000; // mesma frase nao repete por 30min
+const GLOBAL_COOLDOWN_MS = 90_000;       // nenhuma voz toca antes de 90s da ultima
+const PER_ID_COOLDOWN_MS = 30 * 60_000;  // mesma frase nao repete por 30min
 
 class VoiceSFXEngine {
-  private uriCache = new Map<VoiceSfxId, string>();
   private muted = false;
   private lastPlayedAt = 0;
   private lastPlayedAtById = new Map<VoiceSfxId, number>();
@@ -57,16 +62,16 @@ class VoiceSFXEngine {
     if (now - lastForId < PER_ID_COOLDOWN_MS) return false;
 
     try {
-      const uri = await this.getUri(id);
-      if (!uri) return false;
+      const source = BUNDLED[id];
+      if (!source) return false;
 
       await setAudioModeAsync({
         allowsRecording: false,
-        playsInSilentMode: true, // app de aprendizado — toggle "Voz" em Preferencias se nao quiser
+        playsInSilentMode: true,
         interruptionMode: 'mixWithOthers',
       }).catch(() => {});
 
-      const player = createAudioPlayer({ uri });
+      const player = createAudioPlayer(source);
       player.play();
       this.lastPlayedAt = now;
       this.lastPlayedAtById.set(id, now);
@@ -81,44 +86,8 @@ class VoiceSFXEngine {
     }
   }
 
-  private async getUri(id: VoiceSfxId): Promise<string | null> {
-    const cached = this.uriCache.get(id);
-    if (cached) return cached;
-
-    const localUri = `${FileSystem.cacheDirectory}voicesfx_${id}.mp3`;
-    const info = await FileSystem.getInfoAsync(localUri).catch(() => ({ exists: false }));
-    if (info.exists) {
-      this.uriCache.set(id, localUri);
-      return localUri;
-    }
-
-    try {
-      const result = await FileSystem.downloadAsync(
-        `${API_BASE}/tts/sfx_voice/${id}.mp3`,
-        localUri,
-      );
-      if (result.status === 200) {
-        this.uriCache.set(id, localUri);
-        return localUri;
-      }
-      await FileSystem.deleteAsync(localUri, { idempotent: true }).catch(() => {});
-      return null;
-    } catch {
-      return null;
-    }
-  }
-
-  /** Pre-baixa todas as interjeicoes (chamar no boot, opcional). */
-  async preload(): Promise<void> {
-    const ids: VoiceSfxId[] = [
-      'streak_3', 'streak_5', 'streak_10',
-      'welcome_back', 'daily_goal',
-      'achievement_epic', 'achievement_legendary',
-      'streak_7_days', 'streak_30_days',
-      'topic_complete', 'module_complete',
-    ];
-    await Promise.all(ids.map(id => this.getUri(id).catch(() => {})));
-  }
+  /** No-op — assets ja bundled. Mantido para compat com chamada no _layout. */
+  async preload(): Promise<void> { /* assets bundled at build time */ }
 }
 
 export const voiceSFX = new VoiceSFXEngine();

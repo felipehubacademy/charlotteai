@@ -360,13 +360,20 @@ export default function LiveVoiceModal({
   // o .voiceChat do WebRTC — Charlotte deixa de tocar e de ouvir. Android
   // não tem esse conflito de sessão exclusiva, então usamos o MP3 custom
   // só lá. iOS fica com InCallManager.startRingback('_DEFAULT_').
+  //
+  // TODO PÓS-BUILD: o config plugin `with-incallmanager-ringback` bundla o
+  // MP3 nos dois platforms. Após o build, trocar tudo isso pelo modo
+  // unificado `InCallManager.startRingback('_BUNDLE_')` em ambos, remover
+  // o ringbackPlayerRef + startCustomRingback + stopCustomRingback + a
+  // import de createAudioPlayer/AudioPlayer/Platform onde só for usada
+  // por esse fluxo. ~50 linhas saem.
   const ringbackPlayerRef = React.useRef<AudioPlayer | null>(null);
 
   const startCustomRingback = React.useCallback(() => {
     if (Platform.OS !== 'android') return false;
     try {
       if (!ringbackPlayerRef.current) {
-        const p = createAudioPlayer(require('@/assets/audio/ringback_mixkit_1393.mp3'));
+        const p = createAudioPlayer(require('@/assets/audio/incallmanager_ringback.mp3'));
         p.loop = true;
         ringbackPlayerRef.current = p;
       }
