@@ -254,6 +254,12 @@ export default function LiveVoiceModal({
   // Toggle persistente em SecureStore por nível — default ON pra Novice.
   const [liveCaption, setLiveCaption]            = React.useState('');
   const captionClearTimerRef = React.useRef<ReturnType<typeof setTimeout> | null>(null);
+  // Buffer de caracteres aguardando reveal sincronizado com a fala da Charlotte.
+  // O modelo gera texto rapido (deltas chegam quase instantaneamente), mas o
+  // audio toca em ritmo de fala (~14 chars/s). Sem buffer, a caption aparecia
+  // toda antes de ela falar. Reveal timer pinga chars do buffer pro liveCaption.
+  const captionBufferRef = React.useRef('');
+  const captionRevealTimerRef = React.useRef<ReturnType<typeof setInterval> | null>(null);
   const [captionsEnabled, setCaptionsEnabled]    = React.useState(userLevel === 'Novice');
   const [captionTranslation, setCaptionTranslation]   = React.useState<string | null>(null);
   const [captionTranslating, setCaptionTranslating]   = React.useState(false);
@@ -303,6 +309,37 @@ export default function LiveVoiceModal({
       setCaptionTranslating(false);
     }
   }, [liveCaption, captionTranslating, userLevel]);
+
+  // Inicia o reveal timer se ainda nao estiver rodando. 75ms por char =
+  // ~13 chars/s, proximo ao ritmo de fala media (~150 palavras/min em ingles).
+  // Para automaticamente quando o buffer esvazia.
+  const startCaptionReveal = React.useCallback(() => {
+    if (captionRevealTimerRef.current) return;
+    captionRevealTimerRef.current = setInterval(() => {
+      if (captionBufferRef.current.length === 0) {
+        if (captionRevealTimerRef.current) {
+          clearInterval(captionRevealTimerRef.current);
+          captionRevealTimerRef.current = null;
+        }
+        return;
+      }
+      // Revela 1 char por tick. Se o buffer ficou enorme (ex: chegou tudo de
+      // uma vez), revela em ate 3 chars/tick pra alcancar a fala sem parecer
+      // travado.
+      const chunkSize = captionBufferRef.current.length > 40 ? 3 : 1;
+      const chunk = captionBufferRef.current.slice(0, chunkSize);
+      captionBufferRef.current = captionBufferRef.current.slice(chunkSize);
+      setLiveCaption(prev => (prev + chunk).slice(-800));
+    }, 75);
+  }, []);
+
+  const stopCaptionReveal = React.useCallback(() => {
+    if (captionRevealTimerRef.current) {
+      clearInterval(captionRevealTimerRef.current);
+      captionRevealTimerRef.current = null;
+    }
+    captionBufferRef.current = '';
+  }, []);
 
   // ── Transcription ──────────────────────────────────────────────────────────
   const [conversationTurns, setConversationTurns] = React.useState<ConversationTurn[]>([]);
@@ -652,7 +689,8 @@ export default function LiveVoiceModal({
     setCharlotteSpeaking(false);
     setUserSpeaking(false);
     setLiveCaption('');
-  }, []);
+    stopCaptionReveal();
+  }, [stopCaptionReveal]);
 
   // ── Disparar a despedida (função pura — pode ser chamada de vários lugares)
   const triggerFarewell = React.useCallback(() => {
@@ -971,19 +1009,20 @@ export default function LiveVoiceModal({
 
             case 'response.audio_transcript.delta':  // legacy alias (pre-GA)
             case 'response.output_audio_transcript.delta':
-              // Streaming caption — Charlotte fala. Acumula até .done.
-              // Se um timer de clear já está rodando (resposta anterior finalizada),
-              // cancela e começa caption fresca pra essa nova resposta.
+              // Streaming caption — Charlotte fala. Em vez de imprimir o delta
+              // direto (rápido demais — texto aparece antes da fala), enfileira
+              // no buffer e deixa o reveal timer pingar no ritmo da fala.
               {
                 const delta = msg.delta ?? '';
                 if (captionClearTimerRef.current) {
                   clearTimeout(captionClearTimerRef.current);
                   captionClearTimerRef.current = null;
-                  setLiveCaption(delta);
-                } else {
-                  // Cap de segurança: 800 chars (cabe sentenças longas, evita memory growth)
-                  setLiveCaption(prev => (prev + delta).slice(-800));
+                  // Nova resposta — limpa qualquer caption + buffer da anterior
+                  setLiveCaption('');
+                  captionBufferRef.current = '';
                 }
+                captionBufferRef.current += delta;
+                startCaptionReveal();
                 // Nova caption chegou — dispensa tradução anterior se houver
                 if (translationDismissTimerRef.current) {
                   clearTimeout(translationDismissTimerRef.current);
