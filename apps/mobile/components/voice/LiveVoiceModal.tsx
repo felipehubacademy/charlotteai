@@ -879,7 +879,8 @@ export default function LiveVoiceModal({
           const msg = JSON.parse(event.data);
 
           switch (msg.type) {
-            case 'response.audio.delta':
+            case 'response.audio.delta':            // legacy alias (pre-GA)
+            case 'response.output_audio.delta':
               // Charlotte started sending audio.
               // Do NOT disable the mic — the user must be able to interrupt at any
               // moment by speaking. InCallManager (call mode) provides AEC so
@@ -900,12 +901,14 @@ export default function LiveVoiceModal({
               }
               break;
 
-            case 'response.text.delta':
+            case 'response.text.delta':             // legacy alias (pre-GA)
+            case 'response.output_text.delta':
               // Accumulate deltas as primary source
               charlotteTextAccRef.current += (msg.delta ?? '');
               break;
 
-            case 'response.audio_transcript.delta':
+            case 'response.audio_transcript.delta':  // legacy alias (pre-GA)
+            case 'response.output_audio_transcript.delta':
               // Streaming caption — Charlotte fala. Acumula até .done.
               // Se um timer de clear já está rodando (resposta anterior finalizada),
               // cancela e começa caption fresca pra essa nova resposta.
@@ -928,7 +931,8 @@ export default function LiveVoiceModal({
               }
               break;
 
-            case 'response.audio_transcript.done':
+            case 'response.audio_transcript.done':   // legacy alias (pre-GA)
+            case 'response.output_audio_transcript.done':
               // Texto da resposta terminou de gerar. Mas o áudio ainda toca por
               // ~1-3s — schedule clear longo (7s) pra caption ficar visível
               // durante toda a reprodução. response.audio.done abaixo encurta o
@@ -950,14 +954,19 @@ export default function LiveVoiceModal({
                 let charlotteText = charlotteTextAccRef.current.trim();
                 charlotteTextAccRef.current = '';
 
-                // Fallback: extract from response.done payload (more reliable in WebRTC mode)
+                // Fallback: extract from response.done payload (more reliable in WebRTC mode).
+                // GA renamed content types: text → output_text, audio → output_audio.
                 if (!charlotteText) {
                   const output = msg.response?.output ?? [];
                   for (const item of output) {
                     if (item.role === 'assistant' || item.type === 'message') {
                       for (const c of item.content ?? []) {
-                        if (c.type === 'text' && c.text) charlotteText += c.text;
-                        if (c.type === 'audio' && c.transcript) charlotteText += c.transcript;
+                        if ((c.type === 'text' || c.type === 'output_text') && c.text) {
+                          charlotteText += c.text;
+                        }
+                        if ((c.type === 'audio' || c.type === 'output_audio') && c.transcript) {
+                          charlotteText += c.transcript;
+                        }
                       }
                     }
                   }
@@ -1032,7 +1041,8 @@ export default function LiveVoiceModal({
               }
               break;
 
-            case 'response.audio.done':
+            case 'response.audio.done':              // legacy alias (pre-GA)
+            case 'response.output_audio.done':
               // Último chunk de áudio entregue ao WebRTC.
               // Estratégia anti-eco de 3 camadas:
               //   1. Stampar lastCharlotteDoneRef agora (guard de 6000ms no speech_stopped)
