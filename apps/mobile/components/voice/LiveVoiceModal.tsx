@@ -1215,8 +1215,10 @@ export default function LiveVoiceModal({
                   const next = prev + delta;
                   userTranscriptDeltasRef.current.set(itemId, next);
 
-                  // Caption do usuário (se enabled e a Charlotte não está falando).
-                  if (!charlotteSpeakingRef.current) {
+                  // Caption do usuário: APENAS Novice (Inter/Adv falam ingles
+                  // fluente, ver o que disseram nao agrega). E so quando a
+                  // Charlotte nao esta falando.
+                  if (userLevel === 'Novice' && !charlotteSpeakingRef.current) {
                     captionSpeakerRef.current = 'user';
                     setCaptionSpeaker('user');
                     // Cancela qualquer timer de clear da fala anterior da Charlotte
@@ -1834,8 +1836,11 @@ export default function LiveVoiceModal({
                 activeOpacity={0.7}
                 disabled={captionTranslating || captionSpeaker === 'user'}
                 style={{
-                  // Absolute pra não empurrar o avatar pra cima.
-                  position: 'absolute', bottom: 0, left: 0, right: 0,
+                  // Ancorado pelo TOPO (top fixo), nao pelo BOTTOM. Assim o
+                  // chip fica em y constante e o texto cresce pra baixo,
+                  // sem empurrar o chip para dentro dos arcos.
+                  position: 'absolute',
+                  top: 200, left: 0, right: 0,
                   paddingHorizontal: 16, alignItems: 'center',
                 }}
               >
