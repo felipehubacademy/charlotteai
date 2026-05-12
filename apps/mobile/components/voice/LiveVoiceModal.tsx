@@ -43,7 +43,7 @@ import { track, trackDuration } from '@/lib/analytics';
 const API_BASE_URL =
   (Constants.expoConfig?.extra?.apiBaseUrl as string) ?? 'https://charlotte.hubacademybr.com';
 
-const MODEL = 'gpt-realtime';
+const MODEL = 'gpt-realtime-2';
 
 // Inatividade: 45 s → aviso; 75 s → pausa
 const INACTIVITY_WARN_SEC  = 45;
@@ -301,6 +301,9 @@ export default function LiveVoiceModal({
   const [conversationTurns, setConversationTurns] = React.useState<ConversationTurn[]>([]);
   const [showTranscript, setShowTranscript]       = React.useState(false);
   const charlotteTextAccRef = React.useRef(''); // accumulates Charlotte's text deltas
+  // Acumulador de transcrição do usuário (deltas do gpt-realtime-whisper).
+  // Chave: item_id; valor: texto parcial acumulado. Esvaziado quando .completed chega.
+  const userTranscriptDeltasRef = React.useRef<Map<string, string>>(new Map());
   const wasConnectedRef     = React.useRef(false); // tracks if call ever reached connected state
   const callStartedAtRef    = React.useRef<string | null>(null); // ISO da primeira conexão — usado pra salvar registro
   const callRecordSavedRef  = React.useRef(false); // dedupe: salva o registro 1x por chamada
@@ -810,6 +813,9 @@ export default function LiveVoiceModal({
         lastCharlotteDoneRef.current = Date.now();
 
         const greeting = getRandomGreeting(userLevel);
+        // Idioma alvo: Novice fala português; Inter e Advanced, inglês.
+        // O hint em transcription.language acelera + melhora o STT do input.
+        const inputLang = userLevel === 'Novice' ? 'pt' : 'en';
         // GA shape: session needs type:'realtime', voice/format/transcription/
         // turn_detection moved under audio.{input,output}, modalities renamed
         // to output_modalities, max_response_output_tokens → max_output_tokens.
@@ -817,6 +823,7 @@ export default function LiveVoiceModal({
           type: 'session.update',
           session: {
             type: 'realtime',
+            model: MODEL,
             output_modalities: ['audio'],
             instructions: getSystemPrompt(userLevel, userName, greeting),
             max_output_tokens: 600,
@@ -824,15 +831,24 @@ export default function LiveVoiceModal({
               input: {
                 // GA: format é objeto { type, rate } em vez de string 'pcm16'.
                 format: { type: 'audio/pcm', rate: 24000 },
-                transcription: { model: 'whisper-1' },
+                // near_field = mic próximo (telefone). Limpa ruído de speaker no
+                // viva voz antes do VAD/STT — resolve eco residual e melhora
+                // recognition. Caveat: pode ter spike de latência no 1º turno.
+                noise_reduction: { type: 'near_field' },
+                transcription: {
+                  // gpt-realtime-whisper emite .delta streaming + .completed
+                  // canônico (whisper-1 só emitia .completed, causando
+                  // transcrição truncada em turnos longos).
+                  model: 'gpt-realtime-whisper',
+                  language: inputLang, // ISO-639-1 hint — accuracy + latency
+                  delay: 'low',
+                },
                 turn_detection: {
-                  // server_vad: threshold 0.90 filtra ruído de baixa energia.
-                  // silence_duration 1500ms evita interrupção por pausas naturais.
-                  // (semantic_vad foi testado mas causou latência alta e cortes
-                  // em meio de resposta — provável incompatibilidade com o fluxo
-                  // de create_response:false + response.cancel manual.)
+                  // threshold 0.6 (era 0.90): com noise_reduction near_field,
+                  // o sinal já chega limpo no VAD — não precisa filtrar tão
+                  // agressivo. 0.6 captura fala mais baixa e o começo do turno.
                   type: 'server_vad',
-                  threshold: 0.90,
+                  threshold: 0.6,
                   prefix_padding_ms: 400,
                   silence_duration_ms: 1500,
                   create_response: false,
@@ -1006,12 +1022,34 @@ export default function LiveVoiceModal({
               }
               break;
 
+            case 'conversation.item.input_audio_transcription.delta':
+              // gpt-realtime-whisper emite deltas streaming enquanto o usuário
+              // ainda fala. Acumulamos por item_id para uso futuro (detecção
+              // precoce de eco, live caption do usuário). O canônico vem em
+              // .completed e sobrescreve o acumulado.
+              {
+                const itemId = msg.item_id;
+                const delta  = msg.delta ?? '';
+                if (itemId && delta) {
+                  const prev = userTranscriptDeltasRef.current.get(itemId) ?? '';
+                  userTranscriptDeltasRef.current.set(itemId, prev + delta);
+                }
+              }
+              break;
+
             case 'conversation.item.input_audio_transcription.completed':
               // Transcrição chegou. Decidir: é eco ou fala real?
               // Se eco → cancelar response.create pendente (não adicionar ao histórico).
               // Se fala real → disparar response.create imediatamente (sem esperar fallback).
               {
-                const userText = msg.transcript?.trim() ?? '';
+                // Preferir o transcript do .completed (canônico). Fallback
+                // para o acumulado de deltas caso o servidor não envie.
+                const itemId = msg.item_id;
+                let userText: string = (msg.transcript ?? '').trim();
+                if (!userText && itemId) {
+                  userText = (userTranscriptDeltasRef.current.get(itemId) ?? '').trim();
+                }
+                if (itemId) userTranscriptDeltasRef.current.delete(itemId);
                 const isEcho = userText.length > 0
                   && lastCharlotteTextRef.current.length > 0
                   && wordOverlap(userText, lastCharlotteTextRef.current) >= 0.5;

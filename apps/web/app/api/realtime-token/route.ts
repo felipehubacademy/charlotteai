@@ -7,7 +7,7 @@
 import { NextRequest, NextResponse } from 'next/server';
 import { createClient } from '@supabase/supabase-js';
 
-const MODEL = 'gpt-realtime';
+const MODEL = 'gpt-realtime-2';
 const POOL_SECONDS = 30 * 60; // 1 800 s
 
 function thisMonthFirstDayInTz(tz: string): string {
