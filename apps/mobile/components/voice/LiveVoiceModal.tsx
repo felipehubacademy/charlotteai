@@ -555,8 +555,11 @@ export default function LiveVoiceModal({
           // valores tipicos de fala (0.05-0.30) ficam bem distribuidos
           // entre scale 1.0 e 1.25 em vez de saturar logo no 1.30.
           const dispLevel = Math.sqrt(lv);  // 0.05→0.22, 0.20→0.45, 0.40→0.63
-          const targetScale   = 1 + Math.min(dispLevel * 0.40, 0.30);
-          const targetOpacity = 0.15 + Math.min(dispLevel * 0.70, 0.60);
+          // Range mais agressivo: scale 1.0→1.40 (40% maior), opacidade
+          // 0.15→0.85. Variacao tipica de fala fica entre 1.10-1.30 =
+          // claramente visivel no telefone.
+          const targetScale   = 1 + Math.min(dispLevel * 0.65, 0.40);
+          const targetOpacity = 0.15 + Math.min(dispLevel * 1.0, 0.70);
           // Usa Animated.timing com useNativeDriver pra que a atualizacao
           // realmente chegue na UI native — setValue() puro nao propaga
           // depois que o Animated.Value foi tocado por animacao nativa
@@ -1096,7 +1099,10 @@ export default function LiveVoiceModal({
                 charlotteSpeakingRef.current = true;
                 setCharlotteSpeaking(true);
                 setUserSpeaking(false);
-                sendEvent({ type: 'input_audio_buffer.clear' });
+                // NAO limpar o input_audio_buffer aqui: estava engolindo
+                // a fala do user que tentava interromper exatamente quando
+                // Charlotte comecava o turno dela. Resultado: transcricao
+                // vazia e sensacao de "ela nao me ouve".
               }
               // Registrar quando o áudio da despedida começou a chegar
               if (farewellActiveRef.current && farewellAudioStartRef.current === 0) {
