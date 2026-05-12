@@ -1002,10 +1002,6 @@ export default function LiveVoiceModal({
             output_modalities: ['audio'],
             instructions: getSystemPrompt(userLevel, userName, greeting),
             max_output_tokens: 600,
-            // gpt-realtime-2 default reasoning_effort = 'low' — o chain-of-
-            // thought estava vazando pro audio ("Beleza, vou ouvir com calma..."
-            // repetido 4x). 'minimal' suprime o pensamento e responde direto.
-            reasoning_effort: 'minimal',
             audio: {
               input: {
                 // GA: format é objeto { type, rate } em vez de string 'pcm16'.
@@ -1308,7 +1304,9 @@ export default function LiveVoiceModal({
                 if (pendingResponseTimerRef.current) {
                   clearTimeout(pendingResponseTimerRef.current);
                   pendingResponseTimerRef.current = null;
-                  if (dcRef.current?.readyState === 'open' && userText) {
+                  // NAO dispara se ja tem response ativa — server retorna
+                  // 'conversation_already_has_active_response'.
+                  if (dcRef.current?.readyState === 'open' && userText && !responseActiveRef.current) {
                     lastResponseCreateRef.current = Date.now();
                     sendEvent({ type: 'response.create' });
                   }
@@ -1410,7 +1408,8 @@ export default function LiveVoiceModal({
                   }
                   pendingResponseTimerRef.current = setTimeout(() => {
                     pendingResponseTimerRef.current = null;
-                    if (dcRef.current?.readyState === 'open') {
+                    // Mesma protecao do handler de transcription.completed.
+                    if (dcRef.current?.readyState === 'open' && !responseActiveRef.current) {
                       lastResponseCreateRef.current = Date.now();
                       sendEvent({ type: 'response.create' });
                     }
