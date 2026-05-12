@@ -498,6 +498,7 @@ export default function LiveVoiceModal({
   // Charlotte falando = poll getStats e seta ringScale/ringOpacity direto
   // via setValue (sem fila de Animated.timing). Caso contrario, loop ambient.
   React.useEffect(() => {
+    console.log(`[LiveVoice ring] effect run status=${status} charlotteSpeaking=${charlotteSpeaking} isPaused=${isPaused}`);
     // Limpa qualquer estado anterior antes de decidir
     if (audioLevelIntervalRef.current) {
       clearInterval(audioLevelIntervalRef.current);
@@ -508,11 +509,23 @@ export default function LiveVoiceModal({
 
     // 1) Charlotte falando — audio-reactivo via getStats
     if (status === 'connected' && charlotteSpeaking && !isPaused) {
+      console.log('[LiveVoice ring] branch=AUDIO_REACTIVE');
+      let tickCount = 0;
       audioLevelIntervalRef.current = setInterval(async () => {
+        tickCount++;
         try {
           const pc = pcRef.current;
-          if (!pc?.getStats) return;
+          if (!pc?.getStats) {
+            if (tickCount % 10 === 1) console.log('[LiveVoice ring] no pc.getStats available');
+            return;
+          }
           const stats = await pc.getStats();
+          if (tickCount === 1) {
+            // Dump todos os report types disponíveis na primeira tick
+            const types: string[] = [];
+            stats.forEach((r: any) => types.push(`${r.type}/${r.kind ?? '-'}`));
+            console.log(`[LiveVoice ring] stats report types: ${types.join(', ')}`);
+          }
           let level = 0;
           let foundAudioLevel = false;
           stats.forEach((report: any) => {
@@ -552,7 +565,9 @@ export default function LiveVoiceModal({
           const targetOpacity = 0.15 + Math.min(level * 2.5, 0.60);
           ringScale.setValue(targetScale);
           ringOpacity.setValue(targetOpacity);
-        } catch { /* getStats pode falhar entre estados — ignora */ }
+        } catch (e: any) {
+          if (tickCount % 20 === 1) console.warn(`[LiveVoice ring] getStats error: ${e?.message || e}`);
+        }
       }, 100);
 
       return () => {
