@@ -557,8 +557,12 @@ export default function LiveVoiceModal({
           const dispLevel = Math.sqrt(lv);  // 0.05→0.22, 0.20→0.45, 0.40→0.63
           const targetScale   = 1 + Math.min(dispLevel * 0.40, 0.30);
           const targetOpacity = 0.15 + Math.min(dispLevel * 0.70, 0.60);
-          ringScale.setValue(targetScale);
-          ringOpacity.setValue(targetOpacity);
+          // Usa Animated.timing com useNativeDriver pra que a atualizacao
+          // realmente chegue na UI native — setValue() puro nao propaga
+          // depois que o Animated.Value foi tocado por animacao nativa
+          // (bug conhecido do RN). Duration 80ms < intervalo 100ms = sem fila.
+          Animated.timing(ringScale,   { toValue: targetScale,   duration: 80, useNativeDriver: true }).start();
+          Animated.timing(ringOpacity, { toValue: targetOpacity, duration: 80, useNativeDriver: true }).start();
 
           // Log mais frequente (5 ticks = 500ms) com scale tambem
           audioLevelLogCounterRef.current = (audioLevelLogCounterRef.current + 1) % 5;
@@ -599,15 +603,16 @@ export default function LiveVoiceModal({
     // 3) Connected mas Charlotte nao fala — RING TOTALMENTE PARADO.
     //    Ring so se mexe quando Charlotte fala (audio-reactivo). Sem
     //    breathing ambient — quietude e o sinal de "ela ta ouvindo voce".
+    //    Animated.timing pra garantir propagacao no native driver.
     if (status === 'connected' && !isPaused) {
-      ringScale.setValue(1);
-      ringOpacity.setValue(0.18);
+      Animated.timing(ringScale,   { toValue: 1,    duration: 200, useNativeDriver: true }).start();
+      Animated.timing(ringOpacity, { toValue: 0.18, duration: 200, useNativeDriver: true }).start();
       return;
     }
 
     // 4) Demais estados — ring apagado
-    ringScale.setValue(1);
-    ringOpacity.setValue(0);
+    Animated.timing(ringScale,   { toValue: 1, duration: 200, useNativeDriver: true }).start();
+    Animated.timing(ringOpacity, { toValue: 0, duration: 200, useNativeDriver: true }).start();
   }, [status, charlotteSpeaking, isPaused]);
 
   const ringColor = status === 'connecting' ? '#F97316' : '#A3FF3C';
