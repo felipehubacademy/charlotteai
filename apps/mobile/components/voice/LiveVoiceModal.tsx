@@ -925,10 +925,17 @@ export default function LiveVoiceModal({
                   // threshold 0.6 (era 0.90): com noise_reduction near_field,
                   // o sinal já chega limpo no VAD — não precisa filtrar tão
                   // agressivo. 0.6 captura fala mais baixa e o começo do turno.
+                  // silence_duration_ms 700 (era 1500): VAD espera 700ms de
+                  // silêncio antes de fechar o turno. 1500 era conservador
+                  // demais, gerando gap perceptível entre o user terminar de
+                  // falar e a Charlotte responder. 700 é o sweet spot —
+                  // pausas naturais (com filler words "uh/umm") ainda passam
+                  // porque o VAD detecta como speech, mas pausas reais
+                  // disparam resposta ~800ms mais rápido.
                   type: 'server_vad',
                   threshold: 0.6,
                   prefix_padding_ms: 400,
-                  silence_duration_ms: 1500,
+                  silence_duration_ms: 700,
                   create_response: false,
                 },
               },
@@ -1260,15 +1267,16 @@ export default function LiveVoiceModal({
               // ESTRATÉGIA DE FILTRO DE ECO:
               // Em vez de disparar response.create imediatamente (que fazia
               // Charlotte responder ao próprio eco antes da transcrição chegar),
-              // agendamos um timer de fallback de 2.5s. A transcrição geralmente
+              // agendamos um timer de fallback curto. A transcrição geralmente
               // chega em 500-1500ms. Quando chega, o handler de transcription.completed:
               //   - Se for eco (sobreposição >50% com a última fala da Charlotte):
               //     cancela o timer → Charlotte não responde ao eco.
               //   - Se for fala real: cancela o timer e dispara response.create
               //     imediatamente (zero latência extra).
-              // Se transcrição nunca chegar em 2.5s (raro): timer expira e
+              // Se transcrição nunca chegar no prazo (raro): timer expira e
               // response.create dispara mesmo assim, para não deixar o usuário
-              // sem resposta.
+              // sem resposta. Timer reduzido de 250→150ms pra apertar a
+              // latência percebida quando a transcrição demora.
               if (!charlotteSpeakingRef.current
                   && !farewellPendingRef.current
                   && !farewellActiveRef.current) {
@@ -1285,7 +1293,7 @@ export default function LiveVoiceModal({
                       lastResponseCreateRef.current = Date.now();
                       sendEvent({ type: 'response.create' });
                     }
-                  }, 250);
+                  }, 150);
                 }
               }
               break;
