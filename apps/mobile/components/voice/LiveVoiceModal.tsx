@@ -822,7 +822,8 @@ export default function LiveVoiceModal({
             max_output_tokens: 600,
             audio: {
               input: {
-                format: 'pcm16',
+                // GA: format é objeto { type, rate } em vez de string 'pcm16'.
+                format: { type: 'audio/pcm', rate: 24000 },
                 transcription: { model: 'whisper-1' },
                 turn_detection: {
                   // server_vad: threshold 0.90 filtra ruído de baixa energia.
@@ -838,7 +839,7 @@ export default function LiveVoiceModal({
                 },
               },
               output: {
-                format: 'pcm16',
+                format: { type: 'audio/pcm', rate: 24000 },
                 voice: 'coral',
               },
             },
