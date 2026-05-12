@@ -7,7 +7,7 @@
 import { NextRequest, NextResponse } from 'next/server';
 import { createClient } from '@supabase/supabase-js';
 
-const MODEL = 'gpt-4o-realtime-preview-2024-12-17';
+const MODEL = 'gpt-realtime';
 const POOL_SECONDS = 30 * 60; // 1 800 s
 
 function thisMonthFirstDayInTz(tz: string): string {
@@ -79,16 +79,24 @@ export async function POST(request: NextRequest) {
 
     console.log('🔑 Creating Realtime ephemeral session for', userName, '/', userLevel);
 
-    // Cria uma sessão efêmera via REST — retorna client_secret.value (token curto)
-    const sessionRes = await fetch('https://api.openai.com/v1/realtime/sessions', {
+    // OpenAI Realtime GA endpoint — cria um client_secret de curta duração.
+    // Body novo (wrapped em "session") + voice aninhado em audio.output.
+    // Resposta GA é flat: { value, expires_at, session } em vez do antigo
+    // { client_secret: { value, expires_at } }.
+    const sessionRes = await fetch('https://api.openai.com/v1/realtime/client_secrets', {
       method: 'POST',
       headers: {
         'Authorization': `Bearer ${process.env.OPENAI_API_KEY}`,
         'Content-Type': 'application/json',
       },
       body: JSON.stringify({
-        model: MODEL,
-        voice: 'coral',
+        session: {
+          type:  'realtime',
+          model: MODEL,
+          audio: {
+            output: { voice: 'coral' },
+          },
+        },
       }),
     });
 
@@ -99,14 +107,14 @@ export async function POST(request: NextRequest) {
     }
 
     const session = await sessionRes.json();
-    const clientSecret = session.client_secret?.value;
+    const clientSecret = session.value;
 
     if (!clientSecret) {
       console.error('❌ No client_secret in session response:', session);
       return NextResponse.json({ error: 'No client_secret returned' }, { status: 500 });
     }
 
-    console.log('✅ Ephemeral session created, expires_at:', session.client_secret?.expires_at);
+    console.log('✅ Ephemeral session created, expires_at:', session.expires_at);
 
     return NextResponse.json({
       clientSecret,

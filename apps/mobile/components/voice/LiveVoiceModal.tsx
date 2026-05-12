@@ -43,7 +43,7 @@ import { track, trackDuration } from '@/lib/analytics';
 const API_BASE_URL =
   (Constants.expoConfig?.extra?.apiBaseUrl as string) ?? 'https://charlotte.hubacademybr.com';
 
-const MODEL = 'gpt-4o-realtime-preview-2024-12-17';
+const MODEL = 'gpt-realtime';
 
 // Inatividade: 45 s → aviso; 75 s → pausa
 const INACTIVITY_WARN_SEC  = 45;
