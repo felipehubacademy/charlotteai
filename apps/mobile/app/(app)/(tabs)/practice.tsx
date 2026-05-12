@@ -568,15 +568,24 @@ export default function PracticeTab() {
         />
       )}
 
-      {/* ── Help modal (bottom sheet style) ── */}
+      {/* ── Help modal (bottom sheet style) — fica acima do tab bar pra navbar continuar visível ── */}
       <Modal visible={showHelp} transparent animationType="fade" onRequestClose={() => setShowHelp(false)}>
-        <Pressable
-          onPress={() => setShowHelp(false)}
-          style={{ flex: 1, justifyContent: 'flex-end', backgroundColor: 'rgba(0,0,0,0.4)' }}
-        >
+        <View style={{ flex: 1 }}>
+          <Pressable
+            onPress={() => setShowHelp(false)}
+            style={{
+              position: 'absolute',
+              top: 0, left: 0, right: 0,
+              bottom: tabBarHeight,
+              backgroundColor: 'rgba(0,0,0,0.4)',
+            }}
+          />
           <Pressable
             onPress={(e) => e.stopPropagation()}
             style={{
+              position: 'absolute',
+              left: 0, right: 0,
+              bottom: tabBarHeight,
               backgroundColor: '#FFFFFF',
               borderTopLeftRadius: 24, borderTopRightRadius: 24,
               paddingHorizontal: 24, paddingTop: 18, paddingBottom: 28,
@@ -620,7 +629,7 @@ export default function PracticeTab() {
               />
             </View>
           </Pressable>
-        </Pressable>
+        </View>
       </Modal>
     </View>
   );

@@ -311,6 +311,8 @@ function TranscriptModal({ call, isOpen, onClose, isPt }: {
 }) {
   const insets = useSafeAreaInsets();
   const screenH = Dimensions.get('window').height;
+  // Tab bar height fica visível debaixo do sheet — backdrop e sheet param em tabBarHeight.
+  const tabBarHeight = useBottomTabBarHeight();
   const sheetMaxH = Math.round(screenH * 0.85);
 
   const turns = useMemo(() => {
@@ -331,17 +333,27 @@ function TranscriptModal({ call, isOpen, onClose, isPt }: {
 
   return (
     <Modal visible={isOpen} transparent animationType="fade" onRequestClose={onClose}>
-      <Pressable
-        onPress={onClose}
-        style={{ flex: 1, justifyContent: 'flex-end', backgroundColor: 'rgba(0,0,0,0.45)' }}
-      >
+      <View style={{ flex: 1 }}>
+        {/* Backdrop dim — ocupa só ATÉ o topo do tab bar pra deixar o navbar visível. */}
+        <Pressable
+          onPress={onClose}
+          style={{
+            position: 'absolute',
+            top: 0, left: 0, right: 0,
+            bottom: tabBarHeight,
+            backgroundColor: 'rgba(0,0,0,0.45)',
+          }}
+        />
+        {/* Sheet ancorado acima do tab bar */}
         <Pressable
           onPress={(e) => e.stopPropagation()}
           style={{
+            position: 'absolute',
+            left: 0, right: 0,
+            bottom: tabBarHeight,
             backgroundColor: '#FFFFFF',
             borderTopLeftRadius: 24, borderTopRightRadius: 24,
             height: sheetMaxH,
-            paddingBottom: insets.bottom,
             display: 'flex',
             flexDirection: 'column',
           }}
@@ -416,7 +428,7 @@ function TranscriptModal({ call, isOpen, onClose, isPt }: {
             )}
           </ScrollView>
         </Pressable>
-      </Pressable>
+      </View>
     </Modal>
   );
 }
@@ -755,15 +767,24 @@ export default function LiveVoiceTab() {
         onClose={() => setShowTranscript(false)}
       />
 
-      {/* ── Help modal (bottom sheet) ── */}
+      {/* ── Help modal (bottom sheet) — fica acima do tab bar pra navbar continuar visível ── */}
       <Modal visible={showHelp} transparent animationType="fade" onRequestClose={() => setShowHelp(false)}>
-        <Pressable
-          onPress={() => setShowHelp(false)}
-          style={{ flex: 1, justifyContent: 'flex-end', backgroundColor: 'rgba(0,0,0,0.4)' }}
-        >
+        <View style={{ flex: 1 }}>
+          <Pressable
+            onPress={() => setShowHelp(false)}
+            style={{
+              position: 'absolute',
+              top: 0, left: 0, right: 0,
+              bottom: tabBarHeight,
+              backgroundColor: 'rgba(0,0,0,0.4)',
+            }}
+          />
           <Pressable
             onPress={(e) => e.stopPropagation()}
             style={{
+              position: 'absolute',
+              left: 0, right: 0,
+              bottom: tabBarHeight,
               backgroundColor: '#FFFFFF',
               borderTopLeftRadius: 24, borderTopRightRadius: 24,
               paddingHorizontal: 24, paddingTop: 18, paddingBottom: 28,
@@ -801,7 +822,7 @@ export default function LiveVoiceTab() {
               />
             </View>
           </Pressable>
-        </Pressable>
+        </View>
       </Modal>
 
     </View>
