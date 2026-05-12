@@ -207,6 +207,27 @@ function wordOverlap(a: string, b: string): number {
   return common / Math.min(wordsA.size, wordsB.size);
 }
 
+// Detecta eco curto que wordOverlap não pega: transcrições muito curtas
+// ("Oh", "Hey", "Yeah", "Nice", "Cool") que aparecem logo após Charlotte falar.
+// Essas palavras são fragmentos do começo da fala dela ("Oh hey! What's up?")
+// capturados pelo mic via speaker. wordOverlap ignora palavras < 3 chars.
+function isShortEcho(userText: string, charlotteText: string, msSinceCharlotte: number): boolean {
+  if (msSinceCharlotte > 2500) return false; // janela suspeita: 2.5s após audio.done
+  const txt = userText.toLowerCase().trim().replace(/[.,!?;:'"()\[\]—–-]/g, '');
+  // Curto: <= 4 palavras OU <= 20 chars
+  const wordCount = txt.split(/\s+/).filter(Boolean).length;
+  if (wordCount > 4 && txt.length > 20) return false;
+  // Está contida no início da fala da Charlotte?
+  const charlotteLower = charlotteText.toLowerCase().replace(/[.,!?;:'"()\[\]—–-]/g, '');
+  // 1) Match exato/prefixo da Charlotte
+  if (charlotteLower.startsWith(txt)) return true;
+  // 2) Cada palavra do user aparece nas primeiras 6 palavras da Charlotte
+  const userWords = txt.split(/\s+/).filter(Boolean);
+  const charlotteFirstWords = charlotteLower.split(/\s+/).slice(0, 6).filter(Boolean);
+  const allFound = userWords.every(w => charlotteFirstWords.includes(w));
+  return allFound;
+}
+
 type ConnectionStatus = 'idle' | 'disconnected' | 'connecting' | 'connected' | 'error';
 
 interface ConversationTurn {
@@ -1146,12 +1167,16 @@ export default function LiveVoiceModal({
                   deltaText.length > completedText.length ? deltaText : completedText;
                 console.log(`[LiveVoice] user transcript: completed="${completedText}" delta="${deltaText}" → "${userText}"`);
                 if (itemId) userTranscriptDeltasRef.current.delete(itemId);
+                const msSinceCharlotte = Date.now() - lastCharlotteDoneRef.current;
                 const isEcho = userText.length > 0
                   && lastCharlotteTextRef.current.length > 0
-                  && wordOverlap(userText, lastCharlotteTextRef.current) >= 0.5;
+                  && (
+                    wordOverlap(userText, lastCharlotteTextRef.current) >= 0.5
+                    || isShortEcho(userText, lastCharlotteTextRef.current, msSinceCharlotte)
+                  );
 
                 if (isEcho) {
-                  console.log(`[LiveVoice] echo blocked: "${userText.slice(0, 60)}"`);
+                  console.log(`[LiveVoice] echo blocked: "${userText.slice(0, 60)}" (ms=${msSinceCharlotte})`);
                   if (pendingResponseTimerRef.current) {
                     clearTimeout(pendingResponseTimerRef.current);
                     pendingResponseTimerRef.current = null;
@@ -1199,7 +1224,7 @@ export default function LiveVoiceModal({
                 if (!isMutedRef.current) applyMute(false);
                 charlotteSpeakingRef.current = false;
                 setCharlotteSpeaking(false);
-              }, 500);
+              }, 1200);
               // Despedida: servidor terminou de enviar o áudio. O playback ainda
               // está rolando no device — o jitter buffer do WebRTC no iOS pode
               // ficar 1-2s atrás do audio.done em condições normais, e até mais
@@ -1263,7 +1288,7 @@ export default function LiveVoiceModal({
                 const speechDuration  = Date.now() - speechStartedAtRef.current;
                 const msSinceDone     = Date.now() - lastCharlotteDoneRef.current;
                 const msSinceLast     = Date.now() - lastResponseCreateRef.current;
-                if (speechDuration > 300 && msSinceDone > 500 && msSinceLast > 500) {
+                if (speechDuration > 500 && msSinceDone > 1200 && msSinceLast > 800) {
                   if (pendingResponseTimerRef.current) {
                     clearTimeout(pendingResponseTimerRef.current);
                   }
