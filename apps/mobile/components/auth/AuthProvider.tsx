@@ -3,6 +3,7 @@ import { unstable_batchedUpdates, AppState, AppStateStatus } from 'react-native'
 import { Session } from '@supabase/supabase-js';
 import { router } from 'expo-router';
 import * as Linking from 'expo-linking';
+import * as Sentry from '@sentry/react-native';
 import { supabase, UserProfile } from '@/lib/supabase';
 import { usePushNotifications } from '@/hooks/usePushNotifications';
 import Purchases from 'react-native-purchases';
@@ -234,6 +235,7 @@ export function AuthProvider({ children }: { children: ReactNode }) {
             setProfile(null);
           });
           resetUser(); // logout from RevenueCat too
+          Sentry.setUser(null); // limpa tag de aluno do Sentry
           clearTimeout(hardTimeout);
           markResolved();
           return;
@@ -287,6 +289,15 @@ export function AuthProvider({ children }: { children: ReactNode }) {
             // already in-flight by the time HomeScreen mounts and its effect runs.
             prefetchGreeting(userProfile);
             setProfile(userProfile);
+            // Tag o Sentry com o aluno — todo crash/breadcrumb daqui pra
+            // frente vem com user.id + email + nome pra facilitar suporte.
+            // Email/name vao como context PII (sendDefaultPii=false ainda
+            // protege; setUser e explicit opt-in pra esses campos).
+            Sentry.setUser({
+              id: userProfile.id,
+              email: userProfile.email,
+              username: userProfile.name ?? undefined,
+            });
           }
           // Salvar timezone do device para uso em crons e triggers server-side
           void (async () => {
