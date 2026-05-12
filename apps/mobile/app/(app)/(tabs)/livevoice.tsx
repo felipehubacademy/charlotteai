@@ -344,9 +344,10 @@ function TranscriptModal({ call, isOpen, onClose, isPt }: {
             backgroundColor: 'rgba(0,0,0,0.45)',
           }}
         />
-        {/* Sheet ancorado acima do tab bar */}
-        <Pressable
-          onPress={(e) => e.stopPropagation()}
+        {/* Sheet ancorado acima do tab bar — View (não Pressable) para não
+            consumir gestos do ScrollView no Android. Como o backdrop é
+            absoluto e fica atrás do sheet, touches no sheet não chegam nele. */}
+        <View
           style={{
             position: 'absolute',
             left: 0, right: 0,
@@ -427,7 +428,7 @@ function TranscriptModal({ call, isOpen, onClose, isPt }: {
               })
             )}
           </ScrollView>
-        </Pressable>
+        </View>
       </View>
     </Modal>
   );
@@ -674,26 +675,32 @@ export default function LiveVoiceTab() {
                 accessibilityLabel={isPt ? 'Ver chamadas anteriores' : 'View previous calls'}
                 hitSlop={{ top: 8, bottom: 8, left: 8, right: 8 }}
                 style={{
-                  width: 44, height: 44, borderRadius: 22,
+                  width: 34, height: 34, borderRadius: 17,
                   backgroundColor: '#FFFFFF',
-                  borderWidth: 1, borderColor: 'rgba(22,21,58,0.10)',
                   alignItems: 'center', justifyContent: 'center',
+                  borderWidth: 1, borderColor: 'rgba(22,21,58,0.10)',
+                  shadowColor: 'rgba(22,21,58,0.12)',
+                  shadowOpacity: 1, shadowRadius: 6, shadowOffset: { width: 0, height: 2 },
+                  elevation: 3,
                 }}
               >
-                <ClockCounterClockwise size={20} color={C.textMuted} weight="regular" />
+                <ClockCounterClockwise size={17} color={C.navyMid} weight="regular" />
               </TouchableOpacity>
               <TouchableOpacity
                 onPress={() => setShowHelp(true)}
                 accessibilityLabel={isPt ? 'Ajuda' : 'Help'}
                 hitSlop={{ top: 8, bottom: 8, left: 8, right: 8 }}
                 style={{
-                  width: 44, height: 44, borderRadius: 22,
+                  width: 34, height: 34, borderRadius: 17,
                   backgroundColor: '#FFFFFF',
-                  borderWidth: 1, borderColor: 'rgba(22,21,58,0.10)',
                   alignItems: 'center', justifyContent: 'center',
+                  borderWidth: 1, borderColor: 'rgba(22,21,58,0.10)',
+                  shadowColor: 'rgba(22,21,58,0.12)',
+                  shadowOpacity: 1, shadowRadius: 6, shadowOffset: { width: 0, height: 2 },
+                  elevation: 3,
                 }}
               >
-                <Question size={20} color={C.textMuted} weight="regular" />
+                <Question size={17} color={C.navyMid} weight="regular" />
               </TouchableOpacity>
             </View>
 
