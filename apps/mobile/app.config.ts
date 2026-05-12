@@ -85,6 +85,23 @@ export default ({ config }: ConfigContext): ExpoConfig => ({
     'expo-config-plugin-incall-manager',
     './plugins/with-incallmanager-ringback',
     [
+      'expo-build-properties',
+      {
+        // Android: resize empurra a tela inteira pra cima quando o teclado
+        // abre — substitui o workaround manual via KeyboardAvoidingView.
+        android: { softwareKeyboardLayoutMode: 'resize' },
+      },
+    ],
+    [
+      '@sentry/react-native/expo',
+      {
+        organization: process.env.SENTRY_ORG,
+        project: process.env.SENTRY_PROJECT,
+        // SENTRY_AUTH_TOKEN é lido automaticamente em build time pra
+        // upload de sourcemaps. Fica em env CI/local, nunca no repo.
+      },
+    ],
+    [
       'expo-splash-screen',
       {
         image: './assets/splash-bg.png',
@@ -109,6 +126,10 @@ export default ({ config }: ConfigContext): ExpoConfig => ({
     supabaseUrl: process.env.EXPO_PUBLIC_SUPABASE_URL,
     supabaseAnonKey: process.env.EXPO_PUBLIC_SUPABASE_ANON_KEY,
     apiBaseUrl: process.env.EXPO_PUBLIC_API_BASE_URL,
+    // Sentry DSN exposto em runtime pra Sentry.init em _layout.tsx.
+    // Build time: SENTRY_AUTH_TOKEN + SENTRY_ORG + SENTRY_PROJECT cuidam do
+    // upload de sourcemaps via plugin (não precisam estar em extra).
+    sentryDsn: process.env.EXPO_PUBLIC_SENTRY_DSN,
     eas: {
       projectId: 'da14586b-2944-4150-b8ad-5ff7e32af6e2',
     },

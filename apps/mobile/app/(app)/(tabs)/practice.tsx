@@ -6,7 +6,7 @@
 import React, { useCallback, useState, useMemo, useEffect, useRef } from 'react';
 import {
   Alert, View, TouchableOpacity, KeyboardAvoidingView, Platform, Modal,
-  Pressable, Animated, Easing, ScrollView, Dimensions,
+  Pressable, Animated, Easing, ScrollView, Dimensions, StatusBar,
 } from 'react-native';
 import { Question, X, ClockCounterClockwise, XCircle, CaretRight, Trash, Plus } from 'phosphor-react-native';
 import { useLocalSearchParams, router, useFocusEffect } from 'expo-router';
@@ -229,7 +229,16 @@ export default function PracticeTab() {
       if (!ref) return;
       ref.measureInWindow((x, y, w, h) => {
         if (!w) return;     // layout ainda não pronto
-        setSuggestionAnchor({ x, y, width: w, height: h });
+        // Android: measureInWindow retorna Y relativo ao content area (sem
+        // status bar, com translucent=false), mas o <absoluteFill> da
+        // tooltip está dentro do screen do tab navigator que aplica padding
+        // top do status bar — então o tooltip fica ~24dp acima do pill.
+        // Compensar adicionando StatusBar.currentHeight. iOS mede certo
+        // porque o safe area top do navigator funciona diferente lá.
+        const yAdj = Platform.OS === 'android'
+          ? y + (StatusBar.currentHeight ?? 0)
+          : y;
+        setSuggestionAnchor({ x, y: yAdj, width: w, height: h });
         setSuggestionMode(suggestedMode);
         setSuggestionShown(true);
         SecureStore

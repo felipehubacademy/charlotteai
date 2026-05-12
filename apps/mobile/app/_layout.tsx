@@ -7,6 +7,9 @@ import { SafeAreaProvider } from 'react-native-safe-area-context';
 import * as SplashScreen from 'expo-splash-screen';
 import { StatusBar } from 'expo-status-bar';
 import * as SecureStore from 'expo-secure-store';
+import * as Sentry from '@sentry/react-native';
+import * as Updates from 'expo-updates';
+import Constants from 'expo-constants';
 import { AuthProvider } from '@/components/auth/AuthProvider';
 import { useAuth } from '@/hooks/useAuth';
 import { AI_CONSENT_KEY } from '@/lib/aiConsent';
@@ -22,6 +25,25 @@ SplashScreen.preventAutoHideAsync();
 
 // Carrega preferencias de audio antes de qualquer play. Resolve sincrono apos boot.
 loadAudioPreferences().catch(() => {});
+
+// Sentry — captura crashes nativos (Java/Obj-C) que o ErrorBoundary não pega,
+// JS errors não-tratados, e device info pra debug em produção. DSN em
+// expoConfig.extra.sentryDsn (vem do app.config.ts → process.env.SENTRY_DSN).
+const SENTRY_DSN = (Constants.expoConfig?.extra as Record<string, unknown> | undefined)?.sentryDsn as string | undefined;
+if (SENTRY_DSN) {
+  Sentry.init({
+    dsn: SENTRY_DSN,
+    // Tag o release com a versão do bundle (OTA ou nativo) pra correlacionar
+    // crashes com a versão exata que estava rodando. updateId é o id do OTA;
+    // se não houver OTA aplicado, cai pro version nativo.
+    dist: Updates.updateId ?? undefined,
+    tracesSampleRate: 0.1,
+    enableAutoSessionTracking: true,
+    // PII default scrubbing já filtra email/tokens; deixamos beforeSend ativo
+    // pra remover qualquer extra que esqueçamos.
+    sendDefaultPii: false,
+  });
+}
 
 // Limpa caches de SFX pre-reformulacao (voz como SFX). Idempotente, roda uma vez por install.
 soundEngine.cleanLegacyCache().catch(() => {});
@@ -114,7 +136,7 @@ function AuthGuard() {
   return null;
 }
 
-export default function RootLayout() {
+function RootLayout() {
   useEffect(() => {
     SplashScreen.hideAsync();
     // expo-updates cuida automaticamente dos checks via checkAutomatically: 'ON_LOAD'
@@ -141,6 +163,8 @@ export default function RootLayout() {
     </GestureHandlerRootView>
   );
 }
+
+export default Sentry.wrap(RootLayout);
 
 function ThemedStatusBar() {
   const { isDark, colors } = useTheme();
