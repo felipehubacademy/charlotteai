@@ -841,7 +841,9 @@ export default function LiveVoiceModal({
                   // transcrição truncada em turnos longos).
                   model: 'gpt-realtime-whisper',
                   language: inputLang, // ISO-639-1 hint — accuracy + latency
-                  delay: 'low',
+                  // 'medium' dá mais contexto antes de finalizar palavras
+                  // (vs 'low' que truncava 'Vamos' e palavras curtas).
+                  delay: 'medium',
                 },
                 turn_detection: {
                   // threshold 0.6 (era 0.90): com noise_reduction near_field,
@@ -1166,7 +1168,7 @@ export default function LiveVoiceModal({
                 const speechDuration  = Date.now() - speechStartedAtRef.current;
                 const msSinceDone     = Date.now() - lastCharlotteDoneRef.current;
                 const msSinceLast     = Date.now() - lastResponseCreateRef.current;
-                if (speechDuration > 500 && msSinceDone > 1000 && msSinceLast > 1000) {
+                if (speechDuration > 300 && msSinceDone > 500 && msSinceLast > 500) {
                   if (pendingResponseTimerRef.current) {
                     clearTimeout(pendingResponseTimerRef.current);
                   }
@@ -1176,7 +1178,7 @@ export default function LiveVoiceModal({
                       lastResponseCreateRef.current = Date.now();
                       sendEvent({ type: 'response.create' });
                     }
-                  }, 500);
+                  }, 250);
                 }
               }
               break;

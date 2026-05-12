@@ -340,8 +340,10 @@ function TranscriptModal({ call, isOpen, onClose, isPt }: {
           style={{
             backgroundColor: '#FFFFFF',
             borderTopLeftRadius: 24, borderTopRightRadius: 24,
-            maxHeight: sheetMaxH,
+            height: sheetMaxH,
             paddingBottom: insets.bottom,
+            display: 'flex',
+            flexDirection: 'column',
           }}
         >
           {/* Handle */}
@@ -358,9 +360,10 @@ function TranscriptModal({ call, isOpen, onClose, isPt }: {
           </View>
 
           <ScrollView
-            style={{ maxHeight: sheetMaxH - 80 - insets.bottom }}
+            style={{ flex: 1, minHeight: 0 }}
             contentContainerStyle={{ paddingHorizontal: 24, paddingBottom: 24, gap: 12 }}
-            showsVerticalScrollIndicator={false}
+            showsVerticalScrollIndicator={true}
+            nestedScrollEnabled
           >
             {/* Resumo no topo */}
             {call.summary && (
