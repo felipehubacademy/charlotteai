@@ -13,6 +13,7 @@
     "@react-native-community/netinfo": "^12.0.1",
     "@sentry/react-native": "~7.2.0",
     "@supabase/supabase-js": "^2.39.0",
+    "charlotte-audio-session": "file:./modules/charlotte-audio-session",
     "expo": "^54.0.0",
     "expo-asset": "~12.0.12",
     "expo-audio": "~1.1.1",

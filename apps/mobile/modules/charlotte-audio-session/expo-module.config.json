@@ -1,0 +1,9 @@
+{
+  "platforms": ["ios", "android"],
+  "ios": {
+    "modules": ["CharlotteAudioSessionModule"]
+  },
+  "android": {
+    "modules": ["com.charlotteai.audiosession.CharlotteAudioSessionModule"]
+  }
+}

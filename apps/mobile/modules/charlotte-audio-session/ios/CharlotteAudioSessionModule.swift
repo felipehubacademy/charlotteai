@@ -1,0 +1,216 @@
+import ExpoModulesCore
+import AVFoundation
+
+/**
+ * CharlotteAudioSession — substitui InCallManager para Live Voice.
+ *
+ * Decisao chave (vs InCallManager):
+ *   - mode: .default em vez de .voiceChat — VoiceChat prioriza rotas externas
+ *     (USB DAC, cabo Lightning com audio) e ignora overrideOutputAudioPort.
+ *     Resultado: com cabo conectado, audio nao toca pelo speaker. Modo .default
+ *     respeita DefaultToSpeaker mesmo com USB plugado.
+ *   - Listener de RouteChangeNotification re-aplica override em qualquer
+ *     mudanca de rota (Bluetooth, cabo plugou/desplugou, etc).
+ *   - Listener de InterruptionNotification re-ativa session apos chamada
+ *     telefonica / Siri / outras interrupcoes.
+ *
+ * Eco / AEC: WebRTC habilita AEC quando o RTCAudioSession detecta categoria
+ * PlayAndRecord. Nao precisamos de mode .voiceChat pra ter AEC — o WebRTC
+ * software AEC roda independente do mode.
+ */
+public class CharlotteAudioSessionModule: Module {
+  private var routeChangeObserver: NSObjectProtocol?
+  private var interruptionObserver: NSObjectProtocol?
+  private var preferSpeaker: Bool = true
+  private var isActive: Bool = false
+
+  public func definition() -> ModuleDefinition {
+    Name("CharlotteAudioSession")
+
+    Events("onRouteChange", "onInterruption")
+
+    /**
+     * Inicia a sessao de audio com config otimizada pra Live Voice.
+     * Idempotente: chamar varias vezes nao causa side effects.
+     */
+    AsyncFunction("start") { (preferSpeakerInput: Bool) -> Bool in
+      self.preferSpeaker = preferSpeakerInput
+      do {
+        try self.configureSession()
+        self.installObservers()
+        self.isActive = true
+        return true
+      } catch {
+        NSLog("[CharlotteAudioSession] start error: \(error.localizedDescription)")
+        return false
+      }
+    }
+
+    /**
+     * Desativa a sessao e devolve controle ao iOS. Chamado no fim da chamada.
+     */
+    AsyncFunction("stop") { () -> Void in
+      self.removeObservers()
+      let session = AVAudioSession.sharedInstance()
+      do {
+        try session.setActive(false, options: [.notifyOthersOnDeactivation])
+      } catch {
+        NSLog("[CharlotteAudioSession] stop error: \(error.localizedDescription)")
+      }
+      self.isActive = false
+    }
+
+    /**
+     * Troca speaker ↔ earpiece em tempo real.
+     * Sob mode .default, overrideOutputAudioPort funciona corretamente:
+     *   .speaker → built-in loud speaker
+     *   .none    → segue route default (earpiece se nao houver Bluetooth/cabo)
+     */
+    AsyncFunction("setSpeakerOn") { (on: Bool) -> Bool in
+      self.preferSpeaker = on
+      do {
+        let session = AVAudioSession.sharedInstance()
+        try session.overrideOutputAudioPort(on ? .speaker : .none)
+        return true
+      } catch {
+        NSLog("[CharlotteAudioSession] setSpeakerOn error: \(error.localizedDescription)")
+        return false
+      }
+    }
+
+    /**
+     * Retorna a rota atual (debug).
+     */
+    Function("getCurrentRoute") { () -> String in
+      let route = AVAudioSession.sharedInstance().currentRoute
+      let outputs = route.outputs.map { "\($0.portType.rawValue):\($0.portName)" }
+      return outputs.joined(separator: ",")
+    }
+  }
+
+  // MARK: - Internal
+
+  private func configureSession() throws {
+    let session = AVAudioSession.sharedInstance()
+
+    // mode: .default — chave da nao-priorizacao de USB. NAO usar .voiceChat.
+    try session.setCategory(
+      .playAndRecord,
+      mode: .default,
+      options: [.defaultToSpeaker, .allowBluetooth, .allowBluetoothA2DP, .allowAirPlay]
+    )
+
+    try session.setActive(true, options: [.notifyOthersOnDeactivation])
+
+    if preferSpeaker {
+      try session.overrideOutputAudioPort(.speaker)
+    }
+  }
+
+  private func installObservers() {
+    let nc = NotificationCenter.default
+    let session = AVAudioSession.sharedInstance()
+
+    // Route change — re-aplica override se rota mudou pra algo inesperado.
+    // Acontece quando: cabo Lightning/USB plugado durante a call, Bluetooth
+    // conectou/desconectou, AirPlay ativou, etc.
+    routeChangeObserver = nc.addObserver(
+      forName: AVAudioSession.routeChangeNotification,
+      object: session,
+      queue: .main
+    ) { [weak self] notification in
+      guard let self = self else { return }
+      let reasonRaw = notification.userInfo?[AVAudioSessionRouteChangeReasonKey] as? UInt ?? 0
+      let reason = AVAudioSession.RouteChangeReason(rawValue: reasonRaw) ?? .unknown
+
+      let currentRoute = session.currentRoute
+      let outputs = currentRoute.outputs.map { "\($0.portType.rawValue):\($0.portName)" }.joined(separator: ",")
+
+      NSLog("[CharlotteAudioSession] route change reason=\(reasonRaw) outputs=\(outputs)")
+
+      // Re-aplica override se preferimos speaker e a rota foi pra algo nao-speaker.
+      // Razao .categoryChange acontece quando WebRTC re-aplica AVAudioSession
+      // internamente — precisamos reafirmar nossa categoria.
+      if self.preferSpeaker {
+        let isOnSpeaker = currentRoute.outputs.contains { $0.portType == .builtInSpeaker }
+        let hasHeadphones = currentRoute.outputs.contains {
+          $0.portType == .headphones || $0.portType == .bluetoothA2DP || $0.portType == .bluetoothHFP
+        }
+        // Se nao temos headphones reais (Bluetooth/headphones) e nao estamos
+        // no speaker, force speaker. Cabo USB/Lightning aparece como
+        // .usbAudio que NAO eh headphones reais — devemos pisar nele.
+        if !isOnSpeaker && !hasHeadphones {
+          do {
+            try session.overrideOutputAudioPort(.speaker)
+            NSLog("[CharlotteAudioSession] route forced back to speaker")
+          } catch {
+            NSLog("[CharlotteAudioSession] override after route change failed: \(error.localizedDescription)")
+          }
+        }
+
+        // Race: WebRTC negotiation pode trocar categoria pra .voiceChat.
+        // Reafirma se detectarmos mode errado.
+        if session.mode != .default && self.isActive {
+          do {
+            try session.setCategory(
+              .playAndRecord,
+              mode: .default,
+              options: [.defaultToSpeaker, .allowBluetooth, .allowBluetoothA2DP, .allowAirPlay]
+            )
+            if self.preferSpeaker {
+              try session.overrideOutputAudioPort(.speaker)
+            }
+            NSLog("[CharlotteAudioSession] category re-applied (mode was \(session.mode.rawValue))")
+          } catch {
+            NSLog("[CharlotteAudioSession] re-apply failed: \(error.localizedDescription)")
+          }
+        }
+      }
+
+      // Emite pra JS pra logging/analytics.
+      self.sendEvent("onRouteChange", [
+        "reason": reasonRaw,
+        "outputs": outputs,
+      ])
+    }
+
+    // Interruption — chamada telefonica, Siri, alarm. Re-ativa session no .ended.
+    interruptionObserver = nc.addObserver(
+      forName: AVAudioSession.interruptionNotification,
+      object: session,
+      queue: .main
+    ) { [weak self] notification in
+      guard let self = self else { return }
+      let typeRaw = notification.userInfo?[AVAudioSessionInterruptionTypeKey] as? UInt ?? 0
+      let type = AVAudioSession.InterruptionType(rawValue: typeRaw) ?? .began
+
+      NSLog("[CharlotteAudioSession] interruption type=\(typeRaw)")
+
+      if type == .ended && self.isActive {
+        // Re-ativa session apos a interrupcao terminar.
+        do {
+          try session.setActive(true, options: [.notifyOthersOnDeactivation])
+          if self.preferSpeaker {
+            try session.overrideOutputAudioPort(.speaker)
+          }
+        } catch {
+          NSLog("[CharlotteAudioSession] re-activate after interruption failed: \(error.localizedDescription)")
+        }
+      }
+
+      self.sendEvent("onInterruption", ["type": typeRaw])
+    }
+  }
+
+  private func removeObservers() {
+    let nc = NotificationCenter.default
+    if let obs = routeChangeObserver {
+      nc.removeObserver(obs)
+      routeChangeObserver = nil
+    }
+    if let obs = interruptionObserver {
+      nc.removeObserver(obs)
+      interruptionObserver = nil
+    }
+  }
+}
