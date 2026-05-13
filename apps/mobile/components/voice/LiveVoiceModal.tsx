@@ -28,7 +28,7 @@ import {
   StatusBar,
 } from 'react-native';
 import { SafeAreaView, useSafeAreaInsets } from 'react-native-safe-area-context';
-import { requestRecordingPermissionsAsync, createAudioPlayer, type AudioPlayer } from 'expo-audio';
+import { requestRecordingPermissionsAsync } from 'expo-audio';
 import { RTCPeerConnection, mediaDevices } from 'react-native-webrtc';
 import CharlotteAudioSession from 'charlotte-audio-session';
 import { PhoneSlash, MicrophoneSlash, Microphone, SpeakerHigh, Ear, Pause, ArrowCounterClockwise, ArrowLeft, ChatCircle, ClosedCaptioning } from 'phosphor-react-native';
@@ -376,41 +376,19 @@ export default function LiveVoiceModal({
   const dcRef             = React.useRef<any>(null);
   const localStreamRef    = React.useRef<any>(null);
 
-  // ── Ringback player (unified iOS + Android) ──────────────────────────────
-  // Sem InCallManager, controlamos sessao de audio via CharlotteAudioSession.
-  // createAudioPlayer agora funciona em ambas plataformas — antes brigava com
-  // o mode .voiceChat do InCallManager. Como configuramos a sessao APOS o
-  // dc.onopen (e o ringback toca durante connecting), nao ha conflito.
-  const ringbackPlayerRef = React.useRef<AudioPlayer | null>(null);
-
+  // ── Ringback player (delegado ao native module) ─────────────────────────
+  // O player roda DENTRO da session que CharlotteAudioSession gerencia.
+  // Zero conflito com a session da call — mesmo dono. iOS: AVAudioPlayer.
+  // Android: MediaPlayer. MP3 bundlado pelo config plugin with-incallmanager-
+  // ringback.js (nome herdado, e so um asset).
   const startCustomRingback = React.useCallback(() => {
-    try {
-      if (!ringbackPlayerRef.current) {
-        const p = createAudioPlayer(require('@/assets/audio/incallmanager_ringback.mp3'));
-        p.loop = true;
-        ringbackPlayerRef.current = p;
-      }
-      ringbackPlayerRef.current.seekTo(0);
-      ringbackPlayerRef.current.play();
-      return true;
-    } catch (e) {
-      console.warn('[LiveVoice] startCustomRingback error:', e);
-      return false;
-    }
+    CharlotteAudioSession.playRingback().catch(e =>
+      console.warn('[LiveVoice] playRingback error:', e)
+    );
   }, []);
 
   const stopCustomRingback = React.useCallback(() => {
-    try { ringbackPlayerRef.current?.pause(); } catch { /* silencioso */ }
-  }, []);
-
-  React.useEffect(() => {
-    return () => {
-      try {
-        ringbackPlayerRef.current?.pause();
-        ringbackPlayerRef.current?.remove();
-      } catch { /* silencioso */ }
-      ringbackPlayerRef.current = null;
-    };
+    CharlotteAudioSession.stopRingback().catch(() => { /* silencioso */ });
   }, []);
 
   // ── State refs ────────────────────────────────────────────────────────────
@@ -862,13 +840,8 @@ export default function LiveVoiceModal({
         return;
       }
 
-      // Ringback toca durante "connecting" (antes de configurar a sessao da call).
-      // Roda em sessao padrao do iOS (playback) — sem conflito porque ainda nao
-      // ativamos PlayAndRecord. Stop em dc.onopen quando a chamada conecta.
-      startCustomRingback();
-
-      // Configura AVAudioSession (iOS) / AudioManager (Android) pra Live Voice.
-      // CharlotteAudioSession:
+      // Configura AVAudioSession (iOS) / AudioManager (Android) ANTES de
+      // qualquer player. Ringback toca DENTRO dessa session:
       //   iOS: category=PlayAndRecord, mode=.default (NAO voiceChat — voiceChat
       //        prioriza cabo USB e ignora override pra speaker), opcoes
       //        DefaultToSpeaker | AllowBluetooth | AllowAirPlay. Listener de
@@ -876,6 +849,10 @@ export default function LiveVoiceModal({
       //   Android: AudioManager.MODE_IN_COMMUNICATION + setSpeakerphoneOn(true).
       //        Listener de ACTION_HEADSET_PLUG reaplica speaker ao desplugar fones.
       await CharlotteAudioSession.start(isSpeakerRef.current);
+
+      // Ringback toca DENTRO da session que acabamos de configurar (AVAudioPlayer
+      // iOS / MediaPlayer Android). Stop em dc.onopen quando a chamada conecta.
+      startCustomRingback();
 
       // Passa o access token para validação server-side do pool
       const { data: { session: authSession } } = await supabase.auth.getSession();

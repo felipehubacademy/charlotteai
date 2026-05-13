@@ -23,11 +23,61 @@ public class CharlotteAudioSessionModule: Module {
   private var interruptionObserver: NSObjectProtocol?
   private var preferSpeaker: Bool = true
   private var isActive: Bool = false
+  private var ringbackPlayer: AVAudioPlayer?
 
   public func definition() -> ModuleDefinition {
     Name("CharlotteAudioSession")
 
     Events("onRouteChange", "onInterruption")
+
+    /**
+     * Toca o ringback (incallmanager_ringback.mp3) em loop.
+     *
+     * Critico: o player USA a session que JA configuramos (PlayAndRecord +
+     * mode .default + DefaultToSpeaker). Sem mexer na categoria — nao briga
+     * com a session da call. Output garantido pelo speaker.
+     *
+     * Se start() ainda nao foi chamado, configuramos a session com defaults
+     * antes de tocar (caso JS chame playRingback antes de start).
+     *
+     * O MP3 e bundlado pelo config plugin `with-incallmanager-ringback.js`
+     * em Bundle.main (PBXResourcesBuildPhase). Nome herdado mas e so um path.
+     */
+    AsyncFunction("playRingback") { () -> Bool in
+      guard let url = Bundle.main.url(forResource: "incallmanager_ringback", withExtension: "mp3") else {
+        NSLog("[CharlotteAudioSession] ringback mp3 not found in bundle")
+        return false
+      }
+      do {
+        if !self.isActive {
+          self.preferSpeaker = true
+          try self.configureSession()
+          self.installObservers()
+          self.isActive = true
+        }
+        if self.ringbackPlayer == nil {
+          let player = try AVAudioPlayer(contentsOf: url)
+          player.numberOfLoops = -1
+          player.prepareToPlay()
+          self.ringbackPlayer = player
+        }
+        self.ringbackPlayer?.currentTime = 0
+        let started = self.ringbackPlayer?.play() ?? false
+        if !started {
+          NSLog("[CharlotteAudioSession] ringback play() returned false")
+        }
+        return started
+      } catch {
+        NSLog("[CharlotteAudioSession] playRingback error: \(error.localizedDescription)")
+        return false
+      }
+    }
+
+    AsyncFunction("stopRingback") { () -> Void in
+      self.ringbackPlayer?.stop()
+      self.ringbackPlayer?.currentTime = 0
+      // Mantemos o player na memoria pra startar rapido — destruido em stop().
+    }
 
     /**
      * Inicia a sessao de audio com config otimizada pra Live Voice.
@@ -50,6 +100,8 @@ public class CharlotteAudioSessionModule: Module {
      * Desativa a sessao e devolve controle ao iOS. Chamado no fim da chamada.
      */
     AsyncFunction("stop") { () -> Void in
+      self.ringbackPlayer?.stop()
+      self.ringbackPlayer = nil
       self.removeObservers()
       let session = AVAudioSession.sharedInstance()
       do {

@@ -36,6 +36,8 @@ interface CharlotteAudioSessionNative {
   start(preferSpeaker: boolean): Promise<boolean>;
   stop(): Promise<void>;
   setSpeakerOn(on: boolean): Promise<boolean>;
+  playRingback(): Promise<boolean>;
+  stopRingback(): Promise<void>;
   getCurrentRoute(): string;
   addListener<E extends keyof Events>(eventName: E, listener: Events[E]): EventSubscription;
 }
@@ -65,6 +67,22 @@ const CharlotteAudioSession = {
    */
   setSpeakerOn(on: boolean): Promise<boolean> {
     return Native.setSpeakerOn(on);
+  },
+
+  /**
+   * Toca ringback em loop (incallmanager_ringback.mp3 bundlado).
+   * Player roda DENTRO da nossa session — zero conflito com a call.
+   * Se start() ainda nao foi chamado, configura session com defaults.
+   */
+  playRingback(): Promise<boolean> {
+    return Native.playRingback();
+  },
+
+  /**
+   * Para o ringback. Mantem a session ativa (para a call).
+   */
+  stopRingback(): Promise<void> {
+    return Native.stopRingback();
   },
 
   /**

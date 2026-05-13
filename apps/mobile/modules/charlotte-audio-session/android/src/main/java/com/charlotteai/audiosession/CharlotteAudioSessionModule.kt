@@ -4,8 +4,10 @@ import android.content.BroadcastReceiver
 import android.content.Context
 import android.content.Intent
 import android.content.IntentFilter
+import android.media.AudioAttributes
 import android.media.AudioDeviceInfo
 import android.media.AudioManager
+import android.media.MediaPlayer
 import android.os.Build
 import expo.modules.kotlin.modules.Module
 import expo.modules.kotlin.modules.ModuleDefinition
@@ -27,11 +29,69 @@ class CharlotteAudioSessionModule : Module() {
   private var preferSpeaker: Boolean = true
   private var isActive: Boolean = false
   private var headsetReceiver: BroadcastReceiver? = null
+  private var ringbackPlayer: MediaPlayer? = null
 
   override fun definition() = ModuleDefinition {
     Name("CharlotteAudioSession")
 
     Events("onRouteChange", "onInterruption")
+
+    /**
+     * Toca o ringback bundlado em res/raw/incallmanager_ringback (via config
+     * plugin with-incallmanager-ringback.js). Como o resource fica no APK do
+     * main app — nao no AAR do modulo — usamos getIdentifier dinamico.
+     *
+     * AudioAttributes USAGE_VOICE_COMMUNICATION mantem o audio na pipeline
+     * de chamada, mesmo speaker que ja configuramos via MODE_IN_COMMUNICATION.
+     */
+    AsyncFunction("playRingback") { ->
+      val context = appContext.reactContext ?: return@AsyncFunction false
+      val resId = context.resources.getIdentifier("incallmanager_ringback", "raw", context.packageName)
+      if (resId == 0) {
+        android.util.Log.w("CharlotteAudioSession", "ringback resource not found in res/raw")
+        return@AsyncFunction false
+      }
+      try {
+        // Garante session configurada antes do ringback rolar.
+        if (!isActive) {
+          val am = context.getSystemService(Context.AUDIO_SERVICE) as? AudioManager
+            ?: return@AsyncFunction false
+          audioManager = am
+          previousMode = am.mode
+          am.mode = AudioManager.MODE_IN_COMMUNICATION
+          am.isSpeakerphoneOn = preferSpeaker
+          installHeadsetReceiver(context)
+          isActive = true
+        }
+        // Recria player a cada play() — MediaPlayer e finicky com state machine,
+        // mais simples reabrir que reusar.
+        ringbackPlayer?.release()
+        val mp = MediaPlayer.create(context, resId) ?: return@AsyncFunction false
+        mp.setAudioAttributes(
+          AudioAttributes.Builder()
+            .setUsage(AudioAttributes.USAGE_VOICE_COMMUNICATION)
+            .setContentType(AudioAttributes.CONTENT_TYPE_SONIFICATION)
+            .build()
+        )
+        mp.isLooping = true
+        mp.start()
+        ringbackPlayer = mp
+        true
+      } catch (e: Throwable) {
+        android.util.Log.w("CharlotteAudioSession", "playRingback error", e)
+        false
+      }
+    }
+
+    AsyncFunction("stopRingback") {
+      try {
+        ringbackPlayer?.stop()
+        ringbackPlayer?.release()
+      } catch (e: Throwable) {
+        android.util.Log.w("CharlotteAudioSession", "stopRingback error", e)
+      }
+      ringbackPlayer = null
+    }
 
     AsyncFunction("start") { preferSpeakerInput: Boolean ->
       this@CharlotteAudioSessionModule.preferSpeaker = preferSpeakerInput
@@ -53,6 +113,11 @@ class CharlotteAudioSessionModule : Module() {
     }
 
     AsyncFunction("stop") {
+      try {
+        ringbackPlayer?.stop()
+        ringbackPlayer?.release()
+      } catch (e: Throwable) { /* ignore */ }
+      ringbackPlayer = null
       removeHeadsetReceiver()
       audioManager?.let { am ->
         try {
