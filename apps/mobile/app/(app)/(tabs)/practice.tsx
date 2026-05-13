@@ -371,17 +371,14 @@ export default function PracticeTab() {
       <View style={{ flex: 1, position: 'relative' }}>
       <KeyboardAvoidingView
         style={{ flex: 1 }}
-        // iOS: KAV adiciona padding = (frame.bottom - keyboard.screenY) + offset.
-        // MAIOR offset = MAIS push. Como o input bar perdeu insets.bottom de
-        // padding interno (gap fix), precisamos somar insets.bottom aqui pra
-        // recuperar o push perdido. iPhone com home indicator: tabBarHeight 83
-        // + insets.bottom 34 + 12 = 129. Sem isso o teclado corta o input.
-        // Android: behavior undefined → KAV é passthrough. windowSoftInputMode
-        // adjustResize (definido em app.config.ts via expo-build-properties)
-        // redimensiona a window inteira quando o teclado abre, então não
-        // precisa nem deve ter padding/height extra do KAV — isso causava
-        // o input bar a ficar escondido atrás do teclado.
-        behavior={Platform.OS === 'ios' ? 'padding' : undefined}
+        // Padrão usado em todas as outras telas com TextInput do projeto
+        // (learn-session, learn-pronunciation, change-password, first-access,
+        // add-word, review-session). 'padding' no iOS soma offset ao input;
+        // 'height' no Android encolhe a View pela altura do teclado, deixando
+        // o input bar grudado no topo do teclado.
+        behavior={Platform.OS === 'ios' ? 'padding' : 'height'}
+        // iOS: tabBarHeight + insets.bottom + 12 = compensar o push perdido
+        // quando ChatInputBar abriu mão do insets.bottom interno (gap fix).
         keyboardVerticalOffset={Platform.OS === 'ios' ? tabBarHeight + insets.bottom + 12 : 0}
       >
         {/* ── Toggle pill (3 modos, hug content centered) ── */}

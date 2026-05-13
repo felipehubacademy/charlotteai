@@ -29,11 +29,6 @@ export default function TabLayout() {
         tabBarShowLabel: false,
         tabBarActiveTintColor: accent,
         tabBarInactiveTintColor: '#9896B8',
-        // Android: tab bar some quando o teclado abre. Combinado com
-        // windowSoftInputMode=adjustResize, o input bar gruda no topo do
-        // teclado sem competir por espaço vertical. iOS mantém visível
-        // (gesture: usuário pode trocar de tab com keyboard aberto).
-        tabBarHideOnKeyboard: Platform.OS === 'android',
         tabBarStyle: {
           backgroundColor: '#FFFFFF',
           borderTopColor: 'rgba(22,21,58,0.08)',
