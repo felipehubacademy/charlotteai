@@ -46,6 +46,12 @@ jobs:
           EXPO_PUBLIC_API_BASE_URL: https://charlotte.hubacademybr.com
           EXPO_PUBLIC_SUPABASE_URL: https://fnvjibzreepubageztoi.supabase.co
           EXPO_PUBLIC_SUPABASE_ANON_KEY: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImZudmppYnpyZWVwdWJhZ2V6dG9pIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NDgzNTYyNTgsImV4cCI6MjA2MzkzMjI1OH0.lm1h39VOgl-VwxnpGEFkvFrNRGIEeA1sQFI7xTJTsnw
+          # Sentry — sobe sourcemaps do bundle OTA pro painel. Sem isso,
+          # cada OTA gera nova release no Sentry mas com stack traces
+          # minificados. Token gerenciado em GitHub Secrets.
+          SENTRY_AUTH_TOKEN: ${{ secrets.SENTRY_AUTH_TOKEN }}
+          SENTRY_ORG: hub-academy
+          SENTRY_PROJECT: charlotte-mobile
           COMMIT_MSG: ${{ github.event.head_commit.message }}
         run: |
           MSG=$(printf '%s' "$COMMIT_MSG" | head -n 1 | cut -c1-100)

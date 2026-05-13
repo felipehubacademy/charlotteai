@@ -44,6 +44,12 @@ if (SENTRY_DSN) {
     // pra remover qualquer extra que esqueçamos.
     sendDefaultPii: false,
   });
+  // TODO REMOVE — smoke test event pra confirmar pipeline Sentry → painel.
+  // Remover assim que aparecer em hub-academy.sentry.io/issues com tag boot_smoke_test.
+  Sentry.captureMessage('boot ok', {
+    level: 'info',
+    tags: { boot_smoke_test: 'true' },
+  });
 }
 
 // Limpa caches de SFX pre-reformulacao (voz como SFX). Idempotente, roda uma vez por install.
