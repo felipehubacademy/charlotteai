@@ -63,7 +63,14 @@ export default ({ config }: ConfigContext): ExpoConfig => ({
     fallbackToCacheTimeout: 0,
     checkAutomatically: 'ON_LOAD',
   },
-  runtimeVersion: '1.0.0',
+  // Bumped 2026-05-13 (livevoice-reset): novo binario tem CharlotteAudioSession
+  // nativo e NAO tem mais react-native-incall-manager. Builds antigos em prod
+  // ('1.0.0') nao podem receber este bundle (crash em NativeModules.
+  // CharlotteAudioSession undefined) e este binario nao pode receber OTAs do
+  // main '1.0.0' (crash em NativeModules.InCallManager undefined). Quando
+  // este reset for mergeado pra main, main passa a publicar OTA pra '2.0.0'
+  // e usuarios em '1.0.0' so atualizam baixando a nova versao da App Store.
+  runtimeVersion: '2.0.0',
   plugins: [
     // eslint-disable-next-line @typescript-eslint/no-explicit-any
     ((config: ExpoConfig) => withAndroidManifest(config, (c) => {
