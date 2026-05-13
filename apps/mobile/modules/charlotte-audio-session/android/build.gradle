@@ -41,5 +41,6 @@ def safeExtGet(prop, fallback) {
 
 dependencies {
   implementation project(':expo-modules-core')
-  implementation "org.jetbrains.kotlin:kotlin-stdlib:${getKotlinVersion()}"
+  // kotlin-stdlib eh pulled transitivamente via applyKotlinExpoModulesCorePlugin().
+  // Nao declarar versao manual — versao do Kotlin vem do projeto raiz.
 }
