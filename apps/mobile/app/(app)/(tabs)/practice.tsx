@@ -371,15 +371,18 @@ export default function PracticeTab() {
       <View style={{ flex: 1, position: 'relative' }}>
       <KeyboardAvoidingView
         style={{ flex: 1 }}
-        // Padrão usado em todas as outras telas com TextInput do projeto
-        // (learn-session, learn-pronunciation, change-password, first-access,
-        // add-word, review-session). 'padding' no iOS soma offset ao input;
-        // 'height' no Android encolhe a View pela altura do teclado, deixando
-        // o input bar grudado no topo do teclado.
+        // iOS: 'padding' soma padding interno = keyboard - offset.
+        // Android: 'height' encolhe a View pela altura do teclado - offset.
+        // Em ambos, offset = tabBarHeight pra compensar que a tab bar já
+        // ocupa esse espaço entre o KAV e o fundo da tela (o sistema só
+        // empurra/encolhe ATÉ o topo do teclado; a tab bar fica embaixo
+        // do KAV mas dentro do que o sistema considera "espaço da janela").
         behavior={Platform.OS === 'ios' ? 'padding' : 'height'}
-        // iOS: tabBarHeight + insets.bottom + 12 = compensar o push perdido
-        // quando ChatInputBar abriu mão do insets.bottom interno (gap fix).
-        keyboardVerticalOffset={Platform.OS === 'ios' ? tabBarHeight + insets.bottom + 12 : 0}
+        keyboardVerticalOffset={
+          Platform.OS === 'ios'
+            ? tabBarHeight + insets.bottom + 12
+            : tabBarHeight
+        }
       >
         {/* ── Toggle pill (3 modos, hug content centered) ── */}
         <View style={{ alignItems: 'center', paddingTop: 12, paddingBottom: 8 }}>
