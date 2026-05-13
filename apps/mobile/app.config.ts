@@ -82,7 +82,6 @@ export default ({ config }: ConfigContext): ExpoConfig => ({
     'expo-updates',
     'expo-video',
     'expo-web-browser',
-    'expo-config-plugin-incall-manager',
     './plugins/with-incallmanager-ringback',
     [
       'expo-build-properties',
