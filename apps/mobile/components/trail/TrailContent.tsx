@@ -15,6 +15,7 @@ import { AppText } from '@/components/ui/Text';
 import { CURRICULUM, TrailLevel, topicHasContent } from '@/data/curriculum';
 import { MODULE_INTROS } from '@/data/moduleIntros';
 import { useLearnProgress } from '@/hooks/useLearnProgress';
+import { supabase } from '@/lib/supabase';
 
 // ── Helpers ───────────────────────────────────────────────────────────────────
 function a(hex: string, alpha: number): string {
@@ -71,6 +72,7 @@ interface Lesson {
   topicIdx:   number;        // -1 quando intro
   isIntro:    boolean;
   slideCount?: number;
+  score?:     number | null; // 0-100, calculado de learn_history
 }
 
 interface ModuleData {
@@ -81,6 +83,14 @@ interface ModuleData {
   totalCount:     number;
   pct:            number;
   state:          'done' | 'active' | 'locked';
+  avgScore:       number | null; // média dos scores das lessons concluídas
+}
+
+// ── Score color ramp ──────────────────────────────────────────────────────────
+function scoreColor(s: number): string {
+  if (s >= 85) return '#15803D';      // green
+  if (s >= 70) return '#D97706';      // gold
+  return '#DC2626';                   // red
 }
 
 // ── Segmented progress bar (4 segments, type-tinted) ──────────────────────────
@@ -194,17 +204,33 @@ function LessonRow({
         </AppText>
       </View>
 
-      {/* Action: ghost "Refazer" for done; solid green pill for next; nothing for locked */}
+      {/* Action: score badge + ghost "Refazer" for done; solid green pill for next; lock for locked */}
       {isDone && (
-        <View style={{
-          paddingHorizontal: 10, paddingVertical: 6,
-          borderRadius: 10,
-          borderWidth: 1, borderColor: C.borderMid,
-          backgroundColor: 'transparent',
-        }}>
-          <AppText style={{ fontSize: 11, fontWeight: '600', color: C.navyMid }}>
-            {isPt ? 'Refazer' : 'Redo'}
-          </AppText>
+        <View style={{ flexDirection: 'row', alignItems: 'center', gap: 6 }}>
+          {typeof lesson.score === 'number' && (
+            <View style={{
+              paddingHorizontal: 8, paddingVertical: 4,
+              borderRadius: 8,
+              backgroundColor: a(scoreColor(lesson.score), 0.12),
+            }}>
+              <AppText style={{
+                fontSize: 11, fontWeight: '700',
+                color: scoreColor(lesson.score),
+              }}>
+                {Math.round(lesson.score)}%
+              </AppText>
+            </View>
+          )}
+          <View style={{
+            paddingHorizontal: 10, paddingVertical: 6,
+            borderRadius: 10,
+            borderWidth: 1, borderColor: C.borderMid,
+            backgroundColor: 'transparent',
+          }}>
+            <AppText style={{ fontSize: 11, fontWeight: '600', color: C.navyMid }}>
+              {isPt ? 'Refazer' : 'Redo'}
+            </AppText>
+          </View>
         </View>
       )}
       {isNext && (
@@ -284,7 +310,10 @@ function ModuleCard({
             }}>
               {isLocked
                 ? (isPt ? `${data.totalCount} topicos · bloqueado` : `${data.totalCount} topics · locked`)
-                : `${data.completedCount} ${isPt ? 'de' : 'of'} ${data.totalCount} ${isPt ? 'concluidos' : 'completed'}`}
+                : `${data.completedCount} ${isPt ? 'de' : 'of'} ${data.totalCount} ${isPt ? 'concluidos' : 'completed'}`
+                  + (data.avgScore !== null
+                      ? `  ·  ${Math.round(data.avgScore)}% ${isPt ? 'acuracia' : 'accuracy'}`
+                      : '')}
             </AppText>
             <AppText
               numberOfLines={2}
@@ -326,22 +355,6 @@ function ModuleCard({
           borderTopWidth: 1, borderTopColor: C.border,
           paddingTop: 6,
         }}>
-          {isActive && (() => {
-            const remaining = data.totalCount - data.completedCount;
-            return (
-              <View style={{
-                paddingVertical: 10, marginBottom: 2,
-                borderBottomWidth: 1, borderBottomColor: C.hairline,
-              }}>
-                <AppText style={{ fontSize: 11, fontWeight: '600', color: C.navyMid }}>
-                  {remaining} {isPt
-                    ? (remaining === 1 ? 'licao restante' : 'licoes restantes')
-                    : (remaining === 1 ? 'lesson left'    : 'lessons left')}
-                </AppText>
-              </View>
-            );
-          })()}
-
           {data.lessons.map((l, i) => (
             <LessonRow
               key={l.key}
@@ -378,6 +391,40 @@ export function TrailContent({ userId, level, onCurrentTopicRef }: TrailContentP
 
   useFocusEffect(useCallback(() => { refetch(); }, [refetch]));
 
+  // ── Fetch per-lesson scores from learn_history (% correct + pronunciation score) ──
+  const [scoreMap, setScoreMap] = useState<Record<string, number>>({});
+  useEffect(() => {
+    if (!userId) return;
+    let cancelled = false;
+    (async () => {
+      const { data, error } = await supabase
+        .from('learn_history')
+        .select('module_index, topic_index, is_correct, score')
+        .eq('user_id', userId)
+        .eq('level', level);
+      if (error || cancelled || !data) return;
+
+      const acc: Record<string, { sum: number; n: number }> = {};
+      for (const row of data) {
+        const key = `m${row.module_index}_t${row.topic_index}`;
+        // Prefer pronunciation `score` (0-100) when present; else is_correct → 0/100
+        const v = typeof row.score === 'number'
+          ? Math.max(0, Math.min(100, row.score))
+          : row.is_correct ? 100 : 0;
+        const bucket = acc[key] ?? { sum: 0, n: 0 };
+        bucket.sum += v;
+        bucket.n   += 1;
+        acc[key]    = bucket;
+      }
+      const map: Record<string, number> = {};
+      for (const k of Object.keys(acc)) {
+        map[k] = acc[k].sum / acc[k].n;
+      }
+      if (!cancelled) setScoreMap(map);
+    })();
+    return () => { cancelled = true; };
+  }, [userId, level]);
+
   // Build module data — each module gets up to 4 lessons (intro + topics, capped at 4)
   const moduleData: ModuleData[] = useMemo(() => {
     return modules.map((mod, mIdx) => {
@@ -399,6 +446,7 @@ export function TrailContent({ userId, level, onCurrentTopicRef }: TrailContentP
           topicIdx:   -1,
           isIntro:    true,
           slideCount: intro.slides.length,
+          score:      null, // intros (mini-lessons) não têm score
         });
       }
 
@@ -407,8 +455,9 @@ export function TrailContent({ userId, level, onCurrentTopicRef }: TrailContentP
         const complete = isTopicComplete(mIdx, tIdx);
         const miniReq  = tIdx === 0 && !isIntroDone(mIdx);
         const locked   = !complete && (miniReq || isLocked(mIdx, tIdx));
+        const key      = `m${mIdx}_t${tIdx}`;
         lessons.push({
-          key:        `m${mIdx}_t${tIdx}`,
+          key,
           label:      topic.title,
           type:       TYPE_CYCLE[pos++] ?? 'grammar',
           state:      complete ? 'done' : locked ? 'locked' : 'next',
@@ -416,6 +465,7 @@ export function TrailContent({ userId, level, onCurrentTopicRef }: TrailContentP
           moduleIdx:  mIdx,
           topicIdx:   tIdx,
           isIntro:    false,
+          score:      complete && scoreMap[key] !== undefined ? scoreMap[key] : null,
         });
       });
 
@@ -436,12 +486,17 @@ export function TrailContent({ userId, level, onCurrentTopicRef }: TrailContentP
       else if (fixed.some(l => l.state === 'next'))                state = 'active';
       else                                                          state = 'locked';
 
+      const scored = fixed.filter(l => typeof l.score === 'number') as (Lesson & { score: number })[];
+      const avgScore = scored.length > 0
+        ? scored.reduce((s, l) => s + l.score, 0) / scored.length
+        : null;
+
       return {
         idx: mIdx, title: mod.title, lessons: fixed,
-        completedCount, totalCount, pct, state,
+        completedCount, totalCount, pct, state, avgScore,
       };
     });
-  }, [modules, level, isTopicComplete, isLocked, isIntroDone]);
+  }, [modules, level, isTopicComplete, isLocked, isIntroDone, scoreMap]);
 
   const activeIdx = useMemo(
     () => moduleData.findIndex(m => m.state === 'active'),
