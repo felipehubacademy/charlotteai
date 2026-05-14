@@ -1,0 +1,12 @@
+{
+  "level": {
+    "novice": [
+      {
+        "id": "M01",
+        "title": "Olá, mundo",
+        "file": "novice/M01.json"
+      }
+    ]
+  },
+  "generated_at": "2026-05-14T23:45:52.372Z"
+}

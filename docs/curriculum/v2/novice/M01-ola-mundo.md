@@ -331,7 +331,7 @@ Charlotte fala via ElevenLabs (Rachel). Aluno repete; Azure Speech avalia pronú
 **Persona**: Tom (colega de trabalho)
 **Persona outfit**: `tom_party_evening`
 **Intro (em PT)**: "Você adicionou o Tom no WhatsApp ontem (conheceu ele numa festa). Hoje manda a primeira mensagem se apresentando direito."
-**Opening message**: "Hey! Sorry, who's this? I added a few people last night 😅"
+**Opening message**: "Hey! Sorry, who's this? I added a few people last night."
 
 **Sub-objectives**:
 
@@ -498,7 +498,7 @@ Charlotte fala via ElevenLabs (Rachel). Aluno repete; Azure Speech avalia pronú
 **Persona**: Sarah (amiga de troca de idiomas, NYC)
 **Persona outfit**: `sarah_home_videocall`
 **Intro (em PT)**: "Você abriu um app de troca de idiomas e a Sarah, de NY, te mandou um 'Hi!'. Puxa conversa e descobre quem ela é (origem, nacionalidade, idade)."
-**Opening message**: "Hi! 👋 So nice to match with a Brazilian!"
+**Opening message**: "Hi! So nice to match with a Brazilian!"
 
 **Sub-objectives**:
 
@@ -523,7 +523,7 @@ Charlotte fala via ElevenLabs (Rachel). Aluno repete; Azure Speech avalia pronú
    **hint_pt**: "'How old are you?' é a pergunta padrão"
    **hint_en**: "'How old are you?' is the standard question"
 
-**Closing cue**: Sarah fecha com "Cool! Let's keep practicing 👋" quando os 3 objetivos baterem.
+**Closing cue**: Sarah fecha com "Cool! Let's keep practicing." quando os 3 objetivos baterem.
 **Recap (PT)**: "Ótimo! Você usou três chunks-chave: 'Where are you from?', 'Are you + nacionalidade?', 'How old are you?'. Note que país e nacionalidade são palavras diferentes: 'Brazil' (país) vs 'Brazilian' (nacionalidade), 'America' (país) vs 'American' (nacionalidade)."
 
 **Script** (referencial, 6 turnos):
@@ -700,7 +700,7 @@ Charlotte fala via ElevenLabs (Rachel). Aluno repete; Azure Speech avalia pronú
 2. **Maria**: "Good morning! I'm doing well, thanks. How about you?"
 
 3. **Student** (expected): "I'm good, thanks. A bit tired but excited for the weekend."
-   *Se aluno escrever só "I'm good":* Maria: "Glad to hear. Anything in particular going on today?" *(empurra o aluno a dar mais detalhe)*
+   *Se aluno escrever só "I'm good":* Maria: "Glad to hear. Anything in particular going on today?"
 
 4. **Maria**: "Same here! Are you ready for the meeting at 10?"
 
@@ -862,7 +862,7 @@ Charlotte fala via ElevenLabs (Rachel). Aluno repete; Azure Speech avalia pronú
 **Script** (referencial, 5 turnos):
 
 1. **Student** (expected): "Okay, I have to go now. It was great talking to you!"
-   *Se aluno escrever só "Bye":* Sarah: "Aww, just 'bye'? We had such a good chat — give me something warmer 😊 like 'it was great talking to you'."
+   *Se aluno escrever só "Bye":* Sarah: "Aww, just 'bye'? We had such a good chat — give me something warmer, like 'it was great talking to you'."
 
 2. **Sarah**: "Same here! Let's talk again soon."
 
