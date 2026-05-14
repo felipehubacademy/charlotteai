@@ -181,6 +181,19 @@ public class CharlotteAudioSessionModule: Module {
     .defaultToSpeaker, .allowBluetooth, .allowAirPlay
   ]
 
+  /// Marca isReapplyingRoute=true durante uma operacao que GERA route change
+  /// notifications. O flag NAO eh resetado sincrono no fim da operacao — as
+  /// notifications sao posted async na main queue, e se resetarmos antes
+  /// delas serem processadas, o handler vai re-disparar reapply (loop).
+  /// Por isso usamos asyncAfter 250ms — tempo suficiente pras notifications
+  /// pendentes serem absorvidas pelo handler com o flag ainda true.
+  private func suppressOurRouteChanges() {
+    isReapplyingRoute = true
+    DispatchQueue.main.asyncAfter(deadline: .now() + 0.25) { [weak self] in
+      self?.isReapplyingRoute = false
+    }
+  }
+
   private func configureSession() throws {
     NSLog("[CharlotteAudioSession] configureSession START preferSpeaker=\(preferSpeaker)")
 
@@ -199,10 +212,9 @@ public class CharlotteAudioSessionModule: Module {
     let session = AVAudioSession.sharedInstance()
 
     // mode: .default — chave da nao-priorizacao de USB. NAO usar .voiceChat.
-    // Set isReapplyingRoute pra absorver as route change notifications que
-    // estes setCategory/setActive/override vao gerar.
-    isReapplyingRoute = true
-    defer { isReapplyingRoute = false }
+    // suppressOurRouteChanges() absorve as notifications async geradas
+    // por setCategory/setActive/override.
+    suppressOurRouteChanges()
 
     try session.setCategory(.playAndRecord, mode: .default, options: Self.sessionOptions)
     try session.setActive(true, options: [.notifyOthersOnDeactivation])
@@ -275,14 +287,13 @@ public class CharlotteAudioSessionModule: Module {
       if !isOnSpeaker && !hasHeadphones {
         let rtcSession = RTCAudioSession.sharedInstance()
         rtcSession.lockForConfiguration()
-        self.isReapplyingRoute = true
+        self.suppressOurRouteChanges()
         do {
           try session.overrideOutputAudioPort(.speaker)
           NSLog("[CharlotteAudioSession] route forced back to speaker")
         } catch {
           NSLog("[CharlotteAudioSession] override after route change failed: \(error.localizedDescription)")
         }
-        self.isReapplyingRoute = false
         rtcSession.unlockForConfiguration()
       }
     }
@@ -303,7 +314,7 @@ public class CharlotteAudioSessionModule: Module {
         // Re-ativa session apos a interrupcao terminar.
         let rtcSession = RTCAudioSession.sharedInstance()
         rtcSession.lockForConfiguration()
-        self.isReapplyingRoute = true
+        self.suppressOurRouteChanges()
         do {
           try session.setActive(true, options: [.notifyOthersOnDeactivation])
           if self.preferSpeaker {
@@ -312,7 +323,6 @@ public class CharlotteAudioSessionModule: Module {
         } catch {
           NSLog("[CharlotteAudioSession] re-activate after interruption failed: \(error.localizedDescription)")
         }
-        self.isReapplyingRoute = false
         rtcSession.unlockForConfiguration()
       }
 
@@ -330,5 +340,6 @@ public class CharlotteAudioSessionModule: Module {
       nc.removeObserver(obs)
       interruptionObserver = nil
     }
+    isReapplyingRoute = false
   }
 }
