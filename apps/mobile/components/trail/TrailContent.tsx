@@ -315,13 +315,17 @@ export function TrailContent({ userId, level, onCurrentTopicRef }: TrailContentP
       // Record where this module begins in the slot array
       startsArr.push(slotsArr.length);
 
+      // Build all nodes for this module into a temp list, then cap at COLS (4).
+      // This keeps each module as exactly one row of 4 checkpoints.
+      const modNodes: { kind: 'node'; node: FlatNode }[] = [];
+
       // Optional mini-lesson intro
       const intro = MODULE_INTROS[level]?.[mIdx];
       if (intro) {
         const done        = isIntroDone(mIdx);
         const introLocked = mIdx > 0 &&
           modules[mIdx - 1].topics.some((_, t) => !isTopicComplete(mIdx - 1, t));
-        slotsArr.push({
+        modNodes.push({
           kind: 'node',
           node: {
             key: `m${mIdx}_intro`, label: intro.title, nodeType: 'grammar',
@@ -337,7 +341,7 @@ export function TrailContent({ userId, level, onCurrentTopicRef }: TrailContentP
         const complete = isTopicComplete(mIdx, tIdx);
         const miniReq  = tIdx === 0 && !isIntroDone(mIdx);
         const locked   = !complete && (miniReq || isLocked(mIdx, tIdx));
-        slotsArr.push({
+        modNodes.push({
           kind: 'node',
           node: {
             key: `m${mIdx}_t${tIdx}`, label: topic.title,
@@ -348,6 +352,10 @@ export function TrailContent({ userId, level, onCurrentTopicRef }: TrailContentP
           },
         });
       });
+
+      // Cap at COLS (4) — one row per module
+      const visible = modNodes.slice(0, COLS);
+      visible.forEach(s => slotsArr.push(s));
 
       // Pad to next row boundary so the next module always starts at col 0
       const rem = slotsArr.length % COLS;
