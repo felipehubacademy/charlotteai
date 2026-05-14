@@ -89,8 +89,8 @@ interface ModuleData {
 // ── Score color ramp ──────────────────────────────────────────────────────────
 function scoreColor(s: number): string {
   if (s >= 85) return '#15803D';      // green
-  if (s >= 70) return '#D97706';      // gold
-  return '#DC2626';                   // red
+  if (s >= 70) return '#B45309';      // muted gold
+  return '#B91C1C';                   // muted red
 }
 
 // ── Segmented progress bar (4 segments, type-tinted) ──────────────────────────
@@ -446,7 +446,9 @@ export function TrailContent({ userId, level, onCurrentTopicRef }: TrailContentP
           topicIdx:   -1,
           isIntro:    true,
           slideCount: intro.slides.length,
-          score:      null, // intros (mini-lessons) não têm score
+          // Intros vao receber exercicios em breve — usar score real se houver,
+          // senao 100 quando concluida (intro = "aula assistida").
+          score:      done ? (scoreMap[`m${mIdx}_intro`] ?? 100) : null,
         });
       }
 
