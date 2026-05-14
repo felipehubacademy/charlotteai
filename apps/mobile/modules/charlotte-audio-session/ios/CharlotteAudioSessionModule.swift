@@ -29,6 +29,11 @@ public class CharlotteAudioSessionModule: Module {
   private var preferSpeaker: Bool = true
   private var isActive: Bool = false
   private var ringbackPlayer: AVAudioPlayer?
+  // Reentrancy guard: setCategory/overrideOutputAudioPort dentro do route
+  // change handler geram NOVA route change notification, podendo loopar.
+  // Quando estamos no meio de reaplicar config, ignoramos a proxima
+  // notification gerada por nos mesmos.
+  private var isReapplyingRoute: Bool = false
 
   public func definition() -> ModuleDefinition {
     Name("CharlotteAudioSession")
@@ -169,12 +174,24 @@ public class CharlotteAudioSessionModule: Module {
 
   // MARK: - Internal
 
+  // Options da session — extraidas pra evitar duplicacao + tipagem implicita.
+  // Importante: .defaultToSpeaker eh INCOMPATIVEL com .allowBluetoothA2DP
+  // (Apple docs). Em call AirPods/headset Bluetooth usam HFP via .allowBluetooth.
+  private static let sessionOptions: AVAudioSession.CategoryOptions = [
+    .defaultToSpeaker, .allowBluetooth, .allowAirPlay
+  ]
+
   private func configureSession() throws {
+    NSLog("[CharlotteAudioSession] configureSession START preferSpeaker=\(preferSpeaker)")
+
     // Sob useManualAudio = true, toda mudanca de config tem que ser feita
     // dentro de lockForConfiguration() do RTCAudioSession pra ser respeitada.
     let rtcSession = RTCAudioSession.sharedInstance()
     rtcSession.lockForConfiguration()
-    defer { rtcSession.unlockForConfiguration() }
+    defer {
+      rtcSession.unlockForConfiguration()
+      NSLog("[CharlotteAudioSession] configureSession END")
+    }
 
     // Reafirma useManualAudio dentro do lock (idempotente, seguro).
     rtcSession.useManualAudio = true
@@ -182,17 +199,13 @@ public class CharlotteAudioSessionModule: Module {
     let session = AVAudioSession.sharedInstance()
 
     // mode: .default — chave da nao-priorizacao de USB. NAO usar .voiceChat.
-    try session.setCategory(
-      .playAndRecord,
-      mode: .default,
-      // .defaultToSpeaker eh incompativel com .allowBluetoothA2DP (Apple docs).
-// Em chamada, AirPods/headset Bluetooth usam HFP profile via .allowBluetooth,
-// nao A2DP. Mantemos .allowBluetooth + .allowAirPlay.
-options: [.defaultToSpeaker, .allowBluetooth, .allowAirPlay]
-    )
+    // Set isReapplyingRoute pra absorver as route change notifications que
+    // estes setCategory/setActive/override vao gerar.
+    isReapplyingRoute = true
+    defer { isReapplyingRoute = false }
 
+    try session.setCategory(.playAndRecord, mode: .default, options: Self.sessionOptions)
     try session.setActive(true, options: [.notifyOthersOnDeactivation])
-
     if preferSpeaker {
       try session.overrideOutputAudioPort(.speaker)
     }
@@ -201,6 +214,7 @@ options: [.defaultToSpeaker, .allowBluetooth, .allowAirPlay]
     // o audio (sem reconfigurar). isAudioEnabled = true diz: "pode usar a
     // session que ja preparei". Sem isso, WebRTC fica mudo sob manual mode.
     rtcSession.isAudioEnabled = true
+    NSLog("[CharlotteAudioSession] configureSession OK category set, active, speaker=\(preferSpeaker), isAudioEnabled=true")
   }
 
   private func installObservers() {
@@ -224,57 +238,53 @@ options: [.defaultToSpeaker, .allowBluetooth, .allowAirPlay]
 
       NSLog("[CharlotteAudioSession] route change reason=\(reasonRaw) outputs=\(outputs)")
 
-      // Re-aplica override se preferimos speaker e a rota foi pra algo nao-speaker.
-      if self.preferSpeaker {
-        let isOnSpeaker = currentRoute.outputs.contains { $0.portType == .builtInSpeaker }
-        let hasHeadphones = currentRoute.outputs.contains {
-          $0.portType == .headphones || $0.portType == .bluetoothA2DP || $0.portType == .bluetoothHFP
-        }
-        // Cabo USB/Lightning aparece como .usbAudio que NAO eh headphones
-        // reais — devemos pisar nele.
-        if !isOnSpeaker && !hasHeadphones {
-          let rtcSession = RTCAudioSession.sharedInstance()
-          rtcSession.lockForConfiguration()
-          do {
-            try session.overrideOutputAudioPort(.speaker)
-            NSLog("[CharlotteAudioSession] route forced back to speaker")
-          } catch {
-            NSLog("[CharlotteAudioSession] override after route change failed: \(error.localizedDescription)")
-          }
-          rtcSession.unlockForConfiguration()
-        }
-
-        // Race: WebRTC negotiation pode trocar categoria. Sob useManualAudio
-        // isso nao deveria acontecer — mas tem listener defensivo caso outro
-        // ator (expo-audio, etc) mexa na session.
-        if session.mode != .default && self.isActive {
-          let rtcSession = RTCAudioSession.sharedInstance()
-          rtcSession.lockForConfiguration()
-          do {
-            try session.setCategory(
-              .playAndRecord,
-              mode: .default,
-              // .defaultToSpeaker eh incompativel com .allowBluetoothA2DP (Apple docs).
-// Em chamada, AirPods/headset Bluetooth usam HFP profile via .allowBluetooth,
-// nao A2DP. Mantemos .allowBluetooth + .allowAirPlay.
-options: [.defaultToSpeaker, .allowBluetooth, .allowAirPlay]
-            )
-            if self.preferSpeaker {
-              try session.overrideOutputAudioPort(.speaker)
-            }
-            NSLog("[CharlotteAudioSession] category re-applied (mode was \(session.mode.rawValue))")
-          } catch {
-            NSLog("[CharlotteAudioSession] re-apply failed: \(error.localizedDescription)")
-          }
-          rtcSession.unlockForConfiguration()
-        }
-      }
-
-      // Emite pra JS pra logging/analytics.
+      // Emite pra JS pra logging/analytics (sempre, independente de reapply).
       self.sendEvent("onRouteChange", [
         "reason": reasonRaw,
         "outputs": outputs,
       ])
+
+      // Anti-loop: se estamos NO MEIO de uma reaplicacao nossa, ignora a
+      // notification (ela foi causada pelo nosso setCategory/override).
+      if self.isReapplyingRoute {
+        NSLog("[CharlotteAudioSession] ignoring (we caused it)")
+        return
+      }
+
+      // So reaplica em razoes que indicam mudanca EXTERNA real (acessorio
+      // plugou/desplugou, sistema decidiu mudar rota). Razoes como
+      // .categoryChange e .override sao causadas por NOS (ou WebRTC) — nao
+      // queremos reaplicar pra elas, gera loop.
+      let needsReapply: Bool
+      switch reason {
+      case .newDeviceAvailable, .oldDeviceUnavailable, .noSuitableRouteForCategory:
+        needsReapply = true
+      default:
+        needsReapply = false
+      }
+      if !needsReapply { return }
+
+      // Re-aplica override SO se preferimos speaker E rota foi pra algo nao-headphone.
+      guard self.preferSpeaker && self.isActive else { return }
+      let isOnSpeaker = currentRoute.outputs.contains { $0.portType == .builtInSpeaker }
+      let hasHeadphones = currentRoute.outputs.contains {
+        $0.portType == .headphones || $0.portType == .bluetoothA2DP || $0.portType == .bluetoothHFP
+      }
+      // Cabo USB/Lightning aparece como .usbAudio que NAO eh headphones
+      // reais — devemos pisar nele.
+      if !isOnSpeaker && !hasHeadphones {
+        let rtcSession = RTCAudioSession.sharedInstance()
+        rtcSession.lockForConfiguration()
+        self.isReapplyingRoute = true
+        do {
+          try session.overrideOutputAudioPort(.speaker)
+          NSLog("[CharlotteAudioSession] route forced back to speaker")
+        } catch {
+          NSLog("[CharlotteAudioSession] override after route change failed: \(error.localizedDescription)")
+        }
+        self.isReapplyingRoute = false
+        rtcSession.unlockForConfiguration()
+      }
     }
 
     // Interruption — chamada telefonica, Siri, alarm. Re-ativa session no .ended.
@@ -293,6 +303,7 @@ options: [.defaultToSpeaker, .allowBluetooth, .allowAirPlay]
         // Re-ativa session apos a interrupcao terminar.
         let rtcSession = RTCAudioSession.sharedInstance()
         rtcSession.lockForConfiguration()
+        self.isReapplyingRoute = true
         do {
           try session.setActive(true, options: [.notifyOthersOnDeactivation])
           if self.preferSpeaker {
@@ -301,6 +312,7 @@ options: [.defaultToSpeaker, .allowBluetooth, .allowAirPlay]
         } catch {
           NSLog("[CharlotteAudioSession] re-activate after interruption failed: \(error.localizedDescription)")
         }
+        self.isReapplyingRoute = false
         rtcSession.unlockForConfiguration()
       }
 
