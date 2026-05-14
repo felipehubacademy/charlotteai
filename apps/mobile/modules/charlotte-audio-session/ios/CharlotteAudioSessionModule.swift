@@ -48,7 +48,7 @@ public class CharlotteAudioSessionModule: Module {
       cfg.category = AVAudioSession.Category.playAndRecord.rawValue
       cfg.mode = AVAudioSession.Mode.videoChat.rawValue
       cfg.categoryOptions = [.allowBluetooth, .defaultToSpeaker]
-      RTCAudioSessionConfiguration.setWebRTCConfiguration(cfg)
+      RTCAudioSessionConfiguration.setWebRTC(cfg)
       NSLog("[CharlotteAudioSession] webRTC config pre-seeded (playAndRecord + videoChat + defaultToSpeaker + allowBluetooth)")
     }
 
