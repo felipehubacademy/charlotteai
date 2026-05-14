@@ -3,9 +3,10 @@ import { useFocusEffect } from 'expo-router';
 import { useAchievementsContext } from '@/components/achievements/AchievementsProvider';
 import {
   View, ScrollView, TouchableOpacity, TextInput,
-  KeyboardAvoidingView, Platform, Animated,
+  Platform, Animated,
   ActivityIndicator, Pressable, Modal,
 } from 'react-native';
+import { KeyboardAvoidingView } from 'react-native-keyboard-controller';
 import { SafeAreaView, useSafeAreaInsets } from 'react-native-safe-area-context';
 import { router, useLocalSearchParams } from 'expo-router';
 import {
@@ -42,6 +43,8 @@ import {
   CURRICULUM, TrailLevel, GrammarEx, PronStep,
   getTopic,
 } from '@/data/curriculum';
+import { getV2TopicForUnit } from '@/lib/curriculum-v2/adapter';
+import type { Level as V2Level } from '@/lib/curriculum-v2/types';
 import { checkLevelPromotion, promoteUserLevel, NEXT_LEVEL } from '@/lib/levelPromotion';
 import PromotionModal from '@/components/ui/PromotionModal';
 import { supabase } from '@/lib/supabase';
@@ -170,10 +173,15 @@ function wordMatchPercent(spoken: string, reference: string): number {
 
 // ── Main screen ────────────────────────────────────────────────
 export default function LearnSessionScreen() {
-  const params      = useLocalSearchParams<{ level: string; moduleIndex: string; topicIndex: string; reviewId?: string }>();
+  const params = useLocalSearchParams<{
+    level: string; moduleIndex: string; topicIndex: string; reviewId?: string;
+    // v2 params — if v=v2, load from curriculum-v2 by moduleId/unitId
+    v?: string; moduleId?: string; unitId?: string; activity?: string;
+  }>();
   const level       = (params.level ?? 'Novice') as TrailLevel;
   const moduleIndex = parseInt(params.moduleIndex ?? '0', 10);
   const topicIndex  = parseInt(params.topicIndex  ?? '0', 10);
+  const isV2        = params.v === 'v2' && !!params.moduleId && !!params.unitId;
 
   const { profile, refreshProfile } = useAuth();
   const userId      = profile?.id;
@@ -181,7 +189,10 @@ export default function LearnSessionScreen() {
   const isPortuguese = userLevel === 'Novice';
   const baseTotalXP = useTotalXP(userId);
   const insets      = useSafeAreaInsets();
-  const { saveTopicComplete, saveExercise } = useLearnProgress(userId, level);
+  const learnProgress = useLearnProgress(userId, level);
+  // v2 mode skips v1 progress writes (no trail integration yet — Phase 5 problem)
+  const saveTopicComplete = isV2 ? (async () => {}) : learnProgress.saveTopicComplete;
+  const saveExercise      = isV2 ? (async () => {}) : learnProgress.saveExercise;
   const { pauseNotifications } = useAchievementsContext();
 
   useFocusEffect(
@@ -191,7 +202,14 @@ export default function LearnSessionScreen() {
     }, [pauseNotifications])
   );
 
-  const topic = getTopic(level, moduleIndex, topicIndex);
+  const topic = isV2
+    ? getV2TopicForUnit(
+        level as V2Level,
+        params.moduleId!,
+        params.unitId!,
+        (params.activity as 'grammar' | 'ls' | 'both') ?? 'both'
+      )
+    : getTopic(level, moduleIndex, topicIndex);
 
   // ── Build flat steps array ─────────────────────────────────
   const steps: SessionStep[] = [
@@ -210,7 +228,9 @@ export default function LearnSessionScreen() {
 
   // ── Step index — with resume from SecureStore ──────────────
   const resumeKey = userId
-    ? `learn_step_${userId}_${level}_${moduleIndex}_${topicIndex}`
+    ? (isV2
+        ? `learn_step_v2_${userId}_${params.moduleId}_${params.unitId}_${params.activity ?? 'both'}`
+        : `learn_step_${userId}_${level}_${moduleIndex}_${topicIndex}`)
     : null;
 
   const [stepIdx, setStepIdx]         = useState(0);

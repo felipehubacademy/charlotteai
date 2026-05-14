@@ -594,15 +594,33 @@ export default function ConfiguracoesScreen() {
         )}
 
         {/* Beta features */}
-        {profile?.beta_features?.includes('karaoke') && (
+        {(profile?.beta_features?.includes('karaoke') || profile?.beta_features?.includes('curriculum_v2')) && (
           <>
             <SectionTitle label="Beta" />
-            <SettingRow
-              icon={<Microphone size={18} color={C.greenDark} weight="duotone" />}
-              label="Read Aloud (Karaoke)"
-              onPress={() => router.push('/(app)/karaoke-exercise' as any)}
-              chevron
-            />
+            {profile?.beta_features?.includes('karaoke') && (
+              <SettingRow
+                icon={<Microphone size={18} color={C.greenDark} weight="duotone" />}
+                label="Read Aloud (Karaoke)"
+                onPress={() => router.push('/(app)/karaoke-exercise' as any)}
+                chevron
+              />
+            )}
+            {profile?.beta_features?.includes('curriculum_v2') && (
+              <>
+                <SettingRow
+                  icon={<BookOpen size={18} color={C.greenDark} weight="duotone" />}
+                  label="v2 M01 N01 — Grammar"
+                  onPress={() => router.push({ pathname: '/(app)/learn-session' as any, params: { v: 'v2', level: 'Novice', moduleId: 'M01', unitId: 'N01', activity: 'grammar' } })}
+                  chevron
+                />
+                <SettingRow
+                  icon={<BookOpen size={18} color={C.greenDark} weight="duotone" />}
+                  label="v2 M01 N01 — Listening/Speaking"
+                  onPress={() => router.push({ pathname: '/(app)/learn-session' as any, params: { v: 'v2', level: 'Novice', moduleId: 'M01', unitId: 'N01', activity: 'ls' } })}
+                  chevron
+                />
+              </>
+            )}
           </>
         )}
 
