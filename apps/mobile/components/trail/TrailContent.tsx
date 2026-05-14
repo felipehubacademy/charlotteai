@@ -201,57 +201,49 @@ function LessonRow({
           textTransform: 'uppercase',
         }}>
           {isPt ? cfg.labelPt : cfg.label}
+          {isDone && typeof lesson.score === 'number' && (
+            <AppText style={{ color: scoreColor(lesson.score) }}>
+              {`  ·  ${Math.round(lesson.score)}%`}
+            </AppText>
+          )}
         </AppText>
       </View>
 
-      {/* Action: score badge + ghost "Refazer" for done; solid green pill for next; lock for locked */}
+      {/* All action pills share size: paddingHorizontal:10 paddingVertical:6 borderRadius:10 */}
       {isDone && (
-        <View style={{ flexDirection: 'row', alignItems: 'center', gap: 6 }}>
-          {typeof lesson.score === 'number' && (
-            <View style={{
-              paddingHorizontal: 8, paddingVertical: 4,
-              borderRadius: 8,
-              backgroundColor: a(scoreColor(lesson.score), 0.12),
-            }}>
-              <AppText style={{
-                fontSize: 11, fontWeight: '700',
-                color: scoreColor(lesson.score),
-              }}>
-                {Math.round(lesson.score)}%
-              </AppText>
-            </View>
-          )}
-          <View style={{
-            paddingHorizontal: 10, paddingVertical: 6,
-            borderRadius: 10,
-            borderWidth: 1, borderColor: C.borderMid,
-            backgroundColor: 'transparent',
-          }}>
-            <AppText style={{ fontSize: 11, fontWeight: '600', color: C.navyMid }}>
-              {isPt ? 'Refazer' : 'Redo'}
-            </AppText>
-          </View>
+        <View style={{
+          paddingHorizontal: 10, paddingVertical: 6,
+          borderRadius: 10,
+          borderWidth: 1, borderColor: C.borderMid,
+          backgroundColor: 'transparent',
+        }}>
+          <AppText style={{ fontSize: 11, fontWeight: '600', color: C.navyMid }}>
+            {isPt ? 'Refazer' : 'Redo'}
+          </AppText>
         </View>
       )}
       {isNext && (
         <View style={{
-          flexDirection: 'row', alignItems: 'center', gap: 4,
-          paddingLeft: 12, paddingRight: 8, paddingVertical: 7,
+          paddingHorizontal: 10, paddingVertical: 6,
           borderRadius: 10,
           backgroundColor: NEXT_GREEN,
-          ...Platform.select({
-            ios:     { shadowColor: NEXT_GREEN, shadowOpacity: 0.30, shadowRadius: 6, shadowOffset: { width: 0, height: 2 } },
-            android: { elevation: 2 },
-          }),
         }}>
-          <AppText style={{ fontSize: 12, fontWeight: '700', color: '#FFF' }}>
+          <AppText style={{ fontSize: 11, fontWeight: '700', color: '#FFF' }}>
             {isPt ? 'Comecar' : 'Start'}
           </AppText>
           <CaretRight size={13} color="#FFF" weight="bold" />
         </View>
       )}
       {isLocked && (
-        <Lock size={14} color={C.navyLight} weight="regular" />
+        <View style={{
+          paddingHorizontal: 10, paddingVertical: 6,
+          borderRadius: 10,
+          borderWidth: 1, borderColor: C.border,
+          backgroundColor: C.ghost,
+          alignItems: 'center', justifyContent: 'center',
+        }}>
+          <Lock size={13} color={C.navyLight} weight="regular" />
+        </View>
       )}
     </TouchableOpacity>
   );
