@@ -231,7 +231,6 @@ function LessonRow({
           <AppText style={{ fontSize: 11, fontWeight: '700', color: '#FFF' }}>
             {isPt ? 'Comecar' : 'Start'}
           </AppText>
-          <CaretRight size={13} color="#FFF" weight="bold" />
         </View>
       )}
       {isLocked && (
