@@ -235,10 +235,11 @@ function LessonRow({
       )}
       {isLocked && (
         <View style={{
+          minWidth: 52,
           paddingHorizontal: 10, paddingVertical: 6,
           borderRadius: 10,
-          borderWidth: 1, borderColor: C.border,
-          backgroundColor: C.ghost,
+          borderWidth: 1, borderColor: C.borderMid,
+          backgroundColor: 'transparent',
           alignItems: 'center', justifyContent: 'center',
         }}>
           <Lock size={13} color={C.navyLight} weight="regular" />
