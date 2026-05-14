@@ -16,6 +16,11 @@ Pod::Spec.new do |s|
   s.static_framework = true
 
   s.dependency 'ExpoModulesCore'
+  # Precisamos acessar RTCAudioSession (do react-native-webrtc) pra setar
+  # useManualAudio = YES e impedir WebRTC de tomar "primary session" do
+  # AVAudioSession — que causa "Operation Denied / !pri" nos nossos
+  # setCategory/setActive no iOS.
+  s.dependency 'react-native-webrtc'
 
   # Swift/Objective-C compatibility
   s.pod_target_xcconfig = {

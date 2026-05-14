@@ -1,22 +1,27 @@
 import ExpoModulesCore
 import AVFoundation
+import WebRTC
 
 /**
  * CharlotteAudioSession — substitui InCallManager para Live Voice.
  *
- * Decisao chave (vs InCallManager):
- *   - mode: .default em vez de .voiceChat — VoiceChat prioriza rotas externas
- *     (USB DAC, cabo Lightning com audio) e ignora overrideOutputAudioPort.
- *     Resultado: com cabo conectado, audio nao toca pelo speaker. Modo .default
- *     respeita DefaultToSpeaker mesmo com USB plugado.
+ * Decisoes chave:
+ *   - RTCAudioSession.useManualAudio = YES — desativa o gerenciamento
+ *     automatico do react-native-webrtc sobre AVAudioSession. Sem isso,
+ *     WebRTC toma a "primary session" e nossos setCategory/setActive sao
+ *     rejeitados com -15685 "Operation Denied / !pri" (especialmente com
+ *     USB Audio Device plugado). Nos controlamos a session manualmente.
+ *   - mode: .default em vez de .voiceChat — VoiceChat prioriza rotas
+ *     externas (USB DAC, cabo Lightning com audio) e ignora
+ *     overrideOutputAudioPort. Modo .default respeita DefaultToSpeaker.
  *   - Listener de RouteChangeNotification re-aplica override em qualquer
- *     mudanca de rota (Bluetooth, cabo plugou/desplugou, etc).
+ *     mudanca de rota.
  *   - Listener de InterruptionNotification re-ativa session apos chamada
  *     telefonica / Siri / outras interrupcoes.
  *
- * Eco / AEC: WebRTC habilita AEC quando o RTCAudioSession detecta categoria
- * PlayAndRecord. Nao precisamos de mode .voiceChat pra ter AEC — o WebRTC
- * software AEC roda independente do mode.
+ * Eco / AEC: WebRTC habilita AEC software automaticamente quando o peer
+ * connection ativa o audio track. Funciona com mode .default — nao
+ * precisamos de .voiceChat pra ter AEC.
  */
 public class CharlotteAudioSessionModule: Module {
   private var routeChangeObserver: NSObjectProtocol?
@@ -29,6 +34,14 @@ public class CharlotteAudioSessionModule: Module {
     Name("CharlotteAudioSession")
 
     Events("onRouteChange", "onInterruption")
+
+    // Executa assim que o modulo eh registrado no runtime (antes do JS importar
+    // react-native-webrtc). Critico: setar useManualAudio = true ANTES do
+    // WebRTC instanciar o RTCAudioSession singleton em modo automatico.
+    OnCreate {
+      RTCAudioSession.sharedInstance().useManualAudio = true
+      NSLog("[CharlotteAudioSession] RTCAudioSession.useManualAudio = true (bootstrap)")
+    }
 
     /**
      * Toca o ringback (incallmanager_ringback.mp3) em loop.
@@ -103,6 +116,17 @@ public class CharlotteAudioSessionModule: Module {
       self.ringbackPlayer?.stop()
       self.ringbackPlayer = nil
       self.removeObservers()
+
+      let rtcSession = RTCAudioSession.sharedInstance()
+      rtcSession.lockForConfiguration()
+      rtcSession.isAudioEnabled = false  // WebRTC para de usar audio
+      do {
+        try rtcSession.setActive(false)
+      } catch {
+        NSLog("[CharlotteAudioSession] rtcSession setActive false error: \(error.localizedDescription)")
+      }
+      rtcSession.unlockForConfiguration()
+
       let session = AVAudioSession.sharedInstance()
       do {
         try session.setActive(false, options: [.notifyOthersOnDeactivation])
@@ -120,6 +144,9 @@ public class CharlotteAudioSessionModule: Module {
      */
     AsyncFunction("setSpeakerOn") { (on: Bool) -> Bool in
       self.preferSpeaker = on
+      let rtcSession = RTCAudioSession.sharedInstance()
+      rtcSession.lockForConfiguration()
+      defer { rtcSession.unlockForConfiguration() }
       do {
         let session = AVAudioSession.sharedInstance()
         try session.overrideOutputAudioPort(on ? .speaker : .none)
@@ -143,6 +170,15 @@ public class CharlotteAudioSessionModule: Module {
   // MARK: - Internal
 
   private func configureSession() throws {
+    // Sob useManualAudio = true, toda mudanca de config tem que ser feita
+    // dentro de lockForConfiguration() do RTCAudioSession pra ser respeitada.
+    let rtcSession = RTCAudioSession.sharedInstance()
+    rtcSession.lockForConfiguration()
+    defer { rtcSession.unlockForConfiguration() }
+
+    // Reafirma useManualAudio dentro do lock (idempotente, seguro).
+    rtcSession.useManualAudio = true
+
     let session = AVAudioSession.sharedInstance()
 
     // mode: .default — chave da nao-priorizacao de USB. NAO usar .voiceChat.
@@ -157,6 +193,11 @@ public class CharlotteAudioSessionModule: Module {
     if preferSpeaker {
       try session.overrideOutputAudioPort(.speaker)
     }
+
+    // Agora que session esta configurada e ativa, libera o WebRTC pra usar
+    // o audio (sem reconfigurar). isAudioEnabled = true diz: "pode usar a
+    // session que ja preparei". Sem isso, WebRTC fica mudo sob manual mode.
+    rtcSession.isAudioEnabled = true
   }
 
   private func installObservers() {
@@ -181,28 +222,31 @@ public class CharlotteAudioSessionModule: Module {
       NSLog("[CharlotteAudioSession] route change reason=\(reasonRaw) outputs=\(outputs)")
 
       // Re-aplica override se preferimos speaker e a rota foi pra algo nao-speaker.
-      // Razao .categoryChange acontece quando WebRTC re-aplica AVAudioSession
-      // internamente — precisamos reafirmar nossa categoria.
       if self.preferSpeaker {
         let isOnSpeaker = currentRoute.outputs.contains { $0.portType == .builtInSpeaker }
         let hasHeadphones = currentRoute.outputs.contains {
           $0.portType == .headphones || $0.portType == .bluetoothA2DP || $0.portType == .bluetoothHFP
         }
-        // Se nao temos headphones reais (Bluetooth/headphones) e nao estamos
-        // no speaker, force speaker. Cabo USB/Lightning aparece como
-        // .usbAudio que NAO eh headphones reais — devemos pisar nele.
+        // Cabo USB/Lightning aparece como .usbAudio que NAO eh headphones
+        // reais — devemos pisar nele.
         if !isOnSpeaker && !hasHeadphones {
+          let rtcSession = RTCAudioSession.sharedInstance()
+          rtcSession.lockForConfiguration()
           do {
             try session.overrideOutputAudioPort(.speaker)
             NSLog("[CharlotteAudioSession] route forced back to speaker")
           } catch {
             NSLog("[CharlotteAudioSession] override after route change failed: \(error.localizedDescription)")
           }
+          rtcSession.unlockForConfiguration()
         }
 
-        // Race: WebRTC negotiation pode trocar categoria pra .voiceChat.
-        // Reafirma se detectarmos mode errado.
+        // Race: WebRTC negotiation pode trocar categoria. Sob useManualAudio
+        // isso nao deveria acontecer — mas tem listener defensivo caso outro
+        // ator (expo-audio, etc) mexa na session.
         if session.mode != .default && self.isActive {
+          let rtcSession = RTCAudioSession.sharedInstance()
+          rtcSession.lockForConfiguration()
           do {
             try session.setCategory(
               .playAndRecord,
@@ -216,6 +260,7 @@ public class CharlotteAudioSessionModule: Module {
           } catch {
             NSLog("[CharlotteAudioSession] re-apply failed: \(error.localizedDescription)")
           }
+          rtcSession.unlockForConfiguration()
         }
       }
 
@@ -240,6 +285,8 @@ public class CharlotteAudioSessionModule: Module {
 
       if type == .ended && self.isActive {
         // Re-ativa session apos a interrupcao terminar.
+        let rtcSession = RTCAudioSession.sharedInstance()
+        rtcSession.lockForConfiguration()
         do {
           try session.setActive(true, options: [.notifyOthersOnDeactivation])
           if self.preferSpeaker {
@@ -248,6 +295,7 @@ public class CharlotteAudioSessionModule: Module {
         } catch {
           NSLog("[CharlotteAudioSession] re-activate after interruption failed: \(error.localizedDescription)")
         }
+        rtcSession.unlockForConfiguration()
       }
 
       self.sendEvent("onInterruption", ["type": typeRaw])

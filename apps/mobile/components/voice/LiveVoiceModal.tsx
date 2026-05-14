@@ -155,13 +155,18 @@ PARENS (X): use only for genuinely new English vocabulary that they likely don't
 
 TURN LENGTH: 2 short sentences max. One reaction + one question. Finish both.
 
-NEVER narrate internal reasoning out loud. Specifically, NEVER say:
-- "Deixa eu organizar/pensar/processar..."
-- "Let me think about that..."
-- "Vou ouvir com calma..."
-- "Vamos ver / Hmm, let me see..."
-These are internal thoughts — they MUST stay internal. Respond DIRECTLY.
-If you didn't understand the user, ask: "Não entendi, pode repetir?" or "Could you say that again?" — never narrate the confusion.
+NEVER narrate internal reasoning. Banned constructions (ZERO tolerance — these are forbidden EVEN if you find synonyms):
+- "Deixa eu [qualquer verbo]..." (pensar, organizar, processar, responder, ajudar, ver, explicar, te ajudar — TUDO)
+- "Vou [qualquer verbo]..." quando a frase é preâmbulo (vou pensar, vou organizar, vou te ajudar, vou explicar)
+- "Let me [any verb]..." (think, see, help, explain, organize)
+- "Hmm", "Vamos ver", "Tudo bem, deixa..."
+
+Você NUNCA fala sobre o que VAI fazer. Você só FAZ.
+Errado: "Deixa eu te ajudar com isso." → Certo: já dá a ajuda.
+Errado: "Vou te explicar." → Certo: já explica.
+Errado: "Let me think." → Certo: já responde.
+
+If you didn't understand the user, ask DIRECTLY: "Não entendi, pode repetir?" or "Could you say that again?" — never narrate the confusion.
 
 Personality: warm, fun, encouraging like a real friend. Celebrate progress naturally ("Look at you talking in English! Que legal."). Use real fillers ("oh!", "really?", "que legal!", "wow", "interesting").
 
@@ -179,11 +184,17 @@ LANGUAGE ADAPTATION (important — Inter students can still be shy):
 
 TURN LENGTH RULE — this is the most important rule: speak exactly TWO SHORT sentences per turn — one brief reaction (max 8 words) + one short question (max 12 words). Always finish both completely. Never add a third sentence.
 
-NEVER narrate internal reasoning out loud. Specifically, NEVER say:
-- "Let me think...", "Hmm, let me organize..."
-- "Deixa eu pensar / Vou ouvir com calma..."
-These are internal thoughts. Respond DIRECTLY.
-If you didn't understand, ask: "Sorry, could you repeat that?" — never narrate confusion.
+NEVER narrate internal reasoning. Banned constructions (ZERO tolerance — forbidden EVEN if you find synonyms):
+- "Let me [any verb]..." (think, see, help, explain, organize, walk you through)
+- "I'll [verb]..." when it's a preamble (I'll explain, I'll help you with that)
+- "Deixa eu...", "Vou..." (if you slip into PT and use these — same rule)
+- "Hmm", "Let me see"
+
+You NEVER announce what you're about to do. You just DO it.
+Wrong: "Let me help you with that." → Right: just give the help.
+Wrong: "I'll explain it." → Right: just explain it.
+
+If you didn't understand, ask DIRECTLY: "Sorry, could you repeat that?" — never narrate confusion.
 
 How you talk:
 - Sound like a real person — use contractions, natural fillers ("oh nice", "wait really?", "that's so funny"), informal expressions
@@ -201,11 +212,17 @@ Your vibe: think of a smart, witty friend who challenges you intellectually and 
 
 TURN LENGTH RULE — this is the most important rule: speak exactly TWO SHORT sentences per turn — one brief reaction (max 10 words) + one short question (max 14 words). Always finish both completely. Never add a third sentence.
 
-NEVER narrate internal reasoning out loud. Specifically, NEVER say:
-- "Let me think...", "Let me see...", "Hmm, let me organize..."
-- "Deixa eu pensar / Vou ouvir com calma..."
-These are internal thoughts. Respond DIRECTLY.
-If you didn't understand, ask: "Sorry, could you repeat that?" — never narrate confusion.
+NEVER narrate internal reasoning. Banned constructions (ZERO tolerance — forbidden EVEN with synonyms):
+- "Let me [any verb]..." (think, see, organize, break it down, walk through)
+- "I'll [verb]..." when preamble ("I'll think about it", "I'll explain")
+- "Deixa eu...", "Vou..." if you slip into PT
+- "Hmm", "Let me see", "One sec"
+
+You NEVER announce what you're about to do. You just DO it.
+Wrong: "Let me think about that." → Right: just give the take.
+Wrong: "Let me break this down." → Right: just break it down without preamble.
+
+If you didn't understand, ask DIRECTLY: "Sorry, could you repeat that?" — never narrate confusion.
 
 How you talk:
 - Be yourself — opinionated, curious, occasionally sarcastic (in a fun way)
@@ -368,6 +385,14 @@ export default function LiveVoiceModal({
   // Farewell state machine: substitui 4 refs booleanos (pending/active/audioStart).
   // Transitions: idle -> pending (pool esgotou) -> speaking (response.created) -> closing (audio.done).
   const farewellStateRef = React.useRef<FarewellState>('idle');
+
+  // Kickoff: response.create inicial disparado em session.updated. Idempotente.
+  const greetingFiredRef = React.useRef(false);
+
+  // Turn detection config completa — guardada pra restore apos disable
+  // (quando Charlotte fala, desligamos VAD pra evitar self-interrupt por eco).
+  const turnDetectionConfigRef = React.useRef<object | null>(null);
+  const vadRestoreTimerRef = React.useRef<ReturnType<typeof setTimeout> | null>(null);
 
   const poolBaseRef         = React.useRef(levelPool); // secondsRemaining do DB no session start
 
@@ -720,6 +745,10 @@ export default function LiveVoiceModal({
       clearTimeout(translationDismissTimerRef.current);
       translationDismissTimerRef.current = null;
     }
+    if (vadRestoreTimerRef.current) {
+      clearTimeout(vadRestoreTimerRef.current);
+      vadRestoreTimerRef.current = null;
+    }
     localStreamRef.current?.getTracks().forEach((t: any) => t.stop());
     localStreamRef.current = null;
     dcRef.current?.close();
@@ -732,6 +761,7 @@ export default function LiveVoiceModal({
     charlotteSpeakingRef.current = false;
     activeResponseIdRef.current = null;
     outputAudioBufferActiveRef.current = false;
+    greetingFiredRef.current = false;
     setCharlotteSpeaking(false);
     setUserSpeaking(false);
     setLiveCaption('');
@@ -917,8 +947,12 @@ export default function LiveVoiceModal({
         }
 
         const greeting = getRandomGreeting(userLevel);
-        // Idioma alvo: Novice fala português; Inter e Advanced, inglês.
-        // O hint em transcription.language acelera + melhora o STT do input.
+        // Hint de idioma:
+        //  - Inter/Advanced -> 'en' (sempre ingles)
+        //  - Novice -> 'pt' (mistura PT/EN, mas auto-detect estava degenerando
+        //    pra scripts aleatorios — Malayalam, Chinese — em audio ambiguo).
+        //    Trade-off: "I work nights" pode virar "Work need" mas e bem
+        //    melhor que "不啊" ou "ലിസർക്കെ".
         const inputLang = userLevel === 'Novice' ? 'pt' : 'en';
         // GA shape: session needs type:'realtime', voice/format/transcription/
         // turn_detection moved under audio.{input,output}, modalities renamed
@@ -930,7 +964,10 @@ export default function LiveVoiceModal({
             model: MODEL,
             output_modalities: ['audio'],
             instructions: getSystemPrompt(userLevel, userName, greeting),
-            max_output_tokens: 300,
+            // 500 (era 300): em modo ensino com explicacoes em PT-BR + EN, 300
+            // batia o limite e cortava mid-frase. Prompt ainda pede brevidade,
+            // mas 500 da margem pra ensino sem cortar.
+            max_output_tokens: 500,
             audio: {
               input: {
                 // GA: format é objeto { type, rate } em vez de string 'pcm16'.
@@ -944,42 +981,39 @@ export default function LiveVoiceModal({
                   // canônico (whisper-1 só emitia .completed, causando
                   // transcrição truncada em turnos longos).
                   model: 'gpt-realtime-whisper',
-                  language: inputLang, // ISO-639-1 hint — accuracy + latency
+                  // language: omitido se undefined (Novice, auto-detect). Inter/Adv
+                  // mantem hint 'en' que ainda ajuda accuracy/latency.
+                  ...(inputLang ? { language: inputLang } : {}),
                   // 'medium' dá mais contexto antes de finalizar palavras
                   // (vs 'low' que truncava 'Vamos' e palavras curtas).
                   delay: 'medium',
                 },
-                turn_detection: {
-                  // Server VAD com create_response+interrupt_response = happy path GA.
-                  // Servidor gerencia turn-taking automaticamente:
-                  //  - dispara response.create em VAD-end (zero client-side timing).
-                  //  - cancela response em curso quando user fala (barge-in nativo).
-                  // Echo proteccao eh upstream: debounce de speech_started durante
-                  // janela output_audio_buffer.started -> stopped (logica no handler).
-                  type: 'server_vad',
-                  threshold: 0.6,
-                  prefix_padding_ms: 400,
-                  silence_duration_ms: 700,
-                  create_response: true,
-                  interrupt_response: true,
-                },
+                turn_detection: (() => {
+                  const cfg = {
+                    type: 'server_vad' as const,
+                    threshold: 0.85,
+                    prefix_padding_ms: 600,
+                    silence_duration_ms: 700,
+                    create_response: true,
+                    interrupt_response: true,
+                  };
+                  // Cache pra restore apos disable durante Charlotte falando.
+                  turnDetectionConfigRef.current = cfg;
+                  return cfg;
+                })(),
               },
               output: {
                 format: { type: 'audio/pcm', rate: 24000 },
-                voice: 'coral',
+                // marin (GA 2026-05): voice mais multilingual que coral. Sotaque
+                // em PT ainda existe mas eh mais suave. Se nao gostar -> coral.
+                voice: 'marin',
               },
             },
           },
         }));
 
-        // Kickoff inicial: server VAD nao dispara sozinho ate o user falar,
-        // mas queremos Charlotte saudar primeiro. UNICO response.create manual
-        // de toda a sessao — depois disso, server gerencia tudo via VAD.
-        setTimeout(() => {
-          if (dcRef.current?.readyState === 'open') {
-            dc.send(JSON.stringify({ type: 'response.create' }));
-          }
-        }, 500);
+        // Kickoff inicial sera disparado em `session.updated` (handler abaixo),
+        // assim que server confirmar config. Evita setTimeout arbitrario.
 
         // Iniciar timers
         startSessionTimer();
@@ -992,6 +1026,14 @@ export default function LiveVoiceModal({
           const msg = JSON.parse(event.data);
 
           switch (msg.type) {
+            // ── Session lifecycle: server confirmou config -> dispara greeting
+            case 'session.updated':
+              if (!greetingFiredRef.current && dcRef.current?.readyState === 'open') {
+                greetingFiredRef.current = true;
+                dcRef.current.send(JSON.stringify({ type: 'response.create' }));
+              }
+              break;
+
             // ── Response lifecycle (state machine) ────────────────────────
             case 'response.created':
               activeResponseIdRef.current = msg.response?.id ?? 'unknown';
@@ -1018,6 +1060,9 @@ export default function LiveVoiceModal({
                   charlotteText = charlotteText.trim();
                 }
                 if (charlotteText) {
+                  // Cleanup: espaco apos sentence-end coincidindo com proxima
+                  // sentenca (modelo streama "legal.Que" em vez de "legal. Que").
+                  charlotteText = charlotteText.replace(/([.!?])([A-ZÀ-Ý])/g, '$1 $2');
                   console.log(`[LiveVoice] charlotte said: "${charlotteText.slice(0, 200)}"`);
                   setConversationTurns(prev => [...prev, { role: 'assistant', text: charlotteText }]);
                 }
@@ -1041,6 +1086,21 @@ export default function LiveVoiceModal({
               charlotteSpeakingRef.current = true;
               setCharlotteSpeaking(true);
               setUserSpeaking(false);
+              // Anti self-interrupt: desabilita VAD durante a fala da Charlotte.
+              // Server VAD estava cancelando a propria response em eco do speaker
+              // (interrupt_response:true). Trade-off: user nao consegue barge-in
+              // nessa janela. Restora em output_audio_buffer.stopped + 400ms grace.
+              if (vadRestoreTimerRef.current) {
+                clearTimeout(vadRestoreTimerRef.current);
+                vadRestoreTimerRef.current = null;
+              }
+              sendEvent({
+                type: 'session.update',
+                session: {
+                  type: 'realtime',
+                  audio: { input: { turn_detection: null } },
+                },
+              });
               break;
 
             case 'output_audio_buffer.stopped':
@@ -1049,6 +1109,22 @@ export default function LiveVoiceModal({
               lastBufferStoppedAtRef.current = Date.now();
               charlotteSpeakingRef.current = false;
               setCharlotteSpeaking(false);
+              // Restora VAD apos 400ms de grace (jitter buffer drenando no device).
+              // Se nova fala da Charlotte comecar antes, o handler de started
+              // limpa este timer.
+              if (vadRestoreTimerRef.current) clearTimeout(vadRestoreTimerRef.current);
+              vadRestoreTimerRef.current = setTimeout(() => {
+                vadRestoreTimerRef.current = null;
+                if (turnDetectionConfigRef.current && dcRef.current?.readyState === 'open') {
+                  sendEvent({
+                    type: 'session.update',
+                    session: {
+                      type: 'realtime',
+                      audio: { input: { turn_detection: turnDetectionConfigRef.current } },
+                    },
+                  });
+                }
+              }, 400);
 
               // Caption clear: 800ms grace pra cobrir jitter buffer residual
               // (audio ja drenou no servidor mas device pode ter +1 chunk).
@@ -1083,6 +1159,24 @@ export default function LiveVoiceModal({
             case 'response.output_audio_transcript.delta':
               {
                 const delta = msg.delta ?? '';
+                // Log chars suspeitos pra investigar relato de "outro alphabet".
+                // Detecta qualquer codepoint fora de Latin (Basic+Supplement),
+                // pontuacao geral, e simbolos comuns.
+                const suspicious = [...delta].filter(c => {
+                  const cp = c.codePointAt(0) ?? 0;
+                  // Latin basico, suplementar, pontuacao, simbolos comuns
+                  return !(
+                    (cp >= 0x20 && cp <= 0x7E) || // ASCII printable
+                    (cp >= 0xA0 && cp <= 0xFF) || // Latin-1 Supplement (acentos PT)
+                    (cp >= 0x100 && cp <= 0x17F) || // Latin Extended-A
+                    cp === 0x2014 || cp === 0x2013 || // em/en dash
+                    cp === 0x2018 || cp === 0x2019 || cp === 0x201C || cp === 0x201D // curly quotes
+                  );
+                });
+                if (suspicious.length > 0) {
+                  console.log(`[LiveVoice] caption suspicious chars: ${suspicious.map(c => `U+${(c.codePointAt(0)??0).toString(16).toUpperCase().padStart(4,'0')}`).join(',')} in delta="${delta}"`);
+                }
+
                 const wasUser = captionSpeakerRef.current === 'user';
                 captionSpeakerRef.current = 'assistant';
                 setCaptionSpeaker('assistant');
@@ -1093,7 +1187,13 @@ export default function LiveVoiceModal({
                   captionClearTimerRef.current = null;
                   setLiveCaption(delta);
                 } else {
-                  setLiveCaption(prev => (prev + delta).slice(-800));
+                  // Cleanup leve: insere espaco apos sentence-end que coincide
+                  // com inicio de palavra nova (modelo as vezes streama
+                  // "olá.Tudo" em vez de "olá. Tudo").
+                  setLiveCaption(prev => {
+                    const joined = (prev + delta).slice(-800);
+                    return joined.replace(/([.!?])([A-ZÀ-Ý])/g, '$1 $2');
+                  });
                 }
                 if (translationDismissTimerRef.current) {
                   clearTimeout(translationDismissTimerRef.current);
@@ -1148,6 +1248,23 @@ export default function LiveVoiceModal({
                   deltaText.length > completedText.length ? deltaText : completedText;
                 if (itemId) userTranscriptDeltasRef.current.delete(itemId);
                 if (userText) {
+                  // Safety filter: detecta scripts inesperados (Malayalam,
+                  // Chinese, Devanagari etc) e descarta. User fala PT-BR + EN —
+                  // tudo em Latin. Auto-detect do whisper as vezes hallucina
+                  // scripts em audio ambiguo.
+                  const nonLatinCount = [...userText].filter(c => {
+                    const cp = c.codePointAt(0) ?? 0;
+                    if (cp <= 0x7F) return false; // ASCII
+                    if (cp >= 0xA0 && cp <= 0x17F) return false; // Latin-1 + Extended-A
+                    if (cp >= 0x2000 && cp <= 0x206F) return false; // pontuacao geral
+                    if (cp === 0x2014 || cp === 0x2013) return false; // dashes
+                    return true; // qualquer outro script
+                  }).length;
+                  const totalChars = [...userText].filter(c => /\S/.test(c)).length;
+                  if (totalChars > 0 && nonLatinCount / totalChars > 0.3) {
+                    console.log(`[LiveVoice] user transcript REJECTED (non-Latin): "${userText.slice(0, 60)}"`);
+                    break;
+                  }
                   console.log(`[LiveVoice] user said: "${userText.slice(0, 200)}"`);
                   setConversationTurns(prev => [...prev, { role: 'user', text: userText }]);
                 }
@@ -1360,6 +1477,7 @@ export default function LiveVoiceModal({
       outputAudioBufferActiveRef.current = false;
       lastBufferStoppedAtRef.current = 0;
       activeResponseIdRef.current = null;
+      greetingFiredRef.current = false;
       sessionAccumSecs.current = 0;
       warnStartRef.current = 0;
       loadPool().then(remaining => {
@@ -1669,7 +1787,8 @@ export default function LiveVoiceModal({
                     textAlign: 'center',
                     minHeight: 44,
                   }}
-                  numberOfLines={3}
+                  numberOfLines={5}
+                  ellipsizeMode="head"
                 >
                   {liveCaption}
                 </AppText>
