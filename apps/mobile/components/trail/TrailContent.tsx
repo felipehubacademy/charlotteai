@@ -12,8 +12,7 @@ import Animated, {
 import Svg, { Path } from 'react-native-svg';
 import { router, useFocusEffect } from 'expo-router';
 import {
-  BookOpen, Microphone, Star, ChatCircle,
-  Lock, CheckCircle, CaretRight,
+  BookOpen, Microphone, Star, ChatCircle, CaretRight,
 } from 'phosphor-react-native';
 import { AppText } from '@/components/ui/Text';
 import { CURRICULUM, TrailLevel, Topic, topicHasContent } from '@/data/curriculum';
@@ -40,8 +39,8 @@ const C = {
   navy:      '#16153A',
   navyMid:   '#4B4A72',
   navyLight: '#9896B8',
-  lockGray:  '#B8B4D0',
-  lockBg:    '#EDEAF5',
+  lockFill:  '#C8C4DC',   // solid fill for locked nodes
+  lockRing:  '#B0ABCC',   // ring/border for locked nodes
   card:      '#FFFFFF',
 };
 const LEVEL_COLOR: Record<TrailLevel, string> = {
@@ -68,18 +67,17 @@ function getNodeType(topic: Topic): NodeType {
 const W          = Dimensions.get('window').width;
 const H_PAD      = 20;
 const COLS       = 4;
-const NODE       = 50;         // active / complete diameter
-const NODE_LOCK  = 42;         // locked diameter (visible but subordinate)
+const NODE       = 50;         // diameter — same for all states
 const RING       = 4;
 const UNIT       = NODE + RING * 2;   // 58 — slot footprint
 const GAP        = (W - H_PAD * 2 - UNIT * COLS) / (COLS - 1);
 const LABEL_H    = 17;
 const ROW_GAP    = 30;
 const ROW_STRIDE = UNIT + LABEL_H + ROW_GAP;  // ~105
-const PATH_W     = 6;
+const PATH_W     = 4;
 const CURVE      = Math.max(GAP * 0.70, 16);
 // Vertical canvas space reserved per module header (sits above the module's first row)
-const MOD_HDR_H  = 84;
+const MOD_HDR_H  = 72;
 
 // Column centres, left-to-right
 const COL_CX = Array.from(
@@ -161,15 +159,15 @@ type Slot = { kind: 'node'; node: FlatNode } | { kind: 'pad' };
 // ── PulseHalo ─────────────────────────────────────────────────────────────────
 function PulseHalo({ color }: { color: string }) {
   const scale   = useSharedValue(1.0);
-  const opacity = useSharedValue(0.22);
+  const opacity = useSharedValue(0.14);
   useEffect(() => {
-    scale.value   = withRepeat(withTiming(1.40, { duration: 2000, easing: Easing.out(Easing.ease) }), -1, true);
-    opacity.value = withRepeat(withTiming(0,    { duration: 2000, easing: Easing.out(Easing.ease) }), -1, true);
+    scale.value   = withRepeat(withTiming(1.22, { duration: 2400, easing: Easing.out(Easing.ease) }), -1, true);
+    opacity.value = withRepeat(withTiming(0,    { duration: 2400, easing: Easing.out(Easing.ease) }), -1, true);
   }, []);
   const style = useAnimatedStyle(() => ({
     transform: [{ scale: scale.value }], opacity: opacity.value,
   }));
-  const sz = UNIT + 14;   // anel muito mais compacto
+  const sz = UNIT + 6;   // barely extends beyond the node border
   return (
     <Animated.View style={[{
       position: 'absolute',
@@ -195,16 +193,16 @@ const TrailNode = React.memo(function TrailNode({
   const cfg    = NODE_CONFIG[node.nodeType];
   const isComp = node.state === 'complete';
   const isLock = node.state === 'locked';
-  const sz     = isLock ? NODE_LOCK : isCurrNode ? NODE + 6 : NODE;
 
+  // Shadow only for complete/active (not locked — they must block the path behind)
   const shadow: object = isLock ? {} : (Platform.select({
     ios: {
       shadowColor:   cfg.color,
-      shadowOpacity: isComp ? 0.55 : 0.30,
-      shadowRadius:  isComp ? 18 : 12,
-      shadowOffset:  { width: 0, height: isComp ? 7 : 4 },
+      shadowOpacity: isComp ? 0.40 : 0.20,
+      shadowRadius:  isComp ? 12 : 8,
+      shadowOffset:  { width: 0, height: isComp ? 5 : 3 },
     },
-    android: { elevation: isComp ? 10 : isCurrNode ? 6 : 2 },
+    android: { elevation: isComp ? 8 : isCurrNode ? 4 : 2 },
   }) ?? {});
 
   return (
@@ -221,41 +219,37 @@ const TrailNode = React.memo(function TrailNode({
       }}
     >
       <View style={{ width: UNIT, height: UNIT, alignItems: 'center', justifyContent: 'center' }}>
+        {/* Subtle pulse — current node only */}
         {isCurrNode && <PulseHalo color={cfg.color} />}
 
-        {/* Glow ring behind completed nodes */}
-        {isComp && (
-          <View style={{
-            position: 'absolute',
-            width: UNIT + 10, height: UNIT + 10, borderRadius: (UNIT + 10) / 2,
-            backgroundColor: a(cfg.color, 0.13),
-          }} />
-        )}
-
+        {/*
+          All nodes are NODE×NODE — same size regardless of state.
+          Complete  → filled accent color + thick ring border, no icon
+          Active    → white fill + thick colored ring (progress indicator) + icon
+          Locked    → solid gray fill + gray ring, fully opaque (covers path), no icon
+        */}
         <View style={{
-          width: sz, height: sz, borderRadius: sz / 2,
-          backgroundColor: isLock ? C.lockBg : isComp ? cfg.color : C.card,
+          width: NODE, height: NODE, borderRadius: NODE / 2,
           alignItems: 'center', justifyContent: 'center',
-          opacity: isLock ? 0.70 : 1,
-          borderWidth: isLock ? 1.5 : isComp ? RING : 2,
+          backgroundColor: isLock ? C.lockFill : isComp ? cfg.color : C.card,
+          borderWidth: RING,
           borderColor: isLock
-            ? a(C.lockGray, 0.60)
+            ? C.lockRing
             : isComp
-            ? darken(cfg.color, 0.12)
-            : a(cfg.color, 0.32),
+            ? darken(cfg.color, 0.15)
+            : cfg.color,
           ...shadow,
         }}>
-          {isComp
-            ? <CheckCircle size={22} color="#FFF" weight="fill" />
-            : isLock
-            ? <Lock size={18} color={C.lockGray} weight="fill" />
-            : <cfg.Icon size={isCurrNode ? 23 : 21} color={cfg.color} weight="fill" />}
+          {/* Icon only on active nodes */}
+          {!isComp && !isLock && (
+            <cfg.Icon size={21} color={cfg.color} weight="fill" />
+          )}
         </View>
 
         {/* XP badge on current node */}
         {isCurrNode && (
           <View style={{
-            position: 'absolute', top: 1, right: 0,
+            position: 'absolute', top: 1, right: 2,
             backgroundColor: '#FF6B35', borderRadius: 8,
             paddingHorizontal: 5, paddingVertical: 1.5,
             borderWidth: 1.5, borderColor: C.card,
@@ -265,21 +259,14 @@ const TrailNode = React.memo(function TrailNode({
         )}
       </View>
 
-      {/* Label under active/complete; dot under locked */}
-      {!isLock ? (
-        <AppText style={{
-          fontSize: 10, fontWeight: '700', textAlign: 'center',
-          color: isComp ? cfg.color : isCurrNode ? cfg.color : C.navyMid,
-          marginTop: 4, width: UNIT + 14,
-        }} numberOfLines={1}>
-          {isPt ? cfg.labelPt : cfg.label}
-        </AppText>
-      ) : (
-        <View style={{
-          width: 4, height: 4, borderRadius: 2,
-          backgroundColor: C.lockGray, marginTop: 5, opacity: 0.50,
-        }} />
-      )}
+      {/* Label — same for all states; gray for locked */}
+      <AppText style={{
+        fontSize: 10, fontWeight: '700', textAlign: 'center',
+        color: isLock ? C.lockRing : isComp ? cfg.color : cfg.color,
+        marginTop: 4, width: UNIT + 14,
+      }} numberOfLines={1}>
+        {isPt ? cfg.labelPt : cfg.label}
+      </AppText>
     </TouchableOpacity>
   );
 });
@@ -518,26 +505,16 @@ export function TrailContent({ userId, level, onCurrentTopicRef }: TrailContentP
           <View key={`hdr_${mIdx}`} style={{
             position: 'absolute', left: 0, right: 0,
             top: y, height: MOD_HDR_H,
-            alignItems: 'center', justifyContent: 'center', gap: 6,
+            justifyContent: 'center', paddingHorizontal: H_PAD,
           }}>
-            <View style={{
-              flexDirection: 'row', alignItems: 'center', gap: 10,
-              paddingHorizontal: H_PAD, alignSelf: 'stretch',
-            }}>
-              <View style={{ flex: 1, height: 1, backgroundColor: a(accent, 0.14) }} />
-              <View style={{ backgroundColor: accent, borderRadius: 20, paddingHorizontal: 14, paddingVertical: 5 }}>
-                <AppText style={{ fontSize: 10, fontWeight: '900', color: '#FFF', letterSpacing: 0.9 }}>
-                  {isPt ? `MODULO ${mIdx + 1}` : `MODULE ${mIdx + 1}`}
-                </AppText>
-              </View>
-              <View style={{ flex: 1, height: 1, backgroundColor: a(accent, 0.14) }} />
+            <View style={{ flexDirection: 'row', alignItems: 'center', gap: 12 }}>
+              <View style={{ flex: 1, height: 1, backgroundColor: a(accent, 0.22) }} />
+              <AppText style={{ fontSize: 13, fontWeight: '800', color: C.navy, flexShrink: 1 }}
+                numberOfLines={1}>
+                {title}
+              </AppText>
+              <View style={{ flex: 1, height: 1, backgroundColor: a(accent, 0.22) }} />
             </View>
-            <AppText style={{
-              fontSize: 13, fontWeight: '800', color: C.navy,
-              textAlign: 'center', lineHeight: 19, paddingHorizontal: H_PAD + 4,
-            }} numberOfLines={1}>
-              {title}
-            </AppText>
           </View>
         ))}
 
