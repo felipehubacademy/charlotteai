@@ -210,12 +210,15 @@ function LessonRow({
       </View>
 
       {/* All action pills share size: paddingHorizontal:10 paddingVertical:6 borderRadius:10 */}
+      {/* All action pills share the same dimensions: minWidth 56, padding 10/6, radius 10 */}
       {isDone && (
         <View style={{
+          minWidth: 56,
           paddingHorizontal: 10, paddingVertical: 6,
           borderRadius: 10,
           borderWidth: 1, borderColor: C.borderMid,
           backgroundColor: 'transparent',
+          alignItems: 'center', justifyContent: 'center',
         }}>
           <AppText style={{ fontSize: 11, fontWeight: '600', color: C.navyMid }}>
             {isPt ? 'Refazer' : 'Redo'}
@@ -224,9 +227,11 @@ function LessonRow({
       )}
       {isNext && (
         <View style={{
+          minWidth: 56,
           paddingHorizontal: 10, paddingVertical: 6,
           borderRadius: 10,
           backgroundColor: NEXT_GREEN,
+          alignItems: 'center', justifyContent: 'center',
         }}>
           <AppText style={{ fontSize: 11, fontWeight: '700', color: '#FFF' }}>
             {isPt ? 'Comecar' : 'Start'}
@@ -235,7 +240,7 @@ function LessonRow({
       )}
       {isLocked && (
         <View style={{
-          minWidth: 52,
+          minWidth: 56,
           paddingHorizontal: 10, paddingVertical: 6,
           borderRadius: 10,
           borderWidth: 1, borderColor: C.borderMid,
