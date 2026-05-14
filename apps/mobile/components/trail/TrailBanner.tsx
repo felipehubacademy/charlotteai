@@ -8,7 +8,7 @@ import { View, Platform } from 'react-native';
 import { useFocusEffect } from 'expo-router';
 import { BookOpen } from 'phosphor-react-native';
 import { AppText } from '@/components/ui/Text';
-import { CURRICULUM, TrailLevel, totalTopics } from '@/data/curriculum';
+import { CURRICULUM, TrailLevel } from '@/data/curriculum';
 import { useLearnProgress } from '@/hooks/useLearnProgress';
 
 function a(hex: string, alpha: number): string {
@@ -60,8 +60,14 @@ export function TrailBanner({ userId, level, flush = false }: TrailBannerProps) 
 
   useFocusEffect(useCallback(() => { refetch(); }, [refetch]));
 
-  const completed = progress?.completed.length ?? 0;
-  const total     = totalTopics(level);
+  // Count modules completed (all topics done) — banner serves as level summary
+  const completedSet = progress?.completed ?? [];
+  const completed = modules.reduce((n, mod, mIdx) => {
+    const allDone = mod.topics.every((_, tIdx) =>
+      completedSet.some(k => k.m === mIdx && k.t === tIdx));
+    return allDone ? n + 1 : n;
+  }, 0);
+  const total     = modules.length;
   const pct       = total > 0 ? Math.min(100, Math.round((completed / total) * 100)) : 0;
 
   const wrapperStyle = flush
@@ -92,7 +98,7 @@ export function TrailBanner({ userId, level, flush = false }: TrailBannerProps) 
             {LEVEL_LABELS[level]}
           </AppText>
           <AppText style={{ fontSize: 12, color: C.navyLight, fontWeight: '500' }}>
-            {modules.length} {isPortuguese ? 'módulos' : 'modules'} · {total} {isPortuguese ? 'tópicos' : 'topics'}
+            {total} {isPortuguese ? 'módulos' : 'modules'}
           </AppText>
         </View>
         <AppText style={{ fontSize: 18, fontWeight: '900', color: accent }}>{pct}%</AppText>
@@ -101,7 +107,7 @@ export function TrailBanner({ userId, level, flush = false }: TrailBannerProps) 
         <View style={{ height: 6, width: `${pct}%` as `${number}%`, backgroundColor: accent, borderRadius: 3 }} />
       </View>
       <AppText style={{ fontSize: 11, color: C.navyLight, fontWeight: '600', marginTop: 6 }}>
-        {completed} {isPortuguese ? 'de' : 'of'} {total} {isPortuguese ? 'tópicos concluídos' : 'topics completed'}
+        {completed} {isPortuguese ? 'de' : 'of'} {total} {isPortuguese ? 'módulos concluídos' : 'modules completed'}
       </AppText>
     </View>
   );

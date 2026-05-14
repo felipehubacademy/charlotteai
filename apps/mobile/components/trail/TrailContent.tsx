@@ -248,9 +248,6 @@ function ModuleCard({
   const isActive = data.state === 'active';
   const isLocked = data.state === 'locked';
 
-  // 4px left accent strip — violet 100% on active, violet 60% on done, none on locked
-  const stripColor = isActive ? accent : isDone ? a(accent, 0.60) : 'transparent';
-
   const elevation = isActive ? Platform.select({
     ios:     { shadowColor: 'rgba(22,21,58,0.20)', shadowOpacity: 1, shadowRadius: 24, shadowOffset: { width: 0, height: 8 } },
     android: { elevation: 4 },
@@ -271,14 +268,6 @@ function ModuleCard({
         borderWidth: 1, borderColor: C.border,
         ...elevation,
       }}>
-      {/* Left accent strip */}
-      {stripColor !== 'transparent' && (
-        <View style={{
-          position: 'absolute', left: 0, top: 0, bottom: 0,
-          width: 4, backgroundColor: stripColor,
-        }} />
-      )}
-
       <TouchableOpacity
         onPress={onToggle}
         disabled={isLocked}
@@ -337,12 +326,10 @@ function ModuleCard({
           borderTopWidth: 1, borderTopColor: C.border,
           paddingTop: 6,
         }}>
-          {/* Active meta strip: "+20 XP per lesson · X lessons restantes" */}
           {isActive && (() => {
             const remaining = data.totalCount - data.completedCount;
             return (
               <View style={{
-                flexDirection: 'row', alignItems: 'center', gap: 12,
                 paddingVertical: 10, marginBottom: 2,
                 borderBottomWidth: 1, borderBottomColor: C.hairline,
               }}>
@@ -350,10 +337,6 @@ function ModuleCard({
                   {remaining} {isPt
                     ? (remaining === 1 ? 'licao restante' : 'licoes restantes')
                     : (remaining === 1 ? 'lesson left'    : 'lessons left')}
-                </AppText>
-                <View style={{ width: 3, height: 3, borderRadius: 1.5, backgroundColor: C.navyLight }} />
-                <AppText style={{ fontSize: 11, fontWeight: '600', color: C.navyMid }}>
-                  +20 XP
                 </AppText>
               </View>
             );
