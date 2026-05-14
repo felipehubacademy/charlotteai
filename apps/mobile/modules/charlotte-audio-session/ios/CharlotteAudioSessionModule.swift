@@ -185,7 +185,10 @@ public class CharlotteAudioSessionModule: Module {
     try session.setCategory(
       .playAndRecord,
       mode: .default,
-      options: [.defaultToSpeaker, .allowBluetooth, .allowBluetoothA2DP, .allowAirPlay]
+      // .defaultToSpeaker eh incompativel com .allowBluetoothA2DP (Apple docs).
+// Em chamada, AirPods/headset Bluetooth usam HFP profile via .allowBluetooth,
+// nao A2DP. Mantemos .allowBluetooth + .allowAirPlay.
+options: [.defaultToSpeaker, .allowBluetooth, .allowAirPlay]
     )
 
     try session.setActive(true, options: [.notifyOthersOnDeactivation])
@@ -251,7 +254,10 @@ public class CharlotteAudioSessionModule: Module {
             try session.setCategory(
               .playAndRecord,
               mode: .default,
-              options: [.defaultToSpeaker, .allowBluetooth, .allowBluetoothA2DP, .allowAirPlay]
+              // .defaultToSpeaker eh incompativel com .allowBluetoothA2DP (Apple docs).
+// Em chamada, AirPods/headset Bluetooth usam HFP profile via .allowBluetooth,
+// nao A2DP. Mantemos .allowBluetooth + .allowAirPlay.
+options: [.defaultToSpeaker, .allowBluetooth, .allowAirPlay]
             )
             if self.preferSpeaker {
               try session.overrideOutputAudioPort(.speaker)
