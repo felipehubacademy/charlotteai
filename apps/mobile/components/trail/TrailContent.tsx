@@ -76,8 +76,8 @@ const GAP        = (W - H_PAD * 2 - UNIT * COLS) / (COLS - 1);
 const LABEL_H    = 17;
 const ROW_GAP    = 30;
 const ROW_STRIDE = UNIT + LABEL_H + ROW_GAP;  // ~105
-const PATH_W     = 9;
-const CURVE      = Math.max(GAP * 0.80, 20);
+const PATH_W     = 6;
+const CURVE      = Math.max(GAP * 0.70, 16);
 // Vertical canvas space reserved per module header (sits above the module's first row)
 const MOD_HDR_H  = 84;
 
@@ -160,16 +160,16 @@ type Slot = { kind: 'node'; node: FlatNode } | { kind: 'pad' };
 
 // ── PulseHalo ─────────────────────────────────────────────────────────────────
 function PulseHalo({ color }: { color: string }) {
-  const scale   = useSharedValue(0.85);
-  const opacity = useSharedValue(0.50);
+  const scale   = useSharedValue(1.0);
+  const opacity = useSharedValue(0.22);
   useEffect(() => {
-    scale.value   = withRepeat(withTiming(1.65, { duration: 1200, easing: Easing.out(Easing.quad) }), -1, true);
-    opacity.value = withRepeat(withTiming(0,    { duration: 1200, easing: Easing.out(Easing.quad) }), -1, true);
+    scale.value   = withRepeat(withTiming(1.40, { duration: 2000, easing: Easing.out(Easing.ease) }), -1, true);
+    opacity.value = withRepeat(withTiming(0,    { duration: 2000, easing: Easing.out(Easing.ease) }), -1, true);
   }, []);
   const style = useAnimatedStyle(() => ({
     transform: [{ scale: scale.value }], opacity: opacity.value,
   }));
-  const sz = UNIT + 30;
+  const sz = UNIT + 14;   // anel muito mais compacto
   return (
     <Animated.View style={[{
       position: 'absolute',
@@ -518,11 +518,11 @@ export function TrailContent({ userId, level, onCurrentTopicRef }: TrailContentP
           <View key={`hdr_${mIdx}`} style={{
             position: 'absolute', left: 0, right: 0,
             top: y, height: MOD_HDR_H,
-            alignItems: 'center', justifyContent: 'flex-end', paddingBottom: 14,
+            alignItems: 'center', justifyContent: 'center', gap: 6,
           }}>
             <View style={{
               flexDirection: 'row', alignItems: 'center', gap: 10,
-              marginBottom: 6, paddingHorizontal: H_PAD, alignSelf: 'stretch',
+              paddingHorizontal: H_PAD, alignSelf: 'stretch',
             }}>
               <View style={{ flex: 1, height: 1, backgroundColor: a(accent, 0.14) }} />
               <View style={{ backgroundColor: accent, borderRadius: 20, paddingHorizontal: 14, paddingVertical: 5 }}>
