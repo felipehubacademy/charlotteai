@@ -123,16 +123,13 @@ public class CharlotteAudioSessionModule: Module {
       self.removeObservers()
 
       let rtcSession = RTCAudioSession.sharedInstance()
+      let session = AVAudioSession.sharedInstance()
+
       rtcSession.lockForConfiguration()
       rtcSession.isAudioEnabled = false  // WebRTC para de usar audio
-      do {
-        try rtcSession.setActive(false)
-      } catch {
-        NSLog("[CharlotteAudioSession] rtcSession setActive false error: \(error.localizedDescription)")
-      }
+      rtcSession.audioSessionDidDeactivate(session)  // notifica WebRTC
       rtcSession.unlockForConfiguration()
 
-      let session = AVAudioSession.sharedInstance()
       do {
         try session.setActive(false, options: [.notifyOthersOnDeactivation])
       } catch {
@@ -222,11 +219,14 @@ public class CharlotteAudioSessionModule: Module {
       try session.overrideOutputAudioPort(.speaker)
     }
 
-    // Agora que session esta configurada e ativa, libera o WebRTC pra usar
-    // o audio (sem reconfigurar). isAudioEnabled = true diz: "pode usar a
-    // session que ja preparei". Sem isso, WebRTC fica mudo sob manual mode.
+    // HANDSHAKE CRITICO sob useManualAudio:
+    // audioSessionDidActivate notifica o RTCAudioDeviceModule_iOS que a session
+    // foi ativada externamente (por nos). Sem isso, WebRTC nao inicia o audio
+    // unit -> captions chegam (data channel) mas audio NAO toca. Esse era o
+    // sintoma reportado: "vem captions mas Charlotte fica muda".
+    rtcSession.audioSessionDidActivate(session)
     rtcSession.isAudioEnabled = true
-    NSLog("[CharlotteAudioSession] configureSession OK category set, active, speaker=\(preferSpeaker), isAudioEnabled=true")
+    NSLog("[CharlotteAudioSession] configureSession OK active+didActivate+isAudioEnabled speaker=\(preferSpeaker)")
   }
 
   private func installObservers() {
