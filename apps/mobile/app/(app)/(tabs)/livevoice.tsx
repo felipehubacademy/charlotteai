@@ -590,8 +590,14 @@ export default function LiveVoiceTab() {
   const startCall = useCallback(() => {
     if (!poolUnlimited && poolUsed >= poolTotal) return;
     soundEngine.setMuted(true);
+    // Pausa o video preview da Charlotte antes de abrir o modal: expo-video
+    // ativa AVAudioSession em MediaPlayback/MoviePlayback em loop, contaminando
+    // a session do Live Voice (iOS 26 fica rejeitando isso continuamente porque
+    // estamos recording — gera flood de "tried to set MediaPlayback... skipping"
+    // nos logs). Pausando aqui resolve a briga residual.
+    try { liveVoicePlayer.pause(); } catch { /* silencioso */ }
     setShowLiveVoice(true);
-  }, [poolUnlimited, poolUsed, poolTotal]);
+  }, [poolUnlimited, poolUsed, poolTotal, liveVoicePlayer]);
 
   const isLimitReached = !poolUnlimited && poolUsed >= poolTotal;
   const statsParams = { sessionXP: String(todayXP), totalXP: String(totalXP), userId, userLevel: level, userName: profile?.name ?? 'Student' };
@@ -773,6 +779,8 @@ export default function LiveVoiceTab() {
           onClose={() => {
             setShowLiveVoice(false);
             soundEngine.setMuted(false);
+            // Retoma video preview ao fechar o modal (era pausado em startCall).
+            try { liveVoicePlayer.play(); } catch { /* silencioso */ }
             loadData();
           }}
         />
