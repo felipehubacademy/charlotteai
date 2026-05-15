@@ -43,7 +43,7 @@ import {
   CURRICULUM, TrailLevel, GrammarEx, PronStep,
   getTopic,
 } from '@/data/curriculum';
-import { getV2TopicForUnit } from '@/lib/curriculum-v2/adapter';
+import { getV2Topic } from '@/lib/curriculum-v2/adapter';
 import type { Level as V2Level } from '@/lib/curriculum-v2/types';
 import { checkLevelPromotion, promoteUserLevel, NEXT_LEVEL } from '@/lib/levelPromotion';
 import PromotionModal from '@/components/ui/PromotionModal';
@@ -181,7 +181,7 @@ export default function LearnSessionScreen() {
   const level       = (params.level ?? 'Novice') as TrailLevel;
   const moduleIndex = parseInt(params.moduleIndex ?? '0', 10);
   const topicIndex  = parseInt(params.topicIndex  ?? '0', 10);
-  const isV2        = params.v === 'v2' && !!params.moduleId && !!params.unitId;
+  const isV2        = params.v === 'v2' && !!params.moduleId;
 
   const { profile, refreshProfile } = useAuth();
   const userId      = profile?.id;
@@ -203,11 +203,11 @@ export default function LearnSessionScreen() {
   );
 
   const topic = isV2
-    ? getV2TopicForUnit(
+    ? getV2Topic(
         level as V2Level,
         params.moduleId!,
-        params.unitId!,
-        (params.activity as 'grammar' | 'ls' | 'both') ?? 'both'
+        (params.activity as 'grammar' | 'ls' | 'both') ?? 'both',
+        params.unitId,
       )
     : getTopic(level, moduleIndex, topicIndex);
 
