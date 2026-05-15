@@ -28,7 +28,7 @@ import {
   StatusBar,
 } from 'react-native';
 import { SafeAreaView, useSafeAreaInsets } from 'react-native-safe-area-context';
-import { requestRecordingPermissionsAsync } from 'expo-audio';
+import { requestRecordingPermissionsAsync, setAudioModeAsync } from 'expo-audio';
 import { RTCPeerConnection, mediaDevices } from 'react-native-webrtc';
 import CharlotteAudioSession from 'charlotte-audio-session';
 import { PhoneSlash, MicrophoneSlash, Microphone, SpeakerHigh, Ear, Pause, ArrowCounterClockwise, ArrowLeft, ChatCircle, ClosedCaptioning } from 'phosphor-react-native';
@@ -887,19 +887,27 @@ export default function LiveVoiceModal({
         return;
       }
 
-      // Configura AVAudioSession (iOS) / AudioManager (Android) ANTES de qualquer
-      // player. Pattern Jitsi-style sem CallKit:
-      //   iOS: lock + setConfiguration(playAndRecord + videoChat +
-      //        [DefaultToSpeaker, AllowBluetooth, DuckOthers]) + unlock. SEM
-      //        useManualAudio (gera !pri loop sem CallKit). WebRTC ADM ativa
-      //        a session quando o primeiro track comeca. AVAudioPlayer do
-      //        ringback DEPOIS herda a session ativa, nao rouba primary.
+      // FIX iOS 26 audio session contamination:
+      // Antes do Live Voice, outros componentes podem ter deixado a AVAudioSession
+      // em estado output-only / mixWithOthers (soundEngine SFX, voiceSFX, expo-video
+      // da propria aba). Forcamos reset pra estado compativel com playAndRecord
+      // ANTES de qualquer chamada nativa nossa. expo-audio.setAudioModeAsync com
+      // allowsRecording: true forca a categoria pra .playAndRecord, neutralizando
+      // contaminacao anterior.
+      await setAudioModeAsync({
+        allowsRecording: true,
+        playsInSilentMode: true,
+        interruptionMode: 'doNotMix',
+        shouldPlayInBackground: true,
+      }).catch(() => { /* silencioso */ });
+
+      // Configura AVAudioSession (iOS) / AudioManager (Android):
+      //   iOS: pre-seed RTCAudioSessionConfiguration singleton + override speaker.
+      //        NAO chamamos setConfiguration aqui — o WebRTC ADM aplica o singleton
+      //        sozinho quando o primeiro audio track binda (via getUserMedia +
+      //        addTrack). Pattern verificado em RTCAudioSession.mm configureWebRTCSession.
       //   Android: AudioManager.MODE_IN_COMMUNICATION + setSpeakerphoneOn(true).
       await CharlotteAudioSession.start(isSpeakerRef.current);
-
-      // Ringback toca DENTRO da session que acabamos de configurar (AVAudioPlayer
-      // iOS / MediaPlayer Android). Stop em dc.onopen quando a chamada conecta.
-      startCustomRingback();
 
       // Passa o access token para validação server-side do pool
       const { data: { session: authSession } } = await supabase.auth.getSession();
@@ -922,7 +930,6 @@ export default function LiveVoiceModal({
               ? `Você usou seus ${Math.floor(levelPool / 60)} min de Live Voice deste mês. Volta no mês que vem!`
               : `You've used your ${Math.floor(levelPool / 60)}-min monthly Live Voice allowance. Come back next month!`
           );
-          stopCustomRingback();
           return;
         }
         throw new Error('Failed to get session token (403)');
@@ -944,6 +951,13 @@ export default function LiveVoiceModal({
         video: false,
       });
       localStreamRef.current = stream;
+
+      // Ringback toca DEPOIS do getUserMedia: nesse ponto o WebRTC ADM ja
+      // aplicou o singleton (setConfiguration:active:YES com playAndRecord +
+      // videoChat). AVAudioPlayer herda a session correta e nao deixa ela em
+      // estado output-only. Antes do fix iOS 26, ringback rodava ANTES do
+      // getUserMedia e ativava session na config errada → mic morria.
+      startCustomRingback();
 
       const pc = new RTCPeerConnection();
       pcRef.current = pc;
