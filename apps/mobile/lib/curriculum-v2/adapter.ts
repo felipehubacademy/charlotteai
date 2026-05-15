@@ -20,58 +20,38 @@ const LEVEL_TO_TRAIL: Record<Level, TrailLevel> = {
 };
 
 /**
- * Module-level aggregation: collects all exercises of one activity type
- * across all units of a module into a single Topic-shaped session.
- *
- * The new-layout trail shows one lesson per activity-type per module
- * (Grammar / Speaking / Role-play / Chat). Tapping "Grammar" on M01
- * runs all 50 grammar exercises (N01–N05) back-to-back.
- *
- * `activity`:
- *   - 'grammar' -> all grammar from all units (empty pronunciation)
- *   - 'ls'      -> all L/S phrases from all units (empty grammar)
- *   - 'both'    -> grammar + L/S aggregated (mixed)
- *
- * `unitId` (optional): when present, returns only that unit's slice —
- * used as fallback for single-unit testing flows.
+ * Returns a Topic-shaped object the existing learn-session screen can consume.
+ * `activity` controls which slice is included:
+ *   - 'grammar'    -> grammar only, empty pronunciation
+ *   - 'ls'         -> empty grammar, listening/speaking phrases
+ *   - 'both'       -> grammar + LS (mixed session)
  */
-export function getV2Topic(
-  level: Level,
-  moduleId: string,
-  activity: 'grammar' | 'ls' | 'both' = 'both',
-  unitId?: string,
-): (Topic & { v2Title: string; v2ModuleId: string }) | null {
-  const mod = getModule(level, moduleId);
-  if (!mod) return null;
-
-  const units = unitId ? mod.units.filter(u => u.id === unitId) : mod.units;
-  if (units.length === 0) return null;
-
-  const grammar: GrammarEx[] = activity === 'ls'
-    ? []
-    : units.flatMap(u => u.grammar.map(g => ({ ...g }))) as GrammarEx[];
-
-  const pronunciation: PronStep[] = activity === 'grammar'
-    ? []
-    : units.flatMap(u => u.listening_speaking.map(lsPhraseToPronStep));
-
-  return {
-    title: unitId ? units[0].title : mod.title,
-    grammar,
-    pronunciation,
-    v2Title:    unitId ? units[0].title : mod.title,
-    v2ModuleId: mod.id,
-  };
-}
-
-/** Back-compat alias for the earlier single-unit signature. */
 export function getV2TopicForUnit(
   level: Level,
   moduleId: string,
   unitId: string,
-  activity: 'grammar' | 'ls' | 'both' = 'both',
-) {
-  return getV2Topic(level, moduleId, activity, unitId);
+  activity: 'grammar' | 'ls' | 'both' = 'both'
+): (Topic & { v2Title: string; v2UnitId: string }) | null {
+  const mod = getModule(level, moduleId);
+  if (!mod) return null;
+  const unit = mod.units.find(u => u.id === unitId);
+  if (!unit) return null;
+
+  const grammar: GrammarEx[] = activity === 'ls'
+    ? []
+    : unit.grammar.map(g => ({ ...g })) as GrammarEx[];
+
+  const pronunciation: PronStep[] = activity === 'grammar'
+    ? []
+    : unit.listening_speaking.map(lsPhraseToPronStep);
+
+  return {
+    title: unit.title,
+    grammar,
+    pronunciation,
+    v2Title:  unit.title,
+    v2UnitId: unit.id,
+  };
 }
 
 /**

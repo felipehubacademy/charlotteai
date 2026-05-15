@@ -78,7 +78,6 @@ interface Lesson {
   // v2 — preenchido quando o trail vem do curriculum v2
   v2ModuleId?: string;
   v2UnitId?:   string;
-  v2Activity?: NodeType;   // grammar | speaking | roleplay | chat
 }
 
 interface ModuleData {
@@ -444,82 +443,52 @@ export function TrailContent({ userId, level, onCurrentTopicRef, useV2 }: TrailC
   }, [userId, level]);
 
   // Build module data — each module gets up to 4 lessons (intro + topics, capped at 4)
-  // v2 path: each module fans out into exactly 4 lessons (one per activity type).
   const moduleData: ModuleData[] = useMemo(() => {
     return modules.map((mod, mIdx) => {
       const lessons: Lesson[] = [];
       let pos = 0;
 
-      // ── v2: 4 fixed activity-typed lessons per module ─────────────
-      if (useV2) {
-        const v2ModuleId = (mod.topics[0] as any)?._v2ModuleId as string | undefined;
-        const titlePt: Record<NodeType, string> = {
-          grammar:  'Gramatica',
-          speaking: 'Listening & Speaking',
-          roleplay: 'Role-play',
-          chat:     'Guided Chat',
-        };
-        const titleEn: Record<NodeType, string> = {
-          grammar:  'Grammar',
-          speaking: 'Listening & Speaking',
-          roleplay: 'Role-play',
-          chat:     'Guided Chat',
-        };
-        (['grammar', 'speaking', 'roleplay', 'chat'] as NodeType[]).forEach(t => {
-          lessons.push({
-            key:        `m${mIdx}_v2_${t}`,
-            label:      isPt ? titlePt[t] : titleEn[t],
-            type:       t,
-            state:      'next',
-            hasContent: true,
-            moduleIdx:  mIdx,
-            topicIdx:   -1,
-            isIntro:    false,
-            score:      null,
-            v2ModuleId,
-            v2Activity: t,
-          });
-          pos++;
-        });
-      } else {
-        const intro = MODULE_INTROS[level]?.[mIdx];
-        if (intro) {
-          const done = isIntroDone(mIdx);
-          const introLocked = mIdx > 0 &&
-            modules[mIdx - 1].topics.some((_, t) => !isTopicComplete(mIdx - 1, t));
-          lessons.push({
-            key:        `m${mIdx}_intro`,
-            label:      intro.title,
-            type:       TYPE_CYCLE[pos++] ?? 'grammar',
-            state:      done ? 'done' : introLocked ? 'locked' : 'next',
-            hasContent: true,
-            moduleIdx:  mIdx,
-            topicIdx:   -1,
-            isIntro:    true,
-            slideCount: intro.slides.length,
-            score:      done ? (scoreMap[`m${mIdx}_intro`] ?? 100) : null,
-          });
-        }
-
-        mod.topics.forEach((topic: any, tIdx: number) => {
-          if (pos >= TOPICS_PER_MODULE) return;
-          const complete = isTopicComplete(mIdx, tIdx);
-          const miniReq  = tIdx === 0 && !isIntroDone(mIdx);
-          const locked   = !complete && (miniReq || isLocked(mIdx, tIdx));
-          const key      = `m${mIdx}_t${tIdx}`;
-          lessons.push({
-            key,
-            label:      topic.title,
-            type:       TYPE_CYCLE[pos++] ?? 'grammar',
-            state:      complete ? 'done' : locked ? 'locked' : 'next',
-            hasContent: topicHasContent(level, mIdx, tIdx),
-            moduleIdx:  mIdx,
-            topicIdx:   tIdx,
-            isIntro:    false,
-            score:      complete && scoreMap[key] !== undefined ? scoreMap[key] : null,
-          });
+      const intro = useV2 ? null : MODULE_INTROS[level]?.[mIdx];
+      if (intro) {
+        const done = isIntroDone(mIdx);
+        const introLocked = mIdx > 0 &&
+          modules[mIdx - 1].topics.some((_, t) => !isTopicComplete(mIdx - 1, t));
+        lessons.push({
+          key:        `m${mIdx}_intro`,
+          label:      intro.title,
+          type:       TYPE_CYCLE[pos++] ?? 'grammar',
+          state:      done ? 'done' : introLocked ? 'locked' : 'next',
+          hasContent: true,
+          moduleIdx:  mIdx,
+          topicIdx:   -1,
+          isIntro:    true,
+          slideCount: intro.slides.length,
+          // Intros vao receber exercicios em breve — usar score real se houver,
+          // senao 100 quando concluida (intro = "aula assistida").
+          score:      done ? (scoreMap[`m${mIdx}_intro`] ?? 100) : null,
         });
       }
+
+      mod.topics.forEach((topic: any, tIdx: number) => {
+        if (pos >= TOPICS_PER_MODULE) return;
+        const complete = useV2 ? false : isTopicComplete(mIdx, tIdx);
+        const miniReq  = useV2 ? false : (tIdx === 0 && !isIntroDone(mIdx));
+        const locked   = useV2 ? false : (!complete && (miniReq || isLocked(mIdx, tIdx)));
+        const key      = `m${mIdx}_t${tIdx}`;
+        lessons.push({
+          key,
+          label:      topic.title,
+          type:       TYPE_CYCLE[pos++] ?? 'grammar',
+          state:      complete ? 'done' : locked ? 'locked' : 'next',
+          hasContent: useV2 ? true : topicHasContent(level, mIdx, tIdx),
+          moduleIdx:  mIdx,
+          topicIdx:   tIdx,
+          isIntro:    false,
+          score:      complete && scoreMap[key] !== undefined ? scoreMap[key] : null,
+          v2ModuleId: topic._v2ModuleId,
+          v2UnitId:   topic._v2UnitId,
+        });
+      });
 
       // Determine the FIRST non-done lesson; that's "next". Subsequent non-done stays "locked".
       let foundNext = false;
@@ -568,42 +537,17 @@ export function TrailContent({ userId, level, onCurrentTopicRef, useV2 }: TrailC
         pathname: '/(app)/learn-intro',
         params: { level, moduleIndex: String(lesson.moduleIdx), topicIndex: '0' },
       });
-      return;
+    } else if (lesson.v2ModuleId && lesson.v2UnitId) {
+      router.push({
+        pathname: '/(app)/learn-session',
+        params: { v: 'v2', level, moduleId: lesson.v2ModuleId, unitId: lesson.v2UnitId, activity: 'both' },
+      });
+    } else {
+      router.push({
+        pathname: '/(app)/learn-session',
+        params: { level, moduleIndex: String(lesson.moduleIdx), topicIndex: String(lesson.topicIdx) },
+      });
     }
-
-    // v2 routing — one of the 4 activity types
-    if (lesson.v2ModuleId && lesson.v2Activity) {
-      switch (lesson.v2Activity) {
-        case 'grammar':
-          router.push({
-            pathname: '/(app)/learn-session',
-            params: { v: 'v2', level, moduleId: lesson.v2ModuleId, activity: 'grammar' },
-          });
-          return;
-        case 'speaking':
-          router.push({
-            pathname: '/(app)/learn-session',
-            params: { v: 'v2', level, moduleId: lesson.v2ModuleId, activity: 'ls' },
-          });
-          return;
-        case 'roleplay':
-        case 'chat':
-          // Telas dedicadas chegam nas fases 3 e 4 do plano.
-          // Por enquanto, abre um alerta amigavel.
-          alert(
-            lesson.v2Activity === 'roleplay'
-              ? 'Role-play chega em breve!'
-              : 'Guided Chat chega em breve!'
-          );
-          return;
-      }
-    }
-
-    // v1 routing
-    router.push({
-      pathname: '/(app)/learn-session',
-      params: { level, moduleIndex: String(lesson.moduleIdx), topicIndex: String(lesson.topicIdx) },
-    });
   }, [level]);
 
   // Ref pra scroll-to-active module
