@@ -953,8 +953,12 @@ export default function LiveVoiceModal({
 
       await CharlotteAudioSession.start(isSpeakerRef.current);
 
-      // PRIMEIRA prioridade: abrir o mic. ADM do WebRTC aplica o singleton
-      // (playAndRecord + videoChat + speaker + bluetooth) na ativacao.
+      // PRIMEIRA prioridade: abrir o mic E criar peer connection + addTrack.
+      // iOS so acende a luz do mic no notch quando o RemoteIO audio unit do
+      // WebRTC esta ativamente capturando — ou seja, quando o track esta
+      // bound num peer connection ativo, nao quando getUserMedia retorna.
+      // Por isso ChatGPT/Glite/WhatsApp acendem mic IMEDIATAMENTE: eles fazem
+      // PC + addTrack ANTES de qualquer fetch/signaling.
       const stream = await mediaDevices.getUserMedia({
         audio: {
           echoCancellation: true,
@@ -965,8 +969,16 @@ export default function LiveVoiceModal({
       });
       localStreamRef.current = stream;
 
-      // Mic acendeu → ring pode tocar SEM contaminar (session ja em playAndRecord
-      // e iOS marca como "recording client", bloqueando outros setCategory).
+      // Criar PC + addTrack IMEDIATAMENTE pra ativar o RemoteIO → mic acende
+      // no notch agora. Token fetch + SDP exchange acontecem com mic ja vivo.
+      const pc = new RTCPeerConnection();
+      pcRef.current = pc;
+      stream.getTracks().forEach((track: any) => pc.addTrack(track, stream));
+      pc.ontrack = () => {};
+
+      // Ring toca com mic ja ativo (RemoteIO running) — session em playAndRecord
+      // e iOS marca como "recording client", bloqueando setCategory de outros
+      // componentes contaminadores.
       startCustomRingback();
 
       // Token fetch agora — paralelo ao ring.
@@ -1001,13 +1013,8 @@ export default function LiveVoiceModal({
       const { clientSecret } = await tokenRes.json();
       if (!clientSecret) throw new Error('No client secret returned');
 
-      const pc = new RTCPeerConnection();
-      pcRef.current = pc;
-
-      stream.getTracks().forEach((track: any) => pc.addTrack(track, stream));
-
-      pc.ontrack = () => {};
-
+      // PC + addTrack ja foram criados ANTES do token fetch (mic acende imediato).
+      // Aqui criamos so o data channel pra eventos do Realtime API.
       const dc = pc.createDataChannel('oai-events');
       dcRef.current = dc;
 
