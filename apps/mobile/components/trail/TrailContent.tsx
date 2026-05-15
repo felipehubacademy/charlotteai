@@ -78,6 +78,7 @@ interface Lesson {
   // v2 — preenchido quando o trail vem do curriculum v2
   v2ModuleId?: string;
   v2UnitId?:   string;
+  v2Activity?: NodeType;
 }
 
 interface ModuleData {
@@ -200,18 +201,21 @@ function LessonRow({
           }}>
           {lesson.label}
         </AppText>
-        <AppText style={{
-          fontSize: 10, fontWeight: '700',
-          color: C.navyLight, letterSpacing: 0.8, marginTop: 2,
-          textTransform: 'uppercase',
-        }}>
-          {isPt ? cfg.labelPt : cfg.label}
-          {isDone && typeof lesson.score === 'number' && (
-            <AppText style={{ color: scoreColor(lesson.score) }}>
-              {`  ·  ${Math.round(lesson.score)}%`}
-            </AppText>
-          )}
-        </AppText>
+        {/* Subtitulo: oculta quando label ja é o tipo (caso v2). Score sempre aparece se houver. */}
+        {(lesson.label !== (isPt ? cfg.labelPt : cfg.label) || (isDone && typeof lesson.score === 'number')) && (
+          <AppText style={{
+            fontSize: 10, fontWeight: '700',
+            color: C.navyLight, letterSpacing: 0.8, marginTop: 2,
+            textTransform: 'uppercase',
+          }}>
+            {lesson.label !== (isPt ? cfg.labelPt : cfg.label) ? (isPt ? cfg.labelPt : cfg.label) : ''}
+            {isDone && typeof lesson.score === 'number' && (
+              <AppText style={{ color: scoreColor(lesson.score) }}>
+                {`${lesson.label !== (isPt ? cfg.labelPt : cfg.label) ? '  ·  ' : ''}${Math.round(lesson.score)}%`}
+              </AppText>
+            )}
+          </AppText>
+        )}
       </View>
 
       {/* All action pills share size: paddingHorizontal:10 paddingVertical:6 borderRadius:10 */}
@@ -386,19 +390,32 @@ export function TrailContent({ userId, level, onCurrentTopicRef, useV2 }: TrailC
   const isPt    = level === 'Novice';
   const accent  = LEVEL_COLOR[level];
 
-  // v2 modules wrapped to the shape the existing render expects.
-  // No intros yet in v2 — units count as the "topics".
+  // v2: cada UNIT vira um card. Dentro: 4 rows fixas, uma por atividade.
+  // Cap TOPICS_PER_MODULE=4 nao restringe porque sao exatamente 4 atividades.
   const v2Wrapped = useMemo(() => {
     if (!useV2) return null;
-    return listV2Modules(level as V2Level).map(m => ({
-      title:  m.title,
-      topics: m.units.map(u => ({ title: u.title, _v2ModuleId: m.id, _v2UnitId: u.id })),
-    }));
-  }, [useV2, level]);
+    const labels = {
+      grammar:  isPt ? 'Gramatica'            : 'Grammar',
+      speaking: isPt ? 'Listening & Speaking' : 'Listening & Speaking',
+      roleplay: isPt ? 'Role-play'            : 'Role-play',
+      chat:     isPt ? 'Guided Chat'          : 'Guided Chat',
+    } as const;
+    return listV2Modules(level as V2Level).flatMap(m =>
+      m.units.map(u => ({
+        title:  u.title,
+        topics: (['grammar', 'speaking', 'roleplay', 'chat'] as const).map(act => ({
+          title:        labels[act],
+          _v2ModuleId:  m.id,
+          _v2UnitId:    u.id,
+          _v2Activity:  act,
+        })),
+      }))
+    );
+  }, [useV2, level, isPt]);
 
   const modules = (v2Wrapped ?? CURRICULUM[level]) as Array<{
     title: string;
-    topics: Array<{ title: string; _v2ModuleId?: string; _v2UnitId?: string }>;
+    topics: Array<{ title: string; _v2ModuleId?: string; _v2UnitId?: string; _v2Activity?: NodeType }>;
   }>;
 
   const {
@@ -475,10 +492,13 @@ export function TrailContent({ userId, level, onCurrentTopicRef, useV2 }: TrailC
         const miniReq  = useV2 ? false : (tIdx === 0 && !isIntroDone(mIdx));
         const locked   = useV2 ? false : (!complete && (miniReq || isLocked(mIdx, tIdx)));
         const key      = `m${mIdx}_t${tIdx}`;
+        const v2Activity: NodeType | undefined = topic._v2Activity;
+        const lessonType = useV2 && v2Activity ? v2Activity : (TYPE_CYCLE[pos] ?? 'grammar');
+        if (!(useV2 && v2Activity)) pos++;
         lessons.push({
           key,
           label:      topic.title,
-          type:       TYPE_CYCLE[pos++] ?? 'grammar',
+          type:       lessonType,
           state:      complete ? 'done' : locked ? 'locked' : 'next',
           hasContent: useV2 ? true : topicHasContent(level, mIdx, tIdx),
           moduleIdx:  mIdx,
@@ -487,6 +507,7 @@ export function TrailContent({ userId, level, onCurrentTopicRef, useV2 }: TrailC
           score:      complete && scoreMap[key] !== undefined ? scoreMap[key] : null,
           v2ModuleId: topic._v2ModuleId,
           v2UnitId:   topic._v2UnitId,
+          v2Activity,
         });
       });
 
