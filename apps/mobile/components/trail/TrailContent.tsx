@@ -78,6 +78,7 @@ interface Lesson {
   // v2 — preenchido quando o trail vem do curriculum v2
   v2ModuleId?: string;
   v2UnitId?:   string;
+  v2Activity?: NodeType;
 }
 
 interface ModuleData {
@@ -386,19 +387,33 @@ export function TrailContent({ userId, level, onCurrentTopicRef, useV2 }: TrailC
   const isPt    = level === 'Novice';
   const accent  = LEVEL_COLOR[level];
 
-  // v2 modules wrapped to the shape the existing render expects.
-  // No intros yet in v2 — units count as the "topics".
+  // v2: cada UNIT vira um "card" (= module no shape v15), com 4 rows fixas
+  // (uma por activity). Match exato com a UI v15 onde cada module tinha 4
+  // topic rows com TYPE_CYCLE — só que agora os types sao funcionais.
   const v2Wrapped = useMemo(() => {
     if (!useV2) return null;
-    return listV2Modules(level as V2Level).map(m => ({
-      title:  m.title,
-      topics: m.units.map(u => ({ title: u.title, _v2ModuleId: m.id, _v2UnitId: u.id })),
-    }));
-  }, [useV2, level]);
+    const labels = {
+      grammar:  isPt ? 'Gramatica'             : 'Grammar',
+      speaking: isPt ? 'Listening & Speaking'  : 'Listening & Speaking',
+      roleplay: isPt ? 'Role-play'             : 'Role-play',
+      chat:     isPt ? 'Guided Chat'           : 'Guided Chat',
+    } as const;
+    return listV2Modules(level as V2Level).flatMap(m =>
+      m.units.map(u => ({
+        title:  u.title,
+        topics: (['grammar', 'speaking', 'roleplay', 'chat'] as const).map(act => ({
+          title:        labels[act],
+          _v2ModuleId:  m.id,
+          _v2UnitId:    u.id,
+          _v2Activity:  act,
+        })),
+      }))
+    );
+  }, [useV2, level, isPt]);
 
   const modules = (v2Wrapped ?? CURRICULUM[level]) as Array<{
     title: string;
-    topics: Array<{ title: string; _v2ModuleId?: string; _v2UnitId?: string }>;
+    topics: Array<{ title: string; _v2ModuleId?: string; _v2UnitId?: string; _v2Activity?: NodeType }>;
   }>;
 
   const {
@@ -475,10 +490,14 @@ export function TrailContent({ userId, level, onCurrentTopicRef, useV2 }: TrailC
         const miniReq  = useV2 ? false : (tIdx === 0 && !isIntroDone(mIdx));
         const locked   = useV2 ? false : (!complete && (miniReq || isLocked(mIdx, tIdx)));
         const key      = `m${mIdx}_t${tIdx}`;
+        const v2Activity: NodeType | undefined = topic._v2Activity;
+        // v2: type vem da activity, pos++ ainda ocorre pra TYPE_CYCLE consistente em v1
+        const lessonType = useV2 && v2Activity ? v2Activity : (TYPE_CYCLE[pos] ?? 'grammar');
+        if (!(useV2 && v2Activity)) pos++;
         lessons.push({
           key,
           label:      topic.title,
-          type:       TYPE_CYCLE[pos++] ?? 'grammar',
+          type:       lessonType,
           state:      complete ? 'done' : locked ? 'locked' : 'next',
           hasContent: useV2 ? true : topicHasContent(level, mIdx, tIdx),
           moduleIdx:  mIdx,
@@ -487,6 +506,7 @@ export function TrailContent({ userId, level, onCurrentTopicRef, useV2 }: TrailC
           score:      complete && scoreMap[key] !== undefined ? scoreMap[key] : null,
           v2ModuleId: topic._v2ModuleId,
           v2UnitId:   topic._v2UnitId,
+          v2Activity,
         });
       });
 
@@ -537,11 +557,31 @@ export function TrailContent({ userId, level, onCurrentTopicRef, useV2 }: TrailC
         pathname: '/(app)/learn-intro',
         params: { level, moduleIndex: String(lesson.moduleIdx), topicIndex: '0' },
       });
-    } else if (lesson.v2ModuleId && lesson.v2UnitId) {
-      router.push({
-        pathname: '/(app)/learn-session',
-        params: { v: 'v2', level, moduleId: lesson.v2ModuleId, unitId: lesson.v2UnitId, activity: 'both' },
-      });
+    } else if (lesson.v2ModuleId && lesson.v2UnitId && lesson.v2Activity) {
+      // v2 routing — uma das 4 activities por unit
+      switch (lesson.v2Activity) {
+        case 'grammar':
+          router.push({
+            pathname: '/(app)/learn-session',
+            params: { v: 'v2', level, moduleId: lesson.v2ModuleId, unitId: lesson.v2UnitId, activity: 'grammar' },
+          });
+          return;
+        case 'speaking':
+          router.push({
+            pathname: '/(app)/learn-session',
+            params: { v: 'v2', level, moduleId: lesson.v2ModuleId, unitId: lesson.v2UnitId, activity: 'ls' },
+          });
+          return;
+        case 'roleplay':
+        case 'chat':
+          // Telas dedicadas chegam nas fases 3 e 4.
+          alert(
+            lesson.v2Activity === 'roleplay'
+              ? 'Role-play chega em breve!'
+              : 'Guided Chat chega em breve!'
+          );
+          return;
+      }
     } else {
       router.push({
         pathname: '/(app)/learn-session',
