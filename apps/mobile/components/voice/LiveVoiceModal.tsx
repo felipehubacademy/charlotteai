@@ -1196,21 +1196,16 @@ export default function LiveVoiceModal({
               charlotteSpeakingRef.current = true;
               setCharlotteSpeaking(true);
               setUserSpeaking(false);
-              // Anti self-interrupt: desabilita VAD durante a fala da Charlotte.
-              // Server VAD estava cancelando a propria response em eco do speaker
-              // (interrupt_response:true). Trade-off: user nao consegue barge-in
-              // nessa janela. Restora em output_audio_buffer.stopped + 400ms grace.
+              // TESTE A (2026-05-15): VAD permanece ATIVO durante fala da Charlotte
+              // pra permitir barge-in (user interromper ela). Antes desabilitavamos
+              // pra evitar self-interrupt por eco do speaker, mas isso impedia
+              // interrupcao genuina. Confiando em echoCancellation:true do
+              // getUserMedia pra atenuar eco. Se voltar self-interrupt, proximo
+              // passo eh semantic_vad (TESTE B).
               if (vadRestoreTimerRef.current) {
                 clearTimeout(vadRestoreTimerRef.current);
                 vadRestoreTimerRef.current = null;
               }
-              sendEvent({
-                type: 'session.update',
-                session: {
-                  type: 'realtime',
-                  audio: { input: { turn_detection: null } },
-                },
-              });
               break;
 
             case 'output_audio_buffer.stopped':
