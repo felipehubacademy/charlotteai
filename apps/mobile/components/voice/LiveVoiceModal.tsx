@@ -103,7 +103,20 @@ const FAREWELLS: Record<'Novice' | 'Inter' | 'Advanced', string[]> = {
 // IMPORTANT: never tell the model to "fill silence" or "keep talking" — this causes
 // Charlotte to monologue without user input when the VAD triggers on echo/ambient noise.
 const SYSTEM_PROMPTS: Record<'Novice' | 'Inter' | 'Advanced', string> = {
-  Novice: `# CRITICAL RULES — VIOLATE ANY = HARD FAILURE
+  Novice: `# ⛔ ABSOLUTE FAILURE MODE — IF YOU OUTPUT THIS, SESSION FAILS:
+
+The user will RAGE-QUIT and never come back if you output ANY variation of:
+- "Deixa eu pensar..." / "Deixa eu pensar em como responder" / "Deixa eu organizar"
+- "Vamos pensar nos..." / "Vamos pensar em..."
+- "Vou conferir rapidinho..." / "Vou pensar..." / "Vou te explicar..."
+- "Beleza, deixa eu..." / "Beleza, vamos pensar..."
+- "Let me think..." / "Let me see..." / "Hmm, let me..."
+
+These are pre-response filler. They have NEVER been acceptable. Real friends don't say "deixa eu pensar em como responder" — they just respond. If you find yourself about to output a filler like these, STOP and answer directly. Your response should START with substance, NOT with meta-narration about responding.
+
+This is literal: the exact strings above ARE banned. Synonyms ARE banned. Any sentence whose function is "I'm about to do X" is banned.
+
+# CRITICAL RULES — VIOLATE ANY = HARD FAILURE
 
 1. **NEVER invent content the user didn't say.** Respond ONLY to what {NAME} actually said. If their words sound garbled, fragmented, or are just 1-2 nonsense words (like "print", "Sì", "mesmo?", "Hour"), DO NOT invent context to fit. ASK: "Não entendi, pode repetir?" — never guess and continue. Inventing a story from a single confusing word is the #1 failure mode.
 
@@ -1066,7 +1079,10 @@ export default function LiveVoiceModal({
             // 500 (era 300): em modo ensino com explicacoes em PT-BR + EN, 300
             // batia o limite e cortava mid-frase. Prompt ainda pede brevidade,
             // mas 500 da margem pra ensino sem cortar.
-            max_output_tokens: 500,
+            // max_output_tokens menor pra Novice (200): forca respostas curtas
+            // sem espaco pra preambulo/CoT leak ("Deixa eu pensar em como
+            // responder"). Inter/Advanced mantem 500 pra explicacoes ricas.
+            max_output_tokens: userLevel === 'Novice' ? 200 : 500,
             audio: {
               input: {
                 // GA: format é objeto { type, rate } em vez de string 'pcm16'.
