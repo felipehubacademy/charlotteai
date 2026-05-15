@@ -538,10 +538,29 @@ export function TrailContent({ userId, level, onCurrentTopicRef, useV2 }: TrailC
         params: { level, moduleIndex: String(lesson.moduleIdx), topicIndex: '0' },
       });
     } else if (lesson.v2ModuleId && lesson.v2UnitId) {
-      router.push({
-        pathname: '/(app)/learn-session',
-        params: { v: 'v2', level, moduleId: lesson.v2ModuleId, unitId: lesson.v2UnitId, activity: 'both' },
-      });
+      // v2 routing: o tipo ciclado (grammar/speaking/roleplay/chat) define
+      // qual fatia do unit abre. Mesma posicao → mesma atividade, igual v15
+      // visual mas agora funcional.
+      switch (lesson.type) {
+        case 'grammar':
+          router.push({
+            pathname: '/(app)/learn-session',
+            params: { v: 'v2', level, moduleId: lesson.v2ModuleId, unitId: lesson.v2UnitId, activity: 'grammar' },
+          });
+          return;
+        case 'speaking':
+          router.push({
+            pathname: '/(app)/learn-session',
+            params: { v: 'v2', level, moduleId: lesson.v2ModuleId, unitId: lesson.v2UnitId, activity: 'ls' },
+          });
+          return;
+        case 'roleplay':
+          alert('Role-play chega em breve!');
+          return;
+        case 'chat':
+          alert('Guided Chat chega em breve!');
+          return;
+      }
     } else {
       router.push({
         pathname: '/(app)/learn-session',
