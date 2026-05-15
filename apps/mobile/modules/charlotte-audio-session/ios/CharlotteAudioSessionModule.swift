@@ -3,30 +3,20 @@ import AVFoundation
 import WebRTC
 
 /**
- * CharlotteAudioSession — controla AVAudioSession pra Live Voice.
+ * CharlotteAudioSession — controla AVAudioSession pra Live Voice via WebRTC.
  *
- * ESTRATEGIA (definitiva — research-driven, ver memory/livevoice_research):
+ * Filosofia (Jitsi-style, sem CallKit):
+ *  - Singleton RTCAudioSessionConfiguration.webRTC() pre-seedado em OnCreate.
+ *  - start() locka, aplica setConfiguration (sem `active:`), unlocka, força speaker.
+ *  - O ADM do WebRTC ativa a session quando o primeiro track começa.
+ *  - Ringback via AVAudioPlayer SO DEPOIS da config aplicada (herda primary).
+ *  - useManualAudio JAMAIS (sem CallKit gera '!pri' loop infinito).
+ *  - InCallManager JAMAIS.
  *
- * 1. Pre-seed RTCAudioSessionConfiguration.webRTC() (singleton) UMA vez no
- *    OnCreate do modulo, com mode .videoChat + DefaultToSpeaker. Esse
- *    singleton eh o que o react-native-webrtc le TODA VEZ que ele aplica
- *    configuracao (em peer connection setup, route change, etc). Resultado:
- *    WebRTC aplica nossa config a cada reaplicacao, sem briga.
- *
- * 2. Nao chamamos setCategory / setActive / setMode no AVAudioSession.
- *    Quem ativa eh o WebRTC, com nossa config pre-seedeada.
- *
- * 3. So fazemos overrideOutputAudioPort(.speaker) quando preferSpeaker=true,
- *    pra forcar speaker se rota foi pra algo nao-headphone (USB cable etc).
- *    Reaplicamos via routeChange listener.
- *
- * 4. Nao usamos useManualAudio. Esse pattern eh especifico de CallKit (que
- *    nao usamos) e gera "Operation Denied / !pri" loop sem CallKit.
- *
- * Mode .videoChat (em vez de .voiceChat): apesar do nome, .videoChat eh o
- * mode "voz em volume normal, NAO orelha". Tem AEC + DefaultToSpeaker
- * embutido. .voiceChat = "telefone na orelha" (default earpiece, errado
- * pra nos). .default = sem otimizacao, pode desabilitar AEC.
+ * Refs:
+ *  - jitsi-meet/ios/sdk/src/AudioMode.m (setConfig:, audioSessionDidChangeRoute:)
+ *  - webrtc M124 RTCAudioSession.mm (configureWebRTCSession: → setConfiguration:active:YES)
+ *  - RTCAudioSessionConfiguration.m (gWebRTCConfiguration process-wide singleton)
  */
 public class CharlotteAudioSessionModule: Module {
   private var routeChangeObserver: NSObjectProtocol?
@@ -37,28 +27,80 @@ public class CharlotteAudioSessionModule: Module {
 
   public func definition() -> ModuleDefinition {
     Name("CharlotteAudioSession")
-
     Events("onRouteChange", "onInterruption")
 
-    // Pre-seed singleton que WebRTC vai LER toda vez que aplicar config.
-    // Critico: precisa rodar antes do WebRTC iniciar peer connection.
-    // OnCreate fica antes do JS chamar mediaDevices.getUserMedia.
     OnCreate {
+      // Pre-seed antes do react-native-webrtc instanciar o peer connection.
+      // .allowBluetoothA2DP REMOVIDO: incompativel com playAndRecord (-12981).
+      // .duckOthers abaixa audio de outros apps em vez de cortar — evita que
+      // Sentry/expo-video tomem primary durante setup.
       let cfg = RTCAudioSessionConfiguration.webRTC()
       cfg.category = AVAudioSession.Category.playAndRecord.rawValue
       cfg.mode = AVAudioSession.Mode.videoChat.rawValue
-      cfg.categoryOptions = [.allowBluetooth, .defaultToSpeaker]
+      cfg.categoryOptions = [.allowBluetooth, .defaultToSpeaker, .duckOthers]
       RTCAudioSessionConfiguration.setWebRTC(cfg)
-      NSLog("[CharlotteAudioSession] webRTC config pre-seeded (playAndRecord + videoChat + defaultToSpeaker + allowBluetooth)")
+      NSLog("[CharlotteAudioSession] webRTC singleton seeded (playAndRecord+videoChat+spk+bt+duck)")
     }
 
-    /**
-     * Toca o ringback (incallmanager_ringback.mp3) em loop.
-     * Roda dentro da session que WebRTC vai usar — mesmo dono, zero conflito.
-     */
+    AsyncFunction("start") { (preferSpeakerInput: Bool) -> Bool in
+      self.preferSpeaker = preferSpeakerInput
+      let session = RTCAudioSession.sharedInstance()
+      let cfg = RTCAudioSessionConfiguration.webRTC()
+
+      session.lockForConfiguration()
+      defer { session.unlockForConfiguration() }
+
+      do {
+        // 2-arg form: NAO chama setActive. ADM do WebRTC ativa quando track
+        // comeca. Ref: jitsi AudioMode.m setConfigWithoutLock: usa exatamente
+        // este metodo. Chamar setActive aqui gera o '!pri' loop sem CallKit.
+        try session.setConfiguration(cfg)
+        NSLog("[CharlotteAudioSession] setConfiguration ok")
+      } catch {
+        NSLog("[CharlotteAudioSession] setConfiguration error: \(error.localizedDescription)")
+        return false
+      }
+
+      if self.preferSpeaker {
+        do {
+          try session.overrideOutputAudioPort(.speaker)
+        } catch {
+          NSLog("[CharlotteAudioSession] override speaker error: \(error.localizedDescription)")
+        }
+      }
+
+      self.installObservers()
+      self.isActive = true
+      NSLog("[CharlotteAudioSession] start preferSpeaker=\(preferSpeakerInput)")
+      return true
+    }
+
+    AsyncFunction("stop") { () -> Void in
+      self.ringbackPlayer?.stop()
+      self.ringbackPlayer = nil
+      self.removeObservers()
+      self.isActive = false
+
+      // Volta pra config benigna pra liberar primary pro resto do app
+      // (sons curtos, video player, etc).
+      let session = RTCAudioSession.sharedInstance()
+      let benign = RTCAudioSessionConfiguration()
+      benign.category = AVAudioSession.Category.ambient.rawValue
+      benign.mode = AVAudioSession.Mode.default.rawValue
+      benign.categoryOptions = []
+
+      session.lockForConfiguration()
+      defer { session.unlockForConfiguration() }
+      try? session.setConfiguration(benign)
+      NSLog("[CharlotteAudioSession] stop (session→ambient)")
+    }
+
     AsyncFunction("playRingback") { () -> Bool in
+      // Pre-condicao: start() ja rodou e setConfiguration(playAndRecord) aplicou.
+      // AVAudioPlayer aqui herda a session ativa — NAO rouba primary porque
+      // a session ja esta como playAndRecord (categoria input+output).
       guard let url = Bundle.main.url(forResource: "incallmanager_ringback", withExtension: "mp3") else {
-        NSLog("[CharlotteAudioSession] ringback mp3 not found in bundle")
+        NSLog("[CharlotteAudioSession] ringback mp3 not found")
         return false
       }
       do {
@@ -70,9 +112,7 @@ public class CharlotteAudioSessionModule: Module {
         }
         self.ringbackPlayer?.currentTime = 0
         let started = self.ringbackPlayer?.play() ?? false
-        if !started {
-          NSLog("[CharlotteAudioSession] ringback play() returned false")
-        }
+        if !started { NSLog("[CharlotteAudioSession] ringback play() returned false") }
         return started
       } catch {
         NSLog("[CharlotteAudioSession] playRingback error: \(error.localizedDescription)")
@@ -85,39 +125,13 @@ public class CharlotteAudioSessionModule: Module {
       self.ringbackPlayer?.currentTime = 0
     }
 
-    /**
-     * Inicia a sessao pra Live Voice.
-     * Instala observers e forca speaker (se preferSpeaker=true).
-     * WebRTC cuida do setCategory/setActive via singleton pre-seedeado.
-     */
-    AsyncFunction("start") { (preferSpeakerInput: Bool) -> Bool in
-      self.preferSpeaker = preferSpeakerInput
-      self.installObservers()
-      self.isActive = true
-      self.applySpeakerOverride()
-      NSLog("[CharlotteAudioSession] start preferSpeaker=\(preferSpeakerInput)")
-      return true
-    }
-
-    /**
-     * Desativa Live Voice. WebRTC cuida do setActive(false) quando peer fecha.
-     * So limpamos observers e ringback.
-     */
-    AsyncFunction("stop") { () -> Void in
-      self.ringbackPlayer?.stop()
-      self.ringbackPlayer = nil
-      self.removeObservers()
-      self.isActive = false
-      NSLog("[CharlotteAudioSession] stop")
-    }
-
-    /**
-     * Troca speaker ↔ earpiece em tempo real.
-     */
     AsyncFunction("setSpeakerOn") { (on: Bool) -> Bool in
       self.preferSpeaker = on
+      let session = RTCAudioSession.sharedInstance()
+      session.lockForConfiguration()
+      defer { session.unlockForConfiguration() }
       do {
-        try AVAudioSession.sharedInstance().overrideOutputAudioPort(on ? .speaker : .none)
+        try session.overrideOutputAudioPort(on ? .speaker : .none)
         return true
       } catch {
         NSLog("[CharlotteAudioSession] setSpeakerOn error: \(error.localizedDescription)")
@@ -125,9 +139,6 @@ public class CharlotteAudioSessionModule: Module {
       }
     }
 
-    /**
-     * Snapshot da rota (debug).
-     */
     Function("getCurrentRoute") { () -> String in
       let route = AVAudioSession.sharedInstance().currentRoute
       let outputs = route.outputs.map { "\($0.portType.rawValue):\($0.portName)" }
@@ -135,18 +146,7 @@ public class CharlotteAudioSessionModule: Module {
     }
   }
 
-  // MARK: - Internal
-
-  /// Forca speaker se preferSpeaker=true. Idempotente — pode chamar varias vezes.
-  /// Override e barato e nao requer lock.
-  private func applySpeakerOverride() {
-    guard preferSpeaker else { return }
-    do {
-      try AVAudioSession.sharedInstance().overrideOutputAudioPort(.speaker)
-    } catch {
-      NSLog("[CharlotteAudioSession] applySpeakerOverride error: \(error.localizedDescription)")
-    }
-  }
+  // MARK: - Observers
 
   private func installObservers() {
     let nc = NotificationCenter.default
@@ -162,36 +162,35 @@ public class CharlotteAudioSessionModule: Module {
       let reason = AVAudioSession.RouteChangeReason(rawValue: reasonRaw) ?? .unknown
 
       let currentRoute = session.currentRoute
-      let outputs = currentRoute.outputs.map { "\($0.portType.rawValue):\($0.portName)" }.joined(separator: ",")
+      let outputs = currentRoute.outputs
+        .map { "\($0.portType.rawValue):\($0.portName)" }
+        .joined(separator: ",")
 
       NSLog("[CharlotteAudioSession] route change reason=\(reasonRaw) outputs=\(outputs)")
+      self.sendEvent("onRouteChange", ["reason": reasonRaw, "outputs": outputs])
 
-      self.sendEvent("onRouteChange", [
-        "reason": reasonRaw,
-        "outputs": outputs,
-      ])
-
-      // So reaplica speaker em mudancas EXTERNAS reais. .categoryChange e
-      // .override sao causadas por nos/WebRTC — ignora.
-      let externalChange: Bool
+      // Replica Jitsi audioSessionDidChangeRoute: so reage a essas razoes.
+      let external: Bool
       switch reason {
       case .newDeviceAvailable, .oldDeviceUnavailable, .noSuitableRouteForCategory:
-        externalChange = true
+        external = true
       default:
-        externalChange = false
+        external = false
       }
-      guard externalChange, self.preferSpeaker else { return }
+      guard external, self.preferSpeaker else { return }
 
-      // Se tem headphones reais (wired/Bluetooth), respeita.
       let hasHeadphones = currentRoute.outputs.contains {
         $0.portType == .headphones || $0.portType == .bluetoothA2DP || $0.portType == .bluetoothHFP
       }
       let isOnSpeaker = currentRoute.outputs.contains { $0.portType == .builtInSpeaker }
 
+      // Cabo USB / Lightning DAC: portType == .usbAudio (não eh headphone real).
       if !isOnSpeaker && !hasHeadphones {
-        // Cabo USB / Lightning DAC apareceu como output — forca speaker.
-        self.applySpeakerOverride()
-        NSLog("[CharlotteAudioSession] route forced back to speaker")
+        let rtc = RTCAudioSession.sharedInstance()
+        rtc.lockForConfiguration()
+        try? rtc.overrideOutputAudioPort(.speaker)
+        rtc.unlockForConfiguration()
+        NSLog("[CharlotteAudioSession] route forced→speaker")
       }
     }
 
@@ -206,24 +205,19 @@ public class CharlotteAudioSessionModule: Module {
 
       NSLog("[CharlotteAudioSession] interruption type=\(typeRaw)")
 
-      // WebRTC re-ativa session em .ended. So reforcamos speaker se preferimos.
-      if type == .ended {
-        self.applySpeakerOverride()
+      if type == .ended, self.preferSpeaker {
+        let rtc = RTCAudioSession.sharedInstance()
+        rtc.lockForConfiguration()
+        try? rtc.overrideOutputAudioPort(.speaker)
+        rtc.unlockForConfiguration()
       }
-
       self.sendEvent("onInterruption", ["type": typeRaw])
     }
   }
 
   private func removeObservers() {
     let nc = NotificationCenter.default
-    if let obs = routeChangeObserver {
-      nc.removeObserver(obs)
-      routeChangeObserver = nil
-    }
-    if let obs = interruptionObserver {
-      nc.removeObserver(obs)
-      interruptionObserver = nil
-    }
+    if let obs = routeChangeObserver { nc.removeObserver(obs); routeChangeObserver = nil }
+    if let obs = interruptionObserver { nc.removeObserver(obs); interruptionObserver = nil }
   }
 }

@@ -870,14 +870,14 @@ export default function LiveVoiceModal({
         return;
       }
 
-      // Configura AVAudioSession (iOS) / AudioManager (Android) ANTES de
-      // qualquer player. Ringback toca DENTRO dessa session:
-      //   iOS: category=PlayAndRecord, mode=.default (NAO voiceChat — voiceChat
-      //        prioriza cabo USB e ignora override pra speaker), opcoes
-      //        DefaultToSpeaker | AllowBluetooth | AllowAirPlay. Listener de
-      //        RouteChangeNotification re-aplica override em mudancas de rota.
+      // Configura AVAudioSession (iOS) / AudioManager (Android) ANTES de qualquer
+      // player. Pattern Jitsi-style sem CallKit:
+      //   iOS: lock + setConfiguration(playAndRecord + videoChat +
+      //        [DefaultToSpeaker, AllowBluetooth, DuckOthers]) + unlock. SEM
+      //        useManualAudio (gera !pri loop sem CallKit). WebRTC ADM ativa
+      //        a session quando o primeiro track comeca. AVAudioPlayer do
+      //        ringback DEPOIS herda a session ativa, nao rouba primary.
       //   Android: AudioManager.MODE_IN_COMMUNICATION + setSpeakerphoneOn(true).
-      //        Listener de ACTION_HEADSET_PLUG reaplica speaker ao desplugar fones.
       await CharlotteAudioSession.start(isSpeakerRef.current);
 
       // Ringback toca DENTRO da session que acabamos de configurar (AVAudioPlayer
