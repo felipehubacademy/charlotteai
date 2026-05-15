@@ -14,6 +14,8 @@ import {
 import { AppText } from '@/components/ui/Text';
 import { CURRICULUM, TrailLevel, topicHasContent } from '@/data/curriculum';
 import { MODULE_INTROS } from '@/data/moduleIntros';
+import { listModules as listV2Modules } from '@/lib/curriculum-v2/loader';
+import type { Level as V2Level } from '@/lib/curriculum-v2/types';
 import { useLearnProgress } from '@/hooks/useLearnProgress';
 import { supabase } from '@/lib/supabase';
 
@@ -73,6 +75,9 @@ interface Lesson {
   isIntro:    boolean;
   slideCount?: number;
   score?:     number | null; // 0-100, calculado de learn_history
+  // v2 — preenchido quando o trail vem do curriculum v2
+  v2ModuleId?: string;
+  v2UnitId?:   string;
 }
 
 interface ModuleData {
@@ -373,13 +378,28 @@ interface TrailContentProps {
   level:              TrailLevel;
   showBanner?:        boolean;
   onCurrentTopicRef?: (node: View | null) => void;
+  useV2?:             boolean;   // when true, loads modules from curriculum-v2
 }
 
 // ── Main ──────────────────────────────────────────────────────────────────────
-export function TrailContent({ userId, level, onCurrentTopicRef }: TrailContentProps) {
+export function TrailContent({ userId, level, onCurrentTopicRef, useV2 }: TrailContentProps) {
   const isPt    = level === 'Novice';
   const accent  = LEVEL_COLOR[level];
-  const modules = CURRICULUM[level];
+
+  // v2 modules wrapped to the shape the existing render expects.
+  // No intros yet in v2 — units count as the "topics".
+  const v2Wrapped = useMemo(() => {
+    if (!useV2) return null;
+    return listV2Modules(level as V2Level).map(m => ({
+      title:  m.title,
+      topics: m.units.map(u => ({ title: u.title, _v2ModuleId: m.id, _v2UnitId: u.id })),
+    }));
+  }, [useV2, level]);
+
+  const modules = (v2Wrapped ?? CURRICULUM[level]) as Array<{
+    title: string;
+    topics: Array<{ title: string; _v2ModuleId?: string; _v2UnitId?: string }>;
+  }>;
 
   const {
     loading, refetch,
@@ -428,7 +448,7 @@ export function TrailContent({ userId, level, onCurrentTopicRef }: TrailContentP
       const lessons: Lesson[] = [];
       let pos = 0;
 
-      const intro = MODULE_INTROS[level]?.[mIdx];
+      const intro = useV2 ? null : MODULE_INTROS[level]?.[mIdx];
       if (intro) {
         const done = isIntroDone(mIdx);
         const introLocked = mIdx > 0 &&
@@ -449,22 +469,24 @@ export function TrailContent({ userId, level, onCurrentTopicRef }: TrailContentP
         });
       }
 
-      mod.topics.forEach((topic, tIdx) => {
+      mod.topics.forEach((topic: any, tIdx: number) => {
         if (pos >= TOPICS_PER_MODULE) return;
-        const complete = isTopicComplete(mIdx, tIdx);
-        const miniReq  = tIdx === 0 && !isIntroDone(mIdx);
-        const locked   = !complete && (miniReq || isLocked(mIdx, tIdx));
+        const complete = useV2 ? false : isTopicComplete(mIdx, tIdx);
+        const miniReq  = useV2 ? false : (tIdx === 0 && !isIntroDone(mIdx));
+        const locked   = useV2 ? false : (!complete && (miniReq || isLocked(mIdx, tIdx)));
         const key      = `m${mIdx}_t${tIdx}`;
         lessons.push({
           key,
           label:      topic.title,
           type:       TYPE_CYCLE[pos++] ?? 'grammar',
           state:      complete ? 'done' : locked ? 'locked' : 'next',
-          hasContent: topicHasContent(level, mIdx, tIdx),
+          hasContent: useV2 ? true : topicHasContent(level, mIdx, tIdx),
           moduleIdx:  mIdx,
           topicIdx:   tIdx,
           isIntro:    false,
           score:      complete && scoreMap[key] !== undefined ? scoreMap[key] : null,
+          v2ModuleId: topic._v2ModuleId,
+          v2UnitId:   topic._v2UnitId,
         });
       });
 
@@ -514,6 +536,11 @@ export function TrailContent({ userId, level, onCurrentTopicRef }: TrailContentP
       router.push({
         pathname: '/(app)/learn-intro',
         params: { level, moduleIndex: String(lesson.moduleIdx), topicIndex: '0' },
+      });
+    } else if (lesson.v2ModuleId && lesson.v2UnitId) {
+      router.push({
+        pathname: '/(app)/learn-session',
+        params: { v: 'v2', level, moduleId: lesson.v2ModuleId, unitId: lesson.v2UnitId, activity: 'both' },
       });
     } else {
       router.push({

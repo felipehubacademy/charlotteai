@@ -451,6 +451,7 @@ export default function HomeTab() {
           level={level}
           showBanner={false}
           onCurrentTopicRef={handleCurrentTopicRef}
+          useV2={profile?.beta_features?.includes('curriculum_v2') ?? false}
         />
       </ScrollView>
 
