@@ -1044,11 +1044,13 @@ export default function LiveVoiceModal({
             model: MODEL,
             output_modalities: ['audio'],
             instructions: getSystemPrompt(userLevel, userName, greeting),
-            // reasoning_effort: minimal — reduz tendencia do modelo de "pensar
-            // em voz alta" (CoT leak). Sem isso, gpt-realtime-2 usa "deixa eu
-            // organizar/responder/te ajudar..." como filler conversational.
-            // 'minimal' faz ele responder direto sem preambulos.
-            reasoning_effort: 'minimal',
+            // reasoning_effort REMOVIDO 2026-05-15: Realtime API GA rejeita
+            // este parametro com invalid_request_error 'unknown_parameter'.
+            // E o rejeito invalida o session.update INTEIRO → transcription
+            // config descartada → whisper nunca rodou → user_turns=0 no DB.
+            // Era um chute de research baseado em chat completions API onde
+            // o parametro existe. CoT leak deve ser combatido SO via prompt
+            // blacklist literal (ja em vigor).
             // 500 (era 300): em modo ensino com explicacoes em PT-BR + EN, 300
             // batia o limite e cortava mid-frase. Prompt ainda pede brevidade,
             // mas 500 da margem pra ensino sem cortar.
