@@ -930,13 +930,20 @@ export default function LiveVoiceModal({
         return;
       }
 
-      // FIX iOS 26 audio session contamination:
-      // Antes do Live Voice, outros componentes podem ter deixado a AVAudioSession
-      // em estado output-only / mixWithOthers (soundEngine SFX, voiceSFX, expo-video
-      // da propria aba). Forcamos reset pra estado compativel com playAndRecord
-      // ANTES de qualquer chamada nativa nossa. expo-audio.setAudioModeAsync com
-      // allowsRecording: true forca a categoria pra .playAndRecord, neutralizando
-      // contaminacao anterior.
+      // Pattern dos apps de call (ChatGPT/Glite/WhatsApp): mic acende
+      // IMEDIATAMENTE ao tocar o botao. Token fetch e signaling rodam DEPOIS,
+      // em paralelo com o ring tocando. Antes nosso flow era inverso: gastava
+      // ~500ms em setAudioModeAsync + start + token fetch antes do mic acender,
+      // criando uma janela onde outros componentes contaminavam a AVAudioSession
+      // com setCategory(MediaPlayback/AmbientSound) e iOS rejeitava → flood
+      // de "tried to set ... skipping" no log + briga audivel do ring.
+      //
+      // Novo flow:
+      //   1. setAudioModeAsync + CharlotteAudioSession.start (rapido, sync)
+      //   2. getUserMedia → ATIVA o mic AGORA (luz no notch acende)
+      //   3. startCustomRingback IMEDIATAMENTE apos mic ativo (herda playAndRecord)
+      //   4. Em paralelo: token fetch + pc/SDP exchange
+      //   5. dc.onopen → stopRingback + connected
       await setAudioModeAsync({
         allowsRecording: true,
         playsInSilentMode: true,
@@ -944,15 +951,25 @@ export default function LiveVoiceModal({
         shouldPlayInBackground: true,
       }).catch(() => { /* silencioso */ });
 
-      // Configura AVAudioSession (iOS) / AudioManager (Android):
-      //   iOS: pre-seed RTCAudioSessionConfiguration singleton + override speaker.
-      //        NAO chamamos setConfiguration aqui — o WebRTC ADM aplica o singleton
-      //        sozinho quando o primeiro audio track binda (via getUserMedia +
-      //        addTrack). Pattern verificado em RTCAudioSession.mm configureWebRTCSession.
-      //   Android: AudioManager.MODE_IN_COMMUNICATION + setSpeakerphoneOn(true).
       await CharlotteAudioSession.start(isSpeakerRef.current);
 
-      // Passa o access token para validação server-side do pool
+      // PRIMEIRA prioridade: abrir o mic. ADM do WebRTC aplica o singleton
+      // (playAndRecord + videoChat + speaker + bluetooth) na ativacao.
+      const stream = await mediaDevices.getUserMedia({
+        audio: {
+          echoCancellation: true,
+          noiseSuppression: true,
+          autoGainControl: true,
+        } as any,
+        video: false,
+      });
+      localStreamRef.current = stream;
+
+      // Mic acendeu → ring pode tocar SEM contaminar (session ja em playAndRecord
+      // e iOS marca como "recording client", bloqueando outros setCategory).
+      startCustomRingback();
+
+      // Token fetch agora — paralelo ao ring.
       const { data: { session: authSession } } = await supabase.auth.getSession();
       const tokenRes = await fetch(`${API_BASE_URL}/api/realtime-token`, {
         method: 'POST',
@@ -973,6 +990,9 @@ export default function LiveVoiceModal({
               ? `Você usou seus ${Math.floor(levelPool / 60)} min de Live Voice deste mês. Volta no mês que vem!`
               : `You've used your ${Math.floor(levelPool / 60)}-min monthly Live Voice allowance. Come back next month!`
           );
+          stopCustomRingback();
+          stream.getTracks().forEach((t: any) => t.stop());
+          localStreamRef.current = null;
           return;
         }
         throw new Error('Failed to get session token (403)');
@@ -980,27 +1000,6 @@ export default function LiveVoiceModal({
       if (!tokenRes.ok) throw new Error('Failed to get session token');
       const { clientSecret } = await tokenRes.json();
       if (!clientSecret) throw new Error('No client secret returned');
-
-      // echoCancellation removes Charlotte's speaker output from the mic signal
-      // before it reaches the server VAD — this is the correct way to prevent
-      // Charlotte from "hearing herself". noiseSuppression and autoGainControl
-      // improve speech quality on mobile.
-      const stream = await mediaDevices.getUserMedia({
-        audio: {
-          echoCancellation: true,
-          noiseSuppression: true,
-          autoGainControl: true,
-        } as any,
-        video: false,
-      });
-      localStreamRef.current = stream;
-
-      // Ringback toca DEPOIS do getUserMedia: nesse ponto o WebRTC ADM ja
-      // aplicou o singleton (setConfiguration:active:YES com playAndRecord +
-      // videoChat). AVAudioPlayer herda a session correta e nao deixa ela em
-      // estado output-only. Antes do fix iOS 26, ringback rodava ANTES do
-      // getUserMedia e ativava session na config errada → mic morria.
-      startCustomRingback();
 
       const pc = new RTCPeerConnection();
       pcRef.current = pc;
