@@ -931,34 +931,34 @@ export default function LiveVoiceModal({
       }
 
       // Pattern dos apps de call (ChatGPT/Glite/WhatsApp): mic acende
-      // IMEDIATAMENTE ao tocar o botao. Token fetch e signaling rodam DEPOIS,
-      // em paralelo com o ring tocando. Antes nosso flow era inverso: gastava
-      // ~500ms em setAudioModeAsync + start + token fetch antes do mic acender,
-      // criando uma janela onde outros componentes contaminavam a AVAudioSession
-      // com setCategory(MediaPlayback/AmbientSound) e iOS rejeitava → flood
-      // de "tried to set ... skipping" no log + briga audivel do ring.
+      // IMEDIATAMENTE ao tocar o botao. setAudioModeAsync e
+      // CharlotteAudioSession.start rodam PARALELOS ao getUserMedia (nao em
+      // serie) — eles fazem reset/preseed mas WebRTC ADM aplica config certa
+      // sozinho quando track binda no PC. Ou seja: ordem nao importa entre
+      // esses 3, mas pôr getUserMedia em serie depois dos outros 2 atrasa
+      // ~300ms a luz do mic.
       //
-      // Novo flow:
-      //   1. setAudioModeAsync + CharlotteAudioSession.start (rapido, sync)
+      // Novo flow paralelizado:
+      //   1. Dispara setAudioModeAsync + CharlotteAudioSession.start em background
       //   2. getUserMedia → ATIVA o mic AGORA (luz no notch acende)
-      //   3. startCustomRingback IMEDIATAMENTE apos mic ativo (herda playAndRecord)
-      //   4. Em paralelo: token fetch + pc/SDP exchange
-      //   5. dc.onopen → stopRingback + connected
-      await setAudioModeAsync({
-        allowsRecording: true,
-        playsInSilentMode: true,
-        interruptionMode: 'doNotMix',
-        shouldPlayInBackground: true,
-      }).catch(() => { /* silencioso */ });
+      //   3. PC + addTrack IMEDIATAMENTE — RemoteIO unit roda, indicator confirma
+      //   4. await dos setup promises
+      //   5. startCustomRingback (session ja em playAndRecord, sem briga)
+      //   6. token fetch + SDP em paralelo com ring tocando
+      const setupPromises = Promise.all([
+        setAudioModeAsync({
+          allowsRecording: true,
+          playsInSilentMode: true,
+          interruptionMode: 'doNotMix',
+          shouldPlayInBackground: true,
+        }).catch(() => { /* silencioso */ }),
+        CharlotteAudioSession.start(isSpeakerRef.current).catch(() => { /* silencioso */ }),
+      ]);
 
-      await CharlotteAudioSession.start(isSpeakerRef.current);
-
-      // PRIMEIRA prioridade: abrir o mic E criar peer connection + addTrack.
-      // iOS so acende a luz do mic no notch quando o RemoteIO audio unit do
-      // WebRTC esta ativamente capturando — ou seja, quando o track esta
-      // bound num peer connection ativo, nao quando getUserMedia retorna.
-      // Por isso ChatGPT/Glite/WhatsApp acendem mic IMEDIATAMENTE: eles fazem
-      // PC + addTrack ANTES de qualquer fetch/signaling.
+      // getUserMedia em paralelo com os setups → mic acende ASAP. iOS so
+      // acende a luz no notch quando o RemoteIO audio unit do WebRTC esta
+      // ativamente capturando (track bound num PC). Por isso PC + addTrack
+      // vem IMEDIATAMENTE depois.
       const stream = await mediaDevices.getUserMedia({
         audio: {
           echoCancellation: true,
@@ -969,16 +969,15 @@ export default function LiveVoiceModal({
       });
       localStreamRef.current = stream;
 
-      // Criar PC + addTrack IMEDIATAMENTE pra ativar o RemoteIO → mic acende
-      // no notch agora. Token fetch + SDP exchange acontecem com mic ja vivo.
       const pc = new RTCPeerConnection();
       pcRef.current = pc;
       stream.getTracks().forEach((track: any) => pc.addTrack(track, stream));
       pc.ontrack = () => {};
 
-      // Ring toca com mic ja ativo (RemoteIO running) — session em playAndRecord
-      // e iOS marca como "recording client", bloqueando setCategory de outros
-      // componentes contaminadores.
+      // Garante que setup async terminou antes de tocar o ring (evita briga
+      // entre AVAudioPlayer do ring e qualquer reconfiguracao pendente).
+      await setupPromises;
+
       startCustomRingback();
 
       // Token fetch agora — paralelo ao ring.
