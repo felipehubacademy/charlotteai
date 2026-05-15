@@ -402,7 +402,9 @@ export function TrailContent({ userId, level, onCurrentTopicRef, useV2 }: TrailC
     } as const;
     return listV2Modules(level as V2Level).flatMap(m =>
       m.units.map(u => ({
-        title:  u.title,
+        title:          u.title,
+        _v2ModuleId:    m.id,
+        _v2ModuleTitle: m.title,
         topics: (['grammar', 'speaking', 'roleplay', 'chat'] as const).map(act => ({
           title:        labels[act],
           _v2ModuleId:  m.id,
@@ -415,6 +417,8 @@ export function TrailContent({ userId, level, onCurrentTopicRef, useV2 }: TrailC
 
   const modules = (v2Wrapped ?? CURRICULUM[level]) as Array<{
     title: string;
+    _v2ModuleId?: string;
+    _v2ModuleTitle?: string;
     topics: Array<{ title: string; _v2ModuleId?: string; _v2UnitId?: string; _v2Activity?: NodeType }>;
   }>;
 
@@ -612,19 +616,41 @@ export function TrailContent({ userId, level, onCurrentTopicRef, useV2 }: TrailC
 
   return (
     <View style={{ paddingTop: 4, paddingBottom: 40 }}>
-      {moduleData.map((m, i) => (
-        <ModuleCard
-          key={`mod_${m.idx}`}
-          data={m}
-          accent={accent}
-          expanded={expandedIdx === i}
-          onToggle={() => setExpandedIdx(k => k === i ? null : i)}
-          onStartLesson={handleStartLesson}
-          isPt={isPt}
-          isCurrentModule={i === activeIdx}
-          onRef={i === activeIdx ? (r) => { activeRef.current = r; } : undefined}
-        />
-      ))}
+      {moduleData.map((m, i) => {
+        const prevModId = i > 0 ? modules[i - 1]?._v2ModuleId : undefined;
+        const currModId = modules[i]?._v2ModuleId;
+        const showDivider = useV2 && !!currModId && currModId !== prevModId;
+        const divTitle    = modules[i]?._v2ModuleTitle;
+        return (
+          <React.Fragment key={`mod_${m.idx}`}>
+            {showDivider && divTitle && (
+              <View style={{
+                flexDirection: 'row', alignItems: 'center', gap: 10,
+                marginTop: i === 0 ? 4 : 18, marginBottom: 10, paddingHorizontal: 4,
+              }}>
+                <View style={{ flex: 1, height: 1, backgroundColor: C.borderMid }} />
+                <AppText style={{
+                  fontSize: 11, fontWeight: '700', color: C.navyLight,
+                  letterSpacing: 1.2, textTransform: 'uppercase',
+                }}>
+                  {divTitle}
+                </AppText>
+                <View style={{ flex: 1, height: 1, backgroundColor: C.borderMid }} />
+              </View>
+            )}
+            <ModuleCard
+              data={m}
+              accent={accent}
+              expanded={expandedIdx === i}
+              onToggle={() => setExpandedIdx(k => k === i ? null : i)}
+              onStartLesson={handleStartLesson}
+              isPt={isPt}
+              isCurrentModule={i === activeIdx}
+              onRef={i === activeIdx ? (r) => { activeRef.current = r; } : undefined}
+            />
+          </React.Fragment>
+        );
+      })}
     </View>
   );
 }
