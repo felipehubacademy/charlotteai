@@ -23,6 +23,7 @@ import { UserLevel } from '@/lib/levelConfig';
 import { getLiveVoiceStatus, getPoolForLevel, UNLIMITED_POOL_SECONDS } from '@/lib/liveVoiceUsage';
 import { localTodayStr, localMidnightUTC } from '@/lib/dateUtils';
 import { soundEngine } from '@/lib/soundEngine';
+import { voiceSFX } from '@/lib/voiceSFX';
 import LiveVoiceModal from '@/components/voice/LiveVoiceModal';
 
 // ── Palette ───────────────────────────────────────────────────────────────────
@@ -590,6 +591,12 @@ export default function LiveVoiceTab() {
   const startCall = useCallback(() => {
     if (!poolUnlimited && poolUsed >= poolTotal) return;
     soundEngine.setMuted(true);
+    // voiceSFX tem fila propria (setTimeouts disparados em achievements,
+    // intro do app, etc) — se algum SFX cair durante a call, ele chama
+    // setAudioModeAsync({allowsRecording: false, mixWithOthers}) e iOS
+    // rejeita com "tried to set AmbientSound... skipping" durante recording.
+    // Mutar aqui zera essa fila.
+    voiceSFX.setMuted(true);
     // Pausa o video preview da Charlotte antes de abrir o modal: expo-video
     // ativa AVAudioSession em MediaPlayback/MoviePlayback em loop, contaminando
     // a session do Live Voice (iOS 26 fica rejeitando isso continuamente porque
@@ -779,6 +786,7 @@ export default function LiveVoiceTab() {
           onClose={() => {
             setShowLiveVoice(false);
             soundEngine.setMuted(false);
+            voiceSFX.setMuted(false);
             // Retoma video preview ao fechar o modal (era pausado em startCall).
             try { liveVoicePlayer.play(); } catch { /* silencioso */ }
             loadData();
