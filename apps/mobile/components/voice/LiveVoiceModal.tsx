@@ -105,7 +105,7 @@ const FAREWELLS: Record<'Novice' | 'Inter' | 'Advanced', string[]> = {
 const SYSTEM_PROMPTS: Record<'Novice' | 'Inter' | 'Advanced', string> = {
   Novice: `# CRITICAL RULES — VIOLATE ANY = HARD FAILURE
 
-1. **NEVER invent content the user didn't say.** Respond ONLY to what {NAME} actually said. If unclear, ask: "Não entendi, pode repetir?" — do NOT guess and continue.
+1. **NEVER invent content the user didn't say.** Respond ONLY to what {NAME} actually said. If their words sound garbled, fragmented, or are just 1-2 nonsense words (like "print", "Sì", "mesmo?", "Hour"), DO NOT invent context to fit. ASK: "Não entendi, pode repetir?" — never guess and continue. Inventing a story from a single confusing word is the #1 failure mode.
 
 2. **NEVER narrate internal reasoning.** Banned phrases (any variation):
    - "Deixa eu [VERBO]..." (organizar/pensar/processar/responder/ajudar/ver/explicar/te ajudar — ZERO tolerance, any verb)
@@ -179,6 +179,8 @@ ZERO preâmbulo. ZERO meta-narração. Frases banidas LITERAIS (blacklist — se
 - "Vou dar uma olhada"
 - "Vou te explicar"
 - "Vou te ajudar"
+- "Vamos pensar nos..." / "Vamos pensar em..."
+- "Beleza, vamos pensar..."
 - "Beleza, deixa eu..."
 - "Tá, vou..."
 - "Hmm", "Vamos ver", "Tudo bem, deixa..."
@@ -1038,7 +1040,12 @@ export default function LiveVoiceModal({
         // input_audio_transcription.completed handler descarta scripts
         // asiaticos (Malayalam, Chinese, etc) se voltarem.
         // Inter/Advanced: hint 'en' (sempre ingles) ajuda accuracy.
-        const inputLang = userLevel === 'Novice' ? null : 'en';
+        // Novice: 'pt' hint volta — auto-detect (null) estava transcrevendo
+        // como polones ('Patrzcie telewizão'), italiano ('Sì') e portugues
+        // mistranscrito ('print' pra Friends). Whisper auto-detect degrada
+        // em audio curto/ambiguo. Hint 'pt' tem trade-off de capturar "I"
+        // como "ai" as vezes, mas e bem melhor que scripts errados.
+        const inputLang = userLevel === 'Novice' ? 'pt' : 'en';
         // GA shape: session needs type:'realtime', voice/format/transcription/
         // turn_detection moved under audio.{input,output}, modalities renamed
         // to output_modalities, max_response_output_tokens → max_output_tokens.
@@ -1084,8 +1091,13 @@ export default function LiveVoiceModal({
                   const cfg = {
                     type: 'server_vad' as const,
                     threshold: 0.85,
-                    prefix_padding_ms: 600,
-                    silence_duration_ms: 700,
+                    // prefix_padding 1000ms (era 600): captura inicio do user
+                    // quando ele fala logo apos Charlotte parar — antes os
+                    // primeiros 400ms eram perdidos por drenagem do speaker.
+                    // silence_duration 500ms (era 700): corta turno mais
+                    // rapido, charlotte responde com menos atraso.
+                    prefix_padding_ms: 1000,
+                    silence_duration_ms: 500,
                     create_response: true,
                     interrupt_response: true,
                   };
