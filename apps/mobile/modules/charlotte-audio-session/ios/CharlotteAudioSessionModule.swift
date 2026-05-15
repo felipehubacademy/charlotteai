@@ -32,14 +32,14 @@ public class CharlotteAudioSessionModule: Module {
     OnCreate {
       // Pre-seed antes do react-native-webrtc instanciar o peer connection.
       // .allowBluetoothA2DP REMOVIDO: incompativel com playAndRecord (-12981).
-      // .duckOthers abaixa audio de outros apps em vez de cortar — evita que
-      // Sentry/expo-video tomem primary durante setup.
+      // .duckOthers REMOVIDO: causava -12981 "Invalid parameter" no setup
+      //   inicial em iOS 26. Apenas .allowBluetooth + .defaultToSpeaker.
       let cfg = RTCAudioSessionConfiguration.webRTC()
       cfg.category = AVAudioSession.Category.playAndRecord.rawValue
       cfg.mode = AVAudioSession.Mode.videoChat.rawValue
-      cfg.categoryOptions = [.allowBluetooth, .defaultToSpeaker, .duckOthers]
+      cfg.categoryOptions = [.allowBluetooth, .defaultToSpeaker]
       RTCAudioSessionConfiguration.setWebRTC(cfg)
-      NSLog("[CharlotteAudioSession] webRTC singleton seeded (playAndRecord+videoChat+spk+bt+duck)")
+      NSLog("[CharlotteAudioSession] webRTC singleton seeded (playAndRecord+videoChat+spk+bt)")
     }
 
     AsyncFunction("start") { (preferSpeakerInput: Bool) -> Bool in
