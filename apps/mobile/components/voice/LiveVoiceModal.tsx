@@ -1590,8 +1590,16 @@ export default function LiveVoiceModal({
       greetingFiredRef.current = false;
       sessionAccumSecs.current = 0;
       warnStartRef.current = 0;
+      // connect() IMEDIATO — mic acende sem esperar loadPool (network call de
+      // 200-500ms ao backend). loadPool roda em paralelo e se retornar pool
+      // esgotado, marca poolExhausted que dispara cleanup via useEffect que
+      // disconnecta. UX: mic acende na hora; se sem pool, mensagem aparece
+      // ~200ms depois e desconecta.
+      connect();
       loadPool().then(remaining => {
-        if (remaining > 0) connect();
+        if (remaining <= 0) {
+          // poolExhausted ja foi setado dentro de loadPool, useEffect cuida do disconnect
+        }
       });
     } else {
       // Salvar segundos ao fechar
