@@ -36,6 +36,12 @@ export default ({ config }: ConfigContext): ExpoConfig => ({
       // Status bar: dark icons (time, wifi, battery) on light backgrounds
       UIViewControllerBasedStatusBarAppearance: false,
       UIStatusBarStyle: 'UIStatusBarStyleDarkContent',
+      // Live Voice: precisamos de VoIP priority pra session ganhar arbitragem
+      // de primary em iOS 26. Sem isso, playAndRecord eh "sessao regular" de
+      // baixa prioridade → audiomxd rejeita recording (!pri / -15685 /
+      // "Disallowing recording... session is output-only").
+      // Ref: https://developer.apple.com/forums/thread/774784 (Apple DTS)
+      UIBackgroundModes: ['audio', 'voip'],
     },
   },
   android: {

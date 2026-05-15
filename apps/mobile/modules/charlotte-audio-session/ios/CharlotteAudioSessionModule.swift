@@ -31,36 +31,32 @@ public class CharlotteAudioSessionModule: Module {
 
     OnCreate {
       // Pre-seed antes do react-native-webrtc instanciar o peer connection.
-      // .allowBluetoothA2DP REMOVIDO: incompativel com playAndRecord (-12981).
-      // .duckOthers REMOVIDO: causava -12981 "Invalid parameter" no setup
-      //   inicial em iOS 26. Apenas .allowBluetooth + .defaultToSpeaker.
+      // O WebRTC ADM le este singleton quando o primeiro track ativa e chama
+      // setConfiguration:active:YES sozinho. Nao tocamos setConfiguration em
+      // start() pra evitar race condition que causava -12981 + !pri loop.
+      // .allowBluetoothA2DP RESTAURADO: com UIBackgroundModes=[audio,voip] no
+      // Info.plist a session ganha VoIP priority e o -12981 some (era priority
+      // related, nao A2DP).
       let cfg = RTCAudioSessionConfiguration.webRTC()
       cfg.category = AVAudioSession.Category.playAndRecord.rawValue
       cfg.mode = AVAudioSession.Mode.videoChat.rawValue
-      cfg.categoryOptions = [.allowBluetooth, .defaultToSpeaker]
+      cfg.categoryOptions = [.allowBluetooth, .allowBluetoothA2DP, .defaultToSpeaker]
       RTCAudioSessionConfiguration.setWebRTC(cfg)
-      NSLog("[CharlotteAudioSession] webRTC singleton seeded (playAndRecord+videoChat+spk+bt)")
+      NSLog("[CharlotteAudioSession] webRTC singleton seeded (playAndRecord+videoChat+spk+bt+a2dp)")
     }
 
     AsyncFunction("start") { (preferSpeakerInput: Bool) -> Bool in
       self.preferSpeaker = preferSpeakerInput
       let session = RTCAudioSession.sharedInstance()
-      let cfg = RTCAudioSessionConfiguration.webRTC()
 
       session.lockForConfiguration()
       defer { session.unlockForConfiguration() }
 
-      do {
-        // 2-arg form: NAO chama setActive. ADM do WebRTC ativa quando track
-        // comeca. Ref: jitsi AudioMode.m setConfigWithoutLock: usa exatamente
-        // este metodo. Chamar setActive aqui gera o '!pri' loop sem CallKit.
-        try session.setConfiguration(cfg)
-        NSLog("[CharlotteAudioSession] setConfiguration ok")
-      } catch {
-        NSLog("[CharlotteAudioSession] setConfiguration error: \(error.localizedDescription)")
-        return false
-      }
-
+      // NAO chamamos setConfiguration aqui. O WebRTC ADM aplica o singleton
+      // pre-seedado em OnCreate (com setConfiguration:active:YES) quando o
+      // primeiro audio track binda — ref RTCAudioSession.mm configureWebRTCSession.
+      // Chamar setConfiguration do nosso lado racea contra o ADM e causava
+      // -12981 "Invalid parameter" + !pri loop subsequente.
       if self.preferSpeaker {
         do {
           try session.overrideOutputAudioPort(.speaker)
@@ -71,7 +67,7 @@ public class CharlotteAudioSessionModule: Module {
 
       self.installObservers()
       self.isActive = true
-      NSLog("[CharlotteAudioSession] start preferSpeaker=\(preferSpeakerInput)")
+      NSLog("[CharlotteAudioSession] start preferSpeaker=\(preferSpeakerInput) (ADM aplica config sozinho)")
       return true
     }
 

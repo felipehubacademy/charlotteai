@@ -103,7 +103,24 @@ const FAREWELLS: Record<'Novice' | 'Inter' | 'Advanced', string[]> = {
 // IMPORTANT: never tell the model to "fill silence" or "keep talking" — this causes
 // Charlotte to monologue without user input when the VAD triggers on echo/ambient noise.
 const SYSTEM_PROMPTS: Record<'Novice' | 'Inter' | 'Advanced', string> = {
-  Novice: `You are Charlotte, a friendly English conversation partner on a voice call with {NAME}, who is a true beginner. They know some English but feel safer in Portuguese. You speak Brazilian Portuguese fluently.
+  Novice: `# CRITICAL RULES — VIOLATE ANY = HARD FAILURE
+
+1. **NEVER invent content the user didn't say.** Respond ONLY to what {NAME} actually said. If unclear, ask: "Não entendi, pode repetir?" — do NOT guess and continue.
+
+2. **NEVER narrate internal reasoning.** Banned phrases (any variation):
+   - "Deixa eu [VERBO]..." (organizar/pensar/processar/responder/ajudar/ver/explicar/te ajudar — ZERO tolerance, any verb)
+   - "Vou [VERBO]..." quando é preâmbulo (vou pensar, vou explicar, vou te ajudar)
+   - "Let me [VERB]..." (think, see, help, explain, organize, walk you through)
+   - "Hmm", "Vamos ver", "Tudo bem, deixa..."
+   You don't announce what you're about to do. You just do it.
+
+3. **NEVER say goodbye on your own.** Words like "tchau", "até a próxima", "goodbye", "take care", "see you", "talk to you next time" are FORBIDDEN unless {NAME} explicitly said goodbye first. If unsure, keep the conversation going.
+
+4. **NEVER teach in drill mode.** Don't repeat "Você pode dizer X?" twice in a row. Conversation, not exercises.
+
+---
+
+You are Charlotte, a friendly English conversation partner on a voice call with {NAME}, who is a true beginner. They know some English but feel safer in Portuguese. You speak Brazilian Portuguese fluently.
 
 Your job: have a REAL conversation in a natural PT/EN mix, adapting to their comfort. NOT a drill class. Talk about life, hobbies, their day — like a friend who's helping them practice English.
 
@@ -953,7 +970,13 @@ export default function LiveVoiceModal({
         //    pra scripts aleatorios — Malayalam, Chinese — em audio ambiguo).
         //    Trade-off: "I work nights" pode virar "Work need" mas e bem
         //    melhor que "不啊" ou "ലിസർക്കെ".
-        const inputLang = userLevel === 'Novice' ? 'pt' : 'en';
+        // Novice: SEM language hint — usuario mistura PT/EN o tempo todo, hint
+        // forcado em PT fazia Whisper transcrever "Sleep early" como "ler" etc.
+        // Sem hint, Whisper auto-detecta por turno. Safety filter no
+        // input_audio_transcription.completed handler descarta scripts
+        // asiaticos (Malayalam, Chinese, etc) se voltarem.
+        // Inter/Advanced: hint 'en' (sempre ingles) ajuda accuracy.
+        const inputLang = userLevel === 'Novice' ? null : 'en';
         // GA shape: session needs type:'realtime', voice/format/transcription/
         // turn_detection moved under audio.{input,output}, modalities renamed
         // to output_modalities, max_response_output_tokens → max_output_tokens.
@@ -964,6 +987,11 @@ export default function LiveVoiceModal({
             model: MODEL,
             output_modalities: ['audio'],
             instructions: getSystemPrompt(userLevel, userName, greeting),
+            // reasoning_effort: minimal — reduz tendencia do modelo de "pensar
+            // em voz alta" (CoT leak). Sem isso, gpt-realtime-2 usa "deixa eu
+            // organizar/responder/te ajudar..." como filler conversational.
+            // 'minimal' faz ele responder direto sem preambulos.
+            reasoning_effort: 'minimal',
             // 500 (era 300): em modo ensino com explicacoes em PT-BR + EN, 300
             // batia o limite e cortava mid-frase. Prompt ainda pede brevidade,
             // mas 500 da margem pra ensino sem cortar.
