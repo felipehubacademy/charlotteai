@@ -134,10 +134,19 @@ export default function HomeTab() {
   });
 
   // Garante loop sempre ativo quando a tab volta a ficar visível.
-  // Sem isso, o player pode ficar pausado após navegação entre tabs.
+  // PAUSE no return: sem isso, o video segue tocando em background quando
+  // user troca pra outra tab (Live Voice, Practice, etc) e expo-video segue
+  // mantendo AVAudioSession ativa em MediaPlayback/MoviePlayback → flood
+  // de "tried to set MediaPlayback... skipping" no Live Voice porque iOS
+  // rejeita a contaminacao durante recording.
+  // Benchmark 2026-05-15: ChatGPT/Glite tem 2-4 events no log em 2min de call.
+  // Charlotte tinha centenas. Causa raiz: este player sem pause on blur.
   useFocusEffect(useCallback(() => {
     greetingPlayer.loop = true;
     greetingPlayer.play();
+    return () => {
+      try { greetingPlayer.pause(); } catch { /* silencioso */ }
+    };
   }, [greetingPlayer]));
 
   // ── Data fetch ──────────────────────────────────────────────────────────────
