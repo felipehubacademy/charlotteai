@@ -1091,11 +1091,10 @@ export default function LiveVoiceModal({
               },
               output: {
                 format: { type: 'audio/pcm', rate: 24000 },
-                // cedar (GA 2026-05): pesquisa interna apontou cedar com menos
-                // tendencia a verbalizar reasoning (CoT leak) que marin. Trade-off:
-                // sotaque mais americano em PT (mas user reportou que marin tava
-                // vazando "let me lean into / vou conferir rapidinho").
-                voice: 'cedar',
+                // marin (GA 2026-05): voz feminina multilingual (PT/EN). Charlotte
+                // eh personagem feminina, marin eh a voz correta. cedar testado
+                // 2026-05-15 mas eh MASCULINA — reverter foi 1 OTA imediato.
+                voice: 'marin',
               },
             },
           },
