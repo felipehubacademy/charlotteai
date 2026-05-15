@@ -1112,12 +1112,21 @@ export default function LiveVoiceModal({
         try {
           const msg = JSON.parse(event.data);
 
-          // [DIAG] Log eventos de transcricao do user pra debug do bug de user_turns=0.
-          // Build 107 evidencia: charlotte responde contextualmente (mic OK) mas
-          // user lines nao salvam no DB. Suspeita: evento renomeado no GA ou
-          // msg.transcript chegando vazio. Inspeciona Sentry breadcrumbs.
-          if (typeof msg.type === 'string' && msg.type.includes('input_audio_transcription')) {
-            console.log('[LiveVoice][DIAG] transcription event:', msg.type, 'transcript:', JSON.stringify(msg.transcript ?? null), 'item_id:', msg.item_id);
+          // [DIAG] Log AMPLO de TODOS os event types do server. Investigando bug
+          // de user_turns=0 — suspeita: evento de transcription renomeado em GA
+          // ou whisper rejeitado silenciosamente no session.update.
+          // Filtra logs verbosos (response.output_audio_transcript.delta floods).
+          if (typeof msg.type === 'string') {
+            const verboseTypes = ['response.output_audio_transcript.delta', 'response.audio.delta', 'output_audio_buffer.audio_chunk_finished'];
+            if (!verboseTypes.includes(msg.type)) {
+              console.log('[LiveVoice][DIAG] evt:', msg.type);
+            }
+            if (msg.type.includes('transcription') || msg.type.includes('input_audio')) {
+              console.log('[LiveVoice][DIAG] FULL:', msg.type, 'transcript:', JSON.stringify(msg.transcript ?? null), 'item_id:', msg.item_id);
+            }
+            if (msg.type === 'error') {
+              console.log('[LiveVoice][DIAG] ERROR:', JSON.stringify(msg.error ?? msg));
+            }
           }
 
           switch (msg.type) {
