@@ -1003,7 +1003,11 @@ export default function LearnSessionScreen() {
           </AppText>
           <TouchableOpacity
             onPress={() => {
-              if (hasNextTopic) {
+              if (isV2) {
+                // v2: sem auto-routing entre activities ainda (sem progress tracking).
+                // Volta pra trilha pra usuario escolher a proxima activity manualmente.
+                router.replace('/(app)/(tabs)' as any);
+              } else if (hasNextTopic) {
                 router.replace({
                   pathname: '/(app)/learn-session',
                   params: { level, moduleIndex: String(nextModuleIdx), topicIndex: String(nextTopicIdx) },
@@ -1016,7 +1020,7 @@ export default function LearnSessionScreen() {
           >
             <AppText style={{ fontSize: 15, fontWeight: '800', color: '#FFF' }}>{isPortuguese ? 'Continuar trilha' : 'Continue trail'}</AppText>
           </TouchableOpacity>
-          <TouchableOpacity onPress={() => router.replace('/(app)/learn-trail')}>
+          <TouchableOpacity onPress={() => router.replace(isV2 ? '/(app)/(tabs)' as any : '/(app)/learn-trail')}>
             <AppText style={{ fontSize: 14, color: C.navyLight, fontWeight: '600' }}>{isPortuguese ? 'Voltar' : 'Back'}</AppText>
           </TouchableOpacity>
         </View>

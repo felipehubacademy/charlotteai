@@ -516,8 +516,10 @@ export function TrailContent({ userId, level, onCurrentTopicRef, useV2 }: TrailC
       });
 
       // Determine the FIRST non-done lesson; that's "next". Subsequent non-done stays "locked".
+      // v2: sem progress tracking ainda → todas as 4 activities ficam destravadas.
       let foundNext = false;
       const fixed = lessons.map(l => {
+        if (useV2) return l;
         if (l.state === 'done') return l;
         if (!foundNext && l.state === 'next') { foundNext = true; return l; }
         return { ...l, state: 'locked' as LessonState };
