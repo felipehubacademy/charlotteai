@@ -1185,7 +1185,11 @@ export default function LiveVoiceModal({
                 dcRef.current.send(JSON.stringify({
                   type: 'response.create',
                   response: {
-                    max_output_tokens: 80,
+                    // 120 tokens (era 80 cortando frase no meio "Oi! Como
+                    // você gosta de começar o"). 120 da margem pra greeting
+                    // + 1 pergunta completarem, ainda baixo o suficiente
+                    // pra evitar enfiar ensinamento.
+                    max_output_tokens: 120,
                     instructions: 'Apenas cumprimente brevemente e faça UMA pergunta aberta curta. NÃO ensine palavra ou expressão. NÃO dê "palavra útil" / "frase útil". Espere o usuário responder primeiro.',
                   },
                 }));
