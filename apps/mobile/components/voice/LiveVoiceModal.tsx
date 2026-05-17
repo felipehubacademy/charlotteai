@@ -449,6 +449,13 @@ export default function LiveVoiceModal({
   // response.done / response.cancelled. Source of truth pra "ha resposta ativa".
   const activeResponseIdRef = React.useRef<string | null>(null);
 
+  // Anti-phantom: marca true quando user fala algo (transcription.completed
+  // com texto). Reset false em response.done. Em response.created, se for
+  // false E ja houve >= 1 response.done antes (nao eh o greeting inicial),
+  // significa que server VAD disparou em ruido/eco → cancela imediato.
+  const userSpokeSinceLastResponseRef = React.useRef<boolean>(false);
+  const completedResponsesRef = React.useRef<number>(0);
+
   // Farewell state machine: substitui 4 refs booleanos (pending/active/audioStart).
   // Transitions: idle -> pending (pool esgotou) -> speaking (response.created) -> closing (audio.done).
   const farewellStateRef = React.useRef<FarewellState>('idle');
@@ -1175,10 +1182,23 @@ export default function LiveVoiceModal({
             case 'response.created':
               activeResponseIdRef.current = msg.response?.id ?? 'unknown';
               lastActivityRef.current = Date.now();
+              // Anti-phantom: se ja houve >= 1 response.done antes (nao eh o
+              // greeting inicial) E user NAO falou nada desde a ultima
+              // resposta, server VAD disparou em ruido/eco → cancela imediato
+              // antes da Charlotte alucinar contexto.
+              if (completedResponsesRef.current >= 1 && !userSpokeSinceLastResponseRef.current) {
+                console.log('[LiveVoice] PHANTOM response detected (no user speech since last done) — canceling');
+                try {
+                  dc.send(JSON.stringify({ type: 'response.cancel' }));
+                  dc.send(JSON.stringify({ type: 'output_audio_buffer.clear' }));
+                } catch { /* silencioso */ }
+              }
               break;
 
             case 'response.done':
               activeResponseIdRef.current = null;
+              completedResponsesRef.current += 1;
+              userSpokeSinceLastResponseRef.current = false;
               lastActivityRef.current = Date.now();
               {
                 // Captura texto da Charlotte do payload final.
@@ -1415,6 +1435,7 @@ export default function LiveVoiceModal({
                   }
                   console.log(`[LiveVoice] user said: "${userText.slice(0, 200)}"`);
                   setConversationTurns(prev => [...prev, { role: 'user', text: userText }]);
+                  userSpokeSinceLastResponseRef.current = true;
                 }
               }
               break;
@@ -1626,6 +1647,8 @@ export default function LiveVoiceModal({
       lastBufferStoppedAtRef.current = 0;
       activeResponseIdRef.current = null;
       greetingFiredRef.current = false;
+      userSpokeSinceLastResponseRef.current = false;
+      completedResponsesRef.current = 0;
       sessionAccumSecs.current = 0;
       warnStartRef.current = 0;
       loadPool().then(remaining => {
