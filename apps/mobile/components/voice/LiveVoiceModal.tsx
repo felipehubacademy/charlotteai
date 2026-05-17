@@ -1200,17 +1200,13 @@ export default function LiveVoiceModal({
             case 'response.created':
               activeResponseIdRef.current = msg.response?.id ?? 'unknown';
               lastActivityRef.current = Date.now();
-              // Anti-phantom: se ja houve >= 1 response.done antes (nao eh o
-              // greeting inicial) E user NAO falou nada desde a ultima
-              // resposta, server VAD disparou em ruido/eco → cancela imediato
-              // antes da Charlotte alucinar contexto.
-              if (completedResponsesRef.current >= 1 && !userSpokeSinceLastResponseRef.current) {
-                console.log('[LiveVoice] PHANTOM response detected (no user speech since last done) — canceling');
-                try {
-                  dc.send(JSON.stringify({ type: 'response.cancel' }));
-                  dc.send(JSON.stringify({ type: 'output_audio_buffer.clear' }));
-                } catch { /* silencioso */ }
-              }
+              // Anti-phantom REMOVIDO 2026-05-17: cancelava responses legitimas
+              // porque input_audio_transcription.completed (que setava
+              // userSpokeSinceLastResponseRef) chegava DEPOIS de response.created.
+              // Resultado: Charlotte tinha transcript completo no DB mas audio
+              // cortava no meio porque output_audio_buffer.clear cortava playback.
+              // Anti-halucinacao agora fica APENAS no handler de
+              // input_audio_transcription.completed (cancela em transcript vazio).
               break;
 
             case 'response.done':
