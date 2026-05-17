@@ -607,7 +607,10 @@ export function TrailContent({ userId, level, onCurrentTopicRef, useV2 }: TrailC
           });
           return;
         case 'roleplay':
-          alert('Role-play chega em breve!');
+          router.push({
+            pathname: '/(app)/roleplay-exercise' as any,
+            params: { level, moduleId: lesson.v2ModuleId, unitId: lesson.v2UnitId },
+          });
           return;
         case 'chat':
           alert('Guided Chat chega em breve!');
