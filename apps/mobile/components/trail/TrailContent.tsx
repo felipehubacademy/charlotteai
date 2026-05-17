@@ -17,6 +17,7 @@ import { MODULE_INTROS } from '@/data/moduleIntros';
 import { listModules as listV2Modules } from '@/lib/curriculum-v2/loader';
 import type { Level as V2Level } from '@/lib/curriculum-v2/types';
 import { useLearnProgress } from '@/hooks/useLearnProgress';
+import { useLearnProgressV2 } from '@/hooks/useLearnProgressV2';
 import { supabase } from '@/lib/supabase';
 
 // ── Helpers ───────────────────────────────────────────────────────────────────
@@ -401,10 +402,11 @@ export function TrailContent({ userId, level, onCurrentTopicRef, useV2 }: TrailC
       chat:     isPt ? 'Guided Chat'          : 'Guided Chat',
     } as const;
     return listV2Modules(level as V2Level).flatMap(m =>
-      m.units.map(u => ({
-        title:          u.title,
-        _v2ModuleId:    m.id,
-        _v2ModuleTitle: m.title,
+      m.units.map((u, uIdx) => ({
+        title:           u.title,
+        _v2ModuleId:     m.id,
+        _v2ModuleTitle:  m.title,
+        _v2PrevUnitId:   uIdx > 0 ? m.units[uIdx - 1].id : undefined,
         topics: (['grammar', 'speaking', 'roleplay', 'chat'] as const).map(act => ({
           title:        labels[act],
           _v2ModuleId:  m.id,
@@ -419,6 +421,7 @@ export function TrailContent({ userId, level, onCurrentTopicRef, useV2 }: TrailC
     title: string;
     _v2ModuleId?: string;
     _v2ModuleTitle?: string;
+    _v2PrevUnitId?: string;
     topics: Array<{ title: string; _v2ModuleId?: string; _v2UnitId?: string; _v2Activity?: NodeType }>;
   }>;
 
@@ -426,6 +429,12 @@ export function TrailContent({ userId, level, onCurrentTopicRef, useV2 }: TrailC
     loading, refetch,
     isTopicComplete, isCurrent, isLocked, isIntroDone,
   } = useLearnProgress(userId, level);
+
+  // v2 progress — só lê quando useV2 (sem custo extra em v1)
+  const v2Progress = useLearnProgressV2(userId, level as V2Level);
+  useFocusEffect(useCallback(() => {
+    if (useV2) v2Progress.refetch();
+  }, [useV2, v2Progress.refetch])); // eslint-disable-line react-hooks/exhaustive-deps
 
   useFocusEffect(useCallback(() => { refetch(); }, [refetch]));
 
@@ -492,13 +501,29 @@ export function TrailContent({ userId, level, onCurrentTopicRef, useV2 }: TrailC
 
       mod.topics.forEach((topic: any, tIdx: number) => {
         if (pos >= TOPICS_PER_MODULE) return;
-        const complete = useV2 ? false : isTopicComplete(mIdx, tIdx);
-        const miniReq  = useV2 ? false : (tIdx === 0 && !isIntroDone(mIdx));
-        const locked   = useV2 ? false : (!complete && (miniReq || isLocked(mIdx, tIdx)));
         const key      = `m${mIdx}_t${tIdx}`;
         const v2Activity: NodeType | undefined = topic._v2Activity;
         const lessonType = useV2 && v2Activity ? v2Activity : (TYPE_CYCLE[pos] ?? 'grammar');
         if (!(useV2 && v2Activity)) pos++;
+
+        let complete: boolean;
+        let locked:   boolean;
+        let lessonScore: number | null;
+
+        if (useV2 && v2Activity && topic._v2ModuleId && topic._v2UnitId) {
+          const row = v2Progress.get(topic._v2ModuleId, topic._v2UnitId, v2Activity);
+          complete    = !!row?.completed;
+          locked      = !v2Progress.isActivityUnlocked(
+                          topic._v2ModuleId, topic._v2UnitId, v2Activity, mod._v2PrevUnitId
+                        );
+          lessonScore = typeof row?.score === 'number' ? row.score : null;
+        } else {
+          complete    = isTopicComplete(mIdx, tIdx);
+          const miniReq = tIdx === 0 && !isIntroDone(mIdx);
+          locked      = !complete && (miniReq || isLocked(mIdx, tIdx));
+          lessonScore = complete && scoreMap[key] !== undefined ? scoreMap[key] : null;
+        }
+
         lessons.push({
           key,
           label:      topic.title,
@@ -508,15 +533,15 @@ export function TrailContent({ userId, level, onCurrentTopicRef, useV2 }: TrailC
           moduleIdx:  mIdx,
           topicIdx:   tIdx,
           isIntro:    false,
-          score:      complete && scoreMap[key] !== undefined ? scoreMap[key] : null,
+          score:      lessonScore,
           v2ModuleId: topic._v2ModuleId,
           v2UnitId:   topic._v2UnitId,
           v2Activity,
         });
       });
 
-      // Determine the FIRST non-done lesson; that's "next". Subsequent non-done stays "locked".
-      // v2: sem progress tracking ainda → todas as 4 activities ficam destravadas.
+      // v1: progressive lock — first non-done becomes 'next', rest 'locked'.
+      // v2: já vem com locked/next/done corretos do hook useLearnProgressV2.
       let foundNext = false;
       const fixed = lessons.map(l => {
         if (useV2) return l;
@@ -544,7 +569,7 @@ export function TrailContent({ userId, level, onCurrentTopicRef, useV2 }: TrailC
         completedCount, totalCount, pct, state, avgScore,
       };
     });
-  }, [modules, level, isTopicComplete, isLocked, isIntroDone, scoreMap]);
+  }, [modules, level, useV2, isTopicComplete, isLocked, isIntroDone, scoreMap, v2Progress.rows]);
 
   const activeIdx = useMemo(
     () => moduleData.findIndex(m => m.state === 'active'),

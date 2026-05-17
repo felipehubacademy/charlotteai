@@ -45,6 +45,7 @@ import {
 } from '@/data/curriculum';
 import { getV2TopicForUnit } from '@/lib/curriculum-v2/adapter';
 import type { Level as V2Level } from '@/lib/curriculum-v2/types';
+import { useLearnProgressV2 } from '@/hooks/useLearnProgressV2';
 import { checkLevelPromotion, promoteUserLevel, NEXT_LEVEL } from '@/lib/levelPromotion';
 import PromotionModal from '@/components/ui/PromotionModal';
 import { supabase } from '@/lib/supabase';
@@ -190,9 +191,15 @@ export default function LearnSessionScreen() {
   const baseTotalXP = useTotalXP(userId);
   const insets      = useSafeAreaInsets();
   const learnProgress = useLearnProgress(userId, level);
-  // v2 mode skips v1 progress writes (no trail integration yet — Phase 5 problem)
+  // v2 mode: skip v1 progress writes (uses learn_history_v2 instead via v2Progress)
   const saveTopicComplete = isV2 ? (async () => {}) : learnProgress.saveTopicComplete;
   const saveExercise      = isV2 ? (async () => {}) : learnProgress.saveExercise;
+  const v2Progress        = useLearnProgressV2(userId, level as V2Level);
+
+  // v2 score trackers — populated during the session, persisted on completion
+  const pronScoresRef    = useRef<number[]>([]);
+  const grammarTotalRef  = useRef(0);
+  const grammarCorrectRef = useRef(0);
   const { pauseNotifications } = useAchievementsContext();
 
   useFocusEffect(
@@ -812,6 +819,25 @@ export default function LearnSessionScreen() {
     const next = stepIdx + 1;
     if (next >= totalSteps) {
       await saveTopicComplete(level, moduleIndex, topicIndex);
+
+      // v2 progress write — compute score, save to learn_history_v2.
+      // 1 retentativa de exercício não conta como erro extra (sessionErrors
+      // só incrementa na PRIMEIRA falha de cada step). Score = % de steps
+      // sem erro. Ajustes finos vêm quando rolarmos métricas de produção.
+      if (isV2 && params.moduleId && params.unitId && totalSteps > 0) {
+        const activityType: 'grammar' | 'speaking' =
+          params.activity === 'ls' ? 'speaking' : 'grammar';
+        const rawScore = Math.round(((totalSteps - sessionErrors) / totalSteps) * 100);
+        const finalScore = Math.max(0, Math.min(100, rawScore));
+        try {
+          await v2Progress.saveAttempt(
+            params.moduleId, params.unitId, activityType, finalScore,
+          );
+        } catch (e) {
+          console.warn('[v2Progress] save attempt failed', e);
+        }
+      }
+
       setIsComplete(true);
       if (userId) {
         // 📅 Agendar revisões espaçadas (3, 7, 14, 30 dias) — somente se NÃO for uma revisão
