@@ -1186,7 +1186,7 @@ export default function LiveVoiceModal({
                     // + 1 pergunta completarem, ainda baixo o suficiente
                     // pra evitar enfiar ensinamento.
                     max_output_tokens: 120,
-                    instructions: 'Apenas cumprimente brevemente e faça UMA pergunta aberta curta. NÃO ensine palavra ou expressão. NÃO dê "palavra útil" / "frase útil". Espere o usuário responder primeiro.',
+                    instructions: 'Apenas cumprimente brevemente e faça UMA pergunta aberta curta sobre o dia ou interesse do usuário (em PT-BR para Novice). NÃO ensine palavra ou expressão. NÃO dê "palavra útil" / "frase útil". NUNCA pergunte se quer "praticar em português" — você é Charlotte, parceira de conversação para praticar INGLÊS (em mix PT/EN para Novice). Espere o usuário responder primeiro antes de qualquer ensinamento.',
                   },
                 }));
               }
