@@ -191,9 +191,22 @@ export default function LearnSessionScreen() {
   const baseTotalXP = useTotalXP(userId);
   const insets      = useSafeAreaInsets();
   const learnProgress = useLearnProgress(userId, level);
-  // v2 mode: skip v1 progress writes (uses learn_history_v2 instead via v2Progress)
+  // v2 mode: skip v1-specific learn_history (uses learn_history_v2 via v2Progress),
+  // mas AINDA escreve XP em charlotte_practices pra o pill da home / leaderboard
+  // / progresso global funcionarem normal.
   const saveTopicComplete = isV2 ? (async () => {}) : learnProgress.saveTopicComplete;
-  const saveExercise      = isV2 ? (async () => {}) : learnProgress.saveExercise;
+  const saveExercise = useCallback(async (params: any) => {
+    if (!isV2) return learnProgress.saveExercise(params);
+    // v2 path: só XP via charlotte_practices (sem learn_history v1)
+    if (!userId || typeof params?.xpEarned !== 'number') return;
+    try {
+      await supabase.from('charlotte_practices').insert({
+        user_id:       userId,
+        practice_type: 'learn_exercise',
+        xp_earned:     params.xpEarned,
+      });
+    } catch (e) { console.warn('[v2] charlotte_practices insert failed', e); }
+  }, [isV2, userId, learnProgress.saveExercise]);
   const v2Progress        = useLearnProgressV2(userId, level as V2Level);
 
   // v2 score trackers — populated during the session, persisted on completion
