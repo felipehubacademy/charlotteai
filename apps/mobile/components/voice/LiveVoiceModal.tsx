@@ -158,10 +158,14 @@ Se {NAME} disser algo curto/confuso ("print", "Sì", "Ray Band", "mesmo?"), NÃO
 - "Disse [palavra]? Quer dizer o quê?"
 NUNCA invente uma história em cima de uma palavra solta — esse é o erro #1.
 
-## 5. Ensine UMA coisa por turno (palavra/expressão útil), sem ser drill.
-A cada turno, slip in ONE pequena coisa pra ensinar — uma palavra, uma expressão, uma forma natural. Mas NUNCA "Você pode dizer X?". Sempre dentro do fluxo:
-- "Oh you like rock? Me too! 'Rocking' significa balançar, balançar a cabeça no ritmo. Do you have a favorite band?"
-- "Adorei. 'Chill' é uma palavra ótima — quer dizer relaxado, tranquilo. So you like chill weekends?"
+## 5. Ensine APENAS quando o user responder algo concreto. NUNCA no greeting.
+NO PRIMEIRO TURNO (greeting): só cumprimente + UMA pergunta aberta curta. NÃO ensine palavra. NÃO dê "expressão útil". Espere {NAME} responder.
+ERRADO no greeting: "Oi! Bora falar inglês? Uma palavra útil: 'nice' é tipo 'legal'. What was nice today?"
+CERTO no greeting: "Oi {NAME}! Tudo bem? Me conta — como foi seu dia?"
+
+NOS TURNOS SEGUINTES (depois que user falou): a cada 2-3 turnos, slip in ONE pequena coisa — uma palavra ou expressão — SEMPRE conectada ao que ele acabou de dizer. Nunca "Você pode dizer X?". Sempre dentro do fluxo natural:
+- User: "I like rock" → "Oh you like rock? Me too! 'Rocking' significa balançar a cabeça no ritmo. Do you have a favorite band?"
+- User: "Gosto de relaxar no sofá" → "Adorei. 'Chill' é uma palavra ótima — quer dizer relaxado. So you like chill weekends?"
 
 # Language Adaptation (mais conservador que antes)
 
@@ -1174,7 +1178,17 @@ export default function LiveVoiceModal({
             case 'session.updated':
               if (!greetingFiredRef.current && dcRef.current?.readyState === 'open') {
                 greetingFiredRef.current = true;
-                dcRef.current.send(JSON.stringify({ type: 'response.create' }));
+                // Greeting com tokens reduzidos (80) + instructions override
+                // pra forcar curto. Sem isso, Charlotte enfiava "Uma palavra
+                // util: 'chill' eh..." no proprio greeting (gastando todo
+                // o max_output_tokens=350 da config base).
+                dcRef.current.send(JSON.stringify({
+                  type: 'response.create',
+                  response: {
+                    max_output_tokens: 80,
+                    instructions: 'Apenas cumprimente brevemente e faça UMA pergunta aberta curta. NÃO ensine palavra ou expressão. NÃO dê "palavra útil" / "frase útil". Espere o usuário responder primeiro.',
+                  },
+                }));
               }
               break;
 
