@@ -1099,11 +1099,12 @@ export default function LiveVoiceModal({
                 turn_detection: (() => {
                   const cfg = {
                     type: 'server_vad' as const,
-                    // threshold por nivel: Novice (0.5) precisa sensibilidade alta
-                    // pra captar voz baixa/tentativa de iniciante; Inter/Advanced
-                    // (0.75) menos sensivel pra evitar self-interrupt por eco.
-                    // 0.85 anterior era muito alto — user precisava gritar.
-                    threshold: userLevel === 'Novice' ? 0.5 : 0.75,
+                    // threshold por nivel:
+                    //   Novice 0.7: 0.5 capturava ruido ambiente/eco e fazia
+                    //     server gerar response sobre transcript vazio →
+                    //     Charlotte alucinava "Adoro a palavra chill" sozinha.
+                    //   Inter/Advanced 0.75: menos sensivel, evita self-interrupt.
+                    threshold: userLevel === 'Novice' ? 0.7 : 0.75,
                     // prefix_padding 1000ms: captura inicio quando user fala
                     // logo apos Charlotte parar (drenagem do speaker).
                     // silence_duration_ms por nivel:
@@ -1378,6 +1379,22 @@ export default function LiveVoiceModal({
                 const userText: string =
                   deltaText.length > completedText.length ? deltaText : completedText;
                 if (itemId) userTranscriptDeltasRef.current.delete(itemId);
+
+                // Anti-halucinacao por ruido: se transcript final esta vazio
+                // ou muito curto (< 2 chars), VAD disparou em ruido/eco.
+                // Server ja criou response.created e Charlotte pode estar
+                // alucinando contexto. Cancela response + limpa audio buffer.
+                if (!userText || userText.length < 2) {
+                  console.log('[LiveVoice] empty transcript — canceling phantom response');
+                  if (dcRef.current?.readyState === 'open' && activeResponseIdRef.current) {
+                    try {
+                      dcRef.current.send(JSON.stringify({ type: 'response.cancel' }));
+                      dcRef.current.send(JSON.stringify({ type: 'output_audio_buffer.clear' }));
+                    } catch { /* silencioso */ }
+                  }
+                  break;
+                }
+
                 if (userText) {
                   // Safety filter: detecta scripts inesperados (Malayalam,
                   // Chinese, Devanagari etc) e descarta. User fala PT-BR + EN —
