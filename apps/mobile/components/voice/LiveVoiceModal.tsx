@@ -1108,26 +1108,22 @@ export default function LiveVoiceModal({
                   delay: 'medium',
                 },
                 turn_detection: (() => {
+                  // SEMANTIC VAD (GA 2026-05): modelo decide quando user
+                  // terminou de falar baseado em SEMANTICA, nao so silencio.
+                  // Vantagem: nao corta Charlotte por eco do proprio speaker
+                  // (server_vad fazia self-interrupt mesmo com echoCancellation).
+                  // Permite barge-in genuino (user gritar) sem confundir eco.
+                  //
+                  // eagerness por nivel:
+                  //   Novice 'low': mais paciente, espera user terminar
+                  //     pensamento. True beginner pausa pra formular.
+                  //   Inter/Advanced 'auto': modelo decide pelo flow natural.
                   const cfg = {
-                    type: 'server_vad' as const,
-                    // threshold por nivel:
-                    //   Novice 0.7: 0.5 capturava ruido ambiente/eco e fazia
-                    //     server gerar response sobre transcript vazio →
-                    //     Charlotte alucinava "Adoro a palavra chill" sozinha.
-                    //   Inter/Advanced 0.75: menos sensivel, evita self-interrupt.
-                    threshold: userLevel === 'Novice' ? 0.7 : 0.75,
-                    // prefix_padding 1000ms: captura inicio quando user fala
-                    // logo apos Charlotte parar (drenagem do speaker).
-                    // silence_duration_ms por nivel:
-                    //   Novice: 1500ms — true beginner precisa 3-5s pra
-                    //     formular reply. 500ms cortava no meio da frase.
-                    //   Inter/Advanced: 500ms — fluencia maior, corta rapido.
-                    prefix_padding_ms: 1000,
-                    silence_duration_ms: userLevel === 'Novice' ? 1500 : 500,
+                    type: 'semantic_vad' as const,
+                    eagerness: (userLevel === 'Novice' ? 'low' : 'auto') as 'low' | 'auto',
                     create_response: true,
                     interrupt_response: true,
                   };
-                  // Cache pra restore apos disable durante Charlotte falando.
                   turnDetectionConfigRef.current = cfg;
                   return cfg;
                 })(),
