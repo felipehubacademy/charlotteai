@@ -1113,7 +1113,11 @@ export default function LiveVoiceModal({
                 turn_detection: (() => {
                   const cfg = {
                     type: 'server_vad' as const,
-                    threshold: 0.85,
+                    // threshold por nivel: Novice (0.5) precisa sensibilidade alta
+                    // pra captar voz baixa/tentativa de iniciante; Inter/Advanced
+                    // (0.75) menos sensivel pra evitar self-interrupt por eco.
+                    // 0.85 anterior era muito alto — user precisava gritar.
+                    threshold: userLevel === 'Novice' ? 0.5 : 0.75,
                     // prefix_padding 1000ms (era 600): captura inicio do user
                     // quando ele fala logo apos Charlotte parar — antes os
                     // primeiros 400ms eram perdidos por drenagem do speaker.
