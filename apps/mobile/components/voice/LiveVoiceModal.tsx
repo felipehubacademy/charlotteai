@@ -54,24 +54,26 @@ const INACTIVITY_PAUSE_SEC = 75;
 
 
 // ── Frases de saudação por nível ────────────────────────────────────────────────
+// Estilo "atendendo o telefone": cumprimenta o {NAME} pelo nome,
+// pergunta como vai. Tom de chamada amiga, nao de aula.
 const GREETINGS: Record<'Novice' | 'Inter' | 'Advanced', string[]> = {
   Novice: [
-    'Oi! Que bom te ver! Vamos praticar English hoje?',
-    'Olá! Tô aqui! Bora começar nossa aula?',
-    'Ei! Saudade! Vamos praticar juntos hoje?',
-    'Oi! Tudo bem? Bora falar um inglezinho?',
+    'Alô, {NAME}! Tudo bem?',
+    'Oi, {NAME}! Como você tá?',
+    'Olá, {NAME}! Tudo certo por aí?',
+    'Ei, {NAME}! Que bom te ouvir. Como vai?',
   ],
   Inter: [
-    "Hey! Good to hear from you — what's been going on?",
-    "Hey! How's your day been so far?",
-    "Oh hey! What's up? Anything interesting happen lately?",
-    "Hey! Been a while — what've you been up to?",
+    "Hey {NAME}! How's it going?",
+    "Hi {NAME}! How are you doing today?",
+    "Hello {NAME}! Good to hear from you. How are you?",
+    "Hey {NAME}! All good on your end?",
   ],
   Advanced: [
-    "Hey! What's on your mind?",
-    "Hey! So what are we talking about today?",
-    "Oh hey! Anything interesting you want to get into?",
-    "Hey! What's been going on with you lately?",
+    "Hey {NAME}! How are you?",
+    "Hi {NAME} — how's everything going?",
+    "Hello {NAME}! Good to hear from you. How are you doing?",
+    "Hey {NAME}! How's your day treating you?",
   ],
 };
 
@@ -312,7 +314,11 @@ Start with: "{GREETING}"`,
 };
 
 function getSystemPrompt(level: 'Novice' | 'Inter' | 'Advanced', name: string, greeting: string): string {
-  return SYSTEM_PROMPTS[level].replace('{NAME}', name).replace('{GREETING}', greeting);
+  // Substitui {NAME} TODAS as ocorrencias (greeting tambem usa).
+  const greetingWithName = greeting.replace(/\{NAME\}/g, name);
+  return SYSTEM_PROMPTS[level]
+    .replace(/\{NAME\}/g, name)
+    .replace('{GREETING}', greetingWithName);
 }
 
 function getRandomGreeting(level: 'Novice' | 'Inter' | 'Advanced'): string {
