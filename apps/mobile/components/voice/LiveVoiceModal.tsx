@@ -103,7 +103,13 @@ const FAREWELLS: Record<'Novice' | 'Inter' | 'Advanced', string[]> = {
 // IMPORTANT: never tell the model to "fill silence" or "keep talking" — this causes
 // Charlotte to monologue without user input when the VAD triggers on echo/ambient noise.
 const SYSTEM_PROMPTS: Record<'Novice' | 'Inter' | 'Advanced', string> = {
-  Novice: `# Role & Objective
+  Novice: `Você é Charlotte, uma parceira de conversação para {NAME}, brasileiro/a que está começando a aprender inglês.
+
+Converse em mix natural de PT-BR e inglês — comece mais em português e introduza inglês gradualmente conforme {NAME} responde. Seja calorosa, paciente, curiosa. Quando {NAME} comete um erro em inglês, corrija discretamente embutindo a forma certa na sua resposta (sem dizer "o certo é"). Mantenha respostas curtas e naturais. Você é amiga, não professora.
+
+Comece com: "{GREETING}"`,
+
+  _NoviceOld: `# Role & Objective
 Você é a Charlotte — amiga calorosa do {NAME}, que está começando a falar inglês. Sua função: conversar como uma amiga real, em PT/EN, fazendo o {NAME} se sentir confortável e confiante. Não é aula. É papo.
 
 # Personality & Tone
@@ -1082,11 +1088,10 @@ export default function LiveVoiceModal({
             // 500 (era 300): em modo ensino com explicacoes em PT-BR + EN, 300
             // batia o limite e cortava mid-frase. Prompt ainda pede brevidade,
             // mas 500 da margem pra ensino sem cortar.
-            // max_output_tokens 350 pra Novice: 200 cortava respostas no meio
-            // ("Aqui vão três bem úteis pra" + truncava) quando ela explicava
-            // pronuncias/exemplos. 350 da margem pra explicacao curta sem
-            // sobrar espaco pra preambulo. Inter/Advanced mantem 500.
-            max_output_tokens: userLevel === 'Novice' ? 350 : 500,
+            // max_output_tokens 500 pra todos os niveis. Sem otimizacao
+            // por nivel — limites artificiais cortavam respostas no meio
+            // e o modelo Realtime ja auto-controla tamanho via prompt.
+            max_output_tokens: 500,
             audio: {
               input: {
                 // GA: format é objeto { type, rate } em vez de string 'pcm16'.
@@ -1178,17 +1183,10 @@ export default function LiveVoiceModal({
                 // pra forcar curto. Sem isso, Charlotte enfiava "Uma palavra
                 // util: 'chill' eh..." no proprio greeting (gastando todo
                 // o max_output_tokens=350 da config base).
-                dcRef.current.send(JSON.stringify({
-                  type: 'response.create',
-                  response: {
-                    // 120 tokens (era 80 cortando frase no meio "Oi! Como
-                    // você gosta de começar o"). 120 da margem pra greeting
-                    // + 1 pergunta completarem, ainda baixo o suficiente
-                    // pra evitar enfiar ensinamento.
-                    max_output_tokens: 120,
-                    instructions: 'Apenas cumprimente brevemente e faça UMA pergunta aberta curta sobre o dia ou interesse do usuário (em PT-BR para Novice). NÃO ensine palavra ou expressão. NÃO dê "palavra útil" / "frase útil". NUNCA pergunte se quer "praticar em português" — você é Charlotte, parceira de conversação para praticar INGLÊS (em mix PT/EN para Novice). Espere o usuário responder primeiro antes de qualquer ensinamento.',
-                  },
-                }));
+                // Greeting simples — sem instructions override nem max_tokens
+                // custom. Deixa o session.instructions (prompt principal)
+                // controlar comportamento. Override estava conflitando.
+                dcRef.current.send(JSON.stringify({ type: 'response.create' }));
               }
               break;
 
