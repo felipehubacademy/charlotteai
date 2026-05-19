@@ -55,6 +55,9 @@ interface ChatBoxProps {
   playingMessageId?: string | null;
   /** Called when user taps "Me explique melhor" / "Explain more" in grammar mode */
   onExplainMore?: (originalCorrection: string) => void;
+  /** Banner renderizado no topo VISUAL da lista (rola junto com as mensagens).
+   *  Implementado como ListFooterComponent da FlatList invertida. */
+  topBanner?: React.ReactNode;
 }
 
 // Typing indicator — dots for text, mic pulse for audio
@@ -490,6 +493,7 @@ const ChatBox: React.FC<ChatBoxProps> = ({
   onPlayAudio,
   playingMessageId,
   onExplainMore,
+  topBanner,
 }) => {
   const flatListRef = React.useRef<FlatList>(null);
 
@@ -557,6 +561,7 @@ const ChatBox: React.FC<ChatBoxProps> = ({
         style={{ backgroundColor: 'transparent' }}
         contentContainerStyle={{ flexGrow: 1, paddingHorizontal: 14, paddingVertical: 12, paddingBottom: 4 }}
         showsVerticalScrollIndicator={false}
+        ListFooterComponent={topBanner ? <>{topBanner}</> : null}
         ListHeaderComponent={
           <>
             {/* Shown at the "bottom" of the list (top in inverted) */}

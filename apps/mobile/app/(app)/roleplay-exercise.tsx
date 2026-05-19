@@ -103,23 +103,18 @@ export default function RolePlayExerciseScreen() {
   }, []);
 
   // ── Show opening line as the first assistant message ────────────
-  // Renderiza como "isTyping" enquanto o TTS é baixado, pra evitar
-  // o flash de bubble de TEXTO antes do bubble de ÁUDIO.
+  // NÃO pusha bubble vazio. Enquanto TTS carrega, isProcessing=true →
+  // ChatBox renderiza o TypingIndicator (mic animado) na posição da
+  // próxima mensagem. Quando o áudio chega, pusha o bubble real.
   const openedRef = useRef(false);
   useEffect(() => {
     if (!rp || openedRef.current) return;
     openedRef.current = true;
-    const id = `assist_${Date.now()}`;
-    setMessages([{
-      id, role: 'assistant', content: '',
-      isTyping: true,
-      messageType: 'audio',
-      timestamp: new Date(),
-    }]);
     historyRef.current = [{ role: 'assistant', content: rp.opening_line }];
     startTimeRef.current = Date.now();
     setRemainingSec(rp.time_budget_sec);
-    playAssistantOpener(id, rp);
+    setIsProcessing(true);
+    playAssistantOpener(`assist_${Date.now()}`, rp);
   }, [rp]); // eslint-disable-line react-hooks/exhaustive-deps
 
   // Timer countdown — auto-encerra ao zerar
@@ -151,11 +146,15 @@ export default function RolePlayExerciseScreen() {
       await FileSystem.makeDirectoryAsync(dir, { intermediates: true }).catch(() => {});
       const localUri = `${dir}${msgId}.flac`;
       await FileSystem.writeAsStringAsync(localUri, data.audio, { encoding: 'base64' as any });
-      // Substitui o placeholder isTyping pelo bubble de audio real
-      setMessages(prev => prev.map(m => m.id === msgId
-        ? { ...m, content: rpDef.opening_line, audioUrl: localUri, isTyping: false }
-        : m
-      ));
+      // Audio pronto: pusha o bubble real, encerra o typing indicator
+      setMessages(prev => [...prev, {
+        id: msgId, role: 'assistant',
+        content: rpDef.opening_line,
+        audioUrl: localUri,
+        messageType: 'audio',
+        timestamp: new Date(),
+      }]);
+      setIsProcessing(false);
       setPlayingMessageId(msgId);
       const p = playerRef.current;
       if (p) {
@@ -165,7 +164,7 @@ export default function RolePlayExerciseScreen() {
         });
         try { p.play(); } catch {}
       }
-    } catch (e) { console.warn('[roleplay] opener TTS failed', e); }
+    } catch (e) { console.warn('[roleplay] opener TTS failed', e); setIsProcessing(false); }
   }, [userId]);
 
   // Save attempt to learn_history_v2 when session completes (or timer expires).
@@ -301,20 +300,12 @@ export default function RolePlayExerciseScreen() {
     setSessionComplete(false);
     setHintsUsed(0);
     setHintVisible(null);
-    historyRef.current = [];
-    openedRef.current = false;
     savedRef.current = false;
+    historyRef.current = [{ role: 'assistant', content: rp.opening_line }];
     startTimeRef.current = Date.now();
     setRemainingSec(rp.time_budget_sec);
-    // re-dispara o opener
-    const id = `assist_${Date.now()}`;
-    setMessages([{
-      id, role: 'assistant', content: '',
-      isTyping: true, messageType: 'audio',
-      timestamp: new Date(),
-    }]);
-    historyRef.current = [{ role: 'assistant', content: rp.opening_line }];
-    playAssistantOpener(id, rp);
+    setIsProcessing(true);
+    playAssistantOpener(`assist_${Date.now()}`, rp);
   }, [rp]); // eslint-disable-line react-hooks/exhaustive-deps
 
   // ── Need a hand? — shows hint of the NEXT pending objective ─────
@@ -382,11 +373,11 @@ export default function RolePlayExerciseScreen() {
           <ArrowLeft size={22} color={C.navy} />
         </TouchableOpacity>
         <View style={{ flex: 1 }}>
-          <AppText style={{ fontSize: 14, fontWeight: '700', color: C.navy }}>
+          <AppText style={{ fontSize: 15, fontWeight: '700', color: C.navy }}>
             {rp.persona}
           </AppText>
-          <AppText style={{ fontSize: 11, color: C.navyLight, marginTop: 1 }} numberOfLines={1}>
-            {rp.scenario}
+          <AppText style={{ fontSize: 11, color: C.navyLight, marginTop: 1, letterSpacing: 0.6, textTransform: 'uppercase', fontWeight: '600' }}>
+            {isPt ? 'Role-play' : 'Role-play'}
           </AppText>
         </View>
         {/* Timer pill — fica vermelho nos últimos 30s */}
@@ -406,48 +397,7 @@ export default function RolePlayExerciseScreen() {
         </View>
       </View>
 
-      {/* ── Card de cenário + checklist de objetivos ─────────────── */}
-      <View style={{
-        marginHorizontal: 14, marginTop: 6, marginBottom: 10,
-        padding: 14, borderRadius: 14,
-        backgroundColor: 'rgba(22,21,58,0.04)',
-        borderWidth: 1, borderColor: C.border,
-      }}>
-        <View style={{ flexDirection: 'row', alignItems: 'center', justifyContent: 'space-between', marginBottom: 10 }}>
-          <AppText style={{ fontSize: 10, fontWeight: '700', color: C.navyLight, letterSpacing: 1.2, textTransform: 'uppercase' }}>
-            {isPt ? 'Sua missão' : 'Your mission'}
-          </AppText>
-          <AppText style={{ fontSize: 11, fontWeight: '700', color: objectivesDone === objectivesTotal ? C.greenDark : C.navyMid }}>
-            {objectivesDone}/{objectivesTotal}
-          </AppText>
-        </View>
-        <View style={{ gap: 8 }}>
-          {rp.objectives.map(obj => {
-            const met = objectivesMet.has(obj.id);
-            const label = isPt ? obj.label_pt : (obj.label_en || obj.label_pt);
-            return (
-              <View key={obj.id} style={{ flexDirection: 'row', alignItems: 'center', gap: 10 }}>
-                {met
-                  ? <CheckCircle size={18} color={C.greenDark} weight="fill" />
-                  : <View style={{
-                      width: 16, height: 16, borderRadius: 8,
-                      borderWidth: 1.5, borderColor: C.navyLight, marginHorizontal: 1,
-                    }} />}
-                <AppText style={{
-                  flex: 1, fontSize: 13,
-                  color: met ? C.navyMid : C.navy,
-                  fontWeight: met ? '500' : '600',
-                  textDecorationLine: met ? 'line-through' : 'none',
-                }}>
-                  {label}
-                </AppText>
-              </View>
-            );
-          })}
-        </View>
-      </View>
-
-      {/* ── ChatBox ───────────────────────────────────────────────── */}
+      {/* ── ChatBox + scenario banner rolando junto ──────────────── */}
       <View style={{ flex: 1, backgroundColor: C.bg }}>
         <ChatBox
           messages={messages}
@@ -459,6 +409,66 @@ export default function RolePlayExerciseScreen() {
           mode="chat"
           onPlayAudio={onPlayAudio}
           playingMessageId={playingMessageId}
+          topBanner={
+            <View style={{
+              marginBottom: 12, padding: 14, borderRadius: 14,
+              backgroundColor: 'rgba(22,21,58,0.04)',
+              borderWidth: 1, borderColor: C.border,
+            }}>
+              {/* Cenário completo */}
+              <AppText style={{
+                fontSize: 13, color: C.navyMid, lineHeight: 18, marginBottom: 12,
+              }}>
+                {rp.scenario}
+              </AppText>
+              {/* Header: SUA MISSÃO + contador */}
+              <View style={{
+                flexDirection: 'row', alignItems: 'center',
+                justifyContent: 'space-between', marginBottom: 10,
+                paddingTop: 10,
+                borderTopWidth: 1, borderTopColor: 'rgba(22,21,58,0.08)',
+              }}>
+                <AppText style={{
+                  fontSize: 10, fontWeight: '700', color: C.navyLight,
+                  letterSpacing: 1.2, textTransform: 'uppercase',
+                }}>
+                  {isPt ? 'Sua missão' : 'Your mission'}
+                </AppText>
+                <AppText style={{
+                  fontSize: 11, fontWeight: '700',
+                  color: allObjectivesDone ? C.greenDark : C.navyMid,
+                }}>
+                  {objectivesDone}/{objectivesTotal}
+                </AppText>
+              </View>
+              {/* Checklist */}
+              <View style={{ gap: 8 }}>
+                {rp.objectives.map(obj => {
+                  const met   = objectivesMet.has(obj.id);
+                  const label = isPt ? obj.label_pt : (obj.label_en || obj.label_pt);
+                  return (
+                    <View key={obj.id} style={{ flexDirection: 'row', alignItems: 'center', gap: 10 }}>
+                      {met
+                        ? <CheckCircle size={18} color={C.greenDark} weight="fill" />
+                        : <View style={{
+                            width: 16, height: 16, borderRadius: 8,
+                            borderWidth: 1.5, borderColor: C.navyLight, marginHorizontal: 1,
+                          }} />
+                      }
+                      <AppText style={{
+                        flex: 1, fontSize: 13,
+                        color: met ? C.navyMid : C.navy,
+                        fontWeight: met ? '500' : '600',
+                        textDecorationLine: met ? 'line-through' : 'none',
+                      }}>
+                        {label}
+                      </AppText>
+                    </View>
+                  );
+                })}
+              </View>
+            </View>
+          }
         />
       </View>
 
@@ -519,19 +529,16 @@ export default function RolePlayExerciseScreen() {
               disabled={isProcessing || sessionComplete}
               style={{
                 width: 64, height: 64, borderRadius: 32,
-                backgroundColor: sessionComplete
-                  ? 'rgba(22,21,58,0.20)'
-                  : isProcessing
-                    ? 'rgba(61,136,0,0.45)'
-                    : (isRecording ? C.red : C.green),
+                backgroundColor: (sessionComplete || isProcessing)
+                  ? 'rgba(22,21,58,0.15)'
+                  : (isRecording ? C.red : C.green),
                 alignItems: 'center', justifyContent: 'center',
+                opacity: isProcessing ? 0.5 : 1,
               }}
             >
-              {isProcessing
-                ? <ActivityIndicator color="#FFF" />
-                : isRecording
-                  ? <XIcon size={28} color="#FFF" weight="bold" />
-                  : <Microphone size={28} color="#FFF" weight="fill" />
+              {isRecording
+                ? <XIcon size={28} color="#FFF" weight="bold" />
+                : <Microphone size={28} color={(sessionComplete || isProcessing) ? C.navyLight : '#FFF'} weight="fill" />
               }
             </TouchableOpacity>
           </Animated.View>
