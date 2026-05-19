@@ -93,6 +93,9 @@ export default function RolePlayExerciseScreen() {
 
   // Conversation history for the backend (just role + content)
   const historyRef = useRef<Array<{ role: 'user' | 'assistant'; content: string }>>([]);
+  // Quantos turnos seguidos o aluno passou sem bater nenhum objetivo novo.
+  // >= 2 → backend recebe flag e Ana nudga mais diretamente o próximo objetivo.
+  const stuckTurnsRef = useRef(0);
 
   // ── Player ─────────────────────────────────────────────────────
   // Mantemos UM player single-instance e UM listener didJustFinish.
@@ -218,11 +221,15 @@ export default function RolePlayExerciseScreen() {
         name: isWav ? 'turn.wav' : 'turn.m4a',
         type: isWav ? 'audio/wav' : 'audio/x-m4a',
       } as unknown as Blob);
+      // Próximo objetivo pendente — usado pelo backend pra nudgar quando stuck.
+      const nextPending = rp.objectives.find(o => !objectivesMet.has(o.id));
       formData.append('payload', JSON.stringify({
-        history:    historyRef.current,
-        role_play:  rp,
+        history:           historyRef.current,
+        role_play:         rp,
         level,
-        unit_title: unitTitle,
+        unit_title:        unitTitle,
+        stuck_turns:       stuckTurnsRef.current,
+        next_objective_id: nextPending?.id,
       }));
       if (userId) formData.append('user_id', userId);
 
@@ -252,13 +259,17 @@ export default function RolePlayExerciseScreen() {
       }]);
       historyRef.current.push({ role: 'assistant', content: data.assistant_text ?? '' });
 
-      // Tick checklist + haptic celebration por objetivo batido nesse turno
-      if (Array.isArray(data.objectives_met) && data.objectives_met.length) {
+      // Tick checklist + haptic celebration por objetivo batido nesse turno.
+      // Atualiza stuckTurnsRef: novo objetivo bateu → zera; nada bateu → +1.
+      const newOnes = (Array.isArray(data.objectives_met) ? data.objectives_met : [])
+        .filter((n: any) => typeof n === 'number' && !objectivesMet.has(n));
+      if (newOnes.length > 0) {
+        stuckTurnsRef.current = 0;
         setObjectivesMet(prev => {
           const next = new Set(prev);
           let firedHaptic = false;
-          for (const n of data.objectives_met) {
-            if (typeof n === 'number' && !next.has(n)) {
+          for (const n of newOnes) {
+            if (!next.has(n)) {
               next.add(n);
               if (!firedHaptic) {
                 Haptics.notificationAsync(Haptics.NotificationFeedbackType.Success);
@@ -268,6 +279,8 @@ export default function RolePlayExerciseScreen() {
           }
           return next;
         });
+      } else {
+        stuckTurnsRef.current += 1;
       }
 
       // Autoplay assistant
@@ -300,6 +313,7 @@ export default function RolePlayExerciseScreen() {
     setHintsUsed(0);
     setHintVisible(null);
     savedRef.current = false;
+    stuckTurnsRef.current = 0;
     historyRef.current = [{ role: 'assistant', content: rp.opening_line }];
     startTimeRef.current = Date.now();
     setRemainingSec(rp.time_budget_sec);

@@ -41,13 +41,27 @@ interface Payload {
   role_play:   RolePlayDef;
   level:       'Novice' | 'Inter' | 'Advanced';
   unit_title?: string;
+  /** Quantos turnos consecutivos o aluno passou SEM bater nenhum objetivo novo.
+   *  >= 2 → injetamos instrução pra Ana nudgar mais diretamente. */
+  stuck_turns?: number;
+  /** Id do próximo objetivo pendente (o que ela deve nudgar quando stuck). */
+  next_objective_id?: number;
 }
 
 // ── Build system prompt with hidden objectives injection ───────────
-function buildSystemPrompt(rp: RolePlayDef, level: string, unitTitle?: string): string {
+function buildSystemPrompt(
+  rp: RolePlayDef, level: string, unitTitle?: string,
+  stuckTurns: number = 0, nextObjectiveId?: number,
+): string {
   const objectivesBlock = rp.objectives.map(o =>
     `  - Objective ${o.id}: ${o.hidden_prompt}`
   ).join('\n');
+
+  // Auto-nudge: depois de 2+ turnos travados, instruimos a Ana a reformular
+  // a próxima pergunta de forma MAIS DIRETA, ainda em personagem.
+  const nudgeBlock = (stuckTurns >= 2 && nextObjectiveId !== undefined)
+    ? `\n\nSTUDENT IS STUCK ON OBJECTIVE ${nextObjectiveId} (${stuckTurns} turns).\nReformulate your last question to nudge them more directly toward this\nobjective. Make the question pointed and easier to answer. Stay in\ncharacter and do NOT reveal the objective list.`
+    : '';
 
   return `You are playing ${rp.persona} in an English-learning role-play.
 
@@ -79,7 +93,7 @@ Rules:
 - If the student goes off-topic, gently steer them back; do NOT mark
   objectives as met.
 - Do NOT correct grammar mid-conversation. Corrections happen post-game.
-- American English by default. Calorosa, encorajadora, paciente.`;
+- American English by default. Calorosa, encorajadora, paciente.${nudgeBlock}`;
 }
 
 // ── OpenAI TTS ──────────────────────────────────────────────────────
@@ -115,7 +129,7 @@ export async function POST(request: NextRequest) {
       return NextResponse.json({ error: 'Missing audio or payload' }, { status: 400 });
     }
 
-    const { history, role_play: rp, level, unit_title } = JSON.parse(payload) as Payload;
+    const { history, role_play: rp, level, unit_title, stuck_turns, next_objective_id } = JSON.parse(payload) as Payload;
 
     // 1) Whisper STT
     const t0 = Date.now();
@@ -134,7 +148,7 @@ export async function POST(request: NextRequest) {
 
     // 2) GPT chat completion
     const messages: OpenAI.Chat.ChatCompletionMessageParam[] = [
-      { role: 'system', content: buildSystemPrompt(rp, level, unit_title) },
+      { role: 'system', content: buildSystemPrompt(rp, level, unit_title, stuck_turns, next_objective_id) },
       ...history.map(h => ({ role: h.role, content: h.content })),
       { role: 'user', content: userTranscript },
     ];
