@@ -16,7 +16,7 @@ import {
 } from 'react-native';
 import { SafeAreaView } from 'react-native-safe-area-context';
 import { router, useLocalSearchParams } from 'expo-router';
-import { ArrowLeft, Microphone, X as XIcon } from 'phosphor-react-native';
+import { ArrowLeft, Microphone, X as XIcon, CheckCircle } from 'phosphor-react-native';
 import * as FileSystem from 'expo-file-system/legacy';
 import * as Haptics from 'expo-haptics';
 import Constants from 'expo-constants';
@@ -80,6 +80,8 @@ export default function RolePlayExerciseScreen() {
   const [transcript, setTranscript]           = useState('');
   const [finalTranscript, setFinalTranscript] = useState('');
   const [playingMessageId, setPlayingMessageId] = useState<string | null>(null);
+  const [objectivesMet, setObjectivesMet]     = useState<Set<number>>(new Set());
+  const [sessionComplete, setSessionComplete] = useState(false);
 
   // Conversation history for the backend (just role + content)
   const historyRef = useRef<Array<{ role: 'user' | 'assistant'; content: string }>>([]);
@@ -93,18 +95,20 @@ export default function RolePlayExerciseScreen() {
   }, []);
 
   // ── Show opening line as the first assistant message ────────────
+  // Renderiza como "isTyping" enquanto o TTS é baixado, pra evitar
+  // o flash de bubble de TEXTO antes do bubble de ÁUDIO.
   const openedRef = useRef(false);
   useEffect(() => {
     if (!rp || openedRef.current) return;
     openedRef.current = true;
     const id = `assist_${Date.now()}`;
     setMessages([{
-      id, role: 'assistant', content: rp.opening_line,
+      id, role: 'assistant', content: '',
+      isTyping: true,
       messageType: 'audio',
       timestamp: new Date(),
     }]);
     historyRef.current = [{ role: 'assistant', content: rp.opening_line }];
-    // Fetch opener TTS + autoplay
     playAssistantOpener(id, rp);
   }, [rp]); // eslint-disable-line react-hooks/exhaustive-deps
 
@@ -122,8 +126,11 @@ export default function RolePlayExerciseScreen() {
       await FileSystem.makeDirectoryAsync(dir, { intermediates: true }).catch(() => {});
       const localUri = `${dir}${msgId}.flac`;
       await FileSystem.writeAsStringAsync(localUri, data.audio, { encoding: 'base64' as any });
-      setMessages(prev => prev.map(m => m.id === msgId ? { ...m, audioUrl: localUri } : m));
-      // Autoplay
+      // Substitui o placeholder isTyping pelo bubble de audio real
+      setMessages(prev => prev.map(m => m.id === msgId
+        ? { ...m, content: rpDef.opening_line, audioUrl: localUri, isTyping: false }
+        : m
+      ));
       setPlayingMessageId(msgId);
       const p = playerRef.current;
       if (p) {
@@ -207,9 +214,22 @@ export default function RolePlayExerciseScreen() {
       }]);
       historyRef.current.push({ role: 'assistant', content: data.assistant_text ?? '' });
 
-      // Log objectives for debug (UI overlay arrives next iteration)
+      // Tick checklist + haptic celebration por objetivo batido nesse turno
       if (Array.isArray(data.objectives_met) && data.objectives_met.length) {
-        console.log('[roleplay] objectives met:', data.objectives_met);
+        setObjectivesMet(prev => {
+          const next = new Set(prev);
+          let firedHaptic = false;
+          for (const n of data.objectives_met) {
+            if (typeof n === 'number' && !next.has(n)) {
+              next.add(n);
+              if (!firedHaptic) {
+                Haptics.notificationAsync(Haptics.NotificationFeedbackType.Success);
+                firedHaptic = true;
+              }
+            }
+          }
+          return next;
+        });
       }
 
       // Autoplay assistant
@@ -226,6 +246,7 @@ export default function RolePlayExerciseScreen() {
 
       if (data.status === 'complete') {
         Haptics.notificationAsync(Haptics.NotificationFeedbackType.Success);
+        setSessionComplete(true);
         // Result card chega na próxima iteração. Por enquanto, só desabilita o input.
       }
     } catch (e: any) {
@@ -267,15 +288,17 @@ export default function RolePlayExerciseScreen() {
     );
   }
 
+  const objectivesDone = objectivesMet.size;
+  const objectivesTotal = rp.objectives.length;
+
   return (
-    <SafeAreaView style={{ flex: 1, backgroundColor: C.bg }} edges={['top', 'left', 'right']}>
-      <StatusBar barStyle="dark-content" backgroundColor={C.bg} />
+    <SafeAreaView style={{ flex: 1, backgroundColor: C.card }} edges={['top', 'left', 'right']}>
+      <StatusBar barStyle="dark-content" backgroundColor={C.card} />
 
       {/* ── Header: persona badge + back button ──────────────────── */}
       <View style={{
         flexDirection: 'row', alignItems: 'center', gap: 12,
         paddingHorizontal: 16, paddingVertical: 10,
-        borderBottomWidth: 1, borderBottomColor: C.border,
         backgroundColor: C.card,
       }}>
         <TouchableOpacity onPress={() => router.back()} hitSlop={{ top: 12, bottom: 12, left: 12, right: 12 }}>
@@ -299,8 +322,49 @@ export default function RolePlayExerciseScreen() {
         </View>
       </View>
 
+      {/* ── Card de cenário + checklist de objetivos ─────────────── */}
+      <View style={{
+        marginHorizontal: 14, marginTop: 6, marginBottom: 10,
+        padding: 14, borderRadius: 14,
+        backgroundColor: 'rgba(22,21,58,0.04)',
+        borderWidth: 1, borderColor: C.border,
+      }}>
+        <View style={{ flexDirection: 'row', alignItems: 'center', justifyContent: 'space-between', marginBottom: 10 }}>
+          <AppText style={{ fontSize: 10, fontWeight: '700', color: C.navyLight, letterSpacing: 1.2, textTransform: 'uppercase' }}>
+            {isPt ? 'Sua missão' : 'Your mission'}
+          </AppText>
+          <AppText style={{ fontSize: 11, fontWeight: '700', color: objectivesDone === objectivesTotal ? C.greenDark : C.navyMid }}>
+            {objectivesDone}/{objectivesTotal}
+          </AppText>
+        </View>
+        <View style={{ gap: 8 }}>
+          {rp.objectives.map(obj => {
+            const met = objectivesMet.has(obj.id);
+            const label = isPt ? obj.label_pt : (obj.label_en || obj.label_pt);
+            return (
+              <View key={obj.id} style={{ flexDirection: 'row', alignItems: 'center', gap: 10 }}>
+                {met
+                  ? <CheckCircle size={18} color={C.greenDark} weight="fill" />
+                  : <View style={{
+                      width: 16, height: 16, borderRadius: 8,
+                      borderWidth: 1.5, borderColor: C.navyLight, marginHorizontal: 1,
+                    }} />}
+                <AppText style={{
+                  flex: 1, fontSize: 13,
+                  color: met ? C.navyMid : C.navy,
+                  fontWeight: met ? '500' : '600',
+                  textDecorationLine: met ? 'line-through' : 'none',
+                }}>
+                  {label}
+                </AppText>
+              </View>
+            );
+          })}
+        </View>
+      </View>
+
       {/* ── ChatBox ───────────────────────────────────────────────── */}
-      <View style={{ flex: 1 }}>
+      <View style={{ flex: 1, backgroundColor: C.bg }}>
         <ChatBox
           messages={messages}
           transcript={transcript}
@@ -323,21 +387,25 @@ export default function RolePlayExerciseScreen() {
         }}>
           <View style={{ flex: 1 }}>
             <AppText style={{ fontSize: 13, color: C.navyMid, textAlign: 'center' }}>
-              {isRecording
-                ? (isPt ? 'Gravando… solte pra enviar' : 'Recording… release to send')
-                : (isPt ? 'Segure o microfone pra falar' : 'Hold the mic to speak')}
+              {sessionComplete
+                ? (isPt ? 'Missão concluída!' : 'Mission complete!')
+                : isRecording
+                  ? (isPt ? 'Gravando… solte pra enviar' : 'Recording… release to send')
+                  : (isPt ? 'Segure o microfone pra falar' : 'Hold the mic to speak')}
             </AppText>
           </View>
           <Animated.View style={{ transform: [{ scale: micPulse }] }}>
             <TouchableOpacity
               onPressIn={startRec}
               onPressOut={stopRecAndSend}
-              disabled={isProcessing}
+              disabled={isProcessing || sessionComplete}
               style={{
                 width: 64, height: 64, borderRadius: 32,
-                backgroundColor: isProcessing
-                  ? 'rgba(61,136,0,0.45)'
-                  : (isRecording ? C.red : C.green),
+                backgroundColor: sessionComplete
+                  ? 'rgba(22,21,58,0.20)'
+                  : isProcessing
+                    ? 'rgba(61,136,0,0.45)'
+                    : (isRecording ? C.red : C.green),
                 alignItems: 'center', justifyContent: 'center',
               }}
             >
