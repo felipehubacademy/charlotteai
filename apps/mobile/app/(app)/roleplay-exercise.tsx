@@ -189,17 +189,25 @@ export default function RolePlayExerciseScreen() {
   const recorder = useAudioRecorder(RECORDING_OPTIONS, 30);
   const [isRecording, setIsRecording] = useState(false);
 
+  // Refs pra acessar valores atuais no cleanup do useFocusEffect sem
+  // re-disparar o cleanup quando recorder/isRecording mudam.
+  const isRecordingRef = useRef(false);
+  const recorderRef    = useRef(recorder);
+  useEffect(() => { isRecordingRef.current = isRecording; }, [isRecording]);
+  useEffect(() => { recorderRef.current    = recorder; },    [recorder]);
+
   // Pausa tudo quando a tela perde foco (back/swipe-back). Sem isso o audio
   // da Charlotte/Ana continua tocando depois que o aluno sai da tela.
+  // Deps vazios DE PROPÓSITO — o cleanup só roda no blur real, não a cada re-render.
   useFocusEffect(useCallback(() => {
     return () => {
       try { playerRef.current?.pause(); } catch {}
       setPlayingMessageId(null);
-      if (isRecording) {
-        try { recorder.stopRecording().catch(() => {}); } catch {}
+      if (isRecordingRef.current) {
+        try { recorderRef.current?.stopRecording().catch(() => {}); } catch {}
       }
     };
-  }, [isRecording, recorder]));
+  }, []));
 
   const startRec = useCallback(async () => {
     if (isProcessing || isRecording) return;
