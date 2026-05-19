@@ -16,7 +16,7 @@ import {
   View, TouchableOpacity, StatusBar, ActivityIndicator,
   KeyboardAvoidingView, Platform, TextInput,
 } from 'react-native';
-import { SafeAreaView } from 'react-native-safe-area-context';
+import { SafeAreaView, useSafeAreaInsets } from 'react-native-safe-area-context';
 import { router, useLocalSearchParams } from 'expo-router';
 import {
   ArrowLeft, X as XIcon, CheckCircle, Lightbulb, Trophy,
@@ -65,6 +65,7 @@ export default function GuidedChatExerciseScreen() {
   const { profile } = useAuth();
   const userId      = profile?.id;
   const isPt        = level === 'Novice';
+  const insets      = useSafeAreaInsets();
 
   // Load guided-chat definition from v2
   const [gc, setGc] = useState<GuidedChat | null>(null);
@@ -426,7 +427,8 @@ export default function GuidedChatExerciseScreen() {
       {/* Text input + send */}
       <KeyboardAvoidingView behavior={Platform.OS === 'ios' ? 'padding' : undefined}>
         <View style={{
-          paddingHorizontal: 12, paddingTop: 10, paddingBottom: 14,
+          paddingHorizontal: 12, paddingTop: 10,
+          paddingBottom: Math.max(insets.bottom, 14),
           backgroundColor: C.card, borderTopWidth: 1, borderTopColor: C.border,
           flexDirection: 'row', alignItems: 'flex-end', gap: 8,
         }}>

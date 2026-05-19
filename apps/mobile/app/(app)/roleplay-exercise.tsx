@@ -14,8 +14,8 @@ import {
   View, TouchableOpacity, StatusBar, ActivityIndicator,
   KeyboardAvoidingView, Platform, ScrollView, Animated,
 } from 'react-native';
-import { SafeAreaView } from 'react-native-safe-area-context';
-import { router, useLocalSearchParams } from 'expo-router';
+import { SafeAreaView, useSafeAreaInsets } from 'react-native-safe-area-context';
+import { router, useLocalSearchParams, useFocusEffect } from 'expo-router';
 import { ArrowLeft, Microphone, X as XIcon, CheckCircle, Lightbulb, Trophy, ArrowsClockwise } from 'phosphor-react-native';
 import * as FileSystem from 'expo-file-system/legacy';
 import * as Haptics from 'expo-haptics';
@@ -62,6 +62,7 @@ export default function RolePlayExerciseScreen() {
   const { profile } = useAuth();
   const userId      = profile?.id;
   const isPt        = level === 'Novice';
+  const insets      = useSafeAreaInsets();
 
   // ── Load role-play definition from v2 ───────────────────────────
   const [rp, setRp] = useState<RolePlay | null>(null);
@@ -187,6 +188,18 @@ export default function RolePlayExerciseScreen() {
   // ── Audio recorder ──────────────────────────────────────────────
   const recorder = useAudioRecorder(RECORDING_OPTIONS, 30);
   const [isRecording, setIsRecording] = useState(false);
+
+  // Pausa tudo quando a tela perde foco (back/swipe-back). Sem isso o audio
+  // da Charlotte/Ana continua tocando depois que o aluno sai da tela.
+  useFocusEffect(useCallback(() => {
+    return () => {
+      try { playerRef.current?.pause(); } catch {}
+      setPlayingMessageId(null);
+      if (isRecording) {
+        try { recorder.stopRecording().catch(() => {}); } catch {}
+      }
+    };
+  }, [isRecording, recorder]));
 
   const startRec = useCallback(async () => {
     if (isProcessing || isRecording) return;
@@ -558,7 +571,8 @@ export default function RolePlayExerciseScreen() {
       {/* ── Mic input (hold to record) + hint button ─────────────── */}
       <KeyboardAvoidingView behavior={Platform.OS === 'ios' ? 'padding' : undefined}>
         <View style={{
-          paddingHorizontal: 16, paddingTop: 12, paddingBottom: 20,
+          paddingHorizontal: 16, paddingTop: 12,
+          paddingBottom: Math.max(insets.bottom, 14),
           backgroundColor: C.card, borderTopWidth: 1, borderTopColor: C.border,
           flexDirection: 'row', alignItems: 'center', gap: 10,
         }}>
