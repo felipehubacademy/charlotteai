@@ -16,7 +16,7 @@ import {
 } from 'react-native';
 import { SafeAreaView } from 'react-native-safe-area-context';
 import { router, useLocalSearchParams } from 'expo-router';
-import { ArrowLeft, Microphone, X as XIcon, CheckCircle } from 'phosphor-react-native';
+import { ArrowLeft, Microphone, X as XIcon, CheckCircle, Lightbulb, Trophy, ArrowsClockwise } from 'phosphor-react-native';
 import * as FileSystem from 'expo-file-system/legacy';
 import * as Haptics from 'expo-haptics';
 import Constants from 'expo-constants';
@@ -28,6 +28,7 @@ import { useAuth } from '@/hooks/useAuth';
 import { useAudioRecorder } from '@/hooks/useAudioRecorder';
 import { getModule } from '@/lib/curriculum-v2/loader';
 import type { Level as V2Level, RolePlay } from '@/lib/curriculum-v2/types';
+import { useLearnProgressV2 } from '@/hooks/useLearnProgressV2';
 
 const API_BASE_URL =
   (Constants.expoConfig?.extra?.apiBaseUrl as string) ?? 'https://charlotte.hubacademybr.com';
@@ -82,6 +83,13 @@ export default function RolePlayExerciseScreen() {
   const [playingMessageId, setPlayingMessageId] = useState<string | null>(null);
   const [objectivesMet, setObjectivesMet]     = useState<Set<number>>(new Set());
   const [sessionComplete, setSessionComplete] = useState(false);
+  const [hintsUsed, setHintsUsed]             = useState(0);
+  const [hintVisible, setHintVisible]         = useState<string | null>(null);
+  const [remainingSec, setRemainingSec]       = useState<number>(0);
+  const startTimeRef = useRef<number>(0);
+
+  // v2 progress (write on completion)
+  const v2Progress = useLearnProgressV2(userId, level);
 
   // Conversation history for the backend (just role + content)
   const historyRef = useRef<Array<{ role: 'user' | 'assistant'; content: string }>>([]);
@@ -109,8 +117,25 @@ export default function RolePlayExerciseScreen() {
       timestamp: new Date(),
     }]);
     historyRef.current = [{ role: 'assistant', content: rp.opening_line }];
+    startTimeRef.current = Date.now();
+    setRemainingSec(rp.time_budget_sec);
     playAssistantOpener(id, rp);
   }, [rp]); // eslint-disable-line react-hooks/exhaustive-deps
+
+  // Timer countdown — auto-encerra ao zerar
+  useEffect(() => {
+    if (!rp || sessionComplete) return;
+    const tick = setInterval(() => {
+      const elapsed = Math.floor((Date.now() - startTimeRef.current) / 1000);
+      const remaining = Math.max(0, rp.time_budget_sec - elapsed);
+      setRemainingSec(remaining);
+      if (remaining === 0) {
+        setSessionComplete(true);
+        clearInterval(tick);
+      }
+    }, 1000);
+    return () => clearInterval(tick);
+  }, [rp, sessionComplete]);
 
   const playAssistantOpener = useCallback(async (msgId: string, rpDef: RolePlay) => {
     try {
@@ -142,6 +167,18 @@ export default function RolePlayExerciseScreen() {
       }
     } catch (e) { console.warn('[roleplay] opener TTS failed', e); }
   }, [userId]);
+
+  // Save attempt to learn_history_v2 when session completes (or timer expires).
+  // Score = % objectives met. completed=true only when score === 100 (threshold).
+  const savedRef = useRef(false);
+  useEffect(() => {
+    if (!sessionComplete || savedRef.current || !rp) return;
+    savedRef.current = true;
+    const total = rp.objectives.length || 1;
+    const score = Math.round((objectivesMet.size / total) * 100);
+    v2Progress.saveAttempt(moduleId, unitId, 'roleplay', score)
+      .catch(e => console.warn('[roleplay] saveAttempt failed', e));
+  }, [sessionComplete, rp, objectivesMet, moduleId, unitId, v2Progress]);
 
   // ── Audio recorder ──────────────────────────────────────────────
   const recorder = useAudioRecorder(RECORDING_OPTIONS, 30);
@@ -247,7 +284,6 @@ export default function RolePlayExerciseScreen() {
       if (data.status === 'complete') {
         Haptics.notificationAsync(Haptics.NotificationFeedbackType.Success);
         setSessionComplete(true);
-        // Result card chega na próxima iteração. Por enquanto, só desabilita o input.
       }
     } catch (e: any) {
       console.warn('[roleplay] turn failed', e);
@@ -256,6 +292,43 @@ export default function RolePlayExerciseScreen() {
       setIsProcessing(false);
     }
   }, [isRecording, recorder, rp, level, unitTitle, userId]);
+
+  // ── Restart sessão (Result Card → Refazer) ─────────────────────
+  const restartSession = useCallback(() => {
+    if (!rp) return;
+    setMessages([]);
+    setObjectivesMet(new Set());
+    setSessionComplete(false);
+    setHintsUsed(0);
+    setHintVisible(null);
+    historyRef.current = [];
+    openedRef.current = false;
+    savedRef.current = false;
+    startTimeRef.current = Date.now();
+    setRemainingSec(rp.time_budget_sec);
+    // re-dispara o opener
+    const id = `assist_${Date.now()}`;
+    setMessages([{
+      id, role: 'assistant', content: '',
+      isTyping: true, messageType: 'audio',
+      timestamp: new Date(),
+    }]);
+    historyRef.current = [{ role: 'assistant', content: rp.opening_line }];
+    playAssistantOpener(id, rp);
+  }, [rp]); // eslint-disable-line react-hooks/exhaustive-deps
+
+  // ── Need a hand? — shows hint of the NEXT pending objective ─────
+  // Disponivel só pra Novice/Inter (Advanced reformula sozinho via prompt).
+  const showHint = useCallback(() => {
+    if (!rp || level === 'Advanced' || sessionComplete) return;
+    const pending = rp.objectives.find(o => !objectivesMet.has(o.id));
+    if (!pending) return;
+    const hint = isPt ? (pending.hint_pt ?? pending.label_pt) : (pending.hint_en ?? pending.label_en);
+    setHintVisible(hint);
+    setHintsUsed(prev => prev + 1);
+    Haptics.impactAsync(Haptics.ImpactFeedbackStyle.Light);
+    setTimeout(() => setHintVisible(null), 6000);
+  }, [rp, level, sessionComplete, objectivesMet, isPt]);
 
   // Play a specific message on tap (replay)
   const onPlayAudio = useCallback((messageId: string, uri: string) => {
@@ -288,8 +361,12 @@ export default function RolePlayExerciseScreen() {
     );
   }
 
-  const objectivesDone = objectivesMet.size;
+  const objectivesDone  = objectivesMet.size;
   const objectivesTotal = rp.objectives.length;
+  const timerStr = `${Math.floor(remainingSec / 60).toString().padStart(2, '0')}:${(remainingSec % 60).toString().padStart(2, '0')}`;
+  const timerWarn = remainingSec > 0 && remainingSec <= 30;
+  const showHintBtn = level !== 'Advanced';
+  const allObjectivesDone = objectivesDone === objectivesTotal;
 
   return (
     <SafeAreaView style={{ flex: 1, backgroundColor: C.card }} edges={['top', 'left', 'right']}>
@@ -312,12 +389,19 @@ export default function RolePlayExerciseScreen() {
             {rp.scenario}
           </AppText>
         </View>
+        {/* Timer pill — fica vermelho nos últimos 30s */}
         <View style={{
-          backgroundColor: 'rgba(61,136,0,0.10)', paddingHorizontal: 10, paddingVertical: 4,
-          borderRadius: 8,
+          backgroundColor: timerWarn ? 'rgba(220,38,38,0.10)' : 'rgba(22,21,58,0.06)',
+          paddingHorizontal: 10, paddingVertical: 5,
+          borderRadius: 10,
+          minWidth: 56, alignItems: 'center',
         }}>
-          <AppText style={{ fontSize: 10, fontWeight: '700', color: C.greenDark, letterSpacing: 0.5 }}>
-            ROLE-PLAY
+          <AppText style={{
+            fontSize: 13, fontWeight: '700',
+            color: timerWarn ? C.red : C.navy,
+            ...(Platform.OS === 'ios' ? { fontVariant: ['tabular-nums'] } : { fontFamily: 'monospace' }),
+          }}>
+            {timerStr}
           </AppText>
         </View>
       </View>
@@ -378,13 +462,47 @@ export default function RolePlayExerciseScreen() {
         />
       </View>
 
-      {/* ── Mic input (hold to record) ───────────────────────────── */}
+      {/* ── Hint popup (acima do input) ──────────────────────────── */}
+      {hintVisible && (
+        <View style={{
+          position: 'absolute', left: 16, right: 16, bottom: 110,
+          backgroundColor: C.navy, borderRadius: 12, padding: 14,
+          flexDirection: 'row', gap: 10, alignItems: 'flex-start',
+          shadowColor: '#000', shadowOpacity: 0.2, shadowRadius: 8,
+          shadowOffset: { width: 0, height: 2 }, elevation: 6,
+        }}>
+          <Lightbulb size={18} color="#FFD27A" weight="fill" />
+          <AppText style={{ flex: 1, color: '#FFF', fontSize: 13, lineHeight: 18 }}>
+            {hintVisible}
+          </AppText>
+          <TouchableOpacity onPress={() => setHintVisible(null)} hitSlop={{ top: 8, bottom: 8, left: 8, right: 8 }}>
+            <XIcon size={16} color="rgba(255,255,255,0.6)" />
+          </TouchableOpacity>
+        </View>
+      )}
+
+      {/* ── Mic input (hold to record) + hint button ─────────────── */}
       <KeyboardAvoidingView behavior={Platform.OS === 'ios' ? 'padding' : undefined}>
         <View style={{
           paddingHorizontal: 16, paddingTop: 12, paddingBottom: 20,
           backgroundColor: C.card, borderTopWidth: 1, borderTopColor: C.border,
-          flexDirection: 'row', alignItems: 'center', gap: 12,
+          flexDirection: 'row', alignItems: 'center', gap: 10,
         }}>
+          {showHintBtn && !sessionComplete && !allObjectivesDone && (
+            <TouchableOpacity
+              onPress={showHint}
+              disabled={isProcessing}
+              style={{
+                width: 44, height: 44, borderRadius: 22,
+                backgroundColor: 'rgba(217,119,6,0.12)',
+                borderWidth: 1, borderColor: 'rgba(217,119,6,0.30)',
+                alignItems: 'center', justifyContent: 'center',
+              }}
+              accessibilityLabel={isPt ? 'Dica' : 'Hint'}
+            >
+              <Lightbulb size={20} color="#B45309" weight="fill" />
+            </TouchableOpacity>
+          )}
           <View style={{ flex: 1 }}>
             <AppText style={{ fontSize: 13, color: C.navyMid, textAlign: 'center' }}>
               {sessionComplete
@@ -419,6 +537,128 @@ export default function RolePlayExerciseScreen() {
           </Animated.View>
         </View>
       </KeyboardAvoidingView>
+
+      {/* ── Result card overlay (sessão concluída) ───────────────── */}
+      {sessionComplete && (
+        <View style={{
+          ...StyleSheetAbsoluteFill,
+          backgroundColor: 'rgba(22,21,58,0.55)',
+          alignItems: 'center', justifyContent: 'center',
+          padding: 24,
+        }}>
+          <View style={{
+            backgroundColor: C.card, borderRadius: 20, padding: 24,
+            width: '100%', maxWidth: 400, alignItems: 'center',
+            shadowColor: '#000', shadowOpacity: 0.2, shadowRadius: 16,
+            shadowOffset: { width: 0, height: 6 }, elevation: 10,
+          }}>
+            <View style={{
+              width: 64, height: 64, borderRadius: 32,
+              backgroundColor: allObjectivesDone ? 'rgba(61,136,0,0.12)' : 'rgba(217,119,6,0.12)',
+              alignItems: 'center', justifyContent: 'center', marginBottom: 16,
+            }}>
+              <Trophy size={32} color={allObjectivesDone ? C.greenDark : '#B45309'} weight="fill" />
+            </View>
+            <AppText style={{ fontSize: 20, fontWeight: '800', color: C.navy, marginBottom: 4 }}>
+              {allObjectivesDone
+                ? (isPt ? 'Missão concluída!' : 'Mission complete!')
+                : (isPt ? 'Tempo esgotado' : 'Time up')}
+            </AppText>
+            <AppText style={{ fontSize: 13, color: C.navyMid, marginBottom: 20, textAlign: 'center' }}>
+              {allObjectivesDone
+                ? (isPt ? 'Você bateu todos os objetivos.' : 'You hit all objectives.')
+                : (isPt ? `Você bateu ${objectivesDone} de ${objectivesTotal}.` : `You hit ${objectivesDone} of ${objectivesTotal}.`)}
+            </AppText>
+
+            {/* Objectives breakdown */}
+            <View style={{ width: '100%', gap: 8, marginBottom: 20 }}>
+              {rp.objectives.map(obj => {
+                const met = objectivesMet.has(obj.id);
+                const label = isPt ? obj.label_pt : (obj.label_en || obj.label_pt);
+                return (
+                  <View key={obj.id} style={{ flexDirection: 'row', alignItems: 'center', gap: 10 }}>
+                    {met
+                      ? <CheckCircle size={18} color={C.greenDark} weight="fill" />
+                      : <View style={{ width: 16, height: 16, borderRadius: 8, borderWidth: 1.5, borderColor: C.navyLight, marginHorizontal: 1 }} />
+                    }
+                    <AppText style={{ flex: 1, fontSize: 13, color: met ? C.navyMid : C.navy }}>
+                      {label}
+                    </AppText>
+                  </View>
+                );
+              })}
+            </View>
+
+            {/* Stats line */}
+            <View style={{
+              flexDirection: 'row', justifyContent: 'space-around',
+              width: '100%', paddingVertical: 12,
+              borderTopWidth: 1, borderTopColor: C.border,
+              borderBottomWidth: 1, borderBottomColor: C.border,
+              marginBottom: 20,
+            }}>
+              <View style={{ alignItems: 'center' }}>
+                <AppText style={{ fontSize: 18, fontWeight: '800', color: C.navy }}>
+                  {Math.floor((rp.time_budget_sec - remainingSec) / 60)}:{((rp.time_budget_sec - remainingSec) % 60).toString().padStart(2, '0')}
+                </AppText>
+                <AppText style={{ fontSize: 10, fontWeight: '600', color: C.navyLight, textTransform: 'uppercase', letterSpacing: 0.6 }}>
+                  {isPt ? 'Tempo' : 'Time'}
+                </AppText>
+              </View>
+              <View style={{ alignItems: 'center' }}>
+                <AppText style={{ fontSize: 18, fontWeight: '800', color: C.navy }}>
+                  {hintsUsed}
+                </AppText>
+                <AppText style={{ fontSize: 10, fontWeight: '600', color: C.navyLight, textTransform: 'uppercase', letterSpacing: 0.6 }}>
+                  {isPt ? 'Dicas' : 'Hints'}
+                </AppText>
+              </View>
+              <View style={{ alignItems: 'center' }}>
+                <AppText style={{ fontSize: 18, fontWeight: '800', color: allObjectivesDone ? C.greenDark : '#B45309' }}>
+                  {Math.round((objectivesDone / objectivesTotal) * 100)}%
+                </AppText>
+                <AppText style={{ fontSize: 10, fontWeight: '600', color: C.navyLight, textTransform: 'uppercase', letterSpacing: 0.6 }}>
+                  {isPt ? 'Score' : 'Score'}
+                </AppText>
+              </View>
+            </View>
+
+            {/* Action buttons */}
+            <View style={{ flexDirection: 'row', gap: 10, width: '100%' }}>
+              <TouchableOpacity
+                onPress={restartSession}
+                style={{
+                  flex: 1, paddingVertical: 14, borderRadius: 14,
+                  backgroundColor: 'rgba(22,21,58,0.06)',
+                  alignItems: 'center', flexDirection: 'row', justifyContent: 'center', gap: 8,
+                }}
+              >
+                <ArrowsClockwise size={18} color={C.navy} weight="bold" />
+                <AppText style={{ fontSize: 14, fontWeight: '700', color: C.navy }}>
+                  {isPt ? 'Refazer' : 'Try again'}
+                </AppText>
+              </TouchableOpacity>
+              <TouchableOpacity
+                onPress={() => router.back()}
+                style={{
+                  flex: 1, paddingVertical: 14, borderRadius: 14,
+                  backgroundColor: C.green,
+                  alignItems: 'center',
+                }}
+              >
+                <AppText style={{ fontSize: 14, fontWeight: '700', color: '#FFF' }}>
+                  {isPt ? 'Voltar' : 'Back'}
+                </AppText>
+              </TouchableOpacity>
+            </View>
+          </View>
+        </View>
+      )}
     </SafeAreaView>
   );
 }
+
+const StyleSheetAbsoluteFill = {
+  position: 'absolute' as const,
+  top: 0, bottom: 0, left: 0, right: 0,
+};
