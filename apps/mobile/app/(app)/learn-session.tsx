@@ -697,7 +697,19 @@ export default function LearnSessionScreen() {
         const pct = transcript ? wordMatchPercent(transcript, currentStep.phrase.text ?? '') : 0;
 
         let feedback: NonNullable<PronFeedback>;
-        if (pct >= 85) {
+        // Novice: binário (acerto/erro). Inter/Advanced: 3 estados.
+        if (level === 'Novice') {
+          if (pct >= 70) {
+            feedback = { state: 'correct', xp: 15, message: isPortuguese ? 'Boa! Pronuncia ok.' : 'Nice! Pronunciation ok.' };
+            Haptics.notificationAsync(Haptics.NotificationFeedbackType.Success);
+            soundEngine.play('answer_correct').catch(() => {});
+          } else {
+            feedback = { state: 'error', xp: 2, message: isPortuguese ? `Tente de novo. Entendemos: "${transcript}".` : `Try again. We heard: "${transcript}".` };
+            Haptics.notificationAsync(Haptics.NotificationFeedbackType.Error);
+            soundEngine.play('answer_wrong').catch(() => {});
+            setSessionErrors(prev => prev + 1);
+          }
+        } else if (pct >= 85) {
           feedback = { state: 'correct', xp: 15, message: isPortuguese ? 'Perfeito! Otima pronuncia.' : 'Perfect! Great pronunciation.' };
           Haptics.notificationAsync(Haptics.NotificationFeedbackType.Success);
           soundEngine.play('answer_correct').catch(() => {});
@@ -710,7 +722,12 @@ export default function LearnSessionScreen() {
           soundEngine.play('answer_wrong').catch(() => {});
           setSessionErrors(prev => prev + 1);
         }
-        if (isV2) pronScoresRef.current.push(pct);
+        // v2: Novice empurra 100/0 (binário), outros níveis empurram score real
+        if (isV2) {
+          pronScoresRef.current.push(
+            level === 'Novice' ? (feedback.state === 'correct' ? 100 : 0) : pct
+          );
+        }
         saveExercise({ level, moduleIndex, topicIndex, exerciseType: 'repeat', isCorrect: feedback.state === 'correct', xpEarned: feedback.xp,
           exerciseData: { question: currentStep.phrase.text, score: pct, userAnswer: transcript } });
         showPronResult(feedback);
@@ -735,7 +752,19 @@ export default function LearnSessionScreen() {
         const pct = transcript ? wordMatchPercent(transcript, currentStep.phrase.text ?? '') : 0;
 
         let feedback: NonNullable<PronFeedback>;
-        if (pct >= 85) {
+        // Novice: binário (acerto/erro). Inter/Advanced: 3 estados.
+        if (level === 'Novice') {
+          if (pct >= 70) {
+            feedback = { state: 'correct', xp: 15, message: isPortuguese ? 'Boa! Pronuncia ok.' : 'Nice! Pronunciation ok.' };
+            Haptics.notificationAsync(Haptics.NotificationFeedbackType.Success);
+            soundEngine.play('answer_correct').catch(() => {});
+          } else {
+            feedback = { state: 'error', xp: 2, message: isPortuguese ? `Tente de novo. Entendemos: "${transcript}".` : `Try again. We heard: "${transcript}".` };
+            Haptics.notificationAsync(Haptics.NotificationFeedbackType.Error);
+            soundEngine.play('answer_wrong').catch(() => {});
+            setSessionErrors(prev => prev + 1);
+          }
+        } else if (pct >= 85) {
           feedback = { state: 'correct', xp: 15, message: isPortuguese ? 'Perfeito! Otima pronuncia.' : 'Perfect! Great pronunciation.' };
           Haptics.notificationAsync(Haptics.NotificationFeedbackType.Success);
           soundEngine.play('answer_correct').catch(() => {});
@@ -748,13 +777,17 @@ export default function LearnSessionScreen() {
           soundEngine.play('answer_wrong').catch(() => {});
           setSessionErrors(prev => prev + 1);
         }
-        if (isV2) pronScoresRef.current.push(pct);
+        if (isV2) {
+          pronScoresRef.current.push(
+            level === 'Novice' ? (feedback.state === 'correct' ? 100 : 0) : pct
+          );
+        }
         saveExercise({ level, moduleIndex, topicIndex, exerciseType: 'repeat', isCorrect: feedback.state === 'correct', xpEarned: feedback.xp,
           exerciseData: { question: currentStep.phrase.text, score: pct, userAnswer: transcript } });
         showPronResult(feedback);
 
       } else {
-        // ── SHADOWING: Azure, only pronunciationScore ─────────────
+        // ── SHADOWING: Azure (apenas v1 Practice — adapter v2 nunca emite 'shadowing') ─
         await recorder.stop();
         await setAudioModeAsync({ allowsRecording: false, playsInSilentMode: true, interruptionMode: 'doNotMix' });
         const audioUri = recorder.uri;
