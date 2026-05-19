@@ -508,7 +508,8 @@ export default function RolePlayExerciseScreen() {
         />
 
         {/* ── Floating Need a hand? — mesmo padrão do Free Chat (+, hist, ?) */}
-        {showHintBtn && !sessionComplete && !allObjectivesDone && (
+        {/* Escondido enquanto o popup da dica tá visível pra evitar sobreposição */}
+        {showHintBtn && !sessionComplete && !allObjectivesDone && !hintVisible && (
           <View style={{
             position: 'absolute',
             bottom: 10, right: 12,

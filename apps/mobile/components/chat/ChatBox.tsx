@@ -237,12 +237,12 @@ const MessageBubble: React.FC<{
             </AppText>
           )}
 
-          {/* Audio player — largura travada (não expande quando "Ver texto" abre) */}
+          {/* Audio player — largura travada compacta (mesmo formato com ou sem "Ver texto") */}
           {hasAudio && (
             <View
               style={{
                 flexDirection: 'row', alignItems: 'center', gap: 10,
-                width: 240,
+                width: 200,
                 ...(!isCharlotteAudio && !isDemonstration && message.content
                   ? { marginTop: 10, paddingTop: 10, borderTopWidth: 1, borderTopColor: 'rgba(22,21,58,0.08)' }
                   : {}),
