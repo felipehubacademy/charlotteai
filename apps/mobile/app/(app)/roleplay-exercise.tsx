@@ -95,11 +95,16 @@ export default function RolePlayExerciseScreen() {
   const historyRef = useRef<Array<{ role: 'user' | 'assistant'; content: string }>>([]);
 
   // ── Player ─────────────────────────────────────────────────────
+  // Mantemos UM player single-instance e UM listener didJustFinish.
+  // onPlayAudio toggla pause/play se a mesma msg, ou troca a fonte se outra.
   const playerRef = useRef<AudioPlayer | null>(null);
   useEffect(() => {
     const p = createAudioPlayer(null);
     playerRef.current = p;
-    return () => { try { p.pause(); p.remove(); } catch {} };
+    const sub = p.addListener('playbackStatusUpdate', s => {
+      if (s.didJustFinish) setPlayingMessageId(null);
+    });
+    return () => { try { sub.remove(); p.pause(); p.remove(); } catch {} };
   }, []);
 
   // ── Show opening line as the first assistant message ────────────
@@ -155,13 +160,10 @@ export default function RolePlayExerciseScreen() {
         timestamp: new Date(),
       }]);
       setIsProcessing(false);
-      setPlayingMessageId(msgId);
       const p = playerRef.current;
       if (p) {
         p.replace({ uri: localUri });
-        p.addListener('playbackStatusUpdate', s => {
-          if (s.didJustFinish) setPlayingMessageId(prev => prev === msgId ? null : prev);
-        });
+        setPlayingMessageId(msgId);
         try { p.play(); } catch {}
       }
     } catch (e) { console.warn('[roleplay] opener TTS failed', e); setIsProcessing(false); }
@@ -270,13 +272,10 @@ export default function RolePlayExerciseScreen() {
 
       // Autoplay assistant
       await setAudioModeAsync({ allowsRecording: false, playsInSilentMode: true }).catch(() => {});
-      setPlayingMessageId(aMsgId);
       const p = playerRef.current;
       if (p) {
         p.replace({ uri: localUri });
-        p.addListener('playbackStatusUpdate', s => {
-          if (s.didJustFinish) setPlayingMessageId(prev => prev === aMsgId ? null : prev);
-        });
+        setPlayingMessageId(aMsgId);
         try { p.play(); } catch {}
       }
 
@@ -321,16 +320,27 @@ export default function RolePlayExerciseScreen() {
     setTimeout(() => setHintVisible(null), 6000);
   }, [rp, level, sessionComplete, objectivesMet, isPt]);
 
-  // Play a specific message on tap (replay)
+  // Tap no bubble: toggla pause/play se for a mesma mensagem,
+  // ou troca a fonte e toca se for outra. Listener didJustFinish é
+  // anexado UMA vez no mount, então não acumula a cada chamada.
   const onPlayAudio = useCallback((messageId: string, uri: string) => {
     const p = playerRef.current; if (!p) return;
-    setPlayingMessageId(messageId);
+
+    if (playingMessageId === messageId) {
+      if (p.playing) {
+        try { p.pause(); } catch {}
+        setPlayingMessageId(null);
+      } else {
+        try { p.play(); } catch {}
+        setPlayingMessageId(messageId);
+      }
+      return;
+    }
+
     p.replace({ uri });
-    p.addListener('playbackStatusUpdate', s => {
-      if (s.didJustFinish) setPlayingMessageId(prev => prev === messageId ? null : prev);
-    });
+    setPlayingMessageId(messageId);
     try { p.play(); } catch {}
-  }, []);
+  }, [playingMessageId]);
 
   // ── Pulse animation pro mic enquanto grava ─────────────────────
   const micPulse = useRef(new Animated.Value(1)).current;
