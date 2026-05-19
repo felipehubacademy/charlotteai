@@ -242,7 +242,7 @@ const MessageBubble: React.FC<{
             <View
               style={{
                 flexDirection: 'row', alignItems: 'center', gap: 10,
-                width: 200,
+                width: 170,
                 ...(!isCharlotteAudio && !isDemonstration && message.content
                   ? { marginTop: 10, paddingTop: 10, borderTopWidth: 1, borderTopColor: 'rgba(22,21,58,0.08)' }
                   : {}),
