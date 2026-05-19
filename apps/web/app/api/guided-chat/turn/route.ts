@@ -1,0 +1,157 @@
+// app/api/guided-chat/turn/route.ts
+// Guided chat turn handler — stateless, text-only.
+//
+// Mobile sends: user_message (text) + guided_chat def + history.
+// We return: assistant reply (text) + objectives_met + session_complete.
+//
+// Differences from /api/roleplay/turn:
+//   - No Whisper STT (text input directly)
+//   - No TTS (no audio output)
+//   - Otherwise identical pipeline (structured JSON, hidden objectives,
+//     auto-nudge when stuck)
+
+import { NextRequest, NextResponse } from 'next/server';
+import OpenAI from 'openai';
+import { logOpenAIUsage } from '@/lib/openai-usage';
+
+export const dynamic = 'force-dynamic';
+export const maxDuration = 30;
+
+const openai = new OpenAI({ apiKey: process.env.OPENAI_API_KEY || 'placeholder' });
+
+interface Objective {
+  id:           number;
+  label_pt:     string;
+  label_en:     string;
+  hidden_prompt: string;
+  hint_pt?:     string;
+  hint_en?:     string;
+}
+
+interface GuidedChatDef {
+  scenario:        string;
+  voiced_by:       'charlotte' | 'charlie';
+  persona:         string;
+  opening_message: string;
+  objectives:      Objective[];
+  closing_cue:     string;
+}
+
+interface Payload {
+  history:           Array<{ role: 'user' | 'assistant'; content: string }>;
+  guided_chat:       GuidedChatDef;
+  level:             'Novice' | 'Inter' | 'Advanced';
+  user_message:      string;
+  unit_title?:       string;
+  stuck_turns?:      number;
+  next_objective_id?: number;
+}
+
+function buildSystemPrompt(
+  gc: GuidedChatDef, level: string, unitTitle?: string,
+  stuckTurns: number = 0, nextObjectiveId?: number,
+): string {
+  const objectivesBlock = gc.objectives.map(o =>
+    `  - Objective ${o.id}: ${o.hidden_prompt}`
+  ).join('\n');
+
+  const nudgeBlock = (stuckTurns >= 2 && nextObjectiveId !== undefined)
+    ? `\n\nSTUDENT IS STUCK ON OBJECTIVE ${nextObjectiveId} (${stuckTurns} turns).\nReformulate your last message to nudge them more directly toward this\nobjective. Make the question pointed and easier to answer. Stay in\ncharacter and do NOT reveal the objective list.`
+    : '';
+
+  return `You are playing ${gc.persona} in an English-learning guided text chat.
+
+SCENARIO: ${gc.scenario}
+UNIT: ${unitTitle ?? ''}
+STUDENT CEFR LEVEL: ${level}
+
+STAY IN CHARACTER as ${gc.persona}. This is a TEXT chat (like WhatsApp).
+Use natural conversational English. Keep messages SHORT (1–2 sentences,
+max ~30 words). Emojis sparingly OK for warmth.
+
+HIDDEN OBJECTIVES (NEVER reveal to the student):
+${objectivesBlock}
+
+You MUST reply as JSON with this exact shape:
+{
+  "reply": "<your in-character text reply>",
+  "objectives_met": [<ids of objectives the STUDENT's LAST message JUST satisfied>],
+  "session_complete": <true if you said the closing cue AND all objectives are met>
+}
+
+Rules:
+- "objectives_met" is ONLY for objectives the student satisfied in the LAST
+  user turn. Be lenient: any reasonable English attempt counts as met.
+- An objective already met in a PRIOR turn must NOT appear again.
+- When ALL objectives are met, close naturally using the closing cue
+  ("${gc.closing_cue}"), set session_complete=true.
+- If the student goes off-topic, gently steer them back; do NOT mark
+  objectives as met.
+- Do NOT correct grammar mid-conversation. Corrections happen post-game.
+- American English by default. Calorosa, encorajadora, paciente.${nudgeBlock}`;
+}
+
+export async function POST(request: NextRequest) {
+  try {
+    const body = (await request.json()) as Payload & { user_id?: string };
+    const {
+      history, guided_chat: gc, level, user_message, unit_title,
+      stuck_turns, next_objective_id, user_id: userId,
+    } = body;
+
+    if (!user_message || typeof user_message !== 'string') {
+      return NextResponse.json({ error: 'Missing user_message' }, { status: 400 });
+    }
+
+    const messages: OpenAI.Chat.ChatCompletionMessageParam[] = [
+      { role: 'system', content: buildSystemPrompt(gc, level, unit_title, stuck_turns, next_objective_id) },
+      ...history.map(h => ({ role: h.role, content: h.content })),
+      { role: 'user', content: user_message },
+    ];
+
+    const completion = await openai.chat.completions.create({
+      model:           'gpt-4o-mini',
+      messages,
+      temperature:     0.7,
+      max_tokens:      250,
+      response_format: { type: 'json_object' },
+    });
+    const rawText = completion.choices[0]?.message?.content ?? '{}';
+    logOpenAIUsage({
+      endpoint:         '/api/guided-chat/turn',
+      model:            'gpt-4o-mini',
+      promptTokens:     completion.usage?.prompt_tokens,
+      completionTokens: completion.usage?.completion_tokens,
+      userId,
+    });
+
+    let reply = '';
+    let objectivesMet: number[] = [];
+    let complete = false;
+    try {
+      const parsed = JSON.parse(rawText) as {
+        reply?:            string;
+        objectives_met?:   number[];
+        session_complete?: boolean;
+      };
+      reply = (parsed.reply ?? '').trim();
+      objectivesMet = Array.isArray(parsed.objectives_met)
+        ? parsed.objectives_met.filter(n => typeof n === 'number')
+        : [];
+      complete = parsed.session_complete === true;
+    } catch (e) {
+      console.warn('[guided-chat/turn] JSON parse failed', e);
+      reply = rawText;
+    }
+
+    return NextResponse.json({
+      reply,
+      objectives_met: objectivesMet,
+      status:         complete ? 'complete' : 'continue',
+      persona:        gc.persona,
+    });
+  } catch (e: any) {
+    console.error('[guided-chat/turn] error', e);
+    return NextResponse.json({ error: e?.message ?? 'Internal error' }, { status: 500 });
+  }
+}
