@@ -58,40 +58,28 @@ STUDENT CEFR LEVEL: ${level}
 STAY IN CHARACTER as ${rp.persona}. Speak natural conversational English. Keep
 replies SHORT (1–2 sentences, max ~30 words) — this is a spoken role-play.
 
-HIDDEN TASK (do NOT reveal to the student):
+HIDDEN OBJECTIVES (NEVER reveal to the student):
 ${objectivesBlock}
 
-When the student's LAST message clearly satisfies an objective, append the
-literal token [OBJECTIVE_MET:n] to the END of your reply (n = objective id).
-You can emit multiple tokens if more than one was satisfied in one turn.
-Never emit a token that was already emitted in a previous turn (check history).
-
-When ALL objectives have been met, close the scene naturally using the closing
-cue: "${rp.closing_cue}". After your closing line, append [SESSION_COMPLETE].
-
-If the student goes off-topic, gently steer them back in character.
-Do NOT correct grammar mid-conversation — corrections happen post-game.
-
-You are American English by default. Calorosa, encorajadora, paciente.`;
+You MUST reply as JSON with this exact shape:
+{
+  "reply": "<your in-character reply, plain text>",
+  "objectives_met": [<ids of objectives the STUDENT's LAST message JUST satisfied>],
+  "session_complete": <true if you said the closing cue AND all objectives are met>
 }
 
-// ── Strip markers from text before TTS ─────────────────────────────
-function stripMarkers(text: string): { clean: string; objectivesMet: number[]; complete: boolean } {
-  const objectivesMet: number[] = [];
-  let complete = false;
-
-  const cleaned = text
-    .replace(/\[OBJECTIVE_MET:(\d+)\]/g, (_, n) => {
-      objectivesMet.push(parseInt(n, 10));
-      return '';
-    })
-    .replace(/\[SESSION_COMPLETE\]/g, () => {
-      complete = true;
-      return '';
-    })
-    .trim();
-
-  return { clean: cleaned, objectivesMet, complete };
+Rules:
+- "objectives_met" is ONLY for objectives the student satisfied in the LAST user
+  turn. Be lenient: if the student attempted the objective with any reasonable
+  English, count it as met.
+- An objective that was already met in a PRIOR turn must NOT appear again
+  (the system tracks this — repeating it is OK but unnecessary).
+- When ALL objectives are met, close naturally using the closing cue
+  ("${rp.closing_cue}"), set session_complete=true.
+- If the student goes off-topic, gently steer them back; do NOT mark
+  objectives as met.
+- Do NOT correct grammar mid-conversation. Corrections happen post-game.
+- American English by default. Calorosa, encorajadora, paciente.`;
 }
 
 // ── OpenAI TTS ──────────────────────────────────────────────────────
@@ -151,12 +139,13 @@ export async function POST(request: NextRequest) {
       { role: 'user', content: userTranscript },
     ];
     const completion = await openai.chat.completions.create({
-      model:       'gpt-4o-mini',
+      model:           'gpt-4o-mini',
       messages,
-      temperature: 0.7,
-      max_tokens:  150,
+      temperature:     0.7,
+      max_tokens:      250,
+      response_format: { type: 'json_object' },
     });
-    const rawText = completion.choices[0]?.message?.content ?? '';
+    const rawText = completion.choices[0]?.message?.content ?? '{}';
     logOpenAIUsage({
       endpoint:         '/api/roleplay/turn:chat',
       model:            'gpt-4o-mini',
@@ -165,8 +154,25 @@ export async function POST(request: NextRequest) {
       userId,
     });
 
-    // 3) Parse markers
-    const { clean, objectivesMet, complete } = stripMarkers(rawText);
+    // 3) Parse structured JSON response
+    let clean = '';
+    let objectivesMet: number[] = [];
+    let complete = false;
+    try {
+      const parsed = JSON.parse(rawText) as {
+        reply?:            string;
+        objectives_met?:   number[];
+        session_complete?: boolean;
+      };
+      clean = (parsed.reply ?? '').trim();
+      objectivesMet = Array.isArray(parsed.objectives_met)
+        ? parsed.objectives_met.filter(n => typeof n === 'number')
+        : [];
+      complete = parsed.session_complete === true;
+    } catch (e) {
+      console.warn('[roleplay/turn] JSON parse failed, using raw text', e);
+      clean = rawText;
+    }
 
     // 4) TTS
     const audioBuf = await tts(clean || '...', rp.voiced_by);
