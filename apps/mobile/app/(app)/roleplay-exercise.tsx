@@ -486,24 +486,53 @@ export default function RolePlayExerciseScreen() {
           playingMessageId={playingMessageId}
           topBanner={
             <View style={{
-              marginBottom: 12, padding: 14, borderRadius: 14,
-              backgroundColor: 'rgba(22,21,58,0.04)',
-              borderWidth: 1, borderColor: C.border,
+              alignSelf: 'center',
+              maxWidth: '82%',
+              marginBottom: 12, padding: 12, borderRadius: 14,
+              backgroundColor: 'rgba(217,119,6,0.10)',
+              borderWidth: 1, borderColor: 'rgba(217,119,6,0.30)',
             }}>
               <AppText style={{
-                fontSize: 10, fontWeight: '700', color: C.navyLight,
+                fontSize: 10, fontWeight: '700', color: '#B45309',
                 letterSpacing: 1.2, textTransform: 'uppercase', marginBottom: 6,
               }}>
                 {isPt ? 'Cenário' : 'Scenario'}
               </AppText>
               <AppText style={{
-                fontSize: 13, color: C.navyMid, lineHeight: 18,
+                fontSize: 13, color: '#92400E', lineHeight: 18,
               }}>
                 {rp.scenario}
               </AppText>
             </View>
           }
         />
+
+        {/* ── Floating Need a hand? — mesmo padrão do Free Chat (+, hist, ?) */}
+        {showHintBtn && !sessionComplete && !allObjectivesDone && (
+          <View style={{
+            position: 'absolute',
+            bottom: 10, right: 12,
+            zIndex: 5,
+          }}>
+            <TouchableOpacity
+              onPress={showHint}
+              disabled={isProcessing}
+              style={{
+                width: 34, height: 34, borderRadius: 17,
+                backgroundColor: 'rgba(217,119,6,0.12)',
+                borderWidth: 1, borderColor: 'rgba(217,119,6,0.30)',
+                alignItems: 'center', justifyContent: 'center',
+                shadowColor: 'rgba(22,21,58,0.12)',
+                shadowOpacity: 1, shadowRadius: 6, shadowOffset: { width: 0, height: 2 },
+                elevation: 3,
+              }}
+              hitSlop={{ top: 8, bottom: 8, left: 8, right: 8 }}
+              accessibilityLabel={isPt ? 'Dica' : 'Hint'}
+            >
+              <Lightbulb size={17} color="#B45309" weight="fill" />
+            </TouchableOpacity>
+          </View>
+        )}
       </View>
 
       {/* ── Hint popup (acima do input) ──────────────────────────── */}
@@ -532,21 +561,6 @@ export default function RolePlayExerciseScreen() {
           backgroundColor: C.card, borderTopWidth: 1, borderTopColor: C.border,
           flexDirection: 'row', alignItems: 'center', gap: 10,
         }}>
-          {showHintBtn && !sessionComplete && !allObjectivesDone && (
-            <TouchableOpacity
-              onPress={showHint}
-              disabled={isProcessing}
-              style={{
-                width: 44, height: 44, borderRadius: 22,
-                backgroundColor: 'rgba(217,119,6,0.12)',
-                borderWidth: 1, borderColor: 'rgba(217,119,6,0.30)',
-                alignItems: 'center', justifyContent: 'center',
-              }}
-              accessibilityLabel={isPt ? 'Dica' : 'Hint'}
-            >
-              <Lightbulb size={20} color="#B45309" weight="fill" />
-            </TouchableOpacity>
-          )}
           <View style={{ flex: 1 }}>
             <AppText style={{ fontSize: 13, color: C.navyMid, textAlign: 'center' }}>
               {sessionComplete
