@@ -317,10 +317,7 @@ function ModuleCard({
             }}>
               {isLocked
                 ? (isPt ? `${data.totalCount} topicos · bloqueado` : `${data.totalCount} topics · locked`)
-                : `${data.completedCount} ${isPt ? 'de' : 'of'} ${data.totalCount} ${isPt ? 'concluidos' : 'completed'}`
-                  + (data.avgScore !== null
-                      ? `  ·  ${Math.round(data.avgScore)}% ${isPt ? 'acuracia' : 'accuracy'}`
-                      : '')}
+                : `${data.completedCount} ${isPt ? 'de' : 'of'} ${data.totalCount} ${isPt ? 'concluidos' : 'completed'}`}
             </AppText>
             <AppText
               numberOfLines={2}

@@ -710,6 +710,7 @@ export default function LearnSessionScreen() {
           soundEngine.play('answer_wrong').catch(() => {});
           setSessionErrors(prev => prev + 1);
         }
+        if (isV2) pronScoresRef.current.push(pct);
         saveExercise({ level, moduleIndex, topicIndex, exerciseType: 'repeat', isCorrect: feedback.state === 'correct', xpEarned: feedback.xp,
           exerciseData: { question: currentStep.phrase.text, score: pct, userAnswer: transcript } });
         showPronResult(feedback);
@@ -747,6 +748,7 @@ export default function LearnSessionScreen() {
           soundEngine.play('answer_wrong').catch(() => {});
           setSessionErrors(prev => prev + 1);
         }
+        if (isV2) pronScoresRef.current.push(pct);
         saveExercise({ level, moduleIndex, topicIndex, exerciseType: 'repeat', isCorrect: feedback.state === 'correct', xpEarned: feedback.xp,
           exerciseData: { question: currentStep.phrase.text, score: pct, userAnswer: transcript } });
         showPronResult(feedback);
@@ -790,6 +792,7 @@ export default function LearnSessionScreen() {
             soundEngine.play('answer_wrong').catch(() => {});
             setSessionErrors(prev => prev + 1);
           }
+          if (isV2) pronScoresRef.current.push(score);
           saveExercise({ level, moduleIndex, topicIndex, exerciseType: 'shadowing', isCorrect: feedback.state === 'correct', xpEarned: feedback.xp,
             exerciseData: { question: currentStep.phrase.text, score, userAnswer: 'audio' } });
           showPronResult(feedback);
@@ -840,7 +843,17 @@ export default function LearnSessionScreen() {
       if (isV2 && params.moduleId && params.unitId && totalSteps > 0) {
         const activityType: 'grammar' | 'speaking' =
           params.activity === 'ls' ? 'speaking' : 'grammar';
-        const rawScore = Math.round(((totalSteps - sessionErrors) / totalSteps) * 100);
+        // Speaking: média dos scores reais do Azure/Whisper por frase (0-100).
+        // Grammar: 100 − % de erros entre as tentativas. Igual antes.
+        let rawScore: number;
+        if (activityType === 'speaking') {
+          const arr = pronScoresRef.current;
+          rawScore = arr.length > 0
+            ? Math.round(arr.reduce((s, x) => s + x, 0) / arr.length)
+            : 0;
+        } else {
+          rawScore = Math.round(((totalSteps - sessionErrors) / totalSteps) * 100);
+        }
         const finalScore = Math.max(0, Math.min(100, rawScore));
         try {
           await v2Progress.saveAttempt(

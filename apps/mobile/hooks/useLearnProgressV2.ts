@@ -105,9 +105,12 @@ export function useLearnProgressV2(userId: string | undefined, level: V2Level) {
   ): Promise<V2Row | null> => {
     if (!userId) return null;
 
-    const existing = get(moduleId, unitId, activity);
-    const newCompleted = (existing?.completed ?? false) || meetsThreshold(activity, score);
-    const newAttempts  = (existing?.attempts ?? 0) + 1;
+    const existing      = get(moduleId, unitId, activity);
+    const previousScore = existing?.score ?? 0;
+    // Sempre guardar a MAIOR nota. Retry com score menor não sobrescreve.
+    const bestScore     = Math.max(previousScore, score);
+    const newCompleted  = (existing?.completed ?? false) || meetsThreshold(activity, bestScore);
+    const newAttempts   = (existing?.attempts ?? 0) + 1;
 
     const payload = {
       user_id:       userId,
@@ -115,7 +118,7 @@ export function useLearnProgressV2(userId: string | undefined, level: V2Level) {
       module_id:     moduleId,
       unit_id:       unitId,
       activity_type: activity,
-      score,
+      score:         bestScore,
       completed:     newCompleted,
       attempts:      newAttempts,
       updated_at:    new Date().toISOString(),
