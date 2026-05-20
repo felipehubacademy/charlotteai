@@ -100,17 +100,54 @@ You MUST reply as JSON with this exact shape:
 }
 
 Rules:
-- "objectives_met" is ONLY for objectives the student satisfied in the LAST user
-  turn. Be lenient: if the student attempted the objective with any reasonable
-  English, count it as met.
-- An objective that was already met in a PRIOR turn must NOT appear again
+- "objectives_met" is ONLY for objectives the student CLEARLY AND SPECIFICALLY
+  satisfied in the LAST user turn. Match the hidden_prompt STRICTLY.
+  Out-of-context replies, vague utterances, or unrelated answers must NOT
+  mark any objective. Broken English with the right INTENT counts; a fluent
+  but unrelated sentence does NOT.
+- If the student's message is empty, gibberish, a single random word, or
+  appears to be a transcription artifact (e.g. "Thanks for watching",
+  "Subscribe", "Thank you for watching this video", "I'll see you in the
+  next one", "Bye", silence, foreign-language noise) → reply gently asking
+  them to repeat ("Sorry, I didn't catch that — can you say it again?") and
+  set objectives_met=[].
+- An objective already met in a PRIOR turn must NOT appear again
   (the system tracks this — repeating it is OK but unnecessary).
+- Multiple objectives can be marked in the SAME turn only if the student's
+  message clearly satisfies each one.
 - When ALL objectives are met, close naturally using the closing cue
   ("${rp.closing_cue}"), set session_complete=true.
 - If the student goes off-topic, gently steer them back; do NOT mark
   objectives as met.
 - Do NOT correct grammar mid-conversation. Corrections happen post-game.
 - American English by default. Calorosa, encorajadora, paciente.${nudgeBlock}`;
+}
+
+// ── Whisper hallucination filter ───────────────────────────────────
+// Whisper costuma alucinar essas frases quando recebe audio silencioso
+// ou muito curto (artefatos de treino com vídeos do YouTube).
+const HALLUCINATIONS = [
+  'thanks for watching',
+  'thank you for watching',
+  'thanks for watching!',
+  'subscribe',
+  'subscribe to my channel',
+  'like and subscribe',
+  "i'll see you in the next one",
+  'see you in the next video',
+  'see you next time',
+  'this video',
+  '. .',
+  '...',
+];
+function isHallucinationOrEmpty(text: string | undefined): boolean {
+  if (!text) return true;
+  const t = text.trim().toLowerCase();
+  if (t.length < 2) return true;
+  if (HALLUCINATIONS.some(h => t === h || t.includes(h))) return true;
+  // Pontuação/espaço só
+  if (!/[a-z]/i.test(t)) return true;
+  return false;
 }
 
 // ── OpenAI TTS ──────────────────────────────────────────────────────
@@ -156,6 +193,25 @@ export async function POST(request: NextRequest) {
       language: 'en',
     });
     const userTranscript = transcription.text;
+
+    // Whisper hallucinations comuns em audio silencioso/curto. Se cair em
+    // uma dessas, devolve direto pedindo pra repetir (não desperdiça LLM/TTS).
+    if (isHallucinationOrEmpty(userTranscript)) {
+      const askAgain = level === 'Novice'
+        ? "Sorry, I didn't hear you. Can you say it again?"
+        : "Sorry, I didn't catch that — can you say it again?";
+      const audioBuf = await tts(askAgain, rp.voiced_by);
+      return NextResponse.json({
+        user_transcript:     userTranscript || '',
+        assistant_text:      askAgain,
+        assistant_audio_b64: audioBuf.toString('base64'),
+        audio_mime:          'audio/flac',
+        objectives_met:      [],
+        status:              'continue',
+        persona:             rp.persona,
+      });
+    }
+
     logOpenAIUsage({
       endpoint: '/api/roleplay/turn:whisper',
       model:    'whisper-1',
