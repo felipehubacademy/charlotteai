@@ -210,7 +210,9 @@ export default function LearnSessionScreen() {
   const v2Progress        = useLearnProgressV2(userId, level as V2Level);
 
   // v2 score trackers — populated during the session, persisted on completion
-  const pronScoresRef    = useRef<number[]>([]);
+  // Score POR STEP — a retry no mesmo step OVERWRITE. No fim, médio do
+  // valor final de cada step (não acumula tentativas falhas).
+  const pronScoresRef    = useRef<Map<number, number>>(new Map());
   const grammarTotalRef  = useRef(0);
   const grammarCorrectRef = useRef(0);
   const { pauseNotifications } = useAchievementsContext();
@@ -722,9 +724,10 @@ export default function LearnSessionScreen() {
           soundEngine.play('answer_wrong').catch(() => {});
           setSessionErrors(prev => prev + 1);
         }
-        // v2: Novice empurra 100/0 (binário), outros níveis empurram score real
+        // v2: Novice binário (100/0), outros níveis score real. Map por stepIdx
+        // garante que retry sobrescreve a tentativa anterior do mesmo step.
         if (isV2) {
-          pronScoresRef.current.push(
+          pronScoresRef.current.set(stepIdx,
             level === 'Novice' ? (feedback.state === 'correct' ? 100 : 0) : pct
           );
         }
@@ -778,7 +781,7 @@ export default function LearnSessionScreen() {
           setSessionErrors(prev => prev + 1);
         }
         if (isV2) {
-          pronScoresRef.current.push(
+          pronScoresRef.current.set(stepIdx,
             level === 'Novice' ? (feedback.state === 'correct' ? 100 : 0) : pct
           );
         }
@@ -825,7 +828,7 @@ export default function LearnSessionScreen() {
             soundEngine.play('answer_wrong').catch(() => {});
             setSessionErrors(prev => prev + 1);
           }
-          if (isV2) pronScoresRef.current.push(score);
+          if (isV2) pronScoresRef.current.set(stepIdx, score);
           saveExercise({ level, moduleIndex, topicIndex, exerciseType: 'shadowing', isCorrect: feedback.state === 'correct', xpEarned: feedback.xp,
             exerciseData: { question: currentStep.phrase.text, score, userAnswer: 'audio' } });
           showPronResult(feedback);
@@ -876,13 +879,14 @@ export default function LearnSessionScreen() {
       if (isV2 && params.moduleId && params.unitId && totalSteps > 0) {
         const activityType: 'grammar' | 'speaking' =
           params.activity === 'ls' ? 'speaking' : 'grammar';
-        // Speaking: média dos scores reais do Azure/Whisper por frase (0-100).
+        // Speaking: média do ÚLTIMO score de cada step (retry sobrescreve).
         // Grammar: 100 − % de erros entre as tentativas. Igual antes.
         let rawScore: number;
         if (activityType === 'speaking') {
-          const arr = pronScoresRef.current;
-          rawScore = arr.length > 0
-            ? Math.round(arr.reduce((s, x) => s + x, 0) / arr.length)
+          const map = pronScoresRef.current;
+          const values = Array.from(map.values());
+          rawScore = values.length > 0
+            ? Math.round(values.reduce((s, x) => s + x, 0) / values.length)
             : 0;
         } else {
           rawScore = Math.round(((totalSteps - sessionErrors) / totalSteps) * 100);
