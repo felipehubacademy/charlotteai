@@ -12,7 +12,7 @@
 import React, { useState, useEffect, useRef, useCallback } from 'react';
 import {
   View, TouchableOpacity, StatusBar, ActivityIndicator,
-  KeyboardAvoidingView, Platform, ScrollView, Animated,
+  KeyboardAvoidingView, Platform, ScrollView, Animated, PanResponder,
 } from 'react-native';
 import { SafeAreaView, useSafeAreaInsets } from 'react-native-safe-area-context';
 import { router, useLocalSearchParams, useFocusEffect } from 'expo-router';
@@ -209,14 +209,27 @@ export default function RolePlayExerciseScreen() {
     };
   }, []));
 
+  // Pre-warm audio mode na entrada da tela — startRecording fica MUITO
+  // mais rápido depois (não precisa reconfigurar a session a cada toque).
+  useEffect(() => {
+    setAudioModeAsync({ allowsRecording: true, playsInSilentMode: true })
+      .catch(() => {});
+  }, []);
+
   const startRec = useCallback(async () => {
-    if (isProcessing || isRecording) return;
+    if (isProcessing || isRecording || sessionComplete) return;
     try {
-      await recorder.startRecording();
-      setIsRecording(true);
+      // Set state e haptic ANTES de awaitar startRecording. UX percebida:
+      // tap → feedback imediato; o pequeno delay do startRecording (~100ms)
+      // não corta a fala porque o usuario só começa a falar após o haptic.
       Haptics.impactAsync(Haptics.ImpactFeedbackStyle.Medium);
-    } catch (e) { console.warn('[roleplay] start record failed', e); }
-  }, [isProcessing, isRecording, recorder]);
+      setIsRecording(true);
+      await recorder.startRecording();
+    } catch (e) {
+      console.warn('[roleplay] start record failed', e);
+      setIsRecording(false);
+    }
+  }, [isProcessing, isRecording, sessionComplete, recorder]);
 
   const stopRecAndSend = useCallback(async () => {
     if (!isRecording) return;
@@ -388,6 +401,32 @@ export default function RolePlayExerciseScreen() {
     setPlayingMessageId(messageId);
     try { p.play(); } catch {}
   }, [playingMessageId]);
+
+  // ── PanResponder pro mic (hold-to-record) ───────────────────────
+  // TouchableOpacity com onPressIn/onPressOut pode perder o release
+  // quando o press é muito longo ou se move. PanResponder é o padrão
+  // confiável (mesmo usado no ChatInputBar do Free Chat).
+  const micHandlersRef = useRef({ startRec, stopRecAndSend, isProcessing, sessionComplete });
+  useEffect(() => {
+    micHandlersRef.current = { startRec, stopRecAndSend, isProcessing, sessionComplete };
+  });
+  const micPanResponder = useRef(
+    PanResponder.create({
+      onStartShouldSetPanResponder: () => true,
+      onMoveShouldSetPanResponder:  () => false,
+      onPanResponderGrant: () => {
+        const h = micHandlersRef.current;
+        if (h.isProcessing || h.sessionComplete) return;
+        h.startRec();
+      },
+      onPanResponderRelease: () => {
+        micHandlersRef.current.stopRecAndSend();
+      },
+      onPanResponderTerminate: () => {
+        micHandlersRef.current.stopRecAndSend();
+      },
+    })
+  ).current;
 
   // ── Pulse animation pro mic enquanto grava ─────────────────────
   const micPulse = useRef(new Animated.Value(1)).current;
@@ -605,25 +644,24 @@ export default function RolePlayExerciseScreen() {
                   : (isPt ? 'Segure o microfone pra falar' : 'Hold the mic to speak')}
             </AppText>
           </View>
-          <Animated.View style={{ transform: [{ scale: micPulse }] }}>
-            <TouchableOpacity
-              onPressIn={startRec}
-              onPressOut={stopRecAndSend}
-              disabled={isProcessing || sessionComplete}
-              style={{
-                width: 64, height: 64, borderRadius: 32,
-                backgroundColor: (sessionComplete || isProcessing)
-                  ? 'rgba(22,21,58,0.15)'
-                  : (isRecording ? C.red : C.green),
-                alignItems: 'center', justifyContent: 'center',
-                opacity: isProcessing ? 0.5 : 1,
-              }}
-            >
-              {isRecording
-                ? <XIcon size={28} color="#FFF" weight="bold" />
-                : <Microphone size={28} color={(sessionComplete || isProcessing) ? C.navyLight : '#FFF'} weight="fill" />
-              }
-            </TouchableOpacity>
+          <Animated.View
+            {...micPanResponder.panHandlers}
+            style={{
+              transform: [{ scale: micPulse }],
+              width: 64, height: 64, borderRadius: 32,
+              backgroundColor: (sessionComplete || isProcessing)
+                ? 'rgba(22,21,58,0.15)'
+                : (isRecording ? C.red : C.green),
+              alignItems: 'center', justifyContent: 'center',
+              opacity: isProcessing ? 0.5 : 1,
+            }}
+            accessibilityRole="button"
+            accessibilityLabel={isPt ? 'Segure pra gravar' : 'Hold to record'}
+          >
+            {isRecording
+              ? <XIcon size={28} color="#FFF" weight="bold" />
+              : <Microphone size={28} color={(sessionComplete || isProcessing) ? C.navyLight : '#FFF'} weight="fill" />
+            }
           </Animated.View>
         </View>
       </KeyboardAvoidingView>

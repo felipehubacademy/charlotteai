@@ -524,7 +524,10 @@ export default function LearnSessionScreen() {
           }
         }
       }
-      await setAudioModeAsync({ allowsRecording: false, playsInSilentMode: true, interruptionMode: 'doNotMix' }).catch(() => {});
+      // Pre-warm: já configura a session em modo de gravação ANTES do
+      // user tocar no mic. Sem isso, o startRecording precisa fazer o
+      // setAudioModeAsync (100-300ms) e o início da fala fica cortado.
+      await setAudioModeAsync({ allowsRecording: true, playsInSilentMode: true, interruptionMode: 'doNotMix' }).catch(() => {});
     } catch {}
 
     // Always transition to listening — record button must always appear
