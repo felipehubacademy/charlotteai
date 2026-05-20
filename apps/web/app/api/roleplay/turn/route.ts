@@ -63,6 +63,23 @@ function buildSystemPrompt(
     ? `\n\nSTUDENT IS STUCK ON OBJECTIVE ${nextObjectiveId} (${stuckTurns} turns).\nReformulate your last question to nudge them more directly toward this\nobjective. Make the question pointed and easier to answer. Stay in\ncharacter and do NOT reveal the objective list.`
     : '';
 
+  // Novice = absolute/early beginner. Restrict to the simplest English
+  // possible. M01 students may have zero English, so every word counts.
+  const simplicityBlock = level === 'Novice'
+    ? `\n\nLANGUAGE LEVEL — ABSOLUTE BEGINNER:
+- Use VERY simple English. Max 8 words per sentence. Prefer 4–6.
+- Present simple tense only. No past, no perfect, no conditional.
+- No idioms ("hear you", "long Monday", "catch you later", etc).
+- No phrasal verbs ("doing well", "go around", "show up").
+- No contractions other than: I'm, you're, it's, don't, can't.
+- Use the chunks from the unit: "Hi", "Hello", "How are you?", "I'm
+  fine, thanks", "And you?", "Good morning", "Yes please", "No thanks",
+  "See you", "Bye".
+- One simple question at a time. Wait for the student to answer.
+- If the student writes Portuguese, gently answer in simple English
+  and ask the same thing again in English.`
+    : '';
+
   return `You are playing ${rp.persona} in an English-learning role-play.
 
 SCENARIO: ${rp.scenario}
@@ -70,7 +87,7 @@ UNIT: ${unitTitle ?? ''}
 STUDENT CEFR LEVEL: ${level}
 
 STAY IN CHARACTER as ${rp.persona}. Speak natural conversational English. Keep
-replies SHORT (1–2 sentences, max ~30 words) — this is a spoken role-play.
+replies SHORT (1–2 sentences, max ~30 words) — this is a spoken role-play.${simplicityBlock}
 
 HIDDEN OBJECTIVES (NEVER reveal to the student):
 ${objectivesBlock}
