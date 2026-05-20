@@ -224,6 +224,13 @@ export default function RolePlayExerciseScreen() {
     const result = await recorder.stopRecording();
     if (!result?.uri || !rp) return;
 
+    // Audio muito curto = clique acidental / mic não captou. Whisper costuma
+    // alucinar "Thanks for watching" etc nesses casos — descarta no client.
+    if (typeof result.duration === 'number' && result.duration < 0.8) {
+      Haptics.notificationAsync(Haptics.NotificationFeedbackType.Warning);
+      return;
+    }
+
     // Push user bubble with audioUri (the local recording)
     const userMsgId = `user_${Date.now()}`;
     setMessages(prev => [...prev, {

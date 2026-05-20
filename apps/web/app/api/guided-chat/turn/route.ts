@@ -97,9 +97,16 @@ You MUST reply as JSON with this exact shape:
 }
 
 Rules:
-- "objectives_met" is ONLY for objectives the student satisfied in the LAST
-  user turn. Be lenient: any reasonable English attempt counts as met.
+- "objectives_met" is ONLY for objectives the student CLEARLY AND SPECIFICALLY
+  satisfied in the LAST user turn. Match the hidden_prompt STRICTLY.
+  Out-of-context replies, vague utterances, or unrelated answers must NOT
+  mark any objective. Broken English with the right INTENT counts; a fluent
+  but unrelated sentence does NOT.
+- If the student's message is empty, gibberish, or a single random word →
+  reply gently asking them to elaborate and set objectives_met=[].
 - An objective already met in a PRIOR turn must NOT appear again.
+- Multiple objectives can be marked in the SAME turn only if the student's
+  message clearly satisfies each one.
 - When ALL objectives are met, close naturally using the closing cue
   ("${gc.closing_cue}"), set session_complete=true.
 - If the student goes off-topic, gently steer them back; do NOT mark
