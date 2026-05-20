@@ -233,7 +233,12 @@ export default function GuidedChatExerciseScreen() {
         stuckTurnsRef.current += 1;
       }
 
-      if (data.status === 'complete') {
+      // Encerra se backend marcou OU se já bateu todas as objectives.
+      // Não dependemos só do backend — o modelo às vezes esquece de emitir
+      // session_complete mesmo com todos os objetivos batidos.
+      const totalObj  = gc.objectives.length;
+      const willBeMet = objectivesMet.size + newOnes.length;
+      if (data.status === 'complete' || willBeMet >= totalObj) {
         Haptics.notificationAsync(Haptics.NotificationFeedbackType.Success);
         setSessionComplete(true);
       }

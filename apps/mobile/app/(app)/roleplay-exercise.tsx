@@ -313,7 +313,12 @@ export default function RolePlayExerciseScreen() {
         try { p.play(); } catch {}
       }
 
-      if (data.status === 'complete') {
+      // Encerra se backend marcou OU se já bateu todas as objectives.
+      // Não dependemos só do backend porque o modelo às vezes esquece
+      // de emitir session_complete mesmo quando todos os objetivos batem.
+      const totalObj  = rp.objectives.length;
+      const willBeMet = objectivesMet.size + newOnes.length;
+      if (data.status === 'complete' || willBeMet >= totalObj) {
         Haptics.notificationAsync(Haptics.NotificationFeedbackType.Success);
         setSessionComplete(true);
       }
