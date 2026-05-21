@@ -1184,10 +1184,10 @@ export default function LearnSessionScreen() {
         </TouchableOpacity>
       </View>
 
-      <KeyboardAvoidingView style={{ flex: 1 }} behavior={Platform.OS === 'ios' ? 'padding' : 'height'}>
+      <KeyboardAvoidingView style={{ flex: 1, backgroundColor: '#FAF9FF' }} behavior={Platform.OS === 'ios' ? 'padding' : 'height'}>
         <ScrollView
           ref={scrollRef}
-          style={{ flex: 1, backgroundColor: C.bg }}
+          style={{ flex: 1, backgroundColor: '#FAF9FF' }}
           contentContainerStyle={{ padding: 20, paddingBottom: currentStep.kind === 'pronunciation' && pronStatus === 'result' ? 300 : 24, flexGrow: 1 }}
           keyboardShouldPersistTaps="handled"
           showsVerticalScrollIndicator={false}
@@ -1235,24 +1235,44 @@ export default function LearnSessionScreen() {
                   :                                                   (isPortuguese ? 'Leia o texto e responda à pergunta.'                : 'Read the text and answer the question.')}
               </AppText>
 
-              {/* Charlotte corpo todo (Duo style) — sombra elíptica abaixo. */}
-              <View style={{ alignItems: 'center', marginBottom: 14 }}>
-                <VideoView
-                  player={showCheering ? cheerPlayer : idlePlayer}
-                  style={{ width: 140, height: 200, backgroundColor: 'transparent' }}
-                  contentFit="contain"
-                  nativeControls={false}
-                  allowsFullscreen={false}
-                  allowsPictureInPicture={false}
-                />
-                {/* Sombra elíptica abaixo */}
-                <View style={{
-                  width: 110, height: 14, marginTop: -8,
-                  borderRadius: 60,
-                  backgroundColor: 'rgba(22,21,58,0.16)',
-                  transform: [{ scaleY: 0.4 }],
-                }} />
-              </View>
+              {/* Charlotte canto-esquerdo + texto da pergunta ao lado (Duo style).
+                  Container 16px mais curto + video deslocado -8 corta artefatos
+                  do topo/fundo do frame (mesma técnica usada no Live Voice). */}
+              {currentStep.exercise.type === 'multiple_choice' && (
+                <View style={{ flexDirection: 'row', alignItems: 'center', gap: 10, marginBottom: 18 }}>
+                  <View style={{ width: 110, alignItems: 'center' }}>
+                    <View style={{ width: 110, height: 175, overflow: 'hidden' }}>
+                      <VideoView
+                        player={showCheering ? cheerPlayer : idlePlayer}
+                        style={{ width: 110, height: 190, marginTop: -8, backgroundColor: 'transparent' }}
+                        contentFit="cover"
+                        nativeControls={false}
+                        allowsFullscreen={false}
+                        allowsPictureInPicture={false}
+                      />
+                    </View>
+                    {/* Sombra elíptica abaixo dos pés */}
+                    <View style={{
+                      width: 80, height: 10, marginTop: -2,
+                      borderRadius: 60,
+                      backgroundColor: 'rgba(22,21,58,0.16)',
+                      transform: [{ scaleY: 0.4 }],
+                    }} />
+                  </View>
+                  {/* Bubble: aparece quando tem sentence pra mostrar */}
+                  {!!currentStep.exercise.sentence && (
+                    <View style={{
+                      flex: 1, backgroundColor: '#FFF',
+                      borderRadius: 14, paddingHorizontal: 14, paddingVertical: 12,
+                      borderWidth: 1, borderColor: C.border,
+                    }}>
+                      <AppText style={{ fontSize: 16, color: C.navy, fontWeight: '700', lineHeight: 22 }}>
+                        {currentStep.exercise.sentence}
+                      </AppText>
+                    </View>
+                  )}
+                </View>
+              )}
 
               {/* Passage */}
               {currentStep.exercise.type === 'read_answer' && currentStep.exercise.passage && (
@@ -1264,8 +1284,10 @@ export default function LearnSessionScreen() {
                 </View>
               )}
 
-              {/* Sentence / Question */}
-              {(currentStep.exercise.type === 'fill_gap' || currentStep.exercise.type === 'word_bank') ? (
+              {/* Sentence / Question — escondida pra multiple_choice
+                  (já renderizada no balão ao lado da Charlotte acima). */}
+              {currentStep.exercise.type !== 'multiple_choice' && (
+              (currentStep.exercise.type === 'fill_gap' || currentStep.exercise.type === 'word_bank') ? (
                 /* ── Fill-gap & Word-bank: sentence with inline gap ── */
                 (() => {
                   const GAP = '_____';
@@ -1354,10 +1376,11 @@ export default function LearnSessionScreen() {
                   fontWeight: currentStep.exercise.type === 'read_answer' ? '700' : '500',
                   color: C.navy,
                   lineHeight: currentStep.exercise.type === 'read_answer' ? 26 : 34,
-                  marginBottom: (currentStep.exercise.type === 'multiple_choice' || (currentStep.exercise.type as string) === 'word_bank') ? 28 : (gStatus === 'answering' ? 0 : 20),
+                  marginBottom: gStatus === 'answering' ? 0 : 20,
                 }}>
                   {currentStep.exercise.type === 'read_answer' ? currentStep.exercise.question : currentStep.exercise.sentence}
                 </AppText>
+              )
               )}
 
               {/* Multiple choice */}
@@ -1823,10 +1846,13 @@ export default function LearnSessionScreen() {
         </ScrollView>
 
         {/* ── Bottom CTA ── */}
+        {/* Sem footer branco / border-top pra grammar: visualmente integral com o body. */}
         <View style={{
           paddingHorizontal: 20, paddingTop: 12,
           paddingBottom: Platform.OS === 'ios' ? 28 : 16,
-          backgroundColor: C.card, borderTopWidth: 1, borderTopColor: C.border,
+          backgroundColor: currentStep.kind === 'grammar' ? '#FAF9FF' : C.card,
+          borderTopWidth: currentStep.kind === 'grammar' ? 0 : 1,
+          borderTopColor: C.border,
         }}>
           {/* ── Grammar ── */}
           {currentStep.kind === 'grammar' && gStatus === 'answering' && (() => {
