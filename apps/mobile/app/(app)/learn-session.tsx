@@ -1232,9 +1232,9 @@ export default function LearnSessionScreen() {
           {/* ── GRAMMAR (full-screen, no card wrapper) ── */}
           {currentStep.kind === 'grammar' && (
             <View style={{ flex: 1 }}>
-              {/* Instruction — bubble na cor do nível, sem avatar */}
+              {/* Instruction — bubble na cor do nível, sem avatar, centralizado */}
               <View style={{ backgroundColor: accentBg, borderRadius: 14, paddingHorizontal: 14, paddingVertical: 14, marginBottom: 18 }}>
-                <AppText style={{ fontSize: 14, color: accent, fontWeight: '700' }}>
+                <AppText style={{ fontSize: 14, color: accent, fontWeight: '700', textAlign: 'center' }}>
                   {currentStep.exercise.type === 'multiple_choice' ? (isPortuguese ? 'Escolha a opção correta para completar a frase.'    : 'Choose the correct option to complete the sentence.')
                     : currentStep.exercise.type === 'word_bank'      ? (isPortuguese ? 'Toque na palavra correta para preencher o espaço.' : 'Tap the correct word to fill the blank.')
                     : currentStep.exercise.type === 'fill_gap'       ? (isPortuguese ? 'Digite a palavra que falta na lacuna.'            : 'Type the missing word in the blank.')
@@ -1252,10 +1252,10 @@ export default function LearnSessionScreen() {
               {(() => { const CHAR_H = 196; const CHAR_W = 110; return (
               <View style={{ flexDirection: 'row', alignItems: 'center', gap: 10, marginBottom: 18 }}>
                 <View style={{ width: CHAR_W, alignItems: 'center' }}>
-                  <View style={{ width: CHAR_W, height: CHAR_H - 16, overflow: 'hidden' }}>
+                  <View style={{ width: CHAR_W, height: CHAR_H - 14, overflow: 'hidden' }}>
                     <VideoView
                       player={showCheering ? cheerPlayer : idlePlayer}
-                      style={{ width: CHAR_W, height: CHAR_H, marginTop: -8, backgroundColor: 'transparent' }}
+                      style={{ width: CHAR_W, height: CHAR_H, marginTop: -7, backgroundColor: 'transparent' }}
                       contentFit="cover"
                       nativeControls={false}
                       allowsFullscreen={false}
