@@ -4,7 +4,7 @@
 
 import React, { useState, useCallback, useMemo } from 'react';
 import {
-  View, ScrollView, TouchableOpacity, ActivityIndicator, Image,
+  View, ScrollView, TouchableOpacity, ActivityIndicator,
   RefreshControl, Modal, Pressable, Dimensions, Animated, Easing, Platform,
   Alert,
 } from 'react-native';
@@ -12,7 +12,7 @@ import { useSafeAreaInsets } from 'react-native-safe-area-context';
 import Svg, { Circle } from 'react-native-svg';
 import { useFocusEffect } from 'expo-router';
 import { useBottomTabBarHeight } from '@react-navigation/bottom-tabs';
-import { useVideoPlayer, VideoView } from 'expo-video';
+import { Image } from 'expo-image';
 import { Phone, XCircle, ClockCounterClockwise, CaretRight, Trash, Question, X } from 'phosphor-react-native';
 import { AppText } from '@/components/ui/Text';
 import { HeaderPills } from '@/components/ui/HeaderPills';
@@ -471,18 +471,8 @@ export default function LiveVoiceTab() {
     return days > 0 ? days : 0;
   }, [profile]);
 
-  const liveVoicePlayer = useVideoPlayer(require('@/assets/charlotte-livevoice.mp4'), p => {
-    p.loop = true;
-    p.muted = true;
-    p.play();
-  });
-
-  // Garante loop sempre ativo quando a tab volta a ficar visível.
-  // Sem isso, o player pode ficar pausado após navegação entre tabs.
-  useFocusEffect(useCallback(() => {
-    liveVoicePlayer.loop = true;
-    liveVoicePlayer.play();
-  }, [liveVoicePlayer]));
+  // Charlotte animado em WebP com alpha. expo-image loop nativo, sem AVAudioSession.
+  const liveVoiceSrc = require('@/assets/charlotte-livevoice.webp');
 
   const loadData = useCallback(async () => {
     if (!userId) return;
@@ -597,14 +587,8 @@ export default function LiveVoiceTab() {
     // rejeita com "tried to set AmbientSound... skipping" durante recording.
     // Mutar aqui zera essa fila.
     voiceSFX.setMuted(true);
-    // Pausa o video preview da Charlotte antes de abrir o modal: expo-video
-    // ativa AVAudioSession em MediaPlayback/MoviePlayback em loop, contaminando
-    // a session do Live Voice (iOS 26 fica rejeitando isso continuamente porque
-    // estamos recording — gera flood de "tried to set MediaPlayback... skipping"
-    // nos logs). Pausando aqui resolve a briga residual.
-    try { liveVoicePlayer.pause(); } catch { /* silencioso */ }
     setShowLiveVoice(true);
-  }, [poolUnlimited, poolUsed, poolTotal, liveVoicePlayer]);
+  }, [poolUnlimited, poolUsed, poolTotal]);
 
   const isLimitReached = !poolUnlimited && poolUsed >= poolTotal;
   const statsParams = { sessionXP: String(todayXP), totalXP: String(totalXP), userId, userLevel: level, userName: profile?.name ?? 'Student' };
@@ -673,19 +657,13 @@ export default function LiveVoiceTab() {
             {/* Spacer empurra Charlotte pra baixo */}
             <View style={{ flex: 1 }} />
 
-            {/* ── Charlotte centralizada ── */}
-            {/* Container 20px mais curto + vídeo deslocado -10 no topo:
-                corta 10px do topo E 10px do fundo (artefatos do Veo nas
-                duas pontas do frame). */}
+            {/* ── Charlotte centralizada — WebP com alpha real ── */}
             <View style={{ alignItems: 'center', marginBottom: 24 }}>
-              <View style={{ width: charW, height: charH - 20, overflow: 'hidden' }}>
-                <VideoView
-                  player={liveVoicePlayer}
-                  style={{ width: charW, height: charH, marginTop: -10, backgroundColor: 'transparent' }}
-                  contentFit="cover"
-                  nativeControls={false}
-                />
-              </View>
+              <Image
+                source={liveVoiceSrc}
+                style={{ width: charW, height: charH }}
+                contentFit="contain"
+              />
             </View>
 
             {/* ── Botões drawer + help (sempre visíveis pra estabilidade de layout).
@@ -787,8 +765,6 @@ export default function LiveVoiceTab() {
             setShowLiveVoice(false);
             soundEngine.setMuted(false);
             voiceSFX.setMuted(false);
-            // Retoma video preview ao fechar o modal (era pausado em startCall).
-            try { liveVoicePlayer.play(); } catch { /* silencioso */ }
             loadData();
           }}
         />

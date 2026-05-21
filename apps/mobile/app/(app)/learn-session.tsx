@@ -23,7 +23,7 @@ import { scheduleReviews, markReviewDone, rescheduleReview } from '@/lib/spacedR
 import { track } from '@/lib/analytics';
 import * as FileSystem from 'expo-file-system/legacy';
 import { useAudioRecorder, setAudioModeAsync, RecordingPresets } from 'expo-audio';
-import { useVideoPlayer, VideoView } from 'expo-video';
+import { Image } from 'expo-image';
 import {
   ExpoSpeechRecognitionModule,
   useSpeechRecognitionEvent,
@@ -349,14 +349,10 @@ export default function LearnSessionScreen() {
   const charlottePlayId = 'learn-session-phrase';
   const isPlaying = playingMessageId === charlottePlayId;
 
-  // Charlotte video players (only used for grammar — idle base; cheering on correct).
-  // Dois players separados pra evitar o gap de re-source quando troca de fonte.
-  const idlePlayer = useVideoPlayer(require('@/assets/charlotte-livevoice.mp4'), p => {
-    p.loop = true; p.muted = true; p.play();
-  });
-  const cheerPlayer = useVideoPlayer(require('@/assets/charlotte-goals.mp4'), p => {
-    p.loop = true; p.muted = true; // start paused; .play() quando isCorrect=true
-  });
+  // Charlotte animated WebPs com alpha (rembg + isnet + alpha-matting).
+  // expo-image faz loop nativo; trocar source faz cross-fade entre idle/cheering.
+  const idleSrc = require('@/assets/charlotte-livevoice.webp');
+  const cheerSrc = require('@/assets/charlotte-goals.webp');
 
   // WAV/PCM 16kHz mono — required by Azure Speech SDK (M4A causes NoMatch)
   const recorder = useAudioRecorder({
@@ -381,15 +377,8 @@ export default function LearnSessionScreen() {
   const accentBg     = !currentStep ? C.goldBg
     : currentStep.kind === 'grammar' ? C.goldBg : C.violetBg;
 
-  // Cheering player toggle: liga quando acerta grammar, desliga ao avançar step.
+  // Cheering toggle: liga quando acerta grammar, desliga ao avançar step.
   const showCheering = currentStep?.kind === 'grammar' && gStatus === 'submitted' && isCorrect === true;
-  useEffect(() => {
-    if (showCheering) {
-      try { idlePlayer.pause(); cheerPlayer.play(); } catch {}
-    } else {
-      try { cheerPlayer.pause(); idlePlayer.play(); } catch {}
-    }
-  }, [showCheering]); // eslint-disable-line react-hooks/exhaustive-deps
 
   // ── Explain error ────────────────────────────────────────────────────────────
   const fetchExplainError = useCallback(async () => {
@@ -1246,22 +1235,16 @@ export default function LearnSessionScreen() {
               </View>
 
               {/* Row: Charlotte LEFT + sentence/passage RIGHT (Duo style).
-                  Mesma técnica do Live Voice: container 20px mais curto +
-                  video em 9:16 com marginTop -10 corta os artefatos brancos
-                  do topo/fundo do frame Veo. */}
+                  WebP com alpha real — sem crop hack. */}
               {(() => { const CHAR_H = 196; const CHAR_W = 110; return (
               <View style={{ flexDirection: 'row', alignItems: 'center', gap: 10, marginBottom: 18 }}>
                 <View style={{ width: CHAR_W, alignItems: 'center' }}>
-                  <View style={{ width: CHAR_W, height: CHAR_H - 14, overflow: 'hidden' }}>
-                    <VideoView
-                      player={showCheering ? cheerPlayer : idlePlayer}
-                      style={{ width: CHAR_W, height: CHAR_H, marginTop: -7, backgroundColor: 'transparent' }}
-                      contentFit="cover"
-                      nativeControls={false}
-                      allowsFullscreen={false}
-                      allowsPictureInPicture={false}
-                    />
-                  </View>
+                  <Image
+                    source={showCheering ? cheerSrc : idleSrc}
+                    style={{ width: CHAR_W, height: CHAR_H }}
+                    contentFit="contain"
+                    transition={150}
+                  />
                   {/* Sombra elíptica abaixo dos pés */}
                   <View style={{
                     width: 80, height: 10, marginTop: -2,

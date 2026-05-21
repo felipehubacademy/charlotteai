@@ -4,13 +4,13 @@
 
 import React, { useState, useCallback, useEffect, useRef, useMemo } from 'react';
 import {
-  View, ScrollView, TouchableOpacity, Image, Platform,
+  View, ScrollView, TouchableOpacity, Platform,
   ActivityIndicator, RefreshControl, Animated, unstable_batchedUpdates,
   findNodeHandle, UIManager,
 } from 'react-native';
 import { router, useFocusEffect } from 'expo-router';
 import { SafeAreaView } from 'react-native-safe-area-context';
-import { useVideoPlayer, VideoView } from 'expo-video';
+import { Image } from 'expo-image';
 import * as SecureStore from 'expo-secure-store';
 import { AppText } from '@/components/ui/Text';
 import { HeaderPills } from '@/components/ui/HeaderPills';
@@ -127,27 +127,10 @@ export default function HomeTab() {
     SecureStore.setItemAsync('NEW_LAYOUT_WELCOME_DONE', '1').catch(() => {});
   }, []);
 
-  const greetingPlayer = useVideoPlayer(require('@/assets/charlotte-greeting.mp4'), p => {
-    p.loop = true;
-    p.muted = true;
-    p.play();
-  });
-
-  // Garante loop sempre ativo quando a tab volta a ficar visível.
-  // PAUSE no return: sem isso, o video segue tocando em background quando
-  // user troca pra outra tab (Live Voice, Practice, etc) e expo-video segue
-  // mantendo AVAudioSession ativa em MediaPlayback/MoviePlayback → flood
-  // de "tried to set MediaPlayback... skipping" no Live Voice porque iOS
-  // rejeita a contaminacao durante recording.
-  // Benchmark 2026-05-15: ChatGPT/Glite tem 2-4 events no log em 2min de call.
-  // Charlotte tinha centenas. Causa raiz: este player sem pause on blur.
-  useFocusEffect(useCallback(() => {
-    greetingPlayer.loop = true;
-    greetingPlayer.play();
-    return () => {
-      try { greetingPlayer.pause(); } catch { /* silencioso */ }
-    };
-  }, [greetingPlayer]));
+  // Charlotte greeting animado em WebP com alpha. expo-image faz loop nativo
+  // e não toca AVAudioSession (substitui expo-video que floodava MediaPlayback
+  // events no Live Voice — benchmark 2026-05-15).
+  const greetingSrc = require('@/assets/charlotte-greeting.webp');
 
   // ── Data fetch ──────────────────────────────────────────────────────────────
   const fetchData = useCallback(async () => {
@@ -417,13 +400,11 @@ export default function HomeTab() {
         <View style={{ borderRadius: 22, backgroundColor: T.card, overflow: 'hidden', ...cardShadow }}>
           {/* Navy strip with bust + chat bubble */}
           <View style={{ backgroundColor: C.heroStrip, paddingRight: 20, flexDirection: 'row', alignItems: 'center', minHeight: 140 }}>
-            {/* borderRadius força clipping no Android (overflow:hidden sozinho nao funciona com VideoView) */}
-            <View style={{ width: 118, height: 165, marginBottom: -15, flexShrink: 0, alignSelf: 'flex-end', overflow: 'hidden', borderRadius: 1, backgroundColor: C.heroStrip }}>
-              <VideoView
-                player={greetingPlayer}
-                style={{ width: 118, height: Math.round(118 * 16 / 9), backgroundColor: C.heroStrip }}
-                contentFit="cover"
-                nativeControls={false}
+            <View style={{ width: 118, height: 165, marginBottom: -15, flexShrink: 0, alignSelf: 'flex-end' }}>
+              <Image
+                source={greetingSrc}
+                style={{ width: 118, height: 165 }}
+                contentFit="contain"
               />
             </View>
             <View style={{ flex: 1, paddingLeft: 0, paddingVertical: 16, justifyContent: 'center' }}>
