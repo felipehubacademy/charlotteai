@@ -59,6 +59,13 @@ function a(hex: string, alpha: number): string {
   return `rgba(${r},${g},${b},${alpha})`;
 }
 
+// Quebra padrões de diálogo "A: ... B: ..." em duas linhas. Match em
+// " Name: " (palavra capitalizada seguida de ":" e espaço) precedida
+// de espaço — só insere \n quando há um segundo speaker mid-sentence.
+function formatDialogue(s: string): string {
+  return s.replace(/\s+([A-Z][a-zA-Z]*): /g, '\n$1: ');
+}
+
 // ── Palette ────────────────────────────────────────────────────
 const C = {
   bg:        '#F4F3FA',
@@ -1270,8 +1277,8 @@ export default function LearnSessionScreen() {
                   {currentStep.exercise.type === 'read_answer' && currentStep.exercise.passage && (
                     <View style={{ backgroundColor: C.ghost, borderRadius: 14, padding: 14, marginBottom: 12, borderLeftWidth: 3, borderLeftColor: accent }}>
                       {isPortuguese
-                        ? <TranslatableText text={currentStep.exercise.passage} style={{ fontSize: 14, color: C.navy, lineHeight: 22 }} />
-                        : <AppText style={{ fontSize: 14, color: C.navy, lineHeight: 22 }}>{currentStep.exercise.passage}</AppText>
+                        ? <TranslatableText text={formatDialogue(currentStep.exercise.passage)} style={{ fontSize: 14, color: C.navy, lineHeight: 22 }} />
+                        : <AppText style={{ fontSize: 14, color: C.navy, lineHeight: 22 }}>{formatDialogue(currentStep.exercise.passage)}</AppText>
                       }
                     </View>
                   )}
@@ -1284,7 +1291,7 @@ export default function LearnSessionScreen() {
                       borderWidth: 1, borderColor: C.border,
                     }}>
                       <AppText style={{ fontSize: 16, color: C.navy, fontWeight: '700', lineHeight: 22 }}>
-                        {currentStep.exercise.sentence}
+                        {formatDialogue(currentStep.exercise.sentence ?? '')}
                       </AppText>
                     </View>
                   )}
@@ -1297,8 +1304,8 @@ export default function LearnSessionScreen() {
                   const GAP = '_____';
                   const sentence = currentStep.exercise.sentence ?? '';
                   const parts    = sentence.split(GAP);
-                  const before   = parts[0] ?? '';
-                  const after    = parts[1] ?? '';
+                  const before   = formatDialogue(parts[0] ?? '');
+                  const after    = formatDialogue(parts[1] ?? '');
                   const gapColor = gStatus === 'submitted' ? (isCorrect ? C.green : C.red) : accent;
                   const gapAnswer = userAnswer || '______';
                   const isWordBank = currentStep.exercise.type === 'word_bank';
@@ -1366,7 +1373,7 @@ export default function LearnSessionScreen() {
                 })()
               ) : isPortuguese ? (
                 <TranslatableText
-                  text={currentStep.exercise.type === 'read_answer' ? (currentStep.exercise.question ?? '') : (currentStep.exercise.sentence ?? '')}
+                  text={formatDialogue(currentStep.exercise.type === 'read_answer' ? (currentStep.exercise.question ?? '') : (currentStep.exercise.sentence ?? ''))}
                   style={{
                     fontSize: currentStep.exercise.type === 'read_answer' ? 16 : 22,
                     fontWeight: currentStep.exercise.type === 'read_answer' ? '700' : '500',
@@ -1382,7 +1389,7 @@ export default function LearnSessionScreen() {
                   lineHeight: currentStep.exercise.type === 'read_answer' ? 26 : 34,
                   marginBottom: gStatus === 'answering' ? 0 : 20,
                 }}>
-                  {currentStep.exercise.type === 'read_answer' ? currentStep.exercise.question : currentStep.exercise.sentence}
+                  {formatDialogue(String(currentStep.exercise.type === 'read_answer' ? currentStep.exercise.question : currentStep.exercise.sentence) ?? '')}
                 </AppText>
               )
               )}
