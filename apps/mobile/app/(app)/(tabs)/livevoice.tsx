@@ -471,8 +471,6 @@ export default function LiveVoiceTab() {
     return days > 0 ? days : 0;
   }, [profile]);
 
-  // Charlotte animado em WebP com alpha. expo-image loop nativo, sem AVAudioSession.
-  const liveVoiceSrc = require('@/assets/charlotte-livevoice.webp');
 
   const loadData = useCallback(async () => {
     if (!userId) return;
@@ -605,15 +603,6 @@ export default function LiveVoiceTab() {
   const tabBarHeight = useBottomTabBarHeight();
   const insets = useSafeAreaInsets();
 
-  // Espaço usável = screen - safe areas - HeaderPills (52) - tab bar
-  const usableHeight = screenH - insets.top - 52 - tabBarHeight;
-  // Espaço fixo dentro da tela: header título(70) + drawer(56) + CTA(84) +
-  // min spacer flex(32) + spacer Android extra (16 se Android)
-  const RESERVED = 70 + 56 + 84 + 32 + (isAndroid ? 16 : 0);
-
-  // Charlotte: máximo 480, mínimo 280, fit dentro do que sobra
-  const charH   = Math.min(480, Math.max(280, usableHeight - RESERVED));
-  const charW   = Math.round(charH * 9 / 16);
   const drawerW = Math.round(screenW * 0.82);
 
   return (
@@ -654,17 +643,39 @@ export default function LiveVoiceTab() {
               </View>
             </View>
 
-            {/* Spacer empurra Charlotte pra baixo */}
+            {/* Spacer superior */}
             <View style={{ flex: 1 }} />
 
-            {/* ── Charlotte centralizada — WebP com alpha real ── */}
-            <View style={{ alignItems: 'center', marginBottom: 24 }}>
-              <Image
-                source={liveVoiceSrc}
-                style={{ width: charW, height: charH }}
-                contentFit="contain"
-              />
+            {/* ── Avatar com arcos fixos — mesmo estilo da tela de chamada,
+                pra transição suave ao tocar "Conversar com Charlotte" ── */}
+            <View style={{ alignItems: 'center', justifyContent: 'center', marginBottom: 24 }}>
+              <View style={{ width: 148, height: 148, alignItems: 'center', justifyContent: 'center' }}>
+                <View style={{
+                  position: 'absolute',
+                  width: 148, height: 148, borderRadius: 74,
+                  borderWidth: 2, borderColor: '#F97316',
+                  opacity: 0.35,
+                }} />
+                <View style={{
+                  position: 'absolute',
+                  width: 132, height: 132, borderRadius: 66,
+                  borderWidth: 1.5,
+                  borderColor: 'rgba(249,115,22,0.25)',
+                }} />
+                <Image
+                  source={require('@/assets/charlotte-avatar.png')}
+                  style={{
+                    width: 120, height: 120, borderRadius: 60,
+                    borderWidth: 3, borderColor: '#F97316',
+                    backgroundColor: '#16153A',
+                  }}
+                  contentFit="cover"
+                />
+              </View>
             </View>
+
+            {/* Spacer inferior */}
+            <View style={{ flex: 1 }} />
 
             {/* ── Botões drawer + help (sempre visíveis pra estabilidade de layout).
                 Drawer mostra empty state quando recentCalls.length === 0. ── */}
