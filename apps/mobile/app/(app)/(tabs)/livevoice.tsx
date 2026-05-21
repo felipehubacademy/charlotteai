@@ -614,10 +614,9 @@ export default function LiveVoiceTab() {
   // Posicionando o avatar do tab com `top` absoluto = essa Y - 74 (metade
   // do bloco de arcos 148) garante alinhamento pixel-perfect na transição.
   const innerH = screenH - insets.top - insets.bottom - 48;
-  // BottomBlock real ~64 (so 3 botoes 64x64 no estado "Chamando..."), nao 90.
-  // E ajuste fino +30px porque medicao visual no iPhone 15 Pro mostrou
-  // a Charlotte ficar um pouco acima do alinhamento perfeito com a modal.
-  const modalAvatarCenterY = insets.top + 24 + 50 + Math.max(0, (innerH - 474) / 2) + 180 + 12;
+  // Ajuste fino +12px sobre o calculo nominal pra bater com a posicao
+  // visual real do avatar no modal (iPhone 15 Pro).
+  const modalAvatarCenterY = insets.top + 24 + 50 + Math.max(0, (innerH - 500) / 2) + 180 + 12;
   const avatarTopOffset = modalAvatarCenterY - 74;
 
   return (
