@@ -1252,10 +1252,10 @@ export default function LearnSessionScreen() {
               {(() => { const CHAR_H = 196; const CHAR_W = 110; return (
               <View style={{ flexDirection: 'row', alignItems: 'center', gap: 10, marginBottom: 18 }}>
                 <View style={{ width: CHAR_W, alignItems: 'center' }}>
-                  <View style={{ width: CHAR_W, height: CHAR_H - 18, overflow: 'hidden' }}>
+                  <View style={{ width: CHAR_W, height: CHAR_H - 16, overflow: 'hidden' }}>
                     <VideoView
                       player={showCheering ? cheerPlayer : idlePlayer}
-                      style={{ width: CHAR_W, height: CHAR_H, marginTop: -9, backgroundColor: 'transparent' }}
+                      style={{ width: CHAR_W, height: CHAR_H, marginTop: -8, backgroundColor: 'transparent' }}
                       contentFit="cover"
                       nativeControls={false}
                       allowsFullscreen={false}
