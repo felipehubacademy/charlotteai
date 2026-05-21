@@ -1225,7 +1225,7 @@ export default function LearnSessionScreen() {
           {currentStep.kind === 'grammar' && (
             <View style={{ flex: 1 }}>
               {/* Instruction — full width text, no avatar / no bubble */}
-              <AppText style={{ fontSize: 17, color: C.navy, fontWeight: '700', lineHeight: 24, marginBottom: 22 }}>
+              <AppText style={{ fontSize: 17, color: C.navy, fontWeight: '700', lineHeight: 24, marginBottom: 18 }}>
                 {currentStep.exercise.type === 'multiple_choice' ? (isPortuguese ? 'Escolha a opção correta para completar a frase.'    : 'Choose the correct option to complete the sentence.')
                   : currentStep.exercise.type === 'word_bank'      ? (isPortuguese ? 'Toque na palavra correta para preencher o espaço.' : 'Tap the correct word to fill the blank.')
                   : currentStep.exercise.type === 'fill_gap'       ? (isPortuguese ? 'Digite a palavra que falta na lacuna.'            : 'Type the missing word in the blank.')
@@ -1234,6 +1234,25 @@ export default function LearnSessionScreen() {
                   : currentStep.exercise.type === 'short_write'    ? (isPortuguese ? 'Escreva sua resposta em inglês. Depois, veja o exemplo.' : 'Write your answer in English. Then see the model answer.')
                   :                                                   (isPortuguese ? 'Leia o texto e responda à pergunta.'                : 'Read the text and answer the question.')}
               </AppText>
+
+              {/* Charlotte corpo todo (Duo style) — sombra elíptica abaixo. */}
+              <View style={{ alignItems: 'center', marginBottom: 14 }}>
+                <VideoView
+                  player={showCheering ? cheerPlayer : idlePlayer}
+                  style={{ width: 140, height: 200, backgroundColor: 'transparent' }}
+                  contentFit="contain"
+                  nativeControls={false}
+                  allowsFullscreen={false}
+                  allowsPictureInPicture={false}
+                />
+                {/* Sombra elíptica abaixo */}
+                <View style={{
+                  width: 110, height: 14, marginTop: -8,
+                  borderRadius: 60,
+                  backgroundColor: 'rgba(22,21,58,0.16)',
+                  transform: [{ scaleY: 0.4 }],
+                }} />
+              </View>
 
               {/* Passage */}
               {currentStep.exercise.type === 'read_answer' && currentStep.exercise.passage && (
@@ -1809,23 +1828,6 @@ export default function LearnSessionScreen() {
           paddingBottom: Platform.OS === 'ios' ? 28 : 16,
           backgroundColor: C.card, borderTopWidth: 1, borderTopColor: C.border,
         }}>
-          {/* Charlotte video — idle quando aguardando, cheer ao acertar.
-              Só pra grammar nessa fase (per user). */}
-          {currentStep.kind === 'grammar' && (
-            <View style={{ alignItems: 'center', marginBottom: 10 }}>
-              <View style={{ width: 140, height: 140, borderRadius: 70, overflow: 'hidden', backgroundColor: C.ghost }}>
-                <VideoView
-                  player={showCheering ? cheerPlayer : idlePlayer}
-                  style={{ width: '100%', height: '100%' }}
-                  contentFit="cover"
-                  nativeControls={false}
-                  allowsFullscreen={false}
-                  allowsPictureInPicture={false}
-                />
-              </View>
-            </View>
-          )}
-
           {/* ── Grammar ── */}
           {currentStep.kind === 'grammar' && gStatus === 'answering' && (() => {
             const ex = currentStep.exercise;
