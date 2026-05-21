@@ -1239,15 +1239,17 @@ export default function LearnSessionScreen() {
               </View>
 
               {/* Row: Charlotte LEFT + sentence/passage RIGHT (Duo style).
-                  Bubble pra multiple_choice; fill_gap/word_bank/etc usam
-                  o render próprio (inline-gap, plain text, passage). */}
-              <View style={{ flexDirection: 'row', alignItems: 'flex-start', gap: 10, marginBottom: 18 }}>
-                <View style={{ width: 110, alignItems: 'center' }}>
-                  <View style={{ width: 110, height: 195 }}>
+                  Mesma técnica do Live Voice: container 20px mais curto +
+                  video em 9:16 com marginTop -10 corta os artefatos brancos
+                  do topo/fundo do frame Veo. */}
+              {(() => { const CHAR_H = 196; const CHAR_W = 110; return (
+              <View style={{ flexDirection: 'row', alignItems: 'center', gap: 10, marginBottom: 18 }}>
+                <View style={{ width: CHAR_W, alignItems: 'center' }}>
+                  <View style={{ width: CHAR_W, height: CHAR_H - 20, overflow: 'hidden' }}>
                     <VideoView
                       player={showCheering ? cheerPlayer : idlePlayer}
-                      style={{ width: 110, height: 195, backgroundColor: 'transparent' }}
-                      contentFit="contain"
+                      style={{ width: CHAR_W, height: CHAR_H, marginTop: -10, backgroundColor: 'transparent' }}
+                      contentFit="cover"
                       nativeControls={false}
                       allowsFullscreen={false}
                       allowsPictureInPicture={false}
@@ -1384,8 +1386,9 @@ export default function LearnSessionScreen() {
                 </AppText>
               )
               )}
-                </View>{/* /right col */}
-              </View>{/* /row Charlotte + question */}
+                </View>
+              </View>
+              ); })()}
 
               {/* Multiple choice */}
               {currentStep.exercise.type === 'multiple_choice' && (
