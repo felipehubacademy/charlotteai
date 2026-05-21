@@ -616,7 +616,7 @@ export default function LiveVoiceTab() {
   const innerH = screenH - insets.top - insets.bottom - 48;
   // Ajuste fino +12px sobre o calculo nominal pra bater com a posicao
   // visual real do avatar no modal (iPhone 15 Pro).
-  const modalAvatarCenterY = insets.top + 24 + 50 + Math.max(0, (innerH - 500) / 2) + 180 + 6;
+  const modalAvatarCenterY = insets.top + 24 + 50 + Math.max(0, (innerH - 500) / 2) + 180 + 7;
   const avatarTopOffset = modalAvatarCenterY - 74;
 
   return (
