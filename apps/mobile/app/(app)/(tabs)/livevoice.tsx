@@ -605,6 +605,18 @@ export default function LiveVoiceTab() {
 
   const drawerW = Math.round(screenW * 0.82);
 
+  // Avatar Y EXATO da tela de chamada (LiveVoiceModal):
+  //   modal usa paddingTop:insets.top + paddingVertical:24 + TopBlock(~50)
+  //   + space-between gap antes do CENTER(360 alto, avatar centralizado).
+  //   Inner usable = screenH - insets.top - insets.bottom - 48 (padV*2)
+  //   TopBlock~50, BottomBlock~90, CENTER=360 → gap = (inner - 500)/2.
+  //   Avatar center Y = insets.top + 24 + 50 + gap + 180.
+  // Posicionando o avatar do tab com `top` absoluto = essa Y - 74 (metade
+  // do bloco de arcos 148) garante alinhamento pixel-perfect na transição.
+  const innerH = screenH - insets.top - insets.bottom - 48;
+  const modalAvatarCenterY = insets.top + 24 + 50 + Math.max(0, (innerH - 500) / 2) + 180;
+  const avatarTopOffset = modalAvatarCenterY - 74;
+
   return (
     <View style={{ flex: 1, backgroundColor: C.stage }}>
 
@@ -617,6 +629,43 @@ export default function LiveVoiceTab() {
         onPaywallOpen={openPaywall}
         isPt={isPt}
       />
+
+      {/* Avatar com arcos fixos posicionado em Y absoluta = avatar Y da tela
+          de chamada. Garante continuidade visual: ao tocar "Conversar com
+          Charlotte", a Charlotte fica no mesmo lugar, só ganha animação. */}
+      {!loading && (
+        <View pointerEvents="none" style={{
+          position: 'absolute',
+          left: 0, right: 0,
+          top: avatarTopOffset,
+          alignItems: 'center',
+          zIndex: 5,
+        }}>
+          <View style={{ width: 148, height: 148, alignItems: 'center', justifyContent: 'center' }}>
+            <View style={{
+              position: 'absolute',
+              width: 148, height: 148, borderRadius: 74,
+              borderWidth: 2, borderColor: '#F97316',
+              opacity: 0.35,
+            }} />
+            <View style={{
+              position: 'absolute',
+              width: 132, height: 132, borderRadius: 66,
+              borderWidth: 1.5,
+              borderColor: 'rgba(249,115,22,0.25)',
+            }} />
+            <Image
+              source={require('@/assets/charlotte-avatar.png')}
+              style={{
+                width: 120, height: 120, borderRadius: 60,
+                borderWidth: 3, borderColor: '#F97316',
+                backgroundColor: '#16153A',
+              }}
+              contentFit="cover"
+            />
+          </View>
+        </View>
+      )}
 
       {loading ? (
         <View style={{ flex: 1, alignItems: 'center', justifyContent: 'center' }}>
@@ -643,38 +692,9 @@ export default function LiveVoiceTab() {
               </View>
             </View>
 
-            {/* Spacer superior */}
-            <View style={{ flex: 1 }} />
-
-            {/* ── Avatar com arcos fixos — mesmo estilo da tela de chamada,
-                pra transição suave ao tocar "Conversar com Charlotte" ── */}
-            <View style={{ alignItems: 'center', justifyContent: 'center', marginBottom: 24 }}>
-              <View style={{ width: 148, height: 148, alignItems: 'center', justifyContent: 'center' }}>
-                <View style={{
-                  position: 'absolute',
-                  width: 148, height: 148, borderRadius: 74,
-                  borderWidth: 2, borderColor: '#F97316',
-                  opacity: 0.35,
-                }} />
-                <View style={{
-                  position: 'absolute',
-                  width: 132, height: 132, borderRadius: 66,
-                  borderWidth: 1.5,
-                  borderColor: 'rgba(249,115,22,0.25)',
-                }} />
-                <Image
-                  source={require('@/assets/charlotte-avatar.png')}
-                  style={{
-                    width: 120, height: 120, borderRadius: 60,
-                    borderWidth: 3, borderColor: '#F97316',
-                    backgroundColor: '#16153A',
-                  }}
-                  contentFit="cover"
-                />
-              </View>
-            </View>
-
-            {/* Spacer inferior */}
+            {/* Spacer ocupa toda a area entre titulo e CTA — avatar fica em
+                absolute apontado pra Y exata da tela de chamada (continuidade
+                visual na transicao). */}
             <View style={{ flex: 1 }} />
 
             {/* ── Botões drawer + help (sempre visíveis pra estabilidade de layout).
