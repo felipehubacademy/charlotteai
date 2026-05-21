@@ -23,6 +23,7 @@ import { scheduleReviews, markReviewDone, rescheduleReview } from '@/lib/spacedR
 import { track } from '@/lib/analytics';
 import * as FileSystem from 'expo-file-system/legacy';
 import { useAudioRecorder, setAudioModeAsync, RecordingPresets } from 'expo-audio';
+import { useVideoPlayer, VideoView } from 'expo-video';
 import {
   ExpoSpeechRecognitionModule,
   useSpeechRecognitionEvent,
@@ -341,6 +342,15 @@ export default function LearnSessionScreen() {
   const charlottePlayId = 'learn-session-phrase';
   const isPlaying = playingMessageId === charlottePlayId;
 
+  // Charlotte video players (only used for grammar — idle base; cheering on correct).
+  // Dois players separados pra evitar o gap de re-source quando troca de fonte.
+  const idlePlayer = useVideoPlayer(require('@/assets/charlotte-livevoice.mp4'), p => {
+    p.loop = true; p.muted = true; p.play();
+  });
+  const cheerPlayer = useVideoPlayer(require('@/assets/charlotte-goals.mp4'), p => {
+    p.loop = true; p.muted = true; // start paused; .play() quando isCorrect=true
+  });
+
   // WAV/PCM 16kHz mono — required by Azure Speech SDK (M4A causes NoMatch)
   const recorder = useAudioRecorder({
     ...RecordingPresets.HIGH_QUALITY,
@@ -363,6 +373,16 @@ export default function LearnSessionScreen() {
     : currentStep.kind === 'grammar' ? C.gold : C.violet;
   const accentBg     = !currentStep ? C.goldBg
     : currentStep.kind === 'grammar' ? C.goldBg : C.violetBg;
+
+  // Cheering player toggle: liga quando acerta grammar, desliga ao avançar step.
+  const showCheering = currentStep?.kind === 'grammar' && gStatus === 'submitted' && isCorrect === true;
+  useEffect(() => {
+    if (showCheering) {
+      try { idlePlayer.pause(); cheerPlayer.play(); } catch {}
+    } else {
+      try { cheerPlayer.pause(); idlePlayer.play(); } catch {}
+    }
+  }, [showCheering]); // eslint-disable-line react-hooks/exhaustive-deps
 
   // ── Explain error ────────────────────────────────────────────────────────────
   const fetchExplainError = useCallback(async () => {
@@ -1168,40 +1188,30 @@ export default function LearnSessionScreen() {
         <ScrollView
           ref={scrollRef}
           style={{ flex: 1, backgroundColor: C.bg }}
-          contentContainerStyle={{ padding: 20, paddingBottom: (currentStep.kind === 'grammar' && gStatus === 'submitted') || (currentStep.kind === 'pronunciation' && pronStatus === 'result') ? 300 : 24, flexGrow: 1 }}
+          contentContainerStyle={{ padding: 20, paddingBottom: currentStep.kind === 'pronunciation' && pronStatus === 'result' ? 300 : 24, flexGrow: 1 }}
           keyboardShouldPersistTaps="handled"
           showsVerticalScrollIndicator={false}
         >
           {/* ── Progress ── */}
           <View style={{ marginBottom: 20 }}>
-            <View style={{ flexDirection: 'row', justifyContent: 'space-between', alignItems: 'center', marginBottom: 8 }}>
-              <View style={{
-                flexDirection: 'row', alignItems: 'center', gap: 5,
-                paddingHorizontal: 10, paddingVertical: 4, borderRadius: 10,
-                backgroundColor: accentBg, borderWidth: 1,
-                borderColor: a(accent, 0.2),
-              }}>
-                {currentStep.kind === 'grammar'
-                  ? <BookOpen  size={12} color={accent} weight="fill" />
-                  : <Microphone size={12} color={accent} weight="fill" />
-                }
-                <AppText style={{ fontSize: 11, fontWeight: '700', color: accent }}>
-                  {currentStep.kind === 'grammar'
-                    ? (currentStep.exercise.type === 'multiple_choice' ? (isPortuguese ? 'Escolha a Resposta'  : 'Choose the Answer')
-                      : currentStep.exercise.type === 'word_bank'      ? (isPortuguese ? 'Banco de Palavras'   : 'Word Bank')
-                      : currentStep.exercise.type === 'fill_gap'       ? (isPortuguese ? 'Complete a Lacuna'   : 'Fill the Gap')
-                      : currentStep.exercise.type === 'fix_error'      ? (isPortuguese ? 'Corrija o Erro'      : 'Fix the Error')
-                      : currentStep.exercise.type === 'word_order'     ? (isPortuguese ? 'Ordene as Palavras'  : 'Word Order')
-                      : currentStep.exercise.type === 'short_write'    ? (isPortuguese ? 'Escrita Livre'       : 'Short Write')
-                      :                                                   (isPortuguese ? 'Leia e Responda'     : 'Read & Answer'))
-                    : (currentStep.phrase.type === 'repeat'          ? (isPortuguese ? 'Repita Depois de Mim' : 'Repeat After Me')
+            <View style={{ flexDirection: 'row', justifyContent: currentStep.kind === 'grammar' ? 'flex-end' : 'space-between', alignItems: 'center', marginBottom: 8 }}>
+              {currentStep.kind === 'pronunciation' && (
+                <View style={{
+                  flexDirection: 'row', alignItems: 'center', gap: 5,
+                  paddingHorizontal: 10, paddingVertical: 4, borderRadius: 10,
+                  backgroundColor: accentBg, borderWidth: 1,
+                  borderColor: a(accent, 0.2),
+                }}>
+                  <Microphone size={12} color={accent} weight="fill" />
+                  <AppText style={{ fontSize: 11, fontWeight: '700', color: accent }}>
+                    {currentStep.phrase.type === 'repeat'          ? (isPortuguese ? 'Repita Depois de Mim' : 'Repeat After Me')
                       : currentStep.phrase.type === 'shadowing'       ? (isPortuguese ? 'Siga Junto'           : 'Follow Along')
                       : currentStep.phrase.type === 'minimal_pairs'   ? (isPortuguese ? 'Pares Mínimos'        : 'Minimal Pairs')
                       : currentStep.phrase.type === 'sentence_stress'  ? (isPortuguese ? 'Entonação'            : 'Sentence Stress')
-                      :                                                   (isPortuguese ? 'Ouça e Escreva'      : 'Listen & Write'))
-                  }
-                </AppText>
-              </View>
+                      :                                                   (isPortuguese ? 'Ouça e Escreva'      : 'Listen & Write')}
+                  </AppText>
+                </View>
+              )}
               <AppText style={{ fontSize: 12, color: C.navyLight, fontWeight: '600' }}>
                 {stepIdx + 1} / {totalSteps}
               </AppText>
@@ -1211,24 +1221,19 @@ export default function LearnSessionScreen() {
             </View>
           </View>
 
-          {/* ── GRAMMAR CARD ── */}
+          {/* ── GRAMMAR (full-screen, no card wrapper) ── */}
           {currentStep.kind === 'grammar' && (
-            <View style={{ flex: 1, backgroundColor: C.card, borderRadius: 20, padding: 24, borderWidth: 1, borderColor: C.border, ...shadow }}>
-              {/* Charlotte instruction */}
-              <View style={{ flexDirection: 'row', alignItems: 'flex-start', gap: 10, marginBottom: 24 }}>
-                <CharlotteAvatar size="xs" />
-                <View style={{ flex: 1, backgroundColor: accentBg, borderRadius: 14, borderBottomLeftRadius: 4, paddingHorizontal: 14, paddingVertical: 14 }}>
-                  <AppText style={{ fontSize: 14, color: accent, fontWeight: '700' }}>
-                    {currentStep.exercise.type === 'multiple_choice' ? (isPortuguese ? 'Escolha a opção correta para completar a frase.'    : 'Choose the correct option to complete the sentence.')
-                      : currentStep.exercise.type === 'word_bank'      ? (isPortuguese ? 'Toque na palavra correta para preencher o espaço.' : 'Tap the correct word to fill the blank.')
-                      : currentStep.exercise.type === 'fill_gap'       ? (isPortuguese ? 'Digite a palavra que falta na lacuna.'            : 'Type the missing word in the blank.')
-                      : currentStep.exercise.type === 'fix_error'      ? (isPortuguese ? 'Encontre o erro e reescreva a frase corretamente.'  : 'Find the mistake and rewrite the sentence correctly.')
-                      : currentStep.exercise.type === 'word_order'     ? (isPortuguese ? 'Toque nas palavras abaixo para montar a frase na ordem correta.' : 'Tap the words below to build the sentence in the correct order.')
-                      : currentStep.exercise.type === 'short_write'    ? (isPortuguese ? 'Escreva sua resposta em inglês. Depois, veja o exemplo.' : 'Write your answer in English. Then see the model answer.')
-                      :                                                   (isPortuguese ? 'Leia o texto e responda à pergunta.'                : 'Read the text and answer the question.')}
-                  </AppText>
-                </View>
-              </View>
+            <View style={{ flex: 1 }}>
+              {/* Instruction — full width text, no avatar / no bubble */}
+              <AppText style={{ fontSize: 17, color: C.navy, fontWeight: '700', lineHeight: 24, marginBottom: 22 }}>
+                {currentStep.exercise.type === 'multiple_choice' ? (isPortuguese ? 'Escolha a opção correta para completar a frase.'    : 'Choose the correct option to complete the sentence.')
+                  : currentStep.exercise.type === 'word_bank'      ? (isPortuguese ? 'Toque na palavra correta para preencher o espaço.' : 'Tap the correct word to fill the blank.')
+                  : currentStep.exercise.type === 'fill_gap'       ? (isPortuguese ? 'Digite a palavra que falta na lacuna.'            : 'Type the missing word in the blank.')
+                  : currentStep.exercise.type === 'fix_error'      ? (isPortuguese ? 'Encontre o erro e reescreva a frase corretamente.'  : 'Find the mistake and rewrite the sentence correctly.')
+                  : currentStep.exercise.type === 'word_order'     ? (isPortuguese ? 'Toque nas palavras abaixo para montar a frase na ordem correta.' : 'Tap the words below to build the sentence in the correct order.')
+                  : currentStep.exercise.type === 'short_write'    ? (isPortuguese ? 'Escreva sua resposta em inglês. Depois, veja o exemplo.' : 'Write your answer in English. Then see the model answer.')
+                  :                                                   (isPortuguese ? 'Leia o texto e responda à pergunta.'                : 'Read the text and answer the question.')}
+              </AppText>
 
               {/* Passage */}
               {currentStep.exercise.type === 'read_answer' && currentStep.exercise.passage && (
@@ -1804,6 +1809,23 @@ export default function LearnSessionScreen() {
           paddingBottom: Platform.OS === 'ios' ? 28 : 16,
           backgroundColor: C.card, borderTopWidth: 1, borderTopColor: C.border,
         }}>
+          {/* Charlotte video — idle quando aguardando, cheer ao acertar.
+              Só pra grammar nessa fase (per user). */}
+          {currentStep.kind === 'grammar' && (
+            <View style={{ alignItems: 'center', marginBottom: 10 }}>
+              <View style={{ width: 140, height: 140, borderRadius: 70, overflow: 'hidden', backgroundColor: C.ghost }}>
+                <VideoView
+                  player={showCheering ? cheerPlayer : idlePlayer}
+                  style={{ width: '100%', height: '100%' }}
+                  contentFit="cover"
+                  nativeControls={false}
+                  allowsFullscreen={false}
+                  allowsPictureInPicture={false}
+                />
+              </View>
+            </View>
+          )}
+
           {/* ── Grammar ── */}
           {currentStep.kind === 'grammar' && gStatus === 'answering' && (() => {
             const ex = currentStep.exercise;
