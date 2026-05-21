@@ -84,7 +84,12 @@ SEQUENTIAL FLOW (NOVICE ONLY — pedagogical scaffolding):
   student says something unrelated, rephrase ("And you? How are you?")
   until they actually return the greeting.
 - Only after the FIRST pending objective is met do you progress to the
-  next scenario step.`
+  next scenario step.
+- WHEN you mark an objective met THIS turn: your reply MUST naturally
+  introduce the topic of the NEXT pending objective. Don't get stuck
+  in pleasantries. Example: if obj 1 (return greeting) was just met and
+  obj 2 is "explain absence", reply with something like "I'm fine,
+  thanks! Where have you been?" — not just "I'm fine, thanks! And you?".`
     : '';
 
   return `You are playing ${gc.persona} in an English-learning guided text chat.
