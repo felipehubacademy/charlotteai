@@ -1252,10 +1252,10 @@ export default function LearnSessionScreen() {
               {(() => { const CHAR_H = 196; const CHAR_W = 110; return (
               <View style={{ flexDirection: 'row', alignItems: 'center', gap: 10, marginBottom: 18 }}>
                 <View style={{ width: CHAR_W, alignItems: 'center' }}>
-                  <View style={{ width: CHAR_W, height: CHAR_H - 20, overflow: 'hidden' }}>
+                  <View style={{ width: CHAR_W, height: CHAR_H - 18, overflow: 'hidden' }}>
                     <VideoView
                       player={showCheering ? cheerPlayer : idlePlayer}
-                      style={{ width: CHAR_W, height: CHAR_H, marginTop: -10, backgroundColor: 'transparent' }}
+                      style={{ width: CHAR_W, height: CHAR_H, marginTop: -9, backgroundColor: 'transparent' }}
                       contentFit="cover"
                       nativeControls={false}
                       allowsFullscreen={false}
@@ -1310,21 +1310,30 @@ export default function LearnSessionScreen() {
                   const gapAnswer = userAnswer || '______';
                   const isWordBank = currentStep.exercise.type === 'word_bank';
                   const isFillGapAnswering = !isWordBank && gStatus === 'answering';
-                  // Approximate width: 14px per char, min 72, max 240
                   const inputWidth = userAnswer.length > 0
-                    ? Math.min(userAnswer.length * 14 + 16, 240)
-                    : 72;
-                  const sentenceTextStyle = { fontSize: 22, fontWeight: '500' as const, color: C.navy, lineHeight: 36 };
+                    ? Math.min(userAnswer.length * 12 + 16, 200)
+                    : 64;
+                  const ts = { fontSize: 18, fontWeight: '500' as const, color: C.navy, lineHeight: 28 };
+                  // Split por linha (formatDialogue inseriu \n entre speakers).
+                  // O input fica inline na linha que tem o GAP — outras linhas
+                  // viram blocos de texto acima/abaixo.
+                  const beforeLines = before.split('\n');
+                  const afterLines  = after.split('\n');
+                  const lastBefore  = beforeLines[beforeLines.length - 1];
+                  const firstAfter  = afterLines[0];
+                  const preLines    = beforeLines.slice(0, -1);  // linhas antes da do gap
+                  const postLines   = afterLines.slice(1);       // linhas depois da do gap
+                  const renderText = (txt: string, key?: string) => isPortuguese
+                    ? <TranslatableText key={key} text={txt} style={ts} />
+                    : <AppText key={key} style={ts}>{txt}</AppText>;
                   return (
                     <View style={{ marginBottom: isWordBank ? 24 : 16 }}>
-                      {isFillGapAnswering ? (
-                        /* Inline TextInput as the gap — no separate box below */
-                        <View style={{ flexDirection: 'row', flexWrap: 'wrap', alignItems: 'flex-end', rowGap: 0 }}>
-                          {before.length > 0 && (
-                            isPortuguese
-                              ? <TranslatableText text={before} style={sentenceTextStyle} />
-                              : <AppText style={sentenceTextStyle}>{before}</AppText>
-                          )}
+                      {preLines.map((ln, i) => ln.length > 0 && (
+                        <View key={`pre${i}`} style={{ marginBottom: 4 }}>{renderText(ln)}</View>
+                      ))}
+                      <View style={{ flexDirection: 'row', flexWrap: 'wrap', alignItems: 'flex-end' }}>
+                        {lastBefore.length > 0 && renderText(lastBefore, 'lastBefore')}
+                        {isFillGapAnswering ? (
                           <TextInput
                             value={userAnswer}
                             onChangeText={setUserAnswer}
@@ -1334,40 +1343,24 @@ export default function LearnSessionScreen() {
                             returnKeyType="done"
                             onSubmitEditing={handleGrammarSubmit}
                             style={{
-                              fontSize: 22, fontWeight: '700', color: accent,
+                              fontSize: 18, fontWeight: '700', color: accent,
                               borderBottomWidth: 2.5, borderBottomColor: accent,
                               width: inputWidth,
-                              height: 36,
+                              height: 30,
                               paddingHorizontal: 4,
                               paddingVertical: 0,
                             }}
                           />
-                          {after.length > 0 && (
-                            isPortuguese
-                              ? <TranslatableText text={after} style={sentenceTextStyle} />
-                              : <AppText style={sentenceTextStyle}>{after}</AppText>
-                          )}
-                        </View>
-                      ) : (
-                        /* Submitted state or word_bank — flex-row pra inserir o
-                           gap inline, mas before/after usam TranslatableText pra
-                           Novice (palavras pontilhadas com tooltip). */
-                        <View style={{ flexDirection: 'row', flexWrap: 'wrap', alignItems: 'flex-end' }}>
-                          {before.length > 0 && (
-                            isPortuguese
-                              ? <TranslatableText text={before} style={sentenceTextStyle} />
-                              : <AppText style={sentenceTextStyle}>{before}</AppText>
-                          )}
-                          <AppText style={{ fontSize: 22, fontWeight: '700', color: gapColor, textDecorationLine: 'underline', lineHeight: 36 }}>
+                        ) : (
+                          <AppText style={{ fontSize: 18, fontWeight: '700', color: gapColor, textDecorationLine: 'underline', lineHeight: 28 }}>
                             {gapAnswer}
                           </AppText>
-                          {after.length > 0 && (
-                            isPortuguese
-                              ? <TranslatableText text={after} style={sentenceTextStyle} />
-                              : <AppText style={sentenceTextStyle}>{after}</AppText>
-                          )}
-                        </View>
-                      )}
+                        )}
+                        {firstAfter.length > 0 && renderText(firstAfter, 'firstAfter')}
+                      </View>
+                      {postLines.map((ln, i) => ln.length > 0 && (
+                        <View key={`post${i}`} style={{ marginTop: 4 }}>{renderText(ln)}</View>
+                      ))}
                     </View>
                   );
                 })()
