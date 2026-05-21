@@ -400,10 +400,10 @@ export default function HomeTab() {
         <View style={{ borderRadius: 22, backgroundColor: T.card, overflow: 'hidden', ...cardShadow }}>
           {/* Navy strip with bust + chat bubble */}
           <View style={{ backgroundColor: C.heroStrip, paddingRight: 20, flexDirection: 'row', alignItems: 'center', minHeight: 140 }}>
-            <View style={{ width: 118, height: 165, marginBottom: -15, flexShrink: 0, alignSelf: 'flex-end' }}>
+            <View style={{ width: 95, height: 132, flexShrink: 0, alignSelf: 'flex-end' }}>
               <Image
                 source={greetingSrc}
-                style={{ width: 118, height: 165 }}
+                style={{ width: 95, height: 132 }}
                 contentFit="contain"
               />
             </View>
