@@ -1283,18 +1283,51 @@ export default function LearnSessionScreen() {
                     </View>
                   )}
 
-                  {/* Bubble com sentence — só multiple_choice */}
-                  {currentStep.exercise.type === 'multiple_choice' && !!currentStep.exercise.sentence && (
-                    <View style={{
-                      backgroundColor: '#FFF',
-                      borderRadius: 14, paddingHorizontal: 14, paddingVertical: 12,
-                      borderWidth: 1, borderColor: C.border,
-                    }}>
-                      <AppText style={{ fontSize: 16, color: C.navy, fontWeight: '700', lineHeight: 22 }}>
-                        {formatDialogue(currentStep.exercise.sentence ?? '')}
-                      </AppText>
-                    </View>
-                  )}
+                  {/* Bubble com sentence — só multiple_choice. Mesmo padrão
+                      do word_bank: gap inline preenchido pelo userAnswer
+                      (substitui dinamicamente quando troca de opção). */}
+                  {currentStep.exercise.type === 'multiple_choice' && !!currentStep.exercise.sentence && (() => {
+                    const GAP = '_____';
+                    const sentence = formatDialogue(currentStep.exercise.sentence ?? '');
+                    const parts = sentence.split(GAP);
+                    const beforeRaw = parts[0] ?? '';
+                    const afterRaw  = parts[1] ?? '';
+                    const hasGap    = parts.length > 1;
+                    const gapColor  = gStatus === 'submitted' ? (isCorrect ? C.green : C.red) : accent;
+                    const gapText   = userAnswer || '______';
+                    const beforeLines = beforeRaw.split('\n');
+                    const afterLines  = afterRaw.split('\n');
+                    const lastBefore  = beforeLines[beforeLines.length - 1];
+                    const firstAfter  = afterLines[0];
+                    const preLines    = beforeLines.slice(0, -1);
+                    const postLines   = afterLines.slice(1);
+                    const baseStyle   = { fontSize: 16, color: C.navy, fontWeight: '700' as const, lineHeight: 22 };
+                    return (
+                      <View style={{
+                        backgroundColor: '#FFF',
+                        borderRadius: 14, paddingHorizontal: 14, paddingVertical: 12,
+                        borderWidth: 1, borderColor: C.border,
+                      }}>
+                        {hasGap ? (
+                          <View>
+                            {preLines.map((ln, i) => ln.length > 0 && (
+                              <AppText key={`pre${i}`} style={[baseStyle, { marginBottom: 2 }]}>{ln}</AppText>
+                            ))}
+                            <View style={{ flexDirection: 'row', flexWrap: 'wrap', alignItems: 'flex-end' }}>
+                              {lastBefore.length > 0 && <AppText style={baseStyle}>{lastBefore}</AppText>}
+                              <AppText style={{ ...baseStyle, color: gapColor, textDecorationLine: 'underline' }}>{gapText}</AppText>
+                              {firstAfter.length > 0 && <AppText style={baseStyle}>{firstAfter}</AppText>}
+                            </View>
+                            {postLines.map((ln, i) => ln.length > 0 && (
+                              <AppText key={`post${i}`} style={[baseStyle, { marginTop: 2 }]}>{ln}</AppText>
+                            ))}
+                          </View>
+                        ) : (
+                          <AppText style={baseStyle}>{sentence}</AppText>
+                        )}
+                      </View>
+                    );
+                  })()}
 
                   {/* Sentence / Question — escondida pra multiple_choice (já no bubble) */}
                   {currentStep.exercise.type !== 'multiple_choice' && (
