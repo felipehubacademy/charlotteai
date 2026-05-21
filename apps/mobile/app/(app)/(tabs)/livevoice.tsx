@@ -617,7 +617,7 @@ export default function LiveVoiceTab() {
   // BottomBlock real ~64 (so 3 botoes 64x64 no estado "Chamando..."), nao 90.
   // E ajuste fino +30px porque medicao visual no iPhone 15 Pro mostrou
   // a Charlotte ficar um pouco acima do alinhamento perfeito com a modal.
-  const modalAvatarCenterY = insets.top + 24 + 50 + Math.max(0, (innerH - 474) / 2) + 180 + 30;
+  const modalAvatarCenterY = insets.top + 24 + 50 + Math.max(0, (innerH - 474) / 2) + 180 + 12;
   const avatarTopOffset = modalAvatarCenterY - 74;
 
   return (
