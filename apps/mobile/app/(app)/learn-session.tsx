@@ -1009,7 +1009,7 @@ export default function LearnSessionScreen() {
     if (params.reviewId) {
       const perfect = sessionErrors === 0;
       return (
-        <SafeAreaView style={{ flex: 1, backgroundColor: C.card }} edges={['top', 'left', 'right', 'bottom']}>
+        <SafeAreaView style={{ flex: 1, backgroundColor: C.card }} edges={['top', 'left', 'right']}>
           <View style={{ flex: 1, alignItems: 'center', justifyContent: 'center', padding: 32 }}>
             {/* Ícone */}
             <View style={{
@@ -1095,7 +1095,7 @@ export default function LearnSessionScreen() {
     const hasNextTopic = nextModuleIdx < modules.length && modules[nextModuleIdx]?.topics[nextTopicIdx] !== undefined;
 
     return (
-      <SafeAreaView style={{ flex: 1, backgroundColor: C.card }} edges={['top', 'left', 'right', 'bottom']}>
+      <SafeAreaView style={{ flex: 1, backgroundColor: C.card }} edges={['top', 'left', 'right']}>
         <View style={{ flex: 1, alignItems: 'center', justifyContent: 'center', padding: 32 }}>
           <View style={{
             width: 80, height: 80, borderRadius: 40,
@@ -1148,7 +1148,7 @@ export default function LearnSessionScreen() {
   if (!currentStep) return null;
 
   return (
-    <SafeAreaView style={{ flex: 1, backgroundColor: C.card }} edges={['top', 'left', 'right', 'bottom']}>
+    <SafeAreaView style={{ flex: 1, backgroundColor: C.card }} edges={['top', 'left', 'right']}>
 
       {/* ── Header ── */}
       <View style={{
@@ -1238,18 +1238,16 @@ export default function LearnSessionScreen() {
                 </AppText>
               </View>
 
-              {/* Charlotte canto-esquerdo + texto da pergunta ao lado (Duo style).
-                  Container 16px mais curto + video deslocado -8 corta artefatos
-                  do topo/fundo do frame (mesma técnica usada no Live Voice). */}
-              {/* Charlotte canto-esquerdo SEMPRE (todos os tipos). Bubble só
-                  pra multiple_choice (outros tipos têm o próprio render). */}
-              <View style={{ flexDirection: 'row', alignItems: 'center', gap: 10, marginBottom: 18 }}>
+              {/* Row: Charlotte LEFT + sentence/passage RIGHT (Duo style).
+                  Bubble pra multiple_choice; fill_gap/word_bank/etc usam
+                  o render próprio (inline-gap, plain text, passage). */}
+              <View style={{ flexDirection: 'row', alignItems: 'flex-start', gap: 10, marginBottom: 18 }}>
                 <View style={{ width: 110, alignItems: 'center' }}>
-                  <View style={{ width: 110, height: 175, overflow: 'hidden' }}>
+                  <View style={{ width: 110, height: 195 }}>
                     <VideoView
                       player={showCheering ? cheerPlayer : idlePlayer}
-                      style={{ width: 110, height: 190, marginTop: -8, backgroundColor: 'transparent' }}
-                      contentFit="cover"
+                      style={{ width: 110, height: 195, backgroundColor: 'transparent' }}
+                      contentFit="contain"
                       nativeControls={false}
                       allowsFullscreen={false}
                       allowsPictureInPicture={false}
@@ -1263,33 +1261,34 @@ export default function LearnSessionScreen() {
                     transform: [{ scaleY: 0.4 }],
                   }} />
                 </View>
-                {/* Bubble com sentence — só multiple_choice */}
-                {currentStep.exercise.type === 'multiple_choice' && !!currentStep.exercise.sentence && (
-                  <View style={{
-                    flex: 1, backgroundColor: '#FFF',
-                    borderRadius: 14, paddingHorizontal: 14, paddingVertical: 12,
-                    borderWidth: 1, borderColor: C.border,
-                  }}>
-                    <AppText style={{ fontSize: 16, color: C.navy, fontWeight: '700', lineHeight: 22 }}>
-                      {currentStep.exercise.sentence}
-                    </AppText>
-                  </View>
-                )}
-              </View>
 
-              {/* Passage */}
-              {currentStep.exercise.type === 'read_answer' && currentStep.exercise.passage && (
-                <View style={{ backgroundColor: C.ghost, borderRadius: 14, padding: 18, marginBottom: 20, borderLeftWidth: 3, borderLeftColor: accent }}>
-                  {isPortuguese
-                    ? <TranslatableText text={currentStep.exercise.passage} style={{ fontSize: 15, color: C.navy, lineHeight: 24 }} />
-                    : <AppText style={{ fontSize: 15, color: C.navy, lineHeight: 24 }}>{currentStep.exercise.passage}</AppText>
-                  }
-                </View>
-              )}
+                {/* Right col: passage + sentence/question */}
+                <View style={{ flex: 1 }}>
+                  {/* Passage (read_answer) */}
+                  {currentStep.exercise.type === 'read_answer' && currentStep.exercise.passage && (
+                    <View style={{ backgroundColor: C.ghost, borderRadius: 14, padding: 14, marginBottom: 12, borderLeftWidth: 3, borderLeftColor: accent }}>
+                      {isPortuguese
+                        ? <TranslatableText text={currentStep.exercise.passage} style={{ fontSize: 14, color: C.navy, lineHeight: 22 }} />
+                        : <AppText style={{ fontSize: 14, color: C.navy, lineHeight: 22 }}>{currentStep.exercise.passage}</AppText>
+                      }
+                    </View>
+                  )}
 
-              {/* Sentence / Question — escondida pra multiple_choice
-                  (já renderizada no balão ao lado da Charlotte acima). */}
-              {currentStep.exercise.type !== 'multiple_choice' && (
+                  {/* Bubble com sentence — só multiple_choice */}
+                  {currentStep.exercise.type === 'multiple_choice' && !!currentStep.exercise.sentence && (
+                    <View style={{
+                      backgroundColor: '#FFF',
+                      borderRadius: 14, paddingHorizontal: 14, paddingVertical: 12,
+                      borderWidth: 1, borderColor: C.border,
+                    }}>
+                      <AppText style={{ fontSize: 16, color: C.navy, fontWeight: '700', lineHeight: 22 }}>
+                        {currentStep.exercise.sentence}
+                      </AppText>
+                    </View>
+                  )}
+
+                  {/* Sentence / Question — escondida pra multiple_choice (já no bubble) */}
+                  {currentStep.exercise.type !== 'multiple_choice' && (
               (currentStep.exercise.type === 'fill_gap' || currentStep.exercise.type === 'word_bank') ? (
                 /* ── Fill-gap & Word-bank: sentence with inline gap ── */
                 (() => {
@@ -1385,6 +1384,8 @@ export default function LearnSessionScreen() {
                 </AppText>
               )
               )}
+                </View>{/* /right col */}
+              </View>{/* /row Charlotte + question */}
 
               {/* Multiple choice */}
               {currentStep.exercise.type === 'multiple_choice' && (
@@ -1852,7 +1853,7 @@ export default function LearnSessionScreen() {
         {/* Sem footer branco / border-top pra grammar: visualmente integral com o body. */}
         <View style={{
           paddingHorizontal: 20, paddingTop: 12,
-          paddingBottom: Platform.OS === 'ios' ? 28 : 16,
+          paddingBottom: insets.bottom + 12,
           backgroundColor: currentStep.kind === 'grammar' ? '#FAF9FF' : C.card,
           borderTopWidth: currentStep.kind === 'grammar' ? 0 : 1,
           borderTopColor: C.border,
