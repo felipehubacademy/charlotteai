@@ -1191,6 +1191,7 @@ export default function LearnSessionScreen() {
           contentContainerStyle={{ padding: 20, paddingBottom: currentStep.kind === 'pronunciation' && pronStatus === 'result' ? 300 : 24, flexGrow: 1 }}
           keyboardShouldPersistTaps="handled"
           showsVerticalScrollIndicator={false}
+          scrollEnabled={currentStep.kind !== 'grammar'}
         >
           {/* ── Progress ── */}
           <View style={{ marginBottom: 20 }}>
@@ -1238,41 +1239,41 @@ export default function LearnSessionScreen() {
               {/* Charlotte canto-esquerdo + texto da pergunta ao lado (Duo style).
                   Container 16px mais curto + video deslocado -8 corta artefatos
                   do topo/fundo do frame (mesma técnica usada no Live Voice). */}
-              {currentStep.exercise.type === 'multiple_choice' && (
-                <View style={{ flexDirection: 'row', alignItems: 'center', gap: 10, marginBottom: 18 }}>
-                  <View style={{ width: 110, alignItems: 'center' }}>
-                    <View style={{ width: 110, height: 175, overflow: 'hidden' }}>
-                      <VideoView
-                        player={showCheering ? cheerPlayer : idlePlayer}
-                        style={{ width: 110, height: 190, marginTop: -8, backgroundColor: 'transparent' }}
-                        contentFit="cover"
-                        nativeControls={false}
-                        allowsFullscreen={false}
-                        allowsPictureInPicture={false}
-                      />
-                    </View>
-                    {/* Sombra elíptica abaixo dos pés */}
-                    <View style={{
-                      width: 80, height: 10, marginTop: -2,
-                      borderRadius: 60,
-                      backgroundColor: 'rgba(22,21,58,0.16)',
-                      transform: [{ scaleY: 0.4 }],
-                    }} />
+              {/* Charlotte canto-esquerdo SEMPRE (todos os tipos). Bubble só
+                  pra multiple_choice (outros tipos têm o próprio render). */}
+              <View style={{ flexDirection: 'row', alignItems: 'center', gap: 10, marginBottom: 18 }}>
+                <View style={{ width: 110, alignItems: 'center' }}>
+                  <View style={{ width: 110, height: 175, overflow: 'hidden' }}>
+                    <VideoView
+                      player={showCheering ? cheerPlayer : idlePlayer}
+                      style={{ width: 110, height: 190, marginTop: -8, backgroundColor: 'transparent' }}
+                      contentFit="cover"
+                      nativeControls={false}
+                      allowsFullscreen={false}
+                      allowsPictureInPicture={false}
+                    />
                   </View>
-                  {/* Bubble: aparece quando tem sentence pra mostrar */}
-                  {!!currentStep.exercise.sentence && (
-                    <View style={{
-                      flex: 1, backgroundColor: '#FFF',
-                      borderRadius: 14, paddingHorizontal: 14, paddingVertical: 12,
-                      borderWidth: 1, borderColor: C.border,
-                    }}>
-                      <AppText style={{ fontSize: 16, color: C.navy, fontWeight: '700', lineHeight: 22 }}>
-                        {currentStep.exercise.sentence}
-                      </AppText>
-                    </View>
-                  )}
+                  {/* Sombra elíptica abaixo dos pés */}
+                  <View style={{
+                    width: 80, height: 10, marginTop: -2,
+                    borderRadius: 60,
+                    backgroundColor: 'rgba(22,21,58,0.16)',
+                    transform: [{ scaleY: 0.4 }],
+                  }} />
                 </View>
-              )}
+                {/* Bubble com sentence — só multiple_choice */}
+                {currentStep.exercise.type === 'multiple_choice' && !!currentStep.exercise.sentence && (
+                  <View style={{
+                    flex: 1, backgroundColor: '#FFF',
+                    borderRadius: 14, paddingHorizontal: 14, paddingVertical: 12,
+                    borderWidth: 1, borderColor: C.border,
+                  }}>
+                    <AppText style={{ fontSize: 16, color: C.navy, fontWeight: '700', lineHeight: 22 }}>
+                      {currentStep.exercise.sentence}
+                    </AppText>
+                  </View>
+                )}
+              </View>
 
               {/* Passage */}
               {currentStep.exercise.type === 'read_answer' && currentStep.exercise.passage && (
