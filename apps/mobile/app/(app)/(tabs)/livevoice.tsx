@@ -656,15 +656,22 @@ export default function LiveVoiceTab() {
               borderWidth: 1.5,
               borderColor: 'rgba(249,115,22,0.25)',
             }} />
-            <Image
-              source={require('@/assets/charlotte-avatar.png')}
-              style={{
-                width: 120, height: 120, borderRadius: 60,
-                borderWidth: 3, borderColor: '#F97316',
-                backgroundColor: '#16153A',
-              }}
-              contentFit="cover"
-            />
+            {/* Border num View pai: expo-image pode adicionar borderWidth
+                por fora da box, ficando maior que o RN Image do modal.
+                Wrapper de 120 com border 3 garante visual 114px de imagem
+                + 3px frame em cada lado = 120 total, igual ao modal. */}
+            <View style={{
+              width: 120, height: 120, borderRadius: 60,
+              borderWidth: 3, borderColor: '#F97316',
+              backgroundColor: '#16153A',
+              overflow: 'hidden',
+            }}>
+              <Image
+                source={require('@/assets/charlotte-avatar.png')}
+                style={{ width: '100%', height: '100%' }}
+                contentFit="cover"
+              />
+            </View>
           </View>
         </View>
       )}
