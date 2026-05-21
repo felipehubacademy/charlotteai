@@ -1332,7 +1332,9 @@ export default function LearnSessionScreen() {
                         <View key={`pre${i}`} style={{ marginBottom: 4 }}>{renderText(ln)}</View>
                       ))}
                       <View style={{ flexDirection: 'row', flexWrap: 'wrap', alignItems: 'flex-end' }}>
-                        {lastBefore.length > 0 && renderText(lastBefore, 'lastBefore')}
+                        {lastBefore.length > 0 && renderText(lastBefore.replace(/\s+$/, ''), 'lastBefore')}
+                        {/* TranslatableText engole espaço de ponta — injetamos manual */}
+                        {/\s$/.test(lastBefore) && <AppText style={ts}>{' '}</AppText>}
                         {isFillGapAnswering ? (
                           <TextInput
                             value={userAnswer}
@@ -1356,7 +1358,8 @@ export default function LearnSessionScreen() {
                             {gapAnswer}
                           </AppText>
                         )}
-                        {firstAfter.length > 0 && renderText(firstAfter, 'firstAfter')}
+                        {/^\s/.test(firstAfter) && <AppText style={ts}>{' '}</AppText>}
+                        {firstAfter.length > 0 && renderText(firstAfter.replace(/^\s+/, ''), 'firstAfter')}
                       </View>
                       {postLines.map((ln, i) => ln.length > 0 && (
                         <View key={`post${i}`} style={{ marginTop: 4 }}>{renderText(ln)}</View>
