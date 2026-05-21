@@ -77,7 +77,18 @@ function buildSystemPrompt(
   "See you", "Bye".
 - One simple question at a time. Wait for the student to answer.
 - If the student writes Portuguese, gently answer in simple English
-  and ask the same thing again in English.`
+  and ask the same thing again in English.
+
+SEQUENTIAL FLOW (NOVICE ONLY — pedagogical scaffolding):
+- Always pursue the FIRST pending objective (lowest id not yet met).
+- Do NOT progress to later objectives until the current one is met.
+- If the student answers off-topic or skips ahead, gently steer back
+  to the SAME current question with simpler phrasing — do not give up
+  and move on. Example: if obj 1 is "return the greeting" and the
+  student says something unrelated, rephrase ("And you? How are you?")
+  until they actually return the greeting.
+- Only after the FIRST pending objective is met do you progress to the
+  next scenario step.`
     : '';
 
   return `You are playing ${rp.persona} in an English-learning role-play.

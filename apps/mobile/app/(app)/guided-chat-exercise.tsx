@@ -14,7 +14,7 @@
 import React, { useState, useEffect, useRef, useCallback } from 'react';
 import {
   View, TouchableOpacity, StatusBar, ActivityIndicator,
-  KeyboardAvoidingView, Platform, TextInput,
+  KeyboardAvoidingView, Platform, TextInput, Animated,
 } from 'react-native';
 import { SafeAreaView, useSafeAreaInsets } from 'react-native-safe-area-context';
 import { router, useLocalSearchParams } from 'expo-router';
@@ -31,6 +31,7 @@ import { useAuth } from '@/hooks/useAuth';
 import { getModule } from '@/lib/curriculum-v2/loader';
 import type { Level as V2Level, GuidedChat } from '@/lib/curriculum-v2/types';
 import { useLearnProgressV2 } from '@/hooks/useLearnProgressV2';
+import { soundEngine } from '@/lib/soundEngine';
 
 const API_BASE_URL =
   (Constants.expoConfig?.extra?.apiBaseUrl as string) ?? 'https://charlotte.hubacademybr.com';
@@ -83,8 +84,21 @@ export default function GuidedChatExerciseScreen() {
   const [messages, setMessages]               = useState<Message[]>([]);
   const [draft,    setDraft]                  = useState('');
   const [isProcessing, setIsProcessing]       = useState(false);
-  const [objectivesMet, setObjectivesMet]     = useState<Set<number>>(new Set());
-  const [sessionComplete, setSessionComplete] = useState(false);
+  const [objectivesMet, setObjectivesMet]       = useState<Set<number>>(new Set());
+  const [sessionComplete, setSessionComplete]   = useState(false);
+  const [lastFiredObjective, setLastFiredObjective] = useState<number | null>(null);
+  const checkPulse = useRef(new Animated.Value(1)).current;
+
+  // Pulse animation no check que acabou de bater
+  useEffect(() => {
+    if (lastFiredObjective === null) return;
+    checkPulse.setValue(0.4);
+    Animated.spring(checkPulse, {
+      toValue: 1, friction: 3, tension: 80, useNativeDriver: true,
+    }).start();
+    const t = setTimeout(() => setLastFiredObjective(null), 800);
+    return () => clearTimeout(t);
+  }, [lastFiredObjective]); // eslint-disable-line react-hooks/exhaustive-deps
   const [hintsUsed, setHintsUsed]             = useState(0);
   const [hintVisible, setHintVisible]         = useState<string | null>(null);
   const [remainingSec, setRemainingSec]       = useState<number>(0);
@@ -215,18 +229,12 @@ export default function GuidedChatExerciseScreen() {
         .filter((n: any) => typeof n === 'number' && !objectivesMet.has(n));
       if (newOnes.length > 0) {
         stuckTurnsRef.current = 0;
+        Haptics.notificationAsync(Haptics.NotificationFeedbackType.Success);
+        soundEngine.play('answer_correct').catch(() => {});
+        setLastFiredObjective(newOnes[0]);
         setObjectivesMet(prev => {
           const next = new Set(prev);
-          let firedHaptic = false;
-          for (const n of newOnes) {
-            if (!next.has(n)) {
-              next.add(n);
-              if (!firedHaptic) {
-                Haptics.notificationAsync(Haptics.NotificationFeedbackType.Success);
-                firedHaptic = true;
-              }
-            }
-          }
+          for (const n of newOnes) next.add(n);
           return next;
         });
       } else {
@@ -327,12 +335,17 @@ export default function GuidedChatExerciseScreen() {
         </View>
         <View style={{ gap: 8 }}>
           {gc.objectives.map(obj => {
-            const met   = objectivesMet.has(obj.id);
-            const label = isPt ? obj.label_pt : (obj.label_en || obj.label_pt);
+            const met     = objectivesMet.has(obj.id);
+            const label   = isPt ? obj.label_pt : (obj.label_en || obj.label_pt);
+            const pulsing = met && lastFiredObjective === obj.id;
             return (
               <View key={obj.id} style={{ flexDirection: 'row', alignItems: 'center', gap: 10 }}>
                 {met
-                  ? <CheckCircle size={18} color={C.greenDark} weight="fill" />
+                  ? (
+                    <Animated.View style={{ transform: [{ scale: pulsing ? checkPulse : 1 }] }}>
+                      <CheckCircle size={18} color={C.greenDark} weight="fill" />
+                    </Animated.View>
+                  )
                   : <View style={{
                       width: 16, height: 16, borderRadius: 8,
                       borderWidth: 1.5, borderColor: C.navyLight, marginHorizontal: 1,
