@@ -353,6 +353,7 @@ export default function LearnSessionScreen() {
   // expo-image faz loop nativo; trocar source faz cross-fade entre idle/cheering.
   const idleSrc = require('@/assets/charlotte-livevoice.webp');
   const cheerSrc = require('@/assets/charlotte-goals.webp');
+  const errorSrc = require('@/assets/charlotte-error.webp');
 
   // WAV/PCM 16kHz mono — required by Azure Speech SDK (M4A causes NoMatch)
   const recorder = useAudioRecorder({
@@ -377,8 +378,10 @@ export default function LearnSessionScreen() {
   const accentBg     = !currentStep ? C.goldBg
     : currentStep.kind === 'grammar' ? C.goldBg : C.violetBg;
 
-  // Cheering toggle: liga quando acerta grammar, desliga ao avançar step.
+  // Estado da Charlotte no grammar: cheering (acertou), error (errou) ou idle.
   const showCheering = currentStep?.kind === 'grammar' && gStatus === 'submitted' && isCorrect === true;
+  const showError    = currentStep?.kind === 'grammar' && gStatus === 'submitted' && isCorrect === false;
+  const charlotteSrc = showCheering ? cheerSrc : showError ? errorSrc : idleSrc;
 
   // ── Explain error ────────────────────────────────────────────────────────────
   const fetchExplainError = useCallback(async () => {
@@ -1240,7 +1243,7 @@ export default function LearnSessionScreen() {
               <View style={{ flexDirection: 'row', alignItems: 'center', gap: 10, marginBottom: 18 }}>
                 <View style={{ width: CHAR_W, alignItems: 'center' }}>
                   <Image
-                    source={showCheering ? cheerSrc : idleSrc}
+                    source={charlotteSrc}
                     style={{ width: CHAR_W, height: CHAR_H }}
                     contentFit="contain"
                     transition={150}
