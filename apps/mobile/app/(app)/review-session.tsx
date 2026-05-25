@@ -540,7 +540,7 @@ export default function ReviewSession() {
           <View style={{ backgroundColor: C.card, borderRadius: 18, padding: 20, marginTop: 20, ...cardShadow, alignItems: 'center' }}>
             <AppText style={{ fontSize: 36, fontWeight: '800', color: levelAccent }}>+{totalXP} XP</AppText>
             <AppText style={{ fontSize: 13, color: C.navyMid, marginTop: 2 }}>
-              {isPt ? 'ganhos nesta sessao' : 'earned this session'}
+              {isPt ? 'ganhos nesta sessão' : 'earned this session'}
             </AppText>
           </View>
 
@@ -558,7 +558,7 @@ export default function ReviewSession() {
               </View>
               <View style={{ flex: 1 }}>
                 <AppText style={{ fontSize: 13, color: C.navyMid }}>
-                  {isPt ? 'Proxima revisao' : 'Next review'}
+                  {isPt ? 'Próxima revisão' : 'Next review'}
                 </AppText>
                 <AppText style={{ fontSize: 15, fontWeight: '700', color: C.navy, marginTop: 2 }}>
                   {nextReviewStr}
@@ -572,10 +572,10 @@ export default function ReviewSession() {
             <CharlotteAvatar size="sm" />
             <AppText style={{ flex: 1, fontSize: 14, color: C.navy, lineHeight: 21 }}>
               {hardCount === 0
-                ? (isPt ? 'Perfeito! Voce dominou todos os cards hoje. Continue assim!' : 'Perfect! You nailed every card today. Keep it up!')
+                ? (isPt ? 'Perfeito! Você dominou todos os cards hoje. Continue assim!' : 'Perfect! You nailed every card today. Keep it up!')
                 : hardCount <= Math.floor(items.length / 2)
-                  ? (isPt ? `Otimo trabalho! Os ${hardCount} dificeis voltarao em breve para mais pratica.` : `Great work! The ${hardCount} hard card${hardCount > 1 ? 's' : ''} will come back soon for more practice.`)
-                  : (isPt ? 'Esses topicos precisam de mais atencao. Vou traze-los de volta em breve!' : "These topics need more attention. I'll bring them back soon!")}
+                  ? (isPt ? `Ótimo trabalho! Os ${hardCount} difíceis voltarão em breve para mais prática.` : `Great work! The ${hardCount} hard card${hardCount > 1 ? 's' : ''} will come back soon for more practice.`)
+                  : (isPt ? 'Esses tópicos precisam de mais atenção. Vou trazê-los de volta em breve!' : "These topics need more attention. I'll bring them back soon!")}
             </AppText>
           </View>
 

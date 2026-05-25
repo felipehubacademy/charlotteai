@@ -816,14 +816,14 @@ function HomeScreenContent() {
         const pct = Math.min(100, Math.round((card.currentXP / card.lockXP) * 100));
         Alert.alert(
           card.title,
-          `Para desbloquear ${card.title} voce precisa de ${card.lockXP.toLocaleString('pt-BR')} XP na trilha.\n\nSeu progresso: ${card.currentXP.toLocaleString('pt-BR')} / ${card.lockXP.toLocaleString('pt-BR')} XP (${pct}%)\n\nFaltam ${xpLeft.toLocaleString('pt-BR')} XP. Continue praticando Gramatica!`,
+          `Para desbloquear ${card.title} você precisa de ${card.lockXP.toLocaleString('pt-BR')} XP na trilha.\n\nSeu progresso: ${card.currentXP.toLocaleString('pt-BR')} / ${card.lockXP.toLocaleString('pt-BR')} XP (${pct}%)\n\nFaltam ${xpLeft.toLocaleString('pt-BR')} XP. Continue praticando Gramática!`,
           [{ text: 'Entendido' }],
         );
       } else {
         Alert.alert(
           pt ? `Recurso ${card.lockLevel}` : `${card.lockLevel} Feature`,
           pt
-            ? `${card.title} sera desbloqueado ao atingir o nivel ${card.lockLevel}. Continue praticando!`
+            ? `${card.title} será desbloqueado ao atingir o nível ${card.lockLevel}. Continue praticando!`
             : `${card.title} unlocks when you reach the ${card.lockLevel} level. Keep practising!`,
           [{ text: pt ? 'Entendido' : 'Got it' }],
         );

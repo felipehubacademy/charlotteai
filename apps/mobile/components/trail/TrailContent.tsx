@@ -53,8 +53,8 @@ const TYPE_CYCLE: NodeType[] = ['grammar', 'speaking', 'roleplay', 'chat'];
 const NODE_CONFIG: Record<NodeType, {
   color: string; Icon: any; label: string; labelPt: string;
 }> = {
-  grammar:  { color: '#D97706', Icon: BookOpen,   label: 'Grammar',     labelPt: 'Gramatica'  },
-  speaking: { color: '#7C3AED', Icon: Microphone, label: 'Speaking',    labelPt: 'Pronuncia'  },
+  grammar:  { color: '#D97706', Icon: BookOpen,   label: 'Grammar',     labelPt: 'Gramática'  },
+  speaking: { color: '#7C3AED', Icon: Microphone, label: 'Speaking',    labelPt: 'Pronúncia'  },
   roleplay: { color: '#3D8800', Icon: Play,        label: 'Role-play',   labelPt: 'Role-play'  },
   chat:     { color: '#16153A', Icon: ChatCircle,  label: 'Guided Chat', labelPt: 'Chat Guiado' },
 };
@@ -316,7 +316,7 @@ function ModuleCard({
               fontSize: 11, fontWeight: '500', color: C.navyLight, marginBottom: 2,
             }}>
               {isLocked
-                ? (isPt ? `${data.totalCount} topicos · bloqueado` : `${data.totalCount} topics · locked`)
+                ? (isPt ? `${data.totalCount} tópicos · bloqueado` : `${data.totalCount} topics · locked`)
                 : `${data.completedCount} ${isPt ? 'de' : 'of'} ${data.totalCount} ${isPt ? 'concluidos' : 'completed'}`}
             </AppText>
             <AppText
@@ -393,7 +393,7 @@ export function TrailContent({ userId, level, onCurrentTopicRef, useV2 }: TrailC
   const v2Wrapped = useMemo(() => {
     if (!useV2) return null;
     const labels = {
-      grammar:  isPt ? 'Gramatica'            : 'Grammar',
+      grammar:  isPt ? 'Gramática'            : 'Grammar',
       speaking: isPt ? 'Listening & Speaking' : 'Listening & Speaking',
       roleplay: isPt ? 'Role-play'            : 'Role-play',
       chat:     isPt ? 'Guided Chat'          : 'Guided Chat',

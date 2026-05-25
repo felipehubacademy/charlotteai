@@ -721,7 +721,7 @@ export default function LearnSessionScreen() {
         // Novice: binário (acerto/erro). Inter/Advanced: 3 estados.
         if (level === 'Novice') {
           if (pct >= 70) {
-            feedback = { state: 'correct', xp: 15, message: isPortuguese ? 'Boa! Pronuncia ok.' : 'Nice! Pronunciation ok.' };
+            feedback = { state: 'correct', xp: 15, message: isPortuguese ? 'Boa! Pronúncia ok.' : 'Nice! Pronunciation ok.' };
             Haptics.notificationAsync(Haptics.NotificationFeedbackType.Success);
             soundEngine.play('answer_correct').catch(() => {});
           } else {
@@ -777,7 +777,7 @@ export default function LearnSessionScreen() {
         // Novice: binário (acerto/erro). Inter/Advanced: 3 estados.
         if (level === 'Novice') {
           if (pct >= 70) {
-            feedback = { state: 'correct', xp: 15, message: isPortuguese ? 'Boa! Pronuncia ok.' : 'Nice! Pronunciation ok.' };
+            feedback = { state: 'correct', xp: 15, message: isPortuguese ? 'Boa! Pronúncia ok.' : 'Nice! Pronunciation ok.' };
             Haptics.notificationAsync(Haptics.NotificationFeedbackType.Success);
             soundEngine.play('answer_correct').catch(() => {});
           } else {
@@ -835,7 +835,7 @@ export default function LearnSessionScreen() {
 
           let feedback: NonNullable<PronFeedback>;
           if (score >= 70) {
-            feedback = { state: 'correct', xp: 15, message: isPortuguese ? 'Otimo ritmo! Entonacao natural.' : 'Great rhythm! Natural intonation.' };
+            feedback = { state: 'correct', xp: 15, message: isPortuguese ? 'Ótimo ritmo! Entonação natural.' : 'Great rhythm! Natural intonation.' };
             Haptics.notificationAsync(Haptics.NotificationFeedbackType.Success);
             soundEngine.play('answer_correct').catch(() => {});
           } else if (score >= 45) {
@@ -1806,7 +1806,7 @@ export default function LearnSessionScreen() {
                   <TextInput
                     value={listenWriteAnswer}
                     onChangeText={setListenWriteAnswer}
-                    placeholder={isPortuguese ? 'Digite o que voce ouviu…' : 'Type what you heard…'}
+                    placeholder={isPortuguese ? 'Digite o que você ouviu…' : 'Type what you heard…'}
                     placeholderTextColor={C.navyLight}
                     editable={pronStatus === 'listening'}
                     style={{
