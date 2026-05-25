@@ -244,7 +244,7 @@ function LessonRow({
           alignItems: 'center', justifyContent: 'center',
         }}>
           <AppText style={{ fontSize: 11, fontWeight: '700', color: '#FFF' }}>
-            {isPt ? 'Comecar' : 'Start'}
+            {isPt ? 'Começar' : 'Start'}
           </AppText>
         </View>
       )}

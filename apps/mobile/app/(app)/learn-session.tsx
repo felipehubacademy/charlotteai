@@ -731,14 +731,14 @@ export default function LearnSessionScreen() {
             setSessionErrors(prev => prev + 1);
           }
         } else if (pct >= 85) {
-          feedback = { state: 'correct', xp: 15, message: isPortuguese ? 'Perfeito! Otima pronuncia.' : 'Perfect! Great pronunciation.' };
+          feedback = { state: 'correct', xp: 15, message: isPortuguese ? 'Perfeito! Ótima pronúncia.' : 'Perfect! Great pronunciation.' };
           Haptics.notificationAsync(Haptics.NotificationFeedbackType.Success);
           soundEngine.play('answer_correct').catch(() => {});
         } else if (pct >= 50) {
           feedback = { state: 'close', xp: 8, message: isPortuguese ? `Quase! Entendemos: "${transcript}". Tente de novo.` : `Close! We heard: "${transcript}". Try again.` };
           Haptics.notificationAsync(Haptics.NotificationFeedbackType.Warning);
         } else {
-          feedback = { state: 'error', xp: 2, message: isPortuguese ? 'Nao conseguimos entender. Fale mais perto do microfone.' : "We didn't catch that. Speak closer to the mic." };
+          feedback = { state: 'error', xp: 2, message: isPortuguese ? 'Não conseguimos entender. Fale mais perto do microfone.' : "We didn't catch that. Speak closer to the mic." };
           Haptics.notificationAsync(Haptics.NotificationFeedbackType.Error);
           soundEngine.play('answer_wrong').catch(() => {});
           setSessionErrors(prev => prev + 1);
@@ -787,14 +787,14 @@ export default function LearnSessionScreen() {
             setSessionErrors(prev => prev + 1);
           }
         } else if (pct >= 85) {
-          feedback = { state: 'correct', xp: 15, message: isPortuguese ? 'Perfeito! Otima pronuncia.' : 'Perfect! Great pronunciation.' };
+          feedback = { state: 'correct', xp: 15, message: isPortuguese ? 'Perfeito! Ótima pronúncia.' : 'Perfect! Great pronunciation.' };
           Haptics.notificationAsync(Haptics.NotificationFeedbackType.Success);
           soundEngine.play('answer_correct').catch(() => {});
         } else if (pct >= 50) {
           feedback = { state: 'close', xp: 8, message: isPortuguese ? `Quase! Entendemos: "${transcript}". Tente de novo.` : `Close! We heard: "${transcript}". Try again.` };
           Haptics.notificationAsync(Haptics.NotificationFeedbackType.Warning);
         } else {
-          feedback = { state: 'error', xp: 2, message: isPortuguese ? 'Nao conseguimos entender. Fale mais perto do microfone.' : "We didn't catch that. Speak closer to the mic." };
+          feedback = { state: 'error', xp: 2, message: isPortuguese ? 'Não conseguimos entender. Fale mais perto do microfone.' : "We didn't catch that. Speak closer to the mic." };
           Haptics.notificationAsync(Haptics.NotificationFeedbackType.Error);
           soundEngine.play('answer_wrong').catch(() => {});
           setSessionErrors(prev => prev + 1);
@@ -839,10 +839,10 @@ export default function LearnSessionScreen() {
             Haptics.notificationAsync(Haptics.NotificationFeedbackType.Success);
             soundEngine.play('answer_correct').catch(() => {});
           } else if (score >= 45) {
-            feedback = { state: 'close', xp: 8, message: isPortuguese ? 'Bom esforco! Tente acompanhar o ritmo da Charlotte mais de perto.' : "Good effort! Try to follow Charlotte's rhythm more closely." };
+            feedback = { state: 'close', xp: 8, message: isPortuguese ? 'Bom esforço! Tente acompanhar o ritmo da Charlotte mais de perto.' : "Good effort! Try to follow Charlotte's rhythm more closely." };
             Haptics.notificationAsync(Haptics.NotificationFeedbackType.Warning);
           } else {
-            feedback = { state: 'error', xp: 2, message: isPortuguese ? 'Tente de novo, acompanhando a velocidade e entonacao dela.' : 'Try again, matching her speed and intonation.' };
+            feedback = { state: 'error', xp: 2, message: isPortuguese ? 'Tente de novo, acompanhando a velocidade e entonação dela.' : 'Try again, matching her speed and intonation.' };
             Haptics.notificationAsync(Haptics.NotificationFeedbackType.Error);
             soundEngine.play('answer_wrong').catch(() => {});
             setSessionErrors(prev => prev + 1);
@@ -879,7 +879,7 @@ export default function LearnSessionScreen() {
     }
     const message = correct
       ? (isPortuguese ? 'Correto! Boa escuta.' : 'Correct! Great listening.')
-      : (isPortuguese ? 'Quase la — ouça novamente.' : 'Almost there — listen again.');
+      : (isPortuguese ? 'Quase lá — ouça novamente.' : 'Almost there — listen again.');
     showPronResult({ state: correct ? 'correct' : 'error', message, xp });
   };
 
@@ -1065,7 +1065,7 @@ export default function LearnSessionScreen() {
               style={{ backgroundColor: C.navy, borderRadius: 16, paddingVertical: 15, paddingHorizontal: 40, marginBottom: 16 }}
             >
               <AppText style={{ fontSize: 15, fontWeight: '800', color: '#FFF' }}>
-                {isPortuguese ? 'Voltar ao inicio' : 'Back to home'}
+                {isPortuguese ? 'Voltar ao início' : 'Back to home'}
               </AppText>
             </TouchableOpacity>
             <TouchableOpacity onPress={() => router.replace('/(app)/learn-trail')}>
@@ -1101,7 +1101,7 @@ export default function LearnSessionScreen() {
             <CheckCircle size={40} color={accent} weight="fill" />
           </View>
           <AppText style={{ fontSize: 24, fontWeight: '900', color: C.navy, marginBottom: 8, letterSpacing: -0.5 }}>
-            {isPortuguese ? 'Topico concluido!' : 'Topic complete!'}
+            {isPortuguese ? 'Tópico concluído!' : 'Topic complete!'}
           </AppText>
           <AppText style={{ fontSize: 15, color: C.navyMid, textAlign: 'center', lineHeight: 22, marginBottom: 8 }}>
             {topicTitle}
@@ -1704,8 +1704,8 @@ export default function LearnSessionScreen() {
                           }
                           const stressedWord = currentStep.phrase.stressed_word ?? '';
                           const message = correct
-                            ? (isPortuguese ? 'Exato! Essa e a palavra tonica.' : "Exactly! That's the stressed word.")
-                            : (isPortuguese ? `Quase! A palavra tonica e "${stressedWord}".` : `Almost! The stressed word is "${stressedWord}".`);
+                            ? (isPortuguese ? 'Exato! Essa é a palavra tônica.' : "Exactly! That's the stressed word.")
+                            : (isPortuguese ? `Quase! A palavra tônica é "${stressedWord}".` : `Almost! The stressed word is "${stressedWord}".`);
                           showPronResult({ state: correct ? 'correct' : 'error', message, xp });
                         }}
                         style={{
@@ -1783,8 +1783,8 @@ export default function LearnSessionScreen() {
                           }
                           const correctWord = currentStep.phrase.target === 'word2' ? currentStep.phrase.word2 : currentStep.phrase.word1;
                           const message = correct
-                            ? (isPortuguese ? 'Correto! Voce ouviu a diferenca.' : 'Correct! You heard the difference.')
-                            : (isPortuguese ? `Quase la — Charlotte disse "${correctWord}".` : `Not quite — Charlotte said "${correctWord}".`);
+                            ? (isPortuguese ? 'Correto! Você ouviu a diferença.' : 'Correct! You heard the difference.')
+                            : (isPortuguese ? `Quase lá — Charlotte disse "${correctWord}".` : `Not quite — Charlotte said "${correctWord}".`);
                           showPronResult({ state: correct ? 'correct' : 'error', message, xp });
                         }}
                         style={{
@@ -1900,7 +1900,7 @@ export default function LearnSessionScreen() {
             pronStatus === 'error' ? (
               <TouchableOpacity onPress={handleNext}
                 style={{ backgroundColor: C.navy, borderRadius: 16, paddingVertical: 15, flexDirection: 'row', alignItems: 'center', justifyContent: 'center', gap: 8 }}>
-                <AppText style={{ fontSize: 15, fontWeight: '800', color: '#FFF' }}>{stepIdx + 1 >= totalSteps ? (isPortuguese ? 'Concluir' : 'Finish') : (isPortuguese ? 'Proximo' : 'Next')}</AppText>
+                <AppText style={{ fontSize: 15, fontWeight: '800', color: '#FFF' }}>{stepIdx + 1 >= totalSteps ? (isPortuguese ? 'Concluir' : 'Finish') : (isPortuguese ? 'Próximo' : 'Next')}</AppText>
                 {stepIdx + 1 < totalSteps && <ArrowRight size={18} color="#FFF" weight="bold" />}
               </TouchableOpacity>
             ) : pronStatus === 'loading_audio' ? (
@@ -1938,7 +1938,7 @@ export default function LearnSessionScreen() {
           {currentStep.kind === 'pronunciation' && currentStep.phrase.type === 'listen_write' && pronStatus === 'error' && (
             <TouchableOpacity onPress={handleNext}
               style={{ backgroundColor: C.navy, borderRadius: 16, paddingVertical: 15, flexDirection: 'row', alignItems: 'center', justifyContent: 'center', gap: 8 }}>
-              <AppText style={{ fontSize: 15, fontWeight: '800', color: '#FFF' }}>{stepIdx + 1 >= totalSteps ? (isPortuguese ? 'Concluir' : 'Finish') : (isPortuguese ? 'Proximo' : 'Next')}</AppText>
+              <AppText style={{ fontSize: 15, fontWeight: '800', color: '#FFF' }}>{stepIdx + 1 >= totalSteps ? (isPortuguese ? 'Concluir' : 'Finish') : (isPortuguese ? 'Próximo' : 'Next')}</AppText>
               {stepIdx + 1 < totalSteps && <ArrowRight size={18} color="#FFF" weight="bold" />}
             </TouchableOpacity>
           )}
@@ -1948,7 +1948,7 @@ export default function LearnSessionScreen() {
             (pronStatus === 'retry' || pronStatus === 'error') ? (
               <TouchableOpacity onPress={handleNext}
                 style={{ backgroundColor: C.navy, borderRadius: 16, paddingVertical: 15, flexDirection: 'row', alignItems: 'center', justifyContent: 'center', gap: 8 }}>
-                <AppText style={{ fontSize: 15, fontWeight: '800', color: '#FFF' }}>{stepIdx + 1 >= totalSteps ? (isPortuguese ? 'Concluir' : 'Finish') : (isPortuguese ? 'Proximo' : 'Next')}</AppText>
+                <AppText style={{ fontSize: 15, fontWeight: '800', color: '#FFF' }}>{stepIdx + 1 >= totalSteps ? (isPortuguese ? 'Concluir' : 'Finish') : (isPortuguese ? 'Próximo' : 'Next')}</AppText>
                 {stepIdx + 1 < totalSteps && <ArrowRight size={18} color="#FFF" weight="bold" />}
               </TouchableOpacity>
             ) : pronStatus === 'loading_audio' ? (
@@ -1985,7 +1985,7 @@ export default function LearnSessionScreen() {
           {currentStep.kind === 'pronunciation' && (currentStep.phrase.type === 'minimal_pairs' || currentStep.phrase.type === 'sentence_stress') && pronStatus === 'error' && (
             <TouchableOpacity onPress={handleNext}
               style={{ backgroundColor: C.navy, borderRadius: 16, paddingVertical: 15, flexDirection: 'row', alignItems: 'center', justifyContent: 'center', gap: 8 }}>
-              <AppText style={{ fontSize: 15, fontWeight: '800', color: '#FFF' }}>{stepIdx + 1 >= totalSteps ? (isPortuguese ? 'Concluir' : 'Finish') : (isPortuguese ? 'Proximo' : 'Next')}</AppText>
+              <AppText style={{ fontSize: 15, fontWeight: '800', color: '#FFF' }}>{stepIdx + 1 >= totalSteps ? (isPortuguese ? 'Concluir' : 'Finish') : (isPortuguese ? 'Próximo' : 'Next')}</AppText>
               {stepIdx + 1 < totalSteps && <ArrowRight size={18} color="#FFF" weight="bold" />}
             </TouchableOpacity>
           )}
@@ -2101,7 +2101,7 @@ export default function LearnSessionScreen() {
         const title       = isCorrectState
           ? (isPortuguese ? 'Correto!' : 'Correct!')
           : isCloseState
-          ? (isPortuguese ? 'Quase la!' : 'Almost!')
+          ? (isPortuguese ? 'Quase lá!' : 'Almost!')
           : (isPortuguese ? 'Tente de novo' : 'Try again');
         const canRetry = (currentStep.phrase.type === 'repeat' || currentStep.phrase.type === 'shadowing') && !isCorrectState;
         return (
@@ -2152,7 +2152,7 @@ export default function LearnSessionScreen() {
               <AppText style={{ fontSize: 15, fontWeight: '800', color: '#FFF' }}>
                 {canRetry && !isCorrectState
                   ? (isPortuguese ? 'Tentar de novo' : 'Try again')
-                  : stepIdx + 1 >= totalSteps ? (isPortuguese ? 'Concluir' : 'Finish') : (isPortuguese ? 'Proximo' : 'Next')}
+                  : stepIdx + 1 >= totalSteps ? (isPortuguese ? 'Concluir' : 'Finish') : (isPortuguese ? 'Próximo' : 'Next')}
               </AppText>
               {(!canRetry || isCorrectState) && stepIdx + 1 < totalSteps && <ArrowRight size={18} color="#FFF" weight="bold" />}
             </TouchableOpacity>

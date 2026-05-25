@@ -508,7 +508,7 @@ export default function ReviewSession() {
             }}
           >
             <AppText style={{ color: '#FFFFFF', fontSize: 16, fontWeight: '800' }}>
-              {isPt ? 'Voltar ao inicio' : 'Back to Home'}
+              {isPt ? 'Voltar ao início' : 'Back to Home'}
             </AppText>
           </TouchableOpacity>
         </View>
@@ -527,11 +527,11 @@ export default function ReviewSession() {
               <Trophy size={32} color={levelAccent} weight="fill" />
             </View>
             <AppText style={{ fontSize: 24, fontWeight: '800', color: C.navy, textAlign: 'center' }}>
-              {isPt ? 'Sessao concluida!' : 'Session complete!'}
+              {isPt ? 'Sessão concluída!' : 'Session complete!'}
             </AppText>
             <AppText style={{ fontSize: 15, color: C.navyMid, marginTop: 6, textAlign: 'center' }}>
               {isPt
-                ? `Voce revisou ${items.length} ${items.length === 1 ? 'card' : 'cards'}`
+                ? `Você revisou ${items.length} ${items.length === 1 ? 'card' : 'cards'}`
                 : `You reviewed ${items.length} ${items.length === 1 ? 'card' : 'cards'}`}
             </AppText>
           </View>
@@ -590,7 +590,7 @@ export default function ReviewSession() {
             }}
           >
             <AppText style={{ color: '#FFFFFF', fontSize: 16, fontWeight: '800' }}>
-              {isPt ? 'Voltar ao inicio' : 'Back to Home'}
+              {isPt ? 'Voltar ao início' : 'Back to Home'}
             </AppText>
           </TouchableOpacity>
 
@@ -828,8 +828,8 @@ function StatCard({ label, value, color, bg }: { label: string; value: number; c
 function cardTypeLabel(type: CardType, isPt: boolean): string {
   switch (type) {
     case 'gap_fill':           return isPt ? 'Lacuna'    : 'Fill the Blank';
-    case 'reverse':            return isPt ? 'Producao'  : 'Production';
-    case 'context_guess':      return isPt ? 'Multipla escolha' : 'Multiple Choice';
+    case 'reverse':            return isPt ? 'Produção'  : 'Production';
+    case 'context_guess':      return isPt ? 'Múltipla escolha' : 'Multiple Choice';
     case 'charlotte_challenge': return isPt ? 'Desafio'  : 'Challenge';
     default:                   return type;
   }
@@ -838,11 +838,11 @@ function cardTypeLabel(type: CardType, isPt: boolean): string {
 function cardTip(type: CardType, isPt: boolean): string {
   switch (type) {
     case 'gap_fill':
-      return isPt ? 'Digite apenas a palavra ou expressao que preenche o espaco.' : 'Type only the word or phrase that fills the blank.';
+      return isPt ? 'Digite apenas a palavra ou expressão que preenche o espaço.' : 'Type only the word or phrase that fills the blank.';
     case 'reverse':
-      return isPt ? 'Tente lembrar a expressao sem olhar as dicas!' : 'Try to recall the expression without looking at hints!';
+      return isPt ? 'Tente lembrar a expressão sem olhar as dicas!' : 'Try to recall the expression without looking at hints!';
     case 'charlotte_challenge':
-      return isPt ? 'Escreva a versao correta da frase.' : 'Write the corrected version of the sentence.';
+      return isPt ? 'Escreva a versão correta da frase.' : 'Write the corrected version of the sentence.';
     default:
       return '';
   }
