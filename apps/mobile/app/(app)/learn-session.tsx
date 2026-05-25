@@ -586,7 +586,7 @@ export default function LearnSessionScreen() {
       if (wordOrderPlaced.length === 0) return;
       const answerText = wordOrderPlaced.join(' ');
       const correct = checkGrammar(ex, answerText);
-      const xp = correct ? 10 : 2;
+      const xp = correct ? 10 : 0;
       setIsCorrect(correct);
       setGStatus('submitted');
       setSessionXP(prev => prev + xp);
@@ -601,7 +601,7 @@ export default function LearnSessionScreen() {
     if (!userAnswer.trim()) return;
 
     const correct = checkGrammar(ex, userAnswer);
-    const xp = correct ? 10 : 2;
+    const xp = correct ? 10 : 0;
     setIsCorrect(correct);
     setGStatus('submitted');
     setSessionXP(prev => prev + xp);
@@ -725,7 +725,7 @@ export default function LearnSessionScreen() {
             Haptics.notificationAsync(Haptics.NotificationFeedbackType.Success);
             soundEngine.play('answer_correct').catch(() => {});
           } else {
-            feedback = { state: 'error', xp: 2, message: isPortuguese ? `Tente de novo. Entendemos: "${transcript}".` : `Try again. We heard: "${transcript}".` };
+            feedback = { state: 'error', xp: 0, message: isPortuguese ? `Tente de novo. Entendemos: "${transcript}".` : `Try again. We heard: "${transcript}".` };
             Haptics.notificationAsync(Haptics.NotificationFeedbackType.Error);
             soundEngine.play('answer_wrong').catch(() => {});
             setSessionErrors(prev => prev + 1);
@@ -738,7 +738,7 @@ export default function LearnSessionScreen() {
           feedback = { state: 'close', xp: 8, message: isPortuguese ? `Quase! Entendemos: "${transcript}". Tente de novo.` : `Close! We heard: "${transcript}". Try again.` };
           Haptics.notificationAsync(Haptics.NotificationFeedbackType.Warning);
         } else {
-          feedback = { state: 'error', xp: 2, message: isPortuguese ? 'Não conseguimos entender. Fale mais perto do microfone.' : "We didn't catch that. Speak closer to the mic." };
+          feedback = { state: 'error', xp: 0, message: isPortuguese ? 'Não conseguimos entender. Fale mais perto do microfone.' : "We didn't catch that. Speak closer to the mic." };
           Haptics.notificationAsync(Haptics.NotificationFeedbackType.Error);
           soundEngine.play('answer_wrong').catch(() => {});
           setSessionErrors(prev => prev + 1);
@@ -781,7 +781,7 @@ export default function LearnSessionScreen() {
             Haptics.notificationAsync(Haptics.NotificationFeedbackType.Success);
             soundEngine.play('answer_correct').catch(() => {});
           } else {
-            feedback = { state: 'error', xp: 2, message: isPortuguese ? `Tente de novo. Entendemos: "${transcript}".` : `Try again. We heard: "${transcript}".` };
+            feedback = { state: 'error', xp: 0, message: isPortuguese ? `Tente de novo. Entendemos: "${transcript}".` : `Try again. We heard: "${transcript}".` };
             Haptics.notificationAsync(Haptics.NotificationFeedbackType.Error);
             soundEngine.play('answer_wrong').catch(() => {});
             setSessionErrors(prev => prev + 1);
@@ -794,7 +794,7 @@ export default function LearnSessionScreen() {
           feedback = { state: 'close', xp: 8, message: isPortuguese ? `Quase! Entendemos: "${transcript}". Tente de novo.` : `Close! We heard: "${transcript}". Try again.` };
           Haptics.notificationAsync(Haptics.NotificationFeedbackType.Warning);
         } else {
-          feedback = { state: 'error', xp: 2, message: isPortuguese ? 'Não conseguimos entender. Fale mais perto do microfone.' : "We didn't catch that. Speak closer to the mic." };
+          feedback = { state: 'error', xp: 0, message: isPortuguese ? 'Não conseguimos entender. Fale mais perto do microfone.' : "We didn't catch that. Speak closer to the mic." };
           Haptics.notificationAsync(Haptics.NotificationFeedbackType.Error);
           soundEngine.play('answer_wrong').catch(() => {});
           setSessionErrors(prev => prev + 1);
@@ -842,7 +842,7 @@ export default function LearnSessionScreen() {
             feedback = { state: 'close', xp: 8, message: isPortuguese ? 'Bom esforço! Tente acompanhar o ritmo da Charlotte mais de perto.' : "Good effort! Try to follow Charlotte's rhythm more closely." };
             Haptics.notificationAsync(Haptics.NotificationFeedbackType.Warning);
           } else {
-            feedback = { state: 'error', xp: 2, message: isPortuguese ? 'Tente de novo, acompanhando a velocidade e entonação dela.' : 'Try again, matching her speed and intonation.' };
+            feedback = { state: 'error', xp: 0, message: isPortuguese ? 'Tente de novo, acompanhando a velocidade e entonação dela.' : 'Try again, matching her speed and intonation.' };
             Haptics.notificationAsync(Haptics.NotificationFeedbackType.Error);
             soundEngine.play('answer_wrong').catch(() => {});
             setSessionErrors(prev => prev + 1);
@@ -866,7 +866,7 @@ export default function LearnSessionScreen() {
     const matched = words.filter(w => u.includes(w)).length;
     const correct = matched >= Math.ceil(words.length * 0.7);
     setListenWriteCorrect(correct);
-    const xp = correct ? 8 : 2;
+    const xp = correct ? 8 : 0;
     saveExercise({ level, moduleIndex, topicIndex, exerciseType: 'listen_write', isCorrect: correct, xpEarned: xp,
       exerciseData: { question: currentStep.phrase.text, correctAnswer: currentStep.phrase.text, userAnswer: listenWriteAnswer.trim() } });
     if (correct) {
@@ -1692,7 +1692,7 @@ export default function LearnSessionScreen() {
                           const correct = word === currentStep.phrase.stressed_word;
                           setStressTapped(word);
                           setStressCorrect(correct);
-                          const xp = correct ? 8 : 2;
+                          const xp = correct ? 8 : 0;
                           saveExercise({ level, moduleIndex, topicIndex, exerciseType: 'sentence_stress', isCorrect: correct, xpEarned: xp });
                           if (correct) {
                             Haptics.notificationAsync(Haptics.NotificationFeedbackType.Success);
@@ -1771,7 +1771,7 @@ export default function LearnSessionScreen() {
                           const correct = key === currentStep.phrase.target;
                           setMpChosen(key);
                           setMpCorrect(correct);
-                          const xp = correct ? 8 : 2;
+                          const xp = correct ? 8 : 0;
                           saveExercise({ level, moduleIndex, topicIndex, exerciseType: 'minimal_pairs', isCorrect: correct, xpEarned: xp });
                           if (correct) {
                             Haptics.notificationAsync(Haptics.NotificationFeedbackType.Success);
