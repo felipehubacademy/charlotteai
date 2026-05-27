@@ -828,13 +828,23 @@ export default function LearnSessionScreen() {
         if (!res.ok) throw new Error('Assessment failed');
         const data = await res.json();
 
-        if (!data.success && data.shouldRetry) { setPronStatus('retry'); return; }
+        if (!data.success && data.shouldRetry) {
+          showPronResult({ state: 'error', xp: 0, message: isPortuguese
+            ? 'Não conseguimos avaliar sua pronúncia. Tente falar mais claramente.'
+            : "We couldn't assess your pronunciation. Try speaking more clearly." });
+          return;
+        }
 
         if (data.result) {
           const score        = data.result.pronunciationScore ?? 0;
           const completeness = data.result.completenessScore  ?? 0;
           const allZero      = score === 0 && (data.result.accuracyScore ?? 0) === 0 && completeness === 0;
-          if (allZero || completeness < 35) { setPronStatus('retry'); return; }
+          if (allZero || completeness < 35) {
+          showPronResult({ state: 'error', xp: 0, message: isPortuguese
+            ? 'Não conseguimos avaliar sua pronúncia. Tente falar mais claramente.'
+            : "We couldn't assess your pronunciation. Try speaking more clearly." });
+          return;
+        }
 
           let feedback: NonNullable<PronFeedback>;
           if (score >= 70) {
@@ -1190,7 +1200,7 @@ export default function LearnSessionScreen() {
           contentContainerStyle={{ padding: 20, paddingBottom: currentStep.kind === 'pronunciation' && pronStatus === 'result' ? 300 : 24, flexGrow: 1 }}
           keyboardShouldPersistTaps="handled"
           showsVerticalScrollIndicator={false}
-          scrollEnabled={currentStep.kind !== 'grammar'}
+          scrollEnabled={currentStep.kind === 'pronunciation' && currentStep.phrase?.type === 'listen_write'}
         >
           {/* ── Progress ── */}
           <View style={{ marginBottom: 20 }}>
@@ -1642,25 +1652,22 @@ export default function LearnSessionScreen() {
             </View>
           )}
 
-          {/* ── PRONUNCIATION CARD ── */}
+          {/* ── PRONUNCIATION — sem card, mesmo padrao do grammar (direto na lavanda) ── */}
           {currentStep.kind === 'pronunciation' && (
-            <View style={{ backgroundColor: C.card, borderRadius: 20, padding: 24, borderWidth: 1, borderColor: C.border, ...shadow }}>
-              {/* Charlotte instruction */}
-              <View style={{ flexDirection: 'row', alignItems: 'flex-start', gap: 10, marginBottom: 20 }}>
-                <CharlotteAvatar size="xs" />
-                <View style={{ flex: 1, backgroundColor: accentBg, borderRadius: 14, borderBottomLeftRadius: 4, paddingHorizontal: 14, paddingVertical: 14 }}>
-                  <AppText style={{ fontSize: 14, color: accent, fontWeight: '700' }}>
-                    {currentStep.phrase.type === 'repeat'
-                      ? (isPortuguese ? 'Ouça a Charlotte e repita a frase.'        : 'Listen to Charlotte and repeat the phrase.')
-                      : currentStep.phrase.type === 'shadowing'
-                      ? (isPortuguese ? 'Siga junto com Charlotte — foco no ritmo e entonação.' : 'Follow along with Charlotte\'s rhythm and prosody.')
-                      : currentStep.phrase.type === 'minimal_pairs'
-                      ? (isPortuguese ? 'Ouça a Charlotte e toque na palavra que ela disse.' : 'Listen to Charlotte and tap the word you heard.')
-                      : currentStep.phrase.type === 'sentence_stress'
-                      ? (isPortuguese ? 'Toque na palavra que tem a sílaba mais forte na frase.' : 'Tap the word that carries the strongest stress in this sentence.')
-                      : (isPortuguese ? 'Ouça a Charlotte e escreva o que ouviu.'   : 'Listen to Charlotte and write what you hear.')}
-                  </AppText>
-                </View>
+            <View>
+              {/* Bubble centralizada (sem avatar embedded) */}
+              <View style={{ backgroundColor: accentBg, borderRadius: 14, paddingHorizontal: 14, paddingVertical: 14, marginBottom: 18 }}>
+                <AppText style={{ fontSize: 14, color: accent, fontWeight: '700', textAlign: 'center' }}>
+                  {currentStep.phrase.type === 'repeat'
+                    ? (isPortuguese ? 'Ouça a Charlotte e repita a frase.'        : 'Listen to Charlotte and repeat the phrase.')
+                    : currentStep.phrase.type === 'shadowing'
+                    ? (isPortuguese ? 'Siga junto com Charlotte — foco no ritmo e entonação.' : 'Follow along with Charlotte\'s rhythm and prosody.')
+                    : currentStep.phrase.type === 'minimal_pairs'
+                    ? (isPortuguese ? 'Ouça a Charlotte e toque na palavra que ela disse.' : 'Listen to Charlotte and tap the word you heard.')
+                    : currentStep.phrase.type === 'sentence_stress'
+                    ? (isPortuguese ? 'Toque na palavra que tem a sílaba mais forte na frase.' : 'Tap the word that carries the strongest stress in this sentence.')
+                    : (isPortuguese ? 'Ouça a Charlotte e escreva o que ouviu.'   : 'Listen to Charlotte and write what you hear.')}
+                </AppText>
               </View>
 
               {/* Focus label */}
@@ -1845,43 +1852,16 @@ export default function LearnSessionScreen() {
                 </AppText>
               )}
 
-              {/* Retry prompt — shown when assessment returned all-zero scores */}
-              {pronStatus === 'retry' && (
-                <View style={{
-                  backgroundColor: '#FFF7ED', borderRadius: 14, padding: 16,
-                  borderWidth: 1, borderColor: 'rgba(251,146,60,0.3)', marginTop: 8,
-                  alignItems: 'center', gap: 12,
-                }}>
-                  <AppText style={{ fontSize: 13, color: '#92400E', textAlign: 'center', lineHeight: 19 }}>
-                    {isPortuguese
-                      ? "Não conseguimos avaliar sua pronúncia. Certifique-se de falar claramente e tente novamente."
-                      : "We couldn't assess your pronunciation. Make sure to speak clearly and try again."}
-                  </AppText>
-                  <TouchableOpacity
-                    onPress={() => setPronStatus('listening')}
-                    style={{
-                      backgroundColor: accent, borderRadius: 12,
-                      paddingHorizontal: 24, paddingVertical: 10,
-                    }}
-                  >
-                    <AppText style={{ fontSize: 13, fontWeight: '800', color: '#FFF' }}>
-                      {isPortuguese ? 'Tentar novamente' : 'Try again'}
-                    </AppText>
-                  </TouchableOpacity>
-                </View>
-              )}
             </View>
           )}
         </ScrollView>
 
-        {/* ── Bottom CTA ── */}
-        {/* Sem footer branco / border-top pra grammar: visualmente integral com o body. */}
+        {/* ── Bottom CTA — lavanda sem border-top, integral com o body
+            tanto pra grammar quanto pra pronunciation ── */}
         <View style={{
           paddingHorizontal: 20, paddingTop: 12,
           paddingBottom: insets.bottom + 12,
-          backgroundColor: currentStep.kind === 'grammar' ? '#FAF9FF' : C.card,
-          borderTopWidth: currentStep.kind === 'grammar' ? 0 : 1,
-          borderTopColor: C.border,
+          backgroundColor: '#FAF9FF',
         }}>
           {/* ── Grammar ── */}
           {currentStep.kind === 'grammar' && gStatus === 'answering' && (() => {
@@ -1948,7 +1928,7 @@ export default function LearnSessionScreen() {
 
           {/* ── Pronunciation: Shadowing ── */}
           {currentStep.kind === 'pronunciation' && currentStep.phrase.type === 'shadowing' && (
-            (pronStatus === 'retry' || pronStatus === 'error') ? (
+            pronStatus === 'error' ? (
               <TouchableOpacity onPress={handleNext}
                 style={{ backgroundColor: C.navy, borderRadius: 16, paddingVertical: 15, flexDirection: 'row', alignItems: 'center', justifyContent: 'center', gap: 8 }}>
                 <AppText style={{ fontSize: 15, fontWeight: '800', color: '#FFF' }}>{stepIdx + 1 >= totalSteps ? (isPortuguese ? 'Concluir' : 'Finish') : (isPortuguese ? 'Próximo' : 'Next')}</AppText>
@@ -2017,7 +1997,7 @@ export default function LearnSessionScreen() {
             </AppText>
             <View style={{ backgroundColor: isCorrect ? 'rgba(61,136,0,0.12)' : 'rgba(220,38,38,0.10)', borderRadius: 20, paddingHorizontal: 10, paddingVertical: 4 }}>
               <AppText style={{ fontSize: 12, fontWeight: '800', color: isCorrect ? C.green : C.red }}>
-                +{currentStep.exercise.type === 'short_write' ? 8 : isCorrect ? 10 : 2} XP
+                +{!isCorrect ? 0 : currentStep.exercise.type === 'short_write' ? 8 : 10} XP
               </AppText>
             </View>
           </View>
