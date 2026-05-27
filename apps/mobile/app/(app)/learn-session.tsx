@@ -646,6 +646,42 @@ export default function LearnSessionScreen() {
     if (charlotteAudioUri) toggleAudio(charlottePlayId, charlotteAudioUri);
   };
 
+  // Auto-play: ao entrar num step de pronunciation com audio carregado,
+  // toca uma vez automaticamente (padrao Duolingo). Ref garante que so
+  // dispara 1x por step (nao volta a tocar em re-renders).
+  const autoPlayedStepRef = useRef<number | null>(null);
+  useEffect(() => {
+    if (currentStep?.kind !== 'pronunciation') return;
+    if (currentStep.phrase?.type === 'sentence_stress') return;
+    if (pronStatus !== 'listening') return;
+    if (!charlotteAudioUri) return;
+    if (autoPlayedStepRef.current === stepIdx) return;
+    autoPlayedStepRef.current = stepIdx;
+    // Pequeno delay pra tela settle e usuario perceber a transicao.
+    const t = setTimeout(() => {
+      toggleAudio(charlottePlayId, charlotteAudioUri);
+    }, 400);
+    return () => clearTimeout(t);
+  // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [stepIdx, charlotteAudioUri, pronStatus]);
+
+  // Pulse animation pro botao de play quando audio esta tocando.
+  const audioPulseAnim = useRef(new Animated.Value(0)).current;
+  useEffect(() => {
+    if (!isPlaying) {
+      audioPulseAnim.setValue(0);
+      return;
+    }
+    const loop = Animated.loop(
+      Animated.sequence([
+        Animated.timing(audioPulseAnim, { toValue: 1, duration: 700, useNativeDriver: true }),
+        Animated.timing(audioPulseAnim, { toValue: 0, duration: 700, useNativeDriver: true }),
+      ]),
+    );
+    loop.start();
+    return () => loop.stop();
+  }, [isPlaying, audioPulseAnim]);
+
   // ── Pronunciation: show result panel ──────────────────────
   const showPronResult = (feedback: NonNullable<PronFeedback>) => {
     setPronFeedback(feedback);
@@ -1216,26 +1252,9 @@ export default function LearnSessionScreen() {
           showsVerticalScrollIndicator={false}
           scrollEnabled={currentStep.kind === 'pronunciation' && currentStep.phrase?.type === 'listen_write'}
         >
-          {/* ── Progress ── */}
+          {/* ── Progress (sem chip de tipo, mesmo padrao do grammar) ── */}
           <View style={{ marginBottom: 20 }}>
-            <View style={{ flexDirection: 'row', justifyContent: currentStep.kind === 'grammar' ? 'flex-end' : 'space-between', alignItems: 'center', marginBottom: 8 }}>
-              {currentStep.kind === 'pronunciation' && (
-                <View style={{
-                  flexDirection: 'row', alignItems: 'center', gap: 5,
-                  paddingHorizontal: 10, paddingVertical: 4, borderRadius: 10,
-                  backgroundColor: accentBg, borderWidth: 1,
-                  borderColor: a(accent, 0.2),
-                }}>
-                  <Microphone size={12} color={accent} weight="fill" />
-                  <AppText style={{ fontSize: 11, fontWeight: '700', color: accent }}>
-                    {currentStep.phrase.type === 'repeat'          ? (isPortuguese ? 'Repita Depois de Mim' : 'Repeat After Me')
-                      : currentStep.phrase.type === 'shadowing'       ? (isPortuguese ? 'Siga Junto'           : 'Follow Along')
-                      : currentStep.phrase.type === 'minimal_pairs'   ? (isPortuguese ? 'Pares Mínimos'        : 'Minimal Pairs')
-                      : currentStep.phrase.type === 'sentence_stress'  ? (isPortuguese ? 'Entonação'            : 'Sentence Stress')
-                      :                                                   (isPortuguese ? 'Ouça e Escreva'      : 'Listen & Write')}
-                  </AppText>
-                </View>
-              )}
+            <View style={{ flexDirection: 'row', justifyContent: 'flex-end', alignItems: 'center', marginBottom: 8 }}>
               <AppText style={{ fontSize: 12, color: C.navyLight, fontWeight: '600' }}>
                 {stepIdx + 1} / {totalSteps}
               </AppText>
@@ -1684,21 +1703,51 @@ export default function LearnSessionScreen() {
                 </AppText>
               </View>
 
-              {/* Focus label */}
-              <View style={{ backgroundColor: C.ghost, borderRadius: 10, paddingHorizontal: 12, paddingVertical: 7, alignSelf: 'flex-start', marginBottom: 18 }}>
-                <AppText style={{ fontSize: 12, fontWeight: '700', color: C.navyMid }}>
-                  {isPortuguese ? 'Foco:' : 'Focus:'} {currentStep.phrase.focus}
-                </AppText>
-              </View>
+              {/* Focus label removido da UI — metadata pedagogica fica no
+                  markdown da unidade (referencia pro autor), nao distrai
+                  o aluno no momento da execucao. */}
 
-              {/* Phrase (hidden for listen_write/minimal_pairs until answered) */}
+              {/* Phrase + play icon inline (estilo Duolingo: icon dentro/junto
+                  do balao da fala). Pulse ring anima quando audio toca. */}
               {(currentStep.phrase.type === 'repeat' || currentStep.phrase.type === 'shadowing' || pronStatus === 'result') && currentStep.phrase.text && (
-                <AppText style={{ fontSize: 22, fontWeight: '500', color: C.navy, lineHeight: 34, marginBottom: 24 }}>
-                  {currentStep.phrase.text}
-                </AppText>
+                <View style={{ flexDirection: 'row', alignItems: 'center', gap: 12, marginBottom: 24 }}>
+                  {currentStep.phrase.type !== 'sentence_stress' && pronStatus !== 'loading_audio' && (
+                    <View style={{ width: 48, height: 48, alignItems: 'center', justifyContent: 'center' }}>
+                      <Animated.View pointerEvents="none" style={{
+                        position: 'absolute',
+                        width: 48, height: 48, borderRadius: 24,
+                        borderWidth: 2, borderColor: accent,
+                        opacity: audioPulseAnim.interpolate({ inputRange: [0, 1], outputRange: [0, 0.55] }),
+                        transform: [{ scale: audioPulseAnim.interpolate({ inputRange: [0, 1], outputRange: [0.85, 1.2] }) }],
+                      }} />
+                      <TouchableOpacity onPress={handlePlayCharlotte} activeOpacity={0.82}
+                        style={{ width: 40, height: 40, borderRadius: 20, backgroundColor: accent, alignItems: 'center', justifyContent: 'center' }}>
+                        <SpeakerHigh size={20} color="#FFF" weight="fill" />
+                      </TouchableOpacity>
+                    </View>
+                  )}
+                  <AppText style={{ flex: 1, fontSize: 22, fontWeight: '500', color: C.navy, lineHeight: 34 }}>
+                    {currentStep.phrase.text}
+                  </AppText>
+                </View>
               )}
-              {(currentStep.phrase.type === 'listen_write' || currentStep.phrase.type === 'minimal_pairs') && pronStatus !== 'result' && (
-                <View style={{ height: 4, backgroundColor: a(accent, 0.2), borderRadius: 2, marginBottom: 24 }} />
+              {/* listen_write / minimal_pairs pre-result: play icon centralizado, sem texto */}
+              {(currentStep.phrase.type === 'listen_write' || currentStep.phrase.type === 'minimal_pairs') && pronStatus !== 'result' && pronStatus !== 'loading_audio' && (
+                <View style={{ alignItems: 'center', marginBottom: 24 }}>
+                  <View style={{ width: 72, height: 72, alignItems: 'center', justifyContent: 'center' }}>
+                    <Animated.View pointerEvents="none" style={{
+                      position: 'absolute',
+                      width: 72, height: 72, borderRadius: 36,
+                      borderWidth: 2, borderColor: accent,
+                      opacity: audioPulseAnim.interpolate({ inputRange: [0, 1], outputRange: [0, 0.55] }),
+                      transform: [{ scale: audioPulseAnim.interpolate({ inputRange: [0, 1], outputRange: [0.85, 1.2] }) }],
+                    }} />
+                    <TouchableOpacity onPress={handlePlayCharlotte} activeOpacity={0.82}
+                      style={{ width: 60, height: 60, borderRadius: 30, backgroundColor: accent, alignItems: 'center', justifyContent: 'center' }}>
+                      <SpeakerHigh size={26} color="#FFF" weight="fill" />
+                    </TouchableOpacity>
+                  </View>
+                </View>
               )}
 
               {/* sentence_stress: show tappable words */}
@@ -1751,36 +1800,11 @@ export default function LearnSessionScreen() {
                 </View>
               )}
 
-              {/* Play Charlotte button — not shown for sentence_stress */}
-              {currentStep.phrase.type !== 'sentence_stress' && (
-                pronStatus === 'loading_audio' ? (
-                  <View style={{ alignItems: 'center', paddingVertical: 20, marginBottom: 12 }}>
-                    <ActivityIndicator color={accent} />
-                    <AppText style={{ color: C.navyLight, fontSize: 13, marginTop: 10 }}>{isPortuguese ? 'Preparando áudio…' : 'Preparing audio…'}</AppText>
-                  </View>
-                ) : (
-                  <TouchableOpacity
-                    
-                    onPress={handlePlayCharlotte}
-                    style={{
-                      flexDirection: 'row', alignItems: 'center', justifyContent: 'center', gap: 10,
-                      backgroundColor: accentBg, borderRadius: 16, borderWidth: 1.5,
-                      borderColor: a(accent, 0.25), paddingVertical: 14, marginBottom: 16,
-                    }}
-                  >
-                    {isPlaying
-                      ? <Pause size={20} color={accent} weight="fill" />
-                      : <SpeakerHigh size={20} color={accent} weight="fill" />
-                    }
-                    <AppText style={{ fontSize: 14, fontWeight: '700', color: accent }}>
-                      {isPlaying
-                        ? (isPortuguese ? 'Pausar' : 'Pause')
-                        : currentStep.phrase.type === 'minimal_pairs'
-                        ? (isPortuguese ? 'Ouça a palavra' : 'Listen to the word')
-                        : (isPortuguese ? 'Ouça a Charlotte' : 'Listen to Charlotte')}
-                    </AppText>
-                  </TouchableOpacity>
-                )
+              {/* Loading state (audio nao chegou ainda) */}
+              {currentStep.phrase.type !== 'sentence_stress' && pronStatus === 'loading_audio' && (
+                <View style={{ alignItems: 'center', paddingVertical: 16, marginBottom: 12 }}>
+                  <ActivityIndicator color={accent} />
+                </View>
               )}
 
               {/* minimal_pairs: word choice buttons */}
@@ -1959,13 +1983,15 @@ export default function LearnSessionScreen() {
               </View>
             ) : pronStatus !== 'result' ? (
               <Pressable
-                onPressIn={startRecording}
-                onPressOut={stopRecording}
+                onPressIn={isPlaying ? undefined : startRecording}
+                onPressOut={isPlaying ? undefined : stopRecording}
+                disabled={isPlaying}
                 pressRetentionOffset={{ top: 20, left: 20, right: 20, bottom: 20 }}
                 style={{
-                  backgroundColor: pronStatus === 'recording' ? '#DC2626' : '#7C3AED',
+                  backgroundColor: isPlaying ? '#9CA3AF' : pronStatus === 'recording' ? '#DC2626' : '#7C3AED',
                   borderRadius: 16, paddingVertical: 16,
                   flexDirection: 'row', alignItems: 'center', justifyContent: 'center', gap: 10,
+                  opacity: isPlaying ? 0.6 : 1,
                 }}
               >
                 <Microphone size={22} color="#FFF" weight="fill" />
