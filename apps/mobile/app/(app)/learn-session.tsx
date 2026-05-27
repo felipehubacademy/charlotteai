@@ -172,6 +172,20 @@ function checkGrammar(ex: GrammarEx, answer: string): boolean {
 }
 
 // ── Pronunciation helpers ──────────────────────────────────────
+// Rotacao de feedbacks positivos pra Novice (PT-BR). Evita repeticao
+// quando o aluno faz 5 frases seguidas e tira o tom "Pronuncia ok"
+// que soava morno demais.
+const NOVICE_CORRECT_MESSAGES_PT = [
+  'Mandou bem! Pronúncia clara.',
+  'Show! Saiu direitinho.',
+  'Boa! Charlotte entendeu de primeira.',
+  'Isso aí! Você falou redondo.',
+  'Manda mais — pronúncia limpa.',
+];
+function pickNoviceCorrectMessage(): string {
+  return NOVICE_CORRECT_MESSAGES_PT[Math.floor(Math.random() * NOVICE_CORRECT_MESSAGES_PT.length)];
+}
+
 function wordMatchPercent(spoken: string, reference: string): number {
   const ref = reference.trim().toLowerCase().replace(/[.,!?;:]/g, '').split(' ').filter(w => w.length > 0);
   const sp  = spoken.trim().toLowerCase().replace(/[.,!?;:]/g, '');
@@ -724,7 +738,7 @@ export default function LearnSessionScreen() {
         // Novice: binário (acerto/erro). Inter/Advanced: 3 estados.
         if (level === 'Novice') {
           if (pct >= 70) {
-            feedback = { state: 'correct', xp: 15, message: isPortuguese ? 'Boa! Pronúncia ok.' : 'Nice! Pronunciation ok.' };
+            feedback = { state: 'correct', xp: 15, message: isPortuguese ? pickNoviceCorrectMessage() : 'Nice! Pronunciation ok.' };
             Haptics.notificationAsync(Haptics.NotificationFeedbackType.Success);
             soundEngine.play('answer_correct').catch(() => {});
           } else {
@@ -780,7 +794,7 @@ export default function LearnSessionScreen() {
         // Novice: binário (acerto/erro). Inter/Advanced: 3 estados.
         if (level === 'Novice') {
           if (pct >= 70) {
-            feedback = { state: 'correct', xp: 15, message: isPortuguese ? 'Boa! Pronúncia ok.' : 'Nice! Pronunciation ok.' };
+            feedback = { state: 'correct', xp: 15, message: isPortuguese ? pickNoviceCorrectMessage() : 'Nice! Pronunciation ok.' };
             Haptics.notificationAsync(Haptics.NotificationFeedbackType.Success);
             soundEngine.play('answer_correct').catch(() => {});
           } else {
