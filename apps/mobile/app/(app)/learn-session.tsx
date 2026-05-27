@@ -649,6 +649,8 @@ export default function LearnSessionScreen() {
   // Auto-play: ao entrar num step de pronunciation com audio carregado,
   // toca uma vez automaticamente (padrao Duolingo). Ref garante que so
   // dispara 1x por step (nao volta a tocar em re-renders).
+  // Delay maior (700ms) pra dar tempo do useMessageAudioPlayer reverter
+  // o audio mode do allowsRecording:true setado em loadPronStep.
   const autoPlayedStepRef = useRef<number | null>(null);
   useEffect(() => {
     if (currentStep?.kind !== 'pronunciation') return;
@@ -657,10 +659,14 @@ export default function LearnSessionScreen() {
     if (!charlotteAudioUri) return;
     if (autoPlayedStepRef.current === stepIdx) return;
     autoPlayedStepRef.current = stepIdx;
-    // Pequeno delay pra tela settle e usuario perceber a transicao.
-    const t = setTimeout(() => {
+    const t = setTimeout(async () => {
+      try {
+        // Reverte explicitamente pra playback mode antes do play, pq
+        // loadPronStep deixa allowsRecording:true (pre-warm mic).
+        await setAudioModeAsync({ allowsRecording: false, playsInSilentMode: true, shouldRouteThroughEarpiece: false });
+      } catch {}
       toggleAudio(charlottePlayId, charlotteAudioUri);
-    }, 400);
+    }, 700);
     return () => clearTimeout(t);
   // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [stepIdx, charlotteAudioUri, pronStatus]);
@@ -1707,24 +1713,19 @@ export default function LearnSessionScreen() {
                   markdown da unidade (referencia pro autor), nao distrai
                   o aluno no momento da execucao. */}
 
-              {/* Phrase + play icon inline (estilo Duolingo: icon dentro/junto
-                  do balao da fala). Pulse ring anima quando audio toca. */}
+              {/* Phrase + play icon inline (estilo Duolingo).
+                  O proprio icone pulsa (escala) quando audio toca — sem
+                  ring externo, animacao no proprio glifo. */}
               {(currentStep.phrase.type === 'repeat' || currentStep.phrase.type === 'shadowing' || pronStatus === 'result') && currentStep.phrase.text && (
                 <View style={{ flexDirection: 'row', alignItems: 'center', gap: 12, marginBottom: 24 }}>
                   {currentStep.phrase.type !== 'sentence_stress' && pronStatus !== 'loading_audio' && (
-                    <View style={{ width: 48, height: 48, alignItems: 'center', justifyContent: 'center' }}>
-                      <Animated.View pointerEvents="none" style={{
-                        position: 'absolute',
-                        width: 48, height: 48, borderRadius: 24,
-                        borderWidth: 2, borderColor: accent,
-                        opacity: audioPulseAnim.interpolate({ inputRange: [0, 1], outputRange: [0, 0.55] }),
-                        transform: [{ scale: audioPulseAnim.interpolate({ inputRange: [0, 1], outputRange: [0.85, 1.2] }) }],
-                      }} />
-                      <TouchableOpacity onPress={handlePlayCharlotte} activeOpacity={0.82}
-                        style={{ width: 40, height: 40, borderRadius: 20, backgroundColor: accent, alignItems: 'center', justifyContent: 'center' }}>
-                        <SpeakerHigh size={20} color="#FFF" weight="fill" />
+                    <Animated.View style={{
+                      transform: [{ scale: audioPulseAnim.interpolate({ inputRange: [0, 1], outputRange: [1, 1.18] }) }],
+                    }}>
+                      <TouchableOpacity onPress={handlePlayCharlotte} activeOpacity={0.7} hitSlop={{ top: 8, bottom: 8, left: 8, right: 8 }}>
+                        <SpeakerHigh size={32} color={accent} weight="fill" />
                       </TouchableOpacity>
-                    </View>
+                    </Animated.View>
                   )}
                   <AppText style={{ flex: 1, fontSize: 22, fontWeight: '500', color: C.navy, lineHeight: 34 }}>
                     {currentStep.phrase.text}
@@ -1734,19 +1735,13 @@ export default function LearnSessionScreen() {
               {/* listen_write / minimal_pairs pre-result: play icon centralizado, sem texto */}
               {(currentStep.phrase.type === 'listen_write' || currentStep.phrase.type === 'minimal_pairs') && pronStatus !== 'result' && pronStatus !== 'loading_audio' && (
                 <View style={{ alignItems: 'center', marginBottom: 24 }}>
-                  <View style={{ width: 72, height: 72, alignItems: 'center', justifyContent: 'center' }}>
-                    <Animated.View pointerEvents="none" style={{
-                      position: 'absolute',
-                      width: 72, height: 72, borderRadius: 36,
-                      borderWidth: 2, borderColor: accent,
-                      opacity: audioPulseAnim.interpolate({ inputRange: [0, 1], outputRange: [0, 0.55] }),
-                      transform: [{ scale: audioPulseAnim.interpolate({ inputRange: [0, 1], outputRange: [0.85, 1.2] }) }],
-                    }} />
-                    <TouchableOpacity onPress={handlePlayCharlotte} activeOpacity={0.82}
-                      style={{ width: 60, height: 60, borderRadius: 30, backgroundColor: accent, alignItems: 'center', justifyContent: 'center' }}>
-                      <SpeakerHigh size={26} color="#FFF" weight="fill" />
+                  <Animated.View style={{
+                    transform: [{ scale: audioPulseAnim.interpolate({ inputRange: [0, 1], outputRange: [1, 1.18] }) }],
+                  }}>
+                    <TouchableOpacity onPress={handlePlayCharlotte} activeOpacity={0.7} hitSlop={{ top: 12, bottom: 12, left: 12, right: 12 }}>
+                      <SpeakerHigh size={56} color={accent} weight="fill" />
                     </TouchableOpacity>
-                  </View>
+                  </Animated.View>
                 </View>
               )}
 
