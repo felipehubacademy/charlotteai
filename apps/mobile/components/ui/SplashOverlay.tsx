@@ -3,6 +3,7 @@
 
 import React, { useEffect, useRef, useState } from 'react';
 import { Animated, ActivityIndicator, View, StyleSheet, Image } from 'react-native';
+import { markSplashDone } from '@/lib/splashGate';
 
 const MIN_VISIBLE_MS = 3000;
 
@@ -17,7 +18,10 @@ export function SplashOverlay() {
         duration: 350,
         useNativeDriver: true,
       }).start(({ finished }) => {
-        if (finished) setMounted(false);
+        if (finished) {
+          setMounted(false);
+          markSplashDone();
+        }
       });
     }, MIN_VISIBLE_MS);
     return () => clearTimeout(t);

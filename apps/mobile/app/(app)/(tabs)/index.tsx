@@ -23,6 +23,7 @@ import { identifyUser, track } from '@/lib/analytics';
 import { greetingCache, resetGreetingCache, prefetchGreeting } from '@/lib/greetingCache';
 import { localTodayStr, localMidnightUTC } from '@/lib/dateUtils';
 import { soundEngine } from '@/lib/soundEngine';
+import { splashGate } from '@/lib/splashGate';
 import { voiceSFX } from '@/lib/voiceSFX';
 import { TrailContent } from '@/components/trail/TrailContent';
 import { TrailBanner } from '@/components/trail/TrailBanner';
@@ -177,16 +178,19 @@ export default function HomeTab() {
       setTodayXP(todayXPVal);
       setRank(userTotalXP > 0 ? computedRank : null);
 
-      // Brand intro jingle — toca em todo cold start (estilo Duolingo).
-      // intro_app dura ~3s; todos os outros sons da home sao deslocados se ele
-      // for tocar agora, para nao colidir audio.
+      // Brand intro jingle — so dispara DEPOIS do splash sumir (gate via
+      // splashGate Promise resolvida pelo SplashOverlay no fim do fade).
+      // Sem isso, o intro tocava por baixo do splash e terminava antes
+      // do user ver a home.
       const introWillPlay = !_introPlayedThisJsSession;
       if (introWillPlay) {
         _introPlayedThisJsSession = true;
-        setTimeout(() => soundEngine.play('intro_app').catch(() => {}), 400);
+        splashGate.then(() => {
+          soundEngine.play('intro_app').catch(() => {});
+        });
       }
       // Offset usado pra shiftar streak_alive e Tier 4 quando o intro toca primeiro.
-      // intro comeca em t=400 + dura ~3s => proximos sons sao em t=3500+
+      // intro dura ~3s => proximos sons em t=splash_done+3100ms.
       const introOffset = introWillPlay ? 3100 : 0;
 
       // Streak sound + Tier 4 (voz)
@@ -198,12 +202,15 @@ export default function HomeTab() {
           if (lastPlayed !== today) {
             _streakSoundPlayedThisSession = true;
             SecureStore.setItemAsync(streakKey, today).catch(() => {});
-            setTimeout(() => soundEngine.play('streak_alive').catch(() => {}), introOffset + 800);
-            if (streakDays === 7) {
-              setTimeout(() => voiceSFX.play('streak_7_days').catch(() => {}), introOffset + 2300);
-            } else if (streakDays === 30) {
-              setTimeout(() => voiceSFX.play('streak_30_days').catch(() => {}), introOffset + 2300);
-            }
+            // Tambem espera o splash sair antes de tocar.
+            splashGate.then(() => {
+              setTimeout(() => soundEngine.play('streak_alive').catch(() => {}), introOffset + 800);
+              if (streakDays === 7) {
+                setTimeout(() => voiceSFX.play('streak_7_days').catch(() => {}), introOffset + 2300);
+              } else if (streakDays === 30) {
+                setTimeout(() => voiceSFX.play('streak_30_days').catch(() => {}), introOffset + 2300);
+              }
+            });
           } else {
             _streakSoundPlayedThisSession = true;
           }
