@@ -12,7 +12,7 @@ import { router, useLocalSearchParams } from 'expo-router';
 import {
   ArrowLeft, ArrowRight, CheckCircle, XCircle,
   LightbulbFilament, BookOpen, Microphone,
-  SpeakerSimpleNone, SpeakerLow, SpeakerHigh, Play, Pause, ArrowsClockwise,
+  SpeakerLow, SpeakerHigh, Play, Pause, ArrowsClockwise,
   ThumbsUp, ThumbsDown,
 } from 'phosphor-react-native';
 import AnimatedXPBadge from '@/components/ui/AnimatedXPBadge';
@@ -669,20 +669,19 @@ export default function LearnSessionScreen() {
     if (charlotteAudioUri) toggleAudio(charlottePlayId, charlotteAudioUri);
   };
 
-  // Ondas animadas no icone de speaker quando audio toca: cicla entre
-  // Speaker (sem ondas) -> SpeakerLow (1 onda) -> SpeakerHigh (2 ondas)
-  // a cada 250ms, dando sensacao de som emanando.
-  const [speakerWave, setSpeakerWave] = useState<0 | 1 | 2>(2);
+  // Ondas animadas no icone de speaker quando audio toca: alterna entre
+  // SpeakerLow (1 onda) e SpeakerHigh (2 ondas) a cada 300ms, dando
+  // sensacao de som emanando. SpeakerSimpleNone foi removido pq tem
+  // design diferente (sem espacamento branco no tail) e quebrava o ciclo.
+  const [speakerWave, setSpeakerWave] = useState<0 | 1>(1);
   useEffect(() => {
-    if (!isPlaying) { setSpeakerWave(2); return; }
-    let step = 0;
+    if (!isPlaying) { setSpeakerWave(1); return; }
     const iv = setInterval(() => {
-      step = (step + 1) % 3;
-      setSpeakerWave(step as 0 | 1 | 2);
-    }, 250);
+      setSpeakerWave(prev => (prev === 0 ? 1 : 0));
+    }, 300);
     return () => clearInterval(iv);
   }, [isPlaying]);
-  const SpeakerIcon = speakerWave === 0 ? SpeakerSimpleNone : speakerWave === 1 ? SpeakerLow : SpeakerHigh;
+  const SpeakerIcon = speakerWave === 0 ? SpeakerLow : SpeakerHigh;
 
   // ── Pronunciation: show result panel ──────────────────────
   const showPronResult = (feedback: NonNullable<PronFeedback>) => {
