@@ -1917,14 +1917,15 @@ export default function LearnSessionScreen() {
               </View>
             ) : pronStatus !== 'result' ? (
               <Pressable
-                
-                onPressIn={startRecording}
-                onPressOut={stopRecording}
+                onPressIn={isPlaying ? undefined : startRecording}
+                onPressOut={isPlaying ? undefined : stopRecording}
+                disabled={isPlaying}
                 pressRetentionOffset={{ top: 20, left: 20, right: 20, bottom: 20 }}
                 style={{
-                  backgroundColor: pronStatus === 'recording' ? '#DC2626' : '#7C3AED',
+                  backgroundColor: isPlaying ? '#9CA3AF' : pronStatus === 'recording' ? '#DC2626' : '#7C3AED',
                   borderRadius: 16, paddingVertical: 16,
                   flexDirection: 'row', alignItems: 'center', justifyContent: 'center', gap: 10,
+                  opacity: isPlaying ? 0.6 : 1,
                 }}
               >
                 <Microphone size={22} color="#FFF" weight="fill" />
@@ -1965,15 +1966,13 @@ export default function LearnSessionScreen() {
               </View>
             ) : pronStatus !== 'result' ? (
               <Pressable
-                onPressIn={isPlaying ? undefined : startRecording}
-                onPressOut={isPlaying ? undefined : stopRecording}
-                disabled={isPlaying}
+                onPressIn={startRecording}
+                onPressOut={stopRecording}
                 pressRetentionOffset={{ top: 20, left: 20, right: 20, bottom: 20 }}
                 style={{
-                  backgroundColor: isPlaying ? '#9CA3AF' : pronStatus === 'recording' ? '#DC2626' : '#7C3AED',
+                  backgroundColor: pronStatus === 'recording' ? '#DC2626' : '#7C3AED',
                   borderRadius: 16, paddingVertical: 16,
                   flexDirection: 'row', alignItems: 'center', justifyContent: 'center', gap: 10,
-                  opacity: isPlaying ? 0.6 : 1,
                 }}
               >
                 <Microphone size={22} color="#FFF" weight="fill" />
