@@ -20,7 +20,6 @@ import { soundEngine } from '@/lib/soundEngine';
 import { voiceSFX } from '@/lib/voiceSFX';
 import { loadAudioPreferences } from '@/lib/audioPreferences';
 import { ThemeProvider, useTheme } from '@/lib/theme';
-import { SplashOverlay } from '@/components/ui/SplashOverlay';
 
 // Mantém a splash screen visível enquanto carrega
 SplashScreen.preventAutoHideAsync();
@@ -138,10 +137,15 @@ function AuthGuard() {
   return null;
 }
 
+// Tempo minimo que a native splash fica visivel apos o RN montar.
+// Garante que o usuario veja o splash (Charlotte/lavanda) em vez de
+// um piscar de 50ms quando o profile carrega instantaneo.
+const MIN_SPLASH_MS = 1200;
+
 function RootLayout() {
   useEffect(() => {
-    // Dismissa a native splash ASAP — o SplashOverlay (JS) assume daqui.
-    SplashScreen.hideAsync();
+    const t = setTimeout(() => { SplashScreen.hideAsync(); }, MIN_SPLASH_MS);
+    return () => clearTimeout(t);
   }, []);
 
   return (
@@ -150,41 +154,19 @@ function RootLayout() {
         <ThemeProvider>
           <SafeAreaProvider>
             <AuthProvider>
-              <AppContent />
+              <AuthGuard />
+              <ThemedStatusBar />
+              <Stack screenOptions={{ headerShown: false }}>
+                <Stack.Screen name="index" />
+                <Stack.Screen name="(onboarding)" />
+                <Stack.Screen name="(auth)" />
+                <Stack.Screen name="(app)" />
+              </Stack>
             </AuthProvider>
           </SafeAreaProvider>
         </ThemeProvider>
       </KeyboardProvider>
     </GestureHandlerRootView>
-  );
-}
-
-function AppContent() {
-  const { isAuthenticated, isLoading, profile } = useAuth();
-  const [consentReady, setConsentReady] = useState(false);
-
-  useEffect(() => {
-    SecureStore.getItemAsync(AI_CONSENT_KEY)
-      .then(() => setConsentReady(true))
-      .catch(() => setConsentReady(true));
-  }, []);
-
-  // Ready = auth resolvido + consent lido + (se autenticado, profile carregado).
-  // Enquanto false, SplashOverlay cobre a UI. Quando true, fade out.
-  const ready = !isLoading && consentReady && (!isAuthenticated || profile !== null);
-
-  return (
-    <>
-      <AuthGuard />
-      <ThemedStatusBar />
-      <Stack screenOptions={{ headerShown: false }}>
-        <Stack.Screen name="index" />
-        <Stack.Screen name="(onboarding)" />
-        <Stack.Screen name="(auth)" />
-        <Stack.Screen name="(app)" />
-      </Stack>
-      <SplashOverlay ready={ready} />
-    </>
   );
 }
 
