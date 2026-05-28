@@ -20,6 +20,7 @@ import { soundEngine } from '@/lib/soundEngine';
 import { voiceSFX } from '@/lib/voiceSFX';
 import { loadAudioPreferences } from '@/lib/audioPreferences';
 import { ThemeProvider, useTheme } from '@/lib/theme';
+import { SplashOverlay } from '@/components/ui/SplashOverlay';
 
 // Mantém a splash screen visível enquanto carrega
 SplashScreen.preventAutoHideAsync();
@@ -139,10 +140,8 @@ function AuthGuard() {
 
 function RootLayout() {
   useEffect(() => {
+    // Dismissa a native splash ASAP — o SplashOverlay (JS) assume daqui.
     SplashScreen.hideAsync();
-    // expo-updates cuida automaticamente dos checks via checkAutomatically: 'ON_LOAD'
-    // configurado em app.config.ts — updates são baixados em background e aplicados
-    // na próxima abertura do app, sem código manual necessário aqui.
   }, []);
 
   return (
@@ -151,19 +150,41 @@ function RootLayout() {
         <ThemeProvider>
           <SafeAreaProvider>
             <AuthProvider>
-              <AuthGuard />
-              <ThemedStatusBar />
-              <Stack screenOptions={{ headerShown: false }}>
-                <Stack.Screen name="index" />
-                <Stack.Screen name="(onboarding)" />
-                <Stack.Screen name="(auth)" />
-                <Stack.Screen name="(app)" />
-              </Stack>
+              <AppContent />
             </AuthProvider>
           </SafeAreaProvider>
         </ThemeProvider>
       </KeyboardProvider>
     </GestureHandlerRootView>
+  );
+}
+
+function AppContent() {
+  const { isAuthenticated, isLoading, profile } = useAuth();
+  const [consentReady, setConsentReady] = useState(false);
+
+  useEffect(() => {
+    SecureStore.getItemAsync(AI_CONSENT_KEY)
+      .then(() => setConsentReady(true))
+      .catch(() => setConsentReady(true));
+  }, []);
+
+  // Ready = auth resolvido + consent lido + (se autenticado, profile carregado).
+  // Enquanto false, SplashOverlay cobre a UI. Quando true, fade out.
+  const ready = !isLoading && consentReady && (!isAuthenticated || profile !== null);
+
+  return (
+    <>
+      <AuthGuard />
+      <ThemedStatusBar />
+      <Stack screenOptions={{ headerShown: false }}>
+        <Stack.Screen name="index" />
+        <Stack.Screen name="(onboarding)" />
+        <Stack.Screen name="(auth)" />
+        <Stack.Screen name="(app)" />
+      </Stack>
+      <SplashOverlay ready={ready} />
+    </>
   );
 }
 
