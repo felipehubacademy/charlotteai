@@ -20,6 +20,7 @@ import { soundEngine } from '@/lib/soundEngine';
 import { voiceSFX } from '@/lib/voiceSFX';
 import { loadAudioPreferences } from '@/lib/audioPreferences';
 import { ThemeProvider, useTheme } from '@/lib/theme';
+import { SplashOverlay } from '@/components/ui/SplashOverlay';
 
 // Mantém a splash screen visível enquanto carrega
 SplashScreen.preventAutoHideAsync();
@@ -137,15 +138,11 @@ function AuthGuard() {
   return null;
 }
 
-// Tempo minimo que a native splash fica visivel apos o RN montar.
-// Garante que o usuario veja o splash (Charlotte/lavanda) em vez de
-// um piscar de 50ms quando o profile carrega instantaneo.
-const MIN_SPLASH_MS = 1200;
-
 function RootLayout() {
   useEffect(() => {
-    const t = setTimeout(() => { SplashScreen.hideAsync(); }, MIN_SPLASH_MS);
-    return () => clearTimeout(t);
+    // Dismissa a native splash ASAP — o SplashOverlay (JS) com splash.png
+    // assume daqui e segura no minimo 1200ms.
+    SplashScreen.hideAsync();
   }, []);
 
   return (
@@ -162,6 +159,7 @@ function RootLayout() {
                 <Stack.Screen name="(auth)" />
                 <Stack.Screen name="(app)" />
               </Stack>
+              <SplashOverlay />
             </AuthProvider>
           </SafeAreaProvider>
         </ThemeProvider>
