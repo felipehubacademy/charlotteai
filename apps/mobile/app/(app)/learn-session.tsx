@@ -555,7 +555,7 @@ export default function LearnSessionScreen() {
           autoplayUri = charlotteAudioUriRef.current;
         }
       } else if (ph.text) {
-        // repeat, listen_write, shadowing — use ph.text
+        // repeat, listen_write — use ph.text
         if (ph.text !== lastPhraseText.current) {
           const uri = await fetchTTS(ph.text);
           if (uri) {
@@ -698,7 +698,7 @@ export default function LearnSessionScreen() {
     setPronStatus('listening');
   };
 
-  // ── Pronunciation: record (repeat = on-device ASR, shadowing = Azure) ──
+  // ── Pronunciation: record (repeat = on-device ASR, fallback = Whisper) ──
   const startRecording = async () => {
     if (recordingRef.current) return;
     if (!currentStep || currentStep.kind !== 'pronunciation') return;
@@ -723,7 +723,7 @@ export default function LearnSessionScreen() {
         await setAudioModeAsync({ allowsRecording: true, playsInSilentMode: true });
         ExpoSpeechRecognitionModule.start({ lang: 'en-US', interimResults: true, continuous: true });
       } else {
-        // Recorder — for Azure (shadowing) or Whisper fallback (repeat without ASR)
+        // Recorder — Whisper fallback (when on-device ASR unavailable)
         await setAudioModeAsync({ allowsRecording: true, playsInSilentMode: true });
         await recorder.prepareToRecordAsync();
         recorder.record();
@@ -739,18 +739,16 @@ export default function LearnSessionScreen() {
     if (!recordingRef.current || !currentStep || currentStep.kind !== 'pronunciation') return;
 
     const elapsed = Date.now() - recordingStartRef.current;
-    const isRepeat = currentStep.phrase.type === 'repeat';
 
     // Ignore accidental releases shorter than 300ms
     if (elapsed < 300) {
       recordingRef.current = false;
-      if (isRepeat && ASR_AVAILABLE) {
+      if (ASR_AVAILABLE) {
         ExpoSpeechRecognitionModule.abort();
-        await setAudioModeAsync({ allowsRecording: false, playsInSilentMode: true, interruptionMode: 'doNotMix' });
       } else {
         try { await recorder.stop(); } catch {}
-        await setAudioModeAsync({ allowsRecording: false, playsInSilentMode: true, interruptionMode: 'doNotMix' });
       }
+      await setAudioModeAsync({ allowsRecording: false, playsInSilentMode: true, interruptionMode: 'doNotMix' });
       setPronStatus('listening');
       return;
     }
@@ -760,7 +758,7 @@ export default function LearnSessionScreen() {
     Haptics.impactAsync(Haptics.ImpactFeedbackStyle.Light);
 
     try {
-      if (isRepeat && ASR_AVAILABLE) {
+      if (ASR_AVAILABLE) {
         // ── REPEAT: on-device ASR + string similarity ────────────
         ExpoSpeechRecognitionModule.stop();
         // Give ~300ms for final result event to fire
@@ -808,7 +806,7 @@ export default function LearnSessionScreen() {
           exerciseData: { question: currentStep.phrase.text, score: pct, userAnswer: transcript } });
         showPronResult(feedback);
 
-      } else if (isRepeat && !ASR_AVAILABLE) {
+      } else {
         // ── REPEAT fallback: Whisper transcription (no native ASR) ──
         await recorder.stop();
         await setAudioModeAsync({ allowsRecording: false, playsInSilentMode: true, interruptionMode: 'doNotMix' });
@@ -861,61 +859,6 @@ export default function LearnSessionScreen() {
         saveExercise({ level, moduleIndex, topicIndex, exerciseType: 'repeat', isCorrect: feedback.state === 'correct', xpEarned: feedback.xp,
           exerciseData: { question: currentStep.phrase.text, score: pct, userAnswer: transcript } });
         showPronResult(feedback);
-
-      } else {
-        // ── SHADOWING: Azure (apenas v1 Practice — adapter v2 nunca emite 'shadowing') ─
-        await recorder.stop();
-        await setAudioModeAsync({ allowsRecording: false, playsInSilentMode: true, interruptionMode: 'doNotMix' });
-        const audioUri = recorder.uri;
-        if (!audioUri) { setPronStatus('error'); return; }
-
-        const isWav = audioUri.toLowerCase().endsWith('.wav');
-        const formData = new FormData();
-        formData.append('audio', { uri: audioUri, name: isWav ? 'recording.wav' : 'recording.m4a', type: isWav ? 'audio/wav' : 'audio/x-m4a' } as unknown as Blob);
-        formData.append('referenceText', currentStep.phrase.text ?? '');
-        if (userId) formData.append('userId', userId);
-
-        const res = await fetch(`${API_BASE_URL}/api/pronunciation`, { method: 'POST', body: formData });
-        if (!res.ok) throw new Error('Assessment failed');
-        const data = await res.json();
-
-        if (!data.success && data.shouldRetry) {
-          showPronResult({ state: 'error', xp: 0, message: isPortuguese
-            ? 'Não conseguimos avaliar sua pronúncia. Tente falar mais claramente.'
-            : "We couldn't assess your pronunciation. Try speaking more clearly." });
-          return;
-        }
-
-        if (data.result) {
-          const score        = data.result.pronunciationScore ?? 0;
-          const completeness = data.result.completenessScore  ?? 0;
-          const allZero      = score === 0 && (data.result.accuracyScore ?? 0) === 0 && completeness === 0;
-          if (allZero || completeness < 35) {
-          showPronResult({ state: 'error', xp: 0, message: isPortuguese
-            ? 'Não conseguimos avaliar sua pronúncia. Tente falar mais claramente.'
-            : "We couldn't assess your pronunciation. Try speaking more clearly." });
-          return;
-        }
-
-          let feedback: NonNullable<PronFeedback>;
-          if (score >= 70) {
-            feedback = { state: 'correct', xp: 15, message: isPortuguese ? 'Ótimo ritmo! Entonação natural.' : 'Great rhythm! Natural intonation.' };
-            Haptics.notificationAsync(Haptics.NotificationFeedbackType.Success);
-            soundEngine.play('answer_correct').catch(() => {});
-          } else if (score >= 45) {
-            feedback = { state: 'close', xp: 8, message: isPortuguese ? 'Bom esforço! Tente acompanhar o ritmo da Charlotte mais de perto.' : "Good effort! Try to follow Charlotte's rhythm more closely." };
-            Haptics.notificationAsync(Haptics.NotificationFeedbackType.Warning);
-          } else {
-            feedback = { state: 'error', xp: 0, message: isPortuguese ? 'Tente de novo, acompanhando a velocidade e entonação dela.' : 'Try again, matching her speed and intonation.' };
-            Haptics.notificationAsync(Haptics.NotificationFeedbackType.Error);
-            soundEngine.play('answer_wrong').catch(() => {});
-            setSessionErrors(prev => prev + 1);
-          }
-          if (isV2) pronScoresRef.current.set(stepIdx, score);
-          saveExercise({ level, moduleIndex, topicIndex, exerciseType: 'shadowing', isCorrect: feedback.state === 'correct', xpEarned: feedback.xp,
-            exerciseData: { question: currentStep.phrase.text, score, userAnswer: 'audio' } });
-          showPronResult(feedback);
-        }
       }
     } catch { setPronStatus('error'); }
   };
@@ -1694,8 +1637,6 @@ export default function LearnSessionScreen() {
                 <AppText style={{ fontSize: 12, color: accent, fontWeight: '700', textAlign: 'center' }}>
                   {currentStep.phrase.type === 'repeat'
                     ? (isPortuguese ? 'Ouça a Charlotte e repita a frase.'        : 'Listen to Charlotte and repeat the phrase.')
-                    : currentStep.phrase.type === 'shadowing'
-                    ? (isPortuguese ? 'Siga junto com Charlotte — foco no ritmo e entonação.' : 'Follow along with Charlotte\'s rhythm and prosody.')
                     : currentStep.phrase.type === 'minimal_pairs'
                     ? (isPortuguese ? 'Ouça a Charlotte e toque na palavra que ela disse.' : 'Listen to Charlotte and tap the word you heard.')
                     : currentStep.phrase.type === 'sentence_stress'
@@ -1711,7 +1652,7 @@ export default function LearnSessionScreen() {
               {/* Phrase + play icon inline (estilo Duolingo).
                   O proprio icone pulsa (escala) quando audio toca — sem
                   ring externo, animacao no proprio glifo. */}
-              {(currentStep.phrase.type === 'repeat' || currentStep.phrase.type === 'shadowing' || pronStatus === 'result') && currentStep.phrase.text && (
+              {(currentStep.phrase.type === 'repeat' || pronStatus === 'result') && currentStep.phrase.text && (
                 <View style={{ flexDirection: 'row', alignItems: 'center', justifyContent: 'center', gap: 12, marginBottom: 24 }}>
                   {currentStep.phrase.type !== 'sentence_stress' && pronStatus !== 'loading_audio' && (
                     <TouchableOpacity onPress={handlePlayCharlotte} activeOpacity={0.7} hitSlop={{ top: 8, bottom: 8, left: 8, right: 8 }}>
@@ -1947,44 +1888,6 @@ export default function LearnSessionScreen() {
             </TouchableOpacity>
           )}
 
-          {/* ── Pronunciation: Shadowing ── */}
-          {currentStep.kind === 'pronunciation' && currentStep.phrase.type === 'shadowing' && (
-            pronStatus === 'error' ? (
-              <TouchableOpacity onPress={handleNext}
-                style={{ backgroundColor: C.navy, borderRadius: 16, paddingVertical: 15, flexDirection: 'row', alignItems: 'center', justifyContent: 'center', gap: 8 }}>
-                <AppText style={{ fontSize: 15, fontWeight: '800', color: '#FFF' }}>{stepIdx + 1 >= totalSteps ? (isPortuguese ? 'Concluir' : 'Finish') : (isPortuguese ? 'Próximo' : 'Next')}</AppText>
-                {stepIdx + 1 < totalSteps && <ArrowRight size={18} color="#FFF" weight="bold" />}
-              </TouchableOpacity>
-            ) : pronStatus === 'loading_audio' ? (
-              <View style={{ alignItems: 'center', paddingVertical: 12 }}>
-                <ActivityIndicator color={accent} />
-              </View>
-            ) : pronStatus === 'assessing' ? (
-              <View style={{ alignItems: 'center', paddingVertical: 12 }}>
-                <ActivityIndicator color={accent} />
-                <AppText style={{ color: C.navyLight, fontSize: 13, marginTop: 6 }}>{isPortuguese ? 'Analisando…' : 'Assessing…'}</AppText>
-              </View>
-            ) : pronStatus !== 'result' ? (
-              <Pressable
-                onPressIn={startRecording}
-                onPressOut={stopRecording}
-                pressRetentionOffset={{ top: 20, left: 20, right: 20, bottom: 20 }}
-                style={{
-                  backgroundColor: pronStatus === 'recording' ? '#DC2626' : '#7C3AED',
-                  borderRadius: 16, paddingVertical: 16,
-                  flexDirection: 'row', alignItems: 'center', justifyContent: 'center', gap: 10,
-                }}
-              >
-                <Microphone size={22} color="#FFF" weight="fill" />
-                <AppText style={{ fontSize: 15, fontWeight: '800', color: '#FFF' }}>
-                  {pronStatus === 'recording'
-                    ? (isPortuguese ? 'Gravando… solte para parar' : 'Recording… release to stop')
-                    : (isPortuguese ? 'Segure e siga junto' : 'Hold and follow along')}
-                </AppText>
-              </Pressable>
-            ) : null
-          )}
-
           {/* ── Pronunciation: Minimal Pairs / Sentence Stress — error fallback only ── */}
           {currentStep.kind === 'pronunciation' && (currentStep.phrase.type === 'minimal_pairs' || currentStep.phrase.type === 'sentence_stress') && pronStatus === 'error' && (
             <TouchableOpacity onPress={handleNext}
@@ -2107,7 +2010,7 @@ export default function LearnSessionScreen() {
           : isCloseState
           ? (isPortuguese ? 'Quase lá!' : 'Almost!')
           : (isPortuguese ? 'Tente de novo' : 'Try again');
-        const canRetry = (currentStep.phrase.type === 'repeat' || currentStep.phrase.type === 'shadowing') && !isCorrectState;
+        const canRetry = currentStep.phrase.type === 'repeat' && !isCorrectState;
         return (
           <Animated.View style={{
             position: 'absolute', bottom: 0, left: 0, right: 0,
