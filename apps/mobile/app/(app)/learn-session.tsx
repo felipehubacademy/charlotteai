@@ -12,7 +12,7 @@ import { router, useLocalSearchParams } from 'expo-router';
 import {
   ArrowLeft, ArrowRight, CheckCircle, XCircle,
   LightbulbFilament, BookOpen, Microphone,
-  SpeakerHigh, Play, Pause, ArrowsClockwise,
+  SpeakerSimpleNone, SpeakerLow, SpeakerHigh, Play, Pause, ArrowsClockwise,
   ThumbsUp, ThumbsDown,
 } from 'phosphor-react-native';
 import AnimatedXPBadge from '@/components/ui/AnimatedXPBadge';
@@ -512,6 +512,10 @@ export default function LearnSessionScreen() {
 
   // ── Load pronunciation step ────────────────────────────────
   const lastPhraseText = useRef<string | null>(null);
+  // Ref sincronizada com charlotteAudioUri pra usar dentro de loadPronStep
+  // sem precisar re-criar o callback a cada uri mudar.
+  const charlotteAudioUriRef = useRef<string | null>(null);
+  useEffect(() => { charlotteAudioUriRef.current = charlotteAudioUri; }, [charlotteAudioUri]);
 
   const loadPronStep = useCallback(async (ph: PronStep) => {
     setPronStatus('loading_audio');
@@ -526,6 +530,9 @@ export default function LearnSessionScreen() {
     speechTranscriptRef.current = '';
     stopAudio();
 
+    // Captura uri local pra usar no autoplay no fim — evita race com state.
+    let autoplayUri: string | null = null;
+
     try {
       if (ph.type === 'sentence_stress') {
         // No audio needed for sentence_stress
@@ -539,10 +546,13 @@ export default function LearnSessionScreen() {
           if (uri) {
             setCharlotteAudioUri(uri);
             lastPhraseText.current = targetWord;
+            autoplayUri = uri;
           } else {
             setCharlotteAudioUri(null);
             lastPhraseText.current = null;
           }
+        } else if (targetWord === lastPhraseText.current) {
+          autoplayUri = charlotteAudioUriRef.current;
         }
       } else if (ph.text) {
         // repeat, listen_write, shadowing — use ph.text
@@ -551,10 +561,13 @@ export default function LearnSessionScreen() {
           if (uri) {
             setCharlotteAudioUri(uri);
             lastPhraseText.current = ph.text;
+            autoplayUri = uri;
           } else {
             setCharlotteAudioUri(null);
             lastPhraseText.current = null;
           }
+        } else {
+          autoplayUri = charlotteAudioUriRef.current;
         }
       }
       // Pre-warm: já configura a session em modo de gravação ANTES do
@@ -565,7 +578,17 @@ export default function LearnSessionScreen() {
 
     // Always transition to listening — record button must always appear
     setPronStatus('listening');
-  }, [fetchTTS, stopAudio, pronFeedbackAnim]);
+
+    // Autoplay (padrao Duolingo): toca uma vez ao entrar no step.
+    if (autoplayUri && ph.type !== 'sentence_stress') {
+      setTimeout(async () => {
+        try {
+          await setAudioModeAsync({ allowsRecording: false, playsInSilentMode: true, shouldRouteThroughEarpiece: false });
+        } catch {}
+        try { toggleAudio(charlottePlayId, autoplayUri!); } catch {}
+      }, 600);
+    }
+  }, [fetchTTS, stopAudio, pronFeedbackAnim, toggleAudio]);
 
   // ── Initialise & step transitions ──────────────────────────
   useEffect(() => {
@@ -646,47 +669,20 @@ export default function LearnSessionScreen() {
     if (charlotteAudioUri) toggleAudio(charlottePlayId, charlotteAudioUri);
   };
 
-  // Auto-play: ao entrar num step de pronunciation com audio carregado,
-  // toca uma vez automaticamente (padrao Duolingo). Ref garante que so
-  // dispara 1x por step (nao volta a tocar em re-renders).
-  // Delay maior (700ms) pra dar tempo do useMessageAudioPlayer reverter
-  // o audio mode do allowsRecording:true setado em loadPronStep.
-  const autoPlayedStepRef = useRef<number | null>(null);
+  // Ondas animadas no icone de speaker quando audio toca: cicla entre
+  // Speaker (sem ondas) -> SpeakerLow (1 onda) -> SpeakerHigh (2 ondas)
+  // a cada 250ms, dando sensacao de som emanando.
+  const [speakerWave, setSpeakerWave] = useState<0 | 1 | 2>(2);
   useEffect(() => {
-    if (currentStep?.kind !== 'pronunciation') return;
-    if (currentStep.phrase?.type === 'sentence_stress') return;
-    if (pronStatus !== 'listening') return;
-    if (!charlotteAudioUri) return;
-    if (autoPlayedStepRef.current === stepIdx) return;
-    autoPlayedStepRef.current = stepIdx;
-    const t = setTimeout(async () => {
-      try {
-        // Reverte explicitamente pra playback mode antes do play, pq
-        // loadPronStep deixa allowsRecording:true (pre-warm mic).
-        await setAudioModeAsync({ allowsRecording: false, playsInSilentMode: true, shouldRouteThroughEarpiece: false });
-      } catch {}
-      toggleAudio(charlottePlayId, charlotteAudioUri);
-    }, 700);
-    return () => clearTimeout(t);
-  // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [stepIdx, charlotteAudioUri, pronStatus]);
-
-  // Pulse animation pro botao de play quando audio esta tocando.
-  const audioPulseAnim = useRef(new Animated.Value(0)).current;
-  useEffect(() => {
-    if (!isPlaying) {
-      audioPulseAnim.setValue(0);
-      return;
-    }
-    const loop = Animated.loop(
-      Animated.sequence([
-        Animated.timing(audioPulseAnim, { toValue: 1, duration: 700, useNativeDriver: true }),
-        Animated.timing(audioPulseAnim, { toValue: 0, duration: 700, useNativeDriver: true }),
-      ]),
-    );
-    loop.start();
-    return () => loop.stop();
-  }, [isPlaying, audioPulseAnim]);
+    if (!isPlaying) { setSpeakerWave(2); return; }
+    let step = 0;
+    const iv = setInterval(() => {
+      step = (step + 1) % 3;
+      setSpeakerWave(step as 0 | 1 | 2);
+    }, 250);
+    return () => clearInterval(iv);
+  }, [isPlaying]);
+  const SpeakerIcon = speakerWave === 0 ? SpeakerSimpleNone : speakerWave === 1 ? SpeakerLow : SpeakerHigh;
 
   // ── Pronunciation: show result panel ──────────────────────
   const showPronResult = (feedback: NonNullable<PronFeedback>) => {
@@ -1719,13 +1715,9 @@ export default function LearnSessionScreen() {
               {(currentStep.phrase.type === 'repeat' || currentStep.phrase.type === 'shadowing' || pronStatus === 'result') && currentStep.phrase.text && (
                 <View style={{ flexDirection: 'row', alignItems: 'center', gap: 12, marginBottom: 24 }}>
                   {currentStep.phrase.type !== 'sentence_stress' && pronStatus !== 'loading_audio' && (
-                    <Animated.View style={{
-                      transform: [{ scale: audioPulseAnim.interpolate({ inputRange: [0, 1], outputRange: [1, 1.18] }) }],
-                    }}>
-                      <TouchableOpacity onPress={handlePlayCharlotte} activeOpacity={0.7} hitSlop={{ top: 8, bottom: 8, left: 8, right: 8 }}>
-                        <SpeakerHigh size={32} color={accent} weight="fill" />
-                      </TouchableOpacity>
-                    </Animated.View>
+                    <TouchableOpacity onPress={handlePlayCharlotte} activeOpacity={0.7} hitSlop={{ top: 8, bottom: 8, left: 8, right: 8 }}>
+                      <SpeakerIcon size={32} color={accent} weight="fill" />
+                    </TouchableOpacity>
                   )}
                   <AppText style={{ flex: 1, fontSize: 22, fontWeight: '500', color: C.navy, lineHeight: 34 }}>
                     {currentStep.phrase.text}
@@ -1735,13 +1727,9 @@ export default function LearnSessionScreen() {
               {/* listen_write / minimal_pairs pre-result: play icon centralizado, sem texto */}
               {(currentStep.phrase.type === 'listen_write' || currentStep.phrase.type === 'minimal_pairs') && pronStatus !== 'result' && pronStatus !== 'loading_audio' && (
                 <View style={{ alignItems: 'center', marginBottom: 24 }}>
-                  <Animated.View style={{
-                    transform: [{ scale: audioPulseAnim.interpolate({ inputRange: [0, 1], outputRange: [1, 1.18] }) }],
-                  }}>
-                    <TouchableOpacity onPress={handlePlayCharlotte} activeOpacity={0.7} hitSlop={{ top: 12, bottom: 12, left: 12, right: 12 }}>
-                      <SpeakerHigh size={56} color={accent} weight="fill" />
-                    </TouchableOpacity>
-                  </Animated.View>
+                  <TouchableOpacity onPress={handlePlayCharlotte} activeOpacity={0.7} hitSlop={{ top: 12, bottom: 12, left: 12, right: 12 }}>
+                    <SpeakerIcon size={56} color={accent} weight="fill" />
+                  </TouchableOpacity>
                 </View>
               )}
 
