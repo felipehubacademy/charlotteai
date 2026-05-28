@@ -4,7 +4,7 @@
 import React, { useEffect, useRef, useState } from 'react';
 import { Animated, ActivityIndicator, View, StyleSheet, Image } from 'react-native';
 
-const MIN_VISIBLE_MS = 2000;
+const MIN_VISIBLE_MS = 3000;
 
 export function SplashOverlay() {
   const opacity = useRef(new Animated.Value(1)).current;
@@ -38,7 +38,7 @@ export function SplashOverlay() {
         style={{ width: '100%', height: '100%' }}
         resizeMode="contain"
       />
-      <View style={{ position: 'absolute', bottom: '14%', left: 0, right: 0, alignItems: 'center' }}>
+      <View style={{ position: 'absolute', bottom: '32%', left: 0, right: 0, alignItems: 'center' }}>
         <ActivityIndicator size="large" color="#7C3AED" />
       </View>
     </Animated.View>
