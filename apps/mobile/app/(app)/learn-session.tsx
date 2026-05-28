@@ -1269,8 +1269,8 @@ export default function LearnSessionScreen() {
           {currentStep.kind === 'grammar' && (
             <View style={{ flex: 1 }}>
               {/* Instruction — bubble na cor do nível, sem avatar, centralizado */}
-              <View style={{ backgroundColor: accentBg, borderRadius: 14, paddingHorizontal: 14, paddingVertical: 14, marginBottom: 18 }}>
-                <AppText style={{ fontSize: 14, color: accent, fontWeight: '700', textAlign: 'center' }}>
+              <View style={{ backgroundColor: accentBg, borderRadius: 12, paddingHorizontal: 12, paddingVertical: 9, marginBottom: 16, alignSelf: 'center' }}>
+                <AppText style={{ fontSize: 12, color: accent, fontWeight: '700', textAlign: 'center' }}>
                   {currentStep.exercise.type === 'multiple_choice' ? (isPortuguese ? 'Escolha a opção correta para completar a frase.'    : 'Choose the correct option to complete the sentence.')
                     : currentStep.exercise.type === 'word_bank'      ? (isPortuguese ? 'Toque na palavra correta para preencher o espaço.' : 'Tap the correct word to fill the blank.')
                     : currentStep.exercise.type === 'fill_gap'       ? (isPortuguese ? 'Digite a palavra que falta na lacuna.'            : 'Type the missing word in the blank.')
@@ -1690,8 +1690,8 @@ export default function LearnSessionScreen() {
           {currentStep.kind === 'pronunciation' && (
             <View>
               {/* Bubble centralizada (sem avatar embedded) */}
-              <View style={{ backgroundColor: accentBg, borderRadius: 14, paddingHorizontal: 14, paddingVertical: 14, marginBottom: 18 }}>
-                <AppText style={{ fontSize: 14, color: accent, fontWeight: '700', textAlign: 'center' }}>
+              <View style={{ backgroundColor: accentBg, borderRadius: 12, paddingHorizontal: 12, paddingVertical: 9, marginBottom: 16, alignSelf: 'center' }}>
+                <AppText style={{ fontSize: 12, color: accent, fontWeight: '700', textAlign: 'center' }}>
                   {currentStep.phrase.type === 'repeat'
                     ? (isPortuguese ? 'Ouça a Charlotte e repita a frase.'        : 'Listen to Charlotte and repeat the phrase.')
                     : currentStep.phrase.type === 'shadowing'
@@ -1712,13 +1712,13 @@ export default function LearnSessionScreen() {
                   O proprio icone pulsa (escala) quando audio toca — sem
                   ring externo, animacao no proprio glifo. */}
               {(currentStep.phrase.type === 'repeat' || currentStep.phrase.type === 'shadowing' || pronStatus === 'result') && currentStep.phrase.text && (
-                <View style={{ flexDirection: 'row', alignItems: 'center', gap: 12, marginBottom: 24 }}>
+                <View style={{ flexDirection: 'row', alignItems: 'center', justifyContent: 'center', gap: 12, marginBottom: 24 }}>
                   {currentStep.phrase.type !== 'sentence_stress' && pronStatus !== 'loading_audio' && (
                     <TouchableOpacity onPress={handlePlayCharlotte} activeOpacity={0.7} hitSlop={{ top: 8, bottom: 8, left: 8, right: 8 }}>
                       <SpeakerIcon size={32} color={accent} weight="fill" />
                     </TouchableOpacity>
                   )}
-                  <AppText style={{ flex: 1, fontSize: 22, fontWeight: '500', color: C.navy, lineHeight: 34 }}>
+                  <AppText style={{ fontSize: 22, fontWeight: '500', color: C.navy, lineHeight: 34, textAlign: 'center' }}>
                     {currentStep.phrase.text}
                   </AppText>
                 </View>

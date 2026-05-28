@@ -74,8 +74,13 @@ export function useMessageAudioPlayer() {
         setPlayingId(id);
       }
 
-      // Natural end of playback
-      if (status.didJustFinish && currentIdRef.current === id) {
+      // Natural end of playback. Em alguns devices o didJustFinish nao
+      // dispara confiavelmente — fallback usa currentTime >= duration.
+      const reachedEnd =
+        status.didJustFinish ||
+        (status.isLoaded && !status.playing && status.duration > 0 &&
+          status.currentTime >= status.duration - 0.08);
+      if (reachedEnd && currentIdRef.current === id) {
         subRef.current?.remove();
         subRef.current = null;
         currentIdRef.current = null;
