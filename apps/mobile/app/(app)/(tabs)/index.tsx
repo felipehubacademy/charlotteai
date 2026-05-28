@@ -199,9 +199,6 @@ export default function HomeTab() {
             _streakSoundPlayedThisSession = true;
             SecureStore.setItemAsync(streakKey, today).catch(() => {});
             setTimeout(() => soundEngine.play('streak_alive').catch(() => {}), introOffset + 800);
-
-            // Tier 4 — marcos de streak (somente no dia exato em que cruza)
-            // SFX streak_alive comeca em t=offset+800 e dura ~1.2s
             if (streakDays === 7) {
               setTimeout(() => voiceSFX.play('streak_7_days').catch(() => {}), introOffset + 2300);
             } else if (streakDays === 30) {

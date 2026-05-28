@@ -39,7 +39,7 @@ export function SplashOverlay() {
         resizeMode="contain"
       />
       <View style={{ position: 'absolute', bottom: '32%', left: 0, right: 0, alignItems: 'center' }}>
-        <ActivityIndicator size="large" color="#7C3AED" />
+        <ActivityIndicator size="large" color="#9896B8" />
       </View>
     </Animated.View>
   );
