@@ -103,7 +103,7 @@ export function usePushNotifications(userId?: string) {
           case 'streak_reminder':
           case 'daily_reminder':
           case 'charlotte_message':
-            router.push('/(app)/chat');
+            router.push('/(app)/(tabs)/practice' as any);
             break;
           case 'xp_milestone':
             router.push('/(app)');  // home → stats visible

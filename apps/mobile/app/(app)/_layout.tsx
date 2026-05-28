@@ -26,10 +26,6 @@ export default function AppLayout() {
         <Stack.Screen name="first-access" options={{ animation: 'none' }} />
         <Stack.Screen name="index" options={{ animation: 'none' }} />
         <Stack.Screen name="(tabs)" options={{ animation: 'none' }} />
-        <Stack.Screen name="grammar" />
-        <Stack.Screen name="pronunciation" />
-        <Stack.Screen name="chat" />
-        <Stack.Screen name="configuracoes" />
         <Stack.Screen name="learn-grammar" />
         <Stack.Screen name="learn-pronunciation" />
         <Stack.Screen name="learn-trail" />
