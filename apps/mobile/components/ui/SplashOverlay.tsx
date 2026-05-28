@@ -28,12 +28,15 @@ export function SplashOverlay() {
   return (
     <Animated.View
       pointerEvents="none"
-      style={[StyleSheet.absoluteFillObject, { opacity, zIndex: 9999 }]}
+      style={[
+        StyleSheet.absoluteFillObject,
+        { opacity, zIndex: 9999, backgroundColor: '#F4F3FA', alignItems: 'center', justifyContent: 'center' },
+      ]}
     >
       <Image
         source={require('@/assets/splash.png')}
-        style={StyleSheet.absoluteFillObject}
-        resizeMode="cover"
+        style={{ width: '100%', height: '100%' }}
+        resizeMode="contain"
       />
       <View style={{ position: 'absolute', bottom: '14%', left: 0, right: 0, alignItems: 'center' }}>
         <ActivityIndicator size="large" color="#7C3AED" />
