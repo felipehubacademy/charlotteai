@@ -117,14 +117,14 @@ export default function GuidedChatExerciseScreen() {
     openedRef.current = true;
     const id = `assist_${Date.now()}`;
     const openerText = gc.scripted
-      ? (gc.scripted.npc_lines[gc.scripted.flow.start]?.text ?? gc.opening_message)
+      ? (gc.scripted?.npc_lines?.[(gc.scripted?.flow?.start ?? '')]?.text ?? gc.opening_message)
       : gc.opening_message;
     setMessages([{
       id, role: 'assistant', content: openerText,
       messageType: 'text', timestamp: new Date(),
     }]);
     historyRef.current = [{ role: 'assistant', content: openerText }];
-    if (gc.scripted) setActiveNpcLineId(gc.scripted.flow.start);
+    if (gc.scripted) setActiveNpcLineId(gc.scripted?.flow?.start ?? null);
     startTimeRef.current = Date.now();
     setRemainingSec(GUIDED_CHAT_BUDGET_SEC[level] ?? 300);
   }, [gc, level]);
@@ -168,14 +168,14 @@ export default function GuidedChatExerciseScreen() {
     stuckTurnsRef.current = 0;
     const id = `assist_${Date.now()}`;
     const openerText = gc.scripted
-      ? (gc.scripted.npc_lines[gc.scripted.flow.start]?.text ?? gc.opening_message)
+      ? (gc.scripted?.npc_lines?.[(gc.scripted?.flow?.start ?? '')]?.text ?? gc.opening_message)
       : gc.opening_message;
     setMessages([{
       id, role: 'assistant', content: openerText,
       messageType: 'text', timestamp: new Date(),
     }]);
     historyRef.current = [{ role: 'assistant', content: openerText }];
-    if (gc.scripted) setActiveNpcLineId(gc.scripted.flow.start);
+    if (gc.scripted) setActiveNpcLineId(gc.scripted?.flow?.start ?? null);
     startTimeRef.current = Date.now();
     setRemainingSec(GUIDED_CHAT_BUDGET_SEC[level] ?? 300);
   }, [gc, level]);
@@ -235,7 +235,7 @@ export default function GuidedChatExerciseScreen() {
         }
 
         if (out.next_line_id) {
-          const npcLine = gc.scripted.npc_lines[out.next_line_id];
+          const npcLine = gc.scripted?.npc_lines?.[out.next_line_id];
           setActiveNpcLineId(out.next_line_id);
           if (npcLine?.text) {
             const aMsgId = `assist_${Date.now()}`;
@@ -253,7 +253,7 @@ export default function GuidedChatExerciseScreen() {
         const willBeMetS = objectivesMet.size + out.newly_met.length;
         if (out.session_complete || willBeMetS >= totalObjS) {
           Haptics.notificationAsync(Haptics.NotificationFeedbackType.Success);
-          setSessionComplete(true);
+          setTimeout(() => setSessionComplete(true), 2500);
         }
         return; // termina branch scripted
       }
@@ -311,7 +311,7 @@ export default function GuidedChatExerciseScreen() {
       const willBeMet = objectivesMet.size + newOnes.length;
       if (data.status === 'complete' || willBeMet >= totalObj) {
         Haptics.notificationAsync(Haptics.NotificationFeedbackType.Success);
-        setSessionComplete(true);
+        setTimeout(() => setSessionComplete(true), 2500);
       }
     } catch (e: any) {
       console.warn('[guided-chat] turn failed', e);
@@ -468,7 +468,7 @@ export default function GuidedChatExerciseScreen() {
         let en: string | undefined;
         let pt: string | undefined;
         if (gc.scripted && activeNpcLineId) {
-          const exp = gc.scripted.npc_lines[activeNpcLineId]?.expected_student_response;
+          const exp = gc.scripted?.npc_lines?.[activeNpcLineId]?.expected_student_response;
           en = exp?.en;
           pt = exp?.pt_hint;
         } else {

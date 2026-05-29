@@ -24,6 +24,7 @@ import { createAudioPlayer, setAudioModeAsync, AudioPlayer, RecordingPresets } f
 
 import { AppText } from '@/components/ui/Text';
 import ChatBox, { Message } from '@/components/chat/ChatBox';
+import { SimpleSpeakExercise } from '@/components/SimpleSpeakExercise';
 import { useAuth } from '@/hooks/useAuth';
 import { useAudioRecorder } from '@/hooks/useAudioRecorder';
 import { getModule } from '@/lib/curriculum-v2/loader';
@@ -136,7 +137,7 @@ export default function RolePlayExerciseScreen() {
   useEffect(() => {
     if (!rp || openedRef.current) return;
     openedRef.current = true;
-    historyRef.current = [{ role: 'assistant', content: rp.scripted?.npc_lines[rp.scripted.flow.start]?.text ?? rp.opening_line }];
+    historyRef.current = [{ role: 'assistant', content: rp.scripted?.npc_lines?.[(rp.scripted?.flow?.start ?? '')]?.text ?? rp.opening_line }];
     startTimeRef.current = Date.now();
     setRemainingSec(rp.time_budget_sec);
     setIsProcessing(true);
@@ -168,14 +169,14 @@ export default function RolePlayExerciseScreen() {
       const dir = `${FileSystem.documentDirectory}roleplay/`;
       await FileSystem.makeDirectoryAsync(dir, { intermediates: true }).catch(() => {});
 
-      if (rpDef.scripted) {
-        const startId = rpDef.scripted.flow.start;
-        const line = rpDef.scripted.npc_lines[startId];
+      if (rpDef.scripted && rpDef.scripted.mode !== 'simple_speak') {
+        const startId = rpDef.scripted?.flow?.start ?? '';
+        const line = startId ? rpDef.scripted?.npc_lines?.[startId] : undefined;
         if (!line?.audio) throw new Error(`scripted opener "${startId}" sem audio`);
         localUri = `${dir}${msgId}.mp3`;
         const dl = await FileSystem.downloadAsync(line.audio, localUri);
         if (dl.status >= 400) throw new Error(`download opener falhou: ${dl.status}`);
-        setActiveNpcLineId(startId);
+        setActiveNpcLineId(startId ?? null);
       } else {
         const res = await fetch(`${API_BASE_URL}/api/tts`, {
           method: 'POST',
@@ -190,7 +191,7 @@ export default function RolePlayExerciseScreen() {
       // Audio pronto: pusha o bubble real, encerra o typing indicator.
       // Em scripted, usa o text do npc_line (pode diferir do opening_line do markdown).
       const openerText = rpDef.scripted
-        ? (rpDef.scripted.npc_lines[rpDef.scripted.flow.start]?.text ?? rpDef.opening_line)
+        ? (rpDef.scripted?.npc_lines?.[(rpDef.scripted?.flow?.start ?? '')]?.text ?? rpDef.opening_line)
         : rpDef.opening_line;
       setMessages(prev => [...prev, {
         id: msgId, role: 'assistant',
@@ -340,7 +341,7 @@ export default function RolePlayExerciseScreen() {
 
         // Toca proximo npc_line (se houver match)
         if (out.next_line_id) {
-          const npcLine = rp.scripted.npc_lines[out.next_line_id];
+          const npcLine = rp.scripted?.npc_lines?.[out.next_line_id];
           setActiveNpcLineId(out.next_line_id);
           if (npcLine?.audio) {
             const aMsgId = `assist_${Date.now()}`;
@@ -373,7 +374,7 @@ export default function RolePlayExerciseScreen() {
         const willBeMet = objectivesMet.size + out.newly_met.length;
         if (out.session_complete || willBeMet >= totalObj) {
           Haptics.notificationAsync(Haptics.NotificationFeedbackType.Success);
-          setSessionComplete(true);
+          setTimeout(() => setSessionComplete(true), 2500);
         }
         return;  // termina o branch scripted
       }
@@ -454,11 +455,13 @@ export default function RolePlayExerciseScreen() {
       // Encerra se backend marcou OU se já bateu todas as objectives.
       // Não dependemos só do backend porque o modelo às vezes esquece
       // de emitir session_complete mesmo quando todos os objetivos batem.
+      // Delay 2.5s pra o audio do fechamento tocar antes do card subir
+      // — evita o card aparecendo "atras" da bolha final.
       const totalObj  = rp.objectives.length;
       const willBeMet = objectivesMet.size + newOnes.length;
       if (data.status === 'complete' || willBeMet >= totalObj) {
         Haptics.notificationAsync(Haptics.NotificationFeedbackType.Success);
-        setSessionComplete(true);
+        setTimeout(() => setSessionComplete(true), 2500);
       }
     } catch (e: any) {
       console.warn('[roleplay] turn failed', e);
@@ -478,7 +481,7 @@ export default function RolePlayExerciseScreen() {
     setHintVisible(null);
     savedRef.current = false;
     stuckTurnsRef.current = 0;
-    historyRef.current = [{ role: 'assistant', content: rp.scripted?.npc_lines[rp.scripted.flow.start]?.text ?? rp.opening_line }];
+    historyRef.current = [{ role: 'assistant', content: rp.scripted?.npc_lines?.[(rp.scripted?.flow?.start ?? '')]?.text ?? rp.opening_line }];
     startTimeRef.current = Date.now();
     setRemainingSec(rp.time_budget_sec);
     setIsProcessing(true);
@@ -563,6 +566,24 @@ export default function RolePlayExerciseScreen() {
       <SafeAreaView style={{ flex: 1, backgroundColor: C.bg, alignItems: 'center', justifyContent: 'center' }}>
         <ActivityIndicator color={C.navy} />
       </SafeAreaView>
+    );
+  }
+
+  // Modo simple_speak (base-da-base): renderiza componente alternativo.
+  // 1 pergunta CDN + Whisper + LLM judge + result pass/fail. Sem chat loop.
+  if (rp.scripted?.mode === 'simple_speak') {
+    return (
+      <SimpleSpeakExercise
+        rp={rp}
+        isPt={isPt}
+        unitTitle={unitTitle}
+        onBack={() => router.back()}
+        onComplete={(score) => {
+          v2Progress.saveAttempt(moduleId, unitId, 'roleplay', score)
+            .catch(e => console.warn('[simple-speak] saveAttempt failed', e));
+          router.back();
+        }}
+      />
     );
   }
 
@@ -710,7 +731,7 @@ export default function RolePlayExerciseScreen() {
         let en: string | undefined;
         let pt: string | undefined;
         if (rp.scripted && activeNpcLineId) {
-          const exp = rp.scripted.npc_lines[activeNpcLineId]?.expected_student_response;
+          const exp = rp.scripted?.npc_lines?.[activeNpcLineId]?.expected_student_response;
           en = exp?.en;
           pt = exp?.pt_hint;
         } else {

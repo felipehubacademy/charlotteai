@@ -66,6 +66,7 @@ function objIdFromKey(key: string): number | null {
 
 function classify(transcript: string, flow: ScriptedFlow): number[] {
   const newly: number[] = [];
+  if (!flow.classify) return newly;
   for (const [key, rule] of Object.entries(flow.classify)) {
     const id = objIdFromKey(key);
     if (id === null) continue;
@@ -97,7 +98,7 @@ function pickTransition(
       const id = objIdFromKey(w.partial);
       if (id === null) continue;
       if (objectivesMetAfter.has(id)) continue;       // ja bateu, nao eh partial
-      const rule = flow.classify[w.partial];
+      const rule = flow.classify?.[w.partial];
       const hasAnyOfPartial = rule?.patterns_any
         ? rule.patterns_any.some(p => patternMatchesWordBoundary(t, p))
         : false;
@@ -115,6 +116,11 @@ function pickTransition(
 export function runScriptedTurn(input: RunnerInput): RunnerOutput {
   const { flow, transcript, objectivesMet, stuckTurns } = input;
 
+  // Runner so vale pro modo conversation. Simple_speak nao usa.
+  if (!flow.classify || !flow.flow) {
+    return { next_line_id: null, newly_met: [], session_complete: false, is_hint: false, should_fallback_llm: false };
+  }
+
   // 1) Classifica novos objectives batidos
   const allMatched = classify(transcript, flow);
   const newly = allMatched.filter(id => !objectivesMet.has(id));
@@ -124,7 +130,7 @@ export function runScriptedTurn(input: RunnerInput): RunnerOutput {
   for (const id of newly) after.add(id);
 
   // 3) Procura transition que case com o estado pos-classify
-  const tr = pickTransition(flow.flow.transitions, transcript, after, newly, flow);
+  const tr = pickTransition(flow.flow!.transitions, transcript, after, newly, flow);
 
   // 4) Hint detection: transition cujo `when.partial` esta presente OU
   //    o nome do play comeca com "hint_"

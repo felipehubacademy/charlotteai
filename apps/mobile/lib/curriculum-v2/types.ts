@@ -100,14 +100,28 @@ export interface ScriptedTransition {
 
 export interface ScriptedFlow {
   scripted:    true;
-  npc_lines:   Record<string, ScriptedNPCLine>;
-  classify:    ScriptedClassify;
-  flow: {
-    start:        string;                    // npc_line id
+  /** Modo de execução. simple_speak = 1 turno único judged via LLM. */
+  mode?:       'simple_speak' | 'conversation';
+  // Para `simple_speak`:
+  voice?:      VoicedBy;
+  question?: {
+    text:  string;
+    audio: string;                           // URL completa do MP3 CDN
+  };
+  expected_response?: {
+    en:       string;
+    pt_hint?: string;
+  };
+  hidden_prompt?: string;                    // input do LLM judge
+  // Para `conversation` (legado, multi-turn):
+  npc_lines?:   Record<string, ScriptedNPCLine>;
+  classify?:    ScriptedClassify;
+  flow?: {
+    start:        string;
     transitions:  ScriptedTransition[];
   };
   fallback?: {
-    llm_after_stuck?: number;                // ex: 2 — fallback pro LLM apos N tentativas seguidas
+    llm_after_stuck?: number;
   };
 }
 

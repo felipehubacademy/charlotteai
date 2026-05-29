@@ -38,7 +38,7 @@ function parseScripted(body) {
     try {
       const parsed = yaml.load(txt);
       if (parsed?.scripted !== true) continue;
-      // Injeta URL completa em cada npc_lines[*].audio
+      // Injeta URL completa em cada npc_lines[*].audio (modo conversation)
       if (parsed.npc_lines && typeof parsed.npc_lines === 'object') {
         for (const k of Object.keys(parsed.npc_lines)) {
           const line = parsed.npc_lines[k];
@@ -46,6 +46,10 @@ function parseScripted(body) {
             line.audio = SCRIPTED_AUDIO_BASE_URL + line.audio;
           }
         }
+      }
+      // Injeta URL completa em question.audio (modo simple_speak)
+      if (parsed.question?.audio && !/^https?:/i.test(parsed.question.audio)) {
+        parsed.question.audio = SCRIPTED_AUDIO_BASE_URL + parsed.question.audio;
       }
       return parsed;
     } catch (e) {
