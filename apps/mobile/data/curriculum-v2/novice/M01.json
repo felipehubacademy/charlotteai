@@ -154,84 +154,44 @@
         }
       ],
       "roleplay": {
-        "scenario": "Você esbarra com Ana, sua melhor amiga, no café onde ela costuma ir antes do trabalho. Vocês não se veem há algumas semanas.",
+        "scenario": "Você esbarra com Ana, sua melhor amiga, no portão do prédio. Cumprimento rápido.",
         "voiced_by": "charlotte",
         "persona": "Ana (melhor amiga)",
         "persona_outfit": "ana_cafe_morning",
-        "time_budget_sec": 180,
-        "opening_line": "Hey! Long time no see! How are you?",
+        "time_budget_sec": 90,
+        "opening_line": "Hi! How are you?",
         "objectives": [
           {
             "id": 1,
-            "label_pt": "Cumprimentar Ana e devolver a pergunta",
-            "label_en": "Greet Ana back and return the question",
-            "hidden_prompt": "user returns the greeting and asks 'how are you' or 'and you'",
-            "hint_pt": "Tenta 'I'm good, thanks. And you?'",
-            "hint_en": "Try 'I'm good, thanks. And you?'"
-          },
-          {
-            "id": 2,
-            "label_pt": "Explicar por que sumiu",
-            "label_en": "Explain why you've been absent",
-            "hidden_prompt": "user gives any reason for not being around (work, study, busy)",
-            "hint_pt": "Algo tipo 'I've been busy with work'",
-            "hint_en": "Something like 'I've been busy with work'"
-          },
-          {
-            "id": 3,
-            "label_pt": "Convidar Ana pra um café",
-            "label_en": "Invite Ana for coffee",
-            "hidden_prompt": "user suggests grabbing a coffee or sitting down together",
-            "hint_pt": "'Want to grab a coffee?' funciona bem",
-            "hint_en": "Try 'Want to grab a coffee?'"
+            "label_pt": "Responder como você está",
+            "label_en": "Say how you're doing",
+            "hidden_prompt": "user says any positive state (good/fine/great/ok/well)",
+            "hint_pt": "Tenta 'I'm good!'",
+            "hint_en": "Try 'I'm good!'"
           }
         ],
-        "closing_cue": "Ana fecha com \"Sounds perfect! Let's go in.\" quando os 3 objetivos baterem.",
-        "suggested_flow": "**Suggested flow** (referencial, 4 turnos):\n\n1. **Student**: ~\"Hi Ana! I'm good, thanks. And you?\"\n2. **Ana**: \"I'm great! Where have you been hiding?\"\n3. **Student**: ~\"I've been busy with work. Want to grab a coffee?\"\n4. **Ana**: \"Sounds perfect! Let's go in.\"",
+        "closing_cue": "Ana fecha com \"Great! Nice to see you. Talk to you later!\" quando obj_1 baterem.",
+        "suggested_flow": "**Suggested flow** (referencial, 2 turnos):\n\n1. **Student**: ~\"I'm good!\"\n2. **Ana**: \"Great! Nice to see you. Talk to you later!\"",
         "evaluation_focus": [
-          "Aluno usa pelo menos 2 chunks (\"Hi\", \"How are you\", \"I'm good/fine\", \"thanks\", \"And you\")",
-          "Pronúncia clara das saudações",
-          "Naturalidade na resposta após \"And you?\"",
-          "when: { objective_just_met: 1 }",
-          "when: { partial: obj_1, has_any: [\"good\",\"fine\",\"great\",\"okay\",\"alright\",\"well\"] }",
-          "when: { objective_just_met: 2 }",
-          "when: { objective_just_met: 3 }"
+          "Aluno responde com algum estado positivo",
+          "Pronúncia clara de \"I'm good\" / \"Good\"",
+          "when: { objective_just_met: 1 }"
         ],
         "scripted": {
           "scripted": true,
           "voice": "charlotte",
           "npc_lines": {
             "open": {
-              "text": "Hey! Long time no see! How are you?",
+              "text": "Hi! How are you?",
               "audio": "https://fnvjibzreepubageztoi.supabase.co/storage/v1/object/public/curriculum-audio/m01/n01/roleplay/open.mp3",
               "expected_student_response": {
-                "en": "I'm good, thanks. And you?",
-                "pt_hint": "Cumprimenta de volta e devolve a pergunta"
-              }
-            },
-            "ask_absence": {
-              "text": "I'm great! Where have you been hiding?",
-              "audio": "https://fnvjibzreepubageztoi.supabase.co/storage/v1/object/public/curriculum-audio/m01/n01/roleplay/ask_absence.mp3",
-              "expected_student_response": {
-                "en": "I've been busy with work.",
-                "pt_hint": "Explica por que sumiu"
-              }
-            },
-            "acknowledge_absence": {
-              "text": "Oh, makes sense. So, what now?",
-              "audio": "https://fnvjibzreepubageztoi.supabase.co/storage/v1/object/public/curriculum-audio/m01/n01/roleplay/acknowledge_absence.mp3",
-              "expected_student_response": {
-                "en": "Want to grab a coffee?",
-                "pt_hint": "Convida ela pra um café"
+                "en": "I'm good!",
+                "pt_hint": "Diz como você está"
               }
             },
             "close": {
-              "text": "Sounds perfect! Let's go in.",
+              "text": "Great! Nice to see you. Talk to you later!",
               "audio": "https://fnvjibzreepubageztoi.supabase.co/storage/v1/object/public/curriculum-audio/m01/n01/roleplay/close.mp3"
-            },
-            "hint_add_and_you": {
-              "text": "Aw, I'm doing alright too! But wait — how are you doing?",
-              "audio": "https://fnvjibzreepubageztoi.supabase.co/storage/v1/object/public/curriculum-audio/m01/n01/roleplay/hint_add_and_you.mp3"
             }
           },
           "classify": {
@@ -243,38 +203,7 @@
                 "ok",
                 "okay",
                 "alright",
-                "well",
-                "hi",
-                "hello",
-                "hey",
-                "thanks",
-                "and you"
-              ]
-            },
-            "obj_2": {
-              "patterns_any": [
-                "busy",
-                "work",
-                "study",
-                "tired",
-                "school",
-                "home",
-                "house",
-                "kids",
-                "family"
-              ]
-            },
-            "obj_3": {
-              "patterns_any": [
-                "coffee",
-                "tea",
-                "grab a",
-                "let's grab",
-                "want to grab",
-                "wanna grab",
-                "want to get",
-                "let's get",
-                "sit down"
+                "well"
               ]
             }
           },
@@ -284,32 +213,6 @@
               {
                 "when": {
                   "objective_just_met": 1
-                },
-                "play": "ask_absence"
-              },
-              {
-                "when": {
-                  "partial": "obj_1",
-                  "has_any": [
-                    "good",
-                    "fine",
-                    "great",
-                    "okay",
-                    "alright",
-                    "well"
-                  ]
-                },
-                "play": "hint_add_and_you"
-              },
-              {
-                "when": {
-                  "objective_just_met": 2
-                },
-                "play": "acknowledge_absence"
-              },
-              {
-                "when": {
-                  "objective_just_met": 3
                 },
                 "play": "close",
                 "session_complete": true
@@ -322,107 +225,50 @@
         }
       },
       "guided_chat": {
-        "scenario": "Tom, seu colega de escritório americano, acabou de chegar na segunda de manhã.",
+        "scenario": "Tom, seu colega de escritório americano, te cumprimenta na segunda de manhã.",
         "voiced_by": "charlie",
         "persona": "Tom (colega de trabalho)",
         "persona_outfit": "tom_office_casual",
-        "intro_pt": "É segunda de manhã e o Tom acabou de chegar no escritório. Cumprimenta ele e troca um papo rápido antes do dia começar.",
-        "opening_message": "Morning! Long Monday already, huh?",
+        "intro_pt": "É segunda de manhã e o Tom te cumprimenta. Responde ele.",
+        "opening_message": "Good morning! How are you?",
         "objectives": [
           {
             "id": 1,
-            "label_pt": "Cumprimentar Tom usando saudação de manhã",
-            "label_en": "Greet Tom with a morning greeting",
-            "hidden_prompt": "user uses 'good morning' or 'morning' as a greeting",
-            "hint_pt": "Por ser de manhã, 'good morning' soa mais natural que só 'hi'",
-            "hint_en": "It's morning — 'good morning' sounds more natural than just 'hi'"
-          },
-          {
-            "id": 2,
-            "label_pt": "Responder 'how are you' e devolver a pergunta",
-            "label_en": "Answer 'how are you' and ask it back",
-            "hidden_prompt": "user answers with 'I'm fine/good/well' and asks 'and you' or 'how about you'",
-            "hint_pt": "Tenta 'I'm fine, thanks. And you?' — em inglês usa-se a frase completa, não só 'Fine'",
-            "hint_en": "Try 'I'm fine, thanks. And you?'"
-          },
-          {
-            "id": 3,
-            "label_pt": "Aceitar ou recusar o convite pro café",
-            "label_en": "Accept or decline the coffee invite",
-            "hidden_prompt": "user accepts ('yes, please' / 'sure') or politely declines ('no, thanks')",
-            "hint_pt": "Pode ser simples: 'Yes, please!' ou 'Sure, let's go.'",
-            "hint_en": "Keep it short: 'Yes, please!' or 'Sure, let's go.'"
+            "label_pt": "Responder como você está",
+            "label_en": "Say how you're doing",
+            "hidden_prompt": "user says any positive state (good/fine/great/ok/well)",
+            "hint_pt": "Tenta 'I'm fine!'",
+            "hint_en": "Try 'I'm fine!'"
           }
         ],
-        "closing_cue": "Tom encerra com \"Catch you in the kitchen!\" ou \"Catch you later!\" quando objetivos baterem.",
-        "recap_pt": "Perfeito! Você usou 4 chunks importantes: 'good morning', 'How are you?', 'I'm fine, thanks', e a resposta 'And you?'. Esses chunks fixos são a base de qualquer conversa em inglês. Continua assim!",
-        "suggested_script": "**Script** (referencial, 5 turnos):\n\n1. **Student** (expected): \"Hi Tom, good morning!\"\n   *Se aluno escrever só \"Hi\":* Tom: \"Morning! Just 'hi' works, but on a Monday morning 'good morning' lands better. How are you?\"\n\n2. **Tom**: \"Good morning! How are you today?\"\n\n3. **Student** (expected): \"I'm fine, thanks. And you?\"\n   *Se aluno escrever só \"Fine\":* Tom: \"Haha, just 'fine'? Try 'I'm fine, thanks' — full sentence, more natural.\"\n\n4. **Tom**: \"Doing well, thanks for asking! Coffee?\"\n\n5. **Student** (expected): \"Yes, please! See you in the kitchen.\"\n\n#### Scripted (POC v1)\n\n```yaml\nscripted: true\nvoice: charlie                              # Tom = voz masculina (onyx)\n# OBS: guided chat e text-only — sem `audio:` nos npc_lines. Voice declarada\n# mesmo assim por consistencia caso futuro release transforme em hibrido.\n\nnpc_lines:\n  open:\n    text: \"Morning! Long Monday already, huh?\"\n    expected_student_response:\n      en: \"Good morning, Tom!\"\n      pt_hint: \"Cumprimenta o Tom com saudação de manhã\"\n  ask_how_are_you:\n    text: \"Good morning! How are you today?\"\n    expected_student_response:\n      en: \"I'm fine, thanks. And you?\"\n      pt_hint: \"Responde como está e devolve a pergunta\"\n  offer_coffee:\n    text: \"Doing well, thanks for asking! Coffee?\"\n    expected_student_response:\n      en: \"Yes, please!\"\n      pt_hint: \"Aceita ou recusa o café\"\n  close_accept:\n    text: \"Catch you in the kitchen!\"\n  close_decline:\n    text: \"No worries — catch you later!\"\n  hint_morning:\n    text: \"Morning! On Mondays 'good morning' lands better than just 'hi'. How are you?\"\n  hint_full_sentence:\n    text: \"Just 'fine'? Try 'I'm fine, thanks' — sounds more natural. How about you?\"\n\n# Classificador ultra tolerante. Aluno le expected_student_response na tela\n# e escreve qualquer coisa parecida; sistema considera obj atingido.\nclassify:\n  obj_1:\n    patterns_any: [\"morning\"]\n  obj_2:\n    patterns_any: [\"fine\", \"good\", \"great\", \"ok\", \"okay\", \"well\", \"and you\"]\n  obj_3:\n    # Aceita/recusa do convite de cafe. Sem patterns ambiguos como \"no\" sozinho.\n    patterns_any: [\"yes\", \"sure\", \"please\", \"of course\", \"let's go\", \"no thanks\", \"no, thanks\", \"maybe later\", \"i'm good\"]\n\nflow:\n  start: open\n  transitions:\n    # Greet correto\n    - when: { objective_just_met: 1 }\n      play: ask_how_are_you\n    # Greet só com \"hi\" (sem \"morning\")\n    - when: { partial: obj_1, has_any: [\"hi\",\"hello\",\"hey\"], missing_required_one_of: [\"morning\"] }\n      play: hint_morning\n    # Resposta completa\n    - when: { objective_just_met: 2 }\n      play: offer_coffee\n    # Aluno só \"fine\" sem ask back\n    - when: { partial: obj_2, has_any: [\"fine\",\"good\",\"great\",\"okay\",\"well\"], missing_required_one_of: [\"and you\",\"how about you\",\"how are you\"] }\n      play: hint_full_sentence\n    # Aceita\n    - when: { objective_just_met: 3, has_any: [\"yes\",\"sure\",\"please\",\"of course\",\"let's go\"] }\n      play: close_accept\n      session_complete: true\n    # Recusa\n    - when: { objective_just_met: 3, has_any: [\"no thanks\",\"maybe later\",\"i'm good\"] }\n      play: close_decline\n      session_complete: true\n\nfallback:\n  llm_after_stuck: 2\n```\n\n---",
+        "closing_cue": "Tom encerra com \"Have a great day!\" quando obj_1 baterem.",
+        "recap_pt": "Boa! Você praticou o chunk básico 'I'm fine' — base de qualquer conversa em inglês.",
+        "suggested_script": "**Script** (referencial, 2 turnos):\n\n1. **Student** (expected): \"I'm fine!\"\n2. **Tom**: \"Have a great day!\"\n\n#### Scripted (POC v1)\n\n```yaml\nscripted: true\nvoice: charlie                              # Tom = voz masculina (onyx) — sem audio (chat e text-only)\n\nnpc_lines:\n  open:\n    text: \"Good morning! How are you?\"\n    expected_student_response:\n      en: \"I'm fine!\"\n      pt_hint: \"Diz como você está\"\n  close:\n    text: \"Have a great day!\"\n\nclassify:\n  obj_1:\n    patterns_any: [\"fine\", \"good\", \"great\", \"ok\", \"okay\", \"alright\", \"well\"]\n\nflow:\n  start: open\n  transitions:\n    - when: { objective_just_met: 1 }\n      play: close\n      session_complete: true\n\nfallback:\n  llm_after_stuck: 2\n```\n\n---",
         "scripted": {
           "scripted": true,
           "voice": "charlie",
           "npc_lines": {
             "open": {
-              "text": "Morning! Long Monday already, huh?",
+              "text": "Good morning! How are you?",
               "expected_student_response": {
-                "en": "Good morning, Tom!",
-                "pt_hint": "Cumprimenta o Tom com saudação de manhã"
+                "en": "I'm fine!",
+                "pt_hint": "Diz como você está"
               }
             },
-            "ask_how_are_you": {
-              "text": "Good morning! How are you today?",
-              "expected_student_response": {
-                "en": "I'm fine, thanks. And you?",
-                "pt_hint": "Responde como está e devolve a pergunta"
-              }
-            },
-            "offer_coffee": {
-              "text": "Doing well, thanks for asking! Coffee?",
-              "expected_student_response": {
-                "en": "Yes, please!",
-                "pt_hint": "Aceita ou recusa o café"
-              }
-            },
-            "close_accept": {
-              "text": "Catch you in the kitchen!"
-            },
-            "close_decline": {
-              "text": "No worries — catch you later!"
-            },
-            "hint_morning": {
-              "text": "Morning! On Mondays 'good morning' lands better than just 'hi'. How are you?"
-            },
-            "hint_full_sentence": {
-              "text": "Just 'fine'? Try 'I'm fine, thanks' — sounds more natural. How about you?"
+            "close": {
+              "text": "Have a great day!"
             }
           },
           "classify": {
             "obj_1": {
-              "patterns_any": [
-                "morning"
-              ]
-            },
-            "obj_2": {
               "patterns_any": [
                 "fine",
                 "good",
                 "great",
                 "ok",
                 "okay",
-                "well",
-                "and you"
-              ]
-            },
-            "obj_3": {
-              "patterns_any": [
-                "yes",
-                "sure",
-                "please",
-                "of course",
-                "let's go",
-                "no thanks",
-                "no, thanks",
-                "maybe later",
-                "i'm good"
+                "alright",
+                "well"
               ]
             }
           },
@@ -433,70 +279,7 @@
                 "when": {
                   "objective_just_met": 1
                 },
-                "play": "ask_how_are_you"
-              },
-              {
-                "when": {
-                  "partial": "obj_1",
-                  "has_any": [
-                    "hi",
-                    "hello",
-                    "hey"
-                  ],
-                  "missing_required_one_of": [
-                    "morning"
-                  ]
-                },
-                "play": "hint_morning"
-              },
-              {
-                "when": {
-                  "objective_just_met": 2
-                },
-                "play": "offer_coffee"
-              },
-              {
-                "when": {
-                  "partial": "obj_2",
-                  "has_any": [
-                    "fine",
-                    "good",
-                    "great",
-                    "okay",
-                    "well"
-                  ],
-                  "missing_required_one_of": [
-                    "and you",
-                    "how about you",
-                    "how are you"
-                  ]
-                },
-                "play": "hint_full_sentence"
-              },
-              {
-                "when": {
-                  "objective_just_met": 3,
-                  "has_any": [
-                    "yes",
-                    "sure",
-                    "please",
-                    "of course",
-                    "let's go"
-                  ]
-                },
-                "play": "close_accept",
-                "session_complete": true
-              },
-              {
-                "when": {
-                  "objective_just_met": 3,
-                  "has_any": [
-                    "no thanks",
-                    "maybe later",
-                    "i'm good"
-                  ]
-                },
-                "play": "close_decline",
+                "play": "close",
                 "session_complete": true
               }
             ]

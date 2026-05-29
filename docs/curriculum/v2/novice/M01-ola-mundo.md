@@ -106,50 +106,33 @@ Charlotte fala via ElevenLabs (Rachel). Aluno repete; Azure Speech avalia pronú
 
 ### 3. Role-play
 
-**Cenário**: Você esbarra com Ana, sua melhor amiga, no café onde ela costuma ir antes do trabalho. Vocês não se veem há algumas semanas.
+**Cenário**: Você esbarra com Ana, sua melhor amiga, no portão do prédio. Cumprimento rápido.
 **Tipo**: Live Voice
 **Voiced by**: `charlotte`
 **Persona**: Ana (melhor amiga)
 **Persona outfit**: `ana_cafe_morning`
-**Time budget**: 180s
-**Opening line**: "Hey! Long time no see! How are you?"
+**Time budget**: 90s
+**Opening line**: "Hi! How are you?"
 
-**Sub-objectives**:
+**Sub-objectives** (POC base-da-base: 1 objetivo apenas):
 
 1. **id**: 1
-   **label_pt**: "Cumprimentar Ana e devolver a pergunta"
-   **label_en**: "Greet Ana back and return the question"
-   **hidden_prompt**: "user returns the greeting and asks 'how are you' or 'and you'"
-   **hint_pt**: "Tenta 'I'm good, thanks. And you?'"
-   **hint_en**: "Try 'I'm good, thanks. And you?'"
+   **label_pt**: "Responder como você está"
+   **label_en**: "Say how you're doing"
+   **hidden_prompt**: "user says any positive state (good/fine/great/ok/well)"
+   **hint_pt**: "Tenta 'I'm good!'"
+   **hint_en**: "Try 'I'm good!'"
 
-2. **id**: 2
-   **label_pt**: "Explicar por que sumiu"
-   **label_en**: "Explain why you've been absent"
-   **hidden_prompt**: "user gives any reason for not being around (work, study, busy)"
-   **hint_pt**: "Algo tipo 'I've been busy with work'"
-   **hint_en**: "Something like 'I've been busy with work'"
+**Closing cue**: Ana fecha com "Great! Nice to see you. Talk to you later!" quando obj_1 baterem.
 
-3. **id**: 3
-   **label_pt**: "Convidar Ana pra um café"
-   **label_en**: "Invite Ana for coffee"
-   **hidden_prompt**: "user suggests grabbing a coffee or sitting down together"
-   **hint_pt**: "'Want to grab a coffee?' funciona bem"
-   **hint_en**: "Try 'Want to grab a coffee?'"
+**Suggested flow** (referencial, 2 turnos):
 
-**Closing cue**: Ana fecha com "Sounds perfect! Let's go in." quando os 3 objetivos baterem.
-
-**Suggested flow** (referencial, 4 turnos):
-
-1. **Student**: ~"Hi Ana! I'm good, thanks. And you?"
-2. **Ana**: "I'm great! Where have you been hiding?"
-3. **Student**: ~"I've been busy with work. Want to grab a coffee?"
-4. **Ana**: "Sounds perfect! Let's go in."
+1. **Student**: ~"I'm good!"
+2. **Ana**: "Great! Nice to see you. Talk to you later!"
 
 **Evaluation focus**:
-- Aluno usa pelo menos 2 chunks ("Hi", "How are you", "I'm good/fine", "thanks", "And you")
-- Pronúncia clara das saudações
-- Naturalidade na resposta após "And you?"
+- Aluno responde com algum estado positivo
+- Pronúncia clara de "I'm good" / "Good"
 
 #### Scripted (POC v1)
 
@@ -162,65 +145,29 @@ Charlotte fala via ElevenLabs (Rachel). Aluno repete; Azure Speech avalia pronú
 scripted: true
 voice: charlotte                            # Ana = voz feminina (coral)
 
-# Lines do NPC, com paths estaveis. CLI gera audio via OpenAI TTS e faz upload
-# em curriculum-audio/m01/n01/roleplay/.
+# POC base-da-base: 1 objetivo. Aluno responde "How are you?" com estado
+# positivo. Sem present perfect, sem invite, sem absence. Confianca >
+# complexidade.
 npc_lines:
   open:
-    text: "Hey! Long time no see! How are you?"
+    text: "Hi! How are you?"
     audio: "m01/n01/roleplay/open.mp3"
     expected_student_response:
-      en: "I'm good, thanks. And you?"
-      pt_hint: "Cumprimenta de volta e devolve a pergunta"
-  ask_absence:
-    text: "I'm great! Where have you been hiding?"
-    audio: "m01/n01/roleplay/ask_absence.mp3"
-    expected_student_response:
-      en: "I've been busy with work."
-      pt_hint: "Explica por que sumiu"
-  acknowledge_absence:
-    text: "Oh, makes sense. So, what now?"
-    audio: "m01/n01/roleplay/acknowledge_absence.mp3"
-    expected_student_response:
-      en: "Want to grab a coffee?"
-      pt_hint: "Convida ela pra um café"
+      en: "I'm good!"
+      pt_hint: "Diz como você está"
   close:
-    text: "Sounds perfect! Let's go in."
+    text: "Great! Nice to see you. Talk to you later!"
     audio: "m01/n01/roleplay/close.mp3"
-  hint_add_and_you:
-    text: "Aw, I'm doing alright too! But wait — how are you doing?"
-    audio: "m01/n01/roleplay/hint_add_and_you.mp3"
 
-# Classificador ultra tolerante pra base-da-base. Qualquer 1 padrao bate.
-# Aluno le a expected_student_response na tela, fala alguma coisa parecida
-# em ingles, e o sistema considera obj_X atingido. NPC modela a frase ideal
-# na resposta — aprendizado por exposicao repetida.
+# Word-boundary matching. "good" matcha "Good!" mas NAO "going".
 classify:
-  # Word-boundary matching. "good" matcha "Good!" mas NAO "going".
-  # Removidos patterns ambíguos como "you", "how" (matchavam em "how are you?"
-  # do NPC OU do scaffold), "go" (matchava em "good", "going").
   obj_1:
-    patterns_any: ["good", "fine", "great", "ok", "okay", "alright", "well", "hi", "hello", "hey", "thanks", "and you"]
-  obj_2:
-    patterns_any: ["busy", "work", "study", "tired", "school", "home", "house", "kids", "family"]
-  obj_3:
-    # Multi-palavra pra precisao. Substring match dentro do contexto da frase.
-    patterns_any: ["coffee", "tea", "grab a", "let's grab", "want to grab", "wanna grab", "want to get", "let's get", "sit down"]
+    patterns_any: ["good", "fine", "great", "ok", "okay", "alright", "well"]
 
-# Maquina de estados. start = primeiro NPC line. Apos cada turno do aluno,
-# o classifier marca objectives_met; o flow procura o proximo line baseado
-# no novo state.
 flow:
   start: open
   transitions:
-    # Quando obj_1 acabou de bater
     - when: { objective_just_met: 1 }
-      play: ask_absence
-    # Aluno respondeu sem o "and you" — toca hint correctivo, NAO marca obj_1
-    - when: { partial: obj_1, has_any: ["good","fine","great","okay","alright","well"] }
-      play: hint_add_and_you
-    - when: { objective_just_met: 2 }
-      play: acknowledge_absence
-    - when: { objective_just_met: 3 }
       play: close
       session_complete: true
 
@@ -230,119 +177,54 @@ fallback:
 
 ### 4. Guided Chat
 
-**Cenário**: Tom, seu colega de escritório americano, acabou de chegar na segunda de manhã.
+**Cenário**: Tom, seu colega de escritório americano, te cumprimenta na segunda de manhã.
 **Voiced by**: `charlie`
 **Persona**: Tom (colega de trabalho)
 **Persona outfit**: `tom_office_casual`
-**Intro (em PT)**: "É segunda de manhã e o Tom acabou de chegar no escritório. Cumprimenta ele e troca um papo rápido antes do dia começar."
-**Opening message**: "Morning! Long Monday already, huh?"
+**Intro (em PT)**: "É segunda de manhã e o Tom te cumprimenta. Responde ele."
+**Opening message**: "Good morning! How are you?"
 
-**Sub-objectives**:
+**Sub-objectives** (POC base-da-base: 1 objetivo apenas):
 
 1. **id**: 1
-   **label_pt**: "Cumprimentar Tom usando saudação de manhã"
-   **label_en**: "Greet Tom with a morning greeting"
-   **hidden_prompt**: "user uses 'good morning' or 'morning' as a greeting"
-   **hint_pt**: "Por ser de manhã, 'good morning' soa mais natural que só 'hi'"
-   **hint_en**: "It's morning — 'good morning' sounds more natural than just 'hi'"
+   **label_pt**: "Responder como você está"
+   **label_en**: "Say how you're doing"
+   **hidden_prompt**: "user says any positive state (good/fine/great/ok/well)"
+   **hint_pt**: "Tenta 'I'm fine!'"
+   **hint_en**: "Try 'I'm fine!'"
 
-2. **id**: 2
-   **label_pt**: "Responder 'how are you' e devolver a pergunta"
-   **label_en**: "Answer 'how are you' and ask it back"
-   **hidden_prompt**: "user answers with 'I'm fine/good/well' and asks 'and you' or 'how about you'"
-   **hint_pt**: "Tenta 'I'm fine, thanks. And you?' — em inglês usa-se a frase completa, não só 'Fine'"
-   **hint_en**: "Try 'I'm fine, thanks. And you?'"
+**Closing cue**: Tom encerra com "Have a great day!" quando obj_1 baterem.
+**Recap (PT)**: "Boa! Você praticou o chunk básico 'I'm fine' — base de qualquer conversa em inglês."
 
-3. **id**: 3
-   **label_pt**: "Aceitar ou recusar o convite pro café"
-   **label_en**: "Accept or decline the coffee invite"
-   **hidden_prompt**: "user accepts ('yes, please' / 'sure') or politely declines ('no, thanks')"
-   **hint_pt**: "Pode ser simples: 'Yes, please!' ou 'Sure, let's go.'"
-   **hint_en**: "Keep it short: 'Yes, please!' or 'Sure, let's go.'"
+**Script** (referencial, 2 turnos):
 
-**Closing cue**: Tom encerra com "Catch you in the kitchen!" ou "Catch you later!" quando objetivos baterem.
-**Recap (PT)**: "Perfeito! Você usou 4 chunks importantes: 'good morning', 'How are you?', 'I'm fine, thanks', e a resposta 'And you?'. Esses chunks fixos são a base de qualquer conversa em inglês. Continua assim!"
-
-**Script** (referencial, 5 turnos):
-
-1. **Student** (expected): "Hi Tom, good morning!"
-   *Se aluno escrever só "Hi":* Tom: "Morning! Just 'hi' works, but on a Monday morning 'good morning' lands better. How are you?"
-
-2. **Tom**: "Good morning! How are you today?"
-
-3. **Student** (expected): "I'm fine, thanks. And you?"
-   *Se aluno escrever só "Fine":* Tom: "Haha, just 'fine'? Try 'I'm fine, thanks' — full sentence, more natural."
-
-4. **Tom**: "Doing well, thanks for asking! Coffee?"
-
-5. **Student** (expected): "Yes, please! See you in the kitchen."
+1. **Student** (expected): "I'm fine!"
+2. **Tom**: "Have a great day!"
 
 #### Scripted (POC v1)
 
 ```yaml
 scripted: true
-voice: charlie                              # Tom = voz masculina (onyx)
-# OBS: guided chat e text-only — sem `audio:` nos npc_lines. Voice declarada
-# mesmo assim por consistencia caso futuro release transforme em hibrido.
+voice: charlie                              # Tom = voz masculina (onyx) — sem audio (chat e text-only)
 
 npc_lines:
   open:
-    text: "Morning! Long Monday already, huh?"
+    text: "Good morning! How are you?"
     expected_student_response:
-      en: "Good morning, Tom!"
-      pt_hint: "Cumprimenta o Tom com saudação de manhã"
-  ask_how_are_you:
-    text: "Good morning! How are you today?"
-    expected_student_response:
-      en: "I'm fine, thanks. And you?"
-      pt_hint: "Responde como está e devolve a pergunta"
-  offer_coffee:
-    text: "Doing well, thanks for asking! Coffee?"
-    expected_student_response:
-      en: "Yes, please!"
-      pt_hint: "Aceita ou recusa o café"
-  close_accept:
-    text: "Catch you in the kitchen!"
-  close_decline:
-    text: "No worries — catch you later!"
-  hint_morning:
-    text: "Morning! On Mondays 'good morning' lands better than just 'hi'. How are you?"
-  hint_full_sentence:
-    text: "Just 'fine'? Try 'I'm fine, thanks' — sounds more natural. How about you?"
+      en: "I'm fine!"
+      pt_hint: "Diz como você está"
+  close:
+    text: "Have a great day!"
 
-# Classificador ultra tolerante. Aluno le expected_student_response na tela
-# e escreve qualquer coisa parecida; sistema considera obj atingido.
 classify:
   obj_1:
-    patterns_any: ["morning"]
-  obj_2:
-    patterns_any: ["fine", "good", "great", "ok", "okay", "well", "and you"]
-  obj_3:
-    # Aceita/recusa do convite de cafe. Sem patterns ambiguos como "no" sozinho.
-    patterns_any: ["yes", "sure", "please", "of course", "let's go", "no thanks", "no, thanks", "maybe later", "i'm good"]
+    patterns_any: ["fine", "good", "great", "ok", "okay", "alright", "well"]
 
 flow:
   start: open
   transitions:
-    # Greet correto
     - when: { objective_just_met: 1 }
-      play: ask_how_are_you
-    # Greet só com "hi" (sem "morning")
-    - when: { partial: obj_1, has_any: ["hi","hello","hey"], missing_required_one_of: ["morning"] }
-      play: hint_morning
-    # Resposta completa
-    - when: { objective_just_met: 2 }
-      play: offer_coffee
-    # Aluno só "fine" sem ask back
-    - when: { partial: obj_2, has_any: ["fine","good","great","okay","well"], missing_required_one_of: ["and you","how about you","how are you"] }
-      play: hint_full_sentence
-    # Aceita
-    - when: { objective_just_met: 3, has_any: ["yes","sure","please","of course","let's go"] }
-      play: close_accept
-      session_complete: true
-    # Recusa
-    - when: { objective_just_met: 3, has_any: ["no thanks","maybe later","i'm good"] }
-      play: close_decline
+      play: close
       session_complete: true
 
 fallback:
