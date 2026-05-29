@@ -141,24 +141,9 @@ Charlotte fala via ElevenLabs (Rachel). Aluno repete; Azure Speech avalia pronú
 > pra garantir fidelidade pedagógica. Se nenhum padrão matchar após 2 tentativas
 > no mesmo objective, cai pro modo LLM como fallback.
 
-#### Scripted (POC v2 — `simple_speak` mode)
-
-> Layout estilo L&S: pergunta única + audio CDN → aluno fala → Whisper STT
-> → LLM judge (gpt-4o-mini) decide se bateu objective → resultado pass/fail
-> com retry. Sem loop aberto: 1 troca, 1 julgamento, fim.
-
-```yaml
-scripted: true
-mode: simple_speak
-voice: charlotte
-question:
-  text: "Hi! How are you?"
-  audio: "m01/n01/roleplay/open.mp3"
-expected_response:
-  en: "I'm good!"
-  pt_hint: "Diz como você está"
-hidden_prompt: "user says any positive state in English (good/fine/great/ok/well/happy/awesome etc) or even just a single positive word"
-```
+> N01 usa LLM puro (sem scripted). Base-da-base = 1 objetivo, 1 troca.
+> Apos primeira fala do aluno, sessao encerra: acerto → card sucesso |
+> erro → card "Quase!" com a resposta esperada + botao Refazer.
 
 ### 4. Guided Chat
 

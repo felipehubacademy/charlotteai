@@ -24,7 +24,6 @@ import { createAudioPlayer, setAudioModeAsync, AudioPlayer, RecordingPresets } f
 
 import { AppText } from '@/components/ui/Text';
 import ChatBox, { Message } from '@/components/chat/ChatBox';
-import { SimpleSpeakExercise } from '@/components/SimpleSpeakExercise';
 import { useAuth } from '@/hooks/useAuth';
 import { useAudioRecorder } from '@/hooks/useAudioRecorder';
 import { getModule } from '@/lib/curriculum-v2/loader';
@@ -452,15 +451,17 @@ export default function RolePlayExerciseScreen() {
         try { p.play(); } catch {}
       }
 
-      // Encerra se backend marcou OU se já bateu todas as objectives.
-      // Não dependemos só do backend porque o modelo às vezes esquece
-      // de emitir session_complete mesmo quando todos os objetivos batem.
-      // Delay 2.5s pra o audio do fechamento tocar antes do card subir
-      // — evita o card aparecendo "atras" da bolha final.
+      // Encerra apos a PRIMEIRA fala do aluno em units single-objective
+      // (base-da-base): 1 chance, acerto ou erro → result card. Refazer no
+      // card volta a sessao do zero. Pra units multi-objective, mantem o
+      // comportamento antigo (encerra quando bate todas OU backend marca).
+      // Delay 2.5s pra o audio do fechamento tocar antes do card subir.
       const totalObj  = rp.objectives.length;
       const willBeMet = objectivesMet.size + newOnes.length;
-      if (data.status === 'complete' || willBeMet >= totalObj) {
-        Haptics.notificationAsync(Haptics.NotificationFeedbackType.Success);
+      const singleObjBaseUnit = totalObj === 1;
+      const shouldComplete = singleObjBaseUnit || data.status === 'complete' || willBeMet >= totalObj;
+      if (shouldComplete) {
+        if (willBeMet >= totalObj) Haptics.notificationAsync(Haptics.NotificationFeedbackType.Success);
         setTimeout(() => setSessionComplete(true), 2500);
       }
     } catch (e: any) {
@@ -566,24 +567,6 @@ export default function RolePlayExerciseScreen() {
       <SafeAreaView style={{ flex: 1, backgroundColor: C.bg, alignItems: 'center', justifyContent: 'center' }}>
         <ActivityIndicator color={C.navy} />
       </SafeAreaView>
-    );
-  }
-
-  // Modo simple_speak (base-da-base): renderiza componente alternativo.
-  // 1 pergunta CDN + Whisper + LLM judge + result pass/fail. Sem chat loop.
-  if (rp.scripted?.mode === 'simple_speak') {
-    return (
-      <SimpleSpeakExercise
-        rp={rp}
-        isPt={isPt}
-        unitTitle={unitTitle}
-        onBack={() => router.back()}
-        onComplete={(score) => {
-          v2Progress.saveAttempt(moduleId, unitId, 'roleplay', score)
-            .catch(e => console.warn('[simple-speak] saveAttempt failed', e));
-          router.back();
-        }}
-      />
     );
   }
 
@@ -823,14 +806,31 @@ export default function RolePlayExerciseScreen() {
             </View>
             <AppText style={{ fontSize: 20, fontWeight: '800', color: C.navy, marginBottom: 4 }}>
               {allObjectivesDone
-                ? (isPt ? 'Missão concluída!' : 'Mission complete!')
-                : (isPt ? 'Tempo esgotado' : 'Time up')}
+                ? (isPt ? 'Boa! Você acertou.' : 'Nice! You got it.')
+                : remainingSec === 0
+                  ? (isPt ? 'Tempo esgotado' : 'Time up')
+                  : (isPt ? 'Quase…' : 'Almost…')}
             </AppText>
-            <AppText style={{ fontSize: 13, color: C.navyMid, marginBottom: 20, textAlign: 'center' }}>
+            <AppText style={{ fontSize: 13, color: C.navyMid, marginBottom: 12, textAlign: 'center' }}>
               {allObjectivesDone
-                ? (isPt ? 'Você bateu todos os objetivos.' : 'You hit all objectives.')
+                ? (isPt ? 'Mandou bem!' : 'Nailed it!')
                 : (isPt ? `Você bateu ${objectivesDone} de ${objectivesTotal}.` : `You hit ${objectivesDone} of ${objectivesTotal}.`)}
             </AppText>
+            {/* Mostra a resposta esperada quando aluno errou (base-da-base) */}
+            {!allObjectivesDone && objectivesTotal === 1 && rp.objectives[0]?.hint_en && (
+              <View style={{
+                width: '100%', backgroundColor: 'rgba(124,58,237,0.08)',
+                borderRadius: 12, padding: 12, marginBottom: 16,
+                borderWidth: 1, borderColor: 'rgba(124,58,237,0.25)',
+              }}>
+                <AppText style={{ fontSize: 11, fontWeight: '700', color: '#7C3AED', textTransform: 'uppercase', letterSpacing: 0.7, marginBottom: 4 }}>
+                  {isPt ? 'A resposta era' : 'The answer was'}
+                </AppText>
+                <AppText style={{ fontSize: 16, fontWeight: '700', color: C.navy }}>
+                  {rp.objectives[0].hint_en}
+                </AppText>
+              </View>
+            )}
 
             {/* Objectives breakdown */}
             <View style={{ width: '100%', gap: 8, marginBottom: 20 }}>

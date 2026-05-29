@@ -175,21 +175,7 @@
         "evaluation_focus": [
           "Aluno responde com algum estado positivo",
           "Pronúncia clara de \"I'm good\" / \"Good\""
-        ],
-        "scripted": {
-          "scripted": true,
-          "mode": "simple_speak",
-          "voice": "charlotte",
-          "question": {
-            "text": "Hi! How are you?",
-            "audio": "https://fnvjibzreepubageztoi.supabase.co/storage/v1/object/public/curriculum-audio/m01/n01/roleplay/open.mp3"
-          },
-          "expected_response": {
-            "en": "I'm good!",
-            "pt_hint": "Diz como você está"
-          },
-          "hidden_prompt": "user says any positive state in English (good/fine/great/ok/well/happy/awesome etc) or even just a single positive word"
-        }
+        ]
       },
       "guided_chat": {
         "scenario": "Tom, seu colega de escritório americano, te cumprimenta na segunda de manhã.",
