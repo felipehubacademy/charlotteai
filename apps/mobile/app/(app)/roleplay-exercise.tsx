@@ -750,9 +750,8 @@ export default function RolePlayExerciseScreen() {
         </View>
       )}
 
-      {/* ── Scaffold fixo (estilo tooltip dark, sem precisar tocar) ────
-          Em modo scripted: usa expected_student_response do npc_line ativo.
-          Em modo LLM: usa hint_en/label_pt da primeira objective pendente. */}
+      {/* ── Scaffold fixo, MESMO LUGAR do hint tooltip (absolute, bottom 110)
+          Instrução em cima (menor), frase pra falar em baixo (maior). */}
       {!sessionComplete && !isProcessing && (() => {
         let en: string | undefined;
         let pt: string | undefined;
@@ -768,22 +767,22 @@ export default function RolePlayExerciseScreen() {
         if (!en) return null;
         return (
           <View style={{
-            marginHorizontal: 16, marginBottom: 6,
+            position: 'absolute', left: 16, right: 16, bottom: 110,
             backgroundColor: C.navy, borderRadius: 12, padding: 14,
             flexDirection: 'row', gap: 10, alignItems: 'flex-start',
-            shadowColor: '#000', shadowOpacity: 0.18, shadowRadius: 6,
-            shadowOffset: { width: 0, height: 2 }, elevation: 4,
+            shadowColor: '#000', shadowOpacity: 0.2, shadowRadius: 8,
+            shadowOffset: { width: 0, height: 2 }, elevation: 6,
           }}>
             <Lightbulb size={18} color="#FFD27A" weight="fill" />
             <View style={{ flex: 1 }}>
-              <AppText style={{ color: '#FFF', fontSize: 14, fontWeight: '700', lineHeight: 19 }}>
-                {en}
-              </AppText>
               {isPt && pt && (
-                <AppText style={{ color: 'rgba(255,255,255,0.7)', fontSize: 12, marginTop: 2, lineHeight: 16 }}>
+                <AppText style={{ color: 'rgba(255,255,255,0.7)', fontSize: 12, lineHeight: 16, marginBottom: 4 }}>
                   {pt}
                 </AppText>
               )}
+              <AppText style={{ color: '#FFF', fontSize: 15, fontWeight: '700', lineHeight: 20 }}>
+                {en}
+              </AppText>
             </View>
           </View>
         );
