@@ -702,56 +702,10 @@ export default function RolePlayExerciseScreen() {
           }
         />
 
-        {/* ── Floating Need a hand? — mesmo padrão do Free Chat (+, hist, ?) */}
-        {/* Escondido enquanto o popup da dica tá visível pra evitar sobreposição */}
-        {showHintBtn && !sessionComplete && !allObjectivesDone && !hintVisible && (
-          <View style={{
-            position: 'absolute',
-            bottom: 10, right: 12,
-            zIndex: 5,
-          }}>
-            <TouchableOpacity
-              onPress={showHint}
-              disabled={isProcessing}
-              style={{
-                width: 34, height: 34, borderRadius: 17,
-                backgroundColor: 'rgba(217,119,6,0.12)',
-                borderWidth: 1, borderColor: 'rgba(217,119,6,0.30)',
-                alignItems: 'center', justifyContent: 'center',
-                shadowColor: 'rgba(22,21,58,0.12)',
-                shadowOpacity: 1, shadowRadius: 6, shadowOffset: { width: 0, height: 2 },
-                elevation: 3,
-              }}
-              hitSlop={{ top: 8, bottom: 8, left: 8, right: 8 }}
-              accessibilityLabel={isPt ? 'Dica' : 'Hint'}
-            >
-              <Lightbulb size={17} color="#B45309" weight="fill" />
-            </TouchableOpacity>
-          </View>
-        )}
       </View>
 
-      {/* ── Hint popup (acima do input) ──────────────────────────── */}
-      {hintVisible && (
-        <View style={{
-          position: 'absolute', left: 16, right: 16, bottom: 110,
-          backgroundColor: C.navy, borderRadius: 12, padding: 14,
-          flexDirection: 'row', gap: 10, alignItems: 'flex-start',
-          shadowColor: '#000', shadowOpacity: 0.2, shadowRadius: 8,
-          shadowOffset: { width: 0, height: 2 }, elevation: 6,
-        }}>
-          <Lightbulb size={18} color="#FFD27A" weight="fill" />
-          <AppText style={{ flex: 1, color: '#FFF', fontSize: 13, lineHeight: 18 }}>
-            {hintVisible}
-          </AppText>
-          <TouchableOpacity onPress={() => setHintVisible(null)} hitSlop={{ top: 8, bottom: 8, left: 8, right: 8 }}>
-            <XIcon size={16} color="rgba(255,255,255,0.6)" />
-          </TouchableOpacity>
-        </View>
-      )}
-
-      {/* ── Scaffold fixo, MESMO LUGAR do hint tooltip (absolute, bottom 110)
-          Instrução em cima (menor), frase pra falar em baixo (maior). */}
+      {/* ── Scaffold INLINE acima do mic (sempre visivel, sem clique).
+          Removidos botao Lightbulb + popup hint (redundantes). */}
       {!sessionComplete && !isProcessing && (() => {
         let en: string | undefined;
         let pt: string | undefined;
@@ -767,11 +721,9 @@ export default function RolePlayExerciseScreen() {
         if (!en) return null;
         return (
           <View style={{
-            position: 'absolute', left: 16, right: 16, bottom: 110,
+            marginHorizontal: 16, marginBottom: 6,
             backgroundColor: C.navy, borderRadius: 12, padding: 14,
             flexDirection: 'row', gap: 10, alignItems: 'flex-start',
-            shadowColor: '#000', shadowOpacity: 0.2, shadowRadius: 8,
-            shadowOffset: { width: 0, height: 2 }, elevation: 6,
           }}>
             <Lightbulb size={18} color="#FFD27A" weight="fill" />
             <View style={{ flex: 1 }}>
