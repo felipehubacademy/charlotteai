@@ -101,6 +101,9 @@ export default function RolePlayExerciseScreen() {
   // Scripted scaffold: id da ultima npc_line tocada que ainda espera resposta
   // do aluno. Usado pra mostrar expected_student_response como banner.
   const [activeNpcLineId, setActiveNpcLineId] = useState<string | null>(null);
+  // Captura o transcript da ULTIMA fala do aluno pra mostrar no result card
+  // ("Entendemos: ...") quando ele erra a base-da-base.
+  const [lastUserTranscript, setLastUserTranscript] = useState<string>('');
   const [hintsUsed, setHintsUsed]             = useState(0);
   const [hintVisible, setHintVisible]         = useState<string | null>(null);
   const [remainingSec, setRemainingSec]       = useState<number>(0);
@@ -406,6 +409,7 @@ export default function RolePlayExerciseScreen() {
         ? { ...m, content: data.user_transcript ?? '' }
         : m
       ));
+      setLastUserTranscript(data.user_transcript ?? '');
       historyRef.current.push({ role: 'user', content: data.user_transcript ?? '' });
 
       // Persist assistant audio locally + render
@@ -816,19 +820,34 @@ export default function RolePlayExerciseScreen() {
                 ? (isPt ? 'Mandou bem!' : 'Nailed it!')
                 : (isPt ? `Você bateu ${objectivesDone} de ${objectivesTotal}.` : `You hit ${objectivesDone} of ${objectivesTotal}.`)}
             </AppText>
-            {/* Mostra a resposta esperada quando aluno errou (base-da-base) */}
+            {/* Base-da-base: mostra o que o aluno falou + a resposta esperada */}
             {!allObjectivesDone && objectivesTotal === 1 && rp.objectives[0]?.hint_en && (
-              <View style={{
-                width: '100%', backgroundColor: 'rgba(124,58,237,0.08)',
-                borderRadius: 12, padding: 12, marginBottom: 16,
-                borderWidth: 1, borderColor: 'rgba(124,58,237,0.25)',
-              }}>
-                <AppText style={{ fontSize: 11, fontWeight: '700', color: '#7C3AED', textTransform: 'uppercase', letterSpacing: 0.7, marginBottom: 4 }}>
-                  {isPt ? 'A resposta era' : 'The answer was'}
-                </AppText>
-                <AppText style={{ fontSize: 16, fontWeight: '700', color: C.navy }}>
-                  {rp.objectives[0].hint_en}
-                </AppText>
+              <View style={{ width: '100%', marginBottom: 16 }}>
+                {!!lastUserTranscript && (
+                  <View style={{
+                    backgroundColor: 'rgba(22,21,58,0.06)',
+                    borderRadius: 12, padding: 12, marginBottom: 8,
+                  }}>
+                    <AppText style={{ fontSize: 11, fontWeight: '700', color: C.navyMid, textTransform: 'uppercase', letterSpacing: 0.7, marginBottom: 4 }}>
+                      {isPt ? 'Entendemos' : 'We heard'}
+                    </AppText>
+                    <AppText style={{ fontSize: 15, color: C.navy }}>
+                      {lastUserTranscript}
+                    </AppText>
+                  </View>
+                )}
+                <View style={{
+                  backgroundColor: 'rgba(124,58,237,0.08)',
+                  borderRadius: 12, padding: 12,
+                  borderWidth: 1, borderColor: 'rgba(124,58,237,0.25)',
+                }}>
+                  <AppText style={{ fontSize: 11, fontWeight: '700', color: '#7C3AED', textTransform: 'uppercase', letterSpacing: 0.7, marginBottom: 4 }}>
+                    {isPt ? 'A resposta era' : 'The answer was'}
+                  </AppText>
+                  <AppText style={{ fontSize: 16, fontWeight: '700', color: C.navy }}>
+                    {rp.objectives[0].hint_en}
+                  </AppText>
+                </View>
               </View>
             )}
 
