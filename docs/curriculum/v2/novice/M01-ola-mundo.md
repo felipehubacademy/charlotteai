@@ -152,30 +152,47 @@ Charlotte fala via ElevenLabs (Rachel). Aluno repete; Azure Speech avalia pronú
 **Persona**: Tom (colega de trabalho)
 **Persona outfit**: `tom_office_casual`
 **Intro (em PT)**: "É segunda de manhã e o Tom te cumprimenta. Responde ele."
-**Opening message**: "Good morning! How are you?"
+**Opening message**: "Good morning!"
 
-**Sub-objectives** (POC base-da-base: 1 objetivo apenas):
+**Sub-objectives** (POC base-da-base: 3 objetivos, todos 1-2 palavras):
 
 1. **id**: 1
-   **label_pt**: "Responder como você está"
-   **label_en**: "Say how you're doing"
-   **hidden_prompt**: "user says any positive state (good/fine/great/ok/well)"
+   **label_pt**: "Cumprimentar de manhã"
+   **label_en**: "Greet back"
+   **hidden_prompt**: "user greets back with 'good morning', 'morning', 'hi', 'hello' or similar"
+   **hint_pt**: "Good morning!"
+   **hint_en**: "Good morning!"
+
+2. **id**: 2
+   **label_pt**: "Dizer como você está"
+   **label_en**: "Say how you are"
+   **hidden_prompt**: "user says any positive state (fine/good/great/ok/well)"
    **hint_pt**: "I'm fine!"
    **hint_en**: "I'm fine!"
 
-**Closing cue**: Tom encerra com "Have a great day!" quando obj_1 baterem.
-**Recap (PT)**: "Boa! Você praticou o chunk básico 'I'm fine' — base de qualquer conversa em inglês."
+3. **id**: 3
+   **label_pt**: "Aceitar o café"
+   **label_en**: "Accept the coffee"
+   **hidden_prompt**: "user accepts the invitation (yes/sure/please/of course)"
+   **hint_pt**: "Yes, please!"
+   **hint_en**: "Yes, please!"
 
-**Script** (referencial, 2 turnos):
+**Closing cue**: Tom encerra com "Awesome, see you later!" quando obj_3 baterem.
+**Recap (PT)**: "Boa! Você praticou três blocos essenciais: saudação, estado e aceitar um convite. São a base de qualquer interação simples em inglês."
 
-1. **Student** (expected): "I'm fine!"
-2. **Tom**: "Have a great day!"
+**Script** (referencial, 6 turnos):
 
-#### Scripted (POC v1)
+1. **Tom**: "Good morning!"
+2. **Student**: "Good morning!" (or "Morning!")
+3. **Tom**: "How are you?"
+4. **Student**: "I'm fine!"
+5. **Tom**: "Coffee?"
+6. **Student**: "Yes, please!"
+7. **Tom**: "Awesome, see you later!"
 
-> POC scripted removido de N01 (mesma decisao do role-play). LLM puro
-> assume com mais tolerancia de input. Scaffold "Escreva:" aparece via
-> hint_pt da objective pendente.
+> N01 chat = LLM puro. Scaffold "Escreva:" aparece via hint_pt da
+> objective pendente (cada um dos 3 objetivos vai destacando o próximo
+> chunk esperado conforme aluno avança).
 
 ---
 

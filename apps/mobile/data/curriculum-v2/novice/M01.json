@@ -183,20 +183,36 @@
         "persona": "Tom (colega de trabalho)",
         "persona_outfit": "tom_office_casual",
         "intro_pt": "É segunda de manhã e o Tom te cumprimenta. Responde ele.",
-        "opening_message": "Good morning! How are you?",
+        "opening_message": "Good morning!",
         "objectives": [
           {
             "id": 1,
-            "label_pt": "Responder como você está",
-            "label_en": "Say how you're doing",
-            "hidden_prompt": "user says any positive state (good/fine/great/ok/well)",
+            "label_pt": "Cumprimentar de manhã",
+            "label_en": "Greet back",
+            "hidden_prompt": "user greets back with 'good morning', 'morning', 'hi', 'hello' or similar",
+            "hint_pt": "Good morning!",
+            "hint_en": "Good morning!"
+          },
+          {
+            "id": 2,
+            "label_pt": "Dizer como você está",
+            "label_en": "Say how you are",
+            "hidden_prompt": "user says any positive state (fine/good/great/ok/well)",
             "hint_pt": "I'm fine!",
             "hint_en": "I'm fine!"
+          },
+          {
+            "id": 3,
+            "label_pt": "Aceitar o café",
+            "label_en": "Accept the coffee",
+            "hidden_prompt": "user accepts the invitation (yes/sure/please/of course)",
+            "hint_pt": "Yes, please!",
+            "hint_en": "Yes, please!"
           }
         ],
-        "closing_cue": "Tom encerra com \"Have a great day!\" quando obj_1 baterem.",
-        "recap_pt": "Boa! Você praticou o chunk básico 'I'm fine' — base de qualquer conversa em inglês.",
-        "suggested_script": "**Script** (referencial, 2 turnos):\n\n1. **Student** (expected): \"I'm fine!\"\n2. **Tom**: \"Have a great day!\"\n\n#### Scripted (POC v1)\n\n> POC scripted removido de N01 (mesma decisao do role-play). LLM puro\n> assume com mais tolerancia de input. Scaffold \"Escreva:\" aparece via\n> hint_pt da objective pendente.\n\n---"
+        "closing_cue": "Tom encerra com \"Awesome, see you later!\" quando obj_3 baterem.",
+        "recap_pt": "Boa! Você praticou três blocos essenciais: saudação, estado e aceitar um convite. São a base de qualquer interação simples em inglês.",
+        "suggested_script": "**Script** (referencial, 6 turnos):\n\n1. **Tom**: \"Good morning!\"\n2. **Student**: \"Good morning!\" (or \"Morning!\")\n3. **Tom**: \"How are you?\"\n4. **Student**: \"I'm fine!\"\n5. **Tom**: \"Coffee?\"\n6. **Student**: \"Yes, please!\"\n7. **Tom**: \"Awesome, see you later!\"\n\n> N01 chat = LLM puro. Scaffold \"Escreva:\" aparece via hint_pt da\n> objective pendente (cada um dos 3 objetivos vai destacando o próximo\n> chunk esperado conforme aluno avança).\n\n---"
       }
     },
     {
