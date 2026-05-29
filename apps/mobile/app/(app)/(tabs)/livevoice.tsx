@@ -4,7 +4,7 @@
 
 import React, { useState, useCallback, useMemo } from 'react';
 import {
-  View, ScrollView, TouchableOpacity, ActivityIndicator, Image,
+  View, ScrollView, TouchableOpacity, ActivityIndicator,
   RefreshControl, Modal, Pressable, Dimensions, Animated, Easing, Platform,
   Alert,
 } from 'react-native';
@@ -12,7 +12,7 @@ import { useSafeAreaInsets } from 'react-native-safe-area-context';
 import Svg, { Circle } from 'react-native-svg';
 import { useFocusEffect } from 'expo-router';
 import { useBottomTabBarHeight } from '@react-navigation/bottom-tabs';
-import { useVideoPlayer, VideoView } from 'expo-video';
+import { Image } from 'expo-image';
 import { Phone, XCircle, ClockCounterClockwise, CaretRight, Trash, Question, X } from 'phosphor-react-native';
 import { AppText } from '@/components/ui/Text';
 import { HeaderPills } from '@/components/ui/HeaderPills';
@@ -23,6 +23,7 @@ import { UserLevel } from '@/lib/levelConfig';
 import { getLiveVoiceStatus, getPoolForLevel, UNLIMITED_POOL_SECONDS } from '@/lib/liveVoiceUsage';
 import { localTodayStr, localMidnightUTC } from '@/lib/dateUtils';
 import { soundEngine } from '@/lib/soundEngine';
+import { voiceSFX } from '@/lib/voiceSFX';
 import LiveVoiceModal from '@/components/voice/LiveVoiceModal';
 
 // ── Palette ───────────────────────────────────────────────────────────────────
@@ -470,18 +471,6 @@ export default function LiveVoiceTab() {
     return days > 0 ? days : 0;
   }, [profile]);
 
-  const liveVoicePlayer = useVideoPlayer(require('@/assets/charlotte-livevoice.mp4'), p => {
-    p.loop = true;
-    p.muted = true;
-    p.play();
-  });
-
-  // Garante loop sempre ativo quando a tab volta a ficar visível.
-  // Sem isso, o player pode ficar pausado após navegação entre tabs.
-  useFocusEffect(useCallback(() => {
-    liveVoicePlayer.loop = true;
-    liveVoicePlayer.play();
-  }, [liveVoicePlayer]));
 
   const loadData = useCallback(async () => {
     if (!userId) return;
@@ -590,6 +579,12 @@ export default function LiveVoiceTab() {
   const startCall = useCallback(() => {
     if (!poolUnlimited && poolUsed >= poolTotal) return;
     soundEngine.setMuted(true);
+    // voiceSFX tem fila propria (setTimeouts disparados em achievements,
+    // intro do app, etc) — se algum SFX cair durante a call, ele chama
+    // setAudioModeAsync({allowsRecording: false, mixWithOthers}) e iOS
+    // rejeita com "tried to set AmbientSound... skipping" durante recording.
+    // Mutar aqui zera essa fila.
+    voiceSFX.setMuted(true);
     setShowLiveVoice(true);
   }, [poolUnlimited, poolUsed, poolTotal]);
 
@@ -608,16 +603,21 @@ export default function LiveVoiceTab() {
   const tabBarHeight = useBottomTabBarHeight();
   const insets = useSafeAreaInsets();
 
-  // Espaço usável = screen - safe areas - HeaderPills (52) - tab bar
-  const usableHeight = screenH - insets.top - 52 - tabBarHeight;
-  // Espaço fixo dentro da tela: header título(70) + drawer(56) + CTA(84) +
-  // min spacer flex(32) + spacer Android extra (16 se Android)
-  const RESERVED = 70 + 56 + 84 + 32 + (isAndroid ? 16 : 0);
-
-  // Charlotte: máximo 480, mínimo 280, fit dentro do que sobra
-  const charH   = Math.min(480, Math.max(280, usableHeight - RESERVED));
-  const charW   = Math.round(charH * 9 / 16);
   const drawerW = Math.round(screenW * 0.82);
+
+  // Avatar Y EXATO da tela de chamada (LiveVoiceModal):
+  //   modal usa paddingTop:insets.top + paddingVertical:24 + TopBlock(~50)
+  //   + space-between gap antes do CENTER(360 alto, avatar centralizado).
+  //   Inner usable = screenH - insets.top - insets.bottom - 48 (padV*2)
+  //   TopBlock~50, BottomBlock~90, CENTER=360 → gap = (inner - 500)/2.
+  //   Avatar center Y = insets.top + 24 + 50 + gap + 180.
+  // Posicionando o avatar do tab com `top` absoluto = essa Y - 74 (metade
+  // do bloco de arcos 148) garante alinhamento pixel-perfect na transição.
+  const innerH = screenH - insets.top - insets.bottom - 48;
+  // Ajuste fino +12px sobre o calculo nominal pra bater com a posicao
+  // visual real do avatar no modal (iPhone 15 Pro).
+  const modalAvatarCenterY = insets.top + 24 + 50 + Math.max(0, (innerH - 500) / 2) + 180 + 9;
+  const avatarTopOffset = modalAvatarCenterY - 74;
 
   return (
     <View style={{ flex: 1, backgroundColor: C.stage }}>
@@ -631,6 +631,50 @@ export default function LiveVoiceTab() {
         onPaywallOpen={openPaywall}
         isPt={isPt}
       />
+
+      {/* Avatar com arcos fixos posicionado em Y absoluta = avatar Y da tela
+          de chamada. Garante continuidade visual: ao tocar "Conversar com
+          Charlotte", a Charlotte fica no mesmo lugar, só ganha animação. */}
+      {!loading && (
+        <View pointerEvents="none" style={{
+          position: 'absolute',
+          left: 0, right: 0,
+          top: avatarTopOffset,
+          alignItems: 'center',
+          zIndex: 5,
+        }}>
+          <View style={{ width: 148, height: 148, alignItems: 'center', justifyContent: 'center' }}>
+            <View style={{
+              position: 'absolute',
+              width: 148, height: 148, borderRadius: 74,
+              borderWidth: 2, borderColor: '#F97316',
+              opacity: 0.35,
+            }} />
+            <View style={{
+              position: 'absolute',
+              width: 132, height: 132, borderRadius: 66,
+              borderWidth: 1.5,
+              borderColor: 'rgba(249,115,22,0.25)',
+            }} />
+            {/* Border num View pai: expo-image pode adicionar borderWidth
+                por fora da box, ficando maior que o RN Image do modal.
+                Wrapper de 120 com border 3 garante visual 114px de imagem
+                + 3px frame em cada lado = 120 total, igual ao modal. */}
+            <View style={{
+              width: 120, height: 120, borderRadius: 60,
+              borderWidth: 3, borderColor: '#F97316',
+              backgroundColor: '#16153A',
+              overflow: 'hidden',
+            }}>
+              <Image
+                source={require('@/assets/charlotte-avatar.png')}
+                style={{ width: '100%', height: '100%' }}
+                contentFit="cover"
+              />
+            </View>
+          </View>
+        </View>
+      )}
 
       {loading ? (
         <View style={{ flex: 1, alignItems: 'center', justifyContent: 'center' }}>
@@ -657,23 +701,10 @@ export default function LiveVoiceTab() {
               </View>
             </View>
 
-            {/* Spacer empurra Charlotte pra baixo */}
+            {/* Spacer ocupa toda a area entre titulo e CTA — avatar fica em
+                absolute apontado pra Y exata da tela de chamada (continuidade
+                visual na transicao). */}
             <View style={{ flex: 1 }} />
-
-            {/* ── Charlotte centralizada ── */}
-            {/* Container 20px mais curto + vídeo deslocado -10 no topo:
-                corta 10px do topo E 10px do fundo (artefatos do Veo nas
-                duas pontas do frame). */}
-            <View style={{ alignItems: 'center', marginBottom: 24 }}>
-              <View style={{ width: charW, height: charH - 20, overflow: 'hidden' }}>
-                <VideoView
-                  player={liveVoicePlayer}
-                  style={{ width: charW, height: charH, marginTop: -10, backgroundColor: 'transparent' }}
-                  contentFit="cover"
-                  nativeControls={false}
-                />
-              </View>
-            </View>
 
             {/* ── Botões drawer + help (sempre visíveis pra estabilidade de layout).
                 Drawer mostra empty state quando recentCalls.length === 0. ── */}
@@ -773,6 +804,7 @@ export default function LiveVoiceTab() {
           onClose={() => {
             setShowLiveVoice(false);
             soundEngine.setMuted(false);
+            voiceSFX.setMuted(false);
             loadData();
           }}
         />

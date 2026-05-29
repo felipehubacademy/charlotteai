@@ -5,8 +5,11 @@ web-build/
 expo-env.d.ts
 
 # Native — gerado por expo prebuild, nao commitar
-android/
-ios/
+/android/
+/ios/
+# Excecao: codigo nativo dos nossos modulos locais (modules/*) deve ser commitado
+!/modules/*/android/
+!/modules/*/ios/
 *.orig.*
 *.jks
 *.p8

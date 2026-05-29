@@ -1,20 +1,26 @@
-// components/trail/TrailContent.tsx
-// Reusable trail body — renders trail banner + modules + topics.
-// Does NOT include its own ScrollView — caller provides scroll context.
-// Used by LearnTrailScreen (legacy) and the new HomeTab.
+// components/trail/TrailContent.tsx — v8 (card list + accordion, level-color identity)
+// Each module = card vertical. Atual auto-expandido. Tap pra expandir/colapsar.
+// Barra segmentada 4 partes (tipos: grammar/speaking/roleplay/chat).
+// Cor de estado vem do nivel (violet para Inter, gold para Novice, teal para Advanced).
 
-import React, { useCallback } from 'react';
-import { View, TouchableOpacity, ActivityIndicator, Platform } from 'react-native';
+import React, { useCallback, useMemo, useState, useEffect, useRef } from 'react';
+import {
+  View, TouchableOpacity, ActivityIndicator, Platform,
+} from 'react-native';
 import { router, useFocusEffect } from 'expo-router';
 import {
-  BookOpen, Microphone, CheckCircle, Lock, Play, CaretRight,
+  BookOpen, Microphone, Play, ChatCircle, CaretRight, CaretDown, Lock,
 } from 'phosphor-react-native';
 import { AppText } from '@/components/ui/Text';
-import { CURRICULUM, TrailLevel, topicHasContent, totalTopics } from '@/data/curriculum';
+import { CURRICULUM, TrailLevel, topicHasContent } from '@/data/curriculum';
 import { MODULE_INTROS } from '@/data/moduleIntros';
+import { listModules as listV2Modules } from '@/lib/curriculum-v2/loader';
+import type { Level as V2Level } from '@/lib/curriculum-v2/types';
 import { useLearnProgress } from '@/hooks/useLearnProgress';
+import { useLearnProgressV2 } from '@/hooks/useLearnProgressV2';
+import { supabase } from '@/lib/supabase';
 
-// ── Color helper — converts #RRGGBB + alpha to rgba() for Android compatibility ──
+// ── Helpers ───────────────────────────────────────────────────────────────────
 function a(hex: string, alpha: number): string {
   const r = parseInt(hex.slice(1, 3), 16);
   const g = parseInt(hex.slice(3, 5), 16);
@@ -22,339 +28,659 @@ function a(hex: string, alpha: number): string {
   return `rgba(${r},${g},${b},${alpha})`;
 }
 
-// ── Palette ─────────────────────────────────────────────────────────────────
+// ── Palette ───────────────────────────────────────────────────────────────────
 const C = {
-  bg:          '#F4F3FA',
-  card:        '#FFFFFF',
-  navy:        '#16153A',
-  navyMid:     '#4B4A72',
-  navyLight:   '#9896B8',
-  ghost:       'rgba(22,21,58,0.06)',
-  border:      'rgba(22,21,58,0.10)',
-  gold:        '#D97706',
-  goldBg:      '#FFFBEB',
-  green:       '#3D8800',
-  greenBg:     '#F0FFD9',
-  violet:      '#7C3AED',
-  violetBg:    '#F5F3FF',
-  lockGray:    '#C4C3D4',
+  navy:      '#16153A',
+  navyMid:   '#4B4A72',
+  navyLight: '#9896B8',
+  card:      '#FFFFFF',
+  bg:        '#EEEAF3',
+  border:    'rgba(22,21,58,0.06)',
+  borderMid: 'rgba(22,21,58,0.12)',
+  hairline:  'rgba(22,21,58,0.04)',
+  ghost:     'rgba(22,21,58,0.06)',
 };
-
-const shadow = Platform.select({
-  ios:     { shadowColor: 'rgba(22,21,58,0.10)', shadowOpacity: 1, shadowRadius: 10, shadowOffset: { width: 0, height: 2 } },
-  android: {},
-});
-
-const LEVEL_LABELS: Record<TrailLevel, string> = {
-  Novice:   'Novice — A1/A2',
-  Inter:    'Intermediate — B1/B2',
-  Advanced: 'Advanced — C1/C2',
-};
-
 const LEVEL_COLOR: Record<TrailLevel, string> = {
   Novice:   '#D97706',
   Inter:    '#7C3AED',
   Advanced: '#0F766E',
 };
 
-// ── Props ────────────────────────────────────────────────────────────────────
-interface TrailContentProps {
-  userId:      string | undefined;
-  level:       TrailLevel;
-  /** Renderiza o card-resumo no topo (default true). Home passa false porque
-   *  ja renderiza o <TrailBanner /> dentro do hero fixo. */
-  showBanner?: boolean;
-  /** Callback chamado com o ref do TopicRow "atual" — usado pelo Home pra
-   *  auto-scrollar a trilha ate a posicao do topico em andamento. */
-  onCurrentTopicRef?: (node: View | null) => void;
+// ── Node types — fixed cycle per position within module ───────────────────────
+type NodeType = 'grammar' | 'speaking' | 'roleplay' | 'chat';
+const TYPE_CYCLE: NodeType[] = ['grammar', 'speaking', 'roleplay', 'chat'];
+
+const NODE_CONFIG: Record<NodeType, {
+  color: string; Icon: any; label: string; labelPt: string;
+}> = {
+  grammar:  { color: '#D97706', Icon: BookOpen,   label: 'Grammar',     labelPt: 'Gramática'  },
+  speaking: { color: '#7C3AED', Icon: Microphone, label: 'Speaking',    labelPt: 'Pronúncia'  },
+  roleplay: { color: '#3D8800', Icon: Play,        label: 'Role-play',   labelPt: 'Role-play'  },
+  chat:     { color: '#16153A', Icon: ChatCircle,  label: 'Guided Chat', labelPt: 'Chat Guiado' },
+};
+
+const NEXT_GREEN = '#3D8800';
+const TOPICS_PER_MODULE = 4;
+
+// ── Domain ────────────────────────────────────────────────────────────────────
+type LessonState = 'done' | 'next' | 'locked';
+
+interface Lesson {
+  key:        string;
+  label:      string;
+  type:       NodeType;
+  state:      LessonState;
+  hasContent: boolean;
+  moduleIdx:  number;
+  topicIdx:   number;        // -1 quando intro
+  isIntro:    boolean;
+  slideCount?: number;
+  score?:     number | null; // 0-100, calculado de learn_history
+  // v2 — preenchido quando o trail vem do curriculum v2
+  v2ModuleId?: string;
+  v2UnitId?:   string;
+  v2Activity?: NodeType;
 }
 
-// ── Component ────────────────────────────────────────────────────────────────
-export function TrailContent({ userId, level, showBanner = true, onCurrentTopicRef }: TrailContentProps) {
-  const isPortuguese = level === 'Novice';
-  const accent       = LEVEL_COLOR[level];
-  const modules      = CURRICULUM[level];
+interface ModuleData {
+  idx:            number;
+  title:          string;
+  lessons:        Lesson[];
+  completedCount: number;
+  totalCount:     number;
+  pct:            number;
+  state:          'done' | 'active' | 'locked';
+  avgScore:       number | null; // média dos scores das lessons concluídas
+}
 
-  const { progress, loading, refetch, isTopicComplete, isCurrent, isLocked, isIntroDone } =
-    useLearnProgress(userId, level);
+// ── Score color ramp ──────────────────────────────────────────────────────────
+function scoreColor(s: number): string {
+  if (s >= 85) return '#15803D';      // green
+  if (s >= 70) return '#B45309';      // muted gold
+  return '#B91C1C';                   // muted red
+}
 
-  // Re-fetch when screen gets focus (e.g. returning from learn-session).
-  // intros_done is part of learn_progress now, so a single refetch covers both
-  // topic and mini-lesson completion state.
-  useFocusEffect(useCallback(() => { refetch(); }, [refetch]));
-
-  // ── Progress counters ─────────────────────────────────────────────────────
-  const completed = progress?.completed.length ?? 0;
-  const total     = totalTopics(level);
-  const pct       = total > 0 ? Math.min(100, Math.round((completed / total) * 100)) : 0;
-
-  const handleStart = (moduleIdx: number, topicIdx: number) => {
-    router.push({
-      pathname:  '/(app)/learn-session',
-      params:    { level, moduleIndex: String(moduleIdx), topicIndex: String(topicIdx) },
-    });
-  };
-
-  // ── Trail banner ──────────────────────────────────────────────────────────
+// ── Segmented progress bar (4 segments, type-tinted) ──────────────────────────
+function SegmentedProgress({ lessons }: { lessons: Lesson[] }) {
   return (
-    <View>
-      {showBanner && (
+    <View style={{ flexDirection: 'row', gap: 4, marginTop: 16 }}>
+      {lessons.map((l, i) => {
+        const cfg = NODE_CONFIG[l.type];
+        const isDone = l.state === 'done';
+        const isNext = l.state === 'next';
+        return (
+          <View
+            key={i}
+            style={{
+              flex: 1, height: 6, borderRadius: 3,
+              backgroundColor: isDone
+                ? cfg.color
+                : isNext
+                ? a(NEXT_GREEN, 0.30)
+                : C.ghost,
+            }}
+          />
+        );
+      })}
+    </View>
+  );
+}
+
+// ── Number chip ───────────────────────────────────────────────────────────────
+function NumberChip({
+  n, state, accent,
+}: { n: number; state: ModuleData['state']; accent: string }) {
+  const isDone   = state === 'done';
+  const isActive = state === 'active';
+  const isLocked = state === 'locked';
+
+  const bg = isActive
+    ? accent
+    : isDone
+    ? a(accent, 0.12)
+    : C.ghost;
+  const fg = isActive
+    ? '#FFF'
+    : isDone
+    ? accent
+    : C.navyLight;
+
+  return (
+    <View style={{
+      width: 34, height: 34, borderRadius: 12,
+      backgroundColor: bg,
+      alignItems: 'center', justifyContent: 'center',
+    }}>
+      {isLocked ? (
+        <Lock size={16} color={fg} weight="regular" />
+      ) : (
+        <AppText style={{ fontSize: 14, fontWeight: '700', color: fg }}>{n}</AppText>
+      )}
+    </View>
+  );
+}
+
+// ── Lesson row (expanded view) ────────────────────────────────────────────────
+function LessonRow({
+  lesson, isLast, onPress, isPt,
+}: { lesson: Lesson; isLast: boolean; onPress: () => void; isPt: boolean }) {
+  const cfg = NODE_CONFIG[lesson.type];
+  const isDone   = lesson.state === 'done';
+  const isNext   = lesson.state === 'next';
+  const isLocked = lesson.state === 'locked';
+
+  const iconBg = isLocked ? C.ghost : cfg.color;
+  const iconColor = isLocked ? C.navyLight : '#FFF';
+
+  return (
+    <TouchableOpacity
+      onPress={onPress}
+      disabled={isLocked}
+      activeOpacity={0.7}
+      style={{
+        flexDirection: 'row', alignItems: 'center', gap: 12,
+        paddingVertical: 12,
+        borderBottomWidth: isLast ? 0 : 1,
+        borderBottomColor: C.hairline,
+      }}
+    >
+      {/* Square rounded icon — 32x32, radius 10 — distinguishes from circular module dots */}
+      <View style={{
+        width: 32, height: 32, borderRadius: 10,
+        backgroundColor: iconBg,
+        alignItems: 'center', justifyContent: 'center',
+      }}>
+        <cfg.Icon size={18} color={iconColor} weight="fill" />
+      </View>
+
+      <View style={{ flex: 1, minWidth: 0 }}>
+        <AppText
+          numberOfLines={1}
+          style={{
+            fontSize: 14, fontWeight: '600',
+            color: isLocked ? C.navyLight : C.navy, lineHeight: 18,
+          }}>
+          {lesson.label}
+        </AppText>
+        {/* Subtitulo: oculta quando label ja é o tipo (caso v2). Score sempre aparece se houver. */}
+        {(lesson.label !== (isPt ? cfg.labelPt : cfg.label) || (isDone && typeof lesson.score === 'number')) && (
+          <AppText style={{
+            fontSize: 10, fontWeight: '700',
+            color: C.navyLight, letterSpacing: 0.8, marginTop: 2,
+            textTransform: 'uppercase',
+          }}>
+            {lesson.label !== (isPt ? cfg.labelPt : cfg.label) ? (isPt ? cfg.labelPt : cfg.label) : ''}
+            {isDone && typeof lesson.score === 'number' && (
+              <AppText style={{ color: scoreColor(lesson.score) }}>
+                {`${lesson.label !== (isPt ? cfg.labelPt : cfg.label) ? '  ·  ' : ''}${Math.round(lesson.score)}%`}
+              </AppText>
+            )}
+          </AppText>
+        )}
+      </View>
+
+      {/* All action pills share size: paddingHorizontal:10 paddingVertical:6 borderRadius:10 */}
+      {/* All action pills share the same dimensions: minWidth 56, padding 10/6, radius 10 */}
+      {isDone && (
         <View style={{
-          backgroundColor: C.card, borderRadius: 20, padding: 20,
-          marginHorizontal: 20, marginBottom: 24,
-          borderWidth: 1, borderColor: C.border, ...shadow,
+          minWidth: 56,
+          paddingHorizontal: 10, paddingVertical: 6,
+          borderRadius: 10,
+          borderWidth: 1, borderColor: C.borderMid,
+          backgroundColor: 'transparent',
+          alignItems: 'center', justifyContent: 'center',
         }}>
-          <View style={{ flexDirection: 'row', alignItems: 'center', gap: 10, marginBottom: 14 }}>
-            <View style={{
-              width: 40, height: 40, borderRadius: 12,
-              backgroundColor: a(accent, 0.094),
-              alignItems: 'center', justifyContent: 'center',
-            }}>
-              <BookOpen size={22} color={accent} weight="fill" />
-            </View>
-            <View style={{ flex: 1 }}>
-              <AppText style={{ fontSize: 13, fontWeight: '800', color: C.navy }}>
-                {LEVEL_LABELS[level]}
-              </AppText>
-              <AppText style={{ fontSize: 12, color: C.navyLight, fontWeight: '500' }}>
-                {modules.length} {isPortuguese ? 'módulos' : 'modules'} · {total} {isPortuguese ? 'tópicos' : 'topics'}
-              </AppText>
-            </View>
-            <AppText style={{ fontSize: 18, fontWeight: '900', color: accent }}>{pct}%</AppText>
-          </View>
-          <View style={{ height: 6, backgroundColor: C.ghost, borderRadius: 3, overflow: 'hidden' }}>
-            <View style={{ height: 6, width: `${pct}%` as `${number}%`, backgroundColor: accent, borderRadius: 3 }} />
-          </View>
-          <AppText style={{ fontSize: 11, color: C.navyLight, fontWeight: '600', marginTop: 6 }}>
-            {completed} {isPortuguese ? 'de' : 'of'} {total} {isPortuguese ? 'tópicos concluídos' : 'topics completed'}
+          <AppText style={{ fontSize: 11, fontWeight: '600', color: C.navyMid }}>
+            {isPt ? 'Refazer' : 'Redo'}
           </AppText>
         </View>
       )}
-
-      {/* ── Modules ── */}
-      {loading ? (
-        <View style={{ alignItems: 'center', paddingTop: 40 }}>
-          <ActivityIndicator color={accent} />
-          <AppText style={{ color: C.navyLight, marginTop: 12, fontSize: 13 }}>
-            {isPortuguese ? 'Carregando seu progresso…' : 'Loading your progress…'}
+      {isNext && (
+        <View style={{
+          minWidth: 56,
+          paddingHorizontal: 10, paddingVertical: 6,
+          borderRadius: 10,
+          backgroundColor: NEXT_GREEN,
+          alignItems: 'center', justifyContent: 'center',
+        }}>
+          <AppText style={{ fontSize: 11, fontWeight: '700', color: '#FFF' }}>
+            {isPt ? 'Começar' : 'Start'}
           </AppText>
         </View>
-      ) : (
-        <View style={{ paddingHorizontal: 20, gap: 24 }}>
-          {modules.map((mod, mIdx) => (
-            <View key={mIdx}>
+      )}
+      {isLocked && (
+        <View style={{
+          minWidth: 56,
+          paddingHorizontal: 10, paddingVertical: 6,
+          borderRadius: 10,
+          borderWidth: 1, borderColor: C.borderMid,
+          backgroundColor: 'transparent',
+          alignItems: 'center', justifyContent: 'center',
+        }}>
+          <Lock size={13} color={C.navyLight} weight="regular" />
+        </View>
+      )}
+    </TouchableOpacity>
+  );
+}
 
-              {/* Module header */}
-              <View style={{ flexDirection: 'row', alignItems: 'center', gap: 10, marginBottom: 12 }}>
-                <View style={{
-                  width: 28, height: 28, borderRadius: 8,
-                  backgroundColor: accent, alignItems: 'center', justifyContent: 'center',
-                }}>
-                  <AppText style={{ fontSize: 12, fontWeight: '900', color: '#FFF' }}>
-                    {mIdx + 1}
-                  </AppText>
-                </View>
-                <AppText style={{ fontSize: 14, fontWeight: '800', color: C.navy, flex: 1 }}>
-                  {mod.title}
-                </AppText>
-              </View>
+// ── Module card ───────────────────────────────────────────────────────────────
+function ModuleCard({
+  data, accent, expanded, onToggle, onStartLesson, isPt, isCurrentModule, onRef,
+}: {
+  data:           ModuleData;
+  accent:         string;
+  expanded:       boolean;
+  onToggle:       () => void;
+  onStartLesson:  (lesson: Lesson) => void;
+  isPt:           boolean;
+  isCurrentModule: boolean;
+  onRef?:         (r: View | null) => void;
+}) {
+  const isDone   = data.state === 'done';
+  const isActive = data.state === 'active';
+  const isLocked = data.state === 'locked';
 
-              {/* Topics */}
-              <View style={{ gap: 8 }}>
+  const elevation = isActive ? Platform.select({
+    ios:     { shadowColor: 'rgba(22,21,58,0.20)', shadowOpacity: 1, shadowRadius: 24, shadowOffset: { width: 0, height: 8 } },
+    android: { elevation: 4 },
+  }) : Platform.select({
+    ios:     { shadowColor: 'rgba(22,21,58,0.10)', shadowOpacity: 1, shadowRadius: 8, shadowOffset: { width: 0, height: 2 } },
+    android: { elevation: 1 },
+  });
 
-                {/* Module intro (mini-lesson) */}
-                {(() => {
-                  const intro = MODULE_INTROS[level]?.[mIdx];
-                  if (!intro) return null;
-                  const done = isIntroDone(mIdx);
-                  const introLocked = mIdx > 0 && (() => {
-                    const prevMod = modules[mIdx - 1];
-                    if (!prevMod) return false;
-                    return prevMod.topics.some((_, tIdx) => !isTopicComplete(mIdx - 1, tIdx));
-                  })();
-                  return (
-                    <TouchableOpacity
-                      onPress={() => {
-                        if (introLocked) return;
-                        router.push({
-                          pathname: '/(app)/learn-intro',
-                          params: { level, moduleIndex: String(mIdx), topicIndex: '0' },
-                        });
-                      }}
-                      activeOpacity={introLocked ? 1 : 0.75}
-                      style={{
-                        flexDirection: 'row', alignItems: 'center', gap: 14,
-                        backgroundColor: done ? C.card : introLocked ? C.card : a(accent, 0.055),
-                        borderRadius: 14, padding: 14,
-                        borderWidth: introLocked ? 1 : 1.5,
-                        borderColor: introLocked ? C.border : done ? C.border : a(accent, 0.208),
-                        opacity: introLocked ? 0.55 : 1,
-                        ...shadow,
-                      }}
-                    >
-                      <View style={{
-                        width: 36, height: 36, borderRadius: 10,
-                        backgroundColor: introLocked ? 'rgba(22,21,58,0.05)' : done ? C.greenBg : a(accent, 0.125),
-                        alignItems: 'center', justifyContent: 'center', flexShrink: 0,
-                      }}>
-                        {introLocked
-                          ? <Lock size={18} color={C.lockGray} weight="fill" />
-                          : done
-                            ? <CheckCircle size={20} color={C.green} weight="fill" />
-                            : <BookOpen size={18} color={accent} weight="fill" />
-                        }
-                      </View>
-                      <View style={{ flex: 1 }}>
-                        <AppText style={{ fontSize: 13, fontWeight: '700', color: introLocked ? C.navyLight : C.navy, lineHeight: 18 }}>
-                          {intro.title}
-                        </AppText>
-                        <View style={{ flexDirection: 'row', gap: 6, marginTop: 5 }}>
-                          <View style={{
-                            backgroundColor: introLocked ? 'rgba(22,21,58,0.05)' : a(accent, 0.082),
-                            borderRadius: 6, paddingHorizontal: 7, paddingVertical: 3,
-                            flexDirection: 'row', alignItems: 'center', gap: 3,
-                          }}>
-                            <BookOpen size={11} color={introLocked ? C.navyLight : accent} weight="fill" />
-                            <AppText style={{ fontSize: 10, fontWeight: '700', color: introLocked ? C.navyLight : accent }}>
-                              Mini-lesson · {intro.slides.length} slides
-                            </AppText>
-                          </View>
-                        </View>
-                      </View>
-                      {!introLocked && (
-                        <View style={{
-                          backgroundColor: done ? 'transparent' : accent,
-                          borderRadius: 10, paddingHorizontal: 12, paddingVertical: 8,
-                          borderWidth: done ? 1 : 0, borderColor: a(accent, 0.25),
-                          flexDirection: 'row', alignItems: 'center', gap: 4,
-                        }}>
-                          <AppText style={{ fontSize: 12, fontWeight: '800', color: done ? accent : '#FFF' }}>
-                            {done ? (isPortuguese ? 'Rever' : 'Review') : (isPortuguese ? 'Começar' : 'Start')}
-                          </AppText>
-                          <CaretRight size={12} color={done ? accent : '#FFF'} weight="bold" />
-                        </View>
-                      )}
-                    </TouchableOpacity>
-                  );
-                })()}
+  return (
+    <View
+      ref={onRef as any}
+      collapsable={false}
+      style={{
+        marginHorizontal: 20, marginBottom: 14,
+        backgroundColor: C.card,
+        borderRadius: 20,
+        overflow: 'hidden',
+        borderWidth: 1, borderColor: C.border,
+        ...elevation,
+      }}>
+      <TouchableOpacity
+        onPress={onToggle}
+        disabled={isLocked}
+        activeOpacity={0.85}
+        style={{ paddingHorizontal: 18, paddingVertical: 16 }}
+      >
+        {/* Head row */}
+        <View style={{ flexDirection: 'row', alignItems: 'center', gap: 12 }}>
+          <NumberChip n={data.idx + 1} state={data.state} accent={accent} />
 
-                {/* Topic rows */}
-                {mod.topics.map((topic, tIdx) => {
-                  const complete   = isTopicComplete(mIdx, tIdx);
-                  const current    = isCurrent(mIdx, tIdx);
-                  const miniLessonRequired = tIdx === 0 && !isIntroDone(mIdx);
-                  // Completed topics are never locked — user can always review
-                  const locked     = !complete && (miniLessonRequired || isLocked(mIdx, tIdx));
-                  const hasContent = topicHasContent(level, mIdx, tIdx);
-                  const comingSoon = locked && !hasContent;
-                  const canTap     = !locked && hasContent;
+          <View style={{ flex: 1, minWidth: 0 }}>
+            <AppText style={{
+              fontSize: 11, fontWeight: '500', color: C.navyLight, marginBottom: 2,
+            }}>
+              {isLocked
+                ? (isPt ? `${data.totalCount} tópicos · bloqueado` : `${data.totalCount} topics · locked`)
+                : `${data.completedCount} ${isPt ? 'de' : 'of'} ${data.totalCount} ${isPt ? 'concluidos' : 'completed'}`}
+            </AppText>
+            <AppText
+              numberOfLines={2}
+              style={{
+                fontSize: 16, fontWeight: '700',
+                color: isLocked ? C.navyLight : C.navy, lineHeight: 20,
+              }}>
+              {data.title}
+            </AppText>
+          </View>
 
-                  return (
-                    <TouchableOpacity
-                      key={tIdx}
-                      ref={(r) => { if (current && onCurrentTopicRef) onCurrentTopicRef(r as unknown as View | null); }}
-                      onPress={() => canTap && handleStart(mIdx, tIdx)}
-                      activeOpacity={canTap ? 0.75 : 1}
-                      style={{
-                        flexDirection: 'row', alignItems: 'center', gap: 14,
-                        backgroundColor: C.card, borderRadius: 14, padding: 14,
-                        borderWidth: 1, borderColor: C.border,
-                        opacity: locked ? 0.55 : 1,
-                        ...shadow,
-                      }}
-                    >
-                      <View style={{
-                        width: 36, height: 36, borderRadius: 10,
-                        backgroundColor: complete ? C.greenBg : (!locked && current) ? a(accent, 0.094) : C.ghost,
-                        alignItems: 'center', justifyContent: 'center', flexShrink: 0,
-                      }}>
-                        {complete ? (
-                          <CheckCircle size={20} color={C.green} weight="fill" />
-                        ) : locked ? (
-                          <Lock size={18} color={C.lockGray} weight="fill" />
-                        ) : (
-                          <Play size={18} color={accent} weight="fill" />
-                        )}
-                      </View>
-                      <View style={{ flex: 1 }}>
-                        <AppText style={{
-                          fontSize: 13, fontWeight: current ? '700' : '600',
-                          color: locked ? C.navyLight : C.navy, lineHeight: 18,
-                        }}>
-                          {topic.title}
-                        </AppText>
-                        <View style={{ flexDirection: 'row', gap: 6, marginTop: 5, flexWrap: 'wrap' }}>
-                          {topic.grammar.length > 0 && (
-                            <View style={{
-                              flexDirection: 'row', alignItems: 'center', gap: 3,
-                              backgroundColor: C.goldBg, borderRadius: 6,
-                              paddingHorizontal: 7, paddingVertical: 3,
-                            }}>
-                              <BookOpen size={11} color={C.gold} weight="fill" />
-                              <AppText style={{ fontSize: 10, fontWeight: '700', color: C.gold }}>
-                                {topic.grammar.length} {isPortuguese ? 'gramática' : 'grammar'}
-                              </AppText>
-                            </View>
-                          )}
-                          {topic.pronunciation.length > 0 && (
-                            <View style={{
-                              flexDirection: 'row', alignItems: 'center', gap: 3,
-                              backgroundColor: C.violetBg, borderRadius: 6,
-                              paddingHorizontal: 7, paddingVertical: 3,
-                            }}>
-                              <Microphone size={11} color={C.violet} weight="fill" />
-                              <AppText style={{ fontSize: 10, fontWeight: '700', color: C.violet }}>
-                                {topic.pronunciation.length} {isPortuguese ? 'pronúncia' : 'pronunc.'}
-                              </AppText>
-                            </View>
-                          )}
-                          {comingSoon && (
-                            <View style={{ backgroundColor: C.ghost, borderRadius: 6, paddingHorizontal: 7, paddingVertical: 3 }}>
-                              <AppText style={{ fontSize: 10, fontWeight: '700', color: C.navyLight }}>
-                                {isPortuguese ? 'Em breve' : 'Coming soon'}
-                              </AppText>
-                            </View>
-                          )}
-                        </View>
-                      </View>
-                      {!locked && current && hasContent && !complete && (
-                        <View style={{
-                          backgroundColor: accent, borderRadius: 10,
-                          paddingHorizontal: 12, paddingVertical: 8,
-                          flexDirection: 'row', alignItems: 'center', gap: 4,
-                        }}>
-                          <AppText style={{ fontSize: 12, fontWeight: '800', color: '#FFF' }}>
-                            {isPortuguese ? 'Iniciar' : 'Start'}
-                          </AppText>
-                          <CaretRight size={12} color="#FFF" weight="bold" />
-                        </View>
-                      )}
-                      {!locked && complete && current && hasContent && (
-                        <View style={{
-                          backgroundColor: 'transparent', borderRadius: 10,
-                          paddingHorizontal: 12, paddingVertical: 8,
-                          borderWidth: 1, borderColor: a(accent, 0.314),
-                          flexDirection: 'row', alignItems: 'center', gap: 4,
-                        }}>
-                          <AppText style={{ fontSize: 12, fontWeight: '800', color: accent }}>
-                            {isPortuguese ? 'Rever' : 'Review'}
-                          </AppText>
-                          <CaretRight size={12} color={accent} weight="bold" />
-                        </View>
-                      )}
-                      {complete && !current && (
-                        <AppText style={{ fontSize: 11, fontWeight: '700', color: C.green }}>
-                          {isPortuguese ? 'Feito' : 'Done'}
-                        </AppText>
-                      )}
-                    </TouchableOpacity>
-                  );
-                })}
-              </View>
-            </View>
+          {!isLocked && (
+            <AppText style={{
+              fontSize: 13, fontWeight: '600',
+              color: isActive ? accent : isDone ? accent : C.navyLight,
+            }}>
+              {data.pct}%
+            </AppText>
+          )}
+
+          {!isLocked && (
+            <CaretDown
+              size={14}
+              color={C.navyLight}
+              weight="bold"
+              style={{ transform: [{ rotate: expanded ? '0deg' : '-90deg' }] }}
+            />
+          )}
+        </View>
+
+        {/* Segmented progress bar */}
+        {!isLocked && <SegmentedProgress lessons={data.lessons} />}
+      </TouchableOpacity>
+
+      {/* Expanded lessons list */}
+      {expanded && !isLocked && (
+        <View style={{
+          paddingHorizontal: 18, paddingBottom: 16,
+          borderTopWidth: 1, borderTopColor: C.border,
+          paddingTop: 6,
+        }}>
+          {data.lessons.map((l, i) => (
+            <LessonRow
+              key={l.key}
+              lesson={l}
+              isLast={i === data.lessons.length - 1}
+              onPress={() => onStartLesson(l)}
+              isPt={isPt}
+            />
           ))}
         </View>
       )}
+    </View>
+  );
+}
+
+// ── Props ─────────────────────────────────────────────────────────────────────
+interface TrailContentProps {
+  userId:             string | undefined;
+  level:              TrailLevel;
+  showBanner?:        boolean;
+  onCurrentTopicRef?: (node: View | null) => void;
+  useV2?:             boolean;   // when true, loads modules from curriculum-v2
+}
+
+// ── Main ──────────────────────────────────────────────────────────────────────
+export function TrailContent({ userId, level, onCurrentTopicRef, useV2 }: TrailContentProps) {
+  const isPt    = level === 'Novice';
+  const accent  = LEVEL_COLOR[level];
+
+  // v2: cada UNIT vira um card. Dentro: 4 rows fixas, uma por atividade.
+  // Cap TOPICS_PER_MODULE=4 nao restringe porque sao exatamente 4 atividades.
+  const v2Wrapped = useMemo(() => {
+    if (!useV2) return null;
+    const labels = {
+      grammar:  isPt ? 'Gramática'            : 'Grammar',
+      speaking: isPt ? 'Listening & Speaking' : 'Listening & Speaking',
+      roleplay: isPt ? 'Role-play'            : 'Role-play',
+      chat:     isPt ? 'Guided Chat'          : 'Guided Chat',
+    } as const;
+    return listV2Modules(level as V2Level).flatMap(m =>
+      m.units.map((u, uIdx) => ({
+        title:           u.title,
+        _v2ModuleId:     m.id,
+        _v2ModuleTitle:  m.title,
+        _v2PrevUnitId:   uIdx > 0 ? m.units[uIdx - 1].id : undefined,
+        topics: (['grammar', 'speaking', 'roleplay', 'chat'] as const).map(act => ({
+          title:        labels[act],
+          _v2ModuleId:  m.id,
+          _v2UnitId:    u.id,
+          _v2Activity:  act,
+        })),
+      }))
+    );
+  }, [useV2, level, isPt]);
+
+  const modules = (v2Wrapped ?? CURRICULUM[level]) as Array<{
+    title: string;
+    _v2ModuleId?: string;
+    _v2ModuleTitle?: string;
+    _v2PrevUnitId?: string;
+    topics: Array<{ title: string; _v2ModuleId?: string; _v2UnitId?: string; _v2Activity?: NodeType }>;
+  }>;
+
+  const {
+    loading, refetch,
+    isTopicComplete, isCurrent, isLocked, isIntroDone,
+  } = useLearnProgress(userId, level);
+
+  // v2 progress — só lê quando useV2 (sem custo extra em v1)
+  const v2Progress = useLearnProgressV2(userId, level as V2Level);
+  useFocusEffect(useCallback(() => {
+    if (useV2) v2Progress.refetch();
+  }, [useV2, v2Progress.refetch])); // eslint-disable-line react-hooks/exhaustive-deps
+
+  useFocusEffect(useCallback(() => { refetch(); }, [refetch]));
+
+  // ── Fetch per-lesson scores from learn_history (% correct + pronunciation score) ──
+  const [scoreMap, setScoreMap] = useState<Record<string, number>>({});
+  useEffect(() => {
+    if (!userId) return;
+    let cancelled = false;
+    (async () => {
+      const { data, error } = await supabase
+        .from('learn_history')
+        .select('module_index, topic_index, is_correct, score')
+        .eq('user_id', userId)
+        .eq('level', level);
+      if (error || cancelled || !data) return;
+
+      const acc: Record<string, { sum: number; n: number }> = {};
+      for (const row of data) {
+        const key = `m${row.module_index}_t${row.topic_index}`;
+        // Prefer pronunciation `score` (0-100) when present; else is_correct → 0/100
+        const v = typeof row.score === 'number'
+          ? Math.max(0, Math.min(100, row.score))
+          : row.is_correct ? 100 : 0;
+        const bucket = acc[key] ?? { sum: 0, n: 0 };
+        bucket.sum += v;
+        bucket.n   += 1;
+        acc[key]    = bucket;
+      }
+      const map: Record<string, number> = {};
+      for (const k of Object.keys(acc)) {
+        map[k] = acc[k].sum / acc[k].n;
+      }
+      if (!cancelled) setScoreMap(map);
+    })();
+    return () => { cancelled = true; };
+  }, [userId, level]);
+
+  // Build module data — each module gets up to 4 lessons (intro + topics, capped at 4)
+  const moduleData: ModuleData[] = useMemo(() => {
+    return modules.map((mod, mIdx) => {
+      const lessons: Lesson[] = [];
+      let pos = 0;
+
+      const intro = useV2 ? null : MODULE_INTROS[level]?.[mIdx];
+      if (intro) {
+        const done = isIntroDone(mIdx);
+        const introLocked = mIdx > 0 &&
+          modules[mIdx - 1].topics.some((_, t) => !isTopicComplete(mIdx - 1, t));
+        lessons.push({
+          key:        `m${mIdx}_intro`,
+          label:      intro.title,
+          type:       TYPE_CYCLE[pos++] ?? 'grammar',
+          state:      done ? 'done' : introLocked ? 'locked' : 'next',
+          hasContent: true,
+          moduleIdx:  mIdx,
+          topicIdx:   -1,
+          isIntro:    true,
+          slideCount: intro.slides.length,
+          // Intros vao receber exercicios em breve — usar score real se houver,
+          // senao 100 quando concluida (intro = "aula assistida").
+          score:      done ? (scoreMap[`m${mIdx}_intro`] ?? 100) : null,
+        });
+      }
+
+      mod.topics.forEach((topic: any, tIdx: number) => {
+        if (pos >= TOPICS_PER_MODULE) return;
+        const key      = `m${mIdx}_t${tIdx}`;
+        const v2Activity: NodeType | undefined = topic._v2Activity;
+        const lessonType = useV2 && v2Activity ? v2Activity : (TYPE_CYCLE[pos] ?? 'grammar');
+        if (!(useV2 && v2Activity)) pos++;
+
+        let complete: boolean;
+        let locked:   boolean;
+        let lessonScore: number | null;
+
+        if (useV2 && v2Activity && topic._v2ModuleId && topic._v2UnitId) {
+          const row = v2Progress.get(topic._v2ModuleId, topic._v2UnitId, v2Activity);
+          complete    = !!row?.completed;
+          locked      = !v2Progress.isActivityUnlocked(
+                          topic._v2ModuleId, topic._v2UnitId, v2Activity, mod._v2PrevUnitId
+                        );
+          lessonScore = typeof row?.score === 'number' ? row.score : null;
+        } else {
+          complete    = isTopicComplete(mIdx, tIdx);
+          const miniReq = tIdx === 0 && !isIntroDone(mIdx);
+          locked      = !complete && (miniReq || isLocked(mIdx, tIdx));
+          lessonScore = complete && scoreMap[key] !== undefined ? scoreMap[key] : null;
+        }
+
+        lessons.push({
+          key,
+          label:      topic.title,
+          type:       lessonType,
+          state:      complete ? 'done' : locked ? 'locked' : 'next',
+          hasContent: useV2 ? true : topicHasContent(level, mIdx, tIdx),
+          moduleIdx:  mIdx,
+          topicIdx:   tIdx,
+          isIntro:    false,
+          score:      lessonScore,
+          v2ModuleId: topic._v2ModuleId,
+          v2UnitId:   topic._v2UnitId,
+          v2Activity,
+        });
+      });
+
+      // v1: progressive lock — first non-done becomes 'next', rest 'locked'.
+      // v2: já vem com locked/next/done corretos do hook useLearnProgressV2.
+      let foundNext = false;
+      const fixed = lessons.map(l => {
+        if (useV2) return l;
+        if (l.state === 'done') return l;
+        if (!foundNext && l.state === 'next') { foundNext = true; return l; }
+        return { ...l, state: 'locked' as LessonState };
+      });
+
+      const completedCount = fixed.filter(l => l.state === 'done').length;
+      const totalCount     = fixed.length;
+      const pct            = totalCount > 0 ? Math.round((completedCount / totalCount) * 100) : 0;
+
+      let state: ModuleData['state'];
+      if (completedCount === totalCount && totalCount > 0)         state = 'done';
+      else if (fixed.some(l => l.state === 'next'))                state = 'active';
+      else                                                          state = 'locked';
+
+      const scored = fixed.filter(l => typeof l.score === 'number') as (Lesson & { score: number })[];
+      const avgScore = scored.length > 0
+        ? scored.reduce((s, l) => s + l.score, 0) / scored.length
+        : null;
+
+      return {
+        idx: mIdx, title: mod.title, lessons: fixed,
+        completedCount, totalCount, pct, state, avgScore,
+      };
+    });
+  }, [modules, level, useV2, isTopicComplete, isLocked, isIntroDone, scoreMap, v2Progress.rows]);
+
+  const activeIdx = useMemo(
+    () => moduleData.findIndex(m => m.state === 'active'),
+    [moduleData],
+  );
+
+  // Expansion state — auto-expand active module on mount / when active changes
+  const [expandedIdx, setExpandedIdx] = useState<number | null>(null);
+  useEffect(() => {
+    if (activeIdx >= 0) setExpandedIdx(activeIdx);
+  }, [activeIdx]);
+
+  const handleStartLesson = useCallback((lesson: Lesson) => {
+    if (lesson.state === 'locked' || !lesson.hasContent) return;
+    if (lesson.isIntro) {
+      router.push({
+        pathname: '/(app)/learn-intro',
+        params: { level, moduleIndex: String(lesson.moduleIdx), topicIndex: '0' },
+      });
+    } else if (lesson.v2ModuleId && lesson.v2UnitId) {
+      // v2 routing: o tipo ciclado (grammar/speaking/roleplay/chat) define
+      // qual fatia do unit abre. Mesma posicao → mesma atividade, igual v15
+      // visual mas agora funcional.
+      switch (lesson.type) {
+        case 'grammar':
+          router.push({
+            pathname: '/(app)/learn-session',
+            params: { v: 'v2', level, moduleId: lesson.v2ModuleId, unitId: lesson.v2UnitId, activity: 'grammar' },
+          });
+          return;
+        case 'speaking':
+          router.push({
+            pathname: '/(app)/learn-session',
+            params: { v: 'v2', level, moduleId: lesson.v2ModuleId, unitId: lesson.v2UnitId, activity: 'ls' },
+          });
+          return;
+        case 'roleplay':
+          router.push({
+            pathname: '/(app)/roleplay-exercise' as any,
+            params: { level, moduleId: lesson.v2ModuleId, unitId: lesson.v2UnitId },
+          });
+          return;
+        case 'chat':
+          router.push({
+            pathname: '/(app)/guided-chat-exercise' as any,
+            params: { level, moduleId: lesson.v2ModuleId, unitId: lesson.v2UnitId },
+          });
+          return;
+      }
+    } else {
+      router.push({
+        pathname: '/(app)/learn-session',
+        params: { level, moduleIndex: String(lesson.moduleIdx), topicIndex: String(lesson.topicIdx) },
+      });
+    }
+  }, [level]);
+
+  // Ref pra scroll-to-active module
+  const activeRef = useRef<View | null>(null);
+  useEffect(() => {
+    if (onCurrentTopicRef && activeRef.current) {
+      onCurrentTopicRef(activeRef.current);
+    }
+  }, [activeIdx, onCurrentTopicRef]);
+
+  // ── Loading ──────────────────────────────────────────────────────────────
+  if (loading) {
+    return (
+      <View style={{ alignItems: 'center', paddingTop: 40 }}>
+        <ActivityIndicator color={accent} />
+        <AppText style={{ color: C.navyLight, marginTop: 12, fontSize: 13 }}>
+          {isPt ? 'Carregando sua trilha...' : 'Loading your trail...'}
+        </AppText>
+      </View>
+    );
+  }
+
+  return (
+    <View style={{ paddingTop: 4, paddingBottom: 40 }}>
+      {moduleData.map((m, i) => {
+        const prevModId = i > 0 ? modules[i - 1]?._v2ModuleId : undefined;
+        const currModId = modules[i]?._v2ModuleId;
+        const showDivider = useV2 && !!currModId && currModId !== prevModId;
+        const divTitle    = modules[i]?._v2ModuleTitle;
+        return (
+          <React.Fragment key={`mod_${m.idx}`}>
+            {showDivider && divTitle && (
+              <View style={{
+                flexDirection: 'row', alignItems: 'center', gap: 10,
+                marginTop: i === 0 ? 4 : 18, marginBottom: 10, paddingHorizontal: 4,
+              }}>
+                <View style={{ flex: 1, height: 1, backgroundColor: C.borderMid }} />
+                <AppText style={{
+                  fontSize: 11, fontWeight: '700', color: C.navyLight,
+                  letterSpacing: 1.2, textTransform: 'uppercase',
+                }}>
+                  {divTitle}
+                </AppText>
+                <View style={{ flex: 1, height: 1, backgroundColor: C.borderMid }} />
+              </View>
+            )}
+            <ModuleCard
+              data={m}
+              accent={accent}
+              expanded={expandedIdx === i}
+              onToggle={() => setExpandedIdx(k => k === i ? null : i)}
+              onStartLesson={handleStartLesson}
+              isPt={isPt}
+              isCurrentModule={i === activeIdx}
+              onRef={i === activeIdx ? (r) => { activeRef.current = r; } : undefined}
+            />
+          </React.Fragment>
+        );
+      })}
     </View>
   );
 }

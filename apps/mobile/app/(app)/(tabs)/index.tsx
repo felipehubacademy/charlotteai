@@ -4,13 +4,13 @@
 
 import React, { useState, useCallback, useEffect, useRef, useMemo } from 'react';
 import {
-  View, ScrollView, TouchableOpacity, Image, Platform,
+  View, ScrollView, TouchableOpacity, Platform,
   ActivityIndicator, RefreshControl, Animated, unstable_batchedUpdates,
   findNodeHandle, UIManager,
 } from 'react-native';
 import { router, useFocusEffect } from 'expo-router';
 import { SafeAreaView } from 'react-native-safe-area-context';
-import { useVideoPlayer, VideoView } from 'expo-video';
+import { Image } from 'expo-image';
 import * as SecureStore from 'expo-secure-store';
 import { AppText } from '@/components/ui/Text';
 import { HeaderPills } from '@/components/ui/HeaderPills';
@@ -23,6 +23,7 @@ import { identifyUser, track } from '@/lib/analytics';
 import { greetingCache, resetGreetingCache, prefetchGreeting } from '@/lib/greetingCache';
 import { localTodayStr, localMidnightUTC } from '@/lib/dateUtils';
 import { soundEngine } from '@/lib/soundEngine';
+import { splashGate } from '@/lib/splashGate';
 import { voiceSFX } from '@/lib/voiceSFX';
 import { TrailContent } from '@/components/trail/TrailContent';
 import { TrailBanner } from '@/components/trail/TrailBanner';
@@ -127,18 +128,10 @@ export default function HomeTab() {
     SecureStore.setItemAsync('NEW_LAYOUT_WELCOME_DONE', '1').catch(() => {});
   }, []);
 
-  const greetingPlayer = useVideoPlayer(require('@/assets/charlotte-greeting.mp4'), p => {
-    p.loop = true;
-    p.muted = true;
-    p.play();
-  });
-
-  // Garante loop sempre ativo quando a tab volta a ficar visível.
-  // Sem isso, o player pode ficar pausado após navegação entre tabs.
-  useFocusEffect(useCallback(() => {
-    greetingPlayer.loop = true;
-    greetingPlayer.play();
-  }, [greetingPlayer]));
+  // Charlotte greeting animado em WebP com alpha. expo-image faz loop nativo
+  // e não toca AVAudioSession (substitui expo-video que floodava MediaPlayback
+  // events no Live Voice — benchmark 2026-05-15).
+  const greetingSrc = require('@/assets/charlotte-greeting.webp');
 
   // ── Data fetch ──────────────────────────────────────────────────────────────
   const fetchData = useCallback(async () => {
@@ -185,16 +178,19 @@ export default function HomeTab() {
       setTodayXP(todayXPVal);
       setRank(userTotalXP > 0 ? computedRank : null);
 
-      // Brand intro jingle — toca em todo cold start (estilo Duolingo).
-      // intro_app dura ~3s; todos os outros sons da home sao deslocados se ele
-      // for tocar agora, para nao colidir audio.
+      // Brand intro jingle — so dispara DEPOIS do splash sumir (gate via
+      // splashGate Promise resolvida pelo SplashOverlay no fim do fade).
+      // Sem isso, o intro tocava por baixo do splash e terminava antes
+      // do user ver a home.
       const introWillPlay = !_introPlayedThisJsSession;
       if (introWillPlay) {
         _introPlayedThisJsSession = true;
-        setTimeout(() => soundEngine.play('intro_app').catch(() => {}), 400);
+        splashGate.then(() => {
+          soundEngine.play('intro_app').catch(() => {});
+        });
       }
       // Offset usado pra shiftar streak_alive e Tier 4 quando o intro toca primeiro.
-      // intro comeca em t=400 + dura ~3s => proximos sons sao em t=3500+
+      // intro dura ~3s => proximos sons em t=splash_done+3100ms.
       const introOffset = introWillPlay ? 3100 : 0;
 
       // Streak sound + Tier 4 (voz)
@@ -206,15 +202,15 @@ export default function HomeTab() {
           if (lastPlayed !== today) {
             _streakSoundPlayedThisSession = true;
             SecureStore.setItemAsync(streakKey, today).catch(() => {});
-            setTimeout(() => soundEngine.play('streak_alive').catch(() => {}), introOffset + 800);
-
-            // Tier 4 — marcos de streak (somente no dia exato em que cruza)
-            // SFX streak_alive comeca em t=offset+800 e dura ~1.2s
-            if (streakDays === 7) {
-              setTimeout(() => voiceSFX.play('streak_7_days').catch(() => {}), introOffset + 2300);
-            } else if (streakDays === 30) {
-              setTimeout(() => voiceSFX.play('streak_30_days').catch(() => {}), introOffset + 2300);
-            }
+            // Tambem espera o splash sair antes de tocar.
+            splashGate.then(() => {
+              setTimeout(() => soundEngine.play('streak_alive').catch(() => {}), introOffset + 800);
+              if (streakDays === 7) {
+                setTimeout(() => voiceSFX.play('streak_7_days').catch(() => {}), introOffset + 2300);
+              } else if (streakDays === 30) {
+                setTimeout(() => voiceSFX.play('streak_30_days').catch(() => {}), introOffset + 2300);
+              }
+            });
           } else {
             _streakSoundPlayedThisSession = true;
           }
@@ -408,13 +404,11 @@ export default function HomeTab() {
         <View style={{ borderRadius: 22, backgroundColor: T.card, overflow: 'hidden', ...cardShadow }}>
           {/* Navy strip with bust + chat bubble */}
           <View style={{ backgroundColor: C.heroStrip, paddingRight: 20, flexDirection: 'row', alignItems: 'center', minHeight: 140 }}>
-            {/* borderRadius força clipping no Android (overflow:hidden sozinho nao funciona com VideoView) */}
-            <View style={{ width: 118, height: 165, marginBottom: -15, flexShrink: 0, alignSelf: 'flex-end', overflow: 'hidden', borderRadius: 1, backgroundColor: C.heroStrip }}>
-              <VideoView
-                player={greetingPlayer}
-                style={{ width: 118, height: Math.round(118 * 16 / 9), backgroundColor: C.heroStrip }}
-                contentFit="cover"
-                nativeControls={false}
+            <View style={{ width: 95, height: 132, flexShrink: 0, alignSelf: 'flex-end' }}>
+              <Image
+                source={greetingSrc}
+                style={{ width: 95, height: 132 }}
+                contentFit="contain"
               />
             </View>
             <View style={{ flex: 1, paddingLeft: 0, paddingVertical: 16, justifyContent: 'center' }}>
@@ -451,6 +445,7 @@ export default function HomeTab() {
           level={level}
           showBanner={false}
           onCurrentTopicRef={handleCurrentTopicRef}
+          useV2={profile?.beta_features?.includes('curriculum_v2') ?? false}
         />
       </ScrollView>
 

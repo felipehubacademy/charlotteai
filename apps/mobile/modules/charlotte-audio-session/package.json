@@ -1,0 +1,8 @@
+{
+  "name": "charlotte-audio-session",
+  "version": "1.0.0",
+  "description": "Native AVAudioSession / AudioManager controller for Live Voice — bypasses InCallManager.",
+  "main": "src/index.ts",
+  "types": "src/index.ts",
+  "private": true
+}

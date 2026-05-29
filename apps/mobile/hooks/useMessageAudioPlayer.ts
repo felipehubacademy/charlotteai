@@ -15,7 +15,30 @@ export function useMessageAudioPlayer() {
   const currentUriRef = useRef<string | null>(null);
   const pendingPlay   = useRef<string | null>(null); // id waiting for isLoaded
   const subRef       = useRef<ReturnType<AudioPlayer['addListener']> | null>(null);
+  const pollRef      = useRef<ReturnType<typeof setInterval> | null>(null);
   const [playingId, setPlayingId] = useState<string | null>(null);
+
+  // Polling defensivo: alguns devices nao disparam playbackStatusUpdate
+  // no instante em que o audio termina. Verifica a cada 120ms se o player
+  // ainda esta tocando — se nao, limpa o estado imediatamente.
+  useEffect(() => {
+    if (!playingId) {
+      if (pollRef.current) { clearInterval(pollRef.current); pollRef.current = null; }
+      return;
+    }
+    pollRef.current = setInterval(() => {
+      const p = playerRef.current;
+      if (!p) return;
+      // Ainda nao comecou (pendingPlay) — ignora
+      if (pendingPlay.current) return;
+      if (!p.playing) {
+        setPlayingId(null);
+      }
+    }, 120);
+    return () => {
+      if (pollRef.current) { clearInterval(pollRef.current); pollRef.current = null; }
+    };
+  }, [playingId]);
 
   // Create a single player on mount; destroy on unmount
   useEffect(() => {
@@ -74,8 +97,13 @@ export function useMessageAudioPlayer() {
         setPlayingId(id);
       }
 
-      // Natural end of playback
-      if (status.didJustFinish && currentIdRef.current === id) {
+      // Natural end of playback. Em alguns devices o didJustFinish nao
+      // dispara confiavelmente — fallback usa currentTime >= duration.
+      const reachedEnd =
+        status.didJustFinish ||
+        (status.isLoaded && !status.playing && status.duration > 0 &&
+          status.currentTime >= status.duration - 0.08);
+      if (reachedEnd && currentIdRef.current === id) {
         subRef.current?.remove();
         subRef.current = null;
         currentIdRef.current = null;

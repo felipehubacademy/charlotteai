@@ -149,14 +149,13 @@ function ScoreBar({ label, score }: { label: string; score: number }) {
 
 // ── Types ──────────────────────────────────────────────────────
 
-type ExerciseType = 'repeat' | 'listen_write' | 'minimal_pairs' | 'shadowing' | 'sentence_stress';
+type ExerciseType = 'repeat' | 'listen_write' | 'minimal_pairs' | 'sentence_stress';
 type Status = 'loading_audio' | 'listening' | 'recording' | 'assessing' | 'result' | 'error';
 
 const TYPE_LABELS: Record<ExerciseType, string> = {
   repeat:          'Repeat After Me',
   listen_write:    'Listen & Write',
   minimal_pairs:   'Minimal Pairs',
-  shadowing:       'Shadowing',
   sentence_stress: 'Sentence Stress',
 };
 

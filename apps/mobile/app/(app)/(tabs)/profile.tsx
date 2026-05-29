@@ -575,21 +575,6 @@ export default function ProfileTab() {
           </>
         )}
 
-        {/* Beta features */}
-        {profile?.beta_features?.includes('karaoke') && (
-          <>
-            <SectionTitle label="Beta" />
-            <SettingGroup>
-              <SettingRow
-                icon={<Microphone size={18} color={C.navyMid} weight="regular" />}
-                label="Read Aloud (Karaoke)"
-                onPress={() => router.push('/(app)/karaoke-exercise' as any)}
-                chevron
-              />
-            </SettingGroup>
-          </>
-        )}
-
         {/* Tour — admin only */}
         {profile?.is_admin && (
           <>

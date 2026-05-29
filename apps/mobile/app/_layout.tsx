@@ -20,6 +20,7 @@ import { soundEngine } from '@/lib/soundEngine';
 import { voiceSFX } from '@/lib/voiceSFX';
 import { loadAudioPreferences } from '@/lib/audioPreferences';
 import { ThemeProvider, useTheme } from '@/lib/theme';
+import { SplashOverlay } from '@/components/ui/SplashOverlay';
 
 // Mantém a splash screen visível enquanto carrega
 SplashScreen.preventAutoHideAsync();
@@ -139,10 +140,9 @@ function AuthGuard() {
 
 function RootLayout() {
   useEffect(() => {
+    // Dismissa a native splash ASAP — o SplashOverlay (JS) com splash.png
+    // assume daqui e segura no minimo 1200ms.
     SplashScreen.hideAsync();
-    // expo-updates cuida automaticamente dos checks via checkAutomatically: 'ON_LOAD'
-    // configurado em app.config.ts — updates são baixados em background e aplicados
-    // na próxima abertura do app, sem código manual necessário aqui.
   }, []);
 
   return (
@@ -159,6 +159,7 @@ function RootLayout() {
                 <Stack.Screen name="(auth)" />
                 <Stack.Screen name="(app)" />
               </Stack>
+              <SplashOverlay />
             </AuthProvider>
           </SafeAreaProvider>
         </ThemeProvider>

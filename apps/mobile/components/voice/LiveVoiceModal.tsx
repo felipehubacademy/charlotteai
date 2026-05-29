@@ -1,18 +1,21 @@
 // components/voice/LiveVoiceModal.tsx
-// Live voice — WebRTC transport → OpenAI Realtime API
+// Live voice — WebRTC transport → OpenAI Realtime API (GA, gpt-realtime-2)
 //
-// Pool mensal: 30 min (1 800 s). Detecta inatividade:
-//   45 s sem fala → aviso "Ainda está aí?"
-//   +30 s → pausa automática (WebRTC fecha, timer congela)
+// Reset cirurgico 2026-05-13 (branch livevoice-reset-2026-05):
+//   - InCallManager fora; CharlotteAudioSession (Expo Module nativo) controla
+//     AVAudioSession (iOS) e AudioManager (Android). Mode .default em vez de
+//     .voiceChat resolve bug de cabo USB ignorando override pra speaker.
+//   - Server gerencia turns: turn_detection.create_response = true +
+//     interrupt_response = true. Sem response.create manual no client.
+//   - Echo guard upstream: debounce de speech_started durante janela
+//     output_audio_buffer.started -> stopped. Sem wordOverlap em transcript.
+//   - State machine de response: activeResponseIdRef set em response.created.
+//   - Captions: clear sincronizado com output_audio_buffer.stopped (buffer
+//     drenou no device), nao timer arbitrario.
 //
-// Antes (WebSocket manual):
-//   expo-audio grava 400ms chunks → strip WAV header → base64 → input_audio_buffer.append
-//   response.audio.delta chunks → WebRTC audio track → speaker
-//
-// Agora (WebRTC):
-//   RTCPeerConnection gerencia mic input e speaker output nativamente
-//   RTCDataChannel 'oai-events' substitui o WebSocket para eventos JSON
-//   InCallManager controla roteamento do speaker no iOS/Android
+// Inatividade:
+//   45 s sem fala -> aviso "Ainda esta ai?"
+//   +30 s -> pausa automatica (WebRTC fecha, timer congela)
 
 import React from 'react';
 import {
@@ -25,9 +28,9 @@ import {
   StatusBar,
 } from 'react-native';
 import { SafeAreaView, useSafeAreaInsets } from 'react-native-safe-area-context';
-import { requestRecordingPermissionsAsync, setAudioModeAsync, createAudioPlayer, type AudioPlayer } from 'expo-audio';
+import { requestRecordingPermissionsAsync, setAudioModeAsync } from 'expo-audio';
 import { RTCPeerConnection, mediaDevices } from 'react-native-webrtc';
-import InCallManager from 'react-native-incall-manager';
+import CharlotteAudioSession from 'charlotte-audio-session';
 import { PhoneSlash, MicrophoneSlash, Microphone, SpeakerHigh, Ear, Pause, ArrowCounterClockwise, ArrowLeft, ChatCircle, ClosedCaptioning } from 'phosphor-react-native';
 import { ScrollView } from 'react-native';
 import * as Haptics from 'expo-haptics';
@@ -51,24 +54,26 @@ const INACTIVITY_PAUSE_SEC = 75;
 
 
 // ── Frases de saudação por nível ────────────────────────────────────────────────
+// Estilo "atendendo o telefone": cumprimenta o {NAME} pelo nome,
+// pergunta como vai. Tom de chamada amiga, nao de aula.
 const GREETINGS: Record<'Novice' | 'Inter' | 'Advanced', string[]> = {
   Novice: [
-    'Oi! Que bom te ver! Vamos praticar English hoje?',
-    'Olá! Tô aqui! Bora começar nossa aula?',
-    'Ei! Saudade! Vamos praticar juntos hoje?',
-    'Oi! Tudo bem? Bora falar um inglezinho?',
+    'Alô, {NAME}! Tudo bem?',
+    'Oi, {NAME}! Como você tá?',
+    'Olá, {NAME}! Tudo certo por aí?',
+    'Ei, {NAME}! Que bom te ouvir. Como vai?',
   ],
   Inter: [
-    "Hey! Good to hear from you — what's been going on?",
-    "Hey! How's your day been so far?",
-    "Oh hey! What's up? Anything interesting happen lately?",
-    "Hey! Been a while — what've you been up to?",
+    "Hey {NAME}! How's it going?",
+    "Hi {NAME}! How are you doing today?",
+    "Hello {NAME}! Good to hear from you. How are you?",
+    "Hey {NAME}! All good on your end?",
   ],
   Advanced: [
-    "Hey! What's on your mind?",
-    "Hey! So what are we talking about today?",
-    "Oh hey! Anything interesting you want to get into?",
-    "Hey! What's been going on with you lately?",
+    "Hey {NAME}! How are you?",
+    "Hi {NAME} — how's everything going?",
+    "Hello {NAME}! Good to hear from you. How are you doing?",
+    "Hey {NAME}! How's your day treating you?",
   ],
 };
 
@@ -100,69 +105,21 @@ const FAREWELLS: Record<'Novice' | 'Inter' | 'Advanced', string[]> = {
 // IMPORTANT: never tell the model to "fill silence" or "keep talking" — this causes
 // Charlotte to monologue without user input when the VAD triggers on echo/ambient noise.
 const SYSTEM_PROMPTS: Record<'Novice' | 'Inter' | 'Advanced', string> = {
-  Novice: `You are Charlotte, a friendly English conversation partner on a voice call with {NAME}, who is a true beginner. They know some English but feel safer in Portuguese. You speak Brazilian Portuguese fluently.
+  Novice: `Você é Charlotte, amiga do {NAME} numa CHAMADA TELEFÔNICA. {NAME} é brasileiro/a, começando a aprender inglês.
 
-Your job: have a REAL conversation in a natural PT/EN mix, adapting to their comfort. NOT a drill class. Talk about life, hobbies, their day — like a friend who's helping them practice English.
+Esta é uma conversa de telefone, não uma aula. Flua naturalmente como amiga ao telefone:
 
-LANGUAGE ADAPTATION — this is dynamic, change every turn based on their LAST reply:
+TURNO 1 (greeting): só cumprimente e pergunte como vai. NADA além disso. Curto.
+TURNO 2: depois que {NAME} responde, troque cortesia ("Tudo bem comigo também!") e proponha CASUALMENTE praticar inglês juntos ("Que tal a gente misturar um pouco de inglês na conversa?").
+TURNO 3+: comece a conversa real (sobre o dia, hobbies, planos), introduzindo inglês gradualmente. Comece com palavras simples embutidas. Vá aumentando a proporção EN conforme {NAME} responde bem.
 
-START (first 2-3 turns): ≈70% PT / 30% EN. Use full English phrases mixed naturally, not just single words.
-  Example: "Oi Felipe! Como vai? Tell me — what's been good lately?"
+Regras gerais:
+- Respostas CURTAS (1-2 frases). É telefone, não monólogo.
+- Mix PT/EN por frase completa — nunca code-switch mid-sentence ("Do you like ouvir música" ❌).
+- Quando {NAME} comete um erro em inglês, corrija EMBUTINDO a forma certa naturalmente, sem rotular ("o certo é").
+- Calorosa, paciente, curiosa. Amiga, não professora.
 
-SHIFT TO 50/50: as soon as they reply with even a SHORT clean English sentence (3+ words). Even one good reply triggers the shift.
-  Example trigger reply: "I'm good, how are you?" → next Charlotte turn: "I'm great! So tell me, where are you from? Me conta um pouco da sua cidade."
-
-SHIFT TO 70 EN / 30 PT: after 2+ clean English replies in a row. Keep PT only for tricky vocabulary or comfort phrases.
-  Example: "Oh that's awesome! What do you usually do on weekends? (final de semana)"
-
-ALMOST FULL ENGLISH (90/10): after 4+ clean replies. Drop PT entirely except for very hard words.
-
-GO BACK to 70 PT immediately if:
-- Student replies in Portuguese
-- Student hesitates / says "não sei", "como?", "não entendi"
-- Student stays silent / replies very short ("uh", "yes")
-
-ABSOLUTELY DO NOT:
-- Repeat the same teaching pattern ("Você pode dizer: X?", "Você pode dizer: Y?", "Você pode dizer: Z?") — this is drill class, not conversation. NEVER do "Você pode dizer X" twice in a row.
-- Translate basic words the student already knows (não traduza "ótimo", "música", "hoje", "legal").
-- Stay at 70% PT after they've shown English fluency. ADAPT.
-- Treat each user reply as a chance to teach a phrase. Treat it as a normal conversation reply.
-
-CONVERSATIONAL VARIETY — vary your patterns each turn:
-- React to what they actually said ("Oh, jazz! That's interesting...")
-- Share a tiny opinion or fact about yourself ("I love rainy days myself!")
-- Ask a follow-up question that builds on their answer
-- Occasionally compliment ("Your English is great!")
-- DON'T just keep asking "Can you say X?" — that's mechanical and boring.
-
-CRITICAL — MIX PT/EN BY FULL SENTENCES, NEVER CODE-SWITCH MID-SENTENCE:
-Each sentence must be ENTIRELY in ONE language. You may alternate between sentences. Do NOT insert a Portuguese word inside an English sentence (or vice versa).
-
-Right (full-sentence mix):
-- "Que legal! What music do you like?"
-- "Adorei. Do you listen to a lot of music?"
-- "Oh nice! E você costuma escutar todo dia?"
-
-Wrong (mid-sentence code-switch — sounds like broken pidgin, makes you sound stupid):
-- "What music do you like ouvir?" ❌
-- "What do you enjoy ouvir quando quer relaxar?" ❌
-- "Do you prefer rock or pop hoje à noite?" ❌
-
-PARENS (X): use only for genuinely new English vocabulary that they likely don't know. Example: "Do you commute (ir e voltar do trabalho) by car?". NEVER translate basic English words back to PT. NEVER use parens when the surrounding sentence is PT.
-
-TURN LENGTH: 2 short sentences max. One reaction + one question. Finish both.
-
-NEVER narrate internal reasoning out loud. Specifically, NEVER say:
-- "Deixa eu organizar/pensar/processar..."
-- "Let me think about that..."
-- "Vou ouvir com calma..."
-- "Vamos ver / Hmm, let me see..."
-These are internal thoughts — they MUST stay internal. Respond DIRECTLY.
-If you didn't understand the user, ask: "Não entendi, pode repetir?" or "Could you say that again?" — never narrate the confusion.
-
-Personality: warm, fun, encouraging like a real friend. Celebrate progress naturally ("Look at you talking in English! Que legal."). Use real fillers ("oh!", "really?", "que legal!", "wow", "interesting").
-
-Start with: "{GREETING}"`,
+Comece com: "{GREETING}"`,
 
   Inter: `You are Charlotte, a friendly English conversation partner and tutor. You're having a real voice chat with {NAME}, who has intermediate English — they can hold a conversation but still make mistakes, hesitate, or sometimes feel shy about speaking 100% English.
 
@@ -176,11 +133,30 @@ LANGUAGE ADAPTATION (important — Inter students can still be shy):
 
 TURN LENGTH RULE — this is the most important rule: speak exactly TWO SHORT sentences per turn — one brief reaction (max 8 words) + one short question (max 12 words). Always finish both completely. Never add a third sentence.
 
-NEVER narrate internal reasoning out loud. Specifically, NEVER say:
-- "Let me think...", "Hmm, let me organize..."
-- "Deixa eu pensar / Vou ouvir com calma..."
-These are internal thoughts. Respond DIRECTLY.
-If you didn't understand, ask: "Sorry, could you repeat that?" — never narrate confusion.
+ZERO preamble. ZERO meta-narration. Banned EXACT phrases (literal blacklist — if any appear in your output, you have failed):
+- "Let me lean into that"
+- "Let me dig into that"
+- "Let me think about that"
+- "Let me see"
+- "Let me explain"
+- "Let me help you with that"
+- "I'll explain"
+- "I'll help you with that"
+- "I'll dive into"
+- "Hmm, let me..."
+- "for a moment"
+- "Give me a moment"
+- "That's a great question"
+- "Deixa eu..." (any verb)
+- "Vou..." as preamble (vou pensar, vou explicar, vou organizar, vou conferir)
+- "Vou conferir rapidinho..."
+- "Vamos ver"
+
+You NEVER announce what you're about to do. You just DO it.
+Wrong: "Let me help you with that." → Right: just give the help.
+Wrong: "I'll explain it." → Right: just explain it.
+
+If you didn't understand, ask DIRECTLY: "Sorry, could you repeat that?" — never narrate confusion.
 
 How you talk:
 - Sound like a real person — use contractions, natural fillers ("oh nice", "wait really?", "that's so funny"), informal expressions
@@ -192,17 +168,44 @@ How you talk:
 
 Start with: "{GREETING}"`,
 
-  Advanced: `You are Charlotte — sharp, fun, and direct. You're on a voice call with {NAME}, who speaks English at an advanced level. They want real conversation, not hand-holding.
+  Advanced: `# CRITICAL RULES — VIOLATE ANY = HARD FAILURE
+
+1. **NEVER invent content {NAME} didn't say.** If unclear: "Sorry, could you repeat that?" — never guess.
+
+2. **ZERO preamble. ZERO meta-narration. ZERO filler reasoning.** Banned EXACT phrases (this is a literal blacklist — if any of these strings appear in your output, you have failed):
+   - "Let me lean into that"
+   - "Let me dig into that"
+   - "Let me think about that"
+   - "Let me break it down"
+   - "Let me walk you through"
+   - "Let me see"
+   - "Let me try that"
+   - "I'll dive into"
+   - "I'll take a stab at"
+   - "I'll think about"
+   - "Hmm, let me..."
+   - "One sec"
+   - "Give me a moment"
+   - "That's a great question"
+   - "for a moment" (especially "for a moment" after any "let me ___")
+   You don't preface, hedge, or buffer. You respond directly.
+
+3. **NEVER say goodbye on your own.** "talk to you later", "see you", "take care" FORBIDDEN unless {NAME} said it first.
+
+---
+
+You are Charlotte — sharp, fun, and direct. You're on a voice call with {NAME}, who speaks English at an advanced level. They want real conversation, not hand-holding.
 
 Your vibe: think of a smart, witty friend who challenges you intellectually and isn't afraid to joke around. You're not their teacher right now, you're their conversation partner who happens to catch their English slips.
 
 TURN LENGTH RULE — this is the most important rule: speak exactly TWO SHORT sentences per turn — one brief reaction (max 10 words) + one short question (max 14 words). Always finish both completely. Never add a third sentence.
 
-NEVER narrate internal reasoning out loud. Specifically, NEVER say:
-- "Let me think...", "Let me see...", "Hmm, let me organize..."
-- "Deixa eu pensar / Vou ouvir com calma..."
-These are internal thoughts. Respond DIRECTLY.
-If you didn't understand, ask: "Sorry, could you repeat that?" — never narrate confusion.
+You NEVER announce what you're about to do. You just DO it.
+Wrong: "Let me lean into that for a moment." → Right: just react and ask.
+Wrong: "Let me think about that." → Right: just give the take.
+Wrong: "Let me break this down." → Right: just break it down without preamble.
+
+If you didn't understand, ask DIRECTLY: "Sorry, could you repeat that?" — never narrate confusion.
 
 How you talk:
 - Be yourself — opinionated, curious, occasionally sarcastic (in a fun way)
@@ -215,7 +218,11 @@ Start with: "{GREETING}"`,
 };
 
 function getSystemPrompt(level: 'Novice' | 'Inter' | 'Advanced', name: string, greeting: string): string {
-  return SYSTEM_PROMPTS[level].replace('{NAME}', name).replace('{GREETING}', greeting);
+  // Substitui {NAME} TODAS as ocorrencias (greeting tambem usa).
+  const greetingWithName = greeting.replace(/\{NAME\}/g, name);
+  return SYSTEM_PROMPTS[level]
+    .replace(/\{NAME\}/g, name)
+    .replace('{GREETING}', greetingWithName);
 }
 
 function getRandomGreeting(level: 'Novice' | 'Inter' | 'Advanced'): string {
@@ -234,47 +241,8 @@ function formatSecs(s: number): string {
   return `${m.toString().padStart(2, '0')}:${sec.toString().padStart(2, '0')}`;
 }
 
-// Calcula sobreposição de palavras entre dois textos (0..1).
-// Usado para detectar quando Whisper transcreveu a própria Charlotte como se
-// fosse o usuário (eco). Ignora palavras curtas (< 3 chars) porque elas aparecem
-// naturalmente em qualquer texto e confundiriam o sinal.
-function wordOverlap(a: string, b: string): number {
-  const tokenize = (s: string) => new Set(
-    s.toLowerCase()
-      .replace(/[.,!?;:'"()\[\]—–-]/g, ' ')
-      .split(/\s+/)
-      .filter(w => w.length >= 3)
-  );
-  const wordsA = tokenize(a);
-  const wordsB = tokenize(b);
-  if (wordsA.size === 0 || wordsB.size === 0) return 0;
-  let common = 0;
-  wordsA.forEach(w => { if (wordsB.has(w)) common++; });
-  return common / Math.min(wordsA.size, wordsB.size);
-}
-
-// Detecta eco curto que wordOverlap não pega: transcrições muito curtas
-// ("Oh", "Hey", "Yeah", "Nice", "Cool") que aparecem logo após Charlotte falar.
-// Essas palavras são fragmentos do começo da fala dela ("Oh hey! What's up?")
-// capturados pelo mic via speaker. wordOverlap ignora palavras < 3 chars.
-function isShortEcho(userText: string, charlotteText: string, msSinceCharlotte: number): boolean {
-  if (msSinceCharlotte > 2500) return false; // janela suspeita: 2.5s após audio.done
-  const txt = userText.toLowerCase().trim().replace(/[.,!?;:'"()\[\]—–-]/g, '');
-  // Curto: <= 4 palavras OU <= 20 chars
-  const wordCount = txt.split(/\s+/).filter(Boolean).length;
-  if (wordCount > 4 && txt.length > 20) return false;
-  // Está contida no início da fala da Charlotte?
-  const charlotteLower = charlotteText.toLowerCase().replace(/[.,!?;:'"()\[\]—–-]/g, '');
-  // 1) Match exato/prefixo da Charlotte
-  if (charlotteLower.startsWith(txt)) return true;
-  // 2) Cada palavra do user aparece nas primeiras 6 palavras da Charlotte
-  const userWords = txt.split(/\s+/).filter(Boolean);
-  const charlotteFirstWords = charlotteLower.split(/\s+/).slice(0, 6).filter(Boolean);
-  const allFound = userWords.every(w => charlotteFirstWords.includes(w));
-  return allFound;
-}
-
 type ConnectionStatus = 'idle' | 'disconnected' | 'connecting' | 'connected' | 'error';
+type FarewellState = 'idle' | 'pending' | 'speaking' | 'closing';
 
 interface ConversationTurn {
   role: 'user' | 'assistant';
@@ -381,81 +349,71 @@ export default function LiveVoiceModal({
   const [conversationTurns, setConversationTurns] = React.useState<ConversationTurn[]>([]);
   const [showTranscript, setShowTranscript]       = React.useState(false);
   const charlotteTextAccRef = React.useRef(''); // accumulates Charlotte's text deltas
-  // Acumulador de transcrição do usuário (deltas do gpt-realtime-whisper).
+  // Acumulador de transcricao do usuario (deltas do gpt-realtime-whisper).
   // Chave: item_id; valor: texto parcial acumulado. Esvaziado quando .completed chega.
+  // Bandaid: whisper as vezes manda .completed com 1 palavra; usamos delta se maior.
   const userTranscriptDeltasRef = React.useRef<Map<string, string>>(new Map());
   const wasConnectedRef     = React.useRef(false); // tracks if call ever reached connected state
-  const callStartedAtRef    = React.useRef<string | null>(null); // ISO da primeira conexão — usado pra salvar registro
-  const callRecordSavedRef  = React.useRef(false); // dedupe: salva o registro 1x por chamada
-  const conversationTurnsRef = React.useRef<ConversationTurn[]>([]); // mirror do state pra acessar de callbacks
-  const lastCharlotteTextRef   = React.useRef(''); // última fala completa da Charlotte — usado para detectar eco via sobreposição de texto
-  const pendingResponseTimerRef = React.useRef<ReturnType<typeof setTimeout> | null>(null); // timer agendado em speech_stopped, cancelado se eco detectado antes
-  const farewellPendingRef     = React.useRef(false); // pool esgotou, despedida pendente (aguardando momento seguro)
-  const farewellActiveRef      = React.useRef(false); // true quando a response.create da despedida já foi enviada
-  const farewellAudioStartRef  = React.useRef(0);     // Date.now() do primeiro response.audio.delta da despedida
-  const speechStartedAtRef  = React.useRef(0);     // Date.now() when VAD detected speech_started — used to filter short echo artifacts
-  const poolBaseRef         = React.useRef(levelPool); // secondsRemaining from DB at session start — used by session timer to count down correctly
+  const callStartedAtRef    = React.useRef<string | null>(null); // ISO da primeira conexao
+  const callRecordSavedRef  = React.useRef(false); // dedupe: salva 1x por chamada
+  const conversationTurnsRef = React.useRef<ConversationTurn[]>([]); // mirror do state pra callbacks
+
+  // Echo guard upstream: janela entre output_audio_buffer.started e .stopped
+  // identifica "Charlotte falando agora no speaker". speech_started disparado
+  // nessa janela = quase certamente eco do speaker pego pelo mic. Ignorar.
+  // Tambem ignoramos por 300ms apos .stopped (jitter buffer drenando).
+  const outputAudioBufferActiveRef = React.useRef(false);
+  const lastBufferStoppedAtRef     = React.useRef(0);
+
+  // State machine de response (GA): set em response.created, clear em
+  // response.done / response.cancelled. Source of truth pra "ha resposta ativa".
+  const activeResponseIdRef = React.useRef<string | null>(null);
+
+  // Anti-phantom: marca true quando user fala algo (transcription.completed
+  // com texto). Reset false em response.done. Em response.created, se for
+  // false E ja houve >= 1 response.done antes (nao eh o greeting inicial),
+  // significa que server VAD disparou em ruido/eco → cancela imediato.
+  const userSpokeSinceLastResponseRef = React.useRef<boolean>(false);
+  const completedResponsesRef = React.useRef<number>(0);
+
+  // Farewell state machine: substitui 4 refs booleanos (pending/active/audioStart).
+  // Transitions: idle -> pending (pool esgotou) -> speaking (response.created) -> closing (audio.done).
+  const farewellStateRef = React.useRef<FarewellState>('idle');
+
+  // Kickoff: response.create inicial disparado em session.updated. Idempotente.
+  const greetingFiredRef = React.useRef(false);
+
+  // Turn detection config completa — guardada pra restore apos disable
+  // (quando Charlotte fala, desligamos VAD pra evitar self-interrupt por eco).
+  const turnDetectionConfigRef = React.useRef<object | null>(null);
+  const vadRestoreTimerRef = React.useRef<ReturnType<typeof setTimeout> | null>(null);
+
+  const poolBaseRef         = React.useRef(levelPool); // secondsRemaining do DB no session start
 
   // ── WebRTC refs ────────────────────────────────────────────────────────────
   const pcRef             = React.useRef<InstanceType<typeof RTCPeerConnection> | null>(null);
   const dcRef             = React.useRef<any>(null);
   const localStreamRef    = React.useRef<any>(null);
 
-  // ── Ringback player (Android only) ───────────────────────────────────────
-  // No iOS, createAudioPlayer força AVAudioSession pra .playback e quebra
-  // o .voiceChat do WebRTC — Charlotte deixa de tocar e de ouvir. Android
-  // não tem esse conflito de sessão exclusiva, então usamos o MP3 custom
-  // só lá. iOS fica com InCallManager.startRingback('_DEFAULT_').
-  //
-  // TODO PÓS-BUILD: o config plugin `with-incallmanager-ringback` bundla o
-  // MP3 nos dois platforms. Após o build, trocar tudo isso pelo modo
-  // unificado `InCallManager.startRingback('_BUNDLE_')` em ambos, remover
-  // o ringbackPlayerRef + startCustomRingback + stopCustomRingback + a
-  // import de createAudioPlayer/AudioPlayer/Platform onde só for usada
-  // por esse fluxo. ~50 linhas saem.
-  const ringbackPlayerRef = React.useRef<AudioPlayer | null>(null);
-
+  // ── Ringback player (delegado ao native module) ─────────────────────────
+  // O player roda DENTRO da session que CharlotteAudioSession gerencia.
+  // Zero conflito com a session da call — mesmo dono. iOS: AVAudioPlayer.
+  // Android: MediaPlayer. MP3 bundlado pelo config plugin with-incallmanager-
+  // ringback.js (nome herdado, e so um asset).
   const startCustomRingback = React.useCallback(() => {
-    if (Platform.OS !== 'android') return false;
-    try {
-      if (!ringbackPlayerRef.current) {
-        const p = createAudioPlayer(require('@/assets/audio/incallmanager_ringback.mp3'));
-        p.loop = true;
-        ringbackPlayerRef.current = p;
-      }
-      ringbackPlayerRef.current.seekTo(0);
-      ringbackPlayerRef.current.play();
-      return true;
-    } catch (e) {
-      console.warn('[LiveVoice] startCustomRingback error:', e);
-      return false;
-    }
+    CharlotteAudioSession.playRingback().catch(e =>
+      console.warn('[LiveVoice] playRingback error:', e)
+    );
   }, []);
 
   const stopCustomRingback = React.useCallback(() => {
-    if (Platform.OS !== 'android') return;
-    try { ringbackPlayerRef.current?.pause(); } catch { /* silencioso */ }
-  }, []);
-
-  React.useEffect(() => {
-    return () => {
-      try {
-        ringbackPlayerRef.current?.pause();
-        ringbackPlayerRef.current?.remove();
-      } catch { /* silencioso */ }
-      ringbackPlayerRef.current = null;
-    };
+    CharlotteAudioSession.stopRingback().catch(() => { /* silencioso */ });
   }, []);
 
   // ── State refs ────────────────────────────────────────────────────────────
   const isMutedRef              = React.useRef(false);
   const isSpeakerRef            = React.useRef(true);
   const charlotteSpeakingRef    = React.useRef(false);
-  const responseActiveRef       = React.useRef(false);
-  const lastCharlotteDoneRef    = React.useRef(0);
-  // Cooldown: timestamp do ultimo response.create enviado.
-  // Impede que eco em loop dispare multiplos response.creates seguidos.
-  const lastResponseCreateRef   = React.useRef(0);
 
   // ── Session tracking refs ─────────────────────────────────────────────────
   const sessionStartRef         = React.useRef<number>(0);      // Date.now() when segment started
@@ -483,24 +441,6 @@ export default function LiveVoiceModal({
       inactivityIntervalRef.current = null;
     }
   }, []);
-
-  // ── Audio mode ────────────────────────────────────────────────────────────
-  // NOTA: deixamos InCallManager ser o único dono do AVAudioSession durante
-  // a chamada. setAudioModeAsync não é chamado no fluxo de call porque sobrescreve
-  // o mode .voiceChat necessário para o AEC hardware do iOS. Essa função fica
-  // apenas como utilitária caso precise ser chamada fora do fluxo da chamada.
-  const applyAudioMode = React.useCallback(async (speakerOn?: boolean) => {
-    try {
-      const useSpeaker = speakerOn !== undefined ? speakerOn : isSpeakerRef.current;
-      await setAudioModeAsync({
-        allowsRecording: true,
-        playsInSilentMode: true,
-        interruptionMode: 'doNotMix',
-        shouldRouteThroughEarpiece: !useSpeaker,
-      });
-    } catch (e) { console.warn('applyAudioMode:', e); }
-  }, []);
-
 
   // ── Mute ──────────────────────────────────────────────────────────────────
   // No react-native-webrtc, desabilitar o track via stream nao para o envio.
@@ -791,10 +731,6 @@ export default function LiveVoiceModal({
   }, [userLevel]);
 
   const disconnectWebRTC = React.useCallback(() => {
-    if (pendingResponseTimerRef.current) {
-      clearTimeout(pendingResponseTimerRef.current);
-      pendingResponseTimerRef.current = null;
-    }
     if (captionClearTimerRef.current) {
       clearTimeout(captionClearTimerRef.current);
       captionClearTimerRef.current = null;
@@ -803,6 +739,10 @@ export default function LiveVoiceModal({
       clearTimeout(translationDismissTimerRef.current);
       translationDismissTimerRef.current = null;
     }
+    if (vadRestoreTimerRef.current) {
+      clearTimeout(vadRestoreTimerRef.current);
+      vadRestoreTimerRef.current = null;
+    }
     localStreamRef.current?.getTracks().forEach((t: any) => t.stop());
     localStreamRef.current = null;
     dcRef.current?.close();
@@ -810,24 +750,25 @@ export default function LiveVoiceModal({
     pcRef.current?.close();
     pcRef.current = null;
     stopCustomRingback();
-    InCallManager.stopRingback();
-    InCallManager.stop(); // devolve o AVAudioSession ao estado anterior
+    // Devolve AVAudioSession / AudioManager ao estado anterior.
+    CharlotteAudioSession.stop().catch(() => { /* silencioso */ });
     charlotteSpeakingRef.current = false;
-    responseActiveRef.current    = false;
+    activeResponseIdRef.current = null;
+    outputAudioBufferActiveRef.current = false;
+    greetingFiredRef.current = false;
     setCharlotteSpeaking(false);
     setUserSpeaking(false);
     setLiveCaption('');
   }, []);
 
-  // ── Disparar a despedida (função pura — pode ser chamada de vários lugares)
+  // ── Disparar a despedida (state machine farewellStateRef) ────────────────
   const triggerFarewell = React.useCallback(() => {
-    // Idempotente: só executa uma vez
-    if (farewellActiveRef.current) return;
-    if (!farewellPendingRef.current) return;
+    // Idempotente: so dispara se estiver pending.
+    if (farewellStateRef.current !== 'pending') return;
 
     if (dcRef.current?.readyState !== 'open') {
-      // Data channel fechado — fallback: fechar direto com mensagem de erro
-      farewellPendingRef.current = false;
+      // Data channel fechado — fallback: fechar direto com mensagem de erro.
+      farewellStateRef.current = 'idle';
       const secsUsed = sessionAccumSecs.current + Math.floor((Date.now() - sessionStartRef.current) / 1000);
       consumeLiveVoiceSeconds(secsUsed).catch(console.warn);
       saveCallRecord(secsUsed);
@@ -836,18 +777,15 @@ export default function LiveVoiceModal({
       setStatus('error');
       setErrorMsg(
         userLevel === 'Novice'
-          ? `Seus ${Math.floor(levelPool / 60)} min de Live Voice deste mês acabaram. Volta no mês que vem!`
+          ? `Seus ${Math.floor(levelPool / 60)} min de Live Voice deste mes acabaram. Volta no mes que vem!`
           : `Your ${Math.floor(levelPool / 60)}-min monthly allowance is up. See you next month!`
       );
       return;
     }
 
-    // Marcar como ativa APÓS confirmar que vamos disparar
-    farewellActiveRef.current = true;
-    farewellPendingRef.current = false;
+    farewellStateRef.current = 'speaking';
 
-    // Desativar VAD — Charlotte não deve reagir a mais nada do usuário.
-    // GA: turn_detection ficou aninhado em audio.input + session.type obrigatório.
+    // Desativa VAD — Charlotte nao deve reagir a mais nada do usuario.
     sendEvent({
       type: 'session.update',
       session: {
@@ -856,20 +794,16 @@ export default function LiveVoiceModal({
       },
     });
 
-    // Sorteia uma despedida do pool (varia a cada pool-exhausted)
     const farewellLine = getRandomFarewell(userLevel, userName);
     const farewellInstruction = userLevel === 'Novice'
-      ? `Diga exatamente isto, com calor e naturalidade, como sua última mensagem: "${farewellLine}" Não diga mais nada além disso.`
+      ? `Diga exatamente isto, com calor e naturalidade, como sua ultima mensagem: "${farewellLine}" Nao diga mais nada alem disso.`
       : `Say exactly this, warmly and naturally, as your last message: "${farewellLine}" Say nothing else.`;
 
     setTimeout(() => {
       if (dcRef.current?.readyState === 'open') {
-        charlotteSpeakingRef.current = true;
-        setCharlotteSpeaking(true);
         sendEvent({
           type: 'response.create',
           response: {
-            // GA: modalities renamed to output_modalities (audio implies text too).
             output_modalities: ['audio'],
             instructions: farewellInstruction,
             max_output_tokens: 80,
@@ -882,20 +816,19 @@ export default function LiveVoiceModal({
   // ── Pool esgotado — preparar despedida (aguarda momento seguro) ────────────
   React.useEffect(() => {
     if (!poolExhausted || status !== 'connected') return;
-    if (farewellPendingRef.current || farewellActiveRef.current) return;
+    if (farewellStateRef.current !== 'idle') return;
 
-    farewellPendingRef.current = true;
+    farewellStateRef.current = 'pending';
     Haptics.notificationAsync(Haptics.NotificationFeedbackType.Warning);
     clearSessionInterval();
     clearInactivityInterval();
 
-    // Se Charlotte NÃO está falando agora, dispara a despedida imediatamente.
-    // Se ela ESTÁ falando, espera — o handler de response.done chamará triggerFarewell
-    // quando a fala atual dela terminar naturalmente (fluxo muito mais suave).
-    if (!responseActiveRef.current) {
+    // Se Charlotte NAO esta falando agora, dispara despedida imediatamente.
+    // Se ela ESTA falando (activeResponseIdRef), o handler de response.done
+    // chamara triggerFarewell quando a fala terminar naturalmente.
+    if (!activeResponseIdRef.current) {
       triggerFarewell();
     }
-    // Se responseActive, não faz nada aqui — response.done handler cuida.
   }, [poolExhausted]); // eslint-disable-line
 
   // ── Pause por inatividade ─────────────────────────────────────────────────
@@ -931,40 +864,57 @@ export default function LiveVoiceModal({
         return;
       }
 
-      // CAMINHO A: InCallManager é a PRIMEIRA coisa a tocar no AVAudioSession.
-      // Ele configura category=.playAndRecord + mode=.voiceChat, que é o que o
-      // iOS precisa para ativar o Voice Processing I/O unit (AEC hardware).
-      // Nenhum setAudioModeAsync é chamado no fluxo de chamada para não sobrescrever.
-      // No iOS, media:'audio' usa AVAudioSessionModeVoiceChat com default EARPIECE.
-      // O override pra speaker via setForceSpeakerphoneOn é resetado quando o
-      // WebRTC reconfigura o session durante SDP negotiation (issue #1438) —
-      // causando oscilação speaker↔earpiece. media:'video' usa VideoChat mode
-      // que tem DefaultToSpeaker embutido na categoria, sobrevivendo a reconfigs.
-      // No Android é irrelevante (AudioManager.setSpeakerphoneOn é sticky).
-      InCallManager.start({ media: Platform.OS === 'ios' ? 'video' : 'audio' });
+      // Pattern dos apps de call (ChatGPT/Glite/WhatsApp): mic acende
+      // IMEDIATAMENTE ao tocar o botao. setAudioModeAsync e
+      // CharlotteAudioSession.start rodam PARALELOS ao getUserMedia (nao em
+      // serie) — eles fazem reset/preseed mas WebRTC ADM aplica config certa
+      // sozinho quando track binda no PC. Ou seja: ordem nao importa entre
+      // esses 3, mas pôr getUserMedia em serie depois dos outros 2 atrasa
+      // ~300ms a luz do mic.
+      //
+      // Novo flow paralelizado:
+      //   1. Dispara setAudioModeAsync + CharlotteAudioSession.start em background
+      //   2. getUserMedia → ATIVA o mic AGORA (luz no notch acende)
+      //   3. PC + addTrack IMEDIATAMENTE — RemoteIO unit roda, indicator confirma
+      //   4. await dos setup promises
+      //   5. startCustomRingback (session ja em playAndRecord, sem briga)
+      //   6. token fetch + SDP em paralelo com ring tocando
+      const setupPromises = Promise.all([
+        setAudioModeAsync({
+          allowsRecording: true,
+          playsInSilentMode: true,
+          interruptionMode: 'doNotMix',
+          shouldPlayInBackground: true,
+        }).catch(() => { /* silencioso */ }),
+        CharlotteAudioSession.start(isSpeakerRef.current).catch(() => { /* silencioso */ }),
+      ]);
 
-      // 500ms para o AVAudioSession estabilizar no mode .voiceChat antes do
-      // getUserMedia. Sem esse delay, o audio unit do mic pode ser criado
-      // durante a transição e acabar sem AEC.
-      await new Promise(resolve => setTimeout(resolve, 500));
+      // getUserMedia em paralelo com os setups → mic acende ASAP. iOS so
+      // acende a luz no notch quando o RemoteIO audio unit do WebRTC esta
+      // ativamente capturando (track bound num PC). Por isso PC + addTrack
+      // vem IMEDIATAMENTE depois.
+      const stream = await mediaDevices.getUserMedia({
+        audio: {
+          echoCancellation: true,
+          noiseSuppression: true,
+          autoGainControl: true,
+        } as any,
+        video: false,
+      });
+      localStreamRef.current = stream;
 
-      // Android: MP3 custom via expo-audio (sem conflito de sessao).
-      // iOS: native _DEFAULT_ do InCallManager (expo-audio quebra o AVAudioSession
-      // do WebRTC). MP3 custom no iOS so depois do bundling via config plugin.
-      if (!startCustomRingback()) {
-        InCallManager.startRingback('_DEFAULT_');
-      }
-      // startRingback no iOS reconfigura AVAudioSession internamente sem reaplica
-      // o speaker override. O AVAudioPlayer do ringback inicializa em thread nativa,
-      // então o setForceSpeakerphoneOn precisa de um delay para ter efeito.
-      // Android responde imediatamente; iOS precisa de ~200ms.
-      if (Platform.OS === 'android') {
-        InCallManager.setForceSpeakerphoneOn(isSpeakerRef.current);
-      } else {
-        setTimeout(() => InCallManager.setForceSpeakerphoneOn(isSpeakerRef.current), 200);
-      }
+      const pc = new RTCPeerConnection();
+      pcRef.current = pc;
+      stream.getTracks().forEach((track: any) => pc.addTrack(track, stream));
+      pc.ontrack = () => {};
 
-      // Passa o access token para validação server-side do pool
+      // Garante que setup async terminou antes de tocar o ring (evita briga
+      // entre AVAudioPlayer do ring e qualquer reconfiguracao pendente).
+      await setupPromises;
+
+      startCustomRingback();
+
+      // Token fetch agora — paralelo ao ring.
       const { data: { session: authSession } } = await supabase.auth.getSession();
       const tokenRes = await fetch(`${API_BASE_URL}/api/realtime-token`, {
         method: 'POST',
@@ -986,7 +936,8 @@ export default function LiveVoiceModal({
               : `You've used your ${Math.floor(levelPool / 60)}-min monthly Live Voice allowance. Come back next month!`
           );
           stopCustomRingback();
-      InCallManager.stopRingback();
+          stream.getTracks().forEach((t: any) => t.stop());
+          localStreamRef.current = null;
           return;
         }
         throw new Error('Failed to get session token (403)');
@@ -995,47 +946,37 @@ export default function LiveVoiceModal({
       const { clientSecret } = await tokenRes.json();
       if (!clientSecret) throw new Error('No client secret returned');
 
-      // echoCancellation removes Charlotte's speaker output from the mic signal
-      // before it reaches the server VAD — this is the correct way to prevent
-      // Charlotte from "hearing herself". noiseSuppression and autoGainControl
-      // improve speech quality on mobile.
-      const stream = await mediaDevices.getUserMedia({
-        audio: {
-          echoCancellation: true,
-          noiseSuppression: true,
-          autoGainControl: true,
-        } as any,
-        video: false,
-      });
-      localStreamRef.current = stream;
-
-      const pc = new RTCPeerConnection();
-      pcRef.current = pc;
-
-      stream.getTracks().forEach((track: any) => pc.addTrack(track, stream));
-
-      pc.ontrack = () => {};
-
+      // PC + addTrack ja foram criados ANTES do token fetch (mic acende imediato).
+      // Aqui criamos so o data channel pra eventos do Realtime API.
       const dc = pc.createDataChannel('oai-events');
       dcRef.current = dc;
 
       dc.onopen = () => {
         stopCustomRingback();
-      InCallManager.stopRingback();
         setStatus('connected');
         wasConnectedRef.current = true;
         if (!callStartedAtRef.current) {
           callStartedAtRef.current = new Date().toISOString();
         }
-        // Inicializar o echo guard com timestamp atual — evita que o guard
-        // passe imediatamente (ref=0 → msSinceDone=∞) antes do primeiro
-        // audio da Charlotte terminar, o que causava eco da abertura virar
-        // turno do usuario.
-        lastCharlotteDoneRef.current = Date.now();
 
         const greeting = getRandomGreeting(userLevel);
-        // Idioma alvo: Novice fala português; Inter e Advanced, inglês.
-        // O hint em transcription.language acelera + melhora o STT do input.
+        // Hint de idioma:
+        //  - Inter/Advanced -> 'en' (sempre ingles)
+        //  - Novice -> 'pt' (mistura PT/EN, mas auto-detect estava degenerando
+        //    pra scripts aleatorios — Malayalam, Chinese — em audio ambiguo).
+        //    Trade-off: "I work nights" pode virar "Work need" mas e bem
+        //    melhor que "不啊" ou "ലിസർക്കെ".
+        // Novice: SEM language hint — usuario mistura PT/EN o tempo todo, hint
+        // forcado em PT fazia Whisper transcrever "Sleep early" como "ler" etc.
+        // Sem hint, Whisper auto-detecta por turno. Safety filter no
+        // input_audio_transcription.completed handler descarta scripts
+        // asiaticos (Malayalam, Chinese, etc) se voltarem.
+        // Inter/Advanced: hint 'en' (sempre ingles) ajuda accuracy.
+        // Novice: 'pt' hint volta — auto-detect (null) estava transcrevendo
+        // como polones ('Patrzcie telewizão'), italiano ('Sì') e portugues
+        // mistranscrito ('print' pra Friends). Whisper auto-detect degrada
+        // em audio curto/ambiguo. Hint 'pt' tem trade-off de capturar "I"
+        // como "ai" as vezes, mas e bem melhor que scripts errados.
         const inputLang = userLevel === 'Novice' ? 'pt' : 'en';
         // GA shape: session needs type:'realtime', voice/format/transcription/
         // turn_detection moved under audio.{input,output}, modalities renamed
@@ -1046,8 +987,21 @@ export default function LiveVoiceModal({
             type: 'realtime',
             model: MODEL,
             output_modalities: ['audio'],
-            instructions: getSystemPrompt(userLevel, userName, greeting),
-            max_output_tokens: 600,
+            instructions: getSystemPrompt(userLevel, userName.split(' ')[0], greeting),
+            // reasoning_effort REMOVIDO 2026-05-15: Realtime API GA rejeita
+            // este parametro com invalid_request_error 'unknown_parameter'.
+            // E o rejeito invalida o session.update INTEIRO → transcription
+            // config descartada → whisper nunca rodou → user_turns=0 no DB.
+            // Era um chute de research baseado em chat completions API onde
+            // o parametro existe. CoT leak deve ser combatido SO via prompt
+            // blacklist literal (ja em vigor).
+            // 500 (era 300): em modo ensino com explicacoes em PT-BR + EN, 300
+            // batia o limite e cortava mid-frase. Prompt ainda pede brevidade,
+            // mas 500 da margem pra ensino sem cortar.
+            // max_output_tokens 500 pra todos os niveis. Sem otimizacao
+            // por nivel — limites artificiais cortavam respostas no meio
+            // e o modelo Realtime ja auto-controla tamanho via prompt.
+            max_output_tokens: 500,
             audio: {
               input: {
                 // GA: format é objeto { type, rate } em vez de string 'pcm16'.
@@ -1061,59 +1015,47 @@ export default function LiveVoiceModal({
                   // canônico (whisper-1 só emitia .completed, causando
                   // transcrição truncada em turnos longos).
                   model: 'gpt-realtime-whisper',
-                  language: inputLang, // ISO-639-1 hint — accuracy + latency
+                  // language: omitido se undefined (Novice, auto-detect). Inter/Adv
+                  // mantem hint 'en' que ainda ajuda accuracy/latency.
+                  ...(inputLang ? { language: inputLang } : {}),
                   // 'medium' dá mais contexto antes de finalizar palavras
                   // (vs 'low' que truncava 'Vamos' e palavras curtas).
                   delay: 'medium',
                 },
-                turn_detection: {
-                  // threshold 0.6 (era 0.90): com noise_reduction near_field,
-                  // o sinal já chega limpo no VAD — não precisa filtrar tão
-                  // agressivo. 0.6 captura fala mais baixa e o começo do turno.
-                  // silence_duration_ms 700 (era 1500): VAD espera 700ms de
-                  // silêncio antes de fechar o turno. 1500 era conservador
-                  // demais, gerando gap perceptível entre o user terminar de
-                  // falar e a Charlotte responder. 700 é o sweet spot —
-                  // pausas naturais (com filler words "uh/umm") ainda passam
-                  // porque o VAD detecta como speech, mas pausas reais
-                  // disparam resposta ~800ms mais rápido.
-                  type: 'server_vad',
-                  threshold: 0.6,
-                  prefix_padding_ms: 400,
-                  silence_duration_ms: 700,
-                  create_response: false,
-                },
+                turn_detection: (() => {
+                  // SEMANTIC VAD (GA 2026-05): modelo decide quando user
+                  // terminou de falar baseado em SEMANTICA, nao so silencio.
+                  // Vantagem: nao corta Charlotte por eco do proprio speaker
+                  // (server_vad fazia self-interrupt mesmo com echoCancellation).
+                  // Permite barge-in genuino (user gritar) sem confundir eco.
+                  //
+                  // eagerness por nivel:
+                  //   Novice 'low': mais paciente, espera user terminar
+                  //     pensamento. True beginner pausa pra formular.
+                  //   Inter/Advanced 'auto': modelo decide pelo flow natural.
+                  const cfg = {
+                    type: 'semantic_vad' as const,
+                    eagerness: (userLevel === 'Novice' ? 'low' : 'auto') as 'low' | 'auto',
+                    create_response: true,
+                    interrupt_response: true,
+                  };
+                  turnDetectionConfigRef.current = cfg;
+                  return cfg;
+                })(),
               },
               output: {
                 format: { type: 'audio/pcm', rate: 24000 },
-                voice: 'coral',
+                // marin (GA 2026-05): voz feminina multilingual (PT/EN). Charlotte
+                // eh personagem feminina, marin eh a voz correta. cedar testado
+                // 2026-05-15 mas eh MASCULINA — reverter foi 1 OTA imediato.
+                voice: 'marin',
               },
             },
           },
         }));
 
-        setTimeout(() => {
-          if (dcRef.current?.readyState === 'open') {
-            // Marcar Charlotte como falando ANTES do response.create —
-            // garante que charlotteSpeakingRef=true quando o VAD capturar
-            // o eco da abertura, bloqueando speech_stopped corretamente.
-            // Apenas o ref — sem setCharlotteSpeaking para evitar re-render
-            // que pode interferir no pipeline de audio no iOS.
-            charlotteSpeakingRef.current = true;
-            dc.send(JSON.stringify({ type: 'response.create' }));
-          }
-        }, 500);
-
-        // InCallManager.start foi chamado antes do getUserMedia para garantir
-        // que o AVAudioSession esteja em .voiceChat mode quando o WebRTC
-        // inicializa o audio unit do mic (ativa AEC hardware no iOS).
-        // setForceSpeakerphoneOn também foi chamado antes, mas repetimos aqui
-        // para Android que pode precisar depois do setup completo do audio session.
-        if (Platform.OS === 'android') {
-          setTimeout(() => {
-            InCallManager.setForceSpeakerphoneOn(isSpeakerRef.current);
-          }, 300);
-        }
+        // Kickoff inicial sera disparado em `session.updated` (handler abaixo),
+        // assim que server confirmar config. Evita setTimeout arbitrario.
 
         // Iniciar timers
         startSessionTimer();
@@ -1125,49 +1067,186 @@ export default function LiveVoiceModal({
         try {
           const msg = JSON.parse(event.data);
 
+          // [DIAG] Log AMPLO de TODOS os event types do server. Investigando bug
+          // de user_turns=0 — suspeita: evento de transcription renomeado em GA
+          // ou whisper rejeitado silenciosamente no session.update.
+          // Filtra logs verbosos (response.output_audio_transcript.delta floods).
+          if (typeof msg.type === 'string') {
+            const verboseTypes = ['response.output_audio_transcript.delta', 'response.audio.delta', 'output_audio_buffer.audio_chunk_finished'];
+            if (!verboseTypes.includes(msg.type)) {
+              console.log('[LiveVoice][DIAG] evt:', msg.type);
+            }
+            if (msg.type.includes('transcription') || msg.type.includes('input_audio')) {
+              console.log('[LiveVoice][DIAG] FULL:', msg.type, 'transcript:', JSON.stringify(msg.transcript ?? null), 'item_id:', msg.item_id);
+            }
+            if (msg.type === 'error') {
+              console.log('[LiveVoice][DIAG] ERROR:', JSON.stringify(msg.error ?? msg));
+            }
+          }
+
           switch (msg.type) {
-            case 'response.audio.delta':            // legacy alias (pre-GA)
-            case 'response.output_audio.delta':     // legacy alias (pre-GA WebRTC)
-            case 'output_audio_buffer.started':     // GA WebRTC: audio buffer comecou
-              // Charlotte started sending audio.
-              // No GA com WebRTC, audio vai pelo media track e nao tem evento
-              // .delta no data channel. O sinal de "comecou a falar" e o
-              // output_audio_buffer.started. .delta legacy mantido pra fallback.
-              //
-              // Do NOT disable the mic — the user must be able to interrupt at any
-              // moment by speaking. InCallManager (call mode) provides AEC so
-              // Charlotte's speaker audio is suppressed before reaching the VAD.
-              // Echo protection is handled by the 700ms time-guard in speech_stopped
-              // and by create_response:false (VAD events can't auto-trigger responses).
-              responseActiveRef.current = true;
-              lastActivityRef.current = Date.now();
-              if (!charlotteSpeakingRef.current) {
-                charlotteSpeakingRef.current = true;
-                setCharlotteSpeaking(true);
-                setUserSpeaking(false);
-                // NAO limpar o input_audio_buffer aqui: estava engolindo
-                // a fala do user que tentava interromper exatamente quando
-                // Charlotte comecava o turno dela. Resultado: transcricao
-                // vazia e sensacao de "ela nao me ouve".
-              }
-              // Registrar quando o áudio da despedida começou a chegar
-              if (farewellActiveRef.current && farewellAudioStartRef.current === 0) {
-                farewellAudioStartRef.current = Date.now();
+            // ── Session lifecycle: server confirmou config -> dispara greeting
+            case 'session.updated':
+              if (!greetingFiredRef.current && dcRef.current?.readyState === 'open') {
+                greetingFiredRef.current = true;
+                // Greeting com tokens reduzidos (80) + instructions override
+                // pra forcar curto. Sem isso, Charlotte enfiava "Uma palavra
+                // util: 'chill' eh..." no proprio greeting (gastando todo
+                // o max_output_tokens=350 da config base).
+                // Greeting simples — sem instructions override nem max_tokens
+                // custom. Deixa o session.instructions (prompt principal)
+                // controlar comportamento. Override estava conflitando.
+                dcRef.current.send(JSON.stringify({ type: 'response.create' }));
               }
               break;
 
-            case 'response.text.delta':             // legacy alias (pre-GA)
+            // ── Response lifecycle (state machine) ────────────────────────
+            case 'response.created':
+              activeResponseIdRef.current = msg.response?.id ?? 'unknown';
+              lastActivityRef.current = Date.now();
+              // Anti-phantom REMOVIDO 2026-05-17: cancelava responses legitimas
+              // porque input_audio_transcription.completed (que setava
+              // userSpokeSinceLastResponseRef) chegava DEPOIS de response.created.
+              // Resultado: Charlotte tinha transcript completo no DB mas audio
+              // cortava no meio porque output_audio_buffer.clear cortava playback.
+              // Anti-halucinacao agora fica APENAS no handler de
+              // input_audio_transcription.completed (cancela em transcript vazio).
+              break;
+
+            case 'response.done':
+              activeResponseIdRef.current = null;
+              completedResponsesRef.current += 1;
+              userSpokeSinceLastResponseRef.current = false;
+              lastActivityRef.current = Date.now();
+              {
+                // Captura texto da Charlotte do payload final.
+                let charlotteText = charlotteTextAccRef.current.trim();
+                charlotteTextAccRef.current = '';
+                if (!charlotteText) {
+                  const output = msg.response?.output ?? [];
+                  for (const item of output) {
+                    if (item.role === 'assistant' || item.type === 'message') {
+                      for (const c of item.content ?? []) {
+                        if (c.type === 'output_text' && c.text) charlotteText += c.text;
+                        if (c.type === 'output_audio' && c.transcript) charlotteText += c.transcript;
+                      }
+                    }
+                  }
+                  charlotteText = charlotteText.trim();
+                }
+                if (charlotteText) {
+                  // Cleanup: espaco apos sentence-end coincidindo com proxima
+                  // sentenca (modelo streama "legal.Que" em vez de "legal. Que").
+                  charlotteText = charlotteText.replace(/([.!?])([A-ZÀ-Ý])/g, '$1 $2');
+                  console.log(`[LiveVoice] charlotte said: "${charlotteText.slice(0, 200)}"`);
+                  setConversationTurns(prev => [...prev, { role: 'assistant', text: charlotteText }]);
+                }
+
+                // Farewell choreography: se pool esgotou enquanto Charlotte
+                // falava, dispara agora (frase natural terminou).
+                if (farewellStateRef.current === 'pending') {
+                  setTimeout(() => triggerFarewell(), 400);
+                }
+              }
+              break;
+
+            case 'response.cancelled':
+              activeResponseIdRef.current = null;
+              break;
+
+            // ── Output audio buffer (WebRTC GA) — source-of-truth pra
+            // "Charlotte falando agora" e janela anti-eco ─────────────────
+            case 'output_audio_buffer.started':
+              outputAudioBufferActiveRef.current = true;
+              charlotteSpeakingRef.current = true;
+              setCharlotteSpeaking(true);
+              setUserSpeaking(false);
+              // TESTE A (2026-05-15): VAD permanece ATIVO durante fala da Charlotte
+              // pra permitir barge-in (user interromper ela). Antes desabilitavamos
+              // pra evitar self-interrupt por eco do speaker, mas isso impedia
+              // interrupcao genuina. Confiando em echoCancellation:true do
+              // getUserMedia pra atenuar eco. Se voltar self-interrupt, proximo
+              // passo eh semantic_vad (TESTE B).
+              if (vadRestoreTimerRef.current) {
+                clearTimeout(vadRestoreTimerRef.current);
+                vadRestoreTimerRef.current = null;
+              }
+              break;
+
+            case 'output_audio_buffer.stopped':
+            case 'output_audio_buffer.cleared':
+              outputAudioBufferActiveRef.current = false;
+              lastBufferStoppedAtRef.current = Date.now();
+              charlotteSpeakingRef.current = false;
+              setCharlotteSpeaking(false);
+              // Restora VAD apos 400ms de grace (jitter buffer drenando no device).
+              // Se nova fala da Charlotte comecar antes, o handler de started
+              // limpa este timer.
+              if (vadRestoreTimerRef.current) clearTimeout(vadRestoreTimerRef.current);
+              vadRestoreTimerRef.current = setTimeout(() => {
+                vadRestoreTimerRef.current = null;
+                if (turnDetectionConfigRef.current && dcRef.current?.readyState === 'open') {
+                  sendEvent({
+                    type: 'session.update',
+                    session: {
+                      type: 'realtime',
+                      audio: { input: { turn_detection: turnDetectionConfigRef.current } },
+                    },
+                  });
+                }
+              }, 400);
+
+              // Caption clear: 800ms grace pra cobrir jitter buffer residual
+              // (audio ja drenou no servidor mas device pode ter +1 chunk).
+              if (captionClearTimerRef.current) clearTimeout(captionClearTimerRef.current);
+              captionClearTimerRef.current = setTimeout(() => {
+                setLiveCaption('');
+                captionClearTimerRef.current = null;
+              }, 800);
+
+              // Farewell: audio drenou de verdade no device. Fecha modal.
+              if (farewellStateRef.current === 'speaking') {
+                farewellStateRef.current = 'closing';
+                setTimeout(() => {
+                  if (farewellStateRef.current === 'closing') {
+                    const secsUsed = sessionAccumSecs.current + Math.floor((Date.now() - sessionStartRef.current) / 1000);
+                    consumeLiveVoiceSeconds(secsUsed).catch(console.warn);
+                    saveCallRecord(secsUsed);
+                    sessionAccumSecs.current = 0;
+                    farewellStateRef.current = 'idle';
+                    disconnect();
+                    onClose();
+                  }
+                }, 500);
+              }
+              break;
+
+            // ── Charlotte text/transcript deltas ─────────────────────────
             case 'response.output_text.delta':
-              // Accumulate deltas as primary source
               charlotteTextAccRef.current += (msg.delta ?? '');
               break;
 
-            case 'response.audio_transcript.delta':  // legacy alias (pre-GA)
             case 'response.output_audio_transcript.delta':
-              // Streaming caption — Charlotte fala. Acumula até .done.
-              // Se a caption anterior era do usuário, descarta e começa fresca.
               {
                 const delta = msg.delta ?? '';
+                // Log chars suspeitos pra investigar relato de "outro alphabet".
+                // Detecta qualquer codepoint fora de Latin (Basic+Supplement),
+                // pontuacao geral, e simbolos comuns.
+                const suspicious = [...delta].filter(c => {
+                  const cp = c.codePointAt(0) ?? 0;
+                  // Latin basico, suplementar, pontuacao, simbolos comuns
+                  return !(
+                    (cp >= 0x20 && cp <= 0x7E) || // ASCII printable
+                    (cp >= 0xA0 && cp <= 0xFF) || // Latin-1 Supplement (acentos PT)
+                    (cp >= 0x100 && cp <= 0x17F) || // Latin Extended-A
+                    cp === 0x2014 || cp === 0x2013 || // em/en dash
+                    cp === 0x2018 || cp === 0x2019 || cp === 0x201C || cp === 0x201D // curly quotes
+                  );
+                });
+                if (suspicious.length > 0) {
+                  console.log(`[LiveVoice] caption suspicious chars: ${suspicious.map(c => `U+${(c.codePointAt(0)??0).toString(16).toUpperCase().padStart(4,'0')}`).join(',')} in delta="${delta}"`);
+                }
+
                 const wasUser = captionSpeakerRef.current === 'user';
                 captionSpeakerRef.current = 'assistant';
                 setCaptionSpeaker('assistant');
@@ -1178,7 +1257,13 @@ export default function LiveVoiceModal({
                   captionClearTimerRef.current = null;
                   setLiveCaption(delta);
                 } else {
-                  setLiveCaption(prev => (prev + delta).slice(-800));
+                  // Cleanup leve: insere espaco apos sentence-end que coincide
+                  // com inicio de palavra nova (modelo as vezes streama
+                  // "olá.Tudo" em vez de "olá. Tudo").
+                  setLiveCaption(prev => {
+                    const joined = (prev + delta).slice(-800);
+                    return joined.replace(/([.!?])([A-ZÀ-Ý])/g, '$1 $2');
+                  });
                 }
                 if (translationDismissTimerRef.current) {
                   clearTimeout(translationDismissTimerRef.current);
@@ -1188,85 +1273,11 @@ export default function LiveVoiceModal({
               }
               break;
 
-            case 'response.audio_transcript.done':   // legacy alias (pre-GA)
-            case 'response.output_audio_transcript.done':
-              // Texto da resposta terminou de gerar. Mas o áudio ainda toca por
-              // ~1-3s — schedule clear longo (7s) pra caption ficar visível
-              // durante toda a reprodução. response.audio.done abaixo encurta o
-              // timer pra 2s quando o áudio realmente termina.
-              if (captionClearTimerRef.current) clearTimeout(captionClearTimerRef.current);
-              captionClearTimerRef.current = setTimeout(() => {
-                setLiveCaption('');
-                captionClearTimerRef.current = null;
-              }, 7000);
-              break;
+            // response.output_audio_transcript.done nao limpa caption —
+            // esperamos output_audio_buffer.stopped (jitter buffer real).
 
-            case 'response.done':
-              // Lifecycle complete — extract Charlotte's text from the response payload.
-              // Primary: accumulated deltas from response.text.delta events.
-              // Fallback: msg.response.output (response.done always carries the full output).
-              responseActiveRef.current = false;
-              lastActivityRef.current = Date.now();
-              {
-                let charlotteText = charlotteTextAccRef.current.trim();
-                charlotteTextAccRef.current = '';
-
-                // Fallback: extract from response.done payload (more reliable in WebRTC mode).
-                // GA renamed content types: text → output_text, audio → output_audio.
-                if (!charlotteText) {
-                  const output = msg.response?.output ?? [];
-                  for (const item of output) {
-                    if (item.role === 'assistant' || item.type === 'message') {
-                      for (const c of item.content ?? []) {
-                        if ((c.type === 'text' || c.type === 'output_text') && c.text) {
-                          charlotteText += c.text;
-                        }
-                        if ((c.type === 'audio' || c.type === 'output_audio') && c.transcript) {
-                          charlotteText += c.transcript;
-                        }
-                      }
-                    }
-                  }
-                  charlotteText = charlotteText.trim();
-                }
-
-                if (charlotteText) {
-                  console.log(`[LiveVoice] charlotte said: "${charlotteText.slice(0, 200)}"`);
-                  setConversationTurns(prev => [...prev, { role: 'assistant', text: charlotteText }]);
-                  lastCharlotteTextRef.current = charlotteText; // usado para detecção de eco
-                }
-
-                // Se a despedida está PENDENTE (pool esgotou durante esta fala),
-                // disparar agora que Charlotte terminou a sentença dela naturalmente.
-                // Pequeno delay de 400ms para parecer natural (respiração entre frases).
-                if (farewellPendingRef.current && !farewellActiveRef.current) {
-                  setTimeout(() => {
-                    triggerFarewell();
-                  }, 400);
-                }
-                // Fallback de segurança de 12s caso o response.audio.done da
-                // despedida nunca chegue — evita modal travado.
-                if (farewellActiveRef.current) {
-                  setTimeout(() => {
-                    if (farewellActiveRef.current) {
-                      farewellActiveRef.current = false;
-                      farewellAudioStartRef.current = 0;
-                      const secsUsed = sessionAccumSecs.current + Math.floor((Date.now() - sessionStartRef.current) / 1000);
-                      consumeLiveVoiceSeconds(secsUsed).catch(console.warn);
-                      saveCallRecord(secsUsed);
-                      sessionAccumSecs.current = 0;
-                      disconnect();
-                      onClose();
-                    }
-                  }, 12000);
-                }
-              }
-              break;
-
+            // ── User transcript (gpt-realtime-whisper) ────────────────────
             case 'conversation.item.input_audio_transcription.delta':
-              // gpt-realtime-whisper emite deltas streaming enquanto o usuário
-              // ainda fala. Acumulamos por item_id (canônico vem em .completed
-              // e sobrescreve no histórico) e exibimos como live caption.
               {
                 const itemId = msg.item_id;
                 const delta  = msg.delta ?? '';
@@ -1275,14 +1286,10 @@ export default function LiveVoiceModal({
                   const next = prev + delta;
                   userTranscriptDeltasRef.current.set(itemId, next);
 
-                  // Caption do usuário: APENAS Novice (Inter/Adv falam ingles
-                  // fluente, ver o que disseram nao agrega). E so quando a
-                  // Charlotte nao esta falando.
+                  // Caption do user: SO Novice + so quando Charlotte nao fala.
                   if (userLevel === 'Novice' && !charlotteSpeakingRef.current) {
                     captionSpeakerRef.current = 'user';
                     setCaptionSpeaker('user');
-                    // Cancela qualquer timer de clear da fala anterior da Charlotte
-                    // e descarta tradução residual da caption anterior.
                     if (captionClearTimerRef.current) {
                       clearTimeout(captionClearTimerRef.current);
                       captionClearTimerRef.current = null;
@@ -1299,179 +1306,101 @@ export default function LiveVoiceModal({
               break;
 
             case 'conversation.item.input_audio_transcription.completed':
-              // Transcrição chegou. Decidir: é eco ou fala real?
-              // Se eco → cancelar response.create pendente (não adicionar ao histórico).
-              // Se fala real → disparar response.create imediatamente (sem esperar fallback).
               {
-                // Pega o transcript do .completed (canônico). Se vier vazio
-                // OU mais curto que o acumulado de deltas, usa o delta (mais
-                // completo). Isso protege contra finalização prematura do
-                // gpt-realtime-whisper que às vezes manda .completed só com
-                // a primeira palavra.
+                // Whisper bandaid: .completed as vezes vem com 1a palavra so.
+                // Usa delta se for maior.
                 const itemId = msg.item_id;
                 const completedText = (msg.transcript ?? '').trim();
                 const deltaText = itemId
                   ? (userTranscriptDeltasRef.current.get(itemId) ?? '').trim()
                   : '';
-                let userText: string =
+                const userText: string =
                   deltaText.length > completedText.length ? deltaText : completedText;
-                console.log(`[LiveVoice] user transcript: completed="${completedText}" delta="${deltaText}" → "${userText}"`);
                 if (itemId) userTranscriptDeltasRef.current.delete(itemId);
-                const msSinceCharlotte = Date.now() - lastCharlotteDoneRef.current;
-                // Eco so e possivel logo apos a fala da Charlotte. Janela de
-                // 3s: depois disso o speaker ja drenou totalmente, qualquer
-                // fala do user e legitima (mesmo se compartilhar palavras).
-                // Threshold 0.75 (era 0.5): exige forte sobreposicao real,
-                // nao apenas 1-2 palavras comuns como "you", "and", "from".
-                const inEchoWindow = msSinceCharlotte < 3000;
-                const isEcho = inEchoWindow
-                  && userText.length > 0
-                  && lastCharlotteTextRef.current.length > 0
-                  && (
-                    wordOverlap(userText, lastCharlotteTextRef.current) >= 0.75
-                    || isShortEcho(userText, lastCharlotteTextRef.current, msSinceCharlotte)
-                  );
 
-                if (isEcho) {
-                  console.log(`[LiveVoice] echo blocked: "${userText.slice(0, 60)}" (ms=${msSinceCharlotte})`);
-                  if (pendingResponseTimerRef.current) {
-                    clearTimeout(pendingResponseTimerRef.current);
-                    pendingResponseTimerRef.current = null;
+                // Anti-halucinacao por ruido: se transcript final esta vazio
+                // ou muito curto (< 2 chars), VAD disparou em ruido/eco.
+                // Server ja criou response.created e Charlotte pode estar
+                // alucinando contexto. Cancela response + limpa audio buffer.
+                if (!userText || userText.length < 2) {
+                  console.log('[LiveVoice] empty transcript — canceling phantom response');
+                  if (dcRef.current?.readyState === 'open' && activeResponseIdRef.current) {
+                    try {
+                      dcRef.current.send(JSON.stringify({ type: 'response.cancel' }));
+                      dcRef.current.send(JSON.stringify({ type: 'output_audio_buffer.clear' }));
+                    } catch { /* silencioso */ }
                   }
                   break;
                 }
 
                 if (userText) {
+                  // Safety filter: detecta scripts inesperados (Malayalam,
+                  // Chinese, Devanagari etc) e descarta. User fala PT-BR + EN —
+                  // tudo em Latin. Auto-detect do whisper as vezes hallucina
+                  // scripts em audio ambiguo.
+                  const nonLatinCount = [...userText].filter(c => {
+                    const cp = c.codePointAt(0) ?? 0;
+                    if (cp <= 0x7F) return false; // ASCII
+                    if (cp >= 0xA0 && cp <= 0x17F) return false; // Latin-1 + Extended-A
+                    if (cp >= 0x2000 && cp <= 0x206F) return false; // pontuacao geral
+                    if (cp === 0x2014 || cp === 0x2013) return false; // dashes
+                    return true; // qualquer outro script
+                  }).length;
+                  const totalChars = [...userText].filter(c => /\S/.test(c)).length;
+                  if (totalChars > 0 && nonLatinCount / totalChars > 0.3) {
+                    console.log(`[LiveVoice] user transcript REJECTED (non-Latin): "${userText.slice(0, 60)}"`);
+                    break;
+                  }
+                  console.log(`[LiveVoice] user said: "${userText.slice(0, 200)}"`);
                   setConversationTurns(prev => [...prev, { role: 'user', text: userText }]);
-                }
-
-                // Transcrição não-eco chegou: se ainda há timer pendente, disparar
-                // response.create agora (sem esperar o fallback de 2.5s).
-                if (pendingResponseTimerRef.current) {
-                  clearTimeout(pendingResponseTimerRef.current);
-                  pendingResponseTimerRef.current = null;
-                  // NAO dispara se ja tem response ativa — server retorna
-                  // 'conversation_already_has_active_response'.
-                  if (dcRef.current?.readyState === 'open' && userText && !responseActiveRef.current) {
-                    lastResponseCreateRef.current = Date.now();
-                    sendEvent({ type: 'response.create' });
-                  }
+                  userSpokeSinceLastResponseRef.current = true;
                 }
               }
               break;
 
-            case 'response.audio.done':              // legacy alias (pre-GA)
-            case 'response.output_audio.done':
-              // Último chunk de áudio entregue ao WebRTC.
-              // Anti-eco: com near_field noise_reduction + gpt-realtime-whisper
-              // o sinal chega muito limpo no VAD. O mute físico que existia
-              // (2000ms) era o maior contribuidor de lag — usuário não conseguia
-              // falar logo após Charlotte. Reduzido para 500ms (apenas drain
-              // do jitter buffer no iOS).
-              responseActiveRef.current = false;
-              lastCharlotteDoneRef.current = Date.now();
-              // Caption: áudio do servidor terminou; jitter buffer no iOS pode
-              // ficar 2-4s atrás. 4000ms garante que a caption fique visível
-              // durante toda a reprodução restante (em vez de sumir antes).
-              if (captionClearTimerRef.current) clearTimeout(captionClearTimerRef.current);
-              captionClearTimerRef.current = setTimeout(() => {
-                setLiveCaption('');
-                captionClearTimerRef.current = null;
-              }, 4000);
-              applyMute(true);
-              setTimeout(() => {
-                if (!isMutedRef.current) applyMute(false);
-                charlotteSpeakingRef.current = false;
-                setCharlotteSpeaking(false);
-              }, 500);
-              // Despedida: servidor terminou de enviar o áudio. O playback ainda
-              // está rolando no device — o jitter buffer do WebRTC no iOS pode
-              // ficar 1-2s atrás do audio.done em condições normais, e até mais
-              // em rede instável. Buffer de 7s garante que o usuário ouça a frase
-              // toda antes do disconnect. Extra é silêncio, não prejudica UX.
-              if (farewellActiveRef.current) {
-                setTimeout(() => {
-                  if (farewellActiveRef.current) {
-                    farewellActiveRef.current = false;
-                    farewellAudioStartRef.current = 0;
-                    const secsUsed = sessionAccumSecs.current + Math.floor((Date.now() - sessionStartRef.current) / 1000);
-                    consumeLiveVoiceSeconds(secsUsed).catch(console.warn);
-                    saveCallRecord(secsUsed);
-                    sessionAccumSecs.current = 0;
-                    disconnect();
-                    onClose();
-                  }
-                }, 7000);
-              }
-              break;
-
+            // ── VAD events ────────────────────────────────────────────────
             case 'input_audio_buffer.speech_started':
-              // Usuario falou — pode ser interrupcao real ou eco da Charlotte.
-              speechStartedAtRef.current = Date.now(); // registrar início para cálculo de duração
-              lastActivityRef.current = Date.now();
-              setUserSpeaking(true);
-              setInactivityWarning(false);
-              setWarningCountdown(30);
-              warnStartRef.current = 0;
-              if (charlotteSpeakingRef.current) {
-                // Interrupcao (ou eco enquanto Charlotte fala): cancelar
-                // resposta atual. lastCharlotteDone = now para que o echo guard
-                // em speech_stopped bloqueie eco subsequente.
-                charlotteSpeakingRef.current = false;
-                setCharlotteSpeaking(false);
-                lastCharlotteDoneRef.current = Date.now();
-                if (responseActiveRef.current) {
-                  responseActiveRef.current = false;
-                  sendEvent({ type: 'response.cancel' });
+              {
+                // Echo guard upstream: ignora speech_started disparado durante
+                // janela "Charlotte falando" ou ate 300ms apos buffer drenar.
+                // Sinal: mic capturou som do speaker via reverb residual.
+                const inEchoWindow =
+                  outputAudioBufferActiveRef.current ||
+                  (Date.now() - lastBufferStoppedAtRef.current) < 300;
+
+                if (inEchoWindow) {
+                  console.log('[LiveVoice] echo guard: speech_started ignored (buffer window)');
+                  break;
                 }
+
+                lastActivityRef.current = Date.now();
+                setUserSpeaking(true);
+                setInactivityWarning(false);
+                setWarningCountdown(30);
+                warnStartRef.current = 0;
+                // Barge-in: servidor cancela response automaticamente via
+                // interrupt_response:true. Nao precisamos enviar response.cancel.
               }
               break;
 
             case 'input_audio_buffer.speech_stopped':
               setUserSpeaking(false);
-              // ESTRATÉGIA DE FILTRO DE ECO:
-              // Em vez de disparar response.create imediatamente (que fazia
-              // Charlotte responder ao próprio eco antes da transcrição chegar),
-              // agendamos um timer de fallback curto. A transcrição geralmente
-              // chega em 500-1500ms. Quando chega, o handler de transcription.completed:
-              //   - Se for eco (sobreposição >50% com a última fala da Charlotte):
-              //     cancela o timer → Charlotte não responde ao eco.
-              //   - Se for fala real: cancela o timer e dispara response.create
-              //     imediatamente (zero latência extra).
-              // Se transcrição nunca chegar no prazo (raro): timer expira e
-              // response.create dispara mesmo assim, para não deixar o usuário
-              // sem resposta. Timer reduzido de 250→150ms pra apertar a
-              // latência percebida quando a transcrição demora.
-              if (!charlotteSpeakingRef.current
-                  && !farewellPendingRef.current
-                  && !farewellActiveRef.current) {
-                const speechDuration  = Date.now() - speechStartedAtRef.current;
-                const msSinceDone     = Date.now() - lastCharlotteDoneRef.current;
-                const msSinceLast     = Date.now() - lastResponseCreateRef.current;
-                if (speechDuration > 300 && msSinceDone > 500 && msSinceLast > 500) {
-                  if (pendingResponseTimerRef.current) {
-                    clearTimeout(pendingResponseTimerRef.current);
-                  }
-                  pendingResponseTimerRef.current = setTimeout(() => {
-                    pendingResponseTimerRef.current = null;
-                    // Mesma protecao do handler de transcription.completed.
-                    if (dcRef.current?.readyState === 'open' && !responseActiveRef.current) {
-                      lastResponseCreateRef.current = Date.now();
-                      sendEvent({ type: 'response.create' });
-                    }
-                  }, 800);
-                }
-              }
-              break;
-
-            case 'response.cancelled':
-              responseActiveRef.current = false;
-              charlotteSpeakingRef.current = false;
-              setCharlotteSpeaking(false);
+              // Server VAD vai disparar response.create automaticamente (config
+              // create_response:true). Nada a fazer client-side.
               break;
 
             case 'error':
-              console.error('[LiveVoice] server error:', msg.error);
+              {
+                const err = msg.error ?? {};
+                // response_cancel_not_active: tolerable, race comum.
+                // conversation_already_has_active_response: nao deveria mais
+                // acontecer com state machine, mas log nao-fatal.
+                if (err.code === 'response_cancel_not_active') {
+                  console.log('[LiveVoice] cancel race (tolerable)');
+                } else {
+                  console.error('[LiveVoice] server error:', err);
+                }
+              }
               break;
           }
         } catch { /* ignora erros de parse */ }
@@ -1515,7 +1444,7 @@ export default function LiveVoiceModal({
       dcRef.current?.close(); dcRef.current = null;
       pcRef.current?.close(); pcRef.current = null;
       stopCustomRingback();
-      InCallManager.stopRingback();
+      CharlotteAudioSession.stop().catch(() => { /* silencioso */ });
       console.error('[LiveVoice] connect error:', error);
       setStatus('error');
       setErrorMsg(
@@ -1524,7 +1453,7 @@ export default function LiveVoiceModal({
           : 'Could not connect. Please try again.'
       );
     }
-  }, [userLevel, userName, sendEvent, applyAudioMode, startSessionTimer, startInactivityTimer]);
+  }, [userLevel, userName, sendEvent, startSessionTimer, startInactivityTimer]);
 
   // ── Disconnect completo (fecha modal) ────────────────────────────────────
   const disconnect = React.useCallback(() => {
@@ -1537,10 +1466,10 @@ export default function LiveVoiceModal({
     pcRef.current?.close();
     pcRef.current = null;
     stopCustomRingback();
-    InCallManager.stopRingback();
-    InCallManager.stop(); // devolve o AVAudioSession ao estado anterior
+    CharlotteAudioSession.stop().catch(() => { /* silencioso */ });
     charlotteSpeakingRef.current = false;
-    responseActiveRef.current    = false;
+    activeResponseIdRef.current = null;
+    outputAudioBufferActiveRef.current = false;
     setStatus('disconnected');
     setCharlotteSpeaking(false);
     setUserSpeaking(false);
@@ -1593,7 +1522,7 @@ export default function LiveVoiceModal({
     setIsSpeaker(v => {
       const next = !v;
       isSpeakerRef.current = next;
-      InCallManager.setForceSpeakerphoneOn(next);
+      CharlotteAudioSession.setSpeakerOn(next).catch(() => { /* silencioso */ });
       return next;
     });
   }, []);
@@ -1628,13 +1557,16 @@ export default function LiveVoiceModal({
       setShowTranscript(false);
       setConversationTurns([]);
       charlotteTextAccRef.current = '';
-      lastCharlotteTextRef.current = '';
       wasConnectedRef.current = false;
       callStartedAtRef.current = null;
       callRecordSavedRef.current = false;
-      farewellPendingRef.current = false;
-      farewellActiveRef.current = false;
-      farewellAudioStartRef.current = 0;
+      farewellStateRef.current = 'idle';
+      outputAudioBufferActiveRef.current = false;
+      lastBufferStoppedAtRef.current = 0;
+      activeResponseIdRef.current = null;
+      greetingFiredRef.current = false;
+      userSpokeSinceLastResponseRef.current = false;
+      completedResponsesRef.current = 0;
       sessionAccumSecs.current = 0;
       warnStartRef.current = 0;
       loadPool().then(remaining => {
@@ -1944,7 +1876,8 @@ export default function LiveVoiceModal({
                     textAlign: 'center',
                     minHeight: 44,
                   }}
-                  numberOfLines={3}
+                  numberOfLines={5}
+                  ellipsizeMode="head"
                 >
                   {liveCaption}
                 </AppText>

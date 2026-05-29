@@ -1,21 +1,14 @@
 // apps/mobile/plugins/with-incallmanager-ringback.js
 //
-// Config plugin que bundla o arquivo `incallmanager_ringback.mp3` nos dois
-// platforms para que InCallManager.startRingback('_BUNDLE_') o encontre.
+// Config plugin que bundla `incallmanager_ringback.mp3` nas pastas nativas.
+// Nome do arquivo eh legado (veio do react-native-incall-manager) mas mantido
+// pra nao quebrar paths no codigo nativo. Eh so um asset.
 //
-// iOS: hardcoded em RNInCallManager.m → procura `incallmanager_ringback.mp3`
-//      em [NSBundle mainBundle]. Copiamos pra ios/<Project>/ e adicionamos
-//      na build phase "Copy Bundle Resources".
-//
-// Android: hardcoded em InCallManagerModule.java → procura recurso pelo nome
-//          `incallmanager_ringback` em res/raw via getIdentifier(). Copiamos
-//          pra android/app/src/main/res/raw/incallmanager_ringback.mp3.
-//
-// Nome do arquivo é OBRIGATÓRIO — não dá pra renomear. É hardcoded no source
-// do react-native-incall-manager.
-//
-// Sem isso, '_BUNDLE_' cai pro default: ringtone do sistema iOS (Marimba.m4r)
-// ou DEFAULT_RINGTONE_URI no Android. Que é o estado atual da app no iOS.
+// Consumido pelo nosso modulo nativo `charlotte-audio-session`:
+//   iOS:     Bundle.main.url(forResource: "incallmanager_ringback", ...)
+//            Plugin copia pra ios/<Project>/ + adiciona em "Copy Bundle Resources".
+//   Android: context.resources.getIdentifier("incallmanager_ringback", "raw", ...)
+//            Plugin copia pra android/app/src/main/res/raw/.
 
 const {
   withDangerousMod,
