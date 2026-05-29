@@ -211,7 +211,6 @@
           }
         ],
         "closing_cue": "Tom encerra com \"Awesome, see you later!\" quando obj_3 baterem.",
-        "recap_pt": "Boa! Você praticou três blocos essenciais: saudação, estado e aceitar um convite. São a base de qualquer interação simples em inglês.",
         "suggested_script": "**Script** (referencial, 6 turnos):\n\n1. **Tom**: \"Good morning!\"\n2. **Student**: \"Good morning!\" (or \"Morning!\")\n3. **Tom**: \"How are you?\"\n4. **Student**: \"I'm fine!\"\n5. **Tom**: \"Coffee?\"\n6. **Student**: \"Yes, please!\"\n7. **Tom**: \"Awesome, see you later!\"\n\n> N01 chat = LLM puro. Scaffold \"Escreva:\" aparece via hint_pt da\n> objective pendente (cada um dos 3 objetivos vai destacando o próximo\n> chunk esperado conforme aluno avança).\n\n---"
       }
     },

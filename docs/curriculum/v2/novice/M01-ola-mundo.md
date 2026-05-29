@@ -178,7 +178,6 @@ Charlotte fala via ElevenLabs (Rachel). Aluno repete; Azure Speech avalia pronú
    **hint_en**: "Yes, please!"
 
 **Closing cue**: Tom encerra com "Awesome, see you later!" quando obj_3 baterem.
-**Recap (PT)**: "Boa! Você praticou três blocos essenciais: saudação, estado e aceitar um convite. São a base de qualquer interação simples em inglês."
 
 **Script** (referencial, 6 turnos):
 
