@@ -820,8 +820,9 @@ export default function RolePlayExerciseScreen() {
                 ? (isPt ? 'Mandou bem!' : 'Nailed it!')
                 : (isPt ? `Você bateu ${objectivesDone} de ${objectivesTotal}.` : `You hit ${objectivesDone} of ${objectivesTotal}.`)}
             </AppText>
-            {/* Base-da-base: mostra o que o aluno falou + a resposta esperada */}
-            {!allObjectivesDone && objectivesTotal === 1 && rp.objectives[0]?.hint_en && (
+            {/* Base-da-base: mostra "Você falou: ..." (acerto/erro)
+                + "A resposta era: ..." (só erro). */}
+            {objectivesTotal === 1 && (lastUserTranscript || !allObjectivesDone) && (
               <View style={{ width: '100%', marginBottom: 16 }}>
                 {!!lastUserTranscript && (
                   <View style={{
@@ -829,25 +830,29 @@ export default function RolePlayExerciseScreen() {
                     borderRadius: 12, padding: 12, marginBottom: 8,
                   }}>
                     <AppText style={{ fontSize: 11, fontWeight: '700', color: C.navyMid, textTransform: 'uppercase', letterSpacing: 0.7, marginBottom: 4 }}>
-                      {isPt ? 'Entendemos' : 'We heard'}
+                      {isPt
+                        ? (allObjectivesDone ? 'Você falou' : 'Entendemos')
+                        : (allObjectivesDone ? 'You said' : 'We heard')}
                     </AppText>
                     <AppText style={{ fontSize: 15, color: C.navy }}>
                       {lastUserTranscript}
                     </AppText>
                   </View>
                 )}
-                <View style={{
-                  backgroundColor: 'rgba(124,58,237,0.08)',
-                  borderRadius: 12, padding: 12,
-                  borderWidth: 1, borderColor: 'rgba(124,58,237,0.25)',
-                }}>
-                  <AppText style={{ fontSize: 11, fontWeight: '700', color: '#7C3AED', textTransform: 'uppercase', letterSpacing: 0.7, marginBottom: 4 }}>
-                    {isPt ? 'A resposta era' : 'The answer was'}
-                  </AppText>
-                  <AppText style={{ fontSize: 16, fontWeight: '700', color: C.navy }}>
-                    {rp.objectives[0].hint_en}
-                  </AppText>
-                </View>
+                {!allObjectivesDone && rp.objectives[0]?.hint_en && (
+                  <View style={{
+                    backgroundColor: 'rgba(124,58,237,0.08)',
+                    borderRadius: 12, padding: 12,
+                    borderWidth: 1, borderColor: 'rgba(124,58,237,0.25)',
+                  }}>
+                    <AppText style={{ fontSize: 11, fontWeight: '700', color: '#7C3AED', textTransform: 'uppercase', letterSpacing: 0.7, marginBottom: 4 }}>
+                      {isPt ? 'A resposta era' : 'The answer was'}
+                    </AppText>
+                    <AppText style={{ fontSize: 16, fontWeight: '700', color: C.navy }}>
+                      {rp.objectives[0].hint_en}
+                    </AppText>
+                  </View>
+                )}
               </View>
             )}
 
