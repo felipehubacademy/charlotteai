@@ -160,9 +160,10 @@ Charlotte fala via ElevenLabs (Rachel). Aluno repete; Azure Speech avalia pronú
 
 ```yaml
 scripted: true
+voice: charlotte                            # Ana = voz feminina (coral)
 
-# Lines do NPC, com paths estaveis. CLI gera audio via ElevenLabs (Rachel pra
-# Ana) e faz upload em curriculum-audio/m01/n01/roleplay/.
+# Lines do NPC, com paths estaveis. CLI gera audio via OpenAI TTS e faz upload
+# em curriculum-audio/m01/n01/roleplay/.
 npc_lines:
   open:
     text: "Hey! Long time no see! How are you?"
@@ -268,30 +269,26 @@ fallback:
 
 ```yaml
 scripted: true
+voice: charlie                              # Tom = voz masculina (onyx)
+# OBS: guided chat e text-only — sem `audio:` nos npc_lines. Voice declarada
+# mesmo assim por consistencia caso futuro release transforme em hibrido.
 
 npc_lines:
   open:
     text: "Morning! Long Monday already, huh?"
-    audio: "m01/n01/chat/open.mp3"
   ask_how_are_you:
     text: "Good morning! How are you today?"
-    audio: "m01/n01/chat/ask_how_are_you.mp3"
   offer_coffee:
     text: "Doing well, thanks for asking! Coffee?"
-    audio: "m01/n01/chat/offer_coffee.mp3"
   close_accept:
     text: "Catch you in the kitchen!"
-    audio: "m01/n01/chat/close_accept.mp3"
   close_decline:
     text: "No worries — catch you later!"
-    audio: "m01/n01/chat/close_decline.mp3"
   # Correções suaves
   hint_morning:
     text: "Morning! On Mondays 'good morning' lands better than just 'hi'. How are you?"
-    audio: "m01/n01/chat/hint_morning.mp3"
   hint_full_sentence:
     text: "Just 'fine'? Try 'I'm fine, thanks' — sounds more natural. How about you?"
-    audio: "m01/n01/chat/hint_full_sentence.mp3"
 
 classify:
   obj_1:                                  # greet with morning

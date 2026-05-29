@@ -134,16 +134,12 @@ async function main() {
         console.warn(`  ⏭  line ${lineId} sem text/audio, pulando`);
         continue;
       }
-      // Determinar voice por linha (futuro: line.voice override). Hoje uniform.
-      let voiceKey = blockVoice;
-      if (!voiceKey) {
-        // Heuristica: roleplay no path => charlotte (Ana), chat => charlie (Tom)
-        // — APENAS pra N01 do M01. Pra outras units, exija `voice:` no schema.
-        if (line.audio.includes('/roleplay/')) voiceKey = 'charlotte';
-        else if (line.audio.includes('/chat/')) voiceKey = 'charlie';
-      }
+      // Voice OBRIGATORIA no bloco scripted. Sem isso, falha ruidosamente
+      // — heuristica por path era erro-prone (poderia gravar voz errada
+      // se a unit mudar de personagem na role-play vs chat).
+      const voiceKey = blockVoice;
       if (!voiceKey || !VOICES[voiceKey]) {
-        console.error(`  ❌ line ${lineId}: voice nao determinado (declare voice: no bloco)`);
+        console.error(`  ❌ line ${lineId}: declare "voice: charlotte" ou "voice: charlie" no bloco scripted`);
         continue;
       }
       const voice = VOICES[voiceKey];

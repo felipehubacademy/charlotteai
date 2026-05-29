@@ -461,7 +461,7 @@ export default function RolePlayExerciseScreen() {
     } finally {
       setIsProcessing(false);
     }
-  }, [isRecording, recorder, rp, level, unitTitle, userId]);
+  }, [isRecording, recorder, rp, level, unitTitle, userId, objectivesMet]);
 
   // ── Restart sessão (Result Card → Refazer) ─────────────────────
   const restartSession = useCallback(() => {

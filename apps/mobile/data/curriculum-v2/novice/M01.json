@@ -199,6 +199,7 @@
         ],
         "scripted": {
           "scripted": true,
+          "voice": "charlotte",
           "npc_lines": {
             "open": {
               "text": "Hey! Long time no see! How are you?",
@@ -338,37 +339,31 @@
         ],
         "closing_cue": "Tom encerra com \"Catch you in the kitchen!\" ou \"Catch you later!\" quando objetivos baterem.",
         "recap_pt": "Perfeito! Você usou 4 chunks importantes: 'good morning', 'How are you?', 'I'm fine, thanks', e a resposta 'And you?'. Esses chunks fixos são a base de qualquer conversa em inglês. Continua assim!",
-        "suggested_script": "**Script** (referencial, 5 turnos):\n\n1. **Student** (expected): \"Hi Tom, good morning!\"\n   *Se aluno escrever só \"Hi\":* Tom: \"Morning! Just 'hi' works, but on a Monday morning 'good morning' lands better. How are you?\"\n\n2. **Tom**: \"Good morning! How are you today?\"\n\n3. **Student** (expected): \"I'm fine, thanks. And you?\"\n   *Se aluno escrever só \"Fine\":* Tom: \"Haha, just 'fine'? Try 'I'm fine, thanks' — full sentence, more natural.\"\n\n4. **Tom**: \"Doing well, thanks for asking! Coffee?\"\n\n5. **Student** (expected): \"Yes, please! See you in the kitchen.\"\n\n#### Scripted (POC v1)\n\n```yaml\nscripted: true\n\nnpc_lines:\n  open:\n    text: \"Morning! Long Monday already, huh?\"\n    audio: \"m01/n01/chat/open.mp3\"\n  ask_how_are_you:\n    text: \"Good morning! How are you today?\"\n    audio: \"m01/n01/chat/ask_how_are_you.mp3\"\n  offer_coffee:\n    text: \"Doing well, thanks for asking! Coffee?\"\n    audio: \"m01/n01/chat/offer_coffee.mp3\"\n  close_accept:\n    text: \"Catch you in the kitchen!\"\n    audio: \"m01/n01/chat/close_accept.mp3\"\n  close_decline:\n    text: \"No worries — catch you later!\"\n    audio: \"m01/n01/chat/close_decline.mp3\"\n  # Correções suaves\n  hint_morning:\n    text: \"Morning! On Mondays 'good morning' lands better than just 'hi'. How are you?\"\n    audio: \"m01/n01/chat/hint_morning.mp3\"\n  hint_full_sentence:\n    text: \"Just 'fine'? Try 'I'm fine, thanks' — sounds more natural. How about you?\"\n    audio: \"m01/n01/chat/hint_full_sentence.mp3\"\n\nclassify:\n  obj_1:                                  # greet with morning\n    patterns_required_one_of: [\"morning\"]\n  obj_2:                                  # full answer + ask back\n    patterns_any: [\"good\", \"fine\", \"great\", \"okay\", \"well\"]\n    patterns_required_one_of: [\"and you\", \"how about you\", \"how are you\"]\n  obj_3:                                  # accept or decline coffee\n    patterns_any: [\"yes\", \"sure\", \"let's go\", \"please\", \"of course\", \"no thanks\", \"maybe later\", \"i'm good\"]\n\nflow:\n  start: open\n  transitions:\n    # Greet correto\n    - when: { objective_just_met: 1 }\n      play: ask_how_are_you\n    # Greet só com \"hi\" (sem \"morning\")\n    - when: { partial: obj_1, has_any: [\"hi\",\"hello\",\"hey\"], missing_required_one_of: [\"morning\"] }\n      play: hint_morning\n    # Resposta completa\n    - when: { objective_just_met: 2 }\n      play: offer_coffee\n    # Aluno só \"fine\" sem ask back\n    - when: { partial: obj_2, has_any: [\"fine\",\"good\",\"great\",\"okay\",\"well\"], missing_required_one_of: [\"and you\",\"how about you\",\"how are you\"] }\n      play: hint_full_sentence\n    # Aceita\n    - when: { objective_just_met: 3, has_any: [\"yes\",\"sure\",\"please\",\"of course\",\"let's go\"] }\n      play: close_accept\n      session_complete: true\n    # Recusa\n    - when: { objective_just_met: 3, has_any: [\"no thanks\",\"maybe later\",\"i'm good\"] }\n      play: close_decline\n      session_complete: true\n\nfallback:\n  llm_after_stuck: 2\n```\n\n---",
+        "suggested_script": "**Script** (referencial, 5 turnos):\n\n1. **Student** (expected): \"Hi Tom, good morning!\"\n   *Se aluno escrever só \"Hi\":* Tom: \"Morning! Just 'hi' works, but on a Monday morning 'good morning' lands better. How are you?\"\n\n2. **Tom**: \"Good morning! How are you today?\"\n\n3. **Student** (expected): \"I'm fine, thanks. And you?\"\n   *Se aluno escrever só \"Fine\":* Tom: \"Haha, just 'fine'? Try 'I'm fine, thanks' — full sentence, more natural.\"\n\n4. **Tom**: \"Doing well, thanks for asking! Coffee?\"\n\n5. **Student** (expected): \"Yes, please! See you in the kitchen.\"\n\n#### Scripted (POC v1)\n\n```yaml\nscripted: true\nvoice: charlie                              # Tom = voz masculina (onyx)\n# OBS: guided chat e text-only — sem `audio:` nos npc_lines. Voice declarada\n# mesmo assim por consistencia caso futuro release transforme em hibrido.\n\nnpc_lines:\n  open:\n    text: \"Morning! Long Monday already, huh?\"\n  ask_how_are_you:\n    text: \"Good morning! How are you today?\"\n  offer_coffee:\n    text: \"Doing well, thanks for asking! Coffee?\"\n  close_accept:\n    text: \"Catch you in the kitchen!\"\n  close_decline:\n    text: \"No worries — catch you later!\"\n  # Correções suaves\n  hint_morning:\n    text: \"Morning! On Mondays 'good morning' lands better than just 'hi'. How are you?\"\n  hint_full_sentence:\n    text: \"Just 'fine'? Try 'I'm fine, thanks' — sounds more natural. How about you?\"\n\nclassify:\n  obj_1:                                  # greet with morning\n    patterns_required_one_of: [\"morning\"]\n  obj_2:                                  # full answer + ask back\n    patterns_any: [\"good\", \"fine\", \"great\", \"okay\", \"well\"]\n    patterns_required_one_of: [\"and you\", \"how about you\", \"how are you\"]\n  obj_3:                                  # accept or decline coffee\n    patterns_any: [\"yes\", \"sure\", \"let's go\", \"please\", \"of course\", \"no thanks\", \"maybe later\", \"i'm good\"]\n\nflow:\n  start: open\n  transitions:\n    # Greet correto\n    - when: { objective_just_met: 1 }\n      play: ask_how_are_you\n    # Greet só com \"hi\" (sem \"morning\")\n    - when: { partial: obj_1, has_any: [\"hi\",\"hello\",\"hey\"], missing_required_one_of: [\"morning\"] }\n      play: hint_morning\n    # Resposta completa\n    - when: { objective_just_met: 2 }\n      play: offer_coffee\n    # Aluno só \"fine\" sem ask back\n    - when: { partial: obj_2, has_any: [\"fine\",\"good\",\"great\",\"okay\",\"well\"], missing_required_one_of: [\"and you\",\"how about you\",\"how are you\"] }\n      play: hint_full_sentence\n    # Aceita\n    - when: { objective_just_met: 3, has_any: [\"yes\",\"sure\",\"please\",\"of course\",\"let's go\"] }\n      play: close_accept\n      session_complete: true\n    # Recusa\n    - when: { objective_just_met: 3, has_any: [\"no thanks\",\"maybe later\",\"i'm good\"] }\n      play: close_decline\n      session_complete: true\n\nfallback:\n  llm_after_stuck: 2\n```\n\n---",
         "scripted": {
           "scripted": true,
+          "voice": "charlie",
           "npc_lines": {
             "open": {
-              "text": "Morning! Long Monday already, huh?",
-              "audio": "https://fnvjibzreepubageztoi.supabase.co/storage/v1/object/public/curriculum-audio/m01/n01/chat/open.mp3"
+              "text": "Morning! Long Monday already, huh?"
             },
             "ask_how_are_you": {
-              "text": "Good morning! How are you today?",
-              "audio": "https://fnvjibzreepubageztoi.supabase.co/storage/v1/object/public/curriculum-audio/m01/n01/chat/ask_how_are_you.mp3"
+              "text": "Good morning! How are you today?"
             },
             "offer_coffee": {
-              "text": "Doing well, thanks for asking! Coffee?",
-              "audio": "https://fnvjibzreepubageztoi.supabase.co/storage/v1/object/public/curriculum-audio/m01/n01/chat/offer_coffee.mp3"
+              "text": "Doing well, thanks for asking! Coffee?"
             },
             "close_accept": {
-              "text": "Catch you in the kitchen!",
-              "audio": "https://fnvjibzreepubageztoi.supabase.co/storage/v1/object/public/curriculum-audio/m01/n01/chat/close_accept.mp3"
+              "text": "Catch you in the kitchen!"
             },
             "close_decline": {
-              "text": "No worries — catch you later!",
-              "audio": "https://fnvjibzreepubageztoi.supabase.co/storage/v1/object/public/curriculum-audio/m01/n01/chat/close_decline.mp3"
+              "text": "No worries — catch you later!"
             },
             "hint_morning": {
-              "text": "Morning! On Mondays 'good morning' lands better than just 'hi'. How are you?",
-              "audio": "https://fnvjibzreepubageztoi.supabase.co/storage/v1/object/public/curriculum-audio/m01/n01/chat/hint_morning.mp3"
+              "text": "Morning! On Mondays 'good morning' lands better than just 'hi'. How are you?"
             },
             "hint_full_sentence": {
-              "text": "Just 'fine'? Try 'I'm fine, thanks' — sounds more natural. How about you?",
-              "audio": "https://fnvjibzreepubageztoi.supabase.co/storage/v1/object/public/curriculum-audio/m01/n01/chat/hint_full_sentence.mp3"
+              "text": "Just 'fine'? Try 'I'm fine, thanks' — sounds more natural. How about you?"
             }
           },
           "classify": {
