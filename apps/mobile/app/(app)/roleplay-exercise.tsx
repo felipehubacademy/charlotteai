@@ -750,10 +750,22 @@ export default function RolePlayExerciseScreen() {
         </View>
       )}
 
-      {/* ── Scripted scaffold — mostra a frase esperada acima do mic ─── */}
-      {rp.scripted && activeNpcLineId && !sessionComplete && !isProcessing && (() => {
-        const exp = rp.scripted.npc_lines[activeNpcLineId]?.expected_student_response;
-        if (!exp?.en) return null;
+      {/* ── Scaffold "Diga: ..." acima do mic ─────────────────────────
+          Em modo scripted: usa expected_student_response do npc_line ativo.
+          Em modo LLM: usa hint_en/hint_pt da primeira objective pendente. */}
+      {!sessionComplete && !isProcessing && (() => {
+        let en: string | undefined;
+        let pt: string | undefined;
+        if (rp.scripted && activeNpcLineId) {
+          const exp = rp.scripted.npc_lines[activeNpcLineId]?.expected_student_response;
+          en = exp?.en;
+          pt = exp?.pt_hint;
+        } else {
+          const pending = rp.objectives.find(o => !objectivesMet.has(o.id));
+          en = pending?.hint_en;
+          pt = pending?.label_pt;
+        }
+        if (!en) return null;
         return (
           <View style={{
             marginHorizontal: 16, marginBottom: 4, padding: 12,
@@ -764,11 +776,11 @@ export default function RolePlayExerciseScreen() {
               {isPt ? 'Diga:' : 'Say:'}
             </AppText>
             <AppText style={{ fontSize: 15, fontWeight: '600', color: C.navy, lineHeight: 21 }}>
-              {exp.en}
+              {en}
             </AppText>
-            {isPt && exp.pt_hint && (
+            {isPt && pt && (
               <AppText style={{ fontSize: 12, color: C.navyMid, marginTop: 4, fontStyle: 'italic' }}>
-                {exp.pt_hint}
+                {pt}
               </AppText>
             )}
           </View>

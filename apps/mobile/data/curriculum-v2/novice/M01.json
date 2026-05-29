@@ -174,55 +174,8 @@
         "suggested_flow": "**Suggested flow** (referencial, 2 turnos):\n\n1. **Student**: ~\"I'm good!\"\n2. **Ana**: \"Great! Nice to see you. Talk to you later!\"",
         "evaluation_focus": [
           "Aluno responde com algum estado positivo",
-          "Pronúncia clara de \"I'm good\" / \"Good\"",
-          "when: { objective_just_met: 1 }"
-        ],
-        "scripted": {
-          "scripted": true,
-          "voice": "charlotte",
-          "npc_lines": {
-            "open": {
-              "text": "Hi! How are you?",
-              "audio": "https://fnvjibzreepubageztoi.supabase.co/storage/v1/object/public/curriculum-audio/m01/n01/roleplay/open.mp3",
-              "expected_student_response": {
-                "en": "I'm good!",
-                "pt_hint": "Diz como você está"
-              }
-            },
-            "close": {
-              "text": "Great! Nice to see you. Talk to you later!",
-              "audio": "https://fnvjibzreepubageztoi.supabase.co/storage/v1/object/public/curriculum-audio/m01/n01/roleplay/close.mp3"
-            }
-          },
-          "classify": {
-            "obj_1": {
-              "patterns_any": [
-                "good",
-                "fine",
-                "great",
-                "ok",
-                "okay",
-                "alright",
-                "well"
-              ]
-            }
-          },
-          "flow": {
-            "start": "open",
-            "transitions": [
-              {
-                "when": {
-                  "objective_just_met": 1
-                },
-                "play": "close",
-                "session_complete": true
-              }
-            ]
-          },
-          "fallback": {
-            "llm_after_stuck": 2
-          }
-        }
+          "Pronúncia clara de \"I'm good\" / \"Good\""
+        ]
       },
       "guided_chat": {
         "scenario": "Tom, seu colega de escritório americano, te cumprimenta na segunda de manhã.",
@@ -243,51 +196,7 @@
         ],
         "closing_cue": "Tom encerra com \"Have a great day!\" quando obj_1 baterem.",
         "recap_pt": "Boa! Você praticou o chunk básico 'I'm fine' — base de qualquer conversa em inglês.",
-        "suggested_script": "**Script** (referencial, 2 turnos):\n\n1. **Student** (expected): \"I'm fine!\"\n2. **Tom**: \"Have a great day!\"\n\n#### Scripted (POC v1)\n\n```yaml\nscripted: true\nvoice: charlie                              # Tom = voz masculina (onyx) — sem audio (chat e text-only)\n\nnpc_lines:\n  open:\n    text: \"Good morning! How are you?\"\n    expected_student_response:\n      en: \"I'm fine!\"\n      pt_hint: \"Diz como você está\"\n  close:\n    text: \"Have a great day!\"\n\nclassify:\n  obj_1:\n    patterns_any: [\"fine\", \"good\", \"great\", \"ok\", \"okay\", \"alright\", \"well\"]\n\nflow:\n  start: open\n  transitions:\n    - when: { objective_just_met: 1 }\n      play: close\n      session_complete: true\n\nfallback:\n  llm_after_stuck: 2\n```\n\n---",
-        "scripted": {
-          "scripted": true,
-          "voice": "charlie",
-          "npc_lines": {
-            "open": {
-              "text": "Good morning! How are you?",
-              "expected_student_response": {
-                "en": "I'm fine!",
-                "pt_hint": "Diz como você está"
-              }
-            },
-            "close": {
-              "text": "Have a great day!"
-            }
-          },
-          "classify": {
-            "obj_1": {
-              "patterns_any": [
-                "fine",
-                "good",
-                "great",
-                "ok",
-                "okay",
-                "alright",
-                "well"
-              ]
-            }
-          },
-          "flow": {
-            "start": "open",
-            "transitions": [
-              {
-                "when": {
-                  "objective_just_met": 1
-                },
-                "play": "close",
-                "session_complete": true
-              }
-            ]
-          },
-          "fallback": {
-            "llm_after_stuck": 2
-          }
-        }
+        "suggested_script": "**Script** (referencial, 2 turnos):\n\n1. **Student** (expected): \"I'm fine!\"\n2. **Tom**: \"Have a great day!\"\n\n#### Scripted (POC v1)\n\n> POC scripted removido de N01 (mesma decisao do role-play). LLM puro\n> assume com mais tolerancia de input. Scaffold \"Escreva:\" aparece via\n> hint_pt da objective pendente.\n\n---"
       }
     },
     {

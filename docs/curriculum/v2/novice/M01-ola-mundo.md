@@ -141,39 +141,10 @@ Charlotte fala via ElevenLabs (Rachel). Aluno repete; Azure Speech avalia pronú
 > pra garantir fidelidade pedagógica. Se nenhum padrão matchar após 2 tentativas
 > no mesmo objective, cai pro modo LLM como fallback.
 
-```yaml
-scripted: true
-voice: charlotte                            # Ana = voz feminina (coral)
-
-# POC base-da-base: 1 objetivo. Aluno responde "How are you?" com estado
-# positivo. Sem present perfect, sem invite, sem absence. Confianca >
-# complexidade.
-npc_lines:
-  open:
-    text: "Hi! How are you?"
-    audio: "m01/n01/roleplay/open.mp3"
-    expected_student_response:
-      en: "I'm good!"
-      pt_hint: "Diz como você está"
-  close:
-    text: "Great! Nice to see you. Talk to you later!"
-    audio: "m01/n01/roleplay/close.mp3"
-
-# Word-boundary matching. "good" matcha "Good!" mas NAO "going".
-classify:
-  obj_1:
-    patterns_any: ["good", "fine", "great", "ok", "okay", "alright", "well"]
-
-flow:
-  start: open
-  transitions:
-    - when: { objective_just_met: 1 }
-      play: close
-      session_complete: true
-
-fallback:
-  llm_after_stuck: 2
-```
+> POC scripted foi removido de N01 pra dar lugar ao LLM puro: para sessoes
+> tao curtas (1 objetivo), o custo do LLM eh marginal e a tolerancia de
+> transcricao Whisper eh muito melhor que regex. Schema scripted continua
+> disponivel pra units mais longas no futuro.
 
 ### 4. Guided Chat
 
@@ -203,33 +174,9 @@ fallback:
 
 #### Scripted (POC v1)
 
-```yaml
-scripted: true
-voice: charlie                              # Tom = voz masculina (onyx) — sem audio (chat e text-only)
-
-npc_lines:
-  open:
-    text: "Good morning! How are you?"
-    expected_student_response:
-      en: "I'm fine!"
-      pt_hint: "Diz como você está"
-  close:
-    text: "Have a great day!"
-
-classify:
-  obj_1:
-    patterns_any: ["fine", "good", "great", "ok", "okay", "alright", "well"]
-
-flow:
-  start: open
-  transitions:
-    - when: { objective_just_met: 1 }
-      play: close
-      session_complete: true
-
-fallback:
-  llm_after_stuck: 2
-```
+> POC scripted removido de N01 (mesma decisao do role-play). LLM puro
+> assume com mais tolerancia de input. Scaffold "Escreva:" aparece via
+> hint_pt da objective pendente.
 
 ---
 

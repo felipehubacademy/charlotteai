@@ -505,10 +505,22 @@ export default function GuidedChatExerciseScreen() {
         </View>
       )}
 
-      {/* ── Scripted scaffold — mostra a frase esperada acima do input ── */}
-      {gc.scripted && activeNpcLineId && !sessionComplete && !isProcessing && (() => {
-        const exp = gc.scripted.npc_lines[activeNpcLineId]?.expected_student_response;
-        if (!exp?.en) return null;
+      {/* ── Scaffold "Escreva: ..." acima do input ────────────────────
+          Em modo scripted: usa expected_student_response do npc_line ativo.
+          Em modo LLM: usa hint_en/label_pt da primeira objective pendente. */}
+      {!sessionComplete && !isProcessing && (() => {
+        let en: string | undefined;
+        let pt: string | undefined;
+        if (gc.scripted && activeNpcLineId) {
+          const exp = gc.scripted.npc_lines[activeNpcLineId]?.expected_student_response;
+          en = exp?.en;
+          pt = exp?.pt_hint;
+        } else {
+          const pending = gc.objectives.find(o => !objectivesMet.has(o.id));
+          en = pending?.hint_en;
+          pt = pending?.label_pt;
+        }
+        if (!en) return null;
         return (
           <View style={{
             marginHorizontal: 12, marginBottom: 4, padding: 12,
@@ -519,11 +531,11 @@ export default function GuidedChatExerciseScreen() {
               {isPt ? 'Escreva:' : 'Write:'}
             </AppText>
             <AppText style={{ fontSize: 15, fontWeight: '600', color: C.navy, lineHeight: 21 }}>
-              {exp.en}
+              {en}
             </AppText>
-            {isPt && exp.pt_hint && (
+            {isPt && pt && (
               <AppText style={{ fontSize: 12, color: C.navyMid, marginTop: 4, fontStyle: 'italic' }}>
-                {exp.pt_hint}
+                {pt}
               </AppText>
             )}
           </View>
