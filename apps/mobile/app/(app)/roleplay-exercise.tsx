@@ -861,6 +861,7 @@ export default function RolePlayExerciseScreen() {
               {rp.objectives.map(obj => {
                 const met = objectivesMet.has(obj.id);
                 const label = isPt ? obj.label_pt : (obj.label_en || obj.label_pt);
+                if (__DEV__) console.log('[result-card-bullet]', { objId: obj.id, objIdType: typeof obj.id, met, setContents: Array.from(objectivesMet), setTypes: Array.from(objectivesMet).map(x => typeof x) });
                 return (
                   <View key={obj.id} style={{ flexDirection: 'row', alignItems: 'center', gap: 10 }}>
                     {met

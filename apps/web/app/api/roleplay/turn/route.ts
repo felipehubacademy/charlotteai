@@ -79,6 +79,12 @@ function buildSystemPrompt(
 - If the student writes Portuguese, gently answer in simple English
   and ask the same thing again in English.
 
+PORTUGUESE RESPONSE RULE (CRITICAL):
+- If the student responds in Portuguese (or any language other than English),
+  DO NOT include any objective_id in objectives_met. The objective is to
+  practice ENGLISH — a PT response does not meet it, no matter the meaning.
+- Just reply in simple English nudging them to try in English.
+
 SEQUENTIAL FLOW (NOVICE ONLY — pedagogical scaffolding):
 - Always pursue the FIRST pending objective (lowest id not yet met).
 - Do NOT progress to later objectives until the current one is met.
