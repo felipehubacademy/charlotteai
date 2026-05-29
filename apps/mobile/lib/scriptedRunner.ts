@@ -31,14 +31,28 @@ export interface RunnerOutput {
   should_fallback_llm: boolean;
 }
 
+// Escape regex specials e quebra patterns em word-boundaries.
+// "good" matcha "Good!" mas NAO "going" (que tem "go" como substring).
+// Multi-palavra ("and you") matcha como frase exata (boundary nas pontas).
+function escapeRegex(s: string): string {
+  return s.replace(/[.*+?^${}()|[\]\\]/g, '\\$&');
+}
+
+function patternMatchesWordBoundary(transcript: string, pattern: string): boolean {
+  const esc = escapeRegex(pattern.toLowerCase());
+  // \b funciona pra letras; pra patterns com apostrofo ("let's"), usa lookarounds soft
+  const re = new RegExp(`(^|[^a-zA-Z])${esc}([^a-zA-Z]|$)`, 'i');
+  return re.test(transcript);
+}
+
 function matchesRule(transcript: string, rule: ScriptedClassifyRule): boolean {
   const t = transcript.toLowerCase();
   if (rule.patterns_any && rule.patterns_any.length > 0) {
-    const any = rule.patterns_any.some(p => t.includes(p.toLowerCase()));
+    const any = rule.patterns_any.some(p => patternMatchesWordBoundary(t, p));
     if (!any) return false;
   }
   if (rule.patterns_required_one_of && rule.patterns_required_one_of.length > 0) {
-    const oneOf = rule.patterns_required_one_of.some(p => t.includes(p.toLowerCase()));
+    const oneOf = rule.patterns_required_one_of.some(p => patternMatchesWordBoundary(t, p));
     if (!oneOf) return false;
   }
   return true;
@@ -68,8 +82,8 @@ function pickTransition(
   flow: ScriptedFlow,
 ): ScriptedTransition | null {
   const t = transcript.toLowerCase();
-  const hasAny = (arr?: string[]) => !arr || arr.length === 0 || arr.some(p => t.includes(p.toLowerCase()));
-  const missingRequired = (arr?: string[]) => !!arr && arr.length > 0 && !arr.some(p => t.includes(p.toLowerCase()));
+  const hasAny = (arr?: string[]) => !arr || arr.length === 0 || arr.some(p => patternMatchesWordBoundary(t, p));
+  const missingRequired = (arr?: string[]) => !!arr && arr.length > 0 && !arr.some(p => patternMatchesWordBoundary(t, p));
 
   for (const tr of transitions) {
     const w = tr.when ?? {};
@@ -85,7 +99,7 @@ function pickTransition(
       if (objectivesMetAfter.has(id)) continue;       // ja bateu, nao eh partial
       const rule = flow.classify[w.partial];
       const hasAnyOfPartial = rule?.patterns_any
-        ? rule.patterns_any.some(p => t.includes(p.toLowerCase()))
+        ? rule.patterns_any.some(p => patternMatchesWordBoundary(t, p))
         : false;
       if (!hasAnyOfPartial) continue;
     }

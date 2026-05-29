@@ -195,12 +195,16 @@ npc_lines:
 # em ingles, e o sistema considera obj_X atingido. NPC modela a frase ideal
 # na resposta — aprendizado por exposicao repetida.
 classify:
+  # Word-boundary matching. "good" matcha "Good!" mas NAO "going".
+  # Removidos patterns ambíguos como "you", "how" (matchavam em "how are you?"
+  # do NPC OU do scaffold), "go" (matchava em "good", "going").
   obj_1:
-    patterns_any: ["good", "fine", "great", "ok", "okay", "alright", "well", "hi", "hello", "hey", "thanks", "you", "and you", "how"]
+    patterns_any: ["good", "fine", "great", "ok", "okay", "alright", "well", "hi", "hello", "hey", "thanks", "and you"]
   obj_2:
-    patterns_any: ["busy", "work", "study", "tired", "school", "home", "house", "kids", "family", "stuff", "things"]
+    patterns_any: ["busy", "work", "study", "tired", "school", "home", "house", "kids", "family"]
   obj_3:
-    patterns_any: ["coffee", "tea", "drink", "let's", "lets", "wanna", "want", "go", "sit", "grab"]
+    # Multi-palavra pra precisao. Substring match dentro do contexto da frase.
+    patterns_any: ["coffee", "tea", "grab a", "let's grab", "want to grab", "wanna grab", "want to get", "let's get", "sit down"]
 
 # Maquina de estados. start = primeiro NPC line. Apos cada turno do aluno,
 # o classifier marca objectives_met; o flow procura o proximo line baseado
@@ -310,11 +314,12 @@ npc_lines:
 # e escreve qualquer coisa parecida; sistema considera obj atingido.
 classify:
   obj_1:
-    patterns_any: ["morning", "good", "hi", "hello", "hey"]
+    patterns_any: ["morning"]
   obj_2:
-    patterns_any: ["fine", "good", "great", "ok", "okay", "well", "thanks", "you", "and you", "how"]
+    patterns_any: ["fine", "good", "great", "ok", "okay", "well", "and you"]
   obj_3:
-    patterns_any: ["yes", "sure", "please", "of course", "let's", "lets", "no", "thanks", "later", "maybe"]
+    # Aceita/recusa do convite de cafe. Sem patterns ambiguos como "no" sozinho.
+    patterns_any: ["yes", "sure", "please", "of course", "let's go", "no thanks", "no, thanks", "maybe later", "i'm good"]
 
 flow:
   start: open
