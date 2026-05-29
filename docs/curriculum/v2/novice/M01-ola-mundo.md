@@ -120,8 +120,8 @@ Charlotte fala via ElevenLabs (Rachel). Aluno repete; Azure Speech avalia pronú
    **label_pt**: "Responder como você está"
    **label_en**: "Say how you're doing"
    **hidden_prompt**: "user says any positive state (good/fine/great/ok/well)"
-   **hint_pt**: "Tenta 'I'm good!'"
-   **hint_en**: "Try 'I'm good!'"
+   **hint_pt**: "I'm good!"
+   **hint_en**: "I'm good!"
 
 **Closing cue**: Ana fecha com "Great! Nice to see you. Talk to you later!" quando obj_1 baterem.
 
@@ -161,8 +161,8 @@ Charlotte fala via ElevenLabs (Rachel). Aluno repete; Azure Speech avalia pronú
    **label_pt**: "Responder como você está"
    **label_en**: "Say how you're doing"
    **hidden_prompt**: "user says any positive state (good/fine/great/ok/well)"
-   **hint_pt**: "Tenta 'I'm fine!'"
-   **hint_en**: "Try 'I'm fine!'"
+   **hint_pt**: "I'm fine!"
+   **hint_en**: "I'm fine!"
 
 **Closing cue**: Tom encerra com "Have a great day!" quando obj_1 baterem.
 **Recap (PT)**: "Boa! Você praticou o chunk básico 'I'm fine' — base de qualquer conversa em inglês."

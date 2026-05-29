@@ -750,9 +750,9 @@ export default function RolePlayExerciseScreen() {
         </View>
       )}
 
-      {/* ── Scaffold "Diga: ..." acima do mic ─────────────────────────
+      {/* ── Scaffold fixo (estilo tooltip dark, sem precisar tocar) ────
           Em modo scripted: usa expected_student_response do npc_line ativo.
-          Em modo LLM: usa hint_en/hint_pt da primeira objective pendente. */}
+          Em modo LLM: usa hint_en/label_pt da primeira objective pendente. */}
       {!sessionComplete && !isProcessing && (() => {
         let en: string | undefined;
         let pt: string | undefined;
@@ -768,21 +768,23 @@ export default function RolePlayExerciseScreen() {
         if (!en) return null;
         return (
           <View style={{
-            marginHorizontal: 16, marginBottom: 4, padding: 12,
-            backgroundColor: 'rgba(124,58,237,0.08)',
-            borderRadius: 12, borderWidth: 1, borderColor: 'rgba(124,58,237,0.25)',
+            marginHorizontal: 16, marginBottom: 6,
+            backgroundColor: C.navy, borderRadius: 12, padding: 14,
+            flexDirection: 'row', gap: 10, alignItems: 'flex-start',
+            shadowColor: '#000', shadowOpacity: 0.18, shadowRadius: 6,
+            shadowOffset: { width: 0, height: 2 }, elevation: 4,
           }}>
-            <AppText style={{ fontSize: 10, fontWeight: '700', color: '#7C3AED', letterSpacing: 1.2, textTransform: 'uppercase', marginBottom: 4 }}>
-              {isPt ? 'Diga:' : 'Say:'}
-            </AppText>
-            <AppText style={{ fontSize: 15, fontWeight: '600', color: C.navy, lineHeight: 21 }}>
-              {en}
-            </AppText>
-            {isPt && pt && (
-              <AppText style={{ fontSize: 12, color: C.navyMid, marginTop: 4, fontStyle: 'italic' }}>
-                {pt}
+            <Lightbulb size={18} color="#FFD27A" weight="fill" />
+            <View style={{ flex: 1 }}>
+              <AppText style={{ color: '#FFF', fontSize: 14, fontWeight: '700', lineHeight: 19 }}>
+                {en}
               </AppText>
-            )}
+              {isPt && pt && (
+                <AppText style={{ color: 'rgba(255,255,255,0.7)', fontSize: 12, marginTop: 2, lineHeight: 16 }}>
+                  {pt}
+                </AppText>
+              )}
+            </View>
           </View>
         );
       })()}
