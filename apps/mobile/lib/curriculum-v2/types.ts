@@ -68,7 +68,15 @@ export interface Objective {
 // Fallback: se nenhum padrao matchar apos N tentativas, cai pro modo LLM.
 export interface ScriptedNPCLine {
   text:  string;            // texto exato falado/exibido
-  audio: string;            // URL completa do MP3 no CDN
+  audio?: string;           // URL completa do MP3 no CDN (presente em role-play; ausente em chat text-only)
+  // Scaffolding pra base-da-base: mostra ao aluno EXATAMENTE o que ele deve falar.
+  // Persistente na tela abaixo da bolha do NPC. So aparece em npc_lines onde o
+  // aluno PRECISA responder (open, transicoes principais). Em close lines,
+  // ausente.
+  expected_student_response?: {
+    en:       string;       // a frase target em ingles (o que aluno fala)
+    pt_hint?: string;       // dica em portugues (intencao da frase)
+  };
 }
 
 export interface ScriptedClassifyRule {

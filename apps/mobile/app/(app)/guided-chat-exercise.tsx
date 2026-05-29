@@ -99,6 +99,8 @@ export default function GuidedChatExerciseScreen() {
     const t = setTimeout(() => setLastFiredObjective(null), 800);
     return () => clearTimeout(t);
   }, [lastFiredObjective]); // eslint-disable-line react-hooks/exhaustive-deps
+  // Scripted scaffold: id da ultima npc_line tocada que ainda espera resposta
+  const [activeNpcLineId, setActiveNpcLineId] = useState<string | null>(null);
   const [hintsUsed, setHintsUsed]             = useState(0);
   const [hintVisible, setHintVisible]         = useState<string | null>(null);
   const [remainingSec, setRemainingSec]       = useState<number>(0);
@@ -122,6 +124,7 @@ export default function GuidedChatExerciseScreen() {
       messageType: 'text', timestamp: new Date(),
     }]);
     historyRef.current = [{ role: 'assistant', content: openerText }];
+    if (gc.scripted) setActiveNpcLineId(gc.scripted.flow.start);
     startTimeRef.current = Date.now();
     setRemainingSec(GUIDED_CHAT_BUDGET_SEC[level] ?? 300);
   }, [gc, level]);
@@ -172,6 +175,7 @@ export default function GuidedChatExerciseScreen() {
       messageType: 'text', timestamp: new Date(),
     }]);
     historyRef.current = [{ role: 'assistant', content: openerText }];
+    if (gc.scripted) setActiveNpcLineId(gc.scripted.flow.start);
     startTimeRef.current = Date.now();
     setRemainingSec(GUIDED_CHAT_BUDGET_SEC[level] ?? 300);
   }, [gc, level]);
@@ -232,6 +236,7 @@ export default function GuidedChatExerciseScreen() {
 
         if (out.next_line_id) {
           const npcLine = gc.scripted.npc_lines[out.next_line_id];
+          setActiveNpcLineId(out.next_line_id);
           if (npcLine?.text) {
             const aMsgId = `assist_${Date.now()}`;
             setMessages(prev => [...prev, {
@@ -499,6 +504,31 @@ export default function GuidedChatExerciseScreen() {
           </TouchableOpacity>
         </View>
       )}
+
+      {/* ── Scripted scaffold — mostra a frase esperada acima do input ── */}
+      {gc.scripted && activeNpcLineId && !sessionComplete && !isProcessing && (() => {
+        const exp = gc.scripted.npc_lines[activeNpcLineId]?.expected_student_response;
+        if (!exp?.en) return null;
+        return (
+          <View style={{
+            marginHorizontal: 12, marginBottom: 4, padding: 12,
+            backgroundColor: 'rgba(124,58,237,0.08)',
+            borderRadius: 12, borderWidth: 1, borderColor: 'rgba(124,58,237,0.25)',
+          }}>
+            <AppText style={{ fontSize: 10, fontWeight: '700', color: '#7C3AED', letterSpacing: 1.2, textTransform: 'uppercase', marginBottom: 4 }}>
+              {isPt ? 'Escreva:' : 'Write:'}
+            </AppText>
+            <AppText style={{ fontSize: 15, fontWeight: '600', color: C.navy, lineHeight: 21 }}>
+              {exp.en}
+            </AppText>
+            {isPt && exp.pt_hint && (
+              <AppText style={{ fontSize: 12, color: C.navyMid, marginTop: 4, fontStyle: 'italic' }}>
+                {exp.pt_hint}
+              </AppText>
+            )}
+          </View>
+        );
+      })()}
 
       {/* Text input + send */}
       <KeyboardAvoidingView behavior={Platform.OS === 'ios' ? 'padding' : undefined}>

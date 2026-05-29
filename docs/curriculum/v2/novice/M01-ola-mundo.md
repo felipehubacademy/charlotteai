@@ -168,32 +168,39 @@ npc_lines:
   open:
     text: "Hey! Long time no see! How are you?"
     audio: "m01/n01/roleplay/open.mp3"
+    expected_student_response:
+      en: "I'm good, thanks. And you?"
+      pt_hint: "Cumprimenta de volta e devolve a pergunta"
   ask_absence:
     text: "I'm great! Where have you been hiding?"
     audio: "m01/n01/roleplay/ask_absence.mp3"
+    expected_student_response:
+      en: "I've been busy with work."
+      pt_hint: "Explica por que sumiu"
   acknowledge_absence:
     text: "Oh, makes sense. So, what now?"
     audio: "m01/n01/roleplay/acknowledge_absence.mp3"
+    expected_student_response:
+      en: "Want to grab a coffee?"
+      pt_hint: "Convida ela pra um café"
   close:
     text: "Sounds perfect! Let's go in."
     audio: "m01/n01/roleplay/close.mp3"
-  # Bridge correctivo quando aluno responde sem "and you"
   hint_add_and_you:
     text: "Aw, I'm doing alright too! But wait — how are you doing?"
     audio: "m01/n01/roleplay/hint_add_and_you.mp3"
 
-# Classificador de intent do aluno: substring match (case-insensitive) no
-# transcript do Whisper. patterns_required = todos OBRIGATORIOS; patterns_any
-# = pelo menos um.
+# Classificador ultra tolerante pra base-da-base. Qualquer 1 padrao bate.
+# Aluno le a expected_student_response na tela, fala alguma coisa parecida
+# em ingles, e o sistema considera obj_X atingido. NPC modela a frase ideal
+# na resposta — aprendizado por exposicao repetida.
 classify:
-  obj_1:                                  # greet back + ask back
-    # Greeting OU estado positivo OU greeting palavra. Aluno satisfaz com qq um.
-    patterns_any: ["good", "fine", "great", "okay", "alright", "well", "hi", "hello", "hey", "doing"]
-    patterns_required_one_of: ["and you", "how about you", "how are you", "you doing"]
-  obj_2:                                  # explain absence
-    patterns_any: ["busy", "work", "working", "study", "studying", "tired", "travel"]
-  obj_3:                                  # invite coffee / sit down
-    patterns_any: ["coffee", "let's get", "let's grab", "want to", "wanna", "sit down"]
+  obj_1:
+    patterns_any: ["good", "fine", "great", "ok", "okay", "alright", "well", "hi", "hello", "hey", "thanks", "you", "and you", "how"]
+  obj_2:
+    patterns_any: ["busy", "work", "study", "tired", "school", "home", "house", "kids", "family", "stuff", "things"]
+  obj_3:
+    patterns_any: ["coffee", "tea", "drink", "let's", "lets", "wanna", "want", "go", "sit", "grab"]
 
 # Maquina de estados. start = primeiro NPC line. Apos cada turno do aluno,
 # o classifier marca objectives_met; o flow procura o proximo line baseado
@@ -277,28 +284,37 @@ voice: charlie                              # Tom = voz masculina (onyx)
 npc_lines:
   open:
     text: "Morning! Long Monday already, huh?"
+    expected_student_response:
+      en: "Good morning, Tom!"
+      pt_hint: "Cumprimenta o Tom com saudação de manhã"
   ask_how_are_you:
     text: "Good morning! How are you today?"
+    expected_student_response:
+      en: "I'm fine, thanks. And you?"
+      pt_hint: "Responde como está e devolve a pergunta"
   offer_coffee:
     text: "Doing well, thanks for asking! Coffee?"
+    expected_student_response:
+      en: "Yes, please!"
+      pt_hint: "Aceita ou recusa o café"
   close_accept:
     text: "Catch you in the kitchen!"
   close_decline:
     text: "No worries — catch you later!"
-  # Correções suaves
   hint_morning:
     text: "Morning! On Mondays 'good morning' lands better than just 'hi'. How are you?"
   hint_full_sentence:
     text: "Just 'fine'? Try 'I'm fine, thanks' — sounds more natural. How about you?"
 
+# Classificador ultra tolerante. Aluno le expected_student_response na tela
+# e escreve qualquer coisa parecida; sistema considera obj atingido.
 classify:
-  obj_1:                                  # greet with morning
-    patterns_required_one_of: ["morning"]
-  obj_2:                                  # full answer + ask back
-    patterns_any: ["good", "fine", "great", "okay", "well"]
-    patterns_required_one_of: ["and you", "how about you", "how are you"]
-  obj_3:                                  # accept or decline coffee
-    patterns_any: ["yes", "sure", "let's go", "please", "of course", "no thanks", "maybe later", "i'm good"]
+  obj_1:
+    patterns_any: ["morning", "good", "hi", "hello", "hey"]
+  obj_2:
+    patterns_any: ["fine", "good", "great", "ok", "okay", "well", "thanks", "you", "and you", "how"]
+  obj_3:
+    patterns_any: ["yes", "sure", "please", "of course", "let's", "lets", "no", "thanks", "later", "maybe"]
 
 flow:
   start: open

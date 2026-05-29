@@ -98,6 +98,9 @@ export default function RolePlayExerciseScreen() {
     const t = setTimeout(() => setLastFiredObjective(null), 800);
     return () => clearTimeout(t);
   }, [lastFiredObjective]); // eslint-disable-line react-hooks/exhaustive-deps
+  // Scripted scaffold: id da ultima npc_line tocada que ainda espera resposta
+  // do aluno. Usado pra mostrar expected_student_response como banner.
+  const [activeNpcLineId, setActiveNpcLineId] = useState<string | null>(null);
   const [hintsUsed, setHintsUsed]             = useState(0);
   const [hintVisible, setHintVisible]         = useState<string | null>(null);
   const [remainingSec, setRemainingSec]       = useState<number>(0);
@@ -172,6 +175,7 @@ export default function RolePlayExerciseScreen() {
         localUri = `${dir}${msgId}.mp3`;
         const dl = await FileSystem.downloadAsync(line.audio, localUri);
         if (dl.status >= 400) throw new Error(`download opener falhou: ${dl.status}`);
+        setActiveNpcLineId(startId);
       } else {
         const res = await fetch(`${API_BASE_URL}/api/tts`, {
           method: 'POST',
@@ -337,6 +341,7 @@ export default function RolePlayExerciseScreen() {
         // Toca proximo npc_line (se houver match)
         if (out.next_line_id) {
           const npcLine = rp.scripted.npc_lines[out.next_line_id];
+          setActiveNpcLineId(out.next_line_id);
           if (npcLine?.audio) {
             const aMsgId = `assist_${Date.now()}`;
             const dir   = `${FileSystem.documentDirectory}roleplay/`;
@@ -744,6 +749,31 @@ export default function RolePlayExerciseScreen() {
           </TouchableOpacity>
         </View>
       )}
+
+      {/* ── Scripted scaffold — mostra a frase esperada acima do mic ─── */}
+      {rp.scripted && activeNpcLineId && !sessionComplete && !isProcessing && (() => {
+        const exp = rp.scripted.npc_lines[activeNpcLineId]?.expected_student_response;
+        if (!exp?.en) return null;
+        return (
+          <View style={{
+            marginHorizontal: 16, marginBottom: 4, padding: 12,
+            backgroundColor: 'rgba(124,58,237,0.08)',
+            borderRadius: 12, borderWidth: 1, borderColor: 'rgba(124,58,237,0.25)',
+          }}>
+            <AppText style={{ fontSize: 10, fontWeight: '700', color: '#7C3AED', letterSpacing: 1.2, textTransform: 'uppercase', marginBottom: 4 }}>
+              {isPt ? 'Diga:' : 'Say:'}
+            </AppText>
+            <AppText style={{ fontSize: 15, fontWeight: '600', color: C.navy, lineHeight: 21 }}>
+              {exp.en}
+            </AppText>
+            {isPt && exp.pt_hint && (
+              <AppText style={{ fontSize: 12, color: C.navyMid, marginTop: 4, fontStyle: 'italic' }}>
+                {exp.pt_hint}
+              </AppText>
+            )}
+          </View>
+        );
+      })()}
 
       {/* ── Mic input (hold to record) + hint button ─────────────── */}
       <KeyboardAvoidingView behavior={Platform.OS === 'ios' ? 'padding' : undefined}>
