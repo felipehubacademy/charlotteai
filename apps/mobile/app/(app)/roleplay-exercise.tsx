@@ -133,7 +133,7 @@ export default function RolePlayExerciseScreen() {
   useEffect(() => {
     if (!rp || openedRef.current) return;
     openedRef.current = true;
-    historyRef.current = [{ role: 'assistant', content: rp.opening_line }];
+    historyRef.current = [{ role: 'assistant', content: rp.scripted?.npc_lines[rp.scripted.flow.start]?.text ?? rp.opening_line }];
     startTimeRef.current = Date.now();
     setRemainingSec(rp.time_budget_sec);
     setIsProcessing(true);
@@ -158,21 +158,39 @@ export default function RolePlayExerciseScreen() {
   const playAssistantOpener = useCallback(async (msgId: string, rpDef: RolePlay) => {
     try {
       await setAudioModeAsync({ allowsRecording: false, playsInSilentMode: true }).catch(() => {});
-      const res = await fetch(`${API_BASE_URL}/api/tts`, {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({ text: rpDef.opening_line, userId, source: 'roleplay-opener' }),
-      });
-      if (!res.ok) return;
-      const data = await res.json();
-      const dir   = `${FileSystem.documentDirectory}roleplay/`;
+
+      // Modo scripted: usa o audio do CDN (cached). Baixa pra local pra consistency
+      // com o player que usa local FS no resto do fluxo.
+      let localUri: string;
+      const dir = `${FileSystem.documentDirectory}roleplay/`;
       await FileSystem.makeDirectoryAsync(dir, { intermediates: true }).catch(() => {});
-      const localUri = `${dir}${msgId}.flac`;
-      await FileSystem.writeAsStringAsync(localUri, data.audio, { encoding: 'base64' as any });
-      // Audio pronto: pusha o bubble real, encerra o typing indicator
+
+      if (rpDef.scripted) {
+        const startId = rpDef.scripted.flow.start;
+        const line = rpDef.scripted.npc_lines[startId];
+        if (!line?.audio) throw new Error(`scripted opener "${startId}" sem audio`);
+        localUri = `${dir}${msgId}.mp3`;
+        const dl = await FileSystem.downloadAsync(line.audio, localUri);
+        if (dl.status >= 400) throw new Error(`download opener falhou: ${dl.status}`);
+      } else {
+        const res = await fetch(`${API_BASE_URL}/api/tts`, {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({ text: rpDef.opening_line, userId, source: 'roleplay-opener' }),
+        });
+        if (!res.ok) return;
+        const data = await res.json();
+        localUri = `${dir}${msgId}.flac`;
+        await FileSystem.writeAsStringAsync(localUri, data.audio, { encoding: 'base64' as any });
+      }
+      // Audio pronto: pusha o bubble real, encerra o typing indicator.
+      // Em scripted, usa o text do npc_line (pode diferir do opening_line do markdown).
+      const openerText = rpDef.scripted
+        ? (rpDef.scripted.npc_lines[rpDef.scripted.flow.start]?.text ?? rpDef.opening_line)
+        : rpDef.opening_line;
       setMessages(prev => [...prev, {
         id: msgId, role: 'assistant',
-        content: rpDef.opening_line,
+        content: openerText,
         audioUrl: localUri,
         messageType: 'audio',
         timestamp: new Date(),
@@ -270,6 +288,92 @@ export default function RolePlayExerciseScreen() {
     try {
       const lower    = result.uri.toLowerCase();
       const isWav    = lower.endsWith('.wav');
+
+      // ── MODO SCRIPTED ──────────────────────────────────────────
+      // Transcreve o audio do user, classifica intent localmente,
+      // toca o npc_line do CDN. Sem chamada de LLM.
+      if (rp.scripted) {
+        const sFormData = new FormData();
+        sFormData.append('audio', {
+          uri: result.uri,
+          name: isWav ? 'turn.wav' : 'turn.m4a',
+          type: isWav ? 'audio/wav' : 'audio/x-m4a',
+        } as unknown as Blob);
+        if (userId) sFormData.append('userId', userId);
+
+        const sRes = await fetch(`${API_BASE_URL}/api/transcribe`, { method: 'POST', body: sFormData });
+        if (!sRes.ok) throw new Error('transcribe failed');
+        const sData = await sRes.json();
+        const transcript = (sData.transcription as string) ?? '';
+
+        // Update user bubble
+        setMessages(prev => prev.map(m => m.id === userMsgId ? { ...m, content: transcript } : m));
+        historyRef.current.push({ role: 'user', content: transcript });
+
+        // Runner: classifica + decide proximo npc_line
+        const { runScriptedTurn } = await import('@/lib/scriptedRunner');
+        const out = runScriptedTurn({
+          flow:          rp.scripted,
+          transcript,
+          objectivesMet: new Set(objectivesMet),
+          stuckTurns:    stuckTurnsRef.current,
+        });
+
+        // Marca objectives
+        if (out.newly_met.length > 0) {
+          stuckTurnsRef.current = 0;
+          Haptics.notificationAsync(Haptics.NotificationFeedbackType.Success);
+          soundEngine.play('answer_correct').catch(() => {});
+          setLastFiredObjective(out.newly_met[0]);
+          setObjectivesMet(prev => {
+            const next = new Set(prev);
+            for (const n of out.newly_met) next.add(n);
+            return next;
+          });
+        } else {
+          stuckTurnsRef.current += 1;
+        }
+
+        // Toca proximo npc_line (se houver match)
+        if (out.next_line_id) {
+          const npcLine = rp.scripted.npc_lines[out.next_line_id];
+          if (npcLine?.audio) {
+            const aMsgId = `assist_${Date.now()}`;
+            const dir   = `${FileSystem.documentDirectory}roleplay/`;
+            await FileSystem.makeDirectoryAsync(dir, { intermediates: true }).catch(() => {});
+            const localUri = `${dir}${aMsgId}.mp3`;
+            const dl = await FileSystem.downloadAsync(npcLine.audio, localUri);
+            if (dl.status >= 400) throw new Error(`download line ${out.next_line_id} falhou`);
+
+            setMessages(prev => [...prev, {
+              id: aMsgId, role: 'assistant',
+              content: npcLine.text,
+              audioUrl: localUri,
+              messageType: 'audio', timestamp: new Date(),
+            }]);
+            historyRef.current.push({ role: 'assistant', content: npcLine.text });
+
+            await setAudioModeAsync({ allowsRecording: false, playsInSilentMode: true }).catch(() => {});
+            const p = playerRef.current;
+            if (p) {
+              p.replace({ uri: localUri });
+              setPlayingMessageId(aMsgId);
+              try { p.play(); } catch {}
+            }
+          }
+        }
+        // TODO(fallback LLM): se out.should_fallback_llm, chamar /api/roleplay/turn como fallback.
+
+        const totalObj  = rp.objectives.length;
+        const willBeMet = objectivesMet.size + out.newly_met.length;
+        if (out.session_complete || willBeMet >= totalObj) {
+          Haptics.notificationAsync(Haptics.NotificationFeedbackType.Success);
+          setSessionComplete(true);
+        }
+        return;  // termina o branch scripted
+      }
+
+      // ── MODO LLM (legado) ──────────────────────────────────────
       const formData = new FormData();
       formData.append('audio', {
         uri: result.uri,
@@ -369,7 +473,7 @@ export default function RolePlayExerciseScreen() {
     setHintVisible(null);
     savedRef.current = false;
     stuckTurnsRef.current = 0;
-    historyRef.current = [{ role: 'assistant', content: rp.opening_line }];
+    historyRef.current = [{ role: 'assistant', content: rp.scripted?.npc_lines[rp.scripted.flow.start]?.text ?? rp.opening_line }];
     startTimeRef.current = Date.now();
     setRemainingSec(rp.time_budget_sec);
     setIsProcessing(true);

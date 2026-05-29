@@ -114,11 +114,14 @@ export default function GuidedChatExerciseScreen() {
     if (!gc || openedRef.current) return;
     openedRef.current = true;
     const id = `assist_${Date.now()}`;
+    const openerText = gc.scripted
+      ? (gc.scripted.npc_lines[gc.scripted.flow.start]?.text ?? gc.opening_message)
+      : gc.opening_message;
     setMessages([{
-      id, role: 'assistant', content: gc.opening_message,
+      id, role: 'assistant', content: openerText,
       messageType: 'text', timestamp: new Date(),
     }]);
-    historyRef.current = [{ role: 'assistant', content: gc.opening_message }];
+    historyRef.current = [{ role: 'assistant', content: openerText }];
     startTimeRef.current = Date.now();
     setRemainingSec(GUIDED_CHAT_BUDGET_SEC[level] ?? 300);
   }, [gc, level]);
@@ -161,11 +164,14 @@ export default function GuidedChatExerciseScreen() {
     savedRef.current = false;
     stuckTurnsRef.current = 0;
     const id = `assist_${Date.now()}`;
+    const openerText = gc.scripted
+      ? (gc.scripted.npc_lines[gc.scripted.flow.start]?.text ?? gc.opening_message)
+      : gc.opening_message;
     setMessages([{
-      id, role: 'assistant', content: gc.opening_message,
+      id, role: 'assistant', content: openerText,
       messageType: 'text', timestamp: new Date(),
     }]);
-    historyRef.current = [{ role: 'assistant', content: gc.opening_message }];
+    historyRef.current = [{ role: 'assistant', content: openerText }];
     startTimeRef.current = Date.now();
     setRemainingSec(GUIDED_CHAT_BUDGET_SEC[level] ?? 300);
   }, [gc, level]);
@@ -196,6 +202,58 @@ export default function GuidedChatExerciseScreen() {
 
     setIsProcessing(true);
     try {
+      // ── MODO SCRIPTED ──────────────────────────────────────────
+      // Classifica intent localmente, renderiza npc_line do CDN.
+      // Sem chamada de LLM.
+      if (gc.scripted) {
+        historyRef.current.push({ role: 'user', content: text });
+
+        const { runScriptedTurn } = await import('@/lib/scriptedRunner');
+        const out = runScriptedTurn({
+          flow:          gc.scripted,
+          transcript:    text,
+          objectivesMet: new Set(objectivesMet),
+          stuckTurns:    stuckTurnsRef.current,
+        });
+
+        if (out.newly_met.length > 0) {
+          stuckTurnsRef.current = 0;
+          Haptics.notificationAsync(Haptics.NotificationFeedbackType.Success);
+          soundEngine.play('answer_correct').catch(() => {});
+          setLastFiredObjective(out.newly_met[0]);
+          setObjectivesMet(prev => {
+            const next = new Set(prev);
+            for (const n of out.newly_met) next.add(n);
+            return next;
+          });
+        } else {
+          stuckTurnsRef.current += 1;
+        }
+
+        if (out.next_line_id) {
+          const npcLine = gc.scripted.npc_lines[out.next_line_id];
+          if (npcLine?.text) {
+            const aMsgId = `assist_${Date.now()}`;
+            setMessages(prev => [...prev, {
+              id: aMsgId, role: 'assistant',
+              content: npcLine.text,
+              messageType: 'text', timestamp: new Date(),
+            }]);
+            historyRef.current.push({ role: 'assistant', content: npcLine.text });
+          }
+        }
+        // TODO(fallback LLM): se out.should_fallback_llm, chamar /api/guided-chat/turn como fallback.
+
+        const totalObjS  = gc.objectives.length;
+        const willBeMetS = objectivesMet.size + out.newly_met.length;
+        if (out.session_complete || willBeMetS >= totalObjS) {
+          Haptics.notificationAsync(Haptics.NotificationFeedbackType.Success);
+          setSessionComplete(true);
+        }
+        return; // termina branch scripted
+      }
+
+      // ── MODO LLM (legado) ──────────────────────────────────────
       const nextPending = gc.objectives.find(o => !objectivesMet.has(o.id));
       const res = await fetch(`${API_BASE_URL}/api/guided-chat/turn`, {
         method: 'POST',

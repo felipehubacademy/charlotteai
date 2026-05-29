@@ -17,6 +17,43 @@
 import fs from 'node:fs';
 import path from 'node:path';
 import { fileURLToPath } from 'node:url';
+import { createRequire } from 'node:module';
+
+const require = createRequire(import.meta.url);
+const yaml = require('js-yaml');
+
+// Base URL do CDN pra audio scripted. Concatenado com o relative `audio:`
+// path no markdown. Bucket eh public, sem auth.
+const SCRIPTED_AUDIO_BASE_URL =
+  'https://fnvjibzreepubageztoi.supabase.co/storage/v1/object/public/curriculum-audio/';
+
+// Extrai o bloco YAML scripted: true do body de uma section role-play ou
+// guided-chat. Retorna o objeto parsed + injeta full URLs em npc_lines[*].audio.
+function parseScripted(body) {
+  const re = /```yaml\s*\n([\s\S]*?)\n```/g;
+  let m;
+  while ((m = re.exec(body)) !== null) {
+    const txt = m[1];
+    if (!/scripted:\s*true/.test(txt)) continue;
+    try {
+      const parsed = yaml.load(txt);
+      if (parsed?.scripted !== true) continue;
+      // Injeta URL completa em cada npc_lines[*].audio
+      if (parsed.npc_lines && typeof parsed.npc_lines === 'object') {
+        for (const k of Object.keys(parsed.npc_lines)) {
+          const line = parsed.npc_lines[k];
+          if (line?.audio && !/^https?:/i.test(line.audio)) {
+            line.audio = SCRIPTED_AUDIO_BASE_URL + line.audio;
+          }
+        }
+      }
+      return parsed;
+    } catch (e) {
+      console.warn(`  ⚠️  Bloco YAML scripted invalido: ${e.message}`);
+    }
+  }
+  return undefined;
+}
 
 const __dirname = path.dirname(fileURLToPath(import.meta.url));
 const REPO = path.resolve(__dirname, '../../..');
@@ -261,7 +298,9 @@ function parseRolePlay(body) {
   const evalMatch = rest.match(/\*\*Evaluation focus\*\*:?\s*([\s\S]*)$/i);
   const evaluation_focus = evalMatch ? parseBulletList(evalMatch[1]) : [];
 
-  return { scenario, voiced_by, persona, persona_outfit, time_budget_sec, opening_line, objectives, closing_cue, suggested_flow, evaluation_focus };
+  const scripted = parseScripted(body);
+
+  return { scenario, voiced_by, persona, persona_outfit, time_budget_sec, opening_line, objectives, closing_cue, suggested_flow, evaluation_focus, ...(scripted ? { scripted } : {}) };
 }
 
 // ─── Guided Chat parsing ──────────────────────────────────────────
@@ -291,7 +330,9 @@ function parseGuidedChat(body) {
   const scriptMatch = rest.match(/\*\*Script\*\*[\s\S]*$/i);
   const suggested_script = scriptMatch ? scriptMatch[0].trim() : undefined;
 
-  return { scenario, voiced_by, persona, persona_outfit, intro_pt, intro_en, opening_message, objectives, closing_cue, recap_pt, recap_en, suggested_script };
+  const scripted = parseScripted(body);
+
+  return { scenario, voiced_by, persona, persona_outfit, intro_pt, intro_en, opening_message, objectives, closing_cue, recap_pt, recap_en, suggested_script, ...(scripted ? { scripted } : {}) };
 }
 
 // ─── Objectives parsing (shared) ──────────────────────────────────

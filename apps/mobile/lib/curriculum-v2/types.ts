@@ -62,6 +62,47 @@ export interface Objective {
   hint_en?:       string;          // Need a hand? copy (EN, Inter)
 }
 
+// ── Scripted flow (POC v1) ────────────────────────────────────────
+// Quando role-play ou guided chat declara `scripted: true`, o cliente usa
+// audio pre-gerado em CDN e classificador local de intent, sem chamar LLM.
+// Fallback: se nenhum padrao matchar apos N tentativas, cai pro modo LLM.
+export interface ScriptedNPCLine {
+  text:  string;            // texto exato falado/exibido
+  audio: string;            // URL completa do MP3 no CDN
+}
+
+export interface ScriptedClassifyRule {
+  patterns_any?:               string[]; // pelo menos um precisa aparecer
+  patterns_required_one_of?:   string[]; // pelo menos um dos required
+}
+
+export type ScriptedClassify = Record<string, ScriptedClassifyRule>; // "obj_1", "obj_2", ...
+
+export interface ScriptedTransition {
+  when: {
+    objective_just_met?:        number;
+    partial?:                   string;     // "obj_1"
+    has_any?:                   string[];
+    missing_required_one_of?:   string[];
+    // Combinacoes: { objective_just_met: 3, has_any: ["yes","sure"] }
+  };
+  play:               string;                // npc_line id
+  session_complete?:  boolean;
+}
+
+export interface ScriptedFlow {
+  scripted:    true;
+  npc_lines:   Record<string, ScriptedNPCLine>;
+  classify:    ScriptedClassify;
+  flow: {
+    start:        string;                    // npc_line id
+    transitions:  ScriptedTransition[];
+  };
+  fallback?: {
+    llm_after_stuck?: number;                // ex: 2 — fallback pro LLM apos N tentativas seguidas
+  };
+}
+
 export interface RolePlay {
   scenario:        string;         // narrative setup
   voiced_by:       VoicedBy;
@@ -73,6 +114,7 @@ export interface RolePlay {
   closing_cue:     string;         // exact phrase NPC says to end naturally
   suggested_flow?: string;         // raw markdown of the reference flow (for debug/authoring)
   evaluation_focus?: string[];     // bullet points
+  scripted?:       ScriptedFlow;   // se presente, cliente usa fluxo determinístico (POC v1)
 }
 
 export interface GuidedChat {
@@ -88,6 +130,7 @@ export interface GuidedChat {
   recap_pt?:       string;         // shown on result card (Novice)
   recap_en?:       string;         // shown on result card (Inter/Advanced)
   suggested_script?: string;       // raw markdown for debug/authoring
+  scripted?:       ScriptedFlow;   // se presente, cliente usa fluxo determinístico (POC v1)
 }
 
 // ── Unit & Module ─────────────────────────────────────────────────

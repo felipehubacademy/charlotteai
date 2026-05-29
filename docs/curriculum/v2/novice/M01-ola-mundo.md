@@ -151,6 +151,70 @@ Charlotte fala via ElevenLabs (Rachel). Aluno repete; Azure Speech avalia pronú
 - Pronúncia clara das saudações
 - Naturalidade na resposta após "And you?"
 
+#### Scripted (POC v1)
+
+> Modo scripted (audio pré-gerado em CDN + classificador client-side de intent).
+> Quando a unit tem este bloco, o cliente NÃO chama o LLM — fluxo determinístico
+> pra garantir fidelidade pedagógica. Se nenhum padrão matchar após 2 tentativas
+> no mesmo objective, cai pro modo LLM como fallback.
+
+```yaml
+scripted: true
+
+# Lines do NPC, com paths estaveis. CLI gera audio via ElevenLabs (Rachel pra
+# Ana) e faz upload em curriculum-audio/m01/n01/roleplay/.
+npc_lines:
+  open:
+    text: "Hey! Long time no see! How are you?"
+    audio: "m01/n01/roleplay/open.mp3"
+  ask_absence:
+    text: "I'm great! Where have you been hiding?"
+    audio: "m01/n01/roleplay/ask_absence.mp3"
+  acknowledge_absence:
+    text: "Oh, makes sense. So, what now?"
+    audio: "m01/n01/roleplay/acknowledge_absence.mp3"
+  close:
+    text: "Sounds perfect! Let's go in."
+    audio: "m01/n01/roleplay/close.mp3"
+  # Bridge correctivo quando aluno responde sem "and you"
+  hint_add_and_you:
+    text: "Aw, I'm doing alright too! But wait — how are you doing?"
+    audio: "m01/n01/roleplay/hint_add_and_you.mp3"
+
+# Classificador de intent do aluno: substring match (case-insensitive) no
+# transcript do Whisper. patterns_required = todos OBRIGATORIOS; patterns_any
+# = pelo menos um.
+classify:
+  obj_1:                                  # greet back + ask back
+    patterns_any: ["good", "fine", "great", "okay", "alright", "well"]
+    patterns_required_one_of: ["and you", "how about you", "how are you", "you doing"]
+  obj_2:                                  # explain absence
+    patterns_any: ["busy", "work", "working", "study", "studying", "tired", "travel"]
+  obj_3:                                  # invite coffee / sit down
+    patterns_any: ["coffee", "let's get", "let's grab", "want to", "wanna", "sit down"]
+
+# Maquina de estados. start = primeiro NPC line. Apos cada turno do aluno,
+# o classifier marca objectives_met; o flow procura o proximo line baseado
+# no novo state.
+flow:
+  start: open
+  transitions:
+    # Quando obj_1 acabou de bater
+    - when: { objective_just_met: 1 }
+      play: ask_absence
+    # Aluno respondeu sem o "and you" — toca hint correctivo, NAO marca obj_1
+    - when: { partial: obj_1, has_any: ["good","fine","great","okay","alright","well"] }
+      play: hint_add_and_you
+    - when: { objective_just_met: 2 }
+      play: acknowledge_absence
+    - when: { objective_just_met: 3 }
+      play: close
+      session_complete: true
+
+fallback:
+  llm_after_stuck: 2
+```
+
 ### 4. Guided Chat
 
 **Cenário**: Tom, seu colega de escritório americano, acabou de chegar na segunda de manhã.
@@ -199,6 +263,72 @@ Charlotte fala via ElevenLabs (Rachel). Aluno repete; Azure Speech avalia pronú
 4. **Tom**: "Doing well, thanks for asking! Coffee?"
 
 5. **Student** (expected): "Yes, please! See you in the kitchen."
+
+#### Scripted (POC v1)
+
+```yaml
+scripted: true
+
+npc_lines:
+  open:
+    text: "Morning! Long Monday already, huh?"
+    audio: "m01/n01/chat/open.mp3"
+  ask_how_are_you:
+    text: "Good morning! How are you today?"
+    audio: "m01/n01/chat/ask_how_are_you.mp3"
+  offer_coffee:
+    text: "Doing well, thanks for asking! Coffee?"
+    audio: "m01/n01/chat/offer_coffee.mp3"
+  close_accept:
+    text: "Catch you in the kitchen!"
+    audio: "m01/n01/chat/close_accept.mp3"
+  close_decline:
+    text: "No worries — catch you later!"
+    audio: "m01/n01/chat/close_decline.mp3"
+  # Correções suaves
+  hint_morning:
+    text: "Morning! On Mondays 'good morning' lands better than just 'hi'. How are you?"
+    audio: "m01/n01/chat/hint_morning.mp3"
+  hint_full_sentence:
+    text: "Just 'fine'? Try 'I'm fine, thanks' — sounds more natural. How about you?"
+    audio: "m01/n01/chat/hint_full_sentence.mp3"
+
+classify:
+  obj_1:                                  # greet with morning
+    patterns_required_one_of: ["morning"]
+  obj_2:                                  # full answer + ask back
+    patterns_any: ["good", "fine", "great", "okay", "well"]
+    patterns_required_one_of: ["and you", "how about you", "how are you"]
+  obj_3:                                  # accept or decline coffee
+    patterns_any: ["yes", "sure", "let's go", "please", "of course", "no thanks", "maybe later", "i'm good"]
+
+flow:
+  start: open
+  transitions:
+    # Greet correto
+    - when: { objective_just_met: 1 }
+      play: ask_how_are_you
+    # Greet só com "hi" (sem "morning")
+    - when: { partial: obj_1, has_any: ["hi","hello","hey"], missing_required_one_of: ["morning"] }
+      play: hint_morning
+    # Resposta completa
+    - when: { objective_just_met: 2 }
+      play: offer_coffee
+    # Aluno só "fine" sem ask back
+    - when: { partial: obj_2, has_any: ["fine","good","great","okay","well"], missing_required_one_of: ["and you","how about you","how are you"] }
+      play: hint_full_sentence
+    # Aceita
+    - when: { objective_just_met: 3, has_any: ["yes","sure","please","of course","let's go"] }
+      play: close_accept
+      session_complete: true
+    # Recusa
+    - when: { objective_just_met: 3, has_any: ["no thanks","maybe later","i'm good"] }
+      play: close_decline
+      session_complete: true
+
+fallback:
+  llm_after_stuck: 2
+```
 
 ---
 
