@@ -122,6 +122,17 @@ export function runScriptedTurn(input: RunnerInput): RunnerOutput {
   const fallbackThreshold = flow.fallback?.llm_after_stuck ?? 999;
   const should_fallback_llm = !tr && willBeStuck >= fallbackThreshold;
 
+  // Log de debug — facilita auditoria via logcat/Console
+  if (__DEV__) {
+    console.log('[scriptedRunner]', {
+      transcript:   transcript.slice(0, 80),
+      allMatched, newly,
+      next_line_id: tr?.play ?? null,
+      is_hint:      isHint,
+      should_fallback_llm,
+    });
+  }
+
   return {
     next_line_id:        tr?.play ?? null,
     newly_met:           isHint ? [] : newly,        // hint NAO marca o objective (incentiva tentar de novo)

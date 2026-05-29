@@ -187,7 +187,8 @@ npc_lines:
 # = pelo menos um.
 classify:
   obj_1:                                  # greet back + ask back
-    patterns_any: ["good", "fine", "great", "okay", "alright", "well"]
+    # Greeting OU estado positivo OU greeting palavra. Aluno satisfaz com qq um.
+    patterns_any: ["good", "fine", "great", "okay", "alright", "well", "hi", "hello", "hey", "doing"]
     patterns_required_one_of: ["and you", "how about you", "how are you", "you doing"]
   obj_2:                                  # explain absence
     patterns_any: ["busy", "work", "working", "study", "studying", "tired", "travel"]

@@ -230,7 +230,11 @@
                 "great",
                 "okay",
                 "alright",
-                "well"
+                "well",
+                "hi",
+                "hello",
+                "hey",
+                "doing"
               ],
               "patterns_required_one_of": [
                 "and you",
