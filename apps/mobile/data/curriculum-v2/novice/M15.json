@@ -120,27 +120,27 @@
         {
           "text": "I worked yesterday.",
           "context": "basic -ed past",
-          "audio_url": "https://fnvjibzreepubageztoi.supabase.co/storage/v1/object/public/curriculum-audio/ls/8cffe8bee2d0be74.flac"
+          "audio_url": "https://fnvjibzreepubageztoi.supabase.co/storage/v1/object/public/curriculum-audio/ls/novice/8cffe8bee2d0be74.flac"
         },
         {
           "text": "She watched a movie.",
           "context": "3rd person past",
-          "audio_url": "https://fnvjibzreepubageztoi.supabase.co/storage/v1/object/public/curriculum-audio/ls/0c00087ac060a9e9.flac"
+          "audio_url": "https://fnvjibzreepubageztoi.supabase.co/storage/v1/object/public/curriculum-audio/ls/novice/0c00087ac060a9e9.flac"
         },
         {
           "text": "We played in the park.",
           "context": "plural past",
-          "audio_url": "https://fnvjibzreepubageztoi.supabase.co/storage/v1/object/public/curriculum-audio/ls/e4be86ad360354e3.flac"
+          "audio_url": "https://fnvjibzreepubageztoi.supabase.co/storage/v1/object/public/curriculum-audio/ls/novice/e4be86ad360354e3.flac"
         },
         {
           "text": "He cleaned his room.",
           "context": "-ed pronunciation /d/",
-          "audio_url": "https://fnvjibzreepubageztoi.supabase.co/storage/v1/object/public/curriculum-audio/ls/3d70d2f8a36122af.flac"
+          "audio_url": "https://fnvjibzreepubageztoi.supabase.co/storage/v1/object/public/curriculum-audio/ls/novice/3d70d2f8a36122af.flac"
         },
         {
           "text": "I studied English last week.",
           "context": "-ied irregular spelling",
-          "audio_url": "https://fnvjibzreepubageztoi.supabase.co/storage/v1/object/public/curriculum-audio/ls/898bedf07503861e.flac"
+          "audio_url": "https://fnvjibzreepubageztoi.supabase.co/storage/v1/object/public/curriculum-audio/ls/novice/898bedf07503861e.flac"
         }
       ],
       "roleplay": {
@@ -322,27 +322,27 @@
         {
           "text": "I closed the door.",
           "context": "e + d",
-          "audio_url": "https://fnvjibzreepubageztoi.supabase.co/storage/v1/object/public/curriculum-audio/ls/1d43448730389b6e.flac"
+          "audio_url": "https://fnvjibzreepubageztoi.supabase.co/storage/v1/object/public/curriculum-audio/ls/novice/1d43448730389b6e.flac"
         },
         {
           "text": "She arrived late.",
           "context": "arrive + d",
-          "audio_url": "https://fnvjibzreepubageztoi.supabase.co/storage/v1/object/public/curriculum-audio/ls/64f72d5e24a4d68c.flac"
+          "audio_url": "https://fnvjibzreepubageztoi.supabase.co/storage/v1/object/public/curriculum-audio/ls/novice/64f72d5e24a4d68c.flac"
         },
         {
           "text": "We stopped at the corner.",
           "context": "stop + ped",
-          "audio_url": "https://fnvjibzreepubageztoi.supabase.co/storage/v1/object/public/curriculum-audio/ls/f69714fc222c622d.flac"
+          "audio_url": "https://fnvjibzreepubageztoi.supabase.co/storage/v1/object/public/curriculum-audio/ls/novice/f69714fc222c622d.flac"
         },
         {
           "text": "He planned a trip.",
           "context": "plan + ned",
-          "audio_url": "https://fnvjibzreepubageztoi.supabase.co/storage/v1/object/public/curriculum-audio/ls/a3cf2740f2c55343.flac"
+          "audio_url": "https://fnvjibzreepubageztoi.supabase.co/storage/v1/object/public/curriculum-audio/ls/novice/a3cf2740f2c55343.flac"
         },
         {
           "text": "I tried it.",
           "context": "try → tried",
-          "audio_url": "https://fnvjibzreepubageztoi.supabase.co/storage/v1/object/public/curriculum-audio/ls/16c2f6efd8c827ea.flac"
+          "audio_url": "https://fnvjibzreepubageztoi.supabase.co/storage/v1/object/public/curriculum-audio/ls/novice/16c2f6efd8c827ea.flac"
         }
       ],
       "roleplay": {
@@ -524,27 +524,27 @@
         {
           "text": "I visited the gym last night.",
           "context": "visit",
-          "audio_url": "https://fnvjibzreepubageztoi.supabase.co/storage/v1/object/public/curriculum-audio/ls/974e2db4097cf3fc.flac"
+          "audio_url": "https://fnvjibzreepubageztoi.supabase.co/storage/v1/object/public/curriculum-audio/ls/novice/974e2db4097cf3fc.flac"
         },
         {
           "text": "She missed the bus.",
           "context": "miss",
-          "audio_url": "https://fnvjibzreepubageztoi.supabase.co/storage/v1/object/public/curriculum-audio/ls/fc5fadcc82e57840.flac"
+          "audio_url": "https://fnvjibzreepubageztoi.supabase.co/storage/v1/object/public/curriculum-audio/ls/novice/fc5fadcc82e57840.flac"
         },
         {
           "text": "We returned home at six.",
           "context": "return",
-          "audio_url": "https://fnvjibzreepubageztoi.supabase.co/storage/v1/object/public/curriculum-audio/ls/82329108fc0eb114.flac"
+          "audio_url": "https://fnvjibzreepubageztoi.supabase.co/storage/v1/object/public/curriculum-audio/ls/novice/82329108fc0eb114.flac"
         },
         {
           "text": "He finished his report.",
           "context": "finish",
-          "audio_url": "https://fnvjibzreepubageztoi.supabase.co/storage/v1/object/public/curriculum-audio/ls/8269959a51ff8902.flac"
+          "audio_url": "https://fnvjibzreepubageztoi.supabase.co/storage/v1/object/public/curriculum-audio/ls/novice/8269959a51ff8902.flac"
         },
         {
           "text": "They painted the house.",
           "context": "paint /id/",
-          "audio_url": "https://fnvjibzreepubageztoi.supabase.co/storage/v1/object/public/curriculum-audio/ls/2b9ec5fc2e405831.flac"
+          "audio_url": "https://fnvjibzreepubageztoi.supabase.co/storage/v1/object/public/curriculum-audio/ls/novice/2b9ec5fc2e405831.flac"
         }
       ],
       "roleplay": {
@@ -726,27 +726,27 @@
         {
           "text": "I worked yesterday.",
           "context": "/t/ sound (work)",
-          "audio_url": "https://fnvjibzreepubageztoi.supabase.co/storage/v1/object/public/curriculum-audio/ls/8cffe8bee2d0be74.flac"
+          "audio_url": "https://fnvjibzreepubageztoi.supabase.co/storage/v1/object/public/curriculum-audio/ls/novice/8cffe8bee2d0be74.flac"
         },
         {
           "text": "She played in the park.",
           "context": "/d/ sound (play)",
-          "audio_url": "https://fnvjibzreepubageztoi.supabase.co/storage/v1/object/public/curriculum-audio/ls/43492f0cb1cff7ae.flac"
+          "audio_url": "https://fnvjibzreepubageztoi.supabase.co/storage/v1/object/public/curriculum-audio/ls/novice/43492f0cb1cff7ae.flac"
         },
         {
           "text": "He visited his uncle.",
           "context": "/id/ sound (visit)",
-          "audio_url": "https://fnvjibzreepubageztoi.supabase.co/storage/v1/object/public/curriculum-audio/ls/675cd53d745b1e3a.flac"
+          "audio_url": "https://fnvjibzreepubageztoi.supabase.co/storage/v1/object/public/curriculum-audio/ls/novice/675cd53d745b1e3a.flac"
         },
         {
           "text": "They watched TV all night.",
           "context": "/t/ (watch)",
-          "audio_url": "https://fnvjibzreepubageztoi.supabase.co/storage/v1/object/public/curriculum-audio/ls/3e6ff62c44956af5.flac"
+          "audio_url": "https://fnvjibzreepubageztoi.supabase.co/storage/v1/object/public/curriculum-audio/ls/novice/3e6ff62c44956af5.flac"
         },
         {
           "text": "I painted the wall.",
           "context": "/id/ (paint)",
-          "audio_url": "https://fnvjibzreepubageztoi.supabase.co/storage/v1/object/public/curriculum-audio/ls/b9417491025b219e.flac"
+          "audio_url": "https://fnvjibzreepubageztoi.supabase.co/storage/v1/object/public/curriculum-audio/ls/novice/b9417491025b219e.flac"
         }
       ],
       "roleplay": {
@@ -928,27 +928,27 @@
         {
           "text": "I started work at eight.",
           "context": "start",
-          "audio_url": "https://fnvjibzreepubageztoi.supabase.co/storage/v1/object/public/curriculum-audio/ls/16c47e89c9eb9cd8.flac"
+          "audio_url": "https://fnvjibzreepubageztoi.supabase.co/storage/v1/object/public/curriculum-audio/ls/novice/16c47e89c9eb9cd8.flac"
         },
         {
           "text": "She cooked dinner.",
           "context": "cook",
-          "audio_url": "https://fnvjibzreepubageztoi.supabase.co/storage/v1/object/public/curriculum-audio/ls/be05a57a55b076a1.flac"
+          "audio_url": "https://fnvjibzreepubageztoi.supabase.co/storage/v1/object/public/curriculum-audio/ls/novice/be05a57a55b076a1.flac"
         },
         {
           "text": "We finished at nine.",
           "context": "finish",
-          "audio_url": "https://fnvjibzreepubageztoi.supabase.co/storage/v1/object/public/curriculum-audio/ls/05f14aca8ac7e6c0.flac"
+          "audio_url": "https://fnvjibzreepubageztoi.supabase.co/storage/v1/object/public/curriculum-audio/ls/novice/05f14aca8ac7e6c0.flac"
         },
         {
           "text": "He cleaned the kitchen.",
           "context": "clean",
-          "audio_url": "https://fnvjibzreepubageztoi.supabase.co/storage/v1/object/public/curriculum-audio/ls/5406f0e406298f7e.flac"
+          "audio_url": "https://fnvjibzreepubageztoi.supabase.co/storage/v1/object/public/curriculum-audio/ls/novice/5406f0e406298f7e.flac"
         },
         {
           "text": "They arrived early.",
           "context": "arrive",
-          "audio_url": "https://fnvjibzreepubageztoi.supabase.co/storage/v1/object/public/curriculum-audio/ls/1c55423a59da30a6.flac"
+          "audio_url": "https://fnvjibzreepubageztoi.supabase.co/storage/v1/object/public/curriculum-audio/ls/novice/1c55423a59da30a6.flac"
         }
       ],
       "roleplay": {

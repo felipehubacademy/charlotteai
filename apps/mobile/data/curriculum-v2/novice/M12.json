@@ -121,27 +121,27 @@
         {
           "text": "He is taller than me.",
           "context": "height comparison",
-          "audio_url": "https://fnvjibzreepubageztoi.supabase.co/storage/v1/object/public/curriculum-audio/ls/47a8513e507cd8b1.flac"
+          "audio_url": "https://fnvjibzreepubageztoi.supabase.co/storage/v1/object/public/curriculum-audio/ls/novice/47a8513e507cd8b1.flac"
         },
         {
           "text": "This shirt is cheaper than that one.",
           "context": "price",
-          "audio_url": "https://fnvjibzreepubageztoi.supabase.co/storage/v1/object/public/curriculum-audio/ls/58a8741eb99a0dc2.flac"
+          "audio_url": "https://fnvjibzreepubageztoi.supabase.co/storage/v1/object/public/curriculum-audio/ls/novice/58a8741eb99a0dc2.flac"
         },
         {
           "text": "I'm older than my brother.",
           "context": "age comparison",
-          "audio_url": "https://fnvjibzreepubageztoi.supabase.co/storage/v1/object/public/curriculum-audio/ls/3ba8bdf6ee95c381.flac"
+          "audio_url": "https://fnvjibzreepubageztoi.supabase.co/storage/v1/object/public/curriculum-audio/ls/novice/3ba8bdf6ee95c381.flac"
         },
         {
           "text": "São Paulo is bigger than Rio.",
           "context": "size",
-          "audio_url": "https://fnvjibzreepubageztoi.supabase.co/storage/v1/object/public/curriculum-audio/ls/f38912b8776cdbe7.flac"
+          "audio_url": "https://fnvjibzreepubageztoi.supabase.co/storage/v1/object/public/curriculum-audio/ls/novice/f38912b8776cdbe7.flac"
         },
         {
           "text": "Today is hotter than yesterday.",
           "context": "weather",
-          "audio_url": "https://fnvjibzreepubageztoi.supabase.co/storage/v1/object/public/curriculum-audio/ls/071e36da919ec0a4.flac"
+          "audio_url": "https://fnvjibzreepubageztoi.supabase.co/storage/v1/object/public/curriculum-audio/ls/novice/071e36da919ec0a4.flac"
         }
       ],
       "roleplay": {
@@ -323,27 +323,27 @@
         {
           "text": "This movie is more interesting.",
           "context": "long adj + more",
-          "audio_url": "https://fnvjibzreepubageztoi.supabase.co/storage/v1/object/public/curriculum-audio/ls/9824d39911c9e6ca.flac"
+          "audio_url": "https://fnvjibzreepubageztoi.supabase.co/storage/v1/object/public/curriculum-audio/ls/novice/9824d39911c9e6ca.flac"
         },
         {
           "text": "She is more beautiful than her sister.",
           "context": "beauty comparison",
-          "audio_url": "https://fnvjibzreepubageztoi.supabase.co/storage/v1/object/public/curriculum-audio/ls/8421d88c410556de.flac"
+          "audio_url": "https://fnvjibzreepubageztoi.supabase.co/storage/v1/object/public/curriculum-audio/ls/novice/8421d88c410556de.flac"
         },
         {
           "text": "This restaurant is more expensive.",
           "context": "price + long adj",
-          "audio_url": "https://fnvjibzreepubageztoi.supabase.co/storage/v1/object/public/curriculum-audio/ls/2224bf435810950c.flac"
+          "audio_url": "https://fnvjibzreepubageztoi.supabase.co/storage/v1/object/public/curriculum-audio/ls/novice/2224bf435810950c.flac"
         },
         {
           "text": "Yoga is more relaxing than running.",
           "context": "long adj comparison",
-          "audio_url": "https://fnvjibzreepubageztoi.supabase.co/storage/v1/object/public/curriculum-audio/ls/361ad2c3f0c6bd66.flac"
+          "audio_url": "https://fnvjibzreepubageztoi.supabase.co/storage/v1/object/public/curriculum-audio/ls/novice/361ad2c3f0c6bd66.flac"
         },
         {
           "text": "She is more intelligent than him.",
           "context": "intelligence",
-          "audio_url": "https://fnvjibzreepubageztoi.supabase.co/storage/v1/object/public/curriculum-audio/ls/45c8a0d47fe04fe3.flac"
+          "audio_url": "https://fnvjibzreepubageztoi.supabase.co/storage/v1/object/public/curriculum-audio/ls/novice/45c8a0d47fe04fe3.flac"
         }
       ],
       "roleplay": {
@@ -527,27 +527,27 @@
         {
           "text": "This coffee is better than that one.",
           "context": "better",
-          "audio_url": "https://fnvjibzreepubageztoi.supabase.co/storage/v1/object/public/curriculum-audio/ls/abdae14fad968f47.flac"
+          "audio_url": "https://fnvjibzreepubageztoi.supabase.co/storage/v1/object/public/curriculum-audio/ls/novice/abdae14fad968f47.flac"
         },
         {
           "text": "Today is worse than yesterday.",
           "context": "worse",
-          "audio_url": "https://fnvjibzreepubageztoi.supabase.co/storage/v1/object/public/curriculum-audio/ls/a949022babb6ac3b.flac"
+          "audio_url": "https://fnvjibzreepubageztoi.supabase.co/storage/v1/object/public/curriculum-audio/ls/novice/a949022babb6ac3b.flac"
         },
         {
           "text": "I have more time on weekends.",
           "context": "more",
-          "audio_url": "https://fnvjibzreepubageztoi.supabase.co/storage/v1/object/public/curriculum-audio/ls/a7a24068b217259d.flac"
+          "audio_url": "https://fnvjibzreepubageztoi.supabase.co/storage/v1/object/public/curriculum-audio/ls/novice/a7a24068b217259d.flac"
         },
         {
           "text": "My phone is better, but slower.",
           "context": "better contrast",
-          "audio_url": "https://fnvjibzreepubageztoi.supabase.co/storage/v1/object/public/curriculum-audio/ls/930399a8808acec0.flac"
+          "audio_url": "https://fnvjibzreepubageztoi.supabase.co/storage/v1/object/public/curriculum-audio/ls/novice/930399a8808acec0.flac"
         },
         {
           "text": "This is worse than I thought.",
           "context": "worse opinion",
-          "audio_url": "https://fnvjibzreepubageztoi.supabase.co/storage/v1/object/public/curriculum-audio/ls/840f947873205ec6.flac"
+          "audio_url": "https://fnvjibzreepubageztoi.supabase.co/storage/v1/object/public/curriculum-audio/ls/novice/840f947873205ec6.flac"
         }
       ],
       "roleplay": {
@@ -730,27 +730,27 @@
         {
           "text": "She is much taller.",
           "context": "much + short comparative",
-          "audio_url": "https://fnvjibzreepubageztoi.supabase.co/storage/v1/object/public/curriculum-audio/ls/4fc20e71f39315df.flac"
+          "audio_url": "https://fnvjibzreepubageztoi.supabase.co/storage/v1/object/public/curriculum-audio/ls/novice/4fc20e71f39315df.flac"
         },
         {
           "text": "It's a little more expensive.",
           "context": "a little + more",
-          "audio_url": "https://fnvjibzreepubageztoi.supabase.co/storage/v1/object/public/curriculum-audio/ls/d0d38f273630c36c.flac"
+          "audio_url": "https://fnvjibzreepubageztoi.supabase.co/storage/v1/object/public/curriculum-audio/ls/novice/d0d38f273630c36c.flac"
         },
         {
           "text": "I'm a bit older than her.",
           "context": "a bit + comparative",
-          "audio_url": "https://fnvjibzreepubageztoi.supabase.co/storage/v1/object/public/curriculum-audio/ls/e935dc49564ff6ad.flac"
+          "audio_url": "https://fnvjibzreepubageztoi.supabase.co/storage/v1/object/public/curriculum-audio/ls/novice/e935dc49564ff6ad.flac"
         },
         {
           "text": "This is much better.",
           "context": "much + better",
-          "audio_url": "https://fnvjibzreepubageztoi.supabase.co/storage/v1/object/public/curriculum-audio/ls/ab3a40a53d29f89a.flac"
+          "audio_url": "https://fnvjibzreepubageztoi.supabase.co/storage/v1/object/public/curriculum-audio/ls/novice/ab3a40a53d29f89a.flac"
         },
         {
           "text": "Today is a little hotter.",
           "context": "a little + short comparative",
-          "audio_url": "https://fnvjibzreepubageztoi.supabase.co/storage/v1/object/public/curriculum-audio/ls/64e8dba24ba9852a.flac"
+          "audio_url": "https://fnvjibzreepubageztoi.supabase.co/storage/v1/object/public/curriculum-audio/ls/novice/64e8dba24ba9852a.flac"
         }
       ],
       "roleplay": {
@@ -932,27 +932,27 @@
         {
           "text": "She is taller than me.",
           "context": "short comparative",
-          "audio_url": "https://fnvjibzreepubageztoi.supabase.co/storage/v1/object/public/curriculum-audio/ls/e9d230d8834fe4b3.flac"
+          "audio_url": "https://fnvjibzreepubageztoi.supabase.co/storage/v1/object/public/curriculum-audio/ls/novice/e9d230d8834fe4b3.flac"
         },
         {
           "text": "This is more expensive than that.",
           "context": "long comparative",
-          "audio_url": "https://fnvjibzreepubageztoi.supabase.co/storage/v1/object/public/curriculum-audio/ls/135b6c191695dfae.flac"
+          "audio_url": "https://fnvjibzreepubageztoi.supabase.co/storage/v1/object/public/curriculum-audio/ls/novice/135b6c191695dfae.flac"
         },
         {
           "text": "My coffee is better today.",
           "context": "irregular",
-          "audio_url": "https://fnvjibzreepubageztoi.supabase.co/storage/v1/object/public/curriculum-audio/ls/115e8b256df5f998.flac"
+          "audio_url": "https://fnvjibzreepubageztoi.supabase.co/storage/v1/object/public/curriculum-audio/ls/novice/115e8b256df5f998.flac"
         },
         {
           "text": "He is much faster than her.",
           "context": "much + comparative",
-          "audio_url": "https://fnvjibzreepubageztoi.supabase.co/storage/v1/object/public/curriculum-audio/ls/f8aa9b9370ba86c8.flac"
+          "audio_url": "https://fnvjibzreepubageztoi.supabase.co/storage/v1/object/public/curriculum-audio/ls/novice/f8aa9b9370ba86c8.flac"
         },
         {
           "text": "I'm a little older.",
           "context": "a little + comparative",
-          "audio_url": "https://fnvjibzreepubageztoi.supabase.co/storage/v1/object/public/curriculum-audio/ls/9b59c0a584614d2c.flac"
+          "audio_url": "https://fnvjibzreepubageztoi.supabase.co/storage/v1/object/public/curriculum-audio/ls/novice/9b59c0a584614d2c.flac"
         }
       ],
       "roleplay": {

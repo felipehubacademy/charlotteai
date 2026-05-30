@@ -137,8 +137,18 @@
         "id": "M05",
         "title": "Phrasal verbs essenciais",
         "file": "inter/M05.json"
+      },
+      {
+        "id": "M06",
+        "title": "Possibilidades e dúvidas",
+        "file": "inter/M06.json"
+      },
+      {
+        "id": "M07",
+        "title": "Quantificadores precisos",
+        "file": "inter/M07.json"
       }
     ]
   },
-  "generated_at": "2026-05-30T20:11:28.378Z"
+  "generated_at": "2026-05-30T20:17:43.352Z"
 }

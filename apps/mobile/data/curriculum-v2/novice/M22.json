@@ -118,27 +118,27 @@
         {
           "text": "I like coffee and tea.",
           "context": "and",
-          "audio_url": "https://fnvjibzreepubageztoi.supabase.co/storage/v1/object/public/curriculum-audio/ls/5330bef4fe5d0cc9.flac"
+          "audio_url": "https://fnvjibzreepubageztoi.supabase.co/storage/v1/object/public/curriculum-audio/ls/novice/5330bef4fe5d0cc9.flac"
         },
         {
           "text": "I like tea but not coffee.",
           "context": "but",
-          "audio_url": "https://fnvjibzreepubageztoi.supabase.co/storage/v1/object/public/curriculum-audio/ls/50ee8d9fe84f1f3b.flac"
+          "audio_url": "https://fnvjibzreepubageztoi.supabase.co/storage/v1/object/public/curriculum-audio/ls/novice/50ee8d9fe84f1f3b.flac"
         },
         {
           "text": "Coffee or tea?",
           "context": "or",
-          "audio_url": "https://fnvjibzreepubageztoi.supabase.co/storage/v1/object/public/curriculum-audio/ls/32c7a0e424abaecc.flac"
+          "audio_url": "https://fnvjibzreepubageztoi.supabase.co/storage/v1/object/public/curriculum-audio/ls/novice/32c7a0e424abaecc.flac"
         },
         {
           "text": "I'm tired, so I'll sleep.",
           "context": "so",
-          "audio_url": "https://fnvjibzreepubageztoi.supabase.co/storage/v1/object/public/curriculum-audio/ls/f269a3e4001d21db.flac"
+          "audio_url": "https://fnvjibzreepubageztoi.supabase.co/storage/v1/object/public/curriculum-audio/ls/novice/f269a3e4001d21db.flac"
         },
         {
           "text": "I want to travel, but I have no money.",
           "context": "but contrast",
-          "audio_url": "https://fnvjibzreepubageztoi.supabase.co/storage/v1/object/public/curriculum-audio/ls/783dc56540d7c0c1.flac"
+          "audio_url": "https://fnvjibzreepubageztoi.supabase.co/storage/v1/object/public/curriculum-audio/ls/novice/783dc56540d7c0c1.flac"
         }
       ],
       "roleplay": {
@@ -320,27 +320,27 @@
         {
           "text": "I'm tired because I worked all day.",
           "context": "cause",
-          "audio_url": "https://fnvjibzreepubageztoi.supabase.co/storage/v1/object/public/curriculum-audio/ls/b0465d490545c3d9.flac"
+          "audio_url": "https://fnvjibzreepubageztoi.supabase.co/storage/v1/object/public/curriculum-audio/ls/novice/b0465d490545c3d9.flac"
         },
         {
           "text": "I'm tired, so I'll rest.",
           "context": "result",
-          "audio_url": "https://fnvjibzreepubageztoi.supabase.co/storage/v1/object/public/curriculum-audio/ls/bfda158a0a0e50f0.flac"
+          "audio_url": "https://fnvjibzreepubageztoi.supabase.co/storage/v1/object/public/curriculum-audio/ls/novice/bfda158a0a0e50f0.flac"
         },
         {
           "text": "She studies because she wants to pass.",
           "context": "cause",
-          "audio_url": "https://fnvjibzreepubageztoi.supabase.co/storage/v1/object/public/curriculum-audio/ls/5baf37a67c3933bc.flac"
+          "audio_url": "https://fnvjibzreepubageztoi.supabase.co/storage/v1/object/public/curriculum-audio/ls/novice/5baf37a67c3933bc.flac"
         },
         {
           "text": "It rained, so we stayed home.",
           "context": "result",
-          "audio_url": "https://fnvjibzreepubageztoi.supabase.co/storage/v1/object/public/curriculum-audio/ls/5301f560897e21ec.flac"
+          "audio_url": "https://fnvjibzreepubageztoi.supabase.co/storage/v1/object/public/curriculum-audio/ls/novice/5301f560897e21ec.flac"
         },
         {
           "text": "He's happy because he got a job.",
           "context": "cause",
-          "audio_url": "https://fnvjibzreepubageztoi.supabase.co/storage/v1/object/public/curriculum-audio/ls/1e543ef5eb05ad64.flac"
+          "audio_url": "https://fnvjibzreepubageztoi.supabase.co/storage/v1/object/public/curriculum-audio/ls/novice/1e543ef5eb05ad64.flac"
         }
       ],
       "roleplay": {
@@ -522,27 +522,27 @@
         {
           "text": "She speaks quickly.",
           "context": "adj + ly",
-          "audio_url": "https://fnvjibzreepubageztoi.supabase.co/storage/v1/object/public/curriculum-audio/ls/38e03c022c9ddec9.flac"
+          "audio_url": "https://fnvjibzreepubageztoi.supabase.co/storage/v1/object/public/curriculum-audio/ls/novice/38e03c022c9ddec9.flac"
         },
         {
           "text": "He drives carefully.",
           "context": "careful + ly",
-          "audio_url": "https://fnvjibzreepubageztoi.supabase.co/storage/v1/object/public/curriculum-audio/ls/e03f89b1ab584f60.flac"
+          "audio_url": "https://fnvjibzreepubageztoi.supabase.co/storage/v1/object/public/curriculum-audio/ls/novice/e03f89b1ab584f60.flac"
         },
         {
           "text": "They study seriously.",
           "context": "serious + ly",
-          "audio_url": "https://fnvjibzreepubageztoi.supabase.co/storage/v1/object/public/curriculum-audio/ls/9fdc7cb041dbc783.flac"
+          "audio_url": "https://fnvjibzreepubageztoi.supabase.co/storage/v1/object/public/curriculum-audio/ls/novice/9fdc7cb041dbc783.flac"
         },
         {
           "text": "We sing happily.",
           "context": "happy → happily",
-          "audio_url": "https://fnvjibzreepubageztoi.supabase.co/storage/v1/object/public/curriculum-audio/ls/506908539bd5b7d6.flac"
+          "audio_url": "https://fnvjibzreepubageztoi.supabase.co/storage/v1/object/public/curriculum-audio/ls/novice/506908539bd5b7d6.flac"
         },
         {
           "text": "He sings well.",
           "context": "irregular (good → well)",
-          "audio_url": "https://fnvjibzreepubageztoi.supabase.co/storage/v1/object/public/curriculum-audio/ls/113be1177ff23584.flac"
+          "audio_url": "https://fnvjibzreepubageztoi.supabase.co/storage/v1/object/public/curriculum-audio/ls/novice/113be1177ff23584.flac"
         }
       ],
       "roleplay": {
@@ -724,27 +724,27 @@
         {
           "text": "Although it's cold, I'll go out.",
           "context": "although",
-          "audio_url": "https://fnvjibzreepubageztoi.supabase.co/storage/v1/object/public/curriculum-audio/ls/3f282c77c39503c8.flac"
+          "audio_url": "https://fnvjibzreepubageztoi.supabase.co/storage/v1/object/public/curriculum-audio/ls/novice/3f282c77c39503c8.flac"
         },
         {
           "text": "I want to travel. However, I have no money.",
           "context": "however",
-          "audio_url": "https://fnvjibzreepubageztoi.supabase.co/storage/v1/object/public/curriculum-audio/ls/bdad531e1ee4985a.flac"
+          "audio_url": "https://fnvjibzreepubageztoi.supabase.co/storage/v1/object/public/curriculum-audio/ls/novice/bdad531e1ee4985a.flac"
         },
         {
           "text": "Although he's tired, he keeps working.",
           "context": "although",
-          "audio_url": "https://fnvjibzreepubageztoi.supabase.co/storage/v1/object/public/curriculum-audio/ls/97c8b027b4049503.flac"
+          "audio_url": "https://fnvjibzreepubageztoi.supabase.co/storage/v1/object/public/curriculum-audio/ls/novice/97c8b027b4049503.flac"
         },
         {
           "text": "She studied. However, she didn't pass.",
           "context": "however",
-          "audio_url": "https://fnvjibzreepubageztoi.supabase.co/storage/v1/object/public/curriculum-audio/ls/cfe261e52a1d975e.flac"
+          "audio_url": "https://fnvjibzreepubageztoi.supabase.co/storage/v1/object/public/curriculum-audio/ls/novice/cfe261e52a1d975e.flac"
         },
         {
           "text": "Although I love coffee, I drink tea sometimes.",
           "context": "concession",
-          "audio_url": "https://fnvjibzreepubageztoi.supabase.co/storage/v1/object/public/curriculum-audio/ls/ec864e140f2f5b52.flac"
+          "audio_url": "https://fnvjibzreepubageztoi.supabase.co/storage/v1/object/public/curriculum-audio/ls/novice/ec864e140f2f5b52.flac"
         }
       ],
       "roleplay": {
@@ -926,27 +926,27 @@
         {
           "text": "I study English every day.",
           "context": "routine",
-          "audio_url": "https://fnvjibzreepubageztoi.supabase.co/storage/v1/object/public/curriculum-audio/ls/a17c72a986c98fbb.flac"
+          "audio_url": "https://fnvjibzreepubageztoi.supabase.co/storage/v1/object/public/curriculum-audio/ls/novice/a17c72a986c98fbb.flac"
         },
         {
           "text": "I went to Italy last year.",
           "context": "past",
-          "audio_url": "https://fnvjibzreepubageztoi.supabase.co/storage/v1/object/public/curriculum-audio/ls/cfde853eac7fdb4a.flac"
+          "audio_url": "https://fnvjibzreepubageztoi.supabase.co/storage/v1/object/public/curriculum-audio/ls/novice/cfde853eac7fdb4a.flac"
         },
         {
           "text": "I'm going to travel soon.",
           "context": "future plan",
-          "audio_url": "https://fnvjibzreepubageztoi.supabase.co/storage/v1/object/public/curriculum-audio/ls/0c6f6b49f8dc0f02.flac"
+          "audio_url": "https://fnvjibzreepubageztoi.supabase.co/storage/v1/object/public/curriculum-audio/ls/novice/0c6f6b49f8dc0f02.flac"
         },
         {
           "text": "If it rains, I'll stay home.",
           "context": "conditional",
-          "audio_url": "https://fnvjibzreepubageztoi.supabase.co/storage/v1/object/public/curriculum-audio/ls/c47890ea60a91dce.flac"
+          "audio_url": "https://fnvjibzreepubageztoi.supabase.co/storage/v1/object/public/curriculum-audio/ls/novice/c47890ea60a91dce.flac"
         },
         {
           "text": "Although it's hard, I love learning.",
           "context": "contrast",
-          "audio_url": "https://fnvjibzreepubageztoi.supabase.co/storage/v1/object/public/curriculum-audio/ls/007ff498756491ed.flac"
+          "audio_url": "https://fnvjibzreepubageztoi.supabase.co/storage/v1/object/public/curriculum-audio/ls/novice/007ff498756491ed.flac"
         }
       ],
       "roleplay": {

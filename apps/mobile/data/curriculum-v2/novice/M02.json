@@ -127,27 +127,27 @@
         {
           "text": "I am eighteen years old.",
           "context": "declarando idade adolescente",
-          "audio_url": "https://fnvjibzreepubageztoi.supabase.co/storage/v1/object/public/curriculum-audio/ls/b8b7deef724cb5f1.flac"
+          "audio_url": "https://fnvjibzreepubageztoi.supabase.co/storage/v1/object/public/curriculum-audio/ls/novice/b8b7deef724cb5f1.flac"
         },
         {
           "text": "My phone number is five five five.",
           "context": "soletrando dígitos",
-          "audio_url": "https://fnvjibzreepubageztoi.supabase.co/storage/v1/object/public/curriculum-audio/ls/48e3be0c2d2993b4.flac"
+          "audio_url": "https://fnvjibzreepubageztoi.supabase.co/storage/v1/object/public/curriculum-audio/ls/novice/48e3be0c2d2993b4.flac"
         },
         {
           "text": "Floor twelve, please.",
           "context": "pedindo andar no elevador",
-          "audio_url": "https://fnvjibzreepubageztoi.supabase.co/storage/v1/object/public/curriculum-audio/ls/aeba175e35d1c803.flac"
+          "audio_url": "https://fnvjibzreepubageztoi.supabase.co/storage/v1/object/public/curriculum-audio/ls/novice/aeba175e35d1c803.flac"
         },
         {
           "text": "Room sixteen.",
           "context": "referenciando quarto de hotel",
-          "audio_url": "https://fnvjibzreepubageztoi.supabase.co/storage/v1/object/public/curriculum-audio/ls/4b0a9a5cf931b9a7.flac"
+          "audio_url": "https://fnvjibzreepubageztoi.supabase.co/storage/v1/object/public/curriculum-audio/ls/novice/4b0a9a5cf931b9a7.flac"
         },
         {
           "text": "Page nineteen.",
           "context": "referenciando página de livro",
-          "audio_url": "https://fnvjibzreepubageztoi.supabase.co/storage/v1/object/public/curriculum-audio/ls/4d4f5be0915fb418.flac"
+          "audio_url": "https://fnvjibzreepubageztoi.supabase.co/storage/v1/object/public/curriculum-audio/ls/novice/4d4f5be0915fb418.flac"
         }
       ],
       "roleplay": {
@@ -321,27 +321,27 @@
         {
           "text": "I am twenty-five years old.",
           "context": "idade adulta padrão",
-          "audio_url": "https://fnvjibzreepubageztoi.supabase.co/storage/v1/object/public/curriculum-audio/ls/cfd4bf529d4fb45e.flac"
+          "audio_url": "https://fnvjibzreepubageztoi.supabase.co/storage/v1/object/public/curriculum-audio/ls/novice/cfd4bf529d4fb45e.flac"
         },
         {
           "text": "She is fifty.",
           "context": "resposta curta de idade",
-          "audio_url": "https://fnvjibzreepubageztoi.supabase.co/storage/v1/object/public/curriculum-audio/ls/7f34f02c6f45ae5a.flac"
+          "audio_url": "https://fnvjibzreepubageztoi.supabase.co/storage/v1/object/public/curriculum-audio/ls/novice/7f34f02c6f45ae5a.flac"
         },
         {
           "text": "It's one hundred dollars.",
           "context": "preço alto",
-          "audio_url": "https://fnvjibzreepubageztoi.supabase.co/storage/v1/object/public/curriculum-audio/ls/af1aaa80d3cf9cff.flac"
+          "audio_url": "https://fnvjibzreepubageztoi.supabase.co/storage/v1/object/public/curriculum-audio/ls/novice/af1aaa80d3cf9cff.flac"
         },
         {
           "text": "The temperature is thirty degrees.",
           "context": "clima",
-          "audio_url": "https://fnvjibzreepubageztoi.supabase.co/storage/v1/object/public/curriculum-audio/ls/4949b4a3afe71185.flac"
+          "audio_url": "https://fnvjibzreepubageztoi.supabase.co/storage/v1/object/public/curriculum-audio/ls/novice/4949b4a3afe71185.flac"
         },
         {
           "text": "He is thirty-three.",
           "context": "idade comum, número composto",
-          "audio_url": "https://fnvjibzreepubageztoi.supabase.co/storage/v1/object/public/curriculum-audio/ls/b8f26741dc1d659b.flac"
+          "audio_url": "https://fnvjibzreepubageztoi.supabase.co/storage/v1/object/public/curriculum-audio/ls/novice/b8f26741dc1d659b.flac"
         }
       ],
       "roleplay": {
@@ -515,27 +515,27 @@
         {
           "text": "I'm from Brazil.",
           "context": "chunk de origem mais comum",
-          "audio_url": "https://fnvjibzreepubageztoi.supabase.co/storage/v1/object/public/curriculum-audio/ls/7f07e5fca7ed8a95.flac"
+          "audio_url": "https://fnvjibzreepubageztoi.supabase.co/storage/v1/object/public/curriculum-audio/ls/novice/7f07e5fca7ed8a95.flac"
         },
         {
           "text": "She is from Japan.",
           "context": "terceira pessoa, país sem \"the\"",
-          "audio_url": "https://fnvjibzreepubageztoi.supabase.co/storage/v1/object/public/curriculum-audio/ls/fa98615947f5e40a.flac"
+          "audio_url": "https://fnvjibzreepubageztoi.supabase.co/storage/v1/object/public/curriculum-audio/ls/novice/fa98615947f5e40a.flac"
         },
         {
           "text": "He is from the United States.",
           "context": "país que leva \"the\"",
-          "audio_url": "https://fnvjibzreepubageztoi.supabase.co/storage/v1/object/public/curriculum-audio/ls/318dd6dd102f9b9b.flac"
+          "audio_url": "https://fnvjibzreepubageztoi.supabase.co/storage/v1/object/public/curriculum-audio/ls/novice/318dd6dd102f9b9b.flac"
         },
         {
           "text": "We are from Argentina.",
           "context": "plural, país sul-americano",
-          "audio_url": "https://fnvjibzreepubageztoi.supabase.co/storage/v1/object/public/curriculum-audio/ls/3643cbf4d645a9ac.flac"
+          "audio_url": "https://fnvjibzreepubageztoi.supabase.co/storage/v1/object/public/curriculum-audio/ls/novice/3643cbf4d645a9ac.flac"
         },
         {
           "text": "They are from France and Italy.",
           "context": "múltiplos países",
-          "audio_url": "https://fnvjibzreepubageztoi.supabase.co/storage/v1/object/public/curriculum-audio/ls/118444af50903688.flac"
+          "audio_url": "https://fnvjibzreepubageztoi.supabase.co/storage/v1/object/public/curriculum-audio/ls/novice/118444af50903688.flac"
         }
       ],
       "roleplay": {
@@ -711,27 +711,27 @@
         {
           "text": "I am Brazilian.",
           "context": "declarando nacionalidade",
-          "audio_url": "https://fnvjibzreepubageztoi.supabase.co/storage/v1/object/public/curriculum-audio/ls/1eef3df5850d84e1.flac"
+          "audio_url": "https://fnvjibzreepubageztoi.supabase.co/storage/v1/object/public/curriculum-audio/ls/novice/1eef3df5850d84e1.flac"
         },
         {
           "text": "She is American.",
           "context": "terceira pessoa, nacionalidade comum",
-          "audio_url": "https://fnvjibzreepubageztoi.supabase.co/storage/v1/object/public/curriculum-audio/ls/e2362ed67429ddfb.flac"
+          "audio_url": "https://fnvjibzreepubageztoi.supabase.co/storage/v1/object/public/curriculum-audio/ls/novice/e2362ed67429ddfb.flac"
         },
         {
           "text": "They are Japanese.",
           "context": "plural, \"Japanese\" não muda",
-          "audio_url": "https://fnvjibzreepubageztoi.supabase.co/storage/v1/object/public/curriculum-audio/ls/7770e781f09219f3.flac"
+          "audio_url": "https://fnvjibzreepubageztoi.supabase.co/storage/v1/object/public/curriculum-audio/ls/novice/7770e781f09219f3.flac"
         },
         {
           "text": "He is British.",
           "context": "nacionalidade UK",
-          "audio_url": "https://fnvjibzreepubageztoi.supabase.co/storage/v1/object/public/curriculum-audio/ls/fd80e7bdb332f26f.flac"
+          "audio_url": "https://fnvjibzreepubageztoi.supabase.co/storage/v1/object/public/curriculum-audio/ls/novice/fd80e7bdb332f26f.flac"
         },
         {
           "text": "We are not Italian. We are Spanish.",
           "context": "distinguindo nacionalidades",
-          "audio_url": "https://fnvjibzreepubageztoi.supabase.co/storage/v1/object/public/curriculum-audio/ls/bf1ac6cd867135a7.flac"
+          "audio_url": "https://fnvjibzreepubageztoi.supabase.co/storage/v1/object/public/curriculum-audio/ls/novice/bf1ac6cd867135a7.flac"
         }
       ],
       "roleplay": {
@@ -905,27 +905,27 @@
         {
           "text": "Hi, my name is Felipe.",
           "context": "abertura de apresentação",
-          "audio_url": "https://fnvjibzreepubageztoi.supabase.co/storage/v1/object/public/curriculum-audio/ls/7956d330f0c503f4.flac"
+          "audio_url": "https://fnvjibzreepubageztoi.supabase.co/storage/v1/object/public/curriculum-audio/ls/novice/7956d330f0c503f4.flac"
         },
         {
           "text": "I'm twenty-five years old.",
           "context": "idade",
-          "audio_url": "https://fnvjibzreepubageztoi.supabase.co/storage/v1/object/public/curriculum-audio/ls/0b6cbf1442a0c74f.flac"
+          "audio_url": "https://fnvjibzreepubageztoi.supabase.co/storage/v1/object/public/curriculum-audio/ls/novice/0b6cbf1442a0c74f.flac"
         },
         {
           "text": "I'm from São Paulo, Brazil.",
           "context": "origem (cidade + país)",
-          "audio_url": "https://fnvjibzreepubageztoi.supabase.co/storage/v1/object/public/curriculum-audio/ls/46ae9ae4aa4d8ecf.flac"
+          "audio_url": "https://fnvjibzreepubageztoi.supabase.co/storage/v1/object/public/curriculum-audio/ls/novice/46ae9ae4aa4d8ecf.flac"
         },
         {
           "text": "I'm Brazilian.",
           "context": "nacionalidade",
-          "audio_url": "https://fnvjibzreepubageztoi.supabase.co/storage/v1/object/public/curriculum-audio/ls/5abdd3fbb69620e8.flac"
+          "audio_url": "https://fnvjibzreepubageztoi.supabase.co/storage/v1/object/public/curriculum-audio/ls/novice/5abdd3fbb69620e8.flac"
         },
         {
           "text": "Nice to meet you!",
           "context": "fechamento de apresentação",
-          "audio_url": "https://fnvjibzreepubageztoi.supabase.co/storage/v1/object/public/curriculum-audio/ls/1e56eb9b24364b62.flac"
+          "audio_url": "https://fnvjibzreepubageztoi.supabase.co/storage/v1/object/public/curriculum-audio/ls/novice/1e56eb9b24364b62.flac"
         }
       ],
       "roleplay": {

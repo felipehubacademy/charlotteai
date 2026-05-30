@@ -135,27 +135,27 @@
         {
           "text": "My name is Felipe.",
           "context": "apresentação básica (chunk M01)",
-          "audio_url": "https://fnvjibzreepubageztoi.supabase.co/storage/v1/object/public/curriculum-audio/ls/23039ee2945bfc76.flac"
+          "audio_url": "https://fnvjibzreepubageztoi.supabase.co/storage/v1/object/public/curriculum-audio/ls/novice/23039ee2945bfc76.flac"
         },
         {
           "text": "My father is American.",
           "context": "possessivo + família + nacionalidade",
-          "audio_url": "https://fnvjibzreepubageztoi.supabase.co/storage/v1/object/public/curriculum-audio/ls/2f06cb919bc9393c.flac"
+          "audio_url": "https://fnvjibzreepubageztoi.supabase.co/storage/v1/object/public/curriculum-audio/ls/novice/2f06cb919bc9393c.flac"
         },
         {
           "text": "Her brother is twenty.",
           "context": "terceira pessoa + família + idade",
-          "audio_url": "https://fnvjibzreepubageztoi.supabase.co/storage/v1/object/public/curriculum-audio/ls/bfe8259539eeb686.flac"
+          "audio_url": "https://fnvjibzreepubageztoi.supabase.co/storage/v1/object/public/curriculum-audio/ls/novice/bfe8259539eeb686.flac"
         },
         {
           "text": "His mother is from Brazil.",
           "context": "terceira pessoa + família + origem",
-          "audio_url": "https://fnvjibzreepubageztoi.supabase.co/storage/v1/object/public/curriculum-audio/ls/dd9a34e7cbb47420.flac"
+          "audio_url": "https://fnvjibzreepubageztoi.supabase.co/storage/v1/object/public/curriculum-audio/ls/novice/dd9a34e7cbb47420.flac"
         },
         {
           "text": "My sister is fifteen years old.",
           "context": "idade completa de irmã",
-          "audio_url": "https://fnvjibzreepubageztoi.supabase.co/storage/v1/object/public/curriculum-audio/ls/3e79df66d36a93d2.flac"
+          "audio_url": "https://fnvjibzreepubageztoi.supabase.co/storage/v1/object/public/curriculum-audio/ls/novice/3e79df66d36a93d2.flac"
         }
       ],
       "roleplay": {
@@ -339,27 +339,27 @@
         {
           "text": "I've got two brothers.",
           "context": "contagem própria de família",
-          "audio_url": "https://fnvjibzreepubageztoi.supabase.co/storage/v1/object/public/curriculum-audio/ls/87eee8fb72491f85.flac"
+          "audio_url": "https://fnvjibzreepubageztoi.supabase.co/storage/v1/object/public/curriculum-audio/ls/novice/87eee8fb72491f85.flac"
         },
         {
           "text": "She has got one sister.",
           "context": "terceira pessoa, \"has got\"",
-          "audio_url": "https://fnvjibzreepubageztoi.supabase.co/storage/v1/object/public/curriculum-audio/ls/ce5c6111d350c0f1.flac"
+          "audio_url": "https://fnvjibzreepubageztoi.supabase.co/storage/v1/object/public/curriculum-audio/ls/novice/ce5c6111d350c0f1.flac"
         },
         {
           "text": "We have got a big family.",
           "context": "plural",
-          "audio_url": "https://fnvjibzreepubageztoi.supabase.co/storage/v1/object/public/curriculum-audio/ls/2fb9acd094fc62e9.flac"
+          "audio_url": "https://fnvjibzreepubageztoi.supabase.co/storage/v1/object/public/curriculum-audio/ls/novice/2fb9acd094fc62e9.flac"
         },
         {
           "text": "He's got three friends.",
           "context": "contração \"he's got\"",
-          "audio_url": "https://fnvjibzreepubageztoi.supabase.co/storage/v1/object/public/curriculum-audio/ls/bf28ced0e96752bf.flac"
+          "audio_url": "https://fnvjibzreepubageztoi.supabase.co/storage/v1/object/public/curriculum-audio/ls/novice/bf28ced0e96752bf.flac"
         },
         {
           "text": "Have you got any sisters?",
           "context": "pergunta com \"have got\"",
-          "audio_url": "https://fnvjibzreepubageztoi.supabase.co/storage/v1/object/public/curriculum-audio/ls/9ea1bf88f527dc42.flac"
+          "audio_url": "https://fnvjibzreepubageztoi.supabase.co/storage/v1/object/public/curriculum-audio/ls/novice/9ea1bf88f527dc42.flac"
         }
       ],
       "roleplay": {
@@ -541,27 +541,27 @@
         {
           "text": "Maria is my wife.",
           "context": "apresentando esposa",
-          "audio_url": "https://fnvjibzreepubageztoi.supabase.co/storage/v1/object/public/curriculum-audio/ls/51a139349286d5e9.flac"
+          "audio_url": "https://fnvjibzreepubageztoi.supabase.co/storage/v1/object/public/curriculum-audio/ls/novice/51a139349286d5e9.flac"
         },
         {
           "text": "Her husband is American.",
           "context": "terceira pessoa + cônjuge + nacionalidade",
-          "audio_url": "https://fnvjibzreepubageztoi.supabase.co/storage/v1/object/public/curriculum-audio/ls/289a992e2418c607.flac"
+          "audio_url": "https://fnvjibzreepubageztoi.supabase.co/storage/v1/object/public/curriculum-audio/ls/novice/289a992e2418c607.flac"
         },
         {
           "text": "I've got two sons.",
           "context": "filhos próprios",
-          "audio_url": "https://fnvjibzreepubageztoi.supabase.co/storage/v1/object/public/curriculum-audio/ls/629ce144e83518a9.flac"
+          "audio_url": "https://fnvjibzreepubageztoi.supabase.co/storage/v1/object/public/curriculum-audio/ls/novice/629ce144e83518a9.flac"
         },
         {
           "text": "His daughter is fifteen.",
           "context": "terceira pessoa + filha + idade",
-          "audio_url": "https://fnvjibzreepubageztoi.supabase.co/storage/v1/object/public/curriculum-audio/ls/1237f9179bc4e313.flac"
+          "audio_url": "https://fnvjibzreepubageztoi.supabase.co/storage/v1/object/public/curriculum-audio/ls/novice/1237f9179bc4e313.flac"
         },
         {
           "text": "My family is great.",
           "context": "fechamento positivo",
-          "audio_url": "https://fnvjibzreepubageztoi.supabase.co/storage/v1/object/public/curriculum-audio/ls/eac29c45e3bfe2a8.flac"
+          "audio_url": "https://fnvjibzreepubageztoi.supabase.co/storage/v1/object/public/curriculum-audio/ls/novice/eac29c45e3bfe2a8.flac"
         }
       ],
       "roleplay": {
@@ -743,27 +743,27 @@
         {
           "text": "He is my best friend.",
           "context": "apresentando melhor amigo",
-          "audio_url": "https://fnvjibzreepubageztoi.supabase.co/storage/v1/object/public/curriculum-audio/ls/8726b127fe616b70.flac"
+          "audio_url": "https://fnvjibzreepubageztoi.supabase.co/storage/v1/object/public/curriculum-audio/ls/novice/8726b127fe616b70.flac"
         },
         {
           "text": "His name is Pedro.",
           "context": "nome do amigo (terceira pessoa)",
-          "audio_url": "https://fnvjibzreepubageztoi.supabase.co/storage/v1/object/public/curriculum-audio/ls/ac2df5b3aac093fe.flac"
+          "audio_url": "https://fnvjibzreepubageztoi.supabase.co/storage/v1/object/public/curriculum-audio/ls/novice/ac2df5b3aac093fe.flac"
         },
         {
           "text": "She is twenty-five.",
           "context": "idade da amiga",
-          "audio_url": "https://fnvjibzreepubageztoi.supabase.co/storage/v1/object/public/curriculum-audio/ls/a887e76a66b84893.flac"
+          "audio_url": "https://fnvjibzreepubageztoi.supabase.co/storage/v1/object/public/curriculum-audio/ls/novice/a887e76a66b84893.flac"
         },
         {
           "text": "Her name is Sofia.",
           "context": "nome dela (terceira pessoa feminina)",
-          "audio_url": "https://fnvjibzreepubageztoi.supabase.co/storage/v1/object/public/curriculum-audio/ls/3efa7f5f3ca9460a.flac"
+          "audio_url": "https://fnvjibzreepubageztoi.supabase.co/storage/v1/object/public/curriculum-audio/ls/novice/3efa7f5f3ca9460a.flac"
         },
         {
           "text": "My best friend is Italian.",
           "context": "amigo + nacionalidade",
-          "audio_url": "https://fnvjibzreepubageztoi.supabase.co/storage/v1/object/public/curriculum-audio/ls/3991a0945f137cc3.flac"
+          "audio_url": "https://fnvjibzreepubageztoi.supabase.co/storage/v1/object/public/curriculum-audio/ls/novice/3991a0945f137cc3.flac"
         }
       ],
       "roleplay": {
@@ -945,27 +945,27 @@
         {
           "text": "My name is Felipe.",
           "context": "auto-apresentação (chunk M01)",
-          "audio_url": "https://fnvjibzreepubageztoi.supabase.co/storage/v1/object/public/curriculum-audio/ls/23039ee2945bfc76.flac"
+          "audio_url": "https://fnvjibzreepubageztoi.supabase.co/storage/v1/object/public/curriculum-audio/ls/novice/23039ee2945bfc76.flac"
         },
         {
           "text": "My mother is Maria. She is fifty.",
           "context": "apresenta mãe + idade",
-          "audio_url": "https://fnvjibzreepubageztoi.supabase.co/storage/v1/object/public/curriculum-audio/ls/015cc23a80aed83a.flac"
+          "audio_url": "https://fnvjibzreepubageztoi.supabase.co/storage/v1/object/public/curriculum-audio/ls/novice/015cc23a80aed83a.flac"
         },
         {
           "text": "My father is from Brazil. He is Brazilian.",
           "context": "apresenta pai + origem + nacionalidade",
-          "audio_url": "https://fnvjibzreepubageztoi.supabase.co/storage/v1/object/public/curriculum-audio/ls/f049c48a6999ee63.flac"
+          "audio_url": "https://fnvjibzreepubageztoi.supabase.co/storage/v1/object/public/curriculum-audio/ls/novice/f049c48a6999ee63.flac"
         },
         {
           "text": "My sister is fifteen years old.",
           "context": "idade da irmã",
-          "audio_url": "https://fnvjibzreepubageztoi.supabase.co/storage/v1/object/public/curriculum-audio/ls/3e79df66d36a93d2.flac"
+          "audio_url": "https://fnvjibzreepubageztoi.supabase.co/storage/v1/object/public/curriculum-audio/ls/novice/3e79df66d36a93d2.flac"
         },
         {
           "text": "We are a great family.",
           "context": "fechamento positivo",
-          "audio_url": "https://fnvjibzreepubageztoi.supabase.co/storage/v1/object/public/curriculum-audio/ls/8d6e46701dfe5f4e.flac"
+          "audio_url": "https://fnvjibzreepubageztoi.supabase.co/storage/v1/object/public/curriculum-audio/ls/novice/8d6e46701dfe5f4e.flac"
         }
       ],
       "roleplay": {

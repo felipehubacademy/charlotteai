@@ -129,27 +129,27 @@
         {
           "text": "She works in a hospital.",
           "context": "3ª pessoa + -s",
-          "audio_url": "https://fnvjibzreepubageztoi.supabase.co/storage/v1/object/public/curriculum-audio/ls/fbf94cc7c017f9c4.flac"
+          "audio_url": "https://fnvjibzreepubageztoi.supabase.co/storage/v1/object/public/curriculum-audio/ls/novice/fbf94cc7c017f9c4.flac"
         },
         {
           "text": "He studies English every day.",
           "context": "-ies (consoante + y)",
-          "audio_url": "https://fnvjibzreepubageztoi.supabase.co/storage/v1/object/public/curriculum-audio/ls/d378b0344aeedfb4.flac"
+          "audio_url": "https://fnvjibzreepubageztoi.supabase.co/storage/v1/object/public/curriculum-audio/ls/novice/d378b0344aeedfb4.flac"
         },
         {
           "text": "My brother goes to school.",
           "context": "-es (verbos em -o)",
-          "audio_url": "https://fnvjibzreepubageztoi.supabase.co/storage/v1/object/public/curriculum-audio/ls/d8ac9a5ebcf11e79.flac"
+          "audio_url": "https://fnvjibzreepubageztoi.supabase.co/storage/v1/object/public/curriculum-audio/ls/novice/d8ac9a5ebcf11e79.flac"
         },
         {
           "text": "She watches TV at night.",
           "context": "-es (verbos em -ch)",
-          "audio_url": "https://fnvjibzreepubageztoi.supabase.co/storage/v1/object/public/curriculum-audio/ls/563b9384d89baa2f.flac"
+          "audio_url": "https://fnvjibzreepubageztoi.supabase.co/storage/v1/object/public/curriculum-audio/ls/novice/563b9384d89baa2f.flac"
         },
         {
           "text": "Lucas drinks coffee in the morning.",
           "context": "-s regular",
-          "audio_url": "https://fnvjibzreepubageztoi.supabase.co/storage/v1/object/public/curriculum-audio/ls/069d77c7bae72671.flac"
+          "audio_url": "https://fnvjibzreepubageztoi.supabase.co/storage/v1/object/public/curriculum-audio/ls/novice/069d77c7bae72671.flac"
         }
       ],
       "roleplay": {
@@ -333,27 +333,27 @@
         {
           "text": "I don't drink coffee.",
           "context": "own habit negative",
-          "audio_url": "https://fnvjibzreepubageztoi.supabase.co/storage/v1/object/public/curriculum-audio/ls/c06de994d2b470ef.flac"
+          "audio_url": "https://fnvjibzreepubageztoi.supabase.co/storage/v1/object/public/curriculum-audio/ls/novice/c06de994d2b470ef.flac"
         },
         {
           "text": "She doesn't work on Mondays.",
           "context": "3rd person negative",
-          "audio_url": "https://fnvjibzreepubageztoi.supabase.co/storage/v1/object/public/curriculum-audio/ls/e97e70f04d82fe13.flac"
+          "audio_url": "https://fnvjibzreepubageztoi.supabase.co/storage/v1/object/public/curriculum-audio/ls/novice/e97e70f04d82fe13.flac"
         },
         {
           "text": "He doesn't like pizza.",
           "context": "preference negative",
-          "audio_url": "https://fnvjibzreepubageztoi.supabase.co/storage/v1/object/public/curriculum-audio/ls/c4d483ebbf4eb656.flac"
+          "audio_url": "https://fnvjibzreepubageztoi.supabase.co/storage/v1/object/public/curriculum-audio/ls/novice/c4d483ebbf4eb656.flac"
         },
         {
           "text": "We don't live in São Paulo.",
           "context": "plural negative",
-          "audio_url": "https://fnvjibzreepubageztoi.supabase.co/storage/v1/object/public/curriculum-audio/ls/13973e17f8d1a118.flac"
+          "audio_url": "https://fnvjibzreepubageztoi.supabase.co/storage/v1/object/public/curriculum-audio/ls/novice/13973e17f8d1a118.flac"
         },
         {
           "text": "My sister doesn't study French.",
           "context": "family member negative",
-          "audio_url": "https://fnvjibzreepubageztoi.supabase.co/storage/v1/object/public/curriculum-audio/ls/1f720f377bb806bb.flac"
+          "audio_url": "https://fnvjibzreepubageztoi.supabase.co/storage/v1/object/public/curriculum-audio/ls/novice/1f720f377bb806bb.flac"
         }
       ],
       "roleplay": {
@@ -537,27 +537,27 @@
         {
           "text": "Do you work on Sundays?",
           "context": "Do you question",
-          "audio_url": "https://fnvjibzreepubageztoi.supabase.co/storage/v1/object/public/curriculum-audio/ls/b9a394080bef1c82.flac"
+          "audio_url": "https://fnvjibzreepubageztoi.supabase.co/storage/v1/object/public/curriculum-audio/ls/novice/b9a394080bef1c82.flac"
         },
         {
           "text": "Does she like coffee?",
           "context": "Does she question",
-          "audio_url": "https://fnvjibzreepubageztoi.supabase.co/storage/v1/object/public/curriculum-audio/ls/6faa5852938dcfa2.flac"
+          "audio_url": "https://fnvjibzreepubageztoi.supabase.co/storage/v1/object/public/curriculum-audio/ls/novice/6faa5852938dcfa2.flac"
         },
         {
           "text": "Do they live near you?",
           "context": "Do they question",
-          "audio_url": "https://fnvjibzreepubageztoi.supabase.co/storage/v1/object/public/curriculum-audio/ls/302992309e0cb973.flac"
+          "audio_url": "https://fnvjibzreepubageztoi.supabase.co/storage/v1/object/public/curriculum-audio/ls/novice/302992309e0cb973.flac"
         },
         {
           "text": "Does your brother speak English?",
           "context": "Does + named person",
-          "audio_url": "https://fnvjibzreepubageztoi.supabase.co/storage/v1/object/public/curriculum-audio/ls/d539ecf578a65682.flac"
+          "audio_url": "https://fnvjibzreepubageztoi.supabase.co/storage/v1/object/public/curriculum-audio/ls/novice/d539ecf578a65682.flac"
         },
         {
           "text": "Yes, I do. No, she doesn't.",
           "context": "short answers",
-          "audio_url": "https://fnvjibzreepubageztoi.supabase.co/storage/v1/object/public/curriculum-audio/ls/13580ecaefffcaf2.flac"
+          "audio_url": "https://fnvjibzreepubageztoi.supabase.co/storage/v1/object/public/curriculum-audio/ls/novice/13580ecaefffcaf2.flac"
         }
       ],
       "roleplay": {
@@ -741,27 +741,27 @@
         {
           "text": "Where do you work?",
           "context": "Where + do you",
-          "audio_url": "https://fnvjibzreepubageztoi.supabase.co/storage/v1/object/public/curriculum-audio/ls/35446aa3cf09db2c.flac"
+          "audio_url": "https://fnvjibzreepubageztoi.supabase.co/storage/v1/object/public/curriculum-audio/ls/novice/35446aa3cf09db2c.flac"
         },
         {
           "text": "What does she study?",
           "context": "What + does",
-          "audio_url": "https://fnvjibzreepubageztoi.supabase.co/storage/v1/object/public/curriculum-audio/ls/aea82a2ccf649b28.flac"
+          "audio_url": "https://fnvjibzreepubageztoi.supabase.co/storage/v1/object/public/curriculum-audio/ls/novice/aea82a2ccf649b28.flac"
         },
         {
           "text": "When do you have dinner?",
           "context": "When + do you",
-          "audio_url": "https://fnvjibzreepubageztoi.supabase.co/storage/v1/object/public/curriculum-audio/ls/2418897627abfaeb.flac"
+          "audio_url": "https://fnvjibzreepubageztoi.supabase.co/storage/v1/object/public/curriculum-audio/ls/novice/2418897627abfaeb.flac"
         },
         {
           "text": "Why do you study English?",
           "context": "Why + do you",
-          "audio_url": "https://fnvjibzreepubageztoi.supabase.co/storage/v1/object/public/curriculum-audio/ls/7067310bf552baff.flac"
+          "audio_url": "https://fnvjibzreepubageztoi.supabase.co/storage/v1/object/public/curriculum-audio/ls/novice/7067310bf552baff.flac"
         },
         {
           "text": "How does your brother go to school?",
           "context": "How + does",
-          "audio_url": "https://fnvjibzreepubageztoi.supabase.co/storage/v1/object/public/curriculum-audio/ls/5917340e1e2f1aeb.flac"
+          "audio_url": "https://fnvjibzreepubageztoi.supabase.co/storage/v1/object/public/curriculum-audio/ls/novice/5917340e1e2f1aeb.flac"
         }
       ],
       "roleplay": {
@@ -945,27 +945,27 @@
         {
           "text": "He works in an office.",
           "context": "positive 3rd person",
-          "audio_url": "https://fnvjibzreepubageztoi.supabase.co/storage/v1/object/public/curriculum-audio/ls/64abb65c52e8d6aa.flac"
+          "audio_url": "https://fnvjibzreepubageztoi.supabase.co/storage/v1/object/public/curriculum-audio/ls/novice/64abb65c52e8d6aa.flac"
         },
         {
           "text": "She doesn't drink coffee.",
           "context": "negative 3rd person",
-          "audio_url": "https://fnvjibzreepubageztoi.supabase.co/storage/v1/object/public/curriculum-audio/ls/84933dee0a3ad760.flac"
+          "audio_url": "https://fnvjibzreepubageztoi.supabase.co/storage/v1/object/public/curriculum-audio/ls/novice/84933dee0a3ad760.flac"
         },
         {
           "text": "Does your brother live here?",
           "context": "question",
-          "audio_url": "https://fnvjibzreepubageztoi.supabase.co/storage/v1/object/public/curriculum-audio/ls/410f58bd6da8c477.flac"
+          "audio_url": "https://fnvjibzreepubageztoi.supabase.co/storage/v1/object/public/curriculum-audio/ls/novice/410f58bd6da8c477.flac"
         },
         {
           "text": "Where does your sister work?",
           "context": "WH question",
-          "audio_url": "https://fnvjibzreepubageztoi.supabase.co/storage/v1/object/public/curriculum-audio/ls/ffd1e50d101a5f40.flac"
+          "audio_url": "https://fnvjibzreepubageztoi.supabase.co/storage/v1/object/public/curriculum-audio/ls/novice/ffd1e50d101a5f40.flac"
         },
         {
           "text": "My friend studies English every day.",
           "context": "full integration",
-          "audio_url": "https://fnvjibzreepubageztoi.supabase.co/storage/v1/object/public/curriculum-audio/ls/351fc5e8a2e67983.flac"
+          "audio_url": "https://fnvjibzreepubageztoi.supabase.co/storage/v1/object/public/curriculum-audio/ls/novice/351fc5e8a2e67983.flac"
         }
       ],
       "roleplay": {

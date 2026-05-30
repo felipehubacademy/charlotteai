@@ -117,23 +117,28 @@
       "listening_speaking": [
         {
           "text": "I used to play soccer.",
-          "context": "past habit"
+          "context": "past habit",
+          "audio_url": "https://fnvjibzreepubageztoi.supabase.co/storage/v1/object/public/curriculum-audio/ls/inter/4e0b491ef9aedad5.flac"
         },
         {
           "text": "She used to live in NYC.",
-          "context": "past state"
+          "context": "past state",
+          "audio_url": "https://fnvjibzreepubageztoi.supabase.co/storage/v1/object/public/curriculum-audio/ls/inter/853fa028a3f4425f.flac"
         },
         {
           "text": "We used to travel a lot.",
-          "context": "past plural habit"
+          "context": "past plural habit",
+          "audio_url": "https://fnvjibzreepubageztoi.supabase.co/storage/v1/object/public/curriculum-audio/ls/inter/911453e83df7efbe.flac"
         },
         {
           "text": "He used to be quiet.",
-          "context": "past characteristic"
+          "context": "past characteristic",
+          "audio_url": "https://fnvjibzreepubageztoi.supabase.co/storage/v1/object/public/curriculum-audio/ls/inter/1083c8a89a025e68.flac"
         },
         {
           "text": "They used to come every Sunday.",
-          "context": "past plural habit"
+          "context": "past plural habit",
+          "audio_url": "https://fnvjibzreepubageztoi.supabase.co/storage/v1/object/public/curriculum-audio/ls/inter/18b8542cbcb15103.flac"
         }
       ],
       "roleplay": {
@@ -314,23 +319,28 @@
       "listening_speaking": [
         {
           "text": "I didn't use to like coffee.",
-          "context": "negative"
+          "context": "negative",
+          "audio_url": "https://fnvjibzreepubageztoi.supabase.co/storage/v1/object/public/curriculum-audio/ls/inter/7ae4ad6565b7eeb4.flac"
         },
         {
           "text": "Did you use to study?",
-          "context": "question"
+          "context": "question",
+          "audio_url": "https://fnvjibzreepubageztoi.supabase.co/storage/v1/object/public/curriculum-audio/ls/inter/73da18e52651b116.flac"
         },
         {
           "text": "She didn't use to play piano.",
-          "context": "3rd person negative"
+          "context": "3rd person negative",
+          "audio_url": "https://fnvjibzreepubageztoi.supabase.co/storage/v1/object/public/curriculum-audio/ls/inter/8d63662c8e3e6275.flac"
         },
         {
           "text": "Did she use to live in Rio?",
-          "context": "3rd person question"
+          "context": "3rd person question",
+          "audio_url": "https://fnvjibzreepubageztoi.supabase.co/storage/v1/object/public/curriculum-audio/ls/inter/964fe2dcde7797fd.flac"
         },
         {
           "text": "I didn't use to exercise.",
-          "context": "own negative"
+          "context": "own negative",
+          "audio_url": "https://fnvjibzreepubageztoi.supabase.co/storage/v1/object/public/curriculum-audio/ls/inter/62f103c7591df1e3.flac"
         }
       ],
       "roleplay": {
@@ -511,23 +521,28 @@
       "listening_speaking": [
         {
           "text": "Every summer, we would go to the beach.",
-          "context": "repeated past"
+          "context": "repeated past",
+          "audio_url": "https://fnvjibzreepubageztoi.supabase.co/storage/v1/object/public/curriculum-audio/ls/inter/125a6ab0288b665b.flac"
         },
         {
           "text": "My grandfather would tell stories.",
-          "context": "narrative"
+          "context": "narrative",
+          "audio_url": "https://fnvjibzreepubageztoi.supabase.co/storage/v1/object/public/curriculum-audio/ls/inter/2812e7131607c9e0.flac"
         },
         {
           "text": "We would visit them every weekend.",
-          "context": "frequency"
+          "context": "frequency",
+          "audio_url": "https://fnvjibzreepubageztoi.supabase.co/storage/v1/object/public/curriculum-audio/ls/inter/449d707199e53ef5.flac"
         },
         {
           "text": "My mom would sing to me.",
-          "context": "narrative"
+          "context": "narrative",
+          "audio_url": "https://fnvjibzreepubageztoi.supabase.co/storage/v1/object/public/curriculum-audio/ls/inter/5fd3b9880ea25ab6.flac"
         },
         {
           "text": "On Sundays, we would have big breakfasts.",
-          "context": "Sundays habit"
+          "context": "Sundays habit",
+          "audio_url": "https://fnvjibzreepubageztoi.supabase.co/storage/v1/object/public/curriculum-audio/ls/inter/90dfe08e79be06c9.flac"
         }
       ],
       "roleplay": {
@@ -709,23 +724,28 @@
       "listening_speaking": [
         {
           "text": "She used to be tall.",
-          "context": "state (be)"
+          "context": "state (be)",
+          "audio_url": "https://fnvjibzreepubageztoi.supabase.co/storage/v1/object/public/curriculum-audio/ls/inter/927f1e5bae0ddb3c.flac"
         },
         {
           "text": "Every summer, we would go camping.",
-          "context": "action repeated"
+          "context": "action repeated",
+          "audio_url": "https://fnvjibzreepubageztoi.supabase.co/storage/v1/object/public/curriculum-audio/ls/inter/0f8e38cb9c617560.flac"
         },
         {
           "text": "I used to love that song.",
-          "context": "feeling (state)"
+          "context": "feeling (state)",
+          "audio_url": "https://fnvjibzreepubageztoi.supabase.co/storage/v1/object/public/curriculum-audio/ls/inter/371295f84b991136.flac"
         },
         {
           "text": "My grandpa would tell stories.",
-          "context": "action narrative"
+          "context": "action narrative",
+          "audio_url": "https://fnvjibzreepubageztoi.supabase.co/storage/v1/object/public/curriculum-audio/ls/inter/81f631d9248094db.flac"
         },
         {
           "text": "I used to live in Rio.",
-          "context": "state (live)"
+          "context": "state (live)",
+          "audio_url": "https://fnvjibzreepubageztoi.supabase.co/storage/v1/object/public/curriculum-audio/ls/inter/0fe2337ccdfcf286.flac"
         }
       ],
       "roleplay": {
@@ -906,23 +926,28 @@
       "listening_speaking": [
         {
           "text": "I used to smoke, now I don't.",
-          "context": "contrast"
+          "context": "contrast",
+          "audio_url": "https://fnvjibzreepubageztoi.supabase.co/storage/v1/object/public/curriculum-audio/ls/inter/d87ff959a75a073c.flac"
         },
         {
           "text": "We would visit her every week.",
-          "context": "past action"
+          "context": "past action",
+          "audio_url": "https://fnvjibzreepubageztoi.supabase.co/storage/v1/object/public/curriculum-audio/ls/inter/48414a4c468275a2.flac"
         },
         {
           "text": "I used to love coffee.",
-          "context": "past feeling"
+          "context": "past feeling",
+          "audio_url": "https://fnvjibzreepubageztoi.supabase.co/storage/v1/object/public/curriculum-audio/ls/inter/7e17133bc51dbf98.flac"
         },
         {
           "text": "Did you use to live abroad?",
-          "context": "question"
+          "context": "question",
+          "audio_url": "https://fnvjibzreepubageztoi.supabase.co/storage/v1/object/public/curriculum-audio/ls/inter/e034ed8f526475e6.flac"
         },
         {
           "text": "I didn't use to exercise.",
-          "context": "negative"
+          "context": "negative",
+          "audio_url": "https://fnvjibzreepubageztoi.supabase.co/storage/v1/object/public/curriculum-audio/ls/inter/62f103c7591df1e3.flac"
         }
       ],
       "roleplay": {

@@ -120,27 +120,27 @@
         {
           "text": "If it rains, I'll stay home.",
           "context": "weather conditional",
-          "audio_url": "https://fnvjibzreepubageztoi.supabase.co/storage/v1/object/public/curriculum-audio/ls/c47890ea60a91dce.flac"
+          "audio_url": "https://fnvjibzreepubageztoi.supabase.co/storage/v1/object/public/curriculum-audio/ls/novice/c47890ea60a91dce.flac"
         },
         {
           "text": "If she comes, we'll have dinner.",
           "context": "person conditional",
-          "audio_url": "https://fnvjibzreepubageztoi.supabase.co/storage/v1/object/public/curriculum-audio/ls/543a90b7ea5466ee.flac"
+          "audio_url": "https://fnvjibzreepubageztoi.supabase.co/storage/v1/object/public/curriculum-audio/ls/novice/543a90b7ea5466ee.flac"
         },
         {
           "text": "I'll call you if I have time.",
           "context": "order reversed",
-          "audio_url": "https://fnvjibzreepubageztoi.supabase.co/storage/v1/object/public/curriculum-audio/ls/0827791f629c9935.flac"
+          "audio_url": "https://fnvjibzreepubageztoi.supabase.co/storage/v1/object/public/curriculum-audio/ls/novice/0827791f629c9935.flac"
         },
         {
           "text": "If you wake up early, you'll see the sunrise.",
           "context": "invitation/promise",
-          "audio_url": "https://fnvjibzreepubageztoi.supabase.co/storage/v1/object/public/curriculum-audio/ls/a80dc28565569929.flac"
+          "audio_url": "https://fnvjibzreepubageztoi.supabase.co/storage/v1/object/public/curriculum-audio/ls/novice/a80dc28565569929.flac"
         },
         {
           "text": "We'll travel if we save money.",
           "context": "life goal conditional",
-          "audio_url": "https://fnvjibzreepubageztoi.supabase.co/storage/v1/object/public/curriculum-audio/ls/08fed1ae93debce0.flac"
+          "audio_url": "https://fnvjibzreepubageztoi.supabase.co/storage/v1/object/public/curriculum-audio/ls/novice/08fed1ae93debce0.flac"
         }
       ],
       "roleplay": {
@@ -322,27 +322,27 @@
         {
           "text": "If I have time, I'll exercise.",
           "context": "time conditional",
-          "audio_url": "https://fnvjibzreepubageztoi.supabase.co/storage/v1/object/public/curriculum-audio/ls/3fc7a05227dcf66a.flac"
+          "audio_url": "https://fnvjibzreepubageztoi.supabase.co/storage/v1/object/public/curriculum-audio/ls/novice/3fc7a05227dcf66a.flac"
         },
         {
           "text": "If I have money, I'll travel.",
           "context": "money conditional",
-          "audio_url": "https://fnvjibzreepubageztoi.supabase.co/storage/v1/object/public/curriculum-audio/ls/44a2cb9057565598.flac"
+          "audio_url": "https://fnvjibzreepubageztoi.supabase.co/storage/v1/object/public/curriculum-audio/ls/novice/44a2cb9057565598.flac"
         },
         {
           "text": "I'll buy a car if I save.",
           "context": "order reversed",
-          "audio_url": "https://fnvjibzreepubageztoi.supabase.co/storage/v1/object/public/curriculum-audio/ls/1ee932e5dd17864a.flac"
+          "audio_url": "https://fnvjibzreepubageztoi.supabase.co/storage/v1/object/public/curriculum-audio/ls/novice/1ee932e5dd17864a.flac"
         },
         {
           "text": "If she gets enough sleep, she'll feel great.",
           "context": "wellness",
-          "audio_url": "https://fnvjibzreepubageztoi.supabase.co/storage/v1/object/public/curriculum-audio/ls/222c385abfc7c7be.flac"
+          "audio_url": "https://fnvjibzreepubageztoi.supabase.co/storage/v1/object/public/curriculum-audio/ls/novice/222c385abfc7c7be.flac"
         },
         {
           "text": "I'll cook if you shop.",
           "context": "exchange",
-          "audio_url": "https://fnvjibzreepubageztoi.supabase.co/storage/v1/object/public/curriculum-audio/ls/2a1085266c10f1ec.flac"
+          "audio_url": "https://fnvjibzreepubageztoi.supabase.co/storage/v1/object/public/curriculum-audio/ls/novice/2a1085266c10f1ec.flac"
         }
       ],
       "roleplay": {
@@ -524,27 +524,27 @@
         {
           "text": "If you need help, I'll come.",
           "context": "offer",
-          "audio_url": "https://fnvjibzreepubageztoi.supabase.co/storage/v1/object/public/curriculum-audio/ls/ee05e3b29c48a661.flac"
+          "audio_url": "https://fnvjibzreepubageztoi.supabase.co/storage/v1/object/public/curriculum-audio/ls/novice/ee05e3b29c48a661.flac"
         },
         {
           "text": "I'll cook if you're hungry.",
           "context": "offer",
-          "audio_url": "https://fnvjibzreepubageztoi.supabase.co/storage/v1/object/public/curriculum-audio/ls/81678168ffc2c068.flac"
+          "audio_url": "https://fnvjibzreepubageztoi.supabase.co/storage/v1/object/public/curriculum-audio/ls/novice/81678168ffc2c068.flac"
         },
         {
           "text": "If you have time, we'll chat.",
           "context": "invitation",
-          "audio_url": "https://fnvjibzreepubageztoi.supabase.co/storage/v1/object/public/curriculum-audio/ls/17b64d288b1954fb.flac"
+          "audio_url": "https://fnvjibzreepubageztoi.supabase.co/storage/v1/object/public/curriculum-audio/ls/novice/17b64d288b1954fb.flac"
         },
         {
           "text": "We'll help if you ask.",
           "context": "group offer",
-          "audio_url": "https://fnvjibzreepubageztoi.supabase.co/storage/v1/object/public/curriculum-audio/ls/7bbd72b560e5896a.flac"
+          "audio_url": "https://fnvjibzreepubageztoi.supabase.co/storage/v1/object/public/curriculum-audio/ls/novice/7bbd72b560e5896a.flac"
         },
         {
           "text": "If you're tired, take a break.",
           "context": "instruction",
-          "audio_url": "https://fnvjibzreepubageztoi.supabase.co/storage/v1/object/public/curriculum-audio/ls/c551bc0998e5c287.flac"
+          "audio_url": "https://fnvjibzreepubageztoi.supabase.co/storage/v1/object/public/curriculum-audio/ls/novice/c551bc0998e5c287.flac"
         }
       ],
       "roleplay": {
@@ -726,27 +726,27 @@
         {
           "text": "I'll go unless it rains.",
           "context": "basic unless",
-          "audio_url": "https://fnvjibzreepubageztoi.supabase.co/storage/v1/object/public/curriculum-audio/ls/bdf060b326eaa744.flac"
+          "audio_url": "https://fnvjibzreepubageztoi.supabase.co/storage/v1/object/public/curriculum-audio/ls/novice/bdf060b326eaa744.flac"
         },
         {
           "text": "She'll come unless she's busy.",
           "context": "person + unless",
-          "audio_url": "https://fnvjibzreepubageztoi.supabase.co/storage/v1/object/public/curriculum-audio/ls/365a554e7f6d360d.flac"
+          "audio_url": "https://fnvjibzreepubageztoi.supabase.co/storage/v1/object/public/curriculum-audio/ls/novice/365a554e7f6d360d.flac"
         },
         {
           "text": "We'll leave unless you want to stay.",
           "context": "group + unless",
-          "audio_url": "https://fnvjibzreepubageztoi.supabase.co/storage/v1/object/public/curriculum-audio/ls/a79fd9a960ed1dee.flac"
+          "audio_url": "https://fnvjibzreepubageztoi.supabase.co/storage/v1/object/public/curriculum-audio/ls/novice/a79fd9a960ed1dee.flac"
         },
         {
           "text": "I'll call unless you ask me not to.",
           "context": "preference unless",
-          "audio_url": "https://fnvjibzreepubageztoi.supabase.co/storage/v1/object/public/curriculum-audio/ls/2b6505f6a6170356.flac"
+          "audio_url": "https://fnvjibzreepubageztoi.supabase.co/storage/v1/object/public/curriculum-audio/ls/novice/2b6505f6a6170356.flac"
         },
         {
           "text": "Unless it rains, we'll have fun.",
           "context": "unless at start",
-          "audio_url": "https://fnvjibzreepubageztoi.supabase.co/storage/v1/object/public/curriculum-audio/ls/79ad74804b5bad18.flac"
+          "audio_url": "https://fnvjibzreepubageztoi.supabase.co/storage/v1/object/public/curriculum-audio/ls/novice/79ad74804b5bad18.flac"
         }
       ],
       "roleplay": {
@@ -928,27 +928,27 @@
         {
           "text": "If I have time, I'll exercise.",
           "context": "positive condition",
-          "audio_url": "https://fnvjibzreepubageztoi.supabase.co/storage/v1/object/public/curriculum-audio/ls/3fc7a05227dcf66a.flac"
+          "audio_url": "https://fnvjibzreepubageztoi.supabase.co/storage/v1/object/public/curriculum-audio/ls/novice/3fc7a05227dcf66a.flac"
         },
         {
           "text": "I'll call you if it rains.",
           "context": "order reversed",
-          "audio_url": "https://fnvjibzreepubageztoi.supabase.co/storage/v1/object/public/curriculum-audio/ls/a03f78d426d0c92e.flac"
+          "audio_url": "https://fnvjibzreepubageztoi.supabase.co/storage/v1/object/public/curriculum-audio/ls/novice/a03f78d426d0c92e.flac"
         },
         {
           "text": "We'll travel if we save.",
           "context": "life goal",
-          "audio_url": "https://fnvjibzreepubageztoi.supabase.co/storage/v1/object/public/curriculum-audio/ls/100604be920a7477.flac"
+          "audio_url": "https://fnvjibzreepubageztoi.supabase.co/storage/v1/object/public/curriculum-audio/ls/novice/100604be920a7477.flac"
         },
         {
           "text": "I'll come unless I'm sick.",
           "context": "negative condition",
-          "audio_url": "https://fnvjibzreepubageztoi.supabase.co/storage/v1/object/public/curriculum-audio/ls/836673ecbe45174d.flac"
+          "audio_url": "https://fnvjibzreepubageztoi.supabase.co/storage/v1/object/public/curriculum-audio/ls/novice/836673ecbe45174d.flac"
         },
         {
           "text": "What will you do if it rains?",
           "context": "question form",
-          "audio_url": "https://fnvjibzreepubageztoi.supabase.co/storage/v1/object/public/curriculum-audio/ls/1bb608d1a078a04f.flac"
+          "audio_url": "https://fnvjibzreepubageztoi.supabase.co/storage/v1/object/public/curriculum-audio/ls/novice/1bb608d1a078a04f.flac"
         }
       ],
       "roleplay": {

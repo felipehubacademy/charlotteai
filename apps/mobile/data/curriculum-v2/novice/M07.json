@@ -123,27 +123,27 @@
         {
           "text": "I can swim.",
           "context": "habilidade básica",
-          "audio_url": "https://fnvjibzreepubageztoi.supabase.co/storage/v1/object/public/curriculum-audio/ls/8634e5bdfe738f4a.flac"
+          "audio_url": "https://fnvjibzreepubageztoi.supabase.co/storage/v1/object/public/curriculum-audio/ls/novice/8634e5bdfe738f4a.flac"
         },
         {
           "text": "I can speak English.",
           "context": "idioma",
-          "audio_url": "https://fnvjibzreepubageztoi.supabase.co/storage/v1/object/public/curriculum-audio/ls/df937ade9440793f.flac"
+          "audio_url": "https://fnvjibzreepubageztoi.supabase.co/storage/v1/object/public/curriculum-audio/ls/novice/df937ade9440793f.flac"
         },
         {
           "text": "She can play the piano.",
           "context": "instrumento",
-          "audio_url": "https://fnvjibzreepubageztoi.supabase.co/storage/v1/object/public/curriculum-audio/ls/96cae2426c5df1e3.flac"
+          "audio_url": "https://fnvjibzreepubageztoi.supabase.co/storage/v1/object/public/curriculum-audio/ls/novice/96cae2426c5df1e3.flac"
         },
         {
           "text": "We can cook Italian food.",
           "context": "culinária",
-          "audio_url": "https://fnvjibzreepubageztoi.supabase.co/storage/v1/object/public/curriculum-audio/ls/6ea7ea944dda1a8b.flac"
+          "audio_url": "https://fnvjibzreepubageztoi.supabase.co/storage/v1/object/public/curriculum-audio/ls/novice/6ea7ea944dda1a8b.flac"
         },
         {
           "text": "He can drive very well.",
           "context": "habilidade + advérbio",
-          "audio_url": "https://fnvjibzreepubageztoi.supabase.co/storage/v1/object/public/curriculum-audio/ls/8d90b07a07313400.flac"
+          "audio_url": "https://fnvjibzreepubageztoi.supabase.co/storage/v1/object/public/curriculum-audio/ls/novice/8d90b07a07313400.flac"
         }
       ],
       "roleplay": {
@@ -325,27 +325,27 @@
         {
           "text": "I can't swim well.",
           "context": "limitação",
-          "audio_url": "https://fnvjibzreepubageztoi.supabase.co/storage/v1/object/public/curriculum-audio/ls/7699e9c94005e6ab.flac"
+          "audio_url": "https://fnvjibzreepubageztoi.supabase.co/storage/v1/object/public/curriculum-audio/ls/novice/7699e9c94005e6ab.flac"
         },
         {
           "text": "She can't drive yet.",
           "context": "limitação + tempo",
-          "audio_url": "https://fnvjibzreepubageztoi.supabase.co/storage/v1/object/public/curriculum-audio/ls/ebdd34c527980370.flac"
+          "audio_url": "https://fnvjibzreepubageztoi.supabase.co/storage/v1/object/public/curriculum-audio/ls/novice/ebdd34c527980370.flac"
         },
         {
           "text": "We can't speak French.",
           "context": "idioma que não sabe",
-          "audio_url": "https://fnvjibzreepubageztoi.supabase.co/storage/v1/object/public/curriculum-audio/ls/2fc7c47b2b7e7571.flac"
+          "audio_url": "https://fnvjibzreepubageztoi.supabase.co/storage/v1/object/public/curriculum-audio/ls/novice/2fc7c47b2b7e7571.flac"
         },
         {
           "text": "He can't sing at all.",
           "context": "limitação total",
-          "audio_url": "https://fnvjibzreepubageztoi.supabase.co/storage/v1/object/public/curriculum-audio/ls/cc790a293a8daca2.flac"
+          "audio_url": "https://fnvjibzreepubageztoi.supabase.co/storage/v1/object/public/curriculum-audio/ls/novice/cc790a293a8daca2.flac"
         },
         {
           "text": "Sorry, I can't help right now.",
           "context": "recusa polida",
-          "audio_url": "https://fnvjibzreepubageztoi.supabase.co/storage/v1/object/public/curriculum-audio/ls/1e18d81bf9aacd11.flac"
+          "audio_url": "https://fnvjibzreepubageztoi.supabase.co/storage/v1/object/public/curriculum-audio/ls/novice/1e18d81bf9aacd11.flac"
         }
       ],
       "roleplay": {
@@ -529,27 +529,27 @@
         {
           "text": "Can you swim?",
           "context": "pergunta direta",
-          "audio_url": "https://fnvjibzreepubageztoi.supabase.co/storage/v1/object/public/curriculum-audio/ls/7f2a63e45440c7dc.flac"
+          "audio_url": "https://fnvjibzreepubageztoi.supabase.co/storage/v1/object/public/curriculum-audio/ls/novice/7f2a63e45440c7dc.flac"
         },
         {
           "text": "Can she speak Portuguese?",
           "context": "3ª pessoa",
-          "audio_url": "https://fnvjibzreepubageztoi.supabase.co/storage/v1/object/public/curriculum-audio/ls/84571ca024f6a620.flac"
+          "audio_url": "https://fnvjibzreepubageztoi.supabase.co/storage/v1/object/public/curriculum-audio/ls/novice/84571ca024f6a620.flac"
         },
         {
           "text": "Can you help me?",
           "context": "pedido polido",
-          "audio_url": "https://fnvjibzreepubageztoi.supabase.co/storage/v1/object/public/curriculum-audio/ls/eb476e59de584c1d.flac"
+          "audio_url": "https://fnvjibzreepubageztoi.supabase.co/storage/v1/object/public/curriculum-audio/ls/novice/eb476e59de584c1d.flac"
         },
         {
           "text": "Yes, I can.",
           "context": "short answer afirmativa",
-          "audio_url": "https://fnvjibzreepubageztoi.supabase.co/storage/v1/object/public/curriculum-audio/ls/9f449c4c3c022ee1.flac"
+          "audio_url": "https://fnvjibzreepubageztoi.supabase.co/storage/v1/object/public/curriculum-audio/ls/novice/9f449c4c3c022ee1.flac"
         },
         {
           "text": "No, I can't.",
           "context": "short answer negativa",
-          "audio_url": "https://fnvjibzreepubageztoi.supabase.co/storage/v1/object/public/curriculum-audio/ls/78c2b4fcf3ec035f.flac"
+          "audio_url": "https://fnvjibzreepubageztoi.supabase.co/storage/v1/object/public/curriculum-audio/ls/novice/78c2b4fcf3ec035f.flac"
         }
       ],
       "roleplay": {
@@ -731,27 +731,27 @@
         {
           "text": "I can speak English.",
           "context": "idioma",
-          "audio_url": "https://fnvjibzreepubageztoi.supabase.co/storage/v1/object/public/curriculum-audio/ls/df937ade9440793f.flac"
+          "audio_url": "https://fnvjibzreepubageztoi.supabase.co/storage/v1/object/public/curriculum-audio/ls/novice/df937ade9440793f.flac"
         },
         {
           "text": "She can play the piano.",
           "context": "instrumento com \"the\"",
-          "audio_url": "https://fnvjibzreepubageztoi.supabase.co/storage/v1/object/public/curriculum-audio/ls/96cae2426c5df1e3.flac"
+          "audio_url": "https://fnvjibzreepubageztoi.supabase.co/storage/v1/object/public/curriculum-audio/ls/novice/96cae2426c5df1e3.flac"
         },
         {
           "text": "He can play soccer.",
           "context": "esporte sem artigo",
-          "audio_url": "https://fnvjibzreepubageztoi.supabase.co/storage/v1/object/public/curriculum-audio/ls/e3fd3fc3c492d5a9.flac"
+          "audio_url": "https://fnvjibzreepubageztoi.supabase.co/storage/v1/object/public/curriculum-audio/ls/novice/e3fd3fc3c492d5a9.flac"
         },
         {
           "text": "We can speak two languages.",
           "context": "number + languages",
-          "audio_url": "https://fnvjibzreepubageztoi.supabase.co/storage/v1/object/public/curriculum-audio/ls/4cdfd4582af4d230.flac"
+          "audio_url": "https://fnvjibzreepubageztoi.supabase.co/storage/v1/object/public/curriculum-audio/ls/novice/4cdfd4582af4d230.flac"
         },
         {
           "text": "My friend can play the guitar.",
           "context": "3rd person + instrument",
-          "audio_url": "https://fnvjibzreepubageztoi.supabase.co/storage/v1/object/public/curriculum-audio/ls/ac749e8911ae77df.flac"
+          "audio_url": "https://fnvjibzreepubageztoi.supabase.co/storage/v1/object/public/curriculum-audio/ls/novice/ac749e8911ae77df.flac"
         }
       ],
       "roleplay": {
@@ -936,27 +936,27 @@
         {
           "text": "I can speak English very well.",
           "context": "positiva + intensifier",
-          "audio_url": "https://fnvjibzreepubageztoi.supabase.co/storage/v1/object/public/curriculum-audio/ls/c979a3d922dcd2c0.flac"
+          "audio_url": "https://fnvjibzreepubageztoi.supabase.co/storage/v1/object/public/curriculum-audio/ls/novice/c979a3d922dcd2c0.flac"
         },
         {
           "text": "I can't speak French at all.",
           "context": "negativa + intensifier",
-          "audio_url": "https://fnvjibzreepubageztoi.supabase.co/storage/v1/object/public/curriculum-audio/ls/0dc86a552dbc86c3.flac"
+          "audio_url": "https://fnvjibzreepubageztoi.supabase.co/storage/v1/object/public/curriculum-audio/ls/novice/0dc86a552dbc86c3.flac"
         },
         {
           "text": "Can you cook?",
           "context": "pergunta",
-          "audio_url": "https://fnvjibzreepubageztoi.supabase.co/storage/v1/object/public/curriculum-audio/ls/af06f8729790b824.flac"
+          "audio_url": "https://fnvjibzreepubageztoi.supabase.co/storage/v1/object/public/curriculum-audio/ls/novice/af06f8729790b824.flac"
         },
         {
           "text": "She can play three instruments.",
           "context": "3rd person + número",
-          "audio_url": "https://fnvjibzreepubageztoi.supabase.co/storage/v1/object/public/curriculum-audio/ls/2ec15bfcac89e508.flac"
+          "audio_url": "https://fnvjibzreepubageztoi.supabase.co/storage/v1/object/public/curriculum-audio/ls/novice/2ec15bfcac89e508.flac"
         },
         {
           "text": "My friend can dance but I can't.",
           "context": "contraste pessoas",
-          "audio_url": "https://fnvjibzreepubageztoi.supabase.co/storage/v1/object/public/curriculum-audio/ls/35353df61ad0f23b.flac"
+          "audio_url": "https://fnvjibzreepubageztoi.supabase.co/storage/v1/object/public/curriculum-audio/ls/novice/35353df61ad0f23b.flac"
         }
       ],
       "roleplay": {

@@ -120,23 +120,28 @@
       "listening_speaking": [
         {
           "text": "I've visited Italy.",
-          "context": "own life experience"
+          "context": "own life experience",
+          "audio_url": "https://fnvjibzreepubageztoi.supabase.co/storage/v1/object/public/curriculum-audio/ls/inter/577249bc54a0423c.flac"
         },
         {
           "text": "She has tried sushi.",
-          "context": "3rd person experience"
+          "context": "3rd person experience",
+          "audio_url": "https://fnvjibzreepubageztoi.supabase.co/storage/v1/object/public/curriculum-audio/ls/inter/05468f09b4570929.flac"
         },
         {
           "text": "Have you ever been to Brazil?",
-          "context": "question"
+          "context": "question",
+          "audio_url": "https://fnvjibzreepubageztoi.supabase.co/storage/v1/object/public/curriculum-audio/ls/inter/3715bbdb61e440a5.flac"
         },
         {
           "text": "I have never seen that movie.",
-          "context": "never negative"
+          "context": "never negative",
+          "audio_url": "https://fnvjibzreepubageztoi.supabase.co/storage/v1/object/public/curriculum-audio/ls/inter/9db02df4306fbd8b.flac"
         },
         {
           "text": "We have never been to Japan.",
-          "context": "plural negative"
+          "context": "plural negative",
+          "audio_url": "https://fnvjibzreepubageztoi.supabase.co/storage/v1/object/public/curriculum-audio/ls/inter/70b7ea8a89e8a084.flac"
         }
       ],
       "roleplay": {
@@ -319,23 +324,28 @@
       "listening_speaking": [
         {
           "text": "I've been to ten countries.",
-          "context": "been"
+          "context": "been",
+          "audio_url": "https://fnvjibzreepubageztoi.supabase.co/storage/v1/object/public/curriculum-audio/ls/inter/eda75a6ca6f6a251.flac"
         },
         {
           "text": "She has read that book.",
-          "context": "read /red/"
+          "context": "read /red/",
+          "audio_url": "https://fnvjibzreepubageztoi.supabase.co/storage/v1/object/public/curriculum-audio/ls/inter/de55a814d38cf727.flac"
         },
         {
           "text": "We have eaten pizza.",
-          "context": "eaten"
+          "context": "eaten",
+          "audio_url": "https://fnvjibzreepubageztoi.supabase.co/storage/v1/object/public/curriculum-audio/ls/inter/1e74f58fb3133a8b.flac"
         },
         {
           "text": "He has spoken three languages.",
-          "context": "spoken"
+          "context": "spoken",
+          "audio_url": "https://fnvjibzreepubageztoi.supabase.co/storage/v1/object/public/curriculum-audio/ls/inter/e779e04c3048b4af.flac"
         },
         {
           "text": "I have seen that movie.",
-          "context": "seen"
+          "context": "seen",
+          "audio_url": "https://fnvjibzreepubageztoi.supabase.co/storage/v1/object/public/curriculum-audio/ls/inter/0a02f096b206630b.flac"
         }
       ],
       "roleplay": {
@@ -516,23 +526,28 @@
       "listening_speaking": [
         {
           "text": "I've just finished.",
-          "context": "just (recent)"
+          "context": "just (recent)",
+          "audio_url": "https://fnvjibzreepubageztoi.supabase.co/storage/v1/object/public/curriculum-audio/ls/inter/251db97b920f5187.flac"
         },
         {
           "text": "She has already eaten.",
-          "context": "already (sooner)"
+          "context": "already (sooner)",
+          "audio_url": "https://fnvjibzreepubageztoi.supabase.co/storage/v1/object/public/curriculum-audio/ls/inter/4834e41bc8862377.flac"
         },
         {
           "text": "Have you finished yet?",
-          "context": "yet (question)"
+          "context": "yet (question)",
+          "audio_url": "https://fnvjibzreepubageztoi.supabase.co/storage/v1/object/public/curriculum-audio/ls/inter/315b539d71eb359b.flac"
         },
         {
           "text": "I haven't seen it yet.",
-          "context": "yet (negative)"
+          "context": "yet (negative)",
+          "audio_url": "https://fnvjibzreepubageztoi.supabase.co/storage/v1/object/public/curriculum-audio/ls/inter/2037d01f45ec1554.flac"
         },
         {
           "text": "She has just left the office.",
-          "context": "just + 3rd person"
+          "context": "just + 3rd person",
+          "audio_url": "https://fnvjibzreepubageztoi.supabase.co/storage/v1/object/public/curriculum-audio/ls/inter/b22341d5a8d47df6.flac"
         }
       ],
       "roleplay": {
@@ -715,23 +730,28 @@
       "listening_speaking": [
         {
           "text": "Have you ever been to Italy?",
-          "context": "direct question"
+          "context": "direct question",
+          "audio_url": "https://fnvjibzreepubageztoi.supabase.co/storage/v1/object/public/curriculum-audio/ls/inter/b5f59ab7244cfd1d.flac"
         },
         {
           "text": "Has she tried Italian food?",
-          "context": "3rd person"
+          "context": "3rd person",
+          "audio_url": "https://fnvjibzreepubageztoi.supabase.co/storage/v1/object/public/curriculum-audio/ls/inter/00f1b8f0f65de7ad.flac"
         },
         {
           "text": "Have they finished?",
-          "context": "plural"
+          "context": "plural",
+          "audio_url": "https://fnvjibzreepubageztoi.supabase.co/storage/v1/object/public/curriculum-audio/ls/inter/7201bcbae1f89a45.flac"
         },
         {
           "text": "Yes, I have. No, I haven't.",
-          "context": "short answers"
+          "context": "short answers",
+          "audio_url": "https://fnvjibzreepubageztoi.supabase.co/storage/v1/object/public/curriculum-audio/ls/inter/d14919f033628b61.flac"
         },
         {
           "text": "Has he ever visited Brazil?",
-          "context": "common question"
+          "context": "common question",
+          "audio_url": "https://fnvjibzreepubageztoi.supabase.co/storage/v1/object/public/curriculum-audio/ls/inter/c5aac1fd016d5ed6.flac"
         }
       ],
       "roleplay": {
@@ -912,23 +932,28 @@
       "listening_speaking": [
         {
           "text": "I've visited many countries.",
-          "context": "life experience"
+          "context": "life experience",
+          "audio_url": "https://fnvjibzreepubageztoi.supabase.co/storage/v1/object/public/curriculum-audio/ls/inter/58e1bd395e69cdcb.flac"
         },
         {
           "text": "She has read that book.",
-          "context": "3rd person + read"
+          "context": "3rd person + read",
+          "audio_url": "https://fnvjibzreepubageztoi.supabase.co/storage/v1/object/public/curriculum-audio/ls/inter/de55a814d38cf727.flac"
         },
         {
           "text": "Have you ever climbed a mountain?",
-          "context": "question with ever"
+          "context": "question with ever",
+          "audio_url": "https://fnvjibzreepubageztoi.supabase.co/storage/v1/object/public/curriculum-audio/ls/inter/d60905ab3adc4e8f.flac"
         },
         {
           "text": "I've just finished my project.",
-          "context": "just"
+          "context": "just",
+          "audio_url": "https://fnvjibzreepubageztoi.supabase.co/storage/v1/object/public/curriculum-audio/ls/inter/4aaee2b03b339220.flac"
         },
         {
           "text": "I haven't called him yet.",
-          "context": "yet (negative)"
+          "context": "yet (negative)",
+          "audio_url": "https://fnvjibzreepubageztoi.supabase.co/storage/v1/object/public/curriculum-audio/ls/inter/c405b029547f7584.flac"
         }
       ],
       "roleplay": {

@@ -119,27 +119,27 @@
         {
           "text": "I didn't work yesterday.",
           "context": "own negative past",
-          "audio_url": "https://fnvjibzreepubageztoi.supabase.co/storage/v1/object/public/curriculum-audio/ls/fc0d8578c4a6943c.flac"
+          "audio_url": "https://fnvjibzreepubageztoi.supabase.co/storage/v1/object/public/curriculum-audio/ls/novice/fc0d8578c4a6943c.flac"
         },
         {
           "text": "She didn't go to the party.",
           "context": "3rd person negative",
-          "audio_url": "https://fnvjibzreepubageztoi.supabase.co/storage/v1/object/public/curriculum-audio/ls/1a2938a1ac9f0dd5.flac"
+          "audio_url": "https://fnvjibzreepubageztoi.supabase.co/storage/v1/object/public/curriculum-audio/ls/novice/1a2938a1ac9f0dd5.flac"
         },
         {
           "text": "We didn't eat dinner.",
           "context": "plural negative",
-          "audio_url": "https://fnvjibzreepubageztoi.supabase.co/storage/v1/object/public/curriculum-audio/ls/6f77685a1d467eed.flac"
+          "audio_url": "https://fnvjibzreepubageztoi.supabase.co/storage/v1/object/public/curriculum-audio/ls/novice/6f77685a1d467eed.flac"
         },
         {
           "text": "He didn't see the movie.",
           "context": "negative",
-          "audio_url": "https://fnvjibzreepubageztoi.supabase.co/storage/v1/object/public/curriculum-audio/ls/a80b05908b056179.flac"
+          "audio_url": "https://fnvjibzreepubageztoi.supabase.co/storage/v1/object/public/curriculum-audio/ls/novice/a80b05908b056179.flac"
         },
         {
           "text": "They didn't call me.",
           "context": "plural negative",
-          "audio_url": "https://fnvjibzreepubageztoi.supabase.co/storage/v1/object/public/curriculum-audio/ls/3e4fd4a0f38cbf3c.flac"
+          "audio_url": "https://fnvjibzreepubageztoi.supabase.co/storage/v1/object/public/curriculum-audio/ls/novice/3e4fd4a0f38cbf3c.flac"
         }
       ],
       "roleplay": {
@@ -321,27 +321,27 @@
         {
           "text": "Did you go to the party?",
           "context": "direct question",
-          "audio_url": "https://fnvjibzreepubageztoi.supabase.co/storage/v1/object/public/curriculum-audio/ls/5f2e5dfdde3e418e.flac"
+          "audio_url": "https://fnvjibzreepubageztoi.supabase.co/storage/v1/object/public/curriculum-audio/ls/novice/5f2e5dfdde3e418e.flac"
         },
         {
           "text": "Did she like the movie?",
           "context": "3rd person past Q",
-          "audio_url": "https://fnvjibzreepubageztoi.supabase.co/storage/v1/object/public/curriculum-audio/ls/8639e96e1e9df25d.flac"
+          "audio_url": "https://fnvjibzreepubageztoi.supabase.co/storage/v1/object/public/curriculum-audio/ls/novice/8639e96e1e9df25d.flac"
         },
         {
           "text": "Did they win?",
           "context": "plural past Q",
-          "audio_url": "https://fnvjibzreepubageztoi.supabase.co/storage/v1/object/public/curriculum-audio/ls/a9b7096a6f621fd1.flac"
+          "audio_url": "https://fnvjibzreepubageztoi.supabase.co/storage/v1/object/public/curriculum-audio/ls/novice/a9b7096a6f621fd1.flac"
         },
         {
           "text": "Yes, I did. No, I didn't.",
           "context": "short answers",
-          "audio_url": "https://fnvjibzreepubageztoi.supabase.co/storage/v1/object/public/curriculum-audio/ls/2e741f8a522dd079.flac"
+          "audio_url": "https://fnvjibzreepubageztoi.supabase.co/storage/v1/object/public/curriculum-audio/ls/novice/2e741f8a522dd079.flac"
         },
         {
           "text": "Did you eat breakfast?",
           "context": "verb base after Did",
-          "audio_url": "https://fnvjibzreepubageztoi.supabase.co/storage/v1/object/public/curriculum-audio/ls/5e55a2b12bed63f1.flac"
+          "audio_url": "https://fnvjibzreepubageztoi.supabase.co/storage/v1/object/public/curriculum-audio/ls/novice/5e55a2b12bed63f1.flac"
         }
       ],
       "roleplay": {
@@ -525,27 +525,27 @@
         {
           "text": "Where did you go?",
           "context": "Where + past",
-          "audio_url": "https://fnvjibzreepubageztoi.supabase.co/storage/v1/object/public/curriculum-audio/ls/1177343d082bc576.flac"
+          "audio_url": "https://fnvjibzreepubageztoi.supabase.co/storage/v1/object/public/curriculum-audio/ls/novice/1177343d082bc576.flac"
         },
         {
           "text": "What did she eat?",
           "context": "What + past",
-          "audio_url": "https://fnvjibzreepubageztoi.supabase.co/storage/v1/object/public/curriculum-audio/ls/51e890a96061e2b9.flac"
+          "audio_url": "https://fnvjibzreepubageztoi.supabase.co/storage/v1/object/public/curriculum-audio/ls/novice/51e890a96061e2b9.flac"
         },
         {
           "text": "When did they arrive?",
           "context": "When + past",
-          "audio_url": "https://fnvjibzreepubageztoi.supabase.co/storage/v1/object/public/curriculum-audio/ls/7d22f0585324e860.flac"
+          "audio_url": "https://fnvjibzreepubageztoi.supabase.co/storage/v1/object/public/curriculum-audio/ls/novice/7d22f0585324e860.flac"
         },
         {
           "text": "Why did he leave?",
           "context": "Why + past",
-          "audio_url": "https://fnvjibzreepubageztoi.supabase.co/storage/v1/object/public/curriculum-audio/ls/bd3fbcfc2153af0d.flac"
+          "audio_url": "https://fnvjibzreepubageztoi.supabase.co/storage/v1/object/public/curriculum-audio/ls/novice/bd3fbcfc2153af0d.flac"
         },
         {
           "text": "How did you get there?",
           "context": "How + past",
-          "audio_url": "https://fnvjibzreepubageztoi.supabase.co/storage/v1/object/public/curriculum-audio/ls/d01ee1486ef66832.flac"
+          "audio_url": "https://fnvjibzreepubageztoi.supabase.co/storage/v1/object/public/curriculum-audio/ls/novice/d01ee1486ef66832.flac"
         }
       ],
       "roleplay": {
@@ -727,27 +727,27 @@
         {
           "text": "I never visited Japan.",
           "context": "never + past",
-          "audio_url": "https://fnvjibzreepubageztoi.supabase.co/storage/v1/object/public/curriculum-audio/ls/a297a1c073a1bac8.flac"
+          "audio_url": "https://fnvjibzreepubageztoi.supabase.co/storage/v1/object/public/curriculum-audio/ls/novice/a297a1c073a1bac8.flac"
         },
         {
           "text": "She didn't come to the party.",
           "context": "didn't + base",
-          "audio_url": "https://fnvjibzreepubageztoi.supabase.co/storage/v1/object/public/curriculum-audio/ls/5659e7815125ffd7.flac"
+          "audio_url": "https://fnvjibzreepubageztoi.supabase.co/storage/v1/object/public/curriculum-audio/ls/novice/5659e7815125ffd7.flac"
         },
         {
           "text": "We never knew.",
           "context": "never + past",
-          "audio_url": "https://fnvjibzreepubageztoi.supabase.co/storage/v1/object/public/curriculum-audio/ls/0cf1aa760cb75651.flac"
+          "audio_url": "https://fnvjibzreepubageztoi.supabase.co/storage/v1/object/public/curriculum-audio/ls/novice/0cf1aa760cb75651.flac"
         },
         {
           "text": "He didn't understand.",
           "context": "didn't + base",
-          "audio_url": "https://fnvjibzreepubageztoi.supabase.co/storage/v1/object/public/curriculum-audio/ls/e3ebee6bfac0839e.flac"
+          "audio_url": "https://fnvjibzreepubageztoi.supabase.co/storage/v1/object/public/curriculum-audio/ls/novice/e3ebee6bfac0839e.flac"
         },
         {
           "text": "They didn't arrive on time.",
           "context": "didn't + base",
-          "audio_url": "https://fnvjibzreepubageztoi.supabase.co/storage/v1/object/public/curriculum-audio/ls/00d8bee963d04c8e.flac"
+          "audio_url": "https://fnvjibzreepubageztoi.supabase.co/storage/v1/object/public/curriculum-audio/ls/novice/00d8bee963d04c8e.flac"
         }
       ],
       "roleplay": {
@@ -929,27 +929,27 @@
         {
           "text": "I went to the party.",
           "context": "affirmative",
-          "audio_url": "https://fnvjibzreepubageztoi.supabase.co/storage/v1/object/public/curriculum-audio/ls/f15da19868cb037d.flac"
+          "audio_url": "https://fnvjibzreepubageztoi.supabase.co/storage/v1/object/public/curriculum-audio/ls/novice/f15da19868cb037d.flac"
         },
         {
           "text": "She didn't come.",
           "context": "negative",
-          "audio_url": "https://fnvjibzreepubageztoi.supabase.co/storage/v1/object/public/curriculum-audio/ls/b2cbd061e51d2e3b.flac"
+          "audio_url": "https://fnvjibzreepubageztoi.supabase.co/storage/v1/object/public/curriculum-audio/ls/novice/b2cbd061e51d2e3b.flac"
         },
         {
           "text": "Did you have fun?",
           "context": "yes/no question",
-          "audio_url": "https://fnvjibzreepubageztoi.supabase.co/storage/v1/object/public/curriculum-audio/ls/280b4e63e4e9c288.flac"
+          "audio_url": "https://fnvjibzreepubageztoi.supabase.co/storage/v1/object/public/curriculum-audio/ls/novice/280b4e63e4e9c288.flac"
         },
         {
           "text": "Where did they go?",
           "context": "WH question",
-          "audio_url": "https://fnvjibzreepubageztoi.supabase.co/storage/v1/object/public/curriculum-audio/ls/b594f258b5aa5ba3.flac"
+          "audio_url": "https://fnvjibzreepubageztoi.supabase.co/storage/v1/object/public/curriculum-audio/ls/novice/b594f258b5aa5ba3.flac"
         },
         {
           "text": "I had a great time.",
           "context": "affirmative + adj",
-          "audio_url": "https://fnvjibzreepubageztoi.supabase.co/storage/v1/object/public/curriculum-audio/ls/f32532ee86e180bd.flac"
+          "audio_url": "https://fnvjibzreepubageztoi.supabase.co/storage/v1/object/public/curriculum-audio/ls/novice/f32532ee86e180bd.flac"
         }
       ],
       "roleplay": {

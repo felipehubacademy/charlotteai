@@ -1,0 +1,1010 @@
+{
+  "id": "M06",
+  "title": "Possibilidades e dúvidas",
+  "level": "Inter",
+  "block": "B1",
+  "units_range": "I01–I05",
+  "theme": "Modals of possibility (might / may / could / can't)",
+  "goal": "Student speculates about present situations with might/may/could (possibility) and can't (impossibility).",
+  "connects_to": "M07 (precise quantifiers).",
+  "module_chunks": [
+    "It might rain. / She might come.",
+    "He may be late. / They may be busy.",
+    "It could be true. / She could be at home.",
+    "It can't be true. / He can't be there.",
+    "I think she might... / Maybe he could..."
+  ],
+  "units": [
+    {
+      "id": "I01",
+      "title": "It might rain",
+      "sub_cefr": "B1",
+      "grammar_focus": "might for possibility",
+      "markers": [
+        "denso"
+      ],
+      "real_life_context": "You speculate about possibilities for the day.",
+      "grammar": [
+        {
+          "type": "multiple_choice",
+          "sentence": "It _____ rain tomorrow.",
+          "options": [
+            "might",
+            "will",
+            "does"
+          ],
+          "answer": "might",
+          "explanation": "\"Might + base\" = possibility (maybe)."
+        },
+        {
+          "type": "multiple_choice",
+          "sentence": "She _____ be late.",
+          "options": [
+            "might",
+            "wills",
+            "does"
+          ],
+          "answer": "might",
+          "explanation": "Modal \"might\" — same for all persons."
+        },
+        {
+          "type": "word_bank",
+          "sentence": "We _____ go to the beach.",
+          "choices": [
+            "might",
+            "are might",
+            "will be might",
+            "mighting"
+          ],
+          "answer": "might",
+          "explanation": "Modal, base form after."
+        },
+        {
+          "type": "word_bank",
+          "sentence": "He might _____ home.",
+          "choices": [
+            "be",
+            "is",
+            "was",
+            "been"
+          ],
+          "answer": "be",
+          "explanation": "After \"might\", base \"be\"."
+        },
+        {
+          "type": "fill_gap",
+          "sentence": "I _____ visit my parents this weekend.",
+          "hint": "possibility modal",
+          "answer": "might",
+          "explanation": "\"I might visit\" — uncertain plan."
+        },
+        {
+          "type": "fill_gap",
+          "sentence": "She might _____ tired.",
+          "hint": "base \"to be\"",
+          "answer": "be",
+          "explanation": "\"Might be tired\" — possibility about state."
+        },
+        {
+          "type": "fill_gap",
+          "sentence": "_____ I borrow your pen?",
+          "hint": "polite modal",
+          "answer": "Might (or May/Could)",
+          "explanation": "\"Might I/May I/Could I\" — polite request."
+        },
+        {
+          "type": "fix_error",
+          "sentence": "She mights come.",
+          "hint": "modal no -s",
+          "answer": "She might come.",
+          "explanation": "Modals don't take -s. \"She might\" only."
+        },
+        {
+          "type": "fix_error",
+          "sentence": "He might to call.",
+          "hint": "No \"to\" after might",
+          "answer": "He might call.",
+          "explanation": "After modal, base form without \"to\"."
+        },
+        {
+          "type": "read_answer",
+          "passage": "I might visit my parents this weekend. She might be late. They might call us tonight.",
+          "question": "Who might be late?",
+          "answer": "she",
+          "explanation": "The text says \"She might be late\"."
+        }
+      ],
+      "listening_speaking": [
+        {
+          "text": "It might rain.",
+          "context": "weather possibility"
+        },
+        {
+          "text": "She might be late.",
+          "context": "possible state"
+        },
+        {
+          "text": "We might go to the beach.",
+          "context": "uncertain plan"
+        },
+        {
+          "text": "He might be home.",
+          "context": "possible location"
+        },
+        {
+          "text": "I might visit my parents.",
+          "context": "possible action"
+        }
+      ],
+      "roleplay": {
+        "scenario": "Charlotte asks your weekend plans — uncertain.",
+        "voiced_by": "charlotte",
+        "persona": "Charlotte",
+        "persona_outfit": "charlotte_casual",
+        "time_budget_sec": 180,
+        "opening_line": "What might you do this weekend?",
+        "objectives": [
+          {
+            "id": 1,
+            "label_pt": "Possibilidade com might",
+            "label_en": "Possibility with might",
+            "hidden_prompt": "user uses 'I might + base'",
+            "hint_pt": "I might go hiking.",
+            "hint_en": "I might go hiking."
+          },
+          {
+            "id": 2,
+            "label_pt": "Outra possibilidade",
+            "label_en": "Another possibility",
+            "hidden_prompt": "user uses another 'might + base'",
+            "hint_pt": "I might stay home.",
+            "hint_en": "I might stay home."
+          },
+          {
+            "id": 3,
+            "label_pt": "Sobre alguém",
+            "label_en": "About someone",
+            "hidden_prompt": "user uses 'X might + base'",
+            "hint_pt": "My friend might join me.",
+            "hint_en": "My friend might join me."
+          }
+        ],
+        "closing_cue": "Charlotte closes with \"So many options!\" when obj_3 hits.",
+        "suggested_flow": "**Suggested flow** (6 turns):\n\n1. **Charlotte**: \"What might you do this weekend?\"\n2. **Student**: ~\"I might go hiking.\"\n3. **Charlotte**: \"Or?\"\n4. **Student**: ~\"I might stay home.\"\n5. **Charlotte**: \"Anyone with you?\"\n6. **Student**: ~\"My friend might join me.\"\n7. **Charlotte**: \"So many options!\"",
+        "evaluation_focus": [
+          "Might + base",
+          "No -s, no \"to\""
+        ]
+      },
+      "guided_chat": {
+        "scenario": "Charlotte chats about uncertain plans.",
+        "voiced_by": "charlotte",
+        "persona": "Charlotte",
+        "persona_outfit": "charlotte_casual",
+        "intro_en": "Charlotte asks about uncertain plans. Practice 'might'.",
+        "opening_message": "Anything you might do tomorrow?",
+        "objectives": [
+          {
+            "id": 1,
+            "label_pt": "Possibilidade",
+            "label_en": "Possibility",
+            "hidden_prompt": "user uses 'I might + base'",
+            "hint_pt": "I might work from home.",
+            "hint_en": "I might work from home."
+          },
+          {
+            "id": 2,
+            "label_pt": "Outra",
+            "label_en": "Another",
+            "hidden_prompt": "user uses another 'might'",
+            "hint_pt": "I might exercise.",
+            "hint_en": "I might exercise."
+          },
+          {
+            "id": 3,
+            "label_pt": "Perguntar à Charlotte",
+            "label_en": "Ask Charlotte",
+            "hidden_prompt": "user asks 'What might you do?'",
+            "hint_pt": "What might you do?",
+            "hint_en": "What might you do?"
+          }
+        ],
+        "closing_cue": "Charlotte closes with \"Possibilities open!\" when obj_3 hits.",
+        "suggested_script": "**Script** (7 turns):\n\n1. **Charlotte**: \"Anything you might do tomorrow?\"\n2. **Student**: \"I might work from home.\"\n3. **Charlotte**: \"Else?\"\n4. **Student**: \"I might exercise.\"\n5. **Charlotte**: \"Cool.\"\n6. **Student**: \"What might you do?\"\n7. **Charlotte**: \"I might read. Possibilities open!\"\n\n> I01 chat = LLM puro.\n\n---"
+      }
+    },
+    {
+      "id": "I02",
+      "title": "She may be busy",
+      "sub_cefr": "B1",
+      "grammar_focus": "may for possibility (similar to might, slightly more formal)",
+      "markers": [],
+      "real_life_context": "You speculate using \"may\" — similar to might but more formal.",
+      "grammar": [
+        {
+          "type": "multiple_choice",
+          "sentence": "She _____ be busy today.",
+          "options": [
+            "may",
+            "will",
+            "is may"
+          ],
+          "answer": "may",
+          "explanation": "\"May + base\" = possibility (formal flavor)."
+        },
+        {
+          "type": "multiple_choice",
+          "sentence": "It _____ snow tonight.",
+          "options": [
+            "may",
+            "wills",
+            "does may"
+          ],
+          "answer": "may",
+          "explanation": "\"May snow\" — possibility."
+        },
+        {
+          "type": "word_bank",
+          "sentence": "They _____ come later.",
+          "choices": [
+            "may",
+            "are may",
+            "wills",
+            "mays"
+          ],
+          "answer": "may",
+          "explanation": "Modal, base form."
+        },
+        {
+          "type": "word_bank",
+          "sentence": "He may _____ the answer.",
+          "choices": [
+            "know",
+            "knows",
+            "knew",
+            "knowing"
+          ],
+          "answer": "know",
+          "explanation": "After may, base \"know\"."
+        },
+        {
+          "type": "fill_gap",
+          "sentence": "She _____ be at home.",
+          "hint": "possibility (formal)",
+          "answer": "may",
+          "explanation": "\"May be at home\" — possibility."
+        },
+        {
+          "type": "fill_gap",
+          "sentence": "It may _____ tomorrow.",
+          "hint": "base \"rain\"",
+          "answer": "rain",
+          "explanation": "\"May rain\" — possibility about weather."
+        },
+        {
+          "type": "fill_gap",
+          "sentence": "_____ I leave early today?",
+          "hint": "formal polite request",
+          "answer": "May",
+          "explanation": "\"May I + base?\" — formal polite request."
+        },
+        {
+          "type": "fix_error",
+          "sentence": "She mays come.",
+          "hint": "modal, no -s",
+          "answer": "She may come.",
+          "explanation": "\"May\" no -s in 3rd person."
+        },
+        {
+          "type": "fix_error",
+          "sentence": "He may to be late.",
+          "hint": "No \"to\"",
+          "answer": "He may be late.",
+          "explanation": "Modal + base, no \"to\"."
+        },
+        {
+          "type": "read_answer",
+          "passage": "She may be at home now. They may come later. It may rain tomorrow — bring an umbrella.",
+          "question": "What may happen tomorrow?",
+          "answer": "rain",
+          "explanation": "The text says \"It may rain tomorrow\"."
+        }
+      ],
+      "listening_speaking": [
+        {
+          "text": "She may be busy.",
+          "context": "possibility"
+        },
+        {
+          "text": "It may snow tonight.",
+          "context": "weather"
+        },
+        {
+          "text": "They may come later.",
+          "context": "plural"
+        },
+        {
+          "text": "He may know the answer.",
+          "context": "knowledge"
+        },
+        {
+          "text": "May I leave early?",
+          "context": "formal request"
+        }
+      ],
+      "roleplay": {
+        "scenario": "Charlotte chats about probabilities for tomorrow.",
+        "voiced_by": "charlotte",
+        "persona": "Charlotte",
+        "persona_outfit": "charlotte_casual",
+        "time_budget_sec": 180,
+        "opening_line": "What may happen tomorrow?",
+        "objectives": [
+          {
+            "id": 1,
+            "label_pt": "Possibilidade com may",
+            "label_en": "Possibility with may",
+            "hidden_prompt": "user uses 'It/She/He may + base'",
+            "hint_pt": "It may rain.",
+            "hint_en": "It may rain."
+          },
+          {
+            "id": 2,
+            "label_pt": "Outra com may",
+            "label_en": "Another with may",
+            "hidden_prompt": "user uses another may + base",
+            "hint_pt": "She may come over.",
+            "hint_en": "She may come over."
+          },
+          {
+            "id": 3,
+            "label_pt": "Pedido formal com May I",
+            "label_en": "Formal request with May I",
+            "hidden_prompt": "user uses 'May I + base?'",
+            "hint_pt": "May I ask a favor?",
+            "hint_en": "May I ask a favor?"
+          }
+        ],
+        "closing_cue": "Charlotte closes with \"Politely possible!\" when obj_3 hits.",
+        "suggested_flow": "**Suggested flow** (6 turns):\n\n1. **Charlotte**: \"What may happen tomorrow?\"\n2. **Student**: ~\"It may rain.\"\n3. **Charlotte**: \"Anyone visit?\"\n4. **Student**: ~\"She may come over.\"\n5. **Charlotte**: \"Ask me something.\"\n6. **Student**: ~\"May I ask a favor?\"\n7. **Charlotte**: \"Sure! Politely possible!\"",
+        "evaluation_focus": [
+          "May + base",
+          "\"May I\" for formal request"
+        ]
+      },
+      "guided_chat": {
+        "scenario": "Charlotte chats more formally about possibilities.",
+        "voiced_by": "charlotte",
+        "persona": "Charlotte",
+        "persona_outfit": "charlotte_casual",
+        "intro_en": "Charlotte asks formal-style possibilities. Practice 'may'.",
+        "opening_message": "Anything that may happen next week?",
+        "objectives": [
+          {
+            "id": 1,
+            "label_pt": "Possibilidade",
+            "label_en": "Possibility",
+            "hidden_prompt": "user uses 'X may + base'",
+            "hint_pt": "I may travel.",
+            "hint_en": "I may travel."
+          },
+          {
+            "id": 2,
+            "label_pt": "Outra",
+            "label_en": "Another",
+            "hidden_prompt": "user uses another may",
+            "hint_pt": "My boss may call me.",
+            "hint_en": "My boss may call me."
+          },
+          {
+            "id": 3,
+            "label_pt": "Perguntar à Charlotte",
+            "label_en": "Ask Charlotte",
+            "hidden_prompt": "user asks 'What may you do?'",
+            "hint_pt": "What may you do?",
+            "hint_en": "What may you do?"
+          }
+        ],
+        "closing_cue": "Charlotte closes with \"Open scenarios!\" when obj_3 hits.",
+        "suggested_script": "**Script** (7 turns):\n\n1. **Charlotte**: \"Anything that may happen next week?\"\n2. **Student**: \"I may travel.\"\n3. **Charlotte**: \"Work?\"\n4. **Student**: \"My boss may call me.\"\n5. **Charlotte**: \"Hope it's good.\"\n6. **Student**: \"What may you do?\"\n7. **Charlotte**: \"I may take a day off. Open scenarios!\"\n\n> I02 chat = LLM puro.\n\n---"
+      }
+    },
+    {
+      "id": "I03",
+      "title": "It could be",
+      "sub_cefr": "B1",
+      "grammar_focus": "could for possibility",
+      "markers": [],
+      "real_life_context": "You speculate with \"could\" — similar to might/may.",
+      "grammar": [
+        {
+          "type": "multiple_choice",
+          "sentence": "It _____ be true.",
+          "options": [
+            "could",
+            "will",
+            "cans"
+          ],
+          "answer": "could",
+          "explanation": "\"Could + base\" = possibility."
+        },
+        {
+          "type": "multiple_choice",
+          "sentence": "She _____ be at home now.",
+          "options": [
+            "could",
+            "cans",
+            "will"
+          ],
+          "answer": "could",
+          "explanation": "Modal \"could\" — same for all persons."
+        },
+        {
+          "type": "word_bank",
+          "sentence": "We _____ go later.",
+          "choices": [
+            "could",
+            "cans",
+            "wills",
+            "would"
+          ],
+          "answer": "could",
+          "explanation": "\"We could go\" — possible option."
+        },
+        {
+          "type": "word_bank",
+          "sentence": "He could _____ the bus.",
+          "choices": [
+            "take",
+            "takes",
+            "took",
+            "taking"
+          ],
+          "answer": "take",
+          "explanation": "After could, base \"take\"."
+        },
+        {
+          "type": "fill_gap",
+          "sentence": "That _____ be the answer.",
+          "hint": "possibility modal",
+          "answer": "could",
+          "explanation": "\"Could be the answer\" — possible."
+        },
+        {
+          "type": "fill_gap",
+          "sentence": "She could _____ a doctor.",
+          "hint": "base \"to be\"",
+          "answer": "be",
+          "explanation": "\"Could be\" — possible identity."
+        },
+        {
+          "type": "fill_gap",
+          "sentence": "_____ you help me?",
+          "hint": "polite modal",
+          "answer": "Could",
+          "explanation": "\"Could you + base?\" — polite request."
+        },
+        {
+          "type": "fix_error",
+          "sentence": "She coulds come.",
+          "hint": "modal, no -s",
+          "answer": "She could come.",
+          "explanation": "Could no -s."
+        },
+        {
+          "type": "fix_error",
+          "sentence": "He could to call.",
+          "hint": "No \"to\" after modal",
+          "answer": "He could call.",
+          "explanation": "Modal + base, no \"to\"."
+        },
+        {
+          "type": "read_answer",
+          "passage": "It could be true. She could be at home. We could go to the beach later — it sounds nice.",
+          "question": "What's the speaker considering?",
+          "answer": "going to the beach (or \"the beach\")",
+          "explanation": "The text says \"We could go to the beach later\"."
+        }
+      ],
+      "listening_speaking": [
+        {
+          "text": "It could be true.",
+          "context": "possibility"
+        },
+        {
+          "text": "She could be at home.",
+          "context": "location"
+        },
+        {
+          "text": "We could go later.",
+          "context": "option"
+        },
+        {
+          "text": "That could be the answer.",
+          "context": "possibility"
+        },
+        {
+          "text": "Could you help me?",
+          "context": "polite request"
+        }
+      ],
+      "roleplay": {
+        "scenario": "Charlotte considers options with you.",
+        "voiced_by": "charlotte",
+        "persona": "Charlotte",
+        "persona_outfit": "charlotte_casual",
+        "time_budget_sec": 180,
+        "opening_line": "What could we do this weekend? Suggest possibilities.",
+        "objectives": [
+          {
+            "id": 1,
+            "label_pt": "Sugestão com could",
+            "label_en": "Suggestion with could",
+            "hidden_prompt": "user uses 'We could + base'",
+            "hint_pt": "We could go hiking.",
+            "hint_en": "We could go hiking."
+          },
+          {
+            "id": 2,
+            "label_pt": "Outra sugestão",
+            "label_en": "Another suggestion",
+            "hidden_prompt": "user uses another could + base",
+            "hint_pt": "We could see a movie.",
+            "hint_en": "We could see a movie."
+          },
+          {
+            "id": 3,
+            "label_pt": "Pedido com Could you",
+            "label_en": "Request with Could you",
+            "hidden_prompt": "user uses 'Could you + base?'",
+            "hint_pt": "Could you drive?",
+            "hint_en": "Could you drive?"
+          }
+        ],
+        "closing_cue": "Charlotte closes with \"Many options!\" when obj_3 hits.",
+        "suggested_flow": "**Suggested flow** (6 turns):\n\n1. **Charlotte**: \"What could we do this weekend? Suggest possibilities.\"\n2. **Student**: ~\"We could go hiking.\"\n3. **Charlotte**: \"Or?\"\n4. **Student**: ~\"We could see a movie.\"\n5. **Charlotte**: \"Ask me something.\"\n6. **Student**: ~\"Could you drive?\"\n7. **Charlotte**: \"Sure! Many options!\"",
+        "evaluation_focus": [
+          "Could + base",
+          "Could you for polite request"
+        ]
+      },
+      "guided_chat": {
+        "scenario": "Charlotte brainstorms with you.",
+        "voiced_by": "charlotte",
+        "persona": "Charlotte",
+        "persona_outfit": "charlotte_casual",
+        "intro_en": "Charlotte brainstorms possibilities with you. Practice 'could'.",
+        "opening_message": "I'm bored — what could I do?",
+        "objectives": [
+          {
+            "id": 1,
+            "label_pt": "Sugestão",
+            "label_en": "Suggestion",
+            "hidden_prompt": "user uses 'You could + base'",
+            "hint_pt": "You could read a book.",
+            "hint_en": "You could read a book."
+          },
+          {
+            "id": 2,
+            "label_pt": "Outra",
+            "label_en": "Another",
+            "hidden_prompt": "user uses another could",
+            "hint_pt": "You could call a friend.",
+            "hint_en": "You could call a friend."
+          },
+          {
+            "id": 3,
+            "label_pt": "Mais uma ou perguntar",
+            "label_en": "One more or ask",
+            "hidden_prompt": "user uses one more 'could' or asks",
+            "hint_pt": "You could try yoga.",
+            "hint_en": "You could try yoga."
+          }
+        ],
+        "closing_cue": "Charlotte closes with \"Saved from boredom!\" when obj_3 hits.",
+        "suggested_script": "**Script** (7 turns):\n\n1. **Charlotte**: \"I'm bored — what could I do?\"\n2. **Student**: \"You could read a book.\"\n3. **Charlotte**: \"Hmm.\"\n4. **Student**: \"You could call a friend.\"\n5. **Charlotte**: \"Better!\"\n6. **Student**: \"You could try yoga.\"\n7. **Charlotte**: \"Saved from boredom!\"\n\n> I03 chat = LLM puro.\n\n---"
+      }
+    },
+    {
+      "id": "I04",
+      "title": "It can't be true",
+      "sub_cefr": "B1",
+      "grammar_focus": "can't for impossibility (logical)",
+      "markers": [
+        "denso"
+      ],
+      "real_life_context": "You express logical impossibility.",
+      "grammar": [
+        {
+          "type": "multiple_choice",
+          "sentence": "That _____ be true!",
+          "options": [
+            "can't",
+            "mustn't",
+            "shouldn't"
+          ],
+          "answer": "can't",
+          "explanation": "\"Can't\" for logical impossibility — \"It can't be true!\" = it's impossible."
+        },
+        {
+          "type": "multiple_choice",
+          "sentence": "He _____ be there now — I just saw him here.",
+          "options": [
+            "can't",
+            "shouldn't",
+            "mustn't"
+          ],
+          "answer": "can't",
+          "explanation": "Logical impossibility."
+        },
+        {
+          "type": "word_bank",
+          "sentence": "It _____ be that easy.",
+          "choices": [
+            "can't",
+            "shouldn't",
+            "wouldn't",
+            "wasn't"
+          ],
+          "answer": "can't",
+          "explanation": "\"Can't be\" — logical impossibility."
+        },
+        {
+          "type": "word_bank",
+          "sentence": "She _____ be 100 — she looks 30.",
+          "choices": [
+            "can't",
+            "mustn't",
+            "wouldn't",
+            "shouldn't"
+          ],
+          "answer": "can't",
+          "explanation": "Logical conclusion: impossible."
+        },
+        {
+          "type": "fill_gap",
+          "sentence": "That _____ be right — it's wrong.",
+          "hint": "impossibility",
+          "answer": "can't",
+          "explanation": "\"Can't be right\" — impossible."
+        },
+        {
+          "type": "fill_gap",
+          "sentence": "They _____ be coming — it's too late.",
+          "hint": "impossibility (continuous)",
+          "answer": "can't",
+          "explanation": "\"Can't be coming\" — impossibility with continuous."
+        },
+        {
+          "type": "fill_gap",
+          "sentence": "He _____ be at home — his car is here.",
+          "hint": "logical conclusion",
+          "answer": "can't",
+          "explanation": "Logical: if car here, he's not home."
+        },
+        {
+          "type": "fix_error",
+          "sentence": "She mustn't be at home.",
+          "hint": "For impossibility, use can't",
+          "answer": "She can't be at home.",
+          "explanation": "\"Mustn't\" = prohibition. \"Can't\" = impossibility."
+        },
+        {
+          "type": "fix_error",
+          "sentence": "It can't to be true.",
+          "hint": "No \"to\" after can't",
+          "answer": "It can't be true.",
+          "explanation": "Modal + base, no \"to\"."
+        },
+        {
+          "type": "read_answer",
+          "passage": "That can't be John — he's in Paris. It can't be that simple. They can't be late — the meeting starts at 9.",
+          "question": "Why is it not John?",
+          "answer": "he's in Paris (or \"in Paris\")",
+          "explanation": "The text says \"he's in Paris\" — reason it can't be him."
+        }
+      ],
+      "listening_speaking": [
+        {
+          "text": "That can't be true!",
+          "context": "disbelief"
+        },
+        {
+          "text": "He can't be there now.",
+          "context": "impossibility"
+        },
+        {
+          "text": "It can't be that easy.",
+          "context": "skepticism"
+        },
+        {
+          "text": "She can't be 100.",
+          "context": "logical impossibility"
+        },
+        {
+          "text": "They can't be coming.",
+          "context": "likely impossible"
+        }
+      ],
+      "roleplay": {
+        "scenario": "Charlotte shares surprising news — you express disbelief with can't.",
+        "voiced_by": "charlotte",
+        "persona": "Charlotte",
+        "persona_outfit": "charlotte_casual",
+        "time_budget_sec": 180,
+        "opening_line": "I just heard that my friend won a million dollars!",
+        "objectives": [
+          {
+            "id": 1,
+            "label_pt": "Expressar descrença com can't",
+            "label_en": "Express disbelief with can't",
+            "hidden_prompt": "user uses 'That can't be true' or similar",
+            "hint_pt": "That can't be true!",
+            "hint_en": "That can't be true!"
+          },
+          {
+            "id": 2,
+            "label_pt": "Mais ceticismo",
+            "label_en": "More skepticism",
+            "hidden_prompt": "user uses 'It can't be + adjective'",
+            "hint_pt": "It can't be that easy.",
+            "hint_en": "It can't be that easy."
+          },
+          {
+            "id": 3,
+            "label_pt": "Conclusão lógica",
+            "label_en": "Logical conclusion",
+            "hidden_prompt": "user uses 'X can't be + state'",
+            "hint_pt": "He can't be lying.",
+            "hint_en": "He can't be lying."
+          }
+        ],
+        "closing_cue": "Charlotte closes with \"Healthy skepticism!\" when obj_3 hits.",
+        "suggested_flow": "**Suggested flow** (6 turns):\n\n1. **Charlotte**: \"I just heard that my friend won a million dollars!\"\n2. **Student**: ~\"That can't be true!\"\n3. **Charlotte**: \"Or is it?\"\n4. **Student**: ~\"It can't be that easy.\"\n5. **Charlotte**: \"True. But still?\"\n6. **Student**: ~\"He can't be lying.\"\n7. **Charlotte**: \"Healthy skepticism!\"",
+        "evaluation_focus": [
+          "Can't for impossibility",
+          "Distinction from mustn't (prohibition)",
+          "Natural disbelief"
+        ]
+      },
+      "guided_chat": {
+        "scenario": "Charlotte tells unbelievable stories.",
+        "voiced_by": "charlotte",
+        "persona": "Charlotte",
+        "persona_outfit": "charlotte_casual",
+        "intro_en": "Charlotte shares surprising news. React with 'can't'.",
+        "opening_message": "My friend says she met a celebrity!",
+        "objectives": [
+          {
+            "id": 1,
+            "label_pt": "Reagir com descrença",
+            "label_en": "React with disbelief",
+            "hidden_prompt": "user uses 'That can't + base'",
+            "hint_pt": "That can't be true!",
+            "hint_en": "That can't be true!"
+          },
+          {
+            "id": 2,
+            "label_pt": "Mais ceticismo",
+            "label_en": "More skepticism",
+            "hidden_prompt": "user uses another can't",
+            "hint_pt": "It can't be possible.",
+            "hint_en": "It can't be possible."
+          },
+          {
+            "id": 3,
+            "label_pt": "Perguntar mais",
+            "label_en": "Ask more",
+            "hidden_prompt": "user asks for more info",
+            "hint_pt": "Are you sure?",
+            "hint_en": "Are you sure?"
+          }
+        ],
+        "closing_cue": "Charlotte closes with \"Surprised much!\" when obj_3 hits.",
+        "suggested_script": "**Script** (7 turns):\n\n1. **Charlotte**: \"My friend says she met a celebrity!\"\n2. **Student**: \"That can't be true!\"\n3. **Charlotte**: \"She has a photo.\"\n4. **Student**: \"It can't be possible.\"\n5. **Charlotte**: \"It is!\"\n6. **Student**: \"Are you sure?\"\n7. **Charlotte**: \"Yes! Surprised much!\"\n\n> I04 chat = LLM puro.\n\n---"
+      }
+    },
+    {
+      "id": "I05",
+      "title": "All modals combined",
+      "sub_cefr": "B1",
+      "grammar_focus": "Integration might/may/could/can't",
+      "markers": [],
+      "real_life_context": "You combine modals to express different degrees of certainty.",
+      "grammar": [
+        {
+          "type": "multiple_choice",
+          "sentence": "It _____ rain — I'm not sure.",
+          "options": [
+            "might",
+            "will",
+            "can't"
+          ],
+          "answer": "might",
+          "explanation": "\"Might\" — possibility."
+        },
+        {
+          "type": "multiple_choice",
+          "sentence": "She _____ be at home — let me check.",
+          "options": [
+            "could",
+            "can't",
+            "wills"
+          ],
+          "answer": "could",
+          "explanation": "\"Could\" — possibility."
+        },
+        {
+          "type": "word_bank",
+          "sentence": "He _____ be John — John is shorter.",
+          "choices": [
+            "can't",
+            "might",
+            "could",
+            "may"
+          ],
+          "answer": "can't",
+          "explanation": "Logical impossibility."
+        },
+        {
+          "type": "word_bank",
+          "sentence": "They _____ come later — they have time.",
+          "choices": [
+            "may",
+            "can't",
+            "wills",
+            "could"
+          ],
+          "answer": "may",
+          "explanation": "Possibility."
+        },
+        {
+          "type": "fill_gap",
+          "sentence": "It _____ snow tonight — clouds are heavy.",
+          "hint": "possibility",
+          "answer": "might (or may/could)",
+          "explanation": "All three express possibility."
+        },
+        {
+          "type": "fill_gap",
+          "sentence": "That _____ be true — it's impossible!",
+          "hint": "impossibility",
+          "answer": "can't",
+          "explanation": "\"Can't be\" — logical impossibility."
+        },
+        {
+          "type": "fill_gap",
+          "sentence": "_____ I borrow your pen?",
+          "hint": "may/might for formal",
+          "answer": "May",
+          "explanation": "\"May I\" — formal request."
+        },
+        {
+          "type": "fix_error",
+          "sentence": "She maybe come.",
+          "hint": "\"Maybe\" is adverb; \"may be\" is modal + verb",
+          "answer": "She may come. (or \"Maybe she'll come\")",
+          "explanation": "\"Maybe\" (adv) is one word; \"may + verb\" needs space and base form."
+        },
+        {
+          "type": "fix_error",
+          "sentence": "He might to be late.",
+          "hint": "No \"to\"",
+          "answer": "He might be late.",
+          "explanation": "Modal + base, no \"to\"."
+        },
+        {
+          "type": "read_answer",
+          "passage": "She might be at home. He could be late. They may come tomorrow. That can't be John — too tall.",
+          "question": "Why can't it be John?",
+          "answer": "too tall (or \"John is too tall\" or \"shorter\")",
+          "explanation": "The text says \"too tall\" reasoning."
+        }
+      ],
+      "listening_speaking": [
+        {
+          "text": "It might rain.",
+          "context": "might possibility"
+        },
+        {
+          "text": "She could be at home.",
+          "context": "could possibility"
+        },
+        {
+          "text": "He may come later.",
+          "context": "may possibility"
+        },
+        {
+          "text": "That can't be true.",
+          "context": "can't impossibility"
+        },
+        {
+          "text": "May I leave?",
+          "context": "may request"
+        }
+      ],
+      "roleplay": {
+        "scenario": "Charlotte presents scenarios — you react with appropriate modal.",
+        "voiced_by": "charlotte",
+        "persona": "Charlotte",
+        "persona_outfit": "charlotte_casual",
+        "time_budget_sec": 180,
+        "opening_line": "Use might, may, could, or can't to react.",
+        "objectives": [
+          {
+            "id": 1,
+            "label_pt": "Possibilidade com might/could",
+            "label_en": "Possibility with might/could",
+            "hidden_prompt": "user uses might/could + base",
+            "hint_pt": "She might be home.",
+            "hint_en": "She might be home."
+          },
+          {
+            "id": 2,
+            "label_pt": "Impossibilidade com can't",
+            "label_en": "Impossibility with can't",
+            "hidden_prompt": "user uses 'can't + base' for impossibility",
+            "hint_pt": "That can't be right.",
+            "hint_en": "That can't be right."
+          },
+          {
+            "id": 3,
+            "label_pt": "Pedido formal com May I",
+            "label_en": "Formal request with May I",
+            "hidden_prompt": "user uses 'May I + base?'",
+            "hint_pt": "May I ask a question?",
+            "hint_en": "May I ask a question?"
+          }
+        ],
+        "closing_cue": "Charlotte closes with \"Modal master!\" when obj_3 hits.",
+        "suggested_flow": "**Suggested flow** (6 turns):\n\n1. **Charlotte**: \"Use might, may, could, or can't to react.\"\n2. **Student**: ~\"She might be home.\"\n3. **Charlotte**: \"Impossible?\"\n4. **Student**: ~\"That can't be right.\"\n5. **Charlotte**: \"Polite request?\"\n6. **Student**: ~\"May I ask a question?\"\n7. **Charlotte**: \"Modal master!\"",
+        "evaluation_focus": [
+          "Right modal for situation",
+          "Possibility vs impossibility",
+          "Formal request"
+        ]
+      },
+      "guided_chat": {
+        "scenario": "Charlotte chats about uncertain plans, doubts, requests.",
+        "voiced_by": "charlotte",
+        "persona": "Charlotte",
+        "persona_outfit": "charlotte_casual",
+        "intro_en": "Charlotte invites integrated modal practice.",
+        "opening_message": "Tell me three things using possibility modals.",
+        "objectives": [
+          {
+            "id": 1,
+            "label_pt": "Possibilidade",
+            "label_en": "Possibility",
+            "hidden_prompt": "user uses might/may/could + base",
+            "hint_pt": "I might travel.",
+            "hint_en": "I might travel."
+          },
+          {
+            "id": 2,
+            "label_pt": "Outra ou impossibilidade",
+            "label_en": "Another or impossibility",
+            "hidden_prompt": "user uses another modal",
+            "hint_pt": "She can't be busy now.",
+            "hint_en": "She can't be busy now."
+          },
+          {
+            "id": 3,
+            "label_pt": "Perguntar à Charlotte",
+            "label_en": "Ask Charlotte",
+            "hidden_prompt": "user asks 'What might/could you do?'",
+            "hint_pt": "What might you do?",
+            "hint_en": "What might you do?"
+          }
+        ],
+        "closing_cue": "Charlotte closes with \"Modals nailed!\" when obj_3 hits.",
+        "suggested_script": "**Script** (7 turns):\n\n1. **Charlotte**: \"Tell me three things using possibility modals.\"\n2. **Student**: \"I might travel.\"\n3. **Charlotte**: \"Cool.\"\n4. **Student**: \"She can't be busy now.\"\n5. **Charlotte**: \"Probably.\"\n6. **Student**: \"What might you do?\"\n7. **Charlotte**: \"I may relax. Modals nailed!\"\n\n> I05 chat = LLM puro.\n\n---"
+      }
+    }
+  ],
+  "cross_unit_consolidation": [
+    "might / may / could (possibility) — interchangeable in many contexts",
+    "can't (logical impossibility)",
+    "May I / Could you (polite requests)"
+  ]
+}

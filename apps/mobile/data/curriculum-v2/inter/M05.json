@@ -116,23 +116,28 @@
       "listening_speaking": [
         {
           "text": "I get up at 6 every day.",
-          "context": "get up"
+          "context": "get up",
+          "audio_url": "https://fnvjibzreepubageztoi.supabase.co/storage/v1/object/public/curriculum-audio/ls/inter/065a7755e4496163.flac"
         },
         {
           "text": "Please turn off the light.",
-          "context": "turn off"
+          "context": "turn off",
+          "audio_url": "https://fnvjibzreepubageztoi.supabase.co/storage/v1/object/public/curriculum-audio/ls/inter/82547ec5c360f041.flac"
         },
         {
           "text": "She takes off her shoes.",
-          "context": "take off"
+          "context": "take off",
+          "audio_url": "https://fnvjibzreepubageztoi.supabase.co/storage/v1/object/public/curriculum-audio/ls/inter/e20951c0c31b308f.flac"
         },
         {
           "text": "I put on my coat.",
-          "context": "put on"
+          "context": "put on",
+          "audio_url": "https://fnvjibzreepubageztoi.supabase.co/storage/v1/object/public/curriculum-audio/ls/inter/e86d5bde6e63151f.flac"
         },
         {
           "text": "We went out for dinner.",
-          "context": "go out"
+          "context": "go out",
+          "audio_url": "https://fnvjibzreepubageztoi.supabase.co/storage/v1/object/public/curriculum-audio/ls/inter/0b6f599351af01a6.flac"
         }
       ],
       "roleplay": {
@@ -312,23 +317,28 @@
       "listening_speaking": [
         {
           "text": "I'm looking for my keys.",
-          "context": "searching"
+          "context": "searching",
+          "audio_url": "https://fnvjibzreepubageztoi.supabase.co/storage/v1/object/public/curriculum-audio/ls/inter/023e037f90725dce.flac"
         },
         {
           "text": "She looks after her sister's kids.",
-          "context": "caring"
+          "context": "caring",
+          "audio_url": "https://fnvjibzreepubageztoi.supabase.co/storage/v1/object/public/curriculum-audio/ls/inter/b03523173e9bc82d.flac"
         },
         {
           "text": "Please look at the menu.",
-          "context": "observe"
+          "context": "observe",
+          "audio_url": "https://fnvjibzreepubageztoi.supabase.co/storage/v1/object/public/curriculum-audio/ls/inter/8d5fa8064781a34a.flac"
         },
         {
           "text": "I'll look up the word.",
-          "context": "research"
+          "context": "research",
+          "audio_url": "https://fnvjibzreepubageztoi.supabase.co/storage/v1/object/public/curriculum-audio/ls/inter/611a9d7c53e7485c.flac"
         },
         {
           "text": "He's looking for a job.",
-          "context": "searching"
+          "context": "searching",
+          "audio_url": "https://fnvjibzreepubageztoi.supabase.co/storage/v1/object/public/curriculum-audio/ls/inter/e5c37b56ddf7525a.flac"
         }
       ],
       "roleplay": {
@@ -509,23 +519,28 @@
       "listening_speaking": [
         {
           "text": "I found out yesterday.",
-          "context": "discovery"
+          "context": "discovery",
+          "audio_url": "https://fnvjibzreepubageztoi.supabase.co/storage/v1/object/public/curriculum-audio/ls/inter/2d3cc5f90553cafe.flac"
         },
         {
           "text": "He gave up smoking.",
-          "context": "quitting"
+          "context": "quitting",
+          "audio_url": "https://fnvjibzreepubageztoi.supabase.co/storage/v1/object/public/curriculum-audio/ls/inter/bec6d87c2a818f82.flac"
         },
         {
           "text": "Can you pick me up at 7?",
-          "context": "fetching"
+          "context": "fetching",
+          "audio_url": "https://fnvjibzreepubageztoi.supabase.co/storage/v1/object/public/curriculum-audio/ls/inter/4395d926a3f7bcc2.flac"
         },
         {
           "text": "She put down her phone.",
-          "context": "placing"
+          "context": "placing",
+          "audio_url": "https://fnvjibzreepubageztoi.supabase.co/storage/v1/object/public/curriculum-audio/ls/inter/997af7824b1a1575.flac"
         },
         {
           "text": "Don't give up!",
-          "context": "encouragement"
+          "context": "encouragement",
+          "audio_url": "https://fnvjibzreepubageztoi.supabase.co/storage/v1/object/public/curriculum-audio/ls/inter/806e05737fc64f9b.flac"
         }
       ],
       "roleplay": {
@@ -707,23 +722,28 @@
       "listening_speaking": [
         {
           "text": "She turned it off.",
-          "context": "separable with pronoun"
+          "context": "separable with pronoun",
+          "audio_url": "https://fnvjibzreepubageztoi.supabase.co/storage/v1/object/public/curriculum-audio/ls/inter/45cb9caf305b47d9.flac"
         },
         {
           "text": "He looks after his sister.",
-          "context": "inseparable"
+          "context": "inseparable",
+          "audio_url": "https://fnvjibzreepubageztoi.supabase.co/storage/v1/object/public/curriculum-audio/ls/inter/7fa4c61a6948e3e0.flac"
         },
         {
           "text": "I picked him up.",
-          "context": "separable"
+          "context": "separable",
+          "audio_url": "https://fnvjibzreepubageztoi.supabase.co/storage/v1/object/public/curriculum-audio/ls/inter/b0197d2c0f6ddb26.flac"
         },
         {
           "text": "She looks after them.",
-          "context": "inseparable with pronoun"
+          "context": "inseparable with pronoun",
+          "audio_url": "https://fnvjibzreepubageztoi.supabase.co/storage/v1/object/public/curriculum-audio/ls/inter/9e19d567ce4a1ac9.flac"
         },
         {
           "text": "Please turn the music off.",
-          "context": "separable with noun (either position)"
+          "context": "separable with noun (either position)",
+          "audio_url": "https://fnvjibzreepubageztoi.supabase.co/storage/v1/object/public/curriculum-audio/ls/inter/9c2940bd0b17eee2.flac"
         }
       ],
       "roleplay": {
@@ -904,23 +924,28 @@
       "listening_speaking": [
         {
           "text": "I got up early today.",
-          "context": "got up"
+          "context": "got up",
+          "audio_url": "https://fnvjibzreepubageztoi.supabase.co/storage/v1/object/public/curriculum-audio/ls/inter/04d35fdb45b7c5a1.flac"
         },
         {
           "text": "She picked up his keys.",
-          "context": "picked up"
+          "context": "picked up",
+          "audio_url": "https://fnvjibzreepubageztoi.supabase.co/storage/v1/object/public/curriculum-audio/ls/inter/fa75b5d2bd79f8ab.flac"
         },
         {
           "text": "We found out the truth.",
-          "context": "found out"
+          "context": "found out",
+          "audio_url": "https://fnvjibzreepubageztoi.supabase.co/storage/v1/object/public/curriculum-audio/ls/inter/20d6936877098d34.flac"
         },
         {
           "text": "Please take off your shoes.",
-          "context": "take off"
+          "context": "take off",
+          "audio_url": "https://fnvjibzreepubageztoi.supabase.co/storage/v1/object/public/curriculum-audio/ls/inter/8a49c9d27545e700.flac"
         },
         {
           "text": "He gave up smoking.",
-          "context": "gave up"
+          "context": "gave up",
+          "audio_url": "https://fnvjibzreepubageztoi.supabase.co/storage/v1/object/public/curriculum-audio/ls/inter/bec6d87c2a818f82.flac"
         }
       ],
       "roleplay": {

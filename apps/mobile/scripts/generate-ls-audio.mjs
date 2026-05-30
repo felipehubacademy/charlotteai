@@ -41,9 +41,43 @@ const FORCE   = args.includes('--force');
 
 const BUCKET  = 'curriculum-audio';
 const PREFIX  = 'ls';           // bucket path prefix
-const VOICE   = 'coral';
+const VOICE   = 'coral';        // Identidade da Charlotte — NUNCA mudar.
 const FORMAT  = 'flac';
 const MODEL   = 'gpt-4o-mini-tts';
+
+// Per-level tuning. Mesma voz (coral) em todos por identidade da Charlotte.
+// Speed/instructions diferenciam pra dar prosodia adequada ao nivel CEFR.
+//   - Novice (A1/A2): leitura padrao 1.0, sem instructions — chunks curtos
+//     funcionam bem com a leitura natural do gpt-4o-mini-tts.
+//   - Inter (B1/B2): pace natural, stress em content words, reducoes em
+//     function words. Questoes sobem, statements descem.
+//   - Advanced (C1/C2): native-paced (1.05x), connected speech, weak forms,
+//     carga emocional por sentenca.
+const PER_LEVEL = {
+  novice: {
+    speed:        1.0,
+    instructions: null,
+  },
+  inter: {
+    speed:        1.0,
+    instructions:
+      'Natural conversational American English at a normal pace. ' +
+      'Friendly and engaging tone. Use realistic stress on content ' +
+      'words (verbs, nouns) and slight reductions on function words ' +
+      '(to, for, of, have). Questions rise naturally; statements have ' +
+      'clear falling intonation. No exaggerated slowness.',
+  },
+  advanced: {
+    speed:        1.05,
+    instructions:
+      'Native-speed conversational American English with full natural ' +
+      'prosody: connected speech, weak forms (gonna/wanna/shoulda where ' +
+      'appropriate), and clause-boundary pauses. Convey the emotional ' +
+      'register of each sentence — wishes feel wistful, hypotheticals ' +
+      'sound thoughtful, emphatic structures get vocal emphasis. ' +
+      'Maintain warmth — this is a coach, not a newsreader.',
+  },
+};
 
 const OPENAI_API_KEY = process.env.OPENAI_API_KEY;
 const SUPABASE_URL   = process.env.NEXT_PUBLIC_SUPABASE_URL;
@@ -75,21 +109,26 @@ function collectPhrases() {
   return out;
 }
 
-async function ttsOpenAI(text) {
+async function ttsOpenAI(text, level) {
+  const cfg = PER_LEVEL[level] ?? PER_LEVEL.novice;
+  const body = { model: MODEL, input: text, voice: VOICE, response_format: FORMAT };
+  if (cfg.speed && cfg.speed !== 1.0) body.speed = cfg.speed;
+  if (cfg.instructions) body.instructions = cfg.instructions;
   const res = await fetch('https://api.openai.com/v1/audio/speech', {
     method: 'POST',
     headers: {
       'Authorization': `Bearer ${OPENAI_API_KEY}`,
       'Content-Type':  'application/json',
     },
-    body: JSON.stringify({ model: MODEL, input: text, voice: VOICE, response_format: FORMAT }),
+    body: JSON.stringify(body),
   });
   if (!res.ok) throw new Error(`OpenAI TTS ${res.status}: ${await res.text()}`);
   return Buffer.from(await res.arrayBuffer());
 }
 
-async function uploadSupabase(filename, buffer) {
-  const url = `${SUPABASE_URL}/storage/v1/object/${BUCKET}/${PREFIX}/${filename}`;
+async function uploadSupabase(level, filename, buffer) {
+  const path = `${PREFIX}/${level}/${filename}`;
+  const url  = `${SUPABASE_URL}/storage/v1/object/${BUCKET}/${path}`;
   const res = await fetch(url, {
     method: 'POST',
     headers: {
@@ -100,7 +139,7 @@ async function uploadSupabase(filename, buffer) {
     body: buffer,
   });
   if (!res.ok) throw new Error(`Supabase upload ${res.status}: ${await res.text()}`);
-  return `${SUPABASE_URL}/storage/v1/object/public/${BUCKET}/${PREFIX}/${filename}`;
+  return `${SUPABASE_URL}/storage/v1/object/public/${BUCKET}/${path}`;
 }
 
 function loadManifest() {
@@ -147,9 +186,9 @@ async function main() {
   for (const p of missing) {
     i++;
     try {
-      const buf      = await ttsOpenAI(p.text);
+      const buf      = await ttsOpenAI(p.text, p.level);
       const filename = `${p.hash}.${FORMAT}`;
-      const url      = await uploadSupabase(filename, buf);
+      const url      = await uploadSupabase(p.level, filename, buf);
       manifest[p.hash] = url;
       saveManifest(manifest);  // salva incremental — seguro pra crash mid-run
       console.log(`OK  [${i}/${missing.length}] ${p.level}/${p.moduleId}/${p.unitId} "${p.text.slice(0, 40)}" -> ${filename}`);

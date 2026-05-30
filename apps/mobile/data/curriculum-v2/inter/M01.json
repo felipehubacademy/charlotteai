@@ -120,23 +120,28 @@
       "listening_speaking": [
         {
           "text": "I was studying at 8pm.",
-          "context": "own past continuous"
+          "context": "own past continuous",
+          "audio_url": "https://fnvjibzreepubageztoi.supabase.co/storage/v1/object/public/curriculum-audio/ls/inter/5873b15a43558d07.flac"
         },
         {
           "text": "They were playing soccer.",
-          "context": "plural past continuous"
+          "context": "plural past continuous",
+          "audio_url": "https://fnvjibzreepubageztoi.supabase.co/storage/v1/object/public/curriculum-audio/ls/inter/93c612d341908ad0.flac"
         },
         {
           "text": "She was cooking dinner.",
-          "context": "3rd person"
+          "context": "3rd person",
+          "audio_url": "https://fnvjibzreepubageztoi.supabase.co/storage/v1/object/public/curriculum-audio/ls/inter/ce3bd8277d67a509.flac"
         },
         {
           "text": "We were watching TV last night.",
-          "context": "group activity"
+          "context": "group activity",
+          "audio_url": "https://fnvjibzreepubageztoi.supabase.co/storage/v1/object/public/curriculum-audio/ls/inter/a87e0a6cf4b62392.flac"
         },
         {
           "text": "He was washing his car when I called.",
-          "context": "past continuous + when"
+          "context": "past continuous + when",
+          "audio_url": "https://fnvjibzreepubageztoi.supabase.co/storage/v1/object/public/curriculum-audio/ls/inter/94e6ca344460f777.flac"
         }
       ],
       "roleplay": {
@@ -317,23 +322,28 @@
       "listening_speaking": [
         {
           "text": "I wasn't sleeping.",
-          "context": "own negative"
+          "context": "own negative",
+          "audio_url": "https://fnvjibzreepubageztoi.supabase.co/storage/v1/object/public/curriculum-audio/ls/inter/5b3ea61a8ac49dd1.flac"
         },
         {
           "text": "They weren't playing soccer.",
-          "context": "plural negative"
+          "context": "plural negative",
+          "audio_url": "https://fnvjibzreepubageztoi.supabase.co/storage/v1/object/public/curriculum-audio/ls/inter/761abd02690bfe12.flac"
         },
         {
           "text": "She wasn't cooking.",
-          "context": "3rd negative"
+          "context": "3rd negative",
+          "audio_url": "https://fnvjibzreepubageztoi.supabase.co/storage/v1/object/public/curriculum-audio/ls/inter/63f78b27a446ffe2.flac"
         },
         {
           "text": "We weren't talking.",
-          "context": "plural we"
+          "context": "plural we",
+          "audio_url": "https://fnvjibzreepubageztoi.supabase.co/storage/v1/object/public/curriculum-audio/ls/inter/afb8c5b683c3879e.flac"
         },
         {
           "text": "He wasn't working at home yesterday.",
-          "context": "3rd + time"
+          "context": "3rd + time",
+          "audio_url": "https://fnvjibzreepubageztoi.supabase.co/storage/v1/object/public/curriculum-audio/ls/inter/05706757b6152b49.flac"
         }
       ],
       "roleplay": {
@@ -516,24 +526,28 @@
       "listening_speaking": [
         {
           "text": "Were you working at 9pm?",
-          "context": "direct question"
+          "context": "direct question",
+          "audio_url": "https://fnvjibzreepubageztoi.supabase.co/storage/v1/object/public/curriculum-audio/ls/inter/eafcc0b53b55574c.flac"
         },
         {
           "text": "Was she sleeping?",
-          "context": "3rd person"
+          "context": "3rd person",
+          "audio_url": "https://fnvjibzreepubageztoi.supabase.co/storage/v1/object/public/curriculum-audio/ls/inter/499bb00cba3a8ee4.flac"
         },
         {
           "text": "What were you doing at 8?",
-          "context": "WH question"
+          "context": "WH question",
+          "audio_url": "https://fnvjibzreepubageztoi.supabase.co/storage/v1/object/public/curriculum-audio/ls/inter/305373d5d2e56a8f.flac"
         },
         {
           "text": "Were they playing soccer?",
-          "context": "plural"
+          "context": "plural",
+          "audio_url": "https://fnvjibzreepubageztoi.supabase.co/storage/v1/object/public/curriculum-audio/ls/inter/9bce957300eead96.flac"
         },
         {
           "text": "Yes, I was. No, I wasn't.",
           "context": "short answers",
-          "audio_url": "https://fnvjibzreepubageztoi.supabase.co/storage/v1/object/public/curriculum-audio/ls/ea584243934e6dda.flac"
+          "audio_url": "https://fnvjibzreepubageztoi.supabase.co/storage/v1/object/public/curriculum-audio/ls/novice/ea584243934e6dda.flac"
         }
       ],
       "roleplay": {
@@ -716,23 +730,28 @@
       "listening_speaking": [
         {
           "text": "While I was cooking, she called.",
-          "context": "while clause"
+          "context": "while clause",
+          "audio_url": "https://fnvjibzreepubageztoi.supabase.co/storage/v1/object/public/curriculum-audio/ls/inter/9a197612ccff50a2.flac"
         },
         {
           "text": "I was sleeping when the phone rang.",
-          "context": "when interruption"
+          "context": "when interruption",
+          "audio_url": "https://fnvjibzreepubageztoi.supabase.co/storage/v1/object/public/curriculum-audio/ls/inter/2bdcb344f6e3a01f.flac"
         },
         {
           "text": "As I was walking home, I saw a friend.",
-          "context": "as + past continuous"
+          "context": "as + past continuous",
+          "audio_url": "https://fnvjibzreepubageztoi.supabase.co/storage/v1/object/public/curriculum-audio/ls/inter/ce3f0d36e1f564c7.flac"
         },
         {
           "text": "They were eating when I arrived.",
-          "context": "typical interruption"
+          "context": "typical interruption",
+          "audio_url": "https://fnvjibzreepubageztoi.supabase.co/storage/v1/object/public/curriculum-audio/ls/inter/c4b2b4a6260c05c2.flac"
         },
         {
           "text": "What were you doing when it happened?",
-          "context": "common question"
+          "context": "common question",
+          "audio_url": "https://fnvjibzreepubageztoi.supabase.co/storage/v1/object/public/curriculum-audio/ls/inter/35565bd96b115d2f.flac"
         }
       ],
       "roleplay": {
@@ -913,23 +932,28 @@
       "listening_speaking": [
         {
           "text": "I was studying when she arrived.",
-          "context": "typical narrative"
+          "context": "typical narrative",
+          "audio_url": "https://fnvjibzreepubageztoi.supabase.co/storage/v1/object/public/curriculum-audio/ls/inter/e7c5fa5983e585b9.flac"
         },
         {
           "text": "She was working when I called.",
-          "context": "3rd person"
+          "context": "3rd person",
+          "audio_url": "https://fnvjibzreepubageztoi.supabase.co/storage/v1/object/public/curriculum-audio/ls/inter/3e14673bfc98fb22.flac"
         },
         {
           "text": "We were having dinner when the doorbell rang.",
-          "context": "plural we"
+          "context": "plural we",
+          "audio_url": "https://fnvjibzreepubageztoi.supabase.co/storage/v1/object/public/curriculum-audio/ls/inter/7f0af1ec8ed58b30.flac"
         },
         {
           "text": "While he was sleeping, the alarm went off.",
-          "context": "while clause"
+          "context": "while clause",
+          "audio_url": "https://fnvjibzreepubageztoi.supabase.co/storage/v1/object/public/curriculum-audio/ls/inter/87e4294df2db07bb.flac"
         },
         {
           "text": "As I was walking, it started to rain.",
-          "context": "as + past simple event"
+          "context": "as + past simple event",
+          "audio_url": "https://fnvjibzreepubageztoi.supabase.co/storage/v1/object/public/curriculum-audio/ls/inter/a60ee79b0079bb6a.flac"
         }
       ],
       "roleplay": {

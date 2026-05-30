@@ -123,27 +123,27 @@
         {
           "text": "I was at home yesterday.",
           "context": "own past location",
-          "audio_url": "https://fnvjibzreepubageztoi.supabase.co/storage/v1/object/public/curriculum-audio/ls/47b2b72652c09780.flac"
+          "audio_url": "https://fnvjibzreepubageztoi.supabase.co/storage/v1/object/public/curriculum-audio/ls/novice/47b2b72652c09780.flac"
         },
         {
           "text": "They were at the party.",
           "context": "plural past",
-          "audio_url": "https://fnvjibzreepubageztoi.supabase.co/storage/v1/object/public/curriculum-audio/ls/8845c6a699c7d691.flac"
+          "audio_url": "https://fnvjibzreepubageztoi.supabase.co/storage/v1/object/public/curriculum-audio/ls/novice/8845c6a699c7d691.flac"
         },
         {
           "text": "She was tired last night.",
           "context": "3rd person past",
-          "audio_url": "https://fnvjibzreepubageztoi.supabase.co/storage/v1/object/public/curriculum-audio/ls/0b568d5275654383.flac"
+          "audio_url": "https://fnvjibzreepubageztoi.supabase.co/storage/v1/object/public/curriculum-audio/ls/novice/0b568d5275654383.flac"
         },
         {
           "text": "We were happy together.",
           "context": "plural we past",
-          "audio_url": "https://fnvjibzreepubageztoi.supabase.co/storage/v1/object/public/curriculum-audio/ls/b7a458282e78b9f6.flac"
+          "audio_url": "https://fnvjibzreepubageztoi.supabase.co/storage/v1/object/public/curriculum-audio/ls/novice/b7a458282e78b9f6.flac"
         },
         {
           "text": "It was a great day.",
           "context": "it + was",
-          "audio_url": "https://fnvjibzreepubageztoi.supabase.co/storage/v1/object/public/curriculum-audio/ls/0e3c61654f9b2dad.flac"
+          "audio_url": "https://fnvjibzreepubageztoi.supabase.co/storage/v1/object/public/curriculum-audio/ls/novice/0e3c61654f9b2dad.flac"
         }
       ],
       "roleplay": {
@@ -325,27 +325,27 @@
         {
           "text": "I wasn't at the party.",
           "context": "own negative past",
-          "audio_url": "https://fnvjibzreepubageztoi.supabase.co/storage/v1/object/public/curriculum-audio/ls/82677dc01f8d7c63.flac"
+          "audio_url": "https://fnvjibzreepubageztoi.supabase.co/storage/v1/object/public/curriculum-audio/ls/novice/82677dc01f8d7c63.flac"
         },
         {
           "text": "They weren't home yesterday.",
           "context": "plural negative",
-          "audio_url": "https://fnvjibzreepubageztoi.supabase.co/storage/v1/object/public/curriculum-audio/ls/ab85d445ecce0ead.flac"
+          "audio_url": "https://fnvjibzreepubageztoi.supabase.co/storage/v1/object/public/curriculum-audio/ls/novice/ab85d445ecce0ead.flac"
         },
         {
           "text": "She wasn't tired.",
           "context": "3rd person negative",
-          "audio_url": "https://fnvjibzreepubageztoi.supabase.co/storage/v1/object/public/curriculum-audio/ls/50ac12e30225d9a6.flac"
+          "audio_url": "https://fnvjibzreepubageztoi.supabase.co/storage/v1/object/public/curriculum-audio/ls/novice/50ac12e30225d9a6.flac"
         },
         {
           "text": "We weren't at the cinema.",
           "context": "plural we negative",
-          "audio_url": "https://fnvjibzreepubageztoi.supabase.co/storage/v1/object/public/curriculum-audio/ls/7b7097635666c1bb.flac"
+          "audio_url": "https://fnvjibzreepubageztoi.supabase.co/storage/v1/object/public/curriculum-audio/ls/novice/7b7097635666c1bb.flac"
         },
         {
           "text": "It wasn't a good day.",
           "context": "it + wasn't",
-          "audio_url": "https://fnvjibzreepubageztoi.supabase.co/storage/v1/object/public/curriculum-audio/ls/280a6bd388606eea.flac"
+          "audio_url": "https://fnvjibzreepubageztoi.supabase.co/storage/v1/object/public/curriculum-audio/ls/novice/280a6bd388606eea.flac"
         }
       ],
       "roleplay": {
@@ -529,27 +529,27 @@
         {
           "text": "Were you at home yesterday?",
           "context": "direct question",
-          "audio_url": "https://fnvjibzreepubageztoi.supabase.co/storage/v1/object/public/curriculum-audio/ls/ba3802a0ece3755c.flac"
+          "audio_url": "https://fnvjibzreepubageztoi.supabase.co/storage/v1/object/public/curriculum-audio/ls/novice/ba3802a0ece3755c.flac"
         },
         {
           "text": "Was she happy?",
           "context": "3rd person question",
-          "audio_url": "https://fnvjibzreepubageztoi.supabase.co/storage/v1/object/public/curriculum-audio/ls/5c9ecb7ba68168f7.flac"
+          "audio_url": "https://fnvjibzreepubageztoi.supabase.co/storage/v1/object/public/curriculum-audio/ls/novice/5c9ecb7ba68168f7.flac"
         },
         {
           "text": "Where were you?",
           "context": "WH question",
-          "audio_url": "https://fnvjibzreepubageztoi.supabase.co/storage/v1/object/public/curriculum-audio/ls/ba611a1ebc2a04a9.flac"
+          "audio_url": "https://fnvjibzreepubageztoi.supabase.co/storage/v1/object/public/curriculum-audio/ls/novice/ba611a1ebc2a04a9.flac"
         },
         {
           "text": "How was your weekend?",
           "context": "common chunk",
-          "audio_url": "https://fnvjibzreepubageztoi.supabase.co/storage/v1/object/public/curriculum-audio/ls/c19d0a926d680f37.flac"
+          "audio_url": "https://fnvjibzreepubageztoi.supabase.co/storage/v1/object/public/curriculum-audio/ls/novice/c19d0a926d680f37.flac"
         },
         {
           "text": "Yes, I was. No, I wasn't.",
           "context": "short answers",
-          "audio_url": "https://fnvjibzreepubageztoi.supabase.co/storage/v1/object/public/curriculum-audio/ls/ea584243934e6dda.flac"
+          "audio_url": "https://fnvjibzreepubageztoi.supabase.co/storage/v1/object/public/curriculum-audio/ls/novice/ea584243934e6dda.flac"
         }
       ],
       "roleplay": {
@@ -731,27 +731,27 @@
         {
           "text": "I was at home yesterday.",
           "context": "yesterday",
-          "audio_url": "https://fnvjibzreepubageztoi.supabase.co/storage/v1/object/public/curriculum-audio/ls/47b2b72652c09780.flac"
+          "audio_url": "https://fnvjibzreepubageztoi.supabase.co/storage/v1/object/public/curriculum-audio/ls/novice/47b2b72652c09780.flac"
         },
         {
           "text": "We were in Italy last week.",
           "context": "last week",
-          "audio_url": "https://fnvjibzreepubageztoi.supabase.co/storage/v1/object/public/curriculum-audio/ls/0f6b5e1fe5c2343a.flac"
+          "audio_url": "https://fnvjibzreepubageztoi.supabase.co/storage/v1/object/public/curriculum-audio/ls/novice/0f6b5e1fe5c2343a.flac"
         },
         {
           "text": "She was here two hours ago.",
           "context": "X ago",
-          "audio_url": "https://fnvjibzreepubageztoi.supabase.co/storage/v1/object/public/curriculum-audio/ls/254d2661c8c1f260.flac"
+          "audio_url": "https://fnvjibzreepubageztoi.supabase.co/storage/v1/object/public/curriculum-audio/ls/novice/254d2661c8c1f260.flac"
         },
         {
           "text": "I was born in 1990.",
           "context": "in + year",
-          "audio_url": "https://fnvjibzreepubageztoi.supabase.co/storage/v1/object/public/curriculum-audio/ls/091f03c862c02529.flac"
+          "audio_url": "https://fnvjibzreepubageztoi.supabase.co/storage/v1/object/public/curriculum-audio/ls/novice/091f03c862c02529.flac"
         },
         {
           "text": "He was at the party last night.",
           "context": "last night",
-          "audio_url": "https://fnvjibzreepubageztoi.supabase.co/storage/v1/object/public/curriculum-audio/ls/c522c9190525aea7.flac"
+          "audio_url": "https://fnvjibzreepubageztoi.supabase.co/storage/v1/object/public/curriculum-audio/ls/novice/c522c9190525aea7.flac"
         }
       ],
       "roleplay": {
@@ -933,27 +933,27 @@
         {
           "text": "I was a child in 2010.",
           "context": "past state",
-          "audio_url": "https://fnvjibzreepubageztoi.supabase.co/storage/v1/object/public/curriculum-audio/ls/bf598de870f1f67f.flac"
+          "audio_url": "https://fnvjibzreepubageztoi.supabase.co/storage/v1/object/public/curriculum-audio/ls/novice/bf598de870f1f67f.flac"
         },
         {
           "text": "We were neighbors back then.",
           "context": "group past",
-          "audio_url": "https://fnvjibzreepubageztoi.supabase.co/storage/v1/object/public/curriculum-audio/ls/70336bfa786583e6.flac"
+          "audio_url": "https://fnvjibzreepubageztoi.supabase.co/storage/v1/object/public/curriculum-audio/ls/novice/70336bfa786583e6.flac"
         },
         {
           "text": "She was very young.",
           "context": "3rd person past",
-          "audio_url": "https://fnvjibzreepubageztoi.supabase.co/storage/v1/object/public/curriculum-audio/ls/633026ec2f70f1d7.flac"
+          "audio_url": "https://fnvjibzreepubageztoi.supabase.co/storage/v1/object/public/curriculum-audio/ls/novice/633026ec2f70f1d7.flac"
         },
         {
           "text": "They were best friends.",
           "context": "plural past",
-          "audio_url": "https://fnvjibzreepubageztoi.supabase.co/storage/v1/object/public/curriculum-audio/ls/455c7025af2ab7b3.flac"
+          "audio_url": "https://fnvjibzreepubageztoi.supabase.co/storage/v1/object/public/curriculum-audio/ls/novice/455c7025af2ab7b3.flac"
         },
         {
           "text": "It was a long time ago.",
           "context": "it + was",
-          "audio_url": "https://fnvjibzreepubageztoi.supabase.co/storage/v1/object/public/curriculum-audio/ls/4e91353cb9b2ddec.flac"
+          "audio_url": "https://fnvjibzreepubageztoi.supabase.co/storage/v1/object/public/curriculum-audio/ls/novice/4e91353cb9b2ddec.flac"
         }
       ],
       "roleplay": {

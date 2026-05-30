@@ -118,23 +118,28 @@
       "listening_speaking": [
         {
           "text": "I visited Italy last year.",
-          "context": "past simple specific"
+          "context": "past simple specific",
+          "audio_url": "https://fnvjibzreepubageztoi.supabase.co/storage/v1/object/public/curriculum-audio/ls/inter/a13e14bf2ada1b5c.flac"
         },
         {
           "text": "I have visited Italy three times.",
-          "context": "PP experience"
+          "context": "PP experience",
+          "audio_url": "https://fnvjibzreepubageztoi.supabase.co/storage/v1/object/public/curriculum-audio/ls/inter/7e70e304849d3279.flac"
         },
         {
           "text": "She called yesterday.",
-          "context": "past simple"
+          "context": "past simple",
+          "audio_url": "https://fnvjibzreepubageztoi.supabase.co/storage/v1/object/public/curriculum-audio/ls/inter/1daf578b730f45ea.flac"
         },
         {
           "text": "She has called this morning.",
-          "context": "PP unfinished"
+          "context": "PP unfinished",
+          "audio_url": "https://fnvjibzreepubageztoi.supabase.co/storage/v1/object/public/curriculum-audio/ls/inter/7c97e19944e5e42e.flac"
         },
         {
           "text": "We met in 2010.",
-          "context": "past simple"
+          "context": "past simple",
+          "audio_url": "https://fnvjibzreepubageztoi.supabase.co/storage/v1/object/public/curriculum-audio/ls/inter/91ddc1c9ca4d8583.flac"
         }
       ],
       "roleplay": {
@@ -317,23 +322,28 @@
       "listening_speaking": [
         {
           "text": "I've lived here for two years.",
-          "context": "for + duration"
+          "context": "for + duration",
+          "audio_url": "https://fnvjibzreepubageztoi.supabase.co/storage/v1/object/public/curriculum-audio/ls/inter/b6f49ae0431e69f9.flac"
         },
         {
           "text": "She has worked there for a long time.",
-          "context": "for + long time"
+          "context": "for + long time",
+          "audio_url": "https://fnvjibzreepubageztoi.supabase.co/storage/v1/object/public/curriculum-audio/ls/inter/351bc2332d728b22.flac"
         },
         {
           "text": "We've been friends for years.",
-          "context": "for years"
+          "context": "for years",
+          "audio_url": "https://fnvjibzreepubageztoi.supabase.co/storage/v1/object/public/curriculum-audio/ls/inter/1c88f8068747f8a4.flac"
         },
         {
           "text": "How long have you lived here?",
-          "context": "question with how long"
+          "context": "question with how long",
+          "audio_url": "https://fnvjibzreepubageztoi.supabase.co/storage/v1/object/public/curriculum-audio/ls/inter/c709d525f52ef39d.flac"
         },
         {
           "text": "He has had this car for five years.",
-          "context": "for + number"
+          "context": "for + number",
+          "audio_url": "https://fnvjibzreepubageztoi.supabase.co/storage/v1/object/public/curriculum-audio/ls/inter/d5858d6a689b2ce7.flac"
         }
       ],
       "roleplay": {
@@ -516,23 +526,28 @@
       "listening_speaking": [
         {
           "text": "I've known her since 2010.",
-          "context": "since + year"
+          "context": "since + year",
+          "audio_url": "https://fnvjibzreepubageztoi.supabase.co/storage/v1/object/public/curriculum-audio/ls/inter/ebab5f1289aeb9ae.flac"
         },
         {
           "text": "She has worked since January.",
-          "context": "since + month"
+          "context": "since + month",
+          "audio_url": "https://fnvjibzreepubageztoi.supabase.co/storage/v1/object/public/curriculum-audio/ls/inter/ea35065761699836.flac"
         },
         {
           "text": "We've been here since 9 am.",
-          "context": "since + time"
+          "context": "since + time",
+          "audio_url": "https://fnvjibzreepubageztoi.supabase.co/storage/v1/object/public/curriculum-audio/ls/inter/ad32af81cd1c273b.flac"
         },
         {
           "text": "He has lived here since he was 10.",
-          "context": "since + clause"
+          "context": "since + clause",
+          "audio_url": "https://fnvjibzreepubageztoi.supabase.co/storage/v1/object/public/curriculum-audio/ls/inter/e001d84c00f74cf4.flac"
         },
         {
           "text": "How long have you been here?",
-          "context": "common question"
+          "context": "common question",
+          "audio_url": "https://fnvjibzreepubageztoi.supabase.co/storage/v1/object/public/curriculum-audio/ls/inter/1b960fe763aed388.flac"
         }
       ],
       "roleplay": {
@@ -715,23 +730,28 @@
       "listening_speaking": [
         {
           "text": "How long have you lived here?",
-          "context": "duration question"
+          "context": "duration question",
+          "audio_url": "https://fnvjibzreepubageztoi.supabase.co/storage/v1/object/public/curriculum-audio/ls/inter/c709d525f52ef39d.flac"
         },
         {
           "text": "How long has she known him?",
-          "context": "3rd person"
+          "context": "3rd person",
+          "audio_url": "https://fnvjibzreepubageztoi.supabase.co/storage/v1/object/public/curriculum-audio/ls/inter/18d2657918578baf.flac"
         },
         {
           "text": "How long have they been together?",
-          "context": "plural"
+          "context": "plural",
+          "audio_url": "https://fnvjibzreepubageztoi.supabase.co/storage/v1/object/public/curriculum-audio/ls/inter/6238556fba1d431a.flac"
         },
         {
           "text": "I've been here for a few minutes.",
-          "context": "for duration"
+          "context": "for duration",
+          "audio_url": "https://fnvjibzreepubageztoi.supabase.co/storage/v1/object/public/curriculum-audio/ls/inter/b52cd829d9754239.flac"
         },
         {
           "text": "Since when have you worked here?",
-          "context": "since when"
+          "context": "since when",
+          "audio_url": "https://fnvjibzreepubageztoi.supabase.co/storage/v1/object/public/curriculum-audio/ls/inter/f341efbff3ff3e7f.flac"
         }
       ],
       "roleplay": {
@@ -914,23 +934,28 @@
       "listening_speaking": [
         {
           "text": "I visited Italy last year.",
-          "context": "past simple"
+          "context": "past simple",
+          "audio_url": "https://fnvjibzreepubageztoi.supabase.co/storage/v1/object/public/curriculum-audio/ls/inter/a13e14bf2ada1b5c.flac"
         },
         {
           "text": "I have visited Italy three times.",
-          "context": "PP experience"
+          "context": "PP experience",
+          "audio_url": "https://fnvjibzreepubageztoi.supabase.co/storage/v1/object/public/curriculum-audio/ls/inter/7e70e304849d3279.flac"
         },
         {
           "text": "She left at 8.",
-          "context": "past simple specific"
+          "context": "past simple specific",
+          "audio_url": "https://fnvjibzreepubageztoi.supabase.co/storage/v1/object/public/curriculum-audio/ls/inter/72cc55d32910e75a.flac"
         },
         {
           "text": "She has already left.",
-          "context": "PP no time"
+          "context": "PP no time",
+          "audio_url": "https://fnvjibzreepubageztoi.supabase.co/storage/v1/object/public/curriculum-audio/ls/inter/ca5d25d8426e6646.flac"
         },
         {
           "text": "I haven't traveled this year.",
-          "context": "PP unfinished period"
+          "context": "PP unfinished period",
+          "audio_url": "https://fnvjibzreepubageztoi.supabase.co/storage/v1/object/public/curriculum-audio/ls/inter/d6aa75a2e2ad6bfb.flac"
         }
       ],
       "roleplay": {

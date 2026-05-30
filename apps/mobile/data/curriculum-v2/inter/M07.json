@@ -1,0 +1,1020 @@
+{
+  "id": "M07",
+  "title": "Quantificadores precisos",
+  "level": "Inter",
+  "block": "B1",
+  "units_range": "I01–I05",
+  "theme": "Refined quantifiers (a few, a little, plenty of, hardly any, several, most)",
+  "goal": "Student uses precise quantifiers for countable/uncountable nouns.",
+  "connects_to": "M08 (Relative clauses).",
+  "module_chunks": [
+    "a few (countable, \"some\") / a little (uncountable)",
+    "few (countable, \"almost none\") / little (uncountable, \"almost none\")",
+    "plenty of (lots, no shortage)",
+    "hardly any (almost zero)",
+    "several (3+, countable)",
+    "most + plural / most of + the + plural"
+  ],
+  "units": [
+    {
+      "id": "I01",
+      "title": "A few or a little?",
+      "sub_cefr": "B1",
+      "grammar_focus": "a few (countable) vs a little (uncountable)",
+      "markers": [
+        "denso"
+      ],
+      "real_life_context": "You quantify your possessions, time, friends.",
+      "grammar": [
+        {
+          "type": "multiple_choice",
+          "sentence": "I have _____ friends in NYC.",
+          "options": [
+            "a few",
+            "a little",
+            "few"
+          ],
+          "answer": "a few",
+          "explanation": "\"A few + plural countable\" = some (positive)."
+        },
+        {
+          "type": "multiple_choice",
+          "sentence": "She has _____ time today.",
+          "options": [
+            "a little",
+            "a few",
+            "little"
+          ],
+          "answer": "a little",
+          "explanation": "\"A little + uncountable\" = some (positive)."
+        },
+        {
+          "type": "word_bank",
+          "sentence": "We need _____ sugar.",
+          "choices": [
+            "a little",
+            "a few",
+            "many",
+            "a",
+            "some little"
+          ],
+          "answer": "a little",
+          "explanation": "\"Sugar\" uncountable → \"a little\"."
+        },
+        {
+          "type": "word_bank",
+          "sentence": "He has _____ books.",
+          "choices": [
+            "a few",
+            "a little",
+            "much",
+            "a",
+            "some few"
+          ],
+          "answer": "a few",
+          "explanation": "\"Books\" countable plural → \"a few\"."
+        },
+        {
+          "type": "fill_gap",
+          "sentence": "I have _____ money on me.",
+          "hint": "small amount (uncountable)",
+          "answer": "a little",
+          "explanation": "\"Money\" uncountable → \"a little\"."
+        },
+        {
+          "type": "fill_gap",
+          "sentence": "She invited _____ friends.",
+          "hint": "small number (countable)",
+          "answer": "a few",
+          "explanation": "\"Friends\" countable → \"a few\"."
+        },
+        {
+          "type": "fill_gap",
+          "sentence": "Add _____ salt.",
+          "hint": "uncountable",
+          "answer": "a little",
+          "explanation": "\"Salt\" uncountable → \"a little\"."
+        },
+        {
+          "type": "fix_error",
+          "sentence": "I have a few money.",
+          "hint": "money is uncountable",
+          "answer": "I have a little money.",
+          "explanation": "\"Money\" uncountable → \"a little\"."
+        },
+        {
+          "type": "fix_error",
+          "sentence": "She has a little books.",
+          "hint": "books is countable plural",
+          "answer": "She has a few books.",
+          "explanation": "\"Books\" countable plural → \"a few\"."
+        },
+        {
+          "type": "read_answer",
+          "passage": "I have a few friends and a little time. She has a few books and a little patience.",
+          "question": "What does the speaker have a little of?",
+          "answer": "time",
+          "explanation": "The text says \"a little time\"."
+        }
+      ],
+      "listening_speaking": [
+        {
+          "text": "I have a few friends in NYC.",
+          "context": "a few countable"
+        },
+        {
+          "text": "She has a little time today.",
+          "context": "a little uncountable"
+        },
+        {
+          "text": "We need a little sugar.",
+          "context": "a little"
+        },
+        {
+          "text": "He has a few books.",
+          "context": "a few"
+        },
+        {
+          "text": "Add a little salt.",
+          "context": "recipe"
+        }
+      ],
+      "roleplay": {
+        "scenario": "Charlotte asks about your resources — friends, time, money.",
+        "voiced_by": "charlotte",
+        "persona": "Charlotte",
+        "persona_outfit": "charlotte_casual",
+        "time_budget_sec": 180,
+        "opening_line": "How much time and how many friends do you have?",
+        "objectives": [
+          {
+            "id": 1,
+            "label_pt": "Quantidade contável (a few)",
+            "label_en": "Countable quantity",
+            "hidden_prompt": "user uses 'I have a few + plural'",
+            "hint_pt": "I have a few close friends.",
+            "hint_en": "I have a few close friends."
+          },
+          {
+            "id": 2,
+            "label_pt": "Quantidade incontável (a little)",
+            "label_en": "Uncountable quantity",
+            "hidden_prompt": "user uses 'I have a little + uncountable'",
+            "hint_pt": "I have a little time.",
+            "hint_en": "I have a little time."
+          },
+          {
+            "id": 3,
+            "label_pt": "Mais um quantificador",
+            "label_en": "One more quantifier",
+            "hidden_prompt": "user uses a few or a little correctly",
+            "hint_pt": "I have a little money.",
+            "hint_en": "I have a little money."
+          }
+        ],
+        "closing_cue": "Charlotte closes with \"Quantities clear!\" when obj_3 hits.",
+        "suggested_flow": "**Suggested flow** (6 turns):\n\n1. **Charlotte**: \"How much time and how many friends do you have?\"\n2. **Student**: ~\"I have a few close friends.\"\n3. **Charlotte**: \"Time?\"\n4. **Student**: ~\"I have a little time.\"\n5. **Charlotte**: \"Resources?\"\n6. **Student**: ~\"I have a little money.\"\n7. **Charlotte**: \"Quantities clear!\"",
+        "evaluation_focus": [
+          "A few + countable plural",
+          "A little + uncountable",
+          "No mixing"
+        ]
+      },
+      "guided_chat": {
+        "scenario": "Charlotte asks about your kitchen ingredients.",
+        "voiced_by": "charlotte",
+        "persona": "Charlotte",
+        "persona_outfit": "charlotte_casual",
+        "intro_en": "Charlotte asks about your kitchen. Practice 'a few/a little'.",
+        "opening_message": "What do you have in your kitchen right now?",
+        "objectives": [
+          {
+            "id": 1,
+            "label_pt": "Item contável",
+            "label_en": "Countable item",
+            "hidden_prompt": "user uses 'a few + plural noun'",
+            "hint_pt": "I have a few apples.",
+            "hint_en": "I have a few apples."
+          },
+          {
+            "id": 2,
+            "label_pt": "Item incontável",
+            "label_en": "Uncountable item",
+            "hidden_prompt": "user uses 'a little + uncountable'",
+            "hint_pt": "I have a little milk.",
+            "hint_en": "I have a little milk."
+          },
+          {
+            "id": 3,
+            "label_pt": "Perguntar à Charlotte",
+            "label_en": "Ask Charlotte",
+            "hidden_prompt": "user asks Charlotte what she has",
+            "hint_pt": "What do you have?",
+            "hint_en": "What do you have?"
+          }
+        ],
+        "closing_cue": "Charlotte closes with \"Pantry inventory!\" when obj_3 hits.",
+        "suggested_script": "**Script** (7 turns):\n\n1. **Charlotte**: \"What do you have in your kitchen right now?\"\n2. **Student**: \"I have a few apples.\"\n3. **Charlotte**: \"Drinks?\"\n4. **Student**: \"I have a little milk.\"\n5. **Charlotte**: \"Nice.\"\n6. **Student**: \"What do you have?\"\n7. **Charlotte**: \"A few eggs and a little bread. Pantry inventory!\"\n\n> I01 chat = LLM puro.\n\n---"
+      }
+    },
+    {
+      "id": "I02",
+      "title": "Few vs a few (subtle)",
+      "sub_cefr": "B1",
+      "grammar_focus": "few/little (almost none) vs a few/a little (some)",
+      "markers": [
+        "denso"
+      ],
+      "real_life_context": "You express positive (have some) vs negative (have almost none).",
+      "grammar": [
+        {
+          "type": "multiple_choice",
+          "sentence": "I have _____ friends — I feel lonely.",
+          "options": [
+            "few",
+            "a few",
+            "many"
+          ],
+          "answer": "few",
+          "explanation": "\"Few\" (without \"a\") = almost none. Negative meaning."
+        },
+        {
+          "type": "multiple_choice",
+          "sentence": "I have _____ friends — we hang out often.",
+          "options": [
+            "a few",
+            "few",
+            "many"
+          ],
+          "answer": "a few",
+          "explanation": "\"A few\" = some, positive."
+        },
+        {
+          "type": "word_bank",
+          "sentence": "She has _____ patience for nonsense.",
+          "choices": [
+            "little",
+            "a little",
+            "less",
+            "a few"
+          ],
+          "answer": "little",
+          "explanation": "\"Little\" (no \"a\") = almost none. Negative."
+        },
+        {
+          "type": "word_bank",
+          "sentence": "There's _____ hope left.",
+          "choices": [
+            "little",
+            "a little",
+            "hardly",
+            "less"
+          ],
+          "answer": "little",
+          "explanation": "\"Little hope\" — almost no hope."
+        },
+        {
+          "type": "fill_gap",
+          "sentence": "I have _____ money — I can't help.",
+          "hint": "negative quantifier",
+          "answer": "little",
+          "explanation": "\"Little money\" = almost no money."
+        },
+        {
+          "type": "fill_gap",
+          "sentence": "I have _____ time, but I'll help.",
+          "hint": "positive quantifier",
+          "answer": "a little",
+          "explanation": "\"A little time\" = some time."
+        },
+        {
+          "type": "fill_gap",
+          "sentence": "_____ people came to the party.",
+          "hint": "countable, negative meaning",
+          "answer": "Few",
+          "explanation": "\"Few people\" — almost none came."
+        },
+        {
+          "type": "fix_error",
+          "sentence": "I have few friends and I feel happy.",
+          "hint": "Use \"a few\" for positive",
+          "answer": "I have a few friends and I feel happy.",
+          "explanation": "\"A few\" = positive (some). \"Few\" = negative."
+        },
+        {
+          "type": "fix_error",
+          "sentence": "She has a little patience for delays.",
+          "hint": "For negative meaning, use \"little\"",
+          "answer": "She has little patience for delays.",
+          "explanation": "\"Little\" without \"a\" = negative (almost none)."
+        },
+        {
+          "type": "read_answer",
+          "passage": "I have few friends but a few good ones. She has little time but a little energy. We make it work.",
+          "question": "How many good friends does the speaker have?",
+          "answer": "a few (or \"a few good ones\")",
+          "explanation": "The text says \"a few good ones\"."
+        }
+      ],
+      "listening_speaking": [
+        {
+          "text": "I have few friends.",
+          "context": "negative few"
+        },
+        {
+          "text": "I have a few friends.",
+          "context": "positive a few"
+        },
+        {
+          "text": "She has little patience.",
+          "context": "negative little"
+        },
+        {
+          "text": "There's little hope.",
+          "context": "negative"
+        },
+        {
+          "text": "Few people came.",
+          "context": "negative"
+        }
+      ],
+      "roleplay": {
+        "scenario": "Charlotte distinguishes positive vs negative quantities.",
+        "voiced_by": "charlotte",
+        "persona": "Charlotte",
+        "persona_outfit": "charlotte_casual",
+        "time_budget_sec": 180,
+        "opening_line": "Tell me using 'few' for negative and 'a few' for positive.",
+        "objectives": [
+          {
+            "id": 1,
+            "label_pt": "Few negativo",
+            "label_en": "Few negative",
+            "hidden_prompt": "user uses 'few + plural' meaning almost none",
+            "hint_pt": "I have few options.",
+            "hint_en": "I have few options."
+          },
+          {
+            "id": 2,
+            "label_pt": "A few positivo",
+            "label_en": "A few positive",
+            "hidden_prompt": "user uses 'a few + plural' meaning some",
+            "hint_pt": "I have a few hobbies.",
+            "hint_en": "I have a few hobbies."
+          },
+          {
+            "id": 3,
+            "label_pt": "Little ou a little",
+            "label_en": "Little or a little",
+            "hidden_prompt": "user uses 'little' or 'a little' with uncountable",
+            "hint_pt": "I have little time.",
+            "hint_en": "I have little time."
+          }
+        ],
+        "closing_cue": "Charlotte closes with \"Subtle quantifier!\" when obj_3 hits.",
+        "suggested_flow": "**Suggested flow** (6 turns):\n\n1. **Charlotte**: \"Tell me using 'few' for negative and 'a few' for positive.\"\n2. **Student**: ~\"I have few options.\"\n3. **Charlotte**: \"Positive?\"\n4. **Student**: ~\"I have a few hobbies.\"\n5. **Charlotte**: \"Time?\"\n6. **Student**: ~\"I have little time.\"\n7. **Charlotte**: \"Subtle quantifier!\"",
+        "evaluation_focus": [
+          "Few/little = negative",
+          "A few/a little = positive",
+          "Context awareness"
+        ]
+      },
+      "guided_chat": {
+        "scenario": "Charlotte chats about life balance.",
+        "voiced_by": "charlotte",
+        "persona": "Charlotte",
+        "persona_outfit": "charlotte_casual",
+        "intro_en": "Charlotte explores subtle quantifiers.",
+        "opening_message": "Tell me: little or a little?",
+        "objectives": [
+          {
+            "id": 1,
+            "label_pt": "Algo negativo",
+            "label_en": "Negative",
+            "hidden_prompt": "user uses 'few/little' (negative)",
+            "hint_pt": "I have little patience today.",
+            "hint_en": "I have little patience today."
+          },
+          {
+            "id": 2,
+            "label_pt": "Algo positivo",
+            "label_en": "Positive",
+            "hidden_prompt": "user uses 'a few/a little' (positive)",
+            "hint_pt": "I have a few free hours.",
+            "hint_en": "I have a few free hours."
+          },
+          {
+            "id": 3,
+            "label_pt": "Perguntar à Charlotte",
+            "label_en": "Ask Charlotte",
+            "hidden_prompt": "user asks 'How about you?'",
+            "hint_pt": "How about you?",
+            "hint_en": "How about you?"
+          }
+        ],
+        "closing_cue": "Charlotte closes with \"Glass half full or empty!\" when obj_3 hits.",
+        "suggested_script": "**Script** (7 turns):\n\n1. **Charlotte**: \"Tell me: little or a little?\"\n2. **Student**: \"I have little patience today.\"\n3. **Charlotte**: \"Rough day.\"\n4. **Student**: \"I have a few free hours.\"\n5. **Charlotte**: \"Lucky.\"\n6. **Student**: \"How about you?\"\n7. **Charlotte**: \"Few naps but a little energy. Glass half full or empty!\"\n\n> I02 chat = LLM puro.\n\n---"
+      }
+    },
+    {
+      "id": "I03",
+      "title": "Plenty of, hardly any",
+      "sub_cefr": "B1",
+      "grammar_focus": "plenty of (lots) vs hardly any (almost zero)",
+      "markers": [],
+      "real_life_context": "You express abundance or scarcity.",
+      "grammar": [
+        {
+          "type": "multiple_choice",
+          "sentence": "We have _____ time.",
+          "options": [
+            "plenty of",
+            "hardly any",
+            "a few of"
+          ],
+          "answer": "plenty of",
+          "explanation": "\"Plenty of\" = lots, abundance. With both countable and uncountable."
+        },
+        {
+          "type": "multiple_choice",
+          "sentence": "There's _____ food left.",
+          "options": [
+            "hardly any",
+            "plenty of",
+            "a few"
+          ],
+          "answer": "hardly any",
+          "explanation": "\"Hardly any\" = almost none. Negative."
+        },
+        {
+          "type": "word_bank",
+          "sentence": "She has _____ friends.",
+          "choices": [
+            "plenty of",
+            "hardly any",
+            "a few of",
+            "much"
+          ],
+          "answer": "plenty of",
+          "explanation": "\"Plenty of friends\" — lots."
+        },
+        {
+          "type": "word_bank",
+          "sentence": "He has _____ free time.",
+          "choices": [
+            "hardly any",
+            "plenty",
+            "many of",
+            "much of"
+          ],
+          "answer": "hardly any",
+          "explanation": "\"Hardly any free time\" — almost none."
+        },
+        {
+          "type": "fill_gap",
+          "sentence": "I have _____ books to read this summer.",
+          "hint": "lots",
+          "answer": "plenty of",
+          "explanation": "\"Plenty of books\" — abundance."
+        },
+        {
+          "type": "fill_gap",
+          "sentence": "There's _____ rain this year.",
+          "hint": "almost none",
+          "answer": "hardly any",
+          "explanation": "\"Hardly any rain\" — scarcity."
+        },
+        {
+          "type": "fill_gap",
+          "sentence": "We had _____ visitors yesterday.",
+          "hint": "very few",
+          "answer": "hardly any",
+          "explanation": "\"Hardly any visitors\" — almost no one came."
+        },
+        {
+          "type": "fix_error",
+          "sentence": "I have plenty time.",
+          "hint": "needs \"of\"",
+          "answer": "I have plenty of time.",
+          "explanation": "\"Plenty OF + noun\" — \"of\" required."
+        },
+        {
+          "type": "fix_error",
+          "sentence": "There's hardly anything food.",
+          "hint": "\"hardly any\" alone with noun",
+          "answer": "There's hardly any food.",
+          "explanation": "\"Hardly any + noun\" — no extra \"thing\"."
+        },
+        {
+          "type": "read_answer",
+          "passage": "We have plenty of food but hardly any drinks. There's plenty of time but hardly any money.",
+          "question": "What's scarce?",
+          "answer": "drinks and money (or \"drinks\" or \"money\")",
+          "explanation": "\"Hardly any drinks\" and \"hardly any money\" — both scarce."
+        }
+      ],
+      "listening_speaking": [
+        {
+          "text": "We have plenty of time.",
+          "context": "plenty of"
+        },
+        {
+          "text": "There's hardly any food.",
+          "context": "hardly any"
+        },
+        {
+          "text": "She has plenty of friends.",
+          "context": "plenty of"
+        },
+        {
+          "text": "He has hardly any free time.",
+          "context": "hardly any"
+        },
+        {
+          "text": "I have plenty of work.",
+          "context": "plenty of"
+        }
+      ],
+      "roleplay": {
+        "scenario": "Charlotte asks about your resources — abundance vs scarcity.",
+        "voiced_by": "charlotte",
+        "persona": "Charlotte",
+        "persona_outfit": "charlotte_casual",
+        "time_budget_sec": 180,
+        "opening_line": "What do you have plenty of? And hardly any of?",
+        "objectives": [
+          {
+            "id": 1,
+            "label_pt": "Abundância (plenty of)",
+            "label_en": "Abundance",
+            "hidden_prompt": "user uses 'I have plenty of + noun'",
+            "hint_pt": "I have plenty of books.",
+            "hint_en": "I have plenty of books."
+          },
+          {
+            "id": 2,
+            "label_pt": "Escassez (hardly any)",
+            "label_en": "Scarcity",
+            "hidden_prompt": "user uses 'I have hardly any + noun'",
+            "hint_pt": "I have hardly any free time.",
+            "hint_en": "I have hardly any free time."
+          },
+          {
+            "id": 3,
+            "label_pt": "Mais um quantificador",
+            "label_en": "One more",
+            "hidden_prompt": "user uses another plenty of or hardly any",
+            "hint_pt": "We have plenty of work.",
+            "hint_en": "We have plenty of work."
+          }
+        ],
+        "closing_cue": "Charlotte closes with \"Balance check!\" when obj_3 hits.",
+        "suggested_flow": "**Suggested flow** (6 turns):\n\n1. **Charlotte**: \"What do you have plenty of? And hardly any of?\"\n2. **Student**: ~\"I have plenty of books.\"\n3. **Charlotte**: \"Scarce?\"\n4. **Student**: ~\"I have hardly any free time.\"\n5. **Charlotte**: \"Common.\"\n6. **Student**: ~\"We have plenty of work.\"\n7. **Charlotte**: \"Balance check!\"",
+        "evaluation_focus": [
+          "Plenty of + noun (with \"of\")",
+          "Hardly any + noun",
+          "Right context for each"
+        ]
+      },
+      "guided_chat": {
+        "scenario": "Charlotte chats about resources.",
+        "voiced_by": "charlotte",
+        "persona": "Charlotte",
+        "persona_outfit": "charlotte_casual",
+        "intro_en": "Charlotte explores resources. Practice plenty of / hardly any.",
+        "opening_message": "What's in abundance in your life right now?",
+        "objectives": [
+          {
+            "id": 1,
+            "label_pt": "Abundância",
+            "label_en": "Abundance",
+            "hidden_prompt": "user uses 'plenty of'",
+            "hint_pt": "Plenty of work.",
+            "hint_en": "Plenty of work."
+          },
+          {
+            "id": 2,
+            "label_pt": "Escassez",
+            "label_en": "Scarcity",
+            "hidden_prompt": "user uses 'hardly any'",
+            "hint_pt": "Hardly any sleep.",
+            "hint_en": "Hardly any sleep."
+          },
+          {
+            "id": 3,
+            "label_pt": "Perguntar à Charlotte",
+            "label_en": "Ask Charlotte",
+            "hidden_prompt": "user asks 'How about you?'",
+            "hint_pt": "How about you?",
+            "hint_en": "How about you?"
+          }
+        ],
+        "closing_cue": "Charlotte closes with \"Life snapshot!\" when obj_3 hits.",
+        "suggested_script": "**Script** (7 turns):\n\n1. **Charlotte**: \"What's in abundance in your life right now?\"\n2. **Student**: \"Plenty of work.\"\n3. **Charlotte**: \"Scarce?\"\n4. **Student**: \"Hardly any sleep.\"\n5. **Charlotte**: \"Common pairing.\"\n6. **Student**: \"How about you?\"\n7. **Charlotte**: \"Plenty of books, hardly any quiet. Life snapshot!\"\n\n> I03 chat = LLM puro.\n\n---"
+      }
+    },
+    {
+      "id": "I04",
+      "title": "Several, most",
+      "sub_cefr": "B1",
+      "grammar_focus": "several (3+) and most (majority)",
+      "markers": [],
+      "real_life_context": "You quantify with precision — several vs most.",
+      "grammar": [
+        {
+          "type": "multiple_choice",
+          "sentence": "I have _____ books on this topic.",
+          "options": [
+            "several",
+            "a little",
+            "much"
+          ],
+          "answer": "several",
+          "explanation": "\"Several + countable plural\" = more than 2 or 3."
+        },
+        {
+          "type": "multiple_choice",
+          "sentence": "_____ people agree with him.",
+          "options": [
+            "Most",
+            "Several",
+            "A little"
+          ],
+          "answer": "Most",
+          "explanation": "\"Most + plural\" = majority."
+        },
+        {
+          "type": "word_bank",
+          "sentence": "She visited _____ countries.",
+          "choices": [
+            "several",
+            "a little",
+            "much",
+            "hardly any"
+          ],
+          "answer": "several",
+          "explanation": "\"Several countries\" — countable plural."
+        },
+        {
+          "type": "word_bank",
+          "sentence": "_____ of the students passed.",
+          "choices": [
+            "Most",
+            "Several",
+            "Few of",
+            "Much of"
+          ],
+          "answer": "Most",
+          "explanation": "\"Most of the + plural\" = majority of a specific group."
+        },
+        {
+          "type": "fill_gap",
+          "sentence": "There are _____ ways to do this.",
+          "hint": "more than a few (3+)",
+          "answer": "several",
+          "explanation": "\"Several ways\" — multiple options."
+        },
+        {
+          "type": "fill_gap",
+          "sentence": "_____ people like coffee.",
+          "hint": "majority",
+          "answer": "Most",
+          "explanation": "\"Most people\" — general majority."
+        },
+        {
+          "type": "fill_gap",
+          "sentence": "_____ of my friends live abroad.",
+          "hint": "majority of specific group",
+          "answer": "Most",
+          "explanation": "\"Most of + the/my + plural\"."
+        },
+        {
+          "type": "fix_error",
+          "sentence": "I have several time.",
+          "hint": "several = countable",
+          "answer": "I have plenty of time. (or \"a lot of time\")",
+          "explanation": "\"Several\" only with countable. For uncountable use \"plenty of\" or \"a lot of\"."
+        },
+        {
+          "type": "fix_error",
+          "sentence": "Most of people like pizza.",
+          "hint": "Most + plural (without \"of\")",
+          "answer": "Most people like pizza.",
+          "explanation": "\"Most + general plural\" (no \"of\"). \"Most of the/my/specific\" with \"of\"."
+        },
+        {
+          "type": "read_answer",
+          "passage": "I have several books on history. Most of my friends like to read. Most people prefer fiction over non-fiction.",
+          "question": "What do most people prefer?",
+          "answer": "fiction (or \"fiction over non-fiction\")",
+          "explanation": "The text says \"Most people prefer fiction\"."
+        }
+      ],
+      "listening_speaking": [
+        {
+          "text": "I have several books on this topic.",
+          "context": "several"
+        },
+        {
+          "text": "Most people agree with him.",
+          "context": "most general"
+        },
+        {
+          "text": "She visited several countries.",
+          "context": "several"
+        },
+        {
+          "text": "Most of the students passed.",
+          "context": "most of the"
+        },
+        {
+          "text": "There are several ways to do this.",
+          "context": "several options"
+        }
+      ],
+      "roleplay": {
+        "scenario": "Charlotte asks about your collections and majorities.",
+        "voiced_by": "charlotte",
+        "persona": "Charlotte",
+        "persona_outfit": "charlotte_casual",
+        "time_budget_sec": 180,
+        "opening_line": "Tell me using 'several' and 'most'.",
+        "objectives": [
+          {
+            "id": 1,
+            "label_pt": "Algo com several",
+            "label_en": "Something with several",
+            "hidden_prompt": "user uses 'several + plural'",
+            "hint_pt": "I have several hobbies.",
+            "hint_en": "I have several hobbies."
+          },
+          {
+            "id": 2,
+            "label_pt": "Algo com 'most + plural'",
+            "label_en": "Most + general plural",
+            "hidden_prompt": "user uses 'Most + general plural'",
+            "hint_pt": "Most people drink coffee.",
+            "hint_en": "Most people drink coffee."
+          },
+          {
+            "id": 3,
+            "label_pt": "Algo com 'most of the/my'",
+            "label_en": "Most of the/my",
+            "hidden_prompt": "user uses 'Most of the/my + plural'",
+            "hint_pt": "Most of my friends live in São Paulo.",
+            "hint_en": "Most of my friends live in São Paulo."
+          }
+        ],
+        "closing_cue": "Charlotte closes with \"Precise quantities!\" when obj_3 hits.",
+        "suggested_flow": "**Suggested flow** (6 turns):\n\n1. **Charlotte**: \"Tell me using 'several' and 'most'.\"\n2. **Student**: ~\"I have several hobbies.\"\n3. **Charlotte**: \"Majority?\"\n4. **Student**: ~\"Most people drink coffee.\"\n5. **Charlotte**: \"Specific?\"\n6. **Student**: ~\"Most of my friends live in São Paulo.\"\n7. **Charlotte**: \"Precise quantities!\"",
+        "evaluation_focus": [
+          "Several for 3+ countable",
+          "Most + general plural",
+          "Most of the/my + specific"
+        ]
+      },
+      "guided_chat": {
+        "scenario": "Charlotte chats about preferences in groups.",
+        "voiced_by": "charlotte",
+        "persona": "Charlotte",
+        "persona_outfit": "charlotte_casual",
+        "intro_en": "Charlotte explores patterns. Practice several / most.",
+        "opening_message": "What do most of your friends do?",
+        "objectives": [
+          {
+            "id": 1,
+            "label_pt": "Most of my friends",
+            "label_en": "Most of my friends",
+            "hidden_prompt": "user uses 'Most of my friends + verb'",
+            "hint_pt": "Most of my friends work in tech.",
+            "hint_en": "Most of my friends work in tech."
+          },
+          {
+            "id": 2,
+            "label_pt": "Several de algo",
+            "label_en": "Several of something",
+            "hidden_prompt": "user uses 'several + plural'",
+            "hint_pt": "Several of them play soccer.",
+            "hint_en": "Several of them play soccer."
+          },
+          {
+            "id": 3,
+            "label_pt": "Perguntar à Charlotte",
+            "label_en": "Ask Charlotte",
+            "hidden_prompt": "user asks 'How about your friends?'",
+            "hint_pt": "How about yours?",
+            "hint_en": "How about yours?"
+          }
+        ],
+        "closing_cue": "Charlotte closes with \"Group patterns!\" when obj_3 hits.",
+        "suggested_script": "**Script** (7 turns):\n\n1. **Charlotte**: \"What do most of your friends do?\"\n2. **Student**: \"Most of my friends work in tech.\"\n3. **Charlotte**: \"Common.\"\n4. **Student**: \"Several of them play soccer.\"\n5. **Charlotte**: \"Cool.\"\n6. **Student**: \"How about yours?\"\n7. **Charlotte**: \"Most teach, several travel. Group patterns!\"\n\n> I04 chat = LLM puro.\n\n---"
+      }
+    },
+    {
+      "id": "I05",
+      "title": "Quantifiers integrated",
+      "sub_cefr": "B1",
+      "grammar_focus": "Integration of refined quantifiers",
+      "markers": [],
+      "real_life_context": "You use different quantifiers in one description.",
+      "grammar": [
+        {
+          "type": "multiple_choice",
+          "sentence": "I have _____ time today.",
+          "options": [
+            "a little",
+            "a few",
+            "plenty of",
+            "hardly any"
+          ],
+          "answer": "a little (any of these correct, but a little for \"some, small amount\")",
+          "explanation": "\"A little\" with uncountable."
+        },
+        {
+          "type": "multiple_choice",
+          "sentence": "She has _____ close friends.",
+          "options": [
+            "several",
+            "a little",
+            "much"
+          ],
+          "answer": "several",
+          "explanation": "\"Several + plural\"."
+        },
+        {
+          "type": "word_bank",
+          "sentence": "We have _____ work today.",
+          "choices": [
+            "plenty of",
+            "a few",
+            "several",
+            "many of"
+          ],
+          "answer": "plenty of",
+          "explanation": "\"Plenty of work\" — abundance."
+        },
+        {
+          "type": "word_bank",
+          "sentence": "_____ people enjoy traveling.",
+          "choices": [
+            "Most",
+            "Several of",
+            "A few of",
+            "Much"
+          ],
+          "answer": "Most",
+          "explanation": "\"Most people\" — general majority."
+        },
+        {
+          "type": "fill_gap",
+          "sentence": "There's _____ food in the fridge.",
+          "hint": "small amount",
+          "answer": "a little (or some)",
+          "explanation": "\"A little food\" — small positive amount."
+        },
+        {
+          "type": "fill_gap",
+          "sentence": "_____ of my coworkers are friendly.",
+          "hint": "majority of specific",
+          "answer": "Most",
+          "explanation": "\"Most of my coworkers\"."
+        },
+        {
+          "type": "fill_gap",
+          "sentence": "I have _____ patience for delays today.",
+          "hint": "negative (almost none)",
+          "answer": "little (or hardly any)",
+          "explanation": "\"Little patience\" or \"hardly any patience\"."
+        },
+        {
+          "type": "fix_error",
+          "sentence": "I have a little books.",
+          "hint": "books is countable",
+          "answer": "I have a few books.",
+          "explanation": "Books countable → \"a few\"."
+        },
+        {
+          "type": "fix_error",
+          "sentence": "Most of people like pizza.",
+          "hint": "Most + general plural (no \"of\")",
+          "answer": "Most people like pizza.",
+          "explanation": "\"Most people\" (without of the/my)."
+        },
+        {
+          "type": "read_answer",
+          "passage": "I have a few good friends, several hobbies, plenty of work, but hardly any free time. Most of my time goes to family.",
+          "question": "What does the speaker have plenty of?",
+          "answer": "work",
+          "explanation": "The text says \"plenty of work\"."
+        }
+      ],
+      "listening_speaking": [
+        {
+          "text": "I have a little time.",
+          "context": "a little"
+        },
+        {
+          "text": "She has several friends.",
+          "context": "several"
+        },
+        {
+          "text": "We have plenty of work.",
+          "context": "plenty of"
+        },
+        {
+          "text": "Most people enjoy travel.",
+          "context": "most"
+        },
+        {
+          "text": "I have hardly any patience.",
+          "context": "hardly any"
+        }
+      ],
+      "roleplay": {
+        "scenario": "Charlotte asks for a quantifier-rich description of your life.",
+        "voiced_by": "charlotte",
+        "persona": "Charlotte",
+        "persona_outfit": "charlotte_casual",
+        "time_budget_sec": 180,
+        "opening_line": "Describe your life using different quantifiers.",
+        "objectives": [
+          {
+            "id": 1,
+            "label_pt": "Quantificador positivo (a few/a little/plenty of)",
+            "label_en": "Positive quantifier",
+            "hidden_prompt": "user uses a few/a little/plenty of",
+            "hint_pt": "I have plenty of work.",
+            "hint_en": "I have plenty of work."
+          },
+          {
+            "id": 2,
+            "label_pt": "Quantificador negativo (few/little/hardly any)",
+            "label_en": "Negative quantifier",
+            "hidden_prompt": "user uses few/little/hardly any",
+            "hint_pt": "I have hardly any time.",
+            "hint_en": "I have hardly any time."
+          },
+          {
+            "id": 3,
+            "label_pt": "Most ou several",
+            "label_en": "Most or several",
+            "hidden_prompt": "user uses 'most + plural' or 'several + plural'",
+            "hint_pt": "Most of my friends live abroad.",
+            "hint_en": "Most of my friends live abroad."
+          }
+        ],
+        "closing_cue": "Charlotte closes with \"Quantifier rich!\" when obj_3 hits.",
+        "suggested_flow": "**Suggested flow** (6 turns):\n\n1. **Charlotte**: \"Describe your life using different quantifiers.\"\n2. **Student**: ~\"I have plenty of work.\"\n3. **Charlotte**: \"Scarce?\"\n4. **Student**: ~\"I have hardly any time.\"\n5. **Charlotte**: \"Majority?\"\n6. **Student**: ~\"Most of my friends live abroad.\"\n7. **Charlotte**: \"Quantifier rich!\"",
+        "evaluation_focus": [
+          "Variety of quantifiers",
+          "Correct countable/uncountable",
+          "Right meaning (positive/negative)"
+        ]
+      },
+      "guided_chat": {
+        "scenario": "Charlotte invites a quantified comparison of life.",
+        "voiced_by": "charlotte",
+        "persona": "Charlotte",
+        "persona_outfit": "charlotte_casual",
+        "intro_en": "Charlotte asks for a quantifier mix. Use several types.",
+        "opening_message": "Use 3 different quantifiers in your reply.",
+        "objectives": [
+          {
+            "id": 1,
+            "label_pt": "Primeiro quantificador",
+            "label_en": "First quantifier",
+            "hidden_prompt": "user uses a quantifier (plenty of/a few/several)",
+            "hint_pt": "I have several books.",
+            "hint_en": "I have several books."
+          },
+          {
+            "id": 2,
+            "label_pt": "Segundo quantificador",
+            "label_en": "Second quantifier",
+            "hidden_prompt": "user uses another quantifier",
+            "hint_pt": "Most people are kind.",
+            "hint_en": "Most people are kind."
+          },
+          {
+            "id": 3,
+            "label_pt": "Terceiro quantificador",
+            "label_en": "Third quantifier",
+            "hidden_prompt": "user uses one more quantifier",
+            "hint_pt": "I have hardly any free time.",
+            "hint_en": "I have hardly any free time."
+          }
+        ],
+        "closing_cue": "Charlotte closes with \"Quantifier feast!\" when obj_3 hits.",
+        "suggested_script": "**Script** (7 turns):\n\n1. **Charlotte**: \"Use 3 different quantifiers in your reply.\"\n2. **Student**: \"I have several books.\"\n3. **Charlotte**: \"Two more!\"\n4. **Student**: \"Most people are kind.\"\n5. **Charlotte**: \"Agreed.\"\n6. **Student**: \"I have hardly any free time.\"\n7. **Charlotte**: \"Quantifier feast!\"\n\n> I05 chat = LLM puro.\n\n---"
+      }
+    }
+  ],
+  "cross_unit_consolidation": [
+    "a few/a little (positive countable/uncountable)",
+    "few/little (negative)",
+    "plenty of (abundance)",
+    "hardly any (scarcity)",
+    "several (3+)",
+    "most + general plural / most of the/my + specific"
+  ]
+}

@@ -121,27 +121,27 @@
         {
           "text": "He is the tallest.",
           "context": "tallest",
-          "audio_url": "https://fnvjibzreepubageztoi.supabase.co/storage/v1/object/public/curriculum-audio/ls/6eef4dfe96db2765.flac"
+          "audio_url": "https://fnvjibzreepubageztoi.supabase.co/storage/v1/object/public/curriculum-audio/ls/novice/6eef4dfe96db2765.flac"
         },
         {
           "text": "She is the youngest in the family.",
           "context": "youngest",
-          "audio_url": "https://fnvjibzreepubageztoi.supabase.co/storage/v1/object/public/curriculum-audio/ls/96ba8c108d8b9a83.flac"
+          "audio_url": "https://fnvjibzreepubageztoi.supabase.co/storage/v1/object/public/curriculum-audio/ls/novice/96ba8c108d8b9a83.flac"
         },
         {
           "text": "Today is the hottest day.",
           "context": "hottest",
-          "audio_url": "https://fnvjibzreepubageztoi.supabase.co/storage/v1/object/public/curriculum-audio/ls/1a7f1036d029b257.flac"
+          "audio_url": "https://fnvjibzreepubageztoi.supabase.co/storage/v1/object/public/curriculum-audio/ls/novice/1a7f1036d029b257.flac"
         },
         {
           "text": "This is the cheapest option.",
           "context": "cheapest",
-          "audio_url": "https://fnvjibzreepubageztoi.supabase.co/storage/v1/object/public/curriculum-audio/ls/e629a2c6482aa8d3.flac"
+          "audio_url": "https://fnvjibzreepubageztoi.supabase.co/storage/v1/object/public/curriculum-audio/ls/novice/e629a2c6482aa8d3.flac"
         },
         {
           "text": "São Paulo is the biggest city in Brazil.",
           "context": "biggest",
-          "audio_url": "https://fnvjibzreepubageztoi.supabase.co/storage/v1/object/public/curriculum-audio/ls/4c5d3baa78301693.flac"
+          "audio_url": "https://fnvjibzreepubageztoi.supabase.co/storage/v1/object/public/curriculum-audio/ls/novice/4c5d3baa78301693.flac"
         }
       ],
       "roleplay": {
@@ -323,27 +323,27 @@
         {
           "text": "This is the most interesting book.",
           "context": "long superlative",
-          "audio_url": "https://fnvjibzreepubageztoi.supabase.co/storage/v1/object/public/curriculum-audio/ls/83f136b47a5206da.flac"
+          "audio_url": "https://fnvjibzreepubageztoi.supabase.co/storage/v1/object/public/curriculum-audio/ls/novice/83f136b47a5206da.flac"
         },
         {
           "text": "She is the most beautiful person.",
           "context": "beauty superlative",
-          "audio_url": "https://fnvjibzreepubageztoi.supabase.co/storage/v1/object/public/curriculum-audio/ls/3f8e620ef610f5f3.flac"
+          "audio_url": "https://fnvjibzreepubageztoi.supabase.co/storage/v1/object/public/curriculum-audio/ls/novice/3f8e620ef610f5f3.flac"
         },
         {
           "text": "Paris is the most expensive city.",
           "context": "price superlative",
-          "audio_url": "https://fnvjibzreepubageztoi.supabase.co/storage/v1/object/public/curriculum-audio/ls/f6199a278293a01e.flac"
+          "audio_url": "https://fnvjibzreepubageztoi.supabase.co/storage/v1/object/public/curriculum-audio/ls/novice/f6199a278293a01e.flac"
         },
         {
           "text": "He is the most patient teacher.",
           "context": "quality superlative",
-          "audio_url": "https://fnvjibzreepubageztoi.supabase.co/storage/v1/object/public/curriculum-audio/ls/badfd08f25905e18.flac"
+          "audio_url": "https://fnvjibzreepubageztoi.supabase.co/storage/v1/object/public/curriculum-audio/ls/novice/badfd08f25905e18.flac"
         },
         {
           "text": "It's the most boring movie.",
           "context": "opinion superlative",
-          "audio_url": "https://fnvjibzreepubageztoi.supabase.co/storage/v1/object/public/curriculum-audio/ls/86104be9363716ec.flac"
+          "audio_url": "https://fnvjibzreepubageztoi.supabase.co/storage/v1/object/public/curriculum-audio/ls/novice/86104be9363716ec.flac"
         }
       ],
       "roleplay": {
@@ -527,27 +527,27 @@
         {
           "text": "This is the best coffee.",
           "context": "best",
-          "audio_url": "https://fnvjibzreepubageztoi.supabase.co/storage/v1/object/public/curriculum-audio/ls/904a447958c8dac9.flac"
+          "audio_url": "https://fnvjibzreepubageztoi.supabase.co/storage/v1/object/public/curriculum-audio/ls/novice/904a447958c8dac9.flac"
         },
         {
           "text": "Today is the worst day.",
           "context": "worst",
-          "audio_url": "https://fnvjibzreepubageztoi.supabase.co/storage/v1/object/public/curriculum-audio/ls/404ed1a2582f0d8f.flac"
+          "audio_url": "https://fnvjibzreepubageztoi.supabase.co/storage/v1/object/public/curriculum-audio/ls/novice/404ed1a2582f0d8f.flac"
         },
         {
           "text": "She is the best player.",
           "context": "best person",
-          "audio_url": "https://fnvjibzreepubageztoi.supabase.co/storage/v1/object/public/curriculum-audio/ls/c4c4884f6190bdc0.flac"
+          "audio_url": "https://fnvjibzreepubageztoi.supabase.co/storage/v1/object/public/curriculum-audio/ls/novice/c4c4884f6190bdc0.flac"
         },
         {
           "text": "He has the most friends.",
           "context": "most + noun",
-          "audio_url": "https://fnvjibzreepubageztoi.supabase.co/storage/v1/object/public/curriculum-audio/ls/0436b804833a6bcc.flac"
+          "audio_url": "https://fnvjibzreepubageztoi.supabase.co/storage/v1/object/public/curriculum-audio/ls/novice/0436b804833a6bcc.flac"
         },
         {
           "text": "It's the best ever!",
           "context": "ever intensifier",
-          "audio_url": "https://fnvjibzreepubageztoi.supabase.co/storage/v1/object/public/curriculum-audio/ls/1ed22c49df60dcf5.flac"
+          "audio_url": "https://fnvjibzreepubageztoi.supabase.co/storage/v1/object/public/curriculum-audio/ls/novice/1ed22c49df60dcf5.flac"
         }
       ],
       "roleplay": {
@@ -729,27 +729,27 @@
         {
           "text": "I live on the third floor.",
           "context": "floor",
-          "audio_url": "https://fnvjibzreepubageztoi.supabase.co/storage/v1/object/public/curriculum-audio/ls/5f29bced412799ad.flac"
+          "audio_url": "https://fnvjibzreepubageztoi.supabase.co/storage/v1/object/public/curriculum-audio/ls/novice/5f29bced412799ad.flac"
         },
         {
           "text": "It's my first time here.",
           "context": "first time chunk",
-          "audio_url": "https://fnvjibzreepubageztoi.supabase.co/storage/v1/object/public/curriculum-audio/ls/6679c8451b8e28db.flac"
+          "audio_url": "https://fnvjibzreepubageztoi.supabase.co/storage/v1/object/public/curriculum-audio/ls/novice/6679c8451b8e28db.flac"
         },
         {
           "text": "She came in second place.",
           "context": "ranking",
-          "audio_url": "https://fnvjibzreepubageztoi.supabase.co/storage/v1/object/public/curriculum-audio/ls/77fcd780fd3da5ff.flac"
+          "audio_url": "https://fnvjibzreepubageztoi.supabase.co/storage/v1/object/public/curriculum-audio/ls/novice/77fcd780fd3da5ff.flac"
         },
         {
           "text": "My birthday is on the fifteenth.",
           "context": "date",
-          "audio_url": "https://fnvjibzreepubageztoi.supabase.co/storage/v1/object/public/curriculum-audio/ls/c90ce4f0eaee7633.flac"
+          "audio_url": "https://fnvjibzreepubageztoi.supabase.co/storage/v1/object/public/curriculum-audio/ls/novice/c90ce4f0eaee7633.flac"
         },
         {
           "text": "It's the twenty-first century.",
           "context": "twenty-first",
-          "audio_url": "https://fnvjibzreepubageztoi.supabase.co/storage/v1/object/public/curriculum-audio/ls/12890dad4d9a29f4.flac"
+          "audio_url": "https://fnvjibzreepubageztoi.supabase.co/storage/v1/object/public/curriculum-audio/ls/novice/12890dad4d9a29f4.flac"
         }
       ],
       "roleplay": {
@@ -931,27 +931,27 @@
         {
           "text": "She is the tallest in the team.",
           "context": "short superlative",
-          "audio_url": "https://fnvjibzreepubageztoi.supabase.co/storage/v1/object/public/curriculum-audio/ls/20aeb6cbe228c868.flac"
+          "audio_url": "https://fnvjibzreepubageztoi.supabase.co/storage/v1/object/public/curriculum-audio/ls/novice/20aeb6cbe228c868.flac"
         },
         {
           "text": "This is the most expensive.",
           "context": "long superlative",
-          "audio_url": "https://fnvjibzreepubageztoi.supabase.co/storage/v1/object/public/curriculum-audio/ls/95027bc53c6e45dd.flac"
+          "audio_url": "https://fnvjibzreepubageztoi.supabase.co/storage/v1/object/public/curriculum-audio/ls/novice/95027bc53c6e45dd.flac"
         },
         {
           "text": "He is the best player.",
           "context": "irregular",
-          "audio_url": "https://fnvjibzreepubageztoi.supabase.co/storage/v1/object/public/curriculum-audio/ls/4e680da29038ec5a.flac"
+          "audio_url": "https://fnvjibzreepubageztoi.supabase.co/storage/v1/object/public/curriculum-audio/ls/novice/4e680da29038ec5a.flac"
         },
         {
           "text": "I live on the third floor.",
           "context": "ordinal",
-          "audio_url": "https://fnvjibzreepubageztoi.supabase.co/storage/v1/object/public/curriculum-audio/ls/5f29bced412799ad.flac"
+          "audio_url": "https://fnvjibzreepubageztoi.supabase.co/storage/v1/object/public/curriculum-audio/ls/novice/5f29bced412799ad.flac"
         },
         {
           "text": "It's my first time.",
           "context": "ordinal chunk",
-          "audio_url": "https://fnvjibzreepubageztoi.supabase.co/storage/v1/object/public/curriculum-audio/ls/4f60805d90b85a02.flac"
+          "audio_url": "https://fnvjibzreepubageztoi.supabase.co/storage/v1/object/public/curriculum-audio/ls/novice/4f60805d90b85a02.flac"
         }
       ],
       "roleplay": {
