@@ -1,0 +1,1043 @@
+{
+  "id": "M21",
+  "title": "Phrasal verbs avançados",
+  "level": "Inter",
+  "block": "B2",
+  "units_range": "I01–I05",
+  "theme": "3-part phrasal verbs + idiomatic chunks",
+  "goal": "Student handles 3-part phrasal verbs (look forward to, put up with, run out of) and high-frequency idiomatic chunks for natural fluency.",
+  "connects_to": "M22 (Conectores avançados) — closes B2 with discourse markers.",
+  "module_chunks": [
+    "look forward to + ing",
+    "put up with (tolerate)",
+    "run out of (deplete)",
+    "come up with (generate idea)",
+    "get along with (relationship)",
+    "keep up with (maintain pace)",
+    "catch up with / on (news/people)",
+    "get away with (escape)",
+    "look up to (admire)",
+    "look down on (despise)",
+    "come down with (get sick)",
+    "go through with (commit)",
+    "make up for (compensate)",
+    "get back at (revenge)",
+    "on second thought",
+    "in the long run",
+    "at the end of the day",
+    "for the time being"
+  ],
+  "units": [
+    {
+      "id": "I01",
+      "title": "Look forward to",
+      "sub_cefr": "B2",
+      "grammar_focus": "3-part phrasal verbs with -ing (look forward to, get used to, object to)",
+      "markers": [
+        "denso"
+      ],
+      "real_life_context": "You express anticipation, adaptation, or objection — all followed by -ing.",
+      "grammar": [
+        {
+          "type": "multiple_choice",
+          "sentence": "I look forward _____ you next week.",
+          "options": [
+            "to seeing",
+            "to see",
+            "seeing",
+            "for seeing"
+          ],
+          "answer": "to seeing",
+          "explanation": "\"Look forward to\" é phrasal verb + preposição \"to\" + -ING. Erro comum: usar \"to see\" (base form). Sempre \"to + verb-ing\" após \"look forward to\"."
+        },
+        {
+          "type": "multiple_choice",
+          "sentence": "I'm getting used _____ early.",
+          "options": [
+            "to waking up",
+            "to wake up",
+            "waking up",
+            "for waking"
+          ],
+          "answer": "to waking up",
+          "explanation": "\"Get used to + -ing\" — adaptação. \"To waking up\" — preposição \"to\" + gerúndio."
+        },
+        {
+          "type": "word_bank",
+          "sentence": "She objects _____ here.",
+          "choices": [
+            "to smoking",
+            "to smoke",
+            "smoking",
+            "for smoking"
+          ],
+          "answer": "to smoking",
+          "explanation": "\"Object to + -ing\" — oposição/recusa. \"To smoking\" — gerúndio obrigatório."
+        },
+        {
+          "type": "word_bank",
+          "sentence": "I'm looking forward _____ on vacation.",
+          "choices": [
+            "to going",
+            "to go",
+            "going",
+            "for going"
+          ],
+          "answer": "to going",
+          "explanation": "\"Look forward to going\" — antecipação positiva com -ing."
+        },
+        {
+          "type": "fill_gap",
+          "sentence": "He's used _____ alone.",
+          "hint": "to + -ing form \"live\"",
+          "answer": "to living",
+          "explanation": "\"Used to living\" — habituado. Note: difere de \"used to live\" (costumava) — pista é o \"TO + -ing\" não \"TO + base\"."
+        },
+        {
+          "type": "fill_gap",
+          "sentence": "I object _____ on weekends.",
+          "hint": "to + -ing \"work\"",
+          "answer": "to working",
+          "explanation": "\"Object to working\" — oposição. Sempre \"to + -ing\"."
+        },
+        {
+          "type": "fill_gap",
+          "sentence": "We look forward _____ from you.",
+          "hint": "to + -ing \"hear\"",
+          "answer": "to hearing",
+          "explanation": "\"Look forward to hearing\" — fórmula formal em emails. Comum em encerramento."
+        },
+        {
+          "type": "fix_error",
+          "sentence": "I look forward to see you tomorrow.",
+          "hint": "Após \"to\" em look forward to, gerúndio",
+          "answer": "I look forward to seeing you tomorrow.",
+          "explanation": "Erro super comum. \"Look forward to\" — preposição \"to\" + -ING, não base form. \"To seeing\", não \"to see\"."
+        },
+        {
+          "type": "fix_error",
+          "sentence": "She's getting used to wake up early.",
+          "hint": "Após \"to\" em get used to, gerúndio",
+          "answer": "She's getting used to waking up early.",
+          "explanation": "\"Get used to + -ing\". \"To wake up\" só funciona em \"used to wake up\" (costumava acordar). Aqui é adaptação atual."
+        },
+        {
+          "type": "read_answer",
+          "passage": "I look forward to seeing you next week. She's getting used to waking up early for work. He objects to smoking in restaurants. We look forward to hearing from you soon.",
+          "question": "What is she getting used to?",
+          "answer": "waking up early (or \"waking up early for work\")",
+          "explanation": "The text says \"She's getting used to waking up early for work\"."
+        }
+      ],
+      "listening_speaking": [
+        {
+          "text": "I look forward to seeing you.",
+          "context": "formal anticipation"
+        },
+        {
+          "text": "I'm getting used to working from home.",
+          "context": "adaptation"
+        },
+        {
+          "text": "She objects to smoking in restaurants.",
+          "context": "opposition"
+        },
+        {
+          "text": "We look forward to hearing from you.",
+          "context": "email closing"
+        },
+        {
+          "text": "I'm not used to driving in the city.",
+          "context": "lack of adaptation"
+        }
+      ],
+      "roleplay": {
+        "scenario": "Charlotte pergunta o que você espera, no que está se adaptando, e a que se opõe — você usa 3 phrasal verbs em -ing.",
+        "voiced_by": "charlotte",
+        "persona": "Charlotte",
+        "persona_outfit": "charlotte_casual",
+        "time_budget_sec": 180,
+        "opening_line": "Three things: looking forward to, getting used to, objecting to. All with -ing.",
+        "objectives": [
+          {
+            "id": 1,
+            "label_pt": "Antecipação com 'look forward to + ing'",
+            "label_en": "Anticipation with 'look forward to + ing'",
+            "hidden_prompt": "user uses 'I look forward to + verb-ing'",
+            "hint_pt": "I look forward to traveling this summer.",
+            "hint_en": "I look forward to traveling this summer."
+          },
+          {
+            "id": 2,
+            "label_pt": "Adaptação com 'getting used to + ing'",
+            "label_en": "Adaptation with 'getting used to + ing'",
+            "hidden_prompt": "user uses 'I'm getting used to + verb-ing'",
+            "hint_pt": "I'm getting used to working remotely.",
+            "hint_en": "I'm getting used to working remotely."
+          },
+          {
+            "id": 3,
+            "label_pt": "Oposição com 'object to + ing'",
+            "label_en": "Opposition with 'object to + ing'",
+            "hidden_prompt": "user uses 'I object to + verb-ing'",
+            "hint_pt": "I object to working on Sundays.",
+            "hint_en": "I object to working on Sundays."
+          }
+        ],
+        "closing_cue": "Charlotte fecha com \"-ing chunks nailed!\" quando obj_3 baterem.",
+        "suggested_flow": "**Suggested flow** (referencial, 6 turnos):\n\n1. **Charlotte**: \"Three things: looking forward to, getting used to, objecting to. All with -ing.\"\n2. **Student**: ~\"I look forward to traveling this summer.\"\n3. **Charlotte**: \"Vacation mode. Adaptation?\"\n4. **Student**: ~\"I'm getting used to working remotely.\"\n5. **Charlotte**: \"Object?\"\n6. **Student**: ~\"I object to working on Sundays.\"\n7. **Charlotte**: \"-ing chunks nailed!\"",
+        "evaluation_focus": [
+          "\"To + -ing\" always",
+          "Variety of phrasal verbs",
+          "Natural use"
+        ]
+      },
+      "guided_chat": {
+        "scenario": "Charlotte conversa sobre o que vocês esperam, em que estão se adaptando, e a que se opõem na vida atual.",
+        "voiced_by": "charlotte",
+        "persona": "Charlotte",
+        "persona_outfit": "charlotte_casual",
+        "intro_en": "Charlotte explores life shifts. Use 'look forward to / getting used to / object to + ing'.",
+        "opening_message": "I'm looking forward to my upcoming trip. What about you?",
+        "objectives": [
+          {
+            "id": 1,
+            "label_pt": "Antecipação",
+            "label_en": "Anticipation",
+            "hidden_prompt": "user uses 'look forward to + -ing'",
+            "hint_pt": "I'm looking forward to seeing my family.",
+            "hint_en": "I'm looking forward to seeing my family."
+          },
+          {
+            "id": 2,
+            "label_pt": "Adaptação ou oposição",
+            "label_en": "Adaptation or opposition",
+            "hidden_prompt": "user uses 'getting used to' or 'object to + -ing'",
+            "hint_pt": "I'm getting used to having early meetings.",
+            "hint_en": "I'm getting used to having early meetings."
+          },
+          {
+            "id": 3,
+            "label_pt": "Perguntar à Charlotte",
+            "label_en": "Ask Charlotte",
+            "hidden_prompt": "user asks Charlotte about her trip",
+            "hint_pt": "Where are you going?",
+            "hint_en": "Where are you going?"
+          }
+        ],
+        "closing_cue": "Charlotte fecha com \"Anticipations exchanged!\" quando obj_3 baterem.",
+        "suggested_script": "**Script** (referencial, 7 turnos):\n\n1. **Charlotte**: \"I'm looking forward to my upcoming trip. What about you?\"\n2. **Student**: \"I'm looking forward to seeing my family.\"\n3. **Charlotte**: \"Nice plan. Adapting to anything?\"\n4. **Student**: \"I'm getting used to having early meetings.\"\n5. **Charlotte**: \"Tough adjustment.\"\n6. **Student**: \"Where are you going?\"\n7. **Charlotte**: \"To Portugal, visiting friends. Anticipations exchanged!\"\n\n> I01 chat = LLM puro. Scaffold via hint_pt.\n\n---"
+      }
+    },
+    {
+      "id": "I02",
+      "title": "Put up with",
+      "sub_cefr": "B2",
+      "grammar_focus": "3-part phrasal verbs of tolerance/depletion (put up with, run out of, get away with)",
+      "markers": [
+        "denso"
+      ],
+      "real_life_context": "You describe tolerating, running out, or escaping consequences.",
+      "grammar": [
+        {
+          "type": "multiple_choice",
+          "sentence": "I can't _____ his attitude anymore.",
+          "options": [
+            "put up with",
+            "put with",
+            "put away",
+            "put on"
+          ],
+          "answer": "put up with",
+          "explanation": "\"Put up with\" = tolerar. 3-part phrasal: put + up + with. Sempre nessa ordem."
+        },
+        {
+          "type": "multiple_choice",
+          "sentence": "We _____ milk — let's buy some.",
+          "options": [
+            "ran out of",
+            "ran out",
+            "ran away",
+            "ran with"
+          ],
+          "answer": "ran out of",
+          "explanation": "\"Run out of + noun\" = ficar sem. \"Ran out of milk\" — esgotamos o leite."
+        },
+        {
+          "type": "word_bank",
+          "sentence": "He always _____ lies.",
+          "choices": [
+            "gets away with",
+            "gets out of",
+            "gets up with",
+            "gets along with"
+          ],
+          "answer": "gets away with",
+          "explanation": "\"Get away with + noun/-ing\" = escapar das consequências. \"Gets away with lies\"."
+        },
+        {
+          "type": "word_bank",
+          "sentence": "I can't _____ this noise!",
+          "choices": [
+            "put up with",
+            "put with",
+            "put away",
+            "put on"
+          ],
+          "answer": "put up with",
+          "explanation": "\"Put up with noise\" — tolerar barulho. Reclamação."
+        },
+        {
+          "type": "fill_gap",
+          "sentence": "She _____ time before the deadline.",
+          "hint": "ran + out + of",
+          "answer": "ran out of",
+          "explanation": "\"Ran out of time\" — chunk muito comum, falta de tempo."
+        },
+        {
+          "type": "fill_gap",
+          "sentence": "How do you _____ that smell?",
+          "hint": "put up with",
+          "answer": "put up with",
+          "explanation": "\"How do you put up with\" — pergunta sobre tolerância."
+        },
+        {
+          "type": "fill_gap",
+          "sentence": "He won't _____ cheating this time.",
+          "hint": "get away with",
+          "answer": "get away with",
+          "explanation": "\"Won't get away with cheating\" — não vai escapar."
+        },
+        {
+          "type": "fix_error",
+          "sentence": "I can't put with this noise.",
+          "hint": "3 partes — put UP with",
+          "answer": "I can't put up with this noise.",
+          "explanation": "\"Put with\" não existe. Sempre 3 partes: \"put + UP + with\"."
+        },
+        {
+          "type": "fix_error",
+          "sentence": "We're running out milk.",
+          "hint": "Falta \"of\"",
+          "answer": "We're running out of milk.",
+          "explanation": "\"Run out OF + noun\" — preposição \"of\" obrigatória. \"Running out\" sozinho não funciona com objeto."
+        },
+        {
+          "type": "read_answer",
+          "passage": "I can't put up with his attitude anymore. We ran out of milk this morning. He always gets away with breaking the rules. How do you put up with that smell?",
+          "question": "What do they need to buy?",
+          "answer": "milk",
+          "explanation": "The text says \"We ran out of milk this morning\"."
+        }
+      ],
+      "listening_speaking": [
+        {
+          "text": "I can't put up with this anymore.",
+          "context": "limit of tolerance"
+        },
+        {
+          "text": "We ran out of milk.",
+          "context": "depletion"
+        },
+        {
+          "text": "He always gets away with it.",
+          "context": "escape consequence"
+        },
+        {
+          "text": "I'm running out of patience.",
+          "context": "patience depletion"
+        },
+        {
+          "text": "How do you put up with him?",
+          "context": "wonder at tolerance"
+        }
+      ],
+      "roleplay": {
+        "scenario": "Charlotte pede que você comente sobre 3 situações irritantes da semana — usando put up with, run out of, e get away with.",
+        "voiced_by": "charlotte",
+        "persona": "Charlotte",
+        "persona_outfit": "charlotte_casual",
+        "time_budget_sec": 180,
+        "opening_line": "Three annoyances. Use 'put up with', 'run out of', 'get away with'.",
+        "objectives": [
+          {
+            "id": 1,
+            "label_pt": "Tolerar com 'put up with'",
+            "label_en": "Tolerate with 'put up with'",
+            "hidden_prompt": "user uses 'I can't put up with + noun'",
+            "hint_pt": "I can't put up with my neighbor's loud music.",
+            "hint_en": "I can't put up with my neighbor's loud music."
+          },
+          {
+            "id": 2,
+            "label_pt": "Acabar com 'run out of'",
+            "label_en": "Deplete with 'run out of'",
+            "hidden_prompt": "user uses 'I ran/we ran out of + noun'",
+            "hint_pt": "I ran out of patience by Friday.",
+            "hint_en": "I ran out of patience by Friday."
+          },
+          {
+            "id": 3,
+            "label_pt": "Escapar com 'get away with'",
+            "label_en": "Escape with 'get away with'",
+            "hidden_prompt": "user uses 'X gets away with + noun/ing'",
+            "hint_pt": "He always gets away with arriving late.",
+            "hint_en": "He always gets away with arriving late."
+          }
+        ],
+        "closing_cue": "Charlotte fecha com \"Annoyances vented!\" quando obj_3 baterem.",
+        "suggested_flow": "**Suggested flow** (referencial, 6 turnos):\n\n1. **Charlotte**: \"Three annoyances. Use 'put up with', 'run out of', 'get away with'.\"\n2. **Student**: ~\"I can't put up with my neighbor's loud music.\"\n3. **Charlotte**: \"Same. Depleted?\"\n4. **Student**: ~\"I ran out of patience by Friday.\"\n5. **Charlotte**: \"Escape?\"\n6. **Student**: ~\"He always gets away with arriving late.\"\n7. **Charlotte**: \"Annoyances vented!\"",
+        "evaluation_focus": [
+          "3-part structure intact",
+          "Correct preposition (\"of\", \"with\")",
+          "Context appropriate"
+        ]
+      },
+      "guided_chat": {
+        "scenario": "Charlotte abre conversa sobre tolerância e limites — usem put up with, run out of, get away with naturalmente.",
+        "voiced_by": "charlotte",
+        "persona": "Charlotte",
+        "persona_outfit": "charlotte_casual",
+        "intro_en": "Charlotte explores tolerance limits. Use 3-part phrasals.",
+        "opening_message": "I'm running out of energy this week. What's testing your limits?",
+        "objectives": [
+          {
+            "id": 1,
+            "label_pt": "Limite com 'put up with'",
+            "label_en": "Limit with 'put up with'",
+            "hidden_prompt": "user uses 'I can't put up with' or similar",
+            "hint_pt": "I can't put up with constant interruptions.",
+            "hint_en": "I can't put up with constant interruptions."
+          },
+          {
+            "id": 2,
+            "label_pt": "Esgotamento com 'run out of'",
+            "label_en": "Depletion with 'run out of'",
+            "hidden_prompt": "user uses 'running out of + noun'",
+            "hint_pt": "I'm running out of motivation.",
+            "hint_en": "I'm running out of motivation."
+          },
+          {
+            "id": 3,
+            "label_pt": "Perguntar à Charlotte",
+            "label_en": "Ask Charlotte",
+            "hidden_prompt": "user asks Charlotte more about her energy",
+            "hint_pt": "What's draining you?",
+            "hint_en": "What's draining you?"
+          }
+        ],
+        "closing_cue": "Charlotte fecha com \"Mutual exhaustion mapped!\" quando obj_3 baterem.",
+        "suggested_script": "**Script** (referencial, 7 turnos):\n\n1. **Charlotte**: \"I'm running out of energy this week. What's testing your limits?\"\n2. **Student**: \"I can't put up with constant interruptions.\"\n3. **Charlotte**: \"Focus killer. What else?\"\n4. **Student**: \"I'm running out of motivation.\"\n5. **Charlotte**: \"I get that.\"\n6. **Student**: \"What's draining you?\"\n7. **Charlotte**: \"Back-to-back meetings. Mutual exhaustion mapped!\"\n\n> I02 chat = LLM puro. Scaffold via hint_pt.\n\n---"
+      }
+    },
+    {
+      "id": "I03",
+      "title": "Get along with",
+      "sub_cefr": "B2",
+      "grammar_focus": "3-part phrasals about relationships (get along with, look up to, look down on, get on with)",
+      "markers": [
+        "denso"
+      ],
+      "real_life_context": "You describe how you relate to other people.",
+      "grammar": [
+        {
+          "type": "multiple_choice",
+          "sentence": "I _____ my coworkers.",
+          "options": [
+            "get along with",
+            "get along",
+            "get with",
+            "get up with"
+          ],
+          "answer": "get along with",
+          "explanation": "\"Get along with + person\" = relacionar-se bem. Phrasal de relacionamento harmonioso."
+        },
+        {
+          "type": "multiple_choice",
+          "sentence": "She _____ her grandfather.",
+          "options": [
+            "looks up to",
+            "looks down on",
+            "looks at",
+            "looks for"
+          ],
+          "answer": "looks up to",
+          "explanation": "\"Look up to + person\" = admirar. Imagina olhar para cima com respeito."
+        },
+        {
+          "type": "word_bank",
+          "sentence": "He _____ people without degrees.",
+          "choices": [
+            "looks down on",
+            "looks up to",
+            "looks for",
+            "looks after"
+          ],
+          "answer": "looks down on",
+          "explanation": "\"Look down on + person\" = desprezar. Oposto de \"look up to\"."
+        },
+        {
+          "type": "word_bank",
+          "sentence": "We don't _____ each other.",
+          "choices": [
+            "get along with",
+            "get up with",
+            "get on",
+            "get along"
+          ],
+          "answer": "get along with",
+          "explanation": "\"Don't get along with each other\" — relação ruim. Sempre com \"with\"."
+        },
+        {
+          "type": "fill_gap",
+          "sentence": "I really _____ my old boss — she was inspiring.",
+          "hint": "look up to (admirar)",
+          "answer": "look up to",
+          "explanation": "\"Look up to\" — admirar como modelo."
+        },
+        {
+          "type": "fill_gap",
+          "sentence": "He's hard to _____ — very stubborn.",
+          "hint": "get along with",
+          "answer": "get along with",
+          "explanation": "\"Hard to get along with\" — difícil de conviver."
+        },
+        {
+          "type": "fill_gap",
+          "sentence": "She _____ poor people, which is awful.",
+          "hint": "looks down on",
+          "answer": "looks down on",
+          "explanation": "\"Looks down on poor people\" — comportamento criticável de desprezo."
+        },
+        {
+          "type": "fix_error",
+          "sentence": "I get along my coworkers.",
+          "hint": "Falta \"with\"",
+          "answer": "I get along with my coworkers.",
+          "explanation": "\"Get along\" sozinho funciona (\"we get along well\"), mas com pessoa específica precisa \"with\"."
+        },
+        {
+          "type": "fix_error",
+          "sentence": "She looks up her grandfather.",
+          "hint": "Falta \"to\"",
+          "answer": "She looks up to her grandfather.",
+          "explanation": "\"Look up to\" — 3 partes obrigatórias. Sem \"to\" significa \"olhar para cima fisicamente\"."
+        },
+        {
+          "type": "read_answer",
+          "passage": "I get along with my coworkers really well. She looks up to her grandfather as a role model. He unfortunately looks down on people without degrees. We don't always get along with each other.",
+          "question": "Whom does she look up to?",
+          "answer": "her grandfather",
+          "explanation": "The text says \"She looks up to her grandfather as a role model\"."
+        }
+      ],
+      "listening_speaking": [
+        {
+          "text": "I get along with my coworkers.",
+          "context": "positive relationship"
+        },
+        {
+          "text": "She looks up to her mom.",
+          "context": "admiration"
+        },
+        {
+          "text": "He looks down on others.",
+          "context": "disdain"
+        },
+        {
+          "text": "We don't get along.",
+          "context": "bad relationship"
+        },
+        {
+          "text": "I get on really well with him.",
+          "context": "alternative phrasing"
+        }
+      ],
+      "roleplay": {
+        "scenario": "Charlotte pergunta sobre relacionamentos seus — você usa 3-part phrasals de relacionamento (get along with, look up to, etc.).",
+        "voiced_by": "charlotte",
+        "persona": "Charlotte",
+        "persona_outfit": "charlotte_casual",
+        "time_budget_sec": 180,
+        "opening_line": "Three relationships — who you get along with, look up to, look down on?",
+        "objectives": [
+          {
+            "id": 1,
+            "label_pt": "Relação harmoniosa com 'get along with'",
+            "label_en": "Harmony with 'get along with'",
+            "hidden_prompt": "user uses 'I get along with + person'",
+            "hint_pt": "I get along really well with my brother.",
+            "hint_en": "I get along really well with my brother."
+          },
+          {
+            "id": 2,
+            "label_pt": "Admiração com 'look up to'",
+            "label_en": "Admiration with 'look up to'",
+            "hidden_prompt": "user uses 'I look up to + person'",
+            "hint_pt": "I look up to my old English teacher.",
+            "hint_en": "I look up to my old English teacher."
+          },
+          {
+            "id": 3,
+            "label_pt": "Desaprovação com 'look down on'",
+            "label_en": "Disapproval with 'look down on'",
+            "hidden_prompt": "user uses 'I/he/she looks down on + person'",
+            "hint_pt": "I don't like people who look down on others.",
+            "hint_en": "I don't like people who look down on others."
+          }
+        ],
+        "closing_cue": "Charlotte fecha com \"Relationships mapped!\" quando obj_3 baterem.",
+        "suggested_flow": "**Suggested flow** (referencial, 6 turnos):\n\n1. **Charlotte**: \"Three relationships — who you get along with, look up to, look down on?\"\n2. **Student**: ~\"I get along really well with my brother.\"\n3. **Charlotte**: \"Lucky. Admiration?\"\n4. **Student**: ~\"I look up to my old English teacher.\"\n5. **Charlotte**: \"Negative pattern?\"\n6. **Student**: ~\"I don't like people who look down on others.\"\n7. **Charlotte**: \"Relationships mapped!\"",
+        "evaluation_focus": [
+          "3-part structure",
+          "Correct preposition (with, to, on)",
+          "Relationship context"
+        ]
+      },
+      "guided_chat": {
+        "scenario": "Charlotte conversa sobre mentores, amigos e tipos de pessoas — vocês usam phrasals de relacionamento.",
+        "voiced_by": "charlotte",
+        "persona": "Charlotte",
+        "persona_outfit": "charlotte_casual",
+        "intro_en": "Charlotte explores mentors and dynamics. Use relationship phrasals.",
+        "opening_message": "I look up to my first boss — she shaped my career. Who do you look up to?",
+        "objectives": [
+          {
+            "id": 1,
+            "label_pt": "Mentor com 'look up to'",
+            "label_en": "Mentor with 'look up to'",
+            "hidden_prompt": "user uses 'I look up to + person'",
+            "hint_pt": "I look up to my dad — he's so patient.",
+            "hint_en": "I look up to my dad — he's so patient."
+          },
+          {
+            "id": 2,
+            "label_pt": "Outro tipo de relação",
+            "label_en": "Another relationship",
+            "hidden_prompt": "user uses 'get along with' or 'look down on'",
+            "hint_pt": "I get along really well with my sister-in-law.",
+            "hint_en": "I get along really well with my sister-in-law."
+          },
+          {
+            "id": 3,
+            "label_pt": "Perguntar à Charlotte",
+            "label_en": "Ask Charlotte",
+            "hidden_prompt": "user asks Charlotte more about her mentor",
+            "hint_pt": "What did she teach you?",
+            "hint_en": "What did she teach you?"
+          }
+        ],
+        "closing_cue": "Charlotte fecha com \"Mentors honored!\" quando obj_3 baterem.",
+        "suggested_script": "**Script** (referencial, 7 turnos):\n\n1. **Charlotte**: \"I look up to my first boss — she shaped my career. Who do you look up to?\"\n2. **Student**: \"I look up to my dad — he's so patient.\"\n3. **Charlotte**: \"Calm models. Who do you get along with?\"\n4. **Student**: \"I get along really well with my sister-in-law.\"\n5. **Charlotte**: \"Lucky in-laws.\"\n6. **Student**: \"What did she teach you?\"\n7. **Charlotte**: \"To listen before speaking. Mentors honored!\"\n\n> I03 chat = LLM puro. Scaffold via hint_pt.\n\n---"
+      }
+    },
+    {
+      "id": "I04",
+      "title": "Catch up, make up",
+      "sub_cefr": "B2",
+      "grammar_focus": "Phrasals of time, compensation, commitment (catch up with, make up for, keep up with, go through with)",
+      "markers": [
+        "denso"
+      ],
+      "real_life_context": "You handle deadlines, debts, news, and commitments.",
+      "grammar": [
+        {
+          "type": "multiple_choice",
+          "sentence": "I need to _____ my emails.",
+          "options": [
+            "catch up on",
+            "catch up with",
+            "catch on",
+            "catch with"
+          ],
+          "answer": "catch up on",
+          "explanation": "\"Catch up ON + thing/topic\" para colocar em dia com algo. \"Catch up on emails\" = atualizar-se com os emails."
+        },
+        {
+          "type": "multiple_choice",
+          "sentence": "Let's _____ next week!",
+          "options": [
+            "catch up",
+            "catch on",
+            "catch up to",
+            "catch in"
+          ],
+          "answer": "catch up",
+          "explanation": "\"Catch up\" sozinho = se ver/falar para atualizar. \"Let's catch up\" — combinar de conversar."
+        },
+        {
+          "type": "word_bank",
+          "sentence": "I want to _____ my mistake.",
+          "choices": [
+            "make up for",
+            "make up",
+            "make for",
+            "make with"
+          ],
+          "answer": "make up for",
+          "explanation": "\"Make up for + noun\" = compensar. \"Make up for the mistake\" — compensar o erro."
+        },
+        {
+          "type": "word_bank",
+          "sentence": "It's hard to _____ all the changes.",
+          "choices": [
+            "keep up with",
+            "keep with",
+            "keep up",
+            "keep on"
+          ],
+          "answer": "keep up with",
+          "explanation": "\"Keep up with + thing\" = manter o ritmo, acompanhar. \"Keep up with changes\"."
+        },
+        {
+          "type": "fill_gap",
+          "sentence": "I'll _____ the plan despite the doubts.",
+          "hint": "go through with",
+          "answer": "go through with",
+          "explanation": "\"Go through with + plan/decision\" = levar adiante. Apesar de dúvidas."
+        },
+        {
+          "type": "fill_gap",
+          "sentence": "I _____ the news every morning.",
+          "hint": "catch up on",
+          "answer": "catch up on",
+          "explanation": "\"Catch up on the news\" — atualizar-se sobre notícias."
+        },
+        {
+          "type": "fill_gap",
+          "sentence": "Sorry for being late — I'll _____ it tomorrow.",
+          "hint": "make up for",
+          "answer": "make up for",
+          "explanation": "\"Make up for it tomorrow\" — compensar a falta."
+        },
+        {
+          "type": "fix_error",
+          "sentence": "I need to catch up my emails.",
+          "hint": "Falta \"on\" ou \"with\"",
+          "answer": "I need to catch up on my emails.",
+          "explanation": "\"Catch up\" precisa de preposição quando há objeto. \"On\" para coisas/temas, \"with\" para pessoas."
+        },
+        {
+          "type": "fix_error",
+          "sentence": "Let's catch up with on the project.",
+          "hint": "\"On\" para o projeto, sem \"with\"",
+          "answer": "Let's catch up on the project.",
+          "explanation": "\"Catch up on\" para tema/objeto. \"With\" só para pessoas. Não pode misturar."
+        },
+        {
+          "type": "read_answer",
+          "passage": "I need to catch up on my emails. Let's catch up next week! I want to make up for my mistake. It's hard to keep up with all the changes. I'll go through with the plan.",
+          "question": "What do they need to do with their emails?",
+          "answer": "catch up on them (or \"catch up on the emails\")",
+          "explanation": "The text says \"I need to catch up on my emails\"."
+        }
+      ],
+      "listening_speaking": [
+        {
+          "text": "I need to catch up on emails.",
+          "context": "task backlog"
+        },
+        {
+          "text": "Let's catch up next week.",
+          "context": "social meeting"
+        },
+        {
+          "text": "I'll make up for it.",
+          "context": "compensation"
+        },
+        {
+          "text": "Hard to keep up with the news.",
+          "context": "pace difficulty"
+        },
+        {
+          "text": "I'll go through with the plan.",
+          "context": "commitment"
+        }
+      ],
+      "roleplay": {
+        "scenario": "Charlotte pergunta sobre 3 áreas que você precisa colocar em dia, compensar ou seguir adiante.",
+        "voiced_by": "charlotte",
+        "persona": "Charlotte",
+        "persona_outfit": "charlotte_casual",
+        "time_budget_sec": 180,
+        "opening_line": "Three areas — what to catch up on, make up for, or go through with.",
+        "objectives": [
+          {
+            "id": 1,
+            "label_pt": "Catch up com algo atrasado",
+            "label_en": "Catch up on something behind",
+            "hidden_prompt": "user uses 'catch up on + noun'",
+            "hint_pt": "I need to catch up on sleep this weekend.",
+            "hint_en": "I need to catch up on sleep this weekend."
+          },
+          {
+            "id": 2,
+            "label_pt": "Compensar com 'make up for'",
+            "label_en": "Compensate with 'make up for'",
+            "hidden_prompt": "user uses 'I want to make up for + noun'",
+            "hint_pt": "I want to make up for lost time with my family.",
+            "hint_en": "I want to make up for lost time with my family."
+          },
+          {
+            "id": 3,
+            "label_pt": "Seguir adiante com 'go through with'",
+            "label_en": "Commit with 'go through with'",
+            "hidden_prompt": "user uses 'I'll go through with + noun'",
+            "hint_pt": "I'll go through with the renovation despite the cost.",
+            "hint_en": "I'll go through with the renovation despite the cost."
+          }
+        ],
+        "closing_cue": "Charlotte fecha com \"Plans aligned!\" quando obj_3 baterem.",
+        "suggested_flow": "**Suggested flow** (referencial, 6 turnos):\n\n1. **Charlotte**: \"Three areas — what to catch up on, make up for, or go through with.\"\n2. **Student**: ~\"I need to catch up on sleep this weekend.\"\n3. **Charlotte**: \"Real need. Compensate?\"\n4. **Student**: ~\"I want to make up for lost time with my family.\"\n5. **Charlotte**: \"Big commitment?\"\n6. **Student**: ~\"I'll go through with the renovation despite the cost.\"\n7. **Charlotte**: \"Plans aligned!\"",
+        "evaluation_focus": [
+          "\"Catch up ON\" (things), \"WITH\" (people)",
+          "\"Make up for\" + noun",
+          "\"Go through with\" + plan"
+        ]
+      },
+      "guided_chat": {
+        "scenario": "Charlotte conversa sobre tarefas atrasadas, compensações e decisões — vocês usam phrasals de tempo e compromisso.",
+        "voiced_by": "charlotte",
+        "persona": "Charlotte",
+        "persona_outfit": "charlotte_casual",
+        "intro_en": "Charlotte talks about backlog and commitments. Use catch up / make up for / go through with.",
+        "opening_message": "I have a huge inbox to catch up on. What's on your list?",
+        "objectives": [
+          {
+            "id": 1,
+            "label_pt": "Algo a colocar em dia",
+            "label_en": "Something to catch up on",
+            "hidden_prompt": "user uses 'catch up on + noun'",
+            "hint_pt": "I need to catch up on my reading.",
+            "hint_en": "I need to catch up on my reading."
+          },
+          {
+            "id": 2,
+            "label_pt": "Compensação ou compromisso",
+            "label_en": "Compensation or commitment",
+            "hidden_prompt": "user uses 'make up for' or 'go through with'",
+            "hint_pt": "I want to make up for missing my friend's birthday.",
+            "hint_en": "I want to make up for missing my friend's birthday."
+          },
+          {
+            "id": 3,
+            "label_pt": "Perguntar à Charlotte",
+            "label_en": "Ask Charlotte",
+            "hidden_prompt": "user asks Charlotte more about her inbox",
+            "hint_pt": "How many unread?",
+            "hint_en": "How many unread?"
+          }
+        ],
+        "closing_cue": "Charlotte fecha com \"Backlogs compared!\" quando obj_3 baterem.",
+        "suggested_script": "**Script** (referencial, 7 turnos):\n\n1. **Charlotte**: \"I have a huge inbox to catch up on. What's on your list?\"\n2. **Student**: \"I need to catch up on my reading.\"\n3. **Charlotte**: \"Time-consuming. Anything to make up for?\"\n4. **Student**: \"I want to make up for missing my friend's birthday.\"\n5. **Charlotte**: \"Nice gesture.\"\n6. **Student**: \"How many unread?\"\n7. **Charlotte**: \"Don't ask. Backlogs compared!\"\n\n> I04 chat = LLM puro. Scaffold via hint_pt.\n\n---"
+      }
+    },
+    {
+      "id": "I05",
+      "title": "Idiomatic chunks",
+      "sub_cefr": "B2",
+      "grammar_focus": "High-frequency idiomatic chunks (on second thought, at the end of the day, in the long run, for the time being)",
+      "markers": [],
+      "real_life_context": "You use natural conversational chunks for emphasis, qualification, or summary.",
+      "grammar": [
+        {
+          "type": "multiple_choice",
+          "sentence": "_____, let's go tomorrow instead.",
+          "options": [
+            "On second thought",
+            "At second thought",
+            "In second thought",
+            "By second thought"
+          ],
+          "answer": "On second thought",
+          "explanation": "\"On second thought\" = pensando melhor. Chunk fixo de reconsideração. Não é \"at\" ou \"in\"."
+        },
+        {
+          "type": "multiple_choice",
+          "sentence": "_____, what matters is being happy.",
+          "options": [
+            "At the end of the day",
+            "In the end of the day",
+            "On end of day",
+            "By the end day"
+          ],
+          "answer": "At the end of the day",
+          "explanation": "\"At the end of the day\" = no fim das contas/em última análise. Chunk de conclusão filosófica. Não é \"in\"."
+        },
+        {
+          "type": "word_bank",
+          "sentence": "_____, the investment will pay off.",
+          "choices": [
+            "In the long run",
+            "In long term",
+            "At long run",
+            "By long run"
+          ],
+          "answer": "In the long run",
+          "explanation": "\"In the long run\" = a longo prazo. Chunk para perspectiva temporal estendida."
+        },
+        {
+          "type": "word_bank",
+          "sentence": "_____, I'll keep working from home.",
+          "choices": [
+            "For the time being",
+            "At the time being",
+            "In time being",
+            "On time being"
+          ],
+          "answer": "For the time being",
+          "explanation": "\"For the time being\" = por enquanto, temporariamente."
+        },
+        {
+          "type": "fill_gap",
+          "sentence": "_____, the project is fine — let's move on.",
+          "hint": "By and large (no geral, em sua maioria)",
+          "answer": "By and large",
+          "explanation": "\"By and large\" = de modo geral. Chunk para resumo qualificado."
+        },
+        {
+          "type": "fill_gap",
+          "sentence": "_____, you're absolutely right.",
+          "hint": "On second thought",
+          "answer": "On second thought",
+          "explanation": "\"On second thought\" — reconsideração. Mudou de ideia."
+        },
+        {
+          "type": "fill_gap",
+          "sentence": "_____, exercise is what makes the difference.",
+          "hint": "In the long run",
+          "answer": "In the long run",
+          "explanation": "\"In the long run\" — perspectiva de longo prazo."
+        },
+        {
+          "type": "fix_error",
+          "sentence": "In the end of the day, it doesn't matter.",
+          "hint": "Preposição é \"at\", não \"in\"",
+          "answer": "At the end of the day, it doesn't matter.",
+          "explanation": "Chunk fixo: \"AT the end of the day\". \"In the end\" funciona como variante mas \"at the end of the day\" é o chunk idiomático."
+        },
+        {
+          "type": "fix_error",
+          "sentence": "By second thought, let's reschedule.",
+          "hint": "\"On second thought\"",
+          "answer": "On second thought, let's reschedule.",
+          "explanation": "Chunk fixo: \"ON second thought\". Outras preposições não funcionam."
+        },
+        {
+          "type": "read_answer",
+          "passage": "On second thought, let's go tomorrow instead. At the end of the day, what matters is being happy. In the long run, the investment will pay off. For the time being, I'll keep working from home.",
+          "question": "What investment outlook does the speaker take?",
+          "answer": "long run (or \"in the long run\" or \"long-term\")",
+          "explanation": "The text says \"In the long run, the investment will pay off\"."
+        }
+      ],
+      "listening_speaking": [
+        {
+          "text": "On second thought, let's wait.",
+          "context": "reconsideration"
+        },
+        {
+          "text": "At the end of the day, family matters most.",
+          "context": "final philosophical"
+        },
+        {
+          "text": "In the long run, it'll be worth it.",
+          "context": "long-term view"
+        },
+        {
+          "text": "For the time being, this works.",
+          "context": "temporary state"
+        },
+        {
+          "text": "By and large, it's fine.",
+          "context": "general qualification"
+        }
+      ],
+      "roleplay": {
+        "scenario": "Charlotte pede que você use 3 chunks idiomáticos diferentes em frases naturais.",
+        "voiced_by": "charlotte",
+        "persona": "Charlotte",
+        "persona_outfit": "charlotte_casual",
+        "time_budget_sec": 180,
+        "opening_line": "Use three idiomatic chunks in sentences — second thought, end of day, long run.",
+        "objectives": [
+          {
+            "id": 1,
+            "label_pt": "On second thought",
+            "label_en": "On second thought",
+            "hidden_prompt": "user uses 'On second thought + clause'",
+            "hint_pt": "On second thought, I'll skip the meeting.",
+            "hint_en": "On second thought, I'll skip the meeting."
+          },
+          {
+            "id": 2,
+            "label_pt": "At the end of the day",
+            "label_en": "At the end of the day",
+            "hidden_prompt": "user uses 'At the end of the day + clause'",
+            "hint_pt": "At the end of the day, health comes first.",
+            "hint_en": "At the end of the day, health comes first."
+          },
+          {
+            "id": 3,
+            "label_pt": "In the long run ou for the time being",
+            "label_en": "In the long run or for the time being",
+            "hidden_prompt": "user uses 'in the long run' or 'for the time being'",
+            "hint_pt": "In the long run, learning English will pay off.",
+            "hint_en": "In the long run, learning English will pay off."
+          }
+        ],
+        "closing_cue": "Charlotte fecha com \"Idiomatic flow!\" quando obj_3 baterem.",
+        "suggested_flow": "**Suggested flow** (referencial, 6 turnos):\n\n1. **Charlotte**: \"Use three idiomatic chunks in sentences — second thought, end of day, long run.\"\n2. **Student**: ~\"On second thought, I'll skip the meeting.\"\n3. **Charlotte**: \"Wise. Philosophical?\"\n4. **Student**: ~\"At the end of the day, health comes first.\"\n5. **Charlotte**: \"Long-term?\"\n6. **Student**: ~\"In the long run, learning English will pay off.\"\n7. **Charlotte**: \"Idiomatic flow!\"",
+        "evaluation_focus": [
+          "Correct preposition for each chunk",
+          "Natural integration",
+          "Variety of contexts"
+        ]
+      },
+      "guided_chat": {
+        "scenario": "Charlotte conversa sobre decisões e prioridades — vocês usam chunks idiomáticos para enfatizar perspectivas.",
+        "voiced_by": "charlotte",
+        "persona": "Charlotte",
+        "persona_outfit": "charlotte_casual",
+        "intro_en": "Charlotte talks priorities. Use idiomatic chunks for emphasis.",
+        "opening_message": "At the end of the day, what truly matters to you?",
+        "objectives": [
+          {
+            "id": 1,
+            "label_pt": "Resposta com chunk idiomático",
+            "label_en": "Response with idiomatic chunk",
+            "hidden_prompt": "user uses 'At the end of the day' or similar chunk",
+            "hint_pt": "At the end of the day, my family is what matters.",
+            "hint_en": "At the end of the day, my family is what matters."
+          },
+          {
+            "id": 2,
+            "label_pt": "Outro chunk em frase",
+            "label_en": "Another chunk in sentence",
+            "hidden_prompt": "user uses another idiomatic chunk",
+            "hint_pt": "In the long run, I want financial freedom.",
+            "hint_en": "In the long run, I want financial freedom."
+          },
+          {
+            "id": 3,
+            "label_pt": "Perguntar à Charlotte",
+            "label_en": "Ask Charlotte",
+            "hidden_prompt": "user asks Charlotte about her priorities",
+            "hint_pt": "What about you?",
+            "hint_en": "What about you?"
+          }
+        ],
+        "closing_cue": "Charlotte fecha com \"Priorities clarified!\" quando obj_3 baterem.",
+        "suggested_script": "**Script** (referencial, 7 turnos):\n\n1. **Charlotte**: \"At the end of the day, what truly matters to you?\"\n2. **Student**: \"At the end of the day, my family is what matters.\"\n3. **Charlotte**: \"Beautiful answer. Long-term?\"\n4. **Student**: \"In the long run, I want financial freedom.\"\n5. **Charlotte**: \"Smart goal.\"\n6. **Student**: \"What about you?\"\n7. **Charlotte**: \"On second thought, the same things. Family and freedom. Priorities clarified!\"\n\n> I05 chat = LLM puro. Scaffold via hint_pt.\n\n---"
+      }
+    }
+  ],
+  "cross_unit_consolidation": [
+    "Look forward to / get used to / object to + -ING (preposição \"to\" + gerúndio)",
+    "Put up with / run out of / get away with (tolerar, esgotar, escapar)",
+    "Get along with / look up to / look down on (relacionamentos)",
+    "Catch up on (coisa) / catch up with (pessoa) / make up for / keep up with / go through with",
+    "Chunks idiomáticos: on second thought, at the end of the day, in the long run, for the time being, by and large",
+    "Diferença \"used to + base\" (costumava) vs \"used to + -ing\" (habituado)"
+  ]
+}
