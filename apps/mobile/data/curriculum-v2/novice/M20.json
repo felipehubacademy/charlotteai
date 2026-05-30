@@ -120,23 +120,28 @@
       "listening_speaking": [
         {
           "text": "You should see a doctor.",
-          "context": "health advice"
+          "context": "health advice",
+          "audio_url": "https://fnvjibzreepubageztoi.supabase.co/storage/v1/object/public/curriculum-audio/ls/a315bb494d97c6cf.flac"
         },
         {
           "text": "She shouldn't work so much.",
-          "context": "negative advice"
+          "context": "negative advice",
+          "audio_url": "https://fnvjibzreepubageztoi.supabase.co/storage/v1/object/public/curriculum-audio/ls/77c918dbbf9f50bd.flac"
         },
         {
           "text": "We should help her.",
-          "context": "group advice"
+          "context": "group advice",
+          "audio_url": "https://fnvjibzreepubageztoi.supabase.co/storage/v1/object/public/curriculum-audio/ls/81acac3b2d29b09a.flac"
         },
         {
           "text": "You should study more.",
-          "context": "study advice"
+          "context": "study advice",
+          "audio_url": "https://fnvjibzreepubageztoi.supabase.co/storage/v1/object/public/curriculum-audio/ls/b318378e76b79416.flac"
         },
         {
           "text": "He shouldn't eat junk food.",
-          "context": "diet advice"
+          "context": "diet advice",
+          "audio_url": "https://fnvjibzreepubageztoi.supabase.co/storage/v1/object/public/curriculum-audio/ls/cb51cac3c64ac231.flac"
         }
       ],
       "roleplay": {
@@ -319,23 +324,28 @@
       "listening_speaking": [
         {
           "text": "I have to work tomorrow.",
-          "context": "own obligation"
+          "context": "own obligation",
+          "audio_url": "https://fnvjibzreepubageztoi.supabase.co/storage/v1/object/public/curriculum-audio/ls/02cce7212ed59c12.flac"
         },
         {
           "text": "She has to leave early.",
-          "context": "3rd person"
+          "context": "3rd person",
+          "audio_url": "https://fnvjibzreepubageztoi.supabase.co/storage/v1/object/public/curriculum-audio/ls/6d422fb9c78a2c53.flac"
         },
         {
           "text": "We have to study.",
-          "context": "plural"
+          "context": "plural",
+          "audio_url": "https://fnvjibzreepubageztoi.supabase.co/storage/v1/object/public/curriculum-audio/ls/8243b1d3ddedb92f.flac"
         },
         {
           "text": "He has to go to the doctor.",
-          "context": "3rd"
+          "context": "3rd",
+          "audio_url": "https://fnvjibzreepubageztoi.supabase.co/storage/v1/object/public/curriculum-audio/ls/277efa343b81c22d.flac"
         },
         {
           "text": "They have to wake up early.",
-          "context": "plural"
+          "context": "plural",
+          "audio_url": "https://fnvjibzreepubageztoi.supabase.co/storage/v1/object/public/curriculum-audio/ls/ddf7ae11870ddabb.flac"
         }
       ],
       "roleplay": {
@@ -516,23 +526,28 @@
       "listening_speaking": [
         {
           "text": "I don't have to work on Sundays.",
-          "context": "own absence"
+          "context": "own absence",
+          "audio_url": "https://fnvjibzreepubageztoi.supabase.co/storage/v1/object/public/curriculum-audio/ls/f1066a7310dd74e0.flac"
         },
         {
           "text": "She doesn't have to come.",
-          "context": "3rd person absence"
+          "context": "3rd person absence",
+          "audio_url": "https://fnvjibzreepubageztoi.supabase.co/storage/v1/object/public/curriculum-audio/ls/250701e4fcb586e7.flac"
         },
         {
           "text": "We don't have to pay.",
-          "context": "plural absence"
+          "context": "plural absence",
+          "audio_url": "https://fnvjibzreepubageztoi.supabase.co/storage/v1/object/public/curriculum-audio/ls/17e90894bfd87727.flac"
         },
         {
           "text": "He doesn't have to wear a tie.",
-          "context": "3rd"
+          "context": "3rd",
+          "audio_url": "https://fnvjibzreepubageztoi.supabase.co/storage/v1/object/public/curriculum-audio/ls/fb6e15cb87248056.flac"
         },
         {
           "text": "You don't have to come if you don't want.",
-          "context": "invitation flexibility"
+          "context": "invitation flexibility",
+          "audio_url": "https://fnvjibzreepubageztoi.supabase.co/storage/v1/object/public/curriculum-audio/ls/b1c55d66b26fd27d.flac"
         }
       ],
       "roleplay": {
@@ -715,23 +730,28 @@
       "listening_speaking": [
         {
           "text": "Should I see a doctor?",
-          "context": "advice request"
+          "context": "advice request",
+          "audio_url": "https://fnvjibzreepubageztoi.supabase.co/storage/v1/object/public/curriculum-audio/ls/08d8804cdd491a48.flac"
         },
         {
           "text": "Should she leave early?",
-          "context": "3rd person"
+          "context": "3rd person",
+          "audio_url": "https://fnvjibzreepubageztoi.supabase.co/storage/v1/object/public/curriculum-audio/ls/c907a902c6c500d5.flac"
         },
         {
           "text": "Do I have to bring my passport?",
-          "context": "obligation Q"
+          "context": "obligation Q",
+          "audio_url": "https://fnvjibzreepubageztoi.supabase.co/storage/v1/object/public/curriculum-audio/ls/fe5da34af120979d.flac"
         },
         {
           "text": "Does she have to study tonight?",
-          "context": "3rd person"
+          "context": "3rd person",
+          "audio_url": "https://fnvjibzreepubageztoi.supabase.co/storage/v1/object/public/curriculum-audio/ls/3795080e3cf7ec6c.flac"
         },
         {
           "text": "Should I help you?",
-          "context": "polite offer"
+          "context": "polite offer",
+          "audio_url": "https://fnvjibzreepubageztoi.supabase.co/storage/v1/object/public/curriculum-audio/ls/5ad479654ab4a434.flac"
         }
       ],
       "roleplay": {
@@ -912,23 +932,28 @@
       "listening_speaking": [
         {
           "text": "You should rest more.",
-          "context": "should (advice)"
+          "context": "should (advice)",
+          "audio_url": "https://fnvjibzreepubageztoi.supabase.co/storage/v1/object/public/curriculum-audio/ls/9d8ebd8346aec379.flac"
         },
         {
           "text": "I have to work tomorrow.",
-          "context": "have to (obligation)"
+          "context": "have to (obligation)",
+          "audio_url": "https://fnvjibzreepubageztoi.supabase.co/storage/v1/object/public/curriculum-audio/ls/02cce7212ed59c12.flac"
         },
         {
           "text": "We need to buy bread.",
-          "context": "need to (necessity)"
+          "context": "need to (necessity)",
+          "audio_url": "https://fnvjibzreepubageztoi.supabase.co/storage/v1/object/public/curriculum-audio/ls/ecd137029d241740.flac"
         },
         {
           "text": "She doesn't have to come.",
-          "context": "don't have to (optional)"
+          "context": "don't have to (optional)",
+          "audio_url": "https://fnvjibzreepubageztoi.supabase.co/storage/v1/object/public/curriculum-audio/ls/250701e4fcb586e7.flac"
         },
         {
           "text": "You shouldn't worry so much.",
-          "context": "shouldn't (negative advice)"
+          "context": "shouldn't (negative advice)",
+          "audio_url": "https://fnvjibzreepubageztoi.supabase.co/storage/v1/object/public/curriculum-audio/ls/2e9cabf5699e448f.flac"
         }
       ],
       "roleplay": {

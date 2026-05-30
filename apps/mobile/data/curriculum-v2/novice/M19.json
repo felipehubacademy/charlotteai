@@ -121,23 +121,28 @@
       "listening_speaking": [
         {
           "text": "I think it will rain.",
-          "context": "weather prediction"
+          "context": "weather prediction",
+          "audio_url": "https://fnvjibzreepubageztoi.supabase.co/storage/v1/object/public/curriculum-audio/ls/7018b788fdb73bde.flac"
         },
         {
           "text": "She will probably come.",
-          "context": "probability"
+          "context": "probability",
+          "audio_url": "https://fnvjibzreepubageztoi.supabase.co/storage/v1/object/public/curriculum-audio/ls/d814890bbc25fa39.flac"
         },
         {
           "text": "They will win the game.",
-          "context": "confident prediction"
+          "context": "confident prediction",
+          "audio_url": "https://fnvjibzreepubageztoi.supabase.co/storage/v1/object/public/curriculum-audio/ls/3377db66e192ee9f.flac"
         },
         {
           "text": "It will be a great year.",
-          "context": "positive prediction"
+          "context": "positive prediction",
+          "audio_url": "https://fnvjibzreepubageztoi.supabase.co/storage/v1/object/public/curriculum-audio/ls/3bfd01742c858891.flac"
         },
         {
           "text": "I think she'll love it.",
-          "context": "contracted (she'll)"
+          "context": "contracted (she'll)",
+          "audio_url": "https://fnvjibzreepubageztoi.supabase.co/storage/v1/object/public/curriculum-audio/ls/c00ea3b72285e78e.flac"
         }
       ],
       "roleplay": {
@@ -318,23 +323,28 @@
       "listening_speaking": [
         {
           "text": "I'll help you.",
-          "context": "spontaneous decision"
+          "context": "spontaneous decision",
+          "audio_url": "https://fnvjibzreepubageztoi.supabase.co/storage/v1/object/public/curriculum-audio/ls/d3c0242c36fbc667.flac"
         },
         {
           "text": "She won't come.",
-          "context": "negative"
+          "context": "negative",
+          "audio_url": "https://fnvjibzreepubageztoi.supabase.co/storage/v1/object/public/curriculum-audio/ls/e85cc3a0a8b553a8.flac"
         },
         {
           "text": "I'll call you tonight.",
-          "context": "promise"
+          "context": "promise",
+          "audio_url": "https://fnvjibzreepubageztoi.supabase.co/storage/v1/object/public/curriculum-audio/ls/9641eb5e1471cc33.flac"
         },
         {
           "text": "He won't tell anyone.",
-          "context": "negative promise"
+          "context": "negative promise",
+          "audio_url": "https://fnvjibzreepubageztoi.supabase.co/storage/v1/object/public/curriculum-audio/ls/b059f733876c37c6.flac"
         },
         {
           "text": "I'll get it!",
-          "context": "spontaneous (answering door/phone)"
+          "context": "spontaneous (answering door/phone)",
+          "audio_url": "https://fnvjibzreepubageztoi.supabase.co/storage/v1/object/public/curriculum-audio/ls/37a527ae7e54c70c.flac"
         }
       ],
       "roleplay": {
@@ -517,23 +527,28 @@
       "listening_speaking": [
         {
           "text": "I'm going to travel tomorrow.",
-          "context": "planned"
+          "context": "planned",
+          "audio_url": "https://fnvjibzreepubageztoi.supabase.co/storage/v1/object/public/curriculum-audio/ls/51fd377d49d70b5e.flac"
         },
         {
           "text": "I'll get the door!",
-          "context": "spontaneous"
+          "context": "spontaneous",
+          "audio_url": "https://fnvjibzreepubageztoi.supabase.co/storage/v1/object/public/curriculum-audio/ls/f38b64c136fc1385.flac"
         },
         {
           "text": "I think she'll love it.",
-          "context": "prediction"
+          "context": "prediction",
+          "audio_url": "https://fnvjibzreepubageztoi.supabase.co/storage/v1/object/public/curriculum-audio/ls/c00ea3b72285e78e.flac"
         },
         {
           "text": "Look at the clouds — it's going to rain.",
-          "context": "visible evidence"
+          "context": "visible evidence",
+          "audio_url": "https://fnvjibzreepubageztoi.supabase.co/storage/v1/object/public/curriculum-audio/ls/45a7694881fbe03b.flac"
         },
         {
           "text": "Oh, I forgot — I'll go back.",
-          "context": "spontaneous reaction"
+          "context": "spontaneous reaction",
+          "audio_url": "https://fnvjibzreepubageztoi.supabase.co/storage/v1/object/public/curriculum-audio/ls/0c94f0362fe12091.flac"
         }
       ],
       "roleplay": {
@@ -646,15 +661,15 @@
         },
         {
           "type": "word_bank",
-          "sentence": "_____ I open the window?",
+          "sentence": "I _____ help you with that.",
           "choices": [
-            "Shall",
-            "Will",
-            "Are",
-            "Do"
+            "will",
+            "am",
+            "do",
+            "'m going"
           ],
-          "answer": "Shall",
-          "explanation": "\"Shall I + base?\" — oferta polida (mais britânica). Equivale a \"Should I open the window?\"."
+          "answer": "will",
+          "explanation": "Oferta espontânea: \"I will help\" — decisão no momento de ajudar. \"I'll help\" também."
         },
         {
           "type": "word_bank",
@@ -714,23 +729,27 @@
       "listening_speaking": [
         {
           "text": "Will you help me?",
-          "context": "polite request"
+          "context": "polite request",
+          "audio_url": "https://fnvjibzreepubageztoi.supabase.co/storage/v1/object/public/curriculum-audio/ls/5b207a270885703d.flac"
         },
         {
           "text": "I'll pay for this.",
-          "context": "offer"
+          "context": "offer",
+          "audio_url": "https://fnvjibzreepubageztoi.supabase.co/storage/v1/object/public/curriculum-audio/ls/f42aae928f524ed1.flac"
         },
         {
-          "text": "Shall I open the window?",
-          "context": "polite offer"
+          "text": "I'll help you with that.",
+          "context": "spontaneous offer"
         },
         {
           "text": "I promise I'll be on time.",
-          "context": "formal promise"
+          "context": "formal promise",
+          "audio_url": "https://fnvjibzreepubageztoi.supabase.co/storage/v1/object/public/curriculum-audio/ls/2788a6bc7e5f23e7.flac"
         },
         {
           "text": "I'll get you a coffee.",
-          "context": "spontaneous offer"
+          "context": "spontaneous offer",
+          "audio_url": "https://fnvjibzreepubageztoi.supabase.co/storage/v1/object/public/curriculum-audio/ls/a89f34a81938732f.flac"
         }
       ],
       "roleplay": {
@@ -911,23 +930,28 @@
       "listening_speaking": [
         {
           "text": "I'm going to study tonight.",
-          "context": "plan"
+          "context": "plan",
+          "audio_url": "https://fnvjibzreepubageztoi.supabase.co/storage/v1/object/public/curriculum-audio/ls/421837db4f58117a.flac"
         },
         {
           "text": "I think it will rain.",
-          "context": "prediction"
+          "context": "prediction",
+          "audio_url": "https://fnvjibzreepubageztoi.supabase.co/storage/v1/object/public/curriculum-audio/ls/7018b788fdb73bde.flac"
         },
         {
           "text": "I'll help you tomorrow.",
-          "context": "promise"
+          "context": "promise",
+          "audio_url": "https://fnvjibzreepubageztoi.supabase.co/storage/v1/object/public/curriculum-audio/ls/f1923cb880f3e17f.flac"
         },
         {
           "text": "She won't come.",
-          "context": "negative"
+          "context": "negative",
+          "audio_url": "https://fnvjibzreepubageztoi.supabase.co/storage/v1/object/public/curriculum-audio/ls/e85cc3a0a8b553a8.flac"
         },
         {
           "text": "Will you join us?",
-          "context": "invitation"
+          "context": "invitation",
+          "audio_url": "https://fnvjibzreepubageztoi.supabase.co/storage/v1/object/public/curriculum-audio/ls/277f6f717f5dc887.flac"
         }
       ],
       "roleplay": {

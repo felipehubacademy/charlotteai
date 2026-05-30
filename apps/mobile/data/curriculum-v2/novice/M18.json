@@ -119,23 +119,28 @@
       "listening_speaking": [
         {
           "text": "I'm going to travel next week.",
-          "context": "own plan"
+          "context": "own plan",
+          "audio_url": "https://fnvjibzreepubageztoi.supabase.co/storage/v1/object/public/curriculum-audio/ls/1df790f933410879.flac"
         },
         {
           "text": "She is going to visit her sister.",
-          "context": "3rd person plan"
+          "context": "3rd person plan",
+          "audio_url": "https://fnvjibzreepubageztoi.supabase.co/storage/v1/object/public/curriculum-audio/ls/68d715e7888195bb.flac"
         },
         {
           "text": "We're going to eat out tonight.",
-          "context": "plural plan"
+          "context": "plural plan",
+          "audio_url": "https://fnvjibzreepubageztoi.supabase.co/storage/v1/object/public/curriculum-audio/ls/8bf741043d868216.flac"
         },
         {
           "text": "He's going to start a new job.",
-          "context": "career plan"
+          "context": "career plan",
+          "audio_url": "https://fnvjibzreepubageztoi.supabase.co/storage/v1/object/public/curriculum-audio/ls/bc041b1751c62155.flac"
         },
         {
           "text": "They're going to move next month.",
-          "context": "long-term plan"
+          "context": "long-term plan",
+          "audio_url": "https://fnvjibzreepubageztoi.supabase.co/storage/v1/object/public/curriculum-audio/ls/2f28a7b41887550a.flac"
         }
       ],
       "roleplay": {
@@ -316,23 +321,28 @@
       "listening_speaking": [
         {
           "text": "I'm not going to work tomorrow.",
-          "context": "own negative plan"
+          "context": "own negative plan",
+          "audio_url": "https://fnvjibzreepubageztoi.supabase.co/storage/v1/object/public/curriculum-audio/ls/300ffff66f158738.flac"
         },
         {
           "text": "She isn't going to travel.",
-          "context": "3rd person negative"
+          "context": "3rd person negative",
+          "audio_url": "https://fnvjibzreepubageztoi.supabase.co/storage/v1/object/public/curriculum-audio/ls/fe5d1f1915690a0b.flac"
         },
         {
           "text": "We aren't going to eat out.",
-          "context": "plural negative"
+          "context": "plural negative",
+          "audio_url": "https://fnvjibzreepubageztoi.supabase.co/storage/v1/object/public/curriculum-audio/ls/fca88e9051fea297.flac"
         },
         {
           "text": "He isn't going to call.",
-          "context": "3rd negative"
+          "context": "3rd negative",
+          "audio_url": "https://fnvjibzreepubageztoi.supabase.co/storage/v1/object/public/curriculum-audio/ls/fdc5e18f9ca5464b.flac"
         },
         {
           "text": "They aren't going to leave.",
-          "context": "plural negative"
+          "context": "plural negative",
+          "audio_url": "https://fnvjibzreepubageztoi.supabase.co/storage/v1/object/public/curriculum-audio/ls/5f8d84a58edde87c.flac"
         }
       ],
       "roleplay": {
@@ -515,19 +525,23 @@
       "listening_speaking": [
         {
           "text": "Are you going to travel?",
-          "context": "direct question"
+          "context": "direct question",
+          "audio_url": "https://fnvjibzreepubageztoi.supabase.co/storage/v1/object/public/curriculum-audio/ls/ae18efac02237ef5.flac"
         },
         {
           "text": "Is she going to come?",
-          "context": "3rd person Q"
+          "context": "3rd person Q",
+          "audio_url": "https://fnvjibzreepubageztoi.supabase.co/storage/v1/object/public/curriculum-audio/ls/42bc2080b784f6fa.flac"
         },
         {
           "text": "Are they going to move?",
-          "context": "plural Q"
+          "context": "plural Q",
+          "audio_url": "https://fnvjibzreepubageztoi.supabase.co/storage/v1/object/public/curriculum-audio/ls/9662dc4be259df09.flac"
         },
         {
           "text": "What are you going to do?",
-          "context": "WH Q"
+          "context": "WH Q",
+          "audio_url": "https://fnvjibzreepubageztoi.supabase.co/storage/v1/object/public/curriculum-audio/ls/01cac1d60e5456dd.flac"
         },
         {
           "text": "Yes, I am. No, I'm not.",
@@ -713,23 +727,28 @@
       "listening_speaking": [
         {
           "text": "I'm going to travel tomorrow.",
-          "context": "tomorrow"
+          "context": "tomorrow",
+          "audio_url": "https://fnvjibzreepubageztoi.supabase.co/storage/v1/object/public/curriculum-audio/ls/51fd377d49d70b5e.flac"
         },
         {
           "text": "She's going to start next week.",
-          "context": "next week"
+          "context": "next week",
+          "audio_url": "https://fnvjibzreepubageztoi.supabase.co/storage/v1/object/public/curriculum-audio/ls/23d41a159fe9f924.flac"
         },
         {
           "text": "We're going to meet on Friday.",
-          "context": "on Friday"
+          "context": "on Friday",
+          "audio_url": "https://fnvjibzreepubageztoi.supabase.co/storage/v1/object/public/curriculum-audio/ls/e35b9bbf4c777966.flac"
         },
         {
           "text": "He's going to call soon.",
-          "context": "soon"
+          "context": "soon",
+          "audio_url": "https://fnvjibzreepubageztoi.supabase.co/storage/v1/object/public/curriculum-audio/ls/0e43635fb0d81797.flac"
         },
         {
           "text": "I'm going to see her in two days.",
-          "context": "in X days"
+          "context": "in X days",
+          "audio_url": "https://fnvjibzreepubageztoi.supabase.co/storage/v1/object/public/curriculum-audio/ls/fb38413d00dbea79.flac"
         }
       ],
       "roleplay": {
@@ -910,23 +929,28 @@
       "listening_speaking": [
         {
           "text": "I'm going to travel tomorrow.",
-          "context": "positive"
+          "context": "positive",
+          "audio_url": "https://fnvjibzreepubageztoi.supabase.co/storage/v1/object/public/curriculum-audio/ls/51fd377d49d70b5e.flac"
         },
         {
           "text": "She isn't going to work.",
-          "context": "negative"
+          "context": "negative",
+          "audio_url": "https://fnvjibzreepubageztoi.supabase.co/storage/v1/object/public/curriculum-audio/ls/ac01f2c28879140a.flac"
         },
         {
           "text": "Are you going to come?",
-          "context": "question"
+          "context": "question",
+          "audio_url": "https://fnvjibzreepubageztoi.supabase.co/storage/v1/object/public/curriculum-audio/ls/0905477bb3195c93.flac"
         },
         {
           "text": "What are you going to do?",
-          "context": "WH"
+          "context": "WH",
+          "audio_url": "https://fnvjibzreepubageztoi.supabase.co/storage/v1/object/public/curriculum-audio/ls/01cac1d60e5456dd.flac"
         },
         {
           "text": "Next week I'm going to start a new job.",
-          "context": "time marker + plan"
+          "context": "time marker + plan",
+          "audio_url": "https://fnvjibzreepubageztoi.supabase.co/storage/v1/object/public/curriculum-audio/ls/89d6f9dd0eab5f05.flac"
         }
       ],
       "roleplay": {

@@ -534,10 +534,10 @@
    **Answer**: 'll
    **Explanation**: Oferta espontânea: "I'll pay" = "Eu pago" (decisão na hora).
 
-3. **word_bank** — "_____ I open the window?"
-   **Choices**: Shall / Will / Are / Do
-   **Answer**: Shall
-   **Explanation**: "Shall I + base?" — oferta polida (mais britânica). Equivale a "Should I open the window?".
+3. **word_bank** — "I _____ help you with that."
+   **Choices**: will / am / do / 'm going
+   **Answer**: will
+   **Explanation**: Oferta espontânea: "I will help" — decisão no momento de ajudar. "I'll help" também.
 
 4. **word_bank** — "I promise I _____ be on time."
    **Choices**: will / 'm going / am / do
@@ -579,7 +579,7 @@
 
 1. **"Will you help me?"** — polite request
 2. **"I'll pay for this."** — offer
-3. **"Shall I open the window?"** — polite offer
+3. **"I'll help you with that."** — spontaneous offer
 4. **"I promise I'll be on time."** — formal promise
 5. **"I'll get you a coffee."** — spontaneous offer
 
