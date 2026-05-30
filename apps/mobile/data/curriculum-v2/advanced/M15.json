@@ -92,23 +92,28 @@
       "listening_speaking": [
         {
           "text": "The protests brought about real change.",
-          "context": "bring about = cause"
+          "context": "bring about = cause",
+          "audio_url": "https://fnvjibzreepubageztoi.supabase.co/storage/v1/object/public/curriculum-audio/ls/advanced/6864192d3381b5d3.flac"
         },
         {
           "text": "It took ten minutes to bring her round.",
-          "context": "bring round = revive"
+          "context": "bring round = revive",
+          "audio_url": "https://fnvjibzreepubageztoi.supabase.co/storage/v1/object/public/curriculum-audio/ls/advanced/5f6cb6995be00197.flac"
         },
         {
           "text": "He came round to my idea eventually.",
-          "context": "come round = change mind"
+          "context": "come round = change mind",
+          "audio_url": "https://fnvjibzreepubageztoi.supabase.co/storage/v1/object/public/curriculum-audio/ls/advanced/517b0bc6a9c247eb.flac"
         },
         {
           "text": "Why don't you come round on Saturday?",
-          "context": "come round = visit"
+          "context": "come round = visit",
+          "audio_url": "https://fnvjibzreepubageztoi.supabase.co/storage/v1/object/public/curriculum-audio/ls/advanced/fbee3c8dda8808f0.flac"
         },
         {
           "text": "I'll bring her round to the proposal.",
-          "context": "bring round = persuade"
+          "context": "bring round = persuade",
+          "audio_url": "https://fnvjibzreepubageztoi.supabase.co/storage/v1/object/public/curriculum-audio/ls/advanced/991c20f01a75471f.flac"
         }
       ],
       "roleplay": {
@@ -237,23 +242,28 @@
       "listening_speaking": [
         {
           "text": "The article glossed over the cost.",
-          "context": "downplaying"
+          "context": "downplaying",
+          "audio_url": "https://fnvjibzreepubageztoi.supabase.co/storage/v1/object/public/curriculum-audio/ls/advanced/01698f4a8170e46b.flac"
         },
         {
           "text": "Issues keep cropping up.",
-          "context": "recurring problems"
+          "context": "recurring problems",
+          "audio_url": "https://fnvjibzreepubageztoi.supabase.co/storage/v1/object/public/curriculum-audio/ls/advanced/7b11b1d788d10766.flac"
         },
         {
           "text": "She was singled out for praise.",
-          "context": "positive highlight"
+          "context": "positive highlight",
+          "audio_url": "https://fnvjibzreepubageztoi.supabase.co/storage/v1/object/public/curriculum-audio/ls/advanced/b05904c66db8a1fa.flac"
         },
         {
           "text": "He was singled out for blame.",
-          "context": "negative highlight"
+          "context": "negative highlight",
+          "audio_url": "https://fnvjibzreepubageztoi.supabase.co/storage/v1/object/public/curriculum-audio/ls/advanced/4a17bd2fa074452d.flac"
         },
         {
           "text": "The same names crop up again and again.",
-          "context": "recurring appearance"
+          "context": "recurring appearance",
+          "audio_url": "https://fnvjibzreepubageztoi.supabase.co/storage/v1/object/public/curriculum-audio/ls/advanced/dcd4fbb0d24a1496.flac"
         }
       ],
       "roleplay": {
@@ -382,23 +392,28 @@
       "listening_speaking": [
         {
           "text": "The sequel didn't live up to the original.",
-          "context": "meet expectation"
+          "context": "meet expectation",
+          "audio_url": "https://fnvjibzreepubageztoi.supabase.co/storage/v1/object/public/curriculum-audio/ls/advanced/a835926c07e954a7.flac"
         },
         {
           "text": "The deal fell through at the last minute.",
-          "context": "plans collapsed"
+          "context": "plans collapsed",
+          "audio_url": "https://fnvjibzreepubageztoi.supabase.co/storage/v1/object/public/curriculum-audio/ls/advanced/3b2b145f06b1c3ed.flac"
         },
         {
           "text": "Let's iron out the details.",
-          "context": "resolve issues"
+          "context": "resolve issues",
+          "audio_url": "https://fnvjibzreepubageztoi.supabase.co/storage/v1/object/public/curriculum-audio/ls/advanced/9cf6652694a83a08.flac"
         },
         {
           "text": "A loan tided us over for three months.",
-          "context": "temporary sustain"
+          "context": "temporary sustain",
+          "audio_url": "https://fnvjibzreepubageztoi.supabase.co/storage/v1/object/public/curriculum-audio/ls/advanced/df8f098234bfaef7.flac"
         },
         {
           "text": "He's hard to live up to.",
-          "context": "high standard"
+          "context": "high standard",
+          "audio_url": "https://fnvjibzreepubageztoi.supabase.co/storage/v1/object/public/curriculum-audio/ls/advanced/508acbe4f43827ba.flac"
         }
       ],
       "roleplay": {
@@ -527,23 +542,28 @@
       "listening_speaking": [
         {
           "text": "He talks down to everyone.",
-          "context": "patronising behaviour"
+          "context": "patronising behaviour",
+          "audio_url": "https://fnvjibzreepubageztoi.supabase.co/storage/v1/object/public/curriculum-audio/ls/advanced/4f810119bb726764.flac"
         },
         {
           "text": "The argument wore me down.",
-          "context": "gradual exhaustion"
+          "context": "gradual exhaustion",
+          "audio_url": "https://fnvjibzreepubageztoi.supabase.co/storage/v1/object/public/curriculum-audio/ls/advanced/fd01984a30fe46a6.flac"
         },
         {
           "text": "I can't shake off this cold.",
-          "context": "illness lingering"
+          "context": "illness lingering",
+          "audio_url": "https://fnvjibzreepubageztoi.supabase.co/storage/v1/object/public/curriculum-audio/ls/advanced/7f11ee19407bcb73.flac"
         },
         {
           "text": "Her predictions were borne out by the data.",
-          "context": "confirmation"
+          "context": "confirmation",
+          "audio_url": "https://fnvjibzreepubageztoi.supabase.co/storage/v1/object/public/curriculum-audio/ls/advanced/01961d245d68311a.flac"
         },
         {
           "text": "She shook off the criticism quickly.",
-          "context": "recovery from attack"
+          "context": "recovery from attack",
+          "audio_url": "https://fnvjibzreepubageztoi.supabase.co/storage/v1/object/public/curriculum-audio/ls/advanced/d852e55dac932476.flac"
         }
       ],
       "roleplay": {
@@ -669,23 +689,28 @@
       "listening_speaking": [
         {
           "text": "The issue stems from a misunderstanding.",
-          "context": "origin"
+          "context": "origin",
+          "audio_url": "https://fnvjibzreepubageztoi.supabase.co/storage/v1/object/public/curriculum-audio/ls/advanced/b08c81733a89df0d.flac"
         },
         {
           "text": "It amounts to a small but real change.",
-          "context": "equivalence"
+          "context": "equivalence",
+          "audio_url": "https://fnvjibzreepubageztoi.supabase.co/storage/v1/object/public/curriculum-audio/ls/advanced/b11c6ffd02076deb.flac"
         },
         {
           "text": "The proposal got watered down.",
-          "context": "weakening"
+          "context": "weakening",
+          "audio_url": "https://fnvjibzreepubageztoi.supabase.co/storage/v1/object/public/curriculum-audio/ls/advanced/65af43c2a8920bf2.flac"
         },
         {
           "text": "He passed it off as a joke.",
-          "context": "pretending"
+          "context": "pretending",
+          "audio_url": "https://fnvjibzreepubageztoi.supabase.co/storage/v1/object/public/curriculum-audio/ls/advanced/59318eaaf2e5df61.flac"
         },
         {
           "text": "All the work stemmed from one early decision.",
-          "context": "single origin"
+          "context": "single origin",
+          "audio_url": "https://fnvjibzreepubageztoi.supabase.co/storage/v1/object/public/curriculum-audio/ls/advanced/b3534530599964a2.flac"
         }
       ],
       "roleplay": {

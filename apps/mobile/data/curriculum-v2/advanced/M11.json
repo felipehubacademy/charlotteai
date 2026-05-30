@@ -87,23 +87,28 @@
       "listening_speaking": [
         {
           "text": "She's assertive, not aggressive.",
-          "context": "positive reframe"
+          "context": "positive reframe",
+          "audio_url": "https://fnvjibzreepubageztoi.supabase.co/storage/v1/object/public/curriculum-audio/ls/advanced/8bd9da1bc96947b4.flac"
         },
         {
           "text": "He's ambitious — driven, not ruthless.",
-          "context": "positive nuance"
+          "context": "positive nuance",
+          "audio_url": "https://fnvjibzreepubageztoi.supabase.co/storage/v1/object/public/curriculum-audio/ls/advanced/3916999d7b2c02c5.flac"
         },
         {
           "text": "I'd call her thrifty, not stingy.",
-          "context": "defending the trait"
+          "context": "defending the trait",
+          "audio_url": "https://fnvjibzreepubageztoi.supabase.co/storage/v1/object/public/curriculum-audio/ls/advanced/d667bba011c201a4.flac"
         },
         {
           "text": "He's confident, bordering on cocky.",
-          "context": "naming the line"
+          "context": "naming the line",
+          "audio_url": "https://fnvjibzreepubageztoi.supabase.co/storage/v1/object/public/curriculum-audio/ls/advanced/fe55311ae5079768.flac"
         },
         {
           "text": "She's careful, not timid.",
-          "context": "distinguishing trait from flaw"
+          "context": "distinguishing trait from flaw",
+          "audio_url": "https://fnvjibzreepubageztoi.supabase.co/storage/v1/object/public/curriculum-audio/ls/advanced/876e7e5bc754e2b6.flac"
         }
       ],
       "roleplay": {
@@ -228,23 +233,28 @@
       "listening_speaking": [
         {
           "text": "The meeting will commence at ten.",
-          "context": "formal \"start\""
+          "context": "formal \"start\"",
+          "audio_url": "https://fnvjibzreepubageztoi.supabase.co/storage/v1/object/public/curriculum-audio/ls/advanced/f9ab3017e76b5f1d.flac"
         },
         {
           "text": "Please inquire at reception.",
-          "context": "formal \"ask\""
+          "context": "formal \"ask\"",
+          "audio_url": "https://fnvjibzreepubageztoi.supabase.co/storage/v1/object/public/curriculum-audio/ls/advanced/fa2b25a63e100c08.flac"
         },
         {
           "text": "We need to ascertain the cause.",
-          "context": "formal \"find out\""
+          "context": "formal \"find out\"",
+          "audio_url": "https://fnvjibzreepubageztoi.supabase.co/storage/v1/object/public/curriculum-audio/ls/advanced/e6da35ae40ada6ca.flac"
         },
         {
           "text": "The report will demonstrate the findings.",
-          "context": "formal \"show\""
+          "context": "formal \"show\"",
+          "audio_url": "https://fnvjibzreepubageztoi.supabase.co/storage/v1/object/public/curriculum-audio/ls/advanced/2e711982304250b6.flac"
         },
         {
           "text": "The launch was postponed indefinitely.",
-          "context": "formal \"put off\""
+          "context": "formal \"put off\"",
+          "audio_url": "https://fnvjibzreepubageztoi.supabase.co/storage/v1/object/public/curriculum-audio/ls/advanced/2c13bd728de33cb0.flac"
         }
       ],
       "roleplay": {
@@ -372,23 +382,28 @@
       "listening_speaking": [
         {
           "text": "My grandfather passed away last year.",
-          "context": "death euphemism"
+          "context": "death euphemism",
+          "audio_url": "https://fnvjibzreepubageztoi.supabase.co/storage/v1/object/public/curriculum-audio/ls/advanced/d418d372aa22c8df.flac"
         },
         {
           "text": "He's been between jobs for a while.",
-          "context": "unemployment euphemism"
+          "context": "unemployment euphemism",
+          "audio_url": "https://fnvjibzreepubageztoi.supabase.co/storage/v1/object/public/curriculum-audio/ls/advanced/ae860926815b192d.flac"
         },
         {
           "text": "She was let go in the layoffs.",
-          "context": "firing euphemism"
+          "context": "firing euphemism",
+          "audio_url": "https://fnvjibzreepubageztoi.supabase.co/storage/v1/object/public/curriculum-audio/ls/advanced/f489f7b3b78fe37e.flac"
         },
         {
           "text": "We sell pre-owned vehicles.",
-          "context": "used-goods euphemism"
+          "context": "used-goods euphemism",
+          "audio_url": "https://fnvjibzreepubageztoi.supabase.co/storage/v1/object/public/curriculum-audio/ls/advanced/b06a35d0da1c5ba2.flac"
         },
         {
           "text": "He's no longer with the company.",
-          "context": "fired/quit ambiguous euphemism"
+          "context": "fired/quit ambiguous euphemism",
+          "audio_url": "https://fnvjibzreepubageztoi.supabase.co/storage/v1/object/public/curriculum-audio/ls/advanced/ff2e99383b468b75.flac"
         }
       ],
       "roleplay": {
@@ -515,23 +530,28 @@
       "listening_speaking": [
         {
           "text": "Not bad — actually pretty good.",
-          "context": "basic litotes"
+          "context": "basic litotes",
+          "audio_url": "https://fnvjibzreepubageztoi.supabase.co/storage/v1/object/public/curriculum-audio/ls/advanced/8bd88288a5932604.flac"
         },
         {
           "text": "That's no small feat.",
-          "context": "significant accomplishment"
+          "context": "significant accomplishment",
+          "audio_url": "https://fnvjibzreepubageztoi.supabase.co/storage/v1/object/public/curriculum-audio/ls/advanced/f33d6d9d8a99adb6.flac"
         },
         {
           "text": "I wouldn't say no to coffee.",
-          "context": "polite acceptance"
+          "context": "polite acceptance",
+          "audio_url": "https://fnvjibzreepubageztoi.supabase.co/storage/v1/object/public/curriculum-audio/ls/advanced/f012a541be98e831.flac"
         },
         {
           "text": "He's not exactly modest.",
-          "context": "quite the opposite"
+          "context": "quite the opposite",
+          "audio_url": "https://fnvjibzreepubageztoi.supabase.co/storage/v1/object/public/curriculum-audio/ls/advanced/d9ceb134eec8684a.flac"
         },
         {
           "text": "It's not without its problems.",
-          "context": "has problems"
+          "context": "has problems",
+          "audio_url": "https://fnvjibzreepubageztoi.supabase.co/storage/v1/object/public/curriculum-audio/ls/advanced/29ac508060d507db.flac"
         }
       ],
       "roleplay": {
@@ -653,23 +673,28 @@
       "listening_speaking": [
         {
           "text": "I would respectfully propose...",
-          "context": "formal-corporate"
+          "context": "formal-corporate",
+          "audio_url": "https://fnvjibzreepubageztoi.supabase.co/storage/v1/object/public/curriculum-audio/ls/advanced/aad6051839308eb1.flac"
         },
         {
           "text": "We need to push this back.",
-          "context": "casual-team"
+          "context": "casual-team",
+          "audio_url": "https://fnvjibzreepubageztoi.supabase.co/storage/v1/object/public/curriculum-audio/ls/advanced/90ab0bfdc6083fc7.flac"
         },
         {
           "text": "Let's revisit this.",
-          "context": "neutral-professional"
+          "context": "neutral-professional",
+          "audio_url": "https://fnvjibzreepubageztoi.supabase.co/storage/v1/object/public/curriculum-audio/ls/advanced/42ecf845b4ae5f1b.flac"
         },
         {
           "text": "I'm just gonna be straight with you.",
-          "context": "informal-direct"
+          "context": "informal-direct",
+          "audio_url": "https://fnvjibzreepubageztoi.supabase.co/storage/v1/object/public/curriculum-audio/ls/advanced/f9da2849e8f1ee77.flac"
         },
         {
           "text": "With all due respect...",
-          "context": "formal-disagreement opener"
+          "context": "formal-disagreement opener",
+          "audio_url": "https://fnvjibzreepubageztoi.supabase.co/storage/v1/object/public/curriculum-audio/ls/advanced/4da27c13a3399df5.flac"
         }
       ],
       "roleplay": {

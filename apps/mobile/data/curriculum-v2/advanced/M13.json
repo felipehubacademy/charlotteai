@@ -87,23 +87,28 @@
       "listening_speaking": [
         {
           "text": "The case for action is clear.",
-          "context": "opener framing"
+          "context": "opener framing",
+          "audio_url": "https://fnvjibzreepubageztoi.supabase.co/storage/v1/object/public/curriculum-audio/ls/advanced/9287b5576add9092.flac"
         },
         {
           "text": "First, the evidence is overwhelming.",
-          "context": "numbered start"
+          "context": "numbered start",
+          "audio_url": "https://fnvjibzreepubageztoi.supabase.co/storage/v1/object/public/curriculum-audio/ls/advanced/f52573485f77fd86.flac"
         },
         {
           "text": "Most importantly, lives are at stake.",
-          "context": "climax"
+          "context": "climax",
+          "audio_url": "https://fnvjibzreepubageztoi.supabase.co/storage/v1/object/public/curriculum-audio/ls/advanced/63824a827888a22f.flac"
         },
         {
           "text": "The evidence is unambiguous.",
-          "context": "summative close"
+          "context": "summative close",
+          "audio_url": "https://fnvjibzreepubageztoi.supabase.co/storage/v1/object/public/curriculum-audio/ls/advanced/6f284240481346c4.flac"
         },
         {
           "text": "Three points stand out.",
-          "context": "preview structure"
+          "context": "preview structure",
+          "audio_url": "https://fnvjibzreepubageztoi.supabase.co/storage/v1/object/public/curriculum-audio/ls/advanced/22cfa2aebbcfa441.flac"
         }
       ],
       "roleplay": {
@@ -233,23 +238,28 @@
       "listening_speaking": [
         {
           "text": "Some may object that the cost is too high.",
-          "context": "opening objection"
+          "context": "opening objection",
+          "audio_url": "https://fnvjibzreepubageztoi.supabase.co/storage/v1/object/public/curriculum-audio/ls/advanced/98e153d794974c2d.flac"
         },
         {
           "text": "Critics might argue... but this overlooks...",
-          "context": "naming + diagnosing"
+          "context": "naming + diagnosing",
+          "audio_url": "https://fnvjibzreepubageztoi.supabase.co/storage/v1/object/public/curriculum-audio/ls/advanced/dc4819fe0e77d38f.flac"
         },
         {
           "text": "It would be a mistake to assume...",
-          "context": "pre-emptive rebuttal"
+          "context": "pre-emptive rebuttal",
+          "audio_url": "https://fnvjibzreepubageztoi.supabase.co/storage/v1/object/public/curriculum-audio/ls/advanced/f648f5a107f9a2cd.flac"
         },
         {
           "text": "This concern, while understandable, is unfounded.",
-          "context": "softening before refuting"
+          "context": "softening before refuting",
+          "audio_url": "https://fnvjibzreepubageztoi.supabase.co/storage/v1/object/public/curriculum-audio/ls/advanced/fb66c47188f0a708.flac"
         },
         {
           "text": "The deeper question is...",
-          "context": "reframing past the objection"
+          "context": "reframing past the objection",
+          "audio_url": "https://fnvjibzreepubageztoi.supabase.co/storage/v1/object/public/curriculum-audio/ls/advanced/2e0de4b9d7a68948.flac"
         }
       ],
       "roleplay": {
@@ -379,23 +389,28 @@
       "listening_speaking": [
         {
           "text": "We came, we saw, we conquered.",
-          "context": "tricolon classic"
+          "context": "tricolon classic",
+          "audio_url": "https://fnvjibzreepubageztoi.supabase.co/storage/v1/object/public/curriculum-audio/ls/advanced/da7f4e143599d31a.flac"
         },
         {
           "text": "Of the people, by the people, for the people.",
-          "context": "anaphora + tricolon"
+          "context": "anaphora + tricolon",
+          "audio_url": "https://fnvjibzreepubageztoi.supabase.co/storage/v1/object/public/curriculum-audio/ls/advanced/9ae74b35d38b29b7.flac"
         },
         {
           "text": "Ask not what X can do for you — ask what you can do for X.",
-          "context": "antithesis"
+          "context": "antithesis",
+          "audio_url": "https://fnvjibzreepubageztoi.supabase.co/storage/v1/object/public/curriculum-audio/ls/advanced/32bc6c631d76ffda.flac"
         },
         {
           "text": "Not perfect, but progress.",
-          "context": "antithesis short form"
+          "context": "antithesis short form",
+          "audio_url": "https://fnvjibzreepubageztoi.supabase.co/storage/v1/object/public/curriculum-audio/ls/advanced/97b72e956480fae4.flac"
         },
         {
           "text": "Faster, cheaper, better.",
-          "context": "tricolon punch list"
+          "context": "tricolon punch list",
+          "audio_url": "https://fnvjibzreepubageztoi.supabase.co/storage/v1/object/public/curriculum-audio/ls/advanced/c167191323408f13.flac"
         }
       ],
       "roleplay": {
@@ -523,23 +538,28 @@
       "listening_speaking": [
         {
           "text": "This led to a chain of consequences.",
-          "context": "opening causal claim"
+          "context": "opening causal claim",
+          "audio_url": "https://fnvjibzreepubageztoi.supabase.co/storage/v1/object/public/curriculum-audio/ls/advanced/a1821ca341cc0d07.flac"
         },
         {
           "text": "Which in turn forced a restructure.",
-          "context": "embedded link"
+          "context": "embedded link",
+          "audio_url": "https://fnvjibzreepubageztoi.supabase.co/storage/v1/object/public/curriculum-audio/ls/advanced/7a1b2d7b0c038739.flac"
         },
         {
           "text": "From this it follows that...",
-          "context": "formal inference"
+          "context": "formal inference",
+          "audio_url": "https://fnvjibzreepubageztoi.supabase.co/storage/v1/object/public/curriculum-audio/ls/advanced/ef0b890dce317918.flac"
         },
         {
           "text": "As a result, the model collapsed.",
-          "context": "closing consequence"
+          "context": "closing consequence",
+          "audio_url": "https://fnvjibzreepubageztoi.supabase.co/storage/v1/object/public/curriculum-audio/ls/advanced/070ca1f3eaf13e84.flac"
         },
         {
           "text": "The deeper cause is therefore...",
-          "context": "diagnostic close"
+          "context": "diagnostic close",
+          "audio_url": "https://fnvjibzreepubageztoi.supabase.co/storage/v1/object/public/curriculum-audio/ls/advanced/5b04e18f00ebe810.flac"
         }
       ],
       "roleplay": {
@@ -662,23 +682,28 @@
       "listening_speaking": [
         {
           "text": "What is at stake is not X, but Y.",
-          "context": "stakes reframe"
+          "context": "stakes reframe",
+          "audio_url": "https://fnvjibzreepubageztoi.supabase.co/storage/v1/object/public/curriculum-audio/ls/advanced/935a2ff9cf0b7694.flac"
         },
         {
           "text": "The stakes could not be higher.",
-          "context": "climactic phrase"
+          "context": "climactic phrase",
+          "audio_url": "https://fnvjibzreepubageztoi.supabase.co/storage/v1/object/public/curriculum-audio/ls/advanced/b24925bf56209fef.flac"
         },
         {
           "text": "The choice before us is clear.",
-          "context": "binary frame"
+          "context": "binary frame",
+          "audio_url": "https://fnvjibzreepubageztoi.supabase.co/storage/v1/object/public/curriculum-audio/ls/advanced/f8c6b992a8e1f1ac.flac"
         },
         {
           "text": "If we fail to act, we lose the window.",
-          "context": "conditional warning"
+          "context": "conditional warning",
+          "audio_url": "https://fnvjibzreepubageztoi.supabase.co/storage/v1/object/public/curriculum-audio/ls/advanced/2ed7e8c571a1a0bb.flac"
         },
         {
           "text": "Future generations will judge us by this moment.",
-          "context": "historical frame close"
+          "context": "historical frame close",
+          "audio_url": "https://fnvjibzreepubageztoi.supabase.co/storage/v1/object/public/curriculum-audio/ls/advanced/31136db1e528c144.flac"
         }
       ],
       "roleplay": {

@@ -84,23 +84,28 @@
       "listening_speaking": [
         {
           "text": "His behaviour was irresponsible.",
-          "context": "ir- before r"
+          "context": "ir- before r",
+          "audio_url": "https://fnvjibzreepubageztoi.supabase.co/storage/v1/object/public/curriculum-audio/ls/advanced/c2f052f28fd6cc40.flac"
         },
         {
           "text": "The plan is illegal.",
-          "context": "il- before l"
+          "context": "il- before l",
+          "audio_url": "https://fnvjibzreepubageztoi.supabase.co/storage/v1/object/public/curriculum-audio/ls/advanced/ee96e24a1d739024.flac"
         },
         {
           "text": "Her response was immature.",
-          "context": "im- before m"
+          "context": "im- before m",
+          "audio_url": "https://fnvjibzreepubageztoi.supabase.co/storage/v1/object/public/curriculum-audio/ls/advanced/782e166853bdefb2.flac"
         },
         {
           "text": "They disagree on most things.",
-          "context": "dis- for opposition"
+          "context": "dis- for opposition",
+          "audio_url": "https://fnvjibzreepubageztoi.supabase.co/storage/v1/object/public/curriculum-audio/ls/advanced/abbf42093dae5815.flac"
         },
         {
           "text": "The decision is unwise.",
-          "context": "un- as default adjective negator"
+          "context": "un- as default adjective negator",
+          "audio_url": "https://fnvjibzreepubageztoi.supabase.co/storage/v1/object/public/curriculum-audio/ls/advanced/5cabf7038ab5b048.flac"
         }
       ],
       "roleplay": {
@@ -226,23 +231,28 @@
       "listening_speaking": [
         {
           "text": "The decision was unanimous.",
-          "context": "verb-to-noun -sion"
+          "context": "verb-to-noun -sion",
+          "audio_url": "https://fnvjibzreepubageztoi.supabase.co/storage/v1/object/public/curriculum-audio/ls/advanced/55955cd3a9d1e014.flac"
         },
         {
           "text": "Her kindness surprised everyone.",
-          "context": "adjective-to-noun -ness"
+          "context": "adjective-to-noun -ness",
+          "audio_url": "https://fnvjibzreepubageztoi.supabase.co/storage/v1/object/public/curriculum-audio/ls/advanced/7b0f9cf0796c1556.flac"
         },
         {
           "text": "Management announced the change.",
-          "context": "verb-to-noun -ment"
+          "context": "verb-to-noun -ment",
+          "audio_url": "https://fnvjibzreepubageztoi.supabase.co/storage/v1/object/public/curriculum-audio/ls/advanced/04e99f12c77d2bde.flac"
         },
         {
           "text": "His honesty was rare.",
-          "context": "irregular -ty"
+          "context": "irregular -ty",
+          "audio_url": "https://fnvjibzreepubageztoi.supabase.co/storage/v1/object/public/curriculum-audio/ls/advanced/f223342cec275341.flac"
         },
         {
           "text": "Their partnership lasted decades.",
-          "context": "relationship noun -ship"
+          "context": "relationship noun -ship",
+          "audio_url": "https://fnvjibzreepubageztoi.supabase.co/storage/v1/object/public/curriculum-audio/ls/advanced/c7d0f93633c1fe2d.flac"
         }
       ],
       "roleplay": {
@@ -368,23 +378,28 @@
       "listening_speaking": [
         {
           "text": "She's reliable in a crisis.",
-          "context": "-able adjective"
+          "context": "-able adjective",
+          "audio_url": "https://fnvjibzreepubageztoi.supabase.co/storage/v1/object/public/curriculum-audio/ls/advanced/173f3c6d1265ed89.flac"
         },
         {
           "text": "The product is sustainable.",
-          "context": "-able with environmental sense"
+          "context": "-able with environmental sense",
+          "audio_url": "https://fnvjibzreepubageztoi.supabase.co/storage/v1/object/public/curriculum-audio/ls/advanced/e8a762370437681d.flac"
         },
         {
           "text": "They want to modernise the system.",
-          "context": "-ise verb"
+          "context": "-ise verb",
+          "audio_url": "https://fnvjibzreepubageztoi.supabase.co/storage/v1/object/public/curriculum-audio/ls/advanced/1d8138abd168d5f3.flac"
         },
         {
           "text": "His behaviour was dangerous.",
-          "context": "-ous adjective"
+          "context": "-ous adjective",
+          "audio_url": "https://fnvjibzreepubageztoi.supabase.co/storage/v1/object/public/curriculum-audio/ls/advanced/aced84f444292baf.flac"
         },
         {
           "text": "The instructions were incomprehensible.",
-          "context": "-ible negated"
+          "context": "-ible negated",
+          "audio_url": "https://fnvjibzreepubageztoi.supabase.co/storage/v1/object/public/curriculum-audio/ls/advanced/2c37496edb79928f.flac"
         }
       ],
       "roleplay": {
@@ -510,23 +525,28 @@
       "listening_speaking": [
         {
           "text": "The lighthouse keeper has lived there forty years.",
-          "context": "closed"
+          "context": "closed",
+          "audio_url": "https://fnvjibzreepubageztoi.supabase.co/storage/v1/object/public/curriculum-audio/ls/advanced/7707f1047a3da03d.flac"
         },
         {
           "text": "She is a well-known author.",
-          "context": "hyphenated (before noun)"
+          "context": "hyphenated (before noun)",
+          "audio_url": "https://fnvjibzreepubageztoi.supabase.co/storage/v1/object/public/curriculum-audio/ls/advanced/2348bd049f085951.flac"
         },
         {
           "text": "I went to high school in Rio.",
-          "context": "open"
+          "context": "open",
+          "audio_url": "https://fnvjibzreepubageztoi.supabase.co/storage/v1/object/public/curriculum-audio/ls/advanced/c8d95cad30f927e2.flac"
         },
         {
           "text": "My long-lost cousin called yesterday.",
-          "context": "hyphenated (before noun)"
+          "context": "hyphenated (before noun)",
+          "audio_url": "https://fnvjibzreepubageztoi.supabase.co/storage/v1/object/public/curriculum-audio/ls/advanced/bd86edfbaa579c5f.flac"
         },
         {
           "text": "The author is well known in literary circles.",
-          "context": "open (after noun)"
+          "context": "open (after noun)",
+          "audio_url": "https://fnvjibzreepubageztoi.supabase.co/storage/v1/object/public/curriculum-audio/ls/advanced/4162b5e68cc8bcc9.flac"
         }
       ],
       "roleplay": {
@@ -649,23 +669,28 @@
       "listening_speaking": [
         {
           "text": "Did you email him?",
-          "context": "noun-to-verb conversion"
+          "context": "noun-to-verb conversion",
+          "audio_url": "https://fnvjibzreepubageztoi.supabase.co/storage/v1/object/public/curriculum-audio/ls/advanced/90b3bd7a912e1ee9.flac"
         },
         {
           "text": "Google it before you ask.",
-          "context": "brand-to-verb"
+          "context": "brand-to-verb",
+          "audio_url": "https://fnvjibzreepubageztoi.supabase.co/storage/v1/object/public/curriculum-audio/ls/advanced/015e324fc7ac9bad.flac"
         },
         {
           "text": "Text me when you arrive.",
-          "context": "both forms identical"
+          "context": "both forms identical",
+          "audio_url": "https://fnvjibzreepubageztoi.supabase.co/storage/v1/object/public/curriculum-audio/ls/advanced/56032ce51c37879d.flac"
         },
         {
           "text": "I friended her on the new platform.",
-          "context": "recent conversion"
+          "context": "recent conversion",
+          "audio_url": "https://fnvjibzreepubageztoi.supabase.co/storage/v1/object/public/curriculum-audio/ls/advanced/25c3fc8fbe9457a9.flac"
         },
         {
           "text": "She gifted me a book.",
-          "context": "older noun-to-verb (gift)"
+          "context": "older noun-to-verb (gift)",
+          "audio_url": "https://fnvjibzreepubageztoi.supabase.co/storage/v1/object/public/curriculum-audio/ls/advanced/81fdbdfbd9d8c864.flac"
         }
       ],
       "roleplay": {

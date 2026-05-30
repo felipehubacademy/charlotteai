@@ -79,23 +79,28 @@
       "listening_speaking": [
         {
           "text": "Her voice rose like a kettle hitting boil.",
-          "context": "like + noun simile"
+          "context": "like + noun simile",
+          "audio_url": "https://fnvjibzreepubageztoi.supabase.co/storage/v1/object/public/curriculum-audio/ls/advanced/e6dd5aaa91566c78.flac"
         },
         {
           "text": "He stood as if he had nowhere else to be.",
-          "context": "as if + clause"
+          "context": "as if + clause",
+          "audio_url": "https://fnvjibzreepubageztoi.supabase.co/storage/v1/object/public/curriculum-audio/ls/advanced/1b5fb6ec666271f4.flac"
         },
         {
           "text": "Attention is the new oil.",
-          "context": "modern metaphor"
+          "context": "modern metaphor",
+          "audio_url": "https://fnvjibzreepubageztoi.supabase.co/storage/v1/object/public/curriculum-audio/ls/advanced/aa59d02e1d318e21.flac"
         },
         {
           "text": "Memory is a city you have lived in too long.",
-          "context": "extended metaphor opener"
+          "context": "extended metaphor opener",
+          "audio_url": "https://fnvjibzreepubageztoi.supabase.co/storage/v1/object/public/curriculum-audio/ls/advanced/e8150f5f59e06441.flac"
         },
         {
           "text": "She moved as though walking on glass.",
-          "context": "as though + -ing"
+          "context": "as though + -ing",
+          "audio_url": "https://fnvjibzreepubageztoi.supabase.co/storage/v1/object/public/curriculum-audio/ls/advanced/efb05852559b3656.flac"
         }
       ],
       "roleplay": {
@@ -220,23 +225,28 @@
       "listening_speaking": [
         {
           "text": "Time crawled during the wait.",
-          "context": "abstract personified"
+          "context": "abstract personified",
+          "audio_url": "https://fnvjibzreepubageztoi.supabase.co/storage/v1/object/public/curriculum-audio/ls/advanced/101420f0f17dd501.flac"
         },
         {
           "text": "The deadline loomed over the team.",
-          "context": "task as threat"
+          "context": "task as threat",
+          "audio_url": "https://fnvjibzreepubageztoi.supabase.co/storage/v1/object/public/curriculum-audio/ls/advanced/abe22042c58b6666.flac"
         },
         {
           "text": "Hope refused to leave.",
-          "context": "feeling as actor"
+          "context": "feeling as actor",
+          "audio_url": "https://fnvjibzreepubageztoi.supabase.co/storage/v1/object/public/curriculum-audio/ls/advanced/c42794ba24e85740.flac"
         },
         {
           "text": "The wind argued with the trees.",
-          "context": "element as character"
+          "context": "element as character",
+          "audio_url": "https://fnvjibzreepubageztoi.supabase.co/storage/v1/object/public/curriculum-audio/ls/advanced/c33efc4fcba7432e.flac"
         },
         {
           "text": "The city slept badly that summer.",
-          "context": "place as creature"
+          "context": "place as creature",
+          "audio_url": "https://fnvjibzreepubageztoi.supabase.co/storage/v1/object/public/curriculum-audio/ls/advanced/ad9f72714849631b.flac"
         }
       ],
       "roleplay": {
@@ -362,23 +372,28 @@
       "listening_speaking": [
         {
           "text": "He slammed the door behind him.",
-          "context": "vivid verb"
+          "context": "vivid verb",
+          "audio_url": "https://fnvjibzreepubageztoi.supabase.co/storage/v1/object/public/curriculum-audio/ls/advanced/7cc01d45529d26de.flac"
         },
         {
           "text": "She glared across the table.",
-          "context": "strong emotion verb"
+          "context": "strong emotion verb",
+          "audio_url": "https://fnvjibzreepubageztoi.supabase.co/storage/v1/object/public/curriculum-audio/ls/advanced/355a51d1ef997664.flac"
         },
         {
           "text": "The dog padded into the room.",
-          "context": "specific quiet action"
+          "context": "specific quiet action",
+          "audio_url": "https://fnvjibzreepubageztoi.supabase.co/storage/v1/object/public/curriculum-audio/ls/advanced/bc648840cb698437.flac"
         },
         {
           "text": "A black Audi paused at the gate.",
-          "context": "specific noun + verb"
+          "context": "specific noun + verb",
+          "audio_url": "https://fnvjibzreepubageztoi.supabase.co/storage/v1/object/public/curriculum-audio/ls/advanced/82ff1510f6ff71bc.flac"
         },
         {
           "text": "He murmured something we didn't catch.",
-          "context": "replacement for \"said quietly\""
+          "context": "replacement for \"said quietly\"",
+          "audio_url": "https://fnvjibzreepubageztoi.supabase.co/storage/v1/object/public/curriculum-audio/ls/advanced/e7c64ebb39f81201.flac"
         }
       ],
       "roleplay": {
@@ -503,23 +518,28 @@
       "listening_speaking": [
         {
           "text": "He was free.",
-          "context": "short impact close"
+          "context": "short impact close",
+          "audio_url": "https://fnvjibzreepubageztoi.supabase.co/storage/v1/object/public/curriculum-audio/ls/advanced/7a6df5ff2e9f6790.flac"
         },
         {
           "text": "Empty. Quiet. Finally still.",
-          "context": "fragment series"
+          "context": "fragment series",
+          "audio_url": "https://fnvjibzreepubageztoi.supabase.co/storage/v1/object/public/curriculum-audio/ls/advanced/448608736823c0ae.flac"
         },
         {
           "text": "Nobody answered.",
-          "context": "minimal weight"
+          "context": "minimal weight",
+          "audio_url": "https://fnvjibzreepubageztoi.supabase.co/storage/v1/object/public/curriculum-audio/ls/advanced/2d38f2da4093a378.flac"
         },
         {
           "text": "And then, the silence.",
-          "context": "fragment as moment"
+          "context": "fragment as moment",
+          "audio_url": "https://fnvjibzreepubageztoi.supabase.co/storage/v1/object/public/curriculum-audio/ls/advanced/1bbed0a736bf2cc0.flac"
         },
         {
           "text": "Done. Truly done.",
-          "context": "fragment for finality"
+          "context": "fragment for finality",
+          "audio_url": "https://fnvjibzreepubageztoi.supabase.co/storage/v1/object/public/curriculum-audio/ls/advanced/6f598978452e40f7.flac"
         }
       ],
       "roleplay": {
@@ -642,23 +662,28 @@
       "listening_speaking": [
         {
           "text": "Her thumbnail tracked the seam.",
-          "context": "shown nervousness"
+          "context": "shown nervousness",
+          "audio_url": "https://fnvjibzreepubageztoi.supabase.co/storage/v1/object/public/curriculum-audio/ls/advanced/89a9950a736e890d.flac"
         },
         {
           "text": "He didn't sit down all meeting.",
-          "context": "shown anger"
+          "context": "shown anger",
+          "audio_url": "https://fnvjibzreepubageztoi.supabase.co/storage/v1/object/public/curriculum-audio/ls/advanced/8dbc4d9ea7661471.flac"
         },
         {
           "text": "She kept the photo face-down for weeks.",
-          "context": "shown grief"
+          "context": "shown grief",
+          "audio_url": "https://fnvjibzreepubageztoi.supabase.co/storage/v1/object/public/curriculum-audio/ls/advanced/f701aabfd4c935f7.flac"
         },
         {
           "text": "He read the letter three times.",
-          "context": "shown disbelief/joy"
+          "context": "shown disbelief/joy",
+          "audio_url": "https://fnvjibzreepubageztoi.supabase.co/storage/v1/object/public/curriculum-audio/ls/advanced/94997858050061f4.flac"
         },
         {
           "text": "She smiled without warmth.",
-          "context": "shown hostility through restraint"
+          "context": "shown hostility through restraint",
+          "audio_url": "https://fnvjibzreepubageztoi.supabase.co/storage/v1/object/public/curriculum-audio/ls/advanced/9e7967058031dc0c.flac"
         }
       ],
       "roleplay": {

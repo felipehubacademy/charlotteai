@@ -81,23 +81,28 @@
       "listening_speaking": [
         {
           "text": "The rise of digital platforms has reshaped media.",
-          "context": "opener nominalisation"
+          "context": "opener nominalisation",
+          "audio_url": "https://fnvjibzreepubageztoi.supabase.co/storage/v1/object/public/curriculum-audio/ls/advanced/d4891d52c12c5986.flac"
         },
         {
           "text": "The decline in attention spans is well documented.",
-          "context": "research-frame nominalisation"
+          "context": "research-frame nominalisation",
+          "audio_url": "https://fnvjibzreepubageztoi.supabase.co/storage/v1/object/public/curriculum-audio/ls/advanced/88962d39db9249e1.flac"
         },
         {
           "text": "There has been a marked increase in remote work.",
-          "context": "quantified nominalisation"
+          "context": "quantified nominalisation",
+          "audio_url": "https://fnvjibzreepubageztoi.supabase.co/storage/v1/object/public/curriculum-audio/ls/advanced/aeec7771639a8caa.flac"
         },
         {
           "text": "The emergence of new variants raised concern.",
-          "context": "scientific nominalisation"
+          "context": "scientific nominalisation",
+          "audio_url": "https://fnvjibzreepubageztoi.supabase.co/storage/v1/object/public/curriculum-audio/ls/advanced/84d5f0ec8182a467.flac"
         },
         {
           "text": "A shift towards plant-based diets is evident.",
-          "context": "direction nominalisation"
+          "context": "direction nominalisation",
+          "audio_url": "https://fnvjibzreepubageztoi.supabase.co/storage/v1/object/public/curriculum-audio/ls/advanced/c0a27940f98290f3.flac"
         }
       ],
       "roleplay": {
@@ -222,23 +227,28 @@
       "listening_speaking": [
         {
           "text": "It is widely accepted that exercise improves cognition.",
-          "context": "consensus framing"
+          "context": "consensus framing",
+          "audio_url": "https://fnvjibzreepubageztoi.supabase.co/storage/v1/object/public/curriculum-audio/ls/advanced/6017ad007cab4314.flac"
         },
         {
           "text": "This paper argues for a revised approach.",
-          "context": "paper-as-agent"
+          "context": "paper-as-agent",
+          "audio_url": "https://fnvjibzreepubageztoi.supabase.co/storage/v1/object/public/curriculum-audio/ls/advanced/bd11c0b96f8fe7f4.flac"
         },
         {
           "text": "The data suggest a strong correlation.",
-          "context": "evidence-as-agent"
+          "context": "evidence-as-agent",
+          "audio_url": "https://fnvjibzreepubageztoi.supabase.co/storage/v1/object/public/curriculum-audio/ls/advanced/2ff03f1a9b8cccae.flac"
         },
         {
           "text": "There is reason to believe this is causal.",
-          "context": "hedged claim"
+          "context": "hedged claim",
+          "audio_url": "https://fnvjibzreepubageztoi.supabase.co/storage/v1/object/public/curriculum-audio/ls/advanced/3eede43b5271306b.flac"
         },
         {
           "text": "The present study examines three variables.",
-          "context": "study-as-agent"
+          "context": "study-as-agent",
+          "audio_url": "https://fnvjibzreepubageztoi.supabase.co/storage/v1/object/public/curriculum-audio/ls/advanced/0e3bd8e79338de9f.flac"
         }
       ],
       "roleplay": {
@@ -363,23 +373,28 @@
       "listening_speaking": [
         {
           "text": "This suggests a strong correlation.",
-          "context": "moderate hedge"
+          "context": "moderate hedge",
+          "audio_url": "https://fnvjibzreepubageztoi.supabase.co/storage/v1/object/public/curriculum-audio/ls/advanced/d11418aed005fc2a.flac"
         },
         {
           "text": "The evidence supports the hypothesis.",
-          "context": "strong supportive hedge"
+          "context": "strong supportive hedge",
+          "audio_url": "https://fnvjibzreepubageztoi.supabase.co/storage/v1/object/public/curriculum-audio/ls/advanced/7520d546c36e6ba5.flac"
         },
         {
           "text": "There is reason to believe this is causal.",
-          "context": "confident hedge"
+          "context": "confident hedge",
+          "audio_url": "https://fnvjibzreepubageztoi.supabase.co/storage/v1/object/public/curriculum-audio/ls/advanced/3eede43b5271306b.flac"
         },
         {
           "text": "It is conceivable, though not established, that...",
-          "context": "very weak hedge"
+          "context": "very weak hedge",
+          "audio_url": "https://fnvjibzreepubageztoi.supabase.co/storage/v1/object/public/curriculum-audio/ls/advanced/de475c9ae61898af.flac"
         },
         {
           "text": "The findings are consistent with prior research.",
-          "context": "alignment hedge"
+          "context": "alignment hedge",
+          "audio_url": "https://fnvjibzreepubageztoi.supabase.co/storage/v1/object/public/curriculum-audio/ls/advanced/2c5ff9b51df7da70.flac"
         }
       ],
       "roleplay": {
@@ -505,23 +520,28 @@
       "listening_speaking": [
         {
           "text": "According to Smith (2020), the policy failed.",
-          "context": "direct attribution"
+          "context": "direct attribution",
+          "audio_url": "https://fnvjibzreepubageztoi.supabase.co/storage/v1/object/public/curriculum-audio/ls/advanced/79360e8469fb2523.flac"
         },
         {
           "text": "Building on this observation, the study expands the dataset.",
-          "context": "positioning"
+          "context": "positioning",
+          "audio_url": "https://fnvjibzreepubageztoi.supabase.co/storage/v1/object/public/curriculum-audio/ls/advanced/41c8d3b4ee885683.flac"
         },
         {
           "text": "Wang (2019) argues that the model is incomplete.",
-          "context": "citing argument"
+          "context": "citing argument",
+          "audio_url": "https://fnvjibzreepubageztoi.supabase.co/storage/v1/object/public/curriculum-audio/ls/advanced/92590c291d1d55ef.flac"
         },
         {
           "text": "As noted by previous research, the effect is small.",
-          "context": "hedged citation"
+          "context": "hedged citation",
+          "audio_url": "https://fnvjibzreepubageztoi.supabase.co/storage/v1/object/public/curriculum-audio/ls/advanced/4301cfeb48f7b57f.flac"
         },
         {
           "text": "The present study extends this analysis.",
-          "context": "extending prior work"
+          "context": "extending prior work",
+          "audio_url": "https://fnvjibzreepubageztoi.supabase.co/storage/v1/object/public/curriculum-audio/ls/advanced/9f47b2d19fc19f52.flac"
         }
       ],
       "roleplay": {
@@ -643,23 +663,28 @@
       "listening_speaking": [
         {
           "text": "This finding raises a related question.",
-          "context": "forward link"
+          "context": "forward link",
+          "audio_url": "https://fnvjibzreepubageztoi.supabase.co/storage/v1/object/public/curriculum-audio/ls/advanced/ceb97b3a5e392929.flac"
         },
         {
           "text": "By contrast, the third sample diverged.",
-          "context": "contrast link"
+          "context": "contrast link",
+          "audio_url": "https://fnvjibzreepubageztoi.supabase.co/storage/v1/object/public/curriculum-audio/ls/advanced/9b8ce3b3fed025a9.flac"
         },
         {
           "text": "Taken together, these results suggest...",
-          "context": "synthesis link"
+          "context": "synthesis link",
+          "audio_url": "https://fnvjibzreepubageztoi.supabase.co/storage/v1/object/public/curriculum-audio/ls/advanced/4997f63daf6025fb.flac"
         },
         {
           "text": "A related but distinct issue is...",
-          "context": "adjacent link"
+          "context": "adjacent link",
+          "audio_url": "https://fnvjibzreepubageztoi.supabase.co/storage/v1/object/public/curriculum-audio/ls/advanced/38856ca93073c893.flac"
         },
         {
           "text": "Furthermore, the effect persists at follow-up.",
-          "context": "additive link"
+          "context": "additive link",
+          "audio_url": "https://fnvjibzreepubageztoi.supabase.co/storage/v1/object/public/curriculum-audio/ls/advanced/917f1c4b35029698.flac"
         }
       ],
       "roleplay": {
