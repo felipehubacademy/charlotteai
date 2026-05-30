@@ -152,26 +152,20 @@
         "objectives": [
           {
             "id": 1,
-            "label_pt": "Evento específico no passado (past simple)",
             "label_en": "Specific past event",
             "hidden_prompt": "user uses past simple with time marker (last year, yesterday, in 2020)",
-            "hint_pt": "I went to Italy last year.",
             "hint_en": "I went to Italy last year."
           },
           {
             "id": 2,
-            "label_pt": "Experiência de vida (PP)",
             "label_en": "Life experience (PP)",
             "hidden_prompt": "user uses 'I have + past participle' for life experience",
-            "hint_pt": "I have visited five countries.",
             "hint_en": "I have visited five countries."
           },
           {
             "id": 3,
-            "label_pt": "Outra distinção",
             "label_en": "Another distinction",
             "hidden_prompt": "user uses one more past simple or PP with appropriate marker",
-            "hint_pt": "I have never tried sushi.",
             "hint_en": "I have never tried sushi."
           }
         ],
@@ -193,26 +187,20 @@
         "objectives": [
           {
             "id": 1,
-            "label_pt": "Evento específico",
             "label_en": "Specific event",
             "hidden_prompt": "user uses past simple with specific time",
-            "hint_pt": "I traveled to Rio last weekend.",
             "hint_en": "I traveled to Rio last weekend."
           },
           {
             "id": 2,
-            "label_pt": "Experiência geral (PP)",
             "label_en": "General experience",
             "hidden_prompt": "user uses PP for life experience",
-            "hint_pt": "I've traveled a lot.",
             "hint_en": "I've traveled a lot."
           },
           {
             "id": 3,
-            "label_pt": "Perguntar à Charlotte",
             "label_en": "Ask Charlotte",
             "hidden_prompt": "user asks specific or experience question",
-            "hint_pt": "Have you ever been to Brazil?",
             "hint_en": "Have you ever been to Brazil?"
           }
         ],
@@ -356,26 +344,20 @@
         "objectives": [
           {
             "id": 1,
-            "label_pt": "Quanto tempo mora lá (for + duration)",
             "label_en": "How long lived (for + duration)",
             "hidden_prompt": "user uses 'I've lived/been there for + duration'",
-            "hint_pt": "I've lived here for ten years.",
             "hint_en": "I've lived here for ten years."
           },
           {
             "id": 2,
-            "label_pt": "Quanto tempo trabalha (for + duration)",
             "label_en": "How long worked",
             "hidden_prompt": "user uses 'I've worked there for + duration'",
-            "hint_pt": "I've worked there for five years.",
             "hint_en": "I've worked there for five years."
           },
           {
             "id": 3,
-            "label_pt": "Outra duração (estudo, amizade)",
             "label_en": "Another duration",
             "hidden_prompt": "user uses 'I've + past participle + for + duration'",
-            "hint_pt": "I've studied English for two years.",
             "hint_en": "I've studied English for two years."
           }
         ],
@@ -397,26 +379,20 @@
         "objectives": [
           {
             "id": 1,
-            "label_pt": "Há quanto tempo conhece",
             "label_en": "How long known",
             "hidden_prompt": "user uses 'I've known + person + for + duration'",
-            "hint_pt": "I've known her for ten years.",
             "hint_en": "I've known her for ten years."
           },
           {
             "id": 2,
-            "label_pt": "Outra duração",
             "label_en": "Another duration",
             "hidden_prompt": "user uses another PP + for",
-            "hint_pt": "I've worked here for two years.",
             "hint_en": "I've worked here for two years."
           },
           {
             "id": 3,
-            "label_pt": "Perguntar à Charlotte",
             "label_en": "Ask Charlotte",
             "hidden_prompt": "user asks 'How long have you...?'",
-            "hint_pt": "How long have you taught?",
             "hint_en": "How long have you taught?"
           }
         ],
@@ -560,26 +536,20 @@
         "objectives": [
           {
             "id": 1,
-            "label_pt": "Algo desde um ano específico",
             "label_en": "Something since a year",
             "hidden_prompt": "user uses 'I've + past participle + since + year'",
-            "hint_pt": "I've worked here since 2020.",
             "hint_en": "I've worked here since 2020."
           },
           {
             "id": 2,
-            "label_pt": "Algo desde um mês ou dia",
             "label_en": "Something since month or day",
             "hidden_prompt": "user uses 'since + month/day'",
-            "hint_pt": "I've been busy since Monday.",
             "hint_en": "I've been busy since Monday."
           },
           {
             "id": 3,
-            "label_pt": "Algo desde um evento da vida",
             "label_en": "Something since a life event",
             "hidden_prompt": "user uses 'since + clause' (since I was..., since I moved...)",
-            "hint_pt": "I've lived here since I was 18.",
             "hint_en": "I've lived here since I was 18."
           }
         ],
@@ -601,26 +571,20 @@
         "objectives": [
           {
             "id": 1,
-            "label_pt": "Resposta com since",
             "label_en": "Answer with since",
             "hidden_prompt": "user uses 'since + point'",
-            "hint_pt": "Since 2022.",
             "hint_en": "Since 2022."
           },
           {
             "id": 2,
-            "label_pt": "Outra coisa com since",
             "label_en": "Another with since",
             "hidden_prompt": "user uses 'I've + past participle + since'",
-            "hint_pt": "I've lived here since 2015.",
             "hint_en": "I've lived here since 2015."
           },
           {
             "id": 3,
-            "label_pt": "Perguntar à Charlotte",
             "label_en": "Ask Charlotte",
             "hidden_prompt": "user asks 'Since when have you...?'",
-            "hint_pt": "Since when have you taught?",
             "hint_en": "Since when have you taught?"
           }
         ],
@@ -764,26 +728,20 @@
         "objectives": [
           {
             "id": 1,
-            "label_pt": "Responder com for + duração",
             "label_en": "Answer with for + duration",
             "hidden_prompt": "user uses 'For + duration'",
-            "hint_pt": "For two years.",
             "hint_en": "For two years."
           },
           {
             "id": 2,
-            "label_pt": "Outra resposta com since",
             "label_en": "Another answer with since",
             "hidden_prompt": "user uses 'Since + point'",
-            "hint_pt": "Since 2022.",
             "hint_en": "Since 2022."
           },
           {
             "id": 3,
-            "label_pt": "Perguntar à Charlotte (How long)",
             "label_en": "Ask Charlotte (How long)",
             "hidden_prompt": "user asks 'How long have you + past participle?'",
-            "hint_pt": "How long have you been a teacher?",
             "hint_en": "How long have you been a teacher?"
           }
         ],
@@ -805,26 +763,20 @@
         "objectives": [
           {
             "id": 1,
-            "label_pt": "Resposta com for",
             "label_en": "Answer with for",
             "hidden_prompt": "user uses 'For + duration'",
-            "hint_pt": "For three years.",
             "hint_en": "For three years."
           },
           {
             "id": 2,
-            "label_pt": "Outra duração",
             "label_en": "Another duration",
             "hidden_prompt": "user uses 'for + duration' or 'since + point'",
-            "hint_pt": "Since 2021.",
             "hint_en": "Since 2021."
           },
           {
             "id": 3,
-            "label_pt": "Perguntar à Charlotte",
             "label_en": "Ask Charlotte",
             "hidden_prompt": "user asks 'How long have you...?'",
-            "hint_pt": "How long have you lived in NYC?",
             "hint_en": "How long have you lived in NYC?"
           }
         ],
@@ -968,26 +920,20 @@
         "objectives": [
           {
             "id": 1,
-            "label_pt": "Evento específico (past simple)",
             "label_en": "Specific event (past simple)",
             "hidden_prompt": "user uses past simple + specific time",
-            "hint_pt": "I traveled to Italy in 2019.",
             "hint_en": "I traveled to Italy in 2019."
           },
           {
             "id": 2,
-            "label_pt": "Experiência de vida (PP)",
             "label_en": "Life experience (PP)",
             "hidden_prompt": "user uses 'I've + past participle' for experience",
-            "hint_pt": "I've never been to Asia.",
             "hint_en": "I've never been to Asia."
           },
           {
             "id": 3,
-            "label_pt": "Pergunta integrada à Charlotte",
             "label_en": "Integrated question",
             "hidden_prompt": "user asks PP or past simple question",
-            "hint_pt": "Have you been to Asia?",
             "hint_en": "Have you been to Asia?"
           }
         ],
@@ -1009,26 +955,20 @@
         "objectives": [
           {
             "id": 1,
-            "label_pt": "Evento passado específico",
             "label_en": "Specific past event",
             "hidden_prompt": "user uses past simple with time marker",
-            "hint_pt": "I got promoted last month.",
             "hint_en": "I got promoted last month."
           },
           {
             "id": 2,
-            "label_pt": "Experiência geral (PP)",
             "label_en": "General experience (PP)",
             "hidden_prompt": "user uses PP for life experience",
-            "hint_pt": "I've never had such a good year.",
             "hint_en": "I've never had such a good year."
           },
           {
             "id": 3,
-            "label_pt": "Perguntar à Charlotte",
             "label_en": "Ask Charlotte",
             "hidden_prompt": "user asks past simple or PP question",
-            "hint_pt": "How about you?",
             "hint_en": "How about you?"
           }
         ],

@@ -122,23 +122,28 @@
       "listening_speaking": [
         {
           "text": "My brother, who lives in Rio, is a teacher.",
-          "context": "non-defining who"
+          "context": "non-defining who",
+          "audio_url": "https://fnvjibzreepubageztoi.supabase.co/storage/v1/object/public/curriculum-audio/ls/inter/5bd959ae6fe22a60.flac"
         },
         {
           "text": "Maria, who I met yesterday, is great.",
-          "context": "extra info"
+          "context": "extra info",
+          "audio_url": "https://fnvjibzreepubageztoi.supabase.co/storage/v1/object/public/curriculum-audio/ls/inter/cdccda898d6e65b9.flac"
         },
         {
           "text": "My boss, who is very strict, gave me a raise.",
-          "context": "surprising contrast"
+          "context": "surprising contrast",
+          "audio_url": "https://fnvjibzreepubageztoi.supabase.co/storage/v1/object/public/curriculum-audio/ls/inter/cb920dd376e9c099.flac"
         },
         {
           "text": "Tom, who I've known for years, just got married.",
-          "context": "long acquaintance"
+          "context": "long acquaintance",
+          "audio_url": "https://fnvjibzreepubageztoi.supabase.co/storage/v1/object/public/curriculum-audio/ls/inter/87a27cbba8b3f98a.flac"
         },
         {
           "text": "Ana, who I work with, just had a baby.",
-          "context": "colleague info"
+          "context": "colleague info",
+          "audio_url": "https://fnvjibzreepubageztoi.supabase.co/storage/v1/object/public/curriculum-audio/ls/inter/2e8753420f3cd691.flac"
         }
       ],
       "roleplay": {
@@ -151,26 +156,20 @@
         "objectives": [
           {
             "id": 1,
-            "label_pt": "Pessoa específica com 'who'",
             "label_en": "Specific person with 'who'",
             "hidden_prompt": "user uses 'X, who + verb, + main clause'",
-            "hint_pt": "My sister, who lives in Curitiba, is a nurse.",
             "hint_en": "My sister, who lives in Curitiba, is a nurse."
           },
           {
             "id": 2,
-            "label_pt": "Outra pessoa com info extra",
             "label_en": "Another person with extra info",
             "hidden_prompt": "user uses another non-defining 'who'",
-            "hint_pt": "My best friend, who I've known since school, lives nearby.",
             "hint_en": "My best friend, who I've known since school, lives nearby."
           },
           {
             "id": 3,
-            "label_pt": "Pessoa do trabalho com 'who'",
             "label_en": "Work person with 'who'",
             "hidden_prompt": "user uses 'colleague/boss, who + verb'",
-            "hint_pt": "My boss, who is from England, speaks Portuguese well.",
             "hint_en": "My boss, who is from England, speaks Portuguese well."
           }
         ],
@@ -192,26 +191,20 @@
         "objectives": [
           {
             "id": 1,
-            "label_pt": "Pessoa da família com 'who'",
             "label_en": "Family person with 'who'",
             "hidden_prompt": "user uses 'X, who + extra info'",
-            "hint_pt": "My uncle, who works in Germany, sends me photos every week.",
             "hint_en": "My uncle, who works in Germany, sends me photos every week."
           },
           {
             "id": 2,
-            "label_pt": "Outra pessoa próxima",
             "label_en": "Another close person",
             "hidden_prompt": "user uses another non-defining clause",
-            "hint_pt": "My cousin, who I see every Christmas, just started college.",
             "hint_en": "My cousin, who I see every Christmas, just started college."
           },
           {
             "id": 3,
-            "label_pt": "Perguntar à Charlotte",
             "label_en": "Ask Charlotte",
             "hidden_prompt": "user asks Charlotte about her relative",
-            "hint_pt": "When is your aunt arriving?",
             "hint_en": "When is your aunt arriving?"
           }
         ],
@@ -323,23 +316,28 @@
       "listening_speaking": [
         {
           "text": "The Amazon, which is the longest river, runs through Brazil.",
-          "context": "geographic"
+          "context": "geographic",
+          "audio_url": "https://fnvjibzreepubageztoi.supabase.co/storage/v1/object/public/curriculum-audio/ls/inter/3b03bfa7d272b348.flac"
         },
         {
           "text": "My phone, which I bought last week, broke.",
-          "context": "possession + frustration"
+          "context": "possession + frustration",
+          "audio_url": "https://fnvjibzreepubageztoi.supabase.co/storage/v1/object/public/curriculum-audio/ls/inter/6961b8b71ca27919.flac"
         },
         {
           "text": "He came late, which annoyed everyone.",
-          "context": "clause-referring which"
+          "context": "clause-referring which",
+          "audio_url": "https://fnvjibzreepubageztoi.supabase.co/storage/v1/object/public/curriculum-audio/ls/inter/442343feca3d32ad.flac"
         },
         {
           "text": "The book, which won an award, became a bestseller.",
-          "context": "product info"
+          "context": "product info",
+          "audio_url": "https://fnvjibzreepubageztoi.supabase.co/storage/v1/object/public/curriculum-audio/ls/inter/b782b4e79a30e4f8.flac"
         },
         {
           "text": "Brazil, which has many cultures, is huge.",
-          "context": "country info"
+          "context": "country info",
+          "audio_url": "https://fnvjibzreepubageztoi.supabase.co/storage/v1/object/public/curriculum-audio/ls/inter/3c448f73faa9e722.flac"
         }
       ],
       "roleplay": {
@@ -352,26 +350,20 @@
         "objectives": [
           {
             "id": 1,
-            "label_pt": "Lugar com 'which'",
             "label_en": "Place with 'which'",
             "hidden_prompt": "user uses 'X, which + extra info' for place",
-            "hint_pt": "Rio, which is famous for its beaches, has amazing views.",
             "hint_en": "Rio, which is famous for its beaches, has amazing views."
           },
           {
             "id": 2,
-            "label_pt": "Coisa com 'which'",
             "label_en": "Thing with 'which'",
             "hidden_prompt": "user uses 'X, which + extra info' for object",
-            "hint_pt": "My car, which I bought last year, is electric.",
             "hint_en": "My car, which I bought last year, is electric."
           },
           {
             "id": 3,
-            "label_pt": "'Which' referindo a cláusula inteira",
             "label_en": "'Which' referring to whole clause",
             "hidden_prompt": "user uses 'X happened, which + reaction'",
-            "hint_pt": "He forgot my birthday, which hurt my feelings.",
             "hint_en": "He forgot my birthday, which hurt my feelings."
           }
         ],
@@ -393,26 +385,20 @@
         "objectives": [
           {
             "id": 1,
-            "label_pt": "Cidade favorita com 'which'",
             "label_en": "Favorite city with 'which'",
             "hidden_prompt": "user uses 'X, which + extra info, is my favorite'",
-            "hint_pt": "My favorite city is Florianópolis, which has beautiful beaches.",
             "hint_en": "My favorite city is Florianópolis, which has beautiful beaches."
           },
           {
             "id": 2,
-            "label_pt": "Outra coisa favorita com 'which'",
             "label_en": "Another favorite with 'which'",
             "hidden_prompt": "user uses another non-defining 'which'",
-            "hint_pt": "My favorite book, which I've read twice, is by Saramago.",
             "hint_en": "My favorite book, which I've read twice, is by Saramago."
           },
           {
             "id": 3,
-            "label_pt": "Perguntar à Charlotte",
             "label_en": "Ask Charlotte",
             "hidden_prompt": "user asks Charlotte more about Lisbon or her favorites",
-            "hint_pt": "What do you love about Lisbon?",
             "hint_en": "What do you love about Lisbon?"
           }
         ],
@@ -524,23 +510,28 @@
       "listening_speaking": [
         {
           "text": "Maria, whose father is a doctor, is studying medicine.",
-          "context": "family possession"
+          "context": "family possession",
+          "audio_url": "https://fnvjibzreepubageztoi.supabase.co/storage/v1/object/public/curriculum-audio/ls/inter/93a0c8289e19f3fc.flac"
         },
         {
           "text": "My neighbor, whose dog barks, is moving.",
-          "context": "possession + complaint"
+          "context": "possession + complaint",
+          "audio_url": "https://fnvjibzreepubageztoi.supabase.co/storage/v1/object/public/curriculum-audio/ls/inter/495a72426137dbd5.flac"
         },
         {
           "text": "The author, whose book I loved, is here.",
-          "context": "work possession"
+          "context": "work possession",
+          "audio_url": "https://fnvjibzreepubageztoi.supabase.co/storage/v1/object/public/curriculum-audio/ls/inter/e128fec15b4ca94e.flac"
         },
         {
           "text": "Tom, whose wife is from Spain, speaks Spanish.",
-          "context": "partner possession"
+          "context": "partner possession",
+          "audio_url": "https://fnvjibzreepubageztoi.supabase.co/storage/v1/object/public/curriculum-audio/ls/inter/c542416f26a25455.flac"
         },
         {
           "text": "The singer, whose songs are famous, is Brazilian.",
-          "context": "work attribution"
+          "context": "work attribution",
+          "audio_url": "https://fnvjibzreepubageztoi.supabase.co/storage/v1/object/public/curriculum-audio/ls/inter/9548c29dab4a73d8.flac"
         }
       ],
       "roleplay": {
@@ -553,26 +544,20 @@
         "objectives": [
           {
             "id": 1,
-            "label_pt": "Pessoa com 'whose + família'",
             "label_en": "Person with 'whose + family'",
             "hidden_prompt": "user uses 'X, whose father/mother/sister/brother + verb'",
-            "hint_pt": "Carla, whose mother is a chef, cooks amazing food.",
             "hint_en": "Carla, whose mother is a chef, cooks amazing food."
           },
           {
             "id": 2,
-            "label_pt": "Pessoa com 'whose + objeto'",
             "label_en": "Person with 'whose + object'",
             "hidden_prompt": "user uses 'X, whose + object + verb'",
-            "hint_pt": "My neighbor, whose car is always parked badly, never apologizes.",
             "hint_en": "My neighbor, whose car is always parked badly, never apologizes."
           },
           {
             "id": 3,
-            "label_pt": "Pessoa com 'whose + qualidade/trabalho'",
             "label_en": "Person with 'whose + quality/work'",
             "hidden_prompt": "user uses 'X, whose + work/quality + verb'",
-            "hint_pt": "My friend, whose paintings are amazing, just had a show.",
             "hint_en": "My friend, whose paintings are amazing, just had a show."
           }
         ],
@@ -594,26 +579,20 @@
         "objectives": [
           {
             "id": 1,
-            "label_pt": "Vizinho ou conhecido com 'whose'",
             "label_en": "Neighbor with 'whose'",
             "hidden_prompt": "user uses 'X, whose + noun, + verb'",
-            "hint_pt": "My neighbor, whose kids are always playing outside, is great with them.",
             "hint_en": "My neighbor, whose kids are always playing outside, is great with them."
           },
           {
             "id": 2,
-            "label_pt": "Outra pessoa com 'whose'",
             "label_en": "Another person with 'whose'",
             "hidden_prompt": "user uses another non-defining 'whose'",
-            "hint_pt": "An old friend, whose family I know well, called me yesterday.",
             "hint_en": "An old friend, whose family I know well, called me yesterday."
           },
           {
             "id": 3,
-            "label_pt": "Perguntar à Charlotte",
             "label_en": "Ask Charlotte",
             "hidden_prompt": "user asks Charlotte more about her neighbor",
-            "hint_pt": "What does your neighbor do?",
             "hint_en": "What does your neighbor do?"
           }
         ],
@@ -725,23 +704,28 @@
       "listening_speaking": [
         {
           "text": "Paris, where I lived for a year, is beautiful.",
-          "context": "place + experience"
+          "context": "place + experience",
+          "audio_url": "https://fnvjibzreepubageztoi.supabase.co/storage/v1/object/public/curriculum-audio/ls/inter/c2344fc7acf4a1af.flac"
         },
         {
           "text": "2020, when the pandemic started, was hard.",
-          "context": "year + event"
+          "context": "year + event",
+          "audio_url": "https://fnvjibzreepubageztoi.supabase.co/storage/v1/object/public/curriculum-audio/ls/inter/6a4bbc45f508f749.flac"
         },
         {
           "text": "My hometown, where I grew up, is small.",
-          "context": "origin"
+          "context": "origin",
+          "audio_url": "https://fnvjibzreepubageztoi.supabase.co/storage/v1/object/public/curriculum-audio/ls/inter/f6f0531bcc1852ee.flac"
         },
         {
           "text": "The summer of 2018, when I traveled, was unforgettable.",
-          "context": "specific time"
+          "context": "specific time",
+          "audio_url": "https://fnvjibzreepubageztoi.supabase.co/storage/v1/object/public/curriculum-audio/ls/inter/11089cb282f8c310.flac"
         },
         {
           "text": "The office, where I work, is downtown.",
-          "context": "workplace"
+          "context": "workplace",
+          "audio_url": "https://fnvjibzreepubageztoi.supabase.co/storage/v1/object/public/curriculum-audio/ls/inter/fdaa3bba39d19098.flac"
         }
       ],
       "roleplay": {
@@ -754,26 +738,20 @@
         "objectives": [
           {
             "id": 1,
-            "label_pt": "Lugar marcante com 'where'",
             "label_en": "Significant place with 'where'",
             "hidden_prompt": "user uses 'X, where + extra info'",
-            "hint_pt": "Rio, where I spent my honeymoon, is magical.",
             "hint_en": "Rio, where I spent my honeymoon, is magical."
           },
           {
             "id": 2,
-            "label_pt": "Momento marcante com 'when'",
             "label_en": "Significant moment with 'when'",
             "hidden_prompt": "user uses 'X, when + extra info'",
-            "hint_pt": "2015, when I started my career, was a big year.",
             "hint_en": "2015, when I started my career, was a big year."
           },
           {
             "id": 3,
-            "label_pt": "Outro lugar ou tempo com info extra",
             "label_en": "Another place or time with extra info",
             "hidden_prompt": "user uses another 'where' or 'when'",
-            "hint_pt": "Last winter, when I traveled to Europe, was amazing.",
             "hint_en": "Last winter, when I traveled to Europe, was amazing."
           }
         ],
@@ -795,26 +773,20 @@
         "objectives": [
           {
             "id": 1,
-            "label_pt": "Lugar com 'where'",
             "label_en": "Place with 'where'",
             "hidden_prompt": "user uses 'X, where + extra info'",
-            "hint_pt": "Salvador, where I was born, has so much history.",
             "hint_en": "Salvador, where I was born, has so much history."
           },
           {
             "id": 2,
-            "label_pt": "Tempo marcante com 'when'",
             "label_en": "Significant time with 'when'",
             "hidden_prompt": "user uses 'X, when + extra info'",
-            "hint_pt": "2010, when I graduated, feels like yesterday.",
             "hint_en": "2010, when I graduated, feels like yesterday."
           },
           {
             "id": 3,
-            "label_pt": "Perguntar à Charlotte",
             "label_en": "Ask Charlotte",
             "hidden_prompt": "user asks Charlotte about her experience",
-            "hint_pt": "What did you study in Lisbon?",
             "hint_en": "What did you study in Lisbon?"
           }
         ],
@@ -915,23 +887,28 @@
       "listening_speaking": [
         {
           "text": "The man who called is my boss.",
-          "context": "defining (identifies)"
+          "context": "defining (identifies)",
+          "audio_url": "https://fnvjibzreepubageztoi.supabase.co/storage/v1/object/public/curriculum-audio/ls/inter/adc7b52b0624aae7.flac"
         },
         {
           "text": "My boss, who called me, is great.",
-          "context": "non-defining (extra)"
+          "context": "non-defining (extra)",
+          "audio_url": "https://fnvjibzreepubageztoi.supabase.co/storage/v1/object/public/curriculum-audio/ls/inter/2b74fbcc66e3fece.flac"
         },
         {
           "text": "The book that won the prize is on the table.",
-          "context": "defining"
+          "context": "defining",
+          "audio_url": "https://fnvjibzreepubageztoi.supabase.co/storage/v1/object/public/curriculum-audio/ls/inter/d6a5e36b1df73633.flac"
         },
         {
           "text": "This book, which won the prize, is fascinating.",
-          "context": "non-defining"
+          "context": "non-defining",
+          "audio_url": "https://fnvjibzreepubageztoi.supabase.co/storage/v1/object/public/curriculum-audio/ls/inter/4babcdc552cdecbe.flac"
         },
         {
           "text": "The town where I was born is small.",
-          "context": "defining"
+          "context": "defining",
+          "audio_url": "https://fnvjibzreepubageztoi.supabase.co/storage/v1/object/public/curriculum-audio/ls/inter/dbd6ca6c664ff128.flac"
         }
       ],
       "roleplay": {
@@ -944,26 +921,20 @@
         "objectives": [
           {
             "id": 1,
-            "label_pt": "Frase defining + non-defining sobre pessoa",
             "label_en": "Defining + non-defining for person",
             "hidden_prompt": "user uses both defining and non-defining for a person",
-            "hint_pt": "The teacher who taught me French... My French teacher, who is from Paris,...",
             "hint_en": "The teacher who taught me French... My French teacher, who is from Paris,..."
           },
           {
             "id": 2,
-            "label_pt": "Defining + non-defining sobre lugar",
             "label_en": "Defining + non-defining for place",
             "hidden_prompt": "user uses both for a place",
-            "hint_pt": "The city where I work... São Paulo, where I work,...",
             "hint_en": "The city where I work... São Paulo, where I work,..."
           },
           {
             "id": 3,
-            "label_pt": "Defining + non-defining sobre coisa",
             "label_en": "Defining + non-defining for thing",
             "hidden_prompt": "user uses both for an object",
-            "hint_pt": "The book that won the award... My favorite book, which won the award,...",
             "hint_en": "The book that won the award... My favorite book, which won the award,..."
           }
         ],
@@ -985,26 +956,20 @@
         "objectives": [
           {
             "id": 1,
-            "label_pt": "Defining (identifica)",
             "label_en": "Defining (identifies)",
             "hidden_prompt": "user uses defining clause (no commas)",
-            "hint_pt": "The friend who I met at university lives nearby.",
             "hint_en": "The friend who I met at university lives nearby."
           },
           {
             "id": 2,
-            "label_pt": "Non-defining (extra info)",
             "label_en": "Non-defining (extra info)",
             "hidden_prompt": "user uses non-defining with commas",
-            "hint_pt": "Pedro, who I met at university, just got married.",
             "hint_en": "Pedro, who I met at university, just got married."
           },
           {
             "id": 3,
-            "label_pt": "Pergunta ou outra mistura",
             "label_en": "Question or another mix",
             "hidden_prompt": "user asks Charlotte or adds another mix",
-            "hint_pt": "How about your friends?",
             "hint_en": "How about your friends?"
           }
         ],

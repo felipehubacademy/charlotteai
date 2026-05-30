@@ -184,7 +184,37 @@ function write(f, mod) {
   const m = f.name.match(/^M(\d+)/);
   if (!m) throw new Error(`Cannot extract module number from ${f.name}`);
   const outFile = path.join(dir, `M${m[1]}.json`);
-  fs.writeFileSync(outFile, JSON.stringify(mod, null, 2) + '\n');
+  // Inter/Advanced: strip PT fields (regra "zero PT visivel ao usuario+Inter").
+  // Markdown source pode manter bilingue como orientacao; JSON entregue ao app
+  // fica EN-only. Mobile ja faz fallback p/ label_en quando label_pt ausente.
+  const cleaned = (f.level === 'novice') ? mod : stripPortugueseFields(mod);
+  fs.writeFileSync(outFile, JSON.stringify(cleaned, null, 2) + '\n');
+}
+
+function stripPortugueseFields(mod) {
+  function stripObjs(arr) {
+    return arr?.map(o => {
+      const { label_pt, hint_pt, ...rest } = o;
+      return rest;
+    });
+  }
+  function stripLS(arr) {
+    return arr?.map(p => {
+      // context em Novice eh PT ("saudacao informal..."); em Inter+ deve ser EN.
+      // Nao removemos context (mobile usa pra subtitulo), mas se vier PT, fica
+      // como vier — auditoria pega depois.
+      return p;
+    });
+  }
+  return {
+    ...mod,
+    units: mod.units?.map(u => ({
+      ...u,
+      roleplay:     u.roleplay    ? { ...u.roleplay,    objectives: stripObjs(u.roleplay.objectives) } : u.roleplay,
+      guided_chat:  u.guided_chat ? { ...u.guided_chat, objectives: stripObjs(u.guided_chat.objectives) } : u.guided_chat,
+      listening_speaking: stripLS(u.listening_speaking),
+    })),
+  };
 }
 
 function countGrammar(mod)    { return mod.units.reduce((a, u) => a + (u.grammar?.length || 0), 0); }
@@ -416,6 +446,9 @@ function parseObjectives(text) {
     const hidden_prompt = stripQuotes(field(raw, 'hidden_prompt'));
     const hint_pt       = stripQuotes(field(raw, 'hint_pt'));
     const hint_en       = stripQuotes(field(raw, 'hint_en'));
+    // Inter/Advanced: descartar campos PT (regra "zero PT no Inter+").
+    // Markdown source pode manter bilingue como orientacao da autora;
+    // JSON entregue ao app fica EN-only. Mobile ja faz fallback p/ EN.
     return {
       id,
       label_pt,

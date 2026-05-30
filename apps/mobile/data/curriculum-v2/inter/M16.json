@@ -121,23 +121,28 @@
       "listening_speaking": [
         {
           "text": "The report must be finished by Friday.",
-          "context": "obligation"
+          "context": "obligation",
+          "audio_url": "https://fnvjibzreepubageztoi.supabase.co/storage/v1/object/public/curriculum-audio/ls/inter/5f17cae8b560ce01.flac"
         },
         {
           "text": "This must be done carefully.",
-          "context": "instruction"
+          "context": "instruction",
+          "audio_url": "https://fnvjibzreepubageztoi.supabase.co/storage/v1/object/public/curriculum-audio/ls/inter/fc892357f8d9f735.flac"
         },
         {
           "text": "Children shouldn't be left alone.",
-          "context": "prohibition"
+          "context": "prohibition",
+          "audio_url": "https://fnvjibzreepubageztoi.supabase.co/storage/v1/object/public/curriculum-audio/ls/inter/5ed49a48bd1a2af7.flac"
         },
         {
           "text": "The form should be filled in blue ink.",
-          "context": "recommendation"
+          "context": "recommendation",
+          "audio_url": "https://fnvjibzreepubageztoi.supabase.co/storage/v1/object/public/curriculum-audio/ls/inter/bd426dc5f84c274f.flac"
         },
         {
           "text": "These files have to be reviewed.",
-          "context": "requirement"
+          "context": "requirement",
+          "audio_url": "https://fnvjibzreepubageztoi.supabase.co/storage/v1/object/public/curriculum-audio/ls/inter/3cbf89f327ac4595.flac"
         }
       ],
       "roleplay": {
@@ -150,26 +155,20 @@
         "objectives": [
           {
             "id": 1,
-            "label_pt": "Instrução com 'must be'",
             "label_en": "Instruction with 'must be'",
             "hidden_prompt": "user uses 'X must be + past participle'",
-            "hint_pt": "The reports must be submitted by Friday.",
             "hint_en": "The reports must be submitted by Friday."
           },
           {
             "id": 2,
-            "label_pt": "Recomendação com 'should be'",
             "label_en": "Recommendation with 'should be'",
             "hidden_prompt": "user uses 'X should be + past participle'",
-            "hint_pt": "Emails should be checked twice a day.",
             "hint_en": "Emails should be checked twice a day."
           },
           {
             "id": 3,
-            "label_pt": "Requisito com 'have to be'",
             "label_en": "Requirement with 'have to be'",
             "hidden_prompt": "user uses 'X has/have to be + past participle'",
-            "hint_pt": "Documents have to be signed before submission.",
             "hint_en": "Documents have to be signed before submission."
           }
         ],
@@ -191,26 +190,20 @@
         "objectives": [
           {
             "id": 1,
-            "label_pt": "Regra com 'must be'",
             "label_en": "Rule with 'must be'",
             "hidden_prompt": "user uses 'X must be + past participle'",
-            "hint_pt": "Phones must be silenced during meetings.",
             "hint_en": "Phones must be silenced during meetings."
           },
           {
             "id": 2,
-            "label_pt": "Outra regra com modal passive",
             "label_en": "Another rule with modal passive",
             "hidden_prompt": "user uses 'should be' or 'have to be' + past participle",
-            "hint_pt": "Emails should be answered within 24 hours.",
             "hint_en": "Emails should be answered within 24 hours."
           },
           {
             "id": 3,
-            "label_pt": "Perguntar à Charlotte",
             "label_en": "Ask Charlotte",
             "hidden_prompt": "user asks Charlotte about her workplace rules",
-            "hint_pt": "What's a rule at your work?",
             "hint_en": "What's a rule at your work?"
           }
         ],
@@ -322,23 +315,28 @@
       "listening_speaking": [
         {
           "text": "The winner will be announced tomorrow.",
-          "context": "public announcement"
+          "context": "public announcement",
+          "audio_url": "https://fnvjibzreepubageztoi.supabase.co/storage/v1/object/public/curriculum-audio/ls/inter/0231ffd1e45ede01.flac"
         },
         {
           "text": "The package will be delivered Monday.",
-          "context": "delivery promise"
+          "context": "delivery promise",
+          "audio_url": "https://fnvjibzreepubageztoi.supabase.co/storage/v1/object/public/curriculum-audio/ls/inter/1619cb1db3199c6a.flac"
         },
         {
           "text": "Dinner will be served at 7.",
-          "context": "event time"
+          "context": "event time",
+          "audio_url": "https://fnvjibzreepubageztoi.supabase.co/storage/v1/object/public/curriculum-audio/ls/inter/04637dda817dab54.flac"
         },
         {
           "text": "The new album is going to be released.",
-          "context": "planned future"
+          "context": "planned future",
+          "audio_url": "https://fnvjibzreepubageztoi.supabase.co/storage/v1/object/public/curriculum-audio/ls/inter/49e55e2269edfa02.flac"
         },
         {
           "text": "Results will be emailed.",
-          "context": "official communication"
+          "context": "official communication",
+          "audio_url": "https://fnvjibzreepubageztoi.supabase.co/storage/v1/object/public/curriculum-audio/ls/inter/0bd95ae46cf50ef8.flac"
         }
       ],
       "roleplay": {
@@ -351,26 +349,20 @@
         "objectives": [
           {
             "id": 1,
-            "label_pt": "Anúncio com 'will be'",
             "label_en": "Announcement with 'will be'",
             "hidden_prompt": "user uses 'X will be + past participle'",
-            "hint_pt": "The results will be announced on Friday.",
             "hint_en": "The results will be announced on Friday."
           },
           {
             "id": 2,
-            "label_pt": "Plano com 'is going to be'",
             "label_en": "Plan with 'is going to be'",
             "hidden_prompt": "user uses 'X is/are going to be + past participle'",
-            "hint_pt": "A new park is going to be built downtown.",
             "hint_en": "A new park is going to be built downtown."
           },
           {
             "id": 3,
-            "label_pt": "Outro evento futuro passive",
             "label_en": "Another future event passive",
             "hidden_prompt": "user uses another future passive",
-            "hint_pt": "The conference will be held in Rio.",
             "hint_en": "The conference will be held in Rio."
           }
         ],
@@ -392,26 +384,20 @@
         "objectives": [
           {
             "id": 1,
-            "label_pt": "Plano futuro com 'is going to be'",
             "label_en": "Future plan with 'is going to be'",
             "hidden_prompt": "user uses 'X is going to be + past participle'",
-            "hint_pt": "A new metro line is going to be built.",
             "hint_en": "A new metro line is going to be built."
           },
           {
             "id": 2,
-            "label_pt": "Outro plano futuro passive",
             "label_en": "Another future passive plan",
             "hidden_prompt": "user uses 'will be + past participle'",
-            "hint_pt": "The old market will be renovated.",
             "hint_en": "The old market will be renovated."
           },
           {
             "id": 3,
-            "label_pt": "Perguntar à Charlotte",
             "label_en": "Ask Charlotte",
             "hidden_prompt": "user asks Charlotte about upcoming plans in her area",
-            "hint_pt": "What's going to be built in your area?",
             "hint_en": "What's going to be built in your area?"
           }
         ],
@@ -523,23 +509,28 @@
       "listening_speaking": [
         {
           "text": "It was painted by Leonardo.",
-          "context": "credit artist"
+          "context": "credit artist",
+          "audio_url": "https://fnvjibzreepubageztoi.supabase.co/storage/v1/object/public/curriculum-audio/ls/inter/ebede4d065d736e3.flac"
         },
         {
           "text": "The book was written by my favorite author.",
-          "context": "credit writer"
+          "context": "credit writer",
+          "audio_url": "https://fnvjibzreepubageztoi.supabase.co/storage/v1/object/public/curriculum-audio/ls/inter/32741d5b2ec8747e.flac"
         },
         {
           "text": "These photos were taken by my dad.",
-          "context": "credit photographer"
+          "context": "credit photographer",
+          "audio_url": "https://fnvjibzreepubageztoi.supabase.co/storage/v1/object/public/curriculum-audio/ls/inter/5a189233484433bf.flac"
         },
         {
           "text": "The cake was made by my mother.",
-          "context": "credit maker"
+          "context": "credit maker",
+          "audio_url": "https://fnvjibzreepubageztoi.supabase.co/storage/v1/object/public/curriculum-audio/ls/inter/95e8f0e8be9d91dd.flac"
         },
         {
           "text": "The song was performed by a new band.",
-          "context": "credit performer"
+          "context": "credit performer",
+          "audio_url": "https://fnvjibzreepubageztoi.supabase.co/storage/v1/object/public/curriculum-audio/ls/inter/524a559c609ad976.flac"
         }
       ],
       "roleplay": {
@@ -552,26 +543,20 @@
         "objectives": [
           {
             "id": 1,
-            "label_pt": "Obra de arte com 'by'",
             "label_en": "Artwork with 'by'",
             "hidden_prompt": "user uses 'X was painted/created by + person'",
-            "hint_pt": "Guernica was painted by Picasso.",
             "hint_en": "Guernica was painted by Picasso."
           },
           {
             "id": 2,
-            "label_pt": "Livro com 'by'",
             "label_en": "Book with 'by'",
             "hidden_prompt": "user uses 'X was written by + author'",
-            "hint_pt": "Dom Casmurro was written by Machado de Assis.",
             "hint_en": "Dom Casmurro was written by Machado de Assis."
           },
           {
             "id": 3,
-            "label_pt": "Comida ou objeto com 'by'",
             "label_en": "Food or object with 'by'",
             "hidden_prompt": "user uses 'X was made/cooked by + person'",
-            "hint_pt": "The cake was made by my grandmother.",
             "hint_en": "The cake was made by my grandmother."
           }
         ],
@@ -593,26 +578,20 @@
         "objectives": [
           {
             "id": 1,
-            "label_pt": "Livro favorito + autor",
             "label_en": "Favorite book + author",
             "hidden_prompt": "user uses 'X was written by + author'",
-            "hint_pt": "My favorite book was written by Jorge Amado.",
             "hint_en": "My favorite book was written by Jorge Amado."
           },
           {
             "id": 2,
-            "label_pt": "Outro favorito (filme, música)",
             "label_en": "Another favorite (film, music)",
             "hidden_prompt": "user uses 'X was directed/composed/sung by + person'",
-            "hint_pt": "My favorite song was sung by Caetano.",
             "hint_en": "My favorite song was sung by Caetano."
           },
           {
             "id": 3,
-            "label_pt": "Perguntar à Charlotte",
             "label_en": "Ask Charlotte",
             "hidden_prompt": "user asks Charlotte about her favorites",
-            "hint_pt": "What's your favorite book and by whom?",
             "hint_en": "What's your favorite book and by whom?"
           }
         ],
@@ -724,23 +703,28 @@
       "listening_speaking": [
         {
           "text": "She got hurt in the accident.",
-          "context": "informal injury"
+          "context": "informal injury",
+          "audio_url": "https://fnvjibzreepubageztoi.supabase.co/storage/v1/object/public/curriculum-audio/ls/inter/3629a4dfb521a5c8.flac"
         },
         {
           "text": "They got married last year.",
-          "context": "life event"
+          "context": "life event",
+          "audio_url": "https://fnvjibzreepubageztoi.supabase.co/storage/v1/object/public/curriculum-audio/ls/inter/46b63399af874f07.flac"
         },
         {
           "text": "I got lost in the city.",
-          "context": "narrative event"
+          "context": "narrative event",
+          "audio_url": "https://fnvjibzreepubageztoi.supabase.co/storage/v1/object/public/curriculum-audio/ls/inter/4c6cc0868c6bcfaa.flac"
         },
         {
           "text": "He got hired last month.",
-          "context": "informal hiring"
+          "context": "informal hiring",
+          "audio_url": "https://fnvjibzreepubageztoi.supabase.co/storage/v1/object/public/curriculum-audio/ls/inter/4a80b18e7a03916b.flac"
         },
         {
           "text": "My phone got stolen.",
-          "context": "informal theft"
+          "context": "informal theft",
+          "audio_url": "https://fnvjibzreepubageztoi.supabase.co/storage/v1/object/public/curriculum-audio/ls/inter/f5f24f9e86c72046.flac"
         }
       ],
       "roleplay": {
@@ -753,26 +737,20 @@
         "objectives": [
           {
             "id": 1,
-            "label_pt": "Evento de vida com 'got + past participle'",
             "label_en": "Life event with 'got + past participle'",
             "hidden_prompt": "user uses 'X got married/hired/promoted/engaged'",
-            "hint_pt": "I got married three years ago.",
             "hint_en": "I got married three years ago."
           },
           {
             "id": 2,
-            "label_pt": "Acidente ou problema com 'got'",
             "label_en": "Accident or problem with 'got'",
             "hidden_prompt": "user uses 'X got hurt/lost/stolen'",
-            "hint_pt": "I got lost on my first day in São Paulo.",
             "hint_en": "I got lost on my first day in São Paulo."
           },
           {
             "id": 3,
-            "label_pt": "Outro 'get' passive",
             "label_en": "Another 'get' passive",
             "hidden_prompt": "user uses another 'got + past participle'",
-            "hint_pt": "My car got stolen last year.",
             "hint_en": "My car got stolen last year."
           }
         ],
@@ -794,26 +772,20 @@
         "objectives": [
           {
             "id": 1,
-            "label_pt": "História com 'got'",
             "label_en": "Story with 'got'",
             "hidden_prompt": "user uses 'I got + past participle'",
-            "hint_pt": "I got stuck in traffic for two hours.",
             "hint_en": "I got stuck in traffic for two hours."
           },
           {
             "id": 2,
-            "label_pt": "Outro evento com 'got'",
             "label_en": "Another event with 'got'",
             "hidden_prompt": "user uses another 'got + past participle'",
-            "hint_pt": "My bag got soaked too.",
             "hint_en": "My bag got soaked too."
           },
           {
             "id": 3,
-            "label_pt": "Perguntar à Charlotte",
             "label_en": "Ask Charlotte",
             "hidden_prompt": "user asks Charlotte more about her event",
-            "hint_pt": "How did you get home?",
             "hint_en": "How did you get home?"
           }
         ],
@@ -923,23 +895,28 @@
       "listening_speaking": [
         {
           "text": "The form must be filled in blue ink.",
-          "context": "modal passive"
+          "context": "modal passive",
+          "audio_url": "https://fnvjibzreepubageztoi.supabase.co/storage/v1/object/public/curriculum-audio/ls/inter/a199844b0842701f.flac"
         },
         {
           "text": "The results will be announced tomorrow.",
-          "context": "future passive"
+          "context": "future passive",
+          "audio_url": "https://fnvjibzreepubageztoi.supabase.co/storage/v1/object/public/curriculum-audio/ls/inter/a4e5f1dbcaaac878.flac"
         },
         {
           "text": "The Mona Lisa was painted by Leonardo.",
-          "context": "agent passive"
+          "context": "agent passive",
+          "audio_url": "https://fnvjibzreepubageztoi.supabase.co/storage/v1/object/public/curriculum-audio/ls/inter/0e160187a17229ac.flac"
         },
         {
           "text": "She got married last weekend.",
-          "context": "get passive"
+          "context": "get passive",
+          "audio_url": "https://fnvjibzreepubageztoi.supabase.co/storage/v1/object/public/curriculum-audio/ls/inter/744b8799d03eacea.flac"
         },
         {
           "text": "The bridge is going to be completed in 2030.",
-          "context": "future passive"
+          "context": "future passive",
+          "audio_url": "https://fnvjibzreepubageztoi.supabase.co/storage/v1/object/public/curriculum-audio/ls/inter/350a81244de23c32.flac"
         }
       ],
       "roleplay": {
@@ -952,26 +929,20 @@
         "objectives": [
           {
             "id": 1,
-            "label_pt": "Modal passive",
             "label_en": "Modal passive",
             "hidden_prompt": "user uses 'modal + be + past participle'",
-            "hint_pt": "The report must be sent today.",
             "hint_en": "The report must be sent today."
           },
           {
             "id": 2,
-            "label_pt": "Future passive ou agent passive",
             "label_en": "Future passive or agent passive",
             "hidden_prompt": "user uses 'will be + past participle' or 'was + past participle + by'",
-            "hint_pt": "The book was written by a famous author.",
             "hint_en": "The book was written by a famous author."
           },
           {
             "id": 3,
-            "label_pt": "Get passive informal",
             "label_en": "Informal get passive",
             "hidden_prompt": "user uses 'got + past participle'",
-            "hint_pt": "I got promoted last month.",
             "hint_en": "I got promoted last month."
           }
         ],
@@ -993,26 +964,20 @@
         "objectives": [
           {
             "id": 1,
-            "label_pt": "O que foi feito (present perfect passive)",
             "label_en": "What's been done",
             "hidden_prompt": "user uses 'has/have been + past participle'",
-            "hint_pt": "The website has been redesigned.",
             "hint_en": "The website has been redesigned."
           },
           {
             "id": 2,
-            "label_pt": "O que está em curso (present continuous passive)",
             "label_en": "What's being done",
             "hidden_prompt": "user uses 'is/are being + past participle'",
-            "hint_pt": "New features are being tested.",
             "hint_en": "New features are being tested."
           },
           {
             "id": 3,
-            "label_pt": "O que será feito (future passive)",
             "label_en": "What will be done",
             "hidden_prompt": "user uses 'will be + past participle'",
-            "hint_pt": "A new version will be released next month.",
             "hint_en": "A new version will be released next month."
           }
         ],

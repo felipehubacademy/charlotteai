@@ -114,23 +114,28 @@
       "listening_speaking": [
         {
           "text": "He said he was tired.",
-          "context": "basic statement reported"
+          "context": "basic statement reported",
+          "audio_url": "https://fnvjibzreepubageztoi.supabase.co/storage/v1/object/public/curriculum-audio/ls/inter/44da10d3ba31c1ed.flac"
         },
         {
           "text": "She said she worked in finance.",
-          "context": "job reported"
+          "context": "job reported",
+          "audio_url": "https://fnvjibzreepubageztoi.supabase.co/storage/v1/object/public/curriculum-audio/ls/inter/1a275908400314bf.flac"
         },
         {
           "text": "They said they lived in São Paulo.",
-          "context": "location reported"
+          "context": "location reported",
+          "audio_url": "https://fnvjibzreepubageztoi.supabase.co/storage/v1/object/public/curriculum-audio/ls/inter/5681d81d5854884d.flac"
         },
         {
           "text": "He said he was cooking dinner.",
-          "context": "activity reported"
+          "context": "activity reported",
+          "audio_url": "https://fnvjibzreepubageztoi.supabase.co/storage/v1/object/public/curriculum-audio/ls/inter/a802576acb701842.flac"
         },
         {
           "text": "She said she didn't understand.",
-          "context": "negative reported"
+          "context": "negative reported",
+          "audio_url": "https://fnvjibzreepubageztoi.supabase.co/storage/v1/object/public/curriculum-audio/ls/inter/2cf3ecea6d5cff85.flac"
         }
       ],
       "roleplay": {
@@ -143,26 +148,20 @@
         "objectives": [
           {
             "id": 1,
-            "label_pt": "Reportar com 'said he/she + past'",
             "label_en": "Report with 'said he/she + past'",
             "hidden_prompt": "user uses 'X said (that) he/she + past tense'",
-            "hint_pt": "She said she was a teacher.",
             "hint_en": "She said she was a teacher."
           },
           {
             "id": 2,
-            "label_pt": "Outro reporte",
             "label_en": "Another report",
             "hidden_prompt": "user uses another 'said (that)' construction",
-            "hint_pt": "He said he lived in Rio.",
             "hint_en": "He said he lived in Rio."
           },
           {
             "id": 3,
-            "label_pt": "Reportar uma atividade em curso",
             "label_en": "Report an ongoing activity",
             "hidden_prompt": "user uses 'said he/she was + ing'",
-            "hint_pt": "She said she was working on a project.",
             "hint_en": "She said she was working on a project."
           }
         ],
@@ -184,26 +183,20 @@
         "objectives": [
           {
             "id": 1,
-            "label_pt": "Reportar o que Charlotte disse",
             "label_en": "Report what Charlotte said",
             "hidden_prompt": "user uses 'You said your sister was moving to Berlin'",
-            "hint_pt": "You said your sister was moving to Berlin.",
             "hint_en": "You said your sister was moving to Berlin."
           },
           {
             "id": 2,
-            "label_pt": "Outro reporte (mais conversa)",
             "label_en": "Another report (more talk)",
             "hidden_prompt": "user reports another statement with 'said'",
-            "hint_pt": "You said she had found a job there.",
             "hint_en": "You said she had found a job there."
           },
           {
             "id": 3,
-            "label_pt": "Perguntar à Charlotte",
             "label_en": "Ask Charlotte",
             "hidden_prompt": "user asks Charlotte more about the situation",
-            "hint_pt": "Did she say when she's leaving?",
             "hint_en": "Did she say when she's leaving?"
           }
         ],
@@ -315,23 +308,28 @@
       "listening_speaking": [
         {
           "text": "She told me she was tired.",
-          "context": "tell + object"
+          "context": "tell + object",
+          "audio_url": "https://fnvjibzreepubageztoi.supabase.co/storage/v1/object/public/curriculum-audio/ls/inter/544905fd40c248b4.flac"
         },
         {
           "text": "He said that the meeting was canceled.",
-          "context": "say + that"
+          "context": "say + that",
+          "audio_url": "https://fnvjibzreepubageztoi.supabase.co/storage/v1/object/public/curriculum-audio/ls/inter/d88454fe32b9140d.flac"
         },
         {
           "text": "She told her sister the news.",
-          "context": "tell + person + thing"
+          "context": "tell + person + thing",
+          "audio_url": "https://fnvjibzreepubageztoi.supabase.co/storage/v1/object/public/curriculum-audio/ls/inter/7c4e0d7417887a09.flac"
         },
         {
           "text": "He spoke to me about it.",
-          "context": "speak + to + person"
+          "context": "speak + to + person",
+          "audio_url": "https://fnvjibzreepubageztoi.supabase.co/storage/v1/object/public/curriculum-audio/ls/inter/aa3973b34fffd0ed.flac"
         },
         {
           "text": "She mentioned that she was leaving.",
-          "context": "mention + that"
+          "context": "mention + that",
+          "audio_url": "https://fnvjibzreepubageztoi.supabase.co/storage/v1/object/public/curriculum-audio/ls/inter/d0debb9c4785297d.flac"
         }
       ],
       "roleplay": {
@@ -344,26 +342,20 @@
         "objectives": [
           {
             "id": 1,
-            "label_pt": "Reporte com 'told me'",
             "label_en": "Report with 'told me'",
             "hidden_prompt": "user uses 'X told me (that) + past tense'",
-            "hint_pt": "My boss told me I was getting a raise.",
             "hint_en": "My boss told me I was getting a raise."
           },
           {
             "id": 2,
-            "label_pt": "Reporte com 'said'",
             "label_en": "Report with 'said'",
             "hidden_prompt": "user uses 'X said (that) + past tense' without object",
-            "hint_pt": "He said the deadline was Friday.",
             "hint_en": "He said the deadline was Friday."
           },
           {
             "id": 3,
-            "label_pt": "Reporte com 'mentioned' ou 'spoke about'",
             "label_en": "Report with 'mentioned' or 'spoke about'",
             "hidden_prompt": "user uses another reporting verb",
-            "hint_pt": "She mentioned that she was tired.",
             "hint_en": "She mentioned that she was tired."
           }
         ],
@@ -385,26 +377,20 @@
         "objectives": [
           {
             "id": 1,
-            "label_pt": "Reportar de volta a Charlotte",
             "label_en": "Report back to Charlotte",
             "hidden_prompt": "user reports 'You said your coworker was...'",
-            "hint_pt": "You said your coworker was thinking of quitting.",
             "hint_en": "You said your coworker was thinking of quitting."
           },
           {
             "id": 2,
-            "label_pt": "Detalhe adicional",
             "label_en": "Additional detail",
             "hidden_prompt": "user adds another reported statement",
-            "hint_pt": "She told me she had been unhappy for a while.",
             "hint_en": "She told me she had been unhappy for a while."
           },
           {
             "id": 3,
-            "label_pt": "Pergunta para Charlotte",
             "label_en": "Question for Charlotte",
             "hidden_prompt": "user asks Charlotte more about it",
-            "hint_pt": "What did she say her plans were?",
             "hint_en": "What did she say her plans were?"
           }
         ],
@@ -507,23 +493,28 @@
       "listening_speaking": [
         {
           "text": "He said he had finished it.",
-          "context": "past simple → past perfect"
+          "context": "past simple → past perfect",
+          "audio_url": "https://fnvjibzreepubageztoi.supabase.co/storage/v1/object/public/curriculum-audio/ls/inter/d7c99be33fd0d6c6.flac"
         },
         {
           "text": "She said she had been to Paris.",
-          "context": "present perfect → past perfect"
+          "context": "present perfect → past perfect",
+          "audio_url": "https://fnvjibzreepubageztoi.supabase.co/storage/v1/object/public/curriculum-audio/ls/inter/c978abda49e12220.flac"
         },
         {
           "text": "They said they had lost the keys.",
-          "context": "past simple → past perfect"
+          "context": "past simple → past perfect",
+          "audio_url": "https://fnvjibzreepubageztoi.supabase.co/storage/v1/object/public/curriculum-audio/ls/inter/40b762b3af5f4d7d.flac"
         },
         {
           "text": "He said he had seen the movie.",
-          "context": "present/past perfect reported"
+          "context": "present/past perfect reported",
+          "audio_url": "https://fnvjibzreepubageztoi.supabase.co/storage/v1/object/public/curriculum-audio/ls/inter/24a4a6874457221e.flac"
         },
         {
           "text": "She said she had already eaten.",
-          "context": "already + had + past participle"
+          "context": "already + had + past participle",
+          "audio_url": "https://fnvjibzreepubageztoi.supabase.co/storage/v1/object/public/curriculum-audio/ls/inter/873fb9dd5042d59a.flac"
         }
       ],
       "roleplay": {
@@ -536,26 +527,20 @@
         "objectives": [
           {
             "id": 1,
-            "label_pt": "Reporte com 'said he/she had + past participle'",
             "label_en": "Report with 'said he/she had + past participle'",
             "hidden_prompt": "user uses 'X said he/she had + past participle'",
-            "hint_pt": "He said he had finished the report.",
             "hint_en": "He said he had finished the report."
           },
           {
             "id": 2,
-            "label_pt": "Outro reporte com past perfect",
             "label_en": "Another past perfect report",
             "hidden_prompt": "user uses another 'had + past participle'",
-            "hint_pt": "She told me she had visited Paris twice.",
             "hint_en": "She told me she had visited Paris twice."
           },
           {
             "id": 3,
-            "label_pt": "Reporte com 'never' ou 'already'",
             "label_en": "Report with 'never' or 'already'",
             "hidden_prompt": "user uses 'said had never/already + past participle'",
-            "hint_pt": "He said he had never tried sushi.",
             "hint_en": "He said he had never tried sushi."
           }
         ],
@@ -577,26 +562,20 @@
         "objectives": [
           {
             "id": 1,
-            "label_pt": "Reportar o que ela disse",
             "label_en": "Report what she said",
             "hidden_prompt": "user uses 'She said she had + past participle'",
-            "hint_pt": "She said she had completed her part.",
             "hint_en": "She said she had completed her part."
           },
           {
             "id": 2,
-            "label_pt": "Reportar outra fala",
             "label_en": "Report another statement",
             "hidden_prompt": "user uses another reported past perfect",
-            "hint_pt": "Another colleague said he had already sent his notes.",
             "hint_en": "Another colleague said he had already sent his notes."
           },
           {
             "id": 3,
-            "label_pt": "Perguntar à Charlotte",
             "label_en": "Ask Charlotte",
             "hidden_prompt": "user asks Charlotte more about the meeting",
-            "hint_pt": "Did anyone say they hadn't finished?",
             "hint_en": "Did anyone say they hadn't finished?"
           }
         ],
@@ -699,23 +678,28 @@
       "listening_speaking": [
         {
           "text": "He said he would call me.",
-          "context": "will → would"
+          "context": "will → would",
+          "audio_url": "https://fnvjibzreepubageztoi.supabase.co/storage/v1/object/public/curriculum-audio/ls/inter/c8acaf325075adb7.flac"
         },
         {
           "text": "She said she could swim.",
-          "context": "can → could"
+          "context": "can → could",
+          "audio_url": "https://fnvjibzreepubageztoi.supabase.co/storage/v1/object/public/curriculum-audio/ls/inter/74b94e96858e8fda.flac"
         },
         {
           "text": "He said he might be late.",
-          "context": "may → might"
+          "context": "may → might",
+          "audio_url": "https://fnvjibzreepubageztoi.supabase.co/storage/v1/object/public/curriculum-audio/ls/inter/1bd8022a4ddfd55c.flac"
         },
         {
           "text": "She said she had to leave.",
-          "context": "must → had to"
+          "context": "must → had to",
+          "audio_url": "https://fnvjibzreepubageztoi.supabase.co/storage/v1/object/public/curriculum-audio/ls/inter/d7aebb9825026015.flac"
         },
         {
           "text": "He said he wouldn't come.",
-          "context": "won't → wouldn't"
+          "context": "won't → wouldn't",
+          "audio_url": "https://fnvjibzreepubageztoi.supabase.co/storage/v1/object/public/curriculum-audio/ls/inter/43e289d97242bc39.flac"
         }
       ],
       "roleplay": {
@@ -728,26 +712,20 @@
         "objectives": [
           {
             "id": 1,
-            "label_pt": "Reporte com 'would' (will)",
             "label_en": "Report with 'would' (will)",
             "hidden_prompt": "user uses 'X said he/she would + base'",
-            "hint_pt": "He said he would help me with the project.",
             "hint_en": "He said he would help me with the project."
           },
           {
             "id": 2,
-            "label_pt": "Reporte com 'could' (can)",
             "label_en": "Report with 'could' (can)",
             "hidden_prompt": "user uses 'X said he/she could + base'",
-            "hint_pt": "She said she could speak French fluently.",
             "hint_en": "She said she could speak French fluently."
           },
           {
             "id": 3,
-            "label_pt": "Reporte com 'might' ou 'had to'",
             "label_en": "Report with 'might' or 'had to'",
             "hidden_prompt": "user uses 'X said he/she might/had to + base'",
-            "hint_pt": "He said he might be late.",
             "hint_en": "He said he might be late."
           }
         ],
@@ -769,26 +747,20 @@
         "objectives": [
           {
             "id": 1,
-            "label_pt": "Reportar a promessa",
             "label_en": "Report the promise",
             "hidden_prompt": "user uses 'She said she would + base'",
-            "hint_pt": "She said she would visit you next month.",
             "hint_en": "She said she would visit you next month."
           },
           {
             "id": 2,
-            "label_pt": "Reportar outra informação modal",
             "label_en": "Report another modal info",
             "hidden_prompt": "user uses another 'said could/might/had to'",
-            "hint_pt": "She mentioned she might bring her sister.",
             "hint_en": "She mentioned she might bring her sister."
           },
           {
             "id": 3,
-            "label_pt": "Pergunta para Charlotte",
             "label_en": "Question for Charlotte",
             "hidden_prompt": "user asks Charlotte more about the visit",
-            "hint_pt": "Did she say when she would arrive?",
             "hint_en": "Did she say when she would arrive?"
           }
         ],
@@ -889,23 +861,28 @@
       "listening_speaking": [
         {
           "text": "He said he was tired that day.",
-          "context": "today → that day"
+          "context": "today → that day",
+          "audio_url": "https://fnvjibzreepubageztoi.supabase.co/storage/v1/object/public/curriculum-audio/ls/inter/ea139128279c8361.flac"
         },
         {
           "text": "She said she would come the next day.",
-          "context": "tomorrow → the next day"
+          "context": "tomorrow → the next day",
+          "audio_url": "https://fnvjibzreepubageztoi.supabase.co/storage/v1/object/public/curriculum-audio/ls/inter/69daed47e51b0c0a.flac"
         },
         {
           "text": "He said he had been there.",
-          "context": "here → there"
+          "context": "here → there",
+          "audio_url": "https://fnvjibzreepubageztoi.supabase.co/storage/v1/object/public/curriculum-audio/ls/inter/091758de5760221e.flac"
         },
         {
           "text": "She said she loved that song.",
-          "context": "this → that"
+          "context": "this → that",
+          "audio_url": "https://fnvjibzreepubageztoi.supabase.co/storage/v1/object/public/curriculum-audio/ls/inter/d627277e8df29839.flac"
         },
         {
           "text": "He mentioned he had seen it the day before.",
-          "context": "yesterday → the day before"
+          "context": "yesterday → the day before",
+          "audio_url": "https://fnvjibzreepubageztoi.supabase.co/storage/v1/object/public/curriculum-audio/ls/inter/f94e63fbd7725de6.flac"
         }
       ],
       "roleplay": {
@@ -918,26 +895,20 @@
         "objectives": [
           {
             "id": 1,
-            "label_pt": "Reporte com mudança de tempo (today/yesterday)",
             "label_en": "Report with time shift",
             "hidden_prompt": "user uses 'said... that day' or 'said... the day before'",
-            "hint_pt": "He said he was tired that day.",
             "hint_en": "He said he was tired that day."
           },
           {
             "id": 2,
-            "label_pt": "Reporte com 'the next day' ou 'the following week'",
             "label_en": "Report with 'the next day'",
             "hidden_prompt": "user uses 'said would + base + the next day/following week'",
-            "hint_pt": "She said she would come the next day.",
             "hint_en": "She said she would come the next day."
           },
           {
             "id": 3,
-            "label_pt": "Reporte com mudança de lugar (here → there)",
             "label_en": "Report with place shift",
             "hidden_prompt": "user uses 'said... there' instead of 'here'",
-            "hint_pt": "He said he had been there before.",
             "hint_en": "He said he had been there before."
           }
         ],
@@ -959,26 +930,20 @@
         "objectives": [
           {
             "id": 1,
-            "label_pt": "Reportar com shift de lugar",
             "label_en": "Report with place shift",
             "hidden_prompt": "user uses 'She said she was moving there'",
-            "hint_pt": "She said she was moving there.",
             "hint_en": "She said she was moving there."
           },
           {
             "id": 2,
-            "label_pt": "Reporte com shift de tempo",
             "label_en": "Report with time shift",
             "hidden_prompt": "user uses 'she said she would arrive the following week' or similar",
-            "hint_pt": "She said she would arrive the following month.",
             "hint_en": "She said she would arrive the following month."
           },
           {
             "id": 3,
-            "label_pt": "Perguntar à Charlotte",
             "label_en": "Ask Charlotte",
             "hidden_prompt": "user asks Charlotte more about the conversation",
-            "hint_pt": "Did she say why she was moving?",
             "hint_en": "Did she say why she was moving?"
           }
         ],

@@ -157,26 +157,20 @@
         "objectives": [
           {
             "id": 1,
-            "label_pt": "Hipótese com 'if I had + tempo/dinheiro'",
             "label_en": "Hypothetical with 'if I had + time/money'",
             "hidden_prompt": "user uses 'If I had + noun, I would + base'",
-            "hint_pt": "If I had more money, I would travel.",
             "hint_en": "If I had more money, I would travel."
           },
           {
             "id": 2,
-            "label_pt": "Hipótese com 'if I were + adjetivo/role'",
             "label_en": "Hypothetical with 'if I were'",
             "hidden_prompt": "user uses 'If I were + adj/noun, I would + base'",
-            "hint_pt": "If I were taller, I would play basketball.",
             "hint_en": "If I were taller, I would play basketball."
           },
           {
             "id": 3,
-            "label_pt": "Hipótese sobre outra pessoa ou contexto",
             "label_en": "Hypothetical about someone else",
             "hidden_prompt": "user uses 'If + 3rd person + past, would + base'",
-            "hint_pt": "If my brother lived closer, we would hang out more.",
             "hint_en": "If my brother lived closer, we would hang out more."
           }
         ],
@@ -198,26 +192,20 @@
         "objectives": [
           {
             "id": 1,
-            "label_pt": "Algo que mudaria",
             "label_en": "Something to change",
             "hidden_prompt": "user uses 'I would + base' for hypothetical change",
-            "hint_pt": "I would change my job.",
             "hint_en": "I would change my job."
           },
           {
             "id": 2,
-            "label_pt": "Hipótese mais elaborada com 'if'",
             "label_en": "Elaborate hypothetical with 'if'",
             "hidden_prompt": "user uses 'If + past simple, I would + base'",
-            "hint_pt": "If I had a year off, I would travel the world.",
             "hint_en": "If I had a year off, I would travel the world."
           },
           {
             "id": 3,
-            "label_pt": "Perguntar à Charlotte",
             "label_en": "Ask Charlotte",
             "hidden_prompt": "user asks 'How about you?' or 'What would you change?'",
-            "hint_pt": "How about you?",
             "hint_en": "How about you?"
           }
         ],
@@ -363,26 +351,20 @@
         "objectives": [
           {
             "id": 1,
-            "label_pt": "Wish com 'I wish I had' (possessão)",
             "label_en": "Wish with 'I wish I had'",
             "hidden_prompt": "user uses 'I wish I had + noun'",
-            "hint_pt": "I wish I had more energy.",
             "hint_en": "I wish I had more energy."
           },
           {
             "id": 2,
-            "label_pt": "Wish com 'I wish I were' (estado)",
             "label_en": "Wish with 'I wish I were'",
             "hidden_prompt": "user uses 'I wish I were + adj/noun'",
-            "hint_pt": "I wish I were less busy.",
             "hint_en": "I wish I were less busy."
           },
           {
             "id": 3,
-            "label_pt": "Wish com 'I wish I could' (habilidade)",
             "label_en": "Wish with 'I wish I could'",
             "hidden_prompt": "user uses 'I wish I could + base'",
-            "hint_pt": "I wish I could play the piano.",
             "hint_en": "I wish I could play the piano."
           }
         ],
@@ -404,26 +386,20 @@
         "objectives": [
           {
             "id": 1,
-            "label_pt": "Desejo sobre o presente",
             "label_en": "Present wish",
             "hidden_prompt": "user uses 'I wish + past simple' for present",
-            "hint_pt": "I wish I had more vacation days.",
             "hint_en": "I wish I had more vacation days."
           },
           {
             "id": 2,
-            "label_pt": "Outro desejo (could/were)",
             "label_en": "Another wish",
             "hidden_prompt": "user uses another wish structure",
-            "hint_pt": "I wish I could travel more.",
             "hint_en": "I wish I could travel more."
           },
           {
             "id": 3,
-            "label_pt": "Perguntar à Charlotte",
             "label_en": "Ask Charlotte",
             "hidden_prompt": "user asks 'How about you?' or 'What do you wish?'",
-            "hint_pt": "How about you?",
             "hint_en": "How about you?"
           }
         ],
@@ -569,26 +545,20 @@
         "objectives": [
           {
             "id": 1,
-            "label_pt": "Conselho com 'If I were you'",
             "label_en": "Advice with 'If I were you'",
             "hidden_prompt": "user uses 'If I were you, I would + base'",
-            "hint_pt": "If I were you, I would take the offer.",
             "hint_en": "If I were you, I would take the offer."
           },
           {
             "id": 2,
-            "label_pt": "Outro conselho",
             "label_en": "Another piece of advice",
             "hidden_prompt": "user uses another 'If I were you, I would' advice",
-            "hint_pt": "If I were you, I would talk to her directly.",
             "hint_en": "If I were you, I would talk to her directly."
           },
           {
             "id": 3,
-            "label_pt": "Conselho com 'in your position'",
             "label_en": "Advice with 'in your position'",
             "hidden_prompt": "user uses 'If I were in your position, I would'",
-            "hint_pt": "If I were in your position, I would wait.",
             "hint_en": "If I were in your position, I would wait."
           }
         ],
@@ -610,26 +580,20 @@
         "objectives": [
           {
             "id": 1,
-            "label_pt": "Conselho inicial",
             "label_en": "Initial advice",
             "hidden_prompt": "user uses 'If I were you, I would + base'",
-            "hint_pt": "If I were you, I would take the one closer to home.",
             "hint_en": "If I were you, I would take the one closer to home."
           },
           {
             "id": 2,
-            "label_pt": "Razão ou conselho adicional",
             "label_en": "Reason or additional advice",
             "hidden_prompt": "user adds another 'I would + base' or 'If I were you'",
-            "hint_pt": "I would think about long-term growth.",
             "hint_en": "I would think about long-term growth."
           },
           {
             "id": 3,
-            "label_pt": "Perguntar mais sobre o dilema",
             "label_en": "Ask more about the dilemma",
             "hidden_prompt": "user asks Charlotte a clarifying question",
-            "hint_pt": "What does your gut say?",
             "hint_en": "What does your gut say?"
           }
         ],
@@ -775,26 +739,20 @@
         "objectives": [
           {
             "id": 1,
-            "label_pt": "Pergunta hipotética com 'What would you do if?'",
             "label_en": "Hypothetical 'What would you do if?'",
             "hidden_prompt": "user asks 'What would you do if + past simple?'",
-            "hint_pt": "What would you do if you won a million dollars?",
             "hint_en": "What would you do if you won a million dollars?"
           },
           {
             "id": 2,
-            "label_pt": "Outra pergunta hipotética (Where/Who)",
             "label_en": "Another hypothetical (Where/Who)",
             "hidden_prompt": "user asks 'Where/Who/How would you + base + if + past?'",
-            "hint_pt": "Where would you go if you could travel anywhere?",
             "hint_en": "Where would you go if you could travel anywhere?"
           },
           {
             "id": 3,
-            "label_pt": "Pergunta yes/no com 'Would you'",
             "label_en": "Yes/no 'Would you' question",
             "hidden_prompt": "user asks 'Would you + base + if + past?'",
-            "hint_pt": "Would you change careers if you had the chance?",
             "hint_en": "Would you change careers if you had the chance?"
           }
         ],
@@ -816,26 +774,20 @@
         "objectives": [
           {
             "id": 1,
-            "label_pt": "Pergunta hipotética 1",
             "label_en": "Hypothetical question 1",
             "hidden_prompt": "user asks 'What would you do if + past simple?'",
-            "hint_pt": "What would you do if you had a year off?",
             "hint_en": "What would you do if you had a year off?"
           },
           {
             "id": 2,
-            "label_pt": "Pergunta hipotética 2 (different topic)",
             "label_en": "Hypothetical question 2",
             "hidden_prompt": "user asks another 'Would you?' or 'What would?'",
-            "hint_pt": "Would you move abroad if you had the chance?",
             "hint_en": "Would you move abroad if you had the chance?"
           },
           {
             "id": 3,
-            "label_pt": "Pergunta hipotética 3 (deep)",
             "label_en": "Hypothetical 3 (deeper)",
             "hidden_prompt": "user asks one more deep hypothetical",
-            "hint_pt": "What would you change if you could redo your career?",
             "hint_en": "What would you change if you could redo your career?"
           }
         ],
@@ -987,26 +939,20 @@
         "objectives": [
           {
             "id": 1,
-            "label_pt": "Wish sobre presente",
             "label_en": "Present wish",
             "hidden_prompt": "user uses 'I wish + past simple'",
-            "hint_pt": "I wish I had more free time.",
             "hint_en": "I wish I had more free time."
           },
           {
             "id": 2,
-            "label_pt": "Hipótese com 'if + past, would + base'",
             "label_en": "Hypothetical with 'if + past, would + base'",
             "hidden_prompt": "user uses 'If + past simple, would + base'",
-            "hint_pt": "If I had a sabbatical, I would write a book.",
             "hint_en": "If I had a sabbatical, I would write a book."
           },
           {
             "id": 3,
-            "label_pt": "Conselho com 'If I were you'",
             "label_en": "Advice with 'If I were you'",
             "hidden_prompt": "user uses 'If I were you, I would + base'",
-            "hint_pt": "If I were you, I would try a new hobby.",
             "hint_en": "If I were you, I would try a new hobby."
           }
         ],
@@ -1028,26 +974,20 @@
         "objectives": [
           {
             "id": 1,
-            "label_pt": "Mudança hipotética grande",
             "label_en": "Big hypothetical change",
             "hidden_prompt": "user uses 'If + past, I would + base' for big change",
-            "hint_pt": "If I could choose, I would live by the ocean.",
             "hint_en": "If I could choose, I would live by the ocean."
           },
           {
             "id": 2,
-            "label_pt": "Wish ou hipótese adicional",
             "label_en": "Additional wish or hypothetical",
             "hidden_prompt": "user uses 'I wish' or another hypothetical",
-            "hint_pt": "I wish I had more courage to try new things.",
             "hint_en": "I wish I had more courage to try new things."
           },
           {
             "id": 3,
-            "label_pt": "Perguntar à Charlotte",
             "label_en": "Ask Charlotte",
             "hidden_prompt": "user asks 'How about you?' or 'What would you change?'",
-            "hint_pt": "How about you?",
             "hint_en": "How about you?"
           }
         ],

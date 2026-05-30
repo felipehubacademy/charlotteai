@@ -123,23 +123,28 @@
       "listening_speaking": [
         {
           "text": "I should have studied harder.",
-          "context": "self-criticism"
+          "context": "self-criticism",
+          "audio_url": "https://fnvjibzreepubageztoi.supabase.co/storage/v1/object/public/curriculum-audio/ls/inter/972adb1ee51e3db0.flac"
         },
         {
           "text": "You should have told her.",
-          "context": "criticism of another"
+          "context": "criticism of another",
+          "audio_url": "https://fnvjibzreepubageztoi.supabase.co/storage/v1/object/public/curriculum-audio/ls/inter/7066341b3a4f89e6.flac"
         },
         {
           "text": "We shouldn't have left so late.",
-          "context": "regret about action"
+          "context": "regret about action",
+          "audio_url": "https://fnvjibzreepubageztoi.supabase.co/storage/v1/object/public/curriculum-audio/ls/inter/b38698aebd705088.flac"
         },
         {
           "text": "He should have apologized.",
-          "context": "moral criticism"
+          "context": "moral criticism",
+          "audio_url": "https://fnvjibzreepubageztoi.supabase.co/storage/v1/object/public/curriculum-audio/ls/inter/da542ab0fe414711.flac"
         },
         {
           "text": "I shouldn't have said that.",
-          "context": "self-regret"
+          "context": "self-regret",
+          "audio_url": "https://fnvjibzreepubageztoi.supabase.co/storage/v1/object/public/curriculum-audio/ls/inter/7e549e62e05d4cf6.flac"
         }
       ],
       "roleplay": {
@@ -152,26 +157,20 @@
         "objectives": [
           {
             "id": 1,
-            "label_pt": "Crítica com 'should have'",
             "label_en": "Criticism with 'should have'",
             "hidden_prompt": "user uses 'X should have + past participle'",
-            "hint_pt": "He should have apologized sooner.",
             "hint_en": "He should have apologized sooner."
           },
           {
             "id": 2,
-            "label_pt": "Crítica com 'shouldn't have'",
             "label_en": "Criticism with 'shouldn't have'",
             "hidden_prompt": "user uses 'X shouldn't have + past participle'",
-            "hint_pt": "She shouldn't have left without saying goodbye.",
             "hint_en": "She shouldn't have left without saying goodbye."
           },
           {
             "id": 3,
-            "label_pt": "Crítica/conselho retrospectivo extra",
             "label_en": "Additional retrospective advice",
             "hidden_prompt": "user uses another 'should/shouldn't have' construction",
-            "hint_pt": "They should have planned better.",
             "hint_en": "They should have planned better."
           }
         ],
@@ -193,26 +192,20 @@
         "objectives": [
           {
             "id": 1,
-            "label_pt": "Opinião com 'should have' ou 'shouldn't have'",
             "label_en": "Opinion with 'should/shouldn't have'",
             "hidden_prompt": "user uses 'you should have' or 'you shouldn't have'",
-            "hint_pt": "You shouldn't have sent it without thinking.",
             "hint_en": "You shouldn't have sent it without thinking."
           },
           {
             "id": 2,
-            "label_pt": "Alternativa retrospectiva",
             "label_en": "Alternative in retrospect",
             "hidden_prompt": "user suggests what she should have done instead",
-            "hint_pt": "You should have talked to him first.",
             "hint_en": "You should have talked to him first."
           },
           {
             "id": 3,
-            "label_pt": "Pergunta para Charlotte",
             "label_en": "Question for Charlotte",
             "hidden_prompt": "user asks Charlotte how she feels or what she'll do",
-            "hint_pt": "How do you feel about it now?",
             "hint_en": "How do you feel about it now?"
           }
         ],
@@ -324,23 +317,28 @@
       "listening_speaking": [
         {
           "text": "I could have called you.",
-          "context": "missed opportunity"
+          "context": "missed opportunity",
+          "audio_url": "https://fnvjibzreepubageztoi.supabase.co/storage/v1/object/public/curriculum-audio/ls/inter/1e601749a430d877.flac"
         },
         {
           "text": "She could have won.",
-          "context": "unrealized potential"
+          "context": "unrealized potential",
+          "audio_url": "https://fnvjibzreepubageztoi.supabase.co/storage/v1/object/public/curriculum-audio/ls/inter/9abba638b6e5ddd1.flac"
         },
         {
           "text": "He couldn't have known.",
-          "context": "impossibility"
+          "context": "impossibility",
+          "audio_url": "https://fnvjibzreepubageztoi.supabase.co/storage/v1/object/public/curriculum-audio/ls/inter/62b44d7d8fc330cd.flac"
         },
         {
           "text": "We could have stayed longer.",
-          "context": "choice not made"
+          "context": "choice not made",
+          "audio_url": "https://fnvjibzreepubageztoi.supabase.co/storage/v1/object/public/curriculum-audio/ls/inter/8665a3fb46cbdbea.flac"
         },
         {
           "text": "You could have asked me.",
-          "context": "missed help"
+          "context": "missed help",
+          "audio_url": "https://fnvjibzreepubageztoi.supabase.co/storage/v1/object/public/curriculum-audio/ls/inter/3bd824a8ef8b6dd0.flac"
         }
       ],
       "roleplay": {
@@ -353,26 +351,20 @@
         "objectives": [
           {
             "id": 1,
-            "label_pt": "Oportunidade perdida com 'could have'",
             "label_en": "Missed opportunity with 'could have'",
             "hidden_prompt": "user uses 'X could have + past participle'",
-            "hint_pt": "He could have won the prize.",
             "hint_en": "He could have won the prize."
           },
           {
             "id": 2,
-            "label_pt": "Outra possibilidade passada",
             "label_en": "Another past possibility",
             "hidden_prompt": "user uses another 'could have + past participle'",
-            "hint_pt": "She could have gotten the promotion.",
             "hint_en": "She could have gotten the promotion."
           },
           {
             "id": 3,
-            "label_pt": "Impossibilidade com 'couldn't have'",
             "label_en": "Impossibility with 'couldn't have'",
             "hidden_prompt": "user uses 'X couldn't have + past participle'",
-            "hint_pt": "They couldn't have arrived on time.",
             "hint_en": "They couldn't have arrived on time."
           }
         ],
@@ -394,26 +386,20 @@
         "objectives": [
           {
             "id": 1,
-            "label_pt": "Consequência possível com 'could have'",
             "label_en": "Possible consequence with 'could have'",
             "hidden_prompt": "user uses 'you could have + past participle'",
-            "hint_pt": "You could have missed the meeting entirely.",
             "hint_en": "You could have missed the meeting entirely."
           },
           {
             "id": 2,
-            "label_pt": "Outra possibilidade ou alívio",
             "label_en": "Another possibility or relief",
             "hidden_prompt": "user uses another 'could have' or describes relief",
-            "hint_pt": "You could have lost a lot of money.",
             "hint_en": "You could have lost a lot of money."
           },
           {
             "id": 3,
-            "label_pt": "Pergunta para Charlotte",
             "label_en": "Question for Charlotte",
             "hidden_prompt": "user asks Charlotte 'How did you make it?' or similar",
-            "hint_pt": "How did you make it in time?",
             "hint_en": "How did you make it in time?"
           }
         ],
@@ -525,23 +511,28 @@
       "listening_speaking": [
         {
           "text": "She must have left already.",
-          "context": "strong inference (positive)"
+          "context": "strong inference (positive)",
+          "audio_url": "https://fnvjibzreepubageztoi.supabase.co/storage/v1/object/public/curriculum-audio/ls/inter/c312b4077ec6c2b4.flac"
         },
         {
           "text": "He can't have known.",
-          "context": "strong impossibility"
+          "context": "strong impossibility",
+          "audio_url": "https://fnvjibzreepubageztoi.supabase.co/storage/v1/object/public/curriculum-audio/ls/inter/9f9bdd40768062e9.flac"
         },
         {
           "text": "It must have rained.",
-          "context": "physical evidence inference"
+          "context": "physical evidence inference",
+          "audio_url": "https://fnvjibzreepubageztoi.supabase.co/storage/v1/object/public/curriculum-audio/ls/inter/395af79d94e862f7.flac"
         },
         {
           "text": "They must have enjoyed it.",
-          "context": "positive inference"
+          "context": "positive inference",
+          "audio_url": "https://fnvjibzreepubageztoi.supabase.co/storage/v1/object/public/curriculum-audio/ls/inter/6326eb50cde76307.flac"
         },
         {
           "text": "She can't have heard.",
-          "context": "negative strong inference"
+          "context": "negative strong inference",
+          "audio_url": "https://fnvjibzreepubageztoi.supabase.co/storage/v1/object/public/curriculum-audio/ls/inter/b9687c368a196d92.flac"
         }
       ],
       "roleplay": {
@@ -554,26 +545,20 @@
         "objectives": [
           {
             "id": 1,
-            "label_pt": "Dedução com 'must have'",
             "label_en": "Deduction with 'must have'",
             "hidden_prompt": "user uses 'X must have + past participle'",
-            "hint_pt": "She must have forgotten the keys.",
             "hint_en": "She must have forgotten the keys."
           },
           {
             "id": 2,
-            "label_pt": "Dedução negativa com 'can't have'",
             "label_en": "Negative deduction with 'can't have'",
             "hidden_prompt": "user uses 'X can't have + past participle'",
-            "hint_pt": "He can't have done it alone.",
             "hint_en": "He can't have done it alone."
           },
           {
             "id": 3,
-            "label_pt": "Outra dedução forte",
             "label_en": "Another strong deduction",
             "hidden_prompt": "user uses another 'must have' or 'can't have'",
-            "hint_pt": "They must have left in a hurry.",
             "hint_en": "They must have left in a hurry."
           }
         ],
@@ -595,26 +580,20 @@
         "objectives": [
           {
             "id": 1,
-            "label_pt": "Especulação positiva com 'must have'",
             "label_en": "Positive speculation with 'must have'",
             "hidden_prompt": "user uses 'he must have + past participle'",
-            "hint_pt": "He must have broken up with someone.",
             "hint_en": "He must have broken up with someone."
           },
           {
             "id": 2,
-            "label_pt": "Especulação negativa com 'can't have'",
             "label_en": "Negative speculation with 'can't have'",
             "hidden_prompt": "user uses 'he can't have + past participle'",
-            "hint_pt": "He can't have planned for that.",
             "hint_en": "He can't have planned for that."
           },
           {
             "id": 3,
-            "label_pt": "Comentário ou pergunta",
             "label_en": "Comment or question",
             "hidden_prompt": "user comments or asks Charlotte more",
-            "hint_pt": "Did you talk to him?",
             "hint_en": "Did you talk to him?"
           }
         ],
@@ -726,23 +705,28 @@
       "listening_speaking": [
         {
           "text": "She might have missed the bus.",
-          "context": "weak speculation"
+          "context": "weak speculation",
+          "audio_url": "https://fnvjibzreepubageztoi.supabase.co/storage/v1/object/public/curriculum-audio/ls/inter/9392e2f6dce0a3e2.flac"
         },
         {
           "text": "He might have forgotten.",
-          "context": "uncertain past"
+          "context": "uncertain past",
+          "audio_url": "https://fnvjibzreepubageztoi.supabase.co/storage/v1/object/public/curriculum-audio/ls/inter/5b816e27c9db287b.flac"
         },
         {
           "text": "We needn't have booked it.",
-          "context": "unnecessary action done"
+          "context": "unnecessary action done",
+          "audio_url": "https://fnvjibzreepubageztoi.supabase.co/storage/v1/object/public/curriculum-audio/ls/inter/1e9fb9fc7a7d0821.flac"
         },
         {
           "text": "You needn't have come — but thanks.",
-          "context": "unnecessary but appreciated"
+          "context": "unnecessary but appreciated",
+          "audio_url": "https://fnvjibzreepubageztoi.supabase.co/storage/v1/object/public/curriculum-audio/ls/inter/9b5bed6b5948c62b.flac"
         },
         {
           "text": "They might have arrived already.",
-          "context": "uncertain present"
+          "context": "uncertain present",
+          "audio_url": "https://fnvjibzreepubageztoi.supabase.co/storage/v1/object/public/curriculum-audio/ls/inter/4b12148f6154bb7a.flac"
         }
       ],
       "roleplay": {
@@ -755,26 +739,20 @@
         "objectives": [
           {
             "id": 1,
-            "label_pt": "Especulação com 'might have'",
             "label_en": "Speculation with 'might have'",
             "hidden_prompt": "user uses 'X might have + past participle'",
-            "hint_pt": "She might have lost her phone.",
             "hint_en": "She might have lost her phone."
           },
           {
             "id": 2,
-            "label_pt": "Comentário com 'needn't have'",
             "label_en": "Comment with 'needn't have'",
             "hidden_prompt": "user uses 'X needn't have + past participle'",
-            "hint_pt": "You needn't have apologized — it was fine.",
             "hint_en": "You needn't have apologized — it was fine."
           },
           {
             "id": 3,
-            "label_pt": "Outra especulação",
             "label_en": "Another speculation",
             "hidden_prompt": "user uses another 'might have' or 'needn't have'",
-            "hint_pt": "He might have changed his mind.",
             "hint_en": "He might have changed his mind."
           }
         ],
@@ -796,26 +774,20 @@
         "objectives": [
           {
             "id": 1,
-            "label_pt": "Especulação suave",
             "label_en": "Soft speculation",
             "hidden_prompt": "user uses 'they might have + past participle'",
-            "hint_pt": "They might have noticed.",
             "hint_en": "They might have noticed."
           },
           {
             "id": 2,
-            "label_pt": "Tranquilizar com 'needn't have worried'",
             "label_en": "Reassure with 'needn't have worried'",
             "hidden_prompt": "user uses 'you needn't have + past participle'",
-            "hint_pt": "You needn't have worried — it happens.",
             "hint_en": "You needn't have worried — it happens."
           },
           {
             "id": 3,
-            "label_pt": "Pergunta para Charlotte",
             "label_en": "Question for Charlotte",
             "hidden_prompt": "user asks Charlotte a follow-up",
-            "hint_pt": "Did anyone reply?",
             "hint_en": "Did anyone reply?"
           }
         ],
@@ -925,23 +897,28 @@
       "listening_speaking": [
         {
           "text": "I should have called sooner.",
-          "context": "regret"
+          "context": "regret",
+          "audio_url": "https://fnvjibzreepubageztoi.supabase.co/storage/v1/object/public/curriculum-audio/ls/inter/83df82dd1b6629e1.flac"
         },
         {
           "text": "She must have left.",
-          "context": "strong inference"
+          "context": "strong inference",
+          "audio_url": "https://fnvjibzreepubageztoi.supabase.co/storage/v1/object/public/curriculum-audio/ls/inter/dcd8add648d94c96.flac"
         },
         {
           "text": "You could have asked.",
-          "context": "missed help"
+          "context": "missed help",
+          "audio_url": "https://fnvjibzreepubageztoi.supabase.co/storage/v1/object/public/curriculum-audio/ls/inter/fcbcb44c27772b34.flac"
         },
         {
           "text": "They might have forgotten.",
-          "context": "uncertain speculation"
+          "context": "uncertain speculation",
+          "audio_url": "https://fnvjibzreepubageztoi.supabase.co/storage/v1/object/public/curriculum-audio/ls/inter/98fbfea995564226.flac"
         },
         {
           "text": "We needn't have rushed.",
-          "context": "unnecessary action"
+          "context": "unnecessary action",
+          "audio_url": "https://fnvjibzreepubageztoi.supabase.co/storage/v1/object/public/curriculum-audio/ls/inter/c23afa5d3d705607.flac"
         }
       ],
       "roleplay": {
@@ -954,26 +931,20 @@
         "objectives": [
           {
             "id": 1,
-            "label_pt": "Comentário com 'should/shouldn't have'",
             "label_en": "Comment with 'should/shouldn't have'",
             "hidden_prompt": "user uses 'should have' or 'shouldn't have'",
-            "hint_pt": "You should have planned ahead.",
             "hint_en": "You should have planned ahead."
           },
           {
             "id": 2,
-            "label_pt": "Inferência ou especulação com 'must/might have'",
             "label_en": "Inference or speculation with 'must/might have'",
             "hidden_prompt": "user uses 'must have' or 'might have'",
-            "hint_pt": "You must have been exhausted.",
             "hint_en": "You must have been exhausted."
           },
           {
             "id": 3,
-            "label_pt": "Comentário com 'could/needn't have'",
             "label_en": "Comment with 'could/needn't have'",
             "hidden_prompt": "user uses 'could have' or 'needn't have'",
-            "hint_pt": "You could have asked for help.",
             "hint_en": "You could have asked for help."
           }
         ],
@@ -995,26 +966,20 @@
         "objectives": [
           {
             "id": 1,
-            "label_pt": "Crítica com 'should/shouldn't have'",
             "label_en": "Criticism with 'should/shouldn't have'",
             "hidden_prompt": "user uses 'should/shouldn't have'",
-            "hint_pt": "She should have apologized.",
             "hint_en": "She should have apologized."
           },
           {
             "id": 2,
-            "label_pt": "Especulação ou inferência",
             "label_en": "Speculation or inference",
             "hidden_prompt": "user uses 'might have' or 'must have'",
-            "hint_pt": "She might have had a real emergency.",
             "hint_en": "She might have had a real emergency."
           },
           {
             "id": 3,
-            "label_pt": "Pergunta ou comentário extra",
             "label_en": "Question or extra comment",
             "hidden_prompt": "user asks 'Did you talk to her?' or adds another modal perfect",
-            "hint_pt": "Did you talk to her about it?",
             "hint_en": "Did you talk to her about it?"
           }
         ],

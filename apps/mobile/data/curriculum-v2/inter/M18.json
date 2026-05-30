@@ -115,23 +115,28 @@
       "listening_speaking": [
         {
           "text": "He asked if I was tired.",
-          "context": "basic yes/no reported"
+          "context": "basic yes/no reported",
+          "audio_url": "https://fnvjibzreepubageztoi.supabase.co/storage/v1/object/public/curriculum-audio/ls/inter/2e1813e0870d8bc0.flac"
         },
         {
           "text": "She asked if I lived there.",
-          "context": "yes/no with place"
+          "context": "yes/no with place",
+          "audio_url": "https://fnvjibzreepubageztoi.supabase.co/storage/v1/object/public/curriculum-audio/ls/inter/6aabb5beb7cc8d41.flac"
         },
         {
           "text": "He asked if I had finished.",
-          "context": "present perfect → past perfect"
+          "context": "present perfect → past perfect",
+          "audio_url": "https://fnvjibzreepubageztoi.supabase.co/storage/v1/object/public/curriculum-audio/ls/inter/ea83d9d62739a45c.flac"
         },
         {
           "text": "She asked if I would come.",
-          "context": "will → would"
+          "context": "will → would",
+          "audio_url": "https://fnvjibzreepubageztoi.supabase.co/storage/v1/object/public/curriculum-audio/ls/inter/beb6f9c112c6ed79.flac"
         },
         {
           "text": "He asked if I could swim.",
-          "context": "can → could"
+          "context": "can → could",
+          "audio_url": "https://fnvjibzreepubageztoi.supabase.co/storage/v1/object/public/curriculum-audio/ls/inter/909fd3bf5ce351ef.flac"
         }
       ],
       "roleplay": {
@@ -144,26 +149,20 @@
         "objectives": [
           {
             "id": 1,
-            "label_pt": "Pergunta yes/no reportada (presente → passado)",
             "label_en": "Yes/no reported (present → past)",
             "hidden_prompt": "user uses 'X asked if I + past tense'",
-            "hint_pt": "She asked if I had time.",
             "hint_en": "She asked if I had time."
           },
           {
             "id": 2,
-            "label_pt": "Outra pergunta yes/no (modal)",
             "label_en": "Another yes/no (modal)",
             "hidden_prompt": "user uses 'asked if I could/would'",
-            "hint_pt": "He asked if I could help him.",
             "hint_en": "He asked if I could help him."
           },
           {
             "id": 3,
-            "label_pt": "Pergunta com 'whether' (sinônimo formal de 'if')",
             "label_en": "Question with 'whether'",
             "hidden_prompt": "user uses 'asked whether'",
-            "hint_pt": "She wanted to know whether I had read the book.",
             "hint_en": "She wanted to know whether I had read the book."
           }
         ],
@@ -185,26 +184,20 @@
         "objectives": [
           {
             "id": 1,
-            "label_pt": "Reportar a pergunta da entrevista",
             "label_en": "Report the interview question",
             "hidden_prompt": "user uses 'She asked if you had experience'",
-            "hint_pt": "She asked if you had experience with project management.",
             "hint_en": "She asked if you had experience with project management."
           },
           {
             "id": 2,
-            "label_pt": "Reportar outra pergunta",
             "label_en": "Report another question",
             "hidden_prompt": "user reports another yes/no question",
-            "hint_pt": "She also asked if you could start in two weeks.",
             "hint_en": "She also asked if you could start in two weeks."
           },
           {
             "id": 3,
-            "label_pt": "Perguntar à Charlotte",
             "label_en": "Ask Charlotte",
             "hidden_prompt": "user asks about the outcome",
-            "hint_pt": "Did you get the job?",
             "hint_en": "Did you get the job?"
           }
         ],
@@ -307,23 +300,28 @@
       "listening_speaking": [
         {
           "text": "He asked where I lived.",
-          "context": "where + statement"
+          "context": "where + statement",
+          "audio_url": "https://fnvjibzreepubageztoi.supabase.co/storage/v1/object/public/curriculum-audio/ls/inter/88eb0a35b3d93e8b.flac"
         },
         {
           "text": "She asked what time it was.",
-          "context": "what + statement"
+          "context": "what + statement",
+          "audio_url": "https://fnvjibzreepubageztoi.supabase.co/storage/v1/object/public/curriculum-audio/ls/inter/3a027880d838d880.flac"
         },
         {
           "text": "He asked how I did it.",
-          "context": "how + statement"
+          "context": "how + statement",
+          "audio_url": "https://fnvjibzreepubageztoi.supabase.co/storage/v1/object/public/curriculum-audio/ls/inter/65b9768d2997ccfd.flac"
         },
         {
           "text": "She asked why I was late.",
-          "context": "why + statement"
+          "context": "why + statement",
+          "audio_url": "https://fnvjibzreepubageztoi.supabase.co/storage/v1/object/public/curriculum-audio/ls/inter/3db16b6d789687a4.flac"
         },
         {
           "text": "He asked when I would arrive.",
-          "context": "when + would"
+          "context": "when + would",
+          "audio_url": "https://fnvjibzreepubageztoi.supabase.co/storage/v1/object/public/curriculum-audio/ls/inter/32b88cc859f2df17.flac"
         }
       ],
       "roleplay": {
@@ -336,26 +334,20 @@
         "objectives": [
           {
             "id": 1,
-            "label_pt": "Reporte com 'where/when'",
             "label_en": "Report with 'where/when'",
             "hidden_prompt": "user uses 'X asked where/when I + past tense'",
-            "hint_pt": "He asked where I worked.",
             "hint_en": "He asked where I worked."
           },
           {
             "id": 2,
-            "label_pt": "Reporte com 'what/how'",
             "label_en": "Report with 'what/how'",
             "hidden_prompt": "user uses 'X asked what/how + subject + past tense'",
-            "hint_pt": "She asked how I had learned English.",
             "hint_en": "She asked how I had learned English."
           },
           {
             "id": 3,
-            "label_pt": "Reporte com 'why/who'",
             "label_en": "Report with 'why/who'",
             "hidden_prompt": "user uses 'X asked why/who + subject + past tense'",
-            "hint_pt": "He asked why I had moved.",
             "hint_en": "He asked why I had moved."
           }
         ],
@@ -377,26 +369,20 @@
         "objectives": [
           {
             "id": 1,
-            "label_pt": "Reportar a pergunta dele",
             "label_en": "Report his question",
             "hidden_prompt": "user uses 'He asked why you had missed the meeting'",
-            "hint_pt": "He asked why you had missed the meeting.",
             "hint_en": "He asked why you had missed the meeting."
           },
           {
             "id": 2,
-            "label_pt": "Outra WH-pergunta",
             "label_en": "Another WH-question",
             "hidden_prompt": "user reports another WH-question",
-            "hint_pt": "He also asked what you had been working on.",
             "hint_en": "He also asked what you had been working on."
           },
           {
             "id": 3,
-            "label_pt": "Perguntar à Charlotte",
             "label_en": "Ask Charlotte",
             "hidden_prompt": "user asks Charlotte for more details",
-            "hint_pt": "What did you say?",
             "hint_en": "What did you say?"
           }
         ],
@@ -499,23 +485,28 @@
       "listening_speaking": [
         {
           "text": "He told me to close the door.",
-          "context": "direct command"
+          "context": "direct command",
+          "audio_url": "https://fnvjibzreepubageztoi.supabase.co/storage/v1/object/public/curriculum-audio/ls/inter/5769563f1a73fada.flac"
         },
         {
           "text": "She told me not to wait.",
-          "context": "negative command"
+          "context": "negative command",
+          "audio_url": "https://fnvjibzreepubageztoi.supabase.co/storage/v1/object/public/curriculum-audio/ls/inter/d01428985650bf4c.flac"
         },
         {
           "text": "He told us to be quiet.",
-          "context": "be + adjective"
+          "context": "be + adjective",
+          "audio_url": "https://fnvjibzreepubageztoi.supabase.co/storage/v1/object/public/curriculum-audio/ls/inter/5cb14949c643471f.flac"
         },
         {
           "text": "She told them not to speak loudly.",
-          "context": "negative + adverb"
+          "context": "negative + adverb",
+          "audio_url": "https://fnvjibzreepubageztoi.supabase.co/storage/v1/object/public/curriculum-audio/ls/inter/a6e08d4fbed1743e.flac"
         },
         {
           "text": "He told me to call him later.",
-          "context": "command + adverb"
+          "context": "command + adverb",
+          "audio_url": "https://fnvjibzreepubageztoi.supabase.co/storage/v1/object/public/curriculum-audio/ls/inter/681715663d880365.flac"
         }
       ],
       "roleplay": {
@@ -528,26 +519,20 @@
         "objectives": [
           {
             "id": 1,
-            "label_pt": "Comando com 'told me to'",
             "label_en": "Command with 'told me to'",
             "hidden_prompt": "user uses 'X told me to + base'",
-            "hint_pt": "My boss told me to send the report.",
             "hint_en": "My boss told me to send the report."
           },
           {
             "id": 2,
-            "label_pt": "Comando negativo 'told me not to'",
             "label_en": "Negative command 'told me not to'",
             "hidden_prompt": "user uses 'X told me not to + base'",
-            "hint_pt": "My mom told me not to worry.",
             "hint_en": "My mom told me not to worry."
           },
           {
             "id": 3,
-            "label_pt": "Outro comando reportado",
             "label_en": "Another reported command",
             "hidden_prompt": "user uses another 'told + person + to + base'",
-            "hint_pt": "The doctor told me to drink more water.",
             "hint_en": "The doctor told me to drink more water."
           }
         ],
@@ -569,26 +554,20 @@
         "objectives": [
           {
             "id": 1,
-            "label_pt": "Reportar a ordem dela",
             "label_en": "Report her command",
             "hidden_prompt": "user uses 'She told you to exercise more'",
-            "hint_pt": "She told you to exercise more.",
             "hint_en": "She told you to exercise more."
           },
           {
             "id": 2,
-            "label_pt": "Outra ordem reportada",
             "label_en": "Another reported command",
             "hidden_prompt": "user reports another command",
-            "hint_pt": "She also told you to drink less coffee.",
             "hint_en": "She also told you to drink less coffee."
           },
           {
             "id": 3,
-            "label_pt": "Perguntar à Charlotte",
             "label_en": "Ask Charlotte",
             "hidden_prompt": "user asks Charlotte if she'll follow the orders",
-            "hint_pt": "Are you going to follow her advice?",
             "hint_en": "Are you going to follow her advice?"
           }
         ],
@@ -691,23 +670,28 @@
       "listening_speaking": [
         {
           "text": "She asked me to help her.",
-          "context": "polite request"
+          "context": "polite request",
+          "audio_url": "https://fnvjibzreepubageztoi.supabase.co/storage/v1/object/public/curriculum-audio/ls/inter/44a48b4f7e74dcb6.flac"
         },
         {
           "text": "He asked me not to tell.",
-          "context": "negative request"
+          "context": "negative request",
+          "audio_url": "https://fnvjibzreepubageztoi.supabase.co/storage/v1/object/public/curriculum-audio/ls/inter/6de673d59fddb519.flac"
         },
         {
           "text": "She warned me to be careful.",
-          "context": "warning"
+          "context": "warning",
+          "audio_url": "https://fnvjibzreepubageztoi.supabase.co/storage/v1/object/public/curriculum-audio/ls/inter/34e72159d5d638bd.flac"
         },
         {
           "text": "He begged me to stay.",
-          "context": "emotional plea"
+          "context": "emotional plea",
+          "audio_url": "https://fnvjibzreepubageztoi.supabase.co/storage/v1/object/public/curriculum-audio/ls/inter/5e0d98a00fb32fd0.flac"
         },
         {
           "text": "She urged me to apply.",
-          "context": "encouragement"
+          "context": "encouragement",
+          "audio_url": "https://fnvjibzreepubageztoi.supabase.co/storage/v1/object/public/curriculum-audio/ls/inter/12c0b919a617739e.flac"
         }
       ],
       "roleplay": {
@@ -720,26 +704,20 @@
         "objectives": [
           {
             "id": 1,
-            "label_pt": "Pedido com 'asked me to'",
             "label_en": "Request with 'asked me to'",
             "hidden_prompt": "user uses 'X asked me to + base'",
-            "hint_pt": "A friend asked me to drive him to the airport.",
             "hint_en": "A friend asked me to drive him to the airport."
           },
           {
             "id": 2,
-            "label_pt": "Aviso com 'warned me to'",
             "label_en": "Warning with 'warned me to'",
             "hidden_prompt": "user uses 'X warned me to/not to + base'",
-            "hint_pt": "My mom warned me not to overwork.",
             "hint_en": "My mom warned me not to overwork."
           },
           {
             "id": 3,
-            "label_pt": "Súplica com 'begged me to'",
             "label_en": "Plea with 'begged me to'",
             "hidden_prompt": "user uses 'X begged me to + base'",
-            "hint_pt": "She begged me to stay one more day.",
             "hint_en": "She begged me to stay one more day."
           }
         ],
@@ -761,26 +739,20 @@
         "objectives": [
           {
             "id": 1,
-            "label_pt": "Reportar o pedido da chefe",
             "label_en": "Report the boss's request",
             "hidden_prompt": "user uses 'She asked you to take on extra work'",
-            "hint_pt": "She asked you to take on extra work.",
             "hint_en": "She asked you to take on extra work."
           },
           {
             "id": 2,
-            "label_pt": "Reportar outro pedido com verbo diferente",
             "label_en": "Report another request with different verb",
             "hidden_prompt": "user uses 'warned/begged/urged + person + to + base'",
-            "hint_pt": "Your friend begged you to take a vacation.",
             "hint_en": "Your friend begged you to take a vacation."
           },
           {
             "id": 3,
-            "label_pt": "Perguntar à Charlotte",
             "label_en": "Ask Charlotte",
             "hidden_prompt": "user asks Charlotte how she handled it",
-            "hint_pt": "How did you handle all of it?",
             "hint_en": "How did you handle all of it?"
           }
         ],
@@ -881,23 +853,28 @@
       "listening_speaking": [
         {
           "text": "She said she was tired.",
-          "context": "statement"
+          "context": "statement",
+          "audio_url": "https://fnvjibzreepubageztoi.supabase.co/storage/v1/object/public/curriculum-audio/ls/inter/ec248c5285f17e99.flac"
         },
         {
           "text": "He asked if I was ready.",
-          "context": "yes/no question"
+          "context": "yes/no question",
+          "audio_url": "https://fnvjibzreepubageztoi.supabase.co/storage/v1/object/public/curriculum-audio/ls/inter/b4460fd1558fabbc.flac"
         },
         {
           "text": "She told me to close the door.",
-          "context": "command"
+          "context": "command",
+          "audio_url": "https://fnvjibzreepubageztoi.supabase.co/storage/v1/object/public/curriculum-audio/ls/inter/9997048c8e9fe2fb.flac"
         },
         {
           "text": "He asked where I lived.",
-          "context": "WH-question"
+          "context": "WH-question",
+          "audio_url": "https://fnvjibzreepubageztoi.supabase.co/storage/v1/object/public/curriculum-audio/ls/inter/88eb0a35b3d93e8b.flac"
         },
         {
           "text": "She begged me to stay.",
-          "context": "emotional request"
+          "context": "emotional request",
+          "audio_url": "https://fnvjibzreepubageztoi.supabase.co/storage/v1/object/public/curriculum-audio/ls/inter/77d1c8cc371d78c7.flac"
         }
       ],
       "roleplay": {
@@ -910,26 +887,20 @@
         "objectives": [
           {
             "id": 1,
-            "label_pt": "Reporte de afirmação",
             "label_en": "Report a statement",
             "hidden_prompt": "user uses 'X said (that) + past tense'",
-            "hint_pt": "She said she had been busy.",
             "hint_en": "She said she had been busy."
           },
           {
             "id": 2,
-            "label_pt": "Reporte de pergunta",
             "label_en": "Report a question",
             "hidden_prompt": "user uses 'X asked if/where/what + statement order'",
-            "hint_pt": "He asked where I had gone.",
             "hint_en": "He asked where I had gone."
           },
           {
             "id": 3,
-            "label_pt": "Reporte de comando",
             "label_en": "Report a command",
             "hidden_prompt": "user uses 'X told me to/not to + base'",
-            "hint_pt": "She told me to call her later.",
             "hint_en": "She told me to call her later."
           }
         ],
@@ -951,26 +922,20 @@
         "objectives": [
           {
             "id": 1,
-            "label_pt": "Reportar a pergunta",
             "label_en": "Report the question",
             "hidden_prompt": "user uses 'She asked if you were coming for dinner'",
-            "hint_pt": "She asked if you were coming for dinner.",
             "hint_en": "She asked if you were coming for dinner."
           },
           {
             "id": 2,
-            "label_pt": "Reportar o comando",
             "label_en": "Report the command",
             "hidden_prompt": "user uses 'She told you to bring dessert'",
-            "hint_pt": "She also told you to bring dessert.",
             "hint_en": "She also told you to bring dessert."
           },
           {
             "id": 3,
-            "label_pt": "Perguntar à Charlotte",
             "label_en": "Ask Charlotte",
             "hidden_prompt": "user asks Charlotte more",
-            "hint_pt": "What else did she say?",
             "hint_en": "What else did she say?"
           }
         ],

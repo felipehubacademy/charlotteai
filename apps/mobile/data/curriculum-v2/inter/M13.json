@@ -121,23 +121,28 @@
       "listening_speaking": [
         {
           "text": "If I had known, I would have helped.",
-          "context": "alternative past"
+          "context": "alternative past",
+          "audio_url": "https://fnvjibzreepubageztoi.supabase.co/storage/v1/object/public/curriculum-audio/ls/inter/6745f07640b9f4a8.flac"
         },
         {
           "text": "She would have called if she had had time.",
-          "context": "missed opportunity"
+          "context": "missed opportunity",
+          "audio_url": "https://fnvjibzreepubageztoi.supabase.co/storage/v1/object/public/curriculum-audio/ls/inter/9365c57300430113.flac"
         },
         {
           "text": "We wouldn't have missed the train if we had left earlier.",
-          "context": "alternative outcome"
+          "context": "alternative outcome",
+          "audio_url": "https://fnvjibzreepubageztoi.supabase.co/storage/v1/object/public/curriculum-audio/ls/inter/5214316d87c5b379.flac"
         },
         {
           "text": "He would have come if you had invited him.",
-          "context": "counterfactual"
+          "context": "counterfactual",
+          "audio_url": "https://fnvjibzreepubageztoi.supabase.co/storage/v1/object/public/curriculum-audio/ls/inter/86786754666aabb5.flac"
         },
         {
           "text": "If they had asked, I would have said yes.",
-          "context": "hypothetical past response"
+          "context": "hypothetical past response",
+          "audio_url": "https://fnvjibzreepubageztoi.supabase.co/storage/v1/object/public/curriculum-audio/ls/inter/83b529d86edc9370.flac"
         }
       ],
       "roleplay": {
@@ -150,26 +155,20 @@
         "objectives": [
           {
             "id": 1,
-            "label_pt": "Hipótese sobre o passado com 'if I had known'",
             "label_en": "Past hypothetical with 'if I had known'",
             "hidden_prompt": "user uses 'If I had known, I would have + past participle'",
-            "hint_pt": "If I had known, I would have come earlier.",
             "hint_en": "If I had known, I would have come earlier."
           },
           {
             "id": 2,
-            "label_pt": "Outra hipótese (different verb)",
             "label_en": "Another past hypothetical",
             "hidden_prompt": "user uses another 'If + past perfect, would have + past participle'",
-            "hint_pt": "If they had told me, I would have prepared better.",
             "hint_en": "If they had told me, I would have prepared better."
           },
           {
             "id": 3,
-            "label_pt": "Hipótese negativa (wouldn't have)",
             "label_en": "Negative hypothetical (wouldn't have)",
             "hidden_prompt": "user uses 'I wouldn't have + past participle if...'",
-            "hint_pt": "I wouldn't have taken the job if I had known.",
             "hint_en": "I wouldn't have taken the job if I had known."
           }
         ],
@@ -191,26 +190,20 @@
         "objectives": [
           {
             "id": 1,
-            "label_pt": "Algo que faria diferente",
             "label_en": "Something to do differently",
             "hidden_prompt": "user uses 'I would have + past participle'",
-            "hint_pt": "I would have traveled more.",
             "hint_en": "I would have traveled more."
           },
           {
             "id": 2,
-            "label_pt": "Com condição 'if + past perfect'",
             "label_en": "Condition with 'if + past perfect'",
             "hidden_prompt": "user uses 'if I had + past participle'",
-            "hint_pt": "If I had saved more, I would have traveled.",
             "hint_en": "If I had saved more, I would have traveled."
           },
           {
             "id": 3,
-            "label_pt": "Perguntar à Charlotte",
             "label_en": "Ask Charlotte",
             "hidden_prompt": "user asks 'How about you?' or 'What would you have done?'",
-            "hint_pt": "What would you have done differently?",
             "hint_en": "What would you have done differently?"
           }
         ],
@@ -322,23 +315,28 @@
       "listening_speaking": [
         {
           "text": "I wish I had studied harder.",
-          "context": "education regret"
+          "context": "education regret",
+          "audio_url": "https://fnvjibzreepubageztoi.supabase.co/storage/v1/object/public/curriculum-audio/ls/inter/bfb7ef3fb60b4493.flac"
         },
         {
           "text": "She wishes she had taken the offer.",
-          "context": "career regret"
+          "context": "career regret",
+          "audio_url": "https://fnvjibzreepubageztoi.supabase.co/storage/v1/object/public/curriculum-audio/ls/inter/06e6114681acc2b1.flac"
         },
         {
           "text": "If only we had left earlier.",
-          "context": "timing regret"
+          "context": "timing regret",
+          "audio_url": "https://fnvjibzreepubageztoi.supabase.co/storage/v1/object/public/curriculum-audio/ls/inter/bfdd19741d1e6058.flac"
         },
         {
           "text": "He wishes he had called you back.",
-          "context": "relationship regret"
+          "context": "relationship regret",
+          "audio_url": "https://fnvjibzreepubageztoi.supabase.co/storage/v1/object/public/curriculum-audio/ls/inter/538dd02c3debc328.flac"
         },
         {
           "text": "I wish I had listened to my parents.",
-          "context": "life lesson regret"
+          "context": "life lesson regret",
+          "audio_url": "https://fnvjibzreepubageztoi.supabase.co/storage/v1/object/public/curriculum-audio/ls/inter/b26039a3e371ca65.flac"
         }
       ],
       "roleplay": {
@@ -351,26 +349,20 @@
         "objectives": [
           {
             "id": 1,
-            "label_pt": "Arrependimento com 'I wish I had'",
             "label_en": "Regret with 'I wish I had'",
             "hidden_prompt": "user uses 'I wish I had + past participle'",
-            "hint_pt": "I wish I had studied harder.",
             "hint_en": "I wish I had studied harder."
           },
           {
             "id": 2,
-            "label_pt": "Outro arrependimento",
             "label_en": "Another regret",
             "hidden_prompt": "user uses another 'I wish I had + past participle'",
-            "hint_pt": "I wish I had traveled more when I was younger.",
             "hint_en": "I wish I had traveled more when I was younger."
           },
           {
             "id": 3,
-            "label_pt": "Arrependimento com 'If only'",
             "label_en": "Regret with 'If only'",
             "hidden_prompt": "user uses 'If only I had + past participle'",
-            "hint_pt": "If only I had saved more money.",
             "hint_en": "If only I had saved more money."
           }
         ],
@@ -392,26 +384,20 @@
         "objectives": [
           {
             "id": 1,
-            "label_pt": "Arrependimento passado",
             "label_en": "Past regret",
             "hidden_prompt": "user uses 'I wish I had + past participle'",
-            "hint_pt": "I wish I had started learning English earlier.",
             "hint_en": "I wish I had started learning English earlier."
           },
           {
             "id": 2,
-            "label_pt": "Razão ou outro arrependimento",
             "label_en": "Reason or another regret",
             "hidden_prompt": "user adds another wish or reason",
-            "hint_pt": "I wish I had made more time for my family.",
             "hint_en": "I wish I had made more time for my family."
           },
           {
             "id": 3,
-            "label_pt": "Perguntar à Charlotte",
             "label_en": "Ask Charlotte",
             "hidden_prompt": "user asks 'How about you?' or 'What about you?'",
-            "hint_pt": "How about you?",
             "hint_en": "How about you?"
           }
         ],
@@ -527,23 +513,28 @@
       "listening_speaking": [
         {
           "text": "What would you have done in my place?",
-          "context": "empathy hypothetical past"
+          "context": "empathy hypothetical past",
+          "audio_url": "https://fnvjibzreepubageztoi.supabase.co/storage/v1/object/public/curriculum-audio/ls/inter/38f3433028cb8feb.flac"
         },
         {
           "text": "Would you have helped if I had asked?",
-          "context": "yes/no question"
+          "context": "yes/no question",
+          "audio_url": "https://fnvjibzreepubageztoi.supabase.co/storage/v1/object/public/curriculum-audio/ls/inter/6a08c15d16d38177.flac"
         },
         {
           "text": "Where would you have gone if you'd had time?",
-          "context": "place hypothetical"
+          "context": "place hypothetical",
+          "audio_url": "https://fnvjibzreepubageztoi.supabase.co/storage/v1/object/public/curriculum-audio/ls/inter/6d9ce32b5609d911.flac"
         },
         {
           "text": "How would you have reacted?",
-          "context": "manner hypothetical"
+          "context": "manner hypothetical",
+          "audio_url": "https://fnvjibzreepubageztoi.supabase.co/storage/v1/object/public/curriculum-audio/ls/inter/ccfa734bfb6d78c3.flac"
         },
         {
           "text": "Would you have stayed if you had known?",
-          "context": "decision hypothetical"
+          "context": "decision hypothetical",
+          "audio_url": "https://fnvjibzreepubageztoi.supabase.co/storage/v1/object/public/curriculum-audio/ls/inter/998612c62b74535d.flac"
         }
       ],
       "roleplay": {
@@ -556,26 +547,20 @@
         "objectives": [
           {
             "id": 1,
-            "label_pt": "Resposta com 'I would have'",
             "label_en": "Response with 'I would have'",
             "hidden_prompt": "user uses 'I would have + past participle'",
-            "hint_pt": "I would have taken the offer.",
             "hint_en": "I would have taken the offer."
           },
           {
             "id": 2,
-            "label_pt": "Resposta com 'I wouldn't have'",
             "label_en": "Response with 'I wouldn't have'",
             "hidden_prompt": "user uses 'I wouldn't have + past participle'",
-            "hint_pt": "I wouldn't have said anything.",
             "hint_en": "I wouldn't have said anything."
           },
           {
             "id": 3,
-            "label_pt": "Pergunta de volta com 'would have'",
             "label_en": "Counter-question with 'would have'",
             "hidden_prompt": "user asks 'What would you have done?' or similar",
-            "hint_pt": "What would you have done?",
             "hint_en": "What would you have done?"
           }
         ],
@@ -597,26 +582,20 @@
         "objectives": [
           {
             "id": 1,
-            "label_pt": "Resposta à hipótese passada",
             "label_en": "Answer to past hypothetical",
             "hidden_prompt": "user uses 'I would have + past participle' or 'I wouldn't have'",
-            "hint_pt": "Yes, I would have gone.",
             "hint_en": "Yes, I would have gone."
           },
           {
             "id": 2,
-            "label_pt": "Razão ou condição",
             "label_en": "Reason or condition",
             "hidden_prompt": "user adds 'if + past perfect' or reason",
-            "hint_pt": "If I had been braver, I would have done it.",
             "hint_en": "If I had been braver, I would have done it."
           },
           {
             "id": 3,
-            "label_pt": "Perguntar à Charlotte",
             "label_en": "Ask Charlotte",
             "hidden_prompt": "user asks 'Would you have?' question to Charlotte",
-            "hint_pt": "Would you have moved abroad?",
             "hint_en": "Would you have moved abroad?"
           }
         ],
@@ -738,23 +717,28 @@
       "listening_speaking": [
         {
           "text": "If I had studied medicine, I would be a doctor now.",
-          "context": "career mixed"
+          "context": "career mixed",
+          "audio_url": "https://fnvjibzreepubageztoi.supabase.co/storage/v1/object/public/curriculum-audio/ls/inter/03f91935372d2303.flac"
         },
         {
           "text": "She would be richer if she had saved more.",
-          "context": "financial mixed"
+          "context": "financial mixed",
+          "audio_url": "https://fnvjibzreepubageztoi.supabase.co/storage/v1/object/public/curriculum-audio/ls/inter/8d6b4be5a847f883.flac"
         },
         {
           "text": "We wouldn't be stressed if we had hired earlier.",
-          "context": "stress mixed"
+          "context": "stress mixed",
+          "audio_url": "https://fnvjibzreepubageztoi.supabase.co/storage/v1/object/public/curriculum-audio/ls/inter/77a3b898e31be9af.flac"
         },
         {
           "text": "He'd be more confident if he'd gone to therapy.",
-          "context": "confidence mixed"
+          "context": "confidence mixed",
+          "audio_url": "https://fnvjibzreepubageztoi.supabase.co/storage/v1/object/public/curriculum-audio/ls/inter/c8f9f8de34ba320a.flac"
         },
         {
           "text": "If they had moved, life would be different now.",
-          "context": "life mixed"
+          "context": "life mixed",
+          "audio_url": "https://fnvjibzreepubageztoi.supabase.co/storage/v1/object/public/curriculum-audio/ls/inter/1332faa387e003e3.flac"
         }
       ],
       "roleplay": {
@@ -767,26 +751,20 @@
         "objectives": [
           {
             "id": 1,
-            "label_pt": "Misto sobre carreira",
             "label_en": "Career mixed conditional",
             "hidden_prompt": "user uses 'If + past perfect, I would be... now' about career",
-            "hint_pt": "If I had chosen engineering, I would be working in tech now.",
             "hint_en": "If I had chosen engineering, I would be working in tech now."
           },
           {
             "id": 2,
-            "label_pt": "Misto sobre lugar",
             "label_en": "Place mixed conditional",
             "hidden_prompt": "user uses 'If + past perfect, I would be... now' about place",
-            "hint_pt": "If I had moved to São Paulo, I would be living a faster life.",
             "hint_en": "If I had moved to São Paulo, I would be living a faster life."
           },
           {
             "id": 3,
-            "label_pt": "Misto sobre relação ou estado",
             "label_en": "Relationship/state mixed conditional",
             "hidden_prompt": "user uses another mixed conditional",
-            "hint_pt": "If I had stayed in touch, we would still be friends.",
             "hint_en": "If I had stayed in touch, we would still be friends."
           }
         ],
@@ -808,26 +786,20 @@
         "objectives": [
           {
             "id": 1,
-            "label_pt": "Onde estaria hoje",
             "label_en": "Where you'd be today",
             "hidden_prompt": "user uses mixed conditional with 'I would be' for present location/state",
-            "hint_pt": "If I had gone abroad, I would be living in Europe.",
             "hint_en": "If I had gone abroad, I would be living in Europe."
           },
           {
             "id": 2,
-            "label_pt": "Outra ramificação",
             "label_en": "Another branching",
             "hidden_prompt": "user uses another mixed conditional",
-            "hint_pt": "If I had kept that job, I would be exhausted by now.",
             "hint_en": "If I had kept that job, I would be exhausted by now."
           },
           {
             "id": 3,
-            "label_pt": "Perguntar à Charlotte",
             "label_en": "Ask Charlotte",
             "hidden_prompt": "user asks 'Where would you be?' or similar to Charlotte",
-            "hint_pt": "Where would you be today?",
             "hint_en": "Where would you be today?"
           }
         ],
@@ -945,23 +917,28 @@
       "listening_speaking": [
         {
           "text": "If I had known, I would have helped.",
-          "context": "third conditional"
+          "context": "third conditional",
+          "audio_url": "https://fnvjibzreepubageztoi.supabase.co/storage/v1/object/public/curriculum-audio/ls/inter/6745f07640b9f4a8.flac"
         },
         {
           "text": "I wish I had said yes.",
-          "context": "wish + past perfect"
+          "context": "wish + past perfect",
+          "audio_url": "https://fnvjibzreepubageztoi.supabase.co/storage/v1/object/public/curriculum-audio/ls/inter/cfd6a3ca87669ec5.flac"
         },
         {
           "text": "She would be there now if she had moved.",
-          "context": "mixed conditional"
+          "context": "mixed conditional",
+          "audio_url": "https://fnvjibzreepubageztoi.supabase.co/storage/v1/object/public/curriculum-audio/ls/inter/02527e982cde988a.flac"
         },
         {
           "text": "What would you have done in my place?",
-          "context": "question"
+          "context": "question",
+          "audio_url": "https://fnvjibzreepubageztoi.supabase.co/storage/v1/object/public/curriculum-audio/ls/inter/38f3433028cb8feb.flac"
         },
         {
           "text": "If only I had listened!",
-          "context": "emphatic regret"
+          "context": "emphatic regret",
+          "audio_url": "https://fnvjibzreepubageztoi.supabase.co/storage/v1/object/public/curriculum-audio/ls/inter/01760baf7008461a.flac"
         }
       ],
       "roleplay": {
@@ -974,26 +951,20 @@
         "objectives": [
           {
             "id": 1,
-            "label_pt": "Hipótese puro passado",
             "label_en": "Past hypothetical",
             "hidden_prompt": "user uses 'If I had + past participle, I would have + past participle'",
-            "hint_pt": "If I had left earlier, I wouldn't have missed the meeting.",
             "hint_en": "If I had left earlier, I wouldn't have missed the meeting."
           },
           {
             "id": 2,
-            "label_pt": "Arrependimento com 'wish'",
             "label_en": "Regret with 'wish'",
             "hidden_prompt": "user uses 'I wish I had + past participle'",
-            "hint_pt": "I wish I had studied abroad.",
             "hint_en": "I wish I had studied abroad."
           },
           {
             "id": 3,
-            "label_pt": "Conditional misto",
             "label_en": "Mixed conditional",
             "hidden_prompt": "user uses 'If + past perfect, I would be... now'",
-            "hint_pt": "If I had stayed, I would be a manager by now.",
             "hint_en": "If I had stayed, I would be a manager by now."
           }
         ],
@@ -1015,26 +986,20 @@
         "objectives": [
           {
             "id": 1,
-            "label_pt": "O que mudaria",
             "label_en": "What you'd have changed",
             "hidden_prompt": "user uses 'I would have + past participle'",
-            "hint_pt": "I would have spoken up more.",
             "hint_en": "I would have spoken up more."
           },
           {
             "id": 2,
-            "label_pt": "Wish ou mixed (consequência presente)",
             "label_en": "Wish or mixed (present consequence)",
             "hidden_prompt": "user uses 'I wish I had' or mixed conditional with present result",
-            "hint_pt": "If I had been more confident, I would be in a better position now.",
             "hint_en": "If I had been more confident, I would be in a better position now."
           },
           {
             "id": 3,
-            "label_pt": "Perguntar à Charlotte",
             "label_en": "Ask Charlotte",
             "hidden_prompt": "user asks 'What would you have changed?' or 'How about you?'",
-            "hint_pt": "What would you have changed?",
             "hint_en": "What would you have changed?"
           }
         ],

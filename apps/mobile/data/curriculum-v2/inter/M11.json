@@ -158,26 +158,20 @@
         "objectives": [
           {
             "id": 1,
-            "label_pt": "Promessa com 'when I get home/finish work'",
             "label_en": "Promise with 'when I get home/finish work'",
             "hidden_prompt": "user uses 'I'll + base + when I + present' for daily action",
-            "hint_pt": "I'll relax when I get home.",
             "hint_en": "I'll relax when I get home."
           },
           {
             "id": 2,
-            "label_pt": "Promessa com 'when + alguém + verbo'",
             "label_en": "Promise with 'when + someone + verb'",
             "hidden_prompt": "user uses 'I'll + base + when + 3rd person + verb-s'",
-            "hint_pt": "I'll celebrate when my brother graduates.",
             "hint_en": "I'll celebrate when my brother graduates."
           },
           {
             "id": 3,
-            "label_pt": "Promessa futura com 'when'",
             "label_en": "Future promise with 'when'",
             "hidden_prompt": "user uses another 'when' clause with present simple",
-            "hint_pt": "I'll travel when I have enough money saved.",
             "hint_en": "I'll travel when I have enough money saved."
           }
         ],
@@ -199,26 +193,20 @@
         "objectives": [
           {
             "id": 1,
-            "label_pt": "Ação para quando tiver tempo livre",
             "label_en": "Action for when you have free time",
             "hidden_prompt": "user uses 'I'll + base + when I have time' or similar",
-            "hint_pt": "I'll read more when I have free time.",
             "hint_en": "I'll read more when I have free time."
           },
           {
             "id": 2,
-            "label_pt": "Outra promessa com 'when'",
             "label_en": "Another 'when' promise",
             "hidden_prompt": "user uses another 'when' clause",
-            "hint_pt": "I'll move out when I save enough money.",
             "hint_en": "I'll move out when I save enough money."
           },
           {
             "id": 3,
-            "label_pt": "Perguntar à Charlotte",
             "label_en": "Ask Charlotte",
             "hidden_prompt": "user asks 'What will you do when...?' or 'How about you?'",
-            "hint_pt": "How about you?",
             "hint_en": "How about you?"
           }
         ],
@@ -364,26 +352,20 @@
         "objectives": [
           {
             "id": 1,
-            "label_pt": "Ação com 'before' (algo antes de outra coisa)",
             "label_en": "Action with 'before'",
             "hidden_prompt": "user uses 'I'll + base + before + present' or 'Before + present, I'll + base'",
-            "hint_pt": "I'll take a shower before I leave.",
             "hint_en": "I'll take a shower before I leave."
           },
           {
             "id": 2,
-            "label_pt": "Ação com 'after' (depois de outra)",
             "label_en": "Action with 'after'",
             "hidden_prompt": "user uses 'I'll + base + after + present'",
-            "hint_pt": "After I finish work, I'll grab dinner.",
             "hint_en": "After I finish work, I'll grab dinner."
           },
           {
             "id": 3,
-            "label_pt": "Mais uma ação na sequência",
             "label_en": "One more in sequence",
             "hidden_prompt": "user uses another before/after sequence",
-            "hint_pt": "Before we meet, I'll send you the address.",
             "hint_en": "Before we meet, I'll send you the address."
           }
         ],
@@ -405,26 +387,20 @@
         "objectives": [
           {
             "id": 1,
-            "label_pt": "Ação antes do trabalho (before)",
             "label_en": "Pre-work action",
             "hidden_prompt": "user uses 'Before I + present, I + present/will' for pre-work routine",
-            "hint_pt": "Before I start work, I have coffee.",
             "hint_en": "Before I start work, I have coffee."
           },
           {
             "id": 2,
-            "label_pt": "Ação depois (after)",
             "label_en": "Post action",
             "hidden_prompt": "user uses 'After I + present, I + present/will'",
-            "hint_pt": "After I check emails, I plan my day.",
             "hint_en": "After I check emails, I plan my day."
           },
           {
             "id": 3,
-            "label_pt": "Perguntar à Charlotte",
             "label_en": "Ask Charlotte",
             "hidden_prompt": "user asks 'How about you?' or 'What about your routine?'",
-            "hint_pt": "How about you?",
             "hint_en": "How about you?"
           }
         ],
@@ -568,26 +544,20 @@
         "objectives": [
           {
             "id": 1,
-            "label_pt": "Duração com 'until' (continuar até X)",
             "label_en": "Duration with 'until'",
             "hidden_prompt": "user uses 'I'll + base + until + present'",
-            "hint_pt": "I'll work until I finish this project.",
             "hint_en": "I'll work until I finish this project."
           },
           {
             "id": 2,
-            "label_pt": "Prazo com 'by the time'",
             "label_en": "Deadline with 'by the time'",
             "hidden_prompt": "user uses 'By the time + present, will + base' or 'will + base + by the time + present'",
-            "hint_pt": "By the time you arrive, dinner will be ready.",
             "hint_en": "By the time you arrive, dinner will be ready."
           },
           {
             "id": 3,
-            "label_pt": "Mais uma com 'until' ou 'by the time'",
             "label_en": "One more with 'until' or 'by the time'",
             "hidden_prompt": "user uses another until/by the time clause",
-            "hint_pt": "I won't stop until I master English.",
             "hint_en": "I won't stop until I master English."
           }
         ],
@@ -609,26 +579,20 @@
         "objectives": [
           {
             "id": 1,
-            "label_pt": "Algo que continua 'until' próximo mês",
             "label_en": "Something continuing 'until' next month",
             "hidden_prompt": "user uses 'I'll + base + until + time' for ongoing action",
-            "hint_pt": "I'll be working hard until next month.",
             "hint_en": "I'll be working hard until next month."
           },
           {
             "id": 2,
-            "label_pt": "Algo que estará pronto 'by the time'",
             "label_en": "Something ready 'by the time'",
             "hidden_prompt": "user uses 'By the time + present, will + base'",
-            "hint_pt": "By the time the month ends, I'll have finished the project.",
             "hint_en": "By the time the month ends, I'll have finished the project."
           },
           {
             "id": 3,
-            "label_pt": "Perguntar à Charlotte",
             "label_en": "Ask Charlotte",
             "hidden_prompt": "user asks 'How about you?' or 'What are your deadlines?'",
-            "hint_pt": "How about you?",
             "hint_en": "How about you?"
           }
         ],
@@ -777,26 +741,20 @@
         "objectives": [
           {
             "id": 1,
-            "label_pt": "Promessa imediata após chegar em algum lugar",
             "label_en": "Immediate promise upon arrival",
             "hidden_prompt": "user uses 'I'll + base + as soon as I + present'",
-            "hint_pt": "I'll text you as soon as I arrive.",
             "hint_en": "I'll text you as soon as I arrive."
           },
           {
             "id": 2,
-            "label_pt": "Reação imediata a uma notícia",
             "label_en": "Immediate reaction to news",
             "hidden_prompt": "user uses 'I'll + base + as soon as I + present (hear/get/receive)'",
-            "hint_pt": "I'll call my parents as soon as I hear back.",
             "hint_en": "I'll call my parents as soon as I hear back."
           },
           {
             "id": 3,
-            "label_pt": "Mais uma promessa imediata",
             "label_en": "One more immediate promise",
             "hidden_prompt": "user uses another 'as soon as' clause",
-            "hint_pt": "I'll start celebrating as soon as I finish this.",
             "hint_en": "I'll start celebrating as soon as I finish this."
           }
         ],
@@ -818,26 +776,20 @@
         "objectives": [
           {
             "id": 1,
-            "label_pt": "Promessa com 'as soon as I have news'",
             "label_en": "Promise with 'as soon as I have news'",
             "hidden_prompt": "user uses 'I'll + base + as soon as I + present' for news/updates",
-            "hint_pt": "I'll let you know as soon as I have news.",
             "hint_en": "I'll let you know as soon as I have news."
           },
           {
             "id": 2,
-            "label_pt": "Outra promessa de update",
             "label_en": "Another update promise",
             "hidden_prompt": "user uses another 'as soon as' clause",
-            "hint_pt": "I'll send a photo as soon as I get there.",
             "hint_en": "I'll send a photo as soon as I get there."
           },
           {
             "id": 3,
-            "label_pt": "Perguntar à Charlotte",
             "label_en": "Ask Charlotte",
             "hidden_prompt": "user asks 'How about you?' or 'What do you do as soon as...?'",
-            "hint_pt": "How about you?",
             "hint_en": "How about you?"
           }
         ],
@@ -979,26 +931,20 @@
         "objectives": [
           {
             "id": 1,
-            "label_pt": "Time clause com 'when' ou 'as soon as'",
             "label_en": "Time clause with 'when' or 'as soon as'",
             "hidden_prompt": "user uses 'when' or 'as soon as' + present simple",
-            "hint_pt": "I'll start when I have my coffee.",
             "hint_en": "I'll start when I have my coffee."
           },
           {
             "id": 2,
-            "label_pt": "Time clause com 'before' ou 'after'",
             "label_en": "Time clause with 'before' or 'after'",
             "hidden_prompt": "user uses 'before' or 'after' + present simple",
-            "hint_pt": "After I finish work, I'll go for a run.",
             "hint_en": "After I finish work, I'll go for a run."
           },
           {
             "id": 3,
-            "label_pt": "Time clause com 'until' ou 'by the time'",
             "label_en": "Time clause with 'until' or 'by the time'",
             "hidden_prompt": "user uses 'until' or 'by the time' + present simple",
-            "hint_pt": "By the time I get home, dinner will be ready.",
             "hint_en": "By the time I get home, dinner will be ready."
           }
         ],
@@ -1020,26 +966,20 @@
         "objectives": [
           {
             "id": 1,
-            "label_pt": "Time clause inicial (start/begin)",
             "label_en": "Initial time clause",
             "hidden_prompt": "user uses 'when/before/after/as soon as' + present simple",
-            "hint_pt": "I'll start as soon as I have time.",
             "hint_en": "I'll start as soon as I have time."
           },
           {
             "id": 2,
-            "label_pt": "Time clause de duração ou ponto de fim",
             "label_en": "Duration or endpoint time clause",
             "hidden_prompt": "user uses 'until' or 'by the time' + present",
-            "hint_pt": "I'll work until I finish it completely.",
             "hint_en": "I'll work until I finish it completely."
           },
           {
             "id": 3,
-            "label_pt": "Perguntar à Charlotte",
             "label_en": "Ask Charlotte",
             "hidden_prompt": "user asks 'How about you?' or about her project",
-            "hint_pt": "How about you?",
             "hint_en": "How about you?"
           }
         ],

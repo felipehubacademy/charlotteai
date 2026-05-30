@@ -150,26 +150,20 @@
         "objectives": [
           {
             "id": 1,
-            "label_pt": "Levantar (get up)",
             "label_en": "Get up",
             "hidden_prompt": "user uses 'I get up at + time'",
-            "hint_pt": "I get up at 7.",
             "hint_en": "I get up at 7."
           },
           {
             "id": 2,
-            "label_pt": "Outro phrasal de manhã",
             "label_en": "Another morning phrasal",
             "hidden_prompt": "user uses another phrasal (put on, turn on, go out)",
-            "hint_pt": "I put on my work clothes.",
             "hint_en": "I put on my work clothes."
           },
           {
             "id": 3,
-            "label_pt": "Phrasal para sair de casa",
             "label_en": "Phrasal for leaving",
             "hidden_prompt": "user uses 'I go out' or similar",
-            "hint_pt": "I go out at 8.",
             "hint_en": "I go out at 8."
           }
         ],
@@ -190,26 +184,20 @@
         "objectives": [
           {
             "id": 1,
-            "label_pt": "Phrasal verb de chegada/casa",
             "label_en": "Arrival phrasal verb",
             "hidden_prompt": "user uses 'I come back' or 'I get home'",
-            "hint_pt": "I come back at 6.",
             "hint_en": "I come back at 6."
           },
           {
             "id": 2,
-            "label_pt": "Outro phrasal verb (take off/turn on)",
             "label_en": "Another phrasal verb",
             "hidden_prompt": "user uses 'take off' or 'turn on'",
-            "hint_pt": "I take off my shoes.",
             "hint_en": "I take off my shoes."
           },
           {
             "id": 3,
-            "label_pt": "Perguntar à Charlotte",
             "label_en": "Ask Charlotte",
             "hidden_prompt": "user asks about Charlotte's routine",
-            "hint_pt": "What do you do at home?",
             "hint_en": "What do you do at home?"
           }
         ],
@@ -351,26 +339,20 @@
         "objectives": [
           {
             "id": 1,
-            "label_pt": "Algo que está procurando (look for)",
             "label_en": "Something searching",
             "hidden_prompt": "user uses 'I'm looking for + thing'",
-            "hint_pt": "I'm looking for a new apartment.",
             "hint_en": "I'm looking for a new apartment."
           },
           {
             "id": 2,
-            "label_pt": "Alguém ou algo que cuida (look after)",
             "label_en": "Someone you look after",
             "hidden_prompt": "user uses 'I look after + person/pet'",
-            "hint_pt": "I look after my dog.",
             "hint_en": "I look after my dog."
           },
           {
             "id": 3,
-            "label_pt": "Algo que pesquisou (looked up)",
             "label_en": "Something looked up",
             "hidden_prompt": "user uses 'I looked up + something'",
-            "hint_pt": "I looked up a recipe.",
             "hint_en": "I looked up a recipe."
           }
         ],
@@ -392,26 +374,20 @@
         "objectives": [
           {
             "id": 1,
-            "label_pt": "Pessoa/animal que cuida",
             "label_en": "Person/pet cared for",
             "hidden_prompt": "user uses 'I look after + person/pet'",
-            "hint_pt": "I look after my niece.",
             "hint_en": "I look after my niece."
           },
           {
             "id": 2,
-            "label_pt": "Algo que procura",
             "label_en": "Something searching",
             "hidden_prompt": "user uses 'I'm looking for + thing'",
-            "hint_pt": "I'm looking for a new hobby.",
             "hint_en": "I'm looking for a new hobby."
           },
           {
             "id": 3,
-            "label_pt": "Perguntar à Charlotte",
             "label_en": "Ask Charlotte",
             "hidden_prompt": "user asks 'How about you?'",
-            "hint_pt": "How about you?",
             "hint_en": "How about you?"
           }
         ],
@@ -553,26 +529,20 @@
         "objectives": [
           {
             "id": 1,
-            "label_pt": "Algo que descobriu (found out)",
             "label_en": "Discovery",
             "hidden_prompt": "user uses 'I found out + something'",
-            "hint_pt": "I found out about a new job.",
             "hint_en": "I found out about a new job."
           },
           {
             "id": 2,
-            "label_pt": "Algo que abandonou (gave up)",
             "label_en": "Gave up something",
             "hidden_prompt": "user uses 'I gave up + something'",
-            "hint_pt": "I gave up coffee.",
             "hint_en": "I gave up coffee."
           },
           {
             "id": 3,
-            "label_pt": "Pedir pra buscar (pick up)",
             "label_en": "Ask for pickup",
             "hidden_prompt": "user uses 'Can you pick me up?'",
-            "hint_pt": "Can you pick me up at 7?",
             "hint_en": "Can you pick me up at 7?"
           }
         ],
@@ -593,26 +563,20 @@
         "objectives": [
           {
             "id": 1,
-            "label_pt": "Descoberta recente",
             "label_en": "Recent discovery",
             "hidden_prompt": "user uses 'I found out + ...'",
-            "hint_pt": "I found out my friend is moving.",
             "hint_en": "I found out my friend is moving."
           },
           {
             "id": 2,
-            "label_pt": "Algo que largou",
             "label_en": "Gave up something",
             "hidden_prompt": "user uses 'I gave up + something'",
-            "hint_pt": "I gave up sweets.",
             "hint_en": "I gave up sweets."
           },
           {
             "id": 3,
-            "label_pt": "Perguntar à Charlotte",
             "label_en": "Ask Charlotte",
             "hidden_prompt": "user asks 'How about you?'",
-            "hint_pt": "How about you?",
             "hint_en": "How about you?"
           }
         ],
@@ -756,26 +720,20 @@
         "objectives": [
           {
             "id": 1,
-            "label_pt": "Separable com pronome (it/him/them)",
             "label_en": "Separable with pronoun",
             "hidden_prompt": "user splits separable phrasal with pronoun",
-            "hint_pt": "I turned it off.",
             "hint_en": "I turned it off."
           },
           {
             "id": 2,
-            "label_pt": "Inseparável (look after, etc.)",
             "label_en": "Inseparable",
             "hidden_prompt": "user uses inseparable phrasal correctly",
-            "hint_pt": "She looks after them.",
             "hint_en": "She looks after them."
           },
           {
             "id": 3,
-            "label_pt": "Mais um phrasal correto",
             "label_en": "One more correct phrasal",
             "hidden_prompt": "user uses another phrasal verb correctly",
-            "hint_pt": "He picked me up at 8.",
             "hint_en": "He picked me up at 8."
           }
         ],
@@ -797,26 +755,20 @@
         "objectives": [
           {
             "id": 1,
-            "label_pt": "Oferecer ajuda (pick up)",
             "label_en": "Offer help (pick up)",
             "hidden_prompt": "user uses 'I'll pick you up'",
-            "hint_pt": "I'll pick you up at 6.",
             "hint_en": "I'll pick you up at 6."
           },
           {
             "id": 2,
-            "label_pt": "Outra oferta (turn on/off)",
             "label_en": "Another offer",
             "hidden_prompt": "user uses another phrasal correctly",
-            "hint_pt": "I'll turn the lights off.",
             "hint_en": "I'll turn the lights off."
           },
           {
             "id": 3,
-            "label_pt": "Perguntar à Charlotte",
             "label_en": "Ask Charlotte",
             "hidden_prompt": "user asks Charlotte something using phrasal verb",
-            "hint_pt": "Can you look after my dog?",
             "hint_en": "Can you look after my dog?"
           }
         ],
@@ -958,26 +910,20 @@
         "objectives": [
           {
             "id": 1,
-            "label_pt": "Primeira frase com phrasal",
             "label_en": "First with phrasal",
             "hidden_prompt": "user uses a phrasal verb in past or present",
-            "hint_pt": "I got up at 6.",
             "hint_en": "I got up at 6."
           },
           {
             "id": 2,
-            "label_pt": "Segunda com phrasal diferente",
             "label_en": "Second with different phrasal",
             "hidden_prompt": "user uses another phrasal verb",
-            "hint_pt": "I was looking for my phone.",
             "hint_en": "I was looking for my phone."
           },
           {
             "id": 3,
-            "label_pt": "Terceira com mais um phrasal",
             "label_en": "Third with another phrasal",
             "hidden_prompt": "user uses one more phrasal verb",
-            "hint_pt": "I gave up and called a taxi.",
             "hint_en": "I gave up and called a taxi."
           }
         ],
@@ -999,26 +945,20 @@
         "objectives": [
           {
             "id": 1,
-            "label_pt": "Atividade com phrasal verb",
             "label_en": "Activity with phrasal",
             "hidden_prompt": "user uses a phrasal verb",
-            "hint_pt": "I got up at 7.",
             "hint_en": "I got up at 7."
           },
           {
             "id": 2,
-            "label_pt": "Outra atividade com phrasal",
             "label_en": "Another phrasal activity",
             "hidden_prompt": "user uses another phrasal",
-            "hint_pt": "I went out for lunch.",
             "hint_en": "I went out for lunch."
           },
           {
             "id": 3,
-            "label_pt": "Perguntar à Charlotte",
             "label_en": "Ask Charlotte",
             "hidden_prompt": "user asks 'How about you?'",
-            "hint_pt": "How about you?",
             "hint_en": "How about you?"
           }
         ],

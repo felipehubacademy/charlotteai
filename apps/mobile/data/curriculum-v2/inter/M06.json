@@ -151,26 +151,20 @@
         "objectives": [
           {
             "id": 1,
-            "label_pt": "Possibilidade com might",
             "label_en": "Possibility with might",
             "hidden_prompt": "user uses 'I might + base'",
-            "hint_pt": "I might go hiking.",
             "hint_en": "I might go hiking."
           },
           {
             "id": 2,
-            "label_pt": "Outra possibilidade",
             "label_en": "Another possibility",
             "hidden_prompt": "user uses another 'might + base'",
-            "hint_pt": "I might stay home.",
             "hint_en": "I might stay home."
           },
           {
             "id": 3,
-            "label_pt": "Sobre alguém",
             "label_en": "About someone",
             "hidden_prompt": "user uses 'X might + base'",
-            "hint_pt": "My friend might join me.",
             "hint_en": "My friend might join me."
           }
         ],
@@ -191,26 +185,20 @@
         "objectives": [
           {
             "id": 1,
-            "label_pt": "Possibilidade",
             "label_en": "Possibility",
             "hidden_prompt": "user uses 'I might + base'",
-            "hint_pt": "I might work from home.",
             "hint_en": "I might work from home."
           },
           {
             "id": 2,
-            "label_pt": "Outra",
             "label_en": "Another",
             "hidden_prompt": "user uses another 'might'",
-            "hint_pt": "I might exercise.",
             "hint_en": "I might exercise."
           },
           {
             "id": 3,
-            "label_pt": "Perguntar à Charlotte",
             "label_en": "Ask Charlotte",
             "hidden_prompt": "user asks 'What might you do?'",
-            "hint_pt": "What might you do?",
             "hint_en": "What might you do?"
           }
         ],
@@ -352,26 +340,20 @@
         "objectives": [
           {
             "id": 1,
-            "label_pt": "Possibilidade com may",
             "label_en": "Possibility with may",
             "hidden_prompt": "user uses 'It/She/He may + base'",
-            "hint_pt": "It may rain.",
             "hint_en": "It may rain."
           },
           {
             "id": 2,
-            "label_pt": "Outra com may",
             "label_en": "Another with may",
             "hidden_prompt": "user uses another may + base",
-            "hint_pt": "She may come over.",
             "hint_en": "She may come over."
           },
           {
             "id": 3,
-            "label_pt": "Pedido formal com May I",
             "label_en": "Formal request with May I",
             "hidden_prompt": "user uses 'May I + base?'",
-            "hint_pt": "May I ask a favor?",
             "hint_en": "May I ask a favor?"
           }
         ],
@@ -392,26 +374,20 @@
         "objectives": [
           {
             "id": 1,
-            "label_pt": "Possibilidade",
             "label_en": "Possibility",
             "hidden_prompt": "user uses 'X may + base'",
-            "hint_pt": "I may travel.",
             "hint_en": "I may travel."
           },
           {
             "id": 2,
-            "label_pt": "Outra",
             "label_en": "Another",
             "hidden_prompt": "user uses another may",
-            "hint_pt": "My boss may call me.",
             "hint_en": "My boss may call me."
           },
           {
             "id": 3,
-            "label_pt": "Perguntar à Charlotte",
             "label_en": "Ask Charlotte",
             "hidden_prompt": "user asks 'What may you do?'",
-            "hint_pt": "What may you do?",
             "hint_en": "What may you do?"
           }
         ],
@@ -553,26 +529,20 @@
         "objectives": [
           {
             "id": 1,
-            "label_pt": "Sugestão com could",
             "label_en": "Suggestion with could",
             "hidden_prompt": "user uses 'We could + base'",
-            "hint_pt": "We could go hiking.",
             "hint_en": "We could go hiking."
           },
           {
             "id": 2,
-            "label_pt": "Outra sugestão",
             "label_en": "Another suggestion",
             "hidden_prompt": "user uses another could + base",
-            "hint_pt": "We could see a movie.",
             "hint_en": "We could see a movie."
           },
           {
             "id": 3,
-            "label_pt": "Pedido com Could you",
             "label_en": "Request with Could you",
             "hidden_prompt": "user uses 'Could you + base?'",
-            "hint_pt": "Could you drive?",
             "hint_en": "Could you drive?"
           }
         ],
@@ -593,26 +563,20 @@
         "objectives": [
           {
             "id": 1,
-            "label_pt": "Sugestão",
             "label_en": "Suggestion",
             "hidden_prompt": "user uses 'You could + base'",
-            "hint_pt": "You could read a book.",
             "hint_en": "You could read a book."
           },
           {
             "id": 2,
-            "label_pt": "Outra",
             "label_en": "Another",
             "hidden_prompt": "user uses another could",
-            "hint_pt": "You could call a friend.",
             "hint_en": "You could call a friend."
           },
           {
             "id": 3,
-            "label_pt": "Mais uma ou perguntar",
             "label_en": "One more or ask",
             "hidden_prompt": "user uses one more 'could' or asks",
-            "hint_pt": "You could try yoga.",
             "hint_en": "You could try yoga."
           }
         ],
@@ -756,26 +720,20 @@
         "objectives": [
           {
             "id": 1,
-            "label_pt": "Expressar descrença com can't",
             "label_en": "Express disbelief with can't",
             "hidden_prompt": "user uses 'That can't be true' or similar",
-            "hint_pt": "That can't be true!",
             "hint_en": "That can't be true!"
           },
           {
             "id": 2,
-            "label_pt": "Mais ceticismo",
             "label_en": "More skepticism",
             "hidden_prompt": "user uses 'It can't be + adjective'",
-            "hint_pt": "It can't be that easy.",
             "hint_en": "It can't be that easy."
           },
           {
             "id": 3,
-            "label_pt": "Conclusão lógica",
             "label_en": "Logical conclusion",
             "hidden_prompt": "user uses 'X can't be + state'",
-            "hint_pt": "He can't be lying.",
             "hint_en": "He can't be lying."
           }
         ],
@@ -797,26 +755,20 @@
         "objectives": [
           {
             "id": 1,
-            "label_pt": "Reagir com descrença",
             "label_en": "React with disbelief",
             "hidden_prompt": "user uses 'That can't + base'",
-            "hint_pt": "That can't be true!",
             "hint_en": "That can't be true!"
           },
           {
             "id": 2,
-            "label_pt": "Mais ceticismo",
             "label_en": "More skepticism",
             "hidden_prompt": "user uses another can't",
-            "hint_pt": "It can't be possible.",
             "hint_en": "It can't be possible."
           },
           {
             "id": 3,
-            "label_pt": "Perguntar mais",
             "label_en": "Ask more",
             "hidden_prompt": "user asks for more info",
-            "hint_pt": "Are you sure?",
             "hint_en": "Are you sure?"
           }
         ],
@@ -958,26 +910,20 @@
         "objectives": [
           {
             "id": 1,
-            "label_pt": "Possibilidade com might/could",
             "label_en": "Possibility with might/could",
             "hidden_prompt": "user uses might/could + base",
-            "hint_pt": "She might be home.",
             "hint_en": "She might be home."
           },
           {
             "id": 2,
-            "label_pt": "Impossibilidade com can't",
             "label_en": "Impossibility with can't",
             "hidden_prompt": "user uses 'can't + base' for impossibility",
-            "hint_pt": "That can't be right.",
             "hint_en": "That can't be right."
           },
           {
             "id": 3,
-            "label_pt": "Pedido formal com May I",
             "label_en": "Formal request with May I",
             "hidden_prompt": "user uses 'May I + base?'",
-            "hint_pt": "May I ask a question?",
             "hint_en": "May I ask a question?"
           }
         ],
@@ -999,26 +945,20 @@
         "objectives": [
           {
             "id": 1,
-            "label_pt": "Possibilidade",
             "label_en": "Possibility",
             "hidden_prompt": "user uses might/may/could + base",
-            "hint_pt": "I might travel.",
             "hint_en": "I might travel."
           },
           {
             "id": 2,
-            "label_pt": "Outra ou impossibilidade",
             "label_en": "Another or impossibility",
             "hidden_prompt": "user uses another modal",
-            "hint_pt": "She can't be busy now.",
             "hint_en": "She can't be busy now."
           },
           {
             "id": 3,
-            "label_pt": "Perguntar à Charlotte",
             "label_en": "Ask Charlotte",
             "hidden_prompt": "user asks 'What might/could you do?'",
-            "hint_pt": "What might you do?",
             "hint_en": "What might you do?"
           }
         ],

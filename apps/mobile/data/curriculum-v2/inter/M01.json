@@ -154,26 +154,20 @@
         "objectives": [
           {
             "id": 1,
-            "label_pt": "Dizer o que você estava fazendo num horário",
             "label_en": "Say what you were doing at a time",
             "hidden_prompt": "user states past continuous activity with 'I was + verb-ing + at + time'",
-            "hint_pt": "I was studying at 8pm.",
             "hint_en": "I was studying at 8pm."
           },
           {
             "id": 2,
-            "label_pt": "Dizer o que alguém estava fazendo",
             "label_en": "Say what someone was doing",
             "hidden_prompt": "user uses 'He/She was + verb-ing' or 'They were + verb-ing'",
-            "hint_pt": "My sister was watching TV.",
             "hint_en": "My sister was watching TV."
           },
           {
             "id": 3,
-            "label_pt": "Mais uma atividade em progresso",
             "label_en": "One more ongoing activity",
             "hidden_prompt": "user uses another past continuous",
-            "hint_pt": "We were eating dinner.",
             "hint_en": "We were eating dinner."
           }
         ],
@@ -195,26 +189,20 @@
         "objectives": [
           {
             "id": 1,
-            "label_pt": "Dizer atividade em progresso ontem à noite",
             "label_en": "Say last night ongoing activity",
             "hidden_prompt": "user uses 'I was + verb-ing'",
-            "hint_pt": "I was reading.",
             "hint_en": "I was reading."
           },
           {
             "id": 2,
-            "label_pt": "Dizer o que outra pessoa estava fazendo",
             "label_en": "Say what someone else was doing",
             "hidden_prompt": "user uses 'X was + verb-ing'",
-            "hint_pt": "My brother was playing games.",
             "hint_en": "My brother was playing games."
           },
           {
             "id": 3,
-            "label_pt": "Perguntar à Charlotte",
             "label_en": "Ask Charlotte",
             "hidden_prompt": "user asks 'What were you doing?' or 'How about you?'",
-            "hint_pt": "What were you doing?",
             "hint_en": "What were you doing?"
           }
         ],
@@ -356,26 +344,20 @@
         "objectives": [
           {
             "id": 1,
-            "label_pt": "Corrigir Charlotte (I wasn't)",
             "label_en": "Correct Charlotte (I wasn't)",
             "hidden_prompt": "user uses 'I wasn't + verb-ing'",
-            "hint_pt": "I wasn't sleeping.",
             "hint_en": "I wasn't sleeping."
           },
           {
             "id": 2,
-            "label_pt": "Dizer o que VOCÊ estava fazendo",
             "label_en": "Say what you WERE doing",
             "hidden_prompt": "user uses 'I was + verb-ing'",
-            "hint_pt": "I was reading.",
             "hint_en": "I was reading."
           },
           {
             "id": 3,
-            "label_pt": "Dizer o que alguém NÃO estava fazendo",
             "label_en": "Say what someone wasn't doing",
             "hidden_prompt": "user uses 'He/She wasn't + verb-ing' or 'They weren't + verb-ing'",
-            "hint_pt": "My sister wasn't sleeping either.",
             "hint_en": "My sister wasn't sleeping either."
           }
         ],
@@ -397,26 +379,20 @@
         "objectives": [
           {
             "id": 1,
-            "label_pt": "Dizer o que não estava fazendo",
             "label_en": "Say what you weren't doing",
             "hidden_prompt": "user uses 'I wasn't + verb-ing'",
-            "hint_pt": "I wasn't working.",
             "hint_en": "I wasn't working."
           },
           {
             "id": 2,
-            "label_pt": "Dizer o que alguém não estava fazendo",
             "label_en": "Say what someone wasn't doing",
             "hidden_prompt": "user uses 'He/She wasn't + verb-ing'",
-            "hint_pt": "My brother wasn't studying.",
             "hint_en": "My brother wasn't studying."
           },
           {
             "id": 3,
-            "label_pt": "Perguntar à Charlotte",
             "label_en": "Ask Charlotte",
             "hidden_prompt": "user asks 'How about you?'",
-            "hint_pt": "How about you?",
             "hint_en": "How about you?"
           }
         ],
@@ -560,26 +536,20 @@
         "objectives": [
           {
             "id": 1,
-            "label_pt": "Perguntar 'Were you...?'",
             "label_en": "Ask 'Were you...?'",
             "hidden_prompt": "user asks 'Were you + verb-ing?'",
-            "hint_pt": "Were you watching TV?",
             "hint_en": "Were you watching TV?"
           },
           {
             "id": 2,
-            "label_pt": "Pergunta WH com past continuous",
             "label_en": "WH question with past continuous",
             "hidden_prompt": "user asks 'What/Where/Who were you + verb-ing?'",
-            "hint_pt": "What were you doing at 9?",
             "hint_en": "What were you doing at 9?"
           },
           {
             "id": 3,
-            "label_pt": "Perguntar sobre outra pessoa (Was)",
             "label_en": "Ask about someone (Was)",
             "hidden_prompt": "user asks 'Was + 3rd person + verb-ing?'",
-            "hint_pt": "Was your sister cooking?",
             "hint_en": "Was your sister cooking?"
           }
         ],
@@ -601,26 +571,20 @@
         "objectives": [
           {
             "id": 1,
-            "label_pt": "Pergunta yes/no com Were",
             "label_en": "Yes/no with Were",
             "hidden_prompt": "user asks 'Were you + verb-ing?'",
-            "hint_pt": "Were you cooking?",
             "hint_en": "Were you cooking?"
           },
           {
             "id": 2,
-            "label_pt": "Pergunta yes/no com Was",
             "label_en": "Yes/no with Was",
             "hidden_prompt": "user asks 'Was + 3rd person + verb-ing?'",
-            "hint_pt": "Was your friend with you?",
             "hint_en": "Was your friend with you?"
           },
           {
             "id": 3,
-            "label_pt": "Pergunta WH",
             "label_en": "WH question",
             "hidden_prompt": "user asks WH + were/was + verb-ing",
-            "hint_pt": "What were you doing at 3?",
             "hint_en": "What were you doing at 3?"
           }
         ],
@@ -764,26 +728,20 @@
         "objectives": [
           {
             "id": 1,
-            "label_pt": "Cenário com 'when' (interrupção)",
             "label_en": "Scene with 'when' (interruption)",
             "hidden_prompt": "user uses 'I was + verb-ing + when + past simple'",
-            "hint_pt": "I was reading when the phone rang.",
             "hint_en": "I was reading when the phone rang."
           },
           {
             "id": 2,
-            "label_pt": "Cenário com 'while'",
             "label_en": "Scene with 'while'",
             "hidden_prompt": "user uses 'While + past continuous, past simple'",
-            "hint_pt": "While I was cooking, she arrived.",
             "hint_en": "While I was cooking, she arrived."
           },
           {
             "id": 3,
-            "label_pt": "Outro cenário com 'as' ou 'when'",
             "label_en": "Another scene with 'as' or 'when'",
             "hidden_prompt": "user uses another time clause structure",
-            "hint_pt": "As I was walking, I saw a friend.",
             "hint_en": "As I was walking, I saw a friend."
           }
         ],
@@ -805,26 +763,20 @@
         "objectives": [
           {
             "id": 1,
-            "label_pt": "Cena com while",
             "label_en": "While scene",
             "hidden_prompt": "user uses 'While + past continuous, past simple'",
-            "hint_pt": "While I was eating, the cat jumped.",
             "hint_en": "While I was eating, the cat jumped."
           },
           {
             "id": 2,
-            "label_pt": "Cena com when",
             "label_en": "When scene",
             "hidden_prompt": "user uses 'I was + ing + when + past simple'",
-            "hint_pt": "I was watching TV when the lights went off.",
             "hint_en": "I was watching TV when the lights went off."
           },
           {
             "id": 3,
-            "label_pt": "Perguntar à Charlotte",
             "label_en": "Ask Charlotte",
             "hidden_prompt": "user asks 'What about you?'",
-            "hint_pt": "What about you?",
             "hint_en": "What about you?"
           }
         ],
@@ -966,26 +918,20 @@
         "objectives": [
           {
             "id": 1,
-            "label_pt": "Primeira frase com background continuous + event simple",
             "label_en": "First sentence: continuous + simple",
             "hidden_prompt": "user uses 'I was + ing + when + past simple'",
-            "hint_pt": "I was walking when it started to rain.",
             "hint_en": "I was walking when it started to rain."
           },
           {
             "id": 2,
-            "label_pt": "Segunda frase com while",
             "label_en": "Second with while",
             "hidden_prompt": "user uses 'While + past continuous, past simple'",
-            "hint_pt": "While I was running for shelter, I saw a friend.",
             "hint_en": "While I was running for shelter, I saw a friend."
           },
           {
             "id": 3,
-            "label_pt": "Terceira frase fechando a história",
             "label_en": "Third sentence closing the story",
             "hidden_prompt": "user uses another past continuous + simple combination",
-            "hint_pt": "We were talking when our boss called us.",
             "hint_en": "We were talking when our boss called us."
           }
         ],
@@ -1007,26 +953,20 @@
         "objectives": [
           {
             "id": 1,
-            "label_pt": "Começar com cenário em past continuous",
             "label_en": "Start with continuous setting",
             "hidden_prompt": "user starts with 'I was + verb-ing'",
-            "hint_pt": "I was traveling in Italy.",
             "hint_en": "I was traveling in Italy."
           },
           {
             "id": 2,
-            "label_pt": "Adicionar evento com when",
             "label_en": "Add event with when",
             "hidden_prompt": "user adds event with 'when + past simple'",
-            "hint_pt": "When I met an old friend by chance.",
             "hint_en": "When I met an old friend by chance."
           },
           {
             "id": 3,
-            "label_pt": "Perguntar à Charlotte",
             "label_en": "Ask Charlotte",
             "hidden_prompt": "user asks 'How about you?'",
-            "hint_pt": "How about you?",
             "hint_en": "How about you?"
           }
         ],

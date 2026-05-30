@@ -151,26 +151,20 @@
         "objectives": [
           {
             "id": 1,
-            "label_pt": "Hábito passado seu",
             "label_en": "Past habit",
             "hidden_prompt": "user uses 'I used to + base'",
-            "hint_pt": "I used to play outside.",
             "hint_en": "I used to play outside."
           },
           {
             "id": 2,
-            "label_pt": "Outro hábito",
             "label_en": "Another habit",
             "hidden_prompt": "user uses another 'I used to'",
-            "hint_pt": "I used to read comics.",
             "hint_en": "I used to read comics."
           },
           {
             "id": 3,
-            "label_pt": "Hábito da família",
             "label_en": "Family habit",
             "hidden_prompt": "user uses 'My X used to + base'",
-            "hint_pt": "My family used to travel a lot.",
             "hint_en": "My family used to travel a lot."
           }
         ],
@@ -192,26 +186,20 @@
         "objectives": [
           {
             "id": 1,
-            "label_pt": "Algo que costumava amar",
             "label_en": "Used to love",
             "hidden_prompt": "user uses 'I used to love + noun/verb-ing'",
-            "hint_pt": "I used to love cartoons.",
             "hint_en": "I used to love cartoons."
           },
           {
             "id": 2,
-            "label_pt": "Outro hábito",
             "label_en": "Another habit",
             "hidden_prompt": "user uses another 'I used to + base'",
-            "hint_pt": "I used to collect stickers.",
             "hint_en": "I used to collect stickers."
           },
           {
             "id": 3,
-            "label_pt": "Perguntar à Charlotte",
             "label_en": "Ask Charlotte",
             "hidden_prompt": "user asks 'What did you use to do?'",
-            "hint_pt": "What did you use to do?",
             "hint_en": "What did you use to do?"
           }
         ],
@@ -353,26 +341,20 @@
         "objectives": [
           {
             "id": 1,
-            "label_pt": "Algo que não gostava (didn't use to)",
             "label_en": "Didn't use to like",
             "hidden_prompt": "user uses 'I didn't use to + base'",
-            "hint_pt": "I didn't use to like coffee.",
             "hint_en": "I didn't use to like coffee."
           },
           {
             "id": 2,
-            "label_pt": "Outra coisa que não fazia",
             "label_en": "Another didn't use to",
             "hidden_prompt": "user uses another 'I didn't use to'",
-            "hint_pt": "I didn't use to exercise.",
             "hint_en": "I didn't use to exercise."
           },
           {
             "id": 3,
-            "label_pt": "Pergunta à Charlotte (Did you use to)",
             "label_en": "Ask Charlotte (Did you use to)",
             "hidden_prompt": "user asks 'Did you use to + base?'",
-            "hint_pt": "Did you use to play sports?",
             "hint_en": "Did you use to play sports?"
           }
         ],
@@ -394,26 +376,20 @@
         "objectives": [
           {
             "id": 1,
-            "label_pt": "Hábito atual que não fazia",
             "label_en": "Current habit you didn't have",
             "hidden_prompt": "user uses 'I didn't use to + base'",
-            "hint_pt": "I didn't use to meditate.",
             "hint_en": "I didn't use to meditate."
           },
           {
             "id": 2,
-            "label_pt": "Outra mudança",
             "label_en": "Another change",
             "hidden_prompt": "user uses another 'I didn't use to'",
-            "hint_pt": "I didn't use to like vegetables.",
             "hint_en": "I didn't use to like vegetables."
           },
           {
             "id": 3,
-            "label_pt": "Perguntar à Charlotte",
             "label_en": "Ask Charlotte",
             "hidden_prompt": "user asks 'Did you use to...?'",
-            "hint_pt": "Did you use to live abroad?",
             "hint_en": "Did you use to live abroad?"
           }
         ],
@@ -555,26 +531,20 @@
         "objectives": [
           {
             "id": 1,
-            "label_pt": "Rotina repetida no passado (would)",
             "label_en": "Repeated past routine",
             "hidden_prompt": "user uses 'We/I would + base'",
-            "hint_pt": "We would go to the park.",
             "hint_en": "We would go to the park."
           },
           {
             "id": 2,
-            "label_pt": "Outra rotina com would",
             "label_en": "Another would routine",
             "hidden_prompt": "user uses another 'would + base'",
-            "hint_pt": "My mom would read to me.",
             "hint_en": "My mom would read to me."
           },
           {
             "id": 3,
-            "label_pt": "Mais uma com tempo (every X)",
             "label_en": "One more with 'every X'",
             "hidden_prompt": "user uses 'Every + day/week/summer, X would + base'",
-            "hint_pt": "Every summer, we would travel.",
             "hint_en": "Every summer, we would travel."
           }
         ],
@@ -596,26 +566,20 @@
         "objectives": [
           {
             "id": 1,
-            "label_pt": "Atividade repetida",
             "label_en": "Repeated activity",
             "hidden_prompt": "user uses 'I/We would + base'",
-            "hint_pt": "We would play board games.",
             "hint_en": "We would play board games."
           },
           {
             "id": 2,
-            "label_pt": "Outra",
             "label_en": "Another",
             "hidden_prompt": "user uses another 'would + base'",
-            "hint_pt": "My dad would tell jokes.",
             "hint_en": "My dad would tell jokes."
           },
           {
             "id": 3,
-            "label_pt": "Perguntar à Charlotte",
             "label_en": "Ask Charlotte",
             "hidden_prompt": "user asks about her past with would",
-            "hint_pt": "What would you do as a kid?",
             "hint_en": "What would you do as a kid?"
           }
         ],
@@ -758,26 +722,20 @@
         "objectives": [
           {
             "id": 1,
-            "label_pt": "Used to + estado",
             "label_en": "Used to + state",
             "hidden_prompt": "user uses 'I used to be/live/have/like + something'",
-            "hint_pt": "I used to be shy.",
             "hint_en": "I used to be shy."
           },
           {
             "id": 2,
-            "label_pt": "Would + ação repetida",
             "label_en": "Would + repeated action",
             "hidden_prompt": "user uses 'We/I would + action verb'",
-            "hint_pt": "We would play soccer every day.",
             "hint_en": "We would play soccer every day."
           },
           {
             "id": 3,
-            "label_pt": "Mais um com used to ou would",
             "label_en": "One more",
             "hidden_prompt": "user uses another used to or would",
-            "hint_pt": "I used to live in Rio.",
             "hint_en": "I used to live in Rio."
           }
         ],
@@ -799,26 +757,20 @@
         "objectives": [
           {
             "id": 1,
-            "label_pt": "Used to + estado/lugar",
             "label_en": "Used to + state/place",
             "hidden_prompt": "user uses 'I used to live + place'",
-            "hint_pt": "I used to live in a small town.",
             "hint_en": "I used to live in a small town."
           },
           {
             "id": 2,
-            "label_pt": "Would + ação que fazia",
             "label_en": "Would + repeated action",
             "hidden_prompt": "user uses 'I/We would + action'",
-            "hint_pt": "We would walk to school.",
             "hint_en": "We would walk to school."
           },
           {
             "id": 3,
-            "label_pt": "Perguntar à Charlotte",
             "label_en": "Ask Charlotte",
             "hidden_prompt": "user asks about her past with used to or would",
-            "hint_pt": "Where did you use to live?",
             "hint_en": "Where did you use to live?"
           }
         ],
@@ -960,26 +912,20 @@
         "objectives": [
           {
             "id": 1,
-            "label_pt": "Hábito passado vs presente",
             "label_en": "Past vs present habit",
             "hidden_prompt": "user contrasts past (used to/would) with present",
-            "hint_pt": "I used to smoke, but now I don't.",
             "hint_en": "I used to smoke, but now I don't."
           },
           {
             "id": 2,
-            "label_pt": "Outro contraste",
             "label_en": "Another contrast",
             "hidden_prompt": "user uses another contrast",
-            "hint_pt": "I would exercise daily, but now I'm lazy.",
             "hint_en": "I would exercise daily, but now I'm lazy."
           },
           {
             "id": 3,
-            "label_pt": "Algo que não fazia mas agora faz",
             "label_en": "Didn't use to but now does",
             "hidden_prompt": "user uses 'I didn't use to + base + but now + present'",
-            "hint_pt": "I didn't use to like vegetables, but now I do.",
             "hint_en": "I didn't use to like vegetables, but now I do."
           }
         ],
@@ -1001,26 +947,20 @@
         "objectives": [
           {
             "id": 1,
-            "label_pt": "Hábito que mudou",
             "label_en": "Habit that changed",
             "hidden_prompt": "user uses 'I used to + base + but now + present'",
-            "hint_pt": "I used to wake up late, but now I'm up at 6.",
             "hint_en": "I used to wake up late, but now I'm up at 6."
           },
           {
             "id": 2,
-            "label_pt": "Outra mudança",
             "label_en": "Another change",
             "hidden_prompt": "user uses 'would' or 'used to' for contrast",
-            "hint_pt": "I would go out a lot.",
             "hint_en": "I would go out a lot."
           },
           {
             "id": 3,
-            "label_pt": "Perguntar à Charlotte",
             "label_en": "Ask Charlotte",
             "hidden_prompt": "user asks 'How about you?'",
-            "hint_pt": "How about you?",
             "hint_en": "How about you?"
           }
         ],

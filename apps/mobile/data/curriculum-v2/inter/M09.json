@@ -160,26 +160,20 @@
         "objectives": [
           {
             "id": 1,
-            "label_pt": "Comparação de igualdade entre pessoas",
             "label_en": "Equality comparison between people",
             "hidden_prompt": "user uses 'X is as + adj + as Y' to compare two people (family/friends)",
-            "hint_pt": "I'm as tall as my mother.",
             "hint_en": "I'm as tall as my mother."
           },
           {
             "id": 2,
-            "label_pt": "Comparação entre coisas ou lugares",
             "label_en": "Comparison between things or places",
             "hidden_prompt": "user uses 'as + adj + as' to compare objects, cities, or items",
-            "hint_pt": "My phone is as fast as my laptop.",
             "hint_en": "My phone is as fast as my laptop."
           },
           {
             "id": 3,
-            "label_pt": "Comparação envolvendo tempo, clima ou expectativa",
             "label_en": "Comparison involving time, weather, or expectation",
             "hidden_prompt": "user uses 'as + adj + as' with weather/expectation/days",
-            "hint_pt": "Today is as cold as yesterday.",
             "hint_en": "Today is as cold as yesterday."
           }
         ],
@@ -201,26 +195,20 @@
         "objectives": [
           {
             "id": 1,
-            "label_pt": "Duas coisas igualmente boas",
             "label_en": "Two equally good things",
             "hidden_prompt": "user states 'X is as + good/enjoyable/fun + as Y'",
-            "hint_pt": "Books are as fun as movies.",
             "hint_en": "Books are as fun as movies."
           },
           {
             "id": 2,
-            "label_pt": "Duas atividades igualmente difíceis ou cansativas",
             "label_en": "Two equally hard or tiring things",
             "hidden_prompt": "user uses 'as + difficult/tiring/hard + as'",
-            "hint_pt": "Studying is as tiring as exercise.",
             "hint_en": "Studying is as tiring as exercise."
           },
           {
             "id": 3,
-            "label_pt": "Perguntar à Charlotte sobre uma equivalência dela",
             "label_en": "Ask Charlotte about something equally good for her",
             "hidden_prompt": "user asks Charlotte 'what's as + adj + as ... for you?' or 'how about you?'",
-            "hint_pt": "How about you?",
             "hint_en": "How about you?"
           }
         ],
@@ -366,26 +354,20 @@
         "objectives": [
           {
             "id": 1,
-            "label_pt": "Comparação negativa sobre lugar ou casa",
             "label_en": "Not as...as comparison about a place or home",
             "hidden_prompt": "user uses 'X isn't as + adj + as Y' for a place/home",
-            "hint_pt": "My new place isn't as quiet as the old one.",
             "hint_en": "My new place isn't as quiet as the old one."
           },
           {
             "id": 2,
-            "label_pt": "Comparação negativa sobre algo recente vs passado",
             "label_en": "Not as...as recent vs past",
             "hidden_prompt": "user uses 'X isn't as + adj + as Y' for recent vs past",
-            "hint_pt": "This week isn't as busy as last week.",
             "hint_en": "This week isn't as busy as last week."
           },
           {
             "id": 3,
-            "label_pt": "Comparação negativa sobre si mesmo",
             "label_en": "Not as...as about yourself",
             "hidden_prompt": "user uses 'I'm not as + adj + as ...' (self-comparison)",
-            "hint_pt": "I'm not as organized as my sister.",
             "hint_en": "I'm not as organized as my sister."
           }
         ],
@@ -407,26 +389,20 @@
         "objectives": [
           {
             "id": 1,
-            "label_pt": "Algo que não foi tão bom quanto diziam",
             "label_en": "Something that wasn't as good as said",
             "hidden_prompt": "user uses 'X wasn't as + good/great + as ...' for a disappointing experience",
-            "hint_pt": "The movie wasn't as good as I expected.",
             "hint_en": "The movie wasn't as good as I expected."
           },
           {
             "id": 2,
-            "label_pt": "Algo que não é tão difícil quanto parece",
             "label_en": "Something not as hard as it seems",
             "hidden_prompt": "user uses 'X isn't as + difficult/hard + as ...' (positive surprise)",
-            "hint_pt": "Cooking isn't as hard as it seems.",
             "hint_en": "Cooking isn't as hard as it seems."
           },
           {
             "id": 3,
-            "label_pt": "Perguntar à Charlotte sobre uma decepção dela",
             "label_en": "Ask Charlotte about a disappointment of hers",
             "hidden_prompt": "user asks 'what wasn't as + adj + as for you?' or 'how about you?'",
-            "hint_pt": "How about you?",
             "hint_en": "How about you?"
           }
         ],
@@ -576,26 +552,20 @@
         "objectives": [
           {
             "id": 1,
-            "label_pt": "Algo que dobrou (twice as much/many/adj)",
             "label_en": "Something that doubled",
             "hidden_prompt": "user uses 'twice as + much/many/adj + as'",
-            "hint_pt": "I drink twice as much coffee as last year.",
             "hint_en": "I drink twice as much coffee as last year."
           },
           {
             "id": 2,
-            "label_pt": "Algo que triplicou ou mais (three/four times)",
             "label_en": "Something that tripled+",
             "hidden_prompt": "user uses 'three times as + adj/much/many + as'",
-            "hint_pt": "My commute is three times as long as before.",
             "hint_en": "My commute is three times as long as before."
           },
           {
             "id": 3,
-            "label_pt": "Comparação multiplicada com outra pessoa",
             "label_en": "Multiplied comparison with another person",
             "hidden_prompt": "user uses 'X is twice/three times as + adj + as Y' comparing people",
-            "hint_pt": "My brother is twice as patient as I am.",
             "hint_en": "My brother is twice as patient as I am."
           }
         ],
@@ -617,26 +587,20 @@
         "objectives": [
           {
             "id": 1,
-            "label_pt": "Algo que custa o dobro ou triplo",
             "label_en": "Something costing 2x or 3x",
             "hidden_prompt": "user uses 'X costs twice/three times as much as + reference'",
-            "hint_pt": "Coffee costs twice as much as before.",
             "hint_en": "Coffee costs twice as much as before."
           },
           {
             "id": 2,
-            "label_pt": "Outra mudança em escala (tempo, trabalho)",
             "label_en": "Another scaled change (time, work)",
             "hidden_prompt": "user uses 'twice/three times as + adj/much + as'",
-            "hint_pt": "I work twice as much as I used to.",
             "hint_en": "I work twice as much as I used to."
           },
           {
             "id": 3,
-            "label_pt": "Perguntar à Charlotte uma mudança dela",
             "label_en": "Ask Charlotte a scaled change of hers",
             "hidden_prompt": "user asks Charlotte 'what's twice/three times as... for you?'",
-            "hint_pt": "How about you?",
             "hint_en": "How about you?"
           }
         ],
@@ -784,26 +748,20 @@
         "objectives": [
           {
             "id": 1,
-            "label_pt": "Observação sobre estudo, trabalho ou crescimento",
             "label_en": "Observation about study, work, or growth",
             "hidden_prompt": "user uses 'The more I + verb, the more/better I + verb'",
-            "hint_pt": "The more I read, the more I learn.",
             "hint_en": "The more I read, the more I learn."
           },
           {
             "id": 2,
-            "label_pt": "Observação sobre relacionamentos ou tempo",
             "label_en": "Observation about relationships or time",
             "hidden_prompt": "user uses 'The more X, the more Y' about people or time",
-            "hint_pt": "The more I see her, the more I appreciate her.",
             "hint_en": "The more I see her, the more I appreciate her."
           },
           {
             "id": 3,
-            "label_pt": "Observação sobre dinheiro, esforço ou saúde",
             "label_en": "Observation about money, effort, or health",
             "hidden_prompt": "user uses 'The harder/more X, the more Y'",
-            "hint_pt": "The harder I exercise, the better I sleep.",
             "hint_en": "The harder I exercise, the better I sleep."
           }
         ],
@@ -825,26 +783,20 @@
         "objectives": [
           {
             "id": 1,
-            "label_pt": "Reflexão pessoal com 'the more...the more'",
             "label_en": "Personal reflection with 'the more...the more'",
             "hidden_prompt": "user uses 'The more + clause, the more + clause' for personal insight",
-            "hint_pt": "The more I travel, the more curious I become.",
             "hint_en": "The more I travel, the more curious I become."
           },
           {
             "id": 2,
-            "label_pt": "Outra reflexão (pode usar less ou comparativo curto)",
             "label_en": "Another reflection (can use less or short comparative)",
             "hidden_prompt": "user uses 'The less/harder/older + clause, the more/better/happier + clause'",
-            "hint_pt": "The less I worry, the happier I feel.",
             "hint_en": "The less I worry, the happier I feel."
           },
           {
             "id": 3,
-            "label_pt": "Perguntar à Charlotte sobre uma verdade dela",
             "label_en": "Ask Charlotte about her parallel",
             "hidden_prompt": "user asks 'How about you?' or 'What's your parallel?'",
-            "hint_pt": "How about you?",
             "hint_en": "How about you?"
           }
         ],
@@ -996,26 +948,20 @@
         "objectives": [
           {
             "id": 1,
-            "label_pt": "Comparação de igualdade ou desigualdade",
             "label_en": "Equality or inequality",
             "hidden_prompt": "user uses 'as + adj + as' or 'not as + adj + as'",
-            "hint_pt": "I'm as busy as I was, but not as stressed.",
             "hint_en": "I'm as busy as I was, but not as stressed."
           },
           {
             "id": 2,
-            "label_pt": "Comparação com multiplicador",
             "label_en": "Comparison with multiplier",
             "hidden_prompt": "user uses 'twice/three times as + adj/much/many + as'",
-            "hint_pt": "I have twice as many responsibilities now.",
             "hint_en": "I have twice as many responsibilities now."
           },
           {
             "id": 3,
-            "label_pt": "Reflexão paralela com 'the more X, the more Y'",
             "label_en": "Parallel reflection",
             "hidden_prompt": "user uses 'The more X, the more Y'",
-            "hint_pt": "The more I grow, the more grateful I become.",
             "hint_en": "The more I grow, the more grateful I become."
           }
         ],
@@ -1037,26 +983,20 @@
         "objectives": [
           {
             "id": 1,
-            "label_pt": "Comparação simples (as...as ou not as...as)",
             "label_en": "Simple comparison",
             "hidden_prompt": "user uses 'as + adj + as' or 'not as + adj + as'",
-            "hint_pt": "Modern life isn't as peaceful as before.",
             "hint_en": "Modern life isn't as peaceful as before."
           },
           {
             "id": 2,
-            "label_pt": "Comparação com multiplicador ou paralelo",
             "label_en": "Multiplier or parallel",
             "hidden_prompt": "user uses 'twice/three times as' or 'the more X, the more Y'",
-            "hint_pt": "We're twice as connected but not always closer.",
             "hint_en": "We're twice as connected but not always closer."
           },
           {
             "id": 3,
-            "label_pt": "Perguntar à Charlotte uma comparação dela",
             "label_en": "Ask Charlotte for her comparison",
             "hidden_prompt": "user asks 'How about you?' or 'What do you think?'",
-            "hint_pt": "How about you?",
             "hint_en": "How about you?"
           }
         ],

@@ -66,9 +66,15 @@ IDs: `N01..N05` (Novice), `I01..I05` per módulo (Inter), `A01..A05` (Advanced).
    **sempre `persona_outfit: charlotte_casual`** em role-play e chat.
    O cenário (cafeteria, escritório, parque) vai no `scenario` em prosa,
    não no slug do outfit.
-3. **Idioma de explicações**:
-   - Novice: PT-BR (acentos PERFEITOS — sem cedilha esquecida, sem til omitido)
-   - Inter: English simples
+3. **Idioma de explicações** — REGRA RIGIDA:
+   - **Novice**: PT-BR (acentos PERFEITOS — sem cedilha esquecida, sem til omitido)
+   - **Inter**: 100% English (zero PT em qualquer field do JSON entregue ao app)
+     - `Explanation` em exercises = EN
+     - `label_pt`/`hint_pt` continuam aceitos no markdown como apoio da autora,
+       MAS o compile script **descarta esses campos** ao gerar o JSON pro Inter
+       (mobile faz fallback pra label_en/hint_en).
+     - `context` em L&S phrases = EN
+   - **Advanced**: 100% English (regra identica ao Inter)
    - Advanced: English natural
 4. **Sem emojis** em arquivos de conteúdo (per `feedback_no_emojis.md`).
 5. **Sem URLs falsas**.

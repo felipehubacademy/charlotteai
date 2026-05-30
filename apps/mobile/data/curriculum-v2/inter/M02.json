@@ -154,26 +154,20 @@
         "objectives": [
           {
             "id": 1,
-            "label_pt": "Dizer onde já foi (I've been to)",
             "label_en": "Say where you've been",
             "hidden_prompt": "user uses 'I've been to + place' or 'I have visited + place'",
-            "hint_pt": "I've been to Italy.",
             "hint_en": "I've been to Italy."
           },
           {
             "id": 2,
-            "label_pt": "Dizer algo que nunca fez",
             "label_en": "Say something you've never done",
             "hidden_prompt": "user uses 'I've never + past participle'",
-            "hint_pt": "I've never tried sushi.",
             "hint_en": "I've never tried sushi."
           },
           {
             "id": 3,
-            "label_pt": "Perguntar à Charlotte",
             "label_en": "Ask Charlotte",
             "hidden_prompt": "user asks 'Have you ever + past participle?'",
-            "hint_pt": "Have you ever been to Japan?",
             "hint_en": "Have you ever been to Japan?"
           }
         ],
@@ -195,26 +189,20 @@
         "objectives": [
           {
             "id": 1,
-            "label_pt": "Dizer experiência aventureira",
             "label_en": "Say adventurous experience",
             "hidden_prompt": "user uses 'I've + past participle'",
-            "hint_pt": "I've gone skydiving.",
             "hint_en": "I've gone skydiving."
           },
           {
             "id": 2,
-            "label_pt": "Dizer algo que nunca fez",
             "label_en": "Say something never done",
             "hidden_prompt": "user uses 'I've never + past participle'",
-            "hint_pt": "I've never climbed a mountain.",
             "hint_en": "I've never climbed a mountain."
           },
           {
             "id": 3,
-            "label_pt": "Perguntar à Charlotte",
             "label_en": "Ask Charlotte",
             "hidden_prompt": "user asks 'Have you ever + past participle?'",
-            "hint_pt": "Have you ever traveled solo?",
             "hint_en": "Have you ever traveled solo?"
           }
         ],
@@ -358,26 +346,20 @@
         "objectives": [
           {
             "id": 1,
-            "label_pt": "Lugar onde já esteve (been)",
             "label_en": "Place you've been",
             "hidden_prompt": "user uses 'I've been to + place'",
-            "hint_pt": "I've been to Argentina.",
             "hint_en": "I've been to Argentina."
           },
           {
             "id": 2,
-            "label_pt": "Comida que já comeu (eaten/tried)",
             "label_en": "Food you've eaten",
             "hidden_prompt": "user uses 'I've eaten + food' or 'I've tried + food'",
-            "hint_pt": "I've eaten sushi.",
             "hint_en": "I've eaten sushi."
           },
           {
             "id": 3,
-            "label_pt": "Algo que já fez (done/seen/read)",
             "label_en": "Something you've done/seen/read",
             "hidden_prompt": "user uses 'I've done/seen/read + something'",
-            "hint_pt": "I've read three books this month.",
             "hint_en": "I've read three books this month."
           }
         ],
@@ -399,26 +381,20 @@
         "objectives": [
           {
             "id": 1,
-            "label_pt": "Conquista (done/learned/finished)",
             "label_en": "Achievement",
             "hidden_prompt": "user uses 'I've done/learned/finished + something'",
-            "hint_pt": "I've learned English.",
             "hint_en": "I've learned English."
           },
           {
             "id": 2,
-            "label_pt": "Outra experiência",
             "label_en": "Another experience",
             "hidden_prompt": "user uses another past participle",
-            "hint_pt": "I've traveled to Europe.",
             "hint_en": "I've traveled to Europe."
           },
           {
             "id": 3,
-            "label_pt": "Perguntar à Charlotte",
             "label_en": "Ask Charlotte",
             "hidden_prompt": "user asks 'How about you?' or 'What have you done?'",
-            "hint_pt": "What have you achieved?",
             "hint_en": "What have you achieved?"
           }
         ],
@@ -560,26 +536,20 @@
         "objectives": [
           {
             "id": 1,
-            "label_pt": "Dizer algo que JÁ fez (already)",
             "label_en": "Say what you've already done",
             "hidden_prompt": "user uses 'I've already + past participle'",
-            "hint_pt": "I've already finished my report.",
             "hint_en": "I've already finished my report."
           },
           {
             "id": 2,
-            "label_pt": "Dizer algo que ACABOU de fazer (just)",
             "label_en": "Say what you just did",
             "hidden_prompt": "user uses 'I've just + past participle'",
-            "hint_pt": "I've just had lunch.",
             "hint_en": "I've just had lunch."
           },
           {
             "id": 3,
-            "label_pt": "Dizer algo que AINDA NÃO fez (yet)",
             "label_en": "Say what you haven't done yet",
             "hidden_prompt": "user uses 'I haven't + past participle + yet'",
-            "hint_pt": "I haven't called my mom yet.",
             "hint_en": "I haven't called my mom yet."
           }
         ],
@@ -601,26 +571,20 @@
         "objectives": [
           {
             "id": 1,
-            "label_pt": "Algo que já fez",
             "label_en": "Already done",
             "hidden_prompt": "user uses 'I've already + past participle'",
-            "hint_pt": "I've already worked out.",
             "hint_en": "I've already worked out."
           },
           {
             "id": 2,
-            "label_pt": "Algo que ainda não fez",
             "label_en": "Not yet",
             "hidden_prompt": "user uses 'I haven't + past participle + yet'",
-            "hint_pt": "I haven't started cooking yet.",
             "hint_en": "I haven't started cooking yet."
           },
           {
             "id": 3,
-            "label_pt": "Perguntar à Charlotte",
             "label_en": "Ask Charlotte",
             "hidden_prompt": "user asks 'How about you?'",
-            "hint_pt": "How about you?",
             "hint_en": "How about you?"
           }
         ],
@@ -764,26 +728,20 @@
         "objectives": [
           {
             "id": 1,
-            "label_pt": "Pergunta com Have you ever",
             "label_en": "Question with 'Have you ever'",
             "hidden_prompt": "user asks 'Have you ever + past participle?'",
-            "hint_pt": "Have you ever traveled abroad?",
             "hint_en": "Have you ever traveled abroad?"
           },
           {
             "id": 2,
-            "label_pt": "Outra pergunta com 'Have you'",
             "label_en": "Another 'Have you' question",
             "hidden_prompt": "user asks another 'Have you + past participle?'",
-            "hint_pt": "Have you eaten sushi?",
             "hint_en": "Have you eaten sushi?"
           },
           {
             "id": 3,
-            "label_pt": "Pergunta sobre alguém (Has)",
             "label_en": "Ask about someone (Has)",
             "hidden_prompt": "user asks 'Has + 3rd person + past participle?'",
-            "hint_pt": "Has your sister been to Europe?",
             "hint_en": "Has your sister been to Europe?"
           }
         ],
@@ -805,26 +763,20 @@
         "objectives": [
           {
             "id": 1,
-            "label_pt": "Responder e contar experiência",
             "label_en": "Answer and tell experience",
             "hidden_prompt": "user uses 'I've always wanted to + base' or 'I've + past participle'",
-            "hint_pt": "I've always wanted to visit Japan.",
             "hint_en": "I've always wanted to visit Japan."
           },
           {
             "id": 2,
-            "label_pt": "Perguntar Have you ever",
             "label_en": "Ask 'Have you ever'",
             "hidden_prompt": "user asks 'Have you ever + past participle?'",
-            "hint_pt": "Have you ever been there?",
             "hint_en": "Have you ever been there?"
           },
           {
             "id": 3,
-            "label_pt": "Mais uma pergunta",
             "label_en": "One more question",
             "hidden_prompt": "user asks another 'Have you...?'",
-            "hint_pt": "Have you traveled solo?",
             "hint_en": "Have you traveled solo?"
           }
         ],
@@ -966,26 +918,20 @@
         "objectives": [
           {
             "id": 1,
-            "label_pt": "Experiência marcante (I've + past participle)",
             "label_en": "Major experience",
             "hidden_prompt": "user uses 'I've + past participle' for major experience",
-            "hint_pt": "I've traveled to Italy.",
             "hint_en": "I've traveled to Italy."
           },
           {
             "id": 2,
-            "label_pt": "Conquista (just/already)",
             "label_en": "Achievement (just/already)",
             "hidden_prompt": "user uses 'I've just/already + past participle'",
-            "hint_pt": "I've just finished my degree.",
             "hint_en": "I've just finished my degree."
           },
           {
             "id": 3,
-            "label_pt": "Algo que ainda não fez (yet)",
             "label_en": "Something not yet done",
             "hidden_prompt": "user uses 'I haven't + past participle + yet'",
-            "hint_pt": "I haven't traveled to Asia yet.",
             "hint_en": "I haven't traveled to Asia yet."
           }
         ],
@@ -1007,26 +953,20 @@
         "objectives": [
           {
             "id": 1,
-            "label_pt": "Experiência principal",
             "label_en": "Main experience",
             "hidden_prompt": "user uses 'I've + past participle'",
-            "hint_pt": "I've grown up in Brazil.",
             "hint_en": "I've grown up in Brazil."
           },
           {
             "id": 2,
-            "label_pt": "Algo recente (just/already)",
             "label_en": "Recent (just/already)",
             "hidden_prompt": "user uses 'I've just/already + past participle'",
-            "hint_pt": "I've just started learning English.",
             "hint_en": "I've just started learning English."
           },
           {
             "id": 3,
-            "label_pt": "Perguntar à Charlotte",
             "label_en": "Ask Charlotte",
             "hidden_prompt": "user asks 'How about you?' or 'What about you?'",
-            "hint_pt": "How about you?",
             "hint_en": "How about you?"
           }
         ],

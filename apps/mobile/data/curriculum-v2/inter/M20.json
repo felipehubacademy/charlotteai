@@ -123,23 +123,28 @@
       "listening_speaking": [
         {
           "text": "I wish you would stop interrupting.",
-          "context": "complaint about behavior"
+          "context": "complaint about behavior",
+          "audio_url": "https://fnvjibzreepubageztoi.supabase.co/storage/v1/object/public/curriculum-audio/ls/inter/40ff2327515bd5db.flac"
         },
         {
           "text": "I wish she would listen to me.",
-          "context": "desire for attention"
+          "context": "desire for attention",
+          "audio_url": "https://fnvjibzreepubageztoi.supabase.co/storage/v1/object/public/curriculum-audio/ls/inter/f71fb50381ee46e0.flac"
         },
         {
           "text": "I wish it would stop raining.",
-          "context": "weather complaint"
+          "context": "weather complaint",
+          "audio_url": "https://fnvjibzreepubageztoi.supabase.co/storage/v1/object/public/curriculum-audio/ls/inter/4d6ef4f567b290c4.flac"
         },
         {
           "text": "I wish people wouldn't smoke here.",
-          "context": "general complaint"
+          "context": "general complaint",
+          "audio_url": "https://fnvjibzreepubageztoi.supabase.co/storage/v1/object/public/curriculum-audio/ls/inter/1ae9f5b88eefcf20.flac"
         },
         {
           "text": "I wish my neighbors would be quieter.",
-          "context": "neighborhood complaint"
+          "context": "neighborhood complaint",
+          "audio_url": "https://fnvjibzreepubageztoi.supabase.co/storage/v1/object/public/curriculum-audio/ls/inter/62d4e68cc272fe84.flac"
         }
       ],
       "roleplay": {
@@ -152,26 +157,20 @@
         "objectives": [
           {
             "id": 1,
-            "label_pt": "Reclamação com 'I wish + would'",
             "label_en": "Complaint with 'I wish + would'",
             "hidden_prompt": "user uses 'I wish X would + base'",
-            "hint_pt": "I wish my boss would give clearer instructions.",
             "hint_en": "I wish my boss would give clearer instructions."
           },
           {
             "id": 2,
-            "label_pt": "Reclamação negativa com 'wouldn't'",
             "label_en": "Negative complaint with 'wouldn't'",
             "hidden_prompt": "user uses 'I wish X wouldn't + base'",
-            "hint_pt": "I wish people wouldn't talk loudly on the phone in public.",
             "hint_en": "I wish people wouldn't talk loudly on the phone in public."
           },
           {
             "id": 3,
-            "label_pt": "Outra reclamação",
             "label_en": "Another complaint",
             "hidden_prompt": "user uses another 'I wish + would/wouldn't'",
-            "hint_pt": "I wish drivers would respect crosswalks.",
             "hint_en": "I wish drivers would respect crosswalks."
           }
         ],
@@ -193,26 +192,20 @@
         "objectives": [
           {
             "id": 1,
-            "label_pt": "Reclamação sobre alguém específico",
             "label_en": "Complaint about someone specific",
             "hidden_prompt": "user uses 'I wish X would + base'",
-            "hint_pt": "I wish my brother would clean his room.",
             "hint_en": "I wish my brother would clean his room."
           },
           {
             "id": 2,
-            "label_pt": "Outra reclamação (negativa)",
             "label_en": "Another complaint (negative)",
             "hidden_prompt": "user uses 'I wish X wouldn't + base'",
-            "hint_pt": "I wish my cat wouldn't wake me up at 5 AM.",
             "hint_en": "I wish my cat wouldn't wake me up at 5 AM."
           },
           {
             "id": 3,
-            "label_pt": "Pergunta para Charlotte",
             "label_en": "Question for Charlotte",
             "hidden_prompt": "user asks Charlotte more about her annoyance",
-            "hint_pt": "Have you told them?",
             "hint_en": "Have you told them?"
           }
         ],
@@ -324,23 +317,28 @@
       "listening_speaking": [
         {
           "text": "If only I had more time!",
-          "context": "present dramatic"
+          "context": "present dramatic",
+          "audio_url": "https://fnvjibzreepubageztoi.supabase.co/storage/v1/object/public/curriculum-audio/ls/inter/35366093e3117126.flac"
         },
         {
           "text": "If only I had studied harder!",
-          "context": "past regret"
+          "context": "past regret",
+          "audio_url": "https://fnvjibzreepubageztoi.supabase.co/storage/v1/object/public/curriculum-audio/ls/inter/c08dcc8f6251b0e2.flac"
         },
         {
           "text": "If only she were here!",
-          "context": "present desire"
+          "context": "present desire",
+          "audio_url": "https://fnvjibzreepubageztoi.supabase.co/storage/v1/object/public/curriculum-audio/ls/inter/d688163c689b8a01.flac"
         },
         {
           "text": "If only we had left earlier!",
-          "context": "past regret"
+          "context": "past regret",
+          "audio_url": "https://fnvjibzreepubageztoi.supabase.co/storage/v1/object/public/curriculum-audio/ls/inter/ac27dedf404be345.flac"
         },
         {
           "text": "If only it would stop raining!",
-          "context": "desire about future"
+          "context": "desire about future",
+          "audio_url": "https://fnvjibzreepubageztoi.supabase.co/storage/v1/object/public/curriculum-audio/ls/inter/8715bb41d6eed74c.flac"
         }
       ],
       "roleplay": {
@@ -353,26 +351,20 @@
         "objectives": [
           {
             "id": 1,
-            "label_pt": "If only sobre presente",
             "label_en": "If only about present",
             "hidden_prompt": "user uses 'If only + past simple' for present",
-            "hint_pt": "If only I had more energy!",
             "hint_en": "If only I had more energy!"
           },
           {
             "id": 2,
-            "label_pt": "If only sobre passado",
             "label_en": "If only about past",
             "hidden_prompt": "user uses 'If only + past perfect'",
-            "hint_pt": "If only I had taken that opportunity!",
             "hint_en": "If only I had taken that opportunity!"
           },
           {
             "id": 3,
-            "label_pt": "If only com 'would' (mudança comportamental)",
             "label_en": "If only with 'would'",
             "hidden_prompt": "user uses 'If only X would + base'",
-            "hint_pt": "If only my boss would notice my hard work!",
             "hint_en": "If only my boss would notice my hard work!"
           }
         ],
@@ -394,26 +386,20 @@
         "objectives": [
           {
             "id": 1,
-            "label_pt": "If only sobre passado/arrependimento",
             "label_en": "If only about past regret",
             "hidden_prompt": "user uses 'If only + past perfect'",
-            "hint_pt": "If only I had started exercising earlier.",
             "hint_en": "If only I had started exercising earlier."
           },
           {
             "id": 2,
-            "label_pt": "If only sobre presente/desejo atual",
             "label_en": "If only about present wish",
             "hidden_prompt": "user uses 'If only + past simple' or 'were'",
-            "hint_pt": "If only I had more free time.",
             "hint_en": "If only I had more free time."
           },
           {
             "id": 3,
-            "label_pt": "Perguntar à Charlotte",
             "label_en": "Ask Charlotte",
             "hidden_prompt": "user asks Charlotte why she didn't learn piano",
-            "hint_pt": "Why didn't you learn?",
             "hint_en": "Why didn't you learn?"
           }
         ],
@@ -525,23 +511,28 @@
       "listening_speaking": [
         {
           "text": "I'd rather stay home tonight.",
-          "context": "own preference"
+          "context": "own preference",
+          "audio_url": "https://fnvjibzreepubageztoi.supabase.co/storage/v1/object/public/curriculum-audio/ls/inter/4ac43f2aec28a021.flac"
         },
         {
           "text": "I'd rather have pizza than sushi.",
-          "context": "comparison"
+          "context": "comparison",
+          "audio_url": "https://fnvjibzreepubageztoi.supabase.co/storage/v1/object/public/curriculum-audio/ls/inter/3370d9e23a470bc9.flac"
         },
         {
           "text": "I'd rather you didn't smoke.",
-          "context": "preference about another"
+          "context": "preference about another",
+          "audio_url": "https://fnvjibzreepubageztoi.supabase.co/storage/v1/object/public/curriculum-audio/ls/inter/cd0c8c433508973e.flac"
         },
         {
           "text": "I'd rather not talk about it.",
-          "context": "negative preference"
+          "context": "negative preference",
+          "audio_url": "https://fnvjibzreepubageztoi.supabase.co/storage/v1/object/public/curriculum-audio/ls/inter/417ac850a8226cca.flac"
         },
         {
           "text": "I'd rather you talked to me first.",
-          "context": "relationship preference"
+          "context": "relationship preference",
+          "audio_url": "https://fnvjibzreepubageztoi.supabase.co/storage/v1/object/public/curriculum-audio/ls/inter/7617405b80e784e5.flac"
         }
       ],
       "roleplay": {
@@ -554,26 +545,20 @@
         "objectives": [
           {
             "id": 1,
-            "label_pt": "Preferência própria com 'I'd rather + base'",
             "label_en": "Own preference 'I'd rather + base'",
             "hidden_prompt": "user uses 'I'd rather + base form'",
-            "hint_pt": "I'd rather watch a movie at home.",
             "hint_en": "I'd rather watch a movie at home."
           },
           {
             "id": 2,
-            "label_pt": "Preferência negativa 'I'd rather not'",
             "label_en": "Negative 'I'd rather not'",
             "hidden_prompt": "user uses 'I'd rather not + base'",
-            "hint_pt": "I'd rather not work this weekend.",
             "hint_en": "I'd rather not work this weekend."
           },
           {
             "id": 3,
-            "label_pt": "Preferência sobre outra pessoa",
             "label_en": "Preference about another person",
             "hidden_prompt": "user uses 'I'd rather you + past simple'",
-            "hint_pt": "I'd rather you called me before coming over.",
             "hint_en": "I'd rather you called me before coming over."
           }
         ],
@@ -595,26 +580,20 @@
         "objectives": [
           {
             "id": 1,
-            "label_pt": "Preferência de trabalho ou estilo de vida",
             "label_en": "Work or lifestyle preference",
             "hidden_prompt": "user uses 'I'd rather + base + than + base'",
-            "hint_pt": "I'd rather work in person than remotely.",
             "hint_en": "I'd rather work in person than remotely."
           },
           {
             "id": 2,
-            "label_pt": "Outra preferência",
             "label_en": "Another preference",
             "hidden_prompt": "user uses another 'I'd rather'",
-            "hint_pt": "I'd rather travel than stay home.",
             "hint_en": "I'd rather travel than stay home."
           },
           {
             "id": 3,
-            "label_pt": "Perguntar à Charlotte",
             "label_en": "Ask Charlotte",
             "hidden_prompt": "user asks Charlotte more about her preference",
-            "hint_pt": "Why do you prefer remote?",
             "hint_en": "Why do you prefer remote?"
           }
         ],
@@ -726,23 +705,28 @@
       "listening_speaking": [
         {
           "text": "It's time we left.",
-          "context": "urgent suggestion"
+          "context": "urgent suggestion",
+          "audio_url": "https://fnvjibzreepubageztoi.supabase.co/storage/v1/object/public/curriculum-audio/ls/inter/ee38dfba52b0341a.flac"
         },
         {
           "text": "It's high time you made up your mind.",
-          "context": "emphatic urgency"
+          "context": "emphatic urgency",
+          "audio_url": "https://fnvjibzreepubageztoi.supabase.co/storage/v1/object/public/curriculum-audio/ls/inter/55aa67dca839872b.flac"
         },
         {
           "text": "It's about time he apologized.",
-          "context": "about someone else"
+          "context": "about someone else",
+          "audio_url": "https://fnvjibzreepubageztoi.supabase.co/storage/v1/object/public/curriculum-audio/ls/inter/fdb9eff5ffbc9884.flac"
         },
         {
           "text": "It's time we took this seriously.",
-          "context": "collective urgency"
+          "context": "collective urgency",
+          "audio_url": "https://fnvjibzreepubageztoi.supabase.co/storage/v1/object/public/curriculum-audio/ls/inter/63f1cac2d3009cdc.flac"
         },
         {
           "text": "It's high time you got a real job.",
-          "context": "strong push"
+          "context": "strong push",
+          "audio_url": "https://fnvjibzreepubageztoi.supabase.co/storage/v1/object/public/curriculum-audio/ls/inter/6d3069edf3764694.flac"
         }
       ],
       "roleplay": {
@@ -755,26 +739,20 @@
         "objectives": [
           {
             "id": 1,
-            "label_pt": "Urgência com 'It's time'",
             "label_en": "Urgency with 'It's time'",
             "hidden_prompt": "user uses 'It's time + subject + past simple'",
-            "hint_pt": "It's time we addressed this issue.",
             "hint_en": "It's time we addressed this issue."
           },
           {
             "id": 2,
-            "label_pt": "Urgência enfática 'It's high time'",
             "label_en": "Emphatic 'It's high time'",
             "hidden_prompt": "user uses 'It's high time + subject + past simple'",
-            "hint_pt": "It's high time he found a stable job.",
             "hint_en": "It's high time he found a stable job."
           },
           {
             "id": 3,
-            "label_pt": "Urgência sobre comportamento próprio",
             "label_en": "Urgency about own behavior",
             "hidden_prompt": "user uses 'It's about time I + past simple'",
-            "hint_pt": "It's about time I started exercising again.",
             "hint_en": "It's about time I started exercising again."
           }
         ],
@@ -796,26 +774,20 @@
         "objectives": [
           {
             "id": 1,
-            "label_pt": "Algo atrasado seu",
             "label_en": "Something overdue for you",
             "hidden_prompt": "user uses 'It's (high/about) time I + past simple'",
-            "hint_pt": "It's about time I called my grandmother.",
             "hint_en": "It's about time I called my grandmother."
           },
           {
             "id": 2,
-            "label_pt": "Outra urgência",
             "label_en": "Another urgency",
             "hidden_prompt": "user uses another 'It's time + past'",
-            "hint_pt": "It's high time I learned to cook properly.",
             "hint_en": "It's high time I learned to cook properly."
           },
           {
             "id": 3,
-            "label_pt": "Perguntar à Charlotte",
             "label_en": "Ask Charlotte",
             "hidden_prompt": "user asks Charlotte more",
-            "hint_pt": "Why now for the closet?",
             "hint_en": "Why now for the closet?"
           }
         ],
@@ -925,23 +897,28 @@
       "listening_speaking": [
         {
           "text": "I wish you would listen.",
-          "context": "behavioral wish"
+          "context": "behavioral wish",
+          "audio_url": "https://fnvjibzreepubageztoi.supabase.co/storage/v1/object/public/curriculum-audio/ls/inter/76d88a37526b5445.flac"
         },
         {
           "text": "If only I had more energy!",
-          "context": "present dramatic wish"
+          "context": "present dramatic wish",
+          "audio_url": "https://fnvjibzreepubageztoi.supabase.co/storage/v1/object/public/curriculum-audio/ls/inter/9517fbb84723ace7.flac"
         },
         {
           "text": "I'd rather stay home.",
-          "context": "own preference"
+          "context": "own preference",
+          "audio_url": "https://fnvjibzreepubageztoi.supabase.co/storage/v1/object/public/curriculum-audio/ls/inter/2a78674150f2e6be.flac"
         },
         {
           "text": "It's high time we acted.",
-          "context": "urgent collective"
+          "context": "urgent collective",
+          "audio_url": "https://fnvjibzreepubageztoi.supabase.co/storage/v1/object/public/curriculum-audio/ls/inter/ef76a87c40ee9205.flac"
         },
         {
           "text": "I'd rather you didn't smoke here.",
-          "context": "preference about another"
+          "context": "preference about another",
+          "audio_url": "https://fnvjibzreepubageztoi.supabase.co/storage/v1/object/public/curriculum-audio/ls/inter/e72ce49041c651d1.flac"
         }
       ],
       "roleplay": {
@@ -954,26 +931,20 @@
         "objectives": [
           {
             "id": 1,
-            "label_pt": "I wish + would",
             "label_en": "I wish + would",
             "hidden_prompt": "user uses 'I wish X would + base'",
-            "hint_pt": "I wish my dog would stop barking.",
             "hint_en": "I wish my dog would stop barking."
           },
           {
             "id": 2,
-            "label_pt": "If only + past",
             "label_en": "If only + past",
             "hidden_prompt": "user uses 'If only + past simple/perfect'",
-            "hint_pt": "If only I had taken that opportunity.",
             "hint_en": "If only I had taken that opportunity."
           },
           {
             "id": 3,
-            "label_pt": "Would rather ou It's time",
             "label_en": "Would rather or It's time",
             "hidden_prompt": "user uses 'I'd rather' or 'It's time'",
-            "hint_pt": "It's high time I made a change.",
             "hint_en": "It's high time I made a change."
           }
         ],
@@ -995,26 +966,20 @@
         "objectives": [
           {
             "id": 1,
-            "label_pt": "Desejo profundo com 'If only' ou 'I wish'",
             "label_en": "Deep wish with 'If only' or 'I wish'",
             "hidden_prompt": "user uses 'If only' or 'I wish' for deep desire",
-            "hint_pt": "If only I had been more patient with myself.",
             "hint_en": "If only I had been more patient with myself."
           },
           {
             "id": 2,
-            "label_pt": "Preferência com 'I'd rather' ou urgência 'It's time'",
             "label_en": "Preference 'I'd rather' or urgency 'It's time'",
             "hidden_prompt": "user uses 'I'd rather' or 'It's time + past'",
-            "hint_pt": "It's about time I forgave myself.",
             "hint_en": "It's about time I forgave myself."
           },
           {
             "id": 3,
-            "label_pt": "Perguntar à Charlotte",
             "label_en": "Ask Charlotte",
             "hidden_prompt": "user asks Charlotte more about her courage wish",
-            "hint_pt": "What would courage look like?",
             "hint_en": "What would courage look like?"
           }
         ],

@@ -124,23 +124,28 @@
       "listening_speaking": [
         {
           "text": "I wanted to go. However, I was too tired.",
-          "context": "formal contrast"
+          "context": "formal contrast",
+          "audio_url": "https://fnvjibzreepubageztoi.supabase.co/storage/v1/object/public/curriculum-audio/ls/inter/5db968edd41eed4e.flac"
         },
         {
           "text": "Nevertheless, we decided to proceed.",
-          "context": "emphatic contrast"
+          "context": "emphatic contrast",
+          "audio_url": "https://fnvjibzreepubageztoi.supabase.co/storage/v1/object/public/curriculum-audio/ls/inter/ca3d58d5382c06a6.flac"
         },
         {
           "text": "On the other hand, she's outgoing.",
-          "context": "parallel contrast"
+          "context": "parallel contrast",
+          "audio_url": "https://fnvjibzreepubageztoi.supabase.co/storage/v1/object/public/curriculum-audio/ls/inter/a036f2a9a83b553c.flac"
         },
         {
           "text": "The product is expensive. However, it's worth it.",
-          "context": "qualified"
+          "context": "qualified",
+          "audio_url": "https://fnvjibzreepubageztoi.supabase.co/storage/v1/object/public/curriculum-audio/ls/inter/cc32401815ed542d.flac"
         },
         {
           "text": "He's quiet. On the other hand, his brother is loud.",
-          "context": "comparison"
+          "context": "comparison",
+          "audio_url": "https://fnvjibzreepubageztoi.supabase.co/storage/v1/object/public/curriculum-audio/ls/inter/ece3cb307af13000.flac"
         }
       ],
       "roleplay": {
@@ -153,26 +158,20 @@
         "objectives": [
           {
             "id": 1,
-            "label_pt": "Contraste com 'however'",
             "label_en": "Contrast with 'however'",
             "hidden_prompt": "user uses 'X. However, Y.'",
-            "hint_pt": "Working from home is convenient. However, it can feel isolating.",
             "hint_en": "Working from home is convenient. However, it can feel isolating."
           },
           {
             "id": 2,
-            "label_pt": "Contraste enfático 'nevertheless'",
             "label_en": "Emphatic 'nevertheless'",
             "hidden_prompt": "user uses 'X. Nevertheless, Y.'",
-            "hint_pt": "The deadline was tight. Nevertheless, we delivered on time.",
             "hint_en": "The deadline was tight. Nevertheless, we delivered on time."
           },
           {
             "id": 3,
-            "label_pt": "Contraste paralelo 'on the other hand'",
             "label_en": "Parallel 'on the other hand'",
             "hidden_prompt": "user uses 'X. On the other hand, Y.'",
-            "hint_pt": "I love Rio. On the other hand, São Paulo has more opportunities.",
             "hint_en": "I love Rio. On the other hand, São Paulo has more opportunities."
           }
         ],
@@ -194,26 +193,20 @@
         "objectives": [
           {
             "id": 1,
-            "label_pt": "Opinião com contraste",
             "label_en": "Opinion with contrast",
             "hidden_prompt": "user uses 'however' or 'on the other hand'",
-            "hint_pt": "I enjoy city life. However, I need quiet weekends.",
             "hint_en": "I enjoy city life. However, I need quiet weekends."
           },
           {
             "id": 2,
-            "label_pt": "Outro contraste",
             "label_en": "Another contrast",
             "hidden_prompt": "user uses another discourse marker",
-            "hint_pt": "Rural life is peaceful. On the other hand, services are limited.",
             "hint_en": "Rural life is peaceful. On the other hand, services are limited."
           },
           {
             "id": 3,
-            "label_pt": "Perguntar à Charlotte",
             "label_en": "Ask Charlotte",
             "hidden_prompt": "user asks Charlotte for her view",
-            "hint_pt": "What do you prefer?",
             "hint_en": "What do you prefer?"
           }
         ],
@@ -325,23 +318,28 @@
       "listening_speaking": [
         {
           "text": "Although it was raining, we went out.",
-          "context": "concession + clause"
+          "context": "concession + clause",
+          "audio_url": "https://fnvjibzreepubageztoi.supabase.co/storage/v1/object/public/curriculum-audio/ls/inter/f1c5a837de236e3e.flac"
         },
         {
           "text": "Despite the cold, we enjoyed it.",
-          "context": "concession + noun"
+          "context": "concession + noun",
+          "audio_url": "https://fnvjibzreepubageztoi.supabase.co/storage/v1/object/public/curriculum-audio/ls/inter/10c4ffc2af4da7b4.flac"
         },
         {
           "text": "Even though he was tired, he kept going.",
-          "context": "emphatic concession"
+          "context": "emphatic concession",
+          "audio_url": "https://fnvjibzreepubageztoi.supabase.co/storage/v1/object/public/curriculum-audio/ls/inter/2c341da9ca85c98c.flac"
         },
         {
           "text": "Despite being tired, she finished.",
-          "context": "concession + -ing"
+          "context": "concession + -ing",
+          "audio_url": "https://fnvjibzreepubageztoi.supabase.co/storage/v1/object/public/curriculum-audio/ls/inter/b628695a3466baee.flac"
         },
         {
           "text": "In spite of the difficulty, we succeeded.",
-          "context": "formal concession"
+          "context": "formal concession",
+          "audio_url": "https://fnvjibzreepubageztoi.supabase.co/storage/v1/object/public/curriculum-audio/ls/inter/1a3c8872d484716b.flac"
         }
       ],
       "roleplay": {
@@ -354,26 +352,20 @@
         "objectives": [
           {
             "id": 1,
-            "label_pt": "Although + cláusula",
             "label_en": "Although + clause",
             "hidden_prompt": "user uses 'Although + subject + verb'",
-            "hint_pt": "Although I was nervous, I gave the presentation.",
             "hint_en": "Although I was nervous, I gave the presentation."
           },
           {
             "id": 2,
-            "label_pt": "Despite + substantivo",
             "label_en": "Despite + noun",
             "hidden_prompt": "user uses 'Despite + noun'",
-            "hint_pt": "Despite the rain, I went running.",
             "hint_en": "Despite the rain, I went running."
           },
           {
             "id": 3,
-            "label_pt": "Even though ou despite + -ing",
             "label_en": "Even though or despite + -ing",
             "hidden_prompt": "user uses 'Even though' or 'Despite + -ing'",
-            "hint_pt": "Despite feeling unsure, I took the job.",
             "hint_en": "Despite feeling unsure, I took the job."
           }
         ],
@@ -395,26 +387,20 @@
         "objectives": [
           {
             "id": 1,
-            "label_pt": "Sua história com 'despite' ou 'although'",
             "label_en": "Your story with 'despite' or 'although'",
             "hidden_prompt": "user uses 'despite' or 'although' for own story",
-            "hint_pt": "Despite my doubts, I applied for the role.",
             "hint_en": "Despite my doubts, I applied for the role."
           },
           {
             "id": 2,
-            "label_pt": "Outro exemplo de superação",
             "label_en": "Another overcoming",
             "hidden_prompt": "user uses another concession marker",
-            "hint_pt": "Although I had no experience, they hired me.",
             "hint_en": "Although I had no experience, they hired me."
           },
           {
             "id": 3,
-            "label_pt": "Perguntar à Charlotte",
             "label_en": "Ask Charlotte",
             "hidden_prompt": "user asks Charlotte more about her talk",
-            "hint_pt": "How did it go?",
             "hint_en": "How did it go?"
           }
         ],
@@ -526,23 +512,28 @@
       "listening_speaking": [
         {
           "text": "Sales dropped. Therefore, we acted.",
-          "context": "formal cause-result"
+          "context": "formal cause-result",
+          "audio_url": "https://fnvjibzreepubageztoi.supabase.co/storage/v1/object/public/curriculum-audio/ls/inter/fe98c3aed41e3378.flac"
         },
         {
           "text": "He missed it. As a result, he was uninformed.",
-          "context": "informal cause-result"
+          "context": "informal cause-result",
+          "audio_url": "https://fnvjibzreepubageztoi.supabase.co/storage/v1/object/public/curriculum-audio/ls/inter/289a7399f30a6727.flac"
         },
         {
           "text": "It rained. Consequently, the event was canceled.",
-          "context": "formal consequence"
+          "context": "formal consequence",
+          "audio_url": "https://fnvjibzreepubageztoi.supabase.co/storage/v1/object/public/curriculum-audio/ls/inter/cc78c3726ae51ca4.flac"
         },
         {
           "text": "He's busy. For that reason, he can't come.",
-          "context": "explanation"
+          "context": "explanation",
+          "audio_url": "https://fnvjibzreepubageztoi.supabase.co/storage/v1/object/public/curriculum-audio/ls/inter/aa0f6a2ac82608c9.flac"
         },
         {
           "text": "She studied hard. Therefore, she passed.",
-          "context": "effort → reward"
+          "context": "effort → reward",
+          "audio_url": "https://fnvjibzreepubageztoi.supabase.co/storage/v1/object/public/curriculum-audio/ls/inter/cc3b75f8771a9725.flac"
         }
       ],
       "roleplay": {
@@ -555,26 +546,20 @@
         "objectives": [
           {
             "id": 1,
-            "label_pt": "Causa-efeito com 'therefore'",
             "label_en": "Cause-effect with 'therefore'",
             "hidden_prompt": "user uses 'X. Therefore, Y.'",
-            "hint_pt": "I didn't sleep well. Therefore, I'm tired today.",
             "hint_en": "I didn't sleep well. Therefore, I'm tired today."
           },
           {
             "id": 2,
-            "label_pt": "Causa-efeito com 'consequently'",
             "label_en": "Cause-effect with 'consequently'",
             "hidden_prompt": "user uses 'X. Consequently, Y.'",
-            "hint_pt": "Traffic was awful. Consequently, I was late.",
             "hint_en": "Traffic was awful. Consequently, I was late."
           },
           {
             "id": 3,
-            "label_pt": "Causa-efeito com 'as a result'",
             "label_en": "Cause-effect with 'as a result'",
             "hidden_prompt": "user uses 'X. As a result, Y.'",
-            "hint_pt": "We launched late. As a result, sales were low.",
             "hint_en": "We launched late. As a result, sales were low."
           }
         ],
@@ -596,26 +581,20 @@
         "objectives": [
           {
             "id": 1,
-            "label_pt": "Sua causa-efeito",
             "label_en": "Your cause-effect",
             "hidden_prompt": "user uses cause-result marker",
-            "hint_pt": "I get distracted easily. Therefore, I work in short blocks.",
             "hint_en": "I get distracted easily. Therefore, I work in short blocks."
           },
           {
             "id": 2,
-            "label_pt": "Outra causa-efeito",
             "label_en": "Another cause-effect",
             "hidden_prompt": "user uses another causal marker",
-            "hint_pt": "I have evening meetings. As a result, I exercise at lunch.",
             "hint_en": "I have evening meetings. As a result, I exercise at lunch."
           },
           {
             "id": 3,
-            "label_pt": "Perguntar à Charlotte",
             "label_en": "Ask Charlotte",
             "hidden_prompt": "user asks Charlotte more about her routine",
-            "hint_pt": "What's your morning routine?",
             "hint_en": "What's your morning routine?"
           }
         ],
@@ -727,23 +706,28 @@
       "listening_speaking": [
         {
           "text": "The course is intensive. Furthermore, it's expensive.",
-          "context": "formal addition"
+          "context": "formal addition",
+          "audio_url": "https://fnvjibzreepubageztoi.supabase.co/storage/v1/object/public/curriculum-audio/ls/inter/e8064058693446b0.flac"
         },
         {
           "text": "She's smart. Moreover, she's kind.",
-          "context": "formal layered praise"
+          "context": "formal layered praise",
+          "audio_url": "https://fnvjibzreepubageztoi.supabase.co/storage/v1/object/public/curriculum-audio/ls/inter/658f959b815e0d43.flac"
         },
         {
           "text": "He plays guitar. In addition, he writes songs.",
-          "context": "listing"
+          "context": "listing",
+          "audio_url": "https://fnvjibzreepubageztoi.supabase.co/storage/v1/object/public/curriculum-audio/ls/inter/22c84aedfe59152f.flac"
         },
         {
           "text": "I don't want to go. Besides, I'm tired.",
-          "context": "informal additional reason"
+          "context": "informal additional reason",
+          "audio_url": "https://fnvjibzreepubageztoi.supabase.co/storage/v1/object/public/curriculum-audio/ls/inter/1c92d58e6b24bd99.flac"
         },
         {
           "text": "Fruits like apples and oranges are healthy. For example, apples have fiber.",
-          "context": "example"
+          "context": "example",
+          "audio_url": "https://fnvjibzreepubageztoi.supabase.co/storage/v1/object/public/curriculum-audio/ls/inter/a8e252a3bfb2a627.flac"
         }
       ],
       "roleplay": {
@@ -756,26 +740,20 @@
         "objectives": [
           {
             "id": 1,
-            "label_pt": "Primeira qualidade",
             "label_en": "First quality",
             "hidden_prompt": "user states base quality",
-            "hint_pt": "My grandmother is incredibly patient.",
             "hint_en": "My grandmother is incredibly patient."
           },
           {
             "id": 2,
-            "label_pt": "Adição com 'furthermore' ou 'moreover'",
             "label_en": "Addition with 'furthermore' or 'moreover'",
             "hidden_prompt": "user uses 'Furthermore' or 'Moreover'",
-            "hint_pt": "Furthermore, she always knows what to say.",
             "hint_en": "Furthermore, she always knows what to say."
           },
           {
             "id": 3,
-            "label_pt": "Adição com 'in addition'",
             "label_en": "Addition with 'in addition'",
             "hidden_prompt": "user uses 'In addition'",
-            "hint_pt": "In addition, she's a wonderful cook.",
             "hint_en": "In addition, she's a wonderful cook."
           }
         ],
@@ -797,26 +775,20 @@
         "objectives": [
           {
             "id": 1,
-            "label_pt": "Qualidade do amigo",
             "label_en": "Friend's quality",
             "hidden_prompt": "user states a quality",
-            "hint_pt": "My best friend is funny.",
             "hint_en": "My best friend is funny."
           },
           {
             "id": 2,
-            "label_pt": "Adição com 'moreover' ou 'in addition'",
             "label_en": "Addition with 'moreover' or 'in addition'",
             "hidden_prompt": "user uses 'moreover' or 'in addition'",
-            "hint_pt": "Moreover, he's incredibly loyal.",
             "hint_en": "Moreover, he's incredibly loyal."
           },
           {
             "id": 3,
-            "label_pt": "Pergunta para Charlotte",
             "label_en": "Question for Charlotte",
             "hidden_prompt": "user asks Charlotte more",
-            "hint_pt": "How long have you known her?",
             "hint_en": "How long have you known her?"
           }
         ],
@@ -926,23 +898,28 @@
       "listening_speaking": [
         {
           "text": "In conclusion, the project succeeded.",
-          "context": "formal conclusion"
+          "context": "formal conclusion",
+          "audio_url": "https://fnvjibzreepubageztoi.supabase.co/storage/v1/object/public/curriculum-audio/ls/inter/5c6a9bf08d58a80d.flac"
         },
         {
           "text": "To sum up, three points stand out.",
-          "context": "synthesis"
+          "context": "synthesis",
+          "audio_url": "https://fnvjibzreepubageztoi.supabase.co/storage/v1/object/public/curriculum-audio/ls/inter/866e2071125832d7.flac"
         },
         {
           "text": "All in all, it was worthwhile.",
-          "context": "balanced summary"
+          "context": "balanced summary",
+          "audio_url": "https://fnvjibzreepubageztoi.supabase.co/storage/v1/object/public/curriculum-audio/ls/inter/e58630e50b91acaa.flac"
         },
         {
           "text": "Overall, I'd recommend it.",
-          "context": "opinion summary"
+          "context": "opinion summary",
+          "audio_url": "https://fnvjibzreepubageztoi.supabase.co/storage/v1/object/public/curriculum-audio/ls/inter/83cb82d6f5f1ff43.flac"
         },
         {
           "text": "In summary, we exceeded expectations.",
-          "context": "formal summary"
+          "context": "formal summary",
+          "audio_url": "https://fnvjibzreepubageztoi.supabase.co/storage/v1/object/public/curriculum-audio/ls/inter/ccd22f33db0e3ed6.flac"
         }
       ],
       "roleplay": {
@@ -955,26 +932,20 @@
         "objectives": [
           {
             "id": 1,
-            "label_pt": "Contraste inicial (however ou although)",
             "label_en": "Initial contrast (however or although)",
             "hidden_prompt": "user uses 'however' or 'although' for contrast",
-            "hint_pt": "Remote work has many advantages. However, it can feel lonely.",
             "hint_en": "Remote work has many advantages. However, it can feel lonely."
           },
           {
             "id": 2,
-            "label_pt": "Exemplo com 'for example'",
             "label_en": "Example with 'for example'",
             "hidden_prompt": "user uses 'For example' or 'For instance'",
-            "hint_pt": "For example, you miss casual office chat.",
             "hint_en": "For example, you miss casual office chat."
           },
           {
             "id": 3,
-            "label_pt": "Conclusão",
             "label_en": "Conclusion",
             "hidden_prompt": "user uses 'In conclusion', 'All in all', 'Overall'",
-            "hint_pt": "Overall, balance is key.",
             "hint_en": "Overall, balance is key."
           }
         ],
@@ -996,26 +967,20 @@
         "objectives": [
           {
             "id": 1,
-            "label_pt": "Opinião com contraste",
             "label_en": "Opinion with contrast",
             "hidden_prompt": "user uses 'However' or 'On the other hand'",
-            "hint_pt": "AI can teach facts. However, it can't replace human connection.",
             "hint_en": "AI can teach facts. However, it can't replace human connection."
           },
           {
             "id": 2,
-            "label_pt": "Exemplo ou adição",
             "label_en": "Example or addition",
             "hidden_prompt": "user uses 'For example' or 'Furthermore'",
-            "hint_pt": "For example, students often need encouragement.",
             "hint_en": "For example, students often need encouragement."
           },
           {
             "id": 3,
-            "label_pt": "Conclusão",
             "label_en": "Conclusion",
             "hidden_prompt": "user uses 'In conclusion' or 'Overall'",
-            "hint_pt": "Overall, AI will help, not replace.",
             "hint_en": "Overall, AI will help, not replace."
           }
         ],
