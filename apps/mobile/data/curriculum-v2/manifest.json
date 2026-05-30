@@ -259,8 +259,13 @@
         "id": "M07",
         "title": "Reported speech masterclass",
         "file": "advanced/M07.json"
+      },
+      {
+        "id": "M08",
+        "title": "Diplomacia e hedging",
+        "file": "advanced/M08.json"
       }
     ]
   },
-  "generated_at": "2026-05-30T22:00:41.234Z"
+  "generated_at": "2026-05-30T22:03:53.970Z"
 }
