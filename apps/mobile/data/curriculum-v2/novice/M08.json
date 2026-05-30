@@ -122,23 +122,28 @@
       "listening_speaking": [
         {
           "text": "I love pizza.",
-          "context": "strong affection"
+          "context": "strong affection",
+          "audio_url": "https://fnvjibzreepubageztoi.supabase.co/storage/v1/object/public/curriculum-audio/ls/f55cbc2e4a55c64f.flac"
         },
         {
           "text": "She likes chocolate.",
-          "context": "3rd person + -s"
+          "context": "3rd person + -s",
+          "audio_url": "https://fnvjibzreepubageztoi.supabase.co/storage/v1/object/public/curriculum-audio/ls/172cc5bab937e211.flac"
         },
         {
           "text": "I hate Mondays.",
-          "context": "strong dislike"
+          "context": "strong dislike",
+          "audio_url": "https://fnvjibzreepubageztoi.supabase.co/storage/v1/object/public/curriculum-audio/ls/ca61b8e5e3be31af.flac"
         },
         {
           "text": "He loves Italian food.",
-          "context": "3rd person + love"
+          "context": "3rd person + love",
+          "audio_url": "https://fnvjibzreepubageztoi.supabase.co/storage/v1/object/public/curriculum-audio/ls/1416fb278680102f.flac"
         },
         {
           "text": "We all like music.",
-          "context": "group preference"
+          "context": "group preference",
+          "audio_url": "https://fnvjibzreepubageztoi.supabase.co/storage/v1/object/public/curriculum-audio/ls/59547509447f650d.flac"
         }
       ],
       "roleplay": {
@@ -321,23 +326,28 @@
       "listening_speaking": [
         {
           "text": "I love reading.",
-          "context": "like + ing"
+          "context": "like + ing",
+          "audio_url": "https://fnvjibzreepubageztoi.supabase.co/storage/v1/object/public/curriculum-audio/ls/d0946b4ec90074a0.flac"
         },
         {
           "text": "She likes dancing.",
-          "context": "3rd person + ing"
+          "context": "3rd person + ing",
+          "audio_url": "https://fnvjibzreepubageztoi.supabase.co/storage/v1/object/public/curriculum-audio/ls/d00e9fe51aeb3c5f.flac"
         },
         {
           "text": "We hate waking up early.",
-          "context": "phrasal verb + ing"
+          "context": "phrasal verb + ing",
+          "audio_url": "https://fnvjibzreepubageztoi.supabase.co/storage/v1/object/public/curriculum-audio/ls/a9c2e3e759209cb4.flac"
         },
         {
           "text": "He loves playing soccer.",
-          "context": "3rd person + playing"
+          "context": "3rd person + playing",
+          "audio_url": "https://fnvjibzreepubageztoi.supabase.co/storage/v1/object/public/curriculum-audio/ls/ed04eb4d48e5a0b2.flac"
         },
         {
           "text": "I like cooking on weekends.",
-          "context": "activity + when"
+          "context": "activity + when",
+          "audio_url": "https://fnvjibzreepubageztoi.supabase.co/storage/v1/object/public/curriculum-audio/ls/b0e7590e12f76d84.flac"
         }
       ],
       "roleplay": {
@@ -520,23 +530,28 @@
       "listening_speaking": [
         {
           "text": "She calls me every day.",
-          "context": "object pronoun me"
+          "context": "object pronoun me",
+          "audio_url": "https://fnvjibzreepubageztoi.supabase.co/storage/v1/object/public/curriculum-audio/ls/6889ae5ee40c6b79.flac"
         },
         {
           "text": "I love him.",
-          "context": "object pronoun him"
+          "context": "object pronoun him",
+          "audio_url": "https://fnvjibzreepubageztoi.supabase.co/storage/v1/object/public/curriculum-audio/ls/9795454766c32f53.flac"
         },
         {
           "text": "Tell me about it.",
-          "context": "chunk fixo"
+          "context": "chunk fixo",
+          "audio_url": "https://fnvjibzreepubageztoi.supabase.co/storage/v1/object/public/curriculum-audio/ls/0f1b2d0373c762c2.flac"
         },
         {
           "text": "We see them on Sundays.",
-          "context": "object pronoun them"
+          "context": "object pronoun them",
+          "audio_url": "https://fnvjibzreepubageztoi.supabase.co/storage/v1/object/public/curriculum-audio/ls/d809ccc6590412f4.flac"
         },
         {
           "text": "He helps us a lot.",
-          "context": "object pronoun us"
+          "context": "object pronoun us",
+          "audio_url": "https://fnvjibzreepubageztoi.supabase.co/storage/v1/object/public/curriculum-audio/ls/bf1bdb910f2d815f.flac"
         }
       ],
       "roleplay": {
@@ -717,23 +732,28 @@
       "listening_speaking": [
         {
           "text": "I love pop music.",
-          "context": "music genre"
+          "context": "music genre",
+          "audio_url": "https://fnvjibzreepubageztoi.supabase.co/storage/v1/object/public/curriculum-audio/ls/b22451c385d61378.flac"
         },
         {
           "text": "She likes action movies.",
-          "context": "movie genre + plural"
+          "context": "movie genre + plural",
+          "audio_url": "https://fnvjibzreepubageztoi.supabase.co/storage/v1/object/public/curriculum-audio/ls/76f037fa7e110a8e.flac"
         },
         {
           "text": "He hates horror books.",
-          "context": "book genre"
+          "context": "book genre",
+          "audio_url": "https://fnvjibzreepubageztoi.supabase.co/storage/v1/object/public/curriculum-audio/ls/f37556a5b1f75002.flac"
         },
         {
           "text": "We love sports.",
-          "context": "general sports"
+          "context": "general sports",
+          "audio_url": "https://fnvjibzreepubageztoi.supabase.co/storage/v1/object/public/curriculum-audio/ls/b7d06188c5e604b8.flac"
         },
         {
           "text": "I like classical music.",
-          "context": "different music genre"
+          "context": "different music genre",
+          "audio_url": "https://fnvjibzreepubageztoi.supabase.co/storage/v1/object/public/curriculum-audio/ls/734f407f4b608d9a.flac"
         }
       ],
       "roleplay": {
@@ -914,23 +934,28 @@
       "listening_speaking": [
         {
           "text": "I prefer tea over coffee.",
-          "context": "comparison preference"
+          "context": "comparison preference",
+          "audio_url": "https://fnvjibzreepubageztoi.supabase.co/storage/v1/object/public/curriculum-audio/ls/7ff05752b36af47a.flac"
         },
         {
           "text": "She prefers reading to watching TV.",
-          "context": "3rd person + activity"
+          "context": "3rd person + activity",
+          "audio_url": "https://fnvjibzreepubageztoi.supabase.co/storage/v1/object/public/curriculum-audio/ls/f9e0330f7f09fc12.flac"
         },
         {
           "text": "We prefer walking.",
-          "context": "group preference"
+          "context": "group preference",
+          "audio_url": "https://fnvjibzreepubageztoi.supabase.co/storage/v1/object/public/curriculum-audio/ls/4b11298d387cdb9e.flac"
         },
         {
           "text": "He prefers home-cooked food.",
-          "context": "preference + chunk"
+          "context": "preference + chunk",
+          "audio_url": "https://fnvjibzreepubageztoi.supabase.co/storage/v1/object/public/curriculum-audio/ls/ce13cbc03cd1a482.flac"
         },
         {
           "text": "I love both, but I prefer the beach.",
-          "context": "mix of love and prefer"
+          "context": "mix of love and prefer",
+          "audio_url": "https://fnvjibzreepubageztoi.supabase.co/storage/v1/object/public/curriculum-audio/ls/5ad5d43009fca516.flac"
         }
       ],
       "roleplay": {

@@ -1,0 +1,1045 @@
+{
+  "id": "M12",
+  "title": "Comparações",
+  "level": "Novice",
+  "block": "A2",
+  "units_range": "N01–N05",
+  "theme": "Comparar pessoas, coisas e lugares",
+  "goal": "Aluno sai sabendo formar comparativos com -er (curtos) e more + adjetivo (longos), usar irregulares (better/worse), e comparar pessoas, lugares e produtos naturalmente.",
+  "connects_to": "M13 (O melhor de tudo) — depois de comparar dois, aprende a destacar O melhor/pior (superlatives).",
+  "module_chunks": [
+    "comparativos curtos: -er + than (taller, smaller, faster, cheaper, older, younger)",
+    "regras spelling: big → bigger, hot → hotter, easy → easier, nice → nicer",
+    "comparativos longos: more + adjective + than (more expensive, more beautiful, more interesting)",
+    "irregulares: good → better, bad → worse, far → farther",
+    "much + comparative (much bigger, much better)",
+    "a little / a bit + comparative",
+    "the same as / as + adj + as (equality intro)",
+    "big / small, fast / slow, cheap / expensive, nice / boring, hot / cold, easy / hard"
+  ],
+  "units": [
+    {
+      "id": "N01",
+      "title": "Mais alto, mais baixo",
+      "sub_cefr": "A2",
+      "grammar_focus": "Short adjectives + -er than",
+      "markers": [
+        "denso"
+      ],
+      "real_life_context": "Você compara pessoas (alturas), coisas (preços) e lugares (tamanhos) usando adjetivos curtos.",
+      "grammar": [
+        {
+          "type": "multiple_choice",
+          "sentence": "He is _____ than me.",
+          "options": [
+            "taller",
+            "more tall",
+            "talls"
+          ],
+          "answer": "taller",
+          "explanation": "Adjetivos curtos (1 sílaba) usam -er: tall → taller. \"More tall\" só pra adjetivos longos."
+        },
+        {
+          "type": "multiple_choice",
+          "sentence": "This shirt is _____ than that one.",
+          "options": [
+            "cheaper",
+            "more cheap",
+            "cheap"
+          ],
+          "answer": "cheaper",
+          "explanation": "\"Cheap\" (1 sílaba) → \"cheaper\". Sempre -er pra curtos."
+        },
+        {
+          "type": "word_bank",
+          "sentence": "I'm _____ than my brother.",
+          "choices": [
+            "older",
+            "more old",
+            "oldest",
+            "old"
+          ],
+          "answer": "older",
+          "explanation": "\"Old\" → \"older\". \"More old\" não existe; \"oldest\" é superlativo."
+        },
+        {
+          "type": "word_bank",
+          "sentence": "São Paulo is _____ than Rio.",
+          "choices": [
+            "bigger",
+            "more big",
+            "biggest",
+            "big"
+          ],
+          "answer": "bigger",
+          "explanation": "\"Big\" → \"bigger\" (dobra o g antes de -er). Regra de spelling: consoante-vogal-consoante dobra."
+        },
+        {
+          "type": "fill_gap",
+          "sentence": "She is _____ than her sister.",
+          "hint": "Comparativo de \"young\"",
+          "answer": "younger",
+          "explanation": "\"Young\" → \"younger\" (adiciona -er regularmente)."
+        },
+        {
+          "type": "fill_gap",
+          "sentence": "Today is _____ than yesterday.",
+          "hint": "Comparativo de \"hot\"",
+          "answer": "hotter",
+          "explanation": "\"Hot\" → \"hotter\" (dobra o t). Mesma regra de \"big → bigger\"."
+        },
+        {
+          "type": "fill_gap",
+          "sentence": "This test is _____ than the last one.",
+          "hint": "Comparativo de \"easy\"",
+          "answer": "easier",
+          "explanation": "\"Easy\" → \"easier\" (y → ier). Adjetivos em -y trocam y por -ier."
+        },
+        {
+          "type": "fix_error",
+          "sentence": "He is taller as me.",
+          "hint": "Conector errado",
+          "answer": "He is taller than me.",
+          "explanation": "Comparativo usa \"THAN\", não \"as\". \"Taller than\" — sempre \"than\" em comparações com -er."
+        },
+        {
+          "type": "fix_error",
+          "sentence": "She is more tall than him.",
+          "hint": "\"Tall\" é curto, usa -er",
+          "answer": "She is taller than him.",
+          "explanation": "\"Tall\" tem 1 sílaba → -er, não \"more\". \"Taller\", não \"more tall\"."
+        },
+        {
+          "type": "read_answer",
+          "passage": "I'm taller than my brother but he's older than me. Our sister is younger than both of us. She's also faster — she runs every morning.",
+          "question": "Who is older than the speaker?",
+          "answer": "my brother (or \"her/his brother\")",
+          "explanation": "The text says \"he's older than me\" referring to the brother."
+        }
+      ],
+      "listening_speaking": [
+        {
+          "text": "He is taller than me.",
+          "context": "height comparison",
+          "audio_url": "https://fnvjibzreepubageztoi.supabase.co/storage/v1/object/public/curriculum-audio/ls/47a8513e507cd8b1.flac"
+        },
+        {
+          "text": "This shirt is cheaper than that one.",
+          "context": "price",
+          "audio_url": "https://fnvjibzreepubageztoi.supabase.co/storage/v1/object/public/curriculum-audio/ls/58a8741eb99a0dc2.flac"
+        },
+        {
+          "text": "I'm older than my brother.",
+          "context": "age comparison",
+          "audio_url": "https://fnvjibzreepubageztoi.supabase.co/storage/v1/object/public/curriculum-audio/ls/3ba8bdf6ee95c381.flac"
+        },
+        {
+          "text": "São Paulo is bigger than Rio.",
+          "context": "size",
+          "audio_url": "https://fnvjibzreepubageztoi.supabase.co/storage/v1/object/public/curriculum-audio/ls/f38912b8776cdbe7.flac"
+        },
+        {
+          "text": "Today is hotter than yesterday.",
+          "context": "weather",
+          "audio_url": "https://fnvjibzreepubageztoi.supabase.co/storage/v1/object/public/curriculum-audio/ls/071e36da919ec0a4.flac"
+        }
+      ],
+      "roleplay": {
+        "scenario": "Charlotte pede pra você comparar duas coisas ou pessoas.",
+        "voiced_by": "charlotte",
+        "persona": "Charlotte",
+        "persona_outfit": "charlotte_casual",
+        "time_budget_sec": 90,
+        "opening_line": "Compare two things in your life — go!",
+        "objectives": [
+          {
+            "id": 1,
+            "label_pt": "Comparar duas pessoas (altura, idade, etc.)",
+            "label_en": "Compare two people",
+            "hidden_prompt": "user compares people with 'X is + adj-er + than + Y' (taller, older, younger, etc.)",
+            "hint_pt": "I'm taller than my sister.",
+            "hint_en": "I'm taller than my sister."
+          },
+          {
+            "id": 2,
+            "label_pt": "Comparar duas coisas ou lugares",
+            "label_en": "Compare two things or places",
+            "hidden_prompt": "user compares with 'X is + adj-er + than + Y' (cheaper, bigger, faster, etc.)",
+            "hint_pt": "This phone is cheaper than that one.",
+            "hint_en": "This phone is cheaper than that one."
+          },
+          {
+            "id": 3,
+            "label_pt": "Fazer uma terceira comparação",
+            "label_en": "Make a third comparison",
+            "hidden_prompt": "user makes another comparison with -er + than",
+            "hint_pt": "Summer is hotter than winter.",
+            "hint_en": "Summer is hotter than winter."
+          }
+        ],
+        "closing_cue": "Charlotte fecha com \"Nice comparisons!\" quando obj_3 baterem.",
+        "suggested_flow": "**Suggested flow** (referencial, 6 turnos):\n\n1. **Charlotte**: \"Compare two things in your life — go!\"\n2. **Student**: ~\"I'm taller than my sister.\"\n3. **Charlotte**: \"Cool. Things?\"\n4. **Student**: ~\"This phone is cheaper than that one.\"\n5. **Charlotte**: \"One more!\"\n6. **Student**: ~\"Summer is hotter than winter.\"\n7. **Charlotte**: \"Nice comparisons!\"",
+        "evaluation_focus": [
+          "-er + than (sempre \"than\", não \"as\")",
+          "Spelling correto (bigger, hotter, easier)",
+          "Sem \"more\" antes de adjetivo curto"
+        ]
+      },
+      "guided_chat": {
+        "scenario": "Charlotte conversa sobre comparações no dia-a-dia.",
+        "voiced_by": "charlotte",
+        "persona": "Charlotte",
+        "persona_outfit": "charlotte_casual",
+        "intro_pt": "Charlotte abre chat sobre comparações de dia-a-dia. Pratica -er + than.",
+        "opening_message": "Quick comparisons — your city vs another.",
+        "objectives": [
+          {
+            "id": 1,
+            "label_pt": "Comparar cidades",
+            "label_en": "Compare cities",
+            "hidden_prompt": "user compares cities with 'X is + adj-er + than Y'",
+            "hint_pt": "São Paulo is bigger than Rio.",
+            "hint_en": "São Paulo is bigger than Rio."
+          },
+          {
+            "id": 2,
+            "label_pt": "Comparar duas coisas suas",
+            "label_en": "Compare two of your things",
+            "hidden_prompt": "user compares possessions with 'X is + adj-er + than Y'",
+            "hint_pt": "My phone is older than my laptop.",
+            "hint_en": "My phone is older than my laptop."
+          },
+          {
+            "id": 3,
+            "label_pt": "Perguntar à Charlotte",
+            "label_en": "Ask Charlotte",
+            "hidden_prompt": "user asks Charlotte 'How about you?' or 'Which is + adj-er for you?'",
+            "hint_pt": "How about you?",
+            "hint_en": "How about you?"
+          }
+        ],
+        "closing_cue": "Charlotte encerra com \"Same and different!\" quando obj_3 baterem.",
+        "suggested_script": "**Script** (referencial, 7 turnos):\n\n1. **Charlotte**: \"Quick comparisons — your city vs another.\"\n2. **Student**: \"São Paulo is bigger than Rio.\"\n3. **Charlotte**: \"By a lot. Things?\"\n4. **Student**: \"My phone is older than my laptop.\"\n5. **Charlotte**: \"Time to upgrade!\"\n6. **Student**: \"How about you?\"\n7. **Charlotte**: \"NYC is colder than Boston. Same and different!\"\n\n> N01 chat = LLM puro.\n\n---"
+      }
+    },
+    {
+      "id": "N02",
+      "title": "Mais bonito, mais interessante",
+      "sub_cefr": "A2",
+      "grammar_focus": "Long adjectives (2+ syllables) + more + adj + than",
+      "markers": [],
+      "real_life_context": "Você compara qualidades subjetivas — beleza, interesse, dificuldade.",
+      "grammar": [
+        {
+          "type": "multiple_choice",
+          "sentence": "This movie is _____ than that one.",
+          "options": [
+            "more interesting",
+            "interestinger",
+            "interest"
+          ],
+          "answer": "more interesting",
+          "explanation": "\"Interesting\" (4 sílabas) → \"more interesting\". Adjetivos longos usam \"more\", não -er."
+        },
+        {
+          "type": "multiple_choice",
+          "sentence": "She is _____ than her sister.",
+          "options": [
+            "more beautiful",
+            "beautifuler",
+            "beautifuller"
+          ],
+          "answer": "more beautiful",
+          "explanation": "\"Beautiful\" (3 sílabas) → \"more beautiful\". Sem -er."
+        },
+        {
+          "type": "word_bank",
+          "sentence": "This restaurant is _____ than that one.",
+          "choices": [
+            "more expensive",
+            "expensiver",
+            "expensive",
+            "more expensiver"
+          ],
+          "answer": "more expensive",
+          "explanation": "\"Expensive\" (3 sílabas) → \"more expensive\". Não confundir com \"expensiver\" (não existe)."
+        },
+        {
+          "type": "word_bank",
+          "sentence": "Algebra is _____ than basic math.",
+          "choices": [
+            "more difficult",
+            "difficulter",
+            "difficult",
+            "more difficulter"
+          ],
+          "answer": "more difficult",
+          "explanation": "\"Difficult\" (3 sílabas) → \"more difficult\". Long adj usa \"more\"."
+        },
+        {
+          "type": "fill_gap",
+          "sentence": "Yoga is _____ than running.",
+          "hint": "Comparativo longo de \"relaxing\"",
+          "answer": "more relaxing",
+          "explanation": "\"Relaxing\" tem 3 sílabas → \"more relaxing\"."
+        },
+        {
+          "type": "fill_gap",
+          "sentence": "This puzzle is _____ than the last one.",
+          "hint": "Comparativo longo de \"challenging\"",
+          "answer": "more challenging",
+          "explanation": "\"Challenging\" 3+ sílabas → \"more challenging\"."
+        },
+        {
+          "type": "fill_gap",
+          "sentence": "She is _____ than him.",
+          "hint": "Comparativo longo de \"intelligent\"",
+          "answer": "more intelligent",
+          "explanation": "\"Intelligent\" 4 sílabas → \"more intelligent\". Sem -er."
+        },
+        {
+          "type": "fix_error",
+          "sentence": "This book is interestinger than that one.",
+          "hint": "\"Interesting\" usa \"more\"",
+          "answer": "This book is more interesting than that one.",
+          "explanation": "Adjetivos longos (2+ sílabas) usam \"more\", não -er. \"More interesting\", não \"interestinger\"."
+        },
+        {
+          "type": "fix_error",
+          "sentence": "She is more taller than me.",
+          "hint": "\"Tall\" é curto, sem \"more\"",
+          "answer": "She is taller than me.",
+          "explanation": "\"Tall\" 1 sílaba → \"taller\" (com -er). NÃO usa \"more\" junto. \"Taller\", não \"more taller\"."
+        },
+        {
+          "type": "read_answer",
+          "passage": "This city is more beautiful than my hometown. The food here is more expensive but more delicious. The people are friendlier.",
+          "question": "How is the food described?",
+          "answer": "more expensive but more delicious",
+          "explanation": "The text says \"The food here is more expensive but more delicious\"."
+        }
+      ],
+      "listening_speaking": [
+        {
+          "text": "This movie is more interesting.",
+          "context": "long adj + more",
+          "audio_url": "https://fnvjibzreepubageztoi.supabase.co/storage/v1/object/public/curriculum-audio/ls/9824d39911c9e6ca.flac"
+        },
+        {
+          "text": "She is more beautiful than her sister.",
+          "context": "beauty comparison",
+          "audio_url": "https://fnvjibzreepubageztoi.supabase.co/storage/v1/object/public/curriculum-audio/ls/8421d88c410556de.flac"
+        },
+        {
+          "text": "This restaurant is more expensive.",
+          "context": "price + long adj",
+          "audio_url": "https://fnvjibzreepubageztoi.supabase.co/storage/v1/object/public/curriculum-audio/ls/2224bf435810950c.flac"
+        },
+        {
+          "text": "Yoga is more relaxing than running.",
+          "context": "long adj comparison",
+          "audio_url": "https://fnvjibzreepubageztoi.supabase.co/storage/v1/object/public/curriculum-audio/ls/361ad2c3f0c6bd66.flac"
+        },
+        {
+          "text": "She is more intelligent than him.",
+          "context": "intelligence",
+          "audio_url": "https://fnvjibzreepubageztoi.supabase.co/storage/v1/object/public/curriculum-audio/ls/45c8a0d47fe04fe3.flac"
+        }
+      ],
+      "roleplay": {
+        "scenario": "Charlotte pede comparações com adjetivos longos — qualidade, interesse, beleza.",
+        "voiced_by": "charlotte",
+        "persona": "Charlotte",
+        "persona_outfit": "charlotte_casual",
+        "time_budget_sec": 90,
+        "opening_line": "Tell me — what's more interesting in your life right now?",
+        "objectives": [
+          {
+            "id": 1,
+            "label_pt": "Comparar com 'more interesting'",
+            "label_en": "Compare with 'more interesting'",
+            "hidden_prompt": "user compares with 'X is more interesting than Y'",
+            "hint_pt": "This book is more interesting than that one.",
+            "hint_en": "This book is more interesting than that one."
+          },
+          {
+            "id": 2,
+            "label_pt": "Comparar com outro adjetivo longo (expensive, beautiful, relaxing)",
+            "label_en": "Compare with another long adjective",
+            "hidden_prompt": "user compares with 'X is more + long adj + than Y'",
+            "hint_pt": "São Paulo is more expensive than Recife.",
+            "hint_en": "São Paulo is more expensive than Recife."
+          },
+          {
+            "id": 3,
+            "label_pt": "Fazer uma comparação pessoal",
+            "label_en": "Make a personal comparison",
+            "hidden_prompt": "user makes a personal comparison with 'more + adj + than'",
+            "hint_pt": "I'm more patient than my friend.",
+            "hint_en": "I'm more patient than my friend."
+          }
+        ],
+        "closing_cue": "Charlotte fecha com \"Thoughtful comparisons!\" quando obj_3 baterem.",
+        "suggested_flow": "**Suggested flow** (referencial, 6 turnos):\n\n1. **Charlotte**: \"Tell me — what's more interesting in your life right now?\"\n2. **Student**: ~\"This book is more interesting than that one.\"\n3. **Charlotte**: \"Cool. Place comparison?\"\n4. **Student**: ~\"São Paulo is more expensive than Recife.\"\n5. **Charlotte**: \"Personal trait?\"\n6. **Student**: ~\"I'm more patient than my friend.\"\n7. **Charlotte**: \"Thoughtful comparisons!\"",
+        "evaluation_focus": [
+          "\"More + adj + than\" pra adjetivos longos",
+          "Sem -er em long adj",
+          "Sem misturar \"more taller\""
+        ]
+      },
+      "guided_chat": {
+        "scenario": "Charlotte conversa sobre preferências culturais usando comparativos longos.",
+        "voiced_by": "charlotte",
+        "persona": "Charlotte",
+        "persona_outfit": "charlotte_casual",
+        "intro_pt": "Charlotte abre chat sobre gostos culturais comparativos. Pratica 'more + adj + than'.",
+        "opening_message": "Movies or books — which is more interesting?",
+        "objectives": [
+          {
+            "id": 1,
+            "label_pt": "Comparar duas formas de entretenimento",
+            "label_en": "Compare two forms of entertainment",
+            "hidden_prompt": "user compares with 'X is more + long adj + than Y'",
+            "hint_pt": "Books are more interesting than movies.",
+            "hint_en": "Books are more interesting than movies."
+          },
+          {
+            "id": 2,
+            "label_pt": "Comparar duas cidades ou lugares",
+            "label_en": "Compare two places",
+            "hidden_prompt": "user compares places with 'X is more + adj + than Y'",
+            "hint_pt": "Rio is more beautiful than São Paulo.",
+            "hint_en": "Rio is more beautiful than São Paulo."
+          },
+          {
+            "id": 3,
+            "label_pt": "Perguntar à Charlotte",
+            "label_en": "Ask Charlotte",
+            "hidden_prompt": "user asks Charlotte 'How about you?' or 'Which is more + adj for you?'",
+            "hint_pt": "How about you?",
+            "hint_en": "How about you?"
+          }
+        ],
+        "closing_cue": "Charlotte encerra com \"Great chat!\" quando obj_3 baterem.",
+        "suggested_script": "**Script** (referencial, 7 turnos):\n\n1. **Charlotte**: \"Movies or books — which is more interesting?\"\n2. **Student**: \"Books are more interesting than movies.\"\n3. **Charlotte**: \"Same. Place?\"\n4. **Student**: \"Rio is more beautiful than São Paulo.\"\n5. **Charlotte**: \"Beach lover!\"\n6. **Student**: \"How about you?\"\n7. **Charlotte**: \"Mountains are more peaceful than cities. Great chat!\"\n\n> N02 chat = LLM puro.\n\n---"
+      }
+    },
+    {
+      "id": "N03",
+      "title": "Melhor, pior, mais, menos",
+      "sub_cefr": "A2",
+      "grammar_focus": "Irregular comparatives (better/worse/more/less/farther)",
+      "markers": [
+        "denso"
+      ],
+      "real_life_context": "Você compara usando os adjetivos irregulares mais comuns.",
+      "grammar": [
+        {
+          "type": "multiple_choice",
+          "sentence": "This coffee is _____ than that one.",
+          "options": [
+            "better",
+            "gooder",
+            "more good"
+          ],
+          "answer": "better",
+          "explanation": "\"Good\" tem comparativo IRREGULAR: \"better\" (não \"gooder\" nem \"more good\"). Decorar como exceção."
+        },
+        {
+          "type": "multiple_choice",
+          "sentence": "Today is _____ than yesterday.",
+          "options": [
+            "worse",
+            "badder",
+            "more bad"
+          ],
+          "answer": "worse",
+          "explanation": "\"Bad\" → \"worse\" (irregular). Não \"badder\" (apesar de existir gíria) nem \"more bad\"."
+        },
+        {
+          "type": "word_bank",
+          "sentence": "She has _____ time than me.",
+          "choices": [
+            "more",
+            "much",
+            "many",
+            "most"
+          ],
+          "answer": "more",
+          "explanation": "\"More + uncountable\" (more time, more money). \"Much\" não usado em afirmativas; \"many\" é pra contáveis."
+        },
+        {
+          "type": "word_bank",
+          "sentence": "I have _____ books than him.",
+          "choices": [
+            "more",
+            "much",
+            "many",
+            "better"
+          ],
+          "answer": "more",
+          "explanation": "\"More + plural countable\" (more books). \"Many\" usado só em pergunta/negativa."
+        },
+        {
+          "type": "fill_gap",
+          "sentence": "My car is _____ than yours.",
+          "hint": "Irregular comparativo de \"good\"",
+          "answer": "better",
+          "explanation": "\"Good\" → \"better\". Memorize: good/better/best."
+        },
+        {
+          "type": "fill_gap",
+          "sentence": "This movie is _____ than I expected.",
+          "hint": "Irregular comparativo de \"bad\"",
+          "answer": "worse",
+          "explanation": "\"Bad\" → \"worse\". Memorize: bad/worse/worst."
+        },
+        {
+          "type": "fill_gap",
+          "sentence": "He has _____ friends than me.",
+          "hint": "Comparativo de \"few/little\" (mais)",
+          "answer": "more",
+          "explanation": "\"More\" é o comparativo de quantidade — tanto countable quanto uncountable."
+        },
+        {
+          "type": "fix_error",
+          "sentence": "She is gooder at math.",
+          "hint": "\"Good\" é irregular",
+          "answer": "She is better at math.",
+          "explanation": "\"Gooder\" não existe — irregular vira \"better\". Sempre \"better than\"."
+        },
+        {
+          "type": "fix_error",
+          "sentence": "This is more bad than yesterday.",
+          "hint": "\"Bad\" tem forma irregular",
+          "answer": "This is worse than yesterday.",
+          "explanation": "\"Bad\" → \"worse\" (forma irregular). Não \"more bad\"."
+        },
+        {
+          "type": "read_answer",
+          "passage": "My new phone is better than my old one. The camera is much better but the battery is worse. I have more apps than before.",
+          "question": "How is the battery compared to the old one?",
+          "answer": "worse",
+          "explanation": "The text says \"the battery is worse\"."
+        }
+      ],
+      "listening_speaking": [
+        {
+          "text": "This coffee is better than that one.",
+          "context": "better",
+          "audio_url": "https://fnvjibzreepubageztoi.supabase.co/storage/v1/object/public/curriculum-audio/ls/abdae14fad968f47.flac"
+        },
+        {
+          "text": "Today is worse than yesterday.",
+          "context": "worse",
+          "audio_url": "https://fnvjibzreepubageztoi.supabase.co/storage/v1/object/public/curriculum-audio/ls/a949022babb6ac3b.flac"
+        },
+        {
+          "text": "I have more time on weekends.",
+          "context": "more",
+          "audio_url": "https://fnvjibzreepubageztoi.supabase.co/storage/v1/object/public/curriculum-audio/ls/a7a24068b217259d.flac"
+        },
+        {
+          "text": "My phone is better, but slower.",
+          "context": "better contrast",
+          "audio_url": "https://fnvjibzreepubageztoi.supabase.co/storage/v1/object/public/curriculum-audio/ls/930399a8808acec0.flac"
+        },
+        {
+          "text": "This is worse than I thought.",
+          "context": "worse opinion",
+          "audio_url": "https://fnvjibzreepubageztoi.supabase.co/storage/v1/object/public/curriculum-audio/ls/840f947873205ec6.flac"
+        }
+      ],
+      "roleplay": {
+        "scenario": "Charlotte propõe comparar opiniões — coisas boas, ruins, mais ou menos.",
+        "voiced_by": "charlotte",
+        "persona": "Charlotte",
+        "persona_outfit": "charlotte_casual",
+        "time_budget_sec": 90,
+        "opening_line": "Better, worse, or more? Compare two things.",
+        "objectives": [
+          {
+            "id": 1,
+            "label_pt": "Comparar com 'better than'",
+            "label_en": "Compare with 'better than'",
+            "hidden_prompt": "user compares with 'X is better than Y'",
+            "hint_pt": "Coffee is better than tea.",
+            "hint_en": "Coffee is better than tea."
+          },
+          {
+            "id": 2,
+            "label_pt": "Comparar com 'worse than'",
+            "label_en": "Compare with 'worse than'",
+            "hidden_prompt": "user compares with 'X is worse than Y'",
+            "hint_pt": "Mondays are worse than Fridays.",
+            "hint_en": "Mondays are worse than Fridays."
+          },
+          {
+            "id": 3,
+            "label_pt": "Comparar quantidades com 'more than'",
+            "label_en": "Compare quantities with 'more than'",
+            "hidden_prompt": "user compares with 'I have more + noun + than Y'",
+            "hint_pt": "I have more books than my brother.",
+            "hint_en": "I have more books than my brother."
+          }
+        ],
+        "closing_cue": "Charlotte fecha com \"Strong opinions!\" quando obj_3 baterem.",
+        "suggested_flow": "**Suggested flow** (referencial, 6 turnos):\n\n1. **Charlotte**: \"Better, worse, or more? Compare two things.\"\n2. **Student**: ~\"Coffee is better than tea.\"\n3. **Charlotte**: \"Day worse than another?\"\n4. **Student**: ~\"Mondays are worse than Fridays.\"\n5. **Charlotte**: \"Quantity comparison?\"\n6. **Student**: ~\"I have more books than my brother.\"\n7. **Charlotte**: \"Strong opinions!\"",
+        "evaluation_focus": [
+          "better/worse/more (irregulares decorados)",
+          "\"Than\" sempre",
+          "Sem \"gooder/badder/more good\""
+        ]
+      },
+      "guided_chat": {
+        "scenario": "Charlotte conversa sobre comparações pessoais.",
+        "voiced_by": "charlotte",
+        "persona": "Charlotte",
+        "persona_outfit": "charlotte_casual",
+        "intro_pt": "Charlotte abre chat sobre 'melhor/pior/mais'. Pratica irregulares.",
+        "opening_message": "Better or worse this week than last?",
+        "objectives": [
+          {
+            "id": 1,
+            "label_pt": "Comparar a semana atual com a passada",
+            "label_en": "Compare this week to last",
+            "hidden_prompt": "user compares with 'This week is better/worse than last week'",
+            "hint_pt": "This week is better than last week.",
+            "hint_en": "This week is better than last week."
+          },
+          {
+            "id": 2,
+            "label_pt": "Comparar duas coisas (mais)",
+            "label_en": "Compare two things (more)",
+            "hidden_prompt": "user uses 'more + noun + than' for comparison",
+            "hint_pt": "I have more time today.",
+            "hint_en": "I have more time today."
+          },
+          {
+            "id": 3,
+            "label_pt": "Perguntar à Charlotte",
+            "label_en": "Ask Charlotte",
+            "hidden_prompt": "user asks 'How about you?' or 'Better or worse?'",
+            "hint_pt": "How about you?",
+            "hint_en": "How about you?"
+          }
+        ],
+        "closing_cue": "Charlotte encerra com \"Solid chat!\" quando obj_3 baterem.",
+        "suggested_script": "**Script** (referencial, 7 turnos):\n\n1. **Charlotte**: \"Better or worse this week than last?\"\n2. **Student**: \"This week is better than last week.\"\n3. **Charlotte**: \"Quantitative?\"\n4. **Student**: \"I have more time today.\"\n5. **Charlotte**: \"Lucky you.\"\n6. **Student**: \"How about you?\"\n7. **Charlotte**: \"Mine's worse — too much work. Solid chat!\"\n\n> N03 chat = LLM puro.\n\n---"
+      }
+    },
+    {
+      "id": "N04",
+      "title": "Bem mais, um pouco mais",
+      "sub_cefr": "A2",
+      "grammar_focus": "Modifiers (much/a little/a bit + comparative)",
+      "markers": [],
+      "real_life_context": "Você suaviza ou intensifica comparações — \"muito mais\", \"um pouco mais\", \"um pouco menos\".",
+      "grammar": [
+        {
+          "type": "multiple_choice",
+          "sentence": "She is _____ taller than him.",
+          "options": [
+            "much",
+            "very",
+            "so"
+          ],
+          "answer": "much",
+          "explanation": "\"Much + comparative\" = MUITO mais. \"Much taller\" = muito mais alto. \"Very\" não usa com comparativo."
+        },
+        {
+          "type": "multiple_choice",
+          "sentence": "This phone is _____ more expensive.",
+          "options": [
+            "a little",
+            "a much",
+            "very",
+            "quite"
+          ],
+          "answer": "a little",
+          "explanation": "\"A little + comparative\" = um pouco mais. \"A little more expensive\" = um pouco mais caro."
+        },
+        {
+          "type": "word_bank",
+          "sentence": "I'm _____ a bit older than her.",
+          "choices": [
+            "just",
+            "much",
+            "very",
+            "so"
+          ],
+          "answer": "just",
+          "explanation": "\"Just a bit older\" = só um pouquinho mais velho. Suaviza a diferença."
+        },
+        {
+          "type": "word_bank",
+          "sentence": "Today is _____ hotter than yesterday.",
+          "choices": [
+            "much",
+            "very",
+            "so",
+            "quite"
+          ],
+          "answer": "much",
+          "explanation": "\"Much hotter\" = bem mais quente. Intensifica."
+        },
+        {
+          "type": "fill_gap",
+          "sentence": "My car is _____ better than my old one.",
+          "hint": "Intensifier (muito mais)",
+          "answer": "much",
+          "explanation": "\"Much better\" = bem melhor. Padrão pra intensificar comparativos."
+        },
+        {
+          "type": "fill_gap",
+          "sentence": "She is _____ more patient than I am.",
+          "hint": "Modificador suave (um pouco)",
+          "answer": "a little",
+          "explanation": "\"A little more patient\" = um pouco mais paciente. Suaviza."
+        },
+        {
+          "type": "fill_gap",
+          "sentence": "This room is _____ smaller than that one.",
+          "hint": "Modificador suave (um pouco)",
+          "answer": "a bit",
+          "explanation": "\"A bit smaller\" = um pouco menor. Sinônimo de \"a little\"."
+        },
+        {
+          "type": "fix_error",
+          "sentence": "She is very taller than me.",
+          "hint": "\"Very\" não vai com comparativo",
+          "answer": "She is much taller than me.",
+          "explanation": "Com comparativo usa \"much\", não \"very\". \"Very + adjetivo simples\" (very tall); \"Much + comparativo\" (much taller)."
+        },
+        {
+          "type": "fix_error",
+          "sentence": "I'm a little more better today.",
+          "hint": "\"Better\" é comparativo, não usa \"more\"",
+          "answer": "I'm a little better today.",
+          "explanation": "\"Better\" já é comparativo (good → better). NÃO usa \"more better\". Apenas \"a little/much/a bit + better\"."
+        },
+        {
+          "type": "read_answer",
+          "passage": "My new apartment is much bigger than the old one. The kitchen is a little smaller, but the bedroom is much more comfortable.",
+          "question": "How is the bedroom?",
+          "answer": "much more comfortable",
+          "explanation": "The text says \"the bedroom is much more comfortable\"."
+        }
+      ],
+      "listening_speaking": [
+        {
+          "text": "She is much taller.",
+          "context": "much + short comparative",
+          "audio_url": "https://fnvjibzreepubageztoi.supabase.co/storage/v1/object/public/curriculum-audio/ls/4fc20e71f39315df.flac"
+        },
+        {
+          "text": "It's a little more expensive.",
+          "context": "a little + more",
+          "audio_url": "https://fnvjibzreepubageztoi.supabase.co/storage/v1/object/public/curriculum-audio/ls/d0d38f273630c36c.flac"
+        },
+        {
+          "text": "I'm a bit older than her.",
+          "context": "a bit + comparative",
+          "audio_url": "https://fnvjibzreepubageztoi.supabase.co/storage/v1/object/public/curriculum-audio/ls/e935dc49564ff6ad.flac"
+        },
+        {
+          "text": "This is much better.",
+          "context": "much + better",
+          "audio_url": "https://fnvjibzreepubageztoi.supabase.co/storage/v1/object/public/curriculum-audio/ls/ab3a40a53d29f89a.flac"
+        },
+        {
+          "text": "Today is a little hotter.",
+          "context": "a little + short comparative",
+          "audio_url": "https://fnvjibzreepubageztoi.supabase.co/storage/v1/object/public/curriculum-audio/ls/64e8dba24ba9852a.flac"
+        }
+      ],
+      "roleplay": {
+        "scenario": "Charlotte pede comparações com nuances — quanto mais ou menos.",
+        "voiced_by": "charlotte",
+        "persona": "Charlotte",
+        "persona_outfit": "charlotte_casual",
+        "time_budget_sec": 90,
+        "opening_line": "Add some nuance — compare with 'much' or 'a little'.",
+        "objectives": [
+          {
+            "id": 1,
+            "label_pt": "Comparar com 'much' (intensificar)",
+            "label_en": "Compare with 'much'",
+            "hidden_prompt": "user uses 'much + comparative' (much taller, much better, much more expensive)",
+            "hint_pt": "This is much better.",
+            "hint_en": "This is much better."
+          },
+          {
+            "id": 2,
+            "label_pt": "Comparar com 'a little' (suavizar)",
+            "label_en": "Compare with 'a little'",
+            "hidden_prompt": "user uses 'a little + comparative' (a little smaller, a little cheaper)",
+            "hint_pt": "It's a little cheaper.",
+            "hint_en": "It's a little cheaper."
+          },
+          {
+            "id": 3,
+            "label_pt": "Comparar com 'a bit'",
+            "label_en": "Compare with 'a bit'",
+            "hidden_prompt": "user uses 'a bit + comparative'",
+            "hint_pt": "I'm a bit older than her.",
+            "hint_en": "I'm a bit older than her."
+          }
+        ],
+        "closing_cue": "Charlotte fecha com \"Nuanced!\" quando obj_3 baterem.",
+        "suggested_flow": "**Suggested flow** (referencial, 6 turnos):\n\n1. **Charlotte**: \"Add some nuance — compare with 'much' or 'a little'.\"\n2. **Student**: ~\"This is much better.\"\n3. **Charlotte**: \"Smaller diff?\"\n4. **Student**: ~\"It's a little cheaper.\"\n5. **Charlotte**: \"Personal?\"\n6. **Student**: ~\"I'm a bit older than her.\"\n7. **Charlotte**: \"Nuanced!\"",
+        "evaluation_focus": [
+          "Much/a little/a bit + comparativo",
+          "Sem \"very + comparativo\"",
+          "Sem \"more better\""
+        ]
+      },
+      "guided_chat": {
+        "scenario": "Charlotte conversa sobre diferenças pequenas e grandes em situações comparativas.",
+        "voiced_by": "charlotte",
+        "persona": "Charlotte",
+        "persona_outfit": "charlotte_casual",
+        "intro_pt": "Charlotte explora intensidades de comparação. Pratica much/a little/a bit + comparativo.",
+        "opening_message": "Big or small differences this week?",
+        "objectives": [
+          {
+            "id": 1,
+            "label_pt": "Comparar com 'much' (grande diferença)",
+            "label_en": "Compare with 'much'",
+            "hidden_prompt": "user uses 'much + comparative'",
+            "hint_pt": "Today is much hotter.",
+            "hint_en": "Today is much hotter."
+          },
+          {
+            "id": 2,
+            "label_pt": "Comparar com 'a little' (pequena diferença)",
+            "label_en": "Compare with 'a little'",
+            "hidden_prompt": "user uses 'a little + comparative'",
+            "hint_pt": "My coffee is a little stronger today.",
+            "hint_en": "My coffee is a little stronger today."
+          },
+          {
+            "id": 3,
+            "label_pt": "Perguntar à Charlotte",
+            "label_en": "Ask Charlotte",
+            "hidden_prompt": "user asks 'How about you?' or similar",
+            "hint_pt": "How about you?",
+            "hint_en": "How about you?"
+          }
+        ],
+        "closing_cue": "Charlotte encerra com \"Subtle observations!\" quando obj_3 baterem.",
+        "suggested_script": "**Script** (referencial, 7 turnos):\n\n1. **Charlotte**: \"Big or small differences this week?\"\n2. **Student**: \"Today is much hotter.\"\n3. **Charlotte**: \"Small ones?\"\n4. **Student**: \"My coffee is a little stronger today.\"\n5. **Charlotte**: \"Interesting.\"\n6. **Student**: \"How about you?\"\n7. **Charlotte**: \"Same hot week here. Subtle observations!\"\n\n> N04 chat = LLM puro.\n\n---"
+      }
+    },
+    {
+      "id": "N05",
+      "title": "Comparando tudo",
+      "sub_cefr": "A2",
+      "grammar_focus": "Integration of all M12 comparatives",
+      "markers": [],
+      "real_life_context": "Você combina comparativos curtos, longos e irregulares em descrições completas.",
+      "grammar": [
+        {
+          "type": "multiple_choice",
+          "sentence": "She is _____ than her sister.",
+          "options": [
+            "taller",
+            "more tall",
+            "tallest"
+          ],
+          "answer": "taller",
+          "explanation": "Adjetivo curto → -er. \"Taller\", não \"more tall\"."
+        },
+        {
+          "type": "multiple_choice",
+          "sentence": "This restaurant is _____ than the other one.",
+          "options": [
+            "more expensive",
+            "expensiver",
+            "more expensiver"
+          ],
+          "answer": "more expensive",
+          "explanation": "Adjetivo longo → \"more\". \"More expensive\"."
+        },
+        {
+          "type": "word_bank",
+          "sentence": "Today is _____ than yesterday.",
+          "choices": [
+            "better",
+            "gooder",
+            "more better",
+            "more good"
+          ],
+          "answer": "better",
+          "explanation": "\"Good\" → \"better\" (irregular)."
+        },
+        {
+          "type": "word_bank",
+          "sentence": "My car is _____ faster than yours.",
+          "choices": [
+            "much",
+            "very",
+            "so",
+            "really"
+          ],
+          "answer": "much",
+          "explanation": "\"Much + comparative\". \"Very\" não vai com comparativo."
+        },
+        {
+          "type": "fill_gap",
+          "sentence": "This phone is _____ (cheap) than that one.",
+          "hint": "Comparativo de cheap",
+          "answer": "cheaper",
+          "explanation": "\"Cheap\" (1 sílaba) → \"cheaper\"."
+        },
+        {
+          "type": "fill_gap",
+          "sentence": "She is _____ (intelligent) than I expected.",
+          "hint": "Comparativo de adjetivo longo",
+          "answer": "more intelligent",
+          "explanation": "\"Intelligent\" (4 sílabas) → \"more intelligent\"."
+        },
+        {
+          "type": "fill_gap",
+          "sentence": "Today is _____ (bad) than yesterday.",
+          "hint": "Comparativo irregular de bad",
+          "answer": "worse",
+          "explanation": "\"Bad\" → \"worse\" (irregular)."
+        },
+        {
+          "type": "fix_error",
+          "sentence": "She is more taller than me.",
+          "hint": "\"Tall\" não usa \"more\"",
+          "answer": "She is taller than me.",
+          "explanation": "Adjetivo curto, sem \"more\". Apenas \"taller\"."
+        },
+        {
+          "type": "fix_error",
+          "sentence": "This is gooder than that.",
+          "hint": "Good é irregular",
+          "answer": "This is better than that.",
+          "explanation": "Good → better, não \"gooder\". Irregular."
+        },
+        {
+          "type": "read_answer",
+          "passage": "I'm taller than my brother but he's much stronger. My sister is more patient than both of us. She's a better listener too.",
+          "question": "Who is the best listener?",
+          "answer": "my sister (or \"her sister\" / \"the sister\")",
+          "explanation": "The text says \"She's a better listener\" — referring to the sister (better than the speaker and brother)."
+        }
+      ],
+      "listening_speaking": [
+        {
+          "text": "She is taller than me.",
+          "context": "short comparative",
+          "audio_url": "https://fnvjibzreepubageztoi.supabase.co/storage/v1/object/public/curriculum-audio/ls/e9d230d8834fe4b3.flac"
+        },
+        {
+          "text": "This is more expensive than that.",
+          "context": "long comparative",
+          "audio_url": "https://fnvjibzreepubageztoi.supabase.co/storage/v1/object/public/curriculum-audio/ls/135b6c191695dfae.flac"
+        },
+        {
+          "text": "My coffee is better today.",
+          "context": "irregular",
+          "audio_url": "https://fnvjibzreepubageztoi.supabase.co/storage/v1/object/public/curriculum-audio/ls/115e8b256df5f998.flac"
+        },
+        {
+          "text": "He is much faster than her.",
+          "context": "much + comparative",
+          "audio_url": "https://fnvjibzreepubageztoi.supabase.co/storage/v1/object/public/curriculum-audio/ls/f8aa9b9370ba86c8.flac"
+        },
+        {
+          "text": "I'm a little older.",
+          "context": "a little + comparative",
+          "audio_url": "https://fnvjibzreepubageztoi.supabase.co/storage/v1/object/public/curriculum-audio/ls/9b59c0a584614d2c.flac"
+        }
+      ],
+      "roleplay": {
+        "scenario": "Charlotte propõe três comparações de tipos diferentes — curto, longo, irregular.",
+        "voiced_by": "charlotte",
+        "persona": "Charlotte",
+        "persona_outfit": "charlotte_casual",
+        "time_budget_sec": 90,
+        "opening_line": "Three comparisons — one short adj, one long, one irregular!",
+        "objectives": [
+          {
+            "id": 1,
+            "label_pt": "Usar adjetivo curto (-er + than)",
+            "label_en": "Use short adjective",
+            "hidden_prompt": "user uses short adj + -er + than",
+            "hint_pt": "I'm taller than my sister.",
+            "hint_en": "I'm taller than my sister."
+          },
+          {
+            "id": 2,
+            "label_pt": "Usar adjetivo longo (more + adj)",
+            "label_en": "Use long adjective",
+            "hidden_prompt": "user uses 'more + long adj + than'",
+            "hint_pt": "This is more interesting than that.",
+            "hint_en": "This is more interesting than that."
+          },
+          {
+            "id": 3,
+            "label_pt": "Usar irregular (better/worse/more)",
+            "label_en": "Use irregular comparative",
+            "hidden_prompt": "user uses 'better/worse/more + than'",
+            "hint_pt": "Today is better than yesterday.",
+            "hint_en": "Today is better than yesterday."
+          }
+        ],
+        "closing_cue": "Charlotte fecha com \"Comparison master!\" quando obj_3 baterem.",
+        "suggested_flow": "**Suggested flow** (referencial, 6 turnos):\n\n1. **Charlotte**: \"Three comparisons — one short adj, one long, one irregular!\"\n2. **Student**: ~\"I'm taller than my sister.\"\n3. **Charlotte**: \"Long adj?\"\n4. **Student**: ~\"This is more interesting than that.\"\n5. **Charlotte**: \"Irregular?\"\n6. **Student**: ~\"Today is better than yesterday.\"\n7. **Charlotte**: \"Comparison master!\"",
+        "evaluation_focus": [
+          "Tipo correto por tamanho de adjetivo",
+          "Irregular memorizado",
+          "\"Than\" sempre"
+        ]
+      },
+      "guided_chat": {
+        "scenario": "Charlotte conversa sobre múltiplas comparações na vida.",
+        "voiced_by": "charlotte",
+        "persona": "Charlotte",
+        "persona_outfit": "charlotte_casual",
+        "intro_pt": "Charlotte abre chat de comparações variadas. Mostra que domina curtos, longos e irregulares.",
+        "opening_message": "Compare three things in your life right now.",
+        "objectives": [
+          {
+            "id": 1,
+            "label_pt": "Primeira comparação (curto)",
+            "label_en": "First comparison (short)",
+            "hidden_prompt": "user uses short adj -er + than",
+            "hint_pt": "Coffee is cheaper than wine.",
+            "hint_en": "Coffee is cheaper than wine."
+          },
+          {
+            "id": 2,
+            "label_pt": "Segunda comparação (longo)",
+            "label_en": "Second (long)",
+            "hidden_prompt": "user uses 'more + long adj + than'",
+            "hint_pt": "My job is more difficult now.",
+            "hint_en": "My job is more difficult now."
+          },
+          {
+            "id": 3,
+            "label_pt": "Terceira comparação (irregular)",
+            "label_en": "Third (irregular)",
+            "hidden_prompt": "user uses better/worse/more + than",
+            "hint_pt": "My life is better today.",
+            "hint_en": "My life is better today."
+          }
+        ],
+        "closing_cue": "Charlotte encerra com \"All comparison types covered!\" quando obj_3 baterem.",
+        "suggested_script": "**Script** (referencial, 7 turnos):\n\n1. **Charlotte**: \"Compare three things in your life right now.\"\n2. **Student**: \"Coffee is cheaper than wine.\"\n3. **Charlotte**: \"Long adj next?\"\n4. **Student**: \"My job is more difficult now.\"\n5. **Charlotte**: \"Tough.\"\n6. **Student**: \"My life is better today.\"\n7. **Charlotte**: \"All comparison types covered!\"\n\n> N05 chat = LLM puro.\n\n---"
+      }
+    }
+  ],
+  "cross_unit_consolidation": [
+    "Comparativos curtos: tall → taller, big → bigger, easy → easier",
+    "Comparativos longos: interesting → more interesting, beautiful → more beautiful",
+    "Irregulares: good → better, bad → worse, far → farther",
+    "Modificadores: much/a little/a bit + comparative",
+    "Conector: SEMPRE \"than\" (não \"as\")",
+    "Sem misturar: \"more taller\" e \"more better\" são erros"
+  ]
+}

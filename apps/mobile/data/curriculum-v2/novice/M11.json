@@ -122,23 +122,28 @@
       "listening_speaking": [
         {
           "text": "I'd like to buy a shirt.",
-          "context": "polite request"
+          "context": "polite request",
+          "audio_url": "https://fnvjibzreepubageztoi.supabase.co/storage/v1/object/public/curriculum-audio/ls/00c164823fc3a3a8.flac"
         },
         {
           "text": "I'm looking for size M.",
-          "context": "looking for chunk"
+          "context": "looking for chunk",
+          "audio_url": "https://fnvjibzreepubageztoi.supabase.co/storage/v1/object/public/curriculum-audio/ls/48ba3598f55cc841.flac"
         },
         {
           "text": "Where is the cashier?",
-          "context": "location question"
+          "context": "location question",
+          "audio_url": "https://fnvjibzreepubageztoi.supabase.co/storage/v1/object/public/curriculum-audio/ls/5660db28a513def9.flac"
         },
         {
           "text": "The shirts are on the second floor.",
-          "context": "preposition on + floor"
+          "context": "preposition on + floor",
+          "audio_url": "https://fnvjibzreepubageztoi.supabase.co/storage/v1/object/public/curriculum-audio/ls/53d2c70012bb1fe7.flac"
         },
         {
           "text": "Can I try on this dress?",
-          "context": "try on"
+          "context": "try on",
+          "audio_url": "https://fnvjibzreepubageztoi.supabase.co/storage/v1/object/public/curriculum-audio/ls/3653b9311be4cfc0.flac"
         }
       ],
       "roleplay": {
@@ -323,23 +328,28 @@
       "listening_speaking": [
         {
           "text": "This shirt is nice.",
-          "context": "this singular close"
+          "context": "this singular close",
+          "audio_url": "https://fnvjibzreepubageztoi.supabase.co/storage/v1/object/public/curriculum-audio/ls/e84e3ef5adc9e8ca.flac"
         },
         {
           "text": "That dress is beautiful.",
-          "context": "that singular far"
+          "context": "that singular far",
+          "audio_url": "https://fnvjibzreepubageztoi.supabase.co/storage/v1/object/public/curriculum-audio/ls/c6e6f83fc260ceba.flac"
         },
         {
           "text": "These shoes fit me.",
-          "context": "these plural close"
+          "context": "these plural close",
+          "audio_url": "https://fnvjibzreepubageztoi.supabase.co/storage/v1/object/public/curriculum-audio/ls/d30a52161284285f.flac"
         },
         {
           "text": "Those pants are expensive.",
-          "context": "those plural far"
+          "context": "those plural far",
+          "audio_url": "https://fnvjibzreepubageztoi.supabase.co/storage/v1/object/public/curriculum-audio/ls/be075425a12ee314.flac"
         },
         {
           "text": "I'd like this one, please.",
-          "context": "this + one"
+          "context": "this + one",
+          "audio_url": "https://fnvjibzreepubageztoi.supabase.co/storage/v1/object/public/curriculum-audio/ls/6336fbd2684fcc8c.flac"
         }
       ],
       "roleplay": {
@@ -522,23 +532,28 @@
       "listening_speaking": [
         {
           "text": "The cookies are on the shelf.",
-          "context": "on + surface"
+          "context": "on + surface",
+          "audio_url": "https://fnvjibzreepubageztoi.supabase.co/storage/v1/object/public/curriculum-audio/ls/6b600b6a0e8b48b8.flac"
         },
         {
           "text": "My keys are in my bag.",
-          "context": "in + container"
+          "context": "in + container",
+          "audio_url": "https://fnvjibzreepubageztoi.supabase.co/storage/v1/object/public/curriculum-audio/ls/0a1fc026f991d59a.flac"
         },
         {
           "text": "I'm at the store.",
-          "context": "at + location"
+          "context": "at + location",
+          "audio_url": "https://fnvjibzreepubageztoi.supabase.co/storage/v1/object/public/curriculum-audio/ls/6725312eeb8b70db.flac"
         },
         {
           "text": "The cashier is next to the door.",
-          "context": "next to"
+          "context": "next to",
+          "audio_url": "https://fnvjibzreepubageztoi.supabase.co/storage/v1/object/public/curriculum-audio/ls/c92eba8265c9d265.flac"
         },
         {
           "text": "The car is in front of the building.",
-          "context": "in front of"
+          "context": "in front of",
+          "audio_url": "https://fnvjibzreepubageztoi.supabase.co/storage/v1/object/public/curriculum-audio/ls/3d223b332c8b3fb0.flac"
         }
       ],
       "roleplay": {
@@ -719,23 +734,28 @@
       "listening_speaking": [
         {
           "text": "How much is it?",
-          "context": "price question"
+          "context": "price question",
+          "audio_url": "https://fnvjibzreepubageztoi.supabase.co/storage/v1/object/public/curriculum-audio/ls/6073d26b758e7831.flac"
         },
         {
           "text": "Can I pay with credit card?",
-          "context": "payment method"
+          "context": "payment method",
+          "audio_url": "https://fnvjibzreepubageztoi.supabase.co/storage/v1/object/public/curriculum-audio/ls/6b81a1aaa49aeb87.flac"
         },
         {
           "text": "It's on sale today.",
-          "context": "sale chunk"
+          "context": "sale chunk",
+          "audio_url": "https://fnvjibzreepubageztoi.supabase.co/storage/v1/object/public/curriculum-audio/ls/d6164b9c34b1dbe0.flac"
         },
         {
           "text": "Can I have a receipt?",
-          "context": "receipt request"
+          "context": "receipt request",
+          "audio_url": "https://fnvjibzreepubageztoi.supabase.co/storage/v1/object/public/curriculum-audio/ls/44f77dcda53f25cb.flac"
         },
         {
           "text": "Your total is fifty dollars.",
-          "context": "total announcement"
+          "context": "total announcement",
+          "audio_url": "https://fnvjibzreepubageztoi.supabase.co/storage/v1/object/public/curriculum-audio/ls/d61042bff7a76ed4.flac"
         }
       ],
       "roleplay": {
@@ -917,23 +937,28 @@
       "listening_speaking": [
         {
           "text": "I'd like to buy this shirt.",
-          "context": "opening"
+          "context": "opening",
+          "audio_url": "https://fnvjibzreepubageztoi.supabase.co/storage/v1/object/public/curriculum-audio/ls/2ba074538cdce3b4.flac"
         },
         {
           "text": "Can I try it on?",
-          "context": "trying clothes"
+          "context": "trying clothes",
+          "audio_url": "https://fnvjibzreepubageztoi.supabase.co/storage/v1/object/public/curriculum-audio/ls/83fdf545f8a5345f.flac"
         },
         {
           "text": "How much is the total?",
-          "context": "price total"
+          "context": "price total",
+          "audio_url": "https://fnvjibzreepubageztoi.supabase.co/storage/v1/object/public/curriculum-audio/ls/848b4ddc21a9d71c.flac"
         },
         {
           "text": "I'll pay with credit card.",
-          "context": "payment method"
+          "context": "payment method",
+          "audio_url": "https://fnvjibzreepubageztoi.supabase.co/storage/v1/object/public/curriculum-audio/ls/760ed8f9e2437227.flac"
         },
         {
           "text": "Can I have a receipt?",
-          "context": "closing"
+          "context": "closing",
+          "audio_url": "https://fnvjibzreepubageztoi.supabase.co/storage/v1/object/public/curriculum-audio/ls/44f77dcda53f25cb.flac"
         }
       ],
       "roleplay": {

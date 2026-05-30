@@ -124,23 +124,28 @@
       "listening_speaking": [
         {
           "text": "I'm working right now.",
-          "context": "own action now"
+          "context": "own action now",
+          "audio_url": "https://fnvjibzreepubageztoi.supabase.co/storage/v1/object/public/curriculum-audio/ls/7c06bcf4cad1b00f.flac"
         },
         {
           "text": "She is sleeping.",
-          "context": "3rd person"
+          "context": "3rd person",
+          "audio_url": "https://fnvjibzreepubageztoi.supabase.co/storage/v1/object/public/curriculum-audio/ls/7259a765ee32fd37.flac"
         },
         {
           "text": "They are playing soccer.",
-          "context": "plural"
+          "context": "plural",
+          "audio_url": "https://fnvjibzreepubageztoi.supabase.co/storage/v1/object/public/curriculum-audio/ls/624b13ec88f66a8c.flac"
         },
         {
           "text": "We are eating dinner.",
-          "context": "group activity"
+          "context": "group activity",
+          "audio_url": "https://fnvjibzreepubageztoi.supabase.co/storage/v1/object/public/curriculum-audio/ls/a71f8f3da57cbe90.flac"
         },
         {
           "text": "He's reading a book.",
-          "context": "contraction he's"
+          "context": "contraction he's",
+          "audio_url": "https://fnvjibzreepubageztoi.supabase.co/storage/v1/object/public/curriculum-audio/ls/75920e0618ac1a98.flac"
         }
       ],
       "roleplay": {
@@ -321,23 +326,28 @@
       "listening_speaking": [
         {
           "text": "I'm not working today.",
-          "context": "own negative"
+          "context": "own negative",
+          "audio_url": "https://fnvjibzreepubageztoi.supabase.co/storage/v1/object/public/curriculum-audio/ls/3583ffa212b7fedd.flac"
         },
         {
           "text": "She isn't sleeping.",
-          "context": "3rd person negative"
+          "context": "3rd person negative",
+          "audio_url": "https://fnvjibzreepubageztoi.supabase.co/storage/v1/object/public/curriculum-audio/ls/c2aab2acb04ac3b1.flac"
         },
         {
           "text": "They aren't eating.",
-          "context": "plural negative"
+          "context": "plural negative",
+          "audio_url": "https://fnvjibzreepubageztoi.supabase.co/storage/v1/object/public/curriculum-audio/ls/d7a4f73c5b7a30be.flac"
         },
         {
           "text": "He isn't working today.",
-          "context": "temporary contrast"
+          "context": "temporary contrast",
+          "audio_url": "https://fnvjibzreepubageztoi.supabase.co/storage/v1/object/public/curriculum-audio/ls/b381215cfe030115.flac"
         },
         {
           "text": "We aren't watching TV.",
-          "context": "group negative"
+          "context": "group negative",
+          "audio_url": "https://fnvjibzreepubageztoi.supabase.co/storage/v1/object/public/curriculum-audio/ls/bbac751bccd0ec1c.flac"
         }
       ],
       "roleplay": {
@@ -520,23 +530,28 @@
       "listening_speaking": [
         {
           "text": "Are you working?",
-          "context": "question to you"
+          "context": "question to you",
+          "audio_url": "https://fnvjibzreepubageztoi.supabase.co/storage/v1/object/public/curriculum-audio/ls/a896f180ddef8e22.flac"
         },
         {
           "text": "Is she sleeping?",
-          "context": "question about her"
+          "context": "question about her",
+          "audio_url": "https://fnvjibzreepubageztoi.supabase.co/storage/v1/object/public/curriculum-audio/ls/5b4d9d30118b1b80.flac"
         },
         {
           "text": "What are you doing?",
-          "context": "common WH-question"
+          "context": "common WH-question",
+          "audio_url": "https://fnvjibzreepubageztoi.supabase.co/storage/v1/object/public/curriculum-audio/ls/6344c3791feae355.flac"
         },
         {
           "text": "Yes, I am. No, I'm not.",
-          "context": "short answers"
+          "context": "short answers",
+          "audio_url": "https://fnvjibzreepubageztoi.supabase.co/storage/v1/object/public/curriculum-audio/ls/906aff0cfb1985c9.flac"
         },
         {
           "text": "Is he reading?",
-          "context": "question about him"
+          "context": "question about him",
+          "audio_url": "https://fnvjibzreepubageztoi.supabase.co/storage/v1/object/public/curriculum-audio/ls/ef9f74513e3ab969.flac"
         }
       ],
       "roleplay": {
@@ -717,23 +732,28 @@
       "listening_speaking": [
         {
           "text": "I'm working right now.",
-          "context": "right now"
+          "context": "right now",
+          "audio_url": "https://fnvjibzreepubageztoi.supabase.co/storage/v1/object/public/curriculum-audio/ls/7c06bcf4cad1b00f.flac"
         },
         {
           "text": "She's studying this week.",
-          "context": "this week"
+          "context": "this week",
+          "audio_url": "https://fnvjibzreepubageztoi.supabase.co/storage/v1/object/public/curriculum-audio/ls/2136155da9172112.flac"
         },
         {
           "text": "He's traveling at the moment.",
-          "context": "at the moment"
+          "context": "at the moment",
+          "audio_url": "https://fnvjibzreepubageztoi.supabase.co/storage/v1/object/public/curriculum-audio/ls/0aa3d84e61461a12.flac"
         },
         {
           "text": "We're eating outside today.",
-          "context": "today"
+          "context": "today",
+          "audio_url": "https://fnvjibzreepubageztoi.supabase.co/storage/v1/object/public/curriculum-audio/ls/e588f013332dc923.flac"
         },
         {
           "text": "They're staying with us this month.",
-          "context": "this month"
+          "context": "this month",
+          "audio_url": "https://fnvjibzreepubageztoi.supabase.co/storage/v1/object/public/curriculum-audio/ls/7068d874ec7632cb.flac"
         }
       ],
       "roleplay": {
@@ -926,23 +946,28 @@
       "listening_speaking": [
         {
           "text": "I work in NYC.",
-          "context": "rotina permanente (simple)"
+          "context": "rotina permanente (simple)",
+          "audio_url": "https://fnvjibzreepubageztoi.supabase.co/storage/v1/object/public/curriculum-audio/ls/828271f5b75332cc.flac"
         },
         {
           "text": "I'm working from home today.",
-          "context": "temporário (continuous)"
+          "context": "temporário (continuous)",
+          "audio_url": "https://fnvjibzreepubageztoi.supabase.co/storage/v1/object/public/curriculum-audio/ls/13060f6333c4a444.flac"
         },
         {
           "text": "She speaks three languages.",
-          "context": "habilidade (simple)"
+          "context": "habilidade (simple)",
+          "audio_url": "https://fnvjibzreepubageztoi.supabase.co/storage/v1/object/public/curriculum-audio/ls/4b25008d219857e5.flac"
         },
         {
           "text": "She is speaking on the phone now.",
-          "context": "ação atual (continuous)"
+          "context": "ação atual (continuous)",
+          "audio_url": "https://fnvjibzreepubageztoi.supabase.co/storage/v1/object/public/curriculum-audio/ls/a882862d2630c317.flac"
         },
         {
           "text": "They usually play soccer, but today they're playing tennis.",
-          "context": "contrast"
+          "context": "contrast",
+          "audio_url": "https://fnvjibzreepubageztoi.supabase.co/storage/v1/object/public/curriculum-audio/ls/293046a0e0f65685.flac"
         }
       ],
       "roleplay": {

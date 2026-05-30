@@ -124,23 +124,28 @@
       "listening_speaking": [
         {
           "text": "I have two apples.",
-          "context": "countable plural"
+          "context": "countable plural",
+          "audio_url": "https://fnvjibzreepubageztoi.supabase.co/storage/v1/object/public/curriculum-audio/ls/9fc41cc6adf4a882.flac"
         },
         {
           "text": "I drink a lot of water.",
-          "context": "uncountable"
+          "context": "uncountable",
+          "audio_url": "https://fnvjibzreepubageztoi.supabase.co/storage/v1/object/public/curriculum-audio/ls/1647ae4eb92ddd41.flac"
         },
         {
           "text": "Can I have some bread?",
-          "context": "uncountable + some"
+          "context": "uncountable + some",
+          "audio_url": "https://fnvjibzreepubageztoi.supabase.co/storage/v1/object/public/curriculum-audio/ls/9f629ba4588b6c89.flac"
         },
         {
           "text": "I'd like a sandwich.",
-          "context": "countable singular + a"
+          "context": "countable singular + a",
+          "audio_url": "https://fnvjibzreepubageztoi.supabase.co/storage/v1/object/public/curriculum-audio/ls/8bf2ea720277299f.flac"
         },
         {
           "text": "She eats some cheese every day.",
-          "context": "uncountable habit"
+          "context": "uncountable habit",
+          "audio_url": "https://fnvjibzreepubageztoi.supabase.co/storage/v1/object/public/curriculum-audio/ls/ed52949d5892b1f6.flac"
         }
       ],
       "roleplay": {
@@ -323,23 +328,28 @@
       "listening_speaking": [
         {
           "text": "I have some apples.",
-          "context": "affirmative some"
+          "context": "affirmative some",
+          "audio_url": "https://fnvjibzreepubageztoi.supabase.co/storage/v1/object/public/curriculum-audio/ls/175902e5f3c99674.flac"
         },
         {
           "text": "We don't have any milk.",
-          "context": "negative any"
+          "context": "negative any",
+          "audio_url": "https://fnvjibzreepubageztoi.supabase.co/storage/v1/object/public/curriculum-audio/ls/b70c68bea7f45144.flac"
         },
         {
           "text": "Is there any juice?",
-          "context": "question any"
+          "context": "question any",
+          "audio_url": "https://fnvjibzreepubageztoi.supabase.co/storage/v1/object/public/curriculum-audio/ls/30ed43a44a791cac.flac"
         },
         {
           "text": "Can I have some water?",
-          "context": "polite request some"
+          "context": "polite request some",
+          "audio_url": "https://fnvjibzreepubageztoi.supabase.co/storage/v1/object/public/curriculum-audio/ls/cb355b14223d7e4b.flac"
         },
         {
           "text": "There's some bread on the table.",
-          "context": "affirmative + there's"
+          "context": "affirmative + there's",
+          "audio_url": "https://fnvjibzreepubageztoi.supabase.co/storage/v1/object/public/curriculum-audio/ls/01d67caa316d520c.flac"
         }
       ],
       "roleplay": {
@@ -522,23 +532,28 @@
       "listening_speaking": [
         {
           "text": "How many apples?",
-          "context": "countable question"
+          "context": "countable question",
+          "audio_url": "https://fnvjibzreepubageztoi.supabase.co/storage/v1/object/public/curriculum-audio/ls/574672a52faa004e.flac"
         },
         {
           "text": "How much milk?",
-          "context": "uncountable question"
+          "context": "uncountable question",
+          "audio_url": "https://fnvjibzreepubageztoi.supabase.co/storage/v1/object/public/curriculum-audio/ls/aa4fedcd6cdd8295.flac"
         },
         {
           "text": "How much is it?",
-          "context": "price chunk"
+          "context": "price chunk",
+          "audio_url": "https://fnvjibzreepubageztoi.supabase.co/storage/v1/object/public/curriculum-audio/ls/6073d26b758e7831.flac"
         },
         {
           "text": "How many people are here?",
-          "context": "countable plural"
+          "context": "countable plural",
+          "audio_url": "https://fnvjibzreepubageztoi.supabase.co/storage/v1/object/public/curriculum-audio/ls/ec3e5cef335c0c2d.flac"
         },
         {
           "text": "How much sugar do you want?",
-          "context": "uncountable + want"
+          "context": "uncountable + want",
+          "audio_url": "https://fnvjibzreepubageztoi.supabase.co/storage/v1/object/public/curriculum-audio/ls/7270a2445ccf11a7.flac"
         }
       ],
       "roleplay": {
@@ -719,23 +734,28 @@
       "listening_speaking": [
         {
           "text": "I'd like a coffee, please.",
-          "context": "polite order"
+          "context": "polite order",
+          "audio_url": "https://fnvjibzreepubageztoi.supabase.co/storage/v1/object/public/curriculum-audio/ls/166ba27947eab867.flac"
         },
         {
           "text": "Can I have the menu?",
-          "context": "request for menu"
+          "context": "request for menu",
+          "audio_url": "https://fnvjibzreepubageztoi.supabase.co/storage/v1/object/public/curriculum-audio/ls/953f08ea135ddd34.flac"
         },
         {
           "text": "What would you like to drink?",
-          "context": "waiter question"
+          "context": "waiter question",
+          "audio_url": "https://fnvjibzreepubageztoi.supabase.co/storage/v1/object/public/curriculum-audio/ls/010f8010744d7ff2.flac"
         },
         {
           "text": "Can I have the bill, please?",
-          "context": "closing the meal"
+          "context": "closing the meal",
+          "audio_url": "https://fnvjibzreepubageztoi.supabase.co/storage/v1/object/public/curriculum-audio/ls/955deb793a229053.flac"
         },
         {
           "text": "I'd like a glass of water.",
-          "context": "drink with unit"
+          "context": "drink with unit",
+          "audio_url": "https://fnvjibzreepubageztoi.supabase.co/storage/v1/object/public/curriculum-audio/ls/d0d8cc526b236142.flac"
         }
       ],
       "roleplay": {
@@ -918,23 +938,28 @@
       "listening_speaking": [
         {
           "text": "I'd like some coffee, please.",
-          "context": "polite + uncountable"
+          "context": "polite + uncountable",
+          "audio_url": "https://fnvjibzreepubageztoi.supabase.co/storage/v1/object/public/curriculum-audio/ls/b9a0c9ad6b3c0988.flac"
         },
         {
           "text": "Do you have any cookies?",
-          "context": "question + countable plural"
+          "context": "question + countable plural",
+          "audio_url": "https://fnvjibzreepubageztoi.supabase.co/storage/v1/object/public/curriculum-audio/ls/d89354c92feafd5d.flac"
         },
         {
           "text": "How much is the sandwich?",
-          "context": "price chunk"
+          "context": "price chunk",
+          "audio_url": "https://fnvjibzreepubageztoi.supabase.co/storage/v1/object/public/curriculum-audio/ls/ad8ee10aa267835d.flac"
         },
         {
           "text": "There are some eggs in the fridge.",
-          "context": "affirmative + plural"
+          "context": "affirmative + plural",
+          "audio_url": "https://fnvjibzreepubageztoi.supabase.co/storage/v1/object/public/curriculum-audio/ls/07fa7bc59c78639c.flac"
         },
         {
           "text": "Can I have a glass of water?",
-          "context": "drink + unit chunk"
+          "context": "drink + unit chunk",
+          "audio_url": "https://fnvjibzreepubageztoi.supabase.co/storage/v1/object/public/curriculum-audio/ls/3f077323fe633f11.flac"
         }
       ],
       "roleplay": {

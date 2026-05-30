@@ -1,0 +1,1044 @@
+{
+  "id": "M13",
+  "title": "O melhor de tudo",
+  "level": "Novice",
+  "block": "A2",
+  "units_range": "N01–N05",
+  "theme": "Superlativos e ordinais — destacar o melhor, o pior, o primeiro",
+  "goal": "Aluno sai sabendo usar superlativos (-est, the most), irregulares (best/worst) e ordinais (first/second/third) pra rankings e destaques.",
+  "connects_to": "M14 (Onde estive ontem) — depois de destacar o melhor, fala do passado com was/were.",
+  "module_chunks": [
+    "the + adj-est (the tallest, the biggest, the easiest)",
+    "the most + long adj (the most expensive, the most interesting)",
+    "the best / the worst (irregular)",
+    "the most/the least + adj",
+    "first, second, third, fourth, fifth, tenth, twentieth, last",
+    "in the world / in my class / in my family",
+    "ever (best ever, worst ever)",
+    "of all / by far the + superlative"
+  ],
+  "units": [
+    {
+      "id": "N01",
+      "title": "O mais alto, o maior",
+      "sub_cefr": "A2",
+      "grammar_focus": "Superlatives with short adjectives (the -est)",
+      "markers": [
+        "denso"
+      ],
+      "real_life_context": "Você destaca o mais alto, o maior, o mais barato da família, da turma, do bairro.",
+      "grammar": [
+        {
+          "type": "multiple_choice",
+          "sentence": "He is _____ in our class.",
+          "options": [
+            "the tallest",
+            "tallest",
+            "more tall"
+          ],
+          "answer": "the tallest",
+          "explanation": "Superlativo curto: \"the + adj-est\". \"The tallest\" — destaca o máximo entre um grupo."
+        },
+        {
+          "type": "multiple_choice",
+          "sentence": "This is _____ phone in the store.",
+          "options": [
+            "the cheapest",
+            "cheapest",
+            "the more cheap"
+          ],
+          "answer": "the cheapest",
+          "explanation": "\"Cheap\" → \"the cheapest\". Sempre \"the\" antes do superlativo."
+        },
+        {
+          "type": "word_bank",
+          "sentence": "She is _____ in her family.",
+          "choices": [
+            "the youngest",
+            "youngest",
+            "more young",
+            "younger"
+          ],
+          "answer": "the youngest",
+          "explanation": "\"Young\" → \"youngest\" (regular). \"The youngest\" = a mais nova."
+        },
+        {
+          "type": "word_bank",
+          "sentence": "Today is _____ day of the year.",
+          "choices": [
+            "the hottest",
+            "hottest",
+            "more hot",
+            "hotter"
+          ],
+          "answer": "the hottest",
+          "explanation": "\"Hot\" → \"hottest\" (dobra o t). \"The hottest day\"."
+        },
+        {
+          "type": "fill_gap",
+          "sentence": "She is _____ in the team.",
+          "hint": "Superlativo de \"fast\"",
+          "answer": "the fastest",
+          "explanation": "\"Fast\" → \"fastest\". \"The fastest\" = a mais rápida."
+        },
+        {
+          "type": "fill_gap",
+          "sentence": "This is _____ exam of the semester.",
+          "hint": "Superlativo de \"easy\"",
+          "answer": "the easiest",
+          "explanation": "\"Easy\" → \"easiest\" (y → iest). \"The easiest exam\"."
+        },
+        {
+          "type": "fill_gap",
+          "sentence": "São Paulo is _____ city in Brazil.",
+          "hint": "Superlativo de \"big\"",
+          "answer": "the biggest",
+          "explanation": "\"Big\" → \"biggest\" (dobra o g). \"The biggest city in Brazil\"."
+        },
+        {
+          "type": "fix_error",
+          "sentence": "He is tallest in our class.",
+          "hint": "Falta artigo",
+          "answer": "He is the tallest in our class.",
+          "explanation": "Superlativo SEMPRE com \"the\": \"THE tallest\". Sem \"the\" é erro comum."
+        },
+        {
+          "type": "fix_error",
+          "sentence": "She is the most short.",
+          "hint": "Short é curto, usa -est",
+          "answer": "She is the shortest.",
+          "explanation": "\"Short\" (1 sílaba) → \"the shortest\" (com -est). Não \"the most short\" (que seria pra long adj)."
+        },
+        {
+          "type": "read_answer",
+          "passage": "My brother is the tallest in our family. My sister is the youngest. I'm the oldest. We all live in the biggest house on the street.",
+          "question": "Who is the tallest?",
+          "answer": "my brother",
+          "explanation": "The text says \"My brother is the tallest\"."
+        }
+      ],
+      "listening_speaking": [
+        {
+          "text": "He is the tallest.",
+          "context": "tallest",
+          "audio_url": "https://fnvjibzreepubageztoi.supabase.co/storage/v1/object/public/curriculum-audio/ls/6eef4dfe96db2765.flac"
+        },
+        {
+          "text": "She is the youngest in the family.",
+          "context": "youngest",
+          "audio_url": "https://fnvjibzreepubageztoi.supabase.co/storage/v1/object/public/curriculum-audio/ls/96ba8c108d8b9a83.flac"
+        },
+        {
+          "text": "Today is the hottest day.",
+          "context": "hottest",
+          "audio_url": "https://fnvjibzreepubageztoi.supabase.co/storage/v1/object/public/curriculum-audio/ls/1a7f1036d029b257.flac"
+        },
+        {
+          "text": "This is the cheapest option.",
+          "context": "cheapest",
+          "audio_url": "https://fnvjibzreepubageztoi.supabase.co/storage/v1/object/public/curriculum-audio/ls/e629a2c6482aa8d3.flac"
+        },
+        {
+          "text": "São Paulo is the biggest city in Brazil.",
+          "context": "biggest",
+          "audio_url": "https://fnvjibzreepubageztoi.supabase.co/storage/v1/object/public/curriculum-audio/ls/4c5d3baa78301693.flac"
+        }
+      ],
+      "roleplay": {
+        "scenario": "Charlotte pede pra você destacar O máximo de coisas — da família, cidade, time.",
+        "voiced_by": "charlotte",
+        "persona": "Charlotte",
+        "persona_outfit": "charlotte_casual",
+        "time_budget_sec": 90,
+        "opening_line": "Who's the tallest in your family?",
+        "objectives": [
+          {
+            "id": 1,
+            "label_pt": "Destacar o mais alto/jovem/velho da família",
+            "label_en": "Highlight a family superlative",
+            "hidden_prompt": "user uses 'the + short adj-est + in/of + family/group'",
+            "hint_pt": "My brother is the tallest.",
+            "hint_en": "My brother is the tallest."
+          },
+          {
+            "id": 2,
+            "label_pt": "Destacar o maior/mais barato/mais quente de um grupo",
+            "label_en": "Highlight another superlative",
+            "hidden_prompt": "user uses 'the + adj-est + in/of + group'",
+            "hint_pt": "This is the cheapest store.",
+            "hint_en": "This is the cheapest store."
+          },
+          {
+            "id": 3,
+            "label_pt": "Mais um superlativo curto",
+            "label_en": "One more short superlative",
+            "hidden_prompt": "user uses another 'the + adj-est' construction",
+            "hint_pt": "It's the hottest day of the year.",
+            "hint_en": "It's the hottest day of the year."
+          }
+        ],
+        "closing_cue": "Charlotte fecha com \"Strong superlatives!\" quando obj_3 baterem.",
+        "suggested_flow": "**Suggested flow** (referencial, 6 turnos):\n\n1. **Charlotte**: \"Who's the tallest in your family?\"\n2. **Student**: ~\"My brother is the tallest.\"\n3. **Charlotte**: \"Cheapest store you know?\"\n4. **Student**: ~\"This is the cheapest store.\"\n5. **Charlotte**: \"Hottest day this year?\"\n6. **Student**: ~\"It's the hottest day of the year.\"\n7. **Charlotte**: \"Strong superlatives!\"",
+        "evaluation_focus": [
+          "\"The + adj-est\" sempre",
+          "Spelling (biggest, hottest, easiest)",
+          "Concordância com grupo"
+        ]
+      },
+      "guided_chat": {
+        "scenario": "Charlotte conversa sobre rankings pessoais.",
+        "voiced_by": "charlotte",
+        "persona": "Charlotte",
+        "persona_outfit": "charlotte_casual",
+        "intro_pt": "Charlotte explora rankings na sua vida. Pratica 'the + adj-est'.",
+        "opening_message": "Tell me three superlatives about your world.",
+        "objectives": [
+          {
+            "id": 1,
+            "label_pt": "Primeiro superlativo curto",
+            "label_en": "First short superlative",
+            "hidden_prompt": "user uses 'the + adj-est'",
+            "hint_pt": "I'm the oldest in my family.",
+            "hint_en": "I'm the oldest in my family."
+          },
+          {
+            "id": 2,
+            "label_pt": "Segundo superlativo curto",
+            "label_en": "Second short superlative",
+            "hidden_prompt": "user uses another 'the + adj-est'",
+            "hint_pt": "São Paulo is the biggest city.",
+            "hint_en": "São Paulo is the biggest city."
+          },
+          {
+            "id": 3,
+            "label_pt": "Perguntar à Charlotte",
+            "label_en": "Ask Charlotte",
+            "hidden_prompt": "user asks 'How about you?'",
+            "hint_pt": "How about you?",
+            "hint_en": "How about you?"
+          }
+        ],
+        "closing_cue": "Charlotte encerra com \"Top of the list!\" quando obj_3 baterem.",
+        "suggested_script": "**Script** (referencial, 7 turnos):\n\n1. **Charlotte**: \"Tell me three superlatives about your world.\"\n2. **Student**: \"I'm the oldest in my family.\"\n3. **Charlotte**: \"Big sibling energy. City?\"\n4. **Student**: \"São Paulo is the biggest city.\"\n5. **Charlotte**: \"Massive.\"\n6. **Student**: \"How about you?\"\n7. **Charlotte**: \"NYC is the busiest. Top of the list!\"\n\n> N01 chat = LLM puro.\n\n---"
+      }
+    },
+    {
+      "id": "N02",
+      "title": "O mais interessante",
+      "sub_cefr": "A2",
+      "grammar_focus": "Superlatives with long adjectives (the most + adj)",
+      "markers": [],
+      "real_life_context": "Você destaca o mais interessante, mais caro, mais bonito de uma lista ou categoria.",
+      "grammar": [
+        {
+          "type": "multiple_choice",
+          "sentence": "This is _____ movie I've seen.",
+          "options": [
+            "the most interesting",
+            "the interestingest",
+            "most interesting"
+          ],
+          "answer": "the most interesting",
+          "explanation": "Adjetivo longo → \"the most + adj\". \"The most interesting\", não \"interestingest\"."
+        },
+        {
+          "type": "multiple_choice",
+          "sentence": "She is _____ person in the room.",
+          "options": [
+            "the most beautiful",
+            "the beautifulest",
+            "most beautiful"
+          ],
+          "answer": "the most beautiful",
+          "explanation": "\"Beautiful\" → \"the most beautiful\". Long adj sempre com \"most\"."
+        },
+        {
+          "type": "word_bank",
+          "sentence": "Paris is _____ city.",
+          "choices": [
+            "the most expensive",
+            "most expensive",
+            "the expensivest",
+            "expensiver"
+          ],
+          "answer": "the most expensive",
+          "explanation": "\"Expensive\" → \"the most expensive\". Sempre com \"the\" e \"most\"."
+        },
+        {
+          "type": "word_bank",
+          "sentence": "This is _____ problem of all.",
+          "choices": [
+            "the most difficult",
+            "the difficultest",
+            "most difficult",
+            "difficulter"
+          ],
+          "answer": "the most difficult",
+          "explanation": "\"Difficult\" (3 sílabas) → \"the most difficult\"."
+        },
+        {
+          "type": "fill_gap",
+          "sentence": "She is _____ teacher in the school.",
+          "hint": "Superlativo longo de \"patient\"",
+          "answer": "the most patient",
+          "explanation": "\"Patient\" → \"the most patient\" (2 sílabas+, usa \"most\")."
+        },
+        {
+          "type": "fill_gap",
+          "sentence": "It's _____ topic of the year.",
+          "hint": "Superlativo longo de \"popular\"",
+          "answer": "the most popular",
+          "explanation": "\"Popular\" → \"the most popular\". Sempre \"most\" antes de adj longo."
+        },
+        {
+          "type": "fill_gap",
+          "sentence": "This is _____ book I've ever read.",
+          "hint": "Superlativo longo de \"boring\"",
+          "answer": "the most boring",
+          "explanation": "\"Boring\" (2 sílabas) → \"the most boring\"."
+        },
+        {
+          "type": "fix_error",
+          "sentence": "He is the interestingest person.",
+          "hint": "\"Interesting\" é longo",
+          "answer": "He is the most interesting person.",
+          "explanation": "\"Interestingest\" não existe. Sempre \"the most interesting\" pra adj longo."
+        },
+        {
+          "type": "fix_error",
+          "sentence": "She is most beautiful.",
+          "hint": "Falta \"the\"",
+          "answer": "She is the most beautiful.",
+          "explanation": "Superlativo sempre com \"THE\": \"the most beautiful\". Sem \"the\" é erro."
+        },
+        {
+          "type": "read_answer",
+          "passage": "This is the most expensive restaurant in town. The food is the most delicious I've had. The service is also the most professional.",
+          "question": "How is the service?",
+          "answer": "the most professional",
+          "explanation": "The text says \"The service is also the most professional\"."
+        }
+      ],
+      "listening_speaking": [
+        {
+          "text": "This is the most interesting book.",
+          "context": "long superlative",
+          "audio_url": "https://fnvjibzreepubageztoi.supabase.co/storage/v1/object/public/curriculum-audio/ls/83f136b47a5206da.flac"
+        },
+        {
+          "text": "She is the most beautiful person.",
+          "context": "beauty superlative",
+          "audio_url": "https://fnvjibzreepubageztoi.supabase.co/storage/v1/object/public/curriculum-audio/ls/3f8e620ef610f5f3.flac"
+        },
+        {
+          "text": "Paris is the most expensive city.",
+          "context": "price superlative",
+          "audio_url": "https://fnvjibzreepubageztoi.supabase.co/storage/v1/object/public/curriculum-audio/ls/f6199a278293a01e.flac"
+        },
+        {
+          "text": "He is the most patient teacher.",
+          "context": "quality superlative",
+          "audio_url": "https://fnvjibzreepubageztoi.supabase.co/storage/v1/object/public/curriculum-audio/ls/badfd08f25905e18.flac"
+        },
+        {
+          "text": "It's the most boring movie.",
+          "context": "opinion superlative",
+          "audio_url": "https://fnvjibzreepubageztoi.supabase.co/storage/v1/object/public/curriculum-audio/ls/86104be9363716ec.flac"
+        }
+      ],
+      "roleplay": {
+        "scenario": "Charlotte pede superlativos com adjetivos longos — opiniões fortes.",
+        "voiced_by": "charlotte",
+        "persona": "Charlotte",
+        "persona_outfit": "charlotte_casual",
+        "time_budget_sec": 90,
+        "opening_line": "What's the most interesting thing you've done?",
+        "objectives": [
+          {
+            "id": 1,
+            "label_pt": "Dizer 'the most interesting + noun'",
+            "label_en": "Say 'the most interesting'",
+            "hidden_prompt": "user uses 'the most interesting + noun'",
+            "hint_pt": "Yoga is the most interesting hobby.",
+            "hint_en": "Yoga is the most interesting hobby."
+          },
+          {
+            "id": 2,
+            "label_pt": "Dizer 'the most expensive/beautiful + algo'",
+            "label_en": "Say 'the most expensive/beautiful'",
+            "hidden_prompt": "user uses 'the most + long adj + noun'",
+            "hint_pt": "Rome is the most beautiful city.",
+            "hint_en": "Rome is the most beautiful city."
+          },
+          {
+            "id": 3,
+            "label_pt": "Terceiro superlativo longo",
+            "label_en": "Third long superlative",
+            "hidden_prompt": "user uses another 'the most + long adj'",
+            "hint_pt": "She is the most patient person.",
+            "hint_en": "She is the most patient person."
+          }
+        ],
+        "closing_cue": "Charlotte fecha com \"Big opinions!\" quando obj_3 baterem.",
+        "suggested_flow": "**Suggested flow** (referencial, 6 turnos):\n\n1. **Charlotte**: \"What's the most interesting thing you've done?\"\n2. **Student**: ~\"Yoga is the most interesting hobby.\"\n3. **Charlotte**: \"Most beautiful place?\"\n4. **Student**: ~\"Rome is the most beautiful city.\"\n5. **Charlotte**: \"Most patient person you know?\"\n6. **Student**: ~\"She is the most patient person.\"\n7. **Charlotte**: \"Big opinions!\"",
+        "evaluation_focus": [
+          "\"The most + long adj\" sempre",
+          "Sem -est em longos",
+          "\"The\" obrigatório"
+        ]
+      },
+      "guided_chat": {
+        "scenario": "Charlotte conversa sobre extremos pessoais.",
+        "voiced_by": "charlotte",
+        "persona": "Charlotte",
+        "persona_outfit": "charlotte_casual",
+        "intro_pt": "Charlotte explora os 'mais' da sua vida. Pratica 'the most + long adj'.",
+        "opening_message": "What's the most expensive thing you own?",
+        "objectives": [
+          {
+            "id": 1,
+            "label_pt": "Responder sobre 'most expensive'",
+            "label_en": "Answer about 'most expensive'",
+            "hidden_prompt": "user says 'My + thing + is the most expensive'",
+            "hint_pt": "My phone is the most expensive.",
+            "hint_en": "My phone is the most expensive."
+          },
+          {
+            "id": 2,
+            "label_pt": "Dizer outro superlativo longo",
+            "label_en": "Say another long superlative",
+            "hidden_prompt": "user uses 'the most + long adj'",
+            "hint_pt": "Travel is the most exciting thing.",
+            "hint_en": "Travel is the most exciting thing."
+          },
+          {
+            "id": 3,
+            "label_pt": "Perguntar à Charlotte",
+            "label_en": "Ask Charlotte",
+            "hidden_prompt": "user asks 'How about you?'",
+            "hint_pt": "How about you?",
+            "hint_en": "How about you?"
+          }
+        ],
+        "closing_cue": "Charlotte encerra com \"Big league answers!\" quando obj_3 baterem.",
+        "suggested_script": "**Script** (referencial, 7 turnos):\n\n1. **Charlotte**: \"What's the most expensive thing you own?\"\n2. **Student**: \"My phone is the most expensive.\"\n3. **Charlotte**: \"Common one. Exciting?\"\n4. **Student**: \"Travel is the most exciting thing.\"\n5. **Charlotte**: \"Same.\"\n6. **Student**: \"How about you?\"\n7. **Charlotte**: \"Books are the most precious to me. Big league answers!\"\n\n> N02 chat = LLM puro.\n\n---"
+      }
+    },
+    {
+      "id": "N03",
+      "title": "O melhor, o pior",
+      "sub_cefr": "A2",
+      "grammar_focus": "Irregular superlatives (the best, the worst, the most/least)",
+      "markers": [
+        "denso"
+      ],
+      "real_life_context": "Você destaca o melhor e o pior em listas de favoritos.",
+      "grammar": [
+        {
+          "type": "multiple_choice",
+          "sentence": "This is _____ coffee in town.",
+          "options": [
+            "the best",
+            "the goodest",
+            "the more good"
+          ],
+          "answer": "the best",
+          "explanation": "\"Good\" → \"the best\" (irregular). Não \"goodest\" nem \"more good\"."
+        },
+        {
+          "type": "multiple_choice",
+          "sentence": "Today is _____ day of the week.",
+          "options": [
+            "the worst",
+            "the baddest",
+            "the more bad"
+          ],
+          "answer": "the worst",
+          "explanation": "\"Bad\" → \"the worst\" (irregular). Memorizar: bad/worse/worst."
+        },
+        {
+          "type": "word_bank",
+          "sentence": "She is _____ player in the team.",
+          "choices": [
+            "the best",
+            "the goodest",
+            "best",
+            "most good"
+          ],
+          "answer": "the best",
+          "explanation": "\"The best\" — irregular superlativo de \"good\". Sempre com \"the\"."
+        },
+        {
+          "type": "word_bank",
+          "sentence": "This is _____ movie I've ever seen.",
+          "choices": [
+            "the worst",
+            "the most bad",
+            "the baddest",
+            "worst"
+          ],
+          "answer": "the worst",
+          "explanation": "\"The worst\" — irregular superlativo de \"bad\"."
+        },
+        {
+          "type": "fill_gap",
+          "sentence": "He is _____ teacher in the school.",
+          "hint": "Irregular superlativo de \"good\"",
+          "answer": "the best",
+          "explanation": "\"The best\" — superlativo de \"good\". Decora a lista: good/better/best."
+        },
+        {
+          "type": "fill_gap",
+          "sentence": "It's _____ thing about Mondays.",
+          "hint": "Irregular superlativo de \"bad\"",
+          "answer": "the worst",
+          "explanation": "\"The worst\" — superlativo de \"bad\". Lista: bad/worse/worst."
+        },
+        {
+          "type": "fill_gap",
+          "sentence": "She has _____ ideas of all.",
+          "hint": "Quantidade máxima (mais)",
+          "answer": "the most",
+          "explanation": "\"The most ideas\" = mais ideias. \"The most + noun\" pra quantidades."
+        },
+        {
+          "type": "fix_error",
+          "sentence": "This is the goodest restaurant.",
+          "hint": "Good é irregular",
+          "answer": "This is the best restaurant.",
+          "explanation": "\"Goodest\" não existe. Irregular: \"the best\"."
+        },
+        {
+          "type": "fix_error",
+          "sentence": "Today is the more bad day.",
+          "hint": "Bad é irregular",
+          "answer": "Today is the worst day.",
+          "explanation": "\"Bad\" → \"the worst\" (irregular). Não \"more bad\" nem \"baddest\"."
+        },
+        {
+          "type": "read_answer",
+          "passage": "Ana is the best singer in our class. Lucas is the worst at math but the best at art. We all agree — she has the most talent.",
+          "question": "Who is the best at art?",
+          "answer": "Lucas",
+          "explanation": "The text says \"Lucas is... the best at art\"."
+        }
+      ],
+      "listening_speaking": [
+        {
+          "text": "This is the best coffee.",
+          "context": "best",
+          "audio_url": "https://fnvjibzreepubageztoi.supabase.co/storage/v1/object/public/curriculum-audio/ls/904a447958c8dac9.flac"
+        },
+        {
+          "text": "Today is the worst day.",
+          "context": "worst",
+          "audio_url": "https://fnvjibzreepubageztoi.supabase.co/storage/v1/object/public/curriculum-audio/ls/404ed1a2582f0d8f.flac"
+        },
+        {
+          "text": "She is the best player.",
+          "context": "best person",
+          "audio_url": "https://fnvjibzreepubageztoi.supabase.co/storage/v1/object/public/curriculum-audio/ls/c4c4884f6190bdc0.flac"
+        },
+        {
+          "text": "He has the most friends.",
+          "context": "most + noun",
+          "audio_url": "https://fnvjibzreepubageztoi.supabase.co/storage/v1/object/public/curriculum-audio/ls/0436b804833a6bcc.flac"
+        },
+        {
+          "text": "It's the best ever!",
+          "context": "ever intensifier",
+          "audio_url": "https://fnvjibzreepubageztoi.supabase.co/storage/v1/object/public/curriculum-audio/ls/1ed22c49df60dcf5.flac"
+        }
+      ],
+      "roleplay": {
+        "scenario": "Charlotte pede destaques — o melhor e o pior da sua vida ou cidade.",
+        "voiced_by": "charlotte",
+        "persona": "Charlotte",
+        "persona_outfit": "charlotte_casual",
+        "time_budget_sec": 90,
+        "opening_line": "Best and worst — give me yours!",
+        "objectives": [
+          {
+            "id": 1,
+            "label_pt": "Dizer o melhor de algo (the best)",
+            "label_en": "Say the best of something",
+            "hidden_prompt": "user uses 'the best + noun' or 'X is the best'",
+            "hint_pt": "This is the best pizza in town.",
+            "hint_en": "This is the best pizza in town."
+          },
+          {
+            "id": 2,
+            "label_pt": "Dizer o pior (the worst)",
+            "label_en": "Say the worst",
+            "hidden_prompt": "user uses 'the worst + noun' or 'X is the worst'",
+            "hint_pt": "Mondays are the worst.",
+            "hint_en": "Mondays are the worst."
+          },
+          {
+            "id": 3,
+            "label_pt": "Dizer 'the most' de algo",
+            "label_en": "Say 'the most' of something",
+            "hidden_prompt": "user uses 'the most + noun'",
+            "hint_pt": "She has the most talent.",
+            "hint_en": "She has the most talent."
+          }
+        ],
+        "closing_cue": "Charlotte fecha com \"Strong picks!\" quando obj_3 baterem.",
+        "suggested_flow": "**Suggested flow** (referencial, 6 turnos):\n\n1. **Charlotte**: \"Best and worst — give me yours!\"\n2. **Student**: ~\"This is the best pizza in town.\"\n3. **Charlotte**: \"Worst day?\"\n4. **Student**: ~\"Mondays are the worst.\"\n5. **Charlotte**: \"Most talented person?\"\n6. **Student**: ~\"She has the most talent.\"\n7. **Charlotte**: \"Strong picks!\"",
+        "evaluation_focus": [
+          "\"The best/worst/most\" irregulares",
+          "Sempre com \"the\"",
+          "Sem \"goodest/baddest\""
+        ]
+      },
+      "guided_chat": {
+        "scenario": "Charlotte conversa sobre rankings de favoritos e piores.",
+        "voiced_by": "charlotte",
+        "persona": "Charlotte",
+        "persona_outfit": "charlotte_casual",
+        "intro_pt": "Charlotte abre chat sobre favoritos e piores. Pratica irregulares de superlativo.",
+        "opening_message": "Best meal you've had this month?",
+        "objectives": [
+          {
+            "id": 1,
+            "label_pt": "Dizer a melhor refeição",
+            "label_en": "Say best meal",
+            "hidden_prompt": "user says 'The best meal was + X' or 'X is the best meal'",
+            "hint_pt": "The best meal was pasta.",
+            "hint_en": "The best meal was pasta."
+          },
+          {
+            "id": 2,
+            "label_pt": "Dizer a pior experiência",
+            "label_en": "Say the worst experience",
+            "hidden_prompt": "user uses 'the worst + noun'",
+            "hint_pt": "The worst day was Monday.",
+            "hint_en": "The worst day was Monday."
+          },
+          {
+            "id": 3,
+            "label_pt": "Perguntar à Charlotte",
+            "label_en": "Ask Charlotte",
+            "hidden_prompt": "user asks 'How about you?'",
+            "hint_pt": "How about you?",
+            "hint_en": "How about you?"
+          }
+        ],
+        "closing_cue": "Charlotte encerra com \"Bests and worsts done!\" quando obj_3 baterem.",
+        "suggested_script": "**Script** (referencial, 7 turnos):\n\n1. **Charlotte**: \"Best meal you've had this month?\"\n2. **Student**: \"The best meal was pasta.\"\n3. **Charlotte**: \"Italian style.\"\n4. **Student**: \"The worst day was Monday.\"\n5. **Charlotte**: \"Always.\"\n6. **Student**: \"How about you?\"\n7. **Charlotte**: \"Best was sushi, worst was rainy Tuesday. Bests and worsts done!\"\n\n> N03 chat = LLM puro.\n\n---"
+      }
+    },
+    {
+      "id": "N04",
+      "title": "Primeiro, segundo, terceiro",
+      "sub_cefr": "A2",
+      "grammar_focus": "Ordinals (first, second, third...)",
+      "markers": [],
+      "real_life_context": "Você ordena coisas em sequência — andares, posições, datas, listas.",
+      "grammar": [
+        {
+          "type": "multiple_choice",
+          "sentence": "I live on the _____ floor.",
+          "options": [
+            "third",
+            "three",
+            "threeth"
+          ],
+          "answer": "third",
+          "explanation": "Ordinais têm formas especiais: 3 = \"three\", 3rd = \"third\" (não \"threeth\"). Decorar: 1st first, 2nd second, 3rd third."
+        },
+        {
+          "type": "multiple_choice",
+          "sentence": "She came in _____ place.",
+          "options": [
+            "first",
+            "one",
+            "oneth"
+          ],
+          "answer": "first",
+          "explanation": "1 = \"one\", 1st = \"first\". Forma especial. \"First place\" = primeiro lugar."
+        },
+        {
+          "type": "word_bank",
+          "sentence": "It's my _____ time visiting Brazil.",
+          "choices": [
+            "second",
+            "two",
+            "twoth",
+            "twoeth"
+          ],
+          "answer": "second",
+          "explanation": "2nd = \"second\" (forma única). Não \"twoth\"."
+        },
+        {
+          "type": "word_bank",
+          "sentence": "The party is on the _____ of December.",
+          "choices": [
+            "twenty-fifth",
+            "twenty-five",
+            "twentyfive",
+            "twenty-fifth-th"
+          ],
+          "answer": "twenty-fifth",
+          "explanation": "25th = \"twenty-fifth\". Compostos seguem padrão: 5 + th = fifth (não fifteenth). Datas usam ordinais."
+        },
+        {
+          "type": "fill_gap",
+          "sentence": "I live on the _____ floor.",
+          "hint": "Ordinal de 5",
+          "answer": "fifth",
+          "explanation": "5th = \"fifth\" (forma irregular). Note: \"fifteenth\" é 15th."
+        },
+        {
+          "type": "fill_gap",
+          "sentence": "January is the _____ month of the year.",
+          "hint": "Ordinal de 1",
+          "answer": "first",
+          "explanation": "1st = \"first\". Janeiro é o primeiro mês."
+        },
+        {
+          "type": "fill_gap",
+          "sentence": "She is in her _____ year of university.",
+          "hint": "Ordinal de 4",
+          "answer": "fourth",
+          "explanation": "4th = \"fourth\". Note: \"four\" → \"fourth\" (adiciona -th)."
+        },
+        {
+          "type": "fix_error",
+          "sentence": "I came in oneth place.",
+          "hint": "\"One\" tem ordinal especial",
+          "answer": "I came in first place.",
+          "explanation": "1 = \"one\", 1st = \"first\" (especial, não \"oneth\"). Memorize."
+        },
+        {
+          "type": "fix_error",
+          "sentence": "My birthday is on the threeth.",
+          "hint": "\"Three\" tem ordinal especial",
+          "answer": "My birthday is on the third.",
+          "explanation": "3rd = \"third\" (não \"threeth\"). Forma única."
+        },
+        {
+          "type": "read_answer",
+          "passage": "I live on the second floor. My birthday is on the fourth of July. This is my first time in NYC.",
+          "question": "When is the birthday?",
+          "answer": "the fourth of July (or \"July 4\")",
+          "explanation": "The text says \"My birthday is on the fourth of July\"."
+        }
+      ],
+      "listening_speaking": [
+        {
+          "text": "I live on the third floor.",
+          "context": "floor",
+          "audio_url": "https://fnvjibzreepubageztoi.supabase.co/storage/v1/object/public/curriculum-audio/ls/5f29bced412799ad.flac"
+        },
+        {
+          "text": "It's my first time here.",
+          "context": "first time chunk",
+          "audio_url": "https://fnvjibzreepubageztoi.supabase.co/storage/v1/object/public/curriculum-audio/ls/6679c8451b8e28db.flac"
+        },
+        {
+          "text": "She came in second place.",
+          "context": "ranking",
+          "audio_url": "https://fnvjibzreepubageztoi.supabase.co/storage/v1/object/public/curriculum-audio/ls/77fcd780fd3da5ff.flac"
+        },
+        {
+          "text": "My birthday is on the fifteenth.",
+          "context": "date",
+          "audio_url": "https://fnvjibzreepubageztoi.supabase.co/storage/v1/object/public/curriculum-audio/ls/c90ce4f0eaee7633.flac"
+        },
+        {
+          "text": "It's the twenty-first century.",
+          "context": "twenty-first",
+          "audio_url": "https://fnvjibzreepubageztoi.supabase.co/storage/v1/object/public/curriculum-audio/ls/12890dad4d9a29f4.flac"
+        }
+      ],
+      "roleplay": {
+        "scenario": "Charlotte pergunta posições, andares e datas — você usa ordinais.",
+        "voiced_by": "charlotte",
+        "persona": "Charlotte",
+        "persona_outfit": "charlotte_casual",
+        "time_budget_sec": 90,
+        "opening_line": "Tell me about a few orders — floor, time, date.",
+        "objectives": [
+          {
+            "id": 1,
+            "label_pt": "Dizer em que andar você mora (ordinal)",
+            "label_en": "Say your floor",
+            "hidden_prompt": "user uses 'I live on the + ordinal + floor'",
+            "hint_pt": "I live on the third floor.",
+            "hint_en": "I live on the third floor."
+          },
+          {
+            "id": 2,
+            "label_pt": "Dizer 'é minha primeira/segunda vez fazendo algo'",
+            "label_en": "Say 'first/second time...'",
+            "hidden_prompt": "user uses 'It's my + ordinal + time + verb-ing'",
+            "hint_pt": "It's my first time visiting.",
+            "hint_en": "It's my first time visiting."
+          },
+          {
+            "id": 3,
+            "label_pt": "Dizer uma data ou aniversário",
+            "label_en": "Say a date",
+            "hidden_prompt": "user uses 'on the + ordinal + of + month' for a date",
+            "hint_pt": "My birthday is on the fifteenth.",
+            "hint_en": "My birthday is on the fifteenth."
+          }
+        ],
+        "closing_cue": "Charlotte fecha com \"Ordered!\" quando obj_3 baterem.",
+        "suggested_flow": "**Suggested flow** (referencial, 6 turnos):\n\n1. **Charlotte**: \"Tell me about a few orders — floor, time, date.\"\n2. **Student**: ~\"I live on the third floor.\"\n3. **Charlotte**: \"First time doing something cool?\"\n4. **Student**: ~\"It's my first time visiting.\"\n5. **Charlotte**: \"A date?\"\n6. **Student**: ~\"My birthday is on the fifteenth.\"\n7. **Charlotte**: \"Ordered!\"",
+        "evaluation_focus": [
+          "Formas especiais (first, second, third)",
+          "-th regular (fourth, fifth, etc.)",
+          "Compostos com hífen"
+        ]
+      },
+      "guided_chat": {
+        "scenario": "Charlotte conversa sobre primeiros, segundos e ordens.",
+        "voiced_by": "charlotte",
+        "persona": "Charlotte",
+        "persona_outfit": "charlotte_casual",
+        "intro_pt": "Charlotte abre chat sobre ordens (primeiro, segundo, etc.). Pratica ordinais.",
+        "opening_message": "First time in Brazil?",
+        "objectives": [
+          {
+            "id": 1,
+            "label_pt": "Responder sobre 'primeira vez'",
+            "label_en": "Answer about 'first time'",
+            "hidden_prompt": "user uses 'It's my + ordinal + time' or 'No, second/third time'",
+            "hint_pt": "It's my first time.",
+            "hint_en": "It's my first time."
+          },
+          {
+            "id": 2,
+            "label_pt": "Dizer ordem de algo (segundo, terceiro)",
+            "label_en": "Say order of something",
+            "hidden_prompt": "user uses 'the + ordinal + noun'",
+            "hint_pt": "This is my second coffee.",
+            "hint_en": "This is my second coffee."
+          },
+          {
+            "id": 3,
+            "label_pt": "Perguntar à Charlotte",
+            "label_en": "Ask Charlotte",
+            "hidden_prompt": "user asks 'How about you?' or 'When is your...?'",
+            "hint_pt": "How about you?",
+            "hint_en": "How about you?"
+          }
+        ],
+        "closing_cue": "Charlotte encerra com \"Order achieved!\" quando obj_3 baterem.",
+        "suggested_script": "**Script** (referencial, 7 turnos):\n\n1. **Charlotte**: \"First time in Brazil?\"\n2. **Student**: \"It's my first time.\"\n3. **Charlotte**: \"Cool. Cup of coffee?\"\n4. **Student**: \"This is my second coffee.\"\n5. **Charlotte**: \"Caffeine fan.\"\n6. **Student**: \"How about you?\"\n7. **Charlotte**: \"Third coffee today. Order achieved!\"\n\n> N04 chat = LLM puro.\n\n---"
+      }
+    },
+    {
+      "id": "N05",
+      "title": "Rankings completos",
+      "sub_cefr": "A2",
+      "grammar_focus": "Integration M13 — superlatives + ordinals",
+      "markers": [],
+      "real_life_context": "Você ranqueia coisas da sua vida — melhores, piores e por ordem.",
+      "grammar": [
+        {
+          "type": "multiple_choice",
+          "sentence": "She is _____ in our team.",
+          "options": [
+            "the tallest",
+            "tallest",
+            "more tall"
+          ],
+          "answer": "the tallest",
+          "explanation": "Superlativo curto: \"the + adj-est\"."
+        },
+        {
+          "type": "multiple_choice",
+          "sentence": "This is _____ movie of the year.",
+          "options": [
+            "the most expensive",
+            "the expensivest",
+            "most expensive"
+          ],
+          "answer": "the most expensive",
+          "explanation": "Adjetivo longo: \"the most + adj\"."
+        },
+        {
+          "type": "word_bank",
+          "sentence": "He is _____ player on the team.",
+          "choices": [
+            "the best",
+            "the goodest",
+            "best",
+            "more good"
+          ],
+          "answer": "the best",
+          "explanation": "Irregular: \"the best\" (de good)."
+        },
+        {
+          "type": "word_bank",
+          "sentence": "Today is the _____ of June.",
+          "choices": [
+            "tenth",
+            "ten",
+            "tenthen",
+            "tenst"
+          ],
+          "answer": "tenth",
+          "explanation": "10th = \"tenth\". Datas usam ordinais."
+        },
+        {
+          "type": "fill_gap",
+          "sentence": "It's _____ time in NYC.",
+          "hint": "1st (ordinal de 1)",
+          "answer": "my first",
+          "explanation": "\"My first time in NYC\" — primeira visita. Ordinal especial."
+        },
+        {
+          "type": "fill_gap",
+          "sentence": "São Paulo is _____ city in Brazil.",
+          "hint": "Superlativo curto de \"big\"",
+          "answer": "the biggest",
+          "explanation": "\"Big\" → \"the biggest\" (dobra g)."
+        },
+        {
+          "type": "fill_gap",
+          "sentence": "She is _____ student in class.",
+          "hint": "Irregular superlativo de \"good\"",
+          "answer": "the best",
+          "explanation": "Good → the best (irregular)."
+        },
+        {
+          "type": "fix_error",
+          "sentence": "He is the most tall.",
+          "hint": "Tall é curto, usa -est",
+          "answer": "He is the tallest.",
+          "explanation": "Tall (1 sílaba) → -est, não \"most\"."
+        },
+        {
+          "type": "fix_error",
+          "sentence": "It's my oneth time.",
+          "hint": "1st é especial",
+          "answer": "It's my first time.",
+          "explanation": "1st = \"first\" (não \"oneth\"). Forma única."
+        },
+        {
+          "type": "read_answer",
+          "passage": "I live on the third floor. My building is the tallest in the neighborhood. This is the best apartment I've ever had. The view is the most beautiful.",
+          "question": "How is the view?",
+          "answer": "the most beautiful",
+          "explanation": "The text says \"The view is the most beautiful\"."
+        }
+      ],
+      "listening_speaking": [
+        {
+          "text": "She is the tallest in the team.",
+          "context": "short superlative",
+          "audio_url": "https://fnvjibzreepubageztoi.supabase.co/storage/v1/object/public/curriculum-audio/ls/20aeb6cbe228c868.flac"
+        },
+        {
+          "text": "This is the most expensive.",
+          "context": "long superlative",
+          "audio_url": "https://fnvjibzreepubageztoi.supabase.co/storage/v1/object/public/curriculum-audio/ls/95027bc53c6e45dd.flac"
+        },
+        {
+          "text": "He is the best player.",
+          "context": "irregular",
+          "audio_url": "https://fnvjibzreepubageztoi.supabase.co/storage/v1/object/public/curriculum-audio/ls/4e680da29038ec5a.flac"
+        },
+        {
+          "text": "I live on the third floor.",
+          "context": "ordinal",
+          "audio_url": "https://fnvjibzreepubageztoi.supabase.co/storage/v1/object/public/curriculum-audio/ls/5f29bced412799ad.flac"
+        },
+        {
+          "text": "It's my first time.",
+          "context": "ordinal chunk",
+          "audio_url": "https://fnvjibzreepubageztoi.supabase.co/storage/v1/object/public/curriculum-audio/ls/4f60805d90b85a02.flac"
+        }
+      ],
+      "roleplay": {
+        "scenario": "Charlotte pede três rankings — superlativo curto, longo, irregular ou ordinal.",
+        "voiced_by": "charlotte",
+        "persona": "Charlotte",
+        "persona_outfit": "charlotte_casual",
+        "time_budget_sec": 90,
+        "opening_line": "Three rankings — superlatives or ordinals, your pick!",
+        "objectives": [
+          {
+            "id": 1,
+            "label_pt": "Usar um superlativo curto",
+            "label_en": "Use short superlative",
+            "hidden_prompt": "user uses 'the + adj-est'",
+            "hint_pt": "My brother is the tallest.",
+            "hint_en": "My brother is the tallest."
+          },
+          {
+            "id": 2,
+            "label_pt": "Usar um superlativo longo ou irregular",
+            "label_en": "Use long or irregular superlative",
+            "hidden_prompt": "user uses 'the most + long adj' OR 'the best/worst'",
+            "hint_pt": "This is the best coffee.",
+            "hint_en": "This is the best coffee."
+          },
+          {
+            "id": 3,
+            "label_pt": "Usar um ordinal",
+            "label_en": "Use an ordinal",
+            "hidden_prompt": "user uses ordinal (first/second/third/etc.) in context",
+            "hint_pt": "It's my first time here.",
+            "hint_en": "It's my first time here."
+          }
+        ],
+        "closing_cue": "Charlotte fecha com \"Top tier rankings!\" quando obj_3 baterem.",
+        "suggested_flow": "**Suggested flow** (referencial, 6 turnos):\n\n1. **Charlotte**: \"Three rankings — superlatives or ordinals, your pick!\"\n2. **Student**: ~\"My brother is the tallest.\"\n3. **Charlotte**: \"Best?\"\n4. **Student**: ~\"This is the best coffee.\"\n5. **Charlotte**: \"Ordinal?\"\n6. **Student**: ~\"It's my first time here.\"\n7. **Charlotte**: \"Top tier rankings!\"",
+        "evaluation_focus": [
+          "Tipo correto por adjetivo",
+          "Ordinais especiais (first/second/third)",
+          "\"The\" sempre"
+        ]
+      },
+      "guided_chat": {
+        "scenario": "Charlotte conversa sobre os \"top\" e ordens da sua vida.",
+        "voiced_by": "charlotte",
+        "persona": "Charlotte",
+        "persona_outfit": "charlotte_casual",
+        "intro_pt": "Charlotte abre chat sobre rankings finais. Integra superlativo + ordinal.",
+        "opening_message": "Best thing this month? First time doing something?",
+        "objectives": [
+          {
+            "id": 1,
+            "label_pt": "Dizer 'o melhor' de algo",
+            "label_en": "Say 'the best'",
+            "hidden_prompt": "user uses 'the best + noun' or 'X is the best'",
+            "hint_pt": "The best trip was Italy.",
+            "hint_en": "The best trip was Italy."
+          },
+          {
+            "id": 2,
+            "label_pt": "Usar um ordinal",
+            "label_en": "Use an ordinal",
+            "hidden_prompt": "user uses ordinal (first/second/etc.)",
+            "hint_pt": "It's my first time skiing.",
+            "hint_en": "It's my first time skiing."
+          },
+          {
+            "id": 3,
+            "label_pt": "Perguntar à Charlotte",
+            "label_en": "Ask Charlotte",
+            "hidden_prompt": "user asks 'How about you?'",
+            "hint_pt": "How about you?",
+            "hint_en": "How about you?"
+          }
+        ],
+        "closing_cue": "Charlotte encerra com \"Mastered the rankings!\" quando obj_3 baterem.",
+        "suggested_script": "**Script** (referencial, 7 turnos):\n\n1. **Charlotte**: \"Best thing this month? First time doing something?\"\n2. **Student**: \"The best trip was Italy.\"\n3. **Charlotte**: \"Wow.\"\n4. **Student**: \"It's my first time skiing.\"\n5. **Charlotte**: \"Adventure!\"\n6. **Student**: \"How about you?\"\n7. **Charlotte**: \"Best book of the year — second time reading it. Mastered the rankings!\"\n\n> N05 chat = LLM puro.\n\n---"
+      }
+    }
+  ],
+  "cross_unit_consolidation": [
+    "Superlativos curtos: the tallest, the biggest, the easiest",
+    "Superlativos longos: the most expensive, the most interesting",
+    "Irregulares: the best, the worst, the most/least",
+    "Ordinais: first, second, third, fifth, twentieth",
+    "Sempre \"the\" antes do superlativo",
+    "Sem misturar \"the most tall\" ou \"the goodest\""
+  ]
+}
