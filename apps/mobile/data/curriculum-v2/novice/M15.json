@@ -1,0 +1,1015 @@
+{
+  "id": "M15",
+  "title": "O que fiz ontem",
+  "level": "Novice",
+  "block": "A2",
+  "units_range": "N01–N05",
+  "theme": "Passado simples — verbos regulares (-ed)",
+  "goal": "Aluno sai sabendo formar e pronunciar past simple regular (-ed com sons /t/, /d/, /id/) pra contar ações cotidianas passadas.",
+  "connects_to": "M16 (Histórias simples) — depois de verbos regulares, aprende os irregulares mais comuns.",
+  "module_chunks": [
+    "worked / played / watched / cleaned / called / opened",
+    "studied / cried / tried (y → ied)",
+    "stopped / planned (dobra consoante)",
+    "arrived / lived / liked (e + d)",
+    "pronúncia /t/ (worked, watched), /d/ (played, lived), /id/ (visited, wanted)",
+    "yesterday / last week / X ago",
+    "I worked / She worked (sem -s no passado)"
+  ],
+  "units": [
+    {
+      "id": "N01",
+      "title": "Trabalhei ontem",
+      "sub_cefr": "A2",
+      "grammar_focus": "Past simple regular -ed (basic)",
+      "markers": [
+        "denso"
+      ],
+      "real_life_context": "Você conta ações simples que fez ontem ou semana passada.",
+      "grammar": [
+        {
+          "type": "multiple_choice",
+          "sentence": "I _____ yesterday.",
+          "options": [
+            "worked",
+            "work",
+            "working"
+          ],
+          "answer": "worked",
+          "explanation": "Past simple regular: verbo + ed. \"Work\" → \"worked\"."
+        },
+        {
+          "type": "multiple_choice",
+          "sentence": "She _____ TV last night.",
+          "options": [
+            "watched",
+            "watch",
+            "watches"
+          ],
+          "answer": "watched",
+          "explanation": "\"Watch\" + ed = \"watched\" (note pronúncia /watcht/, terminação /t/)."
+        },
+        {
+          "type": "word_bank",
+          "sentence": "We _____ in the park.",
+          "choices": [
+            "played",
+            "play",
+            "playing",
+            "plays"
+          ],
+          "answer": "played",
+          "explanation": "\"Play\" → \"played\". Note: 3ª pessoa não muda no passado (\"She played\", \"He played\" — todos com -ed)."
+        },
+        {
+          "type": "word_bank",
+          "sentence": "He _____ his car.",
+          "choices": [
+            "cleaned",
+            "clean",
+            "cleaning",
+            "cleans"
+          ],
+          "answer": "cleaned",
+          "explanation": "\"Clean\" → \"cleaned\". Verbo regular + ed."
+        },
+        {
+          "type": "fill_gap",
+          "sentence": "I _____ my friend yesterday.",
+          "hint": "Passado de \"call\"",
+          "answer": "called",
+          "explanation": "\"Called\" — call + ed. Som /d/."
+        },
+        {
+          "type": "fill_gap",
+          "sentence": "They _____ the door.",
+          "hint": "Passado de \"open\"",
+          "answer": "opened",
+          "explanation": "\"Opened\" — open + ed."
+        },
+        {
+          "type": "fill_gap",
+          "sentence": "She _____ a lot last week.",
+          "hint": "Passado de \"study\" (y → ied)",
+          "answer": "studied",
+          "explanation": "Verbos em -y após consoante: y → ied. \"Study\" → \"studied\"."
+        },
+        {
+          "type": "fix_error",
+          "sentence": "She worked last night?",
+          "hint": "Past simple question needs auxiliar",
+          "answer": "Did she work last night?",
+          "explanation": "Past simple pergunta: \"Did + sujeito + verbo base\". \"Did she work?\", não \"She worked?\" (que é afirmativa)."
+        },
+        {
+          "type": "fix_error",
+          "sentence": "He studyed English.",
+          "hint": "y após consoante vira ied",
+          "answer": "He studied English.",
+          "explanation": "\"Study\" → \"studied\" (y → ied), não \"studyed\". Regra de spelling."
+        },
+        {
+          "type": "read_answer",
+          "passage": "Yesterday I worked all day. Then I watched a movie and called my sister. We played a game online.",
+          "question": "What did the speaker watch?",
+          "answer": "a movie",
+          "explanation": "The text says \"Then I watched a movie\"."
+        }
+      ],
+      "listening_speaking": [
+        {
+          "text": "I worked yesterday.",
+          "context": "basic -ed past"
+        },
+        {
+          "text": "She watched a movie.",
+          "context": "3rd person past"
+        },
+        {
+          "text": "We played in the park.",
+          "context": "plural past"
+        },
+        {
+          "text": "He cleaned his room.",
+          "context": "-ed pronunciation /d/"
+        },
+        {
+          "text": "I studied English last week.",
+          "context": "-ied irregular spelling"
+        }
+      ],
+      "roleplay": {
+        "scenario": "Charlotte pergunta o que você fez ontem usando past simple regular.",
+        "voiced_by": "charlotte",
+        "persona": "Charlotte",
+        "persona_outfit": "charlotte_casual",
+        "time_budget_sec": 90,
+        "opening_line": "What did you do yesterday?",
+        "objectives": [
+          {
+            "id": 1,
+            "label_pt": "Dizer uma ação que você fez ontem (verbo + ed)",
+            "label_en": "Say one thing you did",
+            "hidden_prompt": "user states past action with 'I + verb-ed' (worked, played, watched, etc.)",
+            "hint_pt": "I worked yesterday.",
+            "hint_en": "I worked yesterday."
+          },
+          {
+            "id": 2,
+            "label_pt": "Dizer outra ação",
+            "label_en": "Say another action",
+            "hidden_prompt": "user says another 'I + verb-ed'",
+            "hint_pt": "I watched a movie.",
+            "hint_en": "I watched a movie."
+          },
+          {
+            "id": 3,
+            "label_pt": "Dizer o que alguém fez (3ª pessoa)",
+            "label_en": "Say what someone else did",
+            "hidden_prompt": "user says 'He/She + verb-ed' (no -s in past)",
+            "hint_pt": "She studied for hours.",
+            "hint_en": "She studied for hours."
+          }
+        ],
+        "closing_cue": "Charlotte fecha com \"Productive day!\" quando obj_3 baterem.",
+        "suggested_flow": "**Suggested flow** (referencial, 6 turnos):\n\n1. **Charlotte**: \"What did you do yesterday?\"\n2. **Student**: ~\"I worked yesterday.\"\n3. **Charlotte**: \"And after?\"\n4. **Student**: ~\"I watched a movie.\"\n5. **Charlotte**: \"Anyone else doing stuff?\"\n6. **Student**: ~\"She studied for hours.\"\n7. **Charlotte**: \"Productive day!\"",
+        "evaluation_focus": [
+          "-ed adicionado ao verbo",
+          "Spelling: studied (y→ied)",
+          "Sem -s na 3ª pessoa no passado"
+        ]
+      },
+      "guided_chat": {
+        "scenario": "Charlotte conversa sobre suas ações de ontem.",
+        "voiced_by": "charlotte",
+        "persona": "Charlotte",
+        "persona_outfit": "charlotte_casual",
+        "intro_pt": "Charlotte explora suas ações de ontem. Pratica verbos regulares no passado.",
+        "opening_message": "Tell me three things you did yesterday.",
+        "objectives": [
+          {
+            "id": 1,
+            "label_pt": "Primeira ação (verb-ed)",
+            "label_en": "First action",
+            "hidden_prompt": "user states 'I + verb-ed'",
+            "hint_pt": "I worked.",
+            "hint_en": "I worked."
+          },
+          {
+            "id": 2,
+            "label_pt": "Segunda ação (verb-ed)",
+            "label_en": "Second action",
+            "hidden_prompt": "user states another 'I + verb-ed'",
+            "hint_pt": "I called my sister.",
+            "hint_en": "I called my sister."
+          },
+          {
+            "id": 3,
+            "label_pt": "Perguntar à Charlotte",
+            "label_en": "Ask Charlotte",
+            "hidden_prompt": "user asks 'How about you?' or 'What did you do?'",
+            "hint_pt": "How about you?",
+            "hint_en": "How about you?"
+          }
+        ],
+        "closing_cue": "Charlotte encerra com \"Yesterday recap done!\" quando obj_3 baterem.",
+        "suggested_script": "**Script** (referencial, 7 turnos):\n\n1. **Charlotte**: \"Tell me three things you did yesterday.\"\n2. **Student**: \"I worked.\"\n3. **Charlotte**: \"And then?\"\n4. **Student**: \"I called my sister.\"\n5. **Charlotte**: \"Sweet.\"\n6. **Student**: \"How about you?\"\n7. **Charlotte**: \"I cleaned my place. Yesterday recap done!\"\n\n> N01 chat = LLM puro.\n\n---"
+      }
+    },
+    {
+      "id": "N02",
+      "title": "Liguei, cheguei, parei",
+      "sub_cefr": "A2",
+      "grammar_focus": "Past simple regular — spelling rules (e+d, double consonant, y→ied)",
+      "markers": [],
+      "real_life_context": "Você usa verbos com regras especiais de spelling no passado.",
+      "grammar": [
+        {
+          "type": "multiple_choice",
+          "sentence": "I _____ the door.",
+          "options": [
+            "closed",
+            "closd",
+            "closeed"
+          ],
+          "answer": "closed",
+          "explanation": "Verbos terminados em -e mudo: apenas + d. \"Close\" → \"closed\", não \"closeed\"."
+        },
+        {
+          "type": "multiple_choice",
+          "sentence": "She _____ at the airport.",
+          "options": [
+            "arrived",
+            "arrive",
+            "arrives"
+          ],
+          "answer": "arrived",
+          "explanation": "\"Arrive\" + d = \"arrived\". Termina em -e, só adiciona -d."
+        },
+        {
+          "type": "word_bank",
+          "sentence": "We _____ the car at the corner.",
+          "choices": [
+            "stopped",
+            "stoped",
+            "stops",
+            "stopping"
+          ],
+          "answer": "stopped",
+          "explanation": "\"Stop\" dobra o p antes de -ed: \"stopped\". Regra: consoante-vogal-consoante dobra final."
+        },
+        {
+          "type": "word_bank",
+          "sentence": "He _____ a new job.",
+          "choices": [
+            "planned",
+            "planed",
+            "planing",
+            "plans"
+          ],
+          "answer": "planned",
+          "explanation": "\"Plan\" dobra o n: \"planned\". Mesma regra de \"stop → stopped\"."
+        },
+        {
+          "type": "fill_gap",
+          "sentence": "I _____ all morning.",
+          "hint": "Passado de \"cry\" (y após consoante)",
+          "answer": "cried",
+          "explanation": "\"Cry\" → \"cried\" (y → ied). Mesma regra de \"try → tried\"."
+        },
+        {
+          "type": "fill_gap",
+          "sentence": "She _____ to the store.",
+          "hint": "Passado de \"walk\"",
+          "answer": "walked",
+          "explanation": "\"Walk\" → \"walked\" (regular básico)."
+        },
+        {
+          "type": "fill_gap",
+          "sentence": "They _____ a great movie.",
+          "hint": "Passado de \"enjoy\"",
+          "answer": "enjoyed",
+          "explanation": "\"Enjoy\" → \"enjoyed\". Verbos em vogal + y mantêm y: \"enjoyed\", \"played\", \"stayed\"."
+        },
+        {
+          "type": "fix_error",
+          "sentence": "He stoped the car.",
+          "hint": "Stop dobra consoante",
+          "answer": "He stopped the car.",
+          "explanation": "\"Stop\" → \"stopped\" (dobra o p). \"Stoped\" com 1 p é erro."
+        },
+        {
+          "type": "fix_error",
+          "sentence": "She tryed to call me.",
+          "hint": "y após consoante vira ied",
+          "answer": "She tried to call me.",
+          "explanation": "\"Try\" → \"tried\" (y → ied). \"Tryed\" não existe."
+        },
+        {
+          "type": "read_answer",
+          "passage": "I planned a trip last week. I stopped at the bakery and tried a new bread. I enjoyed the day.",
+          "question": "What did the speaker try?",
+          "answer": "a new bread",
+          "explanation": "The text says \"tried a new bread\"."
+        }
+      ],
+      "listening_speaking": [
+        {
+          "text": "I closed the door.",
+          "context": "e + d"
+        },
+        {
+          "text": "She arrived late.",
+          "context": "arrive + d"
+        },
+        {
+          "text": "We stopped at the corner.",
+          "context": "stop + ped"
+        },
+        {
+          "text": "He planned a trip.",
+          "context": "plan + ned"
+        },
+        {
+          "text": "I tried it.",
+          "context": "try → tried"
+        }
+      ],
+      "roleplay": {
+        "scenario": "Charlotte pede pra você contar ações usando verbos com spelling especial.",
+        "voiced_by": "charlotte",
+        "persona": "Charlotte",
+        "persona_outfit": "charlotte_casual",
+        "time_budget_sec": 90,
+        "opening_line": "Tell me three actions — try, stop, plan, arrive, close...",
+        "objectives": [
+          {
+            "id": 1,
+            "label_pt": "Usar verbo com -e (e + d)",
+            "label_en": "Use verb with -e (+d)",
+            "hidden_prompt": "user uses verb ending in -e: 'I arrived/closed/lived/liked + ...'",
+            "hint_pt": "I arrived late.",
+            "hint_en": "I arrived late."
+          },
+          {
+            "id": 2,
+            "label_pt": "Usar verbo que dobra consoante (stop, plan, etc.)",
+            "label_en": "Use double-consonant verb",
+            "hidden_prompt": "user uses doubled consonant verb: 'I stopped/planned + ...'",
+            "hint_pt": "I stopped at the store.",
+            "hint_en": "I stopped at the store."
+          },
+          {
+            "id": 3,
+            "label_pt": "Usar verbo y → ied (try, cry, study)",
+            "label_en": "Use y→ied verb",
+            "hidden_prompt": "user uses y→ied verb: 'I tried/cried/studied + ...'",
+            "hint_pt": "I tried a new dish.",
+            "hint_en": "I tried a new dish."
+          }
+        ],
+        "closing_cue": "Charlotte fecha com \"All spelling tricks covered!\" quando obj_3 baterem.",
+        "suggested_flow": "**Suggested flow** (referencial, 6 turnos):\n\n1. **Charlotte**: \"Tell me three actions — try, stop, plan, arrive, close...\"\n2. **Student**: ~\"I arrived late.\"\n3. **Charlotte**: \"Doubled consonant?\"\n4. **Student**: ~\"I stopped at the store.\"\n5. **Charlotte**: \"y→ied?\"\n6. **Student**: ~\"I tried a new dish.\"\n7. **Charlotte**: \"All spelling tricks covered!\"",
+        "evaluation_focus": [
+          "Spelling regular -ed",
+          "Spelling double consonant",
+          "Spelling y→ied"
+        ]
+      },
+      "guided_chat": {
+        "scenario": "Charlotte conversa sobre ações específicas com spelling especial.",
+        "voiced_by": "charlotte",
+        "persona": "Charlotte",
+        "persona_outfit": "charlotte_casual",
+        "intro_pt": "Charlotte pede ações com spelling especial. Pratica e+d, dobra consoante, y→ied.",
+        "opening_message": "What did you try last week?",
+        "objectives": [
+          {
+            "id": 1,
+            "label_pt": "Dizer o que você tentou",
+            "label_en": "Say what you tried",
+            "hidden_prompt": "user says 'I tried + noun'",
+            "hint_pt": "I tried sushi.",
+            "hint_en": "I tried sushi."
+          },
+          {
+            "id": 2,
+            "label_pt": "Dizer onde você parou ou planejou",
+            "label_en": "Say where you stopped/planned",
+            "hidden_prompt": "user uses 'I stopped/planned + ...'",
+            "hint_pt": "I stopped at the market.",
+            "hint_en": "I stopped at the market."
+          },
+          {
+            "id": 3,
+            "label_pt": "Perguntar à Charlotte",
+            "label_en": "Ask Charlotte",
+            "hidden_prompt": "user asks 'How about you?' or 'What did you try?'",
+            "hint_pt": "How about you?",
+            "hint_en": "How about you?"
+          }
+        ],
+        "closing_cue": "Charlotte encerra com \"Spelled it right!\" quando obj_3 baterem.",
+        "suggested_script": "**Script** (referencial, 7 turnos):\n\n1. **Charlotte**: \"What did you try last week?\"\n2. **Student**: \"I tried sushi.\"\n3. **Charlotte**: \"Nice!\"\n4. **Student**: \"I stopped at the market.\"\n5. **Charlotte**: \"Productive.\"\n6. **Student**: \"How about you?\"\n7. **Charlotte**: \"I tried yoga. Spelled it right!\"\n\n> N02 chat = LLM puro.\n\n---"
+      }
+    },
+    {
+      "id": "N03",
+      "title": "Quando isso aconteceu?",
+      "sub_cefr": "A2",
+      "grammar_focus": "Past simple regular with time markers",
+      "markers": [],
+      "real_life_context": "Você ancora ações passadas em pontos específicos do tempo.",
+      "grammar": [
+        {
+          "type": "multiple_choice",
+          "sentence": "I _____ the gym last night.",
+          "options": [
+            "visited",
+            "visit",
+            "visiting"
+          ],
+          "answer": "visited",
+          "explanation": "\"Visit\" → \"visited\". Note: pronúncia /id/ (visit-id)."
+        },
+        {
+          "type": "multiple_choice",
+          "sentence": "We _____ home at six.",
+          "options": [
+            "returned",
+            "return",
+            "returns"
+          ],
+          "answer": "returned",
+          "explanation": "\"Return\" → \"returned\". Past simple regular."
+        },
+        {
+          "type": "word_bank",
+          "sentence": "She _____ the bus this morning.",
+          "choices": [
+            "missed",
+            "miss",
+            "misses",
+            "missing"
+          ],
+          "answer": "missed",
+          "explanation": "\"Miss\" → \"missed\". Past regular."
+        },
+        {
+          "type": "word_bank",
+          "sentence": "He _____ his report.",
+          "choices": [
+            "finished",
+            "finish",
+            "finishs",
+            "finishing"
+          ],
+          "answer": "finished",
+          "explanation": "\"Finish\" → \"finished\". Pronúncia /t/ (após sons surdos)."
+        },
+        {
+          "type": "fill_gap",
+          "sentence": "I _____ a great song yesterday.",
+          "hint": "Passado de \"discover\"",
+          "answer": "discovered",
+          "explanation": "\"Discover\" → \"discovered\". Regular -ed."
+        },
+        {
+          "type": "fill_gap",
+          "sentence": "She _____ a beautiful painting.",
+          "hint": "Passado de \"paint\"",
+          "answer": "painted",
+          "explanation": "\"Paint\" → \"painted\". Pronúncia /id/ (verbos terminados em -t ou -d)."
+        },
+        {
+          "type": "fill_gap",
+          "sentence": "We _____ the lights at midnight.",
+          "hint": "Passado de \"turn off\"",
+          "answer": "turned off",
+          "explanation": "Phrasal verb: \"turn off\" → \"turned off\". Past + particle."
+        },
+        {
+          "type": "fix_error",
+          "sentence": "I worked yesterday last week.",
+          "hint": "Dois time markers iguais",
+          "answer": "I worked yesterday.",
+          "explanation": "Não combina \"yesterday\" + \"last week\" — escolha um. Yesterday = ontem; last week = semana passada."
+        },
+        {
+          "type": "fix_error",
+          "sentence": "He visit me last week.",
+          "hint": "Verbo precisa de -ed no passado",
+          "answer": "He visited me last week.",
+          "explanation": "\"Visit\" no passado é \"visited\". Sem -ed seria present simple."
+        },
+        {
+          "type": "read_answer",
+          "passage": "I visited my grandparents last weekend. We talked for hours. Then we cooked together and laughed a lot.",
+          "question": "When did the speaker visit grandparents?",
+          "answer": "last weekend",
+          "explanation": "The text says \"last weekend\"."
+        }
+      ],
+      "listening_speaking": [
+        {
+          "text": "I visited the gym last night.",
+          "context": "visit"
+        },
+        {
+          "text": "She missed the bus.",
+          "context": "miss"
+        },
+        {
+          "text": "We returned home at six.",
+          "context": "return"
+        },
+        {
+          "text": "He finished his report.",
+          "context": "finish"
+        },
+        {
+          "text": "They painted the house.",
+          "context": "paint /id/"
+        }
+      ],
+      "roleplay": {
+        "scenario": "Charlotte quer detalhes de quando as ações aconteceram.",
+        "voiced_by": "charlotte",
+        "persona": "Charlotte",
+        "persona_outfit": "charlotte_casual",
+        "time_budget_sec": 90,
+        "opening_line": "Three actions and when — go!",
+        "objectives": [
+          {
+            "id": 1,
+            "label_pt": "Dizer uma ação + 'yesterday'",
+            "label_en": "Say action + yesterday",
+            "hidden_prompt": "user uses 'I + verb-ed + yesterday'",
+            "hint_pt": "I visited my friend yesterday.",
+            "hint_en": "I visited my friend yesterday."
+          },
+          {
+            "id": 2,
+            "label_pt": "Dizer ação + 'last week'",
+            "label_en": "Say action + last week",
+            "hidden_prompt": "user uses 'I + verb-ed + last week/month'",
+            "hint_pt": "I traveled last week.",
+            "hint_en": "I traveled last week."
+          },
+          {
+            "id": 3,
+            "label_pt": "Dizer ação + 'ago'",
+            "label_en": "Say action + ago",
+            "hidden_prompt": "user uses 'I + verb-ed + X ago'",
+            "hint_pt": "I called her two days ago.",
+            "hint_en": "I called her two days ago."
+          }
+        ],
+        "closing_cue": "Charlotte fecha com \"Time-anchored!\" quando obj_3 baterem.",
+        "suggested_flow": "**Suggested flow** (referencial, 6 turnos):\n\n1. **Charlotte**: \"Three actions and when — go!\"\n2. **Student**: ~\"I visited my friend yesterday.\"\n3. **Charlotte**: \"Last week?\"\n4. **Student**: ~\"I traveled last week.\"\n5. **Charlotte**: \"Two days ago?\"\n6. **Student**: ~\"I called her two days ago.\"\n7. **Charlotte**: \"Time-anchored!\"",
+        "evaluation_focus": [
+          "Verb-ed correto",
+          "Time marker no fim",
+          "Concordância sem -s"
+        ]
+      },
+      "guided_chat": {
+        "scenario": "Charlotte conversa sobre eventos recentes da sua vida.",
+        "voiced_by": "charlotte",
+        "persona": "Charlotte",
+        "persona_outfit": "charlotte_casual",
+        "intro_pt": "Charlotte explora ações recentes. Pratica verb-ed + time markers.",
+        "opening_message": "What did you do last weekend?",
+        "objectives": [
+          {
+            "id": 1,
+            "label_pt": "Dizer o que fez no fim de semana",
+            "label_en": "Say what you did last weekend",
+            "hidden_prompt": "user uses 'I + verb-ed + last weekend'",
+            "hint_pt": "I visited my parents last weekend.",
+            "hint_en": "I visited my parents last weekend."
+          },
+          {
+            "id": 2,
+            "label_pt": "Dizer outra ação recente",
+            "label_en": "Say another recent action",
+            "hidden_prompt": "user uses another past action with time marker",
+            "hint_pt": "I cleaned my house yesterday.",
+            "hint_en": "I cleaned my house yesterday."
+          },
+          {
+            "id": 3,
+            "label_pt": "Perguntar à Charlotte",
+            "label_en": "Ask Charlotte",
+            "hidden_prompt": "user asks 'How about you?'",
+            "hint_pt": "How about you?",
+            "hint_en": "How about you?"
+          }
+        ],
+        "closing_cue": "Charlotte encerra com \"Past activities mapped!\" quando obj_3 baterem.",
+        "suggested_script": "**Script** (referencial, 7 turnos):\n\n1. **Charlotte**: \"What did you do last weekend?\"\n2. **Student**: \"I visited my parents last weekend.\"\n3. **Charlotte**: \"Sweet.\"\n4. **Student**: \"I cleaned my house yesterday.\"\n5. **Charlotte**: \"Productive.\"\n6. **Student**: \"How about you?\"\n7. **Charlotte**: \"I traveled to NYC. Past activities mapped!\"\n\n> N03 chat = LLM puro.\n\n---"
+      }
+    },
+    {
+      "id": "N04",
+      "title": "Pronúncia do -ed",
+      "sub_cefr": "A2",
+      "grammar_focus": "-ed pronunciation rules (/t/, /d/, /id/)",
+      "markers": [],
+      "real_life_context": "Você pronuncia -ed corretamente — /t/, /d/, /id/ — em diferentes verbos.",
+      "grammar": [
+        {
+          "type": "multiple_choice",
+          "sentence": "How is 'worked' pronounced?",
+          "options": [
+            "workt",
+            "workd",
+            "workid"
+          ],
+          "answer": "/workt/",
+          "explanation": "Após som SURDO (k, p, s, f, sh, ch), -ed soa /t/. \"Worked\" = /workt/."
+        },
+        {
+          "type": "multiple_choice",
+          "sentence": "How is 'played' pronounced?",
+          "options": [
+            "playd",
+            "playt",
+            "playid"
+          ],
+          "answer": "/playd/",
+          "explanation": "Após som SONORO (vogais, l, n, m, r, g), -ed soa /d/. \"Played\" = /playd/."
+        },
+        {
+          "type": "word_bank",
+          "sentence": "Which is /id/? 'visited' / 'walked' / 'played' / 'closed'",
+          "choices": [
+            "visited",
+            "walked",
+            "played",
+            "closed"
+          ],
+          "answer": "visited",
+          "explanation": "Após /t/ ou /d/, -ed soa /id/ (extra syllable). \"Visit-ed\" = /vIz-It-Id/."
+        },
+        {
+          "type": "word_bank",
+          "sentence": "Which is /t/? 'finished' / 'lived' / 'arrived' / 'opened'",
+          "choices": [
+            "finished",
+            "lived",
+            "arrived",
+            "opened"
+          ],
+          "answer": "finished",
+          "explanation": "\"Finished\" termina em /sh/ (surdo) → /t/. \"Finish-t\" = /fIn-Isht/."
+        },
+        {
+          "type": "fill_gap",
+          "sentence": "'Worked' sounds like /work_/.",
+          "hint": "Som após consoante surda",
+          "answer": "t",
+          "explanation": "/k/ é surdo → -ed soa /t/. \"Worked\" = /workt/."
+        },
+        {
+          "type": "fill_gap",
+          "sentence": "'Played' sounds like /play_/.",
+          "hint": "Som após vogal/sonora",
+          "answer": "d",
+          "explanation": "/eɪ/ (vogal) é sonoro → -ed soa /d/. \"Played\" = /pleId/."
+        },
+        {
+          "type": "fill_gap",
+          "sentence": "'Wanted' sounds like /want_d/.",
+          "hint": "Som após /t/ ou /d/",
+          "answer": "i (ou id)",
+          "explanation": "Verbo termina em /t/ → -ed soa /id/, criando sílaba extra: \"want-Id\" = /wAnt-Id/."
+        },
+        {
+          "type": "fix_error",
+          "sentence": "I pronounced 'visited' as /vIzId/.",
+          "hint": "-ed após /t/ pede sílaba extra",
+          "answer": "I pronounced 'visited' as /vIz-Itid/.",
+          "explanation": "\"Visited\" tem 3 sílabas: vis-it-ed (/vIz-It-Id/). O -ed forma sílaba extra após /t/ ou /d/."
+        },
+        {
+          "type": "fix_error",
+          "sentence": "I said 'worked' with /id/.",
+          "hint": "Verbos em som surdo (k, p, s, etc.) usam /t/",
+          "answer": "I said 'worked' with /t/.",
+          "explanation": "\"Worked\" tem som /k/ (surdo) → -ed = /t/. Não /id/. Pronuncia /workt/, uma sílaba."
+        },
+        {
+          "type": "read_answer",
+          "passage": "Yesterday I worked /workt/, watched /watcht/ a movie, and called /kAld/ my friend. Then I visited /vIzItId/ my parents.",
+          "question": "Which verb has the /id/ sound?",
+          "answer": "visited",
+          "explanation": "\"Visited\" termina em /id/ (3 sílabas). Os outros são /t/ ou /d/ (2 sílabas)."
+        }
+      ],
+      "listening_speaking": [
+        {
+          "text": "I worked yesterday.",
+          "context": "/t/ sound (work)"
+        },
+        {
+          "text": "She played in the park.",
+          "context": "/d/ sound (play)"
+        },
+        {
+          "text": "He visited his uncle.",
+          "context": "/id/ sound (visit)"
+        },
+        {
+          "text": "They watched TV all night.",
+          "context": "/t/ (watch)"
+        },
+        {
+          "text": "I painted the wall.",
+          "context": "/id/ (paint)"
+        }
+      ],
+      "roleplay": {
+        "scenario": "Charlotte pratica pronúncia de -ed com você.",
+        "voiced_by": "charlotte",
+        "persona": "Charlotte",
+        "persona_outfit": "charlotte_casual",
+        "time_budget_sec": 90,
+        "opening_line": "Let's practice -ed sounds. Say a verb with /t/.",
+        "objectives": [
+          {
+            "id": 1,
+            "label_pt": "Falar um verbo com som /t/",
+            "label_en": "Say a /t/ verb",
+            "hidden_prompt": "user says a past tense verb ending in voiceless consonant (worked, watched, finished, asked, etc.)",
+            "hint_pt": "I worked.",
+            "hint_en": "I worked."
+          },
+          {
+            "id": 2,
+            "label_pt": "Falar um verbo com som /d/",
+            "label_en": "Say a /d/ verb",
+            "hidden_prompt": "user says a past tense verb ending in voiced sound (played, lived, called, opened, etc.)",
+            "hint_pt": "I played soccer.",
+            "hint_en": "I played soccer."
+          },
+          {
+            "id": 3,
+            "label_pt": "Falar um verbo com som /id/",
+            "label_en": "Say a /id/ verb",
+            "hidden_prompt": "user says a past tense verb ending in /id/ (visited, painted, wanted, started, ended)",
+            "hint_pt": "I visited my friend.",
+            "hint_en": "I visited my friend."
+          }
+        ],
+        "closing_cue": "Charlotte fecha com \"All three sounds covered!\" quando obj_3 baterem.",
+        "suggested_flow": "**Suggested flow** (referencial, 6 turnos):\n\n1. **Charlotte**: \"Let's practice -ed sounds. Say a verb with /t/.\"\n2. **Student**: ~\"I worked.\"\n3. **Charlotte**: \"Now /d/.\"\n4. **Student**: ~\"I played soccer.\"\n5. **Charlotte**: \"And /id/?\"\n6. **Student**: ~\"I visited my friend.\"\n7. **Charlotte**: \"All three sounds covered!\"",
+        "evaluation_focus": [
+          "Pronúncia correta dos 3 sons -ed",
+          "Diferenciação clara",
+          "Sílaba extra em /id/"
+        ]
+      },
+      "guided_chat": {
+        "scenario": "Charlotte conversa sobre o último fim de semana.",
+        "voiced_by": "charlotte",
+        "persona": "Charlotte",
+        "persona_outfit": "charlotte_casual",
+        "intro_pt": "Charlotte abre chat sobre o último fim de semana. Pratica pronúncia mental dos sons -ed.",
+        "opening_message": "What did you do last weekend?",
+        "objectives": [
+          {
+            "id": 1,
+            "label_pt": "Dizer ação principal",
+            "label_en": "Say main action",
+            "hidden_prompt": "user states past action with -ed verb",
+            "hint_pt": "I visited friends.",
+            "hint_en": "I visited friends."
+          },
+          {
+            "id": 2,
+            "label_pt": "Dizer outra ação",
+            "label_en": "Say another action",
+            "hidden_prompt": "user states another -ed past action",
+            "hint_pt": "We watched a movie.",
+            "hint_en": "We watched a movie."
+          },
+          {
+            "id": 3,
+            "label_pt": "Perguntar à Charlotte",
+            "label_en": "Ask Charlotte",
+            "hidden_prompt": "user asks 'How about you?'",
+            "hint_pt": "How about you?",
+            "hint_en": "How about you?"
+          }
+        ],
+        "closing_cue": "Charlotte encerra com \"Weekend done!\" quando obj_3 baterem.",
+        "suggested_script": "**Script** (referencial, 7 turnos):\n\n1. **Charlotte**: \"What did you do last weekend?\"\n2. **Student**: \"I visited friends.\"\n3. **Charlotte**: \"Cool.\"\n4. **Student**: \"We watched a movie.\"\n5. **Charlotte**: \"Which one?\"\n6. **Student**: \"How about you?\"\n7. **Charlotte**: \"I painted my kitchen. Weekend done!\"\n\n> N04 chat = LLM puro.\n\n---"
+      }
+    },
+    {
+      "id": "N05",
+      "title": "Meu dia ontem",
+      "sub_cefr": "A2",
+      "grammar_focus": "Integration past simple regular",
+      "markers": [],
+      "real_life_context": "Você narra um dia completo passado usando verbos regulares.",
+      "grammar": [
+        {
+          "type": "multiple_choice",
+          "sentence": "I _____ at six yesterday.",
+          "options": [
+            "started",
+            "start",
+            "starts"
+          ],
+          "answer": "started",
+          "explanation": "\"Start\" → \"started\" (regular -ed). Past simple."
+        },
+        {
+          "type": "multiple_choice",
+          "sentence": "She _____ a lot last night.",
+          "options": [
+            "cooked",
+            "cook",
+            "cooks"
+          ],
+          "answer": "cooked",
+          "explanation": "\"Cook\" → \"cooked\" (regular)."
+        },
+        {
+          "type": "word_bank",
+          "sentence": "We _____ dinner at eight.",
+          "choices": [
+            "finished",
+            "finish",
+            "finishs",
+            "finishing"
+          ],
+          "answer": "finished",
+          "explanation": "\"Finish\" → \"finished\" (-sh + ed)."
+        },
+        {
+          "type": "word_bank",
+          "sentence": "He _____ the door at nine.",
+          "choices": [
+            "locked",
+            "lock",
+            "locks",
+            "locking"
+          ],
+          "answer": "locked",
+          "explanation": "\"Lock\" → \"locked\". Past regular."
+        },
+        {
+          "type": "fill_gap",
+          "sentence": "I _____ my room yesterday.",
+          "hint": "Passado de \"clean\"",
+          "answer": "cleaned",
+          "explanation": "\"Cleaned\" — clean + ed."
+        },
+        {
+          "type": "fill_gap",
+          "sentence": "She _____ for the test all week.",
+          "hint": "Passado de \"study\"",
+          "answer": "studied",
+          "explanation": "\"Studied\" — y → ied."
+        },
+        {
+          "type": "fill_gap",
+          "sentence": "They _____ at the party.",
+          "hint": "Passado de \"arrive\"",
+          "answer": "arrived",
+          "explanation": "\"Arrived\" — arrive + d (e mudo + d)."
+        },
+        {
+          "type": "fix_error",
+          "sentence": "I cooked breakfast and watch TV.",
+          "hint": "Concordância de tempos",
+          "answer": "I cooked breakfast and watched TV.",
+          "explanation": "Frase no passado, ambos verbos no passado. \"Watched\" também."
+        },
+        {
+          "type": "fix_error",
+          "sentence": "She workd late.",
+          "hint": "Spelling de work no passado",
+          "answer": "She worked late.",
+          "explanation": "\"Worked\" — work + ed. \"Workd\" sem o e é erro de spelling."
+        },
+        {
+          "type": "read_answer",
+          "passage": "I started work at eight. I worked all morning. At noon I called my friend. We talked for an hour. Then I returned to my desk.",
+          "question": "What time did the speaker start work?",
+          "answer": "eight",
+          "explanation": "The text says \"I started work at eight\"."
+        }
+      ],
+      "listening_speaking": [
+        {
+          "text": "I started work at eight.",
+          "context": "start"
+        },
+        {
+          "text": "She cooked dinner.",
+          "context": "cook"
+        },
+        {
+          "text": "We finished at nine.",
+          "context": "finish"
+        },
+        {
+          "text": "He cleaned the kitchen.",
+          "context": "clean"
+        },
+        {
+          "text": "They arrived early.",
+          "context": "arrive"
+        }
+      ],
+      "roleplay": {
+        "scenario": "Charlotte pede pra você narrar três coisas que fez ontem.",
+        "voiced_by": "charlotte",
+        "persona": "Charlotte",
+        "persona_outfit": "charlotte_casual",
+        "time_budget_sec": 90,
+        "opening_line": "Walk me through yesterday — three actions.",
+        "objectives": [
+          {
+            "id": 1,
+            "label_pt": "Primeira ação de ontem",
+            "label_en": "First action yesterday",
+            "hidden_prompt": "user states 'I + verb-ed + (time)' for morning/start",
+            "hint_pt": "I worked all morning.",
+            "hint_en": "I worked all morning."
+          },
+          {
+            "id": 2,
+            "label_pt": "Segunda ação",
+            "label_en": "Second action",
+            "hidden_prompt": "user states another 'I + verb-ed' for afternoon/middle",
+            "hint_pt": "I called my mother.",
+            "hint_en": "I called my mother."
+          },
+          {
+            "id": 3,
+            "label_pt": "Terceira ação",
+            "label_en": "Third action",
+            "hidden_prompt": "user states another 'I + verb-ed' for evening/end",
+            "hint_pt": "I cooked dinner.",
+            "hint_en": "I cooked dinner."
+          }
+        ],
+        "closing_cue": "Charlotte fecha com \"Full day captured!\" quando obj_3 baterem.",
+        "suggested_flow": "**Suggested flow** (referencial, 6 turnos):\n\n1. **Charlotte**: \"Walk me through yesterday — three actions.\"\n2. **Student**: ~\"I worked all morning.\"\n3. **Charlotte**: \"Lunch?\"\n4. **Student**: ~\"I called my mother.\"\n5. **Charlotte**: \"Evening?\"\n6. **Student**: ~\"I cooked dinner.\"\n7. **Charlotte**: \"Full day captured!\"",
+        "evaluation_focus": [
+          "Sequência narrativa",
+          "-ed em todos os verbos",
+          "Variedade de ações"
+        ]
+      },
+      "guided_chat": {
+        "scenario": "Charlotte conversa sobre o que cada uma fez de ontem.",
+        "voiced_by": "charlotte",
+        "persona": "Charlotte",
+        "persona_outfit": "charlotte_casual",
+        "intro_pt": "Charlotte abre chat sobre ontem. Integra past simple regular completo.",
+        "opening_message": "Quick recap — what did you do yesterday?",
+        "objectives": [
+          {
+            "id": 1,
+            "label_pt": "Dizer ação do começo do dia",
+            "label_en": "Say morning action",
+            "hidden_prompt": "user uses 'I + verb-ed' for morning action",
+            "hint_pt": "I worked.",
+            "hint_en": "I worked."
+          },
+          {
+            "id": 2,
+            "label_pt": "Dizer ação à tarde/noite",
+            "label_en": "Say afternoon/evening action",
+            "hidden_prompt": "user uses another 'I + verb-ed'",
+            "hint_pt": "I watched a movie.",
+            "hint_en": "I watched a movie."
+          },
+          {
+            "id": 3,
+            "label_pt": "Perguntar à Charlotte",
+            "label_en": "Ask Charlotte",
+            "hidden_prompt": "user asks 'How about you?'",
+            "hint_pt": "How about you?",
+            "hint_en": "How about you?"
+          }
+        ],
+        "closing_cue": "Charlotte encerra com \"Yesterday on the books!\" quando obj_3 baterem.",
+        "suggested_script": "**Script** (referencial, 7 turnos):\n\n1. **Charlotte**: \"Quick recap — what did you do yesterday?\"\n2. **Student**: \"I worked.\"\n3. **Charlotte**: \"Long day?\"\n4. **Student**: \"I watched a movie.\"\n5. **Charlotte**: \"Which one?\"\n6. **Student**: \"How about you?\"\n7. **Charlotte**: \"Cooked and studied. Yesterday on the books!\"\n\n> N05 chat = LLM puro.\n\n---"
+      }
+    }
+  ],
+  "cross_unit_consolidation": [
+    "Past simple regular: verb + ed (worked, watched, cleaned)",
+    "Spelling rules: e + d (arrived), dobra consoante (stopped), y → ied (studied)",
+    "Pronúncia: /t/ (worked), /d/ (played), /id/ (visited)",
+    "Time markers: yesterday, last week, ago, in YEAR",
+    "Sem -s na 3ª pessoa no passado (she worked, não she workeds)"
+  ]
+}

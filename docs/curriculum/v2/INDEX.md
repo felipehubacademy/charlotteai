@@ -43,17 +43,17 @@
 ### Bloco A2 — consolidação + passado + futuro (M12–M22)
 | File | Module | Units | Status |
 |------|--------|-------|--------|
-| M12 | Comparações | 5 (N01–N05) | todo |
-| M13 | O melhor de tudo | 5 (N01–N05) | todo |
-| M14 | Onde estive ontem | 5 (N01–N05) | todo |
-| M15 | O que fiz ontem | 5 (N01–N05) | todo |
-| M16 | Histórias simples | 5 (N01–N05) | todo |
-| M17 | Não foi assim | 5 (N01–N05) | todo |
-| M18 | Planos pra amanhã | 5 (N01–N05) | todo |
-| M19 | O futuro | 5 (N01–N05) | todo |
-| M20 | Conselhos | 5 (N01–N05) | todo |
-| M21 | Se isso, então aquilo | 5 (N01–N05) | todo |
-| M22 | Conexões e fechamento Novice | 5 (N01–N05) | todo |
+| [M12](novice/M12-comparacoes.md) | Comparações | 5 (N01–N05) | done |
+| [M13](novice/M13-o-melhor-de-tudo.md) | O melhor de tudo | 5 (N01–N05) | done |
+| [M14](novice/M14-onde-estive-ontem.md) | Onde estive ontem | 5 (N01–N05) | done |
+| [M15](novice/M15-o-que-fiz-ontem.md) | O que fiz ontem | 5 (N01–N05) | done |
+| [M16](novice/M16-historias-simples.md) | Histórias simples | 5 (N01–N05) | done |
+| [M17](novice/M17-nao-foi-assim.md) | Não foi assim | 5 (N01–N05) | done |
+| [M18](novice/M18-planos-pra-amanha.md) | Planos pra amanhã | 5 (N01–N05) | done |
+| [M19](novice/M19-o-futuro.md) | O futuro | 5 (N01–N05) | done |
+| [M20](novice/M20-conselhos.md) | Conselhos | 5 (N01–N05) | done |
+| [M21](novice/M21-se-isso-entao-aquilo.md) | Se isso, então aquilo | 5 (N01–N05) | done |
+| [M22](novice/M22-conexoes-fechamento.md) | Conexões e fechamento Novice | 5 (N01–N05) | done |
 
 ---
 

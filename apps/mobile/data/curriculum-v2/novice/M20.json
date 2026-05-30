@@ -1,0 +1,1021 @@
+{
+  "id": "M20",
+  "title": "Conselhos",
+  "level": "Novice",
+  "block": "A2",
+  "units_range": "N01–N05",
+  "theme": "Should/shouldn't + have to/don't have to",
+  "goal": "Aluno sai sabendo dar conselhos com should/shouldn't e falar de obrigações com have to/don't have to.",
+  "connects_to": "M21 (Se isso, então aquilo) — depois de conselhos, aprende condicionais reais.",
+  "module_chunks": [
+    "You should / She should / He should",
+    "You shouldn't / She shouldn't",
+    "I should + base / She should + base",
+    "Should I...? / Should she...?",
+    "I have to / You have to / She has to",
+    "I don't have to / She doesn't have to",
+    "Do I have to...? / Does she have to...?",
+    "You should see a doctor / You should study more",
+    "I have to work / She has to leave",
+    "need to / don't need to"
+  ],
+  "units": [
+    {
+      "id": "N01",
+      "title": "Você deveria descansar",
+      "sub_cefr": "A2",
+      "grammar_focus": "Should/shouldn't for advice",
+      "markers": [],
+      "real_life_context": "Você dá e recebe conselhos sobre saúde, estudo, vida.",
+      "grammar": [
+        {
+          "type": "multiple_choice",
+          "sentence": "You _____ see a doctor.",
+          "options": [
+            "should",
+            "shouldn't",
+            "will"
+          ],
+          "answer": "should",
+          "explanation": "\"Should\" = deveria. Aconselhamento positivo: \"You should see a doctor\"."
+        },
+        {
+          "type": "multiple_choice",
+          "sentence": "She _____ work so much.",
+          "options": [
+            "shouldn't",
+            "wouldn't",
+            "didn't"
+          ],
+          "answer": "shouldn't",
+          "explanation": "\"Shouldn't\" = não deveria. Aconselhamento negativo."
+        },
+        {
+          "type": "word_bank",
+          "sentence": "We _____ help her.",
+          "choices": [
+            "should",
+            "are",
+            "do",
+            "will"
+          ],
+          "answer": "should",
+          "explanation": "\"We should help\" = nós deveríamos ajudar."
+        },
+        {
+          "type": "word_bank",
+          "sentence": "He _____ eat junk food.",
+          "choices": [
+            "shouldn't",
+            "can't",
+            "doesn't",
+            "didn't"
+          ],
+          "answer": "shouldn't",
+          "explanation": "\"He shouldn't eat junk food\" = ele não deveria."
+        },
+        {
+          "type": "fill_gap",
+          "sentence": "You _____ study more.",
+          "hint": "Conselho positivo",
+          "answer": "should",
+          "explanation": "\"You should study\" = você deveria estudar."
+        },
+        {
+          "type": "fill_gap",
+          "sentence": "She _____ stay up late.",
+          "hint": "Conselho negativo",
+          "answer": "shouldn't",
+          "explanation": "\"She shouldn't stay up late\" = ela não deveria ficar acordada."
+        },
+        {
+          "type": "fill_gap",
+          "sentence": "I think you _____ try yoga.",
+          "hint": "Conselho com \"I think\"",
+          "answer": "should",
+          "explanation": "\"I think you should try\" = acho que você deveria tentar."
+        },
+        {
+          "type": "fix_error",
+          "sentence": "She shoulds rest.",
+          "hint": "Should não muda na 3ª pessoa",
+          "answer": "She should rest.",
+          "explanation": "Modal \"should\" não leva -s na 3ª pessoa. \"She should\", não \"She shoulds\"."
+        },
+        {
+          "type": "fix_error",
+          "sentence": "You should to see a doctor.",
+          "hint": "Sem \"to\" após should",
+          "answer": "You should see a doctor.",
+          "explanation": "Modal + base, sem \"to\": \"should see\", não \"should to see\"."
+        },
+        {
+          "type": "read_answer",
+          "passage": "I think you should rest more. You shouldn't work so late. We should all take breaks.",
+          "question": "What shouldn't the person do?",
+          "answer": "work so late (or \"work late\")",
+          "explanation": "The text says \"You shouldn't work so late\"."
+        }
+      ],
+      "listening_speaking": [
+        {
+          "text": "You should see a doctor.",
+          "context": "health advice"
+        },
+        {
+          "text": "She shouldn't work so much.",
+          "context": "negative advice"
+        },
+        {
+          "text": "We should help her.",
+          "context": "group advice"
+        },
+        {
+          "text": "You should study more.",
+          "context": "study advice"
+        },
+        {
+          "text": "He shouldn't eat junk food.",
+          "context": "diet advice"
+        }
+      ],
+      "roleplay": {
+        "scenario": "Charlotte conta um problema — você dá conselho.",
+        "voiced_by": "charlotte",
+        "persona": "Charlotte",
+        "persona_outfit": "charlotte_casual",
+        "time_budget_sec": 90,
+        "opening_line": "I'm tired and stressed. What should I do?",
+        "objectives": [
+          {
+            "id": 1,
+            "label_pt": "Dar conselho positivo (should)",
+            "label_en": "Give positive advice (should)",
+            "hidden_prompt": "user gives advice with 'You should + base'",
+            "hint_pt": "You should rest.",
+            "hint_en": "You should rest."
+          },
+          {
+            "id": 2,
+            "label_pt": "Dar conselho negativo (shouldn't)",
+            "label_en": "Give negative advice (shouldn't)",
+            "hidden_prompt": "user advises against with 'You shouldn't + base'",
+            "hint_pt": "You shouldn't work so much.",
+            "hint_en": "You shouldn't work so much."
+          },
+          {
+            "id": 3,
+            "label_pt": "Mais um conselho",
+            "label_en": "One more advice",
+            "hidden_prompt": "user gives another advice with should/shouldn't",
+            "hint_pt": "You should take a vacation.",
+            "hint_en": "You should take a vacation."
+          }
+        ],
+        "closing_cue": "Charlotte fecha com \"Wise advice!\" quando obj_3 baterem.",
+        "suggested_flow": "**Suggested flow** (referencial, 6 turnos):\n\n1. **Charlotte**: \"I'm tired and stressed. What should I do?\"\n2. **Student**: ~\"You should rest.\"\n3. **Charlotte**: \"I have a lot of work though.\"\n4. **Student**: ~\"You shouldn't work so much.\"\n5. **Charlotte**: \"Anything else?\"\n6. **Student**: ~\"You should take a vacation.\"\n7. **Charlotte**: \"Wise advice!\"",
+        "evaluation_focus": [
+          "Should + base (sem to)",
+          "Shouldn't pra negativo",
+          "Sem -s na 3ª pessoa"
+        ]
+      },
+      "guided_chat": {
+        "scenario": "Charlotte pede conselho de saúde/estudo/vida.",
+        "voiced_by": "charlotte",
+        "persona": "Charlotte",
+        "persona_outfit": "charlotte_casual",
+        "intro_pt": "Charlotte abre chat pedindo conselho. Pratica should/shouldn't.",
+        "opening_message": "I want to learn English faster. Any advice?",
+        "objectives": [
+          {
+            "id": 1,
+            "label_pt": "Dar conselho positivo",
+            "label_en": "Give positive advice",
+            "hidden_prompt": "user uses 'You should + base'",
+            "hint_pt": "You should practice every day.",
+            "hint_en": "You should practice every day."
+          },
+          {
+            "id": 2,
+            "label_pt": "Dar conselho negativo",
+            "label_en": "Give negative advice",
+            "hidden_prompt": "user uses 'You shouldn't + base'",
+            "hint_pt": "You shouldn't translate everything.",
+            "hint_en": "You shouldn't translate everything."
+          },
+          {
+            "id": 3,
+            "label_pt": "Perguntar à Charlotte se ela tem outras dicas",
+            "label_en": "Ask Charlotte for more tips",
+            "hidden_prompt": "user asks 'What should I + base?' or 'Any other tips?'",
+            "hint_pt": "What should I do too?",
+            "hint_en": "What should I do too?"
+          }
+        ],
+        "closing_cue": "Charlotte encerra com \"Great advice exchange!\" quando obj_3 baterem.",
+        "suggested_script": "**Script** (referencial, 7 turnos):\n\n1. **Charlotte**: \"I want to learn English faster. Any advice?\"\n2. **Student**: \"You should practice every day.\"\n3. **Charlotte**: \"Good. Anything to avoid?\"\n4. **Student**: \"You shouldn't translate everything.\"\n5. **Charlotte**: \"Smart!\"\n6. **Student**: \"What should I do too?\"\n7. **Charlotte**: \"Talk to natives! Great advice exchange!\"\n\n> N01 chat = LLM puro.\n\n---"
+      }
+    },
+    {
+      "id": "N02",
+      "title": "Tenho que trabalhar",
+      "sub_cefr": "A2",
+      "grammar_focus": "Have to / has to (obrigação)",
+      "markers": [
+        "denso"
+      ],
+      "real_life_context": "Você fala de obrigações no trabalho, escola, casa.",
+      "grammar": [
+        {
+          "type": "multiple_choice",
+          "sentence": "I _____ work tomorrow.",
+          "options": [
+            "have to",
+            "has to",
+            "am to"
+          ],
+          "answer": "have to",
+          "explanation": "\"Have to\" pra obrigação. Com I/you/we/they: \"have to + base\"."
+        },
+        {
+          "type": "multiple_choice",
+          "sentence": "She _____ leave early.",
+          "options": [
+            "has to",
+            "have to",
+            "is to"
+          ],
+          "answer": "has to",
+          "explanation": "\"She has to\" — 3ª pessoa usa \"has to\". Mesmo padrão do present simple."
+        },
+        {
+          "type": "word_bank",
+          "sentence": "We _____ study for the exam.",
+          "choices": [
+            "have to",
+            "has to",
+            "are to",
+            "will"
+          ],
+          "answer": "have to",
+          "explanation": "\"We have to\" — plural usa \"have to\"."
+        },
+        {
+          "type": "word_bank",
+          "sentence": "He _____ go to the doctor.",
+          "choices": [
+            "has to",
+            "have to",
+            "had to",
+            "is to"
+          ],
+          "answer": "has to",
+          "explanation": "He → \"has to\". 3ª pessoa singular."
+        },
+        {
+          "type": "fill_gap",
+          "sentence": "I _____ finish this report.",
+          "hint": "Obrigação com I",
+          "answer": "have to",
+          "explanation": "\"I have to finish\" — obrigação."
+        },
+        {
+          "type": "fill_gap",
+          "sentence": "Lucas _____ wear a uniform.",
+          "hint": "Obrigação com nome (he)",
+          "answer": "has to",
+          "explanation": "Lucas = he → \"has to\"."
+        },
+        {
+          "type": "fill_gap",
+          "sentence": "They _____ wake up early.",
+          "hint": "Obrigação plural",
+          "answer": "have to",
+          "explanation": "\"They have to\" — plural."
+        },
+        {
+          "type": "fix_error",
+          "sentence": "She have to work late.",
+          "hint": "3ª pessoa",
+          "answer": "She has to work late.",
+          "explanation": "She → \"has to\", não \"have to\". 3ª pessoa singular."
+        },
+        {
+          "type": "fix_error",
+          "sentence": "I has to study.",
+          "hint": "I não usa \"has\"",
+          "answer": "I have to study.",
+          "explanation": "Com I sempre \"have\", não \"has\"."
+        },
+        {
+          "type": "read_answer",
+          "passage": "I have to work tomorrow. My sister has to study for an exam. We all have to wake up early.",
+          "question": "What does the sister have to do?",
+          "answer": "study (or \"study for an exam\")",
+          "explanation": "The text says \"My sister has to study for an exam\"."
+        }
+      ],
+      "listening_speaking": [
+        {
+          "text": "I have to work tomorrow.",
+          "context": "own obligation"
+        },
+        {
+          "text": "She has to leave early.",
+          "context": "3rd person"
+        },
+        {
+          "text": "We have to study.",
+          "context": "plural"
+        },
+        {
+          "text": "He has to go to the doctor.",
+          "context": "3rd"
+        },
+        {
+          "text": "They have to wake up early.",
+          "context": "plural"
+        }
+      ],
+      "roleplay": {
+        "scenario": "Charlotte pergunta o que você tem que fazer essa semana.",
+        "voiced_by": "charlotte",
+        "persona": "Charlotte",
+        "persona_outfit": "charlotte_casual",
+        "time_budget_sec": 90,
+        "opening_line": "What do you have to do this week?",
+        "objectives": [
+          {
+            "id": 1,
+            "label_pt": "Dizer uma obrigação sua",
+            "label_en": "Say one obligation",
+            "hidden_prompt": "user states obligation with 'I have to + base'",
+            "hint_pt": "I have to work.",
+            "hint_en": "I have to work."
+          },
+          {
+            "id": 2,
+            "label_pt": "Outra obrigação",
+            "label_en": "Another obligation",
+            "hidden_prompt": "user uses another 'I have to + base'",
+            "hint_pt": "I have to finish a report.",
+            "hint_en": "I have to finish a report."
+          },
+          {
+            "id": 3,
+            "label_pt": "Obrigação de alguém da família (has to)",
+            "label_en": "Family member's obligation",
+            "hidden_prompt": "user uses 'He/She has to + base'",
+            "hint_pt": "My sister has to study.",
+            "hint_en": "My sister has to study."
+          }
+        ],
+        "closing_cue": "Charlotte fecha com \"Busy week!\" quando obj_3 baterem.",
+        "suggested_flow": "**Suggested flow** (referencial, 6 turnos):\n\n1. **Charlotte**: \"What do you have to do this week?\"\n2. **Student**: ~\"I have to work.\"\n3. **Charlotte**: \"And?\"\n4. **Student**: ~\"I have to finish a report.\"\n5. **Charlotte**: \"Anyone else?\"\n6. **Student**: ~\"My sister has to study.\"\n7. **Charlotte**: \"Busy week!\"",
+        "evaluation_focus": [
+          "have to / has to por pessoa",
+          "Verbo base após to",
+          "Sem -s no verbo principal"
+        ]
+      },
+      "guided_chat": {
+        "scenario": "Charlotte conversa sobre cronograma de obrigações.",
+        "voiced_by": "charlotte",
+        "persona": "Charlotte",
+        "persona_outfit": "charlotte_casual",
+        "intro_pt": "Charlotte abre chat sobre obrigações da semana. Pratica have to / has to.",
+        "opening_message": "What do you have to do today?",
+        "objectives": [
+          {
+            "id": 1,
+            "label_pt": "Dizer obrigação",
+            "label_en": "Say obligation",
+            "hidden_prompt": "user uses 'I have to + base'",
+            "hint_pt": "I have to clean my room.",
+            "hint_en": "I have to clean my room."
+          },
+          {
+            "id": 2,
+            "label_pt": "Outra obrigação",
+            "label_en": "Another obligation",
+            "hidden_prompt": "user uses another 'I have to + base'",
+            "hint_pt": "I have to cook dinner.",
+            "hint_en": "I have to cook dinner."
+          },
+          {
+            "id": 3,
+            "label_pt": "Perguntar à Charlotte",
+            "label_en": "Ask Charlotte",
+            "hidden_prompt": "user asks 'How about you?'",
+            "hint_pt": "How about you?",
+            "hint_en": "How about you?"
+          }
+        ],
+        "closing_cue": "Charlotte encerra com \"Long to-do list!\" quando obj_3 baterem.",
+        "suggested_script": "**Script** (referencial, 7 turnos):\n\n1. **Charlotte**: \"What do you have to do today?\"\n2. **Student**: \"I have to clean my room.\"\n3. **Charlotte**: \"Then?\"\n4. **Student**: \"I have to cook dinner.\"\n5. **Charlotte**: \"Productive.\"\n6. **Student**: \"How about you?\"\n7. **Charlotte**: \"I have to teach three classes. Long to-do list!\"\n\n> N02 chat = LLM puro.\n\n---"
+      }
+    },
+    {
+      "id": "N03",
+      "title": "Não preciso fazer isso",
+      "sub_cefr": "A2",
+      "grammar_focus": "Don't have to / doesn't have to (absence of obligation)",
+      "markers": [],
+      "real_life_context": "Você esclarece que algo é OPCIONAL — não é obrigado a fazer.",
+      "grammar": [
+        {
+          "type": "multiple_choice",
+          "sentence": "I _____ have to work on Sundays.",
+          "options": [
+            "don't",
+            "doesn't",
+            "wasn't"
+          ],
+          "answer": "don't",
+          "explanation": "Negativa: \"don't have to\" = não precisa. Com I/you/we/they."
+        },
+        {
+          "type": "multiple_choice",
+          "sentence": "She _____ have to come.",
+          "options": [
+            "doesn't",
+            "don't",
+            "wasn't"
+          ],
+          "answer": "doesn't",
+          "explanation": "3ª pessoa: \"doesn't have to\"."
+        },
+        {
+          "type": "word_bank",
+          "sentence": "We _____ have to pay anything.",
+          "choices": [
+            "don't",
+            "doesn't",
+            "aren't",
+            "isn't"
+          ],
+          "answer": "don't",
+          "explanation": "\"We don't have to\" — plural."
+        },
+        {
+          "type": "word_bank",
+          "sentence": "He _____ have to wear a tie.",
+          "choices": [
+            "doesn't",
+            "don't",
+            "isn't",
+            "can't"
+          ],
+          "answer": "doesn't",
+          "explanation": "\"He doesn't have to\" — 3ª pessoa."
+        },
+        {
+          "type": "fill_gap",
+          "sentence": "I _____ have to study tonight.",
+          "hint": "Negativa de \"have to\" com I",
+          "answer": "don't",
+          "explanation": "\"I don't have to\" — ausência de obrigação."
+        },
+        {
+          "type": "fill_gap",
+          "sentence": "She _____ have to wake up early.",
+          "hint": "Negativa de \"has to\"",
+          "answer": "doesn't",
+          "explanation": "\"She doesn't have to\" — 3ª pessoa."
+        },
+        {
+          "type": "fill_gap",
+          "sentence": "You _____ have to come if you don't want.",
+          "hint": "Negativa do \"have to\"",
+          "answer": "don't",
+          "explanation": "\"You don't have to come\" — opcional."
+        },
+        {
+          "type": "fix_error",
+          "sentence": "She don't have to work.",
+          "hint": "3ª pessoa usa \"doesn't\"",
+          "answer": "She doesn't have to work.",
+          "explanation": "She → \"doesn't\", não \"don't\"."
+        },
+        {
+          "type": "fix_error",
+          "sentence": "I doesn't have to go.",
+          "hint": "I usa \"don't\"",
+          "answer": "I don't have to go.",
+          "explanation": "Com I sempre \"don't\", não \"doesn't\"."
+        },
+        {
+          "type": "read_answer",
+          "passage": "I don't have to work tomorrow — it's my day off. She doesn't have to come if she's busy. We don't have to do anything special.",
+          "question": "Why doesn't the speaker have to work tomorrow?",
+          "answer": "it's my day off (or \"day off\")",
+          "explanation": "The text says \"it's my day off\"."
+        }
+      ],
+      "listening_speaking": [
+        {
+          "text": "I don't have to work on Sundays.",
+          "context": "own absence"
+        },
+        {
+          "text": "She doesn't have to come.",
+          "context": "3rd person absence"
+        },
+        {
+          "text": "We don't have to pay.",
+          "context": "plural absence"
+        },
+        {
+          "text": "He doesn't have to wear a tie.",
+          "context": "3rd"
+        },
+        {
+          "text": "You don't have to come if you don't want.",
+          "context": "invitation flexibility"
+        }
+      ],
+      "roleplay": {
+        "scenario": "Charlotte assume coisas que você tem que fazer — você esclarece quando é opcional.",
+        "voiced_by": "charlotte",
+        "persona": "Charlotte",
+        "persona_outfit": "charlotte_casual",
+        "time_budget_sec": 90,
+        "opening_line": "I bet you have to work on Sundays!",
+        "objectives": [
+          {
+            "id": 1,
+            "label_pt": "Esclarecer que NÃO precisa (I don't have to)",
+            "label_en": "Clarify you don't have to",
+            "hidden_prompt": "user uses 'I don't have to + base'",
+            "hint_pt": "No, I don't have to work.",
+            "hint_en": "No, I don't have to work."
+          },
+          {
+            "id": 2,
+            "label_pt": "Outra coisa que não precisa fazer",
+            "label_en": "Another thing you don't have to do",
+            "hidden_prompt": "user uses another 'I don't have to + base'",
+            "hint_pt": "I don't have to wake up early.",
+            "hint_en": "I don't have to wake up early."
+          },
+          {
+            "id": 3,
+            "label_pt": "Alguém da família que não precisa",
+            "label_en": "Family member's absence",
+            "hidden_prompt": "user uses 'He/She doesn't have to + base'",
+            "hint_pt": "My sister doesn't have to come.",
+            "hint_en": "My sister doesn't have to come."
+          }
+        ],
+        "closing_cue": "Charlotte fecha com \"Freedom acknowledged!\" quando obj_3 baterem.",
+        "suggested_flow": "**Suggested flow** (referencial, 6 turnos):\n\n1. **Charlotte**: \"I bet you have to work on Sundays!\"\n2. **Student**: ~\"No, I don't have to work.\"\n3. **Charlotte**: \"Wake up early though?\"\n4. **Student**: ~\"I don't have to wake up early.\"\n5. **Charlotte**: \"Family obligations?\"\n6. **Student**: ~\"My sister doesn't have to come.\"\n7. **Charlotte**: \"Freedom acknowledged!\"",
+        "evaluation_focus": [
+          "don't / doesn't have to",
+          "Sem \"haven't to\"",
+          "3ª pessoa correta"
+        ]
+      },
+      "guided_chat": {
+        "scenario": "Charlotte conversa sobre o que é opcional na sua vida.",
+        "voiced_by": "charlotte",
+        "persona": "Charlotte",
+        "persona_outfit": "charlotte_casual",
+        "intro_pt": "Charlotte explora o que é opcional. Pratica don't have to / doesn't have to.",
+        "opening_message": "What don't you have to do on weekends?",
+        "objectives": [
+          {
+            "id": 1,
+            "label_pt": "Algo que você não precisa fazer",
+            "label_en": "Something you don't have to do",
+            "hidden_prompt": "user uses 'I don't have to + base'",
+            "hint_pt": "I don't have to set alarms.",
+            "hint_en": "I don't have to set alarms."
+          },
+          {
+            "id": 2,
+            "label_pt": "Outra coisa opcional",
+            "label_en": "Another optional thing",
+            "hidden_prompt": "user uses another 'I don't have to'",
+            "hint_pt": "I don't have to cook.",
+            "hint_en": "I don't have to cook."
+          },
+          {
+            "id": 3,
+            "label_pt": "Perguntar à Charlotte",
+            "label_en": "Ask Charlotte",
+            "hidden_prompt": "user asks 'How about you?'",
+            "hint_pt": "How about you?",
+            "hint_en": "How about you?"
+          }
+        ],
+        "closing_cue": "Charlotte encerra com \"Weekend freedom!\" quando obj_3 baterem.",
+        "suggested_script": "**Script** (referencial, 7 turnos):\n\n1. **Charlotte**: \"What don't you have to do on weekends?\"\n2. **Student**: \"I don't have to set alarms.\"\n3. **Charlotte**: \"Heaven!\"\n4. **Student**: \"I don't have to cook.\"\n5. **Charlotte**: \"Order in!\"\n6. **Student**: \"How about you?\"\n7. **Charlotte**: \"I don't have to answer emails. Weekend freedom!\"\n\n> N03 chat = LLM puro.\n\n---"
+      }
+    },
+    {
+      "id": "N04",
+      "title": "Devo ir? Tenho que ir?",
+      "sub_cefr": "A2",
+      "grammar_focus": "Questions with should / have to",
+      "markers": [
+        "qform"
+      ],
+      "real_life_context": "Você pede conselho ou esclarece obrigações.",
+      "grammar": [
+        {
+          "type": "multiple_choice",
+          "sentence": "_____ I see a doctor?",
+          "options": [
+            "Should",
+            "Do",
+            "Will"
+          ],
+          "answer": "Should",
+          "explanation": "\"Should I + base?\" — pedido de conselho."
+        },
+        {
+          "type": "multiple_choice",
+          "sentence": "_____ she leave early?",
+          "options": [
+            "Should",
+            "Does",
+            "Will"
+          ],
+          "answer": "Should",
+          "explanation": "\"Should she leave?\" — pedido de conselho em 3ª pessoa. Should não muda."
+        },
+        {
+          "type": "word_bank",
+          "sentence": "_____ I have to bring my passport?",
+          "choices": [
+            "Do",
+            "Are",
+            "Will",
+            "Have"
+          ],
+          "answer": "Do",
+          "explanation": "\"Do I have to + base?\" — pergunta sobre obrigação. Usa \"do\"."
+        },
+        {
+          "type": "word_bank",
+          "sentence": "_____ she have to study tonight?",
+          "choices": [
+            "Does",
+            "Do",
+            "Is",
+            "Has"
+          ],
+          "answer": "Does",
+          "explanation": "\"Does she have to?\" — 3ª pessoa pergunta com \"does\"."
+        },
+        {
+          "type": "fill_gap",
+          "sentence": "_____ I help you?",
+          "hint": "Oferta com should",
+          "answer": "Should",
+          "explanation": "\"Should I help you?\" — oferta polida."
+        },
+        {
+          "type": "fill_gap",
+          "sentence": "_____ he take a taxi or walk?",
+          "hint": "Conselho 3ª pessoa",
+          "answer": "Should",
+          "explanation": "\"Should he take a taxi?\" — pedido de conselho sobre ele."
+        },
+        {
+          "type": "fill_gap",
+          "sentence": "_____ I have to wear a tie?",
+          "hint": "Pergunta sobre obrigação com I",
+          "answer": "Do",
+          "explanation": "\"Do I have to?\" — \"Have to\" usa do/does em perguntas."
+        },
+        {
+          "type": "fix_error",
+          "sentence": "Do you should come?",
+          "hint": "Should não usa \"do\"",
+          "answer": "Should you come?",
+          "explanation": "Modal \"should\" forma pergunta por inversão direta — sem \"do\"."
+        },
+        {
+          "type": "fix_error",
+          "sentence": "Has she have to leave?",
+          "hint": "Pergunta com \"have to\" usa do/does",
+          "answer": "Does she have to leave?",
+          "explanation": "Have to pergunta com do/does, não \"has\". \"Does she have to?\"."
+        },
+        {
+          "type": "read_answer",
+          "passage": "Q: Should I call her? A: Yes, you should. Q: Do I have to bring my passport? A: No, you don't have to.",
+          "question": "Does the person have to bring the passport?",
+          "answer": "no (or \"doesn't have to\")",
+          "explanation": "The text says \"No, you don't have to\"."
+        }
+      ],
+      "listening_speaking": [
+        {
+          "text": "Should I see a doctor?",
+          "context": "advice request"
+        },
+        {
+          "text": "Should she leave early?",
+          "context": "3rd person"
+        },
+        {
+          "text": "Do I have to bring my passport?",
+          "context": "obligation Q"
+        },
+        {
+          "text": "Does she have to study tonight?",
+          "context": "3rd person"
+        },
+        {
+          "text": "Should I help you?",
+          "context": "polite offer"
+        }
+      ],
+      "roleplay": {
+        "scenario": "Charlotte responde dúvidas suas — você pergunta com should/have to.",
+        "voiced_by": "charlotte",
+        "persona": "Charlotte",
+        "persona_outfit": "charlotte_casual",
+        "time_budget_sec": 90,
+        "opening_line": "Ask me about advice or obligations!",
+        "objectives": [
+          {
+            "id": 1,
+            "label_pt": "Pedir conselho com 'Should I'",
+            "label_en": "Ask for advice with 'Should I'",
+            "hidden_prompt": "user asks 'Should I + base?'",
+            "hint_pt": "Should I see a doctor?",
+            "hint_en": "Should I see a doctor?"
+          },
+          {
+            "id": 2,
+            "label_pt": "Perguntar obrigação com 'Do I have to'",
+            "label_en": "Ask obligation with 'Do I have to'",
+            "hidden_prompt": "user asks 'Do I have to + base?'",
+            "hint_pt": "Do I have to bring my ID?",
+            "hint_en": "Do I have to bring my ID?"
+          },
+          {
+            "id": 3,
+            "label_pt": "Outra pergunta should/have to",
+            "label_en": "Another should/have to Q",
+            "hidden_prompt": "user asks another should or have to question",
+            "hint_pt": "Should I call her?",
+            "hint_en": "Should I call her?"
+          }
+        ],
+        "closing_cue": "Charlotte fecha com \"All questions covered!\" quando obj_3 baterem.",
+        "suggested_flow": "**Suggested flow** (referencial, 6 turnos):\n\n1. **Charlotte**: \"Ask me about advice or obligations!\"\n2. **Student**: ~\"Should I see a doctor?\"\n3. **Charlotte**: \"Yes, if you feel bad.\"\n4. **Student**: ~\"Do I have to bring my ID?\"\n5. **Charlotte**: \"Yes, always.\"\n6. **Student**: ~\"Should I call her?\"\n7. **Charlotte**: \"Yes! All questions covered!\"",
+        "evaluation_focus": [
+          "Should + sujeito + base (sem do)",
+          "Do/Does + sujeito + have to + base",
+          "Inversão correta"
+        ]
+      },
+      "guided_chat": {
+        "scenario": "Charlotte responde a dúvidas práticas.",
+        "voiced_by": "charlotte",
+        "persona": "Charlotte",
+        "persona_outfit": "charlotte_casual",
+        "intro_pt": "Charlotte responde dúvidas. Pratica Should I e Do I have to questions.",
+        "opening_message": "I'm your advisor — ask me anything.",
+        "objectives": [
+          {
+            "id": 1,
+            "label_pt": "Pedir conselho",
+            "label_en": "Ask advice",
+            "hidden_prompt": "user asks 'Should I + base?'",
+            "hint_pt": "Should I take a vacation?",
+            "hint_en": "Should I take a vacation?"
+          },
+          {
+            "id": 2,
+            "label_pt": "Perguntar obrigação",
+            "label_en": "Ask obligation",
+            "hidden_prompt": "user asks 'Do I have to + base?'",
+            "hint_pt": "Do I have to study every day?",
+            "hint_en": "Do I have to study every day?"
+          },
+          {
+            "id": 3,
+            "label_pt": "Mais uma pergunta",
+            "label_en": "One more",
+            "hidden_prompt": "user asks another should/have to question",
+            "hint_pt": "Should I learn another language?",
+            "hint_en": "Should I learn another language?"
+          }
+        ],
+        "closing_cue": "Charlotte encerra com \"Advisor session done!\" quando obj_3 baterem.",
+        "suggested_script": "**Script** (referencial, 7 turnos):\n\n1. **Charlotte**: \"I'm your advisor — ask me anything.\"\n2. **Student**: \"Should I take a vacation?\"\n3. **Charlotte**: \"Definitely.\"\n4. **Student**: \"Do I have to study every day?\"\n5. **Charlotte**: \"Almost — most days.\"\n6. **Student**: \"Should I learn another language?\"\n7. **Charlotte**: \"Yes! Advisor session done!\"\n\n> N03 chat = LLM puro.\n\n---"
+      }
+    },
+    {
+      "id": "N05",
+      "title": "Dever, precisar, sugerir",
+      "sub_cefr": "A2",
+      "grammar_focus": "Integration should + have to + need to",
+      "markers": [],
+      "real_life_context": "Você combina os três modais pra falar de vida real — obrigações fortes, conselhos, necessidades.",
+      "grammar": [
+        {
+          "type": "multiple_choice",
+          "sentence": "You _____ rest more — it's a suggestion.",
+          "options": [
+            "should",
+            "have to",
+            "need to"
+          ],
+          "answer": "should",
+          "explanation": "\"Should\" = sugestão/conselho leve. \"Have to\" e \"need to\" são mais fortes."
+        },
+        {
+          "type": "multiple_choice",
+          "sentence": "I _____ work — it's my job.",
+          "options": [
+            "have to",
+            "should",
+            "can"
+          ],
+          "answer": "have to",
+          "explanation": "\"Have to\" = obrigação externa forte. Trabalho = obrigação."
+        },
+        {
+          "type": "word_bank",
+          "sentence": "You _____ go if you don't want.",
+          "choices": [
+            "don't have to",
+            "shouldn't",
+            "can't",
+            "mustn't"
+          ],
+          "answer": "don't have to",
+          "explanation": "\"Don't have to\" = não precisa, opcional. \"Shouldn't\" = não deveria (conselho)."
+        },
+        {
+          "type": "word_bank",
+          "sentence": "She _____ buy groceries — we're out of milk.",
+          "choices": [
+            "needs to",
+            "has to",
+            "should",
+            "will"
+          ],
+          "answer": "needs to",
+          "explanation": "\"Needs to\" = precisa. Outras opções também funcionam mas \"needs to\" é mais natural pra necessidade prática."
+        },
+        {
+          "type": "fill_gap",
+          "sentence": "I _____ see a doctor about this.",
+          "hint": "Conselho leve",
+          "answer": "should",
+          "explanation": "\"I should see\" — sugestão suave. \"Have to\" seria mais forte."
+        },
+        {
+          "type": "fill_gap",
+          "sentence": "She _____ leave at 7 — strict company rule.",
+          "hint": "Obrigação forte",
+          "answer": "has to",
+          "explanation": "\"She has to leave\" — obrigação imposta."
+        },
+        {
+          "type": "fill_gap",
+          "sentence": "We _____ buy more bread.",
+          "hint": "Necessidade prática",
+          "answer": "need to",
+          "explanation": "\"We need to buy\" — necessidade. \"Need to\" é o mais comum pra coisas práticas."
+        },
+        {
+          "type": "fix_error",
+          "sentence": "You should to study.",
+          "hint": "Sem \"to\" após should",
+          "answer": "You should study.",
+          "explanation": "Modal + base, sem \"to\": \"should study\"."
+        },
+        {
+          "type": "fix_error",
+          "sentence": "She have to leave.",
+          "hint": "3ª pessoa",
+          "answer": "She has to leave.",
+          "explanation": "She → \"has to\"."
+        },
+        {
+          "type": "read_answer",
+          "passage": "You should rest. I have to work tomorrow. We need to buy more milk. She doesn't have to come if she's busy.",
+          "question": "What does the speaker have to do tomorrow?",
+          "answer": "work",
+          "explanation": "The text says \"I have to work tomorrow\"."
+        }
+      ],
+      "listening_speaking": [
+        {
+          "text": "You should rest more.",
+          "context": "should (advice)"
+        },
+        {
+          "text": "I have to work tomorrow.",
+          "context": "have to (obligation)"
+        },
+        {
+          "text": "We need to buy bread.",
+          "context": "need to (necessity)"
+        },
+        {
+          "text": "She doesn't have to come.",
+          "context": "don't have to (optional)"
+        },
+        {
+          "text": "You shouldn't worry so much.",
+          "context": "shouldn't (negative advice)"
+        }
+      ],
+      "roleplay": {
+        "scenario": "Charlotte conta sua semana — você dá conselho, fala obrigações e necessidades.",
+        "voiced_by": "charlotte",
+        "persona": "Charlotte",
+        "persona_outfit": "charlotte_casual",
+        "time_budget_sec": 90,
+        "opening_line": "My week is crazy — what should I do?",
+        "objectives": [
+          {
+            "id": 1,
+            "label_pt": "Dar conselho com should",
+            "label_en": "Give advice with should",
+            "hidden_prompt": "user gives advice with 'You should + base'",
+            "hint_pt": "You should rest.",
+            "hint_en": "You should rest."
+          },
+          {
+            "id": 2,
+            "label_pt": "Mencionar obrigação sua (have to)",
+            "label_en": "Mention your obligation (have to)",
+            "hidden_prompt": "user uses 'I have to + base'",
+            "hint_pt": "I have to study too.",
+            "hint_en": "I have to study too."
+          },
+          {
+            "id": 3,
+            "label_pt": "Mencionar necessidade (need to)",
+            "label_en": "Mention a need (need to)",
+            "hidden_prompt": "user uses 'We need to + base' or 'I need to + base'",
+            "hint_pt": "We need to take breaks.",
+            "hint_en": "We need to take breaks."
+          }
+        ],
+        "closing_cue": "Charlotte fecha com \"Three modals mastered!\" quando obj_3 baterem.",
+        "suggested_flow": "**Suggested flow** (referencial, 6 turnos):\n\n1. **Charlotte**: \"My week is crazy — what should I do?\"\n2. **Student**: ~\"You should rest.\"\n3. **Charlotte**: \"But I have so much work.\"\n4. **Student**: ~\"I have to study too.\"\n5. **Charlotte**: \"Misery loves company. What now?\"\n6. **Student**: ~\"We need to take breaks.\"\n7. **Charlotte**: \"Three modals mastered!\"",
+        "evaluation_focus": [
+          "Should pra conselho",
+          "Have to pra obrigação",
+          "Need to pra necessidade"
+        ]
+      },
+      "guided_chat": {
+        "scenario": "Charlotte abre chat de planejamento — você integra os três.",
+        "voiced_by": "charlotte",
+        "persona": "Charlotte",
+        "persona_outfit": "charlotte_casual",
+        "intro_pt": "Charlotte abre chat de vida real. Integra should / have to / need to.",
+        "opening_message": "Tell me what's on your plate this week.",
+        "objectives": [
+          {
+            "id": 1,
+            "label_pt": "Mencionar obrigação",
+            "label_en": "Mention obligation",
+            "hidden_prompt": "user uses 'I have to + base'",
+            "hint_pt": "I have to finish a report.",
+            "hint_en": "I have to finish a report."
+          },
+          {
+            "id": 2,
+            "label_pt": "Mencionar necessidade",
+            "label_en": "Mention necessity",
+            "hidden_prompt": "user uses 'I need to + base'",
+            "hint_pt": "I need to call my doctor.",
+            "hint_en": "I need to call my doctor."
+          },
+          {
+            "id": 3,
+            "label_pt": "Dar conselho à Charlotte",
+            "label_en": "Give Charlotte advice",
+            "hidden_prompt": "user uses 'You should + base' for Charlotte",
+            "hint_pt": "You should take time off.",
+            "hint_en": "You should take time off."
+          }
+        ],
+        "closing_cue": "Charlotte encerra com \"Real-life talk!\" quando obj_3 baterem.",
+        "suggested_script": "**Script** (referencial, 7 turnos):\n\n1. **Charlotte**: \"Tell me what's on your plate this week.\"\n2. **Student**: \"I have to finish a report.\"\n3. **Charlotte**: \"Tough. Anything else?\"\n4. **Student**: \"I need to call my doctor.\"\n5. **Charlotte**: \"Practical.\"\n6. **Student**: \"You should take time off.\"\n7. **Charlotte**: \"Maybe! Real-life talk!\"\n\n> N04 chat = LLM puro.\n\n---"
+      }
+    }
+  ],
+  "cross_unit_consolidation": [
+    "should / shouldn't (conselho leve)",
+    "have to / has to (obrigação forte)",
+    "don't have to / doesn't have to (ausência de obrigação)",
+    "need to (necessidade prática)",
+    "Should I...? / Do I have to...? (perguntas)",
+    "Diferenciar grau: should (sugestão) < need to < have to (obrigação)"
+  ]
+}

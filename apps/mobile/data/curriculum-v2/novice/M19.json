@@ -1,0 +1,1020 @@
+{
+  "id": "M19",
+  "title": "O futuro",
+  "level": "Novice",
+  "block": "A2",
+  "units_range": "N01–N05",
+  "theme": "Will — previsões, decisões espontâneas, ofertas",
+  "goal": "Aluno sai sabendo usar \"will\" pra previsões, decisões espontâneas e promessas, e distinguir de \"going to\".",
+  "connects_to": "M20 (Conselhos) — depois do futuro, aprende conselhos com should/have to.",
+  "module_chunks": [
+    "I'll / you'll / he'll / she'll / we'll / they'll",
+    "I will / She will (forma completa)",
+    "I won't / She won't (negativa)",
+    "Will I...? / Will she...? / Will you...?",
+    "I think it will rain.",
+    "I'll help you / I'll do it",
+    "I promise I'll...",
+    "Maybe / probably / I think + will",
+    "next year / in the future / one day"
+  ],
+  "units": [
+    {
+      "id": "N01",
+      "title": "Vai chover",
+      "sub_cefr": "A2",
+      "grammar_focus": "Will for predictions",
+      "markers": [
+        "denso"
+      ],
+      "real_life_context": "Você faz previsões sobre o tempo, futuro próximo ou opiniões sobre o que vai acontecer.",
+      "grammar": [
+        {
+          "type": "multiple_choice",
+          "sentence": "I think it _____ rain tomorrow.",
+          "options": [
+            "will",
+            "is going to",
+            "does"
+          ],
+          "answer": "will",
+          "explanation": "\"Will\" pra previsões baseadas em opinião/feeling. \"I think it will rain\"."
+        },
+        {
+          "type": "multiple_choice",
+          "sentence": "She _____ probably come.",
+          "options": [
+            "will",
+            "is going",
+            "does"
+          ],
+          "answer": "will",
+          "explanation": "\"She will probably come\" — predição com \"probably\". Will pra suposição."
+        },
+        {
+          "type": "word_bank",
+          "sentence": "They _____ win the game!",
+          "choices": [
+            "will",
+            "are going",
+            "do",
+            "can"
+          ],
+          "answer": "will",
+          "explanation": "\"They will win\" — predição confiante. Will sem auxiliares."
+        },
+        {
+          "type": "word_bank",
+          "sentence": "It _____ be a great year.",
+          "choices": [
+            "will",
+            "is going",
+            "does",
+            "can"
+          ],
+          "answer": "will",
+          "explanation": "\"It will be\" — previsão positiva genérica."
+        },
+        {
+          "type": "fill_gap",
+          "sentence": "I think she _____ love this gift.",
+          "hint": "Modal de previsão",
+          "answer": "will",
+          "explanation": "\"She will love\" — previsão. Will + base."
+        },
+        {
+          "type": "fill_gap",
+          "sentence": "Maybe it _____ snow.",
+          "hint": "Previsão de tempo com \"maybe\"",
+          "answer": "will",
+          "explanation": "\"Maybe it will snow\" — previsão incerta. Will + base."
+        },
+        {
+          "type": "fill_gap",
+          "sentence": "She _____ be 30 next year.",
+          "hint": "Previsão de fato futuro",
+          "answer": "will",
+          "explanation": "\"She will be 30\" — futuro certo, will + base."
+        },
+        {
+          "type": "fix_error",
+          "sentence": "I will to call you.",
+          "hint": "Sem \"to\" após will",
+          "answer": "I will call you.",
+          "explanation": "Will + base (sem \"to\"): \"will call\", não \"will to call\"."
+        },
+        {
+          "type": "fix_error",
+          "sentence": "She will rains.",
+          "hint": "Sujeito errado e verbo com -s",
+          "answer": "It will rain.",
+          "explanation": "Chuva é \"it\". Will + base \"rain\" (sem -s mesmo em 3ª pessoa)."
+        },
+        {
+          "type": "read_answer",
+          "passage": "I think it will rain tomorrow. She will probably stay home. We will all watch a movie together.",
+          "question": "What will the speaker do tomorrow?",
+          "answer": "watch a movie",
+          "explanation": "The text says \"We will all watch a movie together\"."
+        }
+      ],
+      "listening_speaking": [
+        {
+          "text": "I think it will rain.",
+          "context": "weather prediction"
+        },
+        {
+          "text": "She will probably come.",
+          "context": "probability"
+        },
+        {
+          "text": "They will win the game.",
+          "context": "confident prediction"
+        },
+        {
+          "text": "It will be a great year.",
+          "context": "positive prediction"
+        },
+        {
+          "text": "I think she'll love it.",
+          "context": "contracted (she'll)"
+        }
+      ],
+      "roleplay": {
+        "scenario": "Charlotte pede previsões sobre tempo, fim de semana e futuro.",
+        "voiced_by": "charlotte",
+        "persona": "Charlotte",
+        "persona_outfit": "charlotte_casual",
+        "time_budget_sec": 90,
+        "opening_line": "Three predictions — go!",
+        "objectives": [
+          {
+            "id": 1,
+            "label_pt": "Previsão do tempo",
+            "label_en": "Weather prediction",
+            "hidden_prompt": "user makes weather prediction with 'I think it will + verb base' or 'It will + verb base'",
+            "hint_pt": "I think it will rain tomorrow.",
+            "hint_en": "I think it will rain tomorrow."
+          },
+          {
+            "id": 2,
+            "label_pt": "Previsão sobre pessoa/evento",
+            "label_en": "Prediction about person/event",
+            "hidden_prompt": "user predicts with 'She/He/They will + base'",
+            "hint_pt": "She will love the party.",
+            "hint_en": "She will love the party."
+          },
+          {
+            "id": 3,
+            "label_pt": "Previsão sobre o futuro pessoal",
+            "label_en": "Prediction about own future",
+            "hidden_prompt": "user predicts with 'I will + base + future time'",
+            "hint_pt": "I will be 30 next year.",
+            "hint_en": "I will be 30 next year."
+          }
+        ],
+        "closing_cue": "Charlotte fecha com \"Fortune teller!\" quando obj_3 baterem.",
+        "suggested_flow": "**Suggested flow** (referencial, 6 turnos):\n\n1. **Charlotte**: \"Three predictions — go!\"\n2. **Student**: ~\"I think it will rain tomorrow.\"\n3. **Charlotte**: \"Person?\"\n4. **Student**: ~\"She will love the party.\"\n5. **Charlotte**: \"Own future?\"\n6. **Student**: ~\"I will be 30 next year.\"\n7. **Charlotte**: \"Fortune teller!\"",
+        "evaluation_focus": [
+          "Will + base (sem -s, sem to)",
+          "Marcadores como \"I think\", \"maybe\", \"probably\"",
+          "Contrações naturais"
+        ]
+      },
+      "guided_chat": {
+        "scenario": "Charlotte conversa sobre como você imagina o ano que vem.",
+        "voiced_by": "charlotte",
+        "persona": "Charlotte",
+        "persona_outfit": "charlotte_casual",
+        "intro_pt": "Charlotte abre chat de previsões pro ano. Pratica will + verbo base.",
+        "opening_message": "What will happen next year?",
+        "objectives": [
+          {
+            "id": 1,
+            "label_pt": "Previsão sobre você",
+            "label_en": "Prediction about you",
+            "hidden_prompt": "user uses 'I will/I'll + base + time'",
+            "hint_pt": "I'll travel next year.",
+            "hint_en": "I'll travel next year."
+          },
+          {
+            "id": 2,
+            "label_pt": "Previsão sobre o mundo ou família",
+            "label_en": "Prediction about world/family",
+            "hidden_prompt": "user uses 'X will + base'",
+            "hint_pt": "My sister will move to NYC.",
+            "hint_en": "My sister will move to NYC."
+          },
+          {
+            "id": 3,
+            "label_pt": "Perguntar à Charlotte",
+            "label_en": "Ask Charlotte",
+            "hidden_prompt": "user asks 'How about you?'",
+            "hint_pt": "How about you?",
+            "hint_en": "How about you?"
+          }
+        ],
+        "closing_cue": "Charlotte encerra com \"Future glimpsed!\" quando obj_3 baterem.",
+        "suggested_script": "**Script** (referencial, 7 turnos):\n\n1. **Charlotte**: \"What will happen next year?\"\n2. **Student**: \"I'll travel next year.\"\n3. **Charlotte**: \"Cool.\"\n4. **Student**: \"My sister will move to NYC.\"\n5. **Charlotte**: \"Big change.\"\n6. **Student**: \"How about you?\"\n7. **Charlotte**: \"I'll learn a new language. Future glimpsed!\"\n\n> N01 chat = LLM puro.\n\n---"
+      }
+    },
+    {
+      "id": "N02",
+      "title": "Não vou, vou sim",
+      "sub_cefr": "A2",
+      "grammar_focus": "Will negative (won't) + spontaneous decisions",
+      "markers": [],
+      "real_life_context": "Você toma decisões na hora ou faz promessas espontâneas.",
+      "grammar": [
+        {
+          "type": "multiple_choice",
+          "sentence": "I _____ help you with that.",
+          "options": [
+            "'ll",
+            "am",
+            "do"
+          ],
+          "answer": "'ll",
+          "explanation": "Decisão espontânea: \"I'll help\" (I will). Forma contraída padrão pra decisões na hora."
+        },
+        {
+          "type": "multiple_choice",
+          "sentence": "She _____ come if it rains.",
+          "options": [
+            "won't",
+            "doesn't",
+            "isn't"
+          ],
+          "answer": "won't",
+          "explanation": "\"Won't\" = will not. \"She won't come\" = ela não vai vir."
+        },
+        {
+          "type": "word_bank",
+          "sentence": "I _____ call you tonight.",
+          "choices": [
+            "will",
+            "am will",
+            "do will",
+            "would"
+          ],
+          "answer": "will",
+          "explanation": "\"I will call\" — decisão."
+        },
+        {
+          "type": "word_bank",
+          "sentence": "He _____ tell anyone.",
+          "choices": [
+            "won't",
+            "doesn't",
+            "isn't",
+            "can't"
+          ],
+          "answer": "won't",
+          "explanation": "\"He won't tell\" — promessa negativa."
+        },
+        {
+          "type": "fill_gap",
+          "sentence": "I _____ get the door!",
+          "hint": "Decisão espontânea com I (contraída)",
+          "answer": "'ll",
+          "explanation": "\"I'll get it!\" — decisão na hora. Forma curta natural."
+        },
+        {
+          "type": "fill_gap",
+          "sentence": "She _____ be late again.",
+          "hint": "Negativa de will (contraída)",
+          "answer": "won't",
+          "explanation": "\"She won't be late\" — won't = will not."
+        },
+        {
+          "type": "fill_gap",
+          "sentence": "I promise I _____ tell anyone.",
+          "hint": "Negativa \"won't\"",
+          "answer": "won't",
+          "explanation": "\"I won't tell\" — promessa de não fazer."
+        },
+        {
+          "type": "fix_error",
+          "sentence": "I will not to help.",
+          "hint": "Sem \"to\" após will",
+          "answer": "I will not help. (or: I won't help.)",
+          "explanation": "Will + base, sem \"to\". \"I won't help\" ou \"I will not help\"."
+        },
+        {
+          "type": "fix_error",
+          "sentence": "She willn't come.",
+          "hint": "Contração correta de will not",
+          "answer": "She won't come.",
+          "explanation": "\"Willn't\" não existe. Forma correta: \"won't\" (will + not)."
+        },
+        {
+          "type": "read_answer",
+          "passage": "It's raining. I'll get an umbrella! She won't go out today. I promise I'll call you when I arrive.",
+          "question": "What does the speaker promise?",
+          "answer": "I'll call you (when I arrive) (or \"to call\")",
+          "explanation": "The text says \"I promise I'll call you\"."
+        }
+      ],
+      "listening_speaking": [
+        {
+          "text": "I'll help you.",
+          "context": "spontaneous decision"
+        },
+        {
+          "text": "She won't come.",
+          "context": "negative"
+        },
+        {
+          "text": "I'll call you tonight.",
+          "context": "promise"
+        },
+        {
+          "text": "He won't tell anyone.",
+          "context": "negative promise"
+        },
+        {
+          "text": "I'll get it!",
+          "context": "spontaneous (answering door/phone)"
+        }
+      ],
+      "roleplay": {
+        "scenario": "Charlotte apresenta situações e você reage espontaneamente com will.",
+        "voiced_by": "charlotte",
+        "persona": "Charlotte",
+        "persona_outfit": "charlotte_casual",
+        "time_budget_sec": 90,
+        "opening_line": "The phone is ringing! What do you do?",
+        "objectives": [
+          {
+            "id": 1,
+            "label_pt": "Decisão espontânea (I'll)",
+            "label_en": "Spontaneous decision (I'll)",
+            "hidden_prompt": "user reacts with 'I'll + verb base' (get it, answer, help, etc.)",
+            "hint_pt": "I'll get it!",
+            "hint_en": "I'll get it!"
+          },
+          {
+            "id": 2,
+            "label_pt": "Promessa (I'll)",
+            "label_en": "Promise (I'll)",
+            "hidden_prompt": "user makes a promise with 'I promise I'll + base' or 'I'll + base'",
+            "hint_pt": "I'll call you later.",
+            "hint_en": "I'll call you later."
+          },
+          {
+            "id": 3,
+            "label_pt": "Negativa com won't",
+            "label_en": "Negative with won't",
+            "hidden_prompt": "user uses 'I won't + base'",
+            "hint_pt": "I won't tell anyone.",
+            "hint_en": "I won't tell anyone."
+          }
+        ],
+        "closing_cue": "Charlotte fecha com \"Quick decisions!\" quando obj_3 baterem.",
+        "suggested_flow": "**Suggested flow** (referencial, 6 turnos):\n\n1. **Charlotte**: \"The phone is ringing! What do you do?\"\n2. **Student**: ~\"I'll get it!\"\n3. **Charlotte**: \"And tell your friend later?\"\n4. **Student**: ~\"I'll call you later.\"\n5. **Charlotte**: \"Promise to keep a secret?\"\n6. **Student**: ~\"I won't tell anyone.\"\n7. **Charlotte**: \"Quick decisions!\"",
+        "evaluation_focus": [
+          "I'll contracted natural",
+          "won't pra negativa",
+          "Sem \"I will to\" / \"willn't\""
+        ]
+      },
+      "guided_chat": {
+        "scenario": "Charlotte simula situações de decisão rápida via chat.",
+        "voiced_by": "charlotte",
+        "persona": "Charlotte",
+        "persona_outfit": "charlotte_casual",
+        "intro_pt": "Charlotte abre chat de situações pra reagir com I'll/won't.",
+        "opening_message": "Quick — I need help moving!",
+        "objectives": [
+          {
+            "id": 1,
+            "label_pt": "Reagir oferecendo ajuda (I'll)",
+            "label_en": "Offer help",
+            "hidden_prompt": "user uses 'I'll help' or 'I'll + base'",
+            "hint_pt": "I'll help you.",
+            "hint_en": "I'll help you."
+          },
+          {
+            "id": 2,
+            "label_pt": "Fazer promessa",
+            "label_en": "Make a promise",
+            "hidden_prompt": "user uses 'I promise I'll + base' or 'I'll + base'",
+            "hint_pt": "I'll be there at five.",
+            "hint_en": "I'll be there at five."
+          },
+          {
+            "id": 3,
+            "label_pt": "Negativa com won't",
+            "label_en": "Negative with won't",
+            "hidden_prompt": "user uses 'I won't + base'",
+            "hint_pt": "I won't forget.",
+            "hint_en": "I won't forget."
+          }
+        ],
+        "closing_cue": "Charlotte encerra com \"Trustworthy friend!\" quando obj_3 baterem.",
+        "suggested_script": "**Script** (referencial, 7 turnos):\n\n1. **Charlotte**: \"Quick — I need help moving!\"\n2. **Student**: \"I'll help you.\"\n3. **Charlotte**: \"Awesome. When?\"\n4. **Student**: \"I'll be there at five.\"\n5. **Charlotte**: \"Don't forget!\"\n6. **Student**: \"I won't forget.\"\n7. **Charlotte**: \"Trustworthy friend!\"\n\n> N02 chat = LLM puro.\n\n---"
+      }
+    },
+    {
+      "id": "N03",
+      "title": "Going to vs Will",
+      "sub_cefr": "A2",
+      "grammar_focus": "Distinguishing going to (plans) vs will (predictions/spontaneous)",
+      "markers": [
+        "denso"
+      ],
+      "real_life_context": "Você escolhe entre \"going to\" (planejado) e \"will\" (espontâneo) corretamente.",
+      "grammar": [
+        {
+          "type": "multiple_choice",
+          "sentence": "I have a ticket — I _____ travel tomorrow.",
+          "options": [
+            "'m going to",
+            "will",
+            "am"
+          ],
+          "answer": "'m going to",
+          "explanation": "\"I have a ticket\" = plano firme → going to. \"I'm going to travel\"."
+        },
+        {
+          "type": "multiple_choice",
+          "sentence": "The phone is ringing — I _____ get it!",
+          "options": [
+            "'ll",
+            "'m going to",
+            "am"
+          ],
+          "answer": "'ll",
+          "explanation": "Decisão espontânea → will. \"I'll get it!\"."
+        },
+        {
+          "type": "word_bank",
+          "sentence": "I made plans — I _____ visit my friend Saturday.",
+          "choices": [
+            "'m going to",
+            "'ll",
+            "am",
+            "do"
+          ],
+          "answer": "'m going to",
+          "explanation": "Plano feito → going to."
+        },
+        {
+          "type": "word_bank",
+          "sentence": "Look at the clouds — it _____ rain.",
+          "choices": [
+            "will",
+            "is going to",
+            "is",
+            "does"
+          ],
+          "answer": "is going to",
+          "explanation": "Predição com evidência visível → going to (mais comum). \"It is going to rain\" — vendo as nuvens."
+        },
+        {
+          "type": "fill_gap",
+          "sentence": "I think she _____ love the surprise.",
+          "hint": "Predição com \"I think\"",
+          "answer": "will",
+          "explanation": "\"I think + will\" pra opinião sobre futuro."
+        },
+        {
+          "type": "fill_gap",
+          "sentence": "I _____ go to the gym every day this week.",
+          "hint": "Plano feito de antemão",
+          "answer": "'m going to (or am going to)",
+          "explanation": "\"I'm going to go\" — plano firme."
+        },
+        {
+          "type": "fill_gap",
+          "sentence": "Oh, I forgot my wallet! I _____ run home.",
+          "hint": "Decisão na hora",
+          "answer": "'ll (or will)",
+          "explanation": "\"I'll run home\" — decisão espontânea agora."
+        },
+        {
+          "type": "fix_error",
+          "sentence": "I have a ticket — I will travel tomorrow.",
+          "hint": "Plano firme pede going to",
+          "answer": "I have a ticket — I'm going to travel tomorrow.",
+          "explanation": "\"Have a ticket\" indica plano feito → use going to."
+        },
+        {
+          "type": "fix_error",
+          "sentence": "The doorbell — I'm going to answer it.",
+          "hint": "Decisão espontânea pede will",
+          "answer": "The doorbell — I'll answer it.",
+          "explanation": "Reação imediata = will (spontaneous), não going to. \"I'll answer\"."
+        },
+        {
+          "type": "read_answer",
+          "passage": "I'm going to travel next month — I have tickets. But right now? Oh, the phone! I'll get it. I think it'll be my mom.",
+          "question": "Why is the speaker going to travel (planned vs spontaneous)?",
+          "answer": "planned (or \"tickets\" or \"has tickets\")",
+          "explanation": "The text says \"I have tickets\" — indicating a planned trip with going to."
+        }
+      ],
+      "listening_speaking": [
+        {
+          "text": "I'm going to travel tomorrow.",
+          "context": "planned"
+        },
+        {
+          "text": "I'll get the door!",
+          "context": "spontaneous"
+        },
+        {
+          "text": "I think she'll love it.",
+          "context": "prediction"
+        },
+        {
+          "text": "Look at the clouds — it's going to rain.",
+          "context": "visible evidence"
+        },
+        {
+          "text": "Oh, I forgot — I'll go back.",
+          "context": "spontaneous reaction"
+        }
+      ],
+      "roleplay": {
+        "scenario": "Charlotte cria situações onde você escolhe entre going to e will.",
+        "voiced_by": "charlotte",
+        "persona": "Charlotte",
+        "persona_outfit": "charlotte_casual",
+        "time_budget_sec": 90,
+        "opening_line": "I'll give you situations — choose going to or will.",
+        "objectives": [
+          {
+            "id": 1,
+            "label_pt": "Plano com going to",
+            "label_en": "Plan with going to",
+            "hidden_prompt": "user uses 'I'm going to + base' for a planned event",
+            "hint_pt": "I'm going to travel next week.",
+            "hint_en": "I'm going to travel next week."
+          },
+          {
+            "id": 2,
+            "label_pt": "Decisão espontânea com will",
+            "label_en": "Spontaneous decision with will",
+            "hidden_prompt": "user uses 'I'll + base' for spontaneous reaction",
+            "hint_pt": "I'll get it!",
+            "hint_en": "I'll get it!"
+          },
+          {
+            "id": 3,
+            "label_pt": "Predição com will",
+            "label_en": "Prediction with will",
+            "hidden_prompt": "user uses 'I think + will + base' for prediction",
+            "hint_pt": "I think it'll rain.",
+            "hint_en": "I think it'll rain."
+          }
+        ],
+        "closing_cue": "Charlotte fecha com \"Choice mastered!\" quando obj_3 baterem.",
+        "suggested_flow": "**Suggested flow** (referencial, 6 turnos):\n\n1. **Charlotte**: \"I'll give you situations — choose going to or will.\"\n2. **Student**: ~\"I'm going to travel next week.\"\n3. **Charlotte**: \"Phone rings?\"\n4. **Student**: ~\"I'll get it!\"\n5. **Charlotte**: \"Sky looks dark?\"\n6. **Student**: ~\"I think it'll rain.\"\n7. **Charlotte**: \"Choice mastered!\"",
+        "evaluation_focus": [
+          "Going to pra plano firme",
+          "Will pra espontâneo/predição",
+          "Distinção clara"
+        ]
+      },
+      "guided_chat": {
+        "scenario": "Charlotte explora seu uso de going to e will.",
+        "voiced_by": "charlotte",
+        "persona": "Charlotte",
+        "persona_outfit": "charlotte_casual",
+        "intro_pt": "Charlotte testa sua intuição going to vs will. Pratica os dois.",
+        "opening_message": "Plan something AND react to something.",
+        "objectives": [
+          {
+            "id": 1,
+            "label_pt": "Plano com going to",
+            "label_en": "Plan with going to",
+            "hidden_prompt": "user uses 'I'm going to + base'",
+            "hint_pt": "I'm going to study tonight.",
+            "hint_en": "I'm going to study tonight."
+          },
+          {
+            "id": 2,
+            "label_pt": "Reação com will",
+            "label_en": "Reaction with will",
+            "hidden_prompt": "user uses 'I'll + base'",
+            "hint_pt": "I'll help if you need.",
+            "hint_en": "I'll help if you need."
+          },
+          {
+            "id": 3,
+            "label_pt": "Perguntar à Charlotte",
+            "label_en": "Ask Charlotte",
+            "hidden_prompt": "user asks 'How about you?'",
+            "hint_pt": "How about you?",
+            "hint_en": "How about you?"
+          }
+        ],
+        "closing_cue": "Charlotte encerra com \"Two-tense mastery!\" quando obj_3 baterem.",
+        "suggested_script": "**Script** (referencial, 7 turnos):\n\n1. **Charlotte**: \"Plan something AND react to something.\"\n2. **Student**: \"I'm going to study tonight.\"\n3. **Charlotte**: \"Cool.\"\n4. **Student**: \"I'll help if you need.\"\n5. **Charlotte**: \"Thanks!\"\n6. **Student**: \"How about you?\"\n7. **Charlotte**: \"I'm going to read, and I'll text if I'm bored. Two-tense mastery!\"\n\n> N03 chat = LLM puro.\n\n---"
+      }
+    },
+    {
+      "id": "N04",
+      "title": "Vou te ajudar",
+      "sub_cefr": "A2",
+      "grammar_focus": "Will for offers, promises, requests",
+      "markers": [],
+      "real_life_context": "Você oferece ajuda, faz promessas ou pede algo educadamente.",
+      "grammar": [
+        {
+          "type": "multiple_choice",
+          "sentence": "_____ you help me, please?",
+          "options": [
+            "Will",
+            "Are",
+            "Do"
+          ],
+          "answer": "Will",
+          "explanation": "\"Will you help me?\" — pedido educado usando will. Mais formal que \"Can you...?\"."
+        },
+        {
+          "type": "multiple_choice",
+          "sentence": "I _____ pay for this.",
+          "options": [
+            "'ll",
+            "am",
+            "do"
+          ],
+          "answer": "'ll",
+          "explanation": "Oferta espontânea: \"I'll pay\" = \"Eu pago\" (decisão na hora)."
+        },
+        {
+          "type": "word_bank",
+          "sentence": "_____ I open the window?",
+          "choices": [
+            "Shall",
+            "Will",
+            "Are",
+            "Do"
+          ],
+          "answer": "Shall",
+          "explanation": "\"Shall I + base?\" — oferta polida (mais britânica). Equivale a \"Should I open the window?\"."
+        },
+        {
+          "type": "word_bank",
+          "sentence": "I promise I _____ be on time.",
+          "choices": [
+            "will",
+            "'m going",
+            "am",
+            "do"
+          ],
+          "answer": "will",
+          "explanation": "\"I promise I will\" — promessa formal. \"I'll\" também."
+        },
+        {
+          "type": "fill_gap",
+          "sentence": "I _____ get you a coffee.",
+          "hint": "Oferta espontânea (contraída)",
+          "answer": "'ll",
+          "explanation": "\"I'll get you\" — oferta."
+        },
+        {
+          "type": "fill_gap",
+          "sentence": "_____ you open the door, please?",
+          "hint": "Pedido educado",
+          "answer": "Will",
+          "explanation": "\"Will you open?\" — pedido polido."
+        },
+        {
+          "type": "fill_gap",
+          "sentence": "I promise I _____ tell anyone.",
+          "hint": "Promessa negativa",
+          "answer": "won't",
+          "explanation": "\"I won't tell\" — promessa de não fazer."
+        },
+        {
+          "type": "fix_error",
+          "sentence": "Will you to help?",
+          "hint": "Sem \"to\" após will",
+          "answer": "Will you help?",
+          "explanation": "Will + base, sem \"to\". \"Will you help?\", não \"Will you to help?\"."
+        },
+        {
+          "type": "fix_error",
+          "sentence": "I am going help you.",
+          "hint": "Going to ou will, escolha um",
+          "answer": "I'll help you.",
+          "explanation": "Pra oferta espontânea, \"I'll help\" (will). Ou plano: \"I'm going to help\"."
+        },
+        {
+          "type": "read_answer",
+          "passage": "Will you help me move? Sure, I'll come tomorrow. I promise I'll bring snacks too!",
+          "question": "What does the speaker promise to bring?",
+          "answer": "snacks",
+          "explanation": "The text says \"I'll bring snacks too\"."
+        }
+      ],
+      "listening_speaking": [
+        {
+          "text": "Will you help me?",
+          "context": "polite request"
+        },
+        {
+          "text": "I'll pay for this.",
+          "context": "offer"
+        },
+        {
+          "text": "Shall I open the window?",
+          "context": "polite offer"
+        },
+        {
+          "text": "I promise I'll be on time.",
+          "context": "formal promise"
+        },
+        {
+          "text": "I'll get you a coffee.",
+          "context": "spontaneous offer"
+        }
+      ],
+      "roleplay": {
+        "scenario": "Charlotte pede ajuda, faz oferta — você responde com will.",
+        "voiced_by": "charlotte",
+        "persona": "Charlotte",
+        "persona_outfit": "charlotte_casual",
+        "time_budget_sec": 90,
+        "opening_line": "Will you help me with something?",
+        "objectives": [
+          {
+            "id": 1,
+            "label_pt": "Aceitar com 'I'll'",
+            "label_en": "Accept with 'I'll'",
+            "hidden_prompt": "user accepts with 'I'll + base'",
+            "hint_pt": "Sure, I'll help.",
+            "hint_en": "Sure, I'll help."
+          },
+          {
+            "id": 2,
+            "label_pt": "Fazer uma promessa",
+            "label_en": "Make a promise",
+            "hidden_prompt": "user makes promise with 'I'll + base'",
+            "hint_pt": "I'll be there at five.",
+            "hint_en": "I'll be there at five."
+          },
+          {
+            "id": 3,
+            "label_pt": "Pedir ajuda em troca",
+            "label_en": "Ask for help in return",
+            "hidden_prompt": "user asks 'Will you + base?'",
+            "hint_pt": "Will you bring snacks?",
+            "hint_en": "Will you bring snacks?"
+          }
+        ],
+        "closing_cue": "Charlotte fecha com \"Teamwork!\" quando obj_3 baterem.",
+        "suggested_flow": "**Suggested flow** (referencial, 6 turnos):\n\n1. **Charlotte**: \"Will you help me with something?\"\n2. **Student**: ~\"Sure, I'll help.\"\n3. **Charlotte**: \"When?\"\n4. **Student**: ~\"I'll be there at five.\"\n5. **Charlotte**: \"Need anything in return?\"\n6. **Student**: ~\"Will you bring snacks?\"\n7. **Charlotte**: \"Sure. Teamwork!\"",
+        "evaluation_focus": [
+          "\"I'll\" oferecendo",
+          "\"Will you\" pedindo",
+          "Sem \"to\" após will"
+        ]
+      },
+      "guided_chat": {
+        "scenario": "Charlotte planeja um pequeno evento e você se compromete.",
+        "voiced_by": "charlotte",
+        "persona": "Charlotte",
+        "persona_outfit": "charlotte_casual",
+        "intro_pt": "Charlotte abre chat de cooperação. Pratica ofertas, promessas e pedidos com will.",
+        "opening_message": "Will you come to my party?",
+        "objectives": [
+          {
+            "id": 1,
+            "label_pt": "Aceitar o convite",
+            "label_en": "Accept the invite",
+            "hidden_prompt": "user accepts with 'I'll come' or 'Yes, I will'",
+            "hint_pt": "Yes, I'll come.",
+            "hint_en": "Yes, I'll come."
+          },
+          {
+            "id": 2,
+            "label_pt": "Oferecer trazer algo",
+            "label_en": "Offer to bring something",
+            "hidden_prompt": "user uses 'I'll bring + something'",
+            "hint_pt": "I'll bring a cake.",
+            "hint_en": "I'll bring a cake."
+          },
+          {
+            "id": 3,
+            "label_pt": "Perguntar se precisa de mais ajuda",
+            "label_en": "Ask if she needs more help",
+            "hidden_prompt": "user asks 'Will you + base?' or 'What else?'",
+            "hint_pt": "Will you need help setting up?",
+            "hint_en": "Will you need help setting up?"
+          }
+        ],
+        "closing_cue": "Charlotte encerra com \"Best friend!\" quando obj_3 baterem.",
+        "suggested_script": "**Script** (referencial, 7 turnos):\n\n1. **Charlotte**: \"Will you come to my party?\"\n2. **Student**: \"Yes, I'll come.\"\n3. **Charlotte**: \"Anything to share?\"\n4. **Student**: \"I'll bring a cake.\"\n5. **Charlotte**: \"Sweet.\"\n6. **Student**: \"Will you need help setting up?\"\n7. **Charlotte**: \"Yes please! Best friend!\"\n\n> N04 chat = LLM puro.\n\n---"
+      }
+    },
+    {
+      "id": "N05",
+      "title": "Imagino que sim",
+      "sub_cefr": "A2",
+      "grammar_focus": "Will integrated with going to + predictions",
+      "markers": [],
+      "real_life_context": "Você compartilha visão integrada do futuro próximo e distante.",
+      "grammar": [
+        {
+          "type": "multiple_choice",
+          "sentence": "I _____ go to bed early tonight.",
+          "options": [
+            "'m going to",
+            "will",
+            "am"
+          ],
+          "answer": "'m going to",
+          "explanation": "Plano firme → going to."
+        },
+        {
+          "type": "multiple_choice",
+          "sentence": "I think AI _____ change the world.",
+          "options": [
+            "will",
+            "is going",
+            "does"
+          ],
+          "answer": "will",
+          "explanation": "Predição genérica → will."
+        },
+        {
+          "type": "word_bank",
+          "sentence": "She _____ probably win.",
+          "choices": [
+            "will",
+            "is going",
+            "does",
+            "can"
+          ],
+          "answer": "will",
+          "explanation": "Predição com \"probably\" → will."
+        },
+        {
+          "type": "word_bank",
+          "sentence": "I _____ buy a house in 5 years.",
+          "choices": [
+            "'m going to",
+            "'ll",
+            "will not",
+            "would"
+          ],
+          "answer": "'m going to",
+          "explanation": "Plano de longo prazo → going to (intenção definida)."
+        },
+        {
+          "type": "fill_gap",
+          "sentence": "I _____ help you whenever you need.",
+          "hint": "Promessa com will",
+          "answer": "will (or 'll)",
+          "explanation": "Promessa indefinida — will."
+        },
+        {
+          "type": "fill_gap",
+          "sentence": "She _____ come if it rains.",
+          "hint": "Negativa de will",
+          "answer": "won't",
+          "explanation": "\"She won't come\" — predição negativa."
+        },
+        {
+          "type": "fill_gap",
+          "sentence": "I think they _____ love the gift.",
+          "hint": "Predição",
+          "answer": "will (or 'll)",
+          "explanation": "Predição com \"I think\" — will."
+        },
+        {
+          "type": "fix_error",
+          "sentence": "Look at the sky — it will rain.",
+          "hint": "Evidência visível pede going to",
+          "answer": "Look at the sky — it's going to rain.",
+          "explanation": "Vendo evidência → going to (mais natural)."
+        },
+        {
+          "type": "fix_error",
+          "sentence": "I have a ticket — I will travel.",
+          "hint": "Plano firme pede going to",
+          "answer": "I have a ticket — I'm going to travel.",
+          "explanation": "Plano feito → going to."
+        },
+        {
+          "type": "read_answer",
+          "passage": "I'm going to travel next month — I have tickets. I think it will be a great trip. I'll send postcards too!",
+          "question": "What is the speaker going to do next month?",
+          "answer": "travel",
+          "explanation": "The text says \"I'm going to travel next month\"."
+        }
+      ],
+      "listening_speaking": [
+        {
+          "text": "I'm going to study tonight.",
+          "context": "plan"
+        },
+        {
+          "text": "I think it will rain.",
+          "context": "prediction"
+        },
+        {
+          "text": "I'll help you tomorrow.",
+          "context": "promise"
+        },
+        {
+          "text": "She won't come.",
+          "context": "negative"
+        },
+        {
+          "text": "Will you join us?",
+          "context": "invitation"
+        }
+      ],
+      "roleplay": {
+        "scenario": "Charlotte pede integração de going to e will.",
+        "voiced_by": "charlotte",
+        "persona": "Charlotte",
+        "persona_outfit": "charlotte_casual",
+        "time_budget_sec": 90,
+        "opening_line": "One plan, one prediction, one offer — go!",
+        "objectives": [
+          {
+            "id": 1,
+            "label_pt": "Plano com going to",
+            "label_en": "Plan with going to",
+            "hidden_prompt": "user uses 'I'm going to + base + time'",
+            "hint_pt": "I'm going to travel next month.",
+            "hint_en": "I'm going to travel next month."
+          },
+          {
+            "id": 2,
+            "label_pt": "Predição com will",
+            "label_en": "Prediction with will",
+            "hidden_prompt": "user uses 'I think + will' or 'It will + base'",
+            "hint_pt": "I think it will be fun.",
+            "hint_en": "I think it will be fun."
+          },
+          {
+            "id": 3,
+            "label_pt": "Oferta com will",
+            "label_en": "Offer with will",
+            "hidden_prompt": "user uses 'I'll + base' as offer",
+            "hint_pt": "I'll help you pack.",
+            "hint_en": "I'll help you pack."
+          }
+        ],
+        "closing_cue": "Charlotte fecha com \"Future verbs mastered!\" quando obj_3 baterem.",
+        "suggested_flow": "**Suggested flow** (referencial, 6 turnos):\n\n1. **Charlotte**: \"One plan, one prediction, one offer — go!\"\n2. **Student**: ~\"I'm going to travel next month.\"\n3. **Charlotte**: \"Prediction?\"\n4. **Student**: ~\"I think it will be fun.\"\n5. **Charlotte**: \"Offer?\"\n6. **Student**: ~\"I'll help you pack.\"\n7. **Charlotte**: \"Future verbs mastered!\"",
+        "evaluation_focus": [
+          "Going to pra plano firme",
+          "Will pra predição/oferta",
+          "Distinção e fluência"
+        ]
+      },
+      "guided_chat": {
+        "scenario": "Charlotte conversa sobre futuro pessoal e global.",
+        "voiced_by": "charlotte",
+        "persona": "Charlotte",
+        "persona_outfit": "charlotte_casual",
+        "intro_pt": "Charlotte abre chat de visão geral do futuro. Integra going to + will.",
+        "opening_message": "Talk about your future — plans and predictions.",
+        "objectives": [
+          {
+            "id": 1,
+            "label_pt": "Plano firme (going to)",
+            "label_en": "Firm plan",
+            "hidden_prompt": "user uses 'I'm going to + base'",
+            "hint_pt": "I'm going to learn Spanish.",
+            "hint_en": "I'm going to learn Spanish."
+          },
+          {
+            "id": 2,
+            "label_pt": "Predição (will)",
+            "label_en": "Prediction",
+            "hidden_prompt": "user uses 'I think + will'",
+            "hint_pt": "I think I'll be happy.",
+            "hint_en": "I think I'll be happy."
+          },
+          {
+            "id": 3,
+            "label_pt": "Perguntar à Charlotte",
+            "label_en": "Ask Charlotte",
+            "hidden_prompt": "user asks 'How about you?'",
+            "hint_pt": "How about you?",
+            "hint_en": "How about you?"
+          }
+        ],
+        "closing_cue": "Charlotte encerra com \"Future mapped!\" quando obj_3 baterem.",
+        "suggested_script": "**Script** (referencial, 7 turnos):\n\n1. **Charlotte**: \"Talk about your future — plans and predictions.\"\n2. **Student**: \"I'm going to learn Spanish.\"\n3. **Charlotte**: \"Great. Prediction?\"\n4. **Student**: \"I think I'll be happy.\"\n5. **Charlotte**: \"Best one.\"\n6. **Student**: \"How about you?\"\n7. **Charlotte**: \"I'm going to travel and I'll write a book. Future mapped!\"\n\n> N05 chat = LLM puro.\n\n---"
+      }
+    }
+  ],
+  "cross_unit_consolidation": [
+    "\"I'll + base\" (decisão espontânea, oferta, promessa)",
+    "\"I will\" formal / \"I'll\" contraído (uso natural)",
+    "\"I won't + base\" (negativa)",
+    "\"Will you + base?\" (pedido educado)",
+    "Going to (plano firme) vs Will (espontâneo/predição)",
+    "Marcadores: I think / probably / maybe + will"
+  ]
+}

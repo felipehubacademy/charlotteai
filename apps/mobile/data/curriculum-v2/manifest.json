@@ -55,8 +55,63 @@
         "id": "M11",
         "title": "Compras",
         "file": "novice/M11.json"
+      },
+      {
+        "id": "M12",
+        "title": "Comparações",
+        "file": "novice/M12.json"
+      },
+      {
+        "id": "M13",
+        "title": "O melhor de tudo",
+        "file": "novice/M13.json"
+      },
+      {
+        "id": "M14",
+        "title": "Onde estive ontem",
+        "file": "novice/M14.json"
+      },
+      {
+        "id": "M15",
+        "title": "O que fiz ontem",
+        "file": "novice/M15.json"
+      },
+      {
+        "id": "M16",
+        "title": "Histórias simples",
+        "file": "novice/M16.json"
+      },
+      {
+        "id": "M17",
+        "title": "Não foi assim",
+        "file": "novice/M17.json"
+      },
+      {
+        "id": "M18",
+        "title": "Planos pra amanhã",
+        "file": "novice/M18.json"
+      },
+      {
+        "id": "M19",
+        "title": "O futuro",
+        "file": "novice/M19.json"
+      },
+      {
+        "id": "M20",
+        "title": "Conselhos",
+        "file": "novice/M20.json"
+      },
+      {
+        "id": "M21",
+        "title": "Se isso, então aquilo",
+        "file": "novice/M21.json"
+      },
+      {
+        "id": "M22",
+        "title": "Conexões e fechamento Novice",
+        "file": "novice/M22.json"
       }
     ]
   },
-  "generated_at": "2026-05-30T18:05:56.863Z"
+  "generated_at": "2026-05-30T18:35:37.151Z"
 }

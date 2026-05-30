@@ -1,0 +1,1018 @@
+{
+  "id": "M18",
+  "title": "Planos pra amanhã",
+  "level": "Novice",
+  "block": "A2",
+  "units_range": "N01–N05",
+  "theme": "Going to — planos e intenções para o futuro",
+  "goal": "Aluno sai sabendo usar \"going to\" pra planos firmes e intenções, com marcadores futuros (tomorrow, next week, soon).",
+  "connects_to": "M19 (O futuro) — depois de going to, aprende \"will\" pra previsões e decisões espontâneas.",
+  "module_chunks": [
+    "I'm going to + verb base",
+    "She's going to / He's going to / They're going to",
+    "I'm not going to / She isn't going to",
+    "Are you going to...? / Is he going to...?",
+    "What are you going to do?",
+    "tomorrow / next week / next month / next year / soon",
+    "this weekend / tonight / in two days"
+  ],
+  "units": [
+    {
+      "id": "N01",
+      "title": "Vou viajar",
+      "sub_cefr": "A2",
+      "grammar_focus": "Going to positive",
+      "markers": [
+        "denso"
+      ],
+      "real_life_context": "Você anuncia seus planos firmes pro futuro próximo.",
+      "grammar": [
+        {
+          "type": "multiple_choice",
+          "sentence": "I'm _____ travel next week.",
+          "options": [
+            "going to",
+            "going",
+            "go to"
+          ],
+          "answer": "going to",
+          "explanation": "\"Going to + verbo base\" pra planos: \"I'm going to travel\"."
+        },
+        {
+          "type": "multiple_choice",
+          "sentence": "She _____ visit her sister.",
+          "options": [
+            "is going to",
+            "going to",
+            "will going to"
+          ],
+          "answer": "is going to",
+          "explanation": "\"She is going to + base\". Completa \"to be\" + going to."
+        },
+        {
+          "type": "word_bank",
+          "sentence": "We _____ eat at a restaurant.",
+          "choices": [
+            "are going to",
+            "is going to",
+            "going to",
+            "will going to"
+          ],
+          "answer": "are going to",
+          "explanation": "\"We\" plural → \"are going to\"."
+        },
+        {
+          "type": "word_bank",
+          "sentence": "He's _____ start a new job.",
+          "choices": [
+            "going to",
+            "go to",
+            "going",
+            "goes to"
+          ],
+          "answer": "going to",
+          "explanation": "\"He's going to start\" — contração \"he is\" + going to."
+        },
+        {
+          "type": "fill_gap",
+          "sentence": "I'm _____ to learn Spanish.",
+          "hint": "Verbo de movimento (going)",
+          "answer": "going",
+          "explanation": "\"I'm going to learn\" — chunk fixo. \"Going\" antes do \"to\"."
+        },
+        {
+          "type": "fill_gap",
+          "sentence": "She is going _____ buy a car.",
+          "hint": "Partícula entre going e o verbo",
+          "answer": "to",
+          "explanation": "\"Going TO + verbo base\". Sempre com \"to\"."
+        },
+        {
+          "type": "fill_gap",
+          "sentence": "They _____ going to move.",
+          "hint": "Verbo \"to be\" plural",
+          "answer": "are",
+          "explanation": "\"They are going to move\" — plural \"are\"."
+        },
+        {
+          "type": "fix_error",
+          "sentence": "I going to eat.",
+          "hint": "Falta verbo to be",
+          "answer": "I'm going to eat.",
+          "explanation": "Going to precisa de \"to be\" antes: \"I'M going to\" ou \"I am going to\"."
+        },
+        {
+          "type": "fix_error",
+          "sentence": "She is going eat.",
+          "hint": "Falta \"to\" antes do verbo",
+          "answer": "She is going to eat.",
+          "explanation": "\"Going TO + base\". Sem \"to\" não funciona."
+        },
+        {
+          "type": "read_answer",
+          "passage": "Tomorrow I'm going to wake up early. I'm going to work in the morning and go to the gym in the afternoon. We're going to have dinner together.",
+          "question": "What is the speaker going to do in the afternoon?",
+          "answer": "go to the gym",
+          "explanation": "The text says \"go to the gym in the afternoon\"."
+        }
+      ],
+      "listening_speaking": [
+        {
+          "text": "I'm going to travel next week.",
+          "context": "own plan"
+        },
+        {
+          "text": "She is going to visit her sister.",
+          "context": "3rd person plan"
+        },
+        {
+          "text": "We're going to eat out tonight.",
+          "context": "plural plan"
+        },
+        {
+          "text": "He's going to start a new job.",
+          "context": "career plan"
+        },
+        {
+          "text": "They're going to move next month.",
+          "context": "long-term plan"
+        }
+      ],
+      "roleplay": {
+        "scenario": "Charlotte pergunta sobre seus planos futuros próximos.",
+        "voiced_by": "charlotte",
+        "persona": "Charlotte",
+        "persona_outfit": "charlotte_casual",
+        "time_budget_sec": 90,
+        "opening_line": "Tell me three plans for next week.",
+        "objectives": [
+          {
+            "id": 1,
+            "label_pt": "Dizer um plano próprio",
+            "label_en": "Say a personal plan",
+            "hidden_prompt": "user uses 'I'm going to + verb base' for a plan",
+            "hint_pt": "I'm going to travel.",
+            "hint_en": "I'm going to travel."
+          },
+          {
+            "id": 2,
+            "label_pt": "Outro plano",
+            "label_en": "Another plan",
+            "hidden_prompt": "user uses another 'I'm going to + base'",
+            "hint_pt": "I'm going to study English.",
+            "hint_en": "I'm going to study English."
+          },
+          {
+            "id": 3,
+            "label_pt": "Plano de alguém da família",
+            "label_en": "Family member's plan",
+            "hidden_prompt": "user uses 'He/She is going to + base'",
+            "hint_pt": "My sister is going to visit me.",
+            "hint_en": "My sister is going to visit me."
+          }
+        ],
+        "closing_cue": "Charlotte fecha com \"Big week ahead!\" quando obj_3 baterem.",
+        "suggested_flow": "**Suggested flow** (referencial, 6 turnos):\n\n1. **Charlotte**: \"Tell me three plans for next week.\"\n2. **Student**: ~\"I'm going to travel.\"\n3. **Charlotte**: \"And?\"\n4. **Student**: ~\"I'm going to study English.\"\n5. **Charlotte**: \"Family plans?\"\n6. **Student**: ~\"My sister is going to visit me.\"\n7. **Charlotte**: \"Big week ahead!\"",
+        "evaluation_focus": [
+          "\"to be + going to + base\"",
+          "Pessoa correta (am/is/are)",
+          "Verbo base após \"to\""
+        ]
+      },
+      "guided_chat": {
+        "scenario": "Charlotte conversa sobre planos do fim de semana.",
+        "voiced_by": "charlotte",
+        "persona": "Charlotte",
+        "persona_outfit": "charlotte_casual",
+        "intro_pt": "Charlotte abre chat sobre planos. Pratica going to + verbo.",
+        "opening_message": "What are you going to do this weekend?",
+        "objectives": [
+          {
+            "id": 1,
+            "label_pt": "Dizer plano do fim de semana",
+            "label_en": "Say weekend plan",
+            "hidden_prompt": "user uses 'I'm going to + verb base'",
+            "hint_pt": "I'm going to relax.",
+            "hint_en": "I'm going to relax."
+          },
+          {
+            "id": 2,
+            "label_pt": "Outro plano",
+            "label_en": "Another plan",
+            "hidden_prompt": "user uses another 'I'm going to'",
+            "hint_pt": "I'm going to see friends.",
+            "hint_en": "I'm going to see friends."
+          },
+          {
+            "id": 3,
+            "label_pt": "Perguntar à Charlotte",
+            "label_en": "Ask Charlotte",
+            "hidden_prompt": "user asks 'How about you?' or 'What are you going to do?'",
+            "hint_pt": "How about you?",
+            "hint_en": "How about you?"
+          }
+        ],
+        "closing_cue": "Charlotte encerra com \"Sounds great!\" quando obj_3 baterem.",
+        "suggested_script": "**Script** (referencial, 7 turnos):\n\n1. **Charlotte**: \"What are you going to do this weekend?\"\n2. **Student**: \"I'm going to relax.\"\n3. **Charlotte**: \"Anything else?\"\n4. **Student**: \"I'm going to see friends.\"\n5. **Charlotte**: \"Fun.\"\n6. **Student**: \"How about you?\"\n7. **Charlotte**: \"I'm going to read. Sounds great!\"\n\n> N01 chat = LLM puro.\n\n---"
+      }
+    },
+    {
+      "id": "N02",
+      "title": "Não vou fazer isso",
+      "sub_cefr": "A2",
+      "grammar_focus": "Going to negative",
+      "markers": [],
+      "real_life_context": "Você esclarece planos que NÃO tem ou que cancelou.",
+      "grammar": [
+        {
+          "type": "multiple_choice",
+          "sentence": "I'm _____ work tomorrow.",
+          "options": [
+            "not going to",
+            "going to not",
+            "don't going"
+          ],
+          "answer": "not going to",
+          "explanation": "Negativa: \"I'm not going to + base\". O \"not\" vai entre \"am/is/are\" e \"going to\"."
+        },
+        {
+          "type": "multiple_choice",
+          "sentence": "She _____ travel next month.",
+          "options": [
+            "isn't going to",
+            "not going to",
+            "doesn't go"
+          ],
+          "answer": "isn't going to",
+          "explanation": "\"She isn't going to\" — contração de \"is not\"."
+        },
+        {
+          "type": "word_bank",
+          "sentence": "We _____ eat out tonight.",
+          "choices": [
+            "aren't going to",
+            "isn't going to",
+            "don't going",
+            "no go"
+          ],
+          "answer": "aren't going to",
+          "explanation": "\"We aren't going to\" — contração \"are not\"."
+        },
+        {
+          "type": "word_bank",
+          "sentence": "He _____ visit us.",
+          "choices": [
+            "isn't going to",
+            "aren't going to",
+            "don't going",
+            "not go"
+          ],
+          "answer": "isn't going to",
+          "explanation": "He → \"isn't going to\"."
+        },
+        {
+          "type": "fill_gap",
+          "sentence": "I _____ going to call her.",
+          "hint": "Negativa entre \"am\" e \"going\"",
+          "answer": "'m not",
+          "explanation": "\"I'm not going to\" — contraído. \"Am not\" = \"'m not\"."
+        },
+        {
+          "type": "fill_gap",
+          "sentence": "She _____ going to come.",
+          "hint": "Negativa de \"she is\" (contraída)",
+          "answer": "isn't",
+          "explanation": "\"She isn't going to\" — is + not = isn't."
+        },
+        {
+          "type": "fill_gap",
+          "sentence": "They _____ going to leave early.",
+          "hint": "Negativa de \"they are\" (contraída)",
+          "answer": "aren't",
+          "explanation": "\"They aren't going to\" — are + not = aren't."
+        },
+        {
+          "type": "fix_error",
+          "sentence": "I don't going to work.",
+          "hint": "Going to não usa \"don't\"",
+          "answer": "I'm not going to work.",
+          "explanation": "Going to negativa usa \"not\" entre to-be e going. NÃO \"don't going to\"."
+        },
+        {
+          "type": "fix_error",
+          "sentence": "She isn't go to call.",
+          "hint": "Falta \"ing\" e \"to\"",
+          "answer": "She isn't going to call.",
+          "explanation": "\"Going to\" sempre completo: \"going to + base\". \"isn't going to call\"."
+        },
+        {
+          "type": "read_answer",
+          "passage": "I'm not going to work tomorrow. It's my day off. My sister isn't going to come either. We aren't going to do anything special.",
+          "question": "Why isn't the speaker working tomorrow?",
+          "answer": "it's my day off (or \"day off\")",
+          "explanation": "The text says \"It's my day off\"."
+        }
+      ],
+      "listening_speaking": [
+        {
+          "text": "I'm not going to work tomorrow.",
+          "context": "own negative plan"
+        },
+        {
+          "text": "She isn't going to travel.",
+          "context": "3rd person negative"
+        },
+        {
+          "text": "We aren't going to eat out.",
+          "context": "plural negative"
+        },
+        {
+          "text": "He isn't going to call.",
+          "context": "3rd negative"
+        },
+        {
+          "text": "They aren't going to leave.",
+          "context": "plural negative"
+        }
+      ],
+      "roleplay": {
+        "scenario": "Charlotte sugere planos — você esclarece o que NÃO vai fazer.",
+        "voiced_by": "charlotte",
+        "persona": "Charlotte",
+        "persona_outfit": "charlotte_casual",
+        "time_budget_sec": 90,
+        "opening_line": "Will you go to the gym tomorrow?",
+        "objectives": [
+          {
+            "id": 1,
+            "label_pt": "Dizer que não vai fazer (I'm not going to)",
+            "label_en": "Say what you're not going to do",
+            "hidden_prompt": "user uses 'I'm not going to + verb base'",
+            "hint_pt": "No, I'm not going to the gym.",
+            "hint_en": "No, I'm not going to the gym."
+          },
+          {
+            "id": 2,
+            "label_pt": "Outra negativa",
+            "label_en": "Another negative",
+            "hidden_prompt": "user uses another 'I'm not going to + base'",
+            "hint_pt": "I'm not going to eat out.",
+            "hint_en": "I'm not going to eat out."
+          },
+          {
+            "id": 3,
+            "label_pt": "Negativa de alguém da família",
+            "label_en": "Family member negative",
+            "hidden_prompt": "user uses 'He/She isn't going to + base'",
+            "hint_pt": "My sister isn't going to come.",
+            "hint_en": "My sister isn't going to come."
+          }
+        ],
+        "closing_cue": "Charlotte fecha com \"Plans clear!\" quando obj_3 baterem.",
+        "suggested_flow": "**Suggested flow** (referencial, 6 turnos):\n\n1. **Charlotte**: \"Will you go to the gym tomorrow?\"\n2. **Student**: ~\"No, I'm not going to the gym.\"\n3. **Charlotte**: \"Restaurant?\"\n4. **Student**: ~\"I'm not going to eat out.\"\n5. **Charlotte**: \"Family?\"\n6. **Student**: ~\"My sister isn't going to come.\"\n7. **Charlotte**: \"Plans clear!\"",
+        "evaluation_focus": [
+          "\"to be + not + going to + base\"",
+          "Contrações naturais",
+          "Sem \"don't going to\""
+        ]
+      },
+      "guided_chat": {
+        "scenario": "Charlotte conversa sobre o que você definitivamente NÃO vai fazer no fim de semana.",
+        "voiced_by": "charlotte",
+        "persona": "Charlotte",
+        "persona_outfit": "charlotte_casual",
+        "intro_pt": "Charlotte abre chat sobre planos cancelados ou inexistentes.",
+        "opening_message": "What are you NOT going to do this weekend?",
+        "objectives": [
+          {
+            "id": 1,
+            "label_pt": "Dizer algo que não vai fazer",
+            "label_en": "Say what you won't do",
+            "hidden_prompt": "user uses 'I'm not going to + verb base'",
+            "hint_pt": "I'm not going to work.",
+            "hint_en": "I'm not going to work."
+          },
+          {
+            "id": 2,
+            "label_pt": "Outra negativa",
+            "label_en": "Another negative",
+            "hidden_prompt": "user uses another 'I'm not going to'",
+            "hint_pt": "I'm not going to clean.",
+            "hint_en": "I'm not going to clean."
+          },
+          {
+            "id": 3,
+            "label_pt": "Perguntar à Charlotte",
+            "label_en": "Ask Charlotte",
+            "hidden_prompt": "user asks 'How about you?'",
+            "hint_pt": "How about you?",
+            "hint_en": "How about you?"
+          }
+        ],
+        "closing_cue": "Charlotte encerra com \"Anti-plans set!\" quando obj_3 baterem.",
+        "suggested_script": "**Script** (referencial, 7 turnos):\n\n1. **Charlotte**: \"What are you NOT going to do this weekend?\"\n2. **Student**: \"I'm not going to work.\"\n3. **Charlotte**: \"What else?\"\n4. **Student**: \"I'm not going to clean.\"\n5. **Charlotte**: \"Pure rest.\"\n6. **Student**: \"How about you?\"\n7. **Charlotte**: \"I'm not going to check emails. Anti-plans set!\"\n\n> N02 chat = LLM puro.\n\n---"
+      }
+    },
+    {
+      "id": "N03",
+      "title": "Você vai fazer?",
+      "sub_cefr": "A2",
+      "grammar_focus": "Going to questions (Are you going to...? Is she going to...?)",
+      "markers": [
+        "qform"
+      ],
+      "real_life_context": "Você pergunta sobre planos de alguém.",
+      "grammar": [
+        {
+          "type": "multiple_choice",
+          "sentence": "_____ you going to travel?",
+          "options": [
+            "Are",
+            "Do",
+            "Will"
+          ],
+          "answer": "Are",
+          "explanation": "\"Are + you + going to + base?\" — pergunta de going to."
+        },
+        {
+          "type": "multiple_choice",
+          "sentence": "_____ she going to come?",
+          "options": [
+            "Is",
+            "Does",
+            "Are"
+          ],
+          "answer": "Is",
+          "explanation": "\"Is she going to come?\" — she usa \"is\"."
+        },
+        {
+          "type": "word_bank",
+          "sentence": "_____ they going to move?",
+          "choices": [
+            "Are",
+            "Is",
+            "Do",
+            "Will"
+          ],
+          "answer": "Are",
+          "explanation": "\"Are they going to move?\" — plural."
+        },
+        {
+          "type": "word_bank",
+          "sentence": "What _____ you going to do?",
+          "choices": [
+            "are",
+            "is",
+            "do",
+            "will"
+          ],
+          "answer": "are",
+          "explanation": "\"What are you going to do?\" — WH + to-be + going to."
+        },
+        {
+          "type": "fill_gap",
+          "sentence": "_____ he going to study tonight?",
+          "hint": "To be 3ª pessoa em pergunta",
+          "answer": "Is",
+          "explanation": "\"Is he going to?\" — pergunta com he/she/it."
+        },
+        {
+          "type": "fill_gap",
+          "sentence": "Where _____ they going to go?",
+          "hint": "To be plural em WH",
+          "answer": "are",
+          "explanation": "\"Where are they going?\" — plural."
+        },
+        {
+          "type": "fill_gap",
+          "sentence": "Yes, I _____.",
+          "hint": "Resposta curta afirmativa",
+          "answer": "am",
+          "explanation": "\"Yes, I am\" — short answer."
+        },
+        {
+          "type": "fix_error",
+          "sentence": "Do you going to travel?",
+          "hint": "Going to usa to-be, não do",
+          "answer": "Are you going to travel?",
+          "explanation": "\"Going to\" inverte \"to be\", não usa \"do\". \"Are you going to?\", não \"Do you going to?\"."
+        },
+        {
+          "type": "fix_error",
+          "sentence": "Is she going to comes?",
+          "hint": "Verbo base após \"to\"",
+          "answer": "Is she going to come?",
+          "explanation": "\"Going to + base\". \"Come\", não \"comes\"."
+        },
+        {
+          "type": "read_answer",
+          "passage": "Q: Are you going to travel next month? A: Yes, I am. Q: Is your sister going to come? A: No, she isn't. She has work.",
+          "question": "Is the sister going to come?",
+          "answer": "no (or \"she isn't\")",
+          "explanation": "The text says \"No, she isn't\"."
+        }
+      ],
+      "listening_speaking": [
+        {
+          "text": "Are you going to travel?",
+          "context": "direct question"
+        },
+        {
+          "text": "Is she going to come?",
+          "context": "3rd person Q"
+        },
+        {
+          "text": "Are they going to move?",
+          "context": "plural Q"
+        },
+        {
+          "text": "What are you going to do?",
+          "context": "WH Q"
+        },
+        {
+          "text": "Yes, I am. No, I'm not.",
+          "context": "short answers",
+          "audio_url": "https://fnvjibzreepubageztoi.supabase.co/storage/v1/object/public/curriculum-audio/ls/906aff0cfb1985c9.flac"
+        }
+      ],
+      "roleplay": {
+        "scenario": "Charlotte responde sobre planos — você pergunta com going to.",
+        "voiced_by": "charlotte",
+        "persona": "Charlotte",
+        "persona_outfit": "charlotte_casual",
+        "time_budget_sec": 90,
+        "opening_line": "Ask me three things I'm going to do.",
+        "objectives": [
+          {
+            "id": 1,
+            "label_pt": "Perguntar 'Are you going to + verbo?'",
+            "label_en": "Ask 'Are you going to...?'",
+            "hidden_prompt": "user asks 'Are you going to + verb base?'",
+            "hint_pt": "Are you going to travel?",
+            "hint_en": "Are you going to travel?"
+          },
+          {
+            "id": 2,
+            "label_pt": "Outra pergunta com 'Are you going to'",
+            "label_en": "Another 'Are you going to' question",
+            "hidden_prompt": "user asks another 'Are you going to + base?'",
+            "hint_pt": "Are you going to study?",
+            "hint_en": "Are you going to study?"
+          },
+          {
+            "id": 3,
+            "label_pt": "WH pergunta com going to",
+            "label_en": "WH question with going to",
+            "hidden_prompt": "user asks WH + 'are you going to + base?'",
+            "hint_pt": "What are you going to do?",
+            "hint_en": "What are you going to do?"
+          }
+        ],
+        "closing_cue": "Charlotte fecha com \"Curious mind!\" quando obj_3 baterem.",
+        "suggested_flow": "**Suggested flow** (referencial, 6 turnos):\n\n1. **Charlotte**: \"Ask me three things I'm going to do.\"\n2. **Student**: ~\"Are you going to travel?\"\n3. **Charlotte**: \"Yes, I am!\"\n4. **Student**: ~\"Are you going to study?\"\n5. **Charlotte**: \"Yes, lots.\"\n6. **Student**: ~\"What are you going to do?\"\n7. **Charlotte**: \"Many things — curious mind!\"",
+        "evaluation_focus": [
+          "\"to be + sujeito + going to + base\"",
+          "Sem \"do/does\"",
+          "WH + to-be + going to"
+        ]
+      },
+      "guided_chat": {
+        "scenario": "Charlotte responde a perguntas sobre planos do mês.",
+        "voiced_by": "charlotte",
+        "persona": "Charlotte",
+        "persona_outfit": "charlotte_casual",
+        "intro_pt": "Charlotte abre chat de perguntas sobre planos. Pratica Are you going to...?",
+        "opening_message": "Got plans this month? Ask me what I'm doing.",
+        "objectives": [
+          {
+            "id": 1,
+            "label_pt": "Perguntar plano específico",
+            "label_en": "Ask specific plan",
+            "hidden_prompt": "user asks 'Are you going to + verb base?'",
+            "hint_pt": "Are you going to travel?",
+            "hint_en": "Are you going to travel?"
+          },
+          {
+            "id": 2,
+            "label_pt": "Outra pergunta",
+            "label_en": "Another question",
+            "hidden_prompt": "user asks another going to question",
+            "hint_pt": "Are you going to study?",
+            "hint_en": "Are you going to study?"
+          },
+          {
+            "id": 3,
+            "label_pt": "WH pergunta",
+            "label_en": "WH question",
+            "hidden_prompt": "user asks WH + going to",
+            "hint_pt": "Where are you going to go?",
+            "hint_en": "Where are you going to go?"
+          }
+        ],
+        "closing_cue": "Charlotte encerra com \"Plan reveal complete!\" quando obj_3 baterem.",
+        "suggested_script": "**Script** (referencial, 7 turnos):\n\n1. **Charlotte**: \"Got plans this month? Ask me what I'm doing.\"\n2. **Student**: \"Are you going to travel?\"\n3. **Charlotte**: \"Yes!\"\n4. **Student**: \"Are you going to study?\"\n5. **Charlotte**: \"A bit.\"\n6. **Student**: \"Where are you going to go?\"\n7. **Charlotte**: \"Paris! Plan reveal complete!\"\n\n> N03 chat = LLM puro.\n\n---"
+      }
+    },
+    {
+      "id": "N04",
+      "title": "Amanhã, semana que vem",
+      "sub_cefr": "A2",
+      "grammar_focus": "Future time markers (tomorrow, next week, soon, in X days)",
+      "markers": [],
+      "real_life_context": "Você ancora seus planos em pontos específicos do futuro.",
+      "grammar": [
+        {
+          "type": "multiple_choice",
+          "sentence": "I'm going to travel _____.",
+          "options": [
+            "tomorrow",
+            "yesterday",
+            "today"
+          ],
+          "answer": "tomorrow",
+          "explanation": "\"Tomorrow\" = futuro próximo (amanhã). Combina com going to."
+        },
+        {
+          "type": "multiple_choice",
+          "sentence": "She's going to start _____ week.",
+          "options": [
+            "next",
+            "last",
+            "this"
+          ],
+          "answer": "next",
+          "explanation": "\"Next week\" = semana que vem. \"Last\" é passado; \"this\" é a semana atual."
+        },
+        {
+          "type": "word_bank",
+          "sentence": "We're going to meet _____ Friday.",
+          "choices": [
+            "next",
+            "last",
+            "on",
+            "at"
+          ],
+          "answer": "next",
+          "explanation": "\"Next Friday\" = sexta que vem."
+        },
+        {
+          "type": "word_bank",
+          "sentence": "He's going to call _____.",
+          "choices": [
+            "soon",
+            "never",
+            "yesterday",
+            "once"
+          ],
+          "answer": "soon",
+          "explanation": "\"Soon\" = em breve. Indica futuro próximo indefinido."
+        },
+        {
+          "type": "fill_gap",
+          "sentence": "I'm going to see her _____ two days.",
+          "hint": "Preposição com \"two days\"",
+          "answer": "in",
+          "explanation": "\"In + tempo\" pra futuro: \"in two days\", \"in a week\", \"in an hour\"."
+        },
+        {
+          "type": "fill_gap",
+          "sentence": "They're going to visit _____ month.",
+          "hint": "Marcador \"que vem\"",
+          "answer": "next",
+          "explanation": "\"Next month\" = mês que vem."
+        },
+        {
+          "type": "fill_gap",
+          "sentence": "I'm going to finish _____.",
+          "hint": "Marcador \"em breve\"",
+          "answer": "soon",
+          "explanation": "\"I'm going to finish soon\" = vou terminar em breve."
+        },
+        {
+          "type": "fix_error",
+          "sentence": "I'm going to travel yesterday.",
+          "hint": "Yesterday é passado",
+          "answer": "I'm going to travel tomorrow.",
+          "explanation": "Going to é futuro. \"Yesterday\" (passado) não combina. Use \"tomorrow\" (futuro)."
+        },
+        {
+          "type": "fix_error",
+          "sentence": "She's going to come on next week.",
+          "hint": "\"Next week\" não precisa de \"on\"",
+          "answer": "She's going to come next week.",
+          "explanation": "\"Next week\" não leva preposição. Mas \"on Monday\" sim."
+        },
+        {
+          "type": "read_answer",
+          "passage": "I'm going to travel tomorrow. Next week I'm going to be in Italy. In two months I'm going to come back home.",
+          "question": "When is the speaker going to travel?",
+          "answer": "tomorrow",
+          "explanation": "The text says \"I'm going to travel tomorrow\"."
+        }
+      ],
+      "listening_speaking": [
+        {
+          "text": "I'm going to travel tomorrow.",
+          "context": "tomorrow"
+        },
+        {
+          "text": "She's going to start next week.",
+          "context": "next week"
+        },
+        {
+          "text": "We're going to meet on Friday.",
+          "context": "on Friday"
+        },
+        {
+          "text": "He's going to call soon.",
+          "context": "soon"
+        },
+        {
+          "text": "I'm going to see her in two days.",
+          "context": "in X days"
+        }
+      ],
+      "roleplay": {
+        "scenario": "Charlotte pergunta quando você vai fazer cada plano.",
+        "voiced_by": "charlotte",
+        "persona": "Charlotte",
+        "persona_outfit": "charlotte_casual",
+        "time_budget_sec": 90,
+        "opening_line": "Three plans with timing — go!",
+        "objectives": [
+          {
+            "id": 1,
+            "label_pt": "Plano com 'tomorrow'",
+            "label_en": "Plan with 'tomorrow'",
+            "hidden_prompt": "user uses 'I'm going to + verb base + tomorrow'",
+            "hint_pt": "I'm going to work tomorrow.",
+            "hint_en": "I'm going to work tomorrow."
+          },
+          {
+            "id": 2,
+            "label_pt": "Plano com 'next week'",
+            "label_en": "Plan with 'next week'",
+            "hidden_prompt": "user uses 'I'm going to + base + next week/month'",
+            "hint_pt": "I'm going to travel next week.",
+            "hint_en": "I'm going to travel next week."
+          },
+          {
+            "id": 3,
+            "label_pt": "Plano com 'in X days/in soon'",
+            "label_en": "Plan with 'in X'",
+            "hidden_prompt": "user uses 'I'm going to + base + in X days' or 'soon'",
+            "hint_pt": "I'm going to finish in two days.",
+            "hint_en": "I'm going to finish in two days."
+          }
+        ],
+        "closing_cue": "Charlotte fecha com \"Schedule packed!\" quando obj_3 baterem.",
+        "suggested_flow": "**Suggested flow** (referencial, 6 turnos):\n\n1. **Charlotte**: \"Three plans with timing — go!\"\n2. **Student**: ~\"I'm going to work tomorrow.\"\n3. **Charlotte**: \"Next week?\"\n4. **Student**: ~\"I'm going to travel next week.\"\n5. **Charlotte**: \"In X days?\"\n6. **Student**: ~\"I'm going to finish in two days.\"\n7. **Charlotte**: \"Schedule packed!\"",
+        "evaluation_focus": [
+          "Time markers no fim",
+          "\"in + tempo\" pra futuro",
+          "\"next + day/week/month\""
+        ]
+      },
+      "guided_chat": {
+        "scenario": "Charlotte conversa sobre cronograma da semana.",
+        "voiced_by": "charlotte",
+        "persona": "Charlotte",
+        "persona_outfit": "charlotte_casual",
+        "intro_pt": "Charlotte abre chat sobre cronograma futuro. Pratica going to + time markers.",
+        "opening_message": "What's coming up this week?",
+        "objectives": [
+          {
+            "id": 1,
+            "label_pt": "Plano com 'tomorrow'",
+            "label_en": "Plan with tomorrow",
+            "hidden_prompt": "user uses going to + tomorrow",
+            "hint_pt": "Tomorrow I'm going to study.",
+            "hint_en": "Tomorrow I'm going to study."
+          },
+          {
+            "id": 2,
+            "label_pt": "Plano com 'next week' ou 'this weekend'",
+            "label_en": "Plan with next week or this weekend",
+            "hidden_prompt": "user uses going to with these markers",
+            "hint_pt": "This weekend I'm going to relax.",
+            "hint_en": "This weekend I'm going to relax."
+          },
+          {
+            "id": 3,
+            "label_pt": "Perguntar à Charlotte",
+            "label_en": "Ask Charlotte",
+            "hidden_prompt": "user asks 'How about you?'",
+            "hint_pt": "How about you?",
+            "hint_en": "How about you?"
+          }
+        ],
+        "closing_cue": "Charlotte encerra com \"Calendar synced!\" quando obj_3 baterem.",
+        "suggested_script": "**Script** (referencial, 7 turnos):\n\n1. **Charlotte**: \"What's coming up this week?\"\n2. **Student**: \"Tomorrow I'm going to study.\"\n3. **Charlotte**: \"Weekend?\"\n4. **Student**: \"This weekend I'm going to relax.\"\n5. **Charlotte**: \"Sounds nice.\"\n6. **Student**: \"How about you?\"\n7. **Charlotte**: \"Next week I'm going to travel. Calendar synced!\"\n\n> N04 chat = LLM puro.\n\n---"
+      }
+    },
+    {
+      "id": "N05",
+      "title": "Meus planos completos",
+      "sub_cefr": "A2",
+      "grammar_focus": "Integration going to (positive/negative/question + time markers)",
+      "markers": [],
+      "real_life_context": "Você compartilha planos completos de futuro próximo.",
+      "grammar": [
+        {
+          "type": "multiple_choice",
+          "sentence": "I'm _____ travel tomorrow.",
+          "options": [
+            "going to",
+            "not going to",
+            "going"
+          ],
+          "answer": "going to",
+          "explanation": "Afirmativa simples: \"I'm going to + base\"."
+        },
+        {
+          "type": "multiple_choice",
+          "sentence": "She _____ going to work.",
+          "options": [
+            "isn't",
+            "aren't",
+            "doesn't"
+          ],
+          "answer": "isn't",
+          "explanation": "Negativa 3ª pessoa: \"She isn't going to\"."
+        },
+        {
+          "type": "word_bank",
+          "sentence": "_____ they going to come?",
+          "choices": [
+            "Are",
+            "Is",
+            "Do",
+            "Will"
+          ],
+          "answer": "Are",
+          "explanation": "Plural: \"Are they going to come?\"."
+        },
+        {
+          "type": "word_bank",
+          "sentence": "What _____ you going to do?",
+          "choices": [
+            "are",
+            "is",
+            "do",
+            "will"
+          ],
+          "answer": "are",
+          "explanation": "WH + are + you."
+        },
+        {
+          "type": "fill_gap",
+          "sentence": "I'm going to _____ a new job next month.",
+          "hint": "Verbo \"começar\" base",
+          "answer": "start",
+          "explanation": "\"Going to + base\": \"going to start\"."
+        },
+        {
+          "type": "fill_gap",
+          "sentence": "She _____ going to call tonight.",
+          "hint": "Negativa \"is not\"",
+          "answer": "isn't",
+          "explanation": "\"She isn't going to call\"."
+        },
+        {
+          "type": "fill_gap",
+          "sentence": "_____ you going to travel next year?",
+          "hint": "Pergunta com you",
+          "answer": "Are",
+          "explanation": "\"Are you going to travel?\" — pergunta."
+        },
+        {
+          "type": "fix_error",
+          "sentence": "I don't going to work.",
+          "hint": "Going to não usa \"don't\"",
+          "answer": "I'm not going to work.",
+          "explanation": "Negativa usa \"to be + not + going to\". Sem \"don't\"."
+        },
+        {
+          "type": "fix_error",
+          "sentence": "She going to travel tomorrow.",
+          "hint": "Falta verbo to be",
+          "answer": "She's going to travel tomorrow.",
+          "explanation": "Going to precisa de \"to be\" antes. \"She's going to\" (she + is)."
+        },
+        {
+          "type": "read_answer",
+          "passage": "Tomorrow I'm going to work. I'm not going to eat out tonight — I'm tired. Next week I'm going to travel to Bahia.",
+          "question": "Where is the speaker going next week?",
+          "answer": "Bahia (or \"to Bahia\")",
+          "explanation": "The text says \"travel to Bahia\"."
+        }
+      ],
+      "listening_speaking": [
+        {
+          "text": "I'm going to travel tomorrow.",
+          "context": "positive"
+        },
+        {
+          "text": "She isn't going to work.",
+          "context": "negative"
+        },
+        {
+          "text": "Are you going to come?",
+          "context": "question"
+        },
+        {
+          "text": "What are you going to do?",
+          "context": "WH"
+        },
+        {
+          "text": "Next week I'm going to start a new job.",
+          "context": "time marker + plan"
+        }
+      ],
+      "roleplay": {
+        "scenario": "Charlotte pede plano completo — afirmativa, negativa, pergunta.",
+        "voiced_by": "charlotte",
+        "persona": "Charlotte",
+        "persona_outfit": "charlotte_casual",
+        "time_budget_sec": 90,
+        "opening_line": "Three things — what you're going to do, what you're not, and ask me.",
+        "objectives": [
+          {
+            "id": 1,
+            "label_pt": "Plano afirmativo",
+            "label_en": "Positive plan",
+            "hidden_prompt": "user uses 'I'm going to + base + time'",
+            "hint_pt": "I'm going to study tomorrow.",
+            "hint_en": "I'm going to study tomorrow."
+          },
+          {
+            "id": 2,
+            "label_pt": "Plano negativo",
+            "label_en": "Negative plan",
+            "hidden_prompt": "user uses 'I'm not going to + base'",
+            "hint_pt": "I'm not going to work this weekend.",
+            "hint_en": "I'm not going to work this weekend."
+          },
+          {
+            "id": 3,
+            "label_pt": "Pergunta à Charlotte",
+            "label_en": "Ask Charlotte",
+            "hidden_prompt": "user asks 'Are you going to + base?' or WH",
+            "hint_pt": "Are you going to travel?",
+            "hint_en": "Are you going to travel?"
+          }
+        ],
+        "closing_cue": "Charlotte fecha com \"Future mapped!\" quando obj_3 baterem.",
+        "suggested_flow": "**Suggested flow** (referencial, 6 turnos):\n\n1. **Charlotte**: \"Three things — what you're going to do, what you're not, and ask me.\"\n2. **Student**: ~\"I'm going to study tomorrow.\"\n3. **Charlotte**: \"Not going to?\"\n4. **Student**: ~\"I'm not going to work this weekend.\"\n5. **Charlotte**: \"Ask me!\"\n6. **Student**: ~\"Are you going to travel?\"\n7. **Charlotte**: \"Yes! Future mapped!\"",
+        "evaluation_focus": [
+          "Três formas integradas",
+          "Time markers corretos",
+          "Going to estrutura completa"
+        ]
+      },
+      "guided_chat": {
+        "scenario": "Charlotte abre chat sobre planos de um mês inteiro.",
+        "voiced_by": "charlotte",
+        "persona": "Charlotte",
+        "persona_outfit": "charlotte_casual",
+        "intro_pt": "Charlotte conversa sobre planos de um mês. Integra going to completo.",
+        "opening_message": "Tell me about your month — plans?",
+        "objectives": [
+          {
+            "id": 1,
+            "label_pt": "Dizer um plano firme",
+            "label_en": "Say a firm plan",
+            "hidden_prompt": "user uses 'I'm going to + base + time'",
+            "hint_pt": "I'm going to take a vacation next month.",
+            "hint_en": "I'm going to take a vacation next month."
+          },
+          {
+            "id": 2,
+            "label_pt": "Dizer o que não vai fazer",
+            "label_en": "Say what you won't do",
+            "hidden_prompt": "user uses 'I'm not going to + base'",
+            "hint_pt": "I'm not going to work overtime.",
+            "hint_en": "I'm not going to work overtime."
+          },
+          {
+            "id": 3,
+            "label_pt": "Perguntar à Charlotte",
+            "label_en": "Ask Charlotte",
+            "hidden_prompt": "user asks 'How about you?'",
+            "hint_pt": "How about you?",
+            "hint_en": "How about you?"
+          }
+        ],
+        "closing_cue": "Charlotte encerra com \"Solid month ahead!\" quando obj_3 baterem.",
+        "suggested_script": "**Script** (referencial, 7 turnos):\n\n1. **Charlotte**: \"Tell me about your month — plans?\"\n2. **Student**: \"I'm going to take a vacation next month.\"\n3. **Charlotte**: \"Where?\"\n4. **Student**: \"I'm not going to work overtime.\"\n5. **Charlotte**: \"Smart.\"\n6. **Student**: \"How about you?\"\n7. **Charlotte**: \"I'm going to start a project. Solid month ahead!\"\n\n> N05 chat = LLM puro.\n\n---"
+      }
+    }
+  ],
+  "cross_unit_consolidation": [
+    "\"I'm going to + verb base\" (planos)",
+    "\"I'm not going to + base\" (negativa)",
+    "\"Are you going to + base?\" (pergunta)",
+    "WH + are you going to + base?",
+    "Time markers: tomorrow / next X / this weekend / soon / in X days"
+  ]
+}

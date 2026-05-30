@@ -1,0 +1,1015 @@
+{
+  "id": "M21",
+  "title": "Se isso, então aquilo",
+  "level": "Novice",
+  "block": "A2",
+  "units_range": "N01–N05",
+  "theme": "First conditional (If + present, will + base)",
+  "goal": "Aluno sai sabendo formar primeira conditional pra situações reais futuras possíveis.",
+  "connects_to": "M22 (Conexões) — depois das condicionais, aprende conectores e adverbs of manner.",
+  "module_chunks": [
+    "If + present simple, will + base",
+    "If it rains, I'll stay home.",
+    "If she comes, we'll have dinner.",
+    "What will you do if...?",
+    "I'll help if you need.",
+    "Unless = If not",
+    "I'll go unless it rains."
+  ],
+  "units": [
+    {
+      "id": "N01",
+      "title": "Se chover, eu fico",
+      "sub_cefr": "A2",
+      "grammar_focus": "First conditional (basic structure)",
+      "markers": [
+        "denso"
+      ],
+      "real_life_context": "Você fala sobre o que vai fazer dependendo do tempo, agenda, decisão.",
+      "grammar": [
+        {
+          "type": "multiple_choice",
+          "sentence": "If it _____, I'll stay home.",
+          "options": [
+            "rains",
+            "will rain",
+            "rained"
+          ],
+          "answer": "rains",
+          "explanation": "First conditional: \"If + present simple, will + base\". A parte do \"if\" usa PRESENTE: \"If it rains\"."
+        },
+        {
+          "type": "multiple_choice",
+          "sentence": "If she comes, we _____ have dinner.",
+          "options": [
+            "will",
+            "would",
+            "are"
+          ],
+          "answer": "will",
+          "explanation": "Após if + present, usa \"will + base\" na consequência. \"We will have\" / \"we'll have\"."
+        },
+        {
+          "type": "word_bank",
+          "sentence": "I _____ call you if I have time.",
+          "choices": [
+            "will",
+            "would",
+            "can",
+            "am"
+          ],
+          "answer": "will",
+          "explanation": "\"I'll call you\" — consequência futura. Will + base."
+        },
+        {
+          "type": "word_bank",
+          "sentence": "If you _____ early, you'll see the sunrise.",
+          "choices": [
+            "wake up",
+            "will wake up",
+            "woke up",
+            "wakes up"
+          ],
+          "answer": "wake up",
+          "explanation": "\"If + present simple\" — verbo base com you. \"If you wake up early\"."
+        },
+        {
+          "type": "fill_gap",
+          "sentence": "If it _____ sunny, we'll go to the beach.",
+          "hint": "Verbo \"to be\" presente em condição",
+          "answer": "is",
+          "explanation": "\"If it IS sunny\" — present simple na cláusula if."
+        },
+        {
+          "type": "fill_gap",
+          "sentence": "If she _____, I'll call her back.",
+          "hint": "Present simple 3ª pessoa de \"call\"",
+          "answer": "calls",
+          "explanation": "\"If she calls\" — 3ª pessoa + -s no present."
+        },
+        {
+          "type": "fill_gap",
+          "sentence": "We _____ travel if we save money.",
+          "hint": "Consequência futura",
+          "answer": "will",
+          "explanation": "\"We will travel\" — will + base na consequência."
+        },
+        {
+          "type": "fix_error",
+          "sentence": "If it will rain, I'll stay.",
+          "hint": "Cláusula if NÃO usa will",
+          "answer": "If it rains, I'll stay.",
+          "explanation": "\"If\" usa PRESENTE, não will. \"If it rains\", não \"If it will rain\". Will só na consequência."
+        },
+        {
+          "type": "fix_error",
+          "sentence": "If she comes, we have dinner.",
+          "hint": "Consequência precisa de will",
+          "answer": "If she comes, we'll have dinner.",
+          "explanation": "Consequência futura precisa de WILL. \"We'll have dinner\", não \"we have\"."
+        },
+        {
+          "type": "read_answer",
+          "passage": "If it rains tomorrow, I'll stay home. If it's sunny, we'll go hiking. If she comes, we'll have lunch together.",
+          "question": "What will the speaker do if it's sunny?",
+          "answer": "go hiking",
+          "explanation": "The text says \"If it's sunny, we'll go hiking\"."
+        }
+      ],
+      "listening_speaking": [
+        {
+          "text": "If it rains, I'll stay home.",
+          "context": "weather conditional"
+        },
+        {
+          "text": "If she comes, we'll have dinner.",
+          "context": "person conditional"
+        },
+        {
+          "text": "I'll call you if I have time.",
+          "context": "order reversed"
+        },
+        {
+          "text": "If you wake up early, you'll see the sunrise.",
+          "context": "invitation/promise"
+        },
+        {
+          "text": "We'll travel if we save money.",
+          "context": "life goal conditional"
+        }
+      ],
+      "roleplay": {
+        "scenario": "Charlotte pede previsões condicionais — o que você vai fazer dependendo de cada situação.",
+        "voiced_by": "charlotte",
+        "persona": "Charlotte",
+        "persona_outfit": "charlotte_casual",
+        "time_budget_sec": 90,
+        "opening_line": "What will you do if it rains this weekend?",
+        "objectives": [
+          {
+            "id": 1,
+            "label_pt": "Responder com condicional",
+            "label_en": "Answer with conditional",
+            "hidden_prompt": "user uses 'If it rains, I'll + base'",
+            "hint_pt": "If it rains, I'll stay home.",
+            "hint_en": "If it rains, I'll stay home."
+          },
+          {
+            "id": 2,
+            "label_pt": "Outra condicional",
+            "label_en": "Another conditional",
+            "hidden_prompt": "user uses another 'If + present, will + base'",
+            "hint_pt": "If it's sunny, I'll go to the park.",
+            "hint_en": "If it's sunny, I'll go to the park."
+          },
+          {
+            "id": 3,
+            "label_pt": "Condicional sobre planos",
+            "label_en": "Conditional about plans",
+            "hidden_prompt": "user uses 'If + present, will + base' for a plan",
+            "hint_pt": "If my friend calls, we'll meet up.",
+            "hint_en": "If my friend calls, we'll meet up."
+          }
+        ],
+        "closing_cue": "Charlotte fecha com \"Flexible plans!\" quando obj_3 baterem.",
+        "suggested_flow": "**Suggested flow** (referencial, 6 turnos):\n\n1. **Charlotte**: \"What will you do if it rains this weekend?\"\n2. **Student**: ~\"If it rains, I'll stay home.\"\n3. **Charlotte**: \"And if sunny?\"\n4. **Student**: ~\"If it's sunny, I'll go to the park.\"\n5. **Charlotte**: \"Friends?\"\n6. **Student**: ~\"If my friend calls, we'll meet up.\"\n7. **Charlotte**: \"Flexible plans!\"",
+        "evaluation_focus": [
+          "If + present (não if + will)",
+          "Will + base na consequência",
+          "Vírgula entre cláusulas"
+        ]
+      },
+      "guided_chat": {
+        "scenario": "Charlotte conversa sobre planos B condicionais.",
+        "voiced_by": "charlotte",
+        "persona": "Charlotte",
+        "persona_outfit": "charlotte_casual",
+        "intro_pt": "Charlotte explora 'planos B' condicionais. Pratica If + present, will + base.",
+        "opening_message": "What will you do if the weather changes?",
+        "objectives": [
+          {
+            "id": 1,
+            "label_pt": "Condicional sobre tempo",
+            "label_en": "Conditional about weather",
+            "hidden_prompt": "user uses 'If it + verb, I'll + base' (about weather)",
+            "hint_pt": "If it rains, I'll stay in.",
+            "hint_en": "If it rains, I'll stay in."
+          },
+          {
+            "id": 2,
+            "label_pt": "Outra condicional",
+            "label_en": "Another conditional",
+            "hidden_prompt": "user uses another conditional",
+            "hint_pt": "If I have time, I'll call you.",
+            "hint_en": "If I have time, I'll call you."
+          },
+          {
+            "id": 3,
+            "label_pt": "Perguntar à Charlotte",
+            "label_en": "Ask Charlotte",
+            "hidden_prompt": "user asks 'What will you do if...?'",
+            "hint_pt": "What will you do if it rains?",
+            "hint_en": "What will you do if it rains?"
+          }
+        ],
+        "closing_cue": "Charlotte encerra com \"Plan B ready!\" quando obj_3 baterem.",
+        "suggested_script": "**Script** (referencial, 7 turnos):\n\n1. **Charlotte**: \"What will you do if the weather changes?\"\n2. **Student**: \"If it rains, I'll stay in.\"\n3. **Charlotte**: \"Smart.\"\n4. **Student**: \"If I have time, I'll call you.\"\n5. **Charlotte**: \"Sweet.\"\n6. **Student**: \"What will you do if it rains?\"\n7. **Charlotte**: \"I'll read a book. Plan B ready!\"\n\n> N01 chat = LLM puro.\n\n---"
+      }
+    },
+    {
+      "id": "N02",
+      "title": "Se eu tiver tempo",
+      "sub_cefr": "A2",
+      "grammar_focus": "Conditional with personal plans",
+      "markers": [],
+      "real_life_context": "Você condiciona ações suas a fatores como tempo, dinheiro, disposição.",
+      "grammar": [
+        {
+          "type": "multiple_choice",
+          "sentence": "If I _____ time, I'll exercise.",
+          "options": [
+            "have",
+            "will have",
+            "had"
+          ],
+          "answer": "have",
+          "explanation": "\"If I have\" — present simple na cláusula if. Sem will."
+        },
+        {
+          "type": "multiple_choice",
+          "sentence": "If I have money, I _____ travel.",
+          "options": [
+            "will",
+            "would",
+            "am"
+          ],
+          "answer": "will",
+          "explanation": "Consequência: \"will travel\"."
+        },
+        {
+          "type": "word_bank",
+          "sentence": "I'll buy a car if I _____ enough.",
+          "choices": [
+            "save",
+            "will save",
+            "saved",
+            "saves"
+          ],
+          "answer": "save",
+          "explanation": "\"If I save\" — present simple com I."
+        },
+        {
+          "type": "word_bank",
+          "sentence": "If she _____ enough sleep, she'll feel great.",
+          "choices": [
+            "gets",
+            "will get",
+            "got",
+            "get"
+          ],
+          "answer": "gets",
+          "explanation": "\"If she gets\" — present simple 3ª pessoa: get + s."
+        },
+        {
+          "type": "fill_gap",
+          "sentence": "I'll cook if you _____.",
+          "hint": "Present simple de \"shop\"",
+          "answer": "shop",
+          "explanation": "\"If you shop\" — present simple com you."
+        },
+        {
+          "type": "fill_gap",
+          "sentence": "If I _____ a chance, I'll try.",
+          "hint": "Present simple de \"get\"",
+          "answer": "get",
+          "explanation": "\"If I get\" — present simple com I."
+        },
+        {
+          "type": "fill_gap",
+          "sentence": "She _____ help if I ask.",
+          "hint": "Consequência futura",
+          "answer": "will",
+          "explanation": "\"She will help\" — will + base."
+        },
+        {
+          "type": "fix_error",
+          "sentence": "If I will go, I'll call you.",
+          "hint": "Sem will após if",
+          "answer": "If I go, I'll call you.",
+          "explanation": "\"If I go\" — present simple. Will só na segunda parte."
+        },
+        {
+          "type": "fix_error",
+          "sentence": "I will travel if I save.",
+          "hint": "Contração natural",
+          "answer": "I'll travel if I save.",
+          "explanation": "Em fala, usa-se \"I'll\" mais que \"I will\" — som mais natural. Ambas corretas mas \"I'll\" é melhor em diálogo."
+        },
+        {
+          "type": "read_answer",
+          "passage": "If I have time tomorrow, I'll go to the gym. If I save enough, I'll buy a bike. If my friend calls, I'll go out with her.",
+          "question": "What will the speaker buy if they save enough?",
+          "answer": "a bike",
+          "explanation": "The text says \"If I save enough, I'll buy a bike\"."
+        }
+      ],
+      "listening_speaking": [
+        {
+          "text": "If I have time, I'll exercise.",
+          "context": "time conditional"
+        },
+        {
+          "text": "If I have money, I'll travel.",
+          "context": "money conditional"
+        },
+        {
+          "text": "I'll buy a car if I save.",
+          "context": "order reversed"
+        },
+        {
+          "text": "If she gets enough sleep, she'll feel great.",
+          "context": "wellness"
+        },
+        {
+          "text": "I'll cook if you shop.",
+          "context": "exchange"
+        }
+      ],
+      "roleplay": {
+        "scenario": "Charlotte pergunta sobre seus planos condicionais pessoais.",
+        "voiced_by": "charlotte",
+        "persona": "Charlotte",
+        "persona_outfit": "charlotte_casual",
+        "time_budget_sec": 90,
+        "opening_line": "Three things — what depends on time, money, or mood?",
+        "objectives": [
+          {
+            "id": 1,
+            "label_pt": "Condicional sobre tempo",
+            "label_en": "Time conditional",
+            "hidden_prompt": "user uses 'If I have time, I'll + base'",
+            "hint_pt": "If I have time, I'll exercise.",
+            "hint_en": "If I have time, I'll exercise."
+          },
+          {
+            "id": 2,
+            "label_pt": "Condicional sobre dinheiro",
+            "label_en": "Money conditional",
+            "hidden_prompt": "user uses 'If I have/save money, I'll + base'",
+            "hint_pt": "If I save money, I'll travel.",
+            "hint_en": "If I save money, I'll travel."
+          },
+          {
+            "id": 3,
+            "label_pt": "Condicional sobre humor/disposição",
+            "label_en": "Mood conditional",
+            "hidden_prompt": "user uses 'If I feel + adj, I'll + base'",
+            "hint_pt": "If I feel tired, I'll rest.",
+            "hint_en": "If I feel tired, I'll rest."
+          }
+        ],
+        "closing_cue": "Charlotte fecha com \"Realistic plans!\" quando obj_3 baterem.",
+        "suggested_flow": "**Suggested flow** (referencial, 6 turnos):\n\n1. **Charlotte**: \"Three things — what depends on time, money, or mood?\"\n2. **Student**: ~\"If I have time, I'll exercise.\"\n3. **Charlotte**: \"Money?\"\n4. **Student**: ~\"If I save money, I'll travel.\"\n5. **Charlotte**: \"Mood?\"\n6. **Student**: ~\"If I feel tired, I'll rest.\"\n7. **Charlotte**: \"Realistic plans!\"",
+        "evaluation_focus": [
+          "If + present (não will)",
+          "Will + base na consequência",
+          "Variedade de condições"
+        ]
+      },
+      "guided_chat": {
+        "scenario": "Charlotte conversa sobre o que você condiciona ao tempo livre.",
+        "voiced_by": "charlotte",
+        "persona": "Charlotte",
+        "persona_outfit": "charlotte_casual",
+        "intro_pt": "Charlotte abre chat de planos condicionais. Pratica if + present + will + base.",
+        "opening_message": "What will you do this weekend?",
+        "objectives": [
+          {
+            "id": 1,
+            "label_pt": "Plano condicional 1",
+            "label_en": "Conditional plan 1",
+            "hidden_prompt": "user uses 'If X, I'll + base'",
+            "hint_pt": "If the weather is nice, I'll go to the beach.",
+            "hint_en": "If the weather is nice, I'll go to the beach."
+          },
+          {
+            "id": 2,
+            "label_pt": "Plano condicional 2",
+            "label_en": "Conditional plan 2",
+            "hidden_prompt": "user uses another conditional",
+            "hint_pt": "If my friends call, I'll meet them.",
+            "hint_en": "If my friends call, I'll meet them."
+          },
+          {
+            "id": 3,
+            "label_pt": "Perguntar à Charlotte",
+            "label_en": "Ask Charlotte",
+            "hidden_prompt": "user asks Charlotte 'What will you do if...?'",
+            "hint_pt": "What will you do if it rains?",
+            "hint_en": "What will you do if it rains?"
+          }
+        ],
+        "closing_cue": "Charlotte encerra com \"Flexible weekend!\" quando obj_3 baterem.",
+        "suggested_script": "**Script** (referencial, 7 turnos):\n\n1. **Charlotte**: \"What will you do this weekend?\"\n2. **Student**: \"If the weather is nice, I'll go to the beach.\"\n3. **Charlotte**: \"And friends?\"\n4. **Student**: \"If my friends call, I'll meet them.\"\n5. **Charlotte**: \"Versatile.\"\n6. **Student**: \"What will you do if it rains?\"\n7. **Charlotte**: \"I'll stay in. Flexible weekend!\"\n\n> N02 chat = LLM puro.\n\n---"
+      }
+    },
+    {
+      "id": "N03",
+      "title": "Se você quiser",
+      "sub_cefr": "A2",
+      "grammar_focus": "First conditional with \"you\" — invitations and promises",
+      "markers": [],
+      "real_life_context": "Você convida ou oferece algo dependendo da pessoa querer.",
+      "grammar": [
+        {
+          "type": "multiple_choice",
+          "sentence": "If you _____ help, I'll come.",
+          "options": [
+            "need",
+            "will need",
+            "needed"
+          ],
+          "answer": "need",
+          "explanation": "\"If you need\" — present simple. Sem will."
+        },
+        {
+          "type": "multiple_choice",
+          "sentence": "I'll cook if you _____ hungry.",
+          "options": [
+            "are",
+            "will be",
+            "were"
+          ],
+          "answer": "are",
+          "explanation": "\"If you are hungry\" — present simple. Sem will."
+        },
+        {
+          "type": "word_bank",
+          "sentence": "If you _____ time, we'll chat.",
+          "choices": [
+            "have",
+            "will have",
+            "had",
+            "has"
+          ],
+          "answer": "have",
+          "explanation": "\"If you have\" — present simple com you."
+        },
+        {
+          "type": "word_bank",
+          "sentence": "We _____ help if you ask.",
+          "choices": [
+            "will",
+            "would",
+            "are",
+            "can"
+          ],
+          "answer": "will",
+          "explanation": "\"We will help\" — consequência."
+        },
+        {
+          "type": "fill_gap",
+          "sentence": "If you _____ tired, take a break.",
+          "hint": "Present simple \"to be\" com you",
+          "answer": "are",
+          "explanation": "\"If you are tired\" — uso de to be + adj."
+        },
+        {
+          "type": "fill_gap",
+          "sentence": "I'll lend you my book if you _____ careful.",
+          "hint": "Present simple \"to be\"",
+          "answer": "are",
+          "explanation": "\"If you are careful\" — to be + adj."
+        },
+        {
+          "type": "fill_gap",
+          "sentence": "We _____ go to the cinema if you want.",
+          "hint": "Consequência futura",
+          "answer": "will",
+          "explanation": "\"We will go\" — will + base. Ou \"we'll go\"."
+        },
+        {
+          "type": "fix_error",
+          "sentence": "If you will need help, I'll come.",
+          "hint": "Sem will após if",
+          "answer": "If you need help, I'll come.",
+          "explanation": "Cláusula if = present simple. \"If you need\", não \"If you will need\"."
+        },
+        {
+          "type": "fix_error",
+          "sentence": "I help you if you ask.",
+          "hint": "Consequência precisa de will",
+          "answer": "I'll help you if you ask.",
+          "explanation": "Will + base na consequência. \"I'll help\" — will obrigatório."
+        },
+        {
+          "type": "read_answer",
+          "passage": "If you need help, I'll come. If you're hungry, I'll cook. If you have time, we'll chat. I'm here for you.",
+          "question": "What will the speaker do if you're hungry?",
+          "answer": "cook (or \"I'll cook\")",
+          "explanation": "The text says \"If you're hungry, I'll cook\"."
+        }
+      ],
+      "listening_speaking": [
+        {
+          "text": "If you need help, I'll come.",
+          "context": "offer"
+        },
+        {
+          "text": "I'll cook if you're hungry.",
+          "context": "offer"
+        },
+        {
+          "text": "If you have time, we'll chat.",
+          "context": "invitation"
+        },
+        {
+          "text": "We'll help if you ask.",
+          "context": "group offer"
+        },
+        {
+          "text": "If you're tired, take a break.",
+          "context": "instruction"
+        }
+      ],
+      "roleplay": {
+        "scenario": "Charlotte conta um problema — você oferece ajuda condicional.",
+        "voiced_by": "charlotte",
+        "persona": "Charlotte",
+        "persona_outfit": "charlotte_casual",
+        "time_budget_sec": 90,
+        "opening_line": "I might need help this weekend.",
+        "objectives": [
+          {
+            "id": 1,
+            "label_pt": "Oferecer ajuda condicional",
+            "label_en": "Offer conditional help",
+            "hidden_prompt": "user uses 'If you need + something, I'll + base'",
+            "hint_pt": "If you need help, I'll come.",
+            "hint_en": "If you need help, I'll come."
+          },
+          {
+            "id": 2,
+            "label_pt": "Outra oferta condicional",
+            "label_en": "Another conditional offer",
+            "hidden_prompt": "user uses another 'If you + present, I'll + base'",
+            "hint_pt": "If you're hungry, I'll bring food.",
+            "hint_en": "If you're hungry, I'll bring food."
+          },
+          {
+            "id": 3,
+            "label_pt": "Convite condicional",
+            "label_en": "Conditional invitation",
+            "hidden_prompt": "user uses 'If you have time, we'll + base'",
+            "hint_pt": "If you have time, we'll grab coffee.",
+            "hint_en": "If you have time, we'll grab coffee."
+          }
+        ],
+        "closing_cue": "Charlotte fecha com \"Such a kind friend!\" quando obj_3 baterem.",
+        "suggested_flow": "**Suggested flow** (referencial, 6 turnos):\n\n1. **Charlotte**: \"I might need help this weekend.\"\n2. **Student**: ~\"If you need help, I'll come.\"\n3. **Charlotte**: \"I might be too busy to cook.\"\n4. **Student**: ~\"If you're hungry, I'll bring food.\"\n5. **Charlotte**: \"Coffee break?\"\n6. **Student**: ~\"If you have time, we'll grab coffee.\"\n7. **Charlotte**: \"Such a kind friend!\"",
+        "evaluation_focus": [
+          "If + present (you have, you're, you need)",
+          "I'll / we'll + base",
+          "Tom de ajuda"
+        ]
+      },
+      "guided_chat": {
+        "scenario": "Charlotte abre chat e você é solidário com condicionais.",
+        "voiced_by": "charlotte",
+        "persona": "Charlotte",
+        "persona_outfit": "charlotte_casual",
+        "intro_pt": "Charlotte explora situações de ajuda. Pratica if you + I'll.",
+        "opening_message": "What will you do if I have a bad day?",
+        "objectives": [
+          {
+            "id": 1,
+            "label_pt": "Oferecer ajuda",
+            "label_en": "Offer help",
+            "hidden_prompt": "user uses 'If you + present, I'll + base'",
+            "hint_pt": "If you're sad, I'll listen.",
+            "hint_en": "If you're sad, I'll listen."
+          },
+          {
+            "id": 2,
+            "label_pt": "Outra oferta",
+            "label_en": "Another offer",
+            "hidden_prompt": "user uses another conditional offer",
+            "hint_pt": "If you need company, I'll come over.",
+            "hint_en": "If you need company, I'll come over."
+          },
+          {
+            "id": 3,
+            "label_pt": "Perguntar à Charlotte",
+            "label_en": "Ask Charlotte",
+            "hidden_prompt": "user asks 'What will you do if I...?'",
+            "hint_pt": "What will you do if I'm late?",
+            "hint_en": "What will you do if I'm late?"
+          }
+        ],
+        "closing_cue": "Charlotte encerra com \"Real friendship!\" quando obj_3 baterem.",
+        "suggested_script": "**Script** (referencial, 7 turnos):\n\n1. **Charlotte**: \"What will you do if I have a bad day?\"\n2. **Student**: \"If you're sad, I'll listen.\"\n3. **Charlotte**: \"Thanks.\"\n4. **Student**: \"If you need company, I'll come over.\"\n5. **Charlotte**: \"So sweet.\"\n6. **Student**: \"What will you do if I'm late?\"\n7. **Charlotte**: \"I'll wait. Real friendship!\"\n\n> N03 chat = LLM puro.\n\n---"
+      }
+    },
+    {
+      "id": "N04",
+      "title": "A menos que",
+      "sub_cefr": "A2",
+      "grammar_focus": "Unless (= if not)",
+      "markers": [],
+      "real_life_context": "Você expressa condições negativas com \"unless\" em vez de \"if not\".",
+      "grammar": [
+        {
+          "type": "multiple_choice",
+          "sentence": "I'll go _____ it rains.",
+          "options": [
+            "unless",
+            "if",
+            "when"
+          ],
+          "answer": "unless",
+          "explanation": "\"Unless\" = \"if not\" / \"a menos que\". \"I'll go unless it rains\" = irei a menos que chova."
+        },
+        {
+          "type": "multiple_choice",
+          "sentence": "She'll come _____ she's busy.",
+          "options": [
+            "unless",
+            "if",
+            "when"
+          ],
+          "answer": "unless",
+          "explanation": "\"Unless she's busy\" = se ela não estiver ocupada."
+        },
+        {
+          "type": "word_bank",
+          "sentence": "We'll leave _____ you want to stay.",
+          "choices": [
+            "unless",
+            "if not",
+            "when not",
+            "but"
+          ],
+          "answer": "unless",
+          "explanation": "\"Unless you want to stay\" = \"if you don't want\"."
+        },
+        {
+          "type": "word_bank",
+          "sentence": "I _____ call you unless you ask me not to.",
+          "choices": [
+            "will",
+            "would",
+            "can",
+            "am"
+          ],
+          "answer": "will",
+          "explanation": "Consequência com unless: usa will + base."
+        },
+        {
+          "type": "fill_gap",
+          "sentence": "I'll meet you _____ you're late.",
+          "hint": "A menos que (a alternativa de \"if not\")",
+          "answer": "unless",
+          "explanation": "\"Unless you're late\" = se você não estiver atrasado."
+        },
+        {
+          "type": "fill_gap",
+          "sentence": "She _____ come unless she's sick.",
+          "hint": "Auxiliar futuro",
+          "answer": "will",
+          "explanation": "\"She will come unless...\" — will + base."
+        },
+        {
+          "type": "fill_gap",
+          "sentence": "Unless _____ rains, we'll go to the park.",
+          "hint": "Sujeito impessoal",
+          "answer": "it",
+          "explanation": "\"Unless it rains\" — sujeito \"it\" pra clima."
+        },
+        {
+          "type": "fix_error",
+          "sentence": "I'll go unless it doesn't rain.",
+          "hint": "Unless já é negativo",
+          "answer": "I'll go unless it rains.",
+          "explanation": "\"Unless\" já tem sentido negativo (=if not). NÃO usar \"unless + not\" — é dupla negativa."
+        },
+        {
+          "type": "fix_error",
+          "sentence": "I'll go if not it rains.",
+          "hint": "Forma natural",
+          "answer": "I'll go unless it rains.",
+          "explanation": "\"If not\" em uma frase é comum, mas \"unless\" é mais natural pra essa construção."
+        },
+        {
+          "type": "read_answer",
+          "passage": "I'll come to the party unless I'm tired. We'll go hiking unless it rains. I'll cook dinner unless you want pizza.",
+          "question": "When won't the speaker come to the party?",
+          "answer": "if I'm tired (or \"tired\")",
+          "explanation": "The text says \"I'll come unless I'm tired\" — meaning won't come if tired."
+        }
+      ],
+      "listening_speaking": [
+        {
+          "text": "I'll go unless it rains.",
+          "context": "basic unless"
+        },
+        {
+          "text": "She'll come unless she's busy.",
+          "context": "person + unless"
+        },
+        {
+          "text": "We'll leave unless you want to stay.",
+          "context": "group + unless"
+        },
+        {
+          "text": "I'll call unless you ask me not to.",
+          "context": "preference unless"
+        },
+        {
+          "text": "Unless it rains, we'll have fun.",
+          "context": "unless at start"
+        }
+      ],
+      "roleplay": {
+        "scenario": "Charlotte pede condicionais com unless.",
+        "voiced_by": "charlotte",
+        "persona": "Charlotte",
+        "persona_outfit": "charlotte_casual",
+        "time_budget_sec": 90,
+        "opening_line": "What will you do this weekend... unless what?",
+        "objectives": [
+          {
+            "id": 1,
+            "label_pt": "Plano com unless",
+            "label_en": "Plan with unless",
+            "hidden_prompt": "user uses 'I'll + base + unless + present'",
+            "hint_pt": "I'll go out unless it rains.",
+            "hint_en": "I'll go out unless it rains."
+          },
+          {
+            "id": 2,
+            "label_pt": "Outra com unless",
+            "label_en": "Another with unless",
+            "hidden_prompt": "user uses another sentence with unless",
+            "hint_pt": "I'll cook unless you want delivery.",
+            "hint_en": "I'll cook unless you want delivery."
+          },
+          {
+            "id": 3,
+            "label_pt": "Unless no início",
+            "label_en": "Unless at start",
+            "hidden_prompt": "user uses 'Unless + present, I'll + base'",
+            "hint_pt": "Unless I'm too tired, I'll exercise.",
+            "hint_en": "Unless I'm too tired, I'll exercise."
+          }
+        ],
+        "closing_cue": "Charlotte fecha com \"Unless covered!\" quando obj_3 baterem.",
+        "suggested_flow": "**Suggested flow** (referencial, 6 turnos):\n\n1. **Charlotte**: \"What will you do this weekend... unless what?\"\n2. **Student**: ~\"I'll go out unless it rains.\"\n3. **Charlotte**: \"Dinner?\"\n4. **Student**: ~\"I'll cook unless you want delivery.\"\n5. **Charlotte**: \"Workout?\"\n6. **Student**: ~\"Unless I'm too tired, I'll exercise.\"\n7. **Charlotte**: \"Unless covered!\"",
+        "evaluation_focus": [
+          "Unless = if not",
+          "Sem dupla negativa (unless + not)",
+          "Será + base na consequência"
+        ]
+      },
+      "guided_chat": {
+        "scenario": "Charlotte conversa sobre planos com condicionais negativas.",
+        "voiced_by": "charlotte",
+        "persona": "Charlotte",
+        "persona_outfit": "charlotte_casual",
+        "intro_pt": "Charlotte explora unless. Pratica condicional negativa.",
+        "opening_message": "Will you join me Saturday — unless something comes up?",
+        "objectives": [
+          {
+            "id": 1,
+            "label_pt": "Confirmar com unless",
+            "label_en": "Confirm with unless",
+            "hidden_prompt": "user uses 'Yes, I'll + base + unless + present'",
+            "hint_pt": "Yes, I'll come unless I'm sick.",
+            "hint_en": "Yes, I'll come unless I'm sick."
+          },
+          {
+            "id": 2,
+            "label_pt": "Outro plano com unless",
+            "label_en": "Another plan with unless",
+            "hidden_prompt": "user uses another 'I'll + base + unless'",
+            "hint_pt": "I'll bring snacks unless you have enough.",
+            "hint_en": "I'll bring snacks unless you have enough."
+          },
+          {
+            "id": 3,
+            "label_pt": "Perguntar à Charlotte",
+            "label_en": "Ask Charlotte",
+            "hidden_prompt": "user asks Charlotte 'What will you do if...?'",
+            "hint_pt": "Will you come unless it's late?",
+            "hint_en": "Will you come unless it's late?"
+          }
+        ],
+        "closing_cue": "Charlotte encerra com \"Plans set!\" quando obj_3 baterem.",
+        "suggested_script": "**Script** (referencial, 7 turnos):\n\n1. **Charlotte**: \"Will you join me Saturday — unless something comes up?\"\n2. **Student**: \"Yes, I'll come unless I'm sick.\"\n3. **Charlotte**: \"Food?\"\n4. **Student**: \"I'll bring snacks unless you have enough.\"\n5. **Charlotte**: \"Perfect.\"\n6. **Student**: \"Will you come unless it's late?\"\n7. **Charlotte**: \"Yes! Plans set!\"\n\n> N04 chat = LLM puro.\n\n---"
+      }
+    },
+    {
+      "id": "N05",
+      "title": "Vida real condicional",
+      "sub_cefr": "A2",
+      "grammar_focus": "Integration first conditional + unless",
+      "markers": [],
+      "real_life_context": "Você combina condicionais variadas pra discutir vida real.",
+      "grammar": [
+        {
+          "type": "multiple_choice",
+          "sentence": "If I _____ time, I'll exercise.",
+          "options": [
+            "have",
+            "will have",
+            "had"
+          ],
+          "answer": "have",
+          "explanation": "If + present."
+        },
+        {
+          "type": "multiple_choice",
+          "sentence": "I _____ call you if it rains.",
+          "options": [
+            "will",
+            "would",
+            "am"
+          ],
+          "answer": "will",
+          "explanation": "Consequência futura: will."
+        },
+        {
+          "type": "word_bank",
+          "sentence": "We'll travel _____ we save money.",
+          "choices": [
+            "if",
+            "unless",
+            "when",
+            "so"
+          ],
+          "answer": "if",
+          "explanation": "\"If we save\" — condição positiva."
+        },
+        {
+          "type": "word_bank",
+          "sentence": "I'll come _____ I'm sick.",
+          "choices": [
+            "unless",
+            "if",
+            "when",
+            "before"
+          ],
+          "answer": "unless",
+          "explanation": "\"Unless I'm sick\" = a menos que esteja doente."
+        },
+        {
+          "type": "fill_gap",
+          "sentence": "If she _____ early, we'll have time.",
+          "hint": "Present simple 3ª pessoa \"arrive\"",
+          "answer": "arrives",
+          "explanation": "3ª pessoa: arrives."
+        },
+        {
+          "type": "fill_gap",
+          "sentence": "I'll go to the gym _____ I'm too tired.",
+          "hint": "A menos que",
+          "answer": "unless",
+          "explanation": "Unless = if not."
+        },
+        {
+          "type": "fill_gap",
+          "sentence": "What _____ you do if it rains?",
+          "hint": "Auxiliar futuro",
+          "answer": "will",
+          "explanation": "\"What will you do?\" — WH futuro."
+        },
+        {
+          "type": "fix_error",
+          "sentence": "If it will rain, I'll stay home.",
+          "hint": "Cláusula if sem will",
+          "answer": "If it rains, I'll stay home.",
+          "explanation": "\"If + present\", não will."
+        },
+        {
+          "type": "fix_error",
+          "sentence": "I will come unless it doesn't rain.",
+          "hint": "Unless já é negativo",
+          "answer": "I'll come unless it rains.",
+          "explanation": "Unless + presente afirmativo. Sem \"unless + not\"."
+        },
+        {
+          "type": "read_answer",
+          "passage": "If it's sunny tomorrow, I'll go to the beach. If it rains, I'll stay home. I'll meet my friend unless she cancels.",
+          "question": "When won't the speaker meet the friend?",
+          "answer": "if she cancels (or \"she cancels\")",
+          "explanation": "The text says \"unless she cancels\" — meaning won't meet if she does."
+        }
+      ],
+      "listening_speaking": [
+        {
+          "text": "If I have time, I'll exercise.",
+          "context": "positive condition"
+        },
+        {
+          "text": "I'll call you if it rains.",
+          "context": "order reversed"
+        },
+        {
+          "text": "We'll travel if we save.",
+          "context": "life goal"
+        },
+        {
+          "text": "I'll come unless I'm sick.",
+          "context": "negative condition"
+        },
+        {
+          "text": "What will you do if it rains?",
+          "context": "question form"
+        }
+      ],
+      "roleplay": {
+        "scenario": "Charlotte pede integração — três condicionais diferentes.",
+        "voiced_by": "charlotte",
+        "persona": "Charlotte",
+        "persona_outfit": "charlotte_casual",
+        "time_budget_sec": 90,
+        "opening_line": "Three conditional plans — go!",
+        "objectives": [
+          {
+            "id": 1,
+            "label_pt": "Condicional positiva (If)",
+            "label_en": "Positive (If)",
+            "hidden_prompt": "user uses 'If + present, I'll + base'",
+            "hint_pt": "If I save enough, I'll buy a car.",
+            "hint_en": "If I save enough, I'll buy a car."
+          },
+          {
+            "id": 2,
+            "label_pt": "Condicional negativa (Unless)",
+            "label_en": "Negative (Unless)",
+            "hidden_prompt": "user uses 'I'll + base + unless + present'",
+            "hint_pt": "I'll go unless it rains.",
+            "hint_en": "I'll go unless it rains."
+          },
+          {
+            "id": 3,
+            "label_pt": "Pergunta condicional",
+            "label_en": "Conditional question",
+            "hidden_prompt": "user asks 'What will you do if...?'",
+            "hint_pt": "What will you do if it rains?",
+            "hint_en": "What will you do if it rains?"
+          }
+        ],
+        "closing_cue": "Charlotte fecha com \"Conditional master!\" quando obj_3 baterem.",
+        "suggested_flow": "**Suggested flow** (referencial, 6 turnos):\n\n1. **Charlotte**: \"Three conditional plans — go!\"\n2. **Student**: ~\"If I save enough, I'll buy a car.\"\n3. **Charlotte**: \"Unless?\"\n4. **Student**: ~\"I'll go unless it rains.\"\n5. **Charlotte**: \"Ask me!\"\n6. **Student**: ~\"What will you do if it rains?\"\n7. **Charlotte**: \"Stay in. Conditional master!\"",
+        "evaluation_focus": [
+          "Tipos diferentes",
+          "Estrutura correta",
+          "Fluidez"
+        ]
+      },
+      "guided_chat": {
+        "scenario": "Charlotte conversa sobre planos com várias condições.",
+        "voiced_by": "charlotte",
+        "persona": "Charlotte",
+        "persona_outfit": "charlotte_casual",
+        "intro_pt": "Charlotte abre chat de planos condicionais. Integra if + unless + questions.",
+        "opening_message": "Big plans this week?",
+        "objectives": [
+          {
+            "id": 1,
+            "label_pt": "Plano com if",
+            "label_en": "Plan with if",
+            "hidden_prompt": "user uses 'If X, I'll + base'",
+            "hint_pt": "If I have time, I'll visit my family.",
+            "hint_en": "If I have time, I'll visit my family."
+          },
+          {
+            "id": 2,
+            "label_pt": "Plano com unless",
+            "label_en": "Plan with unless",
+            "hidden_prompt": "user uses 'I'll + base + unless + present'",
+            "hint_pt": "I'll work out unless I'm too tired.",
+            "hint_en": "I'll work out unless I'm too tired."
+          },
+          {
+            "id": 3,
+            "label_pt": "Perguntar à Charlotte",
+            "label_en": "Ask Charlotte",
+            "hidden_prompt": "user asks 'What will you do if...?'",
+            "hint_pt": "What will you do this weekend?",
+            "hint_en": "What will you do this weekend?"
+          }
+        ],
+        "closing_cue": "Charlotte encerra com \"Week planned!\" quando obj_3 baterem.",
+        "suggested_script": "**Script** (referencial, 7 turnos):\n\n1. **Charlotte**: \"Big plans this week?\"\n2. **Student**: \"If I have time, I'll visit my family.\"\n3. **Charlotte**: \"Workout?\"\n4. **Student**: \"I'll work out unless I'm too tired.\"\n5. **Charlotte**: \"Smart.\"\n6. **Student**: \"What will you do this weekend?\"\n7. **Charlotte**: \"I'll travel if I get vacation. Week planned!\"\n\n> N05 chat = LLM puro.\n\n---"
+      }
+    }
+  ],
+  "cross_unit_consolidation": [
+    "First conditional: If + present, will + base",
+    "Both orders: \"If X, I'll Y\" / \"I'll Y if X\"",
+    "Unless = if not (sem dupla negativa)",
+    "WH-questions: What will you do if...?",
+    "Variedade de contextos: tempo, dinheiro, humor, pessoas"
+  ]
+}

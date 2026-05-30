@@ -1,0 +1,1013 @@
+{
+  "id": "M22",
+  "title": "Conexões e fechamento Novice",
+  "level": "Novice",
+  "block": "A2",
+  "units_range": "N01–N05",
+  "theme": "Linking words + adverbs of manner — fechamento Novice",
+  "goal": "Aluno sai sabendo conectar ideias com and/but/because/so e descrever ações com adverbs of manner (-ly), encerrando o Novice.",
+  "connects_to": "I01 (Inter) — Eventos no passado com past continuous.",
+  "module_chunks": [
+    "and / but / or / so / because",
+    "although / however",
+    "quickly / slowly / carefully / loudly / quietly / happily / sadly",
+    "-ly endings: regular (slowly), y → ily (happy → happily), irregular (good → well, fast → fast)",
+    "She speaks quickly.",
+    "He drives carefully.",
+    "I work hard, but I also rest."
+  ],
+  "units": [
+    {
+      "id": "N01",
+      "title": "E, mas, ou",
+      "sub_cefr": "A2",
+      "grammar_focus": "Basic linkers (and, but, or)",
+      "markers": [],
+      "real_life_context": "Você conecta duas ideias em uma frase só.",
+      "grammar": [
+        {
+          "type": "multiple_choice",
+          "sentence": "I like coffee _____ tea.",
+          "options": [
+            "and",
+            "but",
+            "or"
+          ],
+          "answer": "and",
+          "explanation": "\"And\" = soma. \"I like coffee AND tea\" = ambos."
+        },
+        {
+          "type": "multiple_choice",
+          "sentence": "I like tea _____ I don't like coffee.",
+          "options": [
+            "but",
+            "and",
+            "or"
+          ],
+          "answer": "but",
+          "explanation": "\"But\" = contraste. Liga ideia oposta."
+        },
+        {
+          "type": "word_bank",
+          "sentence": "Do you want coffee _____ tea?",
+          "choices": [
+            "or",
+            "and",
+            "but",
+            "so"
+          ],
+          "answer": "or",
+          "explanation": "\"Or\" = escolha entre opções."
+        },
+        {
+          "type": "word_bank",
+          "sentence": "I'm tired _____ I'll go to bed.",
+          "choices": [
+            "so",
+            "and",
+            "but",
+            "or"
+          ],
+          "answer": "so",
+          "explanation": "\"So\" = consequência. \"Estou cansado, então vou dormir\"."
+        },
+        {
+          "type": "fill_gap",
+          "sentence": "He plays soccer _____ basketball.",
+          "hint": "Soma de atividades",
+          "answer": "and",
+          "explanation": "\"And\" — ambos esportes."
+        },
+        {
+          "type": "fill_gap",
+          "sentence": "I want to travel _____ I don't have money.",
+          "hint": "Contraste",
+          "answer": "but",
+          "explanation": "\"But\" — quero mas não posso."
+        },
+        {
+          "type": "fill_gap",
+          "sentence": "Tea, coffee, _____ juice?",
+          "hint": "Escolha",
+          "answer": "or",
+          "explanation": "\"Or\" — escolher entre."
+        },
+        {
+          "type": "fix_error",
+          "sentence": "I'm tired but I'll go to sleep.",
+          "hint": "Resultado lógico pede \"so\"",
+          "answer": "I'm tired, so I'll go to sleep.",
+          "explanation": "\"So\" liga causa-consequência. \"But\" é contraste — não cabe aqui (cansado e dormir são lógicos, não contrastantes)."
+        },
+        {
+          "type": "fix_error",
+          "sentence": "I like dogs and cats but birds.",
+          "hint": "Estrutura paralela",
+          "answer": "I like dogs, cats, and birds. (or use \"but\" with opposite idea)",
+          "explanation": "\"But\" sem ideia oposta soa estranho. Use \"and\" pra lista. \"But\" exigiria contraste."
+        },
+        {
+          "type": "read_answer",
+          "passage": "I like coffee and tea, but I don't like soda. I drink water all day. Do you prefer coffee or tea?",
+          "question": "Does the speaker like soda?",
+          "answer": "no (or \"doesn't like\")",
+          "explanation": "The text says \"I don't like soda\"."
+        }
+      ],
+      "listening_speaking": [
+        {
+          "text": "I like coffee and tea.",
+          "context": "and"
+        },
+        {
+          "text": "I like tea but not coffee.",
+          "context": "but"
+        },
+        {
+          "text": "Coffee or tea?",
+          "context": "or"
+        },
+        {
+          "text": "I'm tired, so I'll sleep.",
+          "context": "so"
+        },
+        {
+          "text": "I want to travel, but I have no money.",
+          "context": "but contrast"
+        }
+      ],
+      "roleplay": {
+        "scenario": "Charlotte pede pra você conectar ideias diferentes.",
+        "voiced_by": "charlotte",
+        "persona": "Charlotte",
+        "persona_outfit": "charlotte_casual",
+        "time_budget_sec": 90,
+        "opening_line": "Connect three pairs of ideas — use and, but, so.",
+        "objectives": [
+          {
+            "id": 1,
+            "label_pt": "Frase com 'and'",
+            "label_en": "Sentence with 'and'",
+            "hidden_prompt": "user uses 'X and Y' to connect two ideas",
+            "hint_pt": "I like reading and swimming.",
+            "hint_en": "I like reading and swimming."
+          },
+          {
+            "id": 2,
+            "label_pt": "Frase com 'but'",
+            "label_en": "Sentence with 'but'",
+            "hidden_prompt": "user uses 'X but Y' for contrast",
+            "hint_pt": "I like coffee but not tea.",
+            "hint_en": "I like coffee but not tea."
+          },
+          {
+            "id": 3,
+            "label_pt": "Frase com 'so'",
+            "label_en": "Sentence with 'so'",
+            "hidden_prompt": "user uses 'X, so Y' for consequence",
+            "hint_pt": "I'm tired, so I'll rest.",
+            "hint_en": "I'm tired, so I'll rest."
+          }
+        ],
+        "closing_cue": "Charlotte fecha com \"Connected ideas!\" quando obj_3 baterem.",
+        "suggested_flow": "**Suggested flow** (referencial, 6 turnos):\n\n1. **Charlotte**: \"Connect three pairs of ideas — use and, but, so.\"\n2. **Student**: ~\"I like reading and swimming.\"\n3. **Charlotte**: \"Contrast?\"\n4. **Student**: ~\"I like coffee but not tea.\"\n5. **Charlotte**: \"Consequence?\"\n6. **Student**: ~\"I'm tired, so I'll rest.\"\n7. **Charlotte**: \"Connected ideas!\"",
+        "evaluation_focus": [
+          "And pra soma",
+          "But pra contraste",
+          "So pra consequência"
+        ]
+      },
+      "guided_chat": {
+        "scenario": "Charlotte explora conexões sobre vida.",
+        "voiced_by": "charlotte",
+        "persona": "Charlotte",
+        "persona_outfit": "charlotte_casual",
+        "intro_pt": "Charlotte abre chat sobre suas preferências conectadas. Pratica and/but/so.",
+        "opening_message": "What do you like and don't like?",
+        "objectives": [
+          {
+            "id": 1,
+            "label_pt": "Conectar com and",
+            "label_en": "Connect with and",
+            "hidden_prompt": "user uses 'X and Y'",
+            "hint_pt": "I like reading and traveling.",
+            "hint_en": "I like reading and traveling."
+          },
+          {
+            "id": 2,
+            "label_pt": "Conectar com but",
+            "label_en": "Connect with but",
+            "hidden_prompt": "user uses 'X but Y'",
+            "hint_pt": "I like sweets but not too much.",
+            "hint_en": "I like sweets but not too much."
+          },
+          {
+            "id": 3,
+            "label_pt": "Perguntar à Charlotte",
+            "label_en": "Ask Charlotte",
+            "hidden_prompt": "user asks 'How about you?'",
+            "hint_pt": "How about you?",
+            "hint_en": "How about you?"
+          }
+        ],
+        "closing_cue": "Charlotte encerra com \"Connector confidence!\" quando obj_3 baterem.",
+        "suggested_script": "**Script** (referencial, 7 turnos):\n\n1. **Charlotte**: \"What do you like and don't like?\"\n2. **Student**: \"I like reading and traveling.\"\n3. **Charlotte**: \"Contrast?\"\n4. **Student**: \"I like sweets but not too much.\"\n5. **Charlotte**: \"Balanced.\"\n6. **Student**: \"How about you?\"\n7. **Charlotte**: \"I like coffee but not espresso. Connector confidence!\"\n\n> N01 chat = LLM puro.\n\n---"
+      }
+    },
+    {
+      "id": "N02",
+      "title": "Porque e então",
+      "sub_cefr": "A2",
+      "grammar_focus": "Because (cause) + so (result)",
+      "markers": [],
+      "real_life_context": "Você explica causas e consequências em suas decisões.",
+      "grammar": [
+        {
+          "type": "multiple_choice",
+          "sentence": "I'm tired _____ I worked all day.",
+          "options": [
+            "because",
+            "so",
+            "but"
+          ],
+          "answer": "because",
+          "explanation": "\"Because\" introduz a CAUSA. \"I'm tired because I worked\" — cansado por trabalhar."
+        },
+        {
+          "type": "multiple_choice",
+          "sentence": "I'm tired _____ I'll rest.",
+          "options": [
+            "so",
+            "because",
+            "but"
+          ],
+          "answer": "so",
+          "explanation": "\"So\" introduz a CONSEQUÊNCIA. \"I'm tired so I'll rest\" — cansado, então descanso."
+        },
+        {
+          "type": "word_bank",
+          "sentence": "She studies a lot _____ she wants to pass.",
+          "choices": [
+            "because",
+            "so",
+            "but",
+            "and"
+          ],
+          "answer": "because",
+          "explanation": "\"Because she wants\" — explicação/motivo."
+        },
+        {
+          "type": "word_bank",
+          "sentence": "He likes coffee _____ he drinks it every day.",
+          "choices": [
+            "so",
+            "because",
+            "but",
+            "and"
+          ],
+          "answer": "so",
+          "explanation": "\"Likes coffee SO drinks\" — consequência."
+        },
+        {
+          "type": "fill_gap",
+          "sentence": "I went home early _____ I was sick.",
+          "hint": "Motivo (causa)",
+          "answer": "because",
+          "explanation": "\"Because I was sick\" — explicação."
+        },
+        {
+          "type": "fill_gap",
+          "sentence": "It was raining, _____ we stayed inside.",
+          "hint": "Resultado",
+          "answer": "so",
+          "explanation": "\"So we stayed\" — consequência da chuva."
+        },
+        {
+          "type": "fill_gap",
+          "sentence": "She is happy _____ she got a job.",
+          "hint": "Causa",
+          "answer": "because",
+          "explanation": "\"Because she got a job\" — explicação da felicidade."
+        },
+        {
+          "type": "fix_error",
+          "sentence": "I'm tired so I worked all day.",
+          "hint": "Causa pede because",
+          "answer": "I'm tired because I worked all day.",
+          "explanation": "Trabalhar foi a CAUSA do cansaço. Use \"because\" pra introduzir causa, não \"so\"."
+        },
+        {
+          "type": "fix_error",
+          "sentence": "It's raining because we'll stay home.",
+          "hint": "Consequência pede so",
+          "answer": "It's raining, so we'll stay home.",
+          "explanation": "Ficar em casa é a CONSEQUÊNCIA da chuva. Use \"so\" pra consequência."
+        },
+        {
+          "type": "read_answer",
+          "passage": "I love English because it opens doors. I study every day, so I'm making progress. I'll keep going because it's fun.",
+          "question": "Why does the speaker love English?",
+          "answer": "it opens doors (or \"opens doors\")",
+          "explanation": "The text says \"I love English because it opens doors\"."
+        }
+      ],
+      "listening_speaking": [
+        {
+          "text": "I'm tired because I worked all day.",
+          "context": "cause"
+        },
+        {
+          "text": "I'm tired, so I'll rest.",
+          "context": "result"
+        },
+        {
+          "text": "She studies because she wants to pass.",
+          "context": "cause"
+        },
+        {
+          "text": "It rained, so we stayed home.",
+          "context": "result"
+        },
+        {
+          "text": "He's happy because he got a job.",
+          "context": "cause"
+        }
+      ],
+      "roleplay": {
+        "scenario": "Charlotte pede pra você explicar causas e consequências em sua vida.",
+        "voiced_by": "charlotte",
+        "persona": "Charlotte",
+        "persona_outfit": "charlotte_casual",
+        "time_budget_sec": 90,
+        "opening_line": "Tell me why you do things — and what happens because of them.",
+        "objectives": [
+          {
+            "id": 1,
+            "label_pt": "Explicar causa com 'because'",
+            "label_en": "Explain cause with 'because'",
+            "hidden_prompt": "user uses 'X because Y'",
+            "hint_pt": "I study English because I want to travel.",
+            "hint_en": "I study English because I want to travel."
+          },
+          {
+            "id": 2,
+            "label_pt": "Explicar consequência com 'so'",
+            "label_en": "Explain result with 'so'",
+            "hidden_prompt": "user uses 'X, so Y'",
+            "hint_pt": "I work hard, so I get tired.",
+            "hint_en": "I work hard, so I get tired."
+          },
+          {
+            "id": 3,
+            "label_pt": "Outra causa ou consequência",
+            "label_en": "Another cause or result",
+            "hidden_prompt": "user uses another because or so sentence",
+            "hint_pt": "I love coffee because it gives me energy.",
+            "hint_en": "I love coffee because it gives me energy."
+          }
+        ],
+        "closing_cue": "Charlotte fecha com \"Cause-effect clear!\" quando obj_3 baterem.",
+        "suggested_flow": "**Suggested flow** (referencial, 6 turnos):\n\n1. **Charlotte**: \"Tell me why you do things — and what happens because of them.\"\n2. **Student**: ~\"I study English because I want to travel.\"\n3. **Charlotte**: \"Result?\"\n4. **Student**: ~\"I work hard, so I get tired.\"\n5. **Charlotte**: \"Why coffee?\"\n6. **Student**: ~\"I love coffee because it gives me energy.\"\n7. **Charlotte**: \"Cause-effect clear!\"",
+        "evaluation_focus": [
+          "Because pra causa",
+          "So pra resultado",
+          "Diferença clara"
+        ]
+      },
+      "guided_chat": {
+        "scenario": "Charlotte conversa sobre escolhas e razões.",
+        "voiced_by": "charlotte",
+        "persona": "Charlotte",
+        "persona_outfit": "charlotte_casual",
+        "intro_pt": "Charlotte abre chat sobre causa-consequência. Pratica because/so.",
+        "opening_message": "Why are you learning English?",
+        "objectives": [
+          {
+            "id": 1,
+            "label_pt": "Explicar razão com because",
+            "label_en": "Explain with because",
+            "hidden_prompt": "user uses 'because + reason'",
+            "hint_pt": "Because I want a better job.",
+            "hint_en": "Because I want a better job."
+          },
+          {
+            "id": 2,
+            "label_pt": "Dar consequência com so",
+            "label_en": "Give result with so",
+            "hidden_prompt": "user uses 'X, so Y'",
+            "hint_pt": "I study every day, so I improve fast.",
+            "hint_en": "I study every day, so I improve fast."
+          },
+          {
+            "id": 3,
+            "label_pt": "Perguntar à Charlotte",
+            "label_en": "Ask Charlotte",
+            "hidden_prompt": "user asks 'How about you?' or 'Why?'",
+            "hint_pt": "How about you?",
+            "hint_en": "How about you?"
+          }
+        ],
+        "closing_cue": "Charlotte encerra com \"Smart connections!\" quando obj_3 baterem.",
+        "suggested_script": "**Script** (referencial, 7 turnos):\n\n1. **Charlotte**: \"Why are you learning English?\"\n2. **Student**: \"Because I want a better job.\"\n3. **Charlotte**: \"Good motivation. Result?\"\n4. **Student**: \"I study every day, so I improve fast.\"\n5. **Charlotte**: \"Awesome.\"\n6. **Student**: \"How about you?\"\n7. **Charlotte**: \"I teach because I love it. Smart connections!\"\n\n> N02 chat = LLM puro.\n\n---"
+      }
+    },
+    {
+      "id": "N03",
+      "title": "Rapidamente, cuidadosamente",
+      "sub_cefr": "A2",
+      "grammar_focus": "Adverbs of manner (-ly)",
+      "markers": [],
+      "real_life_context": "Você descreve COMO ações são feitas — rápido, devagar, cuidadosamente.",
+      "grammar": [
+        {
+          "type": "multiple_choice",
+          "sentence": "She speaks _____.",
+          "options": [
+            "quickly",
+            "quick",
+            "quicker"
+          ],
+          "answer": "quickly",
+          "explanation": "Advérbio = adjetivo + -ly. \"Quick\" → \"quickly\"."
+        },
+        {
+          "type": "multiple_choice",
+          "sentence": "He drives _____.",
+          "options": [
+            "carefully",
+            "careful",
+            "careless"
+          ],
+          "answer": "carefully",
+          "explanation": "\"Careful\" → \"carefully\". Advérbio descreve como dirige."
+        },
+        {
+          "type": "word_bank",
+          "sentence": "She studies _____.",
+          "choices": [
+            "seriously",
+            "serious",
+            "very serious",
+            "seriouser"
+          ],
+          "answer": "seriously",
+          "explanation": "\"Serious\" → \"seriously\" — adicionando -ly."
+        },
+        {
+          "type": "word_bank",
+          "sentence": "He sings _____.",
+          "choices": [
+            "loudly",
+            "loud",
+            "louder",
+            "loud-ly"
+          ],
+          "answer": "loudly",
+          "explanation": "\"Loud\" → \"loudly\". Junto, sem hífen."
+        },
+        {
+          "type": "fill_gap",
+          "sentence": "She always laughs _____.",
+          "hint": "Advérbio de \"happy\" (y → ily)",
+          "answer": "happily",
+          "explanation": "\"Happy\" → \"happily\" (y → ily). Regra de spelling."
+        },
+        {
+          "type": "fill_gap",
+          "sentence": "He walks _____ in the morning.",
+          "hint": "Advérbio de \"slow\"",
+          "answer": "slowly",
+          "explanation": "\"Slow\" + ly = \"slowly\"."
+        },
+        {
+          "type": "fill_gap",
+          "sentence": "Please speak _____.",
+          "hint": "Advérbio de \"quiet\"",
+          "answer": "quietly",
+          "explanation": "\"Quiet\" → \"quietly\". Manter o \"t\"."
+        },
+        {
+          "type": "fix_error",
+          "sentence": "She speaks quick.",
+          "hint": "Falta -ly",
+          "answer": "She speaks quickly.",
+          "explanation": "\"Quick\" é adjetivo. Pra modificar o verbo, usa advérbio: \"quickly\"."
+        },
+        {
+          "type": "fix_error",
+          "sentence": "He sings good.",
+          "hint": "Good tem advérbio irregular",
+          "answer": "He sings well.",
+          "explanation": "\"Good\" (adj) → \"well\" (advérbio irregular). Não \"goodly\". \"He sings well\"."
+        },
+        {
+          "type": "read_answer",
+          "passage": "She speaks slowly and clearly. He drives carefully. They study seriously. We all sing happily.",
+          "question": "How does she speak?",
+          "answer": "slowly and clearly",
+          "explanation": "The text says \"She speaks slowly and clearly\"."
+        }
+      ],
+      "listening_speaking": [
+        {
+          "text": "She speaks quickly.",
+          "context": "adj + ly"
+        },
+        {
+          "text": "He drives carefully.",
+          "context": "careful + ly"
+        },
+        {
+          "text": "They study seriously.",
+          "context": "serious + ly"
+        },
+        {
+          "text": "We sing happily.",
+          "context": "happy → happily"
+        },
+        {
+          "text": "He sings well.",
+          "context": "irregular (good → well)"
+        }
+      ],
+      "roleplay": {
+        "scenario": "Charlotte pede pra você descrever pessoas com advérbios.",
+        "voiced_by": "charlotte",
+        "persona": "Charlotte",
+        "persona_outfit": "charlotte_casual",
+        "time_budget_sec": 90,
+        "opening_line": "Describe how three different people do things.",
+        "objectives": [
+          {
+            "id": 1,
+            "label_pt": "Descrever ação com -ly",
+            "label_en": "Describe action with -ly",
+            "hidden_prompt": "user uses 'X + verb + adverb-ly'",
+            "hint_pt": "She speaks quickly.",
+            "hint_en": "She speaks quickly."
+          },
+          {
+            "id": 2,
+            "label_pt": "Outra ação com -ly",
+            "label_en": "Another -ly action",
+            "hidden_prompt": "user uses another adverb-ly",
+            "hint_pt": "He drives carefully.",
+            "hint_en": "He drives carefully."
+          },
+          {
+            "id": 3,
+            "label_pt": "Usar irregular ou y→ily",
+            "label_en": "Use irregular or y→ily",
+            "hidden_prompt": "user uses 'well' or 'happily/easily/etc.'",
+            "hint_pt": "She sings happily.",
+            "hint_en": "She sings happily."
+          }
+        ],
+        "closing_cue": "Charlotte fecha com \"Description on point!\" quando obj_3 baterem.",
+        "suggested_flow": "**Suggested flow** (referencial, 6 turnos):\n\n1. **Charlotte**: \"Describe how three different people do things.\"\n2. **Student**: ~\"She speaks quickly.\"\n3. **Charlotte**: \"And driving?\"\n4. **Student**: ~\"He drives carefully.\"\n5. **Charlotte**: \"Singing?\"\n6. **Student**: ~\"She sings happily.\"\n7. **Charlotte**: \"Description on point!\"",
+        "evaluation_focus": [
+          "-ly em adjetivos",
+          "y → ily (happy → happily)",
+          "\"well\" pra good"
+        ]
+      },
+      "guided_chat": {
+        "scenario": "Charlotte conversa sobre traços de pessoas.",
+        "voiced_by": "charlotte",
+        "persona": "Charlotte",
+        "persona_outfit": "charlotte_casual",
+        "intro_pt": "Charlotte abre chat sobre como pessoas fazem coisas. Pratica adverbs of manner.",
+        "opening_message": "Tell me how three people in your life act.",
+        "objectives": [
+          {
+            "id": 1,
+            "label_pt": "Descrever pessoa 1",
+            "label_en": "Describe person 1",
+            "hidden_prompt": "user uses 'X + verb + adverb-ly'",
+            "hint_pt": "My sister sings beautifully.",
+            "hint_en": "My sister sings beautifully."
+          },
+          {
+            "id": 2,
+            "label_pt": "Descrever pessoa 2",
+            "label_en": "Describe person 2",
+            "hidden_prompt": "user uses another adverb-ly",
+            "hint_pt": "My brother drives quickly.",
+            "hint_en": "My brother drives quickly."
+          },
+          {
+            "id": 3,
+            "label_pt": "Perguntar à Charlotte",
+            "label_en": "Ask Charlotte",
+            "hidden_prompt": "user asks Charlotte 'How does X act?'",
+            "hint_pt": "How does your friend act?",
+            "hint_en": "How does your friend act?"
+          }
+        ],
+        "closing_cue": "Charlotte encerra com \"Adverb art!\" quando obj_3 baterem.",
+        "suggested_script": "**Script** (referencial, 7 turnos):\n\n1. **Charlotte**: \"Tell me how three people in your life act.\"\n2. **Student**: \"My sister sings beautifully.\"\n3. **Charlotte**: \"Sweet.\"\n4. **Student**: \"My brother drives quickly.\"\n5. **Charlotte**: \"Careful there.\"\n6. **Student**: \"How does your friend act?\"\n7. **Charlotte**: \"She speaks calmly. Adverb art!\"\n\n> N03 chat = LLM puro.\n\n---"
+      }
+    },
+    {
+      "id": "N04",
+      "title": "Embora, no entanto",
+      "sub_cefr": "A2",
+      "grammar_focus": "Although / however (contrast)",
+      "markers": [],
+      "real_life_context": "Você expressa contrastes mais formais entre ideias.",
+      "grammar": [
+        {
+          "type": "multiple_choice",
+          "sentence": "_____ it's cold, I'll go out.",
+          "options": [
+            "Although",
+            "Because",
+            "So"
+          ],
+          "answer": "Although",
+          "explanation": "\"Although\" = embora. Introduz contraste/concessão."
+        },
+        {
+          "type": "multiple_choice",
+          "sentence": "I want to travel. _____, I have no money.",
+          "options": [
+            "However",
+            "Because",
+            "So"
+          ],
+          "answer": "However",
+          "explanation": "\"However\" = no entanto. Liga frases contrastantes (separadas)."
+        },
+        {
+          "type": "word_bank",
+          "sentence": "_____ he's tired, he keeps working.",
+          "choices": [
+            "Although",
+            "Because",
+            "So",
+            "And"
+          ],
+          "answer": "Although",
+          "explanation": "\"Although he's tired\" — embora cansado."
+        },
+        {
+          "type": "word_bank",
+          "sentence": "She studied a lot. _____, she didn't pass.",
+          "choices": [
+            "However",
+            "Because",
+            "Although",
+            "And"
+          ],
+          "answer": "However",
+          "explanation": "\"However\" liga duas frases independentes com contraste."
+        },
+        {
+          "type": "fill_gap",
+          "sentence": "_____ I love coffee, I drink tea sometimes.",
+          "hint": "Embora (concessão)",
+          "answer": "Although",
+          "explanation": "\"Although I love coffee\" — apesar de amar."
+        },
+        {
+          "type": "fill_gap",
+          "sentence": "It's raining. _____, we'll go anyway.",
+          "hint": "No entanto (contraste forte)",
+          "answer": "However",
+          "explanation": "\"However, we'll go\" — contraste após pausa."
+        },
+        {
+          "type": "fill_gap",
+          "sentence": "_____ she's young, she's very smart.",
+          "hint": "Embora",
+          "answer": "Although",
+          "explanation": "\"Although she's young\" — concessão."
+        },
+        {
+          "type": "fix_error",
+          "sentence": "Although it's cold but I'll go out.",
+          "hint": "Não use although + but juntos",
+          "answer": "Although it's cold, I'll go out.",
+          "explanation": "\"Although\" já carrega o contraste — não precisa de \"but\" também. É erro de dupla conjunção."
+        },
+        {
+          "type": "fix_error",
+          "sentence": "It's raining, however we'll go.",
+          "hint": "However precisa de pontuação forte",
+          "answer": "It's raining. However, we'll go.",
+          "explanation": "\"However\" normalmente começa nova frase ou após ponto e vírgula. Com vírgula simples soa errado."
+        },
+        {
+          "type": "read_answer",
+          "passage": "Although I love coffee, I drink tea sometimes. I want to travel. However, I have no money right now.",
+          "question": "Why doesn't the speaker travel now?",
+          "answer": "no money (or \"I have no money\")",
+          "explanation": "The text says \"I have no money right now\"."
+        }
+      ],
+      "listening_speaking": [
+        {
+          "text": "Although it's cold, I'll go out.",
+          "context": "although"
+        },
+        {
+          "text": "I want to travel. However, I have no money.",
+          "context": "however"
+        },
+        {
+          "text": "Although he's tired, he keeps working.",
+          "context": "although"
+        },
+        {
+          "text": "She studied. However, she didn't pass.",
+          "context": "however"
+        },
+        {
+          "text": "Although I love coffee, I drink tea sometimes.",
+          "context": "concession"
+        }
+      ],
+      "roleplay": {
+        "scenario": "Charlotte pede contrastes formais sobre sua vida.",
+        "voiced_by": "charlotte",
+        "persona": "Charlotte",
+        "persona_outfit": "charlotte_casual",
+        "time_budget_sec": 90,
+        "opening_line": "Give me a contrast — use 'although' or 'however'.",
+        "objectives": [
+          {
+            "id": 1,
+            "label_pt": "Contraste com 'although'",
+            "label_en": "Contrast with 'although'",
+            "hidden_prompt": "user uses 'Although + X, Y'",
+            "hint_pt": "Although I'm tired, I'll keep working.",
+            "hint_en": "Although I'm tired, I'll keep working."
+          },
+          {
+            "id": 2,
+            "label_pt": "Outro contraste com 'although'",
+            "label_en": "Another with 'although'",
+            "hidden_prompt": "user uses another although sentence",
+            "hint_pt": "Although it's late, I'll call her.",
+            "hint_en": "Although it's late, I'll call her."
+          },
+          {
+            "id": 3,
+            "label_pt": "Contraste com 'however'",
+            "label_en": "Contrast with 'however'",
+            "hidden_prompt": "user uses 'X. However, Y'",
+            "hint_pt": "I want to relax. However, I have to study.",
+            "hint_en": "I want to relax. However, I have to study."
+          }
+        ],
+        "closing_cue": "Charlotte fecha com \"Sophisticated contrasts!\" quando obj_3 baterem.",
+        "suggested_flow": "**Suggested flow** (referencial, 6 turnos):\n\n1. **Charlotte**: \"Give me a contrast — use 'although' or 'however'.\"\n2. **Student**: ~\"Although I'm tired, I'll keep working.\"\n3. **Charlotte**: \"Another?\"\n4. **Student**: ~\"Although it's late, I'll call her.\"\n5. **Charlotte**: \"Now however?\"\n6. **Student**: ~\"I want to relax. However, I have to study.\"\n7. **Charlotte**: \"Sophisticated contrasts!\"",
+        "evaluation_focus": [
+          "Although + cláusula",
+          "However após ponto/ponto-e-vírgula",
+          "Sem misturar com but"
+        ]
+      },
+      "guided_chat": {
+        "scenario": "Charlotte conversa sobre dilemas e contrastes na vida.",
+        "voiced_by": "charlotte",
+        "persona": "Charlotte",
+        "persona_outfit": "charlotte_casual",
+        "intro_pt": "Charlotte abre chat sobre contrastes da vida. Pratica although/however.",
+        "opening_message": "What's a contrast in your life right now?",
+        "objectives": [
+          {
+            "id": 1,
+            "label_pt": "Contraste com although",
+            "label_en": "Although contrast",
+            "hidden_prompt": "user uses 'Although + ...'",
+            "hint_pt": "Although I love my job, it's stressful.",
+            "hint_en": "Although I love my job, it's stressful."
+          },
+          {
+            "id": 2,
+            "label_pt": "Contraste com however",
+            "label_en": "However contrast",
+            "hidden_prompt": "user uses 'X. However, Y'",
+            "hint_pt": "I want to sleep more. However, I wake up early.",
+            "hint_en": "I want to sleep more. However, I wake up early."
+          },
+          {
+            "id": 3,
+            "label_pt": "Perguntar à Charlotte",
+            "label_en": "Ask Charlotte",
+            "hidden_prompt": "user asks 'How about you?'",
+            "hint_pt": "How about you?",
+            "hint_en": "How about you?"
+          }
+        ],
+        "closing_cue": "Charlotte encerra com \"Life's nuances!\" quando obj_3 baterem.",
+        "suggested_script": "**Script** (referencial, 7 turnos):\n\n1. **Charlotte**: \"What's a contrast in your life right now?\"\n2. **Student**: \"Although I love my job, it's stressful.\"\n3. **Charlotte**: \"Common.\"\n4. **Student**: \"I want to sleep more. However, I wake up early.\"\n5. **Charlotte**: \"Discipline.\"\n6. **Student**: \"How about you?\"\n7. **Charlotte**: \"Although I love teaching, I miss vacations. Life's nuances!\"\n\n> N04 chat = LLM puro.\n\n---"
+      }
+    },
+    {
+      "id": "N05",
+      "title": "Eu falo inglês!",
+      "sub_cefr": "A2",
+      "grammar_focus": "Integration — fechamento do Novice",
+      "markers": [],
+      "real_life_context": "Você combina TODOS os recursos do Novice numa conversa final.",
+      "grammar": [
+        {
+          "type": "multiple_choice",
+          "sentence": "I _____ English every day.",
+          "options": [
+            "study",
+            "studies",
+            "studied"
+          ],
+          "answer": "study",
+          "explanation": "\"I study\" — present simple com I."
+        },
+        {
+          "type": "multiple_choice",
+          "sentence": "She _____ tea, but I prefer coffee.",
+          "options": [
+            "likes",
+            "like",
+            "liking"
+          ],
+          "answer": "likes",
+          "explanation": "3ª pessoa + -s."
+        },
+        {
+          "type": "word_bank",
+          "sentence": "I _____ working tomorrow.",
+          "choices": [
+            "'m going to",
+            "will",
+            "am",
+            "'m"
+          ],
+          "answer": "'m going to",
+          "explanation": "Plano firme: going to."
+        },
+        {
+          "type": "word_bank",
+          "sentence": "If I _____ time, I'll travel.",
+          "choices": [
+            "have",
+            "will have",
+            "had",
+            "has"
+          ],
+          "answer": "have",
+          "explanation": "First conditional: if + present."
+        },
+        {
+          "type": "fill_gap",
+          "sentence": "Yesterday I _____ to the gym.",
+          "hint": "Past simple irregular de \"go\"",
+          "answer": "went",
+          "explanation": "Go → went."
+        },
+        {
+          "type": "fill_gap",
+          "sentence": "She speaks English _____.",
+          "hint": "Advérbio de \"well\" (good irregular)",
+          "answer": "well",
+          "explanation": "\"Speak well\" — well é irregular."
+        },
+        {
+          "type": "fill_gap",
+          "sentence": "I love English _____ it opens doors.",
+          "hint": "Causa",
+          "answer": "because",
+          "explanation": "Because + causa."
+        },
+        {
+          "type": "fix_error",
+          "sentence": "She no like coffee.",
+          "hint": "Negativa present simple 3ª pessoa",
+          "answer": "She doesn't like coffee.",
+          "explanation": "Doesn't + base."
+        },
+        {
+          "type": "fix_error",
+          "sentence": "I have to studying tonight.",
+          "hint": "Após have to, base",
+          "answer": "I have to study tonight.",
+          "explanation": "Have to + base, sem -ing."
+        },
+        {
+          "type": "read_answer",
+          "passage": "I'm Felipe. I'm from Brazil. I learned English for two years. I love it because it opens doors. Tomorrow I'm going to take a test. Although I'm nervous, I'll do my best.",
+          "question": "Why does Felipe love English?",
+          "answer": "it opens doors (or \"opens doors\")",
+          "explanation": "The text says \"I love it because it opens doors\"."
+        }
+      ],
+      "listening_speaking": [
+        {
+          "text": "I study English every day.",
+          "context": "routine",
+          "audio_url": "https://fnvjibzreepubageztoi.supabase.co/storage/v1/object/public/curriculum-audio/ls/a17c72a986c98fbb.flac"
+        },
+        {
+          "text": "I went to Italy last year.",
+          "context": "past"
+        },
+        {
+          "text": "I'm going to travel soon.",
+          "context": "future plan"
+        },
+        {
+          "text": "If it rains, I'll stay home.",
+          "context": "conditional"
+        },
+        {
+          "text": "Although it's hard, I love learning.",
+          "context": "contrast"
+        }
+      ],
+      "roleplay": {
+        "scenario": "Charlotte celebra o fim do Novice — você integra TUDO em uma fala curta.",
+        "voiced_by": "charlotte",
+        "persona": "Charlotte",
+        "persona_outfit": "charlotte_casual",
+        "time_budget_sec": 90,
+        "opening_line": "Final Novice talk! Tell me about you — past, present, future.",
+        "objectives": [
+          {
+            "id": 1,
+            "label_pt": "Falar do passado (irregulars ou regulars)",
+            "label_en": "Talk about past",
+            "hidden_prompt": "user uses past simple: 'I + past verb + ...'",
+            "hint_pt": "Last year I traveled to Italy.",
+            "hint_en": "Last year I traveled to Italy."
+          },
+          {
+            "id": 2,
+            "label_pt": "Falar do presente (rotina)",
+            "label_en": "Talk about present routine",
+            "hidden_prompt": "user uses present simple: 'I + verb'",
+            "hint_pt": "Now I study English every day.",
+            "hint_en": "Now I study English every day."
+          },
+          {
+            "id": 3,
+            "label_pt": "Falar do futuro (going to ou will)",
+            "label_en": "Talk about future",
+            "hidden_prompt": "user uses future: 'I'm going to + base' or 'I'll + base'",
+            "hint_pt": "Next year I'll be fluent.",
+            "hint_en": "Next year I'll be fluent."
+          }
+        ],
+        "closing_cue": "Charlotte fecha com \"Novice complete!\" quando obj_3 baterem.",
+        "suggested_flow": "**Suggested flow** (referencial, 6 turnos):\n\n1. **Charlotte**: \"Final Novice talk! Tell me about you — past, present, future.\"\n2. **Student**: ~\"Last year I traveled to Italy.\"\n3. **Charlotte**: \"And now?\"\n4. **Student**: ~\"Now I study English every day.\"\n5. **Charlotte**: \"Future?\"\n6. **Student**: ~\"Next year I'll be fluent.\"\n7. **Charlotte**: \"Novice complete!\"",
+        "evaluation_focus": [
+          "Três tempos verbais",
+          "Variedade",
+          "Conexões (and, but, because, so)"
+        ]
+      },
+      "guided_chat": {
+        "scenario": "Charlotte celebra o fim do Novice e abre chat de reflexão.",
+        "voiced_by": "charlotte",
+        "persona": "Charlotte",
+        "persona_outfit": "charlotte_casual",
+        "intro_pt": "Charlotte celebra o fim do Novice. Conta sua jornada integrando tudo.",
+        "opening_message": "Look at you finishing Novice! How do you feel?",
+        "objectives": [
+          {
+            "id": 1,
+            "label_pt": "Falar como se sente",
+            "label_en": "Say how you feel",
+            "hidden_prompt": "user uses 'I feel + adj' or 'I'm + adj'",
+            "hint_pt": "I feel proud and excited.",
+            "hint_en": "I feel proud and excited."
+          },
+          {
+            "id": 2,
+            "label_pt": "Falar sobre planos próximos",
+            "label_en": "Say upcoming plans",
+            "hidden_prompt": "user uses 'I'm going to + base' or 'I'll + base'",
+            "hint_pt": "I'm going to start the Inter level.",
+            "hint_en": "I'm going to start the Inter level."
+          },
+          {
+            "id": 3,
+            "label_pt": "Agradecer a Charlotte ou refletir",
+            "label_en": "Thank Charlotte",
+            "hidden_prompt": "user expresses gratitude or reflection",
+            "hint_pt": "Thank you, Charlotte!",
+            "hint_en": "Thank you, Charlotte!"
+          }
+        ],
+        "closing_cue": "Charlotte encerra com \"On to Inter!\" quando obj_3 baterem.",
+        "suggested_script": "**Script** (referencial, 7 turnos):\n\n1. **Charlotte**: \"Look at you finishing Novice! How do you feel?\"\n2. **Student**: \"I feel proud and excited.\"\n3. **Charlotte**: \"Next step?\"\n4. **Student**: \"I'm going to start the Inter level.\"\n5. **Charlotte**: \"You'll love it.\"\n6. **Student**: \"Thank you, Charlotte!\"\n7. **Charlotte**: \"On to Inter!\"\n\n> N05 chat = LLM puro.\n\n---"
+      }
+    }
+  ],
+  "cross_unit_consolidation": [
+    "Linkers: and / but / or / so / because / although / however",
+    "Adverbs of manner: -ly regulares + irregulares (well, fast)",
+    "Integração de tempos: present, past, future",
+    "Conexões fluidas entre ideias"
+  ]
+}

@@ -1,0 +1,1015 @@
+{
+  "id": "M16",
+  "title": "Histórias simples",
+  "level": "Novice",
+  "block": "A2",
+  "units_range": "N01–N05",
+  "theme": "Past simple irregular — top 30 verbos",
+  "goal": "Aluno sai sabendo top 30 irregulares (went/saw/did/had/made/came/took/got/etc.) e contar histórias simples no passado.",
+  "connects_to": "M17 (Não foi assim) — depois de afirmativas irregulares, aprende negativas e perguntas com didn't/Did.",
+  "module_chunks": [
+    "go → went / see → saw / do → did / have → had / make → made",
+    "come → came / take → took / get → got / give → gave / say → said",
+    "buy → bought / bring → brought / think → thought / find → found",
+    "eat → ate / drink → drank / sleep → slept / read → read",
+    "meet → met / leave → left / lose → lost / win → won",
+    "write → wrote / send → sent / put → put / cut → cut",
+    "I went / She had / They came / We saw"
+  ],
+  "units": [
+    {
+      "id": "N01",
+      "title": "Eu fui, eu vi, eu fiz",
+      "sub_cefr": "A2",
+      "grammar_focus": "Top 10 irregulars (go/see/do/have/make/come/take/get/give/say)",
+      "markers": [
+        "denso"
+      ],
+      "real_life_context": "Você conta um dia ou viagem usando os 10 irregulares mais usados.",
+      "grammar": [
+        {
+          "type": "multiple_choice",
+          "sentence": "I _____ to São Paulo last year.",
+          "options": [
+            "went",
+            "goed",
+            "go"
+          ],
+          "answer": "went",
+          "explanation": "\"Go\" no passado é IRREGULAR: \"went\" (não \"goed\"). Decorar."
+        },
+        {
+          "type": "multiple_choice",
+          "sentence": "She _____ a great movie.",
+          "options": [
+            "saw",
+            "seen",
+            "seed"
+          ],
+          "answer": "saw",
+          "explanation": "\"See\" → \"saw\" (irregular). \"Seen\" é past participle (com have)."
+        },
+        {
+          "type": "word_bank",
+          "sentence": "We _____ a lot of fun.",
+          "choices": [
+            "had",
+            "haved",
+            "has",
+            "having"
+          ],
+          "answer": "had",
+          "explanation": "\"Have\" → \"had\" (irregular). Mesma forma pra todas as pessoas."
+        },
+        {
+          "type": "word_bank",
+          "sentence": "He _____ a cake yesterday.",
+          "choices": [
+            "made",
+            "maked",
+            "makes",
+            "making"
+          ],
+          "answer": "made",
+          "explanation": "\"Make\" → \"made\" (irregular)."
+        },
+        {
+          "type": "fill_gap",
+          "sentence": "I _____ home at six.",
+          "hint": "Passado de \"come\"",
+          "answer": "came",
+          "explanation": "\"Come\" → \"came\" (irregular). Note: pronúncia diferente (kAm vs keIm)."
+        },
+        {
+          "type": "fill_gap",
+          "sentence": "She _____ a taxi.",
+          "hint": "Passado de \"take\"",
+          "answer": "took",
+          "explanation": "\"Take\" → \"took\" (irregular). Decorar."
+        },
+        {
+          "type": "fill_gap",
+          "sentence": "I _____ your message.",
+          "hint": "Passado de \"get\"",
+          "answer": "got",
+          "explanation": "\"Get\" → \"got\" (irregular)."
+        },
+        {
+          "type": "fix_error",
+          "sentence": "I goed to the store.",
+          "hint": "Go é irregular",
+          "answer": "I went to the store.",
+          "explanation": "\"Goed\" não existe. Past de \"go\" é \"went\" (irregular)."
+        },
+        {
+          "type": "fix_error",
+          "sentence": "She maked dinner.",
+          "hint": "Make é irregular",
+          "answer": "She made dinner.",
+          "explanation": "\"Maked\" não existe. \"Make\" → \"made\"."
+        },
+        {
+          "type": "read_answer",
+          "passage": "Yesterday I went to a café. I had a coffee and saw an old friend. We took a long walk and made plans for dinner.",
+          "question": "What did the speaker have?",
+          "answer": "a coffee",
+          "explanation": "The text says \"I had a coffee\"."
+        }
+      ],
+      "listening_speaking": [
+        {
+          "text": "I went to São Paulo.",
+          "context": "go → went"
+        },
+        {
+          "text": "She saw a movie.",
+          "context": "see → saw"
+        },
+        {
+          "text": "We had fun.",
+          "context": "have → had"
+        },
+        {
+          "text": "He made dinner.",
+          "context": "make → made"
+        },
+        {
+          "text": "I came home late.",
+          "context": "come → came"
+        }
+      ],
+      "roleplay": {
+        "scenario": "Charlotte pede pra você contar uma viagem ou dia usando irregulares top.",
+        "voiced_by": "charlotte",
+        "persona": "Charlotte",
+        "persona_outfit": "charlotte_casual",
+        "time_budget_sec": 90,
+        "opening_line": "Tell me about a trip — what did you do?",
+        "objectives": [
+          {
+            "id": 1,
+            "label_pt": "Dizer onde você foi (went)",
+            "label_en": "Say where you went",
+            "hidden_prompt": "user uses 'I went to + place'",
+            "hint_pt": "I went to Rio.",
+            "hint_en": "I went to Rio."
+          },
+          {
+            "id": 2,
+            "label_pt": "Dizer o que você fez ou viu (saw/did/had)",
+            "label_en": "Say what you saw/did/had",
+            "hidden_prompt": "user uses 'I saw/did/had + something' (irregular past)",
+            "hint_pt": "I saw the beach.",
+            "hint_en": "I saw the beach."
+          },
+          {
+            "id": 3,
+            "label_pt": "Dizer com quem você foi (came/took)",
+            "label_en": "Say who came/took with you",
+            "hidden_prompt": "user uses 'I came with' or 'We took + transport'",
+            "hint_pt": "I came with my family.",
+            "hint_en": "I came with my family."
+          }
+        ],
+        "closing_cue": "Charlotte fecha com \"Sounds amazing!\" quando obj_3 baterem.",
+        "suggested_flow": "**Suggested flow** (referencial, 6 turnos):\n\n1. **Charlotte**: \"Tell me about a trip — what did you do?\"\n2. **Student**: ~\"I went to Rio.\"\n3. **Charlotte**: \"What did you see?\"\n4. **Student**: ~\"I saw the beach.\"\n5. **Charlotte**: \"With whom?\"\n6. **Student**: ~\"I came with my family.\"\n7. **Charlotte**: \"Sounds amazing!\"",
+        "evaluation_focus": [
+          "Irregulares top decorados",
+          "Sem -ed em irregulares",
+          "Sem -s na 3ª pessoa no passado"
+        ]
+      },
+      "guided_chat": {
+        "scenario": "Charlotte conversa sobre uma experiência interessante sua.",
+        "voiced_by": "charlotte",
+        "persona": "Charlotte",
+        "persona_outfit": "charlotte_casual",
+        "intro_pt": "Charlotte abre chat sobre uma experiência. Pratica os top 10 irregulares.",
+        "opening_message": "Tell me about something cool you did recently.",
+        "objectives": [
+          {
+            "id": 1,
+            "label_pt": "Dizer o que você fez",
+            "label_en": "Say what you did",
+            "hidden_prompt": "user uses past irregular 'I went/did/had/made/saw + ...'",
+            "hint_pt": "I went to a concert.",
+            "hint_en": "I went to a concert."
+          },
+          {
+            "id": 2,
+            "label_pt": "Dizer mais detalhe",
+            "label_en": "Add detail",
+            "hidden_prompt": "user adds detail with another irregular past verb",
+            "hint_pt": "I saw my favorite band.",
+            "hint_en": "I saw my favorite band."
+          },
+          {
+            "id": 3,
+            "label_pt": "Perguntar à Charlotte",
+            "label_en": "Ask Charlotte",
+            "hidden_prompt": "user asks 'How about you?'",
+            "hint_pt": "How about you?",
+            "hint_en": "How about you?"
+          }
+        ],
+        "closing_cue": "Charlotte encerra com \"Cool story!\" quando obj_3 baterem.",
+        "suggested_script": "**Script** (referencial, 7 turnos):\n\n1. **Charlotte**: \"Tell me about something cool you did recently.\"\n2. **Student**: \"I went to a concert.\"\n3. **Charlotte**: \"Which one?\"\n4. **Student**: \"I saw my favorite band.\"\n5. **Charlotte**: \"Lucky!\"\n6. **Student**: \"How about you?\"\n7. **Charlotte**: \"I had a great weekend with friends. Cool story!\"\n\n> N01 chat = LLM puro.\n\n---"
+      }
+    },
+    {
+      "id": "N02",
+      "title": "Comprei, paguei, encontrei",
+      "sub_cefr": "A2",
+      "grammar_focus": "More irregulars (buy/bring/think/find/eat/drink/sleep)",
+      "markers": [],
+      "real_life_context": "Você usa mais irregulares em situações cotidianas — compras, encontros, refeições.",
+      "grammar": [
+        {
+          "type": "multiple_choice",
+          "sentence": "I _____ a new phone yesterday.",
+          "options": [
+            "bought",
+            "buyed",
+            "buys"
+          ],
+          "answer": "bought",
+          "explanation": "\"Buy\" → \"bought\" (irregular). Pronúncia /bO:t/."
+        },
+        {
+          "type": "multiple_choice",
+          "sentence": "She _____ a cake to the party.",
+          "options": [
+            "brought",
+            "bringed",
+            "brings"
+          ],
+          "answer": "brought",
+          "explanation": "\"Bring\" → \"brought\" (irregular). Mesmo padrão de \"buy/bought\"."
+        },
+        {
+          "type": "word_bank",
+          "sentence": "We _____ about the problem.",
+          "choices": [
+            "thought",
+            "thinked",
+            "thinks",
+            "thinking"
+          ],
+          "answer": "thought",
+          "explanation": "\"Think\" → \"thought\" (irregular)."
+        },
+        {
+          "type": "word_bank",
+          "sentence": "He _____ his keys in the car.",
+          "choices": [
+            "found",
+            "finded",
+            "finds",
+            "finding"
+          ],
+          "answer": "found",
+          "explanation": "\"Find\" → \"found\" (irregular)."
+        },
+        {
+          "type": "fill_gap",
+          "sentence": "I _____ pizza for dinner.",
+          "hint": "Passado de \"eat\"",
+          "answer": "ate",
+          "explanation": "\"Eat\" → \"ate\" (irregular). Pronúncia /eIt/."
+        },
+        {
+          "type": "fill_gap",
+          "sentence": "She _____ a lot of water.",
+          "hint": "Passado de \"drink\"",
+          "answer": "drank",
+          "explanation": "\"Drink\" → \"drank\" (irregular)."
+        },
+        {
+          "type": "fill_gap",
+          "sentence": "He _____ for ten hours.",
+          "hint": "Passado de \"sleep\"",
+          "answer": "slept",
+          "explanation": "\"Sleep\" → \"slept\" (irregular)."
+        },
+        {
+          "type": "fix_error",
+          "sentence": "I buyed a book.",
+          "hint": "Buy é irregular",
+          "answer": "I bought a book.",
+          "explanation": "\"Buyed\" não existe. \"Buy\" → \"bought\"."
+        },
+        {
+          "type": "fix_error",
+          "sentence": "She eated breakfast.",
+          "hint": "Eat é irregular",
+          "answer": "She ate breakfast.",
+          "explanation": "\"Eated\" não existe. \"Eat\" → \"ate\"."
+        },
+        {
+          "type": "read_answer",
+          "passage": "I bought a sandwich and ate it quickly. Then I drank some coffee and found my friend at the café. We thought about going to the cinema.",
+          "question": "What did the speaker drink?",
+          "answer": "coffee (or \"some coffee\")",
+          "explanation": "The text says \"I drank some coffee\"."
+        }
+      ],
+      "listening_speaking": [
+        {
+          "text": "I bought a new phone.",
+          "context": "buy → bought"
+        },
+        {
+          "text": "She brought a gift.",
+          "context": "bring → brought"
+        },
+        {
+          "text": "I ate pizza.",
+          "context": "eat → ate"
+        },
+        {
+          "text": "He drank some juice.",
+          "context": "drink → drank"
+        },
+        {
+          "text": "I slept eight hours.",
+          "context": "sleep → slept"
+        }
+      ],
+      "roleplay": {
+        "scenario": "Charlotte pergunta sobre comida, compras ou descanso recente.",
+        "voiced_by": "charlotte",
+        "persona": "Charlotte",
+        "persona_outfit": "charlotte_casual",
+        "time_budget_sec": 90,
+        "opening_line": "What did you eat for dinner yesterday?",
+        "objectives": [
+          {
+            "id": 1,
+            "label_pt": "Dizer o que comeu (ate)",
+            "label_en": "Say what you ate",
+            "hidden_prompt": "user uses 'I ate + food'",
+            "hint_pt": "I ate pasta.",
+            "hint_en": "I ate pasta."
+          },
+          {
+            "id": 2,
+            "label_pt": "Dizer o que bebeu (drank)",
+            "label_en": "Say what you drank",
+            "hidden_prompt": "user uses 'I drank + drink'",
+            "hint_pt": "I drank water.",
+            "hint_en": "I drank water."
+          },
+          {
+            "id": 3,
+            "label_pt": "Dizer outra ação irregular (bought/slept/found/etc.)",
+            "label_en": "Say another irregular action",
+            "hidden_prompt": "user uses another irregular past verb",
+            "hint_pt": "I slept early.",
+            "hint_en": "I slept early."
+          }
+        ],
+        "closing_cue": "Charlotte fecha com \"Nice details!\" quando obj_3 baterem.",
+        "suggested_flow": "**Suggested flow** (referencial, 6 turnos):\n\n1. **Charlotte**: \"What did you eat for dinner yesterday?\"\n2. **Student**: ~\"I ate pasta.\"\n3. **Charlotte**: \"Drank?\"\n4. **Student**: ~\"I drank water.\"\n5. **Charlotte**: \"After?\"\n6. **Student**: ~\"I slept early.\"\n7. **Charlotte**: \"Nice details!\"",
+        "evaluation_focus": [
+          "Irregulares decorados",
+          "Variedade de irregulares",
+          "Sem -ed em irregulares"
+        ]
+      },
+      "guided_chat": {
+        "scenario": "Charlotte conversa sobre rotina passada de comida/bebida/descanso.",
+        "voiced_by": "charlotte",
+        "persona": "Charlotte",
+        "persona_outfit": "charlotte_casual",
+        "intro_pt": "Charlotte explora sua rotina passada. Pratica irregulares de comida/bebida/sono.",
+        "opening_message": "Did you sleep well?",
+        "objectives": [
+          {
+            "id": 1,
+            "label_pt": "Responder sobre o sono (slept)",
+            "label_en": "Answer about sleep",
+            "hidden_prompt": "user uses 'I slept + adverb/duration'",
+            "hint_pt": "I slept eight hours.",
+            "hint_en": "I slept eight hours."
+          },
+          {
+            "id": 2,
+            "label_pt": "Dizer o que comeu/bebeu hoje cedo",
+            "label_en": "Say what you ate/drank earlier",
+            "hidden_prompt": "user uses 'I ate/drank + food/drink'",
+            "hint_pt": "I ate cereal.",
+            "hint_en": "I ate cereal."
+          },
+          {
+            "id": 3,
+            "label_pt": "Perguntar à Charlotte",
+            "label_en": "Ask Charlotte",
+            "hidden_prompt": "user asks 'How about you?'",
+            "hint_pt": "How about you?",
+            "hint_en": "How about you?"
+          }
+        ],
+        "closing_cue": "Charlotte encerra com \"Daily check done!\" quando obj_3 baterem.",
+        "suggested_script": "**Script** (referencial, 7 turnos):\n\n1. **Charlotte**: \"Did you sleep well?\"\n2. **Student**: \"I slept eight hours.\"\n3. **Charlotte**: \"Breakfast?\"\n4. **Student**: \"I ate cereal.\"\n5. **Charlotte**: \"Simple.\"\n6. **Student**: \"How about you?\"\n7. **Charlotte**: \"I drank too much coffee. Daily check done!\"\n\n> N02 chat = LLM puro.\n\n---"
+      }
+    },
+    {
+      "id": "N03",
+      "title": "Conheci, escrevi, deixei",
+      "sub_cefr": "A2",
+      "grammar_focus": "More irregulars (meet/write/leave/lose/win/send/read/put)",
+      "markers": [],
+      "real_life_context": "Você narra eventos sociais e profissionais usando irregulares variados.",
+      "grammar": [
+        {
+          "type": "multiple_choice",
+          "sentence": "I _____ a great friend yesterday.",
+          "options": [
+            "met",
+            "meeted",
+            "meet"
+          ],
+          "answer": "met",
+          "explanation": "\"Meet\" → \"met\" (irregular)."
+        },
+        {
+          "type": "multiple_choice",
+          "sentence": "She _____ a long email.",
+          "options": [
+            "wrote",
+            "writed",
+            "writes"
+          ],
+          "answer": "wrote",
+          "explanation": "\"Write\" → \"wrote\" (irregular)."
+        },
+        {
+          "type": "word_bank",
+          "sentence": "We _____ the house at eight.",
+          "choices": [
+            "left",
+            "leaved",
+            "leaves",
+            "leaving"
+          ],
+          "answer": "left",
+          "explanation": "\"Leave\" → \"left\" (irregular)."
+        },
+        {
+          "type": "word_bank",
+          "sentence": "He _____ his wallet.",
+          "choices": [
+            "lost",
+            "loosed",
+            "lose",
+            "losing"
+          ],
+          "answer": "lost",
+          "explanation": "\"Lose\" → \"lost\" (irregular). Note: \"loose\" é adjetivo."
+        },
+        {
+          "type": "fill_gap",
+          "sentence": "She _____ the race yesterday.",
+          "hint": "Passado de \"win\"",
+          "answer": "won",
+          "explanation": "\"Win\" → \"won\" (irregular)."
+        },
+        {
+          "type": "fill_gap",
+          "sentence": "I _____ you a message.",
+          "hint": "Passado de \"send\"",
+          "answer": "sent",
+          "explanation": "\"Send\" → \"sent\" (irregular)."
+        },
+        {
+          "type": "fill_gap",
+          "sentence": "I _____ that book last week.",
+          "hint": "Passado de \"read\" (escrita igual, pronúncia diferente)",
+          "answer": "read",
+          "explanation": "\"Read\" → \"read\" — escrita IGUAL, mas pronúncia muda: /ri:d/ presente → /red/ passado."
+        },
+        {
+          "type": "fix_error",
+          "sentence": "I meeted my old friend.",
+          "hint": "Meet é irregular",
+          "answer": "I met my old friend.",
+          "explanation": "\"Meeted\" não existe. \"Meet\" → \"met\"."
+        },
+        {
+          "type": "fix_error",
+          "sentence": "She writed an article.",
+          "hint": "Write é irregular",
+          "answer": "She wrote an article.",
+          "explanation": "\"Writed\" não existe. \"Write\" → \"wrote\"."
+        },
+        {
+          "type": "read_answer",
+          "passage": "I met an old friend yesterday. We left the café at six. I sent her a message later. She won a prize last week!",
+          "question": "What did the friend win?",
+          "answer": "a prize",
+          "explanation": "The text says \"She won a prize last week\"."
+        }
+      ],
+      "listening_speaking": [
+        {
+          "text": "I met a friend.",
+          "context": "meet → met"
+        },
+        {
+          "text": "She wrote a letter.",
+          "context": "write → wrote"
+        },
+        {
+          "text": "We left at six.",
+          "context": "leave → left"
+        },
+        {
+          "text": "He lost his keys.",
+          "context": "lose → lost"
+        },
+        {
+          "text": "I read a great book.",
+          "context": "read → read (same spelling)"
+        }
+      ],
+      "roleplay": {
+        "scenario": "Charlotte quer saber de um encontro ou evento recente.",
+        "voiced_by": "charlotte",
+        "persona": "Charlotte",
+        "persona_outfit": "charlotte_casual",
+        "time_budget_sec": 90,
+        "opening_line": "Tell me about someone you met recently.",
+        "objectives": [
+          {
+            "id": 1,
+            "label_pt": "Dizer quem você encontrou (met)",
+            "label_en": "Say who you met",
+            "hidden_prompt": "user uses 'I met + person/group'",
+            "hint_pt": "I met an old friend.",
+            "hint_en": "I met an old friend."
+          },
+          {
+            "id": 2,
+            "label_pt": "Dizer o que fizeram (leave/write/etc.)",
+            "label_en": "Say what you did",
+            "hidden_prompt": "user uses another irregular: 'We left/wrote/read/sent...'",
+            "hint_pt": "We left at six.",
+            "hint_en": "We left at six."
+          },
+          {
+            "id": 3,
+            "label_pt": "Mais um detalhe (sent/lost/etc.)",
+            "label_en": "One more detail",
+            "hidden_prompt": "user uses one more irregular past verb",
+            "hint_pt": "I sent her a message after.",
+            "hint_en": "I sent her a message after."
+          }
+        ],
+        "closing_cue": "Charlotte fecha com \"Great story!\" quando obj_3 baterem.",
+        "suggested_flow": "**Suggested flow** (referencial, 6 turnos):\n\n1. **Charlotte**: \"Tell me about someone you met recently.\"\n2. **Student**: ~\"I met an old friend.\"\n3. **Charlotte**: \"And then?\"\n4. **Student**: ~\"We left at six.\"\n5. **Charlotte**: \"Followed up?\"\n6. **Student**: ~\"I sent her a message after.\"\n7. **Charlotte**: \"Great story!\"",
+        "evaluation_focus": [
+          "Irregulares decorados",
+          "Sequência narrativa",
+          "Variedade de verbos"
+        ]
+      },
+      "guided_chat": {
+        "scenario": "Charlotte conversa sobre um livro lido ou mensagem trocada.",
+        "voiced_by": "charlotte",
+        "persona": "Charlotte",
+        "persona_outfit": "charlotte_casual",
+        "intro_pt": "Charlotte explora atividades sociais passadas. Pratica meet/write/leave/etc.",
+        "opening_message": "Did you read anything good lately?",
+        "objectives": [
+          {
+            "id": 1,
+            "label_pt": "Dizer o que leu",
+            "label_en": "Say what you read",
+            "hidden_prompt": "user uses 'I read + book/article'",
+            "hint_pt": "I read a novel.",
+            "hint_en": "I read a novel."
+          },
+          {
+            "id": 2,
+            "label_pt": "Outra ação social (met/sent/wrote)",
+            "label_en": "Another social action",
+            "hidden_prompt": "user uses another irregular: met/sent/wrote/etc.",
+            "hint_pt": "I met my classmates.",
+            "hint_en": "I met my classmates."
+          },
+          {
+            "id": 3,
+            "label_pt": "Perguntar à Charlotte",
+            "label_en": "Ask Charlotte",
+            "hidden_prompt": "user asks 'How about you?'",
+            "hint_pt": "How about you?",
+            "hint_en": "How about you?"
+          }
+        ],
+        "closing_cue": "Charlotte encerra com \"Lots happening!\" quando obj_3 baterem.",
+        "suggested_script": "**Script** (referencial, 7 turnos):\n\n1. **Charlotte**: \"Did you read anything good lately?\"\n2. **Student**: \"I read a novel.\"\n3. **Charlotte**: \"Which one?\"\n4. **Student**: \"I met my classmates.\"\n5. **Charlotte**: \"Cool.\"\n6. **Student**: \"How about you?\"\n7. **Charlotte**: \"I wrote a long letter. Lots happening!\"\n\n> N03 chat = LLM puro.\n\n---"
+      }
+    },
+    {
+      "id": "N04",
+      "title": "Verbos que não mudam",
+      "sub_cefr": "A2",
+      "grammar_focus": "Irregulars without change (put/cut/let/read pronunciation)",
+      "markers": [],
+      "real_life_context": "Você usa verbos cuja forma passada é IGUAL ao infinitivo — só muda o contexto.",
+      "grammar": [
+        {
+          "type": "multiple_choice",
+          "sentence": "I _____ the book on the table.",
+          "options": [
+            "put",
+            "putted",
+            "puts"
+          ],
+          "answer": "put",
+          "explanation": "\"Put\" → \"put\" (igual no passado e presente). Não adiciona -ed."
+        },
+        {
+          "type": "multiple_choice",
+          "sentence": "She _____ her finger yesterday.",
+          "options": [
+            "cut",
+            "cutted",
+            "cuts"
+          ],
+          "answer": "cut",
+          "explanation": "\"Cut\" → \"cut\" (igual). Sem -ed."
+        },
+        {
+          "type": "word_bank",
+          "sentence": "He _____ me know.",
+          "choices": [
+            "let",
+            "letted",
+            "lets",
+            "letting"
+          ],
+          "answer": "let",
+          "explanation": "\"Let\" → \"let\" (igual). Sem mudança."
+        },
+        {
+          "type": "word_bank",
+          "sentence": "We _____ the document.",
+          "choices": [
+            "read",
+            "readed",
+            "reads",
+            "reading"
+          ],
+          "answer": "read",
+          "explanation": "\"Read\" → \"read\" — IGUAL na escrita, MAS pronúncia muda: /red/ no passado."
+        },
+        {
+          "type": "fill_gap",
+          "sentence": "I _____ my coat in the closet.",
+          "hint": "Passado de \"put\" (igual)",
+          "answer": "put",
+          "explanation": "\"Put\" igual ao presente. Sem -ed."
+        },
+        {
+          "type": "fill_gap",
+          "sentence": "She _____ the apple in half.",
+          "hint": "Passado de \"cut\" (igual)",
+          "answer": "cut",
+          "explanation": "\"Cut\" igual. Mesma forma."
+        },
+        {
+          "type": "fill_gap",
+          "sentence": "I _____ the article yesterday.",
+          "hint": "Passado de \"read\" — escrita igual, mas atenção à pronúncia",
+          "answer": "read",
+          "explanation": "\"Read\" no passado: escrita /read/, mas se pronuncia /red/. Mudança só fonética."
+        },
+        {
+          "type": "fix_error",
+          "sentence": "She putted the book on the shelf.",
+          "hint": "Put não muda no passado",
+          "answer": "She put the book on the shelf.",
+          "explanation": "\"Putted\" não existe. \"Put\" no passado = \"put\" (igual ao presente)."
+        },
+        {
+          "type": "fix_error",
+          "sentence": "I cutted my hair.",
+          "hint": "Cut não muda",
+          "answer": "I cut my hair.",
+          "explanation": "\"Cutted\" não existe. \"Cut\" → \"cut\"."
+        },
+        {
+          "type": "read_answer",
+          "passage": "I cut the vegetables. Then I put them in the pan. I read the recipe carefully. The result was great.",
+          "question": "What did the speaker put in the pan?",
+          "answer": "the vegetables (or \"them\")",
+          "explanation": "The text says \"I put them in the pan\" — referring to the vegetables just cut."
+        }
+      ],
+      "listening_speaking": [
+        {
+          "text": "I put the book on the table.",
+          "context": "put unchanged"
+        },
+        {
+          "text": "She cut her finger.",
+          "context": "cut unchanged"
+        },
+        {
+          "text": "He let me know.",
+          "context": "let unchanged"
+        },
+        {
+          "text": "I read the article yesterday.",
+          "context": "read /red/ (past)"
+        },
+        {
+          "text": "We put everything away.",
+          "context": "put + away"
+        }
+      ],
+      "roleplay": {
+        "scenario": "Charlotte pergunta ações com verbos que não mudam no passado.",
+        "voiced_by": "charlotte",
+        "persona": "Charlotte",
+        "persona_outfit": "charlotte_casual",
+        "time_budget_sec": 90,
+        "opening_line": "What did you put, cut, or read yesterday?",
+        "objectives": [
+          {
+            "id": 1,
+            "label_pt": "Dizer onde você colocou algo (put)",
+            "label_en": "Say where you put something",
+            "hidden_prompt": "user uses 'I put + object + place'",
+            "hint_pt": "I put my keys on the table.",
+            "hint_en": "I put my keys on the table."
+          },
+          {
+            "id": 2,
+            "label_pt": "Dizer algo que cortou (cut)",
+            "label_en": "Say something you cut",
+            "hidden_prompt": "user uses 'I cut + object'",
+            "hint_pt": "I cut some bread.",
+            "hint_en": "I cut some bread."
+          },
+          {
+            "id": 3,
+            "label_pt": "Dizer o que leu (read)",
+            "label_en": "Say what you read",
+            "hidden_prompt": "user uses 'I read + book/article'",
+            "hint_pt": "I read a book.",
+            "hint_en": "I read a book."
+          }
+        ],
+        "closing_cue": "Charlotte fecha com \"Unchanged verbs locked!\" quando obj_3 baterem.",
+        "suggested_flow": "**Suggested flow** (referencial, 6 turnos):\n\n1. **Charlotte**: \"What did you put, cut, or read yesterday?\"\n2. **Student**: ~\"I put my keys on the table.\"\n3. **Charlotte**: \"Cut?\"\n4. **Student**: ~\"I cut some bread.\"\n5. **Charlotte**: \"Read?\"\n6. **Student**: ~\"I read a book.\"\n7. **Charlotte**: \"Unchanged verbs locked!\"",
+        "evaluation_focus": [
+          "\"put/cut/let/read\" sem -ed",
+          "Pronúncia diferente de \"read\" passado (/red/)",
+          "Contexto natural"
+        ]
+      },
+      "guided_chat": {
+        "scenario": "Charlotte conversa sobre coisas que você fez sem alterar verbo.",
+        "voiced_by": "charlotte",
+        "persona": "Charlotte",
+        "persona_outfit": "charlotte_casual",
+        "intro_pt": "Charlotte explora ações com verbos invariáveis no passado.",
+        "opening_message": "Did you read anything yesterday?",
+        "objectives": [
+          {
+            "id": 1,
+            "label_pt": "Dizer o que leu",
+            "label_en": "Say what you read",
+            "hidden_prompt": "user uses 'I read + something'",
+            "hint_pt": "I read the news.",
+            "hint_en": "I read the news."
+          },
+          {
+            "id": 2,
+            "label_pt": "Dizer onde colocou algo",
+            "label_en": "Say where you put something",
+            "hidden_prompt": "user uses 'I put + object + place'",
+            "hint_pt": "I put my bag in the car.",
+            "hint_en": "I put my bag in the car."
+          },
+          {
+            "id": 3,
+            "label_pt": "Perguntar à Charlotte",
+            "label_en": "Ask Charlotte",
+            "hidden_prompt": "user asks 'How about you?'",
+            "hint_pt": "How about you?",
+            "hint_en": "How about you?"
+          }
+        ],
+        "closing_cue": "Charlotte encerra com \"Same form, different time!\" quando obj_3 baterem.",
+        "suggested_script": "**Script** (referencial, 7 turnos):\n\n1. **Charlotte**: \"Did you read anything yesterday?\"\n2. **Student**: \"I read the news.\"\n3. **Charlotte**: \"Anything else?\"\n4. **Student**: \"I put my bag in the car.\"\n5. **Charlotte**: \"Practical.\"\n6. **Student**: \"How about you?\"\n7. **Charlotte**: \"I read a magazine. Same form, different time!\"\n\n> N04 chat = LLM puro.\n\n---"
+      }
+    },
+    {
+      "id": "N05",
+      "title": "Minha história ontem",
+      "sub_cefr": "A2",
+      "grammar_focus": "Integration top irregulars in narrative",
+      "markers": [],
+      "real_life_context": "Você conta uma história curta integrando vários verbos irregulares no passado.",
+      "grammar": [
+        {
+          "type": "multiple_choice",
+          "sentence": "I _____ to the park.",
+          "options": [
+            "went",
+            "goed",
+            "go"
+          ],
+          "answer": "went",
+          "explanation": "Go → went (irregular)."
+        },
+        {
+          "type": "multiple_choice",
+          "sentence": "She _____ a movie last night.",
+          "options": [
+            "saw",
+            "seen",
+            "sees"
+          ],
+          "answer": "saw",
+          "explanation": "See → saw."
+        },
+        {
+          "type": "word_bank",
+          "sentence": "We _____ pizza.",
+          "choices": [
+            "ate",
+            "eated",
+            "eats",
+            "eating"
+          ],
+          "answer": "ate",
+          "explanation": "Eat → ate."
+        },
+        {
+          "type": "word_bank",
+          "sentence": "He _____ a great idea.",
+          "choices": [
+            "had",
+            "haved",
+            "has",
+            "having"
+          ],
+          "answer": "had",
+          "explanation": "Have → had."
+        },
+        {
+          "type": "fill_gap",
+          "sentence": "I _____ a new book.",
+          "hint": "Passado de \"buy\"",
+          "answer": "bought",
+          "explanation": "Buy → bought."
+        },
+        {
+          "type": "fill_gap",
+          "sentence": "She _____ home at ten.",
+          "hint": "Passado de \"come\"",
+          "answer": "came",
+          "explanation": "Come → came."
+        },
+        {
+          "type": "fill_gap",
+          "sentence": "I _____ my friend a message.",
+          "hint": "Passado de \"send\"",
+          "answer": "sent",
+          "explanation": "Send → sent."
+        },
+        {
+          "type": "fix_error",
+          "sentence": "She goed to the party.",
+          "hint": "Go é irregular",
+          "answer": "She went to the party.",
+          "explanation": "Go → went, sempre."
+        },
+        {
+          "type": "fix_error",
+          "sentence": "I eated dinner late.",
+          "hint": "Eat é irregular",
+          "answer": "I ate dinner late.",
+          "explanation": "Eat → ate."
+        },
+        {
+          "type": "read_answer",
+          "passage": "Yesterday I went to a bookstore. I bought a novel. I came home and read it. I had a great evening!",
+          "question": "What did the speaker buy?",
+          "answer": "a novel",
+          "explanation": "The text says \"I bought a novel\"."
+        }
+      ],
+      "listening_speaking": [
+        {
+          "text": "I went to the park.",
+          "context": "went"
+        },
+        {
+          "text": "She bought a gift.",
+          "context": "bought"
+        },
+        {
+          "text": "We ate together.",
+          "context": "ate"
+        },
+        {
+          "text": "He came late.",
+          "context": "came"
+        },
+        {
+          "text": "I sent the email.",
+          "context": "sent"
+        }
+      ],
+      "roleplay": {
+        "scenario": "Charlotte pede uma história curta de um dia recente, com vários irregulares.",
+        "voiced_by": "charlotte",
+        "persona": "Charlotte",
+        "persona_outfit": "charlotte_casual",
+        "time_budget_sec": 90,
+        "opening_line": "Tell me a short story from yesterday — start with where you went.",
+        "objectives": [
+          {
+            "id": 1,
+            "label_pt": "Começar com 'I went to + lugar'",
+            "label_en": "Start with 'I went to'",
+            "hidden_prompt": "user starts with 'I went to + place'",
+            "hint_pt": "I went to the gym.",
+            "hint_en": "I went to the gym."
+          },
+          {
+            "id": 2,
+            "label_pt": "Continuar com outra ação irregular",
+            "label_en": "Continue with another irregular",
+            "hidden_prompt": "user uses another irregular past verb (saw/met/had/bought/etc.)",
+            "hint_pt": "I saw my friend there.",
+            "hint_en": "I saw my friend there."
+          },
+          {
+            "id": 3,
+            "label_pt": "Fechar com outra ação",
+            "label_en": "Close with another action",
+            "hidden_prompt": "user uses one more irregular past",
+            "hint_pt": "We had coffee after.",
+            "hint_en": "We had coffee after."
+          }
+        ],
+        "closing_cue": "Charlotte fecha com \"Loved the story!\" quando obj_3 baterem.",
+        "suggested_flow": "**Suggested flow** (referencial, 6 turnos):\n\n1. **Charlotte**: \"Tell me a short story from yesterday — start with where you went.\"\n2. **Student**: ~\"I went to the gym.\"\n3. **Charlotte**: \"Then?\"\n4. **Student**: ~\"I saw my friend there.\"\n5. **Charlotte**: \"After?\"\n6. **Student**: ~\"We had coffee after.\"\n7. **Charlotte**: \"Loved the story!\"",
+        "evaluation_focus": [
+          "Sequência narrativa",
+          "Variedade de irregulares",
+          "Sem voltas pra forma -ed errada"
+        ]
+      },
+      "guided_chat": {
+        "scenario": "Charlotte conversa sobre uma viagem ou evento que você teve.",
+        "voiced_by": "charlotte",
+        "persona": "Charlotte",
+        "persona_outfit": "charlotte_casual",
+        "intro_pt": "Charlotte abre chat sobre uma experiência passada. Integra os top 30 irregulares.",
+        "opening_message": "Last big experience — what happened?",
+        "objectives": [
+          {
+            "id": 1,
+            "label_pt": "Começar a história",
+            "label_en": "Start the story",
+            "hidden_prompt": "user starts with 'I went/had/made + something'",
+            "hint_pt": "I went to Italy.",
+            "hint_en": "I went to Italy."
+          },
+          {
+            "id": 2,
+            "label_pt": "Continuar com mais detalhes (irregulares)",
+            "label_en": "Continue with details",
+            "hidden_prompt": "user adds details with irregular past verbs",
+            "hint_pt": "I ate amazing food.",
+            "hint_en": "I ate amazing food."
+          },
+          {
+            "id": 3,
+            "label_pt": "Perguntar à Charlotte",
+            "label_en": "Ask Charlotte",
+            "hidden_prompt": "user asks 'How about you?'",
+            "hint_pt": "How about you?",
+            "hint_en": "How about you?"
+          }
+        ],
+        "closing_cue": "Charlotte encerra com \"Memorable!\" quando obj_3 baterem.",
+        "suggested_script": "**Script** (referencial, 7 turnos):\n\n1. **Charlotte**: \"Last big experience — what happened?\"\n2. **Student**: \"I went to Italy.\"\n3. **Charlotte**: \"Cool!\"\n4. **Student**: \"I ate amazing food.\"\n5. **Charlotte**: \"Yum.\"\n6. **Student**: \"How about you?\"\n7. **Charlotte**: \"I went hiking last summer. Memorable!\"\n\n> N05 chat = LLM puro.\n\n---"
+      }
+    }
+  ],
+  "cross_unit_consolidation": [
+    "Top 30 verbos irregulares no passado (went/saw/did/had/made/came/etc.)",
+    "Verbos invariáveis (put/cut/let, read pronúncia muda)",
+    "Sem -ed em irregulares",
+    "Sem -s na 3ª pessoa no passado",
+    "Narrativa simples com vários irregulares em sequência"
+  ]
+}

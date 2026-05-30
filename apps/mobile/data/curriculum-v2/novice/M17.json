@@ -1,0 +1,1016 @@
+{
+  "id": "M17",
+  "title": "Não foi assim",
+  "level": "Novice",
+  "block": "A2",
+  "units_range": "N01–N05",
+  "theme": "Past simple negativo e perguntas (didn't / Did you...?)",
+  "goal": "Aluno sai sabendo formar negativas com didn't + base e perguntas com Did + base (regular e irregular).",
+  "connects_to": "M18 (Planos pra amanhã) — depois do passado completo, vai pro futuro com going to.",
+  "module_chunks": [
+    "I didn't / you didn't / she didn't / they didn't",
+    "didn't + verbo base (não didn't worked)",
+    "Did I...? / Did you...? / Did she...? / Did they...?",
+    "Yes, I did. / No, I didn't.",
+    "Did + sujeito + verbo base + complemento?",
+    "WH + did + sujeito + verbo base (Where did you go? What did she do?)"
+  ],
+  "units": [
+    {
+      "id": "N01",
+      "title": "Eu não fiz",
+      "sub_cefr": "A2",
+      "grammar_focus": "Past simple negative (didn't + base)",
+      "markers": [
+        "denso"
+      ],
+      "real_life_context": "Você esclarece o que NÃO fez ontem.",
+      "grammar": [
+        {
+          "type": "multiple_choice",
+          "sentence": "I _____ work yesterday.",
+          "options": [
+            "didn't",
+            "wasn't",
+            "haven't"
+          ],
+          "answer": "didn't",
+          "explanation": "Past simple negativo: \"didn't + verbo base\". \"Didn't work\" = não trabalhei."
+        },
+        {
+          "type": "multiple_choice",
+          "sentence": "She _____ go to the party.",
+          "options": [
+            "didn't",
+            "wasn't",
+            "doesn't"
+          ],
+          "answer": "didn't",
+          "explanation": "\"Didn't\" pra todas as pessoas no passado. \"She didn't go\"."
+        },
+        {
+          "type": "word_bank",
+          "sentence": "We _____ eat dinner.",
+          "choices": [
+            "didn't",
+            "weren't",
+            "haven't",
+            "don't"
+          ],
+          "answer": "didn't",
+          "explanation": "\"Didn't\" + base. Plural ou singular, todos usam didn't."
+        },
+        {
+          "type": "word_bank",
+          "sentence": "He _____ see the movie.",
+          "choices": [
+            "didn't",
+            "wasn't",
+            "hadn't",
+            "doesn't"
+          ],
+          "answer": "didn't",
+          "explanation": "\"He didn't see\" — past negativo com didn't + base. Mesmo em 3ª pessoa, didn't (não doesn't)."
+        },
+        {
+          "type": "fill_gap",
+          "sentence": "I _____ have time yesterday.",
+          "hint": "Negativa de \"I had\"",
+          "answer": "didn't",
+          "explanation": "\"I didn't have\" — passado negativo. Note: verbo base \"have\", não \"had\"."
+        },
+        {
+          "type": "fill_gap",
+          "sentence": "She _____ call me.",
+          "hint": "Negativa passado de \"she called\"",
+          "answer": "didn't",
+          "explanation": "\"She didn't call\" — didn't + base \"call\" (não \"called\")."
+        },
+        {
+          "type": "fill_gap",
+          "sentence": "They _____ go to school.",
+          "hint": "Negativa passado plural",
+          "answer": "didn't",
+          "explanation": "\"They didn't go\" — plural também usa didn't."
+        },
+        {
+          "type": "fix_error",
+          "sentence": "He didn't went home.",
+          "hint": "Após didn't, verbo base",
+          "answer": "He didn't go home.",
+          "explanation": "Após \"didn't\", verbo SEMPRE base: \"go\", não \"went\". \"Didn't already carries past — verbo principal volta pra forma base."
+        },
+        {
+          "type": "fix_error",
+          "sentence": "She doesn't call me yesterday.",
+          "hint": "Yesterday é passado, usa didn't",
+          "answer": "She didn't call me yesterday.",
+          "explanation": "\"Yesterday\" indica passado → \"didn't\" (não \"doesn't\" que é presente)."
+        },
+        {
+          "type": "read_answer",
+          "passage": "I didn't work yesterday. I didn't go out either. I didn't see anyone. It was a quiet day.",
+          "question": "Did the speaker work?",
+          "answer": "no (or \"didn't work\")",
+          "explanation": "The text says \"I didn't work yesterday\"."
+        }
+      ],
+      "listening_speaking": [
+        {
+          "text": "I didn't work yesterday.",
+          "context": "own negative past"
+        },
+        {
+          "text": "She didn't go to the party.",
+          "context": "3rd person negative"
+        },
+        {
+          "text": "We didn't eat dinner.",
+          "context": "plural negative"
+        },
+        {
+          "text": "He didn't see the movie.",
+          "context": "negative"
+        },
+        {
+          "text": "They didn't call me.",
+          "context": "plural negative"
+        }
+      ],
+      "roleplay": {
+        "scenario": "Charlotte assume coisas que você fez, mas você corrige com didn't.",
+        "voiced_by": "charlotte",
+        "persona": "Charlotte",
+        "persona_outfit": "charlotte_casual",
+        "time_budget_sec": 90,
+        "opening_line": "I bet you went to the gym yesterday!",
+        "objectives": [
+          {
+            "id": 1,
+            "label_pt": "Corrigir Charlotte com 'I didn't'",
+            "label_en": "Correct her with 'I didn't'",
+            "hidden_prompt": "user corrects with 'No, I didn't + verb base'",
+            "hint_pt": "No, I didn't go to the gym.",
+            "hint_en": "No, I didn't go to the gym."
+          },
+          {
+            "id": 2,
+            "label_pt": "Dizer outra coisa que não fez",
+            "label_en": "Say another thing you didn't do",
+            "hidden_prompt": "user uses another 'I didn't + verb base'",
+            "hint_pt": "I didn't have time.",
+            "hint_en": "I didn't have time."
+          },
+          {
+            "id": 3,
+            "label_pt": "Dizer que alguém não fez algo (didn't + base)",
+            "label_en": "Say someone didn't do something",
+            "hidden_prompt": "user uses 'He/She didn't + base'",
+            "hint_pt": "My sister didn't come.",
+            "hint_en": "My sister didn't come."
+          }
+        ],
+        "closing_cue": "Charlotte fecha com \"Cleared up!\" quando obj_3 baterem.",
+        "suggested_flow": "**Suggested flow** (referencial, 6 turnos):\n\n1. **Charlotte**: \"I bet you went to the gym yesterday!\"\n2. **Student**: ~\"No, I didn't go to the gym.\"\n3. **Charlotte**: \"Worked then?\"\n4. **Student**: ~\"I didn't have time.\"\n5. **Charlotte**: \"Family helped?\"\n6. **Student**: ~\"My sister didn't come.\"\n7. **Charlotte**: \"Cleared up!\"",
+        "evaluation_focus": [
+          "didn't + verbo base",
+          "Sem \"didn't worked\"",
+          "Sem \"doesn't\" no passado"
+        ]
+      },
+      "guided_chat": {
+        "scenario": "Charlotte explora o que você NÃO fez no fim de semana.",
+        "voiced_by": "charlotte",
+        "persona": "Charlotte",
+        "persona_outfit": "charlotte_casual",
+        "intro_pt": "Charlotte explora o que NÃO aconteceu. Pratica didn't + verbo base.",
+        "opening_message": "What didn't you do this weekend?",
+        "objectives": [
+          {
+            "id": 1,
+            "label_pt": "Dizer algo que não fez",
+            "label_en": "Say what you didn't do",
+            "hidden_prompt": "user uses 'I didn't + verb base'",
+            "hint_pt": "I didn't work.",
+            "hint_en": "I didn't work."
+          },
+          {
+            "id": 2,
+            "label_pt": "Dizer outra negativa",
+            "label_en": "Say another negative",
+            "hidden_prompt": "user uses another 'I didn't + verb base'",
+            "hint_pt": "I didn't see anyone.",
+            "hint_en": "I didn't see anyone."
+          },
+          {
+            "id": 3,
+            "label_pt": "Perguntar à Charlotte",
+            "label_en": "Ask Charlotte",
+            "hidden_prompt": "user asks 'How about you?'",
+            "hint_pt": "How about you?",
+            "hint_en": "How about you?"
+          }
+        ],
+        "closing_cue": "Charlotte encerra com \"Same chill!\" quando obj_3 baterem.",
+        "suggested_script": "**Script** (referencial, 7 turnos):\n\n1. **Charlotte**: \"What didn't you do this weekend?\"\n2. **Student**: \"I didn't work.\"\n3. **Charlotte**: \"Nice break.\"\n4. **Student**: \"I didn't see anyone.\"\n5. **Charlotte**: \"Quiet weekend.\"\n6. **Student**: \"How about you?\"\n7. **Charlotte**: \"Same — I didn't go out. Same chill!\"\n\n> N01 chat = LLM puro.\n\n---"
+      }
+    },
+    {
+      "id": "N02",
+      "title": "Você fez?",
+      "sub_cefr": "A2",
+      "grammar_focus": "Past simple yes/no questions (Did you...?)",
+      "markers": [],
+      "real_life_context": "Você pergunta sobre o que alguém fez ontem.",
+      "grammar": [
+        {
+          "type": "multiple_choice",
+          "sentence": "_____ you go to the party?",
+          "options": [
+            "Did",
+            "Do",
+            "Were"
+          ],
+          "answer": "Did",
+          "explanation": "Pergunta passado: \"Did + sujeito + verbo base?\". \"Did you go?\"."
+        },
+        {
+          "type": "multiple_choice",
+          "sentence": "_____ she like the movie?",
+          "options": [
+            "Did",
+            "Does",
+            "Was"
+          ],
+          "answer": "Did",
+          "explanation": "\"Did she like?\" — past question com Did pra qualquer pessoa."
+        },
+        {
+          "type": "word_bank",
+          "sentence": "_____ they win the game?",
+          "choices": [
+            "Did",
+            "Do",
+            "Were",
+            "Have"
+          ],
+          "answer": "Did",
+          "explanation": "\"Did they win?\" — plural também com Did."
+        },
+        {
+          "type": "word_bank",
+          "sentence": "_____ you eat breakfast?",
+          "choices": [
+            "Did",
+            "Do",
+            "Are",
+            "Have"
+          ],
+          "answer": "Did",
+          "explanation": "\"Did you eat?\" — past question. Atenção: verbo base \"eat\", não \"ate\"."
+        },
+        {
+          "type": "fill_gap",
+          "sentence": "_____ he call you?",
+          "hint": "Auxiliar de past simple question",
+          "answer": "Did",
+          "explanation": "\"Did he call?\" — past question com Did. Verbo base \"call\" depois."
+        },
+        {
+          "type": "fill_gap",
+          "sentence": "Yes, I _____.",
+          "hint": "Resposta curta afirmativa",
+          "answer": "did",
+          "explanation": "\"Yes, I did\" — short answer pra past question."
+        },
+        {
+          "type": "fill_gap",
+          "sentence": "No, she _____.",
+          "hint": "Resposta curta negativa contraída",
+          "answer": "didn't",
+          "explanation": "\"No, she didn't\" — short answer negativa."
+        },
+        {
+          "type": "fix_error",
+          "sentence": "Did you went home?",
+          "hint": "Após Did, verbo base",
+          "answer": "Did you go home?",
+          "explanation": "Após \"Did\", verbo SEMPRE base: \"go\", não \"went\". Did já carrega o passado."
+        },
+        {
+          "type": "fix_error",
+          "sentence": "Do you saw the movie?",
+          "hint": "Saw é passado, pergunta com Did",
+          "answer": "Did you see the movie?",
+          "explanation": "Pra passado usa \"Did\", não \"Do\". E após \"Did\" usa base: \"see\"."
+        },
+        {
+          "type": "read_answer",
+          "passage": "Q: Did you go to the gym? A: Yes, I did. Q: Did your sister come? A: No, she didn't. She had work.",
+          "question": "Did the sister come?",
+          "answer": "no (or \"she didn't\")",
+          "explanation": "The text says \"No, she didn't\"."
+        }
+      ],
+      "listening_speaking": [
+        {
+          "text": "Did you go to the party?",
+          "context": "direct question"
+        },
+        {
+          "text": "Did she like the movie?",
+          "context": "3rd person past Q"
+        },
+        {
+          "text": "Did they win?",
+          "context": "plural past Q"
+        },
+        {
+          "text": "Yes, I did. No, I didn't.",
+          "context": "short answers"
+        },
+        {
+          "text": "Did you eat breakfast?",
+          "context": "verb base after Did"
+        }
+      ],
+      "roleplay": {
+        "scenario": "Charlotte responde a perguntas — você pergunta sobre ações dela ontem.",
+        "voiced_by": "charlotte",
+        "persona": "Charlotte",
+        "persona_outfit": "charlotte_casual",
+        "time_budget_sec": 90,
+        "opening_line": "Ask me three things about yesterday.",
+        "objectives": [
+          {
+            "id": 1,
+            "label_pt": "Fazer pergunta com 'Did you'",
+            "label_en": "Ask 'Did you...?'",
+            "hidden_prompt": "user asks 'Did you + verb base...?'",
+            "hint_pt": "Did you work?",
+            "hint_en": "Did you work?"
+          },
+          {
+            "id": 2,
+            "label_pt": "Fazer outra pergunta com 'Did you'",
+            "label_en": "Ask another 'Did you...?'",
+            "hidden_prompt": "user asks another 'Did you + verb base'",
+            "hint_pt": "Did you eat lunch?",
+            "hint_en": "Did you eat lunch?"
+          },
+          {
+            "id": 3,
+            "label_pt": "Fazer pergunta sobre alguém (Did she/he/they)",
+            "label_en": "Ask about someone (Did she/he)",
+            "hidden_prompt": "user asks 'Did + 3rd person + verb base?'",
+            "hint_pt": "Did your friend come?",
+            "hint_en": "Did your friend come?"
+          }
+        ],
+        "closing_cue": "Charlotte fecha com \"Great questions!\" quando obj_3 baterem.",
+        "suggested_flow": "**Suggested flow** (referencial, 6 turnos):\n\n1. **Charlotte**: \"Ask me three things about yesterday.\"\n2. **Student**: ~\"Did you work?\"\n3. **Charlotte**: \"Yes, I did.\"\n4. **Student**: ~\"Did you eat lunch?\"\n5. **Charlotte**: \"Of course.\"\n6. **Student**: ~\"Did your friend come?\"\n7. **Charlotte**: \"Yes — great questions!\"",
+        "evaluation_focus": [
+          "Did + sujeito + verbo base",
+          "Verbo base correto (sem -ed, sem irregular)",
+          "Sem \"Do\" pra passado"
+        ]
+      },
+      "guided_chat": {
+        "scenario": "Charlotte interroga seu fim de semana — você responde também perguntando.",
+        "voiced_by": "charlotte",
+        "persona": "Charlotte",
+        "persona_outfit": "charlotte_casual",
+        "intro_pt": "Charlotte abre chat de perguntas e respostas. Pratica Did you...? e respostas curtas.",
+        "opening_message": "Did you have a good weekend?",
+        "objectives": [
+          {
+            "id": 1,
+            "label_pt": "Responder curto à pergunta",
+            "label_en": "Short-answer the question",
+            "hidden_prompt": "user gives short answer 'Yes, I did' or 'No, I didn't'",
+            "hint_pt": "Yes, I did.",
+            "hint_en": "Yes, I did."
+          },
+          {
+            "id": 2,
+            "label_pt": "Fazer pergunta à Charlotte",
+            "label_en": "Ask Charlotte",
+            "hidden_prompt": "user asks 'Did you + verb base?'",
+            "hint_pt": "Did you travel?",
+            "hint_en": "Did you travel?"
+          },
+          {
+            "id": 3,
+            "label_pt": "Fazer outra pergunta",
+            "label_en": "Ask another",
+            "hidden_prompt": "user asks another 'Did you...?'",
+            "hint_pt": "Did you cook?",
+            "hint_en": "Did you cook?"
+          }
+        ],
+        "closing_cue": "Charlotte encerra com \"Lots of Qs!\" quando obj_3 baterem.",
+        "suggested_script": "**Script** (referencial, 7 turnos):\n\n1. **Charlotte**: \"Did you have a good weekend?\"\n2. **Student**: \"Yes, I did.\"\n3. **Charlotte**: \"What about you ask?\"\n4. **Student**: \"Did you travel?\"\n5. **Charlotte**: \"No, I didn't.\"\n6. **Student**: \"Did you cook?\"\n7. **Charlotte**: \"Yes, lots! Lots of Qs!\"\n\n> N02 chat = LLM puro.\n\n---"
+      }
+    },
+    {
+      "id": "N03",
+      "title": "Onde, quando, o quê?",
+      "sub_cefr": "A2",
+      "grammar_focus": "Past WH-questions (Where did you...? What did she...?)",
+      "markers": [
+        "qform"
+      ],
+      "real_life_context": "Você faz entrevistas curtas — onde, quando, com quem, por quê.",
+      "grammar": [
+        {
+          "type": "multiple_choice",
+          "sentence": "Where _____ you go?",
+          "options": [
+            "did",
+            "do",
+            "were"
+          ],
+          "answer": "did",
+          "explanation": "WH + did + sujeito + base: \"Where did you go?\"."
+        },
+        {
+          "type": "multiple_choice",
+          "sentence": "What _____ she eat?",
+          "options": [
+            "did",
+            "does",
+            "was"
+          ],
+          "answer": "did",
+          "explanation": "\"What did she eat?\" — past WH question com Did."
+        },
+        {
+          "type": "word_bank",
+          "sentence": "When _____ they arrive?",
+          "choices": [
+            "did",
+            "do",
+            "were",
+            "have"
+          ],
+          "answer": "did",
+          "explanation": "\"When did they arrive?\" — past WH question."
+        },
+        {
+          "type": "word_bank",
+          "sentence": "Why _____ he leave early?",
+          "choices": [
+            "did",
+            "was",
+            "does",
+            "had"
+          ],
+          "answer": "did",
+          "explanation": "\"Why did he leave?\" — WH past + base."
+        },
+        {
+          "type": "fill_gap",
+          "sentence": "How _____ you get here?",
+          "hint": "Auxiliar past WH",
+          "answer": "did",
+          "explanation": "\"How did you get here?\" — past WH question."
+        },
+        {
+          "type": "fill_gap",
+          "sentence": "Who _____ you meet?",
+          "hint": "Auxiliar past",
+          "answer": "did",
+          "explanation": "\"Who did you meet?\" — past WH com Did."
+        },
+        {
+          "type": "fill_gap",
+          "sentence": "What time _____ she arrive?",
+          "hint": "Auxiliar past WH",
+          "answer": "did",
+          "explanation": "\"What time did she arrive?\" — pergunta horário no passado."
+        },
+        {
+          "type": "fix_error",
+          "sentence": "Where did you went?",
+          "hint": "Após Did, base",
+          "answer": "Where did you go?",
+          "explanation": "\"Did\" já carrega o passado. Verbo principal vai pra base: \"go\", não \"went\"."
+        },
+        {
+          "type": "fix_error",
+          "sentence": "What she did yesterday?",
+          "hint": "Ordem WH passado",
+          "answer": "What did she do yesterday?",
+          "explanation": "WH + DID + sujeito + base. \"What did she do?\", não \"What she did?\"."
+        },
+        {
+          "type": "read_answer",
+          "passage": "Q: Where did you go? A: I went to the beach. Q: What did you do? A: I swam and read. Q: When did you come back? A: At seven.",
+          "question": "What did the speaker do at the beach?",
+          "answer": "swam and read (or \"swam, read\")",
+          "explanation": "The text says \"I swam and read\"."
+        }
+      ],
+      "listening_speaking": [
+        {
+          "text": "Where did you go?",
+          "context": "Where + past"
+        },
+        {
+          "text": "What did she eat?",
+          "context": "What + past"
+        },
+        {
+          "text": "When did they arrive?",
+          "context": "When + past"
+        },
+        {
+          "text": "Why did he leave?",
+          "context": "Why + past"
+        },
+        {
+          "text": "How did you get there?",
+          "context": "How + past"
+        }
+      ],
+      "roleplay": {
+        "scenario": "Charlotte responde — você é o entrevistador fazendo WH-questions.",
+        "voiced_by": "charlotte",
+        "persona": "Charlotte",
+        "persona_outfit": "charlotte_casual",
+        "time_budget_sec": 90,
+        "opening_line": "Interview time! Ask me about my weekend.",
+        "objectives": [
+          {
+            "id": 1,
+            "label_pt": "Perguntar onde Charlotte foi (Where did)",
+            "label_en": "Ask 'Where did you go?'",
+            "hidden_prompt": "user asks 'Where did you + verb base?'",
+            "hint_pt": "Where did you go?",
+            "hint_en": "Where did you go?"
+          },
+          {
+            "id": 2,
+            "label_pt": "Perguntar o que ela fez (What did)",
+            "label_en": "Ask 'What did you do?'",
+            "hidden_prompt": "user asks 'What did you + verb base?'",
+            "hint_pt": "What did you do?",
+            "hint_en": "What did you do?"
+          },
+          {
+            "id": 3,
+            "label_pt": "Perguntar quando ou por quê",
+            "label_en": "Ask when or why",
+            "hidden_prompt": "user asks 'When/Why did you + verb base?'",
+            "hint_pt": "When did you come back?",
+            "hint_en": "When did you come back?"
+          }
+        ],
+        "closing_cue": "Charlotte fecha com \"Solid interview!\" quando obj_3 baterem.",
+        "suggested_flow": "**Suggested flow** (referencial, 6 turnos):\n\n1. **Charlotte**: \"Interview time! Ask me about my weekend.\"\n2. **Student**: ~\"Where did you go?\"\n3. **Charlotte**: \"To Rio.\"\n4. **Student**: ~\"What did you do?\"\n5. **Charlotte**: \"Walked on the beach.\"\n6. **Student**: ~\"When did you come back?\"\n7. **Charlotte**: \"Sunday. Solid interview!\"",
+        "evaluation_focus": [
+          "WH + did + sujeito + base",
+          "Verbo base após did",
+          "Sem \"did + past form\""
+        ]
+      },
+      "guided_chat": {
+        "scenario": "Charlotte é entrevistada por chat sobre uma viagem.",
+        "voiced_by": "charlotte",
+        "persona": "Charlotte",
+        "persona_outfit": "charlotte_casual",
+        "intro_pt": "Charlotte conta uma viagem e você faz WH-perguntas passadas.",
+        "opening_message": "I had a great trip — ask me anything.",
+        "objectives": [
+          {
+            "id": 1,
+            "label_pt": "Perguntar onde foi",
+            "label_en": "Ask where",
+            "hidden_prompt": "user asks 'Where did you go?'",
+            "hint_pt": "Where did you go?",
+            "hint_en": "Where did you go?"
+          },
+          {
+            "id": 2,
+            "label_pt": "Perguntar com quem",
+            "label_en": "Ask with whom",
+            "hidden_prompt": "user asks 'Who did you go with?' or 'Who did you meet?'",
+            "hint_pt": "Who did you go with?",
+            "hint_en": "Who did you go with?"
+          },
+          {
+            "id": 3,
+            "label_pt": "Perguntar quanto tempo ou quando",
+            "label_en": "Ask how long or when",
+            "hidden_prompt": "user asks 'How long did you stay?' or 'When did you come back?'",
+            "hint_pt": "How long did you stay?",
+            "hint_en": "How long did you stay?"
+          }
+        ],
+        "closing_cue": "Charlotte encerra com \"Cool interview!\" quando obj_3 baterem.",
+        "suggested_script": "**Script** (referencial, 7 turnos):\n\n1. **Charlotte**: \"I had a great trip — ask me anything.\"\n2. **Student**: \"Where did you go?\"\n3. **Charlotte**: \"To Italy.\"\n4. **Student**: \"Who did you go with?\"\n5. **Charlotte**: \"My family.\"\n6. **Student**: \"How long did you stay?\"\n7. **Charlotte**: \"Two weeks. Cool interview!\"\n\n> N03 chat = LLM puro.\n\n---"
+      }
+    },
+    {
+      "id": "N04",
+      "title": "Eu nunca fiz isso",
+      "sub_cefr": "A2",
+      "grammar_focus": "Past simple negative — extension (never + did/didn't)",
+      "markers": [],
+      "real_life_context": "Você fala sobre o que nunca fez ou não fez.",
+      "grammar": [
+        {
+          "type": "multiple_choice",
+          "sentence": "I _____ visited Japan.",
+          "options": [
+            "never",
+            "didn't",
+            "not"
+          ],
+          "answer": "never",
+          "explanation": "\"I never visited\" = \"Nunca visitei\". \"Never\" sozinho (sem didn't): \"I never visited Japan\"."
+        },
+        {
+          "type": "multiple_choice",
+          "sentence": "She _____ come to the party.",
+          "options": [
+            "didn't",
+            "not",
+            "no"
+          ],
+          "answer": "didn't",
+          "explanation": "Past negativo padrão: \"didn't + base\". \"She didn't come\"."
+        },
+        {
+          "type": "word_bank",
+          "sentence": "We _____ knew.",
+          "choices": [
+            "never",
+            "didn't",
+            "no",
+            "not"
+          ],
+          "answer": "never",
+          "explanation": "\"We never knew\" = \"Nunca soubemos\". Sem auxiliar — verbo no passado direto."
+        },
+        {
+          "type": "word_bank",
+          "sentence": "He _____ understand the question.",
+          "choices": [
+            "didn't",
+            "never",
+            "not",
+            "no"
+          ],
+          "answer": "didn't",
+          "explanation": "\"He didn't understand\" — past negativo. (Could also be \"never understood\" but with simple/no auxiliary structure)."
+        },
+        {
+          "type": "fill_gap",
+          "sentence": "I _____ travel abroad.",
+          "hint": "Negativa direta de past",
+          "answer": "didn't",
+          "explanation": "\"I didn't travel\" — padrão. \"I never traveled\" também funciona (sem didn't)."
+        },
+        {
+          "type": "fill_gap",
+          "sentence": "She _____ said anything wrong.",
+          "hint": "\"Nunca\" sem didn't",
+          "answer": "never",
+          "explanation": "\"She never said\" — passado direto sem auxiliar. Equivale a \"She didn't say anything\"."
+        },
+        {
+          "type": "fill_gap",
+          "sentence": "They _____ arrive on time.",
+          "hint": "Past negativo padrão",
+          "answer": "didn't",
+          "explanation": "\"They didn't arrive\" — past negativo."
+        },
+        {
+          "type": "fix_error",
+          "sentence": "I never didn't go there.",
+          "hint": "Dupla negativa",
+          "answer": "I never went there.",
+          "explanation": "NÃO usa dupla negativa em inglês. Ou \"I never went\" OU \"I didn't go\" — não ambos."
+        },
+        {
+          "type": "fix_error",
+          "sentence": "She never come yesterday.",
+          "hint": "Com \"never\", o verbo no passado simples",
+          "answer": "She never came yesterday.",
+          "explanation": "\"Never\" + verbo no PASSADO (came), não na base. Diferente de \"didn't + base\"."
+        },
+        {
+          "type": "read_answer",
+          "passage": "I never visited Japan, but I went to China. My sister didn't travel last year. She stayed home.",
+          "question": "Where did the sister stay?",
+          "answer": "home",
+          "explanation": "The text says \"She stayed home\"."
+        }
+      ],
+      "listening_speaking": [
+        {
+          "text": "I never visited Japan.",
+          "context": "never + past"
+        },
+        {
+          "text": "She didn't come to the party.",
+          "context": "didn't + base"
+        },
+        {
+          "text": "We never knew.",
+          "context": "never + past"
+        },
+        {
+          "text": "He didn't understand.",
+          "context": "didn't + base"
+        },
+        {
+          "text": "They didn't arrive on time.",
+          "context": "didn't + base"
+        }
+      ],
+      "roleplay": {
+        "scenario": "Charlotte pergunta sobre experiências — você diz o que nunca fez.",
+        "voiced_by": "charlotte",
+        "persona": "Charlotte",
+        "persona_outfit": "charlotte_casual",
+        "time_budget_sec": 90,
+        "opening_line": "Tell me three things you've never done.",
+        "objectives": [
+          {
+            "id": 1,
+            "label_pt": "Dizer algo que você nunca fez (never + past)",
+            "label_en": "Say something you never did",
+            "hidden_prompt": "user uses 'I never + verb past' (never visited, never tried, never went)",
+            "hint_pt": "I never visited Japan.",
+            "hint_en": "I never visited Japan."
+          },
+          {
+            "id": 2,
+            "label_pt": "Outra coisa que nunca fez",
+            "label_en": "Another thing you never did",
+            "hidden_prompt": "user uses 'I never + past verb'",
+            "hint_pt": "I never tried sushi.",
+            "hint_en": "I never tried sushi."
+          },
+          {
+            "id": 3,
+            "label_pt": "Dizer algo que não fez ontem (didn't + base)",
+            "label_en": "Say what you didn't do yesterday",
+            "hidden_prompt": "user uses 'I didn't + verb base + yesterday/last week'",
+            "hint_pt": "I didn't go out yesterday.",
+            "hint_en": "I didn't go out yesterday."
+          }
+        ],
+        "closing_cue": "Charlotte fecha com \"Honest list!\" quando obj_3 baterem.",
+        "suggested_flow": "**Suggested flow** (referencial, 6 turnos):\n\n1. **Charlotte**: \"Tell me three things you've never done.\"\n2. **Student**: ~\"I never visited Japan.\"\n3. **Charlotte**: \"Food?\"\n4. **Student**: ~\"I never tried sushi.\"\n5. **Charlotte**: \"Yesterday?\"\n6. **Student**: ~\"I didn't go out yesterday.\"\n7. **Charlotte**: \"Honest list!\"",
+        "evaluation_focus": [
+          "\"Never + past\" sem didn't",
+          "\"Didn't + base\"",
+          "Sem dupla negativa"
+        ]
+      },
+      "guided_chat": {
+        "scenario": "Charlotte abre chat de \"nunca fiz\" — você compartilha experiências NÃO vividas.",
+        "voiced_by": "charlotte",
+        "persona": "Charlotte",
+        "persona_outfit": "charlotte_casual",
+        "intro_pt": "Charlotte explora experiências NÃO vividas. Pratica never + past vs didn't + base.",
+        "opening_message": "Something you've never done?",
+        "objectives": [
+          {
+            "id": 1,
+            "label_pt": "Dizer algo que nunca fez",
+            "label_en": "Say what you've never done",
+            "hidden_prompt": "user uses 'I never + past verb'",
+            "hint_pt": "I never went skiing.",
+            "hint_en": "I never went skiing."
+          },
+          {
+            "id": 2,
+            "label_pt": "Dizer outra",
+            "label_en": "Say another",
+            "hidden_prompt": "user uses another 'I never + past'",
+            "hint_pt": "I never ate raw fish.",
+            "hint_en": "I never ate raw fish."
+          },
+          {
+            "id": 3,
+            "label_pt": "Perguntar à Charlotte",
+            "label_en": "Ask Charlotte",
+            "hidden_prompt": "user asks 'How about you?'",
+            "hint_pt": "How about you?",
+            "hint_en": "How about you?"
+          }
+        ],
+        "closing_cue": "Charlotte encerra com \"Sharing the never-list!\" quando obj_3 baterem.",
+        "suggested_script": "**Script** (referencial, 7 turnos):\n\n1. **Charlotte**: \"Something you've never done?\"\n2. **Student**: \"I never went skiing.\"\n3. **Charlotte**: \"Try it!\"\n4. **Student**: \"I never ate raw fish.\"\n5. **Charlotte**: \"Sushi adventure pending.\"\n6. **Student**: \"How about you?\"\n7. **Charlotte**: \"I never visited Antarctica. Sharing the never-list!\"\n\n> N04 chat = LLM puro.\n\n---"
+      }
+    },
+    {
+      "id": "N05",
+      "title": "Tudo no passado",
+      "sub_cefr": "A2",
+      "grammar_focus": "Integration past simple (positive/negative/question/WH)",
+      "markers": [],
+      "real_life_context": "Você narra uma história completa com afirmativas, negativas e perguntas no passado.",
+      "grammar": [
+        {
+          "type": "multiple_choice",
+          "sentence": "I _____ to the party last night.",
+          "options": [
+            "went",
+            "goed",
+            "didn't went"
+          ],
+          "answer": "went",
+          "explanation": "Past simple afirmativo irregular: \"went\"."
+        },
+        {
+          "type": "multiple_choice",
+          "sentence": "She _____ enjoy the music.",
+          "options": [
+            "didn't",
+            "wasn't",
+            "doesn't"
+          ],
+          "answer": "didn't",
+          "explanation": "Past negativo: didn't + base."
+        },
+        {
+          "type": "word_bank",
+          "sentence": "_____ you have fun?",
+          "choices": [
+            "Did",
+            "Do",
+            "Were",
+            "Have"
+          ],
+          "answer": "Did",
+          "explanation": "Past question com Did."
+        },
+        {
+          "type": "word_bank",
+          "sentence": "Where _____ they go?",
+          "choices": [
+            "did",
+            "do",
+            "were",
+            "are"
+          ],
+          "answer": "did",
+          "explanation": "WH past + Did."
+        },
+        {
+          "type": "fill_gap",
+          "sentence": "I _____ a great time.",
+          "hint": "Passado de \"have\"",
+          "answer": "had",
+          "explanation": "\"I had a great time\" — irregular afirmativo."
+        },
+        {
+          "type": "fill_gap",
+          "sentence": "She _____ stay long.",
+          "hint": "Past negativo padrão",
+          "answer": "didn't",
+          "explanation": "\"She didn't stay\" — negativa."
+        },
+        {
+          "type": "fill_gap",
+          "sentence": "Why _____ he leave?",
+          "hint": "WH past",
+          "answer": "did",
+          "explanation": "\"Why did he leave?\" — WH past question."
+        },
+        {
+          "type": "fix_error",
+          "sentence": "She didn't went home.",
+          "hint": "Após didn't, base",
+          "answer": "She didn't go home.",
+          "explanation": "didn't + base, não \"didn't went\"."
+        },
+        {
+          "type": "fix_error",
+          "sentence": "Did you saw the movie?",
+          "hint": "Após Did, base",
+          "answer": "Did you see the movie?",
+          "explanation": "Did + sujeito + base. \"See\", não \"saw\"."
+        },
+        {
+          "type": "read_answer",
+          "passage": "I went to a concert. I didn't stay long. Did my friend come? No, she didn't. What did she do? She worked late.",
+          "question": "Did the friend come to the concert?",
+          "answer": "no",
+          "explanation": "The text says \"No, she didn't\"."
+        }
+      ],
+      "listening_speaking": [
+        {
+          "text": "I went to the party.",
+          "context": "affirmative"
+        },
+        {
+          "text": "She didn't come.",
+          "context": "negative"
+        },
+        {
+          "text": "Did you have fun?",
+          "context": "yes/no question"
+        },
+        {
+          "text": "Where did they go?",
+          "context": "WH question"
+        },
+        {
+          "text": "I had a great time.",
+          "context": "affirmative + adj"
+        }
+      ],
+      "roleplay": {
+        "scenario": "Charlotte pede integração — afirmativa, negativa, pergunta.",
+        "voiced_by": "charlotte",
+        "persona": "Charlotte",
+        "persona_outfit": "charlotte_casual",
+        "time_budget_sec": 90,
+        "opening_line": "Tell me three things in past — one positive, one negative, one question.",
+        "objectives": [
+          {
+            "id": 1,
+            "label_pt": "Dizer afirmativa passada",
+            "label_en": "Say positive past",
+            "hidden_prompt": "user uses 'I + verb past + ...'",
+            "hint_pt": "I went to the gym.",
+            "hint_en": "I went to the gym."
+          },
+          {
+            "id": 2,
+            "label_pt": "Dizer negativa passada",
+            "label_en": "Say negative past",
+            "hidden_prompt": "user uses 'I didn't + base'",
+            "hint_pt": "I didn't eat dinner.",
+            "hint_en": "I didn't eat dinner."
+          },
+          {
+            "id": 3,
+            "label_pt": "Fazer pergunta passada (à Charlotte)",
+            "label_en": "Ask Charlotte",
+            "hidden_prompt": "user asks 'Did you + base?' or WH past",
+            "hint_pt": "Did you have fun?",
+            "hint_en": "Did you have fun?"
+          }
+        ],
+        "closing_cue": "Charlotte fecha com \"Past mastered!\" quando obj_3 baterem.",
+        "suggested_flow": "**Suggested flow** (referencial, 6 turnos):\n\n1. **Charlotte**: \"Tell me three things in past — one positive, one negative, one question.\"\n2. **Student**: ~\"I went to the gym.\"\n3. **Charlotte**: \"Negative?\"\n4. **Student**: ~\"I didn't eat dinner.\"\n5. **Charlotte**: \"Ask me!\"\n6. **Student**: ~\"Did you have fun?\"\n7. **Charlotte**: \"Yes! Past mastered!\"",
+        "evaluation_focus": [
+          "Três tipos integrados",
+          "Verbo base após didn't/did",
+          "Past forms correctos em afirmativas"
+        ]
+      },
+      "guided_chat": {
+        "scenario": "Charlotte conversa sobre o fim de semana completo — afirmativas, negativas e perguntas.",
+        "voiced_by": "charlotte",
+        "persona": "Charlotte",
+        "persona_outfit": "charlotte_casual",
+        "intro_pt": "Charlotte abre chat completo de past simple. Integra positiva, negativa e pergunta.",
+        "opening_message": "How was your weekend?",
+        "objectives": [
+          {
+            "id": 1,
+            "label_pt": "Dizer algo que fez (afirmativa)",
+            "label_en": "Say what you did (positive)",
+            "hidden_prompt": "user uses 'I + verb past'",
+            "hint_pt": "I went to a wedding.",
+            "hint_en": "I went to a wedding."
+          },
+          {
+            "id": 2,
+            "label_pt": "Dizer algo que não fez (negativa)",
+            "label_en": "Say what you didn't do",
+            "hidden_prompt": "user uses 'I didn't + base'",
+            "hint_pt": "I didn't dance.",
+            "hint_en": "I didn't dance."
+          },
+          {
+            "id": 3,
+            "label_pt": "Perguntar à Charlotte",
+            "label_en": "Ask Charlotte",
+            "hidden_prompt": "user asks 'Did you + base?' or WH past",
+            "hint_pt": "Did you go out?",
+            "hint_en": "Did you go out?"
+          }
+        ],
+        "closing_cue": "Charlotte encerra com \"Past simple covered!\" quando obj_3 baterem.",
+        "suggested_script": "**Script** (referencial, 7 turnos):\n\n1. **Charlotte**: \"How was your weekend?\"\n2. **Student**: \"I went to a wedding.\"\n3. **Charlotte**: \"Nice!\"\n4. **Student**: \"I didn't dance.\"\n5. **Charlotte**: \"Why not?\"\n6. **Student**: \"Did you go out?\"\n7. **Charlotte**: \"Yes — to a quiet dinner. Past simple covered!\"\n\n> N05 chat = LLM puro.\n\n---"
+      }
+    }
+  ],
+  "cross_unit_consolidation": [
+    "didn't + verbo base (sem -ed, sem irregular)",
+    "Did + sujeito + verbo base?",
+    "WH + did + sujeito + base?",
+    "Never + past verb (sem auxiliar)",
+    "Short answers: Yes, I did / No, I didn't"
+  ]
+}
