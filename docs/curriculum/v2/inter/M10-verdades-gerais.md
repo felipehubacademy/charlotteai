@@ -31,7 +31,7 @@
 1. **multiple_choice** — "If you heat water to 100 degrees, it _____."
    **Options**: boils / will boil / boil / is boiling
    **Answer**: boils
-   **Explanation**: Zero conditional descreve verdades sempre verdadeiras. Ambas as cláusulas usam present simple. "Boils" — fato universal sobre água.
+   **Explanation**: Zero conditional describes truths that are always valid. Both clauses use present simple. "Boils" — universal fact about water.
 
 2. **multiple_choice** — "If you mix red and blue, you _____ purple."
    **Options**: get / will get / got / are getting

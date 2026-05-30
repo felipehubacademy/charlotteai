@@ -1,0 +1,1055 @@
+{
+  "id": "M13",
+  "title": "Se eu tivesse sabido...",
+  "level": "Inter",
+  "block": "B2",
+  "units_range": "I01–I05",
+  "theme": "Third conditional (past hypotheticals + regrets)",
+  "goal": "Student uses third conditional naturally to express alternative pasts, missed opportunities, and counterfactual scenarios.",
+  "connects_to": "M14 (Modal perfects: should have, could have, would have) — adjacent regret/speculation forms.",
+  "module_chunks": [
+    "If I had + past participle, I would have + past participle",
+    "If I had known...",
+    "I would have + past participle",
+    "I wouldn't have + past participle",
+    "What would you have done if?",
+    "If only + past perfect",
+    "I wish + past perfect (regret)"
+  ],
+  "units": [
+    {
+      "id": "I01",
+      "title": "If I had known",
+      "sub_cefr": "B2",
+      "grammar_focus": "Third conditional structure (If + past perfect, would have + past participle)",
+      "markers": [
+        "denso"
+      ],
+      "real_life_context": "You imagine alternative pasts — what would have happened differently if you'd had different information.",
+      "grammar": [
+        {
+          "type": "multiple_choice",
+          "sentence": "If I _____ known, I would have helped.",
+          "options": [
+            "had",
+            "have",
+            "would have",
+            "did"
+          ],
+          "answer": "had",
+          "explanation": "Third conditional: \"If + past perfect (had + past participle), would have + past participle\". A cláusula com \"if\" usa past perfect, mesmo no terceiro condicional. Aqui: \"If I had known\"."
+        },
+        {
+          "type": "multiple_choice",
+          "sentence": "She _____ called you if she had had time.",
+          "options": [
+            "would have",
+            "will have",
+            "would",
+            "had"
+          ],
+          "answer": "would have",
+          "explanation": "Cláusula principal: \"would have + past participle\". \"She would have called\" — não \"would call\" (que seria second conditional, presente)."
+        },
+        {
+          "type": "word_bank",
+          "sentence": "If we _____ left earlier, we wouldn't have missed the train.",
+          "choices": [
+            "had",
+            "have",
+            "would",
+            "will"
+          ],
+          "answer": "had",
+          "explanation": "\"If + past perfect\" — \"had left\". O contraste com \"wouldn't have missed\" mostra o terceiro condicional."
+        },
+        {
+          "type": "word_bank",
+          "sentence": "I _____ told you if I had known.",
+          "choices": [
+            "would have",
+            "will have",
+            "would",
+            "had"
+          ],
+          "answer": "would have",
+          "explanation": "Cláusula principal sempre \"would have + past participle\". \"I would have told you\"."
+        },
+        {
+          "type": "fill_gap",
+          "sentence": "If she _____ studied, she would have passed.",
+          "hint": "past perfect \"had + past participle\"",
+          "answer": "had",
+          "explanation": "\"If she had studied\" — past perfect na cláusula if. Aprovaria, mas não estudou."
+        },
+        {
+          "type": "fill_gap",
+          "sentence": "He _____ have come if you had invited him.",
+          "hint": "\"would\" + have + past participle",
+          "answer": "would",
+          "explanation": "\"He would have come\" — would + have + come. Estrutura completa da principal."
+        },
+        {
+          "type": "fill_gap",
+          "sentence": "If they _____ asked, I _____ have helped.",
+          "hint": "had asked / would",
+          "answer": "had / would",
+          "explanation": "\"If they had asked, I would have helped\" — past perfect + would have past participle."
+        },
+        {
+          "type": "fix_error",
+          "sentence": "If I would have known, I would have helped.",
+          "hint": "\"Would\" não vai na cláusula \"if\" — só past perfect",
+          "answer": "If I had known, I would have helped.",
+          "explanation": "Erro muito comum: usar \"would have\" na cláusula if. Em third conditional, \"if\" sempre leva past perfect (\"had known\"), nunca \"would have\"."
+        },
+        {
+          "type": "fix_error",
+          "sentence": "She would called you if she had had time.",
+          "hint": "Falta \"have\" — \"would have called\"",
+          "answer": "She would have called you if she had had time.",
+          "explanation": "Principal precisa de \"would HAVE + past participle\". \"Would called\" não existe — sempre \"would have called\"."
+        },
+        {
+          "type": "read_answer",
+          "passage": "If I had known about the meeting, I would have come prepared. She would have called you back if she had had your number. We wouldn't have missed the train if we had left ten minutes earlier.",
+          "question": "What would the speaker have done if they had known?",
+          "answer": "come prepared (or \"would have come prepared\")",
+          "explanation": "The text says \"If I had known... I would have come prepared\"."
+        }
+      ],
+      "listening_speaking": [
+        {
+          "text": "If I had known, I would have helped.",
+          "context": "alternative past"
+        },
+        {
+          "text": "She would have called if she had had time.",
+          "context": "missed opportunity"
+        },
+        {
+          "text": "We wouldn't have missed the train if we had left earlier.",
+          "context": "alternative outcome"
+        },
+        {
+          "text": "He would have come if you had invited him.",
+          "context": "counterfactual"
+        },
+        {
+          "text": "If they had asked, I would have said yes.",
+          "context": "hypothetical past response"
+        }
+      ],
+      "roleplay": {
+        "scenario": "Charlotte pergunta sobre três situações passadas — \"o que você teria feito se tivesse sabido?\" — e quer respostas em third conditional.",
+        "voiced_by": "charlotte",
+        "persona": "Charlotte",
+        "persona_outfit": "charlotte_casual",
+        "time_budget_sec": 180,
+        "opening_line": "Tell me about a moment when you wish you'd known something earlier. Three scenarios.",
+        "objectives": [
+          {
+            "id": 1,
+            "label_pt": "Hipótese sobre o passado com 'if I had known'",
+            "label_en": "Past hypothetical with 'if I had known'",
+            "hidden_prompt": "user uses 'If I had known, I would have + past participle'",
+            "hint_pt": "If I had known, I would have come earlier.",
+            "hint_en": "If I had known, I would have come earlier."
+          },
+          {
+            "id": 2,
+            "label_pt": "Outra hipótese (different verb)",
+            "label_en": "Another past hypothetical",
+            "hidden_prompt": "user uses another 'If + past perfect, would have + past participle'",
+            "hint_pt": "If they had told me, I would have prepared better.",
+            "hint_en": "If they had told me, I would have prepared better."
+          },
+          {
+            "id": 3,
+            "label_pt": "Hipótese negativa (wouldn't have)",
+            "label_en": "Negative hypothetical (wouldn't have)",
+            "hidden_prompt": "user uses 'I wouldn't have + past participle if...'",
+            "hint_pt": "I wouldn't have taken the job if I had known.",
+            "hint_en": "I wouldn't have taken the job if I had known."
+          }
+        ],
+        "closing_cue": "Charlotte fecha com \"Past rewritten!\" quando obj_3 baterem.",
+        "suggested_flow": "**Suggested flow** (referencial, 6 turnos):\n\n1. **Charlotte**: \"Tell me about a moment when you wish you'd known something earlier. Three scenarios.\"\n2. **Student**: ~\"If I had known, I would have come earlier.\"\n3. **Charlotte**: \"Classic regret. Different example?\"\n4. **Student**: ~\"If they had told me, I would have prepared better.\"\n5. **Charlotte**: \"Negative one?\"\n6. **Student**: ~\"I wouldn't have taken the job if I had known.\"\n7. **Charlotte**: \"Past rewritten!\"",
+        "evaluation_focus": [
+          "\"If + past perfect\" (not \"if + would have\")",
+          "\"Would have + past participle\"",
+          "Negative \"wouldn't have\""
+        ]
+      },
+      "guided_chat": {
+        "scenario": "Charlotte abre conversa sobre arrependimentos pequenos — coisas que vocês fariam diferente no passado se tivessem outra informação.",
+        "voiced_by": "charlotte",
+        "persona": "Charlotte",
+        "persona_outfit": "charlotte_casual",
+        "intro_en": "Charlotte explores small past regrets. Practice 'If I had known' naturally.",
+        "opening_message": "What's something you would have done differently last year?",
+        "objectives": [
+          {
+            "id": 1,
+            "label_pt": "Algo que faria diferente",
+            "label_en": "Something to do differently",
+            "hidden_prompt": "user uses 'I would have + past participle'",
+            "hint_pt": "I would have traveled more.",
+            "hint_en": "I would have traveled more."
+          },
+          {
+            "id": 2,
+            "label_pt": "Com condição 'if + past perfect'",
+            "label_en": "Condition with 'if + past perfect'",
+            "hidden_prompt": "user uses 'if I had + past participle'",
+            "hint_pt": "If I had saved more, I would have traveled.",
+            "hint_en": "If I had saved more, I would have traveled."
+          },
+          {
+            "id": 3,
+            "label_pt": "Perguntar à Charlotte",
+            "label_en": "Ask Charlotte",
+            "hidden_prompt": "user asks 'How about you?' or 'What would you have done?'",
+            "hint_pt": "What would you have done differently?",
+            "hint_en": "What would you have done differently?"
+          }
+        ],
+        "closing_cue": "Charlotte fecha com \"Honest reflection!\" quando obj_3 baterem.",
+        "suggested_script": "**Script** (referencial, 7 turnos):\n\n1. **Charlotte**: \"What's something you would have done differently last year?\"\n2. **Student**: \"I would have traveled more.\"\n3. **Charlotte**: \"Nice. What stopped you?\"\n4. **Student**: \"If I had saved more, I would have traveled.\"\n5. **Charlotte**: \"Money is often the gate.\"\n6. **Student**: \"What would you have done differently?\"\n7. **Charlotte**: \"Honestly, I would have rested more. Honest reflection!\"\n\n> I01 chat = LLM puro. Scaffold via hint_pt.\n\n---"
+      }
+    },
+    {
+      "id": "I02",
+      "title": "I wish I had",
+      "sub_cefr": "B2",
+      "grammar_focus": "Wishes about the past (I wish + past perfect) — regret",
+      "markers": [
+        "denso"
+      ],
+      "real_life_context": "You express deep regret about past actions or non-actions.",
+      "grammar": [
+        {
+          "type": "multiple_choice",
+          "sentence": "I wish I _____ studied harder.",
+          "options": [
+            "had",
+            "have",
+            "would have",
+            "did"
+          ],
+          "answer": "had",
+          "explanation": "\"I wish + past perfect\" para arrependimentos sobre o passado. \"I wish I had studied\" — passou e me arrependo."
+        },
+        {
+          "type": "multiple_choice",
+          "sentence": "She wishes she _____ told him the truth.",
+          "options": [
+            "had",
+            "has",
+            "would have",
+            "did"
+          ],
+          "answer": "had",
+          "explanation": "Wish + past perfect para arrependimento passado. \"She wishes she had told\" — não disse e se arrepende."
+        },
+        {
+          "type": "word_bank",
+          "sentence": "I wish I _____ taken that opportunity.",
+          "choices": [
+            "had",
+            "have",
+            "would have",
+            "will have"
+          ],
+          "answer": "had",
+          "explanation": "\"I wish I had taken\" — past perfect para arrependimento de não ter aproveitado."
+        },
+        {
+          "type": "word_bank",
+          "sentence": "He wishes he _____ called you back.",
+          "choices": [
+            "had",
+            "has",
+            "would have",
+            "did"
+          ],
+          "answer": "had",
+          "explanation": "\"He wishes he had called\" — past perfect indicando ação passada não realizada."
+        },
+        {
+          "type": "fill_gap",
+          "sentence": "I wish I _____ listened to my parents.",
+          "hint": "past perfect \"had + past participle\"",
+          "answer": "had",
+          "explanation": "\"Wish + past perfect\" para regret. \"I wish I had listened\" — não escutei, me arrependo."
+        },
+        {
+          "type": "fill_gap",
+          "sentence": "We wish we _____ left earlier.",
+          "hint": "past perfect \"had + past participle\"",
+          "answer": "had",
+          "explanation": "\"We wish we had left earlier\" — arrependimento sobre quando saímos."
+        },
+        {
+          "type": "fill_gap",
+          "sentence": "If only I _____ known.",
+          "hint": "past perfect \"had + past participle\"",
+          "answer": "had",
+          "explanation": "\"If only\" = formação enfática de wish. \"If only I had known\" — arrependimento dramático."
+        },
+        {
+          "type": "fix_error",
+          "sentence": "I wish I would have studied harder.",
+          "hint": "Use past perfect \"had studied\", não \"would have\"",
+          "answer": "I wish I had studied harder.",
+          "explanation": "Erro comum: \"wish + would have\". Para passado, use \"wish + past perfect\" (\"had studied\"). \"Would have\" não cabe."
+        },
+        {
+          "type": "fix_error",
+          "sentence": "She wishes she has told him.",
+          "hint": "Para arrependimento passado, \"had told\"",
+          "answer": "She wishes she had told him.",
+          "explanation": "\"Has told\" (present perfect) não funciona em wish. Para passado, sempre past perfect \"had told\"."
+        },
+        {
+          "type": "read_answer",
+          "passage": "I wish I had studied harder in college. She wishes she had taken that job offer. If only we had left earlier — we wouldn't have missed the flight.",
+          "question": "What does she wish she had done?",
+          "answer": "taken that job offer (or \"taken the job\")",
+          "explanation": "The text says \"She wishes she had taken that job offer\"."
+        }
+      ],
+      "listening_speaking": [
+        {
+          "text": "I wish I had studied harder.",
+          "context": "education regret"
+        },
+        {
+          "text": "She wishes she had taken the offer.",
+          "context": "career regret"
+        },
+        {
+          "text": "If only we had left earlier.",
+          "context": "timing regret"
+        },
+        {
+          "text": "He wishes he had called you back.",
+          "context": "relationship regret"
+        },
+        {
+          "text": "I wish I had listened to my parents.",
+          "context": "life lesson regret"
+        }
+      ],
+      "roleplay": {
+        "scenario": "Charlotte conversa sobre arrependimentos passados — quer ouvir três coisas que você gostaria de ter feito diferente.",
+        "voiced_by": "charlotte",
+        "persona": "Charlotte",
+        "persona_outfit": "charlotte_casual",
+        "time_budget_sec": 180,
+        "opening_line": "Three honest regrets — what do you wish you had done differently?",
+        "objectives": [
+          {
+            "id": 1,
+            "label_pt": "Arrependimento com 'I wish I had'",
+            "label_en": "Regret with 'I wish I had'",
+            "hidden_prompt": "user uses 'I wish I had + past participle'",
+            "hint_pt": "I wish I had studied harder.",
+            "hint_en": "I wish I had studied harder."
+          },
+          {
+            "id": 2,
+            "label_pt": "Outro arrependimento",
+            "label_en": "Another regret",
+            "hidden_prompt": "user uses another 'I wish I had + past participle'",
+            "hint_pt": "I wish I had traveled more when I was younger.",
+            "hint_en": "I wish I had traveled more when I was younger."
+          },
+          {
+            "id": 3,
+            "label_pt": "Arrependimento com 'If only'",
+            "label_en": "Regret with 'If only'",
+            "hidden_prompt": "user uses 'If only I had + past participle'",
+            "hint_pt": "If only I had saved more money.",
+            "hint_en": "If only I had saved more money."
+          }
+        ],
+        "closing_cue": "Charlotte fecha com \"Heard you!\" quando obj_3 baterem.",
+        "suggested_flow": "**Suggested flow** (referencial, 6 turnos):\n\n1. **Charlotte**: \"Three honest regrets — what do you wish you had done differently?\"\n2. **Student**: ~\"I wish I had studied harder.\"\n3. **Charlotte**: \"Common one. Other?\"\n4. **Student**: ~\"I wish I had traveled more when I was younger.\"\n5. **Charlotte**: \"If only?\"\n6. **Student**: ~\"If only I had saved more money.\"\n7. **Charlotte**: \"Heard you!\"",
+        "evaluation_focus": [
+          "\"Wish/If only + past perfect\"",
+          "\"Had + past participle\"",
+          "Honest regret tone"
+        ]
+      },
+      "guided_chat": {
+        "scenario": "Charlotte abre um chat reflexivo sobre arrependimentos pequenos e médios — quer trocar duas coisas honestas com você.",
+        "voiced_by": "charlotte",
+        "persona": "Charlotte",
+        "persona_outfit": "charlotte_casual",
+        "intro_en": "Charlotte shares honest regrets. Use 'I wish I had' freely.",
+        "opening_message": "Is there something you wish you had done five years ago?",
+        "objectives": [
+          {
+            "id": 1,
+            "label_pt": "Arrependimento passado",
+            "label_en": "Past regret",
+            "hidden_prompt": "user uses 'I wish I had + past participle'",
+            "hint_pt": "I wish I had started learning English earlier.",
+            "hint_en": "I wish I had started learning English earlier."
+          },
+          {
+            "id": 2,
+            "label_pt": "Razão ou outro arrependimento",
+            "label_en": "Reason or another regret",
+            "hidden_prompt": "user adds another wish or reason",
+            "hint_pt": "I wish I had made more time for my family.",
+            "hint_en": "I wish I had made more time for my family."
+          },
+          {
+            "id": 3,
+            "label_pt": "Perguntar à Charlotte",
+            "label_en": "Ask Charlotte",
+            "hidden_prompt": "user asks 'How about you?' or 'What about you?'",
+            "hint_pt": "How about you?",
+            "hint_en": "How about you?"
+          }
+        ],
+        "closing_cue": "Charlotte fecha com \"Honest exchange!\" quando obj_3 baterem.",
+        "suggested_script": "**Script** (referencial, 7 turnos):\n\n1. **Charlotte**: \"Is there something you wish you had done five years ago?\"\n2. **Student**: \"I wish I had started learning English earlier.\"\n3. **Charlotte**: \"Better late than never. What else?\"\n4. **Student**: \"I wish I had made more time for my family.\"\n5. **Charlotte**: \"That one hits.\"\n6. **Student**: \"How about you?\"\n7. **Charlotte**: \"I wish I had taken more risks in my twenties. Honest exchange!\"\n\n> I02 chat = LLM puro. Scaffold via hint_pt.\n\n---"
+      }
+    },
+    {
+      "id": "I03",
+      "title": "What would you have done?",
+      "sub_cefr": "B2",
+      "grammar_focus": "Questions in third conditional (Would you have + past participle + if?)",
+      "markers": [
+        "qform"
+      ],
+      "real_life_context": "You ask hypothetical past questions to explore decisions and alternative outcomes.",
+      "grammar": [
+        {
+          "type": "multiple_choice",
+          "sentence": "What _____ you have done if you had known?",
+          "options": [
+            "would",
+            "will",
+            "had",
+            "did"
+          ],
+          "answer": "would",
+          "explanation": "Pergunta em third conditional: \"WH + would have + past participle + if + past perfect?\". \"What would you have done?\" — pergunta hipotética sobre o passado."
+        },
+        {
+          "type": "multiple_choice",
+          "sentence": "_____ you have helped if I had asked?",
+          "options": [
+            "Would",
+            "Will",
+            "Had",
+            "Did"
+          ],
+          "answer": "Would",
+          "explanation": "\"Would + subject + have + past participle + if + past perfect?\". \"Would you have helped?\" — yes/no question third conditional."
+        },
+        {
+          "type": "word_bank",
+          "sentence": "Where _____ you have gone if you _____ had the money?",
+          "choices": [
+            "would",
+            "will",
+            "had",
+            "have",
+            "would",
+            "will",
+            "would",
+            "did"
+          ],
+          "answer": "would / had",
+          "explanation": "\"Would you have gone... if you had had...\" — WH + would have + past participle + if + past perfect."
+        },
+        {
+          "type": "word_bank",
+          "sentence": "If you _____ been there, what _____ you have said?",
+          "choices": [
+            "had",
+            "have",
+            "would",
+            "will"
+          ],
+          "answer": "had",
+          "explanation": "\"If you had been\" — past perfect na cláusula if. \"What would you have said?\" na principal."
+        },
+        {
+          "type": "fill_gap",
+          "sentence": "What _____ you have done if you _____ been in my place?",
+          "hint": "would / had",
+          "answer": "would / had",
+          "explanation": "\"What would you have done if you had been...\" — pergunta com past perfect na cláusula if."
+        },
+        {
+          "type": "fill_gap",
+          "sentence": "_____ she have called you if she _____ known your number?",
+          "hint": "Would / had",
+          "answer": "Would / had",
+          "explanation": "\"Would she have called you if she had known?\" — third conditional pergunta yes/no."
+        },
+        {
+          "type": "fill_gap",
+          "sentence": "How _____ you have reacted if it _____ happened to you?",
+          "hint": "would / had",
+          "answer": "would / had",
+          "explanation": "\"How would you have reacted if it had happened?\" — pergunta com \"how\" + past perfect."
+        },
+        {
+          "type": "fix_error",
+          "sentence": "What you would have done if you had known?",
+          "hint": "Inversão em pergunta — \"would\" antes do sujeito",
+          "answer": "What would you have done if you had known?",
+          "explanation": "Em pergunta, \"would\" vem antes do sujeito (\"would you\"), não depois (\"you would\"). Inversão obrigatória em WH-questions."
+        },
+        {
+          "type": "fix_error",
+          "sentence": "Would you helped if I had asked?",
+          "hint": "Falta \"have\" — \"would have helped\"",
+          "answer": "Would you have helped if I had asked?",
+          "explanation": "Sempre \"would HAVE + past participle\". \"Would you helped\" não existe."
+        },
+        {
+          "type": "read_answer",
+          "passage": "What would you have done if you had been in my position? Where would you have gone if you had had unlimited time? Would you have helped me if I had asked?",
+          "question": "What hypothetical question is asked about position?",
+          "answer": "what would you have done (or \"what would you have done if you had been in my position\")",
+          "explanation": "The text asks \"What would you have done if you had been in my position?\"."
+        }
+      ],
+      "listening_speaking": [
+        {
+          "text": "What would you have done in my place?",
+          "context": "empathy hypothetical past"
+        },
+        {
+          "text": "Would you have helped if I had asked?",
+          "context": "yes/no question"
+        },
+        {
+          "text": "Where would you have gone if you'd had time?",
+          "context": "place hypothetical"
+        },
+        {
+          "text": "How would you have reacted?",
+          "context": "manner hypothetical"
+        },
+        {
+          "text": "Would you have stayed if you had known?",
+          "context": "decision hypothetical"
+        }
+      ],
+      "roleplay": {
+        "scenario": "Charlotte conta três situações que aconteceram com ela e pergunta o que você teria feito no lugar dela.",
+        "voiced_by": "charlotte",
+        "persona": "Charlotte",
+        "persona_outfit": "charlotte_casual",
+        "time_budget_sec": 180,
+        "opening_line": "Three of my past dilemmas. What would you have done if you had been me?",
+        "objectives": [
+          {
+            "id": 1,
+            "label_pt": "Resposta com 'I would have'",
+            "label_en": "Response with 'I would have'",
+            "hidden_prompt": "user uses 'I would have + past participle'",
+            "hint_pt": "I would have taken the offer.",
+            "hint_en": "I would have taken the offer."
+          },
+          {
+            "id": 2,
+            "label_pt": "Resposta com 'I wouldn't have'",
+            "label_en": "Response with 'I wouldn't have'",
+            "hidden_prompt": "user uses 'I wouldn't have + past participle'",
+            "hint_pt": "I wouldn't have said anything.",
+            "hint_en": "I wouldn't have said anything."
+          },
+          {
+            "id": 3,
+            "label_pt": "Pergunta de volta com 'would have'",
+            "label_en": "Counter-question with 'would have'",
+            "hidden_prompt": "user asks 'What would you have done?' or similar",
+            "hint_pt": "What would you have done?",
+            "hint_en": "What would you have done?"
+          }
+        ],
+        "closing_cue": "Charlotte fecha com \"Past dilemmas discussed!\" quando obj_3 baterem.",
+        "suggested_flow": "**Suggested flow** (referencial, 6 turnos):\n\n1. **Charlotte**: \"Three of my past dilemmas. What would you have done if you had been me?\"\n2. **Student**: ~\"I would have taken the offer.\"\n3. **Charlotte**: \"Bold. Second scenario?\"\n4. **Student**: ~\"I wouldn't have said anything.\"\n5. **Charlotte**: \"Maybe wiser. Your turn — ask me back?\"\n6. **Student**: ~\"What would you have done?\"\n7. **Charlotte**: \"Honestly, the same. Past dilemmas discussed!\"",
+        "evaluation_focus": [
+          "\"I would have + past participle\"",
+          "\"I wouldn't have + past participle\"",
+          "Question inversion (\"What would you have\")"
+        ]
+      },
+      "guided_chat": {
+        "scenario": "Charlotte propõe um chat de \"would you have\" — perguntas hipotéticas sobre situações passadas para descobrir como cada um teria reagido.",
+        "voiced_by": "charlotte",
+        "persona": "Charlotte",
+        "persona_outfit": "charlotte_casual",
+        "intro_en": "Charlotte asks hypothetical past questions. Practice 'Would you have?'",
+        "opening_message": "Would you have moved abroad if you'd had the chance at 20?",
+        "objectives": [
+          {
+            "id": 1,
+            "label_pt": "Resposta à hipótese passada",
+            "label_en": "Answer to past hypothetical",
+            "hidden_prompt": "user uses 'I would have + past participle' or 'I wouldn't have'",
+            "hint_pt": "Yes, I would have gone.",
+            "hint_en": "Yes, I would have gone."
+          },
+          {
+            "id": 2,
+            "label_pt": "Razão ou condição",
+            "label_en": "Reason or condition",
+            "hidden_prompt": "user adds 'if + past perfect' or reason",
+            "hint_pt": "If I had been braver, I would have done it.",
+            "hint_en": "If I had been braver, I would have done it."
+          },
+          {
+            "id": 3,
+            "label_pt": "Perguntar à Charlotte",
+            "label_en": "Ask Charlotte",
+            "hidden_prompt": "user asks 'Would you have?' question to Charlotte",
+            "hint_pt": "Would you have moved abroad?",
+            "hint_en": "Would you have moved abroad?"
+          }
+        ],
+        "closing_cue": "Charlotte fecha com \"Hypothetical lives compared!\" quando obj_3 baterem.",
+        "suggested_script": "**Script** (referencial, 7 turnos):\n\n1. **Charlotte**: \"Would you have moved abroad if you'd had the chance at 20?\"\n2. **Student**: \"Yes, I would have gone.\"\n3. **Charlotte**: \"What stopped you in reality?\"\n4. **Student**: \"If I had been braver, I would have done it.\"\n5. **Charlotte**: \"Bravery is the big one.\"\n6. **Student**: \"Would you have moved abroad?\"\n7. **Charlotte**: \"I would have, yes. To Italy. Hypothetical lives compared!\"\n\n> I03 chat = LLM puro. Scaffold via hint_pt.\n\n---"
+      }
+    },
+    {
+      "id": "I04",
+      "title": "Mixed conditional",
+      "sub_cefr": "B2",
+      "grammar_focus": "Mixed conditional (past condition → present result)",
+      "markers": [
+        "denso"
+      ],
+      "real_life_context": "You connect a past action to its present consequence — \"if I had done X, I would be Y now\".",
+      "grammar": [
+        {
+          "type": "multiple_choice",
+          "sentence": "If I _____ studied medicine, I _____ a doctor now.",
+          "options": [
+            "had",
+            "would be",
+            "has",
+            "will be",
+            "had",
+            "will be",
+            "have",
+            "would be"
+          ],
+          "answer": "had / would be",
+          "explanation": "Mixed conditional: past condition (if + past perfect) + present result (would + base). \"If I had studied medicine, I would be a doctor now\" — passado afetando presente."
+        },
+        {
+          "type": "multiple_choice",
+          "sentence": "She would be richer now if she _____ saved more.",
+          "options": [
+            "had",
+            "has",
+            "would have",
+            "did"
+          ],
+          "answer": "had",
+          "explanation": "Cláusula if = past perfect (\"had saved\"). Cláusula principal = would + base (\"would be\") — present result."
+        },
+        {
+          "type": "word_bank",
+          "sentence": "If we _____ moved to the city, life _____ different now.",
+          "choices": [
+            "had",
+            "would be",
+            "have",
+            "will be",
+            "had",
+            "will be",
+            "had",
+            "would have"
+          ],
+          "answer": "had / would be",
+          "explanation": "Past condition + present result. \"Had moved\" + \"would be\" — clássico misto."
+        },
+        {
+          "type": "word_bank",
+          "sentence": "He _____ tired today if he _____ slept more last night.",
+          "choices": [
+            "wouldn't be",
+            "will be",
+            "had",
+            "have",
+            "wouldn't be",
+            "had"
+          ],
+          "answer": "wouldn't be / had",
+          "explanation": "\"He wouldn't be tired today\" (present result) + \"if he had slept\" (past condition)."
+        },
+        {
+          "type": "fill_gap",
+          "sentence": "If I _____ accepted the job, I _____ working there now.",
+          "hint": "past perfect \"had accepted\" / \"would be\"",
+          "answer": "had / would be",
+          "explanation": "Past action + present continuous result. \"Had accepted... would be working now\"."
+        },
+        {
+          "type": "fill_gap",
+          "sentence": "She _____ happier now if she _____ left him.",
+          "hint": "would be / had left",
+          "answer": "would be / had",
+          "explanation": "Present happiness depends on past action of leaving. Mixed conditional natural."
+        },
+        {
+          "type": "fill_gap",
+          "sentence": "If they _____ invested earlier, they _____ rich now.",
+          "hint": "had invested / would be",
+          "answer": "had / would be",
+          "explanation": "\"Had invested\" (past perfect, condition) + \"would be rich now\" (present result)."
+        },
+        {
+          "type": "fix_error",
+          "sentence": "If I had studied medicine, I would have been a doctor now.",
+          "hint": "Present result usa \"would be\", não \"would have been\"",
+          "answer": "If I had studied medicine, I would be a doctor now.",
+          "explanation": "\"Would have been\" é puro terceiro condicional (passado). Para resultado PRESENTE, use \"would be\" — esse é o misto."
+        },
+        {
+          "type": "fix_error",
+          "sentence": "She would be richer now if she would have saved more.",
+          "hint": "Após \"if\", past perfect — não \"would have\"",
+          "answer": "She would be richer now if she had saved more.",
+          "explanation": "Cláusula \"if\" usa past perfect (\"had saved\"), nunca \"would have\"."
+        },
+        {
+          "type": "read_answer",
+          "passage": "If I had studied medicine, I would be a doctor now. She would be in Tokyo today if she had accepted the offer last year. We wouldn't be so stressed now if we had hired more people in January.",
+          "question": "What would the speaker be now if they had studied medicine?",
+          "answer": "a doctor",
+          "explanation": "The text says \"If I had studied medicine, I would be a doctor now\"."
+        }
+      ],
+      "listening_speaking": [
+        {
+          "text": "If I had studied medicine, I would be a doctor now.",
+          "context": "career mixed"
+        },
+        {
+          "text": "She would be richer if she had saved more.",
+          "context": "financial mixed"
+        },
+        {
+          "text": "We wouldn't be stressed if we had hired earlier.",
+          "context": "stress mixed"
+        },
+        {
+          "text": "He'd be more confident if he'd gone to therapy.",
+          "context": "confidence mixed"
+        },
+        {
+          "text": "If they had moved, life would be different now.",
+          "context": "life mixed"
+        }
+      ],
+      "roleplay": {
+        "scenario": "Charlotte pergunta como sua vida seria diferente HOJE se você tivesse feito escolhas diferentes no passado — quer respostas mistas (passado + presente).",
+        "voiced_by": "charlotte",
+        "persona": "Charlotte",
+        "persona_outfit": "charlotte_casual",
+        "time_budget_sec": 180,
+        "opening_line": "How would your life today be different if you had made different choices? Three examples.",
+        "objectives": [
+          {
+            "id": 1,
+            "label_pt": "Misto sobre carreira",
+            "label_en": "Career mixed conditional",
+            "hidden_prompt": "user uses 'If + past perfect, I would be... now' about career",
+            "hint_pt": "If I had chosen engineering, I would be working in tech now.",
+            "hint_en": "If I had chosen engineering, I would be working in tech now."
+          },
+          {
+            "id": 2,
+            "label_pt": "Misto sobre lugar",
+            "label_en": "Place mixed conditional",
+            "hidden_prompt": "user uses 'If + past perfect, I would be... now' about place",
+            "hint_pt": "If I had moved to São Paulo, I would be living a faster life.",
+            "hint_en": "If I had moved to São Paulo, I would be living a faster life."
+          },
+          {
+            "id": 3,
+            "label_pt": "Misto sobre relação ou estado",
+            "label_en": "Relationship/state mixed conditional",
+            "hidden_prompt": "user uses another mixed conditional",
+            "hint_pt": "If I had stayed in touch, we would still be friends.",
+            "hint_en": "If I had stayed in touch, we would still be friends."
+          }
+        ],
+        "closing_cue": "Charlotte fecha com \"Parallel lives mapped!\" quando obj_3 baterem.",
+        "suggested_flow": "**Suggested flow** (referencial, 6 turnos):\n\n1. **Charlotte**: \"How would your life today be different if you had made different choices? Three examples.\"\n2. **Student**: ~\"If I had chosen engineering, I would be working in tech now.\"\n3. **Charlotte**: \"Parallel career. Place?\"\n4. **Student**: ~\"If I had moved to São Paulo, I would be living a faster life.\"\n5. **Charlotte**: \"Relationship?\"\n6. **Student**: ~\"If I had stayed in touch, we would still be friends.\"\n7. **Charlotte**: \"Parallel lives mapped!\"",
+        "evaluation_focus": [
+          "\"If + past perfect\" (condition)",
+          "\"Would be\" (present result, not \"would have been\")",
+          "Time markers \"now\", \"today\""
+        ]
+      },
+      "guided_chat": {
+        "scenario": "Charlotte explora ramificações — como pequenas escolhas passadas teriam mudado o presente. Quer trocar vidas paralelas com você.",
+        "voiced_by": "charlotte",
+        "persona": "Charlotte",
+        "persona_outfit": "charlotte_casual",
+        "intro_en": "Charlotte explores parallel lives. Mix past conditions with present results.",
+        "opening_message": "If you had taken a different path 10 years ago, where would you be today?",
+        "objectives": [
+          {
+            "id": 1,
+            "label_pt": "Onde estaria hoje",
+            "label_en": "Where you'd be today",
+            "hidden_prompt": "user uses mixed conditional with 'I would be' for present location/state",
+            "hint_pt": "If I had gone abroad, I would be living in Europe.",
+            "hint_en": "If I had gone abroad, I would be living in Europe."
+          },
+          {
+            "id": 2,
+            "label_pt": "Outra ramificação",
+            "label_en": "Another branching",
+            "hidden_prompt": "user uses another mixed conditional",
+            "hint_pt": "If I had kept that job, I would be exhausted by now.",
+            "hint_en": "If I had kept that job, I would be exhausted by now."
+          },
+          {
+            "id": 3,
+            "label_pt": "Perguntar à Charlotte",
+            "label_en": "Ask Charlotte",
+            "hidden_prompt": "user asks 'Where would you be?' or similar to Charlotte",
+            "hint_pt": "Where would you be today?",
+            "hint_en": "Where would you be today?"
+          }
+        ],
+        "closing_cue": "Charlotte fecha com \"Branches explored!\" quando obj_3 baterem.",
+        "suggested_script": "**Script** (referencial, 7 turnos):\n\n1. **Charlotte**: \"If you had taken a different path 10 years ago, where would you be today?\"\n2. **Student**: \"If I had gone abroad, I would be living in Europe.\"\n3. **Charlotte**: \"European life. What else?\"\n4. **Student**: \"If I had kept that job, I would be exhausted by now.\"\n5. **Charlotte**: \"So leaving was right.\"\n6. **Student**: \"Where would you be today?\"\n7. **Charlotte**: \"If I had stayed in academia, I would be teaching in Boston. Branches explored!\"\n\n> I04 chat = LLM puro. Scaffold via hint_pt.\n\n---"
+      }
+    },
+    {
+      "id": "I05",
+      "title": "All conditionals together",
+      "sub_cefr": "B2",
+      "grammar_focus": "Integration of third + mixed conditionals",
+      "markers": [],
+      "real_life_context": "You alternate fluidly between past hypotheticals, wishes, and mixed conditionals in real conversation.",
+      "grammar": [
+        {
+          "type": "multiple_choice",
+          "sentence": "If I _____ known, I would have called you.",
+          "options": [
+            "had",
+            "have",
+            "would have",
+            "did"
+          ],
+          "answer": "had",
+          "explanation": "Third conditional puro. \"Had known\" + \"would have called\"."
+        },
+        {
+          "type": "multiple_choice",
+          "sentence": "I wish I _____ said no.",
+          "options": [
+            "had",
+            "have",
+            "would have",
+            "did"
+          ],
+          "answer": "had",
+          "explanation": "\"Wish + past perfect\" para arrependimento. \"I wish I had said no\" — não disse e me arrependo."
+        },
+        {
+          "type": "word_bank",
+          "sentence": "If she _____ studied harder, she _____ in a top school now.",
+          "choices": [
+            "had",
+            "would be",
+            "has",
+            "will be",
+            "had",
+            "would have",
+            "would",
+            "will"
+          ],
+          "answer": "had / would be",
+          "explanation": "Misto: past perfect + would be (present). \"Had studied\" + \"would be in a top school now\"."
+        },
+        {
+          "type": "word_bank",
+          "sentence": "What _____ you have done if you _____ been there?",
+          "choices": [
+            "would",
+            "had",
+            "will",
+            "are",
+            "would",
+            "will",
+            "would",
+            "was"
+          ],
+          "answer": "would / had",
+          "explanation": "Pergunta third conditional. \"Would you have done if you had been there?\"."
+        },
+        {
+          "type": "fill_gap",
+          "sentence": "We wouldn't have missed the train if we _____ left earlier.",
+          "hint": "past perfect \"had + past participle\"",
+          "answer": "had",
+          "explanation": "\"Had left\" — past perfect na cláusula if do terceiro condicional."
+        },
+        {
+          "type": "fill_gap",
+          "sentence": "If only I _____ listened to you!",
+          "hint": "past perfect \"had + past participle\"",
+          "answer": "had",
+          "explanation": "\"If only I had listened\" — exclamação de arrependimento."
+        },
+        {
+          "type": "fill_gap",
+          "sentence": "He _____ be happier now if he _____ left that job.",
+          "hint": "would (be) / had (left)",
+          "answer": "would / had",
+          "explanation": "Mixed conditional: \"would be happier now\" + \"had left\" — past affecting present."
+        },
+        {
+          "type": "fix_error",
+          "sentence": "If I would have known, I would have helped.",
+          "hint": "\"Would\" nunca vai na cláusula if",
+          "answer": "If I had known, I would have helped.",
+          "explanation": "Cláusula \"if\" sempre past perfect (\"had known\"), nunca \"would have known\"."
+        },
+        {
+          "type": "fix_error",
+          "sentence": "I wish I would have studied medicine.",
+          "hint": "Wish + past perfect, não \"would have\"",
+          "answer": "I wish I had studied medicine.",
+          "explanation": "\"Wish + past perfect\" para arrependimento (\"I wish I had studied\"). \"Would have\" é errado em wish."
+        },
+        {
+          "type": "read_answer",
+          "passage": "If I had studied harder, I would have passed. I wish I had taken that opportunity. If she had moved to London, she would be living there now. What would you have done in my place?",
+          "question": "What does the speaker wish they had done?",
+          "answer": "taken that opportunity (or \"the opportunity\")",
+          "explanation": "The text says \"I wish I had taken that opportunity\"."
+        }
+      ],
+      "listening_speaking": [
+        {
+          "text": "If I had known, I would have helped.",
+          "context": "third conditional"
+        },
+        {
+          "text": "I wish I had said yes.",
+          "context": "wish + past perfect"
+        },
+        {
+          "text": "She would be there now if she had moved.",
+          "context": "mixed conditional"
+        },
+        {
+          "text": "What would you have done in my place?",
+          "context": "question"
+        },
+        {
+          "text": "If only I had listened!",
+          "context": "emphatic regret"
+        }
+      ],
+      "roleplay": {
+        "scenario": "Charlotte propõe uma conversa rica sobre passado e presente — quer ver você usar third conditional, wish + past perfect, mixed conditional e perguntas hipotéticas tudo em três turnos.",
+        "voiced_by": "charlotte",
+        "persona": "Charlotte",
+        "persona_outfit": "charlotte_casual",
+        "time_budget_sec": 180,
+        "opening_line": "Mix it all — a past hypothetical, a regret, and a mixed conditional. Three sentences.",
+        "objectives": [
+          {
+            "id": 1,
+            "label_pt": "Hipótese puro passado",
+            "label_en": "Past hypothetical",
+            "hidden_prompt": "user uses 'If I had + past participle, I would have + past participle'",
+            "hint_pt": "If I had left earlier, I wouldn't have missed the meeting.",
+            "hint_en": "If I had left earlier, I wouldn't have missed the meeting."
+          },
+          {
+            "id": 2,
+            "label_pt": "Arrependimento com 'wish'",
+            "label_en": "Regret with 'wish'",
+            "hidden_prompt": "user uses 'I wish I had + past participle'",
+            "hint_pt": "I wish I had studied abroad.",
+            "hint_en": "I wish I had studied abroad."
+          },
+          {
+            "id": 3,
+            "label_pt": "Conditional misto",
+            "label_en": "Mixed conditional",
+            "hidden_prompt": "user uses 'If + past perfect, I would be... now'",
+            "hint_pt": "If I had stayed, I would be a manager by now.",
+            "hint_en": "If I had stayed, I would be a manager by now."
+          }
+        ],
+        "closing_cue": "Charlotte fecha com \"Conditional fluency!\" quando obj_3 baterem.",
+        "suggested_flow": "**Suggested flow** (referencial, 6 turnos):\n\n1. **Charlotte**: \"Mix it all — a past hypothetical, a regret, and a mixed conditional. Three sentences.\"\n2. **Student**: ~\"If I had left earlier, I wouldn't have missed the meeting.\"\n3. **Charlotte**: \"Concrete. Regret?\"\n4. **Student**: ~\"I wish I had studied abroad.\"\n5. **Charlotte**: \"Mixed?\"\n6. **Student**: ~\"If I had stayed, I would be a manager by now.\"\n7. **Charlotte**: \"Conditional fluency!\"",
+        "evaluation_focus": [
+          "Three different conditional types",
+          "\"Were\" not \"was\" where applicable",
+          "Natural integration"
+        ]
+      },
+      "guided_chat": {
+        "scenario": "Charlotte abre uma conversa profunda sobre escolhas — quer trocar arrependimentos, hipóteses passadas, e vidas paralelas com você integrando tudo.",
+        "voiced_by": "charlotte",
+        "persona": "Charlotte",
+        "persona_outfit": "charlotte_casual",
+        "intro_en": "Charlotte integrates past hypotheticals, regrets, and mixed conditionals.",
+        "opening_message": "Looking back, what's one thing you would have changed?",
+        "objectives": [
+          {
+            "id": 1,
+            "label_pt": "O que mudaria",
+            "label_en": "What you'd have changed",
+            "hidden_prompt": "user uses 'I would have + past participle'",
+            "hint_pt": "I would have spoken up more.",
+            "hint_en": "I would have spoken up more."
+          },
+          {
+            "id": 2,
+            "label_pt": "Wish ou mixed (consequência presente)",
+            "label_en": "Wish or mixed (present consequence)",
+            "hidden_prompt": "user uses 'I wish I had' or mixed conditional with present result",
+            "hint_pt": "If I had been more confident, I would be in a better position now.",
+            "hint_en": "If I had been more confident, I would be in a better position now."
+          },
+          {
+            "id": 3,
+            "label_pt": "Perguntar à Charlotte",
+            "label_en": "Ask Charlotte",
+            "hidden_prompt": "user asks 'What would you have changed?' or 'How about you?'",
+            "hint_pt": "What would you have changed?",
+            "hint_en": "What would you have changed?"
+          }
+        ],
+        "closing_cue": "Charlotte fecha com \"Deep reflection done!\" quando obj_3 baterem.",
+        "suggested_script": "**Script** (referencial, 7 turnos):\n\n1. **Charlotte**: \"Looking back, what's one thing you would have changed?\"\n2. **Student**: \"I would have spoken up more.\"\n3. **Charlotte**: \"Voice matters. What would be different now?\"\n4. **Student**: \"If I had been more confident, I would be in a better position now.\"\n5. **Charlotte**: \"Self-knowledge.\"\n6. **Student**: \"What would you have changed?\"\n7. **Charlotte**: \"I would have asked for help sooner. Deep reflection done!\"\n\n> I05 chat = LLM puro. Scaffold via hint_pt.\n\n---"
+      }
+    }
+  ],
+  "cross_unit_consolidation": [
+    "Third conditional: If + past perfect, would have + past participle (hipóteses passado)",
+    "I wish + past perfect (arrependimento passado)",
+    "If only + past perfect (arrependimento enfático)",
+    "What would you have done if + past perfect? (pergunta hipotética passada)",
+    "Mixed conditional: If + past perfect, would + base now (passado afetando presente)",
+    "Nunca \"would have\" dentro de cláusulas if",
+    "Distinção clara: second (presente) vs third (passado) vs misto (passado→presente)"
+  ]
+}

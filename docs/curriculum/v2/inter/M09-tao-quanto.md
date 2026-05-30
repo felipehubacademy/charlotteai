@@ -31,7 +31,7 @@
 1. **multiple_choice** — "My brother is _____ tall _____ my father."
    **Options**: as / as / so / as / more / than
    **Answer**: as / as
-   **Explanation**: Para igualdade em inglês, usa-se "as + adjetivo + as": "as tall as". Note que "so...as" é arcaico em afirmativas — só "as...as" funciona em inglês moderno.
+   **Explanation**: For equality, use "as + adjective + as": "as tall as". Note that "so...as" is archaic in affirmative sentences — only "as...as" works in modern English.
 
 2. **multiple_choice** — "This coffee is _____ strong _____ the one I had yesterday."
    **Options**: as / as / so / as / very / as

@@ -124,23 +124,28 @@
       "listening_speaking": [
         {
           "text": "I'll call you when I arrive.",
-          "context": "basic when + present"
+          "context": "basic when + present",
+          "audio_url": "https://fnvjibzreepubageztoi.supabase.co/storage/v1/object/public/curriculum-audio/ls/inter/c8e21af661e6d0a0.flac"
         },
         {
           "text": "We'll have dinner when everyone gets home.",
-          "context": "group action"
+          "context": "group action",
+          "audio_url": "https://fnvjibzreepubageztoi.supabase.co/storage/v1/object/public/curriculum-audio/ls/inter/1366ef63edb3482d.flac"
         },
         {
           "text": "She'll start cooking when she gets home.",
-          "context": "3rd person"
+          "context": "3rd person",
+          "audio_url": "https://fnvjibzreepubageztoi.supabase.co/storage/v1/object/public/curriculum-audio/ls/inter/f483f326133cdc07.flac"
         },
         {
           "text": "I'll text you when I get to the office.",
-          "context": "work context"
+          "context": "work context",
+          "audio_url": "https://fnvjibzreepubageztoi.supabase.co/storage/v1/object/public/curriculum-audio/ls/inter/d4bd018ac7a6a207.flac"
         },
         {
           "text": "We'll celebrate when she passes the exam.",
-          "context": "celebratory context"
+          "context": "celebratory context",
+          "audio_url": "https://fnvjibzreepubageztoi.supabase.co/storage/v1/object/public/curriculum-audio/ls/inter/035b1700d9752328.flac"
         }
       ],
       "roleplay": {
@@ -325,23 +330,28 @@
       "listening_speaking": [
         {
           "text": "Before you leave, please lock the door.",
-          "context": "instruction with before"
+          "context": "instruction with before",
+          "audio_url": "https://fnvjibzreepubageztoi.supabase.co/storage/v1/object/public/curriculum-audio/ls/inter/6680dc34bc6fb7fc.flac"
         },
         {
           "text": "After we eat, we'll go for a walk.",
-          "context": "sequence with after"
+          "context": "sequence with after",
+          "audio_url": "https://fnvjibzreepubageztoi.supabase.co/storage/v1/object/public/curriculum-audio/ls/inter/f79a3467bcc5fa9d.flac"
         },
         {
           "text": "Brush your teeth before you go to bed.",
-          "context": "routine instruction"
+          "context": "routine instruction",
+          "audio_url": "https://fnvjibzreepubageztoi.supabase.co/storage/v1/object/public/curriculum-audio/ls/inter/e9394651ad41635e.flac"
         },
         {
           "text": "After I get home, I usually cook dinner.",
-          "context": "daily routine"
+          "context": "daily routine",
+          "audio_url": "https://fnvjibzreepubageztoi.supabase.co/storage/v1/object/public/curriculum-audio/ls/inter/8300d6ee1cbece39.flac"
         },
         {
           "text": "I'll text you before I arrive.",
-          "context": "promise"
+          "context": "promise",
+          "audio_url": "https://fnvjibzreepubageztoi.supabase.co/storage/v1/object/public/curriculum-audio/ls/inter/bd218dd9aa5b8d67.flac"
         }
       ],
       "roleplay": {
@@ -524,23 +534,28 @@
       "listening_speaking": [
         {
           "text": "I'll wait until you arrive.",
-          "context": "duration"
+          "context": "duration",
+          "audio_url": "https://fnvjibzreepubageztoi.supabase.co/storage/v1/object/public/curriculum-audio/ls/inter/e65a61849a3ae49f.flac"
         },
         {
           "text": "By the time you finish reading, dinner will be ready.",
-          "context": "point of completion"
+          "context": "point of completion",
+          "audio_url": "https://fnvjibzreepubageztoi.supabase.co/storage/v1/object/public/curriculum-audio/ls/inter/a74bbcb49376da52.flac"
         },
         {
           "text": "Stay here until I get back.",
-          "context": "instruction with duration"
+          "context": "instruction with duration",
+          "audio_url": "https://fnvjibzreepubageztoi.supabase.co/storage/v1/object/public/curriculum-audio/ls/inter/828ce61a141fde2a.flac"
         },
         {
           "text": "By the time we arrive, the movie will have started.",
-          "context": "pre-completion"
+          "context": "pre-completion",
+          "audio_url": "https://fnvjibzreepubageztoi.supabase.co/storage/v1/object/public/curriculum-audio/ls/inter/194bcb11b506e7cd.flac"
         },
         {
           "text": "I'll keep trying until I succeed.",
-          "context": "perseverance"
+          "context": "perseverance",
+          "audio_url": "https://fnvjibzreepubageztoi.supabase.co/storage/v1/object/public/curriculum-audio/ls/inter/0bc9a6f79a4df067.flac"
         }
       ],
       "roleplay": {
@@ -728,23 +743,28 @@
       "listening_speaking": [
         {
           "text": "I'll call you as soon as I get home.",
-          "context": "return promise"
+          "context": "return promise",
+          "audio_url": "https://fnvjibzreepubageztoi.supabase.co/storage/v1/object/public/curriculum-audio/ls/inter/11fef54e14c227d0.flac"
         },
         {
           "text": "As soon as she hears the news, she'll be happy.",
-          "context": "reaction"
+          "context": "reaction",
+          "audio_url": "https://fnvjibzreepubageztoi.supabase.co/storage/v1/object/public/curriculum-audio/ls/inter/22470c8b7bdd4b5f.flac"
         },
         {
           "text": "Send me a message as soon as you arrive.",
-          "context": "instruction"
+          "context": "instruction",
+          "audio_url": "https://fnvjibzreepubageztoi.supabase.co/storage/v1/object/public/curriculum-audio/ls/inter/aa6610f380743db7.flac"
         },
         {
           "text": "I'll let you know as soon as I make a decision.",
-          "context": "update promise"
+          "context": "update promise",
+          "audio_url": "https://fnvjibzreepubageztoi.supabase.co/storage/v1/object/public/curriculum-audio/ls/inter/2f0b0f0ac2da869d.flac"
         },
         {
           "text": "As soon as they get home, they'll start cooking.",
-          "context": "immediate sequence"
+          "context": "immediate sequence",
+          "audio_url": "https://fnvjibzreepubageztoi.supabase.co/storage/v1/object/public/curriculum-audio/ls/inter/7ee3b8a36da0f579.flac"
         }
       ],
       "roleplay": {
@@ -925,23 +945,28 @@
       "listening_speaking": [
         {
           "text": "I'll call you when I arrive.",
-          "context": "when"
+          "context": "when",
+          "audio_url": "https://fnvjibzreepubageztoi.supabase.co/storage/v1/object/public/curriculum-audio/ls/inter/c8e21af661e6d0a0.flac"
         },
         {
           "text": "Before you leave, please lock the door.",
-          "context": "before"
+          "context": "before",
+          "audio_url": "https://fnvjibzreepubageztoi.supabase.co/storage/v1/object/public/curriculum-audio/ls/inter/6680dc34bc6fb7fc.flac"
         },
         {
           "text": "After we eat, we'll watch a movie.",
-          "context": "after"
+          "context": "after",
+          "audio_url": "https://fnvjibzreepubageztoi.supabase.co/storage/v1/object/public/curriculum-audio/ls/inter/a7b240feae17408d.flac"
         },
         {
           "text": "I'll wait until you get back.",
-          "context": "until"
+          "context": "until",
+          "audio_url": "https://fnvjibzreepubageztoi.supabase.co/storage/v1/object/public/curriculum-audio/ls/inter/05d6d50ccda5b627.flac"
         },
         {
           "text": "As soon as I have news, I'll let you know.",
-          "context": "as soon as"
+          "context": "as soon as",
+          "audio_url": "https://fnvjibzreepubageztoi.supabase.co/storage/v1/object/public/curriculum-audio/ls/inter/641f895f91d36501.flac"
         }
       ],
       "roleplay": {

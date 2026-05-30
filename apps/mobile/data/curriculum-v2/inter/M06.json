@@ -117,23 +117,28 @@
       "listening_speaking": [
         {
           "text": "It might rain.",
-          "context": "weather possibility"
+          "context": "weather possibility",
+          "audio_url": "https://fnvjibzreepubageztoi.supabase.co/storage/v1/object/public/curriculum-audio/ls/inter/648b62c16431c3a4.flac"
         },
         {
           "text": "She might be late.",
-          "context": "possible state"
+          "context": "possible state",
+          "audio_url": "https://fnvjibzreepubageztoi.supabase.co/storage/v1/object/public/curriculum-audio/ls/inter/c670ae483ef616d7.flac"
         },
         {
           "text": "We might go to the beach.",
-          "context": "uncertain plan"
+          "context": "uncertain plan",
+          "audio_url": "https://fnvjibzreepubageztoi.supabase.co/storage/v1/object/public/curriculum-audio/ls/inter/e4d235bd1e8891c3.flac"
         },
         {
           "text": "He might be home.",
-          "context": "possible location"
+          "context": "possible location",
+          "audio_url": "https://fnvjibzreepubageztoi.supabase.co/storage/v1/object/public/curriculum-audio/ls/inter/ee90e94aec340630.flac"
         },
         {
           "text": "I might visit my parents.",
-          "context": "possible action"
+          "context": "possible action",
+          "audio_url": "https://fnvjibzreepubageztoi.supabase.co/storage/v1/object/public/curriculum-audio/ls/inter/6aef44fbe1423263.flac"
         }
       ],
       "roleplay": {
@@ -313,23 +318,28 @@
       "listening_speaking": [
         {
           "text": "She may be busy.",
-          "context": "possibility"
+          "context": "possibility",
+          "audio_url": "https://fnvjibzreepubageztoi.supabase.co/storage/v1/object/public/curriculum-audio/ls/inter/044d13a51a4cbd10.flac"
         },
         {
           "text": "It may snow tonight.",
-          "context": "weather"
+          "context": "weather",
+          "audio_url": "https://fnvjibzreepubageztoi.supabase.co/storage/v1/object/public/curriculum-audio/ls/inter/dadb8d48af289da4.flac"
         },
         {
           "text": "They may come later.",
-          "context": "plural"
+          "context": "plural",
+          "audio_url": "https://fnvjibzreepubageztoi.supabase.co/storage/v1/object/public/curriculum-audio/ls/inter/3c54d72f9e032186.flac"
         },
         {
           "text": "He may know the answer.",
-          "context": "knowledge"
+          "context": "knowledge",
+          "audio_url": "https://fnvjibzreepubageztoi.supabase.co/storage/v1/object/public/curriculum-audio/ls/inter/f61e8973a3e77f73.flac"
         },
         {
           "text": "May I leave early?",
-          "context": "formal request"
+          "context": "formal request",
+          "audio_url": "https://fnvjibzreepubageztoi.supabase.co/storage/v1/object/public/curriculum-audio/ls/inter/40f998ce2c477653.flac"
         }
       ],
       "roleplay": {
@@ -509,23 +519,28 @@
       "listening_speaking": [
         {
           "text": "It could be true.",
-          "context": "possibility"
+          "context": "possibility",
+          "audio_url": "https://fnvjibzreepubageztoi.supabase.co/storage/v1/object/public/curriculum-audio/ls/inter/cacd06a96d6ad17e.flac"
         },
         {
           "text": "She could be at home.",
-          "context": "location"
+          "context": "location",
+          "audio_url": "https://fnvjibzreepubageztoi.supabase.co/storage/v1/object/public/curriculum-audio/ls/inter/473f5c31bcb39690.flac"
         },
         {
           "text": "We could go later.",
-          "context": "option"
+          "context": "option",
+          "audio_url": "https://fnvjibzreepubageztoi.supabase.co/storage/v1/object/public/curriculum-audio/ls/inter/e84c6cf60173763a.flac"
         },
         {
           "text": "That could be the answer.",
-          "context": "possibility"
+          "context": "possibility",
+          "audio_url": "https://fnvjibzreepubageztoi.supabase.co/storage/v1/object/public/curriculum-audio/ls/inter/6bf16eaac8774a0c.flac"
         },
         {
           "text": "Could you help me?",
-          "context": "polite request"
+          "context": "polite request",
+          "audio_url": "https://fnvjibzreepubageztoi.supabase.co/storage/v1/object/public/curriculum-audio/ls/inter/2c03ab8bcd7029fc.flac"
         }
       ],
       "roleplay": {
@@ -707,23 +722,28 @@
       "listening_speaking": [
         {
           "text": "That can't be true!",
-          "context": "disbelief"
+          "context": "disbelief",
+          "audio_url": "https://fnvjibzreepubageztoi.supabase.co/storage/v1/object/public/curriculum-audio/ls/inter/b76aa824a0e66e82.flac"
         },
         {
           "text": "He can't be there now.",
-          "context": "impossibility"
+          "context": "impossibility",
+          "audio_url": "https://fnvjibzreepubageztoi.supabase.co/storage/v1/object/public/curriculum-audio/ls/inter/10fcdc7a8091eeba.flac"
         },
         {
           "text": "It can't be that easy.",
-          "context": "skepticism"
+          "context": "skepticism",
+          "audio_url": "https://fnvjibzreepubageztoi.supabase.co/storage/v1/object/public/curriculum-audio/ls/inter/d2907d4d0ba1b24b.flac"
         },
         {
           "text": "She can't be 100.",
-          "context": "logical impossibility"
+          "context": "logical impossibility",
+          "audio_url": "https://fnvjibzreepubageztoi.supabase.co/storage/v1/object/public/curriculum-audio/ls/inter/3916942b1110051c.flac"
         },
         {
           "text": "They can't be coming.",
-          "context": "likely impossible"
+          "context": "likely impossible",
+          "audio_url": "https://fnvjibzreepubageztoi.supabase.co/storage/v1/object/public/curriculum-audio/ls/inter/8f6be6a96170c79f.flac"
         }
       ],
       "roleplay": {
@@ -904,23 +924,28 @@
       "listening_speaking": [
         {
           "text": "It might rain.",
-          "context": "might possibility"
+          "context": "might possibility",
+          "audio_url": "https://fnvjibzreepubageztoi.supabase.co/storage/v1/object/public/curriculum-audio/ls/inter/648b62c16431c3a4.flac"
         },
         {
           "text": "She could be at home.",
-          "context": "could possibility"
+          "context": "could possibility",
+          "audio_url": "https://fnvjibzreepubageztoi.supabase.co/storage/v1/object/public/curriculum-audio/ls/inter/473f5c31bcb39690.flac"
         },
         {
           "text": "He may come later.",
-          "context": "may possibility"
+          "context": "may possibility",
+          "audio_url": "https://fnvjibzreepubageztoi.supabase.co/storage/v1/object/public/curriculum-audio/ls/inter/acc335f2593366f3.flac"
         },
         {
           "text": "That can't be true.",
-          "context": "can't impossibility"
+          "context": "can't impossibility",
+          "audio_url": "https://fnvjibzreepubageztoi.supabase.co/storage/v1/object/public/curriculum-audio/ls/inter/b08d569a924c41a1.flac"
         },
         {
           "text": "May I leave?",
-          "context": "may request"
+          "context": "may request",
+          "audio_url": "https://fnvjibzreepubageztoi.supabase.co/storage/v1/object/public/curriculum-audio/ls/inter/93544b87265ef19c.flac"
         }
       ],
       "roleplay": {

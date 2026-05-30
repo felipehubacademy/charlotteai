@@ -123,23 +123,28 @@
       "listening_speaking": [
         {
           "text": "If I had more time, I would learn piano.",
-          "context": "hypothetical present"
+          "context": "hypothetical present",
+          "audio_url": "https://fnvjibzreepubageztoi.supabase.co/storage/v1/object/public/curriculum-audio/ls/inter/1d8001d62b22fcb7.flac"
         },
         {
           "text": "If she lived closer, we would see each other more.",
-          "context": "geographic hypothetical"
+          "context": "geographic hypothetical",
+          "audio_url": "https://fnvjibzreepubageztoi.supabase.co/storage/v1/object/public/curriculum-audio/ls/inter/f395effec8945aec.flac"
         },
         {
           "text": "If I were rich, I would travel the world.",
-          "context": "wealth hypothetical"
+          "context": "wealth hypothetical",
+          "audio_url": "https://fnvjibzreepubageztoi.supabase.co/storage/v1/object/public/curriculum-audio/ls/inter/687cf549c96c9a98.flac"
         },
         {
           "text": "If I were you, I would accept the offer.",
-          "context": "advice hypothetical"
+          "context": "advice hypothetical",
+          "audio_url": "https://fnvjibzreepubageztoi.supabase.co/storage/v1/object/public/curriculum-audio/ls/inter/7766e755ac0b0dfe.flac"
         },
         {
           "text": "She would visit if she had a car.",
-          "context": "order reversed"
+          "context": "order reversed",
+          "audio_url": "https://fnvjibzreepubageztoi.supabase.co/storage/v1/object/public/curriculum-audio/ls/inter/15ab4244b5d9523f.flac"
         }
       ],
       "roleplay": {
@@ -324,23 +329,28 @@
       "listening_speaking": [
         {
           "text": "I wish I had more time.",
-          "context": "time wish"
+          "context": "time wish",
+          "audio_url": "https://fnvjibzreepubageztoi.supabase.co/storage/v1/object/public/curriculum-audio/ls/inter/149694bcd0c87123.flac"
         },
         {
           "text": "She wishes she were taller.",
-          "context": "physical wish"
+          "context": "physical wish",
+          "audio_url": "https://fnvjibzreepubageztoi.supabase.co/storage/v1/object/public/curriculum-audio/ls/inter/0c5fe88a22334473.flac"
         },
         {
           "text": "I wish I could speak French.",
-          "context": "ability wish"
+          "context": "ability wish",
+          "audio_url": "https://fnvjibzreepubageztoi.supabase.co/storage/v1/object/public/curriculum-audio/ls/inter/fa940b26439a0f5b.flac"
         },
         {
           "text": "He wishes he had a better job.",
-          "context": "career wish"
+          "context": "career wish",
+          "audio_url": "https://fnvjibzreepubageztoi.supabase.co/storage/v1/object/public/curriculum-audio/ls/inter/65d74cc6e0619172.flac"
         },
         {
           "text": "We wish we lived in a bigger house.",
-          "context": "life wish"
+          "context": "life wish",
+          "audio_url": "https://fnvjibzreepubageztoi.supabase.co/storage/v1/object/public/curriculum-audio/ls/inter/27fb1ac7cf044b52.flac"
         }
       ],
       "roleplay": {
@@ -525,23 +535,28 @@
       "listening_speaking": [
         {
           "text": "If I were you, I would talk to her.",
-          "context": "advice for communication"
+          "context": "advice for communication",
+          "audio_url": "https://fnvjibzreepubageztoi.supabase.co/storage/v1/object/public/curriculum-audio/ls/inter/0bc566b1cb6f062e.flac"
         },
         {
           "text": "If I were you, I would accept the offer.",
-          "context": "career advice"
+          "context": "career advice",
+          "audio_url": "https://fnvjibzreepubageztoi.supabase.co/storage/v1/object/public/curriculum-audio/ls/inter/7766e755ac0b0dfe.flac"
         },
         {
           "text": "If I were you, I would say sorry.",
-          "context": "relationship advice"
+          "context": "relationship advice",
+          "audio_url": "https://fnvjibzreepubageztoi.supabase.co/storage/v1/object/public/curriculum-audio/ls/inter/3ed5c4b510779232.flac"
         },
         {
           "text": "If I were in your position, I'd take the job.",
-          "context": "variation"
+          "context": "variation",
+          "audio_url": "https://fnvjibzreepubageztoi.supabase.co/storage/v1/object/public/curriculum-audio/ls/inter/86878a7f7bc4bbf9.flac"
         },
         {
           "text": "I'd go for it if I were you.",
-          "context": "order reversed"
+          "context": "order reversed",
+          "audio_url": "https://fnvjibzreepubageztoi.supabase.co/storage/v1/object/public/curriculum-audio/ls/inter/ae2288ca8e8abfb8.flac"
         }
       ],
       "roleplay": {
@@ -726,23 +741,28 @@
       "listening_speaking": [
         {
           "text": "What would you do if you won the lottery?",
-          "context": "money hypothetical"
+          "context": "money hypothetical",
+          "audio_url": "https://fnvjibzreepubageztoi.supabase.co/storage/v1/object/public/curriculum-audio/ls/inter/08ac7e56665f7db4.flac"
         },
         {
           "text": "Would you travel if you had more money?",
-          "context": "yes/no question"
+          "context": "yes/no question",
+          "audio_url": "https://fnvjibzreepubageztoi.supabase.co/storage/v1/object/public/curriculum-audio/ls/inter/b630a6bc5c17c7a6.flac"
         },
         {
           "text": "Where would you live if you could choose any country?",
-          "context": "place hypothetical"
+          "context": "place hypothetical",
+          "audio_url": "https://fnvjibzreepubageztoi.supabase.co/storage/v1/object/public/curriculum-audio/ls/inter/5b246e9d57e47036.flac"
         },
         {
           "text": "What would you do in my position?",
-          "context": "empathy hypothetical"
+          "context": "empathy hypothetical",
+          "audio_url": "https://fnvjibzreepubageztoi.supabase.co/storage/v1/object/public/curriculum-audio/ls/inter/13af7e423708f137.flac"
         },
         {
           "text": "Would you change jobs if you had the chance?",
-          "context": "career hypothetical"
+          "context": "career hypothetical",
+          "audio_url": "https://fnvjibzreepubageztoi.supabase.co/storage/v1/object/public/curriculum-audio/ls/inter/7dee3528562e473f.flac"
         }
       ],
       "roleplay": {
@@ -933,23 +953,28 @@
       "listening_speaking": [
         {
           "text": "If I had more time, I would travel more.",
-          "context": "hypothetical"
+          "context": "hypothetical",
+          "audio_url": "https://fnvjibzreepubageztoi.supabase.co/storage/v1/object/public/curriculum-audio/ls/inter/c009ab87ad079c85.flac"
         },
         {
           "text": "I wish I could speak more languages.",
-          "context": "wish + ability"
+          "context": "wish + ability",
+          "audio_url": "https://fnvjibzreepubageztoi.supabase.co/storage/v1/object/public/curriculum-audio/ls/inter/0cc73872acaa9f28.flac"
         },
         {
           "text": "If I were you, I would take it.",
-          "context": "advice"
+          "context": "advice",
+          "audio_url": "https://fnvjibzreepubageztoi.supabase.co/storage/v1/object/public/curriculum-audio/ls/inter/3730d487d5f87ffd.flac"
         },
         {
           "text": "What would you do if you won the lottery?",
-          "context": "question"
+          "context": "question",
+          "audio_url": "https://fnvjibzreepubageztoi.supabase.co/storage/v1/object/public/curriculum-audio/ls/inter/08ac7e56665f7db4.flac"
         },
         {
           "text": "I wish I were less stressed.",
-          "context": "present wish"
+          "context": "present wish",
+          "audio_url": "https://fnvjibzreepubageztoi.supabase.co/storage/v1/object/public/curriculum-audio/ls/inter/ab5dbfdccdbea775.flac"
         }
       ],
       "roleplay": {

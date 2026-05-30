@@ -40,7 +40,7 @@
             "than"
           ],
           "answer": "as / as",
-          "explanation": "Para igualdade em inglês, usa-se \"as + adjetivo + as\": \"as tall as\". Note que \"so...as\" é arcaico em afirmativas — só \"as...as\" funciona em inglês moderno."
+          "explanation": "For equality, use \"as + adjective + as\": \"as tall as\". Note that \"so...as\" is archaic in affirmative sentences — only \"as...as\" works in modern English."
         },
         {
           "type": "multiple_choice",
@@ -126,23 +126,28 @@
       "listening_speaking": [
         {
           "text": "My brother is as tall as my father.",
-          "context": "physical equality comparison"
+          "context": "physical equality comparison",
+          "audio_url": "https://fnvjibzreepubageztoi.supabase.co/storage/v1/object/public/curriculum-audio/ls/inter/506a30582631bcd9.flac"
         },
         {
           "text": "This coffee is as strong as yesterday's.",
-          "context": "quality equality"
+          "context": "quality equality",
+          "audio_url": "https://fnvjibzreepubageztoi.supabase.co/storage/v1/object/public/curriculum-audio/ls/inter/9081ac37c12b8365.flac"
         },
         {
           "text": "She runs as fast as her brother.",
-          "context": "ability equality"
+          "context": "ability equality",
+          "audio_url": "https://fnvjibzreepubageztoi.supabase.co/storage/v1/object/public/curriculum-audio/ls/inter/99cb99fe06b98b10.flac"
         },
         {
           "text": "It's as hot as Rio today.",
-          "context": "geographic comparison"
+          "context": "geographic comparison",
+          "audio_url": "https://fnvjibzreepubageztoi.supabase.co/storage/v1/object/public/curriculum-audio/ls/inter/dd9b401e40be5e6e.flac"
         },
         {
           "text": "The exam was as difficult as I expected.",
-          "context": "expectation match"
+          "context": "expectation match",
+          "audio_url": "https://fnvjibzreepubageztoi.supabase.co/storage/v1/object/public/curriculum-audio/ls/inter/175c3278d5e7f4f8.flac"
         }
       ],
       "roleplay": {
@@ -327,23 +332,28 @@
       "listening_speaking": [
         {
           "text": "Today isn't as hot as yesterday.",
-          "context": "weather contrast"
+          "context": "weather contrast",
+          "audio_url": "https://fnvjibzreepubageztoi.supabase.co/storage/v1/object/public/curriculum-audio/ls/inter/8f500721ecad9b1e.flac"
         },
         {
           "text": "My new job isn't as stressful as the old one.",
-          "context": "work comparison"
+          "context": "work comparison",
+          "audio_url": "https://fnvjibzreepubageztoi.supabase.co/storage/v1/object/public/curriculum-audio/ls/inter/7d55d80ee69a64a0.flac"
         },
         {
           "text": "This book isn't as good as the last one.",
-          "context": "quality comparison"
+          "context": "quality comparison",
+          "audio_url": "https://fnvjibzreepubageztoi.supabase.co/storage/v1/object/public/curriculum-audio/ls/inter/9e9ea2db697095f8.flac"
         },
         {
           "text": "I'm not as patient as my mother.",
-          "context": "self-evaluation"
+          "context": "self-evaluation",
+          "audio_url": "https://fnvjibzreepubageztoi.supabase.co/storage/v1/object/public/curriculum-audio/ls/inter/82b6b81e02fd14e5.flac"
         },
         {
           "text": "It isn't as cold as I expected.",
-          "context": "expectation mismatch"
+          "context": "expectation mismatch",
+          "audio_url": "https://fnvjibzreepubageztoi.supabase.co/storage/v1/object/public/curriculum-audio/ls/inter/9cc232f1b47c4823.flac"
         }
       ],
       "roleplay": {
@@ -532,23 +542,28 @@
       "listening_speaking": [
         {
           "text": "He's twice as fast as I am.",
-          "context": "speed multiplier"
+          "context": "speed multiplier",
+          "audio_url": "https://fnvjibzreepubageztoi.supabase.co/storage/v1/object/public/curriculum-audio/ls/inter/325ddf7938686330.flac"
         },
         {
           "text": "This trip costs three times as much.",
-          "context": "price multiplier"
+          "context": "price multiplier",
+          "audio_url": "https://fnvjibzreepubageztoi.supabase.co/storage/v1/object/public/curriculum-audio/ls/inter/15ec5ae7c0f8e06d.flac"
         },
         {
           "text": "She earns twice as much as I do.",
-          "context": "salary"
+          "context": "salary",
+          "audio_url": "https://fnvjibzreepubageztoi.supabase.co/storage/v1/object/public/curriculum-audio/ls/inter/5dfd9d9ee1d74f1f.flac"
         },
         {
           "text": "We have twice as many guests this year.",
-          "context": "countable plural"
+          "context": "countable plural",
+          "audio_url": "https://fnvjibzreepubageztoi.supabase.co/storage/v1/object/public/curriculum-audio/ls/inter/1bde8a03d6c3805a.flac"
         },
         {
           "text": "She works twice as hard.",
-          "context": "effort multiplier"
+          "context": "effort multiplier",
+          "audio_url": "https://fnvjibzreepubageztoi.supabase.co/storage/v1/object/public/curriculum-audio/ls/inter/20927f483179d6dc.flac"
         }
       ],
       "roleplay": {
@@ -735,23 +750,28 @@
       "listening_speaking": [
         {
           "text": "The more I study, the better I understand.",
-          "context": "learning correlation"
+          "context": "learning correlation",
+          "audio_url": "https://fnvjibzreepubageztoi.supabase.co/storage/v1/object/public/curriculum-audio/ls/inter/0509ed67bc8b3cf6.flac"
         },
         {
           "text": "The harder you work, the more you achieve.",
-          "context": "effort/result"
+          "context": "effort/result",
+          "audio_url": "https://fnvjibzreepubageztoi.supabase.co/storage/v1/object/public/curriculum-audio/ls/inter/7512b99ad48ae58b.flac"
         },
         {
           "text": "The older I get, the more I appreciate family.",
-          "context": "age/appreciation"
+          "context": "age/appreciation",
+          "audio_url": "https://fnvjibzreepubageztoi.supabase.co/storage/v1/object/public/curriculum-audio/ls/inter/9430aca069a70b34.flac"
         },
         {
           "text": "The colder it gets, the more I want hot chocolate.",
-          "context": "weather/craving"
+          "context": "weather/craving",
+          "audio_url": "https://fnvjibzreepubageztoi.supabase.co/storage/v1/object/public/curriculum-audio/ls/inter/ee8d45bc911026ac.flac"
         },
         {
           "text": "The sooner, the better.",
-          "context": "common chunk"
+          "context": "common chunk",
+          "audio_url": "https://fnvjibzreepubageztoi.supabase.co/storage/v1/object/public/curriculum-audio/ls/inter/0e290aec1767dd1b.flac"
         }
       ],
       "roleplay": {
@@ -942,23 +962,28 @@
       "listening_speaking": [
         {
           "text": "He's as tall as me, but not as strong.",
-          "context": "equality + inequality"
+          "context": "equality + inequality",
+          "audio_url": "https://fnvjibzreepubageztoi.supabase.co/storage/v1/object/public/curriculum-audio/ls/inter/10190dd70ec77deb.flac"
         },
         {
           "text": "She earns twice as much as I do.",
-          "context": "multiplier"
+          "context": "multiplier",
+          "audio_url": "https://fnvjibzreepubageztoi.supabase.co/storage/v1/object/public/curriculum-audio/ls/inter/5dfd9d9ee1d74f1f.flac"
         },
         {
           "text": "The more I learn, the more I want to know.",
-          "context": "parallel"
+          "context": "parallel",
+          "audio_url": "https://fnvjibzreepubageztoi.supabase.co/storage/v1/object/public/curriculum-audio/ls/inter/55c08b8388f16b2c.flac"
         },
         {
           "text": "It's not as easy as it looks.",
-          "context": "common chunk"
+          "context": "common chunk",
+          "audio_url": "https://fnvjibzreepubageztoi.supabase.co/storage/v1/object/public/curriculum-audio/ls/inter/bedd4625ae467c4e.flac"
         },
         {
           "text": "Today is as hot as yesterday.",
-          "context": "basic equality"
+          "context": "basic equality",
+          "audio_url": "https://fnvjibzreepubageztoi.supabase.co/storage/v1/object/public/curriculum-audio/ls/inter/7e1496c4dae28187.flac"
         }
       ],
       "roleplay": {

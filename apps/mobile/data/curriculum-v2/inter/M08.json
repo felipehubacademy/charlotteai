@@ -117,23 +117,28 @@
       "listening_speaking": [
         {
           "text": "She's the woman who lives next door.",
-          "context": "defining who"
+          "context": "defining who",
+          "audio_url": "https://fnvjibzreepubageztoi.supabase.co/storage/v1/object/public/curriculum-audio/ls/inter/55181cda82486b4c.flac"
         },
         {
           "text": "He's the man who called.",
-          "context": "person + action"
+          "context": "person + action",
+          "audio_url": "https://fnvjibzreepubageztoi.supabase.co/storage/v1/object/public/curriculum-audio/ls/inter/0cc8b9ddbeccf4ae.flac"
         },
         {
           "text": "The doctor who helps me is kind.",
-          "context": "description"
+          "context": "description",
+          "audio_url": "https://fnvjibzreepubageztoi.supabase.co/storage/v1/object/public/curriculum-audio/ls/inter/610f30624d4b46f0.flac"
         },
         {
           "text": "I know a girl who speaks five languages.",
-          "context": "describing ability"
+          "context": "describing ability",
+          "audio_url": "https://fnvjibzreepubageztoi.supabase.co/storage/v1/object/public/curriculum-audio/ls/inter/4e1f38d442909cb9.flac"
         },
         {
           "text": "She's the friend I told you about.",
-          "context": "who omitted (informal)"
+          "context": "who omitted (informal)",
+          "audio_url": "https://fnvjibzreepubageztoi.supabase.co/storage/v1/object/public/curriculum-audio/ls/inter/81c9c686bba51188.flac"
         }
       ],
       "roleplay": {
@@ -314,23 +319,28 @@
       "listening_speaking": [
         {
           "text": "It's a book which changed my life.",
-          "context": "which thing"
+          "context": "which thing",
+          "audio_url": "https://fnvjibzreepubageztoi.supabase.co/storage/v1/object/public/curriculum-audio/ls/inter/776bdf7d79ea99da.flac"
         },
         {
           "text": "I have a phone that works underwater.",
-          "context": "that thing"
+          "context": "that thing",
+          "audio_url": "https://fnvjibzreepubageztoi.supabase.co/storage/v1/object/public/curriculum-audio/ls/inter/388a4cda2eb3af2b.flac"
         },
         {
           "text": "She bought a car which runs on electricity.",
-          "context": "descriptive"
+          "context": "descriptive",
+          "audio_url": "https://fnvjibzreepubageztoi.supabase.co/storage/v1/object/public/curriculum-audio/ls/inter/632799db0885b390.flac"
         },
         {
           "text": "This is the movie that won the Oscar.",
-          "context": "defining"
+          "context": "defining",
+          "audio_url": "https://fnvjibzreepubageztoi.supabase.co/storage/v1/object/public/curriculum-audio/ls/inter/e1083834617dfd9f.flac"
         },
         {
           "text": "I love books that teach me something.",
-          "context": "general"
+          "context": "general",
+          "audio_url": "https://fnvjibzreepubageztoi.supabase.co/storage/v1/object/public/curriculum-audio/ls/inter/0594bf8be525c410.flac"
         }
       ],
       "roleplay": {
@@ -510,23 +520,28 @@
       "listening_speaking": [
         {
           "text": "This is the city where I grew up.",
-          "context": "birthplace"
+          "context": "birthplace",
+          "audio_url": "https://fnvjibzreepubageztoi.supabase.co/storage/v1/object/public/curriculum-audio/ls/inter/a3fdf2647a0a39c1.flac"
         },
         {
           "text": "The café where we met is closed.",
-          "context": "meeting place"
+          "context": "meeting place",
+          "audio_url": "https://fnvjibzreepubageztoi.supabase.co/storage/v1/object/public/curriculum-audio/ls/inter/2635b86e001e08b9.flac"
         },
         {
           "text": "I miss the village where I was born.",
-          "context": "origin"
+          "context": "origin",
+          "audio_url": "https://fnvjibzreepubageztoi.supabase.co/storage/v1/object/public/curriculum-audio/ls/inter/9749a1f8d2f43bae.flac"
         },
         {
           "text": "He works at a company where they make cars.",
-          "context": "workplace"
+          "context": "workplace",
+          "audio_url": "https://fnvjibzreepubageztoi.supabase.co/storage/v1/object/public/curriculum-audio/ls/inter/1e2c31b0e404ba86.flac"
         },
         {
           "text": "It's a restaurant where they serve great pasta.",
-          "context": "establishment"
+          "context": "establishment",
+          "audio_url": "https://fnvjibzreepubageztoi.supabase.co/storage/v1/object/public/curriculum-audio/ls/inter/0a5029e6bba0d2a3.flac"
         }
       ],
       "roleplay": {
@@ -706,23 +721,28 @@
       "listening_speaking": [
         {
           "text": "She's the woman whose husband is a doctor.",
-          "context": "relation"
+          "context": "relation",
+          "audio_url": "https://fnvjibzreepubageztoi.supabase.co/storage/v1/object/public/curriculum-audio/ls/inter/03fa1a602f917f89.flac"
         },
         {
           "text": "He's the guy whose car broke down.",
-          "context": "possession"
+          "context": "possession",
+          "audio_url": "https://fnvjibzreepubageztoi.supabase.co/storage/v1/object/public/curriculum-audio/ls/inter/bc40704545e7e1e9.flac"
         },
         {
           "text": "I know a man whose daughter is famous.",
-          "context": "relation"
+          "context": "relation",
+          "audio_url": "https://fnvjibzreepubageztoi.supabase.co/storage/v1/object/public/curriculum-audio/ls/inter/21b70b093613fc6b.flac"
         },
         {
           "text": "She's the friend whose birthday is today.",
-          "context": "event"
+          "context": "event",
+          "audio_url": "https://fnvjibzreepubageztoi.supabase.co/storage/v1/object/public/curriculum-audio/ls/inter/7ba67c3cbb1d3319.flac"
         },
         {
           "text": "He's the teacher whose class I love.",
-          "context": "possession"
+          "context": "possession",
+          "audio_url": "https://fnvjibzreepubageztoi.supabase.co/storage/v1/object/public/curriculum-audio/ls/inter/16f82434b429077a.flac"
         }
       ],
       "roleplay": {
@@ -902,23 +922,28 @@
       "listening_speaking": [
         {
           "text": "She's the friend who I trust.",
-          "context": "who"
+          "context": "who",
+          "audio_url": "https://fnvjibzreepubageztoi.supabase.co/storage/v1/object/public/curriculum-audio/ls/inter/890d418b0118ce2d.flac"
         },
         {
           "text": "It's a movie that I watched.",
-          "context": "that"
+          "context": "that",
+          "audio_url": "https://fnvjibzreepubageztoi.supabase.co/storage/v1/object/public/curriculum-audio/ls/inter/85c3b2447f7c3853.flac"
         },
         {
           "text": "This is the city where I work.",
-          "context": "where"
+          "context": "where",
+          "audio_url": "https://fnvjibzreepubageztoi.supabase.co/storage/v1/object/public/curriculum-audio/ls/inter/35e85712c5f2236d.flac"
         },
         {
           "text": "She's the woman whose son is my classmate.",
-          "context": "whose"
+          "context": "whose",
+          "audio_url": "https://fnvjibzreepubageztoi.supabase.co/storage/v1/object/public/curriculum-audio/ls/inter/6d08987837c73c21.flac"
         },
         {
           "text": "He's the man who called me.",
-          "context": "who"
+          "context": "who",
+          "audio_url": "https://fnvjibzreepubageztoi.supabase.co/storage/v1/object/public/curriculum-audio/ls/inter/5e4ba8fc333c9a93.flac"
         }
       ],
       "roleplay": {

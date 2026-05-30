@@ -120,23 +120,28 @@
       "listening_speaking": [
         {
           "text": "I have a few friends in NYC.",
-          "context": "a few countable"
+          "context": "a few countable",
+          "audio_url": "https://fnvjibzreepubageztoi.supabase.co/storage/v1/object/public/curriculum-audio/ls/inter/53a5759655656a97.flac"
         },
         {
           "text": "She has a little time today.",
-          "context": "a little uncountable"
+          "context": "a little uncountable",
+          "audio_url": "https://fnvjibzreepubageztoi.supabase.co/storage/v1/object/public/curriculum-audio/ls/inter/5ef7687ef428a3f8.flac"
         },
         {
           "text": "We need a little sugar.",
-          "context": "a little"
+          "context": "a little",
+          "audio_url": "https://fnvjibzreepubageztoi.supabase.co/storage/v1/object/public/curriculum-audio/ls/inter/49b08b11c2c86a3a.flac"
         },
         {
           "text": "He has a few books.",
-          "context": "a few"
+          "context": "a few",
+          "audio_url": "https://fnvjibzreepubageztoi.supabase.co/storage/v1/object/public/curriculum-audio/ls/inter/8c3f5dfc708ecf55.flac"
         },
         {
           "text": "Add a little salt.",
-          "context": "recipe"
+          "context": "recipe",
+          "audio_url": "https://fnvjibzreepubageztoi.supabase.co/storage/v1/object/public/curriculum-audio/ls/inter/c5f3cddbe078908b.flac"
         }
       ],
       "roleplay": {
@@ -319,23 +324,28 @@
       "listening_speaking": [
         {
           "text": "I have few friends.",
-          "context": "negative few"
+          "context": "negative few",
+          "audio_url": "https://fnvjibzreepubageztoi.supabase.co/storage/v1/object/public/curriculum-audio/ls/inter/f03b7e60a5adc737.flac"
         },
         {
           "text": "I have a few friends.",
-          "context": "positive a few"
+          "context": "positive a few",
+          "audio_url": "https://fnvjibzreepubageztoi.supabase.co/storage/v1/object/public/curriculum-audio/ls/inter/d81b2ba23b1def65.flac"
         },
         {
           "text": "She has little patience.",
-          "context": "negative little"
+          "context": "negative little",
+          "audio_url": "https://fnvjibzreepubageztoi.supabase.co/storage/v1/object/public/curriculum-audio/ls/inter/7bcebe2491de4f0b.flac"
         },
         {
           "text": "There's little hope.",
-          "context": "negative"
+          "context": "negative",
+          "audio_url": "https://fnvjibzreepubageztoi.supabase.co/storage/v1/object/public/curriculum-audio/ls/inter/ddc3043cb4eec853.flac"
         },
         {
           "text": "Few people came.",
-          "context": "negative"
+          "context": "negative",
+          "audio_url": "https://fnvjibzreepubageztoi.supabase.co/storage/v1/object/public/curriculum-audio/ls/inter/78938949bc24c177.flac"
         }
       ],
       "roleplay": {
@@ -516,23 +526,28 @@
       "listening_speaking": [
         {
           "text": "We have plenty of time.",
-          "context": "plenty of"
+          "context": "plenty of",
+          "audio_url": "https://fnvjibzreepubageztoi.supabase.co/storage/v1/object/public/curriculum-audio/ls/inter/2ae87c03513213a7.flac"
         },
         {
           "text": "There's hardly any food.",
-          "context": "hardly any"
+          "context": "hardly any",
+          "audio_url": "https://fnvjibzreepubageztoi.supabase.co/storage/v1/object/public/curriculum-audio/ls/inter/ba73470bbbc1415c.flac"
         },
         {
           "text": "She has plenty of friends.",
-          "context": "plenty of"
+          "context": "plenty of",
+          "audio_url": "https://fnvjibzreepubageztoi.supabase.co/storage/v1/object/public/curriculum-audio/ls/inter/3e6258193d1d177e.flac"
         },
         {
           "text": "He has hardly any free time.",
-          "context": "hardly any"
+          "context": "hardly any",
+          "audio_url": "https://fnvjibzreepubageztoi.supabase.co/storage/v1/object/public/curriculum-audio/ls/inter/d56be757690c0c83.flac"
         },
         {
           "text": "I have plenty of work.",
-          "context": "plenty of"
+          "context": "plenty of",
+          "audio_url": "https://fnvjibzreepubageztoi.supabase.co/storage/v1/object/public/curriculum-audio/ls/inter/537f35c9d9eb75cd.flac"
         }
       ],
       "roleplay": {
@@ -713,23 +728,28 @@
       "listening_speaking": [
         {
           "text": "I have several books on this topic.",
-          "context": "several"
+          "context": "several",
+          "audio_url": "https://fnvjibzreepubageztoi.supabase.co/storage/v1/object/public/curriculum-audio/ls/inter/2bf5c6146db44854.flac"
         },
         {
           "text": "Most people agree with him.",
-          "context": "most general"
+          "context": "most general",
+          "audio_url": "https://fnvjibzreepubageztoi.supabase.co/storage/v1/object/public/curriculum-audio/ls/inter/04b715b37b375200.flac"
         },
         {
           "text": "She visited several countries.",
-          "context": "several"
+          "context": "several",
+          "audio_url": "https://fnvjibzreepubageztoi.supabase.co/storage/v1/object/public/curriculum-audio/ls/inter/bc41ac45691e49a3.flac"
         },
         {
           "text": "Most of the students passed.",
-          "context": "most of the"
+          "context": "most of the",
+          "audio_url": "https://fnvjibzreepubageztoi.supabase.co/storage/v1/object/public/curriculum-audio/ls/inter/122716b2f5ae8569.flac"
         },
         {
           "text": "There are several ways to do this.",
-          "context": "several options"
+          "context": "several options",
+          "audio_url": "https://fnvjibzreepubageztoi.supabase.co/storage/v1/object/public/curriculum-audio/ls/inter/58666be265427e6b.flac"
         }
       ],
       "roleplay": {
@@ -911,23 +931,28 @@
       "listening_speaking": [
         {
           "text": "I have a little time.",
-          "context": "a little"
+          "context": "a little",
+          "audio_url": "https://fnvjibzreepubageztoi.supabase.co/storage/v1/object/public/curriculum-audio/ls/inter/cfc7e6d3933ea698.flac"
         },
         {
           "text": "She has several friends.",
-          "context": "several"
+          "context": "several",
+          "audio_url": "https://fnvjibzreepubageztoi.supabase.co/storage/v1/object/public/curriculum-audio/ls/inter/93adccc98e2404b9.flac"
         },
         {
           "text": "We have plenty of work.",
-          "context": "plenty of"
+          "context": "plenty of",
+          "audio_url": "https://fnvjibzreepubageztoi.supabase.co/storage/v1/object/public/curriculum-audio/ls/inter/347d9eb6ee766a26.flac"
         },
         {
           "text": "Most people enjoy travel.",
-          "context": "most"
+          "context": "most",
+          "audio_url": "https://fnvjibzreepubageztoi.supabase.co/storage/v1/object/public/curriculum-audio/ls/inter/3d2e91705a457f0c.flac"
         },
         {
           "text": "I have hardly any patience.",
-          "context": "hardly any"
+          "context": "hardly any",
+          "audio_url": "https://fnvjibzreepubageztoi.supabase.co/storage/v1/object/public/curriculum-audio/ls/inter/6a40147e5d0f8c53.flac"
         }
       ],
       "roleplay": {

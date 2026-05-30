@@ -38,7 +38,7 @@
             "is boiling"
           ],
           "answer": "boils",
-          "explanation": "Zero conditional descreve verdades sempre verdadeiras. Ambas as cláusulas usam present simple. \"Boils\" — fato universal sobre água."
+          "explanation": "Zero conditional describes truths that are always valid. Both clauses use present simple. \"Boils\" — universal fact about water."
         },
         {
           "type": "multiple_choice",
@@ -122,23 +122,28 @@
       "listening_speaking": [
         {
           "text": "If you heat water, it boils.",
-          "context": "scientific fact"
+          "context": "scientific fact",
+          "audio_url": "https://fnvjibzreepubageztoi.supabase.co/storage/v1/object/public/curriculum-audio/ls/inter/76950f3a36c45c05.flac"
         },
         {
           "text": "If you mix red and blue, you get purple.",
-          "context": "color theory"
+          "context": "color theory",
+          "audio_url": "https://fnvjibzreepubageztoi.supabase.co/storage/v1/object/public/curriculum-audio/ls/inter/7f3027e611c87513.flac"
         },
         {
           "text": "Ice melts if you heat it.",
-          "context": "physics"
+          "context": "physics",
+          "audio_url": "https://fnvjibzreepubageztoi.supabase.co/storage/v1/object/public/curriculum-audio/ls/inter/3a481fe6cb6d15ae.flac"
         },
         {
           "text": "When the sun sets, it gets dark.",
-          "context": "natural cycle"
+          "context": "natural cycle",
+          "audio_url": "https://fnvjibzreepubageztoi.supabase.co/storage/v1/object/public/curriculum-audio/ls/inter/e951b8cefbbb5d1e.flac"
         },
         {
           "text": "If you don't sleep, you feel tired.",
-          "context": "biological truth"
+          "context": "biological truth",
+          "audio_url": "https://fnvjibzreepubageztoi.supabase.co/storage/v1/object/public/curriculum-audio/ls/inter/fc9f4a965e380d32.flac"
         }
       ],
       "roleplay": {
@@ -321,23 +326,28 @@
       "listening_speaking": [
         {
           "text": "If you study every day, you get better.",
-          "context": "general truth (zero)"
+          "context": "general truth (zero)",
+          "audio_url": "https://fnvjibzreepubageztoi.supabase.co/storage/v1/object/public/curriculum-audio/ls/inter/e8c0ace9cfca44c0.flac"
         },
         {
           "text": "If you study tonight, you'll do better tomorrow.",
-          "context": "specific future (first)"
+          "context": "specific future (first)",
+          "audio_url": "https://fnvjibzreepubageztoi.supabase.co/storage/v1/object/public/curriculum-audio/ls/inter/6ef45e71892af034.flac"
         },
         {
           "text": "If you don't water plants, they die.",
-          "context": "universal truth"
+          "context": "universal truth",
+          "audio_url": "https://fnvjibzreepubageztoi.supabase.co/storage/v1/object/public/curriculum-audio/ls/inter/cafe2b09729c9911.flac"
         },
         {
           "text": "If it rains tomorrow, I'll stay home.",
-          "context": "specific plan"
+          "context": "specific plan",
+          "audio_url": "https://fnvjibzreepubageztoi.supabase.co/storage/v1/object/public/curriculum-audio/ls/inter/22dbd37eb7f14539.flac"
         },
         {
           "text": "Water boils when you heat it to 100.",
-          "context": "scientific fact"
+          "context": "scientific fact",
+          "audio_url": "https://fnvjibzreepubageztoi.supabase.co/storage/v1/object/public/curriculum-audio/ls/inter/cdc8a354c1dcf1ec.flac"
         }
       ],
       "roleplay": {
@@ -521,23 +531,28 @@
       "listening_speaking": [
         {
           "text": "When the sun rises, it gets light.",
-          "context": "natural certainty"
+          "context": "natural certainty",
+          "audio_url": "https://fnvjibzreepubageztoi.supabase.co/storage/v1/object/public/curriculum-audio/ls/inter/b02287487e054e30.flac"
         },
         {
           "text": "If it rains tomorrow, I'll take an umbrella.",
-          "context": "uncertain weather"
+          "context": "uncertain weather",
+          "audio_url": "https://fnvjibzreepubageztoi.supabase.co/storage/v1/object/public/curriculum-audio/ls/inter/42c4719cb41bc1e5.flac"
         },
         {
           "text": "When I wake up, I check my phone.",
-          "context": "daily routine"
+          "context": "daily routine",
+          "audio_url": "https://fnvjibzreepubageztoi.supabase.co/storage/v1/object/public/curriculum-audio/ls/inter/45d8d893feb7dd13.flac"
         },
         {
           "text": "If you're tired, you should rest.",
-          "context": "possibility advice"
+          "context": "possibility advice",
+          "audio_url": "https://fnvjibzreepubageztoi.supabase.co/storage/v1/object/public/curriculum-audio/ls/inter/7153609db9af3491.flac"
         },
         {
           "text": "When winter comes, the days get shorter.",
-          "context": "seasonal certainty"
+          "context": "seasonal certainty",
+          "audio_url": "https://fnvjibzreepubageztoi.supabase.co/storage/v1/object/public/curriculum-audio/ls/inter/82acdc65330e577e.flac"
         }
       ],
       "roleplay": {
@@ -719,23 +734,28 @@
       "listening_speaking": [
         {
           "text": "If I have time tomorrow, I'll go to the gym.",
-          "context": "first specific"
+          "context": "first specific",
+          "audio_url": "https://fnvjibzreepubageztoi.supabase.co/storage/v1/object/public/curriculum-audio/ls/inter/aea55e64131c422b.flac"
         },
         {
           "text": "Water boils if heated.",
-          "context": "zero universal"
+          "context": "zero universal",
+          "audio_url": "https://fnvjibzreepubageztoi.supabase.co/storage/v1/object/public/curriculum-audio/ls/inter/edc07fc831ab4f2a.flac"
         },
         {
           "text": "If you work hard, you'll succeed.",
-          "context": "first motivational"
+          "context": "first motivational",
+          "audio_url": "https://fnvjibzreepubageztoi.supabase.co/storage/v1/object/public/curriculum-audio/ls/inter/49ab95ad954fdc39.flac"
         },
         {
           "text": "When I get home, I cook dinner.",
-          "context": "routine"
+          "context": "routine",
+          "audio_url": "https://fnvjibzreepubageztoi.supabase.co/storage/v1/object/public/curriculum-audio/ls/inter/4c5dfcc0e55eb837.flac"
         },
         {
           "text": "If I wake up early, I'll have a big breakfast.",
-          "context": "first specific"
+          "context": "first specific",
+          "audio_url": "https://fnvjibzreepubageztoi.supabase.co/storage/v1/object/public/curriculum-audio/ls/inter/e6ba583a008dfd14.flac"
         }
       ],
       "roleplay": {
@@ -918,23 +938,28 @@
       "listening_speaking": [
         {
           "text": "If you take this medicine, you'll feel better.",
-          "context": "specific advice"
+          "context": "specific advice",
+          "audio_url": "https://fnvjibzreepubageztoi.supabase.co/storage/v1/object/public/curriculum-audio/ls/inter/d848bb8645c7945a.flac"
         },
         {
           "text": "Water freezes at zero degrees.",
-          "context": "scientific fact"
+          "context": "scientific fact",
+          "audio_url": "https://fnvjibzreepubageztoi.supabase.co/storage/v1/object/public/curriculum-audio/ls/inter/7a6d67ab22f3fa09.flac"
         },
         {
           "text": "If you heat ice, it melts.",
-          "context": "universal truth"
+          "context": "universal truth",
+          "audio_url": "https://fnvjibzreepubageztoi.supabase.co/storage/v1/object/public/curriculum-audio/ls/inter/f4eccfa20acab391.flac"
         },
         {
           "text": "I'll help you if you ask me to.",
-          "context": "conditional offer"
+          "context": "conditional offer",
+          "audio_url": "https://fnvjibzreepubageztoi.supabase.co/storage/v1/object/public/curriculum-audio/ls/inter/732db7e6ca9eb726.flac"
         },
         {
           "text": "If I have time, I'll travel.",
-          "context": "specific plan"
+          "context": "specific plan",
+          "audio_url": "https://fnvjibzreepubageztoi.supabase.co/storage/v1/object/public/curriculum-audio/ls/inter/8c26aee6e3b01c6c.flac"
         }
       ],
       "roleplay": {
