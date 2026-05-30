@@ -1,0 +1,999 @@
+{
+  "id": "M17",
+  "title": "Ele disse que...",
+  "level": "Inter",
+  "block": "B2",
+  "units_range": "I01–I05",
+  "theme": "Reported speech statements (say/tell + that-clause + backshift)",
+  "goal": "Student reports what someone said using correct backshift of tenses, pronouns, time and place references.",
+  "connects_to": "M18 (Reported questions + commands) — extends to interrogatives and imperatives.",
+  "module_chunks": [
+    "He said that...",
+    "She told me that...",
+    "He said he was tired (present → past)",
+    "She said she had finished (past → past perfect)",
+    "He said he would call (will → would)",
+    "He said he could come (can → could)",
+    "He said it that day (today → that day)",
+    "He said he lived there (here → there)",
+    "He mentioned that... / He explained that... / He claimed that..."
+  ],
+  "units": [
+    {
+      "id": "I01",
+      "title": "He said that",
+      "sub_cefr": "B2",
+      "grammar_focus": "Reported speech with say/tell + backshift present → past",
+      "markers": [
+        "denso"
+      ],
+      "real_life_context": "You report someone's statement, shifting present to past as time passes.",
+      "grammar": [
+        {
+          "type": "multiple_choice",
+          "options": [
+            "was",
+            "is",
+            "has been",
+            "will be"
+          ],
+          "answer": "was",
+          "explanation": "Reported speech: present simple (\"am tired\") muda para past simple (\"was tired\") quando o reporting verb está no passado (\"said\"). Backshift básico."
+        },
+        {
+          "type": "multiple_choice",
+          "options": [
+            "worked",
+            "works",
+            "has worked",
+            "will work"
+          ],
+          "answer": "worked",
+          "explanation": "Present simple → past simple no reported speech. \"Works\" vira \"worked\"."
+        },
+        {
+          "type": "word_bank",
+          "choices": [
+            "was cooking",
+            "is cooking",
+            "cooks",
+            "cooked"
+          ],
+          "answer": "was cooking",
+          "explanation": "Present continuous (\"am cooking\") → past continuous (\"was cooking\") em reported speech."
+        },
+        {
+          "type": "word_bank",
+          "choices": [
+            "liked",
+            "likes",
+            "has liked",
+            "will like"
+          ],
+          "answer": "liked",
+          "explanation": "Present simple → past simple. \"Likes\" vira \"liked\"."
+        },
+        {
+          "type": "fill_gap",
+          "hint": "past simple \"live\"",
+          "answer": "lived",
+          "explanation": "\"Live\" (present) → \"lived\" (past) em reported speech."
+        },
+        {
+          "type": "fill_gap",
+          "hint": "was + ing form \"study\"",
+          "answer": "was studying",
+          "explanation": "\"Am studying\" (present continuous) → \"was studying\" (past continuous) no reported speech."
+        },
+        {
+          "type": "fill_gap",
+          "hint": "past simple negative \"didn't\"",
+          "answer": "didn't",
+          "explanation": "\"Don't\" (present) → \"didn't\" (past) em reported speech."
+        },
+        {
+          "type": "fix_error",
+          "hint": "Após \"said\" (passado), present muda para past",
+          "answer": "He said that he was tired.",
+          "explanation": "Reported speech após \"said\" exige backshift: \"is\" vira \"was\". Manter \"is\" é erro comum."
+        },
+        {
+          "type": "fix_error",
+          "hint": "3ª pessoa + past — \"liked\"",
+          "answer": "She said she liked pizza.",
+          "explanation": "Faltam duas correções: backshift para \"liked\" e 3ª pessoa singular. \"She liked\" — past simple."
+        },
+        {
+          "type": "read_answer",
+          "passage": "He said he was tired. She said she worked in finance. They said they lived in São Paulo. He said he was studying English.",
+          "question": "What did she say she did for work?",
+          "answer": "worked in finance (or \"she worked in finance\")",
+          "explanation": "The text says \"She said she worked in finance\"."
+        }
+      ],
+      "listening_speaking": [
+        {
+          "text": "He said he was tired.",
+          "context": "basic statement reported"
+        },
+        {
+          "text": "She said she worked in finance.",
+          "context": "job reported"
+        },
+        {
+          "text": "They said they lived in São Paulo.",
+          "context": "location reported"
+        },
+        {
+          "text": "He said he was cooking dinner.",
+          "context": "activity reported"
+        },
+        {
+          "text": "She said she didn't understand.",
+          "context": "negative reported"
+        }
+      ],
+      "roleplay": {
+        "scenario": "Charlotte conta sobre três pessoas que ela conheceu — você precisa reportar o que cada uma disse usando \"said + that-clause\".",
+        "voiced_by": "charlotte",
+        "persona": "Charlotte",
+        "persona_outfit": "charlotte_casual",
+        "time_budget_sec": 180,
+        "opening_line": "I met three people yesterday. Report what they told me — use 'said'.",
+        "objectives": [
+          {
+            "id": 1,
+            "label_pt": "Reportar com 'said he/she + past'",
+            "label_en": "Report with 'said he/she + past'",
+            "hidden_prompt": "user uses 'X said (that) he/she + past tense'",
+            "hint_pt": "She said she was a teacher.",
+            "hint_en": "She said she was a teacher."
+          },
+          {
+            "id": 2,
+            "label_pt": "Outro reporte",
+            "label_en": "Another report",
+            "hidden_prompt": "user uses another 'said (that)' construction",
+            "hint_pt": "He said he lived in Rio.",
+            "hint_en": "He said he lived in Rio."
+          },
+          {
+            "id": 3,
+            "label_pt": "Reportar uma atividade em curso",
+            "label_en": "Report an ongoing activity",
+            "hidden_prompt": "user uses 'said he/she was + ing'",
+            "hint_pt": "She said she was working on a project.",
+            "hint_en": "She said she was working on a project."
+          }
+        ],
+        "closing_cue": "Charlotte fecha com \"Reports made!\" quando obj_3 baterem.",
+        "suggested_flow": "**Suggested flow** (referencial, 6 turnos):\n\n1. **Charlotte**: \"I met three people yesterday. Report what they told me — use 'said'.\"\n2. **Student**: ~\"She said she was a teacher.\"\n3. **Charlotte**: \"Specific. Another?\"\n4. **Student**: ~\"He said he lived in Rio.\"\n5. **Charlotte**: \"Activity?\"\n6. **Student**: ~\"She said she was working on a project.\"\n7. **Charlotte**: \"Reports made!\"",
+        "evaluation_focus": [
+          "\"Said (that) + subject + past tense\"",
+          "Backshift correto",
+          "Pronoun shift"
+        ]
+      },
+      "guided_chat": {
+        "scenario": "Charlotte conta uma conversa que teve hoje e pede que você reporte o que ela contou — reporting practice natural.",
+        "voiced_by": "charlotte",
+        "persona": "Charlotte",
+        "persona_outfit": "charlotte_casual",
+        "intro_en": "Charlotte shares conversations. Practice reporting with 'said' + backshift.",
+        "opening_message": "My sister told me she's moving to Berlin. What did I just tell you?",
+        "objectives": [
+          {
+            "id": 1,
+            "label_pt": "Reportar o que Charlotte disse",
+            "label_en": "Report what Charlotte said",
+            "hidden_prompt": "user uses 'You said your sister was moving to Berlin'",
+            "hint_pt": "You said your sister was moving to Berlin.",
+            "hint_en": "You said your sister was moving to Berlin."
+          },
+          {
+            "id": 2,
+            "label_pt": "Outro reporte (mais conversa)",
+            "label_en": "Another report (more talk)",
+            "hidden_prompt": "user reports another statement with 'said'",
+            "hint_pt": "You said she had found a job there.",
+            "hint_en": "You said she had found a job there."
+          },
+          {
+            "id": 3,
+            "label_pt": "Perguntar à Charlotte",
+            "label_en": "Ask Charlotte",
+            "hidden_prompt": "user asks Charlotte more about the situation",
+            "hint_pt": "Did she say when she's leaving?",
+            "hint_en": "Did she say when she's leaving?"
+          }
+        ],
+        "closing_cue": "Charlotte fecha com \"Conversation reported!\" quando obj_3 baterem.",
+        "suggested_script": "**Script** (referencial, 7 turnos):\n\n1. **Charlotte**: \"My sister told me she's moving to Berlin. What did I just tell you?\"\n2. **Student**: \"You said your sister was moving to Berlin.\"\n3. **Charlotte**: \"Right. She also got a job offer.\"\n4. **Student**: \"You said she had found a job there.\"\n5. **Charlotte**: \"Yes — exciting move.\"\n6. **Student**: \"Did she say when she's leaving?\"\n7. **Charlotte**: \"Next month. Conversation reported!\"\n\n> I01 chat = LLM puro. Scaffold via hint_pt.\n\n---"
+      }
+    },
+    {
+      "id": "I02",
+      "title": "She told me",
+      "sub_cefr": "B2",
+      "grammar_focus": "Reported speech: difference between \"say\" and \"tell\" (tell requires object)",
+      "markers": [
+        "denso"
+      ],
+      "real_life_context": "You choose between \"say\" (no object) and \"tell\" (always with object) when reporting.",
+      "grammar": [
+        {
+          "type": "multiple_choice",
+          "sentence": "She _____ me that she was tired.",
+          "options": [
+            "told",
+            "said",
+            "spoke",
+            "asked"
+          ],
+          "answer": "told",
+          "explanation": "\"Tell + person\" — exige objeto direto. \"Told me\" = a mim. \"Said\" não levaria \"me\" sem \"to\" (\"said to me\"). \"Tell\" é mais natural."
+        },
+        {
+          "type": "multiple_choice",
+          "sentence": "He _____ that the meeting was canceled.",
+          "options": [
+            "said",
+            "told",
+            "spoke",
+            "mentioned"
+          ],
+          "answer": "said",
+          "explanation": "\"Said + that-clause\" sem objeto. \"He said that...\" — não \"he told that\". \"Tell\" precisaria de pessoa."
+        },
+        {
+          "type": "word_bank",
+          "sentence": "She _____ her sister the news.",
+          "choices": [
+            "told",
+            "said",
+            "spoke",
+            "mentioned"
+          ],
+          "answer": "told",
+          "explanation": "\"Tell + person + thing\" — chunk natural. \"Told her sister the news\"."
+        },
+        {
+          "type": "word_bank",
+          "sentence": "He _____ to me about the project.",
+          "choices": [
+            "spoke",
+            "told",
+            "said",
+            "mentioned"
+          ],
+          "answer": "spoke",
+          "explanation": "\"Spoke to me\" — preposição \"to\" com \"speak\". Outra forma de reportar conversa."
+        },
+        {
+          "type": "fill_gap",
+          "sentence": "She _____ me she was going on vacation.",
+          "hint": "told (precisa de objeto \"me\")",
+          "answer": "told",
+          "explanation": "\"Told me + that-clause\" — verbo \"tell\" sempre exige pessoa."
+        },
+        {
+          "type": "fill_gap",
+          "sentence": "He _____ that he didn't want to come.",
+          "hint": "said (sem objeto direto)",
+          "answer": "said",
+          "explanation": "\"Said that\" — verbo \"say\" não pede objeto direto antes do that-clause."
+        },
+        {
+          "type": "fill_gap",
+          "sentence": "She _____ the children a story.",
+          "hint": "told (tell + pessoa + coisa)",
+          "answer": "told",
+          "explanation": "\"Told the children a story\" — estrutura natural com tell."
+        },
+        {
+          "type": "fix_error",
+          "sentence": "She said me that she was tired.",
+          "hint": "\"Said + me\" não funciona — use \"told me\"",
+          "answer": "She told me that she was tired.",
+          "explanation": "\"Say\" não aceita objeto direto sem \"to\". \"Said to me\" funcionaria, mas \"told me\" é mais natural."
+        },
+        {
+          "type": "fix_error",
+          "sentence": "He told that the meeting was canceled.",
+          "hint": "\"Tell\" precisa de pessoa — falta objeto",
+          "answer": "He said that the meeting was canceled. (or: He told everyone that...)",
+          "explanation": "\"Tell\" sem objeto não funciona. Ou usa \"said\" (sem pessoa), ou adiciona pessoa (\"told someone, told everyone\")."
+        },
+        {
+          "type": "read_answer",
+          "passage": "She told me that she was tired. He said that the meeting was canceled. She told her sister the news. He spoke to me about the project last week.",
+          "question": "Who did she tell about being tired?",
+          "answer": "me",
+          "explanation": "The text says \"She told me that she was tired\"."
+        }
+      ],
+      "listening_speaking": [
+        {
+          "text": "She told me she was tired.",
+          "context": "tell + object"
+        },
+        {
+          "text": "He said that the meeting was canceled.",
+          "context": "say + that"
+        },
+        {
+          "text": "She told her sister the news.",
+          "context": "tell + person + thing"
+        },
+        {
+          "text": "He spoke to me about it.",
+          "context": "speak + to + person"
+        },
+        {
+          "text": "She mentioned that she was leaving.",
+          "context": "mention + that"
+        }
+      ],
+      "roleplay": {
+        "scenario": "Charlotte conta sobre conversas recentes — você reporta usando \"told\" e \"said\" corretamente.",
+        "voiced_by": "charlotte",
+        "persona": "Charlotte",
+        "persona_outfit": "charlotte_casual",
+        "time_budget_sec": 180,
+        "opening_line": "Three things people told you recently — choose 'told me' or 'said'.",
+        "objectives": [
+          {
+            "id": 1,
+            "label_pt": "Reporte com 'told me'",
+            "label_en": "Report with 'told me'",
+            "hidden_prompt": "user uses 'X told me (that) + past tense'",
+            "hint_pt": "My boss told me I was getting a raise.",
+            "hint_en": "My boss told me I was getting a raise."
+          },
+          {
+            "id": 2,
+            "label_pt": "Reporte com 'said'",
+            "label_en": "Report with 'said'",
+            "hidden_prompt": "user uses 'X said (that) + past tense' without object",
+            "hint_pt": "He said the deadline was Friday.",
+            "hint_en": "He said the deadline was Friday."
+          },
+          {
+            "id": 3,
+            "label_pt": "Reporte com 'mentioned' ou 'spoke about'",
+            "label_en": "Report with 'mentioned' or 'spoke about'",
+            "hidden_prompt": "user uses another reporting verb",
+            "hint_pt": "She mentioned that she was tired.",
+            "hint_en": "She mentioned that she was tired."
+          }
+        ],
+        "closing_cue": "Charlotte fecha com \"Reporting verbs nailed!\" quando obj_3 baterem.",
+        "suggested_flow": "**Suggested flow** (referencial, 6 turnos):\n\n1. **Charlotte**: \"Three things people told you recently — choose 'told me' or 'said'.\"\n2. **Student**: ~\"My boss told me I was getting a raise.\"\n3. **Charlotte**: \"Good news. With 'said'?\"\n4. **Student**: ~\"He said the deadline was Friday.\"\n5. **Charlotte**: \"And another verb?\"\n6. **Student**: ~\"She mentioned that she was tired.\"\n7. **Charlotte**: \"Reporting verbs nailed!\"",
+        "evaluation_focus": [
+          "\"Tell\" with object, \"say\" without",
+          "Variety of reporting verbs",
+          "Backshift maintained"
+        ]
+      },
+      "guided_chat": {
+        "scenario": "Charlotte traz fofocas leves do trabalho — vocês reportam o que cada pessoa disse usando \"told\" e \"said\".",
+        "voiced_by": "charlotte",
+        "persona": "Charlotte",
+        "persona_outfit": "charlotte_casual",
+        "intro_en": "Charlotte shares office gossip. Use 'told me' and 'said'.",
+        "opening_message": "My coworker told me she was thinking of quitting. What do you think?",
+        "objectives": [
+          {
+            "id": 1,
+            "label_pt": "Reportar de volta a Charlotte",
+            "label_en": "Report back to Charlotte",
+            "hidden_prompt": "user reports 'You said your coworker was...'",
+            "hint_pt": "You said your coworker was thinking of quitting.",
+            "hint_en": "You said your coworker was thinking of quitting."
+          },
+          {
+            "id": 2,
+            "label_pt": "Detalhe adicional",
+            "label_en": "Additional detail",
+            "hidden_prompt": "user adds another reported statement",
+            "hint_pt": "She told me she had been unhappy for a while.",
+            "hint_en": "She told me she had been unhappy for a while."
+          },
+          {
+            "id": 3,
+            "label_pt": "Pergunta para Charlotte",
+            "label_en": "Question for Charlotte",
+            "hidden_prompt": "user asks Charlotte more about it",
+            "hint_pt": "What did she say her plans were?",
+            "hint_en": "What did she say her plans were?"
+          }
+        ],
+        "closing_cue": "Charlotte fecha com \"Gossip reported!\" quando obj_3 baterem.",
+        "suggested_script": "**Script** (referencial, 7 turnos):\n\n1. **Charlotte**: \"My coworker told me she was thinking of quitting. What do you think?\"\n2. **Student**: \"You said your coworker was thinking of quitting.\"\n3. **Charlotte**: \"Right. What else might be going on?\"\n4. **Student**: \"She told me she had been unhappy for a while.\"\n5. **Charlotte**: \"That makes sense.\"\n6. **Student**: \"What did she say her plans were?\"\n7. **Charlotte**: \"She mentioned going freelance. Gossip reported!\"\n\n> I02 chat = LLM puro. Scaffold via hint_pt.\n\n---"
+      }
+    },
+    {
+      "id": "I03",
+      "title": "She said she had",
+      "sub_cefr": "B2",
+      "grammar_focus": "Reported speech backshift: past → past perfect; present perfect → past perfect",
+      "markers": [
+        "denso"
+      ],
+      "real_life_context": "You report past actions someone described, shifting tenses one step back.",
+      "grammar": [
+        {
+          "type": "multiple_choice",
+          "options": [
+            "had finished",
+            "finished",
+            "has finished",
+            "was finishing"
+          ],
+          "answer": "had finished",
+          "explanation": "Past simple (\"finished\") → past perfect (\"had finished\") em reported speech. Mais um passo para trás no tempo."
+        },
+        {
+          "type": "multiple_choice",
+          "options": [
+            "had visited",
+            "visited",
+            "has visited",
+            "visits"
+          ],
+          "answer": "had visited",
+          "explanation": "Present perfect (\"have visited\") → past perfect (\"had visited\") no reported speech."
+        },
+        {
+          "type": "word_bank",
+          "choices": [
+            "had seen",
+            "saw",
+            "has seen",
+            "sees"
+          ],
+          "answer": "had seen",
+          "explanation": "Past simple → past perfect. \"Saw\" → \"had seen\". Backshift padrão."
+        },
+        {
+          "type": "word_bank",
+          "choices": [
+            "had been",
+            "has been",
+            "was",
+            "went"
+          ],
+          "answer": "had been",
+          "explanation": "\"Have been\" → \"had been\" em reported speech."
+        },
+        {
+          "type": "fill_gap",
+          "hint": "had + past participle \"lose\"",
+          "answer": "had lost",
+          "explanation": "\"Lost\" → \"had lost\". Past simple para past perfect."
+        },
+        {
+          "type": "fill_gap",
+          "hint": "had + past participle \"finish\"",
+          "answer": "had finished",
+          "explanation": "\"Have finished\" → \"had finished\" no reported."
+        },
+        {
+          "type": "fill_gap",
+          "hint": "had + past participle \"read\"",
+          "answer": "had read",
+          "explanation": "\"Read\" (past) → \"had read\" (past perfect). Note: pronounced /red/ em ambos."
+        },
+        {
+          "type": "fix_error",
+          "hint": "Past simple precisa ir para past perfect",
+          "answer": "He said he had finished it.",
+          "explanation": "Em reported, \"finished\" precisa virar \"had finished\". Mais um passo no tempo."
+        },
+        {
+          "type": "fix_error",
+          "hint": "Present perfect → past perfect",
+          "answer": "She said she had seen the movie.",
+          "explanation": "\"Has seen\" no reported vira \"had seen\". Backshift obrigatório."
+        },
+        {
+          "type": "read_answer",
+          "passage": "He said he had finished the report. She said she had visited Paris twice. He said he had seen the movie three times. They said they had been to Japan for vacation.",
+          "question": "How many times had he seen the movie?",
+          "answer": "three times (or \"three\")",
+          "explanation": "The text says \"He said he had seen the movie three times\"."
+        }
+      ],
+      "listening_speaking": [
+        {
+          "text": "He said he had finished it.",
+          "context": "past simple → past perfect"
+        },
+        {
+          "text": "She said she had been to Paris.",
+          "context": "present perfect → past perfect"
+        },
+        {
+          "text": "They said they had lost the keys.",
+          "context": "past simple → past perfect"
+        },
+        {
+          "text": "He said he had seen the movie.",
+          "context": "present/past perfect reported"
+        },
+        {
+          "text": "She said she had already eaten.",
+          "context": "already + had + past participle"
+        }
+      ],
+      "roleplay": {
+        "scenario": "Charlotte conta sobre coisas que pessoas mencionaram que tinham feito — você precisa reportar com past perfect.",
+        "voiced_by": "charlotte",
+        "persona": "Charlotte",
+        "persona_outfit": "charlotte_casual",
+        "time_budget_sec": 180,
+        "opening_line": "Three things people told you they had already done. Use 'had + past participle'.",
+        "objectives": [
+          {
+            "id": 1,
+            "label_pt": "Reporte com 'said he/she had + past participle'",
+            "label_en": "Report with 'said he/she had + past participle'",
+            "hidden_prompt": "user uses 'X said he/she had + past participle'",
+            "hint_pt": "He said he had finished the report.",
+            "hint_en": "He said he had finished the report."
+          },
+          {
+            "id": 2,
+            "label_pt": "Outro reporte com past perfect",
+            "label_en": "Another past perfect report",
+            "hidden_prompt": "user uses another 'had + past participle'",
+            "hint_pt": "She told me she had visited Paris twice.",
+            "hint_en": "She told me she had visited Paris twice."
+          },
+          {
+            "id": 3,
+            "label_pt": "Reporte com 'never' ou 'already'",
+            "label_en": "Report with 'never' or 'already'",
+            "hidden_prompt": "user uses 'said had never/already + past participle'",
+            "hint_pt": "He said he had never tried sushi.",
+            "hint_en": "He said he had never tried sushi."
+          }
+        ],
+        "closing_cue": "Charlotte fecha com \"Past perfect reports!\" quando obj_3 baterem.",
+        "suggested_flow": "**Suggested flow** (referencial, 6 turnos):\n\n1. **Charlotte**: \"Three things people told you they had already done. Use 'had + past participle'.\"\n2. **Student**: ~\"He said he had finished the report.\"\n3. **Charlotte**: \"Productive. Travel?\"\n4. **Student**: ~\"She told me she had visited Paris twice.\"\n5. **Charlotte**: \"Never done one?\"\n6. **Student**: ~\"He said he had never tried sushi.\"\n7. **Charlotte**: \"Past perfect reports!\"",
+        "evaluation_focus": [
+          "\"Had + past participle\" in reported",
+          "Variety of verbs",
+          "\"Never/already\" placement"
+        ]
+      },
+      "guided_chat": {
+        "scenario": "Charlotte conta de uma reunião onde várias pessoas mencionaram coisas que tinham feito — vocês reportam tudo com past perfect.",
+        "voiced_by": "charlotte",
+        "persona": "Charlotte",
+        "persona_outfit": "charlotte_casual",
+        "intro_en": "Charlotte recaps a meeting. Practice past perfect in reported speech.",
+        "opening_message": "At the meeting, my colleague said she had completed her part. What did she say?",
+        "objectives": [
+          {
+            "id": 1,
+            "label_pt": "Reportar o que ela disse",
+            "label_en": "Report what she said",
+            "hidden_prompt": "user uses 'She said she had + past participle'",
+            "hint_pt": "She said she had completed her part.",
+            "hint_en": "She said she had completed her part."
+          },
+          {
+            "id": 2,
+            "label_pt": "Reportar outra fala",
+            "label_en": "Report another statement",
+            "hidden_prompt": "user uses another reported past perfect",
+            "hint_pt": "Another colleague said he had already sent his notes.",
+            "hint_en": "Another colleague said he had already sent his notes."
+          },
+          {
+            "id": 3,
+            "label_pt": "Perguntar à Charlotte",
+            "label_en": "Ask Charlotte",
+            "hidden_prompt": "user asks Charlotte more about the meeting",
+            "hint_pt": "Did anyone say they hadn't finished?",
+            "hint_en": "Did anyone say they hadn't finished?"
+          }
+        ],
+        "closing_cue": "Charlotte fecha com \"Meeting reported!\" quando obj_3 baterem.",
+        "suggested_script": "**Script** (referencial, 7 turnos):\n\n1. **Charlotte**: \"At the meeting, my colleague said she had completed her part. What did she say?\"\n2. **Student**: \"She said she had completed her part.\"\n3. **Charlotte**: \"Right. Anyone else?\"\n4. **Student**: \"Another colleague said he had already sent his notes.\"\n5. **Charlotte**: \"Productive team.\"\n6. **Student**: \"Did anyone say they hadn't finished?\"\n7. **Charlotte**: \"Yes, two people said they had hit blockers. Meeting reported!\"\n\n> I03 chat = LLM puro. Scaffold via hint_pt.\n\n---"
+      }
+    },
+    {
+      "id": "I04",
+      "title": "He said he would",
+      "sub_cefr": "B2",
+      "grammar_focus": "Reported speech backshift for modals: will → would, can → could, may → might, must → had to",
+      "markers": [
+        "denso"
+      ],
+      "real_life_context": "You report promises, possibilities, abilities, and obligations someone mentioned.",
+      "grammar": [
+        {
+          "type": "multiple_choice",
+          "options": [
+            "would",
+            "will",
+            "could",
+            "had"
+          ],
+          "answer": "would",
+          "explanation": "\"Will\" → \"would\" no reported speech. \"Said he would call\" — promessa reportada."
+        },
+        {
+          "type": "multiple_choice",
+          "options": [
+            "could",
+            "can",
+            "would",
+            "had"
+          ],
+          "answer": "could",
+          "explanation": "\"Can\" → \"could\" no reported. \"Said she could swim\"."
+        },
+        {
+          "type": "word_bank",
+          "choices": [
+            "might",
+            "may",
+            "would",
+            "could"
+          ],
+          "answer": "might",
+          "explanation": "\"May\" → \"might\" em reported speech. \"Might be late\"."
+        },
+        {
+          "type": "word_bank",
+          "choices": [
+            "had to",
+            "must",
+            "would",
+            "could"
+          ],
+          "answer": "had to",
+          "explanation": "\"Must\" → \"had to\" em reported speech. \"Said she had to leave\"."
+        },
+        {
+          "type": "fill_gap",
+          "hint": "would + not (wouldn't)",
+          "answer": "wouldn't",
+          "explanation": "\"Won't\" (will not) → \"wouldn't\" (would not) em reported."
+        },
+        {
+          "type": "fill_gap",
+          "hint": "couldn't (can't → couldn't)",
+          "answer": "couldn't",
+          "explanation": "\"Can't\" → \"couldn't\" em reported. Backshift padrão."
+        },
+        {
+          "type": "fill_gap",
+          "hint": "would (will → would)",
+          "answer": "would",
+          "explanation": "\"Will send\" → \"would send\" em reported speech."
+        },
+        {
+          "type": "fix_error",
+          "hint": "\"Will\" precisa virar \"would\" em reported",
+          "answer": "He said he would help.",
+          "explanation": "Backshift obrigatório: \"will\" → \"would\" quando reporting verb é passado."
+        },
+        {
+          "type": "fix_error",
+          "hint": "\"Must\" → \"had to\" em reported speech",
+          "answer": "She said she had to work the next day.",
+          "explanation": "\"Must\" não muda em alguns contextos modernos, mas em reported speech tradicional → \"had to\"."
+        },
+        {
+          "type": "read_answer",
+          "passage": "He said he would call me later. She said she could speak three languages. He said he might be late for dinner. She said she had to leave early.",
+          "question": "Why might he be late?",
+          "answer": "for dinner (or \"he might be late for dinner\")",
+          "explanation": "The text says \"He said he might be late for dinner\"."
+        }
+      ],
+      "listening_speaking": [
+        {
+          "text": "He said he would call me.",
+          "context": "will → would"
+        },
+        {
+          "text": "She said she could swim.",
+          "context": "can → could"
+        },
+        {
+          "text": "He said he might be late.",
+          "context": "may → might"
+        },
+        {
+          "text": "She said she had to leave.",
+          "context": "must → had to"
+        },
+        {
+          "text": "He said he wouldn't come.",
+          "context": "won't → wouldn't"
+        }
+      ],
+      "roleplay": {
+        "scenario": "Charlotte conta sobre promessas, planos e habilidades de pessoas — você reporta com modal backshift (would, could, might, had to).",
+        "voiced_by": "charlotte",
+        "persona": "Charlotte",
+        "persona_outfit": "charlotte_casual",
+        "time_budget_sec": 180,
+        "opening_line": "Three promises or plans people told you. Use 'would', 'could', or 'might'.",
+        "objectives": [
+          {
+            "id": 1,
+            "label_pt": "Reporte com 'would' (will)",
+            "label_en": "Report with 'would' (will)",
+            "hidden_prompt": "user uses 'X said he/she would + base'",
+            "hint_pt": "He said he would help me with the project.",
+            "hint_en": "He said he would help me with the project."
+          },
+          {
+            "id": 2,
+            "label_pt": "Reporte com 'could' (can)",
+            "label_en": "Report with 'could' (can)",
+            "hidden_prompt": "user uses 'X said he/she could + base'",
+            "hint_pt": "She said she could speak French fluently.",
+            "hint_en": "She said she could speak French fluently."
+          },
+          {
+            "id": 3,
+            "label_pt": "Reporte com 'might' ou 'had to'",
+            "label_en": "Report with 'might' or 'had to'",
+            "hidden_prompt": "user uses 'X said he/she might/had to + base'",
+            "hint_pt": "He said he might be late.",
+            "hint_en": "He said he might be late."
+          }
+        ],
+        "closing_cue": "Charlotte fecha com \"Modal reports nailed!\" quando obj_3 baterem.",
+        "suggested_flow": "**Suggested flow** (referencial, 6 turnos):\n\n1. **Charlotte**: \"Three promises or plans people told you. Use 'would', 'could', or 'might'.\"\n2. **Student**: ~\"He said he would help me with the project.\"\n3. **Charlotte**: \"Reliable. Ability?\"\n4. **Student**: ~\"She said she could speak French fluently.\"\n5. **Charlotte**: \"Possibility?\"\n6. **Student**: ~\"He said he might be late.\"\n7. **Charlotte**: \"Modal reports nailed!\"",
+        "evaluation_focus": [
+          "\"Would, could, might, had to\"",
+          "Modal backshift correct",
+          "Variety"
+        ]
+      },
+      "guided_chat": {
+        "scenario": "Charlotte conta sobre planos de pessoas que ela conheceu — todos com promessas, possibilidades, capacidades — usem modal backshift.",
+        "voiced_by": "charlotte",
+        "persona": "Charlotte",
+        "persona_outfit": "charlotte_casual",
+        "intro_en": "Charlotte shares people's plans. Use 'would, could, might' in reports.",
+        "opening_message": "A friend told me she would visit me next month. What did she promise?",
+        "objectives": [
+          {
+            "id": 1,
+            "label_pt": "Reportar a promessa",
+            "label_en": "Report the promise",
+            "hidden_prompt": "user uses 'She said she would + base'",
+            "hint_pt": "She said she would visit you next month.",
+            "hint_en": "She said she would visit you next month."
+          },
+          {
+            "id": 2,
+            "label_pt": "Reportar outra informação modal",
+            "label_en": "Report another modal info",
+            "hidden_prompt": "user uses another 'said could/might/had to'",
+            "hint_pt": "She mentioned she might bring her sister.",
+            "hint_en": "She mentioned she might bring her sister."
+          },
+          {
+            "id": 3,
+            "label_pt": "Pergunta para Charlotte",
+            "label_en": "Question for Charlotte",
+            "hidden_prompt": "user asks Charlotte more about the visit",
+            "hint_pt": "Did she say when she would arrive?",
+            "hint_en": "Did she say when she would arrive?"
+          }
+        ],
+        "closing_cue": "Charlotte fecha com \"Promises tracked!\" quando obj_3 baterem.",
+        "suggested_script": "**Script** (referencial, 7 turnos):\n\n1. **Charlotte**: \"A friend told me she would visit me next month. What did she promise?\"\n2. **Student**: \"She said she would visit you next month.\"\n3. **Charlotte**: \"Right. Extra info?\"\n4. **Student**: \"She mentioned she might bring her sister.\"\n5. **Charlotte**: \"Bonus guest.\"\n6. **Student**: \"Did she say when she would arrive?\"\n7. **Charlotte**: \"She said she would arrive on the 15th. Promises tracked!\"\n\n> I04 chat = LLM puro. Scaffold via hint_pt.\n\n---"
+      }
+    },
+    {
+      "id": "I05",
+      "title": "Time and place shifts",
+      "sub_cefr": "B2",
+      "grammar_focus": "Time/place changes in reported speech (today → that day, here → there, this → that, tomorrow → the next day, yesterday → the day before)",
+      "markers": [],
+      "real_life_context": "You report with full natural shifts of time/place references — mature reported speech.",
+      "grammar": [
+        {
+          "type": "multiple_choice",
+          "options": [
+            "that day",
+            "today",
+            "this day",
+            "on that"
+          ],
+          "answer": "that day",
+          "explanation": "\"Today\" no reported vira \"that day\" — quando o reporte é depois. Shift natural de tempo."
+        },
+        {
+          "type": "multiple_choice",
+          "options": [
+            "the next day",
+            "tomorrow",
+            "the day after",
+            "next day"
+          ],
+          "answer": "the next day",
+          "explanation": "\"Tomorrow\" → \"the next day\" (or \"the following day\") em reported speech."
+        },
+        {
+          "type": "word_bank",
+          "choices": [
+            "there",
+            "here",
+            "on there",
+            "that there"
+          ],
+          "answer": "there",
+          "explanation": "\"Here\" → \"there\" em reported speech (você não está mais no lugar original)."
+        },
+        {
+          "type": "word_bank",
+          "choices": [
+            "the day before",
+            "yesterday",
+            "the previous day",
+            "one day before"
+          ],
+          "answer": "the day before",
+          "explanation": "\"Yesterday\" → \"the day before\" (ou \"the previous day\") em reported."
+        },
+        {
+          "type": "fill_gap",
+          "hint": "\"this\" → \"that\"",
+          "answer": "that",
+          "explanation": "\"This\" → \"that\" em reported speech — você está mais distante do referente."
+        },
+        {
+          "type": "fill_gap",
+          "hint": "\"next\" → \"following\"",
+          "answer": "following",
+          "explanation": "\"Next week\" → \"the following week\" em reported."
+        },
+        {
+          "type": "fill_gap",
+          "hint": "\"here\" → \"there\"",
+          "answer": "there",
+          "explanation": "\"Here\" → \"there\" + \"last year\" → \"the year before\"."
+        },
+        {
+          "type": "fix_error",
+          "hint": "\"Here\" precisa mudar — você não está no mesmo lugar",
+          "answer": "He said he worked there.",
+          "explanation": "\"Here\" só permanece se você ainda está no mesmo lugar. Para reporte distante, \"there\"."
+        },
+        {
+          "type": "fix_error",
+          "hint": "Para reporte depois, \"tomorrow\" → \"the next day\"",
+          "answer": "She said she would see me the next day.",
+          "explanation": "\"Tomorrow\" só permanece se o reporte ainda for hoje. Caso contrário, \"the next day\"."
+        },
+        {
+          "type": "read_answer",
+          "passage": "He said he was tired that day. She said she would come the next day. He said he had been there the day before. She said she loved that song.",
+          "question": "When did she say she would come?",
+          "answer": "the next day (or \"the following day\")",
+          "explanation": "The text says \"She said she would come the next day\"."
+        }
+      ],
+      "listening_speaking": [
+        {
+          "text": "He said he was tired that day.",
+          "context": "today → that day"
+        },
+        {
+          "text": "She said she would come the next day.",
+          "context": "tomorrow → the next day"
+        },
+        {
+          "text": "He said he had been there.",
+          "context": "here → there"
+        },
+        {
+          "text": "She said she loved that song.",
+          "context": "this → that"
+        },
+        {
+          "text": "He mentioned he had seen it the day before.",
+          "context": "yesterday → the day before"
+        }
+      ],
+      "roleplay": {
+        "scenario": "Charlotte conta sobre conversas de vários dias atrás — você reporta com todas as mudanças de tempo/lugar.",
+        "voiced_by": "charlotte",
+        "persona": "Charlotte",
+        "persona_outfit": "charlotte_casual",
+        "time_budget_sec": 180,
+        "opening_line": "Three things people said days ago — shift time and place correctly.",
+        "objectives": [
+          {
+            "id": 1,
+            "label_pt": "Reporte com mudança de tempo (today/yesterday)",
+            "label_en": "Report with time shift",
+            "hidden_prompt": "user uses 'said... that day' or 'said... the day before'",
+            "hint_pt": "He said he was tired that day.",
+            "hint_en": "He said he was tired that day."
+          },
+          {
+            "id": 2,
+            "label_pt": "Reporte com 'the next day' ou 'the following week'",
+            "label_en": "Report with 'the next day'",
+            "hidden_prompt": "user uses 'said would + base + the next day/following week'",
+            "hint_pt": "She said she would come the next day.",
+            "hint_en": "She said she would come the next day."
+          },
+          {
+            "id": 3,
+            "label_pt": "Reporte com mudança de lugar (here → there)",
+            "label_en": "Report with place shift",
+            "hidden_prompt": "user uses 'said... there' instead of 'here'",
+            "hint_pt": "He said he had been there before.",
+            "hint_en": "He said he had been there before."
+          }
+        ],
+        "closing_cue": "Charlotte fecha com \"Time-place shifts done!\" quando obj_3 baterem.",
+        "suggested_flow": "**Suggested flow** (referencial, 6 turnos):\n\n1. **Charlotte**: \"Three things people said days ago — shift time and place correctly.\"\n2. **Student**: ~\"He said he was tired that day.\"\n3. **Charlotte**: \"Time shift good. Future?\"\n4. **Student**: ~\"She said she would come the next day.\"\n5. **Charlotte**: \"Place?\"\n6. **Student**: ~\"He said he had been there before.\"\n7. **Charlotte**: \"Time-place shifts done!\"",
+        "evaluation_focus": [
+          "\"That day, the next day, the day before, there, that\"",
+          "Full reported speech maturity",
+          "Natural flow"
+        ]
+      },
+      "guided_chat": {
+        "scenario": "Charlotte conta uma história complexa de uma conversa com várias pessoas semana passada — vocês reportam tudo com shifts perfeitos.",
+        "voiced_by": "charlotte",
+        "persona": "Charlotte",
+        "persona_outfit": "charlotte_casual",
+        "intro_en": "Charlotte tells a layered conversation. Use full backshift, time, and place shifts.",
+        "opening_message": "Last week, my friend said she was moving here. What did she say?",
+        "objectives": [
+          {
+            "id": 1,
+            "label_pt": "Reportar com shift de lugar",
+            "label_en": "Report with place shift",
+            "hidden_prompt": "user uses 'She said she was moving there'",
+            "hint_pt": "She said she was moving there.",
+            "hint_en": "She said she was moving there."
+          },
+          {
+            "id": 2,
+            "label_pt": "Reporte com shift de tempo",
+            "label_en": "Report with time shift",
+            "hidden_prompt": "user uses 'she said she would arrive the following week' or similar",
+            "hint_pt": "She said she would arrive the following month.",
+            "hint_en": "She said she would arrive the following month."
+          },
+          {
+            "id": 3,
+            "label_pt": "Perguntar à Charlotte",
+            "label_en": "Ask Charlotte",
+            "hidden_prompt": "user asks Charlotte more about the conversation",
+            "hint_pt": "Did she say why she was moving?",
+            "hint_en": "Did she say why she was moving?"
+          }
+        ],
+        "closing_cue": "Charlotte fecha com \"Layered conversation reported!\" quando obj_3 baterem.",
+        "suggested_script": "**Script** (referencial, 7 turnos):\n\n1. **Charlotte**: \"Last week, my friend said she was moving here. What did she say?\"\n2. **Student**: \"She said she was moving there.\"\n3. **Charlotte**: \"Right. When?\"\n4. **Student**: \"She said she would arrive the following month.\"\n5. **Charlotte**: \"Big change.\"\n6. **Student**: \"Did she say why she was moving?\"\n7. **Charlotte**: \"Yes — she had been offered a job there. Layered conversation reported!\"\n\n> I05 chat = LLM puro. Scaffold via hint_pt.\n\n---"
+      }
+    }
+  ],
+  "cross_unit_consolidation": [
+    "\"Said\" (sem objeto) vs \"told\" (com objeto)",
+    "Backshift: present → past, past → past perfect, will → would, can → could, may → might, must → had to",
+    "Mudanças de tempo: today → that day, tomorrow → the next day, yesterday → the day before, now → then",
+    "Mudanças de lugar: here → there",
+    "Mudanças de pronome: I → he/she, you → I/me, we → they",
+    "Mudanças de demonstrativo: this → that, these → those",
+    "Reporting verbs alternativos: mentioned, explained, claimed, stated"
+  ]
+}

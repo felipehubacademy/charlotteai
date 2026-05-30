@@ -1,0 +1,991 @@
+{
+  "id": "M18",
+  "title": "Perguntas reportadas",
+  "level": "Inter",
+  "block": "B2",
+  "units_range": "I01–I05",
+  "theme": "Reported questions and commands (asked if/whether, asked WH, told to + base, asked to + base)",
+  "goal": "Student reports yes/no questions, WH-questions, commands, and requests with correct word order (no inversion) and proper structure.",
+  "connects_to": "M19 (Relative clauses non-defining) — informational expansion in sentences.",
+  "module_chunks": [
+    "He asked if I was tired",
+    "She asked whether I had finished",
+    "He wanted to know if/whether",
+    "She asked where I lived",
+    "He asked what time it was",
+    "She wanted to know how it worked",
+    "He told me to leave",
+    "She asked me to help",
+    "He told me not to wait",
+    "He warned me not to go"
+  ],
+  "units": [
+    {
+      "id": "I01",
+      "title": "He asked if",
+      "sub_cefr": "B2",
+      "grammar_focus": "Reported yes/no questions (if/whether + statement word order)",
+      "markers": [
+        "qform"
+      ],
+      "real_life_context": "You report yes/no questions someone asked, without inverting subject and verb.",
+      "grammar": [
+        {
+          "type": "multiple_choice",
+          "options": [
+            "if",
+            "what",
+            "why",
+            "that"
+          ],
+          "answer": "if",
+          "explanation": "Yes/no questions reportadas usam \"if\" ou \"whether\". \"He asked if I was tired\" — sem inversão, ordem de afirmação."
+        },
+        {
+          "type": "multiple_choice",
+          "options": [
+            "lived",
+            "live",
+            "am living",
+            "do live"
+          ],
+          "answer": "lived",
+          "explanation": "Backshift: \"do you live\" → \"lived\" (past simple). \"Here\" → \"there\". Sem auxiliar \"do\" no reported."
+        },
+        {
+          "type": "word_bank",
+          "choices": [
+            "had finished",
+            "have finished",
+            "finished",
+            "was finishing"
+          ],
+          "answer": "had finished",
+          "explanation": "Present perfect (\"have finished\") → past perfect (\"had finished\") em reported."
+        },
+        {
+          "type": "word_bank",
+          "choices": [
+            "if",
+            "what",
+            "when",
+            "that"
+          ],
+          "answer": "if",
+          "explanation": "Yes/no question com \"will\" → \"if + subject + would\". \"Asked if I would come\"."
+        },
+        {
+          "type": "fill_gap",
+          "hint": "if / was",
+          "answer": "if / was",
+          "explanation": "\"If\" + ordem afirmativa + backshift \"are\" → \"was\"."
+        },
+        {
+          "type": "fill_gap",
+          "hint": "past simple \"speak\"",
+          "answer": "spoke",
+          "explanation": "\"Do you speak\" → \"spoke\" no reported (sem \"do\"). Estrutura afirmativa."
+        },
+        {
+          "type": "fill_gap",
+          "hint": "could (can → could)",
+          "answer": "could",
+          "explanation": "Modal \"can\" → \"could\" em reported. \"If I could swim\"."
+        },
+        {
+          "type": "fix_error",
+          "hint": "Reported question não tem inversão",
+          "answer": "He asked if I was tired.",
+          "explanation": "Erro clássico: manter inversão da pergunta direta. Em reported, ordem é AFIRMATIVA: \"if + subject + verb\"."
+        },
+        {
+          "type": "fix_error",
+          "hint": "Sem auxiliar \"do\" em reported",
+          "answer": "She asked if I liked coffee.",
+          "explanation": "Não usa \"do\" como auxiliar em reported (não é mais pergunta direta). Forma direta passa para forma afirmativa do tempo verbal."
+        },
+        {
+          "type": "read_answer",
+          "passage": "He asked if I was tired. She asked if I lived in São Paulo. He asked if I had finished the report. She asked if I would come to the party. He asked if I could swim.",
+          "question": "What did she ask about my home?",
+          "answer": "if I lived in São Paulo",
+          "explanation": "The text says \"She asked if I lived in São Paulo\"."
+        }
+      ],
+      "listening_speaking": [
+        {
+          "text": "He asked if I was tired.",
+          "context": "basic yes/no reported"
+        },
+        {
+          "text": "She asked if I lived there.",
+          "context": "yes/no with place"
+        },
+        {
+          "text": "He asked if I had finished.",
+          "context": "present perfect → past perfect"
+        },
+        {
+          "text": "She asked if I would come.",
+          "context": "will → would"
+        },
+        {
+          "text": "He asked if I could swim.",
+          "context": "can → could"
+        }
+      ],
+      "roleplay": {
+        "scenario": "Charlotte conta sobre perguntas que pessoas fizeram a ela — você reporta as perguntas yes/no com \"if\".",
+        "voiced_by": "charlotte",
+        "persona": "Charlotte",
+        "persona_outfit": "charlotte_casual",
+        "time_budget_sec": 180,
+        "opening_line": "Three yes/no questions people asked you. Report them with 'asked if'.",
+        "objectives": [
+          {
+            "id": 1,
+            "label_pt": "Pergunta yes/no reportada (presente → passado)",
+            "label_en": "Yes/no reported (present → past)",
+            "hidden_prompt": "user uses 'X asked if I + past tense'",
+            "hint_pt": "She asked if I had time.",
+            "hint_en": "She asked if I had time."
+          },
+          {
+            "id": 2,
+            "label_pt": "Outra pergunta yes/no (modal)",
+            "label_en": "Another yes/no (modal)",
+            "hidden_prompt": "user uses 'asked if I could/would'",
+            "hint_pt": "He asked if I could help him.",
+            "hint_en": "He asked if I could help him."
+          },
+          {
+            "id": 3,
+            "label_pt": "Pergunta com 'whether' (sinônimo formal de 'if')",
+            "label_en": "Question with 'whether'",
+            "hidden_prompt": "user uses 'asked whether'",
+            "hint_pt": "She wanted to know whether I had read the book.",
+            "hint_en": "She wanted to know whether I had read the book."
+          }
+        ],
+        "closing_cue": "Charlotte fecha com \"Yes/no reports done!\" quando obj_3 baterem.",
+        "suggested_flow": "**Suggested flow** (referencial, 6 turnos):\n\n1. **Charlotte**: \"Three yes/no questions people asked you. Report them with 'asked if'.\"\n2. **Student**: ~\"She asked if I had time.\"\n3. **Charlotte**: \"Quick check. Modal?\"\n4. **Student**: ~\"He asked if I could help him.\"\n5. **Charlotte**: \"Whether?\"\n6. **Student**: ~\"She wanted to know whether I had read the book.\"\n7. **Charlotte**: \"Yes/no reports done!\"",
+        "evaluation_focus": [
+          "\"If/whether + statement order\"",
+          "Backshift",
+          "No \"do\" auxiliary"
+        ]
+      },
+      "guided_chat": {
+        "scenario": "Charlotte conta sobre uma entrevista de emprego onde fizeram várias perguntas — você reporta as perguntas yes/no.",
+        "voiced_by": "charlotte",
+        "persona": "Charlotte",
+        "persona_outfit": "charlotte_casual",
+        "intro_en": "Charlotte recalls an interview. Report yes/no questions with 'if/whether'.",
+        "opening_message": "The interviewer asked me if I had experience with project management. What did she ask?",
+        "objectives": [
+          {
+            "id": 1,
+            "label_pt": "Reportar a pergunta da entrevista",
+            "label_en": "Report the interview question",
+            "hidden_prompt": "user uses 'She asked if you had experience'",
+            "hint_pt": "She asked if you had experience with project management.",
+            "hint_en": "She asked if you had experience with project management."
+          },
+          {
+            "id": 2,
+            "label_pt": "Reportar outra pergunta",
+            "label_en": "Report another question",
+            "hidden_prompt": "user reports another yes/no question",
+            "hint_pt": "She also asked if you could start in two weeks.",
+            "hint_en": "She also asked if you could start in two weeks."
+          },
+          {
+            "id": 3,
+            "label_pt": "Perguntar à Charlotte",
+            "label_en": "Ask Charlotte",
+            "hidden_prompt": "user asks about the outcome",
+            "hint_pt": "Did you get the job?",
+            "hint_en": "Did you get the job?"
+          }
+        ],
+        "closing_cue": "Charlotte fecha com \"Interview replay done!\" quando obj_3 baterem.",
+        "suggested_script": "**Script** (referencial, 7 turnos):\n\n1. **Charlotte**: \"The interviewer asked me if I had experience with project management. What did she ask?\"\n2. **Student**: \"She asked if you had experience with project management.\"\n3. **Charlotte**: \"Right. What else?\"\n4. **Student**: \"She also asked if you could start in two weeks.\"\n5. **Charlotte**: \"Tight timeline.\"\n6. **Student**: \"Did you get the job?\"\n7. **Charlotte**: \"Yes! Interview replay done!\"\n\n> I01 chat = LLM puro. Scaffold via hint_pt.\n\n---"
+      }
+    },
+    {
+      "id": "I02",
+      "title": "She asked where",
+      "sub_cefr": "B2",
+      "grammar_focus": "Reported WH-questions (where, what, when, who, why, how — no inversion)",
+      "markers": [
+        "qform"
+      ],
+      "real_life_context": "You report open-ended questions with WH-words.",
+      "grammar": [
+        {
+          "type": "multiple_choice",
+          "options": [
+            "where",
+            "what",
+            "if",
+            "when"
+          ],
+          "answer": "where",
+          "explanation": "WH-question reportada mantém o WH-word (\"where\"). Sem inversão, sem \"do\". \"Asked where I lived\" — ordem afirmativa."
+        },
+        {
+          "type": "multiple_choice",
+          "options": [
+            "what time it was",
+            "what time was it",
+            "what time is it",
+            "what was the time"
+          ],
+          "answer": "what time it was",
+          "explanation": "Manter \"what time\" + ordem afirmativa \"it was\". Sem inversão verbo-sujeito."
+        },
+        {
+          "type": "word_bank",
+          "choices": [
+            "how I did it",
+            "how did I do it",
+            "how I do it",
+            "how do I do it"
+          ],
+          "answer": "how I did it",
+          "explanation": "\"How + subject + past simple\" sem \"do\". \"How I did it\" — afirmativa no reported."
+        },
+        {
+          "type": "word_bank",
+          "choices": [
+            "why I was late",
+            "why was I late",
+            "why I am late",
+            "why am I late"
+          ],
+          "answer": "why I was late",
+          "explanation": "\"Why + I + was\" — ordem afirmativa, backshift de \"are\" para \"was\"."
+        },
+        {
+          "type": "fill_gap",
+          "hint": "would (will → would)",
+          "answer": "would",
+          "explanation": "\"Will\" → \"would\" em reported. \"When I would arrive\"."
+        },
+        {
+          "type": "fill_gap",
+          "hint": "was (is → was)",
+          "answer": "was",
+          "explanation": "\"Is\" → \"was\" em reported. \"Who my boss was\" — afirmativa."
+        },
+        {
+          "type": "fill_gap",
+          "hint": "what (WH-word) + sem auxiliar",
+          "answer": "what",
+          "explanation": "WH-word \"what\" + ordem afirmativa. Backshift \"want\" → \"wanted\"."
+        },
+        {
+          "type": "fix_error",
+          "hint": "Sem inversão, sem \"do\"",
+          "answer": "He asked where I lived.",
+          "explanation": "\"Do I live\" mantém estrutura de pergunta. Em reported, vira afirmativa: \"I lived\" (sem \"do\")."
+        },
+        {
+          "type": "fix_error",
+          "hint": "Sem inversão",
+          "answer": "She asked what time it was.",
+          "explanation": "\"Was it\" mantém inversão da pergunta. Em reported, ordem afirmativa: \"it was\"."
+        },
+        {
+          "type": "read_answer",
+          "passage": "He asked where I lived. She asked what time it was. He asked how I did it. She asked why I was late. He asked when I would arrive.",
+          "question": "What did he ask about my home?",
+          "answer": "where I lived",
+          "explanation": "The text says \"He asked where I lived\"."
+        }
+      ],
+      "listening_speaking": [
+        {
+          "text": "He asked where I lived.",
+          "context": "where + statement"
+        },
+        {
+          "text": "She asked what time it was.",
+          "context": "what + statement"
+        },
+        {
+          "text": "He asked how I did it.",
+          "context": "how + statement"
+        },
+        {
+          "text": "She asked why I was late.",
+          "context": "why + statement"
+        },
+        {
+          "text": "He asked when I would arrive.",
+          "context": "when + would"
+        }
+      ],
+      "roleplay": {
+        "scenario": "Charlotte conta sobre perguntas curiosas que fizeram a ela — você reporta as WH-questions.",
+        "voiced_by": "charlotte",
+        "persona": "Charlotte",
+        "persona_outfit": "charlotte_casual",
+        "time_budget_sec": 180,
+        "opening_line": "Three WH-questions people asked you. Report them — no inversion!",
+        "objectives": [
+          {
+            "id": 1,
+            "label_pt": "Reporte com 'where/when'",
+            "label_en": "Report with 'where/when'",
+            "hidden_prompt": "user uses 'X asked where/when I + past tense'",
+            "hint_pt": "He asked where I worked.",
+            "hint_en": "He asked where I worked."
+          },
+          {
+            "id": 2,
+            "label_pt": "Reporte com 'what/how'",
+            "label_en": "Report with 'what/how'",
+            "hidden_prompt": "user uses 'X asked what/how + subject + past tense'",
+            "hint_pt": "She asked how I had learned English.",
+            "hint_en": "She asked how I had learned English."
+          },
+          {
+            "id": 3,
+            "label_pt": "Reporte com 'why/who'",
+            "label_en": "Report with 'why/who'",
+            "hidden_prompt": "user uses 'X asked why/who + subject + past tense'",
+            "hint_pt": "He asked why I had moved.",
+            "hint_en": "He asked why I had moved."
+          }
+        ],
+        "closing_cue": "Charlotte fecha com \"WH-reports nailed!\" quando obj_3 baterem.",
+        "suggested_flow": "**Suggested flow** (referencial, 6 turnos):\n\n1. **Charlotte**: \"Three WH-questions people asked you. Report them — no inversion!\"\n2. **Student**: ~\"He asked where I worked.\"\n3. **Charlotte**: \"Classic. Another?\"\n4. **Student**: ~\"She asked how I had learned English.\"\n5. **Charlotte**: \"Personal one?\"\n6. **Student**: ~\"He asked why I had moved.\"\n7. **Charlotte**: \"WH-reports nailed!\"",
+        "evaluation_focus": [
+          "WH-word + statement order",
+          "No \"do\" auxiliary",
+          "Backshift correct"
+        ]
+      },
+      "guided_chat": {
+        "scenario": "Charlotte conta sobre uma reunião onde ela teve que responder muitas perguntas — vocês reportam as WH-questions juntos.",
+        "voiced_by": "charlotte",
+        "persona": "Charlotte",
+        "persona_outfit": "charlotte_casual",
+        "intro_en": "Charlotte recalls a Q&A. Use WH-reported speech.",
+        "opening_message": "My boss asked me why I had missed the meeting. What did he ask?",
+        "objectives": [
+          {
+            "id": 1,
+            "label_pt": "Reportar a pergunta dele",
+            "label_en": "Report his question",
+            "hidden_prompt": "user uses 'He asked why you had missed the meeting'",
+            "hint_pt": "He asked why you had missed the meeting.",
+            "hint_en": "He asked why you had missed the meeting."
+          },
+          {
+            "id": 2,
+            "label_pt": "Outra WH-pergunta",
+            "label_en": "Another WH-question",
+            "hidden_prompt": "user reports another WH-question",
+            "hint_pt": "He also asked what you had been working on.",
+            "hint_en": "He also asked what you had been working on."
+          },
+          {
+            "id": 3,
+            "label_pt": "Perguntar à Charlotte",
+            "label_en": "Ask Charlotte",
+            "hidden_prompt": "user asks Charlotte for more details",
+            "hint_pt": "What did you say?",
+            "hint_en": "What did you say?"
+          }
+        ],
+        "closing_cue": "Charlotte fecha com \"Q&A reported!\" quando obj_3 baterem.",
+        "suggested_script": "**Script** (referencial, 7 turnos):\n\n1. **Charlotte**: \"My boss asked me why I had missed the meeting. What did he ask?\"\n2. **Student**: \"He asked why you had missed the meeting.\"\n3. **Charlotte**: \"Right. He also wanted details.\"\n4. **Student**: \"He also asked what you had been working on.\"\n5. **Charlotte**: \"Hard question to answer fast.\"\n6. **Student**: \"What did you say?\"\n7. **Charlotte**: \"I told him I had been finishing a critical task. Q&A reported!\"\n\n> I02 chat = LLM puro. Scaffold via hint_pt.\n\n---"
+      }
+    },
+    {
+      "id": "I03",
+      "title": "He told me to",
+      "sub_cefr": "B2",
+      "grammar_focus": "Reported commands (told + person + to + base / told + person + not to + base)",
+      "markers": [
+        "denso"
+      ],
+      "real_life_context": "You report orders, instructions, or directives someone gave.",
+      "grammar": [
+        {
+          "type": "multiple_choice",
+          "options": [
+            "to close",
+            "close",
+            "closing",
+            "closed"
+          ],
+          "answer": "to close",
+          "explanation": "Reported commands = \"told + person + to + base form\". \"Told me to close the door\"."
+        },
+        {
+          "type": "multiple_choice",
+          "options": [
+            "not to wait",
+            "to not wait",
+            "don't wait",
+            "not waiting"
+          ],
+          "answer": "not to wait",
+          "explanation": "Comando negativo: \"NOT TO + base\". \"Told me not to wait\" — \"not\" antes de \"to\"."
+        },
+        {
+          "type": "word_bank",
+          "choices": [
+            "to be",
+            "be",
+            "being",
+            "been"
+          ],
+          "answer": "to be",
+          "explanation": "\"Told us to be quiet\" — to + base form do verbo \"be\"."
+        },
+        {
+          "type": "word_bank",
+          "choices": [
+            "not to speak",
+            "to not speak",
+            "don't speak",
+            "not speaking"
+          ],
+          "answer": "not to speak",
+          "explanation": "Negativo padrão: \"not to + base\". \"Not to speak loudly\"."
+        },
+        {
+          "type": "fill_gap",
+          "hint": "to + base \"open\"",
+          "answer": "to open",
+          "explanation": "\"To open\" — comando direto vira \"to + base\"."
+        },
+        {
+          "type": "fill_gap",
+          "hint": "not to be",
+          "answer": "not to be",
+          "explanation": "Comando negativo com verbo \"be\": \"not to be late\"."
+        },
+        {
+          "type": "fill_gap",
+          "hint": "to + base \"stop\"",
+          "answer": "to stop",
+          "explanation": "\"To stop running\" — comando direto reportado."
+        },
+        {
+          "type": "fix_error",
+          "hint": "Falta \"to\"",
+          "answer": "He told me to sit down.",
+          "explanation": "Sempre \"told + person + TO + base\". \"Sit down\" sem \"to\" não funciona em reported."
+        },
+        {
+          "type": "fix_error",
+          "hint": "\"Not to + base\", sem \"don't\"",
+          "answer": "She told me not to shout.",
+          "explanation": "Em reported, \"don't\" desaparece. Negativo é \"NOT TO + base\". \"To don't shout\" não existe."
+        },
+        {
+          "type": "read_answer",
+          "passage": "He told me to close the door. She told me not to wait. He told us to be quiet. She told them not to speak loudly. He told me to open the window.",
+          "question": "What did she tell them not to do?",
+          "answer": "speak loudly (or \"not to speak loudly\")",
+          "explanation": "The text says \"She told them not to speak loudly\"."
+        }
+      ],
+      "listening_speaking": [
+        {
+          "text": "He told me to close the door.",
+          "context": "direct command"
+        },
+        {
+          "text": "She told me not to wait.",
+          "context": "negative command"
+        },
+        {
+          "text": "He told us to be quiet.",
+          "context": "be + adjective"
+        },
+        {
+          "text": "She told them not to speak loudly.",
+          "context": "negative + adverb"
+        },
+        {
+          "text": "He told me to call him later.",
+          "context": "command + adverb"
+        }
+      ],
+      "roleplay": {
+        "scenario": "Charlotte pergunta sobre ordens recentes que você recebeu — você reporta com \"told me to\" e \"told me not to\".",
+        "voiced_by": "charlotte",
+        "persona": "Charlotte",
+        "persona_outfit": "charlotte_casual",
+        "time_budget_sec": 180,
+        "opening_line": "Three things people told you to do or not to do this week.",
+        "objectives": [
+          {
+            "id": 1,
+            "label_pt": "Comando com 'told me to'",
+            "label_en": "Command with 'told me to'",
+            "hidden_prompt": "user uses 'X told me to + base'",
+            "hint_pt": "My boss told me to send the report.",
+            "hint_en": "My boss told me to send the report."
+          },
+          {
+            "id": 2,
+            "label_pt": "Comando negativo 'told me not to'",
+            "label_en": "Negative command 'told me not to'",
+            "hidden_prompt": "user uses 'X told me not to + base'",
+            "hint_pt": "My mom told me not to worry.",
+            "hint_en": "My mom told me not to worry."
+          },
+          {
+            "id": 3,
+            "label_pt": "Outro comando reportado",
+            "label_en": "Another reported command",
+            "hidden_prompt": "user uses another 'told + person + to + base'",
+            "hint_pt": "The doctor told me to drink more water.",
+            "hint_en": "The doctor told me to drink more water."
+          }
+        ],
+        "closing_cue": "Charlotte fecha com \"Commands reported!\" quando obj_3 baterem.",
+        "suggested_flow": "**Suggested flow** (referencial, 6 turnos):\n\n1. **Charlotte**: \"Three things people told you to do or not to do this week.\"\n2. **Student**: ~\"My boss told me to send the report.\"\n3. **Charlotte**: \"Standard work. Personal?\"\n4. **Student**: ~\"My mom told me not to worry.\"\n5. **Charlotte**: \"Caring mom. Health?\"\n6. **Student**: ~\"The doctor told me to drink more water.\"\n7. **Charlotte**: \"Commands reported!\"",
+        "evaluation_focus": [
+          "\"Told + person + to + base\"",
+          "Negative \"not to + base\"",
+          "\"Told\" with person object"
+        ]
+      },
+      "guided_chat": {
+        "scenario": "Charlotte conversa sobre conselhos e ordens recentes — vocês reportam comandos com \"told me to\" e \"told me not to\".",
+        "voiced_by": "charlotte",
+        "persona": "Charlotte",
+        "persona_outfit": "charlotte_casual",
+        "intro_en": "Charlotte shares orders she received. Practice 'told me to + base'.",
+        "opening_message": "My doctor told me to exercise more. What did she tell me?",
+        "objectives": [
+          {
+            "id": 1,
+            "label_pt": "Reportar a ordem dela",
+            "label_en": "Report her command",
+            "hidden_prompt": "user uses 'She told you to exercise more'",
+            "hint_pt": "She told you to exercise more.",
+            "hint_en": "She told you to exercise more."
+          },
+          {
+            "id": 2,
+            "label_pt": "Outra ordem reportada",
+            "label_en": "Another reported command",
+            "hidden_prompt": "user reports another command",
+            "hint_pt": "She also told you to drink less coffee.",
+            "hint_en": "She also told you to drink less coffee."
+          },
+          {
+            "id": 3,
+            "label_pt": "Perguntar à Charlotte",
+            "label_en": "Ask Charlotte",
+            "hidden_prompt": "user asks Charlotte if she'll follow the orders",
+            "hint_pt": "Are you going to follow her advice?",
+            "hint_en": "Are you going to follow her advice?"
+          }
+        ],
+        "closing_cue": "Charlotte fecha com \"Orders relayed!\" quando obj_3 baterem.",
+        "suggested_script": "**Script** (referencial, 7 turnos):\n\n1. **Charlotte**: \"My doctor told me to exercise more. What did she tell me?\"\n2. **Student**: \"She told you to exercise more.\"\n3. **Charlotte**: \"Right. And what else?\"\n4. **Student**: \"She also told you to drink less coffee.\"\n5. **Charlotte**: \"Hardest one.\"\n6. **Student**: \"Are you going to follow her advice?\"\n7. **Charlotte**: \"I'll try. Orders relayed!\"\n\n> I03 chat = LLM puro. Scaffold via hint_pt.\n\n---"
+      }
+    },
+    {
+      "id": "I04",
+      "title": "She asked me to",
+      "sub_cefr": "B2",
+      "grammar_focus": "Reported requests (asked + person + to + base) and reporting verbs (asked, begged, urged, warned)",
+      "markers": [
+        "denso"
+      ],
+      "real_life_context": "You report polite requests, pleas, warnings, and suggestions.",
+      "grammar": [
+        {
+          "type": "multiple_choice",
+          "options": [
+            "to help",
+            "help",
+            "helping",
+            "helped"
+          ],
+          "answer": "to help",
+          "explanation": "Pedidos reportados: \"asked + person + to + base\". \"Asked me to help her\" — pedido educado virou comando estrutural."
+        },
+        {
+          "type": "multiple_choice",
+          "options": [
+            "not to tell",
+            "to not tell",
+            "don't tell",
+            "not telling"
+          ],
+          "answer": "not to tell",
+          "explanation": "Pedido negativo: \"asked me not to tell\". \"Not\" antes de \"to\"."
+        },
+        {
+          "type": "word_bank",
+          "choices": [
+            "warned",
+            "asked",
+            "told",
+            "urged"
+          ],
+          "answer": "warned",
+          "explanation": "\"Warned + person + to + base\" — verbo de aviso. Mais forte que \"asked\"."
+        },
+        {
+          "type": "word_bank",
+          "choices": [
+            "begged",
+            "asked",
+            "told",
+            "warned"
+          ],
+          "answer": "begged",
+          "explanation": "\"Begged + person + to + base\" — pedido emocional, suplicante."
+        },
+        {
+          "type": "fill_gap",
+          "hint": "to + base \"wait\"",
+          "answer": "to wait",
+          "explanation": "\"To wait\" — pedido educado reportado."
+        },
+        {
+          "type": "fill_gap",
+          "hint": "not to be",
+          "answer": "not to be",
+          "explanation": "Pedido negativo com \"be\": \"not to be late\"."
+        },
+        {
+          "type": "fill_gap",
+          "hint": "urged (encorajamento forte)",
+          "answer": "urged",
+          "explanation": "\"Urged + person + to + base\" — pedido enfático, encorajamento."
+        },
+        {
+          "type": "fix_error",
+          "hint": "\"Please\" desaparece em reported speech",
+          "answer": "She asked me to help her.",
+          "explanation": "\"Please\" não aparece em reported speech. \"Asked\" já implica pedido educado. Só estrutura."
+        },
+        {
+          "type": "fix_error",
+          "hint": "\"Asked me + to + base\", não \"that\"",
+          "answer": "He asked me to call him.",
+          "explanation": "Pedidos não usam \"that-clause\". Estrutura fixa: \"asked + person + TO + base\"."
+        },
+        {
+          "type": "read_answer",
+          "passage": "She asked me to help her. He asked me not to tell anyone. She warned me to be careful. He begged me to reconsider. She urged me to try harder.",
+          "question": "What did he beg her to do?",
+          "answer": "reconsider (or \"to reconsider\")",
+          "explanation": "The text says \"He begged me to reconsider\"."
+        }
+      ],
+      "listening_speaking": [
+        {
+          "text": "She asked me to help her.",
+          "context": "polite request"
+        },
+        {
+          "text": "He asked me not to tell.",
+          "context": "negative request"
+        },
+        {
+          "text": "She warned me to be careful.",
+          "context": "warning"
+        },
+        {
+          "text": "He begged me to stay.",
+          "context": "emotional plea"
+        },
+        {
+          "text": "She urged me to apply.",
+          "context": "encouragement"
+        }
+      ],
+      "roleplay": {
+        "scenario": "Charlotte pergunta sobre pedidos recentes que você recebeu — você reporta com \"asked me to\", \"warned me to\", \"begged me to\".",
+        "voiced_by": "charlotte",
+        "persona": "Charlotte",
+        "persona_outfit": "charlotte_casual",
+        "time_budget_sec": 180,
+        "opening_line": "Three things people asked, warned, or begged you to do. Use varied reporting verbs.",
+        "objectives": [
+          {
+            "id": 1,
+            "label_pt": "Pedido com 'asked me to'",
+            "label_en": "Request with 'asked me to'",
+            "hidden_prompt": "user uses 'X asked me to + base'",
+            "hint_pt": "A friend asked me to drive him to the airport.",
+            "hint_en": "A friend asked me to drive him to the airport."
+          },
+          {
+            "id": 2,
+            "label_pt": "Aviso com 'warned me to'",
+            "label_en": "Warning with 'warned me to'",
+            "hidden_prompt": "user uses 'X warned me to/not to + base'",
+            "hint_pt": "My mom warned me not to overwork.",
+            "hint_en": "My mom warned me not to overwork."
+          },
+          {
+            "id": 3,
+            "label_pt": "Súplica com 'begged me to'",
+            "label_en": "Plea with 'begged me to'",
+            "hidden_prompt": "user uses 'X begged me to + base'",
+            "hint_pt": "She begged me to stay one more day.",
+            "hint_en": "She begged me to stay one more day."
+          }
+        ],
+        "closing_cue": "Charlotte fecha com \"Reporting verbs varied!\" quando obj_3 baterem.",
+        "suggested_flow": "**Suggested flow** (referencial, 6 turnos):\n\n1. **Charlotte**: \"Three things people asked, warned, or begged you to do. Use varied reporting verbs.\"\n2. **Student**: ~\"A friend asked me to drive him to the airport.\"\n3. **Charlotte**: \"Favor done. Warning?\"\n4. **Student**: ~\"My mom warned me not to overwork.\"\n5. **Charlotte**: \"Caring. Plea?\"\n6. **Student**: ~\"She begged me to stay one more day.\"\n7. **Charlotte**: \"Reporting verbs varied!\"",
+        "evaluation_focus": [
+          "Variety: asked, warned, begged, urged",
+          "\"+ person + to + base\"",
+          "Negative \"not to + base\""
+        ]
+      },
+      "guided_chat": {
+        "scenario": "Charlotte conta uma situação intensa — várias pessoas pediram coisas dela em rapidez — você reporta tudo com variedade de verbos.",
+        "voiced_by": "charlotte",
+        "persona": "Charlotte",
+        "persona_outfit": "charlotte_casual",
+        "intro_en": "Charlotte juggles requests. Use 'asked, warned, begged, urged'.",
+        "opening_message": "My boss asked me to take on extra work. What did she ask?",
+        "objectives": [
+          {
+            "id": 1,
+            "label_pt": "Reportar o pedido da chefe",
+            "label_en": "Report the boss's request",
+            "hidden_prompt": "user uses 'She asked you to take on extra work'",
+            "hint_pt": "She asked you to take on extra work.",
+            "hint_en": "She asked you to take on extra work."
+          },
+          {
+            "id": 2,
+            "label_pt": "Reportar outro pedido com verbo diferente",
+            "label_en": "Report another request with different verb",
+            "hidden_prompt": "user uses 'warned/begged/urged + person + to + base'",
+            "hint_pt": "Your friend begged you to take a vacation.",
+            "hint_en": "Your friend begged you to take a vacation."
+          },
+          {
+            "id": 3,
+            "label_pt": "Perguntar à Charlotte",
+            "label_en": "Ask Charlotte",
+            "hidden_prompt": "user asks Charlotte how she handled it",
+            "hint_pt": "How did you handle all of it?",
+            "hint_en": "How did you handle all of it?"
+          }
+        ],
+        "closing_cue": "Charlotte fecha com \"Stress mapped!\" quando obj_3 baterem.",
+        "suggested_script": "**Script** (referencial, 7 turnos):\n\n1. **Charlotte**: \"My boss asked me to take on extra work. What did she ask?\"\n2. **Student**: \"She asked you to take on extra work.\"\n3. **Charlotte**: \"Right. And then...\"\n4. **Student**: \"Your friend begged you to take a vacation.\"\n5. **Charlotte**: \"Opposite advice.\"\n6. **Student**: \"How did you handle all of it?\"\n7. **Charlotte**: \"I took the vacation. Stress mapped!\"\n\n> I04 chat = LLM puro. Scaffold via hint_pt.\n\n---"
+      }
+    },
+    {
+      "id": "I05",
+      "title": "Mixed reports",
+      "sub_cefr": "B2",
+      "grammar_focus": "Integration of reported statements, questions, and commands",
+      "markers": [],
+      "real_life_context": "You report complex conversations including statements, questions, and orders fluidly.",
+      "grammar": [
+        {
+          "type": "multiple_choice",
+          "options": [
+            "she was",
+            "she is",
+            "that is she",
+            "was she"
+          ],
+          "answer": "she was",
+          "explanation": "Statement: \"said + subject + past tense\". \"She was tired\" — ordem afirmativa."
+        },
+        {
+          "type": "multiple_choice",
+          "options": [
+            "if I was",
+            "was I",
+            "I was",
+            "am I"
+          ],
+          "answer": "if I was",
+          "explanation": "Yes/no question: \"if + subject + past tense\". \"If I was ready\" — sem inversão."
+        },
+        {
+          "type": "word_bank",
+          "choices": [
+            "to close",
+            "close",
+            "closing",
+            "closed"
+          ],
+          "answer": "to close",
+          "explanation": "Comando: \"told + person + to + base\". \"Told me to close the door\"."
+        },
+        {
+          "type": "word_bank",
+          "choices": [
+            "where",
+            "what",
+            "if",
+            "when"
+          ],
+          "answer": "where",
+          "explanation": "WH-question reportada mantém WH-word + ordem afirmativa."
+        },
+        {
+          "type": "fill_gap",
+          "hint": "not to be",
+          "answer": "not to be",
+          "explanation": "Comando negativo: \"not to + base\"."
+        },
+        {
+          "type": "fill_gap",
+          "hint": "if / could",
+          "answer": "if / could",
+          "explanation": "\"Asked if + subject + could\". Backshift \"can\" → \"could\"."
+        },
+        {
+          "type": "fill_gap",
+          "hint": "had + past participle",
+          "answer": "had",
+          "explanation": "\"Have finished\" (present perfect) → \"had finished\" (past perfect) em reported."
+        },
+        {
+          "type": "fix_error",
+          "hint": "Sem inversão",
+          "answer": "He asked what my name was.",
+          "explanation": "\"Is my name\" mantém inversão. Em reported, ordem afirmativa: \"my name was\"."
+        },
+        {
+          "type": "fix_error",
+          "hint": "Falta \"to\"",
+          "answer": "She told me to help her.",
+          "explanation": "Comando reportado: \"told + person + TO + base\". \"Help\" sem \"to\" não funciona."
+        },
+        {
+          "type": "read_answer",
+          "passage": "She said she was tired. He asked if I was ready. She told me to close the door. He asked where I lived. She begged me to stay.",
+          "question": "What did she beg me to do?",
+          "answer": "stay (or \"to stay\")",
+          "explanation": "The text says \"She begged me to stay\"."
+        }
+      ],
+      "listening_speaking": [
+        {
+          "text": "She said she was tired.",
+          "context": "statement"
+        },
+        {
+          "text": "He asked if I was ready.",
+          "context": "yes/no question"
+        },
+        {
+          "text": "She told me to close the door.",
+          "context": "command"
+        },
+        {
+          "text": "He asked where I lived.",
+          "context": "WH-question"
+        },
+        {
+          "text": "She begged me to stay.",
+          "context": "emotional request"
+        }
+      ],
+      "roleplay": {
+        "scenario": "Charlotte conta uma conversa rica que teve — você reporta com statements, questions, e commands misturados.",
+        "voiced_by": "charlotte",
+        "persona": "Charlotte",
+        "persona_outfit": "charlotte_casual",
+        "time_budget_sec": 180,
+        "opening_line": "Report a conversation — mix statement, question, and command in three sentences.",
+        "objectives": [
+          {
+            "id": 1,
+            "label_pt": "Reporte de afirmação",
+            "label_en": "Report a statement",
+            "hidden_prompt": "user uses 'X said (that) + past tense'",
+            "hint_pt": "She said she had been busy.",
+            "hint_en": "She said she had been busy."
+          },
+          {
+            "id": 2,
+            "label_pt": "Reporte de pergunta",
+            "label_en": "Report a question",
+            "hidden_prompt": "user uses 'X asked if/where/what + statement order'",
+            "hint_pt": "He asked where I had gone.",
+            "hint_en": "He asked where I had gone."
+          },
+          {
+            "id": 3,
+            "label_pt": "Reporte de comando",
+            "label_en": "Report a command",
+            "hidden_prompt": "user uses 'X told me to/not to + base'",
+            "hint_pt": "She told me to call her later.",
+            "hint_en": "She told me to call her later."
+          }
+        ],
+        "closing_cue": "Charlotte fecha com \"All reports done!\" quando obj_3 baterem.",
+        "suggested_flow": "**Suggested flow** (referencial, 6 turnos):\n\n1. **Charlotte**: \"Report a conversation — mix statement, question, and command in three sentences.\"\n2. **Student**: ~\"She said she had been busy.\"\n3. **Charlotte**: \"Question?\"\n4. **Student**: ~\"He asked where I had gone.\"\n5. **Charlotte**: \"Command?\"\n6. **Student**: ~\"She told me to call her later.\"\n7. **Charlotte**: \"All reports done!\"",
+        "evaluation_focus": [
+          "Variety of report types",
+          "Correct structure for each",
+          "Backshift across all"
+        ]
+      },
+      "guided_chat": {
+        "scenario": "Charlotte conta uma conversa familiar inteira — vocês reportam toda a conversa juntos.",
+        "voiced_by": "charlotte",
+        "persona": "Charlotte",
+        "persona_outfit": "charlotte_casual",
+        "intro_en": "Charlotte recaps a family conversation. Mix statement/question/command reports.",
+        "opening_message": "My mom asked me if I was coming for dinner and told me to bring dessert. What did she say?",
+        "objectives": [
+          {
+            "id": 1,
+            "label_pt": "Reportar a pergunta",
+            "label_en": "Report the question",
+            "hidden_prompt": "user uses 'She asked if you were coming for dinner'",
+            "hint_pt": "She asked if you were coming for dinner.",
+            "hint_en": "She asked if you were coming for dinner."
+          },
+          {
+            "id": 2,
+            "label_pt": "Reportar o comando",
+            "label_en": "Report the command",
+            "hidden_prompt": "user uses 'She told you to bring dessert'",
+            "hint_pt": "She also told you to bring dessert.",
+            "hint_en": "She also told you to bring dessert."
+          },
+          {
+            "id": 3,
+            "label_pt": "Perguntar à Charlotte",
+            "label_en": "Ask Charlotte",
+            "hidden_prompt": "user asks Charlotte more",
+            "hint_pt": "What else did she say?",
+            "hint_en": "What else did she say?"
+          }
+        ],
+        "closing_cue": "Charlotte fecha com \"Family chat reported!\" quando obj_3 baterem.",
+        "suggested_script": "**Script** (referencial, 7 turnos):\n\n1. **Charlotte**: \"My mom asked me if I was coming for dinner and told me to bring dessert. What did she say?\"\n2. **Student**: \"She asked if you were coming for dinner.\"\n3. **Charlotte**: \"Right. And?\"\n4. **Student**: \"She also told you to bring dessert.\"\n5. **Charlotte**: \"Classic mom request.\"\n6. **Student**: \"What else did she say?\"\n7. **Charlotte**: \"She mentioned that my brother would be there too. Family chat reported!\"\n\n> I05 chat = LLM puro. Scaffold via hint_pt.\n\n---"
+      }
+    }
+  ],
+  "cross_unit_consolidation": [
+    "Reported yes/no: \"asked if/whether + subject + past tense\"",
+    "Reported WH: \"asked where/what/when/why/how + subject + past tense\" (sem inversão)",
+    "Reported command: \"told + person + to + base\" / \"told + person + not to + base\"",
+    "Reported request: \"asked + person + to + base\"",
+    "Reporting verbs variados: asked, told, mentioned, warned, begged, urged, suggested",
+    "\"Please\" desaparece em reported speech",
+    "Sem auxiliares \"do/does/did\" em reported (vira afirmativa)"
+  ]
+}

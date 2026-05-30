@@ -192,8 +192,18 @@
         "id": "M16",
         "title": "Voz passiva ampliada",
         "file": "inter/M16.json"
+      },
+      {
+        "id": "M17",
+        "title": "Ele disse que...",
+        "file": "inter/M17.json"
+      },
+      {
+        "id": "M18",
+        "title": "Perguntas reportadas",
+        "file": "inter/M18.json"
       }
     ]
   },
-  "generated_at": "2026-05-30T20:51:59.892Z"
+  "generated_at": "2026-05-30T20:57:52.119Z"
 }
