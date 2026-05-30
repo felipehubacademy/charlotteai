@@ -1,0 +1,767 @@
+{
+  "id": "M02",
+  "title": "Inversão",
+  "level": "Advanced",
+  "block": "C1",
+  "units_range": "A01–A05",
+  "theme": "Inversion after negative/restrictive adverbials, time inversions, \"only\" inversions, emphatic inversions",
+  "goal": "Student produces and recognises inversion patterns that go beyond conditionals — for emphasis, formality, and literary effect.",
+  "connects_to": "M03 (Cleft sentences) — adjacent emphasis structures.",
+  "module_chunks": [
+    "Never have I + past participle",
+    "Rarely do we / Seldom does he + base",
+    "Hardly ever does she + base",
+    "Hardly had I + past participle when...",
+    "No sooner had I + past participle than...",
+    "Scarcely had we...",
+    "Not only did + subject + base, (but) also...",
+    "Not until + clause + did + subject + base",
+    "Only after / Only when / Only by + clause + did/do",
+    "Little did + subject + know/realise/imagine",
+    "Under no circumstances / On no account / In no way + auxiliary inversion"
+  ],
+  "units": [
+    {
+      "id": "A01",
+      "title": "Never have I",
+      "sub_cefr": "C1",
+      "grammar_focus": "Inversion after negative frequency adverbials (Never, Rarely, Seldom, Hardly ever)",
+      "markers": [
+        "denso",
+        "inversion"
+      ],
+      "real_life_context": "You front a negative adverb for emphasis, dramatising rarity or extreme experience.",
+      "grammar": [
+        {
+          "type": "multiple_choice",
+          "sentence": "Never _____ such a beautiful sunset.",
+          "options": [
+            "have I seen",
+            "I have seen",
+            "did I saw",
+            "I saw"
+          ],
+          "answer": "have I seen",
+          "explanation": "Fronting \"Never\" triggers subject-auxiliary inversion: auxiliary (\"have\") comes before the subject (\"I\"). The structure is \"Never + auxiliary + subject + main verb\". Compare to non-inverted \"I have never seen...\" — same meaning, less dramatic register."
+        },
+        {
+          "type": "multiple_choice",
+          "sentence": "Rarely _____ such commitment from a junior team.",
+          "options": [
+            "do we see",
+            "we see",
+            "did we saw",
+            "we have see"
+          ],
+          "answer": "do we see",
+          "explanation": "\"Rarely\" fronted requires \"do/does/did + subject + base\". Present tense general → \"do we see\". Without inversion: \"We rarely see...\" — flat. With inversion: emphasised observation."
+        },
+        {
+          "type": "fill_gap",
+          "sentence": "Seldom _____ a film leave me speechless the way that one did.",
+          "hint": "\"does\" + base form",
+          "answer": "does",
+          "explanation": "\"Seldom does a film leave...\" — \"does\" auxiliary before subject \"a film\", then base form \"leave\". Singular subject takes \"does\"."
+        },
+        {
+          "type": "fix_error",
+          "sentence": "Never I have been so insulted.",
+          "hint": "Inversion requires auxiliary before subject",
+          "answer": "Never have I been so insulted.",
+          "explanation": "Fronted \"Never\" demands inversion. \"Never I have been\" mixes fronting with statement word order — neither natural sentence nor proper inversion. The corrected form moves the auxiliary \"have\" before \"I\"."
+        },
+        {
+          "type": "read_answer",
+          "passage": "Reviewing the season, the coach was uncharacteristically blunt. 'Rarely have we played with so little discipline,' she said. 'Seldom does a team lose three games it should have won. We've earned exactly where we stand.'",
+          "question": "What does the coach criticize about the team?",
+          "answer": "their lack of discipline (or \"playing with little discipline\" or \"losing winnable games\")",
+          "explanation": "Two fronted inversions (\"Rarely have we played\" and \"Seldom does a team lose\") emphasise the rarity — and weight — of the criticism. The coach is using formal-public register."
+        }
+      ],
+      "listening_speaking": [
+        {
+          "text": "Never have I seen such a sunset.",
+          "context": "emphatic personal record"
+        },
+        {
+          "text": "Rarely do we hear such honesty.",
+          "context": "emphatic observation"
+        },
+        {
+          "text": "Seldom does she ask for help.",
+          "context": "habitual rarity"
+        },
+        {
+          "text": "Hardly ever does it rain in July here.",
+          "context": "climate generalization"
+        },
+        {
+          "text": "Never have I felt so understood.",
+          "context": "emotional emphasis"
+        }
+      ],
+      "roleplay": {
+        "scenario": "Charlotte invites three emphatic claims about rare experiences, all opened with negative frequency adverbials and inversion.",
+        "voiced_by": "charlotte",
+        "persona": "Charlotte",
+        "persona_outfit": "charlotte_casual",
+        "time_budget_sec": 300,
+        "opening_line": "Three rare experiences — but open each with a negative adverbial and invert.",
+        "objectives": [
+          {
+            "id": 1,
+            "label_en": "Inversion with 'Never have I'",
+            "hidden_prompt": "user uses 'Never have I + past participle'",
+            "hint_en": "Never have I tasted coffee that good."
+          },
+          {
+            "id": 2,
+            "label_en": "Inversion with 'Rarely' or 'Seldom'",
+            "hidden_prompt": "user uses 'Rarely/Seldom + auxiliary + subject + base'",
+            "hint_en": "Rarely do I feel this prepared for a meeting."
+          },
+          {
+            "id": 3,
+            "label_en": "Inversion with 'Hardly ever'",
+            "hidden_prompt": "user uses 'Hardly ever + auxiliary + subject'",
+            "hint_en": "Hardly ever does my dog sleep through a thunderstorm."
+          }
+        ],
+        "closing_cue": "Charlotte closes with \"Frontings tuned.\" once obj_3 lands.",
+        "suggested_flow": "**Suggested flow** (referencial, 6 turnos):\n\n1. **Charlotte**: \"Three rare experiences — but open each with a negative adverbial and invert.\"\n2. **Student**: ~\"Never have I tasted coffee that good.\"\n3. **Charlotte**: \"Strong opener. Try 'rarely' or 'seldom'.\"\n4. **Student**: ~\"Rarely do I feel this prepared for a meeting.\"\n5. **Charlotte**: \"And one with 'hardly ever'.\"\n6. **Student**: ~\"Hardly ever does my dog sleep through a thunderstorm.\"\n7. **Charlotte**: \"Frontings tuned.\"",
+        "evaluation_focus": [
+          "Fronted negative adverbial triggers inversion",
+          "\"Have/has/had + subject + past participle\" or \"do/does/did + subject + base\"",
+          "No mixed structures (\"Never I have\")"
+        ]
+      },
+      "guided_chat": {
+        "scenario": "Charlotte trades emphatic claims about rare encounters — meals, moments, miracles.",
+        "voiced_by": "charlotte",
+        "persona": "Charlotte",
+        "persona_outfit": "charlotte_casual",
+        "intro_en": "Charlotte invites emphasis. Use 'Never have I' and 'Rarely do I' freely.",
+        "opening_message": "Never have I laughed as hard as I did at that wedding last summer. Your turn — top a rare moment.",
+        "objectives": [
+          {
+            "id": 1,
+            "label_en": "Rare moment with inversion",
+            "hidden_prompt": "user uses 'Never have I + past participle'",
+            "hint_en": "Never have I cried so much at a film."
+          },
+          {
+            "id": 2,
+            "label_en": "Another with 'Rarely' or 'Seldom'",
+            "hidden_prompt": "user uses 'Rarely/Seldom + auxiliary + subject'",
+            "hint_en": "Rarely do strangers make me feel that welcome."
+          },
+          {
+            "id": 3,
+            "label_en": "Ask Charlotte",
+            "hidden_prompt": "user asks Charlotte for her rarest moment",
+            "hint_en": "What's your rarest?"
+          }
+        ],
+        "closing_cue": "Charlotte closes with \"Emphasis carries weight.\" once obj_3 lands.",
+        "suggested_script": "**Script** (referencial, 7 turnos):\n\n1. **Charlotte**: \"Never have I laughed as hard as I did at that wedding last summer. Your turn — top a rare moment.\"\n2. **Student**: \"Never have I cried so much at a film.\"\n3. **Charlotte**: \"Cinema can break us open. Anything else?\"\n4. **Student**: \"Rarely do strangers make me feel that welcome.\"\n5. **Charlotte**: \"Hospitality is undervalued.\"\n6. **Student**: \"What's your rarest?\"\n7. **Charlotte**: \"Seldom have I felt prouder than the day my student passed his oral exam. Emphasis carries weight.\"\n\n> A01 chat = full LLM. Scaffold via hint_pt/hint_en.\n\n---"
+      }
+    },
+    {
+      "id": "A02",
+      "title": "Hardly had I, No sooner had I",
+      "sub_cefr": "C1",
+      "grammar_focus": "Inversion after \"Hardly\", \"Scarcely\", \"No sooner\" for near-simultaneous past events",
+      "markers": [
+        "denso",
+        "inversion"
+      ],
+      "real_life_context": "You narrate two past events as overlapping — one barely begun when the next intervenes.",
+      "grammar": [
+        {
+          "type": "multiple_choice",
+          "sentence": "Hardly _____ down when the phone rang.",
+          "options": [
+            "had I sat",
+            "I had sat",
+            "did I sat",
+            "I sat"
+          ],
+          "answer": "had I sat",
+          "explanation": "\"Hardly + had + subject + past participle + when + past simple\". Two near-simultaneous past events: I'd just sat down, and immediately the phone rang. \"When\" links the second clause."
+        },
+        {
+          "type": "multiple_choice",
+          "sentence": "No sooner _____ the project _____ the deadline changed.",
+          "options": [
+            "had we finished",
+            "than",
+            "did we finish",
+            "when",
+            "had we finished",
+            "when",
+            "did we finish",
+            "than"
+          ],
+          "answer": "had we finished / than",
+          "explanation": "\"No sooner + had + subject + past participle + than + past simple\". Note \"THAN\" not \"when\" — that's the trap. \"No sooner had we finished than the deadline changed.\""
+        },
+        {
+          "type": "fill_gap",
+          "sentence": "Scarcely _____ I _____ the door when the rain started.",
+          "hint": "had / past participle of \"shut\"",
+          "answer": "had / shut",
+          "explanation": "\"Scarcely had I shut the door when...\" — same pattern as \"Hardly\". Past perfect + when + past simple. Slight literary register."
+        },
+        {
+          "type": "fix_error",
+          "sentence": "Hardly I had sat down when the phone rang.",
+          "hint": "Inversion required after \"Hardly\"",
+          "answer": "Hardly had I sat down when the phone rang.",
+          "explanation": "\"Hardly\" fronted demands subject-auxiliary inversion: \"had I\" not \"I had\". Without inversion the structure reads as a hesitant assertion, not the intended near-simultaneity."
+        },
+        {
+          "type": "read_answer",
+          "passage": "The novelist wrote of her childhood: 'Hardly had we settled into the new town when my father announced another move. No sooner had I made a friend than I was packing again. By twelve I had lived in seven houses and counted only my books as steady company.'",
+          "question": "How frequently did the family move?",
+          "answer": "very often (or \"every time she made a friend\" or \"many times — seven houses by age 12\")",
+          "explanation": "Two stacked inversions (\"Hardly had we settled... No sooner had I made a friend\") dramatise the rapid succession of moves. The structures are narrative engines for back-to-back events."
+        }
+      ],
+      "listening_speaking": [
+        {
+          "text": "Hardly had I sat down when the phone rang.",
+          "context": "interrupted rest"
+        },
+        {
+          "text": "No sooner had we left than it started raining.",
+          "context": "bad timing"
+        },
+        {
+          "text": "Scarcely had he spoken when she walked out.",
+          "context": "quick reaction"
+        },
+        {
+          "text": "Hardly had I closed my eyes when the alarm went off.",
+          "context": "false dawn"
+        },
+        {
+          "text": "No sooner had I finished one project than another landed.",
+          "context": "work cascade"
+        }
+      ],
+      "roleplay": {
+        "scenario": "Charlotte asks you to chain three \"barely had I... when...\" stories. Each must use inversion + a past simple second event.",
+        "voiced_by": "charlotte",
+        "persona": "Charlotte",
+        "persona_outfit": "charlotte_casual",
+        "time_budget_sec": 300,
+        "opening_line": "Three back-to-back stories — 'hardly had I... when...' or 'no sooner had I... than...'",
+        "objectives": [
+          {
+            "id": 1,
+            "label_en": "Inversion with 'Hardly had I... when'",
+            "hidden_prompt": "user uses 'Hardly had I + past participle + when + past simple'",
+            "hint_en": "Hardly had I started my coffee when my boss called."
+          },
+          {
+            "id": 2,
+            "label_en": "Inversion with 'No sooner had I... than'",
+            "hidden_prompt": "user uses 'No sooner had I + past participle + than + past simple'",
+            "hint_en": "No sooner had I unpacked than the rain started."
+          },
+          {
+            "id": 3,
+            "label_en": "Inversion with 'Scarcely had I'",
+            "hidden_prompt": "user uses 'Scarcely had I + past participle + when + past simple'",
+            "hint_en": "Scarcely had I closed my laptop when the deadline shifted."
+          }
+        ],
+        "closing_cue": "Charlotte closes with \"Cascade narrated.\" once obj_3 lands.",
+        "suggested_flow": "**Suggested flow** (referencial, 6 turnos):\n\n1. **Charlotte**: \"Three back-to-back stories — 'hardly had I... when...' or 'no sooner had I... than...'\"\n2. **Student**: ~\"Hardly had I started my coffee when my boss called.\"\n3. **Charlotte**: \"Familiar agony. 'No sooner' next.\"\n4. **Student**: ~\"No sooner had I unpacked than the rain started.\"\n5. **Charlotte**: \"And 'Scarcely had I'?\"\n6. **Student**: ~\"Scarcely had I closed my laptop when the deadline shifted.\"\n7. **Charlotte**: \"Cascade narrated.\"",
+        "evaluation_focus": [
+          "\"Hardly/Scarcely... when\" / \"No sooner... than\"",
+          "Inversion of past perfect auxiliary",
+          "Past simple in second clause"
+        ]
+      },
+      "guided_chat": {
+        "scenario": "Charlotte trades day-from-hell stories using sequential inversions.",
+        "voiced_by": "charlotte",
+        "persona": "Charlotte",
+        "persona_outfit": "charlotte_casual",
+        "intro_en": "Charlotte shares cascades. Mirror her structure with 'hardly had I' and 'no sooner had I'.",
+        "opening_message": "No sooner had I sat down to write than the doorbell rang. What's your worst day-from-hell sequence?",
+        "objectives": [
+          {
+            "id": 1,
+            "label_en": "Personal cascade with 'No sooner had I'",
+            "hidden_prompt": "user uses 'No sooner had I + past participle + than + past simple'",
+            "hint_en": "No sooner had I left the house than I realised I'd forgotten my keys."
+          },
+          {
+            "id": 2,
+            "label_en": "Another cascade with 'Hardly had I'",
+            "hidden_prompt": "user uses 'Hardly had I + past participle + when + past simple'",
+            "hint_en": "Hardly had I turned back when it started pouring."
+          },
+          {
+            "id": 3,
+            "label_en": "Ask Charlotte",
+            "hidden_prompt": "user asks Charlotte how her writing went after the doorbell",
+            "hint_en": "Did you ever get back to writing?"
+          }
+        ],
+        "closing_cue": "Charlotte closes with \"Day mapped, sentence by sentence.\" once obj_3 lands.",
+        "suggested_script": "**Script** (referencial, 7 turnos):\n\n1. **Charlotte**: \"No sooner had I sat down to write than the doorbell rang. What's your worst day-from-hell sequence?\"\n2. **Student**: \"No sooner had I left the house than I realised I'd forgotten my keys.\"\n3. **Charlotte**: \"The classic. Then what?\"\n4. **Student**: \"Hardly had I turned back when it started pouring.\"\n5. **Charlotte**: \"Nature's punctuation.\"\n6. **Student**: \"Did you ever get back to writing?\"\n7. **Charlotte**: \"Two hours and three interruptions later. Day mapped, sentence by sentence.\"\n\n> A02 chat = full LLM. Scaffold via hint_pt/hint_en.\n\n---"
+      }
+    },
+    {
+      "id": "A03",
+      "title": "Not only, Not until",
+      "sub_cefr": "C1",
+      "grammar_focus": "Inversion after \"Not only\" (additive emphasis) and \"Not until\" (delayed realization)",
+      "markers": [
+        "denso",
+        "inversion"
+      ],
+      "real_life_context": "You stack achievements/qualities with \"not only\" or dramatise late realisation with \"not until\".",
+      "grammar": [
+        {
+          "type": "multiple_choice",
+          "sentence": "Not only _____ the marathon, but she also raised £10,000 for charity.",
+          "options": [
+            "did she finish",
+            "she finished",
+            "finished she",
+            "had she finish"
+          ],
+          "answer": "did she finish",
+          "explanation": "\"Not only\" fronted triggers inversion: \"did + subject + base\". The \"but also\" clause introduces a second, layered fact. The structure dramatises the layering."
+        },
+        {
+          "type": "multiple_choice",
+          "sentence": "Not until I saw the report _____ the scale of the problem.",
+          "options": [
+            "did I understand",
+            "I understood",
+            "understood I",
+            "I have understood"
+          ],
+          "answer": "did I understand",
+          "explanation": "\"Not until + clause + did + subject + base\". The fronted \"not until\" inverts the main clause that follows. Past simple realisation triggered by past simple cue."
+        },
+        {
+          "type": "fill_gap",
+          "sentence": "Not only _____ he _____ on time, but he also brought everyone coffee.",
+          "hint": "\"did\" (past) / \"arrive\"",
+          "answer": "did / arrive",
+          "explanation": "\"Not only did he arrive\" — past, so \"did + subject + base\". Followed by \"but he also + verb\" — no inversion in the second clause."
+        },
+        {
+          "type": "fix_error",
+          "sentence": "Not only she sings, but she also writes her own songs.",
+          "hint": "\"Not only\" demands inversion",
+          "answer": "Not only does she sing, but she also writes her own songs.",
+          "explanation": "Fronted \"Not only\" requires \"does + subject + base\" (present singular). Without inversion the sentence reads as fragmented assertion, not balanced emphasis."
+        },
+        {
+          "type": "read_answer",
+          "passage": "The award citation read: 'Not only has Dr. Lima reshaped the field through her research, but she has also mentored a generation of scientists. Not until we examined her full body of work did we appreciate how interconnected her contributions truly are.'",
+          "question": "What two achievements does the citation emphasise?",
+          "answer": "research that reshaped the field + mentoring a generation (or similar)",
+          "explanation": "\"Not only... but also\" layers two achievements; \"Not until... did we appreciate\" dramatises late recognition. Both inversions register formality and emphasis."
+        }
+      ],
+      "listening_speaking": [
+        {
+          "text": "Not only did she win, but she also broke the record.",
+          "context": "layered triumph"
+        },
+        {
+          "text": "Not only is he kind, but he's also brilliant.",
+          "context": "layered praise"
+        },
+        {
+          "text": "Not until I read it twice did I get the joke.",
+          "context": "delayed comprehension"
+        },
+        {
+          "text": "Not until then did I realise how tired I was.",
+          "context": "delayed awareness"
+        },
+        {
+          "text": "Not only have we cut costs, but we've also raised quality.",
+          "context": "corporate-style layering"
+        }
+      ],
+      "roleplay": {
+        "scenario": "Charlotte wants three layered claims with \"Not only... but also\" and two delayed realisations with \"Not until... did I\".",
+        "voiced_by": "charlotte",
+        "persona": "Charlotte",
+        "persona_outfit": "charlotte_casual",
+        "time_budget_sec": 300,
+        "opening_line": "Layered claims and delayed realisations. Use 'Not only' and 'Not until'.",
+        "objectives": [
+          {
+            "id": 1,
+            "label_en": "'Not only... but also' present",
+            "hidden_prompt": "user uses 'Not only + does/is + subject + base, but + subject + also'",
+            "hint_en": "Not only is she fluent in three languages, but she also teaches them."
+          },
+          {
+            "id": 2,
+            "label_en": "'Not only... but also' past",
+            "hidden_prompt": "user uses 'Not only did + subject + base, but + subject + also'",
+            "hint_en": "Not only did we hit the target, but we also exceeded it by 20%."
+          },
+          {
+            "id": 3,
+            "label_en": "'Not until... did' (late realisation)",
+            "hidden_prompt": "user uses 'Not until + clause + did + subject + base'",
+            "hint_en": "Not until I left the city did I appreciate the quiet."
+          }
+        ],
+        "closing_cue": "Charlotte closes with \"Layers exposed.\" once obj_3 lands.",
+        "suggested_flow": "**Suggested flow** (referencial, 6 turnos):\n\n1. **Charlotte**: \"Layered claims and delayed realisations. Use 'Not only' and 'Not until'.\"\n2. **Student**: ~\"Not only is she fluent in three languages, but she also teaches them.\"\n3. **Charlotte**: \"Past version?\"\n4. **Student**: ~\"Not only did we hit the target, but we also exceeded it by 20%.\"\n5. **Charlotte**: \"And one delayed realisation.\"\n6. **Student**: ~\"Not until I left the city did I appreciate the quiet.\"\n7. **Charlotte**: \"Layers exposed.\"",
+        "evaluation_focus": [
+          "\"Not only\" + inversion + \"but... also\"",
+          "\"Not until\" + clause + inversion in main",
+          "Tense consistency"
+        ]
+      },
+      "guided_chat": {
+        "scenario": "Charlotte trades layered claims and slow realisations from her own life.",
+        "voiced_by": "charlotte",
+        "persona": "Charlotte",
+        "persona_outfit": "charlotte_casual",
+        "intro_en": "Charlotte stacks claims. Match her with 'Not only' and 'Not until'.",
+        "opening_message": "Not only did my grandmother raise five children alone, but she also went back to school at 50. Top that — or layer your own.",
+        "objectives": [
+          {
+            "id": 1,
+            "label_en": "Layered claim",
+            "hidden_prompt": "user uses 'Not only + inverted aux + subject + base, but + subject'",
+            "hint_en": "Not only did my dad teach himself English, but he also learned coding at 60."
+          },
+          {
+            "id": 2,
+            "label_en": "Late realisation with 'Not until'",
+            "hidden_prompt": "user uses 'Not until + clause + did + subject + base'",
+            "hint_en": "Not until I had my own kid did I understand how much they did."
+          },
+          {
+            "id": 3,
+            "label_en": "Ask Charlotte",
+            "hidden_prompt": "user asks Charlotte more about her grandmother",
+            "hint_en": "What did she study?"
+          }
+        ],
+        "closing_cue": "Charlotte closes with \"Layered lives, properly framed.\" once obj_3 lands.",
+        "suggested_script": "**Script** (referencial, 7 turnos):\n\n1. **Charlotte**: \"Not only did my grandmother raise five children alone, but she also went back to school at 50. Top that — or layer your own.\"\n2. **Student**: \"Not only did my dad teach himself English, but he also learned coding at 60.\"\n3. **Charlotte**: \"Generational courage. Realisation?\"\n4. **Student**: \"Not until I had my own kid did I understand how much they did.\"\n5. **Charlotte**: \"Parenthood is the great translator.\"\n6. **Student**: \"What did she study?\"\n7. **Charlotte**: \"Literature — she'd been a maid in a writer's house and fell in love with books. Layered lives, properly framed.\"\n\n> A03 chat = full LLM. Scaffold via hint_pt/hint_en.\n\n---"
+      }
+    },
+    {
+      "id": "A04",
+      "title": "Only after, Little did I know",
+      "sub_cefr": "C1",
+      "grammar_focus": "Inversion after \"Only after/when/by\" (delayed cause) and \"Little did + subject + know/realise\" (dramatic irony)",
+      "markers": [
+        "denso",
+        "inversion"
+      ],
+      "real_life_context": "You write or speak with literary flair — marking when realisation arrived (or didn't).",
+      "grammar": [
+        {
+          "type": "multiple_choice",
+          "sentence": "Only after the meeting _____ what she had meant.",
+          "options": [
+            "did I understand",
+            "I understood",
+            "understood I",
+            "I have understood"
+          ],
+          "answer": "did I understand",
+          "explanation": "\"Only after + clause + did + subject + base\". The cue clause (\"after the meeting\") triggers inversion in the main clause. Dramatises the delay."
+        },
+        {
+          "type": "multiple_choice",
+          "sentence": "Only by working together _____ we _____ this on time.",
+          "options": [
+            "will",
+            "finish",
+            "can",
+            "finish",
+            "would",
+            "finished",
+            "are",
+            "finishing"
+          ],
+          "answer": "will / finish",
+          "explanation": "\"Only by + -ing + will + subject + base\". The \"only by\" prepositional phrase fronts and inverts. Indicates the sole pathway to a future outcome."
+        },
+        {
+          "type": "fill_gap",
+          "sentence": "Little _____ he _____ that the offer was about to be withdrawn.",
+          "hint": "\"did\" / past simple base \"know\"",
+          "answer": "did / know",
+          "explanation": "\"Little did he know\" — classic dramatic irony opener. \"Little + did/does + subject + base\" expresses unawareness of something soon revealed. \"Little did I realise/imagine\" follows the same pattern."
+        },
+        {
+          "type": "fix_error",
+          "sentence": "Only when I left home, I realised how much I missed it.",
+          "hint": "\"Only when + clause\" requires inversion in main",
+          "answer": "Only when I left home did I realise how much I missed it.",
+          "explanation": "Both halves were in flat order. \"Only when\" fronted means the main clause needs \"did I realise\", not \"I realised\". The inversion marks the realisation as cued by the leaving."
+        },
+        {
+          "type": "read_answer",
+          "passage": "Looking back, the entrepreneur reflected: 'Only by losing my first company did I learn what entrepreneurship actually requires. Little did I know at twenty-five that failure would teach me what success never could.'",
+          "question": "What lesson does the entrepreneur say only failure could teach?",
+          "answer": "what entrepreneurship actually requires (or \"what success couldn't teach\")",
+          "explanation": "\"Only by losing... did I learn\" — inversion after restrictive phrase. \"Little did I know... that failure would teach me\" — inversion of dramatic irony. Both common in retrospective narrative."
+        }
+      ],
+      "listening_speaking": [
+        {
+          "text": "Only after the meeting did I get her point.",
+          "context": "delayed understanding"
+        },
+        {
+          "text": "Only by trying did I learn what I could do.",
+          "context": "pathway through action"
+        },
+        {
+          "text": "Little did I know it would change my life.",
+          "context": "dramatic foreshadowing"
+        },
+        {
+          "text": "Only when she spoke did I notice the accent.",
+          "context": "sensory delay"
+        },
+        {
+          "text": "Little did he realise the door was already locked.",
+          "context": "unawareness reveal"
+        }
+      ],
+      "roleplay": {
+        "scenario": "Charlotte wants three retrospective realisations — two with \"Only after/when/by\", one with \"Little did I know\".",
+        "voiced_by": "charlotte",
+        "persona": "Charlotte",
+        "persona_outfit": "charlotte_casual",
+        "time_budget_sec": 300,
+        "opening_line": "Three retrospective realisations — two with 'Only after/when/by', one with 'Little did I know'.",
+        "objectives": [
+          {
+            "id": 1,
+            "label_en": "Inversion with 'Only after/when'",
+            "hidden_prompt": "user uses 'Only after/when + clause + did + subject + base'",
+            "hint_en": "Only after I quit did I realise how much that job was costing me."
+          },
+          {
+            "id": 2,
+            "label_en": "Inversion with 'Only by'",
+            "hidden_prompt": "user uses 'Only by + -ing + auxiliary + subject + base'",
+            "hint_en": "Only by saying no a hundred times did I learn to protect my time."
+          },
+          {
+            "id": 3,
+            "label_en": "Inversion with 'Little did I know'",
+            "hidden_prompt": "user uses 'Little did I know/realise/imagine + that-clause'",
+            "hint_en": "Little did I know that conversation would change my career."
+          }
+        ],
+        "closing_cue": "Charlotte closes with \"Hindsight, made dramatic.\" once obj_3 lands.",
+        "suggested_flow": "**Suggested flow** (referencial, 6 turnos):\n\n1. **Charlotte**: \"Three retrospective realisations — two with 'Only after/when/by', one with 'Little did I know'.\"\n2. **Student**: ~\"Only after I quit did I realise how much that job was costing me.\"\n3. **Charlotte**: \"Brutal clarity. 'Only by'?\"\n4. **Student**: ~\"Only by saying no a hundred times did I learn to protect my time.\"\n5. **Charlotte**: \"And 'Little did I know'?\"\n6. **Student**: ~\"Little did I know that conversation would change my career.\"\n7. **Charlotte**: \"Hindsight, made dramatic.\"",
+        "evaluation_focus": [
+          "Inversion in main clause after \"Only\" structure",
+          "\"Little did + subject + know/realise\"",
+          "Past tense in retrospective narrative"
+        ]
+      },
+      "guided_chat": {
+        "scenario": "Charlotte trades stories of late realisations. You match her inversions with your own.",
+        "voiced_by": "charlotte",
+        "persona": "Charlotte",
+        "persona_outfit": "charlotte_casual",
+        "intro_en": "Charlotte tells of late realisations. Use 'Only after/when/by' and 'Little did I know'.",
+        "opening_message": "Only by failing my first big presentation did I learn how to prepare. What unlocked something for you?",
+        "objectives": [
+          {
+            "id": 1,
+            "label_en": "Realisation with 'Only by/after/when'",
+            "hidden_prompt": "user uses 'Only + phrase + auxiliary + subject + base'",
+            "hint_en": "Only after losing a friend did I start texting people back the same day."
+          },
+          {
+            "id": 2,
+            "label_en": "Dramatic irony with 'Little did I know'",
+            "hidden_prompt": "user uses 'Little did I know + that-clause'",
+            "hint_en": "Little did I know that one email would lead to a new career."
+          },
+          {
+            "id": 3,
+            "label_en": "Ask Charlotte",
+            "hidden_prompt": "user asks Charlotte for her own example",
+            "hint_en": "What's your foreshadowing moment?"
+          }
+        ],
+        "closing_cue": "Charlotte closes with \"Hindsight, well dressed.\" once obj_3 lands.",
+        "suggested_script": "**Script** (referencial, 7 turnos):\n\n1. **Charlotte**: \"Only by failing my first big presentation did I learn how to prepare. What unlocked something for you?\"\n2. **Student**: \"Only after losing a friend did I start texting people back the same day.\"\n3. **Charlotte**: \"Some lessons cost too much. Anything that sneaked up on you?\"\n4. **Student**: \"Little did I know that one email would lead to a new career.\"\n5. **Charlotte**: \"The sliding-doors moments.\"\n6. **Student**: \"What's your foreshadowing moment?\"\n7. **Charlotte**: \"Little did I know a borrowed book would set my whole reading life. Hindsight, well dressed.\"\n\n> A04 chat = full LLM. Scaffold via hint_pt/hint_en.\n\n---"
+      }
+    },
+    {
+      "id": "A05",
+      "title": "Under no circumstances",
+      "sub_cefr": "C1",
+      "grammar_focus": "Inversion after restrictive negative phrases (Under no circumstances, On no account, In no way, At no time)",
+      "markers": [
+        "denso",
+        "inversion"
+      ],
+      "real_life_context": "You write formal policy, contracts, or assert firm boundaries with elevated emphasis.",
+      "grammar": [
+        {
+          "type": "multiple_choice",
+          "sentence": "Under no circumstances _____ leave the building during the drill.",
+          "options": [
+            "should you",
+            "you should",
+            "you must",
+            "shall you"
+          ],
+          "answer": "should you",
+          "explanation": "\"Under no circumstances + modal + subject + base\". The fronted negative phrase forces inversion. Common in safety notices and formal instructions."
+        },
+        {
+          "type": "multiple_choice",
+          "sentence": "On no account _____ this door.",
+          "options": [
+            "must you open",
+            "you must open",
+            "open you",
+            "are you opening"
+          ],
+          "answer": "must you open",
+          "explanation": "\"On no account + must + subject + base\". Strong prohibition. Note the structure persists: fronted negative phrase, then auxiliary, then subject."
+        },
+        {
+          "type": "fill_gap",
+          "sentence": "At no time _____ the company _____ that policy.",
+          "hint": "\"did\" or \"has\" / \"endorse/endorsed\"",
+          "answer": "did / endorse",
+          "explanation": "\"At no time did the company endorse...\" — past inversion. Also acceptable: \"At no time has the company endorsed...\" for present perfect denial. Both register formal disavowal."
+        },
+        {
+          "type": "fix_error",
+          "sentence": "In no way she meant to offend you.",
+          "hint": "\"In no way\" fronted requires inversion",
+          "answer": "In no way did she mean to offend you.",
+          "explanation": "\"In no way\" is a fronted negative phrase. Inversion required: \"did + subject + base\". Without inversion the sentence reads as a half-formed thought."
+        },
+        {
+          "type": "read_answer",
+          "passage": "The corporate code of conduct is unambiguous: 'Under no circumstances shall an employee share confidential client information with third parties. On no account may personal devices be used to store such data. At no time has this organisation tolerated breaches of trust.'",
+          "question": "What does the code prohibit?",
+          "answer": "sharing confidential client information with third parties (or \"storing it on personal devices\")",
+          "explanation": "Three stacked formal inversions (\"Under no circumstances shall... On no account may... At no time has...\") amplify the policy's seriousness. Corporate-formal register."
+        }
+      ],
+      "listening_speaking": [
+        {
+          "text": "Under no circumstances should you open that file.",
+          "context": "strict prohibition"
+        },
+        {
+          "text": "On no account must we miss the deadline.",
+          "context": "emphatic warning"
+        },
+        {
+          "text": "At no time did I authorise that purchase.",
+          "context": "formal denial"
+        },
+        {
+          "text": "In no way is this acceptable.",
+          "context": "outraged formal"
+        },
+        {
+          "text": "Under no circumstances will we lower our standards.",
+          "context": "corporate commitment"
+        }
+      ],
+      "roleplay": {
+        "scenario": "Charlotte casts you as the writer of a corporate policy. You produce three firm prohibitions using formal inversion.",
+        "voiced_by": "charlotte",
+        "persona": "Charlotte",
+        "persona_outfit": "charlotte_casual",
+        "time_budget_sec": 300,
+        "opening_line": "Three firm prohibitions for a corporate policy. Use 'Under no circumstances', 'On no account', and 'At no time'.",
+        "objectives": [
+          {
+            "id": 1,
+            "label_en": "'Under no circumstances' + modal",
+            "hidden_prompt": "user uses 'Under no circumstances + should/must + subject + base'",
+            "hint_en": "Under no circumstances should staff share passwords."
+          },
+          {
+            "id": 2,
+            "label_en": "'On no account' + modal",
+            "hidden_prompt": "user uses 'On no account + may/must + subject + base'",
+            "hint_en": "On no account may client data leave the secure server."
+          },
+          {
+            "id": 3,
+            "label_en": "'At no time' (denial)",
+            "hidden_prompt": "user uses 'At no time + did/has + subject + base/past participle'",
+            "hint_en": "At no time has the company authorised such a deduction."
+          }
+        ],
+        "closing_cue": "Charlotte closes with \"Policy drafted, properly stern.\" once obj_3 lands.",
+        "suggested_flow": "**Suggested flow** (referencial, 6 turnos):\n\n1. **Charlotte**: \"Three firm prohibitions for a corporate policy. Use 'Under no circumstances', 'On no account', and 'At no time'.\"\n2. **Student**: ~\"Under no circumstances should staff share passwords.\"\n3. **Charlotte**: \"Standard. 'On no account'?\"\n4. **Student**: ~\"On no account may client data leave the secure server.\"\n5. **Charlotte**: \"Denial?\"\n6. **Student**: ~\"At no time has the company authorised such a deduction.\"\n7. **Charlotte**: \"Policy drafted, properly stern.\"",
+        "evaluation_focus": [
+          "Fronted negative phrase + modal/auxiliary inversion",
+          "Formal vocabulary (staff, authorise, deduction)",
+          "No flat order"
+        ]
+      },
+      "guided_chat": {
+        "scenario": "Charlotte writes you into a formal letter — defending a position. You use stacked negative inversions.",
+        "voiced_by": "charlotte",
+        "persona": "Charlotte",
+        "persona_outfit": "charlotte_casual",
+        "intro_en": "Charlotte writes a formal letter. Use 'Under no circumstances', 'In no way', 'At no time'.",
+        "opening_message": "At no time did our team approve this campaign. How would you defend that publicly?",
+        "objectives": [
+          {
+            "id": 1,
+            "label_en": "Formal denial with inversion",
+            "hidden_prompt": "user uses 'In no way' or 'At no time' + inversion",
+            "hint_en": "In no way does this campaign reflect our values."
+          },
+          {
+            "id": 2,
+            "label_en": "Strong prohibition",
+            "hidden_prompt": "user uses 'Under no circumstances + modal + subject'",
+            "hint_en": "Under no circumstances will we accept responsibility for content we didn't approve."
+          },
+          {
+            "id": 3,
+            "label_en": "Ask Charlotte",
+            "hidden_prompt": "user asks Charlotte for advice on tone",
+            "hint_en": "Too strong, or about right?"
+          }
+        ],
+        "closing_cue": "Charlotte closes with \"Defended in formal English.\" once obj_3 lands.",
+        "suggested_script": "**Script** (referencial, 7 turnos):\n\n1. **Charlotte**: \"At no time did our team approve this campaign. How would you defend that publicly?\"\n2. **Student**: \"In no way does this campaign reflect our values.\"\n3. **Charlotte**: \"Clear and clean. Anything stronger?\"\n4. **Student**: \"Under no circumstances will we accept responsibility for content we didn't approve.\"\n5. **Charlotte**: \"That settles the legal posture too.\"\n6. **Student**: \"Too strong, or about right?\"\n7. **Charlotte**: \"About right — firm without being aggressive. Defended in formal English.\"\n\n> A05 chat = full LLM. Scaffold via hint_pt/hint_en.\n\n---"
+      }
+    }
+  ],
+  "cross_unit_consolidation": [
+    "Trigger inversion after Never, Rarely, Seldom, Hardly ever (negative frequency)",
+    "Pair \"Hardly... when\" / \"Scarcely... when\" / \"No sooner... than\" with past perfect + past simple",
+    "Front \"Not only... but also\" and \"Not until... did\" for layered or delayed emphasis",
+    "Use \"Only after / Only when / Only by + clause\" with inversion in the main clause",
+    "Open dramatic-irony narrative with \"Little did I know/realise/imagine\"",
+    "Frame formal prohibitions with \"Under no circumstances / On no account / At no time / In no way\"",
+    "Distinguish \"than\" vs \"when\" in time inversions (No sooner... than; Hardly... when)"
+  ]
+}
