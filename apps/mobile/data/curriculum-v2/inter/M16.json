@@ -1,0 +1,1032 @@
+{
+  "id": "M16",
+  "title": "Voz passiva ampliada",
+  "level": "Inter",
+  "block": "B2",
+  "units_range": "I01–I05",
+  "theme": "Passive voice expanded (modal passives, future passive, by + agent, get + past participle)",
+  "goal": "Student handles passive in all common forms — modal, future, with agent, and the informal \"get\" passive.",
+  "connects_to": "M17 (Reported speech) — shift from passive to backshift narrative.",
+  "module_chunks": [
+    "must be done / can be seen (modal passive)",
+    "has to be finished / should be sent",
+    "will be delivered / will be announced",
+    "is going to be released",
+    "by + agent (was painted by Picasso)",
+    "get + past participle (got hurt, get married)",
+    "need + to be done"
+  ],
+  "units": [
+    {
+      "id": "I01",
+      "title": "It must be done",
+      "sub_cefr": "B2",
+      "grammar_focus": "Modal passive (modal + be + past participle)",
+      "markers": [
+        "denso"
+      ],
+      "real_life_context": "You give instructions, state requirements, or speculate about what can/must/should be done.",
+      "grammar": [
+        {
+          "type": "multiple_choice",
+          "sentence": "The report _____ by Friday.",
+          "options": [
+            "must be finished",
+            "must finish",
+            "must finished",
+            "must be finishing"
+          ],
+          "answer": "must be finished",
+          "explanation": "Modal passive = \"modal + be + past participle\". \"Must be finished\" — obrigação no recipient (relatório)."
+        },
+        {
+          "type": "multiple_choice",
+          "sentence": "This room _____ regularly.",
+          "options": [
+            "should be cleaned",
+            "should clean",
+            "should cleaning",
+            "should cleans"
+          ],
+          "answer": "should be cleaned",
+          "explanation": "\"Should be cleaned\" — recomendação passive. Foco na sala."
+        },
+        {
+          "type": "word_bank",
+          "sentence": "The form _____ in blue ink.",
+          "choices": [
+            "must be filled",
+            "must filling",
+            "must fill",
+            "must be filling"
+          ],
+          "answer": "must be filled",
+          "explanation": "Instrução formal: \"must be filled\" — modal passive padrão."
+        },
+        {
+          "type": "word_bank",
+          "sentence": "These files _____ before the meeting.",
+          "choices": [
+            "have to be reviewed",
+            "have to review",
+            "has to be reviewed",
+            "are reviewing"
+          ],
+          "answer": "have to be reviewed",
+          "explanation": "Plural \"files\" + obrigação → \"have to be reviewed\". Modal-like passive."
+        },
+        {
+          "type": "fill_gap",
+          "sentence": "The car _____ if it makes that sound.",
+          "hint": "should be + past participle \"check\"",
+          "answer": "should be checked",
+          "explanation": "\"Should be checked\" — recomendação passive sobre o carro."
+        },
+        {
+          "type": "fill_gap",
+          "sentence": "Children _____ unsupervised.",
+          "hint": "shouldn't be + past participle \"leave\"",
+          "answer": "shouldn't be left",
+          "explanation": "\"Shouldn't be left unsupervised\" — proibição passive."
+        },
+        {
+          "type": "fill_gap",
+          "sentence": "The package _____ at this point — it's been weeks.",
+          "hint": "must have been + past participle \"lose\"",
+          "answer": "must have been lost",
+          "explanation": "\"Must have been lost\" — modal perfect passive. Inferência forte sobre o passado em passive."
+        },
+        {
+          "type": "fix_error",
+          "sentence": "The report must finished by Friday.",
+          "hint": "Falta \"be\" — \"must BE finished\"",
+          "answer": "The report must be finished by Friday.",
+          "explanation": "Modal passive sempre \"modal + BE + past participle\". \"Must finished\" não funciona."
+        },
+        {
+          "type": "fix_error",
+          "sentence": "Children shouldn't left alone.",
+          "hint": "Falta \"be\"",
+          "answer": "Children shouldn't be left alone.",
+          "explanation": "\"Shouldn't BE left\" — modal + be + past participle. Forma fixa."
+        },
+        {
+          "type": "read_answer",
+          "passage": "The report must be finished by Friday. This room should be cleaned every day. Children shouldn't be left alone. The form must be filled in blue ink.",
+          "question": "How must the form be filled?",
+          "answer": "in blue ink",
+          "explanation": "The text says \"The form must be filled in blue ink\"."
+        }
+      ],
+      "listening_speaking": [
+        {
+          "text": "The report must be finished by Friday.",
+          "context": "obligation"
+        },
+        {
+          "text": "This must be done carefully.",
+          "context": "instruction"
+        },
+        {
+          "text": "Children shouldn't be left alone.",
+          "context": "prohibition"
+        },
+        {
+          "text": "The form should be filled in blue ink.",
+          "context": "recommendation"
+        },
+        {
+          "text": "These files have to be reviewed.",
+          "context": "requirement"
+        }
+      ],
+      "roleplay": {
+        "scenario": "Charlotte pede que você dê instruções formais para uma equipe — usando modal passive (\"must be done, should be sent...\").",
+        "voiced_by": "charlotte",
+        "persona": "Charlotte",
+        "persona_outfit": "charlotte_casual",
+        "time_budget_sec": 180,
+        "opening_line": "Give me three formal instructions using modal passives — must, should, have to.",
+        "objectives": [
+          {
+            "id": 1,
+            "label_pt": "Instrução com 'must be'",
+            "label_en": "Instruction with 'must be'",
+            "hidden_prompt": "user uses 'X must be + past participle'",
+            "hint_pt": "The reports must be submitted by Friday.",
+            "hint_en": "The reports must be submitted by Friday."
+          },
+          {
+            "id": 2,
+            "label_pt": "Recomendação com 'should be'",
+            "label_en": "Recommendation with 'should be'",
+            "hidden_prompt": "user uses 'X should be + past participle'",
+            "hint_pt": "Emails should be checked twice a day.",
+            "hint_en": "Emails should be checked twice a day."
+          },
+          {
+            "id": 3,
+            "label_pt": "Requisito com 'have to be'",
+            "label_en": "Requirement with 'have to be'",
+            "hidden_prompt": "user uses 'X has/have to be + past participle'",
+            "hint_pt": "Documents have to be signed before submission.",
+            "hint_en": "Documents have to be signed before submission."
+          }
+        ],
+        "closing_cue": "Charlotte fecha com \"Clear protocols!\" quando obj_3 baterem.",
+        "suggested_flow": "**Suggested flow** (referencial, 6 turnos):\n\n1. **Charlotte**: \"Give me three formal instructions using modal passives — must, should, have to.\"\n2. **Student**: ~\"The reports must be submitted by Friday.\"\n3. **Charlotte**: \"Strict. Softer one?\"\n4. **Student**: ~\"Emails should be checked twice a day.\"\n5. **Charlotte**: \"Requirement?\"\n6. **Student**: ~\"Documents have to be signed before submission.\"\n7. **Charlotte**: \"Clear protocols!\"",
+        "evaluation_focus": [
+          "\"Modal + be + past participle\"",
+          "Different modals for different forces",
+          "Formal tone"
+        ]
+      },
+      "guided_chat": {
+        "scenario": "Charlotte propõe um chat sobre regras e normas — como tarefas devem ser feitas em casa, no trabalho — vocês usam modal passive.",
+        "voiced_by": "charlotte",
+        "persona": "Charlotte",
+        "persona_outfit": "charlotte_casual",
+        "intro_en": "Charlotte talks about rules. Use modal passives for what should/must be done.",
+        "opening_message": "What's one rule that must be followed at your work?",
+        "objectives": [
+          {
+            "id": 1,
+            "label_pt": "Regra com 'must be'",
+            "label_en": "Rule with 'must be'",
+            "hidden_prompt": "user uses 'X must be + past participle'",
+            "hint_pt": "Phones must be silenced during meetings.",
+            "hint_en": "Phones must be silenced during meetings."
+          },
+          {
+            "id": 2,
+            "label_pt": "Outra regra com modal passive",
+            "label_en": "Another rule with modal passive",
+            "hidden_prompt": "user uses 'should be' or 'have to be' + past participle",
+            "hint_pt": "Emails should be answered within 24 hours.",
+            "hint_en": "Emails should be answered within 24 hours."
+          },
+          {
+            "id": 3,
+            "label_pt": "Perguntar à Charlotte",
+            "label_en": "Ask Charlotte",
+            "hidden_prompt": "user asks Charlotte about her workplace rules",
+            "hint_pt": "What's a rule at your work?",
+            "hint_en": "What's a rule at your work?"
+          }
+        ],
+        "closing_cue": "Charlotte fecha com \"Workplace norms compared!\" quando obj_3 baterem.",
+        "suggested_script": "**Script** (referencial, 7 turnos):\n\n1. **Charlotte**: \"What's one rule that must be followed at your work?\"\n2. **Student**: \"Phones must be silenced during meetings.\"\n3. **Charlotte**: \"Common one. Others?\"\n4. **Student**: \"Emails should be answered within 24 hours.\"\n5. **Charlotte**: \"Reasonable.\"\n6. **Student**: \"What's a rule at your work?\"\n7. **Charlotte**: \"Cameras must be turned on for video calls. Workplace norms compared!\"\n\n> I01 chat = LLM puro. Scaffold via hint_pt.\n\n---"
+      }
+    },
+    {
+      "id": "I02",
+      "title": "It will be done",
+      "sub_cefr": "B2",
+      "grammar_focus": "Future passive (will be + past participle; is going to be + past participle)",
+      "markers": [
+        "denso"
+      ],
+      "real_life_context": "You announce upcoming events or planned actions where the recipient matters more than the agent.",
+      "grammar": [
+        {
+          "type": "multiple_choice",
+          "sentence": "The winner _____ tomorrow.",
+          "options": [
+            "will be announced",
+            "will announce",
+            "will announcing",
+            "will been announced"
+          ],
+          "answer": "will be announced",
+          "explanation": "Future passive = \"will be + past participle\". \"Will be announced\" — foco no vencedor, não em quem anuncia."
+        },
+        {
+          "type": "multiple_choice",
+          "sentence": "The results _____ next week.",
+          "options": [
+            "will be sent",
+            "will sent",
+            "will be send",
+            "will being sent"
+          ],
+          "answer": "will be sent",
+          "explanation": "\"Will be sent\" — future passive plural. \"Sent\" é past participle de \"send\"."
+        },
+        {
+          "type": "word_bank",
+          "sentence": "The new album _____ next month.",
+          "choices": [
+            "is going to be released",
+            "is going to release",
+            "will be releasing",
+            "be released"
+          ],
+          "answer": "is going to be released",
+          "explanation": "\"Is going to be released\" — future plan passive. Estrutura: \"to be going to + be + past participle\"."
+        },
+        {
+          "type": "word_bank",
+          "sentence": "The package _____ tomorrow morning.",
+          "choices": [
+            "will be delivered",
+            "will deliver",
+            "is delivered",
+            "has been delivered"
+          ],
+          "answer": "will be delivered",
+          "explanation": "Future passive de delivery. \"Will be delivered tomorrow morning\"."
+        },
+        {
+          "type": "fill_gap",
+          "sentence": "Dinner _____ at 7 PM.",
+          "hint": "will be + past participle \"serve\"",
+          "answer": "will be served",
+          "explanation": "\"Will be served at 7\" — future passive padrão."
+        },
+        {
+          "type": "fill_gap",
+          "sentence": "The bridge _____ in 2030.",
+          "hint": "will be + past participle \"complete\"",
+          "answer": "will be completed",
+          "explanation": "\"Will be completed\" — future passive sobre obra."
+        },
+        {
+          "type": "fill_gap",
+          "sentence": "The meeting _____ next week.",
+          "hint": "is going to be + past participle \"hold\"",
+          "answer": "is going to be held",
+          "explanation": "\"Is going to be held\" — futuro planejado passive. \"Hold\" → past participle \"held\"."
+        },
+        {
+          "type": "fix_error",
+          "sentence": "The winner will announced tomorrow.",
+          "hint": "Falta \"be\" — \"will BE announced\"",
+          "answer": "The winner will be announced tomorrow.",
+          "explanation": "Future passive sempre \"will BE + past participle\". \"Will announced\" não existe."
+        },
+        {
+          "type": "fix_error",
+          "sentence": "The package will be deliver tomorrow.",
+          "hint": "\"Deliver\" → past participle \"delivered\"",
+          "answer": "The package will be delivered tomorrow.",
+          "explanation": "Após \"will be\" sempre past participle, não base form. \"Deliver\" → \"delivered\"."
+        },
+        {
+          "type": "read_answer",
+          "passage": "The winner will be announced tomorrow. The results will be sent by email next week. The new album is going to be released next month. Dinner will be served at 7 PM.",
+          "question": "When will dinner be served?",
+          "answer": "at 7 PM",
+          "explanation": "The text says \"Dinner will be served at 7 PM\"."
+        }
+      ],
+      "listening_speaking": [
+        {
+          "text": "The winner will be announced tomorrow.",
+          "context": "public announcement"
+        },
+        {
+          "text": "The package will be delivered Monday.",
+          "context": "delivery promise"
+        },
+        {
+          "text": "Dinner will be served at 7.",
+          "context": "event time"
+        },
+        {
+          "text": "The new album is going to be released.",
+          "context": "planned future"
+        },
+        {
+          "text": "Results will be emailed.",
+          "context": "official communication"
+        }
+      ],
+      "roleplay": {
+        "scenario": "Charlotte pede que você anuncie três eventos futuros — usando \"will be / is going to be + past participle\".",
+        "voiced_by": "charlotte",
+        "persona": "Charlotte",
+        "persona_outfit": "charlotte_casual",
+        "time_budget_sec": 180,
+        "opening_line": "Announce three upcoming events using future passive.",
+        "objectives": [
+          {
+            "id": 1,
+            "label_pt": "Anúncio com 'will be'",
+            "label_en": "Announcement with 'will be'",
+            "hidden_prompt": "user uses 'X will be + past participle'",
+            "hint_pt": "The results will be announced on Friday.",
+            "hint_en": "The results will be announced on Friday."
+          },
+          {
+            "id": 2,
+            "label_pt": "Plano com 'is going to be'",
+            "label_en": "Plan with 'is going to be'",
+            "hidden_prompt": "user uses 'X is/are going to be + past participle'",
+            "hint_pt": "A new park is going to be built downtown.",
+            "hint_en": "A new park is going to be built downtown."
+          },
+          {
+            "id": 3,
+            "label_pt": "Outro evento futuro passive",
+            "label_en": "Another future event passive",
+            "hidden_prompt": "user uses another future passive",
+            "hint_pt": "The conference will be held in Rio.",
+            "hint_en": "The conference will be held in Rio."
+          }
+        ],
+        "closing_cue": "Charlotte fecha com \"Upcoming events announced!\" quando obj_3 baterem.",
+        "suggested_flow": "**Suggested flow** (referencial, 6 turnos):\n\n1. **Charlotte**: \"Announce three upcoming events using future passive.\"\n2. **Student**: ~\"The results will be announced on Friday.\"\n3. **Charlotte**: \"Big day. Plan?\"\n4. **Student**: ~\"A new park is going to be built downtown.\"\n5. **Charlotte**: \"Event?\"\n6. **Student**: ~\"The conference will be held in Rio.\"\n7. **Charlotte**: \"Upcoming events announced!\"",
+        "evaluation_focus": [
+          "\"Will be + past participle\"",
+          "\"Going to be + past participle\"",
+          "Future passive variety"
+        ]
+      },
+      "guided_chat": {
+        "scenario": "Charlotte conta sobre planos futuros da equipe dela ou da cidade — usem future passive juntos.",
+        "voiced_by": "charlotte",
+        "persona": "Charlotte",
+        "persona_outfit": "charlotte_casual",
+        "intro_en": "Charlotte shares future plans. Use 'will be' and 'going to be' + past participle.",
+        "opening_message": "What's going to be built or changed in your city soon?",
+        "objectives": [
+          {
+            "id": 1,
+            "label_pt": "Plano futuro com 'is going to be'",
+            "label_en": "Future plan with 'is going to be'",
+            "hidden_prompt": "user uses 'X is going to be + past participle'",
+            "hint_pt": "A new metro line is going to be built.",
+            "hint_en": "A new metro line is going to be built."
+          },
+          {
+            "id": 2,
+            "label_pt": "Outro plano futuro passive",
+            "label_en": "Another future passive plan",
+            "hidden_prompt": "user uses 'will be + past participle'",
+            "hint_pt": "The old market will be renovated.",
+            "hint_en": "The old market will be renovated."
+          },
+          {
+            "id": 3,
+            "label_pt": "Perguntar à Charlotte",
+            "label_en": "Ask Charlotte",
+            "hidden_prompt": "user asks Charlotte about upcoming plans in her area",
+            "hint_pt": "What's going to be built in your area?",
+            "hint_en": "What's going to be built in your area?"
+          }
+        ],
+        "closing_cue": "Charlotte fecha com \"Future plans compared!\" quando obj_3 baterem.",
+        "suggested_script": "**Script** (referencial, 7 turnos):\n\n1. **Charlotte**: \"What's going to be built or changed in your city soon?\"\n2. **Student**: \"A new metro line is going to be built.\"\n3. **Charlotte**: \"Useful. What else?\"\n4. **Student**: \"The old market will be renovated.\"\n5. **Charlotte**: \"Nice update.\"\n6. **Student**: \"What's going to be built in your area?\"\n7. **Charlotte**: \"A new library is going to be opened next year. Future plans compared!\"\n\n> I02 chat = LLM puro. Scaffold via hint_pt.\n\n---"
+      }
+    },
+    {
+      "id": "I03",
+      "title": "By the artist",
+      "sub_cefr": "B2",
+      "grammar_focus": "Passive with \"by + agent\" — when to include and when to omit",
+      "markers": [
+        "denso"
+      ],
+      "real_life_context": "You credit the agent in passive when relevant; omit when generic or unimportant.",
+      "grammar": [
+        {
+          "type": "multiple_choice",
+          "sentence": "The Mona Lisa was painted _____ Leonardo.",
+          "options": [
+            "by",
+            "for",
+            "from",
+            "with"
+          ],
+          "answer": "by",
+          "explanation": "Em passive, o agente é introduzido por \"by\". \"By Leonardo\" = quem fez a ação. Preposição fixa."
+        },
+        {
+          "type": "multiple_choice",
+          "sentence": "The novel _____ by a Brazilian writer.",
+          "options": [
+            "was written",
+            "wrote",
+            "writes",
+            "has wrote"
+          ],
+          "answer": "was written",
+          "explanation": "Passive past + \"by + agent\". \"Was written by a Brazilian writer\"."
+        },
+        {
+          "type": "word_bank",
+          "sentence": "The song _____ by my favorite artist.",
+          "choices": [
+            "was performed",
+            "performed",
+            "is performing",
+            "performs"
+          ],
+          "answer": "was performed",
+          "explanation": "\"Was performed by...\" — passive past com agente."
+        },
+        {
+          "type": "word_bank",
+          "sentence": "The cake _____ by my mother.",
+          "choices": [
+            "was made",
+            "made",
+            "makes",
+            "has been making"
+          ],
+          "answer": "was made",
+          "explanation": "\"Was made by my mother\" — passive past + agent."
+        },
+        {
+          "type": "fill_gap",
+          "sentence": "The film was directed _____ Spielberg.",
+          "hint": "Preposição que introduz agente",
+          "answer": "by",
+          "explanation": "\"By Spielberg\" — preposição padrão do agente em passive."
+        },
+        {
+          "type": "fill_gap",
+          "sentence": "Hamlet _____ by Shakespeare.",
+          "hint": "was + past participle \"write\"",
+          "answer": "was written",
+          "explanation": "\"Was written by Shakespeare\" — passive + agent famoso."
+        },
+        {
+          "type": "fill_gap",
+          "sentence": "These photos _____ by my dad.",
+          "hint": "were + past participle \"take\"",
+          "answer": "were taken",
+          "explanation": "Plural \"photos\" → \"were taken by my dad\". Take → taken."
+        },
+        {
+          "type": "fix_error",
+          "sentence": "The Mona Lisa was painted from Leonardo.",
+          "hint": "Preposição errada — agente usa \"by\"",
+          "answer": "The Mona Lisa was painted by Leonardo.",
+          "explanation": "\"From\" indica origem/source. Para AGENTE de passive, sempre \"by\"."
+        },
+        {
+          "type": "fix_error",
+          "sentence": "English is spoken by many countries.",
+          "hint": "\"Many countries\" não é agente — usa \"in\"",
+          "answer": "English is spoken in many countries.",
+          "explanation": "\"Countries\" são LUGARES, não agentes. Use \"in\", não \"by\". \"By\" só para quem realiza a ação."
+        },
+        {
+          "type": "read_answer",
+          "passage": "The Mona Lisa was painted by Leonardo da Vinci. The novel was written by a famous Brazilian author. These photos were taken by my dad on vacation. The film was directed by Spielberg.",
+          "question": "Who directed the film?",
+          "answer": "Spielberg",
+          "explanation": "The text says \"The film was directed by Spielberg\"."
+        }
+      ],
+      "listening_speaking": [
+        {
+          "text": "It was painted by Leonardo.",
+          "context": "credit artist"
+        },
+        {
+          "text": "The book was written by my favorite author.",
+          "context": "credit writer"
+        },
+        {
+          "text": "These photos were taken by my dad.",
+          "context": "credit photographer"
+        },
+        {
+          "text": "The cake was made by my mother.",
+          "context": "credit maker"
+        },
+        {
+          "text": "The song was performed by a new band.",
+          "context": "credit performer"
+        }
+      ],
+      "roleplay": {
+        "scenario": "Charlotte aponta 3 coisas — uma obra de arte, um livro, uma comida — e quer saber quem as criou, em passive com \"by\".",
+        "voiced_by": "charlotte",
+        "persona": "Charlotte",
+        "persona_outfit": "charlotte_casual",
+        "time_budget_sec": 180,
+        "opening_line": "Tell me about three things and who made them — use 'by + person'.",
+        "objectives": [
+          {
+            "id": 1,
+            "label_pt": "Obra de arte com 'by'",
+            "label_en": "Artwork with 'by'",
+            "hidden_prompt": "user uses 'X was painted/created by + person'",
+            "hint_pt": "Guernica was painted by Picasso.",
+            "hint_en": "Guernica was painted by Picasso."
+          },
+          {
+            "id": 2,
+            "label_pt": "Livro com 'by'",
+            "label_en": "Book with 'by'",
+            "hidden_prompt": "user uses 'X was written by + author'",
+            "hint_pt": "Dom Casmurro was written by Machado de Assis.",
+            "hint_en": "Dom Casmurro was written by Machado de Assis."
+          },
+          {
+            "id": 3,
+            "label_pt": "Comida ou objeto com 'by'",
+            "label_en": "Food or object with 'by'",
+            "hidden_prompt": "user uses 'X was made/cooked by + person'",
+            "hint_pt": "The cake was made by my grandmother.",
+            "hint_en": "The cake was made by my grandmother."
+          }
+        ],
+        "closing_cue": "Charlotte fecha com \"Creators credited!\" quando obj_3 baterem.",
+        "suggested_flow": "**Suggested flow** (referencial, 6 turnos):\n\n1. **Charlotte**: \"Tell me about three things and who made them — use 'by + person'.\"\n2. **Student**: ~\"Guernica was painted by Picasso.\"\n3. **Charlotte**: \"Iconic. Book?\"\n4. **Student**: ~\"Dom Casmurro was written by Machado de Assis.\"\n5. **Charlotte**: \"Brazilian classic. Personal?\"\n6. **Student**: ~\"The cake was made by my grandmother.\"\n7. **Charlotte**: \"Creators credited!\"",
+        "evaluation_focus": [
+          "\"By + agent\" position correct",
+          "Passive structure intact",
+          "\"By\" only for agents, not places"
+        ]
+      },
+      "guided_chat": {
+        "scenario": "Charlotte conversa sobre coisas que vocês amam — livros, filmes, comidas — e quem criou. Sempre com \"by + creator\".",
+        "voiced_by": "charlotte",
+        "persona": "Charlotte",
+        "persona_outfit": "charlotte_casual",
+        "intro_en": "Charlotte explores favorite creators. Use 'by + person' in passive.",
+        "opening_message": "What's your favorite book and who was it written by?",
+        "objectives": [
+          {
+            "id": 1,
+            "label_pt": "Livro favorito + autor",
+            "label_en": "Favorite book + author",
+            "hidden_prompt": "user uses 'X was written by + author'",
+            "hint_pt": "My favorite book was written by Jorge Amado.",
+            "hint_en": "My favorite book was written by Jorge Amado."
+          },
+          {
+            "id": 2,
+            "label_pt": "Outro favorito (filme, música)",
+            "label_en": "Another favorite (film, music)",
+            "hidden_prompt": "user uses 'X was directed/composed/sung by + person'",
+            "hint_pt": "My favorite song was sung by Caetano.",
+            "hint_en": "My favorite song was sung by Caetano."
+          },
+          {
+            "id": 3,
+            "label_pt": "Perguntar à Charlotte",
+            "label_en": "Ask Charlotte",
+            "hidden_prompt": "user asks Charlotte about her favorites",
+            "hint_pt": "What's your favorite book and by whom?",
+            "hint_en": "What's your favorite book and by whom?"
+          }
+        ],
+        "closing_cue": "Charlotte fecha com \"Favorites swapped!\" quando obj_3 baterem.",
+        "suggested_script": "**Script** (referencial, 7 turnos):\n\n1. **Charlotte**: \"What's your favorite book and who was it written by?\"\n2. **Student**: \"My favorite book was written by Jorge Amado.\"\n3. **Charlotte**: \"Beautiful prose. Music?\"\n4. **Student**: \"My favorite song was sung by Caetano.\"\n5. **Charlotte**: \"Such a voice.\"\n6. **Student**: \"What's your favorite book and by whom?\"\n7. **Charlotte**: \"Pride and Prejudice was written by Jane Austen. Favorites swapped!\"\n\n> I03 chat = LLM puro. Scaffold via hint_pt.\n\n---"
+      }
+    },
+    {
+      "id": "I04",
+      "title": "Get + past participle",
+      "sub_cefr": "B2",
+      "grammar_focus": "\"Get\" passive (got hurt, got married, get done) — informal alternative to \"be\"",
+      "markers": [
+        "denso"
+      ],
+      "real_life_context": "You describe accidents, changes of state, or informal events with the \"get + past participle\" structure.",
+      "grammar": [
+        {
+          "type": "multiple_choice",
+          "sentence": "She _____ in a car accident last week.",
+          "options": [
+            "got hurt",
+            "hurt",
+            "was hurt",
+            "has hurt"
+          ],
+          "answer": "got hurt",
+          "explanation": "\"Get + past participle\" = passive informal, especialmente para mudanças de estado ou acidentes. \"Got hurt\" — comum em fala."
+        },
+        {
+          "type": "multiple_choice",
+          "sentence": "They _____ last summer.",
+          "options": [
+            "got married",
+            "married",
+            "were married",
+            "get married"
+          ],
+          "answer": "got married",
+          "explanation": "\"Got married\" — chunk fixo. \"Get\" passive é muito usado para eventos de vida."
+        },
+        {
+          "type": "word_bank",
+          "sentence": "He _____ for the company last month.",
+          "choices": [
+            "got hired",
+            "hired",
+            "was hired",
+            "has hired"
+          ],
+          "answer": "got hired",
+          "explanation": "\"Got hired\" — informal alternative para \"was hired\". Comum em fala."
+        },
+        {
+          "type": "word_bank",
+          "sentence": "I always _____ in the rain.",
+          "choices": [
+            "get wet",
+            "am wet",
+            "wet",
+            "am getting wet"
+          ],
+          "answer": "get wet",
+          "explanation": "\"Get wet\" — mudança de estado. \"Get + adjective\" também funciona como passive informal."
+        },
+        {
+          "type": "fill_gap",
+          "sentence": "My phone _____ stolen yesterday.",
+          "hint": "got + past participle",
+          "answer": "got",
+          "explanation": "\"Got stolen\" — passive informal de \"was stolen\". Comum em narrativa."
+        },
+        {
+          "type": "fill_gap",
+          "sentence": "They _____ engaged last month.",
+          "hint": "got + past participle \"engage\"",
+          "answer": "got engaged",
+          "explanation": "\"Got engaged\" — evento de vida em get passive."
+        },
+        {
+          "type": "fill_gap",
+          "sentence": "I _____ lost in the city.",
+          "hint": "got + past participle \"lose\"",
+          "answer": "got lost",
+          "explanation": "\"Got lost\" — comum em narrativa. \"Lose\" → past participle \"lost\"."
+        },
+        {
+          "type": "fix_error",
+          "sentence": "She get married last summer.",
+          "hint": "Passado precisa de \"got\"",
+          "answer": "She got married last summer.",
+          "explanation": "\"Last summer\" indica passado. Use \"got\", não \"get\"."
+        },
+        {
+          "type": "fix_error",
+          "sentence": "My phone got steal.",
+          "hint": "Precisa past participle, não base form",
+          "answer": "My phone got stolen.",
+          "explanation": "Após \"got\", past participle. \"Steal\" → \"stolen\". \"Got steal\" não é gramatical."
+        },
+        {
+          "type": "read_answer",
+          "passage": "She got hurt in a car accident last week. They got married last summer in Italy. He got hired by a big tech company last month. My phone got stolen on the bus yesterday.",
+          "question": "Where did they get married?",
+          "answer": "in Italy (or \"Italy\")",
+          "explanation": "The text says \"They got married last summer in Italy\"."
+        }
+      ],
+      "listening_speaking": [
+        {
+          "text": "She got hurt in the accident.",
+          "context": "informal injury"
+        },
+        {
+          "text": "They got married last year.",
+          "context": "life event"
+        },
+        {
+          "text": "I got lost in the city.",
+          "context": "narrative event"
+        },
+        {
+          "text": "He got hired last month.",
+          "context": "informal hiring"
+        },
+        {
+          "text": "My phone got stolen.",
+          "context": "informal theft"
+        }
+      ],
+      "roleplay": {
+        "scenario": "Charlotte pergunta sobre eventos da sua vida — mudanças, acidentes, conquistas — e quer ouvir 3 com \"get + past participle\".",
+        "voiced_by": "charlotte",
+        "persona": "Charlotte",
+        "persona_outfit": "charlotte_casual",
+        "time_budget_sec": 180,
+        "opening_line": "Three life events using 'got + past participle' — informal passive.",
+        "objectives": [
+          {
+            "id": 1,
+            "label_pt": "Evento de vida com 'got + past participle'",
+            "label_en": "Life event with 'got + past participle'",
+            "hidden_prompt": "user uses 'X got married/hired/promoted/engaged'",
+            "hint_pt": "I got married three years ago.",
+            "hint_en": "I got married three years ago."
+          },
+          {
+            "id": 2,
+            "label_pt": "Acidente ou problema com 'got'",
+            "label_en": "Accident or problem with 'got'",
+            "hidden_prompt": "user uses 'X got hurt/lost/stolen'",
+            "hint_pt": "I got lost on my first day in São Paulo.",
+            "hint_en": "I got lost on my first day in São Paulo."
+          },
+          {
+            "id": 3,
+            "label_pt": "Outro 'get' passive",
+            "label_en": "Another 'get' passive",
+            "hidden_prompt": "user uses another 'got + past participle'",
+            "hint_pt": "My car got stolen last year.",
+            "hint_en": "My car got stolen last year."
+          }
+        ],
+        "closing_cue": "Charlotte fecha com \"Life events shared!\" quando obj_3 baterem.",
+        "suggested_flow": "**Suggested flow** (referencial, 6 turnos):\n\n1. **Charlotte**: \"Three life events using 'got + past participle' — informal passive.\"\n2. **Student**: ~\"I got married three years ago.\"\n3. **Charlotte**: \"Congrats. Travel?\"\n4. **Student**: ~\"I got lost on my first day in São Paulo.\"\n5. **Charlotte**: \"Big city is overwhelming. Last?\"\n6. **Student**: ~\"My car got stolen last year.\"\n7. **Charlotte**: \"Life events shared!\"",
+        "evaluation_focus": [
+          "\"Got + past participle\"",
+          "Informal tone",
+          "Past participle forms"
+        ]
+      },
+      "guided_chat": {
+        "scenario": "Charlotte conta uma história rápida de coisa que aconteceu com ela usando \"got\" — vocês trocam histórias informais em get passive.",
+        "voiced_by": "charlotte",
+        "persona": "Charlotte",
+        "persona_outfit": "charlotte_casual",
+        "intro_en": "Charlotte shares a quick story. Use 'got + past participle' naturally.",
+        "opening_message": "I got soaked in the rain yesterday. Has something like that happened to you?",
+        "objectives": [
+          {
+            "id": 1,
+            "label_pt": "História com 'got'",
+            "label_en": "Story with 'got'",
+            "hidden_prompt": "user uses 'I got + past participle'",
+            "hint_pt": "I got stuck in traffic for two hours.",
+            "hint_en": "I got stuck in traffic for two hours."
+          },
+          {
+            "id": 2,
+            "label_pt": "Outro evento com 'got'",
+            "label_en": "Another event with 'got'",
+            "hidden_prompt": "user uses another 'got + past participle'",
+            "hint_pt": "My bag got soaked too.",
+            "hint_en": "My bag got soaked too."
+          },
+          {
+            "id": 3,
+            "label_pt": "Perguntar à Charlotte",
+            "label_en": "Ask Charlotte",
+            "hidden_prompt": "user asks Charlotte more about her event",
+            "hint_pt": "How did you get home?",
+            "hint_en": "How did you get home?"
+          }
+        ],
+        "closing_cue": "Charlotte fecha com \"Soggy stories shared!\" quando obj_3 baterem.",
+        "suggested_script": "**Script** (referencial, 7 turnos):\n\n1. **Charlotte**: \"I got soaked in the rain yesterday. Has something like that happened to you?\"\n2. **Student**: \"I got stuck in traffic for two hours.\"\n3. **Charlotte**: \"Worse than rain. Anything else?\"\n4. **Student**: \"My bag got soaked too.\"\n5. **Charlotte**: \"Wet everything.\"\n6. **Student**: \"How did you get home?\"\n7. **Charlotte**: \"Walked. There were no taxis. Soggy stories shared!\"\n\n> I04 chat = LLM puro. Scaffold via hint_pt.\n\n---"
+      }
+    },
+    {
+      "id": "I05",
+      "title": "All passives expanded",
+      "sub_cefr": "B2",
+      "grammar_focus": "Integration of modal passive, future passive, agent passive, get passive",
+      "markers": [],
+      "real_life_context": "You mix passive forms fluidly across registers (formal modal/future, informal get).",
+      "grammar": [
+        {
+          "type": "multiple_choice",
+          "sentence": "The form _____ in blue ink.",
+          "options": [
+            "must be filled",
+            "must fill",
+            "will be filled",
+            "is filled"
+          ],
+          "answer": "must be filled",
+          "explanation": "Instrução formal → modal passive. \"Must be filled\" — obrigação."
+        },
+        {
+          "type": "multiple_choice",
+          "sentence": "The results _____ tomorrow.",
+          "options": [
+            "will be announced",
+            "are announced",
+            "get announced",
+            "be announced"
+          ],
+          "answer": "will be announced",
+          "explanation": "Anúncio formal futuro → future passive. \"Will be announced\"."
+        },
+        {
+          "type": "word_bank",
+          "sentence": "The Mona Lisa _____ by Leonardo.",
+          "choices": [
+            "was painted",
+            "painted",
+            "paints",
+            "is painting"
+          ],
+          "answer": "was painted",
+          "explanation": "Past simple passive + agente. \"Was painted by Leonardo\"."
+        },
+        {
+          "type": "word_bank",
+          "sentence": "She _____ married last weekend.",
+          "choices": [
+            "got",
+            "was",
+            "is",
+            "has been"
+          ],
+          "answer": "got",
+          "explanation": "\"Got married\" — chunk informal de evento de vida."
+        },
+        {
+          "type": "fill_gap",
+          "sentence": "This room _____ regularly.",
+          "hint": "should be + past participle \"clean\"",
+          "answer": "should be cleaned",
+          "explanation": "Modal passive recomendação. \"Should be cleaned\"."
+        },
+        {
+          "type": "fill_gap",
+          "sentence": "The package _____ tomorrow.",
+          "hint": "will be + past participle \"deliver\"",
+          "answer": "will be delivered",
+          "explanation": "Future passive. \"Will be delivered tomorrow\"."
+        },
+        {
+          "type": "fill_gap",
+          "sentence": "I _____ lost in the city.",
+          "hint": "got + past participle \"lose\"",
+          "answer": "got lost",
+          "explanation": "Get passive narrativo. \"Got lost in the city\"."
+        },
+        {
+          "type": "fix_error",
+          "sentence": "The report must finished by Friday.",
+          "hint": "Falta \"be\"",
+          "answer": "The report must be finished by Friday.",
+          "explanation": "Modal passive sempre \"modal + BE + past participle\"."
+        },
+        {
+          "type": "fix_error",
+          "sentence": "The novel was wrote by a Brazilian author.",
+          "hint": "\"Wrote\" não é past participle — \"written\"",
+          "answer": "The novel was written by a Brazilian author.",
+          "explanation": "Verbo irregular: write → wrote (past simple) → written (past participle). Passive usa past participle."
+        },
+        {
+          "type": "read_answer",
+          "passage": "The report must be finished by Friday. The results will be announced tomorrow. The Mona Lisa was painted by Leonardo. She got married last weekend. This room should be cleaned daily.",
+          "question": "Who painted the Mona Lisa?",
+          "answer": "Leonardo",
+          "explanation": "The text says \"The Mona Lisa was painted by Leonardo\"."
+        }
+      ],
+      "listening_speaking": [
+        {
+          "text": "The form must be filled in blue ink.",
+          "context": "modal passive"
+        },
+        {
+          "text": "The results will be announced tomorrow.",
+          "context": "future passive"
+        },
+        {
+          "text": "The Mona Lisa was painted by Leonardo.",
+          "context": "agent passive"
+        },
+        {
+          "text": "She got married last weekend.",
+          "context": "get passive"
+        },
+        {
+          "text": "The bridge is going to be completed in 2030.",
+          "context": "future passive"
+        }
+      ],
+      "roleplay": {
+        "scenario": "Charlotte pede 4 sentenças passivas — uma modal, uma futura, uma com agente, uma com \"get\" — variedade total.",
+        "voiced_by": "charlotte",
+        "persona": "Charlotte",
+        "persona_outfit": "charlotte_casual",
+        "time_budget_sec": 180,
+        "opening_line": "Mix passive forms — modal, future, with 'by', and informal 'got'.",
+        "objectives": [
+          {
+            "id": 1,
+            "label_pt": "Modal passive",
+            "label_en": "Modal passive",
+            "hidden_prompt": "user uses 'modal + be + past participle'",
+            "hint_pt": "The report must be sent today.",
+            "hint_en": "The report must be sent today."
+          },
+          {
+            "id": 2,
+            "label_pt": "Future passive ou agent passive",
+            "label_en": "Future passive or agent passive",
+            "hidden_prompt": "user uses 'will be + past participle' or 'was + past participle + by'",
+            "hint_pt": "The book was written by a famous author.",
+            "hint_en": "The book was written by a famous author."
+          },
+          {
+            "id": 3,
+            "label_pt": "Get passive informal",
+            "label_en": "Informal get passive",
+            "hidden_prompt": "user uses 'got + past participle'",
+            "hint_pt": "I got promoted last month.",
+            "hint_en": "I got promoted last month."
+          }
+        ],
+        "closing_cue": "Charlotte fecha com \"Passive variety achieved!\" quando obj_3 baterem.",
+        "suggested_flow": "**Suggested flow** (referencial, 6 turnos):\n\n1. **Charlotte**: \"Mix passive forms — modal, future, with 'by', and informal 'got'.\"\n2. **Student**: ~\"The report must be sent today.\"\n3. **Charlotte**: \"Strict. With agent?\"\n4. **Student**: ~\"The book was written by a famous author.\"\n5. **Charlotte**: \"Informal one?\"\n6. **Student**: ~\"I got promoted last month.\"\n7. **Charlotte**: \"Passive variety achieved!\"",
+        "evaluation_focus": [
+          "Variety of passive forms",
+          "Register (formal vs informal)",
+          "Correct structures"
+        ]
+      },
+      "guided_chat": {
+        "scenario": "Charlotte abre uma conversa profissional/pessoal mista — vocês usam todos os passive de M15+M16 numa mesma conversa.",
+        "voiced_by": "charlotte",
+        "persona": "Charlotte",
+        "persona_outfit": "charlotte_casual",
+        "intro_en": "Charlotte mixes professional and personal. Use all passive forms.",
+        "opening_message": "What's been finished, what's being done, and what will be done at your work this month?",
+        "objectives": [
+          {
+            "id": 1,
+            "label_pt": "O que foi feito (present perfect passive)",
+            "label_en": "What's been done",
+            "hidden_prompt": "user uses 'has/have been + past participle'",
+            "hint_pt": "The website has been redesigned.",
+            "hint_en": "The website has been redesigned."
+          },
+          {
+            "id": 2,
+            "label_pt": "O que está em curso (present continuous passive)",
+            "label_en": "What's being done",
+            "hidden_prompt": "user uses 'is/are being + past participle'",
+            "hint_pt": "New features are being tested.",
+            "hint_en": "New features are being tested."
+          },
+          {
+            "id": 3,
+            "label_pt": "O que será feito (future passive)",
+            "label_en": "What will be done",
+            "hidden_prompt": "user uses 'will be + past participle'",
+            "hint_pt": "A new version will be released next month.",
+            "hint_en": "A new version will be released next month."
+          }
+        ],
+        "closing_cue": "Charlotte fecha com \"Full passive map!\" quando obj_3 baterem.",
+        "suggested_script": "**Script** (referencial, 7 turnos):\n\n1. **Charlotte**: \"What's been finished, what's being done, and what will be done at your work this month?\"\n2. **Student**: \"The website has been redesigned.\"\n3. **Charlotte**: \"Modern look. In progress?\"\n4. **Student**: \"New features are being tested.\"\n5. **Charlotte**: \"Coming soon?\"\n6. **Student**: \"A new version will be released next month.\"\n7. **Charlotte**: \"Full passive map!\"\n\n> I05 chat = LLM puro. Scaffold via hint_pt.\n\n---"
+      }
+    }
+  ],
+  "cross_unit_consolidation": [
+    "Modal passive: must/should/can/have to + be + past participle",
+    "Future passive: will be + past participle / is going to be + past participle",
+    "\"By + agent\" para creditar quem fez",
+    "\"Get + past participle\" como passive informal (got hurt, got married, got stolen)",
+    "Distinção entre passive formal (be) e informal (get)",
+    "Concordância e past participle correto em todas as formas"
+  ]
+}

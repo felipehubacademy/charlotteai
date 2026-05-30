@@ -1,0 +1,1035 @@
+{
+  "id": "M15",
+  "title": "Foi feito",
+  "level": "Inter",
+  "block": "B2",
+  "units_range": "I01–I05",
+  "theme": "Passive voice intro (present simple, past simple, present continuous, present perfect)",
+  "goal": "Student forms passive voice in basic tenses to shift focus from agent to recipient or to depersonalize information.",
+  "connects_to": "M16 (Passive voice expanded) — modal passives, future passive, \"by + agent\".",
+  "module_chunks": [
+    "The book is read (present simple passive)",
+    "The book was read (past simple passive)",
+    "The book is being read (present continuous passive)",
+    "The book has been read (present perfect passive)",
+    "It is made of...",
+    "It was built in...",
+    "It is used to...",
+    "Coffee is grown in Brazil",
+    "The film is being shown",
+    "The reports have been sent"
+  ],
+  "units": [
+    {
+      "id": "I01",
+      "title": "It is made",
+      "sub_cefr": "B2",
+      "grammar_focus": "Present simple passive (am/is/are + past participle)",
+      "markers": [
+        "denso"
+      ],
+      "real_life_context": "You describe general facts where the agent is unknown, unimportant, or implied.",
+      "grammar": [
+        {
+          "type": "multiple_choice",
+          "sentence": "English _____ in many countries.",
+          "options": [
+            "is spoken",
+            "speaks",
+            "is speaking",
+            "spoke"
+          ],
+          "answer": "is spoken",
+          "explanation": "Passive present simple = \"am/is/are + past participle\". \"English is spoken\" — foco na língua, não em quem fala. Forma passiva clássica para fatos gerais."
+        },
+        {
+          "type": "multiple_choice",
+          "sentence": "The factory _____ a thousand cars a year.",
+          "options": [
+            "produces",
+            "is produced",
+            "are produced",
+            "is producing"
+          ],
+          "answer": "produces",
+          "explanation": "\"The factory produces\" — ativa, pois a fábrica é o agente real. Se fosse passiva: \"A thousand cars are produced by the factory\"."
+        },
+        {
+          "type": "word_bank",
+          "sentence": "Coffee _____ in Brazil.",
+          "choices": [
+            "is grown",
+            "grows",
+            "are grown",
+            "is growing"
+          ],
+          "answer": "is grown",
+          "explanation": "\"Coffee is grown\" — café é o que recebe a ação. Foco no produto, não em quem planta. Passive present simple."
+        },
+        {
+          "type": "word_bank",
+          "sentence": "Cars _____ in the factory.",
+          "choices": [
+            "are made",
+            "make",
+            "is made",
+            "are making"
+          ],
+          "answer": "are made",
+          "explanation": "Plural \"cars\" → \"are made\". \"Cars are made in the factory\" — passive present simple, plural."
+        },
+        {
+          "type": "fill_gap",
+          "sentence": "These shirts _____ in Italy.",
+          "hint": "are + past participle \"make\"",
+          "answer": "are made",
+          "explanation": "\"Are made in Italy\" — passive plural. Foco nas camisas (recipient), não em quem fabrica."
+        },
+        {
+          "type": "fill_gap",
+          "sentence": "Spanish _____ by 500 million people.",
+          "hint": "is + past participle \"speak\"",
+          "answer": "is spoken",
+          "explanation": "\"Spanish is spoken\" — passive present simple singular. Foco na língua."
+        },
+        {
+          "type": "fill_gap",
+          "sentence": "Rice _____ in Asia.",
+          "hint": "is + past participle \"grow\"",
+          "answer": "is grown",
+          "explanation": "\"Rice is grown in Asia\" — fato geral, agente impreciso, passive natural."
+        },
+        {
+          "type": "fix_error",
+          "sentence": "English is speak in many countries.",
+          "hint": "\"Speak\" precisa estar em past participle = \"spoken\"",
+          "answer": "English is spoken in many countries.",
+          "explanation": "Passive precisa de past participle, não base form. \"Speak\" → \"spoken\". \"Is speak\" não funciona."
+        },
+        {
+          "type": "fix_error",
+          "sentence": "Cars is made in the factory.",
+          "hint": "Plural \"cars\" precisa de \"are\", não \"is\"",
+          "answer": "Cars are made in the factory.",
+          "explanation": "Concordância: \"cars\" (plural) → \"are made\". Singular seria \"the car is made\"."
+        },
+        {
+          "type": "read_answer",
+          "passage": "English is spoken in many countries around the world. Coffee is grown in Brazil and Colombia. These shirts are made in Italy. Rice is grown mostly in Asia.",
+          "question": "Where is coffee grown?",
+          "answer": "in Brazil and Colombia (or \"Brazil and Colombia\")",
+          "explanation": "The text says \"Coffee is grown in Brazil and Colombia\"."
+        }
+      ],
+      "listening_speaking": [
+        {
+          "text": "English is spoken in many countries.",
+          "context": "language fact"
+        },
+        {
+          "text": "Coffee is grown in Brazil.",
+          "context": "production fact"
+        },
+        {
+          "text": "These shirts are made in Italy.",
+          "context": "origin"
+        },
+        {
+          "text": "Rice is grown in Asia.",
+          "context": "agricultural fact"
+        },
+        {
+          "text": "The form is filled out online.",
+          "context": "process fact"
+        }
+      ],
+      "roleplay": {
+        "scenario": "Charlotte explora produtos, alimentos, ou línguas — quer que você descreva 3 fatos gerais usando voz passiva no presente.",
+        "voiced_by": "charlotte",
+        "persona": "Charlotte",
+        "persona_outfit": "charlotte_casual",
+        "time_budget_sec": 180,
+        "opening_line": "Tell me three general facts about products or places using passive voice.",
+        "objectives": [
+          {
+            "id": 1,
+            "label_pt": "Fato sobre comida/produto (passive)",
+            "label_en": "Fact about food/product (passive)",
+            "hidden_prompt": "user uses 'X is/are + past participle' for food or product",
+            "hint_pt": "Coffee is grown in many countries.",
+            "hint_en": "Coffee is grown in many countries."
+          },
+          {
+            "id": 2,
+            "label_pt": "Fato sobre idioma (passive)",
+            "label_en": "Fact about language (passive)",
+            "hidden_prompt": "user uses 'X is/are spoken' or similar passive about language",
+            "hint_pt": "Spanish is spoken across Latin America.",
+            "hint_en": "Spanish is spoken across Latin America."
+          },
+          {
+            "id": 3,
+            "label_pt": "Fato sobre material/processo",
+            "label_en": "Fact about material/process",
+            "hidden_prompt": "user uses another passive present simple",
+            "hint_pt": "Cheese is made from milk.",
+            "hint_en": "Cheese is made from milk."
+          }
+        ],
+        "closing_cue": "Charlotte fecha com \"General facts collected!\" quando obj_3 baterem.",
+        "suggested_flow": "**Suggested flow** (referencial, 6 turnos):\n\n1. **Charlotte**: \"Tell me three general facts about products or places using passive voice.\"\n2. **Student**: ~\"Coffee is grown in many countries.\"\n3. **Charlotte**: \"Language?\"\n4. **Student**: ~\"Spanish is spoken across Latin America.\"\n5. **Charlotte**: \"How something is made?\"\n6. **Student**: ~\"Cheese is made from milk.\"\n7. **Charlotte**: \"General facts collected!\"",
+        "evaluation_focus": [
+          "\"Is/are + past participle\"",
+          "Singular/plural agreement",
+          "General fact tone"
+        ]
+      },
+      "guided_chat": {
+        "scenario": "Charlotte propõe conversa sobre coisas que são feitas no Brasil — produtos, comidas, costumes — usando passive natural.",
+        "voiced_by": "charlotte",
+        "persona": "Charlotte",
+        "persona_outfit": "charlotte_casual",
+        "intro_en": "Charlotte asks about Brazil. Use passive voice to describe what's made/done there.",
+        "opening_message": "What products are made or grown in Brazil?",
+        "objectives": [
+          {
+            "id": 1,
+            "label_pt": "Produto com passive",
+            "label_en": "Product with passive",
+            "hidden_prompt": "user uses passive 'is/are + past participle' for Brazilian product",
+            "hint_pt": "Coffee is grown in many parts of Brazil.",
+            "hint_en": "Coffee is grown in many parts of Brazil."
+          },
+          {
+            "id": 2,
+            "label_pt": "Outro produto/costume",
+            "label_en": "Another product/custom",
+            "hidden_prompt": "user uses another passive sentence",
+            "hint_pt": "Cars are made in São Paulo and other cities.",
+            "hint_en": "Cars are made in São Paulo and other cities."
+          },
+          {
+            "id": 3,
+            "label_pt": "Perguntar à Charlotte",
+            "label_en": "Ask Charlotte",
+            "hidden_prompt": "user asks 'What about your country?' or similar",
+            "hint_pt": "What's grown in your country?",
+            "hint_en": "What's grown in your country?"
+          }
+        ],
+        "closing_cue": "Charlotte fecha com \"Country facts shared!\" quando obj_3 baterem.",
+        "suggested_script": "**Script** (referencial, 7 turnos):\n\n1. **Charlotte**: \"What products are made or grown in Brazil?\"\n2. **Student**: \"Coffee is grown in many parts of Brazil.\"\n3. **Charlotte**: \"Famous for it. Other?\"\n4. **Student**: \"Cars are made in São Paulo and other cities.\"\n5. **Charlotte**: \"Big industry.\"\n6. **Student**: \"What's grown in your country?\"\n7. **Charlotte**: \"Wheat and apples mostly. Country facts shared!\"\n\n> I01 chat = LLM puro. Scaffold via hint_pt.\n\n---"
+      }
+    },
+    {
+      "id": "I02",
+      "title": "It was built",
+      "sub_cefr": "B2",
+      "grammar_focus": "Past simple passive (was/were + past participle)",
+      "markers": [
+        "denso"
+      ],
+      "real_life_context": "You describe historical events, completed works, or past origins where the agent is general or known.",
+      "grammar": [
+        {
+          "type": "multiple_choice",
+          "sentence": "The pyramid _____ thousands of years ago.",
+          "options": [
+            "was built",
+            "built",
+            "is built",
+            "were built"
+          ],
+          "answer": "was built",
+          "explanation": "Passive past simple = \"was/were + past participle\". \"The pyramid was built\" — passive singular passado."
+        },
+        {
+          "type": "multiple_choice",
+          "sentence": "The Mona Lisa _____ by Leonardo da Vinci.",
+          "options": [
+            "was painted",
+            "painted",
+            "is painted",
+            "were painted"
+          ],
+          "answer": "was painted",
+          "explanation": "\"Was painted by...\" — passive past + \"by + agent\" para mostrar quem fez."
+        },
+        {
+          "type": "word_bank",
+          "sentence": "These bridges _____ in the 19th century.",
+          "choices": [
+            "were built",
+            "was built",
+            "built",
+            "are built"
+          ],
+          "answer": "were built",
+          "explanation": "Plural \"bridges\" → \"were built\". Passive past simple plural."
+        },
+        {
+          "type": "word_bank",
+          "sentence": "The package _____ yesterday.",
+          "choices": [
+            "was delivered",
+            "delivered",
+            "is delivered",
+            "were delivered"
+          ],
+          "answer": "was delivered",
+          "explanation": "\"The package was delivered\" — passive past simple, foco no pacote (recipient)."
+        },
+        {
+          "type": "fill_gap",
+          "sentence": "The book _____ in 1925.",
+          "hint": "was + past participle \"publish\"",
+          "answer": "was published",
+          "explanation": "\"Was published in 1925\" — passive past, ano específico."
+        },
+        {
+          "type": "fill_gap",
+          "sentence": "Two cars _____ in the accident.",
+          "hint": "were + past participle \"damage\"",
+          "answer": "were damaged",
+          "explanation": "Plural \"two cars\" → \"were damaged\". Passive past simple plural."
+        },
+        {
+          "type": "fill_gap",
+          "sentence": "The decision _____ last week.",
+          "hint": "was + past participle \"make\"",
+          "answer": "was made",
+          "explanation": "\"The decision was made\" — passive past, foco na decisão."
+        },
+        {
+          "type": "fix_error",
+          "sentence": "The Mona Lisa was paint by Leonardo.",
+          "hint": "\"Paint\" → past participle \"painted\"",
+          "answer": "The Mona Lisa was painted by Leonardo.",
+          "explanation": "Após \"was/were\" sempre past participle, não base form. \"Paint\" → \"painted\"."
+        },
+        {
+          "type": "fix_error",
+          "sentence": "These bridges was built in 1900.",
+          "hint": "Plural precisa de \"were\"",
+          "answer": "These bridges were built in 1900.",
+          "explanation": "\"Bridges\" (plural) → \"were built\". \"Was\" é só para singular."
+        },
+        {
+          "type": "read_answer",
+          "passage": "The pyramids were built thousands of years ago. The Mona Lisa was painted by Leonardo da Vinci. These bridges were constructed in the 19th century. The package was delivered yesterday morning.",
+          "question": "Who painted the Mona Lisa?",
+          "answer": "Leonardo da Vinci",
+          "explanation": "The text says \"The Mona Lisa was painted by Leonardo da Vinci\"."
+        }
+      ],
+      "listening_speaking": [
+        {
+          "text": "The pyramids were built thousands of years ago.",
+          "context": "historical"
+        },
+        {
+          "text": "The Mona Lisa was painted by Leonardo.",
+          "context": "artwork"
+        },
+        {
+          "text": "The package was delivered yesterday.",
+          "context": "completed action"
+        },
+        {
+          "text": "These bridges were built in 1900.",
+          "context": "construction date"
+        },
+        {
+          "text": "The book was published in 1925.",
+          "context": "publication"
+        }
+      ],
+      "roleplay": {
+        "scenario": "Charlotte pergunta sobre 3 coisas históricas ou obras importantes — você responde com passive past simple.",
+        "voiced_by": "charlotte",
+        "persona": "Charlotte",
+        "persona_outfit": "charlotte_casual",
+        "time_budget_sec": 180,
+        "opening_line": "Tell me about three things from history — when or by whom they were made.",
+        "objectives": [
+          {
+            "id": 1,
+            "label_pt": "Construção com 'was/were built'",
+            "label_en": "Construction with 'was/were built'",
+            "hidden_prompt": "user uses 'X was/were built + time/place'",
+            "hint_pt": "Christ the Redeemer was built in 1931.",
+            "hint_en": "Christ the Redeemer was built in 1931."
+          },
+          {
+            "id": 2,
+            "label_pt": "Obra com 'was/were written/painted'",
+            "label_en": "Work with 'was/were written/painted'",
+            "hidden_prompt": "user uses passive past simple for a book/painting",
+            "hint_pt": "Don Quixote was written by Cervantes.",
+            "hint_en": "Don Quixote was written by Cervantes."
+          },
+          {
+            "id": 3,
+            "label_pt": "Descoberta ou invenção",
+            "label_en": "Discovery or invention",
+            "hidden_prompt": "user uses passive past simple for discovery/invention",
+            "hint_pt": "The telephone was invented in the 19th century.",
+            "hint_en": "The telephone was invented in the 19th century."
+          }
+        ],
+        "closing_cue": "Charlotte fecha com \"History told!\" quando obj_3 baterem.",
+        "suggested_flow": "**Suggested flow** (referencial, 6 turnos):\n\n1. **Charlotte**: \"Tell me about three things from history — when or by whom they were made.\"\n2. **Student**: ~\"Christ the Redeemer was built in 1931.\"\n3. **Charlotte**: \"Iconic. Book or art?\"\n4. **Student**: ~\"Don Quixote was written by Cervantes.\"\n5. **Charlotte**: \"Invention?\"\n6. **Student**: ~\"The telephone was invented in the 19th century.\"\n7. **Charlotte**: \"History told!\"",
+        "evaluation_focus": [
+          "\"Was/were + past participle\"",
+          "Singular/plural agreement",
+          "\"by + agent\" when relevant"
+        ]
+      },
+      "guided_chat": {
+        "scenario": "Charlotte conversa sobre marcos históricos da cidade dela ou do mundo — vocês trocam fatos passivos sobre obras e eventos.",
+        "voiced_by": "charlotte",
+        "persona": "Charlotte",
+        "persona_outfit": "charlotte_casual",
+        "intro_en": "Charlotte shares historic facts. Practice passive past with her.",
+        "opening_message": "What's a famous landmark in your city and when was it built?",
+        "objectives": [
+          {
+            "id": 1,
+            "label_pt": "Marco com 'was built'",
+            "label_en": "Landmark with 'was built'",
+            "hidden_prompt": "user uses 'X was built in...'",
+            "hint_pt": "The cathedral was built in the 1800s.",
+            "hint_en": "The cathedral was built in the 1800s."
+          },
+          {
+            "id": 2,
+            "label_pt": "Detalhe adicional (passive)",
+            "label_en": "Additional detail (passive)",
+            "hidden_prompt": "user uses another passive past sentence",
+            "hint_pt": "It was designed by a famous architect.",
+            "hint_en": "It was designed by a famous architect."
+          },
+          {
+            "id": 3,
+            "label_pt": "Perguntar à Charlotte",
+            "label_en": "Ask Charlotte",
+            "hidden_prompt": "user asks Charlotte about her city's landmarks",
+            "hint_pt": "What about your city?",
+            "hint_en": "What about your city?"
+          }
+        ],
+        "closing_cue": "Charlotte fecha com \"Landmarks exchanged!\" quando obj_3 baterem.",
+        "suggested_script": "**Script** (referencial, 7 turnos):\n\n1. **Charlotte**: \"What's a famous landmark in your city and when was it built?\"\n2. **Student**: \"The cathedral was built in the 1800s.\"\n3. **Charlotte**: \"Beautiful. Who designed it?\"\n4. **Student**: \"It was designed by a famous architect.\"\n5. **Charlotte**: \"Always a story behind it.\"\n6. **Student**: \"What about your city?\"\n7. **Charlotte**: \"The old library was built in 1750. Landmarks exchanged!\"\n\n> I02 chat = LLM puro. Scaffold via hint_pt.\n\n---"
+      }
+    },
+    {
+      "id": "I03",
+      "title": "It's being done",
+      "sub_cefr": "B2",
+      "grammar_focus": "Present continuous passive (am/is/are being + past participle)",
+      "markers": [
+        "denso"
+      ],
+      "real_life_context": "You describe ongoing processes — what is happening right now to something or someone.",
+      "grammar": [
+        {
+          "type": "multiple_choice",
+          "sentence": "The road _____ at the moment.",
+          "options": [
+            "is being repaired",
+            "repairs",
+            "is repaired",
+            "was repaired"
+          ],
+          "answer": "is being repaired",
+          "explanation": "Passive present continuous = \"am/is/are + being + past participle\". \"Is being repaired\" — ação acontecendo agora, foco na estrada."
+        },
+        {
+          "type": "multiple_choice",
+          "sentence": "The reports _____ right now.",
+          "options": [
+            "are being written",
+            "write",
+            "are written",
+            "were being written"
+          ],
+          "answer": "are being written",
+          "explanation": "Plural \"reports\" → \"are being written\". Ação em progresso, passive."
+        },
+        {
+          "type": "word_bank",
+          "sentence": "My car _____ today.",
+          "choices": [
+            "is being repaired",
+            "is repaired",
+            "repairs",
+            "was repaired"
+          ],
+          "answer": "is being repaired",
+          "explanation": "\"Is being repaired today\" — em processo hoje. Passive present continuous."
+        },
+        {
+          "type": "word_bank",
+          "sentence": "The houses _____ next to the park.",
+          "choices": [
+            "are being built",
+            "are built",
+            "build",
+            "were being built"
+          ],
+          "answer": "are being built",
+          "explanation": "Plural \"houses\" + ação em curso → \"are being built\"."
+        },
+        {
+          "type": "fill_gap",
+          "sentence": "The dishes _____ in the kitchen.",
+          "hint": "are being + past participle \"wash\"",
+          "answer": "are being washed",
+          "explanation": "\"Are being washed\" — em processo agora, plural."
+        },
+        {
+          "type": "fill_gap",
+          "sentence": "The room _____ right now.",
+          "hint": "is being + past participle \"clean\"",
+          "answer": "is being cleaned",
+          "explanation": "\"Is being cleaned right now\" — ação em curso, singular."
+        },
+        {
+          "type": "fill_gap",
+          "sentence": "The new policy _____ at this moment.",
+          "hint": "is being + past participle \"discuss\"",
+          "answer": "is being discussed",
+          "explanation": "\"Is being discussed at this moment\" — discussão em andamento."
+        },
+        {
+          "type": "fix_error",
+          "sentence": "My car is repaired today.",
+          "hint": "Para ação em curso, precisa de \"being\"",
+          "answer": "My car is being repaired today.",
+          "explanation": "\"Is repaired\" sem \"being\" = present simple passive (fato geral). Para AÇÃO EM CURSO HOJE, precisa \"is being repaired\"."
+        },
+        {
+          "type": "fix_error",
+          "sentence": "The houses being built next to the park.",
+          "hint": "Falta verbo \"to be\" + \"being\"",
+          "answer": "The houses are being built next to the park.",
+          "explanation": "Estrutura completa: \"are being built\" — verbo to be conjugado + being + past participle. Não dá pra omitir o \"are\"."
+        },
+        {
+          "type": "read_answer",
+          "passage": "The road is being repaired this week. The reports are being written right now. My car is being fixed today — I'll get it back tomorrow. The new houses are being built next to the park.",
+          "question": "What is being built next to the park?",
+          "answer": "new houses (or \"houses\" or \"the new houses\")",
+          "explanation": "The text says \"The new houses are being built next to the park\"."
+        }
+      ],
+      "listening_speaking": [
+        {
+          "text": "The road is being repaired.",
+          "context": "current public work"
+        },
+        {
+          "text": "My car is being fixed today.",
+          "context": "personal ongoing"
+        },
+        {
+          "text": "The reports are being written.",
+          "context": "work in progress"
+        },
+        {
+          "text": "The houses are being built.",
+          "context": "construction"
+        },
+        {
+          "text": "The room is being cleaned.",
+          "context": "ongoing process"
+        }
+      ],
+      "roleplay": {
+        "scenario": "Charlotte pergunta o que está sendo feito agora — na cidade, na casa, no trabalho — você responde com passive present continuous.",
+        "voiced_by": "charlotte",
+        "persona": "Charlotte",
+        "persona_outfit": "charlotte_casual",
+        "time_budget_sec": 180,
+        "opening_line": "What's being done right now — in your house, city, or office? Three things.",
+        "objectives": [
+          {
+            "id": 1,
+            "label_pt": "Algo sendo feito em casa/trabalho",
+            "label_en": "Something being done at home/work",
+            "hidden_prompt": "user uses 'X is/are being + past participle'",
+            "hint_pt": "The kitchen is being renovated.",
+            "hint_en": "The kitchen is being renovated."
+          },
+          {
+            "id": 2,
+            "label_pt": "Algo sendo feito na cidade",
+            "label_en": "Something being done in the city",
+            "hidden_prompt": "user uses another 'is/are being + past participle'",
+            "hint_pt": "A new metro line is being built.",
+            "hint_en": "A new metro line is being built."
+          },
+          {
+            "id": 3,
+            "label_pt": "Algo sendo discutido/decidido",
+            "label_en": "Something being discussed/decided",
+            "hidden_prompt": "user uses passive present continuous for abstract process",
+            "hint_pt": "A new law is being discussed.",
+            "hint_en": "A new law is being discussed."
+          }
+        ],
+        "closing_cue": "Charlotte fecha com \"Ongoing projects mapped!\" quando obj_3 baterem.",
+        "suggested_flow": "**Suggested flow** (referencial, 6 turnos):\n\n1. **Charlotte**: \"What's being done right now — in your house, city, or office? Three things.\"\n2. **Student**: ~\"The kitchen is being renovated.\"\n3. **Charlotte**: \"Big project. City?\"\n4. **Student**: ~\"A new metro line is being built.\"\n5. **Charlotte**: \"Abstract?\"\n6. **Student**: ~\"A new law is being discussed.\"\n7. **Charlotte**: \"Ongoing projects mapped!\"",
+        "evaluation_focus": [
+          "\"Is/are being + past participle\"",
+          "Process in progress",
+          "Singular/plural agreement"
+        ]
+      },
+      "guided_chat": {
+        "scenario": "Charlotte conversa sobre obras e mudanças em curso na vida dela e na sua — vocês trocam o que está sendo feito agora.",
+        "voiced_by": "charlotte",
+        "persona": "Charlotte",
+        "persona_outfit": "charlotte_casual",
+        "intro_en": "Charlotte talks about ongoing changes. Use passive continuous.",
+        "opening_message": "What's being changed or fixed in your life right now?",
+        "objectives": [
+          {
+            "id": 1,
+            "label_pt": "Mudança em curso",
+            "label_en": "Ongoing change",
+            "hidden_prompt": "user uses 'X is being + past participle'",
+            "hint_pt": "My bathroom is being renovated.",
+            "hint_en": "My bathroom is being renovated."
+          },
+          {
+            "id": 2,
+            "label_pt": "Detalhe ou outra mudança",
+            "label_en": "Detail or another change",
+            "hidden_prompt": "user adds another passive continuous",
+            "hint_pt": "New tiles are being installed.",
+            "hint_en": "New tiles are being installed."
+          },
+          {
+            "id": 3,
+            "label_pt": "Perguntar à Charlotte",
+            "label_en": "Ask Charlotte",
+            "hidden_prompt": "user asks Charlotte about her ongoing changes",
+            "hint_pt": "What's being changed in your life?",
+            "hint_en": "What's being changed in your life?"
+          }
+        ],
+        "closing_cue": "Charlotte fecha com \"Changes shared!\" quando obj_3 baterem.",
+        "suggested_script": "**Script** (referencial, 7 turnos):\n\n1. **Charlotte**: \"What's being changed or fixed in your life right now?\"\n2. **Student**: \"My bathroom is being renovated.\"\n3. **Charlotte**: \"Messy but worth it. Details?\"\n4. **Student**: \"New tiles are being installed.\"\n5. **Charlotte**: \"Hope you like them.\"\n6. **Student**: \"What's being changed in your life?\"\n7. **Charlotte**: \"My office is being repainted this week. Changes shared!\"\n\n> I03 chat = LLM puro. Scaffold via hint_pt.\n\n---"
+      }
+    },
+    {
+      "id": "I04",
+      "title": "It has been done",
+      "sub_cefr": "B2",
+      "grammar_focus": "Present perfect passive (has/have been + past participle)",
+      "markers": [
+        "denso"
+      ],
+      "real_life_context": "You describe completed actions with present relevance, with focus on result not agent.",
+      "grammar": [
+        {
+          "type": "multiple_choice",
+          "sentence": "The package _____ already.",
+          "options": [
+            "has been delivered",
+            "delivered",
+            "is delivered",
+            "was delivered"
+          ],
+          "answer": "has been delivered",
+          "explanation": "Passive present perfect = \"has/have + been + past participle\". \"Has been delivered already\" — ação completa com relevância presente."
+        },
+        {
+          "type": "multiple_choice",
+          "sentence": "Three new schools _____ this year.",
+          "options": [
+            "have been built",
+            "are built",
+            "were built",
+            "build"
+          ],
+          "answer": "have been built",
+          "explanation": "Plural \"three schools\" → \"have been built\". Period \"this year\" inclui o presente → present perfect passive."
+        },
+        {
+          "type": "word_bank",
+          "sentence": "The report _____ yet?",
+          "choices": [
+            "has been finished",
+            "is finished",
+            "was finished",
+            "has finishing"
+          ],
+          "answer": "has been finished",
+          "explanation": "Pergunta com \"yet\" → present perfect passive. \"Has the report been finished yet?\"."
+        },
+        {
+          "type": "word_bank",
+          "sentence": "Several decisions _____ recently.",
+          "choices": [
+            "have been made",
+            "were made",
+            "are made",
+            "be made"
+          ],
+          "answer": "have been made",
+          "explanation": "Plural \"decisions\" + \"recently\" (período até agora) → \"have been made\". Passive present perfect."
+        },
+        {
+          "type": "fill_gap",
+          "sentence": "The new car _____ already.",
+          "hint": "has been + past participle \"release\"",
+          "answer": "has been released",
+          "explanation": "\"Has been released already\" — lançamento completo com efeito presente. Singular."
+        },
+        {
+          "type": "fill_gap",
+          "sentence": "Many books _____ this year.",
+          "hint": "have been + past participle \"publish\"",
+          "answer": "have been published",
+          "explanation": "Plural \"many books\" → \"have been published\". Period \"this year\" → present perfect."
+        },
+        {
+          "type": "fill_gap",
+          "sentence": "The work _____ already.",
+          "hint": "has been + past participle \"do\" — irregular",
+          "answer": "has been done",
+          "explanation": "\"Has been done\" — \"do\" → past participle \"done\". Forma irregular."
+        },
+        {
+          "type": "fix_error",
+          "sentence": "The package has delivered already.",
+          "hint": "Falta \"been\" — \"has BEEN delivered\"",
+          "answer": "The package has been delivered already.",
+          "explanation": "Present perfect passive precisa de \"has/have BEEN + past participle\". \"Has delivered\" sem \"been\" não é passivo."
+        },
+        {
+          "type": "fix_error",
+          "sentence": "Three new schools has been built.",
+          "hint": "Plural \"three schools\" precisa de \"have\"",
+          "answer": "Three new schools have been built.",
+          "explanation": "Concordância: plural → \"have\". Singular seria \"the school has been built\"."
+        },
+        {
+          "type": "read_answer",
+          "passage": "The package has been delivered already. Three new schools have been built this year. The report has been finished and sent to the client. Many decisions have been made recently.",
+          "question": "What has happened to the report?",
+          "answer": "it has been finished and sent (or \"finished and sent\")",
+          "explanation": "The text says \"The report has been finished and sent to the client\"."
+        }
+      ],
+      "listening_speaking": [
+        {
+          "text": "The package has been delivered.",
+          "context": "completion with present relevance"
+        },
+        {
+          "text": "Three schools have been built this year.",
+          "context": "recent multiple"
+        },
+        {
+          "text": "The report has been finished.",
+          "context": "work completed"
+        },
+        {
+          "text": "Many decisions have been made.",
+          "context": "abstract completed"
+        },
+        {
+          "text": "The new car has been released.",
+          "context": "recent product launch"
+        }
+      ],
+      "roleplay": {
+        "scenario": "Charlotte pergunta o que foi feito ou completado recentemente — você responde com passive present perfect.",
+        "voiced_by": "charlotte",
+        "persona": "Charlotte",
+        "persona_outfit": "charlotte_casual",
+        "time_budget_sec": 180,
+        "opening_line": "Three things that have been done or completed lately. Use passive.",
+        "objectives": [
+          {
+            "id": 1,
+            "label_pt": "Algo completado recentemente",
+            "label_en": "Something completed recently",
+            "hidden_prompt": "user uses 'X has/have been + past participle'",
+            "hint_pt": "The new app has been launched.",
+            "hint_en": "The new app has been launched."
+          },
+          {
+            "id": 2,
+            "label_pt": "Outro item completado",
+            "label_en": "Another completed item",
+            "hidden_prompt": "user uses another passive present perfect",
+            "hint_pt": "Three changes have been made to the policy.",
+            "hint_en": "Three changes have been made to the policy."
+          },
+          {
+            "id": 3,
+            "label_pt": "Algo terminado em casa/trabalho",
+            "label_en": "Something finished at home/work",
+            "hidden_prompt": "user uses 'has/have been + past participle' for home/work",
+            "hint_pt": "The painting has been finished.",
+            "hint_en": "The painting has been finished."
+          }
+        ],
+        "closing_cue": "Charlotte fecha com \"Recent accomplishments noted!\" quando obj_3 baterem.",
+        "suggested_flow": "**Suggested flow** (referencial, 6 turnos):\n\n1. **Charlotte**: \"Three things that have been done or completed lately. Use passive.\"\n2. **Student**: ~\"The new app has been launched.\"\n3. **Charlotte**: \"Big release. Workplace?\"\n4. **Student**: ~\"Three changes have been made to the policy.\"\n5. **Charlotte**: \"Home?\"\n6. **Student**: ~\"The painting has been finished.\"\n7. **Charlotte**: \"Recent accomplishments noted!\"",
+        "evaluation_focus": [
+          "\"Has/have been + past participle\"",
+          "Singular/plural agreement",
+          "Present relevance"
+        ]
+      },
+      "guided_chat": {
+        "scenario": "Charlotte conta sobre realizações da equipe dela este mês e quer saber as suas — usem passive present perfect.",
+        "voiced_by": "charlotte",
+        "persona": "Charlotte",
+        "persona_outfit": "charlotte_casual",
+        "intro_en": "Charlotte shares team accomplishments. Use 'has/have been + past participle'.",
+        "opening_message": "What's been finished at your work this month?",
+        "objectives": [
+          {
+            "id": 1,
+            "label_pt": "Algo concluído no trabalho",
+            "label_en": "Something completed at work",
+            "hidden_prompt": "user uses 'X has been + past participle'",
+            "hint_pt": "The website has been redesigned.",
+            "hint_en": "The website has been redesigned."
+          },
+          {
+            "id": 2,
+            "label_pt": "Detalhe ou outra conclusão",
+            "label_en": "Detail or another completion",
+            "hidden_prompt": "user uses another passive present perfect",
+            "hint_pt": "Two new features have been added.",
+            "hint_en": "Two new features have been added."
+          },
+          {
+            "id": 3,
+            "label_pt": "Perguntar à Charlotte",
+            "label_en": "Ask Charlotte",
+            "hidden_prompt": "user asks Charlotte about her team's accomplishments",
+            "hint_pt": "What's been finished on your team?",
+            "hint_en": "What's been finished on your team?"
+          }
+        ],
+        "closing_cue": "Charlotte fecha com \"Team wins shared!\" quando obj_3 baterem.",
+        "suggested_script": "**Script** (referencial, 7 turnos):\n\n1. **Charlotte**: \"What's been finished at your work this month?\"\n2. **Student**: \"The website has been redesigned.\"\n3. **Charlotte**: \"Nice. Features?\"\n4. **Student**: \"Two new features have been added.\"\n5. **Charlotte**: \"Productive month.\"\n6. **Student**: \"What's been finished on your team?\"\n7. **Charlotte**: \"Our quarterly report has been completed. Team wins shared!\"\n\n> I04 chat = LLM puro. Scaffold via hint_pt.\n\n---"
+      }
+    },
+    {
+      "id": "I05",
+      "title": "All passives together",
+      "sub_cefr": "B2",
+      "grammar_focus": "Integration of present simple, past simple, present continuous, present perfect passive",
+      "markers": [],
+      "real_life_context": "You mix passive tenses fluently in real description.",
+      "grammar": [
+        {
+          "type": "multiple_choice",
+          "sentence": "English _____ in many countries.",
+          "options": [
+            "is spoken",
+            "speaks",
+            "is being spoken",
+            "was spoken"
+          ],
+          "answer": "is spoken",
+          "explanation": "Fato geral atual → present simple passive. \"English is spoken\" — habitual/factual."
+        },
+        {
+          "type": "multiple_choice",
+          "sentence": "The pyramid _____ thousands of years ago.",
+          "options": [
+            "was built",
+            "is built",
+            "is being built",
+            "has been built"
+          ],
+          "answer": "was built",
+          "explanation": "Tempo específico passado → past simple passive. \"Was built thousands of years ago\"."
+        },
+        {
+          "type": "word_bank",
+          "sentence": "The road _____ at this moment.",
+          "choices": [
+            "is being repaired",
+            "repairs",
+            "is repaired",
+            "was repaired"
+          ],
+          "answer": "is being repaired",
+          "explanation": "\"At this moment\" → ação em curso → present continuous passive. \"Is being repaired\"."
+        },
+        {
+          "type": "word_bank",
+          "sentence": "Three schools _____ this year.",
+          "choices": [
+            "have been built",
+            "were built",
+            "are being built",
+            "build"
+          ],
+          "answer": "have been built",
+          "explanation": "\"This year\" inclui presente → present perfect passive. \"Have been built\"."
+        },
+        {
+          "type": "fill_gap",
+          "sentence": "These shirts _____ in Italy. (general fact)",
+          "hint": "are + past participle \"make\"",
+          "answer": "are made",
+          "explanation": "Fato atual contínuo → present simple passive plural."
+        },
+        {
+          "type": "fill_gap",
+          "sentence": "The package _____ yesterday. (past)",
+          "hint": "was + past participle \"deliver\"",
+          "answer": "was delivered",
+          "explanation": "\"Yesterday\" → past simple passive singular."
+        },
+        {
+          "type": "fill_gap",
+          "sentence": "The house _____ right now. (ongoing)",
+          "hint": "is being + past participle \"build\"",
+          "answer": "is being built",
+          "explanation": "\"Right now\" → present continuous passive. \"Is being built\"."
+        },
+        {
+          "type": "fix_error",
+          "sentence": "The book is wrote by a famous author.",
+          "hint": "\"Wrote\" não é past participle — \"written\"",
+          "answer": "The book is written by a famous author.",
+          "explanation": "Verbo irregular \"write\" — past participle é \"written\", não \"wrote\"."
+        },
+        {
+          "type": "fix_error",
+          "sentence": "These bridges was built in 1900.",
+          "hint": "Plural \"bridges\" → \"were\"",
+          "answer": "These bridges were built in 1900.",
+          "explanation": "Plural sempre \"were\" no past simple passive."
+        },
+        {
+          "type": "read_answer",
+          "passage": "English is spoken worldwide. The pyramid was built thousands of years ago. The road is being repaired this week. Three new schools have been built this year. These shirts are made in Italy.",
+          "question": "When was the pyramid built?",
+          "answer": "thousands of years ago",
+          "explanation": "The text says \"The pyramid was built thousands of years ago\"."
+        }
+      ],
+      "listening_speaking": [
+        {
+          "text": "English is spoken worldwide.",
+          "context": "present simple passive"
+        },
+        {
+          "text": "The pyramid was built thousands of years ago.",
+          "context": "past simple passive"
+        },
+        {
+          "text": "The road is being repaired.",
+          "context": "present continuous passive"
+        },
+        {
+          "text": "Three schools have been built this year.",
+          "context": "present perfect passive"
+        },
+        {
+          "text": "The book was written in 1925.",
+          "context": "past simple passive"
+        }
+      ],
+      "roleplay": {
+        "scenario": "Charlotte pede 4 fatos sobre o mundo ou a vida do aluno usando 4 passive tenses diferentes — present simple, past simple, present continuous, present perfect.",
+        "voiced_by": "charlotte",
+        "persona": "Charlotte",
+        "persona_outfit": "charlotte_casual",
+        "time_budget_sec": 180,
+        "opening_line": "Mix four passive tenses — one general, one past, one ongoing, one recent.",
+        "objectives": [
+          {
+            "id": 1,
+            "label_pt": "Passive present simple",
+            "label_en": "Passive present simple",
+            "hidden_prompt": "user uses 'X is/are + past participle' general",
+            "hint_pt": "Coffee is grown in Brazil.",
+            "hint_en": "Coffee is grown in Brazil."
+          },
+          {
+            "id": 2,
+            "label_pt": "Passive past simple",
+            "label_en": "Passive past simple",
+            "hidden_prompt": "user uses 'X was/were + past participle' historical",
+            "hint_pt": "The bridge was built in 1880.",
+            "hint_en": "The bridge was built in 1880."
+          },
+          {
+            "id": 3,
+            "label_pt": "Passive em curso ou recente",
+            "label_en": "Passive ongoing or recent",
+            "hidden_prompt": "user uses 'is/are being' or 'has/have been + past participle'",
+            "hint_pt": "A new tower has been built downtown.",
+            "hint_en": "A new tower has been built downtown."
+          }
+        ],
+        "closing_cue": "Charlotte fecha com \"Passive fluency!\" quando obj_3 baterem.",
+        "suggested_flow": "**Suggested flow** (referencial, 6 turnos):\n\n1. **Charlotte**: \"Mix four passive tenses — one general, one past, one ongoing, one recent.\"\n2. **Student**: ~\"Coffee is grown in Brazil.\"\n3. **Charlotte**: \"Historical?\"\n4. **Student**: ~\"The bridge was built in 1880.\"\n5. **Charlotte**: \"Recent?\"\n6. **Student**: ~\"A new tower has been built downtown.\"\n7. **Charlotte**: \"Passive fluency!\"",
+        "evaluation_focus": [
+          "Variety of passive tenses",
+          "Correct \"to be\" conjugation",
+          "Past participle forms"
+        ]
+      },
+      "guided_chat": {
+        "scenario": "Charlotte propõe um chat sobre transformações — o que muda, o que mudou, o que está mudando, o que mudou recentemente — todas em passive.",
+        "voiced_by": "charlotte",
+        "persona": "Charlotte",
+        "persona_outfit": "charlotte_casual",
+        "intro_en": "Charlotte explores changes across time. Mix all four passive tenses.",
+        "opening_message": "How has your city changed? Tell me three things in different tenses.",
+        "objectives": [
+          {
+            "id": 1,
+            "label_pt": "Mudança recente (present perfect passive)",
+            "label_en": "Recent change (present perfect passive)",
+            "hidden_prompt": "user uses 'has/have been + past participle'",
+            "hint_pt": "A new park has been built downtown.",
+            "hint_en": "A new park has been built downtown."
+          },
+          {
+            "id": 2,
+            "label_pt": "Mudança em curso (present continuous passive)",
+            "label_en": "Ongoing change (present continuous passive)",
+            "hidden_prompt": "user uses 'is/are being + past participle'",
+            "hint_pt": "Two metro lines are being built.",
+            "hint_en": "Two metro lines are being built."
+          },
+          {
+            "id": 3,
+            "label_pt": "Mudança histórica (past simple passive)",
+            "label_en": "Historic change (past simple passive)",
+            "hidden_prompt": "user uses 'was/were + past participle'",
+            "hint_pt": "The old market was demolished in 2010.",
+            "hint_en": "The old market was demolished in 2010."
+          }
+        ],
+        "closing_cue": "Charlotte fecha com \"City transformation mapped!\" quando obj_3 baterem.",
+        "suggested_script": "**Script** (referencial, 7 turnos):\n\n1. **Charlotte**: \"How has your city changed? Tell me three things in different tenses.\"\n2. **Student**: \"A new park has been built downtown.\"\n3. **Charlotte**: \"Nice addition. Ongoing?\"\n4. **Student**: \"Two metro lines are being built.\"\n5. **Charlotte**: \"Big project. Historic?\"\n6. **Student**: \"The old market was demolished in 2010.\"\n7. **Charlotte**: \"City transformation mapped!\"\n\n> I05 chat = LLM puro. Scaffold via hint_pt.\n\n---"
+      }
+    }
+  ],
+  "cross_unit_consolidation": [
+    "Present simple passive: is/are + past participle (fatos gerais)",
+    "Past simple passive: was/were + past participle (eventos passados)",
+    "Present continuous passive: is/are + being + past participle (ações em curso)",
+    "Present perfect passive: has/have + been + past participle (ações com efeito presente)",
+    "Sempre \"to be\" conjugado + past participle (nunca base form após \"to be\")",
+    "Concordância singular/plural correta"
+  ]
+}
