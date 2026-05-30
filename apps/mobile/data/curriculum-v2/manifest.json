@@ -284,8 +284,13 @@
         "id": "M12",
         "title": "Escrita acadêmica",
         "file": "advanced/M12.json"
+      },
+      {
+        "id": "M13",
+        "title": "Argumentação e persuasão",
+        "file": "advanced/M13.json"
       }
     ]
   },
-  "generated_at": "2026-05-30T22:25:46.438Z"
+  "generated_at": "2026-05-30T22:29:38.309Z"
 }

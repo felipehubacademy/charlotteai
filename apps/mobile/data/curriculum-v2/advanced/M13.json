@@ -1,0 +1,761 @@
+{
+  "id": "M13",
+  "title": "Argumentação e persuasão",
+  "level": "Advanced",
+  "block": "C2",
+  "units_range": "A01–A05",
+  "theme": "Building argument (claim/warrant/evidence), anticipating counterargument, rhetorical devices (anaphora, antithesis, tricolon), persuasive structure, strong conclusions",
+  "goal": "Student constructs persuasive prose — laying out cases, addressing objections, and using rhetorical craft for impact.",
+  "connects_to": "M14 (Linguagem literária) — moves from persuasion to literary craft.",
+  "module_chunks": [
+    "The case for / against",
+    "First, ... Second, ... Finally, ...",
+    "One reason is that... Another is that... Most importantly...",
+    "The evidence is unambiguous: ...",
+    "Three points stand out",
+    "Some may object that... However...",
+    "Critics might argue... but this overlooks...",
+    "It would be a mistake to assume...",
+    "The deeper question is...",
+    "Not just X, but Y (antithesis)",
+    "We came, we saw, we conquered (tricolon)",
+    "Without X, there is no Y (conditional rhetoric)",
+    "For the sake of clarity / For our purposes",
+    "The stakes could not be higher",
+    "What's at stake is..."
+  ],
+  "units": [
+    {
+      "id": "A01",
+      "title": "Building the case",
+      "sub_cefr": "C2",
+      "grammar_focus": "Argument structure — claim + reasons + evidence with numbered or ranked progression",
+      "markers": [
+        "denso",
+        "argument"
+      ],
+      "real_life_context": "You build a persuasive case in writing or speech — laying out claims clearly, supporting them with evidence, and ranking them by force.",
+      "grammar": [
+        {
+          "type": "multiple_choice",
+          "options": [
+            "The case for",
+            "The case to",
+            "A case of",
+            "A case in"
+          ],
+          "answer": "The case for",
+          "explanation": "\"The case for + noun/-ing\" — frames the speaker's position. \"The case for raising X\", \"The case against doing Y\". Standard rhetorical opener in op-eds, debate, advocacy writing. Equivalent: \"The argument for / against\"."
+        },
+        {
+          "type": "multiple_choice",
+          "options": [
+            "First",
+            "Second",
+            "Finally — In one",
+            "In two",
+            "In three — Firstly",
+            "Secondly",
+            "Endly — One",
+            "Two",
+            "Three"
+          ],
+          "answer": "First / Second / Finally",
+          "explanation": "\"First / Second / Third / Finally\" — classic numbered structure. \"Firstly / Secondly\" are British; \"First / Second\" are universal. \"Finally\" is preferred over \"Third\" when ranking by importance (you save the strongest for last). C2 style values \"First / Second / Finally\" especially."
+        },
+        {
+          "type": "fill_gap",
+          "hint": "\"Another is\" and \"Most importantly\"",
+          "answer": "Another / Most importantly",
+          "explanation": "Cascade pattern: \"One reason is..., Another is..., Most importantly...\". Each marker ranks the next claim higher. \"Most importantly\" (or \"Above all\", \"Crucially\") signals the climax — typically your strongest point."
+        },
+        {
+          "type": "fix_error",
+          "sentence": "Firstly the policy works. Secondly it's affordable. Lastly people support it.",
+          "hint": "Punctuation — commas after enumerative adverbs",
+          "answer": "First, the policy works. Second, it is affordable. Finally, people support it.",
+          "explanation": "Adverbial sequencers (\"First\", \"Second\", \"Finally\") take a comma when fronted. Also: avoid contractions in formal argument (\"it is\", not \"it's\"). \"Lastly\" exists but \"Finally\" is the C2 norm for argumentative climax."
+        },
+        {
+          "type": "read_answer",
+          "passage": "The case for the new programme rests on three pillars. First, the pilot study showed measurable gains in literacy across all participating schools. Second, the cost per student remains within budget — well below the threshold for similar interventions. Most importantly, the teachers themselves are asking for it. The evidence is unambiguous: this programme deserves expansion.",
+          "question": "What does the speaker consider the strongest reason?",
+          "answer": "that the teachers are asking for it (or \"teacher demand\")",
+          "explanation": "Three-stage structure: \"First...\" (evidence), \"Second...\" (feasibility), \"Most importantly...\" (teacher demand — climax). Closing line \"The evidence is unambiguous: ...\" lands the conclusion with confident summative force."
+        }
+      ],
+      "listening_speaking": [
+        {
+          "text": "The case for action is clear.",
+          "context": "opener framing"
+        },
+        {
+          "text": "First, the evidence is overwhelming.",
+          "context": "numbered start"
+        },
+        {
+          "text": "Most importantly, lives are at stake.",
+          "context": "climax"
+        },
+        {
+          "text": "The evidence is unambiguous.",
+          "context": "summative close"
+        },
+        {
+          "text": "Three points stand out.",
+          "context": "preview structure"
+        }
+      ],
+      "roleplay": {
+        "scenario": "Charlotte gives you a position to defend. You build a numbered, escalating case in three points.",
+        "voiced_by": "charlotte",
+        "persona": "Charlotte",
+        "persona_outfit": "charlotte_casual",
+        "time_budget_sec": 300,
+        "opening_line": "Build a case for funding public libraries — three reasons, ranked, with 'First / Second / Most importantly'.",
+        "objectives": [
+          {
+            "id": 1,
+            "label_en": "Opening with 'The case for'",
+            "hidden_prompt": "user uses 'The case for + noun/-ing'",
+            "hint_en": "The case for sustained public library funding rests on three independent grounds."
+          },
+          {
+            "id": 2,
+            "label_en": "Numbered reasons",
+            "hidden_prompt": "user uses 'First / Second / Most importantly'",
+            "hint_en": "First, libraries close measurable literacy gaps in underserved communities. Second, they remain the most cost-effective public learning infrastructure. Most importantly, they offer something no algorithm can — a space without commercial intent."
+          },
+          {
+            "id": 3,
+            "label_en": "Summative close",
+            "hidden_prompt": "user uses 'The evidence is unambiguous' or similar",
+            "hint_en": "The evidence is unambiguous: the question is not whether to fund them, but how generously."
+          }
+        ],
+        "closing_cue": "Charlotte closes with \"Case built, three pillars.\" once obj_3 lands.",
+        "suggested_flow": "**Suggested flow** (referencial, 6 turnos):\n\n1. **Charlotte**: \"Build a case for funding public libraries — three reasons, ranked, with 'First / Second / Most importantly'.\"\n2. **Student**: ~\"The case for sustained public library funding rests on three independent grounds.\"\n3. **Charlotte**: \"Reasons?\"\n4. **Student**: ~\"First, libraries close measurable literacy gaps in underserved communities. Second, they remain the most cost-effective public learning infrastructure. Most importantly, they offer something no algorithm can — a space without commercial intent.\"\n5. **Charlotte**: \"And the close?\"\n6. **Student**: ~\"The evidence is unambiguous: the question is not whether to fund them, but how generously.\"\n7. **Charlotte**: \"Case built, three pillars.\"",
+        "evaluation_focus": [
+          "Opener frames the case",
+          "Three numbered points, climaxing",
+          "Summative conclusion lands"
+        ]
+      },
+      "guided_chat": {
+        "scenario": "Charlotte asks you to defend a workplace policy. You build the argument with ranked reasons.",
+        "voiced_by": "charlotte",
+        "persona": "Charlotte",
+        "persona_outfit": "charlotte_casual",
+        "intro_en": "Charlotte asks you to defend a workplace policy. Build the case with ranked reasons.",
+        "opening_message": "We're considering a four-day workweek. Build the case for trying it.",
+        "objectives": [
+          {
+            "id": 1,
+            "label_en": "Framed opening",
+            "hidden_prompt": "user uses 'The case for + noun/-ing'",
+            "hint_en": "The case for piloting a four-day workweek rests on what we already know about attention and output."
+          },
+          {
+            "id": 2,
+            "label_en": "Numbered reasons with climax",
+            "hidden_prompt": "user uses 'First / Second / Most importantly'",
+            "hint_en": "First, every published trial — Iceland, Belgium, New Zealand — has reported sustained or improved productivity. Second, the recruitment advantage in a tight labour market is undeniable. Most importantly, exhausted people make worse decisions, and we make a lot of decisions."
+          },
+          {
+            "id": 3,
+            "label_en": "Ask Charlotte",
+            "hidden_prompt": "user asks Charlotte what objection she expects",
+            "hint_en": "What's the loudest objection in your team?"
+          }
+        ],
+        "closing_cue": "Charlotte closes with \"Argument constructed, climax delivered.\" once obj_3 lands.",
+        "suggested_script": "**Script** (referencial, 7 turnos):\n\n1. **Charlotte**: \"We're considering a four-day workweek. Build the case for trying it.\"\n2. **Student**: \"The case for piloting a four-day workweek rests on what we already know about attention and output.\"\n3. **Charlotte**: \"Three reasons?\"\n4. **Student**: \"First, every published trial — Iceland, Belgium, New Zealand — has reported sustained or improved productivity. Second, the recruitment advantage in a tight labour market is undeniable. Most importantly, exhausted people make worse decisions, and we make a lot of decisions.\"\n5. **Charlotte**: \"That last one will land — exhaustion as decision risk.\"\n6. **Student**: \"What's the loudest objection in your team?\"\n7. **Charlotte**: \"Client coverage on Fridays. Argument constructed, climax delivered.\"\n\n> A01 chat = full LLM. Scaffold via hint_pt/hint_en.\n\n---"
+      }
+    },
+    {
+      "id": "A02",
+      "title": "Anticipating counterargument",
+      "sub_cefr": "C2",
+      "grammar_focus": "Pre-empting and refuting objections (Some may object that... However... / Critics might argue... but this overlooks... / It would be a mistake to assume...)",
+      "markers": [
+        "denso",
+        "argument"
+      ],
+      "real_life_context": "You strengthen your own argument by acknowledging the strongest counterargument and answering it — showing intellectual seriousness.",
+      "grammar": [
+        {
+          "type": "multiple_choice",
+          "options": [
+            "Some may object",
+            "However",
+            "Some objected",
+            "Whereas",
+            "Some object",
+            "Therefore",
+            "Some might",
+            "Hence"
+          ],
+          "answer": "Some may object / However",
+          "explanation": "\"Some may object that...\" opens a counterargument with appropriate hedge (\"may\" — acknowledging it could be raised). \"However, ...\" pivots to the rebuttal. This is the basic refutation move: name + rebut."
+        },
+        {
+          "type": "multiple_choice",
+          "options": [
+            "but this overlooks the consistency across studies",
+            "but this is right",
+            "and we agree",
+            "so we should stop"
+          ],
+          "answer": "but this overlooks the consistency across studies",
+          "explanation": "\"But this overlooks...\" identifies a specific weakness in the counterargument. Stronger than just \"however\" because it diagnoses why the objection fails. Common pattern: name the objection + diagnose its flaw + reaffirm position."
+        },
+        {
+          "type": "fill_gap",
+          "hint": "\"It would be a mistake to assume\"",
+          "answer": "It would be a mistake to assume",
+          "explanation": "\"It would be a mistake to assume...\" — pre-emptive rebuttal of an implicit assumption. Standard C2 argument move. Variants: \"It would be premature to conclude\", \"We should be wary of assuming\"."
+        },
+        {
+          "type": "fix_error",
+          "sentence": "Some peoples say the policy is too expensive but they are wrong.",
+          "hint": "\"Some people say... however\" is more polished than \"some are wrong\"",
+          "answer": "Some may object that the policy is too expensive. However, this overlooks the long-term savings.",
+          "explanation": "\"Some peoples\" — wrong noun form. \"But they are wrong\" — bluntly dismissive, weak rhetorically. The polished form acknowledges the objection (\"Some may object that...\") and refutes specifically (\"this overlooks...\")."
+        },
+        {
+          "type": "read_answer",
+          "passage": "The author refused easy victories. 'Critics might argue that universal basic income would discourage work — but this overlooks the consistent finding from multiple pilots that hours worked declined only slightly, mostly among parents and students. It would be a mistake to assume the objection is fatal simply because it is loud. The deeper question is not whether some will work less, but whether the gains in wellbeing justify the trade-off.'",
+          "question": "According to the author, what is the deeper question?",
+          "answer": "whether the gains in wellbeing justify the trade-off",
+          "explanation": "Three refutation moves: \"Critics might argue... but this overlooks...\", \"It would be a mistake to assume...\", \"The deeper question is...\". Each acknowledges objection, diagnoses its flaw, and reframes towards the speaker's terms."
+        }
+      ],
+      "listening_speaking": [
+        {
+          "text": "Some may object that the cost is too high.",
+          "context": "opening objection"
+        },
+        {
+          "text": "Critics might argue... but this overlooks...",
+          "context": "naming + diagnosing"
+        },
+        {
+          "text": "It would be a mistake to assume...",
+          "context": "pre-emptive rebuttal"
+        },
+        {
+          "text": "This concern, while understandable, is unfounded.",
+          "context": "softening before refuting"
+        },
+        {
+          "text": "The deeper question is...",
+          "context": "reframing past the objection"
+        }
+      ],
+      "roleplay": {
+        "scenario": "Charlotte names three common objections to a policy you support. You pre-empt and refute each.",
+        "voiced_by": "charlotte",
+        "persona": "Charlotte",
+        "persona_outfit": "charlotte_casual",
+        "time_budget_sec": 300,
+        "opening_line": "Three common objections to a policy you support. Pre-empt and refute each.",
+        "objectives": [
+          {
+            "id": 1,
+            "label_en": "Direct refutation with 'However'",
+            "hidden_prompt": "user uses 'Some may object that... However...'",
+            "hint_en": "Some may object that the programme is unaffordable. However, the cost over a decade is less than the current annual overrun on a single highway project."
+          },
+          {
+            "id": 2,
+            "label_en": "Refutation with diagnosis",
+            "hidden_prompt": "user uses 'Critics might argue... but this overlooks...'",
+            "hint_en": "Critics might argue the evidence is preliminary, but this overlooks the consistency of findings across three independent trials in different countries."
+          },
+          {
+            "id": 3,
+            "label_en": "Reframing with 'The deeper question'",
+            "hidden_prompt": "user uses 'It would be a mistake to' or 'The deeper question is'",
+            "hint_en": "It would be a mistake to fixate on isolated risks while the systemic costs of inaction accumulate quietly. The deeper question is what we choose to lose."
+          }
+        ],
+        "closing_cue": "Charlotte closes with \"Objections answered, position strengthened.\" once obj_3 lands.",
+        "suggested_flow": "**Suggested flow** (referencial, 6 turnos):\n\n1. **Charlotte**: \"Three common objections to a policy you support. Pre-empt and refute each.\"\n2. **Student**: ~\"Some may object that the programme is unaffordable. However, the cost over a decade is less than the current annual overrun on a single highway project.\"\n3. **Charlotte**: \"Evidence-quality objection?\"\n4. **Student**: ~\"Critics might argue the evidence is preliminary, but this overlooks the consistency of findings across three independent trials in different countries.\"\n5. **Charlotte**: \"Risk objection?\"\n6. **Student**: ~\"It would be a mistake to fixate on isolated risks while the systemic costs of inaction accumulate quietly. The deeper question is what we choose to lose.\"\n7. **Charlotte**: \"Objections answered, position strengthened.\"",
+        "evaluation_focus": [
+          "Objection clearly named",
+          "Refutation specific, not generic",
+          "Reframing or escalation in the close"
+        ]
+      },
+      "guided_chat": {
+        "scenario": "Charlotte pushes back on a position you've taken. You absorb each push and refute or refine.",
+        "voiced_by": "charlotte",
+        "persona": "Charlotte",
+        "persona_outfit": "charlotte_casual",
+        "intro_en": "Charlotte plays sceptic. Anticipate and refute each objection.",
+        "opening_message": "You're proposing remote-first hiring. But isn't that just outsourcing in disguise?",
+        "objectives": [
+          {
+            "id": 1,
+            "label_en": "Acknowledge + diagnose",
+            "hidden_prompt": "user uses 'Critics might argue / Some may object / this overlooks'",
+            "hint_en": "Critics might frame it that way, but this overlooks a basic distinction: outsourcing is about cost arbitrage; remote-first hiring is about talent access. They overlap, but they are not the same."
+          },
+          {
+            "id": 2,
+            "label_en": "Reframe with 'The deeper question'",
+            "hidden_prompt": "user uses 'The deeper question is' or 'It would be a mistake to assume'",
+            "hint_en": "The deeper question is whether we are willing to define talent narrowly enough to fit inside one city — and whether that narrow definition has served us."
+          },
+          {
+            "id": 3,
+            "label_en": "Ask Charlotte",
+            "hidden_prompt": "user asks Charlotte what objection she'd raise next",
+            "hint_en": "What's your next push?"
+          }
+        ],
+        "closing_cue": "Charlotte closes with \"Refutation under pressure.\" once obj_3 lands.",
+        "suggested_script": "**Script** (referencial, 7 turnos):\n\n1. **Charlotte**: \"You're proposing remote-first hiring. But isn't that just outsourcing in disguise?\"\n2. **Student**: \"Critics might frame it that way, but this overlooks a basic distinction: outsourcing is about cost arbitrage; remote-first hiring is about talent access. They overlap, but they are not the same.\"\n3. **Charlotte**: \"Talent access is doing a lot of work in that sentence.\"\n4. **Student**: \"The deeper question is whether we are willing to define talent narrowly enough to fit inside one city — and whether that narrow definition has served us.\"\n5. **Charlotte**: \"Honestly, it hasn't.\"\n6. **Student**: \"What's your next push?\"\n7. **Charlotte**: \"Culture. But that's a long answer. Refutation under pressure.\"\n\n> A02 chat = full LLM. Scaffold via hint_pt/hint_en.\n\n---"
+      }
+    },
+    {
+      "id": "A03",
+      "title": "Anaphora, antithesis, tricolon",
+      "sub_cefr": "C2",
+      "grammar_focus": "Classical rhetorical devices — anaphora (repeated openings), antithesis (X vs Y in parallel), tricolon (three-part structure)",
+      "markers": [
+        "denso",
+        "rhetoric"
+      ],
+      "real_life_context": "You write speeches, manifestos, op-eds, or arguments that need memorability and rhythm.",
+      "grammar": [
+        {
+          "type": "multiple_choice",
+          "options": [
+            "First",
+            "Second",
+            "Above all — In our work",
+            "In our lives",
+            "In our values — We",
+            "We",
+            "We — One",
+            "Two",
+            "Three"
+          ],
+          "answer": "We / We / We (or \"In our work / In our lives / In our values\")",
+          "explanation": "Anaphora — repetition of the same word or phrase at the start of successive clauses. Classical rhetorical device. Creates rhythm, builds emphasis, signals conviction. Common in speeches (MLK, Obama, Churchill)."
+        },
+        {
+          "type": "multiple_choice",
+          "options": [
+            "ask what you can do for your country",
+            "ask what they will do for you",
+            "ask for help",
+            "ask for nothing"
+          ],
+          "answer": "ask what you can do for your country",
+          "explanation": "Antithesis — placing opposing ideas in parallel grammatical structure. Kennedy's classic line. Pattern: \"Not X — but Y\", where X and Y mirror grammatically. Highly memorable; common in inaugural speeches and manifestos."
+        },
+        {
+          "type": "fill_gap",
+          "hint": "Caesar's third clause",
+          "answer": "we conquered",
+          "explanation": "Tricolon — a three-part structure with parallel grammar. \"Veni, vidi, vici\" — Latin original. Used for memorability and rhythm. Modern: \"of the people, by the people, for the people\" (Lincoln). Three is the rhetorical number — fewer feels incomplete, more feels excessive."
+        },
+        {
+          "type": "fix_error",
+          "hint": "Match grammatical structure — all three parts as subject-verb-object",
+          "answer": "He fought injustice, he overcame poverty, he inspired courage. (or: He fought injustice, overcame poverty, and inspired courage.)",
+          "explanation": "Tricolon requires parallel structure. The third clause broke parallelism (\"his courage was admirable\" — different subject). Restoring \"he\" + verb + object pattern makes the rhythm work. Or compress into one subject across three verbs."
+        },
+        {
+          "type": "read_answer",
+          "passage": "Her closing argument used every classical device. 'We are not asking for charity. We are not asking for permission. We are asking — finally — to be heard. Not after the next crisis. Not after the next election. Now. Tomorrow is too late, and yesterday is gone.' The room rose to its feet before she had finished.",
+          "question": "What three rhetorical devices appear?",
+          "answer": "anaphora (\"We are not asking...\"), tricolon (\"we are asking... not after... not after... Now\"), antithesis (\"Tomorrow is too late, and yesterday is gone\")",
+          "explanation": "Three anaphoras (\"We are not asking...\"), then tricolon climax (\"Not after... Not after... Now.\"), capped by antithesis (\"Tomorrow is too late, and yesterday is gone\"). Classical rhetoric concentrated."
+        }
+      ],
+      "listening_speaking": [
+        {
+          "text": "We came, we saw, we conquered.",
+          "context": "tricolon classic"
+        },
+        {
+          "text": "Of the people, by the people, for the people.",
+          "context": "anaphora + tricolon"
+        },
+        {
+          "text": "Ask not what X can do for you — ask what you can do for X.",
+          "context": "antithesis"
+        },
+        {
+          "text": "Not perfect, but progress.",
+          "context": "antithesis short form"
+        },
+        {
+          "text": "Faster, cheaper, better.",
+          "context": "tricolon punch list"
+        }
+      ],
+      "roleplay": {
+        "scenario": "Charlotte gives you a position. You craft three rhetorical sentences — one with anaphora, one with antithesis, one with tricolon.",
+        "voiced_by": "charlotte",
+        "persona": "Charlotte",
+        "persona_outfit": "charlotte_casual",
+        "time_budget_sec": 300,
+        "opening_line": "Position: 'Climate action cannot wait.' Craft three lines — anaphora, antithesis, tricolon.",
+        "objectives": [
+          {
+            "id": 1,
+            "label_en": "Anaphora (repeated opening)",
+            "hidden_prompt": "user uses repeated word/phrase at clause beginnings",
+            "hint_en": "We have ignored the warnings. We have postponed the costs. We have outsourced the consequences to the future."
+          },
+          {
+            "id": 2,
+            "label_en": "Antithesis (X vs Y)",
+            "hidden_prompt": "user uses parallel opposing structure",
+            "hint_en": "The cost of acting is high. The cost of waiting is higher."
+          },
+          {
+            "id": 3,
+            "label_en": "Tricolon (three parallel parts)",
+            "hidden_prompt": "user uses three parallel clauses",
+            "hint_en": "We can adapt, we can mitigate, or we can ask our children to forgive us."
+          }
+        ],
+        "closing_cue": "Charlotte closes with \"Rhetorical devices, sharp.\" once obj_3 lands.",
+        "suggested_flow": "**Suggested flow** (referencial, 6 turnos):\n\n1. **Charlotte**: \"Position: 'Climate action cannot wait.' Craft three lines — anaphora, antithesis, tricolon.\"\n2. **Student**: ~\"We have ignored the warnings. We have postponed the costs. We have outsourced the consequences to the future.\"\n3. **Charlotte**: \"Antithesis?\"\n4. **Student**: ~\"The cost of acting is high. The cost of waiting is higher.\"\n5. **Charlotte**: \"Tricolon?\"\n6. **Student**: ~\"We can adapt, we can mitigate, or we can ask our children to forgive us.\"\n7. **Charlotte**: \"Rhetorical devices, sharp.\"",
+        "evaluation_focus": [
+          "Parallel grammatical structure",
+          "Memorable rhythm",
+          "Position genuinely advanced, not just decorated"
+        ]
+      },
+      "guided_chat": {
+        "scenario": "Charlotte invites you to draft the opening of a speech. You weave rhetorical devices into the draft.",
+        "voiced_by": "charlotte",
+        "persona": "Charlotte",
+        "persona_outfit": "charlotte_casual",
+        "intro_en": "Charlotte invites a speech opening. Weave rhetoric devices in.",
+        "opening_message": "I'm opening a conference on disability rights tomorrow. Help me draft an opener that lands.",
+        "objectives": [
+          {
+            "id": 1,
+            "label_en": "Opening with anaphora",
+            "hidden_prompt": "user uses anaphora",
+            "hint_en": "Try: 'We are here because rights are not granted, they are demanded. We are here because patience has limits. We are here because no one is coming to do this for us.'"
+          },
+          {
+            "id": 2,
+            "label_en": "Antithesis in the middle",
+            "hidden_prompt": "user uses antithesis",
+            "hint_en": "Then drop in: 'Accessibility is not charity — it is justice taking the form of a ramp, a captioned line, an opened door.'"
+          },
+          {
+            "id": 3,
+            "label_en": "Tricolon close",
+            "hidden_prompt": "user uses tricolon",
+            "hint_en": "Close with: 'Today we listen, tomorrow we organise, every day after that we demand.'"
+          }
+        ],
+        "closing_cue": "Charlotte closes with \"Opener drafted, rhetorically structured.\" once obj_3 lands.",
+        "suggested_script": "**Script** (referencial, 7 turnos):\n\n1. **Charlotte**: \"I'm opening a conference on disability rights tomorrow. Help me draft an opener that lands.\"\n2. **Student**: \"Try: 'We are here because rights are not granted, they are demanded. We are here because patience has limits. We are here because no one is coming to do this for us.'\"\n3. **Charlotte**: \"Strong anaphora. What goes in the middle?\"\n4. **Student**: \"Then drop in: 'Accessibility is not charity — it is justice taking the form of a ramp, a captioned line, an opened door.'\"\n5. **Charlotte**: \"That sentence is the keeper.\"\n6. **Student**: \"Close with: 'Today we listen, tomorrow we organise, every day after that we demand.'\"\n7. **Charlotte**: \"Three days, three verbs. Opener drafted, rhetorically structured.\"\n\n> A03 chat = full LLM. Scaffold via hint_pt/hint_en.\n\n---"
+      }
+    },
+    {
+      "id": "A04",
+      "title": "Cause-and-effect chains",
+      "sub_cefr": "C2",
+      "grammar_focus": "Argumentative causal chains (this leads to / which in turn / thereby / as a result / the consequence is / from this it follows that)",
+      "markers": [
+        "denso",
+        "argument"
+      ],
+      "real_life_context": "You connect chains of reasoning — A causes B, which causes C, which is why D matters.",
+      "grammar": [
+        {
+          "type": "multiple_choice",
+          "options": [
+            "which led to",
+            "which in turn",
+            "which led to",
+            "which in turn — therefore",
+            "therefore — as",
+            "as"
+          ],
+          "answer": "which led to / which in turn",
+          "explanation": "\"X, which led to Y, which in turn caused Z\" — embedded causal chain. \"Which in turn\" links the second causal step to the first. Common pattern in economic and explanatory writing. Each \"which\" attaches to the preceding noun phrase."
+        },
+        {
+          "type": "multiple_choice",
+          "options": [
+            "From this it follows",
+            "From this following",
+            "This follows",
+            "This is following"
+          ],
+          "answer": "From this it follows",
+          "explanation": "\"From this it follows that...\" — formal C2 inference marker. Used when one claim entails another. Stronger than \"this suggests\"; closer to \"this implies necessarily\". Common in philosophy, mathematics, formal argument."
+        },
+        {
+          "type": "fill_gap",
+          "hint": "\"Inevitably\" or \"As a result\" or \"Hence\"",
+          "answer": "as a result (or \"inevitably\" or \"hence\")",
+          "explanation": "After a cascade of negative causes, a closing marker delivers the consequence. \"As a result\", \"Hence\", \"Inevitably\", \"Consequently\" — each works. \"As a result\" is neutral; \"Inevitably\" claims the outcome was unavoidable; \"Hence\" is formal."
+        },
+        {
+          "type": "fix_error",
+          "sentence": "A causes B, which causes C, this causes D.",
+          "hint": "For a clean chain, use \"which in turn causes\" not \"this causes\" mid-chain",
+          "answer": "A causes B, which in turn causes C, which in turn causes D.",
+          "explanation": "\"This causes\" mid-chain breaks the embedded structure. Cleaner: keep \"which in turn\" links. The chain stays grammatically tight and the cumulative causality is more visible."
+        },
+        {
+          "type": "read_answer",
+          "passage": "The analysis traced the cascade clearly. 'The flood damaged the warehouse, which in turn forced the shutdown of three production lines, which in turn delayed shipments to fourteen retailers. From this it follows that the inventory crisis was not a logistical failure but a contingency one — every link held individually, but no link was designed for what happened next.'",
+          "question": "According to the analysis, what kind of failure was the inventory crisis?",
+          "answer": "a contingency failure (not a logistical one)",
+          "explanation": "Three causal markers tracing the cascade: \"which in turn forced...\", \"which in turn delayed...\", \"From this it follows that...\". Argument-by-causal-chain. The closing inference reframes the diagnosis."
+        }
+      ],
+      "listening_speaking": [
+        {
+          "text": "This led to a chain of consequences.",
+          "context": "opening causal claim"
+        },
+        {
+          "text": "Which in turn forced a restructure.",
+          "context": "embedded link"
+        },
+        {
+          "text": "From this it follows that...",
+          "context": "formal inference"
+        },
+        {
+          "text": "As a result, the model collapsed.",
+          "context": "closing consequence"
+        },
+        {
+          "text": "The deeper cause is therefore...",
+          "context": "diagnostic close"
+        }
+      ],
+      "roleplay": {
+        "scenario": "Charlotte gives you a starting cause. You build a four-link causal chain ending in a conclusion.",
+        "voiced_by": "charlotte",
+        "persona": "Charlotte",
+        "persona_outfit": "charlotte_casual",
+        "time_budget_sec": 300,
+        "opening_line": "Starting cause: 'interest rates rose'. Build a four-link causal chain ending in a clear conclusion.",
+        "objectives": [
+          {
+            "id": 1,
+            "label_en": "First link with 'which led to'",
+            "hidden_prompt": "user uses 'which led to' or 'which caused'",
+            "hint_en": "Interest rates rose, which led to higher mortgage costs."
+          },
+          {
+            "id": 2,
+            "label_en": "Subsequent links with 'which in turn'",
+            "hidden_prompt": "user uses 'which in turn + verb'",
+            "hint_en": "...which in turn cooled the housing market, which in turn slowed construction hiring."
+          },
+          {
+            "id": 3,
+            "label_en": "Conclusion with 'From this it follows'",
+            "hidden_prompt": "user uses 'From this it follows that' or 'As a result'",
+            "hint_en": "From this it follows that the unemployment dataset will lag the rate-cut decision by at least two quarters."
+          }
+        ],
+        "closing_cue": "Charlotte closes with \"Chain forged, conclusion landed.\" once obj_3 lands.",
+        "suggested_flow": "**Suggested flow** (referencial, 6 turnos):\n\n1. **Charlotte**: \"Starting cause: 'interest rates rose'. Build a four-link causal chain ending in a clear conclusion.\"\n2. **Student**: ~\"Interest rates rose, which led to higher mortgage costs.\"\n3. **Charlotte**: \"Next links?\"\n4. **Student**: ~\"...which in turn cooled the housing market, which in turn slowed construction hiring.\"\n5. **Charlotte**: \"Conclusion?\"\n6. **Student**: ~\"From this it follows that the unemployment dataset will lag the rate-cut decision by at least two quarters.\"\n7. **Charlotte**: \"Chain forged, conclusion landed.\"",
+        "evaluation_focus": [
+          "Each link causally connected, not just sequential",
+          "\"Which in turn\" or equivalent threading",
+          "Conclusion follows logically"
+        ]
+      },
+      "guided_chat": {
+        "scenario": "Charlotte asks you to explain a complex consequence. You build a causal chain ending in a formal conclusion.",
+        "voiced_by": "charlotte",
+        "persona": "Charlotte",
+        "persona_outfit": "charlotte_casual",
+        "intro_en": "Charlotte asks a 'why' question. Answer with a causal chain ending in formal conclusion.",
+        "opening_message": "Why has consumer trust in news dropped so sharply?",
+        "objectives": [
+          {
+            "id": 1,
+            "label_en": "Initial cause and first link",
+            "hidden_prompt": "user opens chain with cause and 'which led to / which in turn'",
+            "hint_en": "The shift to ad-driven revenue forced outlets to chase clicks, which in turn rewarded sensationalism over substance."
+          },
+          {
+            "id": 2,
+            "label_en": "Continue the chain",
+            "hidden_prompt": "user adds 'which in turn' link or two",
+            "hint_en": "Sensationalism eroded credibility, which in turn fed the 'media is biased' narrative, which in turn justified consumers turning to less-edited sources."
+          },
+          {
+            "id": 3,
+            "label_en": "Formal conclusion",
+            "hidden_prompt": "user uses 'From this it follows' or 'As a result' or 'The deeper cause is'",
+            "hint_en": "From this it follows that rebuilding trust requires not better content, but a different business model — one not financed by attention."
+          }
+        ],
+        "closing_cue": "Charlotte closes with \"Causal chain, fully landed.\" once obj_3 lands.",
+        "suggested_script": "**Script** (referencial, 7 turnos):\n\n1. **Charlotte**: \"Why has consumer trust in news dropped so sharply?\"\n2. **Student**: \"The shift to ad-driven revenue forced outlets to chase clicks, which in turn rewarded sensationalism over substance.\"\n3. **Charlotte**: \"And from there?\"\n4. **Student**: \"Sensationalism eroded credibility, which in turn fed the 'media is biased' narrative, which in turn justified consumers turning to less-edited sources.\"\n5. **Charlotte**: \"Self-reinforcing collapse.\"\n6. **Student**: \"From this it follows that rebuilding trust requires not better content, but a different business model — one not financed by attention.\"\n7. **Charlotte**: \"That's the hard part — and the right one. Causal chain, fully landed.\"\n\n> A04 chat = full LLM. Scaffold via hint_pt/hint_en.\n\n---"
+      }
+    },
+    {
+      "id": "A05",
+      "title": "Strong conclusions",
+      "sub_cefr": "C2",
+      "grammar_focus": "Conclusion landing — call to action, vision close, stakes-naming (\"The stakes could not be higher\", \"What is at stake is\", \"If we fail to act, ...\", \"The choice before us is clear\")",
+      "markers": [],
+      "real_life_context": "You close arguments memorably — leaving the reader with action, stakes, or a clarifying frame.",
+      "grammar": [
+        {
+          "type": "multiple_choice",
+          "options": [
+            "What is at stake",
+            "What stakes are",
+            "In stake",
+            "What stakes in"
+          ],
+          "answer": "What is at stake",
+          "explanation": "\"What is at stake is...\" — opens a stakes-naming sentence. Used to elevate from policy detail to underlying value. \"What is at stake is not X but Y\" — common pattern for reframing."
+        },
+        {
+          "type": "multiple_choice",
+          "options": [
+            "If we fail",
+            "Should we fail",
+            "Were we to fail",
+            "If we will fail"
+          ],
+          "answer": "If we fail (or \"Should we fail\")",
+          "explanation": "\"If we fail to + base\" — direct conditional close. Or inverted formal: \"Should we fail to + base\". Both work; the formal inverted version (M01-style) registers more gravity. \"If we will fail\" is grammatically wrong (no \"will\" in if-clauses)."
+        },
+        {
+          "type": "fill_gap",
+          "hint": "\"The choice\"",
+          "answer": "The choice",
+          "explanation": "\"The choice before us is clear: X or Y\" — binary-frame conclusion. Reframes the entire argument as a single decision. Common in op-eds, manifestos, and political speeches. The colon introduces the two options."
+        },
+        {
+          "type": "fix_error",
+          "sentence": "The stakes are not higher anywhere.",
+          "hint": "Use idiomatic \"The stakes could not be higher\"",
+          "answer": "The stakes could not be higher. (or: The stakes have never been higher.)",
+          "explanation": "\"The stakes could not be higher\" — fixed idiomatic conclusion phrase. Variant: \"The stakes have never been higher\". These are climactic phrases — fixed forms, not constructed sentences. Familiarity with the phrase is part of C2."
+        },
+        {
+          "type": "read_answer",
+          "passage": "She landed her closing without flourish. 'What is at stake is not whether this policy is popular, but whether this generation chooses to leave the next one with options. The stakes could not be higher. The choice before us is clear: take the harder road now, or accept that we have decided, by inaction, to make the harder road our children's.' She sat down. The room sat with her for a long second.",
+          "question": "How does the speaker frame the choice?",
+          "answer": "take the harder road now, or accept we have made it our children's",
+          "explanation": "Three classical conclusion devices: \"What is at stake is not X, but Y\" (stakes reframe), \"The stakes could not be higher\" (fixed climactic phrase), \"The choice before us is clear: X or Y\" (binary frame). Conclusion architecture at C2."
+        }
+      ],
+      "listening_speaking": [
+        {
+          "text": "What is at stake is not X, but Y.",
+          "context": "stakes reframe"
+        },
+        {
+          "text": "The stakes could not be higher.",
+          "context": "climactic phrase"
+        },
+        {
+          "text": "The choice before us is clear.",
+          "context": "binary frame"
+        },
+        {
+          "text": "If we fail to act, we lose the window.",
+          "context": "conditional warning"
+        },
+        {
+          "text": "Future generations will judge us by this moment.",
+          "context": "historical frame close"
+        }
+      ],
+      "roleplay": {
+        "scenario": "Charlotte gives you the body of an argument. You craft three closing sentences — stakes, choice, and warning.",
+        "voiced_by": "charlotte",
+        "persona": "Charlotte",
+        "persona_outfit": "charlotte_casual",
+        "time_budget_sec": 300,
+        "opening_line": "Argument body: 'AI regulation is overdue.' Close with three sentences — stakes, choice, warning.",
+        "objectives": [
+          {
+            "id": 1,
+            "label_en": "Stakes-naming",
+            "hidden_prompt": "user uses 'What is at stake is' or 'The stakes could not be higher'",
+            "hint_en": "What is at stake is not the pace of innovation, but the choice of whose interests guide it."
+          },
+          {
+            "id": 2,
+            "label_en": "Choice frame",
+            "hidden_prompt": "user uses 'The choice before us is clear'",
+            "hint_en": "The choice before us is clear: regulate proactively while leverage remains, or react after the harms become irreversible."
+          },
+          {
+            "id": 3,
+            "label_en": "Conditional warning",
+            "hidden_prompt": "user uses 'If we fail to' or 'Should we fail to'",
+            "hint_en": "If we fail to act in this window, the next generation will inherit a settlement they had no part in shaping."
+          }
+        ],
+        "closing_cue": "Charlotte closes with \"Conclusion architecture, landed.\" once obj_3 lands.",
+        "suggested_flow": "**Suggested flow** (referencial, 6 turnos):\n\n1. **Charlotte**: \"Argument body: 'AI regulation is overdue.' Close with three sentences — stakes, choice, warning.\"\n2. **Student**: ~\"What is at stake is not the pace of innovation, but the choice of whose interests guide it.\"\n3. **Charlotte**: \"Choice?\"\n4. **Student**: ~\"The choice before us is clear: regulate proactively while leverage remains, or react after the harms become irreversible.\"\n5. **Charlotte**: \"Warning?\"\n6. **Student**: ~\"If we fail to act in this window, the next generation will inherit a settlement they had no part in shaping.\"\n7. **Charlotte**: \"Conclusion architecture, landed.\"",
+        "evaluation_focus": [
+          "Stakes-naming reframe",
+          "Binary choice frame",
+          "Conditional warning",
+          "All three close differently"
+        ]
+      },
+      "guided_chat": {
+        "scenario": "Charlotte asks you to close a speech you've been drafting. You weave the conclusion devices.",
+        "voiced_by": "charlotte",
+        "persona": "Charlotte",
+        "persona_outfit": "charlotte_casual",
+        "intro_en": "Charlotte invites a speech close. Use stakes, choice, warning conclusion devices.",
+        "opening_message": "The speech is on civic participation. How would you close it?",
+        "objectives": [
+          {
+            "id": 1,
+            "label_en": "Stakes-naming",
+            "hidden_prompt": "user uses 'What is at stake is' or stakes phrase",
+            "hint_en": "What is at stake is not turnout, but whether we still believe collective decisions can change anything."
+          },
+          {
+            "id": 2,
+            "label_en": "Choice frame",
+            "hidden_prompt": "user uses 'The choice before us is clear'",
+            "hint_en": "The choice before us is clear: re-enter the conversation as citizens, or accept the role we have been quietly assigned — as consumers of politics rather than its authors."
+          },
+          {
+            "id": 3,
+            "label_en": "Close with call to action",
+            "hidden_prompt": "user uses 'If we fail to' or call-to-action",
+            "hint_en": "If we fail to show up — at the ballot box, in the council meeting, on the school board — we hand the future to whoever does. The room you leave empty will be filled."
+          }
+        ],
+        "closing_cue": "Charlotte closes with \"Speech closed, persuasion complete.\" once obj_3 lands.",
+        "suggested_script": "**Script** (referencial, 7 turnos):\n\n1. **Charlotte**: \"The speech is on civic participation. How would you close it?\"\n2. **Student**: \"What is at stake is not turnout, but whether we still believe collective decisions can change anything.\"\n3. **Charlotte**: \"That reframes the whole talk. Choice?\"\n4. **Student**: \"The choice before us is clear: re-enter the conversation as citizens, or accept the role we have been quietly assigned — as consumers of politics rather than its authors.\"\n5. **Charlotte**: \"Final beat?\"\n6. **Student**: \"If we fail to show up — at the ballot box, in the council meeting, on the school board — we hand the future to whoever does. The room you leave empty will be filled.\"\n7. **Charlotte**: \"The room you leave empty will be filled. That's the line they'll quote. Speech closed, persuasion complete.\"\n\n> A04 chat = full LLM. Scaffold via hint_pt/hint_en.\n\n---"
+      }
+    }
+  ],
+  "cross_unit_consolidation": [
+    "Build numbered cases (The case for X / First, ... / Second, ... / Most importantly, ...)",
+    "Anticipate and refute counterarguments (Some may object / Critics might argue but this overlooks / It would be a mistake to assume)",
+    "Deploy classical rhetorical devices (anaphora, antithesis, tricolon) with parallel structure",
+    "Connect causal chains (which led to / which in turn / from this it follows that / as a result)",
+    "Close with conclusion architecture (stakes-naming / choice frame / conditional warning / historical frame)",
+    "Match rhetorical intensity to argumentative purpose",
+    "Use binary framing (\"not X but Y\") to clarify stakes"
+  ]
+}
