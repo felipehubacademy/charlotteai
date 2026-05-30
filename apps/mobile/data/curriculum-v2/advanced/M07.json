@@ -1,0 +1,754 @@
+{
+  "id": "M07",
+  "title": "Reported speech masterclass",
+  "level": "Advanced",
+  "block": "C1",
+  "units_range": "A01–A05",
+  "theme": "Advanced reporting verbs (apologise for, accuse of, suggest doing, admit + ing), reported emotions, hedged reports, \"according to + X\"",
+  "goal": "Student reports speech with the syntactic pattern that fits each verb, captures tone and emotion, and hedges sources gracefully.",
+  "connects_to": "M08 (Diplomacia e hedging) — formal politeness uses many of these patterns.",
+  "module_chunks": [
+    "apologise for + -ing",
+    "accuse + person + of + -ing",
+    "congratulate + person + on + -ing",
+    "admit (to) + -ing",
+    "deny + -ing",
+    "promise + to + base / + that-clause",
+    "threaten + to + base",
+    "suggest + -ing / suggest + that-clause + base",
+    "offer + to + base",
+    "refuse + to + base",
+    "warn + person + about / against / not to",
+    "According to + source...",
+    "Sources claim that...",
+    "It is allegedly the case that..."
+  ],
+  "units": [
+    {
+      "id": "A01",
+      "title": "Apologise for, accuse of",
+      "sub_cefr": "C1",
+      "grammar_focus": "Reporting verbs that take \"+ preposition + -ing\" (apologise for, accuse of, congratulate on, blame for)",
+      "markers": [
+        "denso"
+      ],
+      "real_life_context": "You report blame, apology, praise — choosing the verb whose pattern fits.",
+      "grammar": [
+        {
+          "type": "multiple_choice",
+          "sentence": "She apologised _____ late.",
+          "options": [
+            "for being",
+            "to be",
+            "about being",
+            "of being"
+          ],
+          "answer": "for being",
+          "explanation": "\"Apologise for + -ing\". The preposition \"for\" is fixed with this verb. Followed by gerund, not infinitive. \"Apologise to be late\" is ungrammatical — common L2 trap."
+        },
+        {
+          "type": "multiple_choice",
+          "sentence": "He accused her _____ the email.",
+          "options": [
+            "of leaking",
+            "to leak",
+            "for leaking",
+            "about leak"
+          ],
+          "answer": "of leaking",
+          "explanation": "\"Accuse + person + of + -ing\". The preposition \"of\" is mandatory. Without \"of\" or with wrong preposition, the verb pattern breaks."
+        },
+        {
+          "type": "fill_gap",
+          "sentence": "They congratulated him _____ his promotion.",
+          "hint": "preposition + noun/-ing",
+          "answer": "on",
+          "explanation": "\"Congratulate + person + on + noun/-ing\". Fixed pattern: on getting the job, on the promotion, on becoming a parent. Not \"for\", not \"about\"."
+        },
+        {
+          "type": "fix_error",
+          "sentence": "She blamed him to break the vase.",
+          "hint": "\"Blame + person + for + -ing\"",
+          "answer": "She blamed him for breaking the vase.",
+          "explanation": "\"Blame\" takes \"for + -ing\", not \"to + infinitive\". The full pattern is \"blame + someone + for + -ing/noun\". Common trap: defaulting to \"to + infinitive\" with all reporting verbs."
+        },
+        {
+          "type": "read_answer",
+          "passage": "The mediation broke down twice. He accused her of stalling the negotiations. She accused him of moving the goalposts. Both refused to apologise for what the other called bad faith. Only when a neutral third party congratulated each side on small concessions did the conversation resume.",
+          "question": "What did the third party do that helped resume the conversation?",
+          "answer": "congratulated each side on small concessions",
+          "explanation": "Three reporting verb patterns layered: \"accused her of stalling\", \"accused him of moving\", \"congratulated each side on... concessions\". Each verb requires its specific preposition + -ing/noun."
+        }
+      ],
+      "listening_speaking": [
+        {
+          "text": "She apologised for being late.",
+          "context": "apologise for + -ing"
+        },
+        {
+          "text": "He accused her of lying.",
+          "context": "accuse of + -ing"
+        },
+        {
+          "text": "They congratulated him on the new job.",
+          "context": "congratulate on"
+        },
+        {
+          "text": "I blame him for the delay.",
+          "context": "blame for + noun"
+        },
+        {
+          "text": "She thanked me for helping.",
+          "context": "thank for + -ing"
+        }
+      ],
+      "roleplay": {
+        "scenario": "Charlotte gives three short scenes. You report each using the appropriate reporting verb + preposition + -ing.",
+        "voiced_by": "charlotte",
+        "persona": "Charlotte",
+        "persona_outfit": "charlotte_casual",
+        "time_budget_sec": 300,
+        "opening_line": "Three scenes. Report each with 'apologise for', 'accuse of', or 'congratulate on'.",
+        "objectives": [
+          {
+            "id": 1,
+            "label_en": "Apology with 'apologise for + -ing'",
+            "hidden_prompt": "user uses 'X apologised for + -ing'",
+            "hint_en": "He apologised for sending the email to the wrong list."
+          },
+          {
+            "id": 2,
+            "label_en": "Accusation with 'accuse of + -ing'",
+            "hidden_prompt": "user uses 'X accused Y of + -ing'",
+            "hint_en": "She accused him of taking credit for her work."
+          },
+          {
+            "id": 3,
+            "label_en": "Congratulations with 'congratulate on'",
+            "hidden_prompt": "user uses 'X congratulated Y on + noun/-ing'",
+            "hint_en": "The whole team congratulated her on winning the award."
+          }
+        ],
+        "closing_cue": "Charlotte closes with \"Verb patterns honoured.\" once obj_3 lands.",
+        "suggested_flow": "**Suggested flow** (referencial, 6 turnos):\n\n1. **Charlotte**: \"Three scenes. Report each with 'apologise for', 'accuse of', or 'congratulate on'.\"\n2. **Student**: ~\"He apologised for sending the email to the wrong list.\"\n3. **Charlotte**: \"Common pain. Accusation?\"\n4. **Student**: ~\"She accused him of taking credit for her work.\"\n5. **Charlotte**: \"Praise?\"\n6. **Student**: ~\"The whole team congratulated her on winning the award.\"\n7. **Charlotte**: \"Verb patterns honoured.\"",
+        "evaluation_focus": [
+          "Correct preposition (for / of / on)",
+          "Followed by -ing (or noun)",
+          "No \"to + infinitive\" substitution"
+        ]
+      },
+      "guided_chat": {
+        "scenario": "Charlotte recounts a workplace tension. You report it with the right verb pattern.",
+        "voiced_by": "charlotte",
+        "persona": "Charlotte",
+        "persona_outfit": "charlotte_casual",
+        "intro_en": "Charlotte recaps office friction. Report with verb + preposition + -ing.",
+        "opening_message": "My colleague accused me of leaking the meeting notes. What would you have done?",
+        "objectives": [
+          {
+            "id": 1,
+            "label_en": "Reply with verb pattern",
+            "hidden_prompt": "user uses 'I would have + reported verb + preposition + -ing'",
+            "hint_en": "I would have apologised for any role in the misunderstanding, then asked for evidence."
+          },
+          {
+            "id": 2,
+            "label_en": "Another observation with verb pattern",
+            "hidden_prompt": "user uses another reporting verb + preposition + -ing",
+            "hint_en": "I'd blame the lack of clear ownership for situations like this."
+          },
+          {
+            "id": 3,
+            "label_en": "Ask Charlotte",
+            "hidden_prompt": "user asks Charlotte what she actually did",
+            "hint_en": "What did you actually do?"
+          }
+        ],
+        "closing_cue": "Charlotte closes with \"Patterns hold the line.\" once obj_3 lands.",
+        "suggested_script": "**Script** (referencial, 7 turnos):\n\n1. **Charlotte**: \"My colleague accused me of leaking the meeting notes. What would you have done?\"\n2. **Student**: \"I would have apologised for any role in the misunderstanding, then asked for evidence.\"\n3. **Charlotte**: \"Calm response under attack — that's the move.\"\n4. **Student**: \"I'd blame the lack of clear ownership for situations like this.\"\n5. **Charlotte**: \"Systemic, not personal — even better framing.\"\n6. **Student**: \"What did you actually do?\"\n7. **Charlotte**: \"Asked who else had access, and let the question answer itself. Patterns hold the line.\"\n\n> A01 chat = full LLM. Scaffold via hint_pt/hint_en.\n\n---"
+      }
+    },
+    {
+      "id": "A02",
+      "title": "Admit, deny, suggest",
+      "sub_cefr": "C1",
+      "grammar_focus": "Reporting verbs that take \"+ -ing\" directly (admit, deny, suggest, recommend, mind, regret, consider)",
+      "markers": [
+        "denso"
+      ],
+      "real_life_context": "You report admissions, denials, and suggestions with verbs that resist \"to + infinitive\".",
+      "grammar": [
+        {
+          "type": "multiple_choice",
+          "sentence": "He admitted _____ the keys.",
+          "options": [
+            "losing",
+            "to lose",
+            "lost",
+            "having lost"
+          ],
+          "answer": "losing",
+          "explanation": "\"Admit + -ing\" (or \"admit to + -ing\", but \"to\" optional in modern usage). \"Admit losing\" or \"admit having lost\" both work — never \"admit to lose\"."
+        },
+        {
+          "type": "multiple_choice",
+          "sentence": "She denied _____ anything wrong.",
+          "options": [
+            "doing",
+            "to do",
+            "did",
+            "done"
+          ],
+          "answer": "doing",
+          "explanation": "\"Deny + -ing\" — no preposition, no \"to + infinitive\". \"Denied doing\" or \"denied having done\" both work for the past meaning."
+        },
+        {
+          "type": "fill_gap",
+          "sentence": "I suggest _____ the meeting until next week.",
+          "hint": "-ing form of \"postpone\"",
+          "answer": "postponing",
+          "explanation": "\"Suggest + -ing\" is the most natural form. Alternative: \"suggest that we postpone...\" (mandative subjunctive from M04). Both work; \"+ -ing\" is more compact."
+        },
+        {
+          "type": "fix_error",
+          "sentence": "She denied to take the money.",
+          "hint": "\"Deny\" takes -ing, not \"to + infinitive\"",
+          "answer": "She denied taking the money.",
+          "explanation": "\"Deny + -ing\" — fixed pattern. \"Deny to take\" is a common L2 error. Memorise the family: admit, deny, suggest, recommend, mind, regret, consider — all take -ing directly."
+        },
+        {
+          "type": "read_answer",
+          "passage": "Under questioning, the witness's posture shifted. He admitted being at the scene that night. He denied knowing the victim personally. He suggested checking the security footage himself. By the end of the hour, only one of those three claims had survived the lawyer's gentle, surgical doubts.",
+          "question": "What did the witness deny?",
+          "answer": "knowing the victim personally",
+          "explanation": "Three \"+ -ing\" reporting verbs: \"admitted being\", \"denied knowing\", \"suggested checking\". All take direct gerund — no preposition, no \"to + infinitive\"."
+        }
+      ],
+      "listening_speaking": [
+        {
+          "text": "He admitted losing the keys.",
+          "context": "admit + -ing"
+        },
+        {
+          "text": "She denied taking it.",
+          "context": "deny + -ing"
+        },
+        {
+          "text": "I suggest postponing the meeting.",
+          "context": "suggest + -ing"
+        },
+        {
+          "text": "He regrets not going.",
+          "context": "regret + -ing"
+        },
+        {
+          "text": "They considered hiring her.",
+          "context": "consider + -ing"
+        }
+      ],
+      "roleplay": {
+        "scenario": "Charlotte gives three scenarios. You report with admit, deny, suggest — all \"+ -ing\".",
+        "voiced_by": "charlotte",
+        "persona": "Charlotte",
+        "persona_outfit": "charlotte_casual",
+        "time_budget_sec": 300,
+        "opening_line": "Three statements: an admission, a denial, a suggestion — all '+ -ing'.",
+        "objectives": [
+          {
+            "id": 1,
+            "label_en": "Admission with '+ -ing'",
+            "hidden_prompt": "user uses 'X admitted + -ing'",
+            "hint_en": "I have to admit losing track of time during that meeting."
+          },
+          {
+            "id": 2,
+            "label_en": "Denial with '+ -ing'",
+            "hidden_prompt": "user uses 'X denied + -ing'",
+            "hint_en": "She denied having seen the email at all."
+          },
+          {
+            "id": 3,
+            "label_en": "Suggestion with '+ -ing'",
+            "hidden_prompt": "user uses 'I suggest + -ing'",
+            "hint_en": "I suggest taking a break before we decide anything."
+          }
+        ],
+        "closing_cue": "Charlotte closes with \"Patterns held, finely.\" once obj_3 lands.",
+        "suggested_flow": "**Suggested flow** (referencial, 6 turnos):\n\n1. **Charlotte**: \"Three statements: an admission, a denial, a suggestion — all '+ -ing'.\"\n2. **Student**: ~\"I have to admit losing track of time during that meeting.\"\n3. **Charlotte**: \"Honest. Denial?\"\n4. **Student**: ~\"She denied having seen the email at all.\"\n5. **Charlotte**: \"Suggestion?\"\n6. **Student**: ~\"I suggest taking a break before we decide anything.\"\n7. **Charlotte**: \"Patterns held, finely.\"",
+        "evaluation_focus": [
+          "Direct \"+ -ing\" (no preposition)",
+          "No \"to + infinitive\"",
+          "\"Having + past participle\" for past sense optional"
+        ]
+      },
+      "guided_chat": {
+        "scenario": "Charlotte trades reflective admissions and suggestions with you.",
+        "voiced_by": "charlotte",
+        "persona": "Charlotte",
+        "persona_outfit": "charlotte_casual",
+        "intro_en": "Charlotte reflects honestly. Use admit / deny / suggest + -ing.",
+        "opening_message": "I have to admit dreading Mondays for the first time in years. What's something you'd admit?",
+        "objectives": [
+          {
+            "id": 1,
+            "label_en": "Honest admission with '+ -ing'",
+            "hidden_prompt": "user uses 'I'd admit/I admit + -ing'",
+            "hint_en": "I have to admit checking my phone first thing in the morning."
+          },
+          {
+            "id": 2,
+            "label_en": "Suggestion with '+ -ing'",
+            "hidden_prompt": "user uses 'I suggest/recommend + -ing'",
+            "hint_en": "I'd suggest leaving the phone in another room for the first hour."
+          },
+          {
+            "id": 3,
+            "label_en": "Ask Charlotte",
+            "hidden_prompt": "user asks Charlotte why Mondays changed",
+            "hint_en": "What changed about Mondays?"
+          }
+        ],
+        "closing_cue": "Charlotte closes with \"Admissions, in pattern.\" once obj_3 lands.",
+        "suggested_script": "**Script** (referencial, 7 turnos):\n\n1. **Charlotte**: \"I have to admit dreading Mondays for the first time in years. What's something you'd admit?\"\n2. **Student**: \"I have to admit checking my phone first thing in the morning.\"\n3. **Charlotte**: \"The modern original sin.\"\n4. **Student**: \"I'd suggest leaving the phone in another room for the first hour.\"\n5. **Charlotte**: \"Tried it once and lasted two days.\"\n6. **Student**: \"What changed about Mondays?\"\n7. **Charlotte**: \"A meeting got rescheduled, and the whole week now starts late. Admissions, in pattern.\"\n\n> A02 chat = full LLM. Scaffold via hint_pt/hint_en.\n\n---"
+      }
+    },
+    {
+      "id": "A03",
+      "title": "Promise, refuse, offer",
+      "sub_cefr": "C1",
+      "grammar_focus": "Reporting verbs that take \"+ to + infinitive\" (promise, refuse, offer, threaten, agree, decide, manage, pretend)",
+      "markers": [
+        "denso"
+      ],
+      "real_life_context": "You report commitments, refusals, and offers with verbs that take \"to + infinitive\" rather than \"+ -ing\".",
+      "grammar": [
+        {
+          "type": "multiple_choice",
+          "sentence": "He promised _____ on time.",
+          "options": [
+            "to arrive",
+            "arriving",
+            "arrive",
+            "for arriving"
+          ],
+          "answer": "to arrive",
+          "explanation": "\"Promise + to + infinitive\". Fixed pattern. \"Promised arriving\" or \"promised for arriving\" — both wrong. \"Promise\" joins offer, refuse, agree, decide, manage as \"to + infinitive\" verbs."
+        },
+        {
+          "type": "multiple_choice",
+          "sentence": "She refused _____ the question.",
+          "options": [
+            "to answer",
+            "answering",
+            "answer",
+            "for answering"
+          ],
+          "answer": "to answer",
+          "explanation": "\"Refuse + to + infinitive\". \"Refuse answering\" is ungrammatical. The to-infinitive carries the refused action."
+        },
+        {
+          "type": "fill_gap",
+          "sentence": "They offered _____ him to the station.",
+          "hint": "\"to + base form of drive\"",
+          "answer": "to drive",
+          "explanation": "\"Offer + to + infinitive\" — the offered action is in infinitive form. Same pattern: \"offered to help, offered to pay, offered to wait\"."
+        },
+        {
+          "type": "fix_error",
+          "sentence": "He threatened leaving the team.",
+          "hint": "\"Threaten + to + infinitive\"",
+          "answer": "He threatened to leave the team.",
+          "explanation": "\"Threaten + to + infinitive\" — fixed pattern. \"Threatened leaving\" is wrong despite the gerund's surface plausibility. C1 precision lives in these distinctions."
+        },
+        {
+          "type": "read_answer",
+          "passage": "She refused to accept the apology. He agreed to drop the issue but offered to revisit it after a week. By the time the week passed, neither had threatened to escalate further — and both had managed to find more important things to argue about.",
+          "question": "What did he offer to do?",
+          "answer": "revisit it after a week (or \"revisit the issue after a week\")",
+          "explanation": "Four verbs all \"+ to + infinitive\": \"refused to accept\", \"agreed to drop\", \"offered to revisit\", \"threatened to escalate\", \"managed to find\". Same family — fluent reporting demands recognising this group."
+        }
+      ],
+      "listening_speaking": [
+        {
+          "text": "He promised to arrive on time.",
+          "context": "promise + to"
+        },
+        {
+          "text": "She refused to answer.",
+          "context": "refuse + to"
+        },
+        {
+          "text": "They offered to help.",
+          "context": "offer + to"
+        },
+        {
+          "text": "He threatened to quit.",
+          "context": "threaten + to"
+        },
+        {
+          "text": "We agreed to meet on Friday.",
+          "context": "agree + to"
+        }
+      ],
+      "roleplay": {
+        "scenario": "Charlotte invites three reported commitments — promise, refuse, offer.",
+        "voiced_by": "charlotte",
+        "persona": "Charlotte",
+        "persona_outfit": "charlotte_casual",
+        "time_budget_sec": 300,
+        "opening_line": "Three reports: a promise, a refusal, an offer — all 'to + infinitive'.",
+        "objectives": [
+          {
+            "id": 1,
+            "label_en": "Promise with 'promise to'",
+            "hidden_prompt": "user uses 'X promised to + base'",
+            "hint_en": "My manager promised to give me feedback by Friday."
+          },
+          {
+            "id": 2,
+            "label_en": "Refusal with 'refuse to'",
+            "hidden_prompt": "user uses 'X refused to + base'",
+            "hint_en": "The customer refused to pay until the issue was fixed."
+          },
+          {
+            "id": 3,
+            "label_en": "Offer with 'offer to'",
+            "hidden_prompt": "user uses 'X offered to + base'",
+            "hint_en": "My neighbour offered to water the plants while we're away."
+          }
+        ],
+        "closing_cue": "Charlotte closes with \"Three verbs, three commitments.\" once obj_3 lands.",
+        "suggested_flow": "**Suggested flow** (referencial, 6 turnos):\n\n1. **Charlotte**: \"Three reports: a promise, a refusal, an offer — all 'to + infinitive'.\"\n2. **Student**: ~\"My manager promised to give me feedback by Friday.\"\n3. **Charlotte**: \"Will she? Refusal?\"\n4. **Student**: ~\"The customer refused to pay until the issue was fixed.\"\n5. **Charlotte**: \"Offer?\"\n6. **Student**: ~\"My neighbour offered to water the plants while we're away.\"\n7. **Charlotte**: \"Three verbs, three commitments.\"",
+        "evaluation_focus": [
+          "\"Verb + to + infinitive\"",
+          "No \"+ -ing\" substitution",
+          "Correct verb family"
+        ]
+      },
+      "guided_chat": {
+        "scenario": "Charlotte trades promises and refusals from recent life. You match her structure.",
+        "voiced_by": "charlotte",
+        "persona": "Charlotte",
+        "persona_outfit": "charlotte_casual",
+        "intro_en": "Charlotte trades commitments. Use promise/refuse/offer + to + infinitive.",
+        "opening_message": "My doctor offered to refer me to a specialist, and I refused to make the appointment for two weeks. Classic me. What have you promised or refused lately?",
+        "objectives": [
+          {
+            "id": 1,
+            "label_en": "Promise or commitment",
+            "hidden_prompt": "user uses 'I promised to + base' or 'agreed to + base'",
+            "hint_en": "I promised to call my mother every Sunday, and so far I've kept it."
+          },
+          {
+            "id": 2,
+            "label_en": "Personal refusal",
+            "hidden_prompt": "user uses 'I refused to + base'",
+            "hint_en": "I refused to take work calls after eight PM, and it changed my evenings."
+          },
+          {
+            "id": 3,
+            "label_en": "Ask Charlotte",
+            "hidden_prompt": "user asks Charlotte why she delayed the appointment",
+            "hint_en": "Why did you delay?"
+          }
+        ],
+        "closing_cue": "Charlotte closes with \"Commitments, with patterns held.\" once obj_3 lands.",
+        "suggested_script": "**Script** (referencial, 7 turnos):\n\n1. **Charlotte**: \"My doctor offered to refer me to a specialist, and I refused to make the appointment for two weeks. Classic me. What have you promised or refused lately?\"\n2. **Student**: \"I promised to call my mother every Sunday, and so far I've kept it.\"\n3. **Charlotte**: \"Best kind of promise. Refusal?\"\n4. **Student**: \"I refused to take work calls after eight PM, and it changed my evenings.\"\n5. **Charlotte**: \"Boundaries are the gift you give yourself.\"\n6. **Student**: \"Why did you delay?\"\n7. **Charlotte**: \"The diagnostic uncertainty. Avoidance, basically. Commitments, with patterns held.\"\n\n> A03 chat = full LLM. Scaffold via hint_pt/hint_en.\n\n---"
+      }
+    },
+    {
+      "id": "A04",
+      "title": "Warn against, talk into",
+      "sub_cefr": "C1",
+      "grammar_focus": "Complex reporting verbs (warn + person + against/about/not to, persuade/talk into + -ing, discourage from + -ing)",
+      "markers": [
+        "denso"
+      ],
+      "real_life_context": "You report warnings, persuasion, prevention with their specific syntactic patterns.",
+      "grammar": [
+        {
+          "type": "multiple_choice",
+          "sentence": "She warned me _____ the icy roads.",
+          "options": [
+            "about",
+            "for",
+            "of",
+            "against"
+          ],
+          "answer": "about",
+          "explanation": "\"Warn + person + about + noun\" — for warnings about a danger. Alternative: \"warn against + -ing\" (\"warned me against driving\"), or \"warn + not to + infinitive\" (\"warned me not to drive\"). Three patterns, all common."
+        },
+        {
+          "type": "multiple_choice",
+          "sentence": "He persuaded me _____ the offer.",
+          "options": [
+            "to accept",
+            "into accepting",
+            "accepting",
+            "for accepting"
+          ],
+          "answer": "to accept",
+          "explanation": "\"Persuade + person + to + infinitive\". \"Talk into\" uses different pattern: \"talked me into accepting\" (+ -ing). Distinguish persuade (to + inf) vs talk into (into + -ing)."
+        },
+        {
+          "type": "fill_gap",
+          "sentence": "They talked her _____ the meeting.",
+          "hint": "preposition + -ing",
+          "answer": "into attending (or out of attending — both grammatical, different meaning)",
+          "explanation": "\"Talk + person + into + -ing\" (persuaded to do) or \"out of + -ing\" (dissuaded from doing). Both prepositional patterns common with \"talk\"."
+        },
+        {
+          "type": "fix_error",
+          "sentence": "He discouraged me to apply.",
+          "hint": "\"Discourage from + -ing\"",
+          "answer": "He discouraged me from applying.",
+          "explanation": "\"Discourage + person + from + -ing\" — fixed preposition. Not \"to + infinitive\". Same family: \"prevent + from + -ing\", \"stop + from + -ing\"."
+        },
+        {
+          "type": "read_answer",
+          "passage": "The senior partner had a way with juniors. He warned them against rushing the first draft. He persuaded them to seek out the most experienced editors. He talked one young lawyer out of resigning during a particularly hard week. He discouraged anyone from working past nine at night.",
+          "question": "What did he discourage the juniors from doing?",
+          "answer": "working past nine at night",
+          "explanation": "Four reporting verbs with their patterns: \"warned them against + -ing\", \"persuaded them to + base\", \"talked one out of + -ing\", \"discouraged anyone from + -ing\". Pattern variety at C1."
+        }
+      ],
+      "listening_speaking": [
+        {
+          "text": "She warned me about the icy roads.",
+          "context": "warn + about"
+        },
+        {
+          "text": "He warned me not to go alone.",
+          "context": "warn + not to"
+        },
+        {
+          "text": "They persuaded me to stay.",
+          "context": "persuade + to"
+        },
+        {
+          "text": "She talked him into applying.",
+          "context": "talk into + -ing"
+        },
+        {
+          "text": "He discouraged me from quitting.",
+          "context": "discourage from + -ing"
+        }
+      ],
+      "roleplay": {
+        "scenario": "Charlotte invites three reports — a warning, a persuasion, a discouragement.",
+        "voiced_by": "charlotte",
+        "persona": "Charlotte",
+        "persona_outfit": "charlotte_casual",
+        "time_budget_sec": 300,
+        "opening_line": "Three reports — a warning, a persuasion, and a discouragement.",
+        "objectives": [
+          {
+            "id": 1,
+            "label_en": "Warning with 'warn + about / not to'",
+            "hidden_prompt": "user uses 'X warned + person + about/not to'",
+            "hint_en": "My boss warned me not to commit to that timeline."
+          },
+          {
+            "id": 2,
+            "label_en": "Persuasion with 'persuade to' or 'talk into'",
+            "hidden_prompt": "user uses 'X persuaded Y to + base' or 'talked Y into + -ing'",
+            "hint_en": "My sister talked me into trying the new restaurant."
+          },
+          {
+            "id": 3,
+            "label_en": "Discouragement with 'discourage from'",
+            "hidden_prompt": "user uses 'X discouraged + person + from + -ing'",
+            "hint_en": "Our mentor discouraged us from rushing the launch."
+          }
+        ],
+        "closing_cue": "Charlotte closes with \"Patterns sharper than instinct.\" once obj_3 lands.",
+        "suggested_flow": "**Suggested flow** (referencial, 6 turnos):\n\n1. **Charlotte**: \"Three reports — a warning, a persuasion, and a discouragement.\"\n2. **Student**: ~\"My boss warned me not to commit to that timeline.\"\n3. **Charlotte**: \"Wise. Persuasion?\"\n4. **Student**: ~\"My sister talked me into trying the new restaurant.\"\n5. **Charlotte**: \"Discouragement?\"\n6. **Student**: ~\"Our mentor discouraged us from rushing the launch.\"\n7. **Charlotte**: \"Patterns sharper than instinct.\"",
+        "evaluation_focus": [
+          "Distinct prepositions (about, into, from)",
+          "\"+ -ing\" vs \"+ to + infinitive\" by verb",
+          "Correct verb family"
+        ]
+      },
+      "guided_chat": {
+        "scenario": "Charlotte explores influence — who shaped you, who warned you, who talked you into something pivotal.",
+        "voiced_by": "charlotte",
+        "persona": "Charlotte",
+        "persona_outfit": "charlotte_casual",
+        "intro_en": "Charlotte traces influence. Use warn/persuade/talk into/discourage with correct patterns.",
+        "opening_message": "My grandmother talked me into studying abroad — best decision I never planned. Who shaped a big call of yours?",
+        "objectives": [
+          {
+            "id": 1,
+            "label_en": "Who persuaded/discouraged",
+            "hidden_prompt": "user uses 'X talked me into + -ing' or 'X persuaded me to + base'",
+            "hint_en": "My old boss talked me into applying for a role I thought was too senior."
+          },
+          {
+            "id": 2,
+            "label_en": "Warning received",
+            "hidden_prompt": "user uses 'X warned me + about/not to/against'",
+            "hint_en": "A friend warned me against committing to anything in my first month."
+          },
+          {
+            "id": 3,
+            "label_en": "Ask Charlotte",
+            "hidden_prompt": "user asks Charlotte where she studied abroad",
+            "hint_en": "Where did you go?"
+          }
+        ],
+        "closing_cue": "Charlotte closes with \"Influence reported, correctly framed.\" once obj_3 lands.",
+        "suggested_script": "**Script** (referencial, 7 turnos):\n\n1. **Charlotte**: \"My grandmother talked me into studying abroad — best decision I never planned. Who shaped a big call of yours?\"\n2. **Student**: \"My old boss talked me into applying for a role I thought was too senior.\"\n3. **Charlotte**: \"Imposter syndrome's natural enemy is a good boss.\"\n4. **Student**: \"A friend warned me against committing to anything in my first month.\"\n5. **Charlotte**: \"First-month wisdom is gold.\"\n6. **Student**: \"Where did you go?\"\n7. **Charlotte**: \"Edinburgh. Cold, beautiful, life-changing. Influence reported, correctly framed.\"\n\n> A04 chat = full LLM. Scaffold via hint_pt/hint_en.\n\n---"
+      }
+    },
+    {
+      "id": "A05",
+      "title": "According to, allegedly",
+      "sub_cefr": "C1",
+      "grammar_focus": "Hedged reporting (according to + source, allegedly, supposedly, apparently, reportedly)",
+      "markers": [],
+      "real_life_context": "You report unverified claims with appropriate distance — journalism, gossip-with-care, academic citation.",
+      "grammar": [
+        {
+          "type": "multiple_choice",
+          "sentence": "_____ the report, sales are down 15%.",
+          "options": [
+            "According to",
+            "In accord with",
+            "For",
+            "By"
+          ],
+          "answer": "According to",
+          "explanation": "\"According to + source\" — fixed phrase attributing information. \"In accord with\" exists but means \"in agreement with\", not source citation."
+        },
+        {
+          "type": "multiple_choice",
+          "sentence": "He _____ resigned this morning.",
+          "options": [
+            "allegedly",
+            "according",
+            "supposed",
+            "for"
+          ],
+          "answer": "allegedly",
+          "explanation": "\"Allegedly\" — adverb signaling unverified claim, often legal-news context. Placed between subject and verb. Marks the speaker's distance from the assertion."
+        },
+        {
+          "type": "fill_gap",
+          "sentence": "_____ to my sister, the wedding is off.",
+          "hint": "phrase introducing source",
+          "answer": "According",
+          "explanation": "\"According to + person\" — attribution. \"My sister said the wedding is off\" is fine too, but \"According to my sister\" registers slight detachment from the claim."
+        },
+        {
+          "type": "fix_error",
+          "sentence": "According me, the meeting was a waste of time.",
+          "hint": "\"According to + person\", not used for own opinion",
+          "answer": "In my opinion, the meeting was a waste of time. (or: I think the meeting was a waste of time.)",
+          "explanation": "\"According to\" is for citing OTHERS, not yourself. \"According to me\" is grammatically possible but stylistically wrong. Use \"In my opinion\" or \"I think\" for your own view."
+        },
+        {
+          "type": "read_answer",
+          "passage": "According to three former employees, the company had been cutting safety corners for years. Supposedly, the most recent inspection was rescheduled twice. The CEO reportedly told an internal meeting that 'aggressive timelines' would have to continue. Apparently, no one in the room pushed back.",
+          "question": "What does the speaker report apparently happened in the internal meeting?",
+          "answer": "no one pushed back",
+          "explanation": "Four hedging devices: \"According to three former employees\", \"Supposedly\", \"reportedly\", \"Apparently\". All register distance from claim while still relaying it. Investigative journalism leans heavily on this register."
+        }
+      ],
+      "listening_speaking": [
+        {
+          "text": "According to the report, sales are down.",
+          "context": "source attribution"
+        },
+        {
+          "text": "He allegedly took the money.",
+          "context": "legal-news hedge"
+        },
+        {
+          "text": "Apparently, she's moving abroad.",
+          "context": "softer hedge"
+        },
+        {
+          "text": "Supposedly, the meeting was a disaster.",
+          "context": "distance + scepticism"
+        },
+        {
+          "text": "The CEO reportedly resigned.",
+          "context": "formal news hedge"
+        }
+      ],
+      "roleplay": {
+        "scenario": "Charlotte plays editor. You file three hedged claims — using according to, allegedly, apparently/reportedly.",
+        "voiced_by": "charlotte",
+        "persona": "Charlotte",
+        "persona_outfit": "charlotte_casual",
+        "time_budget_sec": 300,
+        "opening_line": "Three hedged claims, three different sources or markers — 'According to', 'allegedly', 'apparently/reportedly'.",
+        "objectives": [
+          {
+            "id": 1,
+            "label_en": "Attribution with 'According to'",
+            "hidden_prompt": "user uses 'According to + source, + clause'",
+            "hint_en": "According to the financial filing, profits doubled in the third quarter."
+          },
+          {
+            "id": 2,
+            "label_en": "'Allegedly' (legal-news)",
+            "hidden_prompt": "user uses 'X allegedly + verb'",
+            "hint_en": "The accountant allegedly transferred funds to a personal account."
+          },
+          {
+            "id": 3,
+            "label_en": "'Apparently' or 'reportedly'",
+            "hidden_prompt": "user uses 'Apparently/Reportedly + clause'",
+            "hint_en": "Apparently, two board members have already resigned."
+          }
+        ],
+        "closing_cue": "Charlotte closes with \"Story filed, hedges intact.\" once obj_3 lands.",
+        "suggested_flow": "**Suggested flow** (referencial, 6 turnos):\n\n1. **Charlotte**: \"Three hedged claims, three different sources or markers — 'According to', 'allegedly', 'apparently/reportedly'.\"\n2. **Student**: ~\"According to the financial filing, profits doubled in the third quarter.\"\n3. **Charlotte**: \"Source cited. Legal hedge?\"\n4. **Student**: ~\"The accountant allegedly transferred funds to a personal account.\"\n5. **Charlotte**: \"Soft hedge?\"\n6. **Student**: ~\"Apparently, two board members have already resigned.\"\n7. **Charlotte**: \"Story filed, hedges intact.\"",
+        "evaluation_focus": [
+          "Source named or marker placed",
+          "Speaker's distance preserved",
+          "Register-appropriate hedge"
+        ]
+      },
+      "guided_chat": {
+        "scenario": "Charlotte trades news with you, both of you hedging claims for accuracy.",
+        "voiced_by": "charlotte",
+        "persona": "Charlotte",
+        "persona_outfit": "charlotte_casual",
+        "intro_en": "Charlotte trades news with hedges. Use 'according to / allegedly / apparently' freely.",
+        "opening_message": "Apparently, the company is restructuring next month. Have you heard anything more?",
+        "objectives": [
+          {
+            "id": 1,
+            "label_en": "Reply with hedging",
+            "hidden_prompt": "user uses 'According to' or 'allegedly' or 'apparently'",
+            "hint_en": "According to a colleague, three teams are being merged."
+          },
+          {
+            "id": 2,
+            "label_en": "Add another source",
+            "hidden_prompt": "user uses another hedging device",
+            "hint_en": "Reportedly, leadership wants the announcement done before Friday."
+          },
+          {
+            "id": 3,
+            "label_en": "Ask Charlotte",
+            "hidden_prompt": "user asks Charlotte where she heard it",
+            "hint_en": "Where did you hear it?"
+          }
+        ],
+        "closing_cue": "Charlotte closes with \"News traded, hedges preserved.\" once obj_3 lands.",
+        "suggested_script": "**Script** (referencial, 7 turnos):\n\n1. **Charlotte**: \"Apparently, the company is restructuring next month. Have you heard anything more?\"\n2. **Student**: \"According to a colleague, three teams are being merged.\"\n3. **Charlotte**: \"Mergers always look cleaner on paper.\"\n4. **Student**: \"Reportedly, leadership wants the announcement done before Friday.\"\n5. **Charlotte**: \"Friday announcements never feel coincidental.\"\n6. **Student**: \"Where did you hear it?\"\n7. **Charlotte**: \"A friend in HR. Allegedly. News traded, hedges preserved.\"\n\n> A05 chat = full LLM. Scaffold via hint_pt/hint_en.\n\n---"
+      }
+    }
+  ],
+  "cross_unit_consolidation": [
+    "Match reporting verbs to their patterns: apologise for + -ing, accuse of + -ing, congratulate on + noun/-ing",
+    "Use admit/deny/suggest + -ing (direct gerund, no preposition)",
+    "Use promise/refuse/offer/threaten/agree + to + infinitive",
+    "Use warn (+ about/not to/against), persuade (+ to), talk (into/out of + -ing), discourage (from + -ing)",
+    "Hedge with \"according to + source\", allegedly, apparently, supposedly, reportedly",
+    "Avoid \"according to me\" — use \"in my opinion\" instead"
+  ]
+}
