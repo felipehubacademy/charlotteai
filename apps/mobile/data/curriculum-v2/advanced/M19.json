@@ -85,23 +85,28 @@
       "listening_speaking": [
         {
           "text": "He must be travelling.",
-          "context": "strong inference"
+          "context": "strong inference",
+          "audio_url": "https://fnvjibzreepubageztoi.supabase.co/storage/v1/object/public/curriculum-audio/ls/advanced/88640f5cbc01e987.flac"
         },
         {
           "text": "That'll be the postman.",
-          "context": "confident prediction"
+          "context": "confident prediction",
+          "audio_url": "https://fnvjibzreepubageztoi.supabase.co/storage/v1/object/public/curriculum-audio/ls/advanced/26c715c13f643220.flac"
         },
         {
           "text": "She should be home by now.",
-          "context": "expected outcome"
+          "context": "expected outcome",
+          "audio_url": "https://fnvjibzreepubageztoi.supabase.co/storage/v1/object/public/curriculum-audio/ls/advanced/4c125613f6e775d7.flac"
         },
         {
           "text": "He must have been busy.",
-          "context": "past inference"
+          "context": "past inference",
+          "audio_url": "https://fnvjibzreepubageztoi.supabase.co/storage/v1/object/public/curriculum-audio/ls/advanced/cffeba0d9875e230.flac"
         },
         {
           "text": "That can't be right.",
-          "context": "strong negative inference"
+          "context": "strong negative inference",
+          "audio_url": "https://fnvjibzreepubageztoi.supabase.co/storage/v1/object/public/curriculum-audio/ls/advanced/35876989529929d9.flac"
         }
       ],
       "roleplay": {
@@ -230,23 +235,28 @@
       "listening_speaking": [
         {
           "text": "She might well be promoted next quarter.",
-          "context": "hedged probable"
+          "context": "hedged probable",
+          "audio_url": "https://fnvjibzreepubageztoi.supabase.co/storage/v1/object/public/curriculum-audio/ls/advanced/96dc05af8c37786a.flac"
         },
         {
           "text": "That could well be the explanation.",
-          "context": "analytical hedge"
+          "context": "analytical hedge",
+          "audio_url": "https://fnvjibzreepubageztoi.supabase.co/storage/v1/object/public/curriculum-audio/ls/advanced/acafffa1ff582732.flac"
         },
         {
           "text": "We may well be wrong about this.",
-          "context": "formal hedge"
+          "context": "formal hedge",
+          "audio_url": "https://fnvjibzreepubageztoi.supabase.co/storage/v1/object/public/curriculum-audio/ls/advanced/390c33cbbf1e9a06.flac"
         },
         {
           "text": "It might well rain later.",
-          "context": "weather hedge"
+          "context": "weather hedge",
+          "audio_url": "https://fnvjibzreepubageztoi.supabase.co/storage/v1/object/public/curriculum-audio/ls/advanced/5da77713b190b548.flac"
         },
         {
           "text": "He might well be the next CEO.",
-          "context": "political hedge"
+          "context": "political hedge",
+          "audio_url": "https://fnvjibzreepubageztoi.supabase.co/storage/v1/object/public/curriculum-audio/ls/advanced/86f8526b64eef83c.flac"
         }
       ],
       "roleplay": {
@@ -371,23 +381,28 @@
       "listening_speaking": [
         {
           "text": "We ought to apologise.",
-          "context": "moral obligation"
+          "context": "moral obligation",
+          "audio_url": "https://fnvjibzreepubageztoi.supabase.co/storage/v1/object/public/curriculum-audio/ls/advanced/a72b72d353be393b.flac"
         },
         {
           "text": "The tenant shall pay on the first.",
-          "context": "contractual"
+          "context": "contractual",
+          "audio_url": "https://fnvjibzreepubageztoi.supabase.co/storage/v1/object/public/curriculum-audio/ls/advanced/ec4d8a900098e763.flac"
         },
         {
           "text": "She would read to me every evening.",
-          "context": "habitual past"
+          "context": "habitual past",
+          "audio_url": "https://fnvjibzreepubageztoi.supabase.co/storage/v1/object/public/curriculum-audio/ls/advanced/7c3641d038d59e9c.flac"
         },
         {
           "text": "Shall I open the window?",
-          "context": "polite offer (one of the few living \"shall\" uses)"
+          "context": "polite offer (one of the few living \"shall\" uses)",
+          "audio_url": "https://fnvjibzreepubageztoi.supabase.co/storage/v1/object/public/curriculum-audio/ls/advanced/f5e3c80ce54447fb.flac"
         },
         {
           "text": "He ought to have known better.",
-          "context": "moral past obligation"
+          "context": "moral past obligation",
+          "audio_url": "https://fnvjibzreepubageztoi.supabase.co/storage/v1/object/public/curriculum-audio/ls/advanced/3d6eba44e182832e.flac"
         }
       ],
       "roleplay": {
@@ -513,23 +528,28 @@
       "listening_speaking": [
         {
           "text": "She's bound to arrive any minute.",
-          "context": "high probability"
+          "context": "high probability",
+          "audio_url": "https://fnvjibzreepubageztoi.supabase.co/storage/v1/object/public/curriculum-audio/ls/advanced/4c8e6118de585f48.flac"
         },
         {
           "text": "We were supposed to meet at noon.",
-          "context": "broken arrangement"
+          "context": "broken arrangement",
+          "audio_url": "https://fnvjibzreepubageztoi.supabase.co/storage/v1/object/public/curriculum-audio/ls/advanced/299bec3c746fa988.flac"
         },
         {
           "text": "Rain is likely to continue.",
-          "context": "analytical probability"
+          "context": "analytical probability",
+          "audio_url": "https://fnvjibzreepubageztoi.supabase.co/storage/v1/object/public/curriculum-audio/ls/advanced/351927579f393ed4.flac"
         },
         {
           "text": "He's meant to call me later.",
-          "context": "soft expectation"
+          "context": "soft expectation",
+          "audio_url": "https://fnvjibzreepubageztoi.supabase.co/storage/v1/object/public/curriculum-audio/ls/advanced/3c799e1e5c0beffb.flac"
         },
         {
           "text": "The deal is unlikely to close this week.",
-          "context": "negative probability"
+          "context": "negative probability",
+          "audio_url": "https://fnvjibzreepubageztoi.supabase.co/storage/v1/object/public/curriculum-audio/ls/advanced/84aea314041b8842.flac"
         }
       ],
       "roleplay": {
@@ -652,23 +672,28 @@
       "listening_speaking": [
         {
           "text": "We might have to cut the budget.",
-          "context": "possibility + necessity"
+          "context": "possibility + necessity",
+          "audio_url": "https://fnvjibzreepubageztoi.supabase.co/storage/v1/object/public/curriculum-audio/ls/advanced/68bdc20793187618.flac"
         },
         {
           "text": "We would have to restructure.",
-          "context": "hypothetical + necessity"
+          "context": "hypothetical + necessity",
+          "audio_url": "https://fnvjibzreepubageztoi.supabase.co/storage/v1/object/public/curriculum-audio/ls/advanced/2400758a6b92a64b.flac"
         },
         {
           "text": "You're going to have to choose.",
-          "context": "anticipated forced choice"
+          "context": "anticipated forced choice",
+          "audio_url": "https://fnvjibzreepubageztoi.supabase.co/storage/v1/object/public/curriculum-audio/ls/advanced/bd2c897259f733b7.flac"
         },
         {
           "text": "She may need to step back.",
-          "context": "formal possibility + necessity"
+          "context": "formal possibility + necessity",
+          "audio_url": "https://fnvjibzreepubageztoi.supabase.co/storage/v1/object/public/curriculum-audio/ls/advanced/f7108b11df1076a7.flac"
         },
         {
           "text": "They should be able to deliver.",
-          "context": "modal + quasi-modal capability"
+          "context": "modal + quasi-modal capability",
+          "audio_url": "https://fnvjibzreepubageztoi.supabase.co/storage/v1/object/public/curriculum-audio/ls/advanced/2df97b2dddb13eab.flac"
         }
       ],
       "roleplay": {

@@ -64,23 +64,28 @@
       "listening_speaking": [
         {
           "text": "It was on a Tuesday in March that the call came.",
-          "context": "it-cleft narrative"
+          "context": "it-cleft narrative",
+          "audio_url": "https://fnvjibzreepubageztoi.supabase.co/storage/v1/object/public/curriculum-audio/ls/advanced/c8d302d7f6f95043.flac"
         },
         {
           "text": "Walking back from the kitchen, I almost missed it.",
-          "context": "participle clause"
+          "context": "participle clause",
+          "audio_url": "https://fnvjibzreepubageztoi.supabase.co/storage/v1/object/public/curriculum-audio/ls/advanced/6794d1cfdc9b165f.flac"
         },
         {
           "text": "I mean, by then I had stopped expecting anything.",
-          "context": "casual filler"
+          "context": "casual filler",
+          "audio_url": "https://fnvjibzreepubageztoi.supabase.co/storage/v1/object/public/curriculum-audio/ls/advanced/a24e11b55edb6233.flac"
         },
         {
           "text": "Funny how the wait ends when you stop waiting.",
-          "context": "pseudo-cleft reflection"
+          "context": "pseudo-cleft reflection",
+          "audio_url": "https://fnvjibzreepubageztoi.supabase.co/storage/v1/object/public/curriculum-audio/ls/advanced/963992054d797c3e.flac"
         },
         {
           "text": "Nothing else to say.",
-          "context": "closing fragment"
+          "context": "closing fragment",
+          "audio_url": "https://fnvjibzreepubageztoi.supabase.co/storage/v1/object/public/curriculum-audio/ls/advanced/311db8f8008e998b.flac"
         }
       ],
       "roleplay": {
@@ -204,23 +209,28 @@
       "listening_speaking": [
         {
           "text": "Rarely has a technology divided opinion so sharply.",
-          "context": "inversion opener"
+          "context": "inversion opener",
+          "audio_url": "https://fnvjibzreepubageztoi.supabase.co/storage/v1/object/public/curriculum-audio/ls/advanced/5db90ee747e0bb52.flac"
         },
         {
           "text": "It is widely believed that change is coming.",
-          "context": "impersonal passive"
+          "context": "impersonal passive",
+          "audio_url": "https://fnvjibzreepubageztoi.supabase.co/storage/v1/object/public/curriculum-audio/ls/advanced/cdf2978a708f3473.flac"
         },
         {
           "text": "It could be argued that the change has already begun.",
-          "context": "hedged cleft"
+          "context": "hedged cleft",
+          "audio_url": "https://fnvjibzreepubageztoi.supabase.co/storage/v1/object/public/curriculum-audio/ls/advanced/234881295ca98c8b.flac"
         },
         {
           "text": "What is at stake is not whether but how.",
-          "context": "pseudo-cleft reframe"
+          "context": "pseudo-cleft reframe",
+          "audio_url": "https://fnvjibzreepubageztoi.supabase.co/storage/v1/object/public/curriculum-audio/ls/advanced/f7ee60c441add8b2.flac"
         },
         {
           "text": "This essay argues for a third path.",
-          "context": "academic thesis"
+          "context": "academic thesis",
+          "audio_url": "https://fnvjibzreepubageztoi.supabase.co/storage/v1/object/public/curriculum-audio/ls/advanced/af87b9ec3f176da7.flac"
         }
       ],
       "roleplay": {
@@ -349,19 +359,23 @@
         },
         {
           "text": "I take your point about timeline, but...",
-          "context": "concede then pivot"
+          "context": "concede then pivot",
+          "audio_url": "https://fnvjibzreepubageztoi.supabase.co/storage/v1/object/public/curriculum-audio/ls/advanced/18a4843f2db427e2.flac"
         },
         {
           "text": "To be fair, the data supports the topline.",
-          "context": "fairness hedge"
+          "context": "fairness hedge",
+          "audio_url": "https://fnvjibzreepubageztoi.supabase.co/storage/v1/object/public/curriculum-audio/ls/advanced/d18afbb79be64a85.flac"
         },
         {
           "text": "Honestly — and I mean this constructively — ...",
-          "context": "face-saving opener"
+          "context": "face-saving opener",
+          "audio_url": "https://fnvjibzreepubageztoi.supabase.co/storage/v1/object/public/curriculum-audio/ls/advanced/f6e9abd90167ff4b.flac"
         },
         {
           "text": "The deeper question, it seems to me, is...",
-          "context": "reframe past current frame"
+          "context": "reframe past current frame",
+          "audio_url": "https://fnvjibzreepubageztoi.supabase.co/storage/v1/object/public/curriculum-audio/ls/advanced/08c417379125c3e7.flac"
         }
       ],
       "roleplay": {
@@ -485,23 +499,28 @@
       "listening_speaking": [
         {
           "text": "I'm gonna grab a coffee — wanna come?",
-          "context": "casual proposal"
+          "context": "casual proposal",
+          "audio_url": "https://fnvjibzreepubageztoi.supabase.co/storage/v1/object/public/curriculum-audio/ls/advanced/7ca1dad9a100c183.flac"
         },
         {
           "text": "Should be done by Friday.",
-          "context": "ellipsis short answer"
+          "context": "ellipsis short answer",
+          "audio_url": "https://fnvjibzreepubageztoi.supabase.co/storage/v1/object/public/curriculum-audio/ls/advanced/a1d869a0ab25bfe7.flac"
         },
         {
           "text": "You been working late, yeah?",
-          "context": "dropped auxiliary + tag"
+          "context": "dropped auxiliary + tag",
+          "audio_url": "https://fnvjibzreepubageztoi.supabase.co/storage/v1/object/public/curriculum-audio/ls/advanced/873fbc32d7b839e9.flac"
         },
         {
           "text": "Cool — text me when you're heading out.",
-          "context": "casual close"
+          "context": "casual close",
+          "audio_url": "https://fnvjibzreepubageztoi.supabase.co/storage/v1/object/public/curriculum-audio/ls/advanced/ff5c4c92f8a76322.flac"
         },
         {
           "text": "Same place as last time?",
-          "context": "ellipsis question"
+          "context": "ellipsis question",
+          "audio_url": "https://fnvjibzreepubageztoi.supabase.co/storage/v1/object/public/curriculum-audio/ls/advanced/38e31fadb26c1766.flac"
         }
       ],
       "roleplay": {
@@ -625,15 +644,18 @@
       "listening_speaking": [
         {
           "text": "The findings suggest a strong correlation.",
-          "context": "academic"
+          "context": "academic",
+          "audio_url": "https://fnvjibzreepubageztoi.supabase.co/storage/v1/object/public/curriculum-audio/ls/advanced/a83f709a4b4eece3.flac"
         },
         {
           "text": "We need to push the call to next week.",
-          "context": "casual professional"
+          "context": "casual professional",
+          "audio_url": "https://fnvjibzreepubageztoi.supabase.co/storage/v1/object/public/curriculum-audio/ls/advanced/60e3121a5d2e4088.flac"
         },
         {
           "text": "Honestly? The board's about to drive me up the wall.",
-          "context": "intimate"
+          "context": "intimate",
+          "audio_url": "https://fnvjibzreepubageztoi.supabase.co/storage/v1/object/public/curriculum-audio/ls/advanced/08759aad147643f4.flac"
         },
         {
           "text": "With respect, I'd see it differently.",
@@ -642,7 +664,8 @@
         },
         {
           "text": "Cool, text me when you're heading out.",
-          "context": "casual personal"
+          "context": "casual personal",
+          "audio_url": "https://fnvjibzreepubageztoi.supabase.co/storage/v1/object/public/curriculum-audio/ls/advanced/4a2bfb4a1b81e30c.flac"
         }
       ],
       "roleplay": {

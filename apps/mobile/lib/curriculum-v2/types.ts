@@ -3,7 +3,7 @@
  *
  * v2 introduces 4 activities per unit: Grammar, Listening/Speaking, Role-play, Guided Chat.
  * Source of truth: docs/curriculum/v2/<level>/M<NN>-<slug>.md
- * Build: Novice+Inter complete + Advanced WIP + audio pace re-gen (2026-05-30)
+ * Build: CURRICULUM V2 COMPLETE — 66 modulos / 330 units / 1320 atividades / 1600 audios CDN (2026-05-30)
  * Compiled at build time to apps/mobile/data/curriculum-v2/<level>/M<NN>.json
  * See scripts/compile-curriculum-v2.mjs for the compiler.
  *

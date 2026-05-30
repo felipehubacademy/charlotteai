@@ -78,23 +78,28 @@
       "listening_speaking": [
         {
           "text": "It was, you know, a tough call.",
-          "context": "filler signals casual register"
+          "context": "filler signals casual register",
+          "audio_url": "https://fnvjibzreepubageztoi.supabase.co/storage/v1/object/public/curriculum-audio/ls/advanced/edef9d2e7db0d3f9.flac"
         },
         {
           "text": "I mean, who would have predicted that?",
-          "context": "register shift"
+          "context": "register shift",
+          "audio_url": "https://fnvjibzreepubageztoi.supabase.co/storage/v1/object/public/curriculum-audio/ls/advanced/a5e4ca85d8d183bb.flac"
         },
         {
           "text": "She's kind of new at this.",
-          "context": "softening hedge"
+          "context": "softening hedge",
+          "audio_url": "https://fnvjibzreepubageztoi.supabase.co/storage/v1/object/public/curriculum-audio/ls/advanced/b086a1ca0cef7e0a.flac"
         },
         {
           "text": "It's sort of complicated.",
-          "context": "softening abstract claim"
+          "context": "softening abstract claim",
+          "audio_url": "https://fnvjibzreepubageztoi.supabase.co/storage/v1/object/public/curriculum-audio/ls/advanced/893f7b7b67b2d509.flac"
         },
         {
           "text": "Like, honestly, I have no idea.",
-          "context": "multiple fillers, casual register</p>"
+          "context": "multiple fillers, casual register</p>",
+          "audio_url": "https://fnvjibzreepubageztoi.supabase.co/storage/v1/object/public/curriculum-audio/ls/advanced/4e0df65d75bf9f2d.flac"
         }
       ],
       "roleplay": {
@@ -219,23 +224,28 @@
       "listening_speaking": [
         {
           "text": "It's a beautiful day, isn't it?",
-          "context": "positive → negative tag"
+          "context": "positive → negative tag",
+          "audio_url": "https://fnvjibzreepubageztoi.supabase.co/storage/v1/object/public/curriculum-audio/ls/advanced/59d3ced3414c9ab2.flac"
         },
         {
           "text": "She doesn't drive, does she?",
-          "context": "negative → positive tag"
+          "context": "negative → positive tag",
+          "audio_url": "https://fnvjibzreepubageztoi.supabase.co/storage/v1/object/public/curriculum-audio/ls/advanced/6ff7982ef585ffb2.flac"
         },
         {
           "text": "You've been there, haven't you?",
-          "context": "present perfect tag"
+          "context": "present perfect tag",
+          "audio_url": "https://fnvjibzreepubageztoi.supabase.co/storage/v1/object/public/curriculum-audio/ls/advanced/26b0e795512cb410.flac"
         },
         {
           "text": "That was a mistake, right?",
-          "context": "universal \"right\" tag"
+          "context": "universal \"right\" tag",
+          "audio_url": "https://fnvjibzreepubageztoi.supabase.co/storage/v1/object/public/curriculum-audio/ls/advanced/ff75878a4806c6f3.flac"
         },
         {
           "text": "Lovely view, innit?",
-          "context": "informal British tag"
+          "context": "informal British tag",
+          "audio_url": "https://fnvjibzreepubageztoi.supabase.co/storage/v1/object/public/curriculum-audio/ls/advanced/5213e80b20d235ed.flac"
         }
       ],
       "roleplay": {
@@ -360,23 +370,28 @@
       "listening_speaking": [
         {
           "text": "Mm-hm.",
-          "context": "neutral confirmation"
+          "context": "neutral confirmation",
+          "audio_url": "https://fnvjibzreepubageztoi.supabase.co/storage/v1/object/public/curriculum-audio/ls/advanced/f877fe1fd4d730e3.flac"
         },
         {
           "text": "Right.",
-          "context": "short acknowledgement"
+          "context": "short acknowledgement",
+          "audio_url": "https://fnvjibzreepubageztoi.supabase.co/storage/v1/object/public/curriculum-audio/ls/advanced/e490e0da205d79a3.flac"
         },
         {
           "text": "Really?",
-          "context": "surprise invitation"
+          "context": "surprise invitation",
+          "audio_url": "https://fnvjibzreepubageztoi.supabase.co/storage/v1/object/public/curriculum-audio/ls/advanced/1d87b4b78d6ef8a8.flac"
         },
         {
           "text": "No way.",
-          "context": "strong surprise"
+          "context": "strong surprise",
+          "audio_url": "https://fnvjibzreepubageztoi.supabase.co/storage/v1/object/public/curriculum-audio/ls/advanced/ebe768a7d006d6f7.flac"
         },
         {
           "text": "Gotcha.",
-          "context": "informal understanding signal"
+          "context": "informal understanding signal",
+          "audio_url": "https://fnvjibzreepubageztoi.supabase.co/storage/v1/object/public/curriculum-audio/ls/advanced/0145fafb41fdd6f6.flac"
         }
       ],
       "roleplay": {
@@ -501,23 +516,28 @@
       "listening_speaking": [
         {
           "text": "Honestly, the proposal isn't strong.",
-          "context": "candour opener"
+          "context": "candour opener",
+          "audio_url": "https://fnvjibzreepubageztoi.supabase.co/storage/v1/object/public/curriculum-audio/ls/advanced/1bcf354cbd52b96c.flac"
         },
         {
           "text": "To be fair, both sides have a point.",
-          "context": "balance opener"
+          "context": "balance opener",
+          "audio_url": "https://fnvjibzreepubageztoi.supabase.co/storage/v1/object/public/curriculum-audio/ls/advanced/068cc84dfc332ad7.flac"
         },
         {
           "text": "No offence, but this isn't great.",
-          "context": "preemptive diplomacy"
+          "context": "preemptive diplomacy",
+          "audio_url": "https://fnvjibzreepubageztoi.supabase.co/storage/v1/object/public/curriculum-audio/ls/advanced/551a8d2888f00188.flac"
         },
         {
           "text": "Look, we need to talk.",
-          "context": "seriousness opener"
+          "context": "seriousness opener",
+          "audio_url": "https://fnvjibzreepubageztoi.supabase.co/storage/v1/object/public/curriculum-audio/ls/advanced/32eae1a41c53c491.flac"
         },
         {
           "text": "Frankly, I don't think it'll work.",
-          "context": "formal candour"
+          "context": "formal candour",
+          "audio_url": "https://fnvjibzreepubageztoi.supabase.co/storage/v1/object/public/curriculum-audio/ls/advanced/45c3954b3843644d.flac"
         }
       ],
       "roleplay": {
@@ -639,23 +659,28 @@
       "listening_speaking": [
         {
           "text": "The thing is, we don't have the budget.",
-          "context": "complication opener"
+          "context": "complication opener",
+          "audio_url": "https://fnvjibzreepubageztoi.supabase.co/storage/v1/object/public/curriculum-audio/ls/advanced/c681a2602f952f07.flac"
         },
         {
           "text": "Here's the thing — nobody wants it.",
-          "context": "problem-naming opener"
+          "context": "problem-naming opener",
+          "audio_url": "https://fnvjibzreepubageztoi.supabase.co/storage/v1/object/public/curriculum-audio/ls/advanced/6a00f55b7a3be910.flac"
         },
         {
           "text": "I'll tell you what — let's just call her.",
-          "context": "proposal opener"
+          "context": "proposal opener",
+          "audio_url": "https://fnvjibzreepubageztoi.supabase.co/storage/v1/object/public/curriculum-audio/ls/advanced/84076ce5d6f7f508.flac"
         },
         {
           "text": "I don't know about you, but I'm tired.",
-          "context": "invited-opinion opener"
+          "context": "invited-opinion opener",
+          "audio_url": "https://fnvjibzreepubageztoi.supabase.co/storage/v1/object/public/curriculum-audio/ls/advanced/bd45c253df9631fb.flac"
         },
         {
           "text": "Look — let's just be honest.",
-          "context": "direct-conversation opener"
+          "context": "direct-conversation opener",
+          "audio_url": "https://fnvjibzreepubageztoi.supabase.co/storage/v1/object/public/curriculum-audio/ls/advanced/9810d42dfa921c20.flac"
         }
       ],
       "roleplay": {

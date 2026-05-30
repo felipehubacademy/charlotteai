@@ -77,23 +77,28 @@
       "listening_speaking": [
         {
           "text": "Take a PHO-tograph, study the phoTO-graphy, become photo-GRAphic.",
-          "context": "stress shift with suffix"
+          "context": "stress shift with suffix",
+          "audio_url": "https://fnvjibzreepubageztoi.supabase.co/storage/v1/object/public/curriculum-audio/ls/advanced/4910f8ee47e7149b.flac"
         },
         {
           "text": "REcord a podcast — but first, reCORD the file path.",
-          "context": "noun/verb pair"
+          "context": "noun/verb pair",
+          "audio_url": "https://fnvjibzreepubageztoi.supabase.co/storage/v1/object/public/curriculum-audio/ls/advanced/c0b62b5fe636ed8a.flac"
         },
         {
           "text": "This is a COMfortable chair — entirely COMfortable.",
-          "context": "long word first-syllable stress"
+          "context": "long word first-syllable stress",
+          "audio_url": "https://fnvjibzreepubageztoi.supabase.co/storage/v1/object/public/curriculum-audio/ls/advanced/9609ca737618ba93.flac"
         },
         {
           "text": "They deVELop software but DEvelopment takes time.",
-          "context": "verb-to-noun stress shift"
+          "context": "verb-to-noun stress shift",
+          "audio_url": "https://fnvjibzreepubageztoi.supabase.co/storage/v1/object/public/curriculum-audio/ls/advanced/7d1c0dea9e3925b4.flac"
         },
         {
           "text": "The PROduce was fresh; the team will proDUCE another batch.",
-          "context": "noun/verb stress contrast"
+          "context": "noun/verb stress contrast",
+          "audio_url": "https://fnvjibzreepubageztoi.supabase.co/storage/v1/object/public/curriculum-audio/ls/advanced/1211ea7fe13d2a21.flac"
         }
       ],
       "roleplay": {
@@ -219,23 +224,28 @@
       "listening_speaking": [
         {
           "text": "I WANT a CUP of TEA.",
-          "context": "content words stressed"
+          "context": "content words stressed",
+          "audio_url": "https://fnvjibzreepubageztoi.supabase.co/storage/v1/object/public/curriculum-audio/ls/advanced/c26c3ac673549270.flac"
         },
         {
           "text": "I'm GOing to the STORE.",
-          "context": "contractions + weak forms"
+          "context": "contractions + weak forms",
+          "audio_url": "https://fnvjibzreepubageztoi.supabase.co/storage/v1/object/public/curriculum-audio/ls/advanced/793eb598193ddb8b.flac"
         },
         {
           "text": "He's a FRIEND of MINE.",
-          "context": "weak forms /əv/, /ə/"
+          "context": "weak forms /əv/, /ə/",
+          "audio_url": "https://fnvjibzreepubageztoi.supabase.co/storage/v1/object/public/curriculum-audio/ls/advanced/356d7a72fe701157.flac"
         },
         {
           "text": "WHAT do you THINK?",
-          "context": "wh-question with weak forms"
+          "context": "wh-question with weak forms",
+          "audio_url": "https://fnvjibzreepubageztoi.supabase.co/storage/v1/object/public/curriculum-audio/ls/advanced/b701e245e0265c11.flac"
         },
         {
           "text": "WAITing for the BUS.",
-          "context": "content vs function rhythm"
+          "context": "content vs function rhythm",
+          "audio_url": "https://fnvjibzreepubageztoi.supabase.co/storage/v1/object/public/curriculum-audio/ls/advanced/b0d94972158aa920.flac"
         }
       ],
       "roleplay": {
@@ -364,23 +374,28 @@
       "listening_speaking": [
         {
           "text": "An apple a day.",
-          "context": "linking (an-napple-a-day)"
+          "context": "linking (an-napple-a-day)",
+          "audio_url": "https://fnvjibzreepubageztoi.supabase.co/storage/v1/object/public/curriculum-audio/ls/advanced/7a70980bc18de7c8.flac"
         },
         {
           "text": "Law and order.",
-          "context": "intrusive /r/"
+          "context": "intrusive /r/",
+          "audio_url": "https://fnvjibzreepubageztoi.supabase.co/storage/v1/object/public/curriculum-audio/ls/advanced/b135389aaa32dafb.flac"
         },
         {
           "text": "I am all in.",
-          "context": "intrusive /j/ between vowels"
+          "context": "intrusive /j/ between vowels",
+          "audio_url": "https://fnvjibzreepubageztoi.supabase.co/storage/v1/object/public/curriculum-audio/ls/advanced/d84cd1e20b29f4cb.flac"
         },
         {
           "text": "Don't you remember?",
-          "context": "assimilation (doncha)"
+          "context": "assimilation (doncha)",
+          "audio_url": "https://fnvjibzreepubageztoi.supabase.co/storage/v1/object/public/curriculum-audio/ls/advanced/ffbd36d91b39ce60.flac"
         },
         {
           "text": "Next month I leave.",
-          "context": "elision (nex' month)"
+          "context": "elision (nex' month)",
+          "audio_url": "https://fnvjibzreepubageztoi.supabase.co/storage/v1/object/public/curriculum-audio/ls/advanced/64d107a32bfa68f0.flac"
         }
       ],
       "roleplay": {
@@ -505,23 +520,28 @@
       "listening_speaking": [
         {
           "text": "Are you READY?",
-          "context": "yes/no rising intonation"
+          "context": "yes/no rising intonation",
+          "audio_url": "https://fnvjibzreepubageztoi.supabase.co/storage/v1/object/public/curriculum-audio/ls/advanced/f1e90b8af513d85a.flac"
         },
         {
           "text": "What TIME is it?",
-          "context": "wh-question falling intonation"
+          "context": "wh-question falling intonation",
+          "audio_url": "https://fnvjibzreepubageztoi.supabase.co/storage/v1/object/public/curriculum-audio/ls/advanced/1a5c7ea389822cb6.flac"
         },
         {
           "text": "Apples, oranges, bananas, and BREAD.",
-          "context": "list rise-rise-rise-fall"
+          "context": "list rise-rise-rise-fall",
+          "audio_url": "https://fnvjibzreepubageztoi.supabase.co/storage/v1/object/public/curriculum-audio/ls/advanced/bf7b7c2866d01bcf.flac"
         },
         {
           "text": "REALLY? I had no idea!",
-          "context": "rising for genuine surprise"
+          "context": "rising for genuine surprise",
+          "audio_url": "https://fnvjibzreepubageztoi.supabase.co/storage/v1/object/public/curriculum-audio/ls/advanced/31582e18c72ae517.flac"
         },
         {
           "text": "Really. Of course.",
-          "context": "falling flat for sceptical disbelief"
+          "context": "falling flat for sceptical disbelief",
+          "audio_url": "https://fnvjibzreepubageztoi.supabase.co/storage/v1/object/public/curriculum-audio/ls/advanced/a2f0e1831e9cdb8c.flac"
         }
       ],
       "roleplay": {
@@ -643,23 +663,28 @@
       "listening_speaking": [
         {
           "text": "He's been here for two hours.",
-          "context": "contraction"
+          "context": "contraction",
+          "audio_url": "https://fnvjibzreepubageztoi.supabase.co/storage/v1/object/public/curriculum-audio/ls/advanced/1cd577611044ab14.flac"
         },
         {
           "text": "We'd've left earlier if we could.",
-          "context": "stacked contractions"
+          "context": "stacked contractions",
+          "audio_url": "https://fnvjibzreepubageztoi.supabase.co/storage/v1/object/public/curriculum-audio/ls/advanced/00d5bceb211210c8.flac"
         },
         {
           "text": "Nex' month I'm starting a new job.",
-          "context": "elision"
+          "context": "elision",
+          "audio_url": "https://fnvjibzreepubageztoi.supabase.co/storage/v1/object/public/curriculum-audio/ls/advanced/c5a0b573670196dd.flac"
         },
         {
           "text": "Shouldn'ta said that.",
-          "context": "fast-speech reduction of \"shouldn't have\""
+          "context": "fast-speech reduction of \"shouldn't have\"",
+          "audio_url": "https://fnvjibzreepubageztoi.supabase.co/storage/v1/object/public/curriculum-audio/ls/advanced/a2c618b9dee2bd71.flac"
         },
         {
           "text": "What're you up to?",
-          "context": "contraction in WH question</p>"
+          "context": "contraction in WH question</p>",
+          "audio_url": "https://fnvjibzreepubageztoi.supabase.co/storage/v1/object/public/curriculum-audio/ls/advanced/2b438000fb715452.flac"
         }
       ],
       "roleplay": {
