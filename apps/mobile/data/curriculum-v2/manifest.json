@@ -25,8 +25,18 @@
         "id": "M05",
         "title": "Meu dia-a-dia",
         "file": "novice/M05.json"
+      },
+      {
+        "id": "M06",
+        "title": "O que faço (3ª pessoa)",
+        "file": "novice/M06.json"
+      },
+      {
+        "id": "M07",
+        "title": "Habilidades",
+        "file": "novice/M07.json"
       }
     ]
   },
-  "generated_at": "2026-05-30T17:30:39.671Z"
+  "generated_at": "2026-05-30T17:54:28.002Z"
 }

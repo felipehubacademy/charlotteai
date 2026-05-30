@@ -44,3 +44,4 @@ apps/web/public/tts/sfx_backup_pre_musical/
 
 # Claude Code worktrees (temporários)
 .claude/worktrees/
+.curriculum-audit-state.json

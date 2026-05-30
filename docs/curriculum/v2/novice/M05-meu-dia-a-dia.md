@@ -252,7 +252,7 @@
    **Explanation**: "We" é plural, então verbo forma base: "We study". O -s é só pra terceira pessoa singular.
 
 10. **read_answer**
-    **Passage**: "I work in a big company. I study English in the morning. Lucas and I work in the same office."
+    **Passage**: "I work in a big company. I study English in the morning. I work with my colleagues in a big office."
     **Question**: Where does the speaker work?
     **Answer**: in a big company
     **Explanation**: The text says "I work in a big company".
@@ -305,7 +305,7 @@
 1. **Charlotte**: "Tell me about your week. Start with work or study."
 2. **Student**: ~"I work in an office."
 3. **Charlotte**: "What do you do there?"
-4. **Student**: ~"I study English at lunch." (or another verb)
+4. **Student**: ~"I have lunch at noon." (or another simple time/verb)
 5. **Charlotte**: "Cool. Any teammates?"
 6. **Student**: ~"I work with great people."
 7. **Charlotte**: "Sounds like a busy week!"

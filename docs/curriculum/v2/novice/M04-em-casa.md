@@ -173,8 +173,8 @@
    **hint_en**: "My kitchen is small."
 
 3. **id**: 3
-   **label_pt**: "Perguntar sobre a casa da Charlotte"
-   **label_en**: "Ask about Charlotte's house"
+   **label_pt**: "Devolver a pergunta pra Charlotte"
+   **label_en**: "Bounce the question back to Charlotte"
    **hidden_prompt**: "user asks Charlotte about her house with 'how about you', 'and yours', or 'what's your house like'"
    **hint_pt**: "How about you?"
    **hint_en**: "How about you?"

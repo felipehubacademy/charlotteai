@@ -128,23 +128,28 @@
       "listening_speaking": [
         {
           "text": "This is my house.",
-          "context": "abertura de tour"
+          "context": "abertura de tour",
+          "audio_url": "https://fnvjibzreepubageztoi.supabase.co/storage/v1/object/public/curriculum-audio/ls/db8ab678f351cf71.flac"
         },
         {
           "text": "Welcome to my home.",
-          "context": "hospitalidade"
+          "context": "hospitalidade",
+          "audio_url": "https://fnvjibzreepubageztoi.supabase.co/storage/v1/object/public/curriculum-audio/ls/b9b467163d21bc60.flac"
         },
         {
           "text": "My kitchen is small.",
-          "context": "descrevendo cômodo"
+          "context": "descrevendo cômodo",
+          "audio_url": "https://fnvjibzreepubageztoi.supabase.co/storage/v1/object/public/curriculum-audio/ls/d96f32385fd4be2a.flac"
         },
         {
           "text": "My bedroom is big.",
-          "context": "descrevendo outro cômodo"
+          "context": "descrevendo outro cômodo",
+          "audio_url": "https://fnvjibzreepubageztoi.supabase.co/storage/v1/object/public/curriculum-audio/ls/2c5d86371f468b85.flac"
         },
         {
           "text": "This is the door.",
-          "context": "apontando objeto com \"the\""
+          "context": "apontando objeto com \"the\"",
+          "audio_url": "https://fnvjibzreepubageztoi.supabase.co/storage/v1/object/public/curriculum-audio/ls/5ee8a9b6aebe89bf.flac"
         }
       ],
       "roleplay": {
@@ -214,8 +219,8 @@
           },
           {
             "id": 3,
-            "label_pt": "Perguntar sobre a casa da Charlotte",
-            "label_en": "Ask about Charlotte's house",
+            "label_pt": "Devolver a pergunta pra Charlotte",
+            "label_en": "Bounce the question back to Charlotte",
             "hidden_prompt": "user asks Charlotte about her house with 'how about you', 'and yours', or 'what's your house like'",
             "hint_pt": "How about you?",
             "hint_en": "How about you?"
@@ -327,23 +332,28 @@
       "listening_speaking": [
         {
           "text": "There is a table in my kitchen.",
-          "context": "singular com \"a\""
+          "context": "singular com \"a\"",
+          "audio_url": "https://fnvjibzreepubageztoi.supabase.co/storage/v1/object/public/curriculum-audio/ls/e31ca47081bf7069.flac"
         },
         {
           "text": "There are four chairs.",
-          "context": "plural com número"
+          "context": "plural com número",
+          "audio_url": "https://fnvjibzreepubageztoi.supabase.co/storage/v1/object/public/curriculum-audio/ls/2bdfcb65c6bdbe3a.flac"
         },
         {
           "text": "There is a bed and a window.",
-          "context": "múltiplos singulares"
+          "context": "múltiplos singulares",
+          "audio_url": "https://fnvjibzreepubageztoi.supabase.co/storage/v1/object/public/curriculum-audio/ls/fb29e548a1fb2ca3.flac"
         },
         {
           "text": "Is there a bathroom?",
-          "context": "pergunta"
+          "context": "pergunta",
+          "audio_url": "https://fnvjibzreepubageztoi.supabase.co/storage/v1/object/public/curriculum-audio/ls/edf7b13dd37bf86e.flac"
         },
         {
           "text": "There are no chairs here.",
-          "context": "negativa simples"
+          "context": "negativa simples",
+          "audio_url": "https://fnvjibzreepubageztoi.supabase.co/storage/v1/object/public/curriculum-audio/ls/a77942c2d4c9f09b.flac"
         }
       ],
       "roleplay": {
@@ -524,23 +534,28 @@
       "listening_speaking": [
         {
           "text": "There are two chairs.",
-          "context": "plural regular básico"
+          "context": "plural regular básico",
+          "audio_url": "https://fnvjibzreepubageztoi.supabase.co/storage/v1/object/public/curriculum-audio/ls/270a194b957ec131.flac"
         },
         {
           "text": "I've got three tables.",
-          "context": "posse + plural"
+          "context": "posse + plural",
+          "audio_url": "https://fnvjibzreepubageztoi.supabase.co/storage/v1/object/public/curriculum-audio/ls/93c00749d939a60a.flac"
         },
         {
           "text": "Two windows are big.",
-          "context": "descrevendo plurais"
+          "context": "descrevendo plurais",
+          "audio_url": "https://fnvjibzreepubageztoi.supabase.co/storage/v1/object/public/curriculum-audio/ls/59d4911c54f2ce5e.flac"
         },
         {
           "text": "There are four glasses.",
-          "context": "plural -es"
+          "context": "plural -es",
+          "audio_url": "https://fnvjibzreepubageztoi.supabase.co/storage/v1/object/public/curriculum-audio/ls/703c3f6b679ed6df.flac"
         },
         {
           "text": "Three boxes on the floor.",
-          "context": "plural -es com x"
+          "context": "plural -es com x",
+          "audio_url": "https://fnvjibzreepubageztoi.supabase.co/storage/v1/object/public/curriculum-audio/ls/ff4eb8c31f57f482.flac"
         }
       ],
       "roleplay": {
@@ -723,23 +738,28 @@
       "listening_speaking": [
         {
           "text": "I've got an apple.",
-          "context": "an + vogal"
+          "context": "an + vogal",
+          "audio_url": "https://fnvjibzreepubageztoi.supabase.co/storage/v1/object/public/curriculum-audio/ls/b04816c8bc4ba1fb.flac"
         },
         {
           "text": "There is a door here.",
-          "context": "a + consoante"
+          "context": "a + consoante",
+          "audio_url": "https://fnvjibzreepubageztoi.supabase.co/storage/v1/object/public/curriculum-audio/ls/46d985d9c171f50f.flac"
         },
         {
           "text": "The kitchen is small.",
-          "context": "the + específico"
+          "context": "the + específico",
+          "audio_url": "https://fnvjibzreepubageztoi.supabase.co/storage/v1/object/public/curriculum-audio/ls/1aae61dd9f694064.flac"
         },
         {
           "text": "She is a teacher.",
-          "context": "a + profissão (consoante)"
+          "context": "a + profissão (consoante)",
+          "audio_url": "https://fnvjibzreepubageztoi.supabase.co/storage/v1/object/public/curriculum-audio/ls/70fc5d1d9418a086.flac"
         },
         {
           "text": "I am an engineer.",
-          "context": "an + profissão (vogal)"
+          "context": "an + profissão (vogal)",
+          "audio_url": "https://fnvjibzreepubageztoi.supabase.co/storage/v1/object/public/curriculum-audio/ls/55f90fb555e58153.flac"
         }
       ],
       "roleplay": {
@@ -920,23 +940,28 @@
       "listening_speaking": [
         {
           "text": "Welcome to my home.",
-          "context": "abertura de hospitalidade"
+          "context": "abertura de hospitalidade",
+          "audio_url": "https://fnvjibzreepubageztoi.supabase.co/storage/v1/object/public/curriculum-audio/ls/b9b467163d21bc60.flac"
         },
         {
           "text": "This is my kitchen.",
-          "context": "apontando cômodo"
+          "context": "apontando cômodo",
+          "audio_url": "https://fnvjibzreepubageztoi.supabase.co/storage/v1/object/public/curriculum-audio/ls/587e6f9622603568.flac"
         },
         {
           "text": "There are four bedrooms.",
-          "context": "contando cômodos"
+          "context": "contando cômodos",
+          "audio_url": "https://fnvjibzreepubageztoi.supabase.co/storage/v1/object/public/curriculum-audio/ls/4b1f46ade4e100ee.flac"
         },
         {
           "text": "The kitchen has got a big window.",
-          "context": "específico + objeto"
+          "context": "específico + objeto",
+          "audio_url": "https://fnvjibzreepubageztoi.supabase.co/storage/v1/object/public/curriculum-audio/ls/31fbd3ebdce850ec.flac"
         },
         {
           "text": "My house is great!",
-          "context": "fechamento positivo"
+          "context": "fechamento positivo",
+          "audio_url": "https://fnvjibzreepubageztoi.supabase.co/storage/v1/object/public/curriculum-audio/ls/39a70a409d242c50.flac"
         }
       ],
       "roleplay": {

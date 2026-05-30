@@ -131,23 +131,28 @@
       "listening_speaking": [
         {
           "text": "I wake up at seven.",
-          "context": "chunk de manhã com horário"
+          "context": "chunk de manhã com horário",
+          "audio_url": "https://fnvjibzreepubageztoi.supabase.co/storage/v1/object/public/curriculum-audio/ls/c072cd40dee9ad73.flac"
         },
         {
           "text": "I have coffee in the morning.",
-          "context": "refeição matinal"
+          "context": "refeição matinal",
+          "audio_url": "https://fnvjibzreepubageztoi.supabase.co/storage/v1/object/public/curriculum-audio/ls/e2c393fc264250b1.flac"
         },
         {
           "text": "I drink water all day.",
-          "context": "hábito de bebida"
+          "context": "hábito de bebida",
+          "audio_url": "https://fnvjibzreepubageztoi.supabase.co/storage/v1/object/public/curriculum-audio/ls/5b377643b501d3e8.flac"
         },
         {
           "text": "We eat breakfast together.",
-          "context": "plural we"
+          "context": "plural we",
+          "audio_url": "https://fnvjibzreepubageztoi.supabase.co/storage/v1/object/public/curriculum-audio/ls/8dc5f570f0ccd78c.flac"
         },
         {
           "text": "I sleep at eleven.",
-          "context": "hora de dormir"
+          "context": "hora de dormir",
+          "audio_url": "https://fnvjibzreepubageztoi.supabase.co/storage/v1/object/public/curriculum-audio/ls/d99fb7cf00d4c2fb.flac"
         }
       ],
       "roleplay": {
@@ -319,7 +324,7 @@
         },
         {
           "type": "read_answer",
-          "passage": "I work in a big company. I study English in the morning. Lucas and I work in the same office.",
+          "passage": "I work in a big company. I study English in the morning. I work with my colleagues in a big office.",
           "question": "Where does the speaker work?",
           "answer": "in a big company",
           "explanation": "The text says \"I work in a big company\"."
@@ -328,23 +333,28 @@
       "listening_speaking": [
         {
           "text": "I work in an office.",
-          "context": "work + place"
+          "context": "work + place",
+          "audio_url": "https://fnvjibzreepubageztoi.supabase.co/storage/v1/object/public/curriculum-audio/ls/ef2c532f6afd8f50.flac"
         },
         {
           "text": "I study English every day.",
-          "context": "study chunk"
+          "context": "study chunk",
+          "audio_url": "https://fnvjibzreepubageztoi.supabase.co/storage/v1/object/public/curriculum-audio/ls/a17c72a986c98fbb.flac"
         },
         {
           "text": "We work from home.",
-          "context": "plural we"
+          "context": "plural we",
+          "audio_url": "https://fnvjibzreepubageztoi.supabase.co/storage/v1/object/public/curriculum-audio/ls/99542e999b9284fd.flac"
         },
         {
           "text": "I work from nine to five.",
-          "context": "work schedule"
+          "context": "work schedule",
+          "audio_url": "https://fnvjibzreepubageztoi.supabase.co/storage/v1/object/public/curriculum-audio/ls/0d797ab7ca4deccf.flac"
         },
         {
           "text": "I study at university.",
-          "context": "study + place"
+          "context": "study + place",
+          "audio_url": "https://fnvjibzreepubageztoi.supabase.co/storage/v1/object/public/curriculum-audio/ls/92d80f6cd7663e23.flac"
         }
       ],
       "roleplay": {
@@ -381,7 +391,7 @@
           }
         ],
         "closing_cue": "Charlotte fecha com \"Sounds like a busy week!\" quando obj_3 baterem.",
-        "suggested_flow": "**Suggested flow** (referencial, 6 turnos):\n\n1. **Charlotte**: \"Tell me about your week. Start with work or study.\"\n2. **Student**: ~\"I work in an office.\"\n3. **Charlotte**: \"What do you do there?\"\n4. **Student**: ~\"I study English at lunch.\" (or another verb)\n5. **Charlotte**: \"Cool. Any teammates?\"\n6. **Student**: ~\"I work with great people.\"\n7. **Charlotte**: \"Sounds like a busy week!\"",
+        "suggested_flow": "**Suggested flow** (referencial, 6 turnos):\n\n1. **Charlotte**: \"Tell me about your week. Start with work or study.\"\n2. **Student**: ~\"I work in an office.\"\n3. **Charlotte**: \"What do you do there?\"\n4. **Student**: ~\"I have lunch at noon.\" (or another simple time/verb)\n5. **Charlotte**: \"Cool. Any teammates?\"\n6. **Student**: ~\"I work with great people.\"\n7. **Charlotte**: \"Sounds like a busy week!\"",
         "evaluation_focus": [
           "Aluno usa \"I work in/at + place\" ou \"I study at/in + place\"",
           "Verbo na forma base (sem -s)",
@@ -525,23 +535,28 @@
       "listening_speaking": [
         {
           "text": "I have breakfast at seven.",
-          "context": "meal time chunk"
+          "context": "meal time chunk",
+          "audio_url": "https://fnvjibzreepubageztoi.supabase.co/storage/v1/object/public/curriculum-audio/ls/a5f4f74956592ae0.flac"
         },
         {
           "text": "We drink water all day.",
-          "context": "habit chunk"
+          "context": "habit chunk",
+          "audio_url": "https://fnvjibzreepubageztoi.supabase.co/storage/v1/object/public/curriculum-audio/ls/76dda59890ec2411.flac"
         },
         {
           "text": "I eat fruit every morning.",
-          "context": "food + frequency"
+          "context": "food + frequency",
+          "audio_url": "https://fnvjibzreepubageztoi.supabase.co/storage/v1/object/public/curriculum-audio/ls/dfdd6f73787d3186.flac"
         },
         {
           "text": "I have lunch at noon.",
-          "context": "lunch chunk"
+          "context": "lunch chunk",
+          "audio_url": "https://fnvjibzreepubageztoi.supabase.co/storage/v1/object/public/curriculum-audio/ls/9196324d74203a58.flac"
         },
         {
           "text": "We have dinner at eight.",
-          "context": "dinner chunk"
+          "context": "dinner chunk",
+          "audio_url": "https://fnvjibzreepubageztoi.supabase.co/storage/v1/object/public/curriculum-audio/ls/d5672f1d8f0d5ac0.flac"
         }
       ],
       "roleplay": {
@@ -722,23 +737,28 @@
       "listening_speaking": [
         {
           "text": "I go to work by bus.",
-          "context": "daily commute"
+          "context": "daily commute",
+          "audio_url": "https://fnvjibzreepubageztoi.supabase.co/storage/v1/object/public/curriculum-audio/ls/336f7b0c507cf736.flac"
         },
         {
           "text": "We come home at six.",
-          "context": "return home"
+          "context": "return home",
+          "audio_url": "https://fnvjibzreepubageztoi.supabase.co/storage/v1/object/public/curriculum-audio/ls/5dd96b0e0d5b3a75.flac"
         },
         {
           "text": "I go to the gym on Mondays.",
-          "context": "gym schedule"
+          "context": "gym schedule",
+          "audio_url": "https://fnvjibzreepubageztoi.supabase.co/storage/v1/object/public/curriculum-audio/ls/657a9321566bf5a6.flac"
         },
         {
           "text": "I come back at eight.",
-          "context": "return time"
+          "context": "return time",
+          "audio_url": "https://fnvjibzreepubageztoi.supabase.co/storage/v1/object/public/curriculum-audio/ls/84b1b608c43a99d8.flac"
         },
         {
           "text": "We go to the park on Sundays.",
-          "context": "weekend activity"
+          "context": "weekend activity",
+          "audio_url": "https://fnvjibzreepubageztoi.supabase.co/storage/v1/object/public/curriculum-audio/ls/653cb4994f81fa5f.flac"
         }
       ],
       "roleplay": {
@@ -921,23 +941,28 @@
       "listening_speaking": [
         {
           "text": "I always wake up at seven.",
-          "context": "high frequency + routine"
+          "context": "high frequency + routine",
+          "audio_url": "https://fnvjibzreepubageztoi.supabase.co/storage/v1/object/public/curriculum-audio/ls/bf077c4ce8facc24.flac"
         },
         {
           "text": "We usually have dinner together.",
-          "context": "medium-high frequency"
+          "context": "medium-high frequency",
+          "audio_url": "https://fnvjibzreepubageztoi.supabase.co/storage/v1/object/public/curriculum-audio/ls/588a5c4e0a38ecee.flac"
         },
         {
           "text": "I sometimes go to the gym.",
-          "context": "occasional"
+          "context": "occasional",
+          "audio_url": "https://fnvjibzreepubageztoi.supabase.co/storage/v1/object/public/curriculum-audio/ls/7471a68fbf299604.flac"
         },
         {
           "text": "I never drink coffee.",
-          "context": "never (zero frequency)"
+          "context": "never (zero frequency)",
+          "audio_url": "https://fnvjibzreepubageztoi.supabase.co/storage/v1/object/public/curriculum-audio/ls/22456748c0f34c59.flac"
         },
         {
           "text": "I am always happy in the morning.",
-          "context": "frequency adverb DEPOIS de to be"
+          "context": "frequency adverb DEPOIS de to be",
+          "audio_url": "https://fnvjibzreepubageztoi.supabase.co/storage/v1/object/public/curriculum-audio/ls/9bb23b8836baf19a.flac"
         }
       ],
       "roleplay": {

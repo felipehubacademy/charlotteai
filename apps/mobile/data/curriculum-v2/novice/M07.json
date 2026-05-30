@@ -1,0 +1,1051 @@
+{
+  "id": "M07",
+  "title": "Habilidades",
+  "level": "Novice",
+  "block": "A1",
+  "units_range": "N01–N05",
+  "theme": "O que sei fazer — habilidades, talentos, capacidades",
+  "goal": "Aluno sai sabendo dizer o que pode/sabe fazer com can (positivo, negativo, perguntas), descrever habilidades suas e de outros.",
+  "connects_to": "M08 (Gostos) — depois de saber o que pode fazer, fala do que gosta.",
+  "module_chunks": [
+    "I can / you can / he can / she can / we can / they can",
+    "I can't (cannot) / he can't",
+    "Can you...? / Can she...?",
+    "Yes, I can. / No, I can't.",
+    "What can you do?",
+    "speak / play / cook / drive / swim / dance / sing",
+    "ride a bike / paint / draw",
+    "I can speak + language",
+    "She can play + instrument/sport",
+    "play the piano / play soccer",
+    "cook well / drive a car",
+    "a little / very well / not really"
+  ],
+  "units": [
+    {
+      "id": "N01",
+      "title": "Eu sei nadar",
+      "sub_cefr": "A1",
+      "grammar_focus": "Can (positive) — habilidades próprias",
+      "markers": [],
+      "real_life_context": "Você conta o que sabe fazer — esportes, idiomas, habilidades práticas.",
+      "grammar": [
+        {
+          "type": "multiple_choice",
+          "sentence": "I _____ swim.",
+          "options": [
+            "can",
+            "cans",
+            "am can"
+          ],
+          "answer": "can",
+          "explanation": "\"Can\" é modal — não muda com pessoa. \"I can\", \"she can\", \"they can\" — sempre igual. Sem -s na 3ª pessoa."
+        },
+        {
+          "type": "multiple_choice",
+          "sentence": "She _____ play the piano.",
+          "options": [
+            "can",
+            "cans",
+            "can to"
+          ],
+          "answer": "can",
+          "explanation": "\"She can play\" — modal can não leva -s. Verbo principal na forma base (sem \"to\"): \"can play\", não \"can to play\"."
+        },
+        {
+          "type": "word_bank",
+          "sentence": "He _____ speak three languages.",
+          "choices": [
+            "can",
+            "cans",
+            "is can",
+            "has can"
+          ],
+          "answer": "can",
+          "explanation": "\"He can speak\" — modal can é igual em todas as pessoas. Sem auxiliar adicional."
+        },
+        {
+          "type": "word_bank",
+          "sentence": "We _____ cook Italian food.",
+          "choices": [
+            "can",
+            "can to",
+            "cans",
+            "are can"
+          ],
+          "answer": "can",
+          "explanation": "\"We can cook\" — can + verbo base. Sem \"to\" após can."
+        },
+        {
+          "type": "fill_gap",
+          "sentence": "I _____ drive a car.",
+          "hint": "Verbo modal de habilidade",
+          "answer": "can",
+          "explanation": "\"I can drive\" — habilidade. Note: \"I drive\" significa \"eu dirijo (frequente)\"; \"I can drive\" significa \"eu sei dirigir / sou capaz\"."
+        },
+        {
+          "type": "fill_gap",
+          "sentence": "My sister _____ dance very well.",
+          "hint": "Verbo de habilidade (forma única)",
+          "answer": "can",
+          "explanation": "\"My sister can dance\" — can para qualquer pessoa, sem mudança."
+        },
+        {
+          "type": "fill_gap",
+          "sentence": "They _____ play soccer.",
+          "hint": "Modal \"saber/poder fazer\"",
+          "answer": "can",
+          "explanation": "\"They can play\" — plural usa can igual: forma única."
+        },
+        {
+          "type": "fix_error",
+          "sentence": "She cans speak English.",
+          "hint": "Can não muda na 3ª pessoa",
+          "answer": "She can speak English.",
+          "explanation": "Can é modal — NÃO leva -s na 3ª pessoa. \"She can speak\", não \"She cans speak\". Esta é a regra mais importante dos modais."
+        },
+        {
+          "type": "fix_error",
+          "sentence": "I can to swim.",
+          "hint": "Sem \"to\" entre can e verbo",
+          "answer": "I can swim.",
+          "explanation": "Após can, verbo na forma base SEM \"to\": \"I can swim\", não \"I can to swim\". Modais não usam \"to\"."
+        },
+        {
+          "type": "read_answer",
+          "passage": "I can speak English and Portuguese. My brother can play the guitar. We can both cook well.",
+          "question": "What can the brother play?",
+          "answer": "the guitar",
+          "explanation": "The text says \"My brother can play the guitar\"."
+        }
+      ],
+      "listening_speaking": [
+        {
+          "text": "I can swim.",
+          "context": "habilidade básica",
+          "audio_url": "https://fnvjibzreepubageztoi.supabase.co/storage/v1/object/public/curriculum-audio/ls/8634e5bdfe738f4a.flac"
+        },
+        {
+          "text": "I can speak English.",
+          "context": "idioma",
+          "audio_url": "https://fnvjibzreepubageztoi.supabase.co/storage/v1/object/public/curriculum-audio/ls/df937ade9440793f.flac"
+        },
+        {
+          "text": "She can play the piano.",
+          "context": "instrumento",
+          "audio_url": "https://fnvjibzreepubageztoi.supabase.co/storage/v1/object/public/curriculum-audio/ls/96cae2426c5df1e3.flac"
+        },
+        {
+          "text": "We can cook Italian food.",
+          "context": "culinária",
+          "audio_url": "https://fnvjibzreepubageztoi.supabase.co/storage/v1/object/public/curriculum-audio/ls/6ea7ea944dda1a8b.flac"
+        },
+        {
+          "text": "He can drive very well.",
+          "context": "habilidade + advérbio",
+          "audio_url": "https://fnvjibzreepubageztoi.supabase.co/storage/v1/object/public/curriculum-audio/ls/8d90b07a07313400.flac"
+        }
+      ],
+      "roleplay": {
+        "scenario": "Charlotte quer saber o que você sabe fazer — habilidades suas.",
+        "voiced_by": "charlotte",
+        "persona": "Charlotte",
+        "persona_outfit": "charlotte_casual",
+        "time_budget_sec": 90,
+        "opening_line": "Tell me three things you can do!",
+        "objectives": [
+          {
+            "id": 1,
+            "label_pt": "Dizer uma habilidade sua (com 'I can')",
+            "label_en": "Say one ability",
+            "hidden_prompt": "user states an ability with 'I can + verb base' (swim, cook, drive, speak, dance, sing, play, etc.)",
+            "hint_pt": "I can swim.",
+            "hint_en": "I can swim."
+          },
+          {
+            "id": 2,
+            "label_pt": "Dizer outra habilidade",
+            "label_en": "Say another ability",
+            "hidden_prompt": "user states another ability with 'I can + verb base'",
+            "hint_pt": "I can cook Italian food.",
+            "hint_en": "I can cook Italian food."
+          },
+          {
+            "id": 3,
+            "label_pt": "Dizer uma habilidade de alguém próximo (com 'can')",
+            "label_en": "Say someone else's ability",
+            "hidden_prompt": "user states someone else's ability with 'He/She/My brother/etc. can + verb base'",
+            "hint_pt": "My sister can dance very well.",
+            "hint_en": "My sister can dance very well."
+          }
+        ],
+        "closing_cue": "Charlotte fecha com \"Talented!\" quando obj_3 baterem.",
+        "suggested_flow": "**Suggested flow** (referencial, 6 turnos):\n\n1. **Charlotte**: \"Tell me three things you can do!\"\n2. **Student**: ~\"I can swim.\"\n3. **Charlotte**: \"Cool! What else?\"\n4. **Student**: ~\"I can cook Italian food.\"\n5. **Charlotte**: \"Nice. Anyone in your family with talents?\"\n6. **Student**: ~\"My sister can dance very well.\"\n7. **Charlotte**: \"Talented!\"",
+        "evaluation_focus": [
+          "\"I can + verbo base\" (sem to, sem -s)",
+          "Variedade de habilidades",
+          "Extensão pra 3ª pessoa também"
+        ]
+      },
+      "guided_chat": {
+        "scenario": "Charlotte conversa sobre habilidades suas e de família.",
+        "voiced_by": "charlotte",
+        "persona": "Charlotte",
+        "persona_outfit": "charlotte_casual",
+        "intro_pt": "Charlotte quer saber o que você sabe fazer. Pratica 'I can + verbo' e habilidades de outras pessoas.",
+        "opening_message": "Hey! What can you do?",
+        "objectives": [
+          {
+            "id": 1,
+            "label_pt": "Dizer uma habilidade sua",
+            "label_en": "Say your ability",
+            "hidden_prompt": "user states ability with 'I can + verb base'",
+            "hint_pt": "I can speak English.",
+            "hint_en": "I can speak English."
+          },
+          {
+            "id": 2,
+            "label_pt": "Dizer outra habilidade ou idioma",
+            "label_en": "Say another ability or language",
+            "hidden_prompt": "user states another ability with 'I can + verb base'",
+            "hint_pt": "I can play soccer.",
+            "hint_en": "I can play soccer."
+          },
+          {
+            "id": 3,
+            "label_pt": "Perguntar à Charlotte o que ela sabe fazer",
+            "label_en": "Ask Charlotte what she can do",
+            "hidden_prompt": "user asks 'What can you do?' or 'How about you?' or 'Can you + verb?'",
+            "hint_pt": "What can you do?",
+            "hint_en": "What can you do?"
+          }
+        ],
+        "closing_cue": "Charlotte encerra com \"We've got skills!\" quando obj_3 baterem.",
+        "suggested_script": "**Script** (referencial, 7 turnos):\n\n1. **Charlotte**: \"Hey! What can you do?\"\n2. **Student**: \"I can speak English.\"\n3. **Charlotte**: \"Nice. Anything else?\"\n4. **Student**: \"I can play soccer.\"\n5. **Charlotte**: \"Cool.\"\n6. **Student**: \"What can you do?\"\n7. **Charlotte**: \"I can sing. We've got skills!\"\n\n> N01 chat = LLM puro.\n\n---"
+      }
+    },
+    {
+      "id": "N02",
+      "title": "Eu não sei fazer isso",
+      "sub_cefr": "A1",
+      "grammar_focus": "Can't (cannot) — limitações honestas",
+      "markers": [],
+      "real_life_context": "Você reconhece o que NÃO sabe fazer ainda — habilidades que faltam.",
+      "grammar": [
+        {
+          "type": "multiple_choice",
+          "sentence": "I _____ swim well.",
+          "options": [
+            "can't",
+            "don't can",
+            "no can"
+          ],
+          "answer": "can't",
+          "explanation": "Negativa de \"can\" é \"can't\" (cannot). \"I can't swim\" = \"Eu não sei nadar\". Pronúncia: /kænt/ (americano) ou /kɑːnt/ (britânico)."
+        },
+        {
+          "type": "multiple_choice",
+          "sentence": "She _____ drive a car.",
+          "options": [
+            "can't",
+            "doesn't can",
+            "no can"
+          ],
+          "answer": "can't",
+          "explanation": "\"She can't drive\" — negativa de can é can't pra todas as pessoas. Sem -s, sem auxiliar."
+        },
+        {
+          "type": "word_bank",
+          "sentence": "We _____ speak Japanese.",
+          "choices": [
+            "can't",
+            "don't can",
+            "aren't can",
+            "no can"
+          ],
+          "answer": "can't",
+          "explanation": "\"We can't speak\" — can't é a única forma negativa de can."
+        },
+        {
+          "type": "word_bank",
+          "sentence": "He _____ cook at all.",
+          "choices": [
+            "can't",
+            "doesn't can",
+            "cannot to",
+            "no can"
+          ],
+          "answer": "can't",
+          "explanation": "\"He can't cook at all\" = \"Ele não sabe cozinhar nada\". \"At all\" intensifica a negação."
+        },
+        {
+          "type": "fill_gap",
+          "sentence": "I _____ ride a bike.",
+          "hint": "Negativa de can",
+          "answer": "can't",
+          "explanation": "\"I can't ride a bike\" = \"Não sei andar de bicicleta\". Forma contraída de \"cannot\"."
+        },
+        {
+          "type": "fill_gap",
+          "sentence": "My father _____ sing — he's terrible at it.",
+          "hint": "Negativa de can (3ª pessoa também usa can't)",
+          "answer": "can't",
+          "explanation": "\"My father can't sing\" — mesmo na 3ª pessoa singular, can't."
+        },
+        {
+          "type": "fill_gap",
+          "sentence": "Sorry, I _____ help you right now.",
+          "hint": "Negativa polida com can",
+          "answer": "can't",
+          "explanation": "\"I can't help\" — usado pra recusar polidamente. Comum em contextos sociais."
+        },
+        {
+          "type": "fix_error",
+          "sentence": "She doesn't can drive.",
+          "hint": "Negativa de can não usa doesn't",
+          "answer": "She can't drive.",
+          "explanation": "Modais formam negativa direta com \"not\" (contraído: -n't). NÃO usa doesn't/don't. \"She can't drive\", nunca \"She doesn't can\"."
+        },
+        {
+          "type": "fix_error",
+          "sentence": "I no can swim.",
+          "hint": "Forma da negativa em inglês",
+          "answer": "I can't swim.",
+          "explanation": "\"No can\" é influência do português. A negativa correta é \"can't\" (cannot). Forma fixa."
+        },
+        {
+          "type": "read_answer",
+          "passage": "I can swim but I can't dive. My friend can speak French but she can't write it well. We can both ride a bike.",
+          "question": "What can the friend NOT do well?",
+          "answer": "write (or \"write French\")",
+          "explanation": "The text says \"she can't write it well\"."
+        }
+      ],
+      "listening_speaking": [
+        {
+          "text": "I can't swim well.",
+          "context": "limitação",
+          "audio_url": "https://fnvjibzreepubageztoi.supabase.co/storage/v1/object/public/curriculum-audio/ls/7699e9c94005e6ab.flac"
+        },
+        {
+          "text": "She can't drive yet.",
+          "context": "limitação + tempo",
+          "audio_url": "https://fnvjibzreepubageztoi.supabase.co/storage/v1/object/public/curriculum-audio/ls/ebdd34c527980370.flac"
+        },
+        {
+          "text": "We can't speak French.",
+          "context": "idioma que não sabe",
+          "audio_url": "https://fnvjibzreepubageztoi.supabase.co/storage/v1/object/public/curriculum-audio/ls/2fc7c47b2b7e7571.flac"
+        },
+        {
+          "text": "He can't sing at all.",
+          "context": "limitação total",
+          "audio_url": "https://fnvjibzreepubageztoi.supabase.co/storage/v1/object/public/curriculum-audio/ls/cc790a293a8daca2.flac"
+        },
+        {
+          "text": "Sorry, I can't help right now.",
+          "context": "recusa polida",
+          "audio_url": "https://fnvjibzreepubageztoi.supabase.co/storage/v1/object/public/curriculum-audio/ls/1e18d81bf9aacd11.flac"
+        }
+      ],
+      "roleplay": {
+        "scenario": "Charlotte pergunta sobre coisas que você AINDA não sabe fazer ou nunca aprendeu.",
+        "voiced_by": "charlotte",
+        "persona": "Charlotte",
+        "persona_outfit": "charlotte_casual",
+        "time_budget_sec": 90,
+        "opening_line": "What's something you can't do yet?",
+        "objectives": [
+          {
+            "id": 1,
+            "label_pt": "Dizer algo que você não sabe fazer",
+            "label_en": "Say one thing you can't do",
+            "hidden_prompt": "user states inability with 'I can't + verb base'",
+            "hint_pt": "I can't ride a bike.",
+            "hint_en": "I can't ride a bike."
+          },
+          {
+            "id": 2,
+            "label_pt": "Dizer outra limitação sua",
+            "label_en": "Say another limitation",
+            "hidden_prompt": "user states another inability with 'I can't + verb base'",
+            "hint_pt": "I can't speak French.",
+            "hint_en": "I can't speak French."
+          },
+          {
+            "id": 3,
+            "label_pt": "Dizer algo que alguém da família não sabe fazer",
+            "label_en": "Say a family member's limitation",
+            "hidden_prompt": "user states someone else's inability with 'He/She can't + verb base'",
+            "hint_pt": "My father can't cook.",
+            "hint_en": "My father can't cook."
+          }
+        ],
+        "closing_cue": "Charlotte fecha com \"Honest! Room to grow.\" quando obj_3 baterem.",
+        "suggested_flow": "**Suggested flow** (referencial, 6 turnos):\n\n1. **Charlotte**: \"What's something you can't do yet?\"\n2. **Student**: ~\"I can't ride a bike.\"\n3. **Charlotte**: \"Yet! What else?\"\n4. **Student**: ~\"I can't speak French.\"\n5. **Charlotte**: \"Family limitations?\"\n6. **Student**: ~\"My father can't cook.\"\n7. **Charlotte**: \"Honest! Room to grow.\"",
+        "evaluation_focus": [
+          "can't sem auxiliar extra (não \"doesn't can\")",
+          "Sem influência do PT (\"no can\")",
+          "Verbo base após can't"
+        ]
+      },
+      "guided_chat": {
+        "scenario": "Charlotte conversa sobre limites honestos — o que vocês não sabem fazer.",
+        "voiced_by": "charlotte",
+        "persona": "Charlotte",
+        "persona_outfit": "charlotte_casual",
+        "intro_pt": "Charlotte abre um chat sobre coisas que vocês ainda não sabem fazer. Pratica can't.",
+        "opening_message": "Be honest — what can't you do?",
+        "objectives": [
+          {
+            "id": 1,
+            "label_pt": "Dizer algo que você não sabe fazer",
+            "label_en": "Say one limitation",
+            "hidden_prompt": "user says 'I can't + verb base'",
+            "hint_pt": "I can't dance.",
+            "hint_en": "I can't dance."
+          },
+          {
+            "id": 2,
+            "label_pt": "Dizer algo que alguém próximo não sabe",
+            "label_en": "Say someone's limitation",
+            "hidden_prompt": "user says 'He/She can't + verb base'",
+            "hint_pt": "My brother can't sing.",
+            "hint_en": "My brother can't sing."
+          },
+          {
+            "id": 3,
+            "label_pt": "Perguntar à Charlotte",
+            "label_en": "Ask Charlotte",
+            "hidden_prompt": "user asks 'What can't you do?' or 'How about you?'",
+            "hint_pt": "How about you?",
+            "hint_en": "How about you?"
+          }
+        ],
+        "closing_cue": "Charlotte encerra com \"Same boat!\" quando obj_3 baterem.",
+        "suggested_script": "**Script** (referencial, 7 turnos):\n\n1. **Charlotte**: \"Be honest — what can't you do?\"\n2. **Student**: \"I can't dance.\"\n3. **Charlotte**: \"We can practice! Family?\"\n4. **Student**: \"My brother can't sing.\"\n5. **Charlotte**: \"Ha.\"\n6. **Student**: \"How about you?\"\n7. **Charlotte**: \"I can't drive. Same boat!\"\n\n> N02 chat = LLM puro.\n\n---"
+      }
+    },
+    {
+      "id": "N03",
+      "title": "Você sabe nadar?",
+      "sub_cefr": "A1",
+      "grammar_focus": "Can questions (Can you...? Can she...?)",
+      "markers": [
+        "qform"
+      ],
+      "real_life_context": "Você pergunta a Charlotte e outros sobre habilidades — pode levar você a pedir ajuda ou descobrir talentos.",
+      "grammar": [
+        {
+          "type": "multiple_choice",
+          "sentence": "_____ you swim?",
+          "options": [
+            "Can",
+            "Do",
+            "Are"
+          ],
+          "answer": "Can",
+          "explanation": "Pergunta com can: \"Can + sujeito + verbo base?\". \"Can you swim?\" — inversão direta."
+        },
+        {
+          "type": "multiple_choice",
+          "sentence": "_____ she speak Portuguese?",
+          "options": [
+            "Can",
+            "Does",
+            "Is"
+          ],
+          "answer": "Can",
+          "explanation": "\"Can she speak?\" — para habilidades usa \"Can\", não \"Does\". 3ª pessoa também usa \"Can\"."
+        },
+        {
+          "type": "word_bank",
+          "sentence": "_____ they play soccer?",
+          "choices": [
+            "Can",
+            "Do",
+            "Are",
+            "Have"
+          ],
+          "answer": "Can",
+          "explanation": "\"Can they play?\" — pergunta de habilidade com qualquer pessoa usa Can."
+        },
+        {
+          "type": "word_bank",
+          "sentence": "_____ you help me, please?",
+          "choices": [
+            "Can",
+            "Do",
+            "Are",
+            "Have"
+          ],
+          "answer": "Can",
+          "explanation": "\"Can you help?\" — chunk fixo pra pedir ajuda polidamente."
+        },
+        {
+          "type": "fill_gap",
+          "sentence": "_____ you cook Italian food?",
+          "hint": "Modal de habilidade em pergunta",
+          "answer": "Can",
+          "explanation": "\"Can you cook?\" — pergunta direta sobre habilidade."
+        },
+        {
+          "type": "fill_gap",
+          "sentence": "_____ your sister drive?",
+          "hint": "Pergunta sobre habilidade da irmã",
+          "answer": "Can",
+          "explanation": "\"Can your sister drive?\" — 3ª pessoa também usa Can. Sem alterações."
+        },
+        {
+          "type": "fill_gap",
+          "sentence": "Yes, I _____.",
+          "hint": "Resposta curta afirmativa",
+          "answer": "can",
+          "explanation": "\"Yes, I can\" — resposta curta. Repete o auxiliar (can), não o verbo principal."
+        },
+        {
+          "type": "fix_error",
+          "sentence": "Do you can swim?",
+          "hint": "Can não precisa de \"do\"",
+          "answer": "Can you swim?",
+          "explanation": "Modais formam pergunta por inversão direta — sem \"do/does\". \"Can you swim?\", não \"Do you can swim?\". Erro comum."
+        },
+        {
+          "type": "fix_error",
+          "sentence": "Can she swims?",
+          "hint": "Após can, verbo na forma base",
+          "answer": "Can she swim?",
+          "explanation": "Após Can, verbo SEMPRE forma base. \"Can she swim?\", não \"Can she swims?\"."
+        },
+        {
+          "type": "read_answer",
+          "passage": "Q: Can you swim? A: Yes, I can. Q: Can your brother cook? A: No, he can't. He only makes sandwiches.",
+          "question": "What can the brother make?",
+          "answer": "sandwiches",
+          "explanation": "The text says \"He only makes sandwiches\"."
+        }
+      ],
+      "listening_speaking": [
+        {
+          "text": "Can you swim?",
+          "context": "pergunta direta",
+          "audio_url": "https://fnvjibzreepubageztoi.supabase.co/storage/v1/object/public/curriculum-audio/ls/7f2a63e45440c7dc.flac"
+        },
+        {
+          "text": "Can she speak Portuguese?",
+          "context": "3ª pessoa",
+          "audio_url": "https://fnvjibzreepubageztoi.supabase.co/storage/v1/object/public/curriculum-audio/ls/84571ca024f6a620.flac"
+        },
+        {
+          "text": "Can you help me?",
+          "context": "pedido polido",
+          "audio_url": "https://fnvjibzreepubageztoi.supabase.co/storage/v1/object/public/curriculum-audio/ls/eb476e59de584c1d.flac"
+        },
+        {
+          "text": "Yes, I can.",
+          "context": "short answer afirmativa",
+          "audio_url": "https://fnvjibzreepubageztoi.supabase.co/storage/v1/object/public/curriculum-audio/ls/9f449c4c3c022ee1.flac"
+        },
+        {
+          "text": "No, I can't.",
+          "context": "short answer negativa",
+          "audio_url": "https://fnvjibzreepubageztoi.supabase.co/storage/v1/object/public/curriculum-audio/ls/78c2b4fcf3ec035f.flac"
+        }
+      ],
+      "roleplay": {
+        "scenario": "Charlotte propõe um quiz de habilidades — você pergunta sobre habilidades dela.",
+        "voiced_by": "charlotte",
+        "persona": "Charlotte",
+        "persona_outfit": "charlotte_casual",
+        "time_budget_sec": 90,
+        "opening_line": "Quiz time! Ask me three things — can I do them?",
+        "objectives": [
+          {
+            "id": 1,
+            "label_pt": "Perguntar à Charlotte se ela sabe nadar/cozinhar/etc.",
+            "label_en": "Ask Charlotte about an ability",
+            "hidden_prompt": "user asks 'Can you + verb base?' to Charlotte",
+            "hint_pt": "Can you swim?",
+            "hint_en": "Can you swim?"
+          },
+          {
+            "id": 2,
+            "label_pt": "Perguntar outra habilidade",
+            "label_en": "Ask another ability",
+            "hidden_prompt": "user asks another 'Can you + verb base?'",
+            "hint_pt": "Can you cook?",
+            "hint_en": "Can you cook?"
+          },
+          {
+            "id": 3,
+            "label_pt": "Perguntar sobre habilidade de outra pessoa (Can she/he...?)",
+            "label_en": "Ask about someone else's ability",
+            "hidden_prompt": "user asks 'Can + 3rd person + verb base?'",
+            "hint_pt": "Can your friend dance?",
+            "hint_en": "Can your friend dance?"
+          }
+        ],
+        "closing_cue": "Charlotte fecha com \"Fun quiz!\" quando obj_3 baterem.",
+        "suggested_flow": "**Suggested flow** (referencial, 6 turnos):\n\n1. **Charlotte**: \"Quiz time! Ask me three things — can I do them?\"\n2. **Student**: ~\"Can you swim?\"\n3. **Charlotte**: \"Yes, I can!\"\n4. **Student**: ~\"Can you cook?\"\n5. **Charlotte**: \"A little.\"\n6. **Student**: ~\"Can your friend dance?\"\n7. **Charlotte**: \"Yes, she can. Fun quiz!\"",
+        "evaluation_focus": [
+          "Inversão direta: Can + sujeito + verbo base",
+          "Sem \"do/does\" antes de can",
+          "Verbo base após can"
+        ]
+      },
+      "guided_chat": {
+        "scenario": "Charlotte abre quiz de habilidades por chat.",
+        "voiced_by": "charlotte",
+        "persona": "Charlotte",
+        "persona_outfit": "charlotte_casual",
+        "intro_pt": "Charlotte propõe quiz rápido. Pratica perguntas com Can.",
+        "opening_message": "Quiz! Ask me what I can do.",
+        "objectives": [
+          {
+            "id": 1,
+            "label_pt": "Perguntar uma habilidade",
+            "label_en": "Ask one ability",
+            "hidden_prompt": "user asks 'Can you + verb base?'",
+            "hint_pt": "Can you sing?",
+            "hint_en": "Can you sing?"
+          },
+          {
+            "id": 2,
+            "label_pt": "Perguntar idiomas",
+            "label_en": "Ask about languages",
+            "hidden_prompt": "user asks 'Can you speak + language?'",
+            "hint_pt": "Can you speak Spanish?",
+            "hint_en": "Can you speak Spanish?"
+          },
+          {
+            "id": 3,
+            "label_pt": "Perguntar sobre alguém de Charlotte",
+            "label_en": "Ask about someone Charlotte knows",
+            "hidden_prompt": "user asks 'Can + 3rd person + verb base?'",
+            "hint_pt": "Can your sister cook?",
+            "hint_en": "Can your sister cook?"
+          }
+        ],
+        "closing_cue": "Charlotte encerra com \"Loved the quiz!\" quando obj_3 baterem.",
+        "suggested_script": "**Script** (referencial, 7 turnos):\n\n1. **Charlotte**: \"Quiz! Ask me what I can do.\"\n2. **Student**: \"Can you sing?\"\n3. **Charlotte**: \"Yes, badly!\"\n4. **Student**: \"Can you speak Spanish?\"\n5. **Charlotte**: \"A little.\"\n6. **Student**: \"Can your sister cook?\"\n7. **Charlotte**: \"Yes, amazingly. Loved the quiz!\"\n\n> N03 chat = LLM puro.\n\n---"
+      }
+    },
+    {
+      "id": "N04",
+      "title": "Idiomas e talentos",
+      "sub_cefr": "A1",
+      "grammar_focus": "Can + speak/play + languages and instruments/sports",
+      "markers": [],
+      "real_life_context": "Você descreve habilidades específicas — idiomas que fala, instrumentos que toca, esportes que pratica.",
+      "grammar": [
+        {
+          "type": "multiple_choice",
+          "sentence": "I can _____ three languages.",
+          "options": [
+            "speak",
+            "talk",
+            "say"
+          ],
+          "answer": "speak",
+          "explanation": "\"Speak + language\" é o chunk fixo: \"speak English\", \"speak Portuguese\". \"Talk\" usa \"to\" (talk to someone). \"Say\" precisa de objeto."
+        },
+        {
+          "type": "multiple_choice",
+          "sentence": "She can play _____ guitar.",
+          "options": [
+            "the",
+            "a",
+            "an"
+          ],
+          "answer": "the",
+          "explanation": "Com INSTRUMENTOS musicais sempre \"the\": play THE guitar, play THE piano. Diferente de esportes: play soccer (sem the)."
+        },
+        {
+          "type": "word_bank",
+          "sentence": "He can play _____.",
+          "choices": [
+            "soccer",
+            "the soccer",
+            "a soccer",
+            "soccers"
+          ],
+          "answer": "soccer",
+          "explanation": "ESPORTES sem artigo: \"play soccer\", \"play tennis\". Note diferença com instrumentos (play the piano)."
+        },
+        {
+          "type": "word_bank",
+          "sentence": "We can speak _____.",
+          "choices": [
+            "English",
+            "the English",
+            "a English",
+            "English language"
+          ],
+          "answer": "English",
+          "explanation": "IDIOMAS sem artigo: \"speak English\", \"speak French\". Não \"the English\" (a menos que se refira aos britânicos)."
+        },
+        {
+          "type": "fill_gap",
+          "sentence": "I can play the _____ very well.",
+          "hint": "Instrumento musical",
+          "answer": "piano",
+          "explanation": "\"Play the piano\" — chunk com \"the\" obrigatório pra instrumentos musicais. Exemplo: play the guitar, play the violin."
+        },
+        {
+          "type": "fill_gap",
+          "sentence": "She can speak French and _____.",
+          "hint": "Idioma (qualquer um)",
+          "answer": "Spanish (ou English/German/etc.)",
+          "explanation": "Idiomas após \"speak\" — sem artigo. \"Spanish\", \"English\", \"German\"."
+        },
+        {
+          "type": "fill_gap",
+          "sentence": "We can play _____ on Saturdays.",
+          "hint": "Esporte ou jogo",
+          "answer": "soccer (ou tennis, etc.)",
+          "explanation": "\"Play + esporte\" sem artigo. \"Play soccer\", \"play tennis\", \"play basketball\"."
+        },
+        {
+          "type": "fix_error",
+          "sentence": "I can play piano.",
+          "hint": "Falta artigo antes do instrumento",
+          "answer": "I can play the piano.",
+          "explanation": "Instrumentos musicais SEMPRE com \"the\" após \"play\": \"play THE piano\", \"play THE guitar\". Esportes, ao contrário, sem the."
+        },
+        {
+          "type": "fix_error",
+          "sentence": "She can speak the English.",
+          "hint": "Idiomas não levam artigo",
+          "answer": "She can speak English.",
+          "explanation": "Idiomas SEM artigo: \"speak English\", \"speak Portuguese\". \"The English\" só se refere aos ingleses (povo)."
+        },
+        {
+          "type": "read_answer",
+          "passage": "I can speak two languages: English and Italian. My brother can play the guitar. My sister can play tennis very well.",
+          "question": "What can the sister play?",
+          "answer": "tennis",
+          "explanation": "The text says \"My sister can play tennis very well\"."
+        }
+      ],
+      "listening_speaking": [
+        {
+          "text": "I can speak English.",
+          "context": "idioma",
+          "audio_url": "https://fnvjibzreepubageztoi.supabase.co/storage/v1/object/public/curriculum-audio/ls/df937ade9440793f.flac"
+        },
+        {
+          "text": "She can play the piano.",
+          "context": "instrumento com \"the\"",
+          "audio_url": "https://fnvjibzreepubageztoi.supabase.co/storage/v1/object/public/curriculum-audio/ls/96cae2426c5df1e3.flac"
+        },
+        {
+          "text": "He can play soccer.",
+          "context": "esporte sem artigo",
+          "audio_url": "https://fnvjibzreepubageztoi.supabase.co/storage/v1/object/public/curriculum-audio/ls/e3fd3fc3c492d5a9.flac"
+        },
+        {
+          "text": "We can speak two languages.",
+          "context": "number + languages",
+          "audio_url": "https://fnvjibzreepubageztoi.supabase.co/storage/v1/object/public/curriculum-audio/ls/4cdfd4582af4d230.flac"
+        },
+        {
+          "text": "My friend can play the guitar.",
+          "context": "3rd person + instrument",
+          "audio_url": "https://fnvjibzreepubageztoi.supabase.co/storage/v1/object/public/curriculum-audio/ls/ac749e8911ae77df.flac"
+        }
+      ],
+      "roleplay": {
+        "scenario": "Charlotte quer descobrir suas habilidades em idiomas, esportes e música.",
+        "voiced_by": "charlotte",
+        "persona": "Charlotte",
+        "persona_outfit": "charlotte_casual",
+        "time_budget_sec": 90,
+        "opening_line": "Languages, sports, music — what can you do?",
+        "objectives": [
+          {
+            "id": 1,
+            "label_pt": "Dizer um idioma que você fala",
+            "label_en": "Say a language you can speak",
+            "hidden_prompt": "user states a language with 'I can speak + language' (no article)",
+            "hint_pt": "I can speak English.",
+            "hint_en": "I can speak English."
+          },
+          {
+            "id": 2,
+            "label_pt": "Dizer um esporte ou instrumento que você toca/pratica",
+            "label_en": "Say a sport or instrument",
+            "hidden_prompt": "user states 'I can play + sport' (no article) or 'I can play the + instrument' (with article)",
+            "hint_pt": "I can play soccer.",
+            "hint_en": "I can play soccer."
+          },
+          {
+            "id": 3,
+            "label_pt": "Dizer outra habilidade",
+            "label_en": "Say another ability",
+            "hidden_prompt": "user states another ability with 'I can + verb base' (cook, dance, sing, draw, etc.)",
+            "hint_pt": "I can cook well.",
+            "hint_en": "I can cook well."
+          }
+        ],
+        "closing_cue": "Charlotte fecha com \"Talented!\" quando obj_3 baterem.",
+        "suggested_flow": "**Suggested flow** (referencial, 6 turnos):\n\n1. **Charlotte**: \"Languages, sports, music — what can you do?\"\n2. **Student**: ~\"I can speak English.\"\n3. **Charlotte**: \"Cool. Sport or instrument?\"\n4. **Student**: ~\"I can play soccer.\"\n5. **Charlotte**: \"Anything else?\"\n6. **Student**: ~\"I can cook well.\"\n7. **Charlotte**: \"Talented!\"",
+        "evaluation_focus": [
+          "Idiomas sem artigo",
+          "Esportes sem artigo, instrumentos com \"the\"",
+          "\"I can + verbo base\""
+        ]
+      },
+      "guided_chat": {
+        "scenario": "Charlotte conversa sobre talentos — idiomas, música, esporte.",
+        "voiced_by": "charlotte",
+        "persona": "Charlotte",
+        "persona_outfit": "charlotte_casual",
+        "intro_pt": "Charlotte quer trocar talentos. Pratica idiomas (sem the), instrumentos (com the) e esportes (sem the).",
+        "opening_message": "Talents chat! What languages can you speak?",
+        "objectives": [
+          {
+            "id": 1,
+            "label_pt": "Dizer um idioma que você fala",
+            "label_en": "Say a language",
+            "hidden_prompt": "user states 'I can speak + language' (no article)",
+            "hint_pt": "I can speak Portuguese.",
+            "hint_en": "I can speak Portuguese."
+          },
+          {
+            "id": 2,
+            "label_pt": "Dizer um instrumento ou esporte",
+            "label_en": "Say an instrument or sport",
+            "hidden_prompt": "user states 'I can play + sport' or 'I can play the + instrument'",
+            "hint_pt": "I can play the piano.",
+            "hint_en": "I can play the piano."
+          },
+          {
+            "id": 3,
+            "label_pt": "Perguntar à Charlotte",
+            "label_en": "Ask Charlotte",
+            "hidden_prompt": "user asks Charlotte 'Can you + verb' or 'What can you do?' or 'How about you?'",
+            "hint_pt": "How about you?",
+            "hint_en": "How about you?"
+          }
+        ],
+        "closing_cue": "Charlotte encerra com \"Awesome skills!\" quando obj_3 baterem.",
+        "suggested_script": "**Script** (referencial, 7 turnos):\n\n1. **Charlotte**: \"Talents chat! What languages can you speak?\"\n2. **Student**: \"I can speak Portuguese.\"\n3. **Charlotte**: \"Cool. Instrument or sport?\"\n4. **Student**: \"I can play the piano.\"\n5. **Charlotte**: \"Nice.\"\n6. **Student**: \"How about you?\"\n7. **Charlotte**: \"I can play tennis. Awesome skills!\"\n\n> N04 chat = LLM puro.\n\n---"
+      }
+    },
+    {
+      "id": "N05",
+      "title": "Tudo que sei e não sei",
+      "sub_cefr": "A1",
+      "grammar_focus": "Integration of can/can't (positive/negative/question)",
+      "markers": [],
+      "real_life_context": "Você apresenta um retrato honesto das suas habilidades — o que sabe, o que não sabe, e descobre sobre o outro.",
+      "grammar": [
+        {
+          "type": "multiple_choice",
+          "sentence": "I _____ swim but I _____ dive.",
+          "options": [
+            "can",
+            "can't",
+            "can't",
+            "can",
+            "can",
+            "can"
+          ],
+          "answer": "can/can't",
+          "explanation": "Contraste: positiva + negativa. \"I can swim but I can't dive\" = \"Sei nadar mas não sei mergulhar\"."
+        },
+        {
+          "type": "multiple_choice",
+          "sentence": "She _____ speak Italian.",
+          "options": [
+            "can",
+            "cans",
+            "can to"
+          ],
+          "answer": "can",
+          "explanation": "Can não muda na 3ª pessoa. \"She can speak\", não \"She cans speak\"."
+        },
+        {
+          "type": "word_bank",
+          "sentence": "_____ you cook well?",
+          "choices": [
+            "Can",
+            "Do",
+            "Are",
+            "Have"
+          ],
+          "answer": "Can",
+          "explanation": "Pergunta de habilidade com Can. \"Can you cook?\"."
+        },
+        {
+          "type": "word_bank",
+          "sentence": "He _____ play the piano very well.",
+          "choices": [
+            "can",
+            "cans",
+            "is able",
+            "has"
+          ],
+          "answer": "can",
+          "explanation": "\"He can play\" — modal can igual em todas as pessoas, verbo base."
+        },
+        {
+          "type": "fill_gap",
+          "sentence": "I _____ drive yet.",
+          "hint": "Negativa de can",
+          "answer": "can't",
+          "explanation": "\"I can't drive yet\" = \"Ainda não sei dirigir\". \"Yet\" indica que vai aprender no futuro."
+        },
+        {
+          "type": "fill_gap",
+          "sentence": "_____ your sister speak French?",
+          "hint": "Pergunta sobre habilidade",
+          "answer": "Can",
+          "explanation": "Pergunta de habilidade: \"Can + sujeito + verbo base?\". \"Can your sister speak French?\"."
+        },
+        {
+          "type": "fill_gap",
+          "sentence": "We _____ both play the guitar.",
+          "hint": "Modal de habilidade positivo",
+          "answer": "can",
+          "explanation": "\"We can both play\" — ambos podem. \"Can\" igual pra qualquer pessoa."
+        },
+        {
+          "type": "fix_error",
+          "sentence": "She cans speak Japanese.",
+          "hint": "Can não leva -s",
+          "answer": "She can speak Japanese.",
+          "explanation": "Modais NÃO levam -s na 3ª pessoa. \"She can\", nunca \"She cans\"."
+        },
+        {
+          "type": "fix_error",
+          "sentence": "Do you can drive?",
+          "hint": "Can não precisa de \"do\"",
+          "answer": "Can you drive?",
+          "explanation": "Modais formam pergunta por inversão direta — sem \"do/does\". \"Can you drive?\", não \"Do you can drive?\"."
+        },
+        {
+          "type": "read_answer",
+          "passage": "I can speak English very well. I can't speak French at all. My friend can play three instruments — the piano, the guitar, and the violin.",
+          "question": "How many instruments can the friend play?",
+          "answer": "three",
+          "explanation": "The text says \"My friend can play three instruments\"."
+        }
+      ],
+      "listening_speaking": [
+        {
+          "text": "I can speak English very well.",
+          "context": "positiva + intensifier",
+          "audio_url": "https://fnvjibzreepubageztoi.supabase.co/storage/v1/object/public/curriculum-audio/ls/c979a3d922dcd2c0.flac"
+        },
+        {
+          "text": "I can't speak French at all.",
+          "context": "negativa + intensifier",
+          "audio_url": "https://fnvjibzreepubageztoi.supabase.co/storage/v1/object/public/curriculum-audio/ls/0dc86a552dbc86c3.flac"
+        },
+        {
+          "text": "Can you cook?",
+          "context": "pergunta",
+          "audio_url": "https://fnvjibzreepubageztoi.supabase.co/storage/v1/object/public/curriculum-audio/ls/af06f8729790b824.flac"
+        },
+        {
+          "text": "She can play three instruments.",
+          "context": "3rd person + número",
+          "audio_url": "https://fnvjibzreepubageztoi.supabase.co/storage/v1/object/public/curriculum-audio/ls/2ec15bfcac89e508.flac"
+        },
+        {
+          "text": "My friend can dance but I can't.",
+          "context": "contraste pessoas",
+          "audio_url": "https://fnvjibzreepubageztoi.supabase.co/storage/v1/object/public/curriculum-audio/ls/35353df61ad0f23b.flac"
+        }
+      ],
+      "roleplay": {
+        "scenario": "Charlotte propõe um retrato completo das habilidades — o que sabe, o que não sabe, e pergunta dela.",
+        "voiced_by": "charlotte",
+        "persona": "Charlotte",
+        "persona_outfit": "charlotte_casual",
+        "time_budget_sec": 90,
+        "opening_line": "Tell me what you can do, what you can't, and ask me too.",
+        "objectives": [
+          {
+            "id": 1,
+            "label_pt": "Dizer algo que sabe fazer (positiva)",
+            "label_en": "Say what you can do",
+            "hidden_prompt": "user states ability with 'I can + verb base'",
+            "hint_pt": "I can speak English.",
+            "hint_en": "I can speak English."
+          },
+          {
+            "id": 2,
+            "label_pt": "Dizer algo que não sabe fazer (negativa)",
+            "label_en": "Say what you can't do",
+            "hidden_prompt": "user states inability with 'I can't + verb base'",
+            "hint_pt": "I can't play the piano.",
+            "hint_en": "I can't play the piano."
+          },
+          {
+            "id": 3,
+            "label_pt": "Perguntar à Charlotte uma habilidade",
+            "label_en": "Ask Charlotte about an ability",
+            "hidden_prompt": "user asks 'Can you + verb base?' to Charlotte",
+            "hint_pt": "Can you sing?",
+            "hint_en": "Can you sing?"
+          }
+        ],
+        "closing_cue": "Charlotte fecha com \"What a portrait!\" quando obj_3 baterem.",
+        "suggested_flow": "**Suggested flow** (referencial, 6 turnos):\n\n1. **Charlotte**: \"Tell me what you can do, what you can't, and ask me too.\"\n2. **Student**: ~\"I can speak English.\"\n3. **Charlotte**: \"Cool. Anything you can't?\"\n4. **Student**: ~\"I can't play the piano.\"\n5. **Charlotte**: \"Ask me!\"\n6. **Student**: ~\"Can you sing?\"\n7. **Charlotte**: \"Yes, badly. What a portrait!\"",
+        "evaluation_focus": [
+          "Positiva, negativa e pergunta integradas",
+          "Variedade de habilidades",
+          "Formas corretas (sem -s, sem to, sem do/does)"
+        ]
+      },
+      "guided_chat": {
+        "scenario": "Charlotte abre chat completo sobre habilidades — você compartilha tudo.",
+        "voiced_by": "charlotte",
+        "persona": "Charlotte",
+        "persona_outfit": "charlotte_casual",
+        "intro_pt": "Charlotte quer um retrato completo das suas habilidades — positiva, negativa, e devolva a pergunta.",
+        "opening_message": "Skills check! What can you do, what can't you?",
+        "objectives": [
+          {
+            "id": 1,
+            "label_pt": "Dizer algo que sabe",
+            "label_en": "Say something you can do",
+            "hidden_prompt": "user states 'I can + verb base'",
+            "hint_pt": "I can swim.",
+            "hint_en": "I can swim."
+          },
+          {
+            "id": 2,
+            "label_pt": "Dizer algo que não sabe",
+            "label_en": "Say something you can't do",
+            "hidden_prompt": "user states 'I can't + verb base'",
+            "hint_pt": "I can't drive.",
+            "hint_en": "I can't drive."
+          },
+          {
+            "id": 3,
+            "label_pt": "Perguntar à Charlotte",
+            "label_en": "Ask Charlotte",
+            "hidden_prompt": "user asks 'Can you + verb?' to Charlotte",
+            "hint_pt": "Can you cook?",
+            "hint_en": "Can you cook?"
+          }
+        ],
+        "closing_cue": "Charlotte encerra com \"Skill swap complete!\" quando obj_3 baterem.",
+        "suggested_script": "**Script** (referencial, 7 turnos):\n\n1. **Charlotte**: \"Skills check! What can you do, what can't you?\"\n2. **Student**: \"I can swim.\"\n3. **Charlotte**: \"Nice. Limitation?\"\n4. **Student**: \"I can't drive.\"\n5. **Charlotte**: \"Yet!\"\n6. **Student**: \"Can you cook?\"\n7. **Charlotte**: \"A little. Skill swap complete!\"\n\n> N05 chat = LLM puro.\n\n---"
+      }
+    }
+  ],
+  "cross_unit_consolidation": [
+    "Can (positivo) — mesma forma pra todas as pessoas, sem -s",
+    "Can't (negativo) — sem don't/doesn't",
+    "Can questions — inversão direta, sem do/does",
+    "Verbo base após can/can't (sem \"to\", sem -s)",
+    "Idiomas sem artigo: speak English",
+    "Instrumentos com \"the\": play the piano",
+    "Esportes sem artigo: play soccer",
+    "Short answers: Yes, I can / No, I can't"
+  ]
+}

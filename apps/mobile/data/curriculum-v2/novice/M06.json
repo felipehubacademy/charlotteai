@@ -1,0 +1,1057 @@
+{
+  "id": "M06",
+  "title": "O que faço (3ª pessoa)",
+  "level": "Novice",
+  "block": "A1",
+  "units_range": "N01–N05",
+  "theme": "Falar sobre o que outras pessoas fazem — 3ª pessoa do present simple",
+  "goal": "Aluno sai sabendo conjugar 3ª pessoa singular com -s/-es/-ies, fazer negativas com doesn't, perguntar com Does/Do, e usar tudo isso pra falar de família, amigos e colegas. Este é o módulo mais denso pra lusófonos.",
+  "connects_to": "M07 (Habilidades) — depois de dominar todo o present simple, aprende a falar do que sabe fazer (can/can't).",
+  "module_chunks": [
+    "works / studies / lives / plays / goes / watches / does / has / drinks",
+    "spelling rules: -s (works), -es (watches/goes/does), -ies (studies/cries)",
+    "I don't / you don't / we don't / they don't",
+    "He doesn't / she doesn't / it doesn't",
+    "Do you...? / Do they...? / Do we...?",
+    "Does he...? / Does she...? / Does it...?",
+    "What do you do? / What does she do?",
+    "Where do you work? / Where does he live?",
+    "When do they study?",
+    "How does she go to work?",
+    "Yes, I do. / No, I don't.",
+    "Yes, she does. / No, he doesn't.",
+    "He works in + place",
+    "She studies + subject",
+    "He lives in + place",
+    "She plays + sport/instrument"
+  ],
+  "units": [
+    {
+      "id": "N01",
+      "title": "Ela trabalha, ele estuda",
+      "sub_cefr": "A1",
+      "grammar_focus": "Present simple 3ª pessoa singular (-s, -es, -ies)",
+      "markers": [
+        "denso"
+      ],
+      "real_life_context": "Você fala sobre o que sua irmã, irmão ou amigo faz no dia-a-dia.",
+      "grammar": [
+        {
+          "type": "multiple_choice",
+          "sentence": "She _____ in a school.",
+          "options": [
+            "works",
+            "work",
+            "working"
+          ],
+          "answer": "works",
+          "explanation": "Na 3ª pessoa singular (he/she/it) o verbo leva -s no present simple: \"She works\". Com I/you/we/they é forma base (\"I work\"). Esse é o erro mais comum pra lusófonos."
+        },
+        {
+          "type": "multiple_choice",
+          "sentence": "He _____ English every day.",
+          "options": [
+            "studies",
+            "study",
+            "studyes"
+          ],
+          "answer": "studies",
+          "explanation": "Verbos terminados em consoante + y trocam y por -ies: study → studies, cry → cries. \"He studies\", não \"studys\" nem \"studyes\"."
+        },
+        {
+          "type": "word_bank",
+          "sentence": "Ana _____ in a hospital.",
+          "choices": [
+            "works",
+            "work",
+            "working",
+            "worked"
+          ],
+          "answer": "works",
+          "explanation": "Ana = \"she\" (3ª pessoa singular). Verbo + -s: \"Ana works\"."
+        },
+        {
+          "type": "word_bank",
+          "sentence": "He _____ TV every night.",
+          "choices": [
+            "watches",
+            "watch",
+            "watchs",
+            "watched"
+          ],
+          "answer": "watches",
+          "explanation": "Verbos terminados em -ch, -sh, -ss, -x, -o levam -es: \"watches\", \"goes\", \"fixes\". Não é \"watchs\"."
+        },
+        {
+          "type": "fill_gap",
+          "sentence": "She _____ coffee in the morning.",
+          "hint": "Verbo \"beber\" na 3ª pessoa singular",
+          "answer": "drinks",
+          "explanation": "\"She drinks\" — 3ª pessoa leva -s. Drink + s = drinks."
+        },
+        {
+          "type": "fill_gap",
+          "sentence": "Lucas _____ to school by bus.",
+          "hint": "Verbo \"ir\" na 3ª pessoa singular",
+          "answer": "goes",
+          "explanation": "\"Go\" termina em -o, leva -es: \"goes\". Lucas = he, então \"Lucas goes\"."
+        },
+        {
+          "type": "fill_gap",
+          "sentence": "My mother _____ in a small office.",
+          "hint": "Verbo \"trabalhar\" na 3ª pessoa",
+          "answer": "works",
+          "explanation": "\"My mother\" = she — 3ª pessoa singular. \"Works\" (work + s)."
+        },
+        {
+          "type": "fix_error",
+          "sentence": "He work in a bank.",
+          "hint": "3ª pessoa singular leva -s",
+          "answer": "He works in a bank.",
+          "explanation": "Com \"he\", \"she\", \"it\" o verbo SEMPRE leva -s no present simple. \"He works\", não \"He work\". Este é o erro mais clássico de lusófonos — o português não tem -s na 3ª pessoa."
+        },
+        {
+          "type": "fix_error",
+          "sentence": "She studys English.",
+          "hint": "-y precedido de consoante vira -ies",
+          "answer": "She studies English.",
+          "explanation": "Verbos terminados em consoante + y trocam y por -ies. Study → studies, cry → cries, try → tries. Não é \"studys\"."
+        },
+        {
+          "type": "read_answer",
+          "passage": "Tom is my friend. He works in a bank. He studies German at night. He goes home at six.",
+          "question": "Where does Tom work?",
+          "answer": "in a bank",
+          "explanation": "The text says \"He works in a bank\"."
+        }
+      ],
+      "listening_speaking": [
+        {
+          "text": "She works in a hospital.",
+          "context": "3ª pessoa + -s",
+          "audio_url": "https://fnvjibzreepubageztoi.supabase.co/storage/v1/object/public/curriculum-audio/ls/fbf94cc7c017f9c4.flac"
+        },
+        {
+          "text": "He studies English every day.",
+          "context": "-ies (consoante + y)",
+          "audio_url": "https://fnvjibzreepubageztoi.supabase.co/storage/v1/object/public/curriculum-audio/ls/d378b0344aeedfb4.flac"
+        },
+        {
+          "text": "My brother goes to school.",
+          "context": "-es (verbos em -o)",
+          "audio_url": "https://fnvjibzreepubageztoi.supabase.co/storage/v1/object/public/curriculum-audio/ls/d8ac9a5ebcf11e79.flac"
+        },
+        {
+          "text": "She watches TV at night.",
+          "context": "-es (verbos em -ch)",
+          "audio_url": "https://fnvjibzreepubageztoi.supabase.co/storage/v1/object/public/curriculum-audio/ls/563b9384d89baa2f.flac"
+        },
+        {
+          "text": "Lucas drinks coffee in the morning.",
+          "context": "-s regular",
+          "audio_url": "https://fnvjibzreepubageztoi.supabase.co/storage/v1/object/public/curriculum-audio/ls/069d77c7bae72671.flac"
+        }
+      ],
+      "roleplay": {
+        "scenario": "Charlotte pergunta sobre alguém da sua família ou amigo próximo — você descreve o que essa pessoa faz.",
+        "voiced_by": "charlotte",
+        "persona": "Charlotte",
+        "persona_outfit": "charlotte_casual",
+        "time_budget_sec": 90,
+        "opening_line": "Tell me about your brother — what does he do?",
+        "objectives": [
+          {
+            "id": 1,
+            "label_pt": "Dizer onde seu irmão/irmã trabalha",
+            "label_en": "Say where your sibling works",
+            "hidden_prompt": "user states sibling's workplace with 'He/She works in/at + place' — uses 3rd person -s correctly",
+            "hint_pt": "He works in an office.",
+            "hint_en": "He works in an office."
+          },
+          {
+            "id": 2,
+            "label_pt": "Dizer o que seu irmão/irmã estuda",
+            "label_en": "Say what your sibling studies",
+            "hidden_prompt": "user states what sibling studies with 'He/She studies + subject' — 3rd person -ies",
+            "hint_pt": "She studies English.",
+            "hint_en": "She studies English."
+          },
+          {
+            "id": 3,
+            "label_pt": "Dizer outra coisa que ele/ela faz",
+            "label_en": "Say another activity",
+            "hidden_prompt": "user mentions another activity with 'He/She + verb-s + ...' (any 3rd person -s verb)",
+            "hint_pt": "He goes to the gym.",
+            "hint_en": "He goes to the gym."
+          }
+        ],
+        "closing_cue": "Charlotte fecha com \"Sounds great!\" quando obj_3 baterem.",
+        "suggested_flow": "**Suggested flow** (referencial, 6 turnos):\n\n1. **Charlotte**: \"Tell me about your brother — what does he do?\"\n2. **Student**: ~\"He works in an office.\"\n3. **Charlotte**: \"Anything else?\"\n4. **Student**: ~\"He studies English.\"\n5. **Charlotte**: \"Cool. Any hobbies?\"\n6. **Student**: ~\"He goes to the gym.\"\n7. **Charlotte**: \"Sounds great!\"",
+        "evaluation_focus": [
+          "-s/-es/-ies aplicado corretamente na 3ª pessoa",
+          "Estrutura \"He/She + verb-s + ...\"",
+          "Pronúncia clara do -s final"
+        ]
+      },
+      "guided_chat": {
+        "scenario": "Charlotte conversa sobre rotina de alguém próximo (irmão, amigo, mãe).",
+        "voiced_by": "charlotte",
+        "persona": "Charlotte",
+        "persona_outfit": "charlotte_casual",
+        "intro_pt": "Charlotte pede pra você falar de alguém próximo na 3ª pessoa. Pratica -s/-es/-ies.",
+        "opening_message": "Tell me about your sister — what does she do?",
+        "objectives": [
+          {
+            "id": 1,
+            "label_pt": "Dizer o que sua irmã/amiga faz",
+            "label_en": "Say what your sister/friend does",
+            "hidden_prompt": "user states what their sister/friend does with 'She works/studies/goes/lives/etc.'",
+            "hint_pt": "She works in a school.",
+            "hint_en": "She works in a school."
+          },
+          {
+            "id": 2,
+            "label_pt": "Dizer outra atividade dela",
+            "label_en": "Say another of her activities",
+            "hidden_prompt": "user mentions another activity with 'She + verb-s + ...' — 3rd person -s correct",
+            "hint_pt": "She drinks coffee every morning.",
+            "hint_en": "She drinks coffee every morning."
+          },
+          {
+            "id": 3,
+            "label_pt": "Perguntar sobre a Charlotte",
+            "label_en": "Ask about Charlotte",
+            "hidden_prompt": "user asks Charlotte with 'how about you' or 'and you' or 'what do you do'",
+            "hint_pt": "How about you?",
+            "hint_en": "How about you?"
+          }
+        ],
+        "closing_cue": "Charlotte encerra com \"Cool family!\" quando obj_3 baterem.",
+        "suggested_script": "**Script** (referencial, 7 turnos):\n\n1. **Charlotte**: \"Tell me about your sister — what does she do?\"\n2. **Student**: \"She works in a school.\"\n3. **Charlotte**: \"Nice. Anything else?\"\n4. **Student**: \"She drinks coffee every morning.\"\n5. **Charlotte**: \"Classic!\"\n6. **Student**: \"How about you?\"\n7. **Charlotte**: \"I drink tea, actually. Cool family!\"\n\n> N01 chat = LLM puro.\n\n---"
+      }
+    },
+    {
+      "id": "N02",
+      "title": "Eu não faço, ela não faz",
+      "sub_cefr": "A1",
+      "grammar_focus": "Negative present simple (don't / doesn't)",
+      "markers": [
+        "denso"
+      ],
+      "real_life_context": "Você conta o que você (e outros) NÃO fazem — hábitos negativos, restrições.",
+      "grammar": [
+        {
+          "type": "multiple_choice",
+          "sentence": "I _____ work on Sundays.",
+          "options": [
+            "don't",
+            "doesn't",
+            "am not"
+          ],
+          "answer": "don't",
+          "explanation": "Com I/you/we/they usa \"don't\" + verbo base: \"I don't work\". \"Doesn't\" é só pra he/she/it."
+        },
+        {
+          "type": "multiple_choice",
+          "sentence": "She _____ eat meat.",
+          "options": [
+            "doesn't",
+            "don't",
+            "not"
+          ],
+          "answer": "doesn't",
+          "explanation": "Com he/she/it usa \"doesn't\" + verbo base: \"She doesn't eat\". Atenção: depois de \"doesn't\" o verbo NÃO leva -s."
+        },
+        {
+          "type": "word_bank",
+          "sentence": "We _____ live in Brazil.",
+          "choices": [
+            "don't",
+            "doesn't",
+            "not",
+            "no"
+          ],
+          "answer": "don't",
+          "explanation": "\"We\" é plural → \"don't\". \"We don't live\" — verbo na forma base após don't."
+        },
+        {
+          "type": "word_bank",
+          "sentence": "He _____ drink coffee.",
+          "choices": [
+            "doesn't",
+            "don't",
+            "no",
+            "not"
+          ],
+          "answer": "doesn't",
+          "explanation": "\"He\" → \"doesn't\". Após \"doesn't\", verbo base: \"doesn't drink\", não \"doesn't drinks\"."
+        },
+        {
+          "type": "fill_gap",
+          "sentence": "I _____ study French.",
+          "hint": "Negativo de \"I\"",
+          "answer": "don't",
+          "explanation": "\"I don't study\" — eu não estudo. \"Don't\" + forma base do verbo."
+        },
+        {
+          "type": "fill_gap",
+          "sentence": "My brother _____ work on weekends.",
+          "hint": "Negativo para 3ª pessoa singular",
+          "answer": "doesn't",
+          "explanation": "\"My brother\" = he → \"doesn't work\". Note: verbo base após \"doesn't\" (não \"doesn't works\")."
+        },
+        {
+          "type": "fill_gap",
+          "sentence": "They _____ watch TV at night.",
+          "hint": "Negativo para plural",
+          "answer": "don't",
+          "explanation": "\"They\" plural → \"don't watch\". Sempre forma base após \"don't\"."
+        },
+        {
+          "type": "fix_error",
+          "sentence": "She don't like coffee.",
+          "hint": "She é 3ª pessoa singular",
+          "answer": "She doesn't like coffee.",
+          "explanation": "She → \"doesn't\" (não \"don't\"). Apenas I/you/we/they usam \"don't\". He/she/it sempre \"doesn't\"."
+        },
+        {
+          "type": "fix_error",
+          "sentence": "He doesn't works late.",
+          "hint": "Após \"doesn't\" o verbo fica base",
+          "answer": "He doesn't work late.",
+          "explanation": "\"Doesn't\" já carrega o -s da 3ª pessoa. O verbo principal volta pra forma base: \"doesn't work\" (não \"doesn't works\"). Erro super comum."
+        },
+        {
+          "type": "read_answer",
+          "passage": "I don't drink coffee. My brother doesn't eat meat. We don't work on Sundays. Ana doesn't study at night.",
+          "question": "What does Ana not do?",
+          "answer": "study at night",
+          "explanation": "The text says \"Ana doesn't study at night\"."
+        }
+      ],
+      "listening_speaking": [
+        {
+          "text": "I don't drink coffee.",
+          "context": "own habit negative",
+          "audio_url": "https://fnvjibzreepubageztoi.supabase.co/storage/v1/object/public/curriculum-audio/ls/c06de994d2b470ef.flac"
+        },
+        {
+          "text": "She doesn't work on Mondays.",
+          "context": "3rd person negative",
+          "audio_url": "https://fnvjibzreepubageztoi.supabase.co/storage/v1/object/public/curriculum-audio/ls/e97e70f04d82fe13.flac"
+        },
+        {
+          "text": "He doesn't like pizza.",
+          "context": "preference negative",
+          "audio_url": "https://fnvjibzreepubageztoi.supabase.co/storage/v1/object/public/curriculum-audio/ls/c4d483ebbf4eb656.flac"
+        },
+        {
+          "text": "We don't live in São Paulo.",
+          "context": "plural negative",
+          "audio_url": "https://fnvjibzreepubageztoi.supabase.co/storage/v1/object/public/curriculum-audio/ls/13973e17f8d1a118.flac"
+        },
+        {
+          "text": "My sister doesn't study French.",
+          "context": "family member negative",
+          "audio_url": "https://fnvjibzreepubageztoi.supabase.co/storage/v1/object/public/curriculum-audio/ls/1f720f377bb806bb.flac"
+        }
+      ],
+      "roleplay": {
+        "scenario": "Charlotte pergunta sobre coisas que você ou pessoas próximas NÃO fazem.",
+        "voiced_by": "charlotte",
+        "persona": "Charlotte",
+        "persona_outfit": "charlotte_casual",
+        "time_budget_sec": 90,
+        "opening_line": "Tell me one thing you don't do.",
+        "objectives": [
+          {
+            "id": 1,
+            "label_pt": "Dizer algo que você não faz (com 'I don't')",
+            "label_en": "Say something you don't do",
+            "hidden_prompt": "user states something they don't do with 'I don't + verb base'",
+            "hint_pt": "I don't drink coffee.",
+            "hint_en": "I don't drink coffee."
+          },
+          {
+            "id": 2,
+            "label_pt": "Dizer algo que alguém da família não faz (com 'doesn't')",
+            "label_en": "Say what a family member doesn't do",
+            "hidden_prompt": "user states something a family member doesn't do with 'He/She doesn't + verb base'",
+            "hint_pt": "My sister doesn't eat meat.",
+            "hint_en": "My sister doesn't eat meat."
+          },
+          {
+            "id": 3,
+            "label_pt": "Dizer algo que vocês não fazem (com 'we don't')",
+            "label_en": "Say something you and others don't do",
+            "hidden_prompt": "user mentions something they don't do as a group with 'We don't + verb base'",
+            "hint_pt": "We don't work on weekends.",
+            "hint_en": "We don't work on weekends."
+          }
+        ],
+        "closing_cue": "Charlotte fecha com \"Cool — negative form down!\" quando obj_3 baterem.",
+        "suggested_flow": "**Suggested flow** (referencial, 6 turnos):\n\n1. **Charlotte**: \"Tell me one thing you don't do.\"\n2. **Student**: ~\"I don't drink coffee.\"\n3. **Charlotte**: \"And what about your family?\"\n4. **Student**: ~\"My sister doesn't eat meat.\"\n5. **Charlotte**: \"Group habit you skip?\"\n6. **Student**: ~\"We don't work on weekends.\"\n7. **Charlotte**: \"Cool — negative form down!\"",
+        "evaluation_focus": [
+          "Auxiliar correto: don't (I/you/we/they) vs doesn't (he/she/it)",
+          "Verbo base após o auxiliar",
+          "Sem duplo -s (\"doesn't works\" é erro)"
+        ]
+      },
+      "guided_chat": {
+        "scenario": "Charlotte explora hábitos que você ou familiares não têm.",
+        "voiced_by": "charlotte",
+        "persona": "Charlotte",
+        "persona_outfit": "charlotte_casual",
+        "intro_pt": "Charlotte abre um chat sobre o que você e família NÃO fazem. Pratica don't / doesn't.",
+        "opening_message": "What's something you don't do?",
+        "objectives": [
+          {
+            "id": 1,
+            "label_pt": "Dizer algo que você não faz",
+            "label_en": "Say something you don't do",
+            "hidden_prompt": "user says 'I don't + verb base'",
+            "hint_pt": "I don't watch TV.",
+            "hint_en": "I don't watch TV."
+          },
+          {
+            "id": 2,
+            "label_pt": "Dizer algo que alguém da família não faz",
+            "label_en": "Say what a family member doesn't do",
+            "hidden_prompt": "user says 'He/She doesn't + verb base'",
+            "hint_pt": "My father doesn't drink coffee.",
+            "hint_en": "My father doesn't drink coffee."
+          },
+          {
+            "id": 3,
+            "label_pt": "Perguntar à Charlotte",
+            "label_en": "Ask Charlotte",
+            "hidden_prompt": "user asks Charlotte what she doesn't do with 'how about you' or 'and you'",
+            "hint_pt": "How about you?",
+            "hint_en": "How about you?"
+          }
+        ],
+        "closing_cue": "Charlotte encerra com \"Nice insights!\" quando obj_3 baterem.",
+        "suggested_script": "**Script** (referencial, 7 turnos):\n\n1. **Charlotte**: \"What's something you don't do?\"\n2. **Student**: \"I don't watch TV.\"\n3. **Charlotte**: \"Smart. And family?\"\n4. **Student**: \"My father doesn't drink coffee.\"\n5. **Charlotte**: \"Tea person?\"\n6. **Student**: \"How about you?\"\n7. **Charlotte**: \"I don't eat fast food. Nice insights!\"\n\n> N02 chat = LLM puro.\n\n---"
+      }
+    },
+    {
+      "id": "N03",
+      "title": "Você faz? Ela faz?",
+      "sub_cefr": "A1",
+      "grammar_focus": "Yes/No questions (Do you...? Does she...?)",
+      "markers": [
+        "denso"
+      ],
+      "real_life_context": "Você faz perguntas sobre hábitos — de amigos, da Charlotte, de família.",
+      "grammar": [
+        {
+          "type": "multiple_choice",
+          "sentence": "_____ you like coffee?",
+          "options": [
+            "Do",
+            "Does",
+            "Are"
+          ],
+          "answer": "Do",
+          "explanation": "Pergunta com I/you/we/they: \"Do + sujeito + verbo base?\". \"Do you like coffee?\"."
+        },
+        {
+          "type": "multiple_choice",
+          "sentence": "_____ she work in an office?",
+          "options": [
+            "Does",
+            "Do",
+            "Is"
+          ],
+          "answer": "Does",
+          "explanation": "Pergunta com he/she/it: \"Does + sujeito + verbo base?\". \"Does she work?\". Atenção: verbo base, não -s."
+        },
+        {
+          "type": "word_bank",
+          "sentence": "_____ they live in Rio?",
+          "choices": [
+            "Do",
+            "Does",
+            "Are",
+            "Have"
+          ],
+          "answer": "Do",
+          "explanation": "\"They\" plural → \"Do they live?\". Pergunta começa com \"Do\"."
+        },
+        {
+          "type": "word_bank",
+          "sentence": "_____ he study every day?",
+          "choices": [
+            "Does",
+            "Do",
+            "Is",
+            "Has"
+          ],
+          "answer": "Does",
+          "explanation": "\"He\" 3ª pessoa singular → \"Does he study?\". Verbo base após \"Does\"."
+        },
+        {
+          "type": "fill_gap",
+          "sentence": "_____ you work on Sundays?",
+          "hint": "Auxiliar de pergunta para \"you\"",
+          "answer": "Do",
+          "explanation": "\"Do you work?\" — pergunta padrão com you/I/we/they."
+        },
+        {
+          "type": "fill_gap",
+          "sentence": "_____ your sister speak English?",
+          "hint": "Auxiliar para 3ª pessoa singular",
+          "answer": "Does",
+          "explanation": "\"Your sister\" = she → \"Does your sister speak?\". Note: verbo \"speak\" (não \"speaks\") após \"Does\"."
+        },
+        {
+          "type": "fill_gap",
+          "sentence": "_____ Lucas play soccer?",
+          "hint": "Auxiliar para he",
+          "answer": "Does",
+          "explanation": "Lucas = he → \"Does Lucas play?\". Verbo base após \"Does\"."
+        },
+        {
+          "type": "fix_error",
+          "sentence": "Do she like pizza?",
+          "hint": "Auxiliar errado para she",
+          "answer": "Does she like pizza?",
+          "explanation": "Com he/she/it sempre \"Does\". \"Do\" é só pra I/you/we/they."
+        },
+        {
+          "type": "fix_error",
+          "sentence": "Does he works in a bank?",
+          "hint": "Após \"Does\" o verbo é base",
+          "answer": "Does he work in a bank?",
+          "explanation": "\"Does\" já carrega o -s. Após \"Does\", verbo na forma base: \"Does he work?\", não \"Does he works?\"."
+        },
+        {
+          "type": "read_answer",
+          "passage": "Q: Do you study English? A: Yes, I do. Q: Does your sister study too? A: No, she doesn't. She studies French.",
+          "question": "What language does the sister study?",
+          "answer": "French",
+          "explanation": "The text says \"She studies French\"."
+        }
+      ],
+      "listening_speaking": [
+        {
+          "text": "Do you work on Sundays?",
+          "context": "Do you question",
+          "audio_url": "https://fnvjibzreepubageztoi.supabase.co/storage/v1/object/public/curriculum-audio/ls/b9a394080bef1c82.flac"
+        },
+        {
+          "text": "Does she like coffee?",
+          "context": "Does she question",
+          "audio_url": "https://fnvjibzreepubageztoi.supabase.co/storage/v1/object/public/curriculum-audio/ls/6faa5852938dcfa2.flac"
+        },
+        {
+          "text": "Do they live near you?",
+          "context": "Do they question",
+          "audio_url": "https://fnvjibzreepubageztoi.supabase.co/storage/v1/object/public/curriculum-audio/ls/302992309e0cb973.flac"
+        },
+        {
+          "text": "Does your brother speak English?",
+          "context": "Does + named person",
+          "audio_url": "https://fnvjibzreepubageztoi.supabase.co/storage/v1/object/public/curriculum-audio/ls/d539ecf578a65682.flac"
+        },
+        {
+          "text": "Yes, I do. No, she doesn't.",
+          "context": "short answers",
+          "audio_url": "https://fnvjibzreepubageztoi.supabase.co/storage/v1/object/public/curriculum-audio/ls/13580ecaefffcaf2.flac"
+        }
+      ],
+      "roleplay": {
+        "scenario": "Charlotte propõe um quiz onde você faz perguntas sobre a rotina dela.",
+        "voiced_by": "charlotte",
+        "persona": "Charlotte",
+        "persona_outfit": "charlotte_casual",
+        "time_budget_sec": 90,
+        "opening_line": "Ask me three questions about my daily life.",
+        "objectives": [
+          {
+            "id": 1,
+            "label_pt": "Fazer uma pergunta com 'Do you...?'",
+            "label_en": "Ask a question with 'Do you...?'",
+            "hidden_prompt": "user asks Charlotte a yes/no question with 'Do you + verb base...?'",
+            "hint_pt": "Do you work?",
+            "hint_en": "Do you work?"
+          },
+          {
+            "id": 2,
+            "label_pt": "Fazer outra pergunta com 'Do you...?'",
+            "label_en": "Ask another 'Do you...?' question",
+            "hidden_prompt": "user asks another yes/no question with 'Do you + verb base'",
+            "hint_pt": "Do you drink coffee?",
+            "hint_en": "Do you drink coffee?"
+          },
+          {
+            "id": 3,
+            "label_pt": "Fazer pergunta usando 'Does' (sobre amigo, irmão, etc.)",
+            "label_en": "Ask a 'Does...?' question about someone",
+            "hidden_prompt": "user asks about someone with 'Does + 3rd person + verb base?'",
+            "hint_pt": "Does your friend speak Portuguese?",
+            "hint_en": "Does your friend speak Portuguese?"
+          }
+        ],
+        "closing_cue": "Charlotte fecha com \"Great questions!\" quando obj_3 baterem.",
+        "suggested_flow": "**Suggested flow** (referencial, 6 turnos):\n\n1. **Charlotte**: \"Ask me three questions about my daily life.\"\n2. **Student**: ~\"Do you work?\"\n3. **Charlotte**: \"Yes, I do! Next?\"\n4. **Student**: ~\"Do you drink coffee?\"\n5. **Charlotte**: \"No, I don't — tea person.\"\n6. **Student**: ~\"Does your friend speak Portuguese?\"\n7. **Charlotte**: \"Great questions!\"",
+        "evaluation_focus": [
+          "Do/Does correto pela pessoa",
+          "Verbo base após o auxiliar",
+          "Ordem da pergunta: auxiliar + sujeito + verbo base"
+        ]
+      },
+      "guided_chat": {
+        "scenario": "Charlotte conversa sobre hábitos — você pergunta e ela responde.",
+        "voiced_by": "charlotte",
+        "persona": "Charlotte",
+        "persona_outfit": "charlotte_casual",
+        "intro_pt": "Charlotte abre um chat e quer ser entrevistada. Pratica perguntas Do/Does.",
+        "opening_message": "Ask me about my daily routine.",
+        "objectives": [
+          {
+            "id": 1,
+            "label_pt": "Perguntar se Charlotte faz algo (Do you)",
+            "label_en": "Ask if Charlotte does something",
+            "hidden_prompt": "user asks 'Do you + verb base...?' to Charlotte",
+            "hint_pt": "Do you work from home?",
+            "hint_en": "Do you work from home?"
+          },
+          {
+            "id": 2,
+            "label_pt": "Perguntar se ela gosta de algo",
+            "label_en": "Ask if she likes something",
+            "hidden_prompt": "user asks 'Do you like + noun?' — accept nouns only (verb-ing comes in M08)",
+            "hint_pt": "Do you like coffee?",
+            "hint_en": "Do you like coffee?"
+          },
+          {
+            "id": 3,
+            "label_pt": "Perguntar sobre alguém na vida de Charlotte (Does)",
+            "label_en": "Ask about someone Charlotte knows",
+            "hidden_prompt": "user asks 'Does + 3rd person + verb base?' about someone",
+            "hint_pt": "Does your friend live in São Paulo?",
+            "hint_en": "Does your friend live in São Paulo?"
+          }
+        ],
+        "closing_cue": "Charlotte encerra com \"Fun chat!\" quando obj_3 baterem.",
+        "suggested_script": "**Script** (referencial, 7 turnos):\n\n1. **Charlotte**: \"Ask me about my daily routine.\"\n2. **Student**: \"Do you work from home?\"\n3. **Charlotte**: \"Yes, I do!\"\n4. **Student**: \"Do you like coffee?\"\n5. **Charlotte**: \"No, I don't — tea fan.\"\n6. **Student**: \"Does your friend live in São Paulo?\"\n7. **Charlotte**: \"No, she lives in NYC. Fun chat!\"\n\n> N03 chat = LLM puro.\n\n---"
+      }
+    },
+    {
+      "id": "N04",
+      "title": "Onde, quando, como",
+      "sub_cefr": "A1",
+      "grammar_focus": "WH-questions with do/does (Where do you...? What does she...?)",
+      "markers": [
+        "denso"
+      ],
+      "real_life_context": "Entrevista informal — você faz perguntas WH pra alguém sobre vida e rotina.",
+      "grammar": [
+        {
+          "type": "multiple_choice",
+          "sentence": "Where _____ you work?",
+          "options": [
+            "do",
+            "does",
+            "are"
+          ],
+          "answer": "do",
+          "explanation": "WH-question: \"WH + auxiliar + sujeito + verbo base\". \"Where do you work?\" — \"you\" usa \"do\"."
+        },
+        {
+          "type": "multiple_choice",
+          "sentence": "What _____ she do for a living?",
+          "options": [
+            "does",
+            "do",
+            "is"
+          ],
+          "answer": "does",
+          "explanation": "\"What does she do?\" — \"she\" 3ª pessoa, usa \"does\". Verbo base \"do\" no fim (não \"does\")."
+        },
+        {
+          "type": "word_bank",
+          "sentence": "When _____ they have dinner?",
+          "choices": [
+            "do",
+            "does",
+            "are",
+            "have"
+          ],
+          "answer": "do",
+          "explanation": "\"When do they have dinner?\" — \"they\" plural usa \"do\"."
+        },
+        {
+          "type": "word_bank",
+          "sentence": "Where _____ Lucas live?",
+          "choices": [
+            "does",
+            "do",
+            "is",
+            "has"
+          ],
+          "answer": "does",
+          "explanation": "Lucas = he → \"Does\". \"Where does Lucas live?\". Verbo base após \"does\"."
+        },
+        {
+          "type": "fill_gap",
+          "sentence": "Why _____ you study English?",
+          "hint": "Auxiliar para \"you\"",
+          "answer": "do",
+          "explanation": "\"Why do you study?\" — pergunta WH com \"you\" usa \"do\"."
+        },
+        {
+          "type": "fill_gap",
+          "sentence": "How _____ your sister go to school?",
+          "hint": "Auxiliar para 3ª pessoa singular",
+          "answer": "does",
+          "explanation": "\"Your sister\" = she → \"How does your sister go?\"."
+        },
+        {
+          "type": "fill_gap",
+          "sentence": "What time _____ he wake up?",
+          "hint": "Auxiliar para he",
+          "answer": "does",
+          "explanation": "\"He\" 3ª pessoa → \"does\". \"What time does he wake up?\"."
+        },
+        {
+          "type": "fix_error",
+          "sentence": "Where does you work?",
+          "hint": "Auxiliar errado para you",
+          "answer": "Where do you work?",
+          "explanation": "\"You\" usa \"do\", não \"does\". Apenas he/she/it usa \"does\"."
+        },
+        {
+          "type": "fix_error",
+          "sentence": "What she does for a living?",
+          "hint": "Ordem da pergunta WH",
+          "answer": "What does she do for a living?",
+          "explanation": "WH-question precisa do auxiliar ANTES do sujeito: \"What does she do?\" — não \"What she does?\". Note também o verbo base \"do\" no final."
+        },
+        {
+          "type": "read_answer",
+          "passage": "Q: Where do you work? A: I work in a hospital. Q: What time do you start? A: I start at eight. Q: When does your sister study? A: She studies at night.",
+          "question": "When does the sister study?",
+          "answer": "at night",
+          "explanation": "The text says \"She studies at night\"."
+        }
+      ],
+      "listening_speaking": [
+        {
+          "text": "Where do you work?",
+          "context": "Where + do you",
+          "audio_url": "https://fnvjibzreepubageztoi.supabase.co/storage/v1/object/public/curriculum-audio/ls/35446aa3cf09db2c.flac"
+        },
+        {
+          "text": "What does she study?",
+          "context": "What + does",
+          "audio_url": "https://fnvjibzreepubageztoi.supabase.co/storage/v1/object/public/curriculum-audio/ls/aea82a2ccf649b28.flac"
+        },
+        {
+          "text": "When do you have dinner?",
+          "context": "When + do you",
+          "audio_url": "https://fnvjibzreepubageztoi.supabase.co/storage/v1/object/public/curriculum-audio/ls/2418897627abfaeb.flac"
+        },
+        {
+          "text": "Why do you study English?",
+          "context": "Why + do you",
+          "audio_url": "https://fnvjibzreepubageztoi.supabase.co/storage/v1/object/public/curriculum-audio/ls/7067310bf552baff.flac"
+        },
+        {
+          "text": "How does your brother go to school?",
+          "context": "How + does",
+          "audio_url": "https://fnvjibzreepubageztoi.supabase.co/storage/v1/object/public/curriculum-audio/ls/5917340e1e2f1aeb.flac"
+        }
+      ],
+      "roleplay": {
+        "scenario": "Charlotte simula uma entrevista informal — você pergunta sobre ela usando WH-questions.",
+        "voiced_by": "charlotte",
+        "persona": "Charlotte",
+        "persona_outfit": "charlotte_casual",
+        "time_budget_sec": 90,
+        "opening_line": "Quick interview! Ask me about my life with WH-questions.",
+        "objectives": [
+          {
+            "id": 1,
+            "label_pt": "Perguntar onde ela trabalha (Where do you)",
+            "label_en": "Ask where she works",
+            "hidden_prompt": "user asks Charlotte where she works with 'Where do you + verb base'",
+            "hint_pt": "Where do you work?",
+            "hint_en": "Where do you work?"
+          },
+          {
+            "id": 2,
+            "label_pt": "Perguntar quando ela faz algo (When do you)",
+            "label_en": "Ask when she does something",
+            "hidden_prompt": "user asks when Charlotte does something with 'When do you + verb' or 'What time do you + verb'",
+            "hint_pt": "When do you have lunch?",
+            "hint_en": "When do you have lunch?"
+          },
+          {
+            "id": 3,
+            "label_pt": "Perguntar sobre alguém da vida dela (Where/What does)",
+            "label_en": "Ask about someone in her life",
+            "hidden_prompt": "user asks about someone with WH + does + 3rd person + verb base",
+            "hint_pt": "Where does your friend live?",
+            "hint_en": "Where does your friend live?"
+          }
+        ],
+        "closing_cue": "Charlotte fecha com \"Great interview!\" quando obj_3 baterem.",
+        "suggested_flow": "**Suggested flow** (referencial, 6 turnos):\n\n1. **Charlotte**: \"Quick interview! Ask me about my life with WH-questions.\"\n2. **Student**: ~\"Where do you work?\"\n3. **Charlotte**: \"From home, mostly.\"\n4. **Student**: ~\"When do you have lunch?\"\n5. **Charlotte**: \"At noon.\"\n6. **Student**: ~\"Where does your friend live?\"\n7. **Charlotte**: \"Great interview!\"",
+        "evaluation_focus": [
+          "WH + do/does + sujeito + verbo base (ordem correta)",
+          "Do/Does pela pessoa",
+          "Verbo base no final (não -s)"
+        ]
+      },
+      "guided_chat": {
+        "scenario": "Charlotte conversa sobre vida — você faz três perguntas WH.",
+        "voiced_by": "charlotte",
+        "persona": "Charlotte",
+        "persona_outfit": "charlotte_casual",
+        "intro_pt": "Charlotte aberta pra entrevista. Pratica WH-questions com do/does.",
+        "opening_message": "Interview time! Ask me anything about my life.",
+        "objectives": [
+          {
+            "id": 1,
+            "label_pt": "Perguntar onde Charlotte mora ou trabalha",
+            "label_en": "Ask where Charlotte lives or works",
+            "hidden_prompt": "user asks 'Where do you + verb' (live, work, study, eat, etc.)",
+            "hint_pt": "Where do you live?",
+            "hint_en": "Where do you live?"
+          },
+          {
+            "id": 2,
+            "label_pt": "Perguntar o que ela faz / estuda",
+            "label_en": "Ask what she does/studies",
+            "hidden_prompt": "user asks 'What do you + verb' or 'What does + 3rd person + verb'",
+            "hint_pt": "What do you study?",
+            "hint_en": "What do you study?"
+          },
+          {
+            "id": 3,
+            "label_pt": "Perguntar quando ou como",
+            "label_en": "Ask when or how",
+            "hidden_prompt": "user asks 'When do you + verb' or 'How do you + verb'",
+            "hint_pt": "When do you wake up?",
+            "hint_en": "When do you wake up?"
+          }
+        ],
+        "closing_cue": "Charlotte encerra com \"Loved your questions!\" quando obj_3 baterem.",
+        "suggested_script": "**Script** (referencial, 7 turnos):\n\n1. **Charlotte**: \"Interview time! Ask me anything about my life.\"\n2. **Student**: \"Where do you live?\"\n3. **Charlotte**: \"In New York.\"\n4. **Student**: \"What do you study?\"\n5. **Charlotte**: \"Languages.\"\n6. **Student**: \"When do you wake up?\"\n7. **Charlotte**: \"At six. Loved your questions!\"\n\n> N04 chat = LLM puro.\n\n---"
+      }
+    },
+    {
+      "id": "N05",
+      "title": "Tudo junto",
+      "sub_cefr": "A1",
+      "grammar_focus": "Integration — positive + negative + question 3rd person",
+      "markers": [
+        "denso"
+      ],
+      "real_life_context": "Você descreve alguém completamente — o que faz, o que não faz, e pergunta sobre alguém da Charlotte.",
+      "grammar": [
+        {
+          "type": "multiple_choice",
+          "sentence": "My sister _____ English at university.",
+          "options": [
+            "studies",
+            "study",
+            "studys"
+          ],
+          "answer": "studies",
+          "explanation": "\"My sister\" = she → \"studies\". Verbo terminado em consoante + y muda pra -ies."
+        },
+        {
+          "type": "multiple_choice",
+          "sentence": "He _____ live in Rio.",
+          "options": [
+            "doesn't",
+            "don't",
+            "not"
+          ],
+          "answer": "doesn't",
+          "explanation": "\"He\" 3ª pessoa → \"doesn't\". Negativa: \"He doesn't live\"."
+        },
+        {
+          "type": "word_bank",
+          "sentence": "_____ your brother work in a bank?",
+          "choices": [
+            "Does",
+            "Do",
+            "Is",
+            "Has"
+          ],
+          "answer": "Does",
+          "explanation": "Pergunta com he/she/it usa \"Does\". \"Does your brother work?\"."
+        },
+        {
+          "type": "word_bank",
+          "sentence": "Where _____ she live?",
+          "choices": [
+            "does",
+            "do",
+            "is",
+            "has"
+          ],
+          "answer": "does",
+          "explanation": "WH + does + sujeito + verbo base: \"Where does she live?\"."
+        },
+        {
+          "type": "fill_gap",
+          "sentence": "My friend _____ from Argentina.",
+          "hint": "Verbo \"to be\" 3ª pessoa",
+          "answer": "is",
+          "explanation": "\"My friend\" = he/she → \"is\". \"My friend is from Argentina\"."
+        },
+        {
+          "type": "fill_gap",
+          "sentence": "She _____ work on weekends. She rests.",
+          "hint": "Negativa 3ª pessoa singular",
+          "answer": "doesn't",
+          "explanation": "\"She doesn't work\" — 3ª pessoa negativa usa \"doesn't\" + base."
+        },
+        {
+          "type": "fill_gap",
+          "sentence": "_____ Lucas study at home?",
+          "hint": "Pergunta para he",
+          "answer": "Does",
+          "explanation": "Lucas = he → \"Does Lucas study?\"."
+        },
+        {
+          "type": "fix_error",
+          "sentence": "She don't likes coffee.",
+          "hint": "Dois erros: auxiliar e verbo",
+          "answer": "She doesn't like coffee.",
+          "explanation": "She → \"doesn't\" (não \"don't\"). Após \"doesn't\", verbo base \"like\" (não \"likes\"). Dois erros em uma frase."
+        },
+        {
+          "type": "fix_error",
+          "sentence": "Where she works?",
+          "hint": "WH-question precisa de auxiliar",
+          "answer": "Where does she work?",
+          "explanation": "WH-question precisa de \"does\" antes do sujeito. \"Where does she work?\" — note verbo base \"work\" no final."
+        },
+        {
+          "type": "read_answer",
+          "passage": "Lucas is my friend. He works in a school. He doesn't like coffee — he drinks tea. He goes to the gym every morning.",
+          "question": "What does Lucas drink?",
+          "answer": "tea",
+          "explanation": "The text says \"He doesn't like coffee — he drinks tea\"."
+        }
+      ],
+      "listening_speaking": [
+        {
+          "text": "He works in an office.",
+          "context": "positive 3rd person",
+          "audio_url": "https://fnvjibzreepubageztoi.supabase.co/storage/v1/object/public/curriculum-audio/ls/64abb65c52e8d6aa.flac"
+        },
+        {
+          "text": "She doesn't drink coffee.",
+          "context": "negative 3rd person",
+          "audio_url": "https://fnvjibzreepubageztoi.supabase.co/storage/v1/object/public/curriculum-audio/ls/84933dee0a3ad760.flac"
+        },
+        {
+          "text": "Does your brother live here?",
+          "context": "question",
+          "audio_url": "https://fnvjibzreepubageztoi.supabase.co/storage/v1/object/public/curriculum-audio/ls/410f58bd6da8c477.flac"
+        },
+        {
+          "text": "Where does your sister work?",
+          "context": "WH question",
+          "audio_url": "https://fnvjibzreepubageztoi.supabase.co/storage/v1/object/public/curriculum-audio/ls/ffd1e50d101a5f40.flac"
+        },
+        {
+          "text": "My friend studies English every day.",
+          "context": "full integration",
+          "audio_url": "https://fnvjibzreepubageztoi.supabase.co/storage/v1/object/public/curriculum-audio/ls/351fc5e8a2e67983.flac"
+        }
+      ],
+      "roleplay": {
+        "scenario": "Charlotte propõe um diálogo completo sobre alguém próximo — positiva, negativa e pergunta.",
+        "voiced_by": "charlotte",
+        "persona": "Charlotte",
+        "persona_outfit": "charlotte_casual",
+        "time_budget_sec": 90,
+        "opening_line": "Tell me about your best friend — what they do, what they don't do, and ask me about mine.",
+        "objectives": [
+          {
+            "id": 1,
+            "label_pt": "Dizer o que seu amigo faz (positiva 3ª pessoa)",
+            "label_en": "Say what your friend does",
+            "hidden_prompt": "user states what friend does with 'He/She + verb-s + ...' (3rd person -s)",
+            "hint_pt": "He works in a bank.",
+            "hint_en": "He works in a bank."
+          },
+          {
+            "id": 2,
+            "label_pt": "Dizer o que ele/ela não faz (negativa)",
+            "label_en": "Say what your friend doesn't do",
+            "hidden_prompt": "user states what friend doesn't do with 'He/She doesn't + verb base'",
+            "hint_pt": "She doesn't drink coffee.",
+            "hint_en": "She doesn't drink coffee."
+          },
+          {
+            "id": 3,
+            "label_pt": "Perguntar sobre o(a) amigo(a) de Charlotte",
+            "label_en": "Ask about Charlotte's friend",
+            "hidden_prompt": "user asks question about Charlotte's friend with 'Does + your friend + verb base?'",
+            "hint_pt": "Does your friend work too?",
+            "hint_en": "Does your friend work too?"
+          }
+        ],
+        "closing_cue": "Charlotte fecha com \"Awesome storytelling!\" quando obj_3 baterem.",
+        "suggested_flow": "**Suggested flow** (referencial, 6 turnos):\n\n1. **Charlotte**: \"Tell me about your best friend — what they do, what they don't do, and ask me about mine.\"\n2. **Student**: ~\"He works in a bank.\"\n3. **Charlotte**: \"Nice. What doesn't he do?\"\n4. **Student**: ~\"He doesn't drink coffee.\"\n5. **Charlotte**: \"Same here.\"\n6. **Student**: ~\"Does your friend work too?\"\n7. **Charlotte**: \"Yes, she does. Awesome storytelling!\"",
+        "evaluation_focus": [
+          "Positiva, negativa e pergunta na mesma sessão",
+          "-s, doesn't + base, Does + base",
+          "Pessoa correta em cada forma"
+        ]
+      },
+      "guided_chat": {
+        "scenario": "Charlotte conversa sobre alguém na vida de cada uma — você descreve com afirmação, negação e pergunta.",
+        "voiced_by": "charlotte",
+        "persona": "Charlotte",
+        "persona_outfit": "charlotte_casual",
+        "intro_pt": "Charlotte abre um chat onde vocês trocam sobre alguém da vida. Integra positiva, negativa e pergunta na 3ª pessoa.",
+        "opening_message": "Tell me about someone in your life — and ask me about mine!",
+        "objectives": [
+          {
+            "id": 1,
+            "label_pt": "Dizer algo que essa pessoa faz",
+            "label_en": "Say what they do",
+            "hidden_prompt": "user states activity with 'He/She + verb-s'",
+            "hint_pt": "My brother studies music.",
+            "hint_en": "My brother studies music."
+          },
+          {
+            "id": 2,
+            "label_pt": "Dizer algo que ela não faz",
+            "label_en": "Say what they don't do",
+            "hidden_prompt": "user states negative with 'He/She doesn't + verb base'",
+            "hint_pt": "He doesn't watch TV.",
+            "hint_en": "He doesn't watch TV."
+          },
+          {
+            "id": 3,
+            "label_pt": "Perguntar à Charlotte sobre alguém dela",
+            "label_en": "Ask about Charlotte's person",
+            "hidden_prompt": "user asks Charlotte about someone with 'Does your + person + verb?'",
+            "hint_pt": "Does your friend live nearby?",
+            "hint_en": "Does your friend live nearby?"
+          }
+        ],
+        "closing_cue": "Charlotte encerra com \"Loved this chat!\" quando obj_3 baterem.",
+        "suggested_script": "**Script** (referencial, 7 turnos):\n\n1. **Charlotte**: \"Tell me about someone in your life — and ask me about mine!\"\n2. **Student**: \"My brother studies music.\"\n3. **Charlotte**: \"Cool. Anything he doesn't do?\"\n4. **Student**: \"He doesn't watch TV.\"\n5. **Charlotte**: \"Focused!\"\n6. **Student**: \"Does your friend live nearby?\"\n7. **Charlotte**: \"No, she lives far. Loved this chat!\"\n\n> N05 chat = LLM puro.\n\n---"
+      }
+    }
+  ],
+  "cross_unit_consolidation": [
+    "3ª pessoa singular com -s/-es/-ies: works, studies, watches, goes, does",
+    "Negativa: I/you/we/they don't + base | He/she/it doesn't + base (NUNCA \"doesn't works\")",
+    "Pergunta Yes/No: Do + sujeito + base | Does + sujeito + base",
+    "Pergunta WH: WH + do/does + sujeito + base (Where do you work? / What does she do?)",
+    "Short answers: Yes, I do / No, she doesn't"
+  ]
+}
