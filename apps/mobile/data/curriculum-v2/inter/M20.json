@@ -1,0 +1,1035 @@
+{
+  "id": "M20",
+  "title": "Eu queria que...",
+  "level": "Inter",
+  "block": "B2",
+  "units_range": "I01–I05",
+  "theme": "Wishes expanded (I wish + would, would rather, it's time + past, if only)",
+  "goal": "Student expresses desire about others' actions, preferences, and urgent recommendations using subjunctive structures beyond basic wishes.",
+  "connects_to": "M21 (Phrasal verbs avançados) — shift to lexical density.",
+  "module_chunks": [
+    "I wish you would + base (complaint about behavior)",
+    "I wish people wouldn't + base",
+    "If only + past simple / past perfect",
+    "I'd rather + base (preference)",
+    "I'd rather + past simple (about another)",
+    "I'd rather not + base",
+    "It's time + past simple",
+    "It's high time + past simple",
+    "It's about time + past simple"
+  ],
+  "units": [
+    {
+      "id": "I01",
+      "title": "I wish you would",
+      "sub_cefr": "B2",
+      "grammar_focus": "I wish + would + base (annoyance/desire about another's recurring action)",
+      "markers": [
+        "denso"
+      ],
+      "real_life_context": "You express a wish that someone else would change their behavior.",
+      "grammar": [
+        {
+          "type": "multiple_choice",
+          "sentence": "I wish you _____ stop interrupting me!",
+          "options": [
+            "would",
+            "will",
+            "had",
+            "did"
+          ],
+          "answer": "would",
+          "explanation": "\"I wish + would + base\" para reclamar de comportamento recorrente de outra pessoa. \"Would stop\" — desejo que ele pare."
+        },
+        {
+          "type": "multiple_choice",
+          "sentence": "I wish she _____ listen to me.",
+          "options": [
+            "would",
+            "will",
+            "had",
+            "does"
+          ],
+          "answer": "would",
+          "explanation": "Wish + would expressa desejo sobre futuro/recurring action de outra pessoa. Não usado para si mesmo (use wish + past para isso)."
+        },
+        {
+          "type": "word_bank",
+          "sentence": "I wish people _____ smoke in restaurants.",
+          "choices": [
+            "wouldn't",
+            "didn't",
+            "won't",
+            "don't"
+          ],
+          "answer": "wouldn't",
+          "explanation": "\"Wouldn't smoke\" — wish negativo. Reclamação geral sobre comportamento de outros."
+        },
+        {
+          "type": "word_bank",
+          "sentence": "I wish it _____ raining!",
+          "choices": [
+            "would stop",
+            "will stop",
+            "stops",
+            "stopped"
+          ],
+          "answer": "would stop",
+          "explanation": "\"I wish it would stop raining\" — wish + would para mudança que se deseja. Eventos/clima também funcionam."
+        },
+        {
+          "type": "fill_gap",
+          "sentence": "I wish you _____ be quiet for one minute.",
+          "hint": "would",
+          "answer": "would",
+          "explanation": "\"I wish you would be quiet\" — desejo que faça algo específico. Tom de irritação."
+        },
+        {
+          "type": "fill_gap",
+          "sentence": "I wish my neighbors _____ make so much noise.",
+          "hint": "wouldn't (negativo)",
+          "answer": "wouldn't",
+          "explanation": "\"Wouldn't make noise\" — reclamação contínua. Negativo padrão."
+        },
+        {
+          "type": "fill_gap",
+          "sentence": "I wish he _____ stop complaining.",
+          "hint": "would",
+          "answer": "would",
+          "explanation": "\"Would stop complaining\" — desejo que pare comportamento recorrente."
+        },
+        {
+          "type": "fix_error",
+          "sentence": "I wish you will listen to me.",
+          "hint": "Wish + would, não \"will\"",
+          "answer": "I wish you would listen to me.",
+          "explanation": "\"Will\" não combina com wish. Para desejos sobre futuro/comportamento de outros, use \"would\"."
+        },
+        {
+          "type": "fix_error",
+          "sentence": "I wish I would be taller.",
+          "hint": "Para EU mesmo, use wish + past simple",
+          "answer": "I wish I were taller.",
+          "explanation": "\"Wish + would\" NÃO se usa para si mesmo. Para si, use wish + past simple (\"I wish I were\"). Wish + would é só para OUTROS."
+        },
+        {
+          "type": "read_answer",
+          "passage": "I wish you would stop interrupting me. I wish she would listen to me. I wish people wouldn't smoke in restaurants. I wish it would stop raining. I wish my neighbors wouldn't make so much noise.",
+          "question": "What does the speaker wish about restaurants?",
+          "answer": "people wouldn't smoke (or \"that people wouldn't smoke\")",
+          "explanation": "The text says \"I wish people wouldn't smoke in restaurants\"."
+        }
+      ],
+      "listening_speaking": [
+        {
+          "text": "I wish you would stop interrupting.",
+          "context": "complaint about behavior"
+        },
+        {
+          "text": "I wish she would listen to me.",
+          "context": "desire for attention"
+        },
+        {
+          "text": "I wish it would stop raining.",
+          "context": "weather complaint"
+        },
+        {
+          "text": "I wish people wouldn't smoke here.",
+          "context": "general complaint"
+        },
+        {
+          "text": "I wish my neighbors would be quieter.",
+          "context": "neighborhood complaint"
+        }
+      ],
+      "roleplay": {
+        "scenario": "Charlotte pergunta sobre 3 comportamentos que te irritam — você reclama com \"I wish + would\" / \"wouldn't\".",
+        "voiced_by": "charlotte",
+        "persona": "Charlotte",
+        "persona_outfit": "charlotte_casual",
+        "time_budget_sec": 180,
+        "opening_line": "Three things you wish people would do differently.",
+        "objectives": [
+          {
+            "id": 1,
+            "label_pt": "Reclamação com 'I wish + would'",
+            "label_en": "Complaint with 'I wish + would'",
+            "hidden_prompt": "user uses 'I wish X would + base'",
+            "hint_pt": "I wish my boss would give clearer instructions.",
+            "hint_en": "I wish my boss would give clearer instructions."
+          },
+          {
+            "id": 2,
+            "label_pt": "Reclamação negativa com 'wouldn't'",
+            "label_en": "Negative complaint with 'wouldn't'",
+            "hidden_prompt": "user uses 'I wish X wouldn't + base'",
+            "hint_pt": "I wish people wouldn't talk loudly on the phone in public.",
+            "hint_en": "I wish people wouldn't talk loudly on the phone in public."
+          },
+          {
+            "id": 3,
+            "label_pt": "Outra reclamação",
+            "label_en": "Another complaint",
+            "hidden_prompt": "user uses another 'I wish + would/wouldn't'",
+            "hint_pt": "I wish drivers would respect crosswalks.",
+            "hint_en": "I wish drivers would respect crosswalks."
+          }
+        ],
+        "closing_cue": "Charlotte fecha com \"Frustrations heard!\" quando obj_3 baterem.",
+        "suggested_flow": "**Suggested flow** (referencial, 6 turnos):\n\n1. **Charlotte**: \"Three things you wish people would do differently.\"\n2. **Student**: ~\"I wish my boss would give clearer instructions.\"\n3. **Charlotte**: \"Universal pain. Negative?\"\n4. **Student**: ~\"I wish people wouldn't talk loudly on the phone in public.\"\n5. **Charlotte**: \"Daily annoyance. Another?\"\n6. **Student**: ~\"I wish drivers would respect crosswalks.\"\n7. **Charlotte**: \"Frustrations heard!\"",
+        "evaluation_focus": [
+          "\"Wish + would/wouldn't\"",
+          "About OTHERS, not self",
+          "Recurring behavior"
+        ]
+      },
+      "guided_chat": {
+        "scenario": "Charlotte abre um chat informal sobre coisas que irritam vocês — desabafo de coisas que outras pessoas fazem ou não fazem.",
+        "voiced_by": "charlotte",
+        "persona": "Charlotte",
+        "persona_outfit": "charlotte_casual",
+        "intro_en": "Charlotte vents lightly. Use 'I wish + would' for complaints.",
+        "opening_message": "I wish my coworker would stop chewing gum loudly. What about you?",
+        "objectives": [
+          {
+            "id": 1,
+            "label_pt": "Reclamação sobre alguém específico",
+            "label_en": "Complaint about someone specific",
+            "hidden_prompt": "user uses 'I wish X would + base'",
+            "hint_pt": "I wish my brother would clean his room.",
+            "hint_en": "I wish my brother would clean his room."
+          },
+          {
+            "id": 2,
+            "label_pt": "Outra reclamação (negativa)",
+            "label_en": "Another complaint (negative)",
+            "hidden_prompt": "user uses 'I wish X wouldn't + base'",
+            "hint_pt": "I wish my cat wouldn't wake me up at 5 AM.",
+            "hint_en": "I wish my cat wouldn't wake me up at 5 AM."
+          },
+          {
+            "id": 3,
+            "label_pt": "Pergunta para Charlotte",
+            "label_en": "Question for Charlotte",
+            "hidden_prompt": "user asks Charlotte more about her annoyance",
+            "hint_pt": "Have you told them?",
+            "hint_en": "Have you told them?"
+          }
+        ],
+        "closing_cue": "Charlotte fecha com \"Mutual venting!\" quando obj_3 baterem.",
+        "suggested_script": "**Script** (referencial, 7 turnos):\n\n1. **Charlotte**: \"I wish my coworker would stop chewing gum loudly. What about you?\"\n2. **Student**: \"I wish my brother would clean his room.\"\n3. **Charlotte**: \"Universal sibling problem. Pets?\"\n4. **Student**: \"I wish my cat wouldn't wake me up at 5 AM.\"\n5. **Charlotte**: \"Cats are tyrants.\"\n6. **Student**: \"Have you told them?\"\n7. **Charlotte**: \"Hinted, not said directly. Mutual venting!\"\n\n> I01 chat = LLM puro. Scaffold via hint_pt.\n\n---"
+      }
+    },
+    {
+      "id": "I02",
+      "title": "If only",
+      "sub_cefr": "B2",
+      "grammar_focus": "\"If only\" + past simple (present regret) and + past perfect (past regret)",
+      "markers": [
+        "denso"
+      ],
+      "real_life_context": "You express stronger or more dramatic regret than \"I wish\" with \"if only\".",
+      "grammar": [
+        {
+          "type": "multiple_choice",
+          "sentence": "If only I _____ more time!",
+          "options": [
+            "had",
+            "have",
+            "would have",
+            "will have"
+          ],
+          "answer": "had",
+          "explanation": "\"If only + past simple\" para arrependimento PRESENTE. Mesmo padrão de \"I wish I had\" mas com tom mais enfático/dramático."
+        },
+        {
+          "type": "multiple_choice",
+          "sentence": "If only I _____ studied harder!",
+          "options": [
+            "had",
+            "have",
+            "would have",
+            "did"
+          ],
+          "answer": "had",
+          "explanation": "\"If only + past perfect\" para arrependimento sobre PASSADO. \"If only I had studied\" — mesmo padrão de \"I wish I had studied\"."
+        },
+        {
+          "type": "word_bank",
+          "sentence": "If only she _____ here right now.",
+          "choices": [
+            "were",
+            "was",
+            "is",
+            "had been"
+          ],
+          "answer": "were",
+          "explanation": "\"If only she were here\" — desejo presente. \"Were\" para todas as pessoas em wish/if only."
+        },
+        {
+          "type": "word_bank",
+          "sentence": "If only we _____ left earlier!",
+          "choices": [
+            "had",
+            "have",
+            "would have",
+            "did"
+          ],
+          "answer": "had",
+          "explanation": "\"If only we had left\" — arrependimento passado. Past perfect padrão."
+        },
+        {
+          "type": "fill_gap",
+          "sentence": "If only I _____ speak more languages!",
+          "hint": "could (habilidade)",
+          "answer": "could",
+          "explanation": "\"If only I could\" — desejo de habilidade presente. \"Could\" + base."
+        },
+        {
+          "type": "fill_gap",
+          "sentence": "If only he _____ listened to me!",
+          "hint": "past perfect \"had + past participle\"",
+          "answer": "had",
+          "explanation": "\"If only he had listened\" — arrependimento passado dramatico."
+        },
+        {
+          "type": "fill_gap",
+          "sentence": "If only the rain _____ stop!",
+          "hint": "would",
+          "answer": "would",
+          "explanation": "\"If only it would stop\" — desejo sobre futuro/comportamento. Similar a wish + would."
+        },
+        {
+          "type": "fix_error",
+          "sentence": "If only I have more time!",
+          "hint": "Para desejo presente, past simple",
+          "answer": "If only I had more time!",
+          "explanation": "\"Have\" não funciona com if only para desejo presente. Padrão é \"if only + past simple\" para presente."
+        },
+        {
+          "type": "fix_error",
+          "sentence": "If only I would have studied!",
+          "hint": "Para passado, past perfect \"had studied\"",
+          "answer": "If only I had studied!",
+          "explanation": "\"Would have\" não cabe em if only. Para passado use past perfect (\"had studied\"). Mesma regra de wish."
+        },
+        {
+          "type": "read_answer",
+          "passage": "If only I had more time! If only I had studied harder! If only she were here now. If only we had left earlier! If only the rain would stop!",
+          "question": "What does the speaker wish about studying?",
+          "answer": "had studied harder (or \"studied harder\")",
+          "explanation": "The text says \"If only I had studied harder!\"."
+        }
+      ],
+      "listening_speaking": [
+        {
+          "text": "If only I had more time!",
+          "context": "present dramatic"
+        },
+        {
+          "text": "If only I had studied harder!",
+          "context": "past regret"
+        },
+        {
+          "text": "If only she were here!",
+          "context": "present desire"
+        },
+        {
+          "text": "If only we had left earlier!",
+          "context": "past regret"
+        },
+        {
+          "text": "If only it would stop raining!",
+          "context": "desire about future"
+        }
+      ],
+      "roleplay": {
+        "scenario": "Charlotte propõe que você expresse 3 desejos dramáticos usando \"If only\" — passado, presente, e futuro.",
+        "voiced_by": "charlotte",
+        "persona": "Charlotte",
+        "persona_outfit": "charlotte_casual",
+        "time_budget_sec": 180,
+        "opening_line": "Three dramatic regrets or wishes with 'If only'.",
+        "objectives": [
+          {
+            "id": 1,
+            "label_pt": "If only sobre presente",
+            "label_en": "If only about present",
+            "hidden_prompt": "user uses 'If only + past simple' for present",
+            "hint_pt": "If only I had more energy!",
+            "hint_en": "If only I had more energy!"
+          },
+          {
+            "id": 2,
+            "label_pt": "If only sobre passado",
+            "label_en": "If only about past",
+            "hidden_prompt": "user uses 'If only + past perfect'",
+            "hint_pt": "If only I had taken that opportunity!",
+            "hint_en": "If only I had taken that opportunity!"
+          },
+          {
+            "id": 3,
+            "label_pt": "If only com 'would' (mudança comportamental)",
+            "label_en": "If only with 'would'",
+            "hidden_prompt": "user uses 'If only X would + base'",
+            "hint_pt": "If only my boss would notice my hard work!",
+            "hint_en": "If only my boss would notice my hard work!"
+          }
+        ],
+        "closing_cue": "Charlotte fecha com \"Dramatic wishes voiced!\" quando obj_3 baterem.",
+        "suggested_flow": "**Suggested flow** (referencial, 6 turnos):\n\n1. **Charlotte**: \"Three dramatic regrets or wishes with 'If only'.\"\n2. **Student**: ~\"If only I had more energy!\"\n3. **Charlotte**: \"Real. Past?\"\n4. **Student**: ~\"If only I had taken that opportunity!\"\n5. **Charlotte**: \"Behavioral?\"\n6. **Student**: ~\"If only my boss would notice my hard work!\"\n7. **Charlotte**: \"Dramatic wishes voiced!\"",
+        "evaluation_focus": [
+          "\"If only + past simple\" (present)",
+          "\"If only + past perfect\" (past)",
+          "\"If only + would\" (behavioral)"
+        ]
+      },
+      "guided_chat": {
+        "scenario": "Charlotte conversa sobre desejos profundos e arrependimentos — vocês trocam \"If only\" honestos.",
+        "voiced_by": "charlotte",
+        "persona": "Charlotte",
+        "persona_outfit": "charlotte_casual",
+        "intro_en": "Charlotte shares deep wishes. Use 'If only' for emphasis.",
+        "opening_message": "If only I had learned to play piano as a kid. What about you?",
+        "objectives": [
+          {
+            "id": 1,
+            "label_pt": "If only sobre passado/arrependimento",
+            "label_en": "If only about past regret",
+            "hidden_prompt": "user uses 'If only + past perfect'",
+            "hint_pt": "If only I had started exercising earlier.",
+            "hint_en": "If only I had started exercising earlier."
+          },
+          {
+            "id": 2,
+            "label_pt": "If only sobre presente/desejo atual",
+            "label_en": "If only about present wish",
+            "hidden_prompt": "user uses 'If only + past simple' or 'were'",
+            "hint_pt": "If only I had more free time.",
+            "hint_en": "If only I had more free time."
+          },
+          {
+            "id": 3,
+            "label_pt": "Perguntar à Charlotte",
+            "label_en": "Ask Charlotte",
+            "hidden_prompt": "user asks Charlotte why she didn't learn piano",
+            "hint_pt": "Why didn't you learn?",
+            "hint_en": "Why didn't you learn?"
+          }
+        ],
+        "closing_cue": "Charlotte fecha com \"Deep wishes shared!\" quando obj_3 baterem.",
+        "suggested_script": "**Script** (referencial, 7 turnos):\n\n1. **Charlotte**: \"If only I had learned to play piano as a kid. What about you?\"\n2. **Student**: \"If only I had started exercising earlier.\"\n3. **Charlotte**: \"Common. Now?\"\n4. **Student**: \"If only I had more free time.\"\n5. **Charlotte**: \"Time is the rarest gift.\"\n6. **Student**: \"Why didn't you learn?\"\n7. **Charlotte**: \"My parents couldn't afford lessons. Deep wishes shared!\"\n\n> I02 chat = LLM puro. Scaffold via hint_pt.\n\n---"
+      }
+    },
+    {
+      "id": "I03",
+      "title": "I'd rather",
+      "sub_cefr": "B2",
+      "grammar_focus": "Would rather + base (own preference) and would rather + past simple (about another)",
+      "markers": [
+        "denso"
+      ],
+      "real_life_context": "You state preferences politely or express what you'd prefer someone else to do.",
+      "grammar": [
+        {
+          "type": "multiple_choice",
+          "sentence": "I _____ stay home tonight.",
+          "options": [
+            "would rather",
+            "had rather",
+            "would prefer",
+            "will rather"
+          ],
+          "answer": "would rather",
+          "explanation": "\"Would rather + base\" para preferência própria. Estrutura padrão: \"would rather + base form\"."
+        },
+        {
+          "type": "multiple_choice",
+          "sentence": "I'd rather _____ pizza than sushi.",
+          "options": [
+            "have",
+            "having",
+            "had",
+            "to have"
+          ],
+          "answer": "have",
+          "explanation": "\"Would rather + base form\". \"Rather have pizza\" — base form sem \"to\"."
+        },
+        {
+          "type": "word_bank",
+          "sentence": "I'd rather you _____ smoke here.",
+          "choices": [
+            "didn't",
+            "don't",
+            "wouldn't",
+            "won't"
+          ],
+          "answer": "didn't",
+          "explanation": "\"Would rather + person + past simple\" para preferência sobre outra pessoa. \"Didn't smoke\" — past simple negativo."
+        },
+        {
+          "type": "word_bank",
+          "sentence": "I'd rather _____ stay than go out.",
+          "choices": [
+            "not",
+            "no",
+            "nothing",
+            "never"
+          ],
+          "answer": "not",
+          "explanation": "Negativa: \"I'd rather NOT + base\". \"Not stay\" — preferência negativa."
+        },
+        {
+          "type": "fill_gap",
+          "sentence": "I'd rather _____ coffee than tea.",
+          "hint": "base form \"drink\"",
+          "answer": "drink",
+          "explanation": "\"Would rather drink coffee\" — preferência simples com base form."
+        },
+        {
+          "type": "fill_gap",
+          "sentence": "I'd rather you _____ to me before deciding.",
+          "hint": "past simple \"talk\"",
+          "answer": "talked",
+          "explanation": "\"I'd rather you talked\" — preferência sobre comportamento do outro. Past simple, não base form."
+        },
+        {
+          "type": "fill_gap",
+          "sentence": "She'd rather _____ outside on the patio.",
+          "hint": "base form \"sit\"",
+          "answer": "sit",
+          "explanation": "\"Would rather sit outside\" — preferência própria, base form."
+        },
+        {
+          "type": "fix_error",
+          "sentence": "I'd rather to go home.",
+          "hint": "Sem \"to\" — só base form",
+          "answer": "I'd rather go home.",
+          "explanation": "\"Would rather\" + base form direto, sem \"to\". \"Rather to go\" não existe."
+        },
+        {
+          "type": "fix_error",
+          "sentence": "I'd rather you stop talking.",
+          "hint": "Sobre outra pessoa: past simple",
+          "answer": "I'd rather you stopped talking.",
+          "explanation": "Quando é sobre OUTRA pessoa, use past simple (\"stopped\"). \"Stop\" sem -ed funcionaria só se fosse comando direto, não preferência."
+        },
+        {
+          "type": "read_answer",
+          "passage": "I'd rather stay home tonight. I'd rather have pizza than sushi. I'd rather you didn't smoke here. I'd rather not go out today. I'd rather you talked to me before deciding.",
+          "question": "What would the speaker rather have for dinner?",
+          "answer": "pizza",
+          "explanation": "The text says \"I'd rather have pizza than sushi\"."
+        }
+      ],
+      "listening_speaking": [
+        {
+          "text": "I'd rather stay home tonight.",
+          "context": "own preference"
+        },
+        {
+          "text": "I'd rather have pizza than sushi.",
+          "context": "comparison"
+        },
+        {
+          "text": "I'd rather you didn't smoke.",
+          "context": "preference about another"
+        },
+        {
+          "text": "I'd rather not talk about it.",
+          "context": "negative preference"
+        },
+        {
+          "text": "I'd rather you talked to me first.",
+          "context": "relationship preference"
+        }
+      ],
+      "roleplay": {
+        "scenario": "Charlotte pede que você expresse 3 preferências — duas próprias e uma sobre alguém usando \"I'd rather\".",
+        "voiced_by": "charlotte",
+        "persona": "Charlotte",
+        "persona_outfit": "charlotte_casual",
+        "time_budget_sec": 180,
+        "opening_line": "Three preferences with 'I'd rather' — two of your own, one about someone else.",
+        "objectives": [
+          {
+            "id": 1,
+            "label_pt": "Preferência própria com 'I'd rather + base'",
+            "label_en": "Own preference 'I'd rather + base'",
+            "hidden_prompt": "user uses 'I'd rather + base form'",
+            "hint_pt": "I'd rather watch a movie at home.",
+            "hint_en": "I'd rather watch a movie at home."
+          },
+          {
+            "id": 2,
+            "label_pt": "Preferência negativa 'I'd rather not'",
+            "label_en": "Negative 'I'd rather not'",
+            "hidden_prompt": "user uses 'I'd rather not + base'",
+            "hint_pt": "I'd rather not work this weekend.",
+            "hint_en": "I'd rather not work this weekend."
+          },
+          {
+            "id": 3,
+            "label_pt": "Preferência sobre outra pessoa",
+            "label_en": "Preference about another person",
+            "hidden_prompt": "user uses 'I'd rather you + past simple'",
+            "hint_pt": "I'd rather you called me before coming over.",
+            "hint_en": "I'd rather you called me before coming over."
+          }
+        ],
+        "closing_cue": "Charlotte fecha com \"Preferences set!\" quando obj_3 baterem.",
+        "suggested_flow": "**Suggested flow** (referencial, 6 turnos):\n\n1. **Charlotte**: \"Three preferences with 'I'd rather' — two of your own, one about someone else.\"\n2. **Student**: ~\"I'd rather watch a movie at home.\"\n3. **Charlotte**: \"Cozy. Negative?\"\n4. **Student**: ~\"I'd rather not work this weekend.\"\n5. **Charlotte**: \"About someone?\"\n6. **Student**: ~\"I'd rather you called me before coming over.\"\n7. **Charlotte**: \"Preferences set!\"",
+        "evaluation_focus": [
+          "\"I'd rather + base\" (own)",
+          "\"I'd rather not + base\"",
+          "\"I'd rather you + past simple\""
+        ]
+      },
+      "guided_chat": {
+        "scenario": "Charlotte propõe um chat sobre preferências em diferentes contextos — comer, sair, trabalhar — usem \"I'd rather\" amplamente.",
+        "voiced_by": "charlotte",
+        "persona": "Charlotte",
+        "persona_outfit": "charlotte_casual",
+        "intro_en": "Charlotte explores preferences. Use 'I'd rather' across contexts.",
+        "opening_message": "I'd rather work from home than commute. What's your preference?",
+        "objectives": [
+          {
+            "id": 1,
+            "label_pt": "Preferência de trabalho ou estilo de vida",
+            "label_en": "Work or lifestyle preference",
+            "hidden_prompt": "user uses 'I'd rather + base + than + base'",
+            "hint_pt": "I'd rather work in person than remotely.",
+            "hint_en": "I'd rather work in person than remotely."
+          },
+          {
+            "id": 2,
+            "label_pt": "Outra preferência",
+            "label_en": "Another preference",
+            "hidden_prompt": "user uses another 'I'd rather'",
+            "hint_pt": "I'd rather travel than stay home.",
+            "hint_en": "I'd rather travel than stay home."
+          },
+          {
+            "id": 3,
+            "label_pt": "Perguntar à Charlotte",
+            "label_en": "Ask Charlotte",
+            "hidden_prompt": "user asks Charlotte more about her preference",
+            "hint_pt": "Why do you prefer remote?",
+            "hint_en": "Why do you prefer remote?"
+          }
+        ],
+        "closing_cue": "Charlotte fecha com \"Preferences compared!\" quando obj_3 baterem.",
+        "suggested_script": "**Script** (referencial, 7 turnos):\n\n1. **Charlotte**: \"I'd rather work from home than commute. What's your preference?\"\n2. **Student**: \"I'd rather work in person than remotely.\"\n3. **Charlotte**: \"Interesting choice. Travel?\"\n4. **Student**: \"I'd rather travel than stay home.\"\n5. **Charlotte**: \"Wanderer.\"\n6. **Student**: \"Why do you prefer remote?\"\n7. **Charlotte**: \"Quiet, no commute. Preferences compared!\"\n\n> I03 chat = LLM puro. Scaffold via hint_pt.\n\n---"
+      }
+    },
+    {
+      "id": "I04",
+      "title": "It's time",
+      "sub_cefr": "B2",
+      "grammar_focus": "\"It's (high/about) time\" + past simple — urgent recommendation",
+      "markers": [
+        "denso"
+      ],
+      "real_life_context": "You urge someone to do something they should have already done.",
+      "grammar": [
+        {
+          "type": "multiple_choice",
+          "sentence": "It's time we _____.",
+          "options": [
+            "left",
+            "leave",
+            "leaving",
+            "will leave"
+          ],
+          "answer": "left",
+          "explanation": "\"It's time + past simple\" expressa urgência. \"It's time we left\" = é hora de sairmos (já passamos do momento ideal)."
+        },
+        {
+          "type": "multiple_choice",
+          "sentence": "It's high time you _____ a decision.",
+          "options": [
+            "made",
+            "make",
+            "will make",
+            "making"
+          ],
+          "answer": "made",
+          "explanation": "\"It's high time + past simple\" — versão mais enfática. \"It's high time\" indica que está MUITO atrasado."
+        },
+        {
+          "type": "word_bank",
+          "sentence": "It's about time you _____ to bed.",
+          "choices": [
+            "went",
+            "go",
+            "will go",
+            "going"
+          ],
+          "answer": "went",
+          "explanation": "\"It's about time\" — quase sinônimo de \"it's high time\", também urgente. + past simple."
+        },
+        {
+          "type": "word_bank",
+          "sentence": "It's time we _____ this seriously.",
+          "choices": [
+            "took",
+            "take",
+            "will take",
+            "taking"
+          ],
+          "answer": "took",
+          "explanation": "\"It's time we took\" — sugestão urgente. Past simple."
+        },
+        {
+          "type": "fill_gap",
+          "sentence": "It's high time you _____ a real vacation.",
+          "hint": "past simple \"have\"",
+          "answer": "had",
+          "explanation": "\"It's high time you had a vacation\" — urgência enfática."
+        },
+        {
+          "type": "fill_gap",
+          "sentence": "It's about time he _____ growing up.",
+          "hint": "past simple \"start\"",
+          "answer": "started",
+          "explanation": "\"It's about time he started growing up\" — sugestão enfática sobre alguém."
+        },
+        {
+          "type": "fill_gap",
+          "sentence": "It's time we _____ honest with each other.",
+          "hint": "past simple \"be\" → were",
+          "answer": "were",
+          "explanation": "\"It's time we were honest\" — past simple \"were\" (universal subjuntivo). Não \"are\"."
+        },
+        {
+          "type": "fix_error",
+          "sentence": "It's time we leave.",
+          "hint": "Past simple, não present",
+          "answer": "It's time we left.",
+          "explanation": "\"It's time\" não usa present simple direto. Sempre past simple (\"left\")."
+        },
+        {
+          "type": "fix_error",
+          "sentence": "It's high time you will make a decision.",
+          "hint": "Sem \"will\" — past simple",
+          "answer": "It's high time you made a decision.",
+          "explanation": "\"Will\" não cabe. Padrão é \"it's high time + past simple\" (\"made\")."
+        },
+        {
+          "type": "read_answer",
+          "passage": "It's time we left for the airport. It's high time you made a decision. It's about time you went to bed. It's time we took this seriously.",
+          "question": "What should you go to?",
+          "answer": "bed",
+          "explanation": "The text says \"It's about time you went to bed\"."
+        }
+      ],
+      "listening_speaking": [
+        {
+          "text": "It's time we left.",
+          "context": "urgent suggestion"
+        },
+        {
+          "text": "It's high time you made up your mind.",
+          "context": "emphatic urgency"
+        },
+        {
+          "text": "It's about time he apologized.",
+          "context": "about someone else"
+        },
+        {
+          "text": "It's time we took this seriously.",
+          "context": "collective urgency"
+        },
+        {
+          "text": "It's high time you got a real job.",
+          "context": "strong push"
+        }
+      ],
+      "roleplay": {
+        "scenario": "Charlotte conta sobre 3 situações onde alguém precisa fazer algo já — você comenta com \"It's time / It's high time / It's about time\".",
+        "voiced_by": "charlotte",
+        "persona": "Charlotte",
+        "persona_outfit": "charlotte_casual",
+        "time_budget_sec": 180,
+        "opening_line": "Three situations where someone needs to act. Use 'It's time' or 'It's high time'.",
+        "objectives": [
+          {
+            "id": 1,
+            "label_pt": "Urgência com 'It's time'",
+            "label_en": "Urgency with 'It's time'",
+            "hidden_prompt": "user uses 'It's time + subject + past simple'",
+            "hint_pt": "It's time we addressed this issue.",
+            "hint_en": "It's time we addressed this issue."
+          },
+          {
+            "id": 2,
+            "label_pt": "Urgência enfática 'It's high time'",
+            "label_en": "Emphatic 'It's high time'",
+            "hidden_prompt": "user uses 'It's high time + subject + past simple'",
+            "hint_pt": "It's high time he found a stable job.",
+            "hint_en": "It's high time he found a stable job."
+          },
+          {
+            "id": 3,
+            "label_pt": "Urgência sobre comportamento próprio",
+            "label_en": "Urgency about own behavior",
+            "hidden_prompt": "user uses 'It's about time I + past simple'",
+            "hint_pt": "It's about time I started exercising again.",
+            "hint_en": "It's about time I started exercising again."
+          }
+        ],
+        "closing_cue": "Charlotte fecha com \"Time to act!\" quando obj_3 baterem.",
+        "suggested_flow": "**Suggested flow** (referencial, 6 turnos):\n\n1. **Charlotte**: \"Three situations where someone needs to act. Use 'It's time' or 'It's high time'.\"\n2. **Student**: ~\"It's time we addressed this issue.\"\n3. **Charlotte**: \"Direct. High time?\"\n4. **Student**: ~\"It's high time he found a stable job.\"\n5. **Charlotte**: \"About yourself?\"\n6. **Student**: ~\"It's about time I started exercising again.\"\n7. **Charlotte**: \"Time to act!\"",
+        "evaluation_focus": [
+          "\"It's time + past simple\"",
+          "Variations: high time / about time",
+          "Past simple even after present tense"
+        ]
+      },
+      "guided_chat": {
+        "scenario": "Charlotte propõe um chat motivacional — sobre coisas que vocês precisam fazer já. Usem \"It's time / high time / about time\".",
+        "voiced_by": "charlotte",
+        "persona": "Charlotte",
+        "persona_outfit": "charlotte_casual",
+        "intro_en": "Charlotte motivates action. Use 'It's time' for overdue action.",
+        "opening_message": "It's high time I cleaned out my closet. What's overdue for you?",
+        "objectives": [
+          {
+            "id": 1,
+            "label_pt": "Algo atrasado seu",
+            "label_en": "Something overdue for you",
+            "hidden_prompt": "user uses 'It's (high/about) time I + past simple'",
+            "hint_pt": "It's about time I called my grandmother.",
+            "hint_en": "It's about time I called my grandmother."
+          },
+          {
+            "id": 2,
+            "label_pt": "Outra urgência",
+            "label_en": "Another urgency",
+            "hidden_prompt": "user uses another 'It's time + past'",
+            "hint_pt": "It's high time I learned to cook properly.",
+            "hint_en": "It's high time I learned to cook properly."
+          },
+          {
+            "id": 3,
+            "label_pt": "Perguntar à Charlotte",
+            "label_en": "Ask Charlotte",
+            "hidden_prompt": "user asks Charlotte more",
+            "hint_pt": "Why now for the closet?",
+            "hint_en": "Why now for the closet?"
+          }
+        ],
+        "closing_cue": "Charlotte fecha com \"Mutual nudge!\" quando obj_3 baterem.",
+        "suggested_script": "**Script** (referencial, 7 turnos):\n\n1. **Charlotte**: \"It's high time I cleaned out my closet. What's overdue for you?\"\n2. **Student**: \"It's about time I called my grandmother.\"\n3. **Charlotte**: \"Don't wait. What else?\"\n4. **Student**: \"It's high time I learned to cook properly.\"\n5. **Charlotte**: \"Worthy goal.\"\n6. **Student**: \"Why now for the closet?\"\n7. **Charlotte**: \"Spring cleaning hit. Mutual nudge!\"\n\n> I04 chat = LLM puro. Scaffold via hint_pt.\n\n---"
+      }
+    },
+    {
+      "id": "I05",
+      "title": "Mixed wishes and preferences",
+      "sub_cefr": "B2",
+      "grammar_focus": "Integration of wish + would, if only, would rather, it's time + past",
+      "markers": [],
+      "real_life_context": "You combine wish structures fluidly in conversation about preferences and regrets.",
+      "grammar": [
+        {
+          "type": "multiple_choice",
+          "sentence": "I wish you _____ stop interrupting!",
+          "options": [
+            "would",
+            "will",
+            "had",
+            "do"
+          ],
+          "answer": "would",
+          "explanation": "Wish + would para comportamento de outro. Tom de irritação."
+        },
+        {
+          "type": "multiple_choice",
+          "sentence": "If only I _____ more time!",
+          "options": [
+            "had",
+            "have",
+            "would have",
+            "will have"
+          ],
+          "answer": "had",
+          "explanation": "If only + past simple para desejo presente."
+        },
+        {
+          "type": "word_bank",
+          "sentence": "I'd rather _____ stay home tonight.",
+          "choices": [
+            "not",
+            "no",
+            "never",
+            "nothing"
+          ],
+          "answer": "not",
+          "explanation": "\"I'd rather not + base\" — preferência negativa."
+        },
+        {
+          "type": "word_bank",
+          "sentence": "It's time we _____ this seriously.",
+          "choices": [
+            "took",
+            "take",
+            "will take",
+            "taking"
+          ],
+          "answer": "took",
+          "explanation": "\"It's time + past simple\" — urgência."
+        },
+        {
+          "type": "fill_gap",
+          "sentence": "I'd rather you _____ to me before deciding.",
+          "hint": "past simple \"talk\"",
+          "answer": "talked",
+          "explanation": "\"I'd rather you + past simple\" para preferência sobre o outro."
+        },
+        {
+          "type": "fill_gap",
+          "sentence": "If only she _____ understand me!",
+          "hint": "would",
+          "answer": "would",
+          "explanation": "\"If only + would\" para mudança comportamental."
+        },
+        {
+          "type": "fill_gap",
+          "sentence": "It's high time you _____ a real job.",
+          "hint": "past simple \"get\"",
+          "answer": "got",
+          "explanation": "\"It's high time + past simple\" — urgência enfática."
+        },
+        {
+          "type": "fix_error",
+          "sentence": "I wish you will be quiet.",
+          "hint": "Wish + would, não \"will\"",
+          "answer": "I wish you would be quiet.",
+          "explanation": "\"Will\" não cabe em wish. Para futuro/comportamento, \"would\"."
+        },
+        {
+          "type": "fix_error",
+          "sentence": "It's time we leave.",
+          "hint": "Past simple \"left\"",
+          "answer": "It's time we left.",
+          "explanation": "\"It's time\" usa past simple, não present."
+        },
+        {
+          "type": "read_answer",
+          "passage": "I wish you would stop interrupting me. If only I had more time! I'd rather not go tonight. It's time we left for the airport. I'd rather you talked to me first.",
+          "question": "What does the speaker prefer not to do tonight?",
+          "answer": "go (or \"go tonight\")",
+          "explanation": "The text says \"I'd rather not go tonight\"."
+        }
+      ],
+      "listening_speaking": [
+        {
+          "text": "I wish you would listen.",
+          "context": "behavioral wish"
+        },
+        {
+          "text": "If only I had more energy!",
+          "context": "present dramatic wish"
+        },
+        {
+          "text": "I'd rather stay home.",
+          "context": "own preference"
+        },
+        {
+          "text": "It's high time we acted.",
+          "context": "urgent collective"
+        },
+        {
+          "text": "I'd rather you didn't smoke here.",
+          "context": "preference about another"
+        }
+      ],
+      "roleplay": {
+        "scenario": "Charlotte pede que você expresse 4 estruturas diferentes em sequência — wish + would, if only, would rather, it's time.",
+        "voiced_by": "charlotte",
+        "persona": "Charlotte",
+        "persona_outfit": "charlotte_casual",
+        "time_budget_sec": 180,
+        "opening_line": "Mix all four structures — wish/would, if only, would rather, it's time.",
+        "objectives": [
+          {
+            "id": 1,
+            "label_pt": "I wish + would",
+            "label_en": "I wish + would",
+            "hidden_prompt": "user uses 'I wish X would + base'",
+            "hint_pt": "I wish my dog would stop barking.",
+            "hint_en": "I wish my dog would stop barking."
+          },
+          {
+            "id": 2,
+            "label_pt": "If only + past",
+            "label_en": "If only + past",
+            "hidden_prompt": "user uses 'If only + past simple/perfect'",
+            "hint_pt": "If only I had taken that opportunity.",
+            "hint_en": "If only I had taken that opportunity."
+          },
+          {
+            "id": 3,
+            "label_pt": "Would rather ou It's time",
+            "label_en": "Would rather or It's time",
+            "hidden_prompt": "user uses 'I'd rather' or 'It's time'",
+            "hint_pt": "It's high time I made a change.",
+            "hint_en": "It's high time I made a change."
+          }
+        ],
+        "closing_cue": "Charlotte fecha com \"Wish fluency!\" quando obj_3 baterem.",
+        "suggested_flow": "**Suggested flow** (referencial, 6 turnos):\n\n1. **Charlotte**: \"Mix all four structures — wish/would, if only, would rather, it's time.\"\n2. **Student**: ~\"I wish my dog would stop barking.\"\n3. **Charlotte**: \"Common. If only?\"\n4. **Student**: ~\"If only I had taken that opportunity.\"\n5. **Charlotte**: \"And?\"\n6. **Student**: ~\"It's high time I made a change.\"\n7. **Charlotte**: \"Wish fluency!\"",
+        "evaluation_focus": [
+          "Variety of wish structures",
+          "Correct tenses for each",
+          "Natural integration"
+        ]
+      },
+      "guided_chat": {
+        "scenario": "Charlotte abre conversa reflexiva sobre desejos, preferências e urgências da vida — vocês integram todos os recursos.",
+        "voiced_by": "charlotte",
+        "persona": "Charlotte",
+        "persona_outfit": "charlotte_casual",
+        "intro_en": "Charlotte explores life pivots. Mix wish structures naturally.",
+        "opening_message": "If only I had more courage. What do you wish for or wish you'd done?",
+        "objectives": [
+          {
+            "id": 1,
+            "label_pt": "Desejo profundo com 'If only' ou 'I wish'",
+            "label_en": "Deep wish with 'If only' or 'I wish'",
+            "hidden_prompt": "user uses 'If only' or 'I wish' for deep desire",
+            "hint_pt": "If only I had been more patient with myself.",
+            "hint_en": "If only I had been more patient with myself."
+          },
+          {
+            "id": 2,
+            "label_pt": "Preferência com 'I'd rather' ou urgência 'It's time'",
+            "label_en": "Preference 'I'd rather' or urgency 'It's time'",
+            "hidden_prompt": "user uses 'I'd rather' or 'It's time + past'",
+            "hint_pt": "It's about time I forgave myself.",
+            "hint_en": "It's about time I forgave myself."
+          },
+          {
+            "id": 3,
+            "label_pt": "Perguntar à Charlotte",
+            "label_en": "Ask Charlotte",
+            "hidden_prompt": "user asks Charlotte more about her courage wish",
+            "hint_pt": "What would courage look like?",
+            "hint_en": "What would courage look like?"
+          }
+        ],
+        "closing_cue": "Charlotte fecha com \"Honest reflection done!\" quando obj_3 baterem.",
+        "suggested_script": "**Script** (referencial, 7 turnos):\n\n1. **Charlotte**: \"If only I had more courage. What do you wish for or wish you'd done?\"\n2. **Student**: \"If only I had been more patient with myself.\"\n3. **Charlotte**: \"Real. And now?\"\n4. **Student**: \"It's about time I forgave myself.\"\n5. **Charlotte**: \"That's a turning point.\"\n6. **Student**: \"What would courage look like?\"\n7. **Charlotte**: \"Saying yes when scared. Honest reflection done!\"\n\n> I05 chat = LLM puro. Scaffold via hint_pt.\n\n---"
+      }
+    }
+  ],
+  "cross_unit_consolidation": [
+    "I wish + would (sobre comportamento de outros, NUNCA sobre si mesmo)",
+    "If only + past simple (presente) / past perfect (passado) — dramatic",
+    "I'd rather + base (preferência própria)",
+    "I'd rather + person + past simple (sobre outro)",
+    "I'd rather not + base",
+    "It's time / It's high time / It's about time + past simple — urgência",
+    "Distinção wish + past (próprio) vs wish + would (outro)"
+  ]
+}
