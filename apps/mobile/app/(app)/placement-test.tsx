@@ -477,6 +477,22 @@ export default function PlacementTestScreen() {
         .eq('id', userId);
       if (error) throw error;
 
+      // Placement skips: registra niveis pulados pra destravar cascade
+      // (todas units acessiveis, sem marcar como done — aluno ainda pode
+      //  voltar e ganhar XP fazendo de verdade).
+      const skipped: Array<{ user_id: string; level: 'Novice' | 'Inter' }> = [];
+      if (assignedLevel === 'Inter')    skipped.push({ user_id: userId, level: 'Novice' });
+      if (assignedLevel === 'Advanced') {
+        skipped.push({ user_id: userId, level: 'Novice' });
+        skipped.push({ user_id: userId, level: 'Inter' });
+      }
+      if (skipped.length > 0) {
+        const { error: skipErr } = await supabase
+          .from('placement_skips')
+          .upsert(skipped, { onConflict: 'user_id,level', ignoreDuplicates: true });
+        if (skipErr) console.warn('[PlacementTest] placement_skips error:', skipErr);
+      }
+
       // Dispara email de boas-vindas em background (fire-and-forget).
       // Nao bloqueia o fluxo — se falhar, nao afeta o usuario.
       const accessToken = (await supabase.auth.getSession()).data.session?.access_token;

@@ -1,0 +1,984 @@
+{
+  "id": "M02",
+  "title": "Meu mundo",
+  "level": "Novice",
+  "block": "A1",
+  "units_range": "N01–N05",
+  "theme": "Informações pessoais expandidas — números, idades, países, nacionalidades, apresentação completa",
+  "goal": "Aluno sai sabendo dizer idade exata, número de telefone/quarto/andar, de que país é, qual é sua nacionalidade, e fazer uma apresentação completa integrando tudo de M01 + M02.",
+  "connects_to": "M03 (Família e amigos) — depois de saber se apresentar, aprende a falar das pessoas próximas.",
+  "module_chunks": [
+    "one, two, three, four, five (1-5)",
+    "six, seven, eight, nine, ten (6-10)",
+    "eleven, twelve, thirteen, fourteen, fifteen (11-15)",
+    "sixteen, seventeen, eighteen, nineteen, twenty (16-20)",
+    "twenty-five, thirty, forty, fifty, sixty, seventy, eighty, ninety, one hundred",
+    "twenty-one, thirty-five, forty-seven (compounds com hífen)",
+    "I'm + number + years old",
+    "Floor + number / Room + number",
+    "It's + number + dollars",
+    "My number is + digits",
+    "Brazil, Argentina, the United States, Japan, China, France, Germany, Italy, Spain, Mexico, Canada, Australia, Portugal, the UK",
+    "I'm from + country",
+    "Brazilian, American, British, French, German, Italian, Spanish, Japanese, Chinese, Portuguese, Mexican, Argentinian, Australian",
+    "I'm + nationality",
+    "What's your nationality?",
+    "Where are you from? (revisão de M01)"
+  ],
+  "units": [
+    {
+      "id": "N01",
+      "title": "De 1 a 20",
+      "sub_cefr": "A1",
+      "grammar_focus": "Numbers 1-20 chunks + ages with \"I am\"",
+      "markers": [],
+      "real_life_context": "Você precisa dizer sua idade, número do quarto do hotel, ou andar do prédio.",
+      "grammar": [
+        {
+          "type": "multiple_choice",
+          "sentence": "How do you spell 5?",
+          "options": [
+            "five",
+            "fife",
+            "fivve"
+          ],
+          "answer": "five",
+          "explanation": "O número 5 em inglês é \"five\". Pronúncia: /faɪv/. Atenção: tem \"v\", não \"f\" no final."
+        },
+        {
+          "type": "multiple_choice",
+          "sentence": "I am _____ years old.",
+          "options": [
+            "ten",
+            "tenth",
+            "tens"
+          ],
+          "answer": "ten",
+          "explanation": "\"Ten\" (10) é o número cardinal. \"Tenth\" é \"décimo\" (ordinal, usado para datas/ranking). Para idade usamos o cardinal."
+        },
+        {
+          "type": "word_bank",
+          "sentence": "Room number _____.",
+          "choices": [
+            "twelve",
+            "twin",
+            "twenty",
+            "twice"
+          ],
+          "answer": "twelve",
+          "explanation": "\"Twelve\" = 12. \"Twin\" = gêmeo (não é número). \"Twenty\" = 20. \"Twice\" = duas vezes."
+        },
+        {
+          "type": "word_bank",
+          "sentence": "My number is _____.",
+          "choices": [
+            "seventeen",
+            "seventy",
+            "seven",
+            "sixteen"
+          ],
+          "answer": "seventeen",
+          "explanation": "\"Seventeen\" = 17. \"Seventy\" = 70. \"Seven\" = 7. Cuidado com a confusão -teen (17) vs -ty (70) — stress muda."
+        },
+        {
+          "type": "fill_gap",
+          "sentence": "I am _____ years old.",
+          "hint": "Número 18 por extenso",
+          "answer": "eighteen",
+          "explanation": "18 = \"eighteen\". Atenção: tem \"gh\" silencioso (escrito mas não pronunciado)."
+        },
+        {
+          "type": "fill_gap",
+          "sentence": "She is _____ years old.",
+          "hint": "Número 11 por extenso",
+          "answer": "eleven",
+          "explanation": "11 = \"eleven\". Único formato — não segue o padrão -teen como 13-19."
+        },
+        {
+          "type": "fill_gap",
+          "sentence": "My phone number is _____.",
+          "hint": "Número 9 por extenso",
+          "answer": "nine",
+          "explanation": "9 = \"nine\". Som parecido com \"none\" (nenhum) mas significado totalmente diferente. Pronúncia: /naɪn/."
+        },
+        {
+          "type": "fix_error",
+          "sentence": "I'm tween years old.",
+          "hint": "12 em inglês não segue padrão -teen",
+          "answer": "I'm twelve years old.",
+          "explanation": "12 = \"twelve\", não \"tween\". \"Tween\" é gíria para \"pré-adolescente\" — não é número. Os números 11 e 12 têm formato único."
+        },
+        {
+          "type": "fix_error",
+          "sentence": "She is sixt years old.",
+          "hint": "16 em inglês",
+          "answer": "She is sixteen years old.",
+          "explanation": "16 = \"sixteen\" (six + teen). \"Sixt\" não existe como palavra independente."
+        },
+        {
+          "type": "read_answer",
+          "passage": "Hi! I am Mark. I am fifteen years old. My room is twelve.",
+          "question": "How old is Mark? (give a number)",
+          "answer": "15",
+          "explanation": "Mark says \"I am fifteen years old\". Fifteen = 15."
+        }
+      ],
+      "listening_speaking": [
+        {
+          "text": "I am eighteen years old.",
+          "context": "declarando idade adolescente"
+        },
+        {
+          "text": "My phone number is five five five.",
+          "context": "soletrando dígitos"
+        },
+        {
+          "text": "Floor twelve, please.",
+          "context": "pedindo andar no elevador"
+        },
+        {
+          "text": "Room sixteen.",
+          "context": "referenciando quarto de hotel"
+        },
+        {
+          "text": "Page nineteen.",
+          "context": "referenciando página de livro"
+        }
+      ],
+      "roleplay": {
+        "scenario": "Charlotte propõe um quiz rápido de números — você diz sua idade e mais um número (andar, quarto, ou favorito).",
+        "voiced_by": "charlotte",
+        "persona": "Charlotte",
+        "persona_outfit": "charlotte_casual",
+        "time_budget_sec": 90,
+        "opening_line": "Quick number drill! How old are you?",
+        "objectives": [
+          {
+            "id": 1,
+            "label_pt": "Dizer sua idade com 'I am + número + years old'",
+            "label_en": "Say your age with 'I am + number + years old'",
+            "hidden_prompt": "user states an age using 'I am' or 'I'm' + a number (any number 1-100) + 'years old' — number can be digit or spelled out",
+            "hint_pt": "I'm twenty years old!",
+            "hint_en": "I'm twenty years old!"
+          },
+          {
+            "id": 2,
+            "label_pt": "Dizer outro número de contexto (andar, quarto, ou favorito)",
+            "label_en": "Say another number (floor, room, or favorite)",
+            "hidden_prompt": "user states another number with chunks like 'floor + number', 'room + number', 'my favorite number is + number', or 'it's + number' — any number 1-20 counts",
+            "hint_pt": "Floor twelve.",
+            "hint_en": "Floor twelve."
+          }
+        ],
+        "closing_cue": "Charlotte fecha com \"Nice! You got the numbers down.\" quando obj_2 baterem.",
+        "suggested_flow": "**Suggested flow** (referencial, 4 turnos):\n\n1. **Charlotte**: \"Quick number drill! How old are you?\"\n2. **Student**: ~\"I'm twenty years old.\"\n3. **Charlotte**: \"Nice. And what floor do you live on?\"\n4. **Student**: ~\"Floor twelve.\"\n5. **Charlotte**: \"Nice! You got the numbers down.\"",
+        "evaluation_focus": [
+          "Aluno usa \"I'm + número + years old\" pra idade",
+          "Aluno usa outro chunk com número (floor/room/it's)",
+          "Pronúncia clara de números (-teen vs -ty)"
+        ]
+      },
+      "guided_chat": {
+        "scenario": "Charlotte abre um chat de quiz de números — você pratica três tipos diferentes de número em contexto.",
+        "voiced_by": "charlotte",
+        "persona": "Charlotte",
+        "persona_outfit": "charlotte_casual",
+        "intro_pt": "Quiz rápido de números pelo chat. Charlotte vai puxar três contextos diferentes — idade, andar/quarto, e favorito.",
+        "opening_message": "Quick quiz — how old are you?",
+        "objectives": [
+          {
+            "id": 1,
+            "label_pt": "Dizer sua idade",
+            "label_en": "Say your age",
+            "hidden_prompt": "user states age with 'I'm + number + years old' or just 'I'm + number'",
+            "hint_pt": "I'm twenty years old.",
+            "hint_en": "I'm twenty years old."
+          },
+          {
+            "id": 2,
+            "label_pt": "Dizer um andar ou número de quarto",
+            "label_en": "Say a floor or room number",
+            "hidden_prompt": "user states a floor or room number with 'floor + number', 'room + number', or 'it's floor/room + number'",
+            "hint_pt": "Floor five.",
+            "hint_en": "Floor five."
+          },
+          {
+            "id": 3,
+            "label_pt": "Dizer seu número favorito",
+            "label_en": "Say your favorite number",
+            "hidden_prompt": "user states a favorite number with 'My favorite number is + number' or 'It's + number'",
+            "hint_pt": "My favorite number is seven.",
+            "hint_en": "My favorite number is seven."
+          }
+        ],
+        "closing_cue": "Charlotte encerra com \"Awesome — numbers locked in!\" quando obj_3 baterem.",
+        "suggested_script": "**Script** (referencial, 7 turnos):\n\n1. **Charlotte**: \"Quick quiz — how old are you?\"\n2. **Student**: \"I'm twenty years old.\"\n3. **Charlotte**: \"Nice! What floor do you live on?\"\n4. **Student**: \"Floor five.\"\n5. **Charlotte**: \"Cool. What's your favorite number?\"\n6. **Student**: \"My favorite number is seven.\"\n7. **Charlotte**: \"Awesome — numbers locked in!\"\n\n> N01 chat = LLM puro. Scaffold aparece via hint_pt da objective pendente (1 → 2 → 3).\n\n---"
+      }
+    },
+    {
+      "id": "N02",
+      "title": "De 20 a 100",
+      "sub_cefr": "A1",
+      "grammar_focus": "Numbers 20-100 com hífen (twenty-five) + ages adultas",
+      "markers": [],
+      "real_life_context": "Você precisa dizer sua idade adulta, um preço maior, ou uma temperatura.",
+      "grammar": [
+        {
+          "type": "multiple_choice",
+          "sentence": "_____ minutes left!",
+          "options": [
+            "thirty",
+            "thirteen",
+            "thirsty"
+          ],
+          "answer": "thirty",
+          "explanation": "\"Thirty\" = 30. \"Thirteen\" = 13. \"Thirsty\" = com sede (totalmente diferente). Atenção: stress muda — \"THIR-teen\" vs \"THIR-ty\"."
+        },
+        {
+          "type": "multiple_choice",
+          "sentence": "I am _____ years old.",
+          "options": [
+            "twenty-five",
+            "twenty five",
+            "twentyfive"
+          ],
+          "answer": "twenty-five",
+          "explanation": "25 = \"twenty-five\" (COM hífen). É a forma padrão para números compostos 21-99: dezena-unidade. Sem hífen ou colado é erro."
+        },
+        {
+          "type": "word_bank",
+          "sentence": "She is _____ years old.",
+          "choices": [
+            "forty",
+            "fourty",
+            "fortee",
+            "forteen"
+          ],
+          "answer": "forty",
+          "explanation": "40 = \"forty\" — NÃO tem \"u\" no meio. É um dos números mais erradamente escritos. Cuidado: \"four\" (4) tem \"u\", mas \"forty\" não."
+        },
+        {
+          "type": "word_bank",
+          "sentence": "My grandma is _____.",
+          "choices": [
+            "ninety",
+            "nine",
+            "ninetee",
+            "ninth"
+          ],
+          "answer": "ninety",
+          "explanation": "\"Ninety\" = 90. \"Nine\" = 9. \"Ninth\" = 9º. Para idade idosa: \"She is ninety years old\"."
+        },
+        {
+          "type": "fill_gap",
+          "sentence": "I am _____ years old.",
+          "hint": "35 por extenso",
+          "answer": "thirty-five",
+          "explanation": "35 = \"thirty-five\" (com hífen entre dezena e unidade). Mesma regra: 21=twenty-one, 47=forty-seven, 99=ninety-nine."
+        },
+        {
+          "type": "fill_gap",
+          "sentence": "The temperature is _____ degrees.",
+          "hint": "100 por extenso",
+          "answer": "one hundred",
+          "explanation": "100 = \"one hundred\" ou \"a hundred\". Para 101-199: \"one hundred and one\", \"one hundred and two\", etc."
+        },
+        {
+          "type": "fill_gap",
+          "sentence": "It's _____ dollars.",
+          "hint": "50 por extenso",
+          "answer": "fifty",
+          "explanation": "50 = \"fifty\". Atenção: NÃO é \"fivety\". Diferente de \"fifteen\" (15) — fifty é 50."
+        },
+        {
+          "type": "fix_error",
+          "sentence": "I am twenty five years old.",
+          "hint": "Falta o hífen no número composto",
+          "answer": "I am twenty-five years old.",
+          "explanation": "Números compostos 21-99 levam hífen: twenty-one, thirty-five, ninety-nine. Sem hífen é considerado erro de escrita."
+        },
+        {
+          "type": "fix_error",
+          "sentence": "She is fivety years old.",
+          "hint": "50 em inglês",
+          "answer": "She is fifty years old.",
+          "explanation": "50 = \"fifty\", não \"fivety\". A escrita não segue exatamente o padrão \"five + ty\" — virou \"fifty\" por evolução da língua."
+        },
+        {
+          "type": "read_answer",
+          "passage": "Tom is twenty-three years old. Mary is fifty. Mike is eighty-five.",
+          "question": "How old is Mike? (give a number)",
+          "answer": "85",
+          "explanation": "The text says \"Mike is eighty-five\". 85 = 80 + 5 = eighty-five."
+        }
+      ],
+      "listening_speaking": [
+        {
+          "text": "I am twenty-five years old.",
+          "context": "idade adulta padrão"
+        },
+        {
+          "text": "She is fifty.",
+          "context": "resposta curta de idade"
+        },
+        {
+          "text": "It's one hundred dollars.",
+          "context": "preço alto"
+        },
+        {
+          "text": "The temperature is thirty degrees.",
+          "context": "clima"
+        },
+        {
+          "text": "He is thirty-three.",
+          "context": "idade comum, número composto"
+        }
+      ],
+      "roleplay": {
+        "scenario": "Charlotte simula um quiz de números maiores — você responde com sua idade adulta e algum preço ou temperatura.",
+        "voiced_by": "charlotte",
+        "persona": "Charlotte",
+        "persona_outfit": "charlotte_casual",
+        "time_budget_sec": 90,
+        "opening_line": "Bigger numbers now. How old are you?",
+        "objectives": [
+          {
+            "id": 1,
+            "label_pt": "Dizer sua idade com número entre 20 e 100",
+            "label_en": "Say your age (number between 20 and 100)",
+            "hidden_prompt": "user states an age using 'I'm + number + years old' with a number between 20 and 100 (digit or spelled out, with or without hyphen)",
+            "hint_pt": "I'm thirty years old!",
+            "hint_en": "I'm thirty years old!"
+          },
+          {
+            "id": 2,
+            "label_pt": "Dizer um preço ou temperatura (número grande)",
+            "label_en": "Say a price or temperature (big number)",
+            "hidden_prompt": "user states a price or temperature with 'it's + number + dollars' or 'it's + number + degrees' — number above 20",
+            "hint_pt": "It's fifty dollars.",
+            "hint_en": "It's fifty dollars."
+          }
+        ],
+        "closing_cue": "Charlotte fecha com \"Great! Big numbers under control.\" quando obj_2 baterem.",
+        "suggested_flow": "**Suggested flow** (referencial, 4 turnos):\n\n1. **Charlotte**: \"Bigger numbers now. How old are you?\"\n2. **Student**: ~\"I'm thirty years old.\"\n3. **Charlotte**: \"Got it. Quick — what's the price of your favorite coffee?\"\n4. **Student**: ~\"It's five dollars.\" (ou outro número)\n5. **Charlotte**: \"Great! Big numbers under control.\"",
+        "evaluation_focus": [
+          "Aluno usa \"I'm + número grande + years old\"",
+          "Aluno usa \"It's + número + dollars/degrees\"",
+          "Pronúncia correta de números compostos (-teen vs -ty)"
+        ]
+      },
+      "guided_chat": {
+        "scenario": "Charlotte puxa um chat sobre números maiores — idade, preço, temperatura.",
+        "voiced_by": "charlotte",
+        "persona": "Charlotte",
+        "persona_outfit": "charlotte_casual",
+        "intro_pt": "Charlotte abre um chat sobre números maiores. Pratica idade adulta, preço, e temperatura.",
+        "opening_message": "Numbers chat! How old are you?",
+        "objectives": [
+          {
+            "id": 1,
+            "label_pt": "Dizer sua idade",
+            "label_en": "Say your age",
+            "hidden_prompt": "user states age with 'I'm + number + years old' or 'I am + number' — number 20+",
+            "hint_pt": "I'm twenty-five.",
+            "hint_en": "I'm twenty-five."
+          },
+          {
+            "id": 2,
+            "label_pt": "Dizer um preço",
+            "label_en": "Say a price",
+            "hidden_prompt": "user states a price with 'it's + number + dollars' or just 'number + dollars'",
+            "hint_pt": "It's fifty dollars.",
+            "hint_en": "It's fifty dollars."
+          },
+          {
+            "id": 3,
+            "label_pt": "Dizer a temperatura agora",
+            "label_en": "Say the current temperature",
+            "hidden_prompt": "user states a temperature with 'it's + number + degrees' or 'the temperature is + number'",
+            "hint_pt": "It's thirty degrees.",
+            "hint_en": "It's thirty degrees."
+          }
+        ],
+        "closing_cue": "Charlotte encerra com \"Numbers mastered. Nice!\" quando obj_3 baterem.",
+        "suggested_script": "**Script** (referencial, 7 turnos):\n\n1. **Charlotte**: \"Numbers chat! How old are you?\"\n2. **Student**: \"I'm twenty-five.\"\n3. **Charlotte**: \"Cool. What's the price of a coffee where you are?\"\n4. **Student**: \"It's fifty dollars.\"\n5. **Charlotte**: \"Nice. And the temperature today?\"\n6. **Student**: \"It's thirty degrees.\"\n7. **Charlotte**: \"Numbers mastered. Nice!\"\n\n> N02 chat = LLM puro. Scaffold aparece via hint_pt da objective pendente.\n\n---"
+      }
+    },
+    {
+      "id": "N03",
+      "title": "Países do mundo",
+      "sub_cefr": "A1",
+      "grammar_focus": "Country names + \"I'm from + country\" + países que levam \"the\"",
+      "markers": [],
+      "real_life_context": "Você está numa conferência internacional e troca de onde cada um é.",
+      "grammar": [
+        {
+          "type": "multiple_choice",
+          "sentence": "I'm from _____.",
+          "options": [
+            "Brazil",
+            "Brazilian",
+            "Brazilianish"
+          ],
+          "answer": "Brazil",
+          "explanation": "\"From\" é seguido pelo nome do PAÍS, não da nacionalidade. País = \"Brazil\". Nacionalidade = \"Brazilian\" (vem em N04)."
+        },
+        {
+          "type": "multiple_choice",
+          "sentence": "She is from _____.",
+          "options": [
+            "Japan",
+            "Japanese",
+            "Japaneser"
+          ],
+          "answer": "Japan",
+          "explanation": "\"From + país\" — \"She is from Japan\". A nacionalidade (\"Japanese\") usaria \"She is Japanese\" sem \"from\"."
+        },
+        {
+          "type": "word_bank",
+          "sentence": "He is from the _____.",
+          "choices": [
+            "United States",
+            "America",
+            "USA",
+            "States"
+          ],
+          "answer": "United States",
+          "explanation": "\"The United States\" leva \"the\" antes. \"USA\" também funciona como abreviação. \"America\" é coloquial. \"States\" é gíria entre americanos."
+        },
+        {
+          "type": "word_bank",
+          "sentence": "We are from _____.",
+          "choices": [
+            "Argentina",
+            "Argentinian",
+            "Argentineous",
+            "Argentine"
+          ],
+          "answer": "Argentina",
+          "explanation": "País = \"Argentina\". Nacionalidade = \"Argentinian\". \"Argentine\" também existe mas é menos comum em fala cotidiana."
+        },
+        {
+          "type": "fill_gap",
+          "sentence": "I'm from _____.",
+          "hint": "País asiático cuja capital é Tokyo",
+          "answer": "Japan",
+          "explanation": "\"Japan\" é o país. Nacionalidade: \"Japanese\". Não confundir — \"I'm from Japan\" (país) vs \"I'm Japanese\" (nacionalidade)."
+        },
+        {
+          "type": "fill_gap",
+          "sentence": "She is from _____.",
+          "hint": "País europeu, capital Paris",
+          "answer": "France",
+          "explanation": "\"France\" é o país. Nacionalidade: \"French\". Capital: Paris. Note que aqui o foco é o país, não a capital."
+        },
+        {
+          "type": "fill_gap",
+          "sentence": "We are from _____.",
+          "hint": "País dos cangurus, no hemisfério sul",
+          "answer": "Australia",
+          "explanation": "\"Australia\" é o país do canguru. Nacionalidade: \"Australian\". País grande, ilha-continente."
+        },
+        {
+          "type": "fix_error",
+          "sentence": "I am from the Brazil.",
+          "hint": "\"Brazil\" não leva artigo",
+          "answer": "I am from Brazil.",
+          "explanation": "A maioria dos países NÃO leva \"the\" antes. Exceções: the United States, the UK, the Netherlands, the Philippines. Brazil sozinho — \"from Brazil\"."
+        },
+        {
+          "type": "fix_error",
+          "sentence": "He is from Japan country.",
+          "hint": "\"Country\" é desnecessário",
+          "answer": "He is from Japan.",
+          "explanation": "Não se diz \"from Japan country\" em inglês — só o nome do país basta. A estrutura é \"from + country name\", sem repetir \"country\"."
+        },
+        {
+          "type": "read_answer",
+          "passage": "Anna is from Italy. Lucas is from Brazil. Maria is from Spain. They are all friends.",
+          "question": "Where is Lucas from?",
+          "answer": "Brazil",
+          "explanation": "The text says \"Lucas is from Brazil\". Lucas comes from Brazil."
+        }
+      ],
+      "listening_speaking": [
+        {
+          "text": "I'm from Brazil.",
+          "context": "chunk de origem mais comum"
+        },
+        {
+          "text": "She is from Japan.",
+          "context": "terceira pessoa, país sem \"the\""
+        },
+        {
+          "text": "He is from the United States.",
+          "context": "país que leva \"the\""
+        },
+        {
+          "text": "We are from Argentina.",
+          "context": "plural, país sul-americano"
+        },
+        {
+          "text": "They are from France and Italy.",
+          "context": "múltiplos países"
+        }
+      ],
+      "roleplay": {
+        "scenario": "Charlotte simula um colega numa conferência internacional — vocês trocam rápido de onde cada um é.",
+        "voiced_by": "charlotte",
+        "persona": "Charlotte",
+        "persona_outfit": "charlotte_casual",
+        "time_budget_sec": 90,
+        "opening_line": "Hi! Quick intro — where are you from?",
+        "objectives": [
+          {
+            "id": 1,
+            "label_pt": "Dizer de onde você é (país)",
+            "label_en": "Say where you're from (country)",
+            "hidden_prompt": "user states origin with 'I'm from + country name' — any country counts, must be a country (not just a city or 'here')",
+            "hint_pt": "I'm from Brazil!",
+            "hint_en": "I'm from Brazil!"
+          },
+          {
+            "id": 2,
+            "label_pt": "Perguntar de onde Charlotte é",
+            "label_en": "Ask where Charlotte is from",
+            "hidden_prompt": "user asks Charlotte's origin with 'where are you from', 'and you', 'how about you', or similar",
+            "hint_pt": "Where are you from?",
+            "hint_en": "Where are you from?"
+          }
+        ],
+        "closing_cue": "Charlotte fecha com \"Nice meeting you! Have a great conference.\" quando obj_2 baterem.",
+        "suggested_flow": "**Suggested flow** (referencial, 4 turnos):\n\n1. **Charlotte**: \"Hi! Quick intro — where are you from?\"\n2. **Student**: ~\"I'm from Brazil!\"\n3. **Charlotte**: \"Cool! Nice to meet you.\"\n4. **Student**: ~\"Where are you from?\"\n5. **Charlotte**: \"I'm from the United States. Nice meeting you! Have a great conference.\"",
+        "evaluation_focus": [
+          "Aluno usa \"I'm from + país\"",
+          "Aluno devolve a pergunta com \"Where are you from?\" ou \"And you?\"",
+          "Pronúncia clara de nomes de países"
+        ]
+      },
+      "guided_chat": {
+        "scenario": "Charlotte simula um conhecido novo num evento — vocês trocam países e comentam.",
+        "voiced_by": "charlotte",
+        "persona": "Charlotte",
+        "persona_outfit": "charlotte_casual",
+        "intro_pt": "Charlotte simula um conhecido novo no chat. Pratica dizer seu país, perguntar o dela, e comentar.",
+        "opening_message": "Hey! Where are you from?",
+        "objectives": [
+          {
+            "id": 1,
+            "label_pt": "Dizer de onde você é (país)",
+            "label_en": "Say where you're from",
+            "hidden_prompt": "user states origin with 'I'm from + country name'",
+            "hint_pt": "I'm from Brazil.",
+            "hint_en": "I'm from Brazil."
+          },
+          {
+            "id": 2,
+            "label_pt": "Perguntar de onde Charlotte é",
+            "label_en": "Ask Charlotte's origin",
+            "hidden_prompt": "user asks Charlotte where she's from with 'where are you from', 'and you', or similar",
+            "hint_pt": "Where are you from?",
+            "hint_en": "Where are you from?"
+          },
+          {
+            "id": 3,
+            "label_pt": "Comentar positivamente sobre o país de Charlotte",
+            "label_en": "React positively to Charlotte's country",
+            "hidden_prompt": "user reacts positively to Charlotte's country with 'cool', 'nice', 'I love + country', 'awesome', or similar",
+            "hint_pt": "I love New York!",
+            "hint_en": "I love New York!"
+          }
+        ],
+        "closing_cue": "Charlotte encerra com \"Same! Nice chatting.\" quando obj_3 baterem.",
+        "suggested_script": "**Script** (referencial, 7 turnos):\n\n1. **Charlotte**: \"Hey! Where are you from?\"\n2. **Student**: \"I'm from Brazil.\"\n3. **Charlotte**: \"Cool! I'm from the United States.\"\n4. **Student**: \"Where are you from?\"\n5. **Charlotte**: \"I'm from New York.\"\n6. **Student**: \"I love New York!\"\n7. **Charlotte**: \"Same! Nice chatting.\"\n\n> N03 chat = LLM puro. Scaffold aparece via hint_pt da objective pendente.\n\n---"
+      }
+    },
+    {
+      "id": "N04",
+      "title": "Nacionalidades",
+      "sub_cefr": "A1",
+      "grammar_focus": "Nationality adjectives — \"I'm + nationality\"",
+      "markers": [
+        "denso"
+      ],
+      "real_life_context": "Você precisa explicar sua nacionalidade vs país de origem (confusão típica).",
+      "grammar": [
+        {
+          "type": "multiple_choice",
+          "sentence": "I am _____.",
+          "options": [
+            "Brazilian",
+            "Brazil",
+            "Brazilianian"
+          ],
+          "answer": "Brazilian",
+          "explanation": "\"Brazilian\" é a nacionalidade (adjetivo). \"Brazil\" é o país. \"I am Brazilian\" = \"Eu sou brasileiro/brasileira\". Não confundir com \"I am from Brazil\" (origem)."
+        },
+        {
+          "type": "multiple_choice",
+          "sentence": "She is _____.",
+          "options": [
+            "American",
+            "America",
+            "Americaner"
+          ],
+          "answer": "American",
+          "explanation": "\"American\" = americano/a (nacionalidade). \"America\" = país (EUA). Estrutura: \"She is American\" (nacionalidade) ou \"She is from America\" (origem)."
+        },
+        {
+          "type": "word_bank",
+          "sentence": "They are _____.",
+          "choices": [
+            "Japanese",
+            "Japan",
+            "Japaneser",
+            "Japanian"
+          ],
+          "answer": "Japanese",
+          "explanation": "\"Japanese\" funciona como adjetivo E substantivo. \"They are Japanese\" — gente do Japão. Não muda no plural (não tem \"Japaneses\")."
+        },
+        {
+          "type": "word_bank",
+          "sentence": "He is _____.",
+          "choices": [
+            "French",
+            "France",
+            "Frenchian",
+            "Franze"
+          ],
+          "answer": "French",
+          "explanation": "\"French\" = francês/francesa (nacionalidade e também o idioma). \"France\" = França. \"He is French\" / \"He is from France\"."
+        },
+        {
+          "type": "fill_gap",
+          "sentence": "My friend is _____.",
+          "hint": "Nacionalidade de alguém da Itália",
+          "answer": "Italian",
+          "explanation": "\"Italian\" = italiano/a. Funciona como nacionalidade e como idioma. \"Italy\" = país."
+        },
+        {
+          "type": "fill_gap",
+          "sentence": "We are _____.",
+          "hint": "Nacionalidade do Brasil",
+          "answer": "Brazilian",
+          "explanation": "\"Brazilian\" = brasileiro/a. Estrutura: \"We are Brazilian\" (nacionalidade) ou \"We are from Brazil\" (origem)."
+        },
+        {
+          "type": "fill_gap",
+          "sentence": "Are you _____?",
+          "hint": "Nacionalidade do Reino Unido (UK)",
+          "answer": "British",
+          "explanation": "\"British\" = britânico/a (cobre Inglaterra, Escócia, País de Gales, Irlanda do Norte). \"English\" é específico da Inglaterra. UK inteiro = \"British\"."
+        },
+        {
+          "type": "fix_error",
+          "sentence": "I am Brazil.",
+          "hint": "\"I am\" pede nacionalidade, não país",
+          "answer": "I am Brazilian.",
+          "explanation": "\"I am\" + nacionalidade (Brazilian). \"I am from\" + país (Brazil). Confundir os dois é o erro mais comum. Você É brasileiro, você É DE Brasil."
+        },
+        {
+          "type": "fix_error",
+          "sentence": "She is Americaner.",
+          "hint": "Nacionalidade dos EUA",
+          "answer": "She is American.",
+          "explanation": "A nacionalidade dos EUA é \"American\" — não \"Americaner\" nem \"Americanian\". Termina em \"-an\" (igual a Mexican, Canadian, Australian)."
+        },
+        {
+          "type": "read_answer",
+          "passage": "My new team: John is American. Yuki is Japanese. Sofia is Italian.",
+          "question": "What nationality is Sofia?",
+          "answer": "Italian",
+          "explanation": "The text says \"Sofia is Italian\". Sofia's nationality is Italian."
+        }
+      ],
+      "listening_speaking": [
+        {
+          "text": "I am Brazilian.",
+          "context": "declarando nacionalidade"
+        },
+        {
+          "text": "She is American.",
+          "context": "terceira pessoa, nacionalidade comum"
+        },
+        {
+          "text": "They are Japanese.",
+          "context": "plural, \"Japanese\" não muda"
+        },
+        {
+          "text": "He is British.",
+          "context": "nacionalidade UK"
+        },
+        {
+          "text": "We are not Italian. We are Spanish.",
+          "context": "distinguindo nacionalidades"
+        }
+      ],
+      "roleplay": {
+        "scenario": "Charlotte propõe uma simulação rápida — pratica dizer nacionalidade vs país.",
+        "voiced_by": "charlotte",
+        "persona": "Charlotte",
+        "persona_outfit": "charlotte_casual",
+        "time_budget_sec": 90,
+        "opening_line": "Quick practice — what's your nationality?",
+        "objectives": [
+          {
+            "id": 1,
+            "label_pt": "Dizer sua nacionalidade",
+            "label_en": "Say your nationality",
+            "hidden_prompt": "user states nationality with 'I'm + nationality adjective' (e.g., 'I'm Brazilian', 'I'm Portuguese', 'I'm American')",
+            "hint_pt": "I'm Brazilian!",
+            "hint_en": "I'm Brazilian!"
+          },
+          {
+            "id": 2,
+            "label_pt": "Dizer de onde você é (país) — distinguir do anterior",
+            "label_en": "Say where you're from (country)",
+            "hidden_prompt": "user states origin with 'I'm from + country name' — must be country, not nationality (Brazil not Brazilian)",
+            "hint_pt": "I'm from Brazil.",
+            "hint_en": "I'm from Brazil."
+          }
+        ],
+        "closing_cue": "Charlotte fecha com \"Nice! You got nationality vs country down.\" quando obj_2 baterem.",
+        "suggested_flow": "**Suggested flow** (referencial, 4 turnos):\n\n1. **Charlotte**: \"Quick practice — what's your nationality?\"\n2. **Student**: ~\"I'm Brazilian!\"\n3. **Charlotte**: \"Got it. And where are you from?\"\n4. **Student**: ~\"I'm from Brazil.\"\n5. **Charlotte**: \"Nice! You got nationality vs country down.\"",
+        "evaluation_focus": [
+          "Aluno usa adjetivo de nacionalidade (\"I'm Brazilian\") sem \"from\"",
+          "Aluno usa nome de país com \"from\" (\"I'm from Brazil\")",
+          "Distinção clara entre adjetivo e país"
+        ]
+      },
+      "guided_chat": {
+        "scenario": "Charlotte simula apresentações num grupo internacional — você trocas nacionalidade, país e pergunta a dela.",
+        "voiced_by": "charlotte",
+        "persona": "Charlotte",
+        "persona_outfit": "charlotte_casual",
+        "intro_pt": "Charlotte simula apresentações num grupo online. Pratica nacionalidade vs país e devolva a pergunta.",
+        "opening_message": "Quick intro round — what's your nationality?",
+        "objectives": [
+          {
+            "id": 1,
+            "label_pt": "Dizer sua nacionalidade",
+            "label_en": "Say your nationality",
+            "hidden_prompt": "user states nationality with 'I'm + nationality adjective'",
+            "hint_pt": "I'm Brazilian.",
+            "hint_en": "I'm Brazilian."
+          },
+          {
+            "id": 2,
+            "label_pt": "Dizer de onde você é (país)",
+            "label_en": "Say where you're from (country)",
+            "hidden_prompt": "user states origin with 'I'm from + country'",
+            "hint_pt": "I'm from Brazil.",
+            "hint_en": "I'm from Brazil."
+          },
+          {
+            "id": 3,
+            "label_pt": "Perguntar a nacionalidade de Charlotte",
+            "label_en": "Ask Charlotte's nationality",
+            "hidden_prompt": "user asks Charlotte's nationality with 'are you + nationality', 'what's your nationality', 'and you', or 'how about you'",
+            "hint_pt": "Are you American?",
+            "hint_en": "Are you American?"
+          }
+        ],
+        "closing_cue": "Charlotte encerra com \"Cool! Great intro round.\" quando obj_3 baterem.",
+        "suggested_script": "**Script** (referencial, 7 turnos):\n\n1. **Charlotte**: \"Quick intro round — what's your nationality?\"\n2. **Student**: \"I'm Brazilian.\"\n3. **Charlotte**: \"Nice! And where are you from?\"\n4. **Student**: \"I'm from Brazil.\"\n5. **Charlotte**: \"Got it.\"\n6. **Student**: \"Are you American?\"\n7. **Charlotte**: \"Yes, I am. Cool! Great intro round.\"\n\n> N04 chat = LLM puro. Scaffold aparece via hint_pt da objective pendente.\n\n---"
+      }
+    },
+    {
+      "id": "N05",
+      "title": "Meu cartão de visitas",
+      "sub_cefr": "A1",
+      "grammar_focus": "Apresentação completa integrada — name + age + origin + nationality",
+      "markers": [],
+      "real_life_context": "Você está se apresentando completo numa reunião de equipe ou evento profissional.",
+      "grammar": [
+        {
+          "type": "multiple_choice",
+          "sentence": "I'm _____. I'm from São Paulo, Brazil.",
+          "options": [
+            "Brazilian",
+            "Brazil",
+            "Brazilians"
+          ],
+          "answer": "Brazilian",
+          "explanation": "Nacionalidade = adjetivo (Brazilian). País = nome próprio (Brazil). Esta frase combina ambos: \"I'm Brazilian, I'm from São Paulo, Brazil\"."
+        },
+        {
+          "type": "multiple_choice",
+          "sentence": "_____ is twenty-five years old.",
+          "options": [
+            "She",
+            "Her",
+            "Hers"
+          ],
+          "answer": "She",
+          "explanation": "\"She\" é o sujeito (ela). \"Her\" é objeto/possessivo. Para construir frase sobre idade: \"She is X years old\", com \"She\" como sujeito."
+        },
+        {
+          "type": "word_bank",
+          "sentence": "Hi, _____ Felipe. I'm from Brazil.",
+          "choices": [
+            "I'm",
+            "I am",
+            "My",
+            "Me"
+          ],
+          "answer": "I'm",
+          "explanation": "\"I'm\" é a contração de \"I am\" — forma padrão pra se apresentar. \"My\" é possessivo (My name is...). \"Me\" é pronome objeto."
+        },
+        {
+          "type": "word_bank",
+          "sentence": "She is thirty years old. She is _____.",
+          "choices": [
+            "Spanish",
+            "Spain",
+            "Spainian",
+            "Spanishly"
+          ],
+          "answer": "Spanish",
+          "explanation": "\"Spanish\" = nacionalidade espanhola. \"Spain\" = país. Para \"she is + adjetivo de nacionalidade\", usa \"Spanish\"."
+        },
+        {
+          "type": "fill_gap",
+          "sentence": "I am twenty-five years _____.",
+          "hint": "Palavra que segue a idade",
+          "answer": "old",
+          "explanation": "\"Years old\" é a expressão fixa de idade. \"I am 25 years old\". Não se diz \"I am 25 years\" sozinho — precisa do \"old\"."
+        },
+        {
+          "type": "fill_gap",
+          "sentence": "He is _____ Argentina. He is Argentinian.",
+          "hint": "Preposição de origem (país)",
+          "answer": "from",
+          "explanation": "\"From\" indica origem. País após \"from\": \"from Argentina\". Nacionalidade direto: \"He is Argentinian\" (sem \"from\")."
+        },
+        {
+          "type": "fill_gap",
+          "sentence": "_____ name is Felipe.",
+          "hint": "Possessivo de primeira pessoa",
+          "answer": "My",
+          "explanation": "\"My\" = meu/minha. \"My name is Felipe\" = \"Meu nome é Felipe\". É um chunk fixo de apresentação."
+        },
+        {
+          "type": "fix_error",
+          "sentence": "I'm from Brazilian.",
+          "hint": "Após \"from\" vem país, não nacionalidade",
+          "answer": "I'm from Brazil.",
+          "explanation": "\"From + país\" (Brazil). \"Be + nacionalidade\" (Brazilian). Misturar é o erro mais clássico: \"from Brazilian\" não existe — sempre \"from + nome do país\"."
+        },
+        {
+          "type": "fix_error",
+          "sentence": "She is from the Brazil.",
+          "hint": "\"Brazil\" não leva \"the\"",
+          "answer": "She is from Brazil.",
+          "explanation": "A maioria dos países não leva \"the\" — Brazil, Japan, France, Italy. Exceções poucas: the United States, the UK, the Netherlands, the Philippines."
+        },
+        {
+          "type": "read_answer",
+          "passage": "Hello! My name is Ana. I'm twenty-six years old. I'm from São Paulo, Brazil. I'm Brazilian. Nice to meet you!",
+          "question": "What is Ana's nationality?",
+          "answer": "Brazilian",
+          "explanation": "Ana says \"I'm Brazilian\". Her nationality is \"Brazilian\" (the adjective)."
+        }
+      ],
+      "listening_speaking": [
+        {
+          "text": "Hi, my name is Felipe.",
+          "context": "abertura de apresentação"
+        },
+        {
+          "text": "I'm twenty-five years old.",
+          "context": "idade"
+        },
+        {
+          "text": "I'm from São Paulo, Brazil.",
+          "context": "origem (cidade + país)"
+        },
+        {
+          "text": "I'm Brazilian.",
+          "context": "nacionalidade"
+        },
+        {
+          "text": "Nice to meet you!",
+          "context": "fechamento de apresentação"
+        }
+      ],
+      "roleplay": {
+        "scenario": "Charlotte simula um colega numa reunião de equipe — você faz uma apresentação completa.",
+        "voiced_by": "charlotte",
+        "persona": "Charlotte",
+        "persona_outfit": "charlotte_casual",
+        "time_budget_sec": 90,
+        "opening_line": "Welcome to the team! Tell me about yourself.",
+        "objectives": [
+          {
+            "id": 1,
+            "label_pt": "Dizer nome e idade juntos",
+            "label_en": "Say name and age together",
+            "hidden_prompt": "user introduces themselves with both name AND age — uses 'I'm + name' or 'my name is + name' AND 'I'm + number + years old' (or 'I'm + number')",
+            "hint_pt": "I'm Felipe and I'm twenty-five.",
+            "hint_en": "I'm Felipe and I'm twenty-five."
+          },
+          {
+            "id": 2,
+            "label_pt": "Dizer origem e nacionalidade juntas",
+            "label_en": "Say origin and nationality together",
+            "hidden_prompt": "user states origin AND nationality — uses 'I'm from + country' AND 'I'm + nationality adjective'",
+            "hint_pt": "I'm from Brazil. I'm Brazilian.",
+            "hint_en": "I'm from Brazil. I'm Brazilian."
+          }
+        ],
+        "closing_cue": "Charlotte fecha com \"Awesome intro. Great to have you on the team!\" quando obj_2 baterem.",
+        "suggested_flow": "**Suggested flow** (referencial, 4 turnos):\n\n1. **Charlotte**: \"Welcome to the team! Tell me about yourself.\"\n2. **Student**: ~\"I'm Felipe and I'm twenty-five.\"\n3. **Charlotte**: \"Nice! And where are you from?\"\n4. **Student**: ~\"I'm from Brazil. I'm Brazilian.\"\n5. **Charlotte**: \"Awesome intro. Great to have you on the team!\"",
+        "evaluation_focus": [
+          "Aluno combina nome + idade numa única fala",
+          "Aluno combina país + nacionalidade numa única fala",
+          "Distinção mantida: \"from + country\" e \"be + nationality\""
+        ]
+      },
+      "guided_chat": {
+        "scenario": "Charlotte simula uma apresentação por chat de um pequeno grupo profissional — você faz uma apresentação completa em 3 partes.",
+        "voiced_by": "charlotte",
+        "persona": "Charlotte",
+        "persona_outfit": "charlotte_casual",
+        "intro_pt": "Charlotte simula uma apresentação de equipe pelo chat. Pratica nome+idade, origem+nacionalidade, e um fechamento caloroso.",
+        "opening_message": "Hi! Welcome to the group — tell us about yourself.",
+        "objectives": [
+          {
+            "id": 1,
+            "label_pt": "Dizer nome e idade",
+            "label_en": "Say name and age",
+            "hidden_prompt": "user states name AND age in the same or adjacent messages with 'I'm + name' and 'I'm + number + years old'",
+            "hint_pt": "I'm Felipe, twenty-five.",
+            "hint_en": "I'm Felipe, twenty-five."
+          },
+          {
+            "id": 2,
+            "label_pt": "Dizer origem e nacionalidade",
+            "label_en": "Say origin and nationality",
+            "hidden_prompt": "user states origin AND nationality with 'I'm from + country' and 'I'm + nationality'",
+            "hint_pt": "I'm from Brazil, I'm Brazilian.",
+            "hint_en": "I'm from Brazil, I'm Brazilian."
+          },
+          {
+            "id": 3,
+            "label_pt": "Fechar com 'Nice to meet you' ou similar",
+            "label_en": "Close with 'Nice to meet you'",
+            "hidden_prompt": "user closes the intro with 'nice to meet you', 'great to meet you', 'happy to be here', or similar warm closing",
+            "hint_pt": "Nice to meet you!",
+            "hint_en": "Nice to meet you!"
+          }
+        ],
+        "closing_cue": "Charlotte encerra com \"Same here! Welcome to the team.\" quando obj_3 baterem.",
+        "suggested_script": "**Script** (referencial, 7 turnos):\n\n1. **Charlotte**: \"Hi! Welcome to the group — tell us about yourself.\"\n2. **Student**: \"I'm Felipe, twenty-five.\"\n3. **Charlotte**: \"Nice! Where are you from?\"\n4. **Student**: \"I'm from Brazil, I'm Brazilian.\"\n5. **Charlotte**: \"Cool! Glad to have you.\"\n6. **Student**: \"Nice to meet you!\"\n7. **Charlotte**: \"Same here! Welcome to the team.\"\n\n> N05 chat = LLM puro. Scaffold aparece via hint_pt da objective pendente.\n\n---"
+      }
+    }
+  ],
+  "cross_unit_consolidation": [
+    "Números 1-100 em chunks (idade, andar, quarto, preço, temperatura)",
+    "Nome de pelo menos 10 países (Brazil, the United States, Japan, France, Italy, Spain, Germany, Argentina, Mexico, the UK)",
+    "Pelo menos 10 nacionalidades (Brazilian, American, Japanese, French, Italian, Spanish, German, Argentinian, Mexican, British)",
+    "Distinção clara: \"I'm from + country\" vs \"I'm + nationality\"",
+    "Apresentação completa em 4 partes: nome + idade + país + nacionalidade"
+  ]
+}

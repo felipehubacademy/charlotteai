@@ -29,7 +29,7 @@
 | File | Module | Units | Status |
 |------|--------|-------|--------|
 | [M01](novice/M01-ola-mundo.md) | Olá, mundo | 5 (N01–N05) | done |
-| M02 | Meu mundo | 5 (N01–N05) | todo |
+| [M02](novice/M02-meu-mundo.md) | Meu mundo | 5 (N01–N05) | done |
 | M03 | Família e amigos | 5 (N01–N05) | todo |
 | M04 | Em casa | 5 (N01–N05) | todo |
 | M05 | Meu dia-a-dia | 5 (N01–N05) | todo |

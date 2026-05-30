@@ -5,8 +5,13 @@
         "id": "M01",
         "title": "Olá, mundo",
         "file": "novice/M01.json"
+      },
+      {
+        "id": "M02",
+        "title": "Meu mundo",
+        "file": "novice/M02.json"
       }
     ]
   },
-  "generated_at": "2026-05-30T16:40:07.023Z"
+  "generated_at": "2026-05-30T17:02:02.965Z"
 }
