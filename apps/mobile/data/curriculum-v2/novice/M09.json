@@ -1,0 +1,1036 @@
+{
+  "id": "M09",
+  "title": "Agora mesmo",
+  "level": "Novice",
+  "block": "A1",
+  "units_range": "N01–N05",
+  "theme": "O que está acontecendo neste momento — present continuous",
+  "goal": "Aluno sai sabendo formar e usar present continuous (I'm doing, he's working), distinguir de present simple (rotina vs agora), e descrever cenas presentes.",
+  "connects_to": "M10 (Comida e bebida) — depois de dominar continuous, aplica em situações como \"I'm eating\", \"She's drinking\".",
+  "module_chunks": [
+    "I am + verb-ing / I'm + verb-ing",
+    "you are + verb-ing / you're + verb-ing",
+    "he is + verb-ing / he's + verb-ing",
+    "she is + verb-ing / she's + verb-ing",
+    "we are + verb-ing / we're + verb-ing",
+    "they are + verb-ing / they're + verb-ing",
+    "I'm not working / He isn't studying",
+    "Are you working? / Is she sleeping?",
+    "What are you doing? / What is he doing?",
+    "right now / at the moment / today",
+    "running, sitting, swimming (spelling -ing rules)",
+    "contrast: I work in NYC (rotina) vs I'm working today (agora)"
+  ],
+  "units": [
+    {
+      "id": "N01",
+      "title": "Estou fazendo agora",
+      "sub_cefr": "A1",
+      "grammar_focus": "Present continuous positivo (am/is/are + verb-ing)",
+      "markers": [
+        "denso"
+      ],
+      "real_life_context": "Você descreve o que está fazendo agora — durante uma chamada de vídeo, por exemplo.",
+      "grammar": [
+        {
+          "type": "multiple_choice",
+          "sentence": "I _____ working right now.",
+          "options": [
+            "am",
+            "is",
+            "are"
+          ],
+          "answer": "am",
+          "explanation": "Com \"I\" usa \"am\" no present continuous: \"I am working\" ou contraído \"I'm working\"."
+        },
+        {
+          "type": "multiple_choice",
+          "sentence": "She _____ sleeping.",
+          "options": [
+            "is",
+            "am",
+            "are"
+          ],
+          "answer": "is",
+          "explanation": "Com he/she/it usa \"is\": \"She is sleeping\" ou \"She's sleeping\"."
+        },
+        {
+          "type": "word_bank",
+          "sentence": "They _____ playing soccer.",
+          "choices": [
+            "are",
+            "is",
+            "am",
+            "be"
+          ],
+          "answer": "are",
+          "explanation": "Com they/we/you usa \"are\": \"They are playing\" ou \"They're playing\"."
+        },
+        {
+          "type": "word_bank",
+          "sentence": "I'm _____ a book.",
+          "choices": [
+            "reading",
+            "read",
+            "readed",
+            "readinge"
+          ],
+          "answer": "reading",
+          "explanation": "Present continuous: to be + verb-ing. \"Read\" → \"reading\" (apenas adiciona -ing)."
+        },
+        {
+          "type": "fill_gap",
+          "sentence": "He _____ watching TV.",
+          "hint": "Verbo \"to be\" 3ª pessoa",
+          "answer": "is",
+          "explanation": "\"He is watching\" — present continuous com he/she/it usa \"is\"."
+        },
+        {
+          "type": "fill_gap",
+          "sentence": "We are _____ in the park.",
+          "hint": "Verbo \"correr\" no -ing (dobra o n)",
+          "answer": "running",
+          "explanation": "Verbos curtos terminados em consoante-vogal-consoante dobram a última consoante antes de -ing: run → running, sit → sitting, swim → swimming."
+        },
+        {
+          "type": "fill_gap",
+          "sentence": "She is _____ a cake.",
+          "hint": "Verbo \"fazer\" no -ing (drop o -e)",
+          "answer": "making",
+          "explanation": "Verbos terminados em -e mudo perdem o e antes de -ing: make → making, write → writing, take → taking."
+        },
+        {
+          "type": "fix_error",
+          "sentence": "I am work right now.",
+          "hint": "Falta -ing",
+          "answer": "I am working right now.",
+          "explanation": "Present continuous = to be + verb-ING. \"I am working\", não \"I am work\"."
+        },
+        {
+          "type": "fix_error",
+          "sentence": "She working.",
+          "hint": "Falta verbo \"to be\"",
+          "answer": "She is working.",
+          "explanation": "Present continuous SEMPRE precisa de \"to be\" + verb-ing. \"She is working\" ou \"She's working\", nunca \"She working\"."
+        },
+        {
+          "type": "read_answer",
+          "passage": "I'm working from home today. My sister is studying upstairs. My mother is cooking lunch. We are all busy!",
+          "question": "What is the sister doing?",
+          "answer": "studying",
+          "explanation": "The text says \"My sister is studying upstairs\"."
+        }
+      ],
+      "listening_speaking": [
+        {
+          "text": "I'm working right now.",
+          "context": "own action now"
+        },
+        {
+          "text": "She is sleeping.",
+          "context": "3rd person"
+        },
+        {
+          "text": "They are playing soccer.",
+          "context": "plural"
+        },
+        {
+          "text": "We are eating dinner.",
+          "context": "group activity"
+        },
+        {
+          "text": "He's reading a book.",
+          "context": "contraction he's"
+        }
+      ],
+      "roleplay": {
+        "scenario": "Charlotte te chama por vídeo e quer saber o que você está fazendo agora.",
+        "voiced_by": "charlotte",
+        "persona": "Charlotte",
+        "persona_outfit": "charlotte_casual",
+        "time_budget_sec": 90,
+        "opening_line": "Hey! What are you doing right now?",
+        "objectives": [
+          {
+            "id": 1,
+            "label_pt": "Dizer o que você está fazendo agora",
+            "label_en": "Say what you're doing now",
+            "hidden_prompt": "user states current activity with 'I'm + verb-ing' (working, studying, reading, etc.)",
+            "hint_pt": "I'm studying English.",
+            "hint_en": "I'm studying English."
+          },
+          {
+            "id": 2,
+            "label_pt": "Dizer o que alguém na sua casa está fazendo",
+            "label_en": "Say what someone at home is doing",
+            "hidden_prompt": "user states what someone else is doing with 'He/She is + verb-ing'",
+            "hint_pt": "My sister is cooking.",
+            "hint_en": "My sister is cooking."
+          },
+          {
+            "id": 3,
+            "label_pt": "Dizer o que vocês estão fazendo juntos OU outra atividade",
+            "label_en": "Say a group activity or another",
+            "hidden_prompt": "user states 'We are + verb-ing' or another current activity",
+            "hint_pt": "We're eating lunch.",
+            "hint_en": "We're eating lunch."
+          }
+        ],
+        "closing_cue": "Charlotte fecha com \"Busy day!\" quando obj_3 baterem.",
+        "suggested_flow": "**Suggested flow** (referencial, 6 turnos):\n\n1. **Charlotte**: \"Hey! What are you doing right now?\"\n2. **Student**: ~\"I'm studying English.\"\n3. **Charlotte**: \"Anyone with you?\"\n4. **Student**: ~\"My sister is cooking.\"\n5. **Charlotte**: \"What's for lunch?\"\n6. **Student**: ~\"We're eating pizza.\"\n7. **Charlotte**: \"Busy day!\"",
+        "evaluation_focus": [
+          "to be + verb-ing sempre junto",
+          "Pessoa correta (am/is/are)",
+          "Spelling -ing (running, making, etc.)"
+        ]
+      },
+      "guided_chat": {
+        "scenario": "Charlotte abre chat curto pra descobrir o que está acontecendo agora na sua casa.",
+        "voiced_by": "charlotte",
+        "persona": "Charlotte",
+        "persona_outfit": "charlotte_casual",
+        "intro_pt": "Charlotte quer descobrir o que está acontecendo aí agora. Pratica I'm + verb-ing.",
+        "opening_message": "What are you doing right now?",
+        "objectives": [
+          {
+            "id": 1,
+            "label_pt": "Dizer o que você está fazendo agora",
+            "label_en": "Say current activity",
+            "hidden_prompt": "user says 'I'm + verb-ing'",
+            "hint_pt": "I'm reading.",
+            "hint_en": "I'm reading."
+          },
+          {
+            "id": 2,
+            "label_pt": "Dizer o que alguém perto de você está fazendo",
+            "label_en": "Say what someone near you is doing",
+            "hidden_prompt": "user says 'He/She is + verb-ing'",
+            "hint_pt": "My brother is sleeping.",
+            "hint_en": "My brother is sleeping."
+          },
+          {
+            "id": 3,
+            "label_pt": "Perguntar à Charlotte",
+            "label_en": "Ask Charlotte",
+            "hidden_prompt": "user asks 'What are you doing?' or 'How about you?'",
+            "hint_pt": "What are you doing?",
+            "hint_en": "What are you doing?"
+          }
+        ],
+        "closing_cue": "Charlotte encerra com \"Real-time updates!\" quando obj_3 baterem.",
+        "suggested_script": "**Script** (referencial, 7 turnos):\n\n1. **Charlotte**: \"What are you doing right now?\"\n2. **Student**: \"I'm reading.\"\n3. **Charlotte**: \"Cool. Anyone with you?\"\n4. **Student**: \"My brother is sleeping.\"\n5. **Charlotte**: \"Quiet house!\"\n6. **Student**: \"What are you doing?\"\n7. **Charlotte**: \"I'm working. Real-time updates!\"\n\n> N01 chat = LLM puro.\n\n---"
+      }
+    },
+    {
+      "id": "N02",
+      "title": "Não estou fazendo",
+      "sub_cefr": "A1",
+      "grammar_focus": "Present continuous negativo (am not / isn't / aren't + verb-ing)",
+      "markers": [],
+      "real_life_context": "Você corrige uma suposição errada ou diz o que NÃO está acontecendo agora.",
+      "grammar": [
+        {
+          "type": "multiple_choice",
+          "sentence": "I _____ working today. It's Sunday.",
+          "options": [
+            "am not",
+            "is not",
+            "don't"
+          ],
+          "answer": "am not",
+          "explanation": "Negativa com \"I\": \"I am not working\" ou \"I'm not working\". Não usa don't (que é present simple)."
+        },
+        {
+          "type": "multiple_choice",
+          "sentence": "She _____ sleeping; she's reading.",
+          "options": [
+            "isn't",
+            "aren't",
+            "doesn't"
+          ],
+          "answer": "isn't",
+          "explanation": "\"She isn't sleeping\" — 3ª pessoa negativa = is + not = isn't. Forma contraída padrão."
+        },
+        {
+          "type": "word_bank",
+          "sentence": "We _____ eating; we're talking.",
+          "choices": [
+            "aren't",
+            "isn't",
+            "am not",
+            "don't"
+          ],
+          "answer": "aren't",
+          "explanation": "\"We aren't\" — plural negativa = are + not = aren't."
+        },
+        {
+          "type": "word_bank",
+          "sentence": "He _____ working today; he's sick.",
+          "choices": [
+            "isn't",
+            "aren't",
+            "doesn't",
+            "no"
+          ],
+          "answer": "isn't",
+          "explanation": "\"He isn't working\" — 3ª pessoa singular negativa."
+        },
+        {
+          "type": "fill_gap",
+          "sentence": "I _____ studying right now.",
+          "hint": "Negativa com \"I\" (forma contraída)",
+          "answer": "'m not",
+          "explanation": "\"I'm not studying\" — \"am not\" contrai pra \"'m not\". Não existe \"amn't\" em inglês padrão."
+        },
+        {
+          "type": "fill_gap",
+          "sentence": "She _____ cooking.",
+          "hint": "Negativa de \"she is\" (forma contraída)",
+          "answer": "isn't",
+          "explanation": "\"She isn't cooking\" — is + not contrai pra \"isn't\"."
+        },
+        {
+          "type": "fill_gap",
+          "sentence": "They _____ watching TV; they're playing games.",
+          "hint": "Negativa de \"they are\" (contraída)",
+          "answer": "aren't",
+          "explanation": "\"They aren't watching\" — are + not = aren't."
+        },
+        {
+          "type": "fix_error",
+          "sentence": "She don't working.",
+          "hint": "Present continuous negativa usa \"isn't\"",
+          "answer": "She isn't working.",
+          "explanation": "Present continuous negativa = forma de \"to be\" + not + verb-ing. NÃO usa don't/doesn't (que é present simple). \"She isn't working\"."
+        },
+        {
+          "type": "fix_error",
+          "sentence": "I amn't sleeping.",
+          "hint": "\"Amn't\" não existe em inglês padrão",
+          "answer": "I'm not sleeping.",
+          "explanation": "\"Amn't\" NÃO existe — apenas \"I'm not\". A contração de \"am not\" é só \"'m not\"."
+        },
+        {
+          "type": "read_answer",
+          "passage": "I'm not working today. My brother isn't studying — he's playing games. We aren't eating yet.",
+          "question": "What isn't the brother doing?",
+          "answer": "studying",
+          "explanation": "The text says \"My brother isn't studying\"."
+        }
+      ],
+      "listening_speaking": [
+        {
+          "text": "I'm not working today.",
+          "context": "own negative"
+        },
+        {
+          "text": "She isn't sleeping.",
+          "context": "3rd person negative"
+        },
+        {
+          "text": "They aren't eating.",
+          "context": "plural negative"
+        },
+        {
+          "text": "He isn't working today.",
+          "context": "temporary contrast"
+        },
+        {
+          "text": "We aren't watching TV.",
+          "context": "group negative"
+        }
+      ],
+      "roleplay": {
+        "scenario": "Charlotte faz suposições erradas — você corrige usando present continuous negativo.",
+        "voiced_by": "charlotte",
+        "persona": "Charlotte",
+        "persona_outfit": "charlotte_casual",
+        "time_budget_sec": 90,
+        "opening_line": "Are you working right now? You sound free.",
+        "objectives": [
+          {
+            "id": 1,
+            "label_pt": "Corrigir Charlotte dizendo o que você NÃO está fazendo",
+            "label_en": "Correct Charlotte with what you're NOT doing",
+            "hidden_prompt": "user states 'I'm not + verb-ing' to correct or explain",
+            "hint_pt": "I'm not working today.",
+            "hint_en": "I'm not working today."
+          },
+          {
+            "id": 2,
+            "label_pt": "Dizer o que alguém da família NÃO está fazendo",
+            "label_en": "Say what someone isn't doing",
+            "hidden_prompt": "user states 'He/She isn't + verb-ing'",
+            "hint_pt": "My sister isn't studying.",
+            "hint_en": "My sister isn't studying."
+          },
+          {
+            "id": 3,
+            "label_pt": "Dizer o que vocês NÃO estão fazendo juntos",
+            "label_en": "Say what you aren't doing together",
+            "hidden_prompt": "user states 'We aren't + verb-ing' or similar negative",
+            "hint_pt": "We aren't eating.",
+            "hint_en": "We aren't eating."
+          }
+        ],
+        "closing_cue": "Charlotte fecha com \"Got it!\" quando obj_3 baterem.",
+        "suggested_flow": "**Suggested flow** (referencial, 6 turnos):\n\n1. **Charlotte**: \"Are you working right now? You sound free.\"\n2. **Student**: ~\"I'm not working today.\"\n3. **Charlotte**: \"Your sister?\"\n4. **Student**: ~\"My sister isn't studying.\"\n5. **Charlotte**: \"Group activity?\"\n6. **Student**: ~\"We aren't eating.\"\n7. **Charlotte**: \"Got it!\"",
+        "evaluation_focus": [
+          "am not / isn't / aren't (formas contraídas)",
+          "Sem don't/doesn't no continuous",
+          "Sem \"amn't\""
+        ]
+      },
+      "guided_chat": {
+        "scenario": "Charlotte explora o que NÃO está acontecendo aí agora.",
+        "voiced_by": "charlotte",
+        "persona": "Charlotte",
+        "persona_outfit": "charlotte_casual",
+        "intro_pt": "Charlotte explora cenas negativas — o que NÃO está rolando. Pratica isn't/aren't/'m not + ing.",
+        "opening_message": "What's NOT happening right now?",
+        "objectives": [
+          {
+            "id": 1,
+            "label_pt": "Dizer o que você não está fazendo",
+            "label_en": "Say what you're not doing",
+            "hidden_prompt": "user says 'I'm not + verb-ing'",
+            "hint_pt": "I'm not working.",
+            "hint_en": "I'm not working."
+          },
+          {
+            "id": 2,
+            "label_pt": "Dizer o que alguém não está fazendo",
+            "label_en": "Say what someone isn't doing",
+            "hidden_prompt": "user says 'He/She isn't + verb-ing'",
+            "hint_pt": "My brother isn't sleeping.",
+            "hint_en": "My brother isn't sleeping."
+          },
+          {
+            "id": 3,
+            "label_pt": "Perguntar à Charlotte",
+            "label_en": "Ask Charlotte",
+            "hidden_prompt": "user asks Charlotte with 'How about you?' or 'What aren't you doing?'",
+            "hint_pt": "How about you?",
+            "hint_en": "How about you?"
+          }
+        ],
+        "closing_cue": "Charlotte encerra com \"Cool — clear scene!\" quando obj_3 baterem.",
+        "suggested_script": "**Script** (referencial, 7 turnos):\n\n1. **Charlotte**: \"What's NOT happening right now?\"\n2. **Student**: \"I'm not working.\"\n3. **Charlotte**: \"Sister?\"\n4. **Student**: \"My brother isn't sleeping.\"\n5. **Charlotte**: \"Active home!\"\n6. **Student**: \"How about you?\"\n7. **Charlotte**: \"I'm not eating yet. Cool — clear scene!\"\n\n> N02 chat = LLM puro.\n\n---"
+      }
+    },
+    {
+      "id": "N03",
+      "title": "Está fazendo?",
+      "sub_cefr": "A1",
+      "grammar_focus": "Present continuous questions (Are you...? Is she...?)",
+      "markers": [
+        "qform"
+      ],
+      "real_life_context": "Você liga pra alguém e pergunta o que essa pessoa está fazendo.",
+      "grammar": [
+        {
+          "type": "multiple_choice",
+          "sentence": "_____ you working right now?",
+          "options": [
+            "Are",
+            "Is",
+            "Do"
+          ],
+          "answer": "Are",
+          "explanation": "Pergunta de present continuous: inverte \"to be\". \"Are you working?\" — \"you\" usa \"are\"."
+        },
+        {
+          "type": "multiple_choice",
+          "sentence": "_____ she sleeping?",
+          "options": [
+            "Is",
+            "Are",
+            "Does"
+          ],
+          "answer": "Is",
+          "explanation": "\"Is she sleeping?\" — he/she/it usa \"is\" invertido na pergunta."
+        },
+        {
+          "type": "word_bank",
+          "sentence": "_____ they playing soccer?",
+          "choices": [
+            "Are",
+            "Is",
+            "Do",
+            "Does"
+          ],
+          "answer": "Are",
+          "explanation": "\"Are they playing?\" — they/we/you usam \"are\"."
+        },
+        {
+          "type": "word_bank",
+          "sentence": "What _____ you doing?",
+          "choices": [
+            "are",
+            "is",
+            "do",
+            "does"
+          ],
+          "answer": "are",
+          "explanation": "WH-question com you: \"What are you doing?\" — \"are\" após o WH."
+        },
+        {
+          "type": "fill_gap",
+          "sentence": "_____ he watching TV?",
+          "hint": "To be 3ª pessoa em pergunta",
+          "answer": "Is",
+          "explanation": "\"Is he watching?\" — \"he\" usa \"is\" invertido."
+        },
+        {
+          "type": "fill_gap",
+          "sentence": "What _____ she doing now?",
+          "hint": "To be 3ª pessoa",
+          "answer": "is",
+          "explanation": "\"What is she doing?\" — WH + is + sujeito + verb-ing."
+        },
+        {
+          "type": "fill_gap",
+          "sentence": "Yes, I _____.",
+          "hint": "Resposta curta afirmativa",
+          "answer": "am",
+          "explanation": "\"Yes, I am\" — short answer com to be. Repete o auxiliar."
+        },
+        {
+          "type": "fix_error",
+          "sentence": "Do you working?",
+          "hint": "Present continuous não usa \"do\"",
+          "answer": "Are you working?",
+          "explanation": "Continuous pergunta com \"to be\" invertido, não com \"do/does\". \"Are you working?\", não \"Do you working?\"."
+        },
+        {
+          "type": "fix_error",
+          "sentence": "Is she works?",
+          "hint": "Continuous precisa de verb-ing",
+          "answer": "Is she working?",
+          "explanation": "Após \"Is + sujeito\", verb-ing: \"Is she working?\". \"Works\" seria present simple (sem -ing)."
+        },
+        {
+          "type": "read_answer",
+          "passage": "Q: Are you working today? A: No, I'm not. I'm reading. Q: Is your sister studying? A: Yes, she is. She's preparing for an exam.",
+          "question": "What is the speaker doing?",
+          "answer": "reading",
+          "explanation": "The text says \"I'm reading\"."
+        }
+      ],
+      "listening_speaking": [
+        {
+          "text": "Are you working?",
+          "context": "question to you"
+        },
+        {
+          "text": "Is she sleeping?",
+          "context": "question about her"
+        },
+        {
+          "text": "What are you doing?",
+          "context": "common WH-question"
+        },
+        {
+          "text": "Yes, I am. No, I'm not.",
+          "context": "short answers"
+        },
+        {
+          "text": "Is he reading?",
+          "context": "question about him"
+        }
+      ],
+      "roleplay": {
+        "scenario": "Charlotte simula uma ligação onde quer descobrir o que você está fazendo. Você pergunta de volta.",
+        "voiced_by": "charlotte",
+        "persona": "Charlotte",
+        "persona_outfit": "charlotte_casual",
+        "time_budget_sec": 90,
+        "opening_line": "Hey! Ask me what I'm doing right now.",
+        "objectives": [
+          {
+            "id": 1,
+            "label_pt": "Perguntar à Charlotte o que ela está fazendo",
+            "label_en": "Ask what Charlotte is doing",
+            "hidden_prompt": "user asks 'What are you doing?' or 'Are you + verb-ing?'",
+            "hint_pt": "What are you doing?",
+            "hint_en": "What are you doing?"
+          },
+          {
+            "id": 2,
+            "label_pt": "Perguntar se ela está fazendo algo específico",
+            "label_en": "Ask if she's doing something specific",
+            "hidden_prompt": "user asks 'Are you + verb-ing?' with a specific verb",
+            "hint_pt": "Are you working?",
+            "hint_en": "Are you working?"
+          },
+          {
+            "id": 3,
+            "label_pt": "Perguntar sobre alguém próximo dela",
+            "label_en": "Ask about someone near her",
+            "hidden_prompt": "user asks 'Is your + person + verb-ing?'",
+            "hint_pt": "Is your friend working?",
+            "hint_en": "Is your friend working?"
+          }
+        ],
+        "closing_cue": "Charlotte fecha com \"Great questions!\" quando obj_3 baterem.",
+        "suggested_flow": "**Suggested flow** (referencial, 6 turnos):\n\n1. **Charlotte**: \"Hey! Ask me what I'm doing right now.\"\n2. **Student**: ~\"What are you doing?\"\n3. **Charlotte**: \"Reading. Next?\"\n4. **Student**: ~\"Are you working?\"\n5. **Charlotte**: \"Not yet. Family?\"\n6. **Student**: ~\"Is your friend working?\"\n7. **Charlotte**: \"Great questions!\"",
+        "evaluation_focus": [
+          "Inversão \"to be\" + sujeito",
+          "Sem do/does no continuous",
+          "Verb-ing após o sujeito"
+        ]
+      },
+      "guided_chat": {
+        "scenario": "Charlotte abre chat e quer ser interrogada sobre o momento.",
+        "voiced_by": "charlotte",
+        "persona": "Charlotte",
+        "persona_outfit": "charlotte_casual",
+        "intro_pt": "Charlotte aberta a perguntas sobre o que ela faz agora. Pratica Are you/Is she...?",
+        "opening_message": "Quick! Ask me three things about right now.",
+        "objectives": [
+          {
+            "id": 1,
+            "label_pt": "Perguntar o que Charlotte está fazendo",
+            "label_en": "Ask what Charlotte is doing",
+            "hidden_prompt": "user asks 'What are you doing?'",
+            "hint_pt": "What are you doing?",
+            "hint_en": "What are you doing?"
+          },
+          {
+            "id": 2,
+            "label_pt": "Perguntar se ela está em algum lugar",
+            "label_en": "Ask if she's somewhere",
+            "hidden_prompt": "user asks 'Are you + verb-ing/at place?' or 'Where are you working?'",
+            "hint_pt": "Are you at home?",
+            "hint_en": "Are you at home?"
+          },
+          {
+            "id": 3,
+            "label_pt": "Perguntar sobre alguém",
+            "label_en": "Ask about someone",
+            "hidden_prompt": "user asks 'Is + person + verb-ing?'",
+            "hint_pt": "Is your sister sleeping?",
+            "hint_en": "Is your sister sleeping?"
+          }
+        ],
+        "closing_cue": "Charlotte encerra com \"Loved your curiosity!\" quando obj_3 baterem.",
+        "suggested_script": "**Script** (referencial, 7 turnos):\n\n1. **Charlotte**: \"Quick! Ask me three things about right now.\"\n2. **Student**: \"What are you doing?\"\n3. **Charlotte**: \"Sipping tea.\"\n4. **Student**: \"Are you at home?\"\n5. **Charlotte**: \"Yes, I am.\"\n6. **Student**: \"Is your sister sleeping?\"\n7. **Charlotte**: \"She's reading. Loved your curiosity!\"\n\n> N03 chat = LLM puro.\n\n---"
+      }
+    },
+    {
+      "id": "N04",
+      "title": "Hoje, agora, neste momento",
+      "sub_cefr": "A1",
+      "grammar_focus": "Time expressions for continuous (right now / at the moment / today / this week)",
+      "markers": [],
+      "real_life_context": "Você descreve atividades temporárias — desta semana, deste mês, neste momento.",
+      "grammar": [
+        {
+          "type": "multiple_choice",
+          "sentence": "I'm working _____.",
+          "options": [
+            "right now",
+            "every day",
+            "on Mondays"
+          ],
+          "answer": "right now",
+          "explanation": "\"Right now\" combina com continuous (ação atual). \"Every day\" e \"on Mondays\" combinam com present simple (rotina)."
+        },
+        {
+          "type": "multiple_choice",
+          "sentence": "She's studying English _____.",
+          "options": [
+            "this week",
+            "every week",
+            "on Wednesdays"
+          ],
+          "answer": "this week",
+          "explanation": "\"This week\" indica atividade temporária — combina com continuous. \"Every week\" é rotina (simple)."
+        },
+        {
+          "type": "word_bank",
+          "sentence": "He's working from home _____.",
+          "choices": [
+            "today",
+            "on weekdays",
+            "never",
+            "once"
+          ],
+          "answer": "today",
+          "explanation": "\"Today\" pode indicar temporário (não como sempre) — combina com continuous."
+        },
+        {
+          "type": "word_bank",
+          "sentence": "We're eating outside _____.",
+          "choices": [
+            "at the moment",
+            "never",
+            "always",
+            "on Sundays"
+          ],
+          "answer": "at the moment",
+          "explanation": "\"At the moment\" = agora mesmo. Sinaliza continuous."
+        },
+        {
+          "type": "fill_gap",
+          "sentence": "I'm reading a great book _____.",
+          "hint": "Marcador temporal pra agora",
+          "answer": "right now",
+          "explanation": "\"Right now\" enfatiza a ação no momento. Continuous + right now é combinação natural."
+        },
+        {
+          "type": "fill_gap",
+          "sentence": "She is staying with us _____.",
+          "hint": "Marcador de período curto (semana atual)",
+          "answer": "this week",
+          "explanation": "\"This week\" — período presente e específico. Combina com continuous."
+        },
+        {
+          "type": "fill_gap",
+          "sentence": "They're traveling _____.",
+          "hint": "Marcador de período atual (mês)",
+          "answer": "this month",
+          "explanation": "\"This month\" — atividade temporária em curso."
+        },
+        {
+          "type": "fix_error",
+          "sentence": "I'm working every day right now.",
+          "hint": "\"Every day\" indica rotina, não momento",
+          "answer": "I'm working a lot right now.",
+          "explanation": "\"Every day\" + present continuous é contradição. Use \"every day\" com simple, ou \"right now / today\" com continuous. Aqui: troca pra \"a lot right now\"."
+        },
+        {
+          "type": "fix_error",
+          "sentence": "She is studying on Mondays.",
+          "hint": "\"On Mondays\" pede present simple",
+          "answer": "She studies on Mondays.",
+          "explanation": "\"On Mondays\" indica rotina — use present simple. Pra continuous, marcadores como \"right now\" ou \"this week\"."
+        },
+        {
+          "type": "read_answer",
+          "passage": "I'm working from home this week. My sister is visiting from London. We're having dinner together every night.",
+          "question": "Where is the sister visiting from?",
+          "answer": "London",
+          "explanation": "The text says \"My sister is visiting from London\"."
+        }
+      ],
+      "listening_speaking": [
+        {
+          "text": "I'm working right now.",
+          "context": "right now"
+        },
+        {
+          "text": "She's studying this week.",
+          "context": "this week"
+        },
+        {
+          "text": "He's traveling at the moment.",
+          "context": "at the moment"
+        },
+        {
+          "text": "We're eating outside today.",
+          "context": "today"
+        },
+        {
+          "text": "They're staying with us this month.",
+          "context": "this month"
+        }
+      ],
+      "roleplay": {
+        "scenario": "Charlotte quer saber atividades temporárias suas — desta semana, hoje, agora.",
+        "voiced_by": "charlotte",
+        "persona": "Charlotte",
+        "persona_outfit": "charlotte_casual",
+        "time_budget_sec": 90,
+        "opening_line": "What are you up to this week?",
+        "objectives": [
+          {
+            "id": 1,
+            "label_pt": "Dizer algo temporário desta semana",
+            "label_en": "Say something temporary this week",
+            "hidden_prompt": "user states temporary activity with 'I'm + verb-ing + this week/today/this month'",
+            "hint_pt": "I'm working from home this week.",
+            "hint_en": "I'm working from home this week."
+          },
+          {
+            "id": 2,
+            "label_pt": "Dizer o que está fazendo agora mesmo",
+            "label_en": "Say what you're doing right now",
+            "hidden_prompt": "user states 'I'm + verb-ing + right now/at the moment'",
+            "hint_pt": "I'm studying English right now.",
+            "hint_en": "I'm studying English right now."
+          },
+          {
+            "id": 3,
+            "label_pt": "Dizer atividade temporária de alguém",
+            "label_en": "Say someone else's temporary activity",
+            "hidden_prompt": "user states 'He/She is + verb-ing + temporary marker'",
+            "hint_pt": "My friend is traveling this month.",
+            "hint_en": "My friend is traveling this month."
+          }
+        ],
+        "closing_cue": "Charlotte fecha com \"Sounds busy!\" quando obj_3 baterem.",
+        "suggested_flow": "**Suggested flow** (referencial, 6 turnos):\n\n1. **Charlotte**: \"What are you up to this week?\"\n2. **Student**: ~\"I'm working from home this week.\"\n3. **Charlotte**: \"Right this minute?\"\n4. **Student**: ~\"I'm studying English right now.\"\n5. **Charlotte**: \"Anyone else doing something temporary?\"\n6. **Student**: ~\"My friend is traveling this month.\"\n7. **Charlotte**: \"Sounds busy!\"",
+        "evaluation_focus": [
+          "Marcadores temporais combinam com continuous (right now, this week, today)",
+          "Não usar \"every day\", \"always\" com continuous",
+          "to be + verb-ing + marker"
+        ]
+      },
+      "guided_chat": {
+        "scenario": "Charlotte explora atividades temporárias da semana.",
+        "voiced_by": "charlotte",
+        "persona": "Charlotte",
+        "persona_outfit": "charlotte_casual",
+        "intro_pt": "Charlotte abre chat sobre o que está rolando esta semana/hoje. Continuous + marcadores temporais.",
+        "opening_message": "What's going on this week?",
+        "objectives": [
+          {
+            "id": 1,
+            "label_pt": "Dizer algo desta semana",
+            "label_en": "Say something happening this week",
+            "hidden_prompt": "user says 'I'm + verb-ing + this week/today'",
+            "hint_pt": "I'm studying for an exam this week.",
+            "hint_en": "I'm studying for an exam this week."
+          },
+          {
+            "id": 2,
+            "label_pt": "Dizer algo do momento",
+            "label_en": "Say something at the moment",
+            "hidden_prompt": "user says 'I'm + verb-ing + right now/at the moment'",
+            "hint_pt": "I'm having lunch right now.",
+            "hint_en": "I'm having lunch right now."
+          },
+          {
+            "id": 3,
+            "label_pt": "Perguntar à Charlotte",
+            "label_en": "Ask Charlotte",
+            "hidden_prompt": "user asks 'How about you?' or 'What are you doing this week?'",
+            "hint_pt": "How about you?",
+            "hint_en": "How about you?"
+          }
+        ],
+        "closing_cue": "Charlotte encerra com \"Cool week ahead!\" quando obj_3 baterem.",
+        "suggested_script": "**Script** (referencial, 7 turnos):\n\n1. **Charlotte**: \"What's going on this week?\"\n2. **Student**: \"I'm studying for an exam this week.\"\n3. **Charlotte**: \"Good luck! Right now?\"\n4. **Student**: \"I'm having lunch right now.\"\n5. **Charlotte**: \"Yum.\"\n6. **Student**: \"How about you?\"\n7. **Charlotte**: \"I'm reading a novel this week. Cool week ahead!\"\n\n> N04 chat = LLM puro.\n\n---"
+      }
+    },
+    {
+      "id": "N05",
+      "title": "Simple vs Continuous",
+      "sub_cefr": "A1",
+      "grammar_focus": "Contrast present simple vs present continuous",
+      "markers": [
+        "denso"
+      ],
+      "real_life_context": "Você diferencia o que faz NORMALMENTE (rotina) do que está fazendo AGORA (temporário).",
+      "grammar": [
+        {
+          "type": "multiple_choice",
+          "sentence": "I _____ in São Paulo, but I _____ in NYC this month.",
+          "options": [
+            "live",
+            "am living",
+            "lives"
+          ],
+          "answer": "live / am living"
+        },
+        {
+          "type": "multiple_choice",
+          "sentence": "I _____ in São Paulo (it's my home).",
+          "options": [
+            "live",
+            "am living",
+            "lives"
+          ],
+          "answer": "live",
+          "explanation": "Lugar onde mora habitualmente (rotina) usa present simple: \"I live\". Continuous seria temporário."
+        },
+        {
+          "type": "multiple_choice",
+          "sentence": "I _____ in NYC this month (temporary stay).",
+          "options": [
+            "am living",
+            "live",
+            "lives"
+          ],
+          "answer": "am living",
+          "explanation": "Estada temporária usa present continuous: \"I am living in NYC this month\". \"Live\" seria permanente."
+        },
+        {
+          "type": "word_bank",
+          "sentence": "She usually _____ coffee, but today she _____ tea.",
+          "choices": [
+            "drinks",
+            "is drinking",
+            "drink",
+            "drank"
+          ],
+          "answer": "drinks",
+          "explanation": "\"Usually\" indica rotina → present simple: \"She drinks coffee\". (A segunda parte usaria \"is drinking\" — continuous pra hoje.)"
+        },
+        {
+          "type": "word_bank",
+          "sentence": "We _____ dinner right now.",
+          "choices": [
+            "are having",
+            "have",
+            "has",
+            "had"
+          ],
+          "answer": "are having",
+          "explanation": "\"Right now\" sinaliza continuous: \"We are having dinner\". Present simple seria rotina diária."
+        },
+        {
+          "type": "fill_gap",
+          "sentence": "He _____ to the gym every day, but today he _____ at home.",
+          "hint": "1) Rotina; 2) Está atualmente. Coloque o primeiro.",
+          "answer": "goes",
+          "explanation": "\"Every day\" indica rotina = present simple. \"He goes to the gym\". (E o segundo seria \"is staying\")."
+        },
+        {
+          "type": "fill_gap",
+          "sentence": "She _____ Italian — she's a translator.",
+          "hint": "Profissão / habilidade permanente",
+          "answer": "speaks",
+          "explanation": "Habilidade permanente usa present simple: \"She speaks Italian\". Não continuous."
+        },
+        {
+          "type": "fill_gap",
+          "sentence": "Look! It _____.",
+          "hint": "Continuous (acontecendo agora)",
+          "answer": "is raining",
+          "explanation": "\"Look! It is raining\" — ação que está acontecendo neste momento. Continuous."
+        },
+        {
+          "type": "fix_error",
+          "sentence": "I am working in a bank every day.",
+          "hint": "\"Every day\" pede present simple",
+          "answer": "I work in a bank every day.",
+          "explanation": "\"Every day\" indica rotina — use present simple: \"I work\". Continuous + every day é contradição."
+        },
+        {
+          "type": "fix_error",
+          "sentence": "She drinks coffee right now.",
+          "hint": "\"Right now\" pede continuous",
+          "answer": "She is drinking coffee right now.",
+          "explanation": "\"Right now\" indica ação no momento — use continuous: \"She is drinking\". Present simple seria rotina."
+        },
+        {
+          "type": "read_answer",
+          "passage": "I usually wake up at seven, but today I'm waking up at nine — it's Sunday! My brother always cooks on Sundays. He's making pancakes right now.",
+          "question": "What is the brother making right now?",
+          "answer": "pancakes",
+          "explanation": "The text says \"He's making pancakes right now\"."
+        }
+      ],
+      "listening_speaking": [
+        {
+          "text": "I work in NYC.",
+          "context": "rotina permanente (simple)"
+        },
+        {
+          "text": "I'm working from home today.",
+          "context": "temporário (continuous)"
+        },
+        {
+          "text": "She speaks three languages.",
+          "context": "habilidade (simple)"
+        },
+        {
+          "text": "She is speaking on the phone now.",
+          "context": "ação atual (continuous)"
+        },
+        {
+          "text": "They usually play soccer, but today they're playing tennis.",
+          "context": "contrast"
+        }
+      ],
+      "roleplay": {
+        "scenario": "Charlotte quer entender a diferença entre seu padrão e o momento atual.",
+        "voiced_by": "charlotte",
+        "persona": "Charlotte",
+        "persona_outfit": "charlotte_casual",
+        "time_budget_sec": 90,
+        "opening_line": "Tell me one thing you always do and one thing you're doing now.",
+        "objectives": [
+          {
+            "id": 1,
+            "label_pt": "Dizer algo da rotina (simple)",
+            "label_en": "Say something routine (simple)",
+            "hidden_prompt": "user states routine with 'I + verb' + frequency/place adverb (every day, on Mondays, usually, in NYC, etc.)",
+            "hint_pt": "I work in São Paulo.",
+            "hint_en": "I work in São Paulo."
+          },
+          {
+            "id": 2,
+            "label_pt": "Dizer algo do momento (continuous)",
+            "label_en": "Say something happening now",
+            "hidden_prompt": "user states current with 'I'm + verb-ing + now/today/this week'",
+            "hint_pt": "I'm studying English right now.",
+            "hint_en": "I'm studying English right now."
+          },
+          {
+            "id": 3,
+            "label_pt": "Fazer contraste claro",
+            "label_en": "Make a clear contrast",
+            "hidden_prompt": "user contrasts routine vs current with 'Usually I + verb, but today/now I'm + verb-ing'",
+            "hint_pt": "I usually drink coffee, but today I'm drinking tea.",
+            "hint_en": "I usually drink coffee, but today I'm drinking tea."
+          }
+        ],
+        "closing_cue": "Charlotte fecha com \"Got the contrast!\" quando obj_3 baterem.",
+        "suggested_flow": "**Suggested flow** (referencial, 6 turnos):\n\n1. **Charlotte**: \"Tell me one thing you always do and one thing you're doing now.\"\n2. **Student**: ~\"I work in São Paulo.\"\n3. **Charlotte**: \"And now?\"\n4. **Student**: ~\"I'm studying English right now.\"\n5. **Charlotte**: \"Nice. Can you contrast something?\"\n6. **Student**: ~\"I usually drink coffee, but today I'm drinking tea.\"\n7. **Charlotte**: \"Got the contrast!\"",
+        "evaluation_focus": [
+          "Simple pra rotina + frequência",
+          "Continuous pra agora/temporário",
+          "Contraste claro com \"but\""
+        ]
+      },
+      "guided_chat": {
+        "scenario": "Charlotte conversa sobre padrões vs hoje — você diferencia rotina e momento.",
+        "voiced_by": "charlotte",
+        "persona": "Charlotte",
+        "persona_outfit": "charlotte_casual",
+        "intro_pt": "Charlotte quer entender o contraste entre o que você faz normalmente vs agora. Simple vs Continuous.",
+        "opening_message": "Routine vs now — show me both!",
+        "objectives": [
+          {
+            "id": 1,
+            "label_pt": "Dizer algo da rotina",
+            "label_en": "Say a routine thing",
+            "hidden_prompt": "user says 'I + verb' with routine adverb",
+            "hint_pt": "I usually have coffee.",
+            "hint_en": "I usually have coffee."
+          },
+          {
+            "id": 2,
+            "label_pt": "Dizer algo do momento",
+            "label_en": "Say a current thing",
+            "hidden_prompt": "user says 'I'm + verb-ing + now/today'",
+            "hint_pt": "I'm drinking tea today.",
+            "hint_en": "I'm drinking tea today."
+          },
+          {
+            "id": 3,
+            "label_pt": "Perguntar à Charlotte",
+            "label_en": "Ask Charlotte",
+            "hidden_prompt": "user asks Charlotte for the contrast with 'How about you?' or similar",
+            "hint_pt": "How about you?",
+            "hint_en": "How about you?"
+          }
+        ],
+        "closing_cue": "Charlotte encerra com \"Tense mastery!\" quando obj_3 baterem.",
+        "suggested_script": "**Script** (referencial, 7 turnos):\n\n1. **Charlotte**: \"Routine vs now — show me both!\"\n2. **Student**: \"I usually have coffee.\"\n3. **Charlotte**: \"And now?\"\n4. **Student**: \"I'm drinking tea today.\"\n5. **Charlotte**: \"Cool contrast.\"\n6. **Student**: \"How about you?\"\n7. **Charlotte**: \"I always read, but I'm watching a movie right now. Tense mastery!\"\n\n> N05 chat = LLM puro.\n\n---"
+      }
+    }
+  ],
+  "cross_unit_consolidation": [
+    "Present continuous positivo: to be + verb-ing (I'm working, she's reading)",
+    "Present continuous negativo: am not / isn't / aren't + verb-ing",
+    "Present continuous questions: inversão de \"to be\" (Are you working? What is she doing?)",
+    "Spelling -ing: running (dobra), making (drop e), studying (regular)",
+    "Marcadores temporais: right now / at the moment / today / this week (combinam com continuous)",
+    "Marcadores de rotina: every day / always / on Mondays (combinam com simple)",
+    "Contraste claro: \"I usually X, but I'm Ying right now\""
+  ]
+}

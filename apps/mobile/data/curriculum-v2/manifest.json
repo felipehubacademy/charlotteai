@@ -40,8 +40,23 @@
         "id": "M08",
         "title": "Gostos",
         "file": "novice/M08.json"
+      },
+      {
+        "id": "M09",
+        "title": "Agora mesmo",
+        "file": "novice/M09.json"
+      },
+      {
+        "id": "M10",
+        "title": "Comida e bebida",
+        "file": "novice/M10.json"
+      },
+      {
+        "id": "M11",
+        "title": "Compras",
+        "file": "novice/M11.json"
       }
     ]
   },
-  "generated_at": "2026-05-30T17:55:45.055Z"
+  "generated_at": "2026-05-30T18:05:56.863Z"
 }

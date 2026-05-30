@@ -36,9 +36,9 @@
 | [M06](novice/M06-o-que-faco-3-pessoa.md) | O que faço (3ª pessoa) | 5 (N01–N05) | done |
 | [M07](novice/M07-habilidades.md) | Habilidades | 5 (N01–N05) | done |
 | [M08](novice/M08-gostos.md) | Gostos | 5 (N01–N05) | done |
-| M09 | Agora mesmo | 5 (N01–N05) | todo |
-| M10 | Comida e bebida | 5 (N01–N05) | todo |
-| M11 | Compras | 5 (N01–N05) | todo |
+| [M09](novice/M09-agora-mesmo.md) | Agora mesmo | 5 (N01–N05) | done |
+| [M10](novice/M10-comida-bebida.md) | Comida e bebida | 5 (N01–N05) | done |
+| [M11](novice/M11-compras.md) | Compras | 5 (N01–N05) | done |
 
 ### Bloco A2 — consolidação + passado + futuro (M12–M22)
 | File | Module | Units | Status |

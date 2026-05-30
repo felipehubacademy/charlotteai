@@ -1,0 +1,1026 @@
+{
+  "id": "M10",
+  "title": "Comida e bebida",
+  "level": "Novice",
+  "block": "A1",
+  "units_range": "N01–N05",
+  "theme": "Refeições, comida e bebida, restaurante",
+  "goal": "Aluno sai sabendo falar de comida e bebida com contáveis/incontáveis, some/any, how much/how many, e fazer pedidos básicos em restaurante.",
+  "connects_to": "M11 (Compras) — depois de pedir comida, aprende a comprar coisas em loja com \"I'd like\" e demonstrativos.",
+  "module_chunks": [
+    "countable: apple, sandwich, egg, banana, cookie",
+    "uncountable: water, milk, bread, rice, sugar, cheese, juice",
+    "some / any",
+    "How much...? (uncountable)",
+    "How many...? (countable)",
+    "I'd like + food/drink (chunk)",
+    "Can I have...? / Could I have...?",
+    "A glass of / a cup of / a bottle of / a slice of",
+    "It's delicious / It's tasty / It's awful",
+    "breakfast / lunch / dinner / snack",
+    "the menu / the bill / the check",
+    "waiter / waitress"
+  ],
+  "units": [
+    {
+      "id": "N01",
+      "title": "Contáveis e incontáveis",
+      "sub_cefr": "A1",
+      "grammar_focus": "Countable vs uncountable nouns",
+      "markers": [
+        "denso"
+      ],
+      "real_life_context": "Você diferencia comidas que se contam (uma maçã, dois pães) de coisas que não se contam (água, leite).",
+      "grammar": [
+        {
+          "type": "multiple_choice",
+          "sentence": "I have _____ apples in my bag.",
+          "options": [
+            "two",
+            "much",
+            "some apple"
+          ],
+          "answer": "two",
+          "explanation": "\"Apple\" é contável: \"one apple, two apples, three apples\". Plural com -s."
+        },
+        {
+          "type": "multiple_choice",
+          "sentence": "I drink a lot of _____.",
+          "options": [
+            "water",
+            "waters",
+            "a water"
+          ],
+          "answer": "water",
+          "explanation": "\"Water\" é incontável — não tem plural (\"waters\" é raro). Sem -s. Não usa \"a\" antes."
+        },
+        {
+          "type": "word_bank",
+          "sentence": "She eats _____ banana every day.",
+          "choices": [
+            "a",
+            "much",
+            "two of",
+            "many"
+          ],
+          "answer": "a",
+          "explanation": "Singular contável: \"a banana\" (uma banana). Para plurais usaria \"two bananas\"."
+        },
+        {
+          "type": "word_bank",
+          "sentence": "We need _____ milk.",
+          "choices": [
+            "some",
+            "a",
+            "many",
+            "one"
+          ],
+          "answer": "some",
+          "explanation": "\"Milk\" incontável → \"some milk\" (um pouco de leite). Não usa \"a\" nem \"many\"."
+        },
+        {
+          "type": "fill_gap",
+          "sentence": "I'd like _____ bread, please.",
+          "hint": "Quantidade indefinida com incontável",
+          "answer": "some",
+          "explanation": "\"Bread\" é incontável. \"Some bread\" = \"um pouco de pão / pão\" (quantidade não especificada)."
+        },
+        {
+          "type": "fill_gap",
+          "sentence": "She has three _____ in her lunch.",
+          "hint": "Plural de \"sandwich\"",
+          "answer": "sandwiches",
+          "explanation": "\"Sandwich\" termina em -ch, plural com -es: \"sandwiches\". Contável."
+        },
+        {
+          "type": "fill_gap",
+          "sentence": "Can I have _____ juice?",
+          "hint": "Quantidade indefinida (juice = incontável)",
+          "answer": "some",
+          "explanation": "\"Juice\" é incontável → \"some juice\". Padrão pra pedir bebida."
+        },
+        {
+          "type": "fix_error",
+          "sentence": "I'd like a water, please.",
+          "hint": "\"Water\" é incontável",
+          "answer": "I'd like some water, please.",
+          "explanation": "\"Water\" é incontável, não usa \"a\". Use \"some water\" ou \"a glass of water\" (com unidade)."
+        },
+        {
+          "type": "fix_error",
+          "sentence": "I have two breads.",
+          "hint": "\"Bread\" é incontável",
+          "answer": "I have some bread.",
+          "explanation": "\"Bread\" não tem plural com -s. Pra quantificar: \"two pieces of bread\", \"some bread\", \"a slice of bread\"."
+        },
+        {
+          "type": "read_answer",
+          "passage": "For breakfast I have two eggs, some bread, and a cup of coffee. My sister has one apple and some yogurt.",
+          "question": "How many eggs does the speaker have?",
+          "answer": "two",
+          "explanation": "The text says \"I have two eggs\"."
+        }
+      ],
+      "listening_speaking": [
+        {
+          "text": "I have two apples.",
+          "context": "countable plural"
+        },
+        {
+          "text": "I drink a lot of water.",
+          "context": "uncountable"
+        },
+        {
+          "text": "Can I have some bread?",
+          "context": "uncountable + some"
+        },
+        {
+          "text": "I'd like a sandwich.",
+          "context": "countable singular + a"
+        },
+        {
+          "text": "She eats some cheese every day.",
+          "context": "uncountable habit"
+        }
+      ],
+      "roleplay": {
+        "scenario": "Charlotte pergunta o que você come/bebe — você diferencia contáveis e incontáveis naturalmente.",
+        "voiced_by": "charlotte",
+        "persona": "Charlotte",
+        "persona_outfit": "charlotte_casual",
+        "time_budget_sec": 90,
+        "opening_line": "Tell me what you ate today — anything countable?",
+        "objectives": [
+          {
+            "id": 1,
+            "label_pt": "Dizer comida contável (com número)",
+            "label_en": "Say a countable food with a number",
+            "hidden_prompt": "user states countable food with 'I ate/had + number + plural noun' (two apples, three sandwiches, etc.)",
+            "hint_pt": "I had two eggs.",
+            "hint_en": "I had two eggs."
+          },
+          {
+            "id": 2,
+            "label_pt": "Dizer bebida incontável com 'some'",
+            "label_en": "Say an uncountable drink with 'some'",
+            "hidden_prompt": "user states uncountable with 'some + noun' (some water, some milk, some coffee)",
+            "hint_pt": "I had some coffee.",
+            "hint_en": "I had some coffee."
+          },
+          {
+            "id": 3,
+            "label_pt": "Dizer outra comida ou bebida",
+            "label_en": "Say one more food or drink",
+            "hidden_prompt": "user mentions another food/drink, countable or uncountable",
+            "hint_pt": "I had a sandwich.",
+            "hint_en": "I had a sandwich."
+          }
+        ],
+        "closing_cue": "Charlotte fecha com \"Yum!\" quando obj_3 baterem.",
+        "suggested_flow": "**Suggested flow** (referencial, 6 turnos):\n\n1. **Charlotte**: \"Tell me what you ate today — anything countable?\"\n2. **Student**: ~\"I had two eggs.\"\n3. **Charlotte**: \"Drink?\"\n4. **Student**: ~\"I had some coffee.\"\n5. **Charlotte**: \"Anything else?\"\n6. **Student**: ~\"I had a sandwich.\"\n7. **Charlotte**: \"Yum!\"",
+        "evaluation_focus": [
+          "Contáveis com número/a/an",
+          "Incontáveis com some/much",
+          "Sem plural em incontáveis"
+        ]
+      },
+      "guided_chat": {
+        "scenario": "Charlotte conversa sobre o que vocês comem no dia-a-dia.",
+        "voiced_by": "charlotte",
+        "persona": "Charlotte",
+        "persona_outfit": "charlotte_casual",
+        "intro_pt": "Charlotte abre chat sobre comida. Pratica contáveis (a/an/número) e incontáveis (some).",
+        "opening_message": "What did you have for breakfast?",
+        "objectives": [
+          {
+            "id": 1,
+            "label_pt": "Dizer comida contável",
+            "label_en": "Say a countable food",
+            "hidden_prompt": "user says 'I had + number/a/an + countable food'",
+            "hint_pt": "I had a sandwich.",
+            "hint_en": "I had a sandwich."
+          },
+          {
+            "id": 2,
+            "label_pt": "Dizer bebida incontável",
+            "label_en": "Say uncountable drink",
+            "hidden_prompt": "user says 'I had some + uncountable' or 'a cup of + drink'",
+            "hint_pt": "I had some juice.",
+            "hint_en": "I had some juice."
+          },
+          {
+            "id": 3,
+            "label_pt": "Perguntar à Charlotte",
+            "label_en": "Ask Charlotte",
+            "hidden_prompt": "user asks Charlotte with 'How about you?' or 'And you?'",
+            "hint_pt": "How about you?",
+            "hint_en": "How about you?"
+          }
+        ],
+        "closing_cue": "Charlotte encerra com \"Same vibes!\" quando obj_3 baterem.",
+        "suggested_script": "**Script** (referencial, 7 turnos):\n\n1. **Charlotte**: \"What did you have for breakfast?\"\n2. **Student**: \"I had a sandwich.\"\n3. **Charlotte**: \"Drink?\"\n4. **Student**: \"I had some juice.\"\n5. **Charlotte**: \"Healthy!\"\n6. **Student**: \"How about you?\"\n7. **Charlotte**: \"Some yogurt and coffee. Same vibes!\"\n\n> N01 chat = LLM puro.\n\n---"
+      }
+    },
+    {
+      "id": "N02",
+      "title": "Some ou any?",
+      "sub_cefr": "A1",
+      "grammar_focus": "some (afirmativas/pedidos) vs any (negativas/perguntas)",
+      "markers": [
+        "denso"
+      ],
+      "real_life_context": "Você abre a geladeira e descreve o que tem (some) ou não tem (any).",
+      "grammar": [
+        {
+          "type": "multiple_choice",
+          "sentence": "I have _____ apples in the fridge.",
+          "options": [
+            "some",
+            "any",
+            "much"
+          ],
+          "answer": "some",
+          "explanation": "Afirmativa → \"some\". \"I have some apples\" = \"Tenho algumas maçãs\". Some pra positivo."
+        },
+        {
+          "type": "multiple_choice",
+          "sentence": "We don't have _____ milk.",
+          "options": [
+            "any",
+            "some",
+            "much"
+          ],
+          "answer": "any",
+          "explanation": "Negativa → \"any\". \"We don't have any milk\" = \"Não temos leite (nenhum)\". Any pra negativo."
+        },
+        {
+          "type": "word_bank",
+          "sentence": "Is there _____ juice?",
+          "choices": [
+            "any",
+            "some",
+            "many",
+            "one"
+          ],
+          "answer": "any",
+          "explanation": "Pergunta → \"any\". \"Is there any juice?\" = \"Tem suco?\". Any em perguntas."
+        },
+        {
+          "type": "word_bank",
+          "sentence": "Can I have _____ water, please?",
+          "choices": [
+            "some",
+            "any",
+            "many",
+            "much"
+          ],
+          "answer": "some",
+          "explanation": "Pedido educado → \"some\" (exceção à regra de pergunta). \"Can I have some water?\" — chunk fixo pra pedidos."
+        },
+        {
+          "type": "fill_gap",
+          "sentence": "There are _____ cookies on the table.",
+          "hint": "Afirmativa (positiva)",
+          "answer": "some",
+          "explanation": "\"There are some cookies\" — afirmativa usa some."
+        },
+        {
+          "type": "fill_gap",
+          "sentence": "I don't have _____ time today.",
+          "hint": "Negativa",
+          "answer": "any",
+          "explanation": "\"I don't have any time\" — negativa usa any (= nenhum/nenhuma)."
+        },
+        {
+          "type": "fill_gap",
+          "sentence": "Do you have _____ questions?",
+          "hint": "Pergunta",
+          "answer": "any",
+          "explanation": "\"Do you have any questions?\" — pergunta usa any. Chunk muito comum."
+        },
+        {
+          "type": "fix_error",
+          "sentence": "I have any bananas in my bag.",
+          "hint": "Afirmativa pede \"some\"",
+          "answer": "I have some bananas in my bag.",
+          "explanation": "Afirmativa usa SOME, não any. \"I have some bananas\"."
+        },
+        {
+          "type": "fix_error",
+          "sentence": "We don't have some bread.",
+          "hint": "Negativa pede \"any\"",
+          "answer": "We don't have any bread.",
+          "explanation": "Negativa usa ANY, não some. \"We don't have any bread\"."
+        },
+        {
+          "type": "read_answer",
+          "passage": "I have some bread but I don't have any milk. Is there any cheese? Yes, there's some cheese in the fridge.",
+          "question": "What does the speaker NOT have?",
+          "answer": "milk",
+          "explanation": "The text says \"I don't have any milk\"."
+        }
+      ],
+      "listening_speaking": [
+        {
+          "text": "I have some apples.",
+          "context": "affirmative some"
+        },
+        {
+          "text": "We don't have any milk.",
+          "context": "negative any"
+        },
+        {
+          "text": "Is there any juice?",
+          "context": "question any"
+        },
+        {
+          "text": "Can I have some water?",
+          "context": "polite request some"
+        },
+        {
+          "text": "There's some bread on the table.",
+          "context": "affirmative + there's"
+        }
+      ],
+      "roleplay": {
+        "scenario": "Charlotte simula um amigo perguntando o que tem na sua cozinha — você responde com some/any.",
+        "voiced_by": "charlotte",
+        "persona": "Charlotte",
+        "persona_outfit": "charlotte_casual",
+        "time_budget_sec": 90,
+        "opening_line": "What's in your fridge right now?",
+        "objectives": [
+          {
+            "id": 1,
+            "label_pt": "Dizer o que TEM (afirmativa com 'some')",
+            "label_en": "Say what's there (affirmative some)",
+            "hidden_prompt": "user states what's there with 'I have some + noun' or 'There is/are some + noun'",
+            "hint_pt": "I have some milk.",
+            "hint_en": "I have some milk."
+          },
+          {
+            "id": 2,
+            "label_pt": "Dizer o que NÃO TEM (negativa com 'any')",
+            "label_en": "Say what isn't there (negative any)",
+            "hidden_prompt": "user states what's missing with 'I don't have any + noun' or 'There isn't any + noun'",
+            "hint_pt": "I don't have any cheese.",
+            "hint_en": "I don't have any cheese."
+          },
+          {
+            "id": 3,
+            "label_pt": "Perguntar à Charlotte se ela tem algo (com 'any')",
+            "label_en": "Ask Charlotte with 'any'",
+            "hidden_prompt": "user asks 'Do you have any + noun?' or 'Is there any + noun?'",
+            "hint_pt": "Do you have any apples?",
+            "hint_en": "Do you have any apples?"
+          }
+        ],
+        "closing_cue": "Charlotte fecha com \"Got the fridge map!\" quando obj_3 baterem.",
+        "suggested_flow": "**Suggested flow** (referencial, 6 turnos):\n\n1. **Charlotte**: \"What's in your fridge right now?\"\n2. **Student**: ~\"I have some milk.\"\n3. **Charlotte**: \"What's missing?\"\n4. **Student**: ~\"I don't have any cheese.\"\n5. **Charlotte**: \"Ask me about my fridge!\"\n6. **Student**: ~\"Do you have any apples?\"\n7. **Charlotte**: \"Got the fridge map!\"",
+        "evaluation_focus": [
+          "Some em afirmativas e pedidos",
+          "Any em negativas e perguntas",
+          "Concordância número/tipo"
+        ]
+      },
+      "guided_chat": {
+        "scenario": "Charlotte conversa sobre estoque de cozinha pelo chat.",
+        "voiced_by": "charlotte",
+        "persona": "Charlotte",
+        "persona_outfit": "charlotte_casual",
+        "intro_pt": "Charlotte explora seu estoque de cozinha. Pratica some/any em contextos diferentes.",
+        "opening_message": "Got any snacks?",
+        "objectives": [
+          {
+            "id": 1,
+            "label_pt": "Dizer o que tem",
+            "label_en": "Say what you have",
+            "hidden_prompt": "user says 'I have some + noun' or 'Yes, I have some + noun'",
+            "hint_pt": "Yes, I have some cookies.",
+            "hint_en": "Yes, I have some cookies."
+          },
+          {
+            "id": 2,
+            "label_pt": "Dizer o que não tem",
+            "label_en": "Say what you don't have",
+            "hidden_prompt": "user says 'I don't have any + noun'",
+            "hint_pt": "I don't have any chocolate.",
+            "hint_en": "I don't have any chocolate."
+          },
+          {
+            "id": 3,
+            "label_pt": "Perguntar à Charlotte",
+            "label_en": "Ask Charlotte",
+            "hidden_prompt": "user asks 'Do you have any + noun?' or 'How about you?'",
+            "hint_pt": "Do you have any snacks?",
+            "hint_en": "Do you have any snacks?"
+          }
+        ],
+        "closing_cue": "Charlotte encerra com \"Snack swap!\" quando obj_3 baterem.",
+        "suggested_script": "**Script** (referencial, 7 turnos):\n\n1. **Charlotte**: \"Got any snacks?\"\n2. **Student**: \"Yes, I have some cookies.\"\n3. **Charlotte**: \"Chocolate?\"\n4. **Student**: \"I don't have any chocolate.\"\n5. **Charlotte**: \"Sad.\"\n6. **Student**: \"Do you have any?\"\n7. **Charlotte**: \"Yes! Tons of chocolate. Snack swap!\"\n\n> N02 chat = LLM puro.\n\n---"
+      }
+    },
+    {
+      "id": "N03",
+      "title": "Quanto custa, quantos tem",
+      "sub_cefr": "A1",
+      "grammar_focus": "How much (uncountable, price) vs How many (countable)",
+      "markers": [
+        "denso"
+      ],
+      "real_life_context": "Você pergunta quantidade ou preço em uma loja ou no mercado.",
+      "grammar": [
+        {
+          "type": "multiple_choice",
+          "sentence": "_____ apples do you have?",
+          "options": [
+            "How many",
+            "How much",
+            "How"
+          ],
+          "answer": "How many",
+          "explanation": "\"Apples\" é contável → \"How many\". \"How much\" é pra incontável ou preço."
+        },
+        {
+          "type": "multiple_choice",
+          "sentence": "_____ water do you drink?",
+          "options": [
+            "How much",
+            "How many",
+            "How"
+          ],
+          "answer": "How much",
+          "explanation": "\"Water\" é incontável → \"How much\". Quantidade de líquido/massa: how much."
+        },
+        {
+          "type": "word_bank",
+          "sentence": "_____ is this sandwich?",
+          "choices": [
+            "How much",
+            "How many",
+            "How",
+            "What"
+          ],
+          "answer": "How much",
+          "explanation": "Preço sempre \"How much\": \"How much is it?\" = \"Quanto custa?\". Mesmo que o item seja contável, o preço é uncountable."
+        },
+        {
+          "type": "word_bank",
+          "sentence": "_____ eggs are in the fridge?",
+          "choices": [
+            "How many",
+            "How much",
+            "How",
+            "What"
+          ],
+          "answer": "How many",
+          "explanation": "\"Eggs\" contável → \"How many\"."
+        },
+        {
+          "type": "fill_gap",
+          "sentence": "_____ milk do we need?",
+          "hint": "Quantidade de incontável",
+          "answer": "How much",
+          "explanation": "\"Milk\" incontável → \"How much\". \"How much milk?\"."
+        },
+        {
+          "type": "fill_gap",
+          "sentence": "_____ cookies are there?",
+          "hint": "Quantidade de contável",
+          "answer": "How many",
+          "explanation": "\"Cookies\" contável → \"How many cookies?\"."
+        },
+        {
+          "type": "fill_gap",
+          "sentence": "_____ does this coffee cost?",
+          "hint": "Preço",
+          "answer": "How much",
+          "explanation": "Preço sempre \"how much\". \"How much does it cost?\" — pergunta padrão."
+        },
+        {
+          "type": "fix_error",
+          "sentence": "How many milk do you drink?",
+          "hint": "Milk é incontável",
+          "answer": "How much milk do you drink?",
+          "explanation": "Milk não conta — \"how much milk\". \"How many\" só pra plurais contáveis."
+        },
+        {
+          "type": "fix_error",
+          "sentence": "How much sandwiches are there?",
+          "hint": "Sandwiches é contável (plural)",
+          "answer": "How many sandwiches are there?",
+          "explanation": "Plurais contáveis usam \"how many\". \"How many sandwiches?\"."
+        },
+        {
+          "type": "read_answer",
+          "passage": "Q: How much is the coffee? A: It's $3. Q: How many cookies do you want? A: Three, please.",
+          "question": "How many cookies does the customer want?",
+          "answer": "three",
+          "explanation": "The text says \"Three, please\"."
+        }
+      ],
+      "listening_speaking": [
+        {
+          "text": "How many apples?",
+          "context": "countable question"
+        },
+        {
+          "text": "How much milk?",
+          "context": "uncountable question"
+        },
+        {
+          "text": "How much is it?",
+          "context": "price chunk"
+        },
+        {
+          "text": "How many people are here?",
+          "context": "countable plural"
+        },
+        {
+          "text": "How much sugar do you want?",
+          "context": "uncountable + want"
+        }
+      ],
+      "roleplay": {
+        "scenario": "Charlotte simula um vendedor — você pergunta quantidades e preços de comidas.",
+        "voiced_by": "charlotte",
+        "persona": "Charlotte",
+        "persona_outfit": "charlotte_casual",
+        "time_budget_sec": 90,
+        "opening_line": "Welcome! What would you like to know?",
+        "objectives": [
+          {
+            "id": 1,
+            "label_pt": "Perguntar quantos de algo contável",
+            "label_en": "Ask 'how many' for countable",
+            "hidden_prompt": "user asks 'How many + plural countable + are there/do you have?'",
+            "hint_pt": "How many apples are there?",
+            "hint_en": "How many apples are there?"
+          },
+          {
+            "id": 2,
+            "label_pt": "Perguntar quanto de algo incontável",
+            "label_en": "Ask 'how much' for uncountable",
+            "hidden_prompt": "user asks 'How much + uncountable + do you have?'",
+            "hint_pt": "How much milk do you have?",
+            "hint_en": "How much milk do you have?"
+          },
+          {
+            "id": 3,
+            "label_pt": "Perguntar o preço",
+            "label_en": "Ask the price",
+            "hidden_prompt": "user asks 'How much is + item?' or 'How much does it cost?'",
+            "hint_pt": "How much is the coffee?",
+            "hint_en": "How much is the coffee?"
+          }
+        ],
+        "closing_cue": "Charlotte fecha com \"Great shopping skills!\" quando obj_3 baterem.",
+        "suggested_flow": "**Suggested flow** (referencial, 6 turnos):\n\n1. **Charlotte**: \"Welcome! What would you like to know?\"\n2. **Student**: ~\"How many apples are there?\"\n3. **Charlotte**: \"Twenty.\"\n4. **Student**: ~\"How much milk do you have?\"\n5. **Charlotte**: \"Plenty.\"\n6. **Student**: ~\"How much is the coffee?\"\n7. **Charlotte**: \"Three dollars. Great shopping skills!\"",
+        "evaluation_focus": [
+          "How many com contável plural",
+          "How much com incontável",
+          "\"How much is it?\" pra preço"
+        ]
+      },
+      "guided_chat": {
+        "scenario": "Charlotte conversa sobre o estoque dela com você perguntando quantidades.",
+        "voiced_by": "charlotte",
+        "persona": "Charlotte",
+        "persona_outfit": "charlotte_casual",
+        "intro_pt": "Charlotte tem uma despensa. Pratica how much / how many em perguntas.",
+        "opening_message": "Ask me about my groceries!",
+        "objectives": [
+          {
+            "id": 1,
+            "label_pt": "Perguntar quantidade contável",
+            "label_en": "Ask 'how many'",
+            "hidden_prompt": "user asks 'How many + plural countable?'",
+            "hint_pt": "How many eggs?",
+            "hint_en": "How many eggs?"
+          },
+          {
+            "id": 2,
+            "label_pt": "Perguntar quantidade incontável",
+            "label_en": "Ask 'how much'",
+            "hidden_prompt": "user asks 'How much + uncountable?'",
+            "hint_pt": "How much bread?",
+            "hint_en": "How much bread?"
+          },
+          {
+            "id": 3,
+            "label_pt": "Perguntar preço",
+            "label_en": "Ask the price",
+            "hidden_prompt": "user asks 'How much is + item?' or 'How much does + item + cost?'",
+            "hint_pt": "How much is the cheese?",
+            "hint_en": "How much is the cheese?"
+          }
+        ],
+        "closing_cue": "Charlotte encerra com \"Shopping list complete!\" quando obj_3 baterem.",
+        "suggested_script": "**Script** (referencial, 7 turnos):\n\n1. **Charlotte**: \"Ask me about my groceries!\"\n2. **Student**: \"How many eggs?\"\n3. **Charlotte**: \"Twelve.\"\n4. **Student**: \"How much bread?\"\n5. **Charlotte**: \"Two loaves.\"\n6. **Student**: \"How much is the cheese?\"\n7. **Charlotte**: \"Five bucks. Shopping list complete!\"\n\n> N03 chat = LLM puro.\n\n---"
+      }
+    },
+    {
+      "id": "N04",
+      "title": "No restaurante",
+      "sub_cefr": "A1",
+      "grammar_focus": "Restaurant chunks (I'd like, Can I have, the bill)",
+      "markers": [],
+      "real_life_context": "Você está num restaurante fazendo pedidos.",
+      "grammar": [
+        {
+          "type": "multiple_choice",
+          "sentence": "_____ a coffee, please.",
+          "options": [
+            "I'd like",
+            "I want",
+            "Give me"
+          ],
+          "answer": "I'd like",
+          "explanation": "\"I'd like\" (I would like) é o chunk educado pra pedir. \"I want\" é direto demais; \"Give me\" é rude."
+        },
+        {
+          "type": "multiple_choice",
+          "sentence": "_____ I have the menu?",
+          "options": [
+            "Can",
+            "Do",
+            "Are"
+          ],
+          "answer": "Can",
+          "explanation": "\"Can I have...?\" é pedido educado padrão em restaurantes. Sem \"do\"."
+        },
+        {
+          "type": "word_bank",
+          "sentence": "I'd like _____ pizza, please.",
+          "choices": [
+            "a",
+            "the",
+            "some",
+            "one"
+          ],
+          "answer": "a",
+          "explanation": "\"A pizza\" — pedido singular contável. \"I'd like a pizza\"."
+        },
+        {
+          "type": "word_bank",
+          "sentence": "_____ the bill, please.",
+          "choices": [
+            "Can I have",
+            "I want",
+            "Bring me",
+            "Give me"
+          ],
+          "answer": "Can I have",
+          "explanation": "\"Can I have the bill, please?\" — pedido educado padrão pra fechar conta."
+        },
+        {
+          "type": "fill_gap",
+          "sentence": "I'd _____ a sandwich and a juice.",
+          "hint": "Forma curta de \"would\"",
+          "answer": "like",
+          "explanation": "\"I'd like\" = \"I would like\" (eu gostaria). Contração obrigatória em fala."
+        },
+        {
+          "type": "fill_gap",
+          "sentence": "Could I _____ the menu, please?",
+          "hint": "Verbo \"ter / receber\" no pedido",
+          "answer": "have",
+          "explanation": "\"Could I have the menu?\" — versão ainda mais educada que \"Can I have\". \"Have\" no sentido de receber."
+        },
+        {
+          "type": "fill_gap",
+          "sentence": "_____ would you like to drink?",
+          "hint": "Pronome interrogativo",
+          "answer": "What",
+          "explanation": "\"What would you like to drink?\" — pergunta padrão do garçom."
+        },
+        {
+          "type": "fix_error",
+          "sentence": "I want one coffee.",
+          "hint": "Mais educado em restaurante",
+          "answer": "I'd like a coffee.",
+          "explanation": "\"I want\" é direto demais em contextos sociais/comerciais. \"I'd like a coffee\" é o padrão educado. Também \"a coffee\" (não \"one coffee\")."
+        },
+        {
+          "type": "fix_error",
+          "sentence": "Give me the menu.",
+          "hint": "Forma educada de pedir",
+          "answer": "Can I have the menu, please?",
+          "explanation": "\"Give me\" sem \"please\" soa rude. \"Can I have... please?\" é o padrão educado."
+        },
+        {
+          "type": "read_answer",
+          "passage": "Waiter: What would you like? Customer: I'd like a pasta and a glass of water. Waiter: Anything else? Customer: No, that's all. Can I have the bill?",
+          "question": "What does the customer order to drink?",
+          "answer": "a glass of water (or \"water\")",
+          "explanation": "The text says \"a glass of water\"."
+        }
+      ],
+      "listening_speaking": [
+        {
+          "text": "I'd like a coffee, please.",
+          "context": "polite order"
+        },
+        {
+          "text": "Can I have the menu?",
+          "context": "request for menu"
+        },
+        {
+          "text": "What would you like to drink?",
+          "context": "waiter question"
+        },
+        {
+          "text": "Can I have the bill, please?",
+          "context": "closing the meal"
+        },
+        {
+          "text": "I'd like a glass of water.",
+          "context": "drink with unit"
+        }
+      ],
+      "roleplay": {
+        "scenario": "Charlotte simula uma garçonete em restaurante — você faz seu pedido completo.",
+        "voiced_by": "charlotte",
+        "persona": "Charlotte",
+        "persona_outfit": "charlotte_casual",
+        "time_budget_sec": 90,
+        "opening_line": "Good afternoon! What can I get you?",
+        "objectives": [
+          {
+            "id": 1,
+            "label_pt": "Pedir comida educadamente",
+            "label_en": "Order food politely",
+            "hidden_prompt": "user orders food with 'I'd like + food' or 'Can I have + food'",
+            "hint_pt": "I'd like a pizza, please.",
+            "hint_en": "I'd like a pizza, please."
+          },
+          {
+            "id": 2,
+            "label_pt": "Pedir bebida",
+            "label_en": "Order a drink",
+            "hidden_prompt": "user orders drink with 'I'd like + drink' or 'Can I have + drink'",
+            "hint_pt": "I'd like a glass of water.",
+            "hint_en": "I'd like a glass of water."
+          },
+          {
+            "id": 3,
+            "label_pt": "Pedir a conta no fim",
+            "label_en": "Ask for the bill",
+            "hidden_prompt": "user asks 'Can I have the bill, please?' or 'Could I have the check?'",
+            "hint_pt": "Can I have the bill, please?",
+            "hint_en": "Can I have the bill, please?"
+          }
+        ],
+        "closing_cue": "Charlotte fecha com \"Coming right up!\" quando obj_3 baterem.",
+        "suggested_flow": "**Suggested flow** (referencial, 6 turnos):\n\n1. **Charlotte**: \"Good afternoon! What can I get you?\"\n2. **Student**: ~\"I'd like a pizza, please.\"\n3. **Charlotte**: \"To drink?\"\n4. **Student**: ~\"I'd like a glass of water.\"\n5. **Charlotte**: \"Anything else?\"\n6. **Student**: ~\"Can I have the bill, please?\"\n7. **Charlotte**: \"Coming right up!\"",
+        "evaluation_focus": [
+          "\"I'd like\" / \"Can I have\" educados",
+          "Sempre com \"please\"",
+          "Sequência natural de pedido"
+        ]
+      },
+      "guided_chat": {
+        "scenario": "Charlotte simula pedido por delivery via chat.",
+        "voiced_by": "charlotte",
+        "persona": "Charlotte",
+        "persona_outfit": "charlotte_casual",
+        "intro_pt": "Você está pedindo delivery pelo chat. Pratica chunks de pedido.",
+        "opening_message": "Hi, welcome! What would you like to order?",
+        "objectives": [
+          {
+            "id": 1,
+            "label_pt": "Pedir um prato",
+            "label_en": "Order a dish",
+            "hidden_prompt": "user orders with 'I'd like + food' or 'Can I have + food'",
+            "hint_pt": "I'd like a burger.",
+            "hint_en": "I'd like a burger."
+          },
+          {
+            "id": 2,
+            "label_pt": "Pedir uma bebida",
+            "label_en": "Order a drink",
+            "hidden_prompt": "user orders a drink with 'I'd like + drink'",
+            "hint_pt": "I'd like a Coke.",
+            "hint_en": "I'd like a Coke."
+          },
+          {
+            "id": 3,
+            "label_pt": "Confirmar e perguntar valor",
+            "label_en": "Ask the total",
+            "hidden_prompt": "user asks total with 'How much is it?' or 'How much in total?'",
+            "hint_pt": "How much is it?",
+            "hint_en": "How much is it?"
+          }
+        ],
+        "closing_cue": "Charlotte encerra com \"Order placed!\" quando obj_3 baterem.",
+        "suggested_script": "**Script** (referencial, 7 turnos):\n\n1. **Charlotte**: \"Hi, welcome! What would you like to order?\"\n2. **Student**: \"I'd like a burger.\"\n3. **Charlotte**: \"To drink?\"\n4. **Student**: \"I'd like a Coke.\"\n5. **Charlotte**: \"Anything else?\"\n6. **Student**: \"How much is it?\"\n7. **Charlotte**: \"Twelve dollars. Order placed!\"\n\n> N04 chat = LLM puro.\n\n---"
+      }
+    },
+    {
+      "id": "N05",
+      "title": "Tudo sobre comida",
+      "sub_cefr": "A1",
+      "grammar_focus": "Integration of countable/uncountable + some/any + how much/many + restaurant chunks",
+      "markers": [],
+      "real_life_context": "Você integra tudo em conversas sobre comida — preferências, pedidos, refeições, descrições.",
+      "grammar": [
+        {
+          "type": "multiple_choice",
+          "sentence": "I'd like _____ tea, please.",
+          "options": [
+            "some",
+            "a",
+            "many",
+            "one"
+          ],
+          "answer": "some",
+          "explanation": "\"Tea\" incontável → \"some tea\". Pedido educado com I'd like."
+        },
+        {
+          "type": "multiple_choice",
+          "sentence": "We don't have _____ eggs.",
+          "options": [
+            "any",
+            "some",
+            "much",
+            "one"
+          ],
+          "answer": "any",
+          "explanation": "Negativa + contável plural → \"any eggs\"."
+        },
+        {
+          "type": "word_bank",
+          "sentence": "_____ water do you drink every day?",
+          "choices": [
+            "How much",
+            "How many",
+            "How",
+            "What"
+          ],
+          "answer": "How much",
+          "explanation": "Quantidade de incontável → \"How much\"."
+        },
+        {
+          "type": "word_bank",
+          "sentence": "Can I have _____ apple, please?",
+          "choices": [
+            "an",
+            "some",
+            "many",
+            "one"
+          ],
+          "answer": "an",
+          "explanation": "\"An apple\" — singular contável (apple começa com vogal → \"an\")."
+        },
+        {
+          "type": "fill_gap",
+          "sentence": "Is there _____ milk in the fridge?",
+          "hint": "Pergunta com incontável",
+          "answer": "any",
+          "explanation": "Pergunta + incontável → \"any\". \"Is there any milk?\"."
+        },
+        {
+          "type": "fill_gap",
+          "sentence": "I have _____ cookies and _____ juice.",
+          "hint": "Afirmativa (positiva) com ambos",
+          "answer": "some / some",
+          "explanation": "Afirmativa usa \"some\" tanto pra contável quanto incontável. \"I have some cookies and some juice\"."
+        },
+        {
+          "type": "fill_gap",
+          "sentence": "_____ is this sandwich?",
+          "hint": "Preço",
+          "answer": "How much",
+          "explanation": "Preço sempre \"how much\". \"How much is this sandwich?\"."
+        },
+        {
+          "type": "fix_error",
+          "sentence": "I'd like one tea.",
+          "hint": "Tea é incontável",
+          "answer": "I'd like some tea.",
+          "explanation": "Tea = incontável. Não usa \"one\". Use \"some tea\" ou \"a cup of tea\"."
+        },
+        {
+          "type": "fix_error",
+          "sentence": "How many milk do we have?",
+          "hint": "Milk é incontável",
+          "answer": "How much milk do we have?",
+          "explanation": "Milk incontável → \"How much\"."
+        },
+        {
+          "type": "read_answer",
+          "passage": "I'd like a sandwich and some water. We don't have any cookies. How many apples are there? Three.",
+          "question": "How many apples are there?",
+          "answer": "three",
+          "explanation": "The text says \"Three\" in answer to the question."
+        }
+      ],
+      "listening_speaking": [
+        {
+          "text": "I'd like some coffee, please.",
+          "context": "polite + uncountable"
+        },
+        {
+          "text": "Do you have any cookies?",
+          "context": "question + countable plural"
+        },
+        {
+          "text": "How much is the sandwich?",
+          "context": "price chunk"
+        },
+        {
+          "text": "There are some eggs in the fridge.",
+          "context": "affirmative + plural"
+        },
+        {
+          "text": "Can I have a glass of water?",
+          "context": "drink + unit chunk"
+        }
+      ],
+      "roleplay": {
+        "scenario": "Charlotte simula uma garçonete amigável — você pede, pergunta quantidades e fecha a conta.",
+        "voiced_by": "charlotte",
+        "persona": "Charlotte",
+        "persona_outfit": "charlotte_casual",
+        "time_budget_sec": 90,
+        "opening_line": "Welcome! Let me know what you'd like.",
+        "objectives": [
+          {
+            "id": 1,
+            "label_pt": "Fazer um pedido com 'I'd like'",
+            "label_en": "Order with 'I'd like'",
+            "hidden_prompt": "user orders with 'I'd like + food/drink'",
+            "hint_pt": "I'd like a sandwich.",
+            "hint_en": "I'd like a sandwich."
+          },
+          {
+            "id": 2,
+            "label_pt": "Perguntar preço com 'How much'",
+            "label_en": "Ask price with 'How much'",
+            "hidden_prompt": "user asks 'How much is + item?'",
+            "hint_pt": "How much is the sandwich?",
+            "hint_en": "How much is the sandwich?"
+          },
+          {
+            "id": 3,
+            "label_pt": "Pedir a conta no fim",
+            "label_en": "Ask for the bill",
+            "hidden_prompt": "user asks 'Can I have the bill?'",
+            "hint_pt": "Can I have the bill, please?",
+            "hint_en": "Can I have the bill, please?"
+          }
+        ],
+        "closing_cue": "Charlotte fecha com \"Thanks — come again!\" quando obj_3 baterem.",
+        "suggested_flow": "**Suggested flow** (referencial, 6 turnos):\n\n1. **Charlotte**: \"Welcome! Let me know what you'd like.\"\n2. **Student**: ~\"I'd like a sandwich.\"\n3. **Charlotte**: \"Anything else?\"\n4. **Student**: ~\"How much is the sandwich?\"\n5. **Charlotte**: \"Eight dollars.\"\n6. **Student**: ~\"Can I have the bill, please?\"\n7. **Charlotte**: \"Thanks — come again!\"",
+        "evaluation_focus": [
+          "Pedido educado",
+          "Pergunta de preço correta",
+          "Pedido da conta natural"
+        ]
+      },
+      "guided_chat": {
+        "scenario": "Charlotte conversa sobre planos de cozinha do dia — você integra tudo de M10.",
+        "voiced_by": "charlotte",
+        "persona": "Charlotte",
+        "persona_outfit": "charlotte_casual",
+        "intro_pt": "Charlotte abre chat sobre comida — pratica some/any, how much/many e pedidos.",
+        "opening_message": "What's for lunch?",
+        "objectives": [
+          {
+            "id": 1,
+            "label_pt": "Dizer o que você tem ou quer comer",
+            "label_en": "Say what you have/want",
+            "hidden_prompt": "user states food with 'I have some + food' or 'I'd like + food'",
+            "hint_pt": "I have some pasta.",
+            "hint_en": "I have some pasta."
+          },
+          {
+            "id": 2,
+            "label_pt": "Dizer o que falta ou perguntar à Charlotte",
+            "label_en": "Say what's missing",
+            "hidden_prompt": "user says 'I don't have any + noun' or 'Do you have any + noun?'",
+            "hint_pt": "I don't have any sauce.",
+            "hint_en": "I don't have any sauce."
+          },
+          {
+            "id": 3,
+            "label_pt": "Perguntar quantidade ou preço",
+            "label_en": "Ask quantity or price",
+            "hidden_prompt": "user asks 'How much/many + noun?' or 'How much is it?'",
+            "hint_pt": "How much pasta?",
+            "hint_en": "How much pasta?"
+          }
+        ],
+        "closing_cue": "Charlotte encerra com \"Bon appétit!\" quando obj_3 baterem.",
+        "suggested_script": "**Script** (referencial, 7 turnos):\n\n1. **Charlotte**: \"What's for lunch?\"\n2. **Student**: \"I have some pasta.\"\n3. **Charlotte**: \"Sauce?\"\n4. **Student**: \"I don't have any sauce.\"\n5. **Charlotte**: \"Ah.\"\n6. **Student**: \"How much pasta?\"\n7. **Charlotte**: \"Plenty. Bon appétit!\"\n\n> N05 chat = LLM puro.\n\n---"
+      }
+    }
+  ],
+  "cross_unit_consolidation": [
+    "Distinção contável (a, an, número, plural) vs incontável (some, much)",
+    "Some em afirmativas e pedidos / Any em negativas e perguntas",
+    "How many em contável plural / How much em incontável + preço",
+    "\"I'd like\" e \"Can I have\" como pedidos educados",
+    "\"Can I have the bill\" pra fechar conta"
+  ]
+}

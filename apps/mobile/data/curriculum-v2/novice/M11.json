@@ -1,0 +1,1025 @@
+{
+  "id": "M11",
+  "title": "Compras",
+  "level": "Novice",
+  "block": "A1",
+  "units_range": "N01–N05",
+  "theme": "Lojas, preços, pedidos, roupas básicas",
+  "goal": "Aluno sai sabendo navegar em lojas usando \"I'd like\", demonstratives (this/that/these/those), preposições básicas de lugar, e vocabulário de roupas e preços.",
+  "connects_to": "M12 (Comparações) — depois de comparar objetos numa loja, aprende comparativos formais (-er, more than).",
+  "module_chunks": [
+    "I'd like to buy + item",
+    "I'm looking for + item",
+    "this / that / these / those",
+    "in / on / at / next to / between / behind / in front of",
+    "shop / store / supermarket / shopping mall",
+    "price / cheap / expensive",
+    "shirt / pants / dress / shoes / jacket / hat",
+    "size / fit / try on",
+    "credit card / cash",
+    "Can I pay with...?",
+    "It's on sale.",
+    "Where is the...?"
+  ],
+  "units": [
+    {
+      "id": "N01",
+      "title": "Na loja",
+      "sub_cefr": "A1",
+      "grammar_focus": "I'd like + noun + prepositions of place",
+      "markers": [],
+      "real_life_context": "Você entra numa loja procurando algo específico.",
+      "grammar": [
+        {
+          "type": "multiple_choice",
+          "sentence": "_____ to buy a shirt.",
+          "options": [
+            "I'd like",
+            "I want",
+            "I have"
+          ],
+          "answer": "I'd like",
+          "explanation": "\"I'd like to + verb\" é o chunk educado pra falar do que quer. \"I want\" é direto demais em loja."
+        },
+        {
+          "type": "multiple_choice",
+          "sentence": "I'm looking _____ a black shirt.",
+          "options": [
+            "for",
+            "at",
+            "to"
+          ],
+          "answer": "for",
+          "explanation": "\"Look for\" = procurar. Chunk fixo: \"I'm looking FOR + objeto\". Não confundir com \"look at\" (olhar pra)."
+        },
+        {
+          "type": "word_bank",
+          "sentence": "The shirts are _____ the second floor.",
+          "choices": [
+            "on",
+            "in",
+            "at",
+            "next"
+          ],
+          "answer": "on",
+          "explanation": "Andares usam \"on\": \"on the second floor\", \"on the third floor\". Lugares específicos como hotéis."
+        },
+        {
+          "type": "word_bank",
+          "sentence": "_____ store opens at nine.",
+          "choices": [
+            "The",
+            "A",
+            "An",
+            "One"
+          ],
+          "answer": "The",
+          "explanation": "\"The store\" — refere-se a loja específica em contexto. \"The\" pra coisa já conhecida."
+        },
+        {
+          "type": "fill_gap",
+          "sentence": "I'd like to _____ this dress, please.",
+          "hint": "Verbo \"experimentar\" roupa",
+          "answer": "try on",
+          "explanation": "\"Try on\" = experimentar (roupa). Phrasal verb fixo: \"Can I try on this dress?\"."
+        },
+        {
+          "type": "fill_gap",
+          "sentence": "The cashier is _____ the door.",
+          "hint": "Preposição \"perto de\"",
+          "answer": "next to",
+          "explanation": "\"Next to\" = ao lado de. Localização: \"next to the door\"."
+        },
+        {
+          "type": "fill_gap",
+          "sentence": "I'd like _____ buy two shirts.",
+          "hint": "Particula entre \"like\" e o verbo",
+          "answer": "to",
+          "explanation": "\"I'd like TO + verbo base\": \"I'd like to buy\". Após \"like\", \"to + base\"."
+        },
+        {
+          "type": "fix_error",
+          "sentence": "I want one shirt black.",
+          "hint": "Ordem do adjetivo + educado",
+          "answer": "I'd like a black shirt.",
+          "explanation": "Adjetivo VEM ANTES do substantivo: \"a BLACK shirt\" (não \"a shirt black\"). E \"I'd like\" é mais educado que \"I want\"."
+        },
+        {
+          "type": "fix_error",
+          "sentence": "I'm looking the menu.",
+          "hint": "Preposição correta com \"look\"",
+          "answer": "I'm looking at the menu.",
+          "explanation": "\"Look at\" = olhar para algo. \"Look for\" = procurar. Aqui o sentido é olhar, então \"look at the menu\"."
+        },
+        {
+          "type": "read_answer",
+          "passage": "I'd like to buy a black jacket. I'm looking for size M. Excuse me, where is the cashier? It's next to the door.",
+          "question": "Where is the cashier?",
+          "answer": "next to the door",
+          "explanation": "The text says \"It's next to the door\"."
+        }
+      ],
+      "listening_speaking": [
+        {
+          "text": "I'd like to buy a shirt.",
+          "context": "polite request"
+        },
+        {
+          "text": "I'm looking for size M.",
+          "context": "looking for chunk"
+        },
+        {
+          "text": "Where is the cashier?",
+          "context": "location question"
+        },
+        {
+          "text": "The shirts are on the second floor.",
+          "context": "preposition on + floor"
+        },
+        {
+          "text": "Can I try on this dress?",
+          "context": "try on"
+        }
+      ],
+      "roleplay": {
+        "scenario": "Charlotte simula uma atendente — você procura algo, pergunta onde fica.",
+        "voiced_by": "charlotte",
+        "persona": "Charlotte",
+        "persona_outfit": "charlotte_casual",
+        "time_budget_sec": 90,
+        "opening_line": "Hi! Can I help you find something?",
+        "objectives": [
+          {
+            "id": 1,
+            "label_pt": "Dizer o que está procurando",
+            "label_en": "Say what you're looking for",
+            "hidden_prompt": "user states what they want with 'I'd like to buy + item' or 'I'm looking for + item'",
+            "hint_pt": "I'd like to buy a shirt.",
+            "hint_en": "I'd like to buy a shirt."
+          },
+          {
+            "id": 2,
+            "label_pt": "Perguntar onde fica",
+            "label_en": "Ask where it is",
+            "hidden_prompt": "user asks 'Where is/are + item?' or 'Where can I find + item?'",
+            "hint_pt": "Where are the shirts?",
+            "hint_en": "Where are the shirts?"
+          },
+          {
+            "id": 3,
+            "label_pt": "Pedir pra experimentar",
+            "label_en": "Ask to try it on",
+            "hidden_prompt": "user asks 'Can I try this on?' or 'Can I try on + item?'",
+            "hint_pt": "Can I try this on?",
+            "hint_en": "Can I try this on?"
+          }
+        ],
+        "closing_cue": "Charlotte fecha com \"Of course! Right this way.\" quando obj_3 baterem.",
+        "suggested_flow": "**Suggested flow** (referencial, 6 turnos):\n\n1. **Charlotte**: \"Hi! Can I help you find something?\"\n2. **Student**: ~\"I'd like to buy a shirt.\"\n3. **Charlotte**: \"Sure!\"\n4. **Student**: ~\"Where are the shirts?\"\n5. **Charlotte**: \"On the second floor.\"\n6. **Student**: ~\"Can I try this on?\"\n7. **Charlotte**: \"Of course! Right this way.\"",
+        "evaluation_focus": [
+          "\"I'd like\" educado",
+          "\"looking for\" (não \"looking\" só)",
+          "\"Where is/are\" + place"
+        ]
+      },
+      "guided_chat": {
+        "scenario": "Charlotte simula atendimento online — você pergunta sobre produtos.",
+        "voiced_by": "charlotte",
+        "persona": "Charlotte",
+        "persona_outfit": "charlotte_casual",
+        "intro_pt": "Charlotte simula atendimento de loja online. Pratica chunks de pedido e localização.",
+        "opening_message": "Hi! What are you looking for?",
+        "objectives": [
+          {
+            "id": 1,
+            "label_pt": "Dizer o que procura",
+            "label_en": "Say what you're looking for",
+            "hidden_prompt": "user says 'I'm looking for + item' or 'I'd like to buy + item'",
+            "hint_pt": "I'm looking for shoes.",
+            "hint_en": "I'm looking for shoes."
+          },
+          {
+            "id": 2,
+            "label_pt": "Especificar tamanho ou cor",
+            "label_en": "Specify size or color",
+            "hidden_prompt": "user specifies with 'in size + letter/number' or 'in + color'",
+            "hint_pt": "In size 42.",
+            "hint_en": "In size 42."
+          },
+          {
+            "id": 3,
+            "label_pt": "Perguntar preço",
+            "label_en": "Ask the price",
+            "hidden_prompt": "user asks 'How much is it?' or 'How much are they?'",
+            "hint_pt": "How much is it?",
+            "hint_en": "How much is it?"
+          }
+        ],
+        "closing_cue": "Charlotte encerra com \"Adding to your cart!\" quando obj_3 baterem.",
+        "suggested_script": "**Script** (referencial, 7 turnos):\n\n1. **Charlotte**: \"Hi! What are you looking for?\"\n2. **Student**: \"I'm looking for shoes.\"\n3. **Charlotte**: \"What size?\"\n4. **Student**: \"In size 42.\"\n5. **Charlotte**: \"Color?\"\n6. **Student**: \"How much is it?\"\n7. **Charlotte**: \"Eighty dollars. Adding to your cart!\"\n\n> N01 chat = LLM puro.\n\n---"
+      }
+    },
+    {
+      "id": "N02",
+      "title": "Este, esse, aquele",
+      "sub_cefr": "A1",
+      "grammar_focus": "Demonstratives this / that / these / those",
+      "markers": [
+        "denso"
+      ],
+      "real_life_context": "Você aponta para objetos próximos (this/these) ou distantes (that/those) na loja.",
+      "grammar": [
+        {
+          "type": "multiple_choice",
+          "sentence": "_____ shirt is nice (in my hand).",
+          "options": [
+            "This",
+            "That",
+            "These",
+            "Those"
+          ],
+          "answer": "This",
+          "explanation": "\"This\" → objeto SINGULAR e PRÓXIMO. \"Esta camisa (que estou segurando)\"."
+        },
+        {
+          "type": "multiple_choice",
+          "sentence": "_____ dress over there is beautiful.",
+          "options": [
+            "That",
+            "This",
+            "These",
+            "Those"
+          ],
+          "answer": "That",
+          "explanation": "\"That\" → objeto SINGULAR e DISTANTE. \"Aquele vestido (lá longe)\"."
+        },
+        {
+          "type": "word_bank",
+          "sentence": "_____ shoes are too big.",
+          "choices": [
+            "These",
+            "This",
+            "That",
+            "Those"
+          ],
+          "answer": "These",
+          "explanation": "\"These\" → plural PRÓXIMO. \"Estes sapatos (nos meus pés)\"."
+        },
+        {
+          "type": "word_bank",
+          "sentence": "_____ pants on the shelf are nice.",
+          "choices": [
+            "Those",
+            "This",
+            "These",
+            "That"
+          ],
+          "answer": "Those",
+          "explanation": "\"Those\" → plural DISTANTE. \"Aquelas calças (na prateleira lá)\"."
+        },
+        {
+          "type": "fill_gap",
+          "sentence": "I'd like to try _____ shirt on, please. (close)",
+          "hint": "Singular próximo",
+          "answer": "this",
+          "explanation": "\"This shirt\" pra um próximo. Singular + perto."
+        },
+        {
+          "type": "fill_gap",
+          "sentence": "How much are _____ shoes? (close, on my feet)",
+          "hint": "Plural próximo",
+          "answer": "these",
+          "explanation": "\"These shoes\" — plural perto. \"Estes sapatos\"."
+        },
+        {
+          "type": "fill_gap",
+          "sentence": "Look at _____ jackets over there!",
+          "hint": "Plural distante",
+          "answer": "those",
+          "explanation": "\"Those jackets over there\" — plural distante. \"Aquelas jaquetas lá\"."
+        },
+        {
+          "type": "fix_error",
+          "sentence": "I like this shoes.",
+          "hint": "Shoes é plural — qual demonstrativo?",
+          "answer": "I like these shoes.",
+          "explanation": "\"Shoes\" é plural → \"these\" (perto) ou \"those\" (longe). \"This\" só pra singular."
+        },
+        {
+          "type": "fix_error",
+          "sentence": "Those is my shirt.",
+          "hint": "Concordância plural-singular",
+          "answer": "That is my shirt.",
+          "explanation": "\"Shirt\" singular → \"That\" (não \"Those\"). Pra plural seria \"Those are my shirts\"."
+        },
+        {
+          "type": "read_answer",
+          "passage": "I like this dress (in my hand). That dress over there is too expensive. These shoes fit me. Those shoes don't fit.",
+          "question": "Which item is expensive?",
+          "answer": "that dress (or \"the dress over there\")",
+          "explanation": "The text says \"That dress over there is too expensive\"."
+        }
+      ],
+      "listening_speaking": [
+        {
+          "text": "This shirt is nice.",
+          "context": "this singular close"
+        },
+        {
+          "text": "That dress is beautiful.",
+          "context": "that singular far"
+        },
+        {
+          "text": "These shoes fit me.",
+          "context": "these plural close"
+        },
+        {
+          "text": "Those pants are expensive.",
+          "context": "those plural far"
+        },
+        {
+          "text": "I'd like this one, please.",
+          "context": "this + one"
+        }
+      ],
+      "roleplay": {
+        "scenario": "Charlotte simula vendedora — você aponta produtos próximos e distantes.",
+        "voiced_by": "charlotte",
+        "persona": "Charlotte",
+        "persona_outfit": "charlotte_casual",
+        "time_budget_sec": 90,
+        "opening_line": "Anything catch your eye?",
+        "objectives": [
+          {
+            "id": 1,
+            "label_pt": "Apontar algo próximo (this/these)",
+            "label_en": "Point to something close",
+            "hidden_prompt": "user uses 'this + singular' or 'these + plural' for close items",
+            "hint_pt": "I like this shirt.",
+            "hint_en": "I like this shirt."
+          },
+          {
+            "id": 2,
+            "label_pt": "Apontar algo distante (that/those)",
+            "label_en": "Point to something far",
+            "hidden_prompt": "user uses 'that + singular' or 'those + plural' for far items",
+            "hint_pt": "Those pants look great.",
+            "hint_en": "Those pants look great."
+          },
+          {
+            "id": 3,
+            "label_pt": "Perguntar preço de algo específico",
+            "label_en": "Ask price of a specific item",
+            "hidden_prompt": "user asks 'How much is this/that?' or 'How much are these/those?'",
+            "hint_pt": "How much is this?",
+            "hint_en": "How much is this?"
+          }
+        ],
+        "closing_cue": "Charlotte fecha com \"Great picks!\" quando obj_3 baterem.",
+        "suggested_flow": "**Suggested flow** (referencial, 6 turnos):\n\n1. **Charlotte**: \"Anything catch your eye?\"\n2. **Student**: ~\"I like this shirt.\"\n3. **Charlotte**: \"Nice. Anything else?\"\n4. **Student**: ~\"Those pants look great.\"\n5. **Charlotte**: \"Want to try?\"\n6. **Student**: ~\"How much is this?\"\n7. **Charlotte**: \"Twenty bucks. Great picks!\"",
+        "evaluation_focus": [
+          "this/these (perto) vs that/those (longe)",
+          "Singular vs plural correto",
+          "Concordância"
+        ]
+      },
+      "guided_chat": {
+        "scenario": "Charlotte mostra produtos por foto no chat — você comenta com demonstratives.",
+        "voiced_by": "charlotte",
+        "persona": "Charlotte",
+        "persona_outfit": "charlotte_casual",
+        "intro_pt": "Charlotte manda fotos de produtos. Pratica this/that/these/those.",
+        "opening_message": "Take a look — what do you like?",
+        "objectives": [
+          {
+            "id": 1,
+            "label_pt": "Comentar sobre algo (singular)",
+            "label_en": "Comment on singular item",
+            "hidden_prompt": "user uses 'this/that + singular noun + is + adjective'",
+            "hint_pt": "This dress is nice.",
+            "hint_en": "This dress is nice."
+          },
+          {
+            "id": 2,
+            "label_pt": "Comentar sobre algo (plural)",
+            "label_en": "Comment on plural items",
+            "hidden_prompt": "user uses 'these/those + plural noun + are + adjective'",
+            "hint_pt": "Those shoes are cool.",
+            "hint_en": "Those shoes are cool."
+          },
+          {
+            "id": 3,
+            "label_pt": "Escolher um favorito",
+            "label_en": "Pick a favorite",
+            "hidden_prompt": "user picks one with 'I'd like this/that one' or 'I prefer these/those'",
+            "hint_pt": "I'd like this one.",
+            "hint_en": "I'd like this one."
+          }
+        ],
+        "closing_cue": "Charlotte encerra com \"Great choice!\" quando obj_3 baterem.",
+        "suggested_script": "**Script** (referencial, 7 turnos):\n\n1. **Charlotte**: \"Take a look — what do you like?\"\n2. **Student**: \"This dress is nice.\"\n3. **Charlotte**: \"And these?\"\n4. **Student**: \"Those shoes are cool.\"\n5. **Charlotte**: \"Which one?\"\n6. **Student**: \"I'd like this one.\"\n7. **Charlotte**: \"Great choice!\"\n\n> N02 chat = LLM puro.\n\n---"
+      }
+    },
+    {
+      "id": "N03",
+      "title": "Em cima, embaixo, ao lado",
+      "sub_cefr": "A1",
+      "grammar_focus": "Prepositions of place (in, on, at, next to, between, behind, in front of)",
+      "markers": [
+        "denso"
+      ],
+      "real_life_context": "Você diz onde estão as coisas — em prateleiras, ao lado de outras, atrás do balcão.",
+      "grammar": [
+        {
+          "type": "multiple_choice",
+          "sentence": "The cookies are _____ the shelf.",
+          "options": [
+            "on",
+            "in",
+            "at"
+          ],
+          "answer": "on",
+          "explanation": "\"On\" → superfície horizontal. Prateleira é superfície → \"on the shelf\"."
+        },
+        {
+          "type": "multiple_choice",
+          "sentence": "My keys are _____ my bag.",
+          "options": [
+            "in",
+            "on",
+            "at"
+          ],
+          "answer": "in",
+          "explanation": "\"In\" → DENTRO. Bag tem interior → \"in my bag\"."
+        },
+        {
+          "type": "word_bank",
+          "sentence": "I'm _____ the store now.",
+          "choices": [
+            "at",
+            "on",
+            "in",
+            "next"
+          ],
+          "answer": "at",
+          "explanation": "\"At + lugar específico/ponto\": at the store, at home, at school. Localização geral."
+        },
+        {
+          "type": "word_bank",
+          "sentence": "The bank is _____ the post office and the cafe.",
+          "choices": [
+            "between",
+            "in",
+            "on",
+            "behind"
+          ],
+          "answer": "between",
+          "explanation": "\"Between\" → entre DUAS coisas. \"Between A and B\"."
+        },
+        {
+          "type": "fill_gap",
+          "sentence": "The cashier is _____ the door.",
+          "hint": "Preposição \"perto de / ao lado\"",
+          "answer": "next to",
+          "explanation": "\"Next to\" = ao lado de. \"The cashier is next to the door\"."
+        },
+        {
+          "type": "fill_gap",
+          "sentence": "My shoes are _____ the box.",
+          "hint": "Preposição \"atrás de\"",
+          "answer": "behind",
+          "explanation": "\"Behind\" = atrás de. \"Behind the box\"."
+        },
+        {
+          "type": "fill_gap",
+          "sentence": "The car is _____ the building.",
+          "hint": "Preposição \"em frente a\"",
+          "answer": "in front of",
+          "explanation": "\"In front of\" = em frente a. Três palavras como uma só."
+        },
+        {
+          "type": "fix_error",
+          "sentence": "I'm in the bus stop.",
+          "hint": "Stop é lugar específico",
+          "answer": "I'm at the bus stop.",
+          "explanation": "\"Bus stop\" é lugar específico/ponto → \"at\". \"In\" significaria dentro do ponto (não físico)."
+        },
+        {
+          "type": "fix_error",
+          "sentence": "My phone is on my bag.",
+          "hint": "Bag tem interior",
+          "answer": "My phone is in my bag.",
+          "explanation": "Bag tem dentro → \"in\" (não \"on\"). \"On the bag\" seria em cima da bolsa por fora."
+        },
+        {
+          "type": "read_answer",
+          "passage": "I'm at the supermarket. The bread is on the second shelf. The milk is in the fridge. The cookies are next to the cash register.",
+          "question": "Where are the cookies?",
+          "answer": "next to the cash register",
+          "explanation": "The text says \"next to the cash register\"."
+        }
+      ],
+      "listening_speaking": [
+        {
+          "text": "The cookies are on the shelf.",
+          "context": "on + surface"
+        },
+        {
+          "text": "My keys are in my bag.",
+          "context": "in + container"
+        },
+        {
+          "text": "I'm at the store.",
+          "context": "at + location"
+        },
+        {
+          "text": "The cashier is next to the door.",
+          "context": "next to"
+        },
+        {
+          "text": "The car is in front of the building.",
+          "context": "in front of"
+        }
+      ],
+      "roleplay": {
+        "scenario": "Charlotte ajuda você a encontrar coisas numa loja — você pergunta e responde sobre localizações.",
+        "voiced_by": "charlotte",
+        "persona": "Charlotte",
+        "persona_outfit": "charlotte_casual",
+        "time_budget_sec": 90,
+        "opening_line": "Looking for something specific?",
+        "objectives": [
+          {
+            "id": 1,
+            "label_pt": "Perguntar onde fica algo",
+            "label_en": "Ask where something is",
+            "hidden_prompt": "user asks 'Where is/are + item?'",
+            "hint_pt": "Where is the cashier?",
+            "hint_en": "Where is the cashier?"
+          },
+          {
+            "id": 2,
+            "label_pt": "Dizer onde está algo (com preposição correta)",
+            "label_en": "Say where something is",
+            "hidden_prompt": "user says 'It's + preposition (on/in/at/next to/behind/in front of) + place'",
+            "hint_pt": "It's next to the door.",
+            "hint_en": "It's next to the door."
+          },
+          {
+            "id": 3,
+            "label_pt": "Outra localização diferente",
+            "label_en": "Another location",
+            "hidden_prompt": "user says another 'item is + preposition + place'",
+            "hint_pt": "The shirts are on the second floor.",
+            "hint_en": "The shirts are on the second floor."
+          }
+        ],
+        "closing_cue": "Charlotte fecha com \"Found it!\" quando obj_3 baterem.",
+        "suggested_flow": "**Suggested flow** (referencial, 6 turnos):\n\n1. **Charlotte**: \"Looking for something specific?\"\n2. **Student**: ~\"Where is the cashier?\"\n3. **Charlotte**: \"It's by the entrance.\"\n4. **Student**: ~\"It's next to the door?\"\n5. **Charlotte**: \"Yes! And the shirts?\"\n6. **Student**: ~\"The shirts are on the second floor.\"\n7. **Charlotte**: \"Found it!\"",
+        "evaluation_focus": [
+          "Preposição correta por contexto",
+          "\"Where is/are\" + item",
+          "Concordância"
+        ]
+      },
+      "guided_chat": {
+        "scenario": "Charlotte conversa sobre layout de uma loja.",
+        "voiced_by": "charlotte",
+        "persona": "Charlotte",
+        "persona_outfit": "charlotte_casual",
+        "intro_pt": "Charlotte abre chat sobre localizações. Pratica prepositions of place.",
+        "opening_message": "Where's the bakery in your area?",
+        "objectives": [
+          {
+            "id": 1,
+            "label_pt": "Dizer onde fica um lugar",
+            "label_en": "Say where a place is",
+            "hidden_prompt": "user says 'It's + preposition + place' (next to/on/in/at)",
+            "hint_pt": "It's next to the bank.",
+            "hint_en": "It's next to the bank."
+          },
+          {
+            "id": 2,
+            "label_pt": "Dizer onde está outra coisa",
+            "label_en": "Say where another thing is",
+            "hidden_prompt": "user says 'X is + preposition + Y'",
+            "hint_pt": "The supermarket is between two cafes.",
+            "hint_en": "The supermarket is between two cafes."
+          },
+          {
+            "id": 3,
+            "label_pt": "Perguntar à Charlotte sobre o bairro dela",
+            "label_en": "Ask about Charlotte's neighborhood",
+            "hidden_prompt": "user asks 'How about your area?' or 'Where is + place + in your area?'",
+            "hint_pt": "How about your area?",
+            "hint_en": "How about your area?"
+          }
+        ],
+        "closing_cue": "Charlotte encerra com \"Cool layout!\" quando obj_3 baterem.",
+        "suggested_script": "**Script** (referencial, 7 turnos):\n\n1. **Charlotte**: \"Where's the bakery in your area?\"\n2. **Student**: \"It's next to the bank.\"\n3. **Charlotte**: \"Easy to find?\"\n4. **Student**: \"The supermarket is between two cafes.\"\n5. **Charlotte**: \"Nice spot.\"\n6. **Student**: \"How about your area?\"\n7. **Charlotte**: \"Bakery is on the corner. Cool layout!\"\n\n> N03 chat = LLM puro.\n\n---"
+      }
+    },
+    {
+      "id": "N04",
+      "title": "Pagando",
+      "sub_cefr": "A1",
+      "grammar_focus": "Payment chunks + money vocab",
+      "markers": [],
+      "real_life_context": "Você está no caixa pagando uma compra — cartão, dinheiro, troco.",
+      "grammar": [
+        {
+          "type": "multiple_choice",
+          "sentence": "Can I pay _____ credit card?",
+          "options": [
+            "with",
+            "by",
+            "for"
+          ],
+          "answer": "with",
+          "explanation": "\"Pay with\" + método. \"Pay with cash\", \"pay with credit card\". Note: \"by card\" também existe mas \"with\" é mais comum em diálogo."
+        },
+        {
+          "type": "multiple_choice",
+          "sentence": "_____ is the total?",
+          "options": [
+            "How much",
+            "How many",
+            "What much"
+          ],
+          "answer": "How much",
+          "explanation": "Preço/total sempre \"How much\": \"How much is the total?\"."
+        },
+        {
+          "type": "word_bank",
+          "sentence": "It's _____ sale today.",
+          "choices": [
+            "on",
+            "in",
+            "at",
+            "for"
+          ],
+          "answer": "on",
+          "explanation": "\"On sale\" = em promoção. Chunk fixo: \"It's on sale\"."
+        },
+        {
+          "type": "word_bank",
+          "sentence": "I'd like to pay _____ cash.",
+          "choices": [
+            "with",
+            "by",
+            "for",
+            "in"
+          ],
+          "answer": "with",
+          "explanation": "\"Pay with cash\" / \"pay in cash\" — ambas funcionam. \"With\" é mais comum em conversação."
+        },
+        {
+          "type": "fill_gap",
+          "sentence": "Your total is twenty _____.",
+          "hint": "Moeda americana",
+          "answer": "dollars",
+          "explanation": "\"Twenty dollars\" — preço em USD. \"Bucks\" é gíria."
+        },
+        {
+          "type": "fill_gap",
+          "sentence": "Can I have a _____, please?",
+          "hint": "Comprovante de compra",
+          "answer": "receipt",
+          "explanation": "\"Receipt\" = comprovante/recibo. \"Can I have a receipt?\" — pedido padrão após pagar."
+        },
+        {
+          "type": "fill_gap",
+          "sentence": "_____ shirt is twenty dollars.",
+          "hint": "Demonstrativo singular próximo",
+          "answer": "This",
+          "explanation": "\"This shirt is twenty dollars\" — pode pegar e mostrar a peça."
+        },
+        {
+          "type": "fix_error",
+          "sentence": "How much it is?",
+          "hint": "Ordem da pergunta",
+          "answer": "How much is it?",
+          "explanation": "WH + verbo + sujeito: \"How much IS it?\", não \"How much it is?\". Inversão correta."
+        },
+        {
+          "type": "fix_error",
+          "sentence": "I pay for cash.",
+          "hint": "Preposição com cash",
+          "answer": "I pay with cash.",
+          "explanation": "\"Pay with cash\" — preposição é \"with\" (ou \"in\"). \"For\" seria \"pagar POR algo (item)\"."
+        },
+        {
+          "type": "read_answer",
+          "passage": "Customer: How much is this jacket? Cashier: Forty dollars. Customer: Can I pay with credit card? Cashier: Of course. Here's your receipt.",
+          "question": "How does the customer pay?",
+          "answer": "with credit card",
+          "explanation": "The text says \"Can I pay with credit card?\"."
+        }
+      ],
+      "listening_speaking": [
+        {
+          "text": "How much is it?",
+          "context": "price question"
+        },
+        {
+          "text": "Can I pay with credit card?",
+          "context": "payment method"
+        },
+        {
+          "text": "It's on sale today.",
+          "context": "sale chunk"
+        },
+        {
+          "text": "Can I have a receipt?",
+          "context": "receipt request"
+        },
+        {
+          "text": "Your total is fifty dollars.",
+          "context": "total announcement"
+        }
+      ],
+      "roleplay": {
+        "scenario": "Charlotte simula caixa — você pergunta preço, paga e pede recibo.",
+        "voiced_by": "charlotte",
+        "persona": "Charlotte",
+        "persona_outfit": "charlotte_casual",
+        "time_budget_sec": 90,
+        "opening_line": "Hi! Ready to check out?",
+        "objectives": [
+          {
+            "id": 1,
+            "label_pt": "Perguntar o total",
+            "label_en": "Ask the total",
+            "hidden_prompt": "user asks 'How much is the total?' or 'How much is it?'",
+            "hint_pt": "How much is it?",
+            "hint_en": "How much is it?"
+          },
+          {
+            "id": 2,
+            "label_pt": "Escolher método de pagamento",
+            "label_en": "Choose payment method",
+            "hidden_prompt": "user says 'I'd like to pay with + cash/credit card' or 'Can I pay with...?'",
+            "hint_pt": "Can I pay with credit card?",
+            "hint_en": "Can I pay with credit card?"
+          },
+          {
+            "id": 3,
+            "label_pt": "Pedir o recibo",
+            "label_en": "Ask for receipt",
+            "hidden_prompt": "user asks 'Can I have a receipt?' or 'Could I have the receipt?'",
+            "hint_pt": "Can I have a receipt?",
+            "hint_en": "Can I have a receipt?"
+          }
+        ],
+        "closing_cue": "Charlotte fecha com \"Thanks — come back soon!\" quando obj_3 baterem.",
+        "suggested_flow": "**Suggested flow** (referencial, 6 turnos):\n\n1. **Charlotte**: \"Hi! Ready to check out?\"\n2. **Student**: ~\"How much is it?\"\n3. **Charlotte**: \"Forty dollars.\"\n4. **Student**: ~\"Can I pay with credit card?\"\n5. **Charlotte**: \"Sure.\"\n6. **Student**: ~\"Can I have a receipt?\"\n7. **Charlotte**: \"Thanks — come back soon!\"",
+        "evaluation_focus": [
+          "\"How much is it?\" (ordem correta)",
+          "\"Pay with\" + método",
+          "\"Can I have a receipt?\" (chunk fixo)"
+        ]
+      },
+      "guided_chat": {
+        "scenario": "Charlotte simula compra online — confirmação de pagamento via chat.",
+        "voiced_by": "charlotte",
+        "persona": "Charlotte",
+        "persona_outfit": "charlotte_casual",
+        "intro_pt": "Charlotte simula confirmação de pagamento online. Pratica chunks finais de compra.",
+        "opening_message": "Your order is ready. How would you like to pay?",
+        "objectives": [
+          {
+            "id": 1,
+            "label_pt": "Escolher método de pagamento",
+            "label_en": "Choose payment method",
+            "hidden_prompt": "user states payment with 'I'll pay with + method' or 'Can I pay with...?'",
+            "hint_pt": "I'll pay with credit card.",
+            "hint_en": "I'll pay with credit card."
+          },
+          {
+            "id": 2,
+            "label_pt": "Perguntar o total",
+            "label_en": "Ask the total",
+            "hidden_prompt": "user asks 'How much is the total?' or 'What's the total?'",
+            "hint_pt": "What's the total?",
+            "hint_en": "What's the total?"
+          },
+          {
+            "id": 3,
+            "label_pt": "Pedir o recibo digital",
+            "label_en": "Ask for the receipt",
+            "hidden_prompt": "user asks 'Can you send the receipt?' or 'Can I have a receipt?'",
+            "hint_pt": "Can you send the receipt?",
+            "hint_en": "Can you send the receipt?"
+          }
+        ],
+        "closing_cue": "Charlotte encerra com \"All set!\" quando obj_3 baterem.",
+        "suggested_script": "**Script** (referencial, 7 turnos):\n\n1. **Charlotte**: \"Your order is ready. How would you like to pay?\"\n2. **Student**: \"I'll pay with credit card.\"\n3. **Charlotte**: \"Great.\"\n4. **Student**: \"What's the total?\"\n5. **Charlotte**: \"Sixty dollars.\"\n6. **Student**: \"Can you send the receipt?\"\n7. **Charlotte**: \"Yes — all set!\"\n\n> N04 chat = LLM puro.\n\n---"
+      }
+    },
+    {
+      "id": "N05",
+      "title": "Comprando completo",
+      "sub_cefr": "A1",
+      "grammar_focus": "Integration M11 (I'd like + demonstratives + prepositions + payment)",
+      "markers": [],
+      "real_life_context": "Você completa uma compra do início ao fim numa loja de roupas.",
+      "grammar": [
+        {
+          "type": "multiple_choice",
+          "sentence": "_____ to buy this jacket.",
+          "options": [
+            "I'd like",
+            "I want",
+            "I do"
+          ],
+          "answer": "I'd like",
+          "explanation": "\"I'd like to buy\" — chunk educado pra anunciar intenção de compra."
+        },
+        {
+          "type": "multiple_choice",
+          "sentence": "_____ shoes over there are nice.",
+          "options": [
+            "Those",
+            "This",
+            "These",
+            "That"
+          ],
+          "answer": "Those",
+          "explanation": "\"Shoes\" plural + \"over there\" (distante) → \"Those\"."
+        },
+        {
+          "type": "word_bank",
+          "sentence": "The cashier is _____ the door.",
+          "choices": [
+            "next to",
+            "in",
+            "on",
+            "at"
+          ],
+          "answer": "next to",
+          "explanation": "\"Next to the door\" = ao lado da porta."
+        },
+        {
+          "type": "word_bank",
+          "sentence": "Can I pay _____ credit card?",
+          "choices": [
+            "with",
+            "by",
+            "on",
+            "for"
+          ],
+          "answer": "with",
+          "explanation": "\"Pay with + method\" — preposição padrão."
+        },
+        {
+          "type": "fill_gap",
+          "sentence": "I'd like to _____ this dress on, please.",
+          "hint": "Experimentar roupa",
+          "answer": "try",
+          "explanation": "\"Try on\" = experimentar. \"I'd like to try this dress on\" ou \"try on this dress\"."
+        },
+        {
+          "type": "fill_gap",
+          "sentence": "The shirts are _____ the second floor.",
+          "hint": "Preposição com andar",
+          "answer": "on",
+          "explanation": "\"On the second floor\" — andares usam \"on\"."
+        },
+        {
+          "type": "fill_gap",
+          "sentence": "_____ is the total?",
+          "hint": "Pergunta de preço",
+          "answer": "How much",
+          "explanation": "\"How much is the total?\" — pergunta de valor total."
+        },
+        {
+          "type": "fix_error",
+          "sentence": "I want this shoes.",
+          "hint": "Demonstrativo + plural",
+          "answer": "I'd like these shoes.",
+          "explanation": "\"Shoes\" plural exige \"these\" (perto) ou \"those\" (longe). E \"I'd like\" mais educado."
+        },
+        {
+          "type": "fix_error",
+          "sentence": "I pay for cash.",
+          "hint": "Preposição com cash",
+          "answer": "I pay with cash.",
+          "explanation": "\"Pay with cash\" — preposição \"with\". \"For\" seria \"pagar POR algo\"."
+        },
+        {
+          "type": "read_answer",
+          "passage": "I'd like to buy this shirt. How much is it? Twenty dollars. Can I try it on? Yes. The fitting room is next to the cashier.",
+          "question": "How much is the shirt?",
+          "answer": "twenty dollars",
+          "explanation": "The text says \"Twenty dollars\"."
+        }
+      ],
+      "listening_speaking": [
+        {
+          "text": "I'd like to buy this shirt.",
+          "context": "opening"
+        },
+        {
+          "text": "Can I try it on?",
+          "context": "trying clothes"
+        },
+        {
+          "text": "How much is the total?",
+          "context": "price total"
+        },
+        {
+          "text": "I'll pay with credit card.",
+          "context": "payment method"
+        },
+        {
+          "text": "Can I have a receipt?",
+          "context": "closing"
+        }
+      ],
+      "roleplay": {
+        "scenario": "Charlotte simula uma atendente — você completa uma compra do início ao fim.",
+        "voiced_by": "charlotte",
+        "persona": "Charlotte",
+        "persona_outfit": "charlotte_casual",
+        "time_budget_sec": 90,
+        "opening_line": "Welcome! What can I help you find today?",
+        "objectives": [
+          {
+            "id": 1,
+            "label_pt": "Pedir o item que quer comprar",
+            "label_en": "Say what you want to buy",
+            "hidden_prompt": "user says 'I'd like to buy + item' or 'I'm looking for + item'",
+            "hint_pt": "I'd like to buy a shirt.",
+            "hint_en": "I'd like to buy a shirt."
+          },
+          {
+            "id": 2,
+            "label_pt": "Apontar com demonstrativo + experimentar",
+            "label_en": "Point + try on",
+            "hidden_prompt": "user picks item with 'this/that/these/those' OR asks 'Can I try it on?'",
+            "hint_pt": "I like this one. Can I try it on?",
+            "hint_en": "I like this one. Can I try it on?"
+          },
+          {
+            "id": 3,
+            "label_pt": "Fechar a compra — preço e pagamento",
+            "label_en": "Close the purchase",
+            "hidden_prompt": "user asks 'How much is it?' AND 'Can I pay with...?' or just chooses payment method",
+            "hint_pt": "How much is it? I'll pay with credit card.",
+            "hint_en": "How much is it? I'll pay with credit card."
+          }
+        ],
+        "closing_cue": "Charlotte fecha com \"Thanks — enjoy!\" quando obj_3 baterem.",
+        "suggested_flow": "**Suggested flow** (referencial, 6 turnos):\n\n1. **Charlotte**: \"Welcome! What can I help you find today?\"\n2. **Student**: ~\"I'd like to buy a shirt.\"\n3. **Charlotte**: \"Sure! Take a look.\"\n4. **Student**: ~\"I like this one. Can I try it on?\"\n5. **Charlotte**: \"Of course.\"\n6. **Student**: ~\"How much is it? I'll pay with credit card.\"\n7. **Charlotte**: \"Twenty dollars. Thanks — enjoy!\"",
+        "evaluation_focus": [
+          "Sequência completa de compra",
+          "Chunks integrados (I'd like, this/that, try on, How much, pay with)",
+          "Pronúncia natural"
+        ]
+      },
+      "guided_chat": {
+        "scenario": "Charlotte conversa sobre uma compra recente sua.",
+        "voiced_by": "charlotte",
+        "persona": "Charlotte",
+        "persona_outfit": "charlotte_casual",
+        "intro_pt": "Charlotte quer saber de uma compra que você fez. Integra tudo de M11.",
+        "opening_message": "Bought anything cool lately?",
+        "objectives": [
+          {
+            "id": 1,
+            "label_pt": "Dizer o que você comprou",
+            "label_en": "Say what you bought",
+            "hidden_prompt": "user says what they bought with 'I bought + item' or 'I got + item'",
+            "hint_pt": "I bought a new jacket.",
+            "hint_en": "I bought a new jacket."
+          },
+          {
+            "id": 2,
+            "label_pt": "Dizer o preço",
+            "label_en": "Say the price",
+            "hidden_prompt": "user states price with 'It was + amount' or 'It cost + amount'",
+            "hint_pt": "It was fifty dollars.",
+            "hint_en": "It was fifty dollars."
+          },
+          {
+            "id": 3,
+            "label_pt": "Perguntar à Charlotte",
+            "label_en": "Ask Charlotte",
+            "hidden_prompt": "user asks 'How about you?' or 'Did you buy anything?'",
+            "hint_pt": "How about you?",
+            "hint_en": "How about you?"
+          }
+        ],
+        "closing_cue": "Charlotte encerra com \"Cool finds!\" quando obj_3 baterem.",
+        "suggested_script": "**Script** (referencial, 7 turnos):\n\n1. **Charlotte**: \"Bought anything cool lately?\"\n2. **Student**: \"I bought a new jacket.\"\n3. **Charlotte**: \"Nice.\"\n4. **Student**: \"It was fifty dollars.\"\n5. **Charlotte**: \"Steal!\"\n6. **Student**: \"How about you?\"\n7. **Charlotte**: \"I got some books. Cool finds!\"\n\n> N05 chat = LLM puro.\n\n---"
+      }
+    }
+  ],
+  "cross_unit_consolidation": [
+    "\"I'd like to + verb\" / \"I'm looking for + item\" em qualquer loja",
+    "this/that/these/those por proximidade e número",
+    "Prepositions of place: in/on/at/next to/between/behind/in front of",
+    "\"How much is it?\" / \"Can I pay with...?\" / \"Can I have a receipt?\"",
+    "\"Try on\" pra roupas, \"on sale\" pra promoções"
+  ]
+}
