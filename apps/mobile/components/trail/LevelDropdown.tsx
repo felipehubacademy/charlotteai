@@ -145,8 +145,8 @@ export function LevelDropdown({ selectedLevel, currentLevel, onSelect }: Props) 
                   <View
                     style={[{
                       backgroundColor: C.card,
-                      borderRadius:    16,
-                      paddingVertical: 4,
+                      borderRadius:    18,
+                      paddingVertical: 8,
                       borderWidth:     1,
                       borderColor:     C.border,
                     }, shadow as any]}>
@@ -156,14 +156,14 @@ export function LevelDropdown({ selectedLevel, currentLevel, onSelect }: Props) 
                       const color    = LEVEL_COLOR[lvl];
                       return (
                         <React.Fragment key={lvl}>
-                          {i > 0 && <View style={{ height: 1, backgroundColor: C.divider, marginHorizontal: 14 }} />}
+                          {i > 0 && <View style={{ height: 1, backgroundColor: C.divider, marginHorizontal: 18 }} />}
                           <Pressable
                             onPress={() => pick(lvl)}
                             style={({ pressed }) => ({
                               flexDirection:    'row',
                               alignItems:       'center',
-                              paddingHorizontal:16,
-                              paddingVertical:  13,
+                              paddingHorizontal:20,
+                              paddingVertical:  16,
                               backgroundColor:  pressed && !isLocked ? `${color}12` : 'transparent',
                               opacity:          isLocked ? 0.7 : 1,
                             })}>

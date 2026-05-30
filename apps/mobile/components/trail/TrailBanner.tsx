@@ -77,26 +77,27 @@ export function TrailBanner({ userId, level, flush = false, currentLevel, onLeve
   }, [refetch, useV2, v2Progress.refetch])); // eslint-disable-line react-hooks/exhaustive-deps
 
   // ── Contagem ──
-  // v1: por módulos completos (legado).
-  // v2: por atividades completas (cada activity done move a barra — sensação
-  //     de progresso a cada topico). 4 atividades por unit × 5 units × 22 mods
-  //     = 440 atividades por nivel.
+  // Hierarquia: Nivel > Modulos (22) > Topicos (110 = 22*5) > Exercicios (440 = 110*4)
+  // v1: progresso por módulos completos (legado).
+  // v2: progresso por TOPICOS completos (= unidade com todas 4 atividades done).
+  //     Sensacao de progresso a cada topico fechado.
   const completedSet = progress?.completed ?? [];
-  const v2TotalActivities = useV2
-    ? listModules(level as Level).reduce((sum, m) => sum + m.units.length * 4, 0)
-    : 0;
-  const v2CompletedActivities = useV2
-    ? v2Progress.rows.filter(r => r.completed).length
+  const v2AllUnits = useV2
+    ? listModules(level as Level).flatMap(m => m.units.map(u => ({ moduleId: m.id, unitId: u.id })))
+    : [];
+  const v2TotalTopics     = v2AllUnits.length;
+  const v2CompletedTopics = useV2
+    ? v2AllUnits.filter(u => v2Progress.isUnitComplete(u.moduleId, u.unitId)).length
     : 0;
 
   const completed = useV2
-    ? v2CompletedActivities
+    ? v2CompletedTopics
     : modules.reduce((n, mod: any, mIdx) => {
         const allDone = mod.topics?.every((_: any, tIdx: number) =>
           completedSet.some(k => k.m === mIdx && k.t === tIdx));
         return allDone ? n + 1 : n;
       }, 0);
-  const total           = useV2 ? v2TotalActivities : modules.length;
+  const total           = useV2 ? v2TotalTopics : modules.length;
   const moduleCount     = modules.length;
   const itemLabel       = useV2
     ? (isPortuguese ? 'tópicos' : 'topics')
