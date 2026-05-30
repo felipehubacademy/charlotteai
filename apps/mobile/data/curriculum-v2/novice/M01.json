@@ -154,10 +154,10 @@
         }
       ],
       "roleplay": {
-        "scenario": "Você esbarra com Ana, sua melhor amiga, no portão do prédio. Cumprimento rápido.",
+        "scenario": "Charlotte te encontra e cumprimenta. Responde ela.",
         "voiced_by": "charlotte",
-        "persona": "Ana (melhor amiga)",
-        "persona_outfit": "ana_cafe_morning",
+        "persona": "Charlotte",
+        "persona_outfit": "charlotte_casual",
         "time_budget_sec": 90,
         "opening_line": "Hi! How are you?",
         "objectives": [
@@ -170,19 +170,19 @@
             "hint_en": "I'm good!"
           }
         ],
-        "closing_cue": "Ana fecha com \"Great! Nice to see you. Talk to you later!\" quando obj_1 baterem.",
-        "suggested_flow": "**Suggested flow** (referencial, 2 turnos):\n\n1. **Student**: ~\"I'm good!\"\n2. **Ana**: \"Great! Nice to see you. Talk to you later!\"",
+        "closing_cue": "Charlotte fecha com \"Great! Nice to see you. Talk to you later!\" quando obj_1 baterem.",
+        "suggested_flow": "**Suggested flow** (referencial, 2 turnos):\n\n1. **Student**: ~\"I'm good!\"\n2. **Charlotte**: \"Great! Nice to see you. Talk to you later!\"",
         "evaluation_focus": [
           "Aluno responde com algum estado positivo",
           "Pronúncia clara de \"I'm good\" / \"Good\""
         ]
       },
       "guided_chat": {
-        "scenario": "Tom, seu colega de escritório americano, te cumprimenta na segunda de manhã.",
-        "voiced_by": "charlie",
-        "persona": "Tom (colega de trabalho)",
-        "persona_outfit": "tom_office_casual",
-        "intro_pt": "É segunda de manhã e o Tom te cumprimenta. Responde ele.",
+        "scenario": "Charlotte te cumprimenta na segunda de manhã pelo chat.",
+        "voiced_by": "charlotte",
+        "persona": "Charlotte",
+        "persona_outfit": "charlotte_casual",
+        "intro_pt": "É segunda de manhã e a Charlotte te cumprimenta. Responde ela.",
         "opening_message": "Good morning!",
         "objectives": [
           {
@@ -210,8 +210,8 @@
             "hint_en": "Yes, please!"
           }
         ],
-        "closing_cue": "Tom encerra com \"Awesome, see you later!\" quando obj_3 baterem.",
-        "suggested_script": "**Script** (referencial, 6 turnos):\n\n1. **Tom**: \"Good morning!\"\n2. **Student**: \"Good morning!\" (or \"Morning!\")\n3. **Tom**: \"How are you?\"\n4. **Student**: \"I'm fine!\"\n5. **Tom**: \"Coffee?\"\n6. **Student**: \"Yes, please!\"\n7. **Tom**: \"Awesome, see you later!\"\n\n> N01 chat = LLM puro. Scaffold \"Escreva:\" aparece via hint_pt da\n> objective pendente (cada um dos 3 objetivos vai destacando o próximo\n> chunk esperado conforme aluno avança).\n\n---"
+        "closing_cue": "Charlotte encerra com \"Awesome, see you later!\" quando obj_3 baterem.",
+        "suggested_script": "**Script** (referencial, 6 turnos):\n\n1. **Charlotte**: \"Good morning!\"\n2. **Student**: \"Good morning!\" (or \"Morning!\")\n3. **Charlotte**: \"How are you?\"\n4. **Student**: \"I'm fine!\"\n5. **Charlotte**: \"Coffee?\"\n6. **Student**: \"Yes, please!\"\n7. **Charlotte**: \"Awesome, see you later!\"\n\n> N01 chat = LLM puro. Scaffold \"Escreva:\" aparece via hint_pt da\n> objective pendente (cada um dos 3 objetivos vai destacando o próximo\n> chunk esperado conforme aluno avança).\n\n---"
       }
     },
     {

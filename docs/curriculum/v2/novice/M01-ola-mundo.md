@@ -106,11 +106,11 @@ Charlotte fala via ElevenLabs (Rachel). Aluno repete; Azure Speech avalia pronú
 
 ### 3. Role-play
 
-**Cenário**: Você esbarra com Ana, sua melhor amiga, no portão do prédio. Cumprimento rápido.
+**Cenário**: Charlotte te encontra e cumprimenta. Responde ela.
 **Tipo**: Live Voice
 **Voiced by**: `charlotte`
-**Persona**: Ana (melhor amiga)
-**Persona outfit**: `ana_cafe_morning`
+**Persona**: Charlotte
+**Persona outfit**: `charlotte_casual`
 **Time budget**: 90s
 **Opening line**: "Hi! How are you?"
 
@@ -123,12 +123,12 @@ Charlotte fala via ElevenLabs (Rachel). Aluno repete; Azure Speech avalia pronú
    **hint_pt**: "I'm good!"
    **hint_en**: "I'm good!"
 
-**Closing cue**: Ana fecha com "Great! Nice to see you. Talk to you later!" quando obj_1 baterem.
+**Closing cue**: Charlotte fecha com "Great! Nice to see you. Talk to you later!" quando obj_1 baterem.
 
 **Suggested flow** (referencial, 2 turnos):
 
 1. **Student**: ~"I'm good!"
-2. **Ana**: "Great! Nice to see you. Talk to you later!"
+2. **Charlotte**: "Great! Nice to see you. Talk to you later!"
 
 **Evaluation focus**:
 - Aluno responde com algum estado positivo
@@ -147,11 +147,11 @@ Charlotte fala via ElevenLabs (Rachel). Aluno repete; Azure Speech avalia pronú
 
 ### 4. Guided Chat
 
-**Cenário**: Tom, seu colega de escritório americano, te cumprimenta na segunda de manhã.
-**Voiced by**: `charlie`
-**Persona**: Tom (colega de trabalho)
-**Persona outfit**: `tom_office_casual`
-**Intro (em PT)**: "É segunda de manhã e o Tom te cumprimenta. Responde ele."
+**Cenário**: Charlotte te cumprimenta na segunda de manhã pelo chat.
+**Voiced by**: `charlotte`
+**Persona**: Charlotte
+**Persona outfit**: `charlotte_casual`
+**Intro (em PT)**: "É segunda de manhã e a Charlotte te cumprimenta. Responde ela."
 **Opening message**: "Good morning!"
 
 **Sub-objectives** (POC base-da-base: 3 objetivos, todos 1-2 palavras):
@@ -177,17 +177,17 @@ Charlotte fala via ElevenLabs (Rachel). Aluno repete; Azure Speech avalia pronú
    **hint_pt**: "Yes, please!"
    **hint_en**: "Yes, please!"
 
-**Closing cue**: Tom encerra com "Awesome, see you later!" quando obj_3 baterem.
+**Closing cue**: Charlotte encerra com "Awesome, see you later!" quando obj_3 baterem.
 
 **Script** (referencial, 6 turnos):
 
-1. **Tom**: "Good morning!"
+1. **Charlotte**: "Good morning!"
 2. **Student**: "Good morning!" (or "Morning!")
-3. **Tom**: "How are you?"
+3. **Charlotte**: "How are you?"
 4. **Student**: "I'm fine!"
-5. **Tom**: "Coffee?"
+5. **Charlotte**: "Coffee?"
 6. **Student**: "Yes, please!"
-7. **Tom**: "Awesome, see you later!"
+7. **Charlotte**: "Awesome, see you later!"
 
 > N01 chat = LLM puro. Scaffold "Escreva:" aparece via hint_pt da
 > objective pendente (cada um dos 3 objetivos vai destacando o próximo
