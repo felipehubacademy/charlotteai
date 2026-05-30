@@ -1,0 +1,738 @@
+{
+  "id": "M21",
+  "title": "Fala como nativo",
+  "level": "Advanced",
+  "block": "C2",
+  "units_range": "A01–A05",
+  "theme": "Discourse fillers (you know, I mean, like), hedge markers (kind of, sort of, basically), tag questions (isn't it? right?), backchannels (mm-hm, right, gotcha), pragmatic openers (honestly, to be fair, no offence)",
+  "goal": "Student speaks with the texture of fluent native speech — uses fillers and hedges deliberately, signals listening, opens delicate topics with the right pragmatic markers.",
+  "connects_to": "M22 (Síntese e mastery) — closes the C2 block.",
+  "module_chunks": [
+    "you know / I mean / like (discourse fillers)",
+    "kind of / sort of / basically / essentially (hedge markers)",
+    "isn't it? / right? / yeah? / aren't they? (tag questions)",
+    "mm-hm / right / yeah / okay / gotcha (backchannels)",
+    "honestly / frankly / to be fair / to be honest (pragmatic openers)",
+    "I'm not gonna lie / I'll be honest with you",
+    "no offence / no offence intended / with all due respect",
+    "no worries / no problem / it's all good (reassurance)",
+    "look / listen / look here (attention-getters)",
+    "I'll tell you what (proposal opener)",
+    "the thing is / here's the thing (problem-naming)",
+    "I don't know about you, but..."
+  ],
+  "units": [
+    {
+      "id": "A01",
+      "title": "Discourse fillers",
+      "sub_cefr": "C2",
+      "grammar_focus": "Filler words used deliberately (you know, I mean, like, sort of) — for thinking time, hedging, register softening",
+      "markers": [
+        "denso",
+        "pragmatic"
+      ],
+      "real_life_context": "You use fillers strategically — never overusing them, but sprinkling them in to sound natural rather than rehearsed.",
+      "grammar": [
+        {
+          "type": "multiple_choice",
+          "options": [
+            "It was, you know, a difficult situation.",
+            "It was a difficult situation.",
+            "It was, sort of, you know, I mean, a difficult situation.",
+            "It was difficult."
+          ],
+          "answer": "It was, you know, a difficult situation.",
+          "explanation": "\"You know\" — one well-placed filler signals casual register and gives the speaker thinking time. Two are still natural; three or more sound nervous or under-rehearsed. C2 fluency means knowing when one filler helps and when more start to hurt."
+        },
+        {
+          "type": "multiple_choice",
+          "options": [
+            "I mean, the meeting was a disaster.",
+            "I mean, I mean, I mean, the meeting was bad.",
+            "I mean, you know, sort of, the meeting was bad.",
+            "The meeting, I mean."
+          ],
+          "answer": "I mean, the meeting was a disaster.",
+          "explanation": "\"I mean\" — opens a clarification or emphatic restatement. Functions as a soft topic-anchor in casual speech. Common at the start of a sentence or after a pause. Native speakers use it constantly; learners often miss it entirely or overuse it."
+        },
+        {
+          "type": "fill_gap",
+          "hint": "\"Kind of\" or \"sort of\"",
+          "answer": "kind of (or \"sort of\")",
+          "explanation": "\"Kind of\" / \"sort of\" — hedges. Soften the absoluteness of \"the best\". \"Kind of the best\" = approximately the best, hesitant to claim full superlative. In writing this hedge is light; in speech it's heavy and frequent."
+        },
+        {
+          "type": "fix_error",
+          "hint": "Three or more fillers in one sentence is too many",
+          "answer": "The project was really hard, you know?",
+          "explanation": "Over-filling sounds nervous or under-prepared. C2 fluency = strategic filler use. One filler per sentence is natural; two is borderline; three or more weakens. Remove some and keep one well-placed."
+        },
+        {
+          "type": "read_answer",
+          "passage": "Native speech uses fillers as semantic glue. 'It was, you know, a tough call' = the speaker is signalling casual register, sharing a moment of judgement-formation. 'I mean, who would have predicted that?' = the speaker is shifting register or correcting course. 'She's kind of new at this' = the speaker is softening an evaluation. Each filler does specific work.",
+          "question": "According to the passage, what specific work does 'kind of' do in 'She's kind of new at this'?",
+          "answer": "softening an evaluation",
+          "explanation": "Three fillers, three functions: \"you know\" = casual signal, \"I mean\" = register shift/correction, \"kind of\" = softening. Native fluency uses them deliberately. Avoiding them entirely sounds stiff; using them randomly sounds incoherent."
+        }
+      ],
+      "listening_speaking": [
+        {
+          "text": "It was, you know, a tough call.",
+          "context": "filler signals casual register"
+        },
+        {
+          "text": "I mean, who would have predicted that?",
+          "context": "register shift"
+        },
+        {
+          "text": "She's kind of new at this.",
+          "context": "softening hedge"
+        },
+        {
+          "text": "It's sort of complicated.",
+          "context": "softening abstract claim"
+        },
+        {
+          "text": "Like, honestly, I have no idea.",
+          "context": "multiple fillers, casual register</p>"
+        }
+      ],
+      "roleplay": {
+        "scenario": "Charlotte gives three statements. You restate each with a single, well-placed filler to sound natural.",
+        "voiced_by": "charlotte",
+        "persona": "Charlotte",
+        "persona_outfit": "charlotte_casual",
+        "time_budget_sec": 300,
+        "opening_line": "Three statements. Restate each with one well-placed filler — not three.",
+        "objectives": [
+          {
+            "id": 1,
+            "label_en": "Filler 'you know'",
+            "hidden_prompt": "user adds one 'you know' to sound casual",
+            "hint_en": "It was, you know, the kind of meeting where everyone had something to say and nobody was actually listening."
+          },
+          {
+            "id": 2,
+            "label_en": "Filler 'I mean'",
+            "hidden_prompt": "user opens or pivots with 'I mean'",
+            "hint_en": "I mean, the project wasn't bad — it just wasn't what anyone hoped it would be."
+          },
+          {
+            "id": 3,
+            "label_en": "Hedge 'kind of / sort of'",
+            "hidden_prompt": "user uses 'kind of' or 'sort of' to soften",
+            "hint_en": "It's sort of one of those situations where there isn't a right answer, just a less wrong one."
+          }
+        ],
+        "closing_cue": "Charlotte closes with \"Fillers, strategically placed.\" once obj_3 lands.",
+        "suggested_flow": "**Suggested flow** (referencial, 6 turnos):\n\n1. **Charlotte**: \"Three statements. Restate each with one well-placed filler — not three.\"\n2. **Student**: ~\"It was, you know, the kind of meeting where everyone had something to say and nobody was actually listening.\"\n3. **Charlotte**: \"Pivot?\"\n4. **Student**: ~\"I mean, the project wasn't bad — it just wasn't what anyone hoped it would be.\"\n5. **Charlotte**: \"Hedge?\"\n6. **Student**: ~\"It's sort of one of those situations where there isn't a right answer, just a less wrong one.\"\n7. **Charlotte**: \"Fillers, strategically placed.\"",
+        "evaluation_focus": [
+          "One filler per sentence (not three)",
+          "Filler placement natural (start or mid-sentence)",
+          "Filler does pragmatic work"
+        ]
+      },
+      "guided_chat": {
+        "scenario": "Charlotte uses fillers naturally. You match her register without overfilling.",
+        "voiced_by": "charlotte",
+        "persona": "Charlotte",
+        "persona_outfit": "charlotte_casual",
+        "intro_en": "Charlotte uses fillers naturally. Match her without overfilling.",
+        "opening_message": "I mean, the whole thing kind of fell apart in week three. You know how it is — one decision, three weeks later, total restart.",
+        "objectives": [
+          {
+            "id": 1,
+            "label_en": "Casual reply with filler",
+            "hidden_prompt": "user uses 'I mean' or 'you know' once",
+            "hint_en": "I mean, week three is when those problems usually surface — early enough to be visible, late enough that pulling back feels expensive."
+          },
+          {
+            "id": 2,
+            "label_en": "Deepen with hedge",
+            "hidden_prompt": "user uses 'kind of' or 'sort of' softener",
+            "hint_en": "It's sort of the design version of compound interest — small wrong calls in the first week add up by the third."
+          },
+          {
+            "id": 3,
+            "label_en": "Ask Charlotte",
+            "hidden_prompt": "user asks Charlotte what specifically broke",
+            "hint_en": "What was the one decision that did it?"
+          }
+        ],
+        "closing_cue": "Charlotte closes with \"Fillers carry register.\" once obj_3 lands.",
+        "suggested_script": "**Script** (referencial, 7 turnos):\n\n1. **Charlotte**: \"I mean, the whole thing kind of fell apart in week three. You know how it is — one decision, three weeks later, total restart.\"\n2. **Student**: \"I mean, week three is when those problems usually surface — early enough to be visible, late enough that pulling back feels expensive.\"\n3. **Charlotte**: \"Exactly the dynamic.\"\n4. **Student**: \"It's sort of the design version of compound interest — small wrong calls in the first week add up by the third.\"\n5. **Charlotte**: \"That's an honest framing. I might steal it.\"\n6. **Student**: \"What was the one decision that did it?\"\n7. **Charlotte**: \"Cutting the user research short to hit the kickoff date. Saved a week, cost six. Fillers carry register.\"\n\n> A01 chat = full LLM. Scaffold via hint_pt/hint_en.\n\n---"
+      }
+    },
+    {
+      "id": "A02",
+      "title": "Tag questions",
+      "sub_cefr": "C2",
+      "grammar_focus": "Tag questions (isn't it? aren't they? hasn't she? right? yeah?) — agreement-seeking, confirmation, rhetorical",
+      "markers": [
+        "denso",
+        "pragmatic"
+      ],
+      "real_life_context": "You add tags to statements to seek agreement, soften assertion, or invite conversation.",
+      "grammar": [
+        {
+          "type": "multiple_choice",
+          "options": [
+            "isn't it?",
+            "is it?",
+            "isn't is?",
+            "it isn't?"
+          ],
+          "answer": "isn't it?",
+          "explanation": "Tag question rule: positive statement + negative tag. \"It's beautiful\" (positive, \"is\") → \"isn't it?\" (negative). Tags reverse polarity. Common pattern: \"She's coming, isn't she?\" / \"They've left, haven't they?\" / \"You like coffee, don't you?\". Agreement-seeking move."
+        },
+        {
+          "type": "multiple_choice",
+          "options": [
+            "does she?",
+            "doesn't she?",
+            "is she?",
+            "she does?"
+          ],
+          "answer": "does she?",
+          "explanation": "Negative statement → positive tag. \"She doesn't speak\" (negative, \"doesn't\") → \"does she?\" (positive). Reverse polarity. Common error: matching the polarity. The point of the tag is to flip and check."
+        },
+        {
+          "type": "fill_gap",
+          "hint": "Universal informal tag",
+          "answer": "innit (or \"isn't it\" formal)",
+          "explanation": "\"Innit\" — universal informal tag in British English, especially Cockney/London. Stands in for any positive→negative tag (\"isn't it / aren't they / haven't they / didn't he\"). Use cautiously — works in casual peer-to-peer speech but reads as too informal in professional contexts."
+        },
+        {
+          "type": "fix_error",
+          "hint": "Actually, that's correct. Try: \"You haven't been to Paris, have you?\"",
+          "answer": "You haven't been to Paris, have you? (negative → positive tag)",
+          "explanation": "Common L2 error is matching polarity. Native English always reverses: pos → neg tag, neg → pos tag. \"You've been\" (positive perfect) + \"haven't you?\" (negative). \"You haven't been\" (negative) + \"have you?\" (positive). Polarity always inverts."
+        },
+        {
+          "type": "read_answer",
+          "passage": "Tags do different work depending on intonation. 'It's a lovely day, isn't it?' with rising tag = genuinely asking, expecting agreement. With falling tag = rhetorical, not really seeking confirmation. Tags can also soften assertion: 'You'd rather not come, would you?' is gentler than 'You don't want to come.' English speech relies on these constantly.",
+          "question": "According to the passage, what makes the difference between a genuine question tag and a rhetorical one?",
+          "answer": "intonation — rising for genuine, falling for rhetorical",
+          "explanation": "Tag question carries function via intonation: rising = real question, expecting agreement; falling = rhetorical, not really expecting answer. C2 mastery includes producing both. Also tags soften statements that would otherwise feel blunt or accusatory."
+        }
+      ],
+      "listening_speaking": [
+        {
+          "text": "It's a beautiful day, isn't it?",
+          "context": "positive → negative tag"
+        },
+        {
+          "text": "She doesn't drive, does she?",
+          "context": "negative → positive tag"
+        },
+        {
+          "text": "You've been there, haven't you?",
+          "context": "present perfect tag"
+        },
+        {
+          "text": "That was a mistake, right?",
+          "context": "universal \"right\" tag"
+        },
+        {
+          "text": "Lovely view, innit?",
+          "context": "informal British tag"
+        }
+      ],
+      "roleplay": {
+        "scenario": "Charlotte gives three statements. You add a tag question — agreement-seeking, confirmation, or soft challenge.",
+        "voiced_by": "charlotte",
+        "persona": "Charlotte",
+        "persona_outfit": "charlotte_casual",
+        "time_budget_sec": 300,
+        "opening_line": "Three statements. Add a tag — agreement, confirmation, or soft challenge.",
+        "objectives": [
+          {
+            "id": 1,
+            "label_en": "Agreement tag",
+            "hidden_prompt": "user adds rising tag for genuine agreement-seeking",
+            "hint_en": "She's the strongest writer on the team, isn't she? The way she frames an argument is in a different category."
+          },
+          {
+            "id": 2,
+            "label_en": "Confirmation tag",
+            "hidden_prompt": "user adds tag for confirming a fact",
+            "hint_en": "You haven't met the new product manager yet, have you? She started two weeks ago and seems to be everywhere at once."
+          },
+          {
+            "id": 3,
+            "label_en": "Soft challenge tag",
+            "hidden_prompt": "user adds tag that softly challenges or pushes back",
+            "hint_en": "We probably should have flagged this sooner, shouldn't we? — even if nobody likes to admit it now."
+          }
+        ],
+        "closing_cue": "Charlotte closes with \"Tags, doing pragmatic work.\" once obj_3 lands.",
+        "suggested_flow": "**Suggested flow** (referencial, 6 turnos):\n\n1. **Charlotte**: \"Three statements. Add a tag — agreement, confirmation, or soft challenge.\"\n2. **Student**: ~\"She's the strongest writer on the team, isn't she? The way she frames an argument is in a different category.\"\n3. **Charlotte**: \"Confirmation?\"\n4. **Student**: ~\"You haven't met the new product manager yet, have you? She started two weeks ago and seems to be everywhere at once.\"\n5. **Charlotte**: \"Soft challenge?\"\n6. **Student**: ~\"We probably should have flagged this sooner, shouldn't we? — even if nobody likes to admit it now.\"\n7. **Charlotte**: \"Tags, doing pragmatic work.\"",
+        "evaluation_focus": [
+          "Polarity reversed (pos→neg, neg→pos)",
+          "Auxiliary matches main verb tense",
+          "Tag fits the pragmatic function"
+        ]
+      },
+      "guided_chat": {
+        "scenario": "Charlotte uses tag questions constantly. You match her style.",
+        "voiced_by": "charlotte",
+        "persona": "Charlotte",
+        "persona_outfit": "charlotte_casual",
+        "intro_en": "Charlotte uses tag questions constantly. Match her style.",
+        "opening_message": "The book club meets at six, doesn't it? I've forgotten if it was six or six-thirty.",
+        "objectives": [
+          {
+            "id": 1,
+            "label_en": "Reply with tag",
+            "hidden_prompt": "user replies with a tag question",
+            "hint_en": "Six, I think. Although we sometimes started at six-thirty when the host couldn't get there earlier, didn't we?"
+          },
+          {
+            "id": 2,
+            "label_en": "Another tag in conversation",
+            "hidden_prompt": "user adds another tag",
+            "hint_en": "You're reading the new one this month, aren't you? The one with the unreliable narrator everyone's been arguing about."
+          },
+          {
+            "id": 3,
+            "label_en": "Ask Charlotte",
+            "hidden_prompt": "user asks Charlotte about the book",
+            "hint_en": "Are you actually enjoying it?"
+          }
+        ],
+        "closing_cue": "Charlotte closes with \"Tags, native rhythm.\" once obj_3 lands.",
+        "suggested_script": "**Script** (referencial, 7 turnos):\n\n1. **Charlotte**: \"The book club meets at six, doesn't it? I've forgotten if it was six or six-thirty.\"\n2. **Student**: \"Six, I think. Although we sometimes started at six-thirty when the host couldn't get there earlier, didn't we?\"\n3. **Charlotte**: \"We did. Are you reading this month's?\"\n4. **Student**: \"You're reading the new one this month, aren't you? The one with the unreliable narrator everyone's been arguing about.\"\n5. **Charlotte**: \"I'm only halfway through. It's making me angry, which is probably the point.\"\n6. **Student**: \"Are you actually enjoying it?\"\n7. **Charlotte**: \"Not exactly enjoying. More like respecting against my will. Tags, native rhythm.\"\n\n> A02 chat = full LLM. Scaffold via hint_pt/hint_en.\n\n---"
+      }
+    },
+    {
+      "id": "A03",
+      "title": "Backchannels",
+      "sub_cefr": "C2",
+      "grammar_focus": "Listening signals (mm-hm, right, yeah, okay, gotcha, oh, really, I see, no way) — confirming you're tracking the speaker",
+      "markers": [
+        "denso",
+        "pragmatic"
+      ],
+      "real_life_context": "You signal active listening through small interjections — without interrupting the speaker. Critical for casual fluency.",
+      "grammar": [
+        {
+          "type": "multiple_choice",
+          "options": [
+            "Mm-hm. Right. Yeah.",
+            "Yes, I am listening.",
+            "I understand what you're saying.",
+            "Continue, please."
+          ],
+          "answer": "Mm-hm. Right. Yeah.",
+          "explanation": "Native speakers signal listening with short interjections — not full sentences. \"Mm-hm\", \"right\", \"yeah\", \"okay\", \"oh\", \"gotcha\" — each is a small confirmation that the listener is tracking. Long acknowledgements (\"I understand what you're saying\") interrupt and feel formal."
+        },
+        {
+          "type": "multiple_choice",
+          "options": [
+            "Really?",
+            "Yes, indeed.",
+            "I see your point.",
+            "Acknowledged."
+          ],
+          "answer": "Really?",
+          "explanation": "\"Really?\" — surprise backchannel. Synonyms: \"No way\", \"Oh\", \"Seriously?\". Each invites the speaker to elaborate. Native conversation depends on these small expressions of receptivity. Without them, speakers feel their story isn't landing."
+        },
+        {
+          "type": "fill_gap",
+          "hint": "Single syllable, neutral confirmation",
+          "answer": "Right (or \"Mm-hm\" or \"Yeah\")",
+          "explanation": "\"Right\" — neutral confirmation backchannel. Often timed during pauses or at the end of a sentence. Allows the speaker to continue without seeking more elaborate confirmation. Stress-pattern: short, rising-falling pitch, almost throwaway."
+        },
+        {
+          "type": "fix_error",
+          "hint": "Use a short interjection instead",
+          "answer": "Mm-hm. (or \"Right.\" / \"Yeah.\" / \"Oh.\")",
+          "explanation": "Formal acknowledgement reads as ironic or alien in casual speech. Native fluency uses short backchannels. \"I am listening with interest\" in casual chat = either sarcasm or non-native flag. C2 fluency replaces it with one-syllable confirmation."
+        },
+        {
+          "type": "read_answer",
+          "passage": "Native conversation has its own rhythm. The speaker tells the story. The listener punctuates with quiet sounds — 'mm-hm... right... yeah... oh, really?... no way.' These tiny words do enormous work. They tell the speaker the listener is present, paying attention, and emotionally tracking. Without them, the speaker feels alone on the line.",
+          "question": "According to the passage, what work do backchannels do?",
+          "answer": "tell the speaker the listener is present, paying attention, and emotionally tracking",
+          "explanation": "Three functions: presence, attention, emotional tracking. All carried by single-word interjections. C2 conversational mastery includes producing these naturally — and noticing when other speakers go silent (a signal to wrap up or shift)."
+        }
+      ],
+      "listening_speaking": [
+        {
+          "text": "Mm-hm.",
+          "context": "neutral confirmation"
+        },
+        {
+          "text": "Right.",
+          "context": "short acknowledgement"
+        },
+        {
+          "text": "Really?",
+          "context": "surprise invitation"
+        },
+        {
+          "text": "No way.",
+          "context": "strong surprise"
+        },
+        {
+          "text": "Gotcha.",
+          "context": "informal understanding signal"
+        }
+      ],
+      "roleplay": {
+        "scenario": "Charlotte tells you a short story. You backchannel at appropriate moments — short interjections only.",
+        "voiced_by": "charlotte",
+        "persona": "Charlotte",
+        "persona_outfit": "charlotte_casual",
+        "time_budget_sec": 300,
+        "opening_line": "I'll tell you a short story. Backchannel naturally — short words only, never full sentences.",
+        "objectives": [
+          {
+            "id": 1,
+            "label_en": "Neutral backchannel",
+            "hidden_prompt": "user produces 'mm-hm' or 'right' or 'yeah'",
+            "hint_en": "Right — go on. Mm-hm, I'm following."
+          },
+          {
+            "id": 2,
+            "label_en": "Surprise",
+            "hidden_prompt": "user produces 'really?' or 'no way' or 'oh'",
+            "hint_en": "Really? In the middle of the meeting? No way."
+          },
+          {
+            "id": 3,
+            "label_en": "Understanding",
+            "hidden_prompt": "user produces 'gotcha' / 'I see' / 'okay'",
+            "hint_en": "Gotcha — so the whole thing was a setup from the start. Okay, that makes more sense now."
+          }
+        ],
+        "closing_cue": "Charlotte closes with \"Backchannels, listening signalled.\" once obj_3 lands.",
+        "suggested_flow": "**Suggested flow** (referencial, 6 turnos):\n\n1. **Charlotte**: \"I'll tell you a short story. Backchannel naturally — short words only, never full sentences.\"\n2. **Student**: ~\"Right — go on. Mm-hm, I'm following.\"\n3. **Charlotte**: \"Surprise?\"\n4. **Student**: ~\"Really? In the middle of the meeting? No way.\"\n5. **Charlotte**: \"Understanding?\"\n6. **Student**: ~\"Gotcha — so the whole thing was a setup from the start. Okay, that makes more sense now.\"\n7. **Charlotte**: \"Backchannels, listening signalled.\"",
+        "evaluation_focus": [
+          "Short interjections, not full sentences",
+          "Varied: neutral / surprise / understanding",
+          "Timed naturally, not constant"
+        ]
+      },
+      "guided_chat": {
+        "scenario": "Charlotte tells a longer anecdote. You backchannel and ask short follow-up questions.",
+        "voiced_by": "charlotte",
+        "persona": "Charlotte",
+        "persona_outfit": "charlotte_casual",
+        "intro_en": "Charlotte tells an anecdote. Backchannel and ask short follow-ups.",
+        "opening_message": "So I'm at the airport last week, and the gate agent decides I need to repack my bag — in front of everyone.",
+        "objectives": [
+          {
+            "id": 1,
+            "label_en": "Initial backchannel + reaction",
+            "hidden_prompt": "user uses backchannel and short reaction",
+            "hint_en": "Oh no. Right — and you'd already been waiting how long?"
+          },
+          {
+            "id": 2,
+            "label_en": "Surprise backchannel",
+            "hidden_prompt": "user produces 'no way' or 'really?' at a turn in the story",
+            "hint_en": "No way. She actually opened it in front of the whole queue?"
+          },
+          {
+            "id": 3,
+            "label_en": "Short closing question",
+            "hidden_prompt": "user asks short closing question",
+            "hint_en": "Did you make the flight?"
+          }
+        ],
+        "closing_cue": "Charlotte closes with \"Story heard, story honoured.\" once obj_3 lands.",
+        "suggested_script": "**Script** (referencial, 7 turnos):\n\n1. **Charlotte**: \"So I'm at the airport last week, and the gate agent decides I need to repack my bag — in front of everyone.\"\n2. **Student**: \"Oh no. Right — and you'd already been waiting how long?\"\n3. **Charlotte**: \"An hour and a half. So I'm not in the mood. And she goes, 'Open it now or you're not flying.'\"\n4. **Student**: \"No way. She actually opened it in front of the whole queue?\"\n5. **Charlotte**: \"She had me unpack everything. Books, toiletries, the lot. People were watching.\"\n6. **Student**: \"Did you make the flight?\"\n7. **Charlotte**: \"Just barely. And I'm still annoyed a week later. Story heard, story honoured.\"\n\n> A03 chat = full LLM. Scaffold via hint_pt/hint_en.\n\n---"
+      }
+    },
+    {
+      "id": "A04",
+      "title": "Pragmatic openers",
+      "sub_cefr": "C2",
+      "grammar_focus": "Honest / honestly / frankly / to be fair / no offence / look — pragmatic markers that open sensitive turns",
+      "markers": [
+        "denso",
+        "pragmatic"
+      ],
+      "real_life_context": "You preface what you're about to say with a marker that signals tone — honest, fair, gentle, or about to disagree.",
+      "grammar": [
+        {
+          "type": "multiple_choice",
+          "options": [
+            "Honestly",
+            "Yes",
+            "Look here",
+            "Apologies"
+          ],
+          "answer": "Honestly",
+          "explanation": "\"Honestly, ...\" — opens a candid statement. Slightly informal. Synonyms: \"Frankly, ...\", \"To be honest, ...\", \"I'll be honest with you, ...\". Marks that the speaker is dropping diplomatic cover. Common in feedback or honest assessments."
+        },
+        {
+          "type": "multiple_choice",
+          "options": [
+            "To be fair",
+            "Of course",
+            "Listen here",
+            "In all honesty"
+          ],
+          "answer": "To be fair",
+          "explanation": "\"To be fair, ...\" — opens a balancing counterpoint. Signals \"I want to give credit to the other side\". Synonyms: \"In fairness, ...\". Used to defuse before disagreeing or to add nuance to an unbalanced statement."
+        },
+        {
+          "type": "fill_gap",
+          "hint": "Attention-getter with deliberate pause",
+          "answer": "Look",
+          "explanation": "\"Look, ...\" — informal attention-getter, often preceding a sensitive or direct statement. Casual register. Synonyms: \"Listen, ...\". Signals \"I'm about to be direct\" — used in interpersonal conversation, feedback, or persuasion."
+        },
+        {
+          "type": "fix_error",
+          "hint": "\"No offence\" is the fixed phrase",
+          "answer": "No offence, but you're wrong. (or: With all due respect, but you're wrong.)",
+          "explanation": "\"No offence\" — set phrase preceding a potentially insulting statement. \"With no offence\" is non-standard. The phrase preempts any negative reaction: \"I'm not trying to insult you, but...\". Often softens what follows."
+        },
+        {
+          "type": "read_answer",
+          "passage": "Pragmatic openers do real work. 'Honestly, I don't think it'll work' signals candour. 'To be fair, the other side has a point' signals balance. 'No offence, but this isn't the strongest case' signals diplomacy before disagreement. 'Look, we need to talk' signals seriousness. Each opener primes the listener for what's about to come.",
+          "question": "According to the passage, what does 'Look, we need to talk' signal?",
+          "answer": "seriousness",
+          "explanation": "Four openers, four tonal preparations: \"Honestly\" (candour), \"To be fair\" (balance), \"No offence\" (preemptive diplomacy), \"Look\" (seriousness). Each tells the listener how to receive what comes next. C2 fluency uses these consciously."
+        }
+      ],
+      "listening_speaking": [
+        {
+          "text": "Honestly, the proposal isn't strong.",
+          "context": "candour opener"
+        },
+        {
+          "text": "To be fair, both sides have a point.",
+          "context": "balance opener"
+        },
+        {
+          "text": "No offence, but this isn't great.",
+          "context": "preemptive diplomacy"
+        },
+        {
+          "text": "Look, we need to talk.",
+          "context": "seriousness opener"
+        },
+        {
+          "text": "Frankly, I don't think it'll work.",
+          "context": "formal candour"
+        }
+      ],
+      "roleplay": {
+        "scenario": "Charlotte gives three sensitive statements. You add a pragmatic opener that primes the listener for the tone.",
+        "voiced_by": "charlotte",
+        "persona": "Charlotte",
+        "persona_outfit": "charlotte_casual",
+        "time_budget_sec": 300,
+        "opening_line": "Three statements. Add a pragmatic opener — honestly, to be fair, no offence, look.",
+        "objectives": [
+          {
+            "id": 1,
+            "label_en": "'Honestly' / 'To be honest'",
+            "hidden_prompt": "user opens with 'Honestly' or 'To be honest'",
+            "hint_en": "Honestly, I've stopped reading her emails carefully — they're so dense that the actual decision usually requires a follow-up phone call."
+          },
+          {
+            "id": 2,
+            "label_en": "'To be fair'",
+            "hidden_prompt": "user opens with 'To be fair'",
+            "hint_en": "To be fair, the legal team did flag this risk three months ago — we just didn't make space to act on it."
+          },
+          {
+            "id": 3,
+            "label_en": "'No offence' / 'Look'",
+            "hidden_prompt": "user opens with 'No offence' or 'Look'",
+            "hint_en": "Look — no offence intended — but this presentation is forty minutes of slides for a five-minute decision."
+          }
+        ],
+        "closing_cue": "Charlotte closes with \"Openers, priming the listener.\" once obj_3 lands.",
+        "suggested_flow": "**Suggested flow** (referencial, 6 turnos):\n\n1. **Charlotte**: \"Three statements. Add a pragmatic opener — honestly, to be fair, no offence, look.\"\n2. **Student**: ~\"Honestly, I've stopped reading her emails carefully — they're so dense that the actual decision usually requires a follow-up phone call.\"\n3. **Charlotte**: \"Balance opener?\"\n4. **Student**: ~\"To be fair, the legal team did flag this risk three months ago — we just didn't make space to act on it.\"\n5. **Charlotte**: \"Direct one?\"\n6. **Student**: ~\"Look — no offence intended — but this presentation is forty minutes of slides for a five-minute decision.\"\n7. **Charlotte**: \"Openers, priming the listener.\"",
+        "evaluation_focus": [
+          "Opener fits the tone of what follows",
+          "Comma after opener",
+          "Real pragmatic work, not filler"
+        ]
+      },
+      "guided_chat": {
+        "scenario": "Charlotte raises a delicate workplace issue. You respond with pragmatic openers.",
+        "voiced_by": "charlotte",
+        "persona": "Charlotte",
+        "persona_outfit": "charlotte_casual",
+        "intro_en": "Charlotte raises a delicate workplace issue. Respond with pragmatic openers.",
+        "opening_message": "One of my senior team members has been quietly disengaged for months. I don't know how to start the conversation.",
+        "objectives": [
+          {
+            "id": 1,
+            "label_en": "'Honestly' / 'To be fair'",
+            "hidden_prompt": "user opens with 'Honestly' or 'To be fair' to suggest something",
+            "hint_en": "Honestly, the longer you wait, the harder it'll be — the disengagement starts to feel mutual once enough weeks pass."
+          },
+          {
+            "id": 2,
+            "label_en": "'To be honest' or 'Look'",
+            "hidden_prompt": "user uses another pragmatic opener",
+            "hint_en": "Look, the opening question matters more than the script — something like 'I've noticed something, and I want to understand what's going on' opens space."
+          },
+          {
+            "id": 3,
+            "label_en": "Ask Charlotte",
+            "hidden_prompt": "user asks Charlotte what she suspects is going on",
+            "hint_en": "What do you think is actually going on?"
+          }
+        ],
+        "closing_cue": "Charlotte closes with \"Difficult conversation, openers in place.\" once obj_3 lands.",
+        "suggested_script": "**Script** (referencial, 7 turnos):\n\n1. **Charlotte**: \"One of my senior team members has been quietly disengaged for months. I don't know how to start the conversation.\"\n2. **Student**: \"Honestly, the longer you wait, the harder it'll be — the disengagement starts to feel mutual once enough weeks pass.\"\n3. **Charlotte**: \"That's the part I keep ignoring.\"\n4. **Student**: \"Look, the opening question matters more than the script — something like 'I've noticed something, and I want to understand what's going on' opens space.\"\n5. **Charlotte**: \"Opening with a question, not an accusation. Yes.\"\n6. **Student**: \"What do you think is actually going on?\"\n7. **Charlotte**: \"Either burnout or quiet quitting — I'm not sure which yet. Difficult conversation, openers in place.\"\n\n> A04 chat = full LLM. Scaffold via hint_pt/hint_en.\n\n---"
+      }
+    },
+    {
+      "id": "A05",
+      "title": "The thing is, here's the thing",
+      "sub_cefr": "C2",
+      "grammar_focus": "Problem-naming openers (the thing is / here's the thing / look / I'll tell you what / I don't know about you but) — native conversational moves",
+      "markers": [],
+      "real_life_context": "You introduce a complication, observation, or proposal with a native conversational opener.",
+      "grammar": [
+        {
+          "type": "multiple_choice",
+          "options": [
+            "The thing is,",
+            "The thing of,",
+            "In the thing,",
+            "Thing is to,"
+          ],
+          "answer": "The thing is,",
+          "explanation": "\"The thing is, ...\" — opens a complication or important point. Casual, conversational. Variant: \"Here's the thing, ...\". Used to slow down a conversation and name the actual obstacle. Common in feedback, negotiation, and explanations."
+        },
+        {
+          "type": "multiple_choice",
+          "options": [
+            "I'll tell you what — let's just call her and ask.",
+            "I will tell you which — let's call her.",
+            "Tell I you what — call her.",
+            "I'll tell you so — call."
+          ],
+          "answer": "I'll tell you what — let's just call her and ask.",
+          "explanation": "\"I'll tell you what, ...\" or \"Tell you what, ...\" — opens a casual proposal. Comes with the rhythm of someone arriving at an idea on the spot. Common in spoken English; rare in writing."
+        },
+        {
+          "type": "fill_gap",
+          "hint": "\"I don't know about you, but...\"",
+          "answer": "I don't know about you,",
+          "explanation": "\"I don't know about you, but ...\" — opens a personal opinion in a way that invites the listener's response. Hedges the assertion as personal. Common in casual feedback and informal opinion-sharing."
+        },
+        {
+          "type": "fix_error",
+          "hint": "Use \"The thing is\" instead",
+          "answer": "The thing is, we don't have time.",
+          "explanation": "\"The matter is\" sounds formal-translated. Native English casual conversation uses \"The thing is\" or \"Here's the thing\". These openers feel native; \"the matter is\" reads as translation from another language."
+        },
+        {
+          "type": "read_answer",
+          "passage": "Native problem-naming has its own grammar. 'The thing is, we promised this would be done last week.' 'Here's the thing — nobody actually wants the new system.' 'I don't know about you, but I'm starting to think we're solving the wrong problem.' 'I'll tell you what — let's just postpone and reset.' Each opener slows the conversation and signals: a real point coming.",
+          "question": "According to the passage, what do all these openers have in common?",
+          "answer": "they slow the conversation and signal that a real point is coming",
+          "explanation": "Four openers, same function: slow the pace, signal that the speaker is about to name something important. C2 conversational mastery includes both producing these and recognising when others use them — the listener perks up because they know a substantive turn is coming."
+        }
+      ],
+      "listening_speaking": [
+        {
+          "text": "The thing is, we don't have the budget.",
+          "context": "complication opener"
+        },
+        {
+          "text": "Here's the thing — nobody wants it.",
+          "context": "problem-naming opener"
+        },
+        {
+          "text": "I'll tell you what — let's just call her.",
+          "context": "proposal opener"
+        },
+        {
+          "text": "I don't know about you, but I'm tired.",
+          "context": "invited-opinion opener"
+        },
+        {
+          "text": "Look — let's just be honest.",
+          "context": "direct-conversation opener"
+        }
+      ],
+      "roleplay": {
+        "scenario": "Charlotte gives three scenarios. You open each with a native conversational opener — the thing is, here's the thing, I'll tell you what, I don't know about you but.",
+        "voiced_by": "charlotte",
+        "persona": "Charlotte",
+        "persona_outfit": "charlotte_casual",
+        "time_budget_sec": 300,
+        "opening_line": "Three scenarios. Open each with a native conversational opener.",
+        "objectives": [
+          {
+            "id": 1,
+            "label_en": "'The thing is' / 'Here's the thing'",
+            "hidden_prompt": "user opens with 'The thing is' or 'Here's the thing'",
+            "hint_en": "Here's the thing — the project isn't behind because we're slow; it's behind because we've changed scope three times in eight weeks."
+          },
+          {
+            "id": 2,
+            "label_en": "'I'll tell you what'",
+            "hidden_prompt": "user opens with 'I'll tell you what'",
+            "hint_en": "I'll tell you what — let's just pause for a week, take stock, and come back with one clear version of the plan instead of three half-versions."
+          },
+          {
+            "id": 3,
+            "label_en": "'I don't know about you, but'",
+            "hidden_prompt": "user opens with 'I don't know about you, but'",
+            "hint_en": "I don't know about you, but I think the problem isn't the new tool — it's that nobody on the team has been properly trained yet."
+          }
+        ],
+        "closing_cue": "Charlotte closes with \"Native openers, conversation set. C2 native fluency, complete.\" once obj_3 lands.",
+        "suggested_flow": "**Suggested flow** (referencial, 6 turnos):\n\n1. **Charlotte**: \"Three scenarios. Open each with a native conversational opener.\"\n2. **Student**: ~\"Here's the thing — the project isn't behind because we're slow; it's behind because we've changed scope three times in eight weeks.\"\n3. **Charlotte**: \"Proposal?\"\n4. **Student**: ~\"I'll tell you what — let's just pause for a week, take stock, and come back with one clear version of the plan instead of three half-versions.\"\n5. **Charlotte**: \"Invited opinion?\"\n6. **Student**: ~\"I don't know about you, but I think the problem isn't the new tool — it's that nobody on the team has been properly trained yet.\"\n7. **Charlotte**: \"Native openers, conversation set. C2 native fluency, complete.\"",
+        "evaluation_focus": [
+          "Native openers (not translations from L1)",
+          "Comma after opener",
+          "Real conversational work"
+        ]
+      },
+      "guided_chat": {
+        "scenario": "Charlotte opens a problem-naming conversation with you. You respond with native conversational openers.",
+        "voiced_by": "charlotte",
+        "persona": "Charlotte",
+        "persona_outfit": "charlotte_casual",
+        "intro_en": "Charlotte opens problem-naming. Respond with native conversational openers.",
+        "opening_message": "The thing is, we keep hiring brilliant people and losing them within eighteen months. I'm starting to think the issue isn't the people.",
+        "objectives": [
+          {
+            "id": 1,
+            "label_en": "Reply with native opener",
+            "hidden_prompt": "user replies with native opener like 'Here's the thing'",
+            "hint_en": "Here's the thing — eighteen months is exactly the moment people realise the path they were promised isn't actually there."
+          },
+          {
+            "id": 2,
+            "label_en": "Add with another opener",
+            "hidden_prompt": "",
+            "hint_en": "I'll tell you what — exit interviews almost never tell you the real story. The honest answers are in the second job they take, six months later."
+          },
+          {
+            "id": 3,
+            "label_en": "Ask Charlotte",
+            "hidden_prompt": "user asks Charlotte what pattern she's seeing",
+            "hint_en": "What's the pattern you keep seeing?"
+          }
+        ],
+        "closing_cue": "Charlotte closes with \"Native fluency, closing C2.\" once obj_3 lands.",
+        "suggested_script": "**Script** (referencial, 7 turnos):\n\n1. **Charlotte**: \"The thing is, we keep hiring brilliant people and losing them within eighteen months. I'm starting to think the issue isn't the people.\"\n2. **Student**: \"Here's the thing — eighteen months is exactly the moment people realise the path they were promised isn't actually there.\"\n3. **Charlotte**: \"Right at the gap between the hiring pitch and the actual ceiling.\"\n4. **Student**: \"I'll tell you what — exit interviews almost never tell you the real story. The honest answers are in the second job they take, six months later.\"\n5. **Charlotte**: \"That's a sobering reframe.\"\n6. **Student**: \"What's the pattern you keep seeing?\"\n7. **Charlotte**: \"They all end up at the same three companies — places that promised exactly what we couldn't deliver. Native fluency, closing C2.\"\n\n> A05 chat = full LLM. Scaffold via hint_pt/hint_en.\n\n---"
+      }
+    }
+  ],
+  "cross_unit_consolidation": [
+    "Sprinkle discourse fillers (you know, I mean, like) strategically — one per sentence, not three",
+    "Hedge with kind of / sort of / basically / essentially",
+    "Form correct tag questions with reversed polarity (pos → neg tag, neg → pos tag)",
+    "Backchannel during others' speech with short interjections (mm-hm, right, yeah, gotcha, really?, no way) — never full sentences",
+    "Open delicate turns with pragmatic markers (honestly, to be fair, no offence, look, frankly)",
+    "Use native problem-naming openers (the thing is, here's the thing, I'll tell you what, I don't know about you but)",
+    "Calibrate register: more fillers and contractions in casual, fewer in formal",
+    "Avoid sounding either rehearsed (no fillers, all formal) or under-prepared (too many fillers)"
+  ]
+}
