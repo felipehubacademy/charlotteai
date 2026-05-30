@@ -1,0 +1,769 @@
+{
+  "id": "M03",
+  "title": "Cleft sentences",
+  "level": "Advanced",
+  "block": "C1",
+  "units_range": "A01–A05",
+  "theme": "It-clefts, wh-clefts (pseudo-clefts), reverse pseudo-clefts, all-clefts",
+  "goal": "Student emphasises any element of a clause by splitting it into two parts — the highlighted piece and the connector clause.",
+  "connects_to": "M04 (Subjunctive) — moves from emphasis to mood.",
+  "module_chunks": [
+    "It was X who/that...",
+    "It was in X that...",
+    "It wasn't until X that...",
+    "It is X who...",
+    "What I need is...",
+    "What I did was + base",
+    "What surprised me was...",
+    "All I want is...",
+    "All she did was + base",
+    "The reason (why) I... is...",
+    "The thing that...",
+    "The place where / The time when..."
+  ],
+  "units": [
+    {
+      "id": "A01",
+      "title": "It was X who",
+      "sub_cefr": "C1",
+      "grammar_focus": "It-clefts for emphasis on subject, object, time, or place",
+      "markers": [
+        "denso",
+        "emphasis"
+      ],
+      "real_life_context": "You highlight one specific element by reframing the whole sentence around it.",
+      "grammar": [
+        {
+          "type": "multiple_choice",
+          "sentence": "_____ broke the window, not me.",
+          "options": [
+            "It was John who",
+            "John who",
+            "Was John who",
+            "It is John whom"
+          ],
+          "answer": "It was John who",
+          "explanation": "It-cleft structure: \"It + was/is + emphasised element + who/that + rest of clause\". Here we emphasise the agent (John) by splitting \"John broke the window\" into \"It was John who broke the window\". The \"who/that\" follows the highlighted person."
+        },
+        {
+          "type": "multiple_choice",
+          "sentence": "_____ in 2015 that we first met.",
+          "options": [
+            "It was",
+            "Was it",
+            "It is",
+            "There was"
+          ],
+          "answer": "It was",
+          "explanation": "Time emphasis: \"It was + time + that + clause\". The original \"We first met in 2015\" gets rebuilt around the year. Use \"that\" (not \"when\") in this cleft pattern — \"when\" would also work in some registers, but \"that\" is the cleft standard."
+        },
+        {
+          "type": "fill_gap",
+          "sentence": "_____ Mary _____ called me last night, not Jane.",
+          "hint": "\"It was\" / \"who\"",
+          "answer": "It was / who",
+          "explanation": "Subject emphasis with contrast. \"It was Mary who\" splits the original \"Mary called me last night\" so we can attach the contrast (\"not Jane\"). Cleft is ideal for correcting mistaken assumptions."
+        },
+        {
+          "type": "fix_error",
+          "sentence": "It was the manager which decided to cancel the project.",
+          "hint": "For people, use \"who\", not \"which\"",
+          "answer": "It was the manager who decided to cancel the project.",
+          "explanation": "After \"It was + person\", use \"who\" (or \"that\"), never \"which\". \"Which\" is for things. Common slip when speakers default to \"which\" as universal connector."
+        },
+        {
+          "type": "read_answer",
+          "passage": "The trial hinged on a single fact. 'It was not the defendant who pulled the trigger,' the lawyer insisted. 'It was the older brother. Until the jury accepts that, the case will keep collapsing.' Three witnesses had said the same thing in earlier testimony.",
+          "question": "Who does the lawyer say actually pulled the trigger?",
+          "answer": "the older brother",
+          "explanation": "\"It was not the defendant who pulled the trigger. It was the older brother.\" Cleft used twice for high-stakes emphasis — first to deny one agent, then to assert the real one."
+        }
+      ],
+      "listening_speaking": [
+        {
+          "text": "It was John who broke the window.",
+          "context": "agent emphasis"
+        },
+        {
+          "text": "It was in 2015 that we first met.",
+          "context": "time emphasis"
+        },
+        {
+          "text": "It's the silence that gets to me.",
+          "context": "emotional element"
+        },
+        {
+          "text": "It wasn't me who called — it was Tom.",
+          "context": "denial + correction"
+        },
+        {
+          "text": "It was at the airport that I finally cried.",
+          "context": "place emphasis"
+        }
+      ],
+      "roleplay": {
+        "scenario": "Charlotte presents three flat statements. You recast each as an it-cleft, shifting the emphasis.",
+        "voiced_by": "charlotte",
+        "persona": "Charlotte",
+        "persona_outfit": "charlotte_casual",
+        "time_budget_sec": 300,
+        "opening_line": "I'll give you flat statements. Recast each as an it-cleft — emphasise a different element.",
+        "objectives": [
+          {
+            "id": 1,
+            "label_en": "It-cleft emphasising person",
+            "hidden_prompt": "user uses 'It was/is + person + who + clause'",
+            "hint_en": "It was my mother who taught me to cook."
+          },
+          {
+            "id": 2,
+            "label_en": "It-cleft emphasising time",
+            "hidden_prompt": "user uses 'It was + time + that + clause'",
+            "hint_en": "It was in college that I discovered my passion for writing."
+          },
+          {
+            "id": 3,
+            "label_en": "It-cleft emphasising place",
+            "hidden_prompt": "user uses 'It was at/in + place + that + clause'",
+            "hint_en": "It was at a coffee shop in Lisbon that we first spoke."
+          }
+        ],
+        "closing_cue": "Charlotte closes with \"Emphasis surgically placed.\" once obj_3 lands.",
+        "suggested_flow": "**Suggested flow** (referencial, 6 turnos):\n\n1. **Charlotte**: \"I'll give you flat statements. Recast each as an it-cleft — emphasise a different element.\"\n2. **Student**: ~\"It was my mother who taught me to cook.\"\n3. **Charlotte**: \"Person emphasised. Time?\"\n4. **Student**: ~\"It was in college that I discovered my passion for writing.\"\n5. **Charlotte**: \"Place?\"\n6. **Student**: ~\"It was at a coffee shop in Lisbon that we first spoke.\"\n7. **Charlotte**: \"Emphasis surgically placed.\"",
+        "evaluation_focus": [
+          "\"It + was/is + element + who/that + clause\"",
+          "\"Who\" for people, \"that\" for everything else",
+          "The cleft genuinely emphasises a new element"
+        ]
+      },
+      "guided_chat": {
+        "scenario": "Charlotte plays journalist — asking you fact-finding questions. You answer with it-clefts for clarity.",
+        "voiced_by": "charlotte",
+        "persona": "Charlotte",
+        "persona_outfit": "charlotte_casual",
+        "intro_en": "Charlotte interviews you. Answer with it-clefts to land emphasis cleanly.",
+        "opening_message": "Who actually built your team's first product?",
+        "objectives": [
+          {
+            "id": 1,
+            "label_en": "Reply with it-cleft about person",
+            "hidden_prompt": "user uses 'It was + person + who + clause'",
+            "hint_en": "It was a small founding team of three who built it."
+          },
+          {
+            "id": 2,
+            "label_en": "Deepen with it-cleft of time",
+            "hidden_prompt": "user uses 'It was + time + that + clause'",
+            "hint_en": "It was over a weekend in 2019 that we finished the first version."
+          },
+          {
+            "id": 3,
+            "label_en": "Ask Charlotte",
+            "hidden_prompt": "user asks Charlotte a probing question back",
+            "hint_en": "What do you want to know next?"
+          }
+        ],
+        "closing_cue": "Charlotte closes with \"Origin story documented.\" once obj_3 lands.",
+        "suggested_script": "**Script** (referencial, 7 turnos):\n\n1. **Charlotte**: \"Who actually built your team's first product?\"\n2. **Student**: \"It was a small founding team of three who built it.\"\n3. **Charlotte**: \"And when did it actually ship?\"\n4. **Student**: \"It was over a weekend in 2019 that we finished the first version.\"\n5. **Charlotte**: \"Weekend builds are legend.\"\n6. **Student**: \"What do you want to know next?\"\n7. **Charlotte**: \"Whatever the marketing team won't tell me. Origin story documented.\"\n\n> A01 chat = full LLM. Scaffold via hint_pt/hint_en.\n\n---"
+      }
+    },
+    {
+      "id": "A02",
+      "title": "What I need is",
+      "sub_cefr": "C1",
+      "grammar_focus": "Wh-clefts (pseudo-clefts) — What + clause + is/was + emphasised element",
+      "markers": [
+        "denso",
+        "emphasis"
+      ],
+      "real_life_context": "You hold the listener's attention by setting up an expectation (\"what I need is...\") then landing the key word.",
+      "grammar": [
+        {
+          "type": "multiple_choice",
+          "sentence": "_____ a good night's sleep.",
+          "options": [
+            "What I need is",
+            "I need what is",
+            "It is what I need",
+            "I what need is"
+          ],
+          "answer": "What I need is",
+          "explanation": "Wh-cleft pattern: \"What + subject + verb + is/was + emphasised element\". The original \"I need a good night's sleep\" gets reframed to spotlight the need. Common in fluent C1 speech."
+        },
+        {
+          "type": "multiple_choice",
+          "sentence": "_____ how patient she stayed throughout the chaos.",
+          "options": [
+            "What surprised me was",
+            "She surprised me was",
+            "What is surprising",
+            "I was surprised what"
+          ],
+          "answer": "What surprised me was",
+          "explanation": "\"What + clause\" sets up an expectation; \"was + element\" delivers it. Here the element is a noun clause (\"how patient she stayed...\"), which works fine after a wh-cleft."
+        },
+        {
+          "type": "fill_gap",
+          "sentence": "_____ I did _____ apologise immediately.",
+          "hint": "\"What\" / \"was\"",
+          "answer": "What / was",
+          "explanation": "\"What I did was apologise immediately.\" Note: after \"what I did was\", you can use base form (no \"to\") — a quirk of this cleft pattern. \"What I did was apologise\" / \"What I did was call him\" — base form."
+        },
+        {
+          "type": "fix_error",
+          "sentence": "What I need is to rest, sleep, eat.",
+          "hint": "After \"What I need is\", you can use bare nouns or a single thing",
+          "answer": "What I need is rest, sleep, and food. (or: What I need is to rest, sleep, and eat.)",
+          "explanation": "Original mixed an infinitive (\"to rest\") with bare nouns (\"sleep, eat\"). Either commit to nouns (rest, sleep, food) or to infinitives (to rest, to sleep, to eat). Parallelism is mandatory."
+        },
+        {
+          "type": "read_answer",
+          "passage": "The candidate dodged the policy question and went personal. 'What this country needs is leadership that listens,' he said. 'What we don't need is another decade of slogans dressed up as plans.' The audience cheered the rhythm more than the substance.",
+          "question": "What does the candidate claim the country needs?",
+          "answer": "leadership that listens",
+          "explanation": "\"What this country needs is leadership that listens.\" Wh-cleft used rhetorically. Followed by the inverse wh-cleft (\"What we don't need is...\") — a rhythm device common in political speech."
+        }
+      ],
+      "listening_speaking": [
+        {
+          "text": "What I need is a long weekend.",
+          "context": "basic wh-cleft"
+        },
+        {
+          "text": "What surprised me was her honesty.",
+          "context": "reaction emphasis"
+        },
+        {
+          "text": "What he did was apologise sincerely.",
+          "context": "action emphasis"
+        },
+        {
+          "text": "What matters most is how we treat people.",
+          "context": "value emphasis"
+        },
+        {
+          "text": "What this team needs is more autonomy.",
+          "context": "need emphasis"
+        }
+      ],
+      "roleplay": {
+        "scenario": "Charlotte gives you a frustration scenario. You answer with wh-clefts that re-centre what's actually needed.",
+        "voiced_by": "charlotte",
+        "persona": "Charlotte",
+        "persona_outfit": "charlotte_casual",
+        "time_budget_sec": 300,
+        "opening_line": "Three scenarios — answer each with a wh-cleft that names what's needed or what struck you.",
+        "objectives": [
+          {
+            "id": 1,
+            "label_en": "Wh-cleft with 'What I need is'",
+            "hidden_prompt": "user uses 'What I need is + noun'",
+            "hint_en": "What I need is a clear deadline and less micromanagement."
+          },
+          {
+            "id": 2,
+            "label_en": "Wh-cleft with 'What surprised me was'",
+            "hidden_prompt": "user uses 'What surprised me was + element'",
+            "hint_en": "What surprised me was how calm she stayed under pressure."
+          },
+          {
+            "id": 3,
+            "label_en": "Wh-cleft with 'What I did was'",
+            "hidden_prompt": "user uses 'What I did was + base form'",
+            "hint_en": "What I did was step away from the screen for an hour."
+          }
+        ],
+        "closing_cue": "Charlotte closes with \"Spotlight calibrated.\" once obj_3 lands.",
+        "suggested_flow": "**Suggested flow** (referencial, 6 turnos):\n\n1. **Charlotte**: \"Three scenarios — answer each with a wh-cleft that names what's needed or what struck you.\"\n2. **Student**: ~\"What I need is a clear deadline and less micromanagement.\"\n3. **Charlotte**: \"Reaction?\"\n4. **Student**: ~\"What surprised me was how calm she stayed under pressure.\"\n5. **Charlotte**: \"Action you took?\"\n6. **Student**: ~\"What I did was step away from the screen for an hour.\"\n7. **Charlotte**: \"Spotlight calibrated.\"",
+        "evaluation_focus": [
+          "\"What + clause + is/was + element\"",
+          "\"What I did was + base form\" (no \"to\")",
+          "Real emphasis (not just paraphrase)"
+        ]
+      },
+      "guided_chat": {
+        "scenario": "Charlotte invites you to articulate needs and surprises about your current life with pseudo-clefts.",
+        "voiced_by": "charlotte",
+        "persona": "Charlotte",
+        "persona_outfit": "charlotte_casual",
+        "intro_en": "Charlotte invites self-reflection. Open with 'What I need is' or 'What surprised me was'.",
+        "opening_message": "What's actually missing from your week right now?",
+        "objectives": [
+          {
+            "id": 1,
+            "label_en": "Clear need with wh-cleft",
+            "hidden_prompt": "user uses 'What I need is + noun/clause'",
+            "hint_en": "What I need is two hours of uninterrupted focus."
+          },
+          {
+            "id": 2,
+            "label_en": "Surprise or observation with wh-cleft",
+            "hidden_prompt": "user uses 'What surprised/struck me was + element'",
+            "hint_en": "What surprised me was how much I missed silence."
+          },
+          {
+            "id": 3,
+            "label_en": "Ask Charlotte",
+            "hidden_prompt": "user asks Charlotte what she needs",
+            "hint_en": "What's missing from yours?"
+          }
+        ],
+        "closing_cue": "Charlotte closes with \"Needs named, plainly.\" once obj_3 lands.",
+        "suggested_script": "**Script** (referencial, 7 turnos):\n\n1. **Charlotte**: \"What's actually missing from your week right now?\"\n2. **Student**: \"What I need is two hours of uninterrupted focus.\"\n3. **Charlotte**: \"Almost everyone says this. Anything that's caught you off guard?\"\n4. **Student**: \"What surprised me was how much I missed silence.\"\n5. **Charlotte**: \"Silence as discovery.\"\n6. **Student**: \"What's missing from yours?\"\n7. **Charlotte**: \"What I need is one weekend without a notification. Needs named, plainly.\"\n\n> A02 chat = full LLM. Scaffold via hint_pt/hint_en.\n\n---"
+      }
+    },
+    {
+      "id": "A03",
+      "title": "All I want is",
+      "sub_cefr": "C1",
+      "grammar_focus": "All-clefts and exclusive emphasis (\"All I want is...\", \"All she did was...\")",
+      "markers": [
+        "denso",
+        "emphasis"
+      ],
+      "real_life_context": "You minimise or single out — saying that one thing alone matters, or that only one act occurred.",
+      "grammar": [
+        {
+          "type": "multiple_choice",
+          "sentence": "_____ a quiet evening at home.",
+          "options": [
+            "All I want is",
+            "I want all is",
+            "What is all I want",
+            "All want I is"
+          ],
+          "answer": "All I want is",
+          "explanation": "\"All + subject + verb + is + element\" = the only thing wanted is X. \"All I want is\" minimises the request — emphasises modesty or focus. Equivalent to \"the only thing I want is...\"."
+        },
+        {
+          "type": "multiple_choice",
+          "sentence": "_____ smile politely and walk away.",
+          "options": [
+            "All she did was",
+            "She all did was",
+            "All did she was",
+            "Was all she did"
+          ],
+          "answer": "All she did was",
+          "explanation": "\"All + subject + did + was + base form\". Note bare infinitive after \"was\" — no \"to\". Emphasises that her response was minimal or restrained."
+        },
+        {
+          "type": "fill_gap",
+          "sentence": "_____ asked _____ a fair chance.",
+          "hint": "\"All I\" / \"for was\" or \"All he\" / \"for was\"",
+          "answer": "All he / for was",
+          "explanation": "\"All he asked for was a fair chance.\" The cleft holds the modesty of the request — one thing, nothing more."
+        },
+        {
+          "type": "fix_error",
+          "sentence": "All I want is to be respect.",
+          "hint": "After \"All I want is\", use a noun or \"to + base\" form",
+          "answer": "All I want is to be respected. (or: All I want is respect.)",
+          "explanation": "\"To be respect\" is ungrammatical — either \"to be respected\" (passive infinitive) or just \"respect\" (noun). The all-cleft requires a clean nominal or full infinitive."
+        },
+        {
+          "type": "read_answer",
+          "passage": "When the journalist pressed him on whether he wanted revenge, he shook his head. 'All I want is the truth on the record,' he said. 'All they did was lie for fifteen years. I don't need a courtroom — I need an honest sentence in print.'",
+          "question": "What does the speaker want?",
+          "answer": "the truth on the record (or \"an honest sentence in print\")",
+          "explanation": "Two all-clefts: \"All I want is...\" (modest demand) and \"All they did was lie\" (minimised act, here ironically — fifteen years of lies framed as 'all they did'). The structure can carry humility or sarcasm."
+        }
+      ],
+      "listening_speaking": [
+        {
+          "text": "All I want is a quiet weekend.",
+          "context": "modest desire"
+        },
+        {
+          "text": "All she did was smile.",
+          "context": "minimal response"
+        },
+        {
+          "text": "All he asked for was a chance.",
+          "context": "humble request"
+        },
+        {
+          "text": "All we need is more time.",
+          "context": "sufficient condition"
+        },
+        {
+          "text": "All they did was complain.",
+          "context": "diminishing act"
+        }
+      ],
+      "roleplay": {
+        "scenario": "Charlotte invites you to express modest desires and minimal actions with all-clefts.",
+        "voiced_by": "charlotte",
+        "persona": "Charlotte",
+        "persona_outfit": "charlotte_casual",
+        "time_budget_sec": 300,
+        "opening_line": "Three things — what you want, what you did, what someone else did. All-clefts only.",
+        "objectives": [
+          {
+            "id": 1,
+            "label_en": "All-cleft of desire",
+            "hidden_prompt": "user uses 'All I want is + noun/clause'",
+            "hint_en": "All I want is a Friday without meetings."
+          },
+          {
+            "id": 2,
+            "label_en": "All-cleft of own action",
+            "hidden_prompt": "user uses 'All I did was + base form'",
+            "hint_en": "All I did was ask one honest question."
+          },
+          {
+            "id": 3,
+            "label_en": "All-cleft of someone else",
+            "hidden_prompt": "user uses 'All he/she/they did was + base form'",
+            "hint_en": "All my boss did was nod and walk away."
+          }
+        ],
+        "closing_cue": "Charlotte closes with \"Minimised, emphasised.\" once obj_3 lands.",
+        "suggested_flow": "**Suggested flow** (referencial, 6 turnos):\n\n1. **Charlotte**: \"Three things — what you want, what you did, what someone else did. All-clefts only.\"\n2. **Student**: ~\"All I want is a Friday without meetings.\"\n3. **Charlotte**: \"Universal craving. Your action?\"\n4. **Student**: ~\"All I did was ask one honest question.\"\n5. **Charlotte**: \"Theirs?\"\n6. **Student**: ~\"All my boss did was nod and walk away.\"\n7. **Charlotte**: \"Minimised, emphasised.\"",
+        "evaluation_focus": [
+          "\"All + subject + verb + is/was + element\"",
+          "\"All I did was + base form\"",
+          "Single thing actually emphasised"
+        ]
+      },
+      "guided_chat": {
+        "scenario": "Charlotte explores what people really want from work, life, relationships. You reduce-to-essence with all-clefts.",
+        "voiced_by": "charlotte",
+        "persona": "Charlotte",
+        "persona_outfit": "charlotte_casual",
+        "intro_en": "Charlotte strips needs to essentials. Use 'All I want is' and 'All I did was'.",
+        "opening_message": "All I want from this year is fewer commitments and deeper ones. What's yours?",
+        "objectives": [
+          {
+            "id": 1,
+            "label_en": "Essential desire",
+            "hidden_prompt": "user uses 'All I want is + noun/clause'",
+            "hint_en": "All I want is to feel less rushed in the mornings."
+          },
+          {
+            "id": 2,
+            "label_en": "Minimised action",
+            "hidden_prompt": "user uses 'All I did was + base'",
+            "hint_en": "All I did was start setting my alarm twenty minutes earlier."
+          },
+          {
+            "id": 3,
+            "label_en": "Ask Charlotte",
+            "hidden_prompt": "user asks Charlotte for one specific change she made",
+            "hint_en": "What did you actually change?"
+          }
+        ],
+        "closing_cue": "Charlotte closes with \"Essentials only.\" once obj_3 lands.",
+        "suggested_script": "**Script** (referencial, 7 turnos):\n\n1. **Charlotte**: \"All I want from this year is fewer commitments and deeper ones. What's yours?\"\n2. **Student**: \"All I want is to feel less rushed in the mornings.\"\n3. **Charlotte**: \"Small thing, huge payoff. How are you doing it?\"\n4. **Student**: \"All I did was start setting my alarm twenty minutes earlier.\"\n5. **Charlotte**: \"The cheapest intervention there is.\"\n6. **Student**: \"What did you actually change?\"\n7. **Charlotte**: \"All I did was stop checking my phone before coffee. Essentials only.\"\n\n> A03 chat = full LLM. Scaffold via hint_pt/hint_en.\n\n---"
+      }
+    },
+    {
+      "id": "A04",
+      "title": "It wasn't until",
+      "sub_cefr": "C1",
+      "grammar_focus": "\"It + negative + cleft\" — \"It wasn't until... that...\" for delayed realisation/event",
+      "markers": [
+        "denso",
+        "emphasis"
+      ],
+      "real_life_context": "You spotlight the late moment when something finally happened or was understood.",
+      "grammar": [
+        {
+          "type": "multiple_choice",
+          "sentence": "_____ I left home _____ I understood my parents.",
+          "options": [
+            "It wasn't until",
+            "that",
+            "Not until",
+            "when",
+            "It was until",
+            "when",
+            "Until",
+            "that"
+          ],
+          "answer": "It wasn't until / that",
+          "explanation": "\"It wasn't until + clause + that + main clause\" — the it-cleft form of delayed realisation. Compare to the inversion \"Not until I left home did I understand...\" (M02). Same idea, different structure."
+        },
+        {
+          "type": "multiple_choice",
+          "sentence": "_____ the second draft _____ the story started working.",
+          "options": [
+            "It wasn't until",
+            "that",
+            "Not until",
+            "when",
+            "Until that",
+            "when",
+            "It wasn't when",
+            "that"
+          ],
+          "answer": "It wasn't until / that",
+          "explanation": "Time-clause + it-cleft. \"The story started working\" was delayed until the second draft — the cleft drama tises the delay."
+        },
+        {
+          "type": "fill_gap",
+          "sentence": "_____ I _____ the photo _____ I recognised her.",
+          "hint": "\"It wasn't until\" / past simple \"see\" / \"that\"",
+          "answer": "It wasn't until / saw / that",
+          "explanation": "\"It wasn't until I saw the photo that I recognised her.\" Past simple in both clauses — the delay between seeing and recognising is the point."
+        },
+        {
+          "type": "fix_error",
+          "sentence": "It wasn't until I read the contract when I noticed the clause.",
+          "hint": "After \"It wasn't until + clause\", use \"that\", not \"when\"",
+          "answer": "It wasn't until I read the contract that I noticed the clause.",
+          "explanation": "\"When\" feels natural but breaks the cleft pattern. The cleft structure is strictly \"It wasn't until X that Y\". \"When\" works for plain temporal links, not for the cleft emphasis form."
+        },
+        {
+          "type": "read_answer",
+          "passage": "Doctors often miss the rarer diagnoses. It wasn't until the third specialist that anyone considered the autoimmune angle. By then, three years had passed and several treatments had failed. 'It wasn't until I trusted my own instincts,' the patient said, 'that I started getting answers.'",
+          "question": "What finally led to answers?",
+          "answer": "trusting her own instincts (or \"the third specialist considering autoimmune angle\")",
+          "explanation": "Two it-not-until clefts: \"It wasn't until the third specialist that...\" and \"It wasn't until I trusted my own instincts that...\". Both highlight delayed turning points."
+        }
+      ],
+      "listening_speaking": [
+        {
+          "text": "It wasn't until I left that I understood.",
+          "context": "delayed clarity"
+        },
+        {
+          "text": "It wasn't until last year that we connected again.",
+          "context": "late reunion"
+        },
+        {
+          "text": "It wasn't until then that the penny dropped.",
+          "context": "colloquial realisation"
+        },
+        {
+          "text": "It wasn't until I read it twice that I caught the irony.",
+          "context": "delayed comprehension"
+        },
+        {
+          "text": "It wasn't until the surgery that the diagnosis became clear.",
+          "context": "delayed clinical truth"
+        }
+      ],
+      "roleplay": {
+        "scenario": "Charlotte wants three \"it wasn't until...\" moments — delayed realisations or events.",
+        "voiced_by": "charlotte",
+        "persona": "Charlotte",
+        "persona_outfit": "charlotte_casual",
+        "time_budget_sec": 300,
+        "opening_line": "Three turning points that came late. 'It wasn't until X that Y.'",
+        "objectives": [
+          {
+            "id": 1,
+            "label_en": "Personal late realisation",
+            "hidden_prompt": "user uses 'It wasn't until + clause + that + main'",
+            "hint_en": "It wasn't until I changed jobs that I understood how unhappy I had been."
+          },
+          {
+            "id": 2,
+            "label_en": "Late event (not realisation)",
+            "hidden_prompt": "user uses 'It wasn't until + time + that + event'",
+            "hint_en": "It wasn't until 30 that I learned to cook properly."
+          },
+          {
+            "id": 3,
+            "label_en": "Late + about someone else",
+            "hidden_prompt": "user uses 'It wasn't until + clause + that + he/she + clause'",
+            "hint_en": "It wasn't until last week that my brother told me the whole story."
+          }
+        ],
+        "closing_cue": "Charlotte closes with \"Late but legible.\" once obj_3 lands.",
+        "suggested_flow": "**Suggested flow** (referencial, 6 turnos):\n\n1. **Charlotte**: \"Three turning points that came late. 'It wasn't until X that Y.'\"\n2. **Student**: ~\"It wasn't until I changed jobs that I understood how unhappy I had been.\"\n3. **Charlotte**: \"Hindsight is a knife. Late skill?\"\n4. **Student**: ~\"It wasn't until 30 that I learned to cook properly.\"\n5. **Charlotte**: \"Someone else's late reveal?\"\n6. **Student**: ~\"It wasn't until last week that my brother told me the whole story.\"\n7. **Charlotte**: \"Late but legible.\"",
+        "evaluation_focus": [
+          "\"It wasn't until X that Y\" — exact structure",
+          "\"That\" not \"when\"",
+          "Real delay being emphasised"
+        ]
+      },
+      "guided_chat": {
+        "scenario": "Charlotte trades late-arriving lessons from her life with yours.",
+        "voiced_by": "charlotte",
+        "persona": "Charlotte",
+        "persona_outfit": "charlotte_casual",
+        "intro_en": "Charlotte trades lessons that came late. Use 'It wasn't until X that Y'.",
+        "opening_message": "It wasn't until my mid-thirties that I started taking sleep seriously. What came to you late?",
+        "objectives": [
+          {
+            "id": 1,
+            "label_en": "Late lesson",
+            "hidden_prompt": "user uses 'It wasn't until X that Y'",
+            "hint_en": "It wasn't until I lost a friend that I started replying to texts on the same day."
+          },
+          {
+            "id": 2,
+            "label_en": "Another delayed realisation",
+            "hidden_prompt": "user uses another 'It wasn't until' cleft",
+            "hint_en": "It wasn't until I tried therapy that I noticed how angry I was."
+          },
+          {
+            "id": 3,
+            "label_en": "Ask Charlotte",
+            "hidden_prompt": "user asks Charlotte what made her finally take sleep seriously",
+            "hint_en": "What flipped the switch on sleep for you?"
+          }
+        ],
+        "closing_cue": "Charlotte closes with \"Late, not lost.\" once obj_3 lands.",
+        "suggested_script": "**Script** (referencial, 7 turnos):\n\n1. **Charlotte**: \"It wasn't until my mid-thirties that I started taking sleep seriously. What came to you late?\"\n2. **Student**: \"It wasn't until I lost a friend that I started replying to texts on the same day.\"\n3. **Charlotte**: \"Grief teaches what nothing else will. Another?\"\n4. **Student**: \"It wasn't until I tried therapy that I noticed how angry I was.\"\n5. **Charlotte**: \"Anger as buried weather.\"\n6. **Student**: \"What flipped the switch on sleep for you?\"\n7. **Charlotte**: \"A weekend without coffee. I crashed at 8 and woke up reborn. Late, not lost.\"\n\n> A04 chat = full LLM. Scaffold via hint_pt/hint_en.\n\n---"
+      }
+    },
+    {
+      "id": "A05",
+      "title": "The reason is, The thing that",
+      "sub_cefr": "C1",
+      "grammar_focus": "Lexical clefts (\"The reason (why)... is...\", \"The thing that... is...\", \"The place where...\", \"The time when...\")",
+      "markers": [],
+      "real_life_context": "You frame an explanation, the salient feature, or the location/time precisely.",
+      "grammar": [
+        {
+          "type": "multiple_choice",
+          "sentence": "_____ I'm leaving is that I want a new challenge.",
+          "options": [
+            "The reason why",
+            "The reason because",
+            "Reason that",
+            "Why the reason"
+          ],
+          "answer": "The reason why",
+          "explanation": "\"The reason (why) + clause + is + that-clause/element\". \"Why\" is optional in modern English (\"the reason I'm leaving is...\"). \"Because\" is incorrect here — the explanation comes after \"is\"."
+        },
+        {
+          "type": "multiple_choice",
+          "sentence": "_____ surprised me _____ his lack of preparation.",
+          "options": [
+            "The thing that",
+            "was",
+            "The thing was",
+            "what",
+            "Thing that",
+            "was",
+            "What is",
+            "was"
+          ],
+          "answer": "The thing that / was",
+          "explanation": "\"The thing that + clause + was + element\". Synonymous with \"What surprised me was...\" (wh-cleft) but using a noun (\"the thing\") as anchor. Slightly more colloquial."
+        },
+        {
+          "type": "fill_gap",
+          "sentence": "_____ I work _____ in a converted warehouse.",
+          "hint": "\"The place where\" / \"is\"",
+          "answer": "The place where / is",
+          "explanation": "\"The place where + clause + is + element\". Locative cleft. Modern usage permits \"The place I work is...\", but \"where\" makes the structure explicit."
+        },
+        {
+          "type": "fix_error",
+          "sentence": "The reason why I'm tired is because I didn't sleep.",
+          "hint": "After \"The reason ... is\", use \"that\" or just a clause — not \"because\"",
+          "answer": "The reason why I'm tired is that I didn't sleep. (or: The reason I'm tired is that I didn't sleep.)",
+          "explanation": "\"The reason... is because\" is redundant — \"reason\" already implies cause, and \"because\" duplicates it. Use \"that\" or simply a clause."
+        },
+        {
+          "type": "read_answer",
+          "passage": "The retiring CEO summed it up. 'The reason we succeeded was discipline, not genius. The thing that holds most companies back is the temptation to chase fashion. The time when we changed course wasn't a board meeting — it was a kitchen table conversation with my partner.'",
+          "question": "According to the CEO, what causes most companies to fail?",
+          "answer": "chasing fashion (or \"the temptation to chase fashion\")",
+          "explanation": "Three layered lexical clefts: \"The reason... was discipline\", \"The thing that holds... is the temptation to chase fashion\", \"The time when we changed course wasn't... it was...\". Layered for rhetorical weight."
+        }
+      ],
+      "listening_speaking": [
+        {
+          "text": "The reason I'm leaving is that I want a change.",
+          "context": "explanation cleft"
+        },
+        {
+          "text": "The thing that surprises me is how calm she is.",
+          "context": "observation cleft"
+        },
+        {
+          "text": "The place where we met is now a parking lot.",
+          "context": "locative cleft"
+        },
+        {
+          "text": "The time when I felt most alive was that summer in Spain.",
+          "context": "temporal cleft"
+        },
+        {
+          "text": "The reason it works is consistency, not talent.",
+          "context": "causal cleft"
+        }
+      ],
+      "roleplay": {
+        "scenario": "Charlotte wants three lexical clefts — one with \"the reason\", one with \"the thing\", one with \"the place\" or \"the time\".",
+        "voiced_by": "charlotte",
+        "persona": "Charlotte",
+        "persona_outfit": "charlotte_casual",
+        "time_budget_sec": 300,
+        "opening_line": "Three clefts: 'The reason', 'The thing that', and 'The place/time'.",
+        "objectives": [
+          {
+            "id": 1,
+            "label_en": "'The reason... is'",
+            "hidden_prompt": "user uses 'The reason (why) + clause + is + that-clause/element'",
+            "hint_en": "The reason I started running is that my back wouldn't stop hurting."
+          },
+          {
+            "id": 2,
+            "label_en": "'The thing that... is/was'",
+            "hidden_prompt": "user uses 'The thing that + clause + is/was + element'",
+            "hint_en": "The thing that kept me going was a single email from a stranger."
+          },
+          {
+            "id": 3,
+            "label_en": "'The place where' or 'The time when'",
+            "hidden_prompt": "user uses 'The place where + clause + is/was' or 'The time when + clause + was'",
+            "hint_en": "The time when I felt most myself was the year I lived alone in Lisbon."
+          }
+        ],
+        "closing_cue": "Charlotte closes with \"Three frames, three spotlights.\" once obj_3 lands.",
+        "suggested_flow": "**Suggested flow** (referencial, 6 turnos):\n\n1. **Charlotte**: \"Three clefts: 'The reason', 'The thing that', and 'The place/time'.\"\n2. **Student**: ~\"The reason I started running is that my back wouldn't stop hurting.\"\n3. **Charlotte**: \"Pain as personal trainer. 'The thing that'?\"\n4. **Student**: ~\"The thing that kept me going was a single email from a stranger.\"\n5. **Charlotte**: \"Place or time?\"\n6. **Student**: ~\"The time when I felt most myself was the year I lived alone in Lisbon.\"\n7. **Charlotte**: \"Three frames, three spotlights.\"",
+        "evaluation_focus": [
+          "\"The reason / The thing / The place / The time\" + clause + is/was",
+          "No \"is because\" after \"reason\"",
+          "Real cleft, not paraphrase"
+        ]
+      },
+      "guided_chat": {
+        "scenario": "Charlotte invites deep autobiography in cleft form — reasons, defining things, formative places and times.",
+        "voiced_by": "charlotte",
+        "persona": "Charlotte",
+        "persona_outfit": "charlotte_casual",
+        "intro_en": "Charlotte invites layered self-portrait. Use lexical clefts throughout.",
+        "opening_message": "The reason I became a teacher is that I had one great one as a kid. What's a 'the reason' for you?",
+        "objectives": [
+          {
+            "id": 1,
+            "label_en": "Personal 'The reason'",
+            "hidden_prompt": "user uses 'The reason + clause + is + that-clause'",
+            "hint_en": "The reason I write every morning is that I think better when nobody's watching."
+          },
+          {
+            "id": 2,
+            "label_en": "Defining 'The thing that'",
+            "hidden_prompt": "user uses 'The thing that + clause + is/was + element'",
+            "hint_en": "The thing that changed me most was my first proper failure."
+          },
+          {
+            "id": 3,
+            "label_en": "Ask Charlotte",
+            "hidden_prompt": "user asks Charlotte about her teacher",
+            "hint_en": "Who was the teacher?"
+          }
+        ],
+        "closing_cue": "Charlotte closes with \"Self-portrait, in clefts.\" once obj_3 lands.",
+        "suggested_script": "**Script** (referencial, 7 turnos):\n\n1. **Charlotte**: \"The reason I became a teacher is that I had one great one as a kid. What's a 'the reason' for you?\"\n2. **Student**: \"The reason I write every morning is that I think better when nobody's watching.\"\n3. **Charlotte**: \"Solitude as workshop. Defining thing?\"\n4. **Student**: \"The thing that changed me most was my first proper failure.\"\n5. **Charlotte**: \"Failure is the underrated teacher.\"\n6. **Student**: \"Who was the teacher?\"\n7. **Charlotte**: \"Mrs. Costa, sixth grade. She read poetry aloud and waited for us to feel something. Self-portrait, in clefts.\"\n\n> A05 chat = full LLM. Scaffold via hint_pt/hint_en.\n\n---"
+      }
+    }
+  ],
+  "cross_unit_consolidation": [
+    "Build it-clefts to emphasise subjects, objects, times, places (\"It was X who/that...\")",
+    "Use wh-clefts (pseudo-clefts) to set up and deliver emphasis (\"What I need is...\")",
+    "Apply all-clefts to minimise or single out (\"All I want is...\", \"All she did was + base\")",
+    "Construct \"It wasn't until X that Y\" for delayed realisation",
+    "Open lexical clefts with \"The reason\", \"The thing that\", \"The place where\", \"The time when\"",
+    "Avoid \"is because\" after \"reason\" (use \"is that\")",
+    "Choose between cleft families based on what's being emphasised"
+  ]
+}
