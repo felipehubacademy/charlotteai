@@ -864,7 +864,6 @@ export default function LiveVoiceModal({
         return;
       }
 
-<<<<<<< Updated upstream
       // Pattern dos apps de call (ChatGPT/Glite/WhatsApp): mic acende
       // IMEDIATAMENTE ao tocar o botao. setAudioModeAsync e
       // CharlotteAudioSession.start rodam PARALELOS ao getUserMedia (nao em
@@ -914,45 +913,6 @@ export default function LiveVoiceModal({
       await setupPromises;
 
       startCustomRingback();
-=======
-      // Configura AVAudioSession (iOS) / AudioManager (Android) ANTES de
-      // qualquer player. Ringback toca DENTRO dessa session:
-      //   iOS: category=PlayAndRecord, mode=.default (NAO voiceChat — voiceChat
-      //        prioriza cabo USB e ignora override pra speaker), opcoes
-      //        DefaultToSpeaker | AllowBluetooth | AllowAirPlay. Listener de
-      //        RouteChangeNotification re-aplica override em mudancas de rota.
-      //   Android: AudioManager.MODE_IN_COMMUNICATION + setSpeakerphoneOn(true).
-      //        Listener de ACTION_HEADSET_PLUG reaplica speaker ao desplugar fones.
-      //
-      // iOS: PULA CharlotteAudioSession.start() — nosso Swift module estava
-      // duplicando overrides em cima do expo-audio, causando briga. Deixa o
-      // setAudioModeAsync (abaixo) gerenciar session no iOS. Android mantem
-      // o CharlotteAudioSession nativo que funciona limpo.
-      if (Platform.OS !== 'ios') {
-        await CharlotteAudioSession.start(isSpeakerRef.current);
-      }
-
-      // Forca AVAudioSession iOS pra .playAndRecord via expo-audio (OTA-able).
-      // Sem isso, iOS deixa session em .playback default e WebRTC nao consegue
-      // ativar mic (vimos "Disallowing recording" com category MediaPlayback).
-      try {
-        await setAudioModeAsync({
-          allowsRecording: true,
-          playsInSilentMode: true,
-          interruptionMode: 'doNotMix',
-          shouldRouteThroughEarpiece: !isSpeakerRef.current,
-        });
-      } catch (e) {
-        console.warn('[LiveVoice] setAudioModeAsync failed:', e);
-      }
-
-      // Ringback: Android usa custom (MediaPlayer nativo do CharlotteAudioSession).
-      // iOS pula por enquanto — AVAudioPlayer ativaria session em .playback ANTES
-      // do WebRTC, derrubando o mic.
-      if (Platform.OS !== 'ios') {
-        startCustomRingback();
-      }
->>>>>>> Stashed changes
 
       // Token fetch agora — paralelo ao ring.
       const { data: { session: authSession } } = await supabase.auth.getSession();
