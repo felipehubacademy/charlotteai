@@ -62,9 +62,10 @@ export function getV2TopicForUnit(
  */
 function lsPhraseToPronStep(p: LSPhrase): PronStep {
   return {
-    type:  'repeat',
-    text:  p.text,
-    focus: p.context,
+    type:      'repeat',
+    text:      p.text,
+    focus:     p.context,
+    audio_url: p.audio_url,
   };
 }
 

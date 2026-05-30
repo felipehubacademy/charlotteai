@@ -47,6 +47,9 @@ export interface GrammarExercise {
 export interface LSPhrase {
   text:    string;
   context: string;   // "saudação informal padrão", "ao conhecer alguém novo", etc.
+  // Pre-generated CDN audio URL stamped by compile script from audio-manifest.json.
+  // Mobile prefers this; falls back to /api/tts if absent.
+  audio_url?: string;
 }
 
 // ── Personas (avatars/voices) ─────────────────────────────────────

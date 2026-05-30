@@ -475,8 +475,20 @@ As 5 unidades exploram subtemas do **tema mãe do módulo**:
      phrases — TUDO renderiza do JSON. Você só escreve markdown.
    - Não há nada pra mexer em código React/TSX pra cada novo módulo.
 
-5. **Áudio CDN** (opcional, só pra POC scripted — atualmente não usamos):
-   - Quando voltarmos, há script `scripts/generate-scripted-audio.mjs`
+5. **Áudio L&S pré-gerado (CDN)** — workflow do mantenedor (não da Curriculum session):
+   - Curriculum session só escreve o markdown. Não precisa pensar em áudio.
+   - Quando um lote de módulos for compilado, o mantenedor roda:
+     ```
+     node apps/mobile/scripts/generate-ls-audio.mjs --dry-run
+     node apps/mobile/scripts/generate-ls-audio.mjs
+     node apps/mobile/scripts/compile-curriculum-v2.mjs   # restampa audio_url no JSON
+     ```
+   - Áudio é gerado uma vez via OpenAI TTS (coral/flac), subido pro bucket
+     `curriculum-audio/ls/` no Supabase Storage. Hash do texto = chave estável,
+     então mesma phrase em units diferentes reusa o mesmo arquivo.
+   - Mobile prefere o CDN URL; se faltar (phrase nova ainda não gerada),
+     cai automaticamente em `/api/tts`. Sem quebrar nada.
+   - Custo: ~$0.015/1k chars, gerado UMA vez por phrase. Trivial.
 
 ---
 

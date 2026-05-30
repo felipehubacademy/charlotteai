@@ -40,6 +40,8 @@ export interface PronStep {
   target?:  'word1' | 'word2';  // which word Charlotte plays
   // sentence_stress
   stressed_word?: string;       // the correctly stressed word
+  // curriculum v2: pre-generated CDN audio (skips /api/tts on demand)
+  audio_url?: string;
 }
 
 export interface Topic {

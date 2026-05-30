@@ -461,12 +461,25 @@ export default function LearnSessionScreen() {
   }, []);
 
   // ── TTS — local cache → pre-generated file → ElevenLabs API ──
-  const fetchTTS = useCallback(async (text: string): Promise<string | null> => {
+  const fetchTTS = useCallback(async (text: string, preferredUrl?: string): Promise<string | null> => {
     try {
       const cacheDir = `${FileSystem.documentDirectory}tts_cache/`;
       await FileSystem.makeDirectoryAsync(cacheDir, { intermediates: true }).catch(() => {});
       const fileKey  = text.slice(0, 80).replace(/[^a-zA-Z0-9]/g, '_').toLowerCase();
       const localUri = `${cacheDir}el_${fileKey}.mp3`;
+
+      // 0. Curriculum v2 pre-generated audio (CDN URL stamped at compile time).
+      // Cache key derived from URL hash so different voices/versions don't collide.
+      if (preferredUrl) {
+        const urlKey = preferredUrl.split('/').pop()?.replace(/[^a-zA-Z0-9.]/g, '_') ?? fileKey;
+        const v2Uri  = `${cacheDir}v2_${urlKey}`;
+        const v2Info = await FileSystem.getInfoAsync(v2Uri);
+        if (v2Info.exists) return v2Uri;
+        const v2Dl = await FileSystem.downloadAsync(preferredUrl, v2Uri);
+        if (v2Dl.status === 200) return v2Uri;
+        await FileSystem.deleteAsync(v2Uri, { idempotent: true });
+        // fall through to legacy flow on miss (network error etc)
+      }
 
       // 1. Local cache hit — instant
       const info = await FileSystem.getInfoAsync(localUri);
@@ -557,7 +570,7 @@ export default function LearnSessionScreen() {
       } else if (ph.text) {
         // repeat, listen_write — use ph.text
         if (ph.text !== lastPhraseText.current) {
-          const uri = await fetchTTS(ph.text);
+          const uri = await fetchTTS(ph.text, ph.audio_url);
           if (uri) {
             setCharlotteAudioUri(uri);
             lastPhraseText.current = ph.text;

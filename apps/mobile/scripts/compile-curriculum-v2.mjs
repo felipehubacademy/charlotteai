@@ -16,6 +16,7 @@
 
 import fs from 'node:fs';
 import path from 'node:path';
+import crypto from 'node:crypto';
 import { fileURLToPath } from 'node:url';
 import { createRequire } from 'node:module';
 
@@ -75,6 +76,7 @@ main();
 function main() {
   const files = collectFiles();
   const manifest = { level: {}, generated_at: new Date().toISOString() };
+  const audioManifest = loadAudioManifest();
   let okCount = 0;
 
   for (const f of files) {
@@ -82,6 +84,7 @@ function main() {
     try {
       const mod = parseModule(f.absPath);
       validate(mod, f.relPath);
+      stampAudioUrls(mod, audioManifest);
       write(f, mod);
       manifest.level[f.level] ??= [];
       manifest.level[f.level].push({ id: mod.id, title: mod.title, file: `${f.level}/M${mod.id.slice(1)}.json` });
@@ -546,4 +549,34 @@ function extractUnitRange(s) {
 
 function escapeRegex(s) {
   return s.replace(/[.*+?^${}()|[\]\\]/g, '\\$&');
+}
+
+// ─── Audio manifest stamping ──────────────────────────────────────
+// audio-manifest.json: { "<sha1(text)>": "https://cdn.../path.flac" }
+// Populated by scripts/generate-ls-audio.mjs. Compile script just stamps
+// the matching URL into each LSPhrase. Phrases without an entry remain
+// without audio_url and mobile falls back to /api/tts at runtime.
+
+export function ttsHash(text) {
+  return crypto.createHash('sha1').update(text.trim().toLowerCase()).digest('hex').slice(0, 16);
+}
+
+function loadAudioManifest() {
+  const p = path.join(OUT, 'audio-manifest.json');
+  if (!fs.existsSync(p)) return {};
+  try {
+    return JSON.parse(fs.readFileSync(p, 'utf8'));
+  } catch (e) {
+    console.warn(`audio-manifest.json invalid (${e.message}), ignoring`);
+    return {};
+  }
+}
+
+function stampAudioUrls(mod, audioManifest) {
+  for (const unit of mod.units) {
+    for (const phrase of unit.listening_speaking ?? []) {
+      const h = ttsHash(phrase.text);
+      if (audioManifest[h]) phrase.audio_url = audioManifest[h];
+    }
+  }
 }
