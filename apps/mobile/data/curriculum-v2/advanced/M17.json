@@ -82,23 +82,28 @@
       "listening_speaking": [
         {
           "text": "I want to, but I can't.",
-          "context": "ellipsis after modal"
+          "context": "ellipsis after modal",
+          "audio_url": "https://fnvjibzreepubageztoi.supabase.co/storage/v1/object/public/curriculum-audio/ls/advanced/1435c450c872e5a1.flac"
         },
         {
           "text": "I'd like to.",
-          "context": "ellipsis after \"to\""
+          "context": "ellipsis after \"to\"",
+          "audio_url": "https://fnvjibzreepubageztoi.supabase.co/storage/v1/object/public/curriculum-audio/ls/advanced/3a3f43bdad85fe9c.flac"
         },
         {
           "text": "I meant to.",
-          "context": "ellipsis after \"to\""
+          "context": "ellipsis after \"to\"",
+          "audio_url": "https://fnvjibzreepubageztoi.supabase.co/storage/v1/object/public/curriculum-audio/ls/advanced/ef2e5acffc196821.flac"
         },
         {
           "text": "I tried to.",
-          "context": "ellipsis after \"to\""
+          "context": "ellipsis after \"to\"",
+          "audio_url": "https://fnvjibzreepubageztoi.supabase.co/storage/v1/object/public/curriculum-audio/ls/advanced/142c59b58bcd604f.flac"
         },
         {
           "text": "I hope to.",
-          "context": "ellipsis after \"to\""
+          "context": "ellipsis after \"to\"",
+          "audio_url": "https://fnvjibzreepubageztoi.supabase.co/storage/v1/object/public/curriculum-audio/ls/advanced/2e7d237b82e1fcd2.flac"
         }
       ],
       "roleplay": {
@@ -227,23 +232,28 @@
       "listening_speaking": [
         {
           "text": "I think so.",
-          "context": "affirm with substitute"
+          "context": "affirm with substitute",
+          "audio_url": "https://fnvjibzreepubageztoi.supabase.co/storage/v1/object/public/curriculum-audio/ls/advanced/ce435e14617c7cff.flac"
         },
         {
           "text": "I don't think so.",
-          "context": "deny with substitute"
+          "context": "deny with substitute",
+          "audio_url": "https://fnvjibzreepubageztoi.supabase.co/storage/v1/object/public/curriculum-audio/ls/advanced/5c4ceb21c49c4067.flac"
         },
         {
           "text": "I hope not.",
-          "context": "negative wish"
+          "context": "negative wish",
+          "audio_url": "https://fnvjibzreepubageztoi.supabase.co/storage/v1/object/public/curriculum-audio/ls/advanced/38f6c9fe01d8e2a9.flac"
         },
         {
           "text": "I'm afraid so.",
-          "context": "confirm bad news"
+          "context": "confirm bad news",
+          "audio_url": "https://fnvjibzreepubageztoi.supabase.co/storage/v1/object/public/curriculum-audio/ls/advanced/fbb31ccbd1babca5.flac"
         },
         {
           "text": "I expect not.",
-          "context": "formal negative expectation"
+          "context": "formal negative expectation",
+          "audio_url": "https://fnvjibzreepubageztoi.supabase.co/storage/v1/object/public/curriculum-audio/ls/advanced/8e20663af43b221b.flac"
         }
       ],
       "roleplay": {
@@ -371,23 +381,28 @@
       "listening_speaking": [
         {
           "text": "I'd like a strong one.",
-          "context": "adjective + one"
+          "context": "adjective + one",
+          "audio_url": "https://fnvjibzreepubageztoi.supabase.co/storage/v1/object/public/curriculum-audio/ls/advanced/4dddf38ba0bd8b41.flac"
         },
         {
           "text": "The red ones, please.",
-          "context": "plural substitution"
+          "context": "plural substitution",
+          "audio_url": "https://fnvjibzreepubageztoi.supabase.co/storage/v1/object/public/curriculum-audio/ls/advanced/bd9bb59d4943ab9b.flac"
         },
         {
           "text": "This one is mine.",
-          "context": "demonstrative + one"
+          "context": "demonstrative + one",
+          "audio_url": "https://fnvjibzreepubageztoi.supabase.co/storage/v1/object/public/curriculum-audio/ls/advanced/00641a631403247f.flac"
         },
         {
           "text": "Our results match those of previous studies.",
-          "context": "\"those of\" academic"
+          "context": "\"those of\" academic",
+          "audio_url": "https://fnvjibzreepubageztoi.supabase.co/storage/v1/object/public/curriculum-audio/ls/advanced/49de5946cb731716.flac"
         },
         {
           "text": "The one with seeds.",
-          "context": "\"the one\" definite substitution"
+          "context": "\"the one\" definite substitution",
+          "audio_url": "https://fnvjibzreepubageztoi.supabase.co/storage/v1/object/public/curriculum-audio/ls/advanced/8287b24e2efb22d7.flac"
         }
       ],
       "roleplay": {
@@ -514,23 +529,28 @@
       "listening_speaking": [
         {
           "text": "She apologised, and he did the same.",
-          "context": "match action"
+          "context": "match action",
+          "audio_url": "https://fnvjibzreepubageztoi.supabase.co/storage/v1/object/public/curriculum-audio/ls/advanced/9f4a864c1d6bd4e3.flac"
         },
         {
           "text": "Please do so before Friday.",
-          "context": "formal instruction"
+          "context": "formal instruction",
+          "audio_url": "https://fnvjibzreepubageztoi.supabase.co/storage/v1/object/public/curriculum-audio/ls/advanced/4ca60f8eb050361b.flac"
         },
         {
           "text": "I would do likewise in your position.",
-          "context": "formal echo"
+          "context": "formal echo",
+          "audio_url": "https://fnvjibzreepubageztoi.supabase.co/storage/v1/object/public/curriculum-audio/ls/advanced/38e084b0f3c0b41d.flac"
         },
         {
           "text": "You can do it later.",
-          "context": "informal substitute"
+          "context": "informal substitute",
+          "audio_url": "https://fnvjibzreepubageztoi.supabase.co/storage/v1/object/public/curriculum-audio/ls/advanced/37b4987ff86d907d.flac"
         },
         {
           "text": "They were asked to do so immediately.",
-          "context": "passive substitute"
+          "context": "passive substitute",
+          "audio_url": "https://fnvjibzreepubageztoi.supabase.co/storage/v1/object/public/curriculum-audio/ls/advanced/a60dbd7de6b073a0.flac"
         }
       ],
       "roleplay": {
@@ -656,23 +676,28 @@
       "listening_speaking": [
         {
           "text": "So do I — I love jazz too.",
-          "context": "positive present echo"
+          "context": "positive present echo",
+          "audio_url": "https://fnvjibzreepubageztoi.supabase.co/storage/v1/object/public/curriculum-audio/ls/advanced/5fd362b57d725f10.flac"
         },
         {
           "text": "Neither have I — let's watch it together.",
-          "context": "negative present perfect echo"
+          "context": "negative present perfect echo",
+          "audio_url": "https://fnvjibzreepubageztoi.supabase.co/storage/v1/object/public/curriculum-audio/ls/advanced/bdb5eb72190432bb.flac"
         },
         {
           "text": "So was I, completely drained by ten.",
-          "context": "past 'be' echo"
+          "context": "past 'be' echo",
+          "audio_url": "https://fnvjibzreepubageztoi.supabase.co/storage/v1/object/public/curriculum-audio/ls/advanced/a330e43939617561.flac"
         },
         {
           "text": "Nor will I — that night doesn't work for me.",
-          "context": "formal negative future echo"
+          "context": "formal negative future echo",
+          "audio_url": "https://fnvjibzreepubageztoi.supabase.co/storage/v1/object/public/curriculum-audio/ls/advanced/9ff2063f65177f76.flac"
         },
         {
           "text": "Me too, I haven't eaten since breakfast.",
-          "context": "informal positive echo"
+          "context": "informal positive echo",
+          "audio_url": "https://fnvjibzreepubageztoi.supabase.co/storage/v1/object/public/curriculum-audio/ls/advanced/776c38115f983b77.flac"
         }
       ],
       "roleplay": {

@@ -1,0 +1,768 @@
+{
+  "id": "M18",
+  "title": "Coesão em discurso extenso",
+  "level": "Advanced",
+  "block": "C2",
+  "units_range": "A01–A05",
+  "theme": "Reference chains, lexical cohesion (synonyms, hyponyms, repetition), old-information-first principle, bridging implicit links, avoiding ambiguous referents",
+  "goal": "Student writes extended discourse where every sentence connects clearly to the one before — through pronouns, lexical chains, and information flow.",
+  "connects_to": "M19 (Sutileza modal) — moves from discourse-level cohesion to modal nuance.",
+  "module_chunks": [
+    "this / that / these / those (demonstratives as reference)",
+    "the former / the latter",
+    "such X (summative reference)",
+    "it / they / one (pronominal reference)",
+    "the same / a similar / a related",
+    "aforementioned / above-mentioned / the X in question (formal)",
+    "old information at sentence start, new at end",
+    "bridging via inference (no marker, but logical link)",
+    "hyponym / superordinate chains (a Toyota → the car → the vehicle)",
+    "synonymic chains for elegant variation",
+    "this/that as topic-summariser"
+  ],
+  "units": [
+    {
+      "id": "A01",
+      "title": "This, that as reference",
+      "sub_cefr": "C2",
+      "grammar_focus": "Demonstratives (this/that/these/those) as anaphoric reference to previous content",
+      "markers": [
+        "denso",
+        "cohesion"
+      ],
+      "real_life_context": "You point back to what's just been said with the right demonstrative — keeping discourse threaded without repetition.",
+      "grammar": [
+        {
+          "type": "multiple_choice",
+          "sentence": "Sales fell 12% in Q3. _____ was the worst result in five years.",
+          "options": [
+            "This",
+            "That",
+            "Those",
+            "Such"
+          ],
+          "answer": "This",
+          "explanation": "\"This\" — anaphoric reference to the immediately preceding statement (the 12% fall). \"This was the worst result\" — \"this\" stands for the whole prior fact. \"That\" works too but feels slightly more distanced. \"This\" is the default for immediate reference."
+        },
+        {
+          "type": "multiple_choice",
+          "sentence": "Three executives have left in the past month. _____ raises serious questions.",
+          "options": [
+            "This",
+            "That",
+            "These",
+            "Those"
+          ],
+          "answer": "This",
+          "explanation": "\"This + summative noun\" works even for plural subjects in the prior clause. \"Three executives have left... This raises questions\" — \"this\" refers to the FACT or SITUATION, which is singular abstract. Compare \"These executives have left, and they all said...\" — there \"these\" + plural noun refers to the people themselves."
+        },
+        {
+          "type": "fill_gap",
+          "sentence": "The proposal was rejected for three reasons: cost, timing, and political risk. _____ three concerns shaped the rest of the discussion.",
+          "hint": "\"These\" + the three reasons just listed",
+          "answer": "These",
+          "explanation": "\"These three concerns\" — \"these\" because the antecedent is plural (\"three reasons\"). The demonstrative gathers the just-listed items and names them with a summary noun (\"concerns\"). This pattern — \"These X...\" — is essential for extended discourse cohesion."
+        },
+        {
+          "type": "fix_error",
+          "sentence": "The team missed two deadlines. This deadlines worried the client.",
+          "hint": "\"This + plural noun\" doesn't work; use \"These\"",
+          "answer": "The team missed two deadlines. These deadlines worried the client.",
+          "explanation": "\"This\" goes with singular nouns; \"these\" with plural. \"This deadlines\" mixes a singular demonstrative with a plural noun — agreement error. Common slip when reference moves quickly."
+        },
+        {
+          "type": "read_answer",
+          "passage": "The report identified three systemic failures. The first was poor data hygiene. The second was unclear ownership. The third was a culture that punished bad news. These three failures, the report argued, were not independent. This made the recommended fixes harder to design — and easier to delay.",
+          "question": "What did the report argue about the three failures?",
+          "answer": "that they were not independent (they were interconnected)",
+          "explanation": "Three demonstratives weaving the text: \"The first / The second / The third\" (ordinal sequence), \"These three failures\" (gathers them as plural), \"This made...\" (singular, referring back to the whole prior statement). Each demonstrative connects clearly to its referent."
+        }
+      ],
+      "listening_speaking": [
+        {
+          "text": "This raises serious questions.",
+          "context": "singular abstract reference",
+          "audio_url": "https://fnvjibzreepubageztoi.supabase.co/storage/v1/object/public/curriculum-audio/ls/advanced/2e7a881d0dcb9fad.flac"
+        },
+        {
+          "text": "These concerns shaped the discussion.",
+          "context": "plural list reference",
+          "audio_url": "https://fnvjibzreepubageztoi.supabase.co/storage/v1/object/public/curriculum-audio/ls/advanced/340bcd8f15fdf3be.flac"
+        },
+        {
+          "text": "That was the worst result in years.",
+          "context": "distanced singular reference",
+          "audio_url": "https://fnvjibzreepubageztoi.supabase.co/storage/v1/object/public/curriculum-audio/ls/advanced/bca8dc08396480fe.flac"
+        },
+        {
+          "text": "Those decisions still haunt us.",
+          "context": "distanced plural reference",
+          "audio_url": "https://fnvjibzreepubageztoi.supabase.co/storage/v1/object/public/curriculum-audio/ls/advanced/58d95df38a30b583.flac"
+        },
+        {
+          "text": "Such patterns rarely resolve themselves.",
+          "context": "formal summative reference",
+          "audio_url": "https://fnvjibzreepubageztoi.supabase.co/storage/v1/object/public/curriculum-audio/ls/advanced/0e9f1bd38131717e.flac"
+        }
+      ],
+      "roleplay": {
+        "scenario": "Charlotte gives you three first sentences. You write a follow-up using \"This / That / These / Those\" to reference back.",
+        "voiced_by": "charlotte",
+        "persona": "Charlotte",
+        "persona_outfit": "charlotte_casual",
+        "time_budget_sec": 300,
+        "opening_line": "Three first sentences. Follow each with a sentence that references back using 'this / these / that / those'.",
+        "objectives": [
+          {
+            "id": 1,
+            "label_en": "Reference with 'This' (abstract)",
+            "hidden_prompt": "user uses 'This + summary noun' for prior abstract claim",
+            "hint_en": "First: 'Two of our top engineers gave notice last week.' Follow: 'This loss leaves a gap nobody on the bench is ready to fill.'"
+          },
+          {
+            "id": 2,
+            "label_en": "Reference with 'These' (plural list)",
+            "hidden_prompt": "user uses 'These + plural noun'",
+            "hint_en": "First: 'The report flagged three risks: regulatory, financial, and reputational.' Follow: 'These risks will need to be addressed before the launch can proceed.'"
+          },
+          {
+            "id": 3,
+            "label_en": "Reference with 'That' (distanced)",
+            "hidden_prompt": "user uses 'That' for emotional or temporal distance",
+            "hint_en": "First: 'We laid off forty percent of the team in 2008.' Follow: 'That decision still shapes how we think about hiring.'"
+          }
+        ],
+        "closing_cue": "Charlotte closes with \"Demonstratives threading.\" once obj_3 lands.",
+        "suggested_flow": "**Suggested flow** (referencial, 6 turnos):\n\n1. **Charlotte**: \"Three first sentences. Follow each with a sentence that references back using 'this / these / that / those'.\"\n2. **Student**: ~\"First: 'Two of our top engineers gave notice last week.' Follow: 'This loss leaves a gap nobody on the bench is ready to fill.'\"\n3. **Charlotte**: \"List reference?\"\n4. **Student**: ~\"First: 'The report flagged three risks: regulatory, financial, and reputational.' Follow: 'These risks will need to be addressed before the launch can proceed.'\"\n5. **Charlotte**: \"Distanced reference?\"\n6. **Student**: ~\"First: 'We laid off forty percent of the team in 2008.' Follow: 'That decision still shapes how we think about hiring.'\"\n7. **Charlotte**: \"Demonstratives threading.\"",
+        "evaluation_focus": [
+          "\"This/that\" singular; \"these/those\" plural",
+          "Reference clear (no ambiguity)",
+          "Summary noun supports the demonstrative"
+        ]
+      },
+      "guided_chat": {
+        "scenario": "Charlotte writes a paragraph without demonstratives. You revise to add them for cohesion.",
+        "voiced_by": "charlotte",
+        "persona": "Charlotte",
+        "persona_outfit": "charlotte_casual",
+        "intro_en": "Charlotte writes a paragraph without demonstratives. Add them for cohesion.",
+        "opening_message": "I wrote: 'We had three problems last quarter. Costs were up. Revenue was flat. Morale dipped. We need to address them.' Feels jumpy. Help?",
+        "objectives": [
+          {
+            "id": 1,
+            "label_en": "Add 'These' as connector",
+            "hidden_prompt": "user adds 'These three problems' or similar",
+            "hint_en": "Try: 'These three pressures reinforce one another in ways the leadership team hasn't yet acknowledged.'"
+          },
+          {
+            "id": 2,
+            "label_en": "Add reference with 'this'",
+            "hidden_prompt": "user uses 'This + summary noun'",
+            "hint_en": "And close with: 'This combination of pressures rarely resolves itself — addressing one in isolation tends to make the others worse.'"
+          },
+          {
+            "id": 3,
+            "label_en": "Ask Charlotte",
+            "hidden_prompt": "user asks Charlotte where the paragraph is going",
+            "hint_en": "Where does the paragraph land?"
+          }
+        ],
+        "closing_cue": "Charlotte closes with \"Paragraph stitched, demonstratively.\" once obj_3 lands.",
+        "suggested_script": "**Script** (referencial, 7 turnos):\n\n1. **Charlotte**: \"I wrote: 'We had three problems last quarter. Costs were up. Revenue was flat. Morale dipped. We need to address them.' Feels jumpy. Help?\"\n2. **Student**: \"Try: 'These three pressures reinforce one another in ways the leadership team hasn't yet acknowledged.'\"\n3. **Charlotte**: \"That single sentence does a lot.\"\n4. **Student**: \"And close with: 'This combination of pressures rarely resolves itself — addressing one in isolation tends to make the others worse.'\"\n5. **Charlotte**: \"Now it argues, instead of listing.\"\n6. **Student**: \"Where does the paragraph land?\"\n7. **Charlotte**: \"On a recommendation to bring all three to one meeting. Paragraph stitched, demonstratively.\"\n\n> A01 chat = full LLM. Scaffold via hint_pt/hint_en.\n\n---"
+      }
+    },
+    {
+      "id": "A02",
+      "title": "Lexical chains",
+      "sub_cefr": "C2",
+      "grammar_focus": "Lexical cohesion via synonyms, hyponyms, and superordinates (a Toyota → the car → the vehicle → the machine)",
+      "markers": [
+        "denso",
+        "cohesion"
+      ],
+      "real_life_context": "You vary vocabulary while keeping the referent clear — moving from specific to general or substituting synonyms.",
+      "grammar": [
+        {
+          "type": "multiple_choice",
+          "options": [
+            "The",
+            "This",
+            "That",
+            "Such"
+          ],
+          "answer": "The (or \"The same\")",
+          "explanation": "Lexical cohesion via superordinate hierarchy: \"Volvo\" (specific) → \"car\" (less specific) → \"vehicle\" (even less specific). Each refers to the same object. \"The vehicle\" — definite article + superordinate noun, picking up the referent without repetition. Hyponym → superordinate chain."
+        },
+        {
+          "type": "multiple_choice",
+          "options": [
+            "The initiative",
+            "The proposal",
+            "The plan",
+            "The thing"
+          ],
+          "answer": "The initiative",
+          "explanation": "Synonym chain: \"proposal\" → \"plan\" → \"initiative\". Same referent, different word. Avoids monotonous repetition. Native writers naturally cycle through synonyms when the referent persists across sentences."
+        },
+        {
+          "type": "fill_gap",
+          "hint": "Superordinate of \"dog\"",
+          "answer": "The (animal)",
+          "explanation": "\"The animal\" — moves up from specific (\"dog\") to superordinate (\"animal\"). The article \"the\" signals shared knowledge. This is cohesion through hyponym → superordinate, sustained by definite article."
+        },
+        {
+          "type": "fix_error",
+          "sentence": "He bought a Tesla. He bought a Tesla. He bought a Tesla last year, and a Tesla is expensive to maintain.",
+          "hint": "Vary with synonyms / superordinates",
+          "answer": "He bought a Tesla last year. The car has been expensive to maintain — the technology is unforgiving when something breaks.",
+          "explanation": "Triple repetition of \"Tesla\" is heavy. Cohesion through variation: Tesla → the car → the technology. Each refers to the same purchase, but the prose breathes."
+        },
+        {
+          "type": "read_answer",
+          "passage": "She had brought home a rescue puppy in March. The dog was nervous of everyone, especially men. The little creature would not let anyone but her near it for three weeks. By June, the animal had begun to trust the postman. By autumn, the once-fearful pup followed her into every room.",
+          "question": "How does the passage avoid repeating 'puppy' / 'dog'?",
+          "answer": "through a lexical chain — puppy → the dog → the little creature → the animal → the once-fearful pup",
+          "explanation": "Five lexical variants for the same referent: rescue puppy, the dog, the little creature, the animal, the once-fearful pup. Each adds a slight nuance (age, size, fear, recovery). Cohesion via varied lexicon — typical of C2 narrative."
+        }
+      ],
+      "listening_speaking": [
+        {
+          "text": "The car had been her father's pride.",
+          "context": "superordinate cohesion",
+          "audio_url": "https://fnvjibzreepubageztoi.supabase.co/storage/v1/object/public/curriculum-audio/ls/advanced/12be972c79265b5e.flac"
+        },
+        {
+          "text": "The initiative would test the team.",
+          "context": "synonym substitution",
+          "audio_url": "https://fnvjibzreepubageztoi.supabase.co/storage/v1/object/public/curriculum-audio/ls/advanced/f534484b84af8f28.flac"
+        },
+        {
+          "text": "The animal trusted no one but her.",
+          "context": "hyponym → superordinate",
+          "audio_url": "https://fnvjibzreepubageztoi.supabase.co/storage/v1/object/public/curriculum-audio/ls/advanced/6a1b184743858cfa.flac"
+        },
+        {
+          "text": "The proposal — the plan — the project.",
+          "context": "synonym cycling",
+          "audio_url": "https://fnvjibzreepubageztoi.supabase.co/storage/v1/object/public/curriculum-audio/ls/advanced/42e3036cef9a98b0.flac"
+        },
+        {
+          "text": "The technology was unforgiving.",
+          "context": "variant after specific name",
+          "audio_url": "https://fnvjibzreepubageztoi.supabase.co/storage/v1/object/public/curriculum-audio/ls/advanced/61eb2ba82870e75a.flac"
+        }
+      ],
+      "roleplay": {
+        "scenario": "Charlotte gives you a specific noun. You build a three-sentence chain that varies lexically without losing the referent.",
+        "voiced_by": "charlotte",
+        "persona": "Charlotte",
+        "persona_outfit": "charlotte_casual",
+        "time_budget_sec": 300,
+        "opening_line": "Specific noun: a brand-new MacBook. Build a three-sentence lexical chain — vary the noun each time without losing the referent.",
+        "objectives": [
+          {
+            "id": 1,
+            "label_en": "Specific → less specific",
+            "hidden_prompt": "user uses MacBook → the laptop → the machine etc.",
+            "hint_en": "First sentence with the specific noun: 'She bought a MacBook in October — the new one with the dark grey finish.'"
+          },
+          {
+            "id": 2,
+            "label_en": "Superordinate or synonym",
+            "hidden_prompt": "user uses 'the laptop' or 'the machine'",
+            "hint_en": "Second: 'The laptop was an upgrade she had been postponing for three years.'"
+          },
+          {
+            "id": 3,
+            "label_en": "Another variant (more general or descriptive)",
+            "hidden_prompt": "user uses 'the device' or 'the new machine'",
+            "hint_en": "Third: 'The new machine has kept her at her desk for hours longer than the old one ever did.'"
+          }
+        ],
+        "closing_cue": "Charlotte closes with \"Chain woven, no repetition.\" once obj_3 lands.",
+        "suggested_flow": "**Suggested flow** (referencial, 6 turnos):\n\n1. **Charlotte**: \"Specific noun: a brand-new MacBook. Build a three-sentence lexical chain — vary the noun each time without losing the referent.\"\n2. **Student**: ~\"First sentence with the specific noun: 'She bought a MacBook in October — the new one with the dark grey finish.'\"\n3. **Charlotte**: \"Superordinate?\"\n4. **Student**: ~\"Second: 'The laptop was an upgrade she had been postponing for three years.'\"\n5. **Charlotte**: \"Another variant?\"\n6. **Student**: ~\"Third: 'The new machine has kept her at her desk for hours longer than the old one ever did.'\"\n7. **Charlotte**: \"Chain woven, no repetition.\"",
+        "evaluation_focus": [
+          "Same referent, varied lexicon",
+          "Each variant fits its sentence",
+          "No reader confusion about referent"
+        ]
+      },
+      "guided_chat": {
+        "scenario": "Charlotte drafts a paragraph that repeats a name too often. You revise it with a lexical chain.",
+        "voiced_by": "charlotte",
+        "persona": "Charlotte",
+        "persona_outfit": "charlotte_casual",
+        "intro_en": "Charlotte over-repeats. Revise with a lexical chain.",
+        "opening_message": "I wrote: 'The CEO announced the merger. The CEO said it would close in March. The CEO refused questions. The CEO walked out.' Help me vary it.",
+        "objectives": [
+          {
+            "id": 1,
+            "label_en": "Synonym + description",
+            "hidden_prompt": "user replaces some 'CEO' with synonym or descriptive variant",
+            "hint_en": "Try: 'The CEO announced the merger. The chief executive said it would close in March.'"
+          },
+          {
+            "id": 2,
+            "label_en": "Substitution with pronoun or role description",
+            "hidden_prompt": "user uses 'he/she' and 'the executive'",
+            "hint_en": "Continue: 'She refused to take questions. The executive walked out before the press could press further.'"
+          },
+          {
+            "id": 3,
+            "label_en": "Ask Charlotte",
+            "hidden_prompt": "user asks Charlotte about her own draft style",
+            "hint_en": "Why does this trip you up?"
+          }
+        ],
+        "closing_cue": "Charlotte closes with \"Repetition replaced, prose breathes.\" once obj_3 lands.",
+        "suggested_script": "**Script** (referencial, 7 turnos):\n\n1. **Charlotte**: \"I wrote: 'The CEO announced the merger. The CEO said it would close in March. The CEO refused questions. The CEO walked out.' Help me vary it.\"\n2. **Student**: \"Try: 'The CEO announced the merger. The chief executive said it would close in March.'\"\n3. **Charlotte**: \"Two more sentences?\"\n4. **Student**: \"Continue: 'She refused to take questions. The executive walked out before the press could press further.'\"\n5. **Charlotte**: \"I forget how much pronouns help.\"\n6. **Student**: \"Why does this trip you up?\"\n7. **Charlotte**: \"I draft fast and worry the reader will lose track. Repetition replaced, prose breathes.\"\n\n> A02 chat = full LLM. Scaffold via hint_pt/hint_en.\n\n---"
+      }
+    },
+    {
+      "id": "A03",
+      "title": "The former, the latter, such",
+      "sub_cefr": "C2",
+      "grammar_focus": "Formal anaphoric devices — the former / the latter, such X, the aforementioned, the X in question",
+      "markers": [
+        "denso",
+        "cohesion"
+      ],
+      "real_life_context": "You write formal prose where you need to refer back unambiguously to one of two prior items, or summarise prior text.",
+      "grammar": [
+        {
+          "type": "multiple_choice",
+          "sentence": "We considered both Paris and Lisbon. The former offers more nightlife; _____ offers more affordability.",
+          "options": [
+            "the latter",
+            "the late",
+            "the laster",
+            "the second"
+          ],
+          "answer": "the latter",
+          "explanation": "\"The former / The latter\" — formal devices for referring to first and second of two previously mentioned items. \"The former\" = the first mentioned (Paris); \"the latter\" = the second mentioned (Lisbon). Common in formal writing and comparison."
+        },
+        {
+          "type": "multiple_choice",
+          "sentence": "_____ disruptions are increasingly common in global supply chains.",
+          "options": [
+            "Such",
+            "These such",
+            "Such of",
+            "Such kind of"
+          ],
+          "answer": "Such",
+          "explanation": "\"Such + noun\" — summative reference to previously characterised entities. \"Such disruptions\" = \"the kind of disruptions just described\". Common in academic and policy prose. Formal alternative to \"these kinds of\" or \"this type of\"."
+        },
+        {
+          "type": "fill_gap",
+          "hint": "Synonymous formal demonstrative",
+          "answer": "These (or \"The aforementioned\")",
+          "explanation": "\"These findings\" — anaphoric link to the report's content just mentioned. Alternatively, formal: \"The aforementioned findings\". \"Aforementioned\" itself is highly formal and slightly archaic — used in legal and very formal academic writing."
+        },
+        {
+          "type": "fix_error",
+          "sentence": "We had two options: A and B. I prefer the formal.",
+          "hint": "\"The former\" is the term, not \"the formal\"",
+          "answer": "We had two options: A and B. I prefer the former.",
+          "explanation": "\"The formal\" means \"the formal one\" (relating to formality). \"The former\" means \"the first of two previously mentioned\". Common L2 confusion — easy to slip the wrong word into formal English. C2 watchfulness."
+        },
+        {
+          "type": "read_answer",
+          "passage": "The committee narrowed the field to two candidates: Patel and Müller. The former had more international experience; the latter had built a stronger team in the past five years. Such backgrounds, the committee agreed, would suit different strategic moments. The candidate in question, after further interviews, would be Müller.",
+          "question": "Who did the committee ultimately choose?",
+          "answer": "Müller (the latter)",
+          "explanation": "Four formal anaphoric devices: \"The former\" (Patel), \"the latter\" (Müller), \"Such backgrounds\" (summative), \"The candidate in question\" (formal definite reference). Each does specific anaphoric work in formal prose."
+        }
+      ],
+      "listening_speaking": [
+        {
+          "text": "The former offers more nightlife.",
+          "context": "first of two",
+          "audio_url": "https://fnvjibzreepubageztoi.supabase.co/storage/v1/object/public/curriculum-audio/ls/advanced/7b78b71f0c2aef0b.flac"
+        },
+        {
+          "text": "The latter offers more affordability.",
+          "context": "second of two",
+          "audio_url": "https://fnvjibzreepubageztoi.supabase.co/storage/v1/object/public/curriculum-audio/ls/advanced/5550518a0e1b1e47.flac"
+        },
+        {
+          "text": "Such disruptions are common now.",
+          "context": "summative reference",
+          "audio_url": "https://fnvjibzreepubageztoi.supabase.co/storage/v1/object/public/curriculum-audio/ls/advanced/1eb939d3e77f6f16.flac"
+        },
+        {
+          "text": "The aforementioned report concluded...",
+          "context": "formal back-reference",
+          "audio_url": "https://fnvjibzreepubageztoi.supabase.co/storage/v1/object/public/curriculum-audio/ls/advanced/b71ccabb94e7a116.flac"
+        },
+        {
+          "text": "The candidate in question withdrew.",
+          "context": "specific formal reference",
+          "audio_url": "https://fnvjibzreepubageztoi.supabase.co/storage/v1/object/public/curriculum-audio/ls/advanced/9966fcbbb0f17979.flac"
+        }
+      ],
+      "roleplay": {
+        "scenario": "Charlotte gives you two options or items. You compare with \"the former / the latter\" and add a summative comment using \"such X\".",
+        "voiced_by": "charlotte",
+        "persona": "Charlotte",
+        "persona_outfit": "charlotte_casual",
+        "time_budget_sec": 300,
+        "opening_line": "Two pairs of options. Compare with 'the former / the latter', then add a 'such X' summative sentence.",
+        "objectives": [
+          {
+            "id": 1,
+            "label_en": "Comparison with 'the former'",
+            "hidden_prompt": "user uses 'the former offers / has / provides'",
+            "hint_en": "Two cities: São Paulo and Rio. The former offers a denser professional ecosystem."
+          },
+          {
+            "id": 2,
+            "label_en": "Comparison with 'the latter'",
+            "hidden_prompt": "user uses 'the latter offers / has / provides'",
+            "hint_en": "The latter, by contrast, offers a sense of place that comes from coastline rather than skyline."
+          },
+          {
+            "id": 3,
+            "label_en": "Summative with 'such'",
+            "hidden_prompt": "user uses 'Such + noun' summatively",
+            "hint_en": "Such trade-offs make the choice less about cities than about which version of one's own life one is willing to live."
+          }
+        ],
+        "closing_cue": "Charlotte closes with \"Three formal anaphoric devices.\" once obj_3 lands.",
+        "suggested_flow": "**Suggested flow** (referencial, 6 turnos):\n\n1. **Charlotte**: \"Two pairs of options. Compare with 'the former / the latter', then add a 'such X' summative sentence.\"\n2. **Student**: ~\"Two cities: São Paulo and Rio. The former offers a denser professional ecosystem.\"\n3. **Charlotte**: \"And the latter?\"\n4. **Student**: ~\"The latter, by contrast, offers a sense of place that comes from coastline rather than skyline.\"\n5. **Charlotte**: \"Summative with 'such'?\"\n6. **Student**: ~\"Such trade-offs make the choice less about cities than about which version of one's own life one is willing to live.\"\n7. **Charlotte**: \"Three formal anaphoric devices.\"",
+        "evaluation_focus": [
+          "\"Former\" first mentioned, \"latter\" second mentioned",
+          "\"Such + noun\" gathers a category",
+          "Formal register sustained"
+        ]
+      },
+      "guided_chat": {
+        "scenario": "Charlotte discusses two policy options with you. You compare them using formal anaphoric devices.",
+        "voiced_by": "charlotte",
+        "persona": "Charlotte",
+        "persona_outfit": "charlotte_casual",
+        "intro_en": "Charlotte compares two policy options. Use 'the former / the latter' and 'such X' formally.",
+        "opening_message": "We're choosing between two strategies: aggressive expansion or careful consolidation. Which favours which moment?",
+        "objectives": [
+          {
+            "id": 1,
+            "label_en": "'The former' characterising the first",
+            "hidden_prompt": "user uses 'The former + verb'",
+            "hint_en": "The former tends to favour markets where competitive position is still up for grabs and capital is patient."
+          },
+          {
+            "id": 2,
+            "label_en": "'The latter' characterising the second",
+            "hidden_prompt": "user uses 'The latter + verb'",
+            "hint_en": "The latter tends to suit moments when the underlying assets are strong but the operating model is straining under its own complexity."
+          },
+          {
+            "id": 3,
+            "label_en": "Ask Charlotte",
+            "hidden_prompt": "user asks Charlotte which moment her business is in",
+            "hint_en": "Which moment are you in?"
+          }
+        ],
+        "closing_cue": "Charlotte closes with \"Former and latter, properly placed.\" once obj_3 lands.",
+        "suggested_script": "**Script** (referencial, 7 turnos):\n\n1. **Charlotte**: \"We're choosing between two strategies: aggressive expansion or careful consolidation. Which favours which moment?\"\n2. **Student**: \"The former tends to favour markets where competitive position is still up for grabs and capital is patient.\"\n3. **Charlotte**: \"Patient capital is the rarest condition.\"\n4. **Student**: \"The latter tends to suit moments when the underlying assets are strong but the operating model is straining under its own complexity.\"\n5. **Charlotte**: \"That sounds like a description of us.\"\n6. **Student**: \"Which moment are you in?\"\n7. **Charlotte**: \"The second, almost certainly — the assets are healthier than the operating model. Former and latter, properly placed.\"\n\n> A03 chat = full LLM. Scaffold via hint_pt/hint_en.\n\n---"
+      }
+    },
+    {
+      "id": "A04",
+      "title": "Old information first",
+      "sub_cefr": "C2",
+      "grammar_focus": "Information flow — placing old/given information at the start of a sentence and new information at the end (theme-rheme structure)",
+      "markers": [
+        "denso",
+        "discourse"
+      ],
+      "real_life_context": "You write extended prose where each sentence begins with what's already known and ends with new information — building cumulatively.",
+      "grammar": [
+        {
+          "type": "multiple_choice",
+          "options": [
+            "This problem stemmed from poor estimates.",
+            "Poor estimates were the source of this problem.",
+            "Estimates were what poor were the source."
+          ],
+          "answer": "This problem stemmed from poor estimates.",
+          "explanation": "\"This problem\" (old, already mentioned) → \"stemmed from poor estimates\" (new information). Standard theme-rheme structure: known information at sentence-start, new at sentence-end. Reader's mind builds on what they already know."
+        },
+        {
+          "type": "multiple_choice",
+          "options": [
+            "His confidence in meetings was particularly striking.",
+            "Particularly striking was his confidence in meetings.",
+            "Confidence in meetings was particularly his striking."
+          ],
+          "answer": "His confidence in meetings was particularly striking.",
+          "explanation": "\"His\" (referring back to the new hire = old info) → \"confidence... particularly striking\" (new info). Old information anchors; new information lands. Reader experiences a forward motion: known → new."
+        },
+        {
+          "type": "fill_gap",
+          "hint": "Reference back with old info first",
+          "answer": "That discussion (or \"The discussion\")",
+          "explanation": "\"That discussion\" (referring back) → \"revealed significant risks\" (new info). Or \"The discussion\" — definite article carries old info. The sentence builds on what was just mentioned."
+        },
+        {
+          "type": "fix_error",
+          "hint": "Lead with old info (\"our discussion\") and end with new (\"significant risks\")",
+          "answer": "Our discussion of the budget revealed significant risks.",
+          "explanation": "The passive version inverts the natural information flow — new info (\"significant risks\") at the start, old info (\"our discussion\") at the end. Awkward unless the passive serves a specific purpose. Active version aligns with theme-rheme."
+        },
+        {
+          "type": "read_answer",
+          "passage": "The committee made three decisions in its first hour. The first was to extend the deadline. This extension would relieve the most acute pressure on the team. The second was to bring in an external auditor. That auditor would arrive on Monday. The third decision was the hardest: to reassign the lead engineer.",
+          "question": "How does each sentence begin?",
+          "answer": "with old information referring back to what was just said (the first / This extension / The second / That auditor / The third decision)",
+          "explanation": "Every sentence begins with an old-information anchor referring back: \"The first\" / \"This extension\" / \"The second\" / \"That auditor\" / \"The third decision\". Each closes with new information. Information flow is invisible because it works."
+        }
+      ],
+      "listening_speaking": [
+        {
+          "text": "This problem stemmed from poor estimates.",
+          "context": "old → new",
+          "audio_url": "https://fnvjibzreepubageztoi.supabase.co/storage/v1/object/public/curriculum-audio/ls/advanced/8f7ee3427ef1baf4.flac"
+        },
+        {
+          "text": "That discussion revealed significant risks.",
+          "context": "old → new",
+          "audio_url": "https://fnvjibzreepubageztoi.supabase.co/storage/v1/object/public/curriculum-audio/ls/advanced/d0433c242f151400.flac"
+        },
+        {
+          "text": "His confidence was particularly striking.",
+          "context": "old → new",
+          "audio_url": "https://fnvjibzreepubageztoi.supabase.co/storage/v1/object/public/curriculum-audio/ls/advanced/0de92a33cce09ab5.flac"
+        },
+        {
+          "text": "The decision shaped everything that followed.",
+          "context": "old → new",
+          "audio_url": "https://fnvjibzreepubageztoi.supabase.co/storage/v1/object/public/curriculum-audio/ls/advanced/3ac4475497966d28.flac"
+        },
+        {
+          "text": "These findings raise new questions.",
+          "context": "old → new",
+          "audio_url": "https://fnvjibzreepubageztoi.supabase.co/storage/v1/object/public/curriculum-audio/ls/advanced/96beb1a249128466.flac"
+        }
+      ],
+      "roleplay": {
+        "scenario": "Charlotte gives a first sentence. You add a second that follows the old-information-first principle.",
+        "voiced_by": "charlotte",
+        "persona": "Charlotte",
+        "persona_outfit": "charlotte_casual",
+        "time_budget_sec": 300,
+        "opening_line": "Three first sentences. Each follow-up should begin with old information and end with new.",
+        "objectives": [
+          {
+            "id": 1,
+            "label_en": "Old → new",
+            "hidden_prompt": "user starts second sentence with old info reference",
+            "hint_en": "First: 'The interview lasted ninety minutes.' Follow: 'That length was deliberate — the panel wanted to see how she handled fatigue.'"
+          },
+          {
+            "id": 2,
+            "label_en": "Another flow example",
+            "hidden_prompt": "user uses theme-rheme correctly",
+            "hint_en": "First: 'We launched the new product in June.' Follow: 'The launch went smoother than any in the previous three years.'"
+          },
+          {
+            "id": 3,
+            "label_en": "Invert as counter-example",
+            "hidden_prompt": "user demonstrates wrong order and corrects it",
+            "hint_en": "Wrong order: 'A clear winner emerged from the discussion.' Better: 'The discussion produced a clear winner.'"
+          }
+        ],
+        "closing_cue": "Charlotte closes with \"Information flow, naturally forward.\" once obj_3 lands.",
+        "suggested_flow": "**Suggested flow** (referencial, 6 turnos):\n\n1. **Charlotte**: \"Three first sentences. Each follow-up should begin with old information and end with new.\"\n2. **Student**: ~\"First: 'The interview lasted ninety minutes.' Follow: 'That length was deliberate — the panel wanted to see how she handled fatigue.'\"\n3. **Charlotte**: \"Another?\"\n4. **Student**: ~\"First: 'We launched the new product in June.' Follow: 'The launch went smoother than any in the previous three years.'\"\n5. **Charlotte**: \"Counter-example?\"\n6. **Student**: ~\"Wrong order: 'A clear winner emerged from the discussion.' Better: 'The discussion produced a clear winner.'\"\n7. **Charlotte**: \"Information flow, naturally forward.\"",
+        "evaluation_focus": [
+          "Old info at sentence start",
+          "New info at sentence end",
+          "Each sentence builds on the last"
+        ]
+      },
+      "guided_chat": {
+        "scenario": "Charlotte drafts a paragraph where information flow is reversed. You revise it.",
+        "voiced_by": "charlotte",
+        "persona": "Charlotte",
+        "persona_outfit": "charlotte_casual",
+        "intro_en": "Charlotte writes with reversed flow. Reorder to old-info-first.",
+        "opening_message": "I wrote: 'Significant gains were produced by the new strategy. A complete restructuring of the sales team was required by these gains.' Awkward — help?",
+        "objectives": [
+          {
+            "id": 1,
+            "label_en": "Reverse first sentence",
+            "hidden_prompt": "user reverses to old-info first",
+            "hint_en": "Try: 'The new strategy produced significant gains.'"
+          },
+          {
+            "id": 2,
+            "label_en": "Reverse second sentence",
+            "hidden_prompt": "user reverses second sentence to old-info first",
+            "hint_en": "Then: 'These gains required a complete restructuring of the sales team.'"
+          },
+          {
+            "id": 3,
+            "label_en": "Ask Charlotte",
+            "hidden_prompt": "user asks Charlotte why she defaulted to passive",
+            "hint_en": "What made you reach for passive first?"
+          }
+        ],
+        "closing_cue": "Charlotte closes with \"Flow reordered.\" once obj_3 lands.",
+        "suggested_script": "**Script** (referencial, 7 turnos):\n\n1. **Charlotte**: \"I wrote: 'Significant gains were produced by the new strategy. A complete restructuring of the sales team was required by these gains.' Awkward — help?\"\n2. **Student**: \"Try: 'The new strategy produced significant gains.'\"\n3. **Charlotte**: \"Lighter already.\"\n4. **Student**: \"Then: 'These gains required a complete restructuring of the sales team.'\"\n5. **Charlotte**: \"Each sentence reaches forward instead of doubling back.\"\n6. **Student**: \"What made you reach for passive first?\"\n7. **Charlotte**: \"I was trying to sound formal. Turns out formal isn't the same as passive. Flow reordered.\"\n\n> A04 chat = full LLM. Scaffold via hint_pt/hint_en.\n\n---"
+      }
+    },
+    {
+      "id": "A05",
+      "title": "Bridging and avoiding ambiguous referents",
+      "sub_cefr": "C2",
+      "grammar_focus": "Bridging (implied connections without explicit markers) and avoiding ambiguous \"it / this / they\" references",
+      "markers": [],
+      "real_life_context": "You write coherently even without explicit connectives — relying on inference — while making sure every pronoun has a clear antecedent.",
+      "grammar": [
+        {
+          "type": "multiple_choice",
+          "options": [
+            "The battery",
+            "The car",
+            "The engine",
+            "The starter"
+          ],
+          "answer": "The battery (or any car part — bridging via inference)",
+          "explanation": "Bridging cohesion: the reader infers that \"the battery\" belongs to \"the car\" without it being stated. Native readers fill the gap. The definite article \"the\" signals shared knowledge. Common in fluent prose — no \"the car's battery\", just \"the battery\"."
+        },
+        {
+          "type": "multiple_choice",
+          "options": [
+            "Maria",
+            "Her sister",
+            "Unclear",
+            "Both"
+          ],
+          "answer": "Unclear",
+          "explanation": "\"She\" is ambiguous — could refer to Maria or her sister. C2 writing fixes this. Clearer: \"Maria told her sister that Maria would arrive late\" (repetition) or \"Maria told her sister, 'I'll be late.'\" (direct speech) or \"Maria warned her sister of her own late arrival.\" (rephrase)."
+        },
+        {
+          "type": "fill_gap",
+          "hint": "Specify Maria or the colleague",
+          "answer": "Maria (or \"the colleague\" — whichever the writer intended)",
+          "explanation": "When pronouns risk ambiguity, name the referent. Repetition of the name is preferable to confusion. C2 writers do this — explicit > elegant when stakes are high."
+        },
+        {
+          "type": "fix_error",
+          "hint": "What was incomplete — the report or the manager?",
+          "answer": "I gave the report to my manager, but the report was incomplete. (or: I gave my manager the report, which was still incomplete.)",
+          "explanation": "\"It\" could refer to the report or the manager. Repeat the noun to disambiguate, or restructure the sentence. C2 prose avoids reference ambiguity even at the cost of slight repetition."
+        },
+        {
+          "type": "read_answer",
+          "passage": "She walked into the room and turned on the light. The bulb flickered, hesitated, then steadied. Books lined three walls. The shelves were her grandfather's — every piece of wood pulled from a barn he had grown up in. She did not touch them yet. The room had a way of letting itself be entered slowly.",
+          "question": "How does the passage establish cohesion without explicit connectives?",
+          "answer": "through bridging — \"the light\" implies \"in the room\", \"the bulb\" implies \"the light\", \"the shelves\" implies \"the walls\", \"the room\" returns to the initial subject. Each definite article signals shared knowledge built from the previous sentence.",
+          "explanation": "Six bridges: \"the room\" → \"the light\" → \"the bulb\" → \"the walls\" → \"the shelves\" → \"the room\". No \"however\" or \"therefore\" — just shared knowledge of the scene. C2 prose at its most fluent."
+        }
+      ],
+      "listening_speaking": [
+        {
+          "text": "The battery was dead.",
+          "context": "bridging from \"car\"",
+          "audio_url": "https://fnvjibzreepubageztoi.supabase.co/storage/v1/object/public/curriculum-audio/ls/advanced/cfcbe67b828af845.flac"
+        },
+        {
+          "text": "Maria warned her sister she'd be late.",
+          "context": "disambiguated pronoun",
+          "audio_url": "https://fnvjibzreepubageztoi.supabase.co/storage/v1/object/public/curriculum-audio/ls/advanced/af4d47983e5d74c3.flac"
+        },
+        {
+          "text": "The report was incomplete.",
+          "context": "repeat noun to clarify",
+          "audio_url": "https://fnvjibzreepubageztoi.supabase.co/storage/v1/object/public/curriculum-audio/ls/advanced/cfcd4454f77a7538.flac"
+        },
+        {
+          "text": "The room let itself be entered slowly.",
+          "context": "bridging cohesion",
+          "audio_url": "https://fnvjibzreepubageztoi.supabase.co/storage/v1/object/public/curriculum-audio/ls/advanced/830a27c3b53ea043.flac"
+        },
+        {
+          "text": "The shelves had been her grandfather's.",
+          "context": "implicit ownership chain",
+          "audio_url": "https://fnvjibzreepubageztoi.supabase.co/storage/v1/object/public/curriculum-audio/ls/advanced/e38b6e5d9d1257b4.flac"
+        }
+      ],
+      "roleplay": {
+        "scenario": "Charlotte gives three sentence-pairs. You revise each to either bridge cleanly or disambiguate pronouns.",
+        "voiced_by": "charlotte",
+        "persona": "Charlotte",
+        "persona_outfit": "charlotte_casual",
+        "time_budget_sec": 300,
+        "opening_line": "Three sentence-pairs. Bridge them cleanly, or disambiguate ambiguous pronouns.",
+        "objectives": [
+          {
+            "id": 1,
+            "label_en": "Implicit bridging",
+            "hidden_prompt": "user bridges with definite article + inferable noun",
+            "hint_en": "First: 'We rented a flat in central Lisbon. The landlord was rarely there.' (Bridging — 'the landlord' inferred to belong to the flat.)"
+          },
+          {
+            "id": 2,
+            "label_en": "Disambiguate pronoun",
+            "hidden_prompt": "user names the referent instead of 'she / he / it'",
+            "hint_en": "Ambiguous: 'Anna spoke to her mother, and she was angry.' Disambiguated: 'Anna spoke to her mother — Anna was angry, though her mother seemed to know why before Anna said a word.'"
+          },
+          {
+            "id": 3,
+            "label_en": "Bridging with 'the X'",
+            "hidden_prompt": "user bridges via inference",
+            "hint_en": "First: 'I drove to the lake for the weekend. The water was warmer than expected.' (Bridging — 'the water' = the lake's water, inferred.)"
+          }
+        ],
+        "closing_cue": "Charlotte closes with \"References, clean and clear.\" once obj_3 lands.",
+        "suggested_flow": "**Suggested flow** (referencial, 6 turnos):\n\n1. **Charlotte**: \"Three sentence-pairs. Bridge them cleanly, or disambiguate ambiguous pronouns.\"\n2. **Student**: ~\"First: 'We rented a flat in central Lisbon. The landlord was rarely there.' (Bridging — 'the landlord' inferred to belong to the flat.)\"\n3. **Charlotte**: \"Disambiguation?\"\n4. **Student**: ~\"Ambiguous: 'Anna spoke to her mother, and she was angry.' Disambiguated: 'Anna spoke to her mother — Anna was angry, though her mother seemed to know why before Anna said a word.'\"\n5. **Charlotte**: \"Another bridge?\"\n6. **Student**: ~\"First: 'I drove to the lake for the weekend. The water was warmer than expected.' (Bridging — 'the water' = the lake's water, inferred.)\"\n7. **Charlotte**: \"References, clean and clear.\"",
+        "evaluation_focus": [
+          "Bridging logical (definite article + inferable noun)",
+          "Pronouns named when ambiguous",
+          "No \"it / they / this\" without clear antecedent"
+        ]
+      },
+      "guided_chat": {
+        "scenario": "Charlotte writes a paragraph with ambiguous references. You revise for clarity.",
+        "voiced_by": "charlotte",
+        "persona": "Charlotte",
+        "persona_outfit": "charlotte_casual",
+        "intro_en": "Charlotte writes ambiguously. Revise for clarity.",
+        "opening_message": "I wrote: 'The CEO met with the head of legal yesterday. She said the deal would close. They disagreed about the timeline. Now it's all in their hands.' Confusing — fix?",
+        "objectives": [
+          {
+            "id": 1,
+            "label_en": "Disambiguate 'she said'",
+            "hidden_prompt": "user names which 'she' said it",
+            "hint_en": "Try: 'The CEO told the head of legal that the deal would close.'"
+          },
+          {
+            "id": 2,
+            "label_en": "Clarify 'they' and 'it'",
+            "hidden_prompt": "user names referents",
+            "hint_en": "Continue: 'The two disagreed on the timeline. Now the decision rests with the executive team.'"
+          },
+          {
+            "id": 3,
+            "label_en": "Ask Charlotte",
+            "hidden_prompt": "user asks Charlotte why she'd left it ambiguous",
+            "hint_en": "Was the ambiguity deliberate?"
+          }
+        ],
+        "closing_cue": "Charlotte closes with \"Cohesion sharpened, ambiguity dispelled.\" once obj_3 lands.",
+        "suggested_script": "**Script** (referencial, 7 turnos):\n\n1. **Charlotte**: \"I wrote: 'The CEO met with the head of legal yesterday. She said the deal would close. They disagreed about the timeline. Now it's all in their hands.' Confusing — fix?\"\n2. **Student**: \"Try: 'The CEO told the head of legal that the deal would close.'\"\n3. **Charlotte**: \"Already clearer. Keep going.\"\n4. **Student**: \"Continue: 'The two disagreed on the timeline. Now the decision rests with the executive team.'\"\n5. **Charlotte**: \"Now every pronoun has a parent.\"\n6. **Student**: \"Was the ambiguity deliberate?\"\n7. **Charlotte**: \"Honestly? I think I was avoiding naming the two of them directly. Cohesion sharpened, ambiguity dispelled.\"\n\n> A05 chat = full LLM. Scaffold via hint_pt/hint_en.\n\n---"
+      }
+    }
+  ],
+  "cross_unit_consolidation": [
+    "Use this / that / these / those for anaphoric reference, matching number to antecedent",
+    "Form lexical chains (Toyota → the car → the vehicle → the machine)",
+    "Vary synonyms across sentences (proposal → plan → initiative)",
+    "Use formal anaphoric devices (the former / the latter, such X, the aforementioned, the X in question)",
+    "Place old information at sentence start, new information at sentence end (theme-rheme)",
+    "Bridge between sentences via definite articles and inferable connections (the room → the light → the bulb)",
+    "Disambiguate pronouns by naming the referent when \"it / she / they\" risks confusion",
+    "Keep readers oriented across long discourse without heavy connective load"
+  ]
+}

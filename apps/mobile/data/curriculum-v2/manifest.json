@@ -309,8 +309,13 @@
         "id": "M17",
         "title": "Elipse e substituição",
         "file": "advanced/M17.json"
+      },
+      {
+        "id": "M18",
+        "title": "Coesão em discurso extenso",
+        "file": "advanced/M18.json"
       }
     ]
   },
-  "generated_at": "2026-05-30T22:48:06.693Z"
+  "generated_at": "2026-05-30T23:11:54.897Z"
 }
