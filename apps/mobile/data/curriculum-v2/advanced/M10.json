@@ -1,0 +1,760 @@
+{
+  "id": "M10",
+  "title": "Marcadores de discurso",
+  "level": "Advanced",
+  "block": "C1",
+  "units_range": "A01–A05",
+  "theme": "Advanced discourse markers — nuance (in fact, as a matter of fact), concession (that said, mind you), reformulation (in other words, put differently), topic shifts (incidentally, by the way), emphatic chains (what's more, not least, above all)",
+  "goal": "Student threads sentences and paragraphs with C1 discourse markers — the connective tissue that makes English sound truly fluent, not just grammatical.",
+  "connects_to": "M11 (Conotação e registro) — closes the C1 fluency layer with connotation and tone control.",
+  "module_chunks": [
+    "in fact / as a matter of fact / actually",
+    "that said / having said that / mind you / then again",
+    "in other words / that is to say / put differently / by which I mean",
+    "to put it another way",
+    "on the other hand / by contrast / conversely",
+    "meanwhile / in the meantime / subsequently / thereafter",
+    "incidentally / by the way / speaking of / on a related note",
+    "above all / not least / what's more / for that matter",
+    "all things considered / on balance / on the whole",
+    "when all is said and done",
+    "after all (causal) vs after all (concessive)",
+    "granted / admittedly",
+    "hence / thereby / accordingly",
+    "insofar as / to the extent that"
+  ],
+  "units": [
+    {
+      "id": "A01",
+      "title": "In fact, as a matter of fact",
+      "sub_cefr": "C1",
+      "grammar_focus": "Nuancing markers (in fact, as a matter of fact, actually, indeed) — strengthening or correcting an earlier claim",
+      "markers": [
+        "denso",
+        "discourse"
+      ],
+      "real_life_context": "You sharpen a previous statement, add a surprising detail, or politely correct an interlocutor.",
+      "grammar": [
+        {
+          "type": "multiple_choice",
+          "sentence": "I thought the meeting was Wednesday. _____, it's Thursday.",
+          "options": [
+            "As a matter of fact",
+            "On a matter of fact",
+            "By a matter of fact",
+            "In matter of fact"
+          ],
+          "answer": "As a matter of fact",
+          "explanation": "\"As a matter of fact\" introduces a correction or surprising clarification, often politely. Fixed prepositional phrase. Synonyms: \"in fact\", \"actually\". Used to update someone's understanding without sounding confrontational. The marker softens the correction."
+        },
+        {
+          "type": "multiple_choice",
+          "sentence": "She didn't just like the proposal — _____, she championed it to the board.",
+          "options": [
+            "in fact",
+            "on fact",
+            "for fact",
+            "by fact"
+          ],
+          "answer": "in fact",
+          "explanation": "\"In fact\" strengthens or upgrades a previous claim. Often used to escalate: not just X, in fact Y (something stronger). Punctuation: comma after when fronted. \"In fact\" can intensify, while \"as a matter of fact\" tends to correct or clarify."
+        },
+        {
+          "type": "fill_gap",
+          "sentence": "We weren't expecting an offer that high. _____, we were ready to negotiate for less.",
+          "hint": "Past clarification marker",
+          "answer": "As a matter of fact",
+          "explanation": "\"As a matter of fact\" introduces a behind-the-scenes truth that softens or surprises. Used when adding context that adjusts the interlocutor's mental model."
+        },
+        {
+          "type": "fix_error",
+          "sentence": "Actually, I don't think that's correct, in fact.",
+          "hint": "Don't stack both nuancing markers in the same clause",
+          "answer": "Actually, I don't think that's correct. (or: In fact, I don't think that's correct.)",
+          "explanation": "\"Actually\" and \"in fact\" are near-synonyms. Stacking them creates redundancy. Pick one. C1 prose values economy — repetition of equivalent markers reads as nervous overcorrection."
+        },
+        {
+          "type": "read_answer",
+          "passage": "The press release was carefully phrased. 'The board respects the founder's decision. In fact, we asked her to take this step several weeks ago. As a matter of fact, the timing of her announcement was agreed jointly. Actually, the only surprise here is that the press caught up so quickly.' Three nuancing markers in three sentences — corporate prose at its most precise.",
+          "question": "What does the press release imply about the founder's decision?",
+          "answer": "that the board had requested it / that it wasn't her unilateral decision",
+          "explanation": "Three nuancing markers chained: \"In fact\" (escalate), \"As a matter of fact\" (clarify with surprising detail), \"Actually\" (final correction of public perception). Each does specific work; together they reshape the narrative."
+        }
+      ],
+      "listening_speaking": [
+        {
+          "text": "In fact, she championed it to the board.",
+          "context": "escalation"
+        },
+        {
+          "text": "As a matter of fact, it's Thursday.",
+          "context": "gentle correction"
+        },
+        {
+          "text": "Actually, I'd prefer the earlier slot.",
+          "context": "soft alternative"
+        },
+        {
+          "text": "Indeed, that's exactly what we found.",
+          "context": "formal confirmation"
+        },
+        {
+          "text": "In fact, the opposite turned out to be true.",
+          "context": "reversal"
+        }
+      ],
+      "roleplay": {
+        "scenario": "Charlotte makes three slightly off-base claims. You correct or refine each with a nuancing marker.",
+        "voiced_by": "charlotte",
+        "persona": "Charlotte",
+        "persona_outfit": "charlotte_casual",
+        "time_budget_sec": 300,
+        "opening_line": "Three claims to refine. Use 'in fact', 'as a matter of fact', or 'actually'.",
+        "objectives": [
+          {
+            "id": 1,
+            "label_en": "Soft correction with 'as a matter of fact'",
+            "hidden_prompt": "user uses 'As a matter of fact, + clause'",
+            "hint_en": "As a matter of fact, the launch was last Tuesday, not Wednesday."
+          },
+          {
+            "id": 2,
+            "label_en": "Escalation with 'in fact'",
+            "hidden_prompt": "user uses 'In fact, + clause' to intensify",
+            "hint_en": "She didn't just attend the meeting — in fact, she led most of it."
+          },
+          {
+            "id": 3,
+            "label_en": "Clarification with 'actually'",
+            "hidden_prompt": "user uses 'Actually, + clause'",
+            "hint_en": "Actually, the deadline was extended on Friday afternoon."
+          }
+        ],
+        "closing_cue": "Charlotte closes with \"Refinements landed.\" once obj_3 lands.",
+        "suggested_flow": "**Suggested flow** (referencial, 6 turnos):\n\n1. **Charlotte**: \"Three claims to refine. Use 'in fact', 'as a matter of fact', or 'actually'.\"\n2. **Student**: ~\"As a matter of fact, the launch was last Tuesday, not Wednesday.\"\n3. **Charlotte**: \"Escalation?\"\n4. **Student**: ~\"She didn't just attend the meeting — in fact, she led most of it.\"\n5. **Charlotte**: \"Update?\"\n6. **Student**: ~\"Actually, the deadline was extended on Friday afternoon.\"\n7. **Charlotte**: \"Refinements landed.\"",
+        "evaluation_focus": [
+          "Marker fronted with comma",
+          "Real refinement, not paraphrase",
+          "No stacking of equivalent markers"
+        ]
+      },
+      "guided_chat": {
+        "scenario": "Charlotte raises a popular assumption. You complicate or correct it with nuancing markers.",
+        "voiced_by": "charlotte",
+        "persona": "Charlotte",
+        "persona_outfit": "charlotte_casual",
+        "intro_en": "Charlotte raises common assumptions. Refine with 'in fact / actually / as a matter of fact'.",
+        "opening_message": "People keep saying remote work has killed productivity. Your read?",
+        "objectives": [
+          {
+            "id": 1,
+            "label_en": "Correction of premise",
+            "hidden_prompt": "user uses 'In fact / As a matter of fact / Actually + clause'",
+            "hint_en": "Actually, most measured studies show productivity rose or held steady, not fell."
+          },
+          {
+            "id": 2,
+            "label_en": "Deepen with another marker",
+            "hidden_prompt": "user uses another nuancing marker",
+            "hint_en": "In fact, the productivity dip people remember was driven by the pandemic itself, not by where people worked."
+          },
+          {
+            "id": 3,
+            "label_en": "Ask Charlotte",
+            "hidden_prompt": "user asks Charlotte where she's hearing it",
+            "hint_en": "Who's saying it?"
+          }
+        ],
+        "closing_cue": "Charlotte closes with \"Assumption properly nuanced.\" once obj_3 lands.",
+        "suggested_script": "**Script** (referencial, 7 turnos):\n\n1. **Charlotte**: \"People keep saying remote work has killed productivity. Your read?\"\n2. **Student**: \"Actually, most measured studies show productivity rose or held steady, not fell.\"\n3. **Charlotte**: \"And the counter-narrative?\"\n4. **Student**: \"In fact, the productivity dip people remember was driven by the pandemic itself, not by where people worked.\"\n5. **Charlotte**: \"The cause keeps getting confused with the conditions.\"\n6. **Student**: \"Who's saying it?\"\n7. **Charlotte**: \"Mostly the same CEOs who lease the empty offices. Assumption properly nuanced.\"\n\n> A01 chat = full LLM. Scaffold via hint_pt/hint_en.\n\n---"
+      }
+    },
+    {
+      "id": "A02",
+      "title": "That said, mind you",
+      "sub_cefr": "C1",
+      "grammar_focus": "Concession markers (that said, having said that, mind you, then again, granted, admittedly) — acknowledging the other side",
+      "markers": [
+        "denso",
+        "discourse"
+      ],
+      "real_life_context": "You build balanced argument by signalling that you've considered counterpoints — preventing your view from sounding one-sided.",
+      "grammar": [
+        {
+          "type": "multiple_choice",
+          "sentence": "Remote work has real upsides. _____, it can be isolating.",
+          "options": [
+            "That said",
+            "That so said",
+            "Said that",
+            "In that said"
+          ],
+          "answer": "That said",
+          "explanation": "\"That said\" introduces a concession after a positive claim. Fixed phrase, comma after. Synonymous with \"having said that\". Marks that the speaker is acknowledging the counterpoint without abandoning the main position. Essential C1 balance."
+        },
+        {
+          "type": "multiple_choice",
+          "sentence": "She's brilliant. _____, she can be hard to work with.",
+          "options": [
+            "Mind you",
+            "Mind that",
+            "Mind for",
+            "Mind to"
+          ],
+          "answer": "Mind you",
+          "explanation": "\"Mind you\" — informal-conversational concession, common in British English. Drops in a counterpoint that adjusts your assessment. Used when sharing nuanced opinions in casual register. Punctuation: comma after."
+        },
+        {
+          "type": "fill_gap",
+          "sentence": "_____, I might have done the same thing in his position.",
+          "hint": "\"Granted\" or \"Admittedly\" or \"Then again\"",
+          "answer": "Then again",
+          "explanation": "\"Then again\" introduces a reconsideration — second-guessing your own assertion. Punctuation: comma after. Slightly more reflective than \"that said\"; suggests the speaker is genuinely reconsidering, not just balancing."
+        },
+        {
+          "type": "fix_error",
+          "sentence": "She's talented. However, that said, she's also lazy.",
+          "hint": "\"However\" and \"that said\" do the same work — don't stack",
+          "answer": "She's talented. That said, she's also lazy. (or: She's talented. However, she's also lazy.)",
+          "explanation": "\"However\" and \"that said\" both mark concession. Stacking is redundant. C1 register prefers one well-placed marker. Choose by tone: \"however\" reads more formal-written, \"that said\" more conversational."
+        },
+        {
+          "type": "read_answer",
+          "passage": "She made a strong case for the move. Granted, the new market is competitive. Mind you, it's also growing twice as fast as our current one. Admittedly, our team would need to relocate or hire from scratch. That said, the cost of inaction is starting to look higher than the cost of action.",
+          "question": "What does the speaker ultimately seem to favour?",
+          "answer": "making the move (or: she's leaning towards action)",
+          "explanation": "Four concession markers chained: \"Granted\" (formal yielding), \"Mind you\" (informal pivot), \"Admittedly\" (formal yielding), \"That said\" (concession). Each yields a point before leading back to the speaker's preferred conclusion. Argument architecture at C1."
+        }
+      ],
+      "listening_speaking": [
+        {
+          "text": "That said, the risks are real.",
+          "context": "concession after positive"
+        },
+        {
+          "text": "Mind you, she's been right before.",
+          "context": "informal counterpoint"
+        },
+        {
+          "text": "Then again, the timing could be perfect.",
+          "context": "reconsidering"
+        },
+        {
+          "text": "Granted, the budget is tight.",
+          "context": "formal yield"
+        },
+        {
+          "text": "Admittedly, I didn't see that coming.",
+          "context": "yielding to a fact"
+        }
+      ],
+      "roleplay": {
+        "scenario": "Charlotte makes three confident claims. You acknowledge them but introduce nuance with concession markers.",
+        "voiced_by": "charlotte",
+        "persona": "Charlotte",
+        "persona_outfit": "charlotte_casual",
+        "time_budget_sec": 300,
+        "opening_line": "Three confident claims. Acknowledge — but nuance with 'that said', 'mind you', 'then again', or 'granted'.",
+        "objectives": [
+          {
+            "id": 1,
+            "label_en": "Concession with 'That said'",
+            "hidden_prompt": "user uses 'That said, + clause'",
+            "hint_en": "The product launch was successful. That said, the support tickets tell a more complicated story."
+          },
+          {
+            "id": 2,
+            "label_en": "'Mind you' (informal)",
+            "hidden_prompt": "user uses 'Mind you, + clause'",
+            "hint_en": "He's a strong negotiator. Mind you, he sometimes wins the battle and loses the relationship."
+          },
+          {
+            "id": 3,
+            "label_en": "Reconsideration with 'Then again' or 'Granted'",
+            "hidden_prompt": "user uses 'Then again, + clause' or 'Granted, + clause'",
+            "hint_en": "Granted, the data is preliminary — but the trend is hard to dismiss."
+          }
+        ],
+        "closing_cue": "Charlotte closes with \"Argument balanced, edges shown.\" once obj_3 lands.",
+        "suggested_flow": "**Suggested flow** (referencial, 6 turnos):\n\n1. **Charlotte**: \"Three confident claims. Acknowledge — but nuance with 'that said', 'mind you', 'then again', or 'granted'.\"\n2. **Student**: ~\"The product launch was successful. That said, the support tickets tell a more complicated story.\"\n3. **Charlotte**: \"Counterpoint?\"\n4. **Student**: ~\"He's a strong negotiator. Mind you, he sometimes wins the battle and loses the relationship.\"\n5. **Charlotte**: \"Reconsider?\"\n6. **Student**: ~\"Granted, the data is preliminary — but the trend is hard to dismiss.\"\n7. **Charlotte**: \"Argument balanced, edges shown.\"",
+        "evaluation_focus": [
+          "Marker introduces real concession, not just hedge",
+          "Comma after marker",
+          "Register matches the original claim"
+        ]
+      },
+      "guided_chat": {
+        "scenario": "Charlotte takes a strong position on AI. You agree partially but introduce concessions with discourse markers.",
+        "voiced_by": "charlotte",
+        "persona": "Charlotte",
+        "persona_outfit": "charlotte_casual",
+        "intro_en": "Charlotte takes a strong position. Concede partially with 'that said / mind you / granted'.",
+        "opening_message": "AI is going to make most knowledge work obsolete in a decade. Hard truth.",
+        "objectives": [
+          {
+            "id": 1,
+            "label_en": "Partial agreement with concession",
+            "hidden_prompt": "user uses 'That said' or 'Mind you' or 'Granted'",
+            "hint_en": "There's something to that. That said, 'most' is doing a lot of work in that sentence."
+          },
+          {
+            "id": 2,
+            "label_en": "Deepen with another concession marker",
+            "hidden_prompt": "user uses 'Then again' or 'Mind you' or 'Admittedly'",
+            "hint_en": "Then again, every major shift looked total in advance and partial in retrospect."
+          },
+          {
+            "id": 3,
+            "label_en": "Ask Charlotte",
+            "hidden_prompt": "user asks Charlotte how she'd hedge her own claim",
+            "hint_en": "What's the strongest counter you'd make to yourself?"
+          }
+        ],
+        "closing_cue": "Charlotte closes with \"Position complicated, fairly.\" once obj_3 lands.",
+        "suggested_script": "**Script** (referencial, 7 turnos):\n\n1. **Charlotte**: \"AI is going to make most knowledge work obsolete in a decade. Hard truth.\"\n2. **Student**: \"There's something to that. That said, 'most' is doing a lot of work in that sentence.\"\n3. **Charlotte**: \"Fair pushback. What survives?\"\n4. **Student**: \"Then again, every major shift looked total in advance and partial in retrospect.\"\n5. **Charlotte**: \"Historical humility — useful.\"\n6. **Student**: \"What's the strongest counter you'd make to yourself?\"\n7. **Charlotte**: \"That capability and adoption are two different timelines. Position complicated, fairly.\"\n\n> A02 chat = full LLM. Scaffold via hint_pt/hint_en.\n\n---"
+      }
+    },
+    {
+      "id": "A03",
+      "title": "In other words, put differently",
+      "sub_cefr": "C1",
+      "grammar_focus": "Reformulation markers (in other words, that is to say, put differently, to put it another way, by which I mean, or rather)",
+      "markers": [
+        "denso",
+        "discourse"
+      ],
+      "real_life_context": "You restate complex ideas more simply, recast a phrase, or correct yourself in real time.",
+      "grammar": [
+        {
+          "type": "multiple_choice",
+          "sentence": "The market is mean-reverting. _____, prices tend to swing back to their average.",
+          "options": [
+            "In other words",
+            "On other words",
+            "By other words",
+            "With other words"
+          ],
+          "answer": "In other words",
+          "explanation": "\"In other words\" introduces a paraphrase or simpler restatement. Fixed phrase, comma after. Used to translate jargon, restate for clarity, or check shared understanding. Most common reformulation marker in spoken and written English."
+        },
+        {
+          "type": "multiple_choice",
+          "sentence": "The hypothesis predicts a non-linear relationship — _____, things won't scale evenly.",
+          "options": [
+            "that is to say",
+            "that is for say",
+            "which is to say",
+            "that to say is"
+          ],
+          "answer": "that is to say",
+          "explanation": "\"That is to say\" — slightly more formal than \"in other words\". Often written with comma both sides (\"...non-linear relationship — that is to say, things...\"). Used in academic and formal contexts."
+        },
+        {
+          "type": "fill_gap",
+          "sentence": "She's not just busy. _____, she's overwhelmed.",
+          "hint": "Correction marker",
+          "answer": "Or rather",
+          "explanation": "\"Or rather\" introduces a self-correction — replacing a less-accurate term with a more-accurate one. Comma after. Used when you realise mid-sentence that you've understated or misstated something."
+        },
+        {
+          "type": "fix_error",
+          "sentence": "The data suggests, in other words, a downward trend.",
+          "hint": "\"In other words\" doesn't fit mid-clause when there's no paraphrase",
+          "answer": "The data suggests a downward trend. In other words, sales are slipping.",
+          "explanation": "\"In other words\" introduces a restatement of a prior idea. It needs something to restate. Inserting it without a paraphrase makes it filler. Use only when you're actually paraphrasing."
+        },
+        {
+          "type": "read_answer",
+          "passage": "The lecturer's gift was reformulation. 'The Heisenberg principle states that conjugate variables cannot be simultaneously measured to arbitrary precision. In other words, you can know where a particle is, or how fast it's moving — but never both at once. That is to say, observation imposes its own limits on what can be known. Or rather, observation IS the limit.'",
+          "question": "What is the lecturer's final, sharpest restatement?",
+          "answer": "observation IS the limit",
+          "explanation": "Three reformulations, each tighter than the last: \"In other words...\" (everyday paraphrase), \"That is to say...\" (philosophical implication), \"Or rather...\" (self-correction towards greater precision). Each marker does different work in a chain."
+        }
+      ],
+      "listening_speaking": [
+        {
+          "text": "In other words, sales are slipping.",
+          "context": "everyday paraphrase"
+        },
+        {
+          "text": "That is to say, the conclusion follows.",
+          "context": "formal restatement"
+        },
+        {
+          "text": "To put it another way, it's a trade-off.",
+          "context": "alternative phrasing"
+        },
+        {
+          "text": "Or rather, it's more complicated than that.",
+          "context": "self-correction"
+        },
+        {
+          "text": "By which I mean, the assumption was wrong.",
+          "context": "clarification"
+        }
+      ],
+      "roleplay": {
+        "scenario": "Charlotte gives three technical or abstract claims. You translate them into plain English using reformulation markers.",
+        "voiced_by": "charlotte",
+        "persona": "Charlotte",
+        "persona_outfit": "charlotte_casual",
+        "time_budget_sec": 300,
+        "opening_line": "Three abstract claims. Translate each with 'in other words', 'that is to say', or 'put differently'.",
+        "objectives": [
+          {
+            "id": 1,
+            "label_en": "Paraphrase with 'In other words'",
+            "hidden_prompt": "user uses 'In other words, + clause'",
+            "hint_en": "Our customer acquisition cost is rising faster than lifetime value. In other words, we're paying more to land each customer than they're worth to us."
+          },
+          {
+            "id": 2,
+            "label_en": "Formal reformulation with 'That is to say'",
+            "hidden_prompt": "user uses 'That is to say, + clause'",
+            "hint_en": "The model assumes diminishing returns. That is to say, each additional dollar produces less impact than the one before it."
+          },
+          {
+            "id": 3,
+            "label_en": "Self-correction with 'Or rather'",
+            "hidden_prompt": "user uses 'Or rather, + clause'",
+            "hint_en": "She's resistant to change. Or rather, she's protective of what's been working."
+          }
+        ],
+        "closing_cue": "Charlotte closes with \"Translation, in three registers.\" once obj_3 lands.",
+        "suggested_flow": "**Suggested flow** (referencial, 6 turnos):\n\n1. **Charlotte**: \"Three abstract claims. Translate each with 'in other words', 'that is to say', or 'put differently'.\"\n2. **Student**: ~\"Our customer acquisition cost is rising faster than lifetime value. In other words, we're paying more to land each customer than they're worth to us.\"\n3. **Charlotte**: \"Cleanly put. Formal version?\"\n4. **Student**: ~\"The model assumes diminishing returns. That is to say, each additional dollar produces less impact than the one before it.\"\n5. **Charlotte**: \"Self-correction?\"\n6. **Student**: ~\"She's resistant to change. Or rather, she's protective of what's been working.\"\n7. **Charlotte**: \"Translation, in three registers.\"",
+        "evaluation_focus": [
+          "Real paraphrase, not synonym substitution",
+          "Marker fronted with comma",
+          "Register match between original and restatement"
+        ]
+      },
+      "guided_chat": {
+        "scenario": "Charlotte uses jargon. You translate it into clearer English using reformulation markers.",
+        "voiced_by": "charlotte",
+        "persona": "Charlotte",
+        "persona_outfit": "charlotte_casual",
+        "intro_en": "Charlotte uses jargon. Translate for clarity with 'in other words / that is to say'.",
+        "opening_message": "We're optimising for asymmetric upside in a thin market with low capital intensity. Make sense?",
+        "objectives": [
+          {
+            "id": 1,
+            "label_en": "Translation to clear English",
+            "hidden_prompt": "user uses 'In other words / That is to say + clause'",
+            "hint_en": "In other words, you're chasing big wins in a small market without spending much money to play."
+          },
+          {
+            "id": 2,
+            "label_en": "Confirm with reformulation",
+            "hidden_prompt": "user uses 'To put it another way' or 'Put differently'",
+            "hint_en": "Put differently — you want to find the few customers who'll pay a lot, without burning cash to find them."
+          },
+          {
+            "id": 3,
+            "label_en": "Ask Charlotte",
+            "hidden_prompt": "user asks Charlotte if the translation is right",
+            "hint_en": "Have I got it right?"
+          }
+        ],
+        "closing_cue": "Charlotte closes with \"Jargon decoded, plainly.\" once obj_3 lands.",
+        "suggested_script": "**Script** (referencial, 7 turnos):\n\n1. **Charlotte**: \"We're optimising for asymmetric upside in a thin market with low capital intensity. Make sense?\"\n2. **Student**: \"In other words, you're chasing big wins in a small market without spending much money to play.\"\n3. **Charlotte**: \"That's it, in twelve fewer syllables.\"\n4. **Student**: \"Put differently — you want to find the few customers who'll pay a lot, without burning cash to find them.\"\n5. **Charlotte**: \"Exactly.\"\n6. **Student**: \"Have I got it right?\"\n7. **Charlotte**: \"Better than my own pitch deck does. Jargon decoded, plainly.\"\n\n> A03 chat = full LLM. Scaffold via hint_pt/hint_en.\n\n---"
+      }
+    },
+    {
+      "id": "A04",
+      "title": "Above all, what's more",
+      "sub_cefr": "C1",
+      "grammar_focus": "Emphatic chain markers (above all, not least, what's more, for that matter, on top of that) — building up emphasis",
+      "markers": [
+        "denso",
+        "discourse"
+      ],
+      "real_life_context": "You stack reasons or qualities — making the final element feel like the climax, not just another bullet point.",
+      "grammar": [
+        {
+          "type": "multiple_choice",
+          "sentence": "She's smart, organised, and — _____ — she actually cares.",
+          "options": [
+            "above all",
+            "above the all",
+            "on top all",
+            "over all"
+          ],
+          "answer": "above all",
+          "explanation": "\"Above all\" — highest emphasis in a list. Fixed phrase, often set off by dashes or commas. Used to signal the most important item, typically saved for last. C1 register prefers this over \"most importantly\", which is fine but more pedestrian."
+        },
+        {
+          "type": "multiple_choice",
+          "sentence": "The product is well-designed. _____, the price is unbeatable.",
+          "options": [
+            "What's more",
+            "What more",
+            "What's most",
+            "What is the more"
+          ],
+          "answer": "What's more",
+          "explanation": "\"What's more\" introduces an additional point that strengthens the case. Less climactic than \"above all\" — used mid-list to keep escalating. Fixed contraction with apostrophe."
+        },
+        {
+          "type": "fill_gap",
+          "sentence": "He's a great teacher — _____, the students adore him.",
+          "hint": "\"Not least\"",
+          "answer": "not least",
+          "explanation": "\"Not least\" introduces a specifically important point, often understated. Fixed phrase. Means \"and not at all unimportantly\". Often introduces the most concrete or compelling evidence in a list."
+        },
+        {
+          "type": "fix_error",
+          "sentence": "Above all of, she's reliable.",
+          "hint": "\"Above all\" is fixed — no \"of\" follows",
+          "answer": "Above all, she's reliable.",
+          "explanation": "\"Above all\" doesn't take a preposition. It's a standalone phrase. Common confusion with \"above all of these\" (where \"of\" links to a list). When used as a discourse marker at the start of a clause, just \"Above all,\"."
+        },
+        {
+          "type": "read_answer",
+          "passage": "The job offer was strong on every front. The pay was generous. What's more, the team was small and experienced. Not least, the office was a fifteen-minute walk from her flat. Above all, she would finally be working for someone she respected without reservation. She had said yes before the call ended.",
+          "question": "According to the passage, what was the most important factor in her decision?",
+          "answer": "she would finally be working for someone she respected",
+          "explanation": "Four emphatic markers building a climax: \"What's more\" (adding), \"Not least\" (emphasising), \"Above all\" (final crown). Each marker escalates the emphasis. The marker \"above all\" signals the most important item."
+        }
+      ],
+      "listening_speaking": [
+        {
+          "text": "Above all, she's honest.",
+          "context": "final emphasis"
+        },
+        {
+          "text": "What's more, the price is fair.",
+          "context": "additional strength"
+        },
+        {
+          "text": "Not least, the team trusts him.",
+          "context": "specifically important"
+        },
+        {
+          "text": "On top of that, delivery is free.",
+          "context": "informal addition"
+        },
+        {
+          "text": "For that matter, the timing is perfect too.",
+          "context": "extending the argument"
+        }
+      ],
+      "roleplay": {
+        "scenario": "Charlotte invites three pitches — for a place, a person, an idea. Use emphatic chain markers in each.",
+        "voiced_by": "charlotte",
+        "persona": "Charlotte",
+        "persona_outfit": "charlotte_casual",
+        "time_budget_sec": 300,
+        "opening_line": "Three pitches. Stack your reasons with 'what's more', 'not least', 'above all'.",
+        "objectives": [
+          {
+            "id": 1,
+            "label_en": "Pitch with 'What's more'",
+            "hidden_prompt": "user uses 'What's more, + clause' in a pitch",
+            "hint_en": "The neighbourhood is quiet and full of small bakeries. What's more, the metro stops two minutes from the door."
+          },
+          {
+            "id": 2,
+            "label_en": "Pitch with 'Not least'",
+            "hidden_prompt": "user uses 'Not least, + clause'",
+            "hint_en": "She's experienced, articulate, and — not least — calm under pressure."
+          },
+          {
+            "id": 3,
+            "label_en": "Climax with 'Above all'",
+            "hidden_prompt": "user uses 'Above all, + clause'",
+            "hint_en": "The idea is fundable, timely, and — above all — solves a problem nobody else is looking at."
+          }
+        ],
+        "closing_cue": "Charlotte closes with \"Pitches stacked, climax landed.\" once obj_3 lands.",
+        "suggested_flow": "**Suggested flow** (referencial, 6 turnos):\n\n1. **Charlotte**: \"Three pitches. Stack your reasons with 'what's more', 'not least', 'above all'.\"\n2. **Student**: ~\"The neighbourhood is quiet and full of small bakeries. What's more, the metro stops two minutes from the door.\"\n3. **Charlotte**: \"Specifically important point?\"\n4. **Student**: ~\"She's experienced, articulate, and — not least — calm under pressure.\"\n5. **Charlotte**: \"Climax?\"\n6. **Student**: ~\"The idea is fundable, timely, and — above all — solves a problem nobody else is looking at.\"\n7. **Charlotte**: \"Pitches stacked, climax landed.\"",
+        "evaluation_focus": [
+          "Chain of two or more points before the marker",
+          "Above all reserved for genuine peak",
+          "Punctuation (commas/dashes) consistent"
+        ]
+      },
+      "guided_chat": {
+        "scenario": "Charlotte asks you to defend a choice. You stack reasons with emphatic markers.",
+        "voiced_by": "charlotte",
+        "persona": "Charlotte",
+        "persona_outfit": "charlotte_casual",
+        "intro_en": "Charlotte asks you to defend a choice. Stack reasons with 'what's more / not least / above all'.",
+        "opening_message": "You chose to stay in your current job instead of taking a fancier offer. Why?",
+        "objectives": [
+          {
+            "id": 1,
+            "label_en": "Cumulative reason with 'What's more'",
+            "hidden_prompt": "user uses 'What's more, + clause'",
+            "hint_en": "The work itself still excites me. What's more, my manager has actually been listening to my career goals."
+          },
+          {
+            "id": 2,
+            "label_en": "Specific point with 'Not least'",
+            "hidden_prompt": "user uses 'Not least, + clause'",
+            "hint_en": "Not least, the team I built took years to assemble and I'd be starting from zero somewhere else."
+          },
+          {
+            "id": 3,
+            "label_en": "Climax with 'Above all'",
+            "hidden_prompt": "user uses 'Above all, + clause'",
+            "hint_en": "Above all, the fancier offer was about title — and I've already learned that's the thinnest reason to move."
+          }
+        ],
+        "closing_cue": "Charlotte closes with \"Defended, with proper climax.\" once obj_3 lands.",
+        "suggested_script": "**Script** (referencial, 7 turnos):\n\n1. **Charlotte**: \"You chose to stay in your current job instead of taking a fancier offer. Why?\"\n2. **Student**: \"The work itself still excites me. What's more, my manager has actually been listening to my career goals.\"\n3. **Charlotte**: \"Rare. What else?\"\n4. **Student**: \"Not least, the team I built took years to assemble and I'd be starting from zero somewhere else.\"\n5. **Charlotte**: \"And the real reason?\"\n6. **Student**: \"Above all, the fancier offer was about title — and I've already learned that's the thinnest reason to move.\"\n7. **Charlotte**: \"The hardest learning to act on. Defended, with proper climax.\"\n\n> A04 chat = full LLM. Scaffold via hint_pt/hint_en.\n\n---"
+      }
+    },
+    {
+      "id": "A05",
+      "title": "All things considered, hence",
+      "sub_cefr": "C1",
+      "grammar_focus": "Conclusion markers (all things considered, on balance, on the whole, when all is said and done) + formal causal (hence, thereby, accordingly, by virtue of)",
+      "markers": [],
+      "real_life_context": "You close arguments with weighted conclusions, or draw formal causal links in writing.",
+      "grammar": [
+        {
+          "type": "multiple_choice",
+          "sentence": "_____, it was the right call.",
+          "options": [
+            "All things considered",
+            "All things considering",
+            "All things being",
+            "Considering all things"
+          ],
+          "answer": "All things considered",
+          "explanation": "\"All things considered\" — passive participle phrase used as a conclusion marker. Fixed form: \"All things CONSIDERED\", not \"considering\". Used to signal a weighted judgement after weighing factors. Comma after."
+        },
+        {
+          "type": "multiple_choice",
+          "sentence": "_____, the year exceeded expectations.",
+          "options": [
+            "On the whole",
+            "In the whole",
+            "On a whole",
+            "By the whole"
+          ],
+          "answer": "On the whole",
+          "explanation": "\"On the whole\" introduces an overall verdict. Synonyms: \"all in all\", \"by and large\", \"overall\". Fixed prepositional phrase. Used in writing and speech for balanced summary judgement."
+        },
+        {
+          "type": "fill_gap",
+          "sentence": "The contract was breached; _____, we are entitled to compensation.",
+          "hint": "Formal causal marker",
+          "answer": "hence",
+          "explanation": "\"Hence\" = therefore, formal. Fixed marker introducing a consequence. Synonym: \"accordingly\", \"thus\". Common in legal, academic, business prose. Note: \"hence\" can also mean \"from now\" (\"five years hence\") but as discourse marker means \"therefore\"."
+        },
+        {
+          "type": "fix_error",
+          "sentence": "On balance of, the decision was sound.",
+          "hint": "\"On balance\" is fixed — no \"of\"",
+          "answer": "On balance, the decision was sound.",
+          "explanation": "\"On balance\" as a discourse marker doesn't take \"of\". The phrase \"the balance of evidence\" exists (a different construction) but \"on balance\" as conclusion marker stands alone with comma after."
+        },
+        {
+          "type": "read_answer",
+          "passage": "The committee's report was thoughtful. 'On the whole, the project succeeded against difficult conditions. Granted, the budget overran by twelve percent. That said, the team delivered three weeks ahead of schedule. All things considered, the lessons learned outweigh the costs. Hence, we recommend continued investment in this direction.'",
+          "question": "What is the committee's final recommendation?",
+          "answer": "continued investment in this direction",
+          "explanation": "Five discourse markers in five sentences: \"On the whole\" (overall verdict), \"Granted\" (formal yield), \"That said\" (concession), \"All things considered\" (weighted conclusion), \"Hence\" (formal causal). The architecture of a balanced report."
+        }
+      ],
+      "listening_speaking": [
+        {
+          "text": "All things considered, it was the right call.",
+          "context": "weighted conclusion"
+        },
+        {
+          "text": "On balance, the project was worth it.",
+          "context": "overall judgement"
+        },
+        {
+          "text": "On the whole, the year went well.",
+          "context": "broad verdict"
+        },
+        {
+          "text": "Hence, we recommend the new approach.",
+          "context": "formal causal"
+        },
+        {
+          "text": "When all is said and done, results speak.",
+          "context": "final close"
+        }
+      ],
+      "roleplay": {
+        "scenario": "Charlotte presents three messy situations. You give a weighted verdict on each using conclusion markers.",
+        "voiced_by": "charlotte",
+        "persona": "Charlotte",
+        "persona_outfit": "charlotte_casual",
+        "time_budget_sec": 300,
+        "opening_line": "Three messy situations. Give a weighted verdict — 'all things considered', 'on balance', 'on the whole'.",
+        "objectives": [
+          {
+            "id": 1,
+            "label_en": "Verdict with 'All things considered'",
+            "hidden_prompt": "user uses 'All things considered, + clause'",
+            "hint_en": "All things considered, leaving that job a year early was the right call."
+          },
+          {
+            "id": 2,
+            "label_en": "Verdict with 'On balance'",
+            "hidden_prompt": "user uses 'On balance, + clause'",
+            "hint_en": "On balance, the move abroad cost more than I expected but gave more than I imagined."
+          },
+          {
+            "id": 3,
+            "label_en": "Formal causal with 'Hence' or 'Accordingly'",
+            "hidden_prompt": "user uses 'Hence, + clause' or 'Accordingly, + clause'",
+            "hint_en": "The model has proven robust across markets. Hence, we're rolling it out company-wide."
+          }
+        ],
+        "closing_cue": "Charlotte closes with \"Verdicts properly weighted.\" once obj_3 lands.",
+        "suggested_flow": "**Suggested flow** (referencial, 6 turnos):\n\n1. **Charlotte**: \"Three messy situations. Give a weighted verdict — 'all things considered', 'on balance', 'on the whole'.\"\n2. **Student**: ~\"All things considered, leaving that job a year early was the right call.\"\n3. **Charlotte**: \"Bigger life choice?\"\n4. **Student**: ~\"On balance, the move abroad cost more than I expected but gave more than I imagined.\"\n5. **Charlotte**: \"Formal causal?\"\n6. **Student**: ~\"The model has proven robust across markets. Hence, we're rolling it out company-wide.\"\n7. **Charlotte**: \"Verdicts properly weighted.\"",
+        "evaluation_focus": [
+          "Conclusion marker placed correctly",
+          "Weighted judgement, not raw assertion",
+          "Formal causal in fitting register"
+        ]
+      },
+      "guided_chat": {
+        "scenario": "Charlotte invites a year-end retrospective. You give weighted verdicts using all the C1 discourse markers from this module.",
+        "voiced_by": "charlotte",
+        "persona": "Charlotte",
+        "persona_outfit": "charlotte_casual",
+        "intro_en": "Charlotte runs a year-end retrospective. Use full range of C1 discourse markers.",
+        "opening_message": "How would you sum up the year, on balance?",
+        "objectives": [
+          {
+            "id": 1,
+            "label_en": "Initial verdict with marker",
+            "hidden_prompt": "user uses 'On balance / On the whole / All things considered'",
+            "hint_en": "On balance, the year was harder than the last one but more meaningful."
+          },
+          {
+            "id": 2,
+            "label_en": "Concession and emphasis",
+            "hidden_prompt": "user uses 'Granted / That said' + 'Above all / Not least'",
+            "hint_en": "Granted, two big bets failed. That said, the lesson from each was probably worth the cost. Above all, I learned where my actual limits are."
+          },
+          {
+            "id": 3,
+            "label_en": "Ask Charlotte",
+            "hidden_prompt": "user asks Charlotte for her own retrospective",
+            "hint_en": "How would you sum up yours?"
+          }
+        ],
+        "closing_cue": "Charlotte closes with \"Year, summed properly.\" once obj_3 lands.",
+        "suggested_script": "**Script** (referencial, 7 turnos):\n\n1. **Charlotte**: \"How would you sum up the year, on balance?\"\n2. **Student**: \"On balance, the year was harder than the last one but more meaningful.\"\n3. **Charlotte**: \"Meaning and ease rarely arrive together. What underneath?\"\n4. **Student**: \"Granted, two big bets failed. That said, the lesson from each was probably worth the cost. Above all, I learned where my actual limits are.\"\n5. **Charlotte**: \"Knowing your limits is the only protection against rebreaking them.\"\n6. **Student**: \"How would you sum up yours?\"\n7. **Charlotte**: \"All things considered, a year of small good moves and one big honest conversation. Year, summed properly.\"\n\n> A05 chat = full LLM. Scaffold via hint_pt/hint_en.\n\n---"
+      }
+    }
+  ],
+  "cross_unit_consolidation": [
+    "Sharpen claims with nuancing markers (in fact, as a matter of fact, actually, indeed)",
+    "Concede gracefully (that said, having said that, mind you, then again, granted, admittedly)",
+    "Reformulate clearly (in other words, that is to say, put differently, or rather, by which I mean)",
+    "Stack emphasis (what's more, not least, above all, for that matter, on top of that)",
+    "Close with weighted verdicts (all things considered, on balance, on the whole, when all is said and done)",
+    "Use formal causal markers (hence, thereby, accordingly, by virtue of)",
+    "Avoid stacking equivalent markers in the same clause",
+    "Match marker register to surrounding prose"
+  ]
+}

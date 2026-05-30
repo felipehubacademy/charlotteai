@@ -269,8 +269,13 @@
         "id": "M09",
         "title": "Idiomas e linguagem figurada",
         "file": "advanced/M09.json"
+      },
+      {
+        "id": "M10",
+        "title": "Marcadores de discurso",
+        "file": "advanced/M10.json"
       }
     ]
   },
-  "generated_at": "2026-05-30T22:13:58.234Z"
+  "generated_at": "2026-05-30T22:17:37.942Z"
 }
