@@ -1,0 +1,750 @@
+{
+  "id": "M19",
+  "title": "Sutileza modal",
+  "level": "Advanced",
+  "block": "C2",
+  "units_range": "A01–A05",
+  "theme": "Fine shades of modal meaning — certainty (must/will/should/might/may), obligation vs inference, layered modals (might have to), quasi-modals (be supposed to / be bound to / be likely to), formal modals (ought to / shall / would)",
+  "goal": "Student controls the exact shade of certainty, obligation, willingness, or possibility — choosing modals deliberately rather than defaulting.",
+  "connects_to": "M20 (Pronúncia nativa) — moves from semantic nuance to phonological nuance.",
+  "module_chunks": [
+    "must (strong inference + strong obligation)",
+    "will (high certainty + habitual)",
+    "should (mild obligation + expected outcome)",
+    "might / may (possibility, may slightly more formal)",
+    "could (capability + possibility)",
+    "might well / may well (hedged probable)",
+    "could well (hedged probable)",
+    "ought to (formal moral obligation)",
+    "shall (legal/formal future)",
+    "would (habitual past, willingness, hypothetical)",
+    "be supposed to / be meant to (expected by convention)",
+    "be bound to (high probability — likely outcome)",
+    "be likely to / be unlikely to (probability statement)",
+    "I dare say / I would venture (formal hedged opinion)",
+    "can't have / must have / might have + past participle (already in M14 modal perfects, here refined)"
+  ],
+  "units": [
+    {
+      "id": "A01",
+      "title": "Must, will, should — three shades of certainty",
+      "sub_cefr": "C2",
+      "grammar_focus": "Distinguishing \"must\" (strong inference), \"will\" (high certainty), and \"should\" (expected outcome) in present-time predictions",
+      "markers": [
+        "denso",
+        "modal"
+      ],
+      "real_life_context": "You predict or infer with the right strength — neither overclaiming nor underclaiming.",
+      "grammar": [
+        {
+          "type": "multiple_choice",
+          "sentence": "He hasn't answered his phone all day. He _____ be travelling.",
+          "options": [
+            "must",
+            "will",
+            "should",
+            "can"
+          ],
+          "answer": "must",
+          "explanation": "\"Must\" — strong inference from evidence. \"He hasn't answered\" → conclusion: \"he must be travelling\". \"Will\" would be slightly weaker (logical expectation), \"should\" weaker still (expected but uncertain), \"can\" doesn't fit here. \"Must\" matches the strength of the evidence-driven conclusion."
+        },
+        {
+          "type": "multiple_choice",
+          "sentence": "That _____ be the postman at the door.",
+          "options": [
+            "will",
+            "must",
+            "should",
+            "can"
+          ],
+          "answer": "will (or \"must\")",
+          "explanation": "\"Will\" — high-certainty prediction based on routine (\"It's the time he usually comes\"). \"Must\" works too if there's stronger evidence (a specific knock). The English habit of using \"will\" for confident predictions about the present surprises learners. \"That'll be him\" is everyday English."
+        },
+        {
+          "type": "fill_gap",
+          "sentence": "She _____ be home by now — her shift ended at six.",
+          "hint": "Modal of expected outcome based on schedule",
+          "answer": "should",
+          "explanation": "\"Should\" — mild expectation based on knowledge of routine. Weaker than \"must\" or \"will\". Implies \"based on what I know, this is expected — but I'm not certain\". Common for time-based expectations."
+        },
+        {
+          "type": "fix_error",
+          "sentence": "He hasn't replied to the email. He must has been busy.",
+          "hint": "After modals (must/should/will), use base form — not \"has been\"",
+          "answer": "He hasn't replied to the email. He must have been busy.",
+          "explanation": "After modal \"must\", use base form. Past inference: \"must HAVE + past participle\" (must have been busy). \"Must has been\" mixes the modal with finite verb — ungrammatical. Common L2 error to mistime the auxiliary."
+        },
+        {
+          "type": "read_answer",
+          "passage": "The radio silence had lasted three days. He must be off the grid — there was no other explanation. Or he might have lost his phone again, which would not be the first time. He should be back in range by Friday, but the team had stopped relying on his promises long ago.",
+          "question": "According to the passage, what are the three possible explanations for his silence?",
+          "answer": "he's off the grid (must), he lost his phone (might have), he should be back by Friday",
+          "explanation": "Three modal shades calibrating certainty: \"must be off the grid\" (strong inference), \"might have lost his phone\" (weaker possibility), \"should be back by Friday\" (expected but uncertain). Each modal does specific epistemic work."
+        }
+      ],
+      "listening_speaking": [
+        {
+          "text": "He must be travelling.",
+          "context": "strong inference"
+        },
+        {
+          "text": "That'll be the postman.",
+          "context": "confident prediction"
+        },
+        {
+          "text": "She should be home by now.",
+          "context": "expected outcome"
+        },
+        {
+          "text": "He must have been busy.",
+          "context": "past inference"
+        },
+        {
+          "text": "That can't be right.",
+          "context": "strong negative inference"
+        }
+      ],
+      "roleplay": {
+        "scenario": "Charlotte gives three scenarios. You make predictions with the modal that fits the evidence strength.",
+        "voiced_by": "charlotte",
+        "persona": "Charlotte",
+        "persona_outfit": "charlotte_casual",
+        "time_budget_sec": 300,
+        "opening_line": "Three scenarios. Predict with the modal that matches the evidence — must, will, or should.",
+        "objectives": [
+          {
+            "id": 1,
+            "label_en": "Strong inference with 'must'",
+            "hidden_prompt": "user uses 'X must be / must have + past participle'",
+            "hint_en": "Three voicemails and no reply since Tuesday — he must be either ill or off the grid. There's no third explanation that fits."
+          },
+          {
+            "id": 2,
+            "label_en": "Confident prediction with 'will'",
+            "hidden_prompt": "user uses 'will + base' for high-confidence present prediction",
+            "hint_en": "That'll be the courier — he comes at almost exactly this time every Wednesday."
+          },
+          {
+            "id": 3,
+            "label_en": "Expectation with 'should'",
+            "hidden_prompt": "user uses 'should + base' for expected outcome",
+            "hint_en": "Her train should be pulling in any minute now, assuming nothing's gone wrong on the line."
+          }
+        ],
+        "closing_cue": "Charlotte closes with \"Three modals, three certainties.\" once obj_3 lands.",
+        "suggested_flow": "**Suggested flow** (referencial, 6 turnos):\n\n1. **Charlotte**: \"Three scenarios. Predict with the modal that matches the evidence — must, will, or should.\"\n2. **Student**: ~\"Three voicemails and no reply since Tuesday — he must be either ill or off the grid. There's no third explanation that fits.\"\n3. **Charlotte**: \"Confident prediction?\"\n4. **Student**: ~\"That'll be the courier — he comes at almost exactly this time every Wednesday.\"\n5. **Charlotte**: \"Softer expectation?\"\n6. **Student**: ~\"Her train should be pulling in any minute now, assuming nothing's gone wrong on the line.\"\n7. **Charlotte**: \"Three modals, three certainties.\"",
+        "evaluation_focus": [
+          "Modal strength matches evidence",
+          "\"Must\" reserved for strong inference",
+          "\"Will\" / \"should\" calibrated correctly"
+        ]
+      },
+      "guided_chat": {
+        "scenario": "Charlotte describes a puzzle. You weigh in with modals at different certainty levels.",
+        "voiced_by": "charlotte",
+        "persona": "Charlotte",
+        "persona_outfit": "charlotte_casual",
+        "intro_en": "Charlotte describes a puzzle. Weigh in with modals — must / will / should / might.",
+        "opening_message": "My neighbour's lights have been on all night for three nights running. Strange — she's usually asleep by ten. Theories?",
+        "objectives": [
+          {
+            "id": 1,
+            "label_en": "Initial inference",
+            "hidden_prompt": "user uses 'might / could / must' to theorise",
+            "hint_en": "She might have a deadline. Or she could be looking after someone who needs the light on."
+          },
+          {
+            "id": 2,
+            "label_en": "Calibration with 'must' or 'should'",
+            "hidden_prompt": "user uses 'must' for strongest inference or 'should' for expectation",
+            "hint_en": "If it's been three nights running, something must have changed in her routine — and whatever it is, she should be exhausted by now."
+          },
+          {
+            "id": 3,
+            "label_en": "Ask Charlotte",
+            "hidden_prompt": "user asks Charlotte if she knows her neighbour",
+            "hint_en": "Do you know her well enough to knock?"
+          }
+        ],
+        "closing_cue": "Charlotte closes with \"Inferences, properly weighted.\" once obj_3 lands.",
+        "suggested_script": "**Script** (referencial, 7 turnos):\n\n1. **Charlotte**: \"My neighbour's lights have been on all night for three nights running. Strange — she's usually asleep by ten. Theories?\"\n2. **Student**: \"She might have a deadline. Or she could be looking after someone who needs the light on.\"\n3. **Charlotte**: \"Both plausible. Anything stronger?\"\n4. **Student**: \"If it's been three nights running, something must have changed in her routine — and whatever it is, she should be exhausted by now.\"\n5. **Charlotte**: \"I keep thinking of knocking but not sure I should.\"\n6. **Student**: \"Do you know her well enough to knock?\"\n7. **Charlotte**: \"Just enough that not knocking feels worse than knocking. Inferences, properly weighted.\"\n\n> A01 chat = full LLM. Scaffold via hint_pt/hint_en.\n\n---"
+      }
+    },
+    {
+      "id": "A02",
+      "title": "Might well, could well, may well",
+      "sub_cefr": "C2",
+      "grammar_focus": "Hedged probable — adding \"well\" to a modal (might well, could well, may well) for \"quite possibly / quite likely\"",
+      "markers": [
+        "denso",
+        "modal"
+      ],
+      "real_life_context": "You signal that a possibility is more than just possible — it's quite likely — without claiming certainty.",
+      "grammar": [
+        {
+          "type": "multiple_choice",
+          "sentence": "She _____ be promoted next quarter — every signal points that way.",
+          "options": [
+            "might well",
+            "might",
+            "could",
+            "would"
+          ],
+          "answer": "might well",
+          "explanation": "\"Might well\" — adds force to \"might\". Means \"quite possibly\" or \"very probably\". The \"well\" pushes \"might\" closer to \"probably\". Used when evidence points strongly but you're not certain. Subtle C2 hedge."
+        },
+        {
+          "type": "multiple_choice",
+          "sentence": "That _____ be the explanation, but we should verify before committing.",
+          "options": [
+            "could well",
+            "could",
+            "can",
+            "will"
+          ],
+          "answer": "could well",
+          "explanation": "\"Could well\" — hedged but probable. Similar to \"might well\". The \"well\" elevates \"could\" from \"is possible\" to \"quite plausibly\". Common in analytical and academic prose."
+        },
+        {
+          "type": "fill_gap",
+          "sentence": "We _____ be wrong about this — but the data so far supports our reading.",
+          "hint": "\"May\" + well",
+          "answer": "may well",
+          "explanation": "\"May well + base form\" — hedged probability. \"We may well be wrong\" = \"It's quite possible we're wrong, even likely\". Formal register equivalent of \"might well\". Choice between \"may well\" / \"might well\" / \"could well\" often comes down to register."
+        },
+        {
+          "type": "fix_error",
+          "sentence": "He might good be right.",
+          "hint": "It's \"might WELL\", not \"might good\"",
+          "answer": "He might well be right.",
+          "explanation": "\"Might well\" is a fixed collocation — \"well\" (adverb), not \"good\" (adjective). Common L2 slip. The adverb \"well\" modifies the modal sense, giving it more weight. No substitution possible."
+        },
+        {
+          "type": "read_answer",
+          "passage": "The analysts were cautious in print but emphatic in private. 'The merger may well close in the second quarter — every leak points that way. The valuation could well climb another fifteen percent before announcement. And the regulators, who have stayed quiet so far, might well intervene only after the press cycle has moved on.'",
+          "question": "How does the analyst frame each claim?",
+          "answer": "each one is hedged but probable — using 'may well', 'could well', 'might well'",
+          "explanation": "Three hedged-probable modals: \"may well close\", \"could well climb\", \"might well intervene\". Each signals likelihood without certainty. The phrase carries quiet confidence — the speaker isn't asserting, but isn't doubting either. Analyst-grade register."
+        }
+      ],
+      "listening_speaking": [
+        {
+          "text": "She might well be promoted next quarter.",
+          "context": "hedged probable"
+        },
+        {
+          "text": "That could well be the explanation.",
+          "context": "analytical hedge"
+        },
+        {
+          "text": "We may well be wrong about this.",
+          "context": "formal hedge"
+        },
+        {
+          "text": "It might well rain later.",
+          "context": "weather hedge"
+        },
+        {
+          "text": "He might well be the next CEO.",
+          "context": "political hedge"
+        }
+      ],
+      "roleplay": {
+        "scenario": "Charlotte gives three uncertain situations. You weigh in with \"might well / could well / may well\" to mark a probable outcome.",
+        "voiced_by": "charlotte",
+        "persona": "Charlotte",
+        "persona_outfit": "charlotte_casual",
+        "time_budget_sec": 300,
+        "opening_line": "Three uncertain situations. Use 'might well / could well / may well' to mark probable outcomes.",
+        "objectives": [
+          {
+            "id": 1,
+            "label_en": "'Might well' (moderate-high probability)",
+            "hidden_prompt": "user uses 'X might well + base'",
+            "hint_en": "Given how the conversation has been going, the negotiation might well end this week."
+          },
+          {
+            "id": 2,
+            "label_en": "'Could well' (plausible scenario)",
+            "hidden_prompt": "user uses 'X could well + base'",
+            "hint_en": "If oil prices stay high for another quarter, inflation could well force another rate hike before year-end."
+          },
+          {
+            "id": 3,
+            "label_en": "'May well' (formal hedge)",
+            "hidden_prompt": "user uses 'X may well + base' formally",
+            "hint_en": "The committee may well reject the proposal — the political winds have shifted since the original submission."
+          }
+        ],
+        "closing_cue": "Charlotte closes with \"Hedged probabilities, calibrated.\" once obj_3 lands.",
+        "suggested_flow": "**Suggested flow** (referencial, 6 turnos):\n\n1. **Charlotte**: \"Three uncertain situations. Use 'might well / could well / may well' to mark probable outcomes.\"\n2. **Student**: ~\"Given how the conversation has been going, the negotiation might well end this week.\"\n3. **Charlotte**: \"Plausible scenario?\"\n4. **Student**: ~\"If oil prices stay high for another quarter, inflation could well force another rate hike before year-end.\"\n5. **Charlotte**: \"Formal hedge?\"\n6. **Student**: ~\"The committee may well reject the proposal — the political winds have shifted since the original submission.\"\n7. **Charlotte**: \"Hedged probabilities, calibrated.\"",
+        "evaluation_focus": [
+          "\"Modal + well + base\"",
+          "Marker for probable, not just possible",
+          "Register appropriate to context"
+        ]
+      },
+      "guided_chat": {
+        "scenario": "Charlotte discusses a brewing development. You weigh in with hedged-probable modals.",
+        "voiced_by": "charlotte",
+        "persona": "Charlotte",
+        "persona_outfit": "charlotte_casual",
+        "intro_en": "Charlotte discusses a brewing development. Use 'might well / could well / may well'.",
+        "opening_message": "Three of our biggest competitors are quietly raising prices this month. What do you make of it?",
+        "objectives": [
+          {
+            "id": 1,
+            "label_en": "Initial hedged probable",
+            "hidden_prompt": "user uses 'might well / could well / may well'",
+            "hint_en": "It could well be a coordinated signal that input costs have finally moved beyond what any of them can absorb."
+          },
+          {
+            "id": 2,
+            "label_en": "Deepen with another hedged probable",
+            "hidden_prompt": "user uses another well-modal",
+            "hint_en": "And if that's the case, we may well find ourselves under pressure to follow within six weeks — or risk looking like we don't share their pricing power."
+          },
+          {
+            "id": 3,
+            "label_en": "Ask Charlotte",
+            "hidden_prompt": "user asks Charlotte if her team has discussed it",
+            "hint_en": "Has your team modelled the move yet?"
+          }
+        ],
+        "closing_cue": "Charlotte closes with \"Probabilities, evenly hedged.\" once obj_3 lands.",
+        "suggested_script": "**Script** (referencial, 7 turnos):\n\n1. **Charlotte**: \"Three of our biggest competitors are quietly raising prices this month. What do you make of it?\"\n2. **Student**: \"It could well be a coordinated signal that input costs have finally moved beyond what any of them can absorb.\"\n3. **Charlotte**: \"What does that mean for us?\"\n4. **Student**: \"And if that's the case, we may well find ourselves under pressure to follow within six weeks — or risk looking like we don't share their pricing power.\"\n5. **Charlotte**: \"That's the corner I'm trying not to be cornered into.\"\n6. **Student**: \"Has your team modelled the move yet?\"\n7. **Charlotte**: \"Two scenarios on the table — both with prices up by year-end. Probabilities, evenly hedged.\"\n\n> A02 chat = full LLM. Scaffold via hint_pt/hint_en.\n\n---"
+      }
+    },
+    {
+      "id": "A03",
+      "title": "Ought to, shall, would",
+      "sub_cefr": "C2",
+      "grammar_focus": "Formal/archaic modals — \"ought to\" (moral obligation), \"shall\" (legal/contractual future), \"would\" (habitual past, willingness, conditional)",
+      "markers": [
+        "denso",
+        "modal"
+      ],
+      "real_life_context": "You handle formal and contractual register where everyday modals are too casual.",
+      "grammar": [
+        {
+          "type": "multiple_choice",
+          "options": [
+            "ought to",
+            "can",
+            "will",
+            "would"
+          ],
+          "answer": "ought to",
+          "explanation": "\"Ought to\" — formal moral obligation, slightly more weighted than \"should\". \"We ought to apologise\" carries a sense of duty, not just advice. Less common in casual speech but standard in formal/ethical contexts."
+        },
+        {
+          "type": "multiple_choice",
+          "options": [
+            "shall",
+            "will",
+            "must",
+            "might"
+          ],
+          "answer": "shall",
+          "explanation": "\"Shall\" — legal/contractual obligation. \"The tenant shall pay\" = legally required. \"Must\" works too but \"shall\" is the contractual convention. In ordinary speech, \"shall\" is mostly relegated to questions (\"Shall I open the window?\") and legal writing."
+        },
+        {
+          "type": "fill_gap",
+          "hint": "Modal for habitual past",
+          "answer": "would",
+          "explanation": "\"Would + base\" for habitual past — repeated actions in a past period. Similar to \"used to\" but emphasises the routine. \"She would read to me every evening\" = it was her habit. Note: only works for repeated actions, not for past states (\"She would be tall\" doesn't work for past states; use \"was\")."
+        },
+        {
+          "type": "fix_error",
+          "hint": "Past tense — \"used to\" or \"would\"",
+          "answer": "Every summer, we used to visit my aunt in Coimbra. (or: ...we would visit my aunt in Coimbra.)",
+          "explanation": "\"Use to\" needs past form \"used to\" (note the d). Or replace with \"would\" for habitual past. Common spelling error — \"use to\" sounds like \"used to\" but only \"used to\" is grammatical past form."
+        },
+        {
+          "type": "read_answer",
+          "passage": "The terms of the agreement were formally worded. 'The seller shall deliver the goods within thirty days. The buyer shall pay upon receipt. Both parties ought to act in good faith. Should disputes arise, the matter would be referred to arbitration.' The dryness was deliberate — every word carried legal weight.",
+          "question": "What does the agreement say about disputes?",
+          "answer": "they would be referred to arbitration (if they arise)",
+          "explanation": "Four formal modals: \"shall deliver\" (contractual obligation), \"shall pay\" (contractual obligation), \"ought to act\" (moral expectation), \"Should disputes arise\" (inverted conditional from M01), \"would be referred\" (passive conditional consequence). Legal-formal register."
+        }
+      ],
+      "listening_speaking": [
+        {
+          "text": "We ought to apologise.",
+          "context": "moral obligation"
+        },
+        {
+          "text": "The tenant shall pay on the first.",
+          "context": "contractual"
+        },
+        {
+          "text": "She would read to me every evening.",
+          "context": "habitual past"
+        },
+        {
+          "text": "Shall I open the window?",
+          "context": "polite offer (one of the few living \"shall\" uses)"
+        },
+        {
+          "text": "He ought to have known better.",
+          "context": "moral past obligation"
+        }
+      ],
+      "roleplay": {
+        "scenario": "Charlotte gives three contexts. You select between \"ought to\", \"shall\", and \"would\" — formal modal choice.",
+        "voiced_by": "charlotte",
+        "persona": "Charlotte",
+        "persona_outfit": "charlotte_casual",
+        "time_budget_sec": 300,
+        "opening_line": "Three contexts. Use 'ought to', 'shall', or 'would' — formal modal choice.",
+        "objectives": [
+          {
+            "id": 1,
+            "label_en": "Moral obligation with 'ought to'",
+            "hidden_prompt": "user uses 'X ought to + base'",
+            "hint_en": "If the error was ours, we ought to take responsibility publicly — even if the legal team prefers we say less."
+          },
+          {
+            "id": 2,
+            "label_en": "Contractual with 'shall'",
+            "hidden_prompt": "user uses 'X shall + base' in contractual register",
+            "hint_en": "The supplier shall deliver no later than the fifteenth of each month; any delay shall be reported in writing within twenty-four hours."
+          },
+          {
+            "id": 3,
+            "label_en": "Habitual past with 'would'",
+            "hidden_prompt": "user uses 'X would + base' for past habit",
+            "hint_en": "When my father retired, he would walk the same five-kilometre loop every morning at six — rain, snow, anything but ice."
+          }
+        ],
+        "closing_cue": "Charlotte closes with \"Formal modals, three registers.\" once obj_3 lands.",
+        "suggested_flow": "**Suggested flow** (referencial, 6 turnos):\n\n1. **Charlotte**: \"Three contexts. Use 'ought to', 'shall', or 'would' — formal modal choice.\"\n2. **Student**: ~\"If the error was ours, we ought to take responsibility publicly — even if the legal team prefers we say less.\"\n3. **Charlotte**: \"Contractual?\"\n4. **Student**: ~\"The supplier shall deliver no later than the fifteenth of each month; any delay shall be reported in writing within twenty-four hours.\"\n5. **Charlotte**: \"Habit?\"\n6. **Student**: ~\"When my father retired, he would walk the same five-kilometre loop every morning at six — rain, snow, anything but ice.\"\n7. **Charlotte**: \"Formal modals, three registers.\"",
+        "evaluation_focus": [
+          "\"Ought to + base\"",
+          "\"Shall\" in contractual/legal context",
+          "\"Would\" for habitual past, not states"
+        ]
+      },
+      "guided_chat": {
+        "scenario": "Charlotte invites you to draft a contract clause and reminisce about a habit — using formal modals.",
+        "voiced_by": "charlotte",
+        "persona": "Charlotte",
+        "persona_outfit": "charlotte_casual",
+        "intro_en": "Charlotte invites contract drafting and reminiscence — use 'shall', 'ought to', 'would'.",
+        "opening_message": "Draft a clause for a service contract — what should the contractor be obliged to do?",
+        "objectives": [
+          {
+            "id": 1,
+            "label_en": "Clause with 'shall'",
+            "hidden_prompt": "user uses 'X shall + base'",
+            "hint_en": "The contractor shall maintain professional liability insurance throughout the duration of this engagement, with coverage no less than five hundred thousand euros."
+          },
+          {
+            "id": 2,
+            "label_en": "Moral obligation with 'ought to'",
+            "hidden_prompt": "user uses 'X ought to + base'",
+            "hint_en": "Beyond the contract, both parties ought to communicate openly about delays — even when no specific clause requires it."
+          },
+          {
+            "id": 3,
+            "label_en": "Memory with 'would'",
+            "hidden_prompt": "user uses 'X would + base' for past habit",
+            "hint_en": "My old mentor would always start contracts by asking what the other party most feared — that question shaped every clause after."
+          }
+        ],
+        "closing_cue": "Charlotte closes with \"Shall, ought, would — three eras.\" once obj_3 lands.",
+        "suggested_script": "**Script** (referencial, 7 turnos):\n\n1. **Charlotte**: \"Draft a clause for a service contract — what should the contractor be obliged to do?\"\n2. **Student**: \"The contractor shall maintain professional liability insurance throughout the duration of this engagement, with coverage no less than five hundred thousand euros.\"\n3. **Charlotte**: \"Standard but well-worded. And the implicit obligations?\"\n4. **Student**: \"Beyond the contract, both parties ought to communicate openly about delays — even when no specific clause requires it.\"\n5. **Charlotte**: \"That's the kind of clause I never see in print but always wish for.\"\n6. **Student**: \"My old mentor would always start contracts by asking what the other party most feared — that question shaped every clause after.\"\n7. **Charlotte**: \"I'm going to steal that. Shall, ought, would — three eras.\"\n\n> A03 chat = full LLM. Scaffold via hint_pt/hint_en.\n\n---"
+      }
+    },
+    {
+      "id": "A04",
+      "title": "Be bound to, be likely to, be supposed to",
+      "sub_cefr": "C2",
+      "grammar_focus": "Quasi-modals — \"be supposed to / be meant to\" (expectation), \"be bound to\" (high probability), \"be likely to / be unlikely to\" (probability statement)",
+      "markers": [
+        "denso",
+        "modal"
+      ],
+      "real_life_context": "You express probability and expectation with structures that look adjectival but function modally.",
+      "grammar": [
+        {
+          "type": "multiple_choice",
+          "options": [
+            "is bound to",
+            "is supposed to",
+            "is likely to",
+            "will"
+          ],
+          "answer": "is bound to",
+          "explanation": "\"Be bound to + base\" = very likely, certain to happen. Stronger than \"is likely to\". The \"bound\" carries an inevitability — \"tied to this outcome\". Common pattern in everyday English for confident prediction."
+        },
+        {
+          "type": "multiple_choice",
+          "options": [
+            "were supposed to",
+            "are likely to",
+            "are bound to",
+            "would"
+          ],
+          "answer": "were supposed to",
+          "explanation": "\"Be supposed to + base\" = expected by convention/agreement. \"We were supposed to meet at noon\" = that was the plan. Past form \"were supposed to\" used when the expectation has been broken. Synonym: \"be meant to\"."
+        },
+        {
+          "type": "fill_gap",
+          "hint": "Likelihood structure",
+          "answer": "is likely to",
+          "explanation": "\"Is likely to + base\" — probability statement. Common in forecasts, predictions, analysis. \"Is unlikely to\" for the negative. C2 register uses these instead of \"will probably\" for slightly more analytical tone."
+        },
+        {
+          "type": "fix_error",
+          "sentence": "He is supposed call me at three.",
+          "hint": "After \"supposed\", you need \"to + base\"",
+          "answer": "He is supposed to call me at three.",
+          "explanation": "\"Be supposed to\" is fixed — the \"to\" is part of the structure. Without it, the sentence is ungrammatical. Some learners drop \"to\" because they hear \"supposed\" + verb without registering the infinitive marker. Always \"supposed TO + base\"."
+        },
+        {
+          "type": "read_answer",
+          "passage": "The launch was supposed to happen on Monday. By all internal measures, the team was bound to make it. But the regulator was unlikely to issue final approval in time, and the marketing campaign was meant to align with broader industry events that had now shifted. Three layers of expectation, three layers of slippage.",
+          "question": "According to the passage, why was the launch likely to slip?",
+          "answer": "the regulator was unlikely to approve in time / marketing was meant to align with shifted industry events",
+          "explanation": "Four quasi-modals layered: \"was supposed to happen\" (planned), \"was bound to make it\" (high probability), \"was unlikely to issue\" (probability negative), \"was meant to align\" (convention/plan). Each carries a slightly different shade of expectation."
+        }
+      ],
+      "listening_speaking": [
+        {
+          "text": "She's bound to arrive any minute.",
+          "context": "high probability"
+        },
+        {
+          "text": "We were supposed to meet at noon.",
+          "context": "broken arrangement"
+        },
+        {
+          "text": "Rain is likely to continue.",
+          "context": "analytical probability"
+        },
+        {
+          "text": "He's meant to call me later.",
+          "context": "soft expectation"
+        },
+        {
+          "text": "The deal is unlikely to close this week.",
+          "context": "negative probability"
+        }
+      ],
+      "roleplay": {
+        "scenario": "Charlotte gives three situations. You characterise each using \"be bound to / be supposed to / be likely to / be meant to\".",
+        "voiced_by": "charlotte",
+        "persona": "Charlotte",
+        "persona_outfit": "charlotte_casual",
+        "time_budget_sec": 300,
+        "opening_line": "Three situations. Characterise each with 'be bound to / be supposed to / be likely to'.",
+        "objectives": [
+          {
+            "id": 1,
+            "label_en": "'Be bound to' (high probability)",
+            "hidden_prompt": "user uses 'X is/was bound to + base'",
+            "hint_en": "With the surplus they've accumulated, the company is bound to announce a dividend by year-end."
+          },
+          {
+            "id": 2,
+            "label_en": "'Be supposed to' (broken expectation)",
+            "hidden_prompt": "user uses 'X was/were supposed to + base'",
+            "hint_en": "We were supposed to finalise the design last Friday, but the client added two new requirements at the eleventh hour."
+          },
+          {
+            "id": 3,
+            "label_en": "'Be likely to / unlikely to' (analytical probability)",
+            "hidden_prompt": "user uses 'X is/are (un)likely to + base'",
+            "hint_en": "Given the current market sentiment, the regulator is unlikely to approve the merger before the spring at the earliest."
+          }
+        ],
+        "closing_cue": "Charlotte closes with \"Quasi-modals, three expectations.\" once obj_3 lands.",
+        "suggested_flow": "**Suggested flow** (referencial, 6 turnos):\n\n1. **Charlotte**: \"Three situations. Characterise each with 'be bound to / be supposed to / be likely to'.\"\n2. **Student**: ~\"With the surplus they've accumulated, the company is bound to announce a dividend by year-end.\"\n3. **Charlotte**: \"Broken expectation?\"\n4. **Student**: ~\"We were supposed to finalise the design last Friday, but the client added two new requirements at the eleventh hour.\"\n5. **Charlotte**: \"Analytical probability?\"\n6. **Student**: ~\"Given the current market sentiment, the regulator is unlikely to approve the merger before the spring at the earliest.\"\n7. **Charlotte**: \"Quasi-modals, three expectations.\"",
+        "evaluation_focus": [
+          "\"+ to + base form\"",
+          "Each quasi-modal expresses its specific shade",
+          "Surrounding clause matches the modal's strength"
+        ]
+      },
+      "guided_chat": {
+        "scenario": "Charlotte discusses a project with unclear timing. You weigh in using quasi-modals.",
+        "voiced_by": "charlotte",
+        "persona": "Charlotte",
+        "persona_outfit": "charlotte_casual",
+        "intro_en": "Charlotte talks about an uncertain timeline. Use 'be bound to / supposed to / likely to'.",
+        "opening_message": "The pilot launch was meant to start in March. Now I'm not sure it'll happen before June. Your read?",
+        "objectives": [
+          {
+            "id": 1,
+            "label_en": "Initial assessment",
+            "hidden_prompt": "user uses 'is likely to / is unlikely to'",
+            "hint_en": "If three weeks have already slipped, March is unlikely to hold — June is starting to look like the realistic baseline."
+          },
+          {
+            "id": 2,
+            "label_en": "Consequence with 'bound to'",
+            "hidden_prompt": "user uses 'is/are bound to'",
+            "hint_en": "And once a date slips publicly, the next one is bound to be questioned — credibility is the hidden cost of these delays."
+          },
+          {
+            "id": 3,
+            "label_en": "Ask Charlotte",
+            "hidden_prompt": "user asks Charlotte what was supposed to be ready by March",
+            "hint_en": "What specifically was supposed to be ready?"
+          }
+        ],
+        "closing_cue": "Charlotte closes with \"Timing, modally weighed.\" once obj_3 lands.",
+        "suggested_script": "**Script** (referencial, 7 turnos):\n\n1. **Charlotte**: \"The pilot launch was meant to start in March. Now I'm not sure it'll happen before June. Your read?\"\n2. **Student**: \"If three weeks have already slipped, March is unlikely to hold — June is starting to look like the realistic baseline.\"\n3. **Charlotte**: \"I keep telling stakeholders March is still possible. Maybe I shouldn't.\"\n4. **Student**: \"And once a date slips publicly, the next one is bound to be questioned — credibility is the hidden cost of these delays.\"\n5. **Charlotte**: \"That's the part I keep avoiding.\"\n6. **Student**: \"What specifically was supposed to be ready?\"\n7. **Charlotte**: \"Two integrations and a single onboarding flow. None of which are even close. Timing, modally weighed.\"\n\n> A04 chat = full LLM. Scaffold via hint_pt/hint_en.\n\n---"
+      }
+    },
+    {
+      "id": "A05",
+      "title": "Modal layering",
+      "sub_cefr": "C2",
+      "grammar_focus": "Stacking modals with quasi-modals — \"might have to / would have to / should have to / may need to / is going to have to\" — for layered necessity-in-possibility",
+      "markers": [],
+      "real_life_context": "You express situations where one modal alone is not enough — necessity that depends on possibility, obligation in hypothetical contexts.",
+      "grammar": [
+        {
+          "type": "multiple_choice",
+          "options": [
+            "might have to",
+            "will must",
+            "can have to",
+            "would can"
+          ],
+          "answer": "might have to",
+          "explanation": "English doesn't allow two true modals together (e.g., \"might must\"). Instead, layer with quasi-modal: \"might have to + base\" (possibility + necessity). \"Might have to cut\" = \"it's possible we'll need to cut\". Standard C2 layered modality."
+        },
+        {
+          "type": "multiple_choice",
+          "options": [
+            "would have to",
+            "will have to",
+            "would must",
+            "will must"
+          ],
+          "answer": "would have to",
+          "explanation": "\"Would have to + base\" — conditional obligation. \"If X happens, we would have to do Y\" = under that condition, the necessity would arise. Common in scenario planning and conditional analysis."
+        },
+        {
+          "type": "fill_gap",
+          "hint": "\"Are going to\" + \"have to\"",
+          "answer": "are going to have to",
+          "explanation": "\"Be going to have to + base\" — anticipated forced obligation. Combines \"going to\" (future intention/anticipation) with \"have to\" (necessity). Conveys that the obligation is approaching whether we like it or not. Slightly weary tone."
+        },
+        {
+          "type": "fix_error",
+          "sentence": "She might must work overtime this week.",
+          "hint": "Two modals can't stack — use a quasi-modal",
+          "answer": "She might have to work overtime this week.",
+          "explanation": "\"Might must\" is ungrammatical — English doesn't permit two true modals together. Replace one with a quasi-modal: \"might have to\" or \"may need to\". This is one of the most common L2 errors for Spanish/Portuguese speakers, whose languages allow modal-modal sequences."
+        },
+        {
+          "type": "read_answer",
+          "passage": "The project manager laid out the scenarios. 'If the budget holds, we should be able to finish on time. If costs rise by another five percent, we might have to drop one of the integrations. And if the regulators raise concerns at any point, we would have to pause work entirely until we have a written response. Three contingencies, three layered obligations.'",
+          "question": "What would force a complete pause?",
+          "answer": "if the regulators raise concerns (we would have to pause until written response)",
+          "explanation": "Three layered modal structures: \"should be able to\" (modal + quasi-modal), \"might have to drop\" (possibility + necessity), \"would have to pause\" (hypothetical + necessity). Each combines two modal meanings."
+        }
+      ],
+      "listening_speaking": [
+        {
+          "text": "We might have to cut the budget.",
+          "context": "possibility + necessity"
+        },
+        {
+          "text": "We would have to restructure.",
+          "context": "hypothetical + necessity"
+        },
+        {
+          "text": "You're going to have to choose.",
+          "context": "anticipated forced choice"
+        },
+        {
+          "text": "She may need to step back.",
+          "context": "formal possibility + necessity"
+        },
+        {
+          "text": "They should be able to deliver.",
+          "context": "modal + quasi-modal capability"
+        }
+      ],
+      "roleplay": {
+        "scenario": "Charlotte gives three conditional situations. You respond with layered modals (might have to / would have to / are going to have to).",
+        "voiced_by": "charlotte",
+        "persona": "Charlotte",
+        "persona_outfit": "charlotte_casual",
+        "time_budget_sec": 300,
+        "opening_line": "Three conditional situations. Respond with layered modals — might have to, would have to, going to have to.",
+        "objectives": [
+          {
+            "id": 1,
+            "label_en": "'Might have to'",
+            "hidden_prompt": "user uses 'X might have to + base'",
+            "hint_en": "If the conference loses a major sponsor, we might have to scale back the venue and reduce the speaker honorariums."
+          },
+          {
+            "id": 2,
+            "label_en": "'Would have to'",
+            "hidden_prompt": "user uses 'X would have to + base'",
+            "hint_en": "If we wanted to enter the German market by Q1, we would have to register the local entity by the end of this month."
+          },
+          {
+            "id": 3,
+            "label_en": "'Are going to have to'",
+            "hidden_prompt": "user uses 'X is/are going to have to + base'",
+            "hint_en": "Given the new accessibility standards, every team is going to have to retrain their designers within six months — there's no version where this doesn't apply to us."
+          }
+        ],
+        "closing_cue": "Charlotte closes with \"Layered modals, three certainties.\" once obj_3 lands.",
+        "suggested_flow": "**Suggested flow** (referencial, 6 turnos):\n\n1. **Charlotte**: \"Three conditional situations. Respond with layered modals — might have to, would have to, going to have to.\"\n2. **Student**: ~\"If the conference loses a major sponsor, we might have to scale back the venue and reduce the speaker honorariums.\"\n3. **Charlotte**: \"Hypothetical?\"\n4. **Student**: ~\"If we wanted to enter the German market by Q1, we would have to register the local entity by the end of this month.\"\n5. **Charlotte**: \"Anticipated forced obligation?\"\n6. **Student**: ~\"Given the new accessibility standards, every team is going to have to retrain their designers within six months — there's no version where this doesn't apply to us.\"\n7. **Charlotte**: \"Layered modals, three certainties.\"",
+        "evaluation_focus": [
+          "Two modal meanings combined via quasi-modal",
+          "No \"might must\" or other modal stacking errors",
+          "Tense fits (might have to / would have to / going to have to)"
+        ]
+      },
+      "guided_chat": {
+        "scenario": "Charlotte plans contingencies with you. You layer modals to explore what each scenario forces.",
+        "voiced_by": "charlotte",
+        "persona": "Charlotte",
+        "persona_outfit": "charlotte_casual",
+        "intro_en": "Charlotte plans contingencies. Layer modals to explore what each scenario forces.",
+        "opening_message": "If the funding round closes below target, what changes?",
+        "objectives": [
+          {
+            "id": 1,
+            "label_en": "Scenario with 'might have to'",
+            "hidden_prompt": "user uses 'might have to + base'",
+            "hint_en": "If we close ten to twenty percent below target, we might have to delay the planned hiring by a quarter — uncomfortable but survivable."
+          },
+          {
+            "id": 2,
+            "label_en": "Worse scenario with 'would have to'",
+            "hidden_prompt": "user uses 'would have to + base'",
+            "hint_en": "If we close more than thirty percent below, we would have to revisit the entire two-year plan — at that point, the strategy isn't the same business."
+          },
+          {
+            "id": 3,
+            "label_en": "Ask Charlotte",
+            "hidden_prompt": "user asks Charlotte where the line of acceptable is",
+            "hint_en": "Where's your line of acceptable?"
+          }
+        ],
+        "closing_cue": "Charlotte closes with \"Contingencies, modally layered. C2 modal subtlety, complete.\" once obj_3 lands.",
+        "suggested_script": "**Script** (referencial, 7 turnos):\n\n1. **Charlotte**: \"If the funding round closes below target, what changes?\"\n2. **Student**: \"If we close ten to twenty percent below target, we might have to delay the planned hiring by a quarter — uncomfortable but survivable.\"\n3. **Charlotte**: \"And further below?\"\n4. **Student**: \"If we close more than thirty percent below, we would have to revisit the entire two-year plan — at that point, the strategy isn't the same business.\"\n5. **Charlotte**: \"That's the line I've been circling without naming.\"\n6. **Student**: \"Where's your line of acceptable?\"\n7. **Charlotte**: \"About fifteen percent below. Below that, every scenario starts to look like a different company. Contingencies, modally layered. C2 modal subtlety, complete.\"\n\n> A05 chat = full LLM. Scaffold via hint_pt/hint_en.\n\n---"
+      }
+    }
+  ],
+  "cross_unit_consolidation": [
+    "Calibrate present-time predictions: \"must\" (strong inference), \"will\" (high certainty), \"should\" (expected outcome), \"might/may/could\" (possibility)",
+    "Hedge probable outcomes with \"might well / could well / may well\"",
+    "Use formal modals: \"ought to\" (moral obligation), \"shall\" (legal/contractual), \"would\" (habitual past)",
+    "Deploy quasi-modals: \"be supposed to\" (convention), \"be bound to\" (high probability), \"be likely to / unlikely to\" (analytical probability), \"be meant to\" (soft expectation)",
+    "Layer modals via quasi-modal pivots: \"might have to / would have to / are going to have to / may need to\"",
+    "Avoid stacking two true modals together (\"might must\" is ungrammatical — use \"might have to\")",
+    "Read contracts and analytical prose for the modal weight each verb carries"
+  ]
+}

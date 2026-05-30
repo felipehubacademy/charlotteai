@@ -314,8 +314,13 @@
         "id": "M18",
         "title": "Coesão em discurso extenso",
         "file": "advanced/M18.json"
+      },
+      {
+        "id": "M19",
+        "title": "Sutileza modal",
+        "file": "advanced/M19.json"
       }
     ]
   },
-  "generated_at": "2026-05-30T23:15:03.936Z"
+  "generated_at": "2026-05-30T23:19:09.845Z"
 }
