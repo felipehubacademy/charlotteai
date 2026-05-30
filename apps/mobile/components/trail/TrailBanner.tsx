@@ -12,6 +12,7 @@ import { CURRICULUM, TrailLevel } from '@/data/curriculum';
 import { useLearnProgress } from '@/hooks/useLearnProgress';
 import { LevelDropdown } from './LevelDropdown';
 import type { Level } from '@/lib/curriculum-v2/types';
+import { listModuleSummaries } from '@/lib/curriculum-v2/loader';
 
 function a(hex: string, alpha: number): string {
   const r = parseInt(hex.slice(1, 3), 16);
@@ -56,12 +57,15 @@ interface TrailBannerProps {
   currentLevel?: TrailLevel;
   /** Callback ao trocar de nivel via dropdown. Se ausente, dropdown nao aparece. */
   onLevelChange?: (level: TrailLevel) => void;
+  /** Se true, usa curriculum v2 (22 modulos por nivel) pra contagem em vez de v1. */
+  useV2?: boolean;
 }
 
-export function TrailBanner({ userId, level, flush = false, currentLevel, onLevelChange }: TrailBannerProps) {
+export function TrailBanner({ userId, level, flush = false, currentLevel, onLevelChange, useV2 = false }: TrailBannerProps) {
   const isPortuguese = level === 'Novice';
   const accent       = LEVEL_COLOR[level];
-  const modules      = CURRICULUM[level];
+  const v2Summaries  = useV2 ? listModuleSummaries(level as Level) : [];
+  const modules      = useV2 ? v2Summaries : CURRICULUM[level];
 
   const { progress, refetch } = useLearnProgress(userId, level);
 
@@ -69,11 +73,13 @@ export function TrailBanner({ userId, level, flush = false, currentLevel, onLeve
 
   // Count modules completed (all topics done) — banner serves as level summary
   const completedSet = progress?.completed ?? [];
-  const completed = modules.reduce((n, mod, mIdx) => {
-    const allDone = mod.topics.every((_, tIdx) =>
-      completedSet.some(k => k.m === mIdx && k.t === tIdx));
-    return allDone ? n + 1 : n;
-  }, 0);
+  const completed = useV2
+    ? 0  // v2 progress vive em learn_history_v2; calc fica pro hook v2 quando precisar exibir aqui
+    : modules.reduce((n, mod: any, mIdx) => {
+        const allDone = mod.topics?.every((_: any, tIdx: number) =>
+          completedSet.some(k => k.m === mIdx && k.t === tIdx));
+        return allDone ? n + 1 : n;
+      }, 0);
   const total     = modules.length;
   const pct       = total > 0 ? Math.min(100, Math.round((completed / total) * 100)) : 0;
 

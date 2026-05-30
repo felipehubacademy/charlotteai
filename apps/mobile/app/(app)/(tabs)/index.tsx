@@ -442,6 +442,7 @@ export default function HomeTab() {
             level={level}
             currentLevel={currentLevel}
             onLevelChange={setSelectedLevel}
+            useV2={profile?.beta_features?.includes('curriculum_v2') ?? false}
             flush
           />
           </View>

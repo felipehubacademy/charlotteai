@@ -28,17 +28,19 @@ const LEVEL_COLOR: Record<Level, string> = {
 const LEVELS: Level[] = ['Novice', 'Inter', 'Advanced'];
 
 const C = {
-  card:    '#FFFFFF',
-  navy:    '#16153A',
-  navyDim: '#9896B8',
-  border:  'rgba(22,21,58,0.10)',
-  divider: 'rgba(22,21,58,0.06)',
-  shadow:  'rgba(22,21,58,0.18)',
+  card:     '#FFFFFF',
+  navy:     '#16153A',
+  navyDim:  '#9896B8',
+  border:   'rgba(22,21,58,0.08)',
+  divider:  'rgba(22,21,58,0.06)',
+  lockBg:   'rgba(22,21,58,0.06)',
+  shadow:   'rgba(22,21,58,0.35)',
+  backdrop: 'rgba(0,0,0,0.18)',
 };
 
 const shadow = Platform.select({
-  ios:     { shadowColor: C.shadow, shadowOpacity: 1, shadowRadius: 16, shadowOffset: { width: 0, height: 6 } },
-  android: { elevation: 8 },
+  ios:     { shadowColor: C.shadow, shadowOpacity: 1, shadowRadius: 24, shadowOffset: { width: 0, height: 10 } },
+  android: { elevation: 16 },
 });
 
 interface Props {
@@ -107,74 +109,112 @@ export function LevelDropdown({ selectedLevel, currentLevel, onSelect }: Props) 
         onRequestClose={() => setOpen(false)}
       >
         <Pressable
-          style={{ flex: 1, backgroundColor: 'transparent' }}
+          style={{ flex: 1, backgroundColor: C.backdrop }}
           onPress={() => setOpen(false)}
         >
-          {anchor && (
-            <View
-              style={[{
-                position:        'absolute',
-                top:             anchor.y + anchor.h + 6,
-                right:           Math.max(8, undefined as any),
-                left:            Math.max(8, anchor.x + anchor.w - 180),
-                width:           180,
-                backgroundColor: C.card,
-                borderRadius:    14,
-                paddingVertical: 6,
-                borderWidth:     1,
-                borderColor:     C.border,
-              }, shadow as any]}>
-              {LEVELS.map((lvl, i) => {
-                const isLocked = LEVEL_ORDER[lvl] > LEVEL_ORDER[currentLevel];
-                const isActive = lvl === selectedLevel;
-                const color    = LEVEL_COLOR[lvl];
-                return (
-                  <React.Fragment key={lvl}>
-                    {i > 0 && <View style={{ height: 1, backgroundColor: C.divider, marginHorizontal: 10 }} />}
-                    <Pressable
-                      onPress={() => pick(lvl)}
-                      style={({ pressed }) => ({
-                        flexDirection:    'row',
-                        alignItems:       'center',
-                        justifyContent:   'space-between',
-                        paddingHorizontal:14,
-                        paddingVertical:  11,
-                        backgroundColor:  pressed && !isLocked ? `${color}10` : 'transparent',
-                      })}>
-                      <AppText style={{
-                        fontSize: 14,
-                        fontWeight: isActive ? '900' : '700',
-                        color: isLocked ? C.navyDim : color,
-                      }}>
-                        {LEVEL_SHORT[lvl]}
-                      </AppText>
-                      {isLocked
-                        ? <Lock size={14} color={C.navyDim} weight="fill" />
-                        : isActive ? <View style={{ width: 8, height: 8, borderRadius: 4, backgroundColor: color }} /> : null}
-                    </Pressable>
-                  </React.Fragment>
-                );
-              })}
-
-              {lockedToast && (
-                <Animated.View
+          {anchor && (() => {
+            const MENU_W = 220;
+            const menuLeft = Math.max(12, Math.min(anchor.x + anchor.w - MENU_W, 9999));
+            const caretLeft = anchor.x + anchor.w / 2 - 7 - menuLeft;
+            return (
+              <>
+                {/* Caret triangle apontando pro chip */}
+                <View
+                  pointerEvents="none"
                   style={{
-                    opacity: toastAnim,
-                    transform: [{ translateY: toastAnim.interpolate({ inputRange: [0, 1], outputRange: [-4, 0] }) }],
-                    marginTop: 6,
-                    marginHorizontal: 10,
-                    paddingHorizontal: 12,
-                    paddingVertical: 10,
-                    backgroundColor: C.navy,
-                    borderRadius: 10,
-                  }}>
-                  <AppText style={{ fontSize: 12, color: '#fff', fontWeight: '600', textAlign: 'center' }}>
-                    Complete o nível atual pra desbloquear
-                  </AppText>
-                </Animated.View>
-              )}
-            </View>
-          )}
+                    position: 'absolute',
+                    top:      anchor.y + anchor.h + 0,
+                    left:     menuLeft + Math.max(8, Math.min(caretLeft, MENU_W - 22)),
+                    width:    0, height: 0,
+                    borderLeftWidth:   7, borderRightWidth: 7, borderBottomWidth: 8,
+                    borderLeftColor:   'transparent', borderRightColor: 'transparent',
+                    borderBottomColor: C.card,
+                    zIndex:   2,
+                  }}
+                />
+                <View
+                  style={[{
+                    position:        'absolute',
+                    top:             anchor.y + anchor.h + 8,
+                    left:            menuLeft,
+                    width:           MENU_W,
+                    backgroundColor: C.card,
+                    borderRadius:    16,
+                    paddingVertical: 6,
+                    borderWidth:     1,
+                    borderColor:     C.border,
+                  }, shadow as any]}>
+                  {LEVELS.map((lvl, i) => {
+                    const isLocked = LEVEL_ORDER[lvl] > LEVEL_ORDER[currentLevel];
+                    const isActive = lvl === selectedLevel;
+                    const color    = LEVEL_COLOR[lvl];
+                    return (
+                      <React.Fragment key={lvl}>
+                        {i > 0 && <View style={{ height: 1, backgroundColor: C.divider, marginHorizontal: 14 }} />}
+                        <Pressable
+                          onPress={() => pick(lvl)}
+                          style={({ pressed }) => ({
+                            flexDirection:    'row',
+                            alignItems:       'center',
+                            justifyContent:   'space-between',
+                            paddingHorizontal:16,
+                            paddingVertical:  14,
+                            backgroundColor:  pressed && !isLocked ? `${color}12` : 'transparent',
+                            opacity:          isLocked ? 0.75 : 1,
+                          })}>
+                          <View style={{ flexDirection: 'row', alignItems: 'center', gap: 10 }}>
+                            {isActive && (
+                              <View style={{
+                                width: 8, height: 8, borderRadius: 4,
+                                backgroundColor: color,
+                              }} />
+                            )}
+                            <AppText style={{
+                              fontSize:   15,
+                              fontWeight: isActive ? '900' : '700',
+                              color:      isLocked ? C.navyDim : color,
+                            }}>
+                              {LEVEL_SHORT[lvl]}
+                            </AppText>
+                          </View>
+                          {isLocked && (
+                            <View style={{
+                              width: 24, height: 24, borderRadius: 12,
+                              backgroundColor: C.lockBg,
+                              alignItems: 'center', justifyContent: 'center',
+                            }}>
+                              <Lock size={12} color={C.navyDim} weight="fill" />
+                            </View>
+                          )}
+                        </Pressable>
+                      </React.Fragment>
+                    );
+                  })}
+                </View>
+
+                {lockedToast && (
+                  <Animated.View
+                    pointerEvents="none"
+                    style={{
+                      position: 'absolute',
+                      top:      anchor.y + anchor.h + 8 + 3 * 52 + 18,
+                      left:     menuLeft,
+                      width:    MENU_W,
+                      opacity:  toastAnim,
+                      transform: [{ translateY: toastAnim.interpolate({ inputRange: [0, 1], outputRange: [-6, 0] }) }],
+                      paddingHorizontal: 14,
+                      paddingVertical:   12,
+                      backgroundColor:   C.navy,
+                      borderRadius:      12,
+                    }}>
+                    <AppText style={{ fontSize: 13, color: '#fff', fontWeight: '600', textAlign: 'center' }}>
+                      Complete o nível atual pra desbloquear
+                    </AppText>
+                  </Animated.View>
+                )}
+              </>
+            );
+          })()}
         </Pressable>
       </Modal>
     </>
