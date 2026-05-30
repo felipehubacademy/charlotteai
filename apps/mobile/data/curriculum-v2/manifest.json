@@ -35,8 +35,13 @@
         "id": "M07",
         "title": "Habilidades",
         "file": "novice/M07.json"
+      },
+      {
+        "id": "M08",
+        "title": "Gostos",
+        "file": "novice/M08.json"
       }
     ]
   },
-  "generated_at": "2026-05-30T17:54:28.002Z"
+  "generated_at": "2026-05-30T17:55:45.055Z"
 }

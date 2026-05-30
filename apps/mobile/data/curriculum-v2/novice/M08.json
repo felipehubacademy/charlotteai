@@ -1,0 +1,1024 @@
+{
+  "id": "M08",
+  "title": "Gostos",
+  "level": "Novice",
+  "block": "A1",
+  "units_range": "N01–N05",
+  "theme": "O que gosto, prefiro, odeio",
+  "goal": "Aluno sai sabendo falar do que gosta/odeia/prefere com like/love/hate + verb-ing, e usar object pronouns (me/you/him/her/it/us/them) em contextos naturais.",
+  "connects_to": "M09 (Agora mesmo) — depois de gostos estáveis, aprende a falar do que está acontecendo agora (present continuous).",
+  "module_chunks": [
+    "I like / I love / I hate / I prefer",
+    "She likes / he loves / they hate",
+    "like + verb-ing (I like reading)",
+    "love + verb-ing (I love dancing)",
+    "hate + verb-ing (I hate cooking)",
+    "like + noun (I like pizza)",
+    "me / you / him / her / it / us / them (object pronouns)",
+    "I love you / She likes him / Tell me about it",
+    "with me / with us / with them",
+    "What do you like? / What does she like?",
+    "Do you like + verb-ing?",
+    "music / movies / books / sports / food / art"
+  ],
+  "units": [
+    {
+      "id": "N01",
+      "title": "Gosto, amo, odeio",
+      "sub_cefr": "A1",
+      "grammar_focus": "like/love/hate + noun",
+      "markers": [],
+      "real_life_context": "Você conta suas preferências fortes — comidas, filmes, lugares.",
+      "grammar": [
+        {
+          "type": "multiple_choice",
+          "sentence": "I _____ pizza very much.",
+          "options": [
+            "love",
+            "loves",
+            "am love"
+          ],
+          "answer": "love",
+          "explanation": "Com \"I\" usa forma base: \"I love\". \"Loves\" seria 3ª pessoa. \"Am love\" não existe."
+        },
+        {
+          "type": "multiple_choice",
+          "sentence": "She _____ chocolate.",
+          "options": [
+            "loves",
+            "love",
+            "loving"
+          ],
+          "answer": "loves",
+          "explanation": "\"She\" 3ª pessoa singular → \"loves\" (love + s)."
+        },
+        {
+          "type": "word_bank",
+          "sentence": "I _____ Mondays.",
+          "choices": [
+            "hate",
+            "hates",
+            "am hate",
+            "no like"
+          ],
+          "answer": "hate",
+          "explanation": "\"I hate Mondays\" = \"Odeio segundas\". \"Hate\" forma base com \"I\". Note: forte mas comum em inglês."
+        },
+        {
+          "type": "word_bank",
+          "sentence": "He _____ Italian food.",
+          "choices": [
+            "likes",
+            "like",
+            "liking",
+            "is like"
+          ],
+          "answer": "likes",
+          "explanation": "\"He likes\" — 3ª pessoa leva -s. \"He\" → \"likes Italian food\"."
+        },
+        {
+          "type": "fill_gap",
+          "sentence": "We _____ music very much.",
+          "hint": "Verbo \"amar\" para \"we\"",
+          "answer": "love",
+          "explanation": "\"We love music\" — plural usa forma base."
+        },
+        {
+          "type": "fill_gap",
+          "sentence": "She _____ horror movies.",
+          "hint": "Verbo \"odiar\" 3ª pessoa singular",
+          "answer": "hates",
+          "explanation": "\"She hates\" — 3ª pessoa + -s. \"Hate\" → \"hates\"."
+        },
+        {
+          "type": "fill_gap",
+          "sentence": "I _____ this song!",
+          "hint": "Verbo de afeto forte",
+          "answer": "love",
+          "explanation": "\"I love this song\" — afeto forte por música. \"Love\" + objeto direto."
+        },
+        {
+          "type": "fix_error",
+          "sentence": "She love coffee.",
+          "hint": "3ª pessoa leva -s",
+          "answer": "She loves coffee.",
+          "explanation": "\"She\" exige -s no verbo: \"She loves coffee\", não \"She love\"."
+        },
+        {
+          "type": "fix_error",
+          "sentence": "I am hate vegetables.",
+          "hint": "\"Hate\" não usa \"to be\"",
+          "answer": "I hate vegetables.",
+          "explanation": "\"Hate\" é verbo principal — vai direto após o sujeito. Sem \"am/is/are\": \"I hate\", não \"I am hate\"."
+        },
+        {
+          "type": "read_answer",
+          "passage": "I love Italian food. I like Mexican food too. My sister hates spicy food. We all love chocolate.",
+          "question": "What does the sister hate?",
+          "answer": "spicy food",
+          "explanation": "The text says \"My sister hates spicy food\"."
+        }
+      ],
+      "listening_speaking": [
+        {
+          "text": "I love pizza.",
+          "context": "strong affection"
+        },
+        {
+          "text": "She likes chocolate.",
+          "context": "3rd person + -s"
+        },
+        {
+          "text": "I hate Mondays.",
+          "context": "strong dislike"
+        },
+        {
+          "text": "He loves Italian food.",
+          "context": "3rd person + love"
+        },
+        {
+          "text": "We all like music.",
+          "context": "group preference"
+        }
+      ],
+      "roleplay": {
+        "scenario": "Charlotte quer descobrir o que você ama e o que odeia — gostos pessoais fortes.",
+        "voiced_by": "charlotte",
+        "persona": "Charlotte",
+        "persona_outfit": "charlotte_casual",
+        "time_budget_sec": 90,
+        "opening_line": "Quick taste check — what do you love?",
+        "objectives": [
+          {
+            "id": 1,
+            "label_pt": "Dizer algo que você ama (I love)",
+            "label_en": "Say something you love",
+            "hidden_prompt": "user states love with 'I love + noun' (food, music, place, person, activity)",
+            "hint_pt": "I love coffee.",
+            "hint_en": "I love coffee."
+          },
+          {
+            "id": 2,
+            "label_pt": "Dizer algo que você odeia (I hate)",
+            "label_en": "Say something you hate",
+            "hidden_prompt": "user states dislike with 'I hate + noun'",
+            "hint_pt": "I hate Mondays.",
+            "hint_en": "I hate Mondays."
+          },
+          {
+            "id": 3,
+            "label_pt": "Dizer o que alguém da família gosta (3ª pessoa)",
+            "label_en": "Say what a family member likes",
+            "hidden_prompt": "user states 3rd person preference with 'He/She/My + person + likes/loves/hates + noun' (3rd person -s)",
+            "hint_pt": "My sister loves dogs.",
+            "hint_en": "My sister loves dogs."
+          }
+        ],
+        "closing_cue": "Charlotte fecha com \"Interesting tastes!\" quando obj_3 baterem.",
+        "suggested_flow": "**Suggested flow** (referencial, 6 turnos):\n\n1. **Charlotte**: \"Quick taste check — what do you love?\"\n2. **Student**: ~\"I love coffee.\"\n3. **Charlotte**: \"And what do you hate?\"\n4. **Student**: ~\"I hate Mondays.\"\n5. **Charlotte**: \"Family member's favorite?\"\n6. **Student**: ~\"My sister loves dogs.\"\n7. **Charlotte**: \"Interesting tastes!\"",
+        "evaluation_focus": [
+          "like/love/hate + noun",
+          "3ª pessoa leva -s (likes/loves/hates)",
+          "Variedade de objetos preferidos"
+        ]
+      },
+      "guided_chat": {
+        "scenario": "Charlotte conversa sobre gostos — você compartilha o que ama e odeia.",
+        "voiced_by": "charlotte",
+        "persona": "Charlotte",
+        "persona_outfit": "charlotte_casual",
+        "intro_pt": "Charlotte quer saber seus gostos fortes. Pratica like/love/hate + substantivo.",
+        "opening_message": "What do you love? What do you hate?",
+        "objectives": [
+          {
+            "id": 1,
+            "label_pt": "Dizer o que você ama",
+            "label_en": "Say what you love",
+            "hidden_prompt": "user says 'I love + noun'",
+            "hint_pt": "I love pizza.",
+            "hint_en": "I love pizza."
+          },
+          {
+            "id": 2,
+            "label_pt": "Dizer o que você odeia",
+            "label_en": "Say what you hate",
+            "hidden_prompt": "user says 'I hate + noun'",
+            "hint_pt": "I hate traffic.",
+            "hint_en": "I hate traffic."
+          },
+          {
+            "id": 3,
+            "label_pt": "Perguntar à Charlotte",
+            "label_en": "Ask Charlotte",
+            "hidden_prompt": "user asks Charlotte with 'how about you' or 'and you' or 'what do you love/hate'",
+            "hint_pt": "How about you?",
+            "hint_en": "How about you?"
+          }
+        ],
+        "closing_cue": "Charlotte encerra com \"Love this taste exchange!\" quando obj_3 baterem.",
+        "suggested_script": "**Script** (referencial, 7 turnos):\n\n1. **Charlotte**: \"What do you love? What do you hate?\"\n2. **Student**: \"I love pizza.\"\n3. **Charlotte**: \"Same!\"\n4. **Student**: \"I hate traffic.\"\n5. **Charlotte**: \"Universal hate.\"\n6. **Student**: \"How about you?\"\n7. **Charlotte**: \"I love books, hate cold mornings. Love this taste exchange!\"\n\n> N01 chat = LLM puro.\n\n---"
+      }
+    },
+    {
+      "id": "N02",
+      "title": "Gosto de fazer",
+      "sub_cefr": "A1",
+      "grammar_focus": "like/love/hate + verb-ing",
+      "markers": [
+        "denso"
+      ],
+      "real_life_context": "Você fala de atividades que gosta de fazer — hobbies, esportes, hábitos.",
+      "grammar": [
+        {
+          "type": "multiple_choice",
+          "sentence": "I love _____ music.",
+          "options": [
+            "listening to",
+            "listen to",
+            "listen"
+          ],
+          "answer": "listening to",
+          "explanation": "Após love/like/hate, verbo no -ing: \"love listening to\". Note: \"listen TO music\" (com to). Sem to seria \"listen music\" (erro)."
+        },
+        {
+          "type": "multiple_choice",
+          "sentence": "She likes _____ books.",
+          "options": [
+            "reading",
+            "read",
+            "to read"
+          ],
+          "answer": "reading",
+          "explanation": "Após \"likes\", verbo no -ing: \"reading\". A forma \"to read\" também é aceitável mas -ing é mais comum em inglês conversacional."
+        },
+        {
+          "type": "word_bank",
+          "sentence": "We hate _____ early.",
+          "choices": [
+            "waking up",
+            "wake up",
+            "woke up",
+            "waking"
+          ],
+          "answer": "waking up",
+          "explanation": "\"Hate waking up\" — verbo no -ing após hate. \"Waking up\" mantém o phrasal verb completo."
+        },
+        {
+          "type": "word_bank",
+          "sentence": "He loves _____ soccer.",
+          "choices": [
+            "playing",
+            "play",
+            "to play",
+            "played"
+          ],
+          "answer": "playing",
+          "explanation": "\"Loves playing\" — verbo no -ing após love. \"Play\" → \"playing\"."
+        },
+        {
+          "type": "fill_gap",
+          "sentence": "I like _____ in the park.",
+          "hint": "Verbo \"correr\" no gerúndio",
+          "answer": "running",
+          "explanation": "\"I like running\" — verbo no -ing após like. \"Run\" → \"running\" (dobra o n antes do -ing)."
+        },
+        {
+          "type": "fill_gap",
+          "sentence": "She hates _____ the dishes.",
+          "hint": "Verbo \"lavar\" no gerúndio",
+          "answer": "washing",
+          "explanation": "\"Hates washing\" — wash + ing = washing. Após hate sempre -ing."
+        },
+        {
+          "type": "fill_gap",
+          "sentence": "We love _____ in the morning.",
+          "hint": "Verbo \"caminhar\" no gerúndio",
+          "answer": "walking",
+          "explanation": "\"Love walking\" — walk + ing. Atividade favorita."
+        },
+        {
+          "type": "fix_error",
+          "sentence": "I like read books.",
+          "hint": "Após like, verbo no -ing",
+          "answer": "I like reading books.",
+          "explanation": "Após like/love/hate, verbo SEMPRE no -ing (gerúndio). \"Read\" → \"reading\". \"I like reading books\"."
+        },
+        {
+          "type": "fix_error",
+          "sentence": "She loves to dancing.",
+          "hint": "Escolha uma forma: -ing ou to + base",
+          "answer": "She loves dancing.",
+          "explanation": "Ou \"She loves dancing\" (-ing) OU \"She loves to dance\" (to + base). NUNCA \"to dancing\" — misturas as duas formas."
+        },
+        {
+          "type": "read_answer",
+          "passage": "I love reading, but I hate cooking. My brother loves playing soccer. My sister likes painting and drawing.",
+          "question": "What does the sister like doing?",
+          "answer": "painting and drawing",
+          "explanation": "The text says \"My sister likes painting and drawing\"."
+        }
+      ],
+      "listening_speaking": [
+        {
+          "text": "I love reading.",
+          "context": "like + ing"
+        },
+        {
+          "text": "She likes dancing.",
+          "context": "3rd person + ing"
+        },
+        {
+          "text": "We hate waking up early.",
+          "context": "phrasal verb + ing"
+        },
+        {
+          "text": "He loves playing soccer.",
+          "context": "3rd person + playing"
+        },
+        {
+          "text": "I like cooking on weekends.",
+          "context": "activity + when"
+        }
+      ],
+      "roleplay": {
+        "scenario": "Charlotte quer descobrir suas atividades preferidas — o que gosta de fazer no dia-a-dia.",
+        "voiced_by": "charlotte",
+        "persona": "Charlotte",
+        "persona_outfit": "charlotte_casual",
+        "time_budget_sec": 90,
+        "opening_line": "What do you love doing in your free time?",
+        "objectives": [
+          {
+            "id": 1,
+            "label_pt": "Dizer atividade que você ama (I love + verb-ing)",
+            "label_en": "Say an activity you love",
+            "hidden_prompt": "user states activity with 'I love + verb-ing' (reading, cooking, dancing, etc.)",
+            "hint_pt": "I love reading.",
+            "hint_en": "I love reading."
+          },
+          {
+            "id": 2,
+            "label_pt": "Dizer atividade que você odeia",
+            "label_en": "Say an activity you hate",
+            "hidden_prompt": "user states 'I hate + verb-ing'",
+            "hint_pt": "I hate waking up early.",
+            "hint_en": "I hate waking up early."
+          },
+          {
+            "id": 3,
+            "label_pt": "Dizer atividade que alguém da família gosta",
+            "label_en": "Say a family member's favorite activity",
+            "hidden_prompt": "user states 3rd person with 'He/She likes/loves + verb-ing'",
+            "hint_pt": "My brother loves playing soccer.",
+            "hint_en": "My brother loves playing soccer."
+          }
+        ],
+        "closing_cue": "Charlotte fecha com \"Cool hobbies!\" quando obj_3 baterem.",
+        "suggested_flow": "**Suggested flow** (referencial, 6 turnos):\n\n1. **Charlotte**: \"What do you love doing in your free time?\"\n2. **Student**: ~\"I love reading.\"\n3. **Charlotte**: \"Any activity you hate?\"\n4. **Student**: ~\"I hate waking up early.\"\n5. **Charlotte**: \"Family hobby?\"\n6. **Student**: ~\"My brother loves playing soccer.\"\n7. **Charlotte**: \"Cool hobbies!\"",
+        "evaluation_focus": [
+          "Sempre -ing após like/love/hate",
+          "3ª pessoa leva -s no verbo principal (likes/loves/hates)",
+          "Sem \"to\" misturado (love dancing, não love to dancing)"
+        ]
+      },
+      "guided_chat": {
+        "scenario": "Charlotte conversa sobre hobbies — atividades favoritas e detestadas.",
+        "voiced_by": "charlotte",
+        "persona": "Charlotte",
+        "persona_outfit": "charlotte_casual",
+        "intro_pt": "Charlotte abre chat sobre hobbies. Pratica like/love/hate + verbo-ing.",
+        "opening_message": "What do you love doing?",
+        "objectives": [
+          {
+            "id": 1,
+            "label_pt": "Dizer atividade que você ama fazer",
+            "label_en": "Say an activity you love",
+            "hidden_prompt": "user says 'I love + verb-ing'",
+            "hint_pt": "I love cooking.",
+            "hint_en": "I love cooking."
+          },
+          {
+            "id": 2,
+            "label_pt": "Dizer outra atividade que você gosta",
+            "label_en": "Say another activity you like",
+            "hidden_prompt": "user says 'I like + verb-ing'",
+            "hint_pt": "I like dancing.",
+            "hint_en": "I like dancing."
+          },
+          {
+            "id": 3,
+            "label_pt": "Perguntar à Charlotte o que ela gosta",
+            "label_en": "Ask Charlotte what she likes doing",
+            "hidden_prompt": "user asks 'What do you like doing?' or 'How about you?' or 'Do you like + verb-ing?'",
+            "hint_pt": "How about you?",
+            "hint_en": "How about you?"
+          }
+        ],
+        "closing_cue": "Charlotte encerra com \"Awesome — hobbies match!\" quando obj_3 baterem.",
+        "suggested_script": "**Script** (referencial, 7 turnos):\n\n1. **Charlotte**: \"What do you love doing?\"\n2. **Student**: \"I love cooking.\"\n3. **Charlotte**: \"Nice! Anything else?\"\n4. **Student**: \"I like dancing.\"\n5. **Charlotte**: \"Yay!\"\n6. **Student**: \"How about you?\"\n7. **Charlotte**: \"I love reading. Awesome — hobbies match!\"\n\n> N02 chat = LLM puro.\n\n---"
+      }
+    },
+    {
+      "id": "N03",
+      "title": "Me, você, ele, ela",
+      "sub_cefr": "A1",
+      "grammar_focus": "Object pronouns (me/you/him/her/it/us/them)",
+      "markers": [
+        "denso"
+      ],
+      "real_life_context": "Você fala de relacionamentos e ações entre pessoas — \"ela me liga\", \"eu vejo ele\", \"nos chamam\".",
+      "grammar": [
+        {
+          "type": "multiple_choice",
+          "sentence": "She calls _____ every day.",
+          "options": [
+            "me",
+            "I",
+            "my"
+          ],
+          "answer": "me",
+          "explanation": "\"Me\" é o objeto (a mim). \"I\" é o sujeito (eu). \"My\" é possessivo (meu). Após o verbo, usa \"me\"."
+        },
+        {
+          "type": "multiple_choice",
+          "sentence": "I love _____.",
+          "options": [
+            "him",
+            "he",
+            "his"
+          ],
+          "answer": "him",
+          "explanation": "\"Him\" é objeto (a ele). \"He\" é sujeito. \"His\" é possessivo. \"I love him\" = \"Eu amo ele\"."
+        },
+        {
+          "type": "word_bank",
+          "sentence": "Tell _____ about your day.",
+          "choices": [
+            "me",
+            "I",
+            "my",
+            "mine"
+          ],
+          "answer": "me",
+          "explanation": "\"Tell me\" = \"Me conta\". \"Me\" como objeto após verbo. Chunk muito comum."
+        },
+        {
+          "type": "word_bank",
+          "sentence": "We see _____ on Sundays.",
+          "choices": [
+            "them",
+            "they",
+            "their",
+            "theirs"
+          ],
+          "answer": "them",
+          "explanation": "\"Them\" é objeto plural (a eles/elas). \"They\" é sujeito. \"We see them\" = \"Nós vemos eles\"."
+        },
+        {
+          "type": "fill_gap",
+          "sentence": "Ana likes _____.",
+          "hint": "Pronome objeto de \"you\"",
+          "answer": "you",
+          "explanation": "\"You\" funciona como sujeito E objeto: \"You like Ana\" / \"Ana likes you\". Forma única."
+        },
+        {
+          "type": "fill_gap",
+          "sentence": "Can you help _____?",
+          "hint": "Pronome objeto de \"we\"",
+          "answer": "us",
+          "explanation": "\"Us\" é o objeto de \"we\". \"Help us\" = \"Ajude a nós/nos ajude\"."
+        },
+        {
+          "type": "fill_gap",
+          "sentence": "I love this song. Listen to _____!",
+          "hint": "Pronome objeto para coisa",
+          "answer": "it",
+          "explanation": "\"It\" para coisas, animais ou conceitos. \"Listen to it\" = \"Ouça (a música)\"."
+        },
+        {
+          "type": "fix_error",
+          "sentence": "She loves I.",
+          "hint": "Após \"loves\" precisa de pronome objeto",
+          "answer": "She loves me.",
+          "explanation": "Após verbo, usa pronome objeto. \"I\" é sujeito. \"Me\" é objeto. \"She loves me\", não \"She loves I\"."
+        },
+        {
+          "type": "fix_error",
+          "sentence": "Tell to me about it.",
+          "hint": "\"Tell\" não usa \"to\" antes do objeto",
+          "answer": "Tell me about it.",
+          "explanation": "Diferente do português: \"tell\" vai direto ao objeto sem \"to\". \"Tell me\", \"Tell him\", \"Tell us\" — sem \"to\" entre eles."
+        },
+        {
+          "type": "read_answer",
+          "passage": "My sister calls me every Sunday. I love talking to her. She tells me about her week. I tell her about mine.",
+          "question": "Who calls every Sunday?",
+          "answer": "my sister (or \"the sister\")",
+          "explanation": "The text says \"My sister calls me every Sunday\"."
+        }
+      ],
+      "listening_speaking": [
+        {
+          "text": "She calls me every day.",
+          "context": "object pronoun me"
+        },
+        {
+          "text": "I love him.",
+          "context": "object pronoun him"
+        },
+        {
+          "text": "Tell me about it.",
+          "context": "chunk fixo"
+        },
+        {
+          "text": "We see them on Sundays.",
+          "context": "object pronoun them"
+        },
+        {
+          "text": "He helps us a lot.",
+          "context": "object pronoun us"
+        }
+      ],
+      "roleplay": {
+        "scenario": "Charlotte quer saber sobre relacionamentos próximos — pessoas importantes na sua vida e o que vocês fazem juntos.",
+        "voiced_by": "charlotte",
+        "persona": "Charlotte",
+        "persona_outfit": "charlotte_casual",
+        "time_budget_sec": 90,
+        "opening_line": "Tell me about people who matter to you.",
+        "objectives": [
+          {
+            "id": 1,
+            "label_pt": "Dizer que ama alguém (usando 'him/her')",
+            "label_en": "Say you love someone (using him/her)",
+            "hidden_prompt": "user states 'I love him' or 'I love her' referring to a person",
+            "hint_pt": "I love her.",
+            "hint_en": "I love her."
+          },
+          {
+            "id": 2,
+            "label_pt": "Dizer que alguém te chama ou visita (usando 'me')",
+            "label_en": "Say someone calls or visits you",
+            "hidden_prompt": "user states 'She/He calls me' or 'visits me' or 'helps me' — using 'me' as object",
+            "hint_pt": "She calls me every day.",
+            "hint_en": "She calls me every day."
+          },
+          {
+            "id": 3,
+            "label_pt": "Dizer que vocês veem alguém juntos (usando 'them')",
+            "label_en": "Say you see someone together (using them)",
+            "hidden_prompt": "user states 'We see them' or 'We visit them' using 'them' as object",
+            "hint_pt": "We see them on Sundays.",
+            "hint_en": "We see them on Sundays."
+          }
+        ],
+        "closing_cue": "Charlotte fecha com \"Sweet connections!\" quando obj_3 baterem.",
+        "suggested_flow": "**Suggested flow** (referencial, 6 turnos):\n\n1. **Charlotte**: \"Tell me about people who matter to you.\"\n2. **Student**: ~\"I love her.\"\n3. **Charlotte**: \"And who calls you often?\"\n4. **Student**: ~\"She calls me every day.\"\n5. **Charlotte**: \"Anyone you visit?\"\n6. **Student**: ~\"We see them on Sundays.\"\n7. **Charlotte**: \"Sweet connections!\"",
+        "evaluation_focus": [
+          "Object pronouns corretos (me/him/her/us/them)",
+          "Não confundir com sujeitos (I/he/she/we/they)",
+          "\"Tell me\" sem \"to\""
+        ]
+      },
+      "guided_chat": {
+        "scenario": "Charlotte conversa sobre pessoas e relações — você usa muito object pronouns.",
+        "voiced_by": "charlotte",
+        "persona": "Charlotte",
+        "persona_outfit": "charlotte_casual",
+        "intro_pt": "Charlotte conversa sobre relacionamentos. Pratica me/him/her/us/them.",
+        "opening_message": "Tell me about your closest people.",
+        "objectives": [
+          {
+            "id": 1,
+            "label_pt": "Dizer que ama alguém (him/her)",
+            "label_en": "Say you love him/her",
+            "hidden_prompt": "user says 'I love him' or 'I love her'",
+            "hint_pt": "I love him.",
+            "hint_en": "I love him."
+          },
+          {
+            "id": 2,
+            "label_pt": "Dizer que alguém faz algo por você (me)",
+            "label_en": "Say someone does something for you",
+            "hidden_prompt": "user says 'She/He + verb + me' (calls me, helps me, visits me)",
+            "hint_pt": "He helps me a lot.",
+            "hint_en": "He helps me a lot."
+          },
+          {
+            "id": 3,
+            "label_pt": "Perguntar à Charlotte",
+            "label_en": "Ask Charlotte",
+            "hidden_prompt": "user asks 'how about you' or 'and you'",
+            "hint_pt": "How about you?",
+            "hint_en": "How about you?"
+          }
+        ],
+        "closing_cue": "Charlotte encerra com \"Beautiful bonds!\" quando obj_3 baterem.",
+        "suggested_script": "**Script** (referencial, 7 turnos):\n\n1. **Charlotte**: \"Tell me about your closest people.\"\n2. **Student**: \"I love him.\"\n3. **Charlotte**: \"Who?\"\n4. **Student**: \"He helps me a lot.\"\n5. **Charlotte**: \"Sweet.\"\n6. **Student**: \"How about you?\"\n7. **Charlotte**: \"My family supports me daily. Beautiful bonds!\"\n\n> N03 chat = LLM puro.\n\n---"
+      }
+    },
+    {
+      "id": "N04",
+      "title": "Música, filmes, esportes",
+      "sub_cefr": "A1",
+      "grammar_focus": "like/love/hate + topics (music, movies, books, sports, food, art)",
+      "markers": [],
+      "real_life_context": "Você compartilha gostos culturais — música favorita, filmes, séries, esportes.",
+      "grammar": [
+        {
+          "type": "multiple_choice",
+          "sentence": "I love _____ music.",
+          "options": [
+            "pop",
+            "the pop",
+            "a pop"
+          ],
+          "answer": "pop",
+          "explanation": "Gênero musical sem artigo: \"pop music\", \"rock music\", \"jazz music\". Não \"the pop\"."
+        },
+        {
+          "type": "multiple_choice",
+          "sentence": "She likes _____ movies.",
+          "options": [
+            "action",
+            "actions",
+            "an action"
+          ],
+          "answer": "action",
+          "explanation": "\"Action movies\" — substantivo+substantivo (action funciona como adjetivo). Sem -s em \"action\" mesmo com \"movies\" plural."
+        },
+        {
+          "type": "word_bank",
+          "sentence": "We hate _____.",
+          "choices": [
+            "horror movies",
+            "horror movie",
+            "a horror movie",
+            "the horror movies"
+          ],
+          "answer": "horror movies",
+          "explanation": "Generalização — \"horror movies\" no plural sem artigo. \"I hate horror movies\" = \"Odeio filmes de terror em geral\"."
+        },
+        {
+          "type": "word_bank",
+          "sentence": "He loves _____.",
+          "choices": [
+            "soccer",
+            "a soccer",
+            "the soccer",
+            "soccers"
+          ],
+          "answer": "soccer",
+          "explanation": "Esportes sem artigo nem -s: \"soccer\", \"tennis\", \"basketball\"."
+        },
+        {
+          "type": "fill_gap",
+          "sentence": "I love _____ books.",
+          "hint": "Tipo de livro (gênero), sem artigo",
+          "answer": "reading",
+          "explanation": "\"I love reading books\" — verbo no -ing após love. Ou pode ser tipo: \"love mystery books\"."
+        },
+        {
+          "type": "fill_gap",
+          "sentence": "She listens to _____ music every day.",
+          "hint": "Adjetivo de gênero musical",
+          "answer": "classical (ou pop, rock, jazz)",
+          "explanation": "\"Classical music\", \"pop music\" — gênero + music. Sem artigo."
+        },
+        {
+          "type": "fill_gap",
+          "sentence": "We love _____ — soccer, basketball, tennis.",
+          "hint": "Categoria geral",
+          "answer": "sports",
+          "explanation": "\"Sports\" — categoria geral. Plural pra indicar variedade. Exemplos: soccer, basketball, tennis."
+        },
+        {
+          "type": "fix_error",
+          "sentence": "I love the music.",
+          "hint": "\"Music\" em geral sem artigo",
+          "answer": "I love music.",
+          "explanation": "Pra falar de música EM GERAL, sem artigo: \"I love music\". Com \"the\" significa \"a música\" específica."
+        },
+        {
+          "type": "fix_error",
+          "sentence": "She likes a action movies.",
+          "hint": "Plural não combina com \"a\"",
+          "answer": "She likes action movies.",
+          "explanation": "\"A\" é singular. Pra plural, sem artigo: \"action movies\"."
+        },
+        {
+          "type": "read_answer",
+          "passage": "I love pop music. I like action movies. I hate horror books. My sister loves classical music — totally different.",
+          "question": "What kind of music does the sister love?",
+          "answer": "classical (or \"classical music\")",
+          "explanation": "The text says \"My sister loves classical music\"."
+        }
+      ],
+      "listening_speaking": [
+        {
+          "text": "I love pop music.",
+          "context": "music genre"
+        },
+        {
+          "text": "She likes action movies.",
+          "context": "movie genre + plural"
+        },
+        {
+          "text": "He hates horror books.",
+          "context": "book genre"
+        },
+        {
+          "text": "We love sports.",
+          "context": "general sports"
+        },
+        {
+          "text": "I like classical music.",
+          "context": "different music genre"
+        }
+      ],
+      "roleplay": {
+        "scenario": "Charlotte quer descobrir seus gostos culturais — música, filmes, livros.",
+        "voiced_by": "charlotte",
+        "persona": "Charlotte",
+        "persona_outfit": "charlotte_casual",
+        "time_budget_sec": 90,
+        "opening_line": "Culture check — what kind of music do you love?",
+        "objectives": [
+          {
+            "id": 1,
+            "label_pt": "Dizer um gênero musical que você ama",
+            "label_en": "Say a music genre you love",
+            "hidden_prompt": "user states music preference with 'I love + genre + music' (pop, rock, classical, jazz, etc.)",
+            "hint_pt": "I love pop music.",
+            "hint_en": "I love pop music."
+          },
+          {
+            "id": 2,
+            "label_pt": "Dizer um gênero de filme que gosta",
+            "label_en": "Say a movie genre you like",
+            "hidden_prompt": "user states movie preference with 'I like + genre + movies' (action, comedy, horror, etc.)",
+            "hint_pt": "I like action movies.",
+            "hint_en": "I like action movies."
+          },
+          {
+            "id": 3,
+            "label_pt": "Dizer algo cultural que odeia",
+            "label_en": "Say a cultural thing you hate",
+            "hidden_prompt": "user states cultural dislike with 'I hate + noun' (horror movies, slow songs, etc.)",
+            "hint_pt": "I hate horror movies.",
+            "hint_en": "I hate horror movies."
+          }
+        ],
+        "closing_cue": "Charlotte fecha com \"Cool tastes!\" quando obj_3 baterem.",
+        "suggested_flow": "**Suggested flow** (referencial, 6 turnos):\n\n1. **Charlotte**: \"Culture check — what kind of music do you love?\"\n2. **Student**: ~\"I love pop music.\"\n3. **Charlotte**: \"Movies?\"\n4. **Student**: ~\"I like action movies.\"\n5. **Charlotte**: \"Anything you hate?\"\n6. **Student**: ~\"I hate horror movies.\"\n7. **Charlotte**: \"Cool tastes!\"",
+        "evaluation_focus": [
+          "Gêneros sem artigo (pop music, action movies)",
+          "Verbo + objeto direto",
+          "Variedade de domínios culturais"
+        ]
+      },
+      "guided_chat": {
+        "scenario": "Charlotte conversa sobre preferências culturais.",
+        "voiced_by": "charlotte",
+        "persona": "Charlotte",
+        "persona_outfit": "charlotte_casual",
+        "intro_pt": "Charlotte abre chat sobre gostos culturais. Pratica gêneros sem artigo.",
+        "opening_message": "Pop or rock?",
+        "objectives": [
+          {
+            "id": 1,
+            "label_pt": "Dizer música preferida",
+            "label_en": "Say music preference",
+            "hidden_prompt": "user states music with 'I love/like + genre + music'",
+            "hint_pt": "I love rock music.",
+            "hint_en": "I love rock music."
+          },
+          {
+            "id": 2,
+            "label_pt": "Dizer filme ou livro preferido",
+            "label_en": "Say movie or book preference",
+            "hidden_prompt": "user states 'I like/love + genre + movies/books'",
+            "hint_pt": "I love comedy movies.",
+            "hint_en": "I love comedy movies."
+          },
+          {
+            "id": 3,
+            "label_pt": "Perguntar à Charlotte",
+            "label_en": "Ask Charlotte",
+            "hidden_prompt": "user asks Charlotte with 'how about you' or 'and you'",
+            "hint_pt": "How about you?",
+            "hint_en": "How about you?"
+          }
+        ],
+        "closing_cue": "Charlotte encerra com \"Fun culture talk!\" quando obj_3 baterem.",
+        "suggested_script": "**Script** (referencial, 7 turnos):\n\n1. **Charlotte**: \"Pop or rock?\"\n2. **Student**: \"I love rock music.\"\n3. **Charlotte**: \"Movies?\"\n4. **Student**: \"I love comedy movies.\"\n5. **Charlotte**: \"Classic combo.\"\n6. **Student**: \"How about you?\"\n7. **Charlotte**: \"I love jazz and dramas. Fun culture talk!\"\n\n> N04 chat = LLM puro.\n\n---"
+      }
+    },
+    {
+      "id": "N05",
+      "title": "O que prefiro",
+      "sub_cefr": "A1",
+      "grammar_focus": "prefer + integration of like/love/hate",
+      "markers": [],
+      "real_life_context": "Você compara preferências — \"prefiro X em vez de Y\".",
+      "grammar": [
+        {
+          "type": "multiple_choice",
+          "sentence": "I _____ tea over coffee.",
+          "options": [
+            "prefer",
+            "prefers",
+            "am prefer"
+          ],
+          "answer": "prefer",
+          "explanation": "\"I prefer\" — forma base com \"I\". \"Prefer + X over Y\" = preferir X a Y."
+        },
+        {
+          "type": "multiple_choice",
+          "sentence": "She _____ books to movies.",
+          "options": [
+            "prefers",
+            "prefer",
+            "preferring"
+          ],
+          "answer": "prefers",
+          "explanation": "\"She\" 3ª pessoa → \"prefers\" (prefer + s)."
+        },
+        {
+          "type": "word_bank",
+          "sentence": "I prefer _____ to driving.",
+          "choices": [
+            "walking",
+            "walk",
+            "walked",
+            "a walk"
+          ],
+          "answer": "walking",
+          "explanation": "Após \"prefer\", verbo no -ing. \"Walking\" (caminhar) preferido a dirigir."
+        },
+        {
+          "type": "word_bank",
+          "sentence": "He prefers _____ at home.",
+          "choices": [
+            "cooking",
+            "cook",
+            "to cook",
+            "cooked"
+          ],
+          "answer": "cooking",
+          "explanation": "Após \"prefer\" usa -ing. \"He prefers cooking\" = \"Ele prefere cozinhar\"."
+        },
+        {
+          "type": "fill_gap",
+          "sentence": "I _____ tea, but I drink coffee anyway.",
+          "hint": "Verbo \"preferir\"",
+          "answer": "prefer",
+          "explanation": "\"I prefer tea\" = \"Prefiro chá\". Forma base com \"I\"."
+        },
+        {
+          "type": "fill_gap",
+          "sentence": "She _____ playing tennis to swimming.",
+          "hint": "3ª pessoa singular do verbo \"preferir\"",
+          "answer": "prefers",
+          "explanation": "\"She prefers playing tennis\" — 3ª pessoa + -s."
+        },
+        {
+          "type": "fill_gap",
+          "sentence": "We _____ the beach to the mountains.",
+          "hint": "Verbo \"preferir\" plural",
+          "answer": "prefer",
+          "explanation": "\"We prefer\" — plural forma base."
+        },
+        {
+          "type": "fix_error",
+          "sentence": "I prefer to walking.",
+          "hint": "Não usa \"to\" antes de -ing",
+          "answer": "I prefer walking.",
+          "explanation": "Após \"prefer\", verbo no -ing OU infinitivo \"to + base\". Mistura é erro: \"to walking\" não existe."
+        },
+        {
+          "type": "fix_error",
+          "sentence": "She prefer coffee.",
+          "hint": "3ª pessoa leva -s",
+          "answer": "She prefers coffee.",
+          "explanation": "\"She prefers\" — 3ª pessoa singular sempre leva -s."
+        },
+        {
+          "type": "read_answer",
+          "passage": "I prefer tea over coffee. My sister prefers coffee. We both love chocolate. She hates sweet drinks but I like them.",
+          "question": "What does the sister prefer to drink?",
+          "answer": "coffee",
+          "explanation": "The text says \"My sister prefers coffee\"."
+        }
+      ],
+      "listening_speaking": [
+        {
+          "text": "I prefer tea over coffee.",
+          "context": "comparison preference"
+        },
+        {
+          "text": "She prefers reading to watching TV.",
+          "context": "3rd person + activity"
+        },
+        {
+          "text": "We prefer walking.",
+          "context": "group preference"
+        },
+        {
+          "text": "He prefers home-cooked food.",
+          "context": "preference + chunk"
+        },
+        {
+          "text": "I love both, but I prefer the beach.",
+          "context": "mix of love and prefer"
+        }
+      ],
+      "roleplay": {
+        "scenario": "Charlotte quer comparar suas preferências em pares — chá vs café, filmes vs livros, etc.",
+        "voiced_by": "charlotte",
+        "persona": "Charlotte",
+        "persona_outfit": "charlotte_casual",
+        "time_budget_sec": 90,
+        "opening_line": "This or that — what do you prefer?",
+        "objectives": [
+          {
+            "id": 1,
+            "label_pt": "Dizer uma preferência (X over Y)",
+            "label_en": "Say a preference (X over Y)",
+            "hidden_prompt": "user states preference with 'I prefer + X' or 'I prefer X over/to Y'",
+            "hint_pt": "I prefer tea over coffee.",
+            "hint_en": "I prefer tea over coffee."
+          },
+          {
+            "id": 2,
+            "label_pt": "Dizer outra preferência (atividade)",
+            "label_en": "Say another preference (activity)",
+            "hidden_prompt": "user states preference with 'I prefer + verb-ing'",
+            "hint_pt": "I prefer walking.",
+            "hint_en": "I prefer walking."
+          },
+          {
+            "id": 3,
+            "label_pt": "Dizer preferência de alguém da família",
+            "label_en": "Say a family member's preference",
+            "hidden_prompt": "user states 'He/She prefers + X' (3rd person -s)",
+            "hint_pt": "My sister prefers coffee.",
+            "hint_en": "My sister prefers coffee."
+          }
+        ],
+        "closing_cue": "Charlotte fecha com \"Clear preferences!\" quando obj_3 baterem.",
+        "suggested_flow": "**Suggested flow** (referencial, 6 turnos):\n\n1. **Charlotte**: \"This or that — what do you prefer?\"\n2. **Student**: ~\"I prefer tea over coffee.\"\n3. **Charlotte**: \"Activity wise?\"\n4. **Student**: ~\"I prefer walking.\"\n5. **Charlotte**: \"Family member's preference?\"\n6. **Student**: ~\"My sister prefers coffee.\"\n7. **Charlotte**: \"Clear preferences!\"",
+        "evaluation_focus": [
+          "\"prefer + noun\" ou \"prefer + verb-ing\"",
+          "3ª pessoa leva -s (prefers)",
+          "\"X over Y\" pra comparações"
+        ]
+      },
+      "guided_chat": {
+        "scenario": "Charlotte conversa sobre escolhas e preferências.",
+        "voiced_by": "charlotte",
+        "persona": "Charlotte",
+        "persona_outfit": "charlotte_casual",
+        "intro_pt": "Charlotte abre chat sobre preferências. Pratica 'prefer' + objeto ou -ing.",
+        "opening_message": "Beach or mountains?",
+        "objectives": [
+          {
+            "id": 1,
+            "label_pt": "Dizer uma preferência forte",
+            "label_en": "Say a strong preference",
+            "hidden_prompt": "user says 'I prefer + noun' or 'I prefer + verb-ing'",
+            "hint_pt": "I prefer the beach.",
+            "hint_en": "I prefer the beach."
+          },
+          {
+            "id": 2,
+            "label_pt": "Dizer atividade preferida",
+            "label_en": "Say a preferred activity",
+            "hidden_prompt": "user says 'I prefer + verb-ing'",
+            "hint_pt": "I prefer swimming.",
+            "hint_en": "I prefer swimming."
+          },
+          {
+            "id": 3,
+            "label_pt": "Perguntar à Charlotte",
+            "label_en": "Ask Charlotte",
+            "hidden_prompt": "user asks 'How about you?' or 'And you?'",
+            "hint_pt": "How about you?",
+            "hint_en": "How about you?"
+          }
+        ],
+        "closing_cue": "Charlotte encerra com \"Great choices!\" quando obj_3 baterem.",
+        "suggested_script": "**Script** (referencial, 7 turnos):\n\n1. **Charlotte**: \"Beach or mountains?\"\n2. **Student**: \"I prefer the beach.\"\n3. **Charlotte**: \"Same! Activity?\"\n4. **Student**: \"I prefer swimming.\"\n5. **Charlotte**: \"Classic beach activity.\"\n6. **Student**: \"How about you?\"\n7. **Charlotte**: \"I prefer reading on the sand. Great choices!\"\n\n> N05 chat = LLM puro.\n\n---"
+      }
+    }
+  ],
+  "cross_unit_consolidation": [
+    "like/love/hate + noun (I love pizza)",
+    "like/love/hate + verb-ing (I love reading)",
+    "Object pronouns: me/you/him/her/it/us/them (She calls me)",
+    "prefer + noun OR verb-ing (I prefer tea over coffee / I prefer walking)",
+    "3ª pessoa -s em likes/loves/hates/prefers",
+    "Gêneros e categorias sem artigo (pop music, action movies, soccer)",
+    "\"Tell me about it\" e chunks similares"
+  ]
+}

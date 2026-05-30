@@ -33,9 +33,9 @@
 | [M03](novice/M03-familia-e-amigos.md) | Família e amigos | 5 (N01–N05) | done |
 | [M04](novice/M04-em-casa.md) | Em casa | 5 (N01–N05) | done |
 | [M05](novice/M05-meu-dia-a-dia.md) | Meu dia-a-dia | 5 (N01–N05) | done |
-| M06 | O que faço (3ª pessoa) | 5 (N01–N05) | todo |
-| M07 | Habilidades | 5 (N01–N05) | todo |
-| M08 | Gostos | 5 (N01–N05) | todo |
+| [M06](novice/M06-o-que-faco-3-pessoa.md) | O que faço (3ª pessoa) | 5 (N01–N05) | done |
+| [M07](novice/M07-habilidades.md) | Habilidades | 5 (N01–N05) | done |
+| [M08](novice/M08-gostos.md) | Gostos | 5 (N01–N05) | done |
 | M09 | Agora mesmo | 5 (N01–N05) | todo |
 | M10 | Comida e bebida | 5 (N01–N05) | todo |
 | M11 | Compras | 5 (N01–N05) | todo |
