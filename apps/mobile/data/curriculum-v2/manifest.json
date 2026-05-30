@@ -319,8 +319,13 @@
         "id": "M19",
         "title": "Sutileza modal",
         "file": "advanced/M19.json"
+      },
+      {
+        "id": "M20",
+        "title": "Pronúncia nativa",
+        "file": "advanced/M20.json"
       }
     ]
   },
-  "generated_at": "2026-05-30T23:19:09.845Z"
+  "generated_at": "2026-05-30T23:23:34.432Z"
 }
