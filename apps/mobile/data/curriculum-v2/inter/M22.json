@@ -1,0 +1,1036 @@
+{
+  "id": "M22",
+  "title": "Conectores avançados",
+  "level": "Inter",
+  "block": "B2",
+  "units_range": "I01–I05",
+  "theme": "Discourse markers (however, therefore, although, despite, furthermore, in conclusion)",
+  "goal": "Student connects sentences and paragraphs at B2 level with mature discourse markers for contrast, cause, addition, and conclusion.",
+  "connects_to": "Bridges into Advanced (C1) — formal register starts here.",
+  "module_chunks": [
+    "however / nevertheless",
+    "on the other hand",
+    "although / even though + clause",
+    "despite / in spite of + noun/-ing",
+    "therefore / consequently / as a result",
+    "for that reason",
+    "furthermore / moreover / in addition / besides",
+    "in conclusion / to sum up / all in all",
+    "for instance / such as",
+    "whereas"
+  ],
+  "units": [
+    {
+      "id": "I01",
+      "title": "However",
+      "sub_cefr": "B2",
+      "grammar_focus": "Contrast markers — however, nevertheless, on the other hand",
+      "markers": [
+        "denso"
+      ],
+      "real_life_context": "You introduce contrasting ideas formally in writing or measured speech.",
+      "grammar": [
+        {
+          "type": "multiple_choice",
+          "sentence": "I wanted to go. _____, I was too tired.",
+          "options": [
+            "However",
+            "Therefore",
+            "Besides",
+            "Moreover"
+          ],
+          "answer": "However",
+          "explanation": "\"However\" introduz contraste formal entre duas frases. Vem no início, seguido de vírgula. Mais formal que \"but\"."
+        },
+        {
+          "type": "multiple_choice",
+          "sentence": "The plan was risky. _____, we decided to proceed.",
+          "options": [
+            "Nevertheless",
+            "Therefore",
+            "Furthermore",
+            "For example"
+          ],
+          "answer": "Nevertheless",
+          "explanation": "\"Nevertheless\" = apesar disso, mesmo assim. Contraste forte, formal. Sinônimo de \"however\" mas com ênfase em \"apesar de\"."
+        },
+        {
+          "type": "word_bank",
+          "sentence": "She is intelligent. _____, she lacks experience.",
+          "choices": [
+            "However",
+            "Therefore",
+            "Furthermore",
+            "In addition"
+          ],
+          "answer": "However",
+          "explanation": "Contraste entre qualidades. \"However\" liga duas observações opostas."
+        },
+        {
+          "type": "word_bank",
+          "sentence": "I love coffee. _____, my friend prefers tea.",
+          "choices": [
+            "On the other hand",
+            "Therefore",
+            "Besides",
+            "Furthermore"
+          ],
+          "answer": "On the other hand",
+          "explanation": "\"On the other hand\" — outro lado/perspectiva. Contraste paralelo entre dois pontos de vista."
+        },
+        {
+          "type": "fill_gap",
+          "sentence": "The product is expensive. _____, the quality is excellent.",
+          "hint": "Conector de contraste no início de frase",
+          "answer": "However",
+          "explanation": "\"However\" liga avaliações contrastantes. Comum em reviews ou análises."
+        },
+        {
+          "type": "fill_gap",
+          "sentence": "The weather was bad. _____, we had fun.",
+          "hint": "Mesmo assim — Nevertheless",
+          "answer": "Nevertheless",
+          "explanation": "\"Nevertheless\" — apesar de tudo. Contraste enfático."
+        },
+        {
+          "type": "fill_gap",
+          "sentence": "He's introverted. _____, she's very outgoing.",
+          "hint": "Contraste paralelo — On the other hand",
+          "answer": "On the other hand",
+          "explanation": "\"On the other hand\" para comparação entre duas pessoas/coisas."
+        },
+        {
+          "type": "fix_error",
+          "sentence": "I love pizza, however, I can't eat it daily.",
+          "hint": "\"However\" precisa de ponto antes (não vírgula)",
+          "answer": "I love pizza. However, I can't eat it daily.",
+          "explanation": "\"However\" inicia nova oração, separada por ponto. Vírgula antes faz comma splice. Pontuação correta: ponto + However + vírgula."
+        },
+        {
+          "type": "fix_error",
+          "sentence": "However the weather, we went out.",
+          "hint": "Falta vírgula após \"However\" no início",
+          "answer": "However, the weather was bad. We went out.",
+          "explanation": "\"However\" sempre tem vírgula DEPOIS quando inicia oração. E não substitui \"although\" (que liga cláusulas)."
+        },
+        {
+          "type": "read_answer",
+          "passage": "I wanted to go. However, I was too tired. The plan was risky. Nevertheless, we decided to proceed. She is intelligent. However, she lacks experience. I love coffee. On the other hand, my friend prefers tea.",
+          "question": "Why didn't the speaker go?",
+          "answer": "too tired (or \"they were too tired\")",
+          "explanation": "The text says \"However, I was too tired\"."
+        }
+      ],
+      "listening_speaking": [
+        {
+          "text": "I wanted to go. However, I was too tired.",
+          "context": "formal contrast"
+        },
+        {
+          "text": "Nevertheless, we decided to proceed.",
+          "context": "emphatic contrast"
+        },
+        {
+          "text": "On the other hand, she's outgoing.",
+          "context": "parallel contrast"
+        },
+        {
+          "text": "The product is expensive. However, it's worth it.",
+          "context": "qualified"
+        },
+        {
+          "text": "He's quiet. On the other hand, his brother is loud.",
+          "context": "comparison"
+        }
+      ],
+      "roleplay": {
+        "scenario": "Charlotte pede que você comente sobre 3 tópicos usando 3 conectores diferentes — however, nevertheless, on the other hand.",
+        "voiced_by": "charlotte",
+        "persona": "Charlotte",
+        "persona_outfit": "charlotte_casual",
+        "time_budget_sec": 180,
+        "opening_line": "Three opinions with three different contrast markers.",
+        "objectives": [
+          {
+            "id": 1,
+            "label_pt": "Contraste com 'however'",
+            "label_en": "Contrast with 'however'",
+            "hidden_prompt": "user uses 'X. However, Y.'",
+            "hint_pt": "Working from home is convenient. However, it can feel isolating.",
+            "hint_en": "Working from home is convenient. However, it can feel isolating."
+          },
+          {
+            "id": 2,
+            "label_pt": "Contraste enfático 'nevertheless'",
+            "label_en": "Emphatic 'nevertheless'",
+            "hidden_prompt": "user uses 'X. Nevertheless, Y.'",
+            "hint_pt": "The deadline was tight. Nevertheless, we delivered on time.",
+            "hint_en": "The deadline was tight. Nevertheless, we delivered on time."
+          },
+          {
+            "id": 3,
+            "label_pt": "Contraste paralelo 'on the other hand'",
+            "label_en": "Parallel 'on the other hand'",
+            "hidden_prompt": "user uses 'X. On the other hand, Y.'",
+            "hint_pt": "I love Rio. On the other hand, São Paulo has more opportunities.",
+            "hint_en": "I love Rio. On the other hand, São Paulo has more opportunities."
+          }
+        ],
+        "closing_cue": "Charlotte fecha com \"Contrast mastery!\" quando obj_3 baterem.",
+        "suggested_flow": "**Suggested flow** (referencial, 6 turnos):\n\n1. **Charlotte**: \"Three opinions with three different contrast markers.\"\n2. **Student**: ~\"Working from home is convenient. However, it can feel isolating.\"\n3. **Charlotte**: \"Balanced. Nevertheless?\"\n4. **Student**: ~\"The deadline was tight. Nevertheless, we delivered on time.\"\n5. **Charlotte**: \"Parallel one?\"\n6. **Student**: ~\"I love Rio. On the other hand, São Paulo has more opportunities.\"\n7. **Charlotte**: \"Contrast mastery!\"",
+        "evaluation_focus": [
+          "Punctuation correct (period before, comma after)",
+          "Variety of markers",
+          "Real opinions"
+        ]
+      },
+      "guided_chat": {
+        "scenario": "Charlotte abre um chat de opinião sobre dois temas — vocês usam conectores de contraste para balancear visões.",
+        "voiced_by": "charlotte",
+        "persona": "Charlotte",
+        "persona_outfit": "charlotte_casual",
+        "intro_en": "Charlotte invites balanced opinions. Use 'however' and 'on the other hand'.",
+        "opening_message": "Cities are exciting. However, they can be exhausting. What's your take?",
+        "objectives": [
+          {
+            "id": 1,
+            "label_pt": "Opinião com contraste",
+            "label_en": "Opinion with contrast",
+            "hidden_prompt": "user uses 'however' or 'on the other hand'",
+            "hint_pt": "I enjoy city life. However, I need quiet weekends.",
+            "hint_en": "I enjoy city life. However, I need quiet weekends."
+          },
+          {
+            "id": 2,
+            "label_pt": "Outro contraste",
+            "label_en": "Another contrast",
+            "hidden_prompt": "user uses another discourse marker",
+            "hint_pt": "Rural life is peaceful. On the other hand, services are limited.",
+            "hint_en": "Rural life is peaceful. On the other hand, services are limited."
+          },
+          {
+            "id": 3,
+            "label_pt": "Perguntar à Charlotte",
+            "label_en": "Ask Charlotte",
+            "hidden_prompt": "user asks Charlotte for her view",
+            "hint_pt": "What do you prefer?",
+            "hint_en": "What do you prefer?"
+          }
+        ],
+        "closing_cue": "Charlotte fecha com \"Balanced views!\" quando obj_3 baterem.",
+        "suggested_script": "**Script** (referencial, 7 turnos):\n\n1. **Charlotte**: \"Cities are exciting. However, they can be exhausting. What's your take?\"\n2. **Student**: \"I enjoy city life. However, I need quiet weekends.\"\n3. **Charlotte**: \"Balance seekers. Counterpoint?\"\n4. **Student**: \"Rural life is peaceful. On the other hand, services are limited.\"\n5. **Charlotte**: \"Trade-off.\"\n6. **Student**: \"What do you prefer?\"\n7. **Charlotte**: \"A small town near a big city. Best of both. Balanced views!\"\n\n> I01 chat = LLM puro. Scaffold via hint_pt.\n\n---"
+      }
+    },
+    {
+      "id": "I02",
+      "title": "Although, despite",
+      "sub_cefr": "B2",
+      "grammar_focus": "Concession — although/even though + clause; despite/in spite of + noun/-ing",
+      "markers": [
+        "denso"
+      ],
+      "real_life_context": "You concede a point while introducing a contrast within one sentence.",
+      "grammar": [
+        {
+          "type": "multiple_choice",
+          "sentence": "_____ it was raining, we went out.",
+          "options": [
+            "Although",
+            "Despite",
+            "In spite",
+            "However"
+          ],
+          "answer": "Although",
+          "explanation": "\"Although + cláusula completa\" (subject + verb). \"Although it was raining\" — concessão em uma frase só."
+        },
+        {
+          "type": "multiple_choice",
+          "sentence": "_____ the rain, we went out.",
+          "options": [
+            "Despite",
+            "Although",
+            "Even though",
+            "However"
+          ],
+          "answer": "Despite",
+          "explanation": "\"Despite + noun\" (sem cláusula). \"Despite the rain\" — só substantivo. Não pode \"despite it was raining\"."
+        },
+        {
+          "type": "word_bank",
+          "sentence": "_____ being tired, she finished the project.",
+          "choices": [
+            "Despite",
+            "Although",
+            "However",
+            "Therefore"
+          ],
+          "answer": "Despite",
+          "explanation": "\"Despite + -ing\" funciona. \"Despite being tired\" — gerúndio."
+        },
+        {
+          "type": "word_bank",
+          "sentence": "_____ he is rich, he isn't happy.",
+          "choices": [
+            "Although",
+            "Despite",
+            "However",
+            "Therefore"
+          ],
+          "answer": "Although",
+          "explanation": "\"Although + sujeito + verbo\". Cláusula completa."
+        },
+        {
+          "type": "fill_gap",
+          "sentence": "_____ the difficulty, we succeeded.",
+          "hint": "Despite + substantivo",
+          "answer": "Despite",
+          "explanation": "\"Despite the difficulty\" — substantivo seguindo \"despite\"."
+        },
+        {
+          "type": "fill_gap",
+          "sentence": "_____ she's young, she's very mature.",
+          "hint": "Although + cláusula",
+          "answer": "Although",
+          "explanation": "\"Although she's young\" — cláusula completa após \"although\"."
+        },
+        {
+          "type": "fill_gap",
+          "sentence": "_____ having a bad day, he stayed kind.",
+          "hint": "Despite + -ing",
+          "answer": "Despite",
+          "explanation": "\"Despite having\" — gerúndio após \"despite\". Equivalente a \"in spite of having\"."
+        },
+        {
+          "type": "fix_error",
+          "sentence": "Despite it was raining, we went out.",
+          "hint": "\"Despite\" precisa de substantivo/-ing, não cláusula",
+          "answer": "Despite the rain, we went out. (or: Although it was raining, we went out.)",
+          "explanation": "\"Despite + cláusula\" é erro comum. Use \"despite + noun/-ing\" OU \"although + cláusula completa\"."
+        },
+        {
+          "type": "fix_error",
+          "sentence": "Although the rain, we went out.",
+          "hint": "\"Although\" precisa de cláusula com sujeito e verbo",
+          "answer": "Although it was raining, we went out. (or: Despite the rain, we went out.)",
+          "explanation": "\"Although + substantivo\" sozinho não funciona. Precisa de sujeito + verbo."
+        },
+        {
+          "type": "read_answer",
+          "passage": "Although it was raining, we went out. Despite the cold, we enjoyed the picnic. Although he is rich, he isn't happy. Despite being tired, she finished the project.",
+          "question": "Why is the rich man not happy?",
+          "answer": "he isn't happy (or \"the text doesn't say why\")",
+          "explanation": "The text states \"Although he is rich, he isn't happy\" — the contrast is between wealth and happiness, no further reason given."
+        }
+      ],
+      "listening_speaking": [
+        {
+          "text": "Although it was raining, we went out.",
+          "context": "concession + clause"
+        },
+        {
+          "text": "Despite the cold, we enjoyed it.",
+          "context": "concession + noun"
+        },
+        {
+          "text": "Even though he was tired, he kept going.",
+          "context": "emphatic concession"
+        },
+        {
+          "text": "Despite being tired, she finished.",
+          "context": "concession + -ing"
+        },
+        {
+          "text": "In spite of the difficulty, we succeeded.",
+          "context": "formal concession"
+        }
+      ],
+      "roleplay": {
+        "scenario": "Charlotte pede que você descreva 3 situações onde você superou obstáculos — usando although, even though, despite.",
+        "voiced_by": "charlotte",
+        "persona": "Charlotte",
+        "persona_outfit": "charlotte_casual",
+        "time_budget_sec": 180,
+        "opening_line": "Three obstacles overcome — use 'although', 'even though', or 'despite'.",
+        "objectives": [
+          {
+            "id": 1,
+            "label_pt": "Although + cláusula",
+            "label_en": "Although + clause",
+            "hidden_prompt": "user uses 'Although + subject + verb'",
+            "hint_pt": "Although I was nervous, I gave the presentation.",
+            "hint_en": "Although I was nervous, I gave the presentation."
+          },
+          {
+            "id": 2,
+            "label_pt": "Despite + substantivo",
+            "label_en": "Despite + noun",
+            "hidden_prompt": "user uses 'Despite + noun'",
+            "hint_pt": "Despite the rain, I went running.",
+            "hint_en": "Despite the rain, I went running."
+          },
+          {
+            "id": 3,
+            "label_pt": "Even though ou despite + -ing",
+            "label_en": "Even though or despite + -ing",
+            "hidden_prompt": "user uses 'Even though' or 'Despite + -ing'",
+            "hint_pt": "Despite feeling unsure, I took the job.",
+            "hint_en": "Despite feeling unsure, I took the job."
+          }
+        ],
+        "closing_cue": "Charlotte fecha com \"Resilience shown!\" quando obj_3 baterem.",
+        "suggested_flow": "**Suggested flow** (referencial, 6 turnos):\n\n1. **Charlotte**: \"Three obstacles overcome — use 'although', 'even though', or 'despite'.\"\n2. **Student**: ~\"Although I was nervous, I gave the presentation.\"\n3. **Charlotte**: \"Brave. Despite + noun?\"\n4. **Student**: ~\"Despite the rain, I went running.\"\n5. **Charlotte**: \"Despite + -ing?\"\n6. **Student**: ~\"Despite feeling unsure, I took the job.\"\n7. **Charlotte**: \"Resilience shown!\"",
+        "evaluation_focus": [
+          "\"Although\" + clause, \"Despite\" + noun/-ing",
+          "Correct structure",
+          "Concession tone"
+        ]
+      },
+      "guided_chat": {
+        "scenario": "Charlotte abre conversa sobre persistência — vocês descrevem situações onde foram em frente apesar de obstáculos.",
+        "voiced_by": "charlotte",
+        "persona": "Charlotte",
+        "persona_outfit": "charlotte_casual",
+        "intro_en": "Charlotte shares persistence stories. Use 'although' / 'despite'.",
+        "opening_message": "Despite being scared, I gave my first big talk. What's your moment?",
+        "objectives": [
+          {
+            "id": 1,
+            "label_pt": "Sua história com 'despite' ou 'although'",
+            "label_en": "Your story with 'despite' or 'although'",
+            "hidden_prompt": "user uses 'despite' or 'although' for own story",
+            "hint_pt": "Despite my doubts, I applied for the role.",
+            "hint_en": "Despite my doubts, I applied for the role."
+          },
+          {
+            "id": 2,
+            "label_pt": "Outro exemplo de superação",
+            "label_en": "Another overcoming",
+            "hidden_prompt": "user uses another concession marker",
+            "hint_pt": "Although I had no experience, they hired me.",
+            "hint_en": "Although I had no experience, they hired me."
+          },
+          {
+            "id": 3,
+            "label_pt": "Perguntar à Charlotte",
+            "label_en": "Ask Charlotte",
+            "hidden_prompt": "user asks Charlotte more about her talk",
+            "hint_pt": "How did it go?",
+            "hint_en": "How did it go?"
+          }
+        ],
+        "closing_cue": "Charlotte fecha com \"Persistence celebrated!\" quando obj_3 baterem.",
+        "suggested_script": "**Script** (referencial, 7 turnos):\n\n1. **Charlotte**: \"Despite being scared, I gave my first big talk. What's your moment?\"\n2. **Student**: \"Despite my doubts, I applied for the role.\"\n3. **Charlotte**: \"Bold. Got it?\"\n4. **Student**: \"Although I had no experience, they hired me.\"\n5. **Charlotte**: \"Risk paid off.\"\n6. **Student**: \"How did it go?\"\n7. **Charlotte**: \"Shaking hands, calm voice. Got applause. Persistence celebrated!\"\n\n> I02 chat = LLM puro. Scaffold via hint_pt.\n\n---"
+      }
+    },
+    {
+      "id": "I03",
+      "title": "Therefore, as a result",
+      "sub_cefr": "B2",
+      "grammar_focus": "Cause-result markers (therefore, consequently, as a result, for that reason)",
+      "markers": [
+        "denso"
+      ],
+      "real_life_context": "You connect cause and consequence formally.",
+      "grammar": [
+        {
+          "type": "multiple_choice",
+          "sentence": "Sales dropped. _____, we cut the budget.",
+          "options": [
+            "Therefore",
+            "However",
+            "Although",
+            "Besides"
+          ],
+          "answer": "Therefore",
+          "explanation": "\"Therefore\" = portanto. Conecta causa e resultado lógico. Após ponto, com vírgula."
+        },
+        {
+          "type": "multiple_choice",
+          "sentence": "He missed the meeting. _____, he wasn't informed.",
+          "options": [
+            "As a result",
+            "However",
+            "Despite",
+            "Furthermore"
+          ],
+          "answer": "As a result",
+          "explanation": "\"As a result\" = como resultado. Sinônimo informal de \"therefore\"."
+        },
+        {
+          "type": "word_bank",
+          "sentence": "It rained heavily. _____, the road flooded.",
+          "choices": [
+            "Consequently",
+            "However",
+            "Although",
+            "Besides"
+          ],
+          "answer": "Consequently",
+          "explanation": "\"Consequently\" = consequentemente. Formal, lógico."
+        },
+        {
+          "type": "word_bank",
+          "sentence": "She studied hard. _____, she passed.",
+          "choices": [
+            "Therefore",
+            "However",
+            "Despite",
+            "In conclusion"
+          ],
+          "answer": "Therefore",
+          "explanation": "Esforço → resultado. \"Therefore she passed\" — lógica de causa-efeito."
+        },
+        {
+          "type": "fill_gap",
+          "sentence": "I overslept. _____, I missed the bus.",
+          "hint": "As a result (resultado)",
+          "answer": "As a result",
+          "explanation": "\"As a result I missed\" — consequência direta da ação anterior."
+        },
+        {
+          "type": "fill_gap",
+          "sentence": "The project failed. _____, the team was disbanded.",
+          "hint": "Consequently",
+          "answer": "Consequently",
+          "explanation": "Falha → dispersão. \"Consequently\" formal."
+        },
+        {
+          "type": "fill_gap",
+          "sentence": "He's allergic to peanuts. _____, he avoids them.",
+          "hint": "For that reason",
+          "answer": "For that reason",
+          "explanation": "\"For that reason\" = por essa razão. Conecta motivo a comportamento."
+        },
+        {
+          "type": "fix_error",
+          "sentence": "Sales dropped therefore we cut the budget.",
+          "hint": "Falta pontuação — ponto e vírgula",
+          "answer": "Sales dropped. Therefore, we cut the budget.",
+          "explanation": "Conectores entre frases precisam de ponto antes e vírgula depois. Sem pontuação = comma splice."
+        },
+        {
+          "type": "fix_error",
+          "sentence": "He was sick, therefore he didn't come.",
+          "hint": "\"Therefore\" prefere ponto/ponto-e-vírgula antes",
+          "answer": "He was sick. Therefore, he didn't come. (or: He was sick; therefore, he didn't come.)",
+          "explanation": "Vírgula simples não é forte o bastante para \"therefore\". Use ponto ou ponto-e-vírgula."
+        },
+        {
+          "type": "read_answer",
+          "passage": "Sales dropped. Therefore, we cut the budget. He missed the meeting. As a result, he wasn't informed. It rained heavily. Consequently, the road flooded.",
+          "question": "Why did the road flood?",
+          "answer": "it rained heavily (or \"heavy rain\")",
+          "explanation": "The text says \"It rained heavily. Consequently, the road flooded\"."
+        }
+      ],
+      "listening_speaking": [
+        {
+          "text": "Sales dropped. Therefore, we acted.",
+          "context": "formal cause-result"
+        },
+        {
+          "text": "He missed it. As a result, he was uninformed.",
+          "context": "informal cause-result"
+        },
+        {
+          "text": "It rained. Consequently, the event was canceled.",
+          "context": "formal consequence"
+        },
+        {
+          "text": "He's busy. For that reason, he can't come.",
+          "context": "explanation"
+        },
+        {
+          "text": "She studied hard. Therefore, she passed.",
+          "context": "effort → reward"
+        }
+      ],
+      "roleplay": {
+        "scenario": "Charlotte pede que você explique 3 situações com causa-efeito usando therefore, consequently, as a result.",
+        "voiced_by": "charlotte",
+        "persona": "Charlotte",
+        "persona_outfit": "charlotte_casual",
+        "time_budget_sec": 180,
+        "opening_line": "Three cause-effect chains — use 'therefore', 'consequently', 'as a result'.",
+        "objectives": [
+          {
+            "id": 1,
+            "label_pt": "Causa-efeito com 'therefore'",
+            "label_en": "Cause-effect with 'therefore'",
+            "hidden_prompt": "user uses 'X. Therefore, Y.'",
+            "hint_pt": "I didn't sleep well. Therefore, I'm tired today.",
+            "hint_en": "I didn't sleep well. Therefore, I'm tired today."
+          },
+          {
+            "id": 2,
+            "label_pt": "Causa-efeito com 'consequently'",
+            "label_en": "Cause-effect with 'consequently'",
+            "hidden_prompt": "user uses 'X. Consequently, Y.'",
+            "hint_pt": "Traffic was awful. Consequently, I was late.",
+            "hint_en": "Traffic was awful. Consequently, I was late."
+          },
+          {
+            "id": 3,
+            "label_pt": "Causa-efeito com 'as a result'",
+            "label_en": "Cause-effect with 'as a result'",
+            "hidden_prompt": "user uses 'X. As a result, Y.'",
+            "hint_pt": "We launched late. As a result, sales were low.",
+            "hint_en": "We launched late. As a result, sales were low."
+          }
+        ],
+        "closing_cue": "Charlotte fecha com \"Causal logic clear!\" quando obj_3 baterem.",
+        "suggested_flow": "**Suggested flow** (referencial, 6 turnos):\n\n1. **Charlotte**: \"Three cause-effect chains — use 'therefore', 'consequently', 'as a result'.\"\n2. **Student**: ~\"I didn't sleep well. Therefore, I'm tired today.\"\n3. **Charlotte**: \"Logical. Another?\"\n4. **Student**: ~\"Traffic was awful. Consequently, I was late.\"\n5. **Charlotte**: \"Last?\"\n6. **Student**: ~\"We launched late. As a result, sales were low.\"\n7. **Charlotte**: \"Causal logic clear!\"",
+        "evaluation_focus": [
+          "Period before connector",
+          "Comma after connector",
+          "Logical relationship"
+        ]
+      },
+      "guided_chat": {
+        "scenario": "Charlotte explora decisões com causa e consequência — usem conectores causais para argumentar.",
+        "voiced_by": "charlotte",
+        "persona": "Charlotte",
+        "persona_outfit": "charlotte_casual",
+        "intro_en": "Charlotte explores decisions. Use therefore / consequently / as a result.",
+        "opening_message": "I work better in the morning. Therefore, I schedule deep work then. How about you?",
+        "objectives": [
+          {
+            "id": 1,
+            "label_pt": "Sua causa-efeito",
+            "label_en": "Your cause-effect",
+            "hidden_prompt": "user uses cause-result marker",
+            "hint_pt": "I get distracted easily. Therefore, I work in short blocks.",
+            "hint_en": "I get distracted easily. Therefore, I work in short blocks."
+          },
+          {
+            "id": 2,
+            "label_pt": "Outra causa-efeito",
+            "label_en": "Another cause-effect",
+            "hidden_prompt": "user uses another causal marker",
+            "hint_pt": "I have evening meetings. As a result, I exercise at lunch.",
+            "hint_en": "I have evening meetings. As a result, I exercise at lunch."
+          },
+          {
+            "id": 3,
+            "label_pt": "Perguntar à Charlotte",
+            "label_en": "Ask Charlotte",
+            "hidden_prompt": "user asks Charlotte more about her routine",
+            "hint_pt": "What's your morning routine?",
+            "hint_en": "What's your morning routine?"
+          }
+        ],
+        "closing_cue": "Charlotte fecha com \"Routines logical!\" quando obj_3 baterem.",
+        "suggested_script": "**Script** (referencial, 7 turnos):\n\n1. **Charlotte**: \"I work better in the morning. Therefore, I schedule deep work then. How about you?\"\n2. **Student**: \"I get distracted easily. Therefore, I work in short blocks.\"\n3. **Charlotte**: \"Smart. Other adjustments?\"\n4. **Student**: \"I have evening meetings. As a result, I exercise at lunch.\"\n5. **Charlotte**: \"Efficient. Same for me.\"\n6. **Student**: \"What's your morning routine?\"\n7. **Charlotte**: \"Coffee, journal, then deep work. Routines logical!\"\n\n> I03 chat = LLM puro. Scaffold via hint_pt.\n\n---"
+      }
+    },
+    {
+      "id": "I04",
+      "title": "Furthermore, in addition",
+      "sub_cefr": "B2",
+      "grammar_focus": "Addition markers (furthermore, moreover, in addition, besides) and example markers (for instance, for example)",
+      "markers": [
+        "denso"
+      ],
+      "real_life_context": "You build arguments by adding points and giving examples.",
+      "grammar": [
+        {
+          "type": "multiple_choice",
+          "sentence": "The course is intensive. _____, it's expensive.",
+          "options": [
+            "Furthermore",
+            "However",
+            "Although",
+            "Despite"
+          ],
+          "answer": "Furthermore",
+          "explanation": "\"Furthermore\" = além disso. Adiciona informação no mesmo sentido (não contraste)."
+        },
+        {
+          "type": "multiple_choice",
+          "sentence": "She's a great manager. _____, she's a wonderful person.",
+          "options": [
+            "Moreover",
+            "However",
+            "Therefore",
+            "Despite"
+          ],
+          "answer": "Moreover",
+          "explanation": "\"Moreover\" = além disso. Adiciona qualidade adicional. Mais formal que \"furthermore\" mas similar."
+        },
+        {
+          "type": "word_bank",
+          "sentence": "He plays guitar. _____, he writes songs.",
+          "choices": [
+            "In addition",
+            "However",
+            "Therefore",
+            "Although"
+          ],
+          "answer": "In addition",
+          "explanation": "\"In addition\" = adicionalmente. Lista de habilidades/qualidades."
+        },
+        {
+          "type": "word_bank",
+          "sentence": "I don't want to go. _____, I have work to do.",
+          "choices": [
+            "Besides",
+            "However",
+            "Therefore",
+            "Although"
+          ],
+          "answer": "Besides",
+          "explanation": "\"Besides\" = além disso (informal, ofereço outra razão). Comum em conversação."
+        },
+        {
+          "type": "fill_gap",
+          "sentence": "Brazil is huge. _____, it has many cultures.",
+          "hint": "Adição formal",
+          "answer": "Furthermore",
+          "explanation": "\"Furthermore\" — adicionar outro fato no mesmo argumento."
+        },
+        {
+          "type": "fill_gap",
+          "sentence": "Many fruits are healthy, _____ apples and oranges.",
+          "hint": "For example, such as (introduzem exemplos)",
+          "answer": "such as",
+          "explanation": "\"Such as\" introduz exemplos diretos após substantivo. Vírgula antes opcional."
+        },
+        {
+          "type": "fill_gap",
+          "sentence": "I love hiking. _____, last weekend I climbed a mountain.",
+          "hint": "For example, for instance",
+          "answer": "For example",
+          "explanation": "\"For example\" introduz exemplo concreto após generalização."
+        },
+        {
+          "type": "fix_error",
+          "sentence": "He's smart, furthermore he's funny.",
+          "hint": "Pontuação — ponto antes de \"furthermore\"",
+          "answer": "He's smart. Furthermore, he's funny.",
+          "explanation": "Conectores formais entre orações pedem ponto antes, vírgula depois. Comma splice = incorreto."
+        },
+        {
+          "type": "fix_error",
+          "sentence": "For example, apples and oranges are healthy fruits.",
+          "hint": "Frase precisa de contexto anterior — exemplo de quê?",
+          "answer": "Many fruits are healthy. For example, apples and oranges are common choices.",
+          "explanation": "\"For example\" precisa de uma afirmação geral antes para exemplificar. Sozinho fica solto."
+        },
+        {
+          "type": "read_answer",
+          "passage": "The course is intensive. Furthermore, it's expensive. She's a great manager. Moreover, she's a wonderful person. He plays guitar. In addition, he writes songs.",
+          "question": "What does he do besides playing guitar?",
+          "answer": "writes songs (or \"he writes songs\")",
+          "explanation": "The text says \"He plays guitar. In addition, he writes songs\"."
+        }
+      ],
+      "listening_speaking": [
+        {
+          "text": "The course is intensive. Furthermore, it's expensive.",
+          "context": "formal addition"
+        },
+        {
+          "text": "She's smart. Moreover, she's kind.",
+          "context": "formal layered praise"
+        },
+        {
+          "text": "He plays guitar. In addition, he writes songs.",
+          "context": "listing"
+        },
+        {
+          "text": "I don't want to go. Besides, I'm tired.",
+          "context": "informal additional reason"
+        },
+        {
+          "text": "Fruits like apples and oranges are healthy. For example, apples have fiber.",
+          "context": "example"
+        }
+      ],
+      "roleplay": {
+        "scenario": "Charlotte pede que você descreva 3 coisas que admira em pessoas — adicionando qualidades com furthermore, moreover, in addition.",
+        "voiced_by": "charlotte",
+        "persona": "Charlotte",
+        "persona_outfit": "charlotte_casual",
+        "time_budget_sec": 180,
+        "opening_line": "Describe someone you admire — layered with 'furthermore', 'moreover', 'in addition'.",
+        "objectives": [
+          {
+            "id": 1,
+            "label_pt": "Primeira qualidade",
+            "label_en": "First quality",
+            "hidden_prompt": "user states base quality",
+            "hint_pt": "My grandmother is incredibly patient.",
+            "hint_en": "My grandmother is incredibly patient."
+          },
+          {
+            "id": 2,
+            "label_pt": "Adição com 'furthermore' ou 'moreover'",
+            "label_en": "Addition with 'furthermore' or 'moreover'",
+            "hidden_prompt": "user uses 'Furthermore' or 'Moreover'",
+            "hint_pt": "Furthermore, she always knows what to say.",
+            "hint_en": "Furthermore, she always knows what to say."
+          },
+          {
+            "id": 3,
+            "label_pt": "Adição com 'in addition'",
+            "label_en": "Addition with 'in addition'",
+            "hidden_prompt": "user uses 'In addition'",
+            "hint_pt": "In addition, she's a wonderful cook.",
+            "hint_en": "In addition, she's a wonderful cook."
+          }
+        ],
+        "closing_cue": "Charlotte fecha com \"Layered praise!\" quando obj_3 baterem.",
+        "suggested_flow": "**Suggested flow** (referencial, 6 turnos):\n\n1. **Charlotte**: \"Describe someone you admire — layered with 'furthermore', 'moreover', 'in addition'.\"\n2. **Student**: ~\"My grandmother is incredibly patient.\"\n3. **Charlotte**: \"Beautiful. Add?\"\n4. **Student**: ~\"Furthermore, she always knows what to say.\"\n5. **Charlotte**: \"More?\"\n6. **Student**: ~\"In addition, she's a wonderful cook.\"\n7. **Charlotte**: \"Layered praise!\"",
+        "evaluation_focus": [
+          "Three layered additions",
+          "Variety of markers",
+          "Building portrait"
+        ]
+      },
+      "guided_chat": {
+        "scenario": "Charlotte explora características positivas com você — usem conectores de adição para construir descrições ricas.",
+        "voiced_by": "charlotte",
+        "persona": "Charlotte",
+        "persona_outfit": "charlotte_casual",
+        "intro_en": "Charlotte explores positive traits. Use furthermore / moreover / in addition.",
+        "opening_message": "My best friend is generous. Furthermore, she's a great listener. Tell me about yours.",
+        "objectives": [
+          {
+            "id": 1,
+            "label_pt": "Qualidade do amigo",
+            "label_en": "Friend's quality",
+            "hidden_prompt": "user states a quality",
+            "hint_pt": "My best friend is funny.",
+            "hint_en": "My best friend is funny."
+          },
+          {
+            "id": 2,
+            "label_pt": "Adição com 'moreover' ou 'in addition'",
+            "label_en": "Addition with 'moreover' or 'in addition'",
+            "hidden_prompt": "user uses 'moreover' or 'in addition'",
+            "hint_pt": "Moreover, he's incredibly loyal.",
+            "hint_en": "Moreover, he's incredibly loyal."
+          },
+          {
+            "id": 3,
+            "label_pt": "Pergunta para Charlotte",
+            "label_en": "Question for Charlotte",
+            "hidden_prompt": "user asks Charlotte more",
+            "hint_pt": "How long have you known her?",
+            "hint_en": "How long have you known her?"
+          }
+        ],
+        "closing_cue": "Charlotte fecha com \"Friends celebrated!\" quando obj_3 baterem.",
+        "suggested_script": "**Script** (referencial, 7 turnos):\n\n1. **Charlotte**: \"My best friend is generous. Furthermore, she's a great listener. Tell me about yours.\"\n2. **Student**: \"My best friend is funny.\"\n3. **Charlotte**: \"Good company. Add?\"\n4. **Student**: \"Moreover, he's incredibly loyal.\"\n5. **Charlotte**: \"Best combo.\"\n6. **Student**: \"How long have you known her?\"\n7. **Charlotte**: \"Since college. 15 years. Friends celebrated!\"\n\n> I04 chat = LLM puro. Scaffold via hint_pt.\n\n---"
+      }
+    },
+    {
+      "id": "I05",
+      "title": "In conclusion",
+      "sub_cefr": "B2",
+      "grammar_focus": "Conclusion markers (in conclusion, to sum up, all in all, overall) + integration",
+      "markers": [],
+      "real_life_context": "You wrap up arguments and integrate all discourse markers naturally.",
+      "grammar": [
+        {
+          "type": "multiple_choice",
+          "sentence": "_____, the project was a success.",
+          "options": [
+            "In conclusion",
+            "However",
+            "For example",
+            "Furthermore"
+          ],
+          "answer": "In conclusion",
+          "explanation": "\"In conclusion\" = em conclusão. Fecha argumento. Formal."
+        },
+        {
+          "type": "multiple_choice",
+          "sentence": "_____, it was a great experience despite the challenges.",
+          "options": [
+            "All in all",
+            "However",
+            "For instance",
+            "Therefore"
+          ],
+          "answer": "All in all",
+          "explanation": "\"All in all\" = no geral, considerando tudo. Informal, conclusivo."
+        },
+        {
+          "type": "word_bank",
+          "sentence": "_____, the report shows positive trends.",
+          "choices": [
+            "To sum up",
+            "However",
+            "For example",
+            "Furthermore"
+          ],
+          "answer": "To sum up",
+          "explanation": "\"To sum up\" = para resumir. Apresenta conclusão concisa."
+        },
+        {
+          "type": "word_bank",
+          "sentence": "_____, I would recommend this approach.",
+          "choices": [
+            "Overall",
+            "However",
+            "For example",
+            "Despite"
+          ],
+          "answer": "Overall",
+          "explanation": "\"Overall\" = no geral, em termos gerais. Conclusivo, opinativo."
+        },
+        {
+          "type": "fill_gap",
+          "sentence": "_____, three points emerged from the discussion.",
+          "hint": "To sum up (resumir)",
+          "answer": "To sum up",
+          "explanation": "\"To sum up\" introduz síntese dos pontos."
+        },
+        {
+          "type": "fill_gap",
+          "sentence": "_____, the year was challenging but rewarding.",
+          "hint": "All in all (balanço geral)",
+          "answer": "All in all",
+          "explanation": "\"All in all\" — balanço final ponderado."
+        },
+        {
+          "type": "fill_gap",
+          "sentence": "_____, we should proceed with the launch.",
+          "hint": "In conclusion (decisão formal)",
+          "answer": "In conclusion",
+          "explanation": "\"In conclusion\" — decisão/recomendação formal."
+        },
+        {
+          "type": "fix_error",
+          "sentence": "In conclusion the project was successful.",
+          "hint": "Falta vírgula após o conector",
+          "answer": "In conclusion, the project was successful.",
+          "explanation": "\"In conclusion\" no início precisa de vírgula depois. Padrão universal de discourse markers iniciais."
+        },
+        {
+          "type": "fix_error",
+          "sentence": "All in all I learned a lot this year.",
+          "hint": "Vírgula obrigatória após",
+          "answer": "All in all, I learned a lot this year.",
+          "explanation": "\"All in all\" no início = comma obrigatória. Mesmo para conectores informais."
+        },
+        {
+          "type": "read_answer",
+          "passage": "In conclusion, the project was a success. To sum up, the report shows positive trends. All in all, it was a great experience. Overall, I would recommend this approach.",
+          "question": "What is the speaker's overall recommendation?",
+          "answer": "this approach (or \"they recommend this approach\")",
+          "explanation": "The text says \"Overall, I would recommend this approach\"."
+        }
+      ],
+      "listening_speaking": [
+        {
+          "text": "In conclusion, the project succeeded.",
+          "context": "formal conclusion"
+        },
+        {
+          "text": "To sum up, three points stand out.",
+          "context": "synthesis"
+        },
+        {
+          "text": "All in all, it was worthwhile.",
+          "context": "balanced summary"
+        },
+        {
+          "text": "Overall, I'd recommend it.",
+          "context": "opinion summary"
+        },
+        {
+          "text": "In summary, we exceeded expectations.",
+          "context": "formal summary"
+        }
+      ],
+      "roleplay": {
+        "scenario": "Charlotte pede que você apresente um mini-argumento completo — contraste, exemplo, conclusão — em 3 frases conectadas.",
+        "voiced_by": "charlotte",
+        "persona": "Charlotte",
+        "persona_outfit": "charlotte_casual",
+        "time_budget_sec": 180,
+        "opening_line": "Give a mini-argument — contrast, example, then conclusion. Three connected sentences.",
+        "objectives": [
+          {
+            "id": 1,
+            "label_pt": "Contraste inicial (however ou although)",
+            "label_en": "Initial contrast (however or although)",
+            "hidden_prompt": "user uses 'however' or 'although' for contrast",
+            "hint_pt": "Remote work has many advantages. However, it can feel lonely.",
+            "hint_en": "Remote work has many advantages. However, it can feel lonely."
+          },
+          {
+            "id": 2,
+            "label_pt": "Exemplo com 'for example'",
+            "label_en": "Example with 'for example'",
+            "hidden_prompt": "user uses 'For example' or 'For instance'",
+            "hint_pt": "For example, you miss casual office chat.",
+            "hint_en": "For example, you miss casual office chat."
+          },
+          {
+            "id": 3,
+            "label_pt": "Conclusão",
+            "label_en": "Conclusion",
+            "hidden_prompt": "user uses 'In conclusion', 'All in all', 'Overall'",
+            "hint_pt": "Overall, balance is key.",
+            "hint_en": "Overall, balance is key."
+          }
+        ],
+        "closing_cue": "Charlotte fecha com \"Argument complete!\" quando obj_3 baterem.",
+        "suggested_flow": "**Suggested flow** (referencial, 6 turnos):\n\n1. **Charlotte**: \"Give a mini-argument — contrast, example, then conclusion. Three connected sentences.\"\n2. **Student**: ~\"Remote work has many advantages. However, it can feel lonely.\"\n3. **Charlotte**: \"Example?\"\n4. **Student**: ~\"For example, you miss casual office chat.\"\n5. **Charlotte**: \"Conclusion?\"\n6. **Student**: ~\"Overall, balance is key.\"\n7. **Charlotte**: \"Argument complete!\"",
+        "evaluation_focus": [
+          "Three different discourse markers",
+          "Logical flow",
+          "Polished structure"
+        ]
+      },
+      "guided_chat": {
+        "scenario": "Charlotte abre um debate completo — vocês integram todos os discourse markers em uma argumentação rica.",
+        "voiced_by": "charlotte",
+        "persona": "Charlotte",
+        "persona_outfit": "charlotte_casual",
+        "intro_en": "Charlotte invites a full argument. Use contrast, addition, example, and conclusion markers.",
+        "opening_message": "Some say AI will replace teachers. What's your take?",
+        "objectives": [
+          {
+            "id": 1,
+            "label_pt": "Opinião com contraste",
+            "label_en": "Opinion with contrast",
+            "hidden_prompt": "user uses 'However' or 'On the other hand'",
+            "hint_pt": "AI can teach facts. However, it can't replace human connection.",
+            "hint_en": "AI can teach facts. However, it can't replace human connection."
+          },
+          {
+            "id": 2,
+            "label_pt": "Exemplo ou adição",
+            "label_en": "Example or addition",
+            "hidden_prompt": "user uses 'For example' or 'Furthermore'",
+            "hint_pt": "For example, students often need encouragement.",
+            "hint_en": "For example, students often need encouragement."
+          },
+          {
+            "id": 3,
+            "label_pt": "Conclusão",
+            "label_en": "Conclusion",
+            "hidden_prompt": "user uses 'In conclusion' or 'Overall'",
+            "hint_pt": "Overall, AI will help, not replace.",
+            "hint_en": "Overall, AI will help, not replace."
+          }
+        ],
+        "closing_cue": "Charlotte fecha com \"B2 closed in style!\" quando obj_3 baterem.",
+        "suggested_script": "**Script** (referencial, 7 turnos):\n\n1. **Charlotte**: \"Some say AI will replace teachers. What's your take?\"\n2. **Student**: \"AI can teach facts. However, it can't replace human connection.\"\n3. **Charlotte**: \"Important point. Example?\"\n4. **Student**: \"For example, students often need encouragement.\"\n5. **Charlotte**: \"Conclusion?\"\n6. **Student**: \"Overall, AI will help, not replace.\"\n7. **Charlotte**: \"Balanced argument. B2 closed in style!\"\n\n> I05 chat = LLM puro. Scaffold via hint_pt.\n\n---"
+      }
+    }
+  ],
+  "cross_unit_consolidation": [
+    "Contraste: however, nevertheless, on the other hand, although, even though, despite, in spite of",
+    "Causa-efeito: therefore, consequently, as a result, for that reason",
+    "Adição: furthermore, moreover, in addition, besides",
+    "Exemplo: for example, for instance, such as",
+    "Conclusão: in conclusion, to sum up, all in all, overall, in summary",
+    "Pontuação: ponto antes do conector, vírgula depois (quando inicia oração)",
+    "Distinção: although + cláusula vs despite + noun/-ing"
+  ]
+}
