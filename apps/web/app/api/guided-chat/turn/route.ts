@@ -45,12 +45,17 @@ interface Payload {
   unit_title?:       string;
   stuck_turns?:      number;
   next_objective_id?: number;
+  user_name?: string | null;
 }
 
 function buildSystemPrompt(
   gc: GuidedChatDef, level: string, unitTitle?: string,
   stuckTurns: number = 0, nextObjectiveId?: number,
+  userName?: string | null,
 ): string {
+  const knownStudentBlock = userName
+    ? `\n\nABOUT THE STUDENT — YOU KNOW THEM:\nThe student's name is ${userName}. You (Charlotte) are their English coach\nand have been working with them. DO NOT ask their name, age, or any\nbasic intro question — you already know them. Greet them by name when\nnatural ("Hi ${userName}!", "${userName}, that was great!").`
+    : '';
   const objectivesBlock = gc.objectives.map(o =>
     `  - Objective ${o.id}: ${o.hidden_prompt}`
   ).join('\n');
@@ -113,7 +118,7 @@ STUDENT CEFR LEVEL: ${level}
 
 STAY IN CHARACTER as ${gc.persona}. This is a TEXT chat (like WhatsApp).
 Use natural conversational English. Keep messages SHORT (1–2 sentences,
-max ~30 words). Emojis sparingly OK for warmth.${simplicityBlock}
+max ~30 words). Emojis sparingly OK for warmth.${knownStudentBlock}${simplicityBlock}
 
 HIDDEN OBJECTIVES (NEVER reveal to the student):
 ${objectivesBlock}
@@ -149,7 +154,7 @@ export async function POST(request: NextRequest) {
     const body = (await request.json()) as Payload & { user_id?: string };
     const {
       history, guided_chat: gc, level, user_message, unit_title,
-      stuck_turns, next_objective_id, user_id: userId,
+      stuck_turns, next_objective_id, user_id: userId, user_name,
     } = body;
 
     if (!user_message || typeof user_message !== 'string') {
@@ -157,7 +162,7 @@ export async function POST(request: NextRequest) {
     }
 
     const messages: OpenAI.Chat.ChatCompletionMessageParam[] = [
-      { role: 'system', content: buildSystemPrompt(gc, level, unit_title, stuck_turns, next_objective_id) },
+      { role: 'system', content: buildSystemPrompt(gc, level, unit_title, stuck_turns, next_objective_id, user_name) },
       ...history.map(h => ({ role: h.role, content: h.content })),
       { role: 'user', content: user_message },
     ];

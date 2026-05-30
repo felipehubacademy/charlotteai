@@ -46,13 +46,19 @@ interface Payload {
   stuck_turns?: number;
   /** Id do próximo objetivo pendente (o que ela deve nudgar quando stuck). */
   next_objective_id?: number;
+  /** Primeiro nome do aluno (Charlotte ja conhece, nao perguntar de novo). */
+  user_name?: string | null;
 }
 
 // ── Build system prompt with hidden objectives injection ───────────
 function buildSystemPrompt(
   rp: RolePlayDef, level: string, unitTitle?: string,
   stuckTurns: number = 0, nextObjectiveId?: number,
+  userName?: string | null,
 ): string {
+  const knownStudentBlock = userName
+    ? `\n\nABOUT THE STUDENT — YOU KNOW THEM:\nThe student's name is ${userName}. You (Charlotte) are their English coach\nand have been working with them. DO NOT ask their name, age, or any\nbasic intro question — you already know them. Greet them warmly by\nname when natural ("Hi ${userName}!", "${userName}, that was great!").`
+    : '';
   const objectivesBlock = rp.objectives.map(o =>
     `  - Objective ${o.id}: ${o.hidden_prompt}`
   ).join('\n');
@@ -115,7 +121,7 @@ UNIT: ${unitTitle ?? ''}
 STUDENT CEFR LEVEL: ${level}
 
 STAY IN CHARACTER as ${rp.persona}. Speak natural conversational English. Keep
-replies SHORT (1–2 sentences, max ~30 words) — this is a spoken role-play.${simplicityBlock}
+replies SHORT (1–2 sentences, max ~30 words) — this is a spoken role-play.${knownStudentBlock}${simplicityBlock}
 
 HIDDEN OBJECTIVES (NEVER reveal to the student):
 ${objectivesBlock}
@@ -211,7 +217,7 @@ export async function POST(request: NextRequest) {
       return NextResponse.json({ error: 'Missing audio or payload' }, { status: 400 });
     }
 
-    const { history, role_play: rp, level, unit_title, stuck_turns, next_objective_id } = JSON.parse(payload) as Payload;
+    const { history, role_play: rp, level, unit_title, stuck_turns, next_objective_id, user_name } = JSON.parse(payload) as Payload;
 
     // 1) Whisper STT
     const t0 = Date.now();
@@ -249,7 +255,7 @@ export async function POST(request: NextRequest) {
 
     // 2) GPT chat completion
     const messages: OpenAI.Chat.ChatCompletionMessageParam[] = [
-      { role: 'system', content: buildSystemPrompt(rp, level, unit_title, stuck_turns, next_objective_id) },
+      { role: 'system', content: buildSystemPrompt(rp, level, unit_title, stuck_turns, next_objective_id, user_name) },
       ...history.map(h => ({ role: h.role, content: h.content })),
       { role: 'user', content: userTranscript },
     ];

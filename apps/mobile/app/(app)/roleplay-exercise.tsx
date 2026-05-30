@@ -397,6 +397,7 @@ export default function RolePlayExerciseScreen() {
         unit_title:        unitTitle,
         stuck_turns:       stuckTurnsRef.current,
         next_objective_id: nextPending?.id,
+        user_name:         profile?.name?.split(' ')[0] ?? null,
       }));
       if (userId) formData.append('user_id', userId);
 

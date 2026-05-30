@@ -272,6 +272,7 @@ export default function GuidedChatExerciseScreen() {
           stuck_turns:       stuckTurnsRef.current,
           next_objective_id: nextPending?.id,
           user_id:           userId,
+          user_name:         profile?.name?.split(' ')[0] ?? null,
         }),
       });
       const data = await res.json();
