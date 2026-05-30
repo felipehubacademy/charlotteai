@@ -329,8 +329,13 @@
         "id": "M21",
         "title": "Fala como nativo",
         "file": "advanced/M21.json"
+      },
+      {
+        "id": "M22",
+        "title": "Síntese e mastery",
+        "file": "advanced/M22.json"
       }
     ]
   },
-  "generated_at": "2026-05-30T23:27:34.762Z"
+  "generated_at": "2026-05-30T23:32:11.566Z"
 }
