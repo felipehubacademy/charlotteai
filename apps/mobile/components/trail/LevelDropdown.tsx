@@ -8,7 +8,7 @@
 // onLayout do chip — sem dependencias extras, sem remontar o hero.
 
 import React, { useState, useRef } from 'react';
-import { View, TouchableOpacity, Modal, Pressable, Platform, LayoutChangeEvent, Animated } from 'react-native';
+import { View, Text, TouchableOpacity, Modal, Pressable, Platform, LayoutChangeEvent, Animated } from 'react-native';
 import { CaretDown, Lock } from 'phosphor-react-native';
 import { AppText } from '@/components/ui/Text';
 import type { Level } from '@/lib/curriculum-v2/types';
@@ -157,47 +157,49 @@ export function LevelDropdown({ selectedLevel, currentLevel, onSelect }: Props) 
                       return (
                         <React.Fragment key={lvl}>
                           {i > 0 && <View style={{ height: 1, backgroundColor: C.divider, marginHorizontal: 18 }} />}
-                          <Pressable
-                            onPress={() => pick(lvl)}
-                            style={({ pressed }) => ({
-                              flexDirection:    'row',
-                              alignItems:       'center',
-                              paddingHorizontal:20,
-                              paddingVertical:  14,
-                              backgroundColor:  pressed && !isLocked ? `${color}12` : 'transparent',
-                              opacity:          isLocked ? 0.7 : 1,
-                            })}>
-                            {/* Indicator slot fixo (24px) — dot/lock/empty alinha tudo */}
-                            <View style={{
-                              width: 24, height: 24,
-                              alignItems: 'center', justifyContent: 'center',
-                              marginRight: 12,
-                            }}>
-                              {isActive && (
-                                <View style={{
-                                  width: 10, height: 10, borderRadius: 5,
-                                  backgroundColor: color,
-                                }} />
-                              )}
-                              {isLocked && (
-                                <View style={{
-                                  width: 22, height: 22, borderRadius: 11,
-                                  backgroundColor: C.lockBg,
-                                  alignItems: 'center', justifyContent: 'center',
-                                }}>
-                                  <Lock size={11} color={C.navyDim} weight="fill" />
-                                </View>
-                              )}
-                            </View>
-                            <AppText
-                              numberOfLines={1}
-                              style={{
-                                fontSize:   15,
-                                fontWeight: isActive ? '900' : '700',
-                                color:      isLocked ? C.navyDim : color,
+                          <Pressable onPress={() => pick(lvl)}>
+                            {({ pressed }) => (
+                              <View style={{
+                                flexDirection:     'row',
+                                alignItems:        'center',
+                                paddingHorizontal: 20,
+                                paddingVertical:   14,
+                                backgroundColor:   pressed && !isLocked ? `${color}12` : 'transparent',
+                                opacity:           isLocked ? 0.7 : 1,
                               }}>
-                              {LEVEL_SHORT[lvl]}
-                            </AppText>
+                                {/* Indicator slot fixo */}
+                                <View style={{
+                                  width: 24, height: 24,
+                                  alignItems: 'center', justifyContent: 'center',
+                                  marginRight: 12,
+                                }}>
+                                  {isActive && (
+                                    <View style={{
+                                      width: 10, height: 10, borderRadius: 5,
+                                      backgroundColor: color,
+                                    }} />
+                                  )}
+                                  {isLocked && (
+                                    <View style={{
+                                      width: 22, height: 22, borderRadius: 11,
+                                      backgroundColor: C.lockBg,
+                                      alignItems: 'center', justifyContent: 'center',
+                                    }}>
+                                      <Lock size={11} color={C.navyDim} weight="fill" />
+                                    </View>
+                                  )}
+                                </View>
+                                <Text
+                                  numberOfLines={1}
+                                  style={{
+                                    fontSize:   15,
+                                    fontWeight: isActive ? '900' : '700',
+                                    color:      isLocked ? C.navyDim : color,
+                                  }}>
+                                  {LEVEL_SHORT[lvl]}
+                                </Text>
+                              </View>
+                            )}
                           </Pressable>
                         </React.Fragment>
                       );
