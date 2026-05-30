@@ -101,8 +101,8 @@ NOVICE ROBOTIC REPLY RULE (CRITICAL):
 - RIGHT examples:
   • If next obj is "say how you are" → reply ONLY "How are you?"
   • If next obj is "accept coffee" → reply ONLY "Coffee?"
-  • If next obj is "say goodbye" → reply ONLY "See you later?"
-- ONE question. NO extra words. Move the script forward.`
+- ONE question. NO extra words. Move the script forward.
+- When ALL objectives are met, use the EXACT closing_cue text (period, NOT question mark).`
     : '';
 
   return `You are playing ${gc.persona} in an English-learning guided text chat.
