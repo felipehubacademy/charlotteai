@@ -1,0 +1,1036 @@
+{
+  "id": "M11",
+  "title": "Quando, antes, depois",
+  "level": "Inter",
+  "block": "B1",
+  "units_range": "I01–I05",
+  "theme": "Time clauses (when, before, after, until, by the time, as soon as)",
+  "goal": "Student uses time clauses with correct tense agreement — present simple for future time clauses, past for past narratives, and signals sequence/duration.",
+  "connects_to": "M12 (Second conditional) — fechamento do bloco B1, abre B2 com hipóteses irreais.",
+  "module_chunks": [
+    "when + present (future context)",
+    "before / after + present (future) or past",
+    "until / till + present (future)",
+    "by the time + present (future) or past",
+    "as soon as + present (immediate sequence)",
+    "I'll call you when I arrive.",
+    "Before you leave, please lock the door.",
+    "After we eat, we'll go for a walk.",
+    "By the time you arrive, dinner will be ready."
+  ],
+  "units": [
+    {
+      "id": "I01",
+      "title": "When in time clauses",
+      "sub_cefr": "B1",
+      "grammar_focus": "when + present simple (referring to future)",
+      "markers": [
+        "denso"
+      ],
+      "real_life_context": "You promise actions for when something specific happens in the future.",
+      "grammar": [
+        {
+          "type": "multiple_choice",
+          "sentence": "I'll call you _____ I arrive.",
+          "options": [
+            "when",
+            "when will",
+            "when am"
+          ],
+          "answer": "when",
+          "explanation": "Após \"when\" em referência ao futuro, use present simple — nunca \"will\". A cláusula principal pode ter \"will\" (I'll call), mas a cláusula com \"when\" fica no presente."
+        },
+        {
+          "type": "multiple_choice",
+          "sentence": "We'll have dinner _____ everyone _____ home.",
+          "options": [
+            "when",
+            "arrives",
+            "when",
+            "will arrive",
+            "when",
+            "is arriving"
+          ],
+          "answer": "when / arrives",
+          "explanation": "\"When everyone arrives\" — present simple 3ª pessoa (\"everyone\" é singular). Após \"when\" no futuro, sempre present simple."
+        },
+        {
+          "type": "word_bank",
+          "sentence": "She'll start cooking _____ she gets home.",
+          "choices": [
+            "when",
+            "when will",
+            "when's",
+            "before"
+          ],
+          "answer": "when",
+          "explanation": "\"When she gets home\" — momento futuro específico. \"When + present simple\" é a forma correta."
+        },
+        {
+          "type": "word_bank",
+          "sentence": "I'll text you when I _____ to the office.",
+          "choices": [
+            "get",
+            "will get",
+            "am getting",
+            "got"
+          ],
+          "answer": "get",
+          "explanation": "Após \"when\" no contexto futuro, present simple \"get\". \"Will get\" estaria errado nesta cláusula."
+        },
+        {
+          "type": "fill_gap",
+          "sentence": "We'll celebrate when she _____ the exam.",
+          "hint": "present simple 3ª pessoa de \"pass\"",
+          "answer": "passes",
+          "explanation": "\"When she passes\" — 3ª pessoa singular com -s. Após \"when\", present simple sempre."
+        },
+        {
+          "type": "fill_gap",
+          "sentence": "I'll let you know when I _____ a decision.",
+          "hint": "present simple \"make\" com I",
+          "answer": "make",
+          "explanation": "\"When I make a decision\" — present simple base form com \"I\"."
+        },
+        {
+          "type": "fill_gap",
+          "sentence": "_____ they _____ the news, they'll be happy.",
+          "hint": "when + present simple de \"hear\" 3ª pessoa plural",
+          "answer": "When / hear",
+          "explanation": "\"When they hear\" — \"they\" plural usa forma base \"hear\"."
+        },
+        {
+          "type": "fix_error",
+          "sentence": "I'll call you when I will arrive.",
+          "hint": "Nunca \"will\" após \"when\" em time clause futura",
+          "answer": "I'll call you when I arrive.",
+          "explanation": "Esta é a regra mais importante das time clauses: depois de \"when\", \"before\", \"after\", \"until\", \"by the time\", \"as soon as\" — SEMPRE present simple, mesmo falando do futuro."
+        },
+        {
+          "type": "fix_error",
+          "sentence": "She'll start when she will be ready.",
+          "hint": "Após \"when\" em contexto futuro, present simple",
+          "answer": "She'll start when she is ready.",
+          "explanation": "\"When she is ready\" — present simple \"is\". \"Will be\" estaria errado dentro da cláusula com \"when\"."
+        },
+        {
+          "type": "read_answer",
+          "passage": "I'll call you when I arrive at the airport. We'll have dinner when everyone gets home. She'll let me know when she finishes the project. By the time you read this, I'll be on the plane.",
+          "question": "When will the speaker call?",
+          "answer": "when I arrive at the airport (or \"when arriving\" or \"after arrival\")",
+          "explanation": "The text says \"I'll call you when I arrive at the airport\" — present simple in the time clause."
+        }
+      ],
+      "listening_speaking": [
+        {
+          "text": "I'll call you when I arrive.",
+          "context": "basic when + present"
+        },
+        {
+          "text": "We'll have dinner when everyone gets home.",
+          "context": "group action"
+        },
+        {
+          "text": "She'll start cooking when she gets home.",
+          "context": "3rd person"
+        },
+        {
+          "text": "I'll text you when I get to the office.",
+          "context": "work context"
+        },
+        {
+          "text": "We'll celebrate when she passes the exam.",
+          "context": "celebratory context"
+        }
+      ],
+      "roleplay": {
+        "scenario": "Charlotte quer saber o que você vai fazer em momentos específicos do futuro — quando chegar em casa, quando o trabalho terminar, quando o fim de semana chegar.",
+        "voiced_by": "charlotte",
+        "persona": "Charlotte",
+        "persona_outfit": "charlotte_casual",
+        "time_budget_sec": 180,
+        "opening_line": "Three promises — what will you do when something happens?",
+        "objectives": [
+          {
+            "id": 1,
+            "label_pt": "Promessa com 'when I get home/finish work'",
+            "label_en": "Promise with 'when I get home/finish work'",
+            "hidden_prompt": "user uses 'I'll + base + when I + present' for daily action",
+            "hint_pt": "I'll relax when I get home.",
+            "hint_en": "I'll relax when I get home."
+          },
+          {
+            "id": 2,
+            "label_pt": "Promessa com 'when + alguém + verbo'",
+            "label_en": "Promise with 'when + someone + verb'",
+            "hidden_prompt": "user uses 'I'll + base + when + 3rd person + verb-s'",
+            "hint_pt": "I'll celebrate when my brother graduates.",
+            "hint_en": "I'll celebrate when my brother graduates."
+          },
+          {
+            "id": 3,
+            "label_pt": "Promessa futura com 'when'",
+            "label_en": "Future promise with 'when'",
+            "hidden_prompt": "user uses another 'when' clause with present simple",
+            "hint_pt": "I'll travel when I have enough money saved.",
+            "hint_en": "I'll travel when I have enough money saved."
+          }
+        ],
+        "closing_cue": "Charlotte fecha com \"Future promises set!\" quando obj_3 baterem.",
+        "suggested_flow": "**Suggested flow** (referencial, 6 turnos):\n\n1. **Charlotte**: \"Three promises — what will you do when something happens?\"\n2. **Student**: ~\"I'll relax when I get home.\"\n3. **Charlotte**: \"Earned. About someone else?\"\n4. **Student**: ~\"I'll celebrate when my brother graduates.\"\n5. **Charlotte**: \"Sweet. One more — your goal?\"\n6. **Student**: ~\"I'll travel when I have enough money saved.\"\n7. **Charlotte**: \"Future promises set!\"",
+        "evaluation_focus": [
+          "\"When\" + present simple (no \"will\")",
+          "\"I'll\" / \"will\" only in main clause",
+          "Natural future-oriented sentences"
+        ]
+      },
+      "guided_chat": {
+        "scenario": "Charlotte conversa sobre marcos pessoais futuros — coisas que você vai fazer quando certas condições da vida acontecerem.",
+        "voiced_by": "charlotte",
+        "persona": "Charlotte",
+        "persona_outfit": "charlotte_casual",
+        "intro_en": "Charlotte explores your future milestones with 'when' clauses. Remember: no 'will' after 'when'.",
+        "opening_message": "What will you do when you finally have free time?",
+        "objectives": [
+          {
+            "id": 1,
+            "label_pt": "Ação para quando tiver tempo livre",
+            "label_en": "Action for when you have free time",
+            "hidden_prompt": "user uses 'I'll + base + when I have time' or similar",
+            "hint_pt": "I'll read more when I have free time.",
+            "hint_en": "I'll read more when I have free time."
+          },
+          {
+            "id": 2,
+            "label_pt": "Outra promessa com 'when'",
+            "label_en": "Another 'when' promise",
+            "hidden_prompt": "user uses another 'when' clause",
+            "hint_pt": "I'll move out when I save enough money.",
+            "hint_en": "I'll move out when I save enough money."
+          },
+          {
+            "id": 3,
+            "label_pt": "Perguntar à Charlotte",
+            "label_en": "Ask Charlotte",
+            "hidden_prompt": "user asks 'What will you do when...?' or 'How about you?'",
+            "hint_pt": "How about you?",
+            "hint_en": "How about you?"
+          }
+        ],
+        "closing_cue": "Charlotte fecha com \"Future milestones mapped!\" quando obj_3 baterem.",
+        "suggested_script": "**Script** (referencial, 7 turnos):\n\n1. **Charlotte**: \"What will you do when you finally have free time?\"\n2. **Student**: \"I'll read more when I have free time.\"\n3. **Charlotte**: \"Books are calling. What else?\"\n4. **Student**: \"I'll move out when I save enough money.\"\n5. **Charlotte**: \"Big step ahead.\"\n6. **Student**: \"How about you?\"\n7. **Charlotte**: \"When I finish this teaching block, I'll take a long trip. Future milestones mapped!\"\n\n> I01 chat = LLM puro. Scaffold via hint_pt.\n\n---"
+      }
+    },
+    {
+      "id": "I02",
+      "title": "Before and after",
+      "sub_cefr": "B1",
+      "grammar_focus": "before / after + present simple (future) or past (past)",
+      "markers": [],
+      "real_life_context": "You sequence actions — what comes first, what comes next.",
+      "grammar": [
+        {
+          "type": "multiple_choice",
+          "sentence": "_____ you leave, please lock the door.",
+          "options": [
+            "Before",
+            "After",
+            "Until"
+          ],
+          "answer": "Before",
+          "explanation": "\"Before\" indica ação anterior. \"Before you leave, lock the door\" — trancar acontece antes de sair."
+        },
+        {
+          "type": "multiple_choice",
+          "sentence": "_____ we eat, we'll go for a walk.",
+          "options": [
+            "After",
+            "Before",
+            "Until"
+          ],
+          "answer": "After",
+          "explanation": "\"After\" indica ação posterior. \"After we eat, walk\" — caminhar acontece depois de comer."
+        },
+        {
+          "type": "word_bank",
+          "sentence": "Brush your teeth _____ you go to bed.",
+          "choices": [
+            "before",
+            "after",
+            "until",
+            "by"
+          ],
+          "answer": "before",
+          "explanation": "Escovar dentes acontece ANTES de dormir. \"Before you go to bed\" — present simple após \"before\" (rotina/futuro)."
+        },
+        {
+          "type": "word_bank",
+          "sentence": "_____ I _____ from work, I usually cook dinner.",
+          "choices": [
+            "After",
+            "get",
+            "Before",
+            "get",
+            "After",
+            "will get",
+            "Before",
+            "am getting"
+          ],
+          "answer": "After / get",
+          "explanation": "\"After I get from work\" — present simple com \"I\" + base form \"get\". Rotina diária."
+        },
+        {
+          "type": "fill_gap",
+          "sentence": "I'll text you before I _____ to the meeting.",
+          "hint": "present simple \"go\" com I",
+          "answer": "go",
+          "explanation": "\"Before I go\" — present simple base form. Time clause sempre present simple, mesmo no contexto futuro."
+        },
+        {
+          "type": "fill_gap",
+          "sentence": "After she _____ the report, she'll send it to you.",
+          "hint": "present simple 3ª pessoa de \"finish\"",
+          "answer": "finishes",
+          "explanation": "\"After she finishes\" — 3ª pessoa singular com -es. \"After + present simple\" para sequência futura."
+        },
+        {
+          "type": "fill_gap",
+          "sentence": "_____ you _____, please clean the kitchen.",
+          "hint": "before + present simple de \"leave\"",
+          "answer": "Before / leave",
+          "explanation": "\"Before you leave\" — pedido para antes da saída. Present simple base form com \"you\"."
+        },
+        {
+          "type": "fix_error",
+          "sentence": "I'll call you before I will arrive.",
+          "hint": "Após \"before\" em contexto futuro, present simple",
+          "answer": "I'll call you before I arrive.",
+          "explanation": "Mesma regra do \"when\": após \"before\"/\"after\"/\"until\" em referência ao futuro, sempre present simple. Nunca \"will\" dentro da time clause."
+        },
+        {
+          "type": "fix_error",
+          "sentence": "After we will eat, we'll watch a movie.",
+          "hint": "Sem \"will\" após \"after\"",
+          "answer": "After we eat, we'll watch a movie.",
+          "explanation": "\"After we eat\" — present simple. \"Will\" só na cláusula principal (we'll watch)."
+        },
+        {
+          "type": "read_answer",
+          "passage": "Before you leave, please lock the door. After we eat dinner, we'll go for a walk. I'll text you before I arrive. After she finishes the report, she'll send it.",
+          "question": "When will the speaker text?",
+          "answer": "before I arrive (or \"before arriving\")",
+          "explanation": "The text says \"I'll text you before I arrive\" — present simple \"arrive\" after \"before\" in future context."
+        }
+      ],
+      "listening_speaking": [
+        {
+          "text": "Before you leave, please lock the door.",
+          "context": "instruction with before"
+        },
+        {
+          "text": "After we eat, we'll go for a walk.",
+          "context": "sequence with after"
+        },
+        {
+          "text": "Brush your teeth before you go to bed.",
+          "context": "routine instruction"
+        },
+        {
+          "text": "After I get home, I usually cook dinner.",
+          "context": "daily routine"
+        },
+        {
+          "text": "I'll text you before I arrive.",
+          "context": "promise"
+        }
+      ],
+      "roleplay": {
+        "scenario": "Charlotte planeja um evento com você — quer organizar a sequência de coisas que precisam acontecer antes e depois. Você usa before/after para articular a ordem.",
+        "voiced_by": "charlotte",
+        "persona": "Charlotte",
+        "persona_outfit": "charlotte_casual",
+        "time_budget_sec": 180,
+        "opening_line": "Let's plan our day — what before, what after?",
+        "objectives": [
+          {
+            "id": 1,
+            "label_pt": "Ação com 'before' (algo antes de outra coisa)",
+            "label_en": "Action with 'before'",
+            "hidden_prompt": "user uses 'I'll + base + before + present' or 'Before + present, I'll + base'",
+            "hint_pt": "I'll take a shower before I leave.",
+            "hint_en": "I'll take a shower before I leave."
+          },
+          {
+            "id": 2,
+            "label_pt": "Ação com 'after' (depois de outra)",
+            "label_en": "Action with 'after'",
+            "hidden_prompt": "user uses 'I'll + base + after + present'",
+            "hint_pt": "After I finish work, I'll grab dinner.",
+            "hint_en": "After I finish work, I'll grab dinner."
+          },
+          {
+            "id": 3,
+            "label_pt": "Mais uma ação na sequência",
+            "label_en": "One more in sequence",
+            "hidden_prompt": "user uses another before/after sequence",
+            "hint_pt": "Before we meet, I'll send you the address.",
+            "hint_en": "Before we meet, I'll send you the address."
+          }
+        ],
+        "closing_cue": "Charlotte fecha com \"Sequence locked in!\" quando obj_3 baterem.",
+        "suggested_flow": "**Suggested flow** (referencial, 6 turnos):\n\n1. **Charlotte**: \"Let's plan our day — what before, what after?\"\n2. **Student**: ~\"I'll take a shower before I leave.\"\n3. **Charlotte**: \"Good prep. After leaving?\"\n4. **Student**: ~\"After I finish work, I'll grab dinner.\"\n5. **Charlotte**: \"Pre-meeting?\"\n6. **Student**: ~\"Before we meet, I'll send you the address.\"\n7. **Charlotte**: \"Sequence locked in!\"",
+        "evaluation_focus": [
+          "\"Before/After\" + present simple",
+          "\"Will\" only in main clause",
+          "Logical sequence"
+        ]
+      },
+      "guided_chat": {
+        "scenario": "Charlotte conversa sobre como você organiza suas manhãs — o que vem antes do quê — e quer trocar rotinas com você.",
+        "voiced_by": "charlotte",
+        "persona": "Charlotte",
+        "persona_outfit": "charlotte_casual",
+        "intro_en": "Charlotte chats about your morning sequence. Use 'before' and 'after' with present simple.",
+        "opening_message": "What's the first thing you do before you start work?",
+        "objectives": [
+          {
+            "id": 1,
+            "label_pt": "Ação antes do trabalho (before)",
+            "label_en": "Pre-work action",
+            "hidden_prompt": "user uses 'Before I + present, I + present/will' for pre-work routine",
+            "hint_pt": "Before I start work, I have coffee.",
+            "hint_en": "Before I start work, I have coffee."
+          },
+          {
+            "id": 2,
+            "label_pt": "Ação depois (after)",
+            "label_en": "Post action",
+            "hidden_prompt": "user uses 'After I + present, I + present/will'",
+            "hint_pt": "After I check emails, I plan my day.",
+            "hint_en": "After I check emails, I plan my day."
+          },
+          {
+            "id": 3,
+            "label_pt": "Perguntar à Charlotte",
+            "label_en": "Ask Charlotte",
+            "hidden_prompt": "user asks 'How about you?' or 'What about your routine?'",
+            "hint_pt": "How about you?",
+            "hint_en": "How about you?"
+          }
+        ],
+        "closing_cue": "Charlotte fecha com \"Sequence mapped!\" quando obj_3 baterem.",
+        "suggested_script": "**Script** (referencial, 7 turnos):\n\n1. **Charlotte**: \"What's the first thing you do before you start work?\"\n2. **Student**: \"Before I start work, I have coffee.\"\n3. **Charlotte**: \"Essential ritual. Then?\"\n4. **Student**: \"After I check emails, I plan my day.\"\n5. **Charlotte**: \"Methodical.\"\n6. **Student**: \"How about you?\"\n7. **Charlotte**: \"Before I teach, I review my notes. After class, I journal what worked. Sequence mapped!\"\n\n> I02 chat = LLM puro. Scaffold via hint_pt.\n\n---"
+      }
+    },
+    {
+      "id": "I03",
+      "title": "Until and by the time",
+      "sub_cefr": "B1",
+      "grammar_focus": "until/till (continuous duration) + by the time (point of completion)",
+      "markers": [
+        "denso"
+      ],
+      "real_life_context": "You express duration (\"until something happens\") and points of completion (\"by the time something\").",
+      "grammar": [
+        {
+          "type": "multiple_choice",
+          "sentence": "I'll wait _____ you arrive.",
+          "options": [
+            "until",
+            "before",
+            "since"
+          ],
+          "answer": "until",
+          "explanation": "\"Until\" = até (duração contínua até um ponto). \"I'll wait until you arrive\" — espera continua até esse momento."
+        },
+        {
+          "type": "multiple_choice",
+          "sentence": "_____ you finish reading, dinner will be ready.",
+          "options": [
+            "By the time",
+            "Until",
+            "Before"
+          ],
+          "answer": "By the time",
+          "explanation": "\"By the time\" = quando + before (no momento ou antes). Aqui: jantar pronto antes ou exatamente quando você termina de ler."
+        },
+        {
+          "type": "word_bank",
+          "sentence": "Stay here _____ I get back.",
+          "choices": [
+            "until",
+            "by the time",
+            "since",
+            "before"
+          ],
+          "answer": "until",
+          "explanation": "\"Stay until I get back\" — duração contínua. Você fica AQUI por todo o tempo até eu voltar."
+        },
+        {
+          "type": "word_bank",
+          "sentence": "_____ we arrive, the movie will have started.",
+          "choices": [
+            "By the time",
+            "Until",
+            "Since",
+            "Before"
+          ],
+          "answer": "By the time",
+          "explanation": "\"By the time we arrive\" — quando chegarmos, o filme já vai ter começado. Indica ponto temporal de referência."
+        },
+        {
+          "type": "fill_gap",
+          "sentence": "Don't leave _____ I tell you to.",
+          "hint": "duração contínua",
+          "answer": "until",
+          "explanation": "\"Until I tell you\" — fique aqui por todo o tempo, até receber permissão. Duração."
+        },
+        {
+          "type": "fill_gap",
+          "sentence": "_____ I _____ home, my parents will be asleep.",
+          "hint": "by the time + present simple \"get\"",
+          "answer": "By the time / get",
+          "explanation": "\"By the time I get home\" — quando eu chegar em casa, eles já estarão dormindo. Present simple após \"by the time\" no futuro."
+        },
+        {
+          "type": "fill_gap",
+          "sentence": "I'll keep trying _____ I succeed.",
+          "hint": "até atingir o resultado",
+          "answer": "until",
+          "explanation": "\"Until I succeed\" — continuar tentando por todo o tempo até ter sucesso. Duração."
+        },
+        {
+          "type": "fix_error",
+          "sentence": "I'll wait until you will arrive.",
+          "hint": "Sem \"will\" após \"until\" no futuro",
+          "answer": "I'll wait until you arrive.",
+          "explanation": "Como \"when\"/\"before\"/\"after\", \"until\" também não aceita \"will\" na cláusula futura. Present simple \"arrive\"."
+        },
+        {
+          "type": "fix_error",
+          "sentence": "By the time you will finish, I'll be home.",
+          "hint": "Sem \"will\" após \"by the time\"",
+          "answer": "By the time you finish, I'll be home.",
+          "explanation": "\"By the time you finish\" — present simple. \"Will\" só na cláusula principal \"I'll be home\"."
+        },
+        {
+          "type": "read_answer",
+          "passage": "I'll wait until you arrive at the station. By the time we finish dinner, it'll be 10pm. Stay here until I get back. By the time I write this, my flight will be boarding.",
+          "question": "What will the speaker do until the listener arrives?",
+          "answer": "wait (or \"wait at the station\")",
+          "explanation": "The text says \"I'll wait until you arrive at the station\"."
+        }
+      ],
+      "listening_speaking": [
+        {
+          "text": "I'll wait until you arrive.",
+          "context": "duration"
+        },
+        {
+          "text": "By the time you finish reading, dinner will be ready.",
+          "context": "point of completion"
+        },
+        {
+          "text": "Stay here until I get back.",
+          "context": "instruction with duration"
+        },
+        {
+          "text": "By the time we arrive, the movie will have started.",
+          "context": "pre-completion"
+        },
+        {
+          "text": "I'll keep trying until I succeed.",
+          "context": "perseverance"
+        }
+      ],
+      "roleplay": {
+        "scenario": "Charlotte conversa sobre prazos e momentos — coisas que continuam até X acontecer, coisas que precisam estar prontas antes de Y. Quer três frases com \"until\" e \"by the time\".",
+        "voiced_by": "charlotte",
+        "persona": "Charlotte",
+        "persona_outfit": "charlotte_casual",
+        "time_budget_sec": 180,
+        "opening_line": "Talk about deadlines and durations using 'until' and 'by the time'.",
+        "objectives": [
+          {
+            "id": 1,
+            "label_pt": "Duração com 'until' (continuar até X)",
+            "label_en": "Duration with 'until'",
+            "hidden_prompt": "user uses 'I'll + base + until + present'",
+            "hint_pt": "I'll work until I finish this project.",
+            "hint_en": "I'll work until I finish this project."
+          },
+          {
+            "id": 2,
+            "label_pt": "Prazo com 'by the time'",
+            "label_en": "Deadline with 'by the time'",
+            "hidden_prompt": "user uses 'By the time + present, will + base' or 'will + base + by the time + present'",
+            "hint_pt": "By the time you arrive, dinner will be ready.",
+            "hint_en": "By the time you arrive, dinner will be ready."
+          },
+          {
+            "id": 3,
+            "label_pt": "Mais uma com 'until' ou 'by the time'",
+            "label_en": "One more with 'until' or 'by the time'",
+            "hidden_prompt": "user uses another until/by the time clause",
+            "hint_pt": "I won't stop until I master English.",
+            "hint_en": "I won't stop until I master English."
+          }
+        ],
+        "closing_cue": "Charlotte fecha com \"Deadlines and durations!\" quando obj_3 baterem.",
+        "suggested_flow": "**Suggested flow** (referencial, 6 turnos):\n\n1. **Charlotte**: \"Talk about deadlines and durations using 'until' and 'by the time'.\"\n2. **Student**: ~\"I'll work until I finish this project.\"\n3. **Charlotte**: \"Dedication. By when?\"\n4. **Student**: ~\"By the time you arrive, dinner will be ready.\"\n5. **Charlotte**: \"Hostess vibes. One more?\"\n6. **Student**: ~\"I won't stop until I master English.\"\n7. **Charlotte**: \"Deadlines and durations!\"",
+        "evaluation_focus": [
+          "\"Until/by the time\" + present simple",
+          "Distinção semântica (until = duração; by the time = ponto)",
+          "Will only in main clause"
+        ]
+      },
+      "guided_chat": {
+        "scenario": "Charlotte planeja com você o tempo até um evento — uma viagem, uma entrega, um marco — usando until e by the time.",
+        "voiced_by": "charlotte",
+        "persona": "Charlotte",
+        "persona_outfit": "charlotte_casual",
+        "intro_en": "Charlotte plans timeframes with you. Use 'until' for duration and 'by the time' for points.",
+        "opening_message": "What are you doing until next month?",
+        "objectives": [
+          {
+            "id": 1,
+            "label_pt": "Algo que continua 'until' próximo mês",
+            "label_en": "Something continuing 'until' next month",
+            "hidden_prompt": "user uses 'I'll + base + until + time' for ongoing action",
+            "hint_pt": "I'll be working hard until next month.",
+            "hint_en": "I'll be working hard until next month."
+          },
+          {
+            "id": 2,
+            "label_pt": "Algo que estará pronto 'by the time'",
+            "label_en": "Something ready 'by the time'",
+            "hidden_prompt": "user uses 'By the time + present, will + base'",
+            "hint_pt": "By the time the month ends, I'll have finished the project.",
+            "hint_en": "By the time the month ends, I'll have finished the project."
+          },
+          {
+            "id": 3,
+            "label_pt": "Perguntar à Charlotte",
+            "label_en": "Ask Charlotte",
+            "hidden_prompt": "user asks 'How about you?' or 'What are your deadlines?'",
+            "hint_pt": "How about you?",
+            "hint_en": "How about you?"
+          }
+        ],
+        "closing_cue": "Charlotte fecha com \"Timeframes set!\" quando obj_3 baterem.",
+        "suggested_script": "**Script** (referencial, 7 turnos):\n\n1. **Charlotte**: \"What are you doing until next month?\"\n2. **Student**: \"I'll be working hard until next month.\"\n3. **Charlotte**: \"Grind season. What's the deadline?\"\n4. **Student**: \"By the time the month ends, I'll have finished the project.\"\n5. **Charlotte**: \"Ambitious goal. Cheering for you.\"\n6. **Student**: \"How about you?\"\n7. **Charlotte**: \"Until December, I'll be teaching. By the time it ends, I'll have written 50,000 words. Timeframes set!\"\n\n> I03 chat = LLM puro. Scaffold via hint_pt.\n\n---"
+      }
+    },
+    {
+      "id": "I04",
+      "title": "As soon as",
+      "sub_cefr": "B1",
+      "grammar_focus": "as soon as + present (immediate sequence)",
+      "markers": [],
+      "real_life_context": "You express that one action will happen immediately after another.",
+      "grammar": [
+        {
+          "type": "multiple_choice",
+          "sentence": "I'll call you _____ I get home.",
+          "options": [
+            "as soon as",
+            "by the time",
+            "until"
+          ],
+          "answer": "as soon as",
+          "explanation": "\"As soon as\" = assim que / no momento exato em que. Ação imediata após outra."
+        },
+        {
+          "type": "multiple_choice",
+          "sentence": "_____ she _____ the news, she'll be happy.",
+          "options": [
+            "As soon as",
+            "hears",
+            "Until",
+            "hears",
+            "By the time",
+            "will hear"
+          ],
+          "answer": "As soon as / hears",
+          "explanation": "\"As soon as she hears\" — present simple 3ª pessoa \"hears\". Reação imediata após receber notícia."
+        },
+        {
+          "type": "word_bank",
+          "sentence": "Send me a message _____ you arrive.",
+          "choices": [
+            "as soon as",
+            "by the time",
+            "until",
+            "before"
+          ],
+          "answer": "as soon as",
+          "explanation": "\"As soon as you arrive\" — imediatamente quando chegar. Imediatismo."
+        },
+        {
+          "type": "word_bank",
+          "sentence": "I'll let you know _____ I _____ a decision.",
+          "choices": [
+            "as soon as",
+            "make",
+            "as soon as",
+            "will make",
+            "until",
+            "make",
+            "before",
+            "will make"
+          ],
+          "answer": "as soon as / make",
+          "explanation": "\"As soon as I make a decision\" — assim que tomar a decisão."
+        },
+        {
+          "type": "fill_gap",
+          "sentence": "_____ they _____ home, they'll start cooking.",
+          "hint": "as soon as + present simple \"get\" plural",
+          "answer": "As soon as / get",
+          "explanation": "\"As soon as they get home\" — plural sem -s. Reação imediata."
+        },
+        {
+          "type": "fill_gap",
+          "sentence": "Call me _____ you _____ help.",
+          "hint": "as soon as + present simple \"need\"",
+          "answer": "as soon as / need",
+          "explanation": "\"As soon as you need help\" — imediato. Promessa de disponibilidade."
+        },
+        {
+          "type": "fill_gap",
+          "sentence": "I'll start _____ the music _____.",
+          "hint": "as soon as + present simple 3ª pessoa \"begin\"",
+          "answer": "as soon as / begins",
+          "explanation": "\"As soon as the music begins\" — 3ª pessoa singular \"begins\" com -s."
+        },
+        {
+          "type": "fix_error",
+          "sentence": "I'll text you as soon as I will arrive.",
+          "hint": "Sem \"will\" após \"as soon as\"",
+          "answer": "I'll text you as soon as I arrive.",
+          "explanation": "\"As soon as\" segue mesma regra das outras time clauses: present simple no futuro, nunca \"will\"."
+        },
+        {
+          "type": "fix_error",
+          "sentence": "As soon as she will hear, she'll call me.",
+          "hint": "Present simple após \"as soon as\"",
+          "answer": "As soon as she hears, she'll call me.",
+          "explanation": "\"Hears\" — 3ª pessoa present simple. \"Will\" só na cláusula principal \"she'll call\"."
+        },
+        {
+          "type": "read_answer",
+          "passage": "I'll call you as soon as I get home. As soon as she hears the news, she'll be thrilled. Let me know as soon as you arrive. As soon as I have updates, I'll share them.",
+          "question": "When will the speaker share updates?",
+          "answer": "as soon as I have updates (or \"immediately when there are updates\")",
+          "explanation": "The text says \"As soon as I have updates, I'll share them\" — present simple \"have\" after \"as soon as\"."
+        }
+      ],
+      "listening_speaking": [
+        {
+          "text": "I'll call you as soon as I get home.",
+          "context": "return promise"
+        },
+        {
+          "text": "As soon as she hears the news, she'll be happy.",
+          "context": "reaction"
+        },
+        {
+          "text": "Send me a message as soon as you arrive.",
+          "context": "instruction"
+        },
+        {
+          "text": "I'll let you know as soon as I make a decision.",
+          "context": "update promise"
+        },
+        {
+          "text": "As soon as they get home, they'll start cooking.",
+          "context": "immediate sequence"
+        }
+      ],
+      "roleplay": {
+        "scenario": "Charlotte espera atualizações sobre coisas importantes na sua vida — quer que você faça promessas usando \"as soon as\" para coisas que acontecerão imediatamente após eventos.",
+        "voiced_by": "charlotte",
+        "persona": "Charlotte",
+        "persona_outfit": "charlotte_casual",
+        "time_budget_sec": 180,
+        "opening_line": "Tell me three things you'll do as soon as something else happens.",
+        "objectives": [
+          {
+            "id": 1,
+            "label_pt": "Promessa imediata após chegar em algum lugar",
+            "label_en": "Immediate promise upon arrival",
+            "hidden_prompt": "user uses 'I'll + base + as soon as I + present'",
+            "hint_pt": "I'll text you as soon as I arrive.",
+            "hint_en": "I'll text you as soon as I arrive."
+          },
+          {
+            "id": 2,
+            "label_pt": "Reação imediata a uma notícia",
+            "label_en": "Immediate reaction to news",
+            "hidden_prompt": "user uses 'I'll + base + as soon as I + present (hear/get/receive)'",
+            "hint_pt": "I'll call my parents as soon as I hear back.",
+            "hint_en": "I'll call my parents as soon as I hear back."
+          },
+          {
+            "id": 3,
+            "label_pt": "Mais uma promessa imediata",
+            "label_en": "One more immediate promise",
+            "hidden_prompt": "user uses another 'as soon as' clause",
+            "hint_pt": "I'll start celebrating as soon as I finish this.",
+            "hint_en": "I'll start celebrating as soon as I finish this."
+          }
+        ],
+        "closing_cue": "Charlotte fecha com \"Immediate promises!\" quando obj_3 baterem.",
+        "suggested_flow": "**Suggested flow** (referencial, 6 turnos):\n\n1. **Charlotte**: \"Tell me three things you'll do as soon as something else happens.\"\n2. **Student**: ~\"I'll text you as soon as I arrive.\"\n3. **Charlotte**: \"Got it. News?\"\n4. **Student**: ~\"I'll call my parents as soon as I hear back.\"\n5. **Charlotte**: \"Family first. Celebration?\"\n6. **Student**: ~\"I'll start celebrating as soon as I finish this.\"\n7. **Charlotte**: \"Immediate promises!\"",
+        "evaluation_focus": [
+          "\"As soon as\" + present simple",
+          "Will only in main clause",
+          "Immediacy expressed"
+        ]
+      },
+      "guided_chat": {
+        "scenario": "Charlotte está esperando notícias importantes suas — quer que você se comprometa com atualizações rápidas usando \"as soon as\".",
+        "voiced_by": "charlotte",
+        "persona": "Charlotte",
+        "persona_outfit": "charlotte_casual",
+        "intro_en": "Charlotte awaits your news. Practice 'as soon as' for immediate follow-ups.",
+        "opening_message": "Promise me — what will you do as soon as you have any news?",
+        "objectives": [
+          {
+            "id": 1,
+            "label_pt": "Promessa com 'as soon as I have news'",
+            "label_en": "Promise with 'as soon as I have news'",
+            "hidden_prompt": "user uses 'I'll + base + as soon as I + present' for news/updates",
+            "hint_pt": "I'll let you know as soon as I have news.",
+            "hint_en": "I'll let you know as soon as I have news."
+          },
+          {
+            "id": 2,
+            "label_pt": "Outra promessa de update",
+            "label_en": "Another update promise",
+            "hidden_prompt": "user uses another 'as soon as' clause",
+            "hint_pt": "I'll send a photo as soon as I get there.",
+            "hint_en": "I'll send a photo as soon as I get there."
+          },
+          {
+            "id": 3,
+            "label_pt": "Perguntar à Charlotte",
+            "label_en": "Ask Charlotte",
+            "hidden_prompt": "user asks 'How about you?' or 'What do you do as soon as...?'",
+            "hint_pt": "How about you?",
+            "hint_en": "How about you?"
+          }
+        ],
+        "closing_cue": "Charlotte fecha com \"Quick updates locked!\" quando obj_3 baterem.",
+        "suggested_script": "**Script** (referencial, 7 turnos):\n\n1. **Charlotte**: \"Promise me — what will you do as soon as you have any news?\"\n2. **Student**: \"I'll let you know as soon as I have news.\"\n3. **Charlotte**: \"Perfect. Photo update?\"\n4. **Student**: \"I'll send a photo as soon as I get there.\"\n5. **Charlotte**: \"Can't wait. Travel updates are the best.\"\n6. **Student**: \"How about you?\"\n7. **Charlotte**: \"I'll respond as soon as I see your messages. Quick updates locked!\"\n\n> I04 chat = LLM puro. Scaffold via hint_pt.\n\n---"
+      }
+    },
+    {
+      "id": "I05",
+      "title": "All time clauses combined",
+      "sub_cefr": "B1",
+      "grammar_focus": "Integration of when/before/after/until/by the time/as soon as",
+      "markers": [],
+      "real_life_context": "You combine time clauses fluidly in conversation about plans, deadlines, and sequences.",
+      "grammar": [
+        {
+          "type": "multiple_choice",
+          "sentence": "I'll call you _____ I arrive at the hotel.",
+          "options": [
+            "as soon as",
+            "since",
+            "by"
+          ],
+          "answer": "as soon as",
+          "explanation": "\"As soon as\" para imediato. Outra opção válida seria \"when\"."
+        },
+        {
+          "type": "multiple_choice",
+          "sentence": "_____ you leave, please turn off the lights.",
+          "options": [
+            "Before",
+            "After",
+            "Until"
+          ],
+          "answer": "Before",
+          "explanation": "\"Before you leave\" — ação anterior à saída."
+        },
+        {
+          "type": "word_bank",
+          "sentence": "I'll wait here _____ you call me back.",
+          "choices": [
+            "until",
+            "by the time",
+            "as soon as",
+            "before"
+          ],
+          "answer": "until",
+          "explanation": "\"Until you call back\" — duração da espera."
+        },
+        {
+          "type": "word_bank",
+          "sentence": "_____ the meeting ends, I'll have lunch.",
+          "choices": [
+            "After",
+            "Until",
+            "Since",
+            "Before"
+          ],
+          "answer": "After",
+          "explanation": "\"After the meeting ends\" — sequência: almoço depois da reunião."
+        },
+        {
+          "type": "fill_gap",
+          "sentence": "_____ I _____ home, dinner will be ready.",
+          "hint": "by the time + present simple \"get\"",
+          "answer": "By the time / get",
+          "explanation": "\"By the time I get home\" — ponto de referência futuro."
+        },
+        {
+          "type": "fill_gap",
+          "sentence": "Don't leave _____ I _____ you the documents.",
+          "hint": "until + present simple \"give\"",
+          "answer": "until / give",
+          "explanation": "\"Until I give you\" — duração até receber documentos."
+        },
+        {
+          "type": "fill_gap",
+          "sentence": "_____ we _____ dinner, let's relax.",
+          "hint": "after + present simple \"finish\"",
+          "answer": "After / finish",
+          "explanation": "\"After we finish\" — sequência: relaxar depois de jantar."
+        },
+        {
+          "type": "fix_error",
+          "sentence": "I'll text you as soon as I will land.",
+          "hint": "Time clause sem \"will\"",
+          "answer": "I'll text you as soon as I land.",
+          "explanation": "\"As soon as I land\" — present simple. Esta regra vale para TODAS as time clauses (when, before, after, until, by the time, as soon as)."
+        },
+        {
+          "type": "fix_error",
+          "sentence": "By the time you will read this, I'll be gone.",
+          "hint": "Sem \"will\" após \"by the time\"",
+          "answer": "By the time you read this, I'll be gone.",
+          "explanation": "Present simple \"read\" após \"by the time\". \"Will\" só na cláusula principal."
+        },
+        {
+          "type": "read_answer",
+          "passage": "As soon as I land, I'll text you. By the time we meet for dinner, I'll have unpacked. Until then, please water my plants. After I get back, we'll celebrate.",
+          "question": "What should the listener do until the speaker meets them?",
+          "answer": "water my plants (or \"water the plants\")",
+          "explanation": "The text says \"Until then, please water my plants\" — instruction for the duration."
+        }
+      ],
+      "listening_speaking": [
+        {
+          "text": "I'll call you when I arrive.",
+          "context": "when"
+        },
+        {
+          "text": "Before you leave, please lock the door.",
+          "context": "before"
+        },
+        {
+          "text": "After we eat, we'll watch a movie.",
+          "context": "after"
+        },
+        {
+          "text": "I'll wait until you get back.",
+          "context": "until"
+        },
+        {
+          "text": "As soon as I have news, I'll let you know.",
+          "context": "as soon as"
+        }
+      ],
+      "roleplay": {
+        "scenario": "Charlotte planeja um dia inteiro com você — quer um itinerário detalhado usando todas as time clauses para articular a sequência.",
+        "voiced_by": "charlotte",
+        "persona": "Charlotte",
+        "persona_outfit": "charlotte_casual",
+        "time_budget_sec": 180,
+        "opening_line": "Plan your day with three different time clauses — when, before/after, until/by the time.",
+        "objectives": [
+          {
+            "id": 1,
+            "label_pt": "Time clause com 'when' ou 'as soon as'",
+            "label_en": "Time clause with 'when' or 'as soon as'",
+            "hidden_prompt": "user uses 'when' or 'as soon as' + present simple",
+            "hint_pt": "I'll start when I have my coffee.",
+            "hint_en": "I'll start when I have my coffee."
+          },
+          {
+            "id": 2,
+            "label_pt": "Time clause com 'before' ou 'after'",
+            "label_en": "Time clause with 'before' or 'after'",
+            "hidden_prompt": "user uses 'before' or 'after' + present simple",
+            "hint_pt": "After I finish work, I'll go for a run.",
+            "hint_en": "After I finish work, I'll go for a run."
+          },
+          {
+            "id": 3,
+            "label_pt": "Time clause com 'until' ou 'by the time'",
+            "label_en": "Time clause with 'until' or 'by the time'",
+            "hidden_prompt": "user uses 'until' or 'by the time' + present simple",
+            "hint_pt": "By the time I get home, dinner will be ready.",
+            "hint_en": "By the time I get home, dinner will be ready."
+          }
+        ],
+        "closing_cue": "Charlotte fecha com \"Time clauses mastered!\" quando obj_3 baterem.",
+        "suggested_flow": "**Suggested flow** (referencial, 6 turnos):\n\n1. **Charlotte**: \"Plan your day with three different time clauses — when, before/after, until/by the time.\"\n2. **Student**: ~\"I'll start when I have my coffee.\"\n3. **Charlotte**: \"Caffeine launch. Then?\"\n4. **Student**: ~\"After I finish work, I'll go for a run.\"\n5. **Charlotte**: \"Healthy. Evening deadline?\"\n6. **Student**: ~\"By the time I get home, dinner will be ready.\"\n7. **Charlotte**: \"Time clauses mastered!\"",
+        "evaluation_focus": [
+          "Variety of time clauses",
+          "All with present simple",
+          "Will only in main clauses"
+        ]
+      },
+      "guided_chat": {
+        "scenario": "Charlotte conversa sobre como você organiza grandes projetos no tempo — quer você usar todas as time clauses fluidamente.",
+        "voiced_by": "charlotte",
+        "persona": "Charlotte",
+        "persona_outfit": "charlotte_casual",
+        "intro_en": "Charlotte invites you to talk about a big project using multiple time clauses naturally.",
+        "opening_message": "Tell me about a project — what's the timeline? Use time clauses.",
+        "objectives": [
+          {
+            "id": 1,
+            "label_pt": "Time clause inicial (start/begin)",
+            "label_en": "Initial time clause",
+            "hidden_prompt": "user uses 'when/before/after/as soon as' + present simple",
+            "hint_pt": "I'll start as soon as I have time.",
+            "hint_en": "I'll start as soon as I have time."
+          },
+          {
+            "id": 2,
+            "label_pt": "Time clause de duração ou ponto de fim",
+            "label_en": "Duration or endpoint time clause",
+            "hidden_prompt": "user uses 'until' or 'by the time' + present",
+            "hint_pt": "I'll work until I finish it completely.",
+            "hint_en": "I'll work until I finish it completely."
+          },
+          {
+            "id": 3,
+            "label_pt": "Perguntar à Charlotte",
+            "label_en": "Ask Charlotte",
+            "hidden_prompt": "user asks 'How about you?' or about her project",
+            "hint_pt": "How about you?",
+            "hint_en": "How about you?"
+          }
+        ],
+        "closing_cue": "Charlotte fecha com \"Timeline articulated!\" quando obj_3 baterem.",
+        "suggested_script": "**Script** (referencial, 7 turnos):\n\n1. **Charlotte**: \"Tell me about a project — what's the timeline? Use time clauses.\"\n2. **Student**: \"I'll start as soon as I have time.\"\n3. **Charlotte**: \"Realistic. End point?\"\n4. **Student**: \"I'll work until I finish it completely.\"\n5. **Charlotte**: \"Dedication.\"\n6. **Student**: \"How about you?\"\n7. **Charlotte**: \"As soon as I finish my current book, I'll start a new one. By the time the year ends, I'll have written three. Timeline articulated!\"\n\n> I05 chat = LLM puro. Scaffold via hint_pt.\n\n---"
+      }
+    }
+  ],
+  "cross_unit_consolidation": [
+    "when + present simple (futuro/rotina)",
+    "before + present (sequência anterior)",
+    "after + present (sequência posterior)",
+    "until / till + present (duração contínua)",
+    "by the time + present (ponto de referência)",
+    "as soon as + present (imediatismo)",
+    "**Regra crítica**: nunca \"will\" dentro de time clauses futuras",
+    "Will/'ll apenas na cláusula principal"
+  ]
+}

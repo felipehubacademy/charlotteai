@@ -1,0 +1,1043 @@
+{
+  "id": "M12",
+  "title": "Se eu pudesse...",
+  "level": "Inter",
+  "block": "B2",
+  "units_range": "I01–I05",
+  "theme": "Second conditional (hypothetical present/future + wishes)",
+  "goal": "Student uses second conditional to express hypothetical or unlikely situations in present/future, with \"were\" for all persons (subjunctive) and \"I wish + past\" for present wishes.",
+  "connects_to": "M13 (Third conditional) — past hypotheticals.",
+  "module_chunks": [
+    "If I had + noun, I would + base",
+    "If I were + noun/adj, I would + base",
+    "I wish I had / I wish I were",
+    "If I were you, I would...",
+    "I'd love to / I'd hate to (chunks)",
+    "Would you + base + if?",
+    "What would you do if...?"
+  ],
+  "units": [
+    {
+      "id": "I01",
+      "title": "If I had time",
+      "sub_cefr": "B2",
+      "grammar_focus": "Second conditional structure (If + past simple, would + base)",
+      "markers": [
+        "denso"
+      ],
+      "real_life_context": "You imagine alternative present realities — what you'd do differently if circumstances were different.",
+      "grammar": [
+        {
+          "type": "multiple_choice",
+          "sentence": "If I _____ more time, I would learn piano.",
+          "options": [
+            "had",
+            "have",
+            "would have",
+            "will have"
+          ],
+          "answer": "had",
+          "explanation": "Second conditional: \"If + past simple, would + base\". A cláusula com \"if\" usa past simple (\"had\"), mesmo falando do PRESENTE hipotético. Esta é a estrutura chave do second conditional."
+        },
+        {
+          "type": "multiple_choice",
+          "sentence": "If she lived closer, we _____ each other more.",
+          "options": [
+            "would see",
+            "will see",
+            "saw",
+            "see"
+          ],
+          "answer": "would see",
+          "explanation": "A cláusula principal sempre usa \"would + base form\". \"We would see\" — não \"we will see\" (que seria first conditional, real)."
+        },
+        {
+          "type": "word_bank",
+          "sentence": "If I _____ rich, I would travel the world.",
+          "choices": [
+            "were",
+            "was",
+            "am",
+            "would be"
+          ],
+          "answer": "were",
+          "explanation": "Em second conditional formal/correto, \"were\" é usado para TODAS as pessoas (I, he, she, it, we, you, they). \"Were\" é a forma subjuntiva. \"Was\" é aceitável em fala informal mas \"were\" é o padrão."
+        },
+        {
+          "type": "word_bank",
+          "sentence": "I _____ help you if I _____ here.",
+          "choices": [
+            "would",
+            "were",
+            "will",
+            "am",
+            "would",
+            "were"
+          ],
+          "answer": "would / were",
+          "explanation": "\"I would help you if I were here\" — would na principal, were na cláusula if (mesmo com \"I\")."
+        },
+        {
+          "type": "fill_gap",
+          "sentence": "If I _____ you, I would accept the offer.",
+          "hint": "\"were\" para hipóteses (subjuntivo)",
+          "answer": "were",
+          "explanation": "\"If I were you\" é o chunk fixo de aconselhamento. Sempre \"were\", nunca \"was\" em inglês formal/correto."
+        },
+        {
+          "type": "fill_gap",
+          "sentence": "She would visit more often if she _____ a car.",
+          "hint": "past simple de \"have\"",
+          "answer": "had",
+          "explanation": "\"If she had a car\" — past simple \"had\" indicando situação hipotética presente (ela não tem carro agora, mas se tivesse...)."
+        },
+        {
+          "type": "fill_gap",
+          "sentence": "If we _____ the lottery, what _____ we _____?",
+          "hint": "past simple \"win\" / would + base \"do\"",
+          "answer": "won / would / do",
+          "explanation": "\"If we won, what would we do?\" — past simple \"won\" + \"would + base do\" na pergunta."
+        },
+        {
+          "type": "fix_error",
+          "sentence": "If I will have time, I would learn piano.",
+          "hint": "Após \"if\", past simple — nunca \"will\" em second conditional",
+          "answer": "If I had time, I would learn piano.",
+          "explanation": "Erro comum: misturar first conditional (will) com second. Em second, a cláusula \"if\" usa past simple. \"If I had\" — past simple para hipótese presente."
+        },
+        {
+          "type": "fix_error",
+          "sentence": "If I was you, I would say yes.",
+          "hint": "Para \"if I were you\" formal/correto",
+          "answer": "If I were you, I would say yes.",
+          "explanation": "\"Were\" é o padrão correto para aconselhamento hipotético. \"Was\" aparece em fala muito informal mas \"were\" é universal."
+        },
+        {
+          "type": "read_answer",
+          "passage": "If I had more time, I would learn piano. If she lived closer, we would see each other more. If I were rich, I would travel the world.",
+          "question": "What would the speaker do if they had more time?",
+          "answer": "learn piano",
+          "explanation": "The text says \"If I had more time, I would learn piano\"."
+        }
+      ],
+      "listening_speaking": [
+        {
+          "text": "If I had more time, I would learn piano.",
+          "context": "hypothetical present"
+        },
+        {
+          "text": "If she lived closer, we would see each other more.",
+          "context": "geographic hypothetical"
+        },
+        {
+          "text": "If I were rich, I would travel the world.",
+          "context": "wealth hypothetical"
+        },
+        {
+          "text": "If I were you, I would accept the offer.",
+          "context": "advice hypothetical"
+        },
+        {
+          "text": "She would visit if she had a car.",
+          "context": "order reversed"
+        }
+      ],
+      "roleplay": {
+        "scenario": "Charlotte explora seus desejos não realizados — o que você faria diferente se tivesse outros recursos, tempo, ou identidades. Quer três hipóteses bem construídas.",
+        "voiced_by": "charlotte",
+        "persona": "Charlotte",
+        "persona_outfit": "charlotte_casual",
+        "time_budget_sec": 180,
+        "opening_line": "Three hypotheticals about your current life — what would you do if?",
+        "objectives": [
+          {
+            "id": 1,
+            "label_pt": "Hipótese com 'if I had + tempo/dinheiro'",
+            "label_en": "Hypothetical with 'if I had + time/money'",
+            "hidden_prompt": "user uses 'If I had + noun, I would + base'",
+            "hint_pt": "If I had more money, I would travel.",
+            "hint_en": "If I had more money, I would travel."
+          },
+          {
+            "id": 2,
+            "label_pt": "Hipótese com 'if I were + adjetivo/role'",
+            "label_en": "Hypothetical with 'if I were'",
+            "hidden_prompt": "user uses 'If I were + adj/noun, I would + base'",
+            "hint_pt": "If I were taller, I would play basketball.",
+            "hint_en": "If I were taller, I would play basketball."
+          },
+          {
+            "id": 3,
+            "label_pt": "Hipótese sobre outra pessoa ou contexto",
+            "label_en": "Hypothetical about someone else",
+            "hidden_prompt": "user uses 'If + 3rd person + past, would + base'",
+            "hint_pt": "If my brother lived closer, we would hang out more.",
+            "hint_en": "If my brother lived closer, we would hang out more."
+          }
+        ],
+        "closing_cue": "Charlotte fecha com \"Hypotheticals explored!\" quando obj_3 baterem.",
+        "suggested_flow": "**Suggested flow** (referencial, 6 turnos):\n\n1. **Charlotte**: \"Three hypotheticals about your current life — what would you do if?\"\n2. **Student**: ~\"If I had more money, I would travel.\"\n3. **Charlotte**: \"Classic. Different identity?\"\n4. **Student**: ~\"If I were taller, I would play basketball.\"\n5. **Charlotte**: \"Someone else?\"\n6. **Student**: ~\"If my brother lived closer, we would hang out more.\"\n7. **Charlotte**: \"Hypotheticals explored!\"",
+        "evaluation_focus": [
+          "\"If + past simple, would + base\"",
+          "\"Were\" for all persons (especially \"I\")",
+          "No \"will\" in if-clause"
+        ]
+      },
+      "guided_chat": {
+        "scenario": "Charlotte conversa sobre desejos hipotéticos da vida — coisas que você gostaria que fossem diferentes — e quer trocar fantasias realistas com você.",
+        "voiced_by": "charlotte",
+        "persona": "Charlotte",
+        "persona_outfit": "charlotte_casual",
+        "intro_en": "Charlotte explores life hypotheticals with you. Practice second conditional naturally.",
+        "opening_message": "If you could change one thing about your life, what would you change?",
+        "objectives": [
+          {
+            "id": 1,
+            "label_pt": "Algo que mudaria",
+            "label_en": "Something to change",
+            "hidden_prompt": "user uses 'I would + base' for hypothetical change",
+            "hint_pt": "I would change my job.",
+            "hint_en": "I would change my job."
+          },
+          {
+            "id": 2,
+            "label_pt": "Hipótese mais elaborada com 'if'",
+            "label_en": "Elaborate hypothetical with 'if'",
+            "hidden_prompt": "user uses 'If + past simple, I would + base'",
+            "hint_pt": "If I had a year off, I would travel the world.",
+            "hint_en": "If I had a year off, I would travel the world."
+          },
+          {
+            "id": 3,
+            "label_pt": "Perguntar à Charlotte",
+            "label_en": "Ask Charlotte",
+            "hidden_prompt": "user asks 'How about you?' or 'What would you change?'",
+            "hint_pt": "How about you?",
+            "hint_en": "How about you?"
+          }
+        ],
+        "closing_cue": "Charlotte fecha com \"Dream worlds compared!\" quando obj_3 baterem.",
+        "suggested_script": "**Script** (referencial, 7 turnos):\n\n1. **Charlotte**: \"If you could change one thing about your life, what would you change?\"\n2. **Student**: \"I would change my job.\"\n3. **Charlotte**: \"Big move. What would the ideal look like?\"\n4. **Student**: \"If I had a year off, I would travel the world.\"\n5. **Charlotte**: \"Dream sabbatical. Where first?\"\n6. **Student**: \"How about you?\"\n7. **Charlotte**: \"If I had unlimited time, I would write three books. Dream worlds compared!\"\n\n> I01 chat = LLM puro. Scaffold via hint_pt.\n\n---"
+      }
+    },
+    {
+      "id": "I02",
+      "title": "I wish I had",
+      "sub_cefr": "B2",
+      "grammar_focus": "Wishes about present (I wish + past simple)",
+      "markers": [
+        "denso"
+      ],
+      "real_life_context": "You express dissatisfaction with current reality and longing for something different.",
+      "grammar": [
+        {
+          "type": "multiple_choice",
+          "sentence": "I wish I _____ more time.",
+          "options": [
+            "had",
+            "have",
+            "would have",
+            "will have"
+          ],
+          "answer": "had",
+          "explanation": "\"I wish + past simple\" para desejos sobre o presente. \"I wish I had\" — desejo presente de ter mais tempo agora (não tenho)."
+        },
+        {
+          "type": "multiple_choice",
+          "sentence": "She wishes she _____ taller.",
+          "options": [
+            "were",
+            "was",
+            "is",
+            "would be"
+          ],
+          "answer": "were",
+          "explanation": "\"Were\" para todas as pessoas em wish/hypothetical formal. \"She wishes she were taller\" — desejo presente sobre altura."
+        },
+        {
+          "type": "word_bank",
+          "sentence": "I wish I _____ speak French.",
+          "choices": [
+            "could",
+            "can",
+            "would",
+            "will"
+          ],
+          "answer": "could",
+          "explanation": "\"I wish I could + base\" para desejos de habilidade. \"Could\" é o \"past\" de can em wishes hipotéticos."
+        },
+        {
+          "type": "word_bank",
+          "sentence": "He wishes he _____ a better job.",
+          "choices": [
+            "had",
+            "has",
+            "would have",
+            "has had"
+          ],
+          "answer": "had",
+          "explanation": "Wish + past simple para situação presente. \"He had\" — past simple do verbo \"have\"."
+        },
+        {
+          "type": "fill_gap",
+          "sentence": "I wish I _____ younger.",
+          "hint": "\"were\" para hipóteses (subjuntivo)",
+          "answer": "were",
+          "explanation": "\"I wish I were younger\" — desejo presente sobre idade. \"Were\" é o padrão correto."
+        },
+        {
+          "type": "fill_gap",
+          "sentence": "We wish we _____ in a bigger house.",
+          "hint": "past simple de \"live\"",
+          "answer": "lived",
+          "explanation": "\"We wish we lived in a bigger house\" — desejo presente sobre habitação."
+        },
+        {
+          "type": "fill_gap",
+          "sentence": "I wish I _____ play the guitar.",
+          "hint": "passado de \"can\" para wishes",
+          "answer": "could",
+          "explanation": "\"I wish I could play\" — desejo de habilidade. \"Could\" é o \"passado\" usado em wish."
+        },
+        {
+          "type": "fix_error",
+          "sentence": "I wish I have more time.",
+          "hint": "Wish para presente usa past simple",
+          "answer": "I wish I had more time.",
+          "explanation": "\"Wish\" sobre presente usa past simple. \"I wish I have\" não funciona — sempre past simple no wish."
+        },
+        {
+          "type": "fix_error",
+          "sentence": "I wish I would be taller.",
+          "hint": "Para wish sobre presente, past simple \"were\"",
+          "answer": "I wish I were taller.",
+          "explanation": "\"Would\" não combina com wish sobre presente. Para desejos atuais sobre características, use past simple \"were\"."
+        },
+        {
+          "type": "read_answer",
+          "passage": "I wish I had more free time. She wishes she were taller. We wish we could speak more languages. He wishes he lived closer to family.",
+          "question": "What does she wish she were?",
+          "answer": "taller",
+          "explanation": "The text says \"She wishes she were taller\"."
+        }
+      ],
+      "listening_speaking": [
+        {
+          "text": "I wish I had more time.",
+          "context": "time wish"
+        },
+        {
+          "text": "She wishes she were taller.",
+          "context": "physical wish"
+        },
+        {
+          "text": "I wish I could speak French.",
+          "context": "ability wish"
+        },
+        {
+          "text": "He wishes he had a better job.",
+          "context": "career wish"
+        },
+        {
+          "text": "We wish we lived in a bigger house.",
+          "context": "life wish"
+        }
+      ],
+      "roleplay": {
+        "scenario": "Charlotte conversa sobre desejos suaves — coisas que você gostaria que fossem diferentes na sua vida atual. Quer três desejos com \"I wish\".",
+        "voiced_by": "charlotte",
+        "persona": "Charlotte",
+        "persona_outfit": "charlotte_casual",
+        "time_budget_sec": 180,
+        "opening_line": "Share three 'I wish' statements about your current life.",
+        "objectives": [
+          {
+            "id": 1,
+            "label_pt": "Wish com 'I wish I had' (possessão)",
+            "label_en": "Wish with 'I wish I had'",
+            "hidden_prompt": "user uses 'I wish I had + noun'",
+            "hint_pt": "I wish I had more energy.",
+            "hint_en": "I wish I had more energy."
+          },
+          {
+            "id": 2,
+            "label_pt": "Wish com 'I wish I were' (estado)",
+            "label_en": "Wish with 'I wish I were'",
+            "hidden_prompt": "user uses 'I wish I were + adj/noun'",
+            "hint_pt": "I wish I were less busy.",
+            "hint_en": "I wish I were less busy."
+          },
+          {
+            "id": 3,
+            "label_pt": "Wish com 'I wish I could' (habilidade)",
+            "label_en": "Wish with 'I wish I could'",
+            "hidden_prompt": "user uses 'I wish I could + base'",
+            "hint_pt": "I wish I could play the piano.",
+            "hint_en": "I wish I could play the piano."
+          }
+        ],
+        "closing_cue": "Charlotte fecha com \"Wishes shared!\" quando obj_3 baterem.",
+        "suggested_flow": "**Suggested flow** (referencial, 6 turnos):\n\n1. **Charlotte**: \"Share three 'I wish' statements about your current life.\"\n2. **Student**: ~\"I wish I had more energy.\"\n3. **Charlotte**: \"Same. About yourself?\"\n4. **Student**: ~\"I wish I were less busy.\"\n5. **Charlotte**: \"Ability?\"\n6. **Student**: ~\"I wish I could play the piano.\"\n7. **Charlotte**: \"Wishes shared!\"",
+        "evaluation_focus": [
+          "\"Wish + past simple\" for present desires",
+          "\"Were\" with I/he/she",
+          "\"Could\" for ability wishes"
+        ]
+      },
+      "guided_chat": {
+        "scenario": "Charlotte abre um chat sobre o que vocês desejariam mudar no momento — desejos honestos, vulneráveis, sobre o presente.",
+        "voiced_by": "charlotte",
+        "persona": "Charlotte",
+        "persona_outfit": "charlotte_casual",
+        "intro_en": "Charlotte invites honest wishes about present life. Use 'I wish + past'.",
+        "opening_message": "What's something you wish were different right now?",
+        "objectives": [
+          {
+            "id": 1,
+            "label_pt": "Desejo sobre o presente",
+            "label_en": "Present wish",
+            "hidden_prompt": "user uses 'I wish + past simple' for present",
+            "hint_pt": "I wish I had more vacation days.",
+            "hint_en": "I wish I had more vacation days."
+          },
+          {
+            "id": 2,
+            "label_pt": "Outro desejo (could/were)",
+            "label_en": "Another wish",
+            "hidden_prompt": "user uses another wish structure",
+            "hint_pt": "I wish I could travel more.",
+            "hint_en": "I wish I could travel more."
+          },
+          {
+            "id": 3,
+            "label_pt": "Perguntar à Charlotte",
+            "label_en": "Ask Charlotte",
+            "hidden_prompt": "user asks 'How about you?' or 'What do you wish?'",
+            "hint_pt": "How about you?",
+            "hint_en": "How about you?"
+          }
+        ],
+        "closing_cue": "Charlotte fecha com \"Honest wishes exchanged!\" quando obj_3 baterem.",
+        "suggested_script": "**Script** (referencial, 7 turnos):\n\n1. **Charlotte**: \"What's something you wish were different right now?\"\n2. **Student**: \"I wish I had more vacation days.\"\n3. **Charlotte**: \"Don't we all. What else?\"\n4. **Student**: \"I wish I could travel more.\"\n5. **Charlotte**: \"Connected wish. Travel needs time.\"\n6. **Student**: \"How about you?\"\n7. **Charlotte**: \"I wish I had a quieter schedule. And I wish I were better at saying no. Honest wishes exchanged!\"\n\n> I02 chat = LLM puro. Scaffold via hint_pt.\n\n---"
+      }
+    },
+    {
+      "id": "I03",
+      "title": "If I were you",
+      "sub_cefr": "B2",
+      "grammar_focus": "Advice with \"If I were you, I would...\" (subjunctive in advice)",
+      "markers": [
+        "denso"
+      ],
+      "real_life_context": "You give advice diplomatically by imagining yourself in someone else's position.",
+      "grammar": [
+        {
+          "type": "multiple_choice",
+          "sentence": "If I _____ you, I would talk to her.",
+          "options": [
+            "were",
+            "was",
+            "am",
+            "would be"
+          ],
+          "answer": "were",
+          "explanation": "\"If I were you\" é o chunk fixo de aconselhamento formal. Sempre \"were\", mesmo com \"I\". Esta é a forma subjuntiva preservada em inglês moderno."
+        },
+        {
+          "type": "multiple_choice",
+          "sentence": "If I were you, I _____ accept the offer.",
+          "options": [
+            "would",
+            "will",
+            "am",
+            "can"
+          ],
+          "answer": "would",
+          "explanation": "\"I would accept\" — would + base na cláusula principal. Padrão de aconselhamento second conditional."
+        },
+        {
+          "type": "word_bank",
+          "sentence": "If I _____ you, I would say sorry.",
+          "choices": [
+            "were",
+            "was",
+            "am",
+            "would be"
+          ],
+          "answer": "were",
+          "explanation": "\"Were\" é universal para advice — mais educado e gramaticalmente correto que \"was\"."
+        },
+        {
+          "type": "word_bank",
+          "sentence": "_____ I were you, I'd take the job.",
+          "choices": [
+            "If",
+            "When",
+            "Although",
+            "Until"
+          ],
+          "answer": "If",
+          "explanation": "\"If I were you\" — começa com \"if\". \"When/although\" não funcionam neste chunk."
+        },
+        {
+          "type": "fill_gap",
+          "sentence": "If I were you, I _____ go for it.",
+          "hint": "would + base",
+          "answer": "would",
+          "explanation": "\"Would go for it\" — chunk natural de incentivo na principal."
+        },
+        {
+          "type": "fill_gap",
+          "sentence": "If I _____ in your position, I would think twice.",
+          "hint": "subjunctive \"were\"",
+          "answer": "were",
+          "explanation": "\"If I were in your position\" — variação do chunk básico. Mantém \"were\"."
+        },
+        {
+          "type": "fill_gap",
+          "sentence": "I _____ talk to him if I were you.",
+          "hint": "would + base",
+          "answer": "would",
+          "explanation": "\"I would talk\" — would na principal, mesmo com ordem invertida da frase."
+        },
+        {
+          "type": "fix_error",
+          "sentence": "If I was you, I would say yes.",
+          "hint": "\"Were\" para aconselhamento formal",
+          "answer": "If I were you, I would say yes.",
+          "explanation": "\"If I was\" é fala muito informal e considerado incorreto em escrita formal. \"Were\" é o padrão universal."
+        },
+        {
+          "type": "fix_error",
+          "sentence": "If I were you, I will accept it.",
+          "hint": "Second conditional usa \"would\", não \"will\"",
+          "answer": "If I were you, I would accept it.",
+          "explanation": "Second conditional sempre \"would + base\" na principal, nunca \"will\" (que é first conditional)."
+        },
+        {
+          "type": "read_answer",
+          "passage": "If I were you, I would talk to her honestly. If I were in your position, I would take the offer. If I were you, I would go for it — life is short.",
+          "question": "What does the speaker think you should do?",
+          "answer": "go for it (or \"take the offer\" or \"talk to her\")",
+          "explanation": "The text suggests multiple actions; all are valid advice given in the second conditional with \"if I were you\"."
+        }
+      ],
+      "listening_speaking": [
+        {
+          "text": "If I were you, I would talk to her.",
+          "context": "advice for communication"
+        },
+        {
+          "text": "If I were you, I would accept the offer.",
+          "context": "career advice"
+        },
+        {
+          "text": "If I were you, I would say sorry.",
+          "context": "relationship advice"
+        },
+        {
+          "text": "If I were in your position, I'd take the job.",
+          "context": "variation"
+        },
+        {
+          "text": "I'd go for it if I were you.",
+          "context": "order reversed"
+        }
+      ],
+      "roleplay": {
+        "scenario": "Charlotte conta três problemas que ela está enfrentando — você dá conselhos honestos usando \"If I were you, I would...\"",
+        "voiced_by": "charlotte",
+        "persona": "Charlotte",
+        "persona_outfit": "charlotte_casual",
+        "time_budget_sec": 180,
+        "opening_line": "I'm facing some decisions. Give me advice using 'If I were you, I would...'",
+        "objectives": [
+          {
+            "id": 1,
+            "label_pt": "Conselho com 'If I were you'",
+            "label_en": "Advice with 'If I were you'",
+            "hidden_prompt": "user uses 'If I were you, I would + base'",
+            "hint_pt": "If I were you, I would take the offer.",
+            "hint_en": "If I were you, I would take the offer."
+          },
+          {
+            "id": 2,
+            "label_pt": "Outro conselho",
+            "label_en": "Another piece of advice",
+            "hidden_prompt": "user uses another 'If I were you, I would' advice",
+            "hint_pt": "If I were you, I would talk to her directly.",
+            "hint_en": "If I were you, I would talk to her directly."
+          },
+          {
+            "id": 3,
+            "label_pt": "Conselho com 'in your position'",
+            "label_en": "Advice with 'in your position'",
+            "hidden_prompt": "user uses 'If I were in your position, I would'",
+            "hint_pt": "If I were in your position, I would wait.",
+            "hint_en": "If I were in your position, I would wait."
+          }
+        ],
+        "closing_cue": "Charlotte fecha com \"Thoughtful advice!\" quando obj_3 baterem.",
+        "suggested_flow": "**Suggested flow** (referencial, 6 turnos):\n\n1. **Charlotte**: \"I'm facing some decisions. Give me advice using 'If I were you, I would...'\"\n2. **Student**: ~\"If I were you, I would take the offer.\"\n3. **Charlotte**: \"Direct. About the conversation?\"\n4. **Student**: ~\"If I were you, I would talk to her directly.\"\n5. **Charlotte**: \"Tough but right. And the bigger question?\"\n6. **Student**: ~\"If I were in your position, I would wait.\"\n7. **Charlotte**: \"Thoughtful advice!\"",
+        "evaluation_focus": [
+          "\"Were\" not \"was\" with I",
+          "\"Would + base\"",
+          "Genuine advice tone"
+        ]
+      },
+      "guided_chat": {
+        "scenario": "Charlotte conta um dilema dela e pede conselho — quer que você responda de forma reflexiva com \"If I were you\".",
+        "voiced_by": "charlotte",
+        "persona": "Charlotte",
+        "persona_outfit": "charlotte_casual",
+        "intro_en": "Charlotte shares dilemmas. Practice giving advice with 'If I were you'.",
+        "opening_message": "I can't decide between two job offers. What would you do?",
+        "objectives": [
+          {
+            "id": 1,
+            "label_pt": "Conselho inicial",
+            "label_en": "Initial advice",
+            "hidden_prompt": "user uses 'If I were you, I would + base'",
+            "hint_pt": "If I were you, I would take the one closer to home.",
+            "hint_en": "If I were you, I would take the one closer to home."
+          },
+          {
+            "id": 2,
+            "label_pt": "Razão ou conselho adicional",
+            "label_en": "Reason or additional advice",
+            "hidden_prompt": "user adds another 'I would + base' or 'If I were you'",
+            "hint_pt": "I would think about long-term growth.",
+            "hint_en": "I would think about long-term growth."
+          },
+          {
+            "id": 3,
+            "label_pt": "Perguntar mais sobre o dilema",
+            "label_en": "Ask more about the dilemma",
+            "hidden_prompt": "user asks Charlotte a clarifying question",
+            "hint_pt": "What does your gut say?",
+            "hint_en": "What does your gut say?"
+          }
+        ],
+        "closing_cue": "Charlotte fecha com \"Helpful perspective!\" quando obj_3 baterem.",
+        "suggested_script": "**Script** (referencial, 7 turnos):\n\n1. **Charlotte**: \"I can't decide between two job offers. What would you do?\"\n2. **Student**: \"If I were you, I would take the one closer to home.\"\n3. **Charlotte**: \"Quality of life argument. What else?\"\n4. **Student**: \"I would think about long-term growth.\"\n5. **Charlotte**: \"Smart. So career trajectory matters.\"\n6. **Student**: \"What does your gut say?\"\n7. **Charlotte**: \"Honestly, the same as yours. Helpful perspective!\"\n\n> I03 chat = LLM puro. Scaffold via hint_pt.\n\n---"
+      }
+    },
+    {
+      "id": "I04",
+      "title": "What would you do?",
+      "sub_cefr": "B2",
+      "grammar_focus": "Questions in second conditional (Would you + base + if?)",
+      "markers": [
+        "qform"
+      ],
+      "real_life_context": "You ask hypothetical questions to explore values and choices.",
+      "grammar": [
+        {
+          "type": "multiple_choice",
+          "sentence": "What _____ you do if you won the lottery?",
+          "options": [
+            "would",
+            "will",
+            "do",
+            "are"
+          ],
+          "answer": "would",
+          "explanation": "Pergunta em second conditional: \"WH + would + subject + base + if + past simple\". \"What would you do?\" — pergunta hipotética padrão."
+        },
+        {
+          "type": "multiple_choice",
+          "sentence": "_____ you travel if you had more money?",
+          "options": [
+            "Would",
+            "Will",
+            "Did",
+            "Do"
+          ],
+          "answer": "Would",
+          "explanation": "Pergunta yes/no em second conditional: \"Would + subject + base + if + past simple?\"."
+        },
+        {
+          "type": "word_bank",
+          "sentence": "Where _____ you live if you could choose any country?",
+          "choices": [
+            "would",
+            "will",
+            "do",
+            "did"
+          ],
+          "answer": "would",
+          "explanation": "\"Would you live\" — WH + would + subject + base."
+        },
+        {
+          "type": "word_bank",
+          "sentence": "If you _____ a million dollars, what would you do?",
+          "choices": [
+            "had",
+            "have",
+            "would have",
+            "will have"
+          ],
+          "answer": "had",
+          "explanation": "Após \"if\" em second conditional, sempre past simple. \"Had a million\" — situação hipotética."
+        },
+        {
+          "type": "fill_gap",
+          "sentence": "What _____ you do if you _____ in my position?",
+          "hint": "would (principal) + were (subjuntivo)",
+          "answer": "would / were",
+          "explanation": "\"Would you do\" + \"if you were\" — pergunta hipotética com \"were\" para a hipótese."
+        },
+        {
+          "type": "fill_gap",
+          "sentence": "_____ you change jobs if you _____ the chance?",
+          "hint": "would / had",
+          "answer": "Would / had",
+          "explanation": "\"Would you change... if you had the chance?\" — pergunta yes/no second conditional."
+        },
+        {
+          "type": "fill_gap",
+          "sentence": "Where _____ you go if you _____ a free week?",
+          "hint": "would / had",
+          "answer": "would / had",
+          "explanation": "\"Where would you go if you had a free week?\" — WH + would + if + past simple."
+        },
+        {
+          "type": "fix_error",
+          "sentence": "What will you do if you won the lottery?",
+          "hint": "Para hipóteses, use \"would\", não \"will\"",
+          "answer": "What would you do if you won the lottery?",
+          "explanation": "Ganhar na loteria é hipotético (improvável), então second conditional com \"would\". \"Will\" seria first (mais provável)."
+        },
+        {
+          "type": "fix_error",
+          "sentence": "Would you to help me if I asked?",
+          "hint": "Sem \"to\" após would",
+          "answer": "Would you help me if I asked?",
+          "explanation": "Após \"would\", base form sem \"to\". \"Would you help\" — pergunta natural."
+        },
+        {
+          "type": "read_answer",
+          "passage": "What would you do if you won the lottery? Where would you live if you could choose any country? Would you travel more if you had more money?",
+          "question": "What hypothetical involves winning the lottery?",
+          "answer": "what would you do (or \"what to do with the money\")",
+          "explanation": "The text asks \"What would you do if you won the lottery?\"."
+        }
+      ],
+      "listening_speaking": [
+        {
+          "text": "What would you do if you won the lottery?",
+          "context": "money hypothetical"
+        },
+        {
+          "text": "Would you travel if you had more money?",
+          "context": "yes/no question"
+        },
+        {
+          "text": "Where would you live if you could choose any country?",
+          "context": "place hypothetical"
+        },
+        {
+          "text": "What would you do in my position?",
+          "context": "empathy hypothetical"
+        },
+        {
+          "text": "Would you change jobs if you had the chance?",
+          "context": "career hypothetical"
+        }
+      ],
+      "roleplay": {
+        "scenario": "Charlotte propõe um jogo de perguntas hipotéticas — vocês trocam \"What would you do if...\" para descobrir valores e desejos.",
+        "voiced_by": "charlotte",
+        "persona": "Charlotte",
+        "persona_outfit": "charlotte_casual",
+        "time_budget_sec": 180,
+        "opening_line": "Hypothetical question game! Ask me three 'what would you do if?' questions.",
+        "objectives": [
+          {
+            "id": 1,
+            "label_pt": "Pergunta hipotética com 'What would you do if?'",
+            "label_en": "Hypothetical 'What would you do if?'",
+            "hidden_prompt": "user asks 'What would you do if + past simple?'",
+            "hint_pt": "What would you do if you won a million dollars?",
+            "hint_en": "What would you do if you won a million dollars?"
+          },
+          {
+            "id": 2,
+            "label_pt": "Outra pergunta hipotética (Where/Who)",
+            "label_en": "Another hypothetical (Where/Who)",
+            "hidden_prompt": "user asks 'Where/Who/How would you + base + if + past?'",
+            "hint_pt": "Where would you go if you could travel anywhere?",
+            "hint_en": "Where would you go if you could travel anywhere?"
+          },
+          {
+            "id": 3,
+            "label_pt": "Pergunta yes/no com 'Would you'",
+            "label_en": "Yes/no 'Would you' question",
+            "hidden_prompt": "user asks 'Would you + base + if + past?'",
+            "hint_pt": "Would you change careers if you had the chance?",
+            "hint_en": "Would you change careers if you had the chance?"
+          }
+        ],
+        "closing_cue": "Charlotte fecha com \"Great hypotheticals!\" quando obj_3 baterem.",
+        "suggested_flow": "**Suggested flow** (referencial, 6 turnos):\n\n1. **Charlotte**: \"Hypothetical question game! Ask me three 'what would you do if?' questions.\"\n2. **Student**: ~\"What would you do if you won a million dollars?\"\n3. **Charlotte**: \"Buy a quiet house and write. Travel?\"\n4. **Student**: ~\"Where would you go if you could travel anywhere?\"\n5. **Charlotte**: \"Japan. Career?\"\n6. **Student**: ~\"Would you change careers if you had the chance?\"\n7. **Charlotte**: \"Honestly, no — I love what I do. Great hypotheticals!\"",
+        "evaluation_focus": [
+          "WH + would + subject + base",
+          "\"If + past simple\" in hypothesis",
+          "Question structure clear"
+        ]
+      },
+      "guided_chat": {
+        "scenario": "Charlotte propõe um chat de perguntas hipotéticas — vocês alternam perguntando \"what would you do if\" para explorar uns aos outros.",
+        "voiced_by": "charlotte",
+        "persona": "Charlotte",
+        "persona_outfit": "charlotte_casual",
+        "intro_en": "Charlotte plays hypothetical Q&A with you. Ask 'Would you?' and 'What would you do if?'",
+        "opening_message": "Ask me: what would I do if I had a year off?",
+        "objectives": [
+          {
+            "id": 1,
+            "label_pt": "Pergunta hipotética 1",
+            "label_en": "Hypothetical question 1",
+            "hidden_prompt": "user asks 'What would you do if + past simple?'",
+            "hint_pt": "What would you do if you had a year off?",
+            "hint_en": "What would you do if you had a year off?"
+          },
+          {
+            "id": 2,
+            "label_pt": "Pergunta hipotética 2 (different topic)",
+            "label_en": "Hypothetical question 2",
+            "hidden_prompt": "user asks another 'Would you?' or 'What would?'",
+            "hint_pt": "Would you move abroad if you had the chance?",
+            "hint_en": "Would you move abroad if you had the chance?"
+          },
+          {
+            "id": 3,
+            "label_pt": "Pergunta hipotética 3 (deep)",
+            "label_en": "Hypothetical 3 (deeper)",
+            "hidden_prompt": "user asks one more deep hypothetical",
+            "hint_pt": "What would you change if you could redo your career?",
+            "hint_en": "What would you change if you could redo your career?"
+          }
+        ],
+        "closing_cue": "Charlotte fecha com \"Great Q&A!\" quando obj_3 baterem.",
+        "suggested_script": "**Script** (referencial, 7 turnos):\n\n1. **Charlotte**: \"Ask me: what would I do if I had a year off?\"\n2. **Student**: \"What would you do if you had a year off?\"\n3. **Charlotte**: \"Travel slowly, country by country. Your turn — ask?\"\n4. **Student**: \"Would you move abroad if you had the chance?\"\n5. **Charlotte**: \"Maybe to Italy. One more?\"\n6. **Student**: \"What would you change if you could redo your career?\"\n7. **Charlotte**: \"I'd start teaching earlier. Great Q&A!\"\n\n> I04 chat = LLM puro. Scaffold via hint_pt.\n\n---"
+      }
+    },
+    {
+      "id": "I05",
+      "title": "Hypothetical world",
+      "sub_cefr": "B2",
+      "grammar_focus": "Integration of second conditional + wishes",
+      "markers": [],
+      "real_life_context": "You combine hypothetical thinking fluidly — wishes, hypotheticals, advice, and questions.",
+      "grammar": [
+        {
+          "type": "multiple_choice",
+          "sentence": "If I _____ rich, I would help my family.",
+          "options": [
+            "were",
+            "am",
+            "will be",
+            "would be"
+          ],
+          "answer": "were",
+          "explanation": "Second conditional com \"were\" para hipótese formal."
+        },
+        {
+          "type": "multiple_choice",
+          "sentence": "I wish I _____ play the piano.",
+          "options": [
+            "could",
+            "can",
+            "would",
+            "will"
+          ],
+          "answer": "could",
+          "explanation": "\"I wish I could\" para habilidade."
+        },
+        {
+          "type": "word_bank",
+          "sentence": "If I _____ you, I _____ accept the offer.",
+          "choices": [
+            "were",
+            "would",
+            "was",
+            "would",
+            "am",
+            "will",
+            "were",
+            "will"
+          ],
+          "answer": "were / would",
+          "explanation": "\"If I were you, I would accept\" — chunk fixo de aconselhamento."
+        },
+        {
+          "type": "word_bank",
+          "sentence": "What _____ you do if you _____ in my position?",
+          "choices": [
+            "would",
+            "were",
+            "will",
+            "are",
+            "would",
+            "will",
+            "would",
+            "was"
+          ],
+          "answer": "would / were",
+          "explanation": "\"Would you do if you were\" — pergunta hipotética com \"were\"."
+        },
+        {
+          "type": "fill_gap",
+          "sentence": "I wish I _____ more time to relax.",
+          "hint": "past simple \"have\"",
+          "answer": "had",
+          "explanation": "\"Wish I had\" — desejo presente sobre tempo."
+        },
+        {
+          "type": "fill_gap",
+          "sentence": "If she _____ closer, we _____ see each other often.",
+          "hint": "past simple \"live\" + would + base \"see\"",
+          "answer": "lived / would",
+          "explanation": "\"If she lived closer, we would see each other\" — second conditional padrão."
+        },
+        {
+          "type": "fill_gap",
+          "sentence": "_____ you change anything if you _____ go back in time?",
+          "hint": "Would / could",
+          "answer": "Would / could",
+          "explanation": "\"Would you change... if you could go back?\" — pergunta com \"could\" para habilidade."
+        },
+        {
+          "type": "fix_error",
+          "sentence": "If I will have time, I would learn Spanish.",
+          "hint": "Second conditional não usa \"will\"",
+          "answer": "If I had time, I would learn Spanish.",
+          "explanation": "Após \"if\" em second conditional, past simple \"had\". \"Will\" não cabe."
+        },
+        {
+          "type": "fix_error",
+          "sentence": "I wish I would be taller.",
+          "hint": "Wish sobre presente usa past simple",
+          "answer": "I wish I were taller.",
+          "explanation": "\"Would\" não combina com wish sobre presente. Use past simple \"were\"."
+        },
+        {
+          "type": "read_answer",
+          "passage": "If I had more time, I would travel more. I wish I could speak Italian fluently. If I were you, I would take the opportunity. What would you do if you won a lot of money?",
+          "question": "What does the speaker wish they could do?",
+          "answer": "speak Italian fluently (or \"speak Italian\")",
+          "explanation": "The text says \"I wish I could speak Italian fluently\"."
+        }
+      ],
+      "listening_speaking": [
+        {
+          "text": "If I had more time, I would travel more.",
+          "context": "hypothetical"
+        },
+        {
+          "text": "I wish I could speak more languages.",
+          "context": "wish + ability"
+        },
+        {
+          "text": "If I were you, I would take it.",
+          "context": "advice"
+        },
+        {
+          "text": "What would you do if you won the lottery?",
+          "context": "question"
+        },
+        {
+          "text": "I wish I were less stressed.",
+          "context": "present wish"
+        }
+      ],
+      "roleplay": {
+        "scenario": "Charlotte propõe uma conversa hipotética rica — quer ver você usar wishes, hypotheticals, advice, e perguntas hipotéticas tudo numa fala só.",
+        "voiced_by": "charlotte",
+        "persona": "Charlotte",
+        "persona_outfit": "charlotte_casual",
+        "time_budget_sec": 180,
+        "opening_line": "Mix it all — a wish, a hypothetical, a piece of advice, all in three sentences.",
+        "objectives": [
+          {
+            "id": 1,
+            "label_pt": "Wish sobre presente",
+            "label_en": "Present wish",
+            "hidden_prompt": "user uses 'I wish + past simple'",
+            "hint_pt": "I wish I had more free time.",
+            "hint_en": "I wish I had more free time."
+          },
+          {
+            "id": 2,
+            "label_pt": "Hipótese com 'if + past, would + base'",
+            "label_en": "Hypothetical with 'if + past, would + base'",
+            "hidden_prompt": "user uses 'If + past simple, would + base'",
+            "hint_pt": "If I had a sabbatical, I would write a book.",
+            "hint_en": "If I had a sabbatical, I would write a book."
+          },
+          {
+            "id": 3,
+            "label_pt": "Conselho com 'If I were you'",
+            "label_en": "Advice with 'If I were you'",
+            "hidden_prompt": "user uses 'If I were you, I would + base'",
+            "hint_pt": "If I were you, I would try a new hobby.",
+            "hint_en": "If I were you, I would try a new hobby."
+          }
+        ],
+        "closing_cue": "Charlotte fecha com \"Hypothetical fluency!\" quando obj_3 baterem.",
+        "suggested_flow": "**Suggested flow** (referencial, 6 turnos):\n\n1. **Charlotte**: \"Mix it all — a wish, a hypothetical, a piece of advice, all in three sentences.\"\n2. **Student**: ~\"I wish I had more free time.\"\n3. **Charlotte**: \"Common wish. Hypothetical?\"\n4. **Student**: ~\"If I had a sabbatical, I would write a book.\"\n5. **Charlotte**: \"Advice for me?\"\n6. **Student**: ~\"If I were you, I would try a new hobby.\"\n7. **Charlotte**: \"Hypothetical fluency!\"",
+        "evaluation_focus": [
+          "Variety of structures",
+          "\"Were\" formal, \"would + base\"",
+          "Natural integration"
+        ]
+      },
+      "guided_chat": {
+        "scenario": "Charlotte explora \"vidas alternativas\" com você — o que vocês mudariam, fariam diferente, ou desejariam neste momento, integrando todos os recursos.",
+        "voiced_by": "charlotte",
+        "persona": "Charlotte",
+        "persona_outfit": "charlotte_casual",
+        "intro_en": "Charlotte explores alternative realities. Mix wishes, hypotheticals, and advice freely.",
+        "opening_message": "If your life could be different in one big way, what would change?",
+        "objectives": [
+          {
+            "id": 1,
+            "label_pt": "Mudança hipotética grande",
+            "label_en": "Big hypothetical change",
+            "hidden_prompt": "user uses 'If + past, I would + base' for big change",
+            "hint_pt": "If I could choose, I would live by the ocean.",
+            "hint_en": "If I could choose, I would live by the ocean."
+          },
+          {
+            "id": 2,
+            "label_pt": "Wish ou hipótese adicional",
+            "label_en": "Additional wish or hypothetical",
+            "hidden_prompt": "user uses 'I wish' or another hypothetical",
+            "hint_pt": "I wish I had more courage to try new things.",
+            "hint_en": "I wish I had more courage to try new things."
+          },
+          {
+            "id": 3,
+            "label_pt": "Perguntar à Charlotte",
+            "label_en": "Ask Charlotte",
+            "hidden_prompt": "user asks 'How about you?' or 'What would you change?'",
+            "hint_pt": "How about you?",
+            "hint_en": "How about you?"
+          }
+        ],
+        "closing_cue": "Charlotte fecha com \"Alternative lives explored!\" quando obj_3 baterem.",
+        "suggested_script": "**Script** (referencial, 7 turnos):\n\n1. **Charlotte**: \"If your life could be different in one big way, what would change?\"\n2. **Student**: \"If I could choose, I would live by the ocean.\"\n3. **Charlotte**: \"The slow life. What else?\"\n4. **Student**: \"I wish I had more courage to try new things.\"\n5. **Charlotte**: \"Important wish. Courage is a muscle.\"\n6. **Student**: \"How about you?\"\n7. **Charlotte**: \"If I had three lives, I'd be a chef in one, a writer in another, a teacher in the third. I wish I could do all three. Alternative lives explored!\"\n\n> I05 chat = LLM puro. Scaffold via hint_pt.\n\n---"
+      }
+    }
+  ],
+  "cross_unit_consolidation": [
+    "Second conditional: If + past simple, would + base (hipóteses presente/futuro)",
+    "\"Were\" para todas as pessoas (subjuntivo formal)",
+    "I wish + past simple (desejos presente)",
+    "I wish I could + base (desejos de habilidade)",
+    "If I were you, I would... (aconselhamento)",
+    "What would you do if...? (perguntas hipotéticas)",
+    "Nunca \"will\" dentro de cláusulas if hipotéticas"
+  ]
+}

@@ -147,8 +147,33 @@
         "id": "M07",
         "title": "Quantificadores precisos",
         "file": "inter/M07.json"
+      },
+      {
+        "id": "M08",
+        "title": "Quem, qual, que",
+        "file": "inter/M08.json"
+      },
+      {
+        "id": "M09",
+        "title": "Tão... quanto",
+        "file": "inter/M09.json"
+      },
+      {
+        "id": "M10",
+        "title": "Verdades gerais",
+        "file": "inter/M10.json"
+      },
+      {
+        "id": "M11",
+        "title": "Quando, antes, depois",
+        "file": "inter/M11.json"
+      },
+      {
+        "id": "M12",
+        "title": "Se eu pudesse...",
+        "file": "inter/M12.json"
       }
     ]
   },
-  "generated_at": "2026-05-30T20:17:43.352Z"
+  "generated_at": "2026-05-30T20:40:08.843Z"
 }
