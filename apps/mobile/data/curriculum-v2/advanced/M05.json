@@ -82,23 +82,28 @@
       "listening_speaking": [
         {
           "text": "It is said that money can't buy happiness.",
-          "context": "proverb attribution"
+          "context": "proverb attribution",
+          "audio_url": "https://fnvjibzreepubageztoi.supabase.co/storage/v1/object/public/curriculum-audio/ls/advanced/12c3dc5c95f82740.flac?v=2"
         },
         {
           "text": "It is believed that the painting is genuine.",
-          "context": "expert opinion"
+          "context": "expert opinion",
+          "audio_url": "https://fnvjibzreepubageztoi.supabase.co/storage/v1/object/public/curriculum-audio/ls/advanced/9eb1b0bda51c3df5.flac?v=2"
         },
         {
           "text": "It was once thought that the Earth was flat.",
-          "context": "historical belief"
+          "context": "historical belief",
+          "audio_url": "https://fnvjibzreepubageztoi.supabase.co/storage/v1/object/public/curriculum-audio/ls/advanced/7fc4f1911371ac71.flac?v=2"
         },
         {
           "text": "It is reported that talks have collapsed.",
-          "context": "news register"
+          "context": "news register",
+          "audio_url": "https://fnvjibzreepubageztoi.supabase.co/storage/v1/object/public/curriculum-audio/ls/advanced/c424740267d804c0.flac?v=2"
         },
         {
           "text": "It cannot be denied that the project failed.",
-          "context": "formal acknowledgment"
+          "context": "formal acknowledgment",
+          "audio_url": "https://fnvjibzreepubageztoi.supabase.co/storage/v1/object/public/curriculum-audio/ls/advanced/549ea04d6f23d4c1.flac?v=2"
         }
       ],
       "roleplay": {
@@ -227,23 +232,28 @@
       "listening_speaking": [
         {
           "text": "He is said to be a recluse.",
-          "context": "present trait"
+          "context": "present trait",
+          "audio_url": "https://fnvjibzreepubageztoi.supabase.co/storage/v1/object/public/curriculum-audio/ls/advanced/29f314b12fe9555b.flac?v=2"
         },
         {
           "text": "She is believed to have left the country.",
-          "context": "past perfect action"
+          "context": "past perfect action",
+          "audio_url": "https://fnvjibzreepubageztoi.supabase.co/storage/v1/object/public/curriculum-audio/ls/advanced/a6b9a6689711d6b8.flac?v=2"
         },
         {
           "text": "They are thought to be in talks.",
-          "context": "present continuous"
+          "context": "present continuous",
+          "audio_url": "https://fnvjibzreepubageztoi.supabase.co/storage/v1/object/public/curriculum-audio/ls/advanced/46e379465a761a37.flac?v=2"
         },
         {
           "text": "The painting is reported to be a forgery.",
-          "context": "present judgment"
+          "context": "present judgment",
+          "audio_url": "https://fnvjibzreepubageztoi.supabase.co/storage/v1/object/public/curriculum-audio/ls/advanced/8fce56ed8a906306.flac?v=2"
         },
         {
           "text": "He is rumoured to have made millions.",
-          "context": "past action with \"rumoured\""
+          "context": "past action with \"rumoured\"",
+          "audio_url": "https://fnvjibzreepubageztoi.supabase.co/storage/v1/object/public/curriculum-audio/ls/advanced/d518fae7261a3812.flac?v=2"
         }
       ],
       "roleplay": {
@@ -371,23 +381,28 @@
       "listening_speaking": [
         {
           "text": "I had my hair cut yesterday.",
-          "context": "service arranged"
+          "context": "service arranged",
+          "audio_url": "https://fnvjibzreepubageztoi.supabase.co/storage/v1/object/public/curriculum-audio/ls/advanced/1facfb49b58a99bf.flac?v=2"
         },
         {
           "text": "She got her car repaired.",
-          "context": "informal causative"
+          "context": "informal causative",
+          "audio_url": "https://fnvjibzreepubageztoi.supabase.co/storage/v1/object/public/curriculum-audio/ls/advanced/76ac26ee3a03da5c.flac?v=2"
         },
         {
           "text": "We're having the kitchen renovated.",
-          "context": "ongoing causative"
+          "context": "ongoing causative",
+          "audio_url": "https://fnvjibzreepubageztoi.supabase.co/storage/v1/object/public/curriculum-audio/ls/advanced/a2369ab6f50502bf.flac?v=2"
         },
         {
           "text": "I need to have my eyes tested.",
-          "context": "future causative"
+          "context": "future causative",
+          "audio_url": "https://fnvjibzreepubageztoi.supabase.co/storage/v1/object/public/curriculum-audio/ls/advanced/3e7f5d786f41caf1.flac?v=2"
         },
         {
           "text": "He had his portrait painted.",
-          "context": "formal art context"
+          "context": "formal art context",
+          "audio_url": "https://fnvjibzreepubageztoi.supabase.co/storage/v1/object/public/curriculum-audio/ls/advanced/d84b27463cded654.flac?v=2"
         }
       ],
       "roleplay": {
@@ -515,23 +530,28 @@
       "listening_speaking": [
         {
           "text": "I had my wallet stolen on the train.",
-          "context": "misfortune"
+          "context": "misfortune",
+          "audio_url": "https://fnvjibzreepubageztoi.supabase.co/storage/v1/object/public/curriculum-audio/ls/advanced/4a6c3f3fdbbdcb07.flac?v=2"
         },
         {
           "text": "She got her car towed last night.",
-          "context": "bad surprise"
+          "context": "bad surprise",
+          "audio_url": "https://fnvjibzreepubageztoi.supabase.co/storage/v1/object/public/curriculum-audio/ls/advanced/1d045fea6bf811ab.flac?v=2"
         },
         {
           "text": "We had our flight cancelled twice.",
-          "context": "repeated misfortune"
+          "context": "repeated misfortune",
+          "audio_url": "https://fnvjibzreepubageztoi.supabase.co/storage/v1/object/public/curriculum-audio/ls/advanced/f07f7eb6961eac1a.flac?v=2"
         },
         {
           "text": "He had his appeal rejected.",
-          "context": "formal bad news"
+          "context": "formal bad news",
+          "audio_url": "https://fnvjibzreepubageztoi.supabase.co/storage/v1/object/public/curriculum-audio/ls/advanced/42c869ab232bae89.flac?v=2"
         },
         {
           "text": "I had my coat ruined at the dry cleaner.",
-          "context": "service-gone-wrong"
+          "context": "service-gone-wrong",
+          "audio_url": "https://fnvjibzreepubageztoi.supabase.co/storage/v1/object/public/curriculum-audio/ls/advanced/82055a12fa803b1a.flac?v=2"
         }
       ],
       "roleplay": {
@@ -657,23 +677,28 @@
       "listening_speaking": [
         {
           "text": "It is feared that the crisis will deepen.",
-          "context": "impersonal formal"
+          "context": "impersonal formal",
+          "audio_url": "https://fnvjibzreepubageztoi.supabase.co/storage/v1/object/public/curriculum-audio/ls/advanced/471ba0761241a577.flac?v=2"
         },
         {
           "text": "She is considered to be the leading expert.",
-          "context": "double passive"
+          "context": "double passive",
+          "audio_url": "https://fnvjibzreepubageztoi.supabase.co/storage/v1/object/public/curriculum-audio/ls/advanced/552aad0b986896ea.flac?v=2"
         },
         {
           "text": "I had my passport renewed last month.",
-          "context": "causative service"
+          "context": "causative service",
+          "audio_url": "https://fnvjibzreepubageztoi.supabase.co/storage/v1/object/public/curriculum-audio/ls/advanced/d8649f553b64257f.flac?v=2"
         },
         {
           "text": "I had my coat stolen at the gym.",
-          "context": "passive misfortune"
+          "context": "passive misfortune",
+          "audio_url": "https://fnvjibzreepubageztoi.supabase.co/storage/v1/object/public/curriculum-audio/ls/advanced/19ad420a561dbe82.flac?v=2"
         },
         {
           "text": "He is rumoured to have signed a new contract.",
-          "context": "double passive past"
+          "context": "double passive past",
+          "audio_url": "https://fnvjibzreepubageztoi.supabase.co/storage/v1/object/public/curriculum-audio/ls/advanced/ac285b5ea2564c63.flac?v=2"
         }
       ],
       "roleplay": {

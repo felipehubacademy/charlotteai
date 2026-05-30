@@ -82,23 +82,28 @@
       "listening_speaking": [
         {
           "text": "Walking home, I bumped into an old friend.",
-          "context": "simultaneous"
+          "context": "simultaneous",
+          "audio_url": "https://fnvjibzreepubageztoi.supabase.co/storage/v1/object/public/curriculum-audio/ls/advanced/c8d57bd3f7a2157c.flac?v=2"
         },
         {
           "text": "Sitting by the fire, she read all evening.",
-          "context": "simultaneous setting"
+          "context": "simultaneous setting",
+          "audio_url": "https://fnvjibzreepubageztoi.supabase.co/storage/v1/object/public/curriculum-audio/ls/advanced/999b9e50627b2c8b.flac?v=2"
         },
         {
           "text": "Looking out the window, I saw it was raining.",
-          "context": "simultaneous observation"
+          "context": "simultaneous observation",
+          "audio_url": "https://fnvjibzreepubageztoi.supabase.co/storage/v1/object/public/curriculum-audio/ls/advanced/6af612458d077c20.flac?v=2"
         },
         {
           "text": "Working late, he missed dinner with his family.",
-          "context": "causal participle"
+          "context": "causal participle",
+          "audio_url": "https://fnvjibzreepubageztoi.supabase.co/storage/v1/object/public/curriculum-audio/ls/advanced/57cbddf86ea05d3a.flac?v=2"
         },
         {
           "text": "Smiling broadly, she accepted the award.",
-          "context": "manner participle"
+          "context": "manner participle",
+          "audio_url": "https://fnvjibzreepubageztoi.supabase.co/storage/v1/object/public/curriculum-audio/ls/advanced/52787a3e06859045.flac?v=2"
         }
       ],
       "roleplay": {
@@ -226,23 +231,28 @@
       "listening_speaking": [
         {
           "text": "Built in 1900, the bridge still stands.",
-          "context": "historical compression"
+          "context": "historical compression",
+          "audio_url": "https://fnvjibzreepubageztoi.supabase.co/storage/v1/object/public/curriculum-audio/ls/advanced/c85e93b41c43f9b6.flac?v=2"
         },
         {
           "text": "Born in Lisbon, she moved at twelve.",
-          "context": "biographical compression"
+          "context": "biographical compression",
+          "audio_url": "https://fnvjibzreepubageztoi.supabase.co/storage/v1/object/public/curriculum-audio/ls/advanced/462d34743e31a065.flac?v=2"
         },
         {
           "text": "Surrounded by mountains, the town stays quiet.",
-          "context": "geographic"
+          "context": "geographic",
+          "audio_url": "https://fnvjibzreepubageztoi.supabase.co/storage/v1/object/public/curriculum-audio/ls/advanced/b8d6bfd420adc0a0.flac?v=2"
         },
         {
           "text": "Written in three weeks, the novel won every prize.",
-          "context": "fast creation"
+          "context": "fast creation",
+          "audio_url": "https://fnvjibzreepubageztoi.supabase.co/storage/v1/object/public/curriculum-audio/ls/advanced/50fe7713de3bda0e.flac?v=2"
         },
         {
           "text": "Made of recycled materials, the chair is surprisingly sturdy.",
-          "context": "material compression"
+          "context": "material compression",
+          "audio_url": "https://fnvjibzreepubageztoi.supabase.co/storage/v1/object/public/curriculum-audio/ls/advanced/c47ba1d306cb1827.flac?v=2"
         }
       ],
       "roleplay": {
@@ -370,23 +380,28 @@
       "listening_speaking": [
         {
           "text": "Having finished dinner, we went for a walk.",
-          "context": "sequenced casual"
+          "context": "sequenced casual",
+          "audio_url": "https://fnvjibzreepubageztoi.supabase.co/storage/v1/object/public/curriculum-audio/ls/advanced/0b6d28bafefa2d4f.flac?v=2"
         },
         {
           "text": "Having submitted the report, she finally relaxed.",
-          "context": "work sequence"
+          "context": "work sequence",
+          "audio_url": "https://fnvjibzreepubageztoi.supabase.co/storage/v1/object/public/curriculum-audio/ls/advanced/6ca2653786e6bab2.flac?v=2"
         },
         {
           "text": "Having waited an hour, I gave up.",
-          "context": "duration + give-up"
+          "context": "duration + give-up",
+          "audio_url": "https://fnvjibzreepubageztoi.supabase.co/storage/v1/object/public/curriculum-audio/ls/advanced/d0e628ac951b8b07.flac?v=2"
         },
         {
           "text": "Having lived abroad, she sees home differently.",
-          "context": "long experience + result"
+          "context": "long experience + result",
+          "audio_url": "https://fnvjibzreepubageztoi.supabase.co/storage/v1/object/public/curriculum-audio/ls/advanced/2c031d5a1322c949.flac?v=2"
         },
         {
           "text": "Having said that, I still respect his decision.",
-          "context": "discourse marker form"
+          "context": "discourse marker form",
+          "audio_url": "https://fnvjibzreepubageztoi.supabase.co/storage/v1/object/public/curriculum-audio/ls/advanced/b579264462de369a.flac?v=2"
         }
       ],
       "roleplay": {
@@ -514,23 +529,28 @@
       "listening_speaking": [
         {
           "text": "Having been told the news, she sat down.",
-          "context": "passive receipt + reaction"
+          "context": "passive receipt + reaction",
+          "audio_url": "https://fnvjibzreepubageztoi.supabase.co/storage/v1/object/public/curriculum-audio/ls/advanced/8d86c7e4f31be995.flac?v=2"
         },
         {
           "text": "Having been raised abroad, he sees both sides.",
-          "context": "formative passive"
+          "context": "formative passive",
+          "audio_url": "https://fnvjibzreepubageztoi.supabase.co/storage/v1/object/public/curriculum-audio/ls/advanced/7facc34b8666f8dd.flac?v=2"
         },
         {
           "text": "Having been promoted twice, she was confident.",
-          "context": "earned passive"
+          "context": "earned passive",
+          "audio_url": "https://fnvjibzreepubageztoi.supabase.co/storage/v1/object/public/curriculum-audio/ls/advanced/ce27be2664277925.flac?v=2"
         },
         {
           "text": "Having been warned, I should have listened.",
-          "context": "passive ignored"
+          "context": "passive ignored",
+          "audio_url": "https://fnvjibzreepubageztoi.supabase.co/storage/v1/object/public/curriculum-audio/ls/advanced/1e167d4369ad7d81.flac?v=2"
         },
         {
           "text": "Having been let down before, she stayed cautious.",
-          "context": "past hurt + present trait"
+          "context": "past hurt + present trait",
+          "audio_url": "https://fnvjibzreepubageztoi.supabase.co/storage/v1/object/public/curriculum-audio/ls/advanced/1055ddc40029a3b0.flac?v=2"
         }
       ],
       "roleplay": {
@@ -656,23 +676,28 @@
       "listening_speaking": [
         {
           "text": "The man sitting there is my uncle.",
-          "context": "reduced active"
+          "context": "reduced active",
+          "audio_url": "https://fnvjibzreepubageztoi.supabase.co/storage/v1/object/public/curriculum-audio/ls/advanced/136d895c04619b91.flac?v=2"
         },
         {
           "text": "The book written by her is famous.",
-          "context": "reduced passive"
+          "context": "reduced passive",
+          "audio_url": "https://fnvjibzreepubageztoi.supabase.co/storage/v1/object/public/curriculum-audio/ls/advanced/f4687d9853289680.flac?v=2"
         },
         {
           "text": "With everyone watching, he stayed calm.",
-          "context": "with-clause"
+          "context": "with-clause",
+          "audio_url": "https://fnvjibzreepubageztoi.supabase.co/storage/v1/object/public/curriculum-audio/ls/advanced/a48af5b967059f5c.flac?v=2"
         },
         {
           "text": "With his hands shaking, he signed the contract.",
-          "context": "with-clause + condition"
+          "context": "with-clause + condition",
+          "audio_url": "https://fnvjibzreepubageztoi.supabase.co/storage/v1/object/public/curriculum-audio/ls/advanced/643d1f2e2ccfcb5e.flac?v=2"
         },
         {
           "text": "The car parked outside isn't ours.",
-          "context": "reduced passive"
+          "context": "reduced passive",
+          "audio_url": "https://fnvjibzreepubageztoi.supabase.co/storage/v1/object/public/curriculum-audio/ls/advanced/2b77c94023b3a071.flac?v=2"
         }
       ],
       "roleplay": {

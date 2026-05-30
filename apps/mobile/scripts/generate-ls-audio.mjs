@@ -53,29 +53,31 @@ const MODEL   = 'gpt-4o-mini-tts';
 //     function words. Questoes sobem, statements descem.
 //   - Advanced (C1/C2): native-paced (1.05x), connected speech, weak forms,
 //     carga emocional por sentenca.
+// Nota: gpt-4o-mini-tts prioriza `instructions` sobre `speed`. Speed param
+// e ignorado ou tem efeito sutil quando instructions esta presente. Por isso
+// a regulagem de pace fica DENTRO do instructions (mais confiavel).
 const PER_LEVEL = {
   novice: {
-    speed:        1.0,
     instructions: null,
   },
   inter: {
-    speed:        1.0,
     instructions:
-      'Natural conversational American English at a normal pace. ' +
+      'Speak at a natural conversational pace — not slow, not rushed. ' +
       'Friendly and engaging tone. Use realistic stress on content ' +
       'words (verbs, nouns) and slight reductions on function words ' +
       '(to, for, of, have). Questions rise naturally; statements have ' +
-      'clear falling intonation. No exaggerated slowness.',
+      'clear falling intonation. Avoid exaggerated slowness or news-anchor delivery.',
   },
   advanced: {
-    speed:        1.05,
     instructions:
-      'Native-speed conversational American English with full natural ' +
-      'prosody: connected speech, weak forms (gonna/wanna/shoulda where ' +
-      'appropriate), and clause-boundary pauses. Convey the emotional ' +
-      'register of each sentence — wishes feel wistful, hypotheticals ' +
-      'sound thoughtful, emphatic structures get vocal emphasis. ' +
-      'Maintain warmth — this is a coach, not a newsreader.',
+      'Speak NOTICEABLY faster than a standard reading — at the brisk ' +
+      'pace of a native speaker in casual conversation. Use full natural ' +
+      'prosody: connected speech (gonna/wanna/shoulda where appropriate), ' +
+      'weak forms on auxiliaries, and clause-boundary pauses. Convey the ' +
+      'emotional register of each sentence — wishes feel wistful, ' +
+      'hypotheticals sound thoughtful, emphatic structures get vocal ' +
+      'emphasis. Maintain warmth — this is a coach, not a newsreader. ' +
+      'The student should feel they are listening to a fluent friend.',
   },
 };
 
@@ -112,7 +114,6 @@ function collectPhrases() {
 async function ttsOpenAI(text, level) {
   const cfg = PER_LEVEL[level] ?? PER_LEVEL.novice;
   const body = { model: MODEL, input: text, voice: VOICE, response_format: FORMAT };
-  if (cfg.speed && cfg.speed !== 1.0) body.speed = cfg.speed;
   if (cfg.instructions) body.instructions = cfg.instructions;
   const res = await fetch('https://api.openai.com/v1/audio/speech', {
     method: 'POST',
