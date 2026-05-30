@@ -263,109 +263,79 @@ Charlotte fala via ElevenLabs (Rachel). Aluno repete; Azure Speech avalia pronú
 
 ### 3. Role-play
 
-**Cenário**: Primeiro dia de um curso de inglês presencial. A professora pediu para cada aluno se apresentar para a turma.
+**Cenário**: Charlotte propõe uma simulação rápida pra você praticar se apresentar como se acabassem de se conhecer.
 **Tipo**: Live Voice
 **Voiced by**: `charlotte`
-**Persona**: Teacher (professora do curso)
-**Persona outfit**: `charlotte_teacher_classroom`
-**Time budget**: 180s
-**Opening line**: "Welcome, everyone! Let's go around the room. Tell us your name, where you're from, and one thing about you."
+**Persona**: Charlotte
+**Persona outfit**: `charlotte_casual`
+**Time budget**: 90s
+**Opening line**: "Let's practice. Pretend we just met — tell me your name."
 
-**Sub-objectives**:
+**Sub-objectives** (POC base-da-base: 1 objetivo apenas):
 
 1. **id**: 1
-   **label_pt**: "Dizer seu nome"
-   **label_en**: "Say your name"
-   **hidden_prompt**: "user states their name using 'I'm' or 'my name is'"
-   **hint_pt**: "Tenta 'Hi, I'm [seu nome]' ou 'My name is [nome]'"
-   **hint_en**: "Try 'Hi, I'm [your name]' or 'My name is [name]'"
+   **label_pt**: "Se apresentar pelo nome"
+   **label_en**: "Introduce yourself by name"
+   **hidden_prompt**: "user introduces themselves using 'I'm + name' or 'my name is + name' — any name counts, the structure is what matters"
+   **hint_pt**: "I'm Felipe!"
+   **hint_en**: "I'm Felipe!"
 
-2. **id**: 2
-   **label_pt**: "Dizer de onde você é"
-   **label_en**: "Say where you're from"
-   **hidden_prompt**: "user states their origin using 'I'm from + place'"
-   **hint_pt**: "Use 'I'm from + cidade ou país', tipo 'I'm from Brazil'"
-   **hint_en**: "Use 'I'm from + city or country', like 'I'm from Brazil'"
+**Closing cue**: Charlotte fecha com "Nice to meet you! Great intro." quando obj_1 baterem.
 
-3. **id**: 3
-   **label_pt**: "Dizer sua idade"
-   **label_en**: "Say your age"
-   **hidden_prompt**: "user states their age using 'I'm + number + years old' or 'I'm + number'"
-   **hint_pt**: "Em inglês a idade vai com 'to be': 'I'm 25 years old'"
-   **hint_en**: "Age uses 'to be': 'I'm 25 years old'"
+**Suggested flow** (referencial, 2 turnos):
 
-4. **id**: 4
-   **label_pt**: "Compartilhar uma coisa que você gosta"
-   **label_en**: "Share one thing you like"
-   **hidden_prompt**: "user mentions something they like with 'I like + noun'"
-   **hint_pt**: "'I like + coisa', tipo 'I like music' ou 'I like coffee'"
-   **hint_en**: "'I like + thing', like 'I like music' or 'I like coffee'"
-
-**Closing cue**: Teacher fecha com "Wonderful! Welcome to the class!" quando os 4 objetivos baterem.
-
-**Suggested flow** (referencial, 5 turnos):
-
-1. **Student**: ~"Hi, my name is [nome]. I'm from Brazil."
-2. **Teacher**: "Lovely! And how old are you?"
-3. **Student**: ~"I'm [idade] years old."
-4. **Teacher**: "Great! Tell us one thing you like."
-5. **Student**: ~"I like music." / "I like coffee."
-6. **Teacher**: "Wonderful! Welcome to the class!"
+1. **Student**: ~"I'm Felipe!"
+2. **Charlotte**: "Nice to meet you! Great intro."
 
 **Evaluation focus**:
-- Uso correto de "I am" / "I'm"
-- Pronúncia de "name", "from", "old"
-- Naturalidade ao encadear nome → origem → idade
+- Aluno usa "I'm + nome" ou "My name is + nome"
+- Pronúncia clara de "I'm"
 
 ### 4. Guided Chat
 
-**Cenário**: Você acabou de adicionar Tom no WhatsApp (vocês se conheceram numa festa).
-**Voiced by**: `charlie`
-**Persona**: Tom (colega de trabalho)
-**Persona outfit**: `tom_party_evening`
-**Intro (em PT)**: "Você adicionou o Tom no WhatsApp ontem (conheceu ele numa festa). Hoje manda a primeira mensagem se apresentando direito."
-**Opening message**: "Hey! Sorry, who's this? I added a few people last night."
+**Cenário**: Charlotte simula uma apresentação completa por chat — como se vocês estivessem se conhecendo num app.
+**Voiced by**: `charlotte`
+**Persona**: Charlotte
+**Persona outfit**: `charlotte_casual`
+**Intro (em PT)**: "Vamos praticar uma apresentação completa por texto. Charlotte puxa como se vocês acabassem de se conhecer num app."
+**Opening message**: "Hey! Tell me about yourself."
 
-**Sub-objectives**:
+**Sub-objectives** (POC base-da-base: 3 objetivos, todos curtos):
 
 1. **id**: 1
-   **label_pt**: "Se identificar e dar contexto de onde se conheceram"
-   **label_en**: "Identify yourself and remind where you met"
-   **hidden_prompt**: "user gives their name AND references the party/where they met"
-   **hint_pt**: "Tenta 'Hi Tom, I'm [nome]. We met at the party yesterday'"
-   **hint_en**: "Try 'Hi Tom, I'm [name]. We met at the party yesterday'"
+   **label_pt**: "Se apresentar pelo nome"
+   **label_en**: "Say your name"
+   **hidden_prompt**: "user introduces themselves with 'I'm + name' or 'my name is + name'"
+   **hint_pt**: "I'm Felipe!"
+   **hint_en**: "I'm Felipe!"
 
 2. **id**: 2
-   **label_pt**: "Dizer de onde você é"
-   **label_en**: "Say where you're from"
-   **hidden_prompt**: "user states their origin using 'I'm from + place'"
-   **hint_pt**: "'I'm from [cidade], Brazil'"
-   **hint_en**: "'I'm from [city], Brazil'"
-
-3. **id**: 3
    **label_pt**: "Dizer sua idade"
    **label_en**: "Say your age"
-   **hidden_prompt**: "user states their age using 'I'm + number + years old'"
-   **hint_pt**: "'I'm 25 years old'"
-   **hint_en**: "'I'm 25 years old'"
+   **hidden_prompt**: "user states their age using 'I'm + number + years old' or just 'I'm + number'"
+   **hint_pt**: "I'm 25 years old."
+   **hint_en**: "I'm 25 years old."
 
-**Closing cue**: Tom encerra com "Cool, nice to officially meet you! Talk soon." quando os 3 objetivos baterem.
-**Recap (PT)**: "Excelente! Você usou os blocos básicos da apresentação: 'I'm + nome', 'I'm from + lugar', 'I'm + idade + years old'. Esses três chunks juntos já te permitem se apresentar em qualquer lugar do mundo."
+3. **id**: 3
+   **label_pt**: "Dizer de onde você é"
+   **label_en**: "Say where you're from"
+   **hidden_prompt**: "user states origin using 'I'm from + place'"
+   **hint_pt**: "I'm from Brazil."
+   **hint_en**: "I'm from Brazil."
 
-**Script** (referencial, 6 turnos):
+**Closing cue**: Charlotte encerra com "Nice — great to meet you!" quando obj_3 baterem.
 
-1. **Student** (expected): "Hi Tom! I'm [nome]. We met at the party yesterday."
-   *Se aluno escrever só "Hi Tom":* Tom: "Hey! Sorry, lots of new faces last night — can you remind me who you are? 'We met at the party' would help."
+**Script** (referencial, 7 turnos):
 
-2. **Tom**: "Oh right! Good to hear from you. Where are you from again?"
+1. **Charlotte**: "Hey! Tell me about yourself."
+2. **Student**: "I'm Felipe!"
+3. **Charlotte**: "Nice! How old are you?"
+4. **Student**: "I'm 25 years old."
+5. **Charlotte**: "Cool! Where are you from?"
+6. **Student**: "I'm from Brazil."
+7. **Charlotte**: "Nice — great to meet you!"
 
-3. **Student** (expected): "I'm from [cidade], Brazil."
-
-4. **Tom**: "Nice — I'm from California. How old are you, if I may ask?"
-
-5. **Student** (expected): "I'm [idade] years old."
-
-6. **Tom**: "Cool, nice to officially meet you! Talk soon."
+> N02 chat = LLM puro. Scaffold aparece via hint_pt da objective pendente (1 → 2 → 3).
 
 ---
 
@@ -437,109 +407,86 @@ Charlotte fala via ElevenLabs (Rachel). Aluno repete; Azure Speech avalia pronú
 
 ### 3. Role-play
 
-**Cenário**: Você está esperando no portão de embarque do aeroporto. Outro passageiro puxa conversa enquanto vocês aguardam.
+**Cenário**: Charlotte simula um passageiro no portão de embarque que puxa uma conversa enquanto vocês esperam.
 **Tipo**: Live Voice
-**Voiced by**: `charlie`
-**Persona**: Passenger (passageiro no aeroporto)
-**Persona outfit**: `charlie_passenger_airport`
-**Time budget**: 180s
-**Opening line**: "Hi! Are you waiting for the São Paulo flight too?"
+**Voiced by**: `charlotte`
+**Persona**: Charlotte
+**Persona outfit**: `charlotte_casual`
+**Time budget**: 90s
+**Opening line**: "Hi! Are you on the São Paulo flight too? Where are you from?"
 
-**Sub-objectives**:
+**Sub-objectives** (POC base-da-base: 1 objetivo apenas):
 
 1. **id**: 1
-   **label_pt**: "Confirmar e devolver a pergunta sobre o destino"
-   **label_en**: "Confirm and ask about their destination too"
-   **hidden_prompt**: "user confirms they're on the same flight AND asks something back about the other person's trip/destination"
-   **hint_pt**: "Tenta 'Yes, I am. Are you going to São Paulo too?'"
-   **hint_en**: "Try 'Yes, I am. Are you going to São Paulo too?'"
-
-2. **id**: 2
    **label_pt**: "Dizer de onde você é"
    **label_en**: "Say where you're from"
-   **hidden_prompt**: "user states their origin using 'I'm from + place'"
-   **hint_pt**: "'I'm from [cidade]. And you?' — devolve a pergunta também"
-   **hint_en**: "'I'm from [city]. And you?' — return the question"
+   **hidden_prompt**: "user states their origin using 'I'm from + place' — city or country both count"
+   **hint_pt**: "I'm from Brazil!"
+   **hint_en**: "I'm from Brazil!"
 
-3. **id**: 3
-   **label_pt**: "Dizer se está viajando a trabalho, férias ou outro motivo"
-   **label_en**: "Say if you're traveling for work, vacation, or another reason"
-   **hidden_prompt**: "user mentions the purpose of the trip (vacation, work, visiting family, going home)"
-   **hint_pt**: "Algo simples: 'I'm visiting family' ou 'No, I'm going home'"
-   **hint_en**: "Keep it simple: 'I'm visiting family' or 'No, I'm going home'"
+**Closing cue**: Charlotte fecha com "Cool! Have a great flight." quando obj_1 baterem.
 
-**Closing cue**: Passenger encerra com "Have a great trip!" quando os 3 objetivos baterem.
+**Suggested flow** (referencial, 2 turnos):
 
-**Suggested flow** (referencial, 5 turnos):
-
-1. **Student**: ~"Yes, I am. Are you going to São Paulo too?"
-2. **Passenger**: "Yes! I'm going for work. Where are you from?"
-3. **Student**: ~"I'm from [cidade]. And you?"
-4. **Passenger**: "I'm from Lisbon. Are you on vacation?"
-5. **Student**: ~"No, I'm going home." / "Yes, I'm visiting family."
-6. **Passenger**: "Have a great trip!"
+1. **Student**: ~"I'm from Brazil!"
+2. **Charlotte**: "Cool! Have a great flight."
 
 **Evaluation focus**:
-- Uso correto de "Are you...?" e "I'm from..."
-- Reciprocidade: aluno também faz perguntas, não só responde
-- Pronúncia natural de "Where are you from?"
+- Aluno usa "I'm from + lugar"
+- Pronúncia clara de "from"
 
 ### 4. Guided Chat
 
-**Cenário**: Você baixou um app de troca de idiomas (tipo Tandem, HelloTalk) e fala com Sarah, de Nova York, pela primeira vez.
+**Cenário**: Charlotte simula uma conversa num app de troca de idiomas — vocês acabaram de fazer match.
 **Voiced by**: `charlotte`
-**Persona**: Sarah (amiga de troca de idiomas, NYC)
-**Persona outfit**: `sarah_home_videocall`
-**Intro (em PT)**: "Você abriu um app de troca de idiomas e a Sarah, de NY, te mandou um 'Hi!'. Puxa conversa e descobre quem ela é (origem, nacionalidade, idade)."
-**Opening message**: "Hi! So nice to match with a Brazilian!"
+**Persona**: Charlotte
+**Persona outfit**: `charlotte_casual`
+**Intro (em PT)**: "Charlotte simula um match num app de idiomas. Pratica dizer de onde você é e devolver a pergunta."
+**Opening message**: "Hey! Nice to match. Where are you from?"
 
-**Sub-objectives**:
+**Sub-objectives** (POC base-da-base: 3 objetivos, todos curtos):
 
 1. **id**: 1
-   **label_pt**: "Perguntar de onde Sarah é"
-   **label_en**: "Ask where Sarah is from"
-   **hidden_prompt**: "user asks 'where are you from' or similar origin question"
-   **hint_pt**: "'Where are you from?' — pergunta padrão de origem"
-   **hint_en**: "'Where are you from?' — standard origin question"
+   **label_pt**: "Dizer de onde você é"
+   **label_en**: "Say where you're from"
+   **hidden_prompt**: "user states origin with 'I'm from + place'"
+   **hint_pt**: "I'm from Brazil."
+   **hint_en**: "I'm from Brazil."
 
 2. **id**: 2
-   **label_pt**: "Perguntar a nacionalidade dela"
-   **label_en**: "Ask about her nationality"
-   **hidden_prompt**: "user asks about nationality with 'Are you + nationality' (e.g., 'Are you American?')"
-   **hint_pt**: "Cuidado: país = 'America', nacionalidade = 'American'. Tenta 'Are you American?'"
-   **hint_en**: "Careful: country = 'America', nationality = 'American'. Try 'Are you American?'"
+   **label_pt**: "Dizer sua nacionalidade"
+   **label_en**: "Say your nationality"
+   **hidden_prompt**: "user states nationality with 'I'm + nationality adjective' (e.g., 'I'm Brazilian', 'I'm Portuguese')"
+   **hint_pt**: "I'm Brazilian."
+   **hint_en**: "I'm Brazilian."
 
 3. **id**: 3
-   **label_pt**: "Perguntar a idade dela"
-   **label_en**: "Ask her age"
-   **hidden_prompt**: "user asks 'how old are you' or similar age question"
-   **hint_pt**: "'How old are you?' é a pergunta padrão"
-   **hint_en**: "'How old are you?' is the standard question"
+   **label_pt**: "Perguntar de onde Charlotte é"
+   **label_en**: "Ask where Charlotte is from"
+   **hidden_prompt**: "user asks Charlotte where she's from ('where are you from', 'and you', or similar)"
+   **hint_pt**: "Where are you from?"
+   **hint_en**: "Where are you from?"
 
-**Closing cue**: Sarah fecha com "Cool! Let's keep practicing." quando os 3 objetivos baterem.
-**Recap (PT)**: "Ótimo! Você usou três chunks-chave: 'Where are you from?', 'Are you + nacionalidade?', 'How old are you?'. Note que país e nacionalidade são palavras diferentes: 'Brazil' (país) vs 'Brazilian' (nacionalidade), 'America' (país) vs 'American' (nacionalidade)."
+**Closing cue**: Charlotte encerra com "Awesome! Talk soon." quando obj_3 baterem.
 
-**Script** (referencial, 6 turnos):
+**Script** (referencial, 7 turnos):
 
-1. **Student** (expected): "Hi Sarah! I'm [nome]. Where are you from?"
+1. **Charlotte**: "Hey! Nice to match. Where are you from?"
+2. **Student**: "I'm from Brazil."
+3. **Charlotte**: "Cool! Are you Brazilian?"
+4. **Student**: "I'm Brazilian."
+5. **Charlotte**: "First time chatting with someone from Brazil."
+6. **Student**: "Where are you from?"
+7. **Charlotte**: "I'm from New York. Awesome — talk soon!"
 
-2. **Sarah**: "Hey! I'm from New York. And you?"
-
-3. **Student** (expected): "I'm from Brazil. Are you American?"
-   *Se aluno escrever "Are you America?":* Sarah: "Almost! The country is 'America', but the NATIONALITY is 'American'. Want to try again?"
-
-4. **Sarah**: "Yes, I am. Are you Brazilian?"
-
-5. **Student** (expected): "Yes, I am. How old are you?"
-
-6. **Sarah**: "I'm 28. And you?"
+> N03 chat = LLM puro. Scaffold aparece via hint_pt da objective pendente.
 
 ---
 
 ## Unit N04 — Como você se sente?
 
 > **Sub-CEFR**: A1 | **Grammar focus**: Feelings chunks (I'm + emotion adjective) | **Markers**: —
-> **Real-life context**: Uma amiga te encontra e parece estar triste. Você quer saber o que aconteceu.
+> **Real-life context**: Charlotte te chama pra um check-in. Pratica dizer como você se sente além de "good".
 
 ### 1. Grammar (10 exercises)
 
@@ -604,109 +551,86 @@ Charlotte fala via ElevenLabs (Rachel). Aluno repete; Azure Speech avalia pronú
 
 ### 3. Role-play
 
-**Cenário**: Sua amiga Ana parece triste no almoço de sábado. Você quer saber o que aconteceu.
+**Cenário**: Charlotte abre um check-in rápido e quer saber como você está hoje — de verdade, não só "good".
 **Tipo**: Live Voice
 **Voiced by**: `charlotte`
-**Persona**: Ana (melhor amiga, tom baixo/desanimada)
-**Persona outfit**: `ana_casual_weekend`
-**Time budget**: 180s
-**Opening line** (tom baixo): "Hey... sorry, I'm not in a great mood today."
+**Persona**: Charlotte
+**Persona outfit**: `charlotte_casual`
+**Time budget**: 90s
+**Opening line**: "Hey! Quick check-in — how are you feeling today?"
 
-**Sub-objectives**:
+**Sub-objectives** (POC base-da-base: 1 objetivo apenas):
 
 1. **id**: 1
-   **label_pt**: "Perguntar com empatia o que aconteceu"
-   **label_en**: "Ask with empathy what happened"
-   **hidden_prompt**: "user asks an empathetic question like 'are you okay', 'what's wrong', 'what happened'"
-   **hint_pt**: "Tenta 'Oh no, what's wrong? Are you okay?'"
-   **hint_en**: "Try 'Oh no, what's wrong? Are you okay?'"
+   **label_pt**: "Dizer como você se sente com um adjetivo"
+   **label_en**: "Say how you feel with an adjective"
+   **hidden_prompt**: "user describes feeling with 'I'm + adjective' beyond just 'good' or 'fine' — tired/happy/busy/excited/stressed/hungry all count"
+   **hint_pt**: "I'm tired!"
+   **hint_en**: "I'm tired!"
 
-2. **id**: 2
-   **label_pt**: "Demonstrar que está ouvindo / sentir junto"
-   **label_en**: "Show you're listening / show empathy"
-   **hidden_prompt**: "user shows empathy with 'I'm sorry to hear that', 'that sounds rough', or similar"
-   **hint_pt**: "'I'm sorry to hear that' é o chunk padrão de empatia"
-   **hint_en**: "'I'm sorry to hear that' is the standard empathy chunk"
+**Closing cue**: Charlotte fecha com "Thanks for sharing. Take care!" quando obj_1 baterem.
 
-3. **id**: 3
-   **label_pt**: "Oferecer apoio ou um plano para animá-la"
-   **label_en**: "Offer support or a plan to cheer her up"
-   **hidden_prompt**: "user offers support, suggests doing something together, or says 'take care'"
-   **hint_pt**: "Algo tipo 'Take care of yourself' ou 'Want to do something fun later?'"
-   **hint_en**: "Something like 'Take care of yourself' or 'Want to do something fun later?'"
+**Suggested flow** (referencial, 2 turnos):
 
-**Closing cue**: Ana fecha com "That would be nice. Thank you." quando os 3 objetivos baterem.
-
-**Suggested flow** (referencial, 5 turnos):
-
-1. **Student**: ~"Oh no, what's wrong? Are you okay?"
-2. **Ana**: "I'm just really tired. Work is crazy."
-3. **Student**: ~"I'm sorry to hear that. Are you sleeping well?"
-4. **Ana**: "Not really. I'm stressed."
-5. **Student**: ~"Take care of yourself. Want to do something fun later?"
-6. **Ana**: "That would be nice. Thank you."
+1. **Student**: ~"I'm tired!"
+2. **Charlotte**: "Thanks for sharing. Take care!"
 
 **Evaluation focus**:
-- Uso de chunks de empatia: "I'm sorry to hear", "Are you okay?", "Take care"
-- Tom: caloroso, não invasivo
-- Variação: aluno não fica preso em "Are you sad?" — varia entre "tired/stressed/down"
+- Aluno usa "I'm + adjetivo" além de "good" ou "fine"
+- Pronúncia clara do adjetivo escolhido
 
 ### 4. Guided Chat
 
-**Cenário**: É sexta de manhã no escritório. Você cumprimenta Maria, sua chefe, e pergunta como ela está.
+**Cenário**: Charlotte puxa um chat rápido pra trocar como cada uma está se sentindo hoje.
 **Voiced by**: `charlotte`
-**Persona**: Maria (chefe, tom profissional educado)
-**Persona outfit**: `maria_office_formal`
-**Intro (em PT)**: "Sexta de manhã, você esbarra com a Maria (sua chefe) no corredor. Cumprimenta ela e troca um papo rápido. Lembra: ela é sua chefe, então tom educado."
-**Opening message**: "Morning! Good to see you — Friday at last."
+**Persona**: Charlotte
+**Persona outfit**: `charlotte_casual`
+**Intro (em PT)**: "Charlotte abre um chat curto. Pratica falar como se sente, devolver a pergunta, e reagir com empatia."
+**Opening message**: "Hey! How are you feeling today?"
 
-**Sub-objectives**:
+**Sub-objectives** (POC base-da-base: 3 objetivos, todos curtos):
 
 1. **id**: 1
-   **label_pt**: "Cumprimentar Maria com saudação de manhã apropriada"
-   **label_en**: "Greet Maria with an appropriate morning greeting"
-   **hidden_prompt**: "user uses 'good morning' (formal/polite) and addresses her by name"
-   **hint_pt**: "Como ela é sua chefe, 'Good morning, Maria!' soa mais educado que só 'Hi'"
-   **hint_en**: "She's your boss — 'Good morning, Maria!' is more polite than 'Hi'"
+   **label_pt**: "Dizer como se sente com um adjetivo"
+   **label_en**: "Say how you feel with an adjective"
+   **hidden_prompt**: "user describes feeling with 'I'm + adjective' (tired/busy/excited/happy/stressed) — must be more than just 'good'"
+   **hint_pt**: "I'm tired."
+   **hint_en**: "I'm tired."
 
 2. **id**: 2
-   **label_pt**: "Responder como você está com pelo menos um adjetivo de sentimento"
-   **label_en**: "Answer how you are using at least one feeling adjective"
-   **hidden_prompt**: "user answers with 'I'm + feeling adjective' (tired, busy, excited, good) — not just a one-word reply"
-   **hint_pt**: "Em vez de só 'I'm good', adiciona algo: 'a bit tired' ou 'excited for the weekend'"
-   **hint_en**: "Instead of just 'I'm good', add something: 'a bit tired' or 'excited for the weekend'"
+   **label_pt**: "Devolver a pergunta"
+   **label_en**: "Ask back"
+   **hidden_prompt**: "user asks Charlotte back with 'and you', 'how about you', 'how are you', or similar"
+   **hint_pt**: "And you?"
+   **hint_en**: "And you?"
 
 3. **id**: 3
-   **label_pt**: "Devolver a pergunta com tom educado"
-   **label_en**: "Ask her back politely"
-   **hidden_prompt**: "user returns the question with 'how about you', 'and you', or 'how are you'"
-   **hint_pt**: "'How about you?' funciona ótimo num tom mais profissional"
-   **hint_en**: "'How about you?' works great in a professional tone"
+   **label_pt**: "Reagir com empatia"
+   **label_en**: "React with empathy"
+   **hidden_prompt**: "user reacts to Charlotte's reply with empathy ('I'm sorry to hear', 'oh nice', 'glad to hear', 'that's great')"
+   **hint_pt**: "I'm sorry to hear that."
+   **hint_en**: "I'm sorry to hear that."
 
-**Closing cue**: Maria fecha com "Great. See you in the meeting!" quando os 3 objetivos baterem.
-**Recap (PT)**: "Boa! Você usou os chunks 'I'm + adjetivo' (tired, excited, ready) que são a base para falar sobre como você está. Note como adicionar mais informação ('a bit tired but excited') deixa a conversa mais natural e calorosa, em vez de um 'I'm good' frio."
+**Closing cue**: Charlotte encerra com "Thanks! Talk to you later." quando obj_3 baterem.
 
-**Script** (referencial, 6 turnos):
+**Script** (referencial, 7 turnos):
 
-1. **Student** (expected): "Good morning, Maria! How are you?"
+1. **Charlotte**: "Hey! How are you feeling today?"
+2. **Student**: "I'm tired."
+3. **Charlotte**: "Oh, why's that?"
+4. **Student**: "And you?"
+5. **Charlotte**: "Honestly, a bit stressed — busy week."
+6. **Student**: "I'm sorry to hear that."
+7. **Charlotte**: "Thanks! Talk to you later."
 
-2. **Maria**: "Good morning! I'm doing well, thanks. How about you?"
-
-3. **Student** (expected): "I'm good, thanks. A bit tired but excited for the weekend."
-   *Se aluno escrever só "I'm good":* Maria: "Glad to hear. Anything in particular going on today?"
-
-4. **Maria**: "Same here! Are you ready for the meeting at 10?"
-
-5. **Student** (expected): "Yes, I'm ready."
-
-6. **Maria**: "Great. See you in there!"
+> N04 chat = LLM puro. Scaffold aparece via hint_pt da objective pendente.
 
 ---
 
 ## Unit N05 — Tchau, até mais
 
 > **Sub-CEFR**: A1 | **Grammar focus**: Goodbye chunks | **Markers**: —
-> **Real-life context**: Você está saindo da academia, do trabalho, ou de um encontro casual.
+> **Real-life context**: Você está terminando uma aula ou conversa e quer se despedir com carinho.
 
 ### 1. Grammar (10 exercises)
 
@@ -732,7 +656,7 @@ Charlotte fala via ElevenLabs (Rachel). Aluno repete; Azure Speech avalia pronú
 
 5. **fill_gap** — "Goodbye! Have a _____ day."
    **Hint**: Adjetivo positivo
-   **Answer**: nice (ou great, good)
+   **Answer**: nice
    **Explanation**: "Have a nice day" é despedida educada padrão. Também aceita "good day", "great day".
 
 6. **fill_gap** — "_____ you next week!"
@@ -771,99 +695,79 @@ Charlotte fala via ElevenLabs (Rachel). Aluno repete; Azure Speech avalia pronú
 
 ### 3. Role-play
 
-**Cenário**: Você está saindo da academia depois do treino. Encontra Tom, um colega de academia, na porta.
+**Cenário**: Vocês terminaram uma aula. Charlotte se despede e você responde com um chunk caloroso (não só "bye").
 **Tipo**: Live Voice
-**Voiced by**: `charlie`
-**Persona**: Tom (colega de academia)
-**Persona outfit**: `tom_gym_workout`
-**Time budget**: 180s
-**Opening line**: "Hey, leaving already?"
+**Voiced by**: `charlotte`
+**Persona**: Charlotte
+**Persona outfit**: `charlotte_casual`
+**Time budget**: 90s
+**Opening line**: "Alright, that's it for today. Have a great rest of your day!"
 
-**Sub-objectives**:
+**Sub-objectives** (POC base-da-base: 1 objetivo apenas):
 
 1. **id**: 1
-   **label_pt**: "Comentar como foi o treino"
-   **label_en**: "Comment on the workout"
-   **hidden_prompt**: "user shares something about their workout state (tired, good, tough) — not just 'yes'"
-   **hint_pt**: "Algo tipo 'Yeah, I'm exhausted!' ou 'Great workout today!'"
-   **hint_en**: "Try 'Yeah, I'm exhausted!' or 'Great workout today!'"
+   **label_pt**: "Se despedir com um chunk caloroso (não só 'bye')"
+   **label_en**: "Say goodbye warmly (not just 'bye')"
+   **hidden_prompt**: "user says a warm goodbye like 'see you later', 'take care', 'have a good one', 'thanks bye', 'see you' — anything beyond just 'bye'"
+   **hint_pt**: "See you later!"
+   **hint_en**: "See you later!"
 
-2. **id**: 2
-   **label_pt**: "Combinar de se ver de novo (próximo treino)"
-   **label_en**: "Agree to meet again (next workout)"
-   **hidden_prompt**: "user agrees to meet again or proposes a time ('see you tomorrow', 'same time', 'sure')"
-   **hint_pt**: "'Sure! See you tomorrow' fecha bem"
-   **hint_en**: "'Sure! See you tomorrow' closes it nicely"
+**Closing cue**: Charlotte fecha com "Take care! See you next time." quando obj_1 baterem.
 
-3. **id**: 3
-   **label_pt**: "Se despedir com tom caloroso"
-   **label_en**: "Say goodbye with a warm tone"
-   **hidden_prompt**: "user uses a warm goodbye like 'take care', 'you too', or 'have a good one' — not just 'bye'"
-   **hint_pt**: "'Take care!' ou 'You too!' soa muito melhor que só 'Bye'"
-   **hint_en**: "'Take care!' or 'You too!' sounds much better than just 'Bye'"
+**Suggested flow** (referencial, 2 turnos):
 
-**Closing cue**: Tom encerra com "Take care, see you tomorrow!" quando os 3 objetivos baterem.
-
-**Suggested flow** (referencial, 4 turnos):
-
-1. **Student**: ~"Yeah, I'm exhausted! How was your workout?"
-2. **Tom**: "Tough but good. Same time tomorrow?"
-3. **Student**: ~"Sure! See you tomorrow."
-4. **Tom**: "Take care!"
-5. **Student**: ~"You too. Bye!"
+1. **Student**: ~"See you later!"
+2. **Charlotte**: "Take care! See you next time."
 
 **Evaluation focus**:
-- Uso natural de "See you tomorrow", "Take care", "You too"
-- Não usar só "Bye" (curto demais para fim de conversa)
-- Pronúncia de "tomorrow" (acento na segunda sílaba)
+- Aluno usa chunk caloroso além de só "bye"
+- Pronúncia clara de "see you" ou "take care"
 
 ### 4. Guided Chat
 
-**Cenário**: Você termina uma vídeo-chamada com Sarah, sua amiga em NY. A chamada durou uma hora e foi ótima.
+**Cenário**: Vocês tiveram uma conversa boa por chat e está na hora de encerrar. Pratica fechar com várias camadas, não só "bye".
 **Voiced by**: `charlotte`
-**Persona**: Sarah (amiga em NYC, após uma vídeo-call boa)
-**Persona outfit**: `sarah_home_videocall`
-**Intro (em PT)**: "Você acabou de ter uma vídeo-chamada longa e gostosa com a Sarah. Hora de se despedir — termina a conversa com carinho, não só um 'bye'."
-**Opening message**: "Wow, it's been over an hour already!"
+**Persona**: Charlotte
+**Persona outfit**: `charlotte_casual`
+**Intro (em PT)**: "A conversa tá indo bem mas Charlotte precisa ir. Pratica encerrar com várias camadas de despedida calorosa."
+**Opening message**: "Hey, I gotta go now."
 
-**Sub-objectives**:
+**Sub-objectives** (POC base-da-base: 3 objetivos, todos curtos):
 
 1. **id**: 1
-   **label_pt**: "Sinalizar que precisa ir e fechar a interação com carinho"
-   **label_en**: "Signal you need to go and close warmly"
-   **hidden_prompt**: "user signals they need to leave AND uses a warm closing like 'it was great talking to you' (not just 'bye')"
-   **hint_pt**: "Algo como 'I have to go now. It was great talking to you!'"
-   **hint_en**: "Something like 'I have to go now. It was great talking to you!'"
+   **label_pt**: "Sinalizar que foi bom conversar"
+   **label_en**: "Say it was nice talking"
+   **hidden_prompt**: "user signals it was good talking with 'it was great talking', 'nice talking', 'good chat', or similar"
+   **hint_pt**: "It was great talking!"
+   **hint_en**: "It was great talking!"
 
 2. **id**: 2
-   **label_pt**: "Desejar um bom dia (ou bom resto do dia)"
-   **label_en**: "Wish her a good day"
-   **hidden_prompt**: "user wishes Sarah a good day/weekend with 'have a great day', 'have a nice weekend', etc."
-   **hint_pt**: "'Have a great day!' ou 'Have a nice weekend!'"
-   **hint_en**: "'Have a great day!' or 'Have a nice weekend!'"
+   **label_pt**: "Desejar um bom dia"
+   **label_en**: "Wish a good day"
+   **hidden_prompt**: "user wishes Charlotte a good day or weekend ('have a great day', 'have a nice weekend')"
+   **hint_pt**: "Have a great day!"
+   **hint_en**: "Have a great day!"
 
 3. **id**: 3
-   **label_pt**: "Encerrar com um 'take care' ou variação calorosa"
-   **label_en**: "Sign off with 'take care' or a warm variant"
+   **label_pt**: "Encerrar com 'take care' ou variação calorosa"
+   **label_en**: "Sign off with 'take care'"
    **hidden_prompt**: "user closes with 'take care', 'you too', 'talk soon', or similar warm sign-off"
-   **hint_pt**: "'Take care!' é o final caloroso clássico"
-   **hint_en**: "'Take care!' is the classic warm sign-off"
+   **hint_pt**: "Take care!"
+   **hint_en**: "Take care!"
 
-**Closing cue**: Sarah fecha com "Take care! Talk soon." quando os 3 objetivos baterem.
-**Recap (PT)**: "Perfeito! Você usou três níveis de despedida calorosa: 'It was great talking to you' (fecha a interação), 'Have a great day' (desejo positivo) e 'Take care' (cuidado consigo). Em inglês, despedidas longas demonstram afeto — não tenha medo de encadear vários chunks no fim."
+**Closing cue**: Charlotte encerra com "Bye for now! Take care." quando obj_3 baterem.
 
-**Script** (referencial, 5 turnos):
+**Script** (referencial, 7 turnos):
 
-1. **Student** (expected): "Okay, I have to go now. It was great talking to you!"
-   *Se aluno escrever só "Bye":* Sarah: "Aww, just 'bye'? We had such a good chat — give me something warmer, like 'it was great talking to you'."
+1. **Charlotte**: "Hey, I gotta go now."
+2. **Student**: "It was great talking!"
+3. **Charlotte**: "Same here. Let's chat again soon."
+4. **Student**: "Have a great day!"
+5. **Charlotte**: "You too!"
+6. **Student**: "Take care!"
+7. **Charlotte**: "Bye for now! Take care."
 
-2. **Sarah**: "Same here! Let's talk again soon."
-
-3. **Student** (expected): "Definitely. Have a great day!"
-
-4. **Sarah**: "You too! Take care."
-
-5. **Student** (expected): "Take care. Bye!"
+> N05 chat = LLM puro. Scaffold aparece via hint_pt da objective pendente.
 
 ---
 
