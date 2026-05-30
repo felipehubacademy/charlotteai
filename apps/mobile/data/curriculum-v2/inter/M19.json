@@ -1,0 +1,1024 @@
+{
+  "id": "M19",
+  "title": "Informação extra",
+  "level": "Inter",
+  "block": "B2",
+  "units_range": "I01–I05",
+  "theme": "Non-defining relative clauses (extra information with commas)",
+  "goal": "Student adds extra information to sentences using non-defining relative clauses with who, which, whose, where, when — distinguishing from defining clauses.",
+  "connects_to": "M20 (Wishes expanded) — emotional/hypothetical structures.",
+  "module_chunks": [
+    "My brother, who lives in Rio,...",
+    "The Amazon, which is the longest river,...",
+    "Maria, whose father is a doctor,...",
+    "Paris, where I lived for a year,...",
+    "2010, when I graduated,...",
+    "My friend, who I've known for years,...",
+    "The book, which won an award,...",
+    "Defining vs non-defining (no commas vs commas)"
+  ],
+  "units": [
+    {
+      "id": "I01",
+      "title": "My brother, who",
+      "sub_cefr": "B2",
+      "grammar_focus": "Non-defining relative clauses with \"who\" (people)",
+      "markers": [
+        "denso"
+      ],
+      "real_life_context": "You add extra information about a specific person already identified.",
+      "grammar": [
+        {
+          "type": "multiple_choice",
+          "sentence": "My brother, _____ lives in Rio, is a teacher.",
+          "options": [
+            "who",
+            "that",
+            "which",
+            "whose"
+          ],
+          "answer": "who",
+          "explanation": "Non-defining relative clause para pessoas usa \"who\" (nunca \"that\" em non-defining). Vírgulas indicam informação EXTRA — não essencial para identificar o irmão."
+        },
+        {
+          "type": "multiple_choice",
+          "sentence": "Maria, _____ I met yesterday, is from Spain.",
+          "options": [
+            "who",
+            "that",
+            "which",
+            "whose"
+          ],
+          "answer": "who",
+          "explanation": "\"Who\" para pessoa em non-defining. \"That\" não é usado com vírgulas. \"Whom\" seria formal mas \"who\" predomina em uso atual."
+        },
+        {
+          "type": "word_bank",
+          "sentence": "My boss, _____ is very strict, gave me a raise.",
+          "choices": [
+            "who",
+            "that",
+            "which",
+            "whose"
+          ],
+          "answer": "who",
+          "explanation": "Non-defining: \"who is very strict\". \"That\" não funciona em non-defining."
+        },
+        {
+          "type": "word_bank",
+          "sentence": "Tom, _____ I've known for years, just got married.",
+          "choices": [
+            "who",
+            "that",
+            "which",
+            "whose"
+          ],
+          "answer": "who",
+          "explanation": "\"Who I've known for years\" — informação extra sobre Tom. Pessoa específica, vírgulas."
+        },
+        {
+          "type": "fill_gap",
+          "sentence": "My sister, _____ studies medicine, lives in São Paulo.",
+          "hint": "relative pronoun para pessoa em non-defining",
+          "answer": "who",
+          "explanation": "\"Who studies medicine\" — extra info sobre a irmã. Específica."
+        },
+        {
+          "type": "fill_gap",
+          "sentence": "Ana, _____ I work with, just had a baby.",
+          "hint": "who",
+          "answer": "who",
+          "explanation": "\"Who I work with\" — extra info sobre Ana. Note: posição preposição final aceita."
+        },
+        {
+          "type": "fill_gap",
+          "sentence": "Mr. Silva, _____ teaches English, is from Portugal.",
+          "hint": "who",
+          "answer": "who",
+          "explanation": "\"Who teaches English\" — informação adicional sobre uma pessoa identificada por nome."
+        },
+        {
+          "type": "fix_error",
+          "sentence": "My brother, that lives in Rio, is a teacher.",
+          "hint": "Em non-defining (com vírgulas), use \"who\", não \"that\"",
+          "answer": "My brother, who lives in Rio, is a teacher.",
+          "explanation": "Erro comum: usar \"that\" em non-defining. \"That\" só em defining (sem vírgulas). Para non-defining: \"who\"."
+        },
+        {
+          "type": "fix_error",
+          "sentence": "Maria who I met yesterday is from Spain.",
+          "hint": "Non-defining precisa de vírgulas",
+          "answer": "Maria, who I met yesterday, is from Spain.",
+          "explanation": "Maria já é específica (nome próprio). A informação é EXTRA, não identifica. Logo, precisa de vírgulas (non-defining)."
+        },
+        {
+          "type": "read_answer",
+          "passage": "My brother, who lives in Rio, is a teacher. Maria, who I met last week, is from Spain. My boss, who is very strict, gave me a raise. Mr. Silva, who teaches English, is from Portugal.",
+          "question": "Who teaches English?",
+          "answer": "Mr. Silva",
+          "explanation": "The text says \"Mr. Silva, who teaches English, is from Portugal\"."
+        }
+      ],
+      "listening_speaking": [
+        {
+          "text": "My brother, who lives in Rio, is a teacher.",
+          "context": "non-defining who"
+        },
+        {
+          "text": "Maria, who I met yesterday, is great.",
+          "context": "extra info"
+        },
+        {
+          "text": "My boss, who is very strict, gave me a raise.",
+          "context": "surprising contrast"
+        },
+        {
+          "text": "Tom, who I've known for years, just got married.",
+          "context": "long acquaintance"
+        },
+        {
+          "text": "Ana, who I work with, just had a baby.",
+          "context": "colleague info"
+        }
+      ],
+      "roleplay": {
+        "scenario": "Charlotte pergunta sobre pessoas importantes da sua vida — você descreve cada uma com informação extra usando non-defining \"who\".",
+        "voiced_by": "charlotte",
+        "persona": "Charlotte",
+        "persona_outfit": "charlotte_casual",
+        "time_budget_sec": 180,
+        "opening_line": "Tell me about three important people, adding extra info with 'who + comma'.",
+        "objectives": [
+          {
+            "id": 1,
+            "label_pt": "Pessoa específica com 'who'",
+            "label_en": "Specific person with 'who'",
+            "hidden_prompt": "user uses 'X, who + verb, + main clause'",
+            "hint_pt": "My sister, who lives in Curitiba, is a nurse.",
+            "hint_en": "My sister, who lives in Curitiba, is a nurse."
+          },
+          {
+            "id": 2,
+            "label_pt": "Outra pessoa com info extra",
+            "label_en": "Another person with extra info",
+            "hidden_prompt": "user uses another non-defining 'who'",
+            "hint_pt": "My best friend, who I've known since school, lives nearby.",
+            "hint_en": "My best friend, who I've known since school, lives nearby."
+          },
+          {
+            "id": 3,
+            "label_pt": "Pessoa do trabalho com 'who'",
+            "label_en": "Work person with 'who'",
+            "hidden_prompt": "user uses 'colleague/boss, who + verb'",
+            "hint_pt": "My boss, who is from England, speaks Portuguese well.",
+            "hint_en": "My boss, who is from England, speaks Portuguese well."
+          }
+        ],
+        "closing_cue": "Charlotte fecha com \"People described!\" quando obj_3 baterem.",
+        "suggested_flow": "**Suggested flow** (referencial, 6 turnos):\n\n1. **Charlotte**: \"Tell me about three important people, adding extra info with 'who + comma'.\"\n2. **Student**: ~\"My sister, who lives in Curitiba, is a nurse.\"\n3. **Charlotte**: \"Family. Friend?\"\n4. **Student**: ~\"My best friend, who I've known since school, lives nearby.\"\n5. **Charlotte**: \"Work?\"\n6. **Student**: ~\"My boss, who is from England, speaks Portuguese well.\"\n7. **Charlotte**: \"People described!\"",
+        "evaluation_focus": [
+          "\"Who\" not \"that\" in non-defining",
+          "Commas in correct position",
+          "Extra info, not defining"
+        ]
+      },
+      "guided_chat": {
+        "scenario": "Charlotte conversa sobre pessoas da família/amigos dela — vocês trocam histórias usando non-defining who.",
+        "voiced_by": "charlotte",
+        "persona": "Charlotte",
+        "persona_outfit": "charlotte_casual",
+        "intro_en": "Charlotte shares family stories. Use 'who' + comma for extra info.",
+        "opening_message": "My aunt, who lives in Italy, is visiting next month. Tell me about your family.",
+        "objectives": [
+          {
+            "id": 1,
+            "label_pt": "Pessoa da família com 'who'",
+            "label_en": "Family person with 'who'",
+            "hidden_prompt": "user uses 'X, who + extra info'",
+            "hint_pt": "My uncle, who works in Germany, sends me photos every week.",
+            "hint_en": "My uncle, who works in Germany, sends me photos every week."
+          },
+          {
+            "id": 2,
+            "label_pt": "Outra pessoa próxima",
+            "label_en": "Another close person",
+            "hidden_prompt": "user uses another non-defining clause",
+            "hint_pt": "My cousin, who I see every Christmas, just started college.",
+            "hint_en": "My cousin, who I see every Christmas, just started college."
+          },
+          {
+            "id": 3,
+            "label_pt": "Perguntar à Charlotte",
+            "label_en": "Ask Charlotte",
+            "hidden_prompt": "user asks Charlotte about her relative",
+            "hint_pt": "When is your aunt arriving?",
+            "hint_en": "When is your aunt arriving?"
+          }
+        ],
+        "closing_cue": "Charlotte fecha com \"Family ties shared!\" quando obj_3 baterem.",
+        "suggested_script": "**Script** (referencial, 7 turnos):\n\n1. **Charlotte**: \"My aunt, who lives in Italy, is visiting next month. Tell me about your family.\"\n2. **Student**: \"My uncle, who works in Germany, sends me photos every week.\"\n3. **Charlotte**: \"Love that. Closer family?\"\n4. **Student**: \"My cousin, who I see every Christmas, just started college.\"\n5. **Charlotte**: \"Time flies.\"\n6. **Student**: \"When is your aunt arriving?\"\n7. **Charlotte**: \"On the 20th, staying for two weeks. Family ties shared!\"\n\n> I01 chat = LLM puro. Scaffold via hint_pt.\n\n---"
+      }
+    },
+    {
+      "id": "I02",
+      "title": "The Amazon, which",
+      "sub_cefr": "B2",
+      "grammar_focus": "Non-defining relative clauses with \"which\" (things) and clause-referring \"which\"",
+      "markers": [
+        "denso"
+      ],
+      "real_life_context": "You add extra information about things, places, or even entire previous statements.",
+      "grammar": [
+        {
+          "type": "multiple_choice",
+          "sentence": "The Amazon, _____ is the longest river, runs through Brazil.",
+          "options": [
+            "which",
+            "that",
+            "who",
+            "where"
+          ],
+          "answer": "which",
+          "explanation": "Non-defining para coisa/lugar: \"which\". \"That\" não funciona em non-defining. \"The Amazon\" já está identificado, então a info é EXTRA."
+        },
+        {
+          "type": "multiple_choice",
+          "sentence": "My new phone, _____ I bought last week, broke already.",
+          "options": [
+            "which",
+            "that",
+            "who",
+            "whose"
+          ],
+          "answer": "which",
+          "explanation": "\"Which I bought last week\" — info extra sobre o telefone específico. Em non-defining, \"which\" obrigatório."
+        },
+        {
+          "type": "word_bank",
+          "sentence": "She didn't call me back, _____ surprised me.",
+          "choices": [
+            "which",
+            "that",
+            "who",
+            "what"
+          ],
+          "answer": "which",
+          "explanation": "\"Which\" pode se referir a uma CLÁUSULA inteira anterior. \"Which surprised me\" — o fato dela não chamar é o que surpreendeu."
+        },
+        {
+          "type": "word_bank",
+          "sentence": "The book, _____ won an award, became a bestseller.",
+          "choices": [
+            "which",
+            "that",
+            "who",
+            "whose"
+          ],
+          "answer": "which",
+          "explanation": "\"Which won an award\" — info extra sobre o livro. Non-defining com \"which\"."
+        },
+        {
+          "type": "fill_gap",
+          "sentence": "Brazil, _____ is the largest country in South America, has many cultures.",
+          "hint": "which (para país/coisa em non-defining)",
+          "answer": "which",
+          "explanation": "\"Which is the largest country\" — informação adicional sobre o Brasil."
+        },
+        {
+          "type": "fill_gap",
+          "sentence": "My laptop, _____ I use every day, is getting old.",
+          "hint": "which",
+          "answer": "which",
+          "explanation": "\"Which I use every day\" — info extra sobre o laptop específico."
+        },
+        {
+          "type": "fill_gap",
+          "sentence": "He arrived two hours late, _____ made everyone angry.",
+          "hint": "which (refere-se à cláusula anterior)",
+          "answer": "which",
+          "explanation": "\"Which made everyone angry\" — \"which\" se refere ao fato dele ter chegado tarde. Cláusula-referente."
+        },
+        {
+          "type": "fix_error",
+          "sentence": "The Amazon, that is the longest river, runs through Brazil.",
+          "hint": "Non-defining usa \"which\", não \"that\"",
+          "answer": "The Amazon, which is the longest river, runs through Brazil.",
+          "explanation": "\"That\" só em defining (sem vírgulas). Para non-defining: \"which\"."
+        },
+        {
+          "type": "fix_error",
+          "sentence": "My phone which I bought last week broke already.",
+          "hint": "Non-defining precisa de vírgulas",
+          "answer": "My phone, which I bought last week, broke already.",
+          "explanation": "Se a info é EXTRA (não identifica entre vários phones), use vírgulas. Sem vírgulas seria defining (entre vários, o que comprei semana passada)."
+        },
+        {
+          "type": "read_answer",
+          "passage": "The Amazon, which is the longest river in South America, runs through Brazil. My new phone, which I bought last week, broke already. The book, which won an award last year, became a bestseller. Brazil, which is the largest country in South America, has many cultures.",
+          "question": "What happened to the new phone?",
+          "answer": "it broke (or \"it broke already\")",
+          "explanation": "The text says \"My new phone, which I bought last week, broke already\"."
+        }
+      ],
+      "listening_speaking": [
+        {
+          "text": "The Amazon, which is the longest river, runs through Brazil.",
+          "context": "geographic"
+        },
+        {
+          "text": "My phone, which I bought last week, broke.",
+          "context": "possession + frustration"
+        },
+        {
+          "text": "He came late, which annoyed everyone.",
+          "context": "clause-referring which"
+        },
+        {
+          "text": "The book, which won an award, became a bestseller.",
+          "context": "product info"
+        },
+        {
+          "text": "Brazil, which has many cultures, is huge.",
+          "context": "country info"
+        }
+      ],
+      "roleplay": {
+        "scenario": "Charlotte pede que você descreva 3 lugares ou coisas com informação extra usando non-defining \"which\".",
+        "voiced_by": "charlotte",
+        "persona": "Charlotte",
+        "persona_outfit": "charlotte_casual",
+        "time_budget_sec": 180,
+        "opening_line": "Describe three things or places with 'which + comma' — extra info style.",
+        "objectives": [
+          {
+            "id": 1,
+            "label_pt": "Lugar com 'which'",
+            "label_en": "Place with 'which'",
+            "hidden_prompt": "user uses 'X, which + extra info' for place",
+            "hint_pt": "Rio, which is famous for its beaches, has amazing views.",
+            "hint_en": "Rio, which is famous for its beaches, has amazing views."
+          },
+          {
+            "id": 2,
+            "label_pt": "Coisa com 'which'",
+            "label_en": "Thing with 'which'",
+            "hidden_prompt": "user uses 'X, which + extra info' for object",
+            "hint_pt": "My car, which I bought last year, is electric.",
+            "hint_en": "My car, which I bought last year, is electric."
+          },
+          {
+            "id": 3,
+            "label_pt": "'Which' referindo a cláusula inteira",
+            "label_en": "'Which' referring to whole clause",
+            "hidden_prompt": "user uses 'X happened, which + reaction'",
+            "hint_pt": "He forgot my birthday, which hurt my feelings.",
+            "hint_en": "He forgot my birthday, which hurt my feelings."
+          }
+        ],
+        "closing_cue": "Charlotte fecha com \"Extra info mastered!\" quando obj_3 baterem.",
+        "suggested_flow": "**Suggested flow** (referencial, 6 turnos):\n\n1. **Charlotte**: \"Describe three things or places with 'which + comma' — extra info style.\"\n2. **Student**: ~\"Rio, which is famous for its beaches, has amazing views.\"\n3. **Charlotte**: \"Tourist favorite. Object?\"\n4. **Student**: ~\"My car, which I bought last year, is electric.\"\n5. **Charlotte**: \"Clause-which?\"\n6. **Student**: ~\"He forgot my birthday, which hurt my feelings.\"\n7. **Charlotte**: \"Extra info mastered!\"",
+        "evaluation_focus": [
+          "\"Which\" not \"that\" in non-defining",
+          "Clause-referring \"which\"",
+          "Commas correct"
+        ]
+      },
+      "guided_chat": {
+        "scenario": "Charlotte conversa sobre coisas e lugares favoritos — vocês usam \"which\" para adicionar contexto e informação extra.",
+        "voiced_by": "charlotte",
+        "persona": "Charlotte",
+        "persona_outfit": "charlotte_casual",
+        "intro_en": "Charlotte talks about favorite things. Use 'which' + comma for extra info.",
+        "opening_message": "My favorite city is Lisbon, which has amazing food. What's yours?",
+        "objectives": [
+          {
+            "id": 1,
+            "label_pt": "Cidade favorita com 'which'",
+            "label_en": "Favorite city with 'which'",
+            "hidden_prompt": "user uses 'X, which + extra info, is my favorite'",
+            "hint_pt": "My favorite city is Florianópolis, which has beautiful beaches.",
+            "hint_en": "My favorite city is Florianópolis, which has beautiful beaches."
+          },
+          {
+            "id": 2,
+            "label_pt": "Outra coisa favorita com 'which'",
+            "label_en": "Another favorite with 'which'",
+            "hidden_prompt": "user uses another non-defining 'which'",
+            "hint_pt": "My favorite book, which I've read twice, is by Saramago.",
+            "hint_en": "My favorite book, which I've read twice, is by Saramago."
+          },
+          {
+            "id": 3,
+            "label_pt": "Perguntar à Charlotte",
+            "label_en": "Ask Charlotte",
+            "hidden_prompt": "user asks Charlotte more about Lisbon or her favorites",
+            "hint_pt": "What do you love about Lisbon?",
+            "hint_en": "What do you love about Lisbon?"
+          }
+        ],
+        "closing_cue": "Charlotte fecha com \"Favorites swapped!\" quando obj_3 baterem.",
+        "suggested_script": "**Script** (referencial, 7 turnos):\n\n1. **Charlotte**: \"My favorite city is Lisbon, which has amazing food. What's yours?\"\n2. **Student**: \"My favorite city is Florianópolis, which has beautiful beaches.\"\n3. **Charlotte**: \"Brazilian paradise. Book?\"\n4. **Student**: \"My favorite book, which I've read twice, is by Saramago.\"\n5. **Charlotte**: \"Great Portuguese author.\"\n6. **Student**: \"What do you love about Lisbon?\"\n7. **Charlotte**: \"The light, which is golden all day. Favorites swapped!\"\n\n> I02 chat = LLM puro. Scaffold via hint_pt.\n\n---"
+      }
+    },
+    {
+      "id": "I03",
+      "title": "Maria, whose",
+      "sub_cefr": "B2",
+      "grammar_focus": "Non-defining \"whose\" (possession)",
+      "markers": [
+        "denso"
+      ],
+      "real_life_context": "You describe possessions or attributes of a person with extra information.",
+      "grammar": [
+        {
+          "type": "multiple_choice",
+          "sentence": "Maria, _____ father is a doctor, is studying medicine too.",
+          "options": [
+            "whose",
+            "who",
+            "which",
+            "that"
+          ],
+          "answer": "whose",
+          "explanation": "\"Whose\" indica POSSESSÃO em relative clause. \"Maria, whose father...\" — o pai DE Maria. Funciona em defining e non-defining."
+        },
+        {
+          "type": "multiple_choice",
+          "sentence": "My neighbor, _____ dog barks all night, is moving away.",
+          "options": [
+            "whose",
+            "who",
+            "which",
+            "that"
+          ],
+          "answer": "whose",
+          "explanation": "\"Whose dog\" — o cachorro DO vizinho. Possessão. Não confunde com \"who's\" (who is)."
+        },
+        {
+          "type": "word_bank",
+          "sentence": "The author, _____ book I loved, is coming to town.",
+          "choices": [
+            "whose",
+            "who",
+            "which",
+            "that"
+          ],
+          "answer": "whose",
+          "explanation": "\"Whose book\" — o livro DO autor. Possessão."
+        },
+        {
+          "type": "word_bank",
+          "sentence": "Tom, _____ wife is from Spain, speaks fluent Spanish.",
+          "choices": [
+            "whose",
+            "who",
+            "which",
+            "that"
+          ],
+          "answer": "whose",
+          "explanation": "\"Whose wife\" — a esposa DE Tom. Possessão de pessoa."
+        },
+        {
+          "type": "fill_gap",
+          "sentence": "My friend, _____ car is in the shop, took the bus today.",
+          "hint": "whose (possessão)",
+          "answer": "whose",
+          "explanation": "\"Whose car\" — o carro DO amigo."
+        },
+        {
+          "type": "fill_gap",
+          "sentence": "The singer, _____ songs are famous worldwide, is from Brazil.",
+          "hint": "whose",
+          "answer": "whose",
+          "explanation": "\"Whose songs\" — as canções DO cantor."
+        },
+        {
+          "type": "fill_gap",
+          "sentence": "Mrs. Garcia, _____ children study with mine, is a great teacher.",
+          "hint": "whose",
+          "answer": "whose",
+          "explanation": "\"Whose children\" — os filhos DA Mrs. Garcia."
+        },
+        {
+          "type": "fix_error",
+          "sentence": "Maria, who's father is a doctor, is studying medicine.",
+          "hint": "\"Who's\" = \"who is\" — para possessão use \"whose\"",
+          "answer": "Maria, whose father is a doctor, is studying medicine.",
+          "explanation": "\"Who's\" = \"who is\" (contração). \"Whose\" = possessão. Erro comum: confundir os dois pela pronúncia idêntica."
+        },
+        {
+          "type": "fix_error",
+          "sentence": "My neighbor, that dog barks all night, is moving.",
+          "hint": "Possessão em non-defining usa \"whose\"",
+          "answer": "My neighbor, whose dog barks all night, is moving.",
+          "explanation": "\"That\" não funciona para possessão e nem em non-defining. Para mostrar de quem é o cachorro: \"whose\"."
+        },
+        {
+          "type": "read_answer",
+          "passage": "Maria, whose father is a doctor, is studying medicine. My neighbor, whose dog barks all night, is moving. The author, whose book I loved, is coming to town. Tom, whose wife is from Spain, speaks fluent Spanish.",
+          "question": "Why does Tom speak fluent Spanish?",
+          "answer": "his wife is from Spain (or \"whose wife is from Spain\")",
+          "explanation": "The text says \"Tom, whose wife is from Spain, speaks fluent Spanish\"."
+        }
+      ],
+      "listening_speaking": [
+        {
+          "text": "Maria, whose father is a doctor, is studying medicine.",
+          "context": "family possession"
+        },
+        {
+          "text": "My neighbor, whose dog barks, is moving.",
+          "context": "possession + complaint"
+        },
+        {
+          "text": "The author, whose book I loved, is here.",
+          "context": "work possession"
+        },
+        {
+          "text": "Tom, whose wife is from Spain, speaks Spanish.",
+          "context": "partner possession"
+        },
+        {
+          "text": "The singer, whose songs are famous, is Brazilian.",
+          "context": "work attribution"
+        }
+      ],
+      "roleplay": {
+        "scenario": "Charlotte pergunta sobre pessoas conectadas a você por algo (família, amigos, vizinhos) — você descreve com \"whose + possessão\".",
+        "voiced_by": "charlotte",
+        "persona": "Charlotte",
+        "persona_outfit": "charlotte_casual",
+        "time_budget_sec": 180,
+        "opening_line": "Three people with something interesting about them — use 'whose + noun'.",
+        "objectives": [
+          {
+            "id": 1,
+            "label_pt": "Pessoa com 'whose + família'",
+            "label_en": "Person with 'whose + family'",
+            "hidden_prompt": "user uses 'X, whose father/mother/sister/brother + verb'",
+            "hint_pt": "Carla, whose mother is a chef, cooks amazing food.",
+            "hint_en": "Carla, whose mother is a chef, cooks amazing food."
+          },
+          {
+            "id": 2,
+            "label_pt": "Pessoa com 'whose + objeto'",
+            "label_en": "Person with 'whose + object'",
+            "hidden_prompt": "user uses 'X, whose + object + verb'",
+            "hint_pt": "My neighbor, whose car is always parked badly, never apologizes.",
+            "hint_en": "My neighbor, whose car is always parked badly, never apologizes."
+          },
+          {
+            "id": 3,
+            "label_pt": "Pessoa com 'whose + qualidade/trabalho'",
+            "label_en": "Person with 'whose + quality/work'",
+            "hidden_prompt": "user uses 'X, whose + work/quality + verb'",
+            "hint_pt": "My friend, whose paintings are amazing, just had a show.",
+            "hint_en": "My friend, whose paintings are amazing, just had a show."
+          }
+        ],
+        "closing_cue": "Charlotte fecha com \"Possessions mapped!\" quando obj_3 baterem.",
+        "suggested_flow": "**Suggested flow** (referencial, 6 turnos):\n\n1. **Charlotte**: \"Three people with something interesting about them — use 'whose + noun'.\"\n2. **Student**: ~\"Carla, whose mother is a chef, cooks amazing food.\"\n3. **Charlotte**: \"Family talent. Object?\"\n4. **Student**: ~\"My neighbor, whose car is always parked badly, never apologizes.\"\n5. **Charlotte**: \"Annoying. Work?\"\n6. **Student**: ~\"My friend, whose paintings are amazing, just had a show.\"\n7. **Charlotte**: \"Possessions mapped!\"",
+        "evaluation_focus": [
+          "\"Whose\" not \"who's\"",
+          "Possession structure",
+          "Non-defining with commas"
+        ]
+      },
+      "guided_chat": {
+        "scenario": "Charlotte conversa sobre vizinhos e conhecidos com características marcantes — usem \"whose\" para conectar pessoa e possessão.",
+        "voiced_by": "charlotte",
+        "persona": "Charlotte",
+        "persona_outfit": "charlotte_casual",
+        "intro_en": "Charlotte shares neighbor stories. Use 'whose + noun' for possession.",
+        "opening_message": "My neighbor, whose cat keeps coming to my house, is so friendly. Tell me about yours.",
+        "objectives": [
+          {
+            "id": 1,
+            "label_pt": "Vizinho ou conhecido com 'whose'",
+            "label_en": "Neighbor with 'whose'",
+            "hidden_prompt": "user uses 'X, whose + noun, + verb'",
+            "hint_pt": "My neighbor, whose kids are always playing outside, is great with them.",
+            "hint_en": "My neighbor, whose kids are always playing outside, is great with them."
+          },
+          {
+            "id": 2,
+            "label_pt": "Outra pessoa com 'whose'",
+            "label_en": "Another person with 'whose'",
+            "hidden_prompt": "user uses another non-defining 'whose'",
+            "hint_pt": "An old friend, whose family I know well, called me yesterday.",
+            "hint_en": "An old friend, whose family I know well, called me yesterday."
+          },
+          {
+            "id": 3,
+            "label_pt": "Perguntar à Charlotte",
+            "label_en": "Ask Charlotte",
+            "hidden_prompt": "user asks Charlotte more about her neighbor",
+            "hint_pt": "What does your neighbor do?",
+            "hint_en": "What does your neighbor do?"
+          }
+        ],
+        "closing_cue": "Charlotte fecha com \"Connections explained!\" quando obj_3 baterem.",
+        "suggested_script": "**Script** (referencial, 7 turnos):\n\n1. **Charlotte**: \"My neighbor, whose cat keeps coming to my house, is so friendly. Tell me about yours.\"\n2. **Student**: \"My neighbor, whose kids are always playing outside, is great with them.\"\n3. **Charlotte**: \"Lively street. Other people?\"\n4. **Student**: \"An old friend, whose family I know well, called me yesterday.\"\n5. **Charlotte**: \"Nice surprise.\"\n6. **Student**: \"What does your neighbor do?\"\n7. **Charlotte**: \"She's a vet, which is why the cat trusts her. Connections explained!\"\n\n> I03 chat = LLM puro. Scaffold via hint_pt.\n\n---"
+      }
+    },
+    {
+      "id": "I04",
+      "title": "Where, when",
+      "sub_cefr": "B2",
+      "grammar_focus": "Non-defining \"where\" (place) and \"when\" (time)",
+      "markers": [
+        "denso"
+      ],
+      "real_life_context": "You add extra information about places and time periods.",
+      "grammar": [
+        {
+          "type": "multiple_choice",
+          "sentence": "Paris, _____ I lived for a year, is beautiful.",
+          "options": [
+            "where",
+            "which",
+            "that",
+            "who"
+          ],
+          "answer": "where",
+          "explanation": "\"Where\" para lugar em non-defining. \"Paris, where I lived\" = \"in Paris\". Mais natural que \"which\"."
+        },
+        {
+          "type": "multiple_choice",
+          "sentence": "2020, _____ the pandemic started, was a hard year.",
+          "options": [
+            "when",
+            "where",
+            "which",
+            "that"
+          ],
+          "answer": "when",
+          "explanation": "\"When\" para tempo em non-defining. \"In 2020, the pandemic started\" → \"2020, when the pandemic started\"."
+        },
+        {
+          "type": "word_bank",
+          "sentence": "My hometown, _____ I grew up, is small.",
+          "choices": [
+            "where",
+            "which",
+            "that",
+            "when"
+          ],
+          "answer": "where",
+          "explanation": "\"Where I grew up\" — lugar de onde sou. Non-defining \"where\"."
+        },
+        {
+          "type": "word_bank",
+          "sentence": "The summer of 2018, _____ I traveled to Europe, was unforgettable.",
+          "choices": [
+            "when",
+            "where",
+            "which",
+            "that"
+          ],
+          "answer": "when",
+          "explanation": "\"When I traveled\" — tempo específico em non-defining."
+        },
+        {
+          "type": "fill_gap",
+          "sentence": "São Paulo, _____ I work, is a huge city.",
+          "hint": "where (lugar)",
+          "answer": "where",
+          "explanation": "\"Where I work\" — lugar específico de trabalho."
+        },
+        {
+          "type": "fill_gap",
+          "sentence": "March, _____ I was born, is my favorite month.",
+          "hint": "when (tempo)",
+          "answer": "when",
+          "explanation": "\"When I was born\" — tempo específico."
+        },
+        {
+          "type": "fill_gap",
+          "sentence": "The university, _____ I studied, is famous.",
+          "hint": "where",
+          "answer": "where",
+          "explanation": "\"Where I studied\" — lugar de estudo."
+        },
+        {
+          "type": "fix_error",
+          "sentence": "Paris, which I lived for a year, is beautiful.",
+          "hint": "Para LUGAR de habitação, \"where\" é mais natural",
+          "answer": "Paris, where I lived for a year, is beautiful.",
+          "explanation": "\"Which\" funcionaria em estrutura como \"which I visited\" (objeto direto), mas para \"in Paris\" (lugar de habitação), \"where\" é correto."
+        },
+        {
+          "type": "fix_error",
+          "sentence": "2020, which the pandemic started, was hard.",
+          "hint": "Para TEMPO, use \"when\"",
+          "answer": "2020, when the pandemic started, was hard.",
+          "explanation": "Anos, meses, momentos → \"when\". \"Which\" não funciona como tempo."
+        },
+        {
+          "type": "read_answer",
+          "passage": "Paris, where I lived for a year, is beautiful. 2020, when the pandemic started, was a hard year. My hometown, where I grew up, is small. The summer of 2018, when I traveled to Europe, was unforgettable.",
+          "question": "Where did the speaker grow up?",
+          "answer": "in my/their hometown (or \"their hometown\")",
+          "explanation": "The text says \"My hometown, where I grew up, is small\"."
+        }
+      ],
+      "listening_speaking": [
+        {
+          "text": "Paris, where I lived for a year, is beautiful.",
+          "context": "place + experience"
+        },
+        {
+          "text": "2020, when the pandemic started, was hard.",
+          "context": "year + event"
+        },
+        {
+          "text": "My hometown, where I grew up, is small.",
+          "context": "origin"
+        },
+        {
+          "text": "The summer of 2018, when I traveled, was unforgettable.",
+          "context": "specific time"
+        },
+        {
+          "text": "The office, where I work, is downtown.",
+          "context": "workplace"
+        }
+      ],
+      "roleplay": {
+        "scenario": "Charlotte pergunta sobre 3 lugares ou momentos marcantes — você descreve com \"where\" e \"when\" em non-defining.",
+        "voiced_by": "charlotte",
+        "persona": "Charlotte",
+        "persona_outfit": "charlotte_casual",
+        "time_budget_sec": 180,
+        "opening_line": "Three places or moments — use 'where' and 'when' with extra info.",
+        "objectives": [
+          {
+            "id": 1,
+            "label_pt": "Lugar marcante com 'where'",
+            "label_en": "Significant place with 'where'",
+            "hidden_prompt": "user uses 'X, where + extra info'",
+            "hint_pt": "Rio, where I spent my honeymoon, is magical.",
+            "hint_en": "Rio, where I spent my honeymoon, is magical."
+          },
+          {
+            "id": 2,
+            "label_pt": "Momento marcante com 'when'",
+            "label_en": "Significant moment with 'when'",
+            "hidden_prompt": "user uses 'X, when + extra info'",
+            "hint_pt": "2015, when I started my career, was a big year.",
+            "hint_en": "2015, when I started my career, was a big year."
+          },
+          {
+            "id": 3,
+            "label_pt": "Outro lugar ou tempo com info extra",
+            "label_en": "Another place or time with extra info",
+            "hidden_prompt": "user uses another 'where' or 'when'",
+            "hint_pt": "Last winter, when I traveled to Europe, was amazing.",
+            "hint_en": "Last winter, when I traveled to Europe, was amazing."
+          }
+        ],
+        "closing_cue": "Charlotte fecha com \"Places and times mapped!\" quando obj_3 baterem.",
+        "suggested_flow": "**Suggested flow** (referencial, 6 turnos):\n\n1. **Charlotte**: \"Three places or moments — use 'where' and 'when' with extra info.\"\n2. **Student**: ~\"Rio, where I spent my honeymoon, is magical.\"\n3. **Charlotte**: \"Romantic. Year?\"\n4. **Student**: ~\"2015, when I started my career, was a big year.\"\n5. **Charlotte**: \"Recent?\"\n6. **Student**: ~\"Last winter, when I traveled to Europe, was amazing.\"\n7. **Charlotte**: \"Places and times mapped!\"",
+        "evaluation_focus": [
+          "\"Where\" for places, \"when\" for times",
+          "Commas around non-defining",
+          "Variety"
+        ]
+      },
+      "guided_chat": {
+        "scenario": "Charlotte conversa sobre lugares e tempos que marcaram a vida dela — vocês contam histórias com \"where\" e \"when\".",
+        "voiced_by": "charlotte",
+        "persona": "Charlotte",
+        "persona_outfit": "charlotte_casual",
+        "intro_en": "Charlotte shares life moments. Use 'where' for places and 'when' for times.",
+        "opening_message": "Lisbon, where I studied, holds a special place in my heart. What about you?",
+        "objectives": [
+          {
+            "id": 1,
+            "label_pt": "Lugar com 'where'",
+            "label_en": "Place with 'where'",
+            "hidden_prompt": "user uses 'X, where + extra info'",
+            "hint_pt": "Salvador, where I was born, has so much history.",
+            "hint_en": "Salvador, where I was born, has so much history."
+          },
+          {
+            "id": 2,
+            "label_pt": "Tempo marcante com 'when'",
+            "label_en": "Significant time with 'when'",
+            "hidden_prompt": "user uses 'X, when + extra info'",
+            "hint_pt": "2010, when I graduated, feels like yesterday.",
+            "hint_en": "2010, when I graduated, feels like yesterday."
+          },
+          {
+            "id": 3,
+            "label_pt": "Perguntar à Charlotte",
+            "label_en": "Ask Charlotte",
+            "hidden_prompt": "user asks Charlotte about her experience",
+            "hint_pt": "What did you study in Lisbon?",
+            "hint_en": "What did you study in Lisbon?"
+          }
+        ],
+        "closing_cue": "Charlotte fecha com \"Life chapters shared!\" quando obj_3 baterem.",
+        "suggested_script": "**Script** (referencial, 7 turnos):\n\n1. **Charlotte**: \"Lisbon, where I studied, holds a special place in my heart. What about you?\"\n2. **Student**: \"Salvador, where I was born, has so much history.\"\n3. **Charlotte**: \"Beautiful soul. Time?\"\n4. **Student**: \"2010, when I graduated, feels like yesterday.\"\n5. **Charlotte**: \"Time bends.\"\n6. **Student**: \"What did you study in Lisbon?\"\n7. **Charlotte**: \"Linguistics, which is why I love languages. Life chapters shared!\"\n\n> I04 chat = LLM puro. Scaffold via hint_pt.\n\n---"
+      }
+    },
+    {
+      "id": "I05",
+      "title": "Defining vs non-defining",
+      "sub_cefr": "B2",
+      "grammar_focus": "Difference between defining (no commas, \"that\" OK) and non-defining (commas, no \"that\")",
+      "markers": [],
+      "real_life_context": "You distinguish essential identifying info from extra info.",
+      "grammar": [
+        {
+          "type": "multiple_choice",
+          "options": [
+            "who",
+            "that",
+            "which",
+            "no relative pronoun"
+          ],
+          "answer": "who",
+          "explanation": "\"Who\" funciona em ambas — defining e non-defining para pessoas. \"That\" também funciona em defining. Como \"no commas\", é defining."
+        },
+        {
+          "type": "multiple_choice",
+          "options": [
+            "who",
+            "that",
+            "which",
+            "whose"
+          ],
+          "answer": "who",
+          "explanation": "Vírgulas = non-defining. \"That\" NÃO funciona em non-defining. Apenas \"who\"."
+        },
+        {
+          "type": "word_bank",
+          "choices": [
+            "that",
+            "which",
+            "who",
+            "whose"
+          ],
+          "answer": "that",
+          "explanation": "Defining (sem vírgulas) com objeto: \"that\" ou \"which\" ou nada. \"That\" é o mais natural em defining."
+        },
+        {
+          "type": "word_bank",
+          "choices": [
+            "which",
+            "that",
+            "who",
+            "whose"
+          ],
+          "answer": "which",
+          "explanation": "Vírgulas = non-defining. \"Which\" obrigatório (não \"that\")."
+        },
+        {
+          "type": "fill_gap",
+          "hint": "who/that (defining para pessoa)",
+          "answer": "who",
+          "explanation": "Defining identifica QUEM (entre várias mulheres). \"Who\" funciona; \"that\" também."
+        },
+        {
+          "type": "fill_gap",
+          "hint": "who (única mãe, info extra)",
+          "answer": "who",
+          "explanation": "\"My mother\" já é específica (única). A info é EXTRA, não identifica."
+        },
+        {
+          "type": "fill_gap",
+          "hint": "where (lugar em defining)",
+          "answer": "where",
+          "explanation": "Defining \"where\" sem vírgulas. \"The town where I grew up\" — identifica qual cidade."
+        },
+        {
+          "type": "fix_error",
+          "hint": "Non-defining não usa \"that\"",
+          "answer": "My brother, who lives in Rio, is a teacher.",
+          "explanation": "Erro mais comum: \"that\" em non-defining. Apenas defining permite \"that\". Non-defining: \"who\" ou \"which\"."
+        },
+        {
+          "type": "fix_error",
+          "hint": "Sim, é defining correto",
+          "answer": "The man who called me yesterday is my boss.",
+          "explanation": "Frase já está correta. \"The man who called\" — identifica QUAL homem (entre vários). Defining sem vírgulas."
+        },
+        {
+          "type": "read_answer",
+          "passage": "The man who called me yesterday is my boss (defining — identifies which man). My boss, who called me yesterday, is great (non-defining — extra info about the only boss). The book that I bought is fascinating (defining). This book, which won an award, is fascinating (non-defining).",
+          "question": "When do you use commas?",
+          "answer": "in non-defining clauses (or \"non-defining\" or \"when info is extra\")",
+          "explanation": "The text explains that commas appear in non-defining clauses (extra information)."
+        }
+      ],
+      "listening_speaking": [
+        {
+          "text": "The man who called is my boss.",
+          "context": "defining (identifies)"
+        },
+        {
+          "text": "My boss, who called me, is great.",
+          "context": "non-defining (extra)"
+        },
+        {
+          "text": "The book that won the prize is on the table.",
+          "context": "defining"
+        },
+        {
+          "text": "This book, which won the prize, is fascinating.",
+          "context": "non-defining"
+        },
+        {
+          "text": "The town where I was born is small.",
+          "context": "defining"
+        }
+      ],
+      "roleplay": {
+        "scenario": "Charlotte propõe um jogo — você diz uma frase definidora e uma não-definidora sobre cada pessoa/coisa.",
+        "voiced_by": "charlotte",
+        "persona": "Charlotte",
+        "persona_outfit": "charlotte_casual",
+        "time_budget_sec": 180,
+        "opening_line": "Three pairs — one defining and one non-defining for each topic.",
+        "objectives": [
+          {
+            "id": 1,
+            "label_pt": "Frase defining + non-defining sobre pessoa",
+            "label_en": "Defining + non-defining for person",
+            "hidden_prompt": "user uses both defining and non-defining for a person",
+            "hint_pt": "The teacher who taught me French... My French teacher, who is from Paris,...",
+            "hint_en": "The teacher who taught me French... My French teacher, who is from Paris,..."
+          },
+          {
+            "id": 2,
+            "label_pt": "Defining + non-defining sobre lugar",
+            "label_en": "Defining + non-defining for place",
+            "hidden_prompt": "user uses both for a place",
+            "hint_pt": "The city where I work... São Paulo, where I work,...",
+            "hint_en": "The city where I work... São Paulo, where I work,..."
+          },
+          {
+            "id": 3,
+            "label_pt": "Defining + non-defining sobre coisa",
+            "label_en": "Defining + non-defining for thing",
+            "hidden_prompt": "user uses both for an object",
+            "hint_pt": "The book that won the award... My favorite book, which won the award,...",
+            "hint_en": "The book that won the award... My favorite book, which won the award,..."
+          }
+        ],
+        "closing_cue": "Charlotte fecha com \"Distinction mastered!\" quando obj_3 baterem.",
+        "suggested_flow": "**Suggested flow** (referencial, 6 turnos):\n\n1. **Charlotte**: \"Three pairs — one defining and one non-defining for each topic.\"\n2. **Student**: ~\"The teacher who taught me French was great. My French teacher, who is from Paris, was great.\"\n3. **Charlotte**: \"Same idea, different style. Place?\"\n4. **Student**: ~\"The city where I work is huge. São Paulo, where I work, is huge.\"\n5. **Charlotte**: \"Thing?\"\n6. **Student**: ~\"The book that won the award is amazing. My favorite book, which won the award, is amazing.\"\n7. **Charlotte**: \"Distinction mastered!\"",
+        "evaluation_focus": [
+          "Defining: no commas, \"that\" OK",
+          "Non-defining: commas, no \"that\"",
+          "Recognition of both"
+        ]
+      },
+      "guided_chat": {
+        "scenario": "Charlotte propõe conversa sobre pessoas e lugares — vocês alternam entre defining e non-defining para descrever.",
+        "voiced_by": "charlotte",
+        "persona": "Charlotte",
+        "persona_outfit": "charlotte_casual",
+        "intro_en": "Charlotte explores how we describe. Mix defining and non-defining naturally.",
+        "opening_message": "Tell me about a person — first define them, then add extra info.",
+        "objectives": [
+          {
+            "id": 1,
+            "label_pt": "Defining (identifica)",
+            "label_en": "Defining (identifies)",
+            "hidden_prompt": "user uses defining clause (no commas)",
+            "hint_pt": "The friend who I met at university lives nearby.",
+            "hint_en": "The friend who I met at university lives nearby."
+          },
+          {
+            "id": 2,
+            "label_pt": "Non-defining (extra info)",
+            "label_en": "Non-defining (extra info)",
+            "hidden_prompt": "user uses non-defining with commas",
+            "hint_pt": "Pedro, who I met at university, just got married.",
+            "hint_en": "Pedro, who I met at university, just got married."
+          },
+          {
+            "id": 3,
+            "label_pt": "Pergunta ou outra mistura",
+            "label_en": "Question or another mix",
+            "hidden_prompt": "user asks Charlotte or adds another mix",
+            "hint_pt": "How about your friends?",
+            "hint_en": "How about your friends?"
+          }
+        ],
+        "closing_cue": "Charlotte fecha com \"Both styles fluent!\" quando obj_3 baterem.",
+        "suggested_script": "**Script** (referencial, 7 turnos):\n\n1. **Charlotte**: \"Tell me about a person — first define them, then add extra info.\"\n2. **Student**: \"The friend who I met at university lives nearby.\"\n3. **Charlotte**: \"Great. Now extra info?\"\n4. **Student**: \"Pedro, who I met at university, just got married.\"\n5. **Charlotte**: \"Same person, different style.\"\n6. **Student**: \"How about your friends?\"\n7. **Charlotte**: \"My closest friend, who I've known since I was 5, still lives in my hometown. Both styles fluent!\"\n\n> I05 chat = LLM puro. Scaffold via hint_pt.\n\n---"
+      }
+    }
+  ],
+  "cross_unit_consolidation": [
+    "Non-defining clauses com vírgulas",
+    "Who (pessoas), which (coisas), whose (possessão), where (lugar), when (tempo)",
+    "NÃO usar \"that\" em non-defining",
+    "Distinção entre defining (essencial, sem vírgulas) e non-defining (extra, com vírgulas)",
+    "\"Which\" pode se referir a uma cláusula inteira",
+    "\"Whose\" ≠ \"who's\""
+  ]
+}
