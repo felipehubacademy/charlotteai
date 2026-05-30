@@ -82,23 +82,28 @@
       "listening_speaking": [
         {
           "text": "It was John who broke the window.",
-          "context": "agent emphasis"
+          "context": "agent emphasis",
+          "audio_url": "https://fnvjibzreepubageztoi.supabase.co/storage/v1/object/public/curriculum-audio/ls/advanced/ebaf4276f19a0fc2.flac"
         },
         {
           "text": "It was in 2015 that we first met.",
-          "context": "time emphasis"
+          "context": "time emphasis",
+          "audio_url": "https://fnvjibzreepubageztoi.supabase.co/storage/v1/object/public/curriculum-audio/ls/advanced/73f651dc3d2c2c52.flac"
         },
         {
           "text": "It's the silence that gets to me.",
-          "context": "emotional element"
+          "context": "emotional element",
+          "audio_url": "https://fnvjibzreepubageztoi.supabase.co/storage/v1/object/public/curriculum-audio/ls/advanced/72214dd438143642.flac"
         },
         {
           "text": "It wasn't me who called — it was Tom.",
-          "context": "denial + correction"
+          "context": "denial + correction",
+          "audio_url": "https://fnvjibzreepubageztoi.supabase.co/storage/v1/object/public/curriculum-audio/ls/advanced/2299a9d4fbac0e67.flac"
         },
         {
           "text": "It was at the airport that I finally cried.",
-          "context": "place emphasis"
+          "context": "place emphasis",
+          "audio_url": "https://fnvjibzreepubageztoi.supabase.co/storage/v1/object/public/curriculum-audio/ls/advanced/93f2f0c7103a5743.flac"
         }
       ],
       "roleplay": {
@@ -227,11 +232,13 @@
       "listening_speaking": [
         {
           "text": "What I need is a long weekend.",
-          "context": "basic wh-cleft"
+          "context": "basic wh-cleft",
+          "audio_url": "https://fnvjibzreepubageztoi.supabase.co/storage/v1/object/public/curriculum-audio/ls/advanced/d9169cf614181968.flac"
         },
         {
           "text": "What surprised me was her honesty.",
-          "context": "reaction emphasis"
+          "context": "reaction emphasis",
+          "audio_url": "https://fnvjibzreepubageztoi.supabase.co/storage/v1/object/public/curriculum-audio/ls/advanced/0a2030dac675fe8e.flac"
         },
         {
           "text": "What he did was apologise sincerely.",
