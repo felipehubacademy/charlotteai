@@ -1,0 +1,1029 @@
+{
+  "id": "M04",
+  "title": "Em casa",
+  "level": "Novice",
+  "block": "A1",
+  "units_range": "N01–N05",
+  "theme": "Casa, cômodos, móveis e objetos do dia-a-dia",
+  "goal": "Aluno sai sabendo apresentar a casa, dizer o que tem em cada cômodo usando there is/are, usar artigos a/an/the corretamente e formar plurais regulares de objetos do cotidiano.",
+  "connects_to": "M05 (Meu dia-a-dia) — depois de descrever o espaço, aprende a falar do que faz nesse espaço (rotina).",
+  "module_chunks": [
+    "house / home",
+    "room / kitchen / bedroom / bathroom / living room",
+    "table / chair / bed / window / door",
+    "desk / sofa / lamp / shelf",
+    "This is my + room",
+    "Welcome to my home / Welcome to my house",
+    "My + room + is + adjective",
+    "The kitchen / The bedroom / The door / The window",
+    "There is + a/an + singular",
+    "There are + number + plural",
+    "Is there...? / Are there...?",
+    "I've got a + room/object",
+    "It's a big/small/new house",
+    "a + consoante (a chair, a door)",
+    "an + vogal (an apple, an engineer)",
+    "the + específico (the kitchen, the door)",
+    "next to / in / on (basic prepositions of place)",
+    "chairs / tables / windows / doors / beds (regular plurals)"
+  ],
+  "units": [
+    {
+      "id": "N01",
+      "title": "Minha casa",
+      "sub_cefr": "A1",
+      "grammar_focus": "House vocab + \"This is my + room\" + possessives (cumulativo M03)",
+      "markers": [],
+      "real_life_context": "Você faz um vídeo-tour da sua casa para um amigo distante.",
+      "grammar": [
+        {
+          "type": "multiple_choice",
+          "sentence": "_____ kitchen is on the right.",
+          "options": [
+            "My",
+            "I",
+            "Me"
+          ],
+          "answer": "My",
+          "explanation": "\"My kitchen\" = \"a minha cozinha\". \"My\" é o possessivo (vai antes do substantivo). \"I\" é sujeito, \"Me\" é objeto."
+        },
+        {
+          "type": "multiple_choice",
+          "sentence": "This is _____ bedroom.",
+          "options": [
+            "my",
+            "mine",
+            "I"
+          ],
+          "answer": "my",
+          "explanation": "\"My bedroom\" = \"o meu quarto\". \"My\" vem antes do substantivo. \"Mine\" é possessivo independente (\"É meu\" — sem substantivo depois)."
+        },
+        {
+          "type": "word_bank",
+          "sentence": "Welcome to _____ home!",
+          "choices": [
+            "my",
+            "I",
+            "me",
+            "mine"
+          ],
+          "answer": "my",
+          "explanation": "\"Welcome to my home\" é o chunk de hospitalidade padrão. \"My\" possessivo antes de \"home\"."
+        },
+        {
+          "type": "word_bank",
+          "sentence": "_____ house is big.",
+          "choices": [
+            "My",
+            "I",
+            "Mine",
+            "Me"
+          ],
+          "answer": "My",
+          "explanation": "\"My house\" = \"a minha casa\". \"My\" sempre antes do substantivo possuído."
+        },
+        {
+          "type": "fill_gap",
+          "sentence": "_____ kitchen is small.",
+          "hint": "Possessivo de \"I\"",
+          "answer": "My",
+          "explanation": "\"My kitchen\" — falando da própria cozinha. Pra dizer \"a minha cozinha\", usa \"my + substantivo\"."
+        },
+        {
+          "type": "fill_gap",
+          "sentence": "This is _____ bedroom. It is great.",
+          "hint": "Possessivo (mostrando algo seu)",
+          "answer": "my",
+          "explanation": "\"This is my bedroom\" pra apresentar o próprio quarto. \"My\" possessivo."
+        },
+        {
+          "type": "fill_gap",
+          "sentence": "Welcome to _____ home!",
+          "hint": "Possessivo (sua casa)",
+          "answer": "my",
+          "explanation": "\"Welcome to my home\" — receber alguém na sua casa. Chunk fixo de hospitalidade."
+        },
+        {
+          "type": "fix_error",
+          "sentence": "I house is big.",
+          "hint": "Possessivo de \"I\" não é \"I\"",
+          "answer": "My house is big.",
+          "explanation": "\"I\" é o sujeito (eu). Pra dizer \"minha casa\", usa \"my\" (não \"I house\"). My + substantivo."
+        },
+        {
+          "type": "fix_error",
+          "sentence": "This is mine bedroom.",
+          "hint": "\"Mine\" vs \"my\" antes de substantivo",
+          "answer": "This is my bedroom.",
+          "explanation": "\"My\" vai ANTES do substantivo (my bedroom). \"Mine\" é independente — pra dizer \"é meu\" sem substantivo depois (\"This bedroom is mine\")."
+        },
+        {
+          "type": "read_answer",
+          "passage": "Welcome to my house! My house is big. My kitchen is small but nice. My bedroom has got a big window.",
+          "question": "How is the kitchen?",
+          "answer": "small",
+          "explanation": "The text says \"My kitchen is small but nice\". The first word describing the kitchen is \"small\"."
+        }
+      ],
+      "listening_speaking": [
+        {
+          "text": "This is my house.",
+          "context": "abertura de tour"
+        },
+        {
+          "text": "Welcome to my home.",
+          "context": "hospitalidade"
+        },
+        {
+          "text": "My kitchen is small.",
+          "context": "descrevendo cômodo"
+        },
+        {
+          "text": "My bedroom is big.",
+          "context": "descrevendo outro cômodo"
+        },
+        {
+          "text": "This is the door.",
+          "context": "apontando objeto com \"the\""
+        }
+      ],
+      "roleplay": {
+        "scenario": "Charlotte faz um vídeo-tour da sua casa — você mostra três cômodos diferentes.",
+        "voiced_by": "charlotte",
+        "persona": "Charlotte",
+        "persona_outfit": "charlotte_casual",
+        "time_budget_sec": 90,
+        "opening_line": "Show me around! Where are we starting?",
+        "objectives": [
+          {
+            "id": 1,
+            "label_pt": "Apresentar um cômodo (cozinha)",
+            "label_en": "Introduce a room (kitchen)",
+            "hidden_prompt": "user introduces the kitchen with 'This is my kitchen' or 'My kitchen is + adjective'",
+            "hint_pt": "This is my kitchen.",
+            "hint_en": "This is my kitchen."
+          },
+          {
+            "id": 2,
+            "label_pt": "Apresentar outro cômodo (quarto ou sala)",
+            "label_en": "Introduce another room (bedroom or living room)",
+            "hidden_prompt": "user introduces another room with 'This is my bedroom/living room' or 'My + room + is + adjective'",
+            "hint_pt": "This is my bedroom.",
+            "hint_en": "This is my bedroom."
+          },
+          {
+            "id": 3,
+            "label_pt": "Descrever um cômodo com adjetivo (grande, pequeno, novo)",
+            "label_en": "Describe a room with an adjective",
+            "hidden_prompt": "user describes a room with 'My + room + is + adjective' (big/small/new/nice/great)",
+            "hint_pt": "My kitchen is small.",
+            "hint_en": "My kitchen is small."
+          }
+        ],
+        "closing_cue": "Charlotte fecha com \"Nice place! Thanks for the tour.\" quando obj_3 baterem.",
+        "suggested_flow": "**Suggested flow** (referencial, 6 turnos):\n\n1. **Charlotte**: \"Show me around! Where are we starting?\"\n2. **Student**: ~\"This is my kitchen.\"\n3. **Charlotte**: \"Cool! What else?\"\n4. **Student**: ~\"This is my bedroom.\"\n5. **Charlotte**: \"Nice. How is it?\"\n6. **Student**: ~\"My bedroom is big.\"\n7. **Charlotte**: \"Nice place! Thanks for the tour.\"",
+        "evaluation_focus": [
+          "Aluno usa \"This is my + cômodo\"",
+          "Aluno descreve com adjetivo simples",
+          "Pronúncia clara de \"kitchen\", \"bedroom\", \"house\""
+        ]
+      },
+      "guided_chat": {
+        "scenario": "Charlotte conversa por chat sobre a sua casa.",
+        "voiced_by": "charlotte",
+        "persona": "Charlotte",
+        "persona_outfit": "charlotte_casual",
+        "intro_pt": "Charlotte abre um chat sobre sua casa. Pratica descrever a casa, mencionar um cômodo, e devolver a pergunta.",
+        "opening_message": "Hey! What's your house like?",
+        "objectives": [
+          {
+            "id": 1,
+            "label_pt": "Descrever a casa (grande, pequena, nova)",
+            "label_en": "Describe your house",
+            "hidden_prompt": "user describes their house with 'My house is + adjective' (big/small/new/nice/great)",
+            "hint_pt": "My house is big.",
+            "hint_en": "My house is big."
+          },
+          {
+            "id": 2,
+            "label_pt": "Mencionar um cômodo específico",
+            "label_en": "Mention a specific room",
+            "hidden_prompt": "user mentions a specific room with 'I've got a + room' or 'My + room + is + adjective'",
+            "hint_pt": "My kitchen is small.",
+            "hint_en": "My kitchen is small."
+          },
+          {
+            "id": 3,
+            "label_pt": "Perguntar sobre a casa da Charlotte",
+            "label_en": "Ask about Charlotte's house",
+            "hidden_prompt": "user asks Charlotte about her house with 'how about you', 'and yours', or 'what's your house like'",
+            "hint_pt": "How about you?",
+            "hint_en": "How about you?"
+          }
+        ],
+        "closing_cue": "Charlotte encerra com \"Cool! Sounds nice.\" quando obj_3 baterem.",
+        "suggested_script": "**Script** (referencial, 7 turnos):\n\n1. **Charlotte**: \"Hey! What's your house like?\"\n2. **Student**: \"My house is big.\"\n3. **Charlotte**: \"Nice! Any favorite room?\"\n4. **Student**: \"My kitchen is small.\"\n5. **Charlotte**: \"Cool!\"\n6. **Student**: \"How about you?\"\n7. **Charlotte**: \"My place is small but cozy. Cool! Sounds nice.\"\n\n> N01 chat = LLM puro. Scaffold aparece via hint_pt da objective pendente.\n\n---"
+      }
+    },
+    {
+      "id": "N02",
+      "title": "O que tem aqui?",
+      "sub_cefr": "A1",
+      "grammar_focus": "There is / There are (formal intro) + a/an básicos",
+      "markers": [
+        "denso"
+      ],
+      "real_life_context": "Alguém pergunta o que tem na sua cozinha ou no seu quarto — você descreve usando there is/are.",
+      "grammar": [
+        {
+          "type": "multiple_choice",
+          "sentence": "_____ a window in my bedroom.",
+          "options": [
+            "There is",
+            "There are",
+            "There have"
+          ],
+          "answer": "There is",
+          "explanation": "\"There is\" para singular: \"There is a window\" = \"Tem uma janela\". \"There are\" para plural."
+        },
+        {
+          "type": "multiple_choice",
+          "sentence": "_____ two doors in my kitchen.",
+          "options": [
+            "There are",
+            "There is",
+            "It is"
+          ],
+          "answer": "There are",
+          "explanation": "\"There are\" para plural: \"There are two doors\" = \"Tem duas portas\". \"There is\" só para singular."
+        },
+        {
+          "type": "word_bank",
+          "sentence": "_____ a big table in my living room.",
+          "choices": [
+            "There is",
+            "There are",
+            "Have",
+            "It has"
+          ],
+          "answer": "There is",
+          "explanation": "Pra uma coisa (singular), usa \"There is + a/an + substantivo\". \"There is a big table\" = \"Tem uma mesa grande\"."
+        },
+        {
+          "type": "word_bank",
+          "sentence": "_____ four chairs and a table.",
+          "choices": [
+            "There are",
+            "There is",
+            "There have",
+            "They are"
+          ],
+          "answer": "There are",
+          "explanation": "\"Four chairs\" é plural, então \"There are\". Estrutura: \"There are + number + substantivo plural\"."
+        },
+        {
+          "type": "fill_gap",
+          "sentence": "_____ a big bed in my bedroom.",
+          "hint": "There + verbo to be singular",
+          "answer": "There is",
+          "explanation": "\"There is a big bed\" — \"tem uma cama grande\". Singular = \"there is\"."
+        },
+        {
+          "type": "fill_gap",
+          "sentence": "_____ two windows in the kitchen.",
+          "hint": "There + verbo to be plural",
+          "answer": "There are",
+          "explanation": "\"There are two windows\" — \"tem duas janelas\". Plural = \"there are\"."
+        },
+        {
+          "type": "fill_gap",
+          "sentence": "_____ a chair next to the table?",
+          "hint": "Pergunta com there is (inversão)",
+          "answer": "Is there",
+          "explanation": "Pergunta: \"Is there + a/an + substantivo?\". \"Is there a chair?\" = \"Tem uma cadeira?\". Note a inversão sujeito-verbo."
+        },
+        {
+          "type": "fix_error",
+          "sentence": "There is two chairs in the kitchen.",
+          "hint": "Verbo errado para plural",
+          "answer": "There are two chairs in the kitchen.",
+          "explanation": "\"Two chairs\" é plural, então usa \"There are\", não \"There is\". Regra: singular = \"there is\", plural = \"there are\"."
+        },
+        {
+          "type": "fix_error",
+          "sentence": "It have a window in my room.",
+          "hint": "Em inglês usa \"there is/are\", não \"it has/have\"",
+          "answer": "There is a window in my room.",
+          "explanation": "Em português dizemos \"tem\", mas em inglês NÃO se traduz como \"it has/have\". A estrutura correta é \"there is/there are\" pra indicar existência."
+        },
+        {
+          "type": "read_answer",
+          "passage": "There is a big house in the neighborhood. There are four bedrooms. There is a kitchen and two bathrooms.",
+          "question": "How many bedrooms are there? (give a number)",
+          "answer": "four",
+          "explanation": "The text says \"There are four bedrooms\". 4."
+        }
+      ],
+      "listening_speaking": [
+        {
+          "text": "There is a table in my kitchen.",
+          "context": "singular com \"a\""
+        },
+        {
+          "text": "There are four chairs.",
+          "context": "plural com número"
+        },
+        {
+          "text": "There is a bed and a window.",
+          "context": "múltiplos singulares"
+        },
+        {
+          "text": "Is there a bathroom?",
+          "context": "pergunta"
+        },
+        {
+          "text": "There are no chairs here.",
+          "context": "negativa simples"
+        }
+      ],
+      "roleplay": {
+        "scenario": "Charlotte quer saber o que tem na sua cozinha — você descreve três itens usando there is/are.",
+        "voiced_by": "charlotte",
+        "persona": "Charlotte",
+        "persona_outfit": "charlotte_casual",
+        "time_budget_sec": 90,
+        "opening_line": "What's in your kitchen?",
+        "objectives": [
+          {
+            "id": 1,
+            "label_pt": "Dizer que tem uma mesa (singular com 'a')",
+            "label_en": "Say there is a table",
+            "hidden_prompt": "user says 'There is a table' or 'I've got a table' — singular item with article",
+            "hint_pt": "There is a table.",
+            "hint_en": "There is a table."
+          },
+          {
+            "id": 2,
+            "label_pt": "Dizer que tem cadeiras (plural com número)",
+            "label_en": "Say there are chairs",
+            "hidden_prompt": "user states number of chairs with 'There are + number + chairs' — plural form correct",
+            "hint_pt": "There are four chairs.",
+            "hint_en": "There are four chairs."
+          },
+          {
+            "id": 3,
+            "label_pt": "Mencionar outro item (janela, porta, geladeira)",
+            "label_en": "Mention another item",
+            "hidden_prompt": "user mentions another item with 'There is a + item' or 'There are + items' — any household item",
+            "hint_pt": "There is a big window.",
+            "hint_en": "There is a big window."
+          }
+        ],
+        "closing_cue": "Charlotte fecha com \"Sounds like a great kitchen!\" quando obj_3 baterem.",
+        "suggested_flow": "**Suggested flow** (referencial, 6 turnos):\n\n1. **Charlotte**: \"What's in your kitchen?\"\n2. **Student**: ~\"There is a table.\"\n3. **Charlotte**: \"Cool. How many chairs?\"\n4. **Student**: ~\"There are four chairs.\"\n5. **Charlotte**: \"Nice. Anything else?\"\n6. **Student**: ~\"There is a big window.\"\n7. **Charlotte**: \"Sounds like a great kitchen!\"",
+        "evaluation_focus": [
+          "Aluno usa \"There is\" pra singular e \"There are\" pra plural",
+          "Aluno usa \"a\" antes de consoante",
+          "Concordância número-verbo (no \"there is two chairs\")"
+        ]
+      },
+      "guided_chat": {
+        "scenario": "Charlotte propõe descrever seu quarto pelo chat — quantas coisas tem.",
+        "voiced_by": "charlotte",
+        "persona": "Charlotte",
+        "persona_outfit": "charlotte_casual",
+        "intro_pt": "Charlotte quer saber o que tem no seu quarto. Pratica 'there is a + singular' e 'there are + plural'.",
+        "opening_message": "What's in your bedroom?",
+        "objectives": [
+          {
+            "id": 1,
+            "label_pt": "Dizer que tem cama (singular)",
+            "label_en": "Say there is a bed",
+            "hidden_prompt": "user says 'There is a bed' or 'I've got a bed' — singular bed",
+            "hint_pt": "There is a bed.",
+            "hint_en": "There is a bed."
+          },
+          {
+            "id": 2,
+            "label_pt": "Dizer quantas janelas tem",
+            "label_en": "Say how many windows",
+            "hidden_prompt": "user states number of windows with 'There is one window' or 'There are + number + windows'",
+            "hint_pt": "There are two windows.",
+            "hint_en": "There are two windows."
+          },
+          {
+            "id": 3,
+            "label_pt": "Mencionar mais um item",
+            "label_en": "Mention one more item",
+            "hidden_prompt": "user mentions another item with 'There is/are + item(s)' — any bedroom item (desk, lamp, chair, shelf, etc.)",
+            "hint_pt": "There is a desk.",
+            "hint_en": "There is a desk."
+          }
+        ],
+        "closing_cue": "Charlotte encerra com \"Cozy room!\" quando obj_3 baterem.",
+        "suggested_script": "**Script** (referencial, 7 turnos):\n\n1. **Charlotte**: \"What's in your bedroom?\"\n2. **Student**: \"There is a bed.\"\n3. **Charlotte**: \"Nice. Windows?\"\n4. **Student**: \"There are two windows.\"\n5. **Charlotte**: \"Cool.\"\n6. **Student**: \"There is a desk.\"\n7. **Charlotte**: \"Cozy room!\"\n\n> N02 chat = LLM puro. Scaffold aparece via hint_pt da objective pendente.\n\n---"
+      }
+    },
+    {
+      "id": "N03",
+      "title": "Móveis e objetos",
+      "sub_cefr": "A1",
+      "grammar_focus": "Regular plurals (-s, -es) + furniture vocab",
+      "markers": [],
+      "real_life_context": "Você lista os objetos da sua casa — mesas, cadeiras, janelas — para alguém.",
+      "grammar": [
+        {
+          "type": "multiple_choice",
+          "sentence": "I've got two _____ in my room.",
+          "options": [
+            "chairs",
+            "chair",
+            "chaires"
+          ],
+          "answer": "chairs",
+          "explanation": "Plural de \"chair\" (cadeira) = \"chairs\" (sufixo -s). \"Chaires\" não existe."
+        },
+        {
+          "type": "multiple_choice",
+          "sentence": "There are four _____ on the table.",
+          "options": [
+            "glasses",
+            "glass",
+            "glasss"
+          ],
+          "answer": "glasses",
+          "explanation": "Plural de \"glass\" = \"glasses\" (sufixo -es). Palavras terminando em -s, -ss, -ch, -sh, -x ganham -es no plural."
+        },
+        {
+          "type": "word_bank",
+          "sentence": "My house has got three _____.",
+          "choices": [
+            "windows",
+            "window",
+            "windowes",
+            "windowss"
+          ],
+          "answer": "windows",
+          "explanation": "Plural regular de \"window\" = \"windows\" (apenas -s adicionado)."
+        },
+        {
+          "type": "word_bank",
+          "sentence": "There are two _____ in the kitchen.",
+          "choices": [
+            "doors",
+            "door",
+            "doores",
+            "dor"
+          ],
+          "answer": "doors",
+          "explanation": "Plural de \"door\" = \"doors\". Regra simples: -s ao final."
+        },
+        {
+          "type": "fill_gap",
+          "sentence": "I've got two _____.",
+          "hint": "Plural de \"bed\"",
+          "answer": "beds",
+          "explanation": "\"Bed\" + s = \"beds\". Plural regular — só adiciona -s."
+        },
+        {
+          "type": "fill_gap",
+          "sentence": "There are three _____ in my kitchen.",
+          "hint": "Plural de \"table\"",
+          "answer": "tables",
+          "explanation": "\"Table\" + s = \"tables\". Plural regular."
+        },
+        {
+          "type": "fill_gap",
+          "sentence": "Two _____ are on the floor.",
+          "hint": "Plural de \"box\"",
+          "answer": "boxes",
+          "explanation": "Palavras terminadas em -x ganham -es no plural. \"Box\" → \"boxes\" (não \"boxs\"). Mesma regra para -ch, -sh, -ss."
+        },
+        {
+          "type": "fix_error",
+          "sentence": "There are two chairs and a tables.",
+          "hint": "Singular não combina com \"a + plural\"",
+          "answer": "There are two chairs and a table.",
+          "explanation": "\"A\" é usado para singular. Não se diz \"a tables\" — ou \"a table\" (singular) ou \"tables\" (plural sem \"a\")."
+        },
+        {
+          "type": "fix_error",
+          "sentence": "I have got three childs.",
+          "hint": "\"Child\" tem plural irregular",
+          "answer": "I have got three children.",
+          "explanation": "\"Child\" (criança) tem plural irregular: \"children\" (não \"childs\"). É exceção famosa à regra do -s."
+        },
+        {
+          "type": "read_answer",
+          "passage": "My kitchen has got three chairs, two tables, and four windows. There are no doors inside the kitchen.",
+          "question": "How many tables are in the kitchen? (give a number)",
+          "answer": "two",
+          "explanation": "The text says \"two tables\". 2."
+        }
+      ],
+      "listening_speaking": [
+        {
+          "text": "There are two chairs.",
+          "context": "plural regular básico"
+        },
+        {
+          "text": "I've got three tables.",
+          "context": "posse + plural"
+        },
+        {
+          "text": "Two windows are big.",
+          "context": "descrevendo plurais"
+        },
+        {
+          "text": "There are four glasses.",
+          "context": "plural -es"
+        },
+        {
+          "text": "Three boxes on the floor.",
+          "context": "plural -es com x"
+        }
+      ],
+      "roleplay": {
+        "scenario": "Charlotte quer saber o que tem na sua sala — você diz quantos de cada coisa, usando plurais.",
+        "voiced_by": "charlotte",
+        "persona": "Charlotte",
+        "persona_outfit": "charlotte_casual",
+        "time_budget_sec": 90,
+        "opening_line": "What's in your living room?",
+        "objectives": [
+          {
+            "id": 1,
+            "label_pt": "Dizer quantas cadeiras tem (plural)",
+            "label_en": "Say how many chairs",
+            "hidden_prompt": "user states number of chairs with 'There are + number + chairs' or 'I've got + number + chairs' — plural form correct",
+            "hint_pt": "There are four chairs.",
+            "hint_en": "There are four chairs."
+          },
+          {
+            "id": 2,
+            "label_pt": "Dizer quantas mesas tem",
+            "label_en": "Say how many tables",
+            "hidden_prompt": "user states number of tables with 'There are + number + tables' or 'I've got + number + tables'",
+            "hint_pt": "I've got two tables.",
+            "hint_en": "I've got two tables."
+          },
+          {
+            "id": 3,
+            "label_pt": "Mencionar mais um item plural (janelas, portas, livros)",
+            "label_en": "Mention another plural item",
+            "hidden_prompt": "user mentions plural items with 'There are + number + plural noun' — any household plural",
+            "hint_pt": "There are three windows.",
+            "hint_en": "There are three windows."
+          }
+        ],
+        "closing_cue": "Charlotte fecha com \"Nice setup!\" quando obj_3 baterem.",
+        "suggested_flow": "**Suggested flow** (referencial, 6 turnos):\n\n1. **Charlotte**: \"What's in your living room?\"\n2. **Student**: ~\"There are four chairs.\"\n3. **Charlotte**: \"And tables?\"\n4. **Student**: ~\"I've got two tables.\"\n5. **Charlotte**: \"Anything else?\"\n6. **Student**: ~\"There are three windows.\"\n7. **Charlotte**: \"Nice setup!\"",
+        "evaluation_focus": [
+          "Plural correto (-s ou -es)",
+          "Concordância \"There are + plural\"",
+          "Pronúncia clara dos plurais"
+        ]
+      },
+      "guided_chat": {
+        "scenario": "Charlotte conversa sobre objetos da sua casa pelo chat.",
+        "voiced_by": "charlotte",
+        "persona": "Charlotte",
+        "persona_outfit": "charlotte_casual",
+        "intro_pt": "Charlotte abre um chat sobre objetos da sua casa. Pratica plurais regulares.",
+        "opening_message": "How many chairs have you got?",
+        "objectives": [
+          {
+            "id": 1,
+            "label_pt": "Responder quantas cadeiras tem",
+            "label_en": "Say how many chairs",
+            "hidden_prompt": "user states number of chairs with 'I've got + number + chairs' or 'There are + number + chairs'",
+            "hint_pt": "I've got six chairs.",
+            "hint_en": "I've got six chairs."
+          },
+          {
+            "id": 2,
+            "label_pt": "Dizer quantas janelas tem",
+            "label_en": "Say how many windows",
+            "hidden_prompt": "user states number of windows with 'I've got + number + windows' or 'There are + number + windows'",
+            "hint_pt": "There are three windows.",
+            "hint_en": "There are three windows."
+          },
+          {
+            "id": 3,
+            "label_pt": "Perguntar sobre a casa da Charlotte",
+            "label_en": "Ask Charlotte about her place",
+            "hidden_prompt": "user asks Charlotte about her items with 'how about you', 'and yours', or 'have you got + items'",
+            "hint_pt": "How about you?",
+            "hint_en": "How about you?"
+          }
+        ],
+        "closing_cue": "Charlotte encerra com \"Cool houses we've got!\" quando obj_3 baterem.",
+        "suggested_script": "**Script** (referencial, 7 turnos):\n\n1. **Charlotte**: \"How many chairs have you got?\"\n2. **Student**: \"I've got six chairs.\"\n3. **Charlotte**: \"Wow! And windows?\"\n4. **Student**: \"There are three windows.\"\n5. **Charlotte**: \"Bright place!\"\n6. **Student**: \"How about you?\"\n7. **Charlotte**: \"Two chairs and one window. Cool houses we've got!\"\n\n> N03 chat = LLM puro. Scaffold aparece via hint_pt da objective pendente.\n\n---"
+      }
+    },
+    {
+      "id": "N04",
+      "title": "Um, uma, o, a",
+      "sub_cefr": "A1",
+      "grammar_focus": "Articles a/an/the — primeira aparição formal",
+      "markers": [
+        "denso"
+      ],
+      "real_life_context": "Você usa a/an/the pra descrever objetos pela primeira vez (a) ou se referir a algo específico (the).",
+      "grammar": [
+        {
+          "type": "multiple_choice",
+          "sentence": "I've got _____ apple.",
+          "options": [
+            "an",
+            "a",
+            "the"
+          ],
+          "answer": "an",
+          "explanation": "\"An\" antes de palavras com som de vogal. \"Apple\" começa com /æ/ (vogal). \"An apple\"."
+        },
+        {
+          "type": "multiple_choice",
+          "sentence": "There is _____ door in my room.",
+          "options": [
+            "a",
+            "an",
+            "the"
+          ],
+          "answer": "a",
+          "explanation": "\"A\" antes de som de consoante. \"Door\" começa com /d/ (consoante). \"A door\"."
+        },
+        {
+          "type": "word_bank",
+          "sentence": "_____ kitchen is small.",
+          "choices": [
+            "The",
+            "A",
+            "An",
+            "I"
+          ],
+          "answer": "The",
+          "explanation": "\"The\" para referência específica (a cozinha já mencionada ou conhecida). Aqui o contexto torna \"the\" natural — falando da cozinha específica."
+        },
+        {
+          "type": "word_bank",
+          "sentence": "I've got _____ hour to finish.",
+          "choices": [
+            "an",
+            "a",
+            "the",
+            "one"
+          ],
+          "answer": "an",
+          "explanation": "\"An\" antes de SOM de vogal. \"Hour\" começa com som vogal (o \"h\" é silencioso), então \"an hour\", não \"a hour\"."
+        },
+        {
+          "type": "fill_gap",
+          "sentence": "There is _____ chair next to the table.",
+          "hint": "Artigo indefinido antes de \"chair\"",
+          "answer": "a",
+          "explanation": "\"A\" antes de \"chair\" (consoante /ʧ/). \"A chair\" = \"uma cadeira\"."
+        },
+        {
+          "type": "fill_gap",
+          "sentence": "Welcome to _____ house — this is where I live.",
+          "hint": "Artigo definido (referência específica)",
+          "answer": "the",
+          "explanation": "\"The house\" se refere a uma casa específica já em contexto. \"The\" é o artigo definido."
+        },
+        {
+          "type": "fill_gap",
+          "sentence": "She is _____ teacher.",
+          "hint": "Artigo indefinido antes de profissão",
+          "answer": "a",
+          "explanation": "\"A teacher\" — para profissões, sempre artigo indefinido (a/an). \"A teacher\" porque \"teacher\" começa com consoante."
+        },
+        {
+          "type": "fix_error",
+          "sentence": "I've got a apple.",
+          "hint": "Apple começa com som de vogal",
+          "answer": "I've got an apple.",
+          "explanation": "\"Apple\" começa com som /æ/ (vogal), então usa \"an\", não \"a\". Regra: \"an\" antes de SOM de vogal."
+        },
+        {
+          "type": "fix_error",
+          "sentence": "I am the teacher in my school.",
+          "hint": "Profissão usa artigo indefinido",
+          "answer": "I am a teacher in my school.",
+          "explanation": "Para dizer sua profissão (o que você faz), usa \"a\" ou \"an\": \"I am a teacher\", \"I am an engineer\". \"The teacher\" seria O professor específico da escola."
+        },
+        {
+          "type": "read_answer",
+          "passage": "I am a doctor. My hospital is big. The hospital has got 200 beds. There is an emergency room on the first floor.",
+          "question": "What does the speaker do? (give a profession)",
+          "answer": "doctor",
+          "explanation": "The text says \"I am a doctor\". Note \"a doctor\" (indefinite article + profession)."
+        }
+      ],
+      "listening_speaking": [
+        {
+          "text": "I've got an apple.",
+          "context": "an + vogal"
+        },
+        {
+          "text": "There is a door here.",
+          "context": "a + consoante"
+        },
+        {
+          "text": "The kitchen is small.",
+          "context": "the + específico"
+        },
+        {
+          "text": "She is a teacher.",
+          "context": "a + profissão (consoante)"
+        },
+        {
+          "text": "I am an engineer.",
+          "context": "an + profissão (vogal)"
+        }
+      ],
+      "roleplay": {
+        "scenario": "Charlotte propõe um quiz rápido de artigos — você pratica a/an antes de objetos e the antes de cômodos.",
+        "voiced_by": "charlotte",
+        "persona": "Charlotte",
+        "persona_outfit": "charlotte_casual",
+        "time_budget_sec": 90,
+        "opening_line": "Quick article practice. Tell me about something you have.",
+        "objectives": [
+          {
+            "id": 1,
+            "label_pt": "Dizer que tem algo usando 'a' (consoante) ou 'an' (vogal)",
+            "label_en": "Say you have something with 'a' or 'an'",
+            "hidden_prompt": "user says they have something using 'I've got a + noun' or 'I've got an + noun' — article must match consonant/vowel sound",
+            "hint_pt": "I've got an apple.",
+            "hint_en": "I've got an apple."
+          },
+          {
+            "id": 2,
+            "label_pt": "Mencionar um cômodo específico usando 'the'",
+            "label_en": "Mention a specific room with 'the'",
+            "hidden_prompt": "user mentions a specific room with 'The kitchen is...', 'The bedroom is...', or 'The living room is...'",
+            "hint_pt": "The kitchen is small.",
+            "hint_en": "The kitchen is small."
+          },
+          {
+            "id": 3,
+            "label_pt": "Dizer sua profissão (real ou inventada) com 'I am a/an + profissão'",
+            "label_en": "Say a profession with 'I am a/an'",
+            "hidden_prompt": "user states a profession with 'I am a + profession' or 'I am an + profession' (e.g., 'I am a teacher', 'I am an engineer')",
+            "hint_pt": "I am a teacher.",
+            "hint_en": "I am a teacher."
+          }
+        ],
+        "closing_cue": "Charlotte fecha com \"Nice articles practice!\" quando obj_3 baterem.",
+        "suggested_flow": "**Suggested flow** (referencial, 6 turnos):\n\n1. **Charlotte**: \"Quick article practice. Tell me about something you have.\"\n2. **Student**: ~\"I've got an apple.\"\n3. **Charlotte**: \"Cool. Tell me about a specific room.\"\n4. **Student**: ~\"The kitchen is small.\"\n5. **Charlotte**: \"Got it. And what's your job?\"\n6. **Student**: ~\"I am a teacher.\"\n7. **Charlotte**: \"Nice articles practice!\"",
+        "evaluation_focus": [
+          "Aluno usa \"a\" antes de consoante e \"an\" antes de vogal",
+          "Aluno usa \"the\" para referência específica",
+          "Aluno usa \"a/an + profissão\""
+        ]
+      },
+      "guided_chat": {
+        "scenario": "Charlotte propõe quiz curto de a/an/the pelo chat.",
+        "voiced_by": "charlotte",
+        "persona": "Charlotte",
+        "persona_outfit": "charlotte_casual",
+        "intro_pt": "Charlotte propõe um quiz rápido de a/an/the. Pratica os três artigos em contextos diferentes.",
+        "opening_message": "Let's play a quick article game!",
+        "objectives": [
+          {
+            "id": 1,
+            "label_pt": "Dizer que tem algo usando 'a' antes de consoante",
+            "label_en": "Say you have something with 'a' (consonant)",
+            "hidden_prompt": "user says 'I've got a + noun' where the noun starts with a consonant sound (a chair, a door, a window, a bed, etc.)",
+            "hint_pt": "I've got a chair.",
+            "hint_en": "I've got a chair."
+          },
+          {
+            "id": 2,
+            "label_pt": "Dizer que tem algo usando 'an' antes de vogal",
+            "label_en": "Say you have something with 'an' (vowel)",
+            "hidden_prompt": "user says 'I've got an + noun' where the noun starts with a vowel sound (an apple, an engineer, an hour, etc.)",
+            "hint_pt": "I've got an apple.",
+            "hint_en": "I've got an apple."
+          },
+          {
+            "id": 3,
+            "label_pt": "Falar de uma coisa específica com 'the'",
+            "label_en": "Talk about something specific with 'the'",
+            "hidden_prompt": "user uses 'the' to refer to something specific — 'the kitchen', 'the door', 'the table', 'the bedroom', etc.",
+            "hint_pt": "The kitchen is big.",
+            "hint_en": "The kitchen is big."
+          }
+        ],
+        "closing_cue": "Charlotte encerra com \"Articles nailed!\" quando obj_3 baterem.",
+        "suggested_script": "**Script** (referencial, 7 turnos):\n\n1. **Charlotte**: \"Let's play a quick article game!\"\n2. **Student**: \"I've got a chair.\"\n3. **Charlotte**: \"Nice. Try one with 'an'.\"\n4. **Student**: \"I've got an apple.\"\n5. **Charlotte**: \"Perfect. Now use 'the'.\"\n6. **Student**: \"The kitchen is big.\"\n7. **Charlotte**: \"Articles nailed!\"\n\n> N04 chat = LLM puro. Scaffold aparece via hint_pt da objective pendente.\n\n---"
+      }
+    },
+    {
+      "id": "N05",
+      "title": "Bem-vindo à minha casa",
+      "sub_cefr": "A1",
+      "grammar_focus": "Integration — there is/are + articles + plurals + possessives (cumulativo M01-M04)",
+      "markers": [],
+      "real_life_context": "Você recebe alguém na sua casa pela primeira vez e faz um tour completo, descrevendo cômodos e objetos.",
+      "grammar": [
+        {
+          "type": "multiple_choice",
+          "sentence": "Welcome to _____ home!",
+          "options": [
+            "my",
+            "the",
+            "a"
+          ],
+          "answer": "my",
+          "explanation": "Hospitalidade padrão: \"Welcome to my home\" = \"Bem-vindo(a) à minha casa\". \"My\" é o possessivo."
+        },
+        {
+          "type": "multiple_choice",
+          "sentence": "_____ are three bedrooms in my house.",
+          "options": [
+            "There",
+            "It",
+            "This"
+          ],
+          "answer": "There",
+          "explanation": "\"There are\" para indicar existência plural. \"There are three bedrooms\" = \"Tem três quartos\"."
+        },
+        {
+          "type": "word_bank",
+          "sentence": "My kitchen has got _____ big window.",
+          "choices": [
+            "a",
+            "an",
+            "the",
+            "my"
+          ],
+          "answer": "a",
+          "explanation": "\"A\" antes de \"big\" (som de consoante). \"A big window\" — primeira menção, usa indefinido."
+        },
+        {
+          "type": "word_bank",
+          "sentence": "_____ kitchen is small but nice.",
+          "choices": [
+            "My",
+            "I",
+            "Me",
+            "Mine"
+          ],
+          "answer": "My",
+          "explanation": "\"My kitchen\" — falando da própria cozinha. Possessivo my antes do substantivo."
+        },
+        {
+          "type": "fill_gap",
+          "sentence": "There _____ two windows in the bedroom.",
+          "hint": "Plural de \"is\"",
+          "answer": "are",
+          "explanation": "Plural = \"are\". \"There are two windows\" — duas janelas, plural."
+        },
+        {
+          "type": "fill_gap",
+          "sentence": "_____ a chair next to my bed.",
+          "hint": "Singular para indicar existência",
+          "answer": "There is",
+          "explanation": "\"There is a chair\" = \"tem uma cadeira\" (singular)."
+        },
+        {
+          "type": "fill_gap",
+          "sentence": "I've got two _____ in my kitchen.",
+          "hint": "Plural de \"table\"",
+          "answer": "tables",
+          "explanation": "\"Tables\" — plural regular de \"table\" (apenas -s adicionado)."
+        },
+        {
+          "type": "fix_error",
+          "sentence": "Welcome at my home!",
+          "hint": "Preposição errada",
+          "answer": "Welcome to my home!",
+          "explanation": "\"Welcome to\" — sempre \"to\", não \"at\". É chunk fixo de hospitalidade."
+        },
+        {
+          "type": "fix_error",
+          "sentence": "There is three chairs in the living room.",
+          "hint": "\"Three chairs\" é plural",
+          "answer": "There are three chairs in the living room.",
+          "explanation": "Plural exige \"There are\", não \"There is\". Singular = \"There is a chair\", plural = \"There are X chairs\"."
+        },
+        {
+          "type": "read_answer",
+          "passage": "Welcome to my home! My house is big. There are four bedrooms, two bathrooms, and a kitchen. The kitchen has got two windows.",
+          "question": "How many bedrooms are there? (give a number)",
+          "answer": "four",
+          "explanation": "The text says \"four bedrooms\". 4."
+        }
+      ],
+      "listening_speaking": [
+        {
+          "text": "Welcome to my home.",
+          "context": "abertura de hospitalidade"
+        },
+        {
+          "text": "This is my kitchen.",
+          "context": "apontando cômodo"
+        },
+        {
+          "text": "There are four bedrooms.",
+          "context": "contando cômodos"
+        },
+        {
+          "text": "The kitchen has got a big window.",
+          "context": "específico + objeto"
+        },
+        {
+          "text": "My house is great!",
+          "context": "fechamento positivo"
+        }
+      ],
+      "roleplay": {
+        "scenario": "Charlotte faz um tour completo da sua casa por vídeo — você apresenta a casa, descreve um cômodo, e fala de um objeto específico.",
+        "voiced_by": "charlotte",
+        "persona": "Charlotte",
+        "persona_outfit": "charlotte_casual",
+        "time_budget_sec": 90,
+        "opening_line": "Welcome! Start with your house overall.",
+        "objectives": [
+          {
+            "id": 1,
+            "label_pt": "Descrever sua casa em geral (grande, pequena, nova)",
+            "label_en": "Describe your house overall",
+            "hidden_prompt": "user describes house overall with 'My house is + adjective' or 'Welcome to my home, it is + adjective'",
+            "hint_pt": "My house is big.",
+            "hint_en": "My house is big."
+          },
+          {
+            "id": 2,
+            "label_pt": "Dizer quantos cômodos ou quartos tem",
+            "label_en": "Say how many rooms",
+            "hidden_prompt": "user states number of rooms with 'There are + number + bedrooms/rooms' or 'I've got + number + bedrooms'",
+            "hint_pt": "There are three bedrooms.",
+            "hint_en": "There are three bedrooms."
+          },
+          {
+            "id": 3,
+            "label_pt": "Descrever um cômodo específico com um objeto",
+            "label_en": "Describe a specific room with an object",
+            "hidden_prompt": "user describes a specific room with 'The + room + has got + object' or 'There is/are + object + in the + room'",
+            "hint_pt": "The kitchen has got a big window.",
+            "hint_en": "The kitchen has got a big window."
+          }
+        ],
+        "closing_cue": "Charlotte fecha com \"Lovely place!\" quando obj_3 baterem.",
+        "suggested_flow": "**Suggested flow** (referencial, 6 turnos):\n\n1. **Charlotte**: \"Welcome! Start with your house overall.\"\n2. **Student**: ~\"My house is big.\"\n3. **Charlotte**: \"Nice. How many bedrooms?\"\n4. **Student**: ~\"There are three bedrooms.\"\n5. **Charlotte**: \"Tell me about one of them.\"\n6. **Student**: ~\"The kitchen has got a big window.\"\n7. **Charlotte**: \"Lovely place!\"",
+        "evaluation_focus": [
+          "Aluno descreve casa em geral com to be + adjetivo",
+          "Aluno usa \"There are + number\" pra cômodos",
+          "Aluno usa \"the + room + has got + a/an + object\""
+        ]
+      },
+      "guided_chat": {
+        "scenario": "Charlotte abre chat sobre sua casa — três descrições integradas.",
+        "voiced_by": "charlotte",
+        "persona": "Charlotte",
+        "persona_outfit": "charlotte_casual",
+        "intro_pt": "Charlotte abre um chat sobre sua casa. Integra possessivos, there is/are, e artigos numa apresentação completa.",
+        "opening_message": "Tell me about your home.",
+        "objectives": [
+          {
+            "id": 1,
+            "label_pt": "Apresentar sua casa",
+            "label_en": "Introduce your home",
+            "hidden_prompt": "user introduces home with 'Welcome to my home', 'My house is + adjective', or 'This is my house'",
+            "hint_pt": "Welcome to my home.",
+            "hint_en": "Welcome to my home."
+          },
+          {
+            "id": 2,
+            "label_pt": "Dizer quantos cômodos ou objetos tem",
+            "label_en": "Say how many rooms or items",
+            "hidden_prompt": "user mentions number of rooms or items with 'There are + number + bedrooms/rooms/chairs/etc.' or 'I've got + number'",
+            "hint_pt": "There are three bedrooms.",
+            "hint_en": "There are three bedrooms."
+          },
+          {
+            "id": 3,
+            "label_pt": "Descrever um cômodo específico",
+            "label_en": "Describe a specific room",
+            "hidden_prompt": "user describes a specific room with 'The + room + is + adjective' or 'My + room + has got + item'",
+            "hint_pt": "The kitchen is small.",
+            "hint_en": "The kitchen is small."
+          }
+        ],
+        "closing_cue": "Charlotte encerra com \"Sounds like a nice place.\" quando obj_3 baterem.",
+        "suggested_script": "**Script** (referencial, 7 turnos):\n\n1. **Charlotte**: \"Tell me about your home.\"\n2. **Student**: \"Welcome to my home.\"\n3. **Charlotte**: \"Aw nice. How many bedrooms?\"\n4. **Student**: \"There are three bedrooms.\"\n5. **Charlotte**: \"Cool. Any favorite spot?\"\n6. **Student**: \"The kitchen is small.\"\n7. **Charlotte**: \"Sounds like a nice place.\"\n\n> N05 chat = LLM puro. Scaffold aparece via hint_pt da objective pendente.\n\n---"
+      }
+    }
+  ],
+  "cross_unit_consolidation": [
+    "Vocabulário de casa: house, home, room, kitchen, bedroom, bathroom, living room",
+    "Vocabulário de móveis e objetos: table, chair, bed, window, door, desk, sofa, lamp",
+    "\"There is\" para singular e \"There are\" para plural — sem confundir com \"it has/have\"",
+    "Artigos: \"a\" antes de consoante, \"an\" antes de vogal, \"the\" para referência específica",
+    "Plurais regulares (-s e -es) sem confusão com \"child → children\" (irregular)",
+    "Combinação \"My + room + has got + a/an + object\" pra descrever cômodos"
+  ]
+}
