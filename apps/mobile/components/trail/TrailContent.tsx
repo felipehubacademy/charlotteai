@@ -15,6 +15,8 @@ import { AppText } from '@/components/ui/Text';
 import { CURRICULUM, TrailLevel, topicHasContent } from '@/data/curriculum';
 import { MODULE_INTROS } from '@/data/moduleIntros';
 import { listModules as listV2Modules } from '@/lib/curriculum-v2/loader';
+import { usePlacementSkips } from '@/lib/curriculum-v2/usePlacementSkips';
+import type { Level as V2LevelType } from '@/lib/curriculum-v2/types';
 import type { Level as V2Level } from '@/lib/curriculum-v2/types';
 import { useLearnProgress } from '@/hooks/useLearnProgress';
 import { useLearnProgressV2 } from '@/hooks/useLearnProgressV2';
@@ -427,8 +429,12 @@ export function TrailContent({ userId, level, onCurrentTopicRef, useV2 }: TrailC
     isTopicComplete, isCurrent, isLocked, isIntroDone,
   } = useLearnProgress(userId, level);
 
+  // Placement skips: nivel pulado → cascade desligado (tudo destravado).
+  const { cascadeMode } = usePlacementSkips();
+  const v2Cascade = cascadeMode(level as V2LevelType);
+
   // v2 progress — só lê quando useV2 (sem custo extra em v1)
-  const v2Progress = useLearnProgressV2(userId, level as V2Level);
+  const v2Progress = useLearnProgressV2(userId, level as V2Level, v2Cascade);
   useFocusEffect(useCallback(() => {
     if (useV2) v2Progress.refetch();
   }, [useV2, v2Progress.refetch])); // eslint-disable-line react-hooks/exhaustive-deps

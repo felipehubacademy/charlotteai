@@ -10,6 +10,8 @@ import { BookOpen } from 'phosphor-react-native';
 import { AppText } from '@/components/ui/Text';
 import { CURRICULUM, TrailLevel } from '@/data/curriculum';
 import { useLearnProgress } from '@/hooks/useLearnProgress';
+import { LevelDropdown } from './LevelDropdown';
+import type { Level } from '@/lib/curriculum-v2/types';
 
 function a(hex: string, alpha: number): string {
   const r = parseInt(hex.slice(1, 3), 16);
@@ -49,9 +51,14 @@ interface TrailBannerProps {
   /** Sem padding/margin externos (default false). Use quando o banner já vive
    *  dentro de outro card (hero da Home). */
   flush?: boolean;
+  /** Nivel "max" liberado pelo perfil — controla cadeado no dropdown.
+   *  Default = level (sem dropdown lock). */
+  currentLevel?: TrailLevel;
+  /** Callback ao trocar de nivel via dropdown. Se ausente, dropdown nao aparece. */
+  onLevelChange?: (level: TrailLevel) => void;
 }
 
-export function TrailBanner({ userId, level, flush = false }: TrailBannerProps) {
+export function TrailBanner({ userId, level, flush = false, currentLevel, onLevelChange }: TrailBannerProps) {
   const isPortuguese = level === 'Novice';
   const accent       = LEVEL_COLOR[level];
   const modules      = CURRICULUM[level];
@@ -101,10 +108,25 @@ export function TrailBanner({ userId, level, flush = false }: TrailBannerProps) 
             {total} {isPortuguese ? 'módulos' : 'modules'}
           </AppText>
         </View>
-        <AppText style={{ fontSize: 18, fontWeight: '900', color: accent }}>{pct}%</AppText>
+        {onLevelChange ? (
+          <LevelDropdown
+            selectedLevel={level as Level}
+            currentLevel={(currentLevel ?? level) as Level}
+            onSelect={(l) => onLevelChange(l as TrailLevel)}
+          />
+        ) : (
+          <AppText style={{ fontSize: 18, fontWeight: '900', color: accent }}>{pct}%</AppText>
+        )}
       </View>
-      <View style={{ height: 6, backgroundColor: C.ghost, borderRadius: 3, overflow: 'hidden' }}>
-        <View style={{ height: 6, width: `${pct}%` as `${number}%`, backgroundColor: accent, borderRadius: 3 }} />
+      <View style={{ flexDirection: 'row', alignItems: 'center', gap: 10 }}>
+        <View style={{ flex: 1, height: 6, backgroundColor: C.ghost, borderRadius: 3, overflow: 'hidden' }}>
+          <View style={{ height: 6, width: `${pct}%` as `${number}%`, backgroundColor: accent, borderRadius: 3 }} />
+        </View>
+        {onLevelChange && (
+          <AppText style={{ fontSize: 13, fontWeight: '800', color: accent, minWidth: 36, textAlign: 'right' }}>
+            {pct}%
+          </AppText>
+        )}
       </View>
       <AppText style={{ fontSize: 11, color: C.navyLight, fontWeight: '600', marginTop: 6 }}>
         {completed} {isPortuguese ? 'de' : 'of'} {total} {isPortuguese ? 'módulos concluídos' : 'modules completed'}

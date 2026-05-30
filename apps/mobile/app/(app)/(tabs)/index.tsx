@@ -85,7 +85,11 @@ export default function HomeTab() {
   const { openPaywall }           = usePaywallContext();
   const { colors: T }             = useTheme();
   const userId    = profile?.id ?? '';
-  const level     = (profile?.charlotte_level ?? 'Novice') as UserLevel;
+  const currentLevel = (profile?.charlotte_level ?? 'Novice') as UserLevel;
+  const [selectedLevel, setSelectedLevel] = useState<UserLevel>(currentLevel);
+  // Mantem selectedLevel sincronizado se o perfil mudar (ex: promocao organica)
+  useEffect(() => { setSelectedLevel(currentLevel); }, [currentLevel]);
+  const level     = selectedLevel;
   const name      = profile?.name ?? profile?.email?.split('@')[0] ?? 'Student';
   const isPt      = level === 'Novice';
   const firstName = name.split(' ')[0] ?? name;
@@ -427,7 +431,13 @@ export default function HomeTab() {
           {/* Divider + TrailBanner — zIndex:1 para ficar sobre o overflow da Charlotte */}
           <View style={{ zIndex: 1, backgroundColor: T.card }}>
           <View style={{ height: 1, backgroundColor: C.navyGhost }} />
-          <TrailBanner userId={userId} level={level} flush />
+          <TrailBanner
+            userId={userId}
+            level={level}
+            currentLevel={currentLevel}
+            onLevelChange={setSelectedLevel}
+            flush
+          />
           </View>
         </View>
       </View>

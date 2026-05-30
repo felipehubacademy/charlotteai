@@ -41,7 +41,13 @@ export function meetsThreshold(activity: V2Activity, score: number): boolean {
   return score >= THRESHOLD[activity];
 }
 
-export function useLearnProgressV2(userId: string | undefined, level: V2Level) {
+export type CascadeMode = 'linear' | 'unlocked';
+
+export function useLearnProgressV2(
+  userId: string | undefined,
+  level: V2Level,
+  cascadeMode: CascadeMode = 'linear',
+) {
   const [rows,    setRows]    = useState<V2Row[]>([]);
   const [loading, setLoading] = useState(true);
 
@@ -85,6 +91,8 @@ export function useLearnProgressV2(userId: string | undefined, level: V2Level) {
     moduleId: string, unitId: string, activity: V2Activity,
     prevUnitId?: string,
   ): boolean => {
+    // Placement-skip: nivel inteiro liberado sem cascade.
+    if (cascadeMode === 'unlocked') return true;
     // Unit gate: anterior precisa estar 100% (se houver)
     if (prevUnitId && !isUnitComplete(moduleId, prevUnitId)) return false;
     // Activity gate: anteriores da própria unit precisam estar completas
@@ -93,7 +101,7 @@ export function useLearnProgressV2(userId: string | undefined, level: V2Level) {
       if (!isActivityComplete(moduleId, unitId, ACTIVITY_ORDER[i])) return false;
     }
     return true;
-  }, [isActivityComplete, isUnitComplete]);
+  }, [isActivityComplete, isUnitComplete, cascadeMode]);
 
   /**
    * Save attempt. Upserts the row, increments attempts, updates score (latest),
