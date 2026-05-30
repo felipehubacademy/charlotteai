@@ -3,7 +3,7 @@
  *
  * v2 introduces 4 activities per unit: Grammar, Listening/Speaking, Role-play, Guided Chat.
  * Source of truth: docs/curriculum/v2/<level>/M<NN>-<slug>.md
- * Build: M01-M03 + audio CDN + trail switcher + promotion (2026-05-30)
+ * Build: Novice complete + Inter M01-M05 + dropdown UI polish (2026-05-30)
  * Compiled at build time to apps/mobile/data/curriculum-v2/<level>/M<NN>.json
  * See scripts/compile-curriculum-v2.mjs for the compiler.
  *
