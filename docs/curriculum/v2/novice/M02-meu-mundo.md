@@ -788,11 +788,11 @@ Charlotte fala via ElevenLabs (Rachel). Aluno repete; Azure Speech avalia pronú
    **hint_en**: "I'm from Brazil, I'm Brazilian."
 
 3. **id**: 3
-   **label_pt**: "Fechar com 'Nice to meet you' ou similar"
-   **label_en**: "Close with 'Nice to meet you'"
-   **hidden_prompt**: "user closes the intro with 'nice to meet you', 'great to meet you', 'happy to be here', or similar warm closing"
-   **hint_pt**: "Nice to meet you!"
-   **hint_en**: "Nice to meet you!"
+   **label_pt**: "Fechar a apresentação com gentileza"
+   **label_en**: "Close the intro warmly"
+   **hidden_prompt**: "user closes the intro with a warm closing AFTER stating name/origin: 'happy to be here', 'glad to meet you all', 'thanks for the welcome', 'nice to meet you too', or similar. Must come AFTER the name + origin objectives."
+   **hint_pt**: "Happy to be here!"
+   **hint_en**: "Happy to be here!"
 
 **Closing cue**: Charlotte encerra com "Same here! Welcome to the team." quando obj_3 baterem.
 

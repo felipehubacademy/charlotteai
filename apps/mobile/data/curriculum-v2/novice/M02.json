@@ -126,23 +126,28 @@
       "listening_speaking": [
         {
           "text": "I am eighteen years old.",
-          "context": "declarando idade adolescente"
+          "context": "declarando idade adolescente",
+          "audio_url": "https://fnvjibzreepubageztoi.supabase.co/storage/v1/object/public/curriculum-audio/ls/b8b7deef724cb5f1.flac"
         },
         {
           "text": "My phone number is five five five.",
-          "context": "soletrando dígitos"
+          "context": "soletrando dígitos",
+          "audio_url": "https://fnvjibzreepubageztoi.supabase.co/storage/v1/object/public/curriculum-audio/ls/48e3be0c2d2993b4.flac"
         },
         {
           "text": "Floor twelve, please.",
-          "context": "pedindo andar no elevador"
+          "context": "pedindo andar no elevador",
+          "audio_url": "https://fnvjibzreepubageztoi.supabase.co/storage/v1/object/public/curriculum-audio/ls/aeba175e35d1c803.flac"
         },
         {
           "text": "Room sixteen.",
-          "context": "referenciando quarto de hotel"
+          "context": "referenciando quarto de hotel",
+          "audio_url": "https://fnvjibzreepubageztoi.supabase.co/storage/v1/object/public/curriculum-audio/ls/4b0a9a5cf931b9a7.flac"
         },
         {
           "text": "Page nineteen.",
-          "context": "referenciando página de livro"
+          "context": "referenciando página de livro",
+          "audio_url": "https://fnvjibzreepubageztoi.supabase.co/storage/v1/object/public/curriculum-audio/ls/4d4f5be0915fb418.flac"
         }
       ],
       "roleplay": {
@@ -315,23 +320,28 @@
       "listening_speaking": [
         {
           "text": "I am twenty-five years old.",
-          "context": "idade adulta padrão"
+          "context": "idade adulta padrão",
+          "audio_url": "https://fnvjibzreepubageztoi.supabase.co/storage/v1/object/public/curriculum-audio/ls/cfd4bf529d4fb45e.flac"
         },
         {
           "text": "She is fifty.",
-          "context": "resposta curta de idade"
+          "context": "resposta curta de idade",
+          "audio_url": "https://fnvjibzreepubageztoi.supabase.co/storage/v1/object/public/curriculum-audio/ls/7f34f02c6f45ae5a.flac"
         },
         {
           "text": "It's one hundred dollars.",
-          "context": "preço alto"
+          "context": "preço alto",
+          "audio_url": "https://fnvjibzreepubageztoi.supabase.co/storage/v1/object/public/curriculum-audio/ls/af1aaa80d3cf9cff.flac"
         },
         {
           "text": "The temperature is thirty degrees.",
-          "context": "clima"
+          "context": "clima",
+          "audio_url": "https://fnvjibzreepubageztoi.supabase.co/storage/v1/object/public/curriculum-audio/ls/4949b4a3afe71185.flac"
         },
         {
           "text": "He is thirty-three.",
-          "context": "idade comum, número composto"
+          "context": "idade comum, número composto",
+          "audio_url": "https://fnvjibzreepubageztoi.supabase.co/storage/v1/object/public/curriculum-audio/ls/b8f26741dc1d659b.flac"
         }
       ],
       "roleplay": {
@@ -504,23 +514,28 @@
       "listening_speaking": [
         {
           "text": "I'm from Brazil.",
-          "context": "chunk de origem mais comum"
+          "context": "chunk de origem mais comum",
+          "audio_url": "https://fnvjibzreepubageztoi.supabase.co/storage/v1/object/public/curriculum-audio/ls/7f07e5fca7ed8a95.flac"
         },
         {
           "text": "She is from Japan.",
-          "context": "terceira pessoa, país sem \"the\""
+          "context": "terceira pessoa, país sem \"the\"",
+          "audio_url": "https://fnvjibzreepubageztoi.supabase.co/storage/v1/object/public/curriculum-audio/ls/fa98615947f5e40a.flac"
         },
         {
           "text": "He is from the United States.",
-          "context": "país que leva \"the\""
+          "context": "país que leva \"the\"",
+          "audio_url": "https://fnvjibzreepubageztoi.supabase.co/storage/v1/object/public/curriculum-audio/ls/318dd6dd102f9b9b.flac"
         },
         {
           "text": "We are from Argentina.",
-          "context": "plural, país sul-americano"
+          "context": "plural, país sul-americano",
+          "audio_url": "https://fnvjibzreepubageztoi.supabase.co/storage/v1/object/public/curriculum-audio/ls/3643cbf4d645a9ac.flac"
         },
         {
           "text": "They are from France and Italy.",
-          "context": "múltiplos países"
+          "context": "múltiplos países",
+          "audio_url": "https://fnvjibzreepubageztoi.supabase.co/storage/v1/object/public/curriculum-audio/ls/118444af50903688.flac"
         }
       ],
       "roleplay": {
@@ -695,23 +710,28 @@
       "listening_speaking": [
         {
           "text": "I am Brazilian.",
-          "context": "declarando nacionalidade"
+          "context": "declarando nacionalidade",
+          "audio_url": "https://fnvjibzreepubageztoi.supabase.co/storage/v1/object/public/curriculum-audio/ls/1eef3df5850d84e1.flac"
         },
         {
           "text": "She is American.",
-          "context": "terceira pessoa, nacionalidade comum"
+          "context": "terceira pessoa, nacionalidade comum",
+          "audio_url": "https://fnvjibzreepubageztoi.supabase.co/storage/v1/object/public/curriculum-audio/ls/e2362ed67429ddfb.flac"
         },
         {
           "text": "They are Japanese.",
-          "context": "plural, \"Japanese\" não muda"
+          "context": "plural, \"Japanese\" não muda",
+          "audio_url": "https://fnvjibzreepubageztoi.supabase.co/storage/v1/object/public/curriculum-audio/ls/7770e781f09219f3.flac"
         },
         {
           "text": "He is British.",
-          "context": "nacionalidade UK"
+          "context": "nacionalidade UK",
+          "audio_url": "https://fnvjibzreepubageztoi.supabase.co/storage/v1/object/public/curriculum-audio/ls/fd80e7bdb332f26f.flac"
         },
         {
           "text": "We are not Italian. We are Spanish.",
-          "context": "distinguindo nacionalidades"
+          "context": "distinguindo nacionalidades",
+          "audio_url": "https://fnvjibzreepubageztoi.supabase.co/storage/v1/object/public/curriculum-audio/ls/bf1ac6cd867135a7.flac"
         }
       ],
       "roleplay": {
@@ -884,23 +904,28 @@
       "listening_speaking": [
         {
           "text": "Hi, my name is Felipe.",
-          "context": "abertura de apresentação"
+          "context": "abertura de apresentação",
+          "audio_url": "https://fnvjibzreepubageztoi.supabase.co/storage/v1/object/public/curriculum-audio/ls/7956d330f0c503f4.flac"
         },
         {
           "text": "I'm twenty-five years old.",
-          "context": "idade"
+          "context": "idade",
+          "audio_url": "https://fnvjibzreepubageztoi.supabase.co/storage/v1/object/public/curriculum-audio/ls/0b6cbf1442a0c74f.flac"
         },
         {
           "text": "I'm from São Paulo, Brazil.",
-          "context": "origem (cidade + país)"
+          "context": "origem (cidade + país)",
+          "audio_url": "https://fnvjibzreepubageztoi.supabase.co/storage/v1/object/public/curriculum-audio/ls/46ae9ae4aa4d8ecf.flac"
         },
         {
           "text": "I'm Brazilian.",
-          "context": "nacionalidade"
+          "context": "nacionalidade",
+          "audio_url": "https://fnvjibzreepubageztoi.supabase.co/storage/v1/object/public/curriculum-audio/ls/5abdd3fbb69620e8.flac"
         },
         {
           "text": "Nice to meet you!",
-          "context": "fechamento de apresentação"
+          "context": "fechamento de apresentação",
+          "audio_url": "https://fnvjibzreepubageztoi.supabase.co/storage/v1/object/public/curriculum-audio/ls/1e56eb9b24364b62.flac"
         }
       ],
       "roleplay": {
@@ -962,11 +987,11 @@
           },
           {
             "id": 3,
-            "label_pt": "Fechar com 'Nice to meet you' ou similar",
-            "label_en": "Close with 'Nice to meet you'",
-            "hidden_prompt": "user closes the intro with 'nice to meet you', 'great to meet you', 'happy to be here', or similar warm closing",
-            "hint_pt": "Nice to meet you!",
-            "hint_en": "Nice to meet you!"
+            "label_pt": "Fechar a apresentação com gentileza",
+            "label_en": "Close the intro warmly",
+            "hidden_prompt": "user closes the intro with a warm closing AFTER stating name/origin: 'happy to be here', 'glad to meet you all', 'thanks for the welcome', 'nice to meet you too', or similar. Must come AFTER the name + origin objectives.",
+            "hint_pt": "Happy to be here!",
+            "hint_en": "Happy to be here!"
           }
         ],
         "closing_cue": "Charlotte encerra com \"Same here! Welcome to the team.\" quando obj_3 baterem.",

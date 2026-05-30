@@ -788,11 +788,11 @@
    **hint_en**: "My father is American."
 
 3. **id**: 3
-   **label_pt**: "Apresentar mais uma pessoa da família (irmão, irmã, filho ou amigo)"
+   **label_pt**: "Apresentar mais uma pessoa da família ou amigo"
    **label_en**: "Introduce one more family member or friend"
-   **hidden_prompt**: "user introduces another close person with 'My + brother/sister/son/daughter/friend + is + something'"
-   **hint_pt**: "My brother is twenty."
-   **hint_en**: "My brother is twenty."
+   **hidden_prompt**: "user introduces another close person with 'My + brother/sister/son/daughter/friend/husband/wife + is + name/age/nationality/something' — any of these family/friend roles count"
+   **hint_pt**: "My sister is twenty. / My friend is from Italy."
+   **hint_en**: "My sister is twenty. / My friend is from Italy."
 
 **Closing cue**: Charlotte fecha com "What a lovely family!" quando obj_3 baterem.
 

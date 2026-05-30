@@ -134,23 +134,28 @@
       "listening_speaking": [
         {
           "text": "Hi! How are you?",
-          "context": "saudação informal padrão"
+          "context": "saudação informal padrão",
+          "audio_url": "https://fnvjibzreepubageztoi.supabase.co/storage/v1/object/public/curriculum-audio/ls/d2625b3b3f36b558.flac"
         },
         {
           "text": "Good morning, everyone!",
-          "context": "saudação formal de manhã (em grupo)"
+          "context": "saudação formal de manhã (em grupo)",
+          "audio_url": "https://fnvjibzreepubageztoi.supabase.co/storage/v1/object/public/curriculum-audio/ls/5b2c73f89e798894.flac"
         },
         {
           "text": "Nice to meet you.",
-          "context": "ao conhecer alguém novo"
+          "context": "ao conhecer alguém novo",
+          "audio_url": "https://fnvjibzreepubageztoi.supabase.co/storage/v1/object/public/curriculum-audio/ls/661d5856e30a9f0d.flac"
         },
         {
           "text": "I'm fine, thank you.",
-          "context": "resposta educada"
+          "context": "resposta educada",
+          "audio_url": "https://fnvjibzreepubageztoi.supabase.co/storage/v1/object/public/curriculum-audio/ls/b0b47c0c6f10ae62.flac"
         },
         {
           "text": "See you later!",
-          "context": "despedida casual entre amigos"
+          "context": "despedida casual entre amigos",
+          "audio_url": "https://fnvjibzreepubageztoi.supabase.co/storage/v1/object/public/curriculum-audio/ls/6965756fd4298362.flac"
         }
       ],
       "roleplay": {
@@ -316,23 +321,28 @@
       "listening_speaking": [
         {
           "text": "My name is Felipe.",
-          "context": "apresentando seu nome"
+          "context": "apresentando seu nome",
+          "audio_url": "https://fnvjibzreepubageztoi.supabase.co/storage/v1/object/public/curriculum-audio/ls/23039ee2945bfc76.flac"
         },
         {
           "text": "I'm 25 years old.",
-          "context": "sua idade"
+          "context": "sua idade",
+          "audio_url": "https://fnvjibzreepubageztoi.supabase.co/storage/v1/object/public/curriculum-audio/ls/b7f7c8e5cd5aad14.flac"
         },
         {
           "text": "I'm from Brazil.",
-          "context": "sua origem"
+          "context": "sua origem",
+          "audio_url": "https://fnvjibzreepubageztoi.supabase.co/storage/v1/object/public/curriculum-audio/ls/7f07e5fca7ed8a95.flac"
         },
         {
           "text": "This is my friend Tom.",
-          "context": "apresentando alguém"
+          "context": "apresentando alguém",
+          "audio_url": "https://fnvjibzreepubageztoi.supabase.co/storage/v1/object/public/curriculum-audio/ls/8c938728e606b9ec.flac"
         },
         {
           "text": "Nice to meet you, Felipe.",
-          "context": "resposta ao se apresentar"
+          "context": "resposta ao se apresentar",
+          "audio_url": "https://fnvjibzreepubageztoi.supabase.co/storage/v1/object/public/curriculum-audio/ls/f63d4a844f45a0ae.flac"
         }
       ],
       "roleplay": {
@@ -498,23 +508,28 @@
       "listening_speaking": [
         {
           "text": "Where are you from?",
-          "context": "pergunta padrão de origem"
+          "context": "pergunta padrão de origem",
+          "audio_url": "https://fnvjibzreepubageztoi.supabase.co/storage/v1/object/public/curriculum-audio/ls/2f94522912c725b8.flac"
         },
         {
           "text": "I'm from São Paulo, Brazil.",
-          "context": "resposta completa"
+          "context": "resposta completa",
+          "audio_url": "https://fnvjibzreepubageztoi.supabase.co/storage/v1/object/public/curriculum-audio/ls/46ae9ae4aa4d8ecf.flac"
         },
         {
           "text": "Are you Brazilian?",
-          "context": "checando nacionalidade"
+          "context": "checando nacionalidade",
+          "audio_url": "https://fnvjibzreepubageztoi.supabase.co/storage/v1/object/public/curriculum-audio/ls/bb6a129921b6d5bf.flac"
         },
         {
           "text": "Yes, I am.",
-          "context": "resposta afirmativa curta"
+          "context": "resposta afirmativa curta",
+          "audio_url": "https://fnvjibzreepubageztoi.supabase.co/storage/v1/object/public/curriculum-audio/ls/90f95a6ac16abe42.flac"
         },
         {
           "text": "No, I'm not. I'm Portuguese.",
-          "context": "corrigindo"
+          "context": "corrigindo",
+          "audio_url": "https://fnvjibzreepubageztoi.supabase.co/storage/v1/object/public/curriculum-audio/ls/7d515bc750abe164.flac"
         }
       ],
       "roleplay": {
@@ -678,23 +693,28 @@
       "listening_speaking": [
         {
           "text": "I'm so happy today!",
-          "context": "sentimento positivo intenso"
+          "context": "sentimento positivo intenso",
+          "audio_url": "https://fnvjibzreepubageztoi.supabase.co/storage/v1/object/public/curriculum-audio/ls/7933236bf7364e59.flac"
         },
         {
           "text": "She's really tired.",
-          "context": "descrevendo terceiro"
+          "context": "descrevendo terceiro",
+          "audio_url": "https://fnvjibzreepubageztoi.supabase.co/storage/v1/object/public/curriculum-audio/ls/d321d9083c378258.flac"
         },
         {
           "text": "Are you hungry?",
-          "context": "perguntando sobre fome"
+          "context": "perguntando sobre fome",
+          "audio_url": "https://fnvjibzreepubageztoi.supabase.co/storage/v1/object/public/curriculum-audio/ls/1088b597d9e539ee.flac"
         },
         {
           "text": "I'm a bit busy right now.",
-          "context": "recusa educada"
+          "context": "recusa educada",
+          "audio_url": "https://fnvjibzreepubageztoi.supabase.co/storage/v1/object/public/curriculum-audio/ls/c4720ec9d7ca6d39.flac"
         },
         {
           "text": "How are you feeling?",
-          "context": "pergunta empática"
+          "context": "pergunta empática",
+          "audio_url": "https://fnvjibzreepubageztoi.supabase.co/storage/v1/object/public/curriculum-audio/ls/a30265ad6c1da18d.flac"
         }
       ],
       "roleplay": {
@@ -858,23 +878,28 @@
       "listening_speaking": [
         {
           "text": "See you tomorrow!",
-          "context": "despedida com encontro próximo"
+          "context": "despedida com encontro próximo",
+          "audio_url": "https://fnvjibzreepubageztoi.supabase.co/storage/v1/object/public/curriculum-audio/ls/1da7c03697c51c07.flac"
         },
         {
           "text": "Have a nice day!",
-          "context": "despedida educada padrão"
+          "context": "despedida educada padrão",
+          "audio_url": "https://fnvjibzreepubageztoi.supabase.co/storage/v1/object/public/curriculum-audio/ls/7587cf72c65f05d1.flac"
         },
         {
           "text": "Take care!",
-          "context": "despedida calorosa"
+          "context": "despedida calorosa",
+          "audio_url": "https://fnvjibzreepubageztoi.supabase.co/storage/v1/object/public/curriculum-audio/ls/d22e77f097552245.flac"
         },
         {
           "text": "Goodbye, see you soon!",
-          "context": "despedida formal + esperança de reencontro"
+          "context": "despedida formal + esperança de reencontro",
+          "audio_url": "https://fnvjibzreepubageztoi.supabase.co/storage/v1/object/public/curriculum-audio/ls/8d31d03fd5adffb8.flac"
         },
         {
           "text": "Bye for now!",
-          "context": "informal, próximo encontro indefinido"
+          "context": "informal, próximo encontro indefinido",
+          "audio_url": "https://fnvjibzreepubageztoi.supabase.co/storage/v1/object/public/curriculum-audio/ls/f3c1106352c20f6f.flac"
         }
       ],
       "roleplay": {
