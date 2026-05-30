@@ -1,0 +1,754 @@
+{
+  "id": "M06",
+  "title": "Cláusulas participiais",
+  "level": "Advanced",
+  "block": "C1",
+  "units_range": "A01–A05",
+  "theme": "Participle clauses — present (-ing), past (-ed), perfect (Having + past participle), perfect passive (Having been + past participle), with-clauses",
+  "goal": "Student compresses two clauses into one using participle constructions, controlling subject matching to avoid dangling participles.",
+  "connects_to": "M07 (Reported speech masterclass) — nuanced reporting needs compression.",
+  "module_chunks": [
+    "Walking down the street, I saw...",
+    "Sitting by the window, she read...",
+    "Built in 1900, the bridge...",
+    "Born in Lisbon, he moved...",
+    "Having finished dinner, we...",
+    "Having waited an hour, I left",
+    "Having been told, she didn't ask",
+    "Having been raised in...",
+    "After finishing / Before leaving / While walking",
+    "On arriving / Upon hearing",
+    "With everyone watching, he...",
+    "With his hands shaking, he signed",
+    "The man sitting / The book written (reduced relative)"
+  ],
+  "units": [
+    {
+      "id": "A01",
+      "title": "Walking down the street",
+      "sub_cefr": "C1",
+      "grammar_focus": "Present participle (-ing) clauses — simultaneous or causal action",
+      "markers": [
+        "denso"
+      ],
+      "real_life_context": "You compress two simultaneous past actions or describe ongoing setting + main action.",
+      "grammar": [
+        {
+          "type": "multiple_choice",
+          "sentence": "_____ home, I bumped into an old friend.",
+          "options": [
+            "Walking",
+            "Walked",
+            "I walked",
+            "Walks"
+          ],
+          "answer": "Walking",
+          "explanation": "Present participle clause (-ing) describes the second action's setting — simultaneous to the main verb. \"Walking home, I bumped into...\" = \"While I was walking home, I bumped into...\". Subject of participle matches subject of main clause (I)."
+        },
+        {
+          "type": "multiple_choice",
+          "sentence": "_____ for an hour, I gave up and left.",
+          "options": [
+            "Waiting",
+            "Waited",
+            "I waited",
+            "To wait"
+          ],
+          "answer": "Waiting",
+          "explanation": "\"Waiting for an hour\" = \"after I had been waiting for an hour\" or \"having waited for an hour\". -ing form here suggests duration up to the main action. Compressed narrative."
+        },
+        {
+          "type": "fill_gap",
+          "sentence": "_____ slowly down the corridor, she heard footsteps behind her.",
+          "hint": "present participle \"walk\"",
+          "answer": "Walking",
+          "explanation": "\"Walking slowly... she heard\" — simultaneous past actions. Subject \"she\" of main clause = implied subject of \"walking\". No dangling."
+        },
+        {
+          "type": "fix_error",
+          "sentence": "Walking down the street, the rain started suddenly.",
+          "hint": "Subject of participle must match subject of main clause",
+          "answer": "While I was walking down the street, the rain started suddenly. (or: Walking down the street, I felt the rain start suddenly.)",
+          "explanation": "As written, the participle \"walking\" attaches to \"the rain\" — the rain wasn't walking! Classic dangling participle. Fix by adding a subject clause or rewriting so the participle subject matches the main clause."
+        },
+        {
+          "type": "read_answer",
+          "passage": "Standing on the balcony at dawn, she watched the city wake. The first taxis appeared. Wandering shopkeepers raised their shutters. Sleeping pigeons stirred on the cathedral spire. She drank her coffee slowly, knowing the morning belonged to no one and to her alone.",
+          "question": "How does the passage open the description?",
+          "answer": "with a participle clause — \"Standing on the balcony at dawn\"",
+          "explanation": "\"Standing on the balcony\" is the opening participle clause, setting the scene with simultaneous action. Followed by other -ing forms (\"wandering shopkeepers\", \"sleeping pigeons\") used as adjectives. Literary register heavy on participles."
+        }
+      ],
+      "listening_speaking": [
+        {
+          "text": "Walking home, I bumped into an old friend.",
+          "context": "simultaneous"
+        },
+        {
+          "text": "Sitting by the fire, she read all evening.",
+          "context": "simultaneous setting"
+        },
+        {
+          "text": "Looking out the window, I saw it was raining.",
+          "context": "simultaneous observation"
+        },
+        {
+          "text": "Working late, he missed dinner with his family.",
+          "context": "causal participle"
+        },
+        {
+          "text": "Smiling broadly, she accepted the award.",
+          "context": "manner participle"
+        }
+      ],
+      "roleplay": {
+        "scenario": "Charlotte invites three compressed narrations using present participle clauses to open each.",
+        "voiced_by": "charlotte",
+        "persona": "Charlotte",
+        "persona_outfit": "charlotte_casual",
+        "time_budget_sec": 300,
+        "opening_line": "Three openings, each with a present participle clause. 'Walking... I...' or 'Looking... she...'",
+        "objectives": [
+          {
+            "id": 1,
+            "label_en": "Simultaneous action (walking/looking)",
+            "hidden_prompt": "user uses '-ing clause + main clause with same subject'",
+            "hint_en": "Walking to work this morning, I realised I'd left my laptop at home."
+          },
+          {
+            "id": 2,
+            "label_en": "Background action + main action",
+            "hidden_prompt": "user uses '-ing clause' for ongoing background",
+            "hint_en": "Sitting in the café, I overheard a strange conversation."
+          },
+          {
+            "id": 3,
+            "label_en": "Cause with -ing clause",
+            "hidden_prompt": "user uses '-ing clause' as causal",
+            "hint_en": "Knowing she was tired, I offered to drive."
+          }
+        ],
+        "closing_cue": "Charlotte closes with \"Three openings, three compressions.\" once obj_3 lands.",
+        "suggested_flow": "**Suggested flow** (referencial, 6 turnos):\n\n1. **Charlotte**: \"Three openings, each with a present participle clause. 'Walking... I...' or 'Looking... she...'\"\n2. **Student**: ~\"Walking to work this morning, I realised I'd left my laptop at home.\"\n3. **Charlotte**: \"Familiar horror. Background?\"\n4. **Student**: ~\"Sitting in the café, I overheard a strange conversation.\"\n5. **Charlotte**: \"Causal?\"\n6. **Student**: ~\"Knowing she was tired, I offered to drive.\"\n7. **Charlotte**: \"Three openings, three compressions.\"",
+        "evaluation_focus": [
+          "Subject of participle = subject of main clause",
+          "No dangling participles",
+          "Simultaneity, background, or cause"
+        ]
+      },
+      "guided_chat": {
+        "scenario": "Charlotte trades brief vignettes with participle clauses.",
+        "voiced_by": "charlotte",
+        "persona": "Charlotte",
+        "persona_outfit": "charlotte_casual",
+        "intro_en": "Charlotte writes vignettes. Match her with participle openings.",
+        "opening_message": "Walking past my old school last week, I felt fifteen all over again. What did your last walk make you feel?",
+        "objectives": [
+          {
+            "id": 1,
+            "label_en": "Vignette with opening -ing",
+            "hidden_prompt": "user uses '-ing clause + main clause'",
+            "hint_en": "Walking through my neighbourhood, I noticed three new cafés had appeared."
+          },
+          {
+            "id": 2,
+            "label_en": "Deepen with another -ing",
+            "hidden_prompt": "user uses another participle clause",
+            "hint_en": "Crossing the bridge, I realised I hadn't done that walk in years."
+          },
+          {
+            "id": 3,
+            "label_en": "Ask Charlotte",
+            "hidden_prompt": "user asks Charlotte more about her school walk",
+            "hint_en": "What changed at your school?"
+          }
+        ],
+        "closing_cue": "Charlotte closes with \"Vignettes, properly opened.\" once obj_3 lands.",
+        "suggested_script": "**Script** (referencial, 7 turnos):\n\n1. **Charlotte**: \"Walking past my old school last week, I felt fifteen all over again. What did your last walk make you feel?\"\n2. **Student**: \"Walking through my neighbourhood, I noticed three new cafés had appeared.\"\n3. **Charlotte**: \"Cities edit themselves while you're not looking.\"\n4. **Student**: \"Crossing the bridge, I realised I hadn't done that walk in years.\"\n5. **Charlotte**: \"Old paths, new noticings.\"\n6. **Student**: \"What changed at your school?\"\n7. **Charlotte**: \"The trees are bigger. Everything else, smaller. Vignettes, properly opened.\"\n\n> A01 chat = full LLM. Scaffold via hint_pt/hint_en.\n\n---"
+      }
+    },
+    {
+      "id": "A02",
+      "title": "Built in 1900",
+      "sub_cefr": "C1",
+      "grammar_focus": "Past participle (-ed) clauses — passive compression",
+      "markers": [
+        "denso"
+      ],
+      "real_life_context": "You describe an object/person with its passive past, compressing \"X, which was built...\" into \"Built..., X...\".",
+      "grammar": [
+        {
+          "type": "multiple_choice",
+          "sentence": "_____ in 1900, the bridge is the city's oldest.",
+          "options": [
+            "Built",
+            "Building",
+            "Was built",
+            "Have built"
+          ],
+          "answer": "Built",
+          "explanation": "Past participle (-ed) clause — passive compression of \"The bridge, which was built in 1900, is the city's oldest.\" The participle \"Built\" carries the passive meaning. Common in formal description and historical writing."
+        },
+        {
+          "type": "multiple_choice",
+          "sentence": "_____ in São Paulo, she moved to Berlin at twelve.",
+          "options": [
+            "Born",
+            "Birthing",
+            "Was born",
+            "Birthed"
+          ],
+          "answer": "Born",
+          "explanation": "\"Born\" — past participle of \"bear\" used passively. \"Born in São Paulo\" = \"Having been born in São Paulo\" / \"She, who was born in São Paulo, moved...\". Biographical opener."
+        },
+        {
+          "type": "fill_gap",
+          "sentence": "_____ by the team in only six weeks, the prototype exceeded expectations.",
+          "hint": "past participle \"develop\"",
+          "answer": "Developed",
+          "explanation": "\"Developed by the team in only six weeks\" — passive past participle clause with agent. Subject of clause = \"prototype\" (which was developed)."
+        },
+        {
+          "type": "fix_error",
+          "sentence": "Building in 1900, the bridge is still standing.",
+          "hint": "For a passive past meaning, use past participle (-ed/built), not -ing",
+          "answer": "Built in 1900, the bridge is still standing.",
+          "explanation": "\"Building\" would mean the bridge was actively building (impossible). For passive past sense, use past participle \"Built\". Distinguishing -ing (active) vs -ed (passive) is the crux of participle clauses."
+        },
+        {
+          "type": "read_answer",
+          "passage": "Founded by immigrants and shaped by half a dozen architectural fashions, the neighbourhood has aged without ever quite settling. Lined with chestnut trees and crossed by trams that have outlived their schedules, it remains a place where strangers still nod at each other across narrow streets.",
+          "question": "What two passive participle clauses describe the neighbourhood?",
+          "answer": "Founded by immigrants, lined with chestnut trees (also acceptable: shaped by half a dozen fashions; crossed by trams)",
+          "explanation": "Four passive participles open this passage: \"Founded by...\", \"shaped by...\", \"Lined with...\", \"crossed by...\". Compressed description heavy with passive past participles — a literary trademark."
+        }
+      ],
+      "listening_speaking": [
+        {
+          "text": "Built in 1900, the bridge still stands.",
+          "context": "historical compression"
+        },
+        {
+          "text": "Born in Lisbon, she moved at twelve.",
+          "context": "biographical compression"
+        },
+        {
+          "text": "Surrounded by mountains, the town stays quiet.",
+          "context": "geographic"
+        },
+        {
+          "text": "Written in three weeks, the novel won every prize.",
+          "context": "fast creation"
+        },
+        {
+          "text": "Made of recycled materials, the chair is surprisingly sturdy.",
+          "context": "material compression"
+        }
+      ],
+      "roleplay": {
+        "scenario": "Charlotte asks for three descriptions opening with past participle (-ed) clauses.",
+        "voiced_by": "charlotte",
+        "persona": "Charlotte",
+        "persona_outfit": "charlotte_casual",
+        "time_budget_sec": 300,
+        "opening_line": "Three descriptions opening with a past participle clause. 'Built... Born... Made...'",
+        "objectives": [
+          {
+            "id": 1,
+            "label_en": "Construction/creation",
+            "hidden_prompt": "user uses 'Built/Made/Designed + by/in + clause + main'",
+            "hint_en": "Built in 1872, the old town hall still hosts weekly markets."
+          },
+          {
+            "id": 2,
+            "label_en": "Biography ('Born in...')",
+            "hidden_prompt": "user uses 'Born + place/time, + main clause'",
+            "hint_en": "Born in Recife and raised in Belo Horizonte, she speaks two distinct Portuguese rhythms."
+          },
+          {
+            "id": 3,
+            "label_en": "Passive characteristic",
+            "hidden_prompt": "user uses another past participle opener",
+            "hint_en": "Surrounded by trees on three sides, the cabin is invisible from the road."
+          }
+        ],
+        "closing_cue": "Charlotte closes with \"Compressions, descriptive grade.\" once obj_3 lands.",
+        "suggested_flow": "**Suggested flow** (referencial, 6 turnos):\n\n1. **Charlotte**: \"Three descriptions opening with a past participle clause. 'Built... Born... Made...'\"\n2. **Student**: ~\"Built in 1872, the old town hall still hosts weekly markets.\"\n3. **Charlotte**: \"Biography?\"\n4. **Student**: ~\"Born in Recife and raised in Belo Horizonte, she speaks two distinct Portuguese rhythms.\"\n5. **Charlotte**: \"Trait?\"\n6. **Student**: ~\"Surrounded by trees on three sides, the cabin is invisible from the road.\"\n7. **Charlotte**: \"Compressions, descriptive grade.\"",
+        "evaluation_focus": [
+          "Past participle (-ed), not -ing",
+          "Subject of clause matches subject of main",
+          "Passive meaning intact"
+        ]
+      },
+      "guided_chat": {
+        "scenario": "Charlotte talks about places and people. You match with past-participle openers.",
+        "voiced_by": "charlotte",
+        "persona": "Charlotte",
+        "persona_outfit": "charlotte_casual",
+        "intro_en": "Charlotte sketches places and lives. Use past participle clauses.",
+        "opening_message": "Founded by a former monk, the little bookshop on my street has been there for forty years. Tell me about a place near you.",
+        "objectives": [
+          {
+            "id": 1,
+            "label_en": "Place with past participle opener",
+            "hidden_prompt": "user uses 'Past participle clause, + main'",
+            "hint_en": "Built in the 1930s, my building has the kind of doors they don't make anymore."
+          },
+          {
+            "id": 2,
+            "label_en": "Person or tradition",
+            "hidden_prompt": "user uses another past participle compression",
+            "hint_en": "Raised on her grandmother's stories, my daughter now tells better ones than I do."
+          },
+          {
+            "id": 3,
+            "label_en": "Ask Charlotte",
+            "hidden_prompt": "user asks Charlotte more about the bookshop",
+            "hint_en": "Does the monk still work there?"
+          }
+        ],
+        "closing_cue": "Charlotte closes with \"Places and people, opened in passive.\" once obj_3 lands.",
+        "suggested_script": "**Script** (referencial, 7 turnos):\n\n1. **Charlotte**: \"Founded by a former monk, the little bookshop on my street has been there for forty years. Tell me about a place near you.\"\n2. **Student**: \"Built in the 1930s, my building has the kind of doors they don't make anymore.\"\n3. **Charlotte**: \"Old doors carry the weight of every family who passed through them.\"\n4. **Student**: \"Raised on her grandmother's stories, my daughter now tells better ones than I do.\"\n5. **Charlotte**: \"Inheritance in spoken form.\"\n6. **Student**: \"Does the monk still work there?\"\n7. **Charlotte**: \"He died three years ago. His son runs it now. Places and people, opened in passive.\"\n\n> A02 chat = full LLM. Scaffold via hint_pt/hint_en.\n\n---"
+      }
+    },
+    {
+      "id": "A03",
+      "title": "Having finished",
+      "sub_cefr": "C1",
+      "grammar_focus": "Perfect participle (Having + past participle) — completed action before main action",
+      "markers": [
+        "denso"
+      ],
+      "real_life_context": "You signal that one event was finished before another began — clear temporal sequence in compressed form.",
+      "grammar": [
+        {
+          "type": "multiple_choice",
+          "sentence": "_____ dinner, we went for a walk.",
+          "options": [
+            "Having finished",
+            "Finishing",
+            "Finished",
+            "Finish"
+          ],
+          "answer": "Having finished",
+          "explanation": "Perfect participle \"Having + past participle\" — emphasises that the action (finishing dinner) was complete before the main action (going for a walk). \"Having finished\" = \"After we had finished\"."
+        },
+        {
+          "type": "multiple_choice",
+          "sentence": "_____ the report, she left early.",
+          "options": [
+            "Having submitted",
+            "Submitting",
+            "Submitted",
+            "Submits"
+          ],
+          "answer": "Having submitted",
+          "explanation": "\"Having submitted\" sequences events clearly — submission complete first, then leaving. \"Submitting\" would suggest simultaneity (while submitting), which doesn't quite fit."
+        },
+        {
+          "type": "fill_gap",
+          "sentence": "_____ for an hour, I finally gave up and called a cab.",
+          "hint": "\"Having\" + past participle \"wait\"",
+          "answer": "Having waited",
+          "explanation": "\"Having waited for an hour\" — the waiting was completed (or felt completed) before the main action of giving up. Past perfect compressed."
+        },
+        {
+          "type": "fix_error",
+          "sentence": "Finished my work, I went home.",
+          "hint": "Use \"Having finished\" to mark completion before the main action",
+          "answer": "Having finished my work, I went home.",
+          "explanation": "Bare \"Finished my work\" reads as past participle adjective (\"being in a finished state\"), which is awkward here. \"Having finished\" clearly marks the sequence: first finish, then go."
+        },
+        {
+          "type": "read_answer",
+          "passage": "Having spent twenty years in the same office, she felt a kind of vertigo on her first morning of retirement. Having earned the right to rest, she didn't quite know what to do with it. Having always defined herself by what she made, she had to learn what she was without making anything at all.",
+          "question": "What three things had she done by the time of her retirement morning?",
+          "answer": "spent twenty years in the same office, earned the right to rest, always defined herself by what she made",
+          "explanation": "Three perfect participle openers (\"Having spent... Having earned... Having always defined\") layered to compress a whole biography of completed actions into one paragraph. Common in essay and biography."
+        }
+      ],
+      "listening_speaking": [
+        {
+          "text": "Having finished dinner, we went for a walk.",
+          "context": "sequenced casual"
+        },
+        {
+          "text": "Having submitted the report, she finally relaxed.",
+          "context": "work sequence"
+        },
+        {
+          "text": "Having waited an hour, I gave up.",
+          "context": "duration + give-up"
+        },
+        {
+          "text": "Having lived abroad, she sees home differently.",
+          "context": "long experience + result"
+        },
+        {
+          "text": "Having said that, I still respect his decision.",
+          "context": "discourse marker form"
+        }
+      ],
+      "roleplay": {
+        "scenario": "Charlotte invites three \"Having + past participle\" openers for stories or arguments.",
+        "voiced_by": "charlotte",
+        "persona": "Charlotte",
+        "persona_outfit": "charlotte_casual",
+        "time_budget_sec": 300,
+        "opening_line": "Three stories or thoughts, each starting with 'Having + past participle'.",
+        "objectives": [
+          {
+            "id": 1,
+            "label_en": "Time sequence ('Having finished')",
+            "hidden_prompt": "user uses 'Having + past participle + main clause'",
+            "hint_en": "Having finished my morning run, I felt ready for the meeting."
+          },
+          {
+            "id": 2,
+            "label_en": "Long experience ('Having lived/worked')",
+            "hidden_prompt": "user uses 'Having + past participle' for long experience",
+            "hint_en": "Having worked from home for two years, I forgot how loud offices are."
+          },
+          {
+            "id": 3,
+            "label_en": "Discourse marker 'Having said that'",
+            "hidden_prompt": "user uses 'Having said that, + clause'",
+            "hint_en": "I disagree with him on most things. Having said that, he's a good colleague."
+          }
+        ],
+        "closing_cue": "Charlotte closes with \"Sequenced and shaded.\" once obj_3 lands.",
+        "suggested_flow": "**Suggested flow** (referencial, 6 turnos):\n\n1. **Charlotte**: \"Three stories or thoughts, each starting with 'Having + past participle'.\"\n2. **Student**: ~\"Having finished my morning run, I felt ready for the meeting.\"\n3. **Charlotte**: \"Endorphins. Long experience?\"\n4. **Student**: ~\"Having worked from home for two years, I forgot how loud offices are.\"\n5. **Charlotte**: \"Discourse marker?\"\n6. **Student**: ~\"I disagree with him on most things. Having said that, he's a good colleague.\"\n7. **Charlotte**: \"Sequenced and shaded.\"",
+        "evaluation_focus": [
+          "\"Having + past participle\" structure",
+          "Subject matches main clause",
+          "Use for sequence or for hedged concession"
+        ]
+      },
+      "guided_chat": {
+        "scenario": "Charlotte explores experience-after-experience reflections. You match with perfect participles.",
+        "voiced_by": "charlotte",
+        "persona": "Charlotte",
+        "persona_outfit": "charlotte_casual",
+        "intro_en": "Charlotte sequences experiences. Use 'Having + past participle' openers.",
+        "opening_message": "Having taught for fifteen years, I finally feel I'm starting to understand my students. What's something experience clarified for you?",
+        "objectives": [
+          {
+            "id": 1,
+            "label_en": "Experience + insight",
+            "hidden_prompt": "user uses 'Having + past participle + clause'",
+            "hint_en": "Having managed people for ten years, I finally learned to stop solving for them."
+          },
+          {
+            "id": 2,
+            "label_en": "Add with 'Having said that'",
+            "hidden_prompt": "user uses 'Having said that, + clause'",
+            "hint_en": "Having said that, every team still finds a way to surprise me."
+          },
+          {
+            "id": 3,
+            "label_en": "Ask Charlotte",
+            "hidden_prompt": "user asks Charlotte for one specific student lesson",
+            "hint_en": "What did students teach you?"
+          }
+        ],
+        "closing_cue": "Charlotte closes with \"Experience, properly placed.\" once obj_3 lands.",
+        "suggested_script": "**Script** (referencial, 7 turnos):\n\n1. **Charlotte**: \"Having taught for fifteen years, I finally feel I'm starting to understand my students. What's something experience clarified for you?\"\n2. **Student**: \"Having managed people for ten years, I finally learned to stop solving for them.\"\n3. **Charlotte**: \"Hardest leadership lesson there is.\"\n4. **Student**: \"Having said that, every team still finds a way to surprise me.\"\n5. **Charlotte**: \"Surprise keeps the work alive.\"\n6. **Student**: \"What did students teach you?\"\n7. **Charlotte**: \"That confusion is information, not failure. Experience, properly placed.\"\n\n> A03 chat = full LLM. Scaffold via hint_pt/hint_en.\n\n---"
+      }
+    },
+    {
+      "id": "A04",
+      "title": "Having been told",
+      "sub_cefr": "C1",
+      "grammar_focus": "Perfect passive participle (Having been + past participle) — completed passive event before main action",
+      "markers": [
+        "denso"
+      ],
+      "real_life_context": "You note what was done TO the subject before they themselves acted — passive history as preamble.",
+      "grammar": [
+        {
+          "type": "multiple_choice",
+          "sentence": "_____ told the meeting was cancelled, she went home early.",
+          "options": [
+            "Having been",
+            "Being",
+            "Having told",
+            "Told"
+          ],
+          "answer": "Having been",
+          "explanation": "\"Having been + past participle\" — perfect passive participle. The subject was on the receiving end of the action (she was told), and it happened before the main action (going home). Compresses \"After she had been told...\"."
+        },
+        {
+          "type": "multiple_choice",
+          "sentence": "_____ raised in three different countries, she speaks four languages.",
+          "options": [
+            "Having been",
+            "Being",
+            "Have been",
+            "Has been"
+          ],
+          "answer": "Having been",
+          "explanation": "\"Having been raised\" — perfect passive participle. The subject was raised (passive) before the present consequence (speaking four languages). Biographical compression."
+        },
+        {
+          "type": "fill_gap",
+          "sentence": "_____ promoted twice in three years, she felt confident asking for a raise.",
+          "hint": "\"Having been\" + past participle",
+          "answer": "Having been",
+          "explanation": "\"Having been promoted twice\" — completed passive events earlier, fuelling present confidence. Subject (she) is the recipient of promotion."
+        },
+        {
+          "type": "fix_error",
+          "sentence": "Being told the news, she immediately called her mother.",
+          "hint": "For completed action before main, use \"Having been told\"",
+          "answer": "Having been told the news, she immediately called her mother.",
+          "explanation": "\"Being told\" suggests simultaneity (as she was being told). For a completed event BEFORE her call, \"Having been told\" is clearer. Both grammatical, but C1 precision favours the perfect form here."
+        },
+        {
+          "type": "read_answer",
+          "passage": "Having been raised by two demanding teachers, he had assumed all parents were like that. Having been corrected at every dinner table, he had grown into someone who corrected gently. Having been loved fiercely if formally, he loved the same way — and was loved back the same way too.",
+          "question": "How was he raised, according to the passage?",
+          "answer": "by two demanding teachers / corrected at every dinner table / loved fiercely but formally",
+          "explanation": "Three \"Having been + past participle\" openers compress three formative passive experiences into a portrait. Each shaped a present trait."
+        }
+      ],
+      "listening_speaking": [
+        {
+          "text": "Having been told the news, she sat down.",
+          "context": "passive receipt + reaction"
+        },
+        {
+          "text": "Having been raised abroad, he sees both sides.",
+          "context": "formative passive"
+        },
+        {
+          "text": "Having been promoted twice, she was confident.",
+          "context": "earned passive"
+        },
+        {
+          "text": "Having been warned, I should have listened.",
+          "context": "passive ignored"
+        },
+        {
+          "text": "Having been let down before, she stayed cautious.",
+          "context": "past hurt + present trait"
+        }
+      ],
+      "roleplay": {
+        "scenario": "Charlotte asks for three \"Having been...\" openers — passive events that shaped you or someone you know.",
+        "voiced_by": "charlotte",
+        "persona": "Charlotte",
+        "persona_outfit": "charlotte_casual",
+        "time_budget_sec": 300,
+        "opening_line": "Three formative passive moments — 'Having been told... Having been raised... Having been...'",
+        "objectives": [
+          {
+            "id": 1,
+            "label_en": "Upbringing or education ('raised/educated')",
+            "hidden_prompt": "user uses 'Having been raised/educated/taught + clause'",
+            "hint_en": "Having been raised by two musicians, I can't imagine a quiet house."
+          },
+          {
+            "id": 2,
+            "label_en": "Receiving news or warning",
+            "hidden_prompt": "user uses 'Having been told/warned/informed'",
+            "hint_en": "Having been warned about the traffic, I left an hour earlier."
+          },
+          {
+            "id": 3,
+            "label_en": "Repeated formative experience",
+            "hidden_prompt": "user uses 'Having been + past participle' for repeated event",
+            "hint_en": "Having been overlooked at three previous companies, she finally spoke up at this one."
+          }
+        ],
+        "closing_cue": "Charlotte closes with \"Passive past, present self.\" once obj_3 lands.",
+        "suggested_flow": "**Suggested flow** (referencial, 6 turnos):\n\n1. **Charlotte**: \"Three formative passive moments — 'Having been told... Having been raised... Having been...'\"\n2. **Student**: ~\"Having been raised by two musicians, I can't imagine a quiet house.\"\n3. **Charlotte**: \"Background determines tolerance for chaos. Warning?\"\n4. **Student**: ~\"Having been warned about the traffic, I left an hour earlier.\"\n5. **Charlotte**: \"Repeated event?\"\n6. **Student**: ~\"Having been overlooked at three previous companies, she finally spoke up at this one.\"\n7. **Charlotte**: \"Passive past, present self.\"",
+        "evaluation_focus": [
+          "\"Having been + past participle\"",
+          "Subject is recipient of past action",
+          "Connects to present consequence"
+        ]
+      },
+      "guided_chat": {
+        "scenario": "Charlotte invites a portrait — passive experiences that shaped a person you know.",
+        "voiced_by": "charlotte",
+        "persona": "Charlotte",
+        "persona_outfit": "charlotte_casual",
+        "intro_en": "Charlotte invites a layered portrait. Use 'Having been + past participle' openers.",
+        "opening_message": "Having been mentored by one careful teacher in my twenties, I still hear her edits when I write. Who shaped you most?",
+        "objectives": [
+          {
+            "id": 1,
+            "label_en": "Person who shaped you (passive)",
+            "hidden_prompt": "user uses 'Having been + past participle + by + person'",
+            "hint_en": "Having been taught patience by my grandfather, I find rushing strange."
+          },
+          {
+            "id": 2,
+            "label_en": "Another formative experience",
+            "hidden_prompt": "user uses another 'Having been + past participle'",
+            "hint_en": "Having been pushed too hard early on, I now coach my team gently."
+          },
+          {
+            "id": 3,
+            "label_en": "Ask Charlotte",
+            "hidden_prompt": "user asks Charlotte about her mentor's edits",
+            "hint_en": "What did she edit out?"
+          }
+        ],
+        "closing_cue": "Charlotte closes with \"Inheritance, in passive voice.\" once obj_3 lands.",
+        "suggested_script": "**Script** (referencial, 7 turnos):\n\n1. **Charlotte**: \"Having been mentored by one careful teacher in my twenties, I still hear her edits when I write. Who shaped you most?\"\n2. **Student**: \"Having been taught patience by my grandfather, I find rushing strange.\"\n3. **Charlotte**: \"Patience is the rarest inheritance.\"\n4. **Student**: \"Having been pushed too hard early on, I now coach my team gently.\"\n5. **Charlotte**: \"Becoming the opposite of what hurt you — quiet rebellion.\"\n6. **Student**: \"What did she edit out?\"\n7. **Charlotte**: \"Adverbs and self-pity, mostly. Inheritance, in passive voice.\"\n\n> A04 chat = full LLM. Scaffold via hint_pt/hint_en.\n\n---"
+      }
+    },
+    {
+      "id": "A05",
+      "title": "Reduced relatives + with-clauses",
+      "sub_cefr": "C1",
+      "grammar_focus": "Reduced relative clauses (the man sitting / the book written) + with-clauses (with everyone watching)",
+      "markers": [],
+      "real_life_context": "You compress relative clauses into participle phrases and add accompanying circumstances with \"with + noun + -ing/-ed\".",
+      "grammar": [
+        {
+          "type": "multiple_choice",
+          "sentence": "The man _____ in the corner is my uncle.",
+          "options": [
+            "sitting",
+            "who sits",
+            "sit",
+            "who is sitting"
+          ],
+          "answer": "sitting",
+          "explanation": "Reduced relative clause: \"The man sitting in the corner\" = \"The man who is sitting in the corner\". Drop \"who is\" to compress. Common in descriptive English."
+        },
+        {
+          "type": "multiple_choice",
+          "sentence": "The book _____ by Saramago is on the table.",
+          "options": [
+            "written",
+            "writing",
+            "wrote",
+            "which writes"
+          ],
+          "answer": "written",
+          "explanation": "\"Written\" — past participle for passive reduced relative. \"The book written by Saramago\" = \"The book that was written by Saramago\". Compressed by dropping \"that was\"."
+        },
+        {
+          "type": "fill_gap",
+          "sentence": "_____ everyone watching, she had to stay calm.",
+          "hint": "\"With\" + \"everyone watching\"",
+          "answer": "With",
+          "explanation": "\"With + noun + -ing\" — accompanying circumstance. \"With everyone watching\" = \"while everyone was watching\". Adds context that's happening alongside the main action."
+        },
+        {
+          "type": "fix_error",
+          "sentence": "The book wrote by my favourite author is on the table.",
+          "hint": "Past participle of \"write\" = \"written\"",
+          "answer": "The book written by my favourite author is on the table.",
+          "explanation": "\"Wrote\" is the past simple form. For reduced passive relative, you need the past participle \"written\". Common slip for irregular verbs."
+        },
+        {
+          "type": "read_answer",
+          "passage": "The waiter, balancing four plates and wearing the practised smile of someone who'd done this a thousand times, made it through the crowded dining room without spilling a drop. With diners watching, with chefs shouting, with the room nearly full to capacity, he placed each plate down as if the night were quiet.",
+          "question": "How does the passage compress the waiter's situation?",
+          "answer": "with three \"with + noun + -ing\" clauses (diners watching, chefs shouting, room nearly full)",
+          "explanation": "Two reduced relatives open (\"balancing four plates and wearing the practised smile\") followed by three with-clauses (\"With diners watching, with chefs shouting, with the room nearly full\"). Compressed atmospheric writing."
+        }
+      ],
+      "listening_speaking": [
+        {
+          "text": "The man sitting there is my uncle.",
+          "context": "reduced active"
+        },
+        {
+          "text": "The book written by her is famous.",
+          "context": "reduced passive"
+        },
+        {
+          "text": "With everyone watching, he stayed calm.",
+          "context": "with-clause"
+        },
+        {
+          "text": "With his hands shaking, he signed the contract.",
+          "context": "with-clause + condition"
+        },
+        {
+          "text": "The car parked outside isn't ours.",
+          "context": "reduced passive"
+        }
+      ],
+      "roleplay": {
+        "scenario": "Charlotte asks for three compressions — two reduced relatives, one \"with + noun + ing/ed\" clause.",
+        "voiced_by": "charlotte",
+        "persona": "Charlotte",
+        "persona_outfit": "charlotte_casual",
+        "time_budget_sec": 300,
+        "opening_line": "Three compressions — two reduced relatives, one with-clause.",
+        "objectives": [
+          {
+            "id": 1,
+            "label_en": "Reduced relative active (-ing)",
+            "hidden_prompt": "user uses 'the X + -ing'",
+            "hint_en": "The woman standing at the bar gave me a long look."
+          },
+          {
+            "id": 2,
+            "label_en": "Reduced relative passive (-ed)",
+            "hidden_prompt": "user uses 'the X + past participle'",
+            "hint_en": "The letter sent last week never reached him."
+          },
+          {
+            "id": 3,
+            "label_en": "Circumstance with 'with + noun + -ing/-ed'",
+            "hidden_prompt": "user uses 'With + noun + -ing/-ed, + main clause'",
+            "hint_en": "With my hands shaking, I signed the agreement."
+          }
+        ],
+        "closing_cue": "Charlotte closes with \"Compressions, sharp and clear.\" once obj_3 lands.",
+        "suggested_flow": "**Suggested flow** (referencial, 6 turnos):\n\n1. **Charlotte**: \"Three compressions — two reduced relatives, one with-clause.\"\n2. **Student**: ~\"The woman standing at the bar gave me a long look.\"\n3. **Charlotte**: \"Passive reduced?\"\n4. **Student**: ~\"The letter sent last week never reached him.\"\n5. **Charlotte**: \"With-clause?\"\n6. **Student**: ~\"With my hands shaking, I signed the agreement.\"\n7. **Charlotte**: \"Compressions, sharp and clear.\"",
+        "evaluation_focus": [
+          "-ing (active) vs -ed (passive) reduced relative",
+          "With + noun + ing/ed circumstance",
+          "Clear subject reference"
+        ]
+      },
+      "guided_chat": {
+        "scenario": "Charlotte sets a vivid scene. You contribute compressions — reduced relatives and with-clauses.",
+        "voiced_by": "charlotte",
+        "persona": "Charlotte",
+        "persona_outfit": "charlotte_casual",
+        "intro_en": "Charlotte builds vivid scenes. Use reduced relatives and with-clauses.",
+        "opening_message": "The café, packed with morning regulars and warmed by the smell of fresh bread, was where I made the call. Where did you make a big call recently?",
+        "objectives": [
+          {
+            "id": 1,
+            "label_en": "Scene with reduced relative",
+            "hidden_prompt": "user uses past participle reduced relative for scene",
+            "hint_en": "The park, lit only by a single streetlight, is where I called my mother."
+          },
+          {
+            "id": 2,
+            "label_en": "Detail with 'with' clause",
+            "hidden_prompt": "user uses 'With + noun + -ing/-ed'",
+            "hint_en": "With my heart pounding, I told her the news."
+          },
+          {
+            "id": 3,
+            "label_en": "Ask Charlotte",
+            "hidden_prompt": "user asks Charlotte who she called",
+            "hint_en": "Who did you call?"
+          }
+        ],
+        "closing_cue": "Charlotte closes with \"Scenes compressed, edges intact.\" once obj_3 lands.",
+        "suggested_script": "**Script** (referencial, 7 turnos):\n\n1. **Charlotte**: \"The café, packed with morning regulars and warmed by the smell of fresh bread, was where I made the call. Where did you make a big call recently?\"\n2. **Student**: \"The park, lit only by a single streetlight, is where I called my mother.\"\n3. **Charlotte**: \"Open air and a hard conversation.\"\n4. **Student**: \"With my heart pounding, I told her the news.\"\n5. **Charlotte**: \"Some sentences cost more than others.\"\n6. **Student**: \"Who did you call?\"\n7. **Charlotte**: \"My oldest friend. To tell her I was leaving the country. Scenes compressed, edges intact.\"\n\n> A05 chat = full LLM. Scaffold via hint_pt/hint_en.\n\n---"
+      }
+    }
+  ],
+  "cross_unit_consolidation": [
+    "Open clauses with present participle (-ing) for simultaneous/causal action",
+    "Open clauses with past participle (-ed) for passive description",
+    "Use \"Having + past participle\" for completed action before main",
+    "Use \"Having been + past participle\" for completed passive event before main",
+    "Reduce relative clauses: \"the man sitting\" / \"the book written\"",
+    "Add accompanying circumstances with \"With + noun + -ing/-ed\"",
+    "Avoid dangling participles by matching subjects"
+  ]
+}

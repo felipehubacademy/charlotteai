@@ -249,8 +249,13 @@
         "id": "M05",
         "title": "Passive avançada",
         "file": "advanced/M05.json"
+      },
+      {
+        "id": "M06",
+        "title": "Cláusulas participiais",
+        "file": "advanced/M06.json"
       }
     ]
   },
-  "generated_at": "2026-05-30T21:55:49.695Z"
+  "generated_at": "2026-05-30T21:57:37.352Z"
 }
