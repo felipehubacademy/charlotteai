@@ -27,6 +27,8 @@ import { splashGate } from '@/lib/splashGate';
 import { voiceSFX } from '@/lib/voiceSFX';
 import { TrailContent } from '@/components/trail/TrailContent';
 import { TrailBanner } from '@/components/trail/TrailBanner';
+import { PromotionModal } from '@/components/trail/PromotionModal';
+import { usePromotion } from '@/lib/curriculum-v2/usePromotion';
 import { NewLayoutWelcomeSheet } from '@/components/onboarding/NewLayoutWelcomeSheet';
 
 // Module-level flag — persists for the JS session (like the legacy home screen)
@@ -90,6 +92,10 @@ export default function HomeTab() {
   // Mantem selectedLevel sincronizado se o perfil mudar (ex: promocao organica)
   useEffect(() => { setSelectedLevel(currentLevel); }, [currentLevel]);
   const level     = selectedLevel;
+
+  // Promocao organica: checa apos cada focus da home.
+  const { event: promotionEvent, ack: ackPromotion, checkAndPromote } = usePromotion();
+  useFocusEffect(useCallback(() => { checkAndPromote(); }, [checkAndPromote]));
   const name      = profile?.name ?? profile?.email?.split('@')[0] ?? 'Student';
   const isPt      = level === 'Novice';
   const firstName = name.split(' ')[0] ?? name;
@@ -463,6 +469,8 @@ export default function HomeTab() {
         visible={showWelcomeSheet}
         onClose={closeWelcomeSheet}
       />
+
+      <PromotionModal event={promotionEvent} onClose={ackPromotion} />
 
     </View>
   );
