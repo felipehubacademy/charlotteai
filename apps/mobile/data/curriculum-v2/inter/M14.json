@@ -1,0 +1,1035 @@
+{
+  "id": "M14",
+  "title": "Deveria ter, poderia ter",
+  "level": "Inter",
+  "block": "B2",
+  "units_range": "I01–I05",
+  "theme": "Modal perfects (should have, could have, would have, might have, must have done)",
+  "goal": "Student uses modal perfects to speculate about the past, express regret, criticism, or strong inference.",
+  "connects_to": "M15 (Passive intro) — shift from speculation about past to passive voice basics.",
+  "module_chunks": [
+    "should have + past participle (regret/criticism)",
+    "shouldn't have + past participle",
+    "could have + past participle (possibility/missed chance)",
+    "couldn't have + past participle",
+    "would have + past participle (consequence)",
+    "might have + past participle (uncertainty)",
+    "must have + past participle (strong inference)",
+    "can't have + past participle (impossibility)",
+    "needn't have + past participle (unnecessary action)"
+  ],
+  "units": [
+    {
+      "id": "I01",
+      "title": "I should have",
+      "sub_cefr": "B2",
+      "grammar_focus": "should have / shouldn't have + past participle (regret + criticism)",
+      "markers": [
+        "denso"
+      ],
+      "real_life_context": "You criticize past decisions — your own or others' — or express regret.",
+      "grammar": [
+        {
+          "type": "multiple_choice",
+          "sentence": "I _____ studied harder for the exam.",
+          "options": [
+            "should have",
+            "should",
+            "would",
+            "had"
+          ],
+          "answer": "should have",
+          "explanation": "\"Should have + past participle\" expressa arrependimento ou crítica sobre o passado. \"I should have studied\" — não estudei, e foi um erro."
+        },
+        {
+          "type": "multiple_choice",
+          "sentence": "You _____ told her the truth.",
+          "options": [
+            "should have",
+            "should",
+            "would",
+            "had"
+          ],
+          "answer": "should have",
+          "explanation": "\"You should have told her\" — crítica/sugestão retrospectiva. Era a coisa certa a fazer mas não foi feita."
+        },
+        {
+          "type": "word_bank",
+          "sentence": "She _____ said anything — it wasn't her business.",
+          "choices": [
+            "shouldn't have",
+            "shouldn't",
+            "wouldn't have",
+            "didn't have"
+          ],
+          "answer": "shouldn't have",
+          "explanation": "\"Shouldn't have + past participle\" para criticar uma ação passada errada. \"She shouldn't have said\" — disse e foi errado."
+        },
+        {
+          "type": "word_bank",
+          "sentence": "We _____ left earlier — we missed the train.",
+          "choices": [
+            "should have",
+            "should",
+            "would have",
+            "had"
+          ],
+          "answer": "should have",
+          "explanation": "\"We should have left earlier\" — arrependimento sobre timing passado."
+        },
+        {
+          "type": "fill_gap",
+          "sentence": "He _____ have apologized.",
+          "hint": "should / shouldn't (criticism)",
+          "answer": "should",
+          "explanation": "\"He should have apologized\" — sugestão retrospectiva: era a coisa correta. (Aceita \"should\" no contexto criticando que ele não pediu desculpa.)"
+        },
+        {
+          "type": "fill_gap",
+          "sentence": "I _____ have eaten so much.",
+          "hint": "shouldn't (arrependimento)",
+          "answer": "shouldn't",
+          "explanation": "\"I shouldn't have eaten so much\" — comi demais, me arrependo."
+        },
+        {
+          "type": "fill_gap",
+          "sentence": "You _____ have called me first.",
+          "hint": "should (sugestão retrospectiva)",
+          "answer": "should",
+          "explanation": "\"You should have called me first\" — crítica leve sobre não ter ligado."
+        },
+        {
+          "type": "fix_error",
+          "sentence": "I should studied harder.",
+          "hint": "Falta \"have\" — \"should HAVE studied\"",
+          "answer": "I should have studied harder.",
+          "explanation": "\"Should studied\" não existe. Sempre \"should HAVE + past participle\". Forma fixa."
+        },
+        {
+          "type": "fix_error",
+          "sentence": "She shouldn't said that.",
+          "hint": "Falta \"have\"",
+          "answer": "She shouldn't have said that.",
+          "explanation": "\"Shouldn't have + past participle\". \"Shouldn't said\" não é gramatical."
+        },
+        {
+          "type": "read_answer",
+          "passage": "I should have studied harder. You should have told her the truth. We shouldn't have eaten so much. He should have apologized when he had the chance.",
+          "question": "What does the speaker think they should have done?",
+          "answer": "studied harder",
+          "explanation": "The text says \"I should have studied harder\"."
+        }
+      ],
+      "listening_speaking": [
+        {
+          "text": "I should have studied harder.",
+          "context": "self-criticism"
+        },
+        {
+          "text": "You should have told her.",
+          "context": "criticism of another"
+        },
+        {
+          "text": "We shouldn't have left so late.",
+          "context": "regret about action"
+        },
+        {
+          "text": "He should have apologized.",
+          "context": "moral criticism"
+        },
+        {
+          "text": "I shouldn't have said that.",
+          "context": "self-regret"
+        }
+      ],
+      "roleplay": {
+        "scenario": "Charlotte conta três situações recentes em que ela ou alguém fez algo errado — você comenta com \"should have\" / \"shouldn't have\".",
+        "voiced_by": "charlotte",
+        "persona": "Charlotte",
+        "persona_outfit": "charlotte_casual",
+        "time_budget_sec": 180,
+        "opening_line": "Three recent stories. Tell me what people should have done differently.",
+        "objectives": [
+          {
+            "id": 1,
+            "label_pt": "Crítica com 'should have'",
+            "label_en": "Criticism with 'should have'",
+            "hidden_prompt": "user uses 'X should have + past participle'",
+            "hint_pt": "He should have apologized sooner.",
+            "hint_en": "He should have apologized sooner."
+          },
+          {
+            "id": 2,
+            "label_pt": "Crítica com 'shouldn't have'",
+            "label_en": "Criticism with 'shouldn't have'",
+            "hidden_prompt": "user uses 'X shouldn't have + past participle'",
+            "hint_pt": "She shouldn't have left without saying goodbye.",
+            "hint_en": "She shouldn't have left without saying goodbye."
+          },
+          {
+            "id": 3,
+            "label_pt": "Crítica/conselho retrospectivo extra",
+            "label_en": "Additional retrospective advice",
+            "hidden_prompt": "user uses another 'should/shouldn't have' construction",
+            "hint_pt": "They should have planned better.",
+            "hint_en": "They should have planned better."
+          }
+        ],
+        "closing_cue": "Charlotte fecha com \"Sharp judgment!\" quando obj_3 baterem.",
+        "suggested_flow": "**Suggested flow** (referencial, 6 turnos):\n\n1. **Charlotte**: \"Three recent stories. Tell me what people should have done differently.\"\n2. **Student**: ~\"He should have apologized sooner.\"\n3. **Charlotte**: \"Fair. Next story?\"\n4. **Student**: ~\"She shouldn't have left without saying goodbye.\"\n5. **Charlotte**: \"Last?\"\n6. **Student**: ~\"They should have planned better.\"\n7. **Charlotte**: \"Sharp judgment!\"",
+        "evaluation_focus": [
+          "\"Should/shouldn't HAVE + past participle\"",
+          "Past criticism tone",
+          "Not \"should + base\" (which is present)"
+        ]
+      },
+      "guided_chat": {
+        "scenario": "Charlotte abre conversa sobre coisas que ela fez ou disse semana passada e está em dúvida — quer feedback retrospectivo seu com \"should have\".",
+        "voiced_by": "charlotte",
+        "persona": "Charlotte",
+        "persona_outfit": "charlotte_casual",
+        "intro_en": "Charlotte asks for honest 'should have' feedback on her week.",
+        "opening_message": "I sent a long email to my boss criticizing a process. Should I have done that?",
+        "objectives": [
+          {
+            "id": 1,
+            "label_pt": "Opinião com 'should have' ou 'shouldn't have'",
+            "label_en": "Opinion with 'should/shouldn't have'",
+            "hidden_prompt": "user uses 'you should have' or 'you shouldn't have'",
+            "hint_pt": "You shouldn't have sent it without thinking.",
+            "hint_en": "You shouldn't have sent it without thinking."
+          },
+          {
+            "id": 2,
+            "label_pt": "Alternativa retrospectiva",
+            "label_en": "Alternative in retrospect",
+            "hidden_prompt": "user suggests what she should have done instead",
+            "hint_pt": "You should have talked to him first.",
+            "hint_en": "You should have talked to him first."
+          },
+          {
+            "id": 3,
+            "label_pt": "Pergunta para Charlotte",
+            "label_en": "Question for Charlotte",
+            "hidden_prompt": "user asks Charlotte how she feels or what she'll do",
+            "hint_pt": "How do you feel about it now?",
+            "hint_en": "How do you feel about it now?"
+          }
+        ],
+        "closing_cue": "Charlotte fecha com \"Honest feedback received!\" quando obj_3 baterem.",
+        "suggested_script": "**Script** (referencial, 7 turnos):\n\n1. **Charlotte**: \"I sent a long email to my boss criticizing a process. Should I have done that?\"\n2. **Student**: \"You shouldn't have sent it without thinking.\"\n3. **Charlotte**: \"Maybe true. What would have been better?\"\n4. **Student**: \"You should have talked to him first.\"\n5. **Charlotte**: \"Yeah. Face to face is better.\"\n6. **Student**: \"How do you feel about it now?\"\n7. **Charlotte**: \"Awkward. Honest feedback received!\"\n\n> I01 chat = LLM puro. Scaffold via hint_pt.\n\n---"
+      }
+    },
+    {
+      "id": "I02",
+      "title": "I could have",
+      "sub_cefr": "B2",
+      "grammar_focus": "could have / couldn't have + past participle (past possibility/missed chance)",
+      "markers": [
+        "denso"
+      ],
+      "real_life_context": "You talk about missed past opportunities or impossibilities.",
+      "grammar": [
+        {
+          "type": "multiple_choice",
+          "sentence": "I _____ called you yesterday but I forgot.",
+          "options": [
+            "could have",
+            "could",
+            "would",
+            "can have"
+          ],
+          "answer": "could have",
+          "explanation": "\"Could have + past participle\" = possibilidade passada não realizada. \"I could have called\" — tinha como mas não chamei."
+        },
+        {
+          "type": "multiple_choice",
+          "sentence": "She _____ won the race, but she fell.",
+          "options": [
+            "could have",
+            "could",
+            "would have",
+            "can have"
+          ],
+          "answer": "could have",
+          "explanation": "\"She could have won\" — capacidade passada, oportunidade perdida."
+        },
+        {
+          "type": "word_bank",
+          "sentence": "We _____ stayed longer, but we were tired.",
+          "choices": [
+            "could have",
+            "could",
+            "would have",
+            "had"
+          ],
+          "answer": "could have",
+          "explanation": "\"Could have stayed\" — possibilidade passada, decisão de não fazer."
+        },
+        {
+          "type": "word_bank",
+          "sentence": "He _____ done it alone — he didn't need help.",
+          "choices": [
+            "could have",
+            "could",
+            "would have",
+            "had"
+          ],
+          "answer": "could have",
+          "explanation": "\"He could have done it alone\" — capacidade real existia, oportunidade existia."
+        },
+        {
+          "type": "fill_gap",
+          "sentence": "You _____ asked me — I would have helped.",
+          "hint": "could (have)",
+          "answer": "could",
+          "explanation": "\"You could have asked me\" — chance que existia mas não foi usada."
+        },
+        {
+          "type": "fill_gap",
+          "sentence": "I _____ have gone, but I chose to stay.",
+          "hint": "could",
+          "answer": "could",
+          "explanation": "\"I could have gone\" — possibilidade existia, decisão de não fazer."
+        },
+        {
+          "type": "fill_gap",
+          "sentence": "She _____ have known — she wasn't even there.",
+          "hint": "couldn't (impossibilidade)",
+          "answer": "couldn't",
+          "explanation": "\"She couldn't have known\" — impossibilidade lógica passada. Não tinha como saber."
+        },
+        {
+          "type": "fix_error",
+          "sentence": "I could called you but I forgot.",
+          "hint": "Falta \"have\" — \"could HAVE called\"",
+          "answer": "I could have called you but I forgot.",
+          "explanation": "\"Could called\" não existe. Sempre \"could HAVE + past participle\"."
+        },
+        {
+          "type": "fix_error",
+          "sentence": "She couldn't known about it.",
+          "hint": "Falta \"have\"",
+          "answer": "She couldn't have known about it.",
+          "explanation": "\"Couldn't have + past participle\". Sem \"have\", a frase é incorreta."
+        },
+        {
+          "type": "read_answer",
+          "passage": "I could have called you yesterday but I forgot. She could have won the race if she hadn't fallen. He couldn't have known about the meeting — he was on vacation.",
+          "question": "Why couldn't he have known about the meeting?",
+          "answer": "he was on vacation",
+          "explanation": "The text says \"He couldn't have known about the meeting — he was on vacation\"."
+        }
+      ],
+      "listening_speaking": [
+        {
+          "text": "I could have called you.",
+          "context": "missed opportunity"
+        },
+        {
+          "text": "She could have won.",
+          "context": "unrealized potential"
+        },
+        {
+          "text": "He couldn't have known.",
+          "context": "impossibility"
+        },
+        {
+          "text": "We could have stayed longer.",
+          "context": "choice not made"
+        },
+        {
+          "text": "You could have asked me.",
+          "context": "missed help"
+        }
+      ],
+      "roleplay": {
+        "scenario": "Charlotte conta sobre três situações em que ela ou alguém perdeu uma chance — você comenta com \"could have\" mostrando o que era possível.",
+        "voiced_by": "charlotte",
+        "persona": "Charlotte",
+        "persona_outfit": "charlotte_casual",
+        "time_budget_sec": 180,
+        "opening_line": "Three missed chances. Tell me what could have happened.",
+        "objectives": [
+          {
+            "id": 1,
+            "label_pt": "Oportunidade perdida com 'could have'",
+            "label_en": "Missed opportunity with 'could have'",
+            "hidden_prompt": "user uses 'X could have + past participle'",
+            "hint_pt": "He could have won the prize.",
+            "hint_en": "He could have won the prize."
+          },
+          {
+            "id": 2,
+            "label_pt": "Outra possibilidade passada",
+            "label_en": "Another past possibility",
+            "hidden_prompt": "user uses another 'could have + past participle'",
+            "hint_pt": "She could have gotten the promotion.",
+            "hint_en": "She could have gotten the promotion."
+          },
+          {
+            "id": 3,
+            "label_pt": "Impossibilidade com 'couldn't have'",
+            "label_en": "Impossibility with 'couldn't have'",
+            "hidden_prompt": "user uses 'X couldn't have + past participle'",
+            "hint_pt": "They couldn't have arrived on time.",
+            "hint_en": "They couldn't have arrived on time."
+          }
+        ],
+        "closing_cue": "Charlotte fecha com \"Possibilities mapped!\" quando obj_3 baterem.",
+        "suggested_flow": "**Suggested flow** (referencial, 6 turnos):\n\n1. **Charlotte**: \"Three missed chances. Tell me what could have happened.\"\n2. **Student**: ~\"He could have won the prize.\"\n3. **Charlotte**: \"What stopped him? Another?\"\n4. **Student**: ~\"She could have gotten the promotion.\"\n5. **Charlotte**: \"Impossibility?\"\n6. **Student**: ~\"They couldn't have arrived on time.\"\n7. **Charlotte**: \"Possibilities mapped!\"",
+        "evaluation_focus": [
+          "\"Could/couldn't HAVE + past participle\"",
+          "Past possibility vs impossibility",
+          "Not present \"can\""
+        ]
+      },
+      "guided_chat": {
+        "scenario": "Charlotte conta um quase-acidente ou quase-conquista — vocês conversam sobre o que poderia ter acontecido (positivo ou negativo).",
+        "voiced_by": "charlotte",
+        "persona": "Charlotte",
+        "persona_outfit": "charlotte_casual",
+        "intro_en": "Charlotte shares a near-event. Speculate with 'could have' and 'couldn't have'.",
+        "opening_message": "I almost missed my flight last week. What could have happened?",
+        "objectives": [
+          {
+            "id": 1,
+            "label_pt": "Consequência possível com 'could have'",
+            "label_en": "Possible consequence with 'could have'",
+            "hidden_prompt": "user uses 'you could have + past participle'",
+            "hint_pt": "You could have missed the meeting entirely.",
+            "hint_en": "You could have missed the meeting entirely."
+          },
+          {
+            "id": 2,
+            "label_pt": "Outra possibilidade ou alívio",
+            "label_en": "Another possibility or relief",
+            "hidden_prompt": "user uses another 'could have' or describes relief",
+            "hint_pt": "You could have lost a lot of money.",
+            "hint_en": "You could have lost a lot of money."
+          },
+          {
+            "id": 3,
+            "label_pt": "Pergunta para Charlotte",
+            "label_en": "Question for Charlotte",
+            "hidden_prompt": "user asks Charlotte 'How did you make it?' or similar",
+            "hint_pt": "How did you make it in time?",
+            "hint_en": "How did you make it in time?"
+          }
+        ],
+        "closing_cue": "Charlotte fecha com \"Close call examined!\" quando obj_3 baterem.",
+        "suggested_script": "**Script** (referencial, 7 turnos):\n\n1. **Charlotte**: \"I almost missed my flight last week. What could have happened?\"\n2. **Student**: \"You could have missed the meeting entirely.\"\n3. **Charlotte**: \"Right. And more?\"\n4. **Student**: \"You could have lost a lot of money.\"\n5. **Charlotte**: \"The rebooking fee, ouch.\"\n6. **Student**: \"How did you make it in time?\"\n7. **Charlotte**: \"Running. Literally running. Close call examined!\"\n\n> I02 chat = LLM puro. Scaffold via hint_pt.\n\n---"
+      }
+    },
+    {
+      "id": "I03",
+      "title": "Must have / Can't have",
+      "sub_cefr": "B2",
+      "grammar_focus": "must have / can't have + past participle (strong inference about past)",
+      "markers": [
+        "denso"
+      ],
+      "real_life_context": "You make confident guesses about what happened based on evidence.",
+      "grammar": [
+        {
+          "type": "multiple_choice",
+          "sentence": "She isn't answering — she _____ left already.",
+          "options": [
+            "must have",
+            "could have",
+            "would have",
+            "can have"
+          ],
+          "answer": "must have",
+          "explanation": "\"Must have + past participle\" = inferência forte sobre o passado. Evidência (não atende) → conclusão forte (já saiu)."
+        },
+        {
+          "type": "multiple_choice",
+          "sentence": "He _____ stolen it — he was with me all day!",
+          "options": [
+            "can't have",
+            "must have",
+            "shouldn't have",
+            "didn't"
+          ],
+          "answer": "can't have",
+          "explanation": "\"Can't have + past participle\" = impossibilidade lógica baseada em evidência. Estava comigo → impossível ter roubado."
+        },
+        {
+          "type": "word_bank",
+          "sentence": "The grass is wet — it _____ rained last night.",
+          "choices": [
+            "must have",
+            "could have",
+            "would have",
+            "can have"
+          ],
+          "answer": "must have",
+          "explanation": "Evidência física (grama molhada) → conclusão forte (\"must have rained\")."
+        },
+        {
+          "type": "word_bank",
+          "sentence": "She _____ heard you — she had headphones on.",
+          "choices": [
+            "can't have",
+            "must have",
+            "shouldn't have",
+            "didn't"
+          ],
+          "answer": "can't have",
+          "explanation": "\"Can't have heard\" = impossível ter ouvido (headphones). Inferência negativa forte."
+        },
+        {
+          "type": "fill_gap",
+          "sentence": "He looks tired — he _____ slept much last night.",
+          "hint": "can't have (impossibilidade)",
+          "answer": "can't have",
+          "explanation": "Tired → can't have slept much. Conclusão forte negativa."
+        },
+        {
+          "type": "fill_gap",
+          "sentence": "They _____ enjoyed the trip — they have so many photos!",
+          "hint": "must have",
+          "answer": "must have",
+          "explanation": "Muitas fotos → must have enjoyed. Evidência → inferência positiva forte."
+        },
+        {
+          "type": "fill_gap",
+          "sentence": "She _____ have arrived — her car isn't here.",
+          "hint": "can't (impossibilidade)",
+          "answer": "can't",
+          "explanation": "\"She can't have arrived\" — sem carro = não chegou. Inferência negativa."
+        },
+        {
+          "type": "fix_error",
+          "sentence": "She must left already — she's not answering.",
+          "hint": "Falta \"have\" — \"must HAVE left\"",
+          "answer": "She must have left already — she's not answering.",
+          "explanation": "\"Must left\" não existe. Sempre \"must HAVE + past participle\"."
+        },
+        {
+          "type": "fix_error",
+          "sentence": "He can't stole it — he was with me!",
+          "hint": "Falta \"have\" — \"can't HAVE stolen\"",
+          "answer": "He can't have stolen it — he was with me!",
+          "explanation": "\"Can't HAVE + past participle\". E note: stolen, não stole, como past participle."
+        },
+        {
+          "type": "read_answer",
+          "passage": "The grass is wet — it must have rained last night. She isn't answering her phone — she must have left already. He can't have stolen it — he was with me the whole day.",
+          "question": "Why couldn't he have stolen it?",
+          "answer": "he was with me (or \"he was with the speaker the whole day\")",
+          "explanation": "The text says \"He can't have stolen it — he was with me the whole day\"."
+        }
+      ],
+      "listening_speaking": [
+        {
+          "text": "She must have left already.",
+          "context": "strong inference (positive)"
+        },
+        {
+          "text": "He can't have known.",
+          "context": "strong impossibility"
+        },
+        {
+          "text": "It must have rained.",
+          "context": "physical evidence inference"
+        },
+        {
+          "text": "They must have enjoyed it.",
+          "context": "positive inference"
+        },
+        {
+          "text": "She can't have heard.",
+          "context": "negative strong inference"
+        }
+      ],
+      "roleplay": {
+        "scenario": "Charlotte dá pistas sobre três situações estranhas — você deduz com \"must have\" e \"can't have\" o que aconteceu.",
+        "voiced_by": "charlotte",
+        "persona": "Charlotte",
+        "persona_outfit": "charlotte_casual",
+        "time_budget_sec": 180,
+        "opening_line": "Three mysteries to solve. Use 'must have' or 'can't have' to figure them out.",
+        "objectives": [
+          {
+            "id": 1,
+            "label_pt": "Dedução com 'must have'",
+            "label_en": "Deduction with 'must have'",
+            "hidden_prompt": "user uses 'X must have + past participle'",
+            "hint_pt": "She must have forgotten the keys.",
+            "hint_en": "She must have forgotten the keys."
+          },
+          {
+            "id": 2,
+            "label_pt": "Dedução negativa com 'can't have'",
+            "label_en": "Negative deduction with 'can't have'",
+            "hidden_prompt": "user uses 'X can't have + past participle'",
+            "hint_pt": "He can't have done it alone.",
+            "hint_en": "He can't have done it alone."
+          },
+          {
+            "id": 3,
+            "label_pt": "Outra dedução forte",
+            "label_en": "Another strong deduction",
+            "hidden_prompt": "user uses another 'must have' or 'can't have'",
+            "hint_pt": "They must have left in a hurry.",
+            "hint_en": "They must have left in a hurry."
+          }
+        ],
+        "closing_cue": "Charlotte fecha com \"Mysteries solved!\" quando obj_3 baterem.",
+        "suggested_flow": "**Suggested flow** (referencial, 6 turnos):\n\n1. **Charlotte**: \"Three mysteries to solve. Use 'must have' or 'can't have' to figure them out.\"\n2. **Student**: ~\"She must have forgotten the keys.\"\n3. **Charlotte**: \"Logical. Next clue?\"\n4. **Student**: ~\"He can't have done it alone.\"\n5. **Charlotte**: \"Last?\"\n6. **Student**: ~\"They must have left in a hurry.\"\n7. **Charlotte**: \"Mysteries solved!\"",
+        "evaluation_focus": [
+          "\"Must/can't HAVE + past participle\"",
+          "Strong positive vs strong negative inference",
+          "Past participle forms"
+        ]
+      },
+      "guided_chat": {
+        "scenario": "Charlotte conta uma cena estranha que viu ontem — vocês especulam com \"must have\" e \"can't have\" o que aconteceu.",
+        "voiced_by": "charlotte",
+        "persona": "Charlotte",
+        "persona_outfit": "charlotte_casual",
+        "intro_en": "Charlotte describes an odd scene. Speculate with 'must have' and 'can't have'.",
+        "opening_message": "I saw a man crying on the street holding flowers. What must have happened?",
+        "objectives": [
+          {
+            "id": 1,
+            "label_pt": "Especulação positiva com 'must have'",
+            "label_en": "Positive speculation with 'must have'",
+            "hidden_prompt": "user uses 'he must have + past participle'",
+            "hint_pt": "He must have broken up with someone.",
+            "hint_en": "He must have broken up with someone."
+          },
+          {
+            "id": 2,
+            "label_pt": "Especulação negativa com 'can't have'",
+            "label_en": "Negative speculation with 'can't have'",
+            "hidden_prompt": "user uses 'he can't have + past participle'",
+            "hint_pt": "He can't have planned for that.",
+            "hint_en": "He can't have planned for that."
+          },
+          {
+            "id": 3,
+            "label_pt": "Comentário ou pergunta",
+            "label_en": "Comment or question",
+            "hidden_prompt": "user comments or asks Charlotte more",
+            "hint_pt": "Did you talk to him?",
+            "hint_en": "Did you talk to him?"
+          }
+        ],
+        "closing_cue": "Charlotte fecha com \"Scene decoded!\" quando obj_3 baterem.",
+        "suggested_script": "**Script** (referencial, 7 turnos):\n\n1. **Charlotte**: \"I saw a man crying on the street holding flowers. What must have happened?\"\n2. **Student**: \"He must have broken up with someone.\"\n3. **Charlotte**: \"That was my guess too.\"\n4. **Student**: \"He can't have planned for that.\"\n5. **Charlotte**: \"Heartbreak rarely waits for a calendar.\"\n6. **Student**: \"Did you talk to him?\"\n7. **Charlotte**: \"No, I didn't want to intrude. Scene decoded!\"\n\n> I03 chat = LLM puro. Scaffold via hint_pt.\n\n---"
+      }
+    },
+    {
+      "id": "I04",
+      "title": "Might have / Needn't have",
+      "sub_cefr": "B2",
+      "grammar_focus": "might have + past participle (uncertainty); needn't have + past participle (unnecessary done action)",
+      "markers": [
+        "denso"
+      ],
+      "real_life_context": "You speculate with uncertainty about the past, or notice actions that weren't needed.",
+      "grammar": [
+        {
+          "type": "multiple_choice",
+          "sentence": "She _____ missed the bus — I'm not sure.",
+          "options": [
+            "might have",
+            "must have",
+            "can't have",
+            "would have"
+          ],
+          "answer": "might have",
+          "explanation": "\"Might have + past participle\" = especulação fraca, possibilidade incerta. Sem evidência forte."
+        },
+        {
+          "type": "multiple_choice",
+          "sentence": "We _____ booked the table — it was empty anyway.",
+          "options": [
+            "needn't have",
+            "shouldn't have",
+            "couldn't have",
+            "wouldn't have"
+          ],
+          "answer": "needn't have",
+          "explanation": "\"Needn't have + past participle\" = ação foi feita mas não era necessária. Booked = fizemos, mas não precisava."
+        },
+        {
+          "type": "word_bank",
+          "sentence": "He _____ called — but I'm not certain.",
+          "choices": [
+            "might have",
+            "must have",
+            "can't have",
+            "would have"
+          ],
+          "answer": "might have",
+          "explanation": "\"Might have called\" — possibilidade fraca, incerteza."
+        },
+        {
+          "type": "word_bank",
+          "sentence": "You _____ brought a gift — it wasn't expected.",
+          "choices": [
+            "needn't have",
+            "shouldn't have",
+            "couldn't have",
+            "wouldn't have"
+          ],
+          "answer": "needn't have",
+          "explanation": "\"Needn't have brought\" — você trouxe mas não precisava. Ação desnecessária."
+        },
+        {
+          "type": "fill_gap",
+          "sentence": "They _____ have left already.",
+          "hint": "might (incerteza)",
+          "answer": "might",
+          "explanation": "\"They might have left\" — possibilidade incerta. Talvez sim, talvez não."
+        },
+        {
+          "type": "fill_gap",
+          "sentence": "I _____ have worried so much — everything turned out fine.",
+          "hint": "needn't (desnecessário)",
+          "answer": "needn't",
+          "explanation": "\"I needn't have worried\" — me preocupei mas não precisava. Crítica retrospectiva à própria ação."
+        },
+        {
+          "type": "fill_gap",
+          "sentence": "She _____ have forgotten — let me text her.",
+          "hint": "might (incerteza)",
+          "answer": "might",
+          "explanation": "\"She might have forgotten\" — incerteza positiva. Pode ter esquecido."
+        },
+        {
+          "type": "fix_error",
+          "sentence": "She might forgotten about the meeting.",
+          "hint": "Falta \"have\"",
+          "answer": "She might have forgotten about the meeting.",
+          "explanation": "Sempre \"might HAVE + past participle\". \"Might forgotten\" é incorreto."
+        },
+        {
+          "type": "fix_error",
+          "sentence": "You needn't brought a gift.",
+          "hint": "Falta \"have\"",
+          "answer": "You needn't have brought a gift.",
+          "explanation": "\"Needn't HAVE + past participle\". \"Needn't brought\" é incorreto."
+        },
+        {
+          "type": "read_answer",
+          "passage": "She might have missed the bus — let me check. We needn't have booked the table — it was empty anyway. You needn't have brought a gift, but thank you.",
+          "question": "Why didn't they need to book the table?",
+          "answer": "it was empty (or \"it was empty anyway\")",
+          "explanation": "The text says \"We needn't have booked the table — it was empty anyway\"."
+        }
+      ],
+      "listening_speaking": [
+        {
+          "text": "She might have missed the bus.",
+          "context": "weak speculation"
+        },
+        {
+          "text": "He might have forgotten.",
+          "context": "uncertain past"
+        },
+        {
+          "text": "We needn't have booked it.",
+          "context": "unnecessary action done"
+        },
+        {
+          "text": "You needn't have come — but thanks.",
+          "context": "unnecessary but appreciated"
+        },
+        {
+          "text": "They might have arrived already.",
+          "context": "uncertain present"
+        }
+      ],
+      "roleplay": {
+        "scenario": "Charlotte conta três situações e pede que você especule (might have) ou comente que uma ação não foi necessária (needn't have).",
+        "voiced_by": "charlotte",
+        "persona": "Charlotte",
+        "persona_outfit": "charlotte_casual",
+        "time_budget_sec": 180,
+        "opening_line": "Three situations — speculate with 'might have' or comment with 'needn't have'.",
+        "objectives": [
+          {
+            "id": 1,
+            "label_pt": "Especulação com 'might have'",
+            "label_en": "Speculation with 'might have'",
+            "hidden_prompt": "user uses 'X might have + past participle'",
+            "hint_pt": "She might have lost her phone.",
+            "hint_en": "She might have lost her phone."
+          },
+          {
+            "id": 2,
+            "label_pt": "Comentário com 'needn't have'",
+            "label_en": "Comment with 'needn't have'",
+            "hidden_prompt": "user uses 'X needn't have + past participle'",
+            "hint_pt": "You needn't have apologized — it was fine.",
+            "hint_en": "You needn't have apologized — it was fine."
+          },
+          {
+            "id": 3,
+            "label_pt": "Outra especulação",
+            "label_en": "Another speculation",
+            "hidden_prompt": "user uses another 'might have' or 'needn't have'",
+            "hint_pt": "He might have changed his mind.",
+            "hint_en": "He might have changed his mind."
+          }
+        ],
+        "closing_cue": "Charlotte fecha com \"Subtle speculation!\" quando obj_3 baterem.",
+        "suggested_flow": "**Suggested flow** (referencial, 6 turnos):\n\n1. **Charlotte**: \"Three situations — speculate with 'might have' or comment with 'needn't have'.\"\n2. **Student**: ~\"She might have lost her phone.\"\n3. **Charlotte**: \"Plausible. Next?\"\n4. **Student**: ~\"You needn't have apologized — it was fine.\"\n5. **Charlotte**: \"Glad you said that. Last?\"\n6. **Student**: ~\"He might have changed his mind.\"\n7. **Charlotte**: \"Subtle speculation!\"",
+        "evaluation_focus": [
+          "\"Might/needn't HAVE + past participle\"",
+          "Weak speculation vs unnecessary action",
+          "Past participle forms correct"
+        ]
+      },
+      "guided_chat": {
+        "scenario": "Charlotte conversa sobre uma situação que ela não tem certeza do que aconteceu e outra em que fez algo demais — vocês trocam might have / needn't have.",
+        "voiced_by": "charlotte",
+        "persona": "Charlotte",
+        "persona_outfit": "charlotte_casual",
+        "intro_en": "Charlotte shares uncertainties and over-actions. Use 'might have' and 'needn't have'.",
+        "opening_message": "I sent the email twice by accident. Was that bad?",
+        "objectives": [
+          {
+            "id": 1,
+            "label_pt": "Especulação suave",
+            "label_en": "Soft speculation",
+            "hidden_prompt": "user uses 'they might have + past participle'",
+            "hint_pt": "They might have noticed.",
+            "hint_en": "They might have noticed."
+          },
+          {
+            "id": 2,
+            "label_pt": "Tranquilizar com 'needn't have worried'",
+            "label_en": "Reassure with 'needn't have worried'",
+            "hidden_prompt": "user uses 'you needn't have + past participle'",
+            "hint_pt": "You needn't have worried — it happens.",
+            "hint_en": "You needn't have worried — it happens."
+          },
+          {
+            "id": 3,
+            "label_pt": "Pergunta para Charlotte",
+            "label_en": "Question for Charlotte",
+            "hidden_prompt": "user asks Charlotte a follow-up",
+            "hint_pt": "Did anyone reply?",
+            "hint_en": "Did anyone reply?"
+          }
+        ],
+        "closing_cue": "Charlotte fecha com \"Reassurance received!\" quando obj_3 baterem.",
+        "suggested_script": "**Script** (referencial, 7 turnos):\n\n1. **Charlotte**: \"I sent the email twice by accident. Was that bad?\"\n2. **Student**: \"They might have noticed.\"\n3. **Charlotte**: \"That's my fear.\"\n4. **Student**: \"You needn't have worried — it happens.\"\n5. **Charlotte**: \"True. Everyone does it.\"\n6. **Student**: \"Did anyone reply?\"\n7. **Charlotte**: \"One person joked about it. Reassurance received!\"\n\n> I04 chat = LLM puro. Scaffold via hint_pt.\n\n---"
+      }
+    },
+    {
+      "id": "I05",
+      "title": "All modal perfects together",
+      "sub_cefr": "B2",
+      "grammar_focus": "Integration of all modal perfects",
+      "markers": [],
+      "real_life_context": "You mix should/could/would/might/must/can't/needn't + have done naturally.",
+      "grammar": [
+        {
+          "type": "multiple_choice",
+          "sentence": "I _____ called you sooner — I'm sorry.",
+          "options": [
+            "should have",
+            "could have",
+            "might have",
+            "can't have"
+          ],
+          "answer": "should have",
+          "explanation": "\"Should have called\" — arrependimento/desculpa retrospectiva."
+        },
+        {
+          "type": "multiple_choice",
+          "sentence": "He _____ left already — he's not here.",
+          "options": [
+            "must have",
+            "would have",
+            "needn't have",
+            "can have"
+          ],
+          "answer": "must have",
+          "explanation": "Evidência (não está aqui) → inferência forte (\"must have left\")."
+        },
+        {
+          "type": "word_bank",
+          "sentence": "We _____ stayed — it ended early.",
+          "choices": [
+            "needn't have",
+            "shouldn't have",
+            "mustn't have",
+            "wouldn't have"
+          ],
+          "answer": "needn't have",
+          "explanation": "\"Needn't have stayed\" — ficamos mas não precisava. Ação desnecessária."
+        },
+        {
+          "type": "word_bank",
+          "sentence": "She _____ heard us — she had headphones on.",
+          "choices": [
+            "can't have",
+            "must have",
+            "should have",
+            "would have"
+          ],
+          "answer": "can't have",
+          "explanation": "\"Can't have heard\" — impossibilidade lógica (headphones)."
+        },
+        {
+          "type": "fill_gap",
+          "sentence": "You _____ have asked — I would have helped.",
+          "hint": "could (oportunidade perdida)",
+          "answer": "could",
+          "explanation": "\"Could have asked\" — oportunidade que existia."
+        },
+        {
+          "type": "fill_gap",
+          "sentence": "They _____ have left already — but I'm not sure.",
+          "hint": "might (incerteza)",
+          "answer": "might",
+          "explanation": "\"Might have left\" — especulação incerta."
+        },
+        {
+          "type": "fill_gap",
+          "sentence": "I _____ have spoken so loudly — sorry.",
+          "hint": "shouldn't (auto-crítica)",
+          "answer": "shouldn't",
+          "explanation": "\"Shouldn't have spoken so loudly\" — arrependimento de ação passada."
+        },
+        {
+          "type": "fix_error",
+          "sentence": "She must left already.",
+          "hint": "Falta \"have\"",
+          "answer": "She must have left already.",
+          "explanation": "Sempre modal + HAVE + past participle. \"Must left\" não existe."
+        },
+        {
+          "type": "fix_error",
+          "sentence": "You shouldn't said that.",
+          "hint": "Falta \"have\"",
+          "answer": "You shouldn't have said that.",
+          "explanation": "\"Shouldn't have + past participle\". Forma fixa."
+        },
+        {
+          "type": "read_answer",
+          "passage": "I should have called you sooner. She must have left already. He can't have known about it. We needn't have rushed — there was plenty of time. You could have asked me for help.",
+          "question": "Why didn't they need to rush?",
+          "answer": "there was plenty of time",
+          "explanation": "The text says \"We needn't have rushed — there was plenty of time\"."
+        }
+      ],
+      "listening_speaking": [
+        {
+          "text": "I should have called sooner.",
+          "context": "regret"
+        },
+        {
+          "text": "She must have left.",
+          "context": "strong inference"
+        },
+        {
+          "text": "You could have asked.",
+          "context": "missed help"
+        },
+        {
+          "text": "They might have forgotten.",
+          "context": "uncertain speculation"
+        },
+        {
+          "text": "We needn't have rushed.",
+          "context": "unnecessary action"
+        }
+      ],
+      "roleplay": {
+        "scenario": "Charlotte conta uma história rica em ações passadas e pede que você comente usando diferentes modal perfects — should, could, must, might, needn't.",
+        "voiced_by": "charlotte",
+        "persona": "Charlotte",
+        "persona_outfit": "charlotte_casual",
+        "time_budget_sec": 180,
+        "opening_line": "I'll tell you about my week. Comment using three different modal perfects.",
+        "objectives": [
+          {
+            "id": 1,
+            "label_pt": "Comentário com 'should/shouldn't have'",
+            "label_en": "Comment with 'should/shouldn't have'",
+            "hidden_prompt": "user uses 'should have' or 'shouldn't have'",
+            "hint_pt": "You should have planned ahead.",
+            "hint_en": "You should have planned ahead."
+          },
+          {
+            "id": 2,
+            "label_pt": "Inferência ou especulação com 'must/might have'",
+            "label_en": "Inference or speculation with 'must/might have'",
+            "hidden_prompt": "user uses 'must have' or 'might have'",
+            "hint_pt": "You must have been exhausted.",
+            "hint_en": "You must have been exhausted."
+          },
+          {
+            "id": 3,
+            "label_pt": "Comentário com 'could/needn't have'",
+            "label_en": "Comment with 'could/needn't have'",
+            "hidden_prompt": "user uses 'could have' or 'needn't have'",
+            "hint_pt": "You could have asked for help.",
+            "hint_en": "You could have asked for help."
+          }
+        ],
+        "closing_cue": "Charlotte fecha com \"Modal mastery!\" quando obj_3 baterem.",
+        "suggested_flow": "**Suggested flow** (referencial, 6 turnos):\n\n1. **Charlotte**: \"I'll tell you about my week. Comment using three different modal perfects.\"\n2. **Student**: ~\"You should have planned ahead.\"\n3. **Charlotte**: \"Fair criticism. Inference?\"\n4. **Student**: ~\"You must have been exhausted.\"\n5. **Charlotte**: \"Truly. Suggestion?\"\n6. **Student**: ~\"You could have asked for help.\"\n7. **Charlotte**: \"Modal mastery!\"",
+        "evaluation_focus": [
+          "Variety of modal perfects",
+          "Correct \"modal + have + past participle\"",
+          "Appropriate use for context (regret vs inference vs unnecessary)"
+        ]
+      },
+      "guided_chat": {
+        "scenario": "Charlotte conta sobre uma situação complexa que aconteceu e pede análise rica usando vários modal perfects — quer ver maturidade na conversa.",
+        "voiced_by": "charlotte",
+        "persona": "Charlotte",
+        "persona_outfit": "charlotte_casual",
+        "intro_en": "Charlotte invites layered analysis. Mix modal perfects in your reaction.",
+        "opening_message": "My friend canceled last minute and didn't even apologize. What do you think?",
+        "objectives": [
+          {
+            "id": 1,
+            "label_pt": "Crítica com 'should/shouldn't have'",
+            "label_en": "Criticism with 'should/shouldn't have'",
+            "hidden_prompt": "user uses 'should/shouldn't have'",
+            "hint_pt": "She should have apologized.",
+            "hint_en": "She should have apologized."
+          },
+          {
+            "id": 2,
+            "label_pt": "Especulação ou inferência",
+            "label_en": "Speculation or inference",
+            "hidden_prompt": "user uses 'might have' or 'must have'",
+            "hint_pt": "She might have had a real emergency.",
+            "hint_en": "She might have had a real emergency."
+          },
+          {
+            "id": 3,
+            "label_pt": "Pergunta ou comentário extra",
+            "label_en": "Question or extra comment",
+            "hidden_prompt": "user asks 'Did you talk to her?' or adds another modal perfect",
+            "hint_pt": "Did you talk to her about it?",
+            "hint_en": "Did you talk to her about it?"
+          }
+        ],
+        "closing_cue": "Charlotte fecha com \"Layered take!\" quando obj_3 baterem.",
+        "suggested_script": "**Script** (referencial, 7 turnos):\n\n1. **Charlotte**: \"My friend canceled last minute and didn't even apologize. What do you think?\"\n2. **Student**: \"She should have apologized.\"\n3. **Charlotte**: \"Right. But...\"\n4. **Student**: \"She might have had a real emergency.\"\n5. **Charlotte**: \"That's true. I should give her space.\"\n6. **Student**: \"Did you talk to her about it?\"\n7. **Charlotte**: \"Not yet. Probably should. Layered take!\"\n\n> I05 chat = LLM puro. Scaffold via hint_pt.\n\n---"
+      }
+    }
+  ],
+  "cross_unit_consolidation": [
+    "should have / shouldn't have + past participle (arrependimento, crítica)",
+    "could have / couldn't have + past participle (possibilidade/impossibilidade passada)",
+    "must have + past participle (inferência forte positiva)",
+    "can't have + past participle (inferência forte negativa)",
+    "might have + past participle (especulação incerta)",
+    "needn't have + past participle (ação desnecessária feita)",
+    "would have + past participle (consequência hipotética)"
+  ]
+}

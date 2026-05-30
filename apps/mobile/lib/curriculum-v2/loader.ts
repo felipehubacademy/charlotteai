@@ -44,6 +44,7 @@ const MODULES: Record<Level, Record<string, () => Module>> = {
     M11: () => require('@/data/curriculum-v2/inter/M11.json') as Module,
     M12: () => require('@/data/curriculum-v2/inter/M12.json') as Module,
     M13: () => require('@/data/curriculum-v2/inter/M13.json') as Module,
+    M14: () => require('@/data/curriculum-v2/inter/M14.json') as Module,
   },
   Advanced: {},
 };
