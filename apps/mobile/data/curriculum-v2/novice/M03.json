@@ -1,0 +1,1033 @@
+{
+  "id": "M03",
+  "title": "Família e amigos",
+  "level": "Novice",
+  "block": "A1",
+  "units_range": "N01–N05",
+  "theme": "Pessoas próximas — família nuclear, parceiro(a), filhos, amigos",
+  "goal": "Aluno sai sabendo falar da família (mãe, pai, irmãos), marido/esposa e filhos, melhor amigo, usando possessivos (my/his/her) e \"have got\" como chunk simples.",
+  "connects_to": "M04 (Em casa) — depois de falar das pessoas próximas, aprende a descrever o espaço onde vivem.",
+  "module_chunks": [
+    "mother / father / brother / sister",
+    "son / daughter",
+    "husband / wife",
+    "friend / best friend",
+    "married / single",
+    "my / your / his / her (possessive adjectives)",
+    "I've got / I have got",
+    "She has got / She's got",
+    "He's got / He has got",
+    "We have got / We've got",
+    "Have you got...?",
+    "My + family member + is + ...",
+    "His name is... / Her name is...",
+    "How big is your family?",
+    "I've got a big/small family",
+    "I've got two brothers",
+    "He is my best friend",
+    "She is my sister",
+    "My family is great",
+    "Are you married?",
+    "I'm married / I'm single",
+    "How about you? / And you?"
+  ],
+  "units": [
+    {
+      "id": "N01",
+      "title": "Pai, mãe, irmãos",
+      "sub_cefr": "A1",
+      "grammar_focus": "Possessive adjectives (my/his/her) + family chunks (mother/father/brother/sister)",
+      "markers": [
+        "denso"
+      ],
+      "real_life_context": "Você conta para alguém sobre sua família próxima — mãe, pai, irmãos.",
+      "grammar": [
+        {
+          "type": "multiple_choice",
+          "sentence": "_____ name is Maria.",
+          "options": [
+            "My",
+            "I",
+            "Me"
+          ],
+          "answer": "My",
+          "explanation": "\"My\" é o possessivo de \"I\" (eu). \"My name\" = \"meu nome\". \"I\" é pronome sujeito, \"Me\" é pronome objeto."
+        },
+        {
+          "type": "multiple_choice",
+          "sentence": "_____ father is a teacher.",
+          "options": [
+            "His",
+            "He",
+            "Him"
+          ],
+          "answer": "His",
+          "explanation": "\"His\" é o possessivo de \"he\" (ele). \"His father\" = \"o pai dele\". \"He\" é o sujeito, \"Him\" é o objeto."
+        },
+        {
+          "type": "word_bank",
+          "sentence": "_____ sister is twenty.",
+          "choices": [
+            "Her",
+            "She",
+            "Hers",
+            "Sheir"
+          ],
+          "answer": "Her",
+          "explanation": "\"Her\" é o possessivo de \"she\" (ela). \"Her sister\" = \"a irmã dela\". \"She\" é o sujeito; \"Hers\" é o possessivo independente (\"É dela\")."
+        },
+        {
+          "type": "word_bank",
+          "sentence": "She is _____ mother.",
+          "choices": [
+            "my",
+            "mine",
+            "me",
+            "I"
+          ],
+          "answer": "my",
+          "explanation": "\"My\" é o adjetivo possessivo (vem antes do substantivo). \"She is my mother\" = \"Ela é a minha mãe\". \"Mine\" é o possessivo independente (\"É minha\")."
+        },
+        {
+          "type": "fill_gap",
+          "sentence": "_____ brother is fifteen years old.",
+          "hint": "Possessivo de \"I\"",
+          "answer": "My",
+          "explanation": "\"My brother\" = \"meu irmão\". Após \"My\" vem o substantivo possuído."
+        },
+        {
+          "type": "fill_gap",
+          "sentence": "He is from Brazil. _____ name is Lucas.",
+          "hint": "Possessivo de \"he\"",
+          "answer": "His",
+          "explanation": "\"His\" = \"dele\". \"His name is Lucas\" = \"O nome dele é Lucas\"."
+        },
+        {
+          "type": "fill_gap",
+          "sentence": "She is twenty-five. _____ father is American.",
+          "hint": "Possessivo de \"she\"",
+          "answer": "Her",
+          "explanation": "\"Her\" = \"dela\". \"Her father is American\" = \"O pai dela é americano\"."
+        },
+        {
+          "type": "fix_error",
+          "sentence": "She brother is ten.",
+          "hint": "Para \"ela\", use o possessivo \"her\"",
+          "answer": "Her brother is ten.",
+          "explanation": "\"She\" é pronome sujeito (ela). \"Her\" é o possessivo (dela). Pra dizer \"o irmão dela\", usa \"her brother\"."
+        },
+        {
+          "type": "fix_error",
+          "sentence": "His are my father.",
+          "hint": "Possessivos e sujeitos têm formas diferentes",
+          "answer": "He is my father.",
+          "explanation": "\"His\" é possessivo (dele). Pra dizer \"ele é o meu pai\", usa o sujeito \"he\": \"He is my father\"."
+        },
+        {
+          "type": "read_answer",
+          "passage": "My family is great. My mother is fifty. My father is fifty-five. My brother is twenty. He is Brazilian.",
+          "question": "How old is the father? (give a number)",
+          "answer": "55",
+          "explanation": "The text says \"My father is fifty-five\". 55."
+        }
+      ],
+      "listening_speaking": [
+        {
+          "text": "My name is Felipe.",
+          "context": "apresentação básica (chunk M01)"
+        },
+        {
+          "text": "My father is American.",
+          "context": "possessivo + família + nacionalidade"
+        },
+        {
+          "text": "Her brother is twenty.",
+          "context": "terceira pessoa + família + idade"
+        },
+        {
+          "text": "His mother is from Brazil.",
+          "context": "terceira pessoa + família + origem"
+        },
+        {
+          "text": "My sister is fifteen years old.",
+          "context": "idade completa de irmã"
+        }
+      ],
+      "roleplay": {
+        "scenario": "Charlotte abre uma conversa rápida sobre família — você fala da sua mãe, do seu pai, e de um irmão ou irmã.",
+        "voiced_by": "charlotte",
+        "persona": "Charlotte",
+        "persona_outfit": "charlotte_casual",
+        "time_budget_sec": 90,
+        "opening_line": "Quick family chat! Tell me about your mother.",
+        "objectives": [
+          {
+            "id": 1,
+            "label_pt": "Falar sobre sua mãe (idade ou nacionalidade)",
+            "label_en": "Say something about your mother",
+            "hidden_prompt": "user says something about their mother with 'My mother is + age/nationality/adjective' (e.g., 'My mother is fifty', 'My mother is Brazilian')",
+            "hint_pt": "My mother is fifty.",
+            "hint_en": "My mother is fifty."
+          },
+          {
+            "id": 2,
+            "label_pt": "Falar sobre seu pai",
+            "label_en": "Say something about your father",
+            "hidden_prompt": "user says something about their father with 'My father is + age/nationality/adjective'",
+            "hint_pt": "My father is American.",
+            "hint_en": "My father is American."
+          },
+          {
+            "id": 3,
+            "label_pt": "Falar sobre um irmão ou irmã",
+            "label_en": "Say something about a brother or sister",
+            "hidden_prompt": "user mentions a brother or sister with 'My brother/sister is + age/nationality/something'",
+            "hint_pt": "My brother is twenty.",
+            "hint_en": "My brother is twenty."
+          }
+        ],
+        "closing_cue": "Charlotte fecha com \"Nice family! Thanks for sharing.\" quando obj_3 baterem.",
+        "suggested_flow": "**Suggested flow** (referencial, 6 turnos):\n\n1. **Charlotte**: \"Quick family chat! Tell me about your mother.\"\n2. **Student**: ~\"My mother is fifty.\"\n3. **Charlotte**: \"Nice. And your father?\"\n4. **Student**: ~\"My father is American.\"\n5. **Charlotte**: \"Cool. Brothers or sisters?\"\n6. **Student**: ~\"My brother is twenty.\"\n7. **Charlotte**: \"Nice family! Thanks for sharing.\"",
+        "evaluation_focus": [
+          "Aluno usa \"My + family member + is + algo\"",
+          "Possessivo \"my\" sempre antes do substantivo",
+          "Pronúncia clara de \"mother\", \"father\", \"brother\", \"sister\""
+        ]
+      },
+      "guided_chat": {
+        "scenario": "Charlotte abre um chat sobre família — vocês trocam quem é cada um da família próxima.",
+        "voiced_by": "charlotte",
+        "persona": "Charlotte",
+        "persona_outfit": "charlotte_casual",
+        "intro_pt": "Charlotte abre um chat sobre sua família. Pratica falar de mãe, pai, e irmãos usando 'my'.",
+        "opening_message": "Hey! Tell me about your family. Start with your mom.",
+        "objectives": [
+          {
+            "id": 1,
+            "label_pt": "Falar sobre sua mãe (nome ou idade)",
+            "label_en": "Talk about your mother",
+            "hidden_prompt": "user says something about their mother with 'My mother is + name/age/nationality'",
+            "hint_pt": "My mother is Maria.",
+            "hint_en": "My mother is Maria."
+          },
+          {
+            "id": 2,
+            "label_pt": "Falar sobre seu pai",
+            "label_en": "Talk about your father",
+            "hidden_prompt": "user says something about their father with 'My father is + name/age/nationality'",
+            "hint_pt": "My father is fifty-five.",
+            "hint_en": "My father is fifty-five."
+          },
+          {
+            "id": 3,
+            "label_pt": "Falar sobre um irmão ou irmã",
+            "label_en": "Talk about a brother or sister",
+            "hidden_prompt": "user mentions a brother or sister with 'My brother/sister is + name/age'",
+            "hint_pt": "My sister is twenty.",
+            "hint_en": "My sister is twenty."
+          }
+        ],
+        "closing_cue": "Charlotte encerra com \"Cool family! Thanks.\" quando obj_3 baterem.",
+        "suggested_script": "**Script** (referencial, 7 turnos):\n\n1. **Charlotte**: \"Hey! Tell me about your family. Start with your mom.\"\n2. **Student**: \"My mother is Maria.\"\n3. **Charlotte**: \"Nice! And your dad?\"\n4. **Student**: \"My father is fifty-five.\"\n5. **Charlotte**: \"Cool. Any brothers or sisters?\"\n6. **Student**: \"My sister is twenty.\"\n7. **Charlotte**: \"Cool family! Thanks.\"\n\n> N01 chat = LLM puro. Scaffold aparece via hint_pt da objective pendente (1 → 2 → 3).\n\n---"
+      }
+    },
+    {
+      "id": "N02",
+      "title": "Tenho dois irmãos",
+      "sub_cefr": "A1",
+      "grammar_focus": "\"have got\" como chunk + numbers cumulativos (M02)",
+      "markers": [
+        "denso"
+      ],
+      "real_life_context": "Alguém pergunta o tamanho da sua família — você diz quantos irmãos e irmãs tem.",
+      "grammar": [
+        {
+          "type": "multiple_choice",
+          "sentence": "I _____ two brothers.",
+          "options": [
+            "have got",
+            "has got",
+            "am got"
+          ],
+          "answer": "have got",
+          "explanation": "\"I have got\" (ou contraído \"I've got\") é a forma simples pra dizer \"eu tenho\". Com \"I\", \"you\", \"we\", \"they\" usa \"have got\"."
+        },
+        {
+          "type": "multiple_choice",
+          "sentence": "She _____ one sister.",
+          "options": [
+            "has got",
+            "have got",
+            "is got"
+          ],
+          "answer": "has got",
+          "explanation": "\"She has got\" — \"she\" é terceira pessoa singular, usa \"has got\". Forma contraída: \"She's got\"."
+        },
+        {
+          "type": "word_bank",
+          "sentence": "He _____ three friends.",
+          "choices": [
+            "has got",
+            "have got",
+            "has",
+            "had got"
+          ],
+          "answer": "has got",
+          "explanation": "\"He has got\" = \"ele tem\". Forma curta: \"He's got three friends\". Com \"he/she/it\" sempre \"has\"."
+        },
+        {
+          "type": "word_bank",
+          "sentence": "We _____ a big family.",
+          "choices": [
+            "have got",
+            "has got",
+            "are got",
+            "are have"
+          ],
+          "answer": "have got",
+          "explanation": "\"We have got\" = \"nós temos\". Com \"we\" usa \"have\", não \"has\"."
+        },
+        {
+          "type": "fill_gap",
+          "sentence": "I _____ two sisters.",
+          "hint": "Forma de \"have got\" para \"I\"",
+          "answer": "have got",
+          "explanation": "\"I have got\" ou contraído \"I've got\". Pra \"I\" sempre \"have\", nunca \"has\"."
+        },
+        {
+          "type": "fill_gap",
+          "sentence": "She _____ one brother and two sisters.",
+          "hint": "Forma de \"have got\" para \"she\"",
+          "answer": "has got",
+          "explanation": "\"She has got\" — terceira pessoa singular. Contração: \"She's got\"."
+        },
+        {
+          "type": "fill_gap",
+          "sentence": "How many brothers _____ you got?",
+          "hint": "Auxiliar de pergunta com \"have got\"",
+          "answer": "have",
+          "explanation": "Pergunta com \"have got\": \"Have + sujeito + got + complemento?\". \"How many brothers have you got?\" — comum no inglês britânico."
+        },
+        {
+          "type": "fix_error",
+          "sentence": "She have got a sister.",
+          "hint": "\"She\" é terceira pessoa",
+          "answer": "She has got a sister.",
+          "explanation": "Com \"she/he/it\" usa \"has got\", não \"have got\". A frase correta: \"She has got a sister\"."
+        },
+        {
+          "type": "fix_error",
+          "sentence": "I has got a friend.",
+          "hint": "\"I\" não usa \"has\"",
+          "answer": "I have got a friend.",
+          "explanation": "Com \"I\" sempre \"have got\", não \"has got\". A frase correta: \"I have got a friend\" ou contraído \"I've got a friend\"."
+        },
+        {
+          "type": "read_answer",
+          "passage": "I've got a small family. I have got one brother and one sister. My brother is twenty-five. My sister is fifteen.",
+          "question": "How old is the brother? (give a number)",
+          "answer": "25",
+          "explanation": "The text says \"My brother is twenty-five\". 25."
+        }
+      ],
+      "listening_speaking": [
+        {
+          "text": "I've got two brothers.",
+          "context": "contagem própria de família"
+        },
+        {
+          "text": "She has got one sister.",
+          "context": "terceira pessoa, \"has got\""
+        },
+        {
+          "text": "We have got a big family.",
+          "context": "plural"
+        },
+        {
+          "text": "He's got three friends.",
+          "context": "contração \"he's got\""
+        },
+        {
+          "text": "Have you got any sisters?",
+          "context": "pergunta com \"have got\""
+        }
+      ],
+      "roleplay": {
+        "scenario": "Charlotte pergunta o tamanho da sua família — quantos irmãos, irmãs.",
+        "voiced_by": "charlotte",
+        "persona": "Charlotte",
+        "persona_outfit": "charlotte_casual",
+        "time_budget_sec": 90,
+        "opening_line": "Family quick — how many brothers have you got?",
+        "objectives": [
+          {
+            "id": 1,
+            "label_pt": "Dizer quantos irmãos você tem",
+            "label_en": "Say how many brothers you have",
+            "hidden_prompt": "user states number of brothers with 'I've got + number + brothers' or 'I have got + number' or 'I don't have any' or 'none' — zero counts too",
+            "hint_pt": "I've got two brothers.",
+            "hint_en": "I've got two brothers."
+          },
+          {
+            "id": 2,
+            "label_pt": "Dizer quantas irmãs você tem",
+            "label_en": "Say how many sisters you have",
+            "hidden_prompt": "user states number of sisters with 'I've got + number + sisters' or 'I don't have sisters' or 'none'",
+            "hint_pt": "I've got one sister.",
+            "hint_en": "I've got one sister."
+          },
+          {
+            "id": 3,
+            "label_pt": "Perguntar a Charlotte se ela tem irmãos",
+            "label_en": "Ask Charlotte if she has siblings",
+            "hidden_prompt": "user asks Charlotte about siblings with 'Have you got + brothers/sisters', 'how about you', or 'and you'",
+            "hint_pt": "Have you got any?",
+            "hint_en": "Have you got any?"
+          }
+        ],
+        "closing_cue": "Charlotte fecha com \"Nice! Family map done.\" quando obj_3 baterem.",
+        "suggested_flow": "**Suggested flow** (referencial, 6 turnos):\n\n1. **Charlotte**: \"Family quick — how many brothers have you got?\"\n2. **Student**: ~\"I've got two brothers.\"\n3. **Charlotte**: \"Cool. And sisters?\"\n4. **Student**: ~\"I've got one sister.\"\n5. **Charlotte**: \"Got it.\"\n6. **Student**: ~\"Have you got any?\"\n7. **Charlotte**: \"Yes — one sister. Nice! Family map done.\"",
+        "evaluation_focus": [
+          "Aluno usa \"I've got + number + family member\"",
+          "Aluno devolve a pergunta usando \"Have you got\"",
+          "Pronúncia clara de \"I've got\" (contração)"
+        ]
+      },
+      "guided_chat": {
+        "scenario": "Charlotte abre um chat sobre tamanho de família.",
+        "voiced_by": "charlotte",
+        "persona": "Charlotte",
+        "persona_outfit": "charlotte_casual",
+        "intro_pt": "Charlotte quer saber o tamanho da sua família pelo chat. Pratica 'I've got + número + irmãos/irmãs'.",
+        "opening_message": "How big is your family?",
+        "objectives": [
+          {
+            "id": 1,
+            "label_pt": "Descrever o tamanho da sua família",
+            "label_en": "Describe your family size",
+            "hidden_prompt": "user describes family size with 'I've got a big family', 'I've got a small family', or specifies people with 'I have got + number'",
+            "hint_pt": "I've got a small family.",
+            "hint_en": "I've got a small family."
+          },
+          {
+            "id": 2,
+            "label_pt": "Dizer quantos irmãos ou irmãs você tem",
+            "label_en": "Say how many brothers or sisters you have",
+            "hidden_prompt": "user states number of siblings with 'I've got + number + brothers/sisters' or 'I don't have any'",
+            "hint_pt": "I've got two brothers.",
+            "hint_en": "I've got two brothers."
+          },
+          {
+            "id": 3,
+            "label_pt": "Perguntar sobre a família de Charlotte",
+            "label_en": "Ask about Charlotte's family",
+            "hidden_prompt": "user asks Charlotte about her family with 'Have you got + member', 'how about you', or 'and you'",
+            "hint_pt": "How about you?",
+            "hint_en": "How about you?"
+          }
+        ],
+        "closing_cue": "Charlotte encerra com \"Cool! Same here.\" quando obj_3 baterem.",
+        "suggested_script": "**Script** (referencial, 7 turnos):\n\n1. **Charlotte**: \"How big is your family?\"\n2. **Student**: \"I've got a small family.\"\n3. **Charlotte**: \"Nice. How many brothers or sisters?\"\n4. **Student**: \"I've got two brothers.\"\n5. **Charlotte**: \"Got it.\"\n6. **Student**: \"How about you?\"\n7. **Charlotte**: \"I've got one sister. Cool! Same here.\"\n\n> N02 chat = LLM puro. Scaffold aparece via hint_pt da objective pendente.\n\n---"
+      }
+    },
+    {
+      "id": "N03",
+      "title": "Marido, esposa, filhos",
+      "sub_cefr": "A1",
+      "grammar_focus": "Vocab husband/wife/son/daughter + possessives (his/her) + married/single",
+      "markers": [],
+      "real_life_context": "Conversa social — alguém pergunta se você é casado(a) e se tem filhos.",
+      "grammar": [
+        {
+          "type": "multiple_choice",
+          "sentence": "Maria is my _____. We are married.",
+          "options": [
+            "wife",
+            "sister",
+            "mother"
+          ],
+          "answer": "wife",
+          "explanation": "\"Wife\" = esposa. \"Married\" indica casamento, então a parceira é \"wife\". \"Sister\" e \"mother\" são família mas não cônjuge."
+        },
+        {
+          "type": "multiple_choice",
+          "sentence": "_____ husband is John.",
+          "options": [
+            "Her",
+            "She",
+            "His"
+          ],
+          "answer": "Her",
+          "explanation": "\"Her husband\" = \"o marido dela\". \"Her\" é possessivo de \"she\" (ela)."
+        },
+        {
+          "type": "word_bank",
+          "sentence": "I've got two _____.",
+          "choices": [
+            "sons",
+            "son",
+            "suns",
+            "sones"
+          ],
+          "answer": "sons",
+          "explanation": "Plural de \"son\" (filho) = \"sons\". Sufixo -s regular."
+        },
+        {
+          "type": "word_bank",
+          "sentence": "My _____ is fifteen years old. She is in school.",
+          "choices": [
+            "daughter",
+            "son",
+            "wife",
+            "husband"
+          ],
+          "answer": "daughter",
+          "explanation": "\"She is\" indica feminino. \"Daughter\" = filha. \"Son\" = filho (masculino). O contexto \"she\" exige \"daughter\"."
+        },
+        {
+          "type": "fill_gap",
+          "sentence": "He is my _____. We are married.",
+          "hint": "Marido em inglês",
+          "answer": "husband",
+          "explanation": "\"Husband\" = marido. Quando duas pessoas são \"married\", os termos são \"husband\" (homem) e \"wife\" (mulher)."
+        },
+        {
+          "type": "fill_gap",
+          "sentence": "Sarah has got one _____ and two daughters.",
+          "hint": "Filho homem em inglês",
+          "answer": "son",
+          "explanation": "\"Son\" = filho (masculino). Plural: \"sons\". Não confundir com \"daughter\" (filha)."
+        },
+        {
+          "type": "fill_gap",
+          "sentence": "_____ wife is from Italy.",
+          "hint": "Possessivo de \"he\"",
+          "answer": "His",
+          "explanation": "\"His wife\" = \"a esposa dele\". \"His\" é o possessivo de \"he\" (ele)."
+        },
+        {
+          "type": "fix_error",
+          "sentence": "Maria is my wifey.",
+          "hint": "Forma padrão de \"esposa\"",
+          "answer": "Maria is my wife.",
+          "explanation": "\"Wife\" é a forma padrão e neutra. \"Wifey\" é gíria muito informal — não usar em contexto neutro ou formal."
+        },
+        {
+          "type": "fix_error",
+          "sentence": "Her husbands name is John.",
+          "hint": "Falta o apóstrofo possessivo",
+          "answer": "Her husband's name is John.",
+          "explanation": "\"Husband's\" (com apóstrofo + s) indica posse. \"Her husband's name\" = \"o nome do marido dela\". Sem apóstrofo seria plural."
+        },
+        {
+          "type": "read_answer",
+          "passage": "John has got a great family. His wife is Italian. His son is ten. His daughter is fifteen.",
+          "question": "How old is John's daughter? (give a number)",
+          "answer": "15",
+          "explanation": "The text says \"His daughter is fifteen\". 15."
+        }
+      ],
+      "listening_speaking": [
+        {
+          "text": "Maria is my wife.",
+          "context": "apresentando esposa"
+        },
+        {
+          "text": "Her husband is American.",
+          "context": "terceira pessoa + cônjuge + nacionalidade"
+        },
+        {
+          "text": "I've got two sons.",
+          "context": "filhos próprios"
+        },
+        {
+          "text": "His daughter is fifteen.",
+          "context": "terceira pessoa + filha + idade"
+        },
+        {
+          "text": "My family is great.",
+          "context": "fechamento positivo"
+        }
+      ],
+      "roleplay": {
+        "scenario": "Charlotte propõe conversa social sobre família próxima — você responde se é casado(a), se tem filhos, e devolve a pergunta.",
+        "voiced_by": "charlotte",
+        "persona": "Charlotte",
+        "persona_outfit": "charlotte_casual",
+        "time_budget_sec": 90,
+        "opening_line": "Tell me about your family — are you married?",
+        "objectives": [
+          {
+            "id": 1,
+            "label_pt": "Responder se é casado(a) ou solteiro(a)",
+            "label_en": "Answer about marital status",
+            "hidden_prompt": "user responds about marital status with 'Yes, I'm married', 'No, I'm not married', 'I'm single', or similar",
+            "hint_pt": "I'm married.",
+            "hint_en": "I'm married."
+          },
+          {
+            "id": 2,
+            "label_pt": "Dizer se tem filhos (quantos) ou nenhum",
+            "label_en": "Say if you have children",
+            "hidden_prompt": "user states if they have children with 'I've got + number + sons/daughters/children' or 'I don't have children' or 'no kids'",
+            "hint_pt": "I've got two sons.",
+            "hint_en": "I've got two sons."
+          },
+          {
+            "id": 3,
+            "label_pt": "Perguntar a Charlotte sobre a família dela",
+            "label_en": "Ask Charlotte about her family",
+            "hidden_prompt": "user asks Charlotte back with 'Are you married', 'have you got children', 'how about you', or 'and you'",
+            "hint_pt": "How about you?",
+            "hint_en": "How about you?"
+          }
+        ],
+        "closing_cue": "Charlotte fecha com \"Nice family setup!\" quando obj_3 baterem.",
+        "suggested_flow": "**Suggested flow** (referencial, 6 turnos):\n\n1. **Charlotte**: \"Tell me about your family — are you married?\"\n2. **Student**: ~\"Yes, I'm married.\"\n3. **Charlotte**: \"Nice. Any kids?\"\n4. **Student**: ~\"I've got two sons.\"\n5. **Charlotte**: \"Sweet.\"\n6. **Student**: ~\"How about you?\"\n7. **Charlotte**: \"I'm single, no kids. Nice family setup!\"",
+        "evaluation_focus": [
+          "Aluno responde estado civil com \"I'm + married/single\"",
+          "Aluno usa \"I've got\" pra filhos",
+          "Reciprocidade — devolve a pergunta"
+        ]
+      },
+      "guided_chat": {
+        "scenario": "Charlotte conversa por chat sobre família próxima — estado civil e filhos.",
+        "voiced_by": "charlotte",
+        "persona": "Charlotte",
+        "persona_outfit": "charlotte_casual",
+        "intro_pt": "Charlotte abre um chat curto sobre estado civil e filhos. Pratica responder e devolver a pergunta.",
+        "opening_message": "Hey! Married? Kids?",
+        "objectives": [
+          {
+            "id": 1,
+            "label_pt": "Responder sobre estado civil",
+            "label_en": "Answer about marital status",
+            "hidden_prompt": "user responds about marital status with 'I'm married', 'I'm single', or similar",
+            "hint_pt": "I'm married.",
+            "hint_en": "I'm married."
+          },
+          {
+            "id": 2,
+            "label_pt": "Falar sobre filhos (ou que não tem)",
+            "label_en": "Talk about kids (or that you have none)",
+            "hidden_prompt": "user mentions children with 'I've got + sons/daughters' or 'I don't have children' or 'no kids'",
+            "hint_pt": "I've got one daughter.",
+            "hint_en": "I've got one daughter."
+          },
+          {
+            "id": 3,
+            "label_pt": "Devolver a pergunta",
+            "label_en": "Ask Charlotte back",
+            "hidden_prompt": "user asks Charlotte back with 'how about you', 'and you', or 'are you married'",
+            "hint_pt": "How about you?",
+            "hint_en": "How about you?"
+          }
+        ],
+        "closing_cue": "Charlotte encerra com \"Cool! Nice catching up.\" quando obj_3 baterem.",
+        "suggested_script": "**Script** (referencial, 7 turnos):\n\n1. **Charlotte**: \"Hey! Married? Kids?\"\n2. **Student**: \"I'm married.\"\n3. **Charlotte**: \"Nice. Any kids?\"\n4. **Student**: \"I've got one daughter.\"\n5. **Charlotte**: \"Sweet.\"\n6. **Student**: \"How about you?\"\n7. **Charlotte**: \"Single, no kids. Cool! Nice catching up.\"\n\n> N03 chat = LLM puro. Scaffold aparece via hint_pt da objective pendente.\n\n---"
+      }
+    },
+    {
+      "id": "N04",
+      "title": "Meu melhor amigo",
+      "sub_cefr": "A1",
+      "grammar_focus": "friend chunks + possessives (his/her name is) + describing friends with cumulative vocab",
+      "markers": [],
+      "real_life_context": "Você descreve seu melhor amigo(a) — nome, idade, origem ou nacionalidade.",
+      "grammar": [
+        {
+          "type": "multiple_choice",
+          "sentence": "_____ is my best friend.",
+          "options": [
+            "He",
+            "Him",
+            "His"
+          ],
+          "answer": "He",
+          "explanation": "\"He\" é o sujeito (ele). \"He is my best friend\" = \"Ele é o meu melhor amigo\". \"Him\" é objeto, \"His\" é possessivo."
+        },
+        {
+          "type": "multiple_choice",
+          "sentence": "_____ name is Pedro.",
+          "options": [
+            "His",
+            "He",
+            "Him"
+          ],
+          "answer": "His",
+          "explanation": "\"His name\" = \"o nome dele\". \"His\" é o possessivo de \"he\", sempre antes do substantivo."
+        },
+        {
+          "type": "word_bank",
+          "sentence": "She is my best _____.",
+          "choices": [
+            "friend",
+            "friends",
+            "friended",
+            "amig"
+          ],
+          "answer": "friend",
+          "explanation": "\"Friend\" = amigo/amiga (a mesma palavra serve para ambos). \"Best friend\" = \"melhor amigo/amiga\"."
+        },
+        {
+          "type": "word_bank",
+          "sentence": "_____ friend is from Argentina.",
+          "choices": [
+            "My",
+            "I",
+            "Me",
+            "Mine"
+          ],
+          "answer": "My",
+          "explanation": "\"My friend\" = \"meu/minha amigo(a)\". \"My\" é o possessivo, sempre antes do substantivo."
+        },
+        {
+          "type": "fill_gap",
+          "sentence": "_____ name is Ana.",
+          "hint": "Possessivo de \"she\"",
+          "answer": "Her",
+          "explanation": "\"Her name\" = \"o nome dela\". \"Her\" é o possessivo de \"she\" (ela)."
+        },
+        {
+          "type": "fill_gap",
+          "sentence": "My friend is Brazilian. _____ name is Lucas.",
+          "hint": "Possessivo de \"he\" (Lucas é homem)",
+          "answer": "His",
+          "explanation": "\"His name\" = \"o nome dele\". Lucas é \"he\", então o possessivo é \"his\"."
+        },
+        {
+          "type": "fill_gap",
+          "sentence": "Ana is _____ best friend. We are twenty-five.",
+          "hint": "Possessivo de \"I\"",
+          "answer": "my",
+          "explanation": "\"My best friend\" = \"a minha melhor amiga\". \"My\" é o possessivo de \"I\"."
+        },
+        {
+          "type": "fix_error",
+          "sentence": "Him is my friend.",
+          "hint": "Sujeito vs objeto",
+          "answer": "He is my friend.",
+          "explanation": "\"Him\" é pronome objeto (a ele). \"He\" é o sujeito (ele). Pra dizer \"ele é meu amigo\", usa \"he is\"."
+        },
+        {
+          "type": "fix_error",
+          "sentence": "She friend is Maria.",
+          "hint": "Falta o possessivo",
+          "answer": "Her friend is Maria.",
+          "explanation": "\"She friend\" não existe em inglês — antes do substantivo precisa do possessivo. \"Her friend\" = \"a amiga dela\"."
+        },
+        {
+          "type": "read_answer",
+          "passage": "I've got a best friend. Her name is Sofia. She is Italian. She is twenty-three years old.",
+          "question": "What is Sofia's nationality?",
+          "answer": "Italian",
+          "explanation": "The text says \"She is Italian\" — Sofia's nationality is Italian."
+        }
+      ],
+      "listening_speaking": [
+        {
+          "text": "He is my best friend.",
+          "context": "apresentando melhor amigo"
+        },
+        {
+          "text": "His name is Pedro.",
+          "context": "nome do amigo (terceira pessoa)"
+        },
+        {
+          "text": "She is twenty-five.",
+          "context": "idade da amiga"
+        },
+        {
+          "text": "Her name is Sofia.",
+          "context": "nome dela (terceira pessoa feminina)"
+        },
+        {
+          "text": "My best friend is Italian.",
+          "context": "amigo + nacionalidade"
+        }
+      ],
+      "roleplay": {
+        "scenario": "Charlotte quer saber sobre seu melhor amigo(a) — nome, idade, e nacionalidade ou origem.",
+        "voiced_by": "charlotte",
+        "persona": "Charlotte",
+        "persona_outfit": "charlotte_casual",
+        "time_budget_sec": 90,
+        "opening_line": "Who's your best friend? Tell me about them.",
+        "objectives": [
+          {
+            "id": 1,
+            "label_pt": "Dizer o nome do seu melhor amigo(a)",
+            "label_en": "Say your best friend's name",
+            "hidden_prompt": "user states best friend's name with 'My best friend is + name', 'His/Her name is + name', or 'It's + name'",
+            "hint_pt": "My best friend is Ana.",
+            "hint_en": "My best friend is Ana."
+          },
+          {
+            "id": 2,
+            "label_pt": "Dizer a idade do amigo(a)",
+            "label_en": "Say your friend's age",
+            "hidden_prompt": "user states friend's age with 'He/She is + number + years old' or just 'He/She is + number'",
+            "hint_pt": "She is twenty-five.",
+            "hint_en": "She is twenty-five."
+          },
+          {
+            "id": 3,
+            "label_pt": "Dizer a nacionalidade ou origem do amigo(a)",
+            "label_en": "Say your friend's nationality or origin",
+            "hidden_prompt": "user states friend's nationality or origin with 'He/She is + nationality' or 'He/She is from + country'",
+            "hint_pt": "She is Brazilian.",
+            "hint_en": "She is Brazilian."
+          }
+        ],
+        "closing_cue": "Charlotte fecha com \"Sounds like a great friend!\" quando obj_3 baterem.",
+        "suggested_flow": "**Suggested flow** (referencial, 6 turnos):\n\n1. **Charlotte**: \"Who's your best friend? Tell me about them.\"\n2. **Student**: ~\"My best friend is Ana.\"\n3. **Charlotte**: \"Cool. How old is she?\"\n4. **Student**: ~\"She is twenty-five.\"\n5. **Charlotte**: \"Nice. Where is she from?\"\n6. **Student**: ~\"She is Brazilian.\"\n7. **Charlotte**: \"Sounds like a great friend!\"",
+        "evaluation_focus": [
+          "Aluno apresenta o amigo com \"My best friend is + nome\"",
+          "Aluno usa \"He/She is + idade\" pra idade",
+          "Aluno usa \"He/She is + nacionalidade\" ou \"from + país\" pra origem"
+        ]
+      },
+      "guided_chat": {
+        "scenario": "Charlotte conversa sobre amigos próximos por chat.",
+        "voiced_by": "charlotte",
+        "persona": "Charlotte",
+        "persona_outfit": "charlotte_casual",
+        "intro_pt": "Charlotte abre um chat sobre seu(sua) melhor amigo(a). Apresenta com nome, idade ou origem, e pergunta sobre o(a) melhor amigo(a) dela.",
+        "opening_message": "Who's your closest friend?",
+        "objectives": [
+          {
+            "id": 1,
+            "label_pt": "Apresentar seu amigo(a) com o nome",
+            "label_en": "Introduce your friend with their name",
+            "hidden_prompt": "user introduces friend with 'My friend is + name' or 'His/Her name is + name'",
+            "hint_pt": "Her name is Sofia.",
+            "hint_en": "Her name is Sofia."
+          },
+          {
+            "id": 2,
+            "label_pt": "Dizer idade ou origem do amigo(a)",
+            "label_en": "Share friend's age or origin",
+            "hidden_prompt": "user shares friend's age OR origin with 'She/He is + age/from country/nationality'",
+            "hint_pt": "She is from Italy.",
+            "hint_en": "She is from Italy."
+          },
+          {
+            "id": 3,
+            "label_pt": "Perguntar a Charlotte sobre o(a) melhor amigo(a) dela",
+            "label_en": "Ask Charlotte about her best friend",
+            "hidden_prompt": "user asks Charlotte about her best friend with 'who's your best friend', 'and yours', or 'how about you'",
+            "hint_pt": "How about you?",
+            "hint_en": "How about you?"
+          }
+        ],
+        "closing_cue": "Charlotte encerra com \"Nice! Friends are everything.\" quando obj_3 baterem.",
+        "suggested_script": "**Script** (referencial, 7 turnos):\n\n1. **Charlotte**: \"Who's your closest friend?\"\n2. **Student**: \"Her name is Sofia.\"\n3. **Charlotte**: \"Nice! Tell me more about her.\"\n4. **Student**: \"She is from Italy.\"\n5. **Charlotte**: \"Cool.\"\n6. **Student**: \"How about you?\"\n7. **Charlotte**: \"My best friend is from Mexico. Nice! Friends are everything.\"\n\n> N04 chat = LLM puro. Scaffold aparece via hint_pt da objective pendente.\n\n---"
+      }
+    },
+    {
+      "id": "N05",
+      "title": "Apresentando minha família",
+      "sub_cefr": "A1",
+      "grammar_focus": "Integration — possessives + family + cumulative (name/age/nationality from M01-M02)",
+      "markers": [],
+      "real_life_context": "Você apresenta sua família para alguém pela primeira vez — mãe, pai, irmãos, descrevendo cada um.",
+      "grammar": [
+        {
+          "type": "multiple_choice",
+          "sentence": "I'd like to introduce my family. _____ is Felipe.",
+          "options": [
+            "My name",
+            "My",
+            "I"
+          ],
+          "answer": "My name",
+          "explanation": "\"My name is Felipe\" é a apresentação padrão. Pra começar uma apresentação familiar, começa pelo seu próprio nome."
+        },
+        {
+          "type": "multiple_choice",
+          "sentence": "She is twenty-five. _____ name is Ana.",
+          "options": [
+            "Her",
+            "She",
+            "Hers"
+          ],
+          "answer": "Her",
+          "explanation": "\"Her\" é o possessivo. Pra dizer \"o nome dela\", usa \"her name\"."
+        },
+        {
+          "type": "word_bank",
+          "sentence": "My mother is fifty. _____ name is Maria.",
+          "choices": [
+            "Her",
+            "His",
+            "My",
+            "Their"
+          ],
+          "answer": "Her",
+          "explanation": "\"Mother\" é feminino, então o possessivo é \"her\". \"Her name is Maria\" = \"O nome dela é Maria\"."
+        },
+        {
+          "type": "word_bank",
+          "sentence": "I've got a big family. _____ are five people total.",
+          "choices": [
+            "We",
+            "Us",
+            "Our",
+            "They"
+          ],
+          "answer": "We",
+          "explanation": "\"We are\" = \"nós somos\". \"We\" é o sujeito pra grupo incluindo você mesmo."
+        },
+        {
+          "type": "fill_gap",
+          "sentence": "My brother is twenty. _____ is from Brazil.",
+          "hint": "Pronome para \"brother\" (terceira pessoa masculina)",
+          "answer": "He",
+          "explanation": "\"Brother\" é \"he\" (ele). Pronome sujeito masculino singular."
+        },
+        {
+          "type": "fill_gap",
+          "sentence": "_____ family is great.",
+          "hint": "Possessivo de \"I\"",
+          "answer": "My",
+          "explanation": "\"My family\" = \"a minha família\". \"My\" antes do substantivo."
+        },
+        {
+          "type": "fill_gap",
+          "sentence": "She is my sister. _____ is fifteen years old.",
+          "hint": "Pronome para \"sister\"",
+          "answer": "She",
+          "explanation": "\"Sister\" é \"she\" (ela). Sujeito feminino singular."
+        },
+        {
+          "type": "fix_error",
+          "sentence": "His are my friend.",
+          "hint": "Possessivo vs sujeito",
+          "answer": "He is my friend.",
+          "explanation": "\"His\" é possessivo (dele). \"He\" é sujeito (ele). Pra apresentar \"ele é meu amigo\", usa \"He is + relação\"."
+        },
+        {
+          "type": "fix_error",
+          "sentence": "My family are great.",
+          "hint": "\"Family\" como singular em inglês americano",
+          "answer": "My family is great.",
+          "explanation": "\"Family\" é tratada como singular em inglês americano. \"My family is great\" — não \"are great\" (forma mais britânica e menos comum)."
+        },
+        {
+          "type": "read_answer",
+          "passage": "Meet my family. My mother is fifty. My father is fifty-five. My brother is twenty. He is Brazilian like me.",
+          "question": "What is the brother's nationality?",
+          "answer": "Brazilian",
+          "explanation": "The text says \"He is Brazilian like me\" — the brother's nationality is Brazilian."
+        }
+      ],
+      "listening_speaking": [
+        {
+          "text": "My name is Felipe.",
+          "context": "auto-apresentação (chunk M01)"
+        },
+        {
+          "text": "My mother is Maria. She is fifty.",
+          "context": "apresenta mãe + idade"
+        },
+        {
+          "text": "My father is from Brazil. He is Brazilian.",
+          "context": "apresenta pai + origem + nacionalidade"
+        },
+        {
+          "text": "My sister is fifteen years old.",
+          "context": "idade da irmã"
+        },
+        {
+          "text": "We are a great family.",
+          "context": "fechamento positivo"
+        }
+      ],
+      "roleplay": {
+        "scenario": "Charlotte simula um amigo conhecendo sua família — você apresenta mãe, pai e mais uma pessoa.",
+        "voiced_by": "charlotte",
+        "persona": "Charlotte",
+        "persona_outfit": "charlotte_casual",
+        "time_budget_sec": 90,
+        "opening_line": "Tell me about your family — start with your mom.",
+        "objectives": [
+          {
+            "id": 1,
+            "label_pt": "Apresentar sua mãe (nome ou idade)",
+            "label_en": "Introduce your mother",
+            "hidden_prompt": "user introduces mother with 'My mother is + name/age/nationality' or 'Her name is + name'",
+            "hint_pt": "My mother is fifty.",
+            "hint_en": "My mother is fifty."
+          },
+          {
+            "id": 2,
+            "label_pt": "Apresentar seu pai",
+            "label_en": "Introduce your father",
+            "hidden_prompt": "user introduces father with 'My father is + name/age/nationality'",
+            "hint_pt": "My father is American.",
+            "hint_en": "My father is American."
+          },
+          {
+            "id": 3,
+            "label_pt": "Apresentar mais uma pessoa da família (irmão, irmã, filho ou amigo)",
+            "label_en": "Introduce one more family member or friend",
+            "hidden_prompt": "user introduces another close person with 'My + brother/sister/son/daughter/friend + is + something'",
+            "hint_pt": "My brother is twenty.",
+            "hint_en": "My brother is twenty."
+          }
+        ],
+        "closing_cue": "Charlotte fecha com \"What a lovely family!\" quando obj_3 baterem.",
+        "suggested_flow": "**Suggested flow** (referencial, 6 turnos):\n\n1. **Charlotte**: \"Tell me about your family — start with your mom.\"\n2. **Student**: ~\"My mother is fifty.\"\n3. **Charlotte**: \"Nice. And your dad?\"\n4. **Student**: ~\"My father is American.\"\n5. **Charlotte**: \"Cool. Anyone else?\"\n6. **Student**: ~\"My brother is twenty.\"\n7. **Charlotte**: \"What a lovely family!\"",
+        "evaluation_focus": [
+          "Aluno usa \"My + family member + is + algo\" em todas as três falas",
+          "Possessivos corretos (my)",
+          "Variação de complementos (idade, nacionalidade, origem)"
+        ]
+      },
+      "guided_chat": {
+        "scenario": "Charlotte abre um chat de apresentação familiar — você descreve dois ou três membros.",
+        "voiced_by": "charlotte",
+        "persona": "Charlotte",
+        "persona_outfit": "charlotte_casual",
+        "intro_pt": "Charlotte abre um chat de apresentação familiar. Pratica falar de mãe, pai e mais alguém usando 'My + pessoa + is + algo'.",
+        "opening_message": "Tell me about your family — start with mom.",
+        "objectives": [
+          {
+            "id": 1,
+            "label_pt": "Apresentar sua mãe (nome ou idade)",
+            "label_en": "Introduce your mother",
+            "hidden_prompt": "user introduces mother with 'My mother is + name/age/nationality'",
+            "hint_pt": "My mother is Maria.",
+            "hint_en": "My mother is Maria."
+          },
+          {
+            "id": 2,
+            "label_pt": "Apresentar seu pai",
+            "label_en": "Introduce your father",
+            "hidden_prompt": "user introduces father with 'My father is + name/age/nationality'",
+            "hint_pt": "My father is fifty-five.",
+            "hint_en": "My father is fifty-five."
+          },
+          {
+            "id": 3,
+            "label_pt": "Apresentar um irmão, irmã ou amigo",
+            "label_en": "Introduce a brother, sister, or friend",
+            "hidden_prompt": "user introduces another close person with 'My + brother/sister/friend + is + something'",
+            "hint_pt": "My sister is fifteen.",
+            "hint_en": "My sister is fifteen."
+          }
+        ],
+        "closing_cue": "Charlotte encerra com \"Such a great family. Thanks for sharing.\" quando obj_3 baterem.",
+        "suggested_script": "**Script** (referencial, 7 turnos):\n\n1. **Charlotte**: \"Tell me about your family — start with mom.\"\n2. **Student**: \"My mother is Maria.\"\n3. **Charlotte**: \"Nice! And your dad?\"\n4. **Student**: \"My father is fifty-five.\"\n5. **Charlotte**: \"Cool. Anyone else?\"\n6. **Student**: \"My sister is fifteen.\"\n7. **Charlotte**: \"Such a great family. Thanks for sharing.\"\n\n> N05 chat = LLM puro. Scaffold aparece via hint_pt da objective pendente.\n\n---"
+      }
+    }
+  ],
+  "cross_unit_consolidation": [
+    "Vocabulário de família próxima: mother, father, brother, sister, son, daughter, husband, wife, friend, best friend",
+    "Possessivos: my / your / his / her — sempre antes do substantivo",
+    "\"I've got\" / \"I have got\" como chunk simples pra falar de família (\"I've got two brothers\")",
+    "Estado civil: \"I'm married\" / \"I'm single\"",
+    "Estrutura \"His/Her name is + nome\" pra terceira pessoa",
+    "Apresentação familiar combinando vocabulário M01-M03 (nome, idade, origem, nacionalidade, família)"
+  ]
+}

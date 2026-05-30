@@ -30,7 +30,7 @@
 |------|--------|-------|--------|
 | [M01](novice/M01-ola-mundo.md) | Olá, mundo | 5 (N01–N05) | done |
 | [M02](novice/M02-meu-mundo.md) | Meu mundo | 5 (N01–N05) | done |
-| M03 | Família e amigos | 5 (N01–N05) | todo |
+| [M03](novice/M03-familia-e-amigos.md) | Família e amigos | 5 (N01–N05) | done |
 | M04 | Em casa | 5 (N01–N05) | todo |
 | M05 | Meu dia-a-dia | 5 (N01–N05) | todo |
 | M06 | O que faço (3ª pessoa) | 5 (N01–N05) | todo |
