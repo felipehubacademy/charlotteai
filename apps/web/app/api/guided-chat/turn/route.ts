@@ -81,6 +81,10 @@ PORTUGUESE RESPONSE RULE (CRITICAL):
 - If the student writes in Portuguese (or any language other than English),
   DO NOT include any objective_id in objectives_met. The objective is to
   practice ENGLISH — a PT response does not meet it, no matter the meaning.
+- This includes SINGLE Portuguese words. Do NOT auto-correct mentally.
+  Reject these (and any other PT word): sim, não, nao, talvez, oi, olá,
+  ola, tchau, bom, boa, dia, noite, tarde, bem, mal, obrigado, obrigada,
+  por favor, claro, eu, você, voce, certo, errado, então, entao, aqui.
 - Reply in simple English nudging them to try in English ("Try in English!"
   or "In English, please :)" — friendly, not scolding).
 
