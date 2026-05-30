@@ -10,9 +10,10 @@ import { BookOpen } from 'phosphor-react-native';
 import { AppText } from '@/components/ui/Text';
 import { CURRICULUM, TrailLevel } from '@/data/curriculum';
 import { useLearnProgress } from '@/hooks/useLearnProgress';
+import { useLearnProgressV2 } from '@/hooks/useLearnProgressV2';
 import { LevelDropdown } from './LevelDropdown';
 import type { Level } from '@/lib/curriculum-v2/types';
-import { listModuleSummaries } from '@/lib/curriculum-v2/loader';
+import { listModules, listModuleSummaries } from '@/lib/curriculum-v2/loader';
 
 function a(hex: string, alpha: number): string {
   const r = parseInt(hex.slice(1, 3), 16);
@@ -35,9 +36,9 @@ const shadow = Platform.select({
 });
 
 const LEVEL_LABELS: Record<TrailLevel, string> = {
-  Novice:   'Novice — A1/A2',
-  Inter:    'Intermediate — B1/B2',
-  Advanced: 'Advanced — C1/C2',
+  Novice:   'Novice',
+  Inter:    'Intermediate',
+  Advanced: 'Advanced',
 };
 
 const LEVEL_COLOR: Record<TrailLevel, string> = {
@@ -67,20 +68,39 @@ export function TrailBanner({ userId, level, flush = false, currentLevel, onLeve
   const v2Summaries  = useV2 ? listModuleSummaries(level as Level) : [];
   const modules      = useV2 ? v2Summaries : CURRICULUM[level];
 
-  const { progress, refetch } = useLearnProgress(userId, level);
+  const { progress, refetch }   = useLearnProgress(userId, level);
+  const v2Progress              = useLearnProgressV2(userId, level as Level);
 
-  useFocusEffect(useCallback(() => { refetch(); }, [refetch]));
+  useFocusEffect(useCallback(() => {
+    refetch();
+    if (useV2) v2Progress.refetch();
+  }, [refetch, useV2, v2Progress.refetch])); // eslint-disable-line react-hooks/exhaustive-deps
 
-  // Count modules completed (all topics done) — banner serves as level summary
+  // ── Contagem ──
+  // v1: por módulos completos (legado).
+  // v2: por atividades completas (cada activity done move a barra — sensação
+  //     de progresso a cada topico). 4 atividades por unit × 5 units × 22 mods
+  //     = 440 atividades por nivel.
   const completedSet = progress?.completed ?? [];
+  const v2TotalActivities = useV2
+    ? listModules(level as Level).reduce((sum, m) => sum + m.units.length * 4, 0)
+    : 0;
+  const v2CompletedActivities = useV2
+    ? v2Progress.rows.filter(r => r.completed).length
+    : 0;
+
   const completed = useV2
-    ? 0  // v2 progress vive em learn_history_v2; calc fica pro hook v2 quando precisar exibir aqui
+    ? v2CompletedActivities
     : modules.reduce((n, mod: any, mIdx) => {
         const allDone = mod.topics?.every((_: any, tIdx: number) =>
           completedSet.some(k => k.m === mIdx && k.t === tIdx));
         return allDone ? n + 1 : n;
       }, 0);
-  const total     = modules.length;
+  const total           = useV2 ? v2TotalActivities : modules.length;
+  const moduleCount     = modules.length;
+  const itemLabel       = useV2
+    ? (isPortuguese ? 'tópicos' : 'topics')
+    : (isPortuguese ? 'módulos' : 'modules');
   const pct       = total > 0 ? Math.min(100, Math.round((completed / total) * 100)) : 0;
 
   const wrapperStyle = flush
@@ -111,7 +131,7 @@ export function TrailBanner({ userId, level, flush = false, currentLevel, onLeve
             {LEVEL_LABELS[level]}
           </AppText>
           <AppText style={{ fontSize: 12, color: C.navyLight, fontWeight: '500' }}>
-            {total} {isPortuguese ? 'módulos' : 'modules'}
+            {moduleCount} {isPortuguese ? 'módulos' : 'modules'}
           </AppText>
         </View>
         {onLevelChange ? (
@@ -135,7 +155,7 @@ export function TrailBanner({ userId, level, flush = false, currentLevel, onLeve
         )}
       </View>
       <AppText style={{ fontSize: 11, color: C.navyLight, fontWeight: '600', marginTop: 6 }}>
-        {completed} {isPortuguese ? 'de' : 'of'} {total} {isPortuguese ? 'módulos concluídos' : 'modules completed'}
+        {completed} {isPortuguese ? 'de' : 'of'} {total} {itemLabel} {isPortuguese ? 'concluídos' : 'completed'}
       </AppText>
     </View>
   );

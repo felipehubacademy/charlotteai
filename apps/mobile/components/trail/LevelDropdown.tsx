@@ -132,86 +132,90 @@ export function LevelDropdown({ selectedLevel, currentLevel, onSelect }: Props) 
                     zIndex:   2,
                   }}
                 />
+                {/* Container posicionado: menu + toast como flex column.
+                    Toast aparece imediatamente abaixo do menu, sem calc manual. */}
                 <View
-                  style={[{
-                    position:        'absolute',
-                    top:             anchor.y + anchor.h + 8,
-                    left:            menuLeft,
-                    width:           MENU_W,
-                    backgroundColor: C.card,
-                    borderRadius:    16,
-                    paddingVertical: 6,
-                    borderWidth:     1,
-                    borderColor:     C.border,
-                  }, shadow as any]}>
-                  {LEVELS.map((lvl, i) => {
-                    const isLocked = LEVEL_ORDER[lvl] > LEVEL_ORDER[currentLevel];
-                    const isActive = lvl === selectedLevel;
-                    const color    = LEVEL_COLOR[lvl];
-                    return (
-                      <React.Fragment key={lvl}>
-                        {i > 0 && <View style={{ height: 1, backgroundColor: C.divider, marginHorizontal: 14 }} />}
-                        <Pressable
-                          onPress={() => pick(lvl)}
-                          style={({ pressed }) => ({
-                            flexDirection:    'row',
-                            alignItems:       'center',
-                            justifyContent:   'space-between',
-                            paddingHorizontal:16,
-                            paddingVertical:  14,
-                            backgroundColor:  pressed && !isLocked ? `${color}12` : 'transparent',
-                            opacity:          isLocked ? 0.75 : 1,
-                          })}>
-                          <View style={{ flexDirection: 'row', alignItems: 'center', gap: 10 }}>
+                  style={{
+                    position: 'absolute',
+                    top:      anchor.y + anchor.h + 8,
+                    left:     menuLeft,
+                    width:    MENU_W,
+                    gap:      8,
+                  }}>
+                  <View
+                    style={[{
+                      backgroundColor: C.card,
+                      borderRadius:    16,
+                      paddingVertical: 4,
+                      borderWidth:     1,
+                      borderColor:     C.border,
+                    }, shadow as any]}>
+                    {LEVELS.map((lvl, i) => {
+                      const isLocked = LEVEL_ORDER[lvl] > LEVEL_ORDER[currentLevel];
+                      const isActive = lvl === selectedLevel;
+                      const color    = LEVEL_COLOR[lvl];
+                      return (
+                        <React.Fragment key={lvl}>
+                          {i > 0 && <View style={{ height: 1, backgroundColor: C.divider, marginHorizontal: 14 }} />}
+                          <Pressable
+                            onPress={() => pick(lvl)}
+                            style={({ pressed }) => ({
+                              flexDirection:    'row',
+                              alignItems:       'center',
+                              paddingHorizontal:16,
+                              paddingVertical:  13,
+                              backgroundColor:  pressed && !isLocked ? `${color}12` : 'transparent',
+                              opacity:          isLocked ? 0.7 : 1,
+                            })}>
                             {isActive && (
                               <View style={{
                                 width: 8, height: 8, borderRadius: 4,
                                 backgroundColor: color,
+                                marginRight: 10,
                               }} />
                             )}
-                            <AppText style={{
-                              fontSize:   15,
-                              fontWeight: isActive ? '900' : '700',
-                              color:      isLocked ? C.navyDim : color,
-                            }}>
+                            <AppText
+                              numberOfLines={1}
+                              style={{
+                                flex:       1,
+                                fontSize:   15,
+                                fontWeight: isActive ? '900' : '700',
+                                color:      isLocked ? C.navyDim : color,
+                              }}>
                               {LEVEL_SHORT[lvl]}
                             </AppText>
-                          </View>
-                          {isLocked && (
-                            <View style={{
-                              width: 24, height: 24, borderRadius: 12,
-                              backgroundColor: C.lockBg,
-                              alignItems: 'center', justifyContent: 'center',
-                            }}>
-                              <Lock size={12} color={C.navyDim} weight="fill" />
-                            </View>
-                          )}
-                        </Pressable>
-                      </React.Fragment>
-                    );
-                  })}
-                </View>
+                            {isLocked && (
+                              <View style={{
+                                width: 22, height: 22, borderRadius: 11,
+                                backgroundColor: C.lockBg,
+                                alignItems: 'center', justifyContent: 'center',
+                              }}>
+                                <Lock size={11} color={C.navyDim} weight="fill" />
+                              </View>
+                            )}
+                          </Pressable>
+                        </React.Fragment>
+                      );
+                    })}
+                  </View>
 
-                {lockedToast && (
-                  <Animated.View
-                    pointerEvents="none"
-                    style={{
-                      position: 'absolute',
-                      top:      anchor.y + anchor.h + 8 + 3 * 52 + 18,
-                      left:     menuLeft,
-                      width:    MENU_W,
-                      opacity:  toastAnim,
-                      transform: [{ translateY: toastAnim.interpolate({ inputRange: [0, 1], outputRange: [-6, 0] }) }],
-                      paddingHorizontal: 14,
-                      paddingVertical:   12,
-                      backgroundColor:   C.navy,
-                      borderRadius:      12,
-                    }}>
-                    <AppText style={{ fontSize: 13, color: '#fff', fontWeight: '600', textAlign: 'center' }}>
-                      Complete o nível atual pra desbloquear
-                    </AppText>
-                  </Animated.View>
-                )}
+                  {lockedToast && (
+                    <Animated.View
+                      pointerEvents="none"
+                      style={{
+                        opacity:  toastAnim,
+                        transform: [{ translateY: toastAnim.interpolate({ inputRange: [0, 1], outputRange: [-4, 0] }) }],
+                        paddingHorizontal: 14,
+                        paddingVertical:   11,
+                        backgroundColor:   C.navy,
+                        borderRadius:      12,
+                      }}>
+                      <AppText style={{ fontSize: 13, color: '#fff', fontWeight: '600', textAlign: 'center' }}>
+                        Complete o nível atual pra desbloquear
+                      </AppText>
+                    </Animated.View>
+                  )}
+                </View>
               </>
             );
           })()}
