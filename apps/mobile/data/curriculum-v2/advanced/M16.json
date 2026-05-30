@@ -1,0 +1,748 @@
+{
+  "id": "M16",
+  "title": "Formação de palavras",
+  "level": "Advanced",
+  "block": "C2",
+  "units_range": "A01–A05",
+  "theme": "Prefixes (un-, dis-, mis-, pre-, over-, under-, re-), suffixes (-tion, -ment, -ness, -ity, -able, -ise), compounds (closed/hyphenated/open), conversion (noun ↔ verb), nuanced word families",
+  "goal": "Student decodes and produces new words systematically — using prefixes and suffixes deliberately, recognising compounds, and converting parts of speech with awareness.",
+  "connects_to": "M17 (Elipse e substituição) — moves from word-level to clause-level economy.",
+  "module_chunks": [
+    "un- / dis- / in- / im- / il- / ir- (negation prefixes)",
+    "mis- (wrongly)",
+    "pre- / post- (time relation)",
+    "over- / under- (degree)",
+    "re- (again, back)",
+    "sub- / super- / hyper- / hypo- (position/intensity)",
+    "anti- / counter- / non- (opposition)",
+    "-tion / -ment / -ness / -ity / -ism (abstract nouns)",
+    "-ship / -hood (states/conditions)",
+    "-able / -ible (capability)",
+    "-ful / -less (presence/absence)",
+    "-ise / -ize / -ify / -en (verb formation)",
+    "-ly / -wise / -ward (adverb formation)",
+    "closed compounds (lighthouse, smartphone)",
+    "hyphenated compounds (well-known, state-of-the-art)",
+    "open compounds (high school, ice cream)",
+    "conversion (email v., google v., friend v., gift v.)"
+  ],
+  "units": [
+    {
+      "id": "A01",
+      "title": "Negation prefixes",
+      "sub_cefr": "C2",
+      "grammar_focus": "Negation prefixes (un-, dis-, in-, im-, il-, ir-, non-) and which root each takes",
+      "markers": [
+        "denso",
+        "morphology"
+      ],
+      "real_life_context": "You form negatives reliably — knowing which prefix attaches to which root and avoiding non-words.",
+      "grammar": [
+        {
+          "type": "multiple_choice",
+          "options": [
+            "irresponsible",
+            "unresponsible",
+            "disresponsible",
+            "inresponsible"
+          ],
+          "answer": "irresponsible",
+          "explanation": "\"Irresponsible\" — \"ir-\" prefix attaches to roots beginning with \"r\" (irregular, irrelevant, irreversible). The \"in-\" prefix has phonological allomorphs: il- before \"l\" (illegal), im- before \"p\"/\"m\"/\"b\" (impossible, immortal, imbalance), ir- before \"r\" (irregular), in- elsewhere (incorrect)."
+        },
+        {
+          "type": "multiple_choice",
+          "options": [
+            "disagree",
+            "unagree",
+            "inagree",
+            "nonagree"
+          ],
+          "answer": "disagree",
+          "explanation": "\"Disagree\" — \"dis-\" prefix indicates opposition or reversal of action. \"Dis-\" verbs are usually opposite actions (disprove, dismantle, disconnect). \"Un-\" tends to attach to adjectives (unhappy, untidy), though it works for some verbs too (undo, unpack)."
+        },
+        {
+          "type": "fill_gap",
+          "hint": "Prefix that attaches to \"l-\"",
+          "answer": "illogical",
+          "explanation": "\"Illogical\" — \"il-\" attaches to \"l-\" roots (illegal, illiterate, illogical). The \"in-\" prefix family's allomorphs follow assimilation: easier to pronounce \"il-l\" than \"in-l\"."
+        },
+        {
+          "type": "fix_error",
+          "sentence": "His behaviour was unresponsible.",
+          "hint": "Correct negation of \"responsible\" is \"irresponsible\"",
+          "answer": "His behaviour was irresponsible.",
+          "explanation": "\"Unresponsible\" isn't a word. \"Responsible\" takes \"ir-\" (root begins with \"r\"). Many C2 learners default to \"un-\" because it's the most familiar negation prefix. Lexical memory matters: each word fixes its own negation pattern."
+        },
+        {
+          "type": "read_answer",
+          "passage": "The audit's findings were unflinching. The decisions had been irresponsible, the reporting illegal, and the executive's denials immoral. Several mid-level managers, who had felt powerless to disagree, were now offered immunity in exchange for testimony. The CEO, displaying the unrepentant tone of someone unprepared for consequences, dismissed the report as illegitimate.",
+          "question": "How does the passage describe the CEO's reaction?",
+          "answer": "he dismissed the report as illegitimate (and showed an unrepentant tone)",
+          "explanation": "Eight negation prefixes in three sentences: unflinching (un-), irresponsible (ir-), illegal (il-), immoral (im-), powerless (-less suffix, not prefix but contrast), unrepentant (un-), unprepared (un-), illegitimate (il-). Each prefix correctly chosen by root."
+        }
+      ],
+      "listening_speaking": [
+        {
+          "text": "His behaviour was irresponsible.",
+          "context": "ir- before r"
+        },
+        {
+          "text": "The plan is illegal.",
+          "context": "il- before l"
+        },
+        {
+          "text": "Her response was immature.",
+          "context": "im- before m"
+        },
+        {
+          "text": "They disagree on most things.",
+          "context": "dis- for opposition"
+        },
+        {
+          "text": "The decision is unwise.",
+          "context": "un- as default adjective negator"
+        }
+      ],
+      "roleplay": {
+        "scenario": "Charlotte gives three positive descriptions. You negate each with the correct prefix.",
+        "voiced_by": "charlotte",
+        "persona": "Charlotte",
+        "persona_outfit": "charlotte_casual",
+        "time_budget_sec": 300,
+        "opening_line": "Three positive descriptions. Negate each with the correct prefix.",
+        "objectives": [
+          {
+            "id": 1,
+            "label_en": "Negation with 'un-' or 'in-'",
+            "hidden_prompt": "user negates adjective with un- or in-",
+            "hint_en": "From 'The candidate seems qualified.' → 'The candidate seems unqualified, given the role's requirements.'"
+          },
+          {
+            "id": 2,
+            "label_en": "Negation with 'ir-' or 'il-'",
+            "hidden_prompt": "user negates with ir- or il- correctly",
+            "hint_en": "From 'The decision was reversible.' → 'The decision was irreversible — once it was signed, there was no going back.'"
+          },
+          {
+            "id": 3,
+            "label_en": "Negation with 'dis-' or 'mis-'",
+            "hidden_prompt": "user uses dis- or mis- correctly",
+            "hint_en": "From 'I trust him.' → 'I distrust him in financial matters specifically — he's been misled before, and his judgment shows it.'"
+          }
+        ],
+        "closing_cue": "Charlotte closes with \"Prefixes, correctly chosen.\" once obj_3 lands.",
+        "suggested_flow": "**Suggested flow** (referencial, 6 turnos):\n\n1. **Charlotte**: \"Three positive descriptions. Negate each with the correct prefix.\"\n2. **Student**: ~\"From 'The candidate seems qualified.' → 'The candidate seems unqualified, given the role's requirements.'\"\n3. **Charlotte**: \"Reversible?\"\n4. **Student**: ~\"From 'The decision was reversible.' → 'The decision was irreversible — once it was signed, there was no going back.'\"\n5. **Charlotte**: \"Trust?\"\n6. **Student**: ~\"From 'I trust him.' → 'I distrust him in financial matters specifically — he's been misled before, and his judgment shows it.'\"\n7. **Charlotte**: \"Prefixes, correctly chosen.\"",
+        "evaluation_focus": [
+          "Correct prefix for the root",
+          "Real meaning shift (not just decoration)",
+          "No invented combinations (no \"unresponsible\")"
+        ]
+      },
+      "guided_chat": {
+        "scenario": "Charlotte uses some imprecise negations. You correct them with the right prefix.",
+        "voiced_by": "charlotte",
+        "persona": "Charlotte",
+        "persona_outfit": "charlotte_casual",
+        "intro_en": "Charlotte uses imprecise negations. Correct with the right prefix.",
+        "opening_message": "My old colleague is really unresponsible with deadlines. Drove me mad.",
+        "objectives": [
+          {
+            "id": 1,
+            "label_en": "Correct 'unresponsible' → 'irresponsible'",
+            "hidden_prompt": "user replaces 'unresponsible' with 'irresponsible'",
+            "hint_en": "Small correction — it's 'irresponsible' with 'ir-' before the 'r' of 'responsible'."
+          },
+          {
+            "id": 2,
+            "label_en": "Add example with another correct negation",
+            "hidden_prompt": "user uses another prefix-formed negation",
+            "hint_en": "And his approach to clients was unprofessional — late replies, missed details. The pattern was hard to ignore."
+          },
+          {
+            "id": 3,
+            "label_en": "Ask Charlotte",
+            "hidden_prompt": "user asks Charlotte if he ever changed",
+            "hint_en": "Did he ever change?"
+          }
+        ],
+        "closing_cue": "Charlotte closes with \"Vocabulary calibrated.\" once obj_3 lands.",
+        "suggested_script": "**Script** (referencial, 7 turnos):\n\n1. **Charlotte**: \"My old colleague is really unresponsible with deadlines. Drove me mad.\"\n2. **Student**: \"Small correction — it's 'irresponsible' with 'ir-' before the 'r' of 'responsible'.\"\n3. **Charlotte**: \"Right. I always second-guess that one.\"\n4. **Student**: \"And his approach to clients was unprofessional — late replies, missed details. The pattern was hard to ignore.\"\n5. **Charlotte**: \"Exactly. The behaviour was consistent enough to predict.\"\n6. **Student**: \"Did he ever change?\"\n7. **Charlotte**: \"Only after losing a major account. By then it was too late. Vocabulary calibrated.\"\n\n> A01 chat = full LLM. Scaffold via hint_pt/hint_en.\n\n---"
+      }
+    },
+    {
+      "id": "A02",
+      "title": "Suffixes for nouns",
+      "sub_cefr": "C2",
+      "grammar_focus": "Noun-forming suffixes (-tion, -ment, -ness, -ity, -ship, -hood, -ism, -ance/-ence)",
+      "markers": [
+        "denso",
+        "morphology"
+      ],
+      "real_life_context": "You convert verbs and adjectives into abstract nouns — essential for academic and analytic writing.",
+      "grammar": [
+        {
+          "type": "multiple_choice",
+          "options": [
+            "decision",
+            "decidement",
+            "deciding",
+            "decidance"
+          ],
+          "answer": "decision",
+          "explanation": "\"Decide\" → \"decision\" (-sion suffix). Common verb-to-noun patterns: -sion (decide → decision), -tion (create → creation), -ment (develop → development), -ance/-ence (perform → performance, prefer → preference). Each verb fixes its own noun form."
+        },
+        {
+          "type": "multiple_choice",
+          "options": [
+            "happiness",
+            "happity",
+            "happyhood",
+            "happination"
+          ],
+          "answer": "happiness",
+          "explanation": "Adjective → noun via \"-ness\". Pattern: \"happy\" → \"happiness\", \"kind\" → \"kindness\", \"dark\" → \"darkness\". Note: \"y\" changes to \"i\" before \"-ness\". The \"-ness\" suffix is one of the most productive in English — almost any adjective can take it."
+        },
+        {
+          "type": "fill_gap",
+          "hint": "Verb + -ment",
+          "answer": "management",
+          "explanation": "\"Manage\" → \"management\" via \"-ment\". The \"-ment\" suffix produces abstract nouns from verbs (achieve → achievement, develop → development, judge → judgment, agree → agreement). Common in academic and business writing."
+        },
+        {
+          "type": "fix_error",
+          "sentence": "Her honestness was rare.",
+          "hint": "\"Honest\" has an irregular noun form",
+          "answer": "Her honesty was rare.",
+          "explanation": "\"Honest\" → \"honesty\" (not \"honestness\"). Irregular noun formation. Many adjectives form nouns with \"-ty\" or \"-ity\" instead of \"-ness\": \"honest → honesty\", \"able → ability\", \"sincere → sincerity\". Memorising these patterns is part of C2 mastery."
+        },
+        {
+          "type": "read_answer",
+          "passage": "The institution's annual report read like a study in formal abstraction. 'Development continued across all departments. Recognition of contribution increased measurably. Leadership demonstrated greater accountability. Membership numbers held steady. The relationship between governance and execution improved markedly. The organisation's overall maturity is now beyond question.'",
+          "question": "How many abstract nouns appear in the passage?",
+          "answer": "at least eight (development, recognition, contribution, leadership, accountability, membership, relationship, governance, execution, organisation, maturity)",
+          "explanation": "The passage is built almost entirely on abstract nouns — typical of corporate/academic register. Suffixes used: -ment, -tion, -ship, -ity, -ance, -ence. Nominal density is a marker of formal English."
+        }
+      ],
+      "listening_speaking": [
+        {
+          "text": "The decision was unanimous.",
+          "context": "verb-to-noun -sion"
+        },
+        {
+          "text": "Her kindness surprised everyone.",
+          "context": "adjective-to-noun -ness"
+        },
+        {
+          "text": "Management announced the change.",
+          "context": "verb-to-noun -ment"
+        },
+        {
+          "text": "His honesty was rare.",
+          "context": "irregular -ty"
+        },
+        {
+          "text": "Their partnership lasted decades.",
+          "context": "relationship noun -ship"
+        }
+      ],
+      "roleplay": {
+        "scenario": "Charlotte gives three sentences with verbs/adjectives. You rewrite each using the abstract noun form for academic register.",
+        "voiced_by": "charlotte",
+        "persona": "Charlotte",
+        "persona_outfit": "charlotte_casual",
+        "time_budget_sec": 300,
+        "opening_line": "Three sentences. Rewrite each using abstract noun forms for academic register.",
+        "objectives": [
+          {
+            "id": 1,
+            "label_en": "Verb → noun (-tion / -ment)",
+            "hidden_prompt": "user uses noun form of a verb",
+            "hint_en": "From 'They decided to expand' → 'The decision to expand was made unanimously.'"
+          },
+          {
+            "id": 2,
+            "label_en": "Adjective → noun (-ness / -ity)",
+            "hidden_prompt": "user uses noun form of adjective",
+            "hint_en": "From 'She was kind to the new hires' → 'Her kindness to the new hires set the tone for their entire onboarding.'"
+          },
+          {
+            "id": 3,
+            "label_en": "State → noun (-ship / -hood)",
+            "hidden_prompt": "user uses -ship or -hood form",
+            "hint_en": "From 'They worked as partners for ten years' → 'Their partnership lasted ten years, surviving three industries and two countries.'"
+          }
+        ],
+        "closing_cue": "Charlotte closes with \"Abstractions, fitted.\" once obj_3 lands.",
+        "suggested_flow": "**Suggested flow** (referencial, 6 turnos):\n\n1. **Charlotte**: \"Three sentences. Rewrite each using abstract noun forms for academic register.\"\n2. **Student**: ~\"From 'They decided to expand' → 'The decision to expand was made unanimously.'\"\n3. **Charlotte**: \"Adjective?\"\n4. **Student**: ~\"From 'She was kind to the new hires' → 'Her kindness to the new hires set the tone for their entire onboarding.'\"\n5. **Charlotte**: \"Relationship state?\"\n6. **Student**: ~\"From 'They worked as partners for ten years' → 'Their partnership lasted ten years, surviving three industries and two countries.'\"\n7. **Charlotte**: \"Abstractions, fitted.\"",
+        "evaluation_focus": [
+          "Correct suffix for word class",
+          "Irregular forms remembered (honesty, ability)",
+          "Surrounding clause matches academic register"
+        ]
+      },
+      "guided_chat": {
+        "scenario": "Charlotte drafts a paragraph too verb-heavy for academic register. You suggest nominalisations.",
+        "voiced_by": "charlotte",
+        "persona": "Charlotte",
+        "persona_outfit": "charlotte_casual",
+        "intro_en": "Charlotte drafts too verb-heavy. Suggest nominalised academic versions.",
+        "opening_message": "I wrote: 'The team decided to expand, and they performed better. We grew faster than competitors.' For a board report — too active. Help me nominalise?",
+        "objectives": [
+          {
+            "id": 1,
+            "label_en": "Nominalise 'decided' and 'performed'",
+            "hidden_prompt": "user uses 'decision' and 'performance'",
+            "hint_en": "Try: 'The decision to expand was followed by a measurable improvement in team performance.'"
+          },
+          {
+            "id": 2,
+            "label_en": "Nominalise 'grew'",
+            "hidden_prompt": "user uses 'growth'",
+            "hint_en": "Then: 'Subsequent growth outpaced that of competitors over the same period.'"
+          },
+          {
+            "id": 3,
+            "label_en": "Ask Charlotte",
+            "hidden_prompt": "user asks Charlotte who the audience is",
+            "hint_en": "Who is the audience — internal board or shareholders?"
+          }
+        ],
+        "closing_cue": "Charlotte closes with \"Verbs to nouns, register lifted.\" once obj_3 lands.",
+        "suggested_script": "**Script** (referencial, 7 turnos):\n\n1. **Charlotte**: \"I wrote: 'The team decided to expand, and they performed better. We grew faster than competitors.' For a board report — too active. Help me nominalise?\"\n2. **Student**: \"Try: 'The decision to expand was followed by a measurable improvement in team performance.'\"\n3. **Charlotte**: \"Stronger. And the growth?\"\n4. **Student**: \"Then: 'Subsequent growth outpaced that of competitors over the same period.'\"\n5. **Charlotte**: \"Now it reads like a board document.\"\n6. **Student**: \"Who is the audience — internal board or shareholders?\"\n7. **Charlotte**: \"Shareholders. Quarterly letter. Verbs to nouns, register lifted.\"\n\n> A02 chat = full LLM. Scaffold via hint_pt/hint_en.\n\n---"
+      }
+    },
+    {
+      "id": "A03",
+      "title": "Suffixes for adjectives and verbs",
+      "sub_cefr": "C2",
+      "grammar_focus": "Adjective suffixes (-able, -ible, -ful, -less, -ous, -al, -ical, -ish, -ive) and verb suffixes (-ise/-ize, -ify, -en)",
+      "markers": [
+        "denso",
+        "morphology"
+      ],
+      "real_life_context": "You convert nouns and verbs into adjectives, or nouns/adjectives into verbs — flexibly.",
+      "grammar": [
+        {
+          "type": "multiple_choice",
+          "options": [
+            "reliable",
+            "relyful",
+            "relial",
+            "relish"
+          ],
+          "answer": "reliable",
+          "explanation": "\"Rely\" → \"reliable\" (-able suffix, capability). Note spelling: \"y\" → \"i\" before \"-able\". \"-able\" attaches to verbs to form adjectives meaning \"can be X-ed\" or \"characterised by X\". Examples: drinkable, washable, manageable, predictable."
+        },
+        {
+          "type": "multiple_choice",
+          "options": [
+            "modernise",
+            "modernate",
+            "modernen",
+            "modernify"
+          ],
+          "answer": "modernise",
+          "explanation": "\"Modern\" → \"modernise/modernize\" (-ise/-ize, \"to make X\"). British \"-ise\", American \"-ize\". Pattern: adjective + -ise = verb. Other examples: standardise, prioritise, normalise, customise. Very productive suffix in C2 vocabulary."
+        },
+        {
+          "type": "fill_gap",
+          "hint": "noun + -ous",
+          "answer": "dangerous",
+          "explanation": "\"Danger\" → \"dangerous\" (-ous, \"full of, characterised by\"). Pattern: noun + -ous = adjective. Examples: famous, mysterious, courageous, generous, glorious. Often Latinate roots."
+        },
+        {
+          "type": "fix_error",
+          "sentence": "The instructions were uncomprehensible.",
+          "hint": "\"Comprehend\" forms \"comprehensible\" with -ible",
+          "answer": "The instructions were incomprehensible.",
+          "explanation": "\"Comprehend\" → \"comprehensible\" (-ible suffix; Latin roots tend to take -ible while Germanic roots take -able). Negation = \"in-\" + \"comprehensible\" = \"incomprehensible\". Not \"uncomprehensible\" — wrong prefix and wrong suffix combination."
+        },
+        {
+          "type": "read_answer",
+          "passage": "The architect's brief was unusually demanding. The building had to be beautiful but practical, ambitious but affordable, modern but respectful of its context. It had to be simultaneously accessible, sustainable, and adaptable to uses we could not yet predict. We were asked, in short, to standardise innovation — a paradox if there ever was one.",
+          "question": "What paradox does the architect identify?",
+          "answer": "standardising innovation (or \"to standardise innovation\")",
+          "explanation": "Many derived adjectives: beautiful (-ful), practical (-ical), ambitious (-ous), affordable (-able), respectful (-ful), accessible (-ible), sustainable (-able), adaptable (-able). Verb: standardise (-ise). Word-formation density is C2-typical."
+        }
+      ],
+      "listening_speaking": [
+        {
+          "text": "She's reliable in a crisis.",
+          "context": "-able adjective"
+        },
+        {
+          "text": "The product is sustainable.",
+          "context": "-able with environmental sense"
+        },
+        {
+          "text": "They want to modernise the system.",
+          "context": "-ise verb"
+        },
+        {
+          "text": "His behaviour was dangerous.",
+          "context": "-ous adjective"
+        },
+        {
+          "text": "The instructions were incomprehensible.",
+          "context": "-ible negated"
+        }
+      ],
+      "roleplay": {
+        "scenario": "Charlotte gives three nouns or verbs. You form the adjective or verb derivation correctly.",
+        "voiced_by": "charlotte",
+        "persona": "Charlotte",
+        "persona_outfit": "charlotte_casual",
+        "time_budget_sec": 300,
+        "opening_line": "Three roots. Form the adjective or verb derivation correctly.",
+        "objectives": [
+          {
+            "id": 1,
+            "label_en": "Adjective with -able / -ible",
+            "hidden_prompt": "user forms -able or -ible adjective",
+            "hint_en": "From 'predict' → 'predictable'. From 'access' → 'accessible'. Use both: 'The system is both predictable and accessible.'"
+          },
+          {
+            "id": 2,
+            "label_en": "Verb with -ise / -ify",
+            "hidden_prompt": "user forms -ise or -ify verb",
+            "hint_en": "From 'standard' → 'standardise'. 'We need to standardise the process before we can scale.'"
+          },
+          {
+            "id": 3,
+            "label_en": "Adjective with -ous / -ful",
+            "hidden_prompt": "user forms -ous or -ful adjective",
+            "hint_en": "From 'mystery' → 'mysterious'. 'Her sudden departure was mysterious enough to spark every rumour in the office.'"
+          }
+        ],
+        "closing_cue": "Charlotte closes with \"Suffixes, mapped.\" once obj_3 lands.",
+        "suggested_flow": "**Suggested flow** (referencial, 6 turnos):\n\n1. **Charlotte**: \"Three roots. Form the adjective or verb derivation correctly.\"\n2. **Student**: ~\"From 'predict' → 'predictable'. From 'access' → 'accessible'. Use both: 'The system is both predictable and accessible.'\"\n3. **Charlotte**: \"Verb formation?\"\n4. **Student**: ~\"From 'standard' → 'standardise'. 'We need to standardise the process before we can scale.'\"\n5. **Charlotte**: \"Adjective from noun?\"\n6. **Student**: ~\"From 'mystery' → 'mysterious'. 'Her sudden departure was mysterious enough to spark every rumour in the office.'\"\n7. **Charlotte**: \"Suffixes, mapped.\"",
+        "evaluation_focus": [
+          "Correct suffix for root",
+          "Spelling adjustments (y → i)",
+          "Used in real context"
+        ]
+      },
+      "guided_chat": {
+        "scenario": "Charlotte forms a few words she's unsure about. You confirm or correct.",
+        "voiced_by": "charlotte",
+        "persona": "Charlotte",
+        "persona_outfit": "charlotte_casual",
+        "intro_en": "Charlotte tries derivations. Confirm or correct each.",
+        "opening_message": "I want to say someone 'can be relied on' — is the word 'relyable'?",
+        "objectives": [
+          {
+            "id": 1,
+            "label_en": "Correct spelling",
+            "hidden_prompt": "user corrects 'relyable' to 'reliable'",
+            "hint_en": "Close — it's 'reliable'. The 'y' in 'rely' becomes 'i' before '-able'."
+          },
+          {
+            "id": 2,
+            "label_en": "Add another related derivation",
+            "hidden_prompt": "user offers another -able or -ible derivation",
+            "hint_en": "Same pattern: 'predict' becomes 'predictable', 'apply' becomes 'applicable' — same y→i rule when applicable."
+          },
+          {
+            "id": 3,
+            "label_en": "Ask Charlotte",
+            "hidden_prompt": "user asks Charlotte who she's describing",
+            "hint_en": "Who are you describing as reliable?"
+          }
+        ],
+        "closing_cue": "Charlotte closes with \"Spellings, finally trusted.\" once obj_3 lands.",
+        "suggested_script": "**Script** (referencial, 7 turnos):\n\n1. **Charlotte**: \"I want to say someone 'can be relied on' — is the word 'relyable'?\"\n2. **Student**: \"Close — it's 'reliable'. The 'y' in 'rely' becomes 'i' before '-able'.\"\n3. **Charlotte**: \"I always second-guess that.\"\n4. **Student**: \"Same pattern: 'predict' becomes 'predictable', 'apply' becomes 'applicable' — same y→i rule when applicable.\"\n5. **Charlotte**: \"The rule is consistent, then.\"\n6. **Student**: \"Who are you describing as reliable?\"\n7. **Charlotte**: \"An old project manager. Quietly heroic. Spellings, finally trusted.\"\n\n> A03 chat = full LLM. Scaffold via hint_pt/hint_en.\n\n---"
+      }
+    },
+    {
+      "id": "A04",
+      "title": "Compounds",
+      "sub_cefr": "C2",
+      "grammar_focus": "Compounds — closed (lighthouse), hyphenated (well-known), open (high school) — and the rules for each",
+      "markers": [
+        "denso",
+        "morphology"
+      ],
+      "real_life_context": "You write compounds with the right spacing — knowing when to close, hyphenate, or leave open.",
+      "grammar": [
+        {
+          "type": "multiple_choice",
+          "options": [
+            "lighthouse",
+            "light house",
+            "light-house",
+            "light-house-keeper"
+          ],
+          "answer": "lighthouse",
+          "explanation": "Many compounds are \"closed\" — written as one word. Examples: lighthouse, smartphone, software, breakfast, sunlight, classroom, weekend. These have lost the boundary because the meaning has become unified. Closed compounds are the most lexicalised."
+        },
+        {
+          "type": "multiple_choice",
+          "options": [
+            "well-known",
+            "wellknown",
+            "well known",
+            "wellsknown"
+          ],
+          "answer": "well-known",
+          "explanation": "\"Well-known\" is hyphenated when it modifies a noun (\"a well-known author\"). When it follows the noun and acts as a predicate, no hyphen needed (\"the author is well known\"). Hyphenation rules depend on position."
+        },
+        {
+          "type": "fill_gap",
+          "hint": "Common open compound for upper secondary education",
+          "answer": "high school (or \"high school\")",
+          "explanation": "\"High school\" is an open compound — two words but functioning as one concept. Other open compounds: ice cream, post office, real estate, peanut butter. The decision between open and closed often relates to age and frequency in the language."
+        },
+        {
+          "type": "fix_error",
+          "sentence": "She is an well known author.",
+          "hint": "Hyphenate before the noun, use \"a\" not \"an\" (consonant sound)",
+          "answer": "She is a well-known author.",
+          "explanation": "\"Well known\" → \"well-known\" when before noun. \"An\" is wrong because \"well\" begins with the consonant \"w\". The hyphenation makes the compound function as a single adjective."
+        },
+        {
+          "type": "read_answer",
+          "passage": "The newspaper headline was, as always, a study in compound forms. 'WELL-KNOWN LIGHTHOUSE KEEPER MAKES POST OFFICE PEACE WITH LONG-LOST HALF-SISTER'. The reader was momentarily stunned: a closed compound (lighthouse), an open one (post office), two hyphenated ones (well-known, half-sister, long-lost) — and a sentence that managed to be charming despite saying almost nothing concrete.",
+          "question": "How many compound forms can you identify in the headline?",
+          "answer": "at least five — well-known (hyphenated), lighthouse (closed), post office (open), long-lost (hyphenated), half-sister (hyphenated)",
+          "explanation": "Five compounds in one headline: one closed (lighthouse), one open (post office), three hyphenated (well-known, long-lost, half-sister). C2 awareness includes recognising the spacing decisions native writers make instinctively."
+        }
+      ],
+      "listening_speaking": [
+        {
+          "text": "The lighthouse keeper has lived there forty years.",
+          "context": "closed"
+        },
+        {
+          "text": "She is a well-known author.",
+          "context": "hyphenated (before noun)"
+        },
+        {
+          "text": "I went to high school in Rio.",
+          "context": "open"
+        },
+        {
+          "text": "My long-lost cousin called yesterday.",
+          "context": "hyphenated (before noun)"
+        },
+        {
+          "text": "The author is well known in literary circles.",
+          "context": "open (after noun)"
+        }
+      ],
+      "roleplay": {
+        "scenario": "Charlotte gives three compounds. You use each in a sentence with the correct spacing.",
+        "voiced_by": "charlotte",
+        "persona": "Charlotte",
+        "persona_outfit": "charlotte_casual",
+        "time_budget_sec": 300,
+        "opening_line": "Three compounds. Use each in a sentence with the correct spacing — closed, hyphenated, or open.",
+        "objectives": [
+          {
+            "id": 1,
+            "label_en": "Closed compound",
+            "hidden_prompt": "user uses a closed compound (one word)",
+            "hint_en": "The smartphone has replaced almost every device on my old desk — camera, calculator, dictionary, alarm clock."
+          },
+          {
+            "id": 2,
+            "label_en": "Hyphenated compound (before noun)",
+            "hidden_prompt": "user uses a hyphenated compound before noun",
+            "hint_en": "A state-of-the-art facility opened last month — automated lighting, voice-controlled rooms, the works."
+          },
+          {
+            "id": 3,
+            "label_en": "Open compound",
+            "hidden_prompt": "user uses an open compound (two separate words)",
+            "hint_en": "She walked into the post office, paid in exact change, and left without saying a word."
+          }
+        ],
+        "closing_cue": "Charlotte closes with \"Compounds, properly spaced.\" once obj_3 lands.",
+        "suggested_flow": "**Suggested flow** (referencial, 6 turnos):\n\n1. **Charlotte**: \"Three compounds. Use each in a sentence with the correct spacing — closed, hyphenated, or open.\"\n2. **Student**: ~\"The smartphone has replaced almost every device on my old desk — camera, calculator, dictionary, alarm clock.\"\n3. **Charlotte**: \"Hyphenated?\"\n4. **Student**: ~\"A state-of-the-art facility opened last month — automated lighting, voice-controlled rooms, the works.\"\n5. **Charlotte**: \"Open?\"\n6. **Student**: ~\"She walked into the post office, paid in exact change, and left without saying a word.\"\n7. **Charlotte**: \"Compounds, properly spaced.\"",
+        "evaluation_focus": [
+          "Correct spacing decision",
+          "Hyphenation rule (before vs after noun) respected",
+          "Used in real sentence"
+        ]
+      },
+      "guided_chat": {
+        "scenario": "Charlotte writes a paragraph with several compounds. You check each for correct spacing.",
+        "voiced_by": "charlotte",
+        "persona": "Charlotte",
+        "persona_outfit": "charlotte_casual",
+        "intro_en": "Charlotte writes with compounds. Check each spelling decision.",
+        "opening_message": "I wrote: 'My state of the art smartphone helps me check work mail in the post office.' Anything to fix?",
+        "objectives": [
+          {
+            "id": 1,
+            "label_en": "Correct 'state of the art' (hyphenated before noun)",
+            "hidden_prompt": "user corrects to 'state-of-the-art' when before noun",
+            "hint_en": "Almost — 'state-of-the-art' is hyphenated when it modifies a noun (your smartphone). After a noun, it stays open: 'My smartphone is state of the art.'"
+          },
+          {
+            "id": 2,
+            "label_en": "Confirm 'smartphone' and 'post office'",
+            "hidden_prompt": "user confirms closed vs open compounds",
+            "hint_en": "'Smartphone' is correctly closed, and 'post office' is correctly open — those two were already right."
+          },
+          {
+            "id": 3,
+            "label_en": "Ask Charlotte",
+            "hidden_prompt": "user asks Charlotte about a specific compound she's unsure of",
+            "hint_en": "Anything else you're unsure about?"
+          }
+        ],
+        "closing_cue": "Charlotte closes with \"Spacing audit, complete.\" once obj_3 lands.",
+        "suggested_script": "**Script** (referencial, 7 turnos):\n\n1. **Charlotte**: \"I wrote: 'My state of the art smartphone helps me check work mail in the post office.' Anything to fix?\"\n2. **Student**: \"Almost — 'state-of-the-art' is hyphenated when it modifies a noun (your smartphone). After a noun, it stays open: 'My smartphone is state of the art.'\"\n3. **Charlotte**: \"Ah — position-dependent. The others?\"\n4. **Student**: \"'Smartphone' is correctly closed, and 'post office' is correctly open — those two were already right.\"\n5. **Charlotte**: \"Two out of three. Good ratio.\"\n6. **Student**: \"Anything else you're unsure about?\"\n7. **Charlotte**: \"'Half-hour' vs 'half hour' — I never know which. (It's 'half-hour' when before a noun, 'half an hour' as a standalone.) Spacing audit, complete.\"\n\n> A04 chat = full LLM. Scaffold via hint_pt/hint_en.\n\n---"
+      }
+    },
+    {
+      "id": "A05",
+      "title": "Conversion",
+      "sub_cefr": "C2",
+      "grammar_focus": "Conversion (zero derivation) — noun ↔ verb without affix change (email, google, friend, gift, message, text)",
+      "markers": [],
+      "real_life_context": "You convert nouns to verbs (and vice versa) fluidly — typical of modern English, especially tech and social vocabulary.",
+      "grammar": [
+        {
+          "type": "multiple_choice",
+          "options": [
+            "email",
+            "emailify",
+            "email-ate",
+            "send mail"
+          ],
+          "answer": "email",
+          "explanation": "Conversion (zero derivation) — using a noun as a verb without changing form. \"Email\" was originally a noun (electronic mail); now \"to email\" is fully accepted as a verb. Many modern English verbs come from this process: to google, to text, to message, to friend, to gift."
+        },
+        {
+          "type": "multiple_choice",
+          "options": [
+            "a google search",
+            "a googling",
+            "a googled",
+            "a google"
+          ],
+          "answer": "a google search",
+          "explanation": "\"Google\" became a verb (to google = to search online). The noun form refers to either the company (Google) or — in informal usage — \"a google search\" or simply \"a search\". Brand names becoming verbs is a common conversion path in modern English."
+        },
+        {
+          "type": "fill_gap",
+          "hint": "Same form as the noun",
+          "answer": "message",
+          "explanation": "\"Message\" works as both noun and verb. \"Did you message him?\" — verb form, identical spelling. Native speakers do this automatically. C2 fluency includes the ease of using such conversions."
+        },
+        {
+          "type": "fix_error",
+          "sentence": "I will sendmessage him later.",
+          "hint": "\"Message\" can stand alone as a verb",
+          "answer": "I will message him later. (or: I will send him a message later.)",
+          "explanation": "\"Sendmessage\" isn't a word. Either use \"message\" alone (verb conversion) or \"send + him + a message\" (noun usage). The modern conversion makes \"message\" enough on its own."
+        },
+        {
+          "type": "read_answer",
+          "passage": "The verbs in the office had quietly evolved. 'Did you slack him?' someone asked. 'Yes, but he hasn't pinged back.' 'Try emailing — or just text.' 'I friended him on the new platform last week, so maybe message there.' Five years ago, none of those verbs existed in their current form. Now they were grammar.",
+          "question": "How many conversion-verbs appear in the passage?",
+          "answer": "at least five — slack, ping, email, text, friend, message (all converted from nouns or names to verbs)",
+          "explanation": "Modern English aggressively converts nouns to verbs: slack (the app) → to slack, ping → to ping, email → to email, text → to text, friend (noun) → to friend (verb). C2 awareness includes recognising and producing these conversions."
+        }
+      ],
+      "listening_speaking": [
+        {
+          "text": "Did you email him?",
+          "context": "noun-to-verb conversion"
+        },
+        {
+          "text": "Google it before you ask.",
+          "context": "brand-to-verb"
+        },
+        {
+          "text": "Text me when you arrive.",
+          "context": "both forms identical"
+        },
+        {
+          "text": "I friended her on the new platform.",
+          "context": "recent conversion"
+        },
+        {
+          "text": "She gifted me a book.",
+          "context": "older noun-to-verb (gift)"
+        }
+      ],
+      "roleplay": {
+        "scenario": "Charlotte gives three nouns. You use each as a verb in a natural sentence.",
+        "voiced_by": "charlotte",
+        "persona": "Charlotte",
+        "persona_outfit": "charlotte_casual",
+        "time_budget_sec": 300,
+        "opening_line": "Three nouns: 'message', 'gift', 'screenshot'. Use each as a verb.",
+        "objectives": [
+          {
+            "id": 1,
+            "label_en": "'Message' as verb",
+            "hidden_prompt": "user uses 'message' as verb",
+            "hint_en": "I'll message you the details once the venue is confirmed."
+          },
+          {
+            "id": 2,
+            "label_en": "'Gift' as verb",
+            "hidden_prompt": "user uses 'gift' as verb",
+            "hint_en": "She gifted me a first edition for my birthday — a single book that meant more than any wrapped pile."
+          },
+          {
+            "id": 3,
+            "label_en": "'Screenshot' as verb",
+            "hidden_prompt": "user uses 'screenshot' as verb",
+            "hint_en": "I screenshotted the conversation just in case anyone needed proof of the timeline."
+          }
+        ],
+        "closing_cue": "Charlotte closes with \"Conversions, fully fluent.\" once obj_3 lands.",
+        "suggested_flow": "**Suggested flow** (referencial, 6 turnos):\n\n1. **Charlotte**: \"Three nouns: 'message', 'gift', 'screenshot'. Use each as a verb.\"\n2. **Student**: ~\"I'll message you the details once the venue is confirmed.\"\n3. **Charlotte**: \"'Gift' as verb?\"\n4. **Student**: ~\"She gifted me a first edition for my birthday — a single book that meant more than any wrapped pile.\"\n5. **Charlotte**: \"'Screenshot' as verb?\"\n6. **Student**: ~\"I screenshotted the conversation just in case anyone needed proof of the timeline.\"\n7. **Charlotte**: \"Conversions, fully fluent.\"",
+        "evaluation_focus": [
+          "Conversion natural and grammatical",
+          "Past tense formed correctly (screenshotted, gifted, messaged)",
+          "Verb usage matches actual modern English"
+        ]
+      },
+      "guided_chat": {
+        "scenario": "Charlotte uses verbs that are old-fashioned. You suggest modern converted forms.",
+        "voiced_by": "charlotte",
+        "persona": "Charlotte",
+        "persona_outfit": "charlotte_casual",
+        "intro_en": "Charlotte uses older forms. Suggest modern conversion-verbs.",
+        "opening_message": "I told my daughter I would send her a text message later. She laughed at me.",
+        "objectives": [
+          {
+            "id": 1,
+            "label_en": "Suggest 'text' as verb",
+            "hidden_prompt": "user suggests 'text' as verb",
+            "hint_en": "She probably laughed at 'send a text message' — natives just say 'I'll text you'. The noun has become its own verb."
+          },
+          {
+            "id": 2,
+            "label_en": "Add other modern conversions",
+            "hidden_prompt": "user adds other conversion verbs",
+            "hint_en": "Same goes for 'send her an email' → 'email her'. And 'do a Google search' → 'google it'. Conversion makes English faster."
+          },
+          {
+            "id": 3,
+            "label_en": "Ask Charlotte",
+            "hidden_prompt": "user asks Charlotte how old her daughter is",
+            "hint_en": "How old is your daughter?"
+          }
+        ],
+        "closing_cue": "Charlotte closes with \"Modern English speeds up — conversions everywhere.\" once obj_3 lands.",
+        "suggested_script": "**Script** (referencial, 7 turnos):\n\n1. **Charlotte**: \"I told my daughter I would send her a text message later. She laughed at me.\"\n2. **Student**: \"She probably laughed at 'send a text message' — natives just say 'I'll text you'. The noun has become its own verb.\"\n3. **Charlotte**: \"I do that with email too, then? 'I'll email you'?\"\n4. **Student**: \"Same goes for 'send her an email' → 'email her'. And 'do a Google search' → 'google it'. Conversion makes English faster.\"\n5. **Charlotte**: \"I'm starting to understand why my old textbooks sound stiff.\"\n6. **Student**: \"How old is your daughter?\"\n7. **Charlotte**: \"Fifteen. The age at which everything you say is wrong. Modern English speeds up — conversions everywhere.\"\n\n> A05 chat = full LLM. Scaffold via hint_pt/hint_en.\n\n---"
+      }
+    }
+  ],
+  "cross_unit_consolidation": [
+    "Choose the right negation prefix (un-, in-/im-/il-/ir-, dis-, mis-, non-) for each root",
+    "Form abstract nouns from verbs and adjectives (decision, management, happiness, ability, partnership)",
+    "Form adjectives from verbs and nouns (reliable, dangerous, sustainable, comprehensible)",
+    "Form verbs from adjectives or nouns (modernise, simplify, standardise, harden)",
+    "Recognise and produce closed compounds (lighthouse, smartphone), hyphenated compounds (well-known, state-of-the-art before noun), and open compounds (high school, post office)",
+    "Apply the position-dependent hyphenation rule (hyphenated before noun, open after noun)",
+    "Convert nouns to verbs naturally (email, message, google, friend, gift, screenshot)",
+    "Spell irregular forms correctly (honesty not \"honestness\", ability not \"ableness\")"
+  ]
+}
