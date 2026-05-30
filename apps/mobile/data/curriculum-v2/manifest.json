@@ -111,7 +111,34 @@
         "title": "Conexões e fechamento Novice",
         "file": "novice/M22.json"
       }
+    ],
+    "inter": [
+      {
+        "id": "M01",
+        "title": "Eventos no passado",
+        "file": "inter/M01.json"
+      },
+      {
+        "id": "M02",
+        "title": "O que já fiz",
+        "file": "inter/M02.json"
+      },
+      {
+        "id": "M03",
+        "title": "Recente ou antigo?",
+        "file": "inter/M03.json"
+      },
+      {
+        "id": "M04",
+        "title": "Costumávamos",
+        "file": "inter/M04.json"
+      },
+      {
+        "id": "M05",
+        "title": "Phrasal verbs essenciais",
+        "file": "inter/M05.json"
+      }
     ]
   },
-  "generated_at": "2026-05-30T19:01:16.071Z"
+  "generated_at": "2026-05-30T20:11:28.378Z"
 }

@@ -1,0 +1,1020 @@
+{
+  "id": "M02",
+  "title": "O que já fiz",
+  "level": "Inter",
+  "block": "B1",
+  "units_range": "I01–I05",
+  "theme": "Present perfect — life experiences",
+  "goal": "Student uses present perfect (have/has + past participle) to talk about life experiences with ever/never; knows the most common past participles.",
+  "connects_to": "M03 (PP vs past simple) — after PP introduction, learn when to use each.",
+  "module_chunks": [
+    "I have / I've + past participle",
+    "She has / She's + past participle",
+    "ever / never",
+    "Have you ever...?",
+    "I've been to... / I've never been to...",
+    "I've seen / I've eaten / I've tried / I've visited",
+    "past participles: been, seen, done, gone, had, made, eaten, drunk, written, spoken",
+    "in my life / so far / before"
+  ],
+  "units": [
+    {
+      "id": "I01",
+      "title": "Have you ever?",
+      "sub_cefr": "B1",
+      "grammar_focus": "Present perfect with ever/never (life experiences)",
+      "markers": [
+        "denso"
+      ],
+      "real_life_context": "You ask and answer about life experiences (travel, food, events).",
+      "grammar": [
+        {
+          "type": "multiple_choice",
+          "sentence": "I _____ visited Italy.",
+          "options": [
+            "have",
+            "has",
+            "had"
+          ],
+          "answer": "have",
+          "explanation": "Present perfect with I/you/we/they uses \"have\" + past participle. \"I have visited\" or \"I've visited\"."
+        },
+        {
+          "type": "multiple_choice",
+          "sentence": "She _____ tried sushi before.",
+          "options": [
+            "has",
+            "have",
+            "had"
+          ],
+          "answer": "has",
+          "explanation": "She/he/it uses \"has\" + past participle. \"She has tried\" or \"She's tried\"."
+        },
+        {
+          "type": "word_bank",
+          "sentence": "_____ you ever been to Brazil?",
+          "choices": [
+            "Have",
+            "Has",
+            "Did",
+            "Are"
+          ],
+          "answer": "Have",
+          "explanation": "Present perfect question with you: \"Have you ever been?\"."
+        },
+        {
+          "type": "word_bank",
+          "sentence": "I have _____ seen that movie.",
+          "choices": [
+            "never",
+            "no",
+            "not",
+            "nothing"
+          ],
+          "answer": "never",
+          "explanation": "\"I've never seen\" — \"never\" is the standard negative in PP for life experiences."
+        },
+        {
+          "type": "fill_gap",
+          "sentence": "I _____ never tried that food.",
+          "hint": "have/has for I",
+          "answer": "have",
+          "explanation": "\"I have never tried\" — present perfect with I."
+        },
+        {
+          "type": "fill_gap",
+          "sentence": "_____ she ever traveled abroad?",
+          "hint": "Have/Has for she",
+          "answer": "Has",
+          "explanation": "\"Has she ever traveled?\" — she uses \"has\" in PP question."
+        },
+        {
+          "type": "fill_gap",
+          "sentence": "We have _____ been to Japan.",
+          "hint": "never (life experience negative)",
+          "answer": "never",
+          "explanation": "\"We have never been\" — common life experience structure."
+        },
+        {
+          "type": "fix_error",
+          "sentence": "I have visit Italy.",
+          "hint": "Need past participle, not base",
+          "answer": "I have visited Italy.",
+          "explanation": "After \"have/has\", use PAST PARTICIPLE: \"visited\" (not \"visit\")."
+        },
+        {
+          "type": "fix_error",
+          "sentence": "She have tried sushi.",
+          "hint": "She is singular",
+          "answer": "She has tried sushi.",
+          "explanation": "She → \"has\", not \"have\". 3rd person uses \"has\" in PP."
+        },
+        {
+          "type": "read_answer",
+          "passage": "I have visited five countries: Italy, France, Japan, Brazil, and Argentina. I've never been to Australia. My sister has been to Australia twice.",
+          "question": "How many countries has the speaker visited?",
+          "answer": "five",
+          "explanation": "The text says \"I have visited five countries\"."
+        }
+      ],
+      "listening_speaking": [
+        {
+          "text": "I've visited Italy.",
+          "context": "own life experience"
+        },
+        {
+          "text": "She has tried sushi.",
+          "context": "3rd person experience"
+        },
+        {
+          "text": "Have you ever been to Brazil?",
+          "context": "question"
+        },
+        {
+          "text": "I have never seen that movie.",
+          "context": "never negative"
+        },
+        {
+          "text": "We have never been to Japan.",
+          "context": "plural negative"
+        }
+      ],
+      "roleplay": {
+        "scenario": "Charlotte asks about your life experiences — travel, food, events.",
+        "voiced_by": "charlotte",
+        "persona": "Charlotte",
+        "persona_outfit": "charlotte_casual",
+        "time_budget_sec": 180,
+        "opening_line": "Have you ever been somewhere amazing?",
+        "objectives": [
+          {
+            "id": 1,
+            "label_pt": "Dizer onde já foi (I've been to)",
+            "label_en": "Say where you've been",
+            "hidden_prompt": "user uses 'I've been to + place' or 'I have visited + place'",
+            "hint_pt": "I've been to Italy.",
+            "hint_en": "I've been to Italy."
+          },
+          {
+            "id": 2,
+            "label_pt": "Dizer algo que nunca fez",
+            "label_en": "Say something you've never done",
+            "hidden_prompt": "user uses 'I've never + past participle'",
+            "hint_pt": "I've never tried sushi.",
+            "hint_en": "I've never tried sushi."
+          },
+          {
+            "id": 3,
+            "label_pt": "Perguntar à Charlotte",
+            "label_en": "Ask Charlotte",
+            "hidden_prompt": "user asks 'Have you ever + past participle?'",
+            "hint_pt": "Have you ever been to Japan?",
+            "hint_en": "Have you ever been to Japan?"
+          }
+        ],
+        "closing_cue": "Charlotte closes with \"Cool stories!\" when obj_3 hits.",
+        "suggested_flow": "**Suggested flow** (referential, 6 turns):\n\n1. **Charlotte**: \"Have you ever been somewhere amazing?\"\n2. **Student**: ~\"I've been to Italy.\"\n3. **Charlotte**: \"Wow. Never been?\"\n4. **Student**: ~\"I've never tried sushi.\"\n5. **Charlotte**: \"Ask me!\"\n6. **Student**: ~\"Have you ever been to Japan?\"\n7. **Charlotte**: \"Yes, I have! Cool stories!\"",
+        "evaluation_focus": [
+          "have/has + past participle",
+          "ever/never placement",
+          "Question form"
+        ]
+      },
+      "guided_chat": {
+        "scenario": "Charlotte chats about life adventures via text.",
+        "voiced_by": "charlotte",
+        "persona": "Charlotte",
+        "persona_outfit": "charlotte_casual",
+        "intro_en": "Charlotte asks about your life experiences. Practice Have you ever / I've never.",
+        "opening_message": "What's the most adventurous thing you've ever done?",
+        "objectives": [
+          {
+            "id": 1,
+            "label_pt": "Dizer experiência aventureira",
+            "label_en": "Say adventurous experience",
+            "hidden_prompt": "user uses 'I've + past participle'",
+            "hint_pt": "I've gone skydiving.",
+            "hint_en": "I've gone skydiving."
+          },
+          {
+            "id": 2,
+            "label_pt": "Dizer algo que nunca fez",
+            "label_en": "Say something never done",
+            "hidden_prompt": "user uses 'I've never + past participle'",
+            "hint_pt": "I've never climbed a mountain.",
+            "hint_en": "I've never climbed a mountain."
+          },
+          {
+            "id": 3,
+            "label_pt": "Perguntar à Charlotte",
+            "label_en": "Ask Charlotte",
+            "hidden_prompt": "user asks 'Have you ever + past participle?'",
+            "hint_pt": "Have you ever traveled solo?",
+            "hint_en": "Have you ever traveled solo?"
+          }
+        ],
+        "closing_cue": "Charlotte closes with \"Adventure swap!\" when obj_3 hits.",
+        "suggested_script": "**Script** (referential, 7 turns):\n\n1. **Charlotte**: \"What's the most adventurous thing you've ever done?\"\n2. **Student**: \"I've gone skydiving.\"\n3. **Charlotte**: \"Wow!\"\n4. **Student**: \"I've never climbed a mountain.\"\n5. **Charlotte**: \"Yet!\"\n6. **Student**: \"Have you ever traveled solo?\"\n7. **Charlotte**: \"Yes, many times. Adventure swap!\"\n\n> I01 chat = LLM puro.\n\n---"
+      }
+    },
+    {
+      "id": "I02",
+      "title": "I've been to many places",
+      "sub_cefr": "B1",
+      "grammar_focus": "Past participles — common irregulars",
+      "markers": [
+        "denso"
+      ],
+      "real_life_context": "You describe travel and life experiences using common irregular past participles.",
+      "grammar": [
+        {
+          "type": "multiple_choice",
+          "sentence": "I have _____ to many countries.",
+          "options": [
+            "been",
+            "gone",
+            "went"
+          ],
+          "answer": "been",
+          "explanation": "\"Been\" = visited and returned. \"Gone\" = went and still there. For experiences (where you've visited), use \"been\"."
+        },
+        {
+          "type": "multiple_choice",
+          "sentence": "She has _____ a great book.",
+          "options": [
+            "read",
+            "readed",
+            "red"
+          ],
+          "answer": "read",
+          "explanation": "\"Read\" past participle = \"read\" (same spelling, /red/ pronunciation)."
+        },
+        {
+          "type": "word_bank",
+          "sentence": "We have _____ pizza for lunch.",
+          "choices": [
+            "eaten",
+            "ate",
+            "eated",
+            "eating"
+          ],
+          "answer": "eaten",
+          "explanation": "\"Eat\" → \"ate\" → \"eaten\" (past participle)."
+        },
+        {
+          "type": "word_bank",
+          "sentence": "He has _____ many languages.",
+          "choices": [
+            "spoken",
+            "speak",
+            "speaked",
+            "spoke"
+          ],
+          "answer": "spoken",
+          "explanation": "\"Speak\" → \"spoke\" → \"spoken\"."
+        },
+        {
+          "type": "fill_gap",
+          "sentence": "I have _____ a great movie.",
+          "hint": "past participle of \"see\"",
+          "answer": "seen",
+          "explanation": "\"See\" → \"saw\" → \"seen\" (past participle)."
+        },
+        {
+          "type": "fill_gap",
+          "sentence": "She has _____ a new book.",
+          "hint": "past participle of \"write\"",
+          "answer": "written",
+          "explanation": "\"Write\" → \"wrote\" → \"written\"."
+        },
+        {
+          "type": "fill_gap",
+          "sentence": "We have _____ a lot of work.",
+          "hint": "past participle of \"do\"",
+          "answer": "done",
+          "explanation": "\"Do\" → \"did\" → \"done\"."
+        },
+        {
+          "type": "fix_error",
+          "sentence": "I have went to Italy.",
+          "hint": "Use \"been\" for experiences, not \"went\"",
+          "answer": "I have been to Italy.",
+          "explanation": "For experiences = \"been\". \"Gone\" = still there. \"Went\" is past simple (without have)."
+        },
+        {
+          "type": "fix_error",
+          "sentence": "She has ate sushi.",
+          "hint": "past participle of \"eat\"",
+          "answer": "She has eaten sushi.",
+          "explanation": "After has/have, past participle: \"eaten\", not \"ate\"."
+        },
+        {
+          "type": "read_answer",
+          "passage": "I have been to ten countries. I've eaten unusual food and met interesting people. My friend has written a book about her travels.",
+          "question": "What has the friend done?",
+          "answer": "written a book",
+          "explanation": "The text says \"My friend has written a book\"."
+        }
+      ],
+      "listening_speaking": [
+        {
+          "text": "I've been to ten countries.",
+          "context": "been"
+        },
+        {
+          "text": "She has read that book.",
+          "context": "read /red/"
+        },
+        {
+          "text": "We have eaten pizza.",
+          "context": "eaten"
+        },
+        {
+          "text": "He has spoken three languages.",
+          "context": "spoken"
+        },
+        {
+          "text": "I have seen that movie.",
+          "context": "seen"
+        }
+      ],
+      "roleplay": {
+        "scenario": "Charlotte asks about your accomplishments and experiences.",
+        "voiced_by": "charlotte",
+        "persona": "Charlotte",
+        "persona_outfit": "charlotte_casual",
+        "time_budget_sec": 180,
+        "opening_line": "Tell me about your life experiences — places, food, achievements.",
+        "objectives": [
+          {
+            "id": 1,
+            "label_pt": "Lugar onde já esteve (been)",
+            "label_en": "Place you've been",
+            "hidden_prompt": "user uses 'I've been to + place'",
+            "hint_pt": "I've been to Argentina.",
+            "hint_en": "I've been to Argentina."
+          },
+          {
+            "id": 2,
+            "label_pt": "Comida que já comeu (eaten/tried)",
+            "label_en": "Food you've eaten",
+            "hidden_prompt": "user uses 'I've eaten + food' or 'I've tried + food'",
+            "hint_pt": "I've eaten sushi.",
+            "hint_en": "I've eaten sushi."
+          },
+          {
+            "id": 3,
+            "label_pt": "Algo que já fez (done/seen/read)",
+            "label_en": "Something you've done/seen/read",
+            "hidden_prompt": "user uses 'I've done/seen/read + something'",
+            "hint_pt": "I've read three books this month.",
+            "hint_en": "I've read three books this month."
+          }
+        ],
+        "closing_cue": "Charlotte closes with \"Rich life!\" when obj_3 hits.",
+        "suggested_flow": "**Suggested flow** (referential, 6 turns):\n\n1. **Charlotte**: \"Tell me about your life experiences — places, food, achievements.\"\n2. **Student**: ~\"I've been to Argentina.\"\n3. **Charlotte**: \"Food?\"\n4. **Student**: ~\"I've eaten sushi.\"\n5. **Charlotte**: \"Achievement?\"\n6. **Student**: ~\"I've read three books this month.\"\n7. **Charlotte**: \"Rich life!\"",
+        "evaluation_focus": [
+          "Common past participles (been, eaten, seen, done, read, written)",
+          "Have/has agreement",
+          "No \"went\" after have (use \"been\")"
+        ]
+      },
+      "guided_chat": {
+        "scenario": "Charlotte invites a \"life so far\" chat.",
+        "voiced_by": "charlotte",
+        "persona": "Charlotte",
+        "persona_outfit": "charlotte_casual",
+        "intro_en": "Charlotte asks about your life list. Practice past participles.",
+        "opening_message": "What have you achieved in your life so far?",
+        "objectives": [
+          {
+            "id": 1,
+            "label_pt": "Conquista (done/learned/finished)",
+            "label_en": "Achievement",
+            "hidden_prompt": "user uses 'I've done/learned/finished + something'",
+            "hint_pt": "I've learned English.",
+            "hint_en": "I've learned English."
+          },
+          {
+            "id": 2,
+            "label_pt": "Outra experiência",
+            "label_en": "Another experience",
+            "hidden_prompt": "user uses another past participle",
+            "hint_pt": "I've traveled to Europe.",
+            "hint_en": "I've traveled to Europe."
+          },
+          {
+            "id": 3,
+            "label_pt": "Perguntar à Charlotte",
+            "label_en": "Ask Charlotte",
+            "hidden_prompt": "user asks 'How about you?' or 'What have you done?'",
+            "hint_pt": "What have you achieved?",
+            "hint_en": "What have you achieved?"
+          }
+        ],
+        "closing_cue": "Charlotte closes with \"Impressive lives!\" when obj_3 hits.",
+        "suggested_script": "**Script** (referential, 7 turns):\n\n1. **Charlotte**: \"What have you achieved in your life so far?\"\n2. **Student**: \"I've learned English.\"\n3. **Charlotte**: \"Good one. Travel?\"\n4. **Student**: \"I've traveled to Europe.\"\n5. **Charlotte**: \"Cool.\"\n6. **Student**: \"What have you achieved?\"\n7. **Charlotte**: \"I've written a book. Impressive lives!\"\n\n> I02 chat = LLM puro.\n\n---"
+      }
+    },
+    {
+      "id": "I03",
+      "title": "Just, already, yet",
+      "sub_cefr": "B1",
+      "grammar_focus": "just / already / yet with present perfect",
+      "markers": [],
+      "real_life_context": "You talk about recently completed actions and pending tasks.",
+      "grammar": [
+        {
+          "type": "multiple_choice",
+          "sentence": "I've _____ finished my homework.",
+          "options": [
+            "just",
+            "yet",
+            "since"
+          ],
+          "answer": "just",
+          "explanation": "\"Just\" = a moment ago, recently. Goes between have and past participle."
+        },
+        {
+          "type": "multiple_choice",
+          "sentence": "She has _____ eaten breakfast.",
+          "options": [
+            "already",
+            "yet",
+            "since"
+          ],
+          "answer": "already",
+          "explanation": "\"Already\" = sooner than expected. Between has and past participle."
+        },
+        {
+          "type": "word_bank",
+          "sentence": "Have you finished _____?",
+          "choices": [
+            "yet",
+            "just",
+            "already",
+            "never"
+          ],
+          "answer": "yet",
+          "explanation": "\"Yet\" goes at end of QUESTION or NEGATIVE: \"Have you finished yet?\"."
+        },
+        {
+          "type": "word_bank",
+          "sentence": "I haven't seen that movie _____.",
+          "choices": [
+            "yet",
+            "just",
+            "already",
+            "since"
+          ],
+          "answer": "yet",
+          "explanation": "\"Yet\" at end of negative sentence: \"I haven't seen it yet\" = ainda não."
+        },
+        {
+          "type": "fill_gap",
+          "sentence": "She has _____ left the office.",
+          "hint": "a moment ago",
+          "answer": "just",
+          "explanation": "\"Just\" — recent action. \"She has just left\"."
+        },
+        {
+          "type": "fill_gap",
+          "sentence": "I've _____ done my homework — finished an hour ago.",
+          "hint": "sooner than expected",
+          "answer": "already",
+          "explanation": "\"Already\" = before now (sooner). \"I've already done\"."
+        },
+        {
+          "type": "fill_gap",
+          "sentence": "Have they arrived _____?",
+          "hint": "question with yet",
+          "answer": "yet",
+          "explanation": "\"Have they arrived yet?\" — checking if it has happened."
+        },
+        {
+          "type": "fix_error",
+          "sentence": "I've yet seen that movie.",
+          "hint": "yet goes at end, not middle",
+          "answer": "I haven't seen that movie yet.",
+          "explanation": "\"Yet\" goes at END of negative/question, not between have/has and verb. Used with negative."
+        },
+        {
+          "type": "fix_error",
+          "sentence": "She has just leave.",
+          "hint": "after just, need past participle",
+          "answer": "She has just left.",
+          "explanation": "After \"just\", use past participle: \"left\" (not \"leave\")."
+        },
+        {
+          "type": "read_answer",
+          "passage": "I've just finished my report. I've already eaten lunch. I haven't called my mom yet — I'll do it soon.",
+          "question": "What hasn't the speaker done yet?",
+          "answer": "called my mom",
+          "explanation": "The text says \"I haven't called my mom yet\"."
+        }
+      ],
+      "listening_speaking": [
+        {
+          "text": "I've just finished.",
+          "context": "just (recent)"
+        },
+        {
+          "text": "She has already eaten.",
+          "context": "already (sooner)"
+        },
+        {
+          "text": "Have you finished yet?",
+          "context": "yet (question)"
+        },
+        {
+          "text": "I haven't seen it yet.",
+          "context": "yet (negative)"
+        },
+        {
+          "text": "She has just left the office.",
+          "context": "just + 3rd person"
+        }
+      ],
+      "roleplay": {
+        "scenario": "Charlotte checks your progress on a list of tasks.",
+        "voiced_by": "charlotte",
+        "persona": "Charlotte",
+        "persona_outfit": "charlotte_casual",
+        "time_budget_sec": 180,
+        "opening_line": "Have you finished your tasks today?",
+        "objectives": [
+          {
+            "id": 1,
+            "label_pt": "Dizer algo que JÁ fez (already)",
+            "label_en": "Say what you've already done",
+            "hidden_prompt": "user uses 'I've already + past participle'",
+            "hint_pt": "I've already finished my report.",
+            "hint_en": "I've already finished my report."
+          },
+          {
+            "id": 2,
+            "label_pt": "Dizer algo que ACABOU de fazer (just)",
+            "label_en": "Say what you just did",
+            "hidden_prompt": "user uses 'I've just + past participle'",
+            "hint_pt": "I've just had lunch.",
+            "hint_en": "I've just had lunch."
+          },
+          {
+            "id": 3,
+            "label_pt": "Dizer algo que AINDA NÃO fez (yet)",
+            "label_en": "Say what you haven't done yet",
+            "hidden_prompt": "user uses 'I haven't + past participle + yet'",
+            "hint_pt": "I haven't called my mom yet.",
+            "hint_en": "I haven't called my mom yet."
+          }
+        ],
+        "closing_cue": "Charlotte closes with \"Good progress!\" when obj_3 hits.",
+        "suggested_flow": "**Suggested flow** (referential, 6 turns):\n\n1. **Charlotte**: \"Have you finished your tasks today?\"\n2. **Student**: ~\"I've already finished my report.\"\n3. **Charlotte**: \"And lunch?\"\n4. **Student**: ~\"I've just had lunch.\"\n5. **Charlotte**: \"Anything pending?\"\n6. **Student**: ~\"I haven't called my mom yet.\"\n7. **Charlotte**: \"Good progress!\"",
+        "evaluation_focus": [
+          "Position: just/already between have/has and past participle",
+          "Yet at end of negative/question",
+          "Natural use"
+        ]
+      },
+      "guided_chat": {
+        "scenario": "Charlotte chats about today's progress.",
+        "voiced_by": "charlotte",
+        "persona": "Charlotte",
+        "persona_outfit": "charlotte_casual",
+        "intro_en": "Charlotte asks about today's completed and pending tasks. Practice just/already/yet.",
+        "opening_message": "What have you already done today?",
+        "objectives": [
+          {
+            "id": 1,
+            "label_pt": "Algo que já fez",
+            "label_en": "Already done",
+            "hidden_prompt": "user uses 'I've already + past participle'",
+            "hint_pt": "I've already worked out.",
+            "hint_en": "I've already worked out."
+          },
+          {
+            "id": 2,
+            "label_pt": "Algo que ainda não fez",
+            "label_en": "Not yet",
+            "hidden_prompt": "user uses 'I haven't + past participle + yet'",
+            "hint_pt": "I haven't started cooking yet.",
+            "hint_en": "I haven't started cooking yet."
+          },
+          {
+            "id": 3,
+            "label_pt": "Perguntar à Charlotte",
+            "label_en": "Ask Charlotte",
+            "hidden_prompt": "user asks 'How about you?'",
+            "hint_pt": "How about you?",
+            "hint_en": "How about you?"
+          }
+        ],
+        "closing_cue": "Charlotte closes with \"Productive!\" when obj_3 hits.",
+        "suggested_script": "**Script** (referential, 7 turns):\n\n1. **Charlotte**: \"What have you already done today?\"\n2. **Student**: \"I've already worked out.\"\n3. **Charlotte**: \"Pending?\"\n4. **Student**: \"I haven't started cooking yet.\"\n5. **Charlotte**: \"Soon?\"\n6. **Student**: \"How about you?\"\n7. **Charlotte**: \"I've already taught two classes. Productive!\"\n\n> I03 chat = LLM puro.\n\n---"
+      }
+    },
+    {
+      "id": "I04",
+      "title": "Have you been there?",
+      "sub_cefr": "B1",
+      "grammar_focus": "Present perfect questions and short answers",
+      "markers": [
+        "qform"
+      ],
+      "real_life_context": "You quiz friends about life experiences.",
+      "grammar": [
+        {
+          "type": "multiple_choice",
+          "sentence": "_____ you ever been to Italy?",
+          "options": [
+            "Have",
+            "Has",
+            "Did"
+          ],
+          "answer": "Have",
+          "explanation": "PP question with you: \"Have you ever been?\"."
+        },
+        {
+          "type": "multiple_choice",
+          "sentence": "_____ she tried Italian food?",
+          "options": [
+            "Has",
+            "Have",
+            "Did"
+          ],
+          "answer": "Has",
+          "explanation": "She → \"Has\". PP question 3rd person."
+        },
+        {
+          "type": "word_bank",
+          "sentence": "_____ they finished the project?",
+          "choices": [
+            "Have",
+            "Has",
+            "Did",
+            "Are"
+          ],
+          "answer": "Have",
+          "explanation": "Plural → \"Have\"."
+        },
+        {
+          "type": "word_bank",
+          "sentence": "Yes, I _____.",
+          "choices": [
+            "have",
+            "has",
+            "did",
+            "am"
+          ],
+          "answer": "have",
+          "explanation": "Short answer: \"Yes, I have\"."
+        },
+        {
+          "type": "fill_gap",
+          "sentence": "_____ he ever visited Brazil?",
+          "hint": "Have/Has for he",
+          "answer": "Has",
+          "explanation": "\"Has he ever visited?\" — 3rd person."
+        },
+        {
+          "type": "fill_gap",
+          "sentence": "No, she _____.",
+          "hint": "Short answer negative (contracted)",
+          "answer": "hasn't",
+          "explanation": "\"No, she hasn't\" — short negative answer."
+        },
+        {
+          "type": "fill_gap",
+          "sentence": "_____ you eaten breakfast?",
+          "hint": "Have/Has for you",
+          "answer": "Have",
+          "explanation": "\"Have you eaten?\" — you uses \"have\"."
+        },
+        {
+          "type": "fix_error",
+          "sentence": "Did you ever been to Japan?",
+          "hint": "PP questions don't use did",
+          "answer": "Have you ever been to Japan?",
+          "explanation": "PP questions use \"have/has\" inverted, NOT \"did\". \"Did\" is for past simple."
+        },
+        {
+          "type": "fix_error",
+          "sentence": "Have you ever go to Italy?",
+          "hint": "After Have, past participle",
+          "answer": "Have you ever been to Italy?",
+          "explanation": "After \"Have\", use past participle. For experiences = \"been\" (not \"go\" or \"gone\")."
+        },
+        {
+          "type": "read_answer",
+          "passage": "Q: Have you ever traveled solo? A: Yes, I have. Q: Has your sister tried sushi? A: No, she hasn't. She doesn't like fish.",
+          "question": "Has the sister tried sushi?",
+          "answer": "no (or \"she hasn't\")",
+          "explanation": "The text says \"No, she hasn't\"."
+        }
+      ],
+      "listening_speaking": [
+        {
+          "text": "Have you ever been to Italy?",
+          "context": "direct question"
+        },
+        {
+          "text": "Has she tried Italian food?",
+          "context": "3rd person"
+        },
+        {
+          "text": "Have they finished?",
+          "context": "plural"
+        },
+        {
+          "text": "Yes, I have. No, I haven't.",
+          "context": "short answers"
+        },
+        {
+          "text": "Has he ever visited Brazil?",
+          "context": "common question"
+        }
+      ],
+      "roleplay": {
+        "scenario": "Charlotte plays \"experiences quiz\" with you.",
+        "voiced_by": "charlotte",
+        "persona": "Charlotte",
+        "persona_outfit": "charlotte_casual",
+        "time_budget_sec": 180,
+        "opening_line": "Quiz time! Ask me three things from my life.",
+        "objectives": [
+          {
+            "id": 1,
+            "label_pt": "Pergunta com Have you ever",
+            "label_en": "Question with 'Have you ever'",
+            "hidden_prompt": "user asks 'Have you ever + past participle?'",
+            "hint_pt": "Have you ever traveled abroad?",
+            "hint_en": "Have you ever traveled abroad?"
+          },
+          {
+            "id": 2,
+            "label_pt": "Outra pergunta com 'Have you'",
+            "label_en": "Another 'Have you' question",
+            "hidden_prompt": "user asks another 'Have you + past participle?'",
+            "hint_pt": "Have you eaten sushi?",
+            "hint_en": "Have you eaten sushi?"
+          },
+          {
+            "id": 3,
+            "label_pt": "Pergunta sobre alguém (Has)",
+            "label_en": "Ask about someone (Has)",
+            "hidden_prompt": "user asks 'Has + 3rd person + past participle?'",
+            "hint_pt": "Has your sister been to Europe?",
+            "hint_en": "Has your sister been to Europe?"
+          }
+        ],
+        "closing_cue": "Charlotte closes with \"Great quiz!\" when obj_3 hits.",
+        "suggested_flow": "**Suggested flow** (referential, 6 turns):\n\n1. **Charlotte**: \"Quiz time! Ask me three things from my life.\"\n2. **Student**: ~\"Have you ever traveled abroad?\"\n3. **Charlotte**: \"Yes, many times!\"\n4. **Student**: ~\"Have you eaten sushi?\"\n5. **Charlotte**: \"Yes, I love it!\"\n6. **Student**: ~\"Has your sister been to Europe?\"\n7. **Charlotte**: \"Yes! Great quiz!\"",
+        "evaluation_focus": [
+          "Have/Has + subject + past participle",
+          "No \"did\" in PP questions",
+          "Past participles correct"
+        ]
+      },
+      "guided_chat": {
+        "scenario": "Charlotte invites a life experiences exchange.",
+        "voiced_by": "charlotte",
+        "persona": "Charlotte",
+        "persona_outfit": "charlotte_casual",
+        "intro_en": "Charlotte chats about lifetime experiences. Practice Have/Has questions.",
+        "opening_message": "What's something you've always wanted to do?",
+        "objectives": [
+          {
+            "id": 1,
+            "label_pt": "Responder e contar experiência",
+            "label_en": "Answer and tell experience",
+            "hidden_prompt": "user uses 'I've always wanted to + base' or 'I've + past participle'",
+            "hint_pt": "I've always wanted to visit Japan.",
+            "hint_en": "I've always wanted to visit Japan."
+          },
+          {
+            "id": 2,
+            "label_pt": "Perguntar Have you ever",
+            "label_en": "Ask 'Have you ever'",
+            "hidden_prompt": "user asks 'Have you ever + past participle?'",
+            "hint_pt": "Have you ever been there?",
+            "hint_en": "Have you ever been there?"
+          },
+          {
+            "id": 3,
+            "label_pt": "Mais uma pergunta",
+            "label_en": "One more question",
+            "hidden_prompt": "user asks another 'Have you...?'",
+            "hint_pt": "Have you traveled solo?",
+            "hint_en": "Have you traveled solo?"
+          }
+        ],
+        "closing_cue": "Charlotte closes with \"Lots to share!\" when obj_3 hits.",
+        "suggested_script": "**Script** (referential, 7 turns):\n\n1. **Charlotte**: \"What's something you've always wanted to do?\"\n2. **Student**: \"I've always wanted to visit Japan.\"\n3. **Charlotte**: \"Cool dream.\"\n4. **Student**: \"Have you ever been there?\"\n5. **Charlotte**: \"Yes, twice!\"\n6. **Student**: \"Have you traveled solo?\"\n7. **Charlotte**: \"Yes. Lots to share!\"\n\n> I04 chat = LLM puro.\n\n---"
+      }
+    },
+    {
+      "id": "I05",
+      "title": "Life so far",
+      "sub_cefr": "B1",
+      "grammar_focus": "Integration of present perfect",
+      "markers": [],
+      "real_life_context": "You tell a \"life so far\" summary integrating all PP forms.",
+      "grammar": [
+        {
+          "type": "multiple_choice",
+          "sentence": "I _____ visited many countries.",
+          "options": [
+            "have",
+            "has",
+            "had"
+          ],
+          "answer": "have",
+          "explanation": "PP with I uses \"have\"."
+        },
+        {
+          "type": "multiple_choice",
+          "sentence": "She has _____ that book.",
+          "options": [
+            "read",
+            "readed",
+            "red"
+          ],
+          "answer": "read",
+          "explanation": "Past participle of read = read (same spelling, /red/)."
+        },
+        {
+          "type": "word_bank",
+          "sentence": "We have _____ traveled together.",
+          "choices": [
+            "never",
+            "no",
+            "not",
+            "nothing"
+          ],
+          "answer": "never",
+          "explanation": "\"Never\" with PP for life negative."
+        },
+        {
+          "type": "word_bank",
+          "sentence": "_____ you ever climbed a mountain?",
+          "choices": [
+            "Have",
+            "Has",
+            "Did",
+            "Are"
+          ],
+          "answer": "Have",
+          "explanation": "PP question with you."
+        },
+        {
+          "type": "fill_gap",
+          "sentence": "I have _____ finished my project.",
+          "hint": "just (recent)",
+          "answer": "just",
+          "explanation": "\"I have just finished\" — recent."
+        },
+        {
+          "type": "fill_gap",
+          "sentence": "She has _____ eaten breakfast.",
+          "hint": "already (sooner)",
+          "answer": "already",
+          "explanation": "\"Already\" — between has and past participle."
+        },
+        {
+          "type": "fill_gap",
+          "sentence": "I haven't called him _____.",
+          "hint": "yet (end of negative)",
+          "answer": "yet",
+          "explanation": "\"Yet\" at end of negative."
+        },
+        {
+          "type": "fix_error",
+          "sentence": "She have visited Italy.",
+          "hint": "3rd person uses has",
+          "answer": "She has visited Italy.",
+          "explanation": "She → \"has\"."
+        },
+        {
+          "type": "fix_error",
+          "sentence": "I have went to Brazil.",
+          "hint": "Use \"been\" for experience",
+          "answer": "I have been to Brazil.",
+          "explanation": "For life experiences, \"been\" (not \"went\"). \"Went\" needs past simple structure."
+        },
+        {
+          "type": "read_answer",
+          "passage": "I've traveled to five countries. I've never been to Asia. I've just learned that my friend has won a prize.",
+          "question": "What has the friend won?",
+          "answer": "a prize",
+          "explanation": "The text says \"my friend has won a prize\"."
+        }
+      ],
+      "listening_speaking": [
+        {
+          "text": "I've visited many countries.",
+          "context": "life experience"
+        },
+        {
+          "text": "She has read that book.",
+          "context": "3rd person + read"
+        },
+        {
+          "text": "Have you ever climbed a mountain?",
+          "context": "question with ever"
+        },
+        {
+          "text": "I've just finished my project.",
+          "context": "just"
+        },
+        {
+          "text": "I haven't called him yet.",
+          "context": "yet (negative)"
+        }
+      ],
+      "roleplay": {
+        "scenario": "Charlotte asks for your \"life summary\".",
+        "voiced_by": "charlotte",
+        "persona": "Charlotte",
+        "persona_outfit": "charlotte_casual",
+        "time_budget_sec": 180,
+        "opening_line": "Give me three highlights of your life so far.",
+        "objectives": [
+          {
+            "id": 1,
+            "label_pt": "Experiência marcante (I've + past participle)",
+            "label_en": "Major experience",
+            "hidden_prompt": "user uses 'I've + past participle' for major experience",
+            "hint_pt": "I've traveled to Italy.",
+            "hint_en": "I've traveled to Italy."
+          },
+          {
+            "id": 2,
+            "label_pt": "Conquista (just/already)",
+            "label_en": "Achievement (just/already)",
+            "hidden_prompt": "user uses 'I've just/already + past participle'",
+            "hint_pt": "I've just finished my degree.",
+            "hint_en": "I've just finished my degree."
+          },
+          {
+            "id": 3,
+            "label_pt": "Algo que ainda não fez (yet)",
+            "label_en": "Something not yet done",
+            "hidden_prompt": "user uses 'I haven't + past participle + yet'",
+            "hint_pt": "I haven't traveled to Asia yet.",
+            "hint_en": "I haven't traveled to Asia yet."
+          }
+        ],
+        "closing_cue": "Charlotte closes with \"Life snapshot done!\" when obj_3 hits.",
+        "suggested_flow": "**Suggested flow** (referential, 6 turns):\n\n1. **Charlotte**: \"Give me three highlights of your life so far.\"\n2. **Student**: ~\"I've traveled to Italy.\"\n3. **Charlotte**: \"Recent achievement?\"\n4. **Student**: ~\"I've just finished my degree.\"\n5. **Charlotte**: \"Still to come?\"\n6. **Student**: ~\"I haven't traveled to Asia yet.\"\n7. **Charlotte**: \"Life snapshot done!\"",
+        "evaluation_focus": [
+          "have/has + past participle",
+          "just/already/yet placement",
+          "Past participle accuracy"
+        ]
+      },
+      "guided_chat": {
+        "scenario": "Charlotte invites life reflection by chat.",
+        "voiced_by": "charlotte",
+        "persona": "Charlotte",
+        "persona_outfit": "charlotte_casual",
+        "intro_en": "Charlotte invites life reflection. Integrate all PP forms.",
+        "opening_message": "What's your life story so far in three sentences?",
+        "objectives": [
+          {
+            "id": 1,
+            "label_pt": "Experiência principal",
+            "label_en": "Main experience",
+            "hidden_prompt": "user uses 'I've + past participle'",
+            "hint_pt": "I've grown up in Brazil.",
+            "hint_en": "I've grown up in Brazil."
+          },
+          {
+            "id": 2,
+            "label_pt": "Algo recente (just/already)",
+            "label_en": "Recent (just/already)",
+            "hidden_prompt": "user uses 'I've just/already + past participle'",
+            "hint_pt": "I've just started learning English.",
+            "hint_en": "I've just started learning English."
+          },
+          {
+            "id": 3,
+            "label_pt": "Perguntar à Charlotte",
+            "label_en": "Ask Charlotte",
+            "hidden_prompt": "user asks 'How about you?' or 'What about you?'",
+            "hint_pt": "How about you?",
+            "hint_en": "How about you?"
+          }
+        ],
+        "closing_cue": "Charlotte closes with \"Two lives revealed!\" when obj_3 hits.",
+        "suggested_script": "**Script** (referential, 7 turns):\n\n1. **Charlotte**: \"What's your life story so far in three sentences?\"\n2. **Student**: \"I've grown up in Brazil.\"\n3. **Charlotte**: \"Recent?\"\n4. **Student**: \"I've just started learning English.\"\n5. **Charlotte**: \"Cool.\"\n6. **Student**: \"How about you?\"\n7. **Charlotte**: \"I've been a teacher for years. Two lives revealed!\"\n\n> I05 chat = LLM puro.\n\n---"
+      }
+    }
+  ],
+  "cross_unit_consolidation": [
+    "Present perfect: have/has + past participle",
+    "ever / never (life experiences)",
+    "just / already (recent/sooner)",
+    "yet (end of negative/question)",
+    "Common past participles: been, seen, eaten, done, read, written, spoken, gone"
+  ]
+}

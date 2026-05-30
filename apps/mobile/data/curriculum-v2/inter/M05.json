@@ -1,0 +1,1011 @@
+{
+  "id": "M05",
+  "title": "Phrasal verbs essenciais",
+  "level": "Inter",
+  "block": "B1",
+  "units_range": "I01–I05",
+  "theme": "Top 30 essential phrasal verbs",
+  "goal": "Student knows and uses 30 essential phrasal verbs and understands separable vs inseparable.",
+  "connects_to": "M06 (Modal verbs).",
+  "module_chunks": [
+    "get up / wake up / go out / come in / sit down / stand up",
+    "turn on / turn off / put on / take off",
+    "look for / look after / look at / look up",
+    "find out / give up / pick up / put down",
+    "run out of / get along with / come up with / put off",
+    "bring up / carry out / fall through"
+  ],
+  "units": [
+    {
+      "id": "I01",
+      "title": "Daily phrasal verbs",
+      "sub_cefr": "B1",
+      "grammar_focus": "Daily routine phrasal verbs (get up, wake up, go out)",
+      "markers": [],
+      "real_life_context": "You describe your daily routine using phrasal verbs.",
+      "grammar": [
+        {
+          "type": "multiple_choice",
+          "sentence": "I _____ at 6 every morning.",
+          "options": [
+            "get up",
+            "get on",
+            "get out"
+          ],
+          "answer": "get up",
+          "explanation": "\"Get up\" = leave bed. \"Get on\" = enter (bus). \"Get out\" = leave."
+        },
+        {
+          "type": "multiple_choice",
+          "sentence": "Please _____ the light when you leave.",
+          "options": [
+            "turn off",
+            "turn on",
+            "turn over"
+          ],
+          "answer": "turn off",
+          "explanation": "\"Turn off\" = switch off. \"Turn on\" = switch on."
+        },
+        {
+          "type": "word_bank",
+          "sentence": "She _____ her shoes before entering.",
+          "choices": [
+            "takes off",
+            "takes out",
+            "takes in",
+            "takes up"
+          ],
+          "answer": "takes off",
+          "explanation": "\"Take off\" = remove. Opposite of \"put on\"."
+        },
+        {
+          "type": "word_bank",
+          "sentence": "I _____ my coat before going out.",
+          "choices": [
+            "put on",
+            "put off",
+            "put up",
+            "put down"
+          ],
+          "answer": "put on",
+          "explanation": "\"Put on\" = wear. Opposite of \"take off\"."
+        },
+        {
+          "type": "fill_gap",
+          "sentence": "Please _____ the TV — I want to watch the news.",
+          "hint": "switch on",
+          "answer": "turn on",
+          "explanation": "\"Turn on the TV\" — common chunk."
+        },
+        {
+          "type": "fill_gap",
+          "sentence": "We _____ for dinner with friends.",
+          "hint": "leave home (phrasal \"go\" + particle)",
+          "answer": "went out",
+          "explanation": "\"Go out\" = leave home (often for social activity)."
+        },
+        {
+          "type": "fill_gap",
+          "sentence": "He _____ the meeting.",
+          "hint": "phrasal verb \"leave\"",
+          "answer": "left",
+          "explanation": "Sometimes simple verbs work too. \"Left the meeting\"."
+        },
+        {
+          "type": "fix_error",
+          "sentence": "I get up early everyday at 6.",
+          "hint": "spacing of \"every day\"",
+          "answer": "I get up early every day at 6.",
+          "explanation": "\"Every day\" (two words) is the time phrase. \"Everyday\" (one word) is an adjective meaning routine."
+        },
+        {
+          "type": "fix_error",
+          "sentence": "She turned on it.",
+          "hint": "pronoun goes BETWEEN turn and on (separable)",
+          "answer": "She turned it on.",
+          "explanation": "With pronouns, separable phrasal verbs split: \"turn IT on\", not \"turn on it\"."
+        },
+        {
+          "type": "read_answer",
+          "passage": "I get up at 6, put on my workout clothes, and go out for a run. When I come back, I turn on the coffee maker.",
+          "question": "What does the speaker put on?",
+          "answer": "workout clothes (or \"clothes\")",
+          "explanation": "The text says \"put on my workout clothes\"."
+        }
+      ],
+      "listening_speaking": [
+        {
+          "text": "I get up at 6 every day.",
+          "context": "get up"
+        },
+        {
+          "text": "Please turn off the light.",
+          "context": "turn off"
+        },
+        {
+          "text": "She takes off her shoes.",
+          "context": "take off"
+        },
+        {
+          "text": "I put on my coat.",
+          "context": "put on"
+        },
+        {
+          "text": "We went out for dinner.",
+          "context": "go out"
+        }
+      ],
+      "roleplay": {
+        "scenario": "Charlotte asks about your daily routine using phrasal verbs.",
+        "voiced_by": "charlotte",
+        "persona": "Charlotte",
+        "persona_outfit": "charlotte_casual",
+        "time_budget_sec": 180,
+        "opening_line": "Walk me through your morning routine using phrasal verbs.",
+        "objectives": [
+          {
+            "id": 1,
+            "label_pt": "Levantar (get up)",
+            "label_en": "Get up",
+            "hidden_prompt": "user uses 'I get up at + time'",
+            "hint_pt": "I get up at 7.",
+            "hint_en": "I get up at 7."
+          },
+          {
+            "id": 2,
+            "label_pt": "Outro phrasal de manhã",
+            "label_en": "Another morning phrasal",
+            "hidden_prompt": "user uses another phrasal (put on, turn on, go out)",
+            "hint_pt": "I put on my work clothes.",
+            "hint_en": "I put on my work clothes."
+          },
+          {
+            "id": 3,
+            "label_pt": "Phrasal para sair de casa",
+            "label_en": "Phrasal for leaving",
+            "hidden_prompt": "user uses 'I go out' or similar",
+            "hint_pt": "I go out at 8.",
+            "hint_en": "I go out at 8."
+          }
+        ],
+        "closing_cue": "Charlotte closes with \"Routine clear!\" when obj_3 hits.",
+        "suggested_flow": "**Suggested flow** (6 turns):\n\n1. **Charlotte**: \"Walk me through your morning routine using phrasal verbs.\"\n2. **Student**: ~\"I get up at 7.\"\n3. **Charlotte**: \"Then?\"\n4. **Student**: ~\"I put on my work clothes.\"\n5. **Charlotte**: \"Out the door?\"\n6. **Student**: ~\"I go out at 8.\"\n7. **Charlotte**: \"Routine clear!\"",
+        "evaluation_focus": [
+          "Get up, put on, go out used naturally",
+          "Separable forms when needed"
+        ]
+      },
+      "guided_chat": {
+        "scenario": "Charlotte chats about evening routines.",
+        "voiced_by": "charlotte",
+        "persona": "Charlotte",
+        "persona_outfit": "charlotte_casual",
+        "intro_en": "Charlotte asks about your evening routine. Practice daily phrasal verbs.",
+        "opening_message": "What do you do when you come home?",
+        "objectives": [
+          {
+            "id": 1,
+            "label_pt": "Phrasal verb de chegada/casa",
+            "label_en": "Arrival phrasal verb",
+            "hidden_prompt": "user uses 'I come back' or 'I get home'",
+            "hint_pt": "I come back at 6.",
+            "hint_en": "I come back at 6."
+          },
+          {
+            "id": 2,
+            "label_pt": "Outro phrasal verb (take off/turn on)",
+            "label_en": "Another phrasal verb",
+            "hidden_prompt": "user uses 'take off' or 'turn on'",
+            "hint_pt": "I take off my shoes.",
+            "hint_en": "I take off my shoes."
+          },
+          {
+            "id": 3,
+            "label_pt": "Perguntar à Charlotte",
+            "label_en": "Ask Charlotte",
+            "hidden_prompt": "user asks about Charlotte's routine",
+            "hint_pt": "What do you do at home?",
+            "hint_en": "What do you do at home?"
+          }
+        ],
+        "closing_cue": "Charlotte closes with \"Cozy evenings!\" when obj_3 hits.",
+        "suggested_script": "**Script** (7 turns):\n\n1. **Charlotte**: \"What do you do when you come home?\"\n2. **Student**: \"I come back at 6.\"\n3. **Charlotte**: \"Then?\"\n4. **Student**: \"I take off my shoes.\"\n5. **Charlotte**: \"Comfort first.\"\n6. **Student**: \"What do you do at home?\"\n7. **Charlotte**: \"I turn on the music. Cozy evenings!\"\n\n> I01 chat = LLM puro.\n\n---"
+      }
+    },
+    {
+      "id": "I02",
+      "title": "Look for, look after",
+      "sub_cefr": "B1",
+      "grammar_focus": "Phrasal verbs with \"look\" (look for, look after, look at, look up)",
+      "markers": [],
+      "real_life_context": "You use \"look\" phrasal verbs to describe searching, caring, checking.",
+      "grammar": [
+        {
+          "type": "multiple_choice",
+          "sentence": "I'm _____ my keys.",
+          "options": [
+            "looking for",
+            "looking after",
+            "looking at"
+          ],
+          "answer": "looking for",
+          "explanation": "\"Look for\" = search for. \"Look after\" = take care of. \"Look at\" = observe."
+        },
+        {
+          "type": "multiple_choice",
+          "sentence": "She _____ her sister's children.",
+          "options": [
+            "looks after",
+            "looks for",
+            "looks at"
+          ],
+          "answer": "looks after",
+          "explanation": "\"Look after\" = take care of."
+        },
+        {
+          "type": "word_bank",
+          "sentence": "Please _____ the menu.",
+          "choices": [
+            "look at",
+            "look for",
+            "look after",
+            "look up"
+          ],
+          "answer": "look at",
+          "explanation": "\"Look at\" = direct attention to."
+        },
+        {
+          "type": "word_bank",
+          "sentence": "I'll _____ that word in the dictionary.",
+          "choices": [
+            "look up",
+            "look at",
+            "look for",
+            "look after"
+          ],
+          "answer": "look up",
+          "explanation": "\"Look up\" = search information (dictionary, internet)."
+        },
+        {
+          "type": "fill_gap",
+          "sentence": "He's _____ a new job.",
+          "hint": "searching",
+          "answer": "looking for",
+          "explanation": "\"Looking for a job\" — searching."
+        },
+        {
+          "type": "fill_gap",
+          "sentence": "Can you _____ my dog while I'm away?",
+          "hint": "take care of",
+          "answer": "look after",
+          "explanation": "\"Look after my dog\" — take care."
+        },
+        {
+          "type": "fill_gap",
+          "sentence": "I _____ the painting for a long time.",
+          "hint": "observed",
+          "answer": "looked at",
+          "explanation": "\"Looked at\" — past form, observed/admired."
+        },
+        {
+          "type": "fix_error",
+          "sentence": "I'm looking my keys.",
+          "hint": "needs preposition \"for\"",
+          "answer": "I'm looking for my keys.",
+          "explanation": "\"Look FOR\" = search. Missing \"for\" is common error."
+        },
+        {
+          "type": "fix_error",
+          "sentence": "She looks for her grandmother.",
+          "hint": "take care = look after",
+          "answer": "She looks after her grandmother.",
+          "explanation": "For caring, \"look after\", not \"look for\"."
+        },
+        {
+          "type": "read_answer",
+          "passage": "I'm looking for my phone. My sister looks after my kids on weekends. I always look up words I don't know.",
+          "question": "Who looks after the kids?",
+          "answer": "my sister (or \"her sister\")",
+          "explanation": "The text says \"My sister looks after my kids\"."
+        }
+      ],
+      "listening_speaking": [
+        {
+          "text": "I'm looking for my keys.",
+          "context": "searching"
+        },
+        {
+          "text": "She looks after her sister's kids.",
+          "context": "caring"
+        },
+        {
+          "text": "Please look at the menu.",
+          "context": "observe"
+        },
+        {
+          "text": "I'll look up the word.",
+          "context": "research"
+        },
+        {
+          "text": "He's looking for a job.",
+          "context": "searching"
+        }
+      ],
+      "roleplay": {
+        "scenario": "Charlotte asks about your \"look\" activities lately.",
+        "voiced_by": "charlotte",
+        "persona": "Charlotte",
+        "persona_outfit": "charlotte_casual",
+        "time_budget_sec": 180,
+        "opening_line": "What have you been looking for or looking after?",
+        "objectives": [
+          {
+            "id": 1,
+            "label_pt": "Algo que está procurando (look for)",
+            "label_en": "Something searching",
+            "hidden_prompt": "user uses 'I'm looking for + thing'",
+            "hint_pt": "I'm looking for a new apartment.",
+            "hint_en": "I'm looking for a new apartment."
+          },
+          {
+            "id": 2,
+            "label_pt": "Alguém ou algo que cuida (look after)",
+            "label_en": "Someone you look after",
+            "hidden_prompt": "user uses 'I look after + person/pet'",
+            "hint_pt": "I look after my dog.",
+            "hint_en": "I look after my dog."
+          },
+          {
+            "id": 3,
+            "label_pt": "Algo que pesquisou (looked up)",
+            "label_en": "Something looked up",
+            "hidden_prompt": "user uses 'I looked up + something'",
+            "hint_pt": "I looked up a recipe.",
+            "hint_en": "I looked up a recipe."
+          }
+        ],
+        "closing_cue": "Charlotte closes with \"Multitasker!\" when obj_3 hits.",
+        "suggested_flow": "**Suggested flow** (6 turns):\n\n1. **Charlotte**: \"What have you been looking for or looking after?\"\n2. **Student**: ~\"I'm looking for a new apartment.\"\n3. **Charlotte**: \"Caring for?\"\n4. **Student**: ~\"I look after my dog.\"\n5. **Charlotte**: \"Researched?\"\n6. **Student**: ~\"I looked up a recipe.\"\n7. **Charlotte**: \"Multitasker!\"",
+        "evaluation_focus": [
+          "look for / after / at / up — correct meaning",
+          "Particles attached",
+          "Natural context"
+        ]
+      },
+      "guided_chat": {
+        "scenario": "Charlotte chats about responsibilities and searches.",
+        "voiced_by": "charlotte",
+        "persona": "Charlotte",
+        "persona_outfit": "charlotte_casual",
+        "intro_en": "Charlotte asks who and what you look after / look for. Practice 'look' phrasal verbs.",
+        "opening_message": "Anyone you take care of these days?",
+        "objectives": [
+          {
+            "id": 1,
+            "label_pt": "Pessoa/animal que cuida",
+            "label_en": "Person/pet cared for",
+            "hidden_prompt": "user uses 'I look after + person/pet'",
+            "hint_pt": "I look after my niece.",
+            "hint_en": "I look after my niece."
+          },
+          {
+            "id": 2,
+            "label_pt": "Algo que procura",
+            "label_en": "Something searching",
+            "hidden_prompt": "user uses 'I'm looking for + thing'",
+            "hint_pt": "I'm looking for a new hobby.",
+            "hint_en": "I'm looking for a new hobby."
+          },
+          {
+            "id": 3,
+            "label_pt": "Perguntar à Charlotte",
+            "label_en": "Ask Charlotte",
+            "hidden_prompt": "user asks 'How about you?'",
+            "hint_pt": "How about you?",
+            "hint_en": "How about you?"
+          }
+        ],
+        "closing_cue": "Charlotte closes with \"Caring crew!\" when obj_3 hits.",
+        "suggested_script": "**Script** (7 turns):\n\n1. **Charlotte**: \"Anyone you take care of these days?\"\n2. **Student**: \"I look after my niece.\"\n3. **Charlotte**: \"Sweet.\"\n4. **Student**: \"I'm looking for a new hobby.\"\n5. **Charlotte**: \"Try yoga.\"\n6. **Student**: \"How about you?\"\n7. **Charlotte**: \"I look after a community group. Caring crew!\"\n\n> I02 chat = LLM puro.\n\n---"
+      }
+    },
+    {
+      "id": "I03",
+      "title": "Find out, give up, pick up",
+      "sub_cefr": "B1",
+      "grammar_focus": "Phrasal verbs of discovery, ending, fetching",
+      "markers": [],
+      "real_life_context": "You describe discovering information, quitting, and fetching things.",
+      "grammar": [
+        {
+          "type": "multiple_choice",
+          "sentence": "I _____ that she got married.",
+          "options": [
+            "found out",
+            "found",
+            "find out"
+          ],
+          "answer": "found out",
+          "explanation": "\"Find out\" = discover. Past: \"found out\"."
+        },
+        {
+          "type": "multiple_choice",
+          "sentence": "He _____ smoking last year.",
+          "options": [
+            "gave up",
+            "gave",
+            "give up"
+          ],
+          "answer": "gave up",
+          "explanation": "\"Give up\" = quit. Past: \"gave up\"."
+        },
+        {
+          "type": "word_bank",
+          "sentence": "Can you _____ my brother at the airport?",
+          "choices": [
+            "pick up",
+            "pick",
+            "pick out",
+            "pick on"
+          ],
+          "answer": "pick up",
+          "explanation": "\"Pick up\" = collect/fetch someone."
+        },
+        {
+          "type": "word_bank",
+          "sentence": "She _____ her phone on the table.",
+          "choices": [
+            "put down",
+            "put up",
+            "put on",
+            "put off"
+          ],
+          "answer": "put down",
+          "explanation": "\"Put down\" = place down."
+        },
+        {
+          "type": "fill_gap",
+          "sentence": "I _____ the truth yesterday.",
+          "hint": "discovered",
+          "answer": "found out",
+          "explanation": "Past simple of \"find out\"."
+        },
+        {
+          "type": "fill_gap",
+          "sentence": "He _____ coffee three months ago.",
+          "hint": "quit",
+          "answer": "gave up",
+          "explanation": "\"Gave up coffee\" = stopped drinking."
+        },
+        {
+          "type": "fill_gap",
+          "sentence": "I'll _____ you at 7.",
+          "hint": "fetch",
+          "answer": "pick up",
+          "explanation": "\"Pick you up\" (or \"pick up you\" — but \"you\" between)."
+        },
+        {
+          "type": "fix_error",
+          "sentence": "I picked up him at the station.",
+          "hint": "With pronoun, separate",
+          "answer": "I picked him up at the station.",
+          "explanation": "Pronoun goes BETWEEN: \"picked him up\", not \"picked up him\"."
+        },
+        {
+          "type": "fix_error",
+          "sentence": "She found that I was late.",
+          "hint": "needs \"out\"",
+          "answer": "She found out that I was late.",
+          "explanation": "\"Find out\" = discover info. \"Found\" alone = located physically."
+        },
+        {
+          "type": "read_answer",
+          "passage": "I found out about the party yesterday. I'll pick you up at 8. Don't give up trying!",
+          "question": "When will the speaker pick you up?",
+          "answer": "at 8 (or \"8\")",
+          "explanation": "The text says \"I'll pick you up at 8\"."
+        }
+      ],
+      "listening_speaking": [
+        {
+          "text": "I found out yesterday.",
+          "context": "discovery"
+        },
+        {
+          "text": "He gave up smoking.",
+          "context": "quitting"
+        },
+        {
+          "text": "Can you pick me up at 7?",
+          "context": "fetching"
+        },
+        {
+          "text": "She put down her phone.",
+          "context": "placing"
+        },
+        {
+          "text": "Don't give up!",
+          "context": "encouragement"
+        }
+      ],
+      "roleplay": {
+        "scenario": "Charlotte chats about news, decisions, and plans.",
+        "voiced_by": "charlotte",
+        "persona": "Charlotte",
+        "persona_outfit": "charlotte_casual",
+        "time_budget_sec": 180,
+        "opening_line": "Any news? What did you find out recently?",
+        "objectives": [
+          {
+            "id": 1,
+            "label_pt": "Algo que descobriu (found out)",
+            "label_en": "Discovery",
+            "hidden_prompt": "user uses 'I found out + something'",
+            "hint_pt": "I found out about a new job.",
+            "hint_en": "I found out about a new job."
+          },
+          {
+            "id": 2,
+            "label_pt": "Algo que abandonou (gave up)",
+            "label_en": "Gave up something",
+            "hidden_prompt": "user uses 'I gave up + something'",
+            "hint_pt": "I gave up coffee.",
+            "hint_en": "I gave up coffee."
+          },
+          {
+            "id": 3,
+            "label_pt": "Pedir pra buscar (pick up)",
+            "label_en": "Ask for pickup",
+            "hidden_prompt": "user uses 'Can you pick me up?'",
+            "hint_pt": "Can you pick me up at 7?",
+            "hint_en": "Can you pick me up at 7?"
+          }
+        ],
+        "closing_cue": "Charlotte closes with \"News and plans!\" when obj_3 hits.",
+        "suggested_flow": "**Suggested flow** (6 turns):\n\n1. **Charlotte**: \"Any news? What did you find out recently?\"\n2. **Student**: ~\"I found out about a new job.\"\n3. **Charlotte**: \"Quit anything?\"\n4. **Student**: ~\"I gave up coffee.\"\n5. **Charlotte**: \"Plans for tonight?\"\n6. **Student**: ~\"Can you pick me up at 7?\"\n7. **Charlotte**: \"Sure! News and plans!\"",
+        "evaluation_focus": [
+          "Found out / gave up / pick up",
+          "Pronoun position in separable phrasals"
+        ]
+      },
+      "guided_chat": {
+        "scenario": "Charlotte invites you to share recent discoveries and quits.",
+        "voiced_by": "charlotte",
+        "persona": "Charlotte",
+        "persona_outfit": "charlotte_casual",
+        "intro_en": "Charlotte asks about news. Practice found out / gave up.",
+        "opening_message": "What's something you've found out lately?",
+        "objectives": [
+          {
+            "id": 1,
+            "label_pt": "Descoberta recente",
+            "label_en": "Recent discovery",
+            "hidden_prompt": "user uses 'I found out + ...'",
+            "hint_pt": "I found out my friend is moving.",
+            "hint_en": "I found out my friend is moving."
+          },
+          {
+            "id": 2,
+            "label_pt": "Algo que largou",
+            "label_en": "Gave up something",
+            "hidden_prompt": "user uses 'I gave up + something'",
+            "hint_pt": "I gave up sweets.",
+            "hint_en": "I gave up sweets."
+          },
+          {
+            "id": 3,
+            "label_pt": "Perguntar à Charlotte",
+            "label_en": "Ask Charlotte",
+            "hidden_prompt": "user asks 'How about you?'",
+            "hint_pt": "How about you?",
+            "hint_en": "How about you?"
+          }
+        ],
+        "closing_cue": "Charlotte closes with \"News exchange!\" when obj_3 hits.",
+        "suggested_script": "**Script** (7 turns):\n\n1. **Charlotte**: \"What's something you've found out lately?\"\n2. **Student**: \"I found out my friend is moving.\"\n3. **Charlotte**: \"Wow.\"\n4. **Student**: \"I gave up sweets.\"\n5. **Charlotte**: \"Discipline.\"\n6. **Student**: \"How about you?\"\n7. **Charlotte**: \"I gave up social media. News exchange!\"\n\n> I03 chat = LLM puro.\n\n---"
+      }
+    },
+    {
+      "id": "I04",
+      "title": "Separable vs inseparable",
+      "sub_cefr": "B1",
+      "grammar_focus": "Phrasal verbs — pronoun placement",
+      "markers": [
+        "denso"
+      ],
+      "real_life_context": "You correctly position pronouns with separable phrasal verbs.",
+      "grammar": [
+        {
+          "type": "multiple_choice",
+          "sentence": "She turned _____ off.",
+          "options": [
+            "it",
+            "on it",
+            "for it"
+          ],
+          "answer": "it",
+          "explanation": "With pronoun, separable phrasal verb splits: \"turned IT off\"."
+        },
+        {
+          "type": "multiple_choice",
+          "sentence": "He looks _____ his sister.",
+          "options": [
+            "after",
+            "out",
+            "down"
+          ],
+          "answer": "after",
+          "explanation": "\"Look after\" inseparable — pronoun goes after the phrasal: \"look after her\"."
+        },
+        {
+          "type": "word_bank",
+          "sentence": "I picked _____ from the airport.",
+          "choices": [
+            "him up",
+            "up him",
+            "for him",
+            "up to him"
+          ],
+          "answer": "him up",
+          "explanation": "Pronoun between: \"picked HIM up\"."
+        },
+        {
+          "type": "word_bank",
+          "sentence": "She looks after _____.",
+          "choices": [
+            "them",
+            "them all",
+            "for them",
+            "them up"
+          ],
+          "answer": "them",
+          "explanation": "\"Look after\" inseparable. Pronoun goes AFTER the whole phrasal verb."
+        },
+        {
+          "type": "fill_gap",
+          "sentence": "Please turn the music _____.",
+          "hint": "switch off",
+          "answer": "off",
+          "explanation": "With noun, can separate: \"turn the music off\" OR \"turn off the music\". Both correct."
+        },
+        {
+          "type": "fill_gap",
+          "sentence": "Can you pick me _____ at 8?",
+          "hint": "separable particle",
+          "answer": "up",
+          "explanation": "With pronoun \"me\", separated: \"pick me up\"."
+        },
+        {
+          "type": "fill_gap",
+          "sentence": "She looks _____ her dog every day.",
+          "hint": "takes care of (after)",
+          "answer": "after",
+          "explanation": "\"Look after\" inseparable. \"After her dog\"."
+        },
+        {
+          "type": "fix_error",
+          "sentence": "She picked up me.",
+          "hint": "pronoun between",
+          "answer": "She picked me up.",
+          "explanation": "Separable phrasal verb with pronoun: split. \"Picked ME up\"."
+        },
+        {
+          "type": "fix_error",
+          "sentence": "He looks his mother after.",
+          "hint": "Inseparable means no split",
+          "answer": "He looks after his mother.",
+          "explanation": "\"Look after\" is inseparable — never split, even with pronoun."
+        },
+        {
+          "type": "read_answer",
+          "passage": "I turned the TV off. Can you pick me up at 7? She looks after her dad every weekend.",
+          "question": "When should they pick the speaker up?",
+          "answer": "at 7 (or \"7\")",
+          "explanation": "The text says \"pick me up at 7\"."
+        }
+      ],
+      "listening_speaking": [
+        {
+          "text": "She turned it off.",
+          "context": "separable with pronoun"
+        },
+        {
+          "text": "He looks after his sister.",
+          "context": "inseparable"
+        },
+        {
+          "text": "I picked him up.",
+          "context": "separable"
+        },
+        {
+          "text": "She looks after them.",
+          "context": "inseparable with pronoun"
+        },
+        {
+          "text": "Please turn the music off.",
+          "context": "separable with noun (either position)"
+        }
+      ],
+      "roleplay": {
+        "scenario": "Charlotte tests your pronoun placement.",
+        "voiced_by": "charlotte",
+        "persona": "Charlotte",
+        "persona_outfit": "charlotte_casual",
+        "time_budget_sec": 180,
+        "opening_line": "Practice phrasal verbs with pronouns — three sentences.",
+        "objectives": [
+          {
+            "id": 1,
+            "label_pt": "Separable com pronome (it/him/them)",
+            "label_en": "Separable with pronoun",
+            "hidden_prompt": "user splits separable phrasal with pronoun",
+            "hint_pt": "I turned it off.",
+            "hint_en": "I turned it off."
+          },
+          {
+            "id": 2,
+            "label_pt": "Inseparável (look after, etc.)",
+            "label_en": "Inseparable",
+            "hidden_prompt": "user uses inseparable phrasal correctly",
+            "hint_pt": "She looks after them.",
+            "hint_en": "She looks after them."
+          },
+          {
+            "id": 3,
+            "label_pt": "Mais um phrasal correto",
+            "label_en": "One more correct phrasal",
+            "hidden_prompt": "user uses another phrasal verb correctly",
+            "hint_pt": "He picked me up at 8.",
+            "hint_en": "He picked me up at 8."
+          }
+        ],
+        "closing_cue": "Charlotte closes with \"Pronoun pro!\" when obj_3 hits.",
+        "suggested_flow": "**Suggested flow** (6 turns):\n\n1. **Charlotte**: \"Practice phrasal verbs with pronouns — three sentences.\"\n2. **Student**: ~\"I turned it off.\"\n3. **Charlotte**: \"Now inseparable.\"\n4. **Student**: ~\"She looks after them.\"\n5. **Charlotte**: \"One more!\"\n6. **Student**: ~\"He picked me up at 8.\"\n7. **Charlotte**: \"Pronoun pro!\"",
+        "evaluation_focus": [
+          "Separable splits with pronoun",
+          "Inseparable doesn't split",
+          "Natural placement"
+        ]
+      },
+      "guided_chat": {
+        "scenario": "Charlotte chats about helping each other.",
+        "voiced_by": "charlotte",
+        "persona": "Charlotte",
+        "persona_outfit": "charlotte_casual",
+        "intro_en": "Charlotte chats about everyday actions. Practice phrasal verb positioning.",
+        "opening_message": "Can you help me with something tomorrow?",
+        "objectives": [
+          {
+            "id": 1,
+            "label_pt": "Oferecer ajuda (pick up)",
+            "label_en": "Offer help (pick up)",
+            "hidden_prompt": "user uses 'I'll pick you up'",
+            "hint_pt": "I'll pick you up at 6.",
+            "hint_en": "I'll pick you up at 6."
+          },
+          {
+            "id": 2,
+            "label_pt": "Outra oferta (turn on/off)",
+            "label_en": "Another offer",
+            "hidden_prompt": "user uses another phrasal correctly",
+            "hint_pt": "I'll turn the lights off.",
+            "hint_en": "I'll turn the lights off."
+          },
+          {
+            "id": 3,
+            "label_pt": "Perguntar à Charlotte",
+            "label_en": "Ask Charlotte",
+            "hidden_prompt": "user asks Charlotte something using phrasal verb",
+            "hint_pt": "Can you look after my dog?",
+            "hint_en": "Can you look after my dog?"
+          }
+        ],
+        "closing_cue": "Charlotte closes with \"Team work!\" when obj_3 hits.",
+        "suggested_script": "**Script** (7 turns):\n\n1. **Charlotte**: \"Can you help me with something tomorrow?\"\n2. **Student**: \"I'll pick you up at 6.\"\n3. **Charlotte**: \"Perfect.\"\n4. **Student**: \"I'll turn the lights off.\"\n5. **Charlotte**: \"Thanks.\"\n6. **Student**: \"Can you look after my dog?\"\n7. **Charlotte**: \"Of course! Team work!\"\n\n> I04 chat = LLM puro.\n\n---"
+      }
+    },
+    {
+      "id": "I05",
+      "title": "Phrasal verbs combined",
+      "sub_cefr": "B1",
+      "grammar_focus": "Integration of phrasal verbs in narrative",
+      "markers": [],
+      "real_life_context": "You tell a story using multiple phrasal verbs.",
+      "grammar": [
+        {
+          "type": "multiple_choice",
+          "sentence": "I _____ early today.",
+          "options": [
+            "got up",
+            "get up",
+            "getted up"
+          ],
+          "answer": "got up",
+          "explanation": "Past simple: \"got up\" (got + up)."
+        },
+        {
+          "type": "multiple_choice",
+          "sentence": "She _____ his keys on the table.",
+          "options": [
+            "picked up",
+            "picks up",
+            "picked"
+          ],
+          "answer": "picked up",
+          "explanation": "\"Pick up\" past simple = \"picked up\"."
+        },
+        {
+          "type": "word_bank",
+          "sentence": "We _____ the truth from him.",
+          "choices": [
+            "found out",
+            "find out",
+            "found",
+            "find"
+          ],
+          "answer": "found out",
+          "explanation": "Past: \"found out\"."
+        },
+        {
+          "type": "word_bank",
+          "sentence": "Please _____ your shoes before entering.",
+          "choices": [
+            "take off",
+            "take",
+            "take it off",
+            "takes off"
+          ],
+          "answer": "take off",
+          "explanation": "Imperative: \"take off\"."
+        },
+        {
+          "type": "fill_gap",
+          "sentence": "I'm _____ a new apartment.",
+          "hint": "searching for (-ing)",
+          "answer": "looking for",
+          "explanation": "\"Looking for\" — present continuous."
+        },
+        {
+          "type": "fill_gap",
+          "sentence": "He _____ smoking last year.",
+          "hint": "quit (past)",
+          "answer": "gave up",
+          "explanation": "\"Gave up\" — past of give up."
+        },
+        {
+          "type": "fill_gap",
+          "sentence": "She _____ her cat every day.",
+          "hint": "takes care of",
+          "answer": "looks after",
+          "explanation": "\"Looks after\" — present 3rd person."
+        },
+        {
+          "type": "fix_error",
+          "sentence": "I picked up him at the airport.",
+          "hint": "pronoun between",
+          "answer": "I picked him up at the airport.",
+          "explanation": "Separable + pronoun = split."
+        },
+        {
+          "type": "fix_error",
+          "sentence": "She looks her sister after.",
+          "hint": "Inseparable",
+          "answer": "She looks after her sister.",
+          "explanation": "\"Look after\" never splits."
+        },
+        {
+          "type": "read_answer",
+          "passage": "I got up early today. I was looking for my keys. I gave up after 10 minutes — I called my friend who picked me up.",
+          "question": "Who picked the speaker up?",
+          "answer": "my friend (or \"the friend\")",
+          "explanation": "The text says \"my friend who picked me up\"."
+        }
+      ],
+      "listening_speaking": [
+        {
+          "text": "I got up early today.",
+          "context": "got up"
+        },
+        {
+          "text": "She picked up his keys.",
+          "context": "picked up"
+        },
+        {
+          "text": "We found out the truth.",
+          "context": "found out"
+        },
+        {
+          "text": "Please take off your shoes.",
+          "context": "take off"
+        },
+        {
+          "text": "He gave up smoking.",
+          "context": "gave up"
+        }
+      ],
+      "roleplay": {
+        "scenario": "Charlotte asks for a story using multiple phrasal verbs.",
+        "voiced_by": "charlotte",
+        "persona": "Charlotte",
+        "persona_outfit": "charlotte_casual",
+        "time_budget_sec": 180,
+        "opening_line": "Tell me a 3-sentence story with three different phrasal verbs.",
+        "objectives": [
+          {
+            "id": 1,
+            "label_pt": "Primeira frase com phrasal",
+            "label_en": "First with phrasal",
+            "hidden_prompt": "user uses a phrasal verb in past or present",
+            "hint_pt": "I got up at 6.",
+            "hint_en": "I got up at 6."
+          },
+          {
+            "id": 2,
+            "label_pt": "Segunda com phrasal diferente",
+            "label_en": "Second with different phrasal",
+            "hidden_prompt": "user uses another phrasal verb",
+            "hint_pt": "I was looking for my phone.",
+            "hint_en": "I was looking for my phone."
+          },
+          {
+            "id": 3,
+            "label_pt": "Terceira com mais um phrasal",
+            "label_en": "Third with another phrasal",
+            "hidden_prompt": "user uses one more phrasal verb",
+            "hint_pt": "I gave up and called a taxi.",
+            "hint_en": "I gave up and called a taxi."
+          }
+        ],
+        "closing_cue": "Charlotte closes with \"Phrasal storyteller!\" when obj_3 hits.",
+        "suggested_flow": "**Suggested flow** (6 turns):\n\n1. **Charlotte**: \"Tell me a 3-sentence story with three different phrasal verbs.\"\n2. **Student**: ~\"I got up at 6.\"\n3. **Charlotte**: \"Then?\"\n4. **Student**: ~\"I was looking for my phone.\"\n5. **Charlotte**: \"Result?\"\n6. **Student**: ~\"I gave up and called a taxi.\"\n7. **Charlotte**: \"Phrasal storyteller!\"",
+        "evaluation_focus": [
+          "Variety of phrasal verbs",
+          "Correct forms (past/present/-ing)",
+          "Coherent narrative"
+        ]
+      },
+      "guided_chat": {
+        "scenario": "Charlotte chats about your busy day with phrasal verbs.",
+        "voiced_by": "charlotte",
+        "persona": "Charlotte",
+        "persona_outfit": "charlotte_casual",
+        "intro_en": "Charlotte invites a phrasal-rich chat. Integrate multiple phrasal verbs.",
+        "opening_message": "What did your day look like today?",
+        "objectives": [
+          {
+            "id": 1,
+            "label_pt": "Atividade com phrasal verb",
+            "label_en": "Activity with phrasal",
+            "hidden_prompt": "user uses a phrasal verb",
+            "hint_pt": "I got up at 7.",
+            "hint_en": "I got up at 7."
+          },
+          {
+            "id": 2,
+            "label_pt": "Outra atividade com phrasal",
+            "label_en": "Another phrasal activity",
+            "hidden_prompt": "user uses another phrasal",
+            "hint_pt": "I went out for lunch.",
+            "hint_en": "I went out for lunch."
+          },
+          {
+            "id": 3,
+            "label_pt": "Perguntar à Charlotte",
+            "label_en": "Ask Charlotte",
+            "hidden_prompt": "user asks 'How about you?'",
+            "hint_pt": "How about you?",
+            "hint_en": "How about you?"
+          }
+        ],
+        "closing_cue": "Charlotte closes with \"Full day, full phrasals!\" when obj_3 hits.",
+        "suggested_script": "**Script** (7 turns):\n\n1. **Charlotte**: \"What did your day look like today?\"\n2. **Student**: \"I got up at 7.\"\n3. **Charlotte**: \"Then?\"\n4. **Student**: \"I went out for lunch.\"\n5. **Charlotte**: \"Cool.\"\n6. **Student**: \"How about you?\"\n7. **Charlotte**: \"I picked up groceries. Full day, full phrasals!\"\n\n> I05 chat = LLM puro.\n\n---"
+      }
+    }
+  ],
+  "cross_unit_consolidation": [
+    "Top 30 phrasal verbs in context",
+    "Separable vs inseparable awareness",
+    "Pronoun placement correctly",
+    "Natural use in narrative"
+  ]
+}

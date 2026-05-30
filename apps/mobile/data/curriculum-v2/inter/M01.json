@@ -1,0 +1,1020 @@
+{
+  "id": "M01",
+  "title": "Eventos no passado",
+  "level": "Inter",
+  "block": "B1",
+  "units_range": "I01–I05",
+  "theme": "Past continuous + narrative contrast with past simple",
+  "goal": "Student can describe ongoing past actions with past continuous (was/were + -ing), contrast with past simple (background vs event), and use while/when/as in narrative.",
+  "connects_to": "I02 (Present perfect) — after past tense narratives, move to life experiences with present perfect.",
+  "module_chunks": [
+    "I was working / She was studying / They were sleeping",
+    "I wasn't working / He wasn't watching",
+    "Was I working? / Were you sleeping?",
+    "while / when / as (time clauses)",
+    "It was raining when I left.",
+    "While I was cooking, she called.",
+    "past continuous = background, past simple = event",
+    "at that moment / at the time / yesterday morning"
+  ],
+  "units": [
+    {
+      "id": "I01",
+      "title": "What were you doing?",
+      "sub_cefr": "B1",
+      "grammar_focus": "Past continuous positive (was/were + verb-ing)",
+      "markers": [
+        "denso"
+      ],
+      "real_life_context": "You describe what you were doing at a specific moment yesterday.",
+      "grammar": [
+        {
+          "type": "multiple_choice",
+          "sentence": "I _____ studying at 8pm yesterday.",
+          "options": [
+            "was",
+            "were",
+            "am"
+          ],
+          "answer": "was",
+          "explanation": "Past continuous with \"I\" uses \"was\" + verb-ing: \"I was studying\"."
+        },
+        {
+          "type": "multiple_choice",
+          "sentence": "They _____ playing soccer when it rained.",
+          "options": [
+            "were",
+            "was",
+            "are"
+          ],
+          "answer": "were",
+          "explanation": "Plurals (they/we/you) use \"were\" + ing: \"They were playing\"."
+        },
+        {
+          "type": "word_bank",
+          "sentence": "She _____ cooking dinner at 7pm.",
+          "choices": [
+            "was",
+            "were",
+            "is",
+            "had"
+          ],
+          "answer": "was",
+          "explanation": "She/he/it use \"was\" in past continuous."
+        },
+        {
+          "type": "word_bank",
+          "sentence": "We _____ watching TV last night.",
+          "choices": [
+            "were",
+            "was",
+            "are",
+            "had"
+          ],
+          "answer": "were",
+          "explanation": "\"We\" plural uses \"were watching\"."
+        },
+        {
+          "type": "fill_gap",
+          "sentence": "At 10pm yesterday, I _____ sleeping.",
+          "hint": "was/were for \"I\"",
+          "answer": "was",
+          "explanation": "\"I was sleeping\" — past continuous with I."
+        },
+        {
+          "type": "fill_gap",
+          "sentence": "They _____ talking when I arrived.",
+          "hint": "was/were for plural",
+          "answer": "were",
+          "explanation": "\"They were talking\" — past continuous plural."
+        },
+        {
+          "type": "fill_gap",
+          "sentence": "He was _____ his car when I called.",
+          "hint": "verb \"wash\" in -ing form",
+          "answer": "washing",
+          "explanation": "\"Wash\" + ing = \"washing\". Note: no doubled consonant after vowel-consonant-y."
+        },
+        {
+          "type": "fix_error",
+          "sentence": "I were studying yesterday.",
+          "hint": "I uses \"was\", not \"were\"",
+          "answer": "I was studying yesterday.",
+          "explanation": "\"I\" uses \"was\" in past tense, not \"were\". Only we/you/they use \"were\"."
+        },
+        {
+          "type": "fix_error",
+          "sentence": "She was cook dinner.",
+          "hint": "After \"was\", verb needs -ing",
+          "answer": "She was cooking dinner.",
+          "explanation": "Past continuous = was/were + verb-ING. \"Cooking\", not \"cook\"."
+        },
+        {
+          "type": "read_answer",
+          "passage": "Yesterday at 8pm, I was studying English. My sister was watching TV. My parents were eating dinner. We were all busy.",
+          "question": "What was the sister doing?",
+          "answer": "watching TV",
+          "explanation": "The text says \"My sister was watching TV\"."
+        }
+      ],
+      "listening_speaking": [
+        {
+          "text": "I was studying at 8pm.",
+          "context": "own past continuous"
+        },
+        {
+          "text": "They were playing soccer.",
+          "context": "plural past continuous"
+        },
+        {
+          "text": "She was cooking dinner.",
+          "context": "3rd person"
+        },
+        {
+          "text": "We were watching TV last night.",
+          "context": "group activity"
+        },
+        {
+          "text": "He was washing his car when I called.",
+          "context": "past continuous + when"
+        }
+      ],
+      "roleplay": {
+        "scenario": "Charlotte asks you what you were doing at specific times yesterday.",
+        "voiced_by": "charlotte",
+        "persona": "Charlotte",
+        "persona_outfit": "charlotte_casual",
+        "time_budget_sec": 180,
+        "opening_line": "What were you doing yesterday at 8pm?",
+        "objectives": [
+          {
+            "id": 1,
+            "label_pt": "Dizer o que você estava fazendo num horário",
+            "label_en": "Say what you were doing at a time",
+            "hidden_prompt": "user states past continuous activity with 'I was + verb-ing + at + time'",
+            "hint_pt": "I was studying at 8pm.",
+            "hint_en": "I was studying at 8pm."
+          },
+          {
+            "id": 2,
+            "label_pt": "Dizer o que alguém estava fazendo",
+            "label_en": "Say what someone was doing",
+            "hidden_prompt": "user uses 'He/She was + verb-ing' or 'They were + verb-ing'",
+            "hint_pt": "My sister was watching TV.",
+            "hint_en": "My sister was watching TV."
+          },
+          {
+            "id": 3,
+            "label_pt": "Mais uma atividade em progresso",
+            "label_en": "One more ongoing activity",
+            "hidden_prompt": "user uses another past continuous",
+            "hint_pt": "We were eating dinner.",
+            "hint_en": "We were eating dinner."
+          }
+        ],
+        "closing_cue": "Charlotte closes with \"Busy evening!\" when obj_3 hits.",
+        "suggested_flow": "**Suggested flow** (referential, 6 turns):\n\n1. **Charlotte**: \"What were you doing yesterday at 8pm?\"\n2. **Student**: ~\"I was studying at 8pm.\"\n3. **Charlotte**: \"And your family?\"\n4. **Student**: ~\"My sister was watching TV.\"\n5. **Charlotte**: \"What else?\"\n6. **Student**: ~\"We were eating dinner.\"\n7. **Charlotte**: \"Busy evening!\"",
+        "evaluation_focus": [
+          "was/were + verb-ing",
+          "Correct person agreement",
+          "Time markers (at 8pm, last night)"
+        ]
+      },
+      "guided_chat": {
+        "scenario": "Charlotte chats about what was happening last night.",
+        "voiced_by": "charlotte",
+        "persona": "Charlotte",
+        "persona_outfit": "charlotte_casual",
+        "intro_en": "Charlotte asks about your last night activities. Practice past continuous.",
+        "opening_message": "What were you doing last night around 9pm?",
+        "objectives": [
+          {
+            "id": 1,
+            "label_pt": "Dizer atividade em progresso ontem à noite",
+            "label_en": "Say last night ongoing activity",
+            "hidden_prompt": "user uses 'I was + verb-ing'",
+            "hint_pt": "I was reading.",
+            "hint_en": "I was reading."
+          },
+          {
+            "id": 2,
+            "label_pt": "Dizer o que outra pessoa estava fazendo",
+            "label_en": "Say what someone else was doing",
+            "hidden_prompt": "user uses 'X was + verb-ing'",
+            "hint_pt": "My brother was playing games.",
+            "hint_en": "My brother was playing games."
+          },
+          {
+            "id": 3,
+            "label_pt": "Perguntar à Charlotte",
+            "label_en": "Ask Charlotte",
+            "hidden_prompt": "user asks 'What were you doing?' or 'How about you?'",
+            "hint_pt": "What were you doing?",
+            "hint_en": "What were you doing?"
+          }
+        ],
+        "closing_cue": "Charlotte closes with \"Cozy night around!\" when obj_3 hits.",
+        "suggested_script": "**Script** (referential, 7 turns):\n\n1. **Charlotte**: \"What were you doing last night around 9pm?\"\n2. **Student**: \"I was reading.\"\n3. **Charlotte**: \"Anyone with you?\"\n4. **Student**: \"My brother was playing games.\"\n5. **Charlotte**: \"Typical.\"\n6. **Student**: \"What were you doing?\"\n7. **Charlotte**: \"I was watching a movie. Cozy night around!\"\n\n> I01 chat = LLM puro.\n\n---"
+      }
+    },
+    {
+      "id": "I02",
+      "title": "I wasn't doing that",
+      "sub_cefr": "B1",
+      "grammar_focus": "Past continuous negative (wasn't/weren't + -ing)",
+      "markers": [],
+      "real_life_context": "You correct assumptions about what you were doing.",
+      "grammar": [
+        {
+          "type": "multiple_choice",
+          "sentence": "I _____ sleeping. I was studying.",
+          "options": [
+            "wasn't",
+            "weren't",
+            "didn't"
+          ],
+          "answer": "wasn't",
+          "explanation": "Past continuous negative with I: \"I wasn't\" (was not)."
+        },
+        {
+          "type": "multiple_choice",
+          "sentence": "They _____ playing soccer; they were watching TV.",
+          "options": [
+            "weren't",
+            "wasn't",
+            "didn't"
+          ],
+          "answer": "weren't",
+          "explanation": "Plural past continuous negative: \"weren't\" (were not)."
+        },
+        {
+          "type": "word_bank",
+          "sentence": "She _____ cooking; she was on the phone.",
+          "choices": [
+            "wasn't",
+            "weren't",
+            "didn't",
+            "no was"
+          ],
+          "answer": "wasn't",
+          "explanation": "She → \"wasn't\"."
+        },
+        {
+          "type": "word_bank",
+          "sentence": "We _____ talking when you came in.",
+          "choices": [
+            "weren't",
+            "wasn't",
+            "didn't",
+            "no were"
+          ],
+          "answer": "weren't",
+          "explanation": "We plural → \"weren't\"."
+        },
+        {
+          "type": "fill_gap",
+          "sentence": "He _____ working at home yesterday.",
+          "hint": "Past continuous negative (contracted)",
+          "answer": "wasn't",
+          "explanation": "\"He wasn't working\" — 3rd person negative contracted."
+        },
+        {
+          "type": "fill_gap",
+          "sentence": "I _____ studying when you called.",
+          "hint": "Past continuous negative with I",
+          "answer": "wasn't",
+          "explanation": "\"I wasn't\" — past continuous negative."
+        },
+        {
+          "type": "fill_gap",
+          "sentence": "They _____ paying attention.",
+          "hint": "Plural past continuous negative",
+          "answer": "weren't",
+          "explanation": "\"They weren't paying\" — plural negative."
+        },
+        {
+          "type": "fix_error",
+          "sentence": "I didn't studying yesterday.",
+          "hint": "Past continuous doesn't use \"didn't\"",
+          "answer": "I wasn't studying yesterday.",
+          "explanation": "Past continuous negative uses was/were + not + -ing, not \"didn't\". \"I wasn't studying\", not \"I didn't studying\"."
+        },
+        {
+          "type": "fix_error",
+          "sentence": "She weren't cooking.",
+          "hint": "She is singular",
+          "answer": "She wasn't cooking.",
+          "explanation": "She → \"wasn't\" (was not). \"Weren't\" is for plurals."
+        },
+        {
+          "type": "read_answer",
+          "passage": "I wasn't sleeping at midnight — I was reading. My sister wasn't working either. We weren't doing anything special.",
+          "question": "What was the speaker doing at midnight?",
+          "answer": "reading",
+          "explanation": "The text says \"I was reading\"."
+        }
+      ],
+      "listening_speaking": [
+        {
+          "text": "I wasn't sleeping.",
+          "context": "own negative"
+        },
+        {
+          "text": "They weren't playing soccer.",
+          "context": "plural negative"
+        },
+        {
+          "text": "She wasn't cooking.",
+          "context": "3rd negative"
+        },
+        {
+          "text": "We weren't talking.",
+          "context": "plural we"
+        },
+        {
+          "text": "He wasn't working at home yesterday.",
+          "context": "3rd + time"
+        }
+      ],
+      "roleplay": {
+        "scenario": "Charlotte makes wrong guesses about what you were doing — you correct her.",
+        "voiced_by": "charlotte",
+        "persona": "Charlotte",
+        "persona_outfit": "charlotte_casual",
+        "time_budget_sec": 180,
+        "opening_line": "I bet you were sleeping at 10pm last night!",
+        "objectives": [
+          {
+            "id": 1,
+            "label_pt": "Corrigir Charlotte (I wasn't)",
+            "label_en": "Correct Charlotte (I wasn't)",
+            "hidden_prompt": "user uses 'I wasn't + verb-ing'",
+            "hint_pt": "I wasn't sleeping.",
+            "hint_en": "I wasn't sleeping."
+          },
+          {
+            "id": 2,
+            "label_pt": "Dizer o que VOCÊ estava fazendo",
+            "label_en": "Say what you WERE doing",
+            "hidden_prompt": "user uses 'I was + verb-ing'",
+            "hint_pt": "I was reading.",
+            "hint_en": "I was reading."
+          },
+          {
+            "id": 3,
+            "label_pt": "Dizer o que alguém NÃO estava fazendo",
+            "label_en": "Say what someone wasn't doing",
+            "hidden_prompt": "user uses 'He/She wasn't + verb-ing' or 'They weren't + verb-ing'",
+            "hint_pt": "My sister wasn't sleeping either.",
+            "hint_en": "My sister wasn't sleeping either."
+          }
+        ],
+        "closing_cue": "Charlotte closes with \"Mystery solved!\" when obj_3 hits.",
+        "suggested_flow": "**Suggested flow** (referential, 6 turns):\n\n1. **Charlotte**: \"I bet you were sleeping at 10pm last night!\"\n2. **Student**: ~\"I wasn't sleeping.\"\n3. **Charlotte**: \"What then?\"\n4. **Student**: ~\"I was reading.\"\n5. **Charlotte**: \"Your sister?\"\n6. **Student**: ~\"My sister wasn't sleeping either.\"\n7. **Charlotte**: \"Mystery solved!\"",
+        "evaluation_focus": [
+          "wasn't/weren't natural contractions",
+          "No \"didn't + ing\"",
+          "Person agreement"
+        ]
+      },
+      "guided_chat": {
+        "scenario": "Charlotte asks about what wasn't happening at home.",
+        "voiced_by": "charlotte",
+        "persona": "Charlotte",
+        "persona_outfit": "charlotte_casual",
+        "intro_en": "Charlotte explores what wasn't happening. Practice wasn't/weren't + ing.",
+        "opening_message": "What weren't you doing this morning?",
+        "objectives": [
+          {
+            "id": 1,
+            "label_pt": "Dizer o que não estava fazendo",
+            "label_en": "Say what you weren't doing",
+            "hidden_prompt": "user uses 'I wasn't + verb-ing'",
+            "hint_pt": "I wasn't working.",
+            "hint_en": "I wasn't working."
+          },
+          {
+            "id": 2,
+            "label_pt": "Dizer o que alguém não estava fazendo",
+            "label_en": "Say what someone wasn't doing",
+            "hidden_prompt": "user uses 'He/She wasn't + verb-ing'",
+            "hint_pt": "My brother wasn't studying.",
+            "hint_en": "My brother wasn't studying."
+          },
+          {
+            "id": 3,
+            "label_pt": "Perguntar à Charlotte",
+            "label_en": "Ask Charlotte",
+            "hidden_prompt": "user asks 'How about you?'",
+            "hint_pt": "How about you?",
+            "hint_en": "How about you?"
+          }
+        ],
+        "closing_cue": "Charlotte closes with \"Got the picture!\" when obj_3 hits.",
+        "suggested_script": "**Script** (referential, 7 turns):\n\n1. **Charlotte**: \"What weren't you doing this morning?\"\n2. **Student**: \"I wasn't working.\"\n3. **Charlotte**: \"Anyone else?\"\n4. **Student**: \"My brother wasn't studying.\"\n5. **Charlotte**: \"Lazy morning.\"\n6. **Student**: \"How about you?\"\n7. **Charlotte**: \"I wasn't checking emails. Got the picture!\"\n\n> I02 chat = LLM puro.\n\n---"
+      }
+    },
+    {
+      "id": "I03",
+      "title": "Were you doing that?",
+      "sub_cefr": "B1",
+      "grammar_focus": "Past continuous questions (Was/Were + subject + -ing?)",
+      "markers": [
+        "qform"
+      ],
+      "real_life_context": "You ask others what they were doing at specific times.",
+      "grammar": [
+        {
+          "type": "multiple_choice",
+          "sentence": "_____ you working at 9pm?",
+          "options": [
+            "Were",
+            "Was",
+            "Did"
+          ],
+          "answer": "Were",
+          "explanation": "\"Were you working?\" — past continuous question with you uses \"were\"."
+        },
+        {
+          "type": "multiple_choice",
+          "sentence": "_____ she sleeping?",
+          "options": [
+            "Was",
+            "Were",
+            "Did"
+          ],
+          "answer": "Was",
+          "explanation": "\"Was she sleeping?\" — she/he/it use \"was\" inverted."
+        },
+        {
+          "type": "word_bank",
+          "sentence": "What _____ you doing at 8?",
+          "choices": [
+            "were",
+            "was",
+            "did",
+            "have"
+          ],
+          "answer": "were",
+          "explanation": "\"What were you doing?\" — WH + were + you."
+        },
+        {
+          "type": "word_bank",
+          "sentence": "_____ they playing soccer?",
+          "choices": [
+            "Were",
+            "Was",
+            "Did",
+            "Have"
+          ],
+          "answer": "Were",
+          "explanation": "\"Were they playing?\" — plural question."
+        },
+        {
+          "type": "fill_gap",
+          "sentence": "_____ he watching TV?",
+          "hint": "Was/were for he in question",
+          "answer": "Was",
+          "explanation": "\"Was he watching?\" — he uses \"was\"."
+        },
+        {
+          "type": "fill_gap",
+          "sentence": "What _____ she doing yesterday?",
+          "hint": "was/were for she",
+          "answer": "was",
+          "explanation": "\"What was she doing?\" — WH past continuous."
+        },
+        {
+          "type": "fill_gap",
+          "sentence": "Yes, I _____.",
+          "hint": "short answer",
+          "answer": "was",
+          "explanation": "\"Yes, I was\" — short answer with was/were."
+        },
+        {
+          "type": "fix_error",
+          "sentence": "Did you working?",
+          "hint": "Past continuous uses to-be, not did",
+          "answer": "Were you working?",
+          "explanation": "Past continuous questions use was/were inverted, not \"did\". \"Did\" is for past simple."
+        },
+        {
+          "type": "fix_error",
+          "sentence": "Was she works?",
+          "hint": "After Was, use -ing form",
+          "answer": "Was she working?",
+          "explanation": "After \"Was + subject\", verb takes -ing: \"Was she working?\", not \"Was she works?\"."
+        },
+        {
+          "type": "read_answer",
+          "passage": "Q: Were you studying yesterday at 8pm? A: Yes, I was. Q: Was your sister with you? A: No, she wasn't. She was at the gym.",
+          "question": "Where was the sister?",
+          "answer": "at the gym",
+          "explanation": "The text says \"She was at the gym\"."
+        }
+      ],
+      "listening_speaking": [
+        {
+          "text": "Were you working at 9pm?",
+          "context": "direct question"
+        },
+        {
+          "text": "Was she sleeping?",
+          "context": "3rd person"
+        },
+        {
+          "text": "What were you doing at 8?",
+          "context": "WH question"
+        },
+        {
+          "text": "Were they playing soccer?",
+          "context": "plural"
+        },
+        {
+          "text": "Yes, I was. No, I wasn't.",
+          "context": "short answers",
+          "audio_url": "https://fnvjibzreepubageztoi.supabase.co/storage/v1/object/public/curriculum-audio/ls/ea584243934e6dda.flac"
+        }
+      ],
+      "roleplay": {
+        "scenario": "Charlotte answers — you ask about her activities last night.",
+        "voiced_by": "charlotte",
+        "persona": "Charlotte",
+        "persona_outfit": "charlotte_casual",
+        "time_budget_sec": 180,
+        "opening_line": "Ask me about my evening yesterday.",
+        "objectives": [
+          {
+            "id": 1,
+            "label_pt": "Perguntar 'Were you...?'",
+            "label_en": "Ask 'Were you...?'",
+            "hidden_prompt": "user asks 'Were you + verb-ing?'",
+            "hint_pt": "Were you watching TV?",
+            "hint_en": "Were you watching TV?"
+          },
+          {
+            "id": 2,
+            "label_pt": "Pergunta WH com past continuous",
+            "label_en": "WH question with past continuous",
+            "hidden_prompt": "user asks 'What/Where/Who were you + verb-ing?'",
+            "hint_pt": "What were you doing at 9?",
+            "hint_en": "What were you doing at 9?"
+          },
+          {
+            "id": 3,
+            "label_pt": "Perguntar sobre outra pessoa (Was)",
+            "label_en": "Ask about someone (Was)",
+            "hidden_prompt": "user asks 'Was + 3rd person + verb-ing?'",
+            "hint_pt": "Was your sister cooking?",
+            "hint_en": "Was your sister cooking?"
+          }
+        ],
+        "closing_cue": "Charlotte closes with \"Great questions!\" when obj_3 hits.",
+        "suggested_flow": "**Suggested flow** (referential, 6 turns):\n\n1. **Charlotte**: \"Ask me about my evening yesterday.\"\n2. **Student**: ~\"Were you watching TV?\"\n3. **Charlotte**: \"Yes, I was!\"\n4. **Student**: ~\"What were you doing at 9?\"\n5. **Charlotte**: \"Reading. Final?\"\n6. **Student**: ~\"Was your sister cooking?\"\n7. **Charlotte**: \"Yes! Great questions!\"",
+        "evaluation_focus": [
+          "Was/Were inverted",
+          "No \"did\" for continuous",
+          "-ing form after subject"
+        ]
+      },
+      "guided_chat": {
+        "scenario": "Charlotte answers a quiz about last weekend.",
+        "voiced_by": "charlotte",
+        "persona": "Charlotte",
+        "persona_outfit": "charlotte_casual",
+        "intro_en": "Charlotte invites a quiz about her past activities. Practice was/were questions.",
+        "opening_message": "Quiz me about Sunday afternoon!",
+        "objectives": [
+          {
+            "id": 1,
+            "label_pt": "Pergunta yes/no com Were",
+            "label_en": "Yes/no with Were",
+            "hidden_prompt": "user asks 'Were you + verb-ing?'",
+            "hint_pt": "Were you cooking?",
+            "hint_en": "Were you cooking?"
+          },
+          {
+            "id": 2,
+            "label_pt": "Pergunta yes/no com Was",
+            "label_en": "Yes/no with Was",
+            "hidden_prompt": "user asks 'Was + 3rd person + verb-ing?'",
+            "hint_pt": "Was your friend with you?",
+            "hint_en": "Was your friend with you?"
+          },
+          {
+            "id": 3,
+            "label_pt": "Pergunta WH",
+            "label_en": "WH question",
+            "hidden_prompt": "user asks WH + were/was + verb-ing",
+            "hint_pt": "What were you doing at 3?",
+            "hint_en": "What were you doing at 3?"
+          }
+        ],
+        "closing_cue": "Charlotte closes with \"Quiz solved!\" when obj_3 hits.",
+        "suggested_script": "**Script** (referential, 7 turns):\n\n1. **Charlotte**: \"Quiz me about Sunday afternoon!\"\n2. **Student**: \"Were you cooking?\"\n3. **Charlotte**: \"Yes!\"\n4. **Student**: \"Was your friend with you?\"\n5. **Charlotte**: \"Yes, she was.\"\n6. **Student**: \"What were you doing at 3?\"\n7. **Charlotte**: \"Eating dessert. Quiz solved!\"\n\n> I03 chat = LLM puro.\n\n---"
+      }
+    },
+    {
+      "id": "I04",
+      "title": "While I was cooking",
+      "sub_cefr": "B1",
+      "grammar_focus": "Past continuous + past simple (while/when/as)",
+      "markers": [
+        "denso"
+      ],
+      "real_life_context": "You tell stories where one action interrupts another in the past.",
+      "grammar": [
+        {
+          "type": "multiple_choice",
+          "sentence": "_____ I was cooking, she called.",
+          "options": [
+            "While",
+            "Because",
+            "So"
+          ],
+          "answer": "While",
+          "explanation": "\"While\" introduces a long action in progress. \"While I was cooking, she called\" — background + event."
+        },
+        {
+          "type": "multiple_choice",
+          "sentence": "She was sleeping _____ the phone rang.",
+          "options": [
+            "when",
+            "while",
+            "because"
+          ],
+          "answer": "when",
+          "explanation": "\"When\" introduces the shorter, interrupting action: \"She was sleeping when the phone rang\"."
+        },
+        {
+          "type": "word_bank",
+          "sentence": "I _____ TV when he arrived.",
+          "choices": [
+            "was watching",
+            "watched",
+            "watch",
+            "had watched"
+          ],
+          "answer": "was watching",
+          "explanation": "Background action (longer) = past continuous: \"I was watching\". Event (shorter) = past simple: \"he arrived\"."
+        },
+        {
+          "type": "word_bank",
+          "sentence": "While she _____, I made dinner.",
+          "choices": [
+            "was working",
+            "worked",
+            "works",
+            "had worked"
+          ],
+          "answer": "was working",
+          "explanation": "After \"while\", use past continuous: \"while she was working\"."
+        },
+        {
+          "type": "fill_gap",
+          "sentence": "I was reading when my friend _____.",
+          "hint": "past simple of \"call\"",
+          "answer": "called",
+          "explanation": "Event (interruption) = past simple: \"called\"."
+        },
+        {
+          "type": "fill_gap",
+          "sentence": "While she _____ TV, the lights went off.",
+          "hint": "past continuous of \"watch\"",
+          "answer": "was watching",
+          "explanation": "Background = past continuous: \"was watching\"."
+        },
+        {
+          "type": "fill_gap",
+          "sentence": "As I _____ home, I saw an accident.",
+          "hint": "past continuous of \"walk\"",
+          "answer": "was walking",
+          "explanation": "\"As\" similar to \"while\" — background action."
+        },
+        {
+          "type": "fix_error",
+          "sentence": "I was cooking when she was arriving.",
+          "hint": "Event = past simple, not continuous",
+          "answer": "I was cooking when she arrived.",
+          "explanation": "Interrupting event is past SIMPLE (arrived), not continuous. \"When she arrived\"."
+        },
+        {
+          "type": "fix_error",
+          "sentence": "While I cooked, she called.",
+          "hint": "After while, past continuous",
+          "answer": "While I was cooking, she called.",
+          "explanation": "After \"while\", use past continuous (the longer action). \"While I was cooking\"."
+        },
+        {
+          "type": "read_answer",
+          "passage": "Yesterday I was studying when my friend called. While I was talking to her, my mom arrived. We were having dinner when the lights went off.",
+          "question": "What was the speaker doing when the friend called?",
+          "answer": "studying",
+          "explanation": "The text says \"I was studying when my friend called\"."
+        }
+      ],
+      "listening_speaking": [
+        {
+          "text": "While I was cooking, she called.",
+          "context": "while clause"
+        },
+        {
+          "text": "I was sleeping when the phone rang.",
+          "context": "when interruption"
+        },
+        {
+          "text": "As I was walking home, I saw a friend.",
+          "context": "as + past continuous"
+        },
+        {
+          "text": "They were eating when I arrived.",
+          "context": "typical interruption"
+        },
+        {
+          "text": "What were you doing when it happened?",
+          "context": "common question"
+        }
+      ],
+      "roleplay": {
+        "scenario": "Charlotte asks for stories with interruptions in the past.",
+        "voiced_by": "charlotte",
+        "persona": "Charlotte",
+        "persona_outfit": "charlotte_casual",
+        "time_budget_sec": 180,
+        "opening_line": "Tell me a story — what were you doing when something interrupted?",
+        "objectives": [
+          {
+            "id": 1,
+            "label_pt": "Cenário com 'when' (interrupção)",
+            "label_en": "Scene with 'when' (interruption)",
+            "hidden_prompt": "user uses 'I was + verb-ing + when + past simple'",
+            "hint_pt": "I was reading when the phone rang.",
+            "hint_en": "I was reading when the phone rang."
+          },
+          {
+            "id": 2,
+            "label_pt": "Cenário com 'while'",
+            "label_en": "Scene with 'while'",
+            "hidden_prompt": "user uses 'While + past continuous, past simple'",
+            "hint_pt": "While I was cooking, she arrived.",
+            "hint_en": "While I was cooking, she arrived."
+          },
+          {
+            "id": 3,
+            "label_pt": "Outro cenário com 'as' ou 'when'",
+            "label_en": "Another scene with 'as' or 'when'",
+            "hidden_prompt": "user uses another time clause structure",
+            "hint_pt": "As I was walking, I saw a friend.",
+            "hint_en": "As I was walking, I saw a friend."
+          }
+        ],
+        "closing_cue": "Charlotte closes with \"Vivid story!\" when obj_3 hits.",
+        "suggested_flow": "**Suggested flow** (referential, 6 turns):\n\n1. **Charlotte**: \"Tell me a story — what were you doing when something interrupted?\"\n2. **Student**: ~\"I was reading when the phone rang.\"\n3. **Charlotte**: \"Cool. While clause?\"\n4. **Student**: ~\"While I was cooking, she arrived.\"\n5. **Charlotte**: \"Last one?\"\n6. **Student**: ~\"As I was walking, I saw a friend.\"\n7. **Charlotte**: \"Vivid story!\"",
+        "evaluation_focus": [
+          "Past continuous = background, past simple = event",
+          "While + past continuous",
+          "When + past simple"
+        ]
+      },
+      "guided_chat": {
+        "scenario": "Charlotte explores moments of interruption in your week.",
+        "voiced_by": "charlotte",
+        "persona": "Charlotte",
+        "persona_outfit": "charlotte_casual",
+        "intro_en": "Charlotte asks about interruptions in your past week. Practice while/when contrast.",
+        "opening_message": "Anything funny happen while you were doing something this week?",
+        "objectives": [
+          {
+            "id": 1,
+            "label_pt": "Cena com while",
+            "label_en": "While scene",
+            "hidden_prompt": "user uses 'While + past continuous, past simple'",
+            "hint_pt": "While I was eating, the cat jumped.",
+            "hint_en": "While I was eating, the cat jumped."
+          },
+          {
+            "id": 2,
+            "label_pt": "Cena com when",
+            "label_en": "When scene",
+            "hidden_prompt": "user uses 'I was + ing + when + past simple'",
+            "hint_pt": "I was watching TV when the lights went off.",
+            "hint_en": "I was watching TV when the lights went off."
+          },
+          {
+            "id": 3,
+            "label_pt": "Perguntar à Charlotte",
+            "label_en": "Ask Charlotte",
+            "hidden_prompt": "user asks 'What about you?'",
+            "hint_pt": "What about you?",
+            "hint_en": "What about you?"
+          }
+        ],
+        "closing_cue": "Charlotte closes with \"Funny moments!\" when obj_3 hits.",
+        "suggested_script": "**Script** (referential, 7 turns):\n\n1. **Charlotte**: \"Anything funny happen while you were doing something this week?\"\n2. **Student**: \"While I was eating, the cat jumped.\"\n3. **Charlotte**: \"Classic cat.\"\n4. **Student**: \"I was watching TV when the lights went off.\"\n5. **Charlotte**: \"Drama.\"\n6. **Student**: \"What about you?\"\n7. **Charlotte**: \"I was on a call when my dog barked! Funny moments!\"\n\n> I04 chat = LLM puro.\n\n---"
+      }
+    },
+    {
+      "id": "I05",
+      "title": "Tell the full story",
+      "sub_cefr": "B1",
+      "grammar_focus": "Integration past continuous + past simple in narrative",
+      "markers": [],
+      "real_life_context": "You tell a full short story combining past continuous (background) and past simple (events).",
+      "grammar": [
+        {
+          "type": "multiple_choice",
+          "sentence": "I _____ when she arrived.",
+          "options": [
+            "was studying",
+            "studied",
+            "studies"
+          ],
+          "answer": "was studying",
+          "explanation": "Background action = past continuous."
+        },
+        {
+          "type": "multiple_choice",
+          "sentence": "She _____ when I called.",
+          "options": [
+            "was working",
+            "worked",
+            "works"
+          ],
+          "answer": "was working",
+          "explanation": "Background = continuous."
+        },
+        {
+          "type": "word_bank",
+          "sentence": "We _____ dinner when the doorbell rang.",
+          "choices": [
+            "were having",
+            "had",
+            "have",
+            "are having"
+          ],
+          "answer": "were having",
+          "explanation": "\"Were having\" — background dinner action."
+        },
+        {
+          "type": "word_bank",
+          "sentence": "While he _____, the alarm went off.",
+          "choices": [
+            "was sleeping",
+            "slept",
+            "sleeps",
+            "had slept"
+          ],
+          "answer": "was sleeping",
+          "explanation": "After while, past continuous."
+        },
+        {
+          "type": "fill_gap",
+          "sentence": "I _____ TV when my mom came in.",
+          "hint": "Background action",
+          "answer": "was watching",
+          "explanation": "\"Was watching\" — past continuous background."
+        },
+        {
+          "type": "fill_gap",
+          "sentence": "She _____ the bus when it started to rain.",
+          "hint": "past continuous of \"wait for\"",
+          "answer": "was waiting for",
+          "explanation": "\"Was waiting for the bus\" — background."
+        },
+        {
+          "type": "fill_gap",
+          "sentence": "While we _____ for lunch, it started to rain.",
+          "hint": "past continuous of \"cook\"",
+          "answer": "were cooking",
+          "explanation": "\"Were cooking\" — plural past continuous."
+        },
+        {
+          "type": "fix_error",
+          "sentence": "When I came, she cooked.",
+          "hint": "Wrong tenses for interruption",
+          "answer": "When I came, she was cooking.",
+          "explanation": "The ongoing action (cooking) should be continuous. \"She was cooking when I came\"."
+        },
+        {
+          "type": "fix_error",
+          "sentence": "While I worked, she called.",
+          "hint": "While + past continuous",
+          "answer": "While I was working, she called.",
+          "explanation": "After while, the longer action is continuous: \"While I was working\"."
+        },
+        {
+          "type": "read_answer",
+          "passage": "Yesterday I was walking home when it started to rain. I was running to a shop when I saw an old friend. We were talking when our boss called us both.",
+          "question": "What was the speaker doing when it started to rain?",
+          "answer": "walking home",
+          "explanation": "The text says \"I was walking home when it started to rain\"."
+        }
+      ],
+      "listening_speaking": [
+        {
+          "text": "I was studying when she arrived.",
+          "context": "typical narrative"
+        },
+        {
+          "text": "She was working when I called.",
+          "context": "3rd person"
+        },
+        {
+          "text": "We were having dinner when the doorbell rang.",
+          "context": "plural we"
+        },
+        {
+          "text": "While he was sleeping, the alarm went off.",
+          "context": "while clause"
+        },
+        {
+          "text": "As I was walking, it started to rain.",
+          "context": "as + past simple event"
+        }
+      ],
+      "roleplay": {
+        "scenario": "Charlotte asks for a 3-sentence story with both tenses integrated.",
+        "voiced_by": "charlotte",
+        "persona": "Charlotte",
+        "persona_outfit": "charlotte_casual",
+        "time_budget_sec": 180,
+        "opening_line": "Tell me a 3-sentence story using past continuous and past simple together.",
+        "objectives": [
+          {
+            "id": 1,
+            "label_pt": "Primeira frase com background continuous + event simple",
+            "label_en": "First sentence: continuous + simple",
+            "hidden_prompt": "user uses 'I was + ing + when + past simple'",
+            "hint_pt": "I was walking when it started to rain.",
+            "hint_en": "I was walking when it started to rain."
+          },
+          {
+            "id": 2,
+            "label_pt": "Segunda frase com while",
+            "label_en": "Second with while",
+            "hidden_prompt": "user uses 'While + past continuous, past simple'",
+            "hint_pt": "While I was running for shelter, I saw a friend.",
+            "hint_en": "While I was running for shelter, I saw a friend."
+          },
+          {
+            "id": 3,
+            "label_pt": "Terceira frase fechando a história",
+            "label_en": "Third sentence closing the story",
+            "hidden_prompt": "user uses another past continuous + simple combination",
+            "hint_pt": "We were talking when our boss called us.",
+            "hint_en": "We were talking when our boss called us."
+          }
+        ],
+        "closing_cue": "Charlotte closes with \"Great narrative!\" when obj_3 hits.",
+        "suggested_flow": "**Suggested flow** (referential, 6 turns):\n\n1. **Charlotte**: \"Tell me a 3-sentence story using past continuous and past simple together.\"\n2. **Student**: ~\"I was walking when it started to rain.\"\n3. **Charlotte**: \"Then?\"\n4. **Student**: ~\"While I was running for shelter, I saw a friend.\"\n5. **Charlotte**: \"Twist?\"\n6. **Student**: ~\"We were talking when our boss called us.\"\n7. **Charlotte**: \"Great narrative!\"",
+        "evaluation_focus": [
+          "Sequence of tenses",
+          "Background vs event distinction",
+          "Fluid storytelling"
+        ]
+      },
+      "guided_chat": {
+        "scenario": "Charlotte invites a complete past story in chat.",
+        "voiced_by": "charlotte",
+        "persona": "Charlotte",
+        "persona_outfit": "charlotte_casual",
+        "intro_en": "Charlotte asks for a memorable past story. Integrate continuous + simple.",
+        "opening_message": "Tell me about a memorable moment from this year.",
+        "objectives": [
+          {
+            "id": 1,
+            "label_pt": "Começar com cenário em past continuous",
+            "label_en": "Start with continuous setting",
+            "hidden_prompt": "user starts with 'I was + verb-ing'",
+            "hint_pt": "I was traveling in Italy.",
+            "hint_en": "I was traveling in Italy."
+          },
+          {
+            "id": 2,
+            "label_pt": "Adicionar evento com when",
+            "label_en": "Add event with when",
+            "hidden_prompt": "user adds event with 'when + past simple'",
+            "hint_pt": "When I met an old friend by chance.",
+            "hint_en": "When I met an old friend by chance."
+          },
+          {
+            "id": 3,
+            "label_pt": "Perguntar à Charlotte",
+            "label_en": "Ask Charlotte",
+            "hidden_prompt": "user asks 'How about you?'",
+            "hint_pt": "How about you?",
+            "hint_en": "How about you?"
+          }
+        ],
+        "closing_cue": "Charlotte closes with \"Cool memory!\" when obj_3 hits.",
+        "suggested_script": "**Script** (referential, 7 turns):\n\n1. **Charlotte**: \"Tell me about a memorable moment from this year.\"\n2. **Student**: \"I was traveling in Italy.\"\n3. **Charlotte**: \"Nice. And then?\"\n4. **Student**: \"When I met an old friend by chance.\"\n5. **Charlotte**: \"Small world!\"\n6. **Student**: \"How about you?\"\n7. **Charlotte**: \"I was at a café when I met someone special. Cool memory!\"\n\n> I05 chat = LLM puro.\n\n---"
+      }
+    }
+  ],
+  "cross_unit_consolidation": [
+    "Past continuous: was/were + verb-ing (positive/negative/question)",
+    "Time clauses: while + past continuous, when + past simple",
+    "Background (continuous) vs event (simple) distinction",
+    "WH past continuous questions"
+  ]
+}

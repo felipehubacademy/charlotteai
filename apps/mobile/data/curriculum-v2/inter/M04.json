@@ -1,0 +1,1013 @@
+{
+  "id": "M04",
+  "title": "Costumávamos",
+  "level": "Inter",
+  "block": "B1",
+  "units_range": "I01–I05",
+  "theme": "Used to + would (past habits and states no longer true)",
+  "goal": "Student uses \"used to\" for past habits/states and \"would\" for repeated past actions in narrative.",
+  "connects_to": "M05 (Phrasal verbs essenciais).",
+  "module_chunks": [
+    "I used to + base / She used to + base",
+    "I didn't use to + base",
+    "Did you use to + base?",
+    "I would + base (narrative habits)",
+    "when I was a child / in the old days"
+  ],
+  "units": [
+    {
+      "id": "I01",
+      "title": "I used to be different",
+      "sub_cefr": "B1",
+      "grammar_focus": "Used to (positive, habit/state)",
+      "markers": [
+        "denso"
+      ],
+      "real_life_context": "You describe how things used to be in your childhood or before.",
+      "grammar": [
+        {
+          "type": "multiple_choice",
+          "sentence": "I _____ play soccer every day.",
+          "options": [
+            "used to",
+            "use to",
+            "am used to"
+          ],
+          "answer": "used to",
+          "explanation": "\"Used to + base\" for past habit no longer done."
+        },
+        {
+          "type": "multiple_choice",
+          "sentence": "She _____ live in NYC.",
+          "options": [
+            "used to",
+            "use to",
+            "is used to"
+          ],
+          "answer": "used to",
+          "explanation": "Same form for all persons: \"used to live\"."
+        },
+        {
+          "type": "word_bank",
+          "sentence": "We _____ go to the beach every summer.",
+          "choices": [
+            "used to",
+            "use to",
+            "are used to",
+            "didn't use to"
+          ],
+          "answer": "used to",
+          "explanation": "\"We used to go\" — past habit."
+        },
+        {
+          "type": "word_bank",
+          "sentence": "He used to _____ tall.",
+          "choices": [
+            "be",
+            "is",
+            "was",
+            "been"
+          ],
+          "answer": "be",
+          "explanation": "After \"used to\", base form: \"be\" (not \"is\" or \"was\")."
+        },
+        {
+          "type": "fill_gap",
+          "sentence": "I used _____ play piano.",
+          "hint": "particle between used and verb",
+          "answer": "to",
+          "explanation": "\"Used TO + base verb\": \"used to play\"."
+        },
+        {
+          "type": "fill_gap",
+          "sentence": "She _____ to read every night.",
+          "hint": "form of \"use\" with -d",
+          "answer": "used",
+          "explanation": "\"Used to\" — spelled \"used\" (with d) regardless."
+        },
+        {
+          "type": "fill_gap",
+          "sentence": "We used to _____ in Rio.",
+          "hint": "base verb \"live\"",
+          "answer": "live",
+          "explanation": "After \"used to\", base form: \"live\"."
+        },
+        {
+          "type": "fix_error",
+          "sentence": "I used to playing soccer.",
+          "hint": "After used to, base form (not -ing)",
+          "answer": "I used to play soccer.",
+          "explanation": "After \"used to\", BASE form, not -ing. \"Used to play\"."
+        },
+        {
+          "type": "fix_error",
+          "sentence": "She used to lived here.",
+          "hint": "After used to, base",
+          "answer": "She used to live here.",
+          "explanation": "After \"used to\", base form \"live\", not \"lived\"."
+        },
+        {
+          "type": "read_answer",
+          "passage": "I used to play soccer every weekend. My sister used to dance. We used to go to the beach every summer. Now things are different.",
+          "question": "What did the sister use to do?",
+          "answer": "dance (or \"used to dance\")",
+          "explanation": "The text says \"My sister used to dance\"."
+        }
+      ],
+      "listening_speaking": [
+        {
+          "text": "I used to play soccer.",
+          "context": "past habit"
+        },
+        {
+          "text": "She used to live in NYC.",
+          "context": "past state"
+        },
+        {
+          "text": "We used to travel a lot.",
+          "context": "past plural habit"
+        },
+        {
+          "text": "He used to be quiet.",
+          "context": "past characteristic"
+        },
+        {
+          "text": "They used to come every Sunday.",
+          "context": "past plural habit"
+        }
+      ],
+      "roleplay": {
+        "scenario": "Charlotte asks what you used to do as a child.",
+        "voiced_by": "charlotte",
+        "persona": "Charlotte",
+        "persona_outfit": "charlotte_casual",
+        "time_budget_sec": 180,
+        "opening_line": "What did you use to do as a child?",
+        "objectives": [
+          {
+            "id": 1,
+            "label_pt": "Hábito passado seu",
+            "label_en": "Past habit",
+            "hidden_prompt": "user uses 'I used to + base'",
+            "hint_pt": "I used to play outside.",
+            "hint_en": "I used to play outside."
+          },
+          {
+            "id": 2,
+            "label_pt": "Outro hábito",
+            "label_en": "Another habit",
+            "hidden_prompt": "user uses another 'I used to'",
+            "hint_pt": "I used to read comics.",
+            "hint_en": "I used to read comics."
+          },
+          {
+            "id": 3,
+            "label_pt": "Hábito da família",
+            "label_en": "Family habit",
+            "hidden_prompt": "user uses 'My X used to + base'",
+            "hint_pt": "My family used to travel a lot.",
+            "hint_en": "My family used to travel a lot."
+          }
+        ],
+        "closing_cue": "Charlotte closes with \"Childhood vibes!\" when obj_3 hits.",
+        "suggested_flow": "**Suggested flow** (6 turns):\n\n1. **Charlotte**: \"What did you use to do as a child?\"\n2. **Student**: ~\"I used to play outside.\"\n3. **Charlotte**: \"Books?\"\n4. **Student**: ~\"I used to read comics.\"\n5. **Charlotte**: \"Family?\"\n6. **Student**: ~\"My family used to travel a lot.\"\n7. **Charlotte**: \"Childhood vibes!\"",
+        "evaluation_focus": [
+          "\"used to + base\"",
+          "No -ing after used to",
+          "Past habits"
+        ]
+      },
+      "guided_chat": {
+        "scenario": "Charlotte chats about childhood habits.",
+        "voiced_by": "charlotte",
+        "persona": "Charlotte",
+        "persona_outfit": "charlotte_casual",
+        "intro_en": "Charlotte asks about your past habits. Practice 'used to + base'.",
+        "opening_message": "What's something you used to love as a kid?",
+        "objectives": [
+          {
+            "id": 1,
+            "label_pt": "Algo que costumava amar",
+            "label_en": "Used to love",
+            "hidden_prompt": "user uses 'I used to love + noun/verb-ing'",
+            "hint_pt": "I used to love cartoons.",
+            "hint_en": "I used to love cartoons."
+          },
+          {
+            "id": 2,
+            "label_pt": "Outro hábito",
+            "label_en": "Another habit",
+            "hidden_prompt": "user uses another 'I used to + base'",
+            "hint_pt": "I used to collect stickers.",
+            "hint_en": "I used to collect stickers."
+          },
+          {
+            "id": 3,
+            "label_pt": "Perguntar à Charlotte",
+            "label_en": "Ask Charlotte",
+            "hidden_prompt": "user asks 'What did you use to do?'",
+            "hint_pt": "What did you use to do?",
+            "hint_en": "What did you use to do?"
+          }
+        ],
+        "closing_cue": "Charlotte closes with \"Nostalgia trip!\" when obj_3 hits.",
+        "suggested_script": "**Script** (7 turns):\n\n1. **Charlotte**: \"What's something you used to love as a kid?\"\n2. **Student**: \"I used to love cartoons.\"\n3. **Charlotte**: \"Same. Anything else?\"\n4. **Student**: \"I used to collect stickers.\"\n5. **Charlotte**: \"Aww.\"\n6. **Student**: \"What did you use to do?\"\n7. **Charlotte**: \"I used to read every night. Nostalgia trip!\"\n\n> I01 chat = LLM puro.\n\n---"
+      }
+    },
+    {
+      "id": "I02",
+      "title": "I didn't use to",
+      "sub_cefr": "B1",
+      "grammar_focus": "Used to negative + question",
+      "markers": [],
+      "real_life_context": "You contrast past habits with current ones.",
+      "grammar": [
+        {
+          "type": "multiple_choice",
+          "sentence": "I _____ like coffee, but now I love it.",
+          "options": [
+            "didn't use to",
+            "didn't used to",
+            "don't use to"
+          ],
+          "answer": "didn't use to",
+          "explanation": "Negative: \"didn't use to + base\". Note: \"use\" (no -d) after didn't."
+        },
+        {
+          "type": "multiple_choice",
+          "sentence": "_____ you use to study English?",
+          "options": [
+            "Did",
+            "Do",
+            "Were"
+          ],
+          "answer": "Did",
+          "explanation": "Question: \"Did + you + use to + base?\"."
+        },
+        {
+          "type": "word_bank",
+          "sentence": "She _____ play piano.",
+          "choices": [
+            "didn't use to",
+            "didn't used to",
+            "doesn't use to",
+            "no use to"
+          ],
+          "answer": "didn't use to",
+          "explanation": "Negative uses \"didn't use to\" (base \"use\", not \"used\")."
+        },
+        {
+          "type": "word_bank",
+          "sentence": "_____ she use to live in Rio?",
+          "choices": [
+            "Did",
+            "Was",
+            "Has",
+            "Does"
+          ],
+          "answer": "Did",
+          "explanation": "Question with \"did\"."
+        },
+        {
+          "type": "fill_gap",
+          "sentence": "I didn't use _____ exercise.",
+          "hint": "particle \"to\"",
+          "answer": "to",
+          "explanation": "\"Didn't use TO + base\"."
+        },
+        {
+          "type": "fill_gap",
+          "sentence": "_____ you use to read every day?",
+          "hint": "past question auxiliary",
+          "answer": "Did",
+          "explanation": "\"Did you use to?\" — question form."
+        },
+        {
+          "type": "fill_gap",
+          "sentence": "She didn't _____ to drink tea.",
+          "hint": "form of \"use\" after didn't",
+          "answer": "use",
+          "explanation": "After \"didn't\", base form: \"use\" (not \"used\")."
+        },
+        {
+          "type": "fix_error",
+          "sentence": "I didn't used to like coffee.",
+          "hint": "After didn't, base \"use\"",
+          "answer": "I didn't use to like coffee.",
+          "explanation": "After \"didn't\", base form: \"use\" (not \"used\"). Common mistake."
+        },
+        {
+          "type": "fix_error",
+          "sentence": "Did you used to live here?",
+          "hint": "After Did, base form",
+          "answer": "Did you use to live here?",
+          "explanation": "After \"Did\", base \"use\", not \"used\"."
+        },
+        {
+          "type": "read_answer",
+          "passage": "I didn't use to like coffee, but now I love it. Did you use to play soccer? Yes, I did, but I stopped.",
+          "question": "Did the speaker use to like coffee?",
+          "answer": "no (or \"didn't use to\")",
+          "explanation": "The text says \"I didn't use to like coffee\"."
+        }
+      ],
+      "listening_speaking": [
+        {
+          "text": "I didn't use to like coffee.",
+          "context": "negative"
+        },
+        {
+          "text": "Did you use to study?",
+          "context": "question"
+        },
+        {
+          "text": "She didn't use to play piano.",
+          "context": "3rd person negative"
+        },
+        {
+          "text": "Did she use to live in Rio?",
+          "context": "3rd person question"
+        },
+        {
+          "text": "I didn't use to exercise.",
+          "context": "own negative"
+        }
+      ],
+      "roleplay": {
+        "scenario": "Charlotte explores what you didn't used to do.",
+        "voiced_by": "charlotte",
+        "persona": "Charlotte",
+        "persona_outfit": "charlotte_casual",
+        "time_budget_sec": 180,
+        "opening_line": "What didn't you use to like that you like now?",
+        "objectives": [
+          {
+            "id": 1,
+            "label_pt": "Algo que não gostava (didn't use to)",
+            "label_en": "Didn't use to like",
+            "hidden_prompt": "user uses 'I didn't use to + base'",
+            "hint_pt": "I didn't use to like coffee.",
+            "hint_en": "I didn't use to like coffee."
+          },
+          {
+            "id": 2,
+            "label_pt": "Outra coisa que não fazia",
+            "label_en": "Another didn't use to",
+            "hidden_prompt": "user uses another 'I didn't use to'",
+            "hint_pt": "I didn't use to exercise.",
+            "hint_en": "I didn't use to exercise."
+          },
+          {
+            "id": 3,
+            "label_pt": "Pergunta à Charlotte (Did you use to)",
+            "label_en": "Ask Charlotte (Did you use to)",
+            "hidden_prompt": "user asks 'Did you use to + base?'",
+            "hint_pt": "Did you use to play sports?",
+            "hint_en": "Did you use to play sports?"
+          }
+        ],
+        "closing_cue": "Charlotte closes with \"Changing tastes!\" when obj_3 hits.",
+        "suggested_flow": "**Suggested flow** (6 turns):\n\n1. **Charlotte**: \"What didn't you use to like that you like now?\"\n2. **Student**: ~\"I didn't use to like coffee.\"\n3. **Charlotte**: \"Same. Other things?\"\n4. **Student**: ~\"I didn't use to exercise.\"\n5. **Charlotte**: \"Now ask me.\"\n6. **Student**: ~\"Did you use to play sports?\"\n7. **Charlotte**: \"Yes! Changing tastes!\"",
+        "evaluation_focus": [
+          "\"didn't use to\" / \"Did you use to\"",
+          "\"use\" not \"used\" after auxiliaries",
+          "Base form after to"
+        ]
+      },
+      "guided_chat": {
+        "scenario": "Charlotte chats about past dislikes that changed.",
+        "voiced_by": "charlotte",
+        "persona": "Charlotte",
+        "persona_outfit": "charlotte_casual",
+        "intro_en": "Charlotte asks about changes in preferences. Practice negatives and questions.",
+        "opening_message": "What didn't you use to do that you do now?",
+        "objectives": [
+          {
+            "id": 1,
+            "label_pt": "Hábito atual que não fazia",
+            "label_en": "Current habit you didn't have",
+            "hidden_prompt": "user uses 'I didn't use to + base'",
+            "hint_pt": "I didn't use to meditate.",
+            "hint_en": "I didn't use to meditate."
+          },
+          {
+            "id": 2,
+            "label_pt": "Outra mudança",
+            "label_en": "Another change",
+            "hidden_prompt": "user uses another 'I didn't use to'",
+            "hint_pt": "I didn't use to like vegetables.",
+            "hint_en": "I didn't use to like vegetables."
+          },
+          {
+            "id": 3,
+            "label_pt": "Perguntar à Charlotte",
+            "label_en": "Ask Charlotte",
+            "hidden_prompt": "user asks 'Did you use to...?'",
+            "hint_pt": "Did you use to live abroad?",
+            "hint_en": "Did you use to live abroad?"
+          }
+        ],
+        "closing_cue": "Charlotte closes with \"We grow!\" when obj_3 hits.",
+        "suggested_script": "**Script** (7 turns):\n\n1. **Charlotte**: \"What didn't you use to do that you do now?\"\n2. **Student**: \"I didn't use to meditate.\"\n3. **Charlotte**: \"Wellness era!\"\n4. **Student**: \"I didn't use to like vegetables.\"\n5. **Charlotte**: \"Same.\"\n6. **Student**: \"Did you use to live abroad?\"\n7. **Charlotte**: \"Yes! We grow!\"\n\n> I02 chat = LLM puro.\n\n---"
+      }
+    },
+    {
+      "id": "I03",
+      "title": "Would (past narrative)",
+      "sub_cefr": "B1",
+      "grammar_focus": "Would for past repeated actions",
+      "markers": [],
+      "real_life_context": "You tell stories with repeated past actions.",
+      "grammar": [
+        {
+          "type": "multiple_choice",
+          "sentence": "Every summer, we _____ go to the beach.",
+          "options": [
+            "would",
+            "will",
+            "used to be"
+          ],
+          "answer": "would",
+          "explanation": "\"Would + base\" for past repeated action (narrative)."
+        },
+        {
+          "type": "multiple_choice",
+          "sentence": "My grandfather _____ tell us stories.",
+          "options": [
+            "would",
+            "will",
+            "does"
+          ],
+          "answer": "would",
+          "explanation": "\"Would tell\" — past repeated narrative."
+        },
+        {
+          "type": "word_bank",
+          "sentence": "We _____ visit them every weekend.",
+          "choices": [
+            "would",
+            "will",
+            "use to",
+            "did"
+          ],
+          "answer": "would",
+          "explanation": "\"Would visit\" — repeated past."
+        },
+        {
+          "type": "word_bank",
+          "sentence": "She would _____ for hours.",
+          "choices": [
+            "read",
+            "reading",
+            "reads",
+            "read to"
+          ],
+          "answer": "read",
+          "explanation": "After would, base form."
+        },
+        {
+          "type": "fill_gap",
+          "sentence": "When I was young, my mom _____ sing to me.",
+          "hint": "would for narrative",
+          "answer": "would",
+          "explanation": "\"Would sing\" — past repeated narrative habit."
+        },
+        {
+          "type": "fill_gap",
+          "sentence": "On Sundays, we _____ have big breakfasts.",
+          "hint": "would for repeated action",
+          "answer": "would",
+          "explanation": "\"Would have\" — past Sunday habits."
+        },
+        {
+          "type": "fill_gap",
+          "sentence": "My dad would _____ me to school.",
+          "hint": "base verb (drive)",
+          "answer": "drive",
+          "explanation": "After would, base form."
+        },
+        {
+          "type": "fix_error",
+          "sentence": "Every summer, we would going to the beach.",
+          "hint": "After would, base",
+          "answer": "Every summer, we would go to the beach.",
+          "explanation": "After \"would\", base form: \"go\", not \"going\"."
+        },
+        {
+          "type": "fix_error",
+          "sentence": "My grandmother would been kind.",
+          "hint": "would for actions (not states); used to for states",
+          "answer": "My grandmother used to be kind.",
+          "explanation": "\"Would\" for repeated ACTIONS. For states (be, have, live), use \"used to\". \"Used to be kind\"."
+        },
+        {
+          "type": "read_answer",
+          "passage": "When I was a child, we would visit my grandparents every Sunday. My grandmother would cook a big lunch. We would play in the garden.",
+          "question": "What would the grandmother do?",
+          "answer": "cook a big lunch (or \"cook lunch\")",
+          "explanation": "The text says \"My grandmother would cook a big lunch\"."
+        }
+      ],
+      "listening_speaking": [
+        {
+          "text": "Every summer, we would go to the beach.",
+          "context": "repeated past"
+        },
+        {
+          "text": "My grandfather would tell stories.",
+          "context": "narrative"
+        },
+        {
+          "text": "We would visit them every weekend.",
+          "context": "frequency"
+        },
+        {
+          "text": "My mom would sing to me.",
+          "context": "narrative"
+        },
+        {
+          "text": "On Sundays, we would have big breakfasts.",
+          "context": "Sundays habit"
+        }
+      ],
+      "roleplay": {
+        "scenario": "Charlotte asks about childhood routines with \"would\".",
+        "voiced_by": "charlotte",
+        "persona": "Charlotte",
+        "persona_outfit": "charlotte_casual",
+        "time_budget_sec": 180,
+        "opening_line": "Tell me about your childhood routines using 'would'.",
+        "objectives": [
+          {
+            "id": 1,
+            "label_pt": "Rotina repetida no passado (would)",
+            "label_en": "Repeated past routine",
+            "hidden_prompt": "user uses 'We/I would + base'",
+            "hint_pt": "We would go to the park.",
+            "hint_en": "We would go to the park."
+          },
+          {
+            "id": 2,
+            "label_pt": "Outra rotina com would",
+            "label_en": "Another would routine",
+            "hidden_prompt": "user uses another 'would + base'",
+            "hint_pt": "My mom would read to me.",
+            "hint_en": "My mom would read to me."
+          },
+          {
+            "id": 3,
+            "label_pt": "Mais uma com tempo (every X)",
+            "label_en": "One more with 'every X'",
+            "hidden_prompt": "user uses 'Every + day/week/summer, X would + base'",
+            "hint_pt": "Every summer, we would travel.",
+            "hint_en": "Every summer, we would travel."
+          }
+        ],
+        "closing_cue": "Charlotte closes with \"Sweet memories!\" when obj_3 hits.",
+        "suggested_flow": "**Suggested flow** (6 turns):\n\n1. **Charlotte**: \"Tell me about your childhood routines using 'would'.\"\n2. **Student**: ~\"We would go to the park.\"\n3. **Charlotte**: \"Bedtime?\"\n4. **Student**: ~\"My mom would read to me.\"\n5. **Charlotte**: \"Vacation?\"\n6. **Student**: ~\"Every summer, we would travel.\"\n7. **Charlotte**: \"Sweet memories!\"",
+        "evaluation_focus": [
+          "Would + base for actions",
+          "Frequency markers (every X)",
+          "Not \"would\" for states (use used to)"
+        ]
+      },
+      "guided_chat": {
+        "scenario": "Charlotte invites a nostalgic narrative.",
+        "voiced_by": "charlotte",
+        "persona": "Charlotte",
+        "persona_outfit": "charlotte_casual",
+        "intro_en": "Charlotte asks about repeated past actions. Practice 'would + base'.",
+        "opening_message": "Share a childhood memory — repeated activity.",
+        "objectives": [
+          {
+            "id": 1,
+            "label_pt": "Atividade repetida",
+            "label_en": "Repeated activity",
+            "hidden_prompt": "user uses 'I/We would + base'",
+            "hint_pt": "We would play board games.",
+            "hint_en": "We would play board games."
+          },
+          {
+            "id": 2,
+            "label_pt": "Outra",
+            "label_en": "Another",
+            "hidden_prompt": "user uses another 'would + base'",
+            "hint_pt": "My dad would tell jokes.",
+            "hint_en": "My dad would tell jokes."
+          },
+          {
+            "id": 3,
+            "label_pt": "Perguntar à Charlotte",
+            "label_en": "Ask Charlotte",
+            "hidden_prompt": "user asks about her past with would",
+            "hint_pt": "What would you do as a kid?",
+            "hint_en": "What would you do as a kid?"
+          }
+        ],
+        "closing_cue": "Charlotte closes with \"Childhood echoes!\" when obj_3 hits.",
+        "suggested_script": "**Script** (7 turns):\n\n1. **Charlotte**: \"Share a childhood memory — repeated activity.\"\n2. **Student**: \"We would play board games.\"\n3. **Charlotte**: \"Cool.\"\n4. **Student**: \"My dad would tell jokes.\"\n5. **Charlotte**: \"Sweet.\"\n6. **Student**: \"What would you do as a kid?\"\n7. **Charlotte**: \"I would draw all day. Childhood echoes!\"\n\n> I03 chat = LLM puro.\n\n---"
+      }
+    },
+    {
+      "id": "I04",
+      "title": "Used to vs Would",
+      "sub_cefr": "B1",
+      "grammar_focus": "Distinguish used to (states + actions) from would (actions only)",
+      "markers": [
+        "denso"
+      ],
+      "real_life_context": "You choose correctly between both for narratives.",
+      "grammar": [
+        {
+          "type": "multiple_choice",
+          "sentence": "She _____ tall when she was young.",
+          "options": [
+            "used to be",
+            "would be",
+            "was use to"
+          ],
+          "answer": "used to be",
+          "explanation": "For STATES (be, have, like), use \"used to\", not \"would\"."
+        },
+        {
+          "type": "multiple_choice",
+          "sentence": "Every summer, we _____ go camping.",
+          "options": [
+            "would",
+            "used to",
+            "would be"
+          ],
+          "answer": "would",
+          "explanation": "For repeated ACTIONS, both work, but \"would\" is great with \"every\"."
+        },
+        {
+          "type": "word_bank",
+          "sentence": "I _____ love that song.",
+          "choices": [
+            "used to",
+            "would",
+            "am used to",
+            "would be"
+          ],
+          "answer": "used to",
+          "explanation": "For \"love\" (feeling), use \"used to\". Not \"would love\" (which means \"would like\" in conditional)."
+        },
+        {
+          "type": "word_bank",
+          "sentence": "My grandpa _____ tell us stories.",
+          "choices": [
+            "would",
+            "used to",
+            "both work"
+          ],
+          "answer": "would",
+          "explanation": "For repeated past action narrative, \"would\" works (used to also works)."
+        },
+        {
+          "type": "fill_gap",
+          "sentence": "I _____ live in Rio.",
+          "hint": "state (live) — used to",
+          "answer": "used to",
+          "explanation": "\"Used to live\" — state. Not \"would live\"."
+        },
+        {
+          "type": "fill_gap",
+          "sentence": "We _____ go fishing every weekend.",
+          "hint": "repeated action with \"every\"",
+          "answer": "would (or \"used to\")",
+          "explanation": "Repeated action with \"every\" — \"would go\" works perfectly."
+        },
+        {
+          "type": "fill_gap",
+          "sentence": "She _____ be very shy as a kid.",
+          "hint": "state (be) — used to",
+          "answer": "used to",
+          "explanation": "For \"be + adj\" (state), only \"used to\"."
+        },
+        {
+          "type": "fix_error",
+          "sentence": "I would have a red bike.",
+          "hint": "have = state, use \"used to\"",
+          "answer": "I used to have a red bike.",
+          "explanation": "\"Have\" (own) is state — use \"used to have\", not \"would have\"."
+        },
+        {
+          "type": "fix_error",
+          "sentence": "He would like cartoons.",
+          "hint": "like = state/feeling",
+          "answer": "He used to like cartoons.",
+          "explanation": "\"Like\" is state/feeling — use \"used to\", not \"would\" (which changes meaning)."
+        },
+        {
+          "type": "read_answer",
+          "passage": "I used to be shy. We would visit my aunt every Sunday. She used to live nearby. We would play games together.",
+          "question": "Where did the aunt use to live?",
+          "answer": "nearby",
+          "explanation": "The text says \"She used to live nearby\"."
+        }
+      ],
+      "listening_speaking": [
+        {
+          "text": "She used to be tall.",
+          "context": "state (be)"
+        },
+        {
+          "text": "Every summer, we would go camping.",
+          "context": "action repeated"
+        },
+        {
+          "text": "I used to love that song.",
+          "context": "feeling (state)"
+        },
+        {
+          "text": "My grandpa would tell stories.",
+          "context": "action narrative"
+        },
+        {
+          "text": "I used to live in Rio.",
+          "context": "state (live)"
+        }
+      ],
+      "roleplay": {
+        "scenario": "Charlotte asks you to use both used to and would in a story.",
+        "voiced_by": "charlotte",
+        "persona": "Charlotte",
+        "persona_outfit": "charlotte_casual",
+        "time_budget_sec": 180,
+        "opening_line": "Mix used to and would in a childhood story.",
+        "objectives": [
+          {
+            "id": 1,
+            "label_pt": "Used to + estado",
+            "label_en": "Used to + state",
+            "hidden_prompt": "user uses 'I used to be/live/have/like + something'",
+            "hint_pt": "I used to be shy.",
+            "hint_en": "I used to be shy."
+          },
+          {
+            "id": 2,
+            "label_pt": "Would + ação repetida",
+            "label_en": "Would + repeated action",
+            "hidden_prompt": "user uses 'We/I would + action verb'",
+            "hint_pt": "We would play soccer every day.",
+            "hint_en": "We would play soccer every day."
+          },
+          {
+            "id": 3,
+            "label_pt": "Mais um com used to ou would",
+            "label_en": "One more",
+            "hidden_prompt": "user uses another used to or would",
+            "hint_pt": "I used to live in Rio.",
+            "hint_en": "I used to live in Rio."
+          }
+        ],
+        "closing_cue": "Charlotte closes with \"Mixed narrative!\" when obj_3 hits.",
+        "suggested_flow": "**Suggested flow** (6 turns):\n\n1. **Charlotte**: \"Mix used to and would in a childhood story.\"\n2. **Student**: ~\"I used to be shy.\"\n3. **Charlotte**: \"What did you do?\"\n4. **Student**: ~\"We would play soccer every day.\"\n5. **Charlotte**: \"Where?\"\n6. **Student**: ~\"I used to live in Rio.\"\n7. **Charlotte**: \"Mixed narrative!\"",
+        "evaluation_focus": [
+          "Used to for states",
+          "Would for actions",
+          "Correct choice"
+        ]
+      },
+      "guided_chat": {
+        "scenario": "Charlotte invites a \"then vs now\" chat.",
+        "voiced_by": "charlotte",
+        "persona": "Charlotte",
+        "persona_outfit": "charlotte_casual",
+        "intro_en": "Charlotte asks for nostalgic stories. Use both used to and would correctly.",
+        "opening_message": "Tell me about a place where you used to live.",
+        "objectives": [
+          {
+            "id": 1,
+            "label_pt": "Used to + estado/lugar",
+            "label_en": "Used to + state/place",
+            "hidden_prompt": "user uses 'I used to live + place'",
+            "hint_pt": "I used to live in a small town.",
+            "hint_en": "I used to live in a small town."
+          },
+          {
+            "id": 2,
+            "label_pt": "Would + ação que fazia",
+            "label_en": "Would + repeated action",
+            "hidden_prompt": "user uses 'I/We would + action'",
+            "hint_pt": "We would walk to school.",
+            "hint_en": "We would walk to school."
+          },
+          {
+            "id": 3,
+            "label_pt": "Perguntar à Charlotte",
+            "label_en": "Ask Charlotte",
+            "hidden_prompt": "user asks about her past with used to or would",
+            "hint_pt": "Where did you use to live?",
+            "hint_en": "Where did you use to live?"
+          }
+        ],
+        "closing_cue": "Charlotte closes with \"Past portraits!\" when obj_3 hits.",
+        "suggested_script": "**Script** (7 turns):\n\n1. **Charlotte**: \"Tell me about a place where you used to live.\"\n2. **Student**: \"I used to live in a small town.\"\n3. **Charlotte**: \"Routine?\"\n4. **Student**: \"We would walk to school.\"\n5. **Charlotte**: \"Sweet.\"\n6. **Student**: \"Where did you use to live?\"\n7. **Charlotte**: \"Boston. I would ice skate. Past portraits!\"\n\n> I04 chat = LLM puro.\n\n---"
+      }
+    },
+    {
+      "id": "I05",
+      "title": "Then vs now",
+      "sub_cefr": "B1",
+      "grammar_focus": "Integration used to + would + now",
+      "markers": [],
+      "real_life_context": "You contrast past habits with present reality.",
+      "grammar": [
+        {
+          "type": "multiple_choice",
+          "sentence": "I _____ smoke, but now I don't.",
+          "options": [
+            "used to",
+            "use to",
+            "would"
+          ],
+          "answer": "used to",
+          "explanation": "Past habit no longer true: \"used to smoke\"."
+        },
+        {
+          "type": "multiple_choice",
+          "sentence": "We _____ visit her every week, but now she lives far.",
+          "options": [
+            "would",
+            "use to",
+            "am use to"
+          ],
+          "answer": "would",
+          "explanation": "Repeated past action → \"would visit\"."
+        },
+        {
+          "type": "word_bank",
+          "sentence": "I _____ love coffee — now I prefer tea.",
+          "choices": [
+            "used to",
+            "would",
+            "use to",
+            "didn't use to"
+          ],
+          "answer": "used to",
+          "explanation": "Feeling (love) past state → \"used to love\"."
+        },
+        {
+          "type": "word_bank",
+          "sentence": "_____ you use to live abroad?",
+          "choices": [
+            "Did",
+            "Were",
+            "Was",
+            "Have"
+          ],
+          "answer": "Did",
+          "explanation": "Question with \"Did\"."
+        },
+        {
+          "type": "fill_gap",
+          "sentence": "I _____ exercise every day, now I'm lazy.",
+          "hint": "would or used to (action)",
+          "answer": "would (or used to)",
+          "explanation": "Past repeated action — both work."
+        },
+        {
+          "type": "fill_gap",
+          "sentence": "She used to _____ piano.",
+          "hint": "base form (play)",
+          "answer": "play",
+          "explanation": "After used to, base."
+        },
+        {
+          "type": "fill_gap",
+          "sentence": "We _____ to eat out a lot, but not now.",
+          "hint": "\"used\" (no auxiliary)",
+          "answer": "used",
+          "explanation": "\"We used to eat out\"."
+        },
+        {
+          "type": "fix_error",
+          "sentence": "She would be very shy.",
+          "hint": "State needs used to",
+          "answer": "She used to be very shy.",
+          "explanation": "\"Be\" is state — used to."
+        },
+        {
+          "type": "fix_error",
+          "sentence": "I didn't used to drink coffee.",
+          "hint": "After didn't, \"use\" (no -d)",
+          "answer": "I didn't use to drink coffee.",
+          "explanation": "\"Didn't use to\" — base \"use\"."
+        },
+        {
+          "type": "read_answer",
+          "passage": "I used to be very shy. I didn't use to talk much. But I would write a lot in my journal. Now I'm more outgoing.",
+          "question": "What did the speaker do a lot?",
+          "answer": "write (in a journal)",
+          "explanation": "The text says \"I would write a lot in my journal\"."
+        }
+      ],
+      "listening_speaking": [
+        {
+          "text": "I used to smoke, now I don't.",
+          "context": "contrast"
+        },
+        {
+          "text": "We would visit her every week.",
+          "context": "past action"
+        },
+        {
+          "text": "I used to love coffee.",
+          "context": "past feeling"
+        },
+        {
+          "text": "Did you use to live abroad?",
+          "context": "question"
+        },
+        {
+          "text": "I didn't use to exercise.",
+          "context": "negative"
+        }
+      ],
+      "roleplay": {
+        "scenario": "Charlotte invites a \"then vs now\" comparison.",
+        "voiced_by": "charlotte",
+        "persona": "Charlotte",
+        "persona_outfit": "charlotte_casual",
+        "time_budget_sec": 180,
+        "opening_line": "Compare your past and present — what's different?",
+        "objectives": [
+          {
+            "id": 1,
+            "label_pt": "Hábito passado vs presente",
+            "label_en": "Past vs present habit",
+            "hidden_prompt": "user contrasts past (used to/would) with present",
+            "hint_pt": "I used to smoke, but now I don't.",
+            "hint_en": "I used to smoke, but now I don't."
+          },
+          {
+            "id": 2,
+            "label_pt": "Outro contraste",
+            "label_en": "Another contrast",
+            "hidden_prompt": "user uses another contrast",
+            "hint_pt": "I would exercise daily, but now I'm lazy.",
+            "hint_en": "I would exercise daily, but now I'm lazy."
+          },
+          {
+            "id": 3,
+            "label_pt": "Algo que não fazia mas agora faz",
+            "label_en": "Didn't use to but now does",
+            "hidden_prompt": "user uses 'I didn't use to + base + but now + present'",
+            "hint_pt": "I didn't use to like vegetables, but now I do.",
+            "hint_en": "I didn't use to like vegetables, but now I do."
+          }
+        ],
+        "closing_cue": "Charlotte closes with \"Evolution!\" when obj_3 hits.",
+        "suggested_flow": "**Suggested flow** (6 turns):\n\n1. **Charlotte**: \"Compare your past and present — what's different?\"\n2. **Student**: ~\"I used to smoke, but now I don't.\"\n3. **Charlotte**: \"Activity?\"\n4. **Student**: ~\"I would exercise daily, but now I'm lazy.\"\n5. **Charlotte**: \"Reverse?\"\n6. **Student**: ~\"I didn't use to like vegetables, but now I do.\"\n7. **Charlotte**: \"Evolution!\"",
+        "evaluation_focus": [
+          "Used to / would / didn't use to",
+          "Contrast with \"now\"",
+          "Correct base forms"
+        ]
+      },
+      "guided_chat": {
+        "scenario": "Charlotte chats about life changes.",
+        "voiced_by": "charlotte",
+        "persona": "Charlotte",
+        "persona_outfit": "charlotte_casual",
+        "intro_en": "Charlotte explores how you've changed. Integrate used to + would + now.",
+        "opening_message": "What's a habit that changed over the years?",
+        "objectives": [
+          {
+            "id": 1,
+            "label_pt": "Hábito que mudou",
+            "label_en": "Habit that changed",
+            "hidden_prompt": "user uses 'I used to + base + but now + present'",
+            "hint_pt": "I used to wake up late, but now I'm up at 6.",
+            "hint_en": "I used to wake up late, but now I'm up at 6."
+          },
+          {
+            "id": 2,
+            "label_pt": "Outra mudança",
+            "label_en": "Another change",
+            "hidden_prompt": "user uses 'would' or 'used to' for contrast",
+            "hint_pt": "I would go out a lot.",
+            "hint_en": "I would go out a lot."
+          },
+          {
+            "id": 3,
+            "label_pt": "Perguntar à Charlotte",
+            "label_en": "Ask Charlotte",
+            "hidden_prompt": "user asks 'How about you?'",
+            "hint_pt": "How about you?",
+            "hint_en": "How about you?"
+          }
+        ],
+        "closing_cue": "Charlotte closes with \"Same and different!\" when obj_3 hits.",
+        "suggested_script": "**Script** (7 turns):\n\n1. **Charlotte**: \"What's a habit that changed over the years?\"\n2. **Student**: \"I used to wake up late, but now I'm up at 6.\"\n3. **Charlotte**: \"Discipline.\"\n4. **Student**: \"I would go out a lot.\"\n5. **Charlotte**: \"Same.\"\n6. **Student**: \"How about you?\"\n7. **Charlotte**: \"I used to be quiet, now I talk! Same and different!\"\n\n> I05 chat = LLM puro.\n\n---"
+      }
+    }
+  ],
+  "cross_unit_consolidation": [
+    "used to + base (states + repeated actions)",
+    "didn't use to / Did you use to (negative/question)",
+    "would + base (only repeated actions, not states)",
+    "Contrast with now"
+  ]
+}

@@ -1,0 +1,1021 @@
+{
+  "id": "M03",
+  "title": "Recente ou antigo?",
+  "level": "Inter",
+  "block": "B1",
+  "units_range": "I01–I05",
+  "theme": "Present perfect vs past simple — when to use each",
+  "goal": "Student distinguishes PP (life experience, connected to present) from past simple (finished time), and uses for/since correctly.",
+  "connects_to": "M04 (used to) — after mastering PP, learn past habits.",
+  "module_chunks": [
+    "for + duration (for two years, for an hour)",
+    "since + point in time (since 2010, since Monday)",
+    "How long have you...?",
+    "ago (past simple) vs since (PP)",
+    "yesterday/last week → past simple",
+    "this week/today → present perfect (still relevant)"
+  ],
+  "units": [
+    {
+      "id": "I01",
+      "title": "Finished or still going?",
+      "sub_cefr": "B1",
+      "grammar_focus": "PP for connected past vs past simple for finished",
+      "markers": [
+        "denso"
+      ],
+      "real_life_context": "You distinguish what's finished from what's still relevant.",
+      "grammar": [
+        {
+          "type": "multiple_choice",
+          "sentence": "I _____ Italy last year.",
+          "options": [
+            "visited",
+            "have visited",
+            "had visited"
+          ],
+          "answer": "visited",
+          "explanation": "\"Last year\" = finished time → past simple. \"I visited Italy last year\"."
+        },
+        {
+          "type": "multiple_choice",
+          "sentence": "I _____ Italy three times in my life.",
+          "options": [
+            "have visited",
+            "visited",
+            "had visited"
+          ],
+          "answer": "have visited",
+          "explanation": "\"In my life\" = experience, no specific time → present perfect."
+        },
+        {
+          "type": "word_bank",
+          "sentence": "She _____ this morning.",
+          "choices": [
+            "called",
+            "has called",
+            "had called",
+            "is calling"
+          ],
+          "answer": "has called",
+          "explanation": "\"This morning\" (if it's still morning) = unfinished → PP. If morning is over → past simple \"called\"."
+        },
+        {
+          "type": "word_bank",
+          "sentence": "We _____ yesterday.",
+          "choices": [
+            "met",
+            "have met",
+            "had met",
+            "are meeting"
+          ],
+          "answer": "met",
+          "explanation": "\"Yesterday\" = finished → past simple."
+        },
+        {
+          "type": "fill_gap",
+          "sentence": "I _____ him in 2010 and I _____ him many times since.",
+          "hint": "1st = met (2010 specific), 2nd = have met",
+          "answer": "met",
+          "explanation": "\"In 2010\" = specific past → \"met\". (Second blank would be \"have seen/met\")."
+        },
+        {
+          "type": "fill_gap",
+          "sentence": "She _____ this year.",
+          "hint": "PP for unfinished period",
+          "answer": "has worked",
+          "explanation": "\"This year\" not finished → PP \"has worked\"."
+        },
+        {
+          "type": "fill_gap",
+          "sentence": "He _____ Brazil three years ago.",
+          "hint": "ago = past simple",
+          "answer": "visited",
+          "explanation": "\"Ago\" always with past simple. \"Visited Brazil three years ago\"."
+        },
+        {
+          "type": "fix_error",
+          "sentence": "I have seen her yesterday.",
+          "hint": "yesterday + PP doesn't mix",
+          "answer": "I saw her yesterday.",
+          "explanation": "\"Yesterday\" = specific finished time → past simple, not PP."
+        },
+        {
+          "type": "fix_error",
+          "sentence": "I visited many countries in my life.",
+          "hint": "\"In my life\" suggests PP",
+          "answer": "I have visited many countries in my life.",
+          "explanation": "\"In my life\" = no specific time, experience → PP."
+        },
+        {
+          "type": "read_answer",
+          "passage": "I went to Italy last year. I've visited it three times in my life. I haven't been there yet this year.",
+          "question": "When did the speaker go to Italy specifically?",
+          "answer": "last year",
+          "explanation": "The text says \"I went to Italy last year\"."
+        }
+      ],
+      "listening_speaking": [
+        {
+          "text": "I visited Italy last year.",
+          "context": "past simple specific"
+        },
+        {
+          "text": "I have visited Italy three times.",
+          "context": "PP experience"
+        },
+        {
+          "text": "She called yesterday.",
+          "context": "past simple"
+        },
+        {
+          "text": "She has called this morning.",
+          "context": "PP unfinished"
+        },
+        {
+          "text": "We met in 2010.",
+          "context": "past simple"
+        }
+      ],
+      "roleplay": {
+        "scenario": "Charlotte asks about experiences and specific past events.",
+        "voiced_by": "charlotte",
+        "persona": "Charlotte",
+        "persona_outfit": "charlotte_casual",
+        "time_budget_sec": 180,
+        "opening_line": "Tell me about a past trip — and a life experience.",
+        "objectives": [
+          {
+            "id": 1,
+            "label_pt": "Evento específico no passado (past simple)",
+            "label_en": "Specific past event",
+            "hidden_prompt": "user uses past simple with time marker (last year, yesterday, in 2020)",
+            "hint_pt": "I went to Italy last year.",
+            "hint_en": "I went to Italy last year."
+          },
+          {
+            "id": 2,
+            "label_pt": "Experiência de vida (PP)",
+            "label_en": "Life experience (PP)",
+            "hidden_prompt": "user uses 'I have + past participle' for life experience",
+            "hint_pt": "I have visited five countries.",
+            "hint_en": "I have visited five countries."
+          },
+          {
+            "id": 3,
+            "label_pt": "Outra distinção",
+            "label_en": "Another distinction",
+            "hidden_prompt": "user uses one more past simple or PP with appropriate marker",
+            "hint_pt": "I have never tried sushi.",
+            "hint_en": "I have never tried sushi."
+          }
+        ],
+        "closing_cue": "Charlotte closes with \"Good distinction!\" when obj_3 hits.",
+        "suggested_flow": "**Suggested flow** (referential, 6 turns):\n\n1. **Charlotte**: \"Tell me about a past trip — and a life experience.\"\n2. **Student**: ~\"I went to Italy last year.\"\n3. **Charlotte**: \"Lifetime experiences?\"\n4. **Student**: ~\"I have visited five countries.\"\n5. **Charlotte**: \"Anything never tried?\"\n6. **Student**: ~\"I have never tried sushi.\"\n7. **Charlotte**: \"Good distinction!\"",
+        "evaluation_focus": [
+          "Time markers correctly paired (yesterday → simple, ever → PP)",
+          "No mixing",
+          "Natural shift"
+        ]
+      },
+      "guided_chat": {
+        "scenario": "Charlotte chats about distinguishing past tenses.",
+        "voiced_by": "charlotte",
+        "persona": "Charlotte",
+        "persona_outfit": "charlotte_casual",
+        "intro_en": "Charlotte asks about finished events vs life experiences. Practice the distinction.",
+        "opening_message": "Specific past event — what did you do last weekend?",
+        "objectives": [
+          {
+            "id": 1,
+            "label_pt": "Evento específico",
+            "label_en": "Specific event",
+            "hidden_prompt": "user uses past simple with specific time",
+            "hint_pt": "I traveled to Rio last weekend.",
+            "hint_en": "I traveled to Rio last weekend."
+          },
+          {
+            "id": 2,
+            "label_pt": "Experiência geral (PP)",
+            "label_en": "General experience",
+            "hidden_prompt": "user uses PP for life experience",
+            "hint_pt": "I've traveled a lot.",
+            "hint_en": "I've traveled a lot."
+          },
+          {
+            "id": 3,
+            "label_pt": "Perguntar à Charlotte",
+            "label_en": "Ask Charlotte",
+            "hidden_prompt": "user asks specific or experience question",
+            "hint_pt": "Have you ever been to Brazil?",
+            "hint_en": "Have you ever been to Brazil?"
+          }
+        ],
+        "closing_cue": "Charlotte closes with \"Tense mastery!\" when obj_3 hits.",
+        "suggested_script": "**Script** (referential, 7 turns):\n\n1. **Charlotte**: \"Specific past event — what did you do last weekend?\"\n2. **Student**: \"I traveled to Rio last weekend.\"\n3. **Charlotte**: \"Lifetime?\"\n4. **Student**: \"I've traveled a lot.\"\n5. **Charlotte**: \"Lucky.\"\n6. **Student**: \"Have you ever been to Brazil?\"\n7. **Charlotte**: \"Yes! Tense mastery!\"\n\n> I01 chat = LLM puro.\n\n---"
+      }
+    },
+    {
+      "id": "I02",
+      "title": "For two years",
+      "sub_cefr": "B1",
+      "grammar_focus": "for + duration (with PP)",
+      "markers": [
+        "denso"
+      ],
+      "real_life_context": "You describe duration of ongoing situations.",
+      "grammar": [
+        {
+          "type": "multiple_choice",
+          "sentence": "I have lived here _____ two years.",
+          "options": [
+            "for",
+            "since",
+            "from"
+          ],
+          "answer": "for",
+          "explanation": "\"For + duration\" — period of time. \"For two years\"."
+        },
+        {
+          "type": "multiple_choice",
+          "sentence": "She has worked there _____ a long time.",
+          "options": [
+            "for",
+            "since",
+            "during"
+          ],
+          "answer": "for",
+          "explanation": "\"For a long time\" — duration."
+        },
+        {
+          "type": "word_bank",
+          "sentence": "We have been friends _____ years.",
+          "choices": [
+            "for",
+            "since",
+            "from",
+            "during"
+          ],
+          "answer": "for",
+          "explanation": "\"For years\" — duration with PP."
+        },
+        {
+          "type": "word_bank",
+          "sentence": "He has had this car _____ five years.",
+          "choices": [
+            "for",
+            "since",
+            "from",
+            "during"
+          ],
+          "answer": "for",
+          "explanation": "\"For five years\" — duration."
+        },
+        {
+          "type": "fill_gap",
+          "sentence": "I have studied English _____ two years.",
+          "hint": "duration",
+          "answer": "for",
+          "explanation": "\"For + duration\" — \"for two years\"."
+        },
+        {
+          "type": "fill_gap",
+          "sentence": "She has known him _____ a long time.",
+          "hint": "duration",
+          "answer": "for",
+          "explanation": "\"For a long time\"."
+        },
+        {
+          "type": "fill_gap",
+          "sentence": "How long have you _____ here?",
+          "hint": "past participle of \"live\"",
+          "answer": "lived",
+          "explanation": "\"How long have you lived here?\" — common question."
+        },
+        {
+          "type": "fix_error",
+          "sentence": "I have lived here since two years.",
+          "hint": "Since for point in time, not duration",
+          "answer": "I have lived here for two years.",
+          "explanation": "\"Since\" is for point (since 2020). \"For\" is for duration (for 2 years)."
+        },
+        {
+          "type": "fix_error",
+          "sentence": "I lived here for two years.",
+          "hint": "ongoing → PP",
+          "answer": "I have lived here for two years.",
+          "explanation": "If still living = PP. Past simple = finished."
+        },
+        {
+          "type": "read_answer",
+          "passage": "I have lived in São Paulo for ten years. I've worked at my company for five years. My sister has studied English for three years.",
+          "question": "How long has the sister studied English?",
+          "answer": "three years (or \"for three years\")",
+          "explanation": "The text says \"for three years\"."
+        }
+      ],
+      "listening_speaking": [
+        {
+          "text": "I've lived here for two years.",
+          "context": "for + duration"
+        },
+        {
+          "text": "She has worked there for a long time.",
+          "context": "for + long time"
+        },
+        {
+          "text": "We've been friends for years.",
+          "context": "for years"
+        },
+        {
+          "text": "How long have you lived here?",
+          "context": "question with how long"
+        },
+        {
+          "text": "He has had this car for five years.",
+          "context": "for + number"
+        }
+      ],
+      "roleplay": {
+        "scenario": "Charlotte asks about durations in your life.",
+        "voiced_by": "charlotte",
+        "persona": "Charlotte",
+        "persona_outfit": "charlotte_casual",
+        "time_budget_sec": 180,
+        "opening_line": "How long have you lived in your city?",
+        "objectives": [
+          {
+            "id": 1,
+            "label_pt": "Quanto tempo mora lá (for + duration)",
+            "label_en": "How long lived (for + duration)",
+            "hidden_prompt": "user uses 'I've lived/been there for + duration'",
+            "hint_pt": "I've lived here for ten years.",
+            "hint_en": "I've lived here for ten years."
+          },
+          {
+            "id": 2,
+            "label_pt": "Quanto tempo trabalha (for + duration)",
+            "label_en": "How long worked",
+            "hidden_prompt": "user uses 'I've worked there for + duration'",
+            "hint_pt": "I've worked there for five years.",
+            "hint_en": "I've worked there for five years."
+          },
+          {
+            "id": 3,
+            "label_pt": "Outra duração (estudo, amizade)",
+            "label_en": "Another duration",
+            "hidden_prompt": "user uses 'I've + past participle + for + duration'",
+            "hint_pt": "I've studied English for two years.",
+            "hint_en": "I've studied English for two years."
+          }
+        ],
+        "closing_cue": "Charlotte closes with \"Long-term things!\" when obj_3 hits.",
+        "suggested_flow": "**Suggested flow** (referential, 6 turns):\n\n1. **Charlotte**: \"How long have you lived in your city?\"\n2. **Student**: ~\"I've lived here for ten years.\"\n3. **Charlotte**: \"Work?\"\n4. **Student**: ~\"I've worked there for five years.\"\n5. **Charlotte**: \"Hobbies?\"\n6. **Student**: ~\"I've studied English for two years.\"\n7. **Charlotte**: \"Long-term things!\"",
+        "evaluation_focus": [
+          "For + duration only",
+          "PP for ongoing",
+          "No \"since\" with duration"
+        ]
+      },
+      "guided_chat": {
+        "scenario": "Charlotte chats about durations.",
+        "voiced_by": "charlotte",
+        "persona": "Charlotte",
+        "persona_outfit": "charlotte_casual",
+        "intro_en": "Charlotte asks about long-term relationships. Practice 'for + duration'.",
+        "opening_message": "How long have you known your best friend?",
+        "objectives": [
+          {
+            "id": 1,
+            "label_pt": "Há quanto tempo conhece",
+            "label_en": "How long known",
+            "hidden_prompt": "user uses 'I've known + person + for + duration'",
+            "hint_pt": "I've known her for ten years.",
+            "hint_en": "I've known her for ten years."
+          },
+          {
+            "id": 2,
+            "label_pt": "Outra duração",
+            "label_en": "Another duration",
+            "hidden_prompt": "user uses another PP + for",
+            "hint_pt": "I've worked here for two years.",
+            "hint_en": "I've worked here for two years."
+          },
+          {
+            "id": 3,
+            "label_pt": "Perguntar à Charlotte",
+            "label_en": "Ask Charlotte",
+            "hidden_prompt": "user asks 'How long have you...?'",
+            "hint_pt": "How long have you taught?",
+            "hint_en": "How long have you taught?"
+          }
+        ],
+        "closing_cue": "Charlotte closes with \"Time flies!\" when obj_3 hits.",
+        "suggested_script": "**Script** (referential, 7 turns):\n\n1. **Charlotte**: \"How long have you known your best friend?\"\n2. **Student**: \"I've known her for ten years.\"\n3. **Charlotte**: \"Long time!\"\n4. **Student**: \"I've worked here for two years.\"\n5. **Charlotte**: \"Cool.\"\n6. **Student**: \"How long have you taught?\"\n7. **Charlotte**: \"For eight years. Time flies!\"\n\n> I02 chat = LLM puro.\n\n---"
+      }
+    },
+    {
+      "id": "I03",
+      "title": "Since 2010",
+      "sub_cefr": "B1",
+      "grammar_focus": "since + point in time",
+      "markers": [
+        "denso"
+      ],
+      "real_life_context": "You anchor situations to a starting point.",
+      "grammar": [
+        {
+          "type": "multiple_choice",
+          "sentence": "I have known her _____ 2010.",
+          "options": [
+            "since",
+            "for",
+            "from"
+          ],
+          "answer": "since",
+          "explanation": "\"Since + point in time\" (2010, Monday, last year)."
+        },
+        {
+          "type": "multiple_choice",
+          "sentence": "She has worked there _____ January.",
+          "options": [
+            "since",
+            "for",
+            "during"
+          ],
+          "answer": "since",
+          "explanation": "\"Since January\" — starting point."
+        },
+        {
+          "type": "word_bank",
+          "sentence": "We have been here _____ 9 am.",
+          "choices": [
+            "since",
+            "for",
+            "from",
+            "during"
+          ],
+          "answer": "since",
+          "explanation": "\"Since 9 am\" — point in time."
+        },
+        {
+          "type": "word_bank",
+          "sentence": "He has lived here _____ he was 10.",
+          "choices": [
+            "since",
+            "for",
+            "when",
+            "during"
+          ],
+          "answer": "since",
+          "explanation": "\"Since\" can introduce a clause: \"since he was 10\" — starting point."
+        },
+        {
+          "type": "fill_gap",
+          "sentence": "I have lived here _____ I was born.",
+          "hint": "point introducing past clause",
+          "answer": "since",
+          "explanation": "\"Since I was born\" — starting reference point."
+        },
+        {
+          "type": "fill_gap",
+          "sentence": "She has been busy _____ Monday.",
+          "hint": "point in time (day)",
+          "answer": "since",
+          "explanation": "\"Since Monday\" — point in time."
+        },
+        {
+          "type": "fill_gap",
+          "sentence": "How long _____ you been waiting?",
+          "hint": "have/has for you",
+          "answer": "have",
+          "explanation": "\"How long have you been waiting?\" — duration question."
+        },
+        {
+          "type": "fix_error",
+          "sentence": "I have lived here since two years.",
+          "hint": "Since needs point, not duration",
+          "answer": "I have lived here for two years.",
+          "explanation": "\"Two years\" = duration → \"for\". \"Since\" needs a point in time."
+        },
+        {
+          "type": "fix_error",
+          "sentence": "I know her since 2010.",
+          "hint": "Since requires PP",
+          "answer": "I have known her since 2010.",
+          "explanation": "\"Since\" + PP. Present simple doesn't work with since."
+        },
+        {
+          "type": "read_answer",
+          "passage": "I have lived here since 2015. I have worked at this company since January. My best friend and I have been friends since school.",
+          "question": "Since when has the speaker worked at this company?",
+          "answer": "January (or \"since January\")",
+          "explanation": "The text says \"since January\"."
+        }
+      ],
+      "listening_speaking": [
+        {
+          "text": "I've known her since 2010.",
+          "context": "since + year"
+        },
+        {
+          "text": "She has worked since January.",
+          "context": "since + month"
+        },
+        {
+          "text": "We've been here since 9 am.",
+          "context": "since + time"
+        },
+        {
+          "text": "He has lived here since he was 10.",
+          "context": "since + clause"
+        },
+        {
+          "text": "How long have you been here?",
+          "context": "common question"
+        }
+      ],
+      "roleplay": {
+        "scenario": "Charlotte asks about starting points in your life.",
+        "voiced_by": "charlotte",
+        "persona": "Charlotte",
+        "persona_outfit": "charlotte_casual",
+        "time_budget_sec": 180,
+        "opening_line": "Tell me three things you've been doing — since when?",
+        "objectives": [
+          {
+            "id": 1,
+            "label_pt": "Algo desde um ano específico",
+            "label_en": "Something since a year",
+            "hidden_prompt": "user uses 'I've + past participle + since + year'",
+            "hint_pt": "I've worked here since 2020.",
+            "hint_en": "I've worked here since 2020."
+          },
+          {
+            "id": 2,
+            "label_pt": "Algo desde um mês ou dia",
+            "label_en": "Something since month or day",
+            "hidden_prompt": "user uses 'since + month/day'",
+            "hint_pt": "I've been busy since Monday.",
+            "hint_en": "I've been busy since Monday."
+          },
+          {
+            "id": 3,
+            "label_pt": "Algo desde um evento da vida",
+            "label_en": "Something since a life event",
+            "hidden_prompt": "user uses 'since + clause' (since I was..., since I moved...)",
+            "hint_pt": "I've lived here since I was 18.",
+            "hint_en": "I've lived here since I was 18."
+          }
+        ],
+        "closing_cue": "Charlotte closes with \"Anchored in time!\" when obj_3 hits.",
+        "suggested_flow": "**Suggested flow** (referential, 6 turns):\n\n1. **Charlotte**: \"Tell me three things you've been doing — since when?\"\n2. **Student**: ~\"I've worked here since 2020.\"\n3. **Charlotte**: \"Recent?\"\n4. **Student**: ~\"I've been busy since Monday.\"\n5. **Charlotte**: \"Longest?\"\n6. **Student**: ~\"I've lived here since I was 18.\"\n7. **Charlotte**: \"Anchored in time!\"",
+        "evaluation_focus": [
+          "Since + point only",
+          "No since + duration",
+          "PP with since"
+        ]
+      },
+      "guided_chat": {
+        "scenario": "Charlotte chats about long-running things.",
+        "voiced_by": "charlotte",
+        "persona": "Charlotte",
+        "persona_outfit": "charlotte_casual",
+        "intro_en": "Charlotte asks since when. Practice 'since + point'.",
+        "opening_message": "Since when have you studied English?",
+        "objectives": [
+          {
+            "id": 1,
+            "label_pt": "Resposta com since",
+            "label_en": "Answer with since",
+            "hidden_prompt": "user uses 'since + point'",
+            "hint_pt": "Since 2022.",
+            "hint_en": "Since 2022."
+          },
+          {
+            "id": 2,
+            "label_pt": "Outra coisa com since",
+            "label_en": "Another with since",
+            "hidden_prompt": "user uses 'I've + past participle + since'",
+            "hint_pt": "I've lived here since 2015.",
+            "hint_en": "I've lived here since 2015."
+          },
+          {
+            "id": 3,
+            "label_pt": "Perguntar à Charlotte",
+            "label_en": "Ask Charlotte",
+            "hidden_prompt": "user asks 'Since when have you...?'",
+            "hint_pt": "Since when have you taught?",
+            "hint_en": "Since when have you taught?"
+          }
+        ],
+        "closing_cue": "Charlotte closes with \"Starting points clear!\" when obj_3 hits.",
+        "suggested_script": "**Script** (referential, 7 turns):\n\n1. **Charlotte**: \"Since when have you studied English?\"\n2. **Student**: \"Since 2022.\"\n3. **Charlotte**: \"Anywhere else?\"\n4. **Student**: \"I've lived here since 2015.\"\n5. **Charlotte**: \"Long time.\"\n6. **Student**: \"Since when have you taught?\"\n7. **Charlotte**: \"Since 2018. Starting points clear!\"\n\n> I03 chat = LLM puro.\n\n---"
+      }
+    },
+    {
+      "id": "I04",
+      "title": "How long have you?",
+      "sub_cefr": "B1",
+      "grammar_focus": "How long + present perfect (with for/since)",
+      "markers": [
+        "qform"
+      ],
+      "real_life_context": "You ask and answer about durations of ongoing situations.",
+      "grammar": [
+        {
+          "type": "multiple_choice",
+          "sentence": "_____ have you lived here?",
+          "options": [
+            "How long",
+            "How much",
+            "How many"
+          ],
+          "answer": "How long",
+          "explanation": "\"How long\" for duration questions in PP."
+        },
+        {
+          "type": "multiple_choice",
+          "sentence": "How long _____ she known him?",
+          "options": [
+            "has",
+            "have",
+            "did"
+          ],
+          "answer": "has",
+          "explanation": "She → \"has\". Duration question."
+        },
+        {
+          "type": "word_bank",
+          "sentence": "_____ have they been together?",
+          "choices": [
+            "How long",
+            "How many",
+            "How much",
+            "Since when"
+          ],
+          "answer": "How long",
+          "explanation": "\"How long\" for duration."
+        },
+        {
+          "type": "word_bank",
+          "sentence": "I've been here _____ a few minutes.",
+          "choices": [
+            "for",
+            "since",
+            "from",
+            "during"
+          ],
+          "answer": "for",
+          "explanation": "\"For + duration\"."
+        },
+        {
+          "type": "fill_gap",
+          "sentence": "How long _____ you waited?",
+          "hint": "have/has for you",
+          "answer": "have",
+          "explanation": "\"How long have you waited?\"."
+        },
+        {
+          "type": "fill_gap",
+          "sentence": "I've been waiting _____ ten minutes.",
+          "hint": "duration",
+          "answer": "for",
+          "explanation": "\"For ten minutes\"."
+        },
+        {
+          "type": "fill_gap",
+          "sentence": "I've been here _____ 2 pm.",
+          "hint": "point in time",
+          "answer": "since",
+          "explanation": "\"Since 2 pm\"."
+        },
+        {
+          "type": "fix_error",
+          "sentence": "How long do you live here?",
+          "hint": "For ongoing, use PP",
+          "answer": "How long have you lived here?",
+          "explanation": "For ongoing situations (still living), use PP \"have lived\"."
+        },
+        {
+          "type": "fix_error",
+          "sentence": "I have been here from one hour.",
+          "hint": "from → for/since",
+          "answer": "I have been here for one hour.",
+          "explanation": "Duration = \"for\", not \"from\". \"For one hour\"."
+        },
+        {
+          "type": "read_answer",
+          "passage": "Q: How long have you lived in São Paulo? A: For ten years. Q: Since when have you worked there? A: Since 2020.",
+          "question": "Since when has the person worked there?",
+          "answer": "2020 (or \"since 2020\")",
+          "explanation": "The text says \"Since 2020\"."
+        }
+      ],
+      "listening_speaking": [
+        {
+          "text": "How long have you lived here?",
+          "context": "duration question"
+        },
+        {
+          "text": "How long has she known him?",
+          "context": "3rd person"
+        },
+        {
+          "text": "How long have they been together?",
+          "context": "plural"
+        },
+        {
+          "text": "I've been here for a few minutes.",
+          "context": "for duration"
+        },
+        {
+          "text": "Since when have you worked here?",
+          "context": "since when"
+        }
+      ],
+      "roleplay": {
+        "scenario": "Charlotte asks \"How long\" about your life.",
+        "voiced_by": "charlotte",
+        "persona": "Charlotte",
+        "persona_outfit": "charlotte_casual",
+        "time_budget_sec": 180,
+        "opening_line": "How long have you been learning English?",
+        "objectives": [
+          {
+            "id": 1,
+            "label_pt": "Responder com for + duração",
+            "label_en": "Answer with for + duration",
+            "hidden_prompt": "user uses 'For + duration'",
+            "hint_pt": "For two years.",
+            "hint_en": "For two years."
+          },
+          {
+            "id": 2,
+            "label_pt": "Outra resposta com since",
+            "label_en": "Another answer with since",
+            "hidden_prompt": "user uses 'Since + point'",
+            "hint_pt": "Since 2022.",
+            "hint_en": "Since 2022."
+          },
+          {
+            "id": 3,
+            "label_pt": "Perguntar à Charlotte (How long)",
+            "label_en": "Ask Charlotte (How long)",
+            "hidden_prompt": "user asks 'How long have you + past participle?'",
+            "hint_pt": "How long have you been a teacher?",
+            "hint_en": "How long have you been a teacher?"
+          }
+        ],
+        "closing_cue": "Charlotte closes with \"Duration questions covered!\" when obj_3 hits.",
+        "suggested_flow": "**Suggested flow** (referential, 6 turns):\n\n1. **Charlotte**: \"How long have you been learning English?\"\n2. **Student**: ~\"For two years.\"\n3. **Charlotte**: \"Living here?\"\n4. **Student**: ~\"Since 2022.\"\n5. **Charlotte**: \"Now ask me!\"\n6. **Student**: ~\"How long have you been a teacher?\"\n7. **Charlotte**: \"Eight years. Duration questions covered!\"",
+        "evaluation_focus": [
+          "How long + PP",
+          "For + duration / Since + point",
+          "Question form"
+        ]
+      },
+      "guided_chat": {
+        "scenario": "Charlotte chats about how long things have been going.",
+        "voiced_by": "charlotte",
+        "persona": "Charlotte",
+        "persona_outfit": "charlotte_casual",
+        "intro_en": "Charlotte asks how long. Practice for/since responses.",
+        "opening_message": "How long have you been at your job?",
+        "objectives": [
+          {
+            "id": 1,
+            "label_pt": "Resposta com for",
+            "label_en": "Answer with for",
+            "hidden_prompt": "user uses 'For + duration'",
+            "hint_pt": "For three years.",
+            "hint_en": "For three years."
+          },
+          {
+            "id": 2,
+            "label_pt": "Outra duração",
+            "label_en": "Another duration",
+            "hidden_prompt": "user uses 'for + duration' or 'since + point'",
+            "hint_pt": "Since 2021.",
+            "hint_en": "Since 2021."
+          },
+          {
+            "id": 3,
+            "label_pt": "Perguntar à Charlotte",
+            "label_en": "Ask Charlotte",
+            "hidden_prompt": "user asks 'How long have you...?'",
+            "hint_pt": "How long have you lived in NYC?",
+            "hint_en": "How long have you lived in NYC?"
+          }
+        ],
+        "closing_cue": "Charlotte closes with \"Time on the books!\" when obj_3 hits.",
+        "suggested_script": "**Script** (referential, 7 turns):\n\n1. **Charlotte**: \"How long have you been at your job?\"\n2. **Student**: \"For three years.\"\n3. **Charlotte**: \"Started?\"\n4. **Student**: \"Since 2021.\"\n5. **Charlotte**: \"Cool.\"\n6. **Student**: \"How long have you lived in NYC?\"\n7. **Charlotte**: \"For ten years. Time on the books!\"\n\n> I04 chat = LLM puro.\n\n---"
+      }
+    },
+    {
+      "id": "I05",
+      "title": "Past or perfect?",
+      "sub_cefr": "B1",
+      "grammar_focus": "Integration past simple vs present perfect",
+      "markers": [
+        "denso"
+      ],
+      "real_life_context": "You combine both tenses naturally in conversation.",
+      "grammar": [
+        {
+          "type": "multiple_choice",
+          "sentence": "I _____ Italy last year.",
+          "options": [
+            "visited",
+            "have visited",
+            "had visited"
+          ],
+          "answer": "visited",
+          "explanation": "\"Last year\" = specific past → past simple."
+        },
+        {
+          "type": "multiple_choice",
+          "sentence": "I _____ many countries.",
+          "options": [
+            "have visited",
+            "visited",
+            "had visited"
+          ],
+          "answer": "have visited",
+          "explanation": "No specific time, experience → PP."
+        },
+        {
+          "type": "word_bank",
+          "sentence": "She _____ this morning at 8.",
+          "choices": [
+            "left",
+            "has left",
+            "had left",
+            "leaves"
+          ],
+          "answer": "left",
+          "explanation": "\"At 8\" specific time → past simple."
+        },
+        {
+          "type": "word_bank",
+          "sentence": "She _____ already.",
+          "choices": [
+            "has left",
+            "left",
+            "had left",
+            "leaves"
+          ],
+          "answer": "has left",
+          "explanation": "\"Already\" without specific time → PP."
+        },
+        {
+          "type": "fill_gap",
+          "sentence": "I _____ her in 2010 and we _____ best friends since.",
+          "hint": "1=met; 2=have been",
+          "answer": "met",
+          "explanation": "\"In 2010\" = past simple \"met\". Second part would be \"have been\"."
+        },
+        {
+          "type": "fill_gap",
+          "sentence": "He _____ five books this year.",
+          "hint": "PP for unfinished period",
+          "answer": "has read",
+          "explanation": "\"This year\" not finished → PP."
+        },
+        {
+          "type": "fill_gap",
+          "sentence": "I _____ her last week.",
+          "hint": "past simple \"see\"",
+          "answer": "saw",
+          "explanation": "\"Last week\" = past simple."
+        },
+        {
+          "type": "fix_error",
+          "sentence": "I have seen her yesterday.",
+          "hint": "yesterday → past simple",
+          "answer": "I saw her yesterday.",
+          "explanation": "\"Yesterday\" doesn't combine with PP."
+        },
+        {
+          "type": "fix_error",
+          "sentence": "I visited five countries in my life.",
+          "hint": "\"In my life\" → PP",
+          "answer": "I have visited five countries in my life.",
+          "explanation": "\"In my life\" = experience → PP."
+        },
+        {
+          "type": "read_answer",
+          "passage": "I went to Italy in 2019. I've been there twice in my life. I haven't traveled this year. I saw an old friend last month.",
+          "question": "When did the speaker see the old friend?",
+          "answer": "last month",
+          "explanation": "The text says \"I saw an old friend last month\"."
+        }
+      ],
+      "listening_speaking": [
+        {
+          "text": "I visited Italy last year.",
+          "context": "past simple"
+        },
+        {
+          "text": "I have visited Italy three times.",
+          "context": "PP experience"
+        },
+        {
+          "text": "She left at 8.",
+          "context": "past simple specific"
+        },
+        {
+          "text": "She has already left.",
+          "context": "PP no time"
+        },
+        {
+          "text": "I haven't traveled this year.",
+          "context": "PP unfinished period"
+        }
+      ],
+      "roleplay": {
+        "scenario": "Charlotte asks both types — specific past and experiences.",
+        "voiced_by": "charlotte",
+        "persona": "Charlotte",
+        "persona_outfit": "charlotte_casual",
+        "time_budget_sec": 180,
+        "opening_line": "Tell me a specific past event AND a life experience.",
+        "objectives": [
+          {
+            "id": 1,
+            "label_pt": "Evento específico (past simple)",
+            "label_en": "Specific event (past simple)",
+            "hidden_prompt": "user uses past simple + specific time",
+            "hint_pt": "I traveled to Italy in 2019.",
+            "hint_en": "I traveled to Italy in 2019."
+          },
+          {
+            "id": 2,
+            "label_pt": "Experiência de vida (PP)",
+            "label_en": "Life experience (PP)",
+            "hidden_prompt": "user uses 'I've + past participle' for experience",
+            "hint_pt": "I've never been to Asia.",
+            "hint_en": "I've never been to Asia."
+          },
+          {
+            "id": 3,
+            "label_pt": "Pergunta integrada à Charlotte",
+            "label_en": "Integrated question",
+            "hidden_prompt": "user asks PP or past simple question",
+            "hint_pt": "Have you been to Asia?",
+            "hint_en": "Have you been to Asia?"
+          }
+        ],
+        "closing_cue": "Charlotte closes with \"Tenses mastered!\" when obj_3 hits.",
+        "suggested_flow": "**Suggested flow** (referential, 6 turns):\n\n1. **Charlotte**: \"Tell me a specific past event AND a life experience.\"\n2. **Student**: ~\"I traveled to Italy in 2019.\"\n3. **Charlotte**: \"Lifetime?\"\n4. **Student**: ~\"I've never been to Asia.\"\n5. **Charlotte**: \"Ask me!\"\n6. **Student**: ~\"Have you been to Asia?\"\n7. **Charlotte**: \"Yes! Tenses mastered!\"",
+        "evaluation_focus": [
+          "Correct tense choice",
+          "Time marker pairing",
+          "Smooth integration"
+        ]
+      },
+      "guided_chat": {
+        "scenario": "Charlotte chats about past — finished and ongoing.",
+        "voiced_by": "charlotte",
+        "persona": "Charlotte",
+        "persona_outfit": "charlotte_casual",
+        "intro_en": "Charlotte invites past stories. Integrate past simple + PP.",
+        "opening_message": "What's the last big thing that happened in your life?",
+        "objectives": [
+          {
+            "id": 1,
+            "label_pt": "Evento passado específico",
+            "label_en": "Specific past event",
+            "hidden_prompt": "user uses past simple with time marker",
+            "hint_pt": "I got promoted last month.",
+            "hint_en": "I got promoted last month."
+          },
+          {
+            "id": 2,
+            "label_pt": "Experiência geral (PP)",
+            "label_en": "General experience (PP)",
+            "hidden_prompt": "user uses PP for life experience",
+            "hint_pt": "I've never had such a good year.",
+            "hint_en": "I've never had such a good year."
+          },
+          {
+            "id": 3,
+            "label_pt": "Perguntar à Charlotte",
+            "label_en": "Ask Charlotte",
+            "hidden_prompt": "user asks past simple or PP question",
+            "hint_pt": "How about you?",
+            "hint_en": "How about you?"
+          }
+        ],
+        "closing_cue": "Charlotte closes with \"Two tenses, one chat!\" when obj_3 hits.",
+        "suggested_script": "**Script** (referential, 7 turns):\n\n1. **Charlotte**: \"What's the last big thing that happened in your life?\"\n2. **Student**: \"I got promoted last month.\"\n3. **Charlotte**: \"Congrats!\"\n4. **Student**: \"I've never had such a good year.\"\n5. **Charlotte**: \"Lucky.\"\n6. **Student**: \"How about you?\"\n7. **Charlotte**: \"I wrote a book this year. Two tenses, one chat!\"\n\n> I05 chat = LLM puro.\n\n---"
+      }
+    }
+  ],
+  "cross_unit_consolidation": [
+    "Choose past simple for specific finished events",
+    "Choose PP for life experience or unfinished period",
+    "Use for + duration / since + point",
+    "Ask \"How long have you...?\""
+  ]
+}
