@@ -1,0 +1,741 @@
+{
+  "id": "M12",
+  "title": "Escrita acadêmica",
+  "level": "Advanced",
+  "block": "C2",
+  "units_range": "A01–A05",
+  "theme": "Academic register — nominalisation, impersonal voice, hedged claims, citation patterns, paragraph cohesion",
+  "goal": "Student writes in the disciplined register of academic prose — formal vocabulary, hedged assertions, citation-aware framing, no contractions.",
+  "connects_to": "M13 (Argumentação e persuasão) — uses academic register in the service of building arguments.",
+  "module_chunks": [
+    "the rise of / the decline in / the emergence of (nominalisation)",
+    "an increase in / a reduction in / a shift towards",
+    "the extent to which / the degree to which",
+    "this suggests that / this implies that / this indicates that",
+    "it is generally accepted that / it is widely held that",
+    "the evidence points to / the data supports",
+    "according to X (2020) / X (2020) argues that",
+    "as noted by / as has been suggested",
+    "a body of research / a substantial literature",
+    "contend / posit / postulate / assert (formal \"say\")",
+    "there is reason to believe that",
+    "one might argue that / it could be argued that",
+    "this is not to say that / this should not be taken to mean",
+    "the present study / this paper / this analysis"
+  ],
+  "units": [
+    {
+      "id": "A01",
+      "title": "Nominalisation",
+      "sub_cefr": "C2",
+      "grammar_focus": "Converting verbs to nouns for academic compactness (the rise of, the decline in, the emergence of, an increase in)",
+      "markers": [
+        "denso",
+        "academic"
+      ],
+      "real_life_context": "You write academic introductions and abstracts that pack ideas into noun phrases — characteristic of scientific and humanities prose.",
+      "grammar": [
+        {
+          "type": "multiple_choice",
+          "options": [
+            "The rapid growth of cities",
+            "Cities growing rapidly",
+            "That cities grew",
+            "Cities have grown"
+          ],
+          "answer": "The rapid growth of cities",
+          "explanation": "Nominalisation converts a clause into a noun phrase: \"Cities grew rapidly\" → \"the rapid growth of cities\". This compresses information and shifts the focus from action to phenomenon. Common opener in academic introductions. Note: adjective \"rapid\" survives as modifier of the noun \"growth\"."
+        },
+        {
+          "type": "multiple_choice",
+          "options": [
+            "The recent decrease in sales",
+            "Sales decreasing recently",
+            "That sales decreased",
+            "Sales have been decreasing"
+          ],
+          "answer": "The recent decrease in sales",
+          "explanation": "\"Decrease IN sales\" — preposition \"in\" is the fixed link between the nominalised verb and the original subject. Other patterns: \"rise IN\", \"decline IN\", \"increase IN\", \"shift IN/TOWARDS\". The preposition is part of the chunk."
+        },
+        {
+          "type": "fill_gap",
+          "hint": "noun form of \"adopt\" + adjective",
+          "answer": "The rapid adoption",
+          "explanation": "\"Adopt\" → \"adoption\". Adjective \"rapid\" carries the adverbial sense (\"quickly\"). Original subject becomes prepositional (\"BY companies\"). Academic style favours such compressions for density and impersonal tone."
+        },
+        {
+          "type": "fix_error",
+          "sentence": "The increasing of climate awareness has changed policy.",
+          "hint": "Use noun form, not gerund — \"increase\"",
+          "answer": "The increase in climate awareness has changed policy.",
+          "explanation": "\"Increasing\" is gerund/present participle. The nominalisation is \"increase\" (noun). Pattern: \"the increase IN + topic\". Don't use the verbal -ing form in nominalisation slots — it weakens the academic effect."
+        },
+        {
+          "type": "read_answer",
+          "passage": "The opening paragraph of the paper read: 'The proliferation of digital platforms over the past two decades has driven a fundamental shift in how news is consumed. The decline in traditional print circulation has been matched, almost step for step, by the rise of algorithmic feeds. This paper examines the implications of that exchange.'",
+          "question": "According to the opening, what has matched the decline in print circulation?",
+          "answer": "the rise of algorithmic feeds",
+          "explanation": "Four nominalisations in three sentences: \"the proliferation of platforms\", \"a shift in news consumption\", \"the decline in print circulation\", \"the rise of algorithmic feeds\". Academic prose runs on nominalisation density."
+        }
+      ],
+      "listening_speaking": [
+        {
+          "text": "The rise of digital platforms has reshaped media.",
+          "context": "opener nominalisation"
+        },
+        {
+          "text": "The decline in attention spans is well documented.",
+          "context": "research-frame nominalisation"
+        },
+        {
+          "text": "There has been a marked increase in remote work.",
+          "context": "quantified nominalisation"
+        },
+        {
+          "text": "The emergence of new variants raised concern.",
+          "context": "scientific nominalisation"
+        },
+        {
+          "text": "A shift towards plant-based diets is evident.",
+          "context": "direction nominalisation"
+        }
+      ],
+      "roleplay": {
+        "scenario": "Charlotte gives you three verbal sentences. You rewrite each as an academic opener using nominalisation.",
+        "voiced_by": "charlotte",
+        "persona": "Charlotte",
+        "persona_outfit": "charlotte_casual",
+        "time_budget_sec": 300,
+        "opening_line": "Three verbal sentences. Rewrite each as an academic opener with nominalisation.",
+        "objectives": [
+          {
+            "id": 1,
+            "label_en": "'The rise of'",
+            "hidden_prompt": "user uses 'The rise of + noun phrase' to open",
+            "hint_en": "The rise of remote work has transformed how organisations think about office space."
+          },
+          {
+            "id": 2,
+            "label_en": "'The decline in' or 'A shift towards'",
+            "hidden_prompt": "user uses 'The decline in + noun' or 'A shift towards + noun'",
+            "hint_en": "The decline in newspaper readership has been documented across every Western democracy."
+          },
+          {
+            "id": 3,
+            "label_en": "'The emergence of' or 'An increase in'",
+            "hidden_prompt": "user uses 'The emergence of' or 'An increase in'",
+            "hint_en": "The emergence of large language models has accelerated debates about the future of knowledge work."
+          }
+        ],
+        "closing_cue": "Charlotte closes with \"Three openers, academically packed.\" once obj_3 lands.",
+        "suggested_flow": "**Suggested flow** (referencial, 6 turnos):\n\n1. **Charlotte**: \"Three verbal sentences. Rewrite each as an academic opener with nominalisation.\"\n2. **Student**: ~\"The rise of remote work has transformed how organisations think about office space.\"\n3. **Charlotte**: \"Decline?\"\n4. **Student**: ~\"The decline in newspaper readership has been documented across every Western democracy.\"\n5. **Charlotte**: \"Emergence?\"\n6. **Student**: ~\"The emergence of large language models has accelerated debates about the future of knowledge work.\"\n7. **Charlotte**: \"Three openers, academically packed.\"",
+        "evaluation_focus": [
+          "Verb correctly converted to noun",
+          "Preposition (of/in/towards) fits",
+          "Sentence reads as academic, not casual"
+        ]
+      },
+      "guided_chat": {
+        "scenario": "Charlotte writes the first sentence of a research paper. You suggest a more academically nominalised version.",
+        "voiced_by": "charlotte",
+        "persona": "Charlotte",
+        "persona_outfit": "charlotte_casual",
+        "intro_en": "Charlotte drafts paper openers. Suggest nominalised academic versions.",
+        "opening_message": "I've drafted: 'Companies are spending more on cybersecurity every year.' For a research paper — too plain. Help me lift it?",
+        "objectives": [
+          {
+            "id": 1,
+            "label_en": "Nominalised version",
+            "hidden_prompt": "user uses 'The increase in / The rise in / A marked rise in' nominalisation",
+            "hint_en": "Try: 'The increase in corporate cybersecurity spending has accelerated in each of the past five years.'"
+          },
+          {
+            "id": 2,
+            "label_en": "Deepen with another nominalisation",
+            "hidden_prompt": "user adds 'The emergence of / The shift towards'",
+            "hint_en": "If you want to bring in the cause, you could add: 'driven in part by the emergence of new threat vectors and a shift towards remote work.'"
+          },
+          {
+            "id": 3,
+            "label_en": "Ask Charlotte",
+            "hidden_prompt": "user asks Charlotte what the paper actually argues",
+            "hint_en": "What does the paper actually claim?"
+          }
+        ],
+        "closing_cue": "Charlotte closes with \"Opener academically pitched.\" once obj_3 lands.",
+        "suggested_script": "**Script** (referencial, 7 turnos):\n\n1. **Charlotte**: \"I've drafted: 'Companies are spending more on cybersecurity every year.' For a research paper — too plain. Help me lift it?\"\n2. **Student**: \"Try: 'The increase in corporate cybersecurity spending has accelerated in each of the past five years.'\"\n3. **Charlotte**: \"Much better. Anything else to compress in?\"\n4. **Student**: \"If you want to bring in the cause, you could add: 'driven in part by the emergence of new threat vectors and a shift towards remote work.'\"\n5. **Charlotte**: \"Now it reads like an abstract.\"\n6. **Student**: \"What does the paper actually claim?\"\n7. **Charlotte**: \"That spending grows faster than effectiveness — efficiency, not budget, is the bottleneck. Opener academically pitched.\"\n\n> A01 chat = full LLM. Scaffold via hint_pt/hint_en.\n\n---"
+      }
+    },
+    {
+      "id": "A02",
+      "title": "Impersonal voice",
+      "sub_cefr": "C2",
+      "grammar_focus": "Removing first-person subjectivity (It is generally accepted that, It is widely held that, It is often argued that, this paper, the present study)",
+      "markers": [
+        "denso",
+        "academic"
+      ],
+      "real_life_context": "You write in the impersonal scholarly voice — no \"I think\", no \"I believe\" — letting evidence and argument carry the claim.",
+      "grammar": [
+        {
+          "type": "multiple_choice",
+          "options": [
+            "It is widely accepted",
+            "I widely accept",
+            "Widely accepting",
+            "Wide acceptance"
+          ],
+          "answer": "It is widely accepted",
+          "explanation": "Impersonal passive (\"It is + past participle + that-clause\") removes the speaker as agent. Common openers: \"It is widely accepted / generally held / well established / often argued / increasingly recognised that...\". Each calibrates how strong the consensus is."
+        },
+        {
+          "type": "multiple_choice",
+          "options": [
+            "This paper argues",
+            "I am arguing",
+            "Argument is",
+            "Arguing is"
+          ],
+          "answer": "This paper argues",
+          "explanation": "\"This paper argues that...\" or \"The present study suggests...\" — replacing \"I\" with the document or study as the agent. Standard academic convention to avoid first person. Other variants: \"this analysis\", \"this article\", \"the present research\"."
+        },
+        {
+          "type": "fill_gap",
+          "hint": "\"The data\" or \"The results\" + verb",
+          "answer": "The data suggest (or \"The results indicate\" / \"The findings show\")",
+          "explanation": "Academic prose lets the evidence speak. \"The data suggest\" — note plural verb (data is technically plural, though \"data shows\" is now common). \"The findings indicate\", \"The results demonstrate\" — all variations of the impersonal evidence-as-agent construction."
+        },
+        {
+          "type": "fix_error",
+          "hint": "Replace \"I believe\" with impersonal alternative",
+          "answer": "There is reason to believe this hypothesis is correct. (or: The evidence supports this hypothesis.)",
+          "explanation": "\"I believe\" is too subjective for academic prose. Alternatives: \"There is reason to believe\", \"The evidence supports\", \"It is plausible that\", \"It can be argued that\". Each preserves the modesty of a claim while removing the speaker."
+        },
+        {
+          "type": "read_answer",
+          "passage": "The introduction set the tone. 'This paper examines the relationship between sleep and creative output among knowledge workers. It is widely accepted that sleep affects cognition, yet relatively little is known about its effects on specifically creative tasks. The present study addresses this gap. The data suggest that even modest sleep restriction reduces divergent thinking by a measurable margin.'",
+          "question": "According to the introduction, what does the data suggest?",
+          "answer": "even modest sleep restriction reduces divergent thinking (by a measurable margin)",
+          "explanation": "Four impersonal frames in four sentences: \"This paper examines...\", \"It is widely accepted that...\", \"The present study addresses...\", \"The data suggest that...\". The author never appears as \"I\" — every claim has an institutional or evidential agent."
+        }
+      ],
+      "listening_speaking": [
+        {
+          "text": "It is widely accepted that exercise improves cognition.",
+          "context": "consensus framing"
+        },
+        {
+          "text": "This paper argues for a revised approach.",
+          "context": "paper-as-agent"
+        },
+        {
+          "text": "The data suggest a strong correlation.",
+          "context": "evidence-as-agent"
+        },
+        {
+          "text": "There is reason to believe this is causal.",
+          "context": "hedged claim"
+        },
+        {
+          "text": "The present study examines three variables.",
+          "context": "study-as-agent"
+        }
+      ],
+      "roleplay": {
+        "scenario": "Charlotte gives three subjective sentences. You rewrite each into impersonal academic register.",
+        "voiced_by": "charlotte",
+        "persona": "Charlotte",
+        "persona_outfit": "charlotte_casual",
+        "time_budget_sec": 300,
+        "opening_line": "Three subjective sentences. Rewrite each into impersonal academic register.",
+        "objectives": [
+          {
+            "id": 1,
+            "label_en": "'It is widely accepted that'",
+            "hidden_prompt": "user uses 'It is widely accepted/held/argued that + clause'",
+            "hint_en": "From 'Most experts agree exercise helps' → 'It is widely accepted that regular exercise improves cognitive function.'"
+          },
+          {
+            "id": 2,
+            "label_en": "'This paper / The present study'",
+            "hidden_prompt": "user uses 'This paper argues / The present study examines'",
+            "hint_en": "From 'I argue that the model fails' → 'This paper argues that the existing model fails to account for non-linear effects.'"
+          },
+          {
+            "id": 3,
+            "label_en": "'The data suggest / The evidence indicates'",
+            "hidden_prompt": "user uses 'The data suggest / The evidence indicates + clause'",
+            "hint_en": "From 'I found that women earned less for the same work' → 'The data indicate that women in the sample earned 18% less for equivalent work.'"
+          }
+        ],
+        "closing_cue": "Charlotte closes with \"Voice depersonalised, claims preserved.\" once obj_3 lands.",
+        "suggested_flow": "**Suggested flow** (referencial, 6 turnos):\n\n1. **Charlotte**: \"Three subjective sentences. Rewrite each into impersonal academic register.\"\n2. **Student**: ~\"From 'Most experts agree exercise helps' → 'It is widely accepted that regular exercise improves cognitive function.'\"\n3. **Charlotte**: \"Argument framing?\"\n4. **Student**: ~\"From 'I argue that the model fails' → 'This paper argues that the existing model fails to account for non-linear effects.'\"\n5. **Charlotte**: \"Evidence framing?\"\n6. **Student**: ~\"From 'I found that women earned less for the same work' → 'The data indicate that women in the sample earned 18% less for equivalent work.'\"\n7. **Charlotte**: \"Voice depersonalised, claims preserved.\"",
+        "evaluation_focus": [
+          "First-person removed",
+          "Agent shifted to study/paper/data/evidence",
+          "Hedge calibrated (widely vs generally vs increasingly)"
+        ]
+      },
+      "guided_chat": {
+        "scenario": "Charlotte drafts paragraphs that are too informal. You suggest impersonal academic rewrites.",
+        "voiced_by": "charlotte",
+        "persona": "Charlotte",
+        "persona_outfit": "charlotte_casual",
+        "intro_en": "Charlotte drafts paragraphs. Rewrite into impersonal academic voice.",
+        "opening_message": "Here's my draft: 'I've noticed that students seem to do better when they get feedback within 24 hours. I think this is because the connection between work and response is fresh.' For a paper — too subjective. Fix?",
+        "objectives": [
+          {
+            "id": 1,
+            "label_en": "Rewrite the observation",
+            "hidden_prompt": "user uses 'The data suggest' or 'The findings indicate' or 'It is observed that'",
+            "hint_en": "Try: 'The data suggest that students perform measurably better when feedback is delivered within 24 hours.'"
+          },
+          {
+            "id": 2,
+            "label_en": "Rewrite the interpretation",
+            "hidden_prompt": "user uses 'This may be attributed to' or 'A plausible explanation is that'",
+            "hint_en": "And: 'A plausible explanation is that the temporal proximity between task and response strengthens the cognitive link between effort and outcome.'"
+          },
+          {
+            "id": 3,
+            "label_en": "Ask Charlotte",
+            "hidden_prompt": "user asks Charlotte how strong the evidence actually is",
+            "hint_en": "How strong is the evidence — is this from a study or your classroom?"
+          }
+        ],
+        "closing_cue": "Charlotte closes with \"Paragraph academically dressed.\" once obj_3 lands.",
+        "suggested_script": "**Script** (referencial, 7 turnos):\n\n1. **Charlotte**: \"Here's my draft: 'I've noticed that students seem to do better when they get feedback within 24 hours. I think this is because the connection between work and response is fresh.' For a paper — too subjective. Fix?\"\n2. **Student**: \"Try: 'The data suggest that students perform measurably better when feedback is delivered within 24 hours.'\"\n3. **Charlotte**: \"And the explanation?\"\n4. **Student**: \"And: 'A plausible explanation is that the temporal proximity between task and response strengthens the cognitive link between effort and outcome.'\"\n5. **Charlotte**: \"Now it reads like research.\"\n6. **Student**: \"How strong is the evidence — is this from a study or your classroom?\"\n7. **Charlotte**: \"Two small studies, plus a decade of teaching. Paragraph academically dressed.\"\n\n> A02 chat = full LLM. Scaffold via hint_pt/hint_en.\n\n---"
+      }
+    },
+    {
+      "id": "A03",
+      "title": "Hedged claims",
+      "sub_cefr": "C2",
+      "grammar_focus": "Hedging strength of claim (this suggests, this implies, this indicates, the evidence points to, there is reason to believe, it could be argued)",
+      "markers": [
+        "denso",
+        "academic"
+      ],
+      "real_life_context": "You signal precisely how confident a claim is — preserving intellectual honesty in academic writing.",
+      "grammar": [
+        {
+          "type": "multiple_choice",
+          "options": [
+            "This suggests",
+            "This proves",
+            "This shows definitively",
+            "We know"
+          ],
+          "answer": "This suggests",
+          "explanation": "\"This suggests that...\" — moderate hedge. The evidence points in a direction but isn't conclusive. Stronger: \"This demonstrates / This shows\". Weaker: \"This may suggest / It is conceivable that\". C2 academic register calibrates hedge to actual evidence strength."
+        },
+        {
+          "type": "multiple_choice",
+          "options": [
+            "The evidence strongly supports",
+            "It is conceivable that",
+            "There is reason to believe",
+            "It might be the case that"
+          ],
+          "answer": "The evidence strongly supports",
+          "explanation": "\"The evidence strongly supports...\" — high-confidence framing without claiming certainty. Academic prose almost never says \"proves\" — even strong findings are framed as \"support\", \"indicate\", \"are consistent with\". Caution is itself a virtue."
+        },
+        {
+          "type": "fill_gap",
+          "hint": "\"There is reason to believe\"",
+          "answer": "There is reason to believe",
+          "explanation": "\"There is reason to believe that...\" — moderate-strong hedge often paired with \"though further study is needed\" or \"but this remains to be confirmed\". Pattern: hedge + qualifier. Marks intellectual humility while still advancing the claim."
+        },
+        {
+          "type": "fix_error",
+          "hint": "Academic register avoids \"proves\" — use a hedged verb",
+          "answer": "This suggests that the drug is effective. (or: The evidence supports the conclusion that the drug is effective.)",
+          "explanation": "\"Proves\" implies certainty that scientific epistemology rarely warrants. Even strong findings use \"supports\", \"suggests\", \"indicates\", or \"is consistent with\". The hedge isn't false modesty — it's accurate representation of evidence."
+        },
+        {
+          "type": "read_answer",
+          "passage": "The discussion section was characteristically hedged. 'The data suggest a meaningful association between sleep quality and creative output. This may indicate that improvements in one could yield improvements in the other. It is conceivable, though by no means established, that the relationship is bidirectional. Further longitudinal study would be needed to confirm the direction of causation.'",
+          "question": "How strong is the claim about bidirectional relationship?",
+          "answer": "weak — described as conceivable but not established",
+          "explanation": "Four graded hedges: \"suggest\" (moderate), \"may indicate\" (weaker), \"It is conceivable, though by no means established\" (very weak), \"would be needed to confirm\" (acknowledges open question). Hedging shows intellectual honesty about uncertainty."
+        }
+      ],
+      "listening_speaking": [
+        {
+          "text": "This suggests a strong correlation.",
+          "context": "moderate hedge"
+        },
+        {
+          "text": "The evidence supports the hypothesis.",
+          "context": "strong supportive hedge"
+        },
+        {
+          "text": "There is reason to believe this is causal.",
+          "context": "confident hedge"
+        },
+        {
+          "text": "It is conceivable, though not established, that...",
+          "context": "very weak hedge"
+        },
+        {
+          "text": "The findings are consistent with prior research.",
+          "context": "alignment hedge"
+        }
+      ],
+      "roleplay": {
+        "scenario": "Charlotte makes three strong-sounding claims. You rewrite each with appropriate academic hedging.",
+        "voiced_by": "charlotte",
+        "persona": "Charlotte",
+        "persona_outfit": "charlotte_casual",
+        "time_budget_sec": 300,
+        "opening_line": "Three strong claims. Hedge each appropriately for academic prose.",
+        "objectives": [
+          {
+            "id": 1,
+            "label_en": "Moderate hedge with 'suggests'",
+            "hidden_prompt": "user uses 'This suggests that' or 'The data indicate'",
+            "hint_en": "From 'The policy worked' → 'The data suggest that the policy contributed to the observed improvement.'"
+          },
+          {
+            "id": 2,
+            "label_en": "Strong hedge with 'evidence supports'",
+            "hidden_prompt": "user uses 'The evidence supports' or 'There is strong reason to believe'",
+            "hint_en": "From 'It's true that...' → 'The accumulated evidence supports the conclusion that...'"
+          },
+          {
+            "id": 3,
+            "label_en": "Weak hedge with 'conceivable'",
+            "hidden_prompt": "user uses 'It is conceivable that' or 'A possible interpretation is'",
+            "hint_en": "From 'Maybe X causes Y' → 'It is conceivable, though not yet established, that X plays a causal role in Y.'"
+          }
+        ],
+        "closing_cue": "Charlotte closes with \"Confidence calibrated, honestly.\" once obj_3 lands.",
+        "suggested_flow": "**Suggested flow** (referencial, 6 turnos):\n\n1. **Charlotte**: \"Three strong claims. Hedge each appropriately for academic prose.\"\n2. **Student**: ~\"From 'The policy worked' → 'The data suggest that the policy contributed to the observed improvement.'\"\n3. **Charlotte**: \"Stronger?\"\n4. **Student**: ~\"From 'It's true that...' → 'The accumulated evidence supports the conclusion that...'\"\n5. **Charlotte**: \"Weaker?\"\n6. **Student**: ~\"From 'Maybe X causes Y' → 'It is conceivable, though not yet established, that X plays a causal role in Y.'\"\n7. **Charlotte**: \"Confidence calibrated, honestly.\"",
+        "evaluation_focus": [
+          "Hedge matches actual evidence strength",
+          "Verb choice deliberate (suggests vs supports vs indicates)",
+          "No overclaim (\"proves\") or underclaim where evidence is strong"
+        ]
+      },
+      "guided_chat": {
+        "scenario": "Charlotte writes a discussion section. You help her hedge claims appropriately.",
+        "voiced_by": "charlotte",
+        "persona": "Charlotte",
+        "persona_outfit": "charlotte_casual",
+        "intro_en": "Charlotte writes a discussion section. Hedge her claims.",
+        "opening_message": "I wrote: 'Our findings prove that remote workers are more productive than office workers.' For a journal — too strong. Help me dial it back?",
+        "objectives": [
+          {
+            "id": 1,
+            "label_en": "Re-hedge the main claim",
+            "hidden_prompt": "user replaces 'prove' with appropriate hedge",
+            "hint_en": "Try: 'Our findings suggest that, within the sample studied, remote workers demonstrated higher productivity on the measures examined.'"
+          },
+          {
+            "id": 2,
+            "label_en": "Add limitation",
+            "hidden_prompt": "user adds limitation with 'It should be noted that' or 'This finding is consistent with'",
+            "hint_en": "And: 'It should be noted that the effect was modest and may not generalise to roles requiring extensive in-person collaboration.'"
+          },
+          {
+            "id": 3,
+            "label_en": "Ask Charlotte",
+            "hidden_prompt": "user asks Charlotte how big the effect was",
+            "hint_en": "How big was the effect, actually?"
+          }
+        ],
+        "closing_cue": "Charlotte closes with \"Claim accurate, hedge fitting.\" once obj_3 lands.",
+        "suggested_script": "**Script** (referencial, 7 turnos):\n\n1. **Charlotte**: \"I wrote: 'Our findings prove that remote workers are more productive than office workers.' For a journal — too strong. Help me dial it back?\"\n2. **Student**: \"Try: 'Our findings suggest that, within the sample studied, remote workers demonstrated higher productivity on the measures examined.'\"\n3. **Charlotte**: \"Much safer. Limitation?\"\n4. **Student**: \"And: 'It should be noted that the effect was modest and may not generalise to roles requiring extensive in-person collaboration.'\"\n5. **Charlotte**: \"Reviewers will appreciate the candour.\"\n6. **Student**: \"How big was the effect, actually?\"\n7. **Charlotte**: \"About 4% on objective measures, more on self-report. Claim accurate, hedge fitting.\"\n\n> A03 chat = full LLM. Scaffold via hint_pt/hint_en.\n\n---"
+      }
+    },
+    {
+      "id": "A04",
+      "title": "Citation patterns",
+      "sub_cefr": "C2",
+      "grammar_focus": "Citation framing (according to X (2020), as noted by, X argues that, X contends, building on prior work)",
+      "markers": [
+        "denso",
+        "academic"
+      ],
+      "real_life_context": "You position your claim in the existing literature — citing, agreeing, contrasting, building.",
+      "grammar": [
+        {
+          "type": "multiple_choice",
+          "options": [
+            "According to",
+            "Following",
+            "In line",
+            "Like"
+          ],
+          "answer": "According to",
+          "explanation": "\"According to X (year), + claim\" — standard citation frame for attributed assertions. Alternatives: \"As X (year) argues\" or \"X (year) contends that\". Each cites slightly differently — \"according to\" stays neutral; \"X argues that\" foregrounds X's position."
+        },
+        {
+          "type": "multiple_choice",
+          "options": [
+            "Wang (2019) argues",
+            "Wang argues 2019",
+            "In 2019 Wang argued",
+            "By 2019 Wang argued"
+          ],
+          "answer": "Wang (2019) argues",
+          "explanation": "Standard format: \"Author (Year) verb that...\". The year sits in parentheses immediately after the author's surname. Verbs vary by stance: \"argues\" (claim), \"demonstrates\" (with evidence), \"suggests\" (hedged), \"contends\" (often disputed by others)."
+        },
+        {
+          "type": "fill_gap",
+          "hint": "\"Building on\" or \"Extending\"",
+          "answer": "Building on",
+          "explanation": "\"Building on + noun phrase\" — academic frame for positioning your work as continuous with prior research. Alternatives: \"Extending the work of\", \"Drawing on\", \"In line with\". Each signals different relationship to the cited body."
+        },
+        {
+          "type": "fix_error",
+          "sentence": "Smith (2020) said that the policy failed.",
+          "hint": "Replace \"said\" with academic citation verb",
+          "answer": "Smith (2020) argues that the policy failed. (or: Smith (2020) contends that the policy failed.)",
+          "explanation": "\"Said\" is too conversational for academic citation. Standard verbs: \"argues\", \"contends\", \"claims\", \"demonstrates\", \"suggests\", \"posits\", \"asserts\", \"maintains\", \"concludes\". Each carries different connotation about how strongly the claim is being defended."
+        },
+        {
+          "type": "read_answer",
+          "passage": "The literature review built carefully. 'According to Chen (2018), the relationship between sleep and creativity has been understudied. Building on this observation, Park and Lee (2020) found a measurable effect on divergent thinking. Subsequent work by Müller (2022) contends that the effect is mediated by REM sleep specifically. The present study extends this line of inquiry to non-academic populations.'",
+          "question": "According to the passage, what does Müller (2022) contend?",
+          "answer": "that the effect is mediated by REM sleep specifically",
+          "explanation": "Four citation frames in four sentences: \"According to Chen (2018)\", \"Building on this observation, Park and Lee (2020) found\", \"Subsequent work by Müller (2022) contends\", \"The present study extends\". A guided tour through the literature, positioning the new work."
+        }
+      ],
+      "listening_speaking": [
+        {
+          "text": "According to Smith (2020), the policy failed.",
+          "context": "direct attribution"
+        },
+        {
+          "text": "Building on this observation, the study expands the dataset.",
+          "context": "positioning"
+        },
+        {
+          "text": "Wang (2019) argues that the model is incomplete.",
+          "context": "citing argument"
+        },
+        {
+          "text": "As noted by previous research, the effect is small.",
+          "context": "hedged citation"
+        },
+        {
+          "text": "The present study extends this analysis.",
+          "context": "extending prior work"
+        }
+      ],
+      "roleplay": {
+        "scenario": "Charlotte gives three claims by other researchers. You frame each with academic citation patterns.",
+        "voiced_by": "charlotte",
+        "persona": "Charlotte",
+        "persona_outfit": "charlotte_casual",
+        "time_budget_sec": 300,
+        "opening_line": "Three claims from prior research. Frame each with academic citation.",
+        "objectives": [
+          {
+            "id": 1,
+            "label_en": "Citation with 'According to'",
+            "hidden_prompt": "user uses 'According to X (year), + claim'",
+            "hint_en": "According to Patel (2021), the intervention was most effective in early-stage cases."
+          },
+          {
+            "id": 2,
+            "label_en": "Citation with argument verb",
+            "hidden_prompt": "user uses 'X (year) argues / contends / suggests that'",
+            "hint_en": "Williams (2019) argues that the existing framework underestimates contextual factors."
+          },
+          {
+            "id": 3,
+            "label_en": "Positioning with 'Building on'",
+            "hidden_prompt": "user uses 'Building on + prior work, + this study'",
+            "hint_en": "Building on Müller's (2022) work, this analysis introduces a new measure of cognitive flexibility."
+          }
+        ],
+        "closing_cue": "Charlotte closes with \"Citations academically placed.\" once obj_3 lands.",
+        "suggested_flow": "**Suggested flow** (referencial, 6 turnos):\n\n1. **Charlotte**: \"Three claims from prior research. Frame each with academic citation.\"\n2. **Student**: ~\"According to Patel (2021), the intervention was most effective in early-stage cases.\"\n3. **Charlotte**: \"Argument frame?\"\n4. **Student**: ~\"Williams (2019) argues that the existing framework underestimates contextual factors.\"\n5. **Charlotte**: \"Positioning?\"\n6. **Student**: ~\"Building on Müller's (2022) work, this analysis introduces a new measure of cognitive flexibility.\"\n7. **Charlotte**: \"Citations academically placed.\"",
+        "evaluation_focus": [
+          "Author (Year) format",
+          "Citation verb fits stance",
+          "Surrounding clause matches academic register"
+        ]
+      },
+      "guided_chat": {
+        "scenario": "Charlotte drafts a literature review. You help her cite cleanly.",
+        "voiced_by": "charlotte",
+        "persona": "Charlotte",
+        "persona_outfit": "charlotte_casual",
+        "intro_en": "Charlotte drafts a literature review. Help frame citations academically.",
+        "opening_message": "Smith said in 2020 that early feedback matters. I'm writing about it for my paper. How do I phrase that?",
+        "objectives": [
+          {
+            "id": 1,
+            "label_en": "Academic reformulation",
+            "hidden_prompt": "user uses 'Smith (2020) argues that' or 'According to Smith (2020)'",
+            "hint_en": "Try: 'Smith (2020) argues that early feedback has a measurable effect on subsequent performance.'"
+          },
+          {
+            "id": 2,
+            "label_en": "Connect to your research",
+            "hidden_prompt": "user uses 'Building on' or 'Extending' or 'The present study'",
+            "hint_en": "Then: 'Building on Smith's (2020) framework, the present study examines whether the effect persists in longer-cycle creative tasks.'"
+          },
+          {
+            "id": 3,
+            "label_en": "Ask Charlotte",
+            "hidden_prompt": "user asks Charlotte what other citations she's using",
+            "hint_en": "What other sources are you weaving in?"
+          }
+        ],
+        "closing_cue": "Charlotte closes with \"Literature review, properly framed.\" once obj_3 lands.",
+        "suggested_script": "**Script** (referencial, 7 turnos):\n\n1. **Charlotte**: \"Smith said in 2020 that early feedback matters. I'm writing about it for my paper. How do I phrase that?\"\n2. **Student**: \"Try: 'Smith (2020) argues that early feedback has a measurable effect on subsequent performance.'\"\n3. **Charlotte**: \"And how do I link it to my own work?\"\n4. **Student**: \"Then: 'Building on Smith's (2020) framework, the present study examines whether the effect persists in longer-cycle creative tasks.'\"\n5. **Charlotte**: \"That's the bridge I was missing.\"\n6. **Student**: \"What other sources are you weaving in?\"\n7. **Charlotte**: \"Three more papers, all narrower than Smith's. Literature review, properly framed.\"\n\n> A04 chat = full LLM. Scaffold via hint_pt/hint_en.\n\n---"
+      }
+    },
+    {
+      "id": "A05",
+      "title": "Paragraph cohesion",
+      "sub_cefr": "C2",
+      "grammar_focus": "Topic sentences, paragraph progression, transition devices (this finding / this pattern / a related question / by contrast)",
+      "markers": [],
+      "real_life_context": "You connect paragraphs so each follows naturally from the last — building cumulative academic argument.",
+      "grammar": [
+        {
+          "type": "multiple_choice",
+          "options": [
+            "This",
+            "That",
+            "Such",
+            "A"
+          ],
+          "answer": "This",
+          "explanation": "\"This + summary noun\" is the classic academic paragraph-opener. \"This pattern\", \"This finding\", \"This result\", \"This observation\" — each gathers what was just said and pushes forward. Pronominal \"this\" + content noun = cohesion across paragraphs."
+        },
+        {
+          "type": "multiple_choice",
+          "options": [
+            "By contrast",
+            "On contrast",
+            "In contrast",
+            "At contrast"
+          ],
+          "answer": "By contrast",
+          "explanation": "\"By contrast, ...\" opens a paragraph that presents opposing evidence or interpretation. Synonyms: \"However, ...\", \"Conversely, ...\", \"On the other hand, ...\". \"By contrast\" is academic-formal. Note: \"in contrast TO + noun\" is another pattern (different from \"by contrast\" as standalone)."
+        },
+        {
+          "type": "fill_gap",
+          "hint": "\"Taken together\" or \"Considered jointly\"",
+          "answer": "Taken together",
+          "explanation": "\"Taken together, these findings...\" — academic frame for synthesising multiple results. Marks the cumulative move from individual evidence to general claim. Other patterns: \"Considered jointly\", \"In aggregate\", \"Across the studies reviewed\"."
+        },
+        {
+          "type": "fix_error",
+          "hint": "\"Also\" is too casual to open an academic paragraph",
+          "answer": "Furthermore, the third experiment yielded similar results. (or: A third experiment yielded similar results, reinforcing the pattern.)",
+          "explanation": "\"Also\" is conversational. Academic register uses \"Furthermore\", \"Moreover\", \"In addition\", or restructures: \"A third experiment...\". Paragraph openers carry the connective load — too casual undercuts the register."
+        },
+        {
+          "type": "read_answer",
+          "passage": "The article moved methodically. 'The first study found a small but consistent effect across all three age groups. This pattern raises a related question about gender differences, which the second study addressed. By contrast, the third study, conducted in a non-Western sample, produced a more complex picture. Taken together, these findings suggest that the underlying mechanism is robust, but its expression is culturally inflected.'",
+          "question": "What does the article conclude when the findings are taken together?",
+          "answer": "the underlying mechanism is robust, but its expression is culturally inflected",
+          "explanation": "Four cohesion devices in four sentences: \"The first study found...\" (anchoring), \"This pattern raises a related question...\" (carrying forward), \"By contrast, the third study...\" (signalling shift), \"Taken together, these findings suggest...\" (synthesising). Paragraph architecture at C2."
+        }
+      ],
+      "listening_speaking": [
+        {
+          "text": "This finding raises a related question.",
+          "context": "forward link"
+        },
+        {
+          "text": "By contrast, the third sample diverged.",
+          "context": "contrast link"
+        },
+        {
+          "text": "Taken together, these results suggest...",
+          "context": "synthesis link"
+        },
+        {
+          "text": "A related but distinct issue is...",
+          "context": "adjacent link"
+        },
+        {
+          "text": "Furthermore, the effect persists at follow-up.",
+          "context": "additive link"
+        }
+      ],
+      "roleplay": {
+        "scenario": "Charlotte gives you a topic sentence. You draft three follow-up paragraph openers that link, contrast, and synthesise.",
+        "voiced_by": "charlotte",
+        "persona": "Charlotte",
+        "persona_outfit": "charlotte_casual",
+        "time_budget_sec": 300,
+        "opening_line": "I'll give a topic sentence. Build three follow-up paragraph openers — forward link, contrast, synthesis.",
+        "objectives": [
+          {
+            "id": 1,
+            "label_en": "Forward link with 'This + noun'",
+            "hidden_prompt": "user uses 'This finding / This pattern / This observation' + main",
+            "hint_en": "This finding raises a related question about how the effect varies by income level."
+          },
+          {
+            "id": 2,
+            "label_en": "Contrast with 'By contrast' or 'However'",
+            "hidden_prompt": "user uses 'By contrast' or 'However'",
+            "hint_en": "By contrast, longitudinal studies in similar populations show a weaker effect over time."
+          },
+          {
+            "id": 3,
+            "label_en": "Synthesis with 'Taken together'",
+            "hidden_prompt": "user uses 'Taken together, + these + noun'",
+            "hint_en": "Taken together, these results suggest the relationship is real but moderated by context."
+          }
+        ],
+        "closing_cue": "Charlotte closes with \"Paragraphs threaded.\" once obj_3 lands.",
+        "suggested_flow": "**Suggested flow** (referencial, 6 turnos):\n\n1. **Charlotte**: \"I'll give a topic sentence. Build three follow-up paragraph openers — forward link, contrast, synthesis.\"\n2. **Student**: ~\"This finding raises a related question about how the effect varies by income level.\"\n3. **Charlotte**: \"Contrast?\"\n4. **Student**: ~\"By contrast, longitudinal studies in similar populations show a weaker effect over time.\"\n5. **Charlotte**: \"Synthesis?\"\n6. **Student**: ~\"Taken together, these results suggest the relationship is real but moderated by context.\"\n7. **Charlotte**: \"Paragraphs threaded.\"",
+        "evaluation_focus": [
+          "Cohesion device fronted",
+          "Real connection to prior content",
+          "Academic register sustained"
+        ]
+      },
+      "guided_chat": {
+        "scenario": "Charlotte writes her discussion section. You help her thread paragraphs cohesively.",
+        "voiced_by": "charlotte",
+        "persona": "Charlotte",
+        "persona_outfit": "charlotte_casual",
+        "intro_en": "Charlotte writes a discussion. Suggest cohesion devices to link paragraphs.",
+        "opening_message": "My first paragraph ends: 'The intervention reduced anxiety by 23%.' How do I open the next paragraph to keep flow?",
+        "objectives": [
+          {
+            "id": 1,
+            "label_en": "Forward link",
+            "hidden_prompt": "user uses 'This effect / This reduction / This finding'",
+            "hint_en": "Try: 'This reduction in anxiety, while substantial, was not uniform across subgroups.'"
+          },
+          {
+            "id": 2,
+            "label_en": "Suggest a contrast or synthesis",
+            "hidden_prompt": "user uses 'By contrast' or 'Taken together'",
+            "hint_en": "Or, if you're contrasting: 'By contrast, depressive symptoms showed only a marginal change over the same period.'"
+          },
+          {
+            "id": 3,
+            "label_en": "Ask Charlotte",
+            "hidden_prompt": "user asks Charlotte how she plans to end the discussion",
+            "hint_en": "How are you planning to land the conclusion?"
+          }
+        ],
+        "closing_cue": "Charlotte closes with \"Discussion threaded, C2 opener landed.\" once obj_3 lands.",
+        "suggested_script": "**Script** (referencial, 7 turnos):\n\n1. **Charlotte**: \"My first paragraph ends: 'The intervention reduced anxiety by 23%.' How do I open the next paragraph to keep flow?\"\n2. **Student**: \"Try: 'This reduction in anxiety, while substantial, was not uniform across subgroups.'\"\n3. **Charlotte**: \"Perfect bridge to the subgroup analysis. What if I want to contrast?\"\n4. **Student**: \"Or, if you're contrasting: 'By contrast, depressive symptoms showed only a marginal change over the same period.'\"\n5. **Charlotte**: \"Both work — depends on where I want the section to go.\"\n6. **Student**: \"How are you planning to land the conclusion?\"\n7. **Charlotte**: \"With a 'Taken together' synthesis and a limitation paragraph. Discussion threaded, C2 opener landed.\"\n\n> A05 chat = full LLM. Scaffold via hint_pt/hint_en.\n\n---"
+      }
+    }
+  ],
+  "cross_unit_consolidation": [
+    "Nominalise verbal phrases for academic compactness (the rise of, the decline in, an increase in)",
+    "Remove first person — let the paper/study/data be the agent",
+    "Hedge claims to match evidence strength (suggests / indicates / supports / there is reason to believe / it is conceivable)",
+    "Cite prior work in academic format (According to X (year), Wang (2019) argues, Building on...)",
+    "Open paragraphs with cohesion devices (This pattern / By contrast / Furthermore / Taken together)",
+    "Avoid contractions and casual transitions (also, so, but as paragraph openers)",
+    "Choose academic verbs over conversational ones (postulate, contend, demonstrate instead of say, think, show casually)"
+  ]
+}
