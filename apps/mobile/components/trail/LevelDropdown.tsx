@@ -162,40 +162,42 @@ export function LevelDropdown({ selectedLevel, currentLevel, onSelect }: Props) 
                             style={({ pressed }) => ({
                               flexDirection:    'row',
                               alignItems:       'center',
-                              justifyContent:   'space-between',
-                              paddingHorizontal:22,
+                              paddingHorizontal:20,
                               paddingVertical:  14,
                               backgroundColor:  pressed && !isLocked ? `${color}12` : 'transparent',
                               opacity:          isLocked ? 0.7 : 1,
                             })}>
-                            <View style={{ flexDirection: 'row', alignItems: 'center', flex: 1, minWidth: 0 }}>
+                            {/* Indicator slot fixo (24px) — dot/lock/empty alinha tudo */}
+                            <View style={{
+                              width: 24, height: 24,
+                              alignItems: 'center', justifyContent: 'center',
+                              marginRight: 12,
+                            }}>
                               {isActive && (
                                 <View style={{
-                                  width: 8, height: 8, borderRadius: 4,
+                                  width: 10, height: 10, borderRadius: 5,
                                   backgroundColor: color,
-                                  marginRight: 12,
                                 }} />
                               )}
-                              <AppText
-                                numberOfLines={1}
-                                style={{
-                                  fontSize:   15,
-                                  fontWeight: isActive ? '900' : '700',
-                                  color:      isLocked ? C.navyDim : color,
+                              {isLocked && (
+                                <View style={{
+                                  width: 22, height: 22, borderRadius: 11,
+                                  backgroundColor: C.lockBg,
+                                  alignItems: 'center', justifyContent: 'center',
                                 }}>
-                                {LEVEL_SHORT[lvl]}
-                              </AppText>
+                                  <Lock size={11} color={C.navyDim} weight="fill" />
+                                </View>
+                              )}
                             </View>
-                            {isLocked && (
-                              <View style={{
-                                width: 22, height: 22, borderRadius: 11,
-                                backgroundColor: C.lockBg,
-                                alignItems: 'center', justifyContent: 'center',
-                                marginLeft: 12,
+                            <AppText
+                              numberOfLines={1}
+                              style={{
+                                fontSize:   15,
+                                fontWeight: isActive ? '900' : '700',
+                                color:      isLocked ? C.navyDim : color,
                               }}>
-                                <Lock size={11} color={C.navyDim} weight="fill" />
-                              </View>
-                            )}
+                              {LEVEL_SHORT[lvl]}
+                            </AppText>
                           </Pressable>
                         </React.Fragment>
                       );
