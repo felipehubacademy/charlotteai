@@ -83,23 +83,28 @@
       "listening_speaking": [
         {
           "text": "She apologised for being late.",
-          "context": "apologise for + -ing"
+          "context": "apologise for + -ing",
+          "audio_url": "https://fnvjibzreepubageztoi.supabase.co/storage/v1/object/public/curriculum-audio/ls/advanced/2ca968790a576c69.flac"
         },
         {
           "text": "He accused her of lying.",
-          "context": "accuse of + -ing"
+          "context": "accuse of + -ing",
+          "audio_url": "https://fnvjibzreepubageztoi.supabase.co/storage/v1/object/public/curriculum-audio/ls/advanced/f401d86bf53acb36.flac"
         },
         {
           "text": "They congratulated him on the new job.",
-          "context": "congratulate on"
+          "context": "congratulate on",
+          "audio_url": "https://fnvjibzreepubageztoi.supabase.co/storage/v1/object/public/curriculum-audio/ls/advanced/38f4cb2826df03ff.flac"
         },
         {
           "text": "I blame him for the delay.",
-          "context": "blame for + noun"
+          "context": "blame for + noun",
+          "audio_url": "https://fnvjibzreepubageztoi.supabase.co/storage/v1/object/public/curriculum-audio/ls/advanced/27ecdef929c23140.flac"
         },
         {
           "text": "She thanked me for helping.",
-          "context": "thank for + -ing"
+          "context": "thank for + -ing",
+          "audio_url": "https://fnvjibzreepubageztoi.supabase.co/storage/v1/object/public/curriculum-audio/ls/advanced/40a9da0d38fffd20.flac"
         }
       ],
       "roleplay": {
@@ -227,23 +232,28 @@
       "listening_speaking": [
         {
           "text": "He admitted losing the keys.",
-          "context": "admit + -ing"
+          "context": "admit + -ing",
+          "audio_url": "https://fnvjibzreepubageztoi.supabase.co/storage/v1/object/public/curriculum-audio/ls/advanced/cb9ba6396b2d7328.flac"
         },
         {
           "text": "She denied taking it.",
-          "context": "deny + -ing"
+          "context": "deny + -ing",
+          "audio_url": "https://fnvjibzreepubageztoi.supabase.co/storage/v1/object/public/curriculum-audio/ls/advanced/976e7821a0fca5b7.flac"
         },
         {
           "text": "I suggest postponing the meeting.",
-          "context": "suggest + -ing"
+          "context": "suggest + -ing",
+          "audio_url": "https://fnvjibzreepubageztoi.supabase.co/storage/v1/object/public/curriculum-audio/ls/advanced/eeea65400dc406c3.flac"
         },
         {
           "text": "He regrets not going.",
-          "context": "regret + -ing"
+          "context": "regret + -ing",
+          "audio_url": "https://fnvjibzreepubageztoi.supabase.co/storage/v1/object/public/curriculum-audio/ls/advanced/c012080a34fdadc3.flac"
         },
         {
           "text": "They considered hiring her.",
-          "context": "consider + -ing"
+          "context": "consider + -ing",
+          "audio_url": "https://fnvjibzreepubageztoi.supabase.co/storage/v1/object/public/curriculum-audio/ls/advanced/ce56e057b202fdf8.flac"
         }
       ],
       "roleplay": {
@@ -371,23 +381,28 @@
       "listening_speaking": [
         {
           "text": "He promised to arrive on time.",
-          "context": "promise + to"
+          "context": "promise + to",
+          "audio_url": "https://fnvjibzreepubageztoi.supabase.co/storage/v1/object/public/curriculum-audio/ls/advanced/75d1593c0e61bbbe.flac"
         },
         {
           "text": "She refused to answer.",
-          "context": "refuse + to"
+          "context": "refuse + to",
+          "audio_url": "https://fnvjibzreepubageztoi.supabase.co/storage/v1/object/public/curriculum-audio/ls/advanced/b8f6e617d834fb33.flac"
         },
         {
           "text": "They offered to help.",
-          "context": "offer + to"
+          "context": "offer + to",
+          "audio_url": "https://fnvjibzreepubageztoi.supabase.co/storage/v1/object/public/curriculum-audio/ls/advanced/4c7ce9988db12a10.flac"
         },
         {
           "text": "He threatened to quit.",
-          "context": "threaten + to"
+          "context": "threaten + to",
+          "audio_url": "https://fnvjibzreepubageztoi.supabase.co/storage/v1/object/public/curriculum-audio/ls/advanced/756ac976408dac99.flac"
         },
         {
           "text": "We agreed to meet on Friday.",
-          "context": "agree + to"
+          "context": "agree + to",
+          "audio_url": "https://fnvjibzreepubageztoi.supabase.co/storage/v1/object/public/curriculum-audio/ls/advanced/a9b08791770ada90.flac"
         }
       ],
       "roleplay": {
@@ -515,23 +530,28 @@
       "listening_speaking": [
         {
           "text": "She warned me about the icy roads.",
-          "context": "warn + about"
+          "context": "warn + about",
+          "audio_url": "https://fnvjibzreepubageztoi.supabase.co/storage/v1/object/public/curriculum-audio/ls/advanced/7bdbf600a6cf7bbe.flac"
         },
         {
           "text": "He warned me not to go alone.",
-          "context": "warn + not to"
+          "context": "warn + not to",
+          "audio_url": "https://fnvjibzreepubageztoi.supabase.co/storage/v1/object/public/curriculum-audio/ls/advanced/a3bfd15ee3b87ffd.flac"
         },
         {
           "text": "They persuaded me to stay.",
-          "context": "persuade + to"
+          "context": "persuade + to",
+          "audio_url": "https://fnvjibzreepubageztoi.supabase.co/storage/v1/object/public/curriculum-audio/ls/advanced/db86e9b04b348ceb.flac"
         },
         {
           "text": "She talked him into applying.",
-          "context": "talk into + -ing"
+          "context": "talk into + -ing",
+          "audio_url": "https://fnvjibzreepubageztoi.supabase.co/storage/v1/object/public/curriculum-audio/ls/advanced/c4e2730596ca9732.flac"
         },
         {
           "text": "He discouraged me from quitting.",
-          "context": "discourage from + -ing"
+          "context": "discourage from + -ing",
+          "audio_url": "https://fnvjibzreepubageztoi.supabase.co/storage/v1/object/public/curriculum-audio/ls/advanced/b6123c8d175ee3a7.flac"
         }
       ],
       "roleplay": {
@@ -657,23 +677,28 @@
       "listening_speaking": [
         {
           "text": "According to the report, sales are down.",
-          "context": "source attribution"
+          "context": "source attribution",
+          "audio_url": "https://fnvjibzreepubageztoi.supabase.co/storage/v1/object/public/curriculum-audio/ls/advanced/72d3c9cf8383b5b3.flac"
         },
         {
           "text": "He allegedly took the money.",
-          "context": "legal-news hedge"
+          "context": "legal-news hedge",
+          "audio_url": "https://fnvjibzreepubageztoi.supabase.co/storage/v1/object/public/curriculum-audio/ls/advanced/5905c0a06f834f45.flac"
         },
         {
           "text": "Apparently, she's moving abroad.",
-          "context": "softer hedge"
+          "context": "softer hedge",
+          "audio_url": "https://fnvjibzreepubageztoi.supabase.co/storage/v1/object/public/curriculum-audio/ls/advanced/bbaacb0b5a857512.flac"
         },
         {
           "text": "Supposedly, the meeting was a disaster.",
-          "context": "distance + scepticism"
+          "context": "distance + scepticism",
+          "audio_url": "https://fnvjibzreepubageztoi.supabase.co/storage/v1/object/public/curriculum-audio/ls/advanced/3369a6b013fb8aba.flac"
         },
         {
           "text": "The CEO reportedly resigned.",
-          "context": "formal news hedge"
+          "context": "formal news hedge",
+          "audio_url": "https://fnvjibzreepubageztoi.supabase.co/storage/v1/object/public/curriculum-audio/ls/advanced/ec3361b3930c8561.flac"
         }
       ],
       "roleplay": {

@@ -84,23 +84,28 @@
       "listening_speaking": [
         {
           "text": "In fact, she championed it to the board.",
-          "context": "escalation"
+          "context": "escalation",
+          "audio_url": "https://fnvjibzreepubageztoi.supabase.co/storage/v1/object/public/curriculum-audio/ls/advanced/ac354e0eb1354c08.flac"
         },
         {
           "text": "As a matter of fact, it's Thursday.",
-          "context": "gentle correction"
+          "context": "gentle correction",
+          "audio_url": "https://fnvjibzreepubageztoi.supabase.co/storage/v1/object/public/curriculum-audio/ls/advanced/8983fdc074589b77.flac"
         },
         {
           "text": "Actually, I'd prefer the earlier slot.",
-          "context": "soft alternative"
+          "context": "soft alternative",
+          "audio_url": "https://fnvjibzreepubageztoi.supabase.co/storage/v1/object/public/curriculum-audio/ls/advanced/263cdf3a538f2045.flac"
         },
         {
           "text": "Indeed, that's exactly what we found.",
-          "context": "formal confirmation"
+          "context": "formal confirmation",
+          "audio_url": "https://fnvjibzreepubageztoi.supabase.co/storage/v1/object/public/curriculum-audio/ls/advanced/e5e662a11c560e44.flac"
         },
         {
           "text": "In fact, the opposite turned out to be true.",
-          "context": "reversal"
+          "context": "reversal",
+          "audio_url": "https://fnvjibzreepubageztoi.supabase.co/storage/v1/object/public/curriculum-audio/ls/advanced/99d4f8f4a8cb24fe.flac"
         }
       ],
       "roleplay": {
@@ -229,23 +234,28 @@
       "listening_speaking": [
         {
           "text": "That said, the risks are real.",
-          "context": "concession after positive"
+          "context": "concession after positive",
+          "audio_url": "https://fnvjibzreepubageztoi.supabase.co/storage/v1/object/public/curriculum-audio/ls/advanced/383fcbde4215d06c.flac"
         },
         {
           "text": "Mind you, she's been right before.",
-          "context": "informal counterpoint"
+          "context": "informal counterpoint",
+          "audio_url": "https://fnvjibzreepubageztoi.supabase.co/storage/v1/object/public/curriculum-audio/ls/advanced/21472cdb2e93ab7a.flac"
         },
         {
           "text": "Then again, the timing could be perfect.",
-          "context": "reconsidering"
+          "context": "reconsidering",
+          "audio_url": "https://fnvjibzreepubageztoi.supabase.co/storage/v1/object/public/curriculum-audio/ls/advanced/367e464fba03a938.flac"
         },
         {
           "text": "Granted, the budget is tight.",
-          "context": "formal yield"
+          "context": "formal yield",
+          "audio_url": "https://fnvjibzreepubageztoi.supabase.co/storage/v1/object/public/curriculum-audio/ls/advanced/d8fe2db3b5efe9a9.flac"
         },
         {
           "text": "Admittedly, I didn't see that coming.",
-          "context": "yielding to a fact"
+          "context": "yielding to a fact",
+          "audio_url": "https://fnvjibzreepubageztoi.supabase.co/storage/v1/object/public/curriculum-audio/ls/advanced/bd2e27bf223a88d0.flac"
         }
       ],
       "roleplay": {
@@ -374,23 +384,28 @@
       "listening_speaking": [
         {
           "text": "In other words, sales are slipping.",
-          "context": "everyday paraphrase"
+          "context": "everyday paraphrase",
+          "audio_url": "https://fnvjibzreepubageztoi.supabase.co/storage/v1/object/public/curriculum-audio/ls/advanced/5250dc0d7574ddfc.flac"
         },
         {
           "text": "That is to say, the conclusion follows.",
-          "context": "formal restatement"
+          "context": "formal restatement",
+          "audio_url": "https://fnvjibzreepubageztoi.supabase.co/storage/v1/object/public/curriculum-audio/ls/advanced/f6024595fd8cd294.flac"
         },
         {
           "text": "To put it another way, it's a trade-off.",
-          "context": "alternative phrasing"
+          "context": "alternative phrasing",
+          "audio_url": "https://fnvjibzreepubageztoi.supabase.co/storage/v1/object/public/curriculum-audio/ls/advanced/26ed4c2f0b927126.flac"
         },
         {
           "text": "Or rather, it's more complicated than that.",
-          "context": "self-correction"
+          "context": "self-correction",
+          "audio_url": "https://fnvjibzreepubageztoi.supabase.co/storage/v1/object/public/curriculum-audio/ls/advanced/56d1f6c0bf800e1d.flac"
         },
         {
           "text": "By which I mean, the assumption was wrong.",
-          "context": "clarification"
+          "context": "clarification",
+          "audio_url": "https://fnvjibzreepubageztoi.supabase.co/storage/v1/object/public/curriculum-audio/ls/advanced/9355177c10f00ca4.flac"
         }
       ],
       "roleplay": {
@@ -519,23 +534,28 @@
       "listening_speaking": [
         {
           "text": "Above all, she's honest.",
-          "context": "final emphasis"
+          "context": "final emphasis",
+          "audio_url": "https://fnvjibzreepubageztoi.supabase.co/storage/v1/object/public/curriculum-audio/ls/advanced/dc92b71fca5478cd.flac"
         },
         {
           "text": "What's more, the price is fair.",
-          "context": "additional strength"
+          "context": "additional strength",
+          "audio_url": "https://fnvjibzreepubageztoi.supabase.co/storage/v1/object/public/curriculum-audio/ls/advanced/9d11a19c0a1042a9.flac"
         },
         {
           "text": "Not least, the team trusts him.",
-          "context": "specifically important"
+          "context": "specifically important",
+          "audio_url": "https://fnvjibzreepubageztoi.supabase.co/storage/v1/object/public/curriculum-audio/ls/advanced/435a62a48dd4ab73.flac"
         },
         {
           "text": "On top of that, delivery is free.",
-          "context": "informal addition"
+          "context": "informal addition",
+          "audio_url": "https://fnvjibzreepubageztoi.supabase.co/storage/v1/object/public/curriculum-audio/ls/advanced/5ce9cb02ea52e432.flac"
         },
         {
           "text": "For that matter, the timing is perfect too.",
-          "context": "extending the argument"
+          "context": "extending the argument",
+          "audio_url": "https://fnvjibzreepubageztoi.supabase.co/storage/v1/object/public/curriculum-audio/ls/advanced/253fd316d46adc4d.flac"
         }
       ],
       "roleplay": {
@@ -661,23 +681,28 @@
       "listening_speaking": [
         {
           "text": "All things considered, it was the right call.",
-          "context": "weighted conclusion"
+          "context": "weighted conclusion",
+          "audio_url": "https://fnvjibzreepubageztoi.supabase.co/storage/v1/object/public/curriculum-audio/ls/advanced/466e01d22551c4cc.flac"
         },
         {
           "text": "On balance, the project was worth it.",
-          "context": "overall judgement"
+          "context": "overall judgement",
+          "audio_url": "https://fnvjibzreepubageztoi.supabase.co/storage/v1/object/public/curriculum-audio/ls/advanced/b235dca1d892e7ae.flac"
         },
         {
           "text": "On the whole, the year went well.",
-          "context": "broad verdict"
+          "context": "broad verdict",
+          "audio_url": "https://fnvjibzreepubageztoi.supabase.co/storage/v1/object/public/curriculum-audio/ls/advanced/9dcb3f853b62779a.flac"
         },
         {
           "text": "Hence, we recommend the new approach.",
-          "context": "formal causal"
+          "context": "formal causal",
+          "audio_url": "https://fnvjibzreepubageztoi.supabase.co/storage/v1/object/public/curriculum-audio/ls/advanced/86d0f677ddfa7417.flac"
         },
         {
           "text": "When all is said and done, results speak.",
-          "context": "final close"
+          "context": "final close",
+          "audio_url": "https://fnvjibzreepubageztoi.supabase.co/storage/v1/object/public/curriculum-audio/ls/advanced/639d3ad843dd6712.flac"
         }
       ],
       "roleplay": {

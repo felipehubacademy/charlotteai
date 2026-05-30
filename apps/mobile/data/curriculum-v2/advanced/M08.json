@@ -85,23 +85,28 @@
       "listening_speaking": [
         {
           "text": "I was wondering if you'd have a moment.",
-          "context": "softened time request"
+          "context": "softened time request",
+          "audio_url": "https://fnvjibzreepubageztoi.supabase.co/storage/v1/object/public/curriculum-audio/ls/advanced/ac3476615d2ab05a.flac"
         },
         {
           "text": "I was hoping we could discuss the budget.",
-          "context": "softened topic introduction"
+          "context": "softened topic introduction",
+          "audio_url": "https://fnvjibzreepubageztoi.supabase.co/storage/v1/object/public/curriculum-audio/ls/advanced/4f10ca514ae273b0.flac"
         },
         {
           "text": "I was wondering if you might consider it.",
-          "context": "softened proposal"
+          "context": "softened proposal",
+          "audio_url": "https://fnvjibzreepubageztoi.supabase.co/storage/v1/object/public/curriculum-audio/ls/advanced/d922b4996000ce9c.flac"
         },
         {
           "text": "I was hoping for your advice on this.",
-          "context": "softened ask"
+          "context": "softened ask",
+          "audio_url": "https://fnvjibzreepubageztoi.supabase.co/storage/v1/object/public/curriculum-audio/ls/advanced/4162dce96c4e1f55.flac"
         },
         {
           "text": "I was wondering if there's any flexibility.",
-          "context": "softened negotiation opener"
+          "context": "softened negotiation opener",
+          "audio_url": "https://fnvjibzreepubageztoi.supabase.co/storage/v1/object/public/curriculum-audio/ls/advanced/376dfe3346ccc931.flac"
         }
       ],
       "roleplay": {
@@ -230,23 +235,28 @@
       "listening_speaking": [
         {
           "text": "It might be worth checking the data.",
-          "context": "soft suggestion"
+          "context": "soft suggestion",
+          "audio_url": "https://fnvjibzreepubageztoi.supabase.co/storage/v1/object/public/curriculum-audio/ls/advanced/d33942f1810a8b13.flac"
         },
         {
           "text": "You might want to consider another angle.",
-          "context": "friendly hedge"
+          "context": "friendly hedge",
+          "audio_url": "https://fnvjibzreepubageztoi.supabase.co/storage/v1/object/public/curriculum-audio/ls/advanced/8d36fa9efb8bb4e1.flac"
         },
         {
           "text": "You may wish to revisit this later.",
-          "context": "formal hedge"
+          "context": "formal hedge",
+          "audio_url": "https://fnvjibzreepubageztoi.supabase.co/storage/v1/object/public/curriculum-audio/ls/advanced/134962a9989aeadb.flac"
         },
         {
           "text": "Perhaps a shorter title would work better.",
-          "context": "perhaps + clause"
+          "context": "perhaps + clause",
+          "audio_url": "https://fnvjibzreepubageztoi.supabase.co/storage/v1/object/public/curriculum-audio/ls/advanced/a2a529d612a7fbb1.flac"
         },
         {
           "text": "Have you thought about asking the team?",
-          "context": "question-as-suggestion"
+          "context": "question-as-suggestion",
+          "audio_url": "https://fnvjibzreepubageztoi.supabase.co/storage/v1/object/public/curriculum-audio/ls/advanced/387dd7cd29e566de.flac"
         }
       ],
       "roleplay": {
@@ -375,23 +385,28 @@
       "listening_speaking": [
         {
           "text": "With respect, I'd see it differently.",
-          "context": "formal disagreement"
+          "context": "formal disagreement",
+          "audio_url": "https://fnvjibzreepubageztoi.supabase.co/storage/v1/object/public/curriculum-audio/ls/advanced/439b320d68bdb556.flac"
         },
         {
           "text": "I take your point, but I'm not sure.",
-          "context": "acknowledge + pivot"
+          "context": "acknowledge + pivot",
+          "audio_url": "https://fnvjibzreepubageztoi.supabase.co/storage/v1/object/public/curriculum-audio/ls/advanced/6e8d900b641528b4.flac"
         },
         {
           "text": "I'm not entirely convinced of that.",
-          "context": "soft denial"
+          "context": "soft denial",
+          "audio_url": "https://fnvjibzreepubageztoi.supabase.co/storage/v1/object/public/curriculum-audio/ls/advanced/2b778f641ddd326e.flac"
         },
         {
           "text": "That's one way of looking at it.",
-          "context": "diplomatic non-agreement"
+          "context": "diplomatic non-agreement",
+          "audio_url": "https://fnvjibzreepubageztoi.supabase.co/storage/v1/object/public/curriculum-audio/ls/advanced/5c4b265b1946b124.flac"
         },
         {
           "text": "I'd push back gently on that.",
-          "context": "informal hedge"
+          "context": "informal hedge",
+          "audio_url": "https://fnvjibzreepubageztoi.supabase.co/storage/v1/object/public/curriculum-audio/ls/advanced/6061a3f99d65b708.flac"
         }
       ],
       "roleplay": {
@@ -520,23 +535,28 @@
       "listening_speaking": [
         {
           "text": "It could be argued that we acted too quickly.",
-          "context": "debate hedge"
+          "context": "debate hedge",
+          "audio_url": "https://fnvjibzreepubageztoi.supabase.co/storage/v1/object/public/curriculum-audio/ls/advanced/6535fe91a85bd9b2.flac"
         },
         {
           "text": "One might say the project was ambitious.",
-          "context": "impersonal float"
+          "context": "impersonal float",
+          "audio_url": "https://fnvjibzreepubageztoi.supabase.co/storage/v1/object/public/curriculum-audio/ls/advanced/292f2d8ee9056862.flac"
         },
         {
           "text": "In a sense, this is what we hoped for.",
-          "context": "partial truth"
+          "context": "partial truth",
+          "audio_url": "https://fnvjibzreepubageztoi.supabase.co/storage/v1/object/public/curriculum-audio/ls/advanced/158dc6ad4e921adf.flac"
         },
         {
           "text": "To some extent, the criticism is fair.",
-          "context": "partial agreement"
+          "context": "partial agreement",
+          "audio_url": "https://fnvjibzreepubageztoi.supabase.co/storage/v1/object/public/curriculum-audio/ls/advanced/d8b9cdf909ff372f.flac"
         },
         {
           "text": "Arguably, the best season they've had.",
-          "context": "adverb hedge"
+          "context": "adverb hedge",
+          "audio_url": "https://fnvjibzreepubageztoi.supabase.co/storage/v1/object/public/curriculum-audio/ls/advanced/420f9d8e601d43bf.flac"
         }
       ],
       "roleplay": {
@@ -662,23 +682,28 @@
       "listening_speaking": [
         {
           "text": "It's sort of what I expected.",
-          "context": "vague approximation"
+          "context": "vague approximation",
+          "audio_url": "https://fnvjibzreepubageztoi.supabase.co/storage/v1/object/public/curriculum-audio/ls/advanced/48f6b21e4e51fb02.flac"
         },
         {
           "text": "We have roughly fifty employees.",
-          "context": "numerical hedge"
+          "context": "numerical hedge",
+          "audio_url": "https://fnvjibzreepubageztoi.supabase.co/storage/v1/object/public/curriculum-audio/ls/advanced/8954de63abe9ed49.flac"
         },
         {
           "text": "It cost ten thousand, give or take.",
-          "context": "financial vague"
+          "context": "financial vague",
+          "audio_url": "https://fnvjibzreepubageztoi.supabase.co/storage/v1/object/public/curriculum-audio/ls/advanced/b600ec99b57fa7c4.flac"
         },
         {
           "text": "I'm somewhat surprised by that.",
-          "context": "emotion vague"
+          "context": "emotion vague",
+          "audio_url": "https://fnvjibzreepubageztoi.supabase.co/storage/v1/object/public/curriculum-audio/ls/advanced/b3b1aa751d96b736.flac"
         },
         {
           "text": "More or less, that's the plan.",
-          "context": "outcome hedge"
+          "context": "outcome hedge",
+          "audio_url": "https://fnvjibzreepubageztoi.supabase.co/storage/v1/object/public/curriculum-audio/ls/advanced/eb4c1b211caa5fb0.flac"
         }
       ],
       "roleplay": {
