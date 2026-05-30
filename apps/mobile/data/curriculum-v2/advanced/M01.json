@@ -1,0 +1,767 @@
+{
+  "id": "M01",
+  "title": "Condicionais mistas",
+  "level": "Advanced",
+  "block": "C1",
+  "units_range": "A01–A05",
+  "theme": "Mixed conditionals + counterfactuals + inversion in conditionals + alternatives to \"if\"",
+  "goal": "Student handles complex hypothetical structures fluently — mixing time references, inverting for formal effect, and using alternatives to \"if\".",
+  "connects_to": "M02 (Inversion) — extends inversion patterns.",
+  "module_chunks": [
+    "If I had + past participle, I would be + base now (past → present)",
+    "If I were + adj/noun, I would have + past participle (present → past)",
+    "Had I known... (inverted third conditional)",
+    "Were I to do that... (inverted hypothetical future)",
+    "Should you need... (inverted first conditional, formal)",
+    "Suppose / Supposing / Imagine + clause",
+    "Provided that / As long as / Unless",
+    "But for + noun (without that thing)",
+    "Without + noun/-ing"
+  ],
+  "units": [
+    {
+      "id": "A01",
+      "title": "Past condition, present result",
+      "sub_cefr": "C1",
+      "grammar_focus": "Mixed conditional past → present (If I had + pp, I would + base now)",
+      "markers": [
+        "denso"
+      ],
+      "real_life_context": "You connect a past action to its present consequence — how your present would differ if your past had differed.",
+      "grammar": [
+        {
+          "type": "multiple_choice",
+          "sentence": "If I _____ medicine, I _____ in a hospital now.",
+          "options": [
+            "had studied",
+            "would be",
+            "studied",
+            "will be",
+            "had studied",
+            "will be",
+            "studied",
+            "would be"
+          ],
+          "answer": "had studied / would be",
+          "explanation": "Mixed conditional with past condition affecting present result: \"If + past perfect, would + base (now)\". Past perfect \"had studied\" sets up the unrealised past; \"would be\" describes the alternative present that didn't materialise."
+        },
+        {
+          "type": "multiple_choice",
+          "sentence": "She _____ exhausted right now if she _____ overtime last night.",
+          "options": [
+            "wouldn't be",
+            "hadn't worked",
+            "wouldn't have been",
+            "didn't work",
+            "wouldn't be",
+            "didn't work",
+            "isn't",
+            "hadn't worked"
+          ],
+          "answer": "wouldn't be / hadn't worked",
+          "explanation": "Past cause (\"hadn't worked overtime\") has a present effect (\"wouldn't be exhausted right now\"). The time-marker \"right now\" anchors the result clause in the present, forcing the mixed form rather than full third conditional."
+        },
+        {
+          "type": "fill_gap",
+          "sentence": "If we _____ that house in 2010, we _____ enough equity to retire by now.",
+          "hint": "past perfect \"buy\" / \"would have\"",
+          "answer": "had bought / would have",
+          "explanation": "\"Had bought\" — past perfect for the unrealised past decision. \"Would have enough equity now\" — present consequence. Notice \"have\" here is a stative present, not \"have + past participle\"."
+        },
+        {
+          "type": "fix_error",
+          "sentence": "If I had studied medicine, I would have been a doctor now.",
+          "hint": "For a present state, use \"would be\" — not \"would have been\"",
+          "answer": "If I had studied medicine, I would be a doctor now.",
+          "explanation": "\"Would have been\" places the result fully in the past (pure third conditional). The marker \"now\" requires a present consequence, so use \"would be\" — the mixed form. Common C1 trap."
+        },
+        {
+          "type": "read_answer",
+          "passage": "Linguists often note that bilingual children process language differently. Had Maria's parents spoken Portuguese to her at home, she would likely be fluent today. Instead, she has spent the last two years catching up on a language her own family treats as second nature.",
+          "question": "Why isn't Maria fluent in Portuguese today, according to the passage?",
+          "answer": "her parents didn't speak Portuguese to her at home (or: they didn't speak it at home)",
+          "explanation": "The inverted third conditional \"Had Maria's parents spoken...\" reveals the unmet past condition. The mixed form (\"would likely be fluent today\") makes the present consequence explicit."
+        }
+      ],
+      "listening_speaking": [
+        {
+          "text": "If I had studied medicine, I'd be a doctor now.",
+          "context": "past → present, classic mixed"
+        },
+        {
+          "text": "She wouldn't be tired if she hadn't worked overtime.",
+          "context": "reversed order"
+        },
+        {
+          "text": "If we'd bought back then, we'd own outright today.",
+          "context": "financial counterfactual"
+        },
+        {
+          "text": "I wouldn't be here if I hadn't met him in college.",
+          "context": "relationship origin"
+        },
+        {
+          "text": "If you hadn't introduced us, we'd still be strangers.",
+          "context": "gratitude with mixed conditional"
+        }
+      ],
+      "roleplay": {
+        "scenario": "Charlotte invites you to map three parallel lives — past choices whose consequences would have rippled into your present. Mixed conditionals throughout.",
+        "voiced_by": "charlotte",
+        "persona": "Charlotte",
+        "persona_outfit": "charlotte_casual",
+        "time_budget_sec": 300,
+        "opening_line": "Three past choices that would shape who you are right now if you had chosen differently.",
+        "objectives": [
+          {
+            "id": 1,
+            "label_en": "Career mixed (past → present)",
+            "hidden_prompt": "user uses 'If I had + past participle, I would + base' for present career state",
+            "hint_en": "If I had taken that internship, I'd be working in tech now."
+          },
+          {
+            "id": 2,
+            "label_en": "Mixed about place or relationship",
+            "hidden_prompt": "user uses another mixed conditional",
+            "hint_en": "If I had stayed in Rio, I wouldn't know my partner today."
+          },
+          {
+            "id": 3,
+            "label_en": "Mixed in reverse order (result first)",
+            "hidden_prompt": "user uses 'I would + base now... if I had + past participle'",
+            "hint_en": "I'd be financially independent now if I'd started investing earlier."
+          }
+        ],
+        "closing_cue": "Charlotte closes with \"Parallel selves mapped.\" once obj_3 lands.",
+        "suggested_flow": "**Suggested flow** (referencial, 6 turnos):\n\n1. **Charlotte**: \"Three past choices that would shape who you are right now if you had chosen differently.\"\n2. **Student**: ~\"If I had taken that internship, I'd be working in tech now.\"\n3. **Charlotte**: \"A whole industry rerouted. Place or relationship?\"\n4. **Student**: ~\"If I had stayed in Rio, I wouldn't know my partner today.\"\n5. **Charlotte**: \"And turn one inside out — result first.\"\n6. **Student**: ~\"I'd be financially independent now if I'd started investing earlier.\"\n7. **Charlotte**: \"Parallel selves mapped.\"",
+        "evaluation_focus": [
+          "\"If + past perfect\" with \"would + base now\"",
+          "Avoid \"would have been\" when result is present",
+          "Time markers (\"now\", \"today\") anchor the result"
+        ]
+      },
+      "guided_chat": {
+        "scenario": "Charlotte opens a reflective chat about how single past pivots have rerouted your present. Push for honest mixed conditionals.",
+        "voiced_by": "charlotte",
+        "persona": "Charlotte",
+        "persona_outfit": "charlotte_casual",
+        "intro_en": "Charlotte explores past pivots and their present echoes. Mix tenses with care.",
+        "opening_message": "Looking back, what's one decision from years ago that completely shapes your present?",
+        "objectives": [
+          {
+            "id": 1,
+            "label_en": "Mixed conditional about past decision",
+            "hidden_prompt": "user uses 'If I had + past participle, I would + base' anchored to present",
+            "hint_en": "If I hadn't moved abroad, I wouldn't speak three languages today."
+          },
+          {
+            "id": 2,
+            "label_en": "Deepen with another mixed",
+            "hidden_prompt": "user adds another mixed conditional that builds on the first",
+            "hint_en": "If I had stayed, I'd probably still be in the same job."
+          },
+          {
+            "id": 3,
+            "label_en": "Ask Charlotte",
+            "hidden_prompt": "user asks Charlotte about her own pivot",
+            "hint_en": "What pivot shaped you?"
+          }
+        ],
+        "closing_cue": "Charlotte closes with \"Decisions echo.\" once obj_3 lands.",
+        "suggested_script": "**Script** (referencial, 7 turnos):\n\n1. **Charlotte**: \"Looking back, what's one decision from years ago that completely shapes your present?\"\n2. **Student**: \"If I hadn't moved abroad, I wouldn't speak three languages today.\"\n3. **Charlotte**: \"Languages reshape identity. What else flows from that?\"\n4. **Student**: \"If I had stayed, I'd probably still be in the same job.\"\n5. **Charlotte**: \"A whole career trajectory hinging on one suitcase.\"\n6. **Student**: \"What pivot shaped you?\"\n7. **Charlotte**: \"If I hadn't quit law school, I'd be billing hours instead of teaching. Decisions echo.\"\n\n> A01 chat = full LLM. Scaffold via hint_pt/hint_en.\n\n---"
+      }
+    },
+    {
+      "id": "A02",
+      "title": "Present state, past result",
+      "sub_cefr": "C1",
+      "grammar_focus": "Mixed conditional present → past (If I were + adj, I would have + pp)",
+      "markers": [
+        "denso"
+      ],
+      "real_life_context": "You explain a past outcome by appealing to a permanent or ongoing trait — \"if I weren't so X, I wouldn't have done Y\".",
+      "grammar": [
+        {
+          "type": "multiple_choice",
+          "sentence": "If she _____ so stubborn, she _____ to a compromise weeks ago.",
+          "options": [
+            "weren't",
+            "would have agreed",
+            "wasn't",
+            "agreed",
+            "weren't",
+            "agreed",
+            "wouldn't be",
+            "would have agreed"
+          ],
+          "answer": "weren't / would have agreed",
+          "explanation": "Permanent trait (\"weren't so stubborn\", a present/general state) explains a past failure (\"would have agreed weeks ago\"). The mixed reversed form: present condition → past result. Note \"weren't\" — subjunctive across all persons."
+        },
+        {
+          "type": "multiple_choice",
+          "sentence": "If I _____ a morning person, I _____ that early meeting yesterday.",
+          "options": [
+            "were",
+            "would have accepted",
+            "was",
+            "accepted",
+            "were",
+            "accepted",
+            "would be",
+            "would have accepted"
+          ],
+          "answer": "were / would have accepted",
+          "explanation": "\"Were\" (present trait, subjunctive) + \"would have accepted\" (past hypothetical action). The trait explains why the past action didn't happen."
+        },
+        {
+          "type": "fill_gap",
+          "sentence": "If he _____ less sensitive, he _____ that comment so personally last week.",
+          "hint": "weren't / wouldn't have taken",
+          "answer": "weren't / wouldn't have taken",
+          "explanation": "Ongoing personality (\"isn't less sensitive\") explains last week's reaction. Mixed: present condition → past result."
+        },
+        {
+          "type": "fix_error",
+          "sentence": "If I weren't allergic to nuts, I would eat that cake at the party.",
+          "hint": "The cake was at a past party — the result should also be past",
+          "answer": "If I weren't allergic to nuts, I would have eaten that cake at the party.",
+          "explanation": "The allergy is permanent (present condition, \"weren't\"), but the cake event was a specific past moment (\"at the party\"). Past result requires \"would have eaten\", not \"would eat\"."
+        },
+        {
+          "type": "read_answer",
+          "passage": "Engineers tend to overplan. If our lead developer weren't so detail-obsessed, we would have shipped the prototype three months ago. As it stands, we're still polishing edges that no user will ever see.",
+          "question": "Why hasn't the prototype shipped yet?",
+          "answer": "the lead developer is too detail-obsessed (or \"is overly detail-obsessed\")",
+          "explanation": "The permanent trait (\"weren't so detail-obsessed\") explains the past failure (\"would have shipped three months ago\"). Mixed conditional in action."
+        }
+      ],
+      "listening_speaking": [
+        {
+          "text": "If she weren't so stubborn, she'd have agreed by now.",
+          "context": "trait → past + present continuation"
+        },
+        {
+          "text": "If I weren't allergic, I would have tried it.",
+          "context": "permanent → past missed action"
+        },
+        {
+          "text": "He'd have called you back if he were less anxious.",
+          "context": "trait → past inaction"
+        },
+        {
+          "text": "If we weren't on a tight budget, we'd have flown business.",
+          "context": "circumstance → past choice"
+        },
+        {
+          "text": "If she weren't so generous, she'd have kept the prize money.",
+          "context": "trait → moral past choice"
+        }
+      ],
+      "roleplay": {
+        "scenario": "Charlotte asks you to explain three past outcomes by pointing at a permanent trait or condition — mixed conditional in reverse direction.",
+        "voiced_by": "charlotte",
+        "persona": "Charlotte",
+        "persona_outfit": "charlotte_casual",
+        "time_budget_sec": 300,
+        "opening_line": "Three past outcomes that traced back to who you are. Use 'if I weren't... I would have...'",
+        "objectives": [
+          {
+            "id": 1,
+            "label_en": "Present trait → past outcome",
+            "hidden_prompt": "user uses 'If I weren't + adj/noun, I would have + past participle'",
+            "hint_en": "If I weren't so cautious, I would have invested earlier."
+          },
+          {
+            "id": 2,
+            "label_en": "Another permanent trait example",
+            "hidden_prompt": "user uses another 'if I weren't' or 'if he/she weren't'",
+            "hint_en": "If my dad weren't so private, we'd have heard the story years ago."
+          },
+          {
+            "id": 3,
+            "label_en": "Reverse the order",
+            "hidden_prompt": "user starts with the past result clause",
+            "hint_en": "She'd have called you back if she weren't so anxious."
+          }
+        ],
+        "closing_cue": "Charlotte closes with \"Traits drive history.\" once obj_3 lands.",
+        "suggested_flow": "**Suggested flow** (referencial, 6 turnos):\n\n1. **Charlotte**: \"Three past outcomes that traced back to who you are. Use 'if I weren't... I would have...'\"\n2. **Student**: ~\"If I weren't so cautious, I would have invested earlier.\"\n3. **Charlotte**: \"Risk aversion compounds. Family?\"\n4. **Student**: ~\"If my dad weren't so private, we'd have heard the story years ago.\"\n5. **Charlotte**: \"And one inverted?\"\n6. **Student**: ~\"She'd have called you back if she weren't so anxious.\"\n7. **Charlotte**: \"Traits drive history.\"",
+        "evaluation_focus": [
+          "\"Were\" not \"was\" across all persons",
+          "\"Would have + past participle\" in the result",
+          "Trait/state is permanent or ongoing"
+        ]
+      },
+      "guided_chat": {
+        "scenario": "Charlotte explores how character shapes outcomes. You trade present-traits explanations for past events.",
+        "voiced_by": "charlotte",
+        "persona": "Charlotte",
+        "persona_outfit": "charlotte_casual",
+        "intro_en": "Charlotte explores trait-driven past outcomes. Mix subjunctive 'were' with 'would have done'.",
+        "opening_message": "If I weren't such a planner, I would have backpacked through Asia in my twenties. What about you?",
+        "objectives": [
+          {
+            "id": 1,
+            "label_en": "Own trait → unrealised past",
+            "hidden_prompt": "user uses 'If I weren't + trait, I would have + past participle'",
+            "hint_en": "If I weren't so risk-averse, I would have started my own business."
+          },
+          {
+            "id": 2,
+            "label_en": "Deepen or counter",
+            "hidden_prompt": "user adds another mixed conditional or counterpoint",
+            "hint_en": "But if I weren't this careful, I might have lost everything."
+          },
+          {
+            "id": 3,
+            "label_en": "Ask Charlotte",
+            "hidden_prompt": "user asks Charlotte more about her planner trait",
+            "hint_en": "Do you regret it?"
+          }
+        ],
+        "closing_cue": "Charlotte closes with \"Character is its own counterfactual.\" once obj_3 lands.",
+        "suggested_script": "**Script** (referencial, 7 turnos):\n\n1. **Charlotte**: \"If I weren't such a planner, I would have backpacked through Asia in my twenties. What about you?\"\n2. **Student**: \"If I weren't so risk-averse, I would have started my own business.\"\n3. **Charlotte**: \"Risk-averse people build different lives — usually steadier ones.\"\n4. **Student**: \"But if I weren't this careful, I might have lost everything.\"\n5. **Charlotte**: \"Two sides of the same temperament.\"\n6. **Student**: \"Do you regret it?\"\n7. **Charlotte**: \"Sometimes, on slow Sundays. Mostly no. Character is its own counterfactual.\"\n\n> A02 chat = full LLM. Scaffold via hint_pt/hint_en.\n\n---"
+      }
+    },
+    {
+      "id": "A03",
+      "title": "Had I known (inverted)",
+      "sub_cefr": "C1",
+      "grammar_focus": "Inverted third conditional (Had I known... / Had she said...)",
+      "markers": [
+        "denso",
+        "inversion"
+      ],
+      "real_life_context": "You speak or write with formal-literary register, dropping \"if\" and inverting the auxiliary.",
+      "grammar": [
+        {
+          "type": "multiple_choice",
+          "sentence": "_____ earlier, I would have caught the train.",
+          "options": [
+            "Had I left",
+            "If I had left",
+            "I had left",
+            "Had left I"
+          ],
+          "answer": "Had I left",
+          "explanation": "Inverted third conditional drops \"if\" and brings the auxiliary \"had\" before the subject: \"Had I left\" = \"If I had left\". Formal, literary, common in spoken English when adding gravity."
+        },
+        {
+          "type": "multiple_choice",
+          "sentence": "_____ the offer, she'd be running the team now.",
+          "options": [
+            "Had she accepted",
+            "If she accept",
+            "Had accepted she",
+            "She had accept"
+          ],
+          "answer": "Had she accepted",
+          "explanation": "\"Had + subject + past participle\" — inverted form. Note the mixed conditional consequence (\"she'd be running the team now\") — inversion works across third and mixed conditionals."
+        },
+        {
+          "type": "fill_gap",
+          "sentence": "_____ what I know now, I _____ that company years ago.",
+          "hint": "Inverted \"if I had known\" / \"would have left\"",
+          "answer": "Had I known / would have left",
+          "explanation": "\"Had I known\" — inverted form of \"If I had known\". Pairs naturally with \"would have left\" (third conditional result)."
+        },
+        {
+          "type": "fix_error",
+          "sentence": "If had I known, I would have told you.",
+          "hint": "When you invert, drop \"if\" entirely",
+          "answer": "Had I known, I would have told you. (or: If I had known, I would have told you.)",
+          "explanation": "You can either use \"if + had + subject\" OR invert (\"had + subject\" without \"if\"). Mixing both — \"if had I\" — is ungrammatical. Inversion replaces \"if\"."
+        },
+        {
+          "type": "read_answer",
+          "passage": "The architect's notebook reveals a single regret. 'Had I trusted my first instinct,' she wrote, 'the building would stand differently today.' Critics now agree that the compromise version softened what could have been her boldest work.",
+          "question": "What does the architect regret?",
+          "answer": "not trusting her first instinct (or \"compromising her first instinct\")",
+          "explanation": "\"Had I trusted\" — inverted regret. The mixed conditional consequence (\"would stand differently today\") connects past hesitation to present reality."
+        }
+      ],
+      "listening_speaking": [
+        {
+          "text": "Had I known, I would have called you sooner.",
+          "context": "inverted everyday regret"
+        },
+        {
+          "text": "Had she accepted, she'd be a partner today.",
+          "context": "inverted mixed"
+        },
+        {
+          "text": "Had we left ten minutes earlier, we'd have made it.",
+          "context": "inverted timing"
+        },
+        {
+          "text": "Had he asked, I would have helped without hesitation.",
+          "context": "inverted relational"
+        },
+        {
+          "text": "Had they listened, the project wouldn't have failed.",
+          "context": "inverted causal"
+        }
+      ],
+      "roleplay": {
+        "scenario": "Charlotte invites you to express three regrets with the inverted form — drop \"if\", invert \"had + subject + past participle\".",
+        "voiced_by": "charlotte",
+        "persona": "Charlotte",
+        "persona_outfit": "charlotte_casual",
+        "time_budget_sec": 300,
+        "opening_line": "Three regrets, all inverted. Start each with 'Had I...' or 'Had she...'",
+        "objectives": [
+          {
+            "id": 1,
+            "label_en": "Own inversion with 'Had I'",
+            "hidden_prompt": "user uses 'Had I + past participle, I would have + past participle'",
+            "hint_en": "Had I started earlier, I would have finished by now."
+          },
+          {
+            "id": 2,
+            "label_en": "Inversion about someone else",
+            "hidden_prompt": "user uses 'Had he/she + past participle'",
+            "hint_en": "Had she taken the bus, she'd have made it on time."
+          },
+          {
+            "id": 3,
+            "label_en": "Inversion with mixed result",
+            "hidden_prompt": "user uses 'Had + subject + past participle, would + base now'",
+            "hint_en": "Had we bought the apartment, we'd own it outright today."
+          }
+        ],
+        "closing_cue": "Charlotte closes with \"Inversion dressed up.\" once obj_3 lands.",
+        "suggested_flow": "**Suggested flow** (referencial, 6 turnos):\n\n1. **Charlotte**: \"Three regrets, all inverted. Start each with 'Had I...' or 'Had she...'\"\n2. **Student**: ~\"Had I started earlier, I would have finished by now.\"\n3. **Charlotte**: \"Someone else?\"\n4. **Student**: ~\"Had she taken the bus, she'd have made it on time.\"\n5. **Charlotte**: \"Mixed result — past condition, present state?\"\n6. **Student**: ~\"Had we bought the apartment, we'd own it outright today.\"\n7. **Charlotte**: \"Inversion dressed up.\"",
+        "evaluation_focus": [
+          "No \"if\" when inverting",
+          "\"Had + subject + past participle\" structure",
+          "Works with third or mixed result"
+        ]
+      },
+      "guided_chat": {
+        "scenario": "Charlotte writes a literary-style letter prompt. You both draft inverted regrets that read like polished prose.",
+        "voiced_by": "charlotte",
+        "persona": "Charlotte",
+        "persona_outfit": "charlotte_casual",
+        "intro_en": "Charlotte invites a formal register. Use inverted conditionals throughout.",
+        "opening_message": "Imagine writing to your younger self. Had you known what you know now, what would you have done differently?",
+        "objectives": [
+          {
+            "id": 1,
+            "label_en": "Own inversion addressed",
+            "hidden_prompt": "user uses 'Had I + past participle, I would have'",
+            "hint_en": "Had I trusted my instincts, I would have left that job sooner."
+          },
+          {
+            "id": 2,
+            "label_en": "Another inversion (different choice)",
+            "hidden_prompt": "user uses another inverted form",
+            "hint_en": "Had I been kinder to myself, I'd have rested instead of pushing on."
+          },
+          {
+            "id": 3,
+            "label_en": "Ask Charlotte",
+            "hidden_prompt": "user asks Charlotte what she'd say to her younger self",
+            "hint_en": "What would you tell yours?"
+          }
+        ],
+        "closing_cue": "Charlotte closes with \"Letters to ghosts, written out loud.\" once obj_3 lands.",
+        "suggested_script": "**Script** (referencial, 7 turnos):\n\n1. **Charlotte**: \"Imagine writing to your younger self. Had you known what you know now, what would you have done differently?\"\n2. **Student**: \"Had I trusted my instincts, I would have left that job sooner.\"\n3. **Charlotte**: \"Instincts pay rent. What else?\"\n4. **Student**: \"Had I been kinder to myself, I'd have rested instead of pushing on.\"\n5. **Charlotte**: \"Rest as a form of trust.\"\n6. **Student**: \"What would you tell yours?\"\n7. **Charlotte**: \"Had I read more poetry, I'd be a softer teacher today. Letters to ghosts, written out loud.\"\n\n> A03 chat = full LLM. Scaffold via hint_pt/hint_en.\n\n---"
+      }
+    },
+    {
+      "id": "A04",
+      "title": "Were I to, Should you",
+      "sub_cefr": "C1",
+      "grammar_focus": "Inverted hypotheticals — \"Were I to + base\" (formal future hypothetical) and \"Should you + base\" (formal first conditional)",
+      "markers": [
+        "denso",
+        "inversion"
+      ],
+      "real_life_context": "You write formal proposals, emails, contracts — registering the hypothetical with elevated diction.",
+      "grammar": [
+        {
+          "type": "multiple_choice",
+          "sentence": "_____ to accept the offer, I would relocate next month.",
+          "options": [
+            "Were I",
+            "If I am",
+            "Should I",
+            "Had I"
+          ],
+          "answer": "Were I",
+          "explanation": "\"Were I to + base\" is the inverted second conditional, formal/literary. It signals a hypothetical future action you're entertaining. Equivalent to \"If I were to accept...\" but more elegant."
+        },
+        {
+          "type": "multiple_choice",
+          "sentence": "_____ any further questions, please contact our office.",
+          "options": [
+            "Should you have",
+            "If you have",
+            "Had you",
+            "Were you"
+          ],
+          "answer": "Should you have",
+          "explanation": "\"Should you + base\" — inverted first conditional, very formal. Used in business correspondence to signal possibility (\"if you happen to have\"). Common in customer service writing."
+        },
+        {
+          "type": "fill_gap",
+          "sentence": "_____ to ask me, I'd say the proposal needs more work.",
+          "hint": "Inverted second conditional",
+          "answer": "Were you",
+          "explanation": "\"Were you to ask me\" = \"If you were to ask me\". Hedged offer of opinion, formal register."
+        },
+        {
+          "type": "fix_error",
+          "sentence": "Should I had known, I would have come earlier.",
+          "hint": "\"Should\" pairs with present-form base, not past perfect",
+          "answer": "Had I known, I would have come earlier.",
+          "explanation": "\"Should + subject + base\" is for first conditional (present/future hypotheticals). For past hypotheticals, switch to \"Had + subject + past participle\". Don't mix the two patterns."
+        },
+        {
+          "type": "read_answer",
+          "passage": "The contract reads, in its closing clause: 'Were either party to withdraw before completion, the deposit shall be forfeit. Should circumstances require an extension, the parties may renegotiate in good faith.' The language is deliberately old-fashioned — clarity dressed as ceremony.",
+          "question": "What happens if a party withdraws early?",
+          "answer": "the deposit is forfeit (or \"the deposit shall be forfeit\")",
+          "explanation": "\"Were either party to withdraw\" — inverted second conditional. \"Shall be forfeit\" — formal passive future. The whole clause demonstrates legal-register inversion."
+        }
+      ],
+      "listening_speaking": [
+        {
+          "text": "Were I to accept, I'd start in June.",
+          "context": "formal future hypothetical"
+        },
+        {
+          "text": "Should you need help, just ask.",
+          "context": "softened offer"
+        },
+        {
+          "text": "Were you to ask me, I'd say no.",
+          "context": "hedged opinion"
+        },
+        {
+          "text": "Should anything change, we'll let you know.",
+          "context": "business standard"
+        },
+        {
+          "text": "Were she to apply, she'd have a strong case.",
+          "context": "third-person formal"
+        }
+      ],
+      "roleplay": {
+        "scenario": "Charlotte drafts three formal hypotheticals for an imaginary cover letter or business email. You produce them with inverted forms.",
+        "voiced_by": "charlotte",
+        "persona": "Charlotte",
+        "persona_outfit": "charlotte_casual",
+        "time_budget_sec": 300,
+        "opening_line": "Three formal hypotheticals — one with 'Were I to', one with 'Should you', and one of your choice.",
+        "objectives": [
+          {
+            "id": 1,
+            "label_en": "Hypothesis with 'Were I to'",
+            "hidden_prompt": "user uses 'Were I to + base, I would + base'",
+            "hint_en": "Were I to lead the project, I would restructure the team first."
+          },
+          {
+            "id": 2,
+            "label_en": "Possibility with 'Should you'",
+            "hidden_prompt": "user uses 'Should you + base, ...'",
+            "hint_en": "Should you require further details, I'm happy to elaborate."
+          },
+          {
+            "id": 3,
+            "label_en": "Another formal inversion",
+            "hidden_prompt": "user uses another 'Were' or 'Should' inversion",
+            "hint_en": "Were the budget approved, we could launch in Q3."
+          }
+        ],
+        "closing_cue": "Charlotte closes with \"Boardroom voice rehearsed.\" once obj_3 lands.",
+        "suggested_flow": "**Suggested flow** (referencial, 6 turnos):\n\n1. **Charlotte**: \"Three formal hypotheticals — one with 'Were I to', one with 'Should you', and one of your choice.\"\n2. **Student**: ~\"Were I to lead the project, I would restructure the team first.\"\n3. **Charlotte**: \"Decisive. Customer-facing one?\"\n4. **Student**: ~\"Should you require further details, I'm happy to elaborate.\"\n5. **Charlotte**: \"Third?\"\n6. **Student**: ~\"Were the budget approved, we could launch in Q3.\"\n7. **Charlotte**: \"Boardroom voice rehearsed.\"",
+        "evaluation_focus": [
+          "\"Were + subject + to + base\" for future hypothetical",
+          "\"Should + subject + base\" for first conditional possibility",
+          "Formal vocabulary in surrounding clause"
+        ]
+      },
+      "guided_chat": {
+        "scenario": "Charlotte simulates a polite email exchange. You both write hypotheticals in formal register.",
+        "voiced_by": "charlotte",
+        "persona": "Charlotte",
+        "persona_outfit": "charlotte_casual",
+        "intro_en": "Charlotte trades formal email lines. Use 'Were I to' and 'Should you' for elevation.",
+        "opening_message": "Were I to propose a meeting next week, would your team be open to it?",
+        "objectives": [
+          {
+            "id": 1,
+            "label_en": "Formal reply with inversion",
+            "hidden_prompt": "user uses 'Should you' or 'Were I to'",
+            "hint_en": "Should the agenda allow, we'd be glad to attend."
+          },
+          {
+            "id": 2,
+            "label_en": "Add formal condition",
+            "hidden_prompt": "user adds another inverted conditional",
+            "hint_en": "Were the meeting moved to Wednesday, we could send two representatives."
+          },
+          {
+            "id": 3,
+            "label_en": "Ask Charlotte",
+            "hidden_prompt": "user asks Charlotte for an alternative or detail",
+            "hint_en": "Would Tuesday afternoon work?"
+          }
+        ],
+        "closing_cue": "Charlotte closes with \"Correspondence drafted.\" once obj_3 lands.",
+        "suggested_script": "**Script** (referencial, 7 turnos):\n\n1. **Charlotte**: \"Were I to propose a meeting next week, would your team be open to it?\"\n2. **Student**: \"Should the agenda allow, we'd be glad to attend.\"\n3. **Charlotte**: \"What flexibility do you have on timing?\"\n4. **Student**: \"Were the meeting moved to Wednesday, we could send two representatives.\"\n5. **Charlotte**: \"Wednesday it is, in principle.\"\n6. **Student**: \"Would Tuesday afternoon work?\"\n7. **Charlotte**: \"Tuesday after three. Correspondence drafted.\"\n\n> A04 chat = full LLM. Scaffold via hint_pt/hint_en.\n\n---"
+      }
+    },
+    {
+      "id": "A05",
+      "title": "Suppose, But for, Unless",
+      "sub_cefr": "C1",
+      "grammar_focus": "Alternatives to \"if\" — suppose/supposing, but for + noun, without, unless, provided that",
+      "markers": [],
+      "real_life_context": "You diversify hypothetical scaffolding away from \"if\" — for nuance, register, or emphasis.",
+      "grammar": [
+        {
+          "type": "multiple_choice",
+          "sentence": "_____ you found a wallet on the street — what would you do?",
+          "options": [
+            "Suppose",
+            "If supposing",
+            "Were",
+            "Should"
+          ],
+          "answer": "Suppose",
+          "explanation": "\"Suppose\" (or \"Supposing\") opens a hypothetical scenario conversationally, replacing \"if\" with a softer, more inviting framing. Common in story prompts and thought experiments."
+        },
+        {
+          "type": "multiple_choice",
+          "sentence": "_____ his support, we wouldn't have launched on time.",
+          "options": [
+            "But for",
+            "Unless",
+            "Provided",
+            "Without"
+          ],
+          "answer": "But for",
+          "explanation": "\"But for + noun\" = \"if it hadn't been for + noun\". Formal, slightly literary. \"But for his support\" = without his support, in the past hypothetical sense. Pairs with third conditional result."
+        },
+        {
+          "type": "fill_gap",
+          "sentence": "We'll go ahead _____ the weather doesn't turn.",
+          "hint": "\"Unless\" or \"as long as\" or \"provided that\"",
+          "answer": "provided that",
+          "explanation": "\"Provided that\" = \"if (and only if)\". Formal \"if\" with the added flavor of a condition that must hold. \"Unless\" would invert the logic (\"unless it turns\"); \"provided that\" preserves it."
+        },
+        {
+          "type": "fix_error",
+          "sentence": "Unless you don't tell me the truth, I can't help you.",
+          "hint": "\"Unless\" already carries the negative meaning",
+          "answer": "Unless you tell me the truth, I can't help you.",
+          "explanation": "\"Unless\" = \"if... not\". Double-negative (\"unless you don't\") flips meaning back to positive — saying you must lie. Drop the redundant \"don't\"."
+        },
+        {
+          "type": "read_answer",
+          "passage": "Suppose for a moment that the city had invested in flood barriers a decade ago. But for that investment, last year's storm would have done ten times more damage. The cost-benefit is rarely visible until disaster arrives — or doesn't.",
+          "question": "What hypothetically prevented worse damage from last year's storm?",
+          "answer": "the investment in flood barriers a decade ago (or \"the flood barriers\")",
+          "explanation": "\"Suppose\" opens the hypothetical; \"But for that investment\" gestures at the counterfactual (\"if it weren't for that investment, the damage would have been ten times worse\"). C1 phrasing layering two alternatives to \"if\"."
+        }
+      ],
+      "listening_speaking": [
+        {
+          "text": "Suppose you found a wallet — what would you do?",
+          "context": "soft hypothetical"
+        },
+        {
+          "text": "But for his support, I wouldn't be here.",
+          "context": "formal counterfactual"
+        },
+        {
+          "text": "Unless we leave now, we'll miss it.",
+          "context": "negative condition"
+        },
+        {
+          "text": "Provided that the budget holds, we'll launch in May.",
+          "context": "strict condition"
+        },
+        {
+          "text": "Without coffee, I'd have collapsed by noon.",
+          "context": "informal counterfactual"
+        }
+      ],
+      "roleplay": {
+        "scenario": "Charlotte invites you to use three different non-\"if\" structures for hypotheticals — suppose, but for, unless.",
+        "voiced_by": "charlotte",
+        "persona": "Charlotte",
+        "persona_outfit": "charlotte_casual",
+        "time_budget_sec": 300,
+        "opening_line": "Three hypotheticals — but no 'if'. Use 'suppose', 'but for', and 'unless' or 'provided that'.",
+        "objectives": [
+          {
+            "id": 1,
+            "label_en": "Supposition with 'Suppose'",
+            "hidden_prompt": "user uses 'Suppose + clause' for hypothetical",
+            "hint_en": "Suppose you had a free year — where would you go?"
+          },
+          {
+            "id": 2,
+            "label_en": "Counterfactual with 'But for'",
+            "hidden_prompt": "user uses 'But for + noun, would have + past participle'",
+            "hint_en": "But for that scholarship, I wouldn't have finished college."
+          },
+          {
+            "id": 3,
+            "label_en": "Condition with 'Unless' or 'Provided that'",
+            "hidden_prompt": "user uses 'Unless' or 'Provided that' + clause",
+            "hint_en": "Provided that the team agrees, we'll move forward Monday."
+          }
+        ],
+        "closing_cue": "Charlotte closes with \"Three scaffolds, no 'if'.\" once obj_3 lands.",
+        "suggested_flow": "**Suggested flow** (referencial, 6 turnos):\n\n1. **Charlotte**: \"Three hypotheticals — but no 'if'. Use 'suppose', 'but for', and 'unless' or 'provided that'.\"\n2. **Student**: ~\"Suppose you had a free year — where would you go?\"\n3. **Charlotte**: \"Now counterfactual.\"\n4. **Student**: ~\"But for that scholarship, I wouldn't have finished college.\"\n5. **Charlotte**: \"Condition with strings attached?\"\n6. **Student**: ~\"Provided that the team agrees, we'll move forward Monday.\"\n7. **Charlotte**: \"Three scaffolds, no 'if'.\"",
+        "evaluation_focus": [
+          "Variety of non-\"if\" structures",
+          "Correct pairing (suppose + would, but for + would have, unless + present)",
+          "Natural register match"
+        ]
+      },
+      "guided_chat": {
+        "scenario": "Charlotte tests your range — she introduces a topic and you vary the conditional scaffolding across the exchange.",
+        "voiced_by": "charlotte",
+        "persona": "Charlotte",
+        "persona_outfit": "charlotte_casual",
+        "intro_en": "Charlotte cycles through hypothetical framings. Vary your conditional scaffolds.",
+        "opening_message": "Suppose money weren't an issue — what would you do for the rest of your life?",
+        "objectives": [
+          {
+            "id": 1,
+            "label_en": "Reply using another hypothetical type",
+            "hidden_prompt": "user uses 'But for' or 'Without' or another non-if structure",
+            "hint_en": "Without that constraint, I'd open a small bookstore."
+          },
+          {
+            "id": 2,
+            "label_en": "Deepen with a condition",
+            "hidden_prompt": "user uses 'Provided that' or 'Unless' or 'As long as'",
+            "hint_en": "Provided that I could still travel, I'd happily live above the shop."
+          },
+          {
+            "id": 3,
+            "label_en": "Ask Charlotte",
+            "hidden_prompt": "user asks Charlotte her own answer",
+            "hint_en": "Suppose the same for you — what then?"
+          }
+        ],
+        "closing_cue": "Charlotte closes with \"Hypothetical range full.\" once obj_3 lands.",
+        "suggested_script": "**Script** (referencial, 7 turnos):\n\n1. **Charlotte**: \"Suppose money weren't an issue — what would you do for the rest of your life?\"\n2. **Student**: \"Without that constraint, I'd open a small bookstore.\"\n3. **Charlotte**: \"Books and quiet — a known recipe. Any condition on it?\"\n4. **Student**: \"Provided that I could still travel, I'd happily live above the shop.\"\n5. **Charlotte**: \"Travel and roots. Hard to combine, worth it when you can.\"\n6. **Student**: \"Suppose the same for you — what then?\"\n7. **Charlotte**: \"But for my fear of cold, I'd write from a cabin in Norway. Hypothetical range full.\"\n\n> A05 chat = full LLM. Scaffold via hint_pt/hint_en.\n\n---"
+      }
+    }
+  ],
+  "cross_unit_consolidation": [
+    "Form mixed conditionals in both directions (past→present and present→past)",
+    "Invert third conditionals (\"Had I known...\")",
+    "Invert second conditionals formally (\"Were I to...\" / \"Should you...\")",
+    "Replace \"if\" with suppose, but for, unless, provided that, as long as, without",
+    "Distinguish \"would be\" (present result) from \"would have been\" (past result)",
+    "Use subjunctive \"were\" across all persons without lapsing to \"was\""
+  ]
+}
