@@ -1,0 +1,756 @@
+{
+  "id": "M04",
+  "title": "Subjuntivo",
+  "level": "Advanced",
+  "block": "C1",
+  "units_range": "A01–A05",
+  "theme": "Mandative subjunctive (suggest/insist/demand that he be), past subjunctive (were across persons), \"lest\", fossilised subjunctive",
+  "goal": "Student uses base-form subjunctive after triggers, deploys \"were\" for hypothetical mood, and recognises formal-literary subjunctive in writing.",
+  "connects_to": "M05 (Passive avançada) — formal register continues.",
+  "module_chunks": [
+    "I suggest that he be / go / take...",
+    "I recommend (that) she leave early",
+    "They demanded that he resign",
+    "It is essential that he be present",
+    "It is important that she go now",
+    "They insist (that) we be on time",
+    "I wish I were... (universal \"were\")",
+    "If only she were here",
+    "Lest he forget...",
+    "God save the Queen / Long live the king (fossilised)",
+    "Be that as it may",
+    "Come what may",
+    "So be it"
+  ],
+  "units": [
+    {
+      "id": "A01",
+      "title": "I suggest that he be",
+      "sub_cefr": "C1",
+      "grammar_focus": "Mandative subjunctive after verbs (suggest, recommend, propose, demand, insist, require, request, ask)",
+      "markers": [
+        "denso",
+        "formal"
+      ],
+      "real_life_context": "You write formal recommendations, motions, or policy that requires base-form verbs regardless of person.",
+      "grammar": [
+        {
+          "type": "multiple_choice",
+          "sentence": "The board insists that he _____ resign immediately.",
+          "options": [
+            "resign",
+            "resigns",
+            "will resign",
+            "has resigned"
+          ],
+          "answer": "resign",
+          "explanation": "Mandative subjunctive after \"insist that\" — base form (\"resign\") regardless of subject. \"He resigns\" would be plain indicative. The subjunctive registers the demand. Note: in modern British English, \"should resign\" is often substituted (\"insists that he should resign\"); American English keeps the bare subjunctive."
+        },
+        {
+          "type": "multiple_choice",
+          "sentence": "I recommend that she _____ for the position.",
+          "options": [
+            "apply",
+            "applies",
+            "applied",
+            "would apply"
+          ],
+          "answer": "apply",
+          "explanation": "\"Recommend that + subject + base form\". \"She applies\" would be indicative (no subjunctive force); \"apply\" carries the recommendation. Same triggers: suggest, propose, demand, request, require, insist, urge."
+        },
+        {
+          "type": "fill_gap",
+          "sentence": "They demanded that the meeting _____ postponed.",
+          "hint": "subjunctive base of \"be\"",
+          "answer": "be",
+          "explanation": "\"Be\" is the bare subjunctive of \"to be\" — invariant across persons. \"Was postponed\" would be indicative past, weakening the demand. \"Be postponed\" — formal, mandative."
+        },
+        {
+          "type": "fix_error",
+          "sentence": "The committee suggested that he was more careful with the budget.",
+          "hint": "After \"suggest that\", use base form — not past indicative",
+          "answer": "The committee suggested that he be more careful with the budget.",
+          "explanation": "\"Was\" is indicative — it describes how he was, not what's being suggested. Subjunctive \"be\" carries the suggestion that he should be more careful going forward. Classic C1 trap."
+        },
+        {
+          "type": "read_answer",
+          "passage": "The motion was carefully worded. 'It is recommended that the chair step down at the next meeting, that an interim be appointed, and that the by-laws be reviewed within ninety days.' The bare subjunctives — 'step down', 'be appointed', 'be reviewed' — gave the document its quietly forceful tone.",
+          "question": "What does the motion recommend?",
+          "answer": "the chair step down, an interim be appointed, the by-laws be reviewed",
+          "explanation": "Three mandative subjunctives: \"step down\" (base form of step), \"be appointed\", \"be reviewed\". All triggered by \"It is recommended that\". Subjunctive layered for institutional formality."
+        }
+      ],
+      "listening_speaking": [
+        {
+          "text": "I suggest that he be more careful.",
+          "context": "formal advice with \"be\""
+        },
+        {
+          "text": "They demand that she resign.",
+          "context": "base form mandate"
+        },
+        {
+          "text": "It is essential that we act now.",
+          "context": "base form after adjective"
+        },
+        {
+          "text": "I recommend that you take the train.",
+          "context": "base form recommendation"
+        },
+        {
+          "text": "The judge ordered that the report be filed by Friday.",
+          "context": "passive subjunctive in formal directive"
+        }
+      ],
+      "roleplay": {
+        "scenario": "Charlotte casts you as the writer of formal motions. You produce three mandative subjunctive sentences.",
+        "voiced_by": "charlotte",
+        "persona": "Charlotte",
+        "persona_outfit": "charlotte_casual",
+        "time_budget_sec": 300,
+        "opening_line": "Three formal motions. Use 'I suggest/recommend/propose that + subject + base form'.",
+        "objectives": [
+          {
+            "id": 1,
+            "label_en": "Suggestion with 'suggest that... be'",
+            "hidden_prompt": "user uses 'I suggest that + subject + be + adj/past participle'",
+            "hint_en": "I suggest that the proposal be reviewed by an external auditor."
+          },
+          {
+            "id": 2,
+            "label_en": "Recommendation with base form",
+            "hidden_prompt": "user uses 'I recommend that + subject + base form'",
+            "hint_en": "I recommend that the team adopt a stricter review process."
+          },
+          {
+            "id": 3,
+            "label_en": "Demand with 'demand/insist that... be'",
+            "hidden_prompt": "user uses 'demand/insist that + subject + be/base'",
+            "hint_en": "I insist that every member be informed before the vote."
+          }
+        ],
+        "closing_cue": "Charlotte closes with \"Motions properly drafted.\" once obj_3 lands.",
+        "suggested_flow": "**Suggested flow** (referencial, 6 turnos):\n\n1. **Charlotte**: \"Three formal motions. Use 'I suggest/recommend/propose that + subject + base form'.\"\n2. **Student**: ~\"I suggest that the proposal be reviewed by an external auditor.\"\n3. **Charlotte**: \"Strong. Recommendation?\"\n4. **Student**: ~\"I recommend that the team adopt a stricter review process.\"\n5. **Charlotte**: \"And a firmer one?\"\n6. **Student**: ~\"I insist that every member be informed before the vote.\"\n7. **Charlotte**: \"Motions properly drafted.\"",
+        "evaluation_focus": [
+          "Base form across all persons",
+          "No \"should\" inserted (modern alternative)",
+          "Formal vocabulary surrounds the subjunctive"
+        ]
+      },
+      "guided_chat": {
+        "scenario": "Charlotte plays committee chair. You make formal recommendations to her in writing-style register.",
+        "voiced_by": "charlotte",
+        "persona": "Charlotte",
+        "persona_outfit": "charlotte_casual",
+        "intro_en": "Charlotte plays committee chair. Make formal recommendations using subjunctive.",
+        "opening_message": "The committee is reviewing our hiring practices. What would you recommend?",
+        "objectives": [
+          {
+            "id": 1,
+            "label_en": "Formal recommendation with subjunctive",
+            "hidden_prompt": "user uses 'I recommend/suggest that + subject + base'",
+            "hint_en": "I recommend that every candidate be interviewed by at least three panel members."
+          },
+          {
+            "id": 2,
+            "label_en": "Add another recommendation",
+            "hidden_prompt": "user uses another mandative subjunctive",
+            "hint_en": "I also propose that hiring criteria be made public on the company website."
+          },
+          {
+            "id": 3,
+            "label_en": "Ask Charlotte",
+            "hidden_prompt": "user asks Charlotte if she'll bring it to vote",
+            "hint_en": "Will you bring it to a vote?"
+          }
+        ],
+        "closing_cue": "Charlotte closes with \"Recommendations recorded.\" once obj_3 lands.",
+        "suggested_script": "**Script** (referencial, 7 turnos):\n\n1. **Charlotte**: \"The committee is reviewing our hiring practices. What would you recommend?\"\n2. **Student**: \"I recommend that every candidate be interviewed by at least three panel members.\"\n3. **Charlotte**: \"Strong baseline. Anything else?\"\n4. **Student**: \"I also propose that hiring criteria be made public on the company website.\"\n5. **Charlotte**: \"Transparency would force discipline.\"\n6. **Student**: \"Will you bring it to a vote?\"\n7. **Charlotte**: \"At the next session. Recommendations recorded.\"\n\n> A01 chat = full LLM. Scaffold via hint_pt/hint_en.\n\n---"
+      }
+    },
+    {
+      "id": "A02",
+      "title": "It is essential that",
+      "sub_cefr": "C1",
+      "grammar_focus": "Subjunctive after impersonal expressions of necessity/importance",
+      "markers": [
+        "denso",
+        "formal"
+      ],
+      "real_life_context": "You write academic/business prose where formality demands subjunctive after evaluative adjectives.",
+      "grammar": [
+        {
+          "type": "multiple_choice",
+          "sentence": "It is essential that the report _____ on time.",
+          "options": [
+            "be",
+            "is",
+            "will be",
+            "was"
+          ],
+          "answer": "be",
+          "explanation": "\"It is essential/important/vital/crucial/imperative that + subject + base form\". Here \"be\" (subjunctive of \"to be\"). Universal across persons. Indicative \"is\" weakens the necessity."
+        },
+        {
+          "type": "multiple_choice",
+          "sentence": "It is important that she _____ heard.",
+          "options": [
+            "be",
+            "is",
+            "would be",
+            "has been"
+          ],
+          "answer": "be",
+          "explanation": "\"It is important that she be heard\" — bare subjunctive in passive form (\"be + past participle\"). Compare with indicative \"she is heard\" — different mood, different force."
+        },
+        {
+          "type": "fill_gap",
+          "sentence": "It was imperative that the troops _____ before dawn.",
+          "hint": "base form \"withdraw\"",
+          "answer": "withdraw",
+          "explanation": "\"It was imperative that + subject + base form\". Note: even when the main clause is past (\"was imperative\"), the subjunctive in the that-clause stays in base form. No backshift."
+        },
+        {
+          "type": "fix_error",
+          "sentence": "It is necessary that he is on time.",
+          "hint": "Necessity triggers subjunctive — base form, not indicative",
+          "answer": "It is necessary that he be on time.",
+          "explanation": "\"Is\" is indicative present; \"be\" is the subjunctive form needed after \"It is necessary that\". Common slip — speakers default to \"is/are\" out of habit."
+        },
+        {
+          "type": "read_answer",
+          "passage": "The protocol was unambiguous. 'It is vital that all personnel be briefed before deployment. It is crucial that no detail be omitted from the report. It is imperative that the chain of command be respected at every step.' Procedural language at its most formal.",
+          "question": "What three things does the protocol demand?",
+          "answer": "all personnel be briefed before deployment, no detail be omitted from the report, the chain of command be respected",
+          "explanation": "Three stacked \"It is [vital/crucial/imperative] that + subject + be + past participle\" — passive subjunctive used for impersonal formality. Procedural writing leans heavily on this register."
+        }
+      ],
+      "listening_speaking": [
+        {
+          "text": "It is essential that we act now.",
+          "context": "necessity + base form"
+        },
+        {
+          "text": "It is vital that he be present.",
+          "context": "necessity + passive subjunctive"
+        },
+        {
+          "text": "It is crucial that no one be left behind.",
+          "context": "passive subjunctive with negative"
+        },
+        {
+          "text": "It is imperative that the protocol be followed.",
+          "context": "formal directive"
+        },
+        {
+          "text": "It is important that she feel welcome.",
+          "context": "base \"feel\" not \"feels\""
+        }
+      ],
+      "roleplay": {
+        "scenario": "Charlotte invites you to write three impersonal necessity statements for a formal context.",
+        "voiced_by": "charlotte",
+        "persona": "Charlotte",
+        "persona_outfit": "charlotte_casual",
+        "time_budget_sec": 300,
+        "opening_line": "Three statements of necessity for a formal document. Use 'It is essential/vital/crucial that...'",
+        "objectives": [
+          {
+            "id": 1,
+            "label_en": "'It is essential that' + base/be",
+            "hidden_prompt": "user uses 'It is essential that + subject + base/be'",
+            "hint_en": "It is essential that every employee receive proper training."
+          },
+          {
+            "id": 2,
+            "label_en": "'It is vital that' + passive base/be",
+            "hidden_prompt": "user uses 'It is vital that + subject + be + past participle'",
+            "hint_en": "It is vital that confidential data be protected at all times."
+          },
+          {
+            "id": 3,
+            "label_en": "'It is imperative that'",
+            "hidden_prompt": "user uses 'It is imperative that + subject + base'",
+            "hint_en": "It is imperative that the process remain transparent."
+          }
+        ],
+        "closing_cue": "Charlotte closes with \"Necessity formally registered.\" once obj_3 lands.",
+        "suggested_flow": "**Suggested flow** (referencial, 6 turnos):\n\n1. **Charlotte**: \"Three statements of necessity for a formal document. Use 'It is essential/vital/crucial that...'\"\n2. **Student**: ~\"It is essential that every employee receive proper training.\"\n3. **Charlotte**: \"Strong baseline. Passive?\"\n4. **Student**: ~\"It is vital that confidential data be protected at all times.\"\n5. **Charlotte**: \"Imperative one?\"\n6. **Student**: ~\"It is imperative that the process remain transparent.\"\n7. **Charlotte**: \"Necessity formally registered.\"",
+        "evaluation_focus": [
+          "Base form / \"be + past participle\"",
+          "No indicative \"is/are/has\"",
+          "Impersonal evaluative adjectives"
+        ]
+      },
+      "guided_chat": {
+        "scenario": "Charlotte asks you to draft formal necessity statements for an imaginary handbook.",
+        "voiced_by": "charlotte",
+        "persona": "Charlotte",
+        "persona_outfit": "charlotte_casual",
+        "intro_en": "Charlotte drafts a handbook. Use 'It is essential/vital/crucial that + subjunctive'.",
+        "opening_message": "We're writing the employee handbook. What's the first non-negotiable principle?",
+        "objectives": [
+          {
+            "id": 1,
+            "label_en": "Formal principle with subjunctive",
+            "hidden_prompt": "user uses 'It is essential/vital/crucial that + subject + base/be'",
+            "hint_en": "It is essential that every voice be heard in team decisions."
+          },
+          {
+            "id": 2,
+            "label_en": "Add second principle",
+            "hidden_prompt": "user uses another subjunctive necessity statement",
+            "hint_en": "It is crucial that feedback be given respectfully and in private."
+          },
+          {
+            "id": 3,
+            "label_en": "Ask Charlotte",
+            "hidden_prompt": "user asks Charlotte for her contribution",
+            "hint_en": "What would you add?"
+          }
+        ],
+        "closing_cue": "Charlotte closes with \"Handbook spine, written.\" once obj_3 lands.",
+        "suggested_script": "**Script** (referencial, 7 turnos):\n\n1. **Charlotte**: \"We're writing the employee handbook. What's the first non-negotiable principle?\"\n2. **Student**: \"It is essential that every voice be heard in team decisions.\"\n3. **Charlotte**: \"Voice equity — start there. Second?\"\n4. **Student**: \"It is crucial that feedback be given respectfully and in private.\"\n5. **Charlotte**: \"Private feedback is rare and valuable.\"\n6. **Student**: \"What would you add?\"\n7. **Charlotte**: \"It is vital that mistakes be treated as data, not as failures of character. Handbook spine, written.\"\n\n> A02 chat = full LLM. Scaffold via hint_pt/hint_en.\n\n---"
+      }
+    },
+    {
+      "id": "A03",
+      "title": "I wish I were",
+      "sub_cefr": "C1",
+      "grammar_focus": "Past subjunctive \"were\" across all persons (wishes, if-clauses, would rather)",
+      "markers": [
+        "denso"
+      ],
+      "real_life_context": "You maintain formal correctness with \"were\" (not \"was\") in hypothetical/wish contexts.",
+      "grammar": [
+        {
+          "type": "multiple_choice",
+          "sentence": "I wish I _____ taller.",
+          "options": [
+            "were",
+            "was",
+            "would be",
+            "had been"
+          ],
+          "answer": "were",
+          "explanation": "Past subjunctive uses \"were\" for ALL persons (I, he, she, it, we, you, they). \"I wish I was taller\" is heard in casual speech but considered non-standard in formal English. \"Were\" is the correct subjunctive form."
+        },
+        {
+          "type": "multiple_choice",
+          "sentence": "If she _____ here, she'd know what to do.",
+          "options": [
+            "were",
+            "was",
+            "is",
+            "would be"
+          ],
+          "answer": "were",
+          "explanation": "Second conditional with \"she\" — formal English keeps \"were\". Casual speech accepts \"was\", but the subjunctive proper is \"were\" universally."
+        },
+        {
+          "type": "fill_gap",
+          "sentence": "I'd rather you _____ smoke in the house.",
+          "hint": "past simple negative \"smoke\"",
+          "answer": "didn't",
+          "explanation": "\"I'd rather + subject + past simple\" for preference about another person's behaviour. Strictly speaking, \"didn't smoke\" is the past subjunctive form here — same surface as past simple, but mood is hypothetical."
+        },
+        {
+          "type": "fix_error",
+          "sentence": "If I was you, I would accept the offer.",
+          "hint": "Subjunctive \"were\" universal in formal \"If I _____ you\"",
+          "answer": "If I were you, I would accept the offer.",
+          "explanation": "\"If I was you\" is non-standard. \"If I were you\" is the formal correct form across all registers above casual speech. Note: in some informal native speech, \"was\" persists, but C1 writing demands \"were\"."
+        },
+        {
+          "type": "read_answer",
+          "passage": "Stevens watched the rain pool on the gravel drive. 'If only it were summer,' he said, 'and if I were ten years younger, I would walk to the village without a coat. I wish I were the kind of man who didn't notice weather. But I am not, and never was.'",
+          "question": "What three things does Stevens wish?",
+          "answer": "that it were summer, that he were ten years younger, that he were the kind of man who didn't notice weather",
+          "explanation": "Three stacked subjunctive \"were\" forms — formal, literary register. Note final \"I am not, and never was\" — switches back to indicative for present/past fact."
+        }
+      ],
+      "listening_speaking": [
+        {
+          "text": "I wish I were taller.",
+          "context": "universal \"were\" wish"
+        },
+        {
+          "text": "If she were here, she'd handle it.",
+          "context": "formal second conditional"
+        },
+        {
+          "text": "If I were you, I'd stay.",
+          "context": "advice cleft"
+        },
+        {
+          "text": "I wish it were summer.",
+          "context": "weather wish"
+        },
+        {
+          "text": "He acts as if he were the boss.",
+          "context": "comparison + subjunctive"
+        }
+      ],
+      "roleplay": {
+        "scenario": "Charlotte invites three \"were\"-form sentences across wishes, advice, and comparisons.",
+        "voiced_by": "charlotte",
+        "persona": "Charlotte",
+        "persona_outfit": "charlotte_casual",
+        "time_budget_sec": 300,
+        "opening_line": "Three sentences with subjunctive 'were' — a wish, advice, a comparison.",
+        "objectives": [
+          {
+            "id": 1,
+            "label_en": "Wish with 'were'",
+            "hidden_prompt": "user uses 'I wish I/he/she/it were + element'",
+            "hint_en": "I wish I were better at saying no."
+          },
+          {
+            "id": 2,
+            "label_en": "'If I were you'",
+            "hidden_prompt": "user uses 'If I were you, I would + base'",
+            "hint_en": "If I were you, I'd take the longer view."
+          },
+          {
+            "id": 3,
+            "label_en": "'As if + were'",
+            "hidden_prompt": "user uses 'X acts/talks/looks as if + subject + were'",
+            "hint_en": "He talks as if he were already in charge."
+          }
+        ],
+        "closing_cue": "Charlotte closes with \"Mood maintained.\" once obj_3 lands.",
+        "suggested_flow": "**Suggested flow** (referencial, 6 turnos):\n\n1. **Charlotte**: \"Three sentences with subjunctive 'were' — a wish, advice, a comparison.\"\n2. **Student**: ~\"I wish I were better at saying no.\"\n3. **Charlotte**: \"Common wish. Advice?\"\n4. **Student**: ~\"If I were you, I'd take the longer view.\"\n5. **Charlotte**: \"Comparison?\"\n6. **Student**: ~\"He talks as if he were already in charge.\"\n7. **Charlotte**: \"Mood maintained.\"",
+        "evaluation_focus": [
+          "\"Were\" not \"was\" everywhere",
+          "Across persons (I, he, she, it)",
+          "Wish / advice / comparison contexts"
+        ]
+      },
+      "guided_chat": {
+        "scenario": "Charlotte tests your subjunctive instinct in casual flowing chat.",
+        "voiced_by": "charlotte",
+        "persona": "Charlotte",
+        "persona_outfit": "charlotte_casual",
+        "intro_en": "Charlotte trades subjunctive 'were' freely. Mirror her register.",
+        "opening_message": "I wish I were the kind of person who actually enjoys mornings. Are you a morning person?",
+        "objectives": [
+          {
+            "id": 1,
+            "label_en": "Own wish with 'were'",
+            "hidden_prompt": "user uses 'I wish I were + element'",
+            "hint_en": "I wish I were less attached to my phone."
+          },
+          {
+            "id": 2,
+            "label_en": "If clause with 'were'",
+            "hidden_prompt": "user uses 'If I were + element/person'",
+            "hint_en": "If I were braver, I'd already have deleted the apps."
+          },
+          {
+            "id": 3,
+            "label_en": "Ask Charlotte",
+            "hidden_prompt": "user asks Charlotte if she's tried becoming a morning person",
+            "hint_en": "Have you tried becoming one?"
+          }
+        ],
+        "closing_cue": "Charlotte closes with \"Mood across, intact.\" once obj_3 lands.",
+        "suggested_script": "**Script** (referencial, 7 turnos):\n\n1. **Charlotte**: \"I wish I were the kind of person who actually enjoys mornings. Are you a morning person?\"\n2. **Student**: \"I wish I were less attached to my phone.\"\n3. **Charlotte**: \"Different fault line, same regret. Anything you'd change?\"\n4. **Student**: \"If I were braver, I'd already have deleted the apps.\"\n5. **Charlotte**: \"Bravery and boredom — twins.\"\n6. **Student**: \"Have you tried becoming one?\"\n7. **Charlotte**: \"Tried, failed, tried again. Mood across, intact.\"\n\n> A03 chat = full LLM. Scaffold via hint_pt/hint_en.\n\n---"
+      }
+    },
+    {
+      "id": "A04",
+      "title": "Lest, So be it",
+      "sub_cefr": "C1",
+      "grammar_focus": "Subjunctive after \"lest\" (formal-archaic) and fossilised expressions (\"Be that as it may\", \"Come what may\", \"So be it\", \"Suffice it to say\")",
+      "markers": [
+        "denso",
+        "literary"
+      ],
+      "real_life_context": "You recognise and occasionally deploy literary or archaic subjunctive forms.",
+      "grammar": [
+        {
+          "type": "multiple_choice",
+          "sentence": "Speak softly, lest you _____ the baby.",
+          "options": [
+            "wake",
+            "wakes",
+            "will wake",
+            "woke"
+          ],
+          "answer": "wake",
+          "explanation": "\"Lest\" = \"in case... should\" / \"so that... not\". Always followed by base-form subjunctive. \"Lest you wake the baby\" = so that you don't wake the baby. Highly formal-literary."
+        },
+        {
+          "type": "multiple_choice",
+          "sentence": "_____ as it may, the project must move forward.",
+          "options": [
+            "Be that",
+            "It be",
+            "Be it",
+            "Were that"
+          ],
+          "answer": "Be that",
+          "explanation": "\"Be that as it may\" is a fossilised subjunctive phrase = \"regardless of that\". Used to acknowledge an objection while overruling it. Note inverted base form \"be\" at the start — relic of older subjunctive syntax."
+        },
+        {
+          "type": "fill_gap",
+          "sentence": "_____ what may, I will see this through.",
+          "hint": "\"Come\" subjunctive",
+          "answer": "Come",
+          "explanation": "\"Come what may\" = whatever happens. Another fossilised subjunctive — base form \"come\" without subject. Means \"let what comes come\". Synonyms: \"Whatever happens, no matter what\"."
+        },
+        {
+          "type": "fix_error",
+          "sentence": "Suffice to say I was disappointed.",
+          "hint": "Formal version requires \"it\" — \"Suffice IT to say\"",
+          "answer": "Suffice it to say I was disappointed.",
+          "explanation": "\"Suffice it to say\" — fossilised subjunctive with inverted \"it\". Loose modern usage often drops \"it\" (\"suffice to say\"), but the proper form keeps it. C1 writing prefers the full phrase."
+        },
+        {
+          "type": "read_answer",
+          "passage": "The ambassador chose his words. 'Be that as it may, the agreement stands. Come what may, neither side will retreat from what was signed. Suffice it to say that any party tempted to abandon the treaty would face consequences I shall not detail here.'",
+          "question": "What does the ambassador imply about leaving the treaty?",
+          "answer": "there would be undisclosed consequences (or \"serious consequences\")",
+          "explanation": "Three fossilised subjunctives layered: \"Be that as it may\" (concession), \"Come what may\" (resolve), \"Suffice it to say\" (understatement). Diplomatic prose at its driest."
+        }
+      ],
+      "listening_speaking": [
+        {
+          "text": "Speak softly, lest you wake the baby.",
+          "context": "formal warning"
+        },
+        {
+          "text": "Be that as it may, we must proceed.",
+          "context": "concession + resolve"
+        },
+        {
+          "text": "Come what may, I'll be there.",
+          "context": "unconditional commitment"
+        },
+        {
+          "text": "Suffice it to say, the project is over.",
+          "context": "understatement"
+        },
+        {
+          "text": "So be it.",
+          "context": "acceptance of inevitable"
+        }
+      ],
+      "roleplay": {
+        "scenario": "Charlotte writes diplomatic-style speech. You produce three fossilised subjunctive expressions in context.",
+        "voiced_by": "charlotte",
+        "persona": "Charlotte",
+        "persona_outfit": "charlotte_casual",
+        "time_budget_sec": 300,
+        "opening_line": "Diplomatic register. Three fossilised subjunctives in real sentences.",
+        "objectives": [
+          {
+            "id": 1,
+            "label_en": "'Be that as it may'",
+            "hidden_prompt": "user uses 'Be that as it may, + clause'",
+            "hint_en": "Be that as it may, the deadline is non-negotiable."
+          },
+          {
+            "id": 2,
+            "label_en": "'Come what may'",
+            "hidden_prompt": "user uses 'Come what may, + clause'",
+            "hint_en": "Come what may, I'll see this through to the end."
+          },
+          {
+            "id": 3,
+            "label_en": "'Suffice it to say' or 'lest'",
+            "hidden_prompt": "user uses 'Suffice it to say...' or 'lest + subjunctive'",
+            "hint_en": "Suffice it to say, the meeting did not go well."
+          }
+        ],
+        "closing_cue": "Charlotte closes with \"Old forms, alive enough.\" once obj_3 lands.",
+        "suggested_flow": "**Suggested flow** (referencial, 6 turnos):\n\n1. **Charlotte**: \"Diplomatic register. Three fossilised subjunctives in real sentences.\"\n2. **Student**: ~\"Be that as it may, the deadline is non-negotiable.\"\n3. **Charlotte**: \"'Come what may'?\"\n4. **Student**: ~\"Come what may, I'll see this through to the end.\"\n5. **Charlotte**: \"Last form?\"\n6. **Student**: ~\"Suffice it to say, the meeting did not go well.\"\n7. **Charlotte**: \"Old forms, alive enough.\"",
+        "evaluation_focus": [
+          "Fossilised expressions intact",
+          "Used in fitting register",
+          "Not overusing in casual context"
+        ]
+      },
+      "guided_chat": {
+        "scenario": "Charlotte writes a polished personal essay. You contribute lines using fossilised subjunctive.",
+        "voiced_by": "charlotte",
+        "persona": "Charlotte",
+        "persona_outfit": "charlotte_casual",
+        "intro_en": "Charlotte writes essay-style. Contribute lines with fossilised subjunctive.",
+        "opening_message": "Be that as it may, learning a language in your forties is no joke. What's your take?",
+        "objectives": [
+          {
+            "id": 1,
+            "label_en": "Reply with fossilised subjunctive",
+            "hidden_prompt": "user uses 'Be that as it may' or 'Come what may' in a reply",
+            "hint_en": "Come what may, I'm not stopping until I can read novels in English."
+          },
+          {
+            "id": 2,
+            "label_en": "Another fossilised expression",
+            "hidden_prompt": "user uses 'Suffice it to say' or 'lest + subjunctive'",
+            "hint_en": "Suffice it to say, the grammar still surprises me weekly."
+          },
+          {
+            "id": 3,
+            "label_en": "Ask Charlotte",
+            "hidden_prompt": "user asks Charlotte how she keeps her own English sharp",
+            "hint_en": "How do you keep yours sharp?"
+          }
+        ],
+        "closing_cue": "Charlotte closes with \"Essay drafted in old idiom.\" once obj_3 lands.",
+        "suggested_script": "**Script** (referencial, 7 turnos):\n\n1. **Charlotte**: \"Be that as it may, learning a language in your forties is no joke. What's your take?\"\n2. **Student**: \"Come what may, I'm not stopping until I can read novels in English.\"\n3. **Charlotte**: \"Novels are the long game. What's the friction?\"\n4. **Student**: \"Suffice it to say, the grammar still surprises me weekly.\"\n5. **Charlotte**: \"Grammar punishes confidence, rewards humility.\"\n6. **Student**: \"How do you keep yours sharp?\"\n7. **Charlotte**: \"Reading aloud, writing badly, asking dumb questions. Essay drafted in old idiom.\"\n\n> A04 chat = full LLM. Scaffold via hint_pt/hint_en.\n\n---"
+      }
+    },
+    {
+      "id": "A05",
+      "title": "Mixed subjunctive",
+      "sub_cefr": "C1",
+      "grammar_focus": "Integration of mandative, hypothetical, fossilised subjunctive across registers",
+      "markers": [],
+      "real_life_context": "You select the subjunctive form that fits the register and intent.",
+      "grammar": [
+        {
+          "type": "multiple_choice",
+          "sentence": "I recommend that the candidate _____ a second interview.",
+          "options": [
+            "be given",
+            "is given",
+            "will be given",
+            "would be given"
+          ],
+          "answer": "be given",
+          "explanation": "Mandative subjunctive after \"recommend that\" — passive base form \"be given\". Base form of \"to be\" + past participle."
+        },
+        {
+          "type": "multiple_choice",
+          "sentence": "If she _____ here, this wouldn't have happened.",
+          "options": [
+            "had been",
+            "was",
+            "would be",
+            "has been"
+          ],
+          "answer": "had been",
+          "explanation": "Third conditional — \"had been\" (past perfect subjunctive). \"If she had been here\" maps to a past unreal condition. Note: even with \"she\", we use \"had been\" not \"would be\"."
+        },
+        {
+          "type": "fill_gap",
+          "sentence": "It is essential that no exception _____ made.",
+          "hint": "passive base \"be made\"",
+          "answer": "be",
+          "explanation": "\"It is essential that + subject + be + past participle\" — formal passive subjunctive. \"Be made\" — invariant. \"Is made\" would be indicative."
+        },
+        {
+          "type": "fix_error",
+          "sentence": "I suggested that he was more honest with his team.",
+          "hint": "Mandative subjunctive requires base form, not past indicative",
+          "answer": "I suggested that he be more honest with his team.",
+          "explanation": "\"Was\" is indicative — it describes how he was, not what was suggested. The mandative trigger \"suggested that\" demands base form (\"be\") regardless of tense in the main clause."
+        },
+        {
+          "type": "read_answer",
+          "passage": "The professor closed her lecture with a quiet line: 'I would only ask that you remember three things. That you read what challenges you. That you write what scares you. And that, lest you become comfortable, you teach what you have only just begun to understand.' The room was silent for a long second.",
+          "question": "What three things does she ask students to remember?",
+          "answer": "read what challenges you, write what scares you, teach what you have only just begun to understand",
+          "explanation": "Three mandative subjunctives (\"that you read\", \"that you write\", \"that you teach\"), capped by a \"lest\" subjunctive (\"lest you become comfortable\"). Layered C1 grammar in service of memorable speech."
+        }
+      ],
+      "listening_speaking": [
+        {
+          "text": "I suggest that he reconsider his approach.",
+          "context": "mandative"
+        },
+        {
+          "text": "It is vital that the policy be enforced.",
+          "context": "passive subjunctive"
+        },
+        {
+          "text": "I wish I were braver.",
+          "context": "hypothetical past subjunctive"
+        },
+        {
+          "text": "Come what may, I'll see it through.",
+          "context": "fossilised"
+        },
+        {
+          "text": "Speak quietly, lest she overhear.",
+          "context": "literary subjunctive"
+        }
+      ],
+      "roleplay": {
+        "scenario": "Charlotte invites three subjunctive structures across the spectrum — mandative, hypothetical, fossilised.",
+        "voiced_by": "charlotte",
+        "persona": "Charlotte",
+        "persona_outfit": "charlotte_casual",
+        "time_budget_sec": 300,
+        "opening_line": "Three subjunctive sentences — one mandative, one with 'were', one fossilised.",
+        "objectives": [
+          {
+            "id": 1,
+            "label_en": "Mandative subjunctive",
+            "hidden_prompt": "user uses 'suggest/recommend/insist that + subject + base'",
+            "hint_en": "I recommend that the proposal be revised before the next meeting."
+          },
+          {
+            "id": 2,
+            "label_en": "Hypothetical with 'were'",
+            "hidden_prompt": "user uses 'If I/he/she were' or 'I wish I were'",
+            "hint_en": "If I were in charge, I'd cancel half the meetings."
+          },
+          {
+            "id": 3,
+            "label_en": "Fossilised expression",
+            "hidden_prompt": "user uses 'Be that as it may' / 'Come what may' / 'Suffice it to say'",
+            "hint_en": "Be that as it may, the launch happens Monday."
+          }
+        ],
+        "closing_cue": "Charlotte closes with \"Subjunctive range full.\" once obj_3 lands.",
+        "suggested_flow": "**Suggested flow** (referencial, 6 turnos):\n\n1. **Charlotte**: \"Three subjunctive sentences — one mandative, one with 'were', one fossilised.\"\n2. **Student**: ~\"I recommend that the proposal be revised before the next meeting.\"\n3. **Charlotte**: \"Hypothetical?\"\n4. **Student**: ~\"If I were in charge, I'd cancel half the meetings.\"\n5. **Charlotte**: \"Fossilised?\"\n6. **Student**: ~\"Be that as it may, the launch happens Monday.\"\n7. **Charlotte**: \"Subjunctive range full.\"",
+        "evaluation_focus": [
+          "Variety: mandative, hypothetical, fossilised",
+          "Correct base form / \"were\" / fossilised intact",
+          "Register match"
+        ]
+      },
+      "guided_chat": {
+        "scenario": "Charlotte gives a real workplace scenario. You handle it across subjunctive registers as the situation demands.",
+        "voiced_by": "charlotte",
+        "persona": "Charlotte",
+        "persona_outfit": "charlotte_casual",
+        "intro_en": "Charlotte runs a scenario. Use subjunctive across the register spectrum.",
+        "opening_message": "A senior colleague keeps missing deadlines. What would you propose, and how would you handle it personally?",
+        "objectives": [
+          {
+            "id": 1,
+            "label_en": "Formal recommendation",
+            "hidden_prompt": "user uses 'I would recommend that + subject + base'",
+            "hint_en": "I would recommend that we establish clearer ownership for each deliverable."
+          },
+          {
+            "id": 2,
+            "label_en": "Personal reflection with 'were'",
+            "hidden_prompt": "user uses 'If I were... I would'",
+            "hint_en": "If I were her manager, I'd ask a direct question before assuming intent."
+          },
+          {
+            "id": 3,
+            "label_en": "Ask Charlotte",
+            "hidden_prompt": "user asks Charlotte how she'd open the conversation",
+            "hint_en": "How would you open it?"
+          }
+        ],
+        "closing_cue": "Charlotte closes with \"Mood matched to moment.\" once obj_3 lands.",
+        "suggested_script": "**Script** (referencial, 7 turnos):\n\n1. **Charlotte**: \"A senior colleague keeps missing deadlines. What would you propose, and how would you handle it personally?\"\n2. **Student**: \"I would recommend that we establish clearer ownership for each deliverable.\"\n3. **Charlotte**: \"Structural first — good. What about the conversation itself?\"\n4. **Student**: \"If I were her manager, I'd ask a direct question before assuming intent.\"\n5. **Charlotte**: \"Curiosity over judgment.\"\n6. **Student**: \"How would you open it?\"\n7. **Charlotte**: \"I'd say: 'Help me understand what's getting in the way.' Mood matched to moment.\"\n\n> A05 chat = full LLM. Scaffold via hint_pt/hint_en.\n\n---"
+      }
+    }
+  ],
+  "cross_unit_consolidation": [
+    "Use mandative subjunctive after suggest, recommend, propose, demand, insist, require, urge (\"that he be / go / take\")",
+    "Apply subjunctive after impersonal evaluatives (\"It is essential/vital/imperative that... be\")",
+    "Maintain \"were\" universally in wishes, \"if I were you\", and \"as if + subject\"",
+    "Recognise and deploy fossilised subjunctive (Be that as it may, Come what may, Suffice it to say, So be it)",
+    "Recognise \"lest + subjunctive\" in formal/literary text",
+    "Choose between bare subjunctive and \"should + base\" (modern alternative)"
+  ]
+}
