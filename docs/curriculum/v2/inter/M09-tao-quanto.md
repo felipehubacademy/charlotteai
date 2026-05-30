@@ -3,836 +3,856 @@
 > **Level**: Inter (B1)
 > **Block**: B1 Block
 > **Units**: 5 (I01–I05)
-> **Theme**: as...as comparisons (equality + variations)
-> **Module goal**: Student compares using as...as, not as...as, the more...the more, twice as...as.
-> **Connects to**: M10 (zero conditional).
+> **Theme**: Sophisticated comparisons — as...as variations
+> **Module goal**: Student compares equality (as + adj + as), inequality (not as + adj + as), multiplied quantities (twice/three times as + adj + as), and parallel progression (the more X, the more Y).
+> **Connects to**: M10 (Zero conditional) — after refining comparisons, move to general truths.
 
-## Module chunks introduced (~15)
+## Module chunks introduced (~20)
 
-- as + adj + as (as tall as)
-- not as + adj + as (not as tall as)
-- twice as + adj + as / three times as
-- the more X, the more Y
-- as much as / as many as
+- as + adjective + as (as tall as / as fast as)
+- not as + adjective + as (not as cold as)
+- twice as + adj + as / three times as + adj + as
+- the more X, the more Y (parallel structures)
+- as much as / as many as (uncountable / countable)
+- as soon as possible (chunk)
+- just as + adj + as (emphasis)
+- nearly / almost / nowhere near as + adj + as (degrees)
 
 ---
 
 ## Unit I01 — As tall as
 
-> **Sub-CEFR**: B1 | **Grammar focus**: as + adj + as (equality)
+> **Sub-CEFR**: B1 | **Grammar focus**: as + adjective + as (equality between two things)
 > **Markers**: [denso]
-> **Real-life context**: You compare people, things, places as equal.
+> **Real-life context**: You compare two people, places, or things as being equal in some quality.
 
 ### 1. Grammar (10 exercises)
 
-1. **multiple_choice** — "He's _____ tall _____ his brother."
+1. **multiple_choice** — "My brother is _____ tall _____ my father."
    **Options**: as / as / so / as / more / than
    **Answer**: as / as
-   **Explanation**: "As + adj + as" for equality.
+   **Explanation**: Para igualdade em inglês, usa-se "as + adjetivo + as": "as tall as". Note que "so...as" é arcaico em afirmativas — só "as...as" funciona em inglês moderno.
 
-2. **multiple_choice** — "She's _____ smart _____ her sister."
-   **Options**: as / as / so / as / more / than
+2. **multiple_choice** — "This coffee is _____ strong _____ the one I had yesterday."
+   **Options**: as / as / so / as / very / as
    **Answer**: as / as
-   **Explanation**: Same pattern.
+   **Explanation**: "As strong as" — comparação direta de igualdade. Funciona com qualquer adjetivo descritivo (forte, rápido, fácil, caro).
 
-3. **word_bank** — "It's _____ hot _____ yesterday."
-   **Choices**: as as / so as / more than / less than
-   **Answer**: as as
-   **Explanation**: Equality comparison.
+3. **word_bank** — "It's _____ in São Paulo today."
+   **Choices**: as hot as Rio / as hot than Rio / so hot as Rio / hotter as Rio
+   **Answer**: as hot as Rio
+   **Explanation**: Estrutura "as + adjetivo + as" com comparação geográfica. Sempre dois "as" — um antes e um depois do adjetivo.
 
-4. **word_bank** — "Mine is _____ big _____ yours."
-   **Choices**: as as / so as / much / very as
-   **Answer**: as as
-   **Explanation**: Equal size.
+4. **word_bank** — "My new laptop is _____ my old one."
+   **Choices**: as fast as / as fast than / so fast as / fast as
+   **Answer**: as fast as
+   **Explanation**: Comparação de igualdade entre dois objetos. "As fast as" é a forma padrão.
 
-5. **fill_gap** — "She runs _____ fast _____ him."
-   **Hint**: equality structure
+5. **fill_gap** — "She runs _____ fast _____ her older brother."
+   **Hint**: estrutura de igualdade
    **Answer**: as / as
-   **Explanation**: "As fast as".
+   **Explanation**: "As fast as" — igualdade entre duas pessoas em velocidade. Os dois "as" são obrigatórios.
 
-6. **fill_gap** — "It's _____ easy _____ I expected."
-   **Hint**: equality
+6. **fill_gap** — "The exam was _____ difficult _____ I expected."
+   **Hint**: estrutura de igualdade comparando expectativa
    **Answer**: as / as
-   **Explanation**: "As easy as expected".
+   **Explanation**: "As difficult as I expected" — confirmando expectativa. Comum com verbos de expectativa (expected, thought, imagined).
 
-7. **fill_gap** — "He works _____ hard _____ his father."
-   **Hint**: equality
+7. **fill_gap** — "He works _____ hard _____ anyone in the office."
+   **Hint**: igualdade absoluta (= ninguém trabalha mais)
    **Answer**: as / as
-   **Explanation**: "As hard as".
+   **Explanation**: "As hard as anyone" — usado para destacar máximo. "Anyone" implica que ninguém supera.
 
-8. **fix_error** — "He's so tall as his brother."
-   **Hint**: For equality use as...as
-   **Answer**: He's as tall as his brother.
-   **Explanation**: "As...as" (not "so...as" in modern English).
+8. **fix_error** — "She's so beautiful as her sister."
+   **Hint**: For equality in modern English, use as...as (not so...as)
+   **Answer**: She's as beautiful as her sister.
+   **Explanation**: "So...as" só aparece em frases negativas/perguntas no inglês muito formal. Para afirmativas, sempre "as...as".
 
-9. **fix_error** — "She's tall as her sister."
-   **Hint**: Need first "as"
-   **Answer**: She's as tall as her sister.
-   **Explanation**: Both "as" needed.
+9. **fix_error** — "He's tall as his father."
+   **Hint**: faltou o primeiro "as"
+   **Answer**: He's as tall as his father.
+   **Explanation**: A estrutura "as...as" sempre tem DOIS "as" — um antes do adjetivo e um depois. Esquecer o primeiro é erro comum.
 
 10. **read_answer**
-    **Passage**: "He's as tall as his brother. She's as smart as her sister. The new book is as good as the first one."
-    **Question**: How is the new book?
-    **Answer**: as good as the first one (or "as good as the first")
-    **Explanation**: The text says "as good as the first one".
+    **Passage**: "My brother is as tall as my father — both are six feet. My sister is as smart as our mother. The new restaurant is as expensive as the old one — both are pricey but worth it."
+    **Question**: How does the new restaurant compare to the old one?
+    **Answer**: as expensive as the old one (or "equally expensive")
+    **Explanation**: The text says "The new restaurant is as expensive as the old one" — both are equally expensive.
 
 ### 2. Listening/Speaking (5 phrases)
 
-1. **"He's as tall as his brother."**
-2. **"She's as smart as her sister."**
-3. **"It's as hot as yesterday."**
-4. **"She runs as fast as him."**
-5. **"It's as easy as I expected."**
+1. **"My brother is as tall as my father."** — physical equality comparison
+2. **"This coffee is as strong as yesterday's."** — quality equality
+3. **"She runs as fast as her brother."** — ability equality
+4. **"It's as hot as Rio today."** — geographic comparison
+5. **"The exam was as difficult as I expected."** — expectation match
 
 ### 3. Role-play
 
-**Cenário**: Charlotte asks you to compare things as equal.
+**Cenário**: Charlotte sugere que você compare três pares de coisas/pessoas da sua vida que são equivalentes em alguma qualidade — pode ser pessoas da família, lugares conhecidos, ou hábitos seus.
 **Tipo**: Live Voice
 **Voiced by**: `charlotte`
 **Persona**: Charlotte
 **Persona outfit**: `charlotte_casual`
 **Time budget**: 180s
-**Opening line**: "Compare three pairs using as...as."
+**Opening line**: "Tell me three pairs from your life that are equally something — using as...as."
 
-**Sub-objectives** (3):
+**Sub-objectives** (M03+ gradiente: 3 objetivos):
 
 1. **id**: 1
-   **label_pt**: "Comparação as...as"
-   **label_en**: "as...as comparison"
-   **hidden_prompt**: "user uses 'X is as + adj + as Y'"
-   **hint_pt**: "I'm as tall as my brother."
-   **hint_en**: "I'm as tall as my brother."
+   **label_pt**: "Comparação de igualdade entre pessoas"
+   **label_en**: "Equality comparison between people"
+   **hidden_prompt**: "user uses 'X is as + adj + as Y' to compare two people (family/friends)"
+   **hint_pt**: "I'm as tall as my mother."
+   **hint_en**: "I'm as tall as my mother."
 
 2. **id**: 2
-   **label_pt**: "Outra"
-   **label_en**: "Another"
-   **hidden_prompt**: "user uses another 'as...as'"
-   **hint_pt**: "This phone is as good as that one."
-   **hint_en**: "This phone is as good as that one."
+   **label_pt**: "Comparação entre coisas ou lugares"
+   **label_en**: "Comparison between things or places"
+   **hidden_prompt**: "user uses 'as + adj + as' to compare objects, cities, or items"
+   **hint_pt**: "My phone is as fast as my laptop."
+   **hint_en**: "My phone is as fast as my laptop."
 
 3. **id**: 3
-   **label_pt**: "Mais uma"
-   **label_en**: "One more"
-   **hidden_prompt**: "user uses one more 'as...as'"
-   **hint_pt**: "Today is as hot as yesterday."
-   **hint_en**: "Today is as hot as yesterday."
+   **label_pt**: "Comparação envolvendo tempo, clima ou expectativa"
+   **label_en**: "Comparison involving time, weather, or expectation"
+   **hidden_prompt**: "user uses 'as + adj + as' with weather/expectation/days"
+   **hint_pt**: "Today is as cold as yesterday."
+   **hint_en**: "Today is as cold as yesterday."
 
-**Closing cue**: Charlotte closes with "Equal comparisons!" when obj_3 hits.
+**Closing cue**: Charlotte fecha com "Three solid equality comparisons!" quando obj_3 baterem.
 
-**Suggested flow** (6 turns):
+**Suggested flow** (referencial, 6 turnos):
 
-1. **Charlotte**: "Compare three pairs using as...as."
-2. **Student**: ~"I'm as tall as my brother."
-3. **Charlotte**: "Tech?"
-4. **Student**: ~"This phone is as good as that one."
-5. **Charlotte**: "Weather?"
-6. **Student**: ~"Today is as hot as yesterday."
-7. **Charlotte**: "Equal comparisons!"
+1. **Charlotte**: "Tell me three pairs from your life that are equally something — using as...as."
+2. **Student**: ~"I'm as tall as my mother."
+3. **Charlotte**: "Cool! Now compare two things you own."
+4. **Student**: ~"My phone is as fast as my laptop."
+5. **Charlotte**: "Last one — weather or expectations?"
+6. **Student**: ~"Today is as cold as yesterday."
+7. **Charlotte**: "Three solid equality comparisons!"
 
-**Evaluation focus**: as + adj + as structure.
+**Evaluation focus**:
+- Both "as" present (antes e depois do adjetivo)
+- Adjective in base form (not comparative)
+- Natural pairs being compared
 
 ### 4. Guided Chat
 
-**Cenário**: Charlotte chats about equal things.
+**Cenário**: Charlotte abre um chat sobre coisas que ela acha equivalentes na vida — café e chá, livros e filmes, manhãs e noites — e quer comparar com você.
 **Voiced by**: `charlotte`
 **Persona**: Charlotte
 **Persona outfit**: `charlotte_casual`
-**Intro (em EN)**: "Charlotte explores equalities."
-**Opening message**: "Tell me two things that are equally good."
+**Intro (em EN)**: "Charlotte invites you to share what's equally good or equally hard in life. Practice 'as...as' naturally."
+**Opening message**: "I think coffee is as enjoyable as tea. What's something you find equally good?"
 
-**Sub-objectives** (3):
+**Sub-objectives** (M03+ gradiente: 3 objetivos):
 
 1. **id**: 1
-   **label_pt**: "Igualdade"
-   **label_en**: "Equality"
-   **hidden_prompt**: "user uses 'as good as'"
-   **hint_pt**: "Coffee is as good as tea."
-   **hint_en**: "Coffee is as good as tea."
+   **label_pt**: "Duas coisas igualmente boas"
+   **label_en**: "Two equally good things"
+   **hidden_prompt**: "user states 'X is as + good/enjoyable/fun + as Y'"
+   **hint_pt**: "Books are as fun as movies."
+   **hint_en**: "Books are as fun as movies."
 
 2. **id**: 2
-   **label_pt**: "Outra"
-   **label_en**: "Another"
-   **hidden_prompt**: "user uses another as...as"
-   **hint_pt**: "Walking is as healthy as running."
-   **hint_en**: "Walking is as healthy as running."
+   **label_pt**: "Duas atividades igualmente difíceis ou cansativas"
+   **label_en**: "Two equally hard or tiring things"
+   **hidden_prompt**: "user uses 'as + difficult/tiring/hard + as'"
+   **hint_pt**: "Studying is as tiring as exercise."
+   **hint_en**: "Studying is as tiring as exercise."
 
 3. **id**: 3
-   **label_pt**: "Perguntar à Charlotte"
-   **label_en**: "Ask Charlotte"
-   **hidden_prompt**: "user asks Charlotte"
+   **label_pt**: "Perguntar à Charlotte sobre uma equivalência dela"
+   **label_en**: "Ask Charlotte about something equally good for her"
+   **hidden_prompt**: "user asks Charlotte 'what's as + adj + as ... for you?' or 'how about you?'"
    **hint_pt**: "How about you?"
    **hint_en**: "How about you?"
 
-**Closing cue**: Charlotte closes with "Equal scales!" when obj_3 hits.
+**Closing cue**: Charlotte fecha com "Equal pairs everywhere!" quando obj_3 baterem.
 
-**Script** (7 turns):
+**Script** (referencial, 7 turnos):
 
-1. **Charlotte**: "Tell me two things that are equally good."
-2. **Student**: "Coffee is as good as tea."
-3. **Charlotte**: "Agree."
-4. **Student**: "Walking is as healthy as running."
-5. **Charlotte**: "True."
+1. **Charlotte**: "I think coffee is as enjoyable as tea. What's something you find equally good?"
+2. **Student**: "Books are as fun as movies."
+3. **Charlotte**: "Yes! Both transport you. What about challenges?"
+4. **Student**: "Studying is as tiring as exercise."
+5. **Charlotte**: "True — mental and physical work, similar drain."
 6. **Student**: "How about you?"
-7. **Charlotte**: "Books are as great as movies. Equal scales!"
+7. **Charlotte**: "Writing is as rewarding as teaching for me. Equal pairs everywhere!"
 
-> I01 chat = LLM puro.
+> I01 chat = LLM puro. Scaffold appears via hint_pt da objective pendente.
 
 ---
 
 ## Unit I02 — Not as...as
 
-> **Sub-CEFR**: B1 | **Grammar focus**: not as + adj + as (less than)
+> **Sub-CEFR**: B1 | **Grammar focus**: not as + adjective + as (expressing inequality, "less than")
 > **Markers**: —
-> **Real-life context**: You express inequality with negative comparison.
+> **Real-life context**: You express that something is less than another in some quality — softer than "X is more Y than Z".
 
 ### 1. Grammar (10 exercises)
 
-1. **multiple_choice** — "He's _____ tall as his brother."
-   **Options**: not as / as not / no as
-   **Answer**: not as
-   **Explanation**: "Not as + adj + as" = less than.
+1. **multiple_choice** — "Today isn't _____ hot _____ yesterday."
+   **Options**: so / than / as / as / very / as
+   **Answer**: as / as
+   **Explanation**: "Not as + adj + as" = less than. Equivalente a "less hot than" mas mais natural na fala. Os dois "as" continuam obrigatórios.
 
-2. **multiple_choice** — "Today is _____ hot _____ yesterday."
-   **Options**: not as / as / so / as
-   **Answer**: not as / as
-   **Explanation**: "Not as hot as" — less hot.
+2. **multiple_choice** — "My new job _____ as stressful as the old one."
+   **Options**: isn't / isn't no / not is / no isn't
+   **Answer**: isn't
+   **Explanation**: A negação vai no verbo "to be" antes de "as". "Isn't as stressful as" = é menos estressante que.
 
-3. **word_bank** — "This book is _____ as good as the other."
-   **Choices**: not / no / never / a little
-   **Answer**: not
-   **Explanation**: "Not as good as".
+3. **word_bank** — "This book isn't _____ the last one."
+   **Choices**: as good as / as good than / so good as / better as
+   **Answer**: as good as
+   **Explanation**: "Not as good as" — comparativo negativo. Note: "isn't as good as" expressa que é INFERIOR ao outro.
 
-4. **word_bank** — "She isn't _____ tall as me."
-   **Choices**: as / so / very / so much
-   **Answer**: as
-   **Explanation**: "Isn't as tall as".
+4. **word_bank** — "She _____ as tall as her sister."
+   **Choices**: isn't / no is / doesn't / not is
+   **Answer**: isn't
+   **Explanation**: Negação de "to be": "isn't" antes de "as tall as".
 
-5. **fill_gap** — "It's _____ as easy as I thought."
-   **Hint**: negative
-   **Answer**: not
-   **Explanation**: "Not as easy as".
+5. **fill_gap** — "The movie wasn't _____ exciting _____ the book."
+   **Hint**: estrutura "not as...as" com adjetivo
+   **Answer**: as / as
+   **Explanation**: "Not as exciting as" — comum em comparações de adaptação cinematográfica. Filme menos legal que o livro.
 
-6. **fill_gap** — "He's not _____ fast as her."
-   **Hint**: as for equality
-   **Answer**: as
-   **Explanation**: "Not as fast as".
+6. **fill_gap** — "I'm not _____ patient _____ my mother."
+   **Hint**: comparativo negativo
+   **Answer**: as / as
+   **Explanation**: "Not as patient as" — admite uma qualidade inferior em si mesmo. Forma comum de elogiar o outro indiretamente.
 
-7. **fill_gap** — "Mine isn't as _____ as yours."
-   **Hint**: adjective (good/big/etc.)
-   **Answer**: good (or any adj)
-   **Explanation**: "Not as good as".
+7. **fill_gap** — "This restaurant _____ as expensive as the one downtown."
+   **Hint**: negação de to be 3ª pessoa
+   **Answer**: isn't
+   **Explanation**: "Isn't as expensive as" — preço menor que outra opção.
 
-8. **fix_error** — "He's no as tall as me."
-   **Hint**: use "not as"
-   **Answer**: He's not as tall as me.
-   **Explanation**: "Not as", not "no as".
+8. **fix_error** — "It isn't so hot as yesterday."
+   **Hint**: Em inglês moderno, use "as...as" mesmo em negativa
+   **Answer**: It isn't as hot as yesterday.
+   **Explanation**: Apesar de "so...as" ainda aparecer em textos formais antigos, o inglês moderno padrão é "not as...as" tanto em afirmativa quanto negativa.
 
-9. **fix_error** — "It's less hot as yesterday."
-   **Hint**: less doesn't combine with "as"
-   **Answer**: It's not as hot as yesterday.
-   **Explanation**: "Not as...as" = less + comparative. "Less hot than yesterday" also works.
+9. **fix_error** — "She doesn't as smart as her brother."
+   **Hint**: Negação do verbo to be, não usa "doesn't"
+   **Answer**: She isn't as smart as her brother.
+   **Explanation**: Quando o verbo principal é "to be", a negativa é com "isn't/aren't", não "doesn't/don't". "She isn't as smart as her brother".
 
 10. **read_answer**
-    **Passage**: "Today isn't as hot as yesterday. This book isn't as good as the other. She isn't as tall as her sister."
-    **Question**: How is the book compared to the other?
-    **Answer**: not as good (or "isn't as good")
-    **Explanation**: The text says "isn't as good as the other".
+    **Passage**: "My new apartment isn't as big as the old one, but it isn't as expensive either. The neighborhood isn't as quiet, but it isn't as far from work. Overall, it's a fair trade."
+    **Question**: How does the new apartment compare to the old one in size?
+    **Answer**: isn't as big (or "smaller")
+    **Explanation**: The text says "My new apartment isn't as big as the old one" — meaning the new one is smaller.
 
 ### 2. Listening/Speaking (5 phrases)
 
-1. **"He's not as tall as his brother."**
-2. **"Today isn't as hot as yesterday."**
-3. **"This book isn't as good as the other."**
-4. **"She isn't as fast as me."**
-5. **"It's not as easy as I thought."**
+1. **"Today isn't as hot as yesterday."** — weather contrast
+2. **"My new job isn't as stressful as the old one."** — work comparison
+3. **"This book isn't as good as the last one."** — quality comparison
+4. **"I'm not as patient as my mother."** — self-evaluation
+5. **"It isn't as cold as I expected."** — expectation mismatch
 
 ### 3. Role-play
 
-**Cenário**: Charlotte asks comparisons with "not as...as".
+**Cenário**: Charlotte pergunta se algumas coisas estão à altura das suas expectativas — você usa "not as...as" para corrigir suposições otimistas dela.
 **Tipo**: Live Voice
 **Voiced by**: `charlotte`
 **Persona**: Charlotte
 **Persona outfit**: `charlotte_casual`
 **Time budget**: 180s
-**Opening line**: "Compare three pairs using 'not as...as'."
+**Opening line**: "I bet your new neighborhood is amazing! Tell me three honest 'not as...as' comparisons."
 
-**Sub-objectives** (3):
+**Sub-objectives** (M03+ gradiente: 3 objetivos):
 
 1. **id**: 1
-   **label_pt**: "Not as...as"
-   **label_en**: "Not as...as"
-   **hidden_prompt**: "user uses 'X is not as + adj + as Y'"
-   **hint_pt**: "I'm not as tall as my brother."
-   **hint_en**: "I'm not as tall as my brother."
+   **label_pt**: "Comparação negativa sobre lugar ou casa"
+   **label_en**: "Not as...as comparison about a place or home"
+   **hidden_prompt**: "user uses 'X isn't as + adj + as Y' for a place/home"
+   **hint_pt**: "My new place isn't as quiet as the old one."
+   **hint_en**: "My new place isn't as quiet as the old one."
 
 2. **id**: 2
-   **label_pt**: "Outra"
-   **label_en**: "Another"
-   **hidden_prompt**: "user uses another not as...as"
-   **hint_pt**: "Today isn't as cold as yesterday."
-   **hint_en**: "Today isn't as cold as yesterday."
+   **label_pt**: "Comparação negativa sobre algo recente vs passado"
+   **label_en**: "Not as...as recent vs past"
+   **hidden_prompt**: "user uses 'X isn't as + adj + as Y' for recent vs past"
+   **hint_pt**: "This week isn't as busy as last week."
+   **hint_en**: "This week isn't as busy as last week."
 
 3. **id**: 3
-   **label_pt**: "Mais uma"
-   **label_en**: "One more"
-   **hidden_prompt**: "user uses one more not as...as"
-   **hint_pt**: "This coffee isn't as strong as the other."
-   **hint_en**: "This coffee isn't as strong as the other."
+   **label_pt**: "Comparação negativa sobre si mesmo"
+   **label_en**: "Not as...as about yourself"
+   **hidden_prompt**: "user uses 'I'm not as + adj + as ...' (self-comparison)"
+   **hint_pt**: "I'm not as organized as my sister."
+   **hint_en**: "I'm not as organized as my sister."
 
-**Closing cue**: Charlotte closes with "Negative comparisons!" when obj_3 hits.
+**Closing cue**: Charlotte fecha com "Honest comparisons!" quando obj_3 baterem.
 
-**Suggested flow** (6 turns):
+**Suggested flow** (referencial, 6 turnos):
 
-1. **Charlotte**: "Compare three pairs using 'not as...as'."
-2. **Student**: ~"I'm not as tall as my brother."
-3. **Charlotte**: "Weather?"
-4. **Student**: ~"Today isn't as cold as yesterday."
-5. **Charlotte**: "Drinks?"
-6. **Student**: ~"This coffee isn't as strong as the other."
-7. **Charlotte**: "Negative comparisons!"
+1. **Charlotte**: "I bet your new neighborhood is amazing! Tell me three honest 'not as...as' comparisons."
+2. **Student**: ~"My new place isn't as quiet as the old one."
+3. **Charlotte**: "Ah, trade-offs. How about this week vs last?"
+4. **Student**: ~"This week isn't as busy as last week."
+5. **Charlotte**: "Nice break. And about you compared to someone?"
+6. **Student**: ~"I'm not as organized as my sister."
+7. **Charlotte**: "Honest comparisons!"
 
-**Evaluation focus**: not as...as structure.
+**Evaluation focus**:
+- "Not as + adj + as" structure intact (both "as")
+- Correct verb for negation (isn't/aren't, not doesn't)
+- Genuine examples (not forced)
 
 ### 4. Guided Chat
 
-**Cenário**: Charlotte chats about things less than expected.
+**Cenário**: Charlotte conversa sobre coisas que pareceram melhores do que realmente foram — filmes, restaurantes, viagens, expectativas em geral.
 **Voiced by**: `charlotte`
 **Persona**: Charlotte
 **Persona outfit**: `charlotte_casual`
-**Intro (em EN)**: "Charlotte asks for not-as-as comparisons."
-**Opening message**: "What's not as good as you expected?"
+**Intro (em EN)**: "Charlotte explores disappointments — things that weren't as great as expected. Practice 'not as...as' to express softer disappointment."
+**Opening message**: "Have you ever tried something that wasn't as good as people said?"
 
-**Sub-objectives** (3):
+**Sub-objectives** (M03+ gradiente: 3 objetivos):
 
 1. **id**: 1
-   **label_pt**: "Not as good"
-   **label_en**: "Not as good"
-   **hidden_prompt**: "user uses 'X isn't as good as'"
-   **hint_pt**: "The movie wasn't as good as the book."
-   **hint_en**: "The movie wasn't as good as the book."
+   **label_pt**: "Algo que não foi tão bom quanto diziam"
+   **label_en**: "Something that wasn't as good as said"
+   **hidden_prompt**: "user uses 'X wasn't as + good/great + as ...' for a disappointing experience"
+   **hint_pt**: "The movie wasn't as good as I expected."
+   **hint_en**: "The movie wasn't as good as I expected."
 
 2. **id**: 2
-   **label_pt**: "Outra"
-   **label_en**: "Another"
-   **hidden_prompt**: "user uses another not as...as"
-   **hint_pt**: "This restaurant isn't as cheap as the other."
-   **hint_en**: "This restaurant isn't as cheap as the other."
+   **label_pt**: "Algo que não é tão difícil quanto parece"
+   **label_en**: "Something not as hard as it seems"
+   **hidden_prompt**: "user uses 'X isn't as + difficult/hard + as ...' (positive surprise)"
+   **hint_pt**: "Cooking isn't as hard as it seems."
+   **hint_en**: "Cooking isn't as hard as it seems."
 
 3. **id**: 3
-   **label_pt**: "Perguntar à Charlotte"
-   **label_en**: "Ask Charlotte"
-   **hidden_prompt**: "user asks Charlotte"
+   **label_pt**: "Perguntar à Charlotte sobre uma decepção dela"
+   **label_en**: "Ask Charlotte about a disappointment of hers"
+   **hidden_prompt**: "user asks 'what wasn't as + adj + as for you?' or 'how about you?'"
    **hint_pt**: "How about you?"
    **hint_en**: "How about you?"
 
-**Closing cue**: Charlotte closes with "Real talk!" when obj_3 hits.
+**Closing cue**: Charlotte fecha com "Reality check exchange!" quando obj_3 baterem.
 
-**Script** (7 turns):
+**Script** (referencial, 7 turnos):
 
-1. **Charlotte**: "What's not as good as you expected?"
-2. **Student**: "The movie wasn't as good as the book."
-3. **Charlotte**: "Always."
-4. **Student**: "This restaurant isn't as cheap as the other."
-5. **Charlotte**: "Disappointing."
+1. **Charlotte**: "Have you ever tried something that wasn't as good as people said?"
+2. **Student**: "The movie wasn't as good as I expected."
+3. **Charlotte**: "Same — adaptations always disappoint. What about positive surprises?"
+4. **Student**: "Cooking isn't as hard as it seems."
+5. **Charlotte**: "Yes! Once you start, it flows."
 6. **Student**: "How about you?"
-7. **Charlotte**: "The weather isn't as warm as I hoped. Real talk!"
+7. **Charlotte**: "A restaurant downtown wasn't as fancy as the reviews — but the food was great. Reality check exchange!"
 
-> I02 chat = LLM puro.
+> I02 chat = LLM puro. Scaffold via hint_pt.
 
 ---
 
 ## Unit I03 — Twice as much
 
-> **Sub-CEFR**: B1 | **Grammar focus**: multiples (twice, three times) as...as
-> **Markers**: —
-> **Real-life context**: You compare with multiplied quantities.
+> **Sub-CEFR**: B1 | **Grammar focus**: Multipliers + as...as (twice, three times, half)
+> **Markers**: [denso]
+> **Real-life context**: You compare with multiplied or divided quantities — emphasizing scale.
 
 ### 1. Grammar (10 exercises)
 
-1. **multiple_choice** — "He's _____ as fast as me."
-   **Options**: twice / two times / second
-   **Answer**: twice
-   **Explanation**: "Twice as + adj + as" = 2x.
+1. **multiple_choice** — "He's _____ as fast _____ I am."
+   **Options**: twice / as / two times / as / second / as
+   **Answer**: twice / as
+   **Explanation**: "Twice as + adj + as" = 2x mais. "Twice" é a forma idiomática preferida sobre "two times" em comparações.
 
-2. **multiple_choice** — "It's _____ as expensive as the other."
-   **Options**: three times / triple / three
-   **Answer**: three times
-   **Explanation**: "Three times as".
+2. **multiple_choice** — "This trip costs _____ as much _____ the last one."
+   **Options**: three times / as / three / times / triple / as
+   **Answer**: three times / as
+   **Explanation**: A partir de 3x, usa-se "three/four/five times as + adj + as". "Twice" é exceção (não se diz "two times" comparativamente).
 
-3. **word_bank** — "She earns _____ as much as me."
-   **Choices**: twice / two times / double / second
-   **Answer**: twice
-   **Explanation**: "Twice as much" — double.
+3. **word_bank** — "She earns _____ I do."
+   **Choices**: twice as much as / twice more than / twice as much than / two times as much as
+   **Answer**: twice as much as
+   **Explanation**: "Twice as much as" — quantidade duplicada. Note a estrutura completa: twice + as much + as.
 
-4. **word_bank** — "We have _____ as many people."
-   **Choices**: twice / two times / second / both
-   **Answer**: twice
-   **Explanation**: "Twice as many" — 2x quantity.
+4. **word_bank** — "We have _____ guests this year."
+   **Choices**: twice as many / two times more / double as many / twice more many
+   **Answer**: twice as many
+   **Explanation**: "Twice as many" para contáveis (guests, people, books). "Twice as much" para incontáveis (money, time, water).
 
-5. **fill_gap** — "He runs _____ as fast as me."
-   **Hint**: 2x
-   **Answer**: twice
-   **Explanation**: "Twice as fast".
+5. **fill_gap** — "He works _____ as hard _____ his colleague."
+   **Hint**: 2x intensificador + estrutura as...as
+   **Answer**: twice / as
+   **Explanation**: "Twice as hard as" — esforço duplicado. "Twice" sempre antes do "as".
 
-6. **fill_gap** — "This costs _____ as much."
-   **Hint**: 3x or more
-   **Answer**: three times (or four times)
-   **Explanation**: "Three times as much".
+6. **fill_gap** — "This apartment is _____ times as expensive _____ the other."
+   **Hint**: 3x ou mais
+   **Answer**: three / as (ou four/five)
+   **Explanation**: Multiplicadores de 3+ usam "X times as + adj + as".
 
-7. **fill_gap** — "She works _____ as hard."
-   **Hint**: 2x
-   **Answer**: twice
-   **Explanation**: "Twice as hard".
+7. **fill_gap** — "She spent _____ as much time on this project _____ I did."
+   **Hint**: 2x (time = uncountable)
+   **Answer**: twice / as
+   **Explanation**: "Twice as much time as" — tempo é incontável, então "much".
 
 8. **fix_error** — "He's two times faster as me."
-   **Hint**: Use twice + as...as
+   **Hint**: Use twice + as + adj + as
    **Answer**: He's twice as fast as me.
-   **Explanation**: "Twice as fast as", not "two times faster as".
+   **Explanation**: "Two times faster as" combina dois erros: deveria ser "twice" (não "two times" em comparações) e "as...as" (não "faster as").
 
 9. **fix_error** — "It costs three times more as that."
-   **Hint**: Use as for comparison
+   **Hint**: Estrutura é "X times as + adj + as", não "X times more as"
    **Answer**: It costs three times as much as that.
-   **Explanation**: "Three times as much as", not "more as".
+   **Explanation**: "Three times more" + "as" não combinam. A estrutura correta é "three times as + much/many + as".
 
 10. **read_answer**
-    **Passage**: "She works twice as hard as me. This trip costs three times as much. We have twice as many guests."
-    **Question**: How many guests do we have?
-    **Answer**: twice as many
-    **Explanation**: The text says "twice as many guests".
+    **Passage**: "She works twice as hard as I do — putting in extra hours daily. Her salary is also twice as much. This year, we have three times as many clients as last year — business is booming."
+    **Question**: How many more clients does the company have this year?
+    **Answer**: three times as many (or "three times more")
+    **Explanation**: The text says "we have three times as many clients as last year".
 
 ### 2. Listening/Speaking (5 phrases)
 
-1. **"He's twice as fast as me."**
-2. **"It costs three times as much."**
-3. **"She earns twice as much."**
-4. **"We have twice as many guests."**
-5. **"She works twice as hard."**
+1. **"He's twice as fast as I am."** — speed multiplier
+2. **"This trip costs three times as much."** — price multiplier
+3. **"She earns twice as much as I do."** — salary
+4. **"We have twice as many guests this year."** — countable plural
+5. **"She works twice as hard."** — effort multiplier
 
 ### 3. Role-play
 
-**Cenário**: Charlotte asks for multiplied comparisons.
+**Cenário**: Charlotte conversa sobre coisas na sua vida que aumentaram ou diminuíram drasticamente — dinheiro, tempo, trabalho — e quer que você use multiplicadores para enfatizar a magnitude.
 **Tipo**: Live Voice
 **Voiced by**: `charlotte`
 **Persona**: Charlotte
 **Persona outfit**: `charlotte_casual`
 **Time budget**: 180s
-**Opening line**: "Compare with 'twice as' or 'three times as'."
+**Opening line**: "Tell me three things that doubled or tripled in your life — use 'twice as' or 'three times as'."
 
-**Sub-objectives** (3):
+**Sub-objectives** (M03+ gradiente: 3 objetivos):
 
 1. **id**: 1
-   **label_pt**: "Twice as"
-   **label_en**: "Twice as"
-   **hidden_prompt**: "user uses 'X is twice as + adj + as Y'"
-   **hint_pt**: "My new phone is twice as fast as my old one."
-   **hint_en**: "My new phone is twice as fast as my old one."
+   **label_pt**: "Algo que dobrou (twice as much/many/adj)"
+   **label_en**: "Something that doubled"
+   **hidden_prompt**: "user uses 'twice as + much/many/adj + as'"
+   **hint_pt**: "I drink twice as much coffee as last year."
+   **hint_en**: "I drink twice as much coffee as last year."
 
 2. **id**: 2
-   **label_pt**: "Three times as"
-   **label_en**: "Three times as"
-   **hidden_prompt**: "user uses 'three times as + adj + as'"
-   **hint_pt**: "This is three times as expensive."
-   **hint_en**: "This is three times as expensive."
+   **label_pt**: "Algo que triplicou ou mais (three/four times)"
+   **label_en**: "Something that tripled+"
+   **hidden_prompt**: "user uses 'three times as + adj/much/many + as'"
+   **hint_pt**: "My commute is three times as long as before."
+   **hint_en**: "My commute is three times as long as before."
 
 3. **id**: 3
-   **label_pt**: "Twice as much/many"
-   **label_en**: "Twice as much/many"
-   **hidden_prompt**: "user uses 'twice as much/many'"
-   **hint_pt**: "She has twice as many books."
-   **hint_en**: "She has twice as many books."
+   **label_pt**: "Comparação multiplicada com outra pessoa"
+   **label_en**: "Multiplied comparison with another person"
+   **hidden_prompt**: "user uses 'X is twice/three times as + adj + as Y' comparing people"
+   **hint_pt**: "My brother is twice as patient as I am."
+   **hint_en**: "My brother is twice as patient as I am."
 
-**Closing cue**: Charlotte closes with "Multiplied!" when obj_3 hits.
+**Closing cue**: Charlotte fecha com "Big changes!" quando obj_3 baterem.
 
-**Suggested flow** (6 turns):
+**Suggested flow** (referencial, 6 turnos):
 
-1. **Charlotte**: "Compare with 'twice as' or 'three times as'."
-2. **Student**: ~"My new phone is twice as fast as my old one."
-3. **Charlotte**: "Cost?"
-4. **Student**: ~"This is three times as expensive."
-5. **Charlotte**: "Books?"
-6. **Student**: ~"She has twice as many books."
-7. **Charlotte**: "Multiplied!"
+1. **Charlotte**: "Tell me three things that doubled or tripled in your life — use 'twice as' or 'three times as'."
+2. **Student**: ~"I drink twice as much coffee as last year."
+3. **Charlotte**: "Caffeine era! What tripled?"
+4. **Student**: ~"My commute is three times as long as before."
+5. **Charlotte**: "Ugh. People comparison?"
+6. **Student**: ~"My brother is twice as patient as I am."
+7. **Charlotte**: "Big changes!"
 
-**Evaluation focus**: twice/three times + as...as.
+**Evaluation focus**:
+- "Twice" (not "two times") for 2x
+- "X times as much/many" — much for uncountable, many for countable
+- Both "as" present
 
 ### 4. Guided Chat
 
-**Cenário**: Charlotte chats with multipliers.
+**Cenário**: Charlotte abre um chat sobre como a vida muda em escala — preços que subiram, tempo livre que diminuiu, novas oportunidades multiplicadas — e quer trocar números com você.
 **Voiced by**: `charlotte`
 **Persona**: Charlotte
 **Persona outfit**: `charlotte_casual`
-**Intro (em EN)**: "Charlotte asks comparisons with multipliers."
-**Opening message**: "What's twice as much as before in your life?"
+**Intro (em EN)**: "Charlotte chats about scaled changes in life. Use multipliers like 'twice as' and 'three times as'."
+**Opening message**: "What costs twice as much now as it did five years ago?"
 
-**Sub-objectives** (3):
+**Sub-objectives** (M03+ gradiente: 3 objetivos):
 
 1. **id**: 1
-   **label_pt**: "Twice as much"
-   **label_en**: "Twice as much"
-   **hidden_prompt**: "user uses 'twice as much/many'"
-   **hint_pt**: "I drink twice as much coffee."
-   **hint_en**: "I drink twice as much coffee."
+   **label_pt**: "Algo que custa o dobro ou triplo"
+   **label_en**: "Something costing 2x or 3x"
+   **hidden_prompt**: "user uses 'X costs twice/three times as much as + reference'"
+   **hint_pt**: "Coffee costs twice as much as before."
+   **hint_en**: "Coffee costs twice as much as before."
 
 2. **id**: 2
-   **label_pt**: "Outra multiplicação"
-   **label_en**: "Another multiplier"
-   **hidden_prompt**: "user uses 'three times as'"
-   **hint_pt**: "I work three times as hard."
-   **hint_en**: "I work three times as hard."
+   **label_pt**: "Outra mudança em escala (tempo, trabalho)"
+   **label_en**: "Another scaled change (time, work)"
+   **hidden_prompt**: "user uses 'twice/three times as + adj/much + as'"
+   **hint_pt**: "I work twice as much as I used to."
+   **hint_en**: "I work twice as much as I used to."
 
 3. **id**: 3
-   **label_pt**: "Perguntar à Charlotte"
-   **label_en**: "Ask Charlotte"
-   **hidden_prompt**: "user asks Charlotte"
+   **label_pt**: "Perguntar à Charlotte uma mudança dela"
+   **label_en**: "Ask Charlotte a scaled change of hers"
+   **hidden_prompt**: "user asks Charlotte 'what's twice/three times as... for you?'"
    **hint_pt**: "How about you?"
    **hint_en**: "How about you?"
 
-**Closing cue**: Charlotte closes with "Big differences!" when obj_3 hits.
+**Closing cue**: Charlotte fecha com "Scaled life updates!" quando obj_3 baterem.
 
-**Script** (7 turns):
+**Script** (referencial, 7 turnos):
 
-1. **Charlotte**: "What's twice as much as before in your life?"
-2. **Student**: "I drink twice as much coffee."
-3. **Charlotte**: "Caffeine era."
-4. **Student**: "I work three times as hard."
-5. **Charlotte**: "Tough."
+1. **Charlotte**: "What costs twice as much now as it did five years ago?"
+2. **Student**: "Coffee costs twice as much as before."
+3. **Charlotte**: "Yes — inflation hit hard. Time changes?"
+4. **Student**: "I work twice as much as I used to."
+5. **Charlotte**: "Tough rhythm. Let me check what's tripled here..."
 6. **Student**: "How about you?"
-7. **Charlotte**: "Twice as many books to read! Big differences!"
+7. **Charlotte**: "My grocery bill is three times as high as five years ago. Scaled life updates!"
 
-> I03 chat = LLM puro.
+> I03 chat = LLM puro. Scaffold via hint_pt.
 
 ---
 
 ## Unit I04 — The more, the better
 
-> **Sub-CEFR**: B1 | **Grammar focus**: the more X, the more Y (parallel increase)
-> **Markers**: —
-> **Real-life context**: You express parallel changes.
+> **Sub-CEFR**: B1 | **Grammar focus**: Parallel comparatives — "the more X, the more Y"
+> **Markers**: [denso]
+> **Real-life context**: You express how two things increase or decrease together — cause-effect with intensity.
 
 ### 1. Grammar (10 exercises)
 
 1. **multiple_choice** — "_____ more I study, _____ better I understand."
    **Options**: The / the / A / a / More / better
    **Answer**: The / the
-   **Explanation**: "The more X, the better Y" — parallel.
+   **Explanation**: A estrutura paralela "the more X, the more Y" exige "the" antes dos dois comparativos. Indica progressão simultânea: quanto mais X, mais Y.
 
-2. **multiple_choice** — "The harder you work, _____ you earn."
-   **Options**: the more / the better / so much
+2. **multiple_choice** — "The harder you work, _____ you achieve."
+   **Options**: the more / the better / so much / more
    **Answer**: the more
-   **Explanation**: "The more X, the more Y".
+   **Explanation**: Segunda parte da estrutura paralela. "The more" pode aparecer com qualquer substantivo (the more money, the more friends).
 
-3. **word_bank** — "The longer you wait, _____ it gets."
-   **Choices**: the worse / worse / less / more worst
-   **Answer**: the worse
-   **Explanation**: "The worse" — comparative + "the".
+3. **word_bank** — "The colder it gets, _____."
+   **Choices**: the more I want hot chocolate / more I want / the most I want / the more want I
+   **Answer**: the more I want hot chocolate
+   **Explanation**: A segunda cláusula segue ordem normal: "the more + sujeito + verbo + complemento". Não inverter.
 
-4. **word_bank** — "The older I get, _____ I appreciate family."
-   **Choices**: the more / more / the most / the bigger
+4. **word_bank** — "The older I get, _____ family means to me."
+   **Choices**: the more / more / the most / much more
    **Answer**: the more
-   **Explanation**: "The more I appreciate".
+   **Explanation**: "The more" funciona como advérbio modificando o verbo "means". Quantos mais anos, mais importância.
 
-5. **fill_gap** — "_____ more you practice, _____ better you become."
-   **Hint**: "the" twice
+5. **fill_gap** — "_____ harder you practice, _____ better you become."
+   **Hint**: estrutura paralela the + comparativo, the + comparativo
    **Answer**: The / the
-   **Explanation**: "The more, the better" pattern.
+   **Explanation**: "The harder, the better" — comparativos curtos com -er também seguem o padrão paralelo. Pratica mais difícil = fica mais bom.
 
 6. **fill_gap** — "The sooner you start, _____ sooner you finish."
-   **Hint**: the
+   **Hint**: completar o paralelo
    **Answer**: the
-   **Explanation**: "The sooner, the sooner".
+   **Explanation**: "The sooner...the sooner" — repetição do mesmo comparativo é comum em conselhos.
 
-7. **fill_gap** — "The colder it gets, _____ I want hot chocolate."
-   **Hint**: the more
-   **Answer**: the more
-   **Explanation**: "The more I want".
+7. **fill_gap** — "The less I worry, _____ happier I feel."
+   **Hint**: oposto: menos + mais
+   **Answer**: the
+   **Explanation**: "The less" também funciona — pode misturar "less" de um lado e "more/happier" do outro. Estrutura paralela flexível.
 
 8. **fix_error** — "More you study, more you learn."
-   **Hint**: Add "the" twice
+   **Hint**: estrutura paralela precisa de "the" duas vezes
    **Answer**: The more you study, the more you learn.
-   **Explanation**: "The more X, the more Y" — "the" required.
+   **Explanation**: Sem "the", a frase fica gramaticalmente incompleta — é o erro mais comum em paralelos comparativos.
 
-9. **fix_error** — "The more harder, the more better."
-   **Hint**: comparative form direct
-   **Answer**: The harder, the better.
-   **Explanation**: "The + comparative" not "the more harder".
+9. **fix_error** — "The more harder I try, the more better the result."
+   **Hint**: comparativo diretamente, sem "more" antes
+   **Answer**: The harder I try, the better the result.
+   **Explanation**: "Harder" e "better" já são comparativos. "More harder" e "more better" são redundantes — basta o comparativo direto.
 
 10. **read_answer**
-    **Passage**: "The more I learn English, the better I feel. The harder I work, the more I achieve."
-    **Question**: What happens when the speaker works harder?
-    **Answer**: more achievement (or "achieve more")
-    **Explanation**: The text says "the more I achieve".
+    **Passage**: "The more I learn English, the more confident I feel. The harder I practice speaking, the more naturally it comes. The older I get, the more I appreciate good conversations."
+    **Question**: What happens when the speaker practices speaking harder?
+    **Answer**: it comes more naturally (or "the more naturally it comes")
+    **Explanation**: The text says "the harder I practice speaking, the more naturally it comes".
 
 ### 2. Listening/Speaking (5 phrases)
 
-1. **"The more I study, the better I understand."**
-2. **"The harder you work, the more you earn."**
-3. **"The longer you wait, the worse it gets."**
-4. **"The older I get, the more I appreciate family."**
-5. **"The sooner, the better."**
+1. **"The more I study, the better I understand."** — learning correlation
+2. **"The harder you work, the more you achieve."** — effort/result
+3. **"The older I get, the more I appreciate family."** — age/appreciation
+4. **"The colder it gets, the more I want hot chocolate."** — weather/craving
+5. **"The sooner, the better."** — common chunk
 
 ### 3. Role-play
 
-**Cenário**: Charlotte asks parallel comparisons.
+**Cenário**: Charlotte pede reflexões filosóficas sobre como certas coisas crescem juntas na sua vida — quanto mais você faz X, mais Y acontece. Quer três observações suas.
 **Tipo**: Live Voice
 **Voiced by**: `charlotte`
 **Persona**: Charlotte
 **Persona outfit**: `charlotte_casual`
 **Time budget**: 180s
-**Opening line**: "Give me three 'the more, the more' sentences."
+**Opening line**: "Share three 'the more X, the more Y' observations from your life."
 
-**Sub-objectives** (3):
+**Sub-objectives** (M03+ gradiente: 3 objetivos):
 
 1. **id**: 1
-   **label_pt**: "The more X, the more Y"
-   **label_en**: "The more X, the more Y"
-   **hidden_prompt**: "user uses 'The more + clause, the more + clause'"
+   **label_pt**: "Observação sobre estudo, trabalho ou crescimento"
+   **label_en**: "Observation about study, work, or growth"
+   **hidden_prompt**: "user uses 'The more I + verb, the more/better I + verb'"
    **hint_pt**: "The more I read, the more I learn."
    **hint_en**: "The more I read, the more I learn."
 
 2. **id**: 2
-   **label_pt**: "Outra"
-   **label_en**: "Another"
-   **hidden_prompt**: "user uses another parallel"
-   **hint_pt**: "The harder I work, the more I grow."
-   **hint_en**: "The harder I work, the more I grow."
+   **label_pt**: "Observação sobre relacionamentos ou tempo"
+   **label_en**: "Observation about relationships or time"
+   **hidden_prompt**: "user uses 'The more X, the more Y' about people or time"
+   **hint_pt**: "The more I see her, the more I appreciate her."
+   **hint_en**: "The more I see her, the more I appreciate her."
 
 3. **id**: 3
-   **label_pt**: "Mais uma"
-   **label_en**: "One more"
-   **hidden_prompt**: "user uses one more 'the X, the Y'"
-   **hint_pt**: "The older I get, the wiser I become."
-   **hint_en**: "The older I get, the wiser I become."
+   **label_pt**: "Observação sobre dinheiro, esforço ou saúde"
+   **label_en**: "Observation about money, effort, or health"
+   **hidden_prompt**: "user uses 'The harder/more X, the more Y'"
+   **hint_pt**: "The harder I exercise, the better I sleep."
+   **hint_en**: "The harder I exercise, the better I sleep."
 
-**Closing cue**: Charlotte closes with "Parallel growth!" when obj_3 hits.
+**Closing cue**: Charlotte fecha com "Insightful parallels!" quando obj_3 baterem.
 
-**Suggested flow** (6 turns):
+**Suggested flow** (referencial, 6 turnos):
 
-1. **Charlotte**: "Give me three 'the more, the more' sentences."
+1. **Charlotte**: "Share three 'the more X, the more Y' observations from your life."
 2. **Student**: ~"The more I read, the more I learn."
-3. **Charlotte**: "Hard work?"
-4. **Student**: ~"The harder I work, the more I grow."
-5. **Charlotte**: "Age?"
-6. **Student**: ~"The older I get, the wiser I become."
-7. **Charlotte**: "Parallel growth!"
+3. **Charlotte**: "Classic. Now people or time?"
+4. **Student**: ~"The more I see her, the more I appreciate her."
+5. **Charlotte**: "Sweet. One about health or effort?"
+6. **Student**: ~"The harder I exercise, the better I sleep."
+7. **Charlotte**: "Insightful parallels!"
 
-**Evaluation focus**: the + comparative, the + comparative.
+**Evaluation focus**:
+- "The" appears before BOTH comparatives
+- Direct comparatives (no "more harder")
+- Natural cause-effect
 
 ### 4. Guided Chat
 
-**Cenário**: Charlotte chats philosophically.
+**Cenário**: Charlotte abre conversa sobre verdades de vida que ela descobriu — quanto mais ela observa, mais entende — e quer trocar reflexões parecidas com você.
 **Voiced by**: `charlotte`
 **Persona**: Charlotte
 **Persona outfit**: `charlotte_casual`
-**Intro (em EN)**: "Charlotte asks for parallel reflections."
-**Opening message**: "What's true: the more X, the more Y?"
+**Intro (em EN)**: "Charlotte invites philosophical 'the more X, the more Y' reflections. Practice parallel comparatives."
+**Opening message**: "I've noticed: the more I listen, the more I learn. What's your version?"
 
-**Sub-objectives** (3):
+**Sub-objectives** (M03+ gradiente: 3 objetivos):
 
 1. **id**: 1
-   **label_pt**: "Reflexão paralela"
-   **label_en**: "Parallel reflection"
-   **hidden_prompt**: "user uses 'the more + clause, the more + clause'"
-   **hint_pt**: "The more I travel, the more I learn."
-   **hint_en**: "The more I travel, the more I learn."
+   **label_pt**: "Reflexão pessoal com 'the more...the more'"
+   **label_en**: "Personal reflection with 'the more...the more'"
+   **hidden_prompt**: "user uses 'The more + clause, the more + clause' for personal insight"
+   **hint_pt**: "The more I travel, the more curious I become."
+   **hint_en**: "The more I travel, the more curious I become."
 
 2. **id**: 2
-   **label_pt**: "Outra"
-   **label_en**: "Another"
-   **hidden_prompt**: "user uses another parallel"
+   **label_pt**: "Outra reflexão (pode usar less ou comparativo curto)"
+   **label_en**: "Another reflection (can use less or short comparative)"
+   **hidden_prompt**: "user uses 'The less/harder/older + clause, the more/better/happier + clause'"
    **hint_pt**: "The less I worry, the happier I feel."
    **hint_en**: "The less I worry, the happier I feel."
 
 3. **id**: 3
-   **label_pt**: "Perguntar à Charlotte"
-   **label_en**: "Ask Charlotte"
-   **hidden_prompt**: "user asks Charlotte"
+   **label_pt**: "Perguntar à Charlotte sobre uma verdade dela"
+   **label_en**: "Ask Charlotte about her parallel"
+   **hidden_prompt**: "user asks 'How about you?' or 'What's your parallel?'"
    **hint_pt**: "How about you?"
    **hint_en**: "How about you?"
 
-**Closing cue**: Charlotte closes with "Deep truths!" when obj_3 hits.
+**Closing cue**: Charlotte fecha com "Wisdom traded!" quando obj_3 baterem.
 
-**Script** (7 turns):
+**Script** (referencial, 7 turnos):
 
-1. **Charlotte**: "What's true: the more X, the more Y?"
-2. **Student**: "The more I travel, the more I learn."
-3. **Charlotte**: "Beautiful."
+1. **Charlotte**: "I've noticed: the more I listen, the more I learn. What's your version?"
+2. **Student**: "The more I travel, the more curious I become."
+3. **Charlotte**: "Yes! Travel expands the questions, not just answers. Any 'less' parallels?"
 4. **Student**: "The less I worry, the happier I feel."
-5. **Charlotte**: "Wisdom."
+5. **Charlotte**: "Truth. Easier said than done though."
 6. **Student**: "How about you?"
-7. **Charlotte**: "The more I teach, the more I learn. Deep truths!"
+7. **Charlotte**: "The more I teach, the more I realize I'm still learning. Wisdom traded!"
 
-> I04 chat = LLM puro.
+> I04 chat = LLM puro. Scaffold via hint_pt.
 
 ---
 
 ## Unit I05 — All comparisons combined
 
-> **Sub-CEFR**: B1 | **Grammar focus**: Integration of as...as variations
+> **Sub-CEFR**: B1 | **Grammar focus**: Integration — equality, inequality, multipliers, parallels
 > **Markers**: —
-> **Real-life context**: You combine all comparison forms.
+> **Real-life context**: You combine all comparison forms in one description, choosing the right structure for each idea.
 
 ### 1. Grammar (10 exercises)
 
-1. **multiple_choice** — "He's _____ tall as his brother."
-   **Options**: as / not as / both
-   **Answer**: as (or not as)
-   **Explanation**: Either works depending on context.
+1. **multiple_choice** — "He's _____ tall _____ his brother — both are 1m80."
+   **Options**: as / as / so / as / more / than
+   **Answer**: as / as
+   **Explanation**: Para igualdade exata, "as + adj + as". O contexto "both are 1m80" confirma igualdade.
 
-2. **multiple_choice** — "She's _____ as smart as her sister."
-   **Options**: not / no / never
+2. **multiple_choice** — "Today _____ as cold _____ yesterday."
+   **Options**: isn't / as / not / as / no / as
+   **Answer**: isn't / as
+   **Explanation**: "Isn't as cold as" — desigualdade negativa. To be na negativa + estrutura as...as.
+
+3. **word_bank** — "She earns _____ I do."
+   **Choices**: twice as much as / two times more than / twice more than / twice as much than
+   **Answer**: twice as much as
+   **Explanation**: Multiplicador "twice" + "as much as" (uncountable money). Outras formas estão erradas.
+
+4. **word_bank** — "_____ more I practice, _____ better I get."
+   **Choices**: The / the / A / a / More / more / The most / the best
+   **Answer**: The / the
+   **Explanation**: Estrutura paralela: "The more...the better" — sempre "the" antes dos comparativos.
+
+5. **fill_gap** — "It's _____ as easy as it looks."
+   **Hint**: negativo para suavizar
    **Answer**: not
-   **Explanation**: "Not as smart as" for less than.
+   **Explanation**: "Not as easy as it looks" — frase comum para indicar dificuldade real.
 
-3. **word_bank** — "He earns _____ as much as me."
-   **Choices**: twice / two times / second / much
-   **Answer**: twice
-   **Explanation**: "Twice as much".
+6. **fill_gap** — "This trip cost _____ as much _____ the last one."
+   **Hint**: 3x mais
+   **Answer**: three times / as
+   **Explanation**: "Three times as much as" — multiplicador + "as much as".
 
-4. **word_bank** — "_____ more I learn, _____ more I want to know."
-   **Choices**: The / the / A / a / More / less
+7. **fill_gap** — "_____ harder you try, _____ more you accomplish."
+   **Hint**: paralelo: o + comparativo, o + comparativo
    **Answer**: The / the
-   **Explanation**: Parallel structure.
-
-5. **fill_gap** — "Today isn't _____ hot as yesterday."
-   **Hint**: as
-   **Answer**: as
-   **Explanation**: "Not as hot as".
-
-6. **fill_gap** — "It costs _____ as much as I thought."
-   **Hint**: twice
-   **Answer**: twice
-   **Explanation**: "Twice as much".
-
-7. **fill_gap** — "_____ harder you try, _____ better the result."
-   **Hint**: the / the
-   **Answer**: The / the
-   **Explanation**: Parallel: "The harder, the better".
+   **Explanation**: "The harder, the more" — estrutura paralela com comparativo curto.
 
 8. **fix_error** — "He's so tall as me."
-   **Hint**: as...as
+   **Hint**: inglês moderno usa as...as em afirmativas
    **Answer**: He's as tall as me.
-   **Explanation**: "As...as", not "so...as".
+   **Explanation**: "So...as" é arcaico em afirmativas — use sempre "as...as".
 
-9. **fix_error** — "More you study, more you learn."
-   **Hint**: Add "the"
-   **Answer**: The more you study, the more you learn.
-   **Explanation**: "The more, the more".
+9. **fix_error** — "She earns two times more as I do."
+   **Hint**: estrutura multiplicador correta
+   **Answer**: She earns twice as much as I do.
+   **Explanation**: "Twice as much as" — "two times more as" combina dois erros (use "twice" e "as much as").
 
 10. **read_answer**
-    **Passage**: "He's as tall as me but not as strong. She's twice as fast. The more I practice, the better I get."
-    **Question**: What happens when the speaker practices more?
-    **Answer**: get better (or "the better I get")
-    **Explanation**: The text says "the better I get".
+    **Passage**: "My new apartment is as big as the old one, but it's not as quiet. The rent is twice as expensive, but the location is amazing. The more I live here, the more I appreciate the convenience."
+    **Question**: How much more does the rent cost?
+    **Answer**: twice as much (or "twice as expensive")
+    **Explanation**: The text says "The rent is twice as expensive" — meaning the rent is doubled.
 
 ### 2. Listening/Speaking (5 phrases)
 
-1. **"He's as tall as me."** — equality
-2. **"She isn't as strong as him."** — inequality
-3. **"He's twice as fast."** — multiplier
-4. **"The more I learn, the more I want to know."** — parallel
-5. **"It's not as easy as it looks."** — common chunk
+1. **"He's as tall as me, but not as strong."** — equality + inequality
+2. **"She earns twice as much as I do."** — multiplier
+3. **"The more I learn, the more I want to know."** — parallel
+4. **"It's not as easy as it looks."** — common chunk
+5. **"Today is as hot as yesterday."** — basic equality
 
 ### 3. Role-play
 
-**Cenário**: Charlotte asks 3 different comparison types.
+**Cenário**: Charlotte pede uma descrição comparativa rica da sua vida atual versus passada — você tem que usar pelo menos três tipos diferentes de comparação na mesma fala.
 **Tipo**: Live Voice
 **Voiced by**: `charlotte`
 **Persona**: Charlotte
 **Persona outfit**: `charlotte_casual`
 **Time budget**: 180s
-**Opening line**: "Use as...as, not as...as, and 'the more, the more'."
+**Opening line**: "Compare your life now to five years ago — use as...as, not as...as, twice/three times, and 'the more X, the more Y'."
 
-**Sub-objectives** (3):
+**Sub-objectives** (M03+ gradiente: 3 objetivos):
 
 1. **id**: 1
-   **label_pt**: "as...as"
-   **label_en**: "as...as"
-   **hidden_prompt**: "user uses as + adj + as"
-   **hint_pt**: "I'm as busy as my colleague."
-   **hint_en**: "I'm as busy as my colleague."
+   **label_pt**: "Comparação de igualdade ou desigualdade"
+   **label_en**: "Equality or inequality"
+   **hidden_prompt**: "user uses 'as + adj + as' or 'not as + adj + as'"
+   **hint_pt**: "I'm as busy as I was, but not as stressed."
+   **hint_en**: "I'm as busy as I was, but not as stressed."
 
 2. **id**: 2
-   **label_pt**: "not as...as"
-   **label_en**: "not as...as"
-   **hidden_prompt**: "user uses 'not as + adj + as'"
-   **hint_pt**: "Today isn't as cold as yesterday."
-   **hint_en**: "Today isn't as cold as yesterday."
+   **label_pt**: "Comparação com multiplicador"
+   **label_en**: "Comparison with multiplier"
+   **hidden_prompt**: "user uses 'twice/three times as + adj/much/many + as'"
+   **hint_pt**: "I have twice as many responsibilities now."
+   **hint_en**: "I have twice as many responsibilities now."
 
 3. **id**: 3
-   **label_pt**: "The more, the more"
-   **label_en**: "The more, the more"
-   **hidden_prompt**: "user uses 'the more X, the more Y'"
-   **hint_pt**: "The more I work out, the better I feel."
-   **hint_en**: "The more I work out, the better I feel."
+   **label_pt**: "Reflexão paralela com 'the more X, the more Y'"
+   **label_en**: "Parallel reflection"
+   **hidden_prompt**: "user uses 'The more X, the more Y'"
+   **hint_pt**: "The more I grow, the more grateful I become."
+   **hint_en**: "The more I grow, the more grateful I become."
 
-**Closing cue**: Charlotte closes with "Comparison master!" when obj_3 hits.
+**Closing cue**: Charlotte fecha com "Full comparison toolkit!" quando obj_3 baterem.
 
-**Suggested flow** (6 turns):
+**Suggested flow** (referencial, 6 turnos):
 
-1. **Charlotte**: "Use as...as, not as...as, and 'the more, the more'."
-2. **Student**: ~"I'm as busy as my colleague."
-3. **Charlotte**: "Negative?"
-4. **Student**: ~"Today isn't as cold as yesterday."
-5. **Charlotte**: "Parallel?"
-6. **Student**: ~"The more I work out, the better I feel."
-7. **Charlotte**: "Comparison master!"
+1. **Charlotte**: "Compare your life now to five years ago — use as...as, not as...as, twice/three times, and 'the more X, the more Y'."
+2. **Student**: ~"I'm as busy as I was, but not as stressed."
+3. **Charlotte**: "Good evolution. Multiplier?"
+4. **Student**: ~"I have twice as many responsibilities now."
+5. **Charlotte**: "Whoa. And a parallel?"
+6. **Student**: ~"The more I grow, the more grateful I become."
+7. **Charlotte**: "Full comparison toolkit!"
 
-**Evaluation focus**: Variety of structures.
+**Evaluation focus**:
+- Variety of structures (3 different types)
+- Each used correctly
+- Natural integration in self-description
 
 ### 4. Guided Chat
 
-**Cenário**: Charlotte chats with comparison variety.
+**Cenário**: Charlotte abre um chat reflexivo onde quer comparar a vida moderna com a vida antiga — tecnologia, ritmo, conexões — usando todos os tipos de comparação que vocês aprenderam.
 **Voiced by**: `charlotte`
 **Persona**: Charlotte
 **Persona outfit**: `charlotte_casual`
-**Intro (em EN)**: "Charlotte invites comparison variety."
-**Opening message**: "Pick a type — compare freely."
+**Intro (em EN)**: "Charlotte chats about how modern life compares to the past. Use all four comparison structures."
+**Opening message**: "Modern life isn't as simple as before, but it's not all bad. What do you think?"
 
-**Sub-objectives** (3):
+**Sub-objectives** (M03+ gradiente: 3 objetivos):
 
 1. **id**: 1
-   **label_pt**: "Primeira comparação"
-   **label_en**: "First comparison"
-   **hidden_prompt**: "user uses any comparison structure"
-   **hint_pt**: "Books are as enjoyable as movies."
-   **hint_en**: "Books are as enjoyable as movies."
+   **label_pt**: "Comparação simples (as...as ou not as...as)"
+   **label_en**: "Simple comparison"
+   **hidden_prompt**: "user uses 'as + adj + as' or 'not as + adj + as'"
+   **hint_pt**: "Modern life isn't as peaceful as before."
+   **hint_en**: "Modern life isn't as peaceful as before."
 
 2. **id**: 2
-   **label_pt**: "Segunda diferente"
-   **label_en**: "Second different"
-   **hidden_prompt**: "user uses different comparison"
-   **hint_pt**: "Mornings aren't as productive as nights."
-   **hint_en**: "Mornings aren't as productive as nights."
+   **label_pt**: "Comparação com multiplicador ou paralelo"
+   **label_en**: "Multiplier or parallel"
+   **hidden_prompt**: "user uses 'twice/three times as' or 'the more X, the more Y'"
+   **hint_pt**: "We're twice as connected but not always closer."
+   **hint_en**: "We're twice as connected but not always closer."
 
 3. **id**: 3
-   **label_pt**: "Terceira"
-   **label_en**: "Third"
-   **hidden_prompt**: "user uses one more comparison"
-   **hint_pt**: "The more I sleep, the better I feel."
-   **hint_en**: "The more I sleep, the better I feel."
+   **label_pt**: "Perguntar à Charlotte uma comparação dela"
+   **label_en**: "Ask Charlotte for her comparison"
+   **hidden_prompt**: "user asks 'How about you?' or 'What do you think?'"
+   **hint_pt**: "How about you?"
+   **hint_en**: "How about you?"
 
-**Closing cue**: Charlotte closes with "Comparison feast!" when obj_3 hits.
+**Closing cue**: Charlotte fecha com "Modern vs past explored!" quando obj_3 baterem.
 
-**Script** (7 turns):
+**Script** (referencial, 7 turnos):
 
-1. **Charlotte**: "Pick a type — compare freely."
-2. **Student**: "Books are as enjoyable as movies."
-3. **Charlotte**: "Agree."
-4. **Student**: "Mornings aren't as productive as nights."
-5. **Charlotte**: "True for me too."
-6. **Student**: "The more I sleep, the better I feel."
-7. **Charlotte**: "Same. Comparison feast!"
+1. **Charlotte**: "Modern life isn't as simple as before, but it's not all bad. What do you think?"
+2. **Student**: "Modern life isn't as peaceful as before."
+3. **Charlotte**: "True — constant input. Any multipliers?"
+4. **Student**: "We're twice as connected but not always closer."
+5. **Charlotte**: "Sharp observation."
+6. **Student**: "How about you?"
+7. **Charlotte**: "The more options we have, the harder it is to choose. Modern vs past explored!"
 
-> I05 chat = LLM puro.
+> I05 chat = LLM puro. Scaffold via hint_pt.
 
 ---
 
 ## Cross-unit consolidation
 
-After M09:
-- as + adj + as (equality)
-- not as + adj + as (inequality)
-- twice/three times as + adj + as
-- The more X, the more Y (parallel)
+Ao terminar M09, o aluno deve usar naturalmente:
+- as + adjective + as (igualdade)
+- not as + adjective + as (desigualdade, menos que)
+- twice / three times as + adj/much/many + as (multiplicadores)
+- The more X, the more Y (progressão paralela)
+- Diferença entre "much" (uncountable) e "many" (countable) com multiplicadores
+- Posição correta de "the" em paralelos
 
-Next: M10 zero conditional.
+Esses chunks fecham o ciclo de comparações refinadas. M10 abre o universo das conditionals com zero conditional para verdades gerais.

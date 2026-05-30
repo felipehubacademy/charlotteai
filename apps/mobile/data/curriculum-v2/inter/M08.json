@@ -1,0 +1,1008 @@
+{
+  "id": "M08",
+  "title": "Quem, qual, que",
+  "level": "Inter",
+  "block": "B1",
+  "units_range": "I01–I05",
+  "theme": "Relative clauses defining (who, which, that, where, whose)",
+  "goal": "Student describes people, things, and places using defining relative clauses.",
+  "connects_to": "M09 (as...as comparisons).",
+  "module_chunks": [
+    "who / which / that / where / whose",
+    "The person who...",
+    "The book which/that...",
+    "The place where...",
+    "The woman whose..."
+  ],
+  "units": [
+    {
+      "id": "I01",
+      "title": "The person who",
+      "sub_cefr": "B1",
+      "grammar_focus": "who for people in defining clauses",
+      "markers": [
+        "denso"
+      ],
+      "real_life_context": "You describe people by what they do.",
+      "grammar": [
+        {
+          "type": "multiple_choice",
+          "sentence": "She's the woman _____ lives next door.",
+          "options": [
+            "who",
+            "which",
+            "where"
+          ],
+          "answer": "who",
+          "explanation": "\"Who\" for people in defining relative clauses."
+        },
+        {
+          "type": "multiple_choice",
+          "sentence": "He's the man _____ called yesterday.",
+          "options": [
+            "who",
+            "which",
+            "where"
+          ],
+          "answer": "who",
+          "explanation": "\"Who\" for people, subject."
+        },
+        {
+          "type": "word_bank",
+          "sentence": "The doctor _____ helps me is kind.",
+          "choices": [
+            "who",
+            "which",
+            "where",
+            "whose"
+          ],
+          "answer": "who",
+          "explanation": "People → \"who\"."
+        },
+        {
+          "type": "word_bank",
+          "sentence": "I know a girl _____ speaks five languages.",
+          "choices": [
+            "who",
+            "which",
+            "where",
+            "whose"
+          ],
+          "answer": "who",
+          "explanation": "\"A girl who speaks\" — person."
+        },
+        {
+          "type": "fill_gap",
+          "sentence": "She's the friend _____ I told you about.",
+          "hint": "relative pronoun for person",
+          "answer": "who (or \"that\")",
+          "explanation": "\"Who\" or \"that\" for people."
+        },
+        {
+          "type": "fill_gap",
+          "sentence": "The teacher _____ teaches us is great.",
+          "hint": "person, subject",
+          "answer": "who",
+          "explanation": "\"Who teaches\"."
+        },
+        {
+          "type": "fill_gap",
+          "sentence": "He's the guy _____ won the race.",
+          "hint": "person",
+          "answer": "who",
+          "explanation": "\"Who won\"."
+        },
+        {
+          "type": "fix_error",
+          "sentence": "He's the man which called me.",
+          "hint": "which is for things, not people",
+          "answer": "He's the man who called me.",
+          "explanation": "\"Who\" for people, \"which\" for things."
+        },
+        {
+          "type": "fix_error",
+          "sentence": "She's the girl, who lives here.",
+          "hint": "No comma in defining clause",
+          "answer": "She's the girl who lives here.",
+          "explanation": "Defining clauses have NO commas. Identifies which girl."
+        },
+        {
+          "type": "read_answer",
+          "passage": "She's the woman who works with me. He's the man who called yesterday. They're the people who live next door.",
+          "question": "Who works with the speaker?",
+          "answer": "the woman",
+          "explanation": "The text says \"the woman who works with me\"."
+        }
+      ],
+      "listening_speaking": [
+        {
+          "text": "She's the woman who lives next door.",
+          "context": "defining who"
+        },
+        {
+          "text": "He's the man who called.",
+          "context": "person + action"
+        },
+        {
+          "text": "The doctor who helps me is kind.",
+          "context": "description"
+        },
+        {
+          "text": "I know a girl who speaks five languages.",
+          "context": "describing ability"
+        },
+        {
+          "text": "She's the friend I told you about.",
+          "context": "who omitted (informal)"
+        }
+      ],
+      "roleplay": {
+        "scenario": "Charlotte asks about people in your life.",
+        "voiced_by": "charlotte",
+        "persona": "Charlotte",
+        "persona_outfit": "charlotte_casual",
+        "time_budget_sec": 180,
+        "opening_line": "Describe three people using 'who' clauses.",
+        "objectives": [
+          {
+            "id": 1,
+            "label_pt": "Pessoa com clausula who",
+            "label_en": "Person with who clause",
+            "hidden_prompt": "user uses 'X is the person who + verb'",
+            "hint_pt": "She's the friend who helps me.",
+            "hint_en": "She's the friend who helps me."
+          },
+          {
+            "id": 2,
+            "label_pt": "Outra pessoa",
+            "label_en": "Another person",
+            "hidden_prompt": "user uses another 'who' clause",
+            "hint_pt": "He's the teacher who taught me.",
+            "hint_en": "He's the teacher who taught me."
+          },
+          {
+            "id": 3,
+            "label_pt": "Mais uma pessoa",
+            "label_en": "One more",
+            "hidden_prompt": "user uses one more 'who' clause",
+            "hint_pt": "She's the colleague who sits next to me.",
+            "hint_en": "She's the colleague who sits next to me."
+          }
+        ],
+        "closing_cue": "Charlotte closes with \"People described!\" when obj_3 hits.",
+        "suggested_flow": "**Suggested flow** (6 turns):\n\n1. **Charlotte**: \"Describe three people using 'who' clauses.\"\n2. **Student**: ~\"She's the friend who helps me.\"\n3. **Charlotte**: \"Teacher?\"\n4. **Student**: ~\"He's the teacher who taught me.\"\n5. **Charlotte**: \"Colleague?\"\n6. **Student**: ~\"She's the colleague who sits next to me.\"\n7. **Charlotte**: \"People described!\"",
+        "evaluation_focus": [
+          "Who for people",
+          "No comma in defining",
+          "Verb after who"
+        ]
+      },
+      "guided_chat": {
+        "scenario": "Charlotte chats about people who matter.",
+        "voiced_by": "charlotte",
+        "persona": "Charlotte",
+        "persona_outfit": "charlotte_casual",
+        "intro_en": "Charlotte asks about important people. Practice 'who' clauses.",
+        "opening_message": "Tell me about someone who inspires you.",
+        "objectives": [
+          {
+            "id": 1,
+            "label_pt": "Pessoa que inspira",
+            "label_en": "Inspiring person",
+            "hidden_prompt": "user uses 'someone who + verb'",
+            "hint_pt": "My mother is someone who never gives up.",
+            "hint_en": "My mother is someone who never gives up."
+          },
+          {
+            "id": 2,
+            "label_pt": "Outra pessoa especial",
+            "label_en": "Another special person",
+            "hidden_prompt": "user uses another 'who' clause",
+            "hint_pt": "I have a friend who always listens.",
+            "hint_en": "I have a friend who always listens."
+          },
+          {
+            "id": 3,
+            "label_pt": "Perguntar à Charlotte",
+            "label_en": "Ask Charlotte",
+            "hidden_prompt": "user asks about someone Charlotte admires",
+            "hint_pt": "Who inspires you?",
+            "hint_en": "Who inspires you?"
+          }
+        ],
+        "closing_cue": "Charlotte closes with \"People matter!\" when obj_3 hits.",
+        "suggested_script": "**Script** (7 turns):\n\n1. **Charlotte**: \"Tell me about someone who inspires you.\"\n2. **Student**: \"My mother is someone who never gives up.\"\n3. **Charlotte**: \"Beautiful.\"\n4. **Student**: \"I have a friend who always listens.\"\n5. **Charlotte**: \"Lucky.\"\n6. **Student**: \"Who inspires you?\"\n7. **Charlotte**: \"A teacher who taught me to believe. People matter!\"\n\n> I01 chat = LLM puro.\n\n---"
+      }
+    },
+    {
+      "id": "I02",
+      "title": "The book which",
+      "sub_cefr": "B1",
+      "grammar_focus": "which/that for things in defining clauses",
+      "markers": [],
+      "real_life_context": "You describe things by features.",
+      "grammar": [
+        {
+          "type": "multiple_choice",
+          "sentence": "It's a book _____ changed my life.",
+          "options": [
+            "which",
+            "who",
+            "where"
+          ],
+          "answer": "which",
+          "explanation": "\"Which\" for things in defining clauses. \"That\" also works."
+        },
+        {
+          "type": "multiple_choice",
+          "sentence": "I have a phone _____ works underwater.",
+          "options": [
+            "that",
+            "who",
+            "where"
+          ],
+          "answer": "that",
+          "explanation": "\"That\" for things (or which)."
+        },
+        {
+          "type": "word_bank",
+          "sentence": "She bought a car _____ runs on electricity.",
+          "choices": [
+            "which",
+            "who",
+            "where",
+            "whose"
+          ],
+          "answer": "which",
+          "explanation": "Thing → which/that."
+        },
+        {
+          "type": "word_bank",
+          "sentence": "This is the movie _____ won the Oscar.",
+          "choices": [
+            "that",
+            "who",
+            "where",
+            "whose"
+          ],
+          "answer": "that",
+          "explanation": "Movie = thing → that/which."
+        },
+        {
+          "type": "fill_gap",
+          "sentence": "I love books _____ teach me something.",
+          "hint": "things",
+          "answer": "that (or which)",
+          "explanation": "\"Books that teach\" — thing + action."
+        },
+        {
+          "type": "fill_gap",
+          "sentence": "The phone _____ I bought is broken.",
+          "hint": "thing, object of clause",
+          "answer": "that (or which, or omitted)",
+          "explanation": "\"The phone that I bought\" — object: that/which/omitted."
+        },
+        {
+          "type": "fill_gap",
+          "sentence": "It's the song _____ I love.",
+          "hint": "thing",
+          "answer": "that (or which)",
+          "explanation": "\"Song that I love\"."
+        },
+        {
+          "type": "fix_error",
+          "sentence": "The book who I read was great.",
+          "hint": "who is for people",
+          "answer": "The book that I read was great.",
+          "explanation": "Book = thing → \"that\" or \"which\"."
+        },
+        {
+          "type": "fix_error",
+          "sentence": "He has a car, which is red.",
+          "hint": "No comma in defining",
+          "answer": "He has a car which is red. (or: He has a red car)",
+          "explanation": "Defining → no comma. Non-defining (info adicional) → comma — but M19 covers that."
+        },
+        {
+          "type": "read_answer",
+          "passage": "I have a phone which has a great camera. I love books that take me to other worlds.",
+          "question": "What does the speaker love about books?",
+          "answer": "take me to other worlds",
+          "explanation": "The text says \"books that take me to other worlds\"."
+        }
+      ],
+      "listening_speaking": [
+        {
+          "text": "It's a book which changed my life.",
+          "context": "which thing"
+        },
+        {
+          "text": "I have a phone that works underwater.",
+          "context": "that thing"
+        },
+        {
+          "text": "She bought a car which runs on electricity.",
+          "context": "descriptive"
+        },
+        {
+          "text": "This is the movie that won the Oscar.",
+          "context": "defining"
+        },
+        {
+          "text": "I love books that teach me something.",
+          "context": "general"
+        }
+      ],
+      "roleplay": {
+        "scenario": "Charlotte asks about things in your life.",
+        "voiced_by": "charlotte",
+        "persona": "Charlotte",
+        "persona_outfit": "charlotte_casual",
+        "time_budget_sec": 180,
+        "opening_line": "Describe three things using 'which' or 'that'.",
+        "objectives": [
+          {
+            "id": 1,
+            "label_pt": "Coisa com which/that",
+            "label_en": "Thing with which/that",
+            "hidden_prompt": "user uses 'X is a thing which/that + verb'",
+            "hint_pt": "It's a book that changed my life.",
+            "hint_en": "It's a book that changed my life."
+          },
+          {
+            "id": 2,
+            "label_pt": "Outra coisa",
+            "label_en": "Another thing",
+            "hidden_prompt": "user uses another 'which/that' clause",
+            "hint_pt": "I have a phone which never breaks.",
+            "hint_en": "I have a phone which never breaks."
+          },
+          {
+            "id": 3,
+            "label_pt": "Mais um item",
+            "label_en": "One more item",
+            "hidden_prompt": "user uses one more 'which/that' clause",
+            "hint_pt": "This is the song I love.",
+            "hint_en": "This is the song I love."
+          }
+        ],
+        "closing_cue": "Charlotte closes with \"Things described!\" when obj_3 hits.",
+        "suggested_flow": "**Suggested flow** (6 turns):\n\n1. **Charlotte**: \"Describe three things using 'which' or 'that'.\"\n2. **Student**: ~\"It's a book that changed my life.\"\n3. **Charlotte**: \"Cool. Tech?\"\n4. **Student**: ~\"I have a phone which never breaks.\"\n5. **Charlotte**: \"Music?\"\n6. **Student**: ~\"This is the song I love.\"\n7. **Charlotte**: \"Things described!\"",
+        "evaluation_focus": [
+          "Which/that for things",
+          "Defining (no comma)"
+        ]
+      },
+      "guided_chat": {
+        "scenario": "Charlotte chats about meaningful items.",
+        "voiced_by": "charlotte",
+        "persona": "Charlotte",
+        "persona_outfit": "charlotte_casual",
+        "intro_en": "Charlotte asks about meaningful things. Practice 'which/that'.",
+        "opening_message": "What's an object that means a lot to you?",
+        "objectives": [
+          {
+            "id": 1,
+            "label_pt": "Objeto significativo",
+            "label_en": "Meaningful object",
+            "hidden_prompt": "user uses 'X is a + noun + that/which + clause'",
+            "hint_pt": "It's a watch that belonged to my grandfather.",
+            "hint_en": "It's a watch that belonged to my grandfather."
+          },
+          {
+            "id": 2,
+            "label_pt": "Outro objeto",
+            "label_en": "Another object",
+            "hidden_prompt": "user uses another 'which/that' clause",
+            "hint_pt": "I have books that I've kept for years.",
+            "hint_en": "I have books that I've kept for years."
+          },
+          {
+            "id": 3,
+            "label_pt": "Perguntar à Charlotte",
+            "label_en": "Ask Charlotte",
+            "hidden_prompt": "user asks Charlotte about her meaningful object",
+            "hint_pt": "What about you?",
+            "hint_en": "What about you?"
+          }
+        ],
+        "closing_cue": "Charlotte closes with \"Sentimental items!\" when obj_3 hits.",
+        "suggested_script": "**Script** (7 turns):\n\n1. **Charlotte**: \"What's an object that means a lot to you?\"\n2. **Student**: \"It's a watch that belonged to my grandfather.\"\n3. **Charlotte**: \"Sweet.\"\n4. **Student**: \"I have books that I've kept for years.\"\n5. **Charlotte**: \"Treasures.\"\n6. **Student**: \"What about you?\"\n7. **Charlotte**: \"A necklace that my mom gave me. Sentimental items!\"\n\n> I02 chat = LLM puro.\n\n---"
+      }
+    },
+    {
+      "id": "I03",
+      "title": "The place where",
+      "sub_cefr": "B1",
+      "grammar_focus": "where for places",
+      "markers": [],
+      "real_life_context": "You describe places using \"where\".",
+      "grammar": [
+        {
+          "type": "multiple_choice",
+          "sentence": "This is the city _____ I grew up.",
+          "options": [
+            "where",
+            "which",
+            "who"
+          ],
+          "answer": "where",
+          "explanation": "\"Where\" for places."
+        },
+        {
+          "type": "multiple_choice",
+          "sentence": "The café _____ we met is closed.",
+          "options": [
+            "where",
+            "which",
+            "who"
+          ],
+          "answer": "where",
+          "explanation": "\"Café where we met\"."
+        },
+        {
+          "type": "word_bank",
+          "sentence": "I miss the village _____ I was born.",
+          "choices": [
+            "where",
+            "which",
+            "who",
+            "whose"
+          ],
+          "answer": "where",
+          "explanation": "Village = place → where."
+        },
+        {
+          "type": "word_bank",
+          "sentence": "He works at a company _____ they make cars.",
+          "choices": [
+            "where",
+            "which",
+            "who",
+            "whose"
+          ],
+          "answer": "where",
+          "explanation": "\"Where they make cars\" — at a location."
+        },
+        {
+          "type": "fill_gap",
+          "sentence": "It's a restaurant _____ they serve great pasta.",
+          "hint": "place",
+          "answer": "where",
+          "explanation": "\"Restaurant where they serve\"."
+        },
+        {
+          "type": "fill_gap",
+          "sentence": "I remember the park _____ we used to play.",
+          "hint": "place",
+          "answer": "where",
+          "explanation": "\"Park where we played\"."
+        },
+        {
+          "type": "fill_gap",
+          "sentence": "She lives in a country _____ it's always sunny.",
+          "hint": "place",
+          "answer": "where",
+          "explanation": "\"Country where it's sunny\"."
+        },
+        {
+          "type": "fix_error",
+          "sentence": "It's the city which I grew up.",
+          "hint": "For places use where (or \"in which\")",
+          "answer": "It's the city where I grew up.",
+          "explanation": "\"Where\" for places (or \"in which\" formal)."
+        },
+        {
+          "type": "fix_error",
+          "sentence": "The café where we ate it was great.",
+          "hint": "Extra subject pronoun",
+          "answer": "The café where we ate was great.",
+          "explanation": "\"Where\" already implies \"in/at\". No need for extra \"it\"."
+        },
+        {
+          "type": "read_answer",
+          "passage": "This is the city where I grew up. The café where we met is closed. I miss the village where my grandparents lived.",
+          "question": "Where did the grandparents live?",
+          "answer": "the village",
+          "explanation": "The text says \"the village where my grandparents lived\"."
+        }
+      ],
+      "listening_speaking": [
+        {
+          "text": "This is the city where I grew up.",
+          "context": "birthplace"
+        },
+        {
+          "text": "The café where we met is closed.",
+          "context": "meeting place"
+        },
+        {
+          "text": "I miss the village where I was born.",
+          "context": "origin"
+        },
+        {
+          "text": "He works at a company where they make cars.",
+          "context": "workplace"
+        },
+        {
+          "text": "It's a restaurant where they serve great pasta.",
+          "context": "establishment"
+        }
+      ],
+      "roleplay": {
+        "scenario": "Charlotte asks about meaningful places.",
+        "voiced_by": "charlotte",
+        "persona": "Charlotte",
+        "persona_outfit": "charlotte_casual",
+        "time_budget_sec": 180,
+        "opening_line": "Tell me three places using 'where'.",
+        "objectives": [
+          {
+            "id": 1,
+            "label_pt": "Lugar onde algo aconteceu",
+            "label_en": "Place where something happened",
+            "hidden_prompt": "user uses 'X is the place where + clause'",
+            "hint_pt": "This is the city where I was born.",
+            "hint_en": "This is the city where I was born."
+          },
+          {
+            "id": 2,
+            "label_pt": "Outro lugar",
+            "label_en": "Another place",
+            "hidden_prompt": "user uses another 'where' clause",
+            "hint_pt": "It's a park where I run every morning.",
+            "hint_en": "It's a park where I run every morning."
+          },
+          {
+            "id": 3,
+            "label_pt": "Mais um lugar",
+            "label_en": "One more place",
+            "hidden_prompt": "user uses one more 'where' clause",
+            "hint_pt": "I love the café where we used to meet.",
+            "hint_en": "I love the café where we used to meet."
+          }
+        ],
+        "closing_cue": "Charlotte closes with \"Places mapped!\" when obj_3 hits.",
+        "suggested_flow": "**Suggested flow** (6 turns):\n\n1. **Charlotte**: \"Tell me three places using 'where'.\"\n2. **Student**: ~\"This is the city where I was born.\"\n3. **Charlotte**: \"Favorite spot?\"\n4. **Student**: ~\"It's a park where I run every morning.\"\n5. **Charlotte**: \"Memorable?\"\n6. **Student**: ~\"I love the café where we used to meet.\"\n7. **Charlotte**: \"Places mapped!\"",
+        "evaluation_focus": [
+          "Where for places",
+          "Defining (no comma)"
+        ]
+      },
+      "guided_chat": {
+        "scenario": "Charlotte invites place memories.",
+        "voiced_by": "charlotte",
+        "persona": "Charlotte",
+        "persona_outfit": "charlotte_casual",
+        "intro_en": "Charlotte chats about places. Practice 'where' clauses.",
+        "opening_message": "What's a place where you feel at peace?",
+        "objectives": [
+          {
+            "id": 1,
+            "label_pt": "Lugar de paz",
+            "label_en": "Peaceful place",
+            "hidden_prompt": "user uses 'a place where + clause'",
+            "hint_pt": "The beach where I go in summer.",
+            "hint_en": "The beach where I go in summer."
+          },
+          {
+            "id": 2,
+            "label_pt": "Outro lugar",
+            "label_en": "Another place",
+            "hidden_prompt": "user uses another 'where' clause",
+            "hint_pt": "My grandma's house where I spent summers.",
+            "hint_en": "My grandma's house where I spent summers."
+          },
+          {
+            "id": 3,
+            "label_pt": "Perguntar à Charlotte",
+            "label_en": "Ask Charlotte",
+            "hidden_prompt": "user asks 'How about you?'",
+            "hint_pt": "How about you?",
+            "hint_en": "How about you?"
+          }
+        ],
+        "closing_cue": "Charlotte closes with \"Soul spots!\" when obj_3 hits.",
+        "suggested_script": "**Script** (7 turns):\n\n1. **Charlotte**: \"What's a place where you feel at peace?\"\n2. **Student**: \"The beach where I go in summer.\"\n3. **Charlotte**: \"Lovely.\"\n4. **Student**: \"My grandma's house where I spent summers.\"\n5. **Charlotte**: \"Nostalgic.\"\n6. **Student**: \"How about you?\"\n7. **Charlotte**: \"A cabin where I disconnect. Soul spots!\"\n\n> I03 chat = LLM puro.\n\n---"
+      }
+    },
+    {
+      "id": "I04",
+      "title": "Whose",
+      "sub_cefr": "B1",
+      "grammar_focus": "whose for possession",
+      "markers": [],
+      "real_life_context": "You describe people by what they own or who's related.",
+      "grammar": [
+        {
+          "type": "multiple_choice",
+          "sentence": "She's the woman _____ husband is a doctor.",
+          "options": [
+            "whose",
+            "who",
+            "which"
+          ],
+          "answer": "whose",
+          "explanation": "\"Whose\" for possession."
+        },
+        {
+          "type": "multiple_choice",
+          "sentence": "He's the guy _____ car broke down.",
+          "options": [
+            "whose",
+            "who",
+            "which"
+          ],
+          "answer": "whose",
+          "explanation": "\"Whose car\" — possession."
+        },
+        {
+          "type": "word_bank",
+          "sentence": "I know a man _____ daughter is famous.",
+          "choices": [
+            "whose",
+            "who",
+            "which",
+            "where"
+          ],
+          "answer": "whose",
+          "explanation": "Possession → whose."
+        },
+        {
+          "type": "word_bank",
+          "sentence": "She's the friend _____ birthday is today.",
+          "choices": [
+            "whose",
+            "who",
+            "which",
+            "where"
+          ],
+          "answer": "whose",
+          "explanation": "\"Whose birthday\"."
+        },
+        {
+          "type": "fill_gap",
+          "sentence": "He's the teacher _____ class I love.",
+          "hint": "possession",
+          "answer": "whose",
+          "explanation": "\"Whose class\" — possession."
+        },
+        {
+          "type": "fill_gap",
+          "sentence": "It's the dog _____ name I forgot.",
+          "hint": "possession (animal)",
+          "answer": "whose",
+          "explanation": "\"Whose name\" — possession."
+        },
+        {
+          "type": "fill_gap",
+          "sentence": "She's the woman _____ kids are in my class.",
+          "hint": "possession",
+          "answer": "whose",
+          "explanation": "\"Whose kids\"."
+        },
+        {
+          "type": "fix_error",
+          "sentence": "He's the man who's car is red.",
+          "hint": "\"Who's\" = \"who is\"; needs possessive",
+          "answer": "He's the man whose car is red.",
+          "explanation": "\"Whose\" (possessive) vs \"who's\" (who is). Common confusion."
+        },
+        {
+          "type": "fix_error",
+          "sentence": "She's the friend her name is Ana.",
+          "hint": "Use whose for possession in relative clause",
+          "answer": "She's the friend whose name is Ana.",
+          "explanation": "\"Whose\" connects in relative clause: \"the friend whose name\"."
+        },
+        {
+          "type": "read_answer",
+          "passage": "She's the woman whose husband is a doctor. He's the guy whose car I borrowed. I have a friend whose birthday is today.",
+          "question": "Whose birthday is today?",
+          "answer": "my friend's (or \"a friend's\")",
+          "explanation": "The text says \"a friend whose birthday is today\"."
+        }
+      ],
+      "listening_speaking": [
+        {
+          "text": "She's the woman whose husband is a doctor.",
+          "context": "relation"
+        },
+        {
+          "text": "He's the guy whose car broke down.",
+          "context": "possession"
+        },
+        {
+          "text": "I know a man whose daughter is famous.",
+          "context": "relation"
+        },
+        {
+          "text": "She's the friend whose birthday is today.",
+          "context": "event"
+        },
+        {
+          "text": "He's the teacher whose class I love.",
+          "context": "possession"
+        }
+      ],
+      "roleplay": {
+        "scenario": "Charlotte asks about people through their belongings/relations.",
+        "voiced_by": "charlotte",
+        "persona": "Charlotte",
+        "persona_outfit": "charlotte_casual",
+        "time_budget_sec": 180,
+        "opening_line": "Describe people using 'whose'.",
+        "objectives": [
+          {
+            "id": 1,
+            "label_pt": "Pessoa com whose + posse",
+            "label_en": "Person with whose + possession",
+            "hidden_prompt": "user uses 'X is + person + whose + noun'",
+            "hint_pt": "She's my friend whose dog is huge.",
+            "hint_en": "She's my friend whose dog is huge."
+          },
+          {
+            "id": 2,
+            "label_pt": "Outra pessoa",
+            "label_en": "Another person",
+            "hidden_prompt": "user uses another 'whose' clause",
+            "hint_pt": "He's the colleague whose office is next to mine.",
+            "hint_en": "He's the colleague whose office is next to mine."
+          },
+          {
+            "id": 3,
+            "label_pt": "Mais um whose",
+            "label_en": "One more whose",
+            "hidden_prompt": "user uses another 'whose' clause",
+            "hint_pt": "I know someone whose grandfather was a pilot.",
+            "hint_en": "I know someone whose grandfather was a pilot."
+          }
+        ],
+        "closing_cue": "Charlotte closes with \"Relations mapped!\" when obj_3 hits.",
+        "suggested_flow": "**Suggested flow** (6 turns):\n\n1. **Charlotte**: \"Describe people using 'whose'.\"\n2. **Student**: ~\"She's my friend whose dog is huge.\"\n3. **Charlotte**: \"Colleague?\"\n4. **Student**: ~\"He's the colleague whose office is next to mine.\"\n5. **Charlotte**: \"Family link?\"\n6. **Student**: ~\"I know someone whose grandfather was a pilot.\"\n7. **Charlotte**: \"Relations mapped!\"",
+        "evaluation_focus": [
+          "Whose for possession",
+          "Not \"who's\""
+        ]
+      },
+      "guided_chat": {
+        "scenario": "Charlotte chats about people through their things.",
+        "voiced_by": "charlotte",
+        "persona": "Charlotte",
+        "persona_outfit": "charlotte_casual",
+        "intro_en": "Charlotte asks about people via possessions.",
+        "opening_message": "Tell me about a friend whose life is interesting.",
+        "objectives": [
+          {
+            "id": 1,
+            "label_pt": "Amigo com whose",
+            "label_en": "Friend with whose",
+            "hidden_prompt": "user uses 'a friend whose + noun + verb'",
+            "hint_pt": "A friend whose family travels often.",
+            "hint_en": "A friend whose family travels often."
+          },
+          {
+            "id": 2,
+            "label_pt": "Outra pessoa",
+            "label_en": "Another person",
+            "hidden_prompt": "user uses another 'whose'",
+            "hint_pt": "A colleague whose son is talented.",
+            "hint_en": "A colleague whose son is talented."
+          },
+          {
+            "id": 3,
+            "label_pt": "Perguntar à Charlotte",
+            "label_en": "Ask Charlotte",
+            "hidden_prompt": "user asks about someone Charlotte knows",
+            "hint_pt": "How about you?",
+            "hint_en": "How about you?"
+          }
+        ],
+        "closing_cue": "Charlotte closes with \"People stories!\" when obj_3 hits.",
+        "suggested_script": "**Script** (7 turns):\n\n1. **Charlotte**: \"Tell me about a friend whose life is interesting.\"\n2. **Student**: \"A friend whose family travels often.\"\n3. **Charlotte**: \"Cool.\"\n4. **Student**: \"A colleague whose son is talented.\"\n5. **Charlotte**: \"Nice.\"\n6. **Student**: \"How about you?\"\n7. **Charlotte**: \"A friend whose art is amazing. People stories!\"\n\n> I04 chat = LLM puro.\n\n---"
+      }
+    },
+    {
+      "id": "I05",
+      "title": "All relatives combined",
+      "sub_cefr": "B1",
+      "grammar_focus": "Integration who/which/that/where/whose",
+      "markers": [],
+      "real_life_context": "You combine all relative pronouns in descriptions.",
+      "grammar": [
+        {
+          "type": "multiple_choice",
+          "sentence": "She's the friend _____ I trust.",
+          "options": [
+            "who",
+            "which",
+            "where"
+          ],
+          "answer": "who",
+          "explanation": "Person → who."
+        },
+        {
+          "type": "multiple_choice",
+          "sentence": "It's a movie _____ I watched.",
+          "options": [
+            "that",
+            "who",
+            "where"
+          ],
+          "answer": "that",
+          "explanation": "Thing → that/which."
+        },
+        {
+          "type": "word_bank",
+          "sentence": "This is the city _____ I work.",
+          "choices": [
+            "where",
+            "who",
+            "which",
+            "whose"
+          ],
+          "answer": "where",
+          "explanation": "Place → where."
+        },
+        {
+          "type": "word_bank",
+          "sentence": "She's the woman _____ son is my classmate.",
+          "choices": [
+            "whose",
+            "who",
+            "which",
+            "where"
+          ],
+          "answer": "whose",
+          "explanation": "Possession → whose."
+        },
+        {
+          "type": "fill_gap",
+          "sentence": "He's the doctor _____ helped me.",
+          "hint": "person",
+          "answer": "who",
+          "explanation": "Who for people."
+        },
+        {
+          "type": "fill_gap",
+          "sentence": "I have a phone _____ takes great photos.",
+          "hint": "thing",
+          "answer": "that (or which)",
+          "explanation": "That/which for things."
+        },
+        {
+          "type": "fill_gap",
+          "sentence": "The school _____ I studied is famous.",
+          "hint": "place",
+          "answer": "where",
+          "explanation": "Where for places."
+        },
+        {
+          "type": "fix_error",
+          "sentence": "He's the man which I met.",
+          "hint": "person needs who",
+          "answer": "He's the man who I met.",
+          "explanation": "Who for people."
+        },
+        {
+          "type": "fix_error",
+          "sentence": "The book who I read.",
+          "hint": "thing needs that/which",
+          "answer": "The book that I read.",
+          "explanation": "Book = thing → that."
+        },
+        {
+          "type": "read_answer",
+          "passage": "She's the friend who I trust. It's the city where I work. He's the man whose son is famous. This is the movie that won.",
+          "question": "What won?",
+          "answer": "the movie",
+          "explanation": "The text says \"the movie that won\"."
+        }
+      ],
+      "listening_speaking": [
+        {
+          "text": "She's the friend who I trust.",
+          "context": "who"
+        },
+        {
+          "text": "It's a movie that I watched.",
+          "context": "that"
+        },
+        {
+          "text": "This is the city where I work.",
+          "context": "where"
+        },
+        {
+          "text": "She's the woman whose son is my classmate.",
+          "context": "whose"
+        },
+        {
+          "text": "He's the man who called me.",
+          "context": "who"
+        }
+      ],
+      "roleplay": {
+        "scenario": "Charlotte asks for a 4-sentence description using each pronoun.",
+        "voiced_by": "charlotte",
+        "persona": "Charlotte",
+        "persona_outfit": "charlotte_casual",
+        "time_budget_sec": 180,
+        "opening_line": "Use who, which, where, and whose — describe people, things, places.",
+        "objectives": [
+          {
+            "id": 1,
+            "label_pt": "Pessoa com who",
+            "label_en": "Person with who",
+            "hidden_prompt": "user uses 'who' clause for person",
+            "hint_pt": "I know a woman who runs marathons.",
+            "hint_en": "I know a woman who runs marathons."
+          },
+          {
+            "id": 2,
+            "label_pt": "Coisa ou lugar (that/where)",
+            "label_en": "Thing or place",
+            "hidden_prompt": "user uses 'that' or 'where' clause",
+            "hint_pt": "It's a city where I'd love to live.",
+            "hint_en": "It's a city where I'd love to live."
+          },
+          {
+            "id": 3,
+            "label_pt": "Posse com whose",
+            "label_en": "Possession with whose",
+            "hidden_prompt": "user uses 'whose' clause",
+            "hint_pt": "He's the guy whose business is growing.",
+            "hint_en": "He's the guy whose business is growing."
+          }
+        ],
+        "closing_cue": "Charlotte closes with \"Relatives mastered!\" when obj_3 hits.",
+        "suggested_flow": "**Suggested flow** (6 turns):\n\n1. **Charlotte**: \"Use who, which, where, and whose — describe people, things, places.\"\n2. **Student**: ~\"I know a woman who runs marathons.\"\n3. **Charlotte**: \"Place?\"\n4. **Student**: ~\"It's a city where I'd love to live.\"\n5. **Charlotte**: \"Whose?\"\n6. **Student**: ~\"He's the guy whose business is growing.\"\n7. **Charlotte**: \"Relatives mastered!\"",
+        "evaluation_focus": [
+          "Right pronoun for category",
+          "No commas (defining)",
+          "Variety"
+        ]
+      },
+      "guided_chat": {
+        "scenario": "Charlotte invites multi-pronoun descriptions.",
+        "voiced_by": "charlotte",
+        "persona": "Charlotte",
+        "persona_outfit": "charlotte_casual",
+        "intro_en": "Charlotte chats with relative pronouns.",
+        "opening_message": "Describe your life using relative clauses.",
+        "objectives": [
+          {
+            "id": 1,
+            "label_pt": "Pessoa",
+            "label_en": "Person",
+            "hidden_prompt": "user uses 'who' clause",
+            "hint_pt": "I work with people who inspire me.",
+            "hint_en": "I work with people who inspire me."
+          },
+          {
+            "id": 2,
+            "label_pt": "Coisa ou lugar",
+            "label_en": "Thing or place",
+            "hidden_prompt": "user uses 'that' or 'where' clause",
+            "hint_pt": "I read books that challenge me.",
+            "hint_en": "I read books that challenge me."
+          },
+          {
+            "id": 3,
+            "label_pt": "Perguntar à Charlotte",
+            "label_en": "Ask Charlotte",
+            "hidden_prompt": "user asks Charlotte",
+            "hint_pt": "How about you?",
+            "hint_en": "How about you?"
+          }
+        ],
+        "closing_cue": "Charlotte closes with \"Connected sentences!\" when obj_3 hits.",
+        "suggested_script": "**Script** (7 turns):\n\n1. **Charlotte**: \"Describe your life using relative clauses.\"\n2. **Student**: \"I work with people who inspire me.\"\n3. **Charlotte**: \"Cool.\"\n4. **Student**: \"I read books that challenge me.\"\n5. **Charlotte**: \"Same.\"\n6. **Student**: \"How about you?\"\n7. **Charlotte**: \"I teach students whose growth amazes me. Connected sentences!\"\n\n> I05 chat = LLM puro.\n\n---"
+      }
+    }
+  ],
+  "cross_unit_consolidation": [
+    "who (people), which/that (things), where (places), whose (possession)",
+    "Defining (no comma) — identifies which one",
+    "Pronoun can be omitted when object of clause"
+  ]
+}

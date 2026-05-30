@@ -1,0 +1,1026 @@
+{
+  "id": "M10",
+  "title": "Verdades gerais",
+  "level": "Inter",
+  "block": "B1",
+  "units_range": "I01–I05",
+  "theme": "Zero conditional (general truths, facts, instructions) + contrast with first conditional",
+  "goal": "Student uses zero conditional for universal truths, scientific facts, and rules; distinguishes from first conditional (specific future) and knows when to use \"when\" vs \"if\".",
+  "connects_to": "M11 (Time clauses) — after zero/first conditional, expand to before/after/until/by the time.",
+  "module_chunks": [
+    "If + present, present (zero — general truth)",
+    "When + present, present (general routine)",
+    "If + present, will + base (first — specific future)",
+    "Water boils at 100 degrees.",
+    "If you heat water, it boils.",
+    "When the sun sets, it gets dark.",
+    "If you don't water plants, they die.",
+    "Plants need sunlight to grow."
+  ],
+  "units": [
+    {
+      "id": "I01",
+      "title": "General truths",
+      "sub_cefr": "B1",
+      "grammar_focus": "Zero conditional (If + present, present) for facts",
+      "markers": [
+        "denso"
+      ],
+      "real_life_context": "You express scientific facts, life rules, and cause-effect that's always true.",
+      "grammar": [
+        {
+          "type": "multiple_choice",
+          "sentence": "If you heat water to 100 degrees, it _____.",
+          "options": [
+            "boils",
+            "will boil",
+            "boil",
+            "is boiling"
+          ],
+          "answer": "boils",
+          "explanation": "Zero conditional descreve verdades sempre verdadeiras. Ambas as cláusulas usam present simple. \"Boils\" — fato universal sobre água."
+        },
+        {
+          "type": "multiple_choice",
+          "sentence": "If you mix red and blue, you _____ purple.",
+          "options": [
+            "get",
+            "will get",
+            "got",
+            "are getting"
+          ],
+          "answer": "get",
+          "explanation": "Cor é resultado universal. Zero conditional = causa-efeito que sempre acontece. Present simple nas duas partes."
+        },
+        {
+          "type": "word_bank",
+          "sentence": "If it _____, plants grow faster.",
+          "choices": [
+            "rains",
+            "will rain",
+            "rained",
+            "is raining"
+          ],
+          "answer": "rains",
+          "explanation": "\"If it rains\" — present simple terceira pessoa (it + verb-s). Verdade universal sobre crescimento de plantas."
+        },
+        {
+          "type": "word_bank",
+          "sentence": "Ice _____ if you heat it.",
+          "choices": [
+            "melts",
+            "will melt",
+            "melted",
+            "is melting"
+          ],
+          "answer": "melts",
+          "explanation": "Estrutura zero conditional pode começar com qualquer cláusula. \"Ice melts if you heat it\" — fato físico."
+        },
+        {
+          "type": "fill_gap",
+          "sentence": "If you don't sleep enough, you _____ tired the next day.",
+          "hint": "verbo de estado (feel/get/become) no presente",
+          "answer": "feel (ou get/become)",
+          "explanation": "Consequência sempre verdadeira. Verbos comuns: feel, get, become — todos no present simple."
+        },
+        {
+          "type": "fill_gap",
+          "sentence": "When the temperature _____ zero degrees, water freezes.",
+          "hint": "present simple 3ª pessoa de \"drop/reach/hit\"",
+          "answer": "drops (ou reaches/hits)",
+          "explanation": "\"When\" funciona como \"if\" em verdades gerais — ambos indicam relação sempre verdadeira. \"Drops to zero\" — 3ª pessoa singular."
+        },
+        {
+          "type": "fill_gap",
+          "sentence": "If you don't water plants, they _____.",
+          "hint": "present simple plural \"die\"",
+          "answer": "die",
+          "explanation": "\"They die\" — plantas no plural usam forma base do verbo. Consequência universal de não regar."
+        },
+        {
+          "type": "fix_error",
+          "sentence": "If you heat water, it will boil.",
+          "hint": "Zero conditional para verdades gerais não usa \"will\"",
+          "answer": "If you heat water, it boils.",
+          "explanation": "\"Will\" muda o sentido para previsão específica (first conditional). Para verdades sempre verdadeiras, ambas cláusulas no present simple."
+        },
+        {
+          "type": "fix_error",
+          "sentence": "If you mixing red and blue, you get purple.",
+          "hint": "Após \"if\", use present simple, não -ing",
+          "answer": "If you mix red and blue, you get purple.",
+          "explanation": "A cláusula com \"if\" precisa de present simple completo: \"mix\" (base form com you), não \"mixing\". A forma -ing precisaria de \"are mixing\" (present continuous)."
+        },
+        {
+          "type": "read_answer",
+          "passage": "If you heat water, it boils. When the sun sets, it gets dark. If you don't drink water, you get dehydrated. Plants die if you don't water them.",
+          "question": "What happens when the sun sets?",
+          "answer": "it gets dark",
+          "explanation": "The text says \"When the sun sets, it gets dark\" — universal truth about day/night cycle."
+        }
+      ],
+      "listening_speaking": [
+        {
+          "text": "If you heat water, it boils.",
+          "context": "scientific fact"
+        },
+        {
+          "text": "If you mix red and blue, you get purple.",
+          "context": "color theory"
+        },
+        {
+          "text": "Ice melts if you heat it.",
+          "context": "physics"
+        },
+        {
+          "text": "When the sun sets, it gets dark.",
+          "context": "natural cycle"
+        },
+        {
+          "text": "If you don't sleep, you feel tired.",
+          "context": "biological truth"
+        }
+      ],
+      "roleplay": {
+        "scenario": "Charlotte pergunta sobre verdades que você acredita serem sempre verdadeiras — científicas, da natureza, ou da vida cotidiana. Quer três frases bem construídas em zero conditional.",
+        "voiced_by": "charlotte",
+        "persona": "Charlotte",
+        "persona_outfit": "charlotte_casual",
+        "time_budget_sec": 180,
+        "opening_line": "Share three universal truths using zero conditional. Could be science, nature, or life.",
+        "objectives": [
+          {
+            "id": 1,
+            "label_pt": "Verdade científica ou física",
+            "label_en": "Scientific or physical truth",
+            "hidden_prompt": "user uses 'If + present, present' for a scientific/physical fact (water/heat/cold/light)",
+            "hint_pt": "If you heat water, it boils.",
+            "hint_en": "If you heat water, it boils."
+          },
+          {
+            "id": 2,
+            "label_pt": "Verdade biológica ou do corpo",
+            "label_en": "Biological/body truth",
+            "hidden_prompt": "user uses zero conditional for biology (sleep, eat, exercise consequences)",
+            "hint_pt": "If you don't eat, you get hungry.",
+            "hint_en": "If you don't eat, you get hungry."
+          },
+          {
+            "id": 3,
+            "label_pt": "Verdade da natureza ou do tempo",
+            "label_en": "Nature or weather truth",
+            "hidden_prompt": "user uses zero conditional with weather/nature/seasons",
+            "hint_pt": "When the sun sets, it gets dark.",
+            "hint_en": "When the sun sets, it gets dark."
+          }
+        ],
+        "closing_cue": "Charlotte fecha com \"Universal patterns!\" quando obj_3 baterem.",
+        "suggested_flow": "**Suggested flow** (referencial, 6 turnos):\n\n1. **Charlotte**: \"Share three universal truths using zero conditional. Could be science, nature, or life.\"\n2. **Student**: ~\"If you heat water, it boils.\"\n3. **Charlotte**: \"Classic. Body or biology?\"\n4. **Student**: ~\"If you don't eat, you get hungry.\"\n5. **Charlotte**: \"True. Nature or weather?\"\n6. **Student**: ~\"When the sun sets, it gets dark.\"\n7. **Charlotte**: \"Universal patterns!\"",
+        "evaluation_focus": [
+          "Both clauses in present simple (no \"will\")",
+          "Correct 3rd person -s when needed",
+          "\"When\" or \"if\" both acceptable for general truths"
+        ]
+      },
+      "guided_chat": {
+        "scenario": "Charlotte conversa sobre regras da própria vida — coisas que sempre acontecem com você. Não são leis físicas, são padrões pessoais consistentes (rotinas, reações, hábitos).",
+        "voiced_by": "charlotte",
+        "persona": "Charlotte",
+        "persona_outfit": "charlotte_casual",
+        "intro_en": "Charlotte wants personal patterns — things that are always true in your life. Practice zero conditional with your own routines.",
+        "opening_message": "What's something that's always true in your daily life? Share an 'if-then'.",
+        "objectives": [
+          {
+            "id": 1,
+            "label_pt": "Padrão pessoal de rotina",
+            "label_en": "Personal routine pattern",
+            "hidden_prompt": "user uses 'If/When I + present, I + present' for a personal pattern",
+            "hint_pt": "If I don't have coffee, I feel grumpy.",
+            "hint_en": "If I don't have coffee, I feel grumpy."
+          },
+          {
+            "id": 2,
+            "label_pt": "Outro padrão de causa-efeito pessoal",
+            "label_en": "Another personal cause-effect pattern",
+            "hidden_prompt": "user uses another 'When/If + present, present' personal pattern",
+            "hint_pt": "When I exercise, I sleep better.",
+            "hint_en": "When I exercise, I sleep better."
+          },
+          {
+            "id": 3,
+            "label_pt": "Perguntar à Charlotte sobre um padrão dela",
+            "label_en": "Ask Charlotte about her pattern",
+            "hidden_prompt": "user asks 'How about you?' or 'What's true for you?'",
+            "hint_pt": "How about you?",
+            "hint_en": "How about you?"
+          }
+        ],
+        "closing_cue": "Charlotte fecha com \"Personal patterns shared!\" quando obj_3 baterem.",
+        "suggested_script": "**Script** (referencial, 7 turnos):\n\n1. **Charlotte**: \"What's something that's always true in your daily life? Share an 'if-then'.\"\n2. **Student**: \"If I don't have coffee, I feel grumpy.\"\n3. **Charlotte**: \"Same — caffeine is non-negotiable. What else?\"\n4. **Student**: \"When I exercise, I sleep better.\"\n5. **Charlotte**: \"Direct correlation, right?\"\n6. **Student**: \"How about you?\"\n7. **Charlotte**: \"When I read before bed, I dream more vividly. Personal patterns shared!\"\n\n> I01 chat = LLM puro. Scaffold via hint_pt.\n\n---"
+      }
+    },
+    {
+      "id": "I02",
+      "title": "Zero vs first",
+      "sub_cefr": "B1",
+      "grammar_focus": "Distinguishing zero conditional (general truth) from first conditional (specific future)",
+      "markers": [
+        "denso"
+      ],
+      "real_life_context": "You choose the right conditional based on whether you're talking about always-true facts or specific future possibilities.",
+      "grammar": [
+        {
+          "type": "multiple_choice",
+          "sentence": "If you study every day, you _____ better.",
+          "options": [
+            "get",
+            "will get",
+            "are getting"
+          ],
+          "answer": "get",
+          "explanation": "\"Every day\" indica padrão sempre verdadeiro → zero conditional. Estudar regularmente sempre melhora desempenho. Present simple nas duas cláusulas."
+        },
+        {
+          "type": "multiple_choice",
+          "sentence": "If you study tonight, you _____ better on tomorrow's test.",
+          "options": [
+            "will do",
+            "do",
+            "are doing"
+          ],
+          "answer": "will do",
+          "explanation": "\"Tonight\" + \"tomorrow's test\" indica evento específico no futuro → first conditional. Use \"will + base\" na consequência."
+        },
+        {
+          "type": "word_bank",
+          "sentence": "If you don't water plants, they _____ — that's how nature works.",
+          "choices": [
+            "die",
+            "will die",
+            "are dying",
+            "dies"
+          ],
+          "answer": "die",
+          "explanation": "\"That's how nature works\" sinaliza verdade universal → zero conditional. \"Plants die\" — present simple plural."
+        },
+        {
+          "type": "word_bank",
+          "sentence": "If it _____ tomorrow, I'll stay home.",
+          "choices": [
+            "rains",
+            "will rain",
+            "rained",
+            "is raining"
+          ],
+          "answer": "rains",
+          "explanation": "Após \"if\", sempre present simple — mesmo em first conditional. \"Tomorrow\" no resto da frase indica evento específico. \"It rains\" — 3ª pessoa."
+        },
+        {
+          "type": "fill_gap",
+          "sentence": "Water _____ when you heat it to 100 degrees.",
+          "hint": "verdade geral, present simple 3ª pessoa",
+          "answer": "boils",
+          "explanation": "Verdade universal sobre água. \"Boils\" — 3ª pessoa singular present simple. \"When\" funciona como \"if\" em verdades gerais."
+        },
+        {
+          "type": "fill_gap",
+          "sentence": "I _____ go to the beach if it's sunny on Saturday.",
+          "hint": "future específico, contração de \"I will\"",
+          "answer": "'ll (or will)",
+          "explanation": "\"On Saturday\" = evento específico → first conditional. \"I'll go\" ou \"I will go\" na consequência futura."
+        },
+        {
+          "type": "fill_gap",
+          "sentence": "If you exercise regularly, you _____ healthier — it's a fact.",
+          "hint": "verbo \"feel/become/get\" no present simple",
+          "answer": "feel (ou get/become)",
+          "explanation": "\"It's a fact\" reforça que é verdade geral → zero conditional. Consequência também no present simple."
+        },
+        {
+          "type": "fix_error",
+          "sentence": "If I will have time tomorrow, I'll call you.",
+          "hint": "Após \"if\", nunca usar \"will\" — sempre present simple",
+          "answer": "If I have time tomorrow, I'll call you.",
+          "explanation": "A cláusula com \"if\" SEMPRE no present simple, mesmo em first conditional. \"Will\" só aparece na consequência. Este é um dos erros mais comuns de lusófonos."
+        },
+        {
+          "type": "fix_error",
+          "sentence": "If you heat water, it will boil.",
+          "hint": "Verdade universal não usa \"will\"",
+          "answer": "If you heat water, it boils.",
+          "explanation": "\"Will boil\" sugere predição específica. Para fato sempre verdadeiro, use present simple nas duas cláusulas: \"it boils\"."
+        },
+        {
+          "type": "read_answer",
+          "passage": "If you don't water plants, they die — that's how nature works. If it rains tomorrow, I'll stay home and read. Plants need sunlight to grow, and if they don't get it, they wither.",
+          "question": "What will the speaker do if it rains tomorrow?",
+          "answer": "stay home and read (or \"stay home\")",
+          "explanation": "The text says \"If it rains tomorrow, I'll stay home and read\" — first conditional with specific future plan."
+        }
+      ],
+      "listening_speaking": [
+        {
+          "text": "If you study every day, you get better.",
+          "context": "general truth (zero)"
+        },
+        {
+          "text": "If you study tonight, you'll do better tomorrow.",
+          "context": "specific future (first)"
+        },
+        {
+          "text": "If you don't water plants, they die.",
+          "context": "universal truth"
+        },
+        {
+          "text": "If it rains tomorrow, I'll stay home.",
+          "context": "specific plan"
+        },
+        {
+          "text": "Water boils when you heat it to 100.",
+          "context": "scientific fact"
+        }
+      ],
+      "roleplay": {
+        "scenario": "Charlotte pede que você apresente uma verdade geral (sempre verdadeira) e em seguida uma predição específica para amanhã — quer ver você escolher conscientemente entre zero e first conditional.",
+        "voiced_by": "charlotte",
+        "persona": "Charlotte",
+        "persona_outfit": "charlotte_casual",
+        "time_budget_sec": 180,
+        "opening_line": "Share one universal truth and one specific prediction for tomorrow — choose zero or first conditional correctly.",
+        "objectives": [
+          {
+            "id": 1,
+            "label_pt": "Verdade geral em zero conditional",
+            "label_en": "General truth in zero conditional",
+            "hidden_prompt": "user uses 'If + present, present' for an always-true statement",
+            "hint_pt": "If you exercise, you feel better.",
+            "hint_en": "If you exercise, you feel better."
+          },
+          {
+            "id": 2,
+            "label_pt": "Predição específica em first conditional",
+            "label_en": "Specific prediction in first conditional",
+            "hidden_prompt": "user uses 'If + present, will + base' for tomorrow/next week",
+            "hint_pt": "If I have time tomorrow, I'll exercise.",
+            "hint_en": "If I have time tomorrow, I'll exercise."
+          },
+          {
+            "id": 3,
+            "label_pt": "Outra verdade geral OU plano específico (diferente da primeira)",
+            "label_en": "Another general truth OR specific plan",
+            "hidden_prompt": "user uses zero or first conditional, with awareness of which",
+            "hint_pt": "If I save money, I'll buy a new phone.",
+            "hint_en": "If I save money, I'll buy a new phone."
+          }
+        ],
+        "closing_cue": "Charlotte fecha com \"Conditional choice mastered!\" quando obj_3 baterem.",
+        "suggested_flow": "**Suggested flow** (referencial, 6 turnos):\n\n1. **Charlotte**: \"Share one universal truth and one specific prediction for tomorrow — choose zero or first conditional correctly.\"\n2. **Student**: ~\"If you exercise, you feel better.\"\n3. **Charlotte**: \"Great general truth. Now specific?\"\n4. **Student**: ~\"If I have time tomorrow, I'll exercise.\"\n5. **Charlotte**: \"One more — your choice of type?\"\n6. **Student**: ~\"If I save money, I'll buy a new phone.\"\n7. **Charlotte**: \"Conditional choice mastered!\"",
+        "evaluation_focus": [
+          "Zero = both clauses present",
+          "First = if + present, will + base",
+          "No \"will\" in \"if\" clause",
+          "Right type for meaning"
+        ]
+      },
+      "guided_chat": {
+        "scenario": "Charlotte conversa sobre como diferenciar verdades de previsões — quer trocar exemplos pessoais com você.",
+        "voiced_by": "charlotte",
+        "persona": "Charlotte",
+        "persona_outfit": "charlotte_casual",
+        "intro_en": "Charlotte explores the difference between universal truths and specific plans. Practice choosing zero vs first conditional.",
+        "opening_message": "Tell me a 'life truth' you believe in and a 'plan' you have for this week.",
+        "objectives": [
+          {
+            "id": 1,
+            "label_pt": "Verdade de vida (zero conditional)",
+            "label_en": "Life truth (zero conditional)",
+            "hidden_prompt": "user uses 'If/When + present, present' for a personal life truth",
+            "hint_pt": "If you read more, you write better.",
+            "hint_en": "If you read more, you write better."
+          },
+          {
+            "id": 2,
+            "label_pt": "Plano específico para esta semana (first conditional)",
+            "label_en": "Specific plan for this week",
+            "hidden_prompt": "user uses 'If + present, I'll/will + base' for a specific plan",
+            "hint_pt": "If I finish work early Friday, I'll meet my friends.",
+            "hint_en": "If I finish work early Friday, I'll meet my friends."
+          },
+          {
+            "id": 3,
+            "label_pt": "Perguntar à Charlotte",
+            "label_en": "Ask Charlotte",
+            "hidden_prompt": "user asks 'How about you?' or 'What's your truth/plan?'",
+            "hint_pt": "How about you?",
+            "hint_en": "How about you?"
+          }
+        ],
+        "closing_cue": "Charlotte fecha com \"Truths and plans!\" quando obj_3 baterem.",
+        "suggested_script": "**Script** (referencial, 7 turnos):\n\n1. **Charlotte**: \"Tell me a 'life truth' you believe in and a 'plan' you have for this week.\"\n2. **Student**: \"If you read more, you write better.\"\n3. **Charlotte**: \"Solid principle. Now a plan?\"\n4. **Student**: \"If I finish work early Friday, I'll meet my friends.\"\n5. **Charlotte**: \"Hope it works out — Friday vibes.\"\n6. **Student**: \"How about you?\"\n7. **Charlotte**: \"If I sleep well, I teach well. And if I finish prep early, I'll go for a long walk Saturday. Truths and plans!\"\n\n> I02 chat = LLM puro. Scaffold via hint_pt.\n\n---"
+      }
+    },
+    {
+      "id": "I03",
+      "title": "When vs If",
+      "sub_cefr": "B1",
+      "grammar_focus": "When (certainty/routine) vs If (possibility) in conditional contexts",
+      "markers": [],
+      "real_life_context": "You choose between \"when\" and \"if\" based on how certain or uncertain the situation is.",
+      "grammar": [
+        {
+          "type": "multiple_choice",
+          "sentence": "_____ the sun rises, it gets light.",
+          "options": [
+            "When",
+            "If",
+            "Although",
+            "Because"
+          ],
+          "answer": "When",
+          "explanation": "O sol sempre nasce — não é incerto. \"When\" é usado para eventos certos e que sempre acontecem."
+        },
+        {
+          "type": "multiple_choice",
+          "sentence": "_____ it rains tomorrow, I'll take an umbrella.",
+          "options": [
+            "If",
+            "When",
+            "Although",
+            "So"
+          ],
+          "answer": "If",
+          "explanation": "Chuva amanhã é INCERTO — pode ou não acontecer. \"If\" para eventos possíveis mas não garantidos."
+        },
+        {
+          "type": "word_bank",
+          "sentence": "_____ I wake up, the first thing I do is check my phone.",
+          "choices": [
+            "When",
+            "If",
+            "Although",
+            "Because"
+          ],
+          "answer": "When",
+          "explanation": "Acordar é parte da rotina — sempre acontece. \"When I wake up\" indica certeza temporal."
+        },
+        {
+          "type": "word_bank",
+          "sentence": "_____ you're feeling tired, you should rest.",
+          "choices": [
+            "If",
+            "When",
+            "Although",
+            "Because"
+          ],
+          "answer": "If (ou When)",
+          "explanation": "Ambos funcionam — \"If\" enfatiza possibilidade, \"When\" enfatiza que sempre que acontecer, faça X. Em conselhos, ambos são naturais."
+        },
+        {
+          "type": "fill_gap",
+          "sentence": "_____ winter comes, the days get shorter.",
+          "hint": "certeza sazonal (sempre acontece)",
+          "answer": "When",
+          "explanation": "Inverno é evento garantido todo ano — use \"when\". \"If winter comes\" soaria estranho porque inverno sempre vem."
+        },
+        {
+          "type": "fill_gap",
+          "sentence": "_____ you don't feel well, take a break.",
+          "hint": "possibilidade (pode ou não estar doente)",
+          "answer": "If",
+          "explanation": "Não está sempre doente — é variável. \"If you don't feel well\" — possibilidade."
+        },
+        {
+          "type": "fill_gap",
+          "sentence": "_____ I get home from work, I take off my shoes and sit down.",
+          "hint": "rotina diária garantida",
+          "answer": "When",
+          "explanation": "Chegar em casa do trabalho é parte da rotina. \"When I get home\" — sempre que isso acontece."
+        },
+        {
+          "type": "fix_error",
+          "sentence": "If the sun rises, the day starts.",
+          "hint": "O sol sempre nasce — use \"when\"",
+          "answer": "When the sun rises, the day starts.",
+          "explanation": "Eventos garantidos da natureza usam \"when\". \"If\" sugere dúvida — o sol vai nascer? Claro que sim."
+        },
+        {
+          "type": "fix_error",
+          "sentence": "When it snows tomorrow, I'll build a snowman.",
+          "hint": "Neve amanhã é incerto — use \"if\"",
+          "answer": "If it snows tomorrow, I'll build a snowman.",
+          "explanation": "Eventos futuros incertos pedem \"if\". \"When\" só funcionaria se você tivesse certeza absoluta que vai nevar."
+        },
+        {
+          "type": "read_answer",
+          "passage": "When the sun rises, the day begins. If it rains tomorrow, I'll stay inside. When I wake up, I have coffee. If you ever visit my city, I'll show you around.",
+          "question": "What does the speaker do when they wake up?",
+          "answer": "have coffee",
+          "explanation": "The text says \"When I wake up, I have coffee\" — routine that always happens."
+        }
+      ],
+      "listening_speaking": [
+        {
+          "text": "When the sun rises, it gets light.",
+          "context": "natural certainty"
+        },
+        {
+          "text": "If it rains tomorrow, I'll take an umbrella.",
+          "context": "uncertain weather"
+        },
+        {
+          "text": "When I wake up, I check my phone.",
+          "context": "daily routine"
+        },
+        {
+          "text": "If you're tired, you should rest.",
+          "context": "possibility advice"
+        },
+        {
+          "text": "When winter comes, the days get shorter.",
+          "context": "seasonal certainty"
+        }
+      ],
+      "roleplay": {
+        "scenario": "Charlotte testa sua intuição sobre \"when\" vs \"if\" — quer três frases onde você escolhe o correto baseado em certeza vs possibilidade.",
+        "voiced_by": "charlotte",
+        "persona": "Charlotte",
+        "persona_outfit": "charlotte_casual",
+        "time_budget_sec": 180,
+        "opening_line": "Three sentences — choose 'when' for certain things and 'if' for possible things.",
+        "objectives": [
+          {
+            "id": 1,
+            "label_pt": "Frase com 'when' (certeza ou rotina)",
+            "label_en": "Sentence with 'when' (certainty/routine)",
+            "hidden_prompt": "user uses 'When + present, present/will' for certain events or daily routine",
+            "hint_pt": "When I get home, I make dinner.",
+            "hint_en": "When I get home, I make dinner."
+          },
+          {
+            "id": 2,
+            "label_pt": "Frase com 'if' (possibilidade incerta)",
+            "label_en": "Sentence with 'if' (uncertain possibility)",
+            "hidden_prompt": "user uses 'If + present, will + base' for uncertain future",
+            "hint_pt": "If my friend calls, I'll meet up.",
+            "hint_en": "If my friend calls, I'll meet up."
+          },
+          {
+            "id": 3,
+            "label_pt": "Mais uma com 'when' ou 'if' apropriado",
+            "label_en": "One more with appropriate 'when' or 'if'",
+            "hidden_prompt": "user uses correct when/if based on certainty level",
+            "hint_pt": "When summer comes, I travel.",
+            "hint_en": "When summer comes, I travel."
+          }
+        ],
+        "closing_cue": "Charlotte fecha com \"When-if precision!\" quando obj_3 baterem.",
+        "suggested_flow": "**Suggested flow** (referencial, 6 turnos):\n\n1. **Charlotte**: \"Three sentences — choose 'when' for certain things and 'if' for possible things.\"\n2. **Student**: ~\"When I get home, I make dinner.\"\n3. **Charlotte**: \"Routine — good. Now uncertain?\"\n4. **Student**: ~\"If my friend calls, I'll meet up.\"\n5. **Charlotte**: \"Maybe yes, maybe no. Last one?\"\n6. **Student**: ~\"When summer comes, I travel.\"\n7. **Charlotte**: \"When-if precision!\"",
+        "evaluation_focus": [
+          "\"When\" for certain/routine events",
+          "\"If\" for possible/uncertain events",
+          "Awareness of certainty level"
+        ]
+      },
+      "guided_chat": {
+        "scenario": "Charlotte conversa sobre rotinas que sempre acontecem e planos que podem ou não acontecer — quer trocar exemplos com a distinção when/if clara.",
+        "voiced_by": "charlotte",
+        "persona": "Charlotte",
+        "persona_outfit": "charlotte_casual",
+        "intro_en": "Charlotte chats about routines vs possibilities. Practice when (certain) vs if (uncertain).",
+        "opening_message": "Tell me one thing you do every day, and one thing that depends on the weather.",
+        "objectives": [
+          {
+            "id": 1,
+            "label_pt": "Rotina diária com 'when'",
+            "label_en": "Daily routine with 'when'",
+            "hidden_prompt": "user uses 'When + present, present' for daily routine",
+            "hint_pt": "When I get to work, I check emails.",
+            "hint_en": "When I get to work, I check emails."
+          },
+          {
+            "id": 2,
+            "label_pt": "Algo que depende do tempo (with 'if')",
+            "label_en": "Something weather-dependent (with 'if')",
+            "hidden_prompt": "user uses 'If + present, will + base' for weather-dependent plans",
+            "hint_pt": "If it's sunny on Friday, I'll go to the park.",
+            "hint_en": "If it's sunny on Friday, I'll go to the park."
+          },
+          {
+            "id": 3,
+            "label_pt": "Perguntar à Charlotte",
+            "label_en": "Ask Charlotte",
+            "hidden_prompt": "user asks 'How about you?' or 'What's your routine/possibility?'",
+            "hint_pt": "How about you?",
+            "hint_en": "How about you?"
+          }
+        ],
+        "closing_cue": "Charlotte fecha com \"Time and chance!\" quando obj_3 baterem.",
+        "suggested_script": "**Script** (referencial, 7 turnos):\n\n1. **Charlotte**: \"Tell me one thing you do every day, and one thing that depends on the weather.\"\n2. **Student**: \"When I get to work, I check emails.\"\n3. **Charlotte**: \"Universal worker routine. Weather?\"\n4. **Student**: \"If it's sunny on Friday, I'll go to the park.\"\n5. **Charlotte**: \"Crossing fingers for Friday.\"\n6. **Student**: \"How about you?\"\n7. **Charlotte**: \"When I teach, I always learn something new. And if there's no rain Saturday, I'll go hiking. Time and chance!\"\n\n> I03 chat = LLM puro. Scaffold via hint_pt.\n\n---"
+      }
+    },
+    {
+      "id": "I04",
+      "title": "Conditional review",
+      "sub_cefr": "B1",
+      "grammar_focus": "Reviewing zero + first conditionals together",
+      "markers": [],
+      "real_life_context": "You mix general truths and specific predictions naturally in the same conversation.",
+      "grammar": [
+        {
+          "type": "multiple_choice",
+          "sentence": "If I _____ time tomorrow, I'll go to the gym.",
+          "options": [
+            "have",
+            "will have",
+            "had",
+            "am having"
+          ],
+          "answer": "have",
+          "explanation": "First conditional: \"if + present simple, will + base\". Após \"if\", nunca \"will\". \"Tomorrow\" indica futuro específico."
+        },
+        {
+          "type": "multiple_choice",
+          "sentence": "Water _____ if heated to 100.",
+          "options": [
+            "boils",
+            "will boil",
+            "is boiling"
+          ],
+          "answer": "boils",
+          "explanation": "Verdade universal sobre água → zero conditional. Present simple em ambas cláusulas."
+        },
+        {
+          "type": "word_bank",
+          "sentence": "If you _____ hard, you'll succeed in life.",
+          "choices": [
+            "work",
+            "will work",
+            "worked",
+            "are working"
+          ],
+          "answer": "work",
+          "explanation": "Após \"if\", present simple \"work\". A consequência \"succeed\" virá com \"will\" — first conditional motivacional."
+        },
+        {
+          "type": "word_bank",
+          "sentence": "When I _____ home, I cook dinner.",
+          "choices": [
+            "get",
+            "will get",
+            "got",
+            "am getting"
+          ],
+          "answer": "get",
+          "explanation": "Rotina diária → \"when + present, present\". \"I get home and cook\" — sempre verdade."
+        },
+        {
+          "type": "fill_gap",
+          "sentence": "If I _____ early enough, I'll have breakfast at home.",
+          "hint": "present simple de \"wake up\" 1ª pessoa",
+          "answer": "wake up",
+          "explanation": "\"Wake up\" — phrasal verb fixo no present simple. First conditional indica resultado futuro específico."
+        },
+        {
+          "type": "fill_gap",
+          "sentence": "Plants die if you don't _____ them regularly.",
+          "hint": "present simple de \"water\" (regar) com \"you\"",
+          "answer": "water",
+          "explanation": "Verdade universal sobre plantas → zero conditional. \"If you don't water them\" — present simple negativo com \"you\"."
+        },
+        {
+          "type": "fill_gap",
+          "sentence": "I'll be there if you _____ me to be.",
+          "hint": "present simple de \"want\" 2ª pessoa",
+          "answer": "want",
+          "explanation": "First conditional com promessa. \"Want\" — present simple base form com \"you\"."
+        },
+        {
+          "type": "fix_error",
+          "sentence": "If it will rain tomorrow, I'll stay home.",
+          "hint": "Nunca \"will\" depois de \"if\"",
+          "answer": "If it rains tomorrow, I'll stay home.",
+          "explanation": "Regra fundamental: a cláusula com \"if\" SEMPRE no present simple, mesmo em first conditional. \"Will\" só na consequência."
+        },
+        {
+          "type": "fix_error",
+          "sentence": "If you heat water, it will boils.",
+          "hint": "Verdade geral usa present simple em ambas cláusulas, sem \"will\" e sem -s extra",
+          "answer": "If you heat water, it boils.",
+          "explanation": "Para verdade universal, zero conditional. \"It boils\" — present simple 3ª pessoa. \"Will boils\" não existe — depois de \"will\" vem base form (boil)."
+        },
+        {
+          "type": "read_answer",
+          "passage": "If you study consistently, you learn faster — that's universal. If I have free time this weekend, I'll catch up on reading. Plants need water; if they don't get it, they die. When it gets dark, I usually feel sleepy.",
+          "question": "What does the speaker plan to do this weekend?",
+          "answer": "catch up on reading (or \"reading\")",
+          "explanation": "The text says \"If I have free time this weekend, I'll catch up on reading\" — specific future plan."
+        }
+      ],
+      "listening_speaking": [
+        {
+          "text": "If I have time tomorrow, I'll go to the gym.",
+          "context": "first specific"
+        },
+        {
+          "text": "Water boils if heated.",
+          "context": "zero universal"
+        },
+        {
+          "text": "If you work hard, you'll succeed.",
+          "context": "first motivational"
+        },
+        {
+          "text": "When I get home, I cook dinner.",
+          "context": "routine"
+        },
+        {
+          "text": "If I wake up early, I'll have a big breakfast.",
+          "context": "first specific"
+        }
+      ],
+      "roleplay": {
+        "scenario": "Charlotte propõe um \"mix\" de conditional types — você tem que produzir três frases combinando general truth, specific plan, e routine, mostrando que domina cada tipo.",
+        "voiced_by": "charlotte",
+        "persona": "Charlotte",
+        "persona_outfit": "charlotte_casual",
+        "time_budget_sec": 180,
+        "opening_line": "Mix zero and first conditionals — give me a general truth, a specific plan, and a routine.",
+        "objectives": [
+          {
+            "id": 1,
+            "label_pt": "Verdade geral (zero conditional)",
+            "label_en": "General truth (zero)",
+            "hidden_prompt": "user uses 'If + present, present' for universal truth",
+            "hint_pt": "If you exercise, you feel good.",
+            "hint_en": "If you exercise, you feel good."
+          },
+          {
+            "id": 2,
+            "label_pt": "Plano específico futuro (first conditional)",
+            "label_en": "Specific future plan (first)",
+            "hidden_prompt": "user uses 'If + present, will + base' for specific future",
+            "hint_pt": "If it rains tomorrow, I'll stay home.",
+            "hint_en": "If it rains tomorrow, I'll stay home."
+          },
+          {
+            "id": 3,
+            "label_pt": "Rotina ou ambição com 'when'/'if'",
+            "label_en": "Routine or ambition with 'when'/'if'",
+            "hidden_prompt": "user uses 'When/If + present, present/will' appropriately",
+            "hint_pt": "If I work hard, I'll achieve my goals.",
+            "hint_en": "If I work hard, I'll achieve my goals."
+          }
+        ],
+        "closing_cue": "Charlotte fecha com \"Conditional clarity achieved!\" quando obj_3 baterem.",
+        "suggested_flow": "**Suggested flow** (referencial, 6 turnos):\n\n1. **Charlotte**: \"Mix zero and first conditionals — give me a general truth, a specific plan, and a routine.\"\n2. **Student**: ~\"If you exercise, you feel good.\"\n3. **Charlotte**: \"Solid truth. Now specific?\"\n4. **Student**: ~\"If it rains tomorrow, I'll stay home.\"\n5. **Charlotte**: \"Cozy plan. Ambition or routine?\"\n6. **Student**: ~\"If I work hard, I'll achieve my goals.\"\n7. **Charlotte**: \"Conditional clarity achieved!\"",
+        "evaluation_focus": [
+          "Right type chosen per meaning",
+          "Structure correct (no \"will\" after \"if\")",
+          "Both conditional types in same conversation"
+        ]
+      },
+      "guided_chat": {
+        "scenario": "Charlotte abre uma conversa filosófica sobre regras de vida e planos imediatos — quer que você misture conditionals naturalmente.",
+        "voiced_by": "charlotte",
+        "persona": "Charlotte",
+        "persona_outfit": "charlotte_casual",
+        "intro_en": "Charlotte invites you to share life rules AND immediate plans. Use zero and first conditionals naturally.",
+        "opening_message": "Share a life rule you live by and something you might do tomorrow.",
+        "objectives": [
+          {
+            "id": 1,
+            "label_pt": "Regra de vida em zero conditional",
+            "label_en": "Life rule (zero conditional)",
+            "hidden_prompt": "user uses 'If/When + present, present' for personal life rule",
+            "hint_pt": "If you read more, you write better.",
+            "hint_en": "If you read more, you write better."
+          },
+          {
+            "id": 2,
+            "label_pt": "Plano para amanhã em first conditional",
+            "label_en": "Tomorrow's plan (first conditional)",
+            "hidden_prompt": "user uses 'If + present, will + base' for tomorrow",
+            "hint_pt": "If I finish work early, I'll relax.",
+            "hint_en": "If I finish work early, I'll relax."
+          },
+          {
+            "id": 3,
+            "label_pt": "Perguntar à Charlotte",
+            "label_en": "Ask Charlotte",
+            "hidden_prompt": "user asks 'How about you?' or 'What's your rule/plan?'",
+            "hint_pt": "How about you?",
+            "hint_en": "How about you?"
+          }
+        ],
+        "closing_cue": "Charlotte fecha com \"Two conditionals, one flow!\" quando obj_3 baterem.",
+        "suggested_script": "**Script** (referencial, 7 turnos):\n\n1. **Charlotte**: \"Share a life rule you live by and something you might do tomorrow.\"\n2. **Student**: \"If you read more, you write better.\"\n3. **Charlotte**: \"Truth. Writers are made of readers. Tomorrow?\"\n4. **Student**: \"If I finish work early, I'll relax.\"\n5. **Charlotte**: \"Earned rest is the best rest.\"\n6. **Student**: \"How about you?\"\n7. **Charlotte**: \"If I sleep well, I teach well. And if my morning is clear, I'll take a long walk before work. Two conditionals, one flow!\"\n\n> I04 chat = LLM puro. Scaffold via hint_pt.\n\n---"
+      }
+    },
+    {
+      "id": "I05",
+      "title": "Conditionals in context",
+      "sub_cefr": "B1",
+      "grammar_focus": "Full integration of zero + first conditionals in natural conversation",
+      "markers": [],
+      "real_life_context": "You speak conditionally without thinking — mixing truths, plans, and possibilities seamlessly.",
+      "grammar": [
+        {
+          "type": "multiple_choice",
+          "sentence": "If you _____ this medicine, you'll feel better.",
+          "options": [
+            "take",
+            "will take",
+            "took",
+            "are taking"
+          ],
+          "answer": "take",
+          "explanation": "First conditional: \"if + present simple, will + base\". Após \"if\" nunca \"will\"."
+        },
+        {
+          "type": "multiple_choice",
+          "sentence": "Water _____ at zero degrees Celsius.",
+          "options": [
+            "freezes",
+            "will freeze",
+            "froze",
+            "is freezing"
+          ],
+          "answer": "freezes",
+          "explanation": "Fato científico universal → present simple. \"Water freezes\" — 3ª pessoa."
+        },
+        {
+          "type": "word_bank",
+          "sentence": "If you _____ ice, it melts.",
+          "choices": [
+            "heat",
+            "will heat",
+            "heated",
+            "are heating"
+          ],
+          "answer": "heat",
+          "explanation": "Verdade universal → zero conditional. \"If you heat\" — present simple com \"you\"."
+        },
+        {
+          "type": "word_bank",
+          "sentence": "I _____ help you if you ask me to.",
+          "choices": [
+            "will",
+            "would",
+            "can",
+            "am"
+          ],
+          "answer": "will",
+          "explanation": "First conditional com oferta. \"I will help\" — promessa condicional."
+        },
+        {
+          "type": "fill_gap",
+          "sentence": "If I _____ free time this evening, I'll watch a movie.",
+          "hint": "present simple \"have\" com I",
+          "answer": "have",
+          "explanation": "First conditional. \"Have free time\" — present simple."
+        },
+        {
+          "type": "fill_gap",
+          "sentence": "Plants _____ if you don't water them — that's biology.",
+          "hint": "present simple plural \"die\"",
+          "answer": "die",
+          "explanation": "Verdade biológica universal → zero conditional. \"Plants die\" — plural present simple."
+        },
+        {
+          "type": "fill_gap",
+          "sentence": "_____ you study consistently, you make progress.",
+          "hint": "\"if\" ou \"when\" — verdade geral",
+          "answer": "If (or When)",
+          "explanation": "Ambos funcionam em verdades universais. \"If/When you study consistently\"."
+        },
+        {
+          "type": "fix_error",
+          "sentence": "If I have time, I travel a lot.",
+          "hint": "Para futuro específico, use will",
+          "answer": "If I have time, I'll travel a lot.",
+          "explanation": "Se o contexto é planejamento futuro específico, precisa de \"will\" na consequência. Sem \"will\", parece verdade geral (sempre quando tenho tempo, viajo)."
+        },
+        {
+          "type": "fix_error",
+          "sentence": "If you will be late, please call me.",
+          "hint": "Após \"if\", presente simples sempre",
+          "answer": "If you are late, please call me.",
+          "explanation": "A cláusula com \"if\" SEMPRE present simple — mesmo se a frase fala do futuro. \"If you are\" — present simple."
+        },
+        {
+          "type": "read_answer",
+          "passage": "If you take this medicine three times a day, you'll feel better in a week. If I finish work early tomorrow, I'll join you for dinner. When water freezes, it expands — that's why pipes burst in winter.",
+          "question": "When will the speaker join for dinner?",
+          "answer": "if I finish work early tomorrow (or \"tomorrow if work ends early\")",
+          "explanation": "The text says \"If I finish work early tomorrow, I'll join you for dinner\" — first conditional with specific plan."
+        }
+      ],
+      "listening_speaking": [
+        {
+          "text": "If you take this medicine, you'll feel better.",
+          "context": "specific advice"
+        },
+        {
+          "text": "Water freezes at zero degrees.",
+          "context": "scientific fact"
+        },
+        {
+          "text": "If you heat ice, it melts.",
+          "context": "universal truth"
+        },
+        {
+          "text": "I'll help you if you ask me to.",
+          "context": "conditional offer"
+        },
+        {
+          "text": "If I have time, I'll travel.",
+          "context": "specific plan"
+        }
+      ],
+      "roleplay": {
+        "scenario": "Charlotte propõe uma \"story conditional\" — você cria três frases conectadas usando zero e first conditional, formando uma pequena narrativa coerente sobre seus planos e princípios.",
+        "voiced_by": "charlotte",
+        "persona": "Charlotte",
+        "persona_outfit": "charlotte_casual",
+        "time_budget_sec": 180,
+        "opening_line": "Build a 'conditional story' — three connected sentences mixing zero and first conditionals.",
+        "objectives": [
+          {
+            "id": 1,
+            "label_pt": "Primeira frase com conditional (zero ou first)",
+            "label_en": "First conditional sentence",
+            "hidden_prompt": "user uses any conditional structure correctly",
+            "hint_pt": "If I save enough money, I'll travel to Japan.",
+            "hint_en": "If I save enough money, I'll travel to Japan."
+          },
+          {
+            "id": 2,
+            "label_pt": "Segunda frase conectada (verdade ou plano)",
+            "label_en": "Second connected sentence",
+            "hidden_prompt": "user uses another conditional that connects to the first",
+            "hint_pt": "If you don't sleep enough, you feel terrible the next day.",
+            "hint_en": "If you don't sleep enough, you feel terrible the next day."
+          },
+          {
+            "id": 3,
+            "label_pt": "Terceira frase fechando a história",
+            "label_en": "Third sentence closing the story",
+            "hidden_prompt": "user uses one more conditional to close the narrative",
+            "hint_pt": "If it's nice tomorrow, I'll walk to the office.",
+            "hint_en": "If it's nice tomorrow, I'll walk to the office."
+          }
+        ],
+        "closing_cue": "Charlotte fecha com \"Conditional storytelling!\" quando obj_3 baterem.",
+        "suggested_flow": "**Suggested flow** (referencial, 6 turnos):\n\n1. **Charlotte**: \"Build a 'conditional story' — three connected sentences mixing zero and first conditionals.\"\n2. **Student**: ~\"If I save enough money, I'll travel to Japan.\"\n3. **Charlotte**: \"Cool ambition. Truth?\"\n4. **Student**: ~\"If you don't sleep enough, you feel terrible the next day.\"\n5. **Charlotte**: \"Universal. Last one?\"\n6. **Student**: ~\"If it's nice tomorrow, I'll walk to the office.\"\n7. **Charlotte**: \"Conditional storytelling!\"",
+        "evaluation_focus": [
+          "Mix of zero and first conditionals",
+          "Each used correctly",
+          "Sentences connect into a coherent thought"
+        ]
+      },
+      "guided_chat": {
+        "scenario": "Charlotte conversa sobre como conditionals aparecem na vida real — em conselhos, planos, descobertas — e quer trocar exemplos pessoais com você.",
+        "voiced_by": "charlotte",
+        "persona": "Charlotte",
+        "persona_outfit": "charlotte_casual",
+        "intro_en": "Charlotte invites a free conditional conversation. Use zero and first conditionals as they naturally come to you.",
+        "opening_message": "Share an 'if-then' from your week — anything that comes to mind.",
+        "objectives": [
+          {
+            "id": 1,
+            "label_pt": "If-then sobre a semana",
+            "label_en": "If-then about the week",
+            "hidden_prompt": "user uses 'if + present, will + base' or 'if + present, present' about their week",
+            "hint_pt": "If I finish work early Friday, I'll cook a nice dinner.",
+            "hint_en": "If I finish work early Friday, I'll cook a nice dinner."
+          },
+          {
+            "id": 2,
+            "label_pt": "Outra observação ou plano",
+            "label_en": "Another observation or plan",
+            "hidden_prompt": "user uses another conditional structure",
+            "hint_pt": "If I get tired in the afternoon, I take a short break.",
+            "hint_en": "If I get tired in the afternoon, I take a short break."
+          },
+          {
+            "id": 3,
+            "label_pt": "Perguntar à Charlotte",
+            "label_en": "Ask Charlotte",
+            "hidden_prompt": "user asks 'How about you?' or 'What's your if-then?'",
+            "hint_pt": "How about you?",
+            "hint_en": "How about you?"
+          }
+        ],
+        "closing_cue": "Charlotte fecha com \"Life in conditionals!\" quando obj_3 baterem.",
+        "suggested_script": "**Script** (referencial, 7 turnos):\n\n1. **Charlotte**: \"Share an 'if-then' from your week — anything that comes to mind.\"\n2. **Student**: \"If I finish work early Friday, I'll cook a nice dinner.\"\n3. **Charlotte**: \"Friday cooking = best therapy. Anything else?\"\n4. **Student**: \"If I get tired in the afternoon, I take a short break.\"\n5. **Charlotte**: \"Wise — micro-breaks save productivity.\"\n6. **Student**: \"How about you?\"\n7. **Charlotte**: \"If I write 1000 words before noon, I feel accomplished for the day. And if I have a free Saturday, I'll go to the farmers' market. Life in conditionals!\"\n\n> I05 chat = LLM puro. Scaffold via hint_pt.\n\n---"
+      }
+    }
+  ],
+  "cross_unit_consolidation": [
+    "Zero conditional: If/When + present, present (verdades universais e rotinas)",
+    "First conditional: If + present, will + base (planos e previsões específicas futuras)",
+    "Distinção quando usar zero vs first (verdade vs predição)",
+    "Diferença \"when\" (certeza/rotina) vs \"if\" (possibilidade incerta)",
+    "Posição correta de \"will\" — apenas na cláusula consequência, nunca após \"if\""
+  ]
+}
