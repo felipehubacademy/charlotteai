@@ -162,33 +162,36 @@ export function LevelDropdown({ selectedLevel, currentLevel, onSelect }: Props) 
                             style={({ pressed }) => ({
                               flexDirection:    'row',
                               alignItems:       'center',
-                              paddingHorizontal:20,
-                              paddingVertical:  16,
+                              justifyContent:   'space-between',
+                              paddingHorizontal:22,
+                              paddingVertical:  14,
                               backgroundColor:  pressed && !isLocked ? `${color}12` : 'transparent',
                               opacity:          isLocked ? 0.7 : 1,
                             })}>
-                            {isActive && (
-                              <View style={{
-                                width: 8, height: 8, borderRadius: 4,
-                                backgroundColor: color,
-                                marginRight: 10,
-                              }} />
-                            )}
-                            <AppText
-                              numberOfLines={1}
-                              style={{
-                                flex:       1,
-                                fontSize:   15,
-                                fontWeight: isActive ? '900' : '700',
-                                color:      isLocked ? C.navyDim : color,
-                              }}>
-                              {LEVEL_SHORT[lvl]}
-                            </AppText>
+                            <View style={{ flexDirection: 'row', alignItems: 'center', flex: 1, minWidth: 0 }}>
+                              {isActive && (
+                                <View style={{
+                                  width: 8, height: 8, borderRadius: 4,
+                                  backgroundColor: color,
+                                  marginRight: 12,
+                                }} />
+                              )}
+                              <AppText
+                                numberOfLines={1}
+                                style={{
+                                  fontSize:   15,
+                                  fontWeight: isActive ? '900' : '700',
+                                  color:      isLocked ? C.navyDim : color,
+                                }}>
+                                {LEVEL_SHORT[lvl]}
+                              </AppText>
+                            </View>
                             {isLocked && (
                               <View style={{
                                 width: 22, height: 22, borderRadius: 11,
                                 backgroundColor: C.lockBg,
                                 alignItems: 'center', justifyContent: 'center',
+                                marginLeft: 12,
                               }}>
                                 <Lock size={11} color={C.navyDim} weight="fill" />
                               </View>
