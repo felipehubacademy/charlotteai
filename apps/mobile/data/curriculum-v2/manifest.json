@@ -289,8 +289,13 @@
         "id": "M13",
         "title": "Argumentação e persuasão",
         "file": "advanced/M13.json"
+      },
+      {
+        "id": "M14",
+        "title": "Linguagem literária",
+        "file": "advanced/M14.json"
       }
     ]
   },
-  "generated_at": "2026-05-30T22:29:38.309Z"
+  "generated_at": "2026-05-30T22:33:40.966Z"
 }
