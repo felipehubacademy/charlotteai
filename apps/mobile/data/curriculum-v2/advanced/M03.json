@@ -242,15 +242,18 @@
         },
         {
           "text": "What he did was apologise sincerely.",
-          "context": "action emphasis"
+          "context": "action emphasis",
+          "audio_url": "https://fnvjibzreepubageztoi.supabase.co/storage/v1/object/public/curriculum-audio/ls/advanced/375054a006f45bb3.flac"
         },
         {
           "text": "What matters most is how we treat people.",
-          "context": "value emphasis"
+          "context": "value emphasis",
+          "audio_url": "https://fnvjibzreepubageztoi.supabase.co/storage/v1/object/public/curriculum-audio/ls/advanced/f5d934029f86ac6c.flac"
         },
         {
           "text": "What this team needs is more autonomy.",
-          "context": "need emphasis"
+          "context": "need emphasis",
+          "audio_url": "https://fnvjibzreepubageztoi.supabase.co/storage/v1/object/public/curriculum-audio/ls/advanced/8030bdceed6b4dd2.flac"
         }
       ],
       "roleplay": {
@@ -379,23 +382,28 @@
       "listening_speaking": [
         {
           "text": "All I want is a quiet weekend.",
-          "context": "modest desire"
+          "context": "modest desire",
+          "audio_url": "https://fnvjibzreepubageztoi.supabase.co/storage/v1/object/public/curriculum-audio/ls/advanced/1ec44aacfb2c370c.flac"
         },
         {
           "text": "All she did was smile.",
-          "context": "minimal response"
+          "context": "minimal response",
+          "audio_url": "https://fnvjibzreepubageztoi.supabase.co/storage/v1/object/public/curriculum-audio/ls/advanced/d960cd5cd33befc4.flac"
         },
         {
           "text": "All he asked for was a chance.",
-          "context": "humble request"
+          "context": "humble request",
+          "audio_url": "https://fnvjibzreepubageztoi.supabase.co/storage/v1/object/public/curriculum-audio/ls/advanced/eaa40db925a008a2.flac"
         },
         {
           "text": "All we need is more time.",
-          "context": "sufficient condition"
+          "context": "sufficient condition",
+          "audio_url": "https://fnvjibzreepubageztoi.supabase.co/storage/v1/object/public/curriculum-audio/ls/advanced/a75539250191e338.flac"
         },
         {
           "text": "All they did was complain.",
-          "context": "diminishing act"
+          "context": "diminishing act",
+          "audio_url": "https://fnvjibzreepubageztoi.supabase.co/storage/v1/object/public/curriculum-audio/ls/advanced/19169ebcfd7da2cc.flac"
         }
       ],
       "roleplay": {
@@ -532,23 +540,28 @@
       "listening_speaking": [
         {
           "text": "It wasn't until I left that I understood.",
-          "context": "delayed clarity"
+          "context": "delayed clarity",
+          "audio_url": "https://fnvjibzreepubageztoi.supabase.co/storage/v1/object/public/curriculum-audio/ls/advanced/6c8fb26ae3bf841a.flac"
         },
         {
           "text": "It wasn't until last year that we connected again.",
-          "context": "late reunion"
+          "context": "late reunion",
+          "audio_url": "https://fnvjibzreepubageztoi.supabase.co/storage/v1/object/public/curriculum-audio/ls/advanced/554cc0d176e0efc9.flac"
         },
         {
           "text": "It wasn't until then that the penny dropped.",
-          "context": "colloquial realisation"
+          "context": "colloquial realisation",
+          "audio_url": "https://fnvjibzreepubageztoi.supabase.co/storage/v1/object/public/curriculum-audio/ls/advanced/9a71d8d37540a5f5.flac"
         },
         {
           "text": "It wasn't until I read it twice that I caught the irony.",
-          "context": "delayed comprehension"
+          "context": "delayed comprehension",
+          "audio_url": "https://fnvjibzreepubageztoi.supabase.co/storage/v1/object/public/curriculum-audio/ls/advanced/f74e8ba1cde39a8a.flac"
         },
         {
           "text": "It wasn't until the surgery that the diagnosis became clear.",
-          "context": "delayed clinical truth"
+          "context": "delayed clinical truth",
+          "audio_url": "https://fnvjibzreepubageztoi.supabase.co/storage/v1/object/public/curriculum-audio/ls/advanced/f4bf6991f76408c3.flac"
         }
       ],
       "roleplay": {
@@ -678,23 +691,28 @@
       "listening_speaking": [
         {
           "text": "The reason I'm leaving is that I want a change.",
-          "context": "explanation cleft"
+          "context": "explanation cleft",
+          "audio_url": "https://fnvjibzreepubageztoi.supabase.co/storage/v1/object/public/curriculum-audio/ls/advanced/b2d1f829904c5dae.flac"
         },
         {
           "text": "The thing that surprises me is how calm she is.",
-          "context": "observation cleft"
+          "context": "observation cleft",
+          "audio_url": "https://fnvjibzreepubageztoi.supabase.co/storage/v1/object/public/curriculum-audio/ls/advanced/5f380baebd1037ce.flac"
         },
         {
           "text": "The place where we met is now a parking lot.",
-          "context": "locative cleft"
+          "context": "locative cleft",
+          "audio_url": "https://fnvjibzreepubageztoi.supabase.co/storage/v1/object/public/curriculum-audio/ls/advanced/7c2fb9fc6453fd97.flac"
         },
         {
           "text": "The time when I felt most alive was that summer in Spain.",
-          "context": "temporal cleft"
+          "context": "temporal cleft",
+          "audio_url": "https://fnvjibzreepubageztoi.supabase.co/storage/v1/object/public/curriculum-audio/ls/advanced/8ec8217a09495255.flac"
         },
         {
           "text": "The reason it works is consistency, not talent.",
-          "context": "causal cleft"
+          "context": "causal cleft",
+          "audio_url": "https://fnvjibzreepubageztoi.supabase.co/storage/v1/object/public/curriculum-audio/ls/advanced/7dfdcf3034d218bd.flac"
         }
       ],
       "roleplay": {

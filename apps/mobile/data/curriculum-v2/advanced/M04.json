@@ -83,23 +83,28 @@
       "listening_speaking": [
         {
           "text": "I suggest that he be more careful.",
-          "context": "formal advice with \"be\""
+          "context": "formal advice with \"be\"",
+          "audio_url": "https://fnvjibzreepubageztoi.supabase.co/storage/v1/object/public/curriculum-audio/ls/advanced/ebd1299534bf03a1.flac"
         },
         {
           "text": "They demand that she resign.",
-          "context": "base form mandate"
+          "context": "base form mandate",
+          "audio_url": "https://fnvjibzreepubageztoi.supabase.co/storage/v1/object/public/curriculum-audio/ls/advanced/0046a23d18f7f54d.flac"
         },
         {
           "text": "It is essential that we act now.",
-          "context": "base form after adjective"
+          "context": "base form after adjective",
+          "audio_url": "https://fnvjibzreepubageztoi.supabase.co/storage/v1/object/public/curriculum-audio/ls/advanced/a389a3cc5b694ff6.flac"
         },
         {
           "text": "I recommend that you take the train.",
-          "context": "base form recommendation"
+          "context": "base form recommendation",
+          "audio_url": "https://fnvjibzreepubageztoi.supabase.co/storage/v1/object/public/curriculum-audio/ls/advanced/a69652e88fafc815.flac"
         },
         {
           "text": "The judge ordered that the report be filed by Friday.",
-          "context": "passive subjunctive in formal directive"
+          "context": "passive subjunctive in formal directive",
+          "audio_url": "https://fnvjibzreepubageztoi.supabase.co/storage/v1/object/public/curriculum-audio/ls/advanced/b911df93d13b661a.flac"
         }
       ],
       "roleplay": {
@@ -228,23 +233,28 @@
       "listening_speaking": [
         {
           "text": "It is essential that we act now.",
-          "context": "necessity + base form"
+          "context": "necessity + base form",
+          "audio_url": "https://fnvjibzreepubageztoi.supabase.co/storage/v1/object/public/curriculum-audio/ls/advanced/a389a3cc5b694ff6.flac"
         },
         {
           "text": "It is vital that he be present.",
-          "context": "necessity + passive subjunctive"
+          "context": "necessity + passive subjunctive",
+          "audio_url": "https://fnvjibzreepubageztoi.supabase.co/storage/v1/object/public/curriculum-audio/ls/advanced/8cee4b07c3b15dc3.flac"
         },
         {
           "text": "It is crucial that no one be left behind.",
-          "context": "passive subjunctive with negative"
+          "context": "passive subjunctive with negative",
+          "audio_url": "https://fnvjibzreepubageztoi.supabase.co/storage/v1/object/public/curriculum-audio/ls/advanced/cd87fcd775e43217.flac"
         },
         {
           "text": "It is imperative that the protocol be followed.",
-          "context": "formal directive"
+          "context": "formal directive",
+          "audio_url": "https://fnvjibzreepubageztoi.supabase.co/storage/v1/object/public/curriculum-audio/ls/advanced/0f9c20c8d211c92d.flac"
         },
         {
           "text": "It is important that she feel welcome.",
-          "context": "base \"feel\" not \"feels\""
+          "context": "base \"feel\" not \"feels\"",
+          "audio_url": "https://fnvjibzreepubageztoi.supabase.co/storage/v1/object/public/curriculum-audio/ls/advanced/2622087836d9a1ec.flac"
         }
       ],
       "roleplay": {
@@ -372,23 +382,28 @@
       "listening_speaking": [
         {
           "text": "I wish I were taller.",
-          "context": "universal \"were\" wish"
+          "context": "universal \"were\" wish",
+          "audio_url": "https://fnvjibzreepubageztoi.supabase.co/storage/v1/object/public/curriculum-audio/ls/advanced/19399ab1749e8c97.flac"
         },
         {
           "text": "If she were here, she'd handle it.",
-          "context": "formal second conditional"
+          "context": "formal second conditional",
+          "audio_url": "https://fnvjibzreepubageztoi.supabase.co/storage/v1/object/public/curriculum-audio/ls/advanced/d5a161502cfc9d61.flac"
         },
         {
           "text": "If I were you, I'd stay.",
-          "context": "advice cleft"
+          "context": "advice cleft",
+          "audio_url": "https://fnvjibzreepubageztoi.supabase.co/storage/v1/object/public/curriculum-audio/ls/advanced/0295b89c78171f5b.flac"
         },
         {
           "text": "I wish it were summer.",
-          "context": "weather wish"
+          "context": "weather wish",
+          "audio_url": "https://fnvjibzreepubageztoi.supabase.co/storage/v1/object/public/curriculum-audio/ls/advanced/2c89d1301d6bd2d9.flac"
         },
         {
           "text": "He acts as if he were the boss.",
-          "context": "comparison + subjunctive"
+          "context": "comparison + subjunctive",
+          "audio_url": "https://fnvjibzreepubageztoi.supabase.co/storage/v1/object/public/curriculum-audio/ls/advanced/94d6dc5c77fd0987.flac"
         }
       ],
       "roleplay": {
@@ -517,23 +532,28 @@
       "listening_speaking": [
         {
           "text": "Speak softly, lest you wake the baby.",
-          "context": "formal warning"
+          "context": "formal warning",
+          "audio_url": "https://fnvjibzreepubageztoi.supabase.co/storage/v1/object/public/curriculum-audio/ls/advanced/f49bfd2cd6ea3a0d.flac"
         },
         {
           "text": "Be that as it may, we must proceed.",
-          "context": "concession + resolve"
+          "context": "concession + resolve",
+          "audio_url": "https://fnvjibzreepubageztoi.supabase.co/storage/v1/object/public/curriculum-audio/ls/advanced/502d873fd1998164.flac"
         },
         {
           "text": "Come what may, I'll be there.",
-          "context": "unconditional commitment"
+          "context": "unconditional commitment",
+          "audio_url": "https://fnvjibzreepubageztoi.supabase.co/storage/v1/object/public/curriculum-audio/ls/advanced/6b669c292dc54ae2.flac"
         },
         {
           "text": "Suffice it to say, the project is over.",
-          "context": "understatement"
+          "context": "understatement",
+          "audio_url": "https://fnvjibzreepubageztoi.supabase.co/storage/v1/object/public/curriculum-audio/ls/advanced/0a1eb13122b9366d.flac"
         },
         {
           "text": "So be it.",
-          "context": "acceptance of inevitable"
+          "context": "acceptance of inevitable",
+          "audio_url": "https://fnvjibzreepubageztoi.supabase.co/storage/v1/object/public/curriculum-audio/ls/advanced/9643c70c1a644c4d.flac"
         }
       ],
       "roleplay": {
@@ -659,23 +679,28 @@
       "listening_speaking": [
         {
           "text": "I suggest that he reconsider his approach.",
-          "context": "mandative"
+          "context": "mandative",
+          "audio_url": "https://fnvjibzreepubageztoi.supabase.co/storage/v1/object/public/curriculum-audio/ls/advanced/dfebadc7a08dcc77.flac"
         },
         {
           "text": "It is vital that the policy be enforced.",
-          "context": "passive subjunctive"
+          "context": "passive subjunctive",
+          "audio_url": "https://fnvjibzreepubageztoi.supabase.co/storage/v1/object/public/curriculum-audio/ls/advanced/ea7fb96061b17e90.flac"
         },
         {
           "text": "I wish I were braver.",
-          "context": "hypothetical past subjunctive"
+          "context": "hypothetical past subjunctive",
+          "audio_url": "https://fnvjibzreepubageztoi.supabase.co/storage/v1/object/public/curriculum-audio/ls/advanced/ec6d7bc7825f94ee.flac"
         },
         {
           "text": "Come what may, I'll see it through.",
-          "context": "fossilised"
+          "context": "fossilised",
+          "audio_url": "https://fnvjibzreepubageztoi.supabase.co/storage/v1/object/public/curriculum-audio/ls/advanced/bdafbab267e99ffb.flac"
         },
         {
           "text": "Speak quietly, lest she overhear.",
-          "context": "literary subjunctive"
+          "context": "literary subjunctive",
+          "audio_url": "https://fnvjibzreepubageztoi.supabase.co/storage/v1/object/public/curriculum-audio/ls/advanced/ebecf68e83cc9f06.flac"
         }
       ],
       "roleplay": {
