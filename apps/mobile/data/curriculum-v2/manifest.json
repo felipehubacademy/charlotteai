@@ -20,8 +20,13 @@
         "id": "M04",
         "title": "Em casa",
         "file": "novice/M04.json"
+      },
+      {
+        "id": "M05",
+        "title": "Meu dia-a-dia",
+        "file": "novice/M05.json"
       }
     ]
   },
-  "generated_at": "2026-05-30T17:22:03.052Z"
+  "generated_at": "2026-05-30T17:30:39.671Z"
 }

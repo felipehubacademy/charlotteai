@@ -1,0 +1,1031 @@
+{
+  "id": "M05",
+  "title": "Meu dia-a-dia",
+  "level": "Novice",
+  "block": "A1",
+  "units_range": "N01–N05",
+  "theme": "Rotina diária — acordar, trabalhar, comer, ir, voltar",
+  "goal": "Aluno sai sabendo descrever a rotina diária com present simple positivo (1ª/2ª pessoa: I/you/we/they), usar verbos cotidianos (wake up, work, study, eat, drink, go, come) e advérbios de frequência (always, usually, sometimes, never).",
+  "connects_to": "M06 (O que faço — 3ª pessoa) — depois de falar da própria rotina, aprende a falar da rotina de outras pessoas (he/she works) com -s e negativas don't/doesn't.",
+  "module_chunks": [
+    "wake up / get up / sleep / go to bed",
+    "have breakfast / have lunch / have dinner",
+    "eat / drink",
+    "work / study",
+    "go / come",
+    "come home / come back",
+    "I work / you work / we work / they work",
+    "I study / I eat / I drink",
+    "I go to + place",
+    "I come home at + time",
+    "by bus / by car / by foot / on foot",
+    "at + time (at seven, at noon, at six-thirty)",
+    "on + day (on Mondays, on Sundays, on weekends)",
+    "every day / every morning / every weekend",
+    "always / usually / sometimes / never",
+    "I always + verb",
+    "I never + verb",
+    "I am always + adjective",
+    "from + time + to + time (from nine to five)",
+    "in the morning / in the afternoon / in the evening",
+    "at night"
+  ],
+  "units": [
+    {
+      "id": "N01",
+      "title": "Acordo cedo",
+      "sub_cefr": "A1",
+      "grammar_focus": "Present simple positivo (I/we) + verbos da manhã (wake up, sleep, have)",
+      "markers": [],
+      "real_life_context": "Você descreve sua rotina matinal para um amigo curioso sobre como você começa o dia.",
+      "grammar": [
+        {
+          "type": "multiple_choice",
+          "sentence": "I _____ at seven.",
+          "options": [
+            "wake up",
+            "wakes up",
+            "waked up"
+          ],
+          "answer": "wake up",
+          "explanation": "Com \"I\" no present simple positivo, usa o verbo na forma base: \"wake up\" (não \"wakes up\", que é 3ª pessoa). \"Wake up\" é phrasal verb fixo — sempre junto."
+        },
+        {
+          "type": "multiple_choice",
+          "sentence": "You _____ early on Sundays.",
+          "options": [
+            "sleep",
+            "sleeps",
+            "slept"
+          ],
+          "answer": "sleep",
+          "explanation": "Com \"you\" sempre usa forma base do verbo: \"sleep\" (sem -s, sem passado). \"Sleeps\" seria 3ª pessoa. \"Slept\" é passado."
+        },
+        {
+          "type": "word_bank",
+          "sentence": "I _____ coffee in the morning.",
+          "choices": [
+            "drink",
+            "drinks",
+            "drank",
+            "drinking"
+          ],
+          "answer": "drink",
+          "explanation": "\"I drink\" — forma base com \"I\". \"Drinks\" seria 3ª pessoa (M06). \"Drank\" é passado. \"Drinking\" precisa de \"to be\" antes."
+        },
+        {
+          "type": "word_bank",
+          "sentence": "We _____ at six-thirty.",
+          "choices": [
+            "wake up",
+            "wakes up",
+            "woken up",
+            "waking up"
+          ],
+          "answer": "wake up",
+          "explanation": "\"We\" usa forma base: \"wake up\". \"Wake up\" é phrasal verb — duas palavras juntas com o mesmo significado de \"acordar\"."
+        },
+        {
+          "type": "fill_gap",
+          "sentence": "I _____ at eleven on weekends.",
+          "hint": "Verbo \"dormir\" forma base",
+          "answer": "sleep",
+          "explanation": "\"I sleep at eleven\" = \"Eu durmo às onze\". Forma base do verbo com \"I\". \"On weekends\" indica padrão semanal."
+        },
+        {
+          "type": "fill_gap",
+          "sentence": "I _____ breakfast at seven-thirty.",
+          "hint": "Verbo pra refeição (forma base)",
+          "answer": "have",
+          "explanation": "\"I have breakfast\" = \"Tomo café da manhã\". \"Have\" aqui é verbo lexical (comer/tomar), não \"have got\" (possuir)."
+        },
+        {
+          "type": "fill_gap",
+          "sentence": "We _____ orange juice every morning.",
+          "hint": "Verbo \"beber\" forma base",
+          "answer": "drink",
+          "explanation": "\"We drink orange juice\" — forma base com \"we\" (plural). \"Drink\" sem -s."
+        },
+        {
+          "type": "fix_error",
+          "sentence": "I wakes up at seven.",
+          "hint": "Com \"I\" o verbo não leva -s",
+          "answer": "I wake up at seven.",
+          "explanation": "Apenas a 3ª pessoa (he/she/it) leva -s no present simple. Com \"I\" sempre forma base: \"I wake up\", não \"I wakes up\"."
+        },
+        {
+          "type": "fix_error",
+          "sentence": "You drinks coffee fast.",
+          "hint": "Com \"you\" o verbo não leva -s",
+          "answer": "You drink coffee fast.",
+          "explanation": "Com \"you\" usa forma base: \"you drink\". O -s é só pra he/she/it (M06). Pra I/you/we/they sempre sem -s."
+        },
+        {
+          "type": "read_answer",
+          "passage": "I wake up at six. I have coffee at six-thirty. I eat breakfast at seven. I go to work at eight.",
+          "question": "At what time do I wake up?",
+          "answer": "six",
+          "explanation": "The text says \"I wake up at six\". 6."
+        }
+      ],
+      "listening_speaking": [
+        {
+          "text": "I wake up at seven.",
+          "context": "chunk de manhã com horário"
+        },
+        {
+          "text": "I have coffee in the morning.",
+          "context": "refeição matinal"
+        },
+        {
+          "text": "I drink water all day.",
+          "context": "hábito de bebida"
+        },
+        {
+          "text": "We eat breakfast together.",
+          "context": "plural we"
+        },
+        {
+          "text": "I sleep at eleven.",
+          "context": "hora de dormir"
+        }
+      ],
+      "roleplay": {
+        "scenario": "Charlotte pergunta sobre sua manhã — você descreve sua rotina matinal usando present simple.",
+        "voiced_by": "charlotte",
+        "persona": "Charlotte",
+        "persona_outfit": "charlotte_casual",
+        "time_budget_sec": 90,
+        "opening_line": "Tell me about your morning routine.",
+        "objectives": [
+          {
+            "id": 1,
+            "label_pt": "Dizer que horas você acorda",
+            "label_en": "Say what time you wake up",
+            "hidden_prompt": "user states wake-up time with 'I wake up at + time' or 'I get up at + time'",
+            "hint_pt": "I wake up at seven.",
+            "hint_en": "I wake up at seven."
+          },
+          {
+            "id": 2,
+            "label_pt": "Dizer o que você toma no café da manhã",
+            "label_en": "Say what you have for breakfast",
+            "hidden_prompt": "user mentions breakfast with 'I have + food/drink', 'I eat + food', or 'I drink + drink'",
+            "hint_pt": "I have coffee.",
+            "hint_en": "I have coffee."
+          },
+          {
+            "id": 3,
+            "label_pt": "Dizer outra coisa que você faz de manhã",
+            "label_en": "Say one more morning activity",
+            "hidden_prompt": "user mentions another morning activity with 'I + verb + ...' (any base form verb: study, go, drink, eat, etc.)",
+            "hint_pt": "I go to work.",
+            "hint_en": "I go to work."
+          }
+        ],
+        "closing_cue": "Charlotte fecha com \"Nice morning!\" quando obj_3 baterem.",
+        "suggested_flow": "**Suggested flow** (referencial, 6 turnos):\n\n1. **Charlotte**: \"Tell me about your morning routine.\"\n2. **Student**: ~\"I wake up at seven.\"\n3. **Charlotte**: \"Cool. What about breakfast?\"\n4. **Student**: ~\"I have coffee.\"\n5. **Charlotte**: \"And then?\"\n6. **Student**: ~\"I go to work.\"\n7. **Charlotte**: \"Nice morning!\"",
+        "evaluation_focus": [
+          "Aluno usa verbo na forma base (sem -s)",
+          "Aluno usa chunks \"wake up at + time\", \"I have + food/drink\"",
+          "Pronúncia clara de \"wake up\", \"have\", \"drink\""
+        ]
+      },
+      "guided_chat": {
+        "scenario": "Charlotte conversa sobre sua rotina matinal pelo chat.",
+        "voiced_by": "charlotte",
+        "persona": "Charlotte",
+        "persona_outfit": "charlotte_casual",
+        "intro_pt": "Charlotte abre um chat sobre sua manhã. Pratica horários, refeições, e uma terceira atividade — tudo com 'I + verbo'.",
+        "opening_message": "Tell me about your morning.",
+        "objectives": [
+          {
+            "id": 1,
+            "label_pt": "Dizer que horas você acorda",
+            "label_en": "Say wake-up time",
+            "hidden_prompt": "user says wake-up time with 'I wake up at + time'",
+            "hint_pt": "I wake up at seven.",
+            "hint_en": "I wake up at seven."
+          },
+          {
+            "id": 2,
+            "label_pt": "Dizer o que você toma no café da manhã",
+            "label_en": "Say what you have for breakfast",
+            "hidden_prompt": "user mentions breakfast with 'I have + food/drink' or 'I eat/drink + something'",
+            "hint_pt": "I have toast and coffee.",
+            "hint_en": "I have toast and coffee."
+          },
+          {
+            "id": 3,
+            "label_pt": "Dizer outra atividade matinal",
+            "label_en": "Mention one more morning activity",
+            "hidden_prompt": "user mentions another morning activity with 'I + verb + ...'",
+            "hint_pt": "I go to work at eight.",
+            "hint_en": "I go to work at eight."
+          }
+        ],
+        "closing_cue": "Charlotte encerra com \"Sounds like a great morning routine!\" quando obj_3 baterem.",
+        "suggested_script": "**Script** (referencial, 7 turnos):\n\n1. **Charlotte**: \"Tell me about your morning.\"\n2. **Student**: \"I wake up at seven.\"\n3. **Charlotte**: \"Nice. Breakfast?\"\n4. **Student**: \"I have toast and coffee.\"\n5. **Charlotte**: \"Good fuel. Then what?\"\n6. **Student**: \"I go to work at eight.\"\n7. **Charlotte**: \"Sounds like a great morning routine!\"\n\n> N01 chat = LLM puro. Scaffold aparece via hint_pt da objective pendente.\n\n---"
+      }
+    },
+    {
+      "id": "N02",
+      "title": "Eu trabalho, eu estudo",
+      "sub_cefr": "A1",
+      "grammar_focus": "Present simple positivo + verbos work, study + lugares",
+      "markers": [],
+      "real_life_context": "Alguém quer saber o que você faz da vida — trabalho, estudo, onde, com quem.",
+      "grammar": [
+        {
+          "type": "multiple_choice",
+          "sentence": "I _____ in an office.",
+          "options": [
+            "work",
+            "works",
+            "worked"
+          ],
+          "answer": "work",
+          "explanation": "Com \"I\" forma base: \"I work\". \"Works\" seria 3ª pessoa (he/she/it works). \"Worked\" é passado (M15)."
+        },
+        {
+          "type": "multiple_choice",
+          "sentence": "We _____ English every day.",
+          "options": [
+            "study",
+            "studies",
+            "studied"
+          ],
+          "answer": "study",
+          "explanation": "Com \"we\" forma base: \"study\". Plural não leva -s no verbo. \"Studies\" seria 3ª pessoa singular."
+        },
+        {
+          "type": "word_bank",
+          "sentence": "I _____ from home.",
+          "choices": [
+            "work",
+            "works",
+            "working",
+            "worked"
+          ],
+          "answer": "work",
+          "explanation": "\"I work from home\" — forma base. \"Working\" precisa de \"to be\" antes (present continuous, M09)."
+        },
+        {
+          "type": "word_bank",
+          "sentence": "You _____ at university.",
+          "choices": [
+            "study",
+            "studies",
+            "studying",
+            "studied"
+          ],
+          "answer": "study",
+          "explanation": "Com \"you\" sempre forma base: \"study\". -s é só pra he/she/it."
+        },
+        {
+          "type": "fill_gap",
+          "sentence": "I _____ from nine to five.",
+          "hint": "Verbo \"trabalhar\" forma base",
+          "answer": "work",
+          "explanation": "\"I work\" — forma base. \"From nine to five\" é expressão padrão pra horário comercial."
+        },
+        {
+          "type": "fill_gap",
+          "sentence": "We _____ English on Mondays and Wednesdays.",
+          "hint": "Verbo \"estudar\"",
+          "answer": "study",
+          "explanation": "\"We study English\" — pronome plural com forma base. Sem -s."
+        },
+        {
+          "type": "fill_gap",
+          "sentence": "I _____ in a hospital. I am a doctor.",
+          "hint": "Verbo \"trabalhar\"",
+          "answer": "work",
+          "explanation": "\"I work in a hospital\" — onde trabalha. Note a diferença: \"I am a doctor\" = profissão; \"I work in a hospital\" = local."
+        },
+        {
+          "type": "fix_error",
+          "sentence": "I works in an office.",
+          "hint": "Com \"I\" o verbo não leva -s",
+          "answer": "I work in an office.",
+          "explanation": "-s é só pra he/she/it (M06). Com \"I\", \"you\", \"we\", \"they\" sempre forma base. \"I work\", não \"I works\"."
+        },
+        {
+          "type": "fix_error",
+          "sentence": "We studies English.",
+          "hint": "Pronome plural não leva -s no verbo",
+          "answer": "We study English.",
+          "explanation": "\"We\" é plural, então verbo forma base: \"We study\". O -s é só pra terceira pessoa singular."
+        },
+        {
+          "type": "read_answer",
+          "passage": "I work in a big company. I study English in the morning. Lucas and I work in the same office.",
+          "question": "Where does the speaker work?",
+          "answer": "in a big company",
+          "explanation": "The text says \"I work in a big company\"."
+        }
+      ],
+      "listening_speaking": [
+        {
+          "text": "I work in an office.",
+          "context": "work + place"
+        },
+        {
+          "text": "I study English every day.",
+          "context": "study chunk"
+        },
+        {
+          "text": "We work from home.",
+          "context": "plural we"
+        },
+        {
+          "text": "I work from nine to five.",
+          "context": "work schedule"
+        },
+        {
+          "text": "I study at university.",
+          "context": "study + place"
+        }
+      ],
+      "roleplay": {
+        "scenario": "Charlotte pergunta sobre sua semana de trabalho ou estudo — onde, o que, com quem.",
+        "voiced_by": "charlotte",
+        "persona": "Charlotte",
+        "persona_outfit": "charlotte_casual",
+        "time_budget_sec": 90,
+        "opening_line": "Tell me about your week. Start with work or study.",
+        "objectives": [
+          {
+            "id": 1,
+            "label_pt": "Dizer onde você trabalha ou estuda",
+            "label_en": "Say where you work or study",
+            "hidden_prompt": "user says where they work or study with 'I work in/at + place' or 'I study at + place'",
+            "hint_pt": "I work in an office.",
+            "hint_en": "I work in an office."
+          },
+          {
+            "id": 2,
+            "label_pt": "Dizer o que você estuda ou faz no trabalho",
+            "label_en": "Say what you study or do at work",
+            "hidden_prompt": "user says what they study/do with 'I study + subject' or 'I + verb in present simple'",
+            "hint_pt": "I study English.",
+            "hint_en": "I study English."
+          },
+          {
+            "id": 3,
+            "label_pt": "Dizer com quem você trabalha ou estuda",
+            "label_en": "Say who you work or study with",
+            "hidden_prompt": "user mentions colleagues/classmates with 'I work with + people' or 'We work/study together'",
+            "hint_pt": "I work with great people.",
+            "hint_en": "I work with great people."
+          }
+        ],
+        "closing_cue": "Charlotte fecha com \"Sounds like a busy week!\" quando obj_3 baterem.",
+        "suggested_flow": "**Suggested flow** (referencial, 6 turnos):\n\n1. **Charlotte**: \"Tell me about your week. Start with work or study.\"\n2. **Student**: ~\"I work in an office.\"\n3. **Charlotte**: \"What do you do there?\"\n4. **Student**: ~\"I study English at lunch.\" (or another verb)\n5. **Charlotte**: \"Cool. Any teammates?\"\n6. **Student**: ~\"I work with great people.\"\n7. **Charlotte**: \"Sounds like a busy week!\"",
+        "evaluation_focus": [
+          "Aluno usa \"I work in/at + place\" ou \"I study at/in + place\"",
+          "Verbo na forma base (sem -s)",
+          "Chunks naturais: \"from nine to five\", \"with great people\""
+        ]
+      },
+      "guided_chat": {
+        "scenario": "Charlotte abre chat sobre seu trabalho ou estudos.",
+        "voiced_by": "charlotte",
+        "persona": "Charlotte",
+        "persona_outfit": "charlotte_casual",
+        "intro_pt": "Charlotte abre um chat sobre o que você faz da vida. Pratica falar de trabalho, estudo, e devolver a pergunta.",
+        "opening_message": "Hey! Tell me about your work.",
+        "objectives": [
+          {
+            "id": 1,
+            "label_pt": "Dizer onde você trabalha",
+            "label_en": "Say where you work",
+            "hidden_prompt": "user states workplace with 'I work in/at + place'",
+            "hint_pt": "I work in a hospital.",
+            "hint_en": "I work in a hospital."
+          },
+          {
+            "id": 2,
+            "label_pt": "Dizer o que você estuda",
+            "label_en": "Say what you study",
+            "hidden_prompt": "user states what they study with 'I study + subject/language' or 'I study at + place'",
+            "hint_pt": "I study English.",
+            "hint_en": "I study English."
+          },
+          {
+            "id": 3,
+            "label_pt": "Perguntar sobre o trabalho da Charlotte",
+            "label_en": "Ask about Charlotte's work",
+            "hidden_prompt": "user asks Charlotte about her work with 'how about you', 'and yours', or 'and you'",
+            "hint_pt": "How about you?",
+            "hint_en": "How about you?"
+          }
+        ],
+        "closing_cue": "Charlotte encerra com \"Cool! Sounds good.\" quando obj_3 baterem.",
+        "suggested_script": "**Script** (referencial, 7 turnos):\n\n1. **Charlotte**: \"Hey! Tell me about your work.\"\n2. **Student**: \"I work in a hospital.\"\n3. **Charlotte**: \"Wow. Anything you study on the side?\"\n4. **Student**: \"I study English.\"\n5. **Charlotte**: \"Nice. We're chatting in English right now!\"\n6. **Student**: \"How about you?\"\n7. **Charlotte**: \"I'm a tutor here. Cool! Sounds good.\"\n\n> N02 chat = LLM puro. Scaffold aparece via hint_pt da objective pendente.\n\n---"
+      }
+    },
+    {
+      "id": "N03",
+      "title": "O que como",
+      "sub_cefr": "A1",
+      "grammar_focus": "Present simple positivo + eat/drink/have + refeições",
+      "markers": [],
+      "real_life_context": "Você descreve seus hábitos alimentares — o que come no café da manhã, almoço e jantar.",
+      "grammar": [
+        {
+          "type": "multiple_choice",
+          "sentence": "I _____ pizza on Fridays.",
+          "options": [
+            "eat",
+            "eats",
+            "eating"
+          ],
+          "answer": "eat",
+          "explanation": "Com \"I\" forma base: \"I eat\". \"Eats\" seria 3ª pessoa (M06). \"Eating\" precisa de \"to be\" antes (present continuous)."
+        },
+        {
+          "type": "multiple_choice",
+          "sentence": "We _____ water all day.",
+          "options": [
+            "drink",
+            "drinks",
+            "drinking"
+          ],
+          "answer": "drink",
+          "explanation": "Com \"we\" forma base: \"drink\". Plural não leva -s no verbo."
+        },
+        {
+          "type": "word_bank",
+          "sentence": "I _____ breakfast at seven.",
+          "choices": [
+            "have",
+            "has",
+            "having",
+            "haves"
+          ],
+          "answer": "have",
+          "explanation": "\"I have breakfast\" — forma base com \"I\". Aqui \"have\" é verbo lexical (comer/tomar refeição), não \"have got\" (possuir)."
+        },
+        {
+          "type": "word_bank",
+          "sentence": "We _____ dinner at eight.",
+          "choices": [
+            "have",
+            "has",
+            "having",
+            "haves"
+          ],
+          "answer": "have",
+          "explanation": "\"We have dinner\" — plural com forma base. \"Have dinner\" = \"jantar\". Chunk fixo pra refeições."
+        },
+        {
+          "type": "fill_gap",
+          "sentence": "I _____ a sandwich for lunch.",
+          "hint": "Verbo \"comer\"",
+          "answer": "eat",
+          "explanation": "\"I eat a sandwich\" — forma base. \"Eat\" = comer. \"A sandwich\" = chunk com artigo indefinido."
+        },
+        {
+          "type": "fill_gap",
+          "sentence": "We _____ coffee in the morning.",
+          "hint": "Verbo \"beber\"",
+          "answer": "drink",
+          "explanation": "\"We drink coffee\" — plural, forma base. \"Drink\" = beber."
+        },
+        {
+          "type": "fill_gap",
+          "sentence": "I _____ lunch at noon.",
+          "hint": "Verbo pra refeição (mesmo padrão de breakfast/dinner)",
+          "answer": "have",
+          "explanation": "\"I have lunch\" = \"Eu almoço\". \"Have lunch\" / \"have breakfast\" / \"have dinner\" são chunks fixos."
+        },
+        {
+          "type": "fix_error",
+          "sentence": "I eats vegetables every day.",
+          "hint": "Com \"I\" o verbo não leva -s",
+          "answer": "I eat vegetables every day.",
+          "explanation": "-s é só pra he/she/it. \"I eat\", não \"I eats\". Forma base com \"I\", \"you\", \"we\", \"they\"."
+        },
+        {
+          "type": "fix_error",
+          "sentence": "We drinks tea after lunch.",
+          "hint": "\"We\" é plural",
+          "answer": "We drink tea after lunch.",
+          "explanation": "\"We\" é plural, então verbo sem -s: \"We drink tea\". Apenas 3ª pessoa singular (he/she/it) leva -s no present simple."
+        },
+        {
+          "type": "read_answer",
+          "passage": "I eat fruit every morning. I have a sandwich for lunch. I drink coffee at three. We have dinner at eight.",
+          "question": "What do I drink at three?",
+          "answer": "coffee",
+          "explanation": "The text says \"I drink coffee at three\"."
+        }
+      ],
+      "listening_speaking": [
+        {
+          "text": "I have breakfast at seven.",
+          "context": "meal time chunk"
+        },
+        {
+          "text": "We drink water all day.",
+          "context": "habit chunk"
+        },
+        {
+          "text": "I eat fruit every morning.",
+          "context": "food + frequency"
+        },
+        {
+          "text": "I have lunch at noon.",
+          "context": "lunch chunk"
+        },
+        {
+          "text": "We have dinner at eight.",
+          "context": "dinner chunk"
+        }
+      ],
+      "roleplay": {
+        "scenario": "Charlotte pergunta sobre suas refeições — você descreve café da manhã, almoço e o que bebe.",
+        "voiced_by": "charlotte",
+        "persona": "Charlotte",
+        "persona_outfit": "charlotte_casual",
+        "time_budget_sec": 90,
+        "opening_line": "Tell me about your meals. What about breakfast?",
+        "objectives": [
+          {
+            "id": 1,
+            "label_pt": "Dizer o que você come/toma de café da manhã",
+            "label_en": "Say what you have for breakfast",
+            "hidden_prompt": "user mentions breakfast with 'I have + food/drink', 'I eat + food', or 'I drink + drink'",
+            "hint_pt": "I have coffee and bread.",
+            "hint_en": "I have coffee and bread."
+          },
+          {
+            "id": 2,
+            "label_pt": "Dizer o que você come no almoço",
+            "label_en": "Say what you have for lunch",
+            "hidden_prompt": "user mentions lunch with 'I have + food', 'I eat + food', or similar",
+            "hint_pt": "I eat a sandwich.",
+            "hint_en": "I eat a sandwich."
+          },
+          {
+            "id": 3,
+            "label_pt": "Dizer o que você toma durante o dia",
+            "label_en": "Say what you drink during the day",
+            "hidden_prompt": "user mentions drinks with 'I drink + beverage' (water/coffee/tea/juice/etc.)",
+            "hint_pt": "I drink water all day.",
+            "hint_en": "I drink water all day."
+          }
+        ],
+        "closing_cue": "Charlotte fecha com \"Sounds like a healthy day!\" quando obj_3 baterem.",
+        "suggested_flow": "**Suggested flow** (referencial, 6 turnos):\n\n1. **Charlotte**: \"Tell me about your meals. What about breakfast?\"\n2. **Student**: ~\"I have coffee and bread.\"\n3. **Charlotte**: \"And lunch?\"\n4. **Student**: ~\"I eat a sandwich.\"\n5. **Charlotte**: \"Drinks during the day?\"\n6. **Student**: ~\"I drink water all day.\"\n7. **Charlotte**: \"Sounds like a healthy day!\"",
+        "evaluation_focus": [
+          "Aluno usa \"I have/eat/drink + food/drink\"",
+          "Verbo na forma base",
+          "Vocabulário variado pra refeições"
+        ]
+      },
+      "guided_chat": {
+        "scenario": "Charlotte conversa sobre comida e bebida pelo chat.",
+        "voiced_by": "charlotte",
+        "persona": "Charlotte",
+        "persona_outfit": "charlotte_casual",
+        "intro_pt": "Charlotte quer saber dos seus hábitos alimentares. Pratica café da manhã, almoço/jantar, e devolva a pergunta.",
+        "opening_message": "Tell me about your breakfast.",
+        "objectives": [
+          {
+            "id": 1,
+            "label_pt": "Dizer o que você toma no café da manhã",
+            "label_en": "Say breakfast items",
+            "hidden_prompt": "user describes breakfast with 'I have + food/drink' or 'I eat/drink + something'",
+            "hint_pt": "I have toast and coffee.",
+            "hint_en": "I have toast and coffee."
+          },
+          {
+            "id": 2,
+            "label_pt": "Dizer o que você come no almoço ou jantar",
+            "label_en": "Say lunch or dinner",
+            "hidden_prompt": "user describes lunch/dinner with 'I have + food', 'I eat + food', or similar",
+            "hint_pt": "I eat rice and beans.",
+            "hint_en": "I eat rice and beans."
+          },
+          {
+            "id": 3,
+            "label_pt": "Perguntar sobre a comida da Charlotte",
+            "label_en": "Ask about Charlotte's meals",
+            "hidden_prompt": "user asks Charlotte about her food with 'how about you' or 'and you'",
+            "hint_pt": "How about you?",
+            "hint_en": "How about you?"
+          }
+        ],
+        "closing_cue": "Charlotte encerra com \"Nice! Food talk is the best.\" quando obj_3 baterem.",
+        "suggested_script": "**Script** (referencial, 7 turnos):\n\n1. **Charlotte**: \"Tell me about your breakfast.\"\n2. **Student**: \"I have toast and coffee.\"\n3. **Charlotte**: \"Yum. And lunch?\"\n4. **Student**: \"I eat rice and beans.\"\n5. **Charlotte**: \"Classic Brazilian style!\"\n6. **Student**: \"How about you?\"\n7. **Charlotte**: \"I have yogurt and fruit. Nice! Food talk is the best.\"\n\n> N03 chat = LLM puro. Scaffold aparece via hint_pt da objective pendente.\n\n---"
+      }
+    },
+    {
+      "id": "N04",
+      "title": "Vou e venho",
+      "sub_cefr": "A1",
+      "grammar_focus": "Present simple positivo + go/come + means of transport + places",
+      "markers": [],
+      "real_life_context": "Você descreve seus deslocamentos diários — pra onde vai, como, e quando volta.",
+      "grammar": [
+        {
+          "type": "multiple_choice",
+          "sentence": "I _____ to work by bus.",
+          "options": [
+            "go",
+            "goes",
+            "went"
+          ],
+          "answer": "go",
+          "explanation": "Com \"I\" forma base: \"I go\". \"Goes\" seria 3ª pessoa (M06). \"Went\" é passado (M16)."
+        },
+        {
+          "type": "multiple_choice",
+          "sentence": "We _____ home at six.",
+          "options": [
+            "come",
+            "comes",
+            "came"
+          ],
+          "answer": "come",
+          "explanation": "Com \"we\" forma base: \"come\". \"Comes\" seria 3ª pessoa. \"Came\" é passado."
+        },
+        {
+          "type": "word_bank",
+          "sentence": "I _____ to school by car.",
+          "choices": [
+            "go",
+            "goes",
+            "going",
+            "went"
+          ],
+          "answer": "go",
+          "explanation": "\"I go to school\" — forma base. \"Going\" precisa de \"to be\" antes (present continuous)."
+        },
+        {
+          "type": "word_bank",
+          "sentence": "You _____ home early on Fridays.",
+          "choices": [
+            "go",
+            "goes",
+            "going",
+            "went"
+          ],
+          "answer": "go",
+          "explanation": "Com \"you\" sempre forma base: \"go\". -s é só pra he/she/it."
+        },
+        {
+          "type": "fill_gap",
+          "sentence": "I _____ to work at eight.",
+          "hint": "Verbo \"ir\" forma base",
+          "answer": "go",
+          "explanation": "\"I go to work\" — forma base com \"I\". Estrutura: \"I go to + lugar + at + time\"."
+        },
+        {
+          "type": "fill_gap",
+          "sentence": "We _____ home together after class.",
+          "hint": "Verbo \"vir / voltar\"",
+          "answer": "come",
+          "explanation": "\"We come home\" — plural, forma base. \"Come home\" = \"voltar pra casa\". Chunk fixo."
+        },
+        {
+          "type": "fill_gap",
+          "sentence": "I _____ to the park on Sundays.",
+          "hint": "Verbo \"ir\"",
+          "answer": "go",
+          "explanation": "\"I go to the park\" — atividade dominical. Forma base com \"I\"."
+        },
+        {
+          "type": "fix_error",
+          "sentence": "I goes to school every day.",
+          "hint": "Com \"I\" o verbo não leva -s",
+          "answer": "I go to school every day.",
+          "explanation": "-s só pra he/she/it. \"I go\", não \"I goes\". A forma \"goes\" é só pra terceira pessoa singular (M06)."
+        },
+        {
+          "type": "fix_error",
+          "sentence": "We comes home late.",
+          "hint": "\"We\" é plural",
+          "answer": "We come home late.",
+          "explanation": "\"We\" é plural, então verbo sem -s: \"We come\". A forma \"comes\" é só pra 3ª pessoa singular."
+        },
+        {
+          "type": "read_answer",
+          "passage": "I go to work by car. I come home at six. We go to the park on Saturdays. I come back at eight.",
+          "question": "How does the speaker go to work?",
+          "answer": "by car",
+          "explanation": "The text says \"I go to work by car\"."
+        }
+      ],
+      "listening_speaking": [
+        {
+          "text": "I go to work by bus.",
+          "context": "daily commute"
+        },
+        {
+          "text": "We come home at six.",
+          "context": "return home"
+        },
+        {
+          "text": "I go to the gym on Mondays.",
+          "context": "gym schedule"
+        },
+        {
+          "text": "I come back at eight.",
+          "context": "return time"
+        },
+        {
+          "text": "We go to the park on Sundays.",
+          "context": "weekend activity"
+        }
+      ],
+      "roleplay": {
+        "scenario": "Charlotte pergunta sobre seus deslocamentos do dia — pra onde vai e como.",
+        "voiced_by": "charlotte",
+        "persona": "Charlotte",
+        "persona_outfit": "charlotte_casual",
+        "time_budget_sec": 90,
+        "opening_line": "Tell me about your day — start with where you go.",
+        "objectives": [
+          {
+            "id": 1,
+            "label_pt": "Dizer pra onde você vai de manhã",
+            "label_en": "Say where you go in the morning",
+            "hidden_prompt": "user states where they go with 'I go to + place' (work, school, gym, etc.)",
+            "hint_pt": "I go to work.",
+            "hint_en": "I go to work."
+          },
+          {
+            "id": 2,
+            "label_pt": "Dizer como você vai (transporte)",
+            "label_en": "Say how you go (transport)",
+            "hidden_prompt": "user states means of transport with 'I go by + transport' (bus/car/train/bike) or 'on foot/walking'",
+            "hint_pt": "I go by bus.",
+            "hint_en": "I go by bus."
+          },
+          {
+            "id": 3,
+            "label_pt": "Dizer quando você volta pra casa",
+            "label_en": "Say when you come home",
+            "hidden_prompt": "user states return time with 'I come home at + time' or 'I come back at + time'",
+            "hint_pt": "I come home at six.",
+            "hint_en": "I come home at six."
+          }
+        ],
+        "closing_cue": "Charlotte fecha com \"Got it. Busy days!\" quando obj_3 baterem.",
+        "suggested_flow": "**Suggested flow** (referencial, 6 turnos):\n\n1. **Charlotte**: \"Tell me about your day — start with where you go.\"\n2. **Student**: ~\"I go to work.\"\n3. **Charlotte**: \"How?\"\n4. **Student**: ~\"I go by bus.\"\n5. **Charlotte**: \"And what time do you come home?\"\n6. **Student**: ~\"I come home at six.\"\n7. **Charlotte**: \"Got it. Busy days!\"",
+        "evaluation_focus": [
+          "Aluno usa \"I go to + lugar\"",
+          "Aluno usa \"I go by + transporte\"",
+          "Aluno usa \"I come home at + horário\""
+        ]
+      },
+      "guided_chat": {
+        "scenario": "Charlotte conversa sobre seus deslocamentos pelo chat.",
+        "voiced_by": "charlotte",
+        "persona": "Charlotte",
+        "persona_outfit": "charlotte_casual",
+        "intro_pt": "Charlotte quer saber pra onde você vai durante a semana e no fim de semana. Pratica 'I go to + lugar'.",
+        "opening_message": "Morning routine — start with where you go.",
+        "objectives": [
+          {
+            "id": 1,
+            "label_pt": "Dizer pra onde você vai de manhã",
+            "label_en": "Say where you go in the morning",
+            "hidden_prompt": "user states morning destination with 'I go to + place'",
+            "hint_pt": "I go to work.",
+            "hint_en": "I go to work."
+          },
+          {
+            "id": 2,
+            "label_pt": "Dizer pra onde você vai no fim de semana",
+            "label_en": "Say where you go on weekends",
+            "hidden_prompt": "user states weekend place with 'I go to + place' (park, gym, friend's house, etc.)",
+            "hint_pt": "I go to the park.",
+            "hint_en": "I go to the park."
+          },
+          {
+            "id": 3,
+            "label_pt": "Perguntar sobre os deslocamentos da Charlotte",
+            "label_en": "Ask where Charlotte goes",
+            "hidden_prompt": "user asks Charlotte with 'how about you', 'and you', or 'where do you go'",
+            "hint_pt": "How about you?",
+            "hint_en": "How about you?"
+          }
+        ],
+        "closing_cue": "Charlotte encerra com \"Nice! Lots of places to be.\" quando obj_3 baterem.",
+        "suggested_script": "**Script** (referencial, 7 turnos):\n\n1. **Charlotte**: \"Morning routine — start with where you go.\"\n2. **Student**: \"I go to work.\"\n3. **Charlotte**: \"And weekends?\"\n4. **Student**: \"I go to the park.\"\n5. **Charlotte**: \"Nice spot.\"\n6. **Student**: \"How about you?\"\n7. **Charlotte**: \"Same — park on Sundays. Nice! Lots of places to be.\"\n\n> N04 chat = LLM puro. Scaffold aparece via hint_pt da objective pendente.\n\n---"
+      }
+    },
+    {
+      "id": "N05",
+      "title": "Minha rotina",
+      "sub_cefr": "A1",
+      "grammar_focus": "Adverbs of frequency (always/usually/sometimes/never) + integration M05",
+      "markers": [
+        "denso"
+      ],
+      "real_life_context": "Você conta sua rotina semanal típica usando advérbios de frequência pra dizer o que sempre/às vezes/nunca faz.",
+      "grammar": [
+        {
+          "type": "multiple_choice",
+          "sentence": "I _____ wake up at seven.",
+          "options": [
+            "always",
+            "am always",
+            "sometimes is"
+          ],
+          "answer": "always",
+          "explanation": "\"Always\" é advérbio de frequência. Com verbo lexical (wake up), posição: ANTES do verbo. \"I always wake up at seven\"."
+        },
+        {
+          "type": "multiple_choice",
+          "sentence": "I _____ work on weekends.",
+          "options": [
+            "never",
+            "not",
+            "no"
+          ],
+          "answer": "never",
+          "explanation": "\"Never\" (nunca) é advérbio de frequência negativo. Posição: antes do verbo. \"I never work on weekends\" — não precisa de \"don't\", o \"never\" já carrega a negação."
+        },
+        {
+          "type": "word_bank",
+          "sentence": "We _____ go to the park on Sundays — almost every weekend.",
+          "choices": [
+            "usually",
+            "never",
+            "once",
+            "not"
+          ],
+          "answer": "usually",
+          "explanation": "\"Usually\" = geralmente, a maioria das vezes (~80-90%). Encaixa em \"almost every weekend\"."
+        },
+        {
+          "type": "word_bank",
+          "sentence": "I _____ drink coffee — I prefer tea.",
+          "choices": [
+            "never",
+            "always",
+            "usually",
+            "often"
+          ],
+          "answer": "never",
+          "explanation": "\"I prefer tea\" indica que NÃO bebe café. \"Never\" (0%) é o adequado pra hábito que não tem."
+        },
+        {
+          "type": "fill_gap",
+          "sentence": "I _____ have breakfast at seven.",
+          "hint": "Advérbio de frequência alta (100%, todas as vezes)",
+          "answer": "always",
+          "explanation": "\"Always\" = sempre, 100%. Posição: antes do verbo principal: \"I always have breakfast\"."
+        },
+        {
+          "type": "fill_gap",
+          "sentence": "We _____ eat pizza — only on Fridays.",
+          "hint": "Advérbio de frequência média/ocasional",
+          "answer": "sometimes",
+          "explanation": "\"Sometimes\" = às vezes (~30-50%). \"Only on Fridays\" indica ocasional, então \"sometimes\" cabe."
+        },
+        {
+          "type": "fill_gap",
+          "sentence": "I _____ go to bed at eleven on weekdays.",
+          "hint": "Advérbio de frequência alta mas não absoluta",
+          "answer": "usually",
+          "explanation": "\"Usually\" = geralmente (~80%). \"On weekdays\" indica padrão típico mas não 100% absoluto."
+        },
+        {
+          "type": "fix_error",
+          "sentence": "I always am tired.",
+          "hint": "Frequência DEPOIS de \"am/is/are\", não antes",
+          "answer": "I am always tired.",
+          "explanation": "Com verbo \"to be\" (am/is/are), o advérbio de frequência vem DEPOIS: \"I am always tired\", \"She is never late\". Com verbos LEXICAIS (work/eat/etc.), o advérbio vem ANTES. Regra que confunde lusófonos."
+        },
+        {
+          "type": "fix_error",
+          "sentence": "I work always from home.",
+          "hint": "Advérbio de frequência antes do verbo principal",
+          "answer": "I always work from home.",
+          "explanation": "\"Always\" vai ANTES do verbo principal (work). Ordem: sujeito + advérbio + verbo. \"I always work\", não \"I work always\"."
+        },
+        {
+          "type": "read_answer",
+          "passage": "I always wake up at seven. I usually have coffee and bread. I sometimes go to the gym. I never work on Sundays.",
+          "question": "When does the speaker not work?",
+          "answer": "Sundays",
+          "explanation": "The text says \"I never work on Sundays\". So the speaker doesn't work on Sundays."
+        }
+      ],
+      "listening_speaking": [
+        {
+          "text": "I always wake up at seven.",
+          "context": "high frequency + routine"
+        },
+        {
+          "text": "We usually have dinner together.",
+          "context": "medium-high frequency"
+        },
+        {
+          "text": "I sometimes go to the gym.",
+          "context": "occasional"
+        },
+        {
+          "text": "I never drink coffee.",
+          "context": "never (zero frequency)"
+        },
+        {
+          "text": "I am always happy in the morning.",
+          "context": "frequency adverb DEPOIS de to be"
+        }
+      ],
+      "roleplay": {
+        "scenario": "Charlotte pede pra você contar uma manhã típica usando advérbios de frequência.",
+        "voiced_by": "charlotte",
+        "persona": "Charlotte",
+        "persona_outfit": "charlotte_casual",
+        "time_budget_sec": 90,
+        "opening_line": "Tell me about your typical morning. Use 'always', 'usually', 'sometimes' or 'never'.",
+        "objectives": [
+          {
+            "id": 1,
+            "label_pt": "Dizer algo que você sempre faz (com 'always')",
+            "label_en": "Say something you always do",
+            "hidden_prompt": "user uses 'always' before a verb with 'I always + verb + ...' (wake up, have breakfast, drink coffee, etc.)",
+            "hint_pt": "I always wake up at seven.",
+            "hint_en": "I always wake up at seven."
+          },
+          {
+            "id": 2,
+            "label_pt": "Dizer algo que você normalmente faz (com 'usually')",
+            "label_en": "Say something you usually do",
+            "hidden_prompt": "user uses 'usually' before a verb with 'I usually + verb'",
+            "hint_pt": "I usually drink coffee.",
+            "hint_en": "I usually drink coffee."
+          },
+          {
+            "id": 3,
+            "label_pt": "Dizer algo que você nunca faz (com 'never')",
+            "label_en": "Say something you never do",
+            "hidden_prompt": "user uses 'never' before a verb with 'I never + verb'",
+            "hint_pt": "I never sleep late.",
+            "hint_en": "I never sleep late."
+          }
+        ],
+        "closing_cue": "Charlotte fecha com \"Great routine!\" quando obj_3 baterem.",
+        "suggested_flow": "**Suggested flow** (referencial, 6 turnos):\n\n1. **Charlotte**: \"Tell me about your typical morning. Use 'always', 'usually', 'sometimes' or 'never'.\"\n2. **Student**: ~\"I always wake up at seven.\"\n3. **Charlotte**: \"And what do you usually do?\"\n4. **Student**: ~\"I usually drink coffee.\"\n5. **Charlotte**: \"Cool. Anything you never do?\"\n6. **Student**: ~\"I never sleep late.\"\n7. **Charlotte**: \"Great routine!\"",
+        "evaluation_focus": [
+          "Posição correta do advérbio (antes do verbo lexical)",
+          "Variação de advérbios (always, usually, sometimes, never)",
+          "Verbo na forma base"
+        ]
+      },
+      "guided_chat": {
+        "scenario": "Charlotte conversa sobre rotina semanal com advérbios de frequência.",
+        "voiced_by": "charlotte",
+        "persona": "Charlotte",
+        "persona_outfit": "charlotte_casual",
+        "intro_pt": "Charlotte quer descobrir sua rotina. Pratica advérbios de frequência: always, usually, sometimes, never.",
+        "opening_message": "Tell me one thing you always do.",
+        "objectives": [
+          {
+            "id": 1,
+            "label_pt": "Dizer algo que você sempre faz",
+            "label_en": "Say something you always do",
+            "hidden_prompt": "user uses 'always' with a routine verb: 'I always + verb' (wake up, have, drink, eat, go, work, study)",
+            "hint_pt": "I always have coffee.",
+            "hint_en": "I always have coffee."
+          },
+          {
+            "id": 2,
+            "label_pt": "Dizer algo que você normalmente ou às vezes faz",
+            "label_en": "Say something you usually or sometimes do",
+            "hidden_prompt": "user uses 'usually' or 'sometimes' with a verb: 'I usually/sometimes + verb'",
+            "hint_pt": "I usually go to bed at eleven.",
+            "hint_en": "I usually go to bed at eleven."
+          },
+          {
+            "id": 3,
+            "label_pt": "Dizer algo que você nunca faz",
+            "label_en": "Say something you never do",
+            "hidden_prompt": "user uses 'never' with a verb: 'I never + verb'",
+            "hint_pt": "I never eat fast food.",
+            "hint_en": "I never eat fast food."
+          }
+        ],
+        "closing_cue": "Charlotte encerra com \"Nice routine!\" quando obj_3 baterem.",
+        "suggested_script": "**Script** (referencial, 7 turnos):\n\n1. **Charlotte**: \"Tell me one thing you always do.\"\n2. **Student**: \"I always have coffee.\"\n3. **Charlotte**: \"Same! And usually or sometimes?\"\n4. **Student**: \"I usually go to bed at eleven.\"\n5. **Charlotte**: \"Cool. Anything you never do?\"\n6. **Student**: \"I never eat fast food.\"\n7. **Charlotte**: \"Nice routine!\"\n\n> N05 chat = LLM puro. Scaffold aparece via hint_pt da objective pendente.\n\n---"
+      }
+    }
+  ],
+  "cross_unit_consolidation": [
+    "Verbos cotidianos no present simple positivo (1ª/2ª pessoa): wake up, sleep, work, study, eat, drink, go, come, have (refeições)",
+    "Chunks de horário: \"at + time\" (at seven, at noon, at six-thirty)",
+    "Chunks de transporte: \"by + transport\" (by bus, by car, by foot)",
+    "Chunks de frequência temporal: \"every day\", \"on Mondays\", \"on weekends\"",
+    "Advérbios de frequência: always, usually, sometimes, never",
+    "Posição correta: antes do verbo lexical (I always work), DEPOIS de to be (I am always tired)",
+    "Verbos em forma base com I/you/we/they (sem -s)"
+  ]
+}
