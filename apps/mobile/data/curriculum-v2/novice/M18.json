@@ -1125,15 +1125,18 @@
       "listening_speaking": [
         {
           "text": "I'm going to eat lunch.",
-          "context": "formal (você ouvirá \"I'm gonna\")"
+          "context": "formal (você ouvirá \"I'm gonna\")",
+          "audio_url": "https://fnvjibzreepubageztoi.supabase.co/storage/v1/object/public/curriculum-audio/ls/novice/74503e09cf68a147.flac"
         },
         {
           "text": "I want to go home.",
-          "context": "formal (você ouvirá \"I wanna\")"
+          "context": "formal (você ouvirá \"I wanna\")",
+          "audio_url": "https://fnvjibzreepubageztoi.supabase.co/storage/v1/object/public/curriculum-audio/ls/novice/2bcaf025a51e27b0.flac"
         },
         {
           "text": "I have to leave now.",
-          "context": "formal (você ouvirá \"I gotta\")"
+          "context": "formal (você ouvirá \"I gotta\")",
+          "audio_url": "https://fnvjibzreepubageztoi.supabase.co/storage/v1/object/public/curriculum-audio/ls/novice/78f03d5da43e1bdc.flac"
         },
         {
           "text": "What are you doing?",
@@ -1142,7 +1145,8 @@
         },
         {
           "text": "Do you want to come?",
-          "context": "formal (você ouvirá \"D'you wanna come?\")"
+          "context": "formal (você ouvirá \"D'you wanna come?\")",
+          "audio_url": "https://fnvjibzreepubageztoi.supabase.co/storage/v1/object/public/curriculum-audio/ls/novice/87e4ac76169ac3d9.flac"
         }
       ],
       "roleplay": {

@@ -1137,23 +1137,28 @@
       "listening_speaking": [
         {
           "text": "It's really cold today.",
-          "context": "descrição do clima atual"
+          "context": "descrição do clima atual",
+          "audio_url": "https://fnvjibzreepubageztoi.supabase.co/storage/v1/object/public/curriculum-audio/ls/novice/131bd029b8a45a17.flac"
         },
         {
           "text": "What's the weather like?",
-          "context": "pergunta sobre o tempo"
+          "context": "pergunta sobre o tempo",
+          "audio_url": "https://fnvjibzreepubageztoi.supabase.co/storage/v1/object/public/curriculum-audio/ls/novice/65c7b6ace46616db.flac"
         },
         {
           "text": "It's going to rain tomorrow.",
-          "context": "previsão"
+          "context": "previsão",
+          "audio_url": "https://fnvjibzreepubageztoi.supabase.co/storage/v1/object/public/curriculum-audio/ls/novice/654011de002b43c3.flac"
         },
         {
           "text": "It'll be sunny next week.",
-          "context": "futuro com will"
+          "context": "futuro com will",
+          "audio_url": "https://fnvjibzreepubageztoi.supabase.co/storage/v1/object/public/curriculum-audio/ls/novice/1830995c90b00edf.flac"
         },
         {
           "text": "Summer is my favorite season.",
-          "context": "preferência por estação"
+          "context": "preferência por estação",
+          "audio_url": "https://fnvjibzreepubageztoi.supabase.co/storage/v1/object/public/curriculum-audio/ls/novice/7ae9532755d5e9dc.flac"
         }
       ],
       "roleplay": {

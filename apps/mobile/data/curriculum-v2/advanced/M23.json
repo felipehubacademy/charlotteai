@@ -75,23 +75,28 @@
       "listening_speaking": [
         {
           "text": "I hope this email finds you well.",
-          "context": "quintessential formal opener"
+          "context": "quintessential formal opener",
+          "audio_url": "https://fnvjibzreepubageztoi.supabase.co/storage/v1/object/public/curriculum-audio/ls/advanced/7db225b1f70ce02d.flac"
         },
         {
           "text": "Hope you're doing well.",
-          "context": "semi-formal warm opener"
+          "context": "semi-formal warm opener",
+          "audio_url": "https://fnvjibzreepubageztoi.supabase.co/storage/v1/object/public/curriculum-audio/ls/advanced/d247651915a0f1dc.flac"
         },
         {
           "text": "I'm reaching out regarding...",
-          "context": "purpose-stating opener"
+          "context": "purpose-stating opener",
+          "audio_url": "https://fnvjibzreepubageztoi.supabase.co/storage/v1/object/public/curriculum-audio/ls/advanced/20d10eb9c2f7489f.flac"
         },
         {
           "text": "Best regards / Kind regards.",
-          "context": "formal closings"
+          "context": "formal closings",
+          "audio_url": "https://fnvjibzreepubageztoi.supabase.co/storage/v1/object/public/curriculum-audio/ls/advanced/e680ac1cfecc076a.flac"
         },
         {
           "text": "Thanks again, talk soon.",
-          "context": "casual professional closer"
+          "context": "casual professional closer",
+          "audio_url": "https://fnvjibzreepubageztoi.supabase.co/storage/v1/object/public/curriculum-audio/ls/advanced/69b719d11dad02cc.flac"
         }
       ],
       "roleplay": {
@@ -215,23 +220,28 @@
       "listening_speaking": [
         {
           "text": "I am writing to apply for the position of [role].",
-          "context": "formal opener"
+          "context": "formal opener",
+          "audio_url": "https://fnvjibzreepubageztoi.supabase.co/storage/v1/object/public/curriculum-audio/ls/advanced/290e059b1f41c193.flac"
         },
         {
           "text": "I bring [X] years of experience in [field].",
-          "context": "quantified credibility"
+          "context": "quantified credibility",
+          "audio_url": "https://fnvjibzreepubageztoi.supabase.co/storage/v1/object/public/curriculum-audio/ls/advanced/c1b1958ca8e4a7fc.flac"
         },
         {
           "text": "In my current role, I have [specific achievement].",
-          "context": "track record"
+          "context": "track record",
+          "audio_url": "https://fnvjibzreepubageztoi.supabase.co/storage/v1/object/public/curriculum-audio/ls/advanced/ea907d830645f9fb.flac"
         },
         {
           "text": "My background aligns with your team's needs.",
-          "context": "fit statement"
+          "context": "fit statement",
+          "audio_url": "https://fnvjibzreepubageztoi.supabase.co/storage/v1/object/public/curriculum-audio/ls/advanced/9ed00f8f09cbe452.flac"
         },
         {
           "text": "I would welcome the opportunity to discuss.",
-          "context": "closing ask"
+          "context": "closing ask",
+          "audio_url": "https://fnvjibzreepubageztoi.supabase.co/storage/v1/object/public/curriculum-audio/ls/advanced/d64627fa627abe62.flac"
         }
       ],
       "roleplay": {
@@ -355,23 +365,28 @@
       "listening_speaking": [
         {
           "text": "Led a cross-functional team of [X].",
-          "context": "leadership CV bullet"
+          "context": "leadership CV bullet",
+          "audio_url": "https://fnvjibzreepubageztoi.supabase.co/storage/v1/object/public/curriculum-audio/ls/advanced/3c82eb14c0011bf1.flac"
         },
         {
           "text": "Spearheaded the initiative to [outcome].",
-          "context": "initiative ownership"
+          "context": "initiative ownership",
+          "audio_url": "https://fnvjibzreepubageztoi.supabase.co/storage/v1/object/public/curriculum-audio/ls/advanced/2477540941f9c1bc.flac"
         },
         {
           "text": "What draws me to [Company] is...",
-          "context": "cover letter pivot"
+          "context": "cover letter pivot",
+          "audio_url": "https://fnvjibzreepubageztoi.supabase.co/storage/v1/object/public/curriculum-audio/ls/advanced/0df3eecb2bb8ecee.flac"
         },
         {
           "text": "My approach combines [skill A] with [skill B].",
-          "context": "value proposition"
+          "context": "value proposition",
+          "audio_url": "https://fnvjibzreepubageztoi.supabase.co/storage/v1/object/public/curriculum-audio/ls/advanced/ec11c082127ea02a.flac"
         },
         {
           "text": "I'd contribute to [specific company goal].",
-          "context": "fit statement"
+          "context": "fit statement",
+          "audio_url": "https://fnvjibzreepubageztoi.supabase.co/storage/v1/object/public/curriculum-audio/ls/advanced/bc4a1e711b2429ad.flac"
         }
       ],
       "roleplay": {
@@ -495,23 +510,28 @@
       "listening_speaking": [
         {
           "text": "Just following up on my email.",
-          "context": "gentle nudge"
+          "context": "gentle nudge",
+          "audio_url": "https://fnvjibzreepubageztoi.supabase.co/storage/v1/object/public/curriculum-audio/ls/advanced/f9e3ecd69d93901c.flac"
         },
         {
           "text": "Wondering if you had a chance to review.",
-          "context": "acknowledges their time"
+          "context": "acknowledges their time",
+          "audio_url": "https://fnvjibzreepubageztoi.supabase.co/storage/v1/object/public/curriculum-audio/ls/advanced/6161425540e301f6.flac"
         },
         {
           "text": "Just checking in on [topic/application].",
-          "context": "warm reintroduction"
+          "context": "warm reintroduction",
+          "audio_url": "https://fnvjibzreepubageztoi.supabase.co/storage/v1/object/public/curriculum-audio/ls/advanced/e8110ff969c8f172.flac"
         },
         {
           "text": "Happy to jump on a quick call.",
-          "context": "offer engagement"
+          "context": "offer engagement",
+          "audio_url": "https://fnvjibzreepubageztoi.supabase.co/storage/v1/object/public/curriculum-audio/ls/advanced/f53b4b86f5261ab0.flac"
         },
         {
           "text": "No rush on my end.",
-          "context": "pressure release"
+          "context": "pressure release",
+          "audio_url": "https://fnvjibzreepubageztoi.supabase.co/storage/v1/object/public/curriculum-audio/ls/advanced/14e8403054f17265.flac"
         }
       ],
       "roleplay": {
@@ -635,23 +655,28 @@
       "listening_speaking": [
         {
           "text": "Unfortunately, this isn't a fit at this time.",
-          "context": "professional decline"
+          "context": "professional decline",
+          "audio_url": "https://fnvjibzreepubageztoi.supabase.co/storage/v1/object/public/curriculum-audio/ls/advanced/8b737dfdc9c04ca3.flac"
         },
         {
           "text": "I'd love to keep the door open for the future.",
-          "context": "relationship preservation"
+          "context": "relationship preservation",
+          "audio_url": "https://fnvjibzreepubageztoi.supabase.co/storage/v1/object/public/curriculum-audio/ls/advanced/c1ff5bbe4ffe7d33.flac"
         },
         {
           "text": "I regret to inform you that...",
-          "context": "formal bad news"
+          "context": "formal bad news",
+          "audio_url": "https://fnvjibzreepubageztoi.supabase.co/storage/v1/object/public/curriculum-audio/ls/advanced/5af73fdbcef03ea1.flac"
         },
         {
           "text": "I'd like to discuss compensation given...",
-          "context": "raise/promotion ask"
+          "context": "raise/promotion ask",
+          "audio_url": "https://fnvjibzreepubageztoi.supabase.co/storage/v1/object/public/curriculum-audio/ls/advanced/9e18a6c43b664ce4.flac"
         },
         {
           "text": "Apologies for any inconvenience this may cause.",
-          "context": "professional apology"
+          "context": "professional apology",
+          "audio_url": "https://fnvjibzreepubageztoi.supabase.co/storage/v1/object/public/curriculum-audio/ls/advanced/0c8382d403427971.flac"
         }
       ],
       "roleplay": {

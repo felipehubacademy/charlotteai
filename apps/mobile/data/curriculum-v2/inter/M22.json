@@ -1093,23 +1093,28 @@
       "listening_speaking": [
         {
           "text": "I work for a tech company.",
-          "context": "employer relationship"
+          "context": "employer relationship",
+          "audio_url": "https://fnvjibzreepubageztoi.supabase.co/storage/v1/object/public/curriculum-audio/ls/inter/37a1b7d284124860.flac"
         },
         {
           "text": "I work in marketing.",
-          "context": "industry/field"
+          "context": "industry/field",
+          "audio_url": "https://fnvjibzreepubageztoi.supabase.co/storage/v1/object/public/curriculum-audio/ls/inter/81f66fd20dbb9b48.flac"
         },
         {
           "text": "What do you do for a living?",
-          "context": "job small-talk question"
+          "context": "job small-talk question",
+          "audio_url": "https://fnvjibzreepubageztoi.supabase.co/storage/v1/object/public/curriculum-audio/ls/inter/d6a70eeac100736c.flac"
         },
         {
           "text": "I work hybrid — three days in office, two remote.",
-          "context": "work mode"
+          "context": "work mode",
+          "audio_url": "https://fnvjibzreepubageztoi.supabase.co/storage/v1/object/public/curriculum-audio/ls/inter/5ee8bd731fca31a9.flac"
         },
         {
           "text": "I got a promotion last quarter.",
-          "context": "career update"
+          "context": "career update",
+          "audio_url": "https://fnvjibzreepubageztoi.supabase.co/storage/v1/object/public/curriculum-audio/ls/inter/f19aa926d817af86.flac"
         }
       ],
       "roleplay": {

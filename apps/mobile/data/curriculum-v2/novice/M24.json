@@ -129,19 +129,23 @@
         },
         {
           "text": "Tell me more!",
-          "context": "pedido de continuação"
+          "context": "pedido de continuação",
+          "audio_url": "https://fnvjibzreepubageztoi.supabase.co/storage/v1/object/public/curriculum-audio/ls/novice/349f855015548f52.flac"
         },
         {
           "text": "That's interesting!",
-          "context": "reação positiva"
+          "context": "reação positiva",
+          "audio_url": "https://fnvjibzreepubageztoi.supabase.co/storage/v1/object/public/curriculum-audio/ls/novice/847ba1f69fb0ae86.flac"
         },
         {
           "text": "Oh yeah?",
-          "context": "interesse casual"
+          "context": "interesse casual",
+          "audio_url": "https://fnvjibzreepubageztoi.supabase.co/storage/v1/object/public/curriculum-audio/ls/novice/9e0cf3f08d87ada9.flac"
         },
         {
           "text": "That sounds amazing!",
-          "context": "reação entusiasmada"
+          "context": "reação entusiasmada",
+          "audio_url": "https://fnvjibzreepubageztoi.supabase.co/storage/v1/object/public/curriculum-audio/ls/novice/448432d592778476.flac"
         }
       ],
       "roleplay": {
@@ -325,23 +329,28 @@
       "listening_speaking": [
         {
           "text": "No way!",
-          "context": "descrença/surpresa forte"
+          "context": "descrença/surpresa forte",
+          "audio_url": "https://fnvjibzreepubageztoi.supabase.co/storage/v1/object/public/curriculum-audio/ls/novice/7f2145113f8e50cb.flac"
         },
         {
           "text": "Seriously?",
-          "context": "descrença verificadora"
+          "context": "descrença verificadora",
+          "audio_url": "https://fnvjibzreepubageztoi.supabase.co/storage/v1/object/public/curriculum-audio/ls/novice/5ea87e11abd72695.flac"
         },
         {
           "text": "You're kidding!",
-          "context": "\"tá brincando!\""
+          "context": "\"tá brincando!\"",
+          "audio_url": "https://fnvjibzreepubageztoi.supabase.co/storage/v1/object/public/curriculum-audio/ls/novice/d57532829ed1fb64.flac"
         },
         {
           "text": "For real?",
-          "context": "\"é sério?\""
+          "context": "\"é sério?\"",
+          "audio_url": "https://fnvjibzreepubageztoi.supabase.co/storage/v1/object/public/curriculum-audio/ls/novice/4a89d6d2ac73f0bc.flac"
         },
         {
           "text": "Get out!",
-          "context": "surpresa chocada (casual)"
+          "context": "surpresa chocada (casual)",
+          "audio_url": "https://fnvjibzreepubageztoi.supabase.co/storage/v1/object/public/curriculum-audio/ls/novice/638e3c73565caf3c.flac"
         }
       ],
       "roleplay": {
@@ -525,23 +534,28 @@
       "listening_speaking": [
         {
           "text": "Got it.",
-          "context": "confirmação curta"
+          "context": "confirmação curta",
+          "audio_url": "https://fnvjibzreepubageztoi.supabase.co/storage/v1/object/public/curriculum-audio/ls/novice/81891f33331de3d1.flac"
         },
         {
           "text": "Makes sense.",
-          "context": "algo é lógico"
+          "context": "algo é lógico",
+          "audio_url": "https://fnvjibzreepubageztoi.supabase.co/storage/v1/object/public/curriculum-audio/ls/novice/d27583ed950693ac.flac"
         },
         {
           "text": "I see what you mean.",
-          "context": "entendimento de ponto"
+          "context": "entendimento de ponto",
+          "audio_url": "https://fnvjibzreepubageztoi.supabase.co/storage/v1/object/public/curriculum-audio/ls/novice/9e5ab21dc41aa75c.flac"
         },
         {
           "text": "Right, I understand.",
-          "context": "confirmação completa"
+          "context": "confirmação completa",
+          "audio_url": "https://fnvjibzreepubageztoi.supabase.co/storage/v1/object/public/curriculum-audio/ls/novice/e2950e47345a704d.flac"
         },
         {
           "text": "I get it.",
-          "context": "confirmação casual"
+          "context": "confirmação casual",
+          "audio_url": "https://fnvjibzreepubageztoi.supabase.co/storage/v1/object/public/curriculum-audio/ls/novice/62259c0024602468.flac"
         }
       ],
       "roleplay": {
@@ -725,23 +739,28 @@
       "listening_speaking": [
         {
           "text": "Oh no, that's terrible.",
-          "context": "reação empática"
+          "context": "reação empática",
+          "audio_url": "https://fnvjibzreepubageztoi.supabase.co/storage/v1/object/public/curriculum-audio/ls/novice/4b58f8f85ad2508a.flac"
         },
         {
           "text": "I'm so sorry to hear that.",
-          "context": "condolências"
+          "context": "condolências",
+          "audio_url": "https://fnvjibzreepubageztoi.supabase.co/storage/v1/object/public/curriculum-audio/ls/novice/d33cfb1d2ed61c49.flac"
         },
         {
           "text": "That sucks.",
-          "context": "reação informal"
+          "context": "reação informal",
+          "audio_url": "https://fnvjibzreepubageztoi.supabase.co/storage/v1/object/public/curriculum-audio/ls/novice/51eb56e0c403fdf0.flac"
         },
         {
           "text": "What a shame!",
-          "context": "decepção leve"
+          "context": "decepção leve",
+          "audio_url": "https://fnvjibzreepubageztoi.supabase.co/storage/v1/object/public/curriculum-audio/ls/novice/f2f9896d3ec42231.flac"
         },
         {
           "text": "That's a bummer.",
-          "context": "chatice informal"
+          "context": "chatice informal",
+          "audio_url": "https://fnvjibzreepubageztoi.supabase.co/storage/v1/object/public/curriculum-audio/ls/novice/039b5d4ffc944fde.flac"
         }
       ],
       "roleplay": {
@@ -924,23 +943,28 @@
       "listening_speaking": [
         {
           "text": "Hold on a second.",
-          "context": "pausa curta"
+          "context": "pausa curta",
+          "audio_url": "https://fnvjibzreepubageztoi.supabase.co/storage/v1/object/public/curriculum-audio/ls/novice/506a166c1a0b5fe5.flac"
         },
         {
           "text": "Hang on, let me think.",
-          "context": "ganhando tempo"
+          "context": "ganhando tempo",
+          "audio_url": "https://fnvjibzreepubageztoi.supabase.co/storage/v1/object/public/curriculum-audio/ls/novice/cf534fb05550fa6d.flac"
         },
         {
           "text": "By the way...",
-          "context": "mudança de tópico"
+          "context": "mudança de tópico",
+          "audio_url": "https://fnvjibzreepubageztoi.supabase.co/storage/v1/object/public/curriculum-audio/ls/novice/d6e44499b1215a36.flac"
         },
         {
           "text": "Anyway, where was I?",
-          "context": "retomada"
+          "context": "retomada",
+          "audio_url": "https://fnvjibzreepubageztoi.supabase.co/storage/v1/object/public/curriculum-audio/ls/novice/c2972a04d00bf61d.flac"
         },
         {
           "text": "Wait, let me think about this.",
-          "context": "processamento</p>"
+          "context": "processamento</p>",
+          "audio_url": "https://fnvjibzreepubageztoi.supabase.co/storage/v1/object/public/curriculum-audio/ls/novice/ccd92cf5f24a0234.flac"
         }
       ],
       "roleplay": {

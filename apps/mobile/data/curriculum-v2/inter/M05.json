@@ -1066,23 +1066,28 @@
       "listening_speaking": [
         {
           "text": "Hello, this is Maria speaking.",
-          "context": "professional identification"
+          "context": "professional identification",
+          "audio_url": "https://fnvjibzreepubageztoi.supabase.co/storage/v1/object/public/curriculum-audio/ls/novice/571e5dfe1f45ba60.flac"
         },
         {
           "text": "Can I speak to Pedro, please?",
-          "context": "request to talk to someone"
+          "context": "request to talk to someone",
+          "audio_url": "https://fnvjibzreepubageztoi.supabase.co/storage/v1/object/public/curriculum-audio/ls/inter/2269fbabc6b31814.flac"
         },
         {
           "text": "I'll put you through.",
-          "context": "call transfer"
+          "context": "call transfer",
+          "audio_url": "https://fnvjibzreepubageztoi.supabase.co/storage/v1/object/public/curriculum-audio/ls/inter/dfc4139a84934998.flac"
         },
         {
           "text": "Sorry, we were cut off.",
-          "context": "explain disconnection"
+          "context": "explain disconnection",
+          "audio_url": "https://fnvjibzreepubageztoi.supabase.co/storage/v1/object/public/curriculum-audio/ls/inter/5da2a7717d9807b8.flac"
         },
         {
           "text": "I'll get back to you tomorrow.",
-          "context": "promise to follow up"
+          "context": "promise to follow up",
+          "audio_url": "https://fnvjibzreepubageztoi.supabase.co/storage/v1/object/public/curriculum-audio/ls/inter/59f6d904052dcdfb.flac"
         }
       ],
       "roleplay": {

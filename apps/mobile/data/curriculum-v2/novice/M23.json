@@ -135,23 +135,28 @@
       "listening_speaking": [
         {
           "text": "Where is the boarding gate?",
-          "context": "pergunta de localização"
+          "context": "pergunta de localização",
+          "audio_url": "https://fnvjibzreepubageztoi.supabase.co/storage/v1/object/public/curriculum-audio/ls/novice/87dddb9ef2eade1c.flac"
         },
         {
           "text": "I'd like to check in, please.",
-          "context": "pedido educado"
+          "context": "pedido educado",
+          "audio_url": "https://fnvjibzreepubageztoi.supabase.co/storage/v1/object/public/curriculum-audio/ls/novice/296a87312a3b6a05.flac"
         },
         {
           "text": "My flight is delayed by two hours.",
-          "context": "reportar status"
+          "context": "reportar status",
+          "audio_url": "https://fnvjibzreepubageztoi.supabase.co/storage/v1/object/public/curriculum-audio/ls/novice/984a1786ed0f6aa2.flac"
         },
         {
           "text": "I lost my luggage at the airport.",
-          "context": "reportar perda"
+          "context": "reportar perda",
+          "audio_url": "https://fnvjibzreepubageztoi.supabase.co/storage/v1/object/public/curriculum-audio/ls/novice/d70da688530df4da.flac"
         },
         {
           "text": "I'm here for vacation.",
-          "context": "propósito da viagem"
+          "context": "propósito da viagem",
+          "audio_url": "https://fnvjibzreepubageztoi.supabase.co/storage/v1/object/public/curriculum-audio/ls/novice/105dfb84af71baf0.flac"
         }
       ],
       "roleplay": {
@@ -336,23 +341,28 @@
       "listening_speaking": [
         {
           "text": "Do you have a room available?",
-          "context": "verificar disponibilidade"
+          "context": "verificar disponibilidade",
+          "audio_url": "https://fnvjibzreepubageztoi.supabase.co/storage/v1/object/public/curriculum-audio/ls/novice/4d71dcdd76311b39.flac"
         },
         {
           "text": "I have a reservation under the name of Silva.",
-          "context": "identificar-se"
+          "context": "identificar-se",
+          "audio_url": "https://fnvjibzreepubageztoi.supabase.co/storage/v1/object/public/curriculum-audio/ls/novice/4721e24eb0cd21f5.flac"
         },
         {
           "text": "Is breakfast included?",
-          "context": "pergunta sobre serviços"
+          "context": "pergunta sobre serviços",
+          "audio_url": "https://fnvjibzreepubageztoi.supabase.co/storage/v1/object/public/curriculum-audio/ls/novice/40816f207895cd8a.flac"
         },
         {
           "text": "The shower is not working.",
-          "context": "reportar problema"
+          "context": "reportar problema",
+          "audio_url": "https://fnvjibzreepubageztoi.supabase.co/storage/v1/object/public/curriculum-audio/ls/novice/0d61c13c6a1b6118.flac"
         },
         {
           "text": "What time is check-out?",
-          "context": "informação prática"
+          "context": "informação prática",
+          "audio_url": "https://fnvjibzreepubageztoi.supabase.co/storage/v1/object/public/curriculum-audio/ls/novice/0a43d534e76ab593.flac"
         }
       ],
       "roleplay": {
@@ -537,23 +547,28 @@
       "listening_speaking": [
         {
           "text": "Excuse me, how do I get to the station?",
-          "context": "abertura de pergunta"
+          "context": "abertura de pergunta",
+          "audio_url": "https://fnvjibzreepubageztoi.supabase.co/storage/v1/object/public/curriculum-audio/ls/novice/d48843e822d924cb.flac"
         },
         {
           "text": "Turn left at the corner.",
-          "context": "instrução direta"
+          "context": "instrução direta",
+          "audio_url": "https://fnvjibzreepubageztoi.supabase.co/storage/v1/object/public/curriculum-audio/ls/novice/c3bfaa7780b1034b.flac"
         },
         {
           "text": "Go straight ahead for two blocks.",
-          "context": "instrução de distância"
+          "context": "instrução de distância",
+          "audio_url": "https://fnvjibzreepubageztoi.supabase.co/storage/v1/object/public/curriculum-audio/ls/novice/cfde14125e4659e3.flac"
         },
         {
           "text": "The bank is next to the pharmacy.",
-          "context": "descrição de localização"
+          "context": "descrição de localização",
+          "audio_url": "https://fnvjibzreepubageztoi.supabase.co/storage/v1/object/public/curriculum-audio/ls/novice/68856fc947a0e7fd.flac"
         },
         {
           "text": "Is it far from here?",
-          "context": "pergunta sobre distância"
+          "context": "pergunta sobre distância",
+          "audio_url": "https://fnvjibzreepubageztoi.supabase.co/storage/v1/object/public/curriculum-audio/ls/novice/0296aecdfca8c0ad.flac"
         }
       ],
       "roleplay": {
@@ -738,23 +753,28 @@
       "listening_speaking": [
         {
           "text": "I don't feel well today.",
-          "context": "reportar mal-estar geral"
+          "context": "reportar mal-estar geral",
+          "audio_url": "https://fnvjibzreepubageztoi.supabase.co/storage/v1/object/public/curriculum-audio/ls/novice/3cf73fe9d032dd44.flac"
         },
         {
           "text": "I have a headache.",
-          "context": "sintoma específico"
+          "context": "sintoma específico",
+          "audio_url": "https://fnvjibzreepubageztoi.supabase.co/storage/v1/object/public/curriculum-audio/ls/novice/f5082e8f9860c412.flac"
         },
         {
           "text": "My stomach hurts.",
-          "context": "dor localizada"
+          "context": "dor localizada",
+          "audio_url": "https://fnvjibzreepubageztoi.supabase.co/storage/v1/object/public/curriculum-audio/ls/novice/8b48d107a04b7083.flac"
         },
         {
           "text": "Can you call a doctor?",
-          "context": "pedido de socorro"
+          "context": "pedido de socorro",
+          "audio_url": "https://fnvjibzreepubageztoi.supabase.co/storage/v1/object/public/curriculum-audio/ls/novice/5c3503d303e2f73d.flac"
         },
         {
           "text": "Where is the nearest pharmacy?",
-          "context": "pergunta prática"
+          "context": "pergunta prática",
+          "audio_url": "https://fnvjibzreepubageztoi.supabase.co/storage/v1/object/public/curriculum-audio/ls/novice/0741e774de69d0e5.flac"
         }
       ],
       "roleplay": {
@@ -939,23 +959,28 @@
       "listening_speaking": [
         {
           "text": "Hello, this is Maria speaking.",
-          "context": "identificação ao telefone"
+          "context": "identificação ao telefone",
+          "audio_url": "https://fnvjibzreepubageztoi.supabase.co/storage/v1/object/public/curriculum-audio/ls/novice/571e5dfe1f45ba60.flac"
         },
         {
           "text": "Can I speak to John, please?",
-          "context": "pedido para falar com alguém"
+          "context": "pedido para falar com alguém",
+          "audio_url": "https://fnvjibzreepubageztoi.supabase.co/storage/v1/object/public/curriculum-audio/ls/novice/021a9da17538eb60.flac"
         },
         {
           "text": "Hold on a second.",
-          "context": "pedir espera"
+          "context": "pedir espera",
+          "audio_url": "https://fnvjibzreepubageztoi.supabase.co/storage/v1/object/public/curriculum-audio/ls/novice/506a166c1a0b5fe5.flac"
         },
         {
           "text": "Can I leave a message?",
-          "context": "deixar recado"
+          "context": "deixar recado",
+          "audio_url": "https://fnvjibzreepubageztoi.supabase.co/storage/v1/object/public/curriculum-audio/ls/novice/9198ed5e38ea8b23.flac"
         },
         {
           "text": "Could you repeat that, please?",
-          "context": "pedir repetição"
+          "context": "pedir repetição",
+          "audio_url": "https://fnvjibzreepubageztoi.supabase.co/storage/v1/object/public/curriculum-audio/ls/novice/478f80eaba5f4e24.flac"
         }
       ],
       "roleplay": {

@@ -1152,19 +1152,23 @@
         },
         {
           "text": "It's quarter past three.",
-          "context": "horário com quarter"
+          "context": "horário com quarter",
+          "audio_url": "https://fnvjibzreepubageztoi.supabase.co/storage/v1/object/public/curriculum-audio/ls/novice/456c7f851b5824ea.flac"
         },
         {
           "text": "I have a meeting at half past nine.",
-          "context": "horário em contexto"
+          "context": "horário em contexto",
+          "audio_url": "https://fnvjibzreepubageztoi.supabase.co/storage/v1/object/public/curriculum-audio/ls/novice/5130298ab408a6cf.flac"
         },
         {
           "text": "Today is Monday, the third of March.",
-          "context": "data completa"
+          "context": "data completa",
+          "audio_url": "https://fnvjibzreepubageztoi.supabase.co/storage/v1/object/public/curriculum-audio/ls/novice/310e8de103910a1a.flac"
         },
         {
           "text": "I work in the morning.",
-          "context": "período do dia"
+          "context": "período do dia",
+          "audio_url": "https://fnvjibzreepubageztoi.supabase.co/storage/v1/object/public/curriculum-audio/ls/novice/522b05c2d9694123.flac"
         }
       ],
       "roleplay": {

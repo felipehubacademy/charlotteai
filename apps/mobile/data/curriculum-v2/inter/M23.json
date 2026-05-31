@@ -128,23 +128,28 @@
       "listening_speaking": [
         {
           "text": "You're new here, aren't you?",
-          "context": "present \"to be\" tag"
+          "context": "present \"to be\" tag",
+          "audio_url": "https://fnvjibzreepubageztoi.supabase.co/storage/v1/object/public/curriculum-audio/ls/inter/a818794044f269d7.flac"
         },
         {
           "text": "She's been busy lately, hasn't she?",
-          "context": "present perfect tag"
+          "context": "present perfect tag",
+          "audio_url": "https://fnvjibzreepubageztoi.supabase.co/storage/v1/object/public/curriculum-audio/ls/inter/40ca688ebecacca7.flac"
         },
         {
           "text": "They weren't at the meeting, were they?",
-          "context": "past \"to be\" tag (negative)"
+          "context": "past \"to be\" tag (negative)",
+          "audio_url": "https://fnvjibzreepubageztoi.supabase.co/storage/v1/object/public/curriculum-audio/ls/inter/70c915402b54418f.flac"
         },
         {
           "text": "It's cold today, isn't it?",
-          "context": "universal small-talk tag"
+          "context": "universal small-talk tag",
+          "audio_url": "https://fnvjibzreepubageztoi.supabase.co/storage/v1/object/public/curriculum-audio/ls/inter/be9d6f73f017e7dc.flac"
         },
         {
           "text": "You haven't met him before, have you?",
-          "context": "present perfect negative tag"
+          "context": "present perfect negative tag",
+          "audio_url": "https://fnvjibzreepubageztoi.supabase.co/storage/v1/object/public/curriculum-audio/ls/inter/58a6e6eb7f772ce4.flac"
         }
       ],
       "roleplay": {
@@ -317,23 +322,28 @@
       "listening_speaking": [
         {
           "text": "You like coffee, don't you?",
-          "context": "present simple positive tag"
+          "context": "present simple positive tag",
+          "audio_url": "https://fnvjibzreepubageztoi.supabase.co/storage/v1/object/public/curriculum-audio/ls/inter/b27bdd60d14df733.flac"
         },
         {
           "text": "She works downtown, doesn't she?",
-          "context": "third person tag"
+          "context": "third person tag",
+          "audio_url": "https://fnvjibzreepubageztoi.supabase.co/storage/v1/object/public/curriculum-audio/ls/inter/571b91bb2bebdad8.flac"
         },
         {
           "text": "They went home early, didn't they?",
-          "context": "past simple tag"
+          "context": "past simple tag",
+          "audio_url": "https://fnvjibzreepubageztoi.supabase.co/storage/v1/object/public/curriculum-audio/ls/inter/b412aca35f0a475b.flac"
         },
         {
           "text": "You don't smoke, do you?",
-          "context": "negative → positive tag"
+          "context": "negative → positive tag",
+          "audio_url": "https://fnvjibzreepubageztoi.supabase.co/storage/v1/object/public/curriculum-audio/ls/inter/9fe469a0584571a4.flac"
         },
         {
           "text": "He doesn't drive, does he?",
-          "context": "third person negative → positive tag"
+          "context": "third person negative → positive tag",
+          "audio_url": "https://fnvjibzreepubageztoi.supabase.co/storage/v1/object/public/curriculum-audio/ls/inter/15951e0976482b26.flac"
         }
       ],
       "roleplay": {
@@ -506,23 +516,28 @@
       "listening_speaking": [
         {
           "text": "You can swim, can't you?",
-          "context": "ability tag"
+          "context": "ability tag",
+          "audio_url": "https://fnvjibzreepubageztoi.supabase.co/storage/v1/object/public/curriculum-audio/ls/inter/59e787f3e8a262bc.flac"
         },
         {
           "text": "She'll be there, won't she?",
-          "context": "future tag"
+          "context": "future tag",
+          "audio_url": "https://fnvjibzreepubageztoi.supabase.co/storage/v1/object/public/curriculum-audio/ls/inter/09a52e22a0927a59.flac"
         },
         {
           "text": "We should leave, shouldn't we?",
-          "context": "suggestion tag"
+          "context": "suggestion tag",
+          "audio_url": "https://fnvjibzreepubageztoi.supabase.co/storage/v1/object/public/curriculum-audio/ls/inter/74a897ba055d1ee3.flac"
         },
         {
           "text": "He couldn't come, could he?",
-          "context": "past ability tag (negative)"
+          "context": "past ability tag (negative)",
+          "audio_url": "https://fnvjibzreepubageztoi.supabase.co/storage/v1/object/public/curriculum-audio/ls/inter/1ed99f5bf6d5e2fa.flac"
         },
         {
           "text": "You wouldn't mind, would you?",
-          "context": "polite request tag"
+          "context": "polite request tag",
+          "audio_url": "https://fnvjibzreepubageztoi.supabase.co/storage/v1/object/public/curriculum-audio/ls/inter/29c60c955e57af09.flac"
         }
       ],
       "roleplay": {
@@ -696,23 +711,28 @@
       "listening_speaking": [
         {
           "text": "I'm right, aren't I?",
-          "context": "special \"aren't I?\" for \"I am\""
+          "context": "special \"aren't I?\" for \"I am\"",
+          "audio_url": "https://fnvjibzreepubageztoi.supabase.co/storage/v1/object/public/curriculum-audio/ls/inter/173082ab84c4d20e.flac"
         },
         {
           "text": "Let's go, shall we?",
-          "context": "special \"shall we?\" for \"let's\""
+          "context": "special \"shall we?\" for \"let's\"",
+          "audio_url": "https://fnvjibzreepubageztoi.supabase.co/storage/v1/object/public/curriculum-audio/ls/inter/c8f152d53b5e5367.flac"
         },
         {
           "text": "Open the door, will you?",
-          "context": "imperative softener"
+          "context": "imperative softener",
+          "audio_url": "https://fnvjibzreepubageztoi.supabase.co/storage/v1/object/public/curriculum-audio/ls/inter/bc13227587ab5abe.flac"
         },
         {
           "text": "Nobody knows, do they?",
-          "context": "indefinite subject tag"
+          "context": "indefinite subject tag",
+          "audio_url": "https://fnvjibzreepubageztoi.supabase.co/storage/v1/object/public/curriculum-audio/ls/inter/390468c9860186f9.flac"
         },
         {
           "text": "Everyone agrees, don't they?",
-          "context": "universal indefinite tag"
+          "context": "universal indefinite tag",
+          "audio_url": "https://fnvjibzreepubageztoi.supabase.co/storage/v1/object/public/curriculum-audio/ls/inter/f48db97fb63ba225.flac"
         }
       ],
       "roleplay": {
@@ -882,23 +902,28 @@
       "listening_speaking": [
         {
           "text": "Well, I'm not really sure.",
-          "context": "hesitation opener"
+          "context": "hesitation opener",
+          "audio_url": "https://fnvjibzreepubageztoi.supabase.co/storage/v1/object/public/curriculum-audio/ls/inter/f4d69e06e6d7fd35.flac"
         },
         {
           "text": "I mean, it's kind of complicated.",
-          "context": "clarification + hedge"
+          "context": "clarification + hedge",
+          "audio_url": "https://fnvjibzreepubageztoi.supabase.co/storage/v1/object/public/curriculum-audio/ls/inter/e64511e4fc89406e.flac"
         },
         {
           "text": "You know, that's a good question.",
-          "context": "shared-understanding filler"
+          "context": "shared-understanding filler",
+          "audio_url": "https://fnvjibzreepubageztoi.supabase.co/storage/v1/object/public/curriculum-audio/ls/inter/07ef5ad02771d1b5.flac"
         },
         {
           "text": "It's beautiful out, isn't it?",
-          "context": "falling-intonation rhetorical tag"
+          "context": "falling-intonation rhetorical tag",
+          "audio_url": "https://fnvjibzreepubageztoi.supabase.co/storage/v1/object/public/curriculum-audio/ls/inter/04ffe5e5a6c8db2c.flac"
         },
         {
           "text": "She's coming, isn't she?",
-          "context": "rising-intonation genuine question tag"
+          "context": "rising-intonation genuine question tag",
+          "audio_url": "https://fnvjibzreepubageztoi.supabase.co/storage/v1/object/public/curriculum-audio/ls/inter/e41ff4c234ab5ba3.flac"
         }
       ],
       "roleplay": {

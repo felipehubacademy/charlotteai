@@ -95,23 +95,28 @@
       "listening_speaking": [
         {
           "text": "She wears her heart on her sleeve.",
-          "context": "emotional openness"
+          "context": "emotional openness",
+          "audio_url": "https://fnvjibzreepubageztoi.supabase.co/storage/v1/object/public/curriculum-audio/ls/advanced/11481b31ad77aeac.flac"
         },
         {
           "text": "He gave me the cold shoulder.",
-          "context": "deliberate ignoring"
+          "context": "deliberate ignoring",
+          "audio_url": "https://fnvjibzreepubageztoi.supabase.co/storage/v1/object/public/curriculum-audio/ls/advanced/fa4286b1267e6757.flac"
         },
         {
           "text": "It cost an arm and a leg.",
-          "context": "extremely expensive"
+          "context": "extremely expensive",
+          "audio_url": "https://fnvjibzreepubageztoi.supabase.co/storage/v1/object/public/curriculum-audio/ls/advanced/e69fc5e7d47e4ec3.flac"
         },
         {
           "text": "I'll bite the bullet and ask.",
-          "context": "force yourself"
+          "context": "force yourself",
+          "audio_url": "https://fnvjibzreepubageztoi.supabase.co/storage/v1/object/public/curriculum-audio/ls/advanced/ded94ec3a93722ab.flac"
         },
         {
           "text": "She's a real shoulder to cry on.",
-          "context": "empathetic support"
+          "context": "empathetic support",
+          "audio_url": "https://fnvjibzreepubageztoi.supabase.co/storage/v1/object/public/curriculum-audio/ls/advanced/34461e9c4e0768ec.flac"
         }
       ],
       "roleplay": {
@@ -240,23 +245,28 @@
       "listening_speaking": [
         {
           "text": "You're barking up the wrong tree.",
-          "context": "looking in wrong place"
+          "context": "looking in wrong place",
+          "audio_url": "https://fnvjibzreepubageztoi.supabase.co/storage/v1/object/public/curriculum-audio/ls/advanced/d4ecc02c3a25e6ed.flac"
         },
         {
           "text": "When pigs fly.",
-          "context": "never"
+          "context": "never",
+          "audio_url": "https://fnvjibzreepubageztoi.supabase.co/storage/v1/object/public/curriculum-audio/ls/advanced/57f59a963824d5fd.flac"
         },
         {
           "text": "He let the cat out of the bag.",
-          "context": "accidental reveal"
+          "context": "accidental reveal",
+          "audio_url": "https://fnvjibzreepubageztoi.supabase.co/storage/v1/object/public/curriculum-audio/ls/advanced/6b955cae3a3ed67f.flac"
         },
         {
           "text": "The elephant in the room is the budget.",
-          "context": "avoided topic"
+          "context": "avoided topic",
+          "audio_url": "https://fnvjibzreepubageztoi.supabase.co/storage/v1/object/public/curriculum-audio/ls/advanced/bd3d2b62f45d456b.flac"
         },
         {
           "text": "He spilled the beans about the party.",
-          "context": "revealed secret"
+          "context": "revealed secret",
+          "audio_url": "https://fnvjibzreepubageztoi.supabase.co/storage/v1/object/public/curriculum-audio/ls/advanced/f3171daca7fc30c6.flac"
         }
       ],
       "roleplay": {
@@ -385,23 +395,28 @@
       "listening_speaking": [
         {
           "text": "I see her once in a blue moon.",
-          "context": "very rarely"
+          "context": "very rarely",
+          "audio_url": "https://fnvjibzreepubageztoi.supabase.co/storage/v1/object/public/curriculum-audio/ls/advanced/9d9a3144f54361b1.flac"
         },
         {
           "text": "He's burning the midnight oil again.",
-          "context": "working late"
+          "context": "working late",
+          "audio_url": "https://fnvjibzreepubageztoi.supabase.co/storage/v1/object/public/curriculum-audio/ls/advanced/45419b62d929c915.flac"
         },
         {
           "text": "It came completely out of the blue.",
-          "context": "unexpectedly"
+          "context": "unexpectedly",
+          "audio_url": "https://fnvjibzreepubageztoi.supabase.co/storage/v1/object/public/curriculum-audio/ls/advanced/3b58bf0e2714fae6.flac"
         },
         {
           "text": "Can I take a rain check on dinner?",
-          "context": "postpone politely"
+          "context": "postpone politely",
+          "audio_url": "https://fnvjibzreepubageztoi.supabase.co/storage/v1/object/public/curriculum-audio/ls/advanced/41048c729f174721.flac"
         },
         {
           "text": "Time flies when you're busy.",
-          "context": "time passes quickly"
+          "context": "time passes quickly",
+          "audio_url": "https://fnvjibzreepubageztoi.supabase.co/storage/v1/object/public/curriculum-audio/ls/advanced/2b67fc795270bec0.flac"
         }
       ],
       "roleplay": {
@@ -530,23 +545,28 @@
       "listening_speaking": [
         {
           "text": "I'm not throwing in the towel yet.",
-          "context": "refusing to give up"
+          "context": "refusing to give up",
+          "audio_url": "https://fnvjibzreepubageztoi.supabase.co/storage/v1/object/public/curriculum-audio/ls/advanced/a6e97568f797517c.flac"
         },
         {
           "text": "The ball is in your court.",
-          "context": "your turn to act"
+          "context": "your turn to act",
+          "audio_url": "https://fnvjibzreepubageztoi.supabase.co/storage/v1/object/public/curriculum-audio/ls/advanced/c076de6a3cd30023.flac"
         },
         {
           "text": "They're cutting corners on quality.",
-          "context": "taking shortcuts"
+          "context": "taking shortcuts",
+          "audio_url": "https://fnvjibzreepubageztoi.supabase.co/storage/v1/object/public/curriculum-audio/ls/advanced/4e32b67efe01a390.flac"
         },
         {
           "text": "That was the last straw.",
-          "context": "final breaking point"
+          "context": "final breaking point",
+          "audio_url": "https://fnvjibzreepubageztoi.supabase.co/storage/v1/object/public/curriculum-audio/ls/advanced/13266d5bd6975dd9.flac"
         },
         {
           "text": "We're back to square one.",
-          "context": "starting over"
+          "context": "starting over",
+          "audio_url": "https://fnvjibzreepubageztoi.supabase.co/storage/v1/object/public/curriculum-audio/ls/advanced/84ff5e1be889d6a3.flac"
         }
       ],
       "roleplay": {
@@ -674,7 +694,8 @@
       "listening_speaking": [
         {
           "text": "Speak of the devil!",
-          "context": "when mentioned person appears"
+          "context": "when mentioned person appears",
+          "audio_url": "https://fnvjibzreepubageztoi.supabase.co/storage/v1/object/public/curriculum-audio/ls/advanced/43283bbd66ba2be6.flac"
         },
         {
           "text": "You hit the nail on the head.",
@@ -683,15 +704,18 @@
         },
         {
           "text": "It's a piece of cake.",
-          "context": "very easy"
+          "context": "very easy",
+          "audio_url": "https://fnvjibzreepubageztoi.supabase.co/storage/v1/object/public/curriculum-audio/ls/advanced/5473864473a753fa.flac"
         },
         {
           "text": "How do we break the ice?",
-          "context": "start conversation"
+          "context": "start conversation",
+          "audio_url": "https://fnvjibzreepubageztoi.supabase.co/storage/v1/object/public/curriculum-audio/ls/advanced/256939429fc401a0.flac"
         },
         {
           "text": "As a rule of thumb...",
-          "context": "general principle"
+          "context": "general principle",
+          "audio_url": "https://fnvjibzreepubageztoi.supabase.co/storage/v1/object/public/curriculum-audio/ls/advanced/bac379bdfd0d5fbd.flac"
         }
       ],
       "roleplay": {
