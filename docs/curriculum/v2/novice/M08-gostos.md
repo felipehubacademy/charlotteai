@@ -554,7 +554,8 @@
 
 6. **fill_gap** — "She listens to _____ music every day."
    **Hint**: Adjetivo de gênero musical
-   **Answer**: classical (ou pop, rock, jazz)
+   **Answer**: classical
+**Accepts**: pop / rock / jazz
    **Explanation**: "Classical music", "pop music" — gênero + music. Sem artigo.
 
 7. **fill_gap** — "We love _____ — soccer, basketball, tennis."

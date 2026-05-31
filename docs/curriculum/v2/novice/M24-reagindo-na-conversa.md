@@ -54,12 +54,14 @@
 
 5. **fill_gap** — "That sounds _____!" (positive reaction)
    **Hint**: adjetivo positivo
-   **Answer**: amazing (ou "great", "awesome", "interesting", "cool")
+   **Answer**: amazing
+**Accepts**: great / awesome / interesting / cool
    **Explanation**: "That sounds + adjetivo positivo" — chunk para reagir a algo que alguém descreveu. Padrão fixo para qualquer adjetivo positivo.
 
 6. **fill_gap** — "_____ is that so?"
    **Hint**: pronome em inglês
-   **Answer**: How (ou "Why" dependendo do contexto)
+   **Answer**: How
+**Accepts**: Why
    **Explanation**: "How is that so?" — pergunta de aprofundamento mostrando interesse. Pede que a pessoa explique mais. Alternativa: "Why is that?".
 
 7. **fill_gap** — "_____ me more."
@@ -80,7 +82,8 @@
 10. **read_answer**
     **Passage**: "Friend: 'I went to Japan last month.' You: 'Really? That's amazing! Tell me more.' Friend: 'It was incredible. I climbed Mount Fuji.' You: 'No way! What was that like?' Friend: 'Cold and beautiful.'"
     **Question**: What reaction shows the most interest in the friend's story?
-    **Answer**: Tell me more (ou "Really? That's amazing!")
+    **Answer**: Tell me more
+**Accepts**: Really? That's amazing!
     **Explanation**: O texto mostra várias reações de interesse: "Really?", "That's amazing!", "Tell me more", "No way!", "What was that like?". Todas convidam o falante a continuar.
 
 ### 2. Listening/Speaking (5 phrases)
@@ -389,7 +392,8 @@
 
 6. **fill_gap** — "I _____ what you're saying."
    **Hint**: confirmar compreensão
-   **Answer**: get (ou "see")
+   **Answer**: get
+**Accepts**: see
    **Explanation**: "I get what you're saying" / "I see what you're saying" — ambos chunks naturais de "entendo o que você diz". "Get" e "see" funcionam aqui idiomaticamente.
 
 7. **fill_gap** — "_____ you said is clear."
@@ -554,12 +558,14 @@
 
 6. **fill_gap** — "That _____ awful."
    **Hint**: verbo to be
-   **Answer**: is (ou contração "'s")
+   **Answer**: is
+**Accepts**: 's
    **Explanation**: "That is awful" / "That's awful" — reação forte a algo ruim. "Awful" significa "horrível, terrível".
 
 7. **fill_gap** — "_____ a shame."
    **Hint**: artigo + sentimento
-   **Answer**: What (ou "Such")
+   **Answer**: What
+**Accepts**: Such
    **Explanation**: "What a shame!" ou "Such a shame" — chunks para "que pena!". Reação a algo decepcionante mas não catastrófico.
 
 8. **fix_error** — "How sad!"
@@ -719,12 +725,14 @@
 
 6. **fill_gap** — "_____, where was I?"
    **Hint**: marcador de retomada
-   **Answer**: Anyway (ou "So")
+   **Answer**: Anyway
+**Accepts**: So
    **Explanation**: "Anyway, where was I?" / "So, where was I?" — chunks para retomar o fio da conversa após pausa ou desvio.
 
 7. **fill_gap** — "_____, that reminds me of something."
    **Hint**: marcador de novo tópico
-   **Answer**: By the way (ou "Speaking of which")
+   **Answer**: By the way
+**Accepts**: Speaking of which
    **Explanation**: "By the way" — introdução suave de novo tópico. "Speaking of which" — mais ligado ao tópico anterior.
 
 8. **fix_error** — "One moment."

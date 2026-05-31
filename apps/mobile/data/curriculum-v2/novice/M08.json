@@ -697,7 +697,12 @@
           "type": "fill_gap",
           "sentence": "She listens to _____ music every day.",
           "hint": "Adjetivo de gênero musical",
-          "answer": "classical (ou pop, rock, jazz)",
+          "answer": "classical",
+          "accepts": [
+            "pop",
+            "rock",
+            "jazz"
+          ],
           "explanation": "\"Classical music\", \"pop music\" — gênero + music. Sem artigo."
         },
         {

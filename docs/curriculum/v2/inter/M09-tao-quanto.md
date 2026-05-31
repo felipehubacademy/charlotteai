@@ -385,7 +385,8 @@
 
 6. **fill_gap** — "This apartment is _____ times as expensive _____ the other."
    **Hint**: 3x ou mais
-   **Answer**: three / as (ou four/five)
+   **Answer**: three / as
+**Accepts**: four / five
    **Explanation**: Multiplicadores de 3+ usam "X times as + adj + as".
 
 7. **fill_gap** — "She spent _____ as much time on this project _____ I did."

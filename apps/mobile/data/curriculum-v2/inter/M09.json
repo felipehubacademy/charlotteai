@@ -483,7 +483,11 @@
           "type": "fill_gap",
           "sentence": "This apartment is _____ times as expensive _____ the other.",
           "hint": "3x ou mais",
-          "answer": "three / as (ou four/five)",
+          "answer": "three / as",
+          "accepts": [
+            "four",
+            "five"
+          ],
           "explanation": "Multiplicadores de 3+ usam \"X times as + adj + as\"."
         },
         {

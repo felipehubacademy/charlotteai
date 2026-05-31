@@ -554,12 +554,14 @@
 
 6. **fill_gap** — "She can speak French and _____."
    **Hint**: Idioma (qualquer um)
-   **Answer**: Spanish (ou English/German/etc.)
+   **Answer**: Spanish
+**Accepts**: English / German / French / Italian
    **Explanation**: Idiomas após "speak" — sem artigo. "Spanish", "English", "German".
 
 7. **fill_gap** — "We can play _____ on Saturdays."
    **Hint**: Esporte ou jogo
-   **Answer**: soccer (ou tennis, etc.)
+   **Answer**: soccer
+**Accepts**: tennis / basketball / volleyball
    **Explanation**: "Play + esporte" sem artigo. "Play soccer", "play tennis", "play basketball".
 
 8. **fix_error** — "I can play piano."

@@ -695,14 +695,25 @@
           "type": "fill_gap",
           "sentence": "She can speak French and _____.",
           "hint": "Idioma (qualquer um)",
-          "answer": "Spanish (ou English/German/etc.)",
+          "answer": "Spanish",
+          "accepts": [
+            "English",
+            "German",
+            "French",
+            "Italian"
+          ],
           "explanation": "Idiomas após \"speak\" — sem artigo. \"Spanish\", \"English\", \"German\"."
         },
         {
           "type": "fill_gap",
           "sentence": "We can play _____ on Saturdays.",
           "hint": "Esporte ou jogo",
-          "answer": "soccer (ou tennis, etc.)",
+          "answer": "soccer",
+          "accepts": [
+            "tennis",
+            "basketball",
+            "volleyball"
+          ],
           "explanation": "\"Play + esporte\" sem artigo. \"Play soccer\", \"play tennis\", \"play basketball\"."
         },
         {

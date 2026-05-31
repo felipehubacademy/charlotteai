@@ -1102,7 +1102,13 @@
           "type": "fill_gap",
           "sentence": "_____ is my favorite season.",
           "hint": "estação do ano (summer/winter/etc)",
-          "answer": "Summer (ou Winter / Spring / Fall / Autumn)",
+          "answer": "Summer",
+          "accepts": [
+            "Winter",
+            "Spring",
+            "Fall",
+            "Autumn"
+          ],
           "explanation": "Estações em inglês: Spring, Summer, Fall (American) / Autumn (British), Winter. Note: em inglês, estações NÃO levam artigo no uso geral (\"I love summer\", não \"I love the summer\")."
         },
         {

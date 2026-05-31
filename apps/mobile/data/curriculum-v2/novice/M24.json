@@ -84,14 +84,23 @@
           "type": "fill_gap",
           "sentence": "\"That sounds _____!\" (positive reaction)",
           "hint": "adjetivo positivo",
-          "answer": "amazing (ou \"great\", \"awesome\", \"interesting\", \"cool\")",
+          "answer": "amazing",
+          "accepts": [
+            "great",
+            "awesome",
+            "interesting",
+            "cool"
+          ],
           "explanation": "\"That sounds + adjetivo positivo\" — chunk para reagir a algo que alguém descreveu. Padrão fixo para qualquer adjetivo positivo."
         },
         {
           "type": "fill_gap",
           "sentence": "_____ is that so?",
           "hint": "pronome em inglês",
-          "answer": "How (ou \"Why\" dependendo do contexto)",
+          "answer": "How",
+          "accepts": [
+            "Why"
+          ],
           "explanation": "\"How is that so?\" — pergunta de aprofundamento mostrando interesse. Pede que a pessoa explique mais. Alternativa: \"Why is that?\"."
         },
         {
@@ -119,7 +128,10 @@
           "type": "read_answer",
           "passage": "Friend: 'I went to Japan last month.' You: 'Really? That's amazing! Tell me more.' Friend: 'It was incredible. I climbed Mount Fuji.' You: 'No way! What was that like?' Friend: 'Cold and beautiful.'",
           "question": "What reaction shows the most interest in the friend's story?",
-          "answer": "Tell me more (ou \"Really? That's amazing!\")",
+          "answer": "Tell me more",
+          "accepts": [
+            "Really? That's amazing!"
+          ],
           "explanation": "O texto mostra várias reações de interesse: \"Really?\", \"That's amazing!\", \"Tell me more\", \"No way!\", \"What was that like?\". Todas convidam o falante a continuar."
         }
       ],
@@ -503,7 +515,10 @@
           "type": "fill_gap",
           "sentence": "I _____ what you're saying.",
           "hint": "confirmar compreensão",
-          "answer": "get (ou \"see\")",
+          "answer": "get",
+          "accepts": [
+            "see"
+          ],
           "explanation": "\"I get what you're saying\" / \"I see what you're saying\" — ambos chunks naturais de \"entendo o que você diz\". \"Get\" e \"see\" funcionam aqui idiomaticamente."
         },
         {
@@ -709,14 +724,20 @@
           "type": "fill_gap",
           "sentence": "That _____ awful.",
           "hint": "verbo to be",
-          "answer": "is (ou contração \"'s\")",
+          "answer": "is",
+          "accepts": [
+            "'s"
+          ],
           "explanation": "\"That is awful\" / \"That's awful\" — reação forte a algo ruim. \"Awful\" significa \"horrível, terrível\"."
         },
         {
           "type": "fill_gap",
           "sentence": "_____ a shame.",
           "hint": "artigo + sentimento",
-          "answer": "What (ou \"Such\")",
+          "answer": "What",
+          "accepts": [
+            "Such"
+          ],
           "explanation": "\"What a shame!\" ou \"Such a shame\" — chunks para \"que pena!\". Reação a algo decepcionante mas não catastrófico."
         },
         {
@@ -915,14 +936,20 @@
           "type": "fill_gap",
           "sentence": "_____, where was I?",
           "hint": "marcador de retomada",
-          "answer": "Anyway (ou \"So\")",
+          "answer": "Anyway",
+          "accepts": [
+            "So"
+          ],
           "explanation": "\"Anyway, where was I?\" / \"So, where was I?\" — chunks para retomar o fio da conversa após pausa ou desvio."
         },
         {
           "type": "fill_gap",
           "sentence": "_____, that reminds me of something.",
           "hint": "marcador de novo tópico",
-          "answer": "By the way (ou \"Speaking of which\")",
+          "answer": "By the way",
+          "accepts": [
+            "Speaking of which"
+          ],
           "explanation": "\"By the way\" — introdução suave de novo tópico. \"Speaking of which\" — mais ligado ao tópico anterior."
         },
         {

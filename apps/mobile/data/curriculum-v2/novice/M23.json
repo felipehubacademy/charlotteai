@@ -100,7 +100,10 @@
           "type": "fill_gap",
           "sentence": "_____ does the flight leave?",
           "hint": "pergunta de horário",
-          "answer": "When (ou \"What time\")",
+          "answer": "When",
+          "accepts": [
+            "What time"
+          ],
           "explanation": "\"When does the flight leave?\" — pergunta padrão de horário. Pode também usar \"What time does the flight leave?\". Ambas funcionam."
         },
         {
@@ -128,7 +131,10 @@
           "type": "read_answer",
           "passage": "I'd like to check in for my flight to São Paulo. My passport is here. I have one suitcase to check, and I'd like a window seat if possible. My flight leaves at 8:30 from gate 24.",
           "question": "What time does the flight leave?",
-          "answer": "8:30 (ou \"at 8:30\")",
+          "answer": "8:30",
+          "accepts": [
+            "at 8:30"
+          ],
           "explanation": "O texto diz \"My flight leaves at 8:30 from gate 24\". Resposta direta — pratica leitura de informações específicas em situações de viagem."
         }
       ],
@@ -306,7 +312,10 @@
           "type": "fill_gap",
           "sentence": "Can I have a _____ -size bed, please?",
           "hint": "tipo de cama king ou queen",
-          "answer": "king (ou \"queen\")",
+          "answer": "king",
+          "accepts": [
+            "queen"
+          ],
           "explanation": "\"King-size bed\" ou \"queen-size bed\" — chunks fixos para tipos de cama em hotéis. Ambos comuns nos pedidos de check-in."
         },
         {
@@ -334,7 +343,10 @@
           "type": "read_answer",
           "passage": "Good evening. I have a reservation under the name of Silva. I'd like a non-smoking room with a king-size bed. Is breakfast included in the rate? And what time is check-out tomorrow?",
           "question": "What kind of bed does the guest want?",
-          "answer": "king-size (ou \"a king-size bed\")",
+          "answer": "king-size",
+          "accepts": [
+            "a king-size bed"
+          ],
           "explanation": "O texto diz \"I'd like a non-smoking room with a king-size bed\". Pratica identificação de detalhes específicos em pedidos de hotel."
         }
       ],
@@ -505,7 +517,10 @@
           "type": "fill_gap",
           "sentence": "The restaurant is _____ the corner.",
           "hint": "preposição de localização",
-          "answer": "on (ou \"around\")",
+          "answer": "on",
+          "accepts": [
+            "around"
+          ],
           "explanation": "\"On the corner\" — chunk fixo. \"Around the corner\" também funciona, mas tem sentido ligeiramente diferente (\"dobrando a esquina\")."
         },
         {
@@ -519,14 +534,20 @@
           "type": "fill_gap",
           "sentence": "The post office is _____ from here.",
           "hint": "distância — \"far\" ou \"close/near\"",
-          "answer": "far (ou \"near\" ou \"close\")",
+          "answer": "far",
+          "accepts": [
+            "near\" ou \"close"
+          ],
           "explanation": "\"Far from here\" / \"near here\" / \"close to here\" — chunks para descrever distância. Todos funcionam aqui."
         },
         {
           "type": "fix_error",
           "sentence": "How I go to the airport?",
           "hint": "Pergunta precisa de \"do\"",
-          "answer": "How do I go to the airport? (ou melhor: How do I get to the airport?)",
+          "answer": "How do I go to the airport?",
+          "accepts": [
+            "How do I get to the airport?"
+          ],
           "explanation": "Em inglês, perguntas com verbos de ação precisam de auxiliar \"do/does/did\". \"How I go\" sem \"do\" é estrutura de afirmação, não de pergunta."
         },
         {
@@ -711,14 +732,20 @@
           "type": "fill_gap",
           "sentence": "I need some _____ for the pain.",
           "hint": "remédio",
-          "answer": "medicine (ou \"medication\")",
+          "answer": "medicine",
+          "accepts": [
+            "medication"
+          ],
           "explanation": "\"Medicine\" — remédio (incontável em inglês). \"Medication\" também funciona, mais formal. Não usar \"medicines\" (incontável)."
         },
         {
           "type": "fill_gap",
           "sentence": "Where is the _____ pharmacy?",
           "hint": "mais próxima",
-          "answer": "nearest (ou \"closest\")",
+          "answer": "nearest",
+          "accepts": [
+            "closest"
+          ],
           "explanation": "\"Nearest\" ou \"closest\" pharmacy — chunk para \"farmácia mais próxima\". Superlativos de proximidade."
         },
         {
@@ -746,7 +773,12 @@
           "type": "read_answer",
           "passage": "I don't feel well today. I have a headache and a sore throat. I think I might have a fever too. Where is the nearest pharmacy? I need some medicine and maybe I should see a doctor.",
           "question": "What three symptoms does the speaker have?",
-          "answer": "headache, sore throat, and fever (ou \"a headache, a sore throat, and possibly a fever\")",
+          "answer": "headache, sore throat, and fever",
+          "accepts": [
+            "a headache",
+            "a sore throat",
+            "and possibly a fever"
+          ],
           "explanation": "O texto lista três sintomas: \"I have a headache and a sore throat. I think I might have a fever too\". Pratica leitura de descrição de sintomas."
         }
       ],
@@ -952,7 +984,10 @@
           "type": "read_answer",
           "passage": "Hello? Hi, this is Maria speaking. Can I speak to John, please? Oh, he's not there? Can I leave a message? Please tell him Maria called and I'll call him back tomorrow at 3 PM. Thank you!",
           "question": "When will Maria call back?",
-          "answer": "tomorrow at 3 PM (ou \"at 3 PM tomorrow\")",
+          "answer": "tomorrow at 3 PM",
+          "accepts": [
+            "at 3 PM tomorrow"
+          ],
           "explanation": "O texto diz \"I'll call him back tomorrow at 3 PM\". Pratica leitura de detalhes em recado telefônico."
         }
       ],

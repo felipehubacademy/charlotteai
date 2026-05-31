@@ -885,7 +885,8 @@
 
 7. **fill_gap** — Em fala formal, "gotta" significa "_____ to".
    **Hint**: tem que / preciso
-   **Answer**: have got (ou apenas "got")
+   **Answer**: have got
+**Accepts**: got
    **Explanation**: "Gotta" = "have got to" / "got to" (com sentido de obrigação). "I gotta go" = "I have to go" / "I've got to go". Reconhecer em fala rápida — usar forma completa em escrita.
 
 8. **fix_error** — Email profissional: "I gonna send the report tomorrow."
@@ -901,7 +902,8 @@
 10. **read_answer**
     **Passage**: "I'm gonna grab some coffee — wanna come? Yeah, I gotta finish this email first. Whatcha working on? Just a quick reply to my boss. I gotta send it before the meeting. OK, I'll wait for you."
     **Question**: What does "I gotta finish this email" mean in formal English?
-    **Answer**: I have to finish this email (ou "I've got to finish this email")
+    **Answer**: I have to finish this email
+**Accepts**: I've got to finish this email
     **Explanation**: "I gotta finish this email" em escrita formal seria "I have to finish this email" ou "I've got to finish this email". "Gotta" carrega o sentido de obrigação. Reconhecer a redução em fala e saber a forma formal.
 
 ### 2. Listening/Speaking (5 phrases)

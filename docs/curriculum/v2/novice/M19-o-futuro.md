@@ -881,7 +881,8 @@
 
 6. **fill_gap** — "_____ is my favorite season."
    **Hint**: estação do ano (summer/winter/etc)
-   **Answer**: Summer (ou Winter / Spring / Fall / Autumn)
+   **Answer**: Summer
+**Accepts**: Winter / Spring / Fall / Autumn
    **Explanation**: Estações em inglês: Spring, Summer, Fall (American) / Autumn (British), Winter. Note: em inglês, estações NÃO levam artigo no uso geral ("I love summer", não "I love the summer").
 
 7. **fill_gap** — "It'll _____ sunny tomorrow."

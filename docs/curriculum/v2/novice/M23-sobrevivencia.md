@@ -68,7 +68,8 @@
 
 6. **fill_gap** — "_____ does the flight leave?"
    **Hint**: pergunta de horário
-   **Answer**: When (ou "What time")
+   **Answer**: When
+**Accepts**: What time
    **Explanation**: "When does the flight leave?" — pergunta padrão de horário. Pode também usar "What time does the flight leave?". Ambas funcionam.
 
 7. **fill_gap** — "I'm here _____ business."
@@ -89,7 +90,8 @@
 10. **read_answer**
     **Passage**: "I'd like to check in for my flight to São Paulo. My passport is here. I have one suitcase to check, and I'd like a window seat if possible. My flight leaves at 8:30 from gate 24."
     **Question**: What time does the flight leave?
-    **Answer**: 8:30 (ou "at 8:30")
+    **Answer**: 8:30
+**Accepts**: at 8:30
     **Explanation**: O texto diz "My flight leaves at 8:30 from gate 24". Resposta direta — pratica leitura de informações específicas em situações de viagem.
 
 ### 2. Listening/Speaking (5 phrases)
@@ -233,7 +235,8 @@
 
 6. **fill_gap** — "Can I have a _____ -size bed, please?"
    **Hint**: tipo de cama king ou queen
-   **Answer**: king (ou "queen")
+   **Answer**: king
+**Accepts**: queen
    **Explanation**: "King-size bed" ou "queen-size bed" — chunks fixos para tipos de cama em hotéis. Ambos comuns nos pedidos de check-in.
 
 7. **fill_gap** — "Is _____ included?"
@@ -254,7 +257,8 @@
 10. **read_answer**
     **Passage**: "Good evening. I have a reservation under the name of Silva. I'd like a non-smoking room with a king-size bed. Is breakfast included in the rate? And what time is check-out tomorrow?"
     **Question**: What kind of bed does the guest want?
-    **Answer**: king-size (ou "a king-size bed")
+    **Answer**: king-size
+**Accepts**: a king-size bed
     **Explanation**: O texto diz "I'd like a non-smoking room with a king-size bed". Pratica identificação de detalhes específicos em pedidos de hotel.
 
 ### 2. Listening/Speaking (5 phrases)
@@ -393,7 +397,8 @@
 
 5. **fill_gap** — "The restaurant is _____ the corner."
    **Hint**: preposição de localização
-   **Answer**: on (ou "around")
+   **Answer**: on
+**Accepts**: around
    **Explanation**: "On the corner" — chunk fixo. "Around the corner" também funciona, mas tem sentido ligeiramente diferente ("dobrando a esquina").
 
 6. **fill_gap** — "Excuse _____, where is the museum?"
@@ -403,12 +408,14 @@
 
 7. **fill_gap** — "The post office is _____ from here."
    **Hint**: distância — "far" ou "close/near"
-   **Answer**: far (ou "near" ou "close")
+   **Answer**: far
+**Accepts**: near" ou "close
    **Explanation**: "Far from here" / "near here" / "close to here" — chunks para descrever distância. Todos funcionam aqui.
 
 8. **fix_error** — "How I go to the airport?"
    **Hint**: Pergunta precisa de "do"
-   **Answer**: How do I go to the airport? (ou melhor: How do I get to the airport?)
+   **Answer**: How do I go to the airport?
+**Accepts**: How do I get to the airport?
    **Explanation**: Em inglês, perguntas com verbos de ação precisam de auxiliar "do/does/did". "How I go" sem "do" é estrutura de afirmação, não de pergunta.
 
 9. **fix_error** — "Turn in the right."
@@ -558,12 +565,14 @@
 
 5. **fill_gap** — "I need some _____ for the pain."
    **Hint**: remédio
-   **Answer**: medicine (ou "medication")
+   **Answer**: medicine
+**Accepts**: medication
    **Explanation**: "Medicine" — remédio (incontável em inglês). "Medication" também funciona, mais formal. Não usar "medicines" (incontável).
 
 6. **fill_gap** — "Where is the _____ pharmacy?"
    **Hint**: mais próxima
-   **Answer**: nearest (ou "closest")
+   **Answer**: nearest
+**Accepts**: closest
    **Explanation**: "Nearest" ou "closest" pharmacy — chunk para "farmácia mais próxima". Superlativos de proximidade.
 
 7. **fill_gap** — "My stomach _____."
@@ -584,7 +593,8 @@
 10. **read_answer**
     **Passage**: "I don't feel well today. I have a headache and a sore throat. I think I might have a fever too. Where is the nearest pharmacy? I need some medicine and maybe I should see a doctor."
     **Question**: What three symptoms does the speaker have?
-    **Answer**: headache, sore throat, and fever (ou "a headache, a sore throat, and possibly a fever")
+    **Answer**: headache, sore throat, and fever
+**Accepts**: a headache / a sore throat / and possibly a fever
     **Explanation**: O texto lista três sintomas: "I have a headache and a sore throat. I think I might have a fever too". Pratica leitura de descrição de sintomas.
 
 ### 2. Listening/Speaking (5 phrases)
@@ -749,7 +759,8 @@
 10. **read_answer**
     **Passage**: "Hello? Hi, this is Maria speaking. Can I speak to John, please? Oh, he's not there? Can I leave a message? Please tell him Maria called and I'll call him back tomorrow at 3 PM. Thank you!"
     **Question**: When will Maria call back?
-    **Answer**: tomorrow at 3 PM (ou "at 3 PM tomorrow")
+    **Answer**: tomorrow at 3 PM
+**Accepts**: at 3 PM tomorrow
     **Explanation**: O texto diz "I'll call him back tomorrow at 3 PM". Pratica leitura de detalhes em recado telefônico.
 
 ### 2. Listening/Speaking (5 phrases)

@@ -697,7 +697,10 @@
           "type": "fill_gap",
           "sentence": "'Wanted' sounds like /want_d/.",
           "hint": "Som após /t/ ou /d/",
-          "answer": "i (ou id)",
+          "answer": "i",
+          "accepts": [
+            "id"
+          ],
           "explanation": "Verbo termina em /t/ → -ed soa /id/, criando sílaba extra: \"want-Id\" = /wAnt-Id/."
         },
         {

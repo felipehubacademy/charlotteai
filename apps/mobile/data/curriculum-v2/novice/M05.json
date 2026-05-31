@@ -1119,7 +1119,15 @@
           "type": "fill_gap",
           "sentence": "Today is _____.",
           "hint": "dia da semana (exemplo: Monday)",
-          "answer": "Monday (ou qualquer dia: Tuesday, Wednesday...)",
+          "answer": "Monday",
+          "accepts": [
+            "Tuesday",
+            "Wednesday",
+            "Thursday",
+            "Friday",
+            "Saturday",
+            "Sunday"
+          ],
           "explanation": "Dias da semana em inglês sempre com maiúscula: Monday, Tuesday, Wednesday, Thursday, Friday, Saturday, Sunday. Diferente do português (que usa minúscula)."
         },
         {
@@ -1140,7 +1148,10 @@
           "type": "read_answer",
           "passage": "What time is it? It's quarter past nine. I have a meeting at half past nine — only fifteen minutes left. Today is Monday, the third of March. The weather is cold — winter is still here.",
           "question": "What time is the meeting?",
-          "answer": "half past nine (ou \"9:30\")",
+          "answer": "half past nine",
+          "accepts": [
+            "9:30"
+          ],
           "explanation": "O texto diz \"I have a meeting at half past nine\". \"Half past nine\" = 9:30. Pratica leitura de horário e contexto temporal."
         }
       ],

@@ -80,14 +80,22 @@
           "type": "fill_gap",
           "sentence": "If you don't sleep enough, you _____ tired the next day.",
           "hint": "verbo de estado (feel/get/become) no presente",
-          "answer": "feel (ou get/become)",
+          "answer": "feel",
+          "accepts": [
+            "get",
+            "become"
+          ],
           "explanation": "Consequência sempre verdadeira. Verbos comuns: feel, get, become — todos no present simple."
         },
         {
           "type": "fill_gap",
           "sentence": "When the temperature _____ zero degrees, water freezes.",
           "hint": "present simple 3ª pessoa de \"drop/reach/hit\"",
-          "answer": "drops (ou reaches/hits)",
+          "answer": "drops",
+          "accepts": [
+            "reaches",
+            "hits"
+          ],
           "explanation": "\"When\" funciona como \"if\" em verdades gerais — ambos indicam relação sempre verdadeira. \"Drops to zero\" — 3ª pessoa singular."
         },
         {
@@ -286,7 +294,11 @@
           "type": "fill_gap",
           "sentence": "If you exercise regularly, you _____ healthier — it's a fact.",
           "hint": "verbo \"feel/become/get\" no present simple",
-          "answer": "feel (ou get/become)",
+          "answer": "feel",
+          "accepts": [
+            "get",
+            "become"
+          ],
           "explanation": "\"It's a fact\" reforça que é verdade geral → zero conditional. Consequência também no present simple."
         },
         {
@@ -458,7 +470,10 @@
             "Although",
             "Because"
           ],
-          "answer": "If (ou When)",
+          "answer": "If",
+          "accepts": [
+            "When"
+          ],
           "explanation": "Ambos funcionam — \"If\" enfatiza possibilidade, \"When\" enfatiza que sempre que acontecer, faça X. Em conselhos, ambos são naturais."
         },
         {

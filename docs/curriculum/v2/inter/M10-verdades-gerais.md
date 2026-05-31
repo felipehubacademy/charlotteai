@@ -50,12 +50,14 @@
 
 5. **fill_gap** — "If you don't sleep enough, you _____ tired the next day."
    **Hint**: verbo de estado (feel/get/become) no presente
-   **Answer**: feel (ou get/become)
+   **Answer**: feel
+**Accepts**: get / become
    **Explanation**: Consequência sempre verdadeira. Verbos comuns: feel, get, become — todos no present simple.
 
 6. **fill_gap** — "When the temperature _____ zero degrees, water freezes."
    **Hint**: present simple 3ª pessoa de "drop/reach/hit"
-   **Answer**: drops (ou reaches/hits)
+   **Answer**: drops
+**Accepts**: reaches / hits
    **Explanation**: "When" funciona como "if" em verdades gerais — ambos indicam relação sempre verdadeira. "Drops to zero" — 3ª pessoa singular.
 
 7. **fill_gap** — "If you don't water plants, they _____."
@@ -225,7 +227,8 @@
 
 7. **fill_gap** — "If you exercise regularly, you _____ healthier — it's a fact."
    **Hint**: verbo "feel/become/get" no present simple
-   **Answer**: feel (ou get/become)
+   **Answer**: feel
+**Accepts**: get / become
    **Explanation**: "It's a fact" reforça que é verdade geral → zero conditional. Consequência também no present simple.
 
 8. **fix_error** — "If I will have time tomorrow, I'll call you."
@@ -376,7 +379,8 @@
 
 4. **word_bank** — "_____ you're feeling tired, you should rest."
    **Choices**: If / When / Although / Because
-   **Answer**: If (ou When)
+   **Answer**: If
+**Accepts**: When
    **Explanation**: Ambos funcionam — "If" enfatiza possibilidade, "When" enfatiza que sempre que acontecer, faça X. Em conselhos, ambos são naturais.
 
 5. **fill_gap** — "_____ winter comes, the days get shorter."

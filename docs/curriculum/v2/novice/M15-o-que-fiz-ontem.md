@@ -554,7 +554,8 @@
 
 7. **fill_gap** — "'Wanted' sounds like /want_d/."
    **Hint**: Som após /t/ ou /d/
-   **Answer**: i (ou id)
+   **Answer**: i
+**Accepts**: id
    **Explanation**: Verbo termina em /t/ → -ed soa /id/, criando sílaba extra: "want-Id" = /wAnt-Id/.
 
 8. **fix_error** — "I pronounced 'visited' as /vIzId/."

@@ -898,7 +898,8 @@
 
 7. **fill_gap** — "Today is _____."
    **Hint**: dia da semana (exemplo: Monday)
-   **Answer**: Monday (ou qualquer dia: Tuesday, Wednesday...)
+   **Answer**: Monday
+**Accepts**: Tuesday / Wednesday / Thursday / Friday / Saturday / Sunday
    **Explanation**: Dias da semana em inglês sempre com maiúscula: Monday, Tuesday, Wednesday, Thursday, Friday, Saturday, Sunday. Diferente do português (que usa minúscula).
 
 8. **fix_error** — "What's hour?"
@@ -914,7 +915,8 @@
 10. **read_answer**
     **Passage**: "What time is it? It's quarter past nine. I have a meeting at half past nine — only fifteen minutes left. Today is Monday, the third of March. The weather is cold — winter is still here."
     **Question**: What time is the meeting?
-    **Answer**: half past nine (ou "9:30")
+    **Answer**: half past nine
+**Accepts**: 9:30
     **Explanation**: O texto diz "I have a meeting at half past nine". "Half past nine" = 9:30. Pratica leitura de horário e contexto temporal.
 
 ### 2. Listening/Speaking (5 phrases)
