@@ -257,6 +257,12 @@ export default function RolePlayExerciseScreen() {
 
   const startRec = useCallback(async () => {
     if (isProcessing || isRecording || sessionComplete) return;
+    // Safe-guard: nao permite gravar enquanto Charlotte fala (audio dela
+    // entrava no mic do iPhone). Aluno tem que esperar terminar OU pausar.
+    if (playingMessageId) {
+      Haptics.notificationAsync(Haptics.NotificationFeedbackType.Warning);
+      return;
+    }
     try {
       // Set state e haptic ANTES de awaitar startRecording. UX percebida:
       // tap → feedback imediato; o pequeno delay do startRecording (~100ms)
@@ -268,7 +274,7 @@ export default function RolePlayExerciseScreen() {
       console.warn('[roleplay] start record failed', e);
       setIsRecording(false);
     }
-  }, [isProcessing, isRecording, sessionComplete, recorder]);
+  }, [isProcessing, isRecording, sessionComplete, recorder, playingMessageId]);
 
   const stopRecAndSend = useCallback(async () => {
     if (!isRecording) return;
@@ -763,7 +769,9 @@ export default function RolePlayExerciseScreen() {
                 ? (isPt ? 'Missão concluída!' : 'Mission complete!')
                 : isRecording
                   ? (isPt ? 'Gravando… solte pra enviar' : 'Recording… release to send')
-                  : (isPt ? 'Segure o microfone pra falar' : 'Hold the mic to speak')}
+                  : playingMessageId
+                    ? (isPt ? 'Aguarde Charlotte terminar…' : 'Wait for Charlotte to finish…')
+                    : (isPt ? 'Segure o microfone pra falar' : 'Hold the mic to speak')}
             </AppText>
           </View>
           <Animated.View
@@ -771,18 +779,18 @@ export default function RolePlayExerciseScreen() {
             style={{
               transform: [{ scale: micPulse }],
               width: 64, height: 64, borderRadius: 32,
-              backgroundColor: (sessionComplete || isProcessing)
+              backgroundColor: (sessionComplete || isProcessing || playingMessageId)
                 ? 'rgba(22,21,58,0.15)'
                 : (isRecording ? C.red : C.green),
               alignItems: 'center', justifyContent: 'center',
-              opacity: isProcessing ? 0.5 : 1,
+              opacity: (isProcessing || playingMessageId) ? 0.5 : 1,
             }}
             accessibilityRole="button"
             accessibilityLabel={isPt ? 'Segure pra gravar' : 'Hold to record'}
           >
             {isRecording
               ? <XIcon size={28} color="#FFF" weight="bold" />
-              : <Microphone size={28} color={(sessionComplete || isProcessing) ? C.navyLight : '#FFF'} weight="fill" />
+              : <Microphone size={28} color={(sessionComplete || isProcessing || playingMessageId) ? C.navyLight : '#FFF'} weight="fill" />
             }
           </Animated.View>
         </View>
