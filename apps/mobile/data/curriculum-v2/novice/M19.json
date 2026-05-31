@@ -1032,6 +1032,207 @@
         "closing_cue": "Charlotte encerra com \"Future mapped!\" quando obj_3 baterem.",
         "suggested_script": "**Script** (referencial, 7 turnos):\n\n1. **Charlotte**: \"Talk about your future — plans and predictions.\"\n2. **Student**: \"I'm going to learn Spanish.\"\n3. **Charlotte**: \"Great. Prediction?\"\n4. **Student**: \"I think I'll be happy.\"\n5. **Charlotte**: \"Best one.\"\n6. **Student**: \"How about you?\"\n7. **Charlotte**: \"I'm going to travel and I'll write a book. Future mapped!\"\n\n> N05 chat = LLM puro.\n\n---"
       }
+    },
+    {
+      "id": "N06",
+      "title": "Tempo e estações",
+      "sub_cefr": "A1",
+      "grammar_focus": "Weather vocabulary + forecast com \"will\" e \"going to\" (Fase B extra unit)",
+      "markers": [
+        "survival"
+      ],
+      "real_life_context": "Você fala sobre o tempo (hoje, ontem, amanhã) — uma das conversas mais universais em inglês, especialmente em culturas britânicas.",
+      "grammar": [
+        {
+          "type": "multiple_choice",
+          "sentence": "It _____ hot today.",
+          "options": [
+            "is",
+            "are",
+            "has",
+            "does"
+          ],
+          "answer": "is",
+          "explanation": "\"It is hot\" — usar \"It\" como sujeito impessoal para clima. Singular sempre — \"It is\", nunca \"they are\". Padrão fixo em inglês para weather."
+        },
+        {
+          "type": "multiple_choice",
+          "sentence": "It _____ raining outside.",
+          "options": [
+            "is",
+            "are",
+            "does",
+            "has"
+          ],
+          "answer": "is",
+          "explanation": "\"It is raining\" — present continuous com \"It\" para tempo em curso. \"Raining\" é a forma -ing. Para tempo atual: \"It is + verb-ing\" ou \"It is + adjetivo\"."
+        },
+        {
+          "type": "word_bank",
+          "sentence": "What's the _____ like?",
+          "choices": [
+            "weather",
+            "climate",
+            "time",
+            "day"
+          ],
+          "answer": "weather",
+          "explanation": "\"What's the weather like?\" — pergunta padrão sobre como está o tempo. \"Weather\" é tempo do dia; \"climate\" é o padrão geral de uma região (mais formal/longo prazo)."
+        },
+        {
+          "type": "word_bank",
+          "sentence": "It's going to _____ tomorrow.",
+          "choices": [
+            "rain",
+            "raining",
+            "rained",
+            "rains"
+          ],
+          "answer": "rain",
+          "explanation": "\"Going to + verb base\" — previsão futura. \"It's going to rain tomorrow\". Após \"going to\", sempre verbo no infinitivo sem \"to\" adicional."
+        },
+        {
+          "type": "fill_gap",
+          "sentence": "It's _____ today — really cold!",
+          "hint": "clima muito frio",
+          "answer": "freezing",
+          "explanation": "\"Freezing\" — adjetivo intensivo para \"very cold\". Outros intensivos: \"boiling\" (very hot), \"soaking\" (very wet). Não usar \"very freezing\" — o adjetivo já é intensificado."
+        },
+        {
+          "type": "fill_gap",
+          "sentence": "_____ is my favorite season.",
+          "hint": "estação do ano (summer/winter/etc)",
+          "answer": "Summer (ou Winter / Spring / Fall / Autumn)",
+          "explanation": "Estações em inglês: Spring, Summer, Fall (American) / Autumn (British), Winter. Note: em inglês, estações NÃO levam artigo no uso geral (\"I love summer\", não \"I love the summer\")."
+        },
+        {
+          "type": "fill_gap",
+          "sentence": "It'll _____ sunny tomorrow.",
+          "hint": "verbo \"to be\" no futuro com will",
+          "answer": "be",
+          "explanation": "\"It will be sunny\" / \"It'll be sunny\" — futuro com \"will\" + \"be\" + adjetivo. Não esquecer o \"be\" — erro comum dizer só \"It will sunny\"."
+        },
+        {
+          "type": "fix_error",
+          "sentence": "Is making cold today.",
+          "hint": "Em inglês — \"It is cold today\"",
+          "answer": "It is cold today. (ou: It's cold today.)",
+          "explanation": "\"Is making cold\" é tradução literal errada de \"está fazendo frio\". Em inglês, sempre \"It is + adjetivo de clima\": \"It is cold / hot / sunny / rainy\". Sem \"making\"."
+        },
+        {
+          "type": "fix_error",
+          "sentence": "I love the winter.",
+          "hint": "Estações sem artigo no uso geral",
+          "answer": "I love winter.",
+          "explanation": "Em inglês, estações no uso genérico não levam artigo: \"I love winter / I prefer summer / Fall is beautiful\". Só usar \"the\" para uma estação específica: \"the winter of 2020\"."
+        },
+        {
+          "type": "read_answer",
+          "passage": "It's really cold today — almost freezing. It's going to snow tonight, they say. Tomorrow will be even colder. I love winter, but this week is too much. Summer is my favorite season.",
+          "question": "What is the speaker's favorite season?",
+          "answer": "summer",
+          "explanation": "O texto diz \"Summer is my favorite season\". Pratica leitura sobre clima e preferências por estações."
+        }
+      ],
+      "listening_speaking": [
+        {
+          "text": "It's really cold today.",
+          "context": "descrição do clima atual"
+        },
+        {
+          "text": "What's the weather like?",
+          "context": "pergunta sobre o tempo"
+        },
+        {
+          "text": "It's going to rain tomorrow.",
+          "context": "previsão"
+        },
+        {
+          "text": "It'll be sunny next week.",
+          "context": "futuro com will"
+        },
+        {
+          "text": "Summer is my favorite season.",
+          "context": "preferência por estação"
+        }
+      ],
+      "roleplay": {
+        "scenario": "Charlotte conversa sobre o tempo e estações com você. Small talk universal.",
+        "voiced_by": "charlotte",
+        "persona": "Charlotte",
+        "persona_outfit": "charlotte_casual",
+        "time_budget_sec": 90,
+        "opening_line": "What's the weather like where you are today?",
+        "objectives": [
+          {
+            "id": 1,
+            "label_pt": "Descrever o clima atual",
+            "label_en": "Describe current weather",
+            "hidden_prompt": "user describes weather with 'It's...'",
+            "hint_pt": "It's really sunny and warm today.",
+            "hint_en": "It's really sunny and warm today."
+          },
+          {
+            "id": 2,
+            "label_pt": "Falar previsão para amanhã",
+            "label_en": "Talk about tomorrow's forecast",
+            "hidden_prompt": "user uses 'going to' or 'will' for forecast",
+            "hint_pt": "It's going to rain tomorrow.",
+            "hint_en": "It's going to rain tomorrow."
+          },
+          {
+            "id": 3,
+            "label_pt": "Falar da estação favorita",
+            "label_en": "Talk about favorite season",
+            "hidden_prompt": "user mentions favorite season",
+            "hint_pt": "Summer is my favorite season.",
+            "hint_en": "Summer is my favorite season."
+          }
+        ],
+        "closing_cue": "Charlotte fecha com \"Weather talk forever!\" quando obj_3 bater.",
+        "suggested_flow": "**Suggested flow** (referencial, 6 turnos):\n\n1. **Charlotte**: \"What's the weather like where you are today?\"\n2. **Student**: ~\"It's really sunny and warm today.\"\n3. **Charlotte**: \"Nice! What about tomorrow?\"\n4. **Student**: ~\"It's going to rain tomorrow.\"\n5. **Charlotte**: \"Of course it is. What's your favorite season?\"\n6. **Student**: ~\"Summer is my favorite season.\"\n7. **Charlotte**: \"Same! Weather talk forever!\"",
+        "evaluation_focus": [
+          "\"It's + adjetivo\" para clima",
+          "\"Going to / will\" para previsão",
+          "Estações sem artigo"
+        ]
+      },
+      "guided_chat": {
+        "scenario": "Charlotte conversa sobre o tempo em diferentes regiões e suas preferências.",
+        "voiced_by": "charlotte",
+        "persona": "Charlotte",
+        "persona_outfit": "charlotte_casual",
+        "intro_pt": "Charlotte conversa sobre clima e estações — small talk universal.",
+        "opening_message": "Are you a hot weather or cold weather person?",
+        "objectives": [
+          {
+            "id": 1,
+            "label_pt": "Dizer sua preferência",
+            "label_en": "State your preference",
+            "hidden_prompt": "user states weather preference",
+            "hint_pt": "I prefer cold weather.",
+            "hint_en": "I prefer cold weather."
+          },
+          {
+            "id": 2,
+            "label_pt": "Falar do clima atual",
+            "label_en": "Talk about current weather",
+            "hidden_prompt": "user describes current weather",
+            "hint_pt": "Right now it's cool and cloudy.",
+            "hint_en": "Right now it's cool and cloudy."
+          },
+          {
+            "id": 3,
+            "label_pt": "Perguntar a Charlotte",
+            "label_en": "Ask Charlotte",
+            "hidden_prompt": "user asks Charlotte",
+            "hint_pt": "What about you?",
+            "hint_en": "What about you?"
+          }
+        ],
+        "closing_cue": "Charlotte fecha com \"Weather preferences shared!\" quando obj_3 bater.",
+        "suggested_script": "**Script** (referencial, 7 turnos):\n\n1. **Charlotte**: \"Are you a hot weather or cold weather person?\"\n2. **Student**: \"I prefer cold weather.\"\n3. **Charlotte**: \"Really? Most people prefer warm. Why cold?\"\n4. **Student**: \"Right now it's cool and cloudy.\"\n5. **Charlotte**: \"Perfect for you then!\"\n6. **Student**: \"What about you?\"\n7. **Charlotte**: \"I love summer — sunny and hot. Weather preferences shared!\"\n\n> N06 chat = LLM puro. Scaffold via hint_pt.\n\n---"
+      }
     }
   ],
   "cross_unit_consolidation": [
@@ -1040,6 +1241,7 @@
     "\"I won't + base\" (negativa)",
     "\"Will you + base?\" (pedido educado)",
     "Going to (plano firme) vs Will (espontâneo/predição)",
-    "Marcadores: I think / probably / maybe + will"
+    "Marcadores: I think / probably / maybe + will",
+    "(N06 weather): \"It's + clima adjective\", \"What's the weather like?\", \"going to rain/snow\", seasons (Spring/Summer/Fall/Winter sem artigo), freezing/boiling"
   ]
 }

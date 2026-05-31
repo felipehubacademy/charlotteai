@@ -844,6 +844,172 @@
 
 ---
 
+## Unit N06 — Listening: gonna, wanna, gotta
+
+> **Sub-CEFR**: A1 | **Grammar focus**: Decodificar reduções coloquiais de inglês falado — RECEPÇÃO (não produção)
+> **Markers**: [listening-receptive]
+> **Real-life context**: Você ouve fala nativa em filmes, vídeos, podcasts, ou na rua e precisa entender as reduções "gonna", "wanna", "gotta", "whatcha".
+> **Notas pedagógicas**: Listening-first. Grammar exercises são de "match the spoken form to the formal form". Para Speaking (role-play e chat), o aluno ainda usa "going to" / "want to" formal — speaking natural fica pra Inter/Advanced.
+
+### 1. Grammar (10 exercises)
+
+1. **multiple_choice** — Você ouve "I'm gonna eat" — significa:
+   **Options**: I'm going to eat. / I'm growing to eat. / I'm gone to eat. / I'm great to eat.
+   **Answer**: I'm going to eat.
+   **Explanation**: "Gonna" é a redução falada de "going to". Em fala nativa rápida, "going to" comprime em "gonna" /ˈɡənə/. Não escrita formal — apenas oral. Reconhecer essa redução é essencial pra entender filmes e conversa real.
+
+2. **multiple_choice** — Você ouve "I wanna go" — significa:
+   **Options**: I want to go. / I won to go. / I want a go. / I am going.
+   **Answer**: I want to go.
+   **Explanation**: "Wanna" = redução falada de "want to". Em fala natural, "want to" se funde em "wanna" /ˈwɒnə/. Só ouvir — escrita formal sempre "want to".
+
+3. **word_bank** — "I _____ leave now" = "I've got to leave now" (em fala rápida):
+   **Choices**: gotta / gota / gotto / got
+   **Answer**: gotta
+   **Explanation**: "Gotta" = redução falada de "have got to" ou "got to". Indica obrigação ou necessidade. "I gotta leave" = "Tenho que sair". Listening-only — não usar em escrita.
+
+4. **word_bank** — Você ouve "Whatcha doing?" — significa:
+   **Choices**: What are you doing? / What he is doing? / What is doing? / What you do?
+   **Answer**: What are you doing?
+   **Explanation**: "Whatcha" = redução falada de "What are you" (ou "What you"). Em fala rápida: "What are you doing?" → "Whatcha doing?". Pergunta extremamente comum em conversação informal.
+
+5. **fill_gap** — Em fala formal escrita, "I'm gonna" se escreve como "I'm _____ to".
+   **Hint**: forma completa de "going"
+   **Answer**: going
+   **Explanation**: "Gonna" só existe em fala informal ou textos que simulam fala (legendas, redes sociais). Em escrita formal, sempre "I'm going to". Reconhecer a forma falada e saber a forma escrita.
+
+6. **fill_gap** — Em fala formal, "wanna" se escreve como "_____ to".
+   **Hint**: forma completa de "wanna"
+   **Answer**: want
+   **Explanation**: "Wanna" = "want to". Escrita formal nunca usa "wanna". É só pra ouvir. Inglês falado tem várias reduções desse tipo: gonna, wanna, gotta, gimme (give me), lemme (let me), kinda (kind of).
+
+7. **fill_gap** — Em fala formal, "gotta" significa "_____ to".
+   **Hint**: tem que / preciso
+   **Answer**: have got (ou apenas "got")
+   **Explanation**: "Gotta" = "have got to" / "got to" (com sentido de obrigação). "I gotta go" = "I have to go" / "I've got to go". Reconhecer em fala rápida — usar forma completa em escrita.
+
+8. **fix_error** — Email profissional: "I gonna send the report tomorrow."
+   **Hint**: Em escrita formal, nunca "gonna"
+   **Answer**: I am going to send the report tomorrow. (ou: I'm going to send the report tomorrow.)
+   **Explanation**: "Gonna" é só falado. Em emails, relatórios, qualquer escrita profissional, use "going to". "Gonna" num email parece extremamente informal ou descuidado. Saber a diferença é parte da fluência.
+
+9. **fix_error** — Apresentação no trabalho: "I wanna show you our results."
+   **Hint**: Apresentações profissionais — use "want to"
+   **Answer**: I want to show you our results. (ou: I would like to show you our results.)
+   **Explanation**: "Wanna" só em fala casual. Em apresentação formal: "I want to show" ou "I would like to show". Reduções são naturais entre amigos, inadequadas no trabalho formal.
+
+10. **read_answer**
+    **Passage**: "I'm gonna grab some coffee — wanna come? Yeah, I gotta finish this email first. Whatcha working on? Just a quick reply to my boss. I gotta send it before the meeting. OK, I'll wait for you."
+    **Question**: What does "I gotta finish this email" mean in formal English?
+    **Answer**: I have to finish this email (ou "I've got to finish this email")
+    **Explanation**: "I gotta finish this email" em escrita formal seria "I have to finish this email" ou "I've got to finish this email". "Gotta" carrega o sentido de obrigação. Reconhecer a redução em fala e saber a forma formal.
+
+### 2. Listening/Speaking (5 phrases)
+
+1. **"I'm going to eat lunch."** — formal (você ouvirá "I'm gonna")
+2. **"I want to go home."** — formal (você ouvirá "I wanna")
+3. **"I have to leave now."** — formal (você ouvirá "I gotta")
+4. **"What are you doing?"** — formal (você ouvirá "Whatcha doing?")
+5. **"Do you want to come?"** — formal (você ouvirá "D'you wanna come?")
+
+### 3. Role-play
+
+**Cenário**: Charlotte fala com você em fala natural (com reduções), mas você responde em forma formal. Treina escutar reduções e responder com clareza.
+**Tipo**: Live Voice
+**Voiced by**: `charlotte`
+**Persona**: Charlotte
+**Persona outfit**: `charlotte_casual`
+**Time budget**: 90s
+**Opening line**: "Hey! I'm gonna grab a coffee — wanna come?"
+
+**Sub-objectives** (3 objetivos):
+
+1. **id**: 1
+   **label_pt**: "Responder com 'I want to' formal"
+   **label_en**: "Reply with formal 'I want to'"
+   **hidden_prompt**: "user uses 'I want to' or 'I'd like to' in reply"
+   **hint_pt**: "Yes, I want to come. Where are we going?"
+   **hint_en**: "Yes, I want to come. Where are we going?"
+
+2. **id**: 2
+   **label_pt**: "Pedir clarificação se necessário"
+   **label_en**: "Ask for clarification if needed"
+   **hidden_prompt**: "user asks 'What are you doing?' or 'Could you repeat?'"
+   **hint_pt**: "What are you doing later?"
+   **hint_en**: "What are you doing later?"
+
+3. **id**: 3
+   **label_pt**: "Falar plano com 'I'm going to'"
+   **label_en**: "Talk about plan with 'I'm going to'"
+   **hidden_prompt**: "user uses formal 'I'm going to'"
+   **hint_pt**: "I'm going to work after coffee."
+   **hint_en**: "I'm going to work after coffee."
+
+**Closing cue**: Charlotte fecha com "Cool, let's go!" quando obj_3 bater.
+
+**Suggested flow** (referencial, 6 turnos):
+
+1. **Charlotte**: "Hey! I'm gonna grab a coffee — wanna come?"
+2. **Student**: ~"Yes, I want to come. Where are we going?"
+3. **Charlotte**: "Just the café downstairs. Whatcha doing the rest of the day?"
+4. **Student**: ~"What are you doing later?"
+5. **Charlotte**: "I gotta finish my report. You?"
+6. **Student**: ~"I'm going to work after coffee."
+7. **Charlotte**: "Cool, let's go!"
+
+**Evaluation focus**:
+- Entender reduções faladas
+- Responder em forma formal (sem reduções)
+- Pedir clarificação se não entender
+
+### 4. Guided Chat
+
+**Cenário**: Charlotte usa fala natural com reduções. Você pratica decodificar e responder em forma clara.
+**Voiced by**: `charlotte`
+**Persona**: Charlotte
+**Persona outfit**: `charlotte_casual`
+**Intro (em PT-BR)**: "Charlotte fala como nativa — com 'gonna', 'wanna', 'gotta'. Entenda e responda em inglês claro."
+**Opening message**: "I'm gonna start running every morning. Wanna join me?"
+
+**Sub-objectives** (3 objetivos):
+
+1. **id**: 1
+   **label_pt**: "Resposta clara"
+   **label_en**: "Clear reply"
+   **hidden_prompt**: "user replies with formal 'I want to' or 'I don't want to'"
+   **hint_pt**: "I don't really want to wake up that early."
+   **hint_en**: "I don't really want to wake up that early."
+
+2. **id**: 2
+   **label_pt**: "Reagir a 'gotta'"
+   **label_en**: "React to 'gotta'"
+   **hidden_prompt**: "user understands 'gotta' = 'have to' and responds"
+   **hint_pt**: "You don't have to do it every day."
+   **hint_en**: "You don't have to do it every day."
+
+3. **id**: 3
+   **label_pt**: "Perguntar a Charlotte"
+   **label_en**: "Ask Charlotte"
+   **hidden_prompt**: "user asks Charlotte more"
+   **hint_pt**: "What time are you going to start?"
+   **hint_en**: "What time are you going to start?"
+
+**Closing cue**: Charlotte fecha com "OK, see ya tomorrow!" quando obj_3 bater.
+
+**Script** (referencial, 7 turnos):
+
+1. **Charlotte**: "I'm gonna start running every morning. Wanna join me?"
+2. **Student**: "I don't really want to wake up that early."
+3. **Charlotte**: "Yeah, I gotta force myself. But it's good for me."
+4. **Student**: "You don't have to do it every day."
+5. **Charlotte**: "True. Maybe three times a week."
+6. **Student**: "What time are you going to start?"
+7. **Charlotte**: "Six AM. OK, see ya tomorrow!"
+
+> N06 chat = LLM puro. Scaffold via hint_pt.
+
+---
+
 ## Cross-unit consolidation
 
 Ao terminar M18, o aluno deve usar naturalmente:
@@ -852,5 +1018,6 @@ Ao terminar M18, o aluno deve usar naturalmente:
 - "Are you going to + base?" (pergunta)
 - WH + are you going to + base?
 - Time markers: tomorrow / next X / this weekend / soon / in X days
+- (N06 listening): Reconhecer reduções faladas — gonna = going to / wanna = want to / gotta = have got to / whatcha = what are you. Decodificar fala natural sem se confundir.
 
 Esses chunks abrem M19 — "will" pra previsões e decisões espontâneas.

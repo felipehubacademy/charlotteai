@@ -858,6 +858,171 @@
 
 ---
 
+## Unit N06 — Que horas? Que dia?
+
+> **Sub-CEFR**: A1 | **Grammar focus**: Telling time + dates + days/months/seasons (Fase B extra unit)
+> **Markers**: [survival]
+> **Real-life context**: Você pergunta e dá horas, dias da semana, datas — o vocabulário básico de tempo que aparece em quase toda conversa.
+
+### 1. Grammar (10 exercises)
+
+1. **multiple_choice** — "What _____ is it?"
+   **Options**: time / hour / day / clock
+   **Answer**: time
+   **Explanation**: "What time is it?" — pergunta padrão de horário em inglês. Sempre "time", nunca "hour". "Hour" é só a unidade (60 minutos), não a pergunta.
+
+2. **multiple_choice** — "It's _____ o'clock."
+   **Options**: three / a three / the three / three's
+   **Answer**: three
+   **Explanation**: "It's three o'clock" — chunk fixo de horário cheio. Sem artigo antes do número. "O'clock" só com horas cheias (3:00, 7:00), nunca com minutos.
+
+3. **word_bank** — "It's _____ past four."
+   **Choices**: quarter / quarter of / fourth / four
+   **Answer**: quarter
+   **Explanation**: "Quarter past four" = 4:15 (um quarto depois das quatro). "Past" significa "depois". Padrão fixo: half past / quarter past / quarter to.
+
+4. **word_bank** — "It's _____ to six."
+   **Choices**: quarter / fourth / quarter of / past
+   **Answer**: quarter
+   **Explanation**: "Quarter to six" = 5:45 (um quarto antes das seis). "To" significa "para/antes". Diferente de "past": "quarter past" é depois, "quarter to" é antes.
+
+5. **fill_gap** — "It's _____ past seven." (7:30)
+   **Hint**: meio (30 minutos)
+   **Answer**: half
+   **Explanation**: "Half past seven" = 7:30. "Half past" = trinta minutos depois da hora cheia. Chunk fixo. Não dizemos "thirty past" em inglês.
+
+6. **fill_gap** — "I work _____ the morning."
+   **Hint**: preposição para período do dia
+   **Answer**: in
+   **Explanation**: "In the morning / in the afternoon / in the evening" — chunk fixo de período. Exceção: "AT night" (não "in the night"). Memorizar como chunks.
+
+7. **fill_gap** — "Today is _____."
+   **Hint**: dia da semana (exemplo: Monday)
+   **Answer**: Monday (ou qualquer dia: Tuesday, Wednesday...)
+   **Explanation**: Dias da semana em inglês sempre com maiúscula: Monday, Tuesday, Wednesday, Thursday, Friday, Saturday, Sunday. Diferente do português (que usa minúscula).
+
+8. **fix_error** — "What's hour?"
+   **Hint**: Em inglês — "What time is it?"
+   **Answer**: What time is it?
+   **Explanation**: "What's hour?" é tradução literal errada de "que horas?". O chunk correto é "What time is it?". Sempre com "time" e "is it" no fim. Erro muito comum entre lusófonos iniciantes.
+
+9. **fix_error** — "It is the three o'clock."
+   **Hint**: Sem artigos antes do número
+   **Answer**: It is three o'clock. (ou: It's three o'clock.)
+   **Explanation**: "It's three o'clock" — sem "the" e sem "a". Horário inglês não usa artigos. Erro de tradução literal de "são três horas".
+
+10. **read_answer**
+    **Passage**: "What time is it? It's quarter past nine. I have a meeting at half past nine — only fifteen minutes left. Today is Monday, the third of March. The weather is cold — winter is still here."
+    **Question**: What time is the meeting?
+    **Answer**: half past nine (ou "9:30")
+    **Explanation**: O texto diz "I have a meeting at half past nine". "Half past nine" = 9:30. Pratica leitura de horário e contexto temporal.
+
+### 2. Listening/Speaking (5 phrases)
+
+1. **"What time is it?"** — pergunta padrão de horário
+2. **"It's quarter past three."** — horário com quarter
+3. **"I have a meeting at half past nine."** — horário em contexto
+4. **"Today is Monday, the third of March."** — data completa
+5. **"I work in the morning."** — período do dia
+
+### 3. Role-play
+
+**Cenário**: Charlotte te pergunta sobre horários e dias. Você responde com chunks de tempo corretamente.
+**Tipo**: Live Voice
+**Voiced by**: `charlotte`
+**Persona**: Charlotte
+**Persona outfit**: `charlotte_casual`
+**Time budget**: 90s
+**Opening line**: "What time is it where you are?"
+
+**Sub-objectives** (3 objetivos):
+
+1. **id**: 1
+   **label_pt**: "Dar a hora atual"
+   **label_en**: "Give current time"
+   **hidden_prompt**: "user gives current time with 'It's...'"
+   **hint_pt**: "It's quarter past three in the afternoon."
+   **hint_en**: "It's quarter past three in the afternoon."
+
+2. **id**: 2
+   **label_pt**: "Dar o dia da semana"
+   **label_en**: "Give the day of the week"
+   **hidden_prompt**: "user gives day of week"
+   **hint_pt**: "Today is Wednesday."
+   **hint_en**: "Today is Wednesday."
+
+3. **id**: 3
+   **label_pt**: "Falar do período do dia"
+   **label_en**: "Talk about time of day"
+   **hidden_prompt**: "user mentions morning/afternoon/evening"
+   **hint_pt**: "I work in the morning and study in the evening."
+   **hint_en**: "I work in the morning and study in the evening."
+
+**Closing cue**: Charlotte fecha com "Time mastered!" quando obj_3 bater.
+
+**Suggested flow** (referencial, 6 turnos):
+
+1. **Charlotte**: "What time is it where you are?"
+2. **Student**: ~"It's quarter past three in the afternoon."
+3. **Charlotte**: "What day is it today?"
+4. **Student**: ~"Today is Wednesday."
+5. **Charlotte**: "Are you a morning or evening person?"
+6. **Student**: ~"I work in the morning and study in the evening."
+7. **Charlotte**: "Time mastered!"
+
+**Evaluation focus**:
+- Chunks corretos de horário ("It's + time")
+- Dias com maiúscula
+- Preposição "in" + período do dia
+
+### 4. Guided Chat
+
+**Cenário**: Charlotte conversa sobre o cotidiano com referências temporais.
+**Voiced by**: `charlotte`
+**Persona**: Charlotte
+**Persona outfit**: `charlotte_casual`
+**Intro (em PT-BR)**: "Charlotte conversa sobre horários e dias da semana."
+**Opening message**: "What's your favorite day of the week?"
+
+**Sub-objectives** (3 objetivos):
+
+1. **id**: 1
+   **label_pt**: "Dizer dia favorito"
+   **label_en**: "Say favorite day"
+   **hidden_prompt**: "user says favorite day"
+   **hint_pt**: "My favorite day is Friday."
+   **hint_en**: "My favorite day is Friday."
+
+2. **id**: 2
+   **label_pt**: "Falar de um horário típico seu"
+   **label_en**: "Talk about a typical time of yours"
+   **hidden_prompt**: "user mentions typical time"
+   **hint_pt**: "I usually wake up at seven."
+   **hint_en**: "I usually wake up at seven."
+
+3. **id**: 3
+   **label_pt**: "Perguntar a Charlotte"
+   **label_en**: "Ask Charlotte"
+   **hidden_prompt**: "user asks Charlotte about her favorite day or time"
+   **hint_pt**: "What about you?"
+   **hint_en**: "What about you?"
+
+**Closing cue**: Charlotte fecha com "Time and days, sorted!" quando obj_3 bater.
+
+**Script** (referencial, 7 turnos):
+
+1. **Charlotte**: "What's your favorite day of the week?"
+2. **Student**: "My favorite day is Friday."
+3. **Charlotte**: "Same! Friday evenings are the best. What time do you usually wake up?"
+4. **Student**: "I usually wake up at seven."
+5. **Charlotte**: "Earlier than me — I sleep until eight."
+6. **Student**: "What about you?"
+7. **Charlotte**: "Saturday is my favorite. Time and days, sorted!"
+
+> N06 chat = LLM puro. Scaffold via hint_pt.
+
+---
+
 ## Cross-unit consolidation
 
 Ao terminar M05, o aluno deve usar naturalmente:
@@ -868,5 +1033,6 @@ Ao terminar M05, o aluno deve usar naturalmente:
 - Advérbios de frequência: always, usually, sometimes, never
 - Posição correta: antes do verbo lexical (I always work), DEPOIS de to be (I am always tired)
 - Verbos em forma base com I/you/we/they (sem -s)
+- Chunks de tempo (N06): "What time is it?", quarter past/to, half past, days of the week, in the morning/afternoon/evening, at night
 
 Esses chunks preparam o aluno pra M06 (O que faço — 3ª pessoa), onde aprende o -s da 3ª pessoa, negativas com don't/doesn't e perguntas com Do/Does — toda a outra metade do present simple.
