@@ -96,13 +96,6 @@ export default function HomeTab() {
   // Promocao organica: checa apos cada focus da home.
   const { event: promotionEvent, ack: ackPromotion, checkAndPromote } = usePromotion();
   useFocusEffect(useCallback(() => { checkAndPromote(); }, [checkAndPromote]));
-
-  // Reset trail scroll lock no focus — garante que toda volta do
-  // exercicio re-scrolla pro topico ativo (era: scrollava so na 1a
-  // entrada, depois ficava preso no topo / posicao antiga).
-  useFocusEffect(useCallback(() => {
-    trailScrolledRef.current = false;
-  }, []));
   const name      = profile?.name ?? profile?.email?.split('@')[0] ?? 'Student';
   const isPt      = level === 'Novice';
   const firstName = name.split(' ')[0] ?? name;
@@ -352,7 +345,7 @@ export default function HomeTab() {
 
 
   const tryScroll = useCallback((node: any, attempt = 0) => {
-    if (trailScrolledRef.current || !node || !trailScrollRef.current) return;
+    if (!node || !trailScrollRef.current) return;
     const sv = trailScrollRef.current as any;
     const svHandle =
       typeof sv.getInnerViewNode === 'function' ? sv.getInnerViewNode() :
@@ -366,7 +359,6 @@ export default function HomeTab() {
       nodeHandle,
       svHandle,
       () => {
-        // Retry on error — layout may not be committed yet
         if (attempt < 5) requestAnimationFrame(() => tryScroll(node, attempt + 1));
       },
       (_x: number, y: number) => {
@@ -374,7 +366,6 @@ export default function HomeTab() {
           trailScrollRef.current?.scrollTo({ y: Math.max(0, y - 24), animated: false });
           trailScrolledRef.current = true;
         } else if (attempt < 5) {
-          // Ainda nao mediu — tenta de novo no proximo frame
           requestAnimationFrame(() => tryScroll(node, attempt + 1));
         }
       },
@@ -382,7 +373,7 @@ export default function HomeTab() {
   }, []);
 
   const handleCurrentTopicRef = useCallback((node: View | null) => {
-    if (!node || trailScrolledRef.current) return;
+    if (!node) return;
     // Dois RAFs garantem que o layout foi commitado nos dois lados
     // (ScrollView interno + posicao do node).
     requestAnimationFrame(() => requestAnimationFrame(() => tryScroll(node)));
