@@ -1565,7 +1565,7 @@ export default function LearnSessionScreen() {
                           alignItems: 'center', justifyContent: 'center', flexShrink: 0,
                         }}>
                           <AppText style={{ fontSize: 13, fontWeight: '800', color: dotText }}>
-                            {['A', 'B', 'C'][i]}
+                            {String.fromCharCode(65 + i)}
                           </AppText>
                         </View>
                         {isPortuguese
