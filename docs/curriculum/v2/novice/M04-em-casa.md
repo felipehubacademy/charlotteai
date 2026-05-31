@@ -250,7 +250,7 @@
 
 10. **read_answer**
     **Passage**: "There is a big house in the neighborhood. There are four bedrooms. There is a kitchen and two bathrooms."
-    **Question**: How many bedrooms are there? (give a number)
+    **Question**: How many bedrooms are there? (dê um número)
     **Answer**: four
     **Explanation**: The text says "There are four bedrooms". 4.
 
@@ -415,7 +415,7 @@
 
 10. **read_answer**
     **Passage**: "My kitchen has got three chairs, two tables, and four windows. There are no doors inside the kitchen."
-    **Question**: How many tables are in the kitchen? (give a number)
+    **Question**: How many tables are in the kitchen? (dê um número)
     **Answer**: two
     **Explanation**: The text says "two tables". 2.
 
@@ -580,7 +580,7 @@
 
 10. **read_answer**
     **Passage**: "I am a doctor. My hospital is big. The hospital has got 200 beds. There is an emergency room on the first floor."
-    **Question**: What does the speaker do? (give a profession)
+    **Question**: What does the speaker do? (dê uma profissão)
     **Answer**: doctor
     **Explanation**: The text says "I am a doctor". Note "a doctor" (indefinite article + profession).
 
@@ -745,7 +745,7 @@
 
 10. **read_answer**
     **Passage**: "Welcome to my home! My house is big. There are four bedrooms, two bathrooms, and a kitchen. The kitchen has got two windows."
-    **Question**: How many bedrooms are there? (give a number)
+    **Question**: How many bedrooms are there? (dê um número)
     **Answer**: four
     **Explanation**: The text says "four bedrooms". 4.
 

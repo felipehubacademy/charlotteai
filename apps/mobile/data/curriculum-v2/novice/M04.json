@@ -324,7 +324,7 @@
         {
           "type": "read_answer",
           "passage": "There is a big house in the neighborhood. There are four bedrooms. There is a kitchen and two bathrooms.",
-          "question": "How many bedrooms are there? (give a number)",
+          "question": "How many bedrooms are there? (dê um número)",
           "answer": "four",
           "explanation": "The text says \"There are four bedrooms\". 4."
         }
@@ -526,7 +526,7 @@
         {
           "type": "read_answer",
           "passage": "My kitchen has got three chairs, two tables, and four windows. There are no doors inside the kitchen.",
-          "question": "How many tables are in the kitchen? (give a number)",
+          "question": "How many tables are in the kitchen? (dê um número)",
           "answer": "two",
           "explanation": "The text says \"two tables\". 2."
         }
@@ -730,7 +730,7 @@
         {
           "type": "read_answer",
           "passage": "I am a doctor. My hospital is big. The hospital has got 200 beds. There is an emergency room on the first floor.",
-          "question": "What does the speaker do? (give a profession)",
+          "question": "What does the speaker do? (dê uma profissão)",
           "answer": "doctor",
           "explanation": "The text says \"I am a doctor\". Note \"a doctor\" (indefinite article + profession)."
         }
@@ -932,7 +932,7 @@
         {
           "type": "read_answer",
           "passage": "Welcome to my home! My house is big. There are four bedrooms, two bathrooms, and a kitchen. The kitchen has got two windows.",
-          "question": "How many bedrooms are there? (give a number)",
+          "question": "How many bedrooms are there? (dê um número)",
           "answer": "four",
           "explanation": "The text says \"four bedrooms\". 4."
         }

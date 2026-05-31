@@ -118,7 +118,7 @@
         {
           "type": "read_answer",
           "passage": "Hi! I am Mark. I am fifteen years old. My room is twelve.",
-          "question": "How old is Mark? (give a number)",
+          "question": "How old is Mark? (dê um número)",
           "answer": "15",
           "explanation": "Mark says \"I am fifteen years old\". Fifteen = 15."
         }
@@ -312,7 +312,7 @@
         {
           "type": "read_answer",
           "passage": "Tom is twenty-three years old. Mary is fifty. Mike is eighty-five.",
-          "question": "How old is Mike? (give a number)",
+          "question": "How old is Mike? (dê um número)",
           "answer": "85",
           "explanation": "The text says \"Mike is eighty-five\". 85 = 80 + 5 = eighty-five."
         }

@@ -392,7 +392,7 @@
    **Answer**: Can
    **Explanation**: "Can your sister drive?" — 3ª pessoa também usa Can. Sem alterações.
 
-7. **fill_gap** — "Yes, I _____." (resposta a "Can you swim?")
+7. **fill_gap** — "Yes, I _____." (responda a "Can you swim?")
    **Hint**: Resposta curta afirmativa
    **Answer**: can
    **Explanation**: "Yes, I can" — resposta curta. Repete o auxiliar (can), não o verbo principal.

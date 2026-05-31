@@ -392,7 +392,7 @@
    **Answer**: is
    **Explanation**: "What is she doing?" — WH + is + sujeito + verb-ing.
 
-7. **fill_gap** — "Yes, I _____." (resposta a "Are you working?")
+7. **fill_gap** — "Yes, I _____." (responda a "Are you working?")
    **Hint**: Resposta curta afirmativa
    **Answer**: am
    **Explanation**: "Yes, I am" — short answer com to be. Repete o auxiliar.

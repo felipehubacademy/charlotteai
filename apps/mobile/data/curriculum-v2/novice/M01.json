@@ -318,7 +318,7 @@
         {
           "type": "read_answer",
           "passage": "Hi! My name is Sarah. I am 30 years old, and I am from New York. Nice to meet you!",
-          "question": "How old is Sarah? (answer with a number)",
+          "question": "How old is Sarah? (responda com um número)",
           "answer": "30",
           "explanation": "Sarah diz \"I am 30 years old\". A idade dela é 30."
         }
@@ -690,7 +690,7 @@
         {
           "type": "read_answer",
           "passage": "Tom: Hey Ana, are you okay? You look down. Ana: I'm tired and a bit stressed. Work is crazy this week.",
-          "question": "How does Ana feel? (give one word)",
+          "question": "How does Ana feel? (dê uma palavra)",
           "answer": "tired",
           "explanation": "Ana diz \"I'm tired and a bit stressed\". A primeira palavra que descreve ela é \"tired\" (cansada)."
         }
@@ -875,7 +875,7 @@
         {
           "type": "read_answer",
           "passage": "Ana: This dinner was lovely! Thank you for inviting me. Tom: My pleasure! Drive safely. Take care!",
-          "question": "What does Tom say at the end? (give 2 words)",
+          "question": "What does Tom say at the end? (dê 2 palavras)",
           "answer": "Take care",
           "explanation": "Tom termina com \"Take care!\" — uma despedida calorosa após o jantar."
         }

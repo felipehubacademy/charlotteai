@@ -216,7 +216,7 @@
    **Answer**: Did
    **Explanation**: "Did he call?" — past question com Did. Verbo base "call" depois.
 
-6. **fill_gap** — "Yes, I _____." (response to "Did you sleep well?")
+6. **fill_gap** — "Yes, I _____." (responda a "Did you sleep well?")
    **Hint**: Resposta curta afirmativa
    **Answer**: did
    **Explanation**: "Yes, I did" — short answer pra past question.

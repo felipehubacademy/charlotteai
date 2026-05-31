@@ -283,7 +283,7 @@
         },
         {
           "type": "fill_gap",
-          "sentence": "\"Yes, I _____.\" (response to \"Did you sleep well?\")",
+          "sentence": "\"Yes, I _____.\" (responda a \"Did you sleep well?\")",
           "hint": "Resposta curta afirmativa",
           "answer": "did",
           "explanation": "\"Yes, I did\" — short answer pra past question."

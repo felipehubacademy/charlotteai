@@ -390,7 +390,7 @@
    **Answer**: was
    **Explanation**: "How was your weekend?" — singular usa "was".
 
-7. **fill_gap** — "Yes, I _____." (response to "Were you tired?")
+7. **fill_gap** — "Yes, I _____." (responda a "Were you tired?")
    **Hint**: Resposta curta afirmativa
    **Answer**: was
    **Explanation**: "Yes, I was" — short answer com to be passado.

@@ -519,7 +519,7 @@
         {
           "type": "read_answer",
           "passage": "I'm going to travel next month — I have tickets. But right now? Oh, the phone! I'll get it. I think it'll be my mom.",
-          "question": "Why is the speaker going to travel (planned vs spontaneous)?",
+          "question": "Why is the speaker going to travel (planejado vs espontâneo)?",
           "answer": "planned (or \"tickets\" or \"has tickets\")",
           "explanation": "The text says \"I have tickets\" — indicating a planned trip with going to."
         }

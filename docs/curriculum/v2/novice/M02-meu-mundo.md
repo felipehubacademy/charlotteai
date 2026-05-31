@@ -83,7 +83,7 @@
 
 10. **read_answer**
     **Passage**: "Hi! I am Mark. I am fifteen years old. My room is twelve."
-    **Question**: How old is Mark? (give a number)
+    **Question**: How old is Mark? (dê um número)
     **Answer**: 15
     **Explanation**: Mark says "I am fifteen years old". Fifteen = 15.
 
@@ -241,7 +241,7 @@ Charlotte fala via ElevenLabs (Rachel). Aluno repete; Azure Speech avalia pronú
 
 10. **read_answer**
     **Passage**: "Tom is twenty-three years old. Mary is fifty. Mike is eighty-five."
-    **Question**: How old is Mike? (give a number)
+    **Question**: How old is Mike? (dê um número)
     **Answer**: 85
     **Explanation**: The text says "Mike is eighty-five". 85 = 80 + 5 = eighty-five.
 

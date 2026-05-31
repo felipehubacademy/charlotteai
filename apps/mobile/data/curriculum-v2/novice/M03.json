@@ -126,7 +126,7 @@
         {
           "type": "read_answer",
           "passage": "My family is great. My mother is fifty. My father is fifty-five. My brother is twenty. He is Brazilian.",
-          "question": "How old is the father? (give a number)",
+          "question": "How old is the father? (dê um número)",
           "answer": "55",
           "explanation": "The text says \"My father is fifty-five\". 55."
         }
@@ -330,7 +330,7 @@
         {
           "type": "read_answer",
           "passage": "I've got a small family. I have got one brother and one sister. My brother is twenty-five. My sister is fifteen.",
-          "question": "How old is the brother? (give a number)",
+          "question": "How old is the brother? (dê um número)",
           "answer": "25",
           "explanation": "The text says \"My brother is twenty-five\". 25."
         }
@@ -532,7 +532,7 @@
         {
           "type": "read_answer",
           "passage": "John has got a great family. His wife is Italian. His son is ten. His daughter is fifteen.",
-          "question": "How old is John's daughter? (give a number)",
+          "question": "How old is John's daughter? (dê um número)",
           "answer": "15",
           "explanation": "The text says \"His daughter is fifteen\". 15."
         }

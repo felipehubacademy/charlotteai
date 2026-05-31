@@ -406,7 +406,7 @@
 
 10. **read_answer**
     **Passage**: "I'm going to travel next month — I have tickets. But right now? Oh, the phone! I'll get it. I think it'll be my mom."
-    **Question**: Why is the speaker going to travel (planned vs spontaneous)?
+    **Question**: Why is the speaker going to travel (planejado vs espontâneo)?
     **Answer**: planned (or "tickets" or "has tickets")
     **Explanation**: The text says "I have tickets" — indicating a planned trip with going to.
 

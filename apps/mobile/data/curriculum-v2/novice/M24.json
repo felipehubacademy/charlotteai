@@ -70,7 +70,7 @@
         },
         {
           "type": "word_bank",
-          "sentence": "\"Oh _____?\" (showing surprise + interest)",
+          "sentence": "\"Oh _____?\" (mostrando surpresa + interesse)",
           "choices": [
             "yeah",
             "no",
@@ -82,7 +82,7 @@
         },
         {
           "type": "fill_gap",
-          "sentence": "\"That sounds _____!\" (positive reaction)",
+          "sentence": "\"That sounds _____!\" (reação positiva)",
           "hint": "adjetivo positivo",
           "answer": "amazing",
           "accepts": [
@@ -293,7 +293,7 @@
         },
         {
           "type": "word_bank",
-          "sentence": "\"_____ out!\" (surprise reaction)",
+          "sentence": "\"_____ out!\" (reação de surpresa)",
           "choices": [
             "Get",
             "Move",
@@ -782,7 +782,7 @@
         {
           "type": "read_answer",
           "passage": "Friend: 'I didn't get the job.' You: 'Oh no, I'm so sorry to hear that.' Friend: 'It's okay. I'll find another one.' You: 'That's a bummer, but I'm sure you will.' Friend: 'Thanks for being supportive.'",
-          "question": "How does the speaker show empathy? (write one phrase the speaker uses)",
+          "question": "How does the speaker show empathy? (escreva uma frase que o falante usa)",
           "answer": "I'm so sorry to hear that",
           "accepts": [
             "Oh no I'm so sorry",
@@ -934,7 +934,7 @@
         },
         {
           "type": "word_bank",
-          "sentence": "\"_____, what were we talking about?\" (returning to topic)",
+          "sentence": "\"_____, what were we talking about?\" (voltando ao assunto)",
           "choices": [
             "Anyway",
             "Hello",
@@ -946,7 +946,7 @@
         },
         {
           "type": "word_bank",
-          "sentence": "\"_____ a second.\" (asking for a pause)",
+          "sentence": "\"_____ a second.\" (pedindo uma pausa)",
           "choices": [
             "Hang on",
             "Give on",

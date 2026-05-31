@@ -47,12 +47,12 @@
    **Answer**: Tell
    **Explanation**: "Tell me more" — chunk fixo para mostrar interesse e pedir continuação. "Tell" + pessoa + algo. "Say" e "speak" não combinam neste chunk.
 
-4. **word_bank** — "Oh _____?" (showing surprise + interest)
+4. **word_bank** — "Oh _____?" (mostrando surpresa + interesse)
    **Choices**: yeah / no / wait / good
    **Answer**: yeah
    **Explanation**: "Oh yeah?" — reação curta de interesse com leve surpresa. Mais casual que "Really?" mas mesma função. "Oh no?" expressaria preocupação.
 
-5. **fill_gap** — "That sounds _____!" (positive reaction)
+5. **fill_gap** — "That sounds _____!" (reação positiva)
    **Hint**: adjetivo positivo
    **Answer**: amazing
 **Accepts**: great / awesome / interesting / cool
@@ -215,7 +215,7 @@
    **Answer**: You're
    **Explanation**: "You're kidding!" — chunk fixo de descrença. Significa "você tá brincando!". Sempre "you're" (segunda pessoa) neste chunk.
 
-4. **word_bank** — "_____ out!" (surprise reaction)
+4. **word_bank** — "_____ out!" (reação de surpresa)
    **Choices**: Get / Move / Go / Take
    **Answer**: Get
    **Explanation**: "Get out!" — reação de descrença chocada. Não significa literalmente "saia" — é gíria para "não acredito!" / "tá brincando!". Casual/informal.
@@ -583,7 +583,7 @@
 
 10. **read_answer**
     **Passage**: "Friend: 'I didn't get the job.' You: 'Oh no, I'm so sorry to hear that.' Friend: 'It's okay. I'll find another one.' You: 'That's a bummer, but I'm sure you will.' Friend: 'Thanks for being supportive.'"
-    **Question**: How does the speaker show empathy? (write one phrase the speaker uses)
+    **Question**: How does the speaker show empathy? (escreva uma frase que o falante usa)
     **Answer**: I'm so sorry to hear that
     **Accepts**: Oh no I'm so sorry / sorry to hear that / That's a bummer / I'm sure you will
     **Explanation**: O texto mostra empatia através de reações como "Oh no", "I'm so sorry", "That's a bummer", combinadas com apoio "I'm sure you will".
@@ -712,12 +712,12 @@
    **Answer**: By the way...
    **Explanation**: "By the way..." — chunk fixo para introduzir novo tópico. Significa "a propósito" / "por sinal". Mudança natural de assunto.
 
-3. **word_bank** — "_____, what were we talking about?" (returning to topic)
+3. **word_bank** — "_____, what were we talking about?" (voltando ao assunto)
    **Choices**: Anyway / Hello / Wait / Stop
    **Answer**: Anyway
    **Explanation**: "Anyway..." — chunk fixo para voltar ao assunto principal após desvio. Marca retorno ao tópico original.
 
-4. **word_bank** — "_____ a second." (asking for a pause)
+4. **word_bank** — "_____ a second." (pedindo uma pausa)
    **Choices**: Hang on / Give on / Take on / Sit on
    **Answer**: Hang on
    **Explanation**: "Hang on a second" — chunk fixo de pausa, sinônimo de "hold on". "Hang on" é literalmente "se segura" mas idiomaticamente "espera".
