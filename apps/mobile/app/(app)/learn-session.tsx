@@ -1190,8 +1190,27 @@ export default function LearnSessionScreen() {
           <TouchableOpacity
             onPress={() => {
               if (isV2) {
-                // v2: sem auto-routing entre activities ainda (sem progress tracking).
-                // Volta pra trilha pra usuario escolher a proxima activity manualmente.
+                // v2 auto-routing: se passou threshold da activity recem-feita,
+                // avanca pra proxima activity da mesma unit (grammar → speaking → roleplay).
+                // Se nao passou, volta pra home (banner ja mostrou refazer).
+                const c = completedActivityScore;
+                const passed = c && c.score >= c.threshold;
+                if (passed && params.moduleId && params.unitId) {
+                  if (c.activityType === 'grammar') {
+                    router.replace({
+                      pathname: '/(app)/learn-session',
+                      params: { v: 'v2', level, moduleId: params.moduleId, unitId: params.unitId, activity: 'ls' } as any,
+                    });
+                    return;
+                  }
+                  if (c.activityType === 'speaking') {
+                    router.replace({
+                      pathname: '/(app)/roleplay-exercise' as any,
+                      params: { level, moduleId: params.moduleId, unitId: params.unitId } as any,
+                    });
+                    return;
+                  }
+                }
                 router.replace('/(app)/(tabs)' as any);
               } else if (hasNextTopic) {
                 router.replace({

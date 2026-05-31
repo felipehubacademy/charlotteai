@@ -927,7 +927,18 @@ export default function RolePlayExerciseScreen() {
                 </AppText>
               </TouchableOpacity>
               <TouchableOpacity
-                onPress={() => router.back()}
+                onPress={() => {
+                  // Se passou (todos objetivos), avanca pro Guided Chat da mesma unit.
+                  // Senao, volta pra trilha (banner refazer ja esta no card).
+                  if (allObjectivesDone && moduleId && unitId) {
+                    router.replace({
+                      pathname: '/(app)/guided-chat-exercise' as any,
+                      params: { level, moduleId, unitId } as any,
+                    });
+                  } else {
+                    router.back();
+                  }
+                }}
                 style={{
                   flex: 1, paddingVertical: 14, borderRadius: 14,
                   backgroundColor: C.green,
@@ -935,7 +946,7 @@ export default function RolePlayExerciseScreen() {
                 }}
               >
                 <AppText style={{ fontSize: 14, fontWeight: '700', color: '#FFF' }}>
-                  {isPt ? 'Voltar' : 'Back'}
+                  {allObjectivesDone ? (isPt ? 'Continuar' : 'Continue') : (isPt ? 'Voltar' : 'Back')}
                 </AppText>
               </TouchableOpacity>
             </View>

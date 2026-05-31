@@ -28,7 +28,7 @@ import Constants from 'expo-constants';
 import { AppText } from '@/components/ui/Text';
 import ChatBox, { Message } from '@/components/chat/ChatBox';
 import { useAuth } from '@/hooks/useAuth';
-import { getModule } from '@/lib/curriculum-v2/loader';
+import { getModule, listModules } from '@/lib/curriculum-v2/loader';
 import type { Level as V2Level, GuidedChat } from '@/lib/curriculum-v2/types';
 import { useLearnProgressV2 } from '@/hooks/useLearnProgressV2';
 import { soundEngine } from '@/lib/soundEngine';
@@ -654,7 +654,41 @@ export default function GuidedChatExerciseScreen() {
                 </AppText>
               </TouchableOpacity>
               <TouchableOpacity
-                onPress={() => router.back()}
+                onPress={() => {
+                  // Chat eh ULTIMA activity da unit. Se passou:
+                  //   - tem proxima unit no mesmo modulo → grammar dela
+                  //   - eh ultima unit do modulo → grammar do M(n+1) N01
+                  //   - eh ultima unit do ultimo modulo → home
+                  if (!allObjectivesDone) { router.back(); return; }
+                  const allMods = listModules(level as any);
+                  const modIdx  = allMods.findIndex(m => m.id === moduleId);
+                  const currMod = allMods[modIdx];
+                  if (!currMod) { router.replace('/(app)/(tabs)' as any); return; }
+                  const unitIdx = currMod.units.findIndex(u => u.id === unitId);
+                  // Proxima unit no mesmo modulo
+                  if (unitIdx >= 0 && unitIdx < currMod.units.length - 1) {
+                    const nextUnit = currMod.units[unitIdx + 1];
+                    router.replace({
+                      pathname: '/(app)/learn-session',
+                      params: { v: 'v2', level, moduleId, unitId: nextUnit.id, activity: 'grammar' } as any,
+                    });
+                    return;
+                  }
+                  // Ultima unit → proximo modulo
+                  if (modIdx >= 0 && modIdx < allMods.length - 1) {
+                    const nextMod = allMods[modIdx + 1];
+                    const firstUnit = nextMod.units[0];
+                    if (firstUnit) {
+                      router.replace({
+                        pathname: '/(app)/learn-session',
+                        params: { v: 'v2', level, moduleId: nextMod.id, unitId: firstUnit.id, activity: 'grammar' } as any,
+                      });
+                      return;
+                    }
+                  }
+                  // Sem proximo — celebra na home
+                  router.replace('/(app)/(tabs)' as any);
+                }}
                 style={{
                   flex: 1, paddingVertical: 14, borderRadius: 14,
                   backgroundColor: C.green,
@@ -662,7 +696,7 @@ export default function GuidedChatExerciseScreen() {
                 }}
               >
                 <AppText style={{ fontSize: 14, fontWeight: '700', color: '#FFF' }}>
-                  {isPt ? 'Voltar' : 'Back'}
+                  {allObjectivesDone ? (isPt ? 'Continuar' : 'Continue') : (isPt ? 'Voltar' : 'Back')}
                 </AppText>
               </TouchableOpacity>
             </View>
