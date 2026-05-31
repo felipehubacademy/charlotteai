@@ -349,8 +349,13 @@
         "id": "M22",
         "title": "Síntese e mastery",
         "file": "advanced/M22.json"
+      },
+      {
+        "id": "M23",
+        "title": "Business & email writing",
+        "file": "advanced/M23.json"
       }
     ]
   },
-  "generated_at": "2026-05-31T00:30:18.050Z"
+  "generated_at": "2026-05-31T00:34:16.266Z"
 }
