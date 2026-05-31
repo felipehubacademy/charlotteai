@@ -290,6 +290,8 @@ export default function LearnSessionScreen() {
 
   const [stepIdx, setStepIdx]         = useState(0);
   const [isComplete, setIsComplete]   = useState(false);
+  // Pulse anim para o botao redondo de mic durante gravacao
+  const micRingAnim = useRef(new Animated.Value(0)).current;
   // "Me ajuda" — explicacao contextual via LLM (PT-BR Novice, EN Inter+)
   const [helpExplanation, setHelpExplanation] = useState<string | null>(null);
   const [helpLoading, setHelpLoading]         = useState(false);
@@ -307,6 +309,22 @@ export default function LearnSessionScreen() {
   // Reset contador de acertos consecutivos ao iniciar a sessao
   // (Tier 4 — voiceSFX dispara em 3/5/10 acertos seguidos)
   useEffect(() => { soundEngine.resetStreak(); }, []);
+
+  // Loop de pulso do mic ring durante gravacao
+  useEffect(() => {
+    if (pronStatus === 'recording') {
+      micRingAnim.setValue(0);
+      const loop = Animated.loop(
+        Animated.timing(micRingAnim, {
+          toValue: 1, duration: 1400, useNativeDriver: true,
+        })
+      );
+      loop.start();
+      return () => loop.stop();
+    } else {
+      micRingAnim.setValue(0);
+    }
+  }, [pronStatus, micRingAnim]);
 
   // Load saved step on mount (resume mid-topic)
   useEffect(() => {
@@ -1743,6 +1761,67 @@ export default function LearnSessionScreen() {
                   </AppText>
                 </View>
               )}
+
+              {/* Botao redondo de mic — centralizado, com aneis animados durante gravacao.
+                  Aparece pra repeat (pre-result), antes era inline pill no bottom strip. */}
+              {currentStep.phrase.type === 'repeat'
+                && pronStatus !== 'result' && pronStatus !== 'error'
+                && pronStatus !== 'loading_audio' && pronStatus !== 'assessing' && (
+                <View style={{ alignItems: 'center', marginTop: 48, marginBottom: 40 }}>
+                  <View style={{ width: 160, height: 160, alignItems: 'center', justifyContent: 'center' }}>
+                    {/* Aneis pulsantes (so quando recording) */}
+                    {pronStatus === 'recording' && [0, 0.3, 0.6].map((delay, idx) => (
+                      <Animated.View
+                        key={idx}
+                        pointerEvents="none"
+                        style={{
+                          position: 'absolute', width: 120, height: 120, borderRadius: 60,
+                          borderWidth: 2, borderColor: '#DC2626',
+                          opacity: micRingAnim.interpolate({
+                            inputRange: [0, delay, delay + 0.4, 1],
+                            outputRange: [0, 0.55, 0, 0],
+                            extrapolate: 'clamp',
+                          }),
+                          transform: [{
+                            scale: micRingAnim.interpolate({
+                              inputRange: [0, delay, delay + 0.4, 1],
+                              outputRange: [1, 1, 1.6, 1.6],
+                              extrapolate: 'clamp',
+                            }),
+                          }],
+                        }}
+                      />
+                    ))}
+                    <Pressable
+                      onPressIn={isPlaying ? undefined : startRecording}
+                      onPressOut={isPlaying ? undefined : stopRecording}
+                      disabled={isPlaying}
+                      pressRetentionOffset={{ top: 30, left: 30, right: 30, bottom: 30 }}
+                      style={({ pressed }) => ({
+                        width: 120, height: 120, borderRadius: 60,
+                        backgroundColor: isPlaying ? '#9CA3AF'
+                          : pronStatus === 'recording' ? '#DC2626' : '#7C3AED',
+                        alignItems: 'center', justifyContent: 'center',
+                        opacity: isPlaying ? 0.6 : pressed ? 0.85 : 1,
+                        transform: [{ scale: pronStatus === 'recording' ? 1.06 : 1 }],
+                        shadowColor: pronStatus === 'recording' ? '#DC2626' : '#7C3AED',
+                        shadowOpacity: 0.35, shadowRadius: 18, shadowOffset: { width: 0, height: 8 },
+                        elevation: 8,
+                      })}
+                    >
+                      <Microphone size={56} color="#FFF" weight="fill" />
+                    </Pressable>
+                  </View>
+                  <AppText style={{
+                    marginTop: 14, fontSize: 12, color: C.navyLight,
+                    fontWeight: '600', letterSpacing: 0.4,
+                  }}>
+                    {pronStatus === 'recording'
+                      ? (isPortuguese ? 'Solte para parar' : 'Release to stop')
+                      : (isPortuguese ? 'Segure para falar' : 'Hold to speak')}
+                  </AppText>
+                </View>
+              )}
               {/* listen_write / minimal_pairs pre-result: play icon centralizado, sem texto */}
               {(currentStep.phrase.type === 'listen_write' || currentStep.phrase.type === 'minimal_pairs') && pronStatus !== 'result' && pronStatus !== 'loading_audio' && (
                 <View style={{ alignItems: 'center', marginBottom: 24 }}>
@@ -1989,7 +2068,8 @@ export default function LearnSessionScreen() {
             );
           })()}
 
-          {/* ── Pronunciation: Repeat ── */}
+          {/* ── Pronunciation: Repeat — bottom strip apenas pra estados auxiliares.
+                Botao redondo de mic renderiza no main area acima (centralizado). */}
           {currentStep.kind === 'pronunciation' && currentStep.phrase.type === 'repeat' && (
             pronStatus === 'error' ? (
               <TouchableOpacity onPress={handleNext}
@@ -2006,26 +2086,6 @@ export default function LearnSessionScreen() {
                 <ActivityIndicator color={accent} />
                 <AppText style={{ color: C.navyLight, fontSize: 13, marginTop: 6 }}>{isPortuguese ? 'Analisando…' : 'Assessing…'}</AppText>
               </View>
-            ) : pronStatus !== 'result' ? (
-              <Pressable
-                onPressIn={isPlaying ? undefined : startRecording}
-                onPressOut={isPlaying ? undefined : stopRecording}
-                disabled={isPlaying}
-                pressRetentionOffset={{ top: 20, left: 20, right: 20, bottom: 20 }}
-                style={{
-                  backgroundColor: isPlaying ? '#9CA3AF' : pronStatus === 'recording' ? '#DC2626' : '#7C3AED',
-                  borderRadius: 16, paddingVertical: 16,
-                  flexDirection: 'row', alignItems: 'center', justifyContent: 'center', gap: 10,
-                  opacity: isPlaying ? 0.6 : 1,
-                }}
-              >
-                <Microphone size={22} color="#FFF" weight="fill" />
-                <AppText style={{ fontSize: 15, fontWeight: '800', color: '#FFF' }}>
-                  {pronStatus === 'recording'
-                    ? (isPortuguese ? 'Gravando… solte para parar' : 'Recording… release to stop')
-                    : (isPortuguese ? 'Segure para falar' : 'Hold to speak')}
-                </AppText>
-              </Pressable>
             ) : null
           )}
 
