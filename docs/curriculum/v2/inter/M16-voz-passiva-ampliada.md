@@ -1,4 +1,4 @@
-# Module M16 — Voz passiva ampliada
+# Module M16 — Extended passive voice
 
 > **Level**: Inter (B2)
 > **Block**: B2 Block

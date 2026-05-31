@@ -1,4 +1,4 @@
-# Module M12 — Escrita acadêmica
+# Module M12 — Academic writing
 
 > **Level**: Advanced (C2)
 > **Block**: C2 Block (opening)

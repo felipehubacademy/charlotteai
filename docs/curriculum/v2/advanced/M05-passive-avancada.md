@@ -1,4 +1,4 @@
-# Module M05 — Passive avançada
+# Module M05 — Advanced passive
 
 > **Level**: Advanced (C1)
 > **Block**: C1 Block

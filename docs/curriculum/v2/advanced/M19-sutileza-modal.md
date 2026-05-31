@@ -1,4 +1,4 @@
-# Module M19 — Sutileza modal
+# Module M19 — Modal subtlety
 
 > **Level**: Advanced (C2)
 > **Block**: C2 Block

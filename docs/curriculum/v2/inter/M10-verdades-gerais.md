@@ -1,4 +1,4 @@
-# Module M10 — Verdades gerais
+# Module M10 — General truths
 
 > **Level**: Inter (B1)
 > **Block**: B1 Block

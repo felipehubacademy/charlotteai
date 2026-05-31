@@ -1,4 +1,4 @@
-# Module M09 — Tão... quanto
+# Module M09 — As... as
 
 > **Level**: Inter (B1)
 > **Block**: B1 Block

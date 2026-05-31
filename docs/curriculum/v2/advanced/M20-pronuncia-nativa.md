@@ -1,4 +1,4 @@
-# Module M20 — Pronúncia nativa
+# Module M20 — Native pronunciation
 
 > **Level**: Advanced (C2)
 > **Block**: C2 Block

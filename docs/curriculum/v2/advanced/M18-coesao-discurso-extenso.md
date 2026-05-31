@@ -1,4 +1,4 @@
-# Module M18 — Coesão em discurso extenso
+# Module M18 — Cohesion in extended discourse
 
 > **Level**: Advanced (C2)
 > **Block**: C2 Block

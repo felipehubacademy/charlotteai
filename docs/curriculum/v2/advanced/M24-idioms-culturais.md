@@ -1,4 +1,4 @@
-# Module M24 — Idioms culturais
+# Module M24 — Cultural idioms
 
 > **Level**: Advanced (C2)
 > **Block**: C2 extension (Fase B)

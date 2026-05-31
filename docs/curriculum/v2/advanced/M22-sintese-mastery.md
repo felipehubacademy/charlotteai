@@ -1,4 +1,4 @@
-# Module M22 — Síntese e mastery
+# Module M22 — Synthesis and mastery
 
 > **Level**: Advanced (C2)
 > **Block**: C2 Block (closing — final module)

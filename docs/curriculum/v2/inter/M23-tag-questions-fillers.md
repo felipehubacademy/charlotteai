@@ -1,4 +1,4 @@
-# Module M23 — Tag questions e fillers
+# Module M23 — Tag questions and fillers
 
 > **Level**: Inter (B1/B2)
 > **Block**: B2 (closing extra)

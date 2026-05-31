@@ -1,4 +1,4 @@
-# Module M09 — Idiomas e linguagem figurada
+# Module M09 — Idioms and figurative language
 
 > **Level**: Advanced (C1)
 > **Block**: C1 Block

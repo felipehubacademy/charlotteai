@@ -1,4 +1,4 @@
-# Module M06 — Cláusulas participiais
+# Module M06 — Participle clauses
 
 > **Level**: Advanced (C1)
 > **Block**: C1 Block

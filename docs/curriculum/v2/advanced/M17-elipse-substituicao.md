@@ -1,4 +1,4 @@
-# Module M17 — Elipse e substituição
+# Module M17 — Ellipsis and substitution
 
 > **Level**: Advanced (C2)
 > **Block**: C2 Block

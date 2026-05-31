@@ -1,4 +1,4 @@
-# Module M11 — Conotação e registro
+# Module M11 — Connotation and register
 
 > **Level**: Advanced (C1)
 > **Block**: C1 Block (closing)

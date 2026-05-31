@@ -1,4 +1,4 @@
-# Module M07 — Quantificadores precisos
+# Module M07 — Precise quantifiers
 
 > **Level**: Inter (B1)
 > **Block**: B1 Block

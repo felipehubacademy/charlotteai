@@ -1,4 +1,4 @@
-# Module M06 — Possibilidades e dúvidas
+# Module M06 — Possibilities and doubts
 
 > **Level**: Inter (B1)
 > **Block**: B1 Block

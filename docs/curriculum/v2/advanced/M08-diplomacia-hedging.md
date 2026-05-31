@@ -1,4 +1,4 @@
-# Module M08 — Diplomacia e hedging
+# Module M08 — Diplomacy and hedging
 
 > **Level**: Advanced (C1)
 > **Block**: C1 Block

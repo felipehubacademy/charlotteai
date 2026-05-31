@@ -1,4 +1,4 @@
-# Module M02 — Inversão
+# Module M02 — Inversion
 
 > **Level**: Advanced (C1)
 > **Block**: C1 Block

@@ -125,129 +125,129 @@
     "inter": [
       {
         "id": "M01",
-        "title": "Eventos no passado",
+        "title": "Past events",
         "file": "inter/M01.json"
       },
       {
         "id": "M02",
-        "title": "O que já fiz",
+        "title": "What I've done",
         "file": "inter/M02.json"
       },
       {
         "id": "M03",
-        "title": "Recente ou antigo?",
+        "title": "Recent or distant?",
         "file": "inter/M03.json"
       },
       {
         "id": "M04",
-        "title": "Costumávamos",
+        "title": "We used to",
         "file": "inter/M04.json"
       },
       {
         "id": "M05",
-        "title": "Phrasal verbs essenciais",
+        "title": "Essential phrasal verbs",
         "file": "inter/M05.json"
       },
       {
         "id": "M06",
-        "title": "Possibilidades e dúvidas",
+        "title": "Possibilities and doubts",
         "file": "inter/M06.json"
       },
       {
         "id": "M07",
-        "title": "Quantificadores precisos",
+        "title": "Precise quantifiers",
         "file": "inter/M07.json"
       },
       {
         "id": "M08",
-        "title": "Quem, qual, que",
+        "title": "Who, which, that",
         "file": "inter/M08.json"
       },
       {
         "id": "M09",
-        "title": "Tão... quanto",
+        "title": "As... as",
         "file": "inter/M09.json"
       },
       {
         "id": "M10",
-        "title": "Verdades gerais",
+        "title": "General truths",
         "file": "inter/M10.json"
       },
       {
         "id": "M11",
-        "title": "Quando, antes, depois",
+        "title": "When, before, after",
         "file": "inter/M11.json"
       },
       {
         "id": "M12",
-        "title": "Se eu pudesse...",
+        "title": "If I could...",
         "file": "inter/M12.json"
       },
       {
         "id": "M13",
-        "title": "Se eu tivesse sabido...",
+        "title": "If I had known...",
         "file": "inter/M13.json"
       },
       {
         "id": "M14",
-        "title": "Deveria ter, poderia ter",
+        "title": "Should have, could have",
         "file": "inter/M14.json"
       },
       {
         "id": "M15",
-        "title": "Foi feito",
+        "title": "It was done",
         "file": "inter/M15.json"
       },
       {
         "id": "M16",
-        "title": "Voz passiva ampliada",
+        "title": "Extended passive voice",
         "file": "inter/M16.json"
       },
       {
         "id": "M17",
-        "title": "Ele disse que...",
+        "title": "He said that...",
         "file": "inter/M17.json"
       },
       {
         "id": "M18",
-        "title": "Perguntas reportadas",
+        "title": "Reported questions",
         "file": "inter/M18.json"
       },
       {
         "id": "M19",
-        "title": "Informação extra",
+        "title": "Extra information",
         "file": "inter/M19.json"
       },
       {
         "id": "M20",
-        "title": "Eu queria que...",
+        "title": "I wish...",
         "file": "inter/M20.json"
       },
       {
         "id": "M21",
-        "title": "Phrasal verbs avançados",
+        "title": "Advanced phrasal verbs",
         "file": "inter/M21.json"
       },
       {
         "id": "M22",
-        "title": "Conectores avançados",
+        "title": "Advanced connectors",
         "file": "inter/M22.json"
       },
       {
         "id": "M23",
-        "title": "Tag questions e fillers",
+        "title": "Tag questions and fillers",
         "file": "inter/M23.json"
       }
     ],
     "advanced": [
       {
         "id": "M01",
-        "title": "Condicionais mistas",
+        "title": "Mixed conditionals",
         "file": "advanced/M01.json"
       },
       {
         "id": "M02",
-        "title": "Inversão",
+        "title": "Inversion",
         "file": "advanced/M02.json"
       },
       {
@@ -257,17 +257,17 @@
       },
       {
         "id": "M04",
-        "title": "Subjuntivo",
+        "title": "Subjunctive",
         "file": "advanced/M04.json"
       },
       {
         "id": "M05",
-        "title": "Passive avançada",
+        "title": "Advanced passive",
         "file": "advanced/M05.json"
       },
       {
         "id": "M06",
-        "title": "Cláusulas participiais",
+        "title": "Participle clauses",
         "file": "advanced/M06.json"
       },
       {
@@ -277,37 +277,37 @@
       },
       {
         "id": "M08",
-        "title": "Diplomacia e hedging",
+        "title": "Diplomacy and hedging",
         "file": "advanced/M08.json"
       },
       {
         "id": "M09",
-        "title": "Idiomas e linguagem figurada",
+        "title": "Idioms and figurative language",
         "file": "advanced/M09.json"
       },
       {
         "id": "M10",
-        "title": "Marcadores de discurso",
+        "title": "Discourse markers",
         "file": "advanced/M10.json"
       },
       {
         "id": "M11",
-        "title": "Conotação e registro",
+        "title": "Connotation and register",
         "file": "advanced/M11.json"
       },
       {
         "id": "M12",
-        "title": "Escrita acadêmica",
+        "title": "Academic writing",
         "file": "advanced/M12.json"
       },
       {
         "id": "M13",
-        "title": "Argumentação e persuasão",
+        "title": "Argumentation and persuasion",
         "file": "advanced/M13.json"
       },
       {
         "id": "M14",
-        "title": "Linguagem literária",
+        "title": "Literary language",
         "file": "advanced/M14.json"
       },
       {
@@ -317,37 +317,37 @@
       },
       {
         "id": "M16",
-        "title": "Formação de palavras",
+        "title": "Word formation",
         "file": "advanced/M16.json"
       },
       {
         "id": "M17",
-        "title": "Elipse e substituição",
+        "title": "Ellipsis and substitution",
         "file": "advanced/M17.json"
       },
       {
         "id": "M18",
-        "title": "Coesão em discurso extenso",
+        "title": "Cohesion in extended discourse",
         "file": "advanced/M18.json"
       },
       {
         "id": "M19",
-        "title": "Sutileza modal",
+        "title": "Modal subtlety",
         "file": "advanced/M19.json"
       },
       {
         "id": "M20",
-        "title": "Pronúncia nativa",
+        "title": "Native pronunciation",
         "file": "advanced/M20.json"
       },
       {
         "id": "M21",
-        "title": "Fala como nativo",
+        "title": "Speak like a native",
         "file": "advanced/M21.json"
       },
       {
         "id": "M22",
-        "title": "Síntese e mastery",
+        "title": "Synthesis and mastery",
         "file": "advanced/M22.json"
       },
       {
@@ -357,10 +357,10 @@
       },
       {
         "id": "M24",
-        "title": "Idioms culturais",
+        "title": "Cultural idioms",
         "file": "advanced/M24.json"
       }
     ]
   },
-  "generated_at": "2026-05-31T00:52:12.282Z"
+  "generated_at": "2026-05-31T01:19:01.130Z"
 }

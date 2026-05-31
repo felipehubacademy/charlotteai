@@ -165,13 +165,7 @@ export function LevelDropdown({ selectedLevel, currentLevel, onSelect }: Props) 
                                   alignItems: 'center', justifyContent: 'center',
                                   marginRight: 12,
                                 }}>
-                                  {isActive && (
-                                    <View style={{
-                                      width: 10, height: 10, borderRadius: 5,
-                                      backgroundColor: color,
-                                    }} />
-                                  )}
-                                  {isLocked && (
+                                  {isLocked ? (
                                     <View style={{
                                       width: 22, height: 22, borderRadius: 11,
                                       backgroundColor: C.lockBg,
@@ -179,7 +173,12 @@ export function LevelDropdown({ selectedLevel, currentLevel, onSelect }: Props) 
                                     }}>
                                       <Lock size={11} color={C.navyDim} weight="fill" />
                                     </View>
-                                  )}
+                                  ) : isActive ? (
+                                    <View style={{
+                                      width: 10, height: 10, borderRadius: 5,
+                                      backgroundColor: color,
+                                    }} />
+                                  ) : null}
                                 </View>
                                 <Text
                                   numberOfLines={1}

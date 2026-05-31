@@ -1,4 +1,4 @@
-# Module M22 — Conectores avançados
+# Module M22 — Advanced connectors
 
 > **Level**: Inter (B2)
 > **Block**: B2 Block (closing)

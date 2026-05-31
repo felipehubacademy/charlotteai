@@ -1,4 +1,4 @@
-# Module M14 — Linguagem literária
+# Module M14 — Literary language
 
 > **Level**: Advanced (C2)
 > **Block**: C2 Block

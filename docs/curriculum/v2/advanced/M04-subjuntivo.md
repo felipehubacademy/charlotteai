@@ -1,4 +1,4 @@
-# Module M04 — Subjuntivo
+# Module M04 — Subjunctive
 
 > **Level**: Advanced (C1)
 > **Block**: C1 Block

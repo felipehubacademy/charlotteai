@@ -1,4 +1,4 @@
-# Module M19 — Informação extra
+# Module M19 — Extra information
 
 > **Level**: Inter (B2)
 > **Block**: B2 Block
