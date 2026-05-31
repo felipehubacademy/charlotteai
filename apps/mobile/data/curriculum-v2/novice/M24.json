@@ -114,7 +114,10 @@
           "type": "fix_error",
           "sentence": "Alguém te conta uma história. Você diz: \"OK. Continue.\"",
           "hint": "\"OK. Continue\" é seco. Use chunks de interesse",
-          "answer": "Really? Tell me more! (ou: That's interesting! What happened next?)",
+          "answer": "Really? Tell me more!",
+          "accepts": [
+            "That's interesting! What happened next?"
+          ],
           "explanation": "\"OK. Continue.\" soa frio e formal demais. Em conversação, use reações naturais: \"Really?\", \"Tell me more\", \"What happened next?\", \"That's interesting!\". Mostre engajamento, não comando."
         },
         {
@@ -323,7 +326,11 @@
           "type": "fix_error",
           "sentence": "Truth?",
           "hint": "\"For real?\" ou \"Really?\" — não traduza literal",
-          "answer": "For real? (ou: Really? / Seriously?)",
+          "answer": "For real?",
+          "accepts": [
+            "Really?",
+            "Seriously?"
+          ],
           "explanation": "\"Truth?\" não funciona como reação em inglês. Para \"verdade?\" / \"sério?\", use \"Really?\", \"Seriously?\", \"For real?\", \"Are you serious?\". Erro de tradução literal."
         },
         {
@@ -532,7 +539,10 @@
           "type": "fix_error",
           "sentence": "I'm understanding you.",
           "hint": "\"Understand\" raramente usa -ing em inglês",
-          "answer": "I understand you. (ou: I get it.)",
+          "answer": "I understand you.",
+          "accepts": [
+            "I get it."
+          ],
           "explanation": "\"Understand\" é um verbo de estado mental (stative verb), normalmente NÃO usado em -ing. Sempre \"I understand\", nunca \"I'm understanding\". Erro comum de lusófonos."
         },
         {
@@ -744,14 +754,24 @@
           "type": "fix_error",
           "sentence": "How sad!",
           "hint": "Em inglês conversacional, \"That's sad\" é mais natural",
-          "answer": "That's so sad. (ou: That's terrible.)",
+          "answer": "That's so sad.",
+          "accepts": [
+            "That's terrible.",
+            "That is sad.",
+            "That is so sad.",
+            "That's sad.",
+            "That's awful."
+          ],
           "explanation": "\"How sad\" funciona mas soa formal ou dramatizado. Em conversa real, \"That's so sad\" ou \"That's terrible\" são mais naturais. Reagir com adjetivo + \"that's\" é o padrão."
         },
         {
           "type": "fix_error",
           "sentence": "Pity!",
           "hint": "Use \"What a pity!\" ou \"Such a pity\"",
-          "answer": "What a pity! (ou: That's a shame.)",
+          "answer": "What a pity!",
+          "accepts": [
+            "That's a shame."
+          ],
           "explanation": "\"Pity!\" sozinho não funciona em inglês conversacional. \"What a pity!\" é o chunk fixo. Mais comum ainda: \"That's a shame\" ou \"That's too bad\". Erro de tradução literal de \"Que pena!\"."
         },
         {
@@ -956,7 +976,10 @@
           "type": "fix_error",
           "sentence": "One moment.",
           "hint": "Em conversação natural, \"Hold on\" ou \"Hang on\" são mais comuns",
-          "answer": "Hold on a moment. (ou: Hang on a sec.)",
+          "answer": "Hold on a moment.",
+          "accepts": [
+            "Hang on a sec."
+          ],
           "explanation": "\"One moment\" é formal demais para conversa casual. Em fala natural: \"Hold on\", \"Hang on\", \"Just a second\", \"Give me a sec\". Tradução literal de \"um momento\"."
         },
         {

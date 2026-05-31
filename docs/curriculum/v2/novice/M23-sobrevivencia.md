@@ -84,7 +84,8 @@
 
 9. **fix_error** — "Where is the bathrooms?"
    **Hint**: Plural "bathrooms" precisa de "are"
-   **Answer**: Where are the bathrooms? (ou: Where is the bathroom?)
+   **Answer**: Where are the bathrooms?
+**Accepts**: Where is the bathroom?
    **Explanation**: Concordância: plural "bathrooms" → "are". Ou usar singular "Where is the bathroom?". Não pode misturar singular e plural.
 
 10. **read_answer**
@@ -246,12 +247,14 @@
 
 8. **fix_error** — "I want a room for two persons."
    **Hint**: "People" é mais natural que "persons"
-   **Answer**: I want a room for two people. (ou: I'd like a room for two people.)
+   **Answer**: I want a room for two people.
+**Accepts**: I'd like a room for two people.
    **Explanation**: "People" é o plural natural de "person" em inglês moderno. "Persons" só aparece em contextos legais formais. Melhor ainda: trocar "I want" por "I'd like" (mais educado).
 
 9. **fix_error** — "The shower not working in my room."
    **Hint**: Falta "is" — "is not working"
-   **Answer**: The shower is not working in my room. (ou: The shower isn't working...)
+   **Answer**: The shower is not working in my room.
+**Accepts**: The shower isn't working
    **Explanation**: Inglês exige verbo "to be" em frases negativas com -ing. "Is not working" ou contração "isn't working". Sem "is", a frase fica incompleta.
 
 10. **read_answer**
@@ -582,12 +585,14 @@
 
 8. **fix_error** — "I am sick of the stomach."
    **Hint**: "Have a stomachache" é mais natural
-   **Answer**: I have a stomachache. (ou: I have stomach pain.)
+   **Answer**: I have a stomachache.
+**Accepts**: I have stomach pain.
    **Explanation**: "Sick of" significa "cansado de" (idiomático). Para "dor de estômago", use "I have a stomachache" ou "My stomach hurts". Erro de tradução literal.
 
 9. **fix_error** — "I have hot."
    **Hint**: Em inglês usa-se "I have a fever" ou "I am hot"
-   **Answer**: I have a fever. (ou: I am hot.)
+   **Answer**: I have a fever.
+**Accepts**: I am hot.
    **Explanation**: "I have hot" não existe em inglês. Para febre médica: "I have a fever". Para sensação de calor: "I am hot / I feel hot". Erro de tradução literal de "estou com calor/febre".
 
 10. **read_answer**
@@ -753,7 +758,8 @@
 
 9. **fix_error** — "Speak more slow, please."
    **Hint**: Use "slowly" (advérbio)
-   **Answer**: Speak slower, please. (ou: Speak more slowly, please.)
+   **Answer**: Speak slower, please.
+**Accepts**: Speak more slowly, please.
    **Explanation**: "Slow" é adjetivo; "slowly" é advérbio. Para modificar "speak" (verbo), usa-se "slowly". Comparativo: "more slowly" ou "slower". Ambos funcionam.
 
 10. **read_answer**

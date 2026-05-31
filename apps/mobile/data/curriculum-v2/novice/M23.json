@@ -124,7 +124,10 @@
           "type": "fix_error",
           "sentence": "Where is the bathrooms?",
           "hint": "Plural \"bathrooms\" precisa de \"are\"",
-          "answer": "Where are the bathrooms? (ou: Where is the bathroom?)",
+          "answer": "Where are the bathrooms?",
+          "accepts": [
+            "Where is the bathroom?"
+          ],
           "explanation": "Concordância: plural \"bathrooms\" → \"are\". Ou usar singular \"Where is the bathroom?\". Não pode misturar singular e plural."
         },
         {
@@ -329,14 +332,20 @@
           "type": "fix_error",
           "sentence": "I want a room for two persons.",
           "hint": "\"People\" é mais natural que \"persons\"",
-          "answer": "I want a room for two people. (ou: I'd like a room for two people.)",
+          "answer": "I want a room for two people.",
+          "accepts": [
+            "I'd like a room for two people."
+          ],
           "explanation": "\"People\" é o plural natural de \"person\" em inglês moderno. \"Persons\" só aparece em contextos legais formais. Melhor ainda: trocar \"I want\" por \"I'd like\" (mais educado)."
         },
         {
           "type": "fix_error",
           "sentence": "The shower not working in my room.",
           "hint": "Falta \"is\" — \"is not working\"",
-          "answer": "The shower is not working in my room. (ou: The shower isn't working...)",
+          "answer": "The shower is not working in my room.",
+          "accepts": [
+            "The shower isn't working"
+          ],
           "explanation": "Inglês exige verbo \"to be\" em frases negativas com -ing. \"Is not working\" ou contração \"isn't working\". Sem \"is\", a frase fica incompleta."
         },
         {
@@ -759,14 +768,20 @@
           "type": "fix_error",
           "sentence": "I am sick of the stomach.",
           "hint": "\"Have a stomachache\" é mais natural",
-          "answer": "I have a stomachache. (ou: I have stomach pain.)",
+          "answer": "I have a stomachache.",
+          "accepts": [
+            "I have stomach pain."
+          ],
           "explanation": "\"Sick of\" significa \"cansado de\" (idiomático). Para \"dor de estômago\", use \"I have a stomachache\" ou \"My stomach hurts\". Erro de tradução literal."
         },
         {
           "type": "fix_error",
           "sentence": "I have hot.",
           "hint": "Em inglês usa-se \"I have a fever\" ou \"I am hot\"",
-          "answer": "I have a fever. (ou: I am hot.)",
+          "answer": "I have a fever.",
+          "accepts": [
+            "I am hot."
+          ],
           "explanation": "\"I have hot\" não existe em inglês. Para febre médica: \"I have a fever\". Para sensação de calor: \"I am hot / I feel hot\". Erro de tradução literal de \"estou com calor/febre\"."
         },
         {
@@ -977,7 +992,10 @@
           "type": "fix_error",
           "sentence": "Speak more slow, please.",
           "hint": "Use \"slowly\" (advérbio)",
-          "answer": "Speak slower, please. (ou: Speak more slowly, please.)",
+          "answer": "Speak slower, please.",
+          "accepts": [
+            "Speak more slowly, please."
+          ],
           "explanation": "\"Slow\" é adjetivo; \"slowly\" é advérbio. Para modificar \"speak\" (verbo), usa-se \"slowly\". Comparativo: \"more slowly\" ou \"slower\". Ambos funcionam."
         },
         {

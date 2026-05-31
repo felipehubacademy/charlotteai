@@ -909,7 +909,8 @@
 
 9. **fix_error** — "It is the three o'clock."
    **Hint**: Sem artigos antes do número
-   **Answer**: It is three o'clock. (ou: It's three o'clock.)
+   **Answer**: It is three o'clock.
+**Accepts**: It's three o'clock.
    **Explanation**: "It's three o'clock" — sem "the" e sem "a". Horário inglês não usa artigos. Erro de tradução literal de "são três horas".
 
 10. **read_answer**

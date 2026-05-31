@@ -891,12 +891,14 @@
 
 8. **fix_error** — Email profissional: "I gonna send the report tomorrow."
    **Hint**: Em escrita formal, nunca "gonna"
-   **Answer**: I am going to send the report tomorrow. (ou: I'm going to send the report tomorrow.)
+   **Answer**: I am going to send the report tomorrow.
+**Accepts**: I'm going to send the report tomorrow.
    **Explanation**: "Gonna" é só falado. Em emails, relatórios, qualquer escrita profissional, use "going to". "Gonna" num email parece extremamente informal ou descuidado. Saber a diferença é parte da fluência.
 
 9. **fix_error** — Apresentação no trabalho: "I wanna show you our results."
    **Hint**: Apresentações profissionais — use "want to"
-   **Answer**: I want to show you our results. (ou: I would like to show you our results.)
+   **Answer**: I want to show you our results.
+**Accepts**: I would like to show you our results.
    **Explanation**: "Wanna" só em fala casual. Em apresentação formal: "I want to show" ou "I would like to show". Reduções são naturais entre amigos, inadequadas no trabalho formal.
 
 10. **read_answer**

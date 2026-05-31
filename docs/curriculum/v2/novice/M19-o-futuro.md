@@ -892,7 +892,8 @@
 
 8. **fix_error** — "Is making cold today."
    **Hint**: Em inglês — "It is cold today"
-   **Answer**: It is cold today. (ou: It's cold today.)
+   **Answer**: It is cold today.
+**Accepts**: It's cold today.
    **Explanation**: "Is making cold" é tradução literal errada de "está fazendo frio". Em inglês, sempre "It is + adjetivo de clima": "It is cold / hot / sunny / rainy". Sem "making".
 
 9. **fix_error** — "I love the winter."

@@ -1141,7 +1141,10 @@
           "type": "fix_error",
           "sentence": "It is the three o'clock.",
           "hint": "Sem artigos antes do número",
-          "answer": "It is three o'clock. (ou: It's three o'clock.)",
+          "answer": "It is three o'clock.",
+          "accepts": [
+            "It's three o'clock."
+          ],
           "explanation": "\"It's three o'clock\" — sem \"the\" e sem \"a\". Horário inglês não usa artigos. Erro de tradução literal de \"são três horas\"."
         },
         {

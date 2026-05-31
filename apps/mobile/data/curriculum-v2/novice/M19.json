@@ -1122,7 +1122,10 @@
           "type": "fix_error",
           "sentence": "Is making cold today.",
           "hint": "Em inglês — \"It is cold today\"",
-          "answer": "It is cold today. (ou: It's cold today.)",
+          "answer": "It is cold today.",
+          "accepts": [
+            "It's cold today."
+          ],
           "explanation": "\"Is making cold\" é tradução literal errada de \"está fazendo frio\". Em inglês, sempre \"It is + adjetivo de clima\": \"It is cold / hot / sunny / rainy\". Sem \"making\"."
         },
         {

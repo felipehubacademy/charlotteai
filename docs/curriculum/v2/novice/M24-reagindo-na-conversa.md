@@ -71,7 +71,8 @@
 
 8. **fix_error** — Alguém te conta uma história. Você diz: "OK. Continue."
    **Hint**: "OK. Continue" é seco. Use chunks de interesse
-   **Answer**: Really? Tell me more! (ou: That's interesting! What happened next?)
+   **Answer**: Really? Tell me more!
+**Accepts**: That's interesting! What happened next?
    **Explanation**: "OK. Continue." soa frio e formal demais. Em conversação, use reações naturais: "Really?", "Tell me more", "What happened next?", "That's interesting!". Mostre engajamento, não comando.
 
 9. **fix_error** — "Is interesting that."
@@ -237,7 +238,8 @@
 
 8. **fix_error** — "Truth?"
    **Hint**: "For real?" ou "Really?" — não traduza literal
-   **Answer**: For real? (ou: Really? / Seriously?)
+   **Answer**: For real?
+**Accepts**: Really? / Seriously?
    **Explanation**: "Truth?" não funciona como reação em inglês. Para "verdade?" / "sério?", use "Really?", "Seriously?", "For real?", "Are you serious?". Erro de tradução literal.
 
 9. **fix_error** — "I don't believe in this!"
@@ -403,7 +405,8 @@
 
 8. **fix_error** — "I'm understanding you."
    **Hint**: "Understand" raramente usa -ing em inglês
-   **Answer**: I understand you. (ou: I get it.)
+   **Answer**: I understand you.
+**Accepts**: I get it.
    **Explanation**: "Understand" é um verbo de estado mental (stative verb), normalmente NÃO usado em -ing. Sempre "I understand", nunca "I'm understanding". Erro comum de lusófonos.
 
 9. **fix_error** — "Make sense for me."
@@ -570,12 +573,14 @@
 
 8. **fix_error** — "How sad!"
    **Hint**: Em inglês conversacional, "That's sad" é mais natural
-   **Answer**: That's so sad. (ou: That's terrible.)
+   **Answer**: That's so sad.
+   **Accepts**: That's terrible. / That is sad. / That is so sad. / That's sad. / That's awful.
    **Explanation**: "How sad" funciona mas soa formal ou dramatizado. Em conversa real, "That's so sad" ou "That's terrible" são mais naturais. Reagir com adjetivo + "that's" é o padrão.
 
 9. **fix_error** — "Pity!"
    **Hint**: Use "What a pity!" ou "Such a pity"
-   **Answer**: What a pity! (ou: That's a shame.)
+   **Answer**: What a pity!
+**Accepts**: That's a shame.
    **Explanation**: "Pity!" sozinho não funciona em inglês conversacional. "What a pity!" é o chunk fixo. Mais comum ainda: "That's a shame" ou "That's too bad". Erro de tradução literal de "Que pena!".
 
 10. **read_answer**
@@ -737,7 +742,8 @@
 
 8. **fix_error** — "One moment."
    **Hint**: Em conversação natural, "Hold on" ou "Hang on" são mais comuns
-   **Answer**: Hold on a moment. (ou: Hang on a sec.)
+   **Answer**: Hold on a moment.
+**Accepts**: Hang on a sec.
    **Explanation**: "One moment" é formal demais para conversa casual. Em fala natural: "Hold on", "Hang on", "Just a second", "Give me a sec". Tradução literal de "um momento".
 
 9. **fix_error** — "By the way of the way..."
