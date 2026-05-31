@@ -69,11 +69,10 @@
    **Answer**: Tell
    **Explanation**: "Tell me more" — chunk universal de mostrar interesse e pedir continuação. Funciona em quase qualquer conversa.
 
-8. **fix_error** — Alguém te conta uma história. Você diz: "OK. Continue."
-   **Hint**: "OK. Continue" é seco. Use chunks de interesse
+8. **multiple_choice** — Amigo te conta uma história. Qual reação MAIS natural pra mostrar interesse?
+   **Options**: OK. Continue. / Really? Tell me more! / Speak. / I hear.
    **Answer**: Really? Tell me more!
-**Accepts**: That's interesting! What happened next?
-   **Explanation**: "OK. Continue." soa frio e formal demais. Em conversação, use reações naturais: "Really?", "Tell me more", "What happened next?", "That's interesting!". Mostre engajamento, não comando.
+   **Explanation**: "OK. Continue." soa frio/comando. "Speak" e "I hear" são tradução literal. "Really? Tell me more!" mostra engajamento real — o padrão em inglês conversacional.
 
 9. **fix_error** — "Is interesting that."
    **Hint**: Estrutura correta — "That's interesting"
@@ -571,17 +570,16 @@
 **Accepts**: Such
    **Explanation**: "What a shame!" ou "Such a shame" — chunks para "que pena!". Reação a algo decepcionante mas não catastrófico.
 
-8. **fix_error** — "How sad!"
-   **Hint**: Em inglês conversacional, "That's sad" é mais natural
+8. **multiple_choice** — Amigo diz "My grandfather passed away yesterday." Qual reação soa mais natural em conversa?
+   **Options**: How sad! / That's so sad. / Sad. / Bad news.
    **Answer**: That's so sad.
-   **Accepts**: That's terrible. / That is sad. / That is so sad. / That's sad. / That's awful.
-   **Explanation**: "How sad" funciona mas soa formal ou dramatizado. Em conversa real, "That's so sad" ou "That's terrible" são mais naturais. Reagir com adjetivo + "that's" é o padrão.
+   **Explanation**: "How sad!" funciona mas soa formal/dramatizado. Em conversa real, "That's so sad" é o padrão — adjetivo + "that's". "Sad" sozinho ou "Bad news" soam frios.
 
-9. **fix_error** — "Pity!"
-   **Hint**: Use "What a pity!" ou "Such a pity"
-   **Answer**: What a pity!
-**Accepts**: That's a shame.
-   **Explanation**: "Pity!" sozinho não funciona em inglês conversacional. "What a pity!" é o chunk fixo. Mais comum ainda: "That's a shame" ou "That's too bad". Erro de tradução literal de "Que pena!".
+9. **multiple_choice** — Amigo diz "I lost my wallet." Qual reação soa mais natural?
+   **Options**: Pity! / What a pity! / That's a shame. / Disgrace.
+   **Answer**: That's a shame.
+   **Accepts**: What a pity!
+   **Explanation**: "Pity!" sozinho não funciona — vira gritado/incompleto. "That's a shame" é a reação mais usada em inglês americano cotidiano. "What a pity!" também serve, um pouco mais formal/britânico.
 
 10. **read_answer**
     **Passage**: "Friend: 'I didn't get the job.' You: 'Oh no, I'm so sorry to hear that.' Friend: 'It's okay. I'll find another one.' You: 'That's a bummer, but I'm sure you will.' Friend: 'Thanks for being supportive.'"
@@ -740,11 +738,11 @@
 **Accepts**: Speaking of which
    **Explanation**: "By the way" — introdução suave de novo tópico. "Speaking of which" — mais ligado ao tópico anterior.
 
-8. **fix_error** — "One moment."
-   **Hint**: Em conversação natural, "Hold on" ou "Hang on" são mais comuns
-   **Answer**: Hold on a moment.
-**Accepts**: Hang on a sec.
-   **Explanation**: "One moment" é formal demais para conversa casual. Em fala natural: "Hold on", "Hang on", "Just a second", "Give me a sec". Tradução literal de "um momento".
+8. **multiple_choice** — Pra pedir pra pessoa esperar 2 segundos enquanto você termina algo. Qual soa MAIS natural em conversa casual?
+   **Options**: One moment. / Hold on a sec. / Wait. / Stop.
+   **Answer**: Hold on a sec.
+   **Accepts**: Hang on a sec.
+   **Explanation**: "One moment" é formal demais (atendente de banco). "Wait" e "Stop" soam ríspidos. Em conversa casual: "Hold on", "Hang on", "Just a sec", "Give me a sec".
 
 9. **fix_error** — "By the way of the way..."
    **Hint**: É apenas "By the way"
