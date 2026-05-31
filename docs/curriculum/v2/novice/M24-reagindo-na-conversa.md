@@ -772,42 +772,42 @@
 **Persona**: Charlotte
 **Persona outfit**: `charlotte_casual`
 **Time budget**: 90s
-**Opening line**: "Quick rapid-fire question: What's your favorite restaurant in your city?"
+**Opening line**: "Quick question — what's your favorite food and why?"
 
 **Sub-objectives** (3 objetivos):
 
 1. **id**: 1
    **label_pt**: "Pedir pausa pra pensar"
    **label_en**: "Ask for thinking pause"
-   **hidden_prompt**: "user uses 'Hold on' or 'Hang on' or 'Let me think'"
+   **hidden_prompt**: "AFTER Charlotte's opening question, user asks for pause with 'Hold on', 'Hang on', 'Let me think', 'Wait', or 'Just a sec'."
    **hint_pt**: "Hold on, let me think."
    **hint_en**: "Hold on, let me think."
 
 2. **id**: 2
    **label_pt**: "Mudar de assunto com 'By the way'"
    **label_en**: "Change topic with 'By the way'"
-   **hidden_prompt**: "user uses 'By the way'"
-   **hint_pt**: "By the way, have you been there?"
-   **hint_en**: "By the way, have you been there?"
+   **hidden_prompt**: "AFTER Charlotte gives time, user changes topic with 'By the way' + a different simple question (about Charlotte's day, the weather, hunger, etc) using present simple only."
+   **hint_pt**: "By the way, are you hungry?"
+   **hint_en**: "By the way, are you hungry?"
 
 3. **id**: 3
    **label_pt**: "Voltar ao tópico com 'Anyway'"
    **label_en**: "Return to topic with 'Anyway'"
-   **hidden_prompt**: "user uses 'Anyway'"
-   **hint_pt**: "Anyway, what were you asking?"
-   **hint_en**: "Anyway, what were you asking?"
+   **hidden_prompt**: "AFTER Charlotte responds, user returns to ORIGINAL topic (food) with 'Anyway' + answer. Use present simple: 'Anyway, my favorite is X'."
+   **hint_pt**: "Anyway, my favorite is pizza."
+   **hint_en**: "Anyway, my favorite is pizza."
 
 **Closing cue**: Charlotte fecha com "Conversation managed!" quando obj_3 bater.
 
 **Suggested flow** (referencial, 6 turnos):
 
-1. **Charlotte**: "Quick rapid-fire question: What's your favorite restaurant in your city?"
+1. **Charlotte**: "Quick question — what's your favorite food and why?"
 2. **Student**: ~"Hold on, let me think."
 3. **Charlotte**: "Sure, take your time!"
-4. **Student**: ~"By the way, have you been there?"
-5. **Charlotte**: "Where, your favorite restaurant? I haven't, no."
-6. **Student**: ~"Anyway, what were you asking?"
-7. **Charlotte**: "What's your favorite restaurant! Conversation managed!"
+4. **Student**: ~"By the way, are you hungry?"
+5. **Charlotte**: "Haha, a little! But your answer?"
+6. **Student**: ~"Anyway, my favorite is pizza."
+7. **Charlotte**: "Nice choice. Conversation managed!"
 
 **Evaluation focus**:
 - Usar pausa em vez de ficar mudo
@@ -821,42 +821,42 @@
 **Persona**: Charlotte
 **Persona outfit**: `charlotte_casual`
 **Intro (em PT-BR)**: "Charlotte faz uma pergunta difícil. Use pausas e transições naturais."
-**Opening message**: "What's the most important thing you've learned in life so far?"
+**Opening message**: "Quick question — what's the best place in your city and why?"
 
 **Sub-objectives** (3 objetivos):
 
 1. **id**: 1
    **label_pt**: "Pedir pausa pra processar"
    **label_en**: "Ask for processing pause"
-   **hidden_prompt**: "user asks for time to think"
+   **hidden_prompt**: "AFTER Charlotte's opening question, user asks for time with 'Wait', 'Hold on', 'Let me think', 'Just a sec', etc."
    **hint_pt**: "Wait, let me think about this."
    **hint_en**: "Wait, let me think about this."
 
 2. **id**: 2
    **label_pt**: "Dar uma resposta após pausa"
    **label_en**: "Give answer after pause"
-   **hidden_prompt**: "user gives an answer"
-   **hint_pt**: "I think... be kind to yourself."
-   **hint_en**: "I think... be kind to yourself."
+   **hidden_prompt**: "user gives a simple answer in present simple: 'I think + my favorite is X' or 'I love X because Y'. No present perfect."
+   **hint_pt**: "I think the park is the best."
+   **hint_en**: "I think the park is the best."
 
 3. **id**: 3
    **label_pt**: "Mudar de tópico com 'By the way'"
    **label_en**: "Change topic with 'By the way'"
-   **hidden_prompt**: "user uses 'By the way'"
-   **hint_pt**: "By the way, what about you?"
-   **hint_en**: "By the way, what about you?"
+   **hidden_prompt**: "user uses 'By the way' + a different simple question (about Charlotte's city, day, hobbies, etc) in present simple."
+   **hint_pt**: "By the way, what's your favorite place?"
+   **hint_en**: "By the way, what's your favorite place?"
 
 **Closing cue**: Charlotte fecha com "Good chat!" quando obj_3 bater.
 
 **Script** (referencial, 7 turnos):
 
-1. **Charlotte**: "What's the most important thing you've learned in life so far?"
+1. **Charlotte**: "Quick question — what's the best place in your city and why?"
 2. **Student**: "Wait, let me think about this."
 3. **Charlotte**: "Sure, big question."
-4. **Student**: "I think... be kind to yourself."
-5. **Charlotte**: "That's a good one. I love that."
-6. **Student**: "By the way, what about you?"
-7. **Charlotte**: "For me — don't take things too seriously. Good chat!"
+4. **Student**: "I think the park is the best. It's quiet and green."
+5. **Charlotte**: "That sounds nice."
+6. **Student**: "By the way, what's your favorite place?"
+7. **Charlotte**: "I love the beach. Good chat!"
 
 > N05 chat = LLM puro. Scaffold via hint_pt.
 
