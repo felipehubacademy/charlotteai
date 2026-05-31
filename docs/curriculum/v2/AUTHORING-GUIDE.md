@@ -25,10 +25,11 @@
 ### Hierarquia
 
 ```
-Curriculum
-├─ Novice  (110 unidades, 22 módulos, blocos A1 [M01-M11] e A2 [M12-M22])
-├─ Inter   (110 unidades, 22 módulos, blocos B1 [I01-I11] e B2 [I12-I22])
-└─ Advanced (110 unidades, 22 módulos, blocos C1 [A01-A11] e C2 [A12-A22])
+Curriculum (pós Fase B)
+├─ Novice  (123 unidades, 24 módulos, blocos A1 [M01-M11] e A2 [M12-M24])
+├─ Inter   (117 unidades, 23 módulos, blocos B1 [I01-I11] e B2 [I12-I23])
+└─ Advanced (121 unidades, 24 módulos, blocos C1 [A01-A11] e C2 [A12-A24])
+TOTAL: 71 módulos · 361 unidades · 1.444 atividades
 ```
 
 ### 1 arquivo markdown = 1 módulo
@@ -38,9 +39,10 @@ Caminho: `docs/curriculum/v2/{level}/M{NN}-{slug}.md` (Novice) ou
 
 Exemplo: `docs/curriculum/v2/novice/M03-familia-e-amigos.md`
 
-### Cada módulo tem 5 unidades
+### Cada módulo tem 5 unidades (com exceções de 6 quando justificado)
 
-IDs: `N01..N05` (Novice), `I01..I05` per módulo (Inter), `A01..A05` (Advanced).
+IDs: `N01..N05` (Novice padrão), `I01..I05` (Inter), `A01..A05` (Advanced).
+**Exceções com 6ª unit** (Fase B): M05, M18, M19 (Novice); I05, I22 (Inter); A11 (Advanced) — ver `INDEX.md` pra status atualizado de cada módulo.
 (O prefixo letra indica o nível — não o módulo.)
 
 ### Cada unidade tem 4 atividades
@@ -390,9 +392,9 @@ As 4 atividades da unidade (Grammar, L&S, Role-play, Chat) compartilham:
 - **Mesmo universo temático** (se a unit é sobre saudações, todas as 4
   atividades giram em torno disso)
 
-### Dentro do módulo (5 unidades casam)
+### Dentro do módulo (5 unidades padrão, 6 quando justificado)
 
-As 5 unidades exploram subtemas do **tema mãe do módulo**:
+As 5 unidades (ou 6, ver exceções Fase B) exploram subtemas do **tema mãe do módulo**:
 - M01 (saudações) → N01 cumprimento, N02 apresentação, N03 origem, N04 sentimentos, N05 despedida
 - M03 (família) → N01 família próxima, N02 família estendida, N03 onde moram, N04 o que fazem, N05 contar a alguém sobre família
 
@@ -414,7 +416,7 @@ As 5 unidades exploram subtemas do **tema mãe do módulo**:
 - [ ] Level, Block, Units, Theme, Goal, Connects to preenchidos
 - [ ] Lista de 30-60 chunks introduzidos no topo
 
-### Cada uma das 5 unidades
+### Cada uma das 5 (ou 6) unidades
 - [ ] Header: Sub-CEFR, Grammar focus, Markers, Real-life context
 - [ ] **Grammar**: 10 exercícios (5 se Advanced), sequência padrão (mc/word_bank/fill_gap/fix_error/read_answer)
 - [ ] **L&S**: 5 frases (6-12 palavras), cada uma com context
@@ -430,7 +432,7 @@ As 5 unidades exploram subtemas do **tema mãe do módulo**:
 
 ### Coerência
 - [ ] As 4 atividades de cada unit usam mesmo vocab/grammar foco
-- [ ] As 5 unidades exploram subtemas do mesmo tema mãe
+- [ ] As 5 (ou 6, se módulo de exceção) unidades exploram subtemas do mesmo tema mãe
 - [ ] Grammar usa SÓ estruturas permitidas até o módulo atual (`grammar-progression.md`)
 - [ ] Vocab puxa do pool de chunks do módulo (+ acumulado anterior)
 - [ ] Se a unit ataca um ponto crítico (lista de 18), garantir recorrência futura
