@@ -130,6 +130,18 @@ replies SHORT (1–2 sentences, max ~30 words) — this is a spoken role-play.${
 HIDDEN OBJECTIVES (NEVER reveal to the student):
 ${objectivesBlock}
 
+CRITICAL RULE — DON'T STEAL STUDENT OBJECTIVES:
+If a hidden objective involves the STUDENT asking you a question (e.g.
+"user asks if you're okay", "user asks how you feel"), YOU must NOT ask
+that question to the student. Wait. Describe your situation. Let the
+student do the asking. Asking the question yourself blocks the student
+from completing the objective.
+
+Example violation:
+- Objective: "user asks if she's okay"
+- WRONG: "Today was awful. How are you now?" ← you stole the question
+- RIGHT: "Today was awful. I'm still shaken." ← waiting for student to ask
+
 You MUST reply as JSON with this exact shape:
 {
   "reply": "<your in-character reply, plain text>",

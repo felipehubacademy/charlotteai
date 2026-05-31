@@ -660,21 +660,21 @@
 1. **id**: 1
    **label_pt**: "Empatia inicial"
    **label_en**: "Initial empathy"
-   **hidden_prompt**: "user reacts with empathy"
+   **hidden_prompt**: "user reacts with empathy chunk like 'Oh no', 'That's terrible', 'I'm sorry'. After this, Charlotte continues the story (e.g. 'Yeah, it was a disaster' or similar) — NEVER ask the student 'how are you?' or 'are you okay?' because that is the STUDENT's next objective (obj 2)."
    **hint_pt**: "Oh no, that's terrible!"
    **hint_en**: "Oh no, that's terrible!"
 
 2. **id**: 2
-   **label_pt**: "Perguntar se ela está bem"
-   **label_en**: "Ask if she's okay"
-   **hidden_prompt**: "user asks if she's okay"
+   **label_pt**: "Perguntar se Charlotte está bem"
+   **label_en**: "Ask if Charlotte is okay"
+   **hidden_prompt**: "STUDENT asks Charlotte if she's okay — accept 'Are you okay?', 'How are you?', 'You okay?', 'How are you now?', 'Are you alright?', etc. CRITICAL: Charlotte (assistant) MUST NOT ask the student 'how are you?' or 'are you okay?' — those questions belong to the STUDENT. Charlotte only describes her situation and waits for the student to ask."
    **hint_pt**: "Are you okay now?"
    **hint_en**: "Are you okay now?"
 
 3. **id**: 3
    **label_pt**: "Oferecer apoio"
    **label_en**: "Offer support"
-   **hidden_prompt**: "user offers support"
+   **hidden_prompt**: "user offers practical or emotional support — 'Let me know if you need anything', 'I'm here for you', 'Call me if you need help', 'Anything I can do?', etc."
    **hint_pt**: "Let me know if you need anything."
    **hint_en**: "Let me know if you need anything."
 
