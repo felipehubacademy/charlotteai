@@ -81,7 +81,7 @@
         },
         {
           "type": "fill_gap",
-          "sentence": "She _____ this year.",
+          "sentence": "\"She _____ this year.\" (job stayed)",
           "hint": "PP for unfinished period",
           "answer": "has worked",
           "explanation": "\"This year\" not finished → PP \"has worked\"."
@@ -294,7 +294,7 @@
         },
         {
           "type": "fix_error",
-          "sentence": "I lived here for two years.",
+          "sentence": "\"I lived here for two years.\" (still living there)",
           "hint": "ongoing → PP",
           "answer": "I have lived here for two years.",
           "explanation": "If still living = PP. Past simple = finished."
@@ -796,7 +796,7 @@
       "grammar": [
         {
           "type": "multiple_choice",
-          "sentence": "I _____ Italy last year.",
+          "sentence": "\"I _____ Italy last year.\" (specific time)",
           "options": [
             "visited",
             "have visited",
@@ -807,7 +807,7 @@
         },
         {
           "type": "multiple_choice",
-          "sentence": "I _____ many countries.",
+          "sentence": "\"I _____ many countries.\" (life experience)",
           "options": [
             "have visited",
             "visited",
@@ -818,7 +818,7 @@
         },
         {
           "type": "word_bank",
-          "sentence": "She _____ this morning at 8.",
+          "sentence": "\"She _____ this morning at 8.\" (specific time)",
           "choices": [
             "left",
             "has left",
@@ -830,7 +830,7 @@
         },
         {
           "type": "word_bank",
-          "sentence": "She _____ already.",
+          "sentence": "\"She _____ already.\" (sooner than expected, no specific time)",
           "choices": [
             "has left",
             "left",
@@ -849,14 +849,14 @@
         },
         {
           "type": "fill_gap",
-          "sentence": "He _____ five books this year.",
+          "sentence": "\"He _____ five books this year.\" (year not finished)",
           "hint": "PP for unfinished period",
           "answer": "has read",
           "explanation": "\"This year\" not finished → PP."
         },
         {
           "type": "fill_gap",
-          "sentence": "I _____ her last week.",
+          "sentence": "\"I _____ her last week.\" (specific past)",
           "hint": "past simple \"see\"",
           "answer": "saw",
           "explanation": "\"Last week\" = past simple."

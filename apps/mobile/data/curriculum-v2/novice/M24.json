@@ -34,6 +34,7 @@
       "grammar": [
         {
           "type": "multiple_choice",
+          "sentence": "Alguém diz \"I'm going to Paris next month.\" Reação que mostra interesse:",
           "options": [
             "Really?",
             "Bad.",
@@ -45,7 +46,7 @@
         },
         {
           "type": "multiple_choice",
-          "sentence": "I just got a new job!",
+          "sentence": "\"I just got a new job!\" Reação positiva:",
           "options": [
             "That's great!",
             "Whatever.",
@@ -69,7 +70,7 @@
         },
         {
           "type": "word_bank",
-          "sentence": "Oh _____?",
+          "sentence": "\"Oh _____?\" (showing surprise + interest)",
           "choices": [
             "yeah",
             "no",
@@ -81,7 +82,7 @@
         },
         {
           "type": "fill_gap",
-          "sentence": "That sounds _____!",
+          "sentence": "\"That sounds _____!\" (positive reaction)",
           "hint": "adjetivo positivo",
           "answer": "amazing (ou \"great\", \"awesome\", \"interesting\", \"cool\")",
           "explanation": "\"That sounds + adjetivo positivo\" — chunk para reagir a algo que alguém descreveu. Padrão fixo para qualquer adjetivo positivo."
@@ -102,6 +103,7 @@
         },
         {
           "type": "fix_error",
+          "sentence": "Alguém te conta uma história. Você diz: \"OK. Continue.\"",
           "hint": "\"OK. Continue\" é seco. Use chunks de interesse",
           "answer": "Really? Tell me more! (ou: That's interesting! What happened next?)",
           "explanation": "\"OK. Continue.\" soa frio e formal demais. Em conversação, use reações naturais: \"Really?\", \"Tell me more\", \"What happened next?\", \"That's interesting!\". Mostre engajamento, não comando."
@@ -238,6 +240,7 @@
       "grammar": [
         {
           "type": "multiple_choice",
+          "sentence": "Alguém diz \"I won the lottery!\" Reação de surpresa:",
           "options": [
             "No way!",
             "Cool.",
@@ -249,7 +252,7 @@
         },
         {
           "type": "multiple_choice",
-          "sentence": "I just met Beyoncé!",
+          "sentence": "\"I just met Beyoncé!\" Reação de descrença:",
           "options": [
             "Seriously?",
             "Yeah.",
@@ -273,7 +276,7 @@
         },
         {
           "type": "word_bank",
-          "sentence": "_____ out!",
+          "sentence": "\"_____ out!\" (surprise reaction)",
           "choices": [
             "Get",
             "Move",
@@ -443,6 +446,7 @@
       "grammar": [
         {
           "type": "multiple_choice",
+          "sentence": "Alguém te explica algo complicado. Reação de entendimento:",
           "options": [
             "Got it.",
             "What?",
@@ -454,7 +458,7 @@
         },
         {
           "type": "multiple_choice",
-          "sentence": "First, click the button. Then, enter your password.",
+          "sentence": "\"First, click the button. Then, enter your password.\" Reação:",
           "options": [
             "Makes sense.",
             "Whatever.",
@@ -648,6 +652,7 @@
       "grammar": [
         {
           "type": "multiple_choice",
+          "sentence": "Alguém diz \"I lost my job last week.\" Reação:",
           "options": [
             "Oh no, that sucks.",
             "Cool.",
@@ -659,7 +664,7 @@
         },
         {
           "type": "multiple_choice",
-          "sentence": "My grandmother passed away.",
+          "sentence": "\"My grandmother passed away.\" Reação apropriada:",
           "options": [
             "I'm so sorry.",
             "OK.",
@@ -853,6 +858,7 @@
       "grammar": [
         {
           "type": "multiple_choice",
+          "sentence": "Você precisa de um segundo pra pensar. Diz:",
           "options": [
             "Hold on.",
             "Stop.",
@@ -864,6 +870,7 @@
         },
         {
           "type": "multiple_choice",
+          "sentence": "Você quer mudar de assunto:",
           "options": [
             "By the way...",
             "In the bus...",
@@ -875,7 +882,7 @@
         },
         {
           "type": "word_bank",
-          "sentence": "_____, what were we talking about?",
+          "sentence": "\"_____, what were we talking about?\" (returning to topic)",
           "choices": [
             "Anyway",
             "Hello",
@@ -887,7 +894,7 @@
         },
         {
           "type": "word_bank",
-          "sentence": "_____ a second.",
+          "sentence": "\"_____ a second.\" (asking for a pause)",
           "choices": [
             "Hang on",
             "Give on",

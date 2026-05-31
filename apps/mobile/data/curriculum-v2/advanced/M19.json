@@ -338,6 +338,7 @@
       "grammar": [
         {
           "type": "multiple_choice",
+          "sentence": "Moral obligation: \"We _____ apologise — the mistake was ours.\"",
           "options": [
             "ought to",
             "can",
@@ -349,6 +350,7 @@
         },
         {
           "type": "multiple_choice",
+          "sentence": "Contractual: \"The tenant _____ pay rent on the first day of each month.\"",
           "options": [
             "shall",
             "will",
@@ -360,12 +362,14 @@
         },
         {
           "type": "fill_gap",
+          "sentence": "Habitual past: \"When I was a child, my grandmother _____ read to me every evening.\"",
           "hint": "Modal for habitual past",
           "answer": "would",
           "explanation": "\"Would + base\" for habitual past — repeated actions in a past period. Similar to \"used to\" but emphasises the routine. \"She would read to me every evening\" = it was her habit. Note: only works for repeated actions, not for past states (\"She would be tall\" doesn't work for past states; use \"was\")."
         },
         {
           "type": "fix_error",
+          "sentence": "Habitual past: \"Every summer, we use to visit my aunt in Coimbra.\"",
           "hint": "Past tense — \"used to\" or \"would\"",
           "answer": "Every summer, we used to visit my aunt in Coimbra. (or: ...we would visit my aunt in Coimbra.)",
           "explanation": "\"Use to\" needs past form \"used to\" (note the d). Or replace with \"would\" for habitual past. Common spelling error — \"use to\" sounds like \"used to\" but only \"used to\" is grammatical past form."
@@ -484,6 +488,7 @@
       "grammar": [
         {
           "type": "multiple_choice",
+          "sentence": "Strong expectation: \"She _____ arrive any minute — her train was on time.\"",
           "options": [
             "is bound to",
             "is supposed to",
@@ -495,6 +500,7 @@
         },
         {
           "type": "multiple_choice",
+          "sentence": "Convention: \"We _____ meet at noon, but he's running late.\"",
           "options": [
             "were supposed to",
             "are likely to",
@@ -506,6 +512,7 @@
         },
         {
           "type": "fill_gap",
+          "sentence": "Probability: \"The weather forecast says rain _____ continue through the weekend.\"",
           "hint": "Likelihood structure",
           "answer": "is likely to",
           "explanation": "\"Is likely to + base\" — probability statement. Common in forecasts, predictions, analysis. \"Is unlikely to\" for the negative. C2 register uses these instead of \"will probably\" for slightly more analytical tone."
@@ -628,6 +635,7 @@
       "grammar": [
         {
           "type": "multiple_choice",
+          "sentence": "Layered possibility + necessity: \"If sales fall further, we _____ cut the budget.\"",
           "options": [
             "might have to",
             "will must",
@@ -639,6 +647,7 @@
         },
         {
           "type": "multiple_choice",
+          "sentence": "Hypothetical obligation: \"If the proposal passes, we _____ restructure the team.\"",
           "options": [
             "would have to",
             "will have to",
@@ -650,6 +659,7 @@
         },
         {
           "type": "fill_gap",
+          "sentence": "Anticipated obligation: \"Given the new regulations, we _____ adjust our reporting process by next quarter.\"",
           "hint": "\"Are going to\" + \"have to\"",
           "answer": "are going to have to",
           "explanation": "\"Be going to have to + base\" — anticipated forced obligation. Combines \"going to\" (future intention/anticipation) with \"have to\" (necessity). Conveys that the obligation is approaching whether we like it or not. Slightly weary tone."

@@ -365,7 +365,7 @@
         },
         {
           "type": "fix_error",
-          "sentence": "I cut my hair last week",
+          "sentence": "\"I cut my hair last week\" (you mean someone else cut it).",
           "hint": "To make clear someone else did it, use causative",
           "answer": "I had my hair cut last week.",
           "explanation": "\"I cut my hair\" implies you did it yourself with scissors at home. To indicate a barber did it, use the causative: \"I had/got my hair cut\". Crucial precision in C1 communication."

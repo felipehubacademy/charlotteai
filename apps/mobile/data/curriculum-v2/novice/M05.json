@@ -1103,7 +1103,7 @@
         },
         {
           "type": "fill_gap",
-          "sentence": "It's _____ past seven.",
+          "sentence": "\"It's _____ past seven.\" (7:30)",
           "hint": "meio (30 minutos)",
           "answer": "half",
           "explanation": "\"Half past seven\" = 7:30. \"Half past\" = trinta minutos depois da hora cheia. Chunk fixo. Não dizemos \"thirty past\" em inglês."

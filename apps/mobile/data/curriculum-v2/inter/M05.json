@@ -86,7 +86,7 @@
         },
         {
           "type": "fill_gap",
-          "sentence": "He _____ the meeting.",
+          "sentence": "\"He _____ the meeting.\" (left the meeting)",
           "hint": "phrasal verb \"leave\"",
           "answer": "left",
           "explanation": "Sometimes simple verbs work too. \"Left the meeting\"."
@@ -979,6 +979,7 @@
       "grammar": [
         {
           "type": "multiple_choice",
+          "sentence": "Professional phone identification:",
           "options": [
             "Hello, this is [name].",
             "Hi, I am [name].",
@@ -990,6 +991,7 @@
         },
         {
           "type": "multiple_choice",
+          "sentence": "Asking to speak with someone:",
           "options": [
             "Can I speak to [person]?",
             "I want talk to [person].",
@@ -1001,6 +1003,7 @@
         },
         {
           "type": "word_bank",
+          "sentence": "Confirming you are the person being asked for: \"Yes, _____.\"",
           "choices": [
             "speaking",
             "I'm here",
@@ -1012,6 +1015,7 @@
         },
         {
           "type": "word_bank",
+          "sentence": "Transferring a call: \"I'll _____ you through.\"",
           "choices": [
             "put",
             "pass",
@@ -1044,6 +1048,7 @@
         },
         {
           "type": "fix_error",
+          "sentence": "On the phone: \"Hello, my name is John.\"",
           "hint": "On phone — use \"This is John\"",
           "answer": "Hello, this is John.",
           "explanation": "\"My name is\" is for face-to-face introductions; on the phone, the convention is \"This is [name]\". Cross-cultural error: in many languages, the personal pronoun is used; English phone English uses \"this\"."

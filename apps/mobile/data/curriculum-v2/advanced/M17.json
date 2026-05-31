@@ -35,7 +35,7 @@
       "grammar": [
         {
           "type": "multiple_choice",
-          "sentence": "Are you coming to the meeting?",
+          "sentence": "Are you coming to the meeting?\" \"I want to, but I _____.",
           "options": [
             "can't",
             "can't to",
@@ -47,7 +47,7 @@
         },
         {
           "type": "multiple_choice",
-          "sentence": "Will you call him?",
+          "sentence": "Will you call him?\" \"I'd like _____, but I don't have his number.",
           "options": [
             "to",
             "to call him",
@@ -59,14 +59,14 @@
         },
         {
           "type": "fill_gap",
-          "sentence": "Did you go to the party?",
+          "sentence": "Did you go to the party?\" \"I planned _____, but something came up.",
           "hint": "Infinitive marker retained",
           "answer": "to",
           "explanation": "\"I planned to [go]\" — verb omitted after \"to\". Same with \"try to / hope to / mean to / intend to / expect to / be supposed to\". The retained \"to\" is a signal that the verb phrase has been elided. C2 fluency uses this constantly."
         },
         {
           "type": "fix_error",
-          "sentence": "I want go to the cinema.",
+          "sentence": "\"I want go to the cinema.\" (Answering \"Why aren't you coming?\")",
           "hint": "Either include the full verb or use \"to\" + ellipsis",
           "answer": "I want to. (or: I want to go, but...)",
           "explanation": "\"I want go\" is ungrammatical — \"want\" requires \"to + infinitive\". For ellipsis: \"I want to\" (verb omitted, \"to\" kept). For full statement: \"I want to go\". Don't drop the \"to\" without dropping more."
@@ -185,7 +185,7 @@
       "grammar": [
         {
           "type": "multiple_choice",
-          "sentence": "Is the train on time?",
+          "sentence": "Is the train on time?\" \"I _____.",
           "options": [
             "think so",
             "think it",
@@ -197,7 +197,7 @@
         },
         {
           "type": "multiple_choice",
-          "sentence": "Will it rain tomorrow?",
+          "sentence": "Will it rain tomorrow?\" \"I hope _____.",
           "options": [
             "not",
             "not so",
@@ -209,7 +209,7 @@
         },
         {
           "type": "fill_gap",
-          "sentence": "Are you sure about the date?",
+          "sentence": "Are you sure about the date?\" \"I _____, but let me double-check.",
           "hint": "\"Believe so\" or \"think so\"",
           "answer": "believe so (or \"think so\")",
           "explanation": "\"I believe so\" — substitution after believe. Same pattern with other thinking verbs: think, suppose, imagine, presume, gather. All take \"so\" or \"not\" as clause replacements in conversation."
@@ -347,7 +347,7 @@
         },
         {
           "type": "multiple_choice",
-          "sentence": "Which dress do you prefer?",
+          "sentence": "Which dress do you prefer?\" \"The _____.",
           "options": [
             "red one",
             "red",
@@ -359,6 +359,7 @@
         },
         {
           "type": "fill_gap",
+          "sentence": "Academic: \"The findings of this study contrast with _____ Smith (2020).\"",
           "hint": "\"those of\"",
           "answer": "those of",
           "explanation": "\"Those of + author/work\" — academic substitution for \"the findings of\". \"The findings of this study contrast with those of Smith (2020)\" = \"...contrast with the findings of Smith\". Compresses by replacing \"the findings of\" with \"those of\". Formal register."
@@ -484,6 +485,7 @@
       "grammar": [
         {
           "type": "multiple_choice",
+          "sentence": "Formal: \"Please submit the application by Friday, and ensure your team _____ at the same time.\"",
           "options": [
             "do so",
             "does so",
@@ -495,6 +497,7 @@
         },
         {
           "type": "multiple_choice",
+          "sentence": "General: \"He apologised, and she _____ shortly after.\"",
           "options": [
             "did the same",
             "did so",
@@ -513,7 +516,7 @@
         },
         {
           "type": "fix_error",
-          "sentence": "She walked into the room. He did so.",
+          "sentence": "\"She walked into the room. He did so.\" (Stylistically — too repetitive of action)",
           "hint": "Native English often uses \"He did the same\" or \"He did too\"",
           "answer": "She walked into the room. He did the same. (or: She walked into the room. He did too.)",
           "explanation": "\"He did so\" is grammatical but stylistically heavy in narrative — feels formal-stilted. \"Did the same\" or \"did too\" or \"followed\" reads more naturally. Register-aware substitution: \"do so\" for formal, \"do the same / do too\" for everyday narrative."
@@ -629,7 +632,7 @@
       "grammar": [
         {
           "type": "multiple_choice",
-          "sentence": "I love jazz.",
+          "sentence": "I love jazz.\" \"_____.",
           "options": [
             "So do I",
             "Me do too",
@@ -641,7 +644,7 @@
         },
         {
           "type": "multiple_choice",
-          "sentence": "I haven't seen that film.",
+          "sentence": "I haven't seen that film.\" \"_____.",
           "options": [
             "Neither have I",
             "So have I",
@@ -653,14 +656,14 @@
         },
         {
           "type": "fill_gap",
-          "sentence": "She was tired.",
+          "sentence": "She was tired.\" \"_____.",
           "hint": "Echo with \"so + was + subject\"",
           "answer": "So was I (or \"So was he\" / \"So was everyone\")",
           "explanation": "Past simple of \"be\" → \"So was + subject\". Pattern: match the auxiliary form (\"was\") and invert with the subject. The whole verb phrase is replaced by the auxiliary echo."
         },
         {
           "type": "fix_error",
-          "sentence": "I don't like coffee.",
+          "sentence": "I don't like coffee.\" \"Me too.",
           "hint": "For negative agreement, use \"Me neither\" or \"Neither do I\"",
           "answer": "I don't like coffee. — Me neither. (or: Neither do I.)",
           "explanation": "\"Me too\" is for positive agreement (\"I like coffee. — Me too\"). For negative agreement, use \"Me neither\" or \"Neither do I\". Common L2 error — defaulting to \"me too\" for all agreement."

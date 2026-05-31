@@ -48,7 +48,7 @@
       "grammar": [
         {
           "type": "multiple_choice",
-          "sentence": "She wears her heart on her sleeve",
+          "sentence": "\"She wears her heart on her sleeve\" means:",
           "options": [
             "She shows emotions openly.",
             "She's wearing fashionable clothes.",
@@ -60,7 +60,7 @@
         },
         {
           "type": "multiple_choice",
-          "sentence": "After the breakup, he gave her the cold shoulder for months",
+          "sentence": "\"After the breakup, he gave her the cold shoulder for months\" means:",
           "options": [
             "He deliberately ignored her.",
             "He gave her a cold drink.",
@@ -198,7 +198,7 @@
       "grammar": [
         {
           "type": "multiple_choice",
-          "sentence": "You're barking up the wrong tree",
+          "sentence": "\"You're barking up the wrong tree\" means:",
           "options": [
             "You're looking in the wrong place or asking the wrong person.",
             "You're being loud like a dog.",
@@ -210,7 +210,7 @@
         },
         {
           "type": "multiple_choice",
-          "sentence": "Sure, I'll lend him money — when pigs fly",
+          "sentence": "\"Sure, I'll lend him money — when pigs fly\" means:",
           "options": [
             "Never going to happen.",
             "Soon.",
@@ -348,7 +348,7 @@
       "grammar": [
         {
           "type": "multiple_choice",
-          "sentence": "I see my cousin once in a blue moon",
+          "sentence": "\"I see my cousin once in a blue moon\" means:",
           "options": [
             "Very rarely.",
             "Every blue moon.",
@@ -360,7 +360,7 @@
         },
         {
           "type": "multiple_choice",
-          "sentence": "She was burning the midnight oil to finish the report",
+          "sentence": "\"She was burning the midnight oil to finish the report\" means:",
           "options": [
             "Working very late.",
             "Using oil at midnight.",
@@ -498,7 +498,7 @@
       "grammar": [
         {
           "type": "multiple_choice",
-          "sentence": "After six months of trying, he finally threw in the towel",
+          "sentence": "\"After six months of trying, he finally threw in the towel\" means:",
           "options": [
             "He gave up.",
             "He did laundry.",
@@ -510,7 +510,7 @@
         },
         {
           "type": "multiple_choice",
-          "sentence": "I've done my part — the ball is in your court now",
+          "sentence": "\"I've done my part — the ball is in your court now\" means:",
           "options": [
             "It's your turn to act.",
             "We're playing tennis.",
@@ -648,6 +648,7 @@
       "grammar": [
         {
           "type": "multiple_choice",
+          "sentence": "Mid-conversation, Marco walks in just after being mentioned. You say:",
           "options": [
             "Speak of the devil!",
             "Look who's here!",
@@ -659,7 +660,7 @@
         },
         {
           "type": "multiple_choice",
-          "sentence": "Breaking the ice with new colleagues",
+          "sentence": "\"Breaking the ice with new colleagues\" means:",
           "options": [
             "Starting initial conversation.",
             "Cooling drinks.",

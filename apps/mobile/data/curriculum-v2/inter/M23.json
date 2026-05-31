@@ -815,6 +815,7 @@
       "grammar": [
         {
           "type": "multiple_choice",
+          "sentence": "Filler that means \"actually, the truth is\":",
           "options": [
             "I mean",
             "Like",
@@ -826,6 +827,7 @@
         },
         {
           "type": "multiple_choice",
+          "sentence": "Filler typically at the start of an answer when you need a moment:",
           "options": [
             "Well",
             "Right",
@@ -837,7 +839,7 @@
         },
         {
           "type": "word_bank",
-          "sentence": "_____ , I haven't really thought about it.",
+          "sentence": "\"_____ , I haven't really thought about it.\" (filler for hesitation)",
           "choices": [
             "Well",
             "Yes",
@@ -849,7 +851,7 @@
         },
         {
           "type": "word_bank",
-          "sentence": "It's _____ , not very exciting.",
+          "sentence": "\"It's _____ , not very exciting.\" (filler for \"kind of\")",
           "choices": [
             "kind of",
             "well",
@@ -861,18 +863,21 @@
         },
         {
           "type": "fill_gap",
+          "sentence": "Pause filler signaling you're searching for the word: \"I, _____, don't really know what to say.\"",
           "hint": "short filler word for pause",
           "answer": "like (or \"you know\")",
           "explanation": "\"Like\" — pause filler especially common in younger speech. Signals you're searching, processing, or about to give an example. Overuse sounds immature but moderate use is natural."
         },
         {
           "type": "fill_gap",
+          "sentence": "Tag question with rising intonation (real question expecting answer): \"She's coming tomorrow, _____ she?\"",
           "hint": "tag with rising intonation expecting confirmation",
           "answer": "isn't",
           "explanation": "\"Isn't she?\" with rising intonation = genuine question seeking confirmation. The speaker isn't sure and wants the listener to confirm or deny. Different from rhetorical use."
         },
         {
           "type": "fill_gap",
+          "sentence": "Tag question with falling intonation (rhetorical, expecting agreement): \"It's a beautiful day, _____ it?\"",
           "hint": "same tag form but with falling intonation",
           "answer": "isn't",
           "explanation": "\"Isn't it?\" with falling intonation = rhetorical statement seeking agreement, not info. The speaker assumes agreement. Same tag form; intonation carries the function."
@@ -886,7 +891,7 @@
         },
         {
           "type": "fix_error",
-          "sentence": "Obviously you don't know what I'm talking about.",
+          "sentence": "\"Obviously you don't know what I'm talking about.\" (in a serious conversation)",
           "hint": "\"Obviously\" can sound condescending — use \"I mean\" or rephrase",
           "answer": "I mean, you might not know what I'm talking about. (or simply: \"Maybe you don't know what I'm talking about.\")",
           "explanation": "\"Obviously\" implies the listener should know — can sound condescending. In sensitive conversations, \"I mean\" or \"actually\" is softer. Register awareness is part of using fillers well."

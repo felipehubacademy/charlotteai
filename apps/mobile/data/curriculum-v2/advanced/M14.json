@@ -35,6 +35,7 @@
       "grammar": [
         {
           "type": "multiple_choice",
+          "sentence": "Simile: \"Her voice rose, _____ a kettle finally hitting the boil.\"",
           "options": [
             "like",
             "as",
@@ -46,6 +47,7 @@
         },
         {
           "type": "multiple_choice",
+          "sentence": "Simile with clause: \"He stood there _____ he had nowhere else to be.\"",
           "options": [
             "as if",
             "like",
@@ -57,6 +59,7 @@
         },
         {
           "type": "fill_gap",
+          "sentence": "Cultural metaphor: \"Attention is _____ — finite, contested, and exploited.\"",
           "hint": "\"the new currency\" or \"the new oil\"",
           "answer": "the new oil (or \"the new currency\")",
           "explanation": "\"X is the new Y\" — modern metaphorical equation. \"Attention is the new oil\" is a famous tech-era metaphor (resource that drives the economy, and that one is extracted). This pattern compresses a whole argument into a phrase."
@@ -182,6 +185,7 @@
       "grammar": [
         {
           "type": "multiple_choice",
+          "sentence": "Personification: \"Time _____ during the wait — minutes lasted hours.\"",
           "options": [
             "crawled",
             "went",
@@ -193,6 +197,7 @@
         },
         {
           "type": "multiple_choice",
+          "sentence": "Personification: \"The deadline _____ over the team like a bad weather system.\"",
           "options": [
             "loomed",
             "arrived",
@@ -204,12 +209,14 @@
         },
         {
           "type": "fill_gap",
+          "sentence": "Personification: \"Hope _____ to leave, even after every reason had.\"",
           "hint": "\"refused\"",
           "answer": "refused",
           "explanation": "\"Refused\" attributes will to hope — an abstract feeling acting like a person who chooses to stay. Personification turns abstract states into actors. The image becomes vivid because hope behaves like a stubborn houseguest."
         },
         {
           "type": "fix_error",
+          "sentence": "Personification attempt: \"The wind was strong yesterday.\"",
           "hint": "To personify, give the wind a human-style verb or quality",
           "answer": "The wind argued with the trees all afternoon. (or: The wind shouldered its way down the street.)",
           "explanation": "The original is just description, not personification. To personify, give the wind a human action (\"argued\", \"shouldered\", \"wrestled\"). Personification makes the description active, not flat."
@@ -328,6 +335,7 @@
       "grammar": [
         {
           "type": "multiple_choice",
+          "sentence": "Vivid verb: \"He _____ the door behind him.\"",
           "options": [
             "slammed",
             "closed loudly",
@@ -339,6 +347,7 @@
         },
         {
           "type": "multiple_choice",
+          "sentence": "Vivid verb: \"She _____ at him from across the room.\"",
           "options": [
             "glared",
             "looked angrily",
@@ -350,6 +359,7 @@
         },
         {
           "type": "fill_gap",
+          "sentence": "Specific noun: \"She drove past in a _____, headlights cutting through the rain.\"",
           "hint": "Specific car model + colour or detail",
           "answer": "a red Toyota (or \"a dented Volvo\" or any specific car)",
           "explanation": "Replacing \"a car\" with \"a red Toyota\" or similar specific image. Specific nouns ground prose in concrete reality. Mark Twain: \"Don't say the old lady screamed. Bring her on and let her scream.\" Same principle: bring on the specific car."
@@ -475,6 +485,7 @@
       "grammar": [
         {
           "type": "multiple_choice",
+          "sentence": "After a long sentence, the short impact sentence works best as:",
           "options": [
             "A fragment or short clause",
             "Another long sentence",
@@ -486,6 +497,7 @@
         },
         {
           "type": "multiple_choice",
+          "sentence": "Acceptable fragment for emphasis in literary writing:",
           "options": [
             "Empty.",
             "Empty was the room.",
@@ -497,12 +509,14 @@
         },
         {
           "type": "fill_gap",
+          "sentence": "Long sentence followed by short: \"We had walked for hours, through the empty fields and along the river that we hadn't seen since childhood, talking about nothing in particular and everything at once — and then, suddenly, the silence. _____\"",
           "hint": "A short impact sentence or fragment",
           "answer": "Neither of us spoke for a long time. (or: Just the river. / Just walking. / Nobody.)",
           "explanation": "After a long sweeping sentence, the next move is contraction. A short sentence or fragment (\"Just the river.\") drops the rhythm down dramatically. This is rhythm-as-meaning — the silence the long sentence describes is enacted by the short one."
         },
         {
           "type": "fix_error",
+          "sentence": "All-long-sentences paragraph: \"She walked into the room which was empty except for a chair by the window where her mother used to sit and read in the afternoons before everything changed and now nobody sat there at all.\"",
           "hint": "Break for rhythm — at least one short sentence or fragment",
           "answer": "She walked into the room. It was empty except for a chair by the window — her mother's chair, where she used to read in the afternoons. Before everything. Now nobody sat there.",
           "explanation": "The original runs without pause. Break it: a short opener, a medium-length description, a fragment (\"Before everything.\"), a short close. Rhythm now varies, and the meaning lands."
@@ -618,6 +632,7 @@
       "grammar": [
         {
           "type": "multiple_choice",
+          "sentence": "Show, don't tell: which version \"shows\" nervousness?",
           "options": [
             "She was extremely nervous.",
             "Her thumbnail kept tracking the seam of her jacket.",
@@ -629,6 +644,7 @@
         },
         {
           "type": "multiple_choice",
+          "sentence": "Shown anger: \"_____.\"",
           "options": [
             "He was very angry",
             "He didn't sit down. He didn't sit down for the entire meeting.",
@@ -640,6 +656,7 @@
         },
         {
           "type": "fill_gap",
+          "sentence": "Convert \"She was sad\" to a shown version: \"She _____\"",
           "hint": "An observable detail or action that implies sadness",
           "answer": "kept the wedding photo turned face-down for three weeks (or any specific behavioural detail)",
           "explanation": "Show sadness through behaviour — the face-down photo implies refusal to look, time passing, unresolved grief. Specific actions carry emotion more reliably than abstract emotion words. The reader does the inferring; the prose stays concrete."

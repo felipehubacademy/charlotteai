@@ -40,6 +40,7 @@
       "grammar": [
         {
           "type": "multiple_choice",
+          "sentence": "Negation of \"responsible\":",
           "options": [
             "irresponsible",
             "unresponsible",
@@ -51,6 +52,7 @@
         },
         {
           "type": "multiple_choice",
+          "sentence": "Negation of \"agree\":",
           "options": [
             "disagree",
             "unagree",
@@ -62,6 +64,7 @@
         },
         {
           "type": "fill_gap",
+          "sentence": "Negation: \"His ideas are _____ logical.\" (prefix the word \"logical\")",
           "hint": "Prefix that attaches to \"l-\"",
           "answer": "illogical",
           "explanation": "\"Illogical\" — \"il-\" attaches to \"l-\" roots (illegal, illiterate, illogical). The \"in-\" prefix family's allomorphs follow assimilation: easier to pronounce \"il-l\" than \"in-l\"."
@@ -187,6 +190,7 @@
       "grammar": [
         {
           "type": "multiple_choice",
+          "sentence": "Noun form of \"decide\":",
           "options": [
             "decision",
             "decidement",
@@ -198,6 +202,7 @@
         },
         {
           "type": "multiple_choice",
+          "sentence": "Noun form of \"happy\":",
           "options": [
             "happiness",
             "happity",
@@ -209,6 +214,7 @@
         },
         {
           "type": "fill_gap",
+          "sentence": "Abstract noun for \"manage\": \"_____\" (the action of managing)",
           "hint": "Verb + -ment",
           "answer": "management",
           "explanation": "\"Manage\" → \"management\" via \"-ment\". The \"-ment\" suffix produces abstract nouns from verbs (achieve → achievement, develop → development, judge → judgment, agree → agreement). Common in academic and business writing."
@@ -334,6 +340,7 @@
       "grammar": [
         {
           "type": "multiple_choice",
+          "sentence": "Adjective from \"rely\":",
           "options": [
             "reliable",
             "relyful",
@@ -345,6 +352,7 @@
         },
         {
           "type": "multiple_choice",
+          "sentence": "Verb from \"modern\":",
           "options": [
             "modernise",
             "modernate",
@@ -356,6 +364,7 @@
         },
         {
           "type": "fill_gap",
+          "sentence": "Adjective from \"danger\": \"_____\" (full of danger)",
           "hint": "noun + -ous",
           "answer": "dangerous",
           "explanation": "\"Danger\" → \"dangerous\" (-ous, \"full of, characterised by\"). Pattern: noun + -ous = adjective. Examples: famous, mysterious, courageous, generous, glorious. Often Latinate roots."
@@ -481,6 +490,7 @@
       "grammar": [
         {
           "type": "multiple_choice",
+          "sentence": "Closed compound (one word):",
           "options": [
             "lighthouse",
             "light house",
@@ -492,6 +502,7 @@
         },
         {
           "type": "multiple_choice",
+          "sentence": "Hyphenated compound (use the form for \"well + known\" before a noun):",
           "options": [
             "well-known",
             "wellknown",
@@ -503,6 +514,7 @@
         },
         {
           "type": "fill_gap",
+          "sentence": "Open compound (two separate words): _____ school",
           "hint": "Common open compound for upper secondary education",
           "answer": "high school (or \"high school\")",
           "explanation": "\"High school\" is an open compound — two words but functioning as one concept. Other open compounds: ice cream, post office, real estate, peanut butter. The decision between open and closed often relates to age and frequency in the language."
@@ -625,6 +637,7 @@
       "grammar": [
         {
           "type": "multiple_choice",
+          "sentence": "Verb form of the noun \"email\":",
           "options": [
             "email",
             "emailify",
@@ -636,6 +649,7 @@
         },
         {
           "type": "multiple_choice",
+          "sentence": "Noun form of the verb \"google\":",
           "options": [
             "a google search",
             "a googling",
@@ -647,6 +661,7 @@
         },
         {
           "type": "fill_gap",
+          "sentence": "Verb from noun \"message\": \"Did you _____ him yet?\"",
           "hint": "Same form as the noun",
           "answer": "message",
           "explanation": "\"Message\" works as both noun and verb. \"Did you message him?\" — verb form, identical spelling. Native speakers do this automatically. C2 fluency includes the ease of using such conversions."

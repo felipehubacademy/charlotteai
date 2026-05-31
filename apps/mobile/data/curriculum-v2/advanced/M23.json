@@ -32,6 +32,7 @@
       "grammar": [
         {
           "type": "multiple_choice",
+          "sentence": "Most formal opening (cold email to senior executive):",
           "options": [
             "I hope this email finds you well.",
             "Hi there!",
@@ -43,6 +44,7 @@
         },
         {
           "type": "multiple_choice",
+          "sentence": "Most appropriate closing for a formal cover letter:",
           "options": [
             "Kind regards",
             "Best",
@@ -54,12 +56,14 @@
         },
         {
           "type": "fill_gap",
+          "sentence": "Semi-formal opener for a coworker: \"_____ you're doing well.\"",
           "hint": "friendly but professional opener",
           "answer": "Hope (or \"Hoping\")",
           "explanation": "\"Hope you're doing well\" — common semi-formal opener for someone you know but aren't close to. Drops the formal \"I\" of \"I hope\" to feel warmer. Widely used in workplace email."
         },
         {
           "type": "fix_error",
+          "sentence": "Cold email opening: \"Hey there, what's going on?\"",
           "hint": "Too casual for a cold business email",
           "answer": "Dear [Name], I hope this email finds you well. I'm reaching out regarding...",
           "explanation": "\"Hey there, what's going on?\" is appropriate among friends but jarring in business cold-outreach. Cold emails need formal openings: \"Dear [Name]\" + \"I hope this email finds you well\" or \"I'm reaching out regarding...\". Register match is essential."
@@ -177,6 +181,7 @@
       "grammar": [
         {
           "type": "multiple_choice",
+          "sentence": "Most professional opening for a job application:",
           "options": [
             "I am writing to apply for the position of [role].",
             "Hey, I want the job.",
@@ -188,6 +193,7 @@
         },
         {
           "type": "multiple_choice",
+          "sentence": "Strongest closing line for an application:",
           "options": [
             "I would welcome the opportunity to discuss how my background aligns with your team's needs.",
             "I really want this job.",
@@ -199,12 +205,14 @@
         },
         {
           "type": "fill_gap",
+          "sentence": "Application body chunk: \"I bring _____ years of experience in [field], with a track record of...\"",
           "hint": "number of years (template)",
           "answer": "[number] (e.g., \"five\" or \"ten\")",
           "explanation": "\"I bring [X] years of experience in [field], with a track record of [specific results]\" — formula for quantifying experience with credibility. Always replace [X] with the actual number; \"many\" or \"lots of\" weakens the claim."
         },
         {
           "type": "fix_error",
+          "sentence": "Application opening: \"Hello, I want to apply to your company for the marketing job.\"",
           "hint": "Too casual for a formal application",
           "answer": "I am writing to apply for the Marketing position advertised on [LinkedIn / your website].",
           "explanation": "\"Hello, I want to\" is conversational; applications need formal phrasing: \"I am writing to apply for [Position Name] advertised on [source]\". Capitalize the position name; specify the source for tracking."
@@ -322,6 +330,7 @@
       "grammar": [
         {
           "type": "multiple_choice",
+          "sentence": "Strongest CV bullet:",
           "options": [
             "Led cross-functional team of 12 to deliver a $2M product launch ahead of schedule.",
             "Worked on a project.",
@@ -333,6 +342,7 @@
         },
         {
           "type": "multiple_choice",
+          "sentence": "Best action verb for \"I was responsible for\":",
           "options": [
             "Spearheaded",
             "Was given",
@@ -344,12 +354,14 @@
         },
         {
           "type": "fill_gap",
+          "sentence": "Cover letter chunk: \"What draws me to [Company] is _____.\"",
           "hint": "Specific reason connecting your interests to the company",
           "answer": "[specific reason — e.g., \"your commitment to sustainable design\"]",
           "explanation": "\"What draws me to [Company] is...\" is a strong cover letter pivot showing you've researched the company. Always follow with a specific company value or initiative — generic \"your innovative culture\" reads as filler."
         },
         {
           "type": "fix_error",
+          "sentence": "CV bullet: \"Was the manager of a team that did some stuff.\"",
           "hint": "Use a strong action verb + quantification",
           "answer": "Managed a team of [X] to deliver [specific outcome] resulting in [quantified impact].",
           "explanation": "Strong CV bullets follow the formula: [Strong action verb] + [scope/team] + [concrete deliverable] + [quantified impact]. \"Did some stuff\" is the antithesis of professional CV writing."
@@ -467,6 +479,7 @@
       "grammar": [
         {
           "type": "multiple_choice",
+          "sentence": "Best follow-up opener after a week of silence:",
           "options": [
             "Just following up on my email below — wondering if you've had a chance to review.",
             "Why didn't you reply?",
@@ -478,6 +491,7 @@
         },
         {
           "type": "multiple_choice",
+          "sentence": "Most professional check-in after a meeting:",
           "options": [
             "Following up on our conversation — happy to share more detail on [topic] if useful.",
             "Hey, did we agree on something?",
@@ -489,12 +503,14 @@
         },
         {
           "type": "fill_gap",
+          "sentence": "Application follow-up: \"_____ on the [Senior Designer] application I submitted on [date]. Any update on next steps?\"",
           "hint": "gentle re-introduction phrase",
           "answer": "Just checking in",
           "explanation": "\"Just checking in on the [Position] application I submitted on [date]\" — formal but warm follow-up for job applications. \"Just checking in\" is the universal gentle nudge phrase."
         },
         {
           "type": "fix_error",
+          "sentence": "Follow-up email: \"Hi, did you read my email or what? It's been a week.\"",
           "hint": "Too aggressive — soften with \"just following up\"",
           "answer": "Hi [Name], just following up on my email from last week — wondering if you've had a chance to review.",
           "explanation": "\"Did you read my email or what?\" reads as hostile. Always soften with \"just following up\", \"just checking in\", or \"wondering if you had a chance to review\". The phrase \"if you had a chance\" acknowledges their time."
@@ -612,6 +628,7 @@
       "grammar": [
         {
           "type": "multiple_choice",
+          "sentence": "Most professional decline:",
           "options": [
             "Thank you for thinking of me. Unfortunately, this isn't a fit for my current focus, but I'd be happy to recommend others.",
             "No, I'm not interested.",
@@ -623,6 +640,7 @@
         },
         {
           "type": "multiple_choice",
+          "sentence": "Strongest framing for asking for a raise:",
           "options": [
             "I'd like to discuss compensation given my expanded role and impact over the past 18 months.",
             "I want more money.",
@@ -634,12 +652,14 @@
         },
         {
           "type": "fill_gap",
+          "sentence": "Bad news softener: \"_____ , we won't be able to extend an offer at this time.\"",
           "hint": "Standard bad news opener",
           "answer": "Unfortunately",
           "explanation": "\"Unfortunately\" — the standard bad news softener. Universal across formal contexts. Variants: \"I regret to inform you that...\", \"Sadly...\". Always pair with reason or path forward when possible."
         },
         {
           "type": "fix_error",
+          "sentence": "Decline email: \"No, I won't be coming to the meeting. I'm busy.\"",
           "hint": "Too curt — soften with apology + alternative",
           "answer": "Unfortunately, I won't be able to attend the meeting on Friday — I have a competing commitment. Happy to follow up on the action items afterward.",
           "explanation": "Professional declines soften the no (\"Unfortunately\"), give a brief reason (\"competing commitment\"), and offer engagement (\"happy to follow up\"). \"I'm busy\" sounds dismissive."

@@ -472,7 +472,7 @@
         },
         {
           "type": "fill_gap",
-          "sentence": "Yes, I _____.",
+          "sentence": "\"Yes, I _____.\" (answer to \"Were you studying?\")",
           "hint": "short answer",
           "answer": "was",
           "explanation": "\"Yes, I was\" — short answer with was/were."

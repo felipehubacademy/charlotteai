@@ -222,7 +222,7 @@
       "grammar": [
         {
           "type": "multiple_choice",
-          "sentence": "I have _____ friends — I feel lonely.",
+          "sentence": "\"I have _____ friends — I feel lonely.\" (negative)",
           "options": [
             "few",
             "a few",
@@ -233,7 +233,7 @@
         },
         {
           "type": "multiple_choice",
-          "sentence": "I have _____ friends — we hang out often.",
+          "sentence": "\"I have _____ friends — we hang out often.\" (positive)",
           "options": [
             "a few",
             "few",
@@ -244,7 +244,7 @@
         },
         {
           "type": "word_bank",
-          "sentence": "She has _____ patience for nonsense.",
+          "sentence": "\"She has _____ patience for nonsense.\" (very little)",
           "choices": [
             "little",
             "a little",
@@ -256,7 +256,7 @@
         },
         {
           "type": "word_bank",
-          "sentence": "There's _____ hope left.",
+          "sentence": "\"There's _____ hope left.\" (negative, almost none)",
           "choices": [
             "little",
             "a little",
@@ -268,35 +268,35 @@
         },
         {
           "type": "fill_gap",
-          "sentence": "I have _____ money — I can't help.",
+          "sentence": "\"I have _____ money — I can't help.\" (almost none)",
           "hint": "negative quantifier",
           "answer": "little",
           "explanation": "\"Little money\" = almost no money."
         },
         {
           "type": "fill_gap",
-          "sentence": "I have _____ time, but I'll help.",
+          "sentence": "\"I have _____ time, but I'll help.\" (some)",
           "hint": "positive quantifier",
           "answer": "a little",
           "explanation": "\"A little time\" = some time."
         },
         {
           "type": "fill_gap",
-          "sentence": "_____ people came to the party.",
+          "sentence": "\"_____ people came to the party.\" (very few, negative)",
           "hint": "countable, negative meaning",
           "answer": "Few",
           "explanation": "\"Few people\" — almost none came."
         },
         {
           "type": "fix_error",
-          "sentence": "I have few friends and I feel happy.",
+          "sentence": "\"I have few friends and I feel happy.\" (Means almost none — feels off)",
           "hint": "Use \"a few\" for positive",
           "answer": "I have a few friends and I feel happy.",
           "explanation": "\"A few\" = positive (some). \"Few\" = negative."
         },
         {
           "type": "fix_error",
-          "sentence": "She has a little patience for delays.",
+          "sentence": "\"She has a little patience for delays.\" (Means some — but context suggests none)",
           "hint": "For negative meaning, use \"little\"",
           "answer": "She has little patience for delays.",
           "explanation": "\"Little\" without \"a\" = negative (almost none)."

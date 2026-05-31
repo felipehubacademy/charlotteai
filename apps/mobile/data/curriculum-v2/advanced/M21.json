@@ -35,6 +35,7 @@
       "grammar": [
         {
           "type": "multiple_choice",
+          "sentence": "Which sentence sounds most natural in casual speech?",
           "options": [
             "It was, you know, a difficult situation.",
             "It was a difficult situation.",
@@ -46,6 +47,7 @@
         },
         {
           "type": "multiple_choice",
+          "sentence": "Most natural use of \"I mean\":",
           "options": [
             "I mean, the meeting was a disaster.",
             "I mean, I mean, I mean, the meeting was bad.",
@@ -57,12 +59,14 @@
         },
         {
           "type": "fill_gap",
+          "sentence": "Hedge in casual speech: \"She's _____ the best manager I've ever had.\"",
           "hint": "\"Kind of\" or \"sort of\"",
           "answer": "kind of (or \"sort of\")",
           "explanation": "\"Kind of\" / \"sort of\" — hedges. Soften the absoluteness of \"the best\". \"Kind of the best\" = approximately the best, hesitant to claim full superlative. In writing this hedge is light; in speech it's heavy and frequent."
         },
         {
           "type": "fix_error",
+          "sentence": "Casual speech, but over-filled: \"Like, you know, I mean, like, the project was, sort of, really hard, you know?\"",
           "hint": "Three or more fillers in one sentence is too many",
           "answer": "The project was really hard, you know?",
           "explanation": "Over-filling sounds nervous or under-prepared. C2 fluency = strategic filler use. One filler per sentence is natural; two is borderline; three or more weakens. Remove some and keep one well-placed."
@@ -181,6 +185,7 @@
       "grammar": [
         {
           "type": "multiple_choice",
+          "sentence": "Add the correct tag: \"It's a beautiful day, _____\"",
           "options": [
             "isn't it?",
             "is it?",
@@ -192,6 +197,7 @@
         },
         {
           "type": "multiple_choice",
+          "sentence": "Add the correct tag: \"She doesn't speak French, _____\"",
           "options": [
             "does she?",
             "doesn't she?",
@@ -203,12 +209,14 @@
         },
         {
           "type": "fill_gap",
+          "sentence": "Casual tag for \"It's good weather today, _____\" (very informal British)",
           "hint": "Universal informal tag",
           "answer": "innit (or \"isn't it\" formal)",
           "explanation": "\"Innit\" — universal informal tag in British English, especially Cockney/London. Stands in for any positive→negative tag (\"isn't it / aren't they / haven't they / didn't he\"). Use cautiously — works in casual peer-to-peer speech but reads as too informal in professional contexts."
         },
         {
           "type": "fix_error",
+          "sentence": "Tag mismatched: \"You've been to Paris, haven't you?\"",
           "hint": "Actually, that's correct. Try: \"You haven't been to Paris, have you?\"",
           "answer": "You haven't been to Paris, have you? (negative → positive tag)",
           "explanation": "Common L2 error is matching polarity. Native English always reverses: pos → neg tag, neg → pos tag. \"You've been\" (positive perfect) + \"haven't you?\" (negative). \"You haven't been\" (negative) + \"have you?\" (positive). Polarity always inverts."
@@ -327,6 +335,7 @@
       "grammar": [
         {
           "type": "multiple_choice",
+          "sentence": "Most natural backchannel during someone telling a story:",
           "options": [
             "Mm-hm. Right. Yeah.",
             "Yes, I am listening.",
@@ -338,6 +347,7 @@
         },
         {
           "type": "multiple_choice",
+          "sentence": "Backchannel signalling surprise:",
           "options": [
             "Really?",
             "Yes, indeed.",
@@ -349,12 +359,14 @@
         },
         {
           "type": "fill_gap",
+          "sentence": "Backchannel meaning \"I'm tracking, keep going\": \"_____\"",
           "hint": "Single syllable, neutral confirmation",
           "answer": "Right (or \"Mm-hm\" or \"Yeah\")",
           "explanation": "\"Right\" — neutral confirmation backchannel. Often timed during pauses or at the end of a sentence. Allows the speaker to continue without seeking more elaborate confirmation. Stress-pattern: short, rising-falling pitch, almost throwaway."
         },
         {
           "type": "fix_error",
+          "sentence": "Over-elaborate backchannel: \"I am listening to your account with great interest.\"",
           "hint": "Use a short interjection instead",
           "answer": "Mm-hm. (or \"Right.\" / \"Yeah.\" / \"Oh.\")",
           "explanation": "Formal acknowledgement reads as ironic or alien in casual speech. Native fluency uses short backchannels. \"I am listening with interest\" in casual chat = either sarcasm or non-native flag. C2 fluency replaces it with one-syllable confirmation."
@@ -473,6 +485,7 @@
       "grammar": [
         {
           "type": "multiple_choice",
+          "sentence": "Opener signalling about-to-share-an-honest-opinion: \"_____, the proposal isn't strong enough.\"",
           "options": [
             "Honestly",
             "Yes",
@@ -484,6 +497,7 @@
         },
         {
           "type": "multiple_choice",
+          "sentence": "Opener softening disagreement before a counterpoint: \"_____, the data does support a different reading.\"",
           "options": [
             "To be fair",
             "Of course",
@@ -495,12 +509,14 @@
         },
         {
           "type": "fill_gap",
+          "sentence": "Casual opener for sensitive topic: \"_____, I think we should reconsider.\"",
           "hint": "Attention-getter with deliberate pause",
           "answer": "Look",
           "explanation": "\"Look, ...\" — informal attention-getter, often preceding a sensitive or direct statement. Casual register. Synonyms: \"Listen, ...\". Signals \"I'm about to be direct\" — used in interpersonal conversation, feedback, or persuasion."
         },
         {
           "type": "fix_error",
+          "sentence": "Awkward sensitivity-opener: \"With no offence, but you're wrong.\"",
           "hint": "\"No offence\" is the fixed phrase",
           "answer": "No offence, but you're wrong. (or: With all due respect, but you're wrong.)",
           "explanation": "\"No offence\" — set phrase preceding a potentially insulting statement. \"With no offence\" is non-standard. The phrase preempts any negative reaction: \"I'm not trying to insult you, but...\". Often softens what follows."
@@ -616,6 +632,7 @@
       "grammar": [
         {
           "type": "multiple_choice",
+          "sentence": "Opener for naming a complication: \"_____ we don't actually have the budget for it this quarter.\"",
           "options": [
             "The thing is,",
             "The thing of,",
@@ -627,6 +644,7 @@
         },
         {
           "type": "multiple_choice",
+          "sentence": "Native conversational proposal opener:",
           "options": [
             "I'll tell you what — let's just call her and ask.",
             "I will tell you which — let's call her.",
@@ -638,12 +656,14 @@
         },
         {
           "type": "fill_gap",
+          "sentence": "Opener inviting shared opinion: \"_____ but I think we should rethink the whole approach.\"",
           "hint": "\"I don't know about you, but...\"",
           "answer": "I don't know about you,",
           "explanation": "\"I don't know about you, but ...\" — opens a personal opinion in a way that invites the listener's response. Hedges the assertion as personal. Common in casual feedback and informal opinion-sharing."
         },
         {
           "type": "fix_error",
+          "sentence": "Awkward: \"The matter is that we don't have time.\"",
           "hint": "Use \"The thing is\" instead",
           "answer": "The thing is, we don't have time.",
           "explanation": "\"The matter is\" sounds formal-translated. Native English casual conversation uses \"The thing is\" or \"Here's the thing\". These openers feel native; \"the matter is\" reads as translation from another language."

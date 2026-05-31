@@ -34,6 +34,7 @@
       "grammar": [
         {
           "type": "multiple_choice",
+          "sentence": "Where is the stress in \"photograph\"?",
           "options": [
             "PHO-tograph",
             "pho-TO-graph",
@@ -45,6 +46,7 @@
         },
         {
           "type": "multiple_choice",
+          "sentence": "Noun-verb pair: which has stress on the first syllable as a noun?",
           "options": [
             "REcord (noun) — reCORD (verb)",
             "Record (both)",
@@ -56,12 +58,14 @@
         },
         {
           "type": "fill_gap",
+          "sentence": "Which syllable carries stress in \"comfortable\"? _____",
           "hint": "First syllable",
           "answer": "COM-fortable (first syllable: COM)",
           "explanation": "\"COMfortable\" — stress on \"COM\". Native speakers often reduce to \"COMF-tər-bəl\" (three syllables in fast speech). Many learners stress \"comFORTable\" or \"comforTABLE\", which sounds foreign. C2 awareness includes the first-syllable stress on \"comfortable\" and similar long Latinate words."
         },
         {
           "type": "fix_error",
+          "sentence": "Which is correct stress for \"develop\"?",
           "hint": "Second syllable",
           "answer": "deVELop (stress on VEL)",
           "explanation": "\"deVELop\" — stress on second syllable. Pattern for similar verbs: deCIDE, reMEMber, beGIN, dis-COVer, sup-PORT. Two-or-three-syllable verbs often stress the second syllable (especially with prefixes de-, re-, dis-). Wrong stress in everyday verbs is a major C2 fluency leak."
@@ -180,6 +184,7 @@
       "grammar": [
         {
           "type": "multiple_choice",
+          "sentence": "In the sentence \"I want a cup of tea\", which words are stressed?",
           "options": [
             "I, want, cup, tea",
             "I, want, cup, of, tea",
@@ -191,6 +196,7 @@
         },
         {
           "type": "multiple_choice",
+          "sentence": "Weak form of \"of\" in connected speech:",
           "options": [
             "əv",
             "oʊf",
@@ -203,12 +209,14 @@
         },
         {
           "type": "fill_gap",
+          "sentence": "Identify weak form of \"to\": \"I want to go\" → \"I want _____ go.\" (in connected fast speech)",
           "hint": "schwa + t",
           "answer": "tə (schwa)",
           "explanation": "\"To\" weakens to /tə/ in connected speech. \"Want to\" often blends into \"wanna\" /ˈwɒnə/ in casual register. C2 listeners parse \"wanna / gonna / gotta\" as \"want to / going to / got to\" — and produce them naturally in informal contexts."
         },
         {
           "type": "fix_error",
+          "sentence": "Which sentence has the more native rhythm? \"I AM going TO the STORE\" or \"I'm going to the STORE\"?",
           "hint": "Native English weakens auxiliaries and uses contractions",
           "answer": "I'm going to the STORE.",
           "explanation": "Equal stress on every word (\"I AM going TO the STORE\") sounds robotic. Native rhythm contracts (\"I'm\") and weakens function words (\"going tə the\"). Only content words get full stress: \"I'm GOing to the STORE\". Stress-timed rhythm."
@@ -327,6 +335,7 @@
       "grammar": [
         {
           "type": "multiple_choice",
+          "sentence": "In natural speech, \"an apple\" sounds like:",
           "options": [
             "a-napple (linked)",
             "an apple (separated)",
@@ -338,7 +347,7 @@
         },
         {
           "type": "multiple_choice",
-          "sentence": "Law and order",
+          "sentence": "\"Law and order\" in natural British English includes which intrusive sound?",
           "options": [
             "r",
             "— \"law-r-and order\"",
@@ -353,12 +362,14 @@
         },
         {
           "type": "fill_gap",
+          "sentence": "In fast connected speech, \"I am\" becomes \"I-_-am\" (intrusive sound)",
           "hint": "Intrusive /j/ between \"I\" /aɪ/ and \"am\" /æm/",
           "answer": "y (/j/ sound)",
           "explanation": "Intrusive /j/: a \"y\" sound bridges two vowels. \"I am\" /aɪ-jæm/ \"go away\" /goʊ-wəweɪ/ uses intrusive /w/. These sounds aren't in spelling but native speakers produce them automatically to avoid awkward vowel-to-vowel transitions."
         },
         {
           "type": "fix_error",
+          "sentence": "Which is closer to natural fast speech of \"don't you know\"?",
           "hint": "Assimilation creates \"doncha\"",
           "answer": "\"doncha know\" (assimilation: don't + you → doncha)",
           "explanation": "Assimilation: when adjacent sounds change to be more similar. \"Don't you\" → \"doncha\" /ˈdoʊnʧə/. \"Did you\" → \"didja\" /ˈdɪʤə/. \"Would you\" → \"wouldja\". These aren't lazy — they're the natural shape of fast English. C2 awareness includes both producing and parsing them."
@@ -477,6 +488,7 @@
       "grammar": [
         {
           "type": "multiple_choice",
+          "sentence": "Typical intonation pattern for \"Are you ready?\":",
           "options": [
             "Rising at the end",
             "Falling at the end",
@@ -488,6 +500,7 @@
         },
         {
           "type": "multiple_choice",
+          "sentence": "Typical intonation for \"What time is it?\":",
           "options": [
             "Falling at the end",
             "Rising at the end",
@@ -499,12 +512,14 @@
         },
         {
           "type": "fill_gap",
+          "sentence": "For a list, the intonation pattern is typically: rise-rise-rise-_____.",
           "hint": "Final intonation when list is complete",
           "answer": "fall (falling on the last item)",
           "explanation": "List intonation: rise, rise, rise, FALL. \"I need apples, oranges, bananas, and bread\" — rising on each item until \"bread\", which falls to signal \"end of list\". If the list continued, all items would rise. The falling final = closure."
         },
         {
           "type": "fix_error",
+          "sentence": "How would you make \"Really?\" sound like genuine surprise vs sarcasm?",
           "hint": "Pitch pattern differs",
           "answer": "Surprise: rising-then-rising \"Really?\" (high pitch). Sarcasm: falling \"Really.\" (low, flat, with stress on first syllable).",
           "explanation": "Same word, two intonations. Genuine surprise rises sharply (\"REAL-ly?\" high). Sarcastic disbelief falls and flattens (\"REAL-ly.\" low, slow). Intonation carries the emotional content that words alone don't. C2 speakers control this consciously."
@@ -620,6 +635,7 @@
       "grammar": [
         {
           "type": "multiple_choice",
+          "sentence": "Contraction of \"he is going\":",
           "options": [
             "he's going",
             "he'is going",
@@ -631,6 +647,7 @@
         },
         {
           "type": "multiple_choice",
+          "sentence": "Negative contraction of \"should have\":",
           "options": [
             "shouldn't have",
             "shouldn'tve",
@@ -642,12 +659,14 @@
         },
         {
           "type": "fill_gap",
+          "sentence": "Fast-speech version of \"next month\": _____ month (with elision of /t/)",
           "hint": "Drop the /t/ between \"next\" and \"month\"",
           "answer": "nex' month (/nɛksˈmʌnθ/, /t/ elided)",
           "explanation": "Elision: dropping a sound, usually /t/ or /d/, between consonant clusters. \"Next month\" → \"nex' month\". Same with \"old man\" → \"ol' man\", \"first place\" → \"firs' place\". The dropped sound is too hard to say cleanly between adjacent consonants, so native speakers skip it."
         },
         {
           "type": "fix_error",
+          "sentence": "Native English speaker would most likely say which?",
           "hint": "Contracted form",
           "answer": "\"I'd've gone if I'd known.\"",
           "explanation": "\"I would have gone if I had known\" → casual contracted: \"I'd've gone if I'd known\". Two contractions stacked: \"I'd\" (I would) and \"'ve\" (have). In writing, \"I would've\" is common; \"I'd've\" is very informal and mostly spoken. C2 listeners recognise these even when they don't appear in print."

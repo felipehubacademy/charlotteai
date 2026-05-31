@@ -500,7 +500,7 @@
         },
         {
           "type": "fill_gap",
-          "sentence": "Yes, I _____.",
+          "sentence": "\"Yes, I _____.\" (resposta a \"Are you working?\")",
           "hint": "Resposta curta afirmativa",
           "answer": "am",
           "explanation": "\"Yes, I am\" — short answer com to be. Repete o auxiliar."

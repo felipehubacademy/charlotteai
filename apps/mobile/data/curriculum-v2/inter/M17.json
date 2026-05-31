@@ -31,6 +31,7 @@
       "grammar": [
         {
           "type": "multiple_choice",
+          "sentence": "Direct: \"I am tired.\" Reported: \"He said he _____ tired.\"",
           "options": [
             "was",
             "is",
@@ -42,6 +43,7 @@
         },
         {
           "type": "multiple_choice",
+          "sentence": "Direct: \"I work in finance.\" Reported: \"She said she _____ in finance.\"",
           "options": [
             "worked",
             "works",
@@ -53,6 +55,7 @@
         },
         {
           "type": "word_bank",
+          "sentence": "Direct: \"I'm cooking dinner.\" Reported: \"He said he _____ dinner.\"",
           "choices": [
             "was cooking",
             "is cooking",
@@ -64,6 +67,7 @@
         },
         {
           "type": "word_bank",
+          "sentence": "Direct: \"I like coffee.\" Reported: \"She said she _____ coffee.\"",
           "choices": [
             "liked",
             "likes",
@@ -75,30 +79,35 @@
         },
         {
           "type": "fill_gap",
+          "sentence": "Direct: \"We live in São Paulo.\" Reported: \"They said they _____ in São Paulo.\"",
           "hint": "past simple \"live\"",
           "answer": "lived",
           "explanation": "\"Live\" (present) → \"lived\" (past) em reported speech."
         },
         {
           "type": "fill_gap",
+          "sentence": "Direct: \"I am studying English.\" Reported: \"He said he _____ English.\"",
           "hint": "was + ing form \"study\"",
           "answer": "was studying",
           "explanation": "\"Am studying\" (present continuous) → \"was studying\" (past continuous) no reported speech."
         },
         {
           "type": "fill_gap",
+          "sentence": "Direct: \"I don't understand.\" Reported: \"She said she _____ understand.\"",
           "hint": "past simple negative \"didn't\"",
           "answer": "didn't",
           "explanation": "\"Don't\" (present) → \"didn't\" (past) em reported speech."
         },
         {
           "type": "fix_error",
+          "sentence": "Direct: \"I'm tired.\" Reported: \"He said that he is tired.\"",
           "hint": "Após \"said\" (passado), present muda para past",
           "answer": "He said that he was tired.",
           "explanation": "Reported speech após \"said\" exige backshift: \"is\" vira \"was\". Manter \"is\" é erro comum."
         },
         {
           "type": "fix_error",
+          "sentence": "Direct: \"I like pizza.\" Reported: \"She said she like pizza.\"",
           "hint": "3ª pessoa + past — \"liked\"",
           "answer": "She said she liked pizza.",
           "explanation": "Faltam duas correções: backshift para \"liked\" e 3ª pessoa singular. \"She liked\" — past simple."
@@ -410,6 +419,7 @@
       "grammar": [
         {
           "type": "multiple_choice",
+          "sentence": "Direct: \"I finished the report.\" Reported: \"He said he _____ the report.\"",
           "options": [
             "had finished",
             "finished",
@@ -421,6 +431,7 @@
         },
         {
           "type": "multiple_choice",
+          "sentence": "Direct: \"I have visited Paris.\" Reported: \"She said she _____ Paris.\"",
           "options": [
             "had visited",
             "visited",
@@ -432,6 +443,7 @@
         },
         {
           "type": "word_bank",
+          "sentence": "Direct: \"I saw the movie.\" Reported: \"He said he _____ the movie.\"",
           "choices": [
             "had seen",
             "saw",
@@ -443,6 +455,7 @@
         },
         {
           "type": "word_bank",
+          "sentence": "Direct: \"I've been to Japan.\" Reported: \"She said she _____ to Japan.\"",
           "choices": [
             "had been",
             "has been",
@@ -454,30 +467,35 @@
         },
         {
           "type": "fill_gap",
+          "sentence": "Direct: \"I lost my phone.\" Reported: \"He said he _____ his phone.\"",
           "hint": "had + past participle \"lose\"",
           "answer": "had lost",
           "explanation": "\"Lost\" → \"had lost\". Past simple para past perfect."
         },
         {
           "type": "fill_gap",
+          "sentence": "Direct: \"I've finished the project.\" Reported: \"She said she _____ the project.\"",
           "hint": "had + past participle \"finish\"",
           "answer": "had finished",
           "explanation": "\"Have finished\" → \"had finished\" no reported."
         },
         {
           "type": "fill_gap",
+          "sentence": "Direct: \"I read that book.\" Reported: \"He said he _____ that book.\"",
           "hint": "had + past participle \"read\"",
           "answer": "had read",
           "explanation": "\"Read\" (past) → \"had read\" (past perfect). Note: pronounced /red/ em ambos."
         },
         {
           "type": "fix_error",
+          "sentence": "Direct: \"I finished it.\" Reported: \"He said he finished it.\"",
           "hint": "Past simple precisa ir para past perfect",
           "answer": "He said he had finished it.",
           "explanation": "Em reported, \"finished\" precisa virar \"had finished\". Mais um passo no tempo."
         },
         {
           "type": "fix_error",
+          "sentence": "Direct: \"I've seen the movie.\" Reported: \"She said she has seen the movie.\"",
           "hint": "Present perfect → past perfect",
           "answer": "She said she had seen the movie.",
           "explanation": "\"Has seen\" no reported vira \"had seen\". Backshift obrigatório."
@@ -595,6 +613,7 @@
       "grammar": [
         {
           "type": "multiple_choice",
+          "sentence": "Direct: \"I will call you.\" Reported: \"He said he _____ call me.\"",
           "options": [
             "would",
             "will",
@@ -606,6 +625,7 @@
         },
         {
           "type": "multiple_choice",
+          "sentence": "Direct: \"I can swim.\" Reported: \"She said she _____ swim.\"",
           "options": [
             "could",
             "can",
@@ -617,6 +637,7 @@
         },
         {
           "type": "word_bank",
+          "sentence": "Direct: \"I may be late.\" Reported: \"He said he _____ be late.\"",
           "choices": [
             "might",
             "may",
@@ -628,6 +649,7 @@
         },
         {
           "type": "word_bank",
+          "sentence": "Direct: \"I must leave.\" Reported: \"She said she _____ leave.\"",
           "choices": [
             "had to",
             "must",
@@ -639,30 +661,35 @@
         },
         {
           "type": "fill_gap",
+          "sentence": "Direct: \"I won't be there.\" Reported: \"He said he _____ be there.\"",
           "hint": "would + not (wouldn't)",
           "answer": "wouldn't",
           "explanation": "\"Won't\" (will not) → \"wouldn't\" (would not) em reported."
         },
         {
           "type": "fill_gap",
+          "sentence": "Direct: \"I can't do it.\" Reported: \"She said she _____ do it.\"",
           "hint": "couldn't (can't → couldn't)",
           "answer": "couldn't",
           "explanation": "\"Can't\" → \"couldn't\" em reported. Backshift padrão."
         },
         {
           "type": "fill_gap",
+          "sentence": "Direct: \"I'll send the email.\" Reported: \"He said he _____ send the email.\"",
           "hint": "would (will → would)",
           "answer": "would",
           "explanation": "\"Will send\" → \"would send\" em reported speech."
         },
         {
           "type": "fix_error",
+          "sentence": "Direct: \"I will help.\" Reported: \"He said he will help.\"",
           "hint": "\"Will\" precisa virar \"would\" em reported",
           "answer": "He said he would help.",
           "explanation": "Backshift obrigatório: \"will\" → \"would\" quando reporting verb é passado."
         },
         {
           "type": "fix_error",
+          "sentence": "Direct: \"I must work tomorrow.\" Reported: \"She said she must work the next day.\"",
           "hint": "\"Must\" → \"had to\" em reported speech",
           "answer": "She said she had to work the next day.",
           "explanation": "\"Must\" não muda em alguns contextos modernos, mas em reported speech tradicional → \"had to\"."
@@ -778,6 +805,7 @@
       "grammar": [
         {
           "type": "multiple_choice",
+          "sentence": "Direct: \"I'm tired today.\" Reported: \"He said he was tired _____.\"",
           "options": [
             "that day",
             "today",
@@ -789,6 +817,7 @@
         },
         {
           "type": "multiple_choice",
+          "sentence": "Direct: \"I'll come tomorrow.\" Reported: \"She said she would come _____.\"",
           "options": [
             "the next day",
             "tomorrow",
@@ -800,6 +829,7 @@
         },
         {
           "type": "word_bank",
+          "sentence": "Direct: \"I was here yesterday.\" Reported: \"He said he had been _____ the day before.\"",
           "choices": [
             "there",
             "here",
@@ -811,6 +841,7 @@
         },
         {
           "type": "word_bank",
+          "sentence": "Direct: \"I saw it yesterday.\" Reported: \"She said she had seen it _____.\"",
           "choices": [
             "the day before",
             "yesterday",
@@ -822,30 +853,35 @@
         },
         {
           "type": "fill_gap",
+          "sentence": "Direct: \"I love this song.\" Reported: \"He said he loved _____ song.\"",
           "hint": "\"this\" → \"that\"",
           "answer": "that",
           "explanation": "\"This\" → \"that\" em reported speech — você está mais distante do referente."
         },
         {
           "type": "fill_gap",
+          "sentence": "Direct: \"I'll call you next week.\" Reported: \"She said she would call me the _____ week.\"",
           "hint": "\"next\" → \"following\"",
           "answer": "following",
           "explanation": "\"Next week\" → \"the following week\" em reported."
         },
         {
           "type": "fill_gap",
+          "sentence": "Direct: \"I came here last year.\" Reported: \"He said he had come _____ the year before.\"",
           "hint": "\"here\" → \"there\"",
           "answer": "there",
           "explanation": "\"Here\" → \"there\" + \"last year\" → \"the year before\"."
         },
         {
           "type": "fix_error",
+          "sentence": "Direct: \"I work here.\" Reported: \"He said he worked here.\"",
           "hint": "\"Here\" precisa mudar — você não está no mesmo lugar",
           "answer": "He said he worked there.",
           "explanation": "\"Here\" só permanece se você ainda está no mesmo lugar. Para reporte distante, \"there\"."
         },
         {
           "type": "fix_error",
+          "sentence": "Direct: \"I'll see you tomorrow.\" Reported: \"She said she would see me tomorrow.\"",
           "hint": "Para reporte depois, \"tomorrow\" → \"the next day\"",
           "answer": "She said she would see me the next day.",
           "explanation": "\"Tomorrow\" só permanece se o reporte ainda for hoje. Caso contrário, \"the next day\"."

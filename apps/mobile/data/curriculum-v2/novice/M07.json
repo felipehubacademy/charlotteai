@@ -498,7 +498,7 @@
         },
         {
           "type": "fill_gap",
-          "sentence": "Yes, I _____.",
+          "sentence": "\"Yes, I _____.\" (resposta a \"Can you swim?\")",
           "hint": "Resposta curta afirmativa",
           "answer": "can",
           "explanation": "\"Yes, I can\" — resposta curta. Repete o auxiliar (can), não o verbo principal."

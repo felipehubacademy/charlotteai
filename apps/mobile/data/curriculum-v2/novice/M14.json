@@ -498,7 +498,7 @@
         },
         {
           "type": "fill_gap",
-          "sentence": "Yes, I _____.",
+          "sentence": "\"Yes, I _____.\" (response to \"Were you tired?\")",
           "hint": "Resposta curta afirmativa",
           "answer": "was",
           "explanation": "\"Yes, I was\" — short answer com to be passado."

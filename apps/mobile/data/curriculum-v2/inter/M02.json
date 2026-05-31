@@ -638,7 +638,7 @@
         },
         {
           "type": "word_bank",
-          "sentence": "Yes, I _____.",
+          "sentence": "\"Yes, I _____.\" (response to \"Have you done it?\")",
           "choices": [
             "have",
             "has",
@@ -657,7 +657,7 @@
         },
         {
           "type": "fill_gap",
-          "sentence": "No, she _____.",
+          "sentence": "\"No, she _____.\" (response to \"Has she finished?\")",
           "hint": "Short answer negative (contracted)",
           "answer": "hasn't",
           "explanation": "\"No, she hasn't\" — short negative answer."

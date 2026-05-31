@@ -804,6 +804,7 @@
       "grammar": [
         {
           "type": "multiple_choice",
+          "sentence": "Defining: \"The man _____ called me is my boss.\" (which type?)",
           "options": [
             "who",
             "that",
@@ -815,6 +816,7 @@
         },
         {
           "type": "multiple_choice",
+          "sentence": "Non-defining: \"My boss, _____ called me, gave me a raise.\"",
           "options": [
             "who",
             "that",
@@ -826,6 +828,7 @@
         },
         {
           "type": "word_bank",
+          "sentence": "Defining: \"The book _____ I bought yesterday is great.\"",
           "choices": [
             "that",
             "which",
@@ -837,6 +840,7 @@
         },
         {
           "type": "word_bank",
+          "sentence": "Non-defining: \"This book, _____ I bought yesterday, is great.\"",
           "choices": [
             "which",
             "that",
@@ -848,30 +852,35 @@
         },
         {
           "type": "fill_gap",
+          "sentence": "Defining: \"The woman _____ lives next door is a doctor.\"",
           "hint": "who/that (defining para pessoa)",
           "answer": "who",
           "explanation": "Defining identifica QUEM (entre várias mulheres). \"Who\" funciona; \"that\" também."
         },
         {
           "type": "fill_gap",
+          "sentence": "Non-defining: \"My mother, _____ is a doctor, lives next door.\"",
           "hint": "who (única mãe, info extra)",
           "answer": "who",
           "explanation": "\"My mother\" já é específica (única). A info é EXTRA, não identifica."
         },
         {
           "type": "fill_gap",
+          "sentence": "Defining: \"The town _____ I grew up is small.\"",
           "hint": "where (lugar em defining)",
           "answer": "where",
           "explanation": "Defining \"where\" sem vírgulas. \"The town where I grew up\" — identifica qual cidade."
         },
         {
           "type": "fix_error",
+          "sentence": "Non-defining: \"My brother, that lives in Rio, is a teacher.\"",
           "hint": "Non-defining não usa \"that\"",
           "answer": "My brother, who lives in Rio, is a teacher.",
           "explanation": "Erro mais comum: \"that\" em non-defining. Apenas defining permite \"that\". Non-defining: \"who\" ou \"which\"."
         },
         {
           "type": "fix_error",
+          "sentence": "Defining mas sem vírgulas: \"The man who called me yesterday is my boss.\" Está correto?",
           "hint": "Sim, é defining correto",
           "answer": "The man who called me yesterday is my boss.",
           "explanation": "Frase já está correta. \"The man who called\" — identifica QUAL homem (entre vários). Defining sem vírgulas."

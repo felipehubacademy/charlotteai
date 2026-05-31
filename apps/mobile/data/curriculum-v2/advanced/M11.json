@@ -190,6 +190,7 @@
       "grammar": [
         {
           "type": "multiple_choice",
+          "sentence": "Formal register: \"We will _____ the audit on Monday.\"",
           "options": [
             "commence",
             "start",
@@ -201,6 +202,7 @@
         },
         {
           "type": "multiple_choice",
+          "sentence": "Formal: \"Please _____ as to the status of the order.\"",
           "options": [
             "inquire",
             "ask",
@@ -212,12 +214,14 @@
         },
         {
           "type": "fill_gap",
+          "sentence": "Formal: \"The investigation will _____ whether the claim is valid.\"",
           "hint": "Formal verb for \"find out\"",
           "answer": "ascertain",
           "explanation": "\"Ascertain\" — formal Latinate verb meaning to find out for certain. Common in legal, investigative, academic writing. Informal counterpart: \"find out\" or \"check\". Register placement matters."
         },
         {
           "type": "fix_error",
+          "sentence": "Formal email: \"We need to kick off the project.\"",
           "hint": "For formal context, use \"commence\" instead",
           "answer": "We need to commence the project.",
           "explanation": "\"Kick off\" is sports-informal, common in casual business speech but jarring in a formal email. The register-correct version uses \"commence\" or \"begin\" or \"initiate\". C1 awareness of register includes detecting these mismatches."
@@ -367,6 +371,7 @@
         },
         {
           "type": "fix_error",
+          "sentence": "Funeral condolence: \"Sorry about your grandmother — she died Tuesday, right?\"",
           "hint": "Use \"passed away\" in condolence context",
           "answer": "Sorry about your grandmother — she passed away Tuesday, right?",
           "explanation": "\"Died\" in a direct condolence reads as blunt. Even when factually identical, \"passed away\" honours the social moment. Register-awareness is part of C1 fluency, not just vocabulary range."
@@ -485,6 +490,7 @@
       "grammar": [
         {
           "type": "multiple_choice",
+          "sentence": "Asked how dinner was: \"_____.\"",
           "options": [
             "Not bad",
             "Bad not",
@@ -508,6 +514,7 @@
         },
         {
           "type": "fill_gap",
+          "sentence": "Offered cake: \"Well, _____.\"",
           "hint": "Litotes meaning \"yes, please\"",
           "answer": "I wouldn't say no",
           "explanation": "\"I wouldn't say no\" — litotes for accepting eagerly. Polite-British register. Saying \"I wouldn't say no\" to cake is much warmer than \"yes\". Cultural code: the litotes signals you want it but won't be greedy about asking."
@@ -630,6 +637,7 @@
       "grammar": [
         {
           "type": "multiple_choice",
+          "sentence": "Casual chat with a friend: \"How's it going?\"",
           "options": [
             "Pretty good, you?",
             "Quite well, thank you for asking.",
@@ -641,6 +649,7 @@
         },
         {
           "type": "multiple_choice",
+          "sentence": "Formal cover letter: \"_____ in this role would allow me to grow.\"",
           "options": [
             "A position",
             "A gig",
@@ -652,12 +661,14 @@
         },
         {
           "type": "fill_gap",
+          "sentence": "Tech meeting among engineers: \"We need to _____ the deployment script before merging.\"",
           "hint": "Verb that fits engineer-casual register",
           "answer": "refactor (or \"rewrite\", \"clean up\")",
           "explanation": "Engineer-register prefers technical verbs in casual contexts. \"Refactor\" is technical but conversational. \"Restructure\" would be formal-corporate. \"Fix\" would be too vague. C1 register fluency includes knowing the verb each subculture defaults to."
         },
         {
           "type": "fix_error",
+          "sentence": "Slack message to your boss: \"Yo, can you pop into the call?\"",
           "hint": "\"Yo\" is too casual for any boss except in very informal cultures",
           "answer": "Hey, do you have a moment to join the call? (or: Could you join the call?)",
           "explanation": "\"Yo\" is youth-register, fits only specific subcultures. Most professional contexts read \"yo\" as too casual or jarring. Even in informal Slack cultures, \"hey\" is safer. Register-reading is part of professional C1."
@@ -775,6 +786,7 @@
       "grammar": [
         {
           "type": "multiple_choice",
+          "sentence": "British English equivalent of American \"elevator\":",
           "options": [
             "lift",
             "staircase",
@@ -786,6 +798,7 @@
         },
         {
           "type": "multiple_choice",
+          "sentence": "American spelling of \"colour\":",
           "options": [
             "color",
             "colur",
@@ -797,12 +810,14 @@
         },
         {
           "type": "fill_gap",
+          "sentence": "In American English, the past participle of \"get\" is often \"_____\" rather than British \"got\".",
           "hint": "alternative past participle form",
           "answer": "gotten",
           "explanation": "\"Gotten\" — American past participle of \"get\". British English uses \"got\" for past participle. \"I've gotten better at this\" (American) vs \"I've got better at this\" (British). Note: \"have got\" meaning \"have/possess\" uses \"got\" in both."
         },
         {
           "type": "fix_error",
+          "sentence": "Por português falar 'pretender', você diz em inglês: \"I pretend to leave tomorrow.\"",
           "hint": "false cognate — \"pretend\" doesn't mean \"intend\"",
           "answer": "I intend to leave tomorrow. (or: I plan to leave tomorrow.)",
           "explanation": "\"Pretend\" in English = \"fingir\" (to feign). \"Pretender\" in Portuguese = \"to intend\" in English. Classic false cognate. Other traps: \"push\" (empurrar) ≠ \"puxar\"; \"library\" (biblioteca) ≠ \"livraria\" (bookstore); \"actually\" (na verdade) ≠ \"atualmente\" (currently)."

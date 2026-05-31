@@ -323,9 +323,18 @@ function parseGrammarExercise(raw) {
   if (!typeMatch) throw new Error(`Cannot find exercise type in: ${firstLine.slice(0, 80)}`);
   const type = typeMatch[1];
 
-  const sentenceMatch = firstLine.match(/[—–-]\s*"([^"]+)"/);
+  // Captura tudo apos o em-dash/hyphen. Pra padrao classico — "sentence"
+  // pega a quoted string; pra padroes com contexto extra (ex: 'Alguem diz
+  // "X" Reação:'), preserva a frase inteira pra UI exibir.
+  const fullMatch = firstLine.match(/[—–-]\s+(.+)$/);
+  const quotedOnly = firstLine.match(/[—–-]\s*"([^"]+)"\s*$/);
   const ex = { type };
-  if (sentenceMatch) ex.sentence = sentenceMatch[1];
+  if (quotedOnly) {
+    ex.sentence = quotedOnly[1];
+  } else if (fullMatch) {
+    // Strip surrounding quotes se a frase inteira esta entre aspas
+    ex.sentence = fullMatch[1].replace(/^"(.*)"$/, '$1').trim();
+  }
 
   const passage        = field(raw, 'Passage');
   const question       = field(raw, 'Question');

@@ -495,7 +495,7 @@
         },
         {
           "type": "fill_gap",
-          "sentence": "Yes, I _____.",
+          "sentence": "\"Yes, I _____.\" (response to \"Are you going to come?\")",
           "hint": "Resposta curta afirmativa",
           "answer": "am",
           "explanation": "\"Yes, I am\" — short answer."
@@ -1041,6 +1041,7 @@
       "grammar": [
         {
           "type": "multiple_choice",
+          "sentence": "Você ouve \"I'm gonna eat\" — significa:",
           "options": [
             "I'm going to eat.",
             "I'm growing to eat.",
@@ -1052,6 +1053,7 @@
         },
         {
           "type": "multiple_choice",
+          "sentence": "Você ouve \"I wanna go\" — significa:",
           "options": [
             "I want to go.",
             "I won to go.",
@@ -1063,7 +1065,7 @@
         },
         {
           "type": "word_bank",
-          "sentence": "I _____ leave now",
+          "sentence": "\"I _____ leave now\" = \"I've got to leave now\" (em fala rápida):",
           "choices": [
             "gotta",
             "gota",
@@ -1075,6 +1077,7 @@
         },
         {
           "type": "word_bank",
+          "sentence": "Você ouve \"Whatcha doing?\" — significa:",
           "choices": [
             "What are you doing?",
             "What he is doing?",
@@ -1086,30 +1089,35 @@
         },
         {
           "type": "fill_gap",
+          "sentence": "Em fala formal escrita, \"I'm gonna\" se escreve como \"I'm _____ to\".",
           "hint": "forma completa de \"going\"",
           "answer": "going",
           "explanation": "\"Gonna\" só existe em fala informal ou textos que simulam fala (legendas, redes sociais). Em escrita formal, sempre \"I'm going to\". Reconhecer a forma falada e saber a forma escrita."
         },
         {
           "type": "fill_gap",
+          "sentence": "Em fala formal, \"wanna\" se escreve como \"_____ to\".",
           "hint": "forma completa de \"wanna\"",
           "answer": "want",
           "explanation": "\"Wanna\" = \"want to\". Escrita formal nunca usa \"wanna\". É só pra ouvir. Inglês falado tem várias reduções desse tipo: gonna, wanna, gotta, gimme (give me), lemme (let me), kinda (kind of)."
         },
         {
           "type": "fill_gap",
+          "sentence": "Em fala formal, \"gotta\" significa \"_____ to\".",
           "hint": "tem que / preciso",
           "answer": "have got (ou apenas \"got\")",
           "explanation": "\"Gotta\" = \"have got to\" / \"got to\" (com sentido de obrigação). \"I gotta go\" = \"I have to go\" / \"I've got to go\". Reconhecer em fala rápida — usar forma completa em escrita."
         },
         {
           "type": "fix_error",
+          "sentence": "Email profissional: \"I gonna send the report tomorrow.\"",
           "hint": "Em escrita formal, nunca \"gonna\"",
           "answer": "I am going to send the report tomorrow. (ou: I'm going to send the report tomorrow.)",
           "explanation": "\"Gonna\" é só falado. Em emails, relatórios, qualquer escrita profissional, use \"going to\". \"Gonna\" num email parece extremamente informal ou descuidado. Saber a diferença é parte da fluência."
         },
         {
           "type": "fix_error",
+          "sentence": "Apresentação no trabalho: \"I wanna show you our results.\"",
           "hint": "Apresentações profissionais — use \"want to\"",
           "answer": "I want to show you our results. (ou: I would like to show you our results.)",
           "explanation": "\"Wanna\" só em fala casual. Em apresentação formal: \"I want to show\" ou \"I would like to show\". Reduções são naturais entre amigos, inadequadas no trabalho formal."

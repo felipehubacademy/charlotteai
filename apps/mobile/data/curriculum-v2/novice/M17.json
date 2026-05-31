@@ -283,14 +283,14 @@
         },
         {
           "type": "fill_gap",
-          "sentence": "Yes, I _____.",
+          "sentence": "\"Yes, I _____.\" (response to \"Did you sleep well?\")",
           "hint": "Resposta curta afirmativa",
           "answer": "did",
           "explanation": "\"Yes, I did\" — short answer pra past question."
         },
         {
           "type": "fill_gap",
-          "sentence": "No, she _____.",
+          "sentence": "\"No, she _____.\" (response to \"Did she come?\")",
           "hint": "Resposta curta negativa contraída",
           "answer": "didn't",
           "explanation": "\"No, she didn't\" — short answer negativa."

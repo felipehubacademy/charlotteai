@@ -101,7 +101,7 @@
         },
         {
           "type": "fix_error",
-          "sentence": "She's the girl, who lives here.",
+          "sentence": "\"She's the girl, who lives here.\" (defining = no comma)",
           "hint": "No comma in defining clause",
           "answer": "She's the girl who lives here.",
           "explanation": "Defining clauses have NO commas. Identifies which girl."
@@ -291,7 +291,7 @@
         },
         {
           "type": "fix_error",
-          "sentence": "He has a car, which is red.",
+          "sentence": "\"He has a car, which is red.\" (defining = no comma)",
           "hint": "No comma in defining",
           "answer": "He has a car which is red. (or: He has a red car)",
           "explanation": "Defining → no comma. Non-defining (info adicional) → comma — but M19 covers that."

@@ -87,7 +87,7 @@
         },
         {
           "type": "fill_gap",
-          "sentence": "_____ I borrow your pen?",
+          "sentence": "\"_____ I borrow your pen?\" (asking permission politely)",
           "hint": "polite modal",
           "answer": "Might (or May/Could)",
           "explanation": "\"Might I/May I/Could I\" — polite request."
@@ -276,7 +276,7 @@
         },
         {
           "type": "fill_gap",
-          "sentence": "_____ I leave early today?",
+          "sentence": "\"_____ I leave early today?\" (formal request)",
           "hint": "formal polite request",
           "answer": "May",
           "explanation": "\"May I + base?\" — formal polite request."
@@ -465,7 +465,7 @@
         },
         {
           "type": "fill_gap",
-          "sentence": "_____ you help me?",
+          "sentence": "\"_____ you help me?\" (polite request)",
           "hint": "polite modal",
           "answer": "Could",
           "explanation": "\"Could you + base?\" — polite request."
@@ -663,7 +663,7 @@
         },
         {
           "type": "fix_error",
-          "sentence": "She mustn't be at home.",
+          "sentence": "\"She mustn't be at home.\" (meaning impossible)",
           "hint": "For impossibility, use can't",
           "answer": "She can't be at home.",
           "explanation": "\"Mustn't\" = prohibition. \"Can't\" = impossibility."
@@ -846,14 +846,14 @@
         },
         {
           "type": "fill_gap",
-          "sentence": "_____ I borrow your pen?",
+          "sentence": "\"_____ I borrow your pen?\" (formal polite)",
           "hint": "may/might for formal",
           "answer": "May",
           "explanation": "\"May I\" — formal request."
         },
         {
           "type": "fix_error",
-          "sentence": "She maybe come.",
+          "sentence": "\"She maybe come.\" (verb structure)",
           "hint": "\"Maybe\" is adverb; \"may be\" is modal + verb",
           "answer": "She may come. (or \"Maybe she'll come\")",
           "explanation": "\"Maybe\" (adv) is one word; \"may + verb\" needs space and base form."

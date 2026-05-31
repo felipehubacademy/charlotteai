@@ -38,6 +38,7 @@
       "grammar": [
         {
           "type": "multiple_choice",
+          "sentence": "Strong opener: \"_____ raising the minimum wage is well established.\"",
           "options": [
             "The case for",
             "The case to",
@@ -49,6 +50,7 @@
         },
         {
           "type": "multiple_choice",
+          "sentence": "Numbered argument: \"_____, it improves living standards. _____, it stimulates demand. _____, it has minimal effect on employment.\"",
           "options": [
             "First",
             "Second",
@@ -65,6 +67,7 @@
         },
         {
           "type": "fill_gap",
+          "sentence": "Argument escalation: \"One reason is that the policy saves money. _____ is that it saves lives. _____, it restores public trust.\"",
           "hint": "\"Another is\" and \"Most importantly\"",
           "answer": "Another / Most importantly",
           "explanation": "Cascade pattern: \"One reason is..., Another is..., Most importantly...\". Each marker ranks the next claim higher. \"Most importantly\" (or \"Above all\", \"Crucially\") signals the climax — typically your strongest point."
@@ -190,6 +193,7 @@
       "grammar": [
         {
           "type": "multiple_choice",
+          "sentence": "Pre-empting: \"_____ that the policy would be too expensive. _____, the long-term savings are substantial.\"",
           "options": [
             "Some may object",
             "However",
@@ -205,6 +209,7 @@
         },
         {
           "type": "multiple_choice",
+          "sentence": "Stronger refutation: \"Critics might argue the data is too sparse — _____.\"",
           "options": [
             "but this overlooks the consistency across studies",
             "but this is right",
@@ -216,6 +221,7 @@
         },
         {
           "type": "fill_gap",
+          "sentence": "Cautioning against assumption: \"_____ that the trend will continue indefinitely. Markets, after all, are not linear.\"",
           "hint": "\"It would be a mistake to assume\"",
           "answer": "It would be a mistake to assume",
           "explanation": "\"It would be a mistake to assume...\" — pre-emptive rebuttal of an implicit assumption. Standard C2 argument move. Variants: \"It would be premature to conclude\", \"We should be wary of assuming\"."
@@ -341,6 +347,7 @@
       "grammar": [
         {
           "type": "multiple_choice",
+          "sentence": "Anaphora: \"_____ we believe in fairness. _____ we believe in truth. _____ we believe that the two are inseparable.\"",
           "options": [
             "First",
             "Second",
@@ -357,6 +364,7 @@
         },
         {
           "type": "multiple_choice",
+          "sentence": "Antithesis: \"Ask not what your country can do for you — _____.\"",
           "options": [
             "ask what you can do for your country",
             "ask what they will do for you",
@@ -368,12 +376,14 @@
         },
         {
           "type": "fill_gap",
+          "sentence": "Tricolon: \"We came, we saw, _____.\"",
           "hint": "Caesar's third clause",
           "answer": "we conquered",
           "explanation": "Tricolon — a three-part structure with parallel grammar. \"Veni, vidi, vici\" — Latin original. Used for memorability and rhythm. Modern: \"of the people, by the people, for the people\" (Lincoln). Three is the rhetorical number — fewer feels incomplete, more feels excessive."
         },
         {
           "type": "fix_error",
+          "sentence": "Make tricolon: \"He fought injustice, he overcame poverty, his courage was admirable.\"",
           "hint": "Match grammatical structure — all three parts as subject-verb-object",
           "answer": "He fought injustice, he overcame poverty, he inspired courage. (or: He fought injustice, overcame poverty, and inspired courage.)",
           "explanation": "Tricolon requires parallel structure. The third clause broke parallelism (\"his courage was admirable\" — different subject). Restoring \"he\" + verb + object pattern makes the rhythm work. Or compress into one subject across three verbs."
@@ -492,6 +502,7 @@
       "grammar": [
         {
           "type": "multiple_choice",
+          "sentence": "Causal chain: \"Wages rose, _____ household spending increased, _____ retail sales hit a record.\"",
           "options": [
             "which led to",
             "which in turn",
@@ -505,6 +516,7 @@
         },
         {
           "type": "multiple_choice",
+          "sentence": "Drawing a conclusion: \"_____ that the model must be revised.\"",
           "options": [
             "From this it follows",
             "From this following",
@@ -516,6 +528,7 @@
         },
         {
           "type": "fill_gap",
+          "sentence": "Causal climax: \"Resources shrank, talent left, morale collapsed — _____, the project failed.\"",
           "hint": "\"Inevitably\" or \"As a result\" or \"Hence\"",
           "answer": "as a result (or \"inevitably\" or \"hence\")",
           "explanation": "After a cascade of negative causes, a closing marker delivers the consequence. \"As a result\", \"Hence\", \"Inevitably\", \"Consequently\" — each works. \"As a result\" is neutral; \"Inevitably\" claims the outcome was unavoidable; \"Hence\" is formal."
@@ -638,6 +651,7 @@
       "grammar": [
         {
           "type": "multiple_choice",
+          "sentence": "Stakes-naming close: \"_____ in this debate is not just policy but identity.\"",
           "options": [
             "What is at stake",
             "What stakes are",
@@ -649,6 +663,7 @@
         },
         {
           "type": "multiple_choice",
+          "sentence": "Conditional warning close: \"_____ to act now, we will lose the window entirely.\"",
           "options": [
             "If we fail",
             "Should we fail",
@@ -660,6 +675,7 @@
         },
         {
           "type": "fill_gap",
+          "sentence": "Strong frame: \"_____ before us is clear: pay the cost of action now or pay a higher one later.\"",
           "hint": "\"The choice\"",
           "answer": "The choice",
           "explanation": "\"The choice before us is clear: X or Y\" — binary-frame conclusion. Reframes the entire argument as a single decision. Common in op-eds, manifestos, and political speeches. The colon introduces the two options."

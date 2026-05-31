@@ -184,6 +184,7 @@
       "grammar": [
         {
           "type": "multiple_choice",
+          "sentence": "Cohesive chain: \"She drove a 1972 Volvo. The car was barely roadworthy. _____ vehicle had been her father's pride.\"",
           "options": [
             "The",
             "This",
@@ -195,6 +196,7 @@
         },
         {
           "type": "multiple_choice",
+          "sentence": "Synonym substitution: \"The proposal was bold. The plan would change the entire department. _____ would also test the team.\"",
           "options": [
             "The initiative",
             "The proposal",
@@ -206,6 +208,7 @@
         },
         {
           "type": "fill_gap",
+          "sentence": "Lexical chain: \"She rescued a stray dog last winter. _____ animal had been on the street for weeks.\"",
           "hint": "Superordinate of \"dog\"",
           "answer": "The (animal)",
           "explanation": "\"The animal\" — moves up from specific (\"dog\") to superordinate (\"animal\"). The article \"the\" signals shared knowledge. This is cohesion through hyponym → superordinate, sustained by definite article."
@@ -355,6 +358,7 @@
         },
         {
           "type": "fill_gap",
+          "sentence": "Formal: \"The aforementioned report concluded that the policy had failed. _____ findings remain unchallenged.\"",
           "hint": "Synonymous formal demonstrative",
           "answer": "These (or \"The aforementioned\")",
           "explanation": "\"These findings\" — anaphoric link to the report's content just mentioned. Alternatively, formal: \"The aforementioned findings\". \"Aforementioned\" itself is highly formal and slightly archaic — used in legal and very formal academic writing."
@@ -480,6 +484,7 @@
       "grammar": [
         {
           "type": "multiple_choice",
+          "sentence": "Better information flow: \"We had a problem with the deadline. _____.\"",
           "options": [
             "This problem stemmed from poor estimates.",
             "Poor estimates were the source of this problem.",
@@ -490,6 +495,7 @@
         },
         {
           "type": "multiple_choice",
+          "sentence": "Better information flow: \"The new hire impressed everyone. _____.\"",
           "options": [
             "His confidence in meetings was particularly striking.",
             "Particularly striking was his confidence in meetings.",
@@ -500,12 +506,14 @@
         },
         {
           "type": "fill_gap",
+          "sentence": "Information flow: \"We discussed the budget. _____ revealed significant risks.\"",
           "hint": "Reference back with old info first",
           "answer": "That discussion (or \"The discussion\")",
           "explanation": "\"That discussion\" (referring back) → \"revealed significant risks\" (new info). Or \"The discussion\" — definite article carries old info. The sentence builds on what was just mentioned."
         },
         {
           "type": "fix_error",
+          "sentence": "Reverse information flow: \"Significant risks were revealed by our discussion of the budget.\"",
           "hint": "Lead with old info (\"our discussion\") and end with new (\"significant risks\")",
           "answer": "Our discussion of the budget revealed significant risks.",
           "explanation": "The passive version inverts the natural information flow — new info (\"significant risks\") at the start, old info (\"our discussion\") at the end. Awkward unless the passive serves a specific purpose. Active version aligns with theme-rheme."
@@ -621,6 +629,7 @@
       "grammar": [
         {
           "type": "multiple_choice",
+          "sentence": "Bridging without explicit marker: \"The car wouldn't start. _____ was completely dead.\"",
           "options": [
             "The battery",
             "The car",
@@ -632,6 +641,7 @@
         },
         {
           "type": "multiple_choice",
+          "sentence": "Ambiguous: \"Maria told her sister that she would arrive late.\" Who would arrive late?",
           "options": [
             "Maria",
             "Her sister",
@@ -643,12 +653,14 @@
         },
         {
           "type": "fill_gap",
+          "sentence": "Disambiguate: \"When Maria saw her colleague at the conference, she was already heading to the door. To be clear: _____ was heading to the door.\"",
           "hint": "Specify Maria or the colleague",
           "answer": "Maria (or \"the colleague\" — whichever the writer intended)",
           "explanation": "When pronouns risk ambiguity, name the referent. Repetition of the name is preferable to confusion. C2 writers do this — explicit > elegant when stakes are high."
         },
         {
           "type": "fix_error",
+          "sentence": "Ambiguous reference: \"I gave the report to my manager, but it was incomplete.\"",
           "hint": "What was incomplete — the report or the manager?",
           "answer": "I gave the report to my manager, but the report was incomplete. (or: I gave my manager the report, which was still incomplete.)",
           "explanation": "\"It\" could refer to the report or the manager. Repeat the noun to disambiguate, or restructure the sentence. C2 prose avoids reference ambiguity even at the cost of slight repetition."

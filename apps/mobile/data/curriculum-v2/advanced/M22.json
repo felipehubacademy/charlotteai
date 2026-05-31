@@ -21,6 +21,7 @@
       "grammar": [
         {
           "type": "multiple_choice",
+          "sentence": "Which sentence uses both a cleft and a literary verb?",
           "options": [
             "It was on a Tuesday in March that the call finally came.",
             "The call came on a Tuesday in March.",
@@ -32,6 +33,7 @@
         },
         {
           "type": "multiple_choice",
+          "sentence": "Which closing sentence works as a literary fragment?",
           "options": [
             "Nothing else to say.",
             "There was nothing else to say.",
@@ -43,12 +45,14 @@
         },
         {
           "type": "fill_gap",
+          "sentence": "Open the next sentence with a casual filler that fits the register: \"I knew what was coming. _____, it still surprised me when it actually arrived.\"",
           "hint": "Casual filler that signals casual register",
           "answer": "I mean (or \"you know\" or \"honestly\")",
           "explanation": "Casual filler drawn from M21 — \"I mean\" / \"you know\" / \"honestly\". Marks the shift from observation to feeling. Native narrative often uses one such filler per paragraph, particularly at moments of emotional pivot."
         },
         {
           "type": "fix_error",
+          "sentence": "Sentence too long and dense for narrative rhythm: \"She had spent fifteen years working at the company and during that time she had built three teams, launched two products, and somehow managed to keep her sense of humour intact throughout every reorganisation and budget cut.\"",
           "hint": "Vary rhythm — long sentence + short follow-up or fragment",
           "answer": "She had spent fifteen years working at the company. Three teams. Two products. And somehow — somehow — she had kept her sense of humour intact through every reorganisation. (or similar rhythm-varied version)",
           "explanation": "Long sentence + tricolon fragment + emphatic repetition. Drawn from M14 (rhythm) and M13 (tricolon). Native narrative breaks dense sentences for breath. The fragment \"Three teams. Two products.\" emphasises the scale."
@@ -166,6 +170,7 @@
       "grammar": [
         {
           "type": "multiple_choice",
+          "sentence": "Which opener combines inversion and an academic register?",
           "options": [
             "Rarely has a single technology divided opinion as sharply as artificial intelligence has in the past decade.",
             "AI has divided opinion in the past decade.",
@@ -177,6 +182,7 @@
         },
         {
           "type": "multiple_choice",
+          "sentence": "Which sentence opens with a cleft and a hedge?",
           "options": [
             "It is widely believed that the technology will reshape work — though it could be argued that the reshaping has already begun.",
             "The technology reshapes work. Maybe.",
@@ -188,12 +194,14 @@
         },
         {
           "type": "fill_gap",
+          "sentence": "Open with an inverted concession: \"_____ has a single regulation produced such fierce debate as the proposed framework now before parliament.\"",
           "hint": "\"Rarely\" or \"Seldom\"",
           "answer": "Rarely (or \"Seldom\")",
           "explanation": "Fronted negative frequency adverb triggers inversion — opener of choice for argumentative emphasis. \"Rarely has...\" opens with weight, signals importance. M02 inversion in argumentative service."
         },
         {
           "type": "fix_error",
+          "sentence": "Argumentative opener too casual: \"AI is a big deal. People disagree about it. Some say it'll ruin things, others say it'll save us. What do you think?\"",
           "hint": "Rewrite for academic register with at least one structural device",
           "answer": "Rarely has a technology generated as polarised a debate as artificial intelligence has in the past decade. It is increasingly clear, however, that the question is not whether AI will reshape society but how — and on whose terms.",
           "explanation": "Casual opener → academic opener with inversion (\"Rarely has...\"), formal vocabulary (\"polarised debate\", \"increasingly clear\"), and clausal complexity. Reframed argument question (\"not whether... but how... and on whose terms\"). Heavy integration of M02, M03, M12, M13."
@@ -311,6 +319,7 @@
       "grammar": [
         {
           "type": "multiple_choice",
+          "sentence": "Most diplomatic refusal:",
           "options": [
             "With respect, I'd see it differently — though I take your point about timeline.",
             "You're wrong.",
@@ -322,6 +331,7 @@
         },
         {
           "type": "multiple_choice",
+          "sentence": "Which feedback opener is most face-saving?",
           "options": [
             "Honestly — and I mean this constructively — I'd push back on one specific point.",
             "You're completely wrong.",
@@ -333,12 +343,14 @@
         },
         {
           "type": "fill_gap",
+          "sentence": "Diplomatic reframe of a strong position: \"_____ that the proposal has merit — but the timing concerns are non-trivial.\"",
           "hint": "\"I can see / Granted / It's true\"",
           "answer": "I can see (or \"Granted\" or \"It's true\")",
           "explanation": "Three diplomatic openers, all from M10 (concession markers). Each grants ground before pivoting. \"Granted, X — but Y\" / \"I can see X, but Y\" / \"It's true that X — but Y\". Diplomatic argument pivots on acknowledging the other side first."
         },
         {
           "type": "fix_error",
+          "sentence": "Blunt feedback: \"Your slides are bad and the message is confused.\"",
           "hint": "Rewrite diplomatically with at least three softening moves",
           "answer": "Honestly — and I mean this only because I want the deck to land well — I think the message could be tighter, and the slides might benefit from another pass. To be fair, the substance is all there; it's just buried.",
           "explanation": "Diplomatic rewrite uses: \"Honestly\" (M21), \"I mean this only because\" (intentional reassurance), \"could be tighter / might benefit\" (modal hedges M19), \"To be fair\" (M10 concession), positive framing (\"the substance is all there\"). Same critique, preserved relationship."
@@ -456,6 +468,7 @@
       "grammar": [
         {
           "type": "multiple_choice",
+          "sentence": "Most natural casual register:",
           "options": [
             "I'm gonna grab a coffee — wanna come?",
             "I am going to obtain coffee — would you like to accompany me?",
@@ -467,6 +480,7 @@
         },
         {
           "type": "multiple_choice",
+          "sentence": "Most native conversational reply to \"Are you free Saturday?\":",
           "options": [
             "Should be — what's up?",
             "I am free on Saturday. May I ask why?",
@@ -478,12 +492,14 @@
         },
         {
           "type": "fill_gap",
+          "sentence": "Casual reply with tag: \"We're meeting at the usual place, _____\"",
           "hint": "Tag for confirmation",
           "answer": "aren't we (or \"right?\")",
           "explanation": "Tag question \"aren't we?\" for soft confirmation. Drawn from M21. Or universal \"right?\" for casual register. Both work; \"aren't we?\" is slightly more polished, \"right?\" slightly more casual."
         },
         {
           "type": "fix_error",
+          "sentence": "Too formal for casual context: \"I will see you on Saturday. Would you be inclined to arrive at noon?\"",
           "hint": "Casual contractions and conversational rhythm",
           "answer": "I'll see you Saturday. Wanna meet at noon? (or: See you Saturday — noon work for you?)",
           "explanation": "Casual rewrite: \"I'll\" (contraction), drop \"on\" before \"Saturday\" in casual register, \"Wanna meet\" (gonna/wanna conversion), question framed as \"X work for you?\" — short native pattern. Removes formal phrasing not needed in casual exchange."
@@ -601,6 +617,7 @@
       "grammar": [
         {
           "type": "multiple_choice",
+          "sentence": "Register-appropriate response to \"Could you summarise the findings?\":",
           "options": [
             "The findings suggest a strong correlation, though further study is warranted.",
             "The stuff we found shows things are connected, kinda.",
@@ -612,6 +629,7 @@
         },
         {
           "type": "multiple_choice",
+          "sentence": "Register-appropriate reply to \"We haven't seen each other in ages\":",
           "options": [
             "I know, right? It's been crazy.",
             "Indeed. The intervening period has been considerable.",
@@ -623,12 +641,14 @@
         },
         {
           "type": "fill_gap",
+          "sentence": "Diplomatic transition between casual and formal: \"_____ — coming back to the actual decision in front of us...\"",
           "hint": "Phrase that pivots from casual aside to substantive content",
           "answer": "Anyway (or \"But to be serious for a moment\" or \"OK, getting back to it,\")",
           "explanation": "\"Anyway\" — universal pivot from digression back to topic. Casual register marker that doubles as a structural device. Drawn from M21. Native speakers code-switch within a single conversation, and \"anyway\" is one of the standard pivot points."
         },
         {
           "type": "fix_error",
+          "sentence": "Same-register monotone across all turns: \"Yes. Indeed. Yes. Indeed. Yes. The findings support that. Indeed. Yes.\"",
           "hint": "Vary registers — formal, casual, backchannels mixed",
           "answer": "Yes. Right — mm-hm. The findings do support that. Yeah. And, you know, the implications are pretty striking when you stack them up. Mm-hm, exactly.",
           "explanation": "Real conversation modulates: short backchannels (\"Right — mm-hm\"), substantive points (\"The findings do support that\"), informal connectors (\"you know\"), confirmations. Monotone replies sound like a chatbot. C2 fluency is rhythm + register variation."

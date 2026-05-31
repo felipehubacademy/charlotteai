@@ -599,7 +599,7 @@
       "grammar": [
         {
           "type": "multiple_choice",
-          "sentence": "She _____ tall when she was young.",
+          "sentence": "\"She _____ tall when she was young.\" (state)",
           "options": [
             "used to be",
             "would be",
@@ -610,7 +610,7 @@
         },
         {
           "type": "multiple_choice",
-          "sentence": "Every summer, we _____ go camping.",
+          "sentence": "\"Every summer, we _____ go camping.\" (action)",
           "options": [
             "would",
             "used to",
@@ -621,7 +621,7 @@
         },
         {
           "type": "word_bank",
-          "sentence": "I _____ love that song.",
+          "sentence": "\"I _____ love that song.\" (past state/feeling)",
           "choices": [
             "used to",
             "would",
@@ -633,7 +633,7 @@
         },
         {
           "type": "word_bank",
-          "sentence": "My grandpa _____ tell us stories.",
+          "sentence": "\"My grandpa _____ tell us stories.\" (action)",
           "choices": [
             "would",
             "used to",

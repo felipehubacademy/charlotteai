@@ -37,6 +37,7 @@
       "grammar": [
         {
           "type": "multiple_choice",
+          "sentence": "Verbal: \"Cities have grown rapidly over the last century.\" Nominalised: \"_____ in the last century has reshaped global demographics.\"",
           "options": [
             "The rapid growth of cities",
             "Cities growing rapidly",
@@ -48,6 +49,7 @@
         },
         {
           "type": "multiple_choice",
+          "sentence": "Verbal: \"Sales have decreased recently.\" Nominalised: \"_____ has affected our quarterly outlook.\"",
           "options": [
             "The recent decrease in sales",
             "Sales decreasing recently",
@@ -59,6 +61,7 @@
         },
         {
           "type": "fill_gap",
+          "sentence": "Verbal \"Companies are adopting AI tools quickly.\" Nominalise: \"_____ of AI tools by companies has accelerated.\"",
           "hint": "noun form of \"adopt\" + adjective",
           "answer": "The rapid adoption",
           "explanation": "\"Adopt\" → \"adoption\". Adjective \"rapid\" carries the adverbial sense (\"quickly\"). Original subject becomes prepositional (\"BY companies\"). Academic style favours such compressions for density and impersonal tone."
@@ -184,6 +187,7 @@
       "grammar": [
         {
           "type": "multiple_choice",
+          "sentence": "Subjective: \"I think climate change is human-driven.\" Academic: \"_____ that climate change is human-driven.\"",
           "options": [
             "It is widely accepted",
             "I widely accept",
@@ -195,6 +199,7 @@
         },
         {
           "type": "multiple_choice",
+          "sentence": "Subjective: \"I argue that the model is flawed.\" Academic: \"_____ that the model is flawed.\"",
           "options": [
             "This paper argues",
             "I am arguing",
@@ -206,12 +211,14 @@
         },
         {
           "type": "fill_gap",
+          "sentence": "Subjective: \"I have found that students learn faster with feedback.\" Academic: \"_____ that students learn faster with feedback.\"",
           "hint": "\"The data\" or \"The results\" + verb",
           "answer": "The data suggest (or \"The results indicate\" / \"The findings show\")",
           "explanation": "Academic prose lets the evidence speak. \"The data suggest\" — note plural verb (data is technically plural, though \"data shows\" is now common). \"The findings indicate\", \"The results demonstrate\" — all variations of the impersonal evidence-as-agent construction."
         },
         {
           "type": "fix_error",
+          "sentence": "Academic register: \"I believe this hypothesis is correct.\"",
           "hint": "Replace \"I believe\" with impersonal alternative",
           "answer": "There is reason to believe this hypothesis is correct. (or: The evidence supports this hypothesis.)",
           "explanation": "\"I believe\" is too subjective for academic prose. Alternatives: \"There is reason to believe\", \"The evidence supports\", \"It is plausible that\", \"It can be argued that\". Each preserves the modesty of a claim while removing the speaker."
@@ -330,6 +337,7 @@
       "grammar": [
         {
           "type": "multiple_choice",
+          "sentence": "Weak hedge: \"_____ that the policy reduced unemployment.\"",
           "options": [
             "This suggests",
             "This proves",
@@ -341,6 +349,7 @@
         },
         {
           "type": "multiple_choice",
+          "sentence": "Strong hedge: \"_____ that the model has predictive power.\"",
           "options": [
             "The evidence strongly supports",
             "It is conceivable that",
@@ -352,12 +361,14 @@
         },
         {
           "type": "fill_gap",
+          "sentence": "Hedged conclusion: \"_____ that the relationship is causal, though further study is needed.\"",
           "hint": "\"There is reason to believe\"",
           "answer": "There is reason to believe",
           "explanation": "\"There is reason to believe that...\" — moderate-strong hedge often paired with \"though further study is needed\" or \"but this remains to be confirmed\". Pattern: hedge + qualifier. Marks intellectual humility while still advancing the claim."
         },
         {
           "type": "fix_error",
+          "sentence": "Academic register: \"This proves that the drug works.\"",
           "hint": "Academic register avoids \"proves\" — use a hedged verb",
           "answer": "This suggests that the drug is effective. (or: The evidence supports the conclusion that the drug is effective.)",
           "explanation": "\"Proves\" implies certainty that scientific epistemology rarely warrants. Even strong findings use \"supports\", \"suggests\", \"indicates\", or \"is consistent with\". The hedge isn't false modesty — it's accurate representation of evidence."
@@ -476,6 +487,7 @@
       "grammar": [
         {
           "type": "multiple_choice",
+          "sentence": "Citing agreement: \"_____ Smith (2020), early intervention is the strongest predictor of recovery.\"",
           "options": [
             "According to",
             "Following",
@@ -487,6 +499,7 @@
         },
         {
           "type": "multiple_choice",
+          "sentence": "Citing the agent: \"_____ that genetic factors play a smaller role than previously assumed.\"",
           "options": [
             "Wang (2019) argues",
             "Wang argues 2019",
@@ -498,6 +511,7 @@
         },
         {
           "type": "fill_gap",
+          "sentence": "Building on prior work: \"_____ research on this topic, the present study extends the analysis to non-Western contexts.\"",
           "hint": "\"Building on\" or \"Extending\"",
           "answer": "Building on",
           "explanation": "\"Building on + noun phrase\" — academic frame for positioning your work as continuous with prior research. Alternatives: \"Extending the work of\", \"Drawing on\", \"In line with\". Each signals different relationship to the cited body."
@@ -620,6 +634,7 @@
       "grammar": [
         {
           "type": "multiple_choice",
+          "sentence": "Linking paragraph 2 to paragraph 1: \"_____ pattern raises a related question — does the effect persist across cultures?\"",
           "options": [
             "This",
             "That",
@@ -631,6 +646,7 @@
         },
         {
           "type": "multiple_choice",
+          "sentence": "Contrasting next paragraph: \"_____, the second sample showed the opposite trend.\"",
           "options": [
             "By contrast",
             "On contrast",
@@ -642,12 +658,14 @@
         },
         {
           "type": "fill_gap",
+          "sentence": "Cumulative argument: \"_____ findings together suggest a more general principle.\"",
           "hint": "\"Taken together\" or \"Considered jointly\"",
           "answer": "Taken together",
           "explanation": "\"Taken together, these findings...\" — academic frame for synthesising multiple results. Marks the cumulative move from individual evidence to general claim. Other patterns: \"Considered jointly\", \"In aggregate\", \"Across the studies reviewed\"."
         },
         {
           "type": "fix_error",
+          "sentence": "Paragraph opener: \"Also, the third experiment found similar results.\"",
           "hint": "\"Also\" is too casual to open an academic paragraph",
           "answer": "Furthermore, the third experiment yielded similar results. (or: A third experiment yielded similar results, reinforcing the pattern.)",
           "explanation": "\"Also\" is conversational. Academic register uses \"Furthermore\", \"Moreover\", \"In addition\", or restructures: \"A third experiment...\". Paragraph openers carry the connective load — too casual undercuts the register."
