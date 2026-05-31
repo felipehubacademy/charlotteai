@@ -281,6 +281,9 @@ export default function LearnSessionScreen() {
 
   const [stepIdx, setStepIdx]         = useState(0);
   const [isComplete, setIsComplete]   = useState(false);
+  // "Me ajuda" — explicacao contextual via LLM (PT-BR Novice, EN Inter+)
+  const [helpExplanation, setHelpExplanation] = useState<string | null>(null);
+  const [helpLoading, setHelpLoading]         = useState(false);
   // v2: armazena score+threshold da atividade recem concluida pra
   // mostrar banner "precisa X% pra desbloquear proxima" quando passa
   // sem bater threshold.
@@ -519,6 +522,8 @@ export default function LearnSessionScreen() {
     setUserAnswer('');
     setIsCorrect(null);
     setShowHint(false);
+    setHelpExplanation(null);
+    setHelpLoading(false);
     feedbackAnim.setValue(0);
     if (ex.options) setShuffledOptions([...ex.options].sort(() => Math.random() - 0.5));
     if (ex.choices) setShuffledChoices([...ex.choices].sort(() => Math.random() - 0.5));
@@ -1865,24 +1870,70 @@ export default function LearnSessionScreen() {
               !!userAnswer.trim();
             return (
               <View style={{ gap: 10 }}>
-                {ex.hint && (
-                  <View style={{ gap: 8 }}>
-                    {showHint && (
-                      <View style={{ backgroundColor: accentBg, borderRadius: 12, padding: 12 }}>
-                        <AppText style={{ fontSize: 14, color: accent, lineHeight: 19 }}>{ex.hint}</AppText>
-                      </View>
-                    )}
+                {ex.hint && showHint && (
+                  <View style={{ backgroundColor: accentBg, borderRadius: 12, padding: 12 }}>
+                    <AppText style={{ fontSize: 14, color: accent, lineHeight: 19 }}>{ex.hint}</AppText>
+                  </View>
+                )}
+                {helpExplanation && (
+                  <View style={{ backgroundColor: '#EEF2FF', borderRadius: 12, padding: 12, borderWidth: 1, borderColor: '#C7D2FE' }}>
+                    <AppText style={{ fontSize: 14, color: '#3730A3', lineHeight: 20 }}>{helpExplanation}</AppText>
+                  </View>
+                )}
+                <View style={{ flexDirection: 'row', gap: 14, alignItems: 'center' }}>
+                  {ex.hint && (
                     <TouchableOpacity
                       onPress={() => setShowHint(v => !v)}
-                      style={{ flexDirection: 'row', alignItems: 'center', gap: 6, alignSelf: 'flex-start', paddingVertical: 4 }}
+                      style={{ flexDirection: 'row', alignItems: 'center', gap: 6, paddingVertical: 4 }}
                     >
                       <LightbulbFilament size={16} color={accent} weight="fill" />
                       <AppText style={{ fontSize: 13, color: accent, fontWeight: '700' }}>
-                        {showHint ? (isPortuguese ? 'Ocultar dica' : 'Hide hint') : (isPortuguese ? 'Mostrar dica' : 'Show hint')}
+                        {showHint ? (isPortuguese ? 'Ocultar dica' : 'Hide hint') : (isPortuguese ? 'Dica' : 'Hint')}
                       </AppText>
                     </TouchableOpacity>
-                  </View>
-                )}
+                  )}
+                  <TouchableOpacity
+                    onPress={async () => {
+                      if (helpLoading) return;
+                      setHelpLoading(true);
+                      try {
+                        const correctAnswer = String(ex.answer ?? '');
+                        const questionText = ex.passage ?? ex.sentence ?? ex.prompt ?? ex.question ?? '';
+                        const res = await fetch(`${API_BASE_URL}/api/exercise-help`, {
+                          method: 'POST',
+                          headers: { 'Content-Type': 'application/json' },
+                          body: JSON.stringify({
+                            question:       questionText,
+                            correct_answer: correctAnswer,
+                            user_attempt:   userAnswer.trim() || undefined,
+                            exercise_type:  ex.type,
+                            options:        ex.options ?? ex.choices,
+                            level,
+                            ...(userId ? { user_id: userId } : {}),
+                          }),
+                        });
+                        if (!res.ok) throw new Error(`HTTP ${res.status}`);
+                        const data = await res.json();
+                        setHelpExplanation(data.explanation || (isPortuguese ? 'Não consegui gerar uma dica agora — tenta de novo.' : 'Could not generate help now — try again.'));
+                      } catch (e) {
+                        setHelpExplanation(isPortuguese ? 'Erro ao buscar ajuda. Tenta de novo.' : 'Error fetching help. Try again.');
+                      } finally {
+                        setHelpLoading(false);
+                      }
+                    }}
+                    disabled={helpLoading}
+                    style={{ flexDirection: 'row', alignItems: 'center', gap: 6, paddingVertical: 4, opacity: helpLoading ? 0.5 : 1 }}
+                  >
+                    <BookOpen size={16} color="#4F46E5" weight="fill" />
+                    <AppText style={{ fontSize: 13, color: '#4F46E5', fontWeight: '700' }}>
+                      {helpLoading
+                        ? (isPortuguese ? 'Carregando...' : 'Loading...')
+                        : helpExplanation
+                          ? (isPortuguese ? 'Pedir outra ajuda' : 'Ask again')
+                          : (isPortuguese ? 'Me ajuda' : 'Help me')}
+                    </AppText>
+                  </TouchableOpacity>
+                </View>
                 <TouchableOpacity onPress={handleGrammarSubmit} disabled={!canSubmit}
                   style={{ backgroundColor: canSubmit ? C.navy : C.ghost, borderRadius: 16, paddingVertical: 15, alignItems: 'center' }}>
                   <AppText style={{ fontSize: 15, fontWeight: '800', color: canSubmit ? '#FFF' : C.navyLight }}>{isPortuguese ? 'Verificar' : 'Check'}</AppText>
