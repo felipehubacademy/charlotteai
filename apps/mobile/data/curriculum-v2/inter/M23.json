@@ -1,0 +1,980 @@
+{
+  "id": "M23",
+  "title": "Tag questions e fillers",
+  "level": "Inter",
+  "block": "B2",
+  "units_range": "I01–I05",
+  "theme": "Tag questions sistemáticas (to be, do/does/did, have, modais, casos especiais) + fillers conversacionais (you know, I mean, like, well)",
+  "goal": "Student forms tag questions correctly across tenses and modals, and uses conversational fillers naturally without sounding hesitant.",
+  "connects_to": "A09 (idioms gerais) e A21 (native fluency) — extends conversational naturalness into Advanced.",
+  "module_chunks": [
+    "You like coffee, don't you?",
+    "She's studying, isn't she?",
+    "They were here, weren't they?",
+    "You can swim, can't you?",
+    "You've seen it, haven't you?",
+    "I am right, aren't I? (special case)",
+    "Let's go, shall we? (special case)",
+    "Open the door, will you? (imperative)",
+    "Nobody knows, do they? (indefinites)",
+    "You know... / I mean... / Like...",
+    "Well... / So... / Right...",
+    "Kind of / Sort of / Pretty much",
+    "Actually... / Basically... / Obviously...",
+    "I guess... / I suppose... / I'd say..."
+  ],
+  "units": [
+    {
+      "id": "I01",
+      "title": "Tags com to be e have",
+      "sub_cefr": "B1",
+      "grammar_focus": "Tag questions with \"to be\" (present and past) and \"have/has/had\"",
+      "markers": [
+        "conversation"
+      ],
+      "real_life_context": "You confirm information or invite agreement using tag questions with the most common auxiliaries.",
+      "grammar": [
+        {
+          "type": "multiple_choice",
+          "sentence": "She's a teacher, _____ she?",
+          "options": [
+            "isn't",
+            "is",
+            "aren't",
+            "are"
+          ],
+          "answer": "isn't",
+          "explanation": "Positive statement with \"is\" → negative tag \"isn't she?\". Tag questions reverse polarity. Positive statement + negative tag, or negative statement + positive tag. Auxiliary matches the verb in the main clause."
+        },
+        {
+          "type": "multiple_choice",
+          "sentence": "You aren't tired, _____ you?",
+          "options": [
+            "are",
+            "aren't",
+            "is",
+            "isn't"
+          ],
+          "answer": "are",
+          "explanation": "Negative statement \"aren't\" → positive tag \"are you?\". Reverse polarity rule. Match the auxiliary (in this case, the \"be\" verb) to the original."
+        },
+        {
+          "type": "word_bank",
+          "sentence": "They were at the meeting, _____ they?",
+          "choices": [
+            "weren't",
+            "wasn't",
+            "aren't",
+            "didn't"
+          ],
+          "answer": "weren't",
+          "explanation": "Past tense \"were\" → past tense negative tag \"weren't they?\". Match tense and verb form. \"Wasn't\" would be singular (she/he/it)."
+        },
+        {
+          "type": "word_bank",
+          "sentence": "He has finished the project, _____ he?",
+          "choices": [
+            "hasn't",
+            "haven't",
+            "didn't",
+            "isn't"
+          ],
+          "answer": "hasn't",
+          "explanation": "Present perfect \"has\" → negative tag \"hasn't he?\". When \"have\" is the auxiliary in the main clause, use \"have/has\" in the tag too."
+        },
+        {
+          "type": "fill_gap",
+          "sentence": "We've met before, _____ we?",
+          "hint": "negative tag of \"have\"",
+          "answer": "haven't",
+          "explanation": "\"We've\" = \"we have\" → negative tag \"haven't we?\". Always match the contracted auxiliary in the statement."
+        },
+        {
+          "type": "fill_gap",
+          "sentence": "It's a beautiful day, _____ it?",
+          "hint": "negative tag of \"is\"",
+          "answer": "isn't",
+          "explanation": "\"It's a beautiful day, isn't it?\" — extremely common conversational tag. Almost a fixed greeting/observation pattern in English."
+        },
+        {
+          "type": "fill_gap",
+          "sentence": "She wasn't at the party, _____ she?",
+          "hint": "positive tag of \"wasn't\"",
+          "answer": "was",
+          "explanation": "Negative \"wasn't\" → positive tag \"was she?\". Reverse polarity. The tag asks if the negative is true, expecting yes/no confirmation."
+        },
+        {
+          "type": "fix_error",
+          "sentence": "You are tired, isn't you?",
+          "hint": "Tag for \"are\" should be \"aren't\", not \"isn't\"",
+          "answer": "You are tired, aren't you?",
+          "explanation": "Tag verb must match the main verb. \"Are\" → \"aren't\" for negative tag, not \"isn't\". \"Isn't\" is the negative of \"is\" (third person singular)."
+        },
+        {
+          "type": "fix_error",
+          "sentence": "He has been working hard, isn't he?",
+          "hint": "For \"has been\", use \"hasn't\" tag",
+          "answer": "He has been working hard, hasn't he?",
+          "explanation": "When the main verb is \"has been + -ing\" (present perfect continuous), the tag uses the auxiliary \"has\" → \"hasn't he?\". \"Isn't\" doesn't fit because \"is\" isn't the auxiliary here."
+        },
+        {
+          "type": "read_answer",
+          "passage": "You're new here, aren't you? I haven't seen you before. She's the new manager, isn't she? And they were just hired last week, weren't they? Everyone's still learning each other's names.",
+          "question": "How many tag questions are in the passage?",
+          "answer": "three (aren't you, isn't she, weren't they) — or four if \"haven't seen\" counted, though that isn't a tag",
+          "explanation": "Three tag questions: \"aren't you?\", \"isn't she?\", \"weren't they?\". Each reverses polarity from positive to negative. The passage uses tags for social warmth — opening conversation, confirming knowledge."
+        }
+      ],
+      "listening_speaking": [
+        {
+          "text": "You're new here, aren't you?",
+          "context": "present \"to be\" tag"
+        },
+        {
+          "text": "She's been busy lately, hasn't she?",
+          "context": "present perfect tag"
+        },
+        {
+          "text": "They weren't at the meeting, were they?",
+          "context": "past \"to be\" tag (negative)"
+        },
+        {
+          "text": "It's cold today, isn't it?",
+          "context": "universal small-talk tag"
+        },
+        {
+          "text": "You haven't met him before, have you?",
+          "context": "present perfect negative tag"
+        }
+      ],
+      "roleplay": {
+        "scenario": "Charlotte meets you at a networking event. You confirm details about people you both know using tag questions.",
+        "voiced_by": "charlotte",
+        "persona": "Charlotte",
+        "persona_outfit": "charlotte_casual",
+        "time_budget_sec": 180,
+        "opening_line": "Hi! You work with Maria, don't you?",
+        "objectives": [
+          {
+            "id": 1,
+            "label_en": "Confirm with tag 'aren't / isn't'",
+            "hidden_prompt": "user uses 'isn't she?' or 'aren't they?' to confirm",
+            "hint_en": "Yes! And she's the new project lead, isn't she?"
+          },
+          {
+            "id": 2,
+            "label_en": "Tag with 'have / has'",
+            "hidden_prompt": "user uses 'hasn't' or 'haven't' tag",
+            "hint_en": "She's been here for two years now, hasn't she?"
+          },
+          {
+            "id": 3,
+            "label_en": "Tag with past 'were/was'",
+            "hidden_prompt": "user uses 'weren't' or 'wasn't' tag",
+            "hint_en": "You were at last year's conference too, weren't you?"
+          }
+        ],
+        "closing_cue": "Charlotte closes with \"Small world, isn't it?\" once obj_3 lands.",
+        "suggested_flow": "**Suggested flow** (referencial, 6 turnos):\n\n1. **Charlotte**: \"Hi! You work with Maria, don't you?\"\n2. **Student**: ~\"Yes! And she's the new project lead, isn't she?\"\n3. **Charlotte**: \"Right! She started in March.\"\n4. **Student**: ~\"She's been here for two years now, hasn't she?\"\n5. **Charlotte**: \"Yeah, time flies. Were you also at last year's conference?\"\n6. **Student**: ~\"You were at last year's conference too, weren't you?\"\n7. **Charlotte**: \"I was! Small world, isn't it?\"",
+        "evaluation_focus": [
+          "Tag matches auxiliary of main verb",
+          "Polarity reversed (positive → negative tag)",
+          "Natural confirmation flow"
+        ]
+      },
+      "guided_chat": {
+        "scenario": "Charlotte makes small talk using tag questions. You respond and ask your own.",
+        "voiced_by": "charlotte",
+        "persona": "Charlotte",
+        "persona_outfit": "charlotte_casual",
+        "intro_en": "Charlotte makes small talk with tags. Mirror her style.",
+        "opening_message": "It's really hot today, isn't it? I can't remember the last time we had weather like this.",
+        "objectives": [
+          {
+            "id": 1,
+            "label_en": "Agree and make another tag",
+            "hidden_prompt": "user agrees and makes another tag question",
+            "hint_en": "Yes! Summers are getting hotter every year, aren't they?"
+          },
+          {
+            "id": 2,
+            "label_en": "Tag with 'have'",
+            "hidden_prompt": "user uses tag with 'have/has'",
+            "hint_en": "You've been here a while too, haven't you?"
+          },
+          {
+            "id": 3,
+            "label_en": "Negative tag with 'wasn't / weren't'",
+            "hidden_prompt": "user uses past be negative tag",
+            "hint_en": "It wasn't this hot last summer, was it?"
+          }
+        ],
+        "closing_cue": "Charlotte closes with \"It really wasn't!\" once obj_3 lands.",
+        "suggested_script": "**Script** (referencial, 7 turnos):\n\n1. **Charlotte**: \"It's really hot today, isn't it? I can't remember the last time we had weather like this.\"\n2. **Student**: \"Yes! Summers are getting hotter every year, aren't they?\"\n3. **Charlotte**: \"Definitely. I think we need more AC in this building.\"\n4. **Student**: \"You've been here a while too, haven't you?\"\n5. **Charlotte**: \"Five years now. Started in 2021.\"\n6. **Student**: \"It wasn't this hot last summer, was it?\"\n7. **Charlotte**: \"It really wasn't!\"\n\n> I01 chat = LLM puro. Scaffold via hint_pt.\n\n---"
+      }
+    },
+    {
+      "id": "I02",
+      "title": "Tags com do/does/did",
+      "sub_cefr": "B1",
+      "grammar_focus": "Tag questions with \"do/does/did\" — for simple present and simple past with main verbs (not auxiliaries)",
+      "markers": [
+        "conversation"
+      ],
+      "real_life_context": "You form tags when the main verb is a regular action verb (no \"be\", no \"have\", no modal).",
+      "grammar": [
+        {
+          "type": "multiple_choice",
+          "sentence": "You like coffee, _____ you?",
+          "options": [
+            "don't",
+            "aren't",
+            "haven't",
+            "isn't"
+          ],
+          "answer": "don't",
+          "explanation": "Main verb is \"like\" (no auxiliary visible) → tag uses \"do/does\". \"You like\" is present simple, second person → \"don't you?\". Always add \"do\" support for action verbs without \"be\" or modal."
+        },
+        {
+          "type": "multiple_choice",
+          "sentence": "She works downtown, _____ she?",
+          "options": [
+            "doesn't",
+            "don't",
+            "isn't",
+            "hasn't"
+          ],
+          "answer": "doesn't",
+          "explanation": "\"She works\" (third person singular present simple) → \"doesn't she?\". \"Works\" implies \"does work\", so the tag uses \"doesn't\"."
+        },
+        {
+          "type": "word_bank",
+          "sentence": "They went to the concert, _____ they?",
+          "choices": [
+            "didn't",
+            "weren't",
+            "haven't",
+            "aren't"
+          ],
+          "answer": "didn't",
+          "explanation": "\"Went\" is past simple → tag uses \"did/didn't\". Past simple action verb → \"didn't they?\". \"Weren't\" would only fit if the main verb were \"were\"."
+        },
+        {
+          "type": "word_bank",
+          "sentence": "He doesn't speak Spanish, _____ he?",
+          "choices": [
+            "does",
+            "doesn't",
+            "is",
+            "has"
+          ],
+          "answer": "does",
+          "explanation": "Negative \"doesn't speak\" → positive tag \"does he?\". Reverse polarity rule applies to \"do/does/did\" too."
+        },
+        {
+          "type": "fill_gap",
+          "sentence": "You didn't see her, _____ you?",
+          "hint": "positive tag of \"didn't\"",
+          "answer": "did",
+          "explanation": "\"Didn't see\" (negative) → positive tag \"did you?\". Reverse polarity. Common when confirming someone wasn't seen or didn't happen."
+        },
+        {
+          "type": "fill_gap",
+          "sentence": "She speaks three languages, _____ she?",
+          "hint": "negative tag of \"speaks\"",
+          "answer": "doesn't",
+          "explanation": "\"Speaks\" (present simple third person) → \"doesn't she?\". Reminder: the third person \"s\" disappears in the tag because \"doesn't\" carries it."
+        },
+        {
+          "type": "fill_gap",
+          "sentence": "They lived in Paris last year, _____ they?",
+          "hint": "negative tag of \"lived\"",
+          "answer": "didn't",
+          "explanation": "\"Lived\" (past simple) → \"didn't they?\". Past tense in main clause requires \"did/didn't\" in tag."
+        },
+        {
+          "type": "fix_error",
+          "sentence": "You like pizza, aren't you?",
+          "hint": "Main verb is \"like\" — use \"don't\", not \"aren't\"",
+          "answer": "You like pizza, don't you?",
+          "explanation": "Tag must match the auxiliary that would be used in negation/question of the main verb. \"You like\" → \"Do you like?\" / \"You don't like\" → so tag is \"don't you?\". \"Aren't\" doesn't fit \"like\"."
+        },
+        {
+          "type": "fix_error",
+          "sentence": "He drinks coffee, don't he?",
+          "hint": "Third person singular — use \"doesn't\"",
+          "answer": "He drinks coffee, doesn't he?",
+          "explanation": "\"He drinks\" is third person singular → auxiliary \"does/doesn't\". \"Don't\" is only for I/you/we/they. Common error: forgetting third person -s in the tag."
+        },
+        {
+          "type": "read_answer",
+          "passage": "You go to the gym every morning, don't you? I see you there sometimes. She works out too, doesn't she? Last week they were both there at 6am, weren't they? You all wake up so early — I don't know how you do it.",
+          "question": "Which tag question uses \"don't\"?",
+          "answer": "\"you go to the gym every morning, don't you?\"",
+          "explanation": "The passage uses three different tag formations: \"don't you?\" (for \"you go\"), \"doesn't she?\" (for \"she works out\"), \"weren't they?\" (for \"they were\"). Each tag matches the verb form in the main clause."
+        }
+      ],
+      "listening_speaking": [
+        {
+          "text": "You like coffee, don't you?",
+          "context": "present simple positive tag"
+        },
+        {
+          "text": "She works downtown, doesn't she?",
+          "context": "third person tag"
+        },
+        {
+          "text": "They went home early, didn't they?",
+          "context": "past simple tag"
+        },
+        {
+          "text": "You don't smoke, do you?",
+          "context": "negative → positive tag"
+        },
+        {
+          "text": "He doesn't drive, does he?",
+          "context": "third person negative → positive tag"
+        }
+      ],
+      "roleplay": {
+        "scenario": "Charlotte is at a casual dinner with mutual friends. You confirm details about each person using tag questions with action verbs.",
+        "voiced_by": "charlotte",
+        "persona": "Charlotte",
+        "persona_outfit": "charlotte_casual",
+        "time_budget_sec": 180,
+        "opening_line": "Tell me — you know Pedro, don't you?",
+        "objectives": [
+          {
+            "id": 1,
+            "label_en": "Tag with 'don't / doesn't'",
+            "hidden_prompt": "user uses 'don't / doesn't' tag",
+            "hint_en": "Yes! He works at the same company as you, doesn't he?"
+          },
+          {
+            "id": 2,
+            "label_en": "Past tag with 'didn't'",
+            "hidden_prompt": "user uses 'didn't' past tag",
+            "hint_en": "He moved here from São Paulo last year, didn't he?"
+          },
+          {
+            "id": 3,
+            "label_en": "Negative → positive tag",
+            "hidden_prompt": "user uses negative statement + positive tag",
+            "hint_en": "He doesn't speak Portuguese with you, does he?"
+          }
+        ],
+        "closing_cue": "Charlotte closes with \"Always nice catching up.\" once obj_3 lands.",
+        "suggested_flow": "**Suggested flow** (referencial, 6 turnos):\n\n1. **Charlotte**: \"Tell me — you know Pedro, don't you?\"\n2. **Student**: ~\"Yes! He works at the same company as you, doesn't he?\"\n3. **Charlotte**: \"Same team, actually. Engineering.\"\n4. **Student**: ~\"He moved here from São Paulo last year, didn't he?\"\n5. **Charlotte**: \"Two years ago, but yes — from São Paulo.\"\n6. **Student**: ~\"He doesn't speak Portuguese with you, does he?\"\n7. **Charlotte**: \"Only English at work. Always nice catching up.\"",
+        "evaluation_focus": [
+          "\"Do/does/did\" tags for action verbs",
+          "Tense match (present, past)",
+          "Polarity reversed correctly"
+        ]
+      },
+      "guided_chat": {
+        "scenario": "Charlotte gossips a bit about a coworker. You confirm details with tag questions.",
+        "voiced_by": "charlotte",
+        "persona": "Charlotte",
+        "persona_outfit": "charlotte_casual",
+        "intro_en": "Charlotte chats about a coworker. Confirm with tags.",
+        "opening_message": "Did you hear about Marcia? She just got promoted again.",
+        "objectives": [
+          {
+            "id": 1,
+            "label_en": "Surprise tag",
+            "hidden_prompt": "user uses 'didn't she?' or 'doesn't she?'",
+            "hint_en": "Really? She just got promoted last year, didn't she?"
+          },
+          {
+            "id": 2,
+            "label_en": "Present 'doesn't' tag",
+            "hidden_prompt": "user uses 'doesn't' present tag",
+            "hint_en": "She works really long hours, doesn't she?"
+          },
+          {
+            "id": 3,
+            "label_en": "Negative statement → positive tag",
+            "hidden_prompt": "user uses 'don't / doesn't' + positive tag pattern",
+            "hint_en": "She doesn't take breaks much, does she?"
+          }
+        ],
+        "closing_cue": "Charlotte closes with \"She deserves it, honestly.\" once obj_3 lands.",
+        "suggested_script": "**Script** (referencial, 7 turnos):\n\n1. **Charlotte**: \"Did you hear about Marcia? She just got promoted again.\"\n2. **Student**: \"Really? She just got promoted last year, didn't she?\"\n3. **Charlotte**: \"Right, and now to senior director.\"\n4. **Student**: \"She works really long hours, doesn't she?\"\n5. **Charlotte**: \"Constantly. I don't know how she keeps going.\"\n6. **Student**: \"She doesn't take breaks much, does she?\"\n7. **Charlotte**: \"Almost never. She deserves it, honestly.\"\n\n> I02 chat = LLM puro. Scaffold via hint_pt.\n\n---"
+      }
+    },
+    {
+      "id": "I03",
+      "title": "Tags com modais",
+      "sub_cefr": "B1",
+      "grammar_focus": "Tag questions with modals (can, could, will, would, should, must)",
+      "markers": [
+        "conversation"
+      ],
+      "real_life_context": "You confirm abilities, possibilities, and obligations using modal-based tag questions.",
+      "grammar": [
+        {
+          "type": "multiple_choice",
+          "sentence": "You can swim, _____ you?",
+          "options": [
+            "can't",
+            "don't",
+            "aren't",
+            "won't"
+          ],
+          "answer": "can't",
+          "explanation": "Modal \"can\" → negative tag \"can't you?\". With modals, the tag uses the same modal. No \"do/does\" needed since modals are auxiliaries themselves."
+        },
+        {
+          "type": "multiple_choice",
+          "sentence": "She'll be there, _____ she?",
+          "options": [
+            "won't",
+            "will",
+            "doesn't",
+            "isn't"
+          ],
+          "answer": "won't",
+          "explanation": "\"Will\" (contracted in \"she'll\") → negative tag \"won't she?\". Future modal \"will\" pairs with \"won't\" in negative tag."
+        },
+        {
+          "type": "word_bank",
+          "sentence": "We should leave early, _____ we?",
+          "choices": [
+            "shouldn't",
+            "don't",
+            "won't",
+            "haven't"
+          ],
+          "answer": "shouldn't",
+          "explanation": "Modal \"should\" → negative tag \"shouldn't we?\". Same modal echoes in the tag with negation."
+        },
+        {
+          "type": "word_bank",
+          "sentence": "He couldn't come yesterday, _____ he?",
+          "choices": [
+            "could",
+            "can",
+            "did",
+            "would"
+          ],
+          "answer": "could",
+          "explanation": "Negative \"couldn't\" → positive tag \"could he?\". Modal stays the same; polarity reverses."
+        },
+        {
+          "type": "fill_gap",
+          "sentence": "You wouldn't lie to me, _____ you?",
+          "hint": "positive tag of \"wouldn't\"",
+          "answer": "would",
+          "explanation": "\"Wouldn't\" → \"would you?\". Conditional modal \"would\" in positive tag."
+        },
+        {
+          "type": "fill_gap",
+          "sentence": "She must be tired, _____ she?",
+          "hint": "\"Must\" usually pairs with \"mustn't\" in tag, though \"must\" often gets a different tag in real speech",
+          "answer": "mustn't (or \"isn't\" depending on register)",
+          "explanation": "\"Must\" technically pairs with \"mustn't\" in textbook tags. In real speech, \"She must be tired, isn't she?\" is more common when \"must\" expresses certainty rather than obligation."
+        },
+        {
+          "type": "fill_gap",
+          "sentence": "You can drive, _____ you?",
+          "hint": "negative tag of \"can\"",
+          "answer": "can't",
+          "explanation": "\"Can you?\" / \"Can't you?\" — \"can\" tag forms regularly. Note: in tag, \"can't\" never spelled \"cant\"."
+        },
+        {
+          "type": "fix_error",
+          "sentence": "You should call her, don't you?",
+          "hint": "Tag should use \"should\" — \"shouldn't you?\"",
+          "answer": "You should call her, shouldn't you?",
+          "explanation": "Modal \"should\" pairs with \"shouldn't\" in negative tag. \"Don't\" only works for action verbs without modals. Mistake comes from forgetting that \"should\" is an auxiliary itself."
+        },
+        {
+          "type": "fix_error",
+          "sentence": "He can play guitar, can he?",
+          "hint": "Positive statement needs negative tag — \"can't he?\"",
+          "answer": "He can play guitar, can't he?",
+          "explanation": "Positive statement \"can play\" requires negative tag \"can't he?\". The tag with \"can he?\" would only be correct after a negative statement like \"He can't play guitar, can he?\"."
+        },
+        {
+          "type": "read_answer",
+          "passage": "We should leave by eight, shouldn't we? Traffic gets terrible after that. You'll be ready, won't you? Marco can drive us, can't he? It would be faster than the train, wouldn't it?",
+          "question": "Which modal appears most often?",
+          "answer": "\"would\" (in \"wouldn't it?\" and implied), or \"will/should/can\" each once",
+          "explanation": "The passage uses modal tags: \"shouldn't we?\", \"won't you?\", \"can't he?\", \"wouldn't it?\". Each tag echoes the modal of the main clause with negation. The structure is uniform across different modals."
+        }
+      ],
+      "listening_speaking": [
+        {
+          "text": "You can swim, can't you?",
+          "context": "ability tag"
+        },
+        {
+          "text": "She'll be there, won't she?",
+          "context": "future tag"
+        },
+        {
+          "text": "We should leave, shouldn't we?",
+          "context": "suggestion tag"
+        },
+        {
+          "text": "He couldn't come, could he?",
+          "context": "past ability tag (negative)"
+        },
+        {
+          "text": "You wouldn't mind, would you?",
+          "context": "polite request tag"
+        }
+      ],
+      "roleplay": {
+        "scenario": "Charlotte is planning an outing with you. You use tag questions to confirm details about who can come, what we should do, and when we'll meet.",
+        "voiced_by": "charlotte",
+        "persona": "Charlotte",
+        "persona_outfit": "charlotte_casual",
+        "time_budget_sec": 180,
+        "opening_line": "We're meeting at six on Saturday — you can make it, can't you?",
+        "objectives": [
+          {
+            "id": 1,
+            "label_en": "Confirm with 'can' tag",
+            "hidden_prompt": "user uses 'can't' or 'can' tag",
+            "hint_en": "Yes! And Marco's coming too, isn't he? He said he could drive."
+          },
+          {
+            "id": 2,
+            "label_en": "Tag with 'should / shouldn't'",
+            "hidden_prompt": "user uses 'should / shouldn't' tag",
+            "hint_en": "We should bring something to drink, shouldn't we?"
+          },
+          {
+            "id": 3,
+            "label_en": "Tag with 'will / won't'",
+            "hidden_prompt": "user uses 'will / won't' future tag",
+            "hint_en": "It'll be a long evening, won't it?"
+          }
+        ],
+        "closing_cue": "Charlotte closes with \"Saturday's going to be great!\" once obj_3 lands.",
+        "suggested_flow": "**Suggested flow** (referencial, 6 turnos):\n\n1. **Charlotte**: \"We're meeting at six on Saturday — you can make it, can't you?\"\n2. **Student**: ~\"Yes! And Marco's coming too, isn't he? He said he could drive.\"\n3. **Charlotte**: \"Yeah, Marco's driving. So we don't have to worry about parking.\"\n4. **Student**: ~\"We should bring something to drink, shouldn't we?\"\n5. **Charlotte**: \"Good idea! Wine maybe?\"\n6. **Student**: ~\"It'll be a long evening, won't it?\"\n7. **Charlotte**: \"Probably until midnight. Saturday's going to be great!\"",
+        "evaluation_focus": [
+          "Modal echoes in tag",
+          "Polarity reversed",
+          "Natural conversational flow"
+        ]
+      },
+      "guided_chat": {
+        "scenario": "Charlotte discusses your shared plans for the weekend with tag questions.",
+        "voiced_by": "charlotte",
+        "persona": "Charlotte",
+        "persona_outfit": "charlotte_casual",
+        "intro_en": "Charlotte plans the weekend with you using modal tags.",
+        "opening_message": "You'll come to dinner Saturday, won't you? I'm cooking.",
+        "objectives": [
+          {
+            "id": 1,
+            "label_en": "Modal acceptance tag",
+            "hidden_prompt": "user uses modal tag to accept",
+            "hint_en": "Yes! I should bring wine, shouldn't I?"
+          },
+          {
+            "id": 2,
+            "label_en": "'Can' tag",
+            "hidden_prompt": "user uses 'can/can't' tag",
+            "hint_en": "Pedro can come too, can't he?"
+          },
+          {
+            "id": 3,
+            "label_en": "'Would' tag",
+            "hidden_prompt": "user uses 'would/wouldn't' tag",
+            "hint_en": "It wouldn't be a problem if I came a bit late, would it?"
+          }
+        ],
+        "closing_cue": "Charlotte closes with \"Whenever you can — see you then!\" once obj_3 lands.",
+        "suggested_script": "**Script** (referencial, 7 turnos):\n\n1. **Charlotte**: \"You'll come to dinner Saturday, won't you? I'm cooking.\"\n2. **Student**: \"Yes! I should bring wine, shouldn't I?\"\n3. **Charlotte**: \"If you'd like to. Anything goes.\"\n4. **Student**: \"Pedro can come too, can't he?\"\n5. **Charlotte**: \"Of course! The more the better.\"\n6. **Student**: \"It wouldn't be a problem if I came a bit late, would it?\"\n7. **Charlotte**: \"No worries — whenever you can — see you then!\"\n\n> I03 chat = LLM puro. Scaffold via hint_pt.\n\n---"
+      }
+    },
+    {
+      "id": "I04",
+      "title": "Casos especiais",
+      "sub_cefr": "B2",
+      "grammar_focus": "Special tag cases — \"I am → aren't I\", \"Let's → shall we\", imperative tags (will you?), tags with indefinite subjects (everyone, nobody, somebody)",
+      "markers": [
+        "denso",
+        "conversation"
+      ],
+      "real_life_context": "You handle the tricky exceptions to the basic tag question rules — common cases that don't follow the standard pattern.",
+      "grammar": [
+        {
+          "type": "multiple_choice",
+          "sentence": "I am right, _____ I?",
+          "options": [
+            "aren't",
+            "am not",
+            "amn't",
+            "isn't"
+          ],
+          "answer": "aren't",
+          "explanation": "Special case: \"I am\" → tag uses \"aren't I?\". Logically should be \"amn't I?\" (which exists in Scottish/Irish dialects) but standard English uses \"aren't I?\" to avoid the awkward \"amn't\". One of the strangest exceptions in English grammar."
+        },
+        {
+          "type": "multiple_choice",
+          "sentence": "Let's go to the park, _____ we?",
+          "options": [
+            "shall",
+            "don't",
+            "won't",
+            "aren't"
+          ],
+          "answer": "shall",
+          "explanation": "Special case: \"Let's\" → tag is \"shall we?\". Sounds slightly formal but it's the correct form. \"Let's\" is suggestion + invitation, and \"shall we?\" extends the invitation. Don't use \"do we?\" or \"don't we?\"."
+        },
+        {
+          "type": "word_bank",
+          "sentence": "Open the door, _____ you?",
+          "choices": [
+            "will",
+            "do",
+            "can",
+            "would"
+          ],
+          "answer": "will (or \"would\" / \"could\" depending on politeness)",
+          "explanation": "Imperative + tag: \"Open the door, will you?\" — softens a command into a polite request. Variations: \"would you?\", \"could you?\", \"won't you?\". All make the imperative friendlier."
+        },
+        {
+          "type": "word_bank",
+          "sentence": "Nobody called, _____ they?",
+          "choices": [
+            "did",
+            "didn't",
+            "has",
+            "hasn't"
+          ],
+          "answer": "did",
+          "explanation": "Special case: with indefinite subjects (nobody, no one, none) the tag uses plural \"they\" and reversed polarity. \"Nobody called\" (negative meaning) → positive tag \"did they?\". The pronoun shift to \"they\" handles the gender-neutral reference."
+        },
+        {
+          "type": "fill_gap",
+          "sentence": "I am late, _____ I?",
+          "hint": "tag special case for \"I am\"",
+          "answer": "aren't",
+          "explanation": "\"Aren't I?\" — the standard English solution to the missing negative of \"I am\". \"Amn't\" exists in some dialects but isn't standard. C2 awareness: this is one of the few cases where \"are\" pairs with \"I\"."
+        },
+        {
+          "type": "fill_gap",
+          "sentence": "Let's stop here, _____ we?",
+          "hint": "tag for \"let's\"",
+          "answer": "shall",
+          "explanation": "\"Let's + verb\" pairs with \"shall we?\" tag. Fixed pattern, even though \"shall\" is otherwise rare in American English. Used for suggestions/invitations."
+        },
+        {
+          "type": "fill_gap",
+          "sentence": "Everyone enjoys music, _____ they?",
+          "hint": "tag for indefinite \"everyone\"",
+          "answer": "don't",
+          "explanation": "\"Everyone\" takes a singular verb (\"enjoys\") but the tag uses plural \"they\" — \"don't they?\". This avoids gender-specific \"he/she\" while staying natural. Common pattern with everyone/somebody/anyone/nobody."
+        },
+        {
+          "type": "fix_error",
+          "sentence": "I am wrong, am I not?",
+          "hint": "Standard form is \"aren't I?\"",
+          "answer": "I am wrong, aren't I?",
+          "explanation": "\"Am I not?\" is grammatically logical but extremely formal/old-fashioned. Standard modern English uses \"aren't I?\" as the accepted irregular tag for \"I am\". C2 awareness of register."
+        },
+        {
+          "type": "fix_error",
+          "sentence": "Let's leave, will we?",
+          "hint": "Correct tag for \"let's\" is \"shall we?\"",
+          "answer": "Let's leave, shall we?",
+          "explanation": "\"Let's\" is a contraction of \"let us\" (a suggestion), and its tag is \"shall we?\". Using \"will we?\" sounds wrong because \"shall\" carries the suggestive force. Fixed exception."
+        },
+        {
+          "type": "read_answer",
+          "passage": "I am late, aren't I? Sorry. Let's order food, shall we? You don't mind if I pay later, do you? Nobody else is coming, are they? Open the window, would you? It's stuffy in here.",
+          "question": "Which two tags are special exceptions to the standard rule?",
+          "answer": "\"aren't I?\" (special tag for \"I am\") and \"shall we?\" (special tag for \"let's\"). Also \"are they?\" (for \"nobody\") and \"would you?\" (after imperative).",
+          "explanation": "The passage strings together multiple special cases: \"aren't I?\" (irregular for \"I am\"), \"shall we?\" (for \"let's\"), \"are they?\" (indefinite subject \"nobody\"), \"would you?\" (softening imperative). All exceptions to the basic positive-negative rule."
+        }
+      ],
+      "listening_speaking": [
+        {
+          "text": "I'm right, aren't I?",
+          "context": "special \"aren't I?\" for \"I am\""
+        },
+        {
+          "text": "Let's go, shall we?",
+          "context": "special \"shall we?\" for \"let's\""
+        },
+        {
+          "text": "Open the door, will you?",
+          "context": "imperative softener"
+        },
+        {
+          "text": "Nobody knows, do they?",
+          "context": "indefinite subject tag"
+        },
+        {
+          "text": "Everyone agrees, don't they?",
+          "context": "universal indefinite tag"
+        }
+      ],
+      "roleplay": {
+        "scenario": "Charlotte invites you for a walk. You navigate special-case tags — \"aren't I?\", \"shall we?\", imperative softeners, and indefinite subjects.",
+        "voiced_by": "charlotte",
+        "persona": "Charlotte",
+        "persona_outfit": "charlotte_casual",
+        "time_budget_sec": 180,
+        "opening_line": "Let's go for a walk later, shall we?",
+        "objectives": [
+          {
+            "id": 1,
+            "label_en": "Reply with 'aren't I?'",
+            "hidden_prompt": "user uses 'aren't I?' tag",
+            "hint_en": "Sure! I'm always up for a walk, aren't I?"
+          },
+          {
+            "id": 2,
+            "label_en": "Imperative with 'will you?'",
+            "hidden_prompt": "user uses imperative + 'will you?' or 'would you?'",
+            "hint_en": "Just give me ten minutes to finish this, will you?"
+          },
+          {
+            "id": 3,
+            "label_en": "Indefinite subject tag",
+            "hidden_prompt": "user uses 'nobody / everyone / somebody' with tag",
+            "hint_en": "Nobody else wants to come, do they?"
+          }
+        ],
+        "closing_cue": "Charlotte closes with \"Just us then — perfect!\" once obj_3 lands.",
+        "suggested_flow": "**Suggested flow** (referencial, 6 turnos):\n\n1. **Charlotte**: \"Let's go for a walk later, shall we?\"\n2. **Student**: ~\"Sure! I'm always up for a walk, aren't I?\"\n3. **Charlotte**: \"True! You never say no to fresh air.\"\n4. **Student**: ~\"Just give me ten minutes to finish this, will you?\"\n5. **Charlotte**: \"Take your time. I'm not in a rush.\"\n6. **Student**: ~\"Nobody else wants to come, do they?\"\n7. **Charlotte**: \"Doesn't look like it. Just us then — perfect!\"",
+        "evaluation_focus": [
+          "\"Aren't I?\" for \"I am\"",
+          "\"Shall we?\" for \"let's\"",
+          "Imperative tag softeners",
+          "Indefinite \"do they?\" with everyone/nobody"
+        ]
+      },
+      "guided_chat": {
+        "scenario": "Charlotte teases you about always being late. You use special-case tags to defend yourself.",
+        "voiced_by": "charlotte",
+        "persona": "Charlotte",
+        "persona_outfit": "charlotte_casual",
+        "intro_en": "Charlotte teases you. Defend yourself with special tags.",
+        "opening_message": "You're always late, aren't you?",
+        "objectives": [
+          {
+            "id": 1,
+            "label_en": "Reply with 'aren't I?'",
+            "hidden_prompt": "user uses 'aren't I?' in a self-aware way",
+            "hint_en": "Hey, I'm always on time, aren't I? Mostly?"
+          },
+          {
+            "id": 2,
+            "label_en": "Indefinite tag — 'nobody / everyone'",
+            "hidden_prompt": "user uses indefinite subject + tag",
+            "hint_en": "Everyone runs a bit late sometimes, don't they?"
+          },
+          {
+            "id": 3,
+            "label_en": "'Let's' tag",
+            "hidden_prompt": "user uses 'let's...shall we?'",
+            "hint_en": "Let's just order, shall we?"
+          }
+        ],
+        "closing_cue": "Charlotte closes with \"Saved by the menu!\" once obj_3 lands.",
+        "suggested_script": "**Script** (referencial, 7 turnos):\n\n1. **Charlotte**: \"You're always late, aren't you?\"\n2. **Student**: \"Hey, I'm always on time, aren't I? Mostly?\"\n3. **Charlotte**: \"Mostly is a stretch. Half the time, more like.\"\n4. **Student**: \"Everyone runs a bit late sometimes, don't they?\"\n5. **Charlotte**: \"Some of us less than others.\"\n6. **Student**: \"Let's just order, shall we?\"\n7. **Charlotte**: \"Saved by the menu!\"\n\n> I04 chat = LLM puro. Scaffold via hint_pt.\n\n---"
+      }
+    },
+    {
+      "id": "I05",
+      "title": "Fillers naturais",
+      "sub_cefr": "B2",
+      "grammar_focus": "Conversational fillers (you know, I mean, like, well, so, right) used naturally — plus rising vs falling intonation distinction in tag questions",
+      "markers": [
+        "denso",
+        "conversation"
+      ],
+      "real_life_context": "You add fillers strategically to sound natural and confident — not nervous. You also know when a tag is a real question (rising) vs rhetorical (falling).",
+      "grammar": [
+        {
+          "type": "multiple_choice",
+          "options": [
+            "I mean",
+            "Like",
+            "Well",
+            "So"
+          ],
+          "answer": "I mean",
+          "explanation": "\"I mean...\" — filler used to clarify, correct, or emphasize what you really mean. Different from \"like\" (pause/example), \"well\" (hesitation start), or \"so\" (transition/conclusion). Each filler has its own pragmatic role."
+        },
+        {
+          "type": "multiple_choice",
+          "options": [
+            "Well",
+            "Right",
+            "Actually",
+            "Obviously"
+          ],
+          "answer": "Well",
+          "explanation": "\"Well...\" — natural opening filler signaling you're about to start an answer. Buys thinking time without sounding hesitant. \"Right\" confirms; \"actually\" corrects; \"obviously\" makes a claim."
+        },
+        {
+          "type": "word_bank",
+          "sentence": "_____ , I haven't really thought about it.",
+          "choices": [
+            "Well",
+            "Yes",
+            "No",
+            "Right"
+          ],
+          "answer": "Well",
+          "explanation": "\"Well\" introduces a hesitant or thoughtful answer. Natural conversational opener that signals reflection rather than uncertainty."
+        },
+        {
+          "type": "word_bank",
+          "sentence": "It's _____ , not very exciting.",
+          "choices": [
+            "kind of",
+            "well",
+            "right",
+            "obviously"
+          ],
+          "answer": "kind of",
+          "explanation": "\"Kind of\" (or \"sort of\") — softener filler meaning \"more or less\" / \"somewhat\". Hedges the strength of the claim. Common in casual speech to avoid sounding too definitive."
+        },
+        {
+          "type": "fill_gap",
+          "hint": "short filler word for pause",
+          "answer": "like (or \"you know\")",
+          "explanation": "\"Like\" — pause filler especially common in younger speech. Signals you're searching, processing, or about to give an example. Overuse sounds immature but moderate use is natural."
+        },
+        {
+          "type": "fill_gap",
+          "hint": "tag with rising intonation expecting confirmation",
+          "answer": "isn't",
+          "explanation": "\"Isn't she?\" with rising intonation = genuine question seeking confirmation. The speaker isn't sure and wants the listener to confirm or deny. Different from rhetorical use."
+        },
+        {
+          "type": "fill_gap",
+          "hint": "same tag form but with falling intonation",
+          "answer": "isn't",
+          "explanation": "\"Isn't it?\" with falling intonation = rhetorical statement seeking agreement, not info. The speaker assumes agreement. Same tag form; intonation carries the function."
+        },
+        {
+          "type": "fix_error",
+          "sentence": "I, like, you know, I mean, kind of, well, don't really know.",
+          "hint": "Too many fillers — sound nervous; pick one or two",
+          "answer": "Well, I don't really know.",
+          "explanation": "Stacking fillers makes you sound nervous and uncertain. Use one or two naturally. C2 fluency is about strategic placement, not quantity. Excess fillers undermine confidence."
+        },
+        {
+          "type": "fix_error",
+          "sentence": "Obviously you don't know what I'm talking about.",
+          "hint": "\"Obviously\" can sound condescending — use \"I mean\" or rephrase",
+          "answer": "I mean, you might not know what I'm talking about. (or simply: \"Maybe you don't know what I'm talking about.\")",
+          "explanation": "\"Obviously\" implies the listener should know — can sound condescending. In sensitive conversations, \"I mean\" or \"actually\" is softer. Register awareness is part of using fillers well."
+        },
+        {
+          "type": "read_answer",
+          "passage": "Well, I think — I mean, you know how it is — sometimes you just need a break. Kind of. So I told my boss I needed a few days. She was, like, totally understanding. It's a good company to work for, isn't it?",
+          "question": "How many different fillers appear in the passage?",
+          "answer": "at least six — \"Well\", \"I mean\", \"you know\", \"Kind of\", \"So\", \"like\"",
+          "explanation": "The passage uses many fillers naturally: \"Well\" (opener), \"I mean\" (clarification), \"you know\" (shared understanding), \"Kind of\" (hedge), \"So\" (transition), \"like\" (pause/example). Combined sparingly, they create natural conversational rhythm. \"Isn't it?\" at the end is a tag, not a filler."
+        }
+      ],
+      "listening_speaking": [
+        {
+          "text": "Well, I'm not really sure.",
+          "context": "hesitation opener"
+        },
+        {
+          "text": "I mean, it's kind of complicated.",
+          "context": "clarification + hedge"
+        },
+        {
+          "text": "You know, that's a good question.",
+          "context": "shared-understanding filler"
+        },
+        {
+          "text": "It's beautiful out, isn't it?",
+          "context": "falling-intonation rhetorical tag"
+        },
+        {
+          "text": "She's coming, isn't she?",
+          "context": "rising-intonation genuine question tag"
+        }
+      ],
+      "roleplay": {
+        "scenario": "Charlotte asks you a few open-ended questions. You respond naturally using fillers and tag questions.",
+        "voiced_by": "charlotte",
+        "persona": "Charlotte",
+        "persona_outfit": "charlotte_casual",
+        "time_budget_sec": 180,
+        "opening_line": "What do you think about the new project we just got?",
+        "objectives": [
+          {
+            "id": 1,
+            "label_en": "Reply with 'well' opener",
+            "hidden_prompt": "user uses 'Well' to open",
+            "hint_en": "Well, I think it's interesting, but, you know, a bit ambitious."
+          },
+          {
+            "id": 2,
+            "label_en": "Filler 'I mean' to clarify",
+            "hidden_prompt": "user uses 'I mean' to clarify",
+            "hint_en": "I mean, the deadline is kind of tight, isn't it?"
+          },
+          {
+            "id": 3,
+            "label_en": "Tag question with 'aren't they?' or similar",
+            "hidden_prompt": "user uses a tag question naturally",
+            "hint_en": "But the team is really capable, aren't they?"
+          }
+        ],
+        "closing_cue": "Charlotte closes with \"Yeah, they really are.\" once obj_3 lands.",
+        "suggested_flow": "**Suggested flow** (referencial, 6 turnos):\n\n1. **Charlotte**: \"What do you think about the new project we just got?\"\n2. **Student**: ~\"Well, I think it's interesting, but, you know, a bit ambitious.\"\n3. **Charlotte**: \"Ambitious in what way?\"\n4. **Student**: ~\"I mean, the deadline is kind of tight, isn't it?\"\n5. **Charlotte**: \"Yeah, three months feels short.\"\n6. **Student**: ~\"But the team is really capable, aren't they?\"\n7. **Charlotte**: \"Yeah, they really are.\"",
+        "evaluation_focus": [
+          "Fillers used moderately (1-2 per turn)",
+          "Natural placement",
+          "Tag question with appropriate intonation"
+        ]
+      },
+      "guided_chat": {
+        "scenario": "Charlotte chats with you about a movie you both watched. You use fillers and tags to sound natural.",
+        "voiced_by": "charlotte",
+        "persona": "Charlotte",
+        "persona_outfit": "charlotte_casual",
+        "intro_en": "Charlotte chats about a film. Use fillers and tags naturally.",
+        "opening_message": "Did you watch that movie I recommended? What did you think?",
+        "objectives": [
+          {
+            "id": 1,
+            "label_en": "Reply with opener filler",
+            "hidden_prompt": "user uses 'Well' or 'I mean' opener",
+            "hint_en": "Well, I actually liked it more than I expected."
+          },
+          {
+            "id": 2,
+            "label_en": "Hedge with 'kind of' or 'sort of'",
+            "hidden_prompt": "user uses 'kind of' or 'sort of' hedge",
+            "hint_en": "The ending was kind of confusing, wasn't it?"
+          },
+          {
+            "id": 3,
+            "label_en": "Tag question to confirm",
+            "hidden_prompt": "user uses a tag question",
+            "hint_en": "But the soundtrack was amazing, wasn't it?"
+          }
+        ],
+        "closing_cue": "Charlotte closes with \"Best part by far.\" once obj_3 lands.",
+        "suggested_script": "**Script** (referencial, 7 turnos):\n\n1. **Charlotte**: \"Did you watch that movie I recommended? What did you think?\"\n2. **Student**: \"Well, I actually liked it more than I expected.\"\n3. **Charlotte**: \"What surprised you most?\"\n4. **Student**: \"The ending was kind of confusing, wasn't it?\"\n5. **Charlotte**: \"Yeah, I had to watch it twice to get it.\"\n6. **Student**: \"But the soundtrack was amazing, wasn't it?\"\n7. **Charlotte**: \"Best part by far.\"\n\n> I05 chat = LLM puro. Scaffold via hint_pt.\n\n---"
+      }
+    }
+  ],
+  "cross_unit_consolidation": [
+    "Form tag questions with \"to be\" and \"have\" (isn't / aren't / wasn't / haven't / hasn't)",
+    "Form tag questions with \"do/does/did\" for action verbs without auxiliaries",
+    "Form tag questions with all common modals (can/can't, will/won't, should/shouldn't, would/wouldn't)",
+    "Handle special cases: \"I am → aren't I\", \"Let's → shall we\", imperative + \"will you?\", indefinite subjects + \"they\"",
+    "Use conversational fillers (well, I mean, you know, like, kind of, sort of) strategically — not nervously",
+    "Distinguish rising vs falling intonation in tag questions (genuine question vs rhetorical)",
+    "Sound conversationally natural without overusing fillers"
+  ]
+}
