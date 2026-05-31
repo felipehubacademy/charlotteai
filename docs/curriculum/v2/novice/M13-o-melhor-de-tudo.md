@@ -193,7 +193,7 @@
 
 ### 1. Grammar (10 exercises)
 
-1. **multiple_choice** — "This is _____ movie I've seen."
+1. **multiple_choice** — "This is _____ movie of the year."
    **Options**: the most interesting / the interestingest / most interesting
    **Answer**: the most interesting
    **Explanation**: Adjetivo longo → "the most + adj". "The most interesting", não "interestingest".
@@ -223,7 +223,7 @@
    **Answer**: the most popular
    **Explanation**: "Popular" → "the most popular". Sempre "most" antes de adj longo.
 
-7. **fill_gap** — "This is _____ book I've ever read."
+7. **fill_gap** — "This is _____ book in the library."
    **Hint**: Superlativo longo de "boring"
    **Answer**: the most boring
    **Explanation**: "Boring" (2 sílabas) → "the most boring".
@@ -239,7 +239,7 @@
    **Explanation**: Superlativo sempre com "THE": "the most beautiful". Sem "the" é erro.
 
 10. **read_answer**
-    **Passage**: "This is the most expensive restaurant in town. The food is the most delicious I've had. The service is also the most professional."
+    **Passage**: "This is the most expensive restaurant in town. The food is the most delicious in the city. The service is also the most professional."
     **Question**: How is the service?
     **Answer**: the most professional
     **Explanation**: The text says "The service is also the most professional".
@@ -260,7 +260,7 @@
 **Persona**: Charlotte
 **Persona outfit**: `charlotte_casual`
 **Time budget**: 90s
-**Opening line**: "What's the most interesting thing you've done?"
+**Opening line**: "What is the most interesting place in your city?"
 
 **Sub-objectives** (M03+ gradiente: 3 objetivos):
 
@@ -289,7 +289,7 @@
 
 **Suggested flow** (referencial, 6 turnos):
 
-1. **Charlotte**: "What's the most interesting thing you've done?"
+1. **Charlotte**: "What is the most interesting place in your city?"
 2. **Student**: ~"Yoga is the most interesting hobby."
 3. **Charlotte**: "Most beautiful place?"
 4. **Student**: ~"Rome is the most beautiful city."
@@ -373,7 +373,7 @@
    **Answer**: the best
    **Explanation**: "The best" — irregular superlativo de "good". Sempre com "the".
 
-4. **word_bank** — "This is _____ movie I've ever seen."
+4. **word_bank** — "This is _____ movie of the year."
    **Choices**: the worst / the most bad / the baddest / worst
    **Answer**: the worst
    **Explanation**: "The worst" — irregular superlativo de "bad".
@@ -474,7 +474,7 @@
 **Persona**: Charlotte
 **Persona outfit**: `charlotte_casual`
 **Intro (em PT)**: "Charlotte abre chat sobre favoritos e piores. Pratica irregulares de superlativo."
-**Opening message**: "Best meal you've had this month?"
+**Opening message**: "Best meal in your city?"
 
 **Sub-objectives** (M03+ gradiente: 3 objetivos):
 
@@ -503,7 +503,7 @@
 
 **Script** (referencial, 7 turnos):
 
-1. **Charlotte**: "Best meal you've had this month?"
+1. **Charlotte**: "Best meal in your city?"
 2. **Student**: "The best meal was pasta."
 3. **Charlotte**: "Italian style."
 4. **Student**: "The worst day was Monday."
@@ -734,7 +734,7 @@
    **Explanation**: 1st = "first" (não "oneth"). Forma única.
 
 10. **read_answer**
-    **Passage**: "I live on the third floor. My building is the tallest in the neighborhood. This is the best apartment I've ever had. The view is the most beautiful."
+    **Passage**: "I live on the third floor. My building is the tallest in the neighborhood. This is the best apartment in the building. The view is the most beautiful."
     **Question**: How is the view?
     **Answer**: the most beautiful
     **Explanation**: The text says "The view is the most beautiful".

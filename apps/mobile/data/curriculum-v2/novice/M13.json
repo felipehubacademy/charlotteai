@@ -232,7 +232,7 @@
       "grammar": [
         {
           "type": "multiple_choice",
-          "sentence": "This is _____ movie I've seen.",
+          "sentence": "This is _____ movie of the year.",
           "options": [
             "the most interesting",
             "the interestingest",
@@ -292,7 +292,7 @@
         },
         {
           "type": "fill_gap",
-          "sentence": "This is _____ book I've ever read.",
+          "sentence": "This is _____ book in the library.",
           "hint": "Superlativo longo de \"boring\"",
           "answer": "the most boring",
           "explanation": "\"Boring\" (2 sílabas) → \"the most boring\"."
@@ -313,7 +313,7 @@
         },
         {
           "type": "read_answer",
-          "passage": "This is the most expensive restaurant in town. The food is the most delicious I've had. The service is also the most professional.",
+          "passage": "This is the most expensive restaurant in town. The food is the most delicious in the city. The service is also the most professional.",
           "question": "How is the service?",
           "answer": "the most professional",
           "explanation": "The text says \"The service is also the most professional\"."
@@ -352,7 +352,7 @@
         "persona": "Charlotte",
         "persona_outfit": "charlotte_casual",
         "time_budget_sec": 90,
-        "opening_line": "What's the most interesting thing you've done?",
+        "opening_line": "What is the most interesting place in your city?",
         "objectives": [
           {
             "id": 1,
@@ -380,7 +380,7 @@
           }
         ],
         "closing_cue": "Charlotte fecha com \"Big opinions!\" quando obj_3 baterem.",
-        "suggested_flow": "**Suggested flow** (referencial, 6 turnos):\n\n1. **Charlotte**: \"What's the most interesting thing you've done?\"\n2. **Student**: ~\"Yoga is the most interesting hobby.\"\n3. **Charlotte**: \"Most beautiful place?\"\n4. **Student**: ~\"Rome is the most beautiful city.\"\n5. **Charlotte**: \"Most patient person you know?\"\n6. **Student**: ~\"She is the most patient person.\"\n7. **Charlotte**: \"Big opinions!\"",
+        "suggested_flow": "**Suggested flow** (referencial, 6 turnos):\n\n1. **Charlotte**: \"What is the most interesting place in your city?\"\n2. **Student**: ~\"Yoga is the most interesting hobby.\"\n3. **Charlotte**: \"Most beautiful place?\"\n4. **Student**: ~\"Rome is the most beautiful city.\"\n5. **Charlotte**: \"Most patient person you know?\"\n6. **Student**: ~\"She is the most patient person.\"\n7. **Charlotte**: \"Big opinions!\"",
         "evaluation_focus": [
           "\"The most + long adj\" sempre",
           "Sem -est em longos",
@@ -470,7 +470,7 @@
         },
         {
           "type": "word_bank",
-          "sentence": "This is _____ movie I've ever seen.",
+          "sentence": "This is _____ movie of the year.",
           "choices": [
             "the worst",
             "the most bad",
@@ -597,7 +597,7 @@
         "persona": "Charlotte",
         "persona_outfit": "charlotte_casual",
         "intro_pt": "Charlotte abre chat sobre favoritos e piores. Pratica irregulares de superlativo.",
-        "opening_message": "Best meal you've had this month?",
+        "opening_message": "Best meal in your city?",
         "objectives": [
           {
             "id": 1,
@@ -625,7 +625,7 @@
           }
         ],
         "closing_cue": "Charlotte encerra com \"Bests and worsts done!\" quando obj_3 baterem.",
-        "suggested_script": "**Script** (referencial, 7 turnos):\n\n1. **Charlotte**: \"Best meal you've had this month?\"\n2. **Student**: \"The best meal was pasta.\"\n3. **Charlotte**: \"Italian style.\"\n4. **Student**: \"The worst day was Monday.\"\n5. **Charlotte**: \"Always.\"\n6. **Student**: \"How about you?\"\n7. **Charlotte**: \"Best was sushi, worst was rainy Tuesday. Bests and worsts done!\"\n\n> N03 chat = LLM puro.\n\n---"
+        "suggested_script": "**Script** (referencial, 7 turnos):\n\n1. **Charlotte**: \"Best meal in your city?\"\n2. **Student**: \"The best meal was pasta.\"\n3. **Charlotte**: \"Italian style.\"\n4. **Student**: \"The worst day was Monday.\"\n5. **Charlotte**: \"Always.\"\n6. **Student**: \"How about you?\"\n7. **Charlotte**: \"Best was sushi, worst was rainy Tuesday. Bests and worsts done!\"\n\n> N03 chat = LLM puro.\n\n---"
       }
     },
     {
@@ -921,7 +921,7 @@
         },
         {
           "type": "read_answer",
-          "passage": "I live on the third floor. My building is the tallest in the neighborhood. This is the best apartment I've ever had. The view is the most beautiful.",
+          "passage": "I live on the third floor. My building is the tallest in the neighborhood. This is the best apartment in the building. The view is the most beautiful.",
           "question": "How is the view?",
           "answer": "the most beautiful",
           "explanation": "The text says \"The view is the most beautiful\"."
