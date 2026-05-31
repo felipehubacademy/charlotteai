@@ -115,6 +115,11 @@
         "id": "M23",
         "title": "Em viagem, no médico, ao telefone",
         "file": "novice/M23.json"
+      },
+      {
+        "id": "M24",
+        "title": "Reagindo na conversa",
+        "file": "novice/M24.json"
       }
     ],
     "inter": [
@@ -342,5 +347,5 @@
       }
     ]
   },
-  "generated_at": "2026-05-31T00:21:53.781Z"
+  "generated_at": "2026-05-31T00:25:35.464Z"
 }
