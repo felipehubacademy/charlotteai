@@ -729,6 +729,146 @@
 
 ---
 
+## Unit A06 — UK vs US + Falsos cognatos cross-link
+
+> **Sub-CEFR**: C1 | **Grammar focus**: Awareness of UK vs US English (vocabulary, spelling, gotten/got) + final reinforcement of false cognates for Lusophones (Fase B extra unit)
+> **Markers**: [awareness]
+> **Real-life context**: You recognise British vs American English differences and avoid the most persistent false-cognate traps that catch Portuguese-speakers even at C1.
+
+### 1. Grammar (5 exercises)
+
+1. **multiple_choice** — British English equivalent of American "elevator":
+   **Options**: lift / staircase / ladder / escalator
+   **Answer**: lift
+   **Explanation**: "Lift" (British) = "elevator" (American). Key vocabulary pairs to know: lift/elevator, lorry/truck, flat/apartment, queue/line, pavement/sidewalk, holiday/vacation. Both forms are widely understood, but the convention shifts by region.
+
+2. **multiple_choice** — American spelling of "colour":
+   **Options**: color / colur / colore / colours
+   **Answer**: color
+   **Explanation**: American English drops the "u" in "-our" endings: colour→color, favour→favor, neighbour→neighbor, honour→honor. Also "-re" → "-er": centre→center, theatre→theater. Choose one convention and stay consistent in a document.
+
+3. **fill_gap** — In American English, the past participle of "get" is often "_____" rather than British "got".
+   **Hint**: alternative past participle form
+   **Answer**: gotten
+   **Explanation**: "Gotten" — American past participle of "get". British English uses "got" for past participle. "I've gotten better at this" (American) vs "I've got better at this" (British). Note: "have got" meaning "have/possess" uses "got" in both.
+
+4. **fix_error** — Por português falar 'pretender', você diz em inglês: "I pretend to leave tomorrow."
+   **Hint**: false cognate — "pretend" doesn't mean "intend"
+   **Answer**: I intend to leave tomorrow. (or: I plan to leave tomorrow.)
+   **Explanation**: "Pretend" in English = "fingir" (to feign). "Pretender" in Portuguese = "to intend" in English. Classic false cognate. Other traps: "push" (empurrar) ≠ "puxar"; "library" (biblioteca) ≠ "livraria" (bookstore); "actually" (na verdade) ≠ "atualmente" (currently).
+
+5. **read_answer**
+   **Passage**: "I'm on holiday in London — sorry, vacation as you'd say. The flat I rented has no lift, so I'm climbing four floors of stairs every day. The pavement outside is wet from yesterday's rain. I queued for an hour at the museum. I should've intended to book online — but I always say I'll do it later and then forget. By the way, I actually realised today that I've gotten quite good at British English."
+   **Question**: Which two false cognates were used correctly in the passage?
+   **Answer**: "intended" (correctly used instead of "pretended"); "actually" (correctly meaning "in fact", not "currently"); "realised" (meaning "understood", not Portuguese "realizar" = to perform/carry out)
+   **Explanation**: The passage models British vocabulary (holiday/flat/lift/pavement/queue) and demonstrates correct usage of common false-cognate traps (intend, actually, realise). False cognates remain a C1 challenge — careful awareness prevents fossilised errors.
+
+### 2. Listening/Speaking (5 phrases)
+
+1. **"I'm taking the lift to the fourth floor."** — British "lift"
+2. **"I'm going on holiday next month."** — British "holiday"
+3. **"I've gotten used to remote work."** — American "gotten"
+4. **"I intend to apply for the position."** — false cognate: intend (NOT pretend)
+5. **"I actually started yesterday."** — false cognate: actually (NOT atualmente)
+
+### 3. Role-play
+
+**Cenário**: Charlotte just returned from London. You compare British and American English with her, and avoid false cognates.
+**Tipo**: Live Voice
+**Voiced by**: `charlotte`
+**Persona**: Charlotte
+**Persona outfit**: `charlotte_casual`
+**Time budget**: 300s
+**Opening line**: "I just spent two weeks in London. Some words still trip me up — like 'lift' instead of 'elevator'. What British words do you find tricky?"
+
+**Sub-objectives** (3 objetivos):
+
+1. **id**: 1
+   **label_pt**: "Comentar sobre par UK/US"
+   **label_en**: "Comment on UK/US pair"
+   **hidden_prompt**: "user mentions a UK/US vocabulary pair"
+   **hint_pt**: "I always pause when I hear 'flat' instead of 'apartment'. And 'pavement' instead of 'sidewalk' threw me off the first time."
+   **hint_en**: "I always pause when I hear 'flat' instead of 'apartment'. And 'pavement' instead of 'sidewalk' threw me off the first time."
+
+2. **id**: 2
+   **label_pt**: "Usar false cognate corretamente"
+   **label_en**: "Use a false cognate correctly"
+   **hidden_prompt**: "user uses 'intend', 'actually', or 'realise' correctly"
+   **hint_pt**: "I actually intend to spend more time studying British English — I'm planning a trip there next year."
+   **hint_en**: "I actually intend to spend more time studying British English — I'm planning a trip there next year."
+
+3. **id**: 3
+   **label_pt**: "Comentar sobre 'gotten' vs 'got'"
+   **label_en**: "Comment on 'gotten' vs 'got'"
+   **hidden_prompt**: "user uses 'gotten' (American) or comments on the difference"
+   **hint_pt**: "I've gotten more comfortable with both versions now — my speech mixes them, which is probably wrong but feels natural."
+   **hint_en**: "I've gotten more comfortable with both versions now — my speech mixes them, which is probably wrong but feels natural."
+
+**Closing cue**: Charlotte fecha com "Same here — purity is overrated. C1 fluency over consistency." quando obj_3 bater.
+
+**Suggested flow** (referencial, 6 turnos):
+
+1. **Charlotte**: "I just spent two weeks in London. Some words still trip me up — like 'lift' instead of 'elevator'. What British words do you find tricky?"
+2. **Student**: ~"I always pause when I hear 'flat' instead of 'apartment'. And 'pavement' instead of 'sidewalk' threw me off the first time."
+3. **Charlotte**: "And the false cognates from Portuguese?"
+4. **Student**: ~"I actually intend to spend more time studying British English — I'm planning a trip there next year."
+5. **Charlotte**: "Gotten or got — which do you use?"
+6. **Student**: ~"I've gotten more comfortable with both versions now — my speech mixes them, which is probably wrong but feels natural."
+7. **Charlotte**: "Same here — purity is overrated. C1 fluency over consistency."
+
+**Evaluation focus**:
+- UK/US vocabulary awareness
+- False cognates used correctly (intend, actually, realise)
+- Comfort with both varieties
+
+### 4. Guided Chat
+
+**Cenário**: Charlotte discusses with you how to choose between UK and US English in different contexts.
+**Voiced by**: `charlotte`
+**Persona**: Charlotte
+**Persona outfit**: `charlotte_casual`
+**Intro (em EN)**: "Charlotte discusses register and variety. Pick UK/US deliberately."
+**Opening message**: "If you're writing to an American client, you should use 'elevator', 'apartment', 'vacation'. But for British clients, switch to 'lift', 'flat', 'holiday'. Which version do you default to?"
+
+**Sub-objectives** (3 objetivos):
+
+1. **id**: 1
+   **label_pt**: "Comentar sobre sua variante padrão"
+   **label_en**: "Comment on your default variant"
+   **hidden_prompt**: "user mentions which variant they prefer or default to"
+   **hint_pt**: "I default to American English because that's what my schoolbooks used, but I've gotten more flexible after working with British colleagues."
+   **hint_en**: "I default to American English because that's what my schoolbooks used, but I've gotten more flexible after working with British colleagues."
+
+2. **id**: 2
+   **label_pt**: "Falar sobre false cognate que ainda te pega"
+   **label_en**: "Talk about a false cognate that still catches you"
+   **hidden_prompt**: "user mentions a tricky false cognate"
+   **hint_pt**: "Honestly, 'realise' still catches me — in Portuguese 'realizar' means 'to carry out', but in English it usually means 'to understand'. I've to consciously pause."
+   **hint_en**: "Honestly, 'realise' still catches me — in Portuguese 'realizar' means 'to carry out', but in English it usually means 'to understand'. I've to consciously pause."
+
+3. **id**: 3
+   **label_pt**: "Perguntar a Charlotte"
+   **label_en**: "Ask Charlotte"
+   **hidden_prompt**: "user asks Charlotte about her preference or strategy"
+   **hint_pt**: "Which version do you write in by default?"
+   **hint_en**: "Which version do you write in by default?"
+
+**Closing cue**: Charlotte fecha com "Same — flexible across, depending on the reader." quando obj_3 bater.
+
+**Script** (referencial, 7 turnos):
+
+1. **Charlotte**: "If you're writing to an American client, you should use 'elevator', 'apartment', 'vacation'. But for British clients, switch to 'lift', 'flat', 'holiday'. Which version do you default to?"
+2. **Student**: "I default to American English because that's what my schoolbooks used, but I've gotten more flexible after working with British colleagues."
+3. **Charlotte**: "Sensible. And false cognates from Portuguese — which ones still trip you?"
+4. **Student**: "Honestly, 'realise' still catches me — in Portuguese 'realizar' means 'to carry out', but in English it usually means 'to understand'. I've to consciously pause."
+5. **Charlotte**: "That one is universal among lusophones."
+6. **Student**: "Which version do you write in by default?"
+7. **Charlotte**: "American mostly, but I'm consistent within a document. Same — flexible across, depending on the reader."
+
+> A06 chat = full LLM. Scaffold via hint_pt/hint_en.
+
+---
+
 ## Cross-unit consolidation
 
 By the end of M11, the student should:
@@ -739,5 +879,6 @@ By the end of M11, the student should:
 - Switch register fluidly across audiences in the same day
 - Recognise register-mismatch as a fluency error, not just a stylistic preference
 - Pick words for their emotional weight, not just their dictionary meaning
+- (A06 UK/US): Recognise UK/US vocabulary pairs (lift/elevator, flat/apartment, holiday/vacation, lorry/truck, queue/line, pavement/sidewalk), spelling (colour/color, centre/center, organise/organize), and grammar (gotten/got past participle). Avoid persistent Lusophone false cognates (pretend ≠ pretender, push ≠ puxar, library ≠ livraria, actually ≠ atualmente, realise ≠ realizar, parents ≠ parentes, college ≠ colégio, eventually ≠ eventualmente, sensible ≠ sensível, intend ≠ entender, attend ≠ atender, assist ≠ assistir, exit ≠ êxito).
 
 **End of C1 (Advanced M01–M11).** The student has worked through the structural backbone (conditionals, inversion, clefts, subjunctive, passive, participials, reporting), the diplomatic layer (hedging, idioms, discourse markers), and now connotation/register. C2 (M12–M22) builds on this for academic writing, persuasion, literary register, masterclass phrasal verbs, word formation, ellipsis, extended cohesion, modal subtlety, native pronunciation, native-like speech, and final synthesis.
