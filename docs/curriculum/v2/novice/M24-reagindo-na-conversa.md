@@ -609,23 +609,23 @@
 **Sub-objectives** (3 objetivos):
 
 1. **id**: 1
-   **label_pt**: "Reação leve a problema pequeno"
-   **label_en**: "Light reaction to small problem"
-   **hidden_prompt**: "user reacts with 'That sucks' or 'Oh no'"
+   **label_pt**: "Reagir à primeira notícia (telefone quebrado)"
+   **label_en**: "React to first bad news (broken phone)"
+   **hidden_prompt**: "after Charlotte's FIRST bad news (broken phone), user reacts with ANY empathy chunk — accept 'Oh no', 'That sucks', 'That's a shame', 'What a shame', 'Bummer', 'I'm sorry', 'How sad', etc. Match if user shows any empathy reaction to the first piece of bad news."
    **hint_pt**: "Oh no, that sucks!"
    **hint_en**: "Oh no, that sucks!"
 
 2. **id**: 2
-   **label_pt**: "Reação mais forte a problema maior"
-   **label_en**: "Stronger reaction to bigger problem"
-   **hidden_prompt**: "user reacts with 'I'm so sorry' or 'That's awful'"
+   **label_pt**: "Reagir à segunda notícia (gato doente)"
+   **label_en**: "React to second bad news (sick cat)"
+   **hidden_prompt**: "after Charlotte's SECOND bad news (sick cat), user reacts again with ANY empathy chunk — accept 'I'm so sorry', 'That's awful', 'That's terrible', 'Poor thing', 'Oh no', 'What a shame', etc. Same phrase as obj 1 is OK — counts if reacting to a NEW piece of bad news."
    **hint_pt**: "I'm so sorry to hear that."
    **hint_en**: "I'm so sorry to hear that."
 
 3. **id**: 3
-   **label_pt**: "Reação à terceira notícia"
-   **label_en**: "React to third news"
-   **hidden_prompt**: "user reacts with empathy"
+   **label_pt**: "Reagir à terceira notícia (perdeu deadline)"
+   **label_en**: "React to third bad news (missed deadline)"
+   **hidden_prompt**: "after Charlotte's THIRD bad news (missed deadline), user reacts again with ANY empathy chunk — accept ANY empathy expression including 'What a shame', 'That's tough', 'Oh no', 'I'm sorry', 'That sucks', etc. Repeating the SAME phrase from previous turns is fine — the objective is reacting empathically to the third news, not using a unique phrase."
    **hint_pt**: "What a shame!"
    **hint_en**: "What a shame!"
 
