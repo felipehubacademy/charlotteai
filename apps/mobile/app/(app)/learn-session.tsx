@@ -281,6 +281,12 @@ export default function LearnSessionScreen() {
 
   const [stepIdx, setStepIdx]         = useState(0);
   const [isComplete, setIsComplete]   = useState(false);
+  // v2: armazena score+threshold da atividade recem concluida pra
+  // mostrar banner "precisa X% pra desbloquear proxima" quando passa
+  // sem bater threshold.
+  const [completedActivityScore, setCompletedActivityScore] = useState<{
+    score: number; threshold: number; activityType: 'grammar' | 'speaking' | 'roleplay' | 'chat';
+  } | null>(null);
   const stepLoadedRef = useRef(false);
   const scrollRef = useRef<InstanceType<typeof ScrollView>>(null);
 
@@ -933,6 +939,8 @@ export default function LearnSessionScreen() {
           rawScore = Math.round(((totalSteps - sessionErrors) / totalSteps) * 100);
         }
         const finalScore = Math.max(0, Math.min(100, rawScore));
+        const threshold = activityType === 'grammar' ? 70 : activityType === 'speaking' ? 60 : 100;
+        setCompletedActivityScore({ score: finalScore, threshold, activityType });
         try {
           await v2Progress.saveAttempt(
             params.moduleId, params.unitId, activityType, finalScore,
@@ -1131,6 +1139,49 @@ export default function LearnSessionScreen() {
           <AppText style={{ fontSize: 13, color: C.navyLight, textAlign: 'center', lineHeight: 20, marginBottom: 32 }}>
             {sessionXP} {isPortuguese ? 'XP ganhos' : 'XP earned'}
           </AppText>
+
+          {/* Banner: score < threshold ⇒ proxima atividade nao destrava */}
+          {(() => {
+            const c = completedActivityScore;
+            if (!c || c.score >= c.threshold) return null;
+            const nextActivityLabel = c.activityType === 'grammar'
+              ? (isPortuguese ? 'Listening & Speaking' : 'Listening & Speaking')
+              : c.activityType === 'speaking'
+              ? (isPortuguese ? 'Role-play' : 'Role-play')
+              : (isPortuguese ? 'Guided Chat' : 'Guided Chat');
+            return (
+              <View style={{
+                width: '100%', maxWidth: 360,
+                backgroundColor: 'rgba(217,119,6,0.08)',
+                borderWidth: 1, borderColor: 'rgba(217,119,6,0.25)',
+                borderRadius: 16, padding: 18, marginBottom: 20, alignItems: 'center',
+              }}>
+                <AppText style={{ fontSize: 14, color: '#92400E', fontWeight: '700', textAlign: 'center', marginBottom: 6 }}>
+                  {isPortuguese
+                    ? `Você fez ${c.score}%. Precisa de ${c.threshold}% pra desbloquear ${nextActivityLabel}.`
+                    : `You scored ${c.score}%. Need ${c.threshold}% to unlock ${nextActivityLabel}.`}
+                </AppText>
+                <TouchableOpacity
+                  onPress={() => {
+                    // Refazer: re-route mesmo path/params, reseta estado
+                    router.replace({
+                      pathname: '/(app)/learn-session',
+                      params: { ...params } as any,
+                    });
+                  }}
+                  style={{
+                    marginTop: 10, backgroundColor: '#D97706',
+                    borderRadius: 12, paddingVertical: 11, paddingHorizontal: 22,
+                  }}
+                >
+                  <AppText style={{ fontSize: 14, fontWeight: '800', color: '#FFF' }}>
+                    {isPortuguese ? 'Refazer' : 'Try again'}
+                  </AppText>
+                </TouchableOpacity>
+              </View>
+            );
+          })()}
+
           <TouchableOpacity
             onPress={() => {
               if (isV2) {
