@@ -583,8 +583,9 @@
 
 10. **read_answer**
     **Passage**: "Friend: 'I didn't get the job.' You: 'Oh no, I'm so sorry to hear that.' Friend: 'It's okay. I'll find another one.' You: 'That's a bummer, but I'm sure you will.' Friend: 'Thanks for being supportive.'"
-    **Question**: How does the speaker show empathy?
-    **Answer**: with "Oh no, I'm so sorry to hear that" and "That's a bummer, but I'm sure you will"
+    **Question**: How does the speaker show empathy? (write one phrase the speaker uses)
+    **Answer**: I'm so sorry to hear that
+    **Accepts**: Oh no I'm so sorry / sorry to hear that / That's a bummer / I'm sure you will
     **Explanation**: O texto mostra empatia através de reações como "Oh no", "I'm so sorry", "That's a bummer", combinadas com apoio "I'm sure you will".
 
 ### 2. Listening/Speaking (5 phrases)

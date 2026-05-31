@@ -139,7 +139,16 @@ function checkGrammar(ex: GrammarEx, answer: string): boolean {
   const c = normalise(ex.answer);
   if (u === c) return true;
   // Variantes aceitas (ex: "Thanks" / "Thank you" / "Thanks so much")
-  if (ex.accepts && ex.accepts.some(a => normalise(a) === u)) return true;
+  // Pra read_answer/fix_error/fill_gap, accepts tambem aceita via includes
+  // (input contem o accept OU accept contem input — tolerancia natural).
+  if (ex.accepts) {
+    const lenient = ex.type === 'read_answer' || ex.type === 'fix_error' || ex.type === 'fill_gap';
+    for (const a of ex.accepts) {
+      const na = normalise(a);
+      if (na === u) return true;
+      if (lenient && (u.includes(na) || na.includes(u))) return true;
+    }
+  }
   if (ex.type === 'multiple_choice' || ex.type === 'word_bank' || ex.type === 'word_order') return false;
 
   // If the expected answer uses a contraction, don't expand — test is specifically
@@ -168,7 +177,7 @@ function checkGrammar(ex: GrammarEx, answer: string): boolean {
     const cExp = answerHasContraction ? c : expandContractions(c);
     const uExp = answerHasContraction ? u : expandContractions(u);
     const words = cExp.split(' ').filter(w => w.length > 2);
-    return words.length > 0 && words.filter(w => uExp.includes(w)).length >= Math.ceil(words.length * 0.7);
+    return words.length > 0 && words.filter(w => uExp.includes(w)).length >= Math.ceil(words.length * 0.6);
   }
   return false;
 }

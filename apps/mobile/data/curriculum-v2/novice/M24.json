@@ -782,8 +782,14 @@
         {
           "type": "read_answer",
           "passage": "Friend: 'I didn't get the job.' You: 'Oh no, I'm so sorry to hear that.' Friend: 'It's okay. I'll find another one.' You: 'That's a bummer, but I'm sure you will.' Friend: 'Thanks for being supportive.'",
-          "question": "How does the speaker show empathy?",
-          "answer": "with \"Oh no, I'm so sorry to hear that\" and \"That's a bummer, but I'm sure you will\"",
+          "question": "How does the speaker show empathy? (write one phrase the speaker uses)",
+          "answer": "I'm so sorry to hear that",
+          "accepts": [
+            "Oh no I'm so sorry",
+            "sorry to hear that",
+            "That's a bummer",
+            "I'm sure you will"
+          ],
           "explanation": "O texto mostra empatia através de reações como \"Oh no\", \"I'm so sorry\", \"That's a bummer\", combinadas com apoio \"I'm sure you will\"."
         }
       ],
