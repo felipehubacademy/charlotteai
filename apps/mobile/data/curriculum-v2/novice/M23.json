@@ -1,0 +1,1047 @@
+{
+  "id": "M23",
+  "title": "Em viagem, no médico, ao telefone",
+  "level": "Novice",
+  "block": "A2",
+  "units_range": "N01–N05",
+  "theme": "English de sobrevivência real — aeroporto, hotel, direções, médico, telefone",
+  "goal": "Aluno sobrevive em situações práticas reais — pede informações, atende telefone, descreve sintomas, navega num hotel ou aeroporto.",
+  "connects_to": "I23 (tag questions + fillers reforçam essa conversação real no nível Inter).",
+  "module_chunks": [
+    "Where is the gate / boarding area / bathroom?",
+    "I'd like to check in / check out",
+    "Do you have a room available?",
+    "I'm here for business / vacation",
+    "How do I get to + place?",
+    "Excuse me, can you help me?",
+    "I lost my luggage / passport",
+    "My flight is delayed / cancelled",
+    "I don't feel well",
+    "I have a headache / stomachache / fever",
+    "Can you call a doctor?",
+    "Where's the pharmacy?",
+    "I need medicine / water / a doctor",
+    "Hello, this is + name + speaking",
+    "Can I speak to + person?",
+    "Can I leave a message?",
+    "Sorry, wrong number",
+    "Hold on a second",
+    "I'll call you back",
+    "Could you repeat that?",
+    "Speak slower, please"
+  ],
+  "units": [
+    {
+      "id": "N01",
+      "title": "No aeroporto",
+      "sub_cefr": "A2",
+      "grammar_focus": "Chunks de check-in, direções no aeroporto (cumulativo M01-M22)",
+      "markers": [
+        "survival"
+      ],
+      "real_life_context": "Você está no aeroporto e precisa encontrar o portão, fazer check-in, ou reportar um problema.",
+      "grammar": [
+        {
+          "type": "multiple_choice",
+          "sentence": "Excuse me, where _____ the boarding gate?",
+          "options": [
+            "is",
+            "are",
+            "has",
+            "do"
+          ],
+          "answer": "is",
+          "explanation": "Pergunta com \"where is + singular noun\". \"The boarding gate\" é singular, então usa \"is\". Padrão fixo de pergunta de localização: \"Where is + lugar?\"."
+        },
+        {
+          "type": "multiple_choice",
+          "sentence": "I'd like _____ check in for my flight.",
+          "options": [
+            "to",
+            "for",
+            "from",
+            "at"
+          ],
+          "answer": "to",
+          "explanation": "\"I'd like to + verbo\" — chunk fixo para pedidos educados. \"I'd like to check in\" — pedido educado padrão em aeroportos e hotéis."
+        },
+        {
+          "type": "word_bank",
+          "sentence": "My flight _____ delayed by two hours.",
+          "choices": [
+            "is",
+            "are",
+            "has",
+            "does"
+          ],
+          "answer": "is",
+          "explanation": "\"My flight is delayed\" — passive simples com \"is + past participle\". Padrão para reportar status de voo."
+        },
+        {
+          "type": "word_bank",
+          "sentence": "_____ I have a window seat, please?",
+          "choices": [
+            "Can",
+            "Do",
+            "Is",
+            "Are"
+          ],
+          "answer": "Can",
+          "explanation": "\"Can I have...?\" — pedido educado em check-in. Padrão para solicitar coisas específicas: \"Can I have a window seat / aisle seat / extra blanket?\"."
+        },
+        {
+          "type": "fill_gap",
+          "sentence": "I _____ my passport at the security check.",
+          "hint": "passado de \"lose\"",
+          "answer": "lost",
+          "explanation": "\"Lost\" — passado simples de \"lose\". Verbo irregular: lose → lost → lost. \"I lost my passport\" — frase crítica para reportar perda no aeroporto."
+        },
+        {
+          "type": "fill_gap",
+          "sentence": "_____ does the flight leave?",
+          "hint": "pergunta de horário",
+          "answer": "When (ou \"What time\")",
+          "explanation": "\"When does the flight leave?\" — pergunta padrão de horário. Pode também usar \"What time does the flight leave?\". Ambas funcionam."
+        },
+        {
+          "type": "fill_gap",
+          "sentence": "I'm here _____ business.",
+          "hint": "preposição para propósito",
+          "answer": "for",
+          "explanation": "\"I'm here for + propósito\" — chunk fixo na imigração. \"I'm here for business / vacation / a conference\". Preposição \"for\" é obrigatória."
+        },
+        {
+          "type": "fix_error",
+          "sentence": "I lost my luggages at the airport.",
+          "hint": "\"Luggage\" é incontável em inglês",
+          "answer": "I lost my luggage at the airport.",
+          "explanation": "\"Luggage\" em inglês é substantivo incontável — nunca tem plural com \"s\". Mesmo padrão: information, advice, furniture, baggage. Erro muito comum para lusófonos."
+        },
+        {
+          "type": "fix_error",
+          "sentence": "Where is the bathrooms?",
+          "hint": "Plural \"bathrooms\" precisa de \"are\"",
+          "answer": "Where are the bathrooms? (ou: Where is the bathroom?)",
+          "explanation": "Concordância: plural \"bathrooms\" → \"are\". Ou usar singular \"Where is the bathroom?\". Não pode misturar singular e plural."
+        },
+        {
+          "type": "read_answer",
+          "passage": "I'd like to check in for my flight to São Paulo. My passport is here. I have one suitcase to check, and I'd like a window seat if possible. My flight leaves at 8:30 from gate 24.",
+          "question": "What time does the flight leave?",
+          "answer": "8:30 (ou \"at 8:30\")",
+          "explanation": "O texto diz \"My flight leaves at 8:30 from gate 24\". Resposta direta — pratica leitura de informações específicas em situações de viagem."
+        }
+      ],
+      "listening_speaking": [
+        {
+          "text": "Where is the boarding gate?",
+          "context": "pergunta de localização"
+        },
+        {
+          "text": "I'd like to check in, please.",
+          "context": "pedido educado"
+        },
+        {
+          "text": "My flight is delayed by two hours.",
+          "context": "reportar status"
+        },
+        {
+          "text": "I lost my luggage at the airport.",
+          "context": "reportar perda"
+        },
+        {
+          "text": "I'm here for vacation.",
+          "context": "propósito da viagem"
+        }
+      ],
+      "roleplay": {
+        "scenario": "Charlotte é a atendente do balcão de check-in. Você está chegando ao aeroporto e precisa fazer check-in, perguntar sobre o portão, e reagir se algo der errado.",
+        "voiced_by": "charlotte",
+        "persona": "Charlotte",
+        "persona_outfit": "charlotte_casual",
+        "time_budget_sec": 90,
+        "opening_line": "Hi! Good morning. Can I see your passport and your ticket, please?",
+        "objectives": [
+          {
+            "id": 1,
+            "label_pt": "Pedir o check-in educadamente",
+            "label_en": "Politely request check-in",
+            "hidden_prompt": "user uses 'I'd like to check in' or 'Can I check in'",
+            "hint_pt": "I'd like to check in for my flight to São Paulo.",
+            "hint_en": "I'd like to check in for my flight to São Paulo."
+          },
+          {
+            "id": 2,
+            "label_pt": "Perguntar sobre o portão",
+            "label_en": "Ask about the gate",
+            "hidden_prompt": "user asks 'Where is the gate?' or 'Which gate?'",
+            "hint_pt": "Which gate is it, please?",
+            "hint_en": "Which gate is it, please?"
+          },
+          {
+            "id": 3,
+            "label_pt": "Reagir se houver problema (atraso)",
+            "label_en": "React to a problem (delay)",
+            "hidden_prompt": "user responds to a delay with 'Oh, really?' or 'Is it delayed?'",
+            "hint_pt": "Oh no, is the flight delayed?",
+            "hint_en": "Oh no, is the flight delayed?"
+          }
+        ],
+        "closing_cue": "Charlotte fecha com \"All set! Have a good flight!\" quando obj_3 baterem.",
+        "suggested_flow": "**Suggested flow** (referencial, 6 turnos):\n\n1. **Charlotte**: \"Hi! Good morning. Can I see your passport and your ticket, please?\"\n2. **Student**: ~\"I'd like to check in for my flight to São Paulo.\"\n3. **Charlotte**: \"Sure! Let me find you in the system. Aisle or window seat?\"\n4. **Student**: ~\"Which gate is it, please?\"\n5. **Charlotte**: \"Gate 24. Unfortunately, your flight is delayed about thirty minutes.\"\n6. **Student**: ~\"Oh no, is the flight delayed?\"\n7. **Charlotte**: \"Just half an hour. All set! Have a good flight!\"",
+        "evaluation_focus": [
+          "Chunks de viagem usados corretamente",
+          "\"I'd like to\" / \"Can I\" para pedidos educados",
+          "Reação natural a notícias"
+        ]
+      },
+      "guided_chat": {
+        "scenario": "Charlotte é uma viajante experiente que te ajuda a se preparar pro aeroporto.",
+        "voiced_by": "charlotte",
+        "persona": "Charlotte",
+        "persona_outfit": "charlotte_casual",
+        "intro_pt": "Charlotte te ajuda a se preparar pra viajar. Use chunks de aeroporto.",
+        "opening_message": "Going on a trip soon? What's the airport part you find most stressful?",
+        "objectives": [
+          {
+            "id": 1,
+            "label_pt": "Falar sobre uma situação no aeroporto",
+            "label_en": "Talk about an airport situation",
+            "hidden_prompt": "user describes an airport situation using vocab",
+            "hint_pt": "I always get nervous about check-in.",
+            "hint_en": "I always get nervous about check-in."
+          },
+          {
+            "id": 2,
+            "label_pt": "Perguntar algo prático",
+            "label_en": "Ask something practical",
+            "hidden_prompt": "user asks a practical airport question",
+            "hint_pt": "How early should I arrive?",
+            "hint_en": "How early should I arrive?"
+          },
+          {
+            "id": 3,
+            "label_pt": "Perguntar a Charlotte sobre ela",
+            "label_en": "Ask Charlotte about herself",
+            "hidden_prompt": "user asks Charlotte about her travel experience",
+            "hint_pt": "Do you travel a lot?",
+            "hint_en": "Do you travel a lot?"
+          }
+        ],
+        "closing_cue": "Charlotte fecha com \"You'll do great!\" quando obj_3 bater.",
+        "suggested_script": "**Script** (referencial, 7 turnos):\n\n1. **Charlotte**: \"Going on a trip soon? What's the airport part you find most stressful?\"\n2. **Student**: \"I always get nervous about check-in.\"\n3. **Charlotte**: \"Check-in is usually the easiest part! Just remember 'I'd like to check in'.\"\n4. **Student**: \"How early should I arrive?\"\n5. **Charlotte**: \"Two hours before international flights, one hour before domestic. What route are you flying?\"\n6. **Student**: \"Do you travel a lot?\"\n7. **Charlotte**: \"I do! Three or four trips a year. You'll do great!\"\n\n> N01 chat = LLM puro. Scaffold via hint_pt.\n\n---"
+      }
+    },
+    {
+      "id": "N02",
+      "title": "No hotel",
+      "sub_cefr": "A2",
+      "grammar_focus": "Check-in/out de hotel, tipos de quarto, problemas",
+      "markers": [
+        "survival"
+      ],
+      "real_life_context": "Você chega ao hotel e precisa fazer check-in, ou tem um problema com o quarto.",
+      "grammar": [
+        {
+          "type": "multiple_choice",
+          "sentence": "Do you _____ a room available for tonight?",
+          "options": [
+            "have",
+            "has",
+            "had",
+            "having"
+          ],
+          "answer": "have",
+          "explanation": "\"Do you have...?\" — pergunta padrão para verificar disponibilidade. Sempre \"have\" após \"do you\", nunca \"has\"."
+        },
+        {
+          "type": "multiple_choice",
+          "sentence": "I'd like to _____ in, please.",
+          "options": [
+            "check",
+            "checking",
+            "checks",
+            "checked"
+          ],
+          "answer": "check",
+          "explanation": "Após \"I'd like to\", sempre verbo no infinitivo sem \"to\" extra. \"Check in\" — phrasal verb padrão de hotel."
+        },
+        {
+          "type": "word_bank",
+          "sentence": "I have a reservation _____ the name of Silva.",
+          "choices": [
+            "under",
+            "on",
+            "at",
+            "by"
+          ],
+          "answer": "under",
+          "explanation": "\"Under the name of + nome\" — chunk fixo em hotéis. \"Under\" é a preposição padrão para \"no nome de\" em reservas."
+        },
+        {
+          "type": "word_bank",
+          "sentence": "The room _____ a problem with the air conditioning.",
+          "choices": [
+            "has",
+            "have",
+            "is",
+            "are"
+          ],
+          "answer": "has",
+          "explanation": "Singular \"the room\" → \"has\". \"The room has a problem\" — frase padrão para reportar problemas no quarto."
+        },
+        {
+          "type": "fill_gap",
+          "sentence": "What time is _____ -out tomorrow?",
+          "hint": "phrasal de hotel",
+          "answer": "check",
+          "explanation": "\"Check-out\" — phrasal verb fixo. Note o hífen quando usado como substantivo. Sem hífen quando verbo: \"to check out\"."
+        },
+        {
+          "type": "fill_gap",
+          "sentence": "Can I have a _____ -size bed, please?",
+          "hint": "tipo de cama king ou queen",
+          "answer": "king (ou \"queen\")",
+          "explanation": "\"King-size bed\" ou \"queen-size bed\" — chunks fixos para tipos de cama em hotéis. Ambos comuns nos pedidos de check-in."
+        },
+        {
+          "type": "fill_gap",
+          "sentence": "Is _____ included?",
+          "hint": "refeição da manhã",
+          "answer": "breakfast",
+          "explanation": "\"Is breakfast included?\" — pergunta padrão sobre o que vem incluído na diária. \"Breakfast\" não tem artigo neste chunk."
+        },
+        {
+          "type": "fix_error",
+          "sentence": "I want a room for two persons.",
+          "hint": "\"People\" é mais natural que \"persons\"",
+          "answer": "I want a room for two people. (ou: I'd like a room for two people.)",
+          "explanation": "\"People\" é o plural natural de \"person\" em inglês moderno. \"Persons\" só aparece em contextos legais formais. Melhor ainda: trocar \"I want\" por \"I'd like\" (mais educado)."
+        },
+        {
+          "type": "fix_error",
+          "sentence": "The shower not working in my room.",
+          "hint": "Falta \"is\" — \"is not working\"",
+          "answer": "The shower is not working in my room. (ou: The shower isn't working...)",
+          "explanation": "Inglês exige verbo \"to be\" em frases negativas com -ing. \"Is not working\" ou contração \"isn't working\". Sem \"is\", a frase fica incompleta."
+        },
+        {
+          "type": "read_answer",
+          "passage": "Good evening. I have a reservation under the name of Silva. I'd like a non-smoking room with a king-size bed. Is breakfast included in the rate? And what time is check-out tomorrow?",
+          "question": "What kind of bed does the guest want?",
+          "answer": "king-size (ou \"a king-size bed\")",
+          "explanation": "O texto diz \"I'd like a non-smoking room with a king-size bed\". Pratica identificação de detalhes específicos em pedidos de hotel."
+        }
+      ],
+      "listening_speaking": [
+        {
+          "text": "Do you have a room available?",
+          "context": "verificar disponibilidade"
+        },
+        {
+          "text": "I have a reservation under the name of Silva.",
+          "context": "identificar-se"
+        },
+        {
+          "text": "Is breakfast included?",
+          "context": "pergunta sobre serviços"
+        },
+        {
+          "text": "The shower is not working.",
+          "context": "reportar problema"
+        },
+        {
+          "text": "What time is check-out?",
+          "context": "informação prática"
+        }
+      ],
+      "roleplay": {
+        "scenario": "Charlotte é a recepcionista do hotel. Você está fazendo check-in e tem perguntas.",
+        "voiced_by": "charlotte",
+        "persona": "Charlotte",
+        "persona_outfit": "charlotte_casual",
+        "time_budget_sec": 90,
+        "opening_line": "Good evening, welcome! Are you checking in tonight?",
+        "objectives": [
+          {
+            "id": 1,
+            "label_pt": "Identificar-se com reserva",
+            "label_en": "Identify yourself with reservation",
+            "hidden_prompt": "user uses 'I have a reservation under...'",
+            "hint_pt": "Yes, I have a reservation under the name of Silva.",
+            "hint_en": "Yes, I have a reservation under the name of Silva."
+          },
+          {
+            "id": 2,
+            "label_pt": "Perguntar sobre breakfast ou wifi",
+            "label_en": "Ask about breakfast or wifi",
+            "hidden_prompt": "user asks about included services",
+            "hint_pt": "Is breakfast included?",
+            "hint_en": "Is breakfast included?"
+          },
+          {
+            "id": 3,
+            "label_pt": "Perguntar sobre check-out",
+            "label_en": "Ask about check-out",
+            "hidden_prompt": "user asks 'What time is check-out?'",
+            "hint_pt": "What time is check-out tomorrow?",
+            "hint_en": "What time is check-out tomorrow?"
+          }
+        ],
+        "closing_cue": "Charlotte fecha com \"Enjoy your stay!\" quando obj_3 bater.",
+        "suggested_flow": "**Suggested flow** (referencial, 6 turnos):\n\n1. **Charlotte**: \"Good evening, welcome! Are you checking in tonight?\"\n2. **Student**: ~\"Yes, I have a reservation under the name of Silva.\"\n3. **Charlotte**: \"Got it! You're in room 312, third floor.\"\n4. **Student**: ~\"Is breakfast included?\"\n5. **Charlotte**: \"Yes, breakfast is from 7 to 10 in the restaurant downstairs.\"\n6. **Student**: ~\"What time is check-out tomorrow?\"\n7. **Charlotte**: \"Check-out is at noon. Enjoy your stay!\"",
+        "evaluation_focus": [
+          "Chunk de reserva (\"under the name of\")",
+          "Perguntas sobre serviços",
+          "Pergunta sobre check-out"
+        ]
+      },
+      "guided_chat": {
+        "scenario": "Charlotte conversa sobre experiências de hotel.",
+        "voiced_by": "charlotte",
+        "persona": "Charlotte",
+        "persona_outfit": "charlotte_casual",
+        "intro_pt": "Charlotte troca histórias de hotel com você.",
+        "opening_message": "Have you ever stayed at a hotel? Any good or bad stories?",
+        "objectives": [
+          {
+            "id": 1,
+            "label_pt": "Contar uma experiência de hotel",
+            "label_en": "Share a hotel experience",
+            "hidden_prompt": "user shares hotel experience",
+            "hint_pt": "I stayed at a hotel in Rio last year.",
+            "hint_en": "I stayed at a hotel in Rio last year."
+          },
+          {
+            "id": 2,
+            "label_pt": "Descrever um detalhe (positivo ou negativo)",
+            "label_en": "Describe a detail",
+            "hidden_prompt": "user describes a hotel detail",
+            "hint_pt": "The breakfast was excellent.",
+            "hint_en": "The breakfast was excellent."
+          },
+          {
+            "id": 3,
+            "label_pt": "Perguntar a Charlotte",
+            "label_en": "Ask Charlotte",
+            "hidden_prompt": "user asks Charlotte about her hotels",
+            "hint_pt": "What about you?",
+            "hint_en": "What about you?"
+          }
+        ],
+        "closing_cue": "Charlotte fecha com \"Stories shared!\" quando obj_3 bater.",
+        "suggested_script": "**Script** (referencial, 7 turnos):\n\n1. **Charlotte**: \"Have you ever stayed at a hotel? Any good or bad stories?\"\n2. **Student**: \"I stayed at a hotel in Rio last year.\"\n3. **Charlotte**: \"Nice! How was it?\"\n4. **Student**: \"The breakfast was excellent.\"\n5. **Charlotte**: \"Breakfast can make or break a stay.\"\n6. **Student**: \"What about you?\"\n7. **Charlotte**: \"I once had a hotel where the shower didn't work for two days. Stories shared!\"\n\n> N02 chat = LLM puro. Scaffold via hint_pt.\n\n---"
+      }
+    },
+    {
+      "id": "N03",
+      "title": "Pedindo direções",
+      "sub_cefr": "A2",
+      "grammar_focus": "Perguntar e dar direções, preposições de lugar",
+      "markers": [
+        "survival"
+      ],
+      "real_life_context": "Você está perdido na cidade e precisa de direções para chegar a algum lugar.",
+      "grammar": [
+        {
+          "type": "multiple_choice",
+          "sentence": "Excuse me, how do I _____ to the train station?",
+          "options": [
+            "get",
+            "go",
+            "arrive",
+            "come"
+          ],
+          "answer": "get",
+          "explanation": "\"How do I get to + lugar?\" — chunk fixo para perguntar direção. \"Get\" é o verbo padrão neste contexto, não \"go\" ou \"arrive\"."
+        },
+        {
+          "type": "multiple_choice",
+          "sentence": "Turn _____ at the next corner.",
+          "options": [
+            "left",
+            "leftly",
+            "to left",
+            "on left"
+          ],
+          "answer": "left",
+          "explanation": "\"Turn left / right\" — direção sem artigo nem preposição. Padrão fixo em instruções de direção."
+        },
+        {
+          "type": "word_bank",
+          "sentence": "The bank is _____ the pharmacy.",
+          "choices": [
+            "next to",
+            "on",
+            "under",
+            "between"
+          ],
+          "answer": "next to",
+          "explanation": "\"Next to\" — preposição para \"ao lado de\". \"Between\" funcionaria para \"entre A e B\". As outras não cabem aqui."
+        },
+        {
+          "type": "word_bank",
+          "sentence": "Go straight _____ for two blocks.",
+          "choices": [
+            "ahead",
+            "before",
+            "after",
+            "over"
+          ],
+          "answer": "ahead",
+          "explanation": "\"Go straight ahead\" — chunk fixo para \"siga em frente\". \"Ahead\" não tem tradução literal — é parte do chunk de direção."
+        },
+        {
+          "type": "fill_gap",
+          "sentence": "The restaurant is _____ the corner.",
+          "hint": "preposição de localização",
+          "answer": "on (ou \"around\")",
+          "explanation": "\"On the corner\" — chunk fixo. \"Around the corner\" também funciona, mas tem sentido ligeiramente diferente (\"dobrando a esquina\")."
+        },
+        {
+          "type": "fill_gap",
+          "sentence": "Excuse _____, where is the museum?",
+          "hint": "pronome para \"me\"",
+          "answer": "me",
+          "explanation": "\"Excuse me\" — chunk fixo para abrir pergunta a estranhos. Sempre \"me\", nunca outras formas."
+        },
+        {
+          "type": "fill_gap",
+          "sentence": "The post office is _____ from here.",
+          "hint": "distância — \"far\" ou \"close/near\"",
+          "answer": "far (ou \"near\" ou \"close\")",
+          "explanation": "\"Far from here\" / \"near here\" / \"close to here\" — chunks para descrever distância. Todos funcionam aqui."
+        },
+        {
+          "type": "fix_error",
+          "sentence": "How I go to the airport?",
+          "hint": "Pergunta precisa de \"do\"",
+          "answer": "How do I go to the airport? (ou melhor: How do I get to the airport?)",
+          "explanation": "Em inglês, perguntas com verbos de ação precisam de auxiliar \"do/does/did\". \"How I go\" sem \"do\" é estrutura de afirmação, não de pergunta."
+        },
+        {
+          "type": "fix_error",
+          "sentence": "Turn in the right.",
+          "hint": "Sem preposição — \"Turn right\"",
+          "answer": "Turn right.",
+          "explanation": "\"Turn right\" / \"Turn left\" — direção sem \"in\" ou \"on\". Erro comum: lusófonos adicionam preposição que não existe no chunk inglês."
+        },
+        {
+          "type": "read_answer",
+          "passage": "Excuse me, can you help me? I'm looking for the train station. Just go straight ahead for two blocks, then turn left at the bank. The station is on the right, next to the pharmacy.",
+          "question": "What is next to the train station?",
+          "answer": "the pharmacy",
+          "explanation": "O texto diz \"The station is on the right, next to the pharmacy\". Pratica identificação de relações espaciais."
+        }
+      ],
+      "listening_speaking": [
+        {
+          "text": "Excuse me, how do I get to the station?",
+          "context": "abertura de pergunta"
+        },
+        {
+          "text": "Turn left at the corner.",
+          "context": "instrução direta"
+        },
+        {
+          "text": "Go straight ahead for two blocks.",
+          "context": "instrução de distância"
+        },
+        {
+          "text": "The bank is next to the pharmacy.",
+          "context": "descrição de localização"
+        },
+        {
+          "text": "Is it far from here?",
+          "context": "pergunta sobre distância"
+        }
+      ],
+      "roleplay": {
+        "scenario": "Charlotte é uma pessoa local que você para na rua para pedir direção.",
+        "voiced_by": "charlotte",
+        "persona": "Charlotte",
+        "persona_outfit": "charlotte_casual",
+        "time_budget_sec": 90,
+        "opening_line": "Hi! You look a bit lost. Need help finding something?",
+        "objectives": [
+          {
+            "id": 1,
+            "label_pt": "Pedir direção educadamente",
+            "label_en": "Politely ask for directions",
+            "hidden_prompt": "user uses 'Excuse me' + 'How do I get to...'",
+            "hint_pt": "Excuse me, how do I get to the train station?",
+            "hint_en": "Excuse me, how do I get to the train station?"
+          },
+          {
+            "id": 2,
+            "label_pt": "Confirmar ou pedir pra repetir",
+            "label_en": "Confirm or ask to repeat",
+            "hidden_prompt": "user says 'Could you repeat that?' or 'So I turn left?'",
+            "hint_pt": "So I turn left at the corner?",
+            "hint_en": "So I turn left at the corner?"
+          },
+          {
+            "id": 3,
+            "label_pt": "Perguntar sobre distância",
+            "label_en": "Ask about distance",
+            "hidden_prompt": "user asks 'Is it far?' or 'How long?'",
+            "hint_pt": "Is it far from here?",
+            "hint_en": "Is it far from here?"
+          }
+        ],
+        "closing_cue": "Charlotte fecha com \"Hope you find it!\" quando obj_3 bater.",
+        "suggested_flow": "**Suggested flow** (referencial, 6 turnos):\n\n1. **Charlotte**: \"Hi! You look a bit lost. Need help finding something?\"\n2. **Student**: ~\"Excuse me, how do I get to the train station?\"\n3. **Charlotte**: \"Sure! Just go straight ahead for two blocks, then turn left at the bank.\"\n4. **Student**: ~\"So I turn left at the corner?\"\n5. **Charlotte**: \"Yes, left at the bank. The station is on the right after that.\"\n6. **Student**: ~\"Is it far from here?\"\n7. **Charlotte**: \"About five minutes walking. Hope you find it!\"",
+        "evaluation_focus": [
+          "Abertura educada (\"Excuse me\")",
+          "Chunk fixo (\"How do I get to\")",
+          "Confirmação ou pergunta de distância"
+        ]
+      },
+      "guided_chat": {
+        "scenario": "Charlotte conversa sobre se você é bom em se orientar na cidade.",
+        "voiced_by": "charlotte",
+        "persona": "Charlotte",
+        "persona_outfit": "charlotte_casual",
+        "intro_pt": "Charlotte conversa sobre sentido de direção.",
+        "opening_message": "Are you good at finding your way in new cities, or do you get lost a lot?",
+        "objectives": [
+          {
+            "id": 1,
+            "label_pt": "Descrever-se como bom ou ruim de direção",
+            "label_en": "Describe yourself good or bad at directions",
+            "hidden_prompt": "user describes their direction skills",
+            "hint_pt": "I always get lost.",
+            "hint_en": "I always get lost."
+          },
+          {
+            "id": 2,
+            "label_pt": "Contar uma vez que se perdeu",
+            "label_en": "Tell a time you got lost",
+            "hidden_prompt": "user shares a lost-in-a-city story",
+            "hint_pt": "I got lost in Lisbon last year.",
+            "hint_en": "I got lost in Lisbon last year."
+          },
+          {
+            "id": 3,
+            "label_pt": "Perguntar a Charlotte",
+            "label_en": "Ask Charlotte",
+            "hidden_prompt": "user asks Charlotte about her sense of direction",
+            "hint_pt": "How about you?",
+            "hint_en": "How about you?"
+          }
+        ],
+        "closing_cue": "Charlotte fecha com \"We all get lost sometimes!\" quando obj_3 bater.",
+        "suggested_script": "**Script** (referencial, 7 turnos):\n\n1. **Charlotte**: \"Are you good at finding your way in new cities, or do you get lost a lot?\"\n2. **Student**: \"I always get lost.\"\n3. **Charlotte**: \"Same! Even with Google Maps. Where was the worst time?\"\n4. **Student**: \"I got lost in Lisbon last year.\"\n5. **Charlotte**: \"Lisbon is a maze with all those hills.\"\n6. **Student**: \"How about you?\"\n7. **Charlotte**: \"I got lost in Tokyo for two hours once. We all get lost sometimes!\"\n\n> N03 chat = LLM puro. Scaffold via hint_pt.\n\n---"
+      }
+    },
+    {
+      "id": "N04",
+      "title": "Não me sinto bem",
+      "sub_cefr": "A2",
+      "grammar_focus": "Sintomas, partes do corpo, expressões médicas básicas",
+      "markers": [
+        "survival"
+      ],
+      "real_life_context": "Você está doente e precisa explicar os sintomas, pedir remédio ou ver um médico.",
+      "grammar": [
+        {
+          "type": "multiple_choice",
+          "sentence": "I don't _____ well today.",
+          "options": [
+            "feel",
+            "feels",
+            "feeling",
+            "felt"
+          ],
+          "answer": "feel",
+          "explanation": "\"I don't feel + adjetivo\" — chunk fixo para reportar mal-estar. Após \"don't\", sempre verbo no infinitivo."
+        },
+        {
+          "type": "multiple_choice",
+          "sentence": "I _____ a headache.",
+          "options": [
+            "have",
+            "has",
+            "is",
+            "am"
+          ],
+          "answer": "have",
+          "explanation": "\"Have a headache\" — chunk fixo. Sintomas em inglês usam \"have\" + sintoma: have a headache / have a fever / have a cold."
+        },
+        {
+          "type": "word_bank",
+          "sentence": "I have a sore _____.",
+          "choices": [
+            "throat",
+            "nose",
+            "ear",
+            "stomach"
+          ],
+          "answer": "throat",
+          "explanation": "\"Sore throat\" — chunk fixo para dor de garganta. \"Sore\" se combina com partes específicas: sore throat, sore eyes, sore muscles."
+        },
+        {
+          "type": "word_bank",
+          "sentence": "Can you call a _____, please?",
+          "choices": [
+            "doctor",
+            "nurse",
+            "patient",
+            "hospital"
+          ],
+          "answer": "doctor",
+          "explanation": "\"Call a doctor\" — chamada de socorro padrão. \"Nurse\" é enfermeiro; \"patient\" é paciente; \"hospital\" é o lugar."
+        },
+        {
+          "type": "fill_gap",
+          "sentence": "I need some _____ for the pain.",
+          "hint": "remédio",
+          "answer": "medicine (ou \"medication\")",
+          "explanation": "\"Medicine\" — remédio (incontável em inglês). \"Medication\" também funciona, mais formal. Não usar \"medicines\" (incontável)."
+        },
+        {
+          "type": "fill_gap",
+          "sentence": "Where is the _____ pharmacy?",
+          "hint": "mais próxima",
+          "answer": "nearest (ou \"closest\")",
+          "explanation": "\"Nearest\" ou \"closest\" pharmacy — chunk para \"farmácia mais próxima\". Superlativos de proximidade."
+        },
+        {
+          "type": "fill_gap",
+          "sentence": "My stomach _____.",
+          "hint": "verbo para \"dói\"",
+          "answer": "hurts",
+          "explanation": "\"My stomach hurts\" — chunk fixo para \"minha barriga dói\". \"Hurt\" é verbo regular: hurts (presente), hurt (passado, idêntico)."
+        },
+        {
+          "type": "fix_error",
+          "sentence": "I am sick of the stomach.",
+          "hint": "\"Have a stomachache\" é mais natural",
+          "answer": "I have a stomachache. (ou: I have stomach pain.)",
+          "explanation": "\"Sick of\" significa \"cansado de\" (idiomático). Para \"dor de estômago\", use \"I have a stomachache\" ou \"My stomach hurts\". Erro de tradução literal."
+        },
+        {
+          "type": "fix_error",
+          "sentence": "I have hot.",
+          "hint": "Em inglês usa-se \"I have a fever\" ou \"I am hot\"",
+          "answer": "I have a fever. (ou: I am hot.)",
+          "explanation": "\"I have hot\" não existe em inglês. Para febre médica: \"I have a fever\". Para sensação de calor: \"I am hot / I feel hot\". Erro de tradução literal de \"estou com calor/febre\"."
+        },
+        {
+          "type": "read_answer",
+          "passage": "I don't feel well today. I have a headache and a sore throat. I think I might have a fever too. Where is the nearest pharmacy? I need some medicine and maybe I should see a doctor.",
+          "question": "What three symptoms does the speaker have?",
+          "answer": "headache, sore throat, and fever (ou \"a headache, a sore throat, and possibly a fever\")",
+          "explanation": "O texto lista três sintomas: \"I have a headache and a sore throat. I think I might have a fever too\". Pratica leitura de descrição de sintomas."
+        }
+      ],
+      "listening_speaking": [
+        {
+          "text": "I don't feel well today.",
+          "context": "reportar mal-estar geral"
+        },
+        {
+          "text": "I have a headache.",
+          "context": "sintoma específico"
+        },
+        {
+          "text": "My stomach hurts.",
+          "context": "dor localizada"
+        },
+        {
+          "text": "Can you call a doctor?",
+          "context": "pedido de socorro"
+        },
+        {
+          "text": "Where is the nearest pharmacy?",
+          "context": "pergunta prática"
+        }
+      ],
+      "roleplay": {
+        "scenario": "Charlotte é a farmacêutica. Você chega na farmácia se sentindo mal e precisa explicar os sintomas.",
+        "voiced_by": "charlotte",
+        "persona": "Charlotte",
+        "persona_outfit": "charlotte_casual",
+        "time_budget_sec": 90,
+        "opening_line": "Hi! How can I help you today?",
+        "objectives": [
+          {
+            "id": 1,
+            "label_pt": "Reportar mal-estar geral",
+            "label_en": "Report feeling unwell",
+            "hidden_prompt": "user says 'I don't feel well' or 'I'm not feeling well'",
+            "hint_pt": "Hi, I don't feel well today.",
+            "hint_en": "Hi, I don't feel well today."
+          },
+          {
+            "id": 2,
+            "label_pt": "Descrever sintomas específicos",
+            "label_en": "Describe specific symptoms",
+            "hidden_prompt": "user describes symptoms with 'I have a...'",
+            "hint_pt": "I have a headache and a sore throat.",
+            "hint_en": "I have a headache and a sore throat."
+          },
+          {
+            "id": 3,
+            "label_pt": "Perguntar sobre remédio",
+            "label_en": "Ask about medicine",
+            "hidden_prompt": "user asks 'Do you have something for...?'",
+            "hint_pt": "Do you have something for the pain?",
+            "hint_en": "Do you have something for the pain?"
+          }
+        ],
+        "closing_cue": "Charlotte fecha com \"Feel better soon!\" quando obj_3 bater.",
+        "suggested_flow": "**Suggested flow** (referencial, 6 turnos):\n\n1. **Charlotte**: \"Hi! How can I help you today?\"\n2. **Student**: ~\"Hi, I don't feel well today.\"\n3. **Charlotte**: \"Sorry to hear that. What's wrong?\"\n4. **Student**: ~\"I have a headache and a sore throat.\"\n5. **Charlotte**: \"Could be a cold. Do you have any other symptoms?\"\n6. **Student**: ~\"Do you have something for the pain?\"\n7. **Charlotte**: \"Yes, this one works well. Take it every six hours. Feel better soon!\"",
+        "evaluation_focus": [
+          "\"I don't feel well\" para mal-estar",
+          "\"I have a + sintoma\" para detalhes",
+          "Pedido de remédio"
+        ]
+      },
+      "guided_chat": {
+        "scenario": "Charlotte conversa sobre quando você está doente e como cuida da saúde.",
+        "voiced_by": "charlotte",
+        "persona": "Charlotte",
+        "persona_outfit": "charlotte_casual",
+        "intro_pt": "Charlotte conversa sobre saúde e cuidados quando você está doente.",
+        "opening_message": "When you're sick, do you rest at home or push through and go to work?",
+        "objectives": [
+          {
+            "id": 1,
+            "label_pt": "Descrever sua estratégia",
+            "label_en": "Describe your strategy",
+            "hidden_prompt": "user describes what they do when sick",
+            "hint_pt": "I always rest at home.",
+            "hint_en": "I always rest at home."
+          },
+          {
+            "id": 2,
+            "label_pt": "Falar do último resfriado/doença",
+            "label_en": "Talk about your last illness",
+            "hidden_prompt": "user describes their last cold or illness",
+            "hint_pt": "Last month I had a bad cold.",
+            "hint_en": "Last month I had a bad cold."
+          },
+          {
+            "id": 3,
+            "label_pt": "Perguntar a Charlotte",
+            "label_en": "Ask Charlotte",
+            "hidden_prompt": "user asks Charlotte about her habits",
+            "hint_pt": "What do you do?",
+            "hint_en": "What do you do?"
+          }
+        ],
+        "closing_cue": "Charlotte fecha com \"Stay healthy!\" quando obj_3 bater.",
+        "suggested_script": "**Script** (referencial, 7 turnos):\n\n1. **Charlotte**: \"When you're sick, do you rest at home or push through and go to work?\"\n2. **Student**: \"I always rest at home.\"\n3. **Charlotte**: \"Smart. Rest is the best medicine.\"\n4. **Student**: \"Last month I had a bad cold.\"\n5. **Charlotte**: \"Oh no. How long did it last?\"\n6. **Student**: \"What do you do?\"\n7. **Charlotte**: \"I rest, drink tea, sleep a lot. Stay healthy!\"\n\n> N04 chat = LLM puro. Scaffold via hint_pt.\n\n---"
+      }
+    },
+    {
+      "id": "N05",
+      "title": "Ao telefone",
+      "sub_cefr": "A2",
+      "grammar_focus": "Chunks de telefonema — abrir, identificar, pedir, recados, fechar",
+      "markers": [
+        "survival"
+      ],
+      "real_life_context": "Você atende ou faz uma ligação em inglês — apresentação, pedidos, deixar recado, encerrar.",
+      "grammar": [
+        {
+          "type": "multiple_choice",
+          "sentence": "Hello, this is Maria _____.",
+          "options": [
+            "speaking",
+            "speaks",
+            "spoke",
+            "spoken"
+          ],
+          "answer": "speaking",
+          "explanation": "\"This is + nome + speaking\" — chunk fixo de identificação ao telefone. Sempre \"speaking\" no gerúndio."
+        },
+        {
+          "type": "multiple_choice",
+          "sentence": "Can I _____ to John, please?",
+          "options": [
+            "speak",
+            "talk",
+            "say",
+            "tell"
+          ],
+          "answer": "speak",
+          "explanation": "\"Can I speak to + pessoa?\" — chunk fixo para pedir para falar com alguém. \"Speak to\" é o padrão; \"talk to\" também funciona mas menos formal."
+        },
+        {
+          "type": "word_bank",
+          "sentence": "_____ a moment, please.",
+          "choices": [
+            "Hold on",
+            "Stop on",
+            "Wait of",
+            "Put on"
+          ],
+          "answer": "Hold on",
+          "explanation": "\"Hold on\" — chunk fixo para \"aguarde um momento\". \"Wait\" sozinho funciona menos; \"hold on\" é o phrasal natural."
+        },
+        {
+          "type": "word_bank",
+          "sentence": "Sorry, _____ number.",
+          "choices": [
+            "wrong",
+            "bad",
+            "incorrect",
+            "mistake"
+          ],
+          "answer": "wrong",
+          "explanation": "\"Wrong number\" — chunk fixo. \"Sorry, wrong number\" é o que se diz quando você ligou para o número errado. Não é \"bad\" ou \"incorrect\" no chunk."
+        },
+        {
+          "type": "fill_gap",
+          "sentence": "Can I _____ a message?",
+          "hint": "verbo para \"deixar\"",
+          "answer": "leave",
+          "explanation": "\"Leave a message\" — chunk fixo. \"Leave\" significa \"deixar\". Padrão para gravar recado quando a pessoa não está."
+        },
+        {
+          "type": "fill_gap",
+          "sentence": "I'll _____ you back later.",
+          "hint": "phrasal verb de retorno",
+          "answer": "call",
+          "explanation": "\"Call back\" — phrasal verb para \"ligar de volta\". \"I'll call you back\" — promessa fixa ao telefone."
+        },
+        {
+          "type": "fill_gap",
+          "sentence": "Could you _____ that, please?",
+          "hint": "verbo para \"repetir\"",
+          "answer": "repeat",
+          "explanation": "\"Could you repeat that?\" — pergunta educada para pedir repetição. Útil quando não se entende algo no telefone."
+        },
+        {
+          "type": "fix_error",
+          "sentence": "Hi, my name is John speaking.",
+          "hint": "Use \"This is John speaking\" (sem \"my name\")",
+          "answer": "Hi, this is John speaking.",
+          "explanation": "Em inglês ao telefone, dizemos \"This is + nome + speaking\", não \"my name is\". Erro comum de tradução literal do português \"aqui é o João\"."
+        },
+        {
+          "type": "fix_error",
+          "sentence": "Speak more slow, please.",
+          "hint": "Use \"slowly\" (advérbio)",
+          "answer": "Speak slower, please. (ou: Speak more slowly, please.)",
+          "explanation": "\"Slow\" é adjetivo; \"slowly\" é advérbio. Para modificar \"speak\" (verbo), usa-se \"slowly\". Comparativo: \"more slowly\" ou \"slower\". Ambos funcionam."
+        },
+        {
+          "type": "read_answer",
+          "passage": "Hello? Hi, this is Maria speaking. Can I speak to John, please? Oh, he's not there? Can I leave a message? Please tell him Maria called and I'll call him back tomorrow at 3 PM. Thank you!",
+          "question": "When will Maria call back?",
+          "answer": "tomorrow at 3 PM (ou \"at 3 PM tomorrow\")",
+          "explanation": "O texto diz \"I'll call him back tomorrow at 3 PM\". Pratica leitura de detalhes em recado telefônico."
+        }
+      ],
+      "listening_speaking": [
+        {
+          "text": "Hello, this is Maria speaking.",
+          "context": "identificação ao telefone"
+        },
+        {
+          "text": "Can I speak to John, please?",
+          "context": "pedido para falar com alguém"
+        },
+        {
+          "text": "Hold on a second.",
+          "context": "pedir espera"
+        },
+        {
+          "text": "Can I leave a message?",
+          "context": "deixar recado"
+        },
+        {
+          "text": "Could you repeat that, please?",
+          "context": "pedir repetição"
+        }
+      ],
+      "roleplay": {
+        "scenario": "Charlotte atende o telefone. Você está ligando e precisa pedir para falar com alguém ou deixar recado.",
+        "voiced_by": "charlotte",
+        "persona": "Charlotte",
+        "persona_outfit": "charlotte_casual",
+        "time_budget_sec": 90,
+        "opening_line": "Hello?",
+        "objectives": [
+          {
+            "id": 1,
+            "label_pt": "Apresentar-se ao telefone",
+            "label_en": "Identify yourself on the phone",
+            "hidden_prompt": "user uses 'This is X speaking' or 'Hi, this is X'",
+            "hint_pt": "Hi, this is Maria speaking.",
+            "hint_en": "Hi, this is Maria speaking."
+          },
+          {
+            "id": 2,
+            "label_pt": "Pedir pra falar com alguém",
+            "label_en": "Ask to speak to someone",
+            "hidden_prompt": "user uses 'Can I speak to...?'",
+            "hint_pt": "Can I speak to John, please?",
+            "hint_en": "Can I speak to John, please?"
+          },
+          {
+            "id": 3,
+            "label_pt": "Deixar recado ou prometer retorno",
+            "label_en": "Leave a message or promise to call back",
+            "hidden_prompt": "user uses 'Can I leave a message?' or 'I'll call back'",
+            "hint_pt": "Can I leave a message?",
+            "hint_en": "Can I leave a message?"
+          }
+        ],
+        "closing_cue": "Charlotte fecha com \"I'll let him know!\" quando obj_3 bater.",
+        "suggested_flow": "**Suggested flow** (referencial, 6 turnos):\n\n1. **Charlotte**: \"Hello?\"\n2. **Student**: ~\"Hi, this is Maria speaking.\"\n3. **Charlotte**: \"Hi Maria, how can I help you?\"\n4. **Student**: ~\"Can I speak to John, please?\"\n5. **Charlotte**: \"Sorry, John's not here right now. Can I help with something?\"\n6. **Student**: ~\"Can I leave a message?\"\n7. **Charlotte**: \"Of course! What would you like me to tell him? I'll let him know!\"",
+        "evaluation_focus": [
+          "\"This is + nome + speaking\" para identificação",
+          "\"Can I speak to\" para pedido",
+          "Recado claro"
+        ]
+      },
+      "guided_chat": {
+        "scenario": "Charlotte conversa sobre quando você precisou usar inglês ao telefone.",
+        "voiced_by": "charlotte",
+        "persona": "Charlotte",
+        "persona_outfit": "charlotte_casual",
+        "intro_pt": "Charlotte conversa sobre telefonemas em inglês — uma das partes mais desafiadoras pra muita gente.",
+        "opening_message": "Phone calls in English can be tough — no body language to help. How do you feel about phone calls?",
+        "objectives": [
+          {
+            "id": 1,
+            "label_pt": "Descrever como você se sente",
+            "label_en": "Describe how you feel",
+            "hidden_prompt": "user describes their feeling about phone calls",
+            "hint_pt": "I get really nervous on the phone.",
+            "hint_en": "I get really nervous on the phone."
+          },
+          {
+            "id": 2,
+            "label_pt": "Contar uma experiência",
+            "label_en": "Share an experience",
+            "hidden_prompt": "user shares a phone call experience",
+            "hint_pt": "Last week I called a hotel in English.",
+            "hint_en": "Last week I called a hotel in English."
+          },
+          {
+            "id": 3,
+            "label_pt": "Perguntar a Charlotte",
+            "label_en": "Ask Charlotte",
+            "hidden_prompt": "user asks Charlotte for tips",
+            "hint_pt": "Any tips?",
+            "hint_en": "Any tips?"
+          }
+        ],
+        "closing_cue": "Charlotte fecha com \"Practice makes it easier!\" quando obj_3 bater.",
+        "suggested_script": "**Script** (referencial, 7 turnos):\n\n1. **Charlotte**: \"Phone calls in English can be tough — no body language to help. How do you feel about phone calls?\"\n2. **Student**: \"I get really nervous on the phone.\"\n3. **Charlotte**: \"Totally normal! It's the hardest skill.\"\n4. **Student**: \"Last week I called a hotel in English.\"\n5. **Charlotte**: \"Nice! How did it go?\"\n6. **Student**: \"Any tips?\"\n7. **Charlotte**: \"Start with 'Hi, this is X speaking' — gives you confidence. Practice makes it easier!\"\n\n> N05 chat = LLM puro. Scaffold via hint_pt.\n\n---"
+      }
+    }
+  ],
+  "cross_unit_consolidation": [
+    "Sobreviver em aeroporto: pedir check-in, perguntar gate, reportar atraso/perda",
+    "Sobreviver em hotel: fazer check-in, perguntar serviços, reportar problemas, perguntar check-out",
+    "Pedir e entender direções: \"How do I get to\", \"Turn left/right\", \"Go straight\", preposições de lugar",
+    "Reportar sintomas: \"I don't feel well\", \"I have a + sintoma\", pedir remédio ou médico",
+    "Conduzir telefonema básico: identificar-se, pedir para falar com alguém, deixar recado, prometer retorno"
+  ]
+}
