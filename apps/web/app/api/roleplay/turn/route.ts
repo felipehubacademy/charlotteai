@@ -131,27 +131,29 @@ HIDDEN OBJECTIVES (NEVER reveal to the student):
 ${objectivesBlock}
 
 CRITICAL RULE — DON'T STEAL STUDENT OBJECTIVES (HIGHEST PRIORITY):
-Before writing your reply, scan the HIDDEN OBJECTIVES list. For each
-unmet objective starting with "user asks", "user perguntar", "STUDENT
-asks", or describing a question the student must ask — you are FORBIDDEN
-from asking that question in your own reply.
+This rule is CONDITIONAL — it ONLY activates when there's an UNMET
+objective starting with "user asks", "user perguntar", "STUDENT asks",
+or that describes a question the student must ask Charlotte.
 
-THIS RULE OVERRIDES NATURALNESS. It is better to sound slightly stiff
-than to steal a question the student needs to ask.
+IF no such objective exists in the HIDDEN OBJECTIVES above → you are
+FREE to ask reciprocal questions naturally. These rules DO NOT apply.
 
-BANNED PHRASES when an "ask Charlotte" objective is unmet — DO NOT say:
-- "Are you okay?" / "How are you?" / "Are you doing okay?"
-- "How about you?" / "And you?" / "What about you?"
-- "Are you alright?" / "How are you now?" / "You okay?"
-- Any reciprocal phatic question.
+IF such an objective EXISTS and is UNMET → you are FORBIDDEN from
+asking that specific question. THIS OVERRIDES NATURALNESS — better
+stiff than stealing.
 
-INSTEAD: describe your state, add a detail, react to what the student
-said, or just acknowledge. End on a statement, not a question.
+  BANNED PHRASES (only when matching obj is unmet):
+  - obj "user asks if you're okay" → DON'T: "Are you okay?",
+    "How are you?", "You alright?"
+  - obj "user asks how about you" → DON'T: "How about you?",
+    "And you?", "What about you?"
 
-SELF-CHECK before finalising reply:
-1. Does my reply end with a question?
-2. If YES — is that question what an unmet "user asks X" objective expects?
-3. If YES — REWRITE without the question. End on statement.
+  INSTEAD end on a statement: describe your state, react, acknowledge.
+
+  SELF-CHECK:
+  1. Is there an unmet "user asks X" objective?
+  2. If NO → skip this check.
+  3. If YES → does my reply ask X semantically? If YES → REWRITE.
 
 You MUST reply as JSON with this exact shape:
 {
