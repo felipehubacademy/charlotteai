@@ -138,6 +138,8 @@ function checkGrammar(ex: GrammarEx, answer: string): boolean {
   const u = normalise(answer);
   const c = normalise(ex.answer);
   if (u === c) return true;
+  // Variantes aceitas (ex: "Thanks" / "Thank you" / "Thanks so much")
+  if (ex.accepts && ex.accepts.some(a => normalise(a) === u)) return true;
   if (ex.type === 'multiple_choice' || ex.type === 'word_bank' || ex.type === 'word_order') return false;
 
   // If the expected answer uses a contraction, don't expand — test is specifically

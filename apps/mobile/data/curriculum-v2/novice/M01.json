@@ -91,9 +91,14 @@
         {
           "type": "fill_gap",
           "sentence": "A: How are you? B: I'm fine, _____.",
-          "hint": "Resposta educada após \"I'm fine\"",
+          "hint": "Resposta educada após \"I'm fine\" (forma curta ou completa)",
           "answer": "thank you",
-          "explanation": "\"I'm fine, thank you\" é a resposta educada padrão. Em conversa casual também se usa \"I'm fine, thanks\"."
+          "accepts": [
+            "thanks",
+            "thanks a lot",
+            "thank you so much"
+          ],
+          "explanation": "\"Thank you\" é a forma educada padrão. Em conversa casual, \"Thanks\" funciona igual — ambas valem. Em inglês falado, \"Thanks\" é até mais frequente."
         },
         {
           "type": "fill_gap",
@@ -292,9 +297,9 @@
         {
           "type": "fill_gap",
           "sentence": "Hi! _____ is my friend Tom.",
-          "hint": "Apresentando alguém (perto de você)",
+          "hint": "Use \"This\" (começa com T) — quando apresenta alguém perto de você, igual \"Este é...\" em português",
           "answer": "This",
-          "explanation": "\"This is + pessoa\" é a forma padrão de apresentar alguém. \"This is my friend Tom\" = \"Este é meu amigo Tom\"."
+          "explanation": "\"This is + pessoa\" = \"Este é + pessoa\". Use \"This\" pra apresentar alguém que está perto de você. Memoriza esse chunk: \"This is my friend ___\" funciona pra qualquer nome."
         },
         {
           "type": "fix_error",

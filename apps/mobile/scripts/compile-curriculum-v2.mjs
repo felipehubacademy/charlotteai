@@ -333,6 +333,7 @@ function parseGrammarExercise(raw) {
   const choices        = field(raw, 'Choices');
   const hint           = field(raw, 'Hint');
   const answer         = field(raw, 'Answer');
+  const accepts        = field(raw, 'Accepts');   // variantes adicionais aceitas (slash-separated)
   const explanation    = field(raw, 'Explanation');
   const contextPt      = field(raw, 'Context PT') || field(raw, 'context_pt');
   const wordsField     = field(raw, 'Words');
@@ -345,6 +346,7 @@ function parseGrammarExercise(raw) {
   if (choices)        ex.choices = splitSlash(choices);
   if (hint)           ex.hint = hint;
   if (answer)         ex.answer = answer;
+  if (accepts)        ex.accepts = splitSlash(accepts);
   if (explanation)    ex.explanation = explanation;
   if (contextPt)      ex.context_pt = contextPt;
   if (wordsField)     ex.words = splitSlash(wordsField);

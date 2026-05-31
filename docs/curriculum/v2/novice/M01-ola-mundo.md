@@ -64,9 +64,10 @@
    **Explanation**: "See you later" é uma despedida informal muito comum. Significa "até mais tarde" ou simplesmente "até mais".
 
 5. **fill_gap** — "A: How are you? B: I'm fine, _____."
-   **Hint**: Resposta educada após "I'm fine"
+   **Hint**: Resposta educada após "I'm fine" (forma curta ou completa)
    **Answer**: thank you
-   **Explanation**: "I'm fine, thank you" é a resposta educada padrão. Em conversa casual também se usa "I'm fine, thanks".
+   **Accepts**: thanks / thanks a lot / thank you so much
+   **Explanation**: "Thank you" é a forma educada padrão. Em conversa casual, "Thanks" funciona igual — ambas valem. Em inglês falado, "Thanks" é até mais frequente.
 
 6. **fill_gap** — "_____ morning! How are you?"
    **Hint**: Saudação da manhã
@@ -233,9 +234,9 @@ Charlotte fala via ElevenLabs (Rachel). Aluno repete; Azure Speech avalia pronú
    **Explanation**: "Her name" é como "she" — terceira pessoa do singular. O verbo "to be" fica "is".
 
 7. **fill_gap** — "Hi! _____ is my friend Tom."
-   **Hint**: Apresentando alguém (perto de você)
+   **Hint**: Use "This" (começa com T) — quando apresenta alguém perto de você, igual "Este é..." em português
    **Answer**: This
-   **Explanation**: "This is + pessoa" é a forma padrão de apresentar alguém. "This is my friend Tom" = "Este é meu amigo Tom".
+   **Explanation**: "This is + pessoa" = "Este é + pessoa". Use "This" pra apresentar alguém que está perto de você. Memoriza esse chunk: "This is my friend ___" funciona pra qualquer nome.
 
 8. **fix_error** — "I are a student."
    **Hint**: Verbo "to be" com "I"

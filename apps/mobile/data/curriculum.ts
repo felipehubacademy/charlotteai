@@ -14,6 +14,9 @@ export type PronExType    = 'repeat' | 'listen_write' | 'minimal_pairs' | 'sente
 
 export interface GrammarEx {
   type:        GrammarExType;
+  /** Variantes adicionais aceitas alem do `answer`. Use para acolher
+   *  formas naturais ("Thanks" / "Thank you" / "Thanks so much"). */
+  accepts?:    string[];
   sentence?:   string;
   passage?:    string;
   question?:   string;
