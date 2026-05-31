@@ -847,6 +847,171 @@
 
 ---
 
+## Unit I06 — Trabalho expandido
+
+> **Sub-CEFR**: B2 | **Grammar focus**: Workplace English — professional vocabulary, role descriptions, work context (Fase B extra unit)
+> **Markers**: [survival] [denso]
+> **Real-life context**: You discuss work life fluently — your role, company, colleagues, work modes, salary, career stages.
+
+### 1. Grammar (10 exercises)
+
+1. **multiple_choice** — "I work _____ a tech company."
+   **Options**: for / at / in / by
+   **Answer**: for
+   **Explanation**: "Work for + company name" — preposition for employer relationship. "I work for Google / for a startup". Different from "work at" (location) or "work in" (industry/field). Common error: using "in" instead of "for".
+
+2. **multiple_choice** — "I work _____ marketing."
+   **Options**: in / for / at / on
+   **Answer**: in
+   **Explanation**: "Work in + field/industry" — preposition for area of work. "I work in marketing / in finance / in healthcare". Different from "work for" (company) or "work at" (specific location).
+
+3. **word_bank** — "What do you do _____ a living?"
+   **Choices**: for / in / about / by
+   **Answer**: for
+   **Explanation**: "What do you do for a living?" — standard professional small-talk question asking about someone's job. Fixed chunk — never "What do you do in a living?" or other variations.
+
+4. **word_bank** — "My _____ is really tight this quarter."
+   **Choices**: deadline / dateline / line / due
+   **Answer**: deadline
+   **Explanation**: "Deadline" = date by which something must be done. "Dateline" is a journalism term (where news was filed) — different word. "Due date" works in some contexts but "deadline" is the universal business term.
+
+5. **fill_gap** — "I got a 5% _____ this year."
+   **Hint**: salary increase
+   **Answer**: raise
+   **Explanation**: "Raise" = salary increase (American English). British English: "rise". "Bonus" is a one-time payment, not a permanent increase. "Promotion" is moving up in title/role, often with raise. Different concepts.
+
+6. **fill_gap** — "I work _____ — three days in office, two at home."
+   **Hint**: mixed work mode
+   **Answer**: hybrid
+   **Explanation**: "Hybrid" = mix of remote and office work. Modern workplace term. Other modes: "remote" (fully from home), "in-office" (fully from office), "fully remote" (emphatic). Common in 2020s workplace vocabulary.
+
+7. **fill_gap** — "Our team's _____ is at 10 every morning."
+   **Hint**: short daily meeting
+   **Answer**: meeting (or "standup" / "sync" / "call")
+   **Explanation**: Workplace meeting vocabulary: "meeting" (general), "standup" (short daily — from agile), "sync" (catch-up between specific people), "call" (any meeting, often virtual), "1-on-1" (one-on-one with manager). Each has slightly different connotation.
+
+8. **fix_error** — "I work in IBM."
+   **Hint**: For company name, use "work for" or "work at"
+   **Answer**: I work for IBM. (or: I work at IBM.)
+   **Explanation**: "Work in + company" doesn't work in English. Use "work for IBM" (employer relationship) or "work at IBM" (location/affiliation). "Work in" only for field ("I work in tech") or location-as-area ("I work in São Paulo").
+
+9. **fix_error** — "My salary increased by 1000 dollars promotion."
+   **Hint**: Restructure with "raise" or "promotion"
+   **Answer**: I got a $1000 raise. (or: I got a promotion with a $1000 raise.)
+   **Explanation**: "Salary increased by X promotion" mixes terms incorrectly. Either describe it as a "raise" (salary increase) or a "promotion" (new role, may or may not include raise). Use "got a raise" / "got promoted" as natural verbal forms.
+
+10. **read_answer**
+    **Passage**: "I work for a fintech startup in São Paulo. I've been in software engineering for eight years. We're a hybrid team — three days in the office, two remote. My manager is great, the team is small, and I got a promotion last quarter. The hours are long, but the work is exciting."
+    **Question**: What's the speaker's work mode?
+    **Answer**: hybrid (three days in office, two remote)
+    **Explanation**: The text uses workplace vocabulary: "work for [company]", "in software engineering" (field), "hybrid team" (work mode), "manager", "got a promotion". Each is a high-frequency professional chunk.
+
+### 2. Listening/Speaking (5 phrases)
+
+1. **"I work for a tech company."** — employer relationship
+2. **"I work in marketing."** — industry/field
+3. **"What do you do for a living?"** — job small-talk question
+4. **"I work hybrid — three days in office, two remote."** — work mode
+5. **"I got a promotion last quarter."** — career update
+
+### 3. Role-play
+
+**Cenário**: Charlotte meets you at a networking event. You exchange professional information using workplace vocabulary.
+**Tipo**: Live Voice
+**Voiced by**: `charlotte`
+**Persona**: Charlotte
+**Persona outfit**: `charlotte_casual`
+**Time budget**: 180s
+**Opening line**: "Hi! What do you do for a living?"
+
+**Sub-objectives** (3 objetivos):
+
+1. **id**: 1
+   **label_pt**: "Descrever sua profissão"
+   **label_en**: "Describe your profession"
+   **hidden_prompt**: "user uses 'I work for / in' + role"
+   **hint_pt**: "I work for a consulting firm. I'm in strategy."
+   **hint_en**: "I work for a consulting firm. I'm in strategy."
+
+2. **id**: 2
+   **label_pt**: "Falar do work mode"
+   **label_en**: "Talk about work mode"
+   **hidden_prompt**: "user mentions remote/hybrid/in-office"
+   **hint_pt**: "We're fully remote, which I love. I haven't been to the office in two years."
+   **hint_en**: "We're fully remote, which I love. I haven't been to the office in two years."
+
+3. **id**: 3
+   **label_pt**: "Perguntar a Charlotte sobre o trabalho"
+   **label_en**: "Ask Charlotte about her work"
+   **hidden_prompt**: "user asks Charlotte work question"
+   **hint_pt**: "What about you? What do you do?"
+   **hint_en**: "What about you? What do you do?"
+
+**Closing cue**: Charlotte fecha com "Nice meeting you — let's connect on LinkedIn." quando obj_3 bater.
+
+**Suggested flow** (referencial, 6 turnos):
+
+1. **Charlotte**: "Hi! What do you do for a living?"
+2. **Student**: ~"I work for a consulting firm. I'm in strategy."
+3. **Charlotte**: "Cool! Do you go to the office often?"
+4. **Student**: ~"We're fully remote, which I love. I haven't been to the office in two years."
+5. **Charlotte**: "Lucky! I'm hybrid — three days in."
+6. **Student**: ~"What about you? What do you do?"
+7. **Charlotte**: "I'm a UX designer at a healthcare startup. Nice meeting you — let's connect on LinkedIn."
+
+**Evaluation focus**:
+- Correct prepositions (for / in / at)
+- Work mode vocabulary (remote / hybrid / in-office)
+- Professional small-talk register
+
+### 4. Guided Chat
+
+**Cenário**: Charlotte discusses career trajectory with you. You use workplace vocabulary to discuss your path.
+**Voiced by**: `charlotte`
+**Persona**: Charlotte
+**Persona outfit**: `charlotte_casual`
+**Intro (em EN)**: "Charlotte talks careers. Use workplace vocabulary."
+**Opening message**: "I just got a promotion last week — finally. Took two years longer than expected."
+
+**Sub-objectives** (3 objetivos):
+
+1. **id**: 1
+   **label_pt**: "Comentar sobre a promoção"
+   **label_en**: "Comment on the promotion"
+   **hidden_prompt**: "user reacts with workplace vocab"
+   **hint_pt**: "Congratulations! Did you get a raise too?"
+   **hint_en**: "Congratulations! Did you get a raise too?"
+
+2. **id**: 2
+   **label_pt**: "Falar sobre seu trabalho"
+   **label_en**: "Talk about your work"
+   **hidden_prompt**: "user shares work info"
+   **hint_pt**: "I've been in software engineering for five years now."
+   **hint_en**: "I've been in software engineering for five years now."
+
+3. **id**: 3
+   **label_pt**: "Perguntar sobre o trabalho de Charlotte"
+   **label_en**: "Ask about Charlotte's work"
+   **hidden_prompt**: "user asks Charlotte about her work"
+   **hint_pt**: "What does the new role involve?"
+   **hint_en**: "What does the new role involve?"
+
+**Closing cue**: Charlotte fecha com "Bigger team, more strategy work — I love it." quando obj_3 bater.
+
+**Script** (referencial, 7 turnos):
+
+1. **Charlotte**: "I just got a promotion last week — finally. Took two years longer than expected."
+2. **Student**: "Congratulations! Did you get a raise too?"
+3. **Charlotte**: "Yes, a decent one. Not great, but decent. How about you?"
+4. **Student**: "I've been in software engineering for five years now."
+5. **Charlotte**: "Nice! Any promotion on the horizon?"
+6. **Student**: "What does the new role involve?"
+7. **Charlotte**: "Bigger team, more strategy work — I love it."
+
+> I06 chat = LLM puro. Scaffold via hint_pt.
+
+---
+
 ## Cross-unit consolidation
 
 Ao terminar M22, o aluno deve usar naturalmente:
@@ -857,6 +1022,7 @@ Ao terminar M22, o aluno deve usar naturalmente:
 - Conclusão: in conclusion, to sum up, all in all, overall, in summary
 - Pontuação: ponto antes do conector, vírgula depois (quando inicia oração)
 - Distinção: although + cláusula vs despite + noun/-ing
+- (I06 workplace): work for + company / work in + field / work at + location, hybrid/remote/in-office, raise/bonus/promotion, deadline/sync/standup
 
 Fim do B2. Próximo nível: C1 Advanced — abre com bridges para nuance, formal register, e estruturas complexas (inversão, ênfase, modal complexity, idioms culturais).
 

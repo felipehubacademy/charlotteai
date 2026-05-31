@@ -987,6 +987,196 @@
         "closing_cue": "Charlotte fecha com \"B2 closed in style!\" quando obj_3 baterem.",
         "suggested_script": "**Script** (referencial, 7 turnos):\n\n1. **Charlotte**: \"Some say AI will replace teachers. What's your take?\"\n2. **Student**: \"AI can teach facts. However, it can't replace human connection.\"\n3. **Charlotte**: \"Important point. Example?\"\n4. **Student**: \"For example, students often need encouragement.\"\n5. **Charlotte**: \"Conclusion?\"\n6. **Student**: \"Overall, AI will help, not replace.\"\n7. **Charlotte**: \"Balanced argument. B2 closed in style!\"\n\n> I05 chat = LLM puro. Scaffold via hint_pt.\n\n---"
       }
+    },
+    {
+      "id": "I06",
+      "title": "Trabalho expandido",
+      "sub_cefr": "B2",
+      "grammar_focus": "Workplace English — professional vocabulary, role descriptions, work context (Fase B extra unit)",
+      "markers": [
+        "survival",
+        "denso"
+      ],
+      "real_life_context": "You discuss work life fluently — your role, company, colleagues, work modes, salary, career stages.",
+      "grammar": [
+        {
+          "type": "multiple_choice",
+          "sentence": "I work _____ a tech company.",
+          "options": [
+            "for",
+            "at",
+            "in",
+            "by"
+          ],
+          "answer": "for",
+          "explanation": "\"Work for + company name\" — preposition for employer relationship. \"I work for Google / for a startup\". Different from \"work at\" (location) or \"work in\" (industry/field). Common error: using \"in\" instead of \"for\"."
+        },
+        {
+          "type": "multiple_choice",
+          "sentence": "I work _____ marketing.",
+          "options": [
+            "in",
+            "for",
+            "at",
+            "on"
+          ],
+          "answer": "in",
+          "explanation": "\"Work in + field/industry\" — preposition for area of work. \"I work in marketing / in finance / in healthcare\". Different from \"work for\" (company) or \"work at\" (specific location)."
+        },
+        {
+          "type": "word_bank",
+          "sentence": "What do you do _____ a living?",
+          "choices": [
+            "for",
+            "in",
+            "about",
+            "by"
+          ],
+          "answer": "for",
+          "explanation": "\"What do you do for a living?\" — standard professional small-talk question asking about someone's job. Fixed chunk — never \"What do you do in a living?\" or other variations."
+        },
+        {
+          "type": "word_bank",
+          "sentence": "My _____ is really tight this quarter.",
+          "choices": [
+            "deadline",
+            "dateline",
+            "line",
+            "due"
+          ],
+          "answer": "deadline",
+          "explanation": "\"Deadline\" = date by which something must be done. \"Dateline\" is a journalism term (where news was filed) — different word. \"Due date\" works in some contexts but \"deadline\" is the universal business term."
+        },
+        {
+          "type": "fill_gap",
+          "sentence": "I got a 5% _____ this year.",
+          "hint": "salary increase",
+          "answer": "raise",
+          "explanation": "\"Raise\" = salary increase (American English). British English: \"rise\". \"Bonus\" is a one-time payment, not a permanent increase. \"Promotion\" is moving up in title/role, often with raise. Different concepts."
+        },
+        {
+          "type": "fill_gap",
+          "sentence": "I work _____ — three days in office, two at home.",
+          "hint": "mixed work mode",
+          "answer": "hybrid",
+          "explanation": "\"Hybrid\" = mix of remote and office work. Modern workplace term. Other modes: \"remote\" (fully from home), \"in-office\" (fully from office), \"fully remote\" (emphatic). Common in 2020s workplace vocabulary."
+        },
+        {
+          "type": "fill_gap",
+          "sentence": "Our team's _____ is at 10 every morning.",
+          "hint": "short daily meeting",
+          "answer": "meeting (or \"standup\" / \"sync\" / \"call\")",
+          "explanation": "Workplace meeting vocabulary: \"meeting\" (general), \"standup\" (short daily — from agile), \"sync\" (catch-up between specific people), \"call\" (any meeting, often virtual), \"1-on-1\" (one-on-one with manager). Each has slightly different connotation."
+        },
+        {
+          "type": "fix_error",
+          "sentence": "I work in IBM.",
+          "hint": "For company name, use \"work for\" or \"work at\"",
+          "answer": "I work for IBM. (or: I work at IBM.)",
+          "explanation": "\"Work in + company\" doesn't work in English. Use \"work for IBM\" (employer relationship) or \"work at IBM\" (location/affiliation). \"Work in\" only for field (\"I work in tech\") or location-as-area (\"I work in São Paulo\")."
+        },
+        {
+          "type": "fix_error",
+          "sentence": "My salary increased by 1000 dollars promotion.",
+          "hint": "Restructure with \"raise\" or \"promotion\"",
+          "answer": "I got a $1000 raise. (or: I got a promotion with a $1000 raise.)",
+          "explanation": "\"Salary increased by X promotion\" mixes terms incorrectly. Either describe it as a \"raise\" (salary increase) or a \"promotion\" (new role, may or may not include raise). Use \"got a raise\" / \"got promoted\" as natural verbal forms."
+        },
+        {
+          "type": "read_answer",
+          "passage": "I work for a fintech startup in São Paulo. I've been in software engineering for eight years. We're a hybrid team — three days in the office, two remote. My manager is great, the team is small, and I got a promotion last quarter. The hours are long, but the work is exciting.",
+          "question": "What's the speaker's work mode?",
+          "answer": "hybrid (three days in office, two remote)",
+          "explanation": "The text uses workplace vocabulary: \"work for [company]\", \"in software engineering\" (field), \"hybrid team\" (work mode), \"manager\", \"got a promotion\". Each is a high-frequency professional chunk."
+        }
+      ],
+      "listening_speaking": [
+        {
+          "text": "I work for a tech company.",
+          "context": "employer relationship"
+        },
+        {
+          "text": "I work in marketing.",
+          "context": "industry/field"
+        },
+        {
+          "text": "What do you do for a living?",
+          "context": "job small-talk question"
+        },
+        {
+          "text": "I work hybrid — three days in office, two remote.",
+          "context": "work mode"
+        },
+        {
+          "text": "I got a promotion last quarter.",
+          "context": "career update"
+        }
+      ],
+      "roleplay": {
+        "scenario": "Charlotte meets you at a networking event. You exchange professional information using workplace vocabulary.",
+        "voiced_by": "charlotte",
+        "persona": "Charlotte",
+        "persona_outfit": "charlotte_casual",
+        "time_budget_sec": 180,
+        "opening_line": "Hi! What do you do for a living?",
+        "objectives": [
+          {
+            "id": 1,
+            "label_en": "Describe your profession",
+            "hidden_prompt": "user uses 'I work for / in' + role",
+            "hint_en": "I work for a consulting firm. I'm in strategy."
+          },
+          {
+            "id": 2,
+            "label_en": "Talk about work mode",
+            "hidden_prompt": "user mentions remote/hybrid/in-office",
+            "hint_en": "We're fully remote, which I love. I haven't been to the office in two years."
+          },
+          {
+            "id": 3,
+            "label_en": "Ask Charlotte about her work",
+            "hidden_prompt": "user asks Charlotte work question",
+            "hint_en": "What about you? What do you do?"
+          }
+        ],
+        "closing_cue": "Charlotte fecha com \"Nice meeting you — let's connect on LinkedIn.\" quando obj_3 bater.",
+        "suggested_flow": "**Suggested flow** (referencial, 6 turnos):\n\n1. **Charlotte**: \"Hi! What do you do for a living?\"\n2. **Student**: ~\"I work for a consulting firm. I'm in strategy.\"\n3. **Charlotte**: \"Cool! Do you go to the office often?\"\n4. **Student**: ~\"We're fully remote, which I love. I haven't been to the office in two years.\"\n5. **Charlotte**: \"Lucky! I'm hybrid — three days in.\"\n6. **Student**: ~\"What about you? What do you do?\"\n7. **Charlotte**: \"I'm a UX designer at a healthcare startup. Nice meeting you — let's connect on LinkedIn.\"",
+        "evaluation_focus": [
+          "Correct prepositions (for / in / at)",
+          "Work mode vocabulary (remote / hybrid / in-office)",
+          "Professional small-talk register"
+        ]
+      },
+      "guided_chat": {
+        "scenario": "Charlotte discusses career trajectory with you. You use workplace vocabulary to discuss your path.",
+        "voiced_by": "charlotte",
+        "persona": "Charlotte",
+        "persona_outfit": "charlotte_casual",
+        "intro_en": "Charlotte talks careers. Use workplace vocabulary.",
+        "opening_message": "I just got a promotion last week — finally. Took two years longer than expected.",
+        "objectives": [
+          {
+            "id": 1,
+            "label_en": "Comment on the promotion",
+            "hidden_prompt": "user reacts with workplace vocab",
+            "hint_en": "Congratulations! Did you get a raise too?"
+          },
+          {
+            "id": 2,
+            "label_en": "Talk about your work",
+            "hidden_prompt": "user shares work info",
+            "hint_en": "I've been in software engineering for five years now."
+          },
+          {
+            "id": 3,
+            "label_en": "Ask about Charlotte's work",
+            "hidden_prompt": "user asks Charlotte about her work",
+            "hint_en": "What does the new role involve?"
+          }
+        ],
+        "closing_cue": "Charlotte fecha com \"Bigger team, more strategy work — I love it.\" quando obj_3 bater.",
+        "suggested_script": "**Script** (referencial, 7 turnos):\n\n1. **Charlotte**: \"I just got a promotion last week — finally. Took two years longer than expected.\"\n2. **Student**: \"Congratulations! Did you get a raise too?\"\n3. **Charlotte**: \"Yes, a decent one. Not great, but decent. How about you?\"\n4. **Student**: \"I've been in software engineering for five years now.\"\n5. **Charlotte**: \"Nice! Any promotion on the horizon?\"\n6. **Student**: \"What does the new role involve?\"\n7. **Charlotte**: \"Bigger team, more strategy work — I love it.\"\n\n> I06 chat = LLM puro. Scaffold via hint_pt.\n\n---"
+      }
     }
   ],
   "cross_unit_consolidation": [
@@ -996,6 +1186,7 @@
     "Exemplo: for example, for instance, such as",
     "Conclusão: in conclusion, to sum up, all in all, overall, in summary",
     "Pontuação: ponto antes do conector, vírgula depois (quando inicia oração)",
-    "Distinção: although + cláusula vs despite + noun/-ing"
+    "Distinção: although + cláusula vs despite + noun/-ing",
+    "(I06 workplace): work for + company / work in + field / work at + location, hybrid/remote/in-office, raise/bonus/promotion, deadline/sync/standup"
   ]
 }

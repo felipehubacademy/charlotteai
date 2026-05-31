@@ -965,12 +965,198 @@
         "closing_cue": "Charlotte closes with \"Full day, full phrasals!\" when obj_3 hits.",
         "suggested_script": "**Script** (7 turns):\n\n1. **Charlotte**: \"What did your day look like today?\"\n2. **Student**: \"I got up at 7.\"\n3. **Charlotte**: \"Then?\"\n4. **Student**: \"I went out for lunch.\"\n5. **Charlotte**: \"Cool.\"\n6. **Student**: \"How about you?\"\n7. **Charlotte**: \"I picked up groceries. Full day, full phrasals!\"\n\n> I05 chat = LLM puro.\n\n---"
       }
+    },
+    {
+      "id": "I06",
+      "title": "Phone English",
+      "sub_cefr": "B1",
+      "grammar_focus": "Phone English in Inter register — phrasals and expressions for business calls (Fase B extra unit)",
+      "markers": [
+        "survival",
+        "denso"
+      ],
+      "real_life_context": "You handle phone calls professionally — identifying yourself, transferring, taking messages, dealing with bad connections.",
+      "grammar": [
+        {
+          "type": "multiple_choice",
+          "options": [
+            "Hello, this is [name].",
+            "Hi, I am [name].",
+            "Hello, my name.",
+            "Hi, name [name]."
+          ],
+          "answer": "Hello, this is [name].",
+          "explanation": "\"Hello, this is [name]\" — standard professional phone identification in English. Never \"I am [name]\" or \"my name is [name]\" when answering — those work in person but not on the phone. \"This is\" is the convention."
+        },
+        {
+          "type": "multiple_choice",
+          "options": [
+            "Can I speak to [person]?",
+            "I want talk to [person].",
+            "Please [person] phone.",
+            "[Person] is there?"
+          ],
+          "answer": "Can I speak to [person]?",
+          "explanation": "\"Can I speak to [person]?\" — standard professional request. Slightly more formal: \"May I speak to [person]?\". \"Could I speak to [person]?\" also works. All three are polite phone register."
+        },
+        {
+          "type": "word_bank",
+          "choices": [
+            "speaking",
+            "I'm here",
+            "it's me",
+            "talking"
+          ],
+          "answer": "speaking",
+          "explanation": "\"Yes, speaking\" — concise phone-specific confirmation that you are the person being asked for. Fixed phone convention. \"Yes, it's me\" works casually but \"speaking\" is more professional."
+        },
+        {
+          "type": "word_bank",
+          "choices": [
+            "put",
+            "pass",
+            "get",
+            "send"
+          ],
+          "answer": "put",
+          "explanation": "\"I'll put you through\" — phrasal verb meaning \"transfer\". Fixed phone English. \"Put you through to [department]\" or just \"put you through\" (when context is clear). Common in receptionist/secretary speak."
+        },
+        {
+          "type": "fill_gap",
+          "sentence": "She's on _____ line right now. Can I take a message?",
+          "hint": "indefinite article + word for telephone connection",
+          "answer": "another (or \"the other\")",
+          "explanation": "\"She's on another line\" / \"She's on the other line\" — phone English for \"she's busy with another call\". \"Another line\" suggests there are multiple; \"the other line\" implies a specific second line."
+        },
+        {
+          "type": "fill_gap",
+          "sentence": "Sorry, we were _____ off.",
+          "hint": "phrasal for connection drop",
+          "answer": "cut",
+          "explanation": "\"We were cut off\" — phrasal verb for losing phone connection. Passive voice — the connection cut us off, we didn't do it ourselves. Fixed phrase: \"I think we were cut off\" / \"Sorry, we got cut off\"."
+        },
+        {
+          "type": "fill_gap",
+          "sentence": "I'll _____ back to you tomorrow.",
+          "hint": "phrasal verb for \"respond later\"",
+          "answer": "get",
+          "explanation": "\"I'll get back to you\" — phrasal verb for \"I'll respond later\" or \"I'll follow up\". Standard professional phone close when you can't answer immediately. Different from \"call you back\" (which means literally make another call)."
+        },
+        {
+          "type": "fix_error",
+          "hint": "On phone — use \"This is John\"",
+          "answer": "Hello, this is John.",
+          "explanation": "\"My name is\" is for face-to-face introductions; on the phone, the convention is \"This is [name]\". Cross-cultural error: in many languages, the personal pronoun is used; English phone English uses \"this\"."
+        },
+        {
+          "type": "fix_error",
+          "sentence": "Wait a moment, please. I'll pass you.",
+          "hint": "\"Put you through\" is the phone phrasal",
+          "answer": "Wait a moment, please. I'll put you through.",
+          "explanation": "\"Pass you\" doesn't mean transfer in English phone register. The fixed phrasal is \"put you through\". Other phone English phrasals: \"hang up\" (end call), \"hang on\" (wait), \"call back\" (return call)."
+        },
+        {
+          "type": "read_answer",
+          "passage": "Hello, this is Maria speaking. Can I speak to Pedro, please? Oh, he's on another line. Can you take a message? Please tell him to call me back when he's free. My number is 555-1234. Thanks — sorry, I think we're being cut off. I'll get back to you later. Bye!",
+          "question": "What two phone-specific phrasal verbs appear?",
+          "answer": "\"cut off\" (connection lost) and \"get back to\" (respond later). Also: \"call me back\" (return call), \"speak to\" (talk with).",
+          "explanation": "Phone English vocabulary: \"this is...speaking\" (identification), \"speak to\" (talk with), \"on another line\" (busy), \"take a message\" (record), \"call back\" (return call), \"cut off\" (lose connection), \"get back to\" (respond later). Each is a fixed phone convention."
+        }
+      ],
+      "listening_speaking": [
+        {
+          "text": "Hello, this is Maria speaking.",
+          "context": "professional identification"
+        },
+        {
+          "text": "Can I speak to Pedro, please?",
+          "context": "request to talk to someone"
+        },
+        {
+          "text": "I'll put you through.",
+          "context": "call transfer"
+        },
+        {
+          "text": "Sorry, we were cut off.",
+          "context": "explain disconnection"
+        },
+        {
+          "text": "I'll get back to you tomorrow.",
+          "context": "promise to follow up"
+        }
+      ],
+      "roleplay": {
+        "scenario": "Charlotte is the receptionist at a company. You're calling to speak with a specific person and need to handle the conversation professionally.",
+        "voiced_by": "charlotte",
+        "persona": "Charlotte",
+        "persona_outfit": "charlotte_casual",
+        "time_budget_sec": 180,
+        "opening_line": "Hello, Acme Corporation, how can I help you?",
+        "objectives": [
+          {
+            "id": 1,
+            "label_en": "Identify yourself and request transfer",
+            "hidden_prompt": "user uses 'This is...speaking' and 'Can I speak to'",
+            "hint_en": "Hello, this is Maria Silva from Beta Industries. Can I speak to João Costa in the sales department, please?"
+          },
+          {
+            "id": 2,
+            "label_en": "Ask to leave a message",
+            "hidden_prompt": "user uses 'Can I leave a message?'",
+            "hint_en": "He's on another line? OK — can I leave a message?"
+          },
+          {
+            "id": 3,
+            "label_en": "Request callback",
+            "hidden_prompt": "user asks for callback with 'get back to me' or 'call back'",
+            "hint_en": "Please ask him to get back to me when he's free. My number is on the file."
+          }
+        ],
+        "closing_cue": "Charlotte fecha com \"I'll let him know right away.\" quando obj_3 bater.",
+        "suggested_flow": "**Suggested flow** (referencial, 6 turnos):\n\n1. **Charlotte**: \"Hello, Acme Corporation, how can I help you?\"\n2. **Student**: ~\"Hello, this is Maria Silva from Beta Industries. Can I speak to João Costa in the sales department, please?\"\n3. **Charlotte**: \"One moment, I'll put you through. Actually, I'm sorry — he's on another line. Can I take a message?\"\n4. **Student**: ~\"He's on another line? OK — can I leave a message?\"\n5. **Charlotte**: \"Of course. What's the message?\"\n6. **Student**: ~\"Please ask him to get back to me when he's free. My number is on the file.\"\n7. **Charlotte**: \"I'll let him know right away.\"",
+        "evaluation_focus": [
+          "Professional phone register",
+          "Phone-specific phrasals",
+          "Clear message structure"
+        ]
+      },
+      "guided_chat": {
+        "scenario": "Charlotte calls you to confirm a meeting. You handle the call professionally.",
+        "voiced_by": "charlotte",
+        "persona": "Charlotte",
+        "persona_outfit": "charlotte_casual",
+        "intro_en": "Charlotte calls to confirm a meeting. Handle the call professionally.",
+        "opening_message": "Hello, this is Charlotte from the design team. Am I speaking with Pedro?",
+        "objectives": [
+          {
+            "id": 1,
+            "label_en": "Confirm identity",
+            "hidden_prompt": "user confirms with 'Yes, speaking'",
+            "hint_en": "Yes, speaking. How can I help you?"
+          },
+          {
+            "id": 2,
+            "label_en": "Report connection issue",
+            "hidden_prompt": "user reports cut off or asks to repeat",
+            "hint_en": "Sorry, I think we got cut off for a moment. Could you repeat that?"
+          },
+          {
+            "id": 3,
+            "label_en": "Confirm and promise follow-up",
+            "hidden_prompt": "user confirms and uses 'get back to you'",
+            "hint_en": "OK, I'll confirm the time and get back to you by end of day."
+          }
+        ],
+        "closing_cue": "Charlotte fecha com \"Perfect, talk soon.\" quando obj_3 bater.",
+        "suggested_script": "**Script** (referencial, 7 turnos):\n\n1. **Charlotte**: \"Hello, this is Charlotte from the design team. Am I speaking with Pedro?\"\n2. **Student**: \"Yes, speaking. How can I help you?\"\n3. **Charlotte**: \"I'm calling to confirm tomorrow's meeting — wait, hello? Can you hear me?\"\n4. **Student**: \"Sorry, I think we got cut off for a moment. Could you repeat that?\"\n5. **Charlotte**: \"Just confirming the meeting at 2 PM tomorrow.\"\n6. **Student**: \"OK, I'll confirm the time and get back to you by end of day.\"\n7. **Charlotte**: \"Perfect, talk soon.\"\n\n> I06 chat = LLM puro. Scaffold via hint_pt.\n\n---"
+      }
     }
   ],
   "cross_unit_consolidation": [
     "Top 30 phrasal verbs in context",
     "Separable vs inseparable awareness",
     "Pronoun placement correctly",
-    "Natural use in narrative"
+    "Natural use in narrative",
+    "(I06 phone English): Professional phone identification, transfer phrasals (put through), connection issues (cut off), message handling (take/leave a message), follow-up phrasal (get back to you)"
   ]
 }

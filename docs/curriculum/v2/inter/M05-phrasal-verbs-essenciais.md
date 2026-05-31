@@ -841,6 +841,171 @@
 
 ---
 
+## Unit I06 — Phone English
+
+> **Sub-CEFR**: B1/B2 | **Grammar focus**: Phone English in Inter register — phrasals and expressions for business calls (Fase B extra unit)
+> **Markers**: [survival] [denso]
+> **Real-life context**: You handle phone calls professionally — identifying yourself, transferring, taking messages, dealing with bad connections.
+
+### 1. Grammar (10 exercises)
+
+1. **multiple_choice** — Professional phone identification:
+   **Options**: Hello, this is [name]. / Hi, I am [name]. / Hello, my name. / Hi, name [name].
+   **Answer**: Hello, this is [name].
+   **Explanation**: "Hello, this is [name]" — standard professional phone identification in English. Never "I am [name]" or "my name is [name]" when answering — those work in person but not on the phone. "This is" is the convention.
+
+2. **multiple_choice** — Asking to speak with someone:
+   **Options**: Can I speak to [person]? / I want talk to [person]. / Please [person] phone. / [Person] is there?
+   **Answer**: Can I speak to [person]?
+   **Explanation**: "Can I speak to [person]?" — standard professional request. Slightly more formal: "May I speak to [person]?". "Could I speak to [person]?" also works. All three are polite phone register.
+
+3. **word_bank** — Confirming you are the person being asked for: "Yes, _____."
+   **Choices**: speaking / I'm here / it's me / talking
+   **Answer**: speaking
+   **Explanation**: "Yes, speaking" — concise phone-specific confirmation that you are the person being asked for. Fixed phone convention. "Yes, it's me" works casually but "speaking" is more professional.
+
+4. **word_bank** — Transferring a call: "I'll _____ you through."
+   **Choices**: put / pass / get / send
+   **Answer**: put
+   **Explanation**: "I'll put you through" — phrasal verb meaning "transfer". Fixed phone English. "Put you through to [department]" or just "put you through" (when context is clear). Common in receptionist/secretary speak.
+
+5. **fill_gap** — "She's on _____ line right now. Can I take a message?"
+   **Hint**: indefinite article + word for telephone connection
+   **Answer**: another (or "the other")
+   **Explanation**: "She's on another line" / "She's on the other line" — phone English for "she's busy with another call". "Another line" suggests there are multiple; "the other line" implies a specific second line.
+
+6. **fill_gap** — "Sorry, we were _____ off."
+   **Hint**: phrasal for connection drop
+   **Answer**: cut
+   **Explanation**: "We were cut off" — phrasal verb for losing phone connection. Passive voice — the connection cut us off, we didn't do it ourselves. Fixed phrase: "I think we were cut off" / "Sorry, we got cut off".
+
+7. **fill_gap** — "I'll _____ back to you tomorrow."
+   **Hint**: phrasal verb for "respond later"
+   **Answer**: get
+   **Explanation**: "I'll get back to you" — phrasal verb for "I'll respond later" or "I'll follow up". Standard professional phone close when you can't answer immediately. Different from "call you back" (which means literally make another call).
+
+8. **fix_error** — On the phone: "Hello, my name is John."
+   **Hint**: On phone — use "This is John"
+   **Answer**: Hello, this is John.
+   **Explanation**: "My name is" is for face-to-face introductions; on the phone, the convention is "This is [name]". Cross-cultural error: in many languages, the personal pronoun is used; English phone English uses "this".
+
+9. **fix_error** — "Wait a moment, please. I'll pass you."
+   **Hint**: "Put you through" is the phone phrasal
+   **Answer**: Wait a moment, please. I'll put you through.
+   **Explanation**: "Pass you" doesn't mean transfer in English phone register. The fixed phrasal is "put you through". Other phone English phrasals: "hang up" (end call), "hang on" (wait), "call back" (return call).
+
+10. **read_answer**
+    **Passage**: "Hello, this is Maria speaking. Can I speak to Pedro, please? Oh, he's on another line. Can you take a message? Please tell him to call me back when he's free. My number is 555-1234. Thanks — sorry, I think we're being cut off. I'll get back to you later. Bye!"
+    **Question**: What two phone-specific phrasal verbs appear?
+    **Answer**: "cut off" (connection lost) and "get back to" (respond later). Also: "call me back" (return call), "speak to" (talk with).
+    **Explanation**: Phone English vocabulary: "this is...speaking" (identification), "speak to" (talk with), "on another line" (busy), "take a message" (record), "call back" (return call), "cut off" (lose connection), "get back to" (respond later). Each is a fixed phone convention.
+
+### 2. Listening/Speaking (5 phrases)
+
+1. **"Hello, this is Maria speaking."** — professional identification
+2. **"Can I speak to Pedro, please?"** — request to talk to someone
+3. **"I'll put you through."** — call transfer
+4. **"Sorry, we were cut off."** — explain disconnection
+5. **"I'll get back to you tomorrow."** — promise to follow up
+
+### 3. Role-play
+
+**Cenário**: Charlotte is the receptionist at a company. You're calling to speak with a specific person and need to handle the conversation professionally.
+**Tipo**: Live Voice
+**Voiced by**: `charlotte`
+**Persona**: Charlotte
+**Persona outfit**: `charlotte_casual`
+**Time budget**: 180s
+**Opening line**: "Hello, Acme Corporation, how can I help you?"
+
+**Sub-objectives** (3 objetivos):
+
+1. **id**: 1
+   **label_pt**: "Identificar-se e pedir transferência"
+   **label_en**: "Identify yourself and request transfer"
+   **hidden_prompt**: "user uses 'This is...speaking' and 'Can I speak to'"
+   **hint_pt**: "Hello, this is Maria Silva from Beta Industries. Can I speak to João Costa in the sales department, please?"
+   **hint_en**: "Hello, this is Maria Silva from Beta Industries. Can I speak to João Costa in the sales department, please?"
+
+2. **id**: 2
+   **label_pt**: "Pedir para deixar recado"
+   **label_en**: "Ask to leave a message"
+   **hidden_prompt**: "user uses 'Can I leave a message?'"
+   **hint_pt**: "He's on another line? OK — can I leave a message?"
+   **hint_en**: "He's on another line? OK — can I leave a message?"
+
+3. **id**: 3
+   **label_pt**: "Pedir retorno"
+   **label_en**: "Request callback"
+   **hidden_prompt**: "user asks for callback with 'get back to me' or 'call back'"
+   **hint_pt**: "Please ask him to get back to me when he's free. My number is on the file."
+   **hint_en**: "Please ask him to get back to me when he's free. My number is on the file."
+
+**Closing cue**: Charlotte fecha com "I'll let him know right away." quando obj_3 bater.
+
+**Suggested flow** (referencial, 6 turnos):
+
+1. **Charlotte**: "Hello, Acme Corporation, how can I help you?"
+2. **Student**: ~"Hello, this is Maria Silva from Beta Industries. Can I speak to João Costa in the sales department, please?"
+3. **Charlotte**: "One moment, I'll put you through. Actually, I'm sorry — he's on another line. Can I take a message?"
+4. **Student**: ~"He's on another line? OK — can I leave a message?"
+5. **Charlotte**: "Of course. What's the message?"
+6. **Student**: ~"Please ask him to get back to me when he's free. My number is on the file."
+7. **Charlotte**: "I'll let him know right away."
+
+**Evaluation focus**:
+- Professional phone register
+- Phone-specific phrasals
+- Clear message structure
+
+### 4. Guided Chat
+
+**Cenário**: Charlotte calls you to confirm a meeting. You handle the call professionally.
+**Voiced by**: `charlotte`
+**Persona**: Charlotte
+**Persona outfit**: `charlotte_casual`
+**Intro (em EN)**: "Charlotte calls to confirm a meeting. Handle the call professionally."
+**Opening message**: "Hello, this is Charlotte from the design team. Am I speaking with Pedro?"
+
+**Sub-objectives** (3 objetivos):
+
+1. **id**: 1
+   **label_pt**: "Confirmar identidade"
+   **label_en**: "Confirm identity"
+   **hidden_prompt**: "user confirms with 'Yes, speaking'"
+   **hint_pt**: "Yes, speaking. How can I help you?"
+   **hint_en**: "Yes, speaking. How can I help you?"
+
+2. **id**: 2
+   **label_pt**: "Reportar problema de conexão"
+   **label_en**: "Report connection issue"
+   **hidden_prompt**: "user reports cut off or asks to repeat"
+   **hint_pt**: "Sorry, I think we got cut off for a moment. Could you repeat that?"
+   **hint_en**: "Sorry, I think we got cut off for a moment. Could you repeat that?"
+
+3. **id**: 3
+   **label_pt**: "Confirmar e prometer retorno"
+   **label_en**: "Confirm and promise follow-up"
+   **hidden_prompt**: "user confirms and uses 'get back to you'"
+   **hint_pt**: "OK, I'll confirm the time and get back to you by end of day."
+   **hint_en**: "OK, I'll confirm the time and get back to you by end of day."
+
+**Closing cue**: Charlotte fecha com "Perfect, talk soon." quando obj_3 bater.
+
+**Script** (referencial, 7 turnos):
+
+1. **Charlotte**: "Hello, this is Charlotte from the design team. Am I speaking with Pedro?"
+2. **Student**: "Yes, speaking. How can I help you?"
+3. **Charlotte**: "I'm calling to confirm tomorrow's meeting — wait, hello? Can you hear me?"
+4. **Student**: "Sorry, I think we got cut off for a moment. Could you repeat that?"
+5. **Charlotte**: "Just confirming the meeting at 2 PM tomorrow."
+6. **Student**: "OK, I'll confirm the time and get back to you by end of day."
+7. **Charlotte**: "Perfect, talk soon."
+
+> I06 chat = LLM puro. Scaffold via hint_pt.
+
+---
+
 ## Cross-unit consolidation
 
 After M05:
@@ -848,5 +1013,6 @@ After M05:
 - Separable vs inseparable awareness
 - Pronoun placement correctly
 - Natural use in narrative
+- (I06 phone English): Professional phone identification, transfer phrasals (put through), connection issues (cut off), message handling (take/leave a message), follow-up phrasal (get back to you)
 
 Next: M06 modals for possibility (might/may/could).
