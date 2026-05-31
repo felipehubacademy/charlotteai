@@ -818,23 +818,28 @@
       "listening_speaking": [
         {
           "text": "I'm taking the lift to the fourth floor.",
-          "context": "British \"lift\""
+          "context": "British \"lift\"",
+          "audio_url": "https://fnvjibzreepubageztoi.supabase.co/storage/v1/object/public/curriculum-audio/ls/advanced/a58c5ffde2eb2198.flac"
         },
         {
           "text": "I'm going on holiday next month.",
-          "context": "British \"holiday\""
+          "context": "British \"holiday\"",
+          "audio_url": "https://fnvjibzreepubageztoi.supabase.co/storage/v1/object/public/curriculum-audio/ls/advanced/d064765416c4cee1.flac"
         },
         {
           "text": "I've gotten used to remote work.",
-          "context": "American \"gotten\""
+          "context": "American \"gotten\"",
+          "audio_url": "https://fnvjibzreepubageztoi.supabase.co/storage/v1/object/public/curriculum-audio/ls/advanced/e1f38e153cf39df4.flac"
         },
         {
           "text": "I intend to apply for the position.",
-          "context": "false cognate: intend (NOT pretend)"
+          "context": "false cognate: intend (NOT pretend)",
+          "audio_url": "https://fnvjibzreepubageztoi.supabase.co/storage/v1/object/public/curriculum-audio/ls/advanced/8df29bd52c12ca78.flac"
         },
         {
           "text": "I actually started yesterday.",
-          "context": "false cognate: actually (NOT atualmente)"
+          "context": "false cognate: actually (NOT atualmente)",
+          "audio_url": "https://fnvjibzreepubageztoi.supabase.co/storage/v1/object/public/curriculum-audio/ls/advanced/60d9f97d4779b85e.flac"
         }
       ],
       "roleplay": {
