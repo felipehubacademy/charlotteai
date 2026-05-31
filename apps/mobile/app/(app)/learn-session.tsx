@@ -1452,7 +1452,10 @@ export default function LearnSessionScreen() {
                             {['A', 'B', 'C'][i]}
                           </AppText>
                         </View>
-                        <AppText style={{ fontSize: 15, fontWeight: '600', color: C.navy, flex: 1 }}>{opt}</AppText>
+                        {isPortuguese
+                          ? <View style={{ flex: 1 }}><TranslatableText text={opt} style={{ fontSize: 15, fontWeight: '600', color: C.navy }} /></View>
+                          : <AppText style={{ fontSize: 15, fontWeight: '600', color: C.navy, flex: 1 }}>{opt}</AppText>
+                        }
                         {trailIcon}
                       </TouchableOpacity>
                     );
@@ -1462,22 +1465,28 @@ export default function LearnSessionScreen() {
 
               {/* Word bank — chips only, selected word appears inline in sentence above */}
               {currentStep.exercise.type === 'word_bank' && gStatus === 'answering' && (
-                <View style={{ flexDirection: 'row', flexWrap: 'wrap', gap: 10, justifyContent: 'center' }}>
+                <View style={{ flexDirection: 'row', flexWrap: 'wrap', gap: 12, justifyContent: 'space-between' }}>
                   {shuffledChoices.map((chip, i) => {
                     const used = chip === userAnswer;
                     return (
                       <TouchableOpacity
                         key={i}
                         onPress={() => setUserAnswer(used ? '' : chip)}
+                        activeOpacity={0.7}
                         style={{
-                          paddingHorizontal: 20, paddingVertical: 13,
-                          borderRadius: 12, borderWidth: 1.5,
-                          borderColor: used ? accent : C.navy,
+                          width: '48%', minHeight: 70,
+                          paddingHorizontal: 16, paddingVertical: 18,
+                          borderRadius: 14, borderWidth: 1.5,
+                          borderColor: used ? accent : C.border,
                           backgroundColor: used ? accentBg : C.card,
-                          opacity: used ? 0.7 : 1,
+                          opacity: used ? 0.85 : 1,
+                          alignItems: 'center', justifyContent: 'center',
                         }}
                       >
-                        <AppText style={{ fontSize: 16, fontWeight: '700', color: used ? accent : C.navy }}>{chip}</AppText>
+                        {isPortuguese
+                          ? <TranslatableText text={chip} style={{ fontSize: 17, fontWeight: '700', color: used ? accent : C.navy }} />
+                          : <AppText style={{ fontSize: 17, fontWeight: '700', color: used ? accent : C.navy }}>{chip}</AppText>
+                        }
                       </TouchableOpacity>
                     );
                   })}
