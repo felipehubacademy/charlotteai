@@ -318,23 +318,23 @@
 **Sub-objectives** (M03+ gradiente: 3 objetivos):
 
 1. **id**: 1
-   **label_pt**: "Dizer o que tem"
-   **label_en**: "Say what you have"
-   **hidden_prompt**: "user says 'I have some + noun' or 'Yes, I have some + noun'"
+   **label_pt**: "Responder o que tem de lanche (Charlotte perguntou 'Got any snacks?')"
+   **label_en**: "Answer what snacks you have"
+   **hidden_prompt**: "AFTER Charlotte asks 'Got any snacks?', user replies with 'Yes, I have some + noun' or 'I have some + noun'. SOME = afirmativa."
    **hint_pt**: "Yes, I have some cookies."
    **hint_en**: "Yes, I have some cookies."
 
 2. **id**: 2
-   **label_pt**: "Dizer o que não tem"
-   **label_en**: "Say what you don't have"
-   **hidden_prompt**: "user says 'I don't have any + noun'"
+   **label_pt**: "Responder o que NÃO tem (Charlotte perguntou sobre algo especifico)"
+   **label_en**: "Say what you DON'T have (in response to Charlotte's follow-up)"
+   **hidden_prompt**: "AFTER Charlotte's follow-up question (e.g. 'Chocolate?' or 'Any [specific food]?'), user replies with 'I don't have any + noun'. ANY = negativa. Different turn from obj 1."
    **hint_pt**: "I don't have any chocolate."
    **hint_en**: "I don't have any chocolate."
 
 3. **id**: 3
-   **label_pt**: "Perguntar à Charlotte"
-   **label_en**: "Ask Charlotte"
-   **hidden_prompt**: "user asks 'Do you have any + noun?' or 'How about you?'"
+   **label_pt**: "Perguntar à Charlotte (devolver a pergunta)"
+   **label_en**: "Ask Charlotte back"
+   **hidden_prompt**: "AFTER objs 1 e 2 met, user asks Charlotte 'Do you have any + noun?' or 'How about you?'. CRITICAL: Charlotte MUST NOT ask 'how about you?' or 'do you have any?' to the student first — wait for the student to ask back."
    **hint_pt**: "Do you have any snacks?"
    **hint_en**: "Do you have any snacks?"
 

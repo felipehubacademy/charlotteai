@@ -269,23 +269,23 @@
 **Sub-objectives** (M03+ gradiente: 3 objetivos):
 
 1. **id**: 1
-   **label_pt**: "Corrigir Charlotte dizendo o que você NÃO está fazendo"
-   **label_en**: "Correct Charlotte with what you're NOT doing"
-   **hidden_prompt**: "user states 'I'm not + verb-ing' to correct or explain"
+   **label_pt**: "Responder à Charlotte ('Are you working?')"
+   **label_en**: "Reply to Charlotte's 'Are you working?'"
+   **hidden_prompt**: "AFTER Charlotte's opening 'Are you working right now?', user replies with 'I'm not + verb-ing' (negative present continuous, 1st person)."
    **hint_pt**: "I'm not working today."
    **hint_en**: "I'm not working today."
 
 2. **id**: 2
-   **label_pt**: "Dizer o que alguém da família NÃO está fazendo"
-   **label_en**: "Say what someone isn't doing"
-   **hidden_prompt**: "user states 'He/She isn't + verb-ing'"
+   **label_pt**: "Falar sobre alguém da família (após Charlotte perguntar 'Your sister?')"
+   **label_en**: "Tell about a family member (after Charlotte's 2nd question)"
+   **hidden_prompt**: "AFTER Charlotte asks about a family member ('Your sister?', 'Your brother?', etc.), user states 'He/She isn't + verb-ing'. Different person from obj 1."
    **hint_pt**: "My sister isn't studying."
    **hint_en**: "My sister isn't studying."
 
 3. **id**: 3
-   **label_pt**: "Dizer o que vocês NÃO estão fazendo juntos"
-   **label_en**: "Say what you aren't doing together"
-   **hidden_prompt**: "user states 'We aren't + verb-ing' or similar negative"
+   **label_pt**: "Falar sobre o grupo (após Charlotte perguntar 'Group activity?')"
+   **label_en**: "Tell about the group (after Charlotte's 3rd question)"
+   **hidden_prompt**: "AFTER Charlotte asks about group activity, user states 'We aren't + verb-ing' (1st plural). Different person from obj 1 and 2."
    **hint_pt**: "We aren't eating."
    **hint_en**: "We aren't eating."
 
@@ -318,23 +318,23 @@
 **Sub-objectives** (M03+ gradiente: 3 objetivos):
 
 1. **id**: 1
-   **label_pt**: "Dizer o que você não está fazendo"
-   **label_en**: "Say what you're not doing"
-   **hidden_prompt**: "user says 'I'm not + verb-ing'"
+   **label_pt**: "Responder à pergunta inicial da Charlotte"
+   **label_en**: "Answer Charlotte's opening question"
+   **hidden_prompt**: "AFTER Charlotte's opening 'What's NOT happening right now?', user replies with 'I'm not + verb-ing'."
    **hint_pt**: "I'm not working."
    **hint_en**: "I'm not working."
 
 2. **id**: 2
-   **label_pt**: "Dizer o que alguém não está fazendo"
-   **label_en**: "Say what someone isn't doing"
-   **hidden_prompt**: "user says 'He/She isn't + verb-ing'"
+   **label_pt**: "Falar sobre alguém da família"
+   **label_en**: "Tell about a family member"
+   **hidden_prompt**: "AFTER Charlotte's follow-up about another person ('Sister?', 'Brother?', etc.), user says 'He/She isn't + verb-ing'."
    **hint_pt**: "My brother isn't sleeping."
    **hint_en**: "My brother isn't sleeping."
 
 3. **id**: 3
-   **label_pt**: "Perguntar à Charlotte"
-   **label_en**: "Ask Charlotte"
-   **hidden_prompt**: "user asks Charlotte with 'How about you?' or 'What aren't you doing?'"
+   **label_pt**: "Perguntar à Charlotte (devolver a pergunta)"
+   **label_en**: "Ask Charlotte back"
+   **hidden_prompt**: "AFTER objs 1 e 2 met, user asks Charlotte 'How about you?' or 'What aren't you doing?'. CRITICAL: Charlotte MUST NOT ask 'how about you?' to the student — wait for student to ask back."
    **hint_pt**: "How about you?"
    **hint_en**: "How about you?"
 

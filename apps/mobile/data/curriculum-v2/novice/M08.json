@@ -621,9 +621,9 @@
           },
           {
             "id": 3,
-            "label_pt": "Perguntar à Charlotte",
-            "label_en": "Ask Charlotte",
-            "hidden_prompt": "user asks 'how about you' or 'and you'",
+            "label_pt": "Perguntar à Charlotte (devolver a pergunta)",
+            "label_en": "Ask Charlotte back",
+            "hidden_prompt": "AFTER objs 1 e 2 met, user asks Charlotte 'how about you?' or 'and you?'. CRITICAL: Charlotte MUST NOT ask 'how about you?' or 'and you?' to the student first — wait for the student to ask back.",
             "hint_pt": "How about you?",
             "hint_en": "How about you?"
           }

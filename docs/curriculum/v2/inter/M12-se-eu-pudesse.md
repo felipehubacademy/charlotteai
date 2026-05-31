@@ -418,34 +418,34 @@
 
 ### 3. Role-play
 
-**Cenário**: Charlotte conta três problemas que ela está enfrentando — você dá conselhos honestos usando "If I were you, I would..."
+**Cenário**: Charlotte conta três problemas distintos — você dá conselhos honestos usando "If I were you, I would..."
 **Tipo**: Live Voice
 **Voiced by**: `charlotte`
 **Persona**: Charlotte
 **Persona outfit**: `charlotte_casual`
 **Time budget**: 180s
-**Opening line**: "I'm facing some decisions. Give me advice using 'If I were you, I would...'"
+**Opening line**: "I got a job offer in another city. Should I take it?"
 
 **Sub-objectives** (M03+ gradiente: 3 objetivos):
 
 1. **id**: 1
-   **label_pt**: "Conselho com 'If I were you'"
-   **label_en**: "Advice with 'If I were you'"
-   **hidden_prompt**: "user uses 'If I were you, I would + base'"
+   **label_pt**: "Conselho sobre a oferta de emprego"
+   **label_en**: "Advice about the job offer"
+   **hidden_prompt**: "after Charlotte's FIRST problem (job offer in another city), user gives advice with 'If I were you, I would + base'. Accept repeating the same chunk in later objectives — what matters is responding to this specific problem."
    **hint_pt**: "If I were you, I would take the offer."
    **hint_en**: "If I were you, I would take the offer."
 
 2. **id**: 2
-   **label_pt**: "Outro conselho"
-   **label_en**: "Another piece of advice"
-   **hidden_prompt**: "user uses another 'If I were you, I would' advice"
+   **label_pt**: "Conselho sobre o conflito com a amiga"
+   **label_en**: "Advice about the conflict with her friend"
+   **hidden_prompt**: "after Charlotte's SECOND problem (conflict with a friend / unclear conversation), user gives advice — accept 'If I were you, I would' or 'If I were in your position'. Same opener as obj 1 is fine; tied to NEW problem."
    **hint_pt**: "If I were you, I would talk to her directly."
    **hint_en**: "If I were you, I would talk to her directly."
 
 3. **id**: 3
-   **label_pt**: "Conselho com 'in your position'"
-   **label_en**: "Advice with 'in your position'"
-   **hidden_prompt**: "user uses 'If I were in your position, I would'"
+   **label_pt**: "Conselho sobre a decisão maior"
+   **label_en**: "Advice about the bigger life decision"
+   **hidden_prompt**: "after Charlotte's THIRD problem (bigger life decision — moving, studying, etc), user gives final advice. Any 'If I were you' or 'in your position' chunk works. Repetition of openers from objs 1/2 is fine — what matters is reacting to this third problem."
    **hint_pt**: "If I were in your position, I would wait."
    **hint_en**: "If I were in your position, I would wait."
 
@@ -453,11 +453,11 @@
 
 **Suggested flow** (referencial, 6 turnos):
 
-1. **Charlotte**: "I'm facing some decisions. Give me advice using 'If I were you, I would...'"
+1. **Charlotte**: "I got a job offer in another city. Should I take it?"
 2. **Student**: ~"If I were you, I would take the offer."
-3. **Charlotte**: "Direct. About the conversation?"
+3. **Charlotte**: "Hmm. Also — I had a weird conversation with my friend yesterday. I don't know if I should talk to her."
 4. **Student**: ~"If I were you, I would talk to her directly."
-5. **Charlotte**: "Tough but right. And the bigger question?"
+5. **Charlotte**: "Probably. And the bigger thing — I'm thinking of going back to school for a master's."
 6. **Student**: ~"If I were in your position, I would wait."
 7. **Charlotte**: "Thoughtful advice!"
 
