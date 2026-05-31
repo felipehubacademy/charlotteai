@@ -672,6 +672,12 @@ export function TrailContent({ userId, level, onCurrentTopicRef, useV2 }: TrailC
       onCurrentTopicRef(activeRef.current);
     }
   }, [activeIdx, onCurrentTopicRef]);
+  // Re-dispatch ref no focus — volta de exercicio re-scrolla pro ativo
+  useFocusEffect(useCallback(() => {
+    if (onCurrentTopicRef && activeRef.current) {
+      onCurrentTopicRef(activeRef.current);
+    }
+  }, [onCurrentTopicRef]));
 
   // ── Loading ──────────────────────────────────────────────────────────────
   if (loading) {

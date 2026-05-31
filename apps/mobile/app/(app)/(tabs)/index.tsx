@@ -96,6 +96,13 @@ export default function HomeTab() {
   // Promocao organica: checa apos cada focus da home.
   const { event: promotionEvent, ack: ackPromotion, checkAndPromote } = usePromotion();
   useFocusEffect(useCallback(() => { checkAndPromote(); }, [checkAndPromote]));
+
+  // Reset trail scroll lock no focus — garante que toda volta do
+  // exercicio re-scrolla pro topico ativo (era: scrollava so na 1a
+  // entrada, depois ficava preso no topo / posicao antiga).
+  useFocusEffect(useCallback(() => {
+    trailScrolledRef.current = false;
+  }, []));
   const name      = profile?.name ?? profile?.email?.split('@')[0] ?? 'Student';
   const isPt      = level === 'Novice';
   const firstName = name.split(' ')[0] ?? name;
