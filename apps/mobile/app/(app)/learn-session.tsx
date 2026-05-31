@@ -1771,7 +1771,7 @@ export default function LearnSessionScreen() {
                     : pronStatus === 'recording' ? '#DC2626' : '#7C3AED';
                   const isRec = pronStatus === 'recording';
                   return (
-                    <View style={{ alignItems: 'center', marginTop: 160, marginBottom: 40 }}>
+                    <View style={{ alignItems: 'center', marginTop: 'auto', marginBottom: 56 }}>
                       <View style={{ width: 160, height: 160, alignItems: 'center', justifyContent: 'center' }}>
                         {/* Aneis pulsantes (so quando recording) */}
                         {isRec && [0, 0.3, 0.6].map((delay, idx) => (
