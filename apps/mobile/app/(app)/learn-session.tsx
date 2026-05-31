@@ -1452,10 +1452,7 @@ export default function LearnSessionScreen() {
                             {['A', 'B', 'C'][i]}
                           </AppText>
                         </View>
-                        {isPortuguese
-                          ? <TranslatableText text={opt} style={{ fontSize: 15, fontWeight: '600', color: C.navy }} />
-                          : <AppText style={{ fontSize: 15, fontWeight: '600', color: C.navy, flex: 1 }}>{opt}</AppText>
-                        }
+                        <AppText style={{ fontSize: 15, fontWeight: '600', color: C.navy, flex: 1 }}>{opt}</AppText>
                         {trailIcon}
                       </TouchableOpacity>
                     );
@@ -1480,10 +1477,7 @@ export default function LearnSessionScreen() {
                           opacity: used ? 0.7 : 1,
                         }}
                       >
-                        {isPortuguese
-                          ? <TranslatableText text={chip} style={{ fontSize: 16, fontWeight: '700', color: used ? accent : C.navy }} />
-                          : <AppText style={{ fontSize: 16, fontWeight: '700', color: used ? accent : C.navy }}>{chip}</AppText>
-                        }
+                        <AppText style={{ fontSize: 16, fontWeight: '700', color: used ? accent : C.navy }}>{chip}</AppText>
                       </TouchableOpacity>
                     );
                   })}
@@ -1572,22 +1566,6 @@ export default function LearnSessionScreen() {
                     autoCapitalize="sentences"
                     onFocus={() => Platform.OS === 'android' && setTimeout(() => scrollRef.current?.scrollToEnd({ animated: true }), 300)}
                   />
-                  {currentStep.exercise.hint && showHint && (
-                    <View style={{ backgroundColor: C.violetBg, borderRadius: 10, padding: 12 }}>
-                      <AppText style={{ fontSize: 13, color: C.violet }}>{currentStep.exercise.hint}</AppText>
-                    </View>
-                  )}
-                  {currentStep.exercise.hint && (
-                    <TouchableOpacity
-                      onPress={() => setShowHint(v => !v)}
-                      style={{ flexDirection: 'row', alignItems: 'center', gap: 6, alignSelf: 'flex-start' }}
-                    >
-                      <LightbulbFilament size={14} color={accent} weight="fill" />
-                      <AppText style={{ fontSize: 13, color: accent, fontWeight: '600' }}>
-                        {showHint ? (isPortuguese ? 'Ocultar dica' : 'Hide hint') : (isPortuguese ? 'Mostrar dica' : 'Show hint')}
-                      </AppText>
-                    </TouchableOpacity>
-                  )}
                 </View>
               )}
 
@@ -1617,27 +1595,6 @@ export default function LearnSessionScreen() {
                     autoCapitalize="none"
                     onFocus={() => Platform.OS === 'android' && setTimeout(() => scrollRef.current?.scrollToEnd({ animated: true }), 300)}
                   />
-                  {currentStep.exercise.hint && (
-                    <>
-                      <TouchableOpacity
-                        onPress={() => setShowHint(v => !v)}
-                        style={{ flexDirection: 'row', alignItems: 'center', gap: 6, marginTop: 14, alignSelf: 'flex-start' }}
-                      >
-                        <LightbulbFilament size={14} color={accent} weight="fill" />
-                        <AppText style={{ fontSize: 13, color: accent, fontWeight: '600' }}>
-                          {showHint ? (isPortuguese ? 'Ocultar dica' : 'Hide hint') : (isPortuguese ? 'Mostrar dica' : 'Show hint')}
-                        </AppText>
-                      </TouchableOpacity>
-                      {showHint && (
-                        <View style={{ marginTop: 10, padding: 14, backgroundColor: accentBg, borderRadius: 12 }}>
-                          {isPortuguese
-                            ? <TranslatableText text={currentStep.exercise.hint ?? ''} style={{ fontSize: 14, color: accent }} />
-                            : <AppText style={{ fontSize: 14, color: accent }}>{currentStep.exercise.hint}</AppText>
-                          }
-                        </View>
-                      )}
-                    </>
-                  )}
                 </>
               )}
 
@@ -1847,10 +1804,30 @@ export default function LearnSessionScreen() {
               ex.type === 'short_write' ? userAnswer.trim().length > 5 :
               !!userAnswer.trim();
             return (
-              <TouchableOpacity onPress={handleGrammarSubmit} disabled={!canSubmit}
-                style={{ backgroundColor: canSubmit ? C.navy : C.ghost, borderRadius: 16, paddingVertical: 15, alignItems: 'center' }}>
-                <AppText style={{ fontSize: 15, fontWeight: '800', color: canSubmit ? '#FFF' : C.navyLight }}>{isPortuguese ? 'Verificar' : 'Check'}</AppText>
-              </TouchableOpacity>
+              <View style={{ gap: 10 }}>
+                {ex.hint && (
+                  <View style={{ gap: 8 }}>
+                    {showHint && (
+                      <View style={{ backgroundColor: accentBg, borderRadius: 12, padding: 12 }}>
+                        <AppText style={{ fontSize: 14, color: accent, lineHeight: 19 }}>{ex.hint}</AppText>
+                      </View>
+                    )}
+                    <TouchableOpacity
+                      onPress={() => setShowHint(v => !v)}
+                      style={{ flexDirection: 'row', alignItems: 'center', gap: 6, alignSelf: 'flex-start', paddingVertical: 4 }}
+                    >
+                      <LightbulbFilament size={16} color={accent} weight="fill" />
+                      <AppText style={{ fontSize: 13, color: accent, fontWeight: '700' }}>
+                        {showHint ? (isPortuguese ? 'Ocultar dica' : 'Hide hint') : (isPortuguese ? 'Mostrar dica' : 'Show hint')}
+                      </AppText>
+                    </TouchableOpacity>
+                  </View>
+                )}
+                <TouchableOpacity onPress={handleGrammarSubmit} disabled={!canSubmit}
+                  style={{ backgroundColor: canSubmit ? C.navy : C.ghost, borderRadius: 16, paddingVertical: 15, alignItems: 'center' }}>
+                  <AppText style={{ fontSize: 15, fontWeight: '800', color: canSubmit ? '#FFF' : C.navyLight }}>{isPortuguese ? 'Verificar' : 'Check'}</AppText>
+                </TouchableOpacity>
+              </View>
             );
           })()}
 
