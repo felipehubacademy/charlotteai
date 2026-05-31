@@ -1766,62 +1766,66 @@ export default function LearnSessionScreen() {
                   Aparece pra repeat (pre-result), antes era inline pill no bottom strip. */}
               {currentStep.phrase.type === 'repeat'
                 && pronStatus !== 'result' && pronStatus !== 'error'
-                && pronStatus !== 'loading_audio' && pronStatus !== 'assessing' && (
-                <View style={{ alignItems: 'center', marginTop: 48, marginBottom: 40 }}>
-                  <View style={{ width: 160, height: 160, alignItems: 'center', justifyContent: 'center' }}>
-                    {/* Aneis pulsantes (so quando recording) */}
-                    {pronStatus === 'recording' && [0, 0.3, 0.6].map((delay, idx) => (
-                      <Animated.View
-                        key={idx}
-                        pointerEvents="none"
-                        style={{
-                          position: 'absolute', width: 120, height: 120, borderRadius: 60,
-                          borderWidth: 2, borderColor: '#DC2626',
-                          opacity: micRingAnim.interpolate({
-                            inputRange: [0, delay, delay + 0.4, 1],
-                            outputRange: [0, 0.55, 0, 0],
-                            extrapolate: 'clamp',
-                          }),
-                          transform: [{
-                            scale: micRingAnim.interpolate({
-                              inputRange: [0, delay, delay + 0.4, 1],
-                              outputRange: [1, 1, 1.6, 1.6],
-                              extrapolate: 'clamp',
-                            }),
-                          }],
-                        }}
-                      />
-                    ))}
-                    <Pressable
-                      onPressIn={isPlaying ? undefined : startRecording}
-                      onPressOut={isPlaying ? undefined : stopRecording}
-                      disabled={isPlaying}
-                      pressRetentionOffset={{ top: 30, left: 30, right: 30, bottom: 30 }}
-                      style={({ pressed }) => ({
-                        width: 120, height: 120, borderRadius: 60,
-                        backgroundColor: isPlaying ? '#9CA3AF'
-                          : pronStatus === 'recording' ? '#DC2626' : '#7C3AED',
-                        alignItems: 'center', justifyContent: 'center',
-                        opacity: isPlaying ? 0.6 : pressed ? 0.85 : 1,
-                        transform: [{ scale: pronStatus === 'recording' ? 1.06 : 1 }],
-                        shadowColor: pronStatus === 'recording' ? '#DC2626' : '#7C3AED',
-                        shadowOpacity: 0.35, shadowRadius: 18, shadowOffset: { width: 0, height: 8 },
-                        elevation: 8,
-                      })}
-                    >
-                      <Microphone size={56} color="#FFF" weight="fill" />
-                    </Pressable>
-                  </View>
-                  <AppText style={{
-                    marginTop: 14, fontSize: 12, color: C.navyLight,
-                    fontWeight: '600', letterSpacing: 0.4,
-                  }}>
-                    {pronStatus === 'recording'
-                      ? (isPortuguese ? 'Solte para parar' : 'Release to stop')
-                      : (isPortuguese ? 'Segure para falar' : 'Hold to speak')}
-                  </AppText>
-                </View>
-              )}
+                && pronStatus !== 'loading_audio' && pronStatus !== 'assessing' && (() => {
+                  const bg = isPlaying ? '#9CA3AF'
+                    : pronStatus === 'recording' ? '#DC2626' : '#7C3AED';
+                  const isRec = pronStatus === 'recording';
+                  return (
+                    <View style={{ alignItems: 'center', marginTop: 80, marginBottom: 40 }}>
+                      <View style={{ width: 160, height: 160, alignItems: 'center', justifyContent: 'center' }}>
+                        {/* Aneis pulsantes (so quando recording) */}
+                        {isRec && [0, 0.3, 0.6].map((delay, idx) => (
+                          <Animated.View
+                            key={idx}
+                            pointerEvents="none"
+                            style={{
+                              position: 'absolute', width: 120, height: 120, borderRadius: 60,
+                              borderWidth: 2, borderColor: '#DC2626',
+                              opacity: micRingAnim.interpolate({
+                                inputRange: [0, delay, delay + 0.4, 1],
+                                outputRange: [0, 0.55, 0, 0],
+                                extrapolate: 'clamp',
+                              }),
+                              transform: [{
+                                scale: micRingAnim.interpolate({
+                                  inputRange: [0, delay, delay + 0.4, 1],
+                                  outputRange: [1, 1, 1.6, 1.6],
+                                  extrapolate: 'clamp',
+                                }),
+                              }],
+                            }}
+                          />
+                        ))}
+                        <TouchableOpacity
+                          activeOpacity={0.85}
+                          onPressIn={isPlaying ? undefined : startRecording}
+                          onPressOut={isPlaying ? undefined : stopRecording}
+                          disabled={isPlaying}
+                          style={{
+                            width: 120, height: 120, borderRadius: 60,
+                            backgroundColor: bg,
+                            alignItems: 'center', justifyContent: 'center',
+                            opacity: isPlaying ? 0.5 : 1,
+                            shadowColor: bg,
+                            shadowOpacity: 0.35, shadowRadius: 18, shadowOffset: { width: 0, height: 8 },
+                            elevation: 8,
+                            transform: [{ scale: isRec ? 1.06 : 1 }],
+                          }}
+                        >
+                          <Microphone size={56} color="#FFF" weight="fill" />
+                        </TouchableOpacity>
+                      </View>
+                      <AppText style={{
+                        marginTop: 14, fontSize: 12, color: C.navyLight,
+                        fontWeight: '600', letterSpacing: 0.4,
+                      }}>
+                        {isRec
+                          ? (isPortuguese ? 'Solte para parar' : 'Release to stop')
+                          : (isPortuguese ? 'Segure para falar' : 'Hold to speak')}
+                      </AppText>
+                    </View>
+                  );
+                })()}
               {/* listen_write / minimal_pairs pre-result: play icon centralizado, sem texto */}
               {(currentStep.phrase.type === 'listen_write' || currentStep.phrase.type === 'minimal_pairs') && pronStatus !== 'result' && pronStatus !== 'loading_audio' && (
                 <View style={{ alignItems: 'center', marginBottom: 24 }}>
