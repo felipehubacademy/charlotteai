@@ -1290,7 +1290,15 @@ export default function LearnSessionScreen() {
           contentContainerStyle={{ padding: 20, paddingBottom: currentStep.kind === 'pronunciation' && pronStatus === 'result' ? 300 : 24, flexGrow: 1 }}
           keyboardShouldPersistTaps="handled"
           showsVerticalScrollIndicator={false}
-          scrollEnabled={currentStep.kind === 'pronunciation' && currentStep.phrase?.type === 'listen_write'}
+          scrollEnabled={
+            // Grammar exercises com input (read_answer/fix_error/short_write) ou
+            // passagens longas precisam scroll pra revelar input acima do teclado.
+            // Pronunciation: so listen_write (mantido). MC/word_bank/fill_gap nao
+            // precisam input do teclado, sem scroll.
+            (currentStep.kind === 'grammar' &&
+              ['read_answer', 'fix_error', 'short_write'].includes(currentStep.exercise.type)) ||
+            (currentStep.kind === 'pronunciation' && currentStep.phrase?.type === 'listen_write')
+          }
         >
           {/* ── Progress (sem chip de tipo, mesmo padrao do grammar) ── */}
           <View style={{ marginBottom: 20 }}>
@@ -1654,7 +1662,7 @@ export default function LearnSessionScreen() {
                     multiline
                     autoCorrect={false}
                     autoCapitalize="sentences"
-                    onFocus={() => Platform.OS === 'android' && setTimeout(() => scrollRef.current?.scrollToEnd({ animated: true }), 300)}
+                    onFocus={() => setTimeout(() => scrollRef.current?.scrollToEnd({ animated: true }), 300)}
                   />
                 </View>
               )}
@@ -1683,7 +1691,7 @@ export default function LearnSessionScreen() {
                     onSubmitEditing={handleGrammarSubmit}
                     autoCorrect={false}
                     autoCapitalize="none"
-                    onFocus={() => Platform.OS === 'android' && setTimeout(() => scrollRef.current?.scrollToEnd({ animated: true }), 300)}
+                    onFocus={() => setTimeout(() => scrollRef.current?.scrollToEnd({ animated: true }), 300)}
                   />
                 </>
               )}
@@ -1849,7 +1857,7 @@ export default function LearnSessionScreen() {
                       minHeight: 80, textAlignVertical: 'top', marginBottom: 16,
                     }}
                     autoCorrect={false} autoCapitalize="none" multiline
-                    onFocus={() => Platform.OS === 'android' && setTimeout(() => scrollRef.current?.scrollToEnd({ animated: true }), 300)}
+                    onFocus={() => setTimeout(() => scrollRef.current?.scrollToEnd({ animated: true }), 300)}
                   />
                   {pronStatus === 'listening' && (
                     <TouchableOpacity
