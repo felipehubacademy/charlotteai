@@ -1,8 +1,9 @@
 # Charlotte Curriculum v2 — Master Index
 
-> **Decisão arquitetural**: 2026-05-14 (revisado 2026-05-30)
-> **Total**: 66 módulos · 330 unidades · CEFR A1 → C2
-> **Estrutura fixa**: 22 módulos por nível, 5 unidades por módulo, IDs locais N01–N05 / I01–I05 / A01–A05
+> **Decisão arquitetural**: 2026-05-14 (revisado 2026-05-31 com Fase B)
+> **Total**: 71 módulos · 361 unidades · CEFR A1 → C2
+> **Estrutura padrão**: 5 unidades por módulo. Alguns módulos têm 6ª unidade quando o tema pede (M05/M18/M19/I05/I22/A11).
+> **IDs locais**: N01–N06 / I01–I06 / A01–A06
 > **Methodology**: Lexical Approach (Michael Lewis) + PPP + Communicative Approach + Spiral Review
 > **Activities per unit**: Grammar · Listening/Speaking · Role-play · Guided Chat
 
@@ -23,7 +24,7 @@
 
 ---
 
-## NOVICE — 22 módulos · 110 unidades (explicações em PT-BR)
+## NOVICE — 24 módulos · 123 unidades (explicações em PT-BR)
 
 ### Bloco A1 — fundação (M01–M11)
 | File | Module | Units | Status |
@@ -32,7 +33,7 @@
 | [M02](novice/M02-meu-mundo.md) | Meu mundo | 5 (N01–N05) | done |
 | [M03](novice/M03-familia-e-amigos.md) | Família e amigos | 5 (N01–N05) | done |
 | [M04](novice/M04-em-casa.md) | Em casa | 5 (N01–N05) | done |
-| [M05](novice/M05-meu-dia-a-dia.md) | Meu dia-a-dia | 5 (N01–N05) | done |
+| [M05](novice/M05-meu-dia-a-dia.md) | Meu dia-a-dia | 6 (N01–N06) | done · todo N06 (telling time/dates) |
 | [M06](novice/M06-o-que-faco-3-pessoa.md) | O que faço (3ª pessoa) | 5 (N01–N05) | done |
 | [M07](novice/M07-habilidades.md) | Habilidades | 5 (N01–N05) | done |
 | [M08](novice/M08-gostos.md) | Gostos | 5 (N01–N05) | done |
@@ -49,15 +50,21 @@
 | [M15](novice/M15-o-que-fiz-ontem.md) | O que fiz ontem | 5 (N01–N05) | done |
 | [M16](novice/M16-historias-simples.md) | Histórias simples | 5 (N01–N05) | done |
 | [M17](novice/M17-nao-foi-assim.md) | Não foi assim | 5 (N01–N05) | done |
-| [M18](novice/M18-planos-pra-amanha.md) | Planos pra amanhã | 5 (N01–N05) | done |
-| [M19](novice/M19-o-futuro.md) | O futuro | 5 (N01–N05) | done |
+| [M18](novice/M18-planos-pra-amanha.md) | Planos pra amanhã | 6 (N01–N06) | done · todo N06 (listening gonna/wanna) |
+| [M19](novice/M19-o-futuro.md) | O futuro | 6 (N01–N06) | done · todo N06 (weather/seasons) |
 | [M20](novice/M20-conselhos.md) | Conselhos | 5 (N01–N05) | done |
 | [M21](novice/M21-se-isso-entao-aquilo.md) | Se isso, então aquilo | 5 (N01–N05) | done |
 | [M22](novice/M22-conexoes-fechamento.md) | Conexões e fechamento Novice | 5 (N01–N05) | done |
 
+### Extensão Fase B (M23–M24)
+| File | Module | Units | Status |
+|------|--------|-------|--------|
+| M23 | Em viagem, no médico, ao telefone | 5 (N01–N05) | todo |
+| M24 | Reagindo na conversa | 5 (N01–N05) | todo |
+
 ---
 
-## INTER — 22 módulos · 110 unidades (explicações em English simples)
+## INTER — 23 módulos · 117 unidades (explicações em English simples)
 
 ### Bloco B1 (I01–I11)
 | File | Module | Units | Status |
@@ -66,7 +73,7 @@
 | I02 | O que já fiz | 5 (I01–I05) | todo |
 | I03 | Recente ou antigo? | 5 (I01–I05) | todo |
 | I04 | Costumávamos | 5 (I01–I05) | todo |
-| I05 | Phrasal verbs essenciais | 5 (I01–I05) | todo |
+| I05 | Phrasal verbs essenciais | 6 (I01–I06) | done · todo I06 (phone English) |
 | I06 | Possibilidades e dúvidas | 5 (I01–I05) | todo |
 | I07 | Quantificadores precisos | 5 (I01–I05) | todo |
 | I08 | Quem, qual, que | 5 (I01–I05) | todo |
@@ -87,11 +94,16 @@
 | I19 | Informação extra | 5 (I01–I05) | todo |
 | I20 | Eu queria que... | 5 (I01–I05) | todo |
 | I21 | Phrasal verbs e collocations avançadas | 5 (I01–I05) | todo |
-| I22 | Conectores avançados | 5 (I01–I05) | todo |
+| I22 | Conectores avançados | 6 (I01–I06) | done · todo I06 (work expandido) |
+
+### Extensão Fase B (I23)
+| File | Module | Units | Status |
+|------|--------|-------|--------|
+| I23 | Tag questions + fillers básicos | 5 (I01–I05) | todo |
 
 ---
 
-## ADVANCED — 22 módulos · 110 unidades (explicações em English natural)
+## ADVANCED — 24 módulos · 121 unidades (explicações em English natural)
 
 ### Bloco C1 (A01–A11)
 | File | Module | Units | Status |
@@ -106,7 +118,7 @@
 | A08 | Diplomacia e hedging | 5 (A01–A05) | todo |
 | A09 | Idiomas e linguagem figurada | 5 (A01–A05) | todo |
 | A10 | Marcadores de discurso | 5 (A01–A05) | todo |
-| A11 | Conotação e registro | 5 (A01–A05) | todo |
+| A11 | Conotação e registro | 6 (A01–A06) | done · todo A06 (UK/US + falsos cognatos) |
 
 ### Bloco C2 (A12–A22)
 | File | Module | Units | Status |
@@ -122,6 +134,12 @@
 | A20 | Pronúncia nativa | 5 (A01–A05) | todo |
 | A21 | Fala como nativo | 5 (A01–A05) | todo |
 | A22 | Síntese e mastery | 5 (A01–A05) | todo |
+
+### Extensão Fase B (A23–A24)
+| File | Module | Units | Status |
+|------|--------|-------|--------|
+| A23 | Business & email writing | 5 (A01–A05) | todo |
+| A24 | Idioms culturais | 5 (A01–A05) | todo |
 
 ---
 

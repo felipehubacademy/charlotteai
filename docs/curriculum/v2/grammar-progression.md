@@ -155,6 +155,20 @@
 - **Vocab**: tudo do Novice em revisão
 - **Permitido cumulativo**: M01-M21
 
+### Bloco A2 — extensão Fase B (M23-M24)
+
+#### M23 — Em viagem, no médico, ao telefone
+- **Tema**: survival real — aeroporto, hotel, médico, telefone básico
+- **Grammar novo**: nenhum (cumulativo M01-M22); foco em CHUNKS de fala real
+- **Vocab**: travel (gate, boarding, luggage), hotel (check-in/out, room), body/health (headache, doctor, pharmacy, medicine), phone (this is, speak to, hold on, message)
+- **Permitido cumulativo**: M01-M22
+
+#### M24 — Reagindo na conversa
+- **Tema**: reações high-frequency conversacionais (cool / no way / right / got it / hold on / etc)
+- **Grammar novo**: nenhum — chunks isolados de fala reativa
+- **Vocab**: cool, sweet, awesome, no way, get out, seriously, for real, hold on, hang on, wait, bummer, that sucks, whatever, never mind, makes sense, same here, anyway, by the way
+- **Permitido cumulativo**: M01-M23
+
 ---
 
 ## ESTRUTURAS PROIBIDAS NO NOVICE
@@ -309,6 +323,14 @@ Estas só entram em Inter+ ou Advanced. Não usar em NENHUM módulo Novice:
 - **Vocab**: discourse markers
 - **Permitido cumulativo**: Novice + I01-I21
 
+### Extensão Fase B (I23)
+
+#### I23 — Tag questions + fillers básicos
+- **Tema**: tag questions sistemáticas (to be, do/does/did, have/has, modais, casos especiais I am→aren't I, let's→shall we, imperatives) + fillers conversacionais básicos (you know, I mean, like, well)
+- **Grammar novo**: tag question formation com inversão e polaridade reversa; uso pragmático de fillers
+- **Vocab**: tag question patterns; you know, I mean, like, well, kind of, sort of, actually, basically, I guess, I suppose
+- **Permitido cumulativo**: Novice + I01-I22
+
 ---
 
 ## ADVANCED — 22 módulos, blocos C1 (A01-A11) e C2 (A12-A22)
@@ -448,6 +470,20 @@ Estas só entram em Inter+ ou Advanced. Não usar em NENHUM módulo Novice:
 - **Grammar novo**: nada novo — revisão integrada de todas as estruturas
 - **Vocab**: todo o C2 em contexto real
 - **Permitido cumulativo**: Novice + Inter + A01-A21
+
+### Extensão Fase B (A23-A24)
+
+#### A23 — Business & email writing
+- **Tema**: inglês profissional escrito — emails formais, candidaturas, cover letters, follow-ups
+- **Grammar novo**: convenções de email (subject, opening, body, closing); hedging especifico workplace; bad-news softening; passive defensivo
+- **Vocab**: subject lines patterns, openings formais/semi-formais, body chunks ("I'd appreciate it if", "Would it be possible"), cover letter chunks, follow-up chunks, closing variations
+- **Permitido cumulativo**: Novice + Inter + A01-A22
+
+#### A24 — Idioms culturais
+- **Tema**: idioms culturais altamente idiomáticos com carga histórica/cultural anglo-saxã
+- **Grammar novo**: nenhum — foco em uso CONTEXTUAL apropriado de idioms culturais
+- **Vocab**: kick the bucket, spill the beans, hit the nail on the head, break the ice, bite the bullet, cost an arm and a leg, piece of cake, once in a blue moon, the elephant in the room, burn bridges, throw in the towel, barking up the wrong tree, ball is in your court, cutting corners, behind the scenes, blessing in disguise, rule of thumb, speak of the devil, last straw, wear your heart on your sleeve, burn the midnight oil, out of the blue, Pandora's box (~25 idioms)
+- **Permitido cumulativo**: Novice + Inter + A01-A23
 
 ---
 
