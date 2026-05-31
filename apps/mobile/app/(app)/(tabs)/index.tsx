@@ -25,6 +25,7 @@ import { localTodayStr, localMidnightUTC } from '@/lib/dateUtils';
 import { soundEngine } from '@/lib/soundEngine';
 import { splashGate } from '@/lib/splashGate';
 import { voiceSFX } from '@/lib/voiceSFX';
+import { ArrowDown, ArrowUp } from 'phosphor-react-native';
 import { TrailContent } from '@/components/trail/TrailContent';
 import { TrailBanner } from '@/components/trail/TrailBanner';
 import { PromotionModal } from '@/components/trail/PromotionModal';
@@ -342,6 +343,17 @@ export default function HomeTab() {
   // depois que user moveu manualmente).
   const trailScrollRef = useRef<ScrollView>(null);
   const trailScrolledRef = useRef(false);
+  // FAB scroll: toggle entre topo e topico ativo
+  const [scrollY, setScrollY] = useState(0);
+  const activeTopicYRef = useRef<number>(0);
+  const isNearTop = scrollY < 80;
+  const goActive = useCallback(() => {
+    const y = activeTopicYRef.current;
+    trailScrollRef.current?.scrollTo({ y: Math.max(0, y - 24), animated: true });
+  }, []);
+  const goTop = useCallback(() => {
+    trailScrollRef.current?.scrollTo({ y: 0, animated: true });
+  }, []);
 
 
   const tryScroll = useCallback((node: any, attempt = 0) => {
@@ -363,6 +375,7 @@ export default function HomeTab() {
       },
       (_x: number, y: number) => {
         if (y > 0) {
+          activeTopicYRef.current = y;
           trailScrollRef.current?.scrollTo({ y: Math.max(0, y - 24), animated: false });
           trailScrolledRef.current = true;
         } else if (attempt < 5) {
@@ -453,6 +466,8 @@ export default function HomeTab() {
         style={{ flex: 1 }}
         contentContainerStyle={{ paddingTop: 24, paddingBottom: 40 }}
         showsVerticalScrollIndicator={false}
+        scrollEventThrottle={32}
+        onScroll={(e) => setScrollY(e.nativeEvent.contentOffset.y)}
         refreshControl={<RefreshControl refreshing={refreshing} onRefresh={onRefresh} tintColor={C.navy} />}
       >
         <TrailContent
@@ -463,6 +478,27 @@ export default function HomeTab() {
           useV2={profile?.beta_features?.includes('curriculum_v2') ?? false}
         />
       </ScrollView>
+
+      {/* FAB scroll toggle: no topo → ir pro topico ativo; embaixo → voltar pro topo */}
+      {activeTopicYRef.current > 200 && (
+        <TouchableOpacity
+          activeOpacity={0.85}
+          onPress={isNearTop ? goActive : goTop}
+          style={{
+            position: 'absolute', bottom: 80, right: 18,
+            width: 52, height: 52, borderRadius: 26,
+            backgroundColor: C.navy,
+            alignItems: 'center', justifyContent: 'center',
+            shadowColor: '#000', shadowOpacity: 0.25, shadowRadius: 10,
+            shadowOffset: { width: 0, height: 4 }, elevation: 8,
+          }}
+          accessibilityLabel={isNearTop ? 'Ir para tópico atual' : 'Voltar ao topo'}
+        >
+          {isNearTop
+            ? <ArrowDown size={22} color="#FFF" weight="bold" />
+            : <ArrowUp size={22} color="#FFF" weight="bold" />}
+        </TouchableOpacity>
+      )}
 
       <NewLayoutWelcomeSheet
         visible={showWelcomeSheet}
