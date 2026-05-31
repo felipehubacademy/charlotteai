@@ -51,9 +51,14 @@ export default function LoginScreen() {
       router.replace('/(app)');
     } catch (e: any) {
       const msg = e?.message ?? '';
+      console.error('[login] signIn error:', { message: msg, name: e?.name, code: e?.code, status: e?.status, raw: e });
       if (msg.includes('Invalid login credentials')) setError('E-mail ou senha incorretos.');
       else if (msg.includes('Email not confirmed'))  setError('Confirme seu e-mail antes de entrar.');
-      else setError('Erro ao entrar. Tente novamente.');
+      else if (msg.toLowerCase().includes('network') || msg.toLowerCase().includes('fetch')) {
+        setError('Sem conexão com servidor. Cheque internet e tente de novo.');
+      }
+      // Modo debug: mostra mensagem real do supabase pra investigar Android
+      else setError(`Erro: ${msg || 'desconhecido'}`);
     } finally {
       setLoading(false);
     }

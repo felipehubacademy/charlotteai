@@ -38,9 +38,9 @@ export function SplashOverlay() {
       ]}
     >
       <Image
-        source={require('@/assets/splash.png')}
+        source={require('@/assets/splash-bg.png')}
         style={{ width: '100%', height: '100%' }}
-        resizeMode="contain"
+        resizeMode="cover"
       />
       <View style={{ position: 'absolute', bottom: '32%', left: 0, right: 0, alignItems: 'center' }}>
         <ActivityIndicator size="large" color="#9896B8" />
