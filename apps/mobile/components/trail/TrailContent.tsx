@@ -745,6 +745,27 @@ export function TrailContent({ userId, level, onCurrentTopicRef, useV2 }: TrailC
           </React.Fragment>
         );
       })}
+      {/* Divisor final indicando proximo nivel (so v2, com modulos compilados) */}
+      {useV2 && moduleData.length > 0 && (() => {
+        const nextLabel = level === 'Novice' ? 'INTERMEDIATE'
+          : level === 'Inter' ? 'ADVANCED' : null;
+        if (!nextLabel) return null;
+        return (
+          <View style={{
+            flexDirection: 'row', alignItems: 'center', gap: 10,
+            marginTop: 24, marginBottom: 4, paddingHorizontal: 4,
+          }}>
+            <View style={{ flex: 1, height: 1, backgroundColor: C.borderMid }} />
+            <AppText style={{
+              fontSize: 11, fontWeight: '700', color: C.navyLight,
+              letterSpacing: 1.2, textTransform: 'uppercase',
+            }}>
+              {isPt ? `Próximo nível · ${nextLabel}` : `Next level · ${nextLabel}`}
+            </AppText>
+            <View style={{ flex: 1, height: 1, backgroundColor: C.borderMid }} />
+          </View>
+        );
+      })()}
     </View>
   );
 }
