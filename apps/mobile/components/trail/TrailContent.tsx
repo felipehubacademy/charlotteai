@@ -400,19 +400,36 @@ export function TrailContent({ userId, level, onCurrentTopicRef, useV2 }: TrailC
       roleplay: isPt ? 'Role-play'            : 'Role-play',
       chat:     isPt ? 'Guided Chat'          : 'Guided Chat',
     } as const;
-    return listV2Modules(level as V2Level).flatMap(m =>
-      m.units.map((u, uIdx) => ({
-        title:           u.title,
-        _v2ModuleId:     m.id,
-        _v2ModuleTitle:  m.title,
-        _v2PrevUnitId:   uIdx > 0 ? m.units[uIdx - 1].id : undefined,
-        topics: (['grammar', 'speaking', 'roleplay', 'chat'] as const).map(act => ({
-          title:        labels[act],
-          _v2ModuleId:  m.id,
-          _v2UnitId:    u.id,
-          _v2Activity:  act,
-        })),
-      }))
+    const allModules = listV2Modules(level as V2Level);
+    return allModules.flatMap((m, mIdx) =>
+      m.units.map((u, uIdx) => {
+        // Cascade cross-module: primeira unit do M(n>0) depende da ULTIMA unit
+        // do M(n-1). Demais units do mesmo modulo dependem da unit anterior local.
+        let prevUnitId: string | undefined;
+        let prevModuleId: string | undefined;
+        if (uIdx > 0) {
+          prevUnitId   = m.units[uIdx - 1].id;
+          prevModuleId = m.id;
+        } else if (mIdx > 0) {
+          const prevMod = allModules[mIdx - 1];
+          const lastUnit = prevMod.units[prevMod.units.length - 1];
+          prevUnitId   = lastUnit?.id;
+          prevModuleId = prevMod.id;
+        }
+        return {
+          title:           u.title,
+          _v2ModuleId:     m.id,
+          _v2ModuleTitle:  m.title,
+          _v2PrevUnitId:   prevUnitId,
+          _v2PrevModuleId: prevModuleId,
+          topics: (['grammar', 'speaking', 'roleplay', 'chat'] as const).map(act => ({
+            title:        labels[act],
+            _v2ModuleId:  m.id,
+            _v2UnitId:    u.id,
+            _v2Activity:  act,
+          })),
+        };
+      })
     );
   }, [useV2, level, isPt]);
 
@@ -421,6 +438,7 @@ export function TrailContent({ userId, level, onCurrentTopicRef, useV2 }: TrailC
     _v2ModuleId?: string;
     _v2ModuleTitle?: string;
     _v2PrevUnitId?: string;
+    _v2PrevModuleId?: string;
     topics: Array<{ title: string; _v2ModuleId?: string; _v2UnitId?: string; _v2Activity?: NodeType }>;
   }>;
 
@@ -430,8 +448,11 @@ export function TrailContent({ userId, level, onCurrentTopicRef, useV2 }: TrailC
   } = useLearnProgress(userId, level);
 
   // Placement skips: nivel pulado → cascade desligado (tudo destravado).
-  const { cascadeMode } = usePlacementSkips();
+  const { cascadeMode, isAccessible } = usePlacementSkips();
   const v2Cascade = cascadeMode(level as V2LevelType);
+  // Preview mode: aluno entrou em nivel ainda nao desbloqueado.
+  // Tudo aparece lockado (read-only sneak peek do curriculo).
+  const isPreview = useV2 && !isAccessible(level as V2LevelType);
 
   // v2 progress — só lê quando useV2 (sem custo extra em v1)
   const v2Progress = useLearnProgressV2(userId, level as V2Level, v2Cascade);
@@ -515,11 +536,12 @@ export function TrailContent({ userId, level, onCurrentTopicRef, useV2 }: TrailC
 
         if (useV2 && v2Activity && topic._v2ModuleId && topic._v2UnitId) {
           const row = v2Progress.get(topic._v2ModuleId, topic._v2UnitId, v2Activity);
-          complete    = !!row?.completed;
-          locked      = !v2Progress.isActivityUnlocked(
-                          topic._v2ModuleId, topic._v2UnitId, v2Activity, mod._v2PrevUnitId
+          complete    = !isPreview && !!row?.completed;
+          locked      = isPreview || !v2Progress.isActivityUnlocked(
+                          topic._v2ModuleId, topic._v2UnitId, v2Activity,
+                          mod._v2PrevUnitId, mod._v2PrevModuleId,
                         );
-          lessonScore = typeof row?.score === 'number' ? row.score : null;
+          lessonScore = isPreview ? null : (typeof row?.score === 'number' ? row.score : null);
         } else {
           complete    = isTopicComplete(mIdx, tIdx);
           const miniReq = tIdx === 0 && !isIntroDone(mIdx);
@@ -652,6 +674,23 @@ export function TrailContent({ userId, level, onCurrentTopicRef, useV2 }: TrailC
 
   return (
     <View style={{ paddingTop: 4, paddingBottom: 40 }}>
+      {isPreview && (
+        <View style={{
+          marginHorizontal: 20, marginBottom: 16, padding: 14,
+          backgroundColor: 'rgba(124,58,237,0.08)',
+          borderRadius: 12,
+          borderWidth: 1, borderColor: 'rgba(124,58,237,0.15)',
+        }}>
+          <AppText style={{ fontSize: 13, fontWeight: '700', color: '#5B21B6', marginBottom: 2 }}>
+            {isPt ? 'Pré-visualização' : 'Preview'}
+          </AppText>
+          <AppText style={{ fontSize: 12, color: '#5B21B6', lineHeight: 17 }}>
+            {isPt
+              ? 'Você está vendo o curriculum deste nível. Complete o nível atual pra desbloquear as atividades.'
+              : 'You are previewing this level. Complete the current level to unlock activities.'}
+          </AppText>
+        </View>
+      )}
       {moduleData.map((m, i) => {
         const prevModId = i > 0 ? modules[i - 1]?._v2ModuleId : undefined;
         const currModId = modules[i]?._v2ModuleId;

@@ -67,16 +67,8 @@ export function LevelDropdown({ selectedLevel, currentLevel, onSelect }: Props) 
   }
 
   function pick(level: Level) {
-    const isLocked = LEVEL_ORDER[level] > LEVEL_ORDER[currentLevel];
-    if (isLocked) {
-      setLockedToast(level);
-      Animated.sequence([
-        Animated.timing(toastAnim, { toValue: 1, duration: 180, useNativeDriver: true }),
-        Animated.delay(1600),
-        Animated.timing(toastAnim, { toValue: 0, duration: 220, useNativeDriver: true }),
-      ]).start(() => setLockedToast(null));
-      return;
-    }
+    // Niveis bloqueados agora navegam em modo PREVIEW (read-only trail).
+    // Aluno ve a estrutura do nivel sem poder iniciar nenhuma activity.
     setOpen(false);
     if (level !== selectedLevel) onSelect(level);
   }

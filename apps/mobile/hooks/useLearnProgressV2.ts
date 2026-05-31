@@ -90,11 +90,15 @@ export function useLearnProgressV2(
   const isActivityUnlocked = useCallback((
     moduleId: string, unitId: string, activity: V2Activity,
     prevUnitId?: string,
+    prevModuleId?: string,   // novo: pra cascade cross-module (M02 N01 depende de M01 N05)
   ): boolean => {
     // Placement-skip: nivel inteiro liberado sem cascade.
     if (cascadeMode === 'unlocked') return true;
     // Unit gate: anterior precisa estar 100% (se houver)
-    if (prevUnitId && !isUnitComplete(moduleId, prevUnitId)) return false;
+    if (prevUnitId) {
+      const gateModuleId = prevModuleId ?? moduleId;
+      if (!isUnitComplete(gateModuleId, prevUnitId)) return false;
+    }
     // Activity gate: anteriores da própria unit precisam estar completas
     const idx = ACTIVITY_ORDER.indexOf(activity);
     for (let i = 0; i < idx; i++) {
