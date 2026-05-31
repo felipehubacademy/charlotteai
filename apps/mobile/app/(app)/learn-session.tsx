@@ -1187,44 +1187,50 @@ export default function LearnSessionScreen() {
             );
           })()}
 
-          <TouchableOpacity
-            onPress={() => {
-              if (isV2) {
-                // v2 auto-routing: se passou threshold da activity recem-feita,
-                // avanca pra proxima activity da mesma unit (grammar → speaking → roleplay).
-                // Se nao passou, volta pra home (banner ja mostrou refazer).
-                const c = completedActivityScore;
-                const passed = c && c.score >= c.threshold;
-                if (passed && params.moduleId && params.unitId) {
-                  if (c.activityType === 'grammar') {
+          {/* "Continuar" so faz sentido se passou (tem proxima activity)
+              OU se eh v1 (fluxo legado sem threshold). v2 + nao passou:
+              esconde botao (banner ja oferece Refazer; link Voltar abaixo). */}
+          {(() => {
+            const c = completedActivityScore;
+            const v2NotPassed = isV2 && c && c.score < c.threshold;
+            if (v2NotPassed) return null;
+            return (
+              <TouchableOpacity
+                onPress={() => {
+                  if (isV2) {
+                    const passed = c && c.score >= c.threshold;
+                    if (passed && params.moduleId && params.unitId) {
+                      if (c.activityType === 'grammar') {
+                        router.replace({
+                          pathname: '/(app)/learn-session',
+                          params: { v: 'v2', level, moduleId: params.moduleId, unitId: params.unitId, activity: 'ls' } as any,
+                        });
+                        return;
+                      }
+                      if (c.activityType === 'speaking') {
+                        router.replace({
+                          pathname: '/(app)/roleplay-exercise' as any,
+                          params: { level, moduleId: params.moduleId, unitId: params.unitId } as any,
+                        });
+                        return;
+                      }
+                    }
+                    router.replace('/(app)/(tabs)' as any);
+                  } else if (hasNextTopic) {
                     router.replace({
                       pathname: '/(app)/learn-session',
-                      params: { v: 'v2', level, moduleId: params.moduleId, unitId: params.unitId, activity: 'ls' } as any,
+                      params: { level, moduleIndex: String(nextModuleIdx), topicIndex: String(nextTopicIdx) },
                     });
-                    return;
+                  } else {
+                    router.replace('/(app)/learn-trail');
                   }
-                  if (c.activityType === 'speaking') {
-                    router.replace({
-                      pathname: '/(app)/roleplay-exercise' as any,
-                      params: { level, moduleId: params.moduleId, unitId: params.unitId } as any,
-                    });
-                    return;
-                  }
-                }
-                router.replace('/(app)/(tabs)' as any);
-              } else if (hasNextTopic) {
-                router.replace({
-                  pathname: '/(app)/learn-session',
-                  params: { level, moduleIndex: String(nextModuleIdx), topicIndex: String(nextTopicIdx) },
-                });
-              } else {
-                router.replace('/(app)/learn-trail');
-              }
-            }}
-            style={{ backgroundColor: C.navy, borderRadius: 16, paddingVertical: 15, paddingHorizontal: 40, marginBottom: 16 }}
-          >
-            <AppText style={{ fontSize: 15, fontWeight: '800', color: '#FFF' }}>{isPortuguese ? 'Continuar trilha' : 'Continue trail'}</AppText>
-          </TouchableOpacity>
+                }}
+                style={{ backgroundColor: C.navy, borderRadius: 16, paddingVertical: 15, paddingHorizontal: 40, marginBottom: 16 }}
+              >
+                <AppText style={{ fontSize: 15, fontWeight: '800', color: '#FFF' }}>{isPortuguese ? 'Continuar trilha' : 'Continue trail'}</AppText>
+              </TouchableOpacity>
+            );
+          })()}
           <TouchableOpacity onPress={() => router.replace(isV2 ? '/(app)/(tabs)' as any : '/(app)/learn-trail')}>
             <AppText style={{ fontSize: 14, color: C.navyLight, fontWeight: '600' }}>{isPortuguese ? 'Voltar' : 'Back'}</AppText>
           </TouchableOpacity>
@@ -1914,6 +1920,11 @@ export default function LearnSessionScreen() {
                   <TouchableOpacity
                     onPress={async () => {
                       if (helpLoading) return;
+                      // Se ja tem explicacao, botao vira "Fechar" (limpa estado)
+                      if (helpExplanation) {
+                        setHelpExplanation(null);
+                        return;
+                      }
                       setHelpLoading(true);
                       try {
                         const correctAnswer = String(ex.answer ?? '');
@@ -1948,7 +1959,7 @@ export default function LearnSessionScreen() {
                       {helpLoading
                         ? (isPortuguese ? 'Carregando...' : 'Loading...')
                         : helpExplanation
-                          ? (isPortuguese ? 'Pedir outra ajuda' : 'Ask again')
+                          ? (isPortuguese ? 'Fechar explicação' : 'Close explanation')
                           : (isPortuguese ? 'Me ajuda' : 'Help me')}
                     </AppText>
                   </TouchableOpacity>
