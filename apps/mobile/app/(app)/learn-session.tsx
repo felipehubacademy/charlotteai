@@ -630,21 +630,21 @@ export default function LearnSessionScreen() {
           autoplayUri = charlotteAudioUriRef.current;
         }
       }
-      // Pre-warm: já configura a session em modo de gravação ANTES do
-      // user tocar no mic. Sem isso, o startRecording precisa fazer o
-      // setAudioModeAsync (100-300ms) e o início da fala fica cortado.
-      await setAudioModeAsync({ allowsRecording: true, playsInSilentMode: true, interruptionMode: 'doNotMix' }).catch(() => {});
+      // Modo de PLAYBACK (Charlotte fala primeiro). Antes ficavamos
+      // pre-warmando allowsRecording:true e dava swap PlayAndRecord ->
+      // Playback ~600ms depois — esse swap fazia iOS renegociar rota dos
+      // AirPods e cortava a Charlotte no meio. Pre-warm de recording
+      // acontece sob demanda no startRecording (aceitavel 100-300ms hit).
+      await setAudioModeAsync({ allowsRecording: false, playsInSilentMode: true, shouldRouteThroughEarpiece: false, interruptionMode: 'doNotMix' }).catch(() => {});
     } catch {}
 
     // Always transition to listening — record button must always appear
     setPronStatus('listening');
 
     // Autoplay (padrao Duolingo): toca uma vez ao entrar no step.
+    // Categoria ja foi setada acima — toggleAudio nao precisa fazer swap.
     if (autoplayUri && ph.type !== 'sentence_stress') {
-      setTimeout(async () => {
-        try {
-          await setAudioModeAsync({ allowsRecording: false, playsInSilentMode: true, shouldRouteThroughEarpiece: false, interruptionMode: 'doNotMix' });
-        } catch {}
+      setTimeout(() => {
         try { toggleAudio(charlottePlayId, autoplayUri!); } catch {}
       }, 600);
     }
