@@ -514,176 +514,176 @@
 
 ---
 
-## Unit I04 — Mixed conditional
+## Unit I04 — What almost happened
 
-> **Sub-CEFR**: B2 | **Grammar focus**: Mixed conditional (past condition → present result)
+> **Sub-CEFR**: B2 | **Grammar focus**: Chained third conditional in narrative — stringing multiple "If + past perfect, would have + past participle" to tell stories of close calls and alternate pasts. Negative forms ("wouldn't have", "nothing would have happened").
 > **Markers**: [denso]
-> **Real-life context**: You connect a past action to its present consequence — "if I had done X, I would be Y now".
+> **Real-life context**: You narrate "what almost happened" — close calls, near misses, and how one small different choice would have changed an entire chain of events.
 
 ### 1. Grammar (10 exercises)
 
-1. **multiple_choice** — "If I _____ studied medicine, I _____ a doctor now."
-   **Options**: had / would be / has / will be / had / will be / have / would be
-   **Answer**: had / would be
-   **Explanation**: Mixed conditional: past condition (if + past perfect) + present result (would + base). "If I had studied medicine, I would be a doctor now" — passado afetando presente.
+1. **multiple_choice** — "If the driver _____ braked in time, the accident _____ happened."
+   **Options**: hadn't / would have / had / wouldn't have / hadn't / wouldn't have / had / would have
+   **Answer**: hadn't / wouldn't have
+   **Explanation**: Third conditional negativo. "Hadn't braked" (não freou) + "wouldn't have happened" (não teria acontecido).
 
-2. **multiple_choice** — "She would be richer now if she _____ saved more."
-   **Options**: had / has / would have / did
-   **Answer**: had
-   **Explanation**: Cláusula if = past perfect ("had saved"). Cláusula principal = would + base ("would be") — present result.
+2. **multiple_choice** — "Nothing _____ wrong if we _____ followed the plan."
+   **Options**: would have gone / had / will go / has / would have gone / would have / would go / had
+   **Answer**: would have gone / had
+   **Explanation**: "Nothing would have gone wrong" + "if we had followed". Pronome indefinido ("nothing") + third conditional negativo enfático.
 
-3. **word_bank** — "If we _____ moved to the city, life _____ different now."
-   **Choices**: had / would be / have / will be / had / will be / had / would have
-   **Answer**: had / would be
-   **Explanation**: Past condition + present result. "Had moved" + "would be" — clássico misto.
+3. **word_bank** — "If I _____ missed the bus, I _____ met her, and we _____ together."
+   **Choices**: hadn't / would never have / wouldn't be / would have / have / will / hadn't / would never have / wouldn't have ended up
+   **Answer**: hadn't / would never have / wouldn't have ended up
+   **Explanation**: Encadeamento de três cláusulas no third conditional — uma ação leva à próxima. "Hadn't missed... would never have met... wouldn't have ended up together".
 
-4. **word_bank** — "He _____ tired today if he _____ slept more last night."
-   **Choices**: wouldn't be / will be / had / have / wouldn't be / had
-   **Answer**: wouldn't be / had
-   **Explanation**: "He wouldn't be tired today" (present result) + "if he had slept" (past condition).
+4. **word_bank** — "She _____ found the job if her friend _____ shared the link, and she _____ moved abroad."
+   **Choices**: wouldn't have / hadn't / would have / has / wouldn't have / hadn't / wouldn't have / had
+   **Answer**: wouldn't have / hadn't / wouldn't have
+   **Explanation**: Cadeia de três third conditionals: "wouldn't have found... hadn't shared... wouldn't have moved".
 
-5. **fill_gap** — "If I _____ accepted the job, I _____ working there now."
-   **Hint**: past perfect "had accepted" / "would be"
-   **Answer**: had / would be
-   **Explanation**: Past action + present continuous result. "Had accepted... would be working now".
+5. **fill_gap** — "If I _____ taken that flight, I _____ been in the storm."
+   **Hint**: past perfect "had + past participle" / would have + past participle
+   **Answer**: had / would have
+   **Explanation**: Close call narrativo. "If I had taken... I would have been". Quase aconteceu, mas não.
 
-6. **fill_gap** — "She _____ happier now if she _____ left him."
-   **Hint**: would be / had left
-   **Answer**: would be / had
-   **Explanation**: Present happiness depends on past action of leaving. Mixed conditional natural.
+6. **fill_gap** — "We _____ have made it if the train _____ been delayed."
+   **Hint**: wouldn't / hadn't
+   **Answer**: wouldn't / hadn't
+   **Explanation**: Third conditional negativo. "We wouldn't have made it if the train hadn't been delayed" — o atraso, paradoxalmente, salvou.
 
-7. **fill_gap** — "If they _____ invested earlier, they _____ rich now."
-   **Hint**: had invested / would be
-   **Answer**: had / would be
-   **Explanation**: "Had invested" (past perfect, condition) + "would be rich now" (present result).
+7. **fill_gap** — "Nobody _____ have noticed if she _____ said anything."
+   **Hint**: would / hadn't
+   **Answer**: would / hadn't
+   **Explanation**: "Nobody would have noticed" + "if she hadn't said anything" — enfático com sujeito indefinido negativo.
 
-8. **fix_error** — "If I had studied medicine, I would have been a doctor now."
-   **Hint**: Present result usa "would be", não "would have been"
-   **Answer**: If I had studied medicine, I would be a doctor now.
-   **Explanation**: "Would have been" é puro terceiro condicional (passado). Para resultado PRESENTE, use "would be" — esse é o misto.
+8. **fix_error** — "If he didn't call me, I wouldn't have known."
+   **Hint**: Third conditional precisa de "had + past participle" na cláusula if
+   **Answer**: If he hadn't called me, I wouldn't have known.
+   **Explanation**: "Didn't call" é past simple — não cabe em third conditional. Sempre "hadn't called" (past perfect).
 
-9. **fix_error** — "She would be richer now if she would have saved more."
-   **Hint**: Após "if", past perfect — não "would have"
-   **Answer**: She would be richer now if she had saved more.
-   **Explanation**: Cláusula "if" usa past perfect ("had saved"), nunca "would have".
+9. **fix_error** — "If I had left earlier, I would arrive on time."
+   **Hint**: Resultado de third conditional sempre "would HAVE + past participle"
+   **Answer**: If I had left earlier, I would have arrived on time.
+   **Explanation**: "Would arrive" é second conditional (presente). Third conditional precisa de "would have arrived" (passado).
 
 10. **read_answer**
-    **Passage**: "If I had studied medicine, I would be a doctor now. She would be in Tokyo today if she had accepted the offer last year. We wouldn't be so stressed now if we had hired more people in January."
-    **Question**: What would the speaker be now if they had studied medicine?
-    **Answer**: a doctor
-    **Explanation**: The text says "If I had studied medicine, I would be a doctor now".
+    **Passage**: "If I hadn't taken the wrong train that morning, I wouldn't have met Sarah. We wouldn't have started talking. And I would never have moved to Berlin. One mistake changed everything."
+    **Question**: What would have never happened if the speaker hadn't taken the wrong train?
+    **Answer**: moving to Berlin (or "moved to Berlin")
+    **Explanation**: The text says "I would never have moved to Berlin" — cadeia narrativa de close call.
 
 ### 2. Listening/Speaking (5 phrases)
 
-1. **"If I had studied medicine, I would be a doctor now."** — career mixed
-2. **"She would be richer if she had saved more."** — financial mixed
-3. **"We wouldn't be stressed if we had hired earlier."** — stress mixed
-4. **"He'd be more confident if he'd gone to therapy."** — confidence mixed
-5. **"If they had moved, life would be different now."** — life mixed
+1. **"If I hadn't missed the bus, I would never have met her."** — close call positive
+2. **"Nothing would have gone wrong if we had followed the plan."** — emphatic negative
+3. **"We wouldn't have made it without your help."** — implicit third conditional
+4. **"Nobody would have noticed if she hadn't said anything."** — indefinite subject
+5. **"One small change would have ruined everything."** — emphatic chain
 
 ### 3. Role-play
 
-**Cenário**: Charlotte pergunta como sua vida seria diferente HOJE se você tivesse feito escolhas diferentes no passado — quer respostas mistas (passado + presente).
+**Cenário**: Charlotte pede que você conte uma história de "quase aconteceu" — um close call da sua vida — usando pelo menos dois third conditionals encadeados.
 **Tipo**: Live Voice
 **Voiced by**: `charlotte`
 **Persona**: Charlotte
 **Persona outfit**: `charlotte_casual`
 **Time budget**: 180s
-**Opening line**: "How would your life today be different if you had made different choices? Three examples."
+**Opening line**: "Tell me a 'what almost happened' story — a close call from your life."
 
 **Sub-objectives** (M03+ gradiente: 3 objetivos):
 
 1. **id**: 1
-   **label_pt**: "Misto sobre carreira"
-   **label_en**: "Career mixed conditional"
-   **hidden_prompt**: "user uses 'If + past perfect, I would be... now' about career"
-   **hint_pt**: "If I had chosen engineering, I would be working in tech now."
-   **hint_en**: "If I had chosen engineering, I would be working in tech now."
+   **label_pt**: "Abrir com 'If I hadn't...'"
+   **label_en**: "Open with 'If I hadn't...'"
+   **hidden_prompt**: "user opens the story with 'If I hadn't + past participle, I would (n't) have + past participle'"
+   **hint_pt**: "If I hadn't missed that flight, I would have been in the storm."
+   **hint_en**: "If I hadn't missed that flight, I would have been in the storm."
 
 2. **id**: 2
-   **label_pt**: "Misto sobre lugar"
-   **label_en**: "Place mixed conditional"
-   **hidden_prompt**: "user uses 'If + past perfect, I would be... now' about place"
-   **hint_pt**: "If I had moved to São Paulo, I would be living a faster life."
-   **hint_en**: "If I had moved to São Paulo, I would be living a faster life."
+   **label_pt**: "Encadear segundo third conditional"
+   **label_en**: "Chain a second third conditional"
+   **hidden_prompt**: "user adds a second third conditional that links to the first event"
+   **hint_pt**: "And if I had been on that plane, I would never have met my best friend."
+   **hint_en**: "And if I had been on that plane, I would never have met my best friend."
 
 3. **id**: 3
-   **label_pt**: "Misto sobre relação ou estado"
-   **label_en**: "Relationship/state mixed conditional"
-   **hidden_prompt**: "user uses another mixed conditional"
-   **hint_pt**: "If I had stayed in touch, we would still be friends."
-   **hint_en**: "If I had stayed in touch, we would still be friends."
+   **label_pt**: "Fechar com reflexão"
+   **label_en**: "Close with a reflection"
+   **hidden_prompt**: "user closes with an emphatic third conditional (e.g. 'Everything would have been different' / 'Nothing would have happened')"
+   **hint_pt**: "Everything would have been different if I had made one different choice."
+   **hint_en**: "Everything would have been different if I had made one different choice."
 
-**Closing cue**: Charlotte fecha com "Parallel lives mapped!" quando obj_3 baterem.
+**Closing cue**: Charlotte fecha com "What a close call!" quando obj_3 baterem.
 
 **Suggested flow** (referencial, 6 turnos):
 
-1. **Charlotte**: "How would your life today be different if you had made different choices? Three examples."
-2. **Student**: ~"If I had chosen engineering, I would be working in tech now."
-3. **Charlotte**: "Parallel career. Place?"
-4. **Student**: ~"If I had moved to São Paulo, I would be living a faster life."
-5. **Charlotte**: "Relationship?"
-6. **Student**: ~"If I had stayed in touch, we would still be friends."
-7. **Charlotte**: "Parallel lives mapped!"
+1. **Charlotte**: "Tell me a 'what almost happened' story — a close call from your life."
+2. **Student**: ~"If I hadn't missed that flight, I would have been in the storm."
+3. **Charlotte**: "Wow. And then?"
+4. **Student**: ~"And if I had been on that plane, I would never have met my best friend."
+5. **Charlotte**: "Beautiful chain. Final thought?"
+6. **Student**: ~"Everything would have been different if I had made one different choice."
+7. **Charlotte**: "What a close call!"
 
 **Evaluation focus**:
-- "If + past perfect" (condition)
-- "Would be" (present result, not "would have been")
-- Time markers "now", "today"
+- Two or more chained third conditionals
+- Negative forms: "hadn't", "wouldn't have", "would never have"
+- Emphatic markers: "nothing", "nobody", "everything", "never"
 
 ### 4. Guided Chat
 
-**Cenário**: Charlotte explora ramificações — como pequenas escolhas passadas teriam mudado o presente. Quer trocar vidas paralelas com você.
+**Cenário**: Charlotte e o aluno reconstroem um close call histórico — "se X não tivesse acontecido, então Y não teria acontecido, e Z..." Cadeia de hipóteses encadeadas.
 **Voiced by**: `charlotte`
 **Persona**: Charlotte
 **Persona outfit**: `charlotte_casual`
-**Intro (em EN)**: "Charlotte explores parallel lives. Mix past conditions with present results."
-**Opening message**: "If you had taken a different path 10 years ago, where would you be today?"
+**Intro (em EN)**: "We reconstruct a close call. Chain third conditionals to map the cascade."
+**Opening message**: "Pick one moment from history or your life — what would have happened if it had gone differently?"
 
 **Sub-objectives** (M03+ gradiente: 3 objetivos):
 
 1. **id**: 1
-   **label_pt**: "Onde estaria hoje"
-   **label_en**: "Where you'd be today"
-   **hidden_prompt**: "user uses mixed conditional with 'I would be' for present location/state"
-   **hint_pt**: "If I had gone abroad, I would be living in Europe."
-   **hint_en**: "If I had gone abroad, I would be living in Europe."
+   **label_pt**: "Primeiro 'if hadn't / wouldn't have'"
+   **label_en**: "First 'if hadn't / wouldn't have'"
+   **hidden_prompt**: "user states a first third conditional with negative form ('If X hadn't... Y wouldn't have...')"
+   **hint_pt**: "If the internet hadn't been invented, we wouldn't have this conversation."
+   **hint_en**: "If the internet hadn't been invented, we wouldn't have this conversation."
 
 2. **id**: 2
-   **label_pt**: "Outra ramificação"
-   **label_en**: "Another branching"
-   **hidden_prompt**: "user uses another mixed conditional"
-   **hint_pt**: "If I had kept that job, I would be exhausted by now."
-   **hint_en**: "If I had kept that job, I would be exhausted by now."
+   **label_pt**: "Encadear consequência"
+   **label_en**: "Chain a consequence"
+   **hidden_prompt**: "user adds another third conditional connected to the first"
+   **hint_pt**: "And if we hadn't had this conversation, I would never have practiced English today."
+   **hint_en**: "And if we hadn't had this conversation, I would never have practiced English today."
 
 3. **id**: 3
    **label_pt**: "Perguntar à Charlotte"
    **label_en**: "Ask Charlotte"
-   **hidden_prompt**: "user asks 'Where would you be?' or similar to Charlotte"
-   **hint_pt**: "Where would you be today?"
-   **hint_en**: "Where would you be today?"
+   **hidden_prompt**: "user asks Charlotte 'What about you?' or 'What would have changed for you?' or similar"
+   **hint_pt**: "What would have changed for you?"
+   **hint_en**: "What would have changed for you?"
 
-**Closing cue**: Charlotte fecha com "Branches explored!" quando obj_3 baterem.
+**Closing cue**: Charlotte fecha com "Cascade mapped!" quando obj_3 baterem.
 
 **Script** (referencial, 7 turnos):
 
-1. **Charlotte**: "If you had taken a different path 10 years ago, where would you be today?"
-2. **Student**: "If I had gone abroad, I would be living in Europe."
-3. **Charlotte**: "European life. What else?"
-4. **Student**: "If I had kept that job, I would be exhausted by now."
-5. **Charlotte**: "So leaving was right."
-6. **Student**: "Where would you be today?"
-7. **Charlotte**: "If I had stayed in academia, I would be teaching in Boston. Branches explored!"
+1. **Charlotte**: "Pick one moment from history or your life — what would have happened if it had gone differently?"
+2. **Student**: "If the internet hadn't been invented, we wouldn't have this conversation."
+3. **Charlotte**: "Massive shift. Next link?"
+4. **Student**: "And if we hadn't had this conversation, I would never have practiced English today."
+5. **Charlotte**: "Domino effect."
+6. **Student**: "What would have changed for you?"
+7. **Charlotte**: "If I had been built ten years earlier, I would have spoken differently. Cascade mapped!"
 
 > I04 chat = LLM puro. Scaffold via hint_pt.
 
 ---
 
-## Unit I05 — All conditionals together
+## Unit I05 — Past hypotheticals together
 
-> **Sub-CEFR**: B2 | **Grammar focus**: Integration of third + mixed conditionals
+> **Sub-CEFR**: B2 | **Grammar focus**: Integration of third conditional + wish + past + chained close calls
 > **Markers**: —
-> **Real-life context**: You alternate fluidly between past hypotheticals, wishes, and mixed conditionals in real conversation.
+> **Real-life context**: You alternate fluidly between past hypotheticals, wishes, and chained close-call narratives in real conversation.
 
 ### 1. Grammar (10 exercises)
 
@@ -697,10 +697,10 @@
    **Answer**: had
    **Explanation**: "Wish + past perfect" para arrependimento. "I wish I had said no" — não disse e me arrependo.
 
-3. **word_bank** — "If she _____ studied harder, she _____ in a top school now."
-   **Choices**: had / would be / has / will be / had / would have / would / will
-   **Answer**: had / would be
-   **Explanation**: Misto: past perfect + would be (present). "Had studied" + "would be in a top school now".
+3. **word_bank** — "If she _____ studied harder, she _____ passed the exam."
+   **Choices**: had / would have / has / will / had / would / would / will have
+   **Answer**: had / would have
+   **Explanation**: Third conditional puro. "Had studied" + "would have passed" — passado hipotético.
 
 4. **word_bank** — "What _____ you have done if you _____ been there?"
    **Choices**: would / had / will / are / would / will / would / was
@@ -717,10 +717,10 @@
    **Answer**: had
    **Explanation**: "If only I had listened" — exclamação de arrependimento.
 
-7. **fill_gap** — "He _____ be happier now if he _____ left that job."
-   **Hint**: would (be) / had (left)
+7. **fill_gap** — "Nothing _____ have gone wrong if we _____ followed the plan."
+   **Hint**: would / had
    **Answer**: would / had
-   **Explanation**: Mixed conditional: "would be happier now" + "had left" — past affecting present.
+   **Explanation**: Third conditional negativo enfático. "Nothing would have gone wrong" + "if we had followed" — encadeamento típico de close call.
 
 8. **fix_error** — "If I would have known, I would have helped."
    **Hint**: "Would" nunca vai na cláusula if
@@ -733,7 +733,7 @@
    **Explanation**: "Wish + past perfect" para arrependimento ("I wish I had studied"). "Would have" é errado em wish.
 
 10. **read_answer**
-    **Passage**: "If I had studied harder, I would have passed. I wish I had taken that opportunity. If she had moved to London, she would be living there now. What would you have done in my place?"
+    **Passage**: "If I had studied harder, I would have passed. I wish I had taken that opportunity. If I hadn't missed the deadline, nothing would have gone wrong. What would you have done in my place?"
     **Question**: What does the speaker wish they had done?
     **Answer**: taken that opportunity (or "the opportunity")
     **Explanation**: The text says "I wish I had taken that opportunity".
@@ -742,19 +742,19 @@
 
 1. **"If I had known, I would have helped."** — third conditional
 2. **"I wish I had said yes."** — wish + past perfect
-3. **"She would be there now if she had moved."** — mixed conditional
+3. **"If I hadn't missed the bus, I would never have met her."** — chained close call
 4. **"What would you have done in my place?"** — question
 5. **"If only I had listened!"** — emphatic regret
 
 ### 3. Role-play
 
-**Cenário**: Charlotte propõe uma conversa rica sobre passado e presente — quer ver você usar third conditional, wish + past perfect, mixed conditional e perguntas hipotéticas tudo em três turnos.
+**Cenário**: Charlotte propõe uma conversa rica sobre o passado — quer ver você usar third conditional, wish + past perfect e um close call encadeado em três turnos.
 **Tipo**: Live Voice
 **Voiced by**: `charlotte`
 **Persona**: Charlotte
 **Persona outfit**: `charlotte_casual`
 **Time budget**: 180s
-**Opening line**: "Mix it all — a past hypothetical, a regret, and a mixed conditional. Three sentences."
+**Opening line**: "Mix it all — a past hypothetical, a regret, and a close call. Three sentences."
 
 **Sub-objectives** (M03+ gradiente: 3 objetivos):
 
@@ -773,36 +773,36 @@
    **hint_en**: "I wish I had studied abroad."
 
 3. **id**: 3
-   **label_pt**: "Conditional misto"
-   **label_en**: "Mixed conditional"
-   **hidden_prompt**: "user uses 'If + past perfect, I would be... now'"
-   **hint_pt**: "If I had stayed, I would be a manager by now."
-   **hint_en**: "If I had stayed, I would be a manager by now."
+   **label_pt**: "Close call encadeado"
+   **label_en**: "Chained close call"
+   **hidden_prompt**: "user uses 'If I hadn't... I would never have...' or similar negative chained third conditional"
+   **hint_pt**: "If I hadn't taken that flight, I would never have met my best friend."
+   **hint_en**: "If I hadn't taken that flight, I would never have met my best friend."
 
 **Closing cue**: Charlotte fecha com "Conditional fluency!" quando obj_3 baterem.
 
 **Suggested flow** (referencial, 6 turnos):
 
-1. **Charlotte**: "Mix it all — a past hypothetical, a regret, and a mixed conditional. Three sentences."
+1. **Charlotte**: "Mix it all — a past hypothetical, a regret, and a close call. Three sentences."
 2. **Student**: ~"If I had left earlier, I wouldn't have missed the meeting."
 3. **Charlotte**: "Concrete. Regret?"
 4. **Student**: ~"I wish I had studied abroad."
-5. **Charlotte**: "Mixed?"
-6. **Student**: ~"If I had stayed, I would be a manager by now."
+5. **Charlotte**: "Close call?"
+6. **Student**: ~"If I hadn't taken that flight, I would never have met my best friend."
 7. **Charlotte**: "Conditional fluency!"
 
 **Evaluation focus**:
-- Three different conditional types
+- Three different past hypothetical structures
 - "Were" not "was" where applicable
 - Natural integration
 
 ### 4. Guided Chat
 
-**Cenário**: Charlotte abre uma conversa profunda sobre escolhas — quer trocar arrependimentos, hipóteses passadas, e vidas paralelas com você integrando tudo.
+**Cenário**: Charlotte abre uma conversa profunda sobre escolhas passadas — quer trocar arrependimentos, hipóteses encadeadas e close calls com você integrando tudo.
 **Voiced by**: `charlotte`
 **Persona**: Charlotte
 **Persona outfit**: `charlotte_casual`
-**Intro (em EN)**: "Charlotte integrates past hypotheticals, regrets, and mixed conditionals."
+**Intro (em EN)**: "Charlotte integrates past hypotheticals, regrets, and chained close calls."
 **Opening message**: "Looking back, what's one thing you would have changed?"
 
 **Sub-objectives** (M03+ gradiente: 3 objetivos):
@@ -815,11 +815,11 @@
    **hint_en**: "I would have spoken up more."
 
 2. **id**: 2
-   **label_pt**: "Wish ou mixed (consequência presente)"
-   **label_en**: "Wish or mixed (present consequence)"
-   **hidden_prompt**: "user uses 'I wish I had' or mixed conditional with present result"
-   **hint_pt**: "If I had been more confident, I would be in a better position now."
-   **hint_en**: "If I had been more confident, I would be in a better position now."
+   **label_pt**: "Wish ou close call encadeado"
+   **label_en**: "Wish or chained close call"
+   **hidden_prompt**: "user uses 'I wish I had' or a chained third conditional ('If I hadn't... I would never have...')"
+   **hint_pt**: "I wish I had been more confident — if I hadn't doubted myself, I would have taken more risks."
+   **hint_en**: "I wish I had been more confident — if I hadn't doubted myself, I would have taken more risks."
 
 3. **id**: 3
    **label_pt**: "Perguntar à Charlotte"
@@ -834,9 +834,9 @@
 
 1. **Charlotte**: "Looking back, what's one thing you would have changed?"
 2. **Student**: "I would have spoken up more."
-3. **Charlotte**: "Voice matters. What would be different now?"
-4. **Student**: "If I had been more confident, I would be in a better position now."
-5. **Charlotte**: "Self-knowledge."
+3. **Charlotte**: "Voice matters. What would have followed?"
+4. **Student**: "If I hadn't stayed silent, I wouldn't have lost that opportunity."
+5. **Charlotte**: "Honest reflection."
 6. **Student**: "What would you have changed?"
 7. **Charlotte**: "I would have asked for help sooner. Deep reflection done!"
 
@@ -851,8 +851,9 @@ Ao terminar M13, o aluno deve usar naturalmente:
 - I wish + past perfect (arrependimento passado)
 - If only + past perfect (arrependimento enfático)
 - What would you have done if + past perfect? (pergunta hipotética passada)
-- Mixed conditional: If + past perfect, would + base now (passado afetando presente)
+- Third conditional encadeado para narrar close calls ("If I hadn't... I would never have...")
+- Negative third conditional enfático com "nothing/nobody/never/everything"
 - Nunca "would have" dentro de cláusulas if
-- Distinção clara: second (presente) vs third (passado) vs misto (passado→presente)
+- Distinção clara: second (presente) vs third (passado)
 
 Esses chunks preparam M14 (Modal perfects: should have, could have, would have, might have, must have done).
