@@ -100,6 +100,12 @@ export default function LearnIntroScreen() {
     };
   }, []);
 
+  // Pausar Spotify/outros apps enquanto Charlotte fala na intro.
+  // soundEngine deixa a sessao em 'mixWithOthers' apos qualquer SFX.
+  useEffect(() => {
+    setAudioModeAsync({ playsInSilentMode: true, interruptionMode: 'doNotMix' }).catch(() => {});
+  }, []);
+
   // ── Poll currentTime while playing ──────────────────────────
   useEffect(() => {
     pollRef.current = setInterval(() => {

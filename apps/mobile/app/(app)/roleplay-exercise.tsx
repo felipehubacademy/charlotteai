@@ -77,6 +77,13 @@ export default function RolePlayExerciseScreen() {
     setUnitTitle(u.title);
   }, [level, moduleId, unitId]);
 
+  // Pausar Spotify/outros apps de audio enquanto Charlotte fala no role-play.
+  // soundEngine deixa a sessao em 'mixWithOthers' apos qualquer SFX — sem isso
+  // a musica continua tocando junto da Charlotte.
+  useEffect(() => {
+    setAudioModeAsync({ playsInSilentMode: true, interruptionMode: 'doNotMix' }).catch(() => {});
+  }, []);
+
   // ── Chat state ──────────────────────────────────────────────────
   const [messages, setMessages]               = useState<Message[]>([]);
   const [isProcessing, setIsProcessing]       = useState(false);
