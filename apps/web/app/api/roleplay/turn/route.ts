@@ -181,19 +181,22 @@ Rules:
   structurally + semantically close to it, MARK the objective. Don't
   over-analyze pragmatic nuance.
   - CHUNK-BASED OBJECTIVES (target a specific phrase like "By the way",
-    "Anyway", "Hold on", "Let me think", "I wish I had", etc): if the
-    chunk appears in the student's message in a recognizable form
-    (case-insensitive, surrounded by common fillers like "um", "hmm",
-    "humm", "well", "ok", etc), MARK the objective. Do NOT require the
-    chunk to be the WHOLE message — it just needs to appear used in
-    context. Examples that MUST mark:
-      • Objective "ask for pause" + hint "Wait, let me think about this"
-        → student says "Humm let me think" → MARK
-        → student says "hold on a sec" → MARK
-        → student says "wait wait wait" → MARK
-      • Objective "use 'By the way'" + hint "By the way, are you hungry?"
-        → student says "By the way... are you hungry" → MARK
-        → student says "by the way did u see the news" → MARK
+    "Anyway", "Hold on", "Let me think", "I wish I had", etc):
+    SUBSTRING CHECK ONLY. If the target chunk appears AT ALL in the
+    student's message (case-insensitive, normalize apostrophes/quotes),
+    MARK THE OBJECTIVE. PERIOD.
+    Do NOT analyze surrounding words. Do NOT judge register, slang,
+    fillers, completeness, or appropriateness. Do NOT require any other
+    structure. The chunk presence is SUFFICIENT EVIDENCE.
+    Examples — ALL of these MUST mark "use 'Let me think'":
+      • "let me think"
+      • "Hmm let me think"
+      • "yo, let me think, pal"
+      • "Wait let me think about this for a sec ok?"
+      • "uhh let me think hold on"
+      • "I dunno let me think bro"
+    The ONLY way to NOT mark is if the chunk is COMPLETELY ABSENT from
+    the message. If it's there in any form, MARK.
   - BIAS TOWARD MARKING when there's clear evidence. Strict matching is
     only for cases where the student replied off-topic, gibberish, or
     something genuinely unrelated.
