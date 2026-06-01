@@ -182,9 +182,9 @@
 
 1. **Charlotte**: "Last weekend something weird happened to me at the supermarket..."
 2. **Student**: "Really? What happened?"
-3. **Charlotte**: "I was paying, and the cashier asked me out for coffee!"
+3. **Charlotte**: "I paid for my stuff, and the cashier asked me out for coffee!"
 4. **Student**: "Tell me more!"
-5. **Charlotte**: "I was so surprised that I dropped all my groceries. Tomatoes everywhere."
+5. **Charlotte**: "I was so surprised — I dropped all my groceries. Tomatoes everywhere."
 6. **Student**: "That's so funny!"
 7. **Charlotte**: "I said no, by the way. But it made my day. Glad you found it funny!"
 

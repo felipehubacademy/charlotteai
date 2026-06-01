@@ -217,10 +217,10 @@
    **Answer**: because
    **Explanation**: "Because I was sick" — explicação.
 
-6. **fill_gap** — "It was raining, _____ we stayed inside."
+6. **fill_gap** — "It rained yesterday, _____ we stayed inside."
    **Hint**: Resultado
    **Answer**: so
-   **Explanation**: "So we stayed" — consequência da chuva.
+   **Explanation**: "So we stayed" — consequência da chuva. "Rained" é past simple (M15).
 
 7. **fill_gap** — "She is happy _____ she got a job."
    **Hint**: Causa

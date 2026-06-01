@@ -54,7 +54,7 @@
 3. **word_bank** — "My flight _____ delayed by two hours."
    **Choices**: is / are / has / does
    **Answer**: is
-   **Explanation**: "My flight is delayed" — passive simples com "is + past participle". Padrão para reportar status de voo.
+   **Explanation**: Memorize "My flight is delayed" como CHUNK FIXO de aeroporto — não tente analisar a estrutura. Como "I'm tired" ou "I'm ready": é "to be" + adjetivo. "Delayed" funciona como adjetivo aqui (atrasado).
 
 4. **word_bank** — "_____ I have a window seat, please?"
    **Choices**: Can / Do / Is / Are

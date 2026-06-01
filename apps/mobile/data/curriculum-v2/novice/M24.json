@@ -242,7 +242,7 @@
           }
         ],
         "closing_cue": "Charlotte fecha com \"Glad you found it funny!\" quando obj_3 bater.",
-        "suggested_script": "**Script** (referencial, 7 turnos):\n\n1. **Charlotte**: \"Last weekend something weird happened to me at the supermarket...\"\n2. **Student**: \"Really? What happened?\"\n3. **Charlotte**: \"I was paying, and the cashier asked me out for coffee!\"\n4. **Student**: \"Tell me more!\"\n5. **Charlotte**: \"I was so surprised that I dropped all my groceries. Tomatoes everywhere.\"\n6. **Student**: \"That's so funny!\"\n7. **Charlotte**: \"I said no, by the way. But it made my day. Glad you found it funny!\"\n\n> N01 chat = LLM puro. Scaffold via hint_pt.\n\n---"
+        "suggested_script": "**Script** (referencial, 7 turnos):\n\n1. **Charlotte**: \"Last weekend something weird happened to me at the supermarket...\"\n2. **Student**: \"Really? What happened?\"\n3. **Charlotte**: \"I paid for my stuff, and the cashier asked me out for coffee!\"\n4. **Student**: \"Tell me more!\"\n5. **Charlotte**: \"I was so surprised — I dropped all my groceries. Tomatoes everywhere.\"\n6. **Student**: \"That's so funny!\"\n7. **Charlotte**: \"I said no, by the way. But it made my day. Glad you found it funny!\"\n\n> N01 chat = LLM puro. Scaffold via hint_pt.\n\n---"
       }
     },
     {

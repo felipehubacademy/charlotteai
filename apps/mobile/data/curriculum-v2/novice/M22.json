@@ -282,10 +282,10 @@
         },
         {
           "type": "fill_gap",
-          "sentence": "It was raining, _____ we stayed inside.",
+          "sentence": "It rained yesterday, _____ we stayed inside.",
           "hint": "Resultado",
           "answer": "so",
-          "explanation": "\"So we stayed\" — consequência da chuva."
+          "explanation": "\"So we stayed\" — consequência da chuva. \"Rained\" é past simple (M15)."
         },
         {
           "type": "fill_gap",
