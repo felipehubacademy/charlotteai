@@ -1360,7 +1360,10 @@ export default function LearnSessionScreen() {
               {/* Instruction — bubble na cor do nível, sem avatar, centralizado */}
               <View style={{ backgroundColor: accentBg, borderRadius: 12, paddingHorizontal: 12, paddingVertical: 9, marginBottom: 16, alignSelf: 'center' }}>
                 <AppText style={{ fontSize: 12, color: accent, fontWeight: '700', textAlign: 'center' }}>
-                  {currentStep.exercise.type === 'multiple_choice' ? (isPortuguese ? 'Escolha a opção correta para completar a frase.'    : 'Choose the correct option to complete the sentence.')
+                  {currentStep.exercise.type === 'multiple_choice'
+                    ? (currentStep.exercise.passage
+                        ? (isPortuguese ? 'Leia o texto e escolha a opção correta.' : 'Read the text and choose the correct option.')
+                        : (isPortuguese ? 'Escolha a opção correta para completar a frase.' : 'Choose the correct option to complete the sentence.'))
                     : currentStep.exercise.type === 'word_bank'      ? (isPortuguese ? 'Toque na palavra correta para preencher o espaço.' : 'Tap the correct word to fill the blank.')
                     : currentStep.exercise.type === 'fill_gap'       ? (isPortuguese ? 'Digite a palavra que falta na lacuna.'            : 'Type the missing word in the blank.')
                     : currentStep.exercise.type === 'fix_error'      ? (isPortuguese ? 'Encontre o erro e reescreva a frase corretamente.'  : 'Find the mistake and rewrite the sentence correctly.')

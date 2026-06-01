@@ -1009,7 +1009,8 @@
         },
         {
           "type": "multiple_choice",
-          "sentence": "Friend: 'So I was telling you about my trip...' You: 'Hold on, let me grab some water.' Friend: 'Sure!' You: 'OK, anyway, you were saying?' Friend: 'Right, so the flight was delayed. By the way, did you see the news today?' — How does the friend use 'by the way' here?",
+          "sentence": "Como o amigo usa 'by the way' aqui?",
+          "passage": "Friend: 'So I was telling you about my trip...' You: 'Hold on, let me grab some water.' Friend: 'Sure!' You: 'OK, anyway, you were saying?' Friend: 'Right, so the flight was delayed. By the way, did you see the news today?'",
           "options": [
             "To introduce a new topic",
             "To apologize for something",
