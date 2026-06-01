@@ -56,9 +56,12 @@ function buildSystemPrompt(
   const knownStudentBlock = userName
     ? `\n\nABOUT THE STUDENT — YOU KNOW THEM:\nThe student's name is ${userName}. You (Charlotte) are their English coach\nand have been working with them. DO NOT ask their name, age, or any\nbasic intro question — you already know them. Greet them by name when\nnatural ("Hi ${userName}!", "${userName}, that was great!").`
     : '';
-  const objectivesBlock = gc.objectives.map(o =>
-    `  - Objective ${o.id}: ${o.hidden_prompt}`
-  ).join('\n');
+  const objectivesBlock = gc.objectives.map(o => {
+    const hintLine = o.hint_en
+      ? `\n    Canonical example (mark obj if student's reply clearly aligns): "${o.hint_en}"`
+      : '';
+    return `  - Objective ${o.id}: ${o.hidden_prompt}${hintLine}`;
+  }).join('\n');
 
   const nudgeBlock = (stuckTurns >= 2 && nextObjectiveId !== undefined)
     ? `\n\nSTUDENT IS STUCK ON OBJECTIVE ${nextObjectiveId} (${stuckTurns} turns).\nReformulate your last message to nudge them more directly toward this\nobjective. Make the question pointed and easier to answer. Stay in\ncharacter and do NOT reveal the objective list.`
@@ -192,11 +195,19 @@ You MUST reply as JSON with this exact shape:
 }
 
 Rules:
-- "objectives_met" is ONLY for objectives the student CLEARLY AND SPECIFICALLY
-  satisfied in the LAST user turn. Match the hidden_prompt STRICTLY.
-  Out-of-context replies, vague utterances, or unrelated answers must NOT
-  mark any objective. Broken English with the right INTENT counts; a fluent
-  but unrelated sentence does NOT.
+- "objectives_met" is for objectives the student satisfied in the LAST user turn.
+  Use the canonical example as your anchor: if the student's message is
+  structurally + semantically close to it, MARK the objective. Don't
+  over-analyze pragmatic nuance.
+  - CHUNK-BASED OBJECTIVES (target a specific phrase like "By the way",
+    "Anyway", "Hold on", "I wish I had", etc): if the student USES the
+    chunk correctly in their message, MARK the objective — even if the
+    surrounding content is slightly off from the canonical example.
+  - BIAS TOWARD MARKING when there's clear evidence. Strict matching is
+    only for cases where the student replied off-topic, gibberish, or
+    something genuinely unrelated.
+  - Broken English with the right INTENT counts; a fluent but completely
+    unrelated sentence does NOT.
 - If the student's message is empty, gibberish, or a single random word →
   reply gently asking them to elaborate and set objectives_met=[].
 - An objective already met in a PRIOR turn must NOT appear again.
