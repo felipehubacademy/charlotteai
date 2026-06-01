@@ -30,6 +30,7 @@ export type SoundName =
   | 'answer_wrong'
   | 'topic_complete'
   | 'module_complete'
+  | 'level_promotion'
   | 'intro_app';
 
 // ── Catalogo de assets bundled ───────────────────────────────────────────────
@@ -51,9 +52,15 @@ const BUNDLED: Partial<Record<SoundName, number[]>> = {
   achievement_epic:      [require('../assets/audio/sfx/achievement_epic.mp3')],
   achievement_legendary: [require('../assets/audio/sfx/achievement_legendary.mp3')],
   streak_alive:          [require('../assets/audio/sfx/streak_alive.mp3')],
-  daily_goal:            [require('../assets/audio/sfx/daily_goal.mp3')],
+  // Decisao do user 2026-06-01:
+  // - level_promotion (subir de nivel Novice→Inter etc) usa daily_goal.mp3,
+  //   que tem a vibe mais epica do catalogo.
+  // - daily_goal e module_complete agora usam topic_complete.mp3 — celebram
+  //   sem cansar (eventos recorrentes).
+  daily_goal:            [require('../assets/audio/sfx/topic_complete.mp3')],
   topic_complete:        [require('../assets/audio/sfx/topic_complete.mp3')],
-  module_complete:       [require('../assets/audio/sfx/module_complete.mp3')],
+  module_complete:       [require('../assets/audio/sfx/topic_complete.mp3')],
+  level_promotion:       [require('../assets/audio/sfx/daily_goal.mp3')],
   intro_app:             [require('../assets/audio/sfx/intro_app.mp3')],
 };
 

@@ -127,8 +127,9 @@ export function PromotionModal({ event, onClose }: Props) {
         Animated.spring(scale, { toValue: 1, useNativeDriver: true, friction: 7, tension: 60 }),
         Animated.timing(fade, { toValue: 1, duration: 220, useNativeDriver: true }),
       ]).start();
-      // SFX legendary (promocao de nivel = achievement raro) + haptic burst.
-      soundEngine.play('achievement_legendary').catch(() => {});
+      // SFX level_promotion (= daily_goal.mp3 — vibe mais epica do catalogo,
+      // decisao do user 2026-06-01) + haptic burst.
+      soundEngine.play('level_promotion').catch(() => {});
       Haptics.notificationAsync(Haptics.NotificationFeedbackType.Success).catch(() => {});
       const t = setTimeout(() => {
         Haptics.impactAsync(Haptics.ImpactFeedbackStyle.Heavy).catch(() => {});
