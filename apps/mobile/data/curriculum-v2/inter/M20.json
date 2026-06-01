@@ -39,7 +39,7 @@
             "did"
           ],
           "answer": "would",
-          "explanation": "\"I wish + would + base\" para reclamar de comportamento recorrente de outra pessoa. \"Would stop\" — desejo que ele pare."
+          "explanation": "\"I wish + would + base\" to complain about another person's recurring behavior. \"Would stop\" — a wish for them to stop."
         },
         {
           "type": "multiple_choice",
@@ -51,7 +51,7 @@
             "does"
           ],
           "answer": "would",
-          "explanation": "Wish + would expressa desejo sobre futuro/recurring action de outra pessoa. Não usado para si mesmo (use wish + past para isso)."
+          "explanation": "Wish + would expresses a wish about another person's future/recurring action. Not used for yourself (use wish + past for that)."
         },
         {
           "type": "word_bank",
@@ -63,7 +63,7 @@
             "don't"
           ],
           "answer": "wouldn't",
-          "explanation": "\"Wouldn't smoke\" — wish negativo. Reclamação geral sobre comportamento de outros."
+          "explanation": "\"Wouldn't smoke\" — negative wish. General complaint about others' behavior."
         },
         {
           "type": "word_bank",
@@ -75,42 +75,42 @@
             "stopped"
           ],
           "answer": "would stop",
-          "explanation": "\"I wish it would stop raining\" — wish + would para mudança que se deseja. Eventos/clima também funcionam."
+          "explanation": "\"I wish it would stop raining\" — wish + would for a desired change. Events/weather also work."
         },
         {
           "type": "fill_gap",
           "sentence": "I wish you _____ be quiet for one minute.",
           "hint": "would",
           "answer": "would",
-          "explanation": "\"I wish you would be quiet\" — desejo que faça algo específico. Tom de irritação."
+          "explanation": "\"I wish you would be quiet\" — wish for a specific action. Annoyed tone."
         },
         {
           "type": "fill_gap",
           "sentence": "I wish my neighbors _____ make so much noise.",
           "hint": "wouldn't (negativo)",
           "answer": "wouldn't",
-          "explanation": "\"Wouldn't make noise\" — reclamação contínua. Negativo padrão."
+          "explanation": "\"Wouldn't make noise\" — ongoing complaint. Standard negative."
         },
         {
           "type": "fill_gap",
           "sentence": "I wish he _____ stop complaining.",
           "hint": "would",
           "answer": "would",
-          "explanation": "\"Would stop complaining\" — desejo que pare comportamento recorrente."
+          "explanation": "\"Would stop complaining\" — wish for them to stop the recurring behavior."
         },
         {
           "type": "fix_error",
           "sentence": "I wish you will listen to me.",
           "hint": "Wish + would, não \"will\"",
           "answer": "I wish you would listen to me.",
-          "explanation": "\"Will\" não combina com wish. Para desejos sobre futuro/comportamento de outros, use \"would\"."
+          "explanation": "\"Will\" doesn't combine with wish. For wishes about others' future/behavior, use \"would\"."
         },
         {
           "type": "fix_error",
           "sentence": "I wish I would be taller.",
           "hint": "Para EU mesmo, use wish + past simple",
           "answer": "I wish I were taller.",
-          "explanation": "\"Wish + would\" NÃO se usa para si mesmo. Para si, use wish + past simple (\"I wish I were\"). Wish + would é só para OUTROS."
+          "explanation": "\"Wish + would\" is NOT used for yourself. For yourself, use wish + past simple (\"I wish I were\"). Wish + would is only for OTHERS."
         },
         {
           "type": "read_answer",
@@ -233,7 +233,7 @@
             "will have"
           ],
           "answer": "had",
-          "explanation": "\"If only + past simple\" para arrependimento PRESENTE. Mesmo padrão de \"I wish I had\" mas com tom mais enfático/dramático."
+          "explanation": "\"If only + past simple\" for PRESENT regret. Same pattern as \"I wish I had\" but with a more emphatic/dramatic tone."
         },
         {
           "type": "multiple_choice",
@@ -245,7 +245,7 @@
             "did"
           ],
           "answer": "had",
-          "explanation": "\"If only + past perfect\" para arrependimento sobre PASSADO. \"If only I had studied\" — mesmo padrão de \"I wish I had studied\"."
+          "explanation": "\"If only + past perfect\" for regret about the PAST. \"If only I had studied\" — same pattern as \"I wish I had studied\"."
         },
         {
           "type": "word_bank",
@@ -257,7 +257,7 @@
             "had been"
           ],
           "answer": "were",
-          "explanation": "\"If only she were here\" — desejo presente. \"Were\" para todas as pessoas em wish/if only."
+          "explanation": "\"If only she were here\" — present wish. \"Were\" for all persons in wish/if only."
         },
         {
           "type": "word_bank",
@@ -269,42 +269,42 @@
             "did"
           ],
           "answer": "had",
-          "explanation": "\"If only we had left\" — arrependimento passado. Past perfect padrão."
+          "explanation": "\"If only we had left\" — past regret. Standard past perfect."
         },
         {
           "type": "fill_gap",
           "sentence": "If only I _____ speak more languages!",
           "hint": "could (habilidade)",
           "answer": "could",
-          "explanation": "\"If only I could\" — desejo de habilidade presente. \"Could\" + base."
+          "explanation": "\"If only I could\" — present ability wish. \"Could\" + base."
         },
         {
           "type": "fill_gap",
           "sentence": "If only he _____ listened to me!",
           "hint": "past perfect \"had + past participle\"",
           "answer": "had",
-          "explanation": "\"If only he had listened\" — arrependimento passado dramatico."
+          "explanation": "\"If only he had listened\" — dramatic past regret."
         },
         {
           "type": "fill_gap",
           "sentence": "If only the rain _____ stop!",
           "hint": "would",
           "answer": "would",
-          "explanation": "\"If only it would stop\" — desejo sobre futuro/comportamento. Similar a wish + would."
+          "explanation": "\"If only it would stop\" — wish about future/behavior. Similar to wish + would."
         },
         {
           "type": "fix_error",
           "sentence": "If only I have more time!",
           "hint": "Para desejo presente, past simple",
           "answer": "If only I had more time!",
-          "explanation": "\"Have\" não funciona com if only para desejo presente. Padrão é \"if only + past simple\" para presente."
+          "explanation": "\"Have\" doesn't work with if only for a present wish. The standard is \"if only + past simple\" for the present."
         },
         {
           "type": "fix_error",
           "sentence": "If only I would have studied!",
           "hint": "Para passado, past perfect \"had studied\"",
           "answer": "If only I had studied!",
-          "explanation": "\"Would have\" não cabe em if only. Para passado use past perfect (\"had studied\"). Mesma regra de wish."
+          "explanation": "\"Would have\" doesn't fit in if only. For the past, use past perfect (\"had studied\"). Same rule as wish."
         },
         {
           "type": "read_answer",
@@ -427,7 +427,7 @@
             "will rather"
           ],
           "answer": "would rather",
-          "explanation": "\"Would rather + base\" para preferência própria. Estrutura padrão: \"would rather + base form\"."
+          "explanation": "\"Would rather + base\" for your own preference. Standard structure: \"would rather + base form\"."
         },
         {
           "type": "multiple_choice",
@@ -439,7 +439,7 @@
             "to have"
           ],
           "answer": "have",
-          "explanation": "\"Would rather + base form\". \"Rather have pizza\" — base form sem \"to\"."
+          "explanation": "\"Would rather + base form\". \"Rather have pizza\" — base form without \"to\"."
         },
         {
           "type": "word_bank",
@@ -451,7 +451,7 @@
             "won't"
           ],
           "answer": "didn't",
-          "explanation": "\"Would rather + person + past simple\" para preferência sobre outra pessoa. \"Didn't smoke\" — past simple negativo."
+          "explanation": "\"Would rather + person + past simple\" for preference about another person. \"Didn't smoke\" — negative past simple."
         },
         {
           "type": "word_bank",
@@ -463,42 +463,42 @@
             "never"
           ],
           "answer": "not",
-          "explanation": "Negativa: \"I'd rather NOT + base\". \"Not stay\" — preferência negativa."
+          "explanation": "Negative: \"I'd rather NOT + base\". \"Not stay\" — negative preference."
         },
         {
           "type": "fill_gap",
           "sentence": "I'd rather _____ coffee than tea.",
           "hint": "base form \"drink\"",
           "answer": "drink",
-          "explanation": "\"Would rather drink coffee\" — preferência simples com base form."
+          "explanation": "\"Would rather drink coffee\" — simple preference with base form."
         },
         {
           "type": "fill_gap",
           "sentence": "I'd rather you _____ to me before deciding.",
           "hint": "past simple \"talk\"",
           "answer": "talked",
-          "explanation": "\"I'd rather you talked\" — preferência sobre comportamento do outro. Past simple, não base form."
+          "explanation": "\"I'd rather you talked\" — preference about the other person's behavior. Past simple, not base form."
         },
         {
           "type": "fill_gap",
           "sentence": "She'd rather _____ outside on the patio.",
           "hint": "base form \"sit\"",
           "answer": "sit",
-          "explanation": "\"Would rather sit outside\" — preferência própria, base form."
+          "explanation": "\"Would rather sit outside\" — own preference, base form."
         },
         {
           "type": "fix_error",
           "sentence": "I'd rather to go home.",
           "hint": "Sem \"to\" — só base form",
           "answer": "I'd rather go home.",
-          "explanation": "\"Would rather\" + base form direto, sem \"to\". \"Rather to go\" não existe."
+          "explanation": "\"Would rather\" + base form directly, without \"to\". \"Rather to go\" doesn't exist."
         },
         {
           "type": "fix_error",
           "sentence": "I'd rather you stop talking.",
           "hint": "Sobre outra pessoa: past simple",
           "answer": "I'd rather you stopped talking.",
-          "explanation": "Quando é sobre OUTRA pessoa, use past simple (\"stopped\"). \"Stop\" sem -ed funcionaria só se fosse comando direto, não preferência."
+          "explanation": "When it's about ANOTHER person, use past simple (\"stopped\"). \"Stop\" without -ed would only work as a direct command, not a preference."
         },
         {
           "type": "read_answer",
@@ -671,7 +671,7 @@
           "sentence": "It's about time he _____ growing up.",
           "hint": "past simple \"start\"",
           "answer": "started",
-          "explanation": "\"It's about time he started growing up\" — sugestão enfática sobre alguém."
+          "explanation": "\"It's about time he started growing up\" — emphatic suggestion about someone."
         },
         {
           "type": "fill_gap",
@@ -685,14 +685,14 @@
           "sentence": "It's time we leave.",
           "hint": "Past simple, não present",
           "answer": "It's time we left.",
-          "explanation": "\"It's time\" não usa present simple direto. Sempre past simple (\"left\")."
+          "explanation": "\"It's time\" doesn't take present simple directly. Always past simple (\"left\")."
         },
         {
           "type": "fix_error",
           "sentence": "It's high time you will make a decision.",
           "hint": "Sem \"will\" — past simple",
           "answer": "It's high time you made a decision.",
-          "explanation": "\"Will\" não cabe. Padrão é \"it's high time + past simple\" (\"made\")."
+          "explanation": "\"Will\" doesn't fit. The pattern is \"it's high time + past simple\" (\"made\")."
         },
         {
           "type": "read_answer",
@@ -813,7 +813,7 @@
             "do"
           ],
           "answer": "would",
-          "explanation": "Wish + would para comportamento de outro. Tom de irritação."
+          "explanation": "Wish + would for another's behavior. Annoyed tone."
         },
         {
           "type": "multiple_choice",
@@ -825,7 +825,7 @@
             "will have"
           ],
           "answer": "had",
-          "explanation": "If only + past simple para desejo presente."
+          "explanation": "If only + past simple for a present wish."
         },
         {
           "type": "word_bank",
@@ -837,7 +837,7 @@
             "nothing"
           ],
           "answer": "not",
-          "explanation": "\"I'd rather not + base\" — preferência negativa."
+          "explanation": "\"I'd rather not + base\" — negative preference."
         },
         {
           "type": "word_bank",
@@ -849,42 +849,42 @@
             "taking"
           ],
           "answer": "took",
-          "explanation": "\"It's time + past simple\" — urgência."
+          "explanation": "\"It's time + past simple\" — urgency."
         },
         {
           "type": "fill_gap",
           "sentence": "I'd rather you _____ to me before deciding.",
           "hint": "past simple \"talk\"",
           "answer": "talked",
-          "explanation": "\"I'd rather you + past simple\" para preferência sobre o outro."
+          "explanation": "\"I'd rather you + past simple\" for preference about the other person."
         },
         {
           "type": "fill_gap",
           "sentence": "If only she _____ understand me!",
           "hint": "would",
           "answer": "would",
-          "explanation": "\"If only + would\" para mudança comportamental."
+          "explanation": "\"If only + would\" for a behavioral change."
         },
         {
           "type": "fill_gap",
           "sentence": "It's high time you _____ a real job.",
           "hint": "past simple \"get\"",
           "answer": "got",
-          "explanation": "\"It's high time + past simple\" — urgência enfática."
+          "explanation": "\"It's high time + past simple\" — emphatic urgency."
         },
         {
           "type": "fix_error",
           "sentence": "I wish you will be quiet.",
           "hint": "Wish + would, não \"will\"",
           "answer": "I wish you would be quiet.",
-          "explanation": "\"Will\" não cabe em wish. Para futuro/comportamento, \"would\"."
+          "explanation": "\"Will\" doesn't fit in wish. For future/behavior, use \"would\"."
         },
         {
           "type": "fix_error",
           "sentence": "It's time we leave.",
           "hint": "Past simple \"left\"",
           "answer": "It's time we left.",
-          "explanation": "\"It's time\" usa past simple, não present."
+          "explanation": "\"It's time\" takes past simple, not present."
         },
         {
           "type": "read_answer",

@@ -36,42 +36,42 @@
 2. **multiple_choice** — "This coffee is _____ strong _____ the one I had yesterday."
    **Options**: as / as / so / as / very / as
    **Answer**: as / as
-   **Explanation**: "As strong as" — comparação direta de igualdade. Funciona com qualquer adjetivo descritivo (forte, rápido, fácil, caro).
+   **Explanation**: "As strong as" — direct equality comparison. Works with any descriptive adjective (strong, fast, easy, expensive).
 
 3. **word_bank** — "It's _____ in São Paulo today."
    **Choices**: as hot as Rio / as hot than Rio / so hot as Rio / hotter as Rio
    **Answer**: as hot as Rio
-   **Explanation**: Estrutura "as + adjetivo + as" com comparação geográfica. Sempre dois "as" — um antes e um depois do adjetivo.
+   **Explanation**: "As + adjective + as" structure for geographic comparison. Always two "as" — one before and one after the adjective.
 
 4. **word_bank** — "My new laptop is _____ my old one."
    **Choices**: as fast as / as fast than / so fast as / fast as
    **Answer**: as fast as
-   **Explanation**: Comparação de igualdade entre dois objetos. "As fast as" é a forma padrão.
+   **Explanation**: Equality comparison between two objects. "As fast as" is the standard form.
 
 5. **fill_gap** — "She runs _____ fast _____ her older brother."
    **Hint**: estrutura de igualdade
    **Answer**: as / as
-   **Explanation**: "As fast as" — igualdade entre duas pessoas em velocidade. Os dois "as" são obrigatórios.
+   **Explanation**: "As fast as" — equality of speed between two people. Both "as" are required.
 
 6. **fill_gap** — "The exam was _____ difficult _____ I expected."
    **Hint**: estrutura de igualdade comparando expectativa
    **Answer**: as / as
-   **Explanation**: "As difficult as I expected" — confirmando expectativa. Comum com verbos de expectativa (expected, thought, imagined).
+   **Explanation**: "As difficult as I expected" — confirming expectation. Common with expectation verbs (expected, thought, imagined).
 
 7. **fill_gap** — "He works _____ hard _____ anyone in the office."
    **Hint**: igualdade absoluta (= ninguém trabalha mais)
    **Answer**: as / as
-   **Explanation**: "As hard as anyone" — usado para destacar máximo. "Anyone" implica que ninguém supera.
+   **Explanation**: "As hard as anyone" — used to highlight a maximum. "Anyone" implies no one surpasses it.
 
 8. **fix_error** — "She's so beautiful as her sister."
    **Hint**: For equality in modern English, use as...as (not so...as)
    **Answer**: She's as beautiful as her sister.
-   **Explanation**: "So...as" só aparece em frases negativas/perguntas no inglês muito formal. Para afirmativas, sempre "as...as".
+   **Explanation**: "So...as" only appears in negatives/questions in very formal English. For affirmatives, always use "as...as".
 
 9. **fix_error** — "He's tall as his father."
    **Hint**: faltou o primeiro "as"
    **Answer**: He's as tall as his father.
-   **Explanation**: A estrutura "as...as" sempre tem DOIS "as" — um antes do adjetivo e um depois. Esquecer o primeiro é erro comum.
+   **Explanation**: The "as...as" structure always has TWO "as" — one before the adjective and one after. Forgetting the first one is a common mistake.
 
 10. **read_answer**
     **Passage**: "My brother is as tall as my father — both are six feet. My sister is as smart as our mother. The new restaurant is as expensive as the old one — both are pricey but worth it."
@@ -196,47 +196,47 @@
 1. **multiple_choice** — "Today isn't _____ hot _____ yesterday."
    **Options**: so / than / as / as / very / as
    **Answer**: as / as
-   **Explanation**: "Not as + adj + as" = less than. Equivalente a "less hot than" mas mais natural na fala. Os dois "as" continuam obrigatórios.
+   **Explanation**: "Not as + adj + as" = less than. Equivalent to "less hot than" but more natural in speech. Both "as" are still required.
 
 2. **multiple_choice** — "My new job _____ as stressful as the old one."
    **Options**: isn't / isn't no / not is / no isn't
    **Answer**: isn't
-   **Explanation**: A negação vai no verbo "to be" antes de "as". "Isn't as stressful as" = é menos estressante que.
+   **Explanation**: The negation goes on the verb "to be" before "as". "Isn't as stressful as" = is less stressful than.
 
 3. **word_bank** — "This book isn't _____ the last one."
    **Choices**: as good as / as good than / so good as / better as
    **Answer**: as good as
-   **Explanation**: "Not as good as" — comparativo negativo. Note: "isn't as good as" expressa que é INFERIOR ao outro.
+   **Explanation**: "Not as good as" — negative comparison. Note: "isn't as good as" means INFERIOR to the other.
 
 4. **word_bank** — "She _____ as tall as her sister."
    **Choices**: isn't / no is / doesn't / not is
    **Answer**: isn't
-   **Explanation**: Negação de "to be": "isn't" antes de "as tall as".
+   **Explanation**: Negation of "to be": "isn't" before "as tall as".
 
 5. **fill_gap** — "The movie wasn't _____ exciting _____ the book."
    **Hint**: estrutura "not as...as" com adjetivo
    **Answer**: as / as
-   **Explanation**: "Not as exciting as" — comum em comparações de adaptação cinematográfica. Filme menos legal que o livro.
+   **Explanation**: "Not as exciting as" — common in film-adaptation comparisons. The movie is less enjoyable than the book.
 
 6. **fill_gap** — "I'm not _____ patient _____ my mother."
    **Hint**: comparativo negativo
    **Answer**: as / as
-   **Explanation**: "Not as patient as" — admite uma qualidade inferior em si mesmo. Forma comum de elogiar o outro indiretamente.
+   **Explanation**: "Not as patient as" — admitting a lesser quality in oneself. A common way to indirectly compliment someone else.
 
 7. **fill_gap** — "This restaurant _____ as expensive as the one downtown."
    **Hint**: negação de to be 3ª pessoa
    **Answer**: isn't
-   **Explanation**: "Isn't as expensive as" — preço menor que outra opção.
+   **Explanation**: "Isn't as expensive as" — lower price than another option.
 
 8. **fix_error** — "It isn't so hot as yesterday."
    **Hint**: Em inglês moderno, use "as...as" mesmo em negativa
    **Answer**: It isn't as hot as yesterday.
-   **Explanation**: Apesar de "so...as" ainda aparecer em textos formais antigos, o inglês moderno padrão é "not as...as" tanto em afirmativa quanto negativa.
+   **Explanation**: Although "so...as" still appears in older formal texts, standard modern English uses "not as...as" in both affirmative and negative.
 
 9. **fix_error** — "She doesn't as smart as her brother."
    **Hint**: Negação do verbo to be, não usa "doesn't"
    **Answer**: She isn't as smart as her brother.
-   **Explanation**: Quando o verbo principal é "to be", a negativa é com "isn't/aren't", não "doesn't/don't". "She isn't as smart as her brother".
+   **Explanation**: When the main verb is "to be", the negative uses "isn't/aren't", not "doesn't/don't". "She isn't as smart as her brother".
 
 10. **read_answer**
     **Passage**: "My new apartment isn't as big as the old one, but it isn't as expensive either. The neighborhood isn't as quiet, but it isn't as far from work. Overall, it's a fair trade."
@@ -361,48 +361,48 @@
 1. **multiple_choice** — "He's _____ as fast _____ I am."
    **Options**: twice / as / two times / as / second / as
    **Answer**: twice / as
-   **Explanation**: "Twice as + adj + as" = 2x mais. "Twice" é a forma idiomática preferida sobre "two times" em comparações.
+   **Explanation**: "Twice as + adj + as" = 2x more. "Twice" is the idiomatic choice over "two times" in comparisons.
 
 2. **multiple_choice** — "This trip costs _____ as much _____ the last one."
    **Options**: three times / as / three / times / triple / as
    **Answer**: three times / as
-   **Explanation**: A partir de 3x, usa-se "three/four/five times as + adj + as". "Twice" é exceção (não se diz "two times" comparativamente).
+   **Explanation**: From 3x onward, use "three/four/five times as + adj + as". "Twice" is the exception ("two times" isn't used in comparisons).
 
 3. **word_bank** — "She earns _____ I do."
    **Choices**: twice as much as / twice more than / twice as much than / two times as much as
    **Answer**: twice as much as
-   **Explanation**: "Twice as much as" — quantidade duplicada. Note a estrutura completa: twice + as much + as.
+   **Explanation**: "Twice as much as" — doubled quantity. Note the full structure: twice + as much + as.
 
 4. **word_bank** — "We have _____ guests this year."
    **Choices**: twice as many / two times more / double as many / twice more many
    **Answer**: twice as many
-   **Explanation**: "Twice as many" para contáveis (guests, people, books). "Twice as much" para incontáveis (money, time, water).
+   **Explanation**: "Twice as many" for countables (guests, people, books). "Twice as much" for uncountables (money, time, water).
 
 5. **fill_gap** — "He works _____ as hard _____ his colleague."
    **Hint**: 2x intensificador + estrutura as...as
    **Answer**: twice / as
-   **Explanation**: "Twice as hard as" — esforço duplicado. "Twice" sempre antes do "as".
+   **Explanation**: "Twice as hard as" — doubled effort. "Twice" always before "as".
 
 6. **fill_gap** — "This apartment is _____ times as expensive _____ the other."
    **Hint**: 3x ou mais
    **Answer**: three / as
 **Accepts**: four / five
-   **Explanation**: Multiplicadores de 3+ usam "X times as + adj + as".
+   **Explanation**: Multipliers of 3+ use "X times as + adj + as".
 
 7. **fill_gap** — "She spent _____ as much time on this project _____ I did."
    **Hint**: 2x (time = uncountable)
    **Answer**: twice / as
-   **Explanation**: "Twice as much time as" — tempo é incontável, então "much".
+   **Explanation**: "Twice as much time as" — time is uncountable, so "much".
 
 8. **fix_error** — "He's two times faster as me."
    **Hint**: Use twice + as + adj + as
    **Answer**: He's twice as fast as me.
-   **Explanation**: "Two times faster as" combina dois erros: deveria ser "twice" (não "two times" em comparações) e "as...as" (não "faster as").
+   **Explanation**: "Two times faster as" combines two errors: it should be "twice" (not "two times" in comparisons) and "as...as" (not "faster as").
 
 9. **fix_error** — "It costs three times more as that."
    **Hint**: Estrutura é "X times as + adj + as", não "X times more as"
    **Answer**: It costs three times as much as that.
-   **Explanation**: "Three times more" + "as" não combinam. A estrutura correta é "three times as + much/many + as".
+   **Explanation**: "Three times more" + "as" don't combine. The correct structure is "three times as + much/many + as".
 
 10. **read_answer**
     **Passage**: "She works twice as hard as I do — putting in extra hours daily. Her salary is also twice as much. This year, we have three times as many clients as last year — business is booming."
@@ -527,47 +527,47 @@
 1. **multiple_choice** — "_____ more I study, _____ better I understand."
    **Options**: The / the / A / a / More / better
    **Answer**: The / the
-   **Explanation**: A estrutura paralela "the more X, the more Y" exige "the" antes dos dois comparativos. Indica progressão simultânea: quanto mais X, mais Y.
+   **Explanation**: The parallel structure "the more X, the more Y" requires "the" before both comparatives. It signals simultaneous progression: the more X, the more Y.
 
 2. **multiple_choice** — "The harder you work, _____ you achieve."
    **Options**: the more / the better / so much / more
    **Answer**: the more
-   **Explanation**: Segunda parte da estrutura paralela. "The more" pode aparecer com qualquer substantivo (the more money, the more friends).
+   **Explanation**: Second half of the parallel structure. "The more" can appear with any noun (the more money, the more friends).
 
 3. **word_bank** — "The colder it gets, _____."
    **Choices**: the more I want hot chocolate / more I want / the most I want / the more want I
    **Answer**: the more I want hot chocolate
-   **Explanation**: A segunda cláusula segue ordem normal: "the more + sujeito + verbo + complemento". Não inverter.
+   **Explanation**: The second clause follows normal order: "the more + subject + verb + complement". Don't invert.
 
 4. **word_bank** — "The older I get, _____ family means to me."
    **Choices**: the more / more / the most / much more
    **Answer**: the more
-   **Explanation**: "The more" funciona como advérbio modificando o verbo "means". Quantos mais anos, mais importância.
+   **Explanation**: "The more" works as an adverb modifying the verb "means". The more years, the more importance.
 
 5. **fill_gap** — "_____ harder you practice, _____ better you become."
    **Hint**: estrutura paralela the + comparativo, the + comparativo
    **Answer**: The / the
-   **Explanation**: "The harder, the better" — comparativos curtos com -er também seguem o padrão paralelo. Pratica mais difícil = fica mais bom.
+   **Explanation**: "The harder, the better" — short -er comparatives also follow the parallel pattern. Harder practice = better outcome.
 
 6. **fill_gap** — "The sooner you start, _____ sooner you finish."
    **Hint**: completar o paralelo
    **Answer**: the
-   **Explanation**: "The sooner...the sooner" — repetição do mesmo comparativo é comum em conselhos.
+   **Explanation**: "The sooner...the sooner" — repeating the same comparative is common in advice.
 
 7. **fill_gap** — "The less I worry, _____ happier I feel."
    **Hint**: oposto: menos + mais
    **Answer**: the
-   **Explanation**: "The less" também funciona — pode misturar "less" de um lado e "more/happier" do outro. Estrutura paralela flexível.
+   **Explanation**: "The less" also works — you can mix "less" on one side and "more/happier" on the other. The parallel structure is flexible.
 
 8. **fix_error** — "More you study, more you learn."
    **Hint**: estrutura paralela precisa de "the" duas vezes
    **Answer**: The more you study, the more you learn.
-   **Explanation**: Sem "the", a frase fica gramaticalmente incompleta — é o erro mais comum em paralelos comparativos.
+   **Explanation**: Without "the", the sentence is grammatically incomplete — the most common error in parallel comparatives.
 
 9. **fix_error** — "The more harder I try, the more better the result."
    **Hint**: comparativo diretamente, sem "more" antes
    **Answer**: The harder I try, the better the result.
-   **Explanation**: "Harder" e "better" já são comparativos. "More harder" e "more better" são redundantes — basta o comparativo direto.
+   **Explanation**: "Harder" and "better" are already comparatives. "More harder" and "more better" are redundant — the direct comparative is enough.
 
 10. **read_answer**
     **Passage**: "The more I learn English, the more confident I feel. The harder I practice speaking, the more naturally it comes. The older I get, the more I appreciate good conversations."
@@ -692,47 +692,47 @@
 1. **multiple_choice** — "He's _____ tall _____ his brother — both are 1m80."
    **Options**: as / as / so / as / more / than
    **Answer**: as / as
-   **Explanation**: Para igualdade exata, "as + adj + as". O contexto "both are 1m80" confirma igualdade.
+   **Explanation**: For exact equality, "as + adj + as". The context "both are 1m80" confirms equality.
 
 2. **multiple_choice** — "Today _____ as cold _____ yesterday."
    **Options**: isn't / as / not / as / no / as
    **Answer**: isn't / as
-   **Explanation**: "Isn't as cold as" — desigualdade negativa. To be na negativa + estrutura as...as.
+   **Explanation**: "Isn't as cold as" — negative inequality. Negative "to be" + as...as structure.
 
 3. **word_bank** — "She earns _____ I do."
    **Choices**: twice as much as / two times more than / twice more than / twice as much than
    **Answer**: twice as much as
-   **Explanation**: Multiplicador "twice" + "as much as" (uncountable money). Outras formas estão erradas.
+   **Explanation**: Multiplier "twice" + "as much as" (uncountable money). Other forms are incorrect.
 
 4. **word_bank** — "_____ more I practice, _____ better I get."
    **Choices**: The / the / A / a / More / more / The most / the best
    **Answer**: The / the
-   **Explanation**: Estrutura paralela: "The more...the better" — sempre "the" antes dos comparativos.
+   **Explanation**: Parallel structure: "The more...the better" — always "the" before the comparatives.
 
 5. **fill_gap** — "It's _____ as easy as it looks."
    **Hint**: negativo para suavizar
    **Answer**: not
-   **Explanation**: "Not as easy as it looks" — frase comum para indicar dificuldade real.
+   **Explanation**: "Not as easy as it looks" — common phrase to signal real difficulty.
 
 6. **fill_gap** — "This trip cost _____ as much _____ the last one."
    **Hint**: 3x mais
    **Answer**: three times / as
-   **Explanation**: "Three times as much as" — multiplicador + "as much as".
+   **Explanation**: "Three times as much as" — multiplier + "as much as".
 
 7. **fill_gap** — "_____ harder you try, _____ more you accomplish."
    **Hint**: paralelo: o + comparativo, o + comparativo
    **Answer**: The / the
-   **Explanation**: "The harder, the more" — estrutura paralela com comparativo curto.
+   **Explanation**: "The harder, the more" — parallel structure with a short comparative.
 
 8. **fix_error** — "He's so tall as me."
    **Hint**: inglês moderno usa as...as em afirmativas
    **Answer**: He's as tall as me.
-   **Explanation**: "So...as" é arcaico em afirmativas — use sempre "as...as".
+   **Explanation**: "So...as" is archaic in affirmatives — always use "as...as".
 
 9. **fix_error** — "She earns two times more as I do."
    **Hint**: estrutura multiplicador correta
    **Answer**: She earns twice as much as I do.
-   **Explanation**: "Twice as much as" — "two times more as" combina dois erros (use "twice" e "as much as").
+   **Explanation**: "Twice as much as" — "two times more as" combines two errors (use "twice" and "as much as").
 
 10. **read_answer**
     **Passage**: "My new apartment is as big as the old one, but it's not as quiet. The rent is twice as expensive, but the location is amazing. The more I live here, the more I appreciate the convenience."

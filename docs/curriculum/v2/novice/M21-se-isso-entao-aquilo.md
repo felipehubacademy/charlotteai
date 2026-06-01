@@ -76,7 +76,7 @@
     **Passage**: "If it rains tomorrow, I'll stay home. If it's sunny, we'll go hiking. If she comes, we'll have lunch together."
     **Question**: What will the speaker do if it's sunny?
     **Answer**: go hiking
-    **Explanation**: The text says "If it's sunny, we'll go hiking".
+    **Explanation**: O texto diz "If it's sunny, we'll go hiking".
 
 ### 2. Listening/Speaking (5 phrases)
 
@@ -241,7 +241,7 @@
     **Passage**: "If I have time tomorrow, I'll go to the gym. If I save enough, I'll buy a bike. If my friend calls, I'll go out with her."
     **Question**: What will the speaker buy if they save enough?
     **Answer**: a bike
-    **Explanation**: The text says "If I save enough, I'll buy a bike".
+    **Explanation**: O texto diz "If I save enough, I'll buy a bike".
 
 ### 2. Listening/Speaking (5 phrases)
 
@@ -406,7 +406,7 @@
     **Passage**: "If you need help, I'll come. If you're hungry, I'll cook. If you have time, we'll chat. I'm here for you."
     **Question**: What will the speaker do if you're hungry?
     **Answer**: cook (or "I'll cook")
-    **Explanation**: The text says "If you're hungry, I'll cook".
+    **Explanation**: O texto diz "If you're hungry, I'll cook".
 
 ### 2. Listening/Speaking (5 phrases)
 
@@ -571,7 +571,7 @@
     **Passage**: "I'll come to the party unless I'm tired. We'll go hiking unless it rains. I'll cook dinner unless you want pizza."
     **Question**: When won't the speaker come to the party?
     **Answer**: if I'm tired (or "tired")
-    **Explanation**: The text says "I'll come unless I'm tired" — meaning won't come if tired.
+    **Explanation**: O texto diz "I'll come unless I'm tired" — significando que não virá se estiver cansado.
 
 ### 2. Listening/Speaking (5 phrases)
 
@@ -690,7 +690,7 @@
 1. **multiple_choice** — "If I _____ time, I'll exercise."
    **Options**: have / will have / had
    **Answer**: have
-   **Explanation**: If + present.
+   **Explanation**: If + presente.
 
 2. **multiple_choice** — "I _____ call you if it rains."
    **Options**: will / would / am
@@ -736,7 +736,7 @@
     **Passage**: "If it's sunny tomorrow, I'll go to the beach. If it rains, I'll stay home. I'll meet my friend unless she cancels."
     **Question**: When won't the speaker meet the friend?
     **Answer**: if she cancels (or "she cancels")
-    **Explanation**: The text says "unless she cancels" — meaning won't meet if she does.
+    **Explanation**: O texto diz "unless she cancels" — significando que não vão se encontrar se ela cancelar.
 
 ### 2. Listening/Speaking (5 phrases)
 

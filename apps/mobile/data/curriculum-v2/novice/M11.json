@@ -116,7 +116,7 @@
           "passage": "I'd like to buy a black jacket. I'm looking for size M. Excuse me, where is the cashier? It's next to the door.",
           "question": "Where is the cashier?",
           "answer": "next to the door",
-          "explanation": "The text says \"It's next to the door\"."
+          "explanation": "O texto diz \"It's next to the door\"."
         }
       ],
       "listening_speaking": [
@@ -322,7 +322,7 @@
           "passage": "I like this dress (in my hand). That dress over there is too expensive. These shoes fit me. Those shoes don't fit.",
           "question": "Which item is expensive?",
           "answer": "that dress (or \"the dress over there\")",
-          "explanation": "The text says \"That dress over there is too expensive\"."
+          "explanation": "O texto diz \"That dress over there is too expensive\"."
         }
       ],
       "listening_speaking": [
@@ -526,7 +526,7 @@
           "passage": "I'm at the supermarket. The bread is on the second shelf. The milk is in the fridge. The cookies are next to the cash register.",
           "question": "Where are the cookies?",
           "answer": "next to the cash register",
-          "explanation": "The text says \"next to the cash register\"."
+          "explanation": "O texto diz \"next to the cash register\"."
         }
       ],
       "listening_speaking": [
@@ -728,7 +728,7 @@
           "passage": "Customer: How much is this jacket? Cashier: Forty dollars. Customer: Can I pay with credit card? Cashier: Of course. Here's your receipt.",
           "question": "How does the customer pay?",
           "answer": "with credit card",
-          "explanation": "The text says \"Can I pay with credit card?\"."
+          "explanation": "O texto diz \"Can I pay with credit card?\"."
         }
       ],
       "listening_speaking": [
@@ -931,7 +931,7 @@
           "passage": "I'd like to buy this shirt. How much is it? Twenty dollars. Can I try it on? Yes. The fitting room is next to the cashier.",
           "question": "How much is the shirt?",
           "answer": "twenty dollars",
-          "explanation": "The text says \"Twenty dollars\"."
+          "explanation": "O texto diz \"Twenty dollars\"."
         }
       ],
       "listening_speaking": [

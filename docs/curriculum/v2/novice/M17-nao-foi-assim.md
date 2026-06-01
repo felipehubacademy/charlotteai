@@ -75,7 +75,7 @@
     **Passage**: "I didn't work yesterday. I didn't go out either. I didn't see anyone. It was a quiet day."
     **Question**: Did the speaker work?
     **Answer**: no (or "didn't work")
-    **Explanation**: The text says "I didn't work yesterday".
+    **Explanation**: O texto diz "I didn't work yesterday".
 
 ### 2. Listening/Speaking (5 phrases)
 
@@ -369,17 +369,17 @@
 3. **word_bank** — "When _____ they arrive?"
    **Choices**: did / do / were / have
    **Answer**: did
-   **Explanation**: "When did they arrive?" — past WH question.
+   **Explanation**: "When did they arrive?" — pergunta WH no passado.
 
 4. **word_bank** — "Why _____ he leave early?"
    **Choices**: did / was / does / had
    **Answer**: did
-   **Explanation**: "Why did he leave?" — WH past + base.
+   **Explanation**: "Why did he leave?" — WH no passado + base.
 
 5. **fill_gap** — "How _____ you get here?"
    **Hint**: Auxiliar past WH
    **Answer**: did
-   **Explanation**: "How did you get here?" — past WH question.
+   **Explanation**: "How did you get here?" — pergunta WH no passado.
 
 6. **fill_gap** — "Who _____ you meet?"
    **Hint**: Auxiliar past
@@ -405,7 +405,7 @@
     **Passage**: "Q: Where did you go? A: I went to the beach. Q: What did you do? A: I swam and read. Q: When did you come back? A: At seven."
     **Question**: What did the speaker do at the beach?
     **Answer**: swam and read (or "swam, read")
-    **Explanation**: The text says "I swam and read".
+    **Explanation**: O texto diz "I swam and read".
 
 ### 2. Listening/Speaking (5 phrases)
 
@@ -554,7 +554,7 @@
 7. **fill_gap** — "They _____ arrive on time."
    **Hint**: Past negativo padrão
    **Answer**: didn't
-   **Explanation**: "They didn't arrive" — past negativo.
+   **Explanation**: "They didn't arrive" — passado negativo.
 
 8. **fix_error** — "I never didn't go there."
    **Hint**: Dupla negativa
@@ -570,7 +570,7 @@
     **Passage**: "I never visited Japan, but I went to China. My sister didn't travel last year. She stayed home."
     **Question**: Where did the sister stay?
     **Answer**: home
-    **Explanation**: The text says "She stayed home".
+    **Explanation**: O texto diz "She stayed home".
 
 ### 2. Listening/Speaking (5 phrases)
 
@@ -694,7 +694,7 @@
 2. **multiple_choice** — "She _____ enjoy the music."
    **Options**: didn't / wasn't / doesn't
    **Answer**: didn't
-   **Explanation**: Past negativo: didn't + base.
+   **Explanation**: Passado negativo: didn't + base.
 
 3. **word_bank** — "_____ you have fun?"
    **Choices**: Did / Do / Were / Have
@@ -704,7 +704,7 @@
 4. **word_bank** — "Where _____ they go?"
    **Choices**: did / do / were / are
    **Answer**: did
-   **Explanation**: WH past + Did.
+   **Explanation**: WH no passado + Did.
 
 5. **fill_gap** — "I _____ a great time."
    **Hint**: Passado de "have"
@@ -719,7 +719,7 @@
 7. **fill_gap** — "Why _____ he leave?"
    **Hint**: WH past
    **Answer**: did
-   **Explanation**: "Why did he leave?" — WH past question.
+   **Explanation**: "Why did he leave?" — pergunta WH no passado.
 
 8. **fix_error** — "She didn't went home."
    **Hint**: Após didn't, base

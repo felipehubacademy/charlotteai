@@ -967,8 +967,8 @@
         },
         {
           "type": "fill_gap",
-          "sentence": "_____, where was I?",
-          "hint": "marcador de retomada",
+          "sentence": "\"_____, where was I?\" (depois de uma pausa, voltando ao assunto principal)",
+          "hint": "chunk de retomada com \"A___\" (5 letras)",
           "answer": "Anyway",
           "accepts": [
             "So"
@@ -977,8 +977,8 @@
         },
         {
           "type": "fill_gap",
-          "sentence": "_____, that reminds me of something.",
-          "hint": "marcador de novo tópico",
+          "sentence": "\"_____, that reminds me of something.\" (introduzindo novo assunto)",
+          "hint": "chunk de 3 palavras começando com \"B___\"",
           "answer": "By the way",
           "accepts": [
             "Speaking of which"
@@ -987,7 +987,7 @@
         },
         {
           "type": "multiple_choice",
-          "sentence": "Pra pedir pra pessoa esperar 2 segundos enquanto você termina algo. Qual soa MAIS natural em conversa casual?",
+          "sentence": "Pra pedir pra pessoa esperar um instante enquanto você termina algo. Qual soa MAIS natural em conversa casual?",
           "options": [
             "One moment.",
             "Hold on a sec.",
@@ -998,7 +998,7 @@
           "accepts": [
             "Hang on a sec."
           ],
-          "explanation": "\"One moment\" é formal demais (atendente de banco). \"Wait\" e \"Stop\" soam ríspidos. Em conversa casual: \"Hold on\", \"Hang on\", \"Just a sec\", \"Give me a sec\"."
+          "explanation": "\"One moment\" é formal demais (atendente de banco). \"Wait\" e \"Stop\" soam ríspidos. Em conversa casual: \"Hold on a sec\", \"Hang on a sec\", \"Just a sec\", \"Give me a sec\"."
         },
         {
           "type": "fix_error",
@@ -1011,13 +1011,12 @@
           "type": "multiple_choice",
           "sentence": "Friend: 'So I was telling you about my trip...' You: 'Hold on, let me grab some water.' Friend: 'Sure!' You: 'OK, anyway, you were saying?' Friend: 'Right, so the flight was delayed. By the way, did you see the news today?' — How does the friend use 'by the way' here?",
           "options": [
-            "To change topic",
-            "introduce a new subject",
-            "To apologize",
+            "To introduce a new topic",
+            "To apologize for something",
             "To confirm understanding",
             "To express surprise"
           ],
-          "answer": "To change topic / introduce a new subject",
+          "answer": "To introduce a new topic",
           "explanation": "\"By the way\" introduz uma mudança natural de assunto da viagem para as notícias do dia. Chunk universal de transição."
         }
       ],
@@ -1044,7 +1043,7 @@
         },
         {
           "text": "Wait, let me think about this.",
-          "context": "processamento</p>",
+          "context": "processamento",
           "audio_url": "https://fnvjibzreepubageztoi.supabase.co/storage/v1/object/public/curriculum-audio/ls/novice/ccd92cf5f24a0234.flac"
         }
       ],

@@ -39,7 +39,7 @@
             "had"
           ],
           "answer": "should have",
-          "explanation": "\"Should have + past participle\" expressa arrependimento ou crítica sobre o passado. \"I should have studied\" — não estudei, e foi um erro."
+          "explanation": "\"Should have + past participle\" expresses regret or criticism about the past. \"I should have studied\" — I didn't, and it was a mistake."
         },
         {
           "type": "multiple_choice",
@@ -51,7 +51,7 @@
             "had"
           ],
           "answer": "should have",
-          "explanation": "\"You should have told her\" — crítica/sugestão retrospectiva. Era a coisa certa a fazer mas não foi feita."
+          "explanation": "\"You should have told her\" — retrospective criticism/suggestion. It was the right thing to do but it wasn't done."
         },
         {
           "type": "word_bank",
@@ -63,7 +63,7 @@
             "didn't have"
           ],
           "answer": "shouldn't have",
-          "explanation": "\"Shouldn't have + past participle\" para criticar uma ação passada errada. \"She shouldn't have said\" — disse e foi errado."
+          "explanation": "\"Shouldn't have + past participle\" to criticize a wrong past action. \"She shouldn't have said\" — she said it and it was wrong."
         },
         {
           "type": "word_bank",
@@ -75,42 +75,42 @@
             "had"
           ],
           "answer": "should have",
-          "explanation": "\"We should have left earlier\" — arrependimento sobre timing passado."
+          "explanation": "\"We should have left earlier\" — regret about past timing."
         },
         {
           "type": "fill_gap",
           "sentence": "He _____ have apologized.",
           "hint": "should / shouldn't (criticism)",
           "answer": "should",
-          "explanation": "\"He should have apologized\" — sugestão retrospectiva: era a coisa correta. (Aceita \"should\" no contexto criticando que ele não pediu desculpa.)"
+          "explanation": "\"He should have apologized\" — retrospective suggestion: it was the right thing to do. (Accepts \"should\" in the context criticizing that he didn't apologize.)"
         },
         {
           "type": "fill_gap",
           "sentence": "I _____ have eaten so much.",
           "hint": "shouldn't (arrependimento)",
           "answer": "shouldn't",
-          "explanation": "\"I shouldn't have eaten so much\" — comi demais, me arrependo."
+          "explanation": "\"I shouldn't have eaten so much\" — I ate too much, I regret it."
         },
         {
           "type": "fill_gap",
           "sentence": "You _____ have called me first.",
           "hint": "should (sugestão retrospectiva)",
           "answer": "should",
-          "explanation": "\"You should have called me first\" — crítica leve sobre não ter ligado."
+          "explanation": "\"You should have called me first\" — mild criticism about not calling."
         },
         {
           "type": "fix_error",
           "sentence": "I should studied harder.",
           "hint": "Falta \"have\" — \"should HAVE studied\"",
           "answer": "I should have studied harder.",
-          "explanation": "\"Should studied\" não existe. Sempre \"should HAVE + past participle\". Forma fixa."
+          "explanation": "\"Should studied\" doesn't exist. Always \"should HAVE + past participle\". Fixed form."
         },
         {
           "type": "fix_error",
           "sentence": "She shouldn't said that.",
           "hint": "Falta \"have\"",
           "answer": "She shouldn't have said that.",
-          "explanation": "\"Shouldn't have + past participle\". \"Shouldn't said\" não é gramatical."
+          "explanation": "\"Shouldn't have + past participle\". \"Shouldn't said\" isn't grammatical."
         },
         {
           "type": "read_answer",
@@ -233,7 +233,7 @@
             "can have"
           ],
           "answer": "could have",
-          "explanation": "\"Could have + past participle\" = possibilidade passada não realizada. \"I could have called\" — tinha como mas não chamei."
+          "explanation": "\"Could have + past participle\" = past possibility not realized. \"I could have called\" — I could have but didn't."
         },
         {
           "type": "multiple_choice",
@@ -245,7 +245,7 @@
             "can have"
           ],
           "answer": "could have",
-          "explanation": "\"She could have won\" — capacidade passada, oportunidade perdida."
+          "explanation": "\"She could have won\" — past ability, missed opportunity."
         },
         {
           "type": "word_bank",
@@ -257,7 +257,7 @@
             "had"
           ],
           "answer": "could have",
-          "explanation": "\"Could have stayed\" — possibilidade passada, decisão de não fazer."
+          "explanation": "\"Could have stayed\" — past possibility, chose not to."
         },
         {
           "type": "word_bank",
@@ -269,42 +269,42 @@
             "had"
           ],
           "answer": "could have",
-          "explanation": "\"He could have done it alone\" — capacidade real existia, oportunidade existia."
+          "explanation": "\"He could have done it alone\" — the real ability and opportunity existed."
         },
         {
           "type": "fill_gap",
           "sentence": "You _____ asked me — I would have helped.",
           "hint": "could (have)",
           "answer": "could",
-          "explanation": "\"You could have asked me\" — chance que existia mas não foi usada."
+          "explanation": "\"You could have asked me\" — a chance that existed but wasn't taken."
         },
         {
           "type": "fill_gap",
           "sentence": "I _____ have gone, but I chose to stay.",
           "hint": "could",
           "answer": "could",
-          "explanation": "\"I could have gone\" — possibilidade existia, decisão de não fazer."
+          "explanation": "\"I could have gone\" — the possibility existed, chose not to."
         },
         {
           "type": "fill_gap",
           "sentence": "She _____ have known — she wasn't even there.",
           "hint": "couldn't (impossibilidade)",
           "answer": "couldn't",
-          "explanation": "\"She couldn't have known\" — impossibilidade lógica passada. Não tinha como saber."
+          "explanation": "\"She couldn't have known\" — past logical impossibility. There was no way to know."
         },
         {
           "type": "fix_error",
           "sentence": "I could called you but I forgot.",
           "hint": "Falta \"have\" — \"could HAVE called\"",
           "answer": "I could have called you but I forgot.",
-          "explanation": "\"Could called\" não existe. Sempre \"could HAVE + past participle\"."
+          "explanation": "\"Could called\" doesn't exist. Always \"could HAVE + past participle\"."
         },
         {
           "type": "fix_error",
           "sentence": "She couldn't known about it.",
           "hint": "Falta \"have\"",
           "answer": "She couldn't have known about it.",
-          "explanation": "\"Couldn't have + past participle\". Sem \"have\", a frase é incorreta."
+          "explanation": "\"Couldn't have + past participle\". Without \"have\", the sentence is incorrect."
         },
         {
           "type": "read_answer",
@@ -427,7 +427,7 @@
             "can have"
           ],
           "answer": "must have",
-          "explanation": "\"Must have + past participle\" = inferência forte sobre o passado. Evidência (não atende) → conclusão forte (já saiu)."
+          "explanation": "\"Must have + past participle\" = strong inference about the past. Evidence (not answering) → strong conclusion (she already left)."
         },
         {
           "type": "multiple_choice",
@@ -439,7 +439,7 @@
             "didn't"
           ],
           "answer": "can't have",
-          "explanation": "\"Can't have + past participle\" = impossibilidade lógica baseada em evidência. Estava comigo → impossível ter roubado."
+          "explanation": "\"Can't have + past participle\" = logical impossibility based on evidence. He was with me → impossible he stole it."
         },
         {
           "type": "word_bank",
@@ -451,7 +451,7 @@
             "can have"
           ],
           "answer": "must have",
-          "explanation": "Evidência física (grama molhada) → conclusão forte (\"must have rained\")."
+          "explanation": "Physical evidence (wet grass) → strong conclusion (\"must have rained\")."
         },
         {
           "type": "word_bank",
@@ -463,42 +463,42 @@
             "didn't"
           ],
           "answer": "can't have",
-          "explanation": "\"Can't have heard\" = impossível ter ouvido (headphones). Inferência negativa forte."
+          "explanation": "\"Can't have heard\" = impossible to have heard (headphones). Strong negative inference."
         },
         {
           "type": "fill_gap",
           "sentence": "He looks tired — he _____ slept much last night.",
           "hint": "can't have (impossibilidade)",
           "answer": "can't have",
-          "explanation": "Tired → can't have slept much. Conclusão forte negativa."
+          "explanation": "Tired → can't have slept much. Strong negative conclusion."
         },
         {
           "type": "fill_gap",
           "sentence": "They _____ enjoyed the trip — they have so many photos!",
           "hint": "must have",
           "answer": "must have",
-          "explanation": "Muitas fotos → must have enjoyed. Evidência → inferência positiva forte."
+          "explanation": "Lots of photos → must have enjoyed. Evidence → strong positive inference."
         },
         {
           "type": "fill_gap",
           "sentence": "She _____ have arrived — her car isn't here.",
           "hint": "can't (impossibilidade)",
           "answer": "can't",
-          "explanation": "\"She can't have arrived\" — sem carro = não chegou. Inferência negativa."
+          "explanation": "\"She can't have arrived\" — no car = she didn't arrive. Negative inference."
         },
         {
           "type": "fix_error",
           "sentence": "She must left already — she's not answering.",
           "hint": "Falta \"have\" — \"must HAVE left\"",
           "answer": "She must have left already — she's not answering.",
-          "explanation": "\"Must left\" não existe. Sempre \"must HAVE + past participle\"."
+          "explanation": "\"Must left\" doesn't exist. Always \"must HAVE + past participle\"."
         },
         {
           "type": "fix_error",
           "sentence": "He can't stole it — he was with me!",
           "hint": "Falta \"have\" — \"can't HAVE stolen\"",
           "answer": "He can't have stolen it — he was with me!",
-          "explanation": "\"Can't HAVE + past participle\". E note: stolen, não stole, como past participle."
+          "explanation": "\"Can't HAVE + past participle\". And note: stolen, not stole, as the past participle."
         },
         {
           "type": "read_answer",
@@ -621,7 +621,7 @@
             "would have"
           ],
           "answer": "might have",
-          "explanation": "\"Might have + past participle\" = especulação fraca, possibilidade incerta. Sem evidência forte."
+          "explanation": "\"Might have + past participle\" = weak speculation, uncertain possibility. No strong evidence."
         },
         {
           "type": "multiple_choice",
@@ -633,7 +633,7 @@
             "wouldn't have"
           ],
           "answer": "needn't have",
-          "explanation": "\"Needn't have + past participle\" = ação foi feita mas não era necessária. Booked = fizemos, mas não precisava."
+          "explanation": "\"Needn't have + past participle\" = action was done but wasn't necessary. Booked = we did it, but we didn't need to."
         },
         {
           "type": "word_bank",
@@ -645,7 +645,7 @@
             "would have"
           ],
           "answer": "might have",
-          "explanation": "\"Might have called\" — possibilidade fraca, incerteza."
+          "explanation": "\"Might have called\" — weak possibility, uncertainty."
         },
         {
           "type": "word_bank",
@@ -657,42 +657,42 @@
             "wouldn't have"
           ],
           "answer": "needn't have",
-          "explanation": "\"Needn't have brought\" — você trouxe mas não precisava. Ação desnecessária."
+          "explanation": "\"Needn't have brought\" — you brought it but didn't need to. Unnecessary action."
         },
         {
           "type": "fill_gap",
           "sentence": "They _____ have left already.",
           "hint": "might (incerteza)",
           "answer": "might",
-          "explanation": "\"They might have left\" — possibilidade incerta. Talvez sim, talvez não."
+          "explanation": "\"They might have left\" — uncertain possibility. Maybe, maybe not."
         },
         {
           "type": "fill_gap",
           "sentence": "I _____ have worried so much — everything turned out fine.",
           "hint": "needn't (desnecessário)",
           "answer": "needn't",
-          "explanation": "\"I needn't have worried\" — me preocupei mas não precisava. Crítica retrospectiva à própria ação."
+          "explanation": "\"I needn't have worried\" — I worried but didn't need to. Retrospective self-criticism."
         },
         {
           "type": "fill_gap",
           "sentence": "She _____ have forgotten — let me text her.",
           "hint": "might (incerteza)",
           "answer": "might",
-          "explanation": "\"She might have forgotten\" — incerteza positiva. Pode ter esquecido."
+          "explanation": "\"She might have forgotten\" — positive uncertainty. She may have forgotten."
         },
         {
           "type": "fix_error",
           "sentence": "She might forgotten about the meeting.",
           "hint": "Falta \"have\"",
           "answer": "She might have forgotten about the meeting.",
-          "explanation": "Sempre \"might HAVE + past participle\". \"Might forgotten\" é incorreto."
+          "explanation": "Always \"might HAVE + past participle\". \"Might forgotten\" is incorrect."
         },
         {
           "type": "fix_error",
           "sentence": "You needn't brought a gift.",
           "hint": "Falta \"have\"",
           "answer": "You needn't have brought a gift.",
-          "explanation": "\"Needn't HAVE + past participle\". \"Needn't brought\" é incorreto."
+          "explanation": "\"Needn't HAVE + past participle\". \"Needn't brought\" is incorrect."
         },
         {
           "type": "read_answer",
@@ -813,7 +813,7 @@
             "can't have"
           ],
           "answer": "should have",
-          "explanation": "\"Should have called\" — arrependimento/desculpa retrospectiva."
+          "explanation": "\"Should have called\" — retrospective regret/apology."
         },
         {
           "type": "multiple_choice",
@@ -825,7 +825,7 @@
             "can have"
           ],
           "answer": "must have",
-          "explanation": "Evidência (não está aqui) → inferência forte (\"must have left\")."
+          "explanation": "Evidence (not here) → strong inference (\"must have left\")."
         },
         {
           "type": "word_bank",
@@ -837,7 +837,7 @@
             "wouldn't have"
           ],
           "answer": "needn't have",
-          "explanation": "\"Needn't have stayed\" — ficamos mas não precisava. Ação desnecessária."
+          "explanation": "\"Needn't have stayed\" — we stayed but didn't need to. Unnecessary action."
         },
         {
           "type": "word_bank",
@@ -849,42 +849,42 @@
             "would have"
           ],
           "answer": "can't have",
-          "explanation": "\"Can't have heard\" — impossibilidade lógica (headphones)."
+          "explanation": "\"Can't have heard\" — logical impossibility (headphones)."
         },
         {
           "type": "fill_gap",
           "sentence": "You _____ have asked — I would have helped.",
           "hint": "could (oportunidade perdida)",
           "answer": "could",
-          "explanation": "\"Could have asked\" — oportunidade que existia."
+          "explanation": "\"Could have asked\" — an opportunity that existed."
         },
         {
           "type": "fill_gap",
           "sentence": "They _____ have left already — but I'm not sure.",
           "hint": "might (incerteza)",
           "answer": "might",
-          "explanation": "\"Might have left\" — especulação incerta."
+          "explanation": "\"Might have left\" — uncertain speculation."
         },
         {
           "type": "fill_gap",
           "sentence": "I _____ have spoken so loudly — sorry.",
           "hint": "shouldn't (auto-crítica)",
           "answer": "shouldn't",
-          "explanation": "\"Shouldn't have spoken so loudly\" — arrependimento de ação passada."
+          "explanation": "\"Shouldn't have spoken so loudly\" — regret about a past action."
         },
         {
           "type": "fix_error",
           "sentence": "She must left already.",
           "hint": "Falta \"have\"",
           "answer": "She must have left already.",
-          "explanation": "Sempre modal + HAVE + past participle. \"Must left\" não existe."
+          "explanation": "Always modal + HAVE + past participle. \"Must left\" doesn't exist."
         },
         {
           "type": "fix_error",
           "sentence": "You shouldn't said that.",
           "hint": "Falta \"have\"",
           "answer": "You shouldn't have said that.",
-          "explanation": "\"Shouldn't have + past participle\". Forma fixa."
+          "explanation": "\"Shouldn't have + past participle\". Fixed form."
         },
         {
           "type": "read_answer",

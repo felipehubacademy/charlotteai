@@ -81,7 +81,7 @@
     **Passage**: "I'm working from home today. My sister is studying upstairs. My mother is cooking lunch. We are all busy!"
     **Question**: What is the sister doing?
     **Answer**: studying
-    **Explanation**: The text says "My sister is studying upstairs".
+    **Explanation**: O texto diz "My sister is studying upstairs".
 
 ### 2. Listening/Speaking (5 phrases)
 
@@ -246,7 +246,7 @@
     **Passage**: "I'm not working today. My brother isn't studying — he's playing games. We aren't eating yet."
     **Question**: What isn't the brother doing?
     **Answer**: studying
-    **Explanation**: The text says "My brother isn't studying".
+    **Explanation**: O texto diz "My brother isn't studying".
 
 ### 2. Listening/Speaking (5 phrases)
 
@@ -411,7 +411,7 @@
     **Passage**: "Q: Are you working today? A: No, I'm not. I'm reading. Q: Is your sister studying? A: Yes, she is. She's preparing for an exam."
     **Question**: What is the speaker doing?
     **Answer**: reading
-    **Explanation**: The text says "I'm reading".
+    **Explanation**: O texto diz "I'm reading".
 
 ### 2. Listening/Speaking (5 phrases)
 
@@ -576,7 +576,7 @@
     **Passage**: "I'm working from home this week. My sister is visiting from London. We're having dinner together every night."
     **Question**: Where is the sister visiting from?
     **Answer**: London
-    **Explanation**: The text says "My sister is visiting from London".
+    **Explanation**: O texto diz "My sister is visiting from London".
 
 ### 2. Listening/Speaking (5 phrases)
 
@@ -747,7 +747,7 @@
     **Passage**: "I usually wake up at seven, but today I'm waking up at nine — it's Sunday! My brother always cooks on Sundays. He's making pancakes right now."
     **Question**: What is the brother making right now?
     **Answer**: pancakes
-    **Explanation**: The text says "He's making pancakes right now".
+    **Explanation**: O texto diz "He's making pancakes right now".
 
 ### 2. Listening/Speaking (5 phrases)
 

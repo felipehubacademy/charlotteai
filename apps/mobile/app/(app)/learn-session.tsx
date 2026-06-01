@@ -1321,16 +1321,24 @@ export default function LearnSessionScreen() {
         <ScrollView
           ref={scrollRef}
           style={{ flex: 1, backgroundColor: '#FAF9FF' }}
-          contentContainerStyle={{ padding: 20, paddingBottom: currentStep.kind === 'pronunciation' && pronStatus === 'result' ? 300 : 24, flexGrow: 1 }}
+          contentContainerStyle={{
+            padding: 20,
+            // Espaco extra no fim quando o footer (resultado / botao Verificar)
+            // sobe — sem isso a ultima opcao de MC longo fica atras do footer.
+            paddingBottom: currentStep.kind === 'pronunciation' && pronStatus === 'result'
+              ? 300
+              : (currentStep.kind === 'grammar' && gStatus === 'submitted' ? 280 : 80),
+            flexGrow: 1,
+          }}
           keyboardShouldPersistTaps="handled"
           showsVerticalScrollIndicator={false}
           scrollEnabled={
-            // Grammar exercises com input (read_answer/fix_error/short_write) ou
-            // passagens longas precisam scroll pra revelar input acima do teclado.
-            // Pronunciation: so listen_write (mantido). MC/word_bank/fill_gap nao
-            // precisam input do teclado, sem scroll.
+            // Grammar com input (read_answer/fix_error/short_write) ou passagens
+            // longas precisam scroll. Multiple_choice tambem — quando tem passage
+            // longo + 4 opcoes, ultima fica atras do footer. Pronunciation:
+            // listen_write. Word_bank/fill_gap nao precisam scroll.
             (currentStep.kind === 'grammar' &&
-              ['read_answer', 'fix_error', 'short_write'].includes(currentStep.exercise.type)) ||
+              ['read_answer', 'fix_error', 'short_write', 'multiple_choice'].includes(currentStep.exercise.type)) ||
             (currentStep.kind === 'pronunciation' && currentStep.phrase?.type === 'listen_write')
           }
         >

@@ -81,7 +81,7 @@
     **Passage**: "For breakfast I have two eggs, some bread, and a cup of coffee. My sister has one apple and some yogurt."
     **Question**: How many eggs does the speaker have?
     **Answer**: two
-    **Explanation**: The text says "I have two eggs".
+    **Explanation**: O texto diz "I have two eggs".
 
 ### 2. Listening/Speaking (5 phrases)
 
@@ -246,7 +246,7 @@
     **Passage**: "I have some bread but I don't have any milk. Is there any cheese? Yes, there's some cheese in the fridge."
     **Question**: What does the speaker NOT have?
     **Answer**: milk
-    **Explanation**: The text says "I don't have any milk".
+    **Explanation**: O texto diz "I don't have any milk".
 
 ### 2. Listening/Speaking (5 phrases)
 
@@ -411,7 +411,7 @@
     **Passage**: "Q: How much is the coffee? A: It's $3. Q: How many cookies do you want? A: Three, please."
     **Question**: How many cookies does the customer want?
     **Answer**: three
-    **Explanation**: The text says "Three, please".
+    **Explanation**: O texto diz "Three, please".
 
 ### 2. Listening/Speaking (5 phrases)
 
@@ -576,7 +576,7 @@
     **Passage**: "Waiter: What would you like? Customer: I'd like a pasta and a glass of water. Waiter: Anything else? Customer: No, that's all. Can I have the bill?"
     **Question**: What does the customer order to drink?
     **Answer**: a glass of water (or "water")
-    **Explanation**: The text says "a glass of water".
+    **Explanation**: O texto diz "a glass of water".
 
 ### 2. Listening/Speaking (5 phrases)
 
@@ -741,7 +741,7 @@
     **Passage**: "I'd like a sandwich and some water. We don't have any cookies. How many apples are there? Three."
     **Question**: How many apples are there?
     **Answer**: three
-    **Explanation**: The text says "Three" in answer to the question.
+    **Explanation**: O texto responde "Three" à pergunta.
 
 ### 2. Listening/Speaking (5 phrases)
 

@@ -623,7 +623,7 @@
 2. **"We'd've left earlier if we could."** — stacked contractions
 3. **"Nex' month I'm starting a new job."** — elision
 4. **"Shouldn'ta said that."** — fast-speech reduction of "shouldn't have"
-5. **"What're you up to?"** — contraction in WH question</p>
+5. **"What're you up to?"** — contraction in WH question
 
 ### 3. Role-play
 

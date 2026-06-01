@@ -32,47 +32,47 @@
 1. **multiple_choice** — Direct: "I am tired." Reported: "He said he _____ tired."
    **Options**: was / is / has been / will be
    **Answer**: was
-   **Explanation**: Reported speech: present simple ("am tired") muda para past simple ("was tired") quando o reporting verb está no passado ("said"). Backshift básico.
+   **Explanation**: Reported speech: present simple ("am tired") shifts to past simple ("was tired") when the reporting verb is in the past ("said"). Basic backshift.
 
 2. **multiple_choice** — Direct: "I work in finance." Reported: "She said she _____ in finance."
    **Options**: worked / works / has worked / will work
    **Answer**: worked
-   **Explanation**: Present simple → past simple no reported speech. "Works" vira "worked".
+   **Explanation**: Present simple → past simple in reported speech. "Works" becomes "worked".
 
 3. **word_bank** — Direct: "I'm cooking dinner." Reported: "He said he _____ dinner."
    **Choices**: was cooking / is cooking / cooks / cooked
    **Answer**: was cooking
-   **Explanation**: Present continuous ("am cooking") → past continuous ("was cooking") em reported speech.
+   **Explanation**: Present continuous ("am cooking") → past continuous ("was cooking") in reported speech.
 
 4. **word_bank** — Direct: "I like coffee." Reported: "She said she _____ coffee."
    **Choices**: liked / likes / has liked / will like
    **Answer**: liked
-   **Explanation**: Present simple → past simple. "Likes" vira "liked".
+   **Explanation**: Present simple → past simple. "Likes" becomes "liked".
 
 5. **fill_gap** — Direct: "We live in São Paulo." Reported: "They said they _____ in São Paulo."
    **Hint**: past simple "live"
    **Answer**: lived
-   **Explanation**: "Live" (present) → "lived" (past) em reported speech.
+   **Explanation**: "Live" (present) → "lived" (past) in reported speech.
 
 6. **fill_gap** — Direct: "I am studying English." Reported: "He said he _____ English."
    **Hint**: was + ing form "study"
    **Answer**: was studying
-   **Explanation**: "Am studying" (present continuous) → "was studying" (past continuous) no reported speech.
+   **Explanation**: "Am studying" (present continuous) → "was studying" (past continuous) in reported speech.
 
 7. **fill_gap** — Direct: "I don't understand." Reported: "She said she _____ understand."
    **Hint**: past simple negative "didn't"
    **Answer**: didn't
-   **Explanation**: "Don't" (present) → "didn't" (past) em reported speech.
+   **Explanation**: "Don't" (present) → "didn't" (past) in reported speech.
 
 8. **fix_error** — Direct: "I'm tired." Reported: "He said that he is tired."
    **Hint**: Após "said" (passado), present muda para past
    **Answer**: He said that he was tired.
-   **Explanation**: Reported speech após "said" exige backshift: "is" vira "was". Manter "is" é erro comum.
+   **Explanation**: Reported speech after "said" requires backshift: "is" becomes "was". Keeping "is" is a common mistake.
 
 9. **fix_error** — Direct: "I like pizza." Reported: "She said she like pizza."
    **Hint**: 3ª pessoa + past — "liked"
    **Answer**: She said she liked pizza.
-   **Explanation**: Faltam duas correções: backshift para "liked" e 3ª pessoa singular. "She liked" — past simple.
+   **Explanation**: Two fixes needed: backshift to "liked" and 3rd person singular. "She liked" — past simple.
 
 10. **read_answer**
     **Passage**: "He said he was tired. She said she worked in finance. They said they lived in São Paulo. He said he was studying English."
@@ -197,47 +197,47 @@
 1. **multiple_choice** — "She _____ me that she was tired."
    **Options**: told / said / spoke / asked
    **Answer**: told
-   **Explanation**: "Tell + person" — exige objeto direto. "Told me" = a mim. "Said" não levaria "me" sem "to" ("said to me"). "Tell" é mais natural.
+   **Explanation**: "Tell + person" — requires a direct object. "Told me" = to me. "Said" wouldn't take "me" without "to" ("said to me"). "Tell" is more natural.
 
 2. **multiple_choice** — "He _____ that the meeting was canceled."
    **Options**: said / told / spoke / mentioned
    **Answer**: said
-   **Explanation**: "Said + that-clause" sem objeto. "He said that..." — não "he told that". "Tell" precisaria de pessoa.
+   **Explanation**: "Said + that-clause" with no object. "He said that..." — not "he told that". "Tell" would need a person.
 
 3. **word_bank** — "She _____ her sister the news."
    **Choices**: told / said / spoke / mentioned
    **Answer**: told
-   **Explanation**: "Tell + person + thing" — chunk natural. "Told her sister the news".
+   **Explanation**: "Tell + person + thing" — natural chunk. "Told her sister the news".
 
 4. **word_bank** — "He _____ to me about the project."
    **Choices**: spoke / told / said / mentioned
    **Answer**: spoke
-   **Explanation**: "Spoke to me" — preposição "to" com "speak". Outra forma de reportar conversa.
+   **Explanation**: "Spoke to me" — preposition "to" with "speak". Another way to report a conversation.
 
 5. **fill_gap** — "She _____ me she was going on vacation."
    **Hint**: told (precisa de objeto "me")
    **Answer**: told
-   **Explanation**: "Told me + that-clause" — verbo "tell" sempre exige pessoa.
+   **Explanation**: "Told me + that-clause" — the verb "tell" always requires a person.
 
 6. **fill_gap** — "He _____ that he didn't want to come."
    **Hint**: said (sem objeto direto)
    **Answer**: said
-   **Explanation**: "Said that" — verbo "say" não pede objeto direto antes do that-clause.
+   **Explanation**: "Said that" — the verb "say" doesn't take a direct object before the that-clause.
 
 7. **fill_gap** — "She _____ the children a story."
    **Hint**: told (tell + pessoa + coisa)
    **Answer**: told
-   **Explanation**: "Told the children a story" — estrutura natural com tell.
+   **Explanation**: "Told the children a story" — natural structure with tell.
 
 8. **fix_error** — "She said me that she was tired."
    **Hint**: "Said + me" não funciona — use "told me"
    **Answer**: She told me that she was tired.
-   **Explanation**: "Say" não aceita objeto direto sem "to". "Said to me" funcionaria, mas "told me" é mais natural.
+   **Explanation**: "Say" doesn't take a direct object without "to". "Said to me" would work, but "told me" is more natural.
 
 9. **fix_error** — "He told that the meeting was canceled."
    **Hint**: "Tell" precisa de pessoa — falta objeto
    **Answer**: He said that the meeting was canceled. (or: He told everyone that...)
-   **Explanation**: "Tell" sem objeto não funciona. Ou usa "said" (sem pessoa), ou adiciona pessoa ("told someone, told everyone").
+   **Explanation**: "Tell" without an object doesn't work. Either use "said" (no person), or add a person ("told someone, told everyone").
 
 10. **read_answer**
     **Passage**: "She told me that she was tired. He said that the meeting was canceled. She told her sister the news. He spoke to me about the project last week."
@@ -362,47 +362,47 @@
 1. **multiple_choice** — Direct: "I finished the report." Reported: "He said he _____ the report."
    **Options**: had finished / finished / has finished / was finishing
    **Answer**: had finished
-   **Explanation**: Past simple ("finished") → past perfect ("had finished") em reported speech. Mais um passo para trás no tempo.
+   **Explanation**: Past simple ("finished") → past perfect ("had finished") in reported speech. One more step back in time.
 
 2. **multiple_choice** — Direct: "I have visited Paris." Reported: "She said she _____ Paris."
    **Options**: had visited / visited / has visited / visits
    **Answer**: had visited
-   **Explanation**: Present perfect ("have visited") → past perfect ("had visited") no reported speech.
+   **Explanation**: Present perfect ("have visited") → past perfect ("had visited") in reported speech.
 
 3. **word_bank** — Direct: "I saw the movie." Reported: "He said he _____ the movie."
    **Choices**: had seen / saw / has seen / sees
    **Answer**: had seen
-   **Explanation**: Past simple → past perfect. "Saw" → "had seen". Backshift padrão.
+   **Explanation**: Past simple → past perfect. "Saw" → "had seen". Standard backshift.
 
 4. **word_bank** — Direct: "I've been to Japan." Reported: "She said she _____ to Japan."
    **Choices**: had been / has been / was / went
    **Answer**: had been
-   **Explanation**: "Have been" → "had been" em reported speech.
+   **Explanation**: "Have been" → "had been" in reported speech.
 
 5. **fill_gap** — Direct: "I lost my phone." Reported: "He said he _____ his phone."
    **Hint**: had + past participle "lose"
    **Answer**: had lost
-   **Explanation**: "Lost" → "had lost". Past simple para past perfect.
+   **Explanation**: "Lost" → "had lost". Past simple to past perfect.
 
 6. **fill_gap** — Direct: "I've finished the project." Reported: "She said she _____ the project."
    **Hint**: had + past participle "finish"
    **Answer**: had finished
-   **Explanation**: "Have finished" → "had finished" no reported.
+   **Explanation**: "Have finished" → "had finished" in reported speech.
 
 7. **fill_gap** — Direct: "I read that book." Reported: "He said he _____ that book."
    **Hint**: had + past participle "read"
    **Answer**: had read
-   **Explanation**: "Read" (past) → "had read" (past perfect). Note: pronounced /red/ em ambos.
+   **Explanation**: "Read" (past) → "had read" (past perfect). Note: pronounced /red/ in both.
 
 8. **fix_error** — Direct: "I finished it." Reported: "He said he finished it."
    **Hint**: Past simple precisa ir para past perfect
    **Answer**: He said he had finished it.
-   **Explanation**: Em reported, "finished" precisa virar "had finished". Mais um passo no tempo.
+   **Explanation**: In reported speech, "finished" must become "had finished". One more step back in time.
 
 9. **fix_error** — Direct: "I've seen the movie." Reported: "She said she has seen the movie."
    **Hint**: Present perfect → past perfect
    **Answer**: She said she had seen the movie.
-   **Explanation**: "Has seen" no reported vira "had seen". Backshift obrigatório.
+   **Explanation**: "Has seen" in reported speech becomes "had seen". Backshift is required.
 
 10. **read_answer**
     **Passage**: "He said he had finished the report. She said she had visited Paris twice. He said he had seen the movie three times. They said they had been to Japan for vacation."
@@ -557,17 +557,17 @@
 7. **fill_gap** — Direct: "I'll send the email." Reported: "He said he _____ send the email."
    **Hint**: would (will → would)
    **Answer**: would
-   **Explanation**: "Will send" → "would send" em reported speech.
+   **Explanation**: "Will send" → "would send" in reported speech.
 
 8. **fix_error** — Direct: "I will help." Reported: "He said he will help."
    **Hint**: "Will" precisa virar "would" em reported
    **Answer**: He said he would help.
-   **Explanation**: Backshift obrigatório: "will" → "would" quando reporting verb é passado.
+   **Explanation**: Backshift is required: "will" → "would" when the reporting verb is in the past.
 
 9. **fix_error** — Direct: "I must work tomorrow." Reported: "She said she must work the next day."
    **Hint**: "Must" → "had to" em reported speech
    **Answer**: She said she had to work the next day.
-   **Explanation**: "Must" não muda em alguns contextos modernos, mas em reported speech tradicional → "had to".
+   **Explanation**: "Must" stays unchanged in some modern contexts, but in traditional reported speech → "had to".
 
 10. **read_answer**
     **Passage**: "He said he would call me later. She said she could speak three languages. He said he might be late for dinner. She said she had to leave early."
@@ -692,32 +692,32 @@
 1. **multiple_choice** — Direct: "I'm tired today." Reported: "He said he was tired _____."
    **Options**: that day / today / this day / on that
    **Answer**: that day
-   **Explanation**: "Today" no reported vira "that day" — quando o reporte é depois. Shift natural de tempo.
+   **Explanation**: "Today" becomes "that day" in reported speech — when reporting after the fact. Natural time shift.
 
 2. **multiple_choice** — Direct: "I'll come tomorrow." Reported: "She said she would come _____."
    **Options**: the next day / tomorrow / the day after / next day
    **Answer**: the next day
-   **Explanation**: "Tomorrow" → "the next day" (or "the following day") em reported speech.
+   **Explanation**: "Tomorrow" → "the next day" (or "the following day") in reported speech.
 
 3. **word_bank** — Direct: "I was here yesterday." Reported: "He said he had been _____ the day before."
    **Choices**: there / here / on there / that there
    **Answer**: there
-   **Explanation**: "Here" → "there" em reported speech (você não está mais no lugar original).
+   **Explanation**: "Here" → "there" in reported speech (you're no longer at the original place).
 
 4. **word_bank** — Direct: "I saw it yesterday." Reported: "She said she had seen it _____."
    **Choices**: the day before / yesterday / the previous day / one day before
    **Answer**: the day before
-   **Explanation**: "Yesterday" → "the day before" (ou "the previous day") em reported.
+   **Explanation**: "Yesterday" → "the day before" (or "the previous day") in reported speech.
 
 5. **fill_gap** — Direct: "I love this song." Reported: "He said he loved _____ song."
    **Hint**: "this" → "that"
    **Answer**: that
-   **Explanation**: "This" → "that" em reported speech — você está mais distante do referente.
+   **Explanation**: "This" → "that" in reported speech — you're more distant from the referent.
 
 6. **fill_gap** — Direct: "I'll call you next week." Reported: "She said she would call me the _____ week."
    **Hint**: "next" → "following"
    **Answer**: following
-   **Explanation**: "Next week" → "the following week" em reported.
+   **Explanation**: "Next week" → "the following week" in reported speech.
 
 7. **fill_gap** — Direct: "I came here last year." Reported: "He said he had come _____ the year before."
    **Hint**: "here" → "there"
@@ -727,12 +727,12 @@
 8. **fix_error** — Direct: "I work here." Reported: "He said he worked here."
    **Hint**: "Here" precisa mudar — você não está no mesmo lugar
    **Answer**: He said he worked there.
-   **Explanation**: "Here" só permanece se você ainda está no mesmo lugar. Para reporte distante, "there".
+   **Explanation**: "Here" stays only if you're still in the same place. For distant reporting, use "there".
 
 9. **fix_error** — Direct: "I'll see you tomorrow." Reported: "She said she would see me tomorrow."
    **Hint**: Para reporte depois, "tomorrow" → "the next day"
    **Answer**: She said she would see me the next day.
-   **Explanation**: "Tomorrow" só permanece se o reporte ainda for hoje. Caso contrário, "the next day".
+   **Explanation**: "Tomorrow" stays only if the report is still today. Otherwise, "the next day".
 
 10. **read_answer**
     **Passage**: "He said he was tired that day. She said she would come the next day. He said he had been there the day before. She said she loved that song."

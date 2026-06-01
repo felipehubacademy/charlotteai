@@ -81,7 +81,7 @@
     **Passage**: "I love Italian food. I like Mexican food too. My sister hates spicy food. We all love chocolate."
     **Question**: What does the sister hate?
     **Answer**: spicy food
-    **Explanation**: The text says "My sister hates spicy food".
+    **Explanation**: O texto diz "My sister hates spicy food".
 
 ### 2. Listening/Speaking (5 phrases)
 
@@ -246,7 +246,7 @@
     **Passage**: "I love reading, but I hate cooking. My brother loves playing soccer. My sister likes painting and drawing."
     **Question**: What does the sister like doing?
     **Answer**: painting and drawing
-    **Explanation**: The text says "My sister likes painting and drawing".
+    **Explanation**: O texto diz "My sister likes painting and drawing".
 
 ### 2. Listening/Speaking (5 phrases)
 
@@ -411,7 +411,7 @@
     **Passage**: "My sister calls me every Sunday. I love talking to her. She tells me about her week. I tell her about mine."
     **Question**: Who calls every Sunday?
     **Answer**: my sister (or "the sister")
-    **Explanation**: The text says "My sister calls me every Sunday".
+    **Explanation**: O texto diz "My sister calls me every Sunday".
 
 ### 2. Listening/Speaking (5 phrases)
 
@@ -577,7 +577,7 @@
     **Passage**: "I love pop music. I like action movies. I hate horror books. My sister loves classical music — totally different."
     **Question**: What kind of music does the sister love?
     **Answer**: classical (or "classical music")
-    **Explanation**: The text says "My sister loves classical music".
+    **Explanation**: O texto diz "My sister loves classical music".
 
 ### 2. Listening/Speaking (5 phrases)
 
@@ -742,7 +742,7 @@
     **Passage**: "I prefer tea over coffee. My sister prefers coffee. We both love chocolate. She hates sweet drinks but I like them."
     **Question**: What does the sister prefer to drink?
     **Answer**: coffee
-    **Explanation**: The text says "My sister prefers coffee".
+    **Explanation**: O texto diz "My sister prefers coffee".
 
 ### 2. Listening/Speaking (5 phrases)
 

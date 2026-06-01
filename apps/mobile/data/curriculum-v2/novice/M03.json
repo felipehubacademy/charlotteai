@@ -128,7 +128,7 @@
           "passage": "My family is great. My mother is fifty. My father is fifty-five. My brother is twenty. He is Brazilian.",
           "question": "How old is the father? (dê um número)",
           "answer": "55",
-          "explanation": "The text says \"My father is fifty-five\". 55."
+          "explanation": "O texto diz \"My father is fifty-five\". 55."
         }
       ],
       "listening_speaking": [
@@ -332,7 +332,7 @@
           "passage": "I've got a small family. I have got one brother and one sister. My brother is twenty-five. My sister is fifteen.",
           "question": "How old is the brother? (dê um número)",
           "answer": "25",
-          "explanation": "The text says \"My brother is twenty-five\". 25."
+          "explanation": "O texto diz \"My brother is twenty-five\". 25."
         }
       ],
       "listening_speaking": [
@@ -534,7 +534,7 @@
           "passage": "John has got a great family. His wife is Italian. His son is ten. His daughter is fifteen.",
           "question": "How old is John's daughter? (dê um número)",
           "answer": "15",
-          "explanation": "The text says \"His daughter is fifteen\". 15."
+          "explanation": "O texto diz \"His daughter is fifteen\". 15."
         }
       ],
       "listening_speaking": [
@@ -736,7 +736,7 @@
           "passage": "I've got a best friend. Her name is Sofia. She is Italian. She is twenty-three years old.",
           "question": "What is Sofia's nationality?",
           "answer": "Italian",
-          "explanation": "The text says \"She is Italian\" — Sofia's nationality is Italian."
+          "explanation": "O texto diz \"She is Italian\" — a nacionalidade de Sofia é italiana."
         }
       ],
       "listening_speaking": [
@@ -938,7 +938,7 @@
           "passage": "Meet my family. My mother is fifty. My father is fifty-five. My brother is twenty. He is Brazilian like me.",
           "question": "What is the brother's nationality?",
           "answer": "Brazilian",
-          "explanation": "The text says \"He is Brazilian like me\" — the brother's nationality is Brazilian."
+          "explanation": "O texto diz \"He is Brazilian like me\" — a nacionalidade do irmão é brasileira."
         }
       ],
       "listening_speaking": [

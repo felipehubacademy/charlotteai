@@ -118,7 +118,7 @@
           "passage": "I'm working from home today. My sister is studying upstairs. My mother is cooking lunch. We are all busy!",
           "question": "What is the sister doing?",
           "answer": "studying",
-          "explanation": "The text says \"My sister is studying upstairs\"."
+          "explanation": "O texto diz \"My sister is studying upstairs\"."
         }
       ],
       "listening_speaking": [
@@ -320,7 +320,7 @@
           "passage": "I'm not working today. My brother isn't studying — he's playing games. We aren't eating yet.",
           "question": "What isn't the brother doing?",
           "answer": "studying",
-          "explanation": "The text says \"My brother isn't studying\"."
+          "explanation": "O texto diz \"My brother isn't studying\"."
         }
       ],
       "listening_speaking": [
@@ -524,7 +524,7 @@
           "passage": "Q: Are you working today? A: No, I'm not. I'm reading. Q: Is your sister studying? A: Yes, she is. She's preparing for an exam.",
           "question": "What is the speaker doing?",
           "answer": "reading",
-          "explanation": "The text says \"I'm reading\"."
+          "explanation": "O texto diz \"I'm reading\"."
         }
       ],
       "listening_speaking": [
@@ -726,7 +726,7 @@
           "passage": "I'm working from home this week. My sister is visiting from London. We're having dinner together every night.",
           "question": "Where is the sister visiting from?",
           "answer": "London",
-          "explanation": "The text says \"My sister is visiting from London\"."
+          "explanation": "O texto diz \"My sister is visiting from London\"."
         }
       ],
       "listening_speaking": [
@@ -940,7 +940,7 @@
           "passage": "I usually wake up at seven, but today I'm waking up at nine — it's Sunday! My brother always cooks on Sundays. He's making pancakes right now.",
           "question": "What is the brother making right now?",
           "answer": "pancakes",
-          "explanation": "The text says \"He's making pancakes right now\"."
+          "explanation": "O texto diz \"He's making pancakes right now\"."
         }
       ],
       "listening_speaking": [

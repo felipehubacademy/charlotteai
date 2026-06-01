@@ -114,7 +114,7 @@
           "passage": "My brother is the tallest in our family. My sister is the youngest. I'm the oldest. We all live in the biggest house on the street.",
           "question": "Who is the tallest?",
           "answer": "my brother",
-          "explanation": "The text says \"My brother is the tallest\"."
+          "explanation": "O texto diz \"My brother is the tallest\"."
         }
       ],
       "listening_speaking": [
@@ -316,7 +316,7 @@
           "passage": "This is the most expensive restaurant in town. The food is the most delicious in the city. The service is also the most professional.",
           "question": "How is the service?",
           "answer": "the most professional",
-          "explanation": "The text says \"The service is also the most professional\"."
+          "explanation": "O texto diz \"The service is also the most professional\"."
         }
       ],
       "listening_speaking": [
@@ -520,7 +520,7 @@
           "passage": "Ana is the best singer in our class. Lucas is the worst at math but the best at art. We all agree — she has the most talent.",
           "question": "Who is the best at art?",
           "answer": "Lucas",
-          "explanation": "The text says \"Lucas is... the best at art\"."
+          "explanation": "O texto diz \"Lucas is... the best at art\"."
         }
       ],
       "listening_speaking": [
@@ -722,7 +722,7 @@
           "passage": "I live on the second floor. My birthday is on the fourth of July. This is my first time in NYC.",
           "question": "When is the birthday?",
           "answer": "the fourth of July (or \"July 4\")",
-          "explanation": "The text says \"My birthday is on the fourth of July\"."
+          "explanation": "O texto diz \"My birthday is on the fourth of July\"."
         }
       ],
       "listening_speaking": [
@@ -924,7 +924,7 @@
           "passage": "I live on the third floor. My building is the tallest in the neighborhood. This is the best apartment in the building. The view is the most beautiful.",
           "question": "How is the view?",
           "answer": "the most beautiful",
-          "explanation": "The text says \"The view is the most beautiful\"."
+          "explanation": "O texto diz \"The view is the most beautiful\"."
         }
       ],
       "listening_speaking": [

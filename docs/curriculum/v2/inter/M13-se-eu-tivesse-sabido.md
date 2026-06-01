@@ -30,47 +30,47 @@
 1. **multiple_choice** — "If I _____ known, I would have helped."
    **Options**: had / have / would have / did
    **Answer**: had
-   **Explanation**: Third conditional: "If + past perfect (had + past participle), would have + past participle". A cláusula com "if" usa past perfect, mesmo no terceiro condicional. Aqui: "If I had known".
+   **Explanation**: Third conditional: "If + past perfect (had + past participle), would have + past participle". The "if" clause uses past perfect, even in third conditional. Here: "If I had known".
 
 2. **multiple_choice** — "She _____ called you if she had had time."
    **Options**: would have / will have / would / had
    **Answer**: would have
-   **Explanation**: Cláusula principal: "would have + past participle". "She would have called" — não "would call" (que seria second conditional, presente).
+   **Explanation**: Main clause: "would have + past participle". "She would have called" — not "would call" (that would be second conditional, present).
 
 3. **word_bank** — "If we _____ left earlier, we wouldn't have missed the train."
    **Choices**: had / have / would / will
    **Answer**: had
-   **Explanation**: "If + past perfect" — "had left". O contraste com "wouldn't have missed" mostra o terceiro condicional.
+   **Explanation**: "If + past perfect" — "had left". The contrast with "wouldn't have missed" reveals the third conditional.
 
 4. **word_bank** — "I _____ told you if I had known."
    **Choices**: would have / will have / would / had
    **Answer**: would have
-   **Explanation**: Cláusula principal sempre "would have + past participle". "I would have told you".
+   **Explanation**: The main clause always takes "would have + past participle". "I would have told you".
 
 5. **fill_gap** — "If she _____ studied, she would have passed."
    **Hint**: past perfect "had + past participle"
    **Answer**: had
-   **Explanation**: "If she had studied" — past perfect na cláusula if. Aprovaria, mas não estudou.
+   **Explanation**: "If she had studied" — past perfect in the if-clause. She would have passed, but she didn't study.
 
 6. **fill_gap** — "He _____ have come if you had invited him."
    **Hint**: "would" + have + past participle
    **Answer**: would
-   **Explanation**: "He would have come" — would + have + come. Estrutura completa da principal.
+   **Explanation**: "He would have come" — would + have + come. Full structure of the main clause.
 
 7. **fill_gap** — "If they _____ asked, I _____ have helped."
    **Hint**: had asked / would
    **Answer**: had / would
-   **Explanation**: "If they had asked, I would have helped" — past perfect + would have past participle.
+   **Explanation**: "If they had asked, I would have helped" — past perfect + would have + past participle.
 
 8. **fix_error** — "If I would have known, I would have helped."
    **Hint**: "Would" não vai na cláusula "if" — só past perfect
    **Answer**: If I had known, I would have helped.
-   **Explanation**: Erro muito comum: usar "would have" na cláusula if. Em third conditional, "if" sempre leva past perfect ("had known"), nunca "would have".
+   **Explanation**: Very common error: using "would have" in the if-clause. In third conditional, "if" always takes past perfect ("had known"), never "would have".
 
 9. **fix_error** — "She would called you if she had had time."
    **Hint**: Falta "have" — "would have called"
    **Answer**: She would have called you if she had had time.
-   **Explanation**: Principal precisa de "would HAVE + past participle". "Would called" não existe — sempre "would have called".
+   **Explanation**: The main clause needs "would HAVE + past participle". "Would called" doesn't exist — always "would have called".
 
 10. **read_answer**
     **Passage**: "If I had known about the meeting, I would have come prepared. She would have called you back if she had had your number. We wouldn't have missed the train if we had left ten minutes earlier."
@@ -195,47 +195,47 @@
 1. **multiple_choice** — "I wish I _____ studied harder."
    **Options**: had / have / would have / did
    **Answer**: had
-   **Explanation**: "I wish + past perfect" para arrependimentos sobre o passado. "I wish I had studied" — passou e me arrependo.
+   **Explanation**: "I wish + past perfect" for regrets about the past. "I wish I had studied" — it's done and I regret it.
 
 2. **multiple_choice** — "She wishes she _____ told him the truth."
    **Options**: had / has / would have / did
    **Answer**: had
-   **Explanation**: Wish + past perfect para arrependimento passado. "She wishes she had told" — não disse e se arrepende.
+   **Explanation**: Wish + past perfect for a past regret. "She wishes she had told" — she didn't say it and regrets it.
 
 3. **word_bank** — "I wish I _____ taken that opportunity."
    **Choices**: had / have / would have / will have
    **Answer**: had
-   **Explanation**: "I wish I had taken" — past perfect para arrependimento de não ter aproveitado.
+   **Explanation**: "I wish I had taken" — past perfect for regret over not seizing the chance.
 
 4. **word_bank** — "He wishes he _____ called you back."
    **Choices**: had / has / would have / did
    **Answer**: had
-   **Explanation**: "He wishes he had called" — past perfect indicando ação passada não realizada.
+   **Explanation**: "He wishes he had called" — past perfect marking a past action that didn't happen.
 
 5. **fill_gap** — "I wish I _____ listened to my parents."
    **Hint**: past perfect "had + past participle"
    **Answer**: had
-   **Explanation**: "Wish + past perfect" para regret. "I wish I had listened" — não escutei, me arrependo.
+   **Explanation**: "Wish + past perfect" for regret. "I wish I had listened" — I didn't listen, and I regret it.
 
 6. **fill_gap** — "We wish we _____ left earlier."
    **Hint**: past perfect "had + past participle"
    **Answer**: had
-   **Explanation**: "We wish we had left earlier" — arrependimento sobre quando saímos.
+   **Explanation**: "We wish we had left earlier" — regret about when we left.
 
 7. **fill_gap** — "If only I _____ known."
    **Hint**: past perfect "had + past participle"
    **Answer**: had
-   **Explanation**: "If only" = formação enfática de wish. "If only I had known" — arrependimento dramático.
+   **Explanation**: "If only" = emphatic version of wish. "If only I had known" — dramatic regret.
 
 8. **fix_error** — "I wish I would have studied harder."
    **Hint**: Use past perfect "had studied", não "would have"
    **Answer**: I wish I had studied harder.
-   **Explanation**: Erro comum: "wish + would have". Para passado, use "wish + past perfect" ("had studied"). "Would have" não cabe.
+   **Explanation**: Common error: "wish + would have". For the past, use "wish + past perfect" ("had studied"). "Would have" doesn't fit.
 
 9. **fix_error** — "She wishes she has told him."
    **Hint**: Para arrependimento passado, "had told"
    **Answer**: She wishes she had told him.
-   **Explanation**: "Has told" (present perfect) não funciona em wish. Para passado, sempre past perfect "had told".
+   **Explanation**: "Has told" (present perfect) doesn't work in wish. For the past, always past perfect "had told".
 
 10. **read_answer**
     **Passage**: "I wish I had studied harder in college. She wishes she had taken that job offer. If only we had left earlier — we wouldn't have missed the flight."
@@ -360,12 +360,12 @@
 1. **multiple_choice** — "What _____ you have done if you had known?"
    **Options**: would / will / had / did
    **Answer**: would
-   **Explanation**: Pergunta em third conditional: "WH + would have + past participle + if + past perfect?". "What would you have done?" — pergunta hipotética sobre o passado.
+   **Explanation**: Third-conditional question: "WH + would have + past participle + if + past perfect?". "What would you have done?" — hypothetical question about the past.
 
 2. **multiple_choice** — "_____ you have helped if I had asked?"
    **Options**: Would / Will / Had / Did
    **Answer**: Would
-   **Explanation**: "Would + subject + have + past participle + if + past perfect?". "Would you have helped?" — yes/no question third conditional.
+   **Explanation**: "Would + subject + have + past participle + if + past perfect?". "Would you have helped?" — yes/no third-conditional question.
 
 3. **word_bank** — "Where _____ you have gone if you _____ had the money?"
    **Choices**: would / will / had / have / would / will / would / did
@@ -375,32 +375,32 @@
 4. **word_bank** — "If you _____ been there, what _____ you have said?"
    **Choices**: had / have / would / will
    **Answer**: had
-   **Explanation**: "If you had been" — past perfect na cláusula if. "What would you have said?" na principal.
+   **Explanation**: "If you had been" — past perfect in the if-clause. "What would you have said?" in the main clause.
 
 5. **fill_gap** — "What _____ you have done if you _____ been in my place?"
    **Hint**: would / had
    **Answer**: would / had
-   **Explanation**: "What would you have done if you had been..." — pergunta com past perfect na cláusula if.
+   **Explanation**: "What would you have done if you had been..." — question with past perfect in the if-clause.
 
 6. **fill_gap** — "_____ she have called you if she _____ known your number?"
    **Hint**: Would / had
    **Answer**: Would / had
-   **Explanation**: "Would she have called you if she had known?" — third conditional pergunta yes/no.
+   **Explanation**: "Would she have called you if she had known?" — yes/no third-conditional question.
 
 7. **fill_gap** — "How _____ you have reacted if it _____ happened to you?"
    **Hint**: would / had
    **Answer**: would / had
-   **Explanation**: "How would you have reacted if it had happened?" — pergunta com "how" + past perfect.
+   **Explanation**: "How would you have reacted if it had happened?" — question with "how" + past perfect.
 
 8. **fix_error** — "What you would have done if you had known?"
    **Hint**: Inversão em pergunta — "would" antes do sujeito
    **Answer**: What would you have done if you had known?
-   **Explanation**: Em pergunta, "would" vem antes do sujeito ("would you"), não depois ("you would"). Inversão obrigatória em WH-questions.
+   **Explanation**: In a question, "would" comes before the subject ("would you"), not after ("you would"). Inversion is required in WH-questions.
 
 9. **fix_error** — "Would you helped if I had asked?"
    **Hint**: Falta "have" — "would have helped"
    **Answer**: Would you have helped if I had asked?
-   **Explanation**: Sempre "would HAVE + past participle". "Would you helped" não existe.
+   **Explanation**: Always "would HAVE + past participle". "Would you helped" doesn't exist.
 
 10. **read_answer**
     **Passage**: "What would you have done if you had been in my position? Where would you have gone if you had had unlimited time? Would you have helped me if I had asked?"
@@ -555,23 +555,23 @@
 7. **fill_gap** — "Nobody _____ have noticed if she _____ said anything."
    **Hint**: would / hadn't
    **Answer**: would / hadn't
-   **Explanation**: "Nobody would have noticed" + "if she hadn't said anything" — enfático com sujeito indefinido negativo.
+   **Explanation**: "Nobody would have noticed" + "if she hadn't said anything" — emphatic with an indefinite negative subject.
 
 8. **fix_error** — "If he didn't call me, I wouldn't have known."
    **Hint**: Third conditional precisa de "had + past participle" na cláusula if
    **Answer**: If he hadn't called me, I wouldn't have known.
-   **Explanation**: "Didn't call" é past simple — não cabe em third conditional. Sempre "hadn't called" (past perfect).
+   **Explanation**: "Didn't call" is past simple — it doesn't fit in third conditional. Always "hadn't called" (past perfect).
 
 9. **fix_error** — "If I had left earlier, I would arrive on time."
    **Hint**: Resultado de third conditional sempre "would HAVE + past participle"
    **Answer**: If I had left earlier, I would have arrived on time.
-   **Explanation**: "Would arrive" é second conditional (presente). Third conditional precisa de "would have arrived" (passado).
+   **Explanation**: "Would arrive" is second conditional (present). Third conditional needs "would have arrived" (past).
 
 10. **read_answer**
     **Passage**: "If I hadn't taken the wrong train that morning, I wouldn't have met Sarah. We wouldn't have started talking. And I would never have moved to Berlin. One mistake changed everything."
     **Question**: What would have never happened if the speaker hadn't taken the wrong train?
     **Answer**: moving to Berlin (or "moved to Berlin")
-    **Explanation**: The text says "I would never have moved to Berlin" — cadeia narrativa de close call.
+    **Explanation**: The text says "I would never have moved to Berlin" — close-call narrative chain.
 
 ### 2. Listening/Speaking (5 phrases)
 
@@ -690,47 +690,47 @@
 1. **multiple_choice** — "If I _____ known, I would have called you."
    **Options**: had / have / would have / did
    **Answer**: had
-   **Explanation**: Third conditional puro. "Had known" + "would have called".
+   **Explanation**: Pure third conditional. "Had known" + "would have called".
 
 2. **multiple_choice** — "I wish I _____ said no."
    **Options**: had / have / would have / did
    **Answer**: had
-   **Explanation**: "Wish + past perfect" para arrependimento. "I wish I had said no" — não disse e me arrependo.
+   **Explanation**: "Wish + past perfect" for regret. "I wish I had said no" — I didn't say it, and I regret it.
 
 3. **word_bank** — "If she _____ studied harder, she _____ passed the exam."
    **Choices**: had / would have / has / will / had / would / would / will have
    **Answer**: had / would have
-   **Explanation**: Third conditional puro. "Had studied" + "would have passed" — passado hipotético.
+   **Explanation**: Pure third conditional. "Had studied" + "would have passed" — hypothetical past.
 
 4. **word_bank** — "What _____ you have done if you _____ been there?"
    **Choices**: would / had / will / are / would / will / would / was
    **Answer**: would / had
-   **Explanation**: Pergunta third conditional. "Would you have done if you had been there?".
+   **Explanation**: Third-conditional question. "Would you have done if you had been there?".
 
 5. **fill_gap** — "We wouldn't have missed the train if we _____ left earlier."
    **Hint**: past perfect "had + past participle"
    **Answer**: had
-   **Explanation**: "Had left" — past perfect na cláusula if do terceiro condicional.
+   **Explanation**: "Had left" — past perfect in the if-clause of the third conditional.
 
 6. **fill_gap** — "If only I _____ listened to you!"
    **Hint**: past perfect "had + past participle"
    **Answer**: had
-   **Explanation**: "If only I had listened" — exclamação de arrependimento.
+   **Explanation**: "If only I had listened" — exclamation of regret.
 
 7. **fill_gap** — "Nothing _____ have gone wrong if we _____ followed the plan."
    **Hint**: would / had
    **Answer**: would / had
-   **Explanation**: Third conditional negativo enfático. "Nothing would have gone wrong" + "if we had followed" — encadeamento típico de close call.
+   **Explanation**: Emphatic negative third conditional. "Nothing would have gone wrong" + "if we had followed" — typical close-call chaining.
 
 8. **fix_error** — "If I would have known, I would have helped."
    **Hint**: "Would" nunca vai na cláusula if
    **Answer**: If I had known, I would have helped.
-   **Explanation**: Cláusula "if" sempre past perfect ("had known"), nunca "would have known".
+   **Explanation**: The "if" clause is always past perfect ("had known"), never "would have known".
 
 9. **fix_error** — "I wish I would have studied medicine."
    **Hint**: Wish + past perfect, não "would have"
    **Answer**: I wish I had studied medicine.
-   **Explanation**: "Wish + past perfect" para arrependimento ("I wish I had studied"). "Would have" é errado em wish.
+   **Explanation**: "Wish + past perfect" for regret ("I wish I had studied"). "Would have" is wrong in wish.
 
 10. **read_answer**
     **Passage**: "If I had studied harder, I would have passed. I wish I had taken that opportunity. If I hadn't missed the deadline, nothing would have gone wrong. What would you have done in my place?"

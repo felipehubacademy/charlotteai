@@ -113,7 +113,7 @@
           "passage": "Tomorrow I'm going to wake up early. I'm going to work in the morning and go to the gym in the afternoon. We're going to have dinner together.",
           "question": "What is the speaker going to do in the afternoon?",
           "answer": "go to the gym",
-          "explanation": "The text says \"go to the gym in the afternoon\"."
+          "explanation": "O texto diz \"go to the gym in the afternoon\"."
         }
       ],
       "listening_speaking": [
@@ -315,7 +315,7 @@
           "passage": "I'm not going to work tomorrow. It's my day off. My sister isn't going to come either. We aren't going to do anything special.",
           "question": "Why isn't the speaker working tomorrow?",
           "answer": "it's my day off (or \"day off\")",
-          "explanation": "The text says \"It's my day off\"."
+          "explanation": "O texto diz \"It's my day off\"."
         }
       ],
       "listening_speaking": [
@@ -498,7 +498,7 @@
           "sentence": "\"Yes, I _____.\" (response to \"Are you going to come?\")",
           "hint": "Resposta curta afirmativa",
           "answer": "am",
-          "explanation": "\"Yes, I am\" — short answer."
+          "explanation": "\"Yes, I am\" — resposta curta."
         },
         {
           "type": "fix_error",
@@ -721,7 +721,7 @@
           "passage": "I'm going to travel tomorrow. Next week I'm going to be in Italy. In two months I'm going to come back home.",
           "question": "When is the speaker going to travel?",
           "answer": "tomorrow",
-          "explanation": "The text says \"I'm going to travel tomorrow\"."
+          "explanation": "O texto diz \"I'm going to travel tomorrow\"."
         }
       ],
       "listening_speaking": [
@@ -923,7 +923,7 @@
           "passage": "Tomorrow I'm going to work. I'm not going to eat out tonight — I'm tired. Next week I'm going to travel to Bahia.",
           "question": "Where is the speaker going next week?",
           "answer": "Bahia (or \"to Bahia\")",
-          "explanation": "The text says \"travel to Bahia\"."
+          "explanation": "O texto diz \"travel to Bahia\"."
         }
       ],
       "listening_speaking": [

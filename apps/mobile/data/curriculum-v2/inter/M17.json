@@ -39,7 +39,7 @@
             "will be"
           ],
           "answer": "was",
-          "explanation": "Reported speech: present simple (\"am tired\") muda para past simple (\"was tired\") quando o reporting verb está no passado (\"said\"). Backshift básico."
+          "explanation": "Reported speech: present simple (\"am tired\") shifts to past simple (\"was tired\") when the reporting verb is in the past (\"said\"). Basic backshift."
         },
         {
           "type": "multiple_choice",
@@ -51,7 +51,7 @@
             "will work"
           ],
           "answer": "worked",
-          "explanation": "Present simple → past simple no reported speech. \"Works\" vira \"worked\"."
+          "explanation": "Present simple → past simple in reported speech. \"Works\" becomes \"worked\"."
         },
         {
           "type": "word_bank",
@@ -63,7 +63,7 @@
             "cooked"
           ],
           "answer": "was cooking",
-          "explanation": "Present continuous (\"am cooking\") → past continuous (\"was cooking\") em reported speech."
+          "explanation": "Present continuous (\"am cooking\") → past continuous (\"was cooking\") in reported speech."
         },
         {
           "type": "word_bank",
@@ -75,42 +75,42 @@
             "will like"
           ],
           "answer": "liked",
-          "explanation": "Present simple → past simple. \"Likes\" vira \"liked\"."
+          "explanation": "Present simple → past simple. \"Likes\" becomes \"liked\"."
         },
         {
           "type": "fill_gap",
           "sentence": "Direct: \"We live in São Paulo.\" Reported: \"They said they _____ in São Paulo.\"",
           "hint": "past simple \"live\"",
           "answer": "lived",
-          "explanation": "\"Live\" (present) → \"lived\" (past) em reported speech."
+          "explanation": "\"Live\" (present) → \"lived\" (past) in reported speech."
         },
         {
           "type": "fill_gap",
           "sentence": "Direct: \"I am studying English.\" Reported: \"He said he _____ English.\"",
           "hint": "was + ing form \"study\"",
           "answer": "was studying",
-          "explanation": "\"Am studying\" (present continuous) → \"was studying\" (past continuous) no reported speech."
+          "explanation": "\"Am studying\" (present continuous) → \"was studying\" (past continuous) in reported speech."
         },
         {
           "type": "fill_gap",
           "sentence": "Direct: \"I don't understand.\" Reported: \"She said she _____ understand.\"",
           "hint": "past simple negative \"didn't\"",
           "answer": "didn't",
-          "explanation": "\"Don't\" (present) → \"didn't\" (past) em reported speech."
+          "explanation": "\"Don't\" (present) → \"didn't\" (past) in reported speech."
         },
         {
           "type": "fix_error",
           "sentence": "Direct: \"I'm tired.\" Reported: \"He said that he is tired.\"",
           "hint": "Após \"said\" (passado), present muda para past",
           "answer": "He said that he was tired.",
-          "explanation": "Reported speech após \"said\" exige backshift: \"is\" vira \"was\". Manter \"is\" é erro comum."
+          "explanation": "Reported speech after \"said\" requires backshift: \"is\" becomes \"was\". Keeping \"is\" is a common mistake."
         },
         {
           "type": "fix_error",
           "sentence": "Direct: \"I like pizza.\" Reported: \"She said she like pizza.\"",
           "hint": "3ª pessoa + past — \"liked\"",
           "answer": "She said she liked pizza.",
-          "explanation": "Faltam duas correções: backshift para \"liked\" e 3ª pessoa singular. \"She liked\" — past simple."
+          "explanation": "Two fixes needed: backshift to \"liked\" and 3rd person singular. \"She liked\" — past simple."
         },
         {
           "type": "read_answer",
@@ -233,7 +233,7 @@
             "asked"
           ],
           "answer": "told",
-          "explanation": "\"Tell + person\" — exige objeto direto. \"Told me\" = a mim. \"Said\" não levaria \"me\" sem \"to\" (\"said to me\"). \"Tell\" é mais natural."
+          "explanation": "\"Tell + person\" — requires a direct object. \"Told me\" = to me. \"Said\" wouldn't take \"me\" without \"to\" (\"said to me\"). \"Tell\" is more natural."
         },
         {
           "type": "multiple_choice",
@@ -245,7 +245,7 @@
             "mentioned"
           ],
           "answer": "said",
-          "explanation": "\"Said + that-clause\" sem objeto. \"He said that...\" — não \"he told that\". \"Tell\" precisaria de pessoa."
+          "explanation": "\"Said + that-clause\" with no object. \"He said that...\" — not \"he told that\". \"Tell\" would need a person."
         },
         {
           "type": "word_bank",
@@ -257,7 +257,7 @@
             "mentioned"
           ],
           "answer": "told",
-          "explanation": "\"Tell + person + thing\" — chunk natural. \"Told her sister the news\"."
+          "explanation": "\"Tell + person + thing\" — natural chunk. \"Told her sister the news\"."
         },
         {
           "type": "word_bank",
@@ -269,42 +269,42 @@
             "mentioned"
           ],
           "answer": "spoke",
-          "explanation": "\"Spoke to me\" — preposição \"to\" com \"speak\". Outra forma de reportar conversa."
+          "explanation": "\"Spoke to me\" — preposition \"to\" with \"speak\". Another way to report a conversation."
         },
         {
           "type": "fill_gap",
           "sentence": "She _____ me she was going on vacation.",
           "hint": "told (precisa de objeto \"me\")",
           "answer": "told",
-          "explanation": "\"Told me + that-clause\" — verbo \"tell\" sempre exige pessoa."
+          "explanation": "\"Told me + that-clause\" — the verb \"tell\" always requires a person."
         },
         {
           "type": "fill_gap",
           "sentence": "He _____ that he didn't want to come.",
           "hint": "said (sem objeto direto)",
           "answer": "said",
-          "explanation": "\"Said that\" — verbo \"say\" não pede objeto direto antes do that-clause."
+          "explanation": "\"Said that\" — the verb \"say\" doesn't take a direct object before the that-clause."
         },
         {
           "type": "fill_gap",
           "sentence": "She _____ the children a story.",
           "hint": "told (tell + pessoa + coisa)",
           "answer": "told",
-          "explanation": "\"Told the children a story\" — estrutura natural com tell."
+          "explanation": "\"Told the children a story\" — natural structure with tell."
         },
         {
           "type": "fix_error",
           "sentence": "She said me that she was tired.",
           "hint": "\"Said + me\" não funciona — use \"told me\"",
           "answer": "She told me that she was tired.",
-          "explanation": "\"Say\" não aceita objeto direto sem \"to\". \"Said to me\" funcionaria, mas \"told me\" é mais natural."
+          "explanation": "\"Say\" doesn't take a direct object without \"to\". \"Said to me\" would work, but \"told me\" is more natural."
         },
         {
           "type": "fix_error",
           "sentence": "He told that the meeting was canceled.",
           "hint": "\"Tell\" precisa de pessoa — falta objeto",
           "answer": "He said that the meeting was canceled. (or: He told everyone that...)",
-          "explanation": "\"Tell\" sem objeto não funciona. Ou usa \"said\" (sem pessoa), ou adiciona pessoa (\"told someone, told everyone\")."
+          "explanation": "\"Tell\" without an object doesn't work. Either use \"said\" (no person), or add a person (\"told someone, told everyone\")."
         },
         {
           "type": "read_answer",
@@ -427,7 +427,7 @@
             "was finishing"
           ],
           "answer": "had finished",
-          "explanation": "Past simple (\"finished\") → past perfect (\"had finished\") em reported speech. Mais um passo para trás no tempo."
+          "explanation": "Past simple (\"finished\") → past perfect (\"had finished\") in reported speech. One more step back in time."
         },
         {
           "type": "multiple_choice",
@@ -439,7 +439,7 @@
             "visits"
           ],
           "answer": "had visited",
-          "explanation": "Present perfect (\"have visited\") → past perfect (\"had visited\") no reported speech."
+          "explanation": "Present perfect (\"have visited\") → past perfect (\"had visited\") in reported speech."
         },
         {
           "type": "word_bank",
@@ -451,7 +451,7 @@
             "sees"
           ],
           "answer": "had seen",
-          "explanation": "Past simple → past perfect. \"Saw\" → \"had seen\". Backshift padrão."
+          "explanation": "Past simple → past perfect. \"Saw\" → \"had seen\". Standard backshift."
         },
         {
           "type": "word_bank",
@@ -463,42 +463,42 @@
             "went"
           ],
           "answer": "had been",
-          "explanation": "\"Have been\" → \"had been\" em reported speech."
+          "explanation": "\"Have been\" → \"had been\" in reported speech."
         },
         {
           "type": "fill_gap",
           "sentence": "Direct: \"I lost my phone.\" Reported: \"He said he _____ his phone.\"",
           "hint": "had + past participle \"lose\"",
           "answer": "had lost",
-          "explanation": "\"Lost\" → \"had lost\". Past simple para past perfect."
+          "explanation": "\"Lost\" → \"had lost\". Past simple to past perfect."
         },
         {
           "type": "fill_gap",
           "sentence": "Direct: \"I've finished the project.\" Reported: \"She said she _____ the project.\"",
           "hint": "had + past participle \"finish\"",
           "answer": "had finished",
-          "explanation": "\"Have finished\" → \"had finished\" no reported."
+          "explanation": "\"Have finished\" → \"had finished\" in reported speech."
         },
         {
           "type": "fill_gap",
           "sentence": "Direct: \"I read that book.\" Reported: \"He said he _____ that book.\"",
           "hint": "had + past participle \"read\"",
           "answer": "had read",
-          "explanation": "\"Read\" (past) → \"had read\" (past perfect). Note: pronounced /red/ em ambos."
+          "explanation": "\"Read\" (past) → \"had read\" (past perfect). Note: pronounced /red/ in both."
         },
         {
           "type": "fix_error",
           "sentence": "Direct: \"I finished it.\" Reported: \"He said he finished it.\"",
           "hint": "Past simple precisa ir para past perfect",
           "answer": "He said he had finished it.",
-          "explanation": "Em reported, \"finished\" precisa virar \"had finished\". Mais um passo no tempo."
+          "explanation": "In reported speech, \"finished\" must become \"had finished\". One more step back in time."
         },
         {
           "type": "fix_error",
           "sentence": "Direct: \"I've seen the movie.\" Reported: \"She said she has seen the movie.\"",
           "hint": "Present perfect → past perfect",
           "answer": "She said she had seen the movie.",
-          "explanation": "\"Has seen\" no reported vira \"had seen\". Backshift obrigatório."
+          "explanation": "\"Has seen\" in reported speech becomes \"had seen\". Backshift is required."
         },
         {
           "type": "read_answer",
@@ -678,21 +678,21 @@
           "sentence": "Direct: \"I'll send the email.\" Reported: \"He said he _____ send the email.\"",
           "hint": "would (will → would)",
           "answer": "would",
-          "explanation": "\"Will send\" → \"would send\" em reported speech."
+          "explanation": "\"Will send\" → \"would send\" in reported speech."
         },
         {
           "type": "fix_error",
           "sentence": "Direct: \"I will help.\" Reported: \"He said he will help.\"",
           "hint": "\"Will\" precisa virar \"would\" em reported",
           "answer": "He said he would help.",
-          "explanation": "Backshift obrigatório: \"will\" → \"would\" quando reporting verb é passado."
+          "explanation": "Backshift is required: \"will\" → \"would\" when the reporting verb is in the past."
         },
         {
           "type": "fix_error",
           "sentence": "Direct: \"I must work tomorrow.\" Reported: \"She said she must work the next day.\"",
           "hint": "\"Must\" → \"had to\" em reported speech",
           "answer": "She said she had to work the next day.",
-          "explanation": "\"Must\" não muda em alguns contextos modernos, mas em reported speech tradicional → \"had to\"."
+          "explanation": "\"Must\" stays unchanged in some modern contexts, but in traditional reported speech → \"had to\"."
         },
         {
           "type": "read_answer",
@@ -813,7 +813,7 @@
             "on that"
           ],
           "answer": "that day",
-          "explanation": "\"Today\" no reported vira \"that day\" — quando o reporte é depois. Shift natural de tempo."
+          "explanation": "\"Today\" becomes \"that day\" in reported speech — when reporting after the fact. Natural time shift."
         },
         {
           "type": "multiple_choice",
@@ -825,7 +825,7 @@
             "next day"
           ],
           "answer": "the next day",
-          "explanation": "\"Tomorrow\" → \"the next day\" (or \"the following day\") em reported speech."
+          "explanation": "\"Tomorrow\" → \"the next day\" (or \"the following day\") in reported speech."
         },
         {
           "type": "word_bank",
@@ -837,7 +837,7 @@
             "that there"
           ],
           "answer": "there",
-          "explanation": "\"Here\" → \"there\" em reported speech (você não está mais no lugar original)."
+          "explanation": "\"Here\" → \"there\" in reported speech (you're no longer at the original place)."
         },
         {
           "type": "word_bank",
@@ -849,21 +849,21 @@
             "one day before"
           ],
           "answer": "the day before",
-          "explanation": "\"Yesterday\" → \"the day before\" (ou \"the previous day\") em reported."
+          "explanation": "\"Yesterday\" → \"the day before\" (or \"the previous day\") in reported speech."
         },
         {
           "type": "fill_gap",
           "sentence": "Direct: \"I love this song.\" Reported: \"He said he loved _____ song.\"",
           "hint": "\"this\" → \"that\"",
           "answer": "that",
-          "explanation": "\"This\" → \"that\" em reported speech — você está mais distante do referente."
+          "explanation": "\"This\" → \"that\" in reported speech — you're more distant from the referent."
         },
         {
           "type": "fill_gap",
           "sentence": "Direct: \"I'll call you next week.\" Reported: \"She said she would call me the _____ week.\"",
           "hint": "\"next\" → \"following\"",
           "answer": "following",
-          "explanation": "\"Next week\" → \"the following week\" em reported."
+          "explanation": "\"Next week\" → \"the following week\" in reported speech."
         },
         {
           "type": "fill_gap",
@@ -877,14 +877,14 @@
           "sentence": "Direct: \"I work here.\" Reported: \"He said he worked here.\"",
           "hint": "\"Here\" precisa mudar — você não está no mesmo lugar",
           "answer": "He said he worked there.",
-          "explanation": "\"Here\" só permanece se você ainda está no mesmo lugar. Para reporte distante, \"there\"."
+          "explanation": "\"Here\" stays only if you're still in the same place. For distant reporting, use \"there\"."
         },
         {
           "type": "fix_error",
           "sentence": "Direct: \"I'll see you tomorrow.\" Reported: \"She said she would see me tomorrow.\"",
           "hint": "Para reporte depois, \"tomorrow\" → \"the next day\"",
           "answer": "She said she would see me the next day.",
-          "explanation": "\"Tomorrow\" só permanece se o reporte ainda for hoje. Caso contrário, \"the next day\"."
+          "explanation": "\"Tomorrow\" stays only if the report is still today. Otherwise, \"the next day\"."
         },
         {
           "type": "read_answer",

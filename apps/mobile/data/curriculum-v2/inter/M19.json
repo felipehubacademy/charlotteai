@@ -38,7 +38,7 @@
             "whose"
           ],
           "answer": "who",
-          "explanation": "Non-defining relative clause para pessoas usa \"who\" (nunca \"that\" em non-defining). Vírgulas indicam informação EXTRA — não essencial para identificar o irmão."
+          "explanation": "A non-defining relative clause for people uses \"who\" (never \"that\" in non-defining). Commas signal EXTRA information — not essential to identify the brother."
         },
         {
           "type": "multiple_choice",
@@ -50,7 +50,7 @@
             "whose"
           ],
           "answer": "who",
-          "explanation": "\"Who\" para pessoa em non-defining. \"That\" não é usado com vírgulas. \"Whom\" seria formal mas \"who\" predomina em uso atual."
+          "explanation": "\"Who\" for people in non-defining. \"That\" isn't used with commas. \"Whom\" would be formal, but \"who\" dominates current usage."
         },
         {
           "type": "word_bank",
@@ -62,7 +62,7 @@
             "whose"
           ],
           "answer": "who",
-          "explanation": "Non-defining: \"who is very strict\". \"That\" não funciona em non-defining."
+          "explanation": "Non-defining: \"who is very strict\". \"That\" doesn't work in non-defining."
         },
         {
           "type": "word_bank",
@@ -74,42 +74,42 @@
             "whose"
           ],
           "answer": "who",
-          "explanation": "\"Who I've known for years\" — informação extra sobre Tom. Pessoa específica, vírgulas."
+          "explanation": "\"Who I've known for years\" — extra info about Tom. Specific person, commas."
         },
         {
           "type": "fill_gap",
           "sentence": "My sister, _____ studies medicine, lives in São Paulo.",
           "hint": "relative pronoun para pessoa em non-defining",
           "answer": "who",
-          "explanation": "\"Who studies medicine\" — extra info sobre a irmã. Específica."
+          "explanation": "\"Who studies medicine\" — extra info about the sister. Specific."
         },
         {
           "type": "fill_gap",
           "sentence": "Ana, _____ I work with, just had a baby.",
           "hint": "who",
           "answer": "who",
-          "explanation": "\"Who I work with\" — extra info sobre Ana. Note: posição preposição final aceita."
+          "explanation": "\"Who I work with\" — extra info about Ana. Note: stranded preposition at the end is acceptable."
         },
         {
           "type": "fill_gap",
           "sentence": "Mr. Silva, _____ teaches English, is from Portugal.",
           "hint": "who",
           "answer": "who",
-          "explanation": "\"Who teaches English\" — informação adicional sobre uma pessoa identificada por nome."
+          "explanation": "\"Who teaches English\" — extra information about a person already identified by name."
         },
         {
           "type": "fix_error",
           "sentence": "My brother, that lives in Rio, is a teacher.",
           "hint": "Em non-defining (com vírgulas), use \"who\", não \"that\"",
           "answer": "My brother, who lives in Rio, is a teacher.",
-          "explanation": "Erro comum: usar \"that\" em non-defining. \"That\" só em defining (sem vírgulas). Para non-defining: \"who\"."
+          "explanation": "Common error: using \"that\" in non-defining. \"That\" only in defining clauses (no commas). For non-defining: \"who\"."
         },
         {
           "type": "fix_error",
           "sentence": "Maria who I met yesterday is from Spain.",
           "hint": "Non-defining precisa de vírgulas",
           "answer": "Maria, who I met yesterday, is from Spain.",
-          "explanation": "Maria já é específica (nome próprio). A informação é EXTRA, não identifica. Logo, precisa de vírgulas (non-defining)."
+          "explanation": "Maria is already specific (proper name). The information is EXTRA, it doesn't identify. So, commas are needed (non-defining)."
         },
         {
           "type": "read_answer",
@@ -232,7 +232,7 @@
             "where"
           ],
           "answer": "which",
-          "explanation": "Non-defining para coisa/lugar: \"which\". \"That\" não funciona em non-defining. \"The Amazon\" já está identificado, então a info é EXTRA."
+          "explanation": "Non-defining for thing/place: \"which\". \"That\" doesn't work in non-defining. \"The Amazon\" is already identified, so the info is EXTRA."
         },
         {
           "type": "multiple_choice",
@@ -244,7 +244,7 @@
             "whose"
           ],
           "answer": "which",
-          "explanation": "\"Which I bought last week\" — info extra sobre o telefone específico. Em non-defining, \"which\" obrigatório."
+          "explanation": "\"Which I bought last week\" — extra info about the specific phone. In non-defining, \"which\" is required."
         },
         {
           "type": "word_bank",
@@ -256,7 +256,7 @@
             "what"
           ],
           "answer": "which",
-          "explanation": "\"Which\" pode se referir a uma CLÁUSULA inteira anterior. \"Which surprised me\" — o fato dela não chamar é o que surpreendeu."
+          "explanation": "\"Which\" can refer to an entire previous CLAUSE. \"Which surprised me\" — the fact that she didn't call is what surprised me."
         },
         {
           "type": "word_bank",
@@ -268,42 +268,42 @@
             "whose"
           ],
           "answer": "which",
-          "explanation": "\"Which won an award\" — info extra sobre o livro. Non-defining com \"which\"."
+          "explanation": "\"Which won an award\" — extra info about the book. Non-defining with \"which\"."
         },
         {
           "type": "fill_gap",
           "sentence": "Brazil, _____ is the largest country in South America, has many cultures.",
           "hint": "which (para país/coisa em non-defining)",
           "answer": "which",
-          "explanation": "\"Which is the largest country\" — informação adicional sobre o Brasil."
+          "explanation": "\"Which is the largest country\" — extra information about Brazil."
         },
         {
           "type": "fill_gap",
           "sentence": "My laptop, _____ I use every day, is getting old.",
           "hint": "which",
           "answer": "which",
-          "explanation": "\"Which I use every day\" — info extra sobre o laptop específico."
+          "explanation": "\"Which I use every day\" — extra info about the specific laptop."
         },
         {
           "type": "fill_gap",
           "sentence": "He arrived two hours late, _____ made everyone angry.",
           "hint": "which (refere-se à cláusula anterior)",
           "answer": "which",
-          "explanation": "\"Which made everyone angry\" — \"which\" se refere ao fato dele ter chegado tarde. Cláusula-referente."
+          "explanation": "\"Which made everyone angry\" — \"which\" refers to the fact that he arrived late. Clause-level referent."
         },
         {
           "type": "fix_error",
           "sentence": "The Amazon, that is the longest river, runs through Brazil.",
           "hint": "Non-defining usa \"which\", não \"that\"",
           "answer": "The Amazon, which is the longest river, runs through Brazil.",
-          "explanation": "\"That\" só em defining (sem vírgulas). Para non-defining: \"which\"."
+          "explanation": "\"That\" only in defining clauses (no commas). For non-defining: \"which\"."
         },
         {
           "type": "fix_error",
           "sentence": "My phone which I bought last week broke already.",
           "hint": "Non-defining precisa de vírgulas",
           "answer": "My phone, which I bought last week, broke already.",
-          "explanation": "Se a info é EXTRA (não identifica entre vários phones), use vírgulas. Sem vírgulas seria defining (entre vários, o que comprei semana passada)."
+          "explanation": "If the info is EXTRA (doesn't identify among several phones), use commas. Without commas, it would be defining (among several, the one I bought last week)."
         },
         {
           "type": "read_answer",
@@ -426,7 +426,7 @@
             "that"
           ],
           "answer": "whose",
-          "explanation": "\"Whose\" indica POSSESSÃO em relative clause. \"Maria, whose father...\" — o pai DE Maria. Funciona em defining e non-defining."
+          "explanation": "\"Whose\" signals POSSESSION in a relative clause. \"Maria, whose father...\" — Maria's father. Works in both defining and non-defining."
         },
         {
           "type": "multiple_choice",
@@ -438,7 +438,7 @@
             "that"
           ],
           "answer": "whose",
-          "explanation": "\"Whose dog\" — o cachorro DO vizinho. Possessão. Não confunde com \"who's\" (who is)."
+          "explanation": "\"Whose dog\" — the neighbor's dog. Possession. Don't confuse with \"who's\" (who is)."
         },
         {
           "type": "word_bank",
@@ -450,7 +450,7 @@
             "that"
           ],
           "answer": "whose",
-          "explanation": "\"Whose book\" — o livro DO autor. Possessão."
+          "explanation": "\"Whose book\" — the author's book. Possession."
         },
         {
           "type": "word_bank",
@@ -462,42 +462,42 @@
             "that"
           ],
           "answer": "whose",
-          "explanation": "\"Whose wife\" — a esposa DE Tom. Possessão de pessoa."
+          "explanation": "\"Whose wife\" — Tom's wife. Possession of a person."
         },
         {
           "type": "fill_gap",
           "sentence": "My friend, _____ car is in the shop, took the bus today.",
           "hint": "whose (possessão)",
           "answer": "whose",
-          "explanation": "\"Whose car\" — o carro DO amigo."
+          "explanation": "\"Whose car\" — the friend's car."
         },
         {
           "type": "fill_gap",
           "sentence": "The singer, _____ songs are famous worldwide, is from Brazil.",
           "hint": "whose",
           "answer": "whose",
-          "explanation": "\"Whose songs\" — as canções DO cantor."
+          "explanation": "\"Whose songs\" — the singer's songs."
         },
         {
           "type": "fill_gap",
           "sentence": "Mrs. Garcia, _____ children study with mine, is a great teacher.",
           "hint": "whose",
           "answer": "whose",
-          "explanation": "\"Whose children\" — os filhos DA Mrs. Garcia."
+          "explanation": "\"Whose children\" — Mrs. Garcia's children."
         },
         {
           "type": "fix_error",
           "sentence": "Maria, who's father is a doctor, is studying medicine.",
           "hint": "\"Who's\" = \"who is\" — para possessão use \"whose\"",
           "answer": "Maria, whose father is a doctor, is studying medicine.",
-          "explanation": "\"Who's\" = \"who is\" (contração). \"Whose\" = possessão. Erro comum: confundir os dois pela pronúncia idêntica."
+          "explanation": "\"Who's\" = \"who is\" (contraction). \"Whose\" = possession. Common error: confusing them because of identical pronunciation."
         },
         {
           "type": "fix_error",
           "sentence": "My neighbor, that dog barks all night, is moving.",
           "hint": "Possessão em non-defining usa \"whose\"",
           "answer": "My neighbor, whose dog barks all night, is moving.",
-          "explanation": "\"That\" não funciona para possessão e nem em non-defining. Para mostrar de quem é o cachorro: \"whose\"."
+          "explanation": "\"That\" doesn't work for possession or in non-defining. To show whose dog it is: \"whose\"."
         },
         {
           "type": "read_answer",
@@ -620,7 +620,7 @@
             "who"
           ],
           "answer": "where",
-          "explanation": "\"Where\" para lugar em non-defining. \"Paris, where I lived\" = \"in Paris\". Mais natural que \"which\"."
+          "explanation": "\"Where\" for place in non-defining. \"Paris, where I lived\" = \"in Paris\". More natural than \"which\"."
         },
         {
           "type": "multiple_choice",
@@ -632,7 +632,7 @@
             "that"
           ],
           "answer": "when",
-          "explanation": "\"When\" para tempo em non-defining. \"In 2020, the pandemic started\" → \"2020, when the pandemic started\"."
+          "explanation": "\"When\" for time in non-defining. \"In 2020, the pandemic started\" → \"2020, when the pandemic started\"."
         },
         {
           "type": "word_bank",
@@ -644,7 +644,7 @@
             "when"
           ],
           "answer": "where",
-          "explanation": "\"Where I grew up\" — lugar de onde sou. Non-defining \"where\"."
+          "explanation": "\"Where I grew up\" — the place I'm from. Non-defining \"where\"."
         },
         {
           "type": "word_bank",
@@ -656,42 +656,42 @@
             "that"
           ],
           "answer": "when",
-          "explanation": "\"When I traveled\" — tempo específico em non-defining."
+          "explanation": "\"When I traveled\" — specific time in non-defining."
         },
         {
           "type": "fill_gap",
           "sentence": "São Paulo, _____ I work, is a huge city.",
           "hint": "where (lugar)",
           "answer": "where",
-          "explanation": "\"Where I work\" — lugar específico de trabalho."
+          "explanation": "\"Where I work\" — specific place of work."
         },
         {
           "type": "fill_gap",
           "sentence": "March, _____ I was born, is my favorite month.",
           "hint": "when (tempo)",
           "answer": "when",
-          "explanation": "\"When I was born\" — tempo específico."
+          "explanation": "\"When I was born\" — specific time."
         },
         {
           "type": "fill_gap",
           "sentence": "The university, _____ I studied, is famous.",
           "hint": "where",
           "answer": "where",
-          "explanation": "\"Where I studied\" — lugar de estudo."
+          "explanation": "\"Where I studied\" — place of study."
         },
         {
           "type": "fix_error",
           "sentence": "Paris, which I lived for a year, is beautiful.",
           "hint": "Para LUGAR de habitação, \"where\" é mais natural",
           "answer": "Paris, where I lived for a year, is beautiful.",
-          "explanation": "\"Which\" funcionaria em estrutura como \"which I visited\" (objeto direto), mas para \"in Paris\" (lugar de habitação), \"where\" é correto."
+          "explanation": "\"Which\" would work in a structure like \"which I visited\" (direct object), but for \"in Paris\" (place of residence), \"where\" is correct."
         },
         {
           "type": "fix_error",
           "sentence": "2020, which the pandemic started, was hard.",
           "hint": "Para TEMPO, use \"when\"",
           "answer": "2020, when the pandemic started, was hard.",
-          "explanation": "Anos, meses, momentos → \"when\". \"Which\" não funciona como tempo."
+          "explanation": "Years, months, moments → \"when\". \"Which\" doesn't work for time."
         },
         {
           "type": "read_answer",
@@ -812,7 +812,7 @@
             "no relative pronoun"
           ],
           "answer": "who",
-          "explanation": "\"Who\" funciona em ambas — defining e non-defining para pessoas. \"That\" também funciona em defining. Como \"no commas\", é defining."
+          "explanation": "\"Who\" works in both — defining and non-defining for people. \"That\" also works in defining. Since there are no commas, it's defining."
         },
         {
           "type": "multiple_choice",
@@ -824,7 +824,7 @@
             "whose"
           ],
           "answer": "who",
-          "explanation": "Vírgulas = non-defining. \"That\" NÃO funciona em non-defining. Apenas \"who\"."
+          "explanation": "Commas = non-defining. \"That\" does NOT work in non-defining. Only \"who\"."
         },
         {
           "type": "word_bank",
@@ -836,7 +836,7 @@
             "whose"
           ],
           "answer": "that",
-          "explanation": "Defining (sem vírgulas) com objeto: \"that\" ou \"which\" ou nada. \"That\" é o mais natural em defining."
+          "explanation": "Defining (no commas) with object: \"that\" or \"which\" or nothing. \"That\" is the most natural in defining."
         },
         {
           "type": "word_bank",
@@ -848,42 +848,42 @@
             "whose"
           ],
           "answer": "which",
-          "explanation": "Vírgulas = non-defining. \"Which\" obrigatório (não \"that\")."
+          "explanation": "Commas = non-defining. \"Which\" required (not \"that\")."
         },
         {
           "type": "fill_gap",
           "sentence": "Defining: \"The woman _____ lives next door is a doctor.\"",
           "hint": "who/that (defining para pessoa)",
           "answer": "who",
-          "explanation": "Defining identifica QUEM (entre várias mulheres). \"Who\" funciona; \"that\" também."
+          "explanation": "Defining identifies WHO (among several women). \"Who\" works; \"that\" does too."
         },
         {
           "type": "fill_gap",
           "sentence": "Non-defining: \"My mother, _____ is a doctor, lives next door.\"",
           "hint": "who (única mãe, info extra)",
           "answer": "who",
-          "explanation": "\"My mother\" já é específica (única). A info é EXTRA, não identifica."
+          "explanation": "\"My mother\" is already specific (only one). The info is EXTRA, not identifying."
         },
         {
           "type": "fill_gap",
           "sentence": "Defining: \"The town _____ I grew up is small.\"",
           "hint": "where (lugar em defining)",
           "answer": "where",
-          "explanation": "Defining \"where\" sem vírgulas. \"The town where I grew up\" — identifica qual cidade."
+          "explanation": "Defining \"where\" with no commas. \"The town where I grew up\" — identifies which town."
         },
         {
           "type": "fix_error",
           "sentence": "Non-defining: \"My brother, that lives in Rio, is a teacher.\"",
           "hint": "Non-defining não usa \"that\"",
           "answer": "My brother, who lives in Rio, is a teacher.",
-          "explanation": "Erro mais comum: \"that\" em non-defining. Apenas defining permite \"that\". Non-defining: \"who\" ou \"which\"."
+          "explanation": "Most common error: \"that\" in non-defining. Only defining allows \"that\". Non-defining: \"who\" or \"which\"."
         },
         {
           "type": "fix_error",
           "sentence": "Defining mas sem vírgulas: \"The man who called me yesterday is my boss.\" Está correto?",
           "hint": "Sim, é defining correto",
           "answer": "The man who called me yesterday is my boss.",
-          "explanation": "Frase já está correta. \"The man who called\" — identifica QUAL homem (entre vários). Defining sem vírgulas."
+          "explanation": "The sentence is already correct. \"The man who called\" — identifies WHICH man (among several). Defining, no commas."
         },
         {
           "type": "read_answer",

@@ -79,7 +79,7 @@
     **Passage**: "Yesterday I was at home. My family was with me. We were happy together. It was a great day."
     **Question**: Where was the speaker yesterday?
     **Answer**: at home
-    **Explanation**: The text says "I was at home".
+    **Explanation**: O texto diz "I was at home".
 
 ### 2. Listening/Speaking (5 phrases)
 
@@ -244,7 +244,7 @@
     **Passage**: "I wasn't at the party last night. My friends were there but I was tired. They weren't happy that I missed it."
     **Question**: Where wasn't the speaker?
     **Answer**: at the party
-    **Explanation**: The text says "I wasn't at the party last night".
+    **Explanation**: O texto diz "I wasn't at the party last night".
 
 ### 2. Listening/Speaking (5 phrases)
 
@@ -409,7 +409,7 @@
     **Passage**: "Q: Were you at the meeting? A: Yes, I was. Q: Was Maria there too? A: No, she wasn't. She was sick."
     **Question**: Where was Maria?
     **Answer**: sick (or "she was sick" — at home implied)
-    **Explanation**: The text says "She was sick" — explaining why she wasn't at the meeting.
+    **Explanation**: O texto diz "She was sick" — explicando por que ela não estava na reunião.
 
 ### 2. Listening/Speaking (5 phrases)
 
@@ -574,7 +574,7 @@
     **Passage**: "I was in São Paulo last month. Two years ago I was in Rio. In 2020 I was in Lisbon."
     **Question**: When was the speaker in Lisbon?
     **Answer**: in 2020
-    **Explanation**: The text says "In 2020 I was in Lisbon".
+    **Explanation**: O texto diz "In 2020 I was in Lisbon".
 
 ### 2. Listening/Speaking (5 phrases)
 
@@ -739,7 +739,7 @@
     **Passage**: "When I was a child, we were poor but happy. My parents were always busy. It was a simple life."
     **Question**: How were the parents?
     **Answer**: always busy (or "busy")
-    **Explanation**: The text says "My parents were always busy".
+    **Explanation**: O texto diz "My parents were always busy".
 
 ### 2. Listening/Speaking (5 phrases)
 

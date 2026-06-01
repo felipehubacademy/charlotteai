@@ -30,47 +30,47 @@
 1. **multiple_choice** — "If I _____ more time, I would learn piano."
    **Options**: had / have / would have / will have
    **Answer**: had
-   **Explanation**: Second conditional: "If + past simple, would + base". A cláusula com "if" usa past simple ("had"), mesmo falando do PRESENTE hipotético. Esta é a estrutura chave do second conditional.
+   **Explanation**: Second conditional: "If + past simple, would + base". The "if" clause uses past simple ("had"), even when talking about a hypothetical PRESENT. This is the core structure of the second conditional.
 
 2. **multiple_choice** — "If she lived closer, we _____ each other more."
    **Options**: would see / will see / saw / see
    **Answer**: would see
-   **Explanation**: A cláusula principal sempre usa "would + base form". "We would see" — não "we will see" (que seria first conditional, real).
+   **Explanation**: The main clause always uses "would + base form". "We would see" — not "we will see" (which would be first conditional, real).
 
 3. **word_bank** — "If I _____ rich, I would travel the world."
    **Choices**: were / was / am / would be
    **Answer**: were
-   **Explanation**: Em second conditional formal/correto, "were" é usado para TODAS as pessoas (I, he, she, it, we, you, they). "Were" é a forma subjuntiva. "Was" é aceitável em fala informal mas "were" é o padrão.
+   **Explanation**: In formal/correct second conditional, "were" is used for ALL persons (I, he, she, it, we, you, they). "Were" is the subjunctive form. "Was" is acceptable in informal speech, but "were" is the standard.
 
 4. **word_bank** — "I _____ help you if I _____ here."
    **Choices**: would / were / will / am / would / were
    **Answer**: would / were
-   **Explanation**: "I would help you if I were here" — would na principal, were na cláusula if (mesmo com "I").
+   **Explanation**: "I would help you if I were here" — "would" in the main clause, "were" in the if-clause (even with "I").
 
 5. **fill_gap** — "If I _____ you, I would accept the offer."
    **Hint**: "were" para hipóteses (subjuntivo)
    **Answer**: were
-   **Explanation**: "If I were you" é o chunk fixo de aconselhamento. Sempre "were", nunca "was" em inglês formal/correto.
+   **Explanation**: "If I were you" is the fixed chunk for giving advice. Always "were", never "was" in formal/correct English.
 
 6. **fill_gap** — "She would visit more often if she _____ a car."
    **Hint**: past simple de "have"
    **Answer**: had
-   **Explanation**: "If she had a car" — past simple "had" indicando situação hipotética presente (ela não tem carro agora, mas se tivesse...).
+   **Explanation**: "If she had a car" — past simple "had" signaling a hypothetical present situation (she doesn't have a car now, but if she did...).
 
 7. **fill_gap** — "If we _____ the lottery, what _____ we _____?"
    **Hint**: past simple "win" / would + base "do"
    **Answer**: won / would / do
-   **Explanation**: "If we won, what would we do?" — past simple "won" + "would + base do" na pergunta.
+   **Explanation**: "If we won, what would we do?" — past simple "won" + "would + base do" in the question.
 
 8. **fix_error** — "If I will have time, I would learn piano."
    **Hint**: Após "if", past simple — nunca "will" em second conditional
    **Answer**: If I had time, I would learn piano.
-   **Explanation**: Erro comum: misturar first conditional (will) com second. Em second, a cláusula "if" usa past simple. "If I had" — past simple para hipótese presente.
+   **Explanation**: Common error: mixing first conditional (will) with second. In second conditional, the "if" clause uses past simple. "If I had" — past simple for a hypothetical present.
 
 9. **fix_error** — "If I was you, I would say yes."
    **Hint**: Para "if I were you" formal/correto
    **Answer**: If I were you, I would say yes.
-   **Explanation**: "Were" é o padrão correto para aconselhamento hipotético. "Was" aparece em fala muito informal mas "were" é universal.
+   **Explanation**: "Were" is the correct standard for hypothetical advice. "Was" shows up in very informal speech, but "were" is universal.
 
 10. **read_answer**
     **Passage**: "If I had more time, I would learn piano. If she lived closer, we would see each other more. If I were rich, I would travel the world."
@@ -195,47 +195,47 @@
 1. **multiple_choice** — "I wish I _____ more time."
    **Options**: had / have / would have / will have
    **Answer**: had
-   **Explanation**: "I wish + past simple" para desejos sobre o presente. "I wish I had" — desejo presente de ter mais tempo agora (não tenho).
+   **Explanation**: "I wish + past simple" for wishes about the present. "I wish I had" — a present wish for more time now (which I don't have).
 
 2. **multiple_choice** — "She wishes she _____ taller."
    **Options**: were / was / is / would be
    **Answer**: were
-   **Explanation**: "Were" para todas as pessoas em wish/hypothetical formal. "She wishes she were taller" — desejo presente sobre altura.
+   **Explanation**: "Were" for all persons in formal wish/hypothetical. "She wishes she were taller" — present wish about height.
 
 3. **word_bank** — "I wish I _____ speak French."
    **Choices**: could / can / would / will
    **Answer**: could
-   **Explanation**: "I wish I could + base" para desejos de habilidade. "Could" é o "past" de can em wishes hipotéticos.
+   **Explanation**: "I wish I could + base" for ability wishes. "Could" is the "past" of "can" in hypothetical wishes.
 
 4. **word_bank** — "He wishes he _____ a better job."
    **Choices**: had / has / would have / has had
    **Answer**: had
-   **Explanation**: Wish + past simple para situação presente. "He had" — past simple do verbo "have".
+   **Explanation**: Wish + past simple for a present situation. "He had" — past simple of the verb "have".
 
 5. **fill_gap** — "I wish I _____ younger."
    **Hint**: "were" para hipóteses (subjuntivo)
    **Answer**: were
-   **Explanation**: "I wish I were younger" — desejo presente sobre idade. "Were" é o padrão correto.
+   **Explanation**: "I wish I were younger" — present wish about age. "Were" is the correct standard.
 
 6. **fill_gap** — "We wish we _____ in a bigger house."
    **Hint**: past simple de "live"
    **Answer**: lived
-   **Explanation**: "We wish we lived in a bigger house" — desejo presente sobre habitação.
+   **Explanation**: "We wish we lived in a bigger house" — present wish about housing.
 
 7. **fill_gap** — "I wish I _____ play the guitar."
    **Hint**: passado de "can" para wishes
    **Answer**: could
-   **Explanation**: "I wish I could play" — desejo de habilidade. "Could" é o "passado" usado em wish.
+   **Explanation**: "I wish I could play" — ability wish. "Could" is the "past" used in wish.
 
 8. **fix_error** — "I wish I have more time."
    **Hint**: Wish para presente usa past simple
    **Answer**: I wish I had more time.
-   **Explanation**: "Wish" sobre presente usa past simple. "I wish I have" não funciona — sempre past simple no wish.
+   **Explanation**: "Wish" about the present uses past simple. "I wish I have" doesn't work — always past simple in wish.
 
 9. **fix_error** — "I wish I would be taller."
    **Hint**: Para wish sobre presente, past simple "were"
    **Answer**: I wish I were taller.
-   **Explanation**: "Would" não combina com wish sobre presente. Para desejos atuais sobre características, use past simple "were".
+   **Explanation**: "Would" doesn't combine with wish about the present. For current wishes about characteristics, use past simple "were".
 
 10. **read_answer**
     **Passage**: "I wish I had more free time. She wishes she were taller. We wish we could speak more languages. He wishes he lived closer to family."
@@ -360,47 +360,47 @@
 1. **multiple_choice** — "If I _____ you, I would talk to her."
    **Options**: were / was / am / would be
    **Answer**: were
-   **Explanation**: "If I were you" é o chunk fixo de aconselhamento formal. Sempre "were", mesmo com "I". Esta é a forma subjuntiva preservada em inglês moderno.
+   **Explanation**: "If I were you" is the fixed chunk for formal advice. Always "were", even with "I". This is the subjunctive form preserved in modern English.
 
 2. **multiple_choice** — "If I were you, I _____ accept the offer."
    **Options**: would / will / am / can
    **Answer**: would
-   **Explanation**: "I would accept" — would + base na cláusula principal. Padrão de aconselhamento second conditional.
+   **Explanation**: "I would accept" — would + base in the main clause. Standard second-conditional advice pattern.
 
 3. **word_bank** — "If I _____ you, I would say sorry."
    **Choices**: were / was / am / would be
    **Answer**: were
-   **Explanation**: "Were" é universal para advice — mais educado e gramaticalmente correto que "was".
+   **Explanation**: "Were" is universal for advice — more polite and grammatically correct than "was".
 
 4. **word_bank** — "_____ I were you, I'd take the job."
    **Choices**: If / When / Although / Until
    **Answer**: If
-   **Explanation**: "If I were you" — começa com "if". "When/although" não funcionam neste chunk.
+   **Explanation**: "If I were you" — starts with "if". "When/although" don't work in this chunk.
 
 5. **fill_gap** — "If I were you, I _____ go for it."
    **Hint**: would + base
    **Answer**: would
-   **Explanation**: "Would go for it" — chunk natural de incentivo na principal.
+   **Explanation**: "Would go for it" — natural encouragement chunk in the main clause.
 
 6. **fill_gap** — "If I _____ in your position, I would think twice."
    **Hint**: subjunctive "were"
    **Answer**: were
-   **Explanation**: "If I were in your position" — variação do chunk básico. Mantém "were".
+   **Explanation**: "If I were in your position" — variation of the core chunk. Keeps "were".
 
 7. **fill_gap** — "I _____ talk to him if I were you."
    **Hint**: would + base
    **Answer**: would
-   **Explanation**: "I would talk" — would na principal, mesmo com ordem invertida da frase.
+   **Explanation**: "I would talk" — "would" in the main clause, even with reversed sentence order.
 
 8. **fix_error** — "If I was you, I would say yes."
    **Hint**: "Were" para aconselhamento formal
    **Answer**: If I were you, I would say yes.
-   **Explanation**: "If I was" é fala muito informal e considerado incorreto em escrita formal. "Were" é o padrão universal.
+   **Explanation**: "If I was" is very informal speech and considered incorrect in formal writing. "Were" is the universal standard.
 
 9. **fix_error** — "If I were you, I will accept it."
    **Hint**: Second conditional usa "would", não "will"
    **Answer**: If I were you, I would accept it.
-   **Explanation**: Second conditional sempre "would + base" na principal, nunca "will" (que é first conditional).
+   **Explanation**: Second conditional always uses "would + base" in the main clause, never "will" (that's first conditional).
 
 10. **read_answer**
     **Passage**: "If I were you, I would talk to her honestly. If I were in your position, I would take the offer. If I were you, I would go for it — life is short."
@@ -525,12 +525,12 @@
 1. **multiple_choice** — "What _____ you do if you won the lottery?"
    **Options**: would / will / do / are
    **Answer**: would
-   **Explanation**: Pergunta em second conditional: "WH + would + subject + base + if + past simple". "What would you do?" — pergunta hipotética padrão.
+   **Explanation**: Second conditional question: "WH + would + subject + base + if + past simple". "What would you do?" — standard hypothetical question.
 
 2. **multiple_choice** — "_____ you travel if you had more money?"
    **Options**: Would / Will / Did / Do
    **Answer**: Would
-   **Explanation**: Pergunta yes/no em second conditional: "Would + subject + base + if + past simple?".
+   **Explanation**: Yes/no question in second conditional: "Would + subject + base + if + past simple?".
 
 3. **word_bank** — "Where _____ you live if you could choose any country?"
    **Choices**: would / will / do / did
@@ -540,17 +540,17 @@
 4. **word_bank** — "If you _____ a million dollars, what would you do?"
    **Choices**: had / have / would have / will have
    **Answer**: had
-   **Explanation**: Após "if" em second conditional, sempre past simple. "Had a million" — situação hipotética.
+   **Explanation**: After "if" in second conditional, always past simple. "Had a million" — hypothetical situation.
 
 5. **fill_gap** — "What _____ you do if you _____ in my position?"
    **Hint**: would (principal) + were (subjuntivo)
    **Answer**: would / were
-   **Explanation**: "Would you do" + "if you were" — pergunta hipotética com "were" para a hipótese.
+   **Explanation**: "Would you do" + "if you were" — hypothetical question with "were" for the hypothesis.
 
 6. **fill_gap** — "_____ you change jobs if you _____ the chance?"
    **Hint**: would / had
    **Answer**: Would / had
-   **Explanation**: "Would you change... if you had the chance?" — pergunta yes/no second conditional.
+   **Explanation**: "Would you change... if you had the chance?" — yes/no second-conditional question.
 
 7. **fill_gap** — "Where _____ you go if you _____ a free week?"
    **Hint**: would / had
@@ -560,12 +560,12 @@
 8. **fix_error** — "What will you do if you won the lottery?"
    **Hint**: Para hipóteses, use "would", não "will"
    **Answer**: What would you do if you won the lottery?
-   **Explanation**: Ganhar na loteria é hipotético (improvável), então second conditional com "would". "Will" seria first (mais provável).
+   **Explanation**: Winning the lottery is hypothetical (unlikely), so second conditional with "would". "Will" would be first conditional (more likely).
 
 9. **fix_error** — "Would you to help me if I asked?"
    **Hint**: Sem "to" após would
    **Answer**: Would you help me if I asked?
-   **Explanation**: Após "would", base form sem "to". "Would you help" — pergunta natural.
+   **Explanation**: After "would", base form without "to". "Would you help" — natural question.
 
 10. **read_answer**
     **Passage**: "What would you do if you won the lottery? Where would you live if you could choose any country? Would you travel more if you had more money?"
@@ -690,47 +690,47 @@
 1. **multiple_choice** — "If I _____ rich, I would help my family."
    **Options**: were / am / will be / would be
    **Answer**: were
-   **Explanation**: Second conditional com "were" para hipótese formal.
+   **Explanation**: Second conditional with "were" for a formal hypothesis.
 
 2. **multiple_choice** — "I wish I _____ play the piano."
    **Options**: could / can / would / will
    **Answer**: could
-   **Explanation**: "I wish I could" para habilidade.
+   **Explanation**: "I wish I could" for ability.
 
 3. **word_bank** — "If I _____ you, I _____ accept the offer."
    **Choices**: were / would / was / would / am / will / were / will
    **Answer**: were / would
-   **Explanation**: "If I were you, I would accept" — chunk fixo de aconselhamento.
+   **Explanation**: "If I were you, I would accept" — fixed advice chunk.
 
 4. **word_bank** — "What _____ you do if you _____ in my position?"
    **Choices**: would / were / will / are / would / will / would / was
    **Answer**: would / were
-   **Explanation**: "Would you do if you were" — pergunta hipotética com "were".
+   **Explanation**: "Would you do if you were" — hypothetical question with "were".
 
 5. **fill_gap** — "I wish I _____ more time to relax."
    **Hint**: past simple "have"
    **Answer**: had
-   **Explanation**: "Wish I had" — desejo presente sobre tempo.
+   **Explanation**: "Wish I had" — present wish about time.
 
 6. **fill_gap** — "If she _____ closer, we _____ see each other often."
    **Hint**: past simple "live" + would + base "see"
    **Answer**: lived / would
-   **Explanation**: "If she lived closer, we would see each other" — second conditional padrão.
+   **Explanation**: "If she lived closer, we would see each other" — standard second conditional.
 
 7. **fill_gap** — "_____ you change anything if you _____ go back in time?"
    **Hint**: Would / could
    **Answer**: Would / could
-   **Explanation**: "Would you change... if you could go back?" — pergunta com "could" para habilidade.
+   **Explanation**: "Would you change... if you could go back?" — question with "could" for ability.
 
 8. **fix_error** — "If I will have time, I would learn Spanish."
    **Hint**: Second conditional não usa "will"
    **Answer**: If I had time, I would learn Spanish.
-   **Explanation**: Após "if" em second conditional, past simple "had". "Will" não cabe.
+   **Explanation**: After "if" in second conditional, past simple "had". "Will" doesn't fit.
 
 9. **fix_error** — "I wish I would be taller."
    **Hint**: Wish sobre presente usa past simple
    **Answer**: I wish I were taller.
-   **Explanation**: "Would" não combina com wish sobre presente. Use past simple "were".
+   **Explanation**: "Would" doesn't combine with wish about the present. Use past simple "were".
 
 10. **read_answer**
     **Passage**: "If I had more time, I would travel more. I wish I could speak Italian fluently. If I were you, I would take the opportunity. What would you do if you won a lot of money?"

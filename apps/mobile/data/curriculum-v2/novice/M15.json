@@ -113,7 +113,7 @@
           "passage": "Yesterday I worked all day. Then I watched a movie and called my sister. We played a game online.",
           "question": "What did the speaker watch?",
           "answer": "a movie",
-          "explanation": "The text says \"Then I watched a movie\"."
+          "explanation": "O texto diz \"Then I watched a movie\"."
         }
       ],
       "listening_speaking": [
@@ -315,7 +315,7 @@
           "passage": "I planned a trip last week. I stopped at the bakery and tried a new bread. I enjoyed the day.",
           "question": "What did the speaker try?",
           "answer": "a new bread",
-          "explanation": "The text says \"tried a new bread\"."
+          "explanation": "O texto diz \"tried a new bread\"."
         }
       ],
       "listening_speaking": [
@@ -496,7 +496,7 @@
           "sentence": "We _____ the lights at midnight.",
           "hint": "Passado de \"turn off\"",
           "answer": "turned off",
-          "explanation": "Phrasal verb: \"turn off\" → \"turned off\". Past + particle."
+          "explanation": "Phrasal verb: \"turn off\" → \"turned off\". Passado + partícula."
         },
         {
           "type": "fix_error",
@@ -517,7 +517,7 @@
           "passage": "I visited my grandparents last weekend. We talked for hours. Then we cooked together and laughed a lot.",
           "question": "When did the speaker visit grandparents?",
           "answer": "last weekend",
-          "explanation": "The text says \"last weekend\"."
+          "explanation": "O texto diz \"last weekend\"."
         }
       ],
       "listening_speaking": [
@@ -924,7 +924,7 @@
           "passage": "I started work at eight. I worked all morning. At noon I called my friend. We talked for an hour. Then I returned to my desk.",
           "question": "What time did the speaker start work?",
           "answer": "eight",
-          "explanation": "The text says \"I started work at eight\"."
+          "explanation": "O texto diz \"I started work at eight\"."
         }
       ],
       "listening_speaking": [

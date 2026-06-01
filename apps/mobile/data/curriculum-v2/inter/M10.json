@@ -50,7 +50,7 @@
             "are getting"
           ],
           "answer": "get",
-          "explanation": "Cor é resultado universal. Zero conditional = causa-efeito que sempre acontece. Present simple nas duas partes."
+          "explanation": "Color is a universal result. Zero conditional = cause-effect that always happens. Present simple in both clauses."
         },
         {
           "type": "word_bank",
@@ -62,7 +62,7 @@
             "is raining"
           ],
           "answer": "rains",
-          "explanation": "\"If it rains\" — present simple terceira pessoa (it + verb-s). Verdade universal sobre crescimento de plantas."
+          "explanation": "\"If it rains\" — present simple third person (it + verb-s). Universal truth about plant growth."
         },
         {
           "type": "word_bank",
@@ -74,7 +74,7 @@
             "is melting"
           ],
           "answer": "melts",
-          "explanation": "Estrutura zero conditional pode começar com qualquer cláusula. \"Ice melts if you heat it\" — fato físico."
+          "explanation": "A zero conditional can start with either clause. \"Ice melts if you heat it\" — physical fact."
         },
         {
           "type": "fill_gap",
@@ -85,7 +85,7 @@
             "get",
             "become"
           ],
-          "explanation": "Consequência sempre verdadeira. Verbos comuns: feel, get, become — todos no present simple."
+          "explanation": "Always-true consequence. Common verbs: feel, get, become — all in present simple."
         },
         {
           "type": "fill_gap",
@@ -96,28 +96,28 @@
             "reaches",
             "hits"
           ],
-          "explanation": "\"When\" funciona como \"if\" em verdades gerais — ambos indicam relação sempre verdadeira. \"Drops to zero\" — 3ª pessoa singular."
+          "explanation": "\"When\" works like \"if\" in general truths — both signal an always-true relationship. \"Drops to zero\" — 3rd person singular."
         },
         {
           "type": "fill_gap",
           "sentence": "If you don't water plants, they _____.",
           "hint": "present simple plural \"die\"",
           "answer": "die",
-          "explanation": "\"They die\" — plantas no plural usam forma base do verbo. Consequência universal de não regar."
+          "explanation": "\"They die\" — plural plants use the base form of the verb. Universal consequence of not watering."
         },
         {
           "type": "fix_error",
           "sentence": "If you heat water, it will boil.",
           "hint": "Zero conditional para verdades gerais não usa \"will\"",
           "answer": "If you heat water, it boils.",
-          "explanation": "\"Will\" muda o sentido para previsão específica (first conditional). Para verdades sempre verdadeiras, ambas cláusulas no present simple."
+          "explanation": "\"Will\" shifts the meaning to a specific prediction (first conditional). For always-true facts, both clauses stay in present simple."
         },
         {
           "type": "fix_error",
           "sentence": "If you mixing red and blue, you get purple.",
           "hint": "Após \"if\", use present simple, não -ing",
           "answer": "If you mix red and blue, you get purple.",
-          "explanation": "A cláusula com \"if\" precisa de present simple completo: \"mix\" (base form com you), não \"mixing\". A forma -ing precisaria de \"are mixing\" (present continuous)."
+          "explanation": "The \"if\" clause needs a complete present simple: \"mix\" (base form with you), not \"mixing\". The -ing form would require \"are mixing\" (present continuous)."
         },
         {
           "type": "read_answer",
@@ -239,7 +239,7 @@
             "are getting"
           ],
           "answer": "get",
-          "explanation": "\"Every day\" indica padrão sempre verdadeiro → zero conditional. Estudar regularmente sempre melhora desempenho. Present simple nas duas cláusulas."
+          "explanation": "\"Every day\" signals an always-true pattern → zero conditional. Studying regularly always improves performance. Present simple in both clauses."
         },
         {
           "type": "multiple_choice",
@@ -250,7 +250,7 @@
             "are doing"
           ],
           "answer": "will do",
-          "explanation": "\"Tonight\" + \"tomorrow's test\" indica evento específico no futuro → first conditional. Use \"will + base\" na consequência."
+          "explanation": "\"Tonight\" + \"tomorrow's test\" signal a specific future event → first conditional. Use \"will + base\" in the consequence."
         },
         {
           "type": "word_bank",
@@ -262,7 +262,7 @@
             "dies"
           ],
           "answer": "die",
-          "explanation": "\"That's how nature works\" sinaliza verdade universal → zero conditional. \"Plants die\" — present simple plural."
+          "explanation": "\"That's how nature works\" signals a universal truth → zero conditional. \"Plants die\" — present simple plural."
         },
         {
           "type": "word_bank",
@@ -274,21 +274,21 @@
             "is raining"
           ],
           "answer": "rains",
-          "explanation": "Após \"if\", sempre present simple — mesmo em first conditional. \"Tomorrow\" no resto da frase indica evento específico. \"It rains\" — 3ª pessoa."
+          "explanation": "After \"if\", always present simple — even in first conditional. \"Tomorrow\" elsewhere in the sentence marks a specific event. \"It rains\" — 3rd person."
         },
         {
           "type": "fill_gap",
           "sentence": "Water _____ when you heat it to 100 degrees.",
           "hint": "verdade geral, present simple 3ª pessoa",
           "answer": "boils",
-          "explanation": "Verdade universal sobre água. \"Boils\" — 3ª pessoa singular present simple. \"When\" funciona como \"if\" em verdades gerais."
+          "explanation": "Universal truth about water. \"Boils\" — 3rd person singular present simple. \"When\" works like \"if\" in general truths."
         },
         {
           "type": "fill_gap",
           "sentence": "I _____ go to the beach if it's sunny on Saturday.",
           "hint": "future específico, contração de \"I will\"",
           "answer": "'ll (or will)",
-          "explanation": "\"On Saturday\" = evento específico → first conditional. \"I'll go\" ou \"I will go\" na consequência futura."
+          "explanation": "\"On Saturday\" = specific event → first conditional. \"I'll go\" or \"I will go\" in the future consequence."
         },
         {
           "type": "fill_gap",
@@ -299,21 +299,21 @@
             "get",
             "become"
           ],
-          "explanation": "\"It's a fact\" reforça que é verdade geral → zero conditional. Consequência também no present simple."
+          "explanation": "\"It's a fact\" reinforces a general truth → zero conditional. The consequence also stays in present simple."
         },
         {
           "type": "fix_error",
           "sentence": "If I will have time tomorrow, I'll call you.",
           "hint": "Após \"if\", nunca usar \"will\" — sempre present simple",
           "answer": "If I have time tomorrow, I'll call you.",
-          "explanation": "A cláusula com \"if\" SEMPRE no present simple, mesmo em first conditional. \"Will\" só aparece na consequência. Este é um dos erros mais comuns de lusófonos."
+          "explanation": "The \"if\" clause is ALWAYS in present simple, even in first conditional. \"Will\" only appears in the consequence. This is one of the most common errors for Portuguese speakers."
         },
         {
           "type": "fix_error",
           "sentence": "\"If you heat water, it will boil.\" (para descrever verdade geral)",
           "hint": "Verdade universal não usa \"will\"",
           "answer": "If you heat water, it boils.",
-          "explanation": "\"Will boil\" sugere predição específica. Para fato sempre verdadeiro, use present simple nas duas cláusulas: \"it boils\"."
+          "explanation": "\"Will boil\" suggests a specific prediction. For an always-true fact, use present simple in both clauses: \"it boils\"."
         },
         {
           "type": "read_answer",
@@ -435,7 +435,7 @@
             "Because"
           ],
           "answer": "When",
-          "explanation": "O sol sempre nasce — não é incerto. \"When\" é usado para eventos certos e que sempre acontecem."
+          "explanation": "The sun always rises — it isn't uncertain. \"When\" is used for certain events that always happen."
         },
         {
           "type": "multiple_choice",
@@ -447,7 +447,7 @@
             "So"
           ],
           "answer": "If",
-          "explanation": "Chuva amanhã é INCERTO — pode ou não acontecer. \"If\" para eventos possíveis mas não garantidos."
+          "explanation": "Tomorrow's rain is UNCERTAIN — it may or may not happen. \"If\" for possible but not guaranteed events."
         },
         {
           "type": "word_bank",
@@ -459,7 +459,7 @@
             "Because"
           ],
           "answer": "When",
-          "explanation": "Acordar é parte da rotina — sempre acontece. \"When I wake up\" indica certeza temporal."
+          "explanation": "Waking up is part of the routine — it always happens. \"When I wake up\" signals temporal certainty."
         },
         {
           "type": "word_bank",
@@ -474,42 +474,42 @@
           "accepts": [
             "When"
           ],
-          "explanation": "Ambos funcionam — \"If\" enfatiza possibilidade, \"When\" enfatiza que sempre que acontecer, faça X. Em conselhos, ambos são naturais."
+          "explanation": "Both work — \"If\" emphasizes possibility, \"When\" emphasizes that whenever it happens, do X. In advice, both are natural."
         },
         {
           "type": "fill_gap",
           "sentence": "_____ winter comes, the days get shorter.",
           "hint": "certeza sazonal (sempre acontece)",
           "answer": "When",
-          "explanation": "Inverno é evento garantido todo ano — use \"when\". \"If winter comes\" soaria estranho porque inverno sempre vem."
+          "explanation": "Winter is a guaranteed yearly event — use \"when\". \"If winter comes\" would sound odd because winter always arrives."
         },
         {
           "type": "fill_gap",
           "sentence": "_____ you don't feel well, take a break.",
           "hint": "possibilidade (pode ou não estar doente)",
           "answer": "If",
-          "explanation": "Não está sempre doente — é variável. \"If you don't feel well\" — possibilidade."
+          "explanation": "You aren't always sick — it varies. \"If you don't feel well\" — possibility."
         },
         {
           "type": "fill_gap",
           "sentence": "_____ I get home from work, I take off my shoes and sit down.",
           "hint": "rotina diária garantida",
           "answer": "When",
-          "explanation": "Chegar em casa do trabalho é parte da rotina. \"When I get home\" — sempre que isso acontece."
+          "explanation": "Getting home from work is part of the routine. \"When I get home\" — every time it happens."
         },
         {
           "type": "fix_error",
           "sentence": "If the sun rises, the day starts.",
           "hint": "O sol sempre nasce — use \"when\"",
           "answer": "When the sun rises, the day starts.",
-          "explanation": "Eventos garantidos da natureza usam \"when\". \"If\" sugere dúvida — o sol vai nascer? Claro que sim."
+          "explanation": "Guaranteed natural events use \"when\". \"If\" suggests doubt — will the sun rise? Of course it will."
         },
         {
           "type": "fix_error",
           "sentence": "\"When it snows tomorrow, I'll build a snowman.\" (incerto)",
           "hint": "Neve amanhã é incerto — use \"if\"",
           "answer": "If it snows tomorrow, I'll build a snowman.",
-          "explanation": "Eventos futuros incertos pedem \"if\". \"When\" só funcionaria se você tivesse certeza absoluta que vai nevar."
+          "explanation": "Uncertain future events call for \"if\". \"When\" would only work if you were absolutely sure it'll snow."
         },
         {
           "type": "read_answer",
@@ -630,7 +630,7 @@
             "am having"
           ],
           "answer": "have",
-          "explanation": "First conditional: \"if + present simple, will + base\". Após \"if\", nunca \"will\". \"Tomorrow\" indica futuro específico."
+          "explanation": "First conditional: \"if + present simple, will + base\". After \"if\", never \"will\". \"Tomorrow\" marks a specific future."
         },
         {
           "type": "multiple_choice",
@@ -641,7 +641,7 @@
             "is boiling"
           ],
           "answer": "boils",
-          "explanation": "Verdade universal sobre água → zero conditional. Present simple em ambas cláusulas."
+          "explanation": "Universal truth about water → zero conditional. Present simple in both clauses."
         },
         {
           "type": "word_bank",
@@ -653,7 +653,7 @@
             "are working"
           ],
           "answer": "work",
-          "explanation": "Após \"if\", present simple \"work\". A consequência \"succeed\" virá com \"will\" — first conditional motivacional."
+          "explanation": "After \"if\", present simple \"work\". The consequence \"succeed\" takes \"will\" — motivational first conditional."
         },
         {
           "type": "word_bank",
@@ -665,42 +665,42 @@
             "am getting"
           ],
           "answer": "get",
-          "explanation": "Rotina diária → \"when + present, present\". \"I get home and cook\" — sempre verdade."
+          "explanation": "Daily routine → \"when + present, present\". \"I get home and cook\" — always true."
         },
         {
           "type": "fill_gap",
           "sentence": "If I _____ early enough, I'll have breakfast at home.",
           "hint": "present simple de \"wake up\" 1ª pessoa",
           "answer": "wake up",
-          "explanation": "\"Wake up\" — phrasal verb fixo no present simple. First conditional indica resultado futuro específico."
+          "explanation": "\"Wake up\" — fixed phrasal verb in present simple. First conditional signals a specific future result."
         },
         {
           "type": "fill_gap",
           "sentence": "Plants die if you don't _____ them regularly.",
           "hint": "present simple de \"water\" (regar) com \"you\"",
           "answer": "water",
-          "explanation": "Verdade universal sobre plantas → zero conditional. \"If you don't water them\" — present simple negativo com \"you\"."
+          "explanation": "Universal truth about plants → zero conditional. \"If you don't water them\" — negative present simple with \"you\"."
         },
         {
           "type": "fill_gap",
           "sentence": "I'll be there if you _____ me to be.",
           "hint": "present simple de \"want\" 2ª pessoa",
           "answer": "want",
-          "explanation": "First conditional com promessa. \"Want\" — present simple base form com \"you\"."
+          "explanation": "First conditional with a promise. \"Want\" — present simple base form with \"you\"."
         },
         {
           "type": "fix_error",
           "sentence": "If it will rain tomorrow, I'll stay home.",
           "hint": "Nunca \"will\" depois de \"if\"",
           "answer": "If it rains tomorrow, I'll stay home.",
-          "explanation": "Regra fundamental: a cláusula com \"if\" SEMPRE no present simple, mesmo em first conditional. \"Will\" só na consequência."
+          "explanation": "Core rule: the \"if\" clause is ALWAYS in present simple, even in first conditional. \"Will\" only in the consequence."
         },
         {
           "type": "fix_error",
           "sentence": "If you heat water, it will boils.",
           "hint": "Verdade geral usa present simple em ambas cláusulas, sem \"will\" e sem -s extra",
           "answer": "If you heat water, it boils.",
-          "explanation": "Para verdade universal, zero conditional. \"It boils\" — present simple 3ª pessoa. \"Will boils\" não existe — depois de \"will\" vem base form (boil)."
+          "explanation": "For a universal truth, zero conditional. \"It boils\" — present simple 3rd person. \"Will boils\" doesn't exist — after \"will\" comes the base form (boil)."
         },
         {
           "type": "read_answer",
@@ -833,7 +833,7 @@
             "is freezing"
           ],
           "answer": "freezes",
-          "explanation": "Fato científico universal → present simple. \"Water freezes\" — 3ª pessoa."
+          "explanation": "Universal scientific fact → present simple. \"Water freezes\" — 3rd person."
         },
         {
           "type": "word_bank",
@@ -845,7 +845,7 @@
             "are heating"
           ],
           "answer": "heat",
-          "explanation": "Verdade universal → zero conditional. \"If you heat\" — present simple com \"you\"."
+          "explanation": "Universal truth → zero conditional. \"If you heat\" — present simple with \"you\"."
         },
         {
           "type": "word_bank",
@@ -857,7 +857,7 @@
             "am"
           ],
           "answer": "will",
-          "explanation": "First conditional com oferta. \"I will help\" — promessa condicional."
+          "explanation": "First conditional with an offer. \"I will help\" — conditional promise."
         },
         {
           "type": "fill_gap",
@@ -871,28 +871,28 @@
           "sentence": "Plants _____ if you don't water them — that's biology.",
           "hint": "present simple plural \"die\"",
           "answer": "die",
-          "explanation": "Verdade biológica universal → zero conditional. \"Plants die\" — plural present simple."
+          "explanation": "Universal biological truth → zero conditional. \"Plants die\" — plural present simple."
         },
         {
           "type": "fill_gap",
           "sentence": "_____ you study consistently, you make progress.",
           "hint": "\"if\" ou \"when\" — verdade geral",
           "answer": "If (or When)",
-          "explanation": "Ambos funcionam em verdades universais. \"If/When you study consistently\"."
+          "explanation": "Both work in universal truths. \"If/When you study consistently\"."
         },
         {
           "type": "fix_error",
           "sentence": "\"If I have time, I travel a lot.\" (sentido específico de \"este ano\")",
           "hint": "Para futuro específico, use will",
           "answer": "If I have time, I'll travel a lot.",
-          "explanation": "Se o contexto é planejamento futuro específico, precisa de \"will\" na consequência. Sem \"will\", parece verdade geral (sempre quando tenho tempo, viajo)."
+          "explanation": "If the context is a specific future plan, you need \"will\" in the consequence. Without \"will\", it sounds like a general truth (whenever I have time, I travel)."
         },
         {
           "type": "fix_error",
           "sentence": "If you will be late, please call me.",
           "hint": "Após \"if\", presente simples sempre",
           "answer": "If you are late, please call me.",
-          "explanation": "A cláusula com \"if\" SEMPRE present simple — mesmo se a frase fala do futuro. \"If you are\" — present simple."
+          "explanation": "The \"if\" clause is ALWAYS present simple — even when the sentence is about the future. \"If you are\" — present simple."
         },
         {
           "type": "read_answer",

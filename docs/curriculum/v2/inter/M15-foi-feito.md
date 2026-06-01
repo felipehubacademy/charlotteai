@@ -33,17 +33,17 @@
 1. **multiple_choice** — "English _____ in many countries."
    **Options**: is spoken / speaks / is speaking / spoke
    **Answer**: is spoken
-   **Explanation**: Passive present simple = "am/is/are + past participle". "English is spoken" — foco na língua, não em quem fala. Forma passiva clássica para fatos gerais.
+   **Explanation**: Passive present simple = "am/is/are + past participle". "English is spoken" — focus on the language, not on who speaks it. Classic passive form for general facts.
 
 2. **multiple_choice** — "The factory _____ a thousand cars a year."
    **Options**: produces / is produced / are produced / is producing
    **Answer**: produces
-   **Explanation**: "The factory produces" — ativa, pois a fábrica é o agente real. Se fosse passiva: "A thousand cars are produced by the factory".
+   **Explanation**: "The factory produces" — active, since the factory is the actual agent. The passive would be: "A thousand cars are produced by the factory".
 
 3. **word_bank** — "Coffee _____ in Brazil."
    **Choices**: is grown / grows / are grown / is growing
    **Answer**: is grown
-   **Explanation**: "Coffee is grown" — café é o que recebe a ação. Foco no produto, não em quem planta. Passive present simple.
+   **Explanation**: "Coffee is grown" — coffee is what receives the action. Focus on the product, not on who grows it. Passive present simple.
 
 4. **word_bank** — "Cars _____ in the factory."
    **Choices**: are made / make / is made / are making
@@ -53,27 +53,27 @@
 5. **fill_gap** — "These shirts _____ in Italy."
    **Hint**: are + past participle "make"
    **Answer**: are made
-   **Explanation**: "Are made in Italy" — passive plural. Foco nas camisas (recipient), não em quem fabrica.
+   **Explanation**: "Are made in Italy" — plural passive. Focus on the shirts (recipient), not on who manufactures them.
 
 6. **fill_gap** — "Spanish _____ by 500 million people."
    **Hint**: is + past participle "speak"
    **Answer**: is spoken
-   **Explanation**: "Spanish is spoken" — passive present simple singular. Foco na língua.
+   **Explanation**: "Spanish is spoken" — passive present simple singular. Focus on the language.
 
 7. **fill_gap** — "Rice _____ in Asia."
    **Hint**: is + past participle "grow"
    **Answer**: is grown
-   **Explanation**: "Rice is grown in Asia" — fato geral, agente impreciso, passive natural.
+   **Explanation**: "Rice is grown in Asia" — general fact, vague agent, natural passive.
 
 8. **fix_error** — "English is speak in many countries."
    **Hint**: "Speak" precisa estar em past participle = "spoken"
    **Answer**: English is spoken in many countries.
-   **Explanation**: Passive precisa de past participle, não base form. "Speak" → "spoken". "Is speak" não funciona.
+   **Explanation**: Passive needs past participle, not base form. "Speak" → "spoken". "Is speak" doesn't work.
 
 9. **fix_error** — "Cars is made in the factory."
    **Hint**: Plural "cars" precisa de "are", não "is"
    **Answer**: Cars are made in the factory.
-   **Explanation**: Concordância: "cars" (plural) → "are made". Singular seria "the car is made".
+   **Explanation**: Agreement: "cars" (plural) → "are made". Singular would be "the car is made".
 
 10. **read_answer**
     **Passage**: "English is spoken in many countries around the world. Coffee is grown in Brazil and Colombia. These shirts are made in Italy. Rice is grown mostly in Asia."
@@ -198,47 +198,47 @@
 1. **multiple_choice** — "The pyramid _____ thousands of years ago."
    **Options**: was built / built / is built / were built
    **Answer**: was built
-   **Explanation**: Passive past simple = "was/were + past participle". "The pyramid was built" — passive singular passado.
+   **Explanation**: Passive past simple = "was/were + past participle". "The pyramid was built" — singular past passive.
 
 2. **multiple_choice** — "The Mona Lisa _____ by Leonardo da Vinci."
    **Options**: was painted / painted / is painted / were painted
    **Answer**: was painted
-   **Explanation**: "Was painted by..." — passive past + "by + agent" para mostrar quem fez.
+   **Explanation**: "Was painted by..." — past passive + "by + agent" to show who did it.
 
 3. **word_bank** — "These bridges _____ in the 19th century."
    **Choices**: were built / was built / built / are built
    **Answer**: were built
-   **Explanation**: Plural "bridges" → "were built". Passive past simple plural.
+   **Explanation**: Plural "bridges" → "were built". Passive past simple, plural.
 
 4. **word_bank** — "The package _____ yesterday."
    **Choices**: was delivered / delivered / is delivered / were delivered
    **Answer**: was delivered
-   **Explanation**: "The package was delivered" — passive past simple, foco no pacote (recipient).
+   **Explanation**: "The package was delivered" — passive past simple, focus on the package (recipient).
 
 5. **fill_gap** — "The book _____ in 1925."
    **Hint**: was + past participle "publish"
    **Answer**: was published
-   **Explanation**: "Was published in 1925" — passive past, ano específico.
+   **Explanation**: "Was published in 1925" — past passive, specific year.
 
 6. **fill_gap** — "Two cars _____ in the accident."
    **Hint**: were + past participle "damage"
    **Answer**: were damaged
-   **Explanation**: Plural "two cars" → "were damaged". Passive past simple plural.
+   **Explanation**: Plural "two cars" → "were damaged". Past passive plural.
 
 7. **fill_gap** — "The decision _____ last week."
    **Hint**: was + past participle "make"
    **Answer**: was made
-   **Explanation**: "The decision was made" — passive past, foco na decisão.
+   **Explanation**: "The decision was made" — past passive, focus on the decision.
 
 8. **fix_error** — "The Mona Lisa was paint by Leonardo."
    **Hint**: "Paint" → past participle "painted"
    **Answer**: The Mona Lisa was painted by Leonardo.
-   **Explanation**: Após "was/were" sempre past participle, não base form. "Paint" → "painted".
+   **Explanation**: After "was/were", always past participle, not base form. "Paint" → "painted".
 
 9. **fix_error** — "These bridges was built in 1900."
    **Hint**: Plural precisa de "were"
    **Answer**: These bridges were built in 1900.
-   **Explanation**: "Bridges" (plural) → "were built". "Was" é só para singular.
+   **Explanation**: "Bridges" (plural) → "were built". "Was" is only for singular.
 
 10. **read_answer**
     **Passage**: "The pyramids were built thousands of years ago. The Mona Lisa was painted by Leonardo da Vinci. These bridges were constructed in the 19th century. The package was delivered yesterday morning."
@@ -393,17 +393,17 @@
 7. **fill_gap** — "The new policy _____ at this moment."
    **Hint**: is being + past participle "discuss"
    **Answer**: is being discussed
-   **Explanation**: "Is being discussed at this moment" — discussão em andamento.
+   **Explanation**: "Is being discussed at this moment" — discussion in progress.
 
 8. **fix_error** — "My car is repaired today."
    **Hint**: Para ação em curso, precisa de "being"
    **Answer**: My car is being repaired today.
-   **Explanation**: "Is repaired" sem "being" = present simple passive (fato geral). Para AÇÃO EM CURSO HOJE, precisa "is being repaired".
+   **Explanation**: "Is repaired" without "being" = present simple passive (general fact). For an ACTION IN PROGRESS TODAY, you need "is being repaired".
 
 9. **fix_error** — "The houses being built next to the park."
    **Hint**: Falta verbo "to be" + "being"
    **Answer**: The houses are being built next to the park.
-   **Explanation**: Estrutura completa: "are being built" — verbo to be conjugado + being + past participle. Não dá pra omitir o "are".
+   **Explanation**: Full structure: "are being built" — conjugated "to be" + being + past participle. You can't drop the "are".
 
 10. **read_answer**
     **Passage**: "The road is being repaired this week. The reports are being written right now. My car is being fixed today — I'll get it back tomorrow. The new houses are being built next to the park."
@@ -528,47 +528,47 @@
 1. **multiple_choice** — "The package _____ already."
    **Options**: has been delivered / delivered / is delivered / was delivered
    **Answer**: has been delivered
-   **Explanation**: Passive present perfect = "has/have + been + past participle". "Has been delivered already" — ação completa com relevância presente.
+   **Explanation**: Passive present perfect = "has/have + been + past participle". "Has been delivered already" — completed action with present relevance.
 
 2. **multiple_choice** — "Three new schools _____ this year."
    **Options**: have been built / are built / were built / build
    **Answer**: have been built
-   **Explanation**: Plural "three schools" → "have been built". Period "this year" inclui o presente → present perfect passive.
+   **Explanation**: Plural "three schools" → "have been built". The period "this year" includes the present → present perfect passive.
 
 3. **word_bank** — "The report _____ yet?"
    **Choices**: has been finished / is finished / was finished / has finishing
    **Answer**: has been finished
-   **Explanation**: Pergunta com "yet" → present perfect passive. "Has the report been finished yet?".
+   **Explanation**: Question with "yet" → present perfect passive. "Has the report been finished yet?".
 
 4. **word_bank** — "Several decisions _____ recently."
    **Choices**: have been made / were made / are made / be made
    **Answer**: have been made
-   **Explanation**: Plural "decisions" + "recently" (período até agora) → "have been made". Passive present perfect.
+   **Explanation**: Plural "decisions" + "recently" (period up to now) → "have been made". Passive present perfect.
 
 5. **fill_gap** — "The new car _____ already."
    **Hint**: has been + past participle "release"
    **Answer**: has been released
-   **Explanation**: "Has been released already" — lançamento completo com efeito presente. Singular.
+   **Explanation**: "Has been released already" — completed release with present effect. Singular.
 
 6. **fill_gap** — "Many books _____ this year."
    **Hint**: have been + past participle "publish"
    **Answer**: have been published
-   **Explanation**: Plural "many books" → "have been published". Period "this year" → present perfect.
+   **Explanation**: Plural "many books" → "have been published". The period "this year" → present perfect.
 
 7. **fill_gap** — "The work _____ already."
    **Hint**: has been + past participle "do" — irregular
    **Answer**: has been done
-   **Explanation**: "Has been done" — "do" → past participle "done". Forma irregular.
+   **Explanation**: "Has been done" — "do" → past participle "done". Irregular form.
 
 8. **fix_error** — "The package has delivered already."
    **Hint**: Falta "been" — "has BEEN delivered"
    **Answer**: The package has been delivered already.
-   **Explanation**: Present perfect passive precisa de "has/have BEEN + past participle". "Has delivered" sem "been" não é passivo.
+   **Explanation**: Present perfect passive needs "has/have BEEN + past participle". "Has delivered" without "been" isn't passive.
 
 9. **fix_error** — "Three new schools has been built."
    **Hint**: Plural "three schools" precisa de "have"
    **Answer**: Three new schools have been built.
-   **Explanation**: Concordância: plural → "have". Singular seria "the school has been built".
+   **Explanation**: Agreement: plural → "have". Singular would be "the school has been built".
 
 10. **read_answer**
     **Passage**: "The package has been delivered already. Three new schools have been built this year. The report has been finished and sent to the client. Many decisions have been made recently."
@@ -693,32 +693,32 @@
 1. **multiple_choice** — "English _____ in many countries."
    **Options**: is spoken / speaks / is being spoken / was spoken
    **Answer**: is spoken
-   **Explanation**: Fato geral atual → present simple passive. "English is spoken" — habitual/factual.
+   **Explanation**: Current general fact → present simple passive. "English is spoken" — habitual/factual.
 
 2. **multiple_choice** — "The pyramid _____ thousands of years ago."
    **Options**: was built / is built / is being built / has been built
    **Answer**: was built
-   **Explanation**: Tempo específico passado → past simple passive. "Was built thousands of years ago".
+   **Explanation**: Specific past time → past simple passive. "Was built thousands of years ago".
 
 3. **word_bank** — "The road _____ at this moment."
    **Choices**: is being repaired / repairs / is repaired / was repaired
    **Answer**: is being repaired
-   **Explanation**: "At this moment" → ação em curso → present continuous passive. "Is being repaired".
+   **Explanation**: "At this moment" → ongoing action → present continuous passive. "Is being repaired".
 
 4. **word_bank** — "Three schools _____ this year."
    **Choices**: have been built / were built / are being built / build
    **Answer**: have been built
-   **Explanation**: "This year" inclui presente → present perfect passive. "Have been built".
+   **Explanation**: "This year" includes the present → present perfect passive. "Have been built".
 
 5. **fill_gap** — "These shirts _____ in Italy. (general fact)"
    **Hint**: are + past participle "make"
    **Answer**: are made
-   **Explanation**: Fato atual contínuo → present simple passive plural.
+   **Explanation**: Ongoing current fact → present simple passive, plural.
 
 6. **fill_gap** — "The package _____ yesterday. (past)"
    **Hint**: was + past participle "deliver"
    **Answer**: was delivered
-   **Explanation**: "Yesterday" → past simple passive singular.
+   **Explanation**: "Yesterday" → past simple passive, singular.
 
 7. **fill_gap** — "The house _____ right now. (ongoing)"
    **Hint**: is being + past participle "build"
@@ -728,12 +728,12 @@
 8. **fix_error** — "The book is wrote by a famous author."
    **Hint**: "Wrote" não é past participle — "written"
    **Answer**: The book is written by a famous author.
-   **Explanation**: Verbo irregular "write" — past participle é "written", não "wrote".
+   **Explanation**: Irregular verb "write" — the past participle is "written", not "wrote".
 
 9. **fix_error** — "These bridges was built in 1900."
    **Hint**: Plural "bridges" → "were"
    **Answer**: These bridges were built in 1900.
-   **Explanation**: Plural sempre "were" no past simple passive.
+   **Explanation**: Plurals always take "were" in past simple passive.
 
 10. **read_answer**
     **Passage**: "English is spoken worldwide. The pyramid was built thousands of years ago. The road is being repaired this week. Three new schools have been built this year. These shirts are made in Italy."

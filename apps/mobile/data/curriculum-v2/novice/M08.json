@@ -116,7 +116,7 @@
           "passage": "I love Italian food. I like Mexican food too. My sister hates spicy food. We all love chocolate.",
           "question": "What does the sister hate?",
           "answer": "spicy food",
-          "explanation": "The text says \"My sister hates spicy food\"."
+          "explanation": "O texto diz \"My sister hates spicy food\"."
         }
       ],
       "listening_speaking": [
@@ -320,7 +320,7 @@
           "passage": "I love reading, but I hate cooking. My brother loves playing soccer. My sister likes painting and drawing.",
           "question": "What does the sister like doing?",
           "answer": "painting and drawing",
-          "explanation": "The text says \"My sister likes painting and drawing\"."
+          "explanation": "O texto diz \"My sister likes painting and drawing\"."
         }
       ],
       "listening_speaking": [
@@ -524,7 +524,7 @@
           "passage": "My sister calls me every Sunday. I love talking to her. She tells me about her week. I tell her about mine.",
           "question": "Who calls every Sunday?",
           "answer": "my sister (or \"the sister\")",
-          "explanation": "The text says \"My sister calls me every Sunday\"."
+          "explanation": "O texto diz \"My sister calls me every Sunday\"."
         }
       ],
       "listening_speaking": [
@@ -731,7 +731,7 @@
           "passage": "I love pop music. I like action movies. I hate horror books. My sister loves classical music — totally different.",
           "question": "What kind of music does the sister love?",
           "answer": "classical (or \"classical music\")",
-          "explanation": "The text says \"My sister loves classical music\"."
+          "explanation": "O texto diz \"My sister loves classical music\"."
         }
       ],
       "listening_speaking": [
@@ -933,7 +933,7 @@
           "passage": "I prefer tea over coffee. My sister prefers coffee. We both love chocolate. She hates sweet drinks but I like them.",
           "question": "What does the sister prefer to drink?",
           "answer": "coffee",
-          "explanation": "The text says \"My sister prefers coffee\"."
+          "explanation": "O texto diz \"My sister prefers coffee\"."
         }
       ],
       "listening_speaking": [

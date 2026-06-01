@@ -76,7 +76,7 @@
     **Passage**: "Tomorrow I'm going to wake up early. I'm going to work in the morning and go to the gym in the afternoon. We're going to have dinner together."
     **Question**: What is the speaker going to do in the afternoon?
     **Answer**: go to the gym
-    **Explanation**: The text says "go to the gym in the afternoon".
+    **Explanation**: O texto diz "go to the gym in the afternoon".
 
 ### 2. Listening/Speaking (5 phrases)
 
@@ -241,7 +241,7 @@
     **Passage**: "I'm not going to work tomorrow. It's my day off. My sister isn't going to come either. We aren't going to do anything special."
     **Question**: Why isn't the speaker working tomorrow?
     **Answer**: it's my day off (or "day off")
-    **Explanation**: The text says "It's my day off".
+    **Explanation**: O texto diz "It's my day off".
 
 ### 2. Listening/Speaking (5 phrases)
 
@@ -390,7 +390,7 @@
 7. **fill_gap** — "Yes, I _____." (response to "Are you going to come?")
    **Hint**: Resposta curta afirmativa
    **Answer**: am
-   **Explanation**: "Yes, I am" — short answer.
+   **Explanation**: "Yes, I am" — resposta curta.
 
 8. **fix_error** — "Do you going to travel?"
    **Hint**: Going to usa to-be, não do
@@ -571,7 +571,7 @@
     **Passage**: "I'm going to travel tomorrow. Next week I'm going to be in Italy. In two months I'm going to come back home."
     **Question**: When is the speaker going to travel?
     **Answer**: tomorrow
-    **Explanation**: The text says "I'm going to travel tomorrow".
+    **Explanation**: O texto diz "I'm going to travel tomorrow".
 
 ### 2. Listening/Speaking (5 phrases)
 
@@ -736,7 +736,7 @@
     **Passage**: "Tomorrow I'm going to work. I'm not going to eat out tonight — I'm tired. Next week I'm going to travel to Bahia."
     **Question**: Where is the speaker going next week?
     **Answer**: Bahia (or "to Bahia")
-    **Explanation**: The text says "travel to Bahia".
+    **Explanation**: O texto diz "travel to Bahia".
 
 ### 2. Listening/Speaking (5 phrases)
 

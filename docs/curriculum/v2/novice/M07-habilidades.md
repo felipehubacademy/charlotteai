@@ -81,7 +81,7 @@
     **Passage**: "I can speak English and Portuguese. My brother can play the guitar. We can both cook well."
     **Question**: What can the brother play?
     **Answer**: the guitar
-    **Explanation**: The text says "My brother can play the guitar".
+    **Explanation**: O texto diz "My brother can play the guitar".
 
 ### 2. Listening/Speaking (5 phrases)
 
@@ -246,7 +246,7 @@
     **Passage**: "I can swim but I can't dive. My friend can speak French but she can't write it well. We can both ride a bike."
     **Question**: What can the friend NOT do well?
     **Answer**: write (or "write French")
-    **Explanation**: The text says "she can't write it well".
+    **Explanation**: O texto diz "she can't write it well".
 
 ### 2. Listening/Speaking (5 phrases)
 
@@ -411,7 +411,7 @@
     **Passage**: "Q: Can you swim? A: Yes, I can. Q: Can your brother cook? A: No, he can't. He only makes sandwiches."
     **Question**: What can the brother make?
     **Answer**: sandwiches
-    **Explanation**: The text says "He only makes sandwiches".
+    **Explanation**: O texto diz "He only makes sandwiches".
 
 ### 2. Listening/Speaking (5 phrases)
 
@@ -578,7 +578,7 @@
     **Passage**: "I can speak two languages: English and Italian. My brother can play the guitar. My sister can play tennis very well."
     **Question**: What can the sister play?
     **Answer**: tennis
-    **Explanation**: The text says "My sister can play tennis very well".
+    **Explanation**: O texto diz "My sister can play tennis very well".
 
 ### 2. Listening/Speaking (5 phrases)
 
@@ -743,7 +743,7 @@
     **Passage**: "I can speak English very well. I can't speak French at all. My friend can play three instruments — the piano, the guitar, and the violin."
     **Question**: How many instruments can the friend play?
     **Answer**: three
-    **Explanation**: The text says "My friend can play three instruments".
+    **Explanation**: O texto diz "My friend can play three instruments".
 
 ### 2. Listening/Speaking (5 phrases)
 

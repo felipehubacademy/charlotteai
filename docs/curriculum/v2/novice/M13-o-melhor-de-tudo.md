@@ -77,7 +77,7 @@
     **Passage**: "My brother is the tallest in our family. My sister is the youngest. I'm the oldest. We all live in the biggest house on the street."
     **Question**: Who is the tallest?
     **Answer**: my brother
-    **Explanation**: The text says "My brother is the tallest".
+    **Explanation**: O texto diz "My brother is the tallest".
 
 ### 2. Listening/Speaking (5 phrases)
 
@@ -242,7 +242,7 @@
     **Passage**: "This is the most expensive restaurant in town. The food is the most delicious in the city. The service is also the most professional."
     **Question**: How is the service?
     **Answer**: the most professional
-    **Explanation**: The text says "The service is also the most professional".
+    **Explanation**: O texto diz "The service is also the most professional".
 
 ### 2. Listening/Speaking (5 phrases)
 
@@ -407,7 +407,7 @@
     **Passage**: "Ana is the best singer in our class. Lucas is the worst at math but the best at art. We all agree — she has the most talent."
     **Question**: Who is the best at art?
     **Answer**: Lucas
-    **Explanation**: The text says "Lucas is... the best at art".
+    **Explanation**: O texto diz "Lucas is... the best at art".
 
 ### 2. Listening/Speaking (5 phrases)
 
@@ -572,7 +572,7 @@
     **Passage**: "I live on the second floor. My birthday is on the fourth of July. This is my first time in NYC."
     **Question**: When is the birthday?
     **Answer**: the fourth of July (or "July 4")
-    **Explanation**: The text says "My birthday is on the fourth of July".
+    **Explanation**: O texto diz "My birthday is on the fourth of July".
 
 ### 2. Listening/Speaking (5 phrases)
 
@@ -737,7 +737,7 @@
     **Passage**: "I live on the third floor. My building is the tallest in the neighborhood. This is the best apartment in the building. The view is the most beautiful."
     **Question**: How is the view?
     **Answer**: the most beautiful
-    **Explanation**: The text says "The view is the most beautiful".
+    **Explanation**: O texto diz "The view is the most beautiful".
 
 ### 2. Listening/Speaking (5 phrases)
 

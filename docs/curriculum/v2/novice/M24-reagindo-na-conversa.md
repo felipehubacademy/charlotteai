@@ -725,23 +725,23 @@
    **Answer**: think
    **Explanation**: "Let me think" — chunk fixo para ganhar tempo enquanto pensa. Sinaliza que você está processando, não ignorando.
 
-6. **fill_gap** — "_____, where was I?"
-   **Hint**: marcador de retomada
+6. **fill_gap** — "_____, where was I?" (depois de uma pausa, voltando ao assunto principal)
+   **Hint**: chunk de retomada com "A___" (5 letras)
    **Answer**: Anyway
 **Accepts**: So
    **Explanation**: "Anyway, where was I?" / "So, where was I?" — chunks para retomar o fio da conversa após pausa ou desvio.
 
-7. **fill_gap** — "_____, that reminds me of something."
-   **Hint**: marcador de novo tópico
+7. **fill_gap** — "_____, that reminds me of something." (introduzindo novo assunto)
+   **Hint**: chunk de 3 palavras começando com "B___"
    **Answer**: By the way
 **Accepts**: Speaking of which
    **Explanation**: "By the way" — introdução suave de novo tópico. "Speaking of which" — mais ligado ao tópico anterior.
 
-8. **multiple_choice** — Pra pedir pra pessoa esperar 2 segundos enquanto você termina algo. Qual soa MAIS natural em conversa casual?
+8. **multiple_choice** — Pra pedir pra pessoa esperar um instante enquanto você termina algo. Qual soa MAIS natural em conversa casual?
    **Options**: One moment. / Hold on a sec. / Wait. / Stop.
    **Answer**: Hold on a sec.
    **Accepts**: Hang on a sec.
-   **Explanation**: "One moment" é formal demais (atendente de banco). "Wait" e "Stop" soam ríspidos. Em conversa casual: "Hold on", "Hang on", "Just a sec", "Give me a sec".
+   **Explanation**: "One moment" é formal demais (atendente de banco). "Wait" e "Stop" soam ríspidos. Em conversa casual: "Hold on a sec", "Hang on a sec", "Just a sec", "Give me a sec".
 
 9. **fix_error** — "By the way of the way..."
    **Hint**: É apenas "By the way"
@@ -749,8 +749,8 @@
    **Explanation**: "By the way" é o chunk fixo. Não tem variação "by the way of the way". Erro de duplicação por insegurança no chunk.
 
 10. **multiple_choice** — "Friend: 'So I was telling you about my trip...' You: 'Hold on, let me grab some water.' Friend: 'Sure!' You: 'OK, anyway, you were saying?' Friend: 'Right, so the flight was delayed. By the way, did you see the news today?' — How does the friend use 'by the way' here?"
-    **Options**: To change topic / introduce a new subject / To apologize / To confirm understanding / To express surprise
-    **Answer**: To change topic / introduce a new subject
+    **Options**: To introduce a new topic / To apologize for something / To confirm understanding / To express surprise
+    **Answer**: To introduce a new topic
     **Explanation**: "By the way" introduz uma mudança natural de assunto da viagem para as notícias do dia. Chunk universal de transição.
 
 ### 2. Listening/Speaking (5 phrases)
@@ -759,7 +759,7 @@
 2. **"Hang on, let me think."** — ganhando tempo
 3. **"By the way..."** — mudança de tópico
 4. **"Anyway, where was I?"** — retomada
-5. **"Wait, let me think about this."** — processamento</p>
+5. **"Wait, let me think about this."** — processamento
 
 ### 3. Role-play
 

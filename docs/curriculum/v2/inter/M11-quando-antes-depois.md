@@ -32,47 +32,47 @@
 1. **multiple_choice** — "I'll call you _____ I arrive."
    **Options**: when / when will / when am
    **Answer**: when
-   **Explanation**: Após "when" em referência ao futuro, use present simple — nunca "will". A cláusula principal pode ter "will" (I'll call), mas a cláusula com "when" fica no presente.
+   **Explanation**: After "when" referring to the future, use present simple — never "will". The main clause can have "will" (I'll call), but the "when" clause stays in the present.
 
 2. **multiple_choice** — "We'll have dinner _____ everyone _____ home."
    **Options**: when / arrives / when / will arrive / when / is arriving
    **Answer**: when / arrives
-   **Explanation**: "When everyone arrives" — present simple 3ª pessoa ("everyone" é singular). Após "when" no futuro, sempre present simple.
+   **Explanation**: "When everyone arrives" — present simple 3rd person ("everyone" is singular). After "when" in future context, always present simple.
 
 3. **word_bank** — "She'll start cooking _____ she gets home."
    **Choices**: when / when will / when's / before
    **Answer**: when
-   **Explanation**: "When she gets home" — momento futuro específico. "When + present simple" é a forma correta.
+   **Explanation**: "When she gets home" — specific future moment. "When + present simple" is the correct form.
 
 4. **word_bank** — "I'll text you when I _____ to the office."
    **Choices**: get / will get / am getting / got
    **Answer**: get
-   **Explanation**: Após "when" no contexto futuro, present simple "get". "Will get" estaria errado nesta cláusula.
+   **Explanation**: After "when" in a future context, present simple "get". "Will get" would be wrong in this clause.
 
 5. **fill_gap** — "We'll celebrate when she _____ the exam."
    **Hint**: present simple 3ª pessoa de "pass"
    **Answer**: passes
-   **Explanation**: "When she passes" — 3ª pessoa singular com -s. Após "when", present simple sempre.
+   **Explanation**: "When she passes" — 3rd person singular with -s. After "when", always present simple.
 
 6. **fill_gap** — "I'll let you know when I _____ a decision."
    **Hint**: present simple "make" com I
    **Answer**: make
-   **Explanation**: "When I make a decision" — present simple base form com "I".
+   **Explanation**: "When I make a decision" — present simple base form with "I".
 
 7. **fill_gap** — "_____ they _____ the news, they'll be happy."
    **Hint**: when + present simple de "hear" 3ª pessoa plural
    **Answer**: When / hear
-   **Explanation**: "When they hear" — "they" plural usa forma base "hear".
+   **Explanation**: "When they hear" — plural "they" uses the base form "hear".
 
 8. **fix_error** — "I'll call you when I will arrive."
    **Hint**: Nunca "will" após "when" em time clause futura
    **Answer**: I'll call you when I arrive.
-   **Explanation**: Esta é a regra mais importante das time clauses: depois de "when", "before", "after", "until", "by the time", "as soon as" — SEMPRE present simple, mesmo falando do futuro.
+   **Explanation**: This is the most important rule for time clauses: after "when", "before", "after", "until", "by the time", "as soon as" — ALWAYS present simple, even when talking about the future.
 
 9. **fix_error** — "She'll start when she will be ready."
    **Hint**: Após "when" em contexto futuro, present simple
    **Answer**: She'll start when she is ready.
-   **Explanation**: "When she is ready" — present simple "is". "Will be" estaria errado dentro da cláusula com "when".
+   **Explanation**: "When she is ready" — present simple "is". "Will be" would be wrong inside the "when" clause.
 
 10. **read_answer**
     **Passage**: "I'll call you when I arrive at the airport. We'll have dinner when everyone gets home. She'll let me know when she finishes the project. By the time you read this, I'll be on the plane."
@@ -197,47 +197,47 @@
 1. **multiple_choice** — "_____ you leave, please lock the door."
    **Options**: Before / After / Until
    **Answer**: Before
-   **Explanation**: "Before" indica ação anterior. "Before you leave, lock the door" — trancar acontece antes de sair.
+   **Explanation**: "Before" marks a prior action. "Before you leave, lock the door" — locking happens before leaving.
 
 2. **multiple_choice** — "_____ we eat, we'll go for a walk."
    **Options**: After / Before / Until
    **Answer**: After
-   **Explanation**: "After" indica ação posterior. "After we eat, walk" — caminhar acontece depois de comer.
+   **Explanation**: "After" marks a later action. "After we eat, walk" — walking happens after eating.
 
 3. **word_bank** — "Brush your teeth _____ you go to bed."
    **Choices**: before / after / until / by
    **Answer**: before
-   **Explanation**: Escovar dentes acontece ANTES de dormir. "Before you go to bed" — present simple após "before" (rotina/futuro).
+   **Explanation**: Brushing your teeth happens BEFORE sleeping. "Before you go to bed" — present simple after "before" (routine/future).
 
 4. **word_bank** — "_____ I _____ from work, I usually cook dinner."
    **Choices**: After / get / Before / get / After / will get / Before / am getting
    **Answer**: After / get
-   **Explanation**: "After I get from work" — present simple com "I" + base form "get". Rotina diária.
+   **Explanation**: "After I get from work" — present simple with "I" + base form "get". Daily routine.
 
 5. **fill_gap** — "I'll text you before I _____ to the meeting."
    **Hint**: present simple "go" com I
    **Answer**: go
-   **Explanation**: "Before I go" — present simple base form. Time clause sempre present simple, mesmo no contexto futuro.
+   **Explanation**: "Before I go" — present simple base form. Time clauses always use present simple, even in future contexts.
 
 6. **fill_gap** — "After she _____ the report, she'll send it to you."
    **Hint**: present simple 3ª pessoa de "finish"
    **Answer**: finishes
-   **Explanation**: "After she finishes" — 3ª pessoa singular com -es. "After + present simple" para sequência futura.
+   **Explanation**: "After she finishes" — 3rd person singular with -es. "After + present simple" for future sequence.
 
 7. **fill_gap** — "_____ you _____, please clean the kitchen."
    **Hint**: before + present simple de "leave"
    **Answer**: Before / leave
-   **Explanation**: "Before you leave" — pedido para antes da saída. Present simple base form com "you".
+   **Explanation**: "Before you leave" — a request for before departure. Present simple base form with "you".
 
 8. **fix_error** — "I'll call you before I will arrive."
    **Hint**: Após "before" em contexto futuro, present simple
    **Answer**: I'll call you before I arrive.
-   **Explanation**: Mesma regra do "when": após "before"/"after"/"until" em referência ao futuro, sempre present simple. Nunca "will" dentro da time clause.
+   **Explanation**: Same rule as "when": after "before"/"after"/"until" referring to the future, always present simple. Never "will" inside the time clause.
 
 9. **fix_error** — "After we will eat, we'll watch a movie."
    **Hint**: Sem "will" após "after"
    **Answer**: After we eat, we'll watch a movie.
-   **Explanation**: "After we eat" — present simple. "Will" só na cláusula principal (we'll watch).
+   **Explanation**: "After we eat" — present simple. "Will" only in the main clause (we'll watch).
 
 10. **read_answer**
     **Passage**: "Before you leave, please lock the door. After we eat dinner, we'll go for a walk. I'll text you before I arrive. After she finishes the report, she'll send it."
@@ -362,47 +362,47 @@
 1. **multiple_choice** — "I'll wait _____ you arrive."
    **Options**: until / before / since
    **Answer**: until
-   **Explanation**: "Until" = até (duração contínua até um ponto). "I'll wait until you arrive" — espera continua até esse momento.
+   **Explanation**: "Until" = up to (continuous duration up to a point). "I'll wait until you arrive" — the waiting continues up to that moment.
 
 2. **multiple_choice** — "_____ you finish reading, dinner will be ready."
    **Options**: By the time / Until / Before
    **Answer**: By the time
-   **Explanation**: "By the time" = quando + before (no momento ou antes). Aqui: jantar pronto antes ou exatamente quando você termina de ler.
+   **Explanation**: "By the time" = when + before (at or before that moment). Here: dinner ready before or exactly when you finish reading.
 
 3. **word_bank** — "Stay here _____ I get back."
    **Choices**: until / by the time / since / before
    **Answer**: until
-   **Explanation**: "Stay until I get back" — duração contínua. Você fica AQUI por todo o tempo até eu voltar.
+   **Explanation**: "Stay until I get back" — continuous duration. You stay HERE the whole time until I return.
 
 4. **word_bank** — "_____ we arrive, the movie will have started."
    **Choices**: By the time / Until / Since / Before
    **Answer**: By the time
-   **Explanation**: "By the time we arrive" — quando chegarmos, o filme já vai ter começado. Indica ponto temporal de referência.
+   **Explanation**: "By the time we arrive" — when we arrive, the movie will already have started. Marks a temporal reference point.
 
 5. **fill_gap** — "Don't leave _____ I tell you to."
    **Hint**: duração contínua
    **Answer**: until
-   **Explanation**: "Until I tell you" — fique aqui por todo o tempo, até receber permissão. Duração.
+   **Explanation**: "Until I tell you" — stay here the whole time, until you get permission. Duration.
 
 6. **fill_gap** — "_____ I _____ home, my parents will be asleep."
    **Hint**: by the time + present simple "get"
    **Answer**: By the time / get
-   **Explanation**: "By the time I get home" — quando eu chegar em casa, eles já estarão dormindo. Present simple após "by the time" no futuro.
+   **Explanation**: "By the time I get home" — when I get home, they'll already be asleep. Present simple after "by the time" in future contexts.
 
 7. **fill_gap** — "I'll keep trying _____ I succeed."
    **Hint**: até atingir o resultado
    **Answer**: until
-   **Explanation**: "Until I succeed" — continuar tentando por todo o tempo até ter sucesso. Duração.
+   **Explanation**: "Until I succeed" — keep trying the whole time until succeeding. Duration.
 
 8. **fix_error** — "I'll wait until you will arrive."
    **Hint**: Sem "will" após "until" no futuro
    **Answer**: I'll wait until you arrive.
-   **Explanation**: Como "when"/"before"/"after", "until" também não aceita "will" na cláusula futura. Present simple "arrive".
+   **Explanation**: Like "when"/"before"/"after", "until" also doesn't take "will" in the future clause. Present simple "arrive".
 
 9. **fix_error** — "By the time you will finish, I'll be home."
    **Hint**: Sem "will" após "by the time"
    **Answer**: By the time you finish, I'll be home.
-   **Explanation**: "By the time you finish" — present simple. "Will" só na cláusula principal "I'll be home".
+   **Explanation**: "By the time you finish" — present simple. "Will" only in the main clause "I'll be home".
 
 10. **read_answer**
     **Passage**: "I'll wait until you arrive at the station. By the time we finish dinner, it'll be 10pm. Stay here until I get back. By the time I write this, my flight will be boarding."
@@ -527,47 +527,47 @@
 1. **multiple_choice** — "I'll call you _____ I get home."
    **Options**: as soon as / by the time / until
    **Answer**: as soon as
-   **Explanation**: "As soon as" = assim que / no momento exato em que. Ação imediata após outra.
+   **Explanation**: "As soon as" = the exact moment when / right after. Immediate action following another.
 
 2. **multiple_choice** — "_____ she _____ the news, she'll be happy."
    **Options**: As soon as / hears / Until / hears / By the time / will hear
    **Answer**: As soon as / hears
-   **Explanation**: "As soon as she hears" — present simple 3ª pessoa "hears". Reação imediata após receber notícia.
+   **Explanation**: "As soon as she hears" — present simple 3rd person "hears". Immediate reaction to receiving news.
 
 3. **word_bank** — "Send me a message _____ you arrive."
    **Choices**: as soon as / by the time / until / before
    **Answer**: as soon as
-   **Explanation**: "As soon as you arrive" — imediatamente quando chegar. Imediatismo.
+   **Explanation**: "As soon as you arrive" — immediately upon arrival. Immediacy.
 
 4. **word_bank** — "I'll let you know _____ I _____ a decision."
    **Choices**: as soon as / make / as soon as / will make / until / make / before / will make
    **Answer**: as soon as / make
-   **Explanation**: "As soon as I make a decision" — assim que tomar a decisão.
+   **Explanation**: "As soon as I make a decision" — the moment I make the decision.
 
 5. **fill_gap** — "_____ they _____ home, they'll start cooking."
    **Hint**: as soon as + present simple "get" plural
    **Answer**: As soon as / get
-   **Explanation**: "As soon as they get home" — plural sem -s. Reação imediata.
+   **Explanation**: "As soon as they get home" — plural without -s. Immediate reaction.
 
 6. **fill_gap** — "Call me _____ you _____ help."
    **Hint**: as soon as + present simple "need"
    **Answer**: as soon as / need
-   **Explanation**: "As soon as you need help" — imediato. Promessa de disponibilidade.
+   **Explanation**: "As soon as you need help" — immediate. A promise of availability.
 
 7. **fill_gap** — "I'll start _____ the music _____."
    **Hint**: as soon as + present simple 3ª pessoa "begin"
    **Answer**: as soon as / begins
-   **Explanation**: "As soon as the music begins" — 3ª pessoa singular "begins" com -s.
+   **Explanation**: "As soon as the music begins" — 3rd person singular "begins" with -s.
 
 8. **fix_error** — "I'll text you as soon as I will arrive."
    **Hint**: Sem "will" após "as soon as"
    **Answer**: I'll text you as soon as I arrive.
-   **Explanation**: "As soon as" segue mesma regra das outras time clauses: present simple no futuro, nunca "will".
+   **Explanation**: "As soon as" follows the same rule as the other time clauses: present simple in the future, never "will".
 
 9. **fix_error** — "As soon as she will hear, she'll call me."
    **Hint**: Present simple após "as soon as"
    **Answer**: As soon as she hears, she'll call me.
-   **Explanation**: "Hears" — 3ª pessoa present simple. "Will" só na cláusula principal "she'll call".
+   **Explanation**: "Hears" — 3rd person present simple. "Will" only in the main clause "she'll call".
 
 10. **read_answer**
     **Passage**: "I'll call you as soon as I get home. As soon as she hears the news, she'll be thrilled. Let me know as soon as you arrive. As soon as I have updates, I'll share them."
@@ -697,42 +697,42 @@
 2. **multiple_choice** — "_____ you leave, please turn off the lights."
    **Options**: Before / After / Until
    **Answer**: Before
-   **Explanation**: "Before you leave" — ação anterior à saída.
+   **Explanation**: "Before you leave" — an action prior to departure.
 
 3. **word_bank** — "I'll wait here _____ you call me back."
    **Choices**: until / by the time / as soon as / before
    **Answer**: until
-   **Explanation**: "Until you call back" — duração da espera.
+   **Explanation**: "Until you call back" — duration of the wait.
 
 4. **word_bank** — "_____ the meeting ends, I'll have lunch."
    **Choices**: After / Until / Since / Before
    **Answer**: After
-   **Explanation**: "After the meeting ends" — sequência: almoço depois da reunião.
+   **Explanation**: "After the meeting ends" — sequence: lunch after the meeting.
 
 5. **fill_gap** — "_____ I _____ home, dinner will be ready."
    **Hint**: by the time + present simple "get"
    **Answer**: By the time / get
-   **Explanation**: "By the time I get home" — ponto de referência futuro.
+   **Explanation**: "By the time I get home" — future reference point.
 
 6. **fill_gap** — "Don't leave _____ I _____ you the documents."
    **Hint**: until + present simple "give"
    **Answer**: until / give
-   **Explanation**: "Until I give you" — duração até receber documentos.
+   **Explanation**: "Until I give you" — duration until you receive the documents.
 
 7. **fill_gap** — "_____ we _____ dinner, let's relax."
    **Hint**: after + present simple "finish"
    **Answer**: After / finish
-   **Explanation**: "After we finish" — sequência: relaxar depois de jantar.
+   **Explanation**: "After we finish" — sequence: relax after dinner.
 
 8. **fix_error** — "I'll text you as soon as I will land."
    **Hint**: Time clause sem "will"
    **Answer**: I'll text you as soon as I land.
-   **Explanation**: "As soon as I land" — present simple. Esta regra vale para TODAS as time clauses (when, before, after, until, by the time, as soon as).
+   **Explanation**: "As soon as I land" — present simple. This rule applies to ALL time clauses (when, before, after, until, by the time, as soon as).
 
 9. **fix_error** — "By the time you will read this, I'll be gone."
    **Hint**: Sem "will" após "by the time"
    **Answer**: By the time you read this, I'll be gone.
-   **Explanation**: Present simple "read" após "by the time". "Will" só na cláusula principal.
+   **Explanation**: Present simple "read" after "by the time". "Will" only in the main clause.
 
 10. **read_answer**
     **Passage**: "As soon as I land, I'll text you. By the time we meet for dinner, I'll have unpacked. Until then, please water my plants. After I get back, we'll celebrate."

@@ -31,47 +31,47 @@
 1. **multiple_choice** — "My brother, _____ lives in Rio, is a teacher."
    **Options**: who / that / which / whose
    **Answer**: who
-   **Explanation**: Non-defining relative clause para pessoas usa "who" (nunca "that" em non-defining). Vírgulas indicam informação EXTRA — não essencial para identificar o irmão.
+   **Explanation**: A non-defining relative clause for people uses "who" (never "that" in non-defining). Commas signal EXTRA information — not essential to identify the brother.
 
 2. **multiple_choice** — "Maria, _____ I met yesterday, is from Spain."
    **Options**: who / that / which / whose
    **Answer**: who
-   **Explanation**: "Who" para pessoa em non-defining. "That" não é usado com vírgulas. "Whom" seria formal mas "who" predomina em uso atual.
+   **Explanation**: "Who" for people in non-defining. "That" isn't used with commas. "Whom" would be formal, but "who" dominates current usage.
 
 3. **word_bank** — "My boss, _____ is very strict, gave me a raise."
    **Choices**: who / that / which / whose
    **Answer**: who
-   **Explanation**: Non-defining: "who is very strict". "That" não funciona em non-defining.
+   **Explanation**: Non-defining: "who is very strict". "That" doesn't work in non-defining.
 
 4. **word_bank** — "Tom, _____ I've known for years, just got married."
    **Choices**: who / that / which / whose
    **Answer**: who
-   **Explanation**: "Who I've known for years" — informação extra sobre Tom. Pessoa específica, vírgulas.
+   **Explanation**: "Who I've known for years" — extra info about Tom. Specific person, commas.
 
 5. **fill_gap** — "My sister, _____ studies medicine, lives in São Paulo."
    **Hint**: relative pronoun para pessoa em non-defining
    **Answer**: who
-   **Explanation**: "Who studies medicine" — extra info sobre a irmã. Específica.
+   **Explanation**: "Who studies medicine" — extra info about the sister. Specific.
 
 6. **fill_gap** — "Ana, _____ I work with, just had a baby."
    **Hint**: who
    **Answer**: who
-   **Explanation**: "Who I work with" — extra info sobre Ana. Note: posição preposição final aceita.
+   **Explanation**: "Who I work with" — extra info about Ana. Note: stranded preposition at the end is acceptable.
 
 7. **fill_gap** — "Mr. Silva, _____ teaches English, is from Portugal."
    **Hint**: who
    **Answer**: who
-   **Explanation**: "Who teaches English" — informação adicional sobre uma pessoa identificada por nome.
+   **Explanation**: "Who teaches English" — extra information about a person already identified by name.
 
 8. **fix_error** — "My brother, that lives in Rio, is a teacher."
    **Hint**: Em non-defining (com vírgulas), use "who", não "that"
    **Answer**: My brother, who lives in Rio, is a teacher.
-   **Explanation**: Erro comum: usar "that" em non-defining. "That" só em defining (sem vírgulas). Para non-defining: "who".
+   **Explanation**: Common error: using "that" in non-defining. "That" only in defining clauses (no commas). For non-defining: "who".
 
 9. **fix_error** — "Maria who I met yesterday is from Spain."
    **Hint**: Non-defining precisa de vírgulas
    **Answer**: Maria, who I met yesterday, is from Spain.
-   **Explanation**: Maria já é específica (nome próprio). A informação é EXTRA, não identifica. Logo, precisa de vírgulas (non-defining).
+   **Explanation**: Maria is already specific (proper name). The information is EXTRA, it doesn't identify. So, commas are needed (non-defining).
 
 10. **read_answer**
     **Passage**: "My brother, who lives in Rio, is a teacher. Maria, who I met last week, is from Spain. My boss, who is very strict, gave me a raise. Mr. Silva, who teaches English, is from Portugal."
@@ -196,47 +196,47 @@
 1. **multiple_choice** — "The Amazon, _____ is the longest river, runs through Brazil."
    **Options**: which / that / who / where
    **Answer**: which
-   **Explanation**: Non-defining para coisa/lugar: "which". "That" não funciona em non-defining. "The Amazon" já está identificado, então a info é EXTRA.
+   **Explanation**: Non-defining for thing/place: "which". "That" doesn't work in non-defining. "The Amazon" is already identified, so the info is EXTRA.
 
 2. **multiple_choice** — "My new phone, _____ I bought last week, broke already."
    **Options**: which / that / who / whose
    **Answer**: which
-   **Explanation**: "Which I bought last week" — info extra sobre o telefone específico. Em non-defining, "which" obrigatório.
+   **Explanation**: "Which I bought last week" — extra info about the specific phone. In non-defining, "which" is required.
 
 3. **word_bank** — "She didn't call me back, _____ surprised me."
    **Choices**: which / that / who / what
    **Answer**: which
-   **Explanation**: "Which" pode se referir a uma CLÁUSULA inteira anterior. "Which surprised me" — o fato dela não chamar é o que surpreendeu.
+   **Explanation**: "Which" can refer to an entire previous CLAUSE. "Which surprised me" — the fact that she didn't call is what surprised me.
 
 4. **word_bank** — "The book, _____ won an award, became a bestseller."
    **Choices**: which / that / who / whose
    **Answer**: which
-   **Explanation**: "Which won an award" — info extra sobre o livro. Non-defining com "which".
+   **Explanation**: "Which won an award" — extra info about the book. Non-defining with "which".
 
 5. **fill_gap** — "Brazil, _____ is the largest country in South America, has many cultures."
    **Hint**: which (para país/coisa em non-defining)
    **Answer**: which
-   **Explanation**: "Which is the largest country" — informação adicional sobre o Brasil.
+   **Explanation**: "Which is the largest country" — extra information about Brazil.
 
 6. **fill_gap** — "My laptop, _____ I use every day, is getting old."
    **Hint**: which
    **Answer**: which
-   **Explanation**: "Which I use every day" — info extra sobre o laptop específico.
+   **Explanation**: "Which I use every day" — extra info about the specific laptop.
 
 7. **fill_gap** — "He arrived two hours late, _____ made everyone angry."
    **Hint**: which (refere-se à cláusula anterior)
    **Answer**: which
-   **Explanation**: "Which made everyone angry" — "which" se refere ao fato dele ter chegado tarde. Cláusula-referente.
+   **Explanation**: "Which made everyone angry" — "which" refers to the fact that he arrived late. Clause-level referent.
 
 8. **fix_error** — "The Amazon, that is the longest river, runs through Brazil."
    **Hint**: Non-defining usa "which", não "that"
    **Answer**: The Amazon, which is the longest river, runs through Brazil.
-   **Explanation**: "That" só em defining (sem vírgulas). Para non-defining: "which".
+   **Explanation**: "That" only in defining clauses (no commas). For non-defining: "which".
 
 9. **fix_error** — "My phone which I bought last week broke already."
    **Hint**: Non-defining precisa de vírgulas
    **Answer**: My phone, which I bought last week, broke already.
-   **Explanation**: Se a info é EXTRA (não identifica entre vários phones), use vírgulas. Sem vírgulas seria defining (entre vários, o que comprei semana passada).
+   **Explanation**: If the info is EXTRA (doesn't identify among several phones), use commas. Without commas, it would be defining (among several, the one I bought last week).
 
 10. **read_answer**
     **Passage**: "The Amazon, which is the longest river in South America, runs through Brazil. My new phone, which I bought last week, broke already. The book, which won an award last year, became a bestseller. Brazil, which is the largest country in South America, has many cultures."
@@ -361,47 +361,47 @@
 1. **multiple_choice** — "Maria, _____ father is a doctor, is studying medicine too."
    **Options**: whose / who / which / that
    **Answer**: whose
-   **Explanation**: "Whose" indica POSSESSÃO em relative clause. "Maria, whose father..." — o pai DE Maria. Funciona em defining e non-defining.
+   **Explanation**: "Whose" signals POSSESSION in a relative clause. "Maria, whose father..." — Maria's father. Works in both defining and non-defining.
 
 2. **multiple_choice** — "My neighbor, _____ dog barks all night, is moving away."
    **Options**: whose / who / which / that
    **Answer**: whose
-   **Explanation**: "Whose dog" — o cachorro DO vizinho. Possessão. Não confunde com "who's" (who is).
+   **Explanation**: "Whose dog" — the neighbor's dog. Possession. Don't confuse with "who's" (who is).
 
 3. **word_bank** — "The author, _____ book I loved, is coming to town."
    **Choices**: whose / who / which / that
    **Answer**: whose
-   **Explanation**: "Whose book" — o livro DO autor. Possessão.
+   **Explanation**: "Whose book" — the author's book. Possession.
 
 4. **word_bank** — "Tom, _____ wife is from Spain, speaks fluent Spanish."
    **Choices**: whose / who / which / that
    **Answer**: whose
-   **Explanation**: "Whose wife" — a esposa DE Tom. Possessão de pessoa.
+   **Explanation**: "Whose wife" — Tom's wife. Possession of a person.
 
 5. **fill_gap** — "My friend, _____ car is in the shop, took the bus today."
    **Hint**: whose (possessão)
    **Answer**: whose
-   **Explanation**: "Whose car" — o carro DO amigo.
+   **Explanation**: "Whose car" — the friend's car.
 
 6. **fill_gap** — "The singer, _____ songs are famous worldwide, is from Brazil."
    **Hint**: whose
    **Answer**: whose
-   **Explanation**: "Whose songs" — as canções DO cantor.
+   **Explanation**: "Whose songs" — the singer's songs.
 
 7. **fill_gap** — "Mrs. Garcia, _____ children study with mine, is a great teacher."
    **Hint**: whose
    **Answer**: whose
-   **Explanation**: "Whose children" — os filhos DA Mrs. Garcia.
+   **Explanation**: "Whose children" — Mrs. Garcia's children.
 
 8. **fix_error** — "Maria, who's father is a doctor, is studying medicine."
    **Hint**: "Who's" = "who is" — para possessão use "whose"
    **Answer**: Maria, whose father is a doctor, is studying medicine.
-   **Explanation**: "Who's" = "who is" (contração). "Whose" = possessão. Erro comum: confundir os dois pela pronúncia idêntica.
+   **Explanation**: "Who's" = "who is" (contraction). "Whose" = possession. Common error: confusing them because of identical pronunciation.
 
 9. **fix_error** — "My neighbor, that dog barks all night, is moving."
    **Hint**: Possessão em non-defining usa "whose"
    **Answer**: My neighbor, whose dog barks all night, is moving.
-   **Explanation**: "That" não funciona para possessão e nem em non-defining. Para mostrar de quem é o cachorro: "whose".
+   **Explanation**: "That" doesn't work for possession or in non-defining. To show whose dog it is: "whose".
 
 10. **read_answer**
     **Passage**: "Maria, whose father is a doctor, is studying medicine. My neighbor, whose dog barks all night, is moving. The author, whose book I loved, is coming to town. Tom, whose wife is from Spain, speaks fluent Spanish."
@@ -526,47 +526,47 @@
 1. **multiple_choice** — "Paris, _____ I lived for a year, is beautiful."
    **Options**: where / which / that / who
    **Answer**: where
-   **Explanation**: "Where" para lugar em non-defining. "Paris, where I lived" = "in Paris". Mais natural que "which".
+   **Explanation**: "Where" for place in non-defining. "Paris, where I lived" = "in Paris". More natural than "which".
 
 2. **multiple_choice** — "2020, _____ the pandemic started, was a hard year."
    **Options**: when / where / which / that
    **Answer**: when
-   **Explanation**: "When" para tempo em non-defining. "In 2020, the pandemic started" → "2020, when the pandemic started".
+   **Explanation**: "When" for time in non-defining. "In 2020, the pandemic started" → "2020, when the pandemic started".
 
 3. **word_bank** — "My hometown, _____ I grew up, is small."
    **Choices**: where / which / that / when
    **Answer**: where
-   **Explanation**: "Where I grew up" — lugar de onde sou. Non-defining "where".
+   **Explanation**: "Where I grew up" — the place I'm from. Non-defining "where".
 
 4. **word_bank** — "The summer of 2018, _____ I traveled to Europe, was unforgettable."
    **Choices**: when / where / which / that
    **Answer**: when
-   **Explanation**: "When I traveled" — tempo específico em non-defining.
+   **Explanation**: "When I traveled" — specific time in non-defining.
 
 5. **fill_gap** — "São Paulo, _____ I work, is a huge city."
    **Hint**: where (lugar)
    **Answer**: where
-   **Explanation**: "Where I work" — lugar específico de trabalho.
+   **Explanation**: "Where I work" — specific place of work.
 
 6. **fill_gap** — "March, _____ I was born, is my favorite month."
    **Hint**: when (tempo)
    **Answer**: when
-   **Explanation**: "When I was born" — tempo específico.
+   **Explanation**: "When I was born" — specific time.
 
 7. **fill_gap** — "The university, _____ I studied, is famous."
    **Hint**: where
    **Answer**: where
-   **Explanation**: "Where I studied" — lugar de estudo.
+   **Explanation**: "Where I studied" — place of study.
 
 8. **fix_error** — "Paris, which I lived for a year, is beautiful."
    **Hint**: Para LUGAR de habitação, "where" é mais natural
    **Answer**: Paris, where I lived for a year, is beautiful.
-   **Explanation**: "Which" funcionaria em estrutura como "which I visited" (objeto direto), mas para "in Paris" (lugar de habitação), "where" é correto.
+   **Explanation**: "Which" would work in a structure like "which I visited" (direct object), but for "in Paris" (place of residence), "where" is correct.
 
 9. **fix_error** — "2020, which the pandemic started, was hard."
    **Hint**: Para TEMPO, use "when"
    **Answer**: 2020, when the pandemic started, was hard.
-   **Explanation**: Anos, meses, momentos → "when". "Which" não funciona como tempo.
+   **Explanation**: Years, months, moments → "when". "Which" doesn't work for time.
 
 10. **read_answer**
     **Passage**: "Paris, where I lived for a year, is beautiful. 2020, when the pandemic started, was a hard year. My hometown, where I grew up, is small. The summer of 2018, when I traveled to Europe, was unforgettable."
@@ -691,47 +691,47 @@
 1. **multiple_choice** — Defining: "The man _____ called me is my boss." (which type?)
    **Options**: who / that / which / no relative pronoun
    **Answer**: who
-   **Explanation**: "Who" funciona em ambas — defining e non-defining para pessoas. "That" também funciona em defining. Como "no commas", é defining.
+   **Explanation**: "Who" works in both — defining and non-defining for people. "That" also works in defining. Since there are no commas, it's defining.
 
 2. **multiple_choice** — Non-defining: "My boss, _____ called me, gave me a raise."
    **Options**: who / that / which / whose
    **Answer**: who
-   **Explanation**: Vírgulas = non-defining. "That" NÃO funciona em non-defining. Apenas "who".
+   **Explanation**: Commas = non-defining. "That" does NOT work in non-defining. Only "who".
 
 3. **word_bank** — Defining: "The book _____ I bought yesterday is great."
    **Choices**: that / which / who / whose
    **Answer**: that
-   **Explanation**: Defining (sem vírgulas) com objeto: "that" ou "which" ou nada. "That" é o mais natural em defining.
+   **Explanation**: Defining (no commas) with object: "that" or "which" or nothing. "That" is the most natural in defining.
 
 4. **word_bank** — Non-defining: "This book, _____ I bought yesterday, is great."
    **Choices**: which / that / who / whose
    **Answer**: which
-   **Explanation**: Vírgulas = non-defining. "Which" obrigatório (não "that").
+   **Explanation**: Commas = non-defining. "Which" required (not "that").
 
 5. **fill_gap** — Defining: "The woman _____ lives next door is a doctor."
    **Hint**: who/that (defining para pessoa)
    **Answer**: who
-   **Explanation**: Defining identifica QUEM (entre várias mulheres). "Who" funciona; "that" também.
+   **Explanation**: Defining identifies WHO (among several women). "Who" works; "that" does too.
 
 6. **fill_gap** — Non-defining: "My mother, _____ is a doctor, lives next door."
    **Hint**: who (única mãe, info extra)
    **Answer**: who
-   **Explanation**: "My mother" já é específica (única). A info é EXTRA, não identifica.
+   **Explanation**: "My mother" is already specific (only one). The info is EXTRA, not identifying.
 
 7. **fill_gap** — Defining: "The town _____ I grew up is small."
    **Hint**: where (lugar em defining)
    **Answer**: where
-   **Explanation**: Defining "where" sem vírgulas. "The town where I grew up" — identifica qual cidade.
+   **Explanation**: Defining "where" with no commas. "The town where I grew up" — identifies which town.
 
 8. **fix_error** — Non-defining: "My brother, that lives in Rio, is a teacher."
    **Hint**: Non-defining não usa "that"
    **Answer**: My brother, who lives in Rio, is a teacher.
-   **Explanation**: Erro mais comum: "that" em non-defining. Apenas defining permite "that". Non-defining: "who" ou "which".
+   **Explanation**: Most common error: "that" in non-defining. Only defining allows "that". Non-defining: "who" or "which".
 
 9. **fix_error** — Defining mas sem vírgulas: "The man who called me yesterday is my boss." Está correto?
    **Hint**: Sim, é defining correto
    **Answer**: The man who called me yesterday is my boss.
-   **Explanation**: Frase já está correta. "The man who called" — identifica QUAL homem (entre vários). Defining sem vírgulas.
+   **Explanation**: The sentence is already correct. "The man who called" — identifies WHICH man (among several). Defining, no commas.
 
 10. **read_answer**
     **Passage**: "The man who called me yesterday is my boss (defining — identifies which man). My boss, who called me yesterday, is great (non-defining — extra info about the only boss). The book that I bought is fascinating (defining). This book, which won an award, is fascinating (non-defining)."

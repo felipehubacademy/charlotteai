@@ -118,7 +118,7 @@
           "passage": "For breakfast I have two eggs, some bread, and a cup of coffee. My sister has one apple and some yogurt.",
           "question": "How many eggs does the speaker have?",
           "answer": "two",
-          "explanation": "The text says \"I have two eggs\"."
+          "explanation": "O texto diz \"I have two eggs\"."
         }
       ],
       "listening_speaking": [
@@ -322,7 +322,7 @@
           "passage": "I have some bread but I don't have any milk. Is there any cheese? Yes, there's some cheese in the fridge.",
           "question": "What does the speaker NOT have?",
           "answer": "milk",
-          "explanation": "The text says \"I don't have any milk\"."
+          "explanation": "O texto diz \"I don't have any milk\"."
         }
       ],
       "listening_speaking": [
@@ -526,7 +526,7 @@
           "passage": "Q: How much is the coffee? A: It's $3. Q: How many cookies do you want? A: Three, please.",
           "question": "How many cookies does the customer want?",
           "answer": "three",
-          "explanation": "The text says \"Three, please\"."
+          "explanation": "O texto diz \"Three, please\"."
         }
       ],
       "listening_speaking": [
@@ -728,7 +728,7 @@
           "passage": "Waiter: What would you like? Customer: I'd like a pasta and a glass of water. Waiter: Anything else? Customer: No, that's all. Can I have the bill?",
           "question": "What does the customer order to drink?",
           "answer": "a glass of water (or \"water\")",
-          "explanation": "The text says \"a glass of water\"."
+          "explanation": "O texto diz \"a glass of water\"."
         }
       ],
       "listening_speaking": [
@@ -932,7 +932,7 @@
           "passage": "I'd like a sandwich and some water. We don't have any cookies. How many apples are there? Three.",
           "question": "How many apples are there?",
           "answer": "three",
-          "explanation": "The text says \"Three\" in answer to the question."
+          "explanation": "O texto responde \"Three\" à pergunta."
         }
       ],
       "listening_speaking": [

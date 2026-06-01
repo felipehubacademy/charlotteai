@@ -93,7 +93,7 @@
           "sentence": "He was _____ his car with soap when I called.",
           "hint": "verb \"wash\" in -ing form",
           "answer": "washing",
-          "explanation": "\"Wash\" + ing = \"washing\". \"With soap\" deixa claro que o verbo eh \"wash\" (nao \"fix\" / \"drive\"). Note: -ing simples, sem dobrar consoante."
+          "explanation": "\"Wash\" + ing = \"washing\". \"With soap\" makes it clear the verb is \"wash\" (not \"fix\" / \"drive\"). Note: simple -ing, no doubled consonant."
         },
         {
           "type": "fix_error",

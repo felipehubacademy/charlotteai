@@ -33,47 +33,47 @@
 1. **multiple_choice** — "I wanted to go. _____, I was too tired."
    **Options**: However / Therefore / Besides / Moreover
    **Answer**: However
-   **Explanation**: "However" introduz contraste formal entre duas frases. Vem no início, seguido de vírgula. Mais formal que "but".
+   **Explanation**: "However" introduces formal contrast between two sentences. Comes at the start, followed by a comma. More formal than "but".
 
 2. **multiple_choice** — "The plan was risky. _____, we decided to proceed."
    **Options**: Nevertheless / Therefore / Furthermore / For example
    **Answer**: Nevertheless
-   **Explanation**: "Nevertheless" = apesar disso, mesmo assim. Contraste forte, formal. Sinônimo de "however" mas com ênfase em "apesar de".
+   **Explanation**: "Nevertheless" = despite that, even so. Strong, formal contrast. Synonym of "however" but with emphasis on "despite".
 
 3. **word_bank** — "She is intelligent. _____, she lacks experience."
    **Choices**: However / Therefore / Furthermore / In addition
    **Answer**: However
-   **Explanation**: Contraste entre qualidades. "However" liga duas observações opostas.
+   **Explanation**: Contrast between qualities. "However" links two opposing observations.
 
 4. **word_bank** — "I love coffee. _____, my friend prefers tea."
    **Choices**: On the other hand / Therefore / Besides / Furthermore
    **Answer**: On the other hand
-   **Explanation**: "On the other hand" — outro lado/perspectiva. Contraste paralelo entre dois pontos de vista.
+   **Explanation**: "On the other hand" — another side/perspective. Parallel contrast between two viewpoints.
 
 5. **fill_gap** — "The product is expensive. _____, the quality is excellent."
    **Hint**: Conector de contraste no início de frase
    **Answer**: However
-   **Explanation**: "However" liga avaliações contrastantes. Comum em reviews ou análises.
+   **Explanation**: "However" links contrasting evaluations. Common in reviews or analyses.
 
 6. **fill_gap** — "The weather was bad. _____, we had fun."
    **Hint**: Mesmo assim — Nevertheless
    **Answer**: Nevertheless
-   **Explanation**: "Nevertheless" — apesar de tudo. Contraste enfático.
+   **Explanation**: "Nevertheless" — despite everything. Emphatic contrast.
 
 7. **fill_gap** — "He's introverted. _____, she's very outgoing."
    **Hint**: Contraste paralelo — On the other hand
    **Answer**: On the other hand
-   **Explanation**: "On the other hand" para comparação entre duas pessoas/coisas.
+   **Explanation**: "On the other hand" for comparison between two people/things.
 
 8. **fix_error** — "I love pizza, however, I can't eat it daily."
    **Hint**: "However" precisa de ponto antes (não vírgula)
    **Answer**: I love pizza. However, I can't eat it daily.
-   **Explanation**: "However" inicia nova oração, separada por ponto. Vírgula antes faz comma splice. Pontuação correta: ponto + However + vírgula.
+   **Explanation**: "However" starts a new sentence, separated by a period. A comma before creates a comma splice. Correct punctuation: period + However + comma.
 
 9. **fix_error** — "However the weather, we went out."
    **Hint**: Falta vírgula após "However" no início
    **Answer**: However, the weather was bad. We went out.
-   **Explanation**: "However" sempre tem vírgula DEPOIS quando inicia oração. E não substitui "although" (que liga cláusulas).
+   **Explanation**: "However" always takes a comma AFTER when starting a sentence. And it doesn't replace "although" (which joins clauses).
 
 10. **read_answer**
     **Passage**: "I wanted to go. However, I was too tired. The plan was risky. Nevertheless, we decided to proceed. She is intelligent. However, she lacks experience. I love coffee. On the other hand, my friend prefers tea."
@@ -198,47 +198,47 @@
 1. **multiple_choice** — "_____ it was raining, we went out."
    **Options**: Although / Despite / In spite / However
    **Answer**: Although
-   **Explanation**: "Although + cláusula completa" (subject + verb). "Although it was raining" — concessão em uma frase só.
+   **Explanation**: "Although + full clause" (subject + verb). "Although it was raining" — concession within a single sentence.
 
 2. **multiple_choice** — "_____ the rain, we went out."
    **Options**: Despite / Although / Even though / However
    **Answer**: Despite
-   **Explanation**: "Despite + noun" (sem cláusula). "Despite the rain" — só substantivo. Não pode "despite it was raining".
+   **Explanation**: "Despite + noun" (no clause). "Despite the rain" — noun only. You can't say "despite it was raining".
 
 3. **word_bank** — "_____ being tired, she finished the project."
    **Choices**: Despite / Although / However / Therefore
    **Answer**: Despite
-   **Explanation**: "Despite + -ing" funciona. "Despite being tired" — gerúndio.
+   **Explanation**: "Despite + -ing" works. "Despite being tired" — gerund.
 
 4. **word_bank** — "_____ he is rich, he isn't happy."
    **Choices**: Although / Despite / However / Therefore
    **Answer**: Although
-   **Explanation**: "Although + sujeito + verbo". Cláusula completa.
+   **Explanation**: "Although + subject + verb". Full clause.
 
 5. **fill_gap** — "_____ the difficulty, we succeeded."
    **Hint**: Despite + substantivo
    **Answer**: Despite
-   **Explanation**: "Despite the difficulty" — substantivo seguindo "despite".
+   **Explanation**: "Despite the difficulty" — noun following "despite".
 
 6. **fill_gap** — "_____ she's young, she's very mature."
    **Hint**: Although + cláusula
    **Answer**: Although
-   **Explanation**: "Although she's young" — cláusula completa após "although".
+   **Explanation**: "Although she's young" — full clause after "although".
 
 7. **fill_gap** — "_____ having a bad day, he stayed kind."
    **Hint**: Despite + -ing
    **Answer**: Despite
-   **Explanation**: "Despite having" — gerúndio após "despite". Equivalente a "in spite of having".
+   **Explanation**: "Despite having" — gerund after "despite". Equivalent to "in spite of having".
 
 8. **fix_error** — "Despite it was raining, we went out."
    **Hint**: "Despite" precisa de substantivo/-ing, não cláusula
    **Answer**: Despite the rain, we went out. (or: Although it was raining, we went out.)
-   **Explanation**: "Despite + cláusula" é erro comum. Use "despite + noun/-ing" OU "although + cláusula completa".
+   **Explanation**: "Despite + clause" is a common error. Use "despite + noun/-ing" OR "although + full clause".
 
 9. **fix_error** — "Although the rain, we went out."
    **Hint**: "Although" precisa de cláusula com sujeito e verbo
    **Answer**: Although it was raining, we went out. (or: Despite the rain, we went out.)
-   **Explanation**: "Although + substantivo" sozinho não funciona. Precisa de sujeito + verbo.
+   **Explanation**: "Although + noun" alone doesn't work. It needs subject + verb.
 
 10. **read_answer**
     **Passage**: "Although it was raining, we went out. Despite the cold, we enjoyed the picnic. Although he is rich, he isn't happy. Despite being tired, she finished the project."
@@ -363,47 +363,47 @@
 1. **multiple_choice** — "Sales dropped. _____, we cut the budget."
    **Options**: Therefore / However / Although / Besides
    **Answer**: Therefore
-   **Explanation**: "Therefore" = portanto. Conecta causa e resultado lógico. Após ponto, com vírgula.
+   **Explanation**: "Therefore" = thus. Links cause and logical result. After a period, with a comma.
 
 2. **multiple_choice** — "He missed the meeting. _____, he wasn't informed."
    **Options**: As a result / However / Despite / Furthermore
    **Answer**: As a result
-   **Explanation**: "As a result" = como resultado. Sinônimo informal de "therefore".
+   **Explanation**: "As a result" = as a consequence. Informal synonym of "therefore".
 
 3. **word_bank** — "It rained heavily. _____, the road flooded."
    **Choices**: Consequently / However / Although / Besides
    **Answer**: Consequently
-   **Explanation**: "Consequently" = consequentemente. Formal, lógico.
+   **Explanation**: "Consequently" = as a consequence. Formal, logical.
 
 4. **word_bank** — "She studied hard. _____, she passed."
    **Choices**: Therefore / However / Despite / In conclusion
    **Answer**: Therefore
-   **Explanation**: Esforço → resultado. "Therefore she passed" — lógica de causa-efeito.
+   **Explanation**: Effort → result. "Therefore she passed" — cause-effect logic.
 
 5. **fill_gap** — "I overslept. _____, I missed the bus."
    **Hint**: As a result (resultado)
    **Answer**: As a result
-   **Explanation**: "As a result I missed" — consequência direta da ação anterior.
+   **Explanation**: "As a result I missed" — direct consequence of the prior action.
 
 6. **fill_gap** — "The project failed. _____, the team was disbanded."
    **Hint**: Consequently
    **Answer**: Consequently
-   **Explanation**: Falha → dispersão. "Consequently" formal.
+   **Explanation**: Failure → disbanding. Formal "consequently".
 
 7. **fill_gap** — "He's allergic to peanuts. _____, he avoids them."
    **Hint**: For that reason
    **Answer**: For that reason
-   **Explanation**: "For that reason" = por essa razão. Conecta motivo a comportamento.
+   **Explanation**: "For that reason" = for that reason. Links motive to behavior.
 
 8. **fix_error** — "Sales dropped therefore we cut the budget."
    **Hint**: Falta pontuação — ponto e vírgula
    **Answer**: Sales dropped. Therefore, we cut the budget.
-   **Explanation**: Conectores entre frases precisam de ponto antes e vírgula depois. Sem pontuação = comma splice.
+   **Explanation**: Sentence connectors need a period before and a comma after. No punctuation = comma splice.
 
 9. **fix_error** — "He was sick, therefore he didn't come."
    **Hint**: "Therefore" prefere ponto/ponto-e-vírgula antes
    **Answer**: He was sick. Therefore, he didn't come. (or: He was sick; therefore, he didn't come.)
-   **Explanation**: Vírgula simples não é forte o bastante para "therefore". Use ponto ou ponto-e-vírgula.
+   **Explanation**: A simple comma isn't strong enough for "therefore". Use a period or semicolon.
 
 10. **read_answer**
     **Passage**: "Sales dropped. Therefore, we cut the budget. He missed the meeting. As a result, he wasn't informed. It rained heavily. Consequently, the road flooded."
@@ -528,47 +528,47 @@
 1. **multiple_choice** — "The course is intensive. _____, it's expensive."
    **Options**: Furthermore / However / Although / Despite
    **Answer**: Furthermore
-   **Explanation**: "Furthermore" = além disso. Adiciona informação no mesmo sentido (não contraste).
+   **Explanation**: "Furthermore" = in addition. Adds information in the same direction (not contrast).
 
 2. **multiple_choice** — "She's a great manager. _____, she's a wonderful person."
    **Options**: Moreover / However / Therefore / Despite
    **Answer**: Moreover
-   **Explanation**: "Moreover" = além disso. Adiciona qualidade adicional. Mais formal que "furthermore" mas similar.
+   **Explanation**: "Moreover" = in addition. Adds an extra quality. More formal than "furthermore" but similar.
 
 3. **word_bank** — "He plays guitar. _____, he writes songs."
    **Choices**: In addition / However / Therefore / Although
    **Answer**: In addition
-   **Explanation**: "In addition" = adicionalmente. Lista de habilidades/qualidades.
+   **Explanation**: "In addition" = additionally. List of skills/qualities.
 
 4. **word_bank** — "I don't want to go. _____, I have work to do."
    **Choices**: Besides / However / Therefore / Although
    **Answer**: Besides
-   **Explanation**: "Besides" = além disso (informal, ofereço outra razão). Comum em conversação.
+   **Explanation**: "Besides" = besides (informal, offering another reason). Common in conversation.
 
 5. **fill_gap** — "Brazil is huge. _____, it has many cultures."
    **Hint**: Adição formal
    **Answer**: Furthermore
-   **Explanation**: "Furthermore" — adicionar outro fato no mesmo argumento.
+   **Explanation**: "Furthermore" — adding another fact to the same argument.
 
 6. **fill_gap** — "Many fruits are healthy, _____ apples and oranges."
    **Hint**: For example, such as (introduzem exemplos)
    **Answer**: such as
-   **Explanation**: "Such as" introduz exemplos diretos após substantivo. Vírgula antes opcional.
+   **Explanation**: "Such as" introduces direct examples after a noun. Comma before is optional.
 
 7. **fill_gap** — "I love hiking. _____, last weekend I climbed a mountain."
    **Hint**: For example, for instance
    **Answer**: For example
-   **Explanation**: "For example" introduz exemplo concreto após generalização.
+   **Explanation**: "For example" introduces a concrete example after a generalization.
 
 8. **fix_error** — "He's smart, furthermore he's funny."
    **Hint**: Pontuação — ponto antes de "furthermore"
    **Answer**: He's smart. Furthermore, he's funny.
-   **Explanation**: Conectores formais entre orações pedem ponto antes, vírgula depois. Comma splice = incorreto.
+   **Explanation**: Formal sentence connectors need a period before, comma after. Comma splice = incorrect.
 
 9. **fix_error** — "For example, apples and oranges are healthy fruits."
    **Hint**: Frase precisa de contexto anterior — exemplo de quê?
    **Answer**: Many fruits are healthy. For example, apples and oranges are common choices.
-   **Explanation**: "For example" precisa de uma afirmação geral antes para exemplificar. Sozinho fica solto.
+   **Explanation**: "For example" needs a general statement before it to exemplify. By itself, it dangles.
 
 10. **read_answer**
     **Passage**: "The course is intensive. Furthermore, it's expensive. She's a great manager. Moreover, she's a wonderful person. He plays guitar. In addition, he writes songs."
@@ -723,17 +723,17 @@
 7. **fill_gap** — "_____, we should proceed with the launch."
    **Hint**: In conclusion (decisão formal)
    **Answer**: In conclusion
-   **Explanation**: "In conclusion" — decisão/recomendação formal.
+   **Explanation**: "In conclusion" — formal decision/recommendation.
 
 8. **fix_error** — "In conclusion the project was successful."
    **Hint**: Falta vírgula após o conector
    **Answer**: In conclusion, the project was successful.
-   **Explanation**: "In conclusion" no início precisa de vírgula depois. Padrão universal de discourse markers iniciais.
+   **Explanation**: "In conclusion" at the start needs a comma after. Universal rule for opening discourse markers.
 
 9. **fix_error** — "All in all I learned a lot this year."
    **Hint**: Vírgula obrigatória após
    **Answer**: All in all, I learned a lot this year.
-   **Explanation**: "All in all" no início = comma obrigatória. Mesmo para conectores informais.
+   **Explanation**: "All in all" at the start = comma required. Same for informal connectors.
 
 10. **read_answer**
     **Passage**: "In conclusion, the project was a success. To sum up, the report shows positive trends. All in all, it was a great experience. Overall, I would recommend this approach."

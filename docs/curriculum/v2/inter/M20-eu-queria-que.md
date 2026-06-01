@@ -32,47 +32,47 @@
 1. **multiple_choice** — "I wish you _____ stop interrupting me!"
    **Options**: would / will / had / did
    **Answer**: would
-   **Explanation**: "I wish + would + base" para reclamar de comportamento recorrente de outra pessoa. "Would stop" — desejo que ele pare.
+   **Explanation**: "I wish + would + base" to complain about another person's recurring behavior. "Would stop" — a wish for them to stop.
 
 2. **multiple_choice** — "I wish she _____ listen to me."
    **Options**: would / will / had / does
    **Answer**: would
-   **Explanation**: Wish + would expressa desejo sobre futuro/recurring action de outra pessoa. Não usado para si mesmo (use wish + past para isso).
+   **Explanation**: Wish + would expresses a wish about another person's future/recurring action. Not used for yourself (use wish + past for that).
 
 3. **word_bank** — "I wish people _____ smoke in restaurants."
    **Choices**: wouldn't / didn't / won't / don't
    **Answer**: wouldn't
-   **Explanation**: "Wouldn't smoke" — wish negativo. Reclamação geral sobre comportamento de outros.
+   **Explanation**: "Wouldn't smoke" — negative wish. General complaint about others' behavior.
 
 4. **word_bank** — "I wish it _____ raining!"
    **Choices**: would stop / will stop / stops / stopped
    **Answer**: would stop
-   **Explanation**: "I wish it would stop raining" — wish + would para mudança que se deseja. Eventos/clima também funcionam.
+   **Explanation**: "I wish it would stop raining" — wish + would for a desired change. Events/weather also work.
 
 5. **fill_gap** — "I wish you _____ be quiet for one minute."
    **Hint**: would
    **Answer**: would
-   **Explanation**: "I wish you would be quiet" — desejo que faça algo específico. Tom de irritação.
+   **Explanation**: "I wish you would be quiet" — wish for a specific action. Annoyed tone.
 
 6. **fill_gap** — "I wish my neighbors _____ make so much noise."
    **Hint**: wouldn't (negativo)
    **Answer**: wouldn't
-   **Explanation**: "Wouldn't make noise" — reclamação contínua. Negativo padrão.
+   **Explanation**: "Wouldn't make noise" — ongoing complaint. Standard negative.
 
 7. **fill_gap** — "I wish he _____ stop complaining."
    **Hint**: would
    **Answer**: would
-   **Explanation**: "Would stop complaining" — desejo que pare comportamento recorrente.
+   **Explanation**: "Would stop complaining" — wish for them to stop the recurring behavior.
 
 8. **fix_error** — "I wish you will listen to me."
    **Hint**: Wish + would, não "will"
    **Answer**: I wish you would listen to me.
-   **Explanation**: "Will" não combina com wish. Para desejos sobre futuro/comportamento de outros, use "would".
+   **Explanation**: "Will" doesn't combine with wish. For wishes about others' future/behavior, use "would".
 
 9. **fix_error** — "I wish I would be taller."
    **Hint**: Para EU mesmo, use wish + past simple
    **Answer**: I wish I were taller.
-   **Explanation**: "Wish + would" NÃO se usa para si mesmo. Para si, use wish + past simple ("I wish I were"). Wish + would é só para OUTROS.
+   **Explanation**: "Wish + would" is NOT used for yourself. For yourself, use wish + past simple ("I wish I were"). Wish + would is only for OTHERS.
 
 10. **read_answer**
     **Passage**: "I wish you would stop interrupting me. I wish she would listen to me. I wish people wouldn't smoke in restaurants. I wish it would stop raining. I wish my neighbors wouldn't make so much noise."
@@ -197,47 +197,47 @@
 1. **multiple_choice** — "If only I _____ more time!"
    **Options**: had / have / would have / will have
    **Answer**: had
-   **Explanation**: "If only + past simple" para arrependimento PRESENTE. Mesmo padrão de "I wish I had" mas com tom mais enfático/dramático.
+   **Explanation**: "If only + past simple" for PRESENT regret. Same pattern as "I wish I had" but with a more emphatic/dramatic tone.
 
 2. **multiple_choice** — "If only I _____ studied harder!"
    **Options**: had / have / would have / did
    **Answer**: had
-   **Explanation**: "If only + past perfect" para arrependimento sobre PASSADO. "If only I had studied" — mesmo padrão de "I wish I had studied".
+   **Explanation**: "If only + past perfect" for regret about the PAST. "If only I had studied" — same pattern as "I wish I had studied".
 
 3. **word_bank** — "If only she _____ here right now."
    **Choices**: were / was / is / had been
    **Answer**: were
-   **Explanation**: "If only she were here" — desejo presente. "Were" para todas as pessoas em wish/if only.
+   **Explanation**: "If only she were here" — present wish. "Were" for all persons in wish/if only.
 
 4. **word_bank** — "If only we _____ left earlier!"
    **Choices**: had / have / would have / did
    **Answer**: had
-   **Explanation**: "If only we had left" — arrependimento passado. Past perfect padrão.
+   **Explanation**: "If only we had left" — past regret. Standard past perfect.
 
 5. **fill_gap** — "If only I _____ speak more languages!"
    **Hint**: could (habilidade)
    **Answer**: could
-   **Explanation**: "If only I could" — desejo de habilidade presente. "Could" + base.
+   **Explanation**: "If only I could" — present ability wish. "Could" + base.
 
 6. **fill_gap** — "If only he _____ listened to me!"
    **Hint**: past perfect "had + past participle"
    **Answer**: had
-   **Explanation**: "If only he had listened" — arrependimento passado dramatico.
+   **Explanation**: "If only he had listened" — dramatic past regret.
 
 7. **fill_gap** — "If only the rain _____ stop!"
    **Hint**: would
    **Answer**: would
-   **Explanation**: "If only it would stop" — desejo sobre futuro/comportamento. Similar a wish + would.
+   **Explanation**: "If only it would stop" — wish about future/behavior. Similar to wish + would.
 
 8. **fix_error** — "If only I have more time!"
    **Hint**: Para desejo presente, past simple
    **Answer**: If only I had more time!
-   **Explanation**: "Have" não funciona com if only para desejo presente. Padrão é "if only + past simple" para presente.
+   **Explanation**: "Have" doesn't work with if only for a present wish. The standard is "if only + past simple" for the present.
 
 9. **fix_error** — "If only I would have studied!"
    **Hint**: Para passado, past perfect "had studied"
    **Answer**: If only I had studied!
-   **Explanation**: "Would have" não cabe em if only. Para passado use past perfect ("had studied"). Mesma regra de wish.
+   **Explanation**: "Would have" doesn't fit in if only. For the past, use past perfect ("had studied"). Same rule as wish.
 
 10. **read_answer**
     **Passage**: "If only I had more time! If only I had studied harder! If only she were here now. If only we had left earlier! If only the rain would stop!"
@@ -362,47 +362,47 @@
 1. **multiple_choice** — "I _____ stay home tonight."
    **Options**: would rather / had rather / would prefer / will rather
    **Answer**: would rather
-   **Explanation**: "Would rather + base" para preferência própria. Estrutura padrão: "would rather + base form".
+   **Explanation**: "Would rather + base" for your own preference. Standard structure: "would rather + base form".
 
 2. **multiple_choice** — "I'd rather _____ pizza than sushi."
    **Options**: have / having / had / to have
    **Answer**: have
-   **Explanation**: "Would rather + base form". "Rather have pizza" — base form sem "to".
+   **Explanation**: "Would rather + base form". "Rather have pizza" — base form without "to".
 
 3. **word_bank** — "I'd rather you _____ smoke here."
    **Choices**: didn't / don't / wouldn't / won't
    **Answer**: didn't
-   **Explanation**: "Would rather + person + past simple" para preferência sobre outra pessoa. "Didn't smoke" — past simple negativo.
+   **Explanation**: "Would rather + person + past simple" for preference about another person. "Didn't smoke" — negative past simple.
 
 4. **word_bank** — "I'd rather _____ stay than go out."
    **Choices**: not / no / nothing / never
    **Answer**: not
-   **Explanation**: Negativa: "I'd rather NOT + base". "Not stay" — preferência negativa.
+   **Explanation**: Negative: "I'd rather NOT + base". "Not stay" — negative preference.
 
 5. **fill_gap** — "I'd rather _____ coffee than tea."
    **Hint**: base form "drink"
    **Answer**: drink
-   **Explanation**: "Would rather drink coffee" — preferência simples com base form.
+   **Explanation**: "Would rather drink coffee" — simple preference with base form.
 
 6. **fill_gap** — "I'd rather you _____ to me before deciding."
    **Hint**: past simple "talk"
    **Answer**: talked
-   **Explanation**: "I'd rather you talked" — preferência sobre comportamento do outro. Past simple, não base form.
+   **Explanation**: "I'd rather you talked" — preference about the other person's behavior. Past simple, not base form.
 
 7. **fill_gap** — "She'd rather _____ outside on the patio."
    **Hint**: base form "sit"
    **Answer**: sit
-   **Explanation**: "Would rather sit outside" — preferência própria, base form.
+   **Explanation**: "Would rather sit outside" — own preference, base form.
 
 8. **fix_error** — "I'd rather to go home."
    **Hint**: Sem "to" — só base form
    **Answer**: I'd rather go home.
-   **Explanation**: "Would rather" + base form direto, sem "to". "Rather to go" não existe.
+   **Explanation**: "Would rather" + base form directly, without "to". "Rather to go" doesn't exist.
 
 9. **fix_error** — "I'd rather you stop talking."
    **Hint**: Sobre outra pessoa: past simple
    **Answer**: I'd rather you stopped talking.
-   **Explanation**: Quando é sobre OUTRA pessoa, use past simple ("stopped"). "Stop" sem -ed funcionaria só se fosse comando direto, não preferência.
+   **Explanation**: When it's about ANOTHER person, use past simple ("stopped"). "Stop" without -ed would only work as a direct command, not a preference.
 
 10. **read_answer**
     **Passage**: "I'd rather stay home tonight. I'd rather have pizza than sushi. I'd rather you didn't smoke here. I'd rather not go out today. I'd rather you talked to me before deciding."
@@ -552,7 +552,7 @@
 6. **fill_gap** — "It's about time he _____ growing up."
    **Hint**: past simple "start"
    **Answer**: started
-   **Explanation**: "It's about time he started growing up" — sugestão enfática sobre alguém.
+   **Explanation**: "It's about time he started growing up" — emphatic suggestion about someone.
 
 7. **fill_gap** — "It's time we _____ honest with each other."
    **Hint**: past simple "be" → were
@@ -562,12 +562,12 @@
 8. **fix_error** — "It's time we leave."
    **Hint**: Past simple, não present
    **Answer**: It's time we left.
-   **Explanation**: "It's time" não usa present simple direto. Sempre past simple ("left").
+   **Explanation**: "It's time" doesn't take present simple directly. Always past simple ("left").
 
 9. **fix_error** — "It's high time you will make a decision."
    **Hint**: Sem "will" — past simple
    **Answer**: It's high time you made a decision.
-   **Explanation**: "Will" não cabe. Padrão é "it's high time + past simple" ("made").
+   **Explanation**: "Will" doesn't fit. The pattern is "it's high time + past simple" ("made").
 
 10. **read_answer**
     **Passage**: "It's time we left for the airport. It's high time you made a decision. It's about time you went to bed. It's time we took this seriously."
@@ -692,47 +692,47 @@
 1. **multiple_choice** — "I wish you _____ stop interrupting!"
    **Options**: would / will / had / do
    **Answer**: would
-   **Explanation**: Wish + would para comportamento de outro. Tom de irritação.
+   **Explanation**: Wish + would for another's behavior. Annoyed tone.
 
 2. **multiple_choice** — "If only I _____ more time!"
    **Options**: had / have / would have / will have
    **Answer**: had
-   **Explanation**: If only + past simple para desejo presente.
+   **Explanation**: If only + past simple for a present wish.
 
 3. **word_bank** — "I'd rather _____ stay home tonight."
    **Choices**: not / no / never / nothing
    **Answer**: not
-   **Explanation**: "I'd rather not + base" — preferência negativa.
+   **Explanation**: "I'd rather not + base" — negative preference.
 
 4. **word_bank** — "It's time we _____ this seriously."
    **Choices**: took / take / will take / taking
    **Answer**: took
-   **Explanation**: "It's time + past simple" — urgência.
+   **Explanation**: "It's time + past simple" — urgency.
 
 5. **fill_gap** — "I'd rather you _____ to me before deciding."
    **Hint**: past simple "talk"
    **Answer**: talked
-   **Explanation**: "I'd rather you + past simple" para preferência sobre o outro.
+   **Explanation**: "I'd rather you + past simple" for preference about the other person.
 
 6. **fill_gap** — "If only she _____ understand me!"
    **Hint**: would
    **Answer**: would
-   **Explanation**: "If only + would" para mudança comportamental.
+   **Explanation**: "If only + would" for a behavioral change.
 
 7. **fill_gap** — "It's high time you _____ a real job."
    **Hint**: past simple "get"
    **Answer**: got
-   **Explanation**: "It's high time + past simple" — urgência enfática.
+   **Explanation**: "It's high time + past simple" — emphatic urgency.
 
 8. **fix_error** — "I wish you will be quiet."
    **Hint**: Wish + would, não "will"
    **Answer**: I wish you would be quiet.
-   **Explanation**: "Will" não cabe em wish. Para futuro/comportamento, "would".
+   **Explanation**: "Will" doesn't fit in wish. For future/behavior, use "would".
 
 9. **fix_error** — "It's time we leave."
    **Hint**: Past simple "left"
    **Answer**: It's time we left.
-   **Explanation**: "It's time" usa past simple, não present.
+   **Explanation**: "It's time" takes past simple, not present.
 
 10. **read_answer**
     **Passage**: "I wish you would stop interrupting me. If only I had more time! I'd rather not go tonight. It's time we left for the airport. I'd rather you talked to me first."

@@ -91,7 +91,7 @@
     **Passage**: "My family is great. My mother is fifty. My father is fifty-five. My brother is twenty. He is Brazilian."
     **Question**: How old is the father? (dê um número)
     **Answer**: 55
-    **Explanation**: The text says "My father is fifty-five". 55.
+    **Explanation**: O texto diz "My father is fifty-five". 55.
 
 ### 2. Listening/Speaking (5 phrases)
 
@@ -256,7 +256,7 @@
     **Passage**: "I've got a small family. I have got one brother and one sister. My brother is twenty-five. My sister is fifteen."
     **Question**: How old is the brother? (dê um número)
     **Answer**: 25
-    **Explanation**: The text says "My brother is twenty-five". 25.
+    **Explanation**: O texto diz "My brother is twenty-five". 25.
 
 ### 2. Listening/Speaking (5 phrases)
 
@@ -421,7 +421,7 @@
     **Passage**: "John has got a great family. His wife is Italian. His son is ten. His daughter is fifteen."
     **Question**: How old is John's daughter? (dê um número)
     **Answer**: 15
-    **Explanation**: The text says "His daughter is fifteen". 15.
+    **Explanation**: O texto diz "His daughter is fifteen". 15.
 
 ### 2. Listening/Speaking (5 phrases)
 
@@ -586,7 +586,7 @@
     **Passage**: "I've got a best friend. Her name is Sofia. She is Italian. She is twenty-three years old."
     **Question**: What is Sofia's nationality?
     **Answer**: Italian
-    **Explanation**: The text says "She is Italian" — Sofia's nationality is Italian.
+    **Explanation**: O texto diz "She is Italian" — a nacionalidade de Sofia é italiana.
 
 ### 2. Listening/Speaking (5 phrases)
 
@@ -751,7 +751,7 @@
     **Passage**: "Meet my family. My mother is fifty. My father is fifty-five. My brother is twenty. He is Brazilian like me."
     **Question**: What is the brother's nationality?
     **Answer**: Brazilian
-    **Explanation**: The text says "He is Brazilian like me" — the brother's nationality is Brazilian.
+    **Explanation**: O texto diz "He is Brazilian like me" — a nacionalidade do irmão é brasileira.
 
 ### 2. Listening/Speaking (5 phrases)
 

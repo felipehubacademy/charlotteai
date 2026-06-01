@@ -45,32 +45,32 @@
 4. **word_bank** — "These files _____ before the meeting."
    **Choices**: have to be reviewed / have to review / has to be reviewed / are reviewing
    **Answer**: have to be reviewed
-   **Explanation**: Plural "files" + obrigação → "have to be reviewed". Modal-like passive.
+   **Explanation**: Plural "files" + obligation → "have to be reviewed". Modal-like passive.
 
 5. **fill_gap** — "The car _____ if it makes that sound."
    **Hint**: should be + past participle "check"
    **Answer**: should be checked
-   **Explanation**: "Should be checked" — recomendação passive sobre o carro.
+   **Explanation**: "Should be checked" — passive recommendation about the car.
 
 6. **fill_gap** — "Children _____ unsupervised."
    **Hint**: shouldn't be + past participle "leave"
    **Answer**: shouldn't be left
-   **Explanation**: "Shouldn't be left unsupervised" — proibição passive.
+   **Explanation**: "Shouldn't be left unsupervised" — passive prohibition.
 
 7. **fill_gap** — "The package _____ at this point — it's been weeks."
    **Hint**: must have been + past participle "lose"
    **Answer**: must have been lost
-   **Explanation**: "Must have been lost" — modal perfect passive. Inferência forte sobre o passado em passive.
+   **Explanation**: "Must have been lost" — modal perfect passive. Strong inference about the past in passive voice.
 
 8. **fix_error** — "The report must finished by Friday."
    **Hint**: Falta "be" — "must BE finished"
    **Answer**: The report must be finished by Friday.
-   **Explanation**: Modal passive sempre "modal + BE + past participle". "Must finished" não funciona.
+   **Explanation**: Modal passive is always "modal + BE + past participle". "Must finished" doesn't work.
 
 9. **fix_error** — "Children shouldn't left alone."
    **Hint**: Falta "be"
    **Answer**: Children shouldn't be left alone.
-   **Explanation**: "Shouldn't BE left" — modal + be + past participle. Forma fixa.
+   **Explanation**: "Shouldn't BE left" — modal + be + past participle. Fixed form.
 
 10. **read_answer**
     **Passage**: "The report must be finished by Friday. This room should be cleaned every day. Children shouldn't be left alone. The form must be filled in blue ink."
@@ -215,27 +215,27 @@
 5. **fill_gap** — "Dinner _____ at 7 PM."
    **Hint**: will be + past participle "serve"
    **Answer**: will be served
-   **Explanation**: "Will be served at 7" — future passive padrão.
+   **Explanation**: "Will be served at 7" — standard future passive.
 
 6. **fill_gap** — "The bridge _____ in 2030."
    **Hint**: will be + past participle "complete"
    **Answer**: will be completed
-   **Explanation**: "Will be completed" — future passive sobre obra.
+   **Explanation**: "Will be completed" — future passive about construction.
 
 7. **fill_gap** — "The meeting _____ next week."
    **Hint**: is going to be + past participle "hold"
    **Answer**: is going to be held
-   **Explanation**: "Is going to be held" — futuro planejado passive. "Hold" → past participle "held".
+   **Explanation**: "Is going to be held" — planned-future passive. "Hold" → past participle "held".
 
 8. **fix_error** — "The winner will announced tomorrow."
    **Hint**: Falta "be" — "will BE announced"
    **Answer**: The winner will be announced tomorrow.
-   **Explanation**: Future passive sempre "will BE + past participle". "Will announced" não existe.
+   **Explanation**: Future passive is always "will BE + past participle". "Will announced" doesn't exist.
 
 9. **fix_error** — "The package will be deliver tomorrow."
    **Hint**: "Deliver" → past participle "delivered"
    **Answer**: The package will be delivered tomorrow.
-   **Explanation**: Após "will be" sempre past participle, não base form. "Deliver" → "delivered".
+   **Explanation**: After "will be", always past participle, not base form. "Deliver" → "delivered".
 
 10. **read_answer**
     **Passage**: "The winner will be announced tomorrow. The results will be sent by email next week. The new album is going to be released next month. Dinner will be served at 7 PM."
@@ -370,22 +370,22 @@
 3. **word_bank** — "The song _____ by my favorite artist."
    **Choices**: was performed / performed / is performing / performs
    **Answer**: was performed
-   **Explanation**: "Was performed by..." — passive past com agente.
+   **Explanation**: "Was performed by..." — past passive with agent.
 
 4. **word_bank** — "The cake _____ by my mother."
    **Choices**: was made / made / makes / has been making
    **Answer**: was made
-   **Explanation**: "Was made by my mother" — passive past + agent.
+   **Explanation**: "Was made by my mother" — past passive + agent.
 
 5. **fill_gap** — "The film was directed _____ Spielberg."
    **Hint**: Preposição que introduz agente
    **Answer**: by
-   **Explanation**: "By Spielberg" — preposição padrão do agente em passive.
+   **Explanation**: "By Spielberg" — standard preposition for the agent in passive.
 
 6. **fill_gap** — "Hamlet _____ by Shakespeare."
    **Hint**: was + past participle "write"
    **Answer**: was written
-   **Explanation**: "Was written by Shakespeare" — passive + agent famoso.
+   **Explanation**: "Was written by Shakespeare" — passive + famous agent.
 
 7. **fill_gap** — "These photos _____ by my dad."
    **Hint**: were + past participle "take"
@@ -395,12 +395,12 @@
 8. **fix_error** — "The Mona Lisa was painted from Leonardo."
    **Hint**: Preposição errada — agente usa "by"
    **Answer**: The Mona Lisa was painted by Leonardo.
-   **Explanation**: "From" indica origem/source. Para AGENTE de passive, sempre "by".
+   **Explanation**: "From" marks origin/source. For the AGENT of a passive, always "by".
 
 9. **fix_error** — "English is spoken by many countries."
    **Hint**: "Many countries" não é agente — usa "in"
    **Answer**: English is spoken in many countries.
-   **Explanation**: "Countries" são LUGARES, não agentes. Use "in", não "by". "By" só para quem realiza a ação.
+   **Explanation**: "Countries" are PLACES, not agents. Use "in", not "by". "By" is only for whoever performs the action.
 
 10. **read_answer**
     **Passage**: "The Mona Lisa was painted by Leonardo da Vinci. The novel was written by a famous Brazilian author. These photos were taken by my dad on vacation. The film was directed by Spielberg."
@@ -525,47 +525,47 @@
 1. **multiple_choice** — "She _____ in a car accident last week."
    **Options**: got hurt / hurt / was hurt / has hurt
    **Answer**: got hurt
-   **Explanation**: "Get + past participle" = passive informal, especialmente para mudanças de estado ou acidentes. "Got hurt" — comum em fala.
+   **Explanation**: "Get + past participle" = informal passive, especially for state changes or accidents. "Got hurt" — common in speech.
 
 2. **multiple_choice** — "They _____ last summer."
    **Options**: got married / married / were married / get married
    **Answer**: got married
-   **Explanation**: "Got married" — chunk fixo. "Get" passive é muito usado para eventos de vida.
+   **Explanation**: "Got married" — fixed chunk. "Get" passive is heavily used for life events.
 
 3. **word_bank** — "He _____ for the company last month."
    **Choices**: got hired / hired / was hired / has hired
    **Answer**: got hired
-   **Explanation**: "Got hired" — informal alternative para "was hired". Comum em fala.
+   **Explanation**: "Got hired" — informal alternative for "was hired". Common in speech.
 
 4. **word_bank** — "I always _____ in the rain."
    **Choices**: get wet / am wet / wet / am getting wet
    **Answer**: get wet
-   **Explanation**: "Get wet" — mudança de estado. "Get + adjective" também funciona como passive informal.
+   **Explanation**: "Get wet" — state change. "Get + adjective" also works as informal passive.
 
 5. **fill_gap** — "My phone _____ stolen yesterday."
    **Hint**: got + past participle
    **Answer**: got
-   **Explanation**: "Got stolen" — passive informal de "was stolen". Comum em narrativa.
+   **Explanation**: "Got stolen" — informal passive of "was stolen". Common in storytelling.
 
 6. **fill_gap** — "They _____ engaged last month."
    **Hint**: got + past participle "engage"
    **Answer**: got engaged
-   **Explanation**: "Got engaged" — evento de vida em get passive.
+   **Explanation**: "Got engaged" — life event in get-passive.
 
 7. **fill_gap** — "I _____ lost in the city."
    **Hint**: got + past participle "lose"
    **Answer**: got lost
-   **Explanation**: "Got lost" — comum em narrativa. "Lose" → past participle "lost".
+   **Explanation**: "Got lost" — common in storytelling. "Lose" → past participle "lost".
 
 8. **fix_error** — "She get married last summer."
    **Hint**: Passado precisa de "got"
    **Answer**: She got married last summer.
-   **Explanation**: "Last summer" indica passado. Use "got", não "get".
+   **Explanation**: "Last summer" marks the past. Use "got", not "get".
 
 9. **fix_error** — "My phone got steal."
    **Hint**: Precisa past participle, não base form
    **Answer**: My phone got stolen.
-   **Explanation**: Após "got", past participle. "Steal" → "stolen". "Got steal" não é gramatical.
+   **Explanation**: After "got", past participle. "Steal" → "stolen". "Got steal" isn't grammatical.
 
 10. **read_answer**
     **Passage**: "She got hurt in a car accident last week. They got married last summer in Italy. He got hired by a big tech company last month. My phone got stolen on the bus yesterday."
@@ -725,12 +725,12 @@
 8. **fix_error** — "The report must finished by Friday."
    **Hint**: Falta "be"
    **Answer**: The report must be finished by Friday.
-   **Explanation**: Modal passive sempre "modal + BE + past participle".
+   **Explanation**: Modal passive is always "modal + BE + past participle".
 
 9. **fix_error** — "The novel was wrote by a Brazilian author."
    **Hint**: "Wrote" não é past participle — "written"
    **Answer**: The novel was written by a Brazilian author.
-   **Explanation**: Verbo irregular: write → wrote (past simple) → written (past participle). Passive usa past participle.
+   **Explanation**: Irregular verb: write → wrote (past simple) → written (past participle). Passive uses the past participle.
 
 10. **read_answer**
     **Passage**: "The report must be finished by Friday. The results will be announced tomorrow. The Mona Lisa was painted by Leonardo. She got married last weekend. This room should be cleaned daily."

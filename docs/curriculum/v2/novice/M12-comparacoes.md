@@ -77,7 +77,7 @@
     **Passage**: "I'm taller than my brother but he's older than me. Our sister is younger than both of us. She's also faster — she runs every morning."
     **Question**: Who is older than the speaker?
     **Answer**: my brother (or "her/his brother")
-    **Explanation**: The text says "he's older than me" referring to the brother.
+    **Explanation**: O texto diz "he's older than me" se referindo ao irmão.
 
 ### 2. Listening/Speaking (5 phrases)
 
@@ -242,7 +242,7 @@
     **Passage**: "This city is more beautiful than my hometown. The food here is more expensive but more delicious. The people are friendlier."
     **Question**: How is the food described?
     **Answer**: more expensive but more delicious
-    **Explanation**: The text says "The food here is more expensive but more delicious".
+    **Explanation**: O texto diz "The food here is more expensive but more delicious".
 
 ### 2. Listening/Speaking (5 phrases)
 
@@ -407,7 +407,7 @@
     **Passage**: "My new phone is better than my old one. The camera is much better but the battery is worse. I have more apps than before."
     **Question**: How is the battery compared to the old one?
     **Answer**: worse
-    **Explanation**: The text says "the battery is worse".
+    **Explanation**: O texto diz "the battery is worse".
 
 ### 2. Listening/Speaking (5 phrases)
 
@@ -572,7 +572,7 @@
     **Passage**: "My new apartment is much bigger than the old one. The kitchen is a little smaller, but the bedroom is much more comfortable."
     **Question**: How is the bedroom?
     **Answer**: much more comfortable
-    **Explanation**: The text says "the bedroom is much more comfortable".
+    **Explanation**: O texto diz "the bedroom is much more comfortable".
 
 ### 2. Listening/Speaking (5 phrases)
 
@@ -737,7 +737,7 @@
     **Passage**: "I'm taller than my brother but he's much stronger. My sister is more patient than both of us. She's a better listener too."
     **Question**: Who is the best listener?
     **Answer**: my sister (or "her sister" / "the sister")
-    **Explanation**: The text says "She's a better listener" — referring to the sister (better than the speaker and brother).
+    **Explanation**: O texto diz "She's a better listener" — se referindo à irmã (melhor ouvinte que o falante e o irmão).
 
 ### 2. Listening/Speaking (5 phrases)
 

@@ -48,7 +48,7 @@
             "for seeing"
           ],
           "answer": "to seeing",
-          "explanation": "\"Look forward to\" é phrasal verb + preposição \"to\" + -ING. Erro comum: usar \"to see\" (base form). Sempre \"to + verb-ing\" após \"look forward to\"."
+          "explanation": "\"Look forward to\" is phrasal verb + preposition \"to\" + -ING. Common error: using \"to see\" (base form). Always \"to + verb-ing\" after \"look forward to\"."
         },
         {
           "type": "multiple_choice",
@@ -60,7 +60,7 @@
             "for waking"
           ],
           "answer": "to waking up",
-          "explanation": "\"Get used to + -ing\" — adaptação. \"To waking up\" — preposição \"to\" + gerúndio."
+          "explanation": "\"Get used to + -ing\" — adaptation. \"To waking up\" — preposition \"to\" + gerund."
         },
         {
           "type": "word_bank",
@@ -72,7 +72,7 @@
             "for smoking"
           ],
           "answer": "to smoking",
-          "explanation": "\"Object to + -ing\" — oposição/recusa. \"To smoking\" — gerúndio obrigatório."
+          "explanation": "\"Object to + -ing\" — opposition/refusal. \"To smoking\" — gerund required."
         },
         {
           "type": "word_bank",
@@ -84,42 +84,42 @@
             "for going"
           ],
           "answer": "to going",
-          "explanation": "\"Look forward to going\" — antecipação positiva com -ing."
+          "explanation": "\"Look forward to going\" — positive anticipation with -ing."
         },
         {
           "type": "fill_gap",
           "sentence": "He's used _____ alone.",
           "hint": "to + -ing form \"live\"",
           "answer": "to living",
-          "explanation": "\"Used to living\" — habituado. Note: difere de \"used to live\" (costumava) — pista é o \"TO + -ing\" não \"TO + base\"."
+          "explanation": "\"Used to living\" — accustomed to. Note: different from \"used to live\" (used to / habitual past) — the clue is \"TO + -ing\", not \"TO + base\"."
         },
         {
           "type": "fill_gap",
           "sentence": "I object _____ on weekends.",
           "hint": "to + -ing \"work\"",
           "answer": "to working",
-          "explanation": "\"Object to working\" — oposição. Sempre \"to + -ing\"."
+          "explanation": "\"Object to working\" — opposition. Always \"to + -ing\"."
         },
         {
           "type": "fill_gap",
           "sentence": "We look forward _____ from you.",
           "hint": "to + -ing \"hear\"",
           "answer": "to hearing",
-          "explanation": "\"Look forward to hearing\" — fórmula formal em emails. Comum em encerramento."
+          "explanation": "\"Look forward to hearing\" — formal email formula. Common in closings."
         },
         {
           "type": "fix_error",
           "sentence": "I look forward to see you tomorrow.",
           "hint": "Após \"to\" em look forward to, gerúndio",
           "answer": "I look forward to seeing you tomorrow.",
-          "explanation": "Erro super comum. \"Look forward to\" — preposição \"to\" + -ING, não base form. \"To seeing\", não \"to see\"."
+          "explanation": "Very common error. \"Look forward to\" — preposition \"to\" + -ING, not base form. \"To seeing\", not \"to see\"."
         },
         {
           "type": "fix_error",
           "sentence": "She's getting used to wake up early.",
           "hint": "Após \"to\" em get used to, gerúndio",
           "answer": "She's getting used to waking up early.",
-          "explanation": "\"Get used to + -ing\". \"To wake up\" só funciona em \"used to wake up\" (costumava acordar). Aqui é adaptação atual."
+          "explanation": "\"Get used to + -ing\". \"To wake up\" only works in \"used to wake up\" (habitual past). Here it's current adaptation."
         },
         {
           "type": "read_answer",
@@ -254,7 +254,7 @@
             "ran with"
           ],
           "answer": "ran out of",
-          "explanation": "\"Run out of + noun\" = ficar sem. \"Ran out of milk\" — esgotamos o leite."
+          "explanation": "\"Run out of + noun\" = to run out. \"Ran out of milk\" — we used up the milk."
         },
         {
           "type": "word_bank",
@@ -266,7 +266,7 @@
             "gets along with"
           ],
           "answer": "gets away with",
-          "explanation": "\"Get away with + noun/-ing\" = escapar das consequências. \"Gets away with lies\"."
+          "explanation": "\"Get away with + noun/-ing\" = to escape consequences. \"Gets away with lies\"."
         },
         {
           "type": "word_bank",
@@ -278,42 +278,42 @@
             "put on"
           ],
           "answer": "put up with",
-          "explanation": "\"Put up with noise\" — tolerar barulho. Reclamação."
+          "explanation": "\"Put up with noise\" — to tolerate noise. Complaint."
         },
         {
           "type": "fill_gap",
           "sentence": "She _____ time before the deadline.",
           "hint": "ran + out + of",
           "answer": "ran out of",
-          "explanation": "\"Ran out of time\" — chunk muito comum, falta de tempo."
+          "explanation": "\"Ran out of time\" — very common chunk, running out of time."
         },
         {
           "type": "fill_gap",
           "sentence": "How do you _____ that smell?",
           "hint": "put up with",
           "answer": "put up with",
-          "explanation": "\"How do you put up with\" — pergunta sobre tolerância."
+          "explanation": "\"How do you put up with\" — question about tolerance."
         },
         {
           "type": "fill_gap",
           "sentence": "He won't _____ cheating this time.",
           "hint": "get away with",
           "answer": "get away with",
-          "explanation": "\"Won't get away with cheating\" — não vai escapar."
+          "explanation": "\"Won't get away with cheating\" — won't escape consequences."
         },
         {
           "type": "fix_error",
           "sentence": "I can't put with this noise.",
           "hint": "3 partes — put UP with",
           "answer": "I can't put up with this noise.",
-          "explanation": "\"Put with\" não existe. Sempre 3 partes: \"put + UP + with\"."
+          "explanation": "\"Put with\" doesn't exist. Always 3 parts: \"put + UP + with\"."
         },
         {
           "type": "fix_error",
           "sentence": "We're running out milk.",
           "hint": "Falta \"of\"",
           "answer": "We're running out of milk.",
-          "explanation": "\"Run out OF + noun\" — preposição \"of\" obrigatória. \"Running out\" sozinho não funciona com objeto."
+          "explanation": "\"Run out OF + noun\" — preposition \"of\" required. \"Running out\" alone doesn't work with an object."
         },
         {
           "type": "read_answer",
@@ -448,7 +448,7 @@
             "looks for"
           ],
           "answer": "looks up to",
-          "explanation": "\"Look up to + person\" = admirar. Imagina olhar para cima com respeito."
+          "explanation": "\"Look up to + person\" = to admire. Imagine looking upward with respect."
         },
         {
           "type": "word_bank",
@@ -460,7 +460,7 @@
             "looks after"
           ],
           "answer": "looks down on",
-          "explanation": "\"Look down on + person\" = desprezar. Oposto de \"look up to\"."
+          "explanation": "\"Look down on + person\" = to look down on / despise. Opposite of \"look up to\"."
         },
         {
           "type": "word_bank",
@@ -472,42 +472,42 @@
             "get along"
           ],
           "answer": "get along with",
-          "explanation": "\"Don't get along with each other\" — relação ruim. Sempre com \"with\"."
+          "explanation": "\"Don't get along with each other\" — bad relationship. Always with \"with\"."
         },
         {
           "type": "fill_gap",
           "sentence": "I really _____ my old boss — she was inspiring.",
           "hint": "look up to (admirar)",
           "answer": "look up to",
-          "explanation": "\"Look up to\" — admirar como modelo."
+          "explanation": "\"Look up to\" — to admire as a role model."
         },
         {
           "type": "fill_gap",
           "sentence": "He's hard to _____ — very stubborn.",
           "hint": "get along with",
           "answer": "get along with",
-          "explanation": "\"Hard to get along with\" — difícil de conviver."
+          "explanation": "\"Hard to get along with\" — difficult to be around."
         },
         {
           "type": "fill_gap",
           "sentence": "She _____ poor people, which is awful.",
           "hint": "looks down on",
           "answer": "looks down on",
-          "explanation": "\"Looks down on poor people\" — comportamento criticável de desprezo."
+          "explanation": "\"Looks down on poor people\" — contemptuous behavior worth criticizing."
         },
         {
           "type": "fix_error",
           "sentence": "I get along my coworkers.",
           "hint": "Falta \"with\"",
           "answer": "I get along with my coworkers.",
-          "explanation": "\"Get along\" sozinho funciona (\"we get along well\"), mas com pessoa específica precisa \"with\"."
+          "explanation": "\"Get along\" works alone (\"we get along well\"), but with a specific person you need \"with\"."
         },
         {
           "type": "fix_error",
           "sentence": "She looks up her grandfather.",
           "hint": "Falta \"to\"",
           "answer": "She looks up to her grandfather.",
-          "explanation": "\"Look up to\" — 3 partes obrigatórias. Sem \"to\" significa \"olhar para cima fisicamente\"."
+          "explanation": "\"Look up to\" — 3 parts required. Without \"to\" it means \"to look up physically\"."
         },
         {
           "type": "read_answer",
@@ -630,7 +630,7 @@
             "catch with"
           ],
           "answer": "catch up on",
-          "explanation": "\"Catch up ON + thing/topic\" para colocar em dia com algo. \"Catch up on emails\" = atualizar-se com os emails."
+          "explanation": "\"Catch up ON + thing/topic\" to get up to date with something. \"Catch up on emails\" = update yourself on emails."
         },
         {
           "type": "multiple_choice",
@@ -642,7 +642,7 @@
             "catch in"
           ],
           "answer": "catch up",
-          "explanation": "\"Catch up\" sozinho = se ver/falar para atualizar. \"Let's catch up\" — combinar de conversar."
+          "explanation": "\"Catch up\" alone = to meet/talk to reconnect. \"Let's catch up\" — making plans to chat."
         },
         {
           "type": "word_bank",
@@ -654,7 +654,7 @@
             "make with"
           ],
           "answer": "make up for",
-          "explanation": "\"Make up for + noun\" = compensar. \"Make up for the mistake\" — compensar o erro."
+          "explanation": "\"Make up for + noun\" = to make up for. \"Make up for the mistake\" — compensate for the error."
         },
         {
           "type": "word_bank",
@@ -666,42 +666,42 @@
             "keep on"
           ],
           "answer": "keep up with",
-          "explanation": "\"Keep up with + thing\" = manter o ritmo, acompanhar. \"Keep up with changes\"."
+          "explanation": "\"Keep up with + thing\" = to keep pace, stay current. \"Keep up with changes\"."
         },
         {
           "type": "fill_gap",
           "sentence": "I'll _____ the plan despite the doubts.",
           "hint": "go through with",
           "answer": "go through with",
-          "explanation": "\"Go through with + plan/decision\" = levar adiante. Apesar de dúvidas."
+          "explanation": "\"Go through with + plan/decision\" = to follow through. Despite doubts."
         },
         {
           "type": "fill_gap",
           "sentence": "I _____ the news every morning.",
           "hint": "catch up on",
           "answer": "catch up on",
-          "explanation": "\"Catch up on the news\" — atualizar-se sobre notícias."
+          "explanation": "\"Catch up on the news\" — get up to date on the news."
         },
         {
           "type": "fill_gap",
           "sentence": "Sorry for being late — I'll _____ it tomorrow.",
           "hint": "make up for",
           "answer": "make up for",
-          "explanation": "\"Make up for it tomorrow\" — compensar a falta."
+          "explanation": "\"Make up for it tomorrow\" — compensate for the lateness."
         },
         {
           "type": "fix_error",
           "sentence": "I need to catch up my emails.",
           "hint": "Falta \"on\" ou \"with\"",
           "answer": "I need to catch up on my emails.",
-          "explanation": "\"Catch up\" precisa de preposição quando há objeto. \"On\" para coisas/temas, \"with\" para pessoas."
+          "explanation": "\"Catch up\" needs a preposition when there's an object. \"On\" for things/topics, \"with\" for people."
         },
         {
           "type": "fix_error",
           "sentence": "Let's catch up with on the project.",
           "hint": "\"On\" para o projeto, sem \"with\"",
           "answer": "Let's catch up on the project.",
-          "explanation": "\"Catch up on\" para tema/objeto. \"With\" só para pessoas. Não pode misturar."
+          "explanation": "\"Catch up on\" for a topic/object. \"With\" only for people. You can't mix them."
         },
         {
           "type": "read_answer",
@@ -822,7 +822,7 @@
             "By second thought"
           ],
           "answer": "On second thought",
-          "explanation": "\"On second thought\" = pensando melhor. Chunk fixo de reconsideração. Não é \"at\" ou \"in\"."
+          "explanation": "\"On second thought\" = on reflection. Fixed reconsideration chunk. Not \"at\" or \"in\"."
         },
         {
           "type": "multiple_choice",
@@ -834,7 +834,7 @@
             "By the end day"
           ],
           "answer": "At the end of the day",
-          "explanation": "\"At the end of the day\" = no fim das contas/em última análise. Chunk de conclusão filosófica. Não é \"in\"."
+          "explanation": "\"At the end of the day\" = in the final analysis / when all is said and done. Philosophical conclusion chunk. Not \"in\"."
         },
         {
           "type": "word_bank",
@@ -846,7 +846,7 @@
             "By long run"
           ],
           "answer": "In the long run",
-          "explanation": "\"In the long run\" = a longo prazo. Chunk para perspectiva temporal estendida."
+          "explanation": "\"In the long run\" = over the long term. Chunk for extended time perspective."
         },
         {
           "type": "word_bank",
@@ -858,14 +858,14 @@
             "On time being"
           ],
           "answer": "For the time being",
-          "explanation": "\"For the time being\" = por enquanto, temporariamente."
+          "explanation": "\"For the time being\" = for now, temporarily."
         },
         {
           "type": "fill_gap",
           "sentence": "_____, the project is fine — let's move on.",
           "hint": "By and large (no geral, em sua maioria)",
           "answer": "By and large",
-          "explanation": "\"By and large\" = de modo geral. Chunk para resumo qualificado."
+          "explanation": "\"By and large\" = generally speaking. Chunk for qualified summary."
         },
         {
           "type": "fill_gap",

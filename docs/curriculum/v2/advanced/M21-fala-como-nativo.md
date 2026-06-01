@@ -64,7 +64,7 @@
 2. **"I mean, who would have predicted that?"** — register shift
 3. **"She's kind of new at this."** — softening hedge
 4. **"It's sort of complicated."** — softening abstract claim
-5. **"Like, honestly, I have no idea."** — multiple fillers, casual register</p>
+5. **"Like, honestly, I have no idea."** — multiple fillers, casual register
 
 ### 3. Role-play
 

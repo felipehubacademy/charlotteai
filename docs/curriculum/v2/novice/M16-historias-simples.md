@@ -76,7 +76,7 @@
     **Passage**: "Yesterday I went to a café. I had a coffee and saw an old friend. We took a long walk and made plans for dinner."
     **Question**: What did the speaker have?
     **Answer**: a coffee
-    **Explanation**: The text says "I had a coffee".
+    **Explanation**: O texto diz "I had a coffee".
 
 ### 2. Listening/Speaking (5 phrases)
 
@@ -241,7 +241,7 @@
     **Passage**: "I bought a sandwich and ate it quickly. Then I drank some coffee and found my friend at the café. We thought about going to the cinema."
     **Question**: What did the speaker drink?
     **Answer**: coffee (or "some coffee")
-    **Explanation**: The text says "I drank some coffee".
+    **Explanation**: O texto diz "I drank some coffee".
 
 ### 2. Listening/Speaking (5 phrases)
 
@@ -406,7 +406,7 @@
     **Passage**: "I met an old friend yesterday. We left the café at six. I sent her a message later. She won a prize last week!"
     **Question**: What did the friend win?
     **Answer**: a prize
-    **Explanation**: The text says "She won a prize last week".
+    **Explanation**: O texto diz "She won a prize last week".
 
 ### 2. Listening/Speaking (5 phrases)
 
@@ -571,7 +571,7 @@
     **Passage**: "I cut the vegetables. Then I put them in the pan. I read the recipe carefully. The result was great."
     **Question**: What did the speaker put in the pan?
     **Answer**: the vegetables (or "them")
-    **Explanation**: The text says "I put them in the pan" — referring to the vegetables just cut.
+    **Explanation**: O texto diz "I put them in the pan" — se referindo aos vegetais recém cortados.
 
 ### 2. Listening/Speaking (5 phrases)
 
@@ -736,7 +736,7 @@
     **Passage**: "Yesterday I went to a bookstore. I bought a novel. I came home and read it. I had a great evening!"
     **Question**: What did the speaker buy?
     **Answer**: a novel
-    **Explanation**: The text says "I bought a novel".
+    **Explanation**: O texto diz "I bought a novel".
 
 ### 2. Listening/Speaking (5 phrases)
 

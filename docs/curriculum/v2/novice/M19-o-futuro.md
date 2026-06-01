@@ -78,7 +78,7 @@
     **Passage**: "I think it will rain tomorrow. She will probably stay home. We will all watch a movie together."
     **Question**: What will the speaker do tomorrow?
     **Answer**: watch a movie
-    **Explanation**: The text says "We will all watch a movie together".
+    **Explanation**: O texto diz "We will all watch a movie together".
 
 ### 2. Listening/Speaking (5 phrases)
 
@@ -243,7 +243,7 @@
     **Passage**: "It's raining. I'll get an umbrella! She won't go out today. I promise I'll call you when I arrive."
     **Question**: What does the speaker promise?
     **Answer**: I'll call you (when I arrive) (or "to call")
-    **Explanation**: The text says "I promise I'll call you".
+    **Explanation**: O texto diz "I promise I'll call you".
 
 ### 2. Listening/Speaking (5 phrases)
 
@@ -408,7 +408,7 @@
     **Passage**: "I'm going to travel next month — I have tickets. But right now? Oh, the phone! I'll get it. I think it'll be my mom."
     **Question**: Why is the speaker going to travel (planejado vs espontâneo)?
     **Answer**: planned (or "tickets" or "has tickets")
-    **Explanation**: The text says "I have tickets" — indicating a planned trip with going to.
+    **Explanation**: O texto diz "I have tickets" — indicando uma viagem planejada com going to.
 
 ### 2. Listening/Speaking (5 phrases)
 
@@ -573,7 +573,7 @@
     **Passage**: "Will you help me move? Sure, I'll come tomorrow. I promise I'll bring snacks too!"
     **Question**: What does the speaker promise to bring?
     **Answer**: snacks
-    **Explanation**: The text says "I'll bring snacks too".
+    **Explanation**: O texto diz "I'll bring snacks too".
 
 ### 2. Listening/Speaking (5 phrases)
 
@@ -738,7 +738,7 @@
     **Passage**: "I'm going to travel next month — I have tickets. I think it will be a great trip. I'll send postcards too!"
     **Question**: What is the speaker going to do next month?
     **Answer**: travel
-    **Explanation**: The text says "I'm going to travel next month".
+    **Explanation**: O texto diz "I'm going to travel next month".
 
 ### 2. Listening/Speaking (5 phrases)
 

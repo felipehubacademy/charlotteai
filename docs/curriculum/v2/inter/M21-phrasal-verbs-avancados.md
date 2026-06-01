@@ -41,47 +41,47 @@
 1. **multiple_choice** — "I look forward _____ you next week."
    **Options**: to seeing / to see / seeing / for seeing
    **Answer**: to seeing
-   **Explanation**: "Look forward to" é phrasal verb + preposição "to" + -ING. Erro comum: usar "to see" (base form). Sempre "to + verb-ing" após "look forward to".
+   **Explanation**: "Look forward to" is phrasal verb + preposition "to" + -ING. Common error: using "to see" (base form). Always "to + verb-ing" after "look forward to".
 
 2. **multiple_choice** — "I'm getting used _____ early."
    **Options**: to waking up / to wake up / waking up / for waking
    **Answer**: to waking up
-   **Explanation**: "Get used to + -ing" — adaptação. "To waking up" — preposição "to" + gerúndio.
+   **Explanation**: "Get used to + -ing" — adaptation. "To waking up" — preposition "to" + gerund.
 
 3. **word_bank** — "She objects _____ here."
    **Choices**: to smoking / to smoke / smoking / for smoking
    **Answer**: to smoking
-   **Explanation**: "Object to + -ing" — oposição/recusa. "To smoking" — gerúndio obrigatório.
+   **Explanation**: "Object to + -ing" — opposition/refusal. "To smoking" — gerund required.
 
 4. **word_bank** — "I'm looking forward _____ on vacation."
    **Choices**: to going / to go / going / for going
    **Answer**: to going
-   **Explanation**: "Look forward to going" — antecipação positiva com -ing.
+   **Explanation**: "Look forward to going" — positive anticipation with -ing.
 
 5. **fill_gap** — "He's used _____ alone."
    **Hint**: to + -ing form "live"
    **Answer**: to living
-   **Explanation**: "Used to living" — habituado. Note: difere de "used to live" (costumava) — pista é o "TO + -ing" não "TO + base".
+   **Explanation**: "Used to living" — accustomed to. Note: different from "used to live" (used to / habitual past) — the clue is "TO + -ing", not "TO + base".
 
 6. **fill_gap** — "I object _____ on weekends."
    **Hint**: to + -ing "work"
    **Answer**: to working
-   **Explanation**: "Object to working" — oposição. Sempre "to + -ing".
+   **Explanation**: "Object to working" — opposition. Always "to + -ing".
 
 7. **fill_gap** — "We look forward _____ from you."
    **Hint**: to + -ing "hear"
    **Answer**: to hearing
-   **Explanation**: "Look forward to hearing" — fórmula formal em emails. Comum em encerramento.
+   **Explanation**: "Look forward to hearing" — formal email formula. Common in closings.
 
 8. **fix_error** — "I look forward to see you tomorrow."
    **Hint**: Após "to" em look forward to, gerúndio
    **Answer**: I look forward to seeing you tomorrow.
-   **Explanation**: Erro super comum. "Look forward to" — preposição "to" + -ING, não base form. "To seeing", não "to see".
+   **Explanation**: Very common error. "Look forward to" — preposition "to" + -ING, not base form. "To seeing", not "to see".
 
 9. **fix_error** — "She's getting used to wake up early."
    **Hint**: Após "to" em get used to, gerúndio
    **Answer**: She's getting used to waking up early.
-   **Explanation**: "Get used to + -ing". "To wake up" só funciona em "used to wake up" (costumava acordar). Aqui é adaptação atual.
+   **Explanation**: "Get used to + -ing". "To wake up" only works in "used to wake up" (habitual past). Here it's current adaptation.
 
 10. **read_answer**
     **Passage**: "I look forward to seeing you next week. She's getting used to waking up early for work. He objects to smoking in restaurants. We look forward to hearing from you soon."
@@ -211,42 +211,42 @@
 2. **multiple_choice** — "We _____ milk — let's buy some."
    **Options**: ran out of / ran out / ran away / ran with
    **Answer**: ran out of
-   **Explanation**: "Run out of + noun" = ficar sem. "Ran out of milk" — esgotamos o leite.
+   **Explanation**: "Run out of + noun" = to run out. "Ran out of milk" — we used up the milk.
 
 3. **word_bank** — "He always _____ lies."
    **Choices**: gets away with / gets out of / gets up with / gets along with
    **Answer**: gets away with
-   **Explanation**: "Get away with + noun/-ing" = escapar das consequências. "Gets away with lies".
+   **Explanation**: "Get away with + noun/-ing" = to escape consequences. "Gets away with lies".
 
 4. **word_bank** — "I can't _____ this noise!"
    **Choices**: put up with / put with / put away / put on
    **Answer**: put up with
-   **Explanation**: "Put up with noise" — tolerar barulho. Reclamação.
+   **Explanation**: "Put up with noise" — to tolerate noise. Complaint.
 
 5. **fill_gap** — "She _____ time before the deadline."
    **Hint**: ran + out + of
    **Answer**: ran out of
-   **Explanation**: "Ran out of time" — chunk muito comum, falta de tempo.
+   **Explanation**: "Ran out of time" — very common chunk, running out of time.
 
 6. **fill_gap** — "How do you _____ that smell?"
    **Hint**: put up with
    **Answer**: put up with
-   **Explanation**: "How do you put up with" — pergunta sobre tolerância.
+   **Explanation**: "How do you put up with" — question about tolerance.
 
 7. **fill_gap** — "He won't _____ cheating this time."
    **Hint**: get away with
    **Answer**: get away with
-   **Explanation**: "Won't get away with cheating" — não vai escapar.
+   **Explanation**: "Won't get away with cheating" — won't escape consequences.
 
 8. **fix_error** — "I can't put with this noise."
    **Hint**: 3 partes — put UP with
    **Answer**: I can't put up with this noise.
-   **Explanation**: "Put with" não existe. Sempre 3 partes: "put + UP + with".
+   **Explanation**: "Put with" doesn't exist. Always 3 parts: "put + UP + with".
 
 9. **fix_error** — "We're running out milk."
    **Hint**: Falta "of"
    **Answer**: We're running out of milk.
-   **Explanation**: "Run out OF + noun" — preposição "of" obrigatória. "Running out" sozinho não funciona com objeto.
+   **Explanation**: "Run out OF + noun" — preposition "of" required. "Running out" alone doesn't work with an object.
 
 10. **read_answer**
     **Passage**: "I can't put up with his attitude anymore. We ran out of milk this morning. He always gets away with breaking the rules. How do you put up with that smell?"
@@ -376,42 +376,42 @@
 2. **multiple_choice** — "She _____ her grandfather."
    **Options**: looks up to / looks down on / looks at / looks for
    **Answer**: looks up to
-   **Explanation**: "Look up to + person" = admirar. Imagina olhar para cima com respeito.
+   **Explanation**: "Look up to + person" = to admire. Imagine looking upward with respect.
 
 3. **word_bank** — "He _____ people without degrees."
    **Choices**: looks down on / looks up to / looks for / looks after
    **Answer**: looks down on
-   **Explanation**: "Look down on + person" = desprezar. Oposto de "look up to".
+   **Explanation**: "Look down on + person" = to look down on / despise. Opposite of "look up to".
 
 4. **word_bank** — "We don't _____ each other."
    **Choices**: get along with / get up with / get on / get along
    **Answer**: get along with
-   **Explanation**: "Don't get along with each other" — relação ruim. Sempre com "with".
+   **Explanation**: "Don't get along with each other" — bad relationship. Always with "with".
 
 5. **fill_gap** — "I really _____ my old boss — she was inspiring."
    **Hint**: look up to (admirar)
    **Answer**: look up to
-   **Explanation**: "Look up to" — admirar como modelo.
+   **Explanation**: "Look up to" — to admire as a role model.
 
 6. **fill_gap** — "He's hard to _____ — very stubborn."
    **Hint**: get along with
    **Answer**: get along with
-   **Explanation**: "Hard to get along with" — difícil de conviver.
+   **Explanation**: "Hard to get along with" — difficult to be around.
 
 7. **fill_gap** — "She _____ poor people, which is awful."
    **Hint**: looks down on
    **Answer**: looks down on
-   **Explanation**: "Looks down on poor people" — comportamento criticável de desprezo.
+   **Explanation**: "Looks down on poor people" — contemptuous behavior worth criticizing.
 
 8. **fix_error** — "I get along my coworkers."
    **Hint**: Falta "with"
    **Answer**: I get along with my coworkers.
-   **Explanation**: "Get along" sozinho funciona ("we get along well"), mas com pessoa específica precisa "with".
+   **Explanation**: "Get along" works alone ("we get along well"), but with a specific person you need "with".
 
 9. **fix_error** — "She looks up her grandfather."
    **Hint**: Falta "to"
    **Answer**: She looks up to her grandfather.
-   **Explanation**: "Look up to" — 3 partes obrigatórias. Sem "to" significa "olhar para cima fisicamente".
+   **Explanation**: "Look up to" — 3 parts required. Without "to" it means "to look up physically".
 
 10. **read_answer**
     **Passage**: "I get along with my coworkers really well. She looks up to her grandfather as a role model. He unfortunately looks down on people without degrees. We don't always get along with each other."
@@ -536,47 +536,47 @@
 1. **multiple_choice** — "I need to _____ my emails."
    **Options**: catch up on / catch up with / catch on / catch with
    **Answer**: catch up on
-   **Explanation**: "Catch up ON + thing/topic" para colocar em dia com algo. "Catch up on emails" = atualizar-se com os emails.
+   **Explanation**: "Catch up ON + thing/topic" to get up to date with something. "Catch up on emails" = update yourself on emails.
 
 2. **multiple_choice** — "Let's _____ next week!"
    **Options**: catch up / catch on / catch up to / catch in
    **Answer**: catch up
-   **Explanation**: "Catch up" sozinho = se ver/falar para atualizar. "Let's catch up" — combinar de conversar.
+   **Explanation**: "Catch up" alone = to meet/talk to reconnect. "Let's catch up" — making plans to chat.
 
 3. **word_bank** — "I want to _____ my mistake."
    **Choices**: make up for / make up / make for / make with
    **Answer**: make up for
-   **Explanation**: "Make up for + noun" = compensar. "Make up for the mistake" — compensar o erro.
+   **Explanation**: "Make up for + noun" = to make up for. "Make up for the mistake" — compensate for the error.
 
 4. **word_bank** — "It's hard to _____ all the changes."
    **Choices**: keep up with / keep with / keep up / keep on
    **Answer**: keep up with
-   **Explanation**: "Keep up with + thing" = manter o ritmo, acompanhar. "Keep up with changes".
+   **Explanation**: "Keep up with + thing" = to keep pace, stay current. "Keep up with changes".
 
 5. **fill_gap** — "I'll _____ the plan despite the doubts."
    **Hint**: go through with
    **Answer**: go through with
-   **Explanation**: "Go through with + plan/decision" = levar adiante. Apesar de dúvidas.
+   **Explanation**: "Go through with + plan/decision" = to follow through. Despite doubts.
 
 6. **fill_gap** — "I _____ the news every morning."
    **Hint**: catch up on
    **Answer**: catch up on
-   **Explanation**: "Catch up on the news" — atualizar-se sobre notícias.
+   **Explanation**: "Catch up on the news" — get up to date on the news.
 
 7. **fill_gap** — "Sorry for being late — I'll _____ it tomorrow."
    **Hint**: make up for
    **Answer**: make up for
-   **Explanation**: "Make up for it tomorrow" — compensar a falta.
+   **Explanation**: "Make up for it tomorrow" — compensate for the lateness.
 
 8. **fix_error** — "I need to catch up my emails."
    **Hint**: Falta "on" ou "with"
    **Answer**: I need to catch up on my emails.
-   **Explanation**: "Catch up" precisa de preposição quando há objeto. "On" para coisas/temas, "with" para pessoas.
+   **Explanation**: "Catch up" needs a preposition when there's an object. "On" for things/topics, "with" for people.
 
 9. **fix_error** — "Let's catch up with on the project."
    **Hint**: "On" para o projeto, sem "with"
    **Answer**: Let's catch up on the project.
-   **Explanation**: "Catch up on" para tema/objeto. "With" só para pessoas. Não pode misturar.
+   **Explanation**: "Catch up on" for a topic/object. "With" only for people. You can't mix them.
 
 10. **read_answer**
     **Passage**: "I need to catch up on my emails. Let's catch up next week! I want to make up for my mistake. It's hard to keep up with all the changes. I'll go through with the plan."
@@ -701,27 +701,27 @@
 1. **multiple_choice** — "_____, let's go tomorrow instead."
    **Options**: On second thought / At second thought / In second thought / By second thought
    **Answer**: On second thought
-   **Explanation**: "On second thought" = pensando melhor. Chunk fixo de reconsideração. Não é "at" ou "in".
+   **Explanation**: "On second thought" = on reflection. Fixed reconsideration chunk. Not "at" or "in".
 
 2. **multiple_choice** — "_____, what matters is being happy."
    **Options**: At the end of the day / In the end of the day / On end of day / By the end day
    **Answer**: At the end of the day
-   **Explanation**: "At the end of the day" = no fim das contas/em última análise. Chunk de conclusão filosófica. Não é "in".
+   **Explanation**: "At the end of the day" = in the final analysis / when all is said and done. Philosophical conclusion chunk. Not "in".
 
 3. **word_bank** — "_____, the investment will pay off."
    **Choices**: In the long run / In long term / At long run / By long run
    **Answer**: In the long run
-   **Explanation**: "In the long run" = a longo prazo. Chunk para perspectiva temporal estendida.
+   **Explanation**: "In the long run" = over the long term. Chunk for extended time perspective.
 
 4. **word_bank** — "_____, I'll keep working from home."
    **Choices**: For the time being / At the time being / In time being / On time being
    **Answer**: For the time being
-   **Explanation**: "For the time being" = por enquanto, temporariamente.
+   **Explanation**: "For the time being" = for now, temporarily.
 
 5. **fill_gap** — "_____, the project is fine — let's move on."
    **Hint**: By and large (no geral, em sua maioria)
    **Answer**: By and large
-   **Explanation**: "By and large" = de modo geral. Chunk para resumo qualificado.
+   **Explanation**: "By and large" = generally speaking. Chunk for qualified summary.
 
 6. **fill_gap** — "_____, you're absolutely right."
    **Hint**: On second thought

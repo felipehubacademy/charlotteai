@@ -81,7 +81,7 @@
     **Passage**: "I'd like to buy a black jacket. I'm looking for size M. Excuse me, where is the cashier? It's next to the door."
     **Question**: Where is the cashier?
     **Answer**: next to the door
-    **Explanation**: The text says "It's next to the door".
+    **Explanation**: O texto diz "It's next to the door".
 
 ### 2. Listening/Speaking (5 phrases)
 
@@ -246,7 +246,7 @@
     **Passage**: "I like this dress (in my hand). That dress over there is too expensive. These shoes fit me. Those shoes don't fit."
     **Question**: Which item is expensive?
     **Answer**: that dress (or "the dress over there")
-    **Explanation**: The text says "That dress over there is too expensive".
+    **Explanation**: O texto diz "That dress over there is too expensive".
 
 ### 2. Listening/Speaking (5 phrases)
 
@@ -411,7 +411,7 @@
     **Passage**: "I'm at the supermarket. The bread is on the second shelf. The milk is in the fridge. The cookies are next to the cash register."
     **Question**: Where are the cookies?
     **Answer**: next to the cash register
-    **Explanation**: The text says "next to the cash register".
+    **Explanation**: O texto diz "next to the cash register".
 
 ### 2. Listening/Speaking (5 phrases)
 
@@ -576,7 +576,7 @@
     **Passage**: "Customer: How much is this jacket? Cashier: Forty dollars. Customer: Can I pay with credit card? Cashier: Of course. Here's your receipt."
     **Question**: How does the customer pay?
     **Answer**: with credit card
-    **Explanation**: The text says "Can I pay with credit card?".
+    **Explanation**: O texto diz "Can I pay with credit card?".
 
 ### 2. Listening/Speaking (5 phrases)
 
@@ -741,7 +741,7 @@
     **Passage**: "I'd like to buy this shirt. How much is it? Twenty dollars. Can I try it on? Yes. The fitting room is next to the cashier."
     **Question**: How much is the shirt?
     **Answer**: twenty dollars
-    **Explanation**: The text says "Twenty dollars".
+    **Explanation**: O texto diz "Twenty dollars".
 
 ### 2. Listening/Speaking (5 phrases)
 

@@ -122,7 +122,7 @@
           "passage": "Tom is my friend. He works in a bank. He studies German at night. He goes home at six.",
           "question": "Where does Tom work?",
           "answer": "in a bank",
-          "explanation": "The text says \"He works in a bank\"."
+          "explanation": "O texto diz \"He works in a bank\"."
         }
       ],
       "listening_speaking": [
@@ -326,7 +326,7 @@
           "passage": "I don't drink coffee. My brother doesn't eat meat. We don't work on Sundays. Ana doesn't study at night.",
           "question": "What does Ana not do?",
           "answer": "study at night",
-          "explanation": "The text says \"Ana doesn't study at night\"."
+          "explanation": "O texto diz \"Ana doesn't study at night\"."
         }
       ],
       "listening_speaking": [
@@ -530,7 +530,7 @@
           "passage": "Q: Do you study English? A: Yes, I do. Q: Does your sister study too? A: No, she doesn't. She studies French.",
           "question": "What language does the sister study?",
           "answer": "French",
-          "explanation": "The text says \"She studies French\"."
+          "explanation": "O texto diz \"She studies French\"."
         }
       ],
       "listening_speaking": [
@@ -734,7 +734,7 @@
           "passage": "Q: Where do you work? A: I work in a hospital. Q: What time do you start? A: I start at eight. Q: When does your sister study? A: She studies at night.",
           "question": "When does the sister study?",
           "answer": "at night",
-          "explanation": "The text says \"She studies at night\"."
+          "explanation": "O texto diz \"She studies at night\"."
         }
       ],
       "listening_speaking": [
@@ -938,7 +938,7 @@
           "passage": "Lucas is my friend. He works in a school. He doesn't like coffee — he drinks tea. He goes to the gym every morning.",
           "question": "What does Lucas drink?",
           "answer": "tea",
-          "explanation": "The text says \"He doesn't like coffee — he drinks tea\"."
+          "explanation": "O texto diz \"He doesn't like coffee — he drinks tea\"."
         }
       ],
       "listening_speaking": [

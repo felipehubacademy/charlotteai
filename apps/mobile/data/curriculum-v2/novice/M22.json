@@ -111,7 +111,7 @@
           "passage": "I like coffee and tea, but I don't like soda. I drink water all day. Do you prefer coffee or tea?",
           "question": "Does the speaker like soda?",
           "answer": "no (or \"doesn't like\")",
-          "explanation": "The text says \"I don't like soda\"."
+          "explanation": "O texto diz \"I don't like soda\"."
         }
       ],
       "listening_speaking": [
@@ -313,7 +313,7 @@
           "passage": "I love English because it opens doors. I study every day, so I'm making progress. I'll keep going because it's fun.",
           "question": "Why does the speaker love English?",
           "answer": "it opens doors (or \"opens doors\")",
-          "explanation": "The text says \"I love English because it opens doors\"."
+          "explanation": "O texto diz \"I love English because it opens doors\"."
         }
       ],
       "listening_speaking": [
@@ -515,7 +515,7 @@
           "passage": "She speaks slowly and clearly. He drives carefully. They study seriously. We all sing happily.",
           "question": "How does she speak?",
           "answer": "slowly and clearly",
-          "explanation": "The text says \"She speaks slowly and clearly\"."
+          "explanation": "O texto diz \"She speaks slowly and clearly\"."
         }
       ],
       "listening_speaking": [
@@ -877,7 +877,7 @@
             "has"
           ],
           "answer": "have",
-          "explanation": "First conditional: if + present."
+          "explanation": "Primeiro condicional: if + presente."
         },
         {
           "type": "fill_gap",
@@ -919,7 +919,7 @@
           "passage": "I'm Felipe. I'm from Brazil. I learned English for two years. I love it because it opens doors. Tomorrow I'm going to take a test. Although I'm nervous, I'll do my best.",
           "question": "Why does Felipe love English?",
           "answer": "it opens doors (or \"opens doors\")",
-          "explanation": "The text says \"I love it because it opens doors\"."
+          "explanation": "O texto diz \"I love it because it opens doors\"."
         }
       ],
       "listening_speaking": [

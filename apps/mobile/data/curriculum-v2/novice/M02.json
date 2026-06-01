@@ -120,7 +120,7 @@
           "passage": "Hi! I am Mark. I am fifteen years old. My room is twelve.",
           "question": "How old is Mark? (dê um número)",
           "answer": "15",
-          "explanation": "Mark says \"I am fifteen years old\". Fifteen = 15."
+          "explanation": "Mark diz \"I am fifteen years old\". Fifteen = 15."
         }
       ],
       "listening_speaking": [
@@ -314,7 +314,7 @@
           "passage": "Tom is twenty-three years old. Mary is fifty. Mike is eighty-five.",
           "question": "How old is Mike? (dê um número)",
           "answer": "85",
-          "explanation": "The text says \"Mike is eighty-five\". 85 = 80 + 5 = eighty-five."
+          "explanation": "O texto diz \"Mike is eighty-five\". 85 = 80 + 5 = eighty-five."
         }
       ],
       "listening_speaking": [
@@ -508,7 +508,7 @@
           "passage": "Anna is from Italy. Lucas is from Brazil. Maria is from Spain. They are all friends.",
           "question": "Where is Lucas from?",
           "answer": "Brazil",
-          "explanation": "The text says \"Lucas is from Brazil\". Lucas comes from Brazil."
+          "explanation": "O texto diz \"Lucas is from Brazil\". Lucas vem do Brasil."
         }
       ],
       "listening_speaking": [
@@ -704,7 +704,7 @@
           "passage": "My new team: John is American. Yuki is Japanese. Sofia is Italian.",
           "question": "What nationality is Sofia?",
           "answer": "Italian",
-          "explanation": "The text says \"Sofia is Italian\". Sofia's nationality is Italian."
+          "explanation": "O texto diz \"Sofia is Italian\". A nacionalidade de Sofia é italiana."
         }
       ],
       "listening_speaking": [
@@ -898,7 +898,7 @@
           "passage": "Hello! My name is Ana. I'm twenty-six years old. I'm from São Paulo, Brazil. I'm Brazilian. Nice to meet you!",
           "question": "What is Ana's nationality?",
           "answer": "Brazilian",
-          "explanation": "Ana says \"I'm Brazilian\". Her nationality is \"Brazilian\" (the adjective)."
+          "explanation": "Ana diz \"I'm Brazilian\". A nacionalidade dela é \"Brazilian\" (o adjetivo)."
         }
       ],
       "listening_speaking": [

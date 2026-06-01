@@ -113,7 +113,7 @@
           "passage": "If it rains tomorrow, I'll stay home. If it's sunny, we'll go hiking. If she comes, we'll have lunch together.",
           "question": "What will the speaker do if it's sunny?",
           "answer": "go hiking",
-          "explanation": "The text says \"If it's sunny, we'll go hiking\"."
+          "explanation": "O texto diz \"If it's sunny, we'll go hiking\"."
         }
       ],
       "listening_speaking": [
@@ -315,7 +315,7 @@
           "passage": "If I have time tomorrow, I'll go to the gym. If I save enough, I'll buy a bike. If my friend calls, I'll go out with her.",
           "question": "What will the speaker buy if they save enough?",
           "answer": "a bike",
-          "explanation": "The text says \"If I save enough, I'll buy a bike\"."
+          "explanation": "O texto diz \"If I save enough, I'll buy a bike\"."
         }
       ],
       "listening_speaking": [
@@ -517,7 +517,7 @@
           "passage": "If you need help, I'll come. If you're hungry, I'll cook. If you have time, we'll chat. I'm here for you.",
           "question": "What will the speaker do if you're hungry?",
           "answer": "cook (or \"I'll cook\")",
-          "explanation": "The text says \"If you're hungry, I'll cook\"."
+          "explanation": "O texto diz \"If you're hungry, I'll cook\"."
         }
       ],
       "listening_speaking": [
@@ -719,7 +719,7 @@
           "passage": "I'll come to the party unless I'm tired. We'll go hiking unless it rains. I'll cook dinner unless you want pizza.",
           "question": "When won't the speaker come to the party?",
           "answer": "if I'm tired (or \"tired\")",
-          "explanation": "The text says \"I'll come unless I'm tired\" — meaning won't come if tired."
+          "explanation": "O texto diz \"I'll come unless I'm tired\" — significando que não virá se estiver cansado."
         }
       ],
       "listening_speaking": [
@@ -844,7 +844,7 @@
             "had"
           ],
           "answer": "have",
-          "explanation": "If + present."
+          "explanation": "If + presente."
         },
         {
           "type": "multiple_choice",
@@ -921,7 +921,7 @@
           "passage": "If it's sunny tomorrow, I'll go to the beach. If it rains, I'll stay home. I'll meet my friend unless she cancels.",
           "question": "When won't the speaker meet the friend?",
           "answer": "if she cancels (or \"she cancels\")",
-          "explanation": "The text says \"unless she cancels\" — meaning won't meet if she does."
+          "explanation": "O texto diz \"unless she cancels\" — significando que não vão se encontrar se ela cancelar."
         }
       ],
       "listening_speaking": [

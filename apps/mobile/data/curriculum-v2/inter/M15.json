@@ -40,7 +40,7 @@
             "spoke"
           ],
           "answer": "is spoken",
-          "explanation": "Passive present simple = \"am/is/are + past participle\". \"English is spoken\" — foco na língua, não em quem fala. Forma passiva clássica para fatos gerais."
+          "explanation": "Passive present simple = \"am/is/are + past participle\". \"English is spoken\" — focus on the language, not on who speaks it. Classic passive form for general facts."
         },
         {
           "type": "multiple_choice",
@@ -52,7 +52,7 @@
             "is producing"
           ],
           "answer": "produces",
-          "explanation": "\"The factory produces\" — ativa, pois a fábrica é o agente real. Se fosse passiva: \"A thousand cars are produced by the factory\"."
+          "explanation": "\"The factory produces\" — active, since the factory is the actual agent. The passive would be: \"A thousand cars are produced by the factory\"."
         },
         {
           "type": "word_bank",
@@ -64,7 +64,7 @@
             "is growing"
           ],
           "answer": "is grown",
-          "explanation": "\"Coffee is grown\" — café é o que recebe a ação. Foco no produto, não em quem planta. Passive present simple."
+          "explanation": "\"Coffee is grown\" — coffee is what receives the action. Focus on the product, not on who grows it. Passive present simple."
         },
         {
           "type": "word_bank",
@@ -83,35 +83,35 @@
           "sentence": "These shirts _____ in Italy.",
           "hint": "are + past participle \"make\"",
           "answer": "are made",
-          "explanation": "\"Are made in Italy\" — passive plural. Foco nas camisas (recipient), não em quem fabrica."
+          "explanation": "\"Are made in Italy\" — plural passive. Focus on the shirts (recipient), not on who manufactures them."
         },
         {
           "type": "fill_gap",
           "sentence": "Spanish _____ by 500 million people.",
           "hint": "is + past participle \"speak\"",
           "answer": "is spoken",
-          "explanation": "\"Spanish is spoken\" — passive present simple singular. Foco na língua."
+          "explanation": "\"Spanish is spoken\" — passive present simple singular. Focus on the language."
         },
         {
           "type": "fill_gap",
           "sentence": "Rice _____ in Asia.",
           "hint": "is + past participle \"grow\"",
           "answer": "is grown",
-          "explanation": "\"Rice is grown in Asia\" — fato geral, agente impreciso, passive natural."
+          "explanation": "\"Rice is grown in Asia\" — general fact, vague agent, natural passive."
         },
         {
           "type": "fix_error",
           "sentence": "English is speak in many countries.",
           "hint": "\"Speak\" precisa estar em past participle = \"spoken\"",
           "answer": "English is spoken in many countries.",
-          "explanation": "Passive precisa de past participle, não base form. \"Speak\" → \"spoken\". \"Is speak\" não funciona."
+          "explanation": "Passive needs past participle, not base form. \"Speak\" → \"spoken\". \"Is speak\" doesn't work."
         },
         {
           "type": "fix_error",
           "sentence": "Cars is made in the factory.",
           "hint": "Plural \"cars\" precisa de \"are\", não \"is\"",
           "answer": "Cars are made in the factory.",
-          "explanation": "Concordância: \"cars\" (plural) → \"are made\". Singular seria \"the car is made\"."
+          "explanation": "Agreement: \"cars\" (plural) → \"are made\". Singular would be \"the car is made\"."
         },
         {
           "type": "read_answer",
@@ -234,7 +234,7 @@
             "were built"
           ],
           "answer": "was built",
-          "explanation": "Passive past simple = \"was/were + past participle\". \"The pyramid was built\" — passive singular passado."
+          "explanation": "Passive past simple = \"was/were + past participle\". \"The pyramid was built\" — singular past passive."
         },
         {
           "type": "multiple_choice",
@@ -246,7 +246,7 @@
             "were painted"
           ],
           "answer": "was painted",
-          "explanation": "\"Was painted by...\" — passive past + \"by + agent\" para mostrar quem fez."
+          "explanation": "\"Was painted by...\" — past passive + \"by + agent\" to show who did it."
         },
         {
           "type": "word_bank",
@@ -258,7 +258,7 @@
             "are built"
           ],
           "answer": "were built",
-          "explanation": "Plural \"bridges\" → \"were built\". Passive past simple plural."
+          "explanation": "Plural \"bridges\" → \"were built\". Passive past simple, plural."
         },
         {
           "type": "word_bank",
@@ -270,42 +270,42 @@
             "were delivered"
           ],
           "answer": "was delivered",
-          "explanation": "\"The package was delivered\" — passive past simple, foco no pacote (recipient)."
+          "explanation": "\"The package was delivered\" — passive past simple, focus on the package (recipient)."
         },
         {
           "type": "fill_gap",
           "sentence": "The book _____ in 1925.",
           "hint": "was + past participle \"publish\"",
           "answer": "was published",
-          "explanation": "\"Was published in 1925\" — passive past, ano específico."
+          "explanation": "\"Was published in 1925\" — past passive, specific year."
         },
         {
           "type": "fill_gap",
           "sentence": "Two cars _____ in the accident.",
           "hint": "were + past participle \"damage\"",
           "answer": "were damaged",
-          "explanation": "Plural \"two cars\" → \"were damaged\". Passive past simple plural."
+          "explanation": "Plural \"two cars\" → \"were damaged\". Past passive plural."
         },
         {
           "type": "fill_gap",
           "sentence": "The decision _____ last week.",
           "hint": "was + past participle \"make\"",
           "answer": "was made",
-          "explanation": "\"The decision was made\" — passive past, foco na decisão."
+          "explanation": "\"The decision was made\" — past passive, focus on the decision."
         },
         {
           "type": "fix_error",
           "sentence": "The Mona Lisa was paint by Leonardo.",
           "hint": "\"Paint\" → past participle \"painted\"",
           "answer": "The Mona Lisa was painted by Leonardo.",
-          "explanation": "Após \"was/were\" sempre past participle, não base form. \"Paint\" → \"painted\"."
+          "explanation": "After \"was/were\", always past participle, not base form. \"Paint\" → \"painted\"."
         },
         {
           "type": "fix_error",
           "sentence": "These bridges was built in 1900.",
           "hint": "Plural precisa de \"were\"",
           "answer": "These bridges were built in 1900.",
-          "explanation": "\"Bridges\" (plural) → \"were built\". \"Was\" é só para singular."
+          "explanation": "\"Bridges\" (plural) → \"were built\". \"Was\" is only for singular."
         },
         {
           "type": "read_answer",
@@ -485,21 +485,21 @@
           "sentence": "The new policy _____ at this moment.",
           "hint": "is being + past participle \"discuss\"",
           "answer": "is being discussed",
-          "explanation": "\"Is being discussed at this moment\" — discussão em andamento."
+          "explanation": "\"Is being discussed at this moment\" — discussion in progress."
         },
         {
           "type": "fix_error",
           "sentence": "My car is repaired today.",
           "hint": "Para ação em curso, precisa de \"being\"",
           "answer": "My car is being repaired today.",
-          "explanation": "\"Is repaired\" sem \"being\" = present simple passive (fato geral). Para AÇÃO EM CURSO HOJE, precisa \"is being repaired\"."
+          "explanation": "\"Is repaired\" without \"being\" = present simple passive (general fact). For an ACTION IN PROGRESS TODAY, you need \"is being repaired\"."
         },
         {
           "type": "fix_error",
           "sentence": "The houses being built next to the park.",
           "hint": "Falta verbo \"to be\" + \"being\"",
           "answer": "The houses are being built next to the park.",
-          "explanation": "Estrutura completa: \"are being built\" — verbo to be conjugado + being + past participle. Não dá pra omitir o \"are\"."
+          "explanation": "Full structure: \"are being built\" — conjugated \"to be\" + being + past participle. You can't drop the \"are\"."
         },
         {
           "type": "read_answer",
@@ -622,7 +622,7 @@
             "was delivered"
           ],
           "answer": "has been delivered",
-          "explanation": "Passive present perfect = \"has/have + been + past participle\". \"Has been delivered already\" — ação completa com relevância presente."
+          "explanation": "Passive present perfect = \"has/have + been + past participle\". \"Has been delivered already\" — completed action with present relevance."
         },
         {
           "type": "multiple_choice",
@@ -634,7 +634,7 @@
             "build"
           ],
           "answer": "have been built",
-          "explanation": "Plural \"three schools\" → \"have been built\". Period \"this year\" inclui o presente → present perfect passive."
+          "explanation": "Plural \"three schools\" → \"have been built\". The period \"this year\" includes the present → present perfect passive."
         },
         {
           "type": "word_bank",
@@ -646,7 +646,7 @@
             "has finishing"
           ],
           "answer": "has been finished",
-          "explanation": "Pergunta com \"yet\" → present perfect passive. \"Has the report been finished yet?\"."
+          "explanation": "Question with \"yet\" → present perfect passive. \"Has the report been finished yet?\"."
         },
         {
           "type": "word_bank",
@@ -658,42 +658,42 @@
             "be made"
           ],
           "answer": "have been made",
-          "explanation": "Plural \"decisions\" + \"recently\" (período até agora) → \"have been made\". Passive present perfect."
+          "explanation": "Plural \"decisions\" + \"recently\" (period up to now) → \"have been made\". Passive present perfect."
         },
         {
           "type": "fill_gap",
           "sentence": "The new car _____ already.",
           "hint": "has been + past participle \"release\"",
           "answer": "has been released",
-          "explanation": "\"Has been released already\" — lançamento completo com efeito presente. Singular."
+          "explanation": "\"Has been released already\" — completed release with present effect. Singular."
         },
         {
           "type": "fill_gap",
           "sentence": "Many books _____ this year.",
           "hint": "have been + past participle \"publish\"",
           "answer": "have been published",
-          "explanation": "Plural \"many books\" → \"have been published\". Period \"this year\" → present perfect."
+          "explanation": "Plural \"many books\" → \"have been published\". The period \"this year\" → present perfect."
         },
         {
           "type": "fill_gap",
           "sentence": "The work _____ already.",
           "hint": "has been + past participle \"do\" — irregular",
           "answer": "has been done",
-          "explanation": "\"Has been done\" — \"do\" → past participle \"done\". Forma irregular."
+          "explanation": "\"Has been done\" — \"do\" → past participle \"done\". Irregular form."
         },
         {
           "type": "fix_error",
           "sentence": "The package has delivered already.",
           "hint": "Falta \"been\" — \"has BEEN delivered\"",
           "answer": "The package has been delivered already.",
-          "explanation": "Present perfect passive precisa de \"has/have BEEN + past participle\". \"Has delivered\" sem \"been\" não é passivo."
+          "explanation": "Present perfect passive needs \"has/have BEEN + past participle\". \"Has delivered\" without \"been\" isn't passive."
         },
         {
           "type": "fix_error",
           "sentence": "Three new schools has been built.",
           "hint": "Plural \"three schools\" precisa de \"have\"",
           "answer": "Three new schools have been built.",
-          "explanation": "Concordância: plural → \"have\". Singular seria \"the school has been built\"."
+          "explanation": "Agreement: plural → \"have\". Singular would be \"the school has been built\"."
         },
         {
           "type": "read_answer",
@@ -814,7 +814,7 @@
             "was spoken"
           ],
           "answer": "is spoken",
-          "explanation": "Fato geral atual → present simple passive. \"English is spoken\" — habitual/factual."
+          "explanation": "Current general fact → present simple passive. \"English is spoken\" — habitual/factual."
         },
         {
           "type": "multiple_choice",
@@ -826,7 +826,7 @@
             "has been built"
           ],
           "answer": "was built",
-          "explanation": "Tempo específico passado → past simple passive. \"Was built thousands of years ago\"."
+          "explanation": "Specific past time → past simple passive. \"Was built thousands of years ago\"."
         },
         {
           "type": "word_bank",
@@ -838,7 +838,7 @@
             "was repaired"
           ],
           "answer": "is being repaired",
-          "explanation": "\"At this moment\" → ação em curso → present continuous passive. \"Is being repaired\"."
+          "explanation": "\"At this moment\" → ongoing action → present continuous passive. \"Is being repaired\"."
         },
         {
           "type": "word_bank",
@@ -850,21 +850,21 @@
             "build"
           ],
           "answer": "have been built",
-          "explanation": "\"This year\" inclui presente → present perfect passive. \"Have been built\"."
+          "explanation": "\"This year\" includes the present → present perfect passive. \"Have been built\"."
         },
         {
           "type": "fill_gap",
           "sentence": "These shirts _____ in Italy. (general fact)",
           "hint": "are + past participle \"make\"",
           "answer": "are made",
-          "explanation": "Fato atual contínuo → present simple passive plural."
+          "explanation": "Ongoing current fact → present simple passive, plural."
         },
         {
           "type": "fill_gap",
           "sentence": "The package _____ yesterday. (past)",
           "hint": "was + past participle \"deliver\"",
           "answer": "was delivered",
-          "explanation": "\"Yesterday\" → past simple passive singular."
+          "explanation": "\"Yesterday\" → past simple passive, singular."
         },
         {
           "type": "fill_gap",
@@ -878,14 +878,14 @@
           "sentence": "The book is wrote by a famous author.",
           "hint": "\"Wrote\" não é past participle — \"written\"",
           "answer": "The book is written by a famous author.",
-          "explanation": "Verbo irregular \"write\" — past participle é \"written\", não \"wrote\"."
+          "explanation": "Irregular verb \"write\" — the past participle is \"written\", not \"wrote\"."
         },
         {
           "type": "fix_error",
           "sentence": "These bridges was built in 1900.",
           "hint": "Plural \"bridges\" → \"were\"",
           "answer": "These bridges were built in 1900.",
-          "explanation": "Plural sempre \"were\" no past simple passive."
+          "explanation": "Plurals always take \"were\" in past simple passive."
         },
         {
           "type": "read_answer",

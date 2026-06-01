@@ -87,7 +87,7 @@
     **Passage**: "Welcome to my house! My house is big. My kitchen is small but nice. My bedroom has got a big window."
     **Question**: How is the kitchen?
     **Answer**: small
-    **Explanation**: The text says "My kitchen is small but nice". The first word describing the kitchen is "small".
+    **Explanation**: O texto diz "My kitchen is small but nice". A primeira palavra que descreve a cozinha é "small".
 
 ### 2. Listening/Speaking (5 phrases)
 
@@ -252,7 +252,7 @@
     **Passage**: "There is a big house in the neighborhood. There are four bedrooms. There is a kitchen and two bathrooms."
     **Question**: How many bedrooms are there? (dê um número)
     **Answer**: four
-    **Explanation**: The text says "There are four bedrooms". 4.
+    **Explanation**: O texto diz "There are four bedrooms". 4.
 
 ### 2. Listening/Speaking (5 phrases)
 
@@ -417,7 +417,7 @@
     **Passage**: "My kitchen has got three chairs, two tables, and four windows. There are no doors inside the kitchen."
     **Question**: How many tables are in the kitchen? (dê um número)
     **Answer**: two
-    **Explanation**: The text says "two tables". 2.
+    **Explanation**: O texto diz "two tables". 2.
 
 ### 2. Listening/Speaking (5 phrases)
 
@@ -582,7 +582,7 @@
     **Passage**: "I am a doctor. My hospital is big. The hospital has got 200 beds. There is an emergency room on the first floor."
     **Question**: What does the speaker do? (dê uma profissão)
     **Answer**: doctor
-    **Explanation**: The text says "I am a doctor". Note "a doctor" (indefinite article + profession).
+    **Explanation**: O texto diz "I am a doctor". Note "a doctor" (artigo indefinido + profissão).
 
 ### 2. Listening/Speaking (5 phrases)
 
@@ -747,7 +747,7 @@
     **Passage**: "Welcome to my home! My house is big. There are four bedrooms, two bathrooms, and a kitchen. The kitchen has got two windows."
     **Question**: How many bedrooms are there? (dê um número)
     **Answer**: four
-    **Explanation**: The text says "four bedrooms". 4.
+    **Explanation**: O texto diz "four bedrooms". 4.
 
 ### 2. Listening/Speaking (5 phrases)
 

@@ -36,44 +36,44 @@
 2. **multiple_choice** — "If you mix red and blue, you _____ purple."
    **Options**: get / will get / got / are getting
    **Answer**: get
-   **Explanation**: Cor é resultado universal. Zero conditional = causa-efeito que sempre acontece. Present simple nas duas partes.
+   **Explanation**: Color is a universal result. Zero conditional = cause-effect that always happens. Present simple in both clauses.
 
 3. **word_bank** — "If it _____, plants grow faster."
    **Choices**: rains / will rain / rained / is raining
    **Answer**: rains
-   **Explanation**: "If it rains" — present simple terceira pessoa (it + verb-s). Verdade universal sobre crescimento de plantas.
+   **Explanation**: "If it rains" — present simple third person (it + verb-s). Universal truth about plant growth.
 
 4. **word_bank** — "Ice _____ if you heat it."
    **Choices**: melts / will melt / melted / is melting
    **Answer**: melts
-   **Explanation**: Estrutura zero conditional pode começar com qualquer cláusula. "Ice melts if you heat it" — fato físico.
+   **Explanation**: A zero conditional can start with either clause. "Ice melts if you heat it" — physical fact.
 
 5. **fill_gap** — "If you don't sleep enough, you _____ tired the next day."
    **Hint**: verbo de estado (feel/get/become) no presente
    **Answer**: feel
 **Accepts**: get / become
-   **Explanation**: Consequência sempre verdadeira. Verbos comuns: feel, get, become — todos no present simple.
+   **Explanation**: Always-true consequence. Common verbs: feel, get, become — all in present simple.
 
 6. **fill_gap** — "When the temperature _____ zero degrees, water freezes."
    **Hint**: present simple 3ª pessoa de "drop/reach/hit"
    **Answer**: drops
 **Accepts**: reaches / hits
-   **Explanation**: "When" funciona como "if" em verdades gerais — ambos indicam relação sempre verdadeira. "Drops to zero" — 3ª pessoa singular.
+   **Explanation**: "When" works like "if" in general truths — both signal an always-true relationship. "Drops to zero" — 3rd person singular.
 
 7. **fill_gap** — "If you don't water plants, they _____."
    **Hint**: present simple plural "die"
    **Answer**: die
-   **Explanation**: "They die" — plantas no plural usam forma base do verbo. Consequência universal de não regar.
+   **Explanation**: "They die" — plural plants use the base form of the verb. Universal consequence of not watering.
 
 8. **fix_error** — "If you heat water, it will boil."
    **Hint**: Zero conditional para verdades gerais não usa "will"
    **Answer**: If you heat water, it boils.
-   **Explanation**: "Will" muda o sentido para previsão específica (first conditional). Para verdades sempre verdadeiras, ambas cláusulas no present simple.
+   **Explanation**: "Will" shifts the meaning to a specific prediction (first conditional). For always-true facts, both clauses stay in present simple.
 
 9. **fix_error** — "If you mixing red and blue, you get purple."
    **Hint**: Após "if", use present simple, não -ing
    **Answer**: If you mix red and blue, you get purple.
-   **Explanation**: A cláusula com "if" precisa de present simple completo: "mix" (base form com you), não "mixing". A forma -ing precisaria de "are mixing" (present continuous).
+   **Explanation**: The "if" clause needs a complete present simple: "mix" (base form with you), not "mixing". The -ing form would require "are mixing" (present continuous).
 
 10. **read_answer**
     **Passage**: "If you heat water, it boils. When the sun sets, it gets dark. If you don't drink water, you get dehydrated. Plants die if you don't water them."
@@ -198,48 +198,48 @@
 1. **multiple_choice** — "If you study every day, you _____ better." (general truth)
    **Options**: get / will get / are getting
    **Answer**: get
-   **Explanation**: "Every day" indica padrão sempre verdadeiro → zero conditional. Estudar regularmente sempre melhora desempenho. Present simple nas duas cláusulas.
+   **Explanation**: "Every day" signals an always-true pattern → zero conditional. Studying regularly always improves performance. Present simple in both clauses.
 
 2. **multiple_choice** — "If you study tonight, you _____ better on tomorrow's test." (specific future)
    **Options**: will do / do / are doing
    **Answer**: will do
-   **Explanation**: "Tonight" + "tomorrow's test" indica evento específico no futuro → first conditional. Use "will + base" na consequência.
+   **Explanation**: "Tonight" + "tomorrow's test" signal a specific future event → first conditional. Use "will + base" in the consequence.
 
 3. **word_bank** — "If you don't water plants, they _____ — that's how nature works."
    **Choices**: die / will die / are dying / dies
    **Answer**: die
-   **Explanation**: "That's how nature works" sinaliza verdade universal → zero conditional. "Plants die" — present simple plural.
+   **Explanation**: "That's how nature works" signals a universal truth → zero conditional. "Plants die" — present simple plural.
 
 4. **word_bank** — "If it _____ tomorrow, I'll stay home."
    **Choices**: rains / will rain / rained / is raining
    **Answer**: rains
-   **Explanation**: Após "if", sempre present simple — mesmo em first conditional. "Tomorrow" no resto da frase indica evento específico. "It rains" — 3ª pessoa.
+   **Explanation**: After "if", always present simple — even in first conditional. "Tomorrow" elsewhere in the sentence marks a specific event. "It rains" — 3rd person.
 
 5. **fill_gap** — "Water _____ when you heat it to 100 degrees."
    **Hint**: verdade geral, present simple 3ª pessoa
    **Answer**: boils
-   **Explanation**: Verdade universal sobre água. "Boils" — 3ª pessoa singular present simple. "When" funciona como "if" em verdades gerais.
+   **Explanation**: Universal truth about water. "Boils" — 3rd person singular present simple. "When" works like "if" in general truths.
 
 6. **fill_gap** — "I _____ go to the beach if it's sunny on Saturday."
    **Hint**: future específico, contração de "I will"
    **Answer**: 'll (or will)
-   **Explanation**: "On Saturday" = evento específico → first conditional. "I'll go" ou "I will go" na consequência futura.
+   **Explanation**: "On Saturday" = specific event → first conditional. "I'll go" or "I will go" in the future consequence.
 
 7. **fill_gap** — "If you exercise regularly, you _____ healthier — it's a fact."
    **Hint**: verbo "feel/become/get" no present simple
    **Answer**: feel
 **Accepts**: get / become
-   **Explanation**: "It's a fact" reforça que é verdade geral → zero conditional. Consequência também no present simple.
+   **Explanation**: "It's a fact" reinforces a general truth → zero conditional. The consequence also stays in present simple.
 
 8. **fix_error** — "If I will have time tomorrow, I'll call you."
    **Hint**: Após "if", nunca usar "will" — sempre present simple
    **Answer**: If I have time tomorrow, I'll call you.
-   **Explanation**: A cláusula com "if" SEMPRE no present simple, mesmo em first conditional. "Will" só aparece na consequência. Este é um dos erros mais comuns de lusófonos.
+   **Explanation**: The "if" clause is ALWAYS in present simple, even in first conditional. "Will" only appears in the consequence. This is one of the most common errors for Portuguese speakers.
 
 9. **fix_error** — "If you heat water, it will boil." (para descrever verdade geral)
    **Hint**: Verdade universal não usa "will"
    **Answer**: If you heat water, it boils.
-   **Explanation**: "Will boil" sugere predição específica. Para fato sempre verdadeiro, use present simple nas duas cláusulas: "it boils".
+   **Explanation**: "Will boil" suggests a specific prediction. For an always-true fact, use present simple in both clauses: "it boils".
 
 10. **read_answer**
     **Passage**: "If you don't water plants, they die — that's how nature works. If it rains tomorrow, I'll stay home and read. Plants need sunlight to grow, and if they don't get it, they wither."
@@ -365,48 +365,48 @@
 1. **multiple_choice** — "_____ the sun rises, it gets light." (it always happens)
    **Options**: When / If / Although / Because
    **Answer**: When
-   **Explanation**: O sol sempre nasce — não é incerto. "When" é usado para eventos certos e que sempre acontecem.
+   **Explanation**: The sun always rises — it isn't uncertain. "When" is used for certain events that always happen.
 
 2. **multiple_choice** — "_____ it rains tomorrow, I'll take an umbrella." (uncertain)
    **Options**: If / When / Although / So
    **Answer**: If
-   **Explanation**: Chuva amanhã é INCERTO — pode ou não acontecer. "If" para eventos possíveis mas não garantidos.
+   **Explanation**: Tomorrow's rain is UNCERTAIN — it may or may not happen. "If" for possible but not guaranteed events.
 
 3. **word_bank** — "_____ I wake up, the first thing I do is check my phone."
    **Choices**: When / If / Although / Because
    **Answer**: When
-   **Explanation**: Acordar é parte da rotina — sempre acontece. "When I wake up" indica certeza temporal.
+   **Explanation**: Waking up is part of the routine — it always happens. "When I wake up" signals temporal certainty.
 
 4. **word_bank** — "_____ you're feeling tired, you should rest."
    **Choices**: If / When / Although / Because
    **Answer**: If
 **Accepts**: When
-   **Explanation**: Ambos funcionam — "If" enfatiza possibilidade, "When" enfatiza que sempre que acontecer, faça X. Em conselhos, ambos são naturais.
+   **Explanation**: Both work — "If" emphasizes possibility, "When" emphasizes that whenever it happens, do X. In advice, both are natural.
 
 5. **fill_gap** — "_____ winter comes, the days get shorter."
    **Hint**: certeza sazonal (sempre acontece)
    **Answer**: When
-   **Explanation**: Inverno é evento garantido todo ano — use "when". "If winter comes" soaria estranho porque inverno sempre vem.
+   **Explanation**: Winter is a guaranteed yearly event — use "when". "If winter comes" would sound odd because winter always arrives.
 
 6. **fill_gap** — "_____ you don't feel well, take a break."
    **Hint**: possibilidade (pode ou não estar doente)
    **Answer**: If
-   **Explanation**: Não está sempre doente — é variável. "If you don't feel well" — possibilidade.
+   **Explanation**: You aren't always sick — it varies. "If you don't feel well" — possibility.
 
 7. **fill_gap** — "_____ I get home from work, I take off my shoes and sit down."
    **Hint**: rotina diária garantida
    **Answer**: When
-   **Explanation**: Chegar em casa do trabalho é parte da rotina. "When I get home" — sempre que isso acontece.
+   **Explanation**: Getting home from work is part of the routine. "When I get home" — every time it happens.
 
 8. **fix_error** — "If the sun rises, the day starts."
    **Hint**: O sol sempre nasce — use "when"
    **Answer**: When the sun rises, the day starts.
-   **Explanation**: Eventos garantidos da natureza usam "when". "If" sugere dúvida — o sol vai nascer? Claro que sim.
+   **Explanation**: Guaranteed natural events use "when". "If" suggests doubt — will the sun rise? Of course it will.
 
 9. **fix_error** — "When it snows tomorrow, I'll build a snowman." (incerto)
    **Hint**: Neve amanhã é incerto — use "if"
    **Answer**: If it snows tomorrow, I'll build a snowman.
-   **Explanation**: Eventos futuros incertos pedem "if". "When" só funcionaria se você tivesse certeza absoluta que vai nevar.
+   **Explanation**: Uncertain future events call for "if". "When" would only work if you were absolutely sure it'll snow.
 
 10. **read_answer**
     **Passage**: "When the sun rises, the day begins. If it rains tomorrow, I'll stay inside. When I wake up, I have coffee. If you ever visit my city, I'll show you around."
@@ -531,47 +531,47 @@
 1. **multiple_choice** — "If I _____ time tomorrow, I'll go to the gym." (specific future)
    **Options**: have / will have / had / am having
    **Answer**: have
-   **Explanation**: First conditional: "if + present simple, will + base". Após "if", nunca "will". "Tomorrow" indica futuro específico.
+   **Explanation**: First conditional: "if + present simple, will + base". After "if", never "will". "Tomorrow" marks a specific future.
 
 2. **multiple_choice** — "Water _____ if heated to 100." (general truth)
    **Options**: boils / will boil / is boiling
    **Answer**: boils
-   **Explanation**: Verdade universal sobre água → zero conditional. Present simple em ambas cláusulas.
+   **Explanation**: Universal truth about water → zero conditional. Present simple in both clauses.
 
 3. **word_bank** — "If you _____ hard, you'll succeed in life." (motivational)
    **Choices**: work / will work / worked / are working
    **Answer**: work
-   **Explanation**: Após "if", present simple "work". A consequência "succeed" virá com "will" — first conditional motivacional.
+   **Explanation**: After "if", present simple "work". The consequence "succeed" takes "will" — motivational first conditional.
 
 4. **word_bank** — "When I _____ home, I cook dinner." (routine)
    **Choices**: get / will get / got / am getting
    **Answer**: get
-   **Explanation**: Rotina diária → "when + present, present". "I get home and cook" — sempre verdade.
+   **Explanation**: Daily routine → "when + present, present". "I get home and cook" — always true.
 
 5. **fill_gap** — "If I _____ early enough, I'll have breakfast at home."
    **Hint**: present simple de "wake up" 1ª pessoa
    **Answer**: wake up
-   **Explanation**: "Wake up" — phrasal verb fixo no present simple. First conditional indica resultado futuro específico.
+   **Explanation**: "Wake up" — fixed phrasal verb in present simple. First conditional signals a specific future result.
 
 6. **fill_gap** — "Plants die if you don't _____ them regularly."
    **Hint**: present simple de "water" (regar) com "you"
    **Answer**: water
-   **Explanation**: Verdade universal sobre plantas → zero conditional. "If you don't water them" — present simple negativo com "you".
+   **Explanation**: Universal truth about plants → zero conditional. "If you don't water them" — negative present simple with "you".
 
 7. **fill_gap** — "I'll be there if you _____ me to be."
    **Hint**: present simple de "want" 2ª pessoa
    **Answer**: want
-   **Explanation**: First conditional com promessa. "Want" — present simple base form com "you".
+   **Explanation**: First conditional with a promise. "Want" — present simple base form with "you".
 
 8. **fix_error** — "If it will rain tomorrow, I'll stay home."
    **Hint**: Nunca "will" depois de "if"
    **Answer**: If it rains tomorrow, I'll stay home.
-   **Explanation**: Regra fundamental: a cláusula com "if" SEMPRE no present simple, mesmo em first conditional. "Will" só na consequência.
+   **Explanation**: Core rule: the "if" clause is ALWAYS in present simple, even in first conditional. "Will" only in the consequence.
 
 9. **fix_error** — "If you heat water, it will boils."
    **Hint**: Verdade geral usa present simple em ambas cláusulas, sem "will" e sem -s extra
    **Answer**: If you heat water, it boils.
-   **Explanation**: Para verdade universal, zero conditional. "It boils" — present simple 3ª pessoa. "Will boils" não existe — depois de "will" vem base form (boil).
+   **Explanation**: For a universal truth, zero conditional. "It boils" — present simple 3rd person. "Will boils" doesn't exist — after "will" comes the base form (boil).
 
 10. **read_answer**
     **Passage**: "If you study consistently, you learn faster — that's universal. If I have free time this weekend, I'll catch up on reading. Plants need water; if they don't get it, they die. When it gets dark, I usually feel sleepy."
@@ -701,17 +701,17 @@
 2. **multiple_choice** — "Water _____ at zero degrees Celsius." (fact)
    **Options**: freezes / will freeze / froze / is freezing
    **Answer**: freezes
-   **Explanation**: Fato científico universal → present simple. "Water freezes" — 3ª pessoa.
+   **Explanation**: Universal scientific fact → present simple. "Water freezes" — 3rd person.
 
 3. **word_bank** — "If you _____ ice, it melts." (general truth)
    **Choices**: heat / will heat / heated / are heating
    **Answer**: heat
-   **Explanation**: Verdade universal → zero conditional. "If you heat" — present simple com "you".
+   **Explanation**: Universal truth → zero conditional. "If you heat" — present simple with "you".
 
 4. **word_bank** — "I _____ help you if you ask me to." (offer)
    **Choices**: will / would / can / am
    **Answer**: will
-   **Explanation**: First conditional com oferta. "I will help" — promessa condicional.
+   **Explanation**: First conditional with an offer. "I will help" — conditional promise.
 
 5. **fill_gap** — "If I _____ free time this evening, I'll watch a movie."
    **Hint**: present simple "have" com I
@@ -721,22 +721,22 @@
 6. **fill_gap** — "Plants _____ if you don't water them — that's biology."
    **Hint**: present simple plural "die"
    **Answer**: die
-   **Explanation**: Verdade biológica universal → zero conditional. "Plants die" — plural present simple.
+   **Explanation**: Universal biological truth → zero conditional. "Plants die" — plural present simple.
 
 7. **fill_gap** — "_____ you study consistently, you make progress."
    **Hint**: "if" ou "when" — verdade geral
    **Answer**: If (or When)
-   **Explanation**: Ambos funcionam em verdades universais. "If/When you study consistently".
+   **Explanation**: Both work in universal truths. "If/When you study consistently".
 
 8. **fix_error** — "If I have time, I travel a lot." (sentido específico de "este ano")
    **Hint**: Para futuro específico, use will
    **Answer**: If I have time, I'll travel a lot.
-   **Explanation**: Se o contexto é planejamento futuro específico, precisa de "will" na consequência. Sem "will", parece verdade geral (sempre quando tenho tempo, viajo).
+   **Explanation**: If the context is a specific future plan, you need "will" in the consequence. Without "will", it sounds like a general truth (whenever I have time, I travel).
 
 9. **fix_error** — "If you will be late, please call me."
    **Hint**: Após "if", presente simples sempre
    **Answer**: If you are late, please call me.
-   **Explanation**: A cláusula com "if" SEMPRE present simple — mesmo se a frase fala do futuro. "If you are" — present simple.
+   **Explanation**: The "if" clause is ALWAYS present simple — even when the sentence is about the future. "If you are" — present simple.
 
 10. **read_answer**
     **Passage**: "If you take this medicine three times a day, you'll feel better in a week. If I finish work early tomorrow, I'll join you for dinner. When water freezes, it expands — that's why pipes burst in winter."

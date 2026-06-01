@@ -33,47 +33,47 @@
 1. **multiple_choice** — Direct: "Are you tired?" Reported: "He asked _____ I was tired."
    **Options**: if / what / why / that
    **Answer**: if
-   **Explanation**: Yes/no questions reportadas usam "if" ou "whether". "He asked if I was tired" — sem inversão, ordem de afirmação.
+   **Explanation**: Reported yes/no questions use "if" or "whether". "He asked if I was tired" — no inversion, statement word order.
 
 2. **multiple_choice** — Direct: "Do you live here?" Reported: "She asked if I _____ there."
    **Options**: lived / live / am living / do live
    **Answer**: lived
-   **Explanation**: Backshift: "do you live" → "lived" (past simple). "Here" → "there". Sem auxiliar "do" no reported.
+   **Explanation**: Backshift: "do you live" → "lived" (past simple). "Here" → "there". No "do" auxiliary in reported speech.
 
 3. **word_bank** — Direct: "Have you finished?" Reported: "He asked if I _____."
    **Choices**: had finished / have finished / finished / was finishing
    **Answer**: had finished
-   **Explanation**: Present perfect ("have finished") → past perfect ("had finished") em reported.
+   **Explanation**: Present perfect ("have finished") → past perfect ("had finished") in reported speech.
 
 4. **word_bank** — Direct: "Will you come?" Reported: "She asked _____ I would come."
    **Choices**: if / what / when / that
    **Answer**: if
-   **Explanation**: Yes/no question com "will" → "if + subject + would". "Asked if I would come".
+   **Explanation**: Yes/no question with "will" → "if + subject + would". "Asked if I would come".
 
 5. **fill_gap** — Direct: "Are you happy?" Reported: "He asked _____ I _____ happy."
    **Hint**: if / was
    **Answer**: if / was
-   **Explanation**: "If" + ordem afirmativa + backshift "are" → "was".
+   **Explanation**: "If" + statement word order + backshift "are" → "was".
 
 6. **fill_gap** — Direct: "Do you speak English?" Reported: "She asked if I _____ English."
    **Hint**: past simple "speak"
    **Answer**: spoke
-   **Explanation**: "Do you speak" → "spoke" no reported (sem "do"). Estrutura afirmativa.
+   **Explanation**: "Do you speak" → "spoke" in reported speech (no "do"). Statement structure.
 
 7. **fill_gap** — Direct: "Can you swim?" Reported: "He asked if I _____ swim."
    **Hint**: could (can → could)
    **Answer**: could
-   **Explanation**: Modal "can" → "could" em reported. "If I could swim".
+   **Explanation**: Modal "can" → "could" in reported speech. "If I could swim".
 
 8. **fix_error** — Direct: "Are you tired?" Reported: "He asked if was I tired."
    **Hint**: Reported question não tem inversão
    **Answer**: He asked if I was tired.
-   **Explanation**: Erro clássico: manter inversão da pergunta direta. Em reported, ordem é AFIRMATIVA: "if + subject + verb".
+   **Explanation**: Classic error: keeping the inversion from the direct question. In reported speech, the order is STATEMENT: "if + subject + verb".
 
 9. **fix_error** — Direct: "Do you like coffee?" Reported: "She asked if I do like coffee."
    **Hint**: Sem auxiliar "do" em reported
    **Answer**: She asked if I liked coffee.
-   **Explanation**: Não usa "do" como auxiliar em reported (não é mais pergunta direta). Forma direta passa para forma afirmativa do tempo verbal.
+   **Explanation**: Don't use "do" as auxiliary in reported speech (it's no longer a direct question). The direct form converts to the statement form of the verb tense.
 
 10. **read_answer**
     **Passage**: "He asked if I was tired. She asked if I lived in São Paulo. He asked if I had finished the report. She asked if I would come to the party. He asked if I could swim."
@@ -198,47 +198,47 @@
 1. **multiple_choice** — Direct: "Where do you live?" Reported: "He asked _____ I lived."
    **Options**: where / what / if / when
    **Answer**: where
-   **Explanation**: WH-question reportada mantém o WH-word ("where"). Sem inversão, sem "do". "Asked where I lived" — ordem afirmativa.
+   **Explanation**: A reported WH-question keeps the WH-word ("where"). No inversion, no "do". "Asked where I lived" — statement word order.
 
 2. **multiple_choice** — Direct: "What time is it?" Reported: "She asked _____."
    **Options**: what time it was / what time was it / what time is it / what was the time
    **Answer**: what time it was
-   **Explanation**: Manter "what time" + ordem afirmativa "it was". Sem inversão verbo-sujeito.
+   **Explanation**: Keep "what time" + statement word order "it was". No verb-subject inversion.
 
 3. **word_bank** — Direct: "How do you do it?" Reported: "He asked _____."
    **Choices**: how I did it / how did I do it / how I do it / how do I do it
    **Answer**: how I did it
-   **Explanation**: "How + subject + past simple" sem "do". "How I did it" — afirmativa no reported.
+   **Explanation**: "How + subject + past simple" with no "do". "How I did it" — statement order in reported speech.
 
 4. **word_bank** — Direct: "Why are you late?" Reported: "She asked _____."
    **Choices**: why I was late / why was I late / why I am late / why am I late
    **Answer**: why I was late
-   **Explanation**: "Why + I + was" — ordem afirmativa, backshift de "are" para "was".
+   **Explanation**: "Why + I + was" — statement order, with backshift from "are" to "was".
 
 5. **fill_gap** — Direct: "When will you arrive?" Reported: "He asked when I _____ arrive."
    **Hint**: would (will → would)
    **Answer**: would
-   **Explanation**: "Will" → "would" em reported. "When I would arrive".
+   **Explanation**: "Will" → "would" in reported speech. "When I would arrive".
 
 6. **fill_gap** — Direct: "Who is your boss?" Reported: "She asked who my boss _____."
    **Hint**: was (is → was)
    **Answer**: was
-   **Explanation**: "Is" → "was" em reported. "Who my boss was" — afirmativa.
+   **Explanation**: "Is" → "was" in reported speech. "Who my boss was" — statement order.
 
 7. **fill_gap** — Direct: "What do you want?" Reported: "He asked _____ I wanted."
    **Hint**: what (WH-word) + sem auxiliar
    **Answer**: what
-   **Explanation**: WH-word "what" + ordem afirmativa. Backshift "want" → "wanted".
+   **Explanation**: WH-word "what" + statement order. Backshift "want" → "wanted".
 
 8. **fix_error** — Direct: "Where do you live?" Reported: "He asked where do I live."
    **Hint**: Sem inversão, sem "do"
    **Answer**: He asked where I lived.
-   **Explanation**: "Do I live" mantém estrutura de pergunta. Em reported, vira afirmativa: "I lived" (sem "do").
+   **Explanation**: "Do I live" keeps the question structure. In reported speech, it becomes a statement: "I lived" (no "do").
 
 9. **fix_error** — Direct: "What time is it?" Reported: "She asked what time was it."
    **Hint**: Sem inversão
    **Answer**: She asked what time it was.
-   **Explanation**: "Was it" mantém inversão da pergunta. Em reported, ordem afirmativa: "it was".
+   **Explanation**: "Was it" keeps the question inversion. In reported speech, use statement order: "it was".
 
 10. **read_answer**
     **Passage**: "He asked where I lived. She asked what time it was. He asked how I did it. She asked why I was late. He asked when I would arrive."
@@ -368,42 +368,42 @@
 2. **multiple_choice** — Direct: "Don't wait for me." Reported: "She told me _____ for her."
    **Options**: not to wait / to not wait / don't wait / not waiting
    **Answer**: not to wait
-   **Explanation**: Comando negativo: "NOT TO + base". "Told me not to wait" — "not" antes de "to".
+   **Explanation**: Negative command: "NOT TO + base". "Told me not to wait" — "not" before "to".
 
 3. **word_bank** — Direct: "Be quiet." Reported: "He told us _____ quiet."
    **Choices**: to be / be / being / been
    **Answer**: to be
-   **Explanation**: "Told us to be quiet" — to + base form do verbo "be".
+   **Explanation**: "Told us to be quiet" — to + base form of the verb "be".
 
 4. **word_bank** — Direct: "Don't speak loudly." Reported: "She told them _____ loudly."
    **Choices**: not to speak / to not speak / don't speak / not speaking
    **Answer**: not to speak
-   **Explanation**: Negativo padrão: "not to + base". "Not to speak loudly".
+   **Explanation**: Standard negative: "not to + base". "Not to speak loudly".
 
 5. **fill_gap** — Direct: "Open the window." Reported: "He told me _____ the window."
    **Hint**: to + base "open"
    **Answer**: to open
-   **Explanation**: "To open" — comando direto vira "to + base".
+   **Explanation**: "To open" — direct command becomes "to + base".
 
 6. **fill_gap** — Direct: "Don't be late." Reported: "She told me _____ late."
    **Hint**: not to be
    **Answer**: not to be
-   **Explanation**: Comando negativo com verbo "be": "not to be late".
+   **Explanation**: Negative command with the verb "be": "not to be late".
 
 7. **fill_gap** — Direct: "Stop running." Reported: "He told the children _____ running."
    **Hint**: to + base "stop"
    **Answer**: to stop
-   **Explanation**: "To stop running" — comando direto reportado.
+   **Explanation**: "To stop running" — direct command reported.
 
 8. **fix_error** — Direct: "Sit down." Reported: "He told me sit down."
    **Hint**: Falta "to"
    **Answer**: He told me to sit down.
-   **Explanation**: Sempre "told + person + TO + base". "Sit down" sem "to" não funciona em reported.
+   **Explanation**: Always "told + person + TO + base". "Sit down" without "to" doesn't work in reported speech.
 
 9. **fix_error** — Direct: "Don't shout." Reported: "She told me to don't shout."
    **Hint**: "Not to + base", sem "don't"
    **Answer**: She told me not to shout.
-   **Explanation**: Em reported, "don't" desaparece. Negativo é "NOT TO + base". "To don't shout" não existe.
+   **Explanation**: In reported speech, "don't" disappears. The negative is "NOT TO + base". "To don't shout" doesn't exist.
 
 10. **read_answer**
     **Passage**: "He told me to close the door. She told me not to wait. He told us to be quiet. She told them not to speak loudly. He told me to open the window."
@@ -528,47 +528,47 @@
 1. **multiple_choice** — Direct: "Could you help me?" Reported: "She asked me _____ her."
    **Options**: to help / help / helping / helped
    **Answer**: to help
-   **Explanation**: Pedidos reportados: "asked + person + to + base". "Asked me to help her" — pedido educado virou comando estrutural.
+   **Explanation**: Reported requests: "asked + person + to + base". "Asked me to help her" — the polite request takes a structural command form.
 
 2. **multiple_choice** — Direct: "Please don't tell anyone." Reported: "He asked me _____ anyone."
    **Options**: not to tell / to not tell / don't tell / not telling
    **Answer**: not to tell
-   **Explanation**: Pedido negativo: "asked me not to tell". "Not" antes de "to".
+   **Explanation**: Negative request: "asked me not to tell". "Not" before "to".
 
 3. **word_bank** — Direct: "Please be careful." Reported: "She _____ me to be careful."
    **Choices**: warned / asked / told / urged
    **Answer**: warned
-   **Explanation**: "Warned + person + to + base" — verbo de aviso. Mais forte que "asked".
+   **Explanation**: "Warned + person + to + base" — warning verb. Stronger than "asked".
 
 4. **word_bank** — Direct: "Please reconsider!" Reported: "He _____ me to reconsider."
    **Choices**: begged / asked / told / warned
    **Answer**: begged
-   **Explanation**: "Begged + person + to + base" — pedido emocional, suplicante.
+   **Explanation**: "Begged + person + to + base" — emotional, pleading request.
 
 5. **fill_gap** — Direct: "Could you wait?" Reported: "She asked me _____ a moment."
    **Hint**: to + base "wait"
    **Answer**: to wait
-   **Explanation**: "To wait" — pedido educado reportado.
+   **Explanation**: "To wait" — polite request reported.
 
 6. **fill_gap** — Direct: "Please don't be late." Reported: "He asked me _____ late."
    **Hint**: not to be
    **Answer**: not to be
-   **Explanation**: Pedido negativo com "be": "not to be late".
+   **Explanation**: Negative request with "be": "not to be late".
 
 7. **fill_gap** — Direct: "Please try harder." Reported: "She _____ me to try harder."
    **Hint**: urged (encorajamento forte)
    **Answer**: urged
-   **Explanation**: "Urged + person + to + base" — pedido enfático, encorajamento.
+   **Explanation**: "Urged + person + to + base" — emphatic request, encouragement.
 
 8. **fix_error** — Direct: "Please help me." Reported: "She asked me please to help her."
    **Hint**: "Please" desaparece em reported speech
    **Answer**: She asked me to help her.
-   **Explanation**: "Please" não aparece em reported speech. "Asked" já implica pedido educado. Só estrutura.
+   **Explanation**: "Please" doesn't appear in reported speech. "Asked" already implies a polite request. Structure only.
 
 9. **fix_error** — Direct: "Could you call me?" Reported: "He asked me that I call him."
    **Hint**: "Asked me + to + base", não "that"
    **Answer**: He asked me to call him.
-   **Explanation**: Pedidos não usam "that-clause". Estrutura fixa: "asked + person + TO + base".
+   **Explanation**: Requests don't use a "that-clause". Fixed structure: "asked + person + TO + base".
 
 10. **read_answer**
     **Passage**: "She asked me to help her. He asked me not to tell anyone. She warned me to be careful. He begged me to reconsider. She urged me to try harder."
@@ -693,27 +693,27 @@
 1. **multiple_choice** — Direct: "I'm tired." Reported: "She said _____ tired."
    **Options**: she was / she is / that is she / was she
    **Answer**: she was
-   **Explanation**: Statement: "said + subject + past tense". "She was tired" — ordem afirmativa.
+   **Explanation**: Statement: "said + subject + past tense". "She was tired" — statement word order.
 
 2. **multiple_choice** — Direct: "Are you ready?" Reported: "He asked _____ ready."
    **Options**: if I was / was I / I was / am I
    **Answer**: if I was
-   **Explanation**: Yes/no question: "if + subject + past tense". "If I was ready" — sem inversão.
+   **Explanation**: Yes/no question: "if + subject + past tense". "If I was ready" — no inversion.
 
 3. **word_bank** — Direct: "Close the door." Reported: "She told me _____ the door."
    **Choices**: to close / close / closing / closed
    **Answer**: to close
-   **Explanation**: Comando: "told + person + to + base". "Told me to close the door".
+   **Explanation**: Command: "told + person + to + base". "Told me to close the door".
 
 4. **word_bank** — Direct: "Where do you live?" Reported: "He asked _____ I lived."
    **Choices**: where / what / if / when
    **Answer**: where
-   **Explanation**: WH-question reportada mantém WH-word + ordem afirmativa.
+   **Explanation**: A reported WH-question keeps the WH-word + statement word order.
 
 5. **fill_gap** — Direct: "Don't be late." Reported: "She told me _____ late."
    **Hint**: not to be
    **Answer**: not to be
-   **Explanation**: Comando negativo: "not to + base".
+   **Explanation**: Negative command: "not to + base".
 
 6. **fill_gap** — Direct: "Can you help?" Reported: "He asked _____ I _____ help."
    **Hint**: if / could
@@ -723,17 +723,17 @@
 7. **fill_gap** — Direct: "I've finished." Reported: "She said she _____ finished."
    **Hint**: had + past participle
    **Answer**: had
-   **Explanation**: "Have finished" (present perfect) → "had finished" (past perfect) em reported.
+   **Explanation**: "Have finished" (present perfect) → "had finished" (past perfect) in reported speech.
 
 8. **fix_error** — Direct: "What is your name?" Reported: "He asked what is my name."
    **Hint**: Sem inversão
    **Answer**: He asked what my name was.
-   **Explanation**: "Is my name" mantém inversão. Em reported, ordem afirmativa: "my name was".
+   **Explanation**: "Is my name" keeps the inversion. In reported speech, use statement order: "my name was".
 
 9. **fix_error** — Direct: "Help me!" Reported: "She told me help her."
    **Hint**: Falta "to"
    **Answer**: She told me to help her.
-   **Explanation**: Comando reportado: "told + person + TO + base". "Help" sem "to" não funciona.
+   **Explanation**: Reported command: "told + person + TO + base". "Help" without "to" doesn't work.
 
 10. **read_answer**
     **Passage**: "She said she was tired. He asked if I was ready. She told me to close the door. He asked where I lived. She begged me to stay."

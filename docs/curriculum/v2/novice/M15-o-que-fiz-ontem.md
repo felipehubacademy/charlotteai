@@ -76,7 +76,7 @@
     **Passage**: "Yesterday I worked all day. Then I watched a movie and called my sister. We played a game online."
     **Question**: What did the speaker watch?
     **Answer**: a movie
-    **Explanation**: The text says "Then I watched a movie".
+    **Explanation**: O texto diz "Then I watched a movie".
 
 ### 2. Listening/Speaking (5 phrases)
 
@@ -241,7 +241,7 @@
     **Passage**: "I planned a trip last week. I stopped at the bakery and tried a new bread. I enjoyed the day."
     **Question**: What did the speaker try?
     **Answer**: a new bread
-    **Explanation**: The text says "tried a new bread".
+    **Explanation**: O texto diz "tried a new bread".
 
 ### 2. Listening/Speaking (5 phrases)
 
@@ -390,7 +390,7 @@
 7. **fill_gap** — "We _____ the lights at midnight."
    **Hint**: Passado de "turn off"
    **Answer**: turned off
-   **Explanation**: Phrasal verb: "turn off" → "turned off". Past + particle.
+   **Explanation**: Phrasal verb: "turn off" → "turned off". Passado + partícula.
 
 8. **fix_error** — "I worked yesterday last week."
    **Hint**: Dois time markers iguais
@@ -406,7 +406,7 @@
     **Passage**: "I visited my grandparents last weekend. We talked for hours. Then we cooked together and laughed a lot."
     **Question**: When did the speaker visit grandparents?
     **Answer**: last weekend
-    **Explanation**: The text says "last weekend".
+    **Explanation**: O texto diz "last weekend".
 
 ### 2. Listening/Speaking (5 phrases)
 
@@ -737,7 +737,7 @@
     **Passage**: "I started work at eight. I worked all morning. At noon I called my friend. We talked for an hour. Then I returned to my desk."
     **Question**: What time did the speaker start work?
     **Answer**: eight
-    **Explanation**: The text says "I started work at eight".
+    **Explanation**: O texto diz "I started work at eight".
 
 ### 2. Listening/Speaking (5 phrases)
 

@@ -76,7 +76,7 @@
     **Passage**: "I like coffee and tea, but I don't like soda. I drink water all day. Do you prefer coffee or tea?"
     **Question**: Does the speaker like soda?
     **Answer**: no (or "doesn't like")
-    **Explanation**: The text says "I don't like soda".
+    **Explanation**: O texto diz "I don't like soda".
 
 ### 2. Listening/Speaking (5 phrases)
 
@@ -241,7 +241,7 @@
     **Passage**: "I love English because it opens doors. I study every day, so I'm making progress. I'll keep going because it's fun."
     **Question**: Why does the speaker love English?
     **Answer**: it opens doors (or "opens doors")
-    **Explanation**: The text says "I love English because it opens doors".
+    **Explanation**: O texto diz "I love English because it opens doors".
 
 ### 2. Listening/Speaking (5 phrases)
 
@@ -406,7 +406,7 @@
     **Passage**: "She speaks slowly and clearly. He drives carefully. They study seriously. We all sing happily."
     **Question**: How does she speak?
     **Answer**: slowly and clearly
-    **Explanation**: The text says "She speaks slowly and clearly".
+    **Explanation**: O texto diz "She speaks slowly and clearly".
 
 ### 2. Listening/Speaking (5 phrases)
 
@@ -705,7 +705,7 @@
 4. **word_bank** — "If I _____ time, I'll travel."
    **Choices**: have / will have / had / has
    **Answer**: have
-   **Explanation**: First conditional: if + present.
+   **Explanation**: Primeiro condicional: if + presente.
 
 5. **fill_gap** — "Yesterday I _____ to the gym."
    **Hint**: Past simple irregular de "go"
@@ -736,7 +736,7 @@
     **Passage**: "I'm Felipe. I'm from Brazil. I learned English for two years. I love it because it opens doors. Tomorrow I'm going to take a test. Although I'm nervous, I'll do my best."
     **Question**: Why does Felipe love English?
     **Answer**: it opens doors (or "opens doors")
-    **Explanation**: The text says "I love it because it opens doors".
+    **Explanation**: O texto diz "I love it because it opens doors".
 
 ### 2. Listening/Speaking (5 phrases)
 

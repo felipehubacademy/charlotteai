@@ -79,7 +79,7 @@
     **Passage**: "I think you should rest more. You shouldn't work so late. We should all take breaks."
     **Question**: What shouldn't the person do?
     **Answer**: work so late (or "work late")
-    **Explanation**: The text says "You shouldn't work so late".
+    **Explanation**: O texto diz "You shouldn't work so late".
 
 ### 2. Listening/Speaking (5 phrases)
 
@@ -244,7 +244,7 @@
     **Passage**: "I have to work tomorrow. My sister has to study for an exam. We all have to wake up early."
     **Question**: What does the sister have to do?
     **Answer**: study (or "study for an exam")
-    **Explanation**: The text says "My sister has to study for an exam".
+    **Explanation**: O texto diz "My sister has to study for an exam".
 
 ### 2. Listening/Speaking (5 phrases)
 
@@ -409,7 +409,7 @@
     **Passage**: "I don't have to work tomorrow — it's my day off. She doesn't have to come if she's busy. We don't have to do anything special."
     **Question**: Why doesn't the speaker have to work tomorrow?
     **Answer**: it's my day off (or "day off")
-    **Explanation**: The text says "it's my day off".
+    **Explanation**: O texto diz "it's my day off".
 
 ### 2. Listening/Speaking (5 phrases)
 
@@ -739,7 +739,7 @@
     **Passage**: "You should rest. I have to work tomorrow. We need to buy more milk. She doesn't have to come if she's busy."
     **Question**: What does the speaker have to do tomorrow?
     **Answer**: work
-    **Explanation**: The text says "I have to work tomorrow".
+    **Explanation**: O texto diz "I have to work tomorrow".
 
 ### 2. Listening/Speaking (5 phrases)
 

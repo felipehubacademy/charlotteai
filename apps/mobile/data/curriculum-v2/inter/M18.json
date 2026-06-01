@@ -40,7 +40,7 @@
             "that"
           ],
           "answer": "if",
-          "explanation": "Yes/no questions reportadas usam \"if\" ou \"whether\". \"He asked if I was tired\" — sem inversão, ordem de afirmação."
+          "explanation": "Reported yes/no questions use \"if\" or \"whether\". \"He asked if I was tired\" — no inversion, statement word order."
         },
         {
           "type": "multiple_choice",
@@ -52,7 +52,7 @@
             "do live"
           ],
           "answer": "lived",
-          "explanation": "Backshift: \"do you live\" → \"lived\" (past simple). \"Here\" → \"there\". Sem auxiliar \"do\" no reported."
+          "explanation": "Backshift: \"do you live\" → \"lived\" (past simple). \"Here\" → \"there\". No \"do\" auxiliary in reported speech."
         },
         {
           "type": "word_bank",
@@ -64,7 +64,7 @@
             "was finishing"
           ],
           "answer": "had finished",
-          "explanation": "Present perfect (\"have finished\") → past perfect (\"had finished\") em reported."
+          "explanation": "Present perfect (\"have finished\") → past perfect (\"had finished\") in reported speech."
         },
         {
           "type": "word_bank",
@@ -76,42 +76,42 @@
             "that"
           ],
           "answer": "if",
-          "explanation": "Yes/no question com \"will\" → \"if + subject + would\". \"Asked if I would come\"."
+          "explanation": "Yes/no question with \"will\" → \"if + subject + would\". \"Asked if I would come\"."
         },
         {
           "type": "fill_gap",
           "sentence": "Direct: \"Are you happy?\" Reported: \"He asked _____ I _____ happy.\"",
           "hint": "if / was",
           "answer": "if / was",
-          "explanation": "\"If\" + ordem afirmativa + backshift \"are\" → \"was\"."
+          "explanation": "\"If\" + statement word order + backshift \"are\" → \"was\"."
         },
         {
           "type": "fill_gap",
           "sentence": "Direct: \"Do you speak English?\" Reported: \"She asked if I _____ English.\"",
           "hint": "past simple \"speak\"",
           "answer": "spoke",
-          "explanation": "\"Do you speak\" → \"spoke\" no reported (sem \"do\"). Estrutura afirmativa."
+          "explanation": "\"Do you speak\" → \"spoke\" in reported speech (no \"do\"). Statement structure."
         },
         {
           "type": "fill_gap",
           "sentence": "Direct: \"Can you swim?\" Reported: \"He asked if I _____ swim.\"",
           "hint": "could (can → could)",
           "answer": "could",
-          "explanation": "Modal \"can\" → \"could\" em reported. \"If I could swim\"."
+          "explanation": "Modal \"can\" → \"could\" in reported speech. \"If I could swim\"."
         },
         {
           "type": "fix_error",
           "sentence": "Direct: \"Are you tired?\" Reported: \"He asked if was I tired.\"",
           "hint": "Reported question não tem inversão",
           "answer": "He asked if I was tired.",
-          "explanation": "Erro clássico: manter inversão da pergunta direta. Em reported, ordem é AFIRMATIVA: \"if + subject + verb\"."
+          "explanation": "Classic error: keeping the inversion from the direct question. In reported speech, the order is STATEMENT: \"if + subject + verb\"."
         },
         {
           "type": "fix_error",
           "sentence": "Direct: \"Do you like coffee?\" Reported: \"She asked if I do like coffee.\"",
           "hint": "Sem auxiliar \"do\" em reported",
           "answer": "She asked if I liked coffee.",
-          "explanation": "Não usa \"do\" como auxiliar em reported (não é mais pergunta direta). Forma direta passa para forma afirmativa do tempo verbal."
+          "explanation": "Don't use \"do\" as auxiliary in reported speech (it's no longer a direct question). The direct form converts to the statement form of the verb tense."
         },
         {
           "type": "read_answer",
@@ -234,7 +234,7 @@
             "when"
           ],
           "answer": "where",
-          "explanation": "WH-question reportada mantém o WH-word (\"where\"). Sem inversão, sem \"do\". \"Asked where I lived\" — ordem afirmativa."
+          "explanation": "A reported WH-question keeps the WH-word (\"where\"). No inversion, no \"do\". \"Asked where I lived\" — statement word order."
         },
         {
           "type": "multiple_choice",
@@ -246,7 +246,7 @@
             "what was the time"
           ],
           "answer": "what time it was",
-          "explanation": "Manter \"what time\" + ordem afirmativa \"it was\". Sem inversão verbo-sujeito."
+          "explanation": "Keep \"what time\" + statement word order \"it was\". No verb-subject inversion."
         },
         {
           "type": "word_bank",
@@ -258,7 +258,7 @@
             "how do I do it"
           ],
           "answer": "how I did it",
-          "explanation": "\"How + subject + past simple\" sem \"do\". \"How I did it\" — afirmativa no reported."
+          "explanation": "\"How + subject + past simple\" with no \"do\". \"How I did it\" — statement order in reported speech."
         },
         {
           "type": "word_bank",
@@ -270,42 +270,42 @@
             "why am I late"
           ],
           "answer": "why I was late",
-          "explanation": "\"Why + I + was\" — ordem afirmativa, backshift de \"are\" para \"was\"."
+          "explanation": "\"Why + I + was\" — statement order, with backshift from \"are\" to \"was\"."
         },
         {
           "type": "fill_gap",
           "sentence": "Direct: \"When will you arrive?\" Reported: \"He asked when I _____ arrive.\"",
           "hint": "would (will → would)",
           "answer": "would",
-          "explanation": "\"Will\" → \"would\" em reported. \"When I would arrive\"."
+          "explanation": "\"Will\" → \"would\" in reported speech. \"When I would arrive\"."
         },
         {
           "type": "fill_gap",
           "sentence": "Direct: \"Who is your boss?\" Reported: \"She asked who my boss _____.\"",
           "hint": "was (is → was)",
           "answer": "was",
-          "explanation": "\"Is\" → \"was\" em reported. \"Who my boss was\" — afirmativa."
+          "explanation": "\"Is\" → \"was\" in reported speech. \"Who my boss was\" — statement order."
         },
         {
           "type": "fill_gap",
           "sentence": "Direct: \"What do you want?\" Reported: \"He asked _____ I wanted.\"",
           "hint": "what (WH-word) + sem auxiliar",
           "answer": "what",
-          "explanation": "WH-word \"what\" + ordem afirmativa. Backshift \"want\" → \"wanted\"."
+          "explanation": "WH-word \"what\" + statement order. Backshift \"want\" → \"wanted\"."
         },
         {
           "type": "fix_error",
           "sentence": "Direct: \"Where do you live?\" Reported: \"He asked where do I live.\"",
           "hint": "Sem inversão, sem \"do\"",
           "answer": "He asked where I lived.",
-          "explanation": "\"Do I live\" mantém estrutura de pergunta. Em reported, vira afirmativa: \"I lived\" (sem \"do\")."
+          "explanation": "\"Do I live\" keeps the question structure. In reported speech, it becomes a statement: \"I lived\" (no \"do\")."
         },
         {
           "type": "fix_error",
           "sentence": "Direct: \"What time is it?\" Reported: \"She asked what time was it.\"",
           "hint": "Sem inversão",
           "answer": "She asked what time it was.",
-          "explanation": "\"Was it\" mantém inversão da pergunta. Em reported, ordem afirmativa: \"it was\"."
+          "explanation": "\"Was it\" keeps the question inversion. In reported speech, use statement order: \"it was\"."
         },
         {
           "type": "read_answer",
@@ -440,7 +440,7 @@
             "not waiting"
           ],
           "answer": "not to wait",
-          "explanation": "Comando negativo: \"NOT TO + base\". \"Told me not to wait\" — \"not\" antes de \"to\"."
+          "explanation": "Negative command: \"NOT TO + base\". \"Told me not to wait\" — \"not\" before \"to\"."
         },
         {
           "type": "word_bank",
@@ -452,7 +452,7 @@
             "been"
           ],
           "answer": "to be",
-          "explanation": "\"Told us to be quiet\" — to + base form do verbo \"be\"."
+          "explanation": "\"Told us to be quiet\" — to + base form of the verb \"be\"."
         },
         {
           "type": "word_bank",
@@ -464,42 +464,42 @@
             "not speaking"
           ],
           "answer": "not to speak",
-          "explanation": "Negativo padrão: \"not to + base\". \"Not to speak loudly\"."
+          "explanation": "Standard negative: \"not to + base\". \"Not to speak loudly\"."
         },
         {
           "type": "fill_gap",
           "sentence": "Direct: \"Open the window.\" Reported: \"He told me _____ the window.\"",
           "hint": "to + base \"open\"",
           "answer": "to open",
-          "explanation": "\"To open\" — comando direto vira \"to + base\"."
+          "explanation": "\"To open\" — direct command becomes \"to + base\"."
         },
         {
           "type": "fill_gap",
           "sentence": "Direct: \"Don't be late.\" Reported: \"She told me _____ late.\"",
           "hint": "not to be",
           "answer": "not to be",
-          "explanation": "Comando negativo com verbo \"be\": \"not to be late\"."
+          "explanation": "Negative command with the verb \"be\": \"not to be late\"."
         },
         {
           "type": "fill_gap",
           "sentence": "Direct: \"Stop running.\" Reported: \"He told the children _____ running.\"",
           "hint": "to + base \"stop\"",
           "answer": "to stop",
-          "explanation": "\"To stop running\" — comando direto reportado."
+          "explanation": "\"To stop running\" — direct command reported."
         },
         {
           "type": "fix_error",
           "sentence": "Direct: \"Sit down.\" Reported: \"He told me sit down.\"",
           "hint": "Falta \"to\"",
           "answer": "He told me to sit down.",
-          "explanation": "Sempre \"told + person + TO + base\". \"Sit down\" sem \"to\" não funciona em reported."
+          "explanation": "Always \"told + person + TO + base\". \"Sit down\" without \"to\" doesn't work in reported speech."
         },
         {
           "type": "fix_error",
           "sentence": "Direct: \"Don't shout.\" Reported: \"She told me to don't shout.\"",
           "hint": "\"Not to + base\", sem \"don't\"",
           "answer": "She told me not to shout.",
-          "explanation": "Em reported, \"don't\" desaparece. Negativo é \"NOT TO + base\". \"To don't shout\" não existe."
+          "explanation": "In reported speech, \"don't\" disappears. The negative is \"NOT TO + base\". \"To don't shout\" doesn't exist."
         },
         {
           "type": "read_answer",
@@ -622,7 +622,7 @@
             "helped"
           ],
           "answer": "to help",
-          "explanation": "Pedidos reportados: \"asked + person + to + base\". \"Asked me to help her\" — pedido educado virou comando estrutural."
+          "explanation": "Reported requests: \"asked + person + to + base\". \"Asked me to help her\" — the polite request takes a structural command form."
         },
         {
           "type": "multiple_choice",
@@ -634,7 +634,7 @@
             "not telling"
           ],
           "answer": "not to tell",
-          "explanation": "Pedido negativo: \"asked me not to tell\". \"Not\" antes de \"to\"."
+          "explanation": "Negative request: \"asked me not to tell\". \"Not\" before \"to\"."
         },
         {
           "type": "word_bank",
@@ -646,7 +646,7 @@
             "urged"
           ],
           "answer": "warned",
-          "explanation": "\"Warned + person + to + base\" — verbo de aviso. Mais forte que \"asked\"."
+          "explanation": "\"Warned + person + to + base\" — warning verb. Stronger than \"asked\"."
         },
         {
           "type": "word_bank",
@@ -658,42 +658,42 @@
             "warned"
           ],
           "answer": "begged",
-          "explanation": "\"Begged + person + to + base\" — pedido emocional, suplicante."
+          "explanation": "\"Begged + person + to + base\" — emotional, pleading request."
         },
         {
           "type": "fill_gap",
           "sentence": "Direct: \"Could you wait?\" Reported: \"She asked me _____ a moment.\"",
           "hint": "to + base \"wait\"",
           "answer": "to wait",
-          "explanation": "\"To wait\" — pedido educado reportado."
+          "explanation": "\"To wait\" — polite request reported."
         },
         {
           "type": "fill_gap",
           "sentence": "Direct: \"Please don't be late.\" Reported: \"He asked me _____ late.\"",
           "hint": "not to be",
           "answer": "not to be",
-          "explanation": "Pedido negativo com \"be\": \"not to be late\"."
+          "explanation": "Negative request with \"be\": \"not to be late\"."
         },
         {
           "type": "fill_gap",
           "sentence": "Direct: \"Please try harder.\" Reported: \"She _____ me to try harder.\"",
           "hint": "urged (encorajamento forte)",
           "answer": "urged",
-          "explanation": "\"Urged + person + to + base\" — pedido enfático, encorajamento."
+          "explanation": "\"Urged + person + to + base\" — emphatic request, encouragement."
         },
         {
           "type": "fix_error",
           "sentence": "Direct: \"Please help me.\" Reported: \"She asked me please to help her.\"",
           "hint": "\"Please\" desaparece em reported speech",
           "answer": "She asked me to help her.",
-          "explanation": "\"Please\" não aparece em reported speech. \"Asked\" já implica pedido educado. Só estrutura."
+          "explanation": "\"Please\" doesn't appear in reported speech. \"Asked\" already implies a polite request. Structure only."
         },
         {
           "type": "fix_error",
           "sentence": "Direct: \"Could you call me?\" Reported: \"He asked me that I call him.\"",
           "hint": "\"Asked me + to + base\", não \"that\"",
           "answer": "He asked me to call him.",
-          "explanation": "Pedidos não usam \"that-clause\". Estrutura fixa: \"asked + person + TO + base\"."
+          "explanation": "Requests don't use a \"that-clause\". Fixed structure: \"asked + person + TO + base\"."
         },
         {
           "type": "read_answer",
@@ -814,7 +814,7 @@
             "was she"
           ],
           "answer": "she was",
-          "explanation": "Statement: \"said + subject + past tense\". \"She was tired\" — ordem afirmativa."
+          "explanation": "Statement: \"said + subject + past tense\". \"She was tired\" — statement word order."
         },
         {
           "type": "multiple_choice",
@@ -826,7 +826,7 @@
             "am I"
           ],
           "answer": "if I was",
-          "explanation": "Yes/no question: \"if + subject + past tense\". \"If I was ready\" — sem inversão."
+          "explanation": "Yes/no question: \"if + subject + past tense\". \"If I was ready\" — no inversion."
         },
         {
           "type": "word_bank",
@@ -838,7 +838,7 @@
             "closed"
           ],
           "answer": "to close",
-          "explanation": "Comando: \"told + person + to + base\". \"Told me to close the door\"."
+          "explanation": "Command: \"told + person + to + base\". \"Told me to close the door\"."
         },
         {
           "type": "word_bank",
@@ -850,14 +850,14 @@
             "when"
           ],
           "answer": "where",
-          "explanation": "WH-question reportada mantém WH-word + ordem afirmativa."
+          "explanation": "A reported WH-question keeps the WH-word + statement word order."
         },
         {
           "type": "fill_gap",
           "sentence": "Direct: \"Don't be late.\" Reported: \"She told me _____ late.\"",
           "hint": "not to be",
           "answer": "not to be",
-          "explanation": "Comando negativo: \"not to + base\"."
+          "explanation": "Negative command: \"not to + base\"."
         },
         {
           "type": "fill_gap",
@@ -871,21 +871,21 @@
           "sentence": "Direct: \"I've finished.\" Reported: \"She said she _____ finished.\"",
           "hint": "had + past participle",
           "answer": "had",
-          "explanation": "\"Have finished\" (present perfect) → \"had finished\" (past perfect) em reported."
+          "explanation": "\"Have finished\" (present perfect) → \"had finished\" (past perfect) in reported speech."
         },
         {
           "type": "fix_error",
           "sentence": "Direct: \"What is your name?\" Reported: \"He asked what is my name.\"",
           "hint": "Sem inversão",
           "answer": "He asked what my name was.",
-          "explanation": "\"Is my name\" mantém inversão. Em reported, ordem afirmativa: \"my name was\"."
+          "explanation": "\"Is my name\" keeps the inversion. In reported speech, use statement order: \"my name was\"."
         },
         {
           "type": "fix_error",
           "sentence": "Direct: \"Help me!\" Reported: \"She told me help her.\"",
           "hint": "Falta \"to\"",
           "answer": "She told me to help her.",
-          "explanation": "Comando reportado: \"told + person + TO + base\". \"Help\" sem \"to\" não funciona."
+          "explanation": "Reported command: \"told + person + TO + base\". \"Help\" without \"to\" doesn't work."
         },
         {
           "type": "read_answer",

@@ -115,7 +115,7 @@
           "passage": "I think it will rain tomorrow. She will probably stay home. We will all watch a movie together.",
           "question": "What will the speaker do tomorrow?",
           "answer": "watch a movie",
-          "explanation": "The text says \"We will all watch a movie together\"."
+          "explanation": "O texto diz \"We will all watch a movie together\"."
         }
       ],
       "listening_speaking": [
@@ -317,7 +317,7 @@
           "passage": "It's raining. I'll get an umbrella! She won't go out today. I promise I'll call you when I arrive.",
           "question": "What does the speaker promise?",
           "answer": "I'll call you (when I arrive) (or \"to call\")",
-          "explanation": "The text says \"I promise I'll call you\"."
+          "explanation": "O texto diz \"I promise I'll call you\"."
         }
       ],
       "listening_speaking": [
@@ -521,7 +521,7 @@
           "passage": "I'm going to travel next month — I have tickets. But right now? Oh, the phone! I'll get it. I think it'll be my mom.",
           "question": "Why is the speaker going to travel (planejado vs espontâneo)?",
           "answer": "planned (or \"tickets\" or \"has tickets\")",
-          "explanation": "The text says \"I have tickets\" — indicating a planned trip with going to."
+          "explanation": "O texto diz \"I have tickets\" — indicando uma viagem planejada com going to."
         }
       ],
       "listening_speaking": [
@@ -723,7 +723,7 @@
           "passage": "Will you help me move? Sure, I'll come tomorrow. I promise I'll bring snacks too!",
           "question": "What does the speaker promise to bring?",
           "answer": "snacks",
-          "explanation": "The text says \"I'll bring snacks too\"."
+          "explanation": "O texto diz \"I'll bring snacks too\"."
         }
       ],
       "listening_speaking": [
@@ -925,7 +925,7 @@
           "passage": "I'm going to travel next month — I have tickets. I think it will be a great trip. I'll send postcards too!",
           "question": "What is the speaker going to do next month?",
           "answer": "travel",
-          "explanation": "The text says \"I'm going to travel next month\"."
+          "explanation": "O texto diz \"I'm going to travel next month\"."
         }
       ],
       "listening_speaking": [

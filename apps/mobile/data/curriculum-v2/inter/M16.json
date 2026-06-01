@@ -73,42 +73,42 @@
             "are reviewing"
           ],
           "answer": "have to be reviewed",
-          "explanation": "Plural \"files\" + obrigação → \"have to be reviewed\". Modal-like passive."
+          "explanation": "Plural \"files\" + obligation → \"have to be reviewed\". Modal-like passive."
         },
         {
           "type": "fill_gap",
           "sentence": "The car _____ if it makes that sound.",
           "hint": "should be + past participle \"check\"",
           "answer": "should be checked",
-          "explanation": "\"Should be checked\" — recomendação passive sobre o carro."
+          "explanation": "\"Should be checked\" — passive recommendation about the car."
         },
         {
           "type": "fill_gap",
           "sentence": "Children _____ unsupervised.",
           "hint": "shouldn't be + past participle \"leave\"",
           "answer": "shouldn't be left",
-          "explanation": "\"Shouldn't be left unsupervised\" — proibição passive."
+          "explanation": "\"Shouldn't be left unsupervised\" — passive prohibition."
         },
         {
           "type": "fill_gap",
           "sentence": "The package _____ at this point — it's been weeks.",
           "hint": "must have been + past participle \"lose\"",
           "answer": "must have been lost",
-          "explanation": "\"Must have been lost\" — modal perfect passive. Inferência forte sobre o passado em passive."
+          "explanation": "\"Must have been lost\" — modal perfect passive. Strong inference about the past in passive voice."
         },
         {
           "type": "fix_error",
           "sentence": "The report must finished by Friday.",
           "hint": "Falta \"be\" — \"must BE finished\"",
           "answer": "The report must be finished by Friday.",
-          "explanation": "Modal passive sempre \"modal + BE + past participle\". \"Must finished\" não funciona."
+          "explanation": "Modal passive is always \"modal + BE + past participle\". \"Must finished\" doesn't work."
         },
         {
           "type": "fix_error",
           "sentence": "Children shouldn't left alone.",
           "hint": "Falta \"be\"",
           "answer": "Children shouldn't be left alone.",
-          "explanation": "\"Shouldn't BE left\" — modal + be + past participle. Forma fixa."
+          "explanation": "\"Shouldn't BE left\" — modal + be + past participle. Fixed form."
         },
         {
           "type": "read_answer",
@@ -274,35 +274,35 @@
           "sentence": "Dinner _____ at 7 PM.",
           "hint": "will be + past participle \"serve\"",
           "answer": "will be served",
-          "explanation": "\"Will be served at 7\" — future passive padrão."
+          "explanation": "\"Will be served at 7\" — standard future passive."
         },
         {
           "type": "fill_gap",
           "sentence": "The bridge _____ in 2030.",
           "hint": "will be + past participle \"complete\"",
           "answer": "will be completed",
-          "explanation": "\"Will be completed\" — future passive sobre obra."
+          "explanation": "\"Will be completed\" — future passive about construction."
         },
         {
           "type": "fill_gap",
           "sentence": "The meeting _____ next week.",
           "hint": "is going to be + past participle \"hold\"",
           "answer": "is going to be held",
-          "explanation": "\"Is going to be held\" — futuro planejado passive. \"Hold\" → past participle \"held\"."
+          "explanation": "\"Is going to be held\" — planned-future passive. \"Hold\" → past participle \"held\"."
         },
         {
           "type": "fix_error",
           "sentence": "The winner will announced tomorrow.",
           "hint": "Falta \"be\" — \"will BE announced\"",
           "answer": "The winner will be announced tomorrow.",
-          "explanation": "Future passive sempre \"will BE + past participle\". \"Will announced\" não existe."
+          "explanation": "Future passive is always \"will BE + past participle\". \"Will announced\" doesn't exist."
         },
         {
           "type": "fix_error",
           "sentence": "The package will be deliver tomorrow.",
           "hint": "\"Deliver\" → past participle \"delivered\"",
           "answer": "The package will be delivered tomorrow.",
-          "explanation": "Após \"will be\" sempre past participle, não base form. \"Deliver\" → \"delivered\"."
+          "explanation": "After \"will be\", always past participle, not base form. \"Deliver\" → \"delivered\"."
         },
         {
           "type": "read_answer",
@@ -449,7 +449,7 @@
             "performs"
           ],
           "answer": "was performed",
-          "explanation": "\"Was performed by...\" — passive past com agente."
+          "explanation": "\"Was performed by...\" — past passive with agent."
         },
         {
           "type": "word_bank",
@@ -461,21 +461,21 @@
             "has been making"
           ],
           "answer": "was made",
-          "explanation": "\"Was made by my mother\" — passive past + agent."
+          "explanation": "\"Was made by my mother\" — past passive + agent."
         },
         {
           "type": "fill_gap",
           "sentence": "The film was directed _____ Spielberg.",
           "hint": "Preposição que introduz agente",
           "answer": "by",
-          "explanation": "\"By Spielberg\" — preposição padrão do agente em passive."
+          "explanation": "\"By Spielberg\" — standard preposition for the agent in passive."
         },
         {
           "type": "fill_gap",
           "sentence": "Hamlet _____ by Shakespeare.",
           "hint": "was + past participle \"write\"",
           "answer": "was written",
-          "explanation": "\"Was written by Shakespeare\" — passive + agent famoso."
+          "explanation": "\"Was written by Shakespeare\" — passive + famous agent."
         },
         {
           "type": "fill_gap",
@@ -489,14 +489,14 @@
           "sentence": "The Mona Lisa was painted from Leonardo.",
           "hint": "Preposição errada — agente usa \"by\"",
           "answer": "The Mona Lisa was painted by Leonardo.",
-          "explanation": "\"From\" indica origem/source. Para AGENTE de passive, sempre \"by\"."
+          "explanation": "\"From\" marks origin/source. For the AGENT of a passive, always \"by\"."
         },
         {
           "type": "fix_error",
           "sentence": "English is spoken by many countries.",
           "hint": "\"Many countries\" não é agente — usa \"in\"",
           "answer": "English is spoken in many countries.",
-          "explanation": "\"Countries\" são LUGARES, não agentes. Use \"in\", não \"by\". \"By\" só para quem realiza a ação."
+          "explanation": "\"Countries\" are PLACES, not agents. Use \"in\", not \"by\". \"By\" is only for whoever performs the action."
         },
         {
           "type": "read_answer",
@@ -619,7 +619,7 @@
             "has hurt"
           ],
           "answer": "got hurt",
-          "explanation": "\"Get + past participle\" = passive informal, especialmente para mudanças de estado ou acidentes. \"Got hurt\" — comum em fala."
+          "explanation": "\"Get + past participle\" = informal passive, especially for state changes or accidents. \"Got hurt\" — common in speech."
         },
         {
           "type": "multiple_choice",
@@ -631,7 +631,7 @@
             "get married"
           ],
           "answer": "got married",
-          "explanation": "\"Got married\" — chunk fixo. \"Get\" passive é muito usado para eventos de vida."
+          "explanation": "\"Got married\" — fixed chunk. \"Get\" passive is heavily used for life events."
         },
         {
           "type": "word_bank",
@@ -643,7 +643,7 @@
             "has hired"
           ],
           "answer": "got hired",
-          "explanation": "\"Got hired\" — informal alternative para \"was hired\". Comum em fala."
+          "explanation": "\"Got hired\" — informal alternative for \"was hired\". Common in speech."
         },
         {
           "type": "word_bank",
@@ -655,42 +655,42 @@
             "am getting wet"
           ],
           "answer": "get wet",
-          "explanation": "\"Get wet\" — mudança de estado. \"Get + adjective\" também funciona como passive informal."
+          "explanation": "\"Get wet\" — state change. \"Get + adjective\" also works as informal passive."
         },
         {
           "type": "fill_gap",
           "sentence": "My phone _____ stolen yesterday.",
           "hint": "got + past participle",
           "answer": "got",
-          "explanation": "\"Got stolen\" — passive informal de \"was stolen\". Comum em narrativa."
+          "explanation": "\"Got stolen\" — informal passive of \"was stolen\". Common in storytelling."
         },
         {
           "type": "fill_gap",
           "sentence": "They _____ engaged last month.",
           "hint": "got + past participle \"engage\"",
           "answer": "got engaged",
-          "explanation": "\"Got engaged\" — evento de vida em get passive."
+          "explanation": "\"Got engaged\" — life event in get-passive."
         },
         {
           "type": "fill_gap",
           "sentence": "I _____ lost in the city.",
           "hint": "got + past participle \"lose\"",
           "answer": "got lost",
-          "explanation": "\"Got lost\" — comum em narrativa. \"Lose\" → past participle \"lost\"."
+          "explanation": "\"Got lost\" — common in storytelling. \"Lose\" → past participle \"lost\"."
         },
         {
           "type": "fix_error",
           "sentence": "She get married last summer.",
           "hint": "Passado precisa de \"got\"",
           "answer": "She got married last summer.",
-          "explanation": "\"Last summer\" indica passado. Use \"got\", não \"get\"."
+          "explanation": "\"Last summer\" marks the past. Use \"got\", not \"get\"."
         },
         {
           "type": "fix_error",
           "sentence": "My phone got steal.",
           "hint": "Precisa past participle, não base form",
           "answer": "My phone got stolen.",
-          "explanation": "Após \"got\", past participle. \"Steal\" → \"stolen\". \"Got steal\" não é gramatical."
+          "explanation": "After \"got\", past participle. \"Steal\" → \"stolen\". \"Got steal\" isn't grammatical."
         },
         {
           "type": "read_answer",
@@ -875,14 +875,14 @@
           "sentence": "The report must finished by Friday.",
           "hint": "Falta \"be\"",
           "answer": "The report must be finished by Friday.",
-          "explanation": "Modal passive sempre \"modal + BE + past participle\"."
+          "explanation": "Modal passive is always \"modal + BE + past participle\"."
         },
         {
           "type": "fix_error",
           "sentence": "The novel was wrote by a Brazilian author.",
           "hint": "\"Wrote\" não é past participle — \"written\"",
           "answer": "The novel was written by a Brazilian author.",
-          "explanation": "Verbo irregular: write → wrote (past simple) → written (past participle). Passive usa past participle."
+          "explanation": "Irregular verb: write → wrote (past simple) → written (past participle). Passive uses the past participle."
         },
         {
           "type": "read_answer",

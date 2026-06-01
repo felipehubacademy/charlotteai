@@ -90,7 +90,7 @@
     **Passage**: "I wake up at six. I have coffee at six-thirty. I eat breakfast at seven. I go to work at eight."
     **Question**: At what time do I wake up?
     **Answer**: six
-    **Explanation**: The text says "I wake up at six". 6.
+    **Explanation**: O texto diz "I wake up at six". 6.
 
 ### 2. Listening/Speaking (5 phrases)
 
@@ -255,7 +255,7 @@
     **Passage**: "I work in a big company. I study English in the morning. I work with my colleagues in a big office."
     **Question**: Where does the speaker work?
     **Answer**: in a big company
-    **Explanation**: The text says "I work in a big company".
+    **Explanation**: O texto diz "I work in a big company".
 
 ### 2. Listening/Speaking (5 phrases)
 
@@ -420,7 +420,7 @@
     **Passage**: "I eat fruit every morning. I have a sandwich for lunch. I drink coffee at three. We have dinner at eight."
     **Question**: What do I drink at three?
     **Answer**: coffee
-    **Explanation**: The text says "I drink coffee at three".
+    **Explanation**: O texto diz "I drink coffee at three".
 
 ### 2. Listening/Speaking (5 phrases)
 
@@ -585,7 +585,7 @@
     **Passage**: "I go to work by car. I come home at six. We go to the park on Saturdays. I come back at eight."
     **Question**: How does the speaker go to work?
     **Answer**: by car
-    **Explanation**: The text says "I go to work by car".
+    **Explanation**: O texto diz "I go to work by car".
 
 ### 2. Listening/Speaking (5 phrases)
 
@@ -750,7 +750,7 @@
     **Passage**: "I always wake up at seven. I usually have coffee and bread. I sometimes go to the gym. I never work on Sundays."
     **Question**: When does the speaker not work?
     **Answer**: Sundays
-    **Explanation**: The text says "I never work on Sundays". So the speaker doesn't work on Sundays.
+    **Explanation**: O texto diz "I never work on Sundays". Logo, o falante não trabalha aos domingos.
 
 ### 2. Listening/Speaking (5 phrases)
 

@@ -32,47 +32,47 @@
 1. **multiple_choice** — "I _____ studied harder for the exam."
    **Options**: should have / should / would / had
    **Answer**: should have
-   **Explanation**: "Should have + past participle" expressa arrependimento ou crítica sobre o passado. "I should have studied" — não estudei, e foi um erro.
+   **Explanation**: "Should have + past participle" expresses regret or criticism about the past. "I should have studied" — I didn't, and it was a mistake.
 
 2. **multiple_choice** — "You _____ told her the truth."
    **Options**: should have / should / would / had
    **Answer**: should have
-   **Explanation**: "You should have told her" — crítica/sugestão retrospectiva. Era a coisa certa a fazer mas não foi feita.
+   **Explanation**: "You should have told her" — retrospective criticism/suggestion. It was the right thing to do but it wasn't done.
 
 3. **word_bank** — "She _____ said anything — it wasn't her business."
    **Choices**: shouldn't have / shouldn't / wouldn't have / didn't have
    **Answer**: shouldn't have
-   **Explanation**: "Shouldn't have + past participle" para criticar uma ação passada errada. "She shouldn't have said" — disse e foi errado.
+   **Explanation**: "Shouldn't have + past participle" to criticize a wrong past action. "She shouldn't have said" — she said it and it was wrong.
 
 4. **word_bank** — "We _____ left earlier — we missed the train."
    **Choices**: should have / should / would have / had
    **Answer**: should have
-   **Explanation**: "We should have left earlier" — arrependimento sobre timing passado.
+   **Explanation**: "We should have left earlier" — regret about past timing.
 
 5. **fill_gap** — "He _____ have apologized."
    **Hint**: should / shouldn't (criticism)
    **Answer**: should
-   **Explanation**: "He should have apologized" — sugestão retrospectiva: era a coisa correta. (Aceita "should" no contexto criticando que ele não pediu desculpa.)
+   **Explanation**: "He should have apologized" — retrospective suggestion: it was the right thing to do. (Accepts "should" in the context criticizing that he didn't apologize.)
 
 6. **fill_gap** — "I _____ have eaten so much."
    **Hint**: shouldn't (arrependimento)
    **Answer**: shouldn't
-   **Explanation**: "I shouldn't have eaten so much" — comi demais, me arrependo.
+   **Explanation**: "I shouldn't have eaten so much" — I ate too much, I regret it.
 
 7. **fill_gap** — "You _____ have called me first."
    **Hint**: should (sugestão retrospectiva)
    **Answer**: should
-   **Explanation**: "You should have called me first" — crítica leve sobre não ter ligado.
+   **Explanation**: "You should have called me first" — mild criticism about not calling.
 
 8. **fix_error** — "I should studied harder."
    **Hint**: Falta "have" — "should HAVE studied"
    **Answer**: I should have studied harder.
-   **Explanation**: "Should studied" não existe. Sempre "should HAVE + past participle". Forma fixa.
+   **Explanation**: "Should studied" doesn't exist. Always "should HAVE + past participle". Fixed form.
 
 9. **fix_error** — "She shouldn't said that."
    **Hint**: Falta "have"
    **Answer**: She shouldn't have said that.
-   **Explanation**: "Shouldn't have + past participle". "Shouldn't said" não é gramatical.
+   **Explanation**: "Shouldn't have + past participle". "Shouldn't said" isn't grammatical.
 
 10. **read_answer**
     **Passage**: "I should have studied harder. You should have told her the truth. We shouldn't have eaten so much. He should have apologized when he had the chance."
@@ -197,47 +197,47 @@
 1. **multiple_choice** — "I _____ called you yesterday but I forgot."
    **Options**: could have / could / would / can have
    **Answer**: could have
-   **Explanation**: "Could have + past participle" = possibilidade passada não realizada. "I could have called" — tinha como mas não chamei.
+   **Explanation**: "Could have + past participle" = past possibility not realized. "I could have called" — I could have but didn't.
 
 2. **multiple_choice** — "She _____ won the race, but she fell."
    **Options**: could have / could / would have / can have
    **Answer**: could have
-   **Explanation**: "She could have won" — capacidade passada, oportunidade perdida.
+   **Explanation**: "She could have won" — past ability, missed opportunity.
 
 3. **word_bank** — "We _____ stayed longer, but we were tired."
    **Choices**: could have / could / would have / had
    **Answer**: could have
-   **Explanation**: "Could have stayed" — possibilidade passada, decisão de não fazer.
+   **Explanation**: "Could have stayed" — past possibility, chose not to.
 
 4. **word_bank** — "He _____ done it alone — he didn't need help."
    **Choices**: could have / could / would have / had
    **Answer**: could have
-   **Explanation**: "He could have done it alone" — capacidade real existia, oportunidade existia.
+   **Explanation**: "He could have done it alone" — the real ability and opportunity existed.
 
 5. **fill_gap** — "You _____ asked me — I would have helped."
    **Hint**: could (have)
    **Answer**: could
-   **Explanation**: "You could have asked me" — chance que existia mas não foi usada.
+   **Explanation**: "You could have asked me" — a chance that existed but wasn't taken.
 
 6. **fill_gap** — "I _____ have gone, but I chose to stay."
    **Hint**: could
    **Answer**: could
-   **Explanation**: "I could have gone" — possibilidade existia, decisão de não fazer.
+   **Explanation**: "I could have gone" — the possibility existed, chose not to.
 
 7. **fill_gap** — "She _____ have known — she wasn't even there."
    **Hint**: couldn't (impossibilidade)
    **Answer**: couldn't
-   **Explanation**: "She couldn't have known" — impossibilidade lógica passada. Não tinha como saber.
+   **Explanation**: "She couldn't have known" — past logical impossibility. There was no way to know.
 
 8. **fix_error** — "I could called you but I forgot."
    **Hint**: Falta "have" — "could HAVE called"
    **Answer**: I could have called you but I forgot.
-   **Explanation**: "Could called" não existe. Sempre "could HAVE + past participle".
+   **Explanation**: "Could called" doesn't exist. Always "could HAVE + past participle".
 
 9. **fix_error** — "She couldn't known about it."
    **Hint**: Falta "have"
    **Answer**: She couldn't have known about it.
-   **Explanation**: "Couldn't have + past participle". Sem "have", a frase é incorreta.
+   **Explanation**: "Couldn't have + past participle". Without "have", the sentence is incorrect.
 
 10. **read_answer**
     **Passage**: "I could have called you yesterday but I forgot. She could have won the race if she hadn't fallen. He couldn't have known about the meeting — he was on vacation."
@@ -362,47 +362,47 @@
 1. **multiple_choice** — "She isn't answering — she _____ left already."
    **Options**: must have / could have / would have / can have
    **Answer**: must have
-   **Explanation**: "Must have + past participle" = inferência forte sobre o passado. Evidência (não atende) → conclusão forte (já saiu).
+   **Explanation**: "Must have + past participle" = strong inference about the past. Evidence (not answering) → strong conclusion (she already left).
 
 2. **multiple_choice** — "He _____ stolen it — he was with me all day!"
    **Options**: can't have / must have / shouldn't have / didn't
    **Answer**: can't have
-   **Explanation**: "Can't have + past participle" = impossibilidade lógica baseada em evidência. Estava comigo → impossível ter roubado.
+   **Explanation**: "Can't have + past participle" = logical impossibility based on evidence. He was with me → impossible he stole it.
 
 3. **word_bank** — "The grass is wet — it _____ rained last night."
    **Choices**: must have / could have / would have / can have
    **Answer**: must have
-   **Explanation**: Evidência física (grama molhada) → conclusão forte ("must have rained").
+   **Explanation**: Physical evidence (wet grass) → strong conclusion ("must have rained").
 
 4. **word_bank** — "She _____ heard you — she had headphones on."
    **Choices**: can't have / must have / shouldn't have / didn't
    **Answer**: can't have
-   **Explanation**: "Can't have heard" = impossível ter ouvido (headphones). Inferência negativa forte.
+   **Explanation**: "Can't have heard" = impossible to have heard (headphones). Strong negative inference.
 
 5. **fill_gap** — "He looks tired — he _____ slept much last night."
    **Hint**: can't have (impossibilidade)
    **Answer**: can't have
-   **Explanation**: Tired → can't have slept much. Conclusão forte negativa.
+   **Explanation**: Tired → can't have slept much. Strong negative conclusion.
 
 6. **fill_gap** — "They _____ enjoyed the trip — they have so many photos!"
    **Hint**: must have
    **Answer**: must have
-   **Explanation**: Muitas fotos → must have enjoyed. Evidência → inferência positiva forte.
+   **Explanation**: Lots of photos → must have enjoyed. Evidence → strong positive inference.
 
 7. **fill_gap** — "She _____ have arrived — her car isn't here."
    **Hint**: can't (impossibilidade)
    **Answer**: can't
-   **Explanation**: "She can't have arrived" — sem carro = não chegou. Inferência negativa.
+   **Explanation**: "She can't have arrived" — no car = she didn't arrive. Negative inference.
 
 8. **fix_error** — "She must left already — she's not answering."
    **Hint**: Falta "have" — "must HAVE left"
    **Answer**: She must have left already — she's not answering.
-   **Explanation**: "Must left" não existe. Sempre "must HAVE + past participle".
+   **Explanation**: "Must left" doesn't exist. Always "must HAVE + past participle".
 
 9. **fix_error** — "He can't stole it — he was with me!"
    **Hint**: Falta "have" — "can't HAVE stolen"
    **Answer**: He can't have stolen it — he was with me!
-   **Explanation**: "Can't HAVE + past participle". E note: stolen, não stole, como past participle.
+   **Explanation**: "Can't HAVE + past participle". And note: stolen, not stole, as the past participle.
 
 10. **read_answer**
     **Passage**: "The grass is wet — it must have rained last night. She isn't answering her phone — she must have left already. He can't have stolen it — he was with me the whole day."
@@ -527,47 +527,47 @@
 1. **multiple_choice** — "She _____ missed the bus — I'm not sure."
    **Options**: might have / must have / can't have / would have
    **Answer**: might have
-   **Explanation**: "Might have + past participle" = especulação fraca, possibilidade incerta. Sem evidência forte.
+   **Explanation**: "Might have + past participle" = weak speculation, uncertain possibility. No strong evidence.
 
 2. **multiple_choice** — "We _____ booked the table — it was empty anyway."
    **Options**: needn't have / shouldn't have / couldn't have / wouldn't have
    **Answer**: needn't have
-   **Explanation**: "Needn't have + past participle" = ação foi feita mas não era necessária. Booked = fizemos, mas não precisava.
+   **Explanation**: "Needn't have + past participle" = action was done but wasn't necessary. Booked = we did it, but we didn't need to.
 
 3. **word_bank** — "He _____ called — but I'm not certain."
    **Choices**: might have / must have / can't have / would have
    **Answer**: might have
-   **Explanation**: "Might have called" — possibilidade fraca, incerteza.
+   **Explanation**: "Might have called" — weak possibility, uncertainty.
 
 4. **word_bank** — "You _____ brought a gift — it wasn't expected."
    **Choices**: needn't have / shouldn't have / couldn't have / wouldn't have
    **Answer**: needn't have
-   **Explanation**: "Needn't have brought" — você trouxe mas não precisava. Ação desnecessária.
+   **Explanation**: "Needn't have brought" — you brought it but didn't need to. Unnecessary action.
 
 5. **fill_gap** — "They _____ have left already."
    **Hint**: might (incerteza)
    **Answer**: might
-   **Explanation**: "They might have left" — possibilidade incerta. Talvez sim, talvez não.
+   **Explanation**: "They might have left" — uncertain possibility. Maybe, maybe not.
 
 6. **fill_gap** — "I _____ have worried so much — everything turned out fine."
    **Hint**: needn't (desnecessário)
    **Answer**: needn't
-   **Explanation**: "I needn't have worried" — me preocupei mas não precisava. Crítica retrospectiva à própria ação.
+   **Explanation**: "I needn't have worried" — I worried but didn't need to. Retrospective self-criticism.
 
 7. **fill_gap** — "She _____ have forgotten — let me text her."
    **Hint**: might (incerteza)
    **Answer**: might
-   **Explanation**: "She might have forgotten" — incerteza positiva. Pode ter esquecido.
+   **Explanation**: "She might have forgotten" — positive uncertainty. She may have forgotten.
 
 8. **fix_error** — "She might forgotten about the meeting."
    **Hint**: Falta "have"
    **Answer**: She might have forgotten about the meeting.
-   **Explanation**: Sempre "might HAVE + past participle". "Might forgotten" é incorreto.
+   **Explanation**: Always "might HAVE + past participle". "Might forgotten" is incorrect.
 
 9. **fix_error** — "You needn't brought a gift."
    **Hint**: Falta "have"
    **Answer**: You needn't have brought a gift.
-   **Explanation**: "Needn't HAVE + past participle". "Needn't brought" é incorreto.
+   **Explanation**: "Needn't HAVE + past participle". "Needn't brought" is incorrect.
 
 10. **read_answer**
     **Passage**: "She might have missed the bus — let me check. We needn't have booked the table — it was empty anyway. You needn't have brought a gift, but thank you."
@@ -692,47 +692,47 @@
 1. **multiple_choice** — "I _____ called you sooner — I'm sorry."
    **Options**: should have / could have / might have / can't have
    **Answer**: should have
-   **Explanation**: "Should have called" — arrependimento/desculpa retrospectiva.
+   **Explanation**: "Should have called" — retrospective regret/apology.
 
 2. **multiple_choice** — "He _____ left already — he's not here."
    **Options**: must have / would have / needn't have / can have
    **Answer**: must have
-   **Explanation**: Evidência (não está aqui) → inferência forte ("must have left").
+   **Explanation**: Evidence (not here) → strong inference ("must have left").
 
 3. **word_bank** — "We _____ stayed — it ended early."
    **Choices**: needn't have / shouldn't have / mustn't have / wouldn't have
    **Answer**: needn't have
-   **Explanation**: "Needn't have stayed" — ficamos mas não precisava. Ação desnecessária.
+   **Explanation**: "Needn't have stayed" — we stayed but didn't need to. Unnecessary action.
 
 4. **word_bank** — "She _____ heard us — she had headphones on."
    **Choices**: can't have / must have / should have / would have
    **Answer**: can't have
-   **Explanation**: "Can't have heard" — impossibilidade lógica (headphones).
+   **Explanation**: "Can't have heard" — logical impossibility (headphones).
 
 5. **fill_gap** — "You _____ have asked — I would have helped."
    **Hint**: could (oportunidade perdida)
    **Answer**: could
-   **Explanation**: "Could have asked" — oportunidade que existia.
+   **Explanation**: "Could have asked" — an opportunity that existed.
 
 6. **fill_gap** — "They _____ have left already — but I'm not sure."
    **Hint**: might (incerteza)
    **Answer**: might
-   **Explanation**: "Might have left" — especulação incerta.
+   **Explanation**: "Might have left" — uncertain speculation.
 
 7. **fill_gap** — "I _____ have spoken so loudly — sorry."
    **Hint**: shouldn't (auto-crítica)
    **Answer**: shouldn't
-   **Explanation**: "Shouldn't have spoken so loudly" — arrependimento de ação passada.
+   **Explanation**: "Shouldn't have spoken so loudly" — regret about a past action.
 
 8. **fix_error** — "She must left already."
    **Hint**: Falta "have"
    **Answer**: She must have left already.
-   **Explanation**: Sempre modal + HAVE + past participle. "Must left" não existe.
+   **Explanation**: Always modal + HAVE + past participle. "Must left" doesn't exist.
 
 9. **fix_error** — "You shouldn't said that."
    **Hint**: Falta "have"
    **Answer**: You shouldn't have said that.
-   **Explanation**: "Shouldn't have + past participle". Forma fixa.
+   **Explanation**: "Shouldn't have + past participle". Fixed form.
 
 10. **read_answer**
     **Passage**: "I should have called you sooner. She must have left already. He can't have known about it. We needn't have rushed — there was plenty of time. You could have asked me for help."

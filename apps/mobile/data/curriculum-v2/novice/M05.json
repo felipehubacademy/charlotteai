@@ -125,7 +125,7 @@
           "passage": "I wake up at six. I have coffee at six-thirty. I eat breakfast at seven. I go to work at eight.",
           "question": "At what time do I wake up?",
           "answer": "six",
-          "explanation": "The text says \"I wake up at six\". 6."
+          "explanation": "O texto diz \"I wake up at six\". 6."
         }
       ],
       "listening_speaking": [
@@ -327,7 +327,7 @@
           "passage": "I work in a big company. I study English in the morning. I work with my colleagues in a big office.",
           "question": "Where does the speaker work?",
           "answer": "in a big company",
-          "explanation": "The text says \"I work in a big company\"."
+          "explanation": "O texto diz \"I work in a big company\"."
         }
       ],
       "listening_speaking": [
@@ -529,7 +529,7 @@
           "passage": "I eat fruit every morning. I have a sandwich for lunch. I drink coffee at three. We have dinner at eight.",
           "question": "What do I drink at three?",
           "answer": "coffee",
-          "explanation": "The text says \"I drink coffee at three\"."
+          "explanation": "O texto diz \"I drink coffee at three\"."
         }
       ],
       "listening_speaking": [
@@ -731,7 +731,7 @@
           "passage": "I go to work by car. I come home at six. We go to the park on Saturdays. I come back at eight.",
           "question": "How does the speaker go to work?",
           "answer": "by car",
-          "explanation": "The text says \"I go to work by car\"."
+          "explanation": "O texto diz \"I go to work by car\"."
         }
       ],
       "listening_speaking": [
@@ -935,7 +935,7 @@
           "passage": "I always wake up at seven. I usually have coffee and bread. I sometimes go to the gym. I never work on Sundays.",
           "question": "When does the speaker not work?",
           "answer": "Sundays",
-          "explanation": "The text says \"I never work on Sundays\". So the speaker doesn't work on Sundays."
+          "explanation": "O texto diz \"I never work on Sundays\". Logo, o falante não trabalha aos domingos."
         }
       ],
       "listening_speaking": [
