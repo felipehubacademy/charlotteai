@@ -50,7 +50,7 @@ export function useMessageAudioPlayer() {
     };
   }, []);
 
-  const toggle = useCallback((id: string, uri: string) => {
+  const toggle = useCallback(async (id: string, uri: string) => {
     const player = playerRef.current;
     if (!player) return;
 
@@ -79,13 +79,17 @@ export function useMessageAudioPlayer() {
     // Ensure speaker output (resets after recording or live voice call) E
     // pausar musica externa (Spotify etc): soundEngine deixa a sessao em
     // 'mixWithOthers' apos qualquer SFX — precisamos reasserir 'doNotMix'
-    // toda vez que Charlotte vai falar.
-    setAudioModeAsync({
-      allowsRecording: false,
-      playsInSilentMode: true,
-      shouldRouteThroughEarpiece: false,
-      interruptionMode: 'doNotMix',
-    }).catch(() => {});
+    // toda vez que Charlotte vai falar. AWAIT obrigatorio: trocar categoria
+    // do AVAudioSession durante replace/play causa hiccup que pausa o audio
+    // logo no comeco (e Spotify volta a tocar).
+    try {
+      await setAudioModeAsync({
+        allowsRecording: false,
+        playsInSilentMode: true,
+        shouldRouteThroughEarpiece: false,
+        interruptionMode: 'doNotMix',
+      });
+    } catch {}
 
     try { player.pause(); } catch {}
 
