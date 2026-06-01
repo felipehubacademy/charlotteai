@@ -374,7 +374,7 @@ export default function RolePlayExerciseScreen() {
             }]);
             historyRef.current.push({ role: 'assistant', content: npcLine.text });
 
-            await setAudioModeAsync({ allowsRecording: false, playsInSilentMode: true }).catch(() => {});
+            await setAudioModeAsync({ allowsRecording: false, playsInSilentMode: true, interruptionMode: 'doNotMix' }).catch(() => {});
             const p = playerRef.current;
             if (p) {
               p.replace({ uri: localUri });
@@ -460,8 +460,9 @@ export default function RolePlayExerciseScreen() {
         stuckTurnsRef.current += 1;
       }
 
-      // Autoplay assistant
-      await setAudioModeAsync({ allowsRecording: false, playsInSilentMode: true }).catch(() => {});
+      // Autoplay assistant — reasserir doNotMix (soundEngine deixa em
+      // mixWithOthers apos SFX; sem isso, Spotify toca junto da Charlotte).
+      await setAudioModeAsync({ allowsRecording: false, playsInSilentMode: true, interruptionMode: 'doNotMix' }).catch(() => {});
       const p = playerRef.current;
       if (p) {
         p.replace({ uri: localUri });

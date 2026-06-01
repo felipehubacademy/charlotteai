@@ -643,7 +643,7 @@ export default function LearnSessionScreen() {
     if (autoplayUri && ph.type !== 'sentence_stress') {
       setTimeout(async () => {
         try {
-          await setAudioModeAsync({ allowsRecording: false, playsInSilentMode: true, shouldRouteThroughEarpiece: false });
+          await setAudioModeAsync({ allowsRecording: false, playsInSilentMode: true, shouldRouteThroughEarpiece: false, interruptionMode: 'doNotMix' });
         } catch {}
         try { toggleAudio(charlottePlayId, autoplayUri!); } catch {}
       }, 600);

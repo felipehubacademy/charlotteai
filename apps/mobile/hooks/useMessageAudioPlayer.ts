@@ -76,8 +76,16 @@ export function useMessageAudioPlayer() {
     subRef.current?.remove();
     subRef.current = null;
 
-    // Ensure speaker output (resets after recording or live voice call)
-    setAudioModeAsync({ allowsRecording: false, playsInSilentMode: true, shouldRouteThroughEarpiece: false }).catch(() => {});
+    // Ensure speaker output (resets after recording or live voice call) E
+    // pausar musica externa (Spotify etc): soundEngine deixa a sessao em
+    // 'mixWithOthers' apos qualquer SFX — precisamos reasserir 'doNotMix'
+    // toda vez que Charlotte vai falar.
+    setAudioModeAsync({
+      allowsRecording: false,
+      playsInSilentMode: true,
+      shouldRouteThroughEarpiece: false,
+      interruptionMode: 'doNotMix',
+    }).catch(() => {});
 
     try { player.pause(); } catch {}
 
