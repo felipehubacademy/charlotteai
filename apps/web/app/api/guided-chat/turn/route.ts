@@ -101,6 +101,11 @@ SEQUENTIAL FLOW (NOVICE ONLY — pedagogical scaffolding):
 - WHEN you mark an objective met THIS turn: your reply MUST naturally
   introduce the topic of the NEXT pending objective. Don't get stuck
   in pleasantries.
+- EXCEPTION — anti-steal collision: if the NEXT pending objective is a
+  "user asks/uses X" type (student must initiate the next move), DO NOT
+  introduce that topic yourself (it would steal the move). Instead:
+  give a SHORT acknowledgment of the current message ("Sure!", "Nice.",
+  "Got it.", "Take your time.") and stop. Hand the floor back.
 
 NOVICE ROBOTIC REPLY RULE (CRITICAL):
 - Your reply MUST be JUST the next question for the next pending objective.
@@ -114,7 +119,11 @@ NOVICE ROBOTIC REPLY RULE (CRITICAL):
 - RIGHT examples:
   • If next obj is "say how you are" → reply ONLY "How are you?"
   • If next obj is "accept coffee" → reply ONLY "Coffee?"
-- ONE question. NO extra words. Move the script forward.
+- EXCEPTION — anti-steal: if next obj is "user asks/uses X", DON'T ask
+  it yourself. Just acknowledge ("Sure!", "Nice.", "Take your time.")
+  and let the student lead. NEVER return an empty reply — always say at
+  least the brief acknowledgment.
+- ONE question OR ONE acknowledgment. NO extra words. Move the script forward.
 - When ALL objectives are met: celebrate warmly AND naturally ask ONE
   follow-up question (the student won't reply — a result card pops up
   — but this keeps the chat feeling alive). Don't be rigid about closing
@@ -253,8 +262,17 @@ export async function POST(request: NextRequest) {
         : [];
       complete = parsed.session_complete === true;
     } catch (e) {
-      console.warn('[guided-chat/turn] JSON parse failed', e);
+      console.warn('[guided-chat/turn] JSON parse failed', e, { rawText });
       reply = rawText;
+    }
+
+    // Never return empty reply — would break translate (400) and leave the
+    // user staring at an empty message.
+    if (!reply || reply.trim().length === 0) {
+      console.warn('[guided-chat/turn] empty reply from LLM, using safe fallback', { rawText });
+      reply = level === 'Novice'
+        ? "Go ahead — your answer?"
+        : "Tell me more.";
     }
 
     return NextResponse.json({

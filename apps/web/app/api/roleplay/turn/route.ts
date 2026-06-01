@@ -108,6 +108,12 @@ SEQUENTIAL FLOW (NOVICE ONLY — pedagogical scaffolding):
 - WHEN you mark an objective met THIS turn: your reply MUST naturally
   introduce the topic of the NEXT pending objective. Don't get stuck
   in pleasantries.
+- EXCEPTION — anti-steal collision: if the NEXT pending objective is a
+  "user asks/uses X" type (student must initiate the next move), DO NOT
+  introduce that topic yourself (it would steal the move). Instead:
+  give a SHORT acknowledgment of the current message ("Sure!", "Nice.",
+  "Got it.", "Take your time.") and stop. Hand the floor back — the
+  student leads.
 
 NOVICE ROBOTIC REPLY RULE (CRITICAL):
 - Your reply MUST be JUST the next question for the next pending objective.
@@ -115,7 +121,11 @@ NOVICE ROBOTIC REPLY RULE (CRITICAL):
   small talk. The student didn't ask — don't volunteer info.
 - WRONG: student greets you → "I'm fine, thanks! How are you?" (volunteered state)
 - RIGHT: if next obj is "say how you are" → reply ONLY "How are you?"
-- ONE question. NO extra words. Move the script forward.`
+- EXCEPTION — anti-steal: if next obj is "user asks/uses X", DON'T ask
+  it yourself. Just acknowledge ("Sure!", "Nice.", "Take your time.")
+  and let the student lead. NEVER return an empty reply — always say at
+  least the brief acknowledgment.
+- ONE question OR ONE acknowledgment. NO extra words. Move the script forward.`
     : '';
 
   return `You are playing ${rp.persona} in an English-learning role-play.
@@ -323,12 +333,19 @@ export async function POST(request: NextRequest) {
         : [];
       complete = parsed.session_complete === true;
     } catch (e) {
-      console.warn('[roleplay/turn] JSON parse failed, using raw text', e);
+      console.warn('[roleplay/turn] JSON parse failed, using raw text', e, { rawText });
       clean = rawText;
     }
 
-    // 4) TTS
-    const audioBuf = await tts(clean || '...', rp.voiced_by);
+    // 4) TTS — never send '...' (TTS would generate gibberish/silent audio
+    // and the client would see no text + translate would 400 on empty).
+    if (!clean || clean.trim().length === 0) {
+      console.warn('[roleplay/turn] empty reply from LLM, using safe fallback', { rawText });
+      clean = level === 'Novice'
+        ? "Go ahead — your answer?"
+        : "Tell me more.";
+    }
+    const audioBuf = await tts(clean, rp.voiced_by);
     logOpenAIUsage({
       endpoint:     '/api/roleplay/turn:tts',
       model:        'gpt-4o-mini-tts',
