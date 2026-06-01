@@ -2,14 +2,98 @@
 // (Novice -> Inter ou Inter -> Advanced). Dispara apos save de atividade
 // que fecha o ultimo unit do level OU apos refetch do progress.
 //
-// UX: full-screen translucido, confetes nao (manter simples), 1 botao
-// "Continuar no <novo nivel>" que fecha. Bilingue conforme novo nivel.
+// UX: full-screen translucido, confetti OTA-safe (Animated puro),
+// achievement_legendary SFX + haptic burst, 1 botao "Continuar no <novo
+// nivel>" que fecha. Bilingue conforme novo nivel.
 
-import React, { useEffect, useRef } from 'react';
-import { View, Modal, TouchableOpacity, Animated, Platform } from 'react-native';
+import React, { useEffect, useMemo, useRef } from 'react';
+import { View, Modal, TouchableOpacity, Animated, Platform, Dimensions, Easing } from 'react-native';
+import * as Haptics from 'expo-haptics';
 import { Trophy, ArrowRight } from 'phosphor-react-native';
 import { AppText } from '@/components/ui/Text';
+import { soundEngine } from '@/lib/soundEngine';
 import type { PromotionEvent } from '@/lib/curriculum-v2/usePromotion';
+
+const { width: SCREEN_W, height: SCREEN_H } = Dimensions.get('window');
+
+const CONFETTI_COLORS = ['#7C3AED', '#F59E0B', '#10B981', '#EF4444', '#3B82F6', '#EC4899', '#FBBF24'];
+const CONFETTI_COUNT  = 60;
+
+interface Piece {
+  startX: number;
+  delay:  number;
+  drift:  number;
+  rot:    number;
+  color:  string;
+  size:   number;
+  dur:    number;
+}
+
+function makePieces(): Piece[] {
+  return Array.from({ length: CONFETTI_COUNT }, (_, i) => ({
+    startX: Math.random() * SCREEN_W,
+    delay:  Math.random() * 600,
+    drift:  (Math.random() - 0.5) * 220,
+    rot:    Math.random() * 720 - 360,
+    color:  CONFETTI_COLORS[i % CONFETTI_COLORS.length],
+    size:   6 + Math.floor(Math.random() * 8),
+    dur:    2200 + Math.random() * 1600,
+  }));
+}
+
+function Confetti() {
+  const pieces = useMemo(makePieces, []);
+  const progress = useRef(pieces.map(() => new Animated.Value(0))).current;
+
+  useEffect(() => {
+    Animated.stagger(
+      30,
+      progress.map((v, i) =>
+        Animated.timing(v, {
+          toValue: 1,
+          duration: pieces[i].dur,
+          delay: pieces[i].delay,
+          easing: Easing.in(Easing.quad),
+          useNativeDriver: true,
+        }),
+      ),
+    ).start();
+  }, []);
+
+  return (
+    <View pointerEvents="none" style={{ position: 'absolute', top: 0, left: 0, right: 0, bottom: 0 }}>
+      {pieces.map((p, i) => {
+        const translateY = progress[i].interpolate({
+          inputRange: [0, 1],
+          outputRange: [-40, SCREEN_H + 40],
+        });
+        const translateX = progress[i].interpolate({
+          inputRange: [0, 1],
+          outputRange: [0, p.drift],
+        });
+        const rotate = progress[i].interpolate({
+          inputRange: [0, 1],
+          outputRange: ['0deg', `${p.rot}deg`],
+        });
+        return (
+          <Animated.View
+            key={i}
+            style={{
+              position: 'absolute',
+              top: 0,
+              left: p.startX,
+              width: p.size,
+              height: p.size * 0.6,
+              backgroundColor: p.color,
+              borderRadius: 2,
+              transform: [{ translateY }, { translateX }, { rotate }],
+            }}
+          />
+        );
+      })}
+    </View>
+  );
+}
 
 const LEVEL_LABEL: Record<string, string> = {
   Inter:    'Intermediate',
@@ -42,6 +126,13 @@ export function PromotionModal({ event, onClose }: Props) {
         Animated.spring(scale, { toValue: 1, useNativeDriver: true, friction: 7, tension: 60 }),
         Animated.timing(fade, { toValue: 1, duration: 220, useNativeDriver: true }),
       ]).start();
+      // SFX legendary (promocao de nivel = achievement raro) + haptic burst.
+      soundEngine.play('achievement_legendary').catch(() => {});
+      Haptics.notificationAsync(Haptics.NotificationFeedbackType.Success).catch(() => {});
+      const t = setTimeout(() => {
+        Haptics.impactAsync(Haptics.ImpactFeedbackStyle.Heavy).catch(() => {});
+      }, 350);
+      return () => clearTimeout(t);
     }
   }, [event, scale, fade]);
 
@@ -68,6 +159,7 @@ export function PromotionModal({ event, onClose }: Props) {
         padding: 24,
         opacity: fade,
       }}>
+        <Confetti />
         <Animated.View style={[{
           width: '100%', maxWidth: 360,
           backgroundColor: '#FFFFFF',
