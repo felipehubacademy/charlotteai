@@ -17,7 +17,7 @@ import type { PromotionEvent } from '@/lib/curriculum-v2/usePromotion';
 const { width: SCREEN_W, height: SCREEN_H } = Dimensions.get('window');
 
 const CONFETTI_COLORS = ['#7C3AED', '#F59E0B', '#10B981', '#EF4444', '#3B82F6', '#EC4899', '#FBBF24'];
-const CONFETTI_COUNT  = 60;
+const CONFETTI_COUNT  = 140;
 
 interface Piece {
   startX: number;
@@ -32,8 +32,8 @@ interface Piece {
 function makePieces(): Piece[] {
   return Array.from({ length: CONFETTI_COUNT }, (_, i) => ({
     startX: Math.random() * SCREEN_W,
-    delay:  Math.random() * 600,
-    drift:  (Math.random() - 0.5) * 220,
+    delay:  Math.random() * 120, // burst quase simultaneo (era 600ms stagger)
+    drift:  (Math.random() - 0.5) * 260,
     rot:    Math.random() * 720 - 360,
     color:  CONFETTI_COLORS[i % CONFETTI_COLORS.length],
     size:   6 + Math.floor(Math.random() * 8),
@@ -46,8 +46,9 @@ function Confetti() {
   const progress = useRef(pieces.map(() => new Animated.Value(0))).current;
 
   useEffect(() => {
-    Animated.stagger(
-      30,
+    // Burst simultaneo: roda todas em paralelo (sem stagger). delay
+    // individual ja eh pequeno (0-120ms) pra ter variacao natural.
+    Animated.parallel(
       progress.map((v, i) =>
         Animated.timing(v, {
           toValue: 1,
