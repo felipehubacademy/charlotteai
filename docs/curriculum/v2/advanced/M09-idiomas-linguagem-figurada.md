@@ -209,9 +209,10 @@
 
 5. **read_answer**
    **Passage**: "She had been engaged for three months when she finally bit the bullet and admitted she was getting cold feet. Her sister, who never pulled her leg about anything serious, told her plainly: 'A wedding costs an arm and a leg. Calling it off costs less than staying in.'"
-   **Question**: What three idioms appear in the passage?
-   **Answer**: bit the bullet, getting cold feet, pulled her leg (also: costs an arm and a leg)
-   **Explanation**: Four body-related idioms compressed into a short scene: "bit the bullet" (forced herself), "getting cold feet" (last-minute hesitation), "pulled her leg" (teased), "costs an arm and a leg" (very expensive). Body idioms are the connective tissue of natural English.
+   **Question**: Which idiom in the passage means "to hesitate at the last moment"?
+   **Answer**: getting cold feet
+   **Accepts**: cold feet
+   **Explanation**: "Cold feet" = hesitação de última hora, especialmente antes de um compromisso grande (casamento, decisão). Outros idioms no texto: "bit the bullet" (forçar-se), "pulled her leg" (provocar), "costs an arm and a leg" (caríssimo).
 
 ### 2. Listening/Speaking (5 phrases)
 

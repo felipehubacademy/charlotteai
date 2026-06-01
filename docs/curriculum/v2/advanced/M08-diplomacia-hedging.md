@@ -197,9 +197,10 @@
 
 5. **read_answer**
    **Passage**: "The editor's notes were a masterclass in tact. 'It might be worth considering whether the third paragraph adds anything new. You may wish to revisit the opening — perhaps a shorter sentence would land harder. Have you thought about cutting the final image entirely?' Every suggestion left room for the author's pride."
-   **Question**: How did the editor avoid being directive?
-   **Answer**: hedged each suggestion ("might be worth", "you may wish to", "perhaps", "have you thought about")
-   **Explanation**: Four hedging patterns layered: "It might be worth + -ing", "You may wish to + base", "Perhaps + clause", "Have you thought about + -ing". Editorial diplomacy at C1.
+   **Question**: Which hedging phrase opens the editor's first suggestion?
+   **Answer**: It might be worth
+   **Accepts**: might be worth / might be worth considering
+   **Explanation**: "It might be worth + -ing" é uma das estruturas mais diplomáticas em inglês escrito formal. Os outros hedges no trecho: "You may wish to", "perhaps", "Have you thought about" — todos preservam a autonomia do autor.
 
 ### 2. Listening/Speaking (5 phrases)
 

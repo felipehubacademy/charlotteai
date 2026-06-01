@@ -56,8 +56,9 @@
 
 5. **read_answer**
    **Passage**: "The mediation broke down twice. He accused her of stalling the negotiations. She accused him of moving the goalposts. Both refused to apologise for what the other called bad faith. Only when a neutral third party congratulated each side on small concessions did the conversation resume."
-   **Question**: What did the third party do that helped resume the conversation?
+   **Question**: What action by the third party preceded the resumption of the conversation?
    **Answer**: congratulated each side on small concessions
+   **Accepts**: congratulated each side / congratulated them on small concessions / congratulating each side on small concessions
    **Explanation**: Three reporting verb patterns layered: "accused her of stalling", "accused him of moving", "congratulated each side on... concessions". Each verb requires its specific preposition + -ing/noun.
 
 ### 2. Listening/Speaking (5 phrases)

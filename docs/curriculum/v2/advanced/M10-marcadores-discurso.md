@@ -54,11 +54,10 @@
    **Answer**: Actually, I don't think that's correct. (or: In fact, I don't think that's correct.)
    **Explanation**: "Actually" and "in fact" are near-synonyms. Stacking them creates redundancy. Pick one. C1 prose values economy — repetition of equivalent markers reads as nervous overcorrection.
 
-5. **read_answer**
-   **Passage**: "The press release was carefully phrased. 'The board respects the founder's decision. In fact, we asked her to take this step several weeks ago. As a matter of fact, the timing of her announcement was agreed jointly. Actually, the only surprise here is that the press caught up so quickly.' Three nuancing markers in three sentences — corporate prose at its most precise."
-   **Question**: What does the press release imply about the founder's decision?
-   **Answer**: that the board had requested it / that it wasn't her unilateral decision
-   **Explanation**: Three nuancing markers chained: "In fact" (escalate), "As a matter of fact" (clarify with surprising detail), "Actually" (final correction of public perception). Each does specific work; together they reshape the narrative.
+5. **multiple_choice** — "The press release: 'The board respects the founder's decision. In fact, we asked her to take this step several weeks ago. As a matter of fact, the timing of her announcement was agreed jointly. Actually, the only surprise here is that the press caught up so quickly.' — What does this press release ULTIMATELY imply about the founder's decision?"
+   **Options**: The board had asked her to step down / She acted entirely on her own / The board opposed her decision / The decision was sudden and unplanned
+   **Answer**: The board had asked her to step down
+   **Explanation**: Os três marcadores ("In fact", "As a matter of fact", "Actually") reformulam progressivamente a narrativa: do "respect" inicial pra revelar que a saída foi pedida pelo board. Esse é o jogo retórico do C1 — marcadores que aparentam neutralidade carregam afirmação forte.
 
 ### 2. Listening/Speaking (5 phrases)
 
@@ -194,11 +193,10 @@
    **Answer**: She's talented. That said, she's also lazy. (or: She's talented. However, she's also lazy.)
    **Explanation**: "However" and "that said" both mark concession. Stacking is redundant. C1 register prefers one well-placed marker. Choose by tone: "however" reads more formal-written, "that said" more conversational.
 
-5. **read_answer**
-   **Passage**: "She made a strong case for the move. Granted, the new market is competitive. Mind you, it's also growing twice as fast as our current one. Admittedly, our team would need to relocate or hire from scratch. That said, the cost of inaction is starting to look higher than the cost of action."
-   **Question**: What does the speaker ultimately seem to favour?
-   **Answer**: making the move (or: she's leaning towards action)
-   **Explanation**: Four concession markers chained: "Granted" (formal yielding), "Mind you" (informal pivot), "Admittedly" (formal yielding), "That said" (concession). Each yields a point before leading back to the speaker's preferred conclusion. Argument architecture at C1.
+5. **multiple_choice** — "She made a strong case for the move. Granted, the new market is competitive. Mind you, it's also growing twice as fast as our current one. Admittedly, our team would need to relocate or hire from scratch. That said, the cost of inaction is starting to look higher than the cost of action. — What does the speaker ultimately favour?"
+   **Options**: Making the move / Staying put / Hiring more local staff / Delaying the decision
+   **Answer**: Making the move
+   **Explanation**: Os quatro marcadores de concessão ("Granted", "Mind you", "Admittedly", "That said") cedem pontos individualmente mas culminam em "the cost of inaction is higher than the cost of action" — conclusão a favor da mudança. Arquitetura argumentativa C1.
 
 ### 2. Listening/Speaking (5 phrases)
 

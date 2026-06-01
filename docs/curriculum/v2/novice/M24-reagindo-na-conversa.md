@@ -79,12 +79,10 @@
    **Answer**: That's interesting!
    **Explanation**: "That's interesting" — estrutura fixa em inglês: "That's + adjetivo". Não traduza literalmente do português "É interessante isso". Erro comum.
 
-10. **read_answer**
-    **Passage**: "Friend: 'I went to Japan last month.' You: 'Really? That's amazing! Tell me more.' Friend: 'It was incredible. I climbed Mount Fuji.' You: 'No way! What was that like?' Friend: 'Cold and beautiful.'"
-    **Question**: What reaction shows the most interest in the friend's story?
-    **Answer**: Tell me more
-**Accepts**: Really? That's amazing!
-    **Explanation**: O texto mostra várias reações de interesse: "Really?", "That's amazing!", "Tell me more", "No way!", "What was that like?". Todas convidam o falante a continuar.
+10. **multiple_choice** — "Friend: 'I went to Japan last month.' You: 'Really? That's amazing! Tell me more.' Friend: 'It was incredible. I climbed Mount Fuji.' You: 'No way!' — Which reply shows the LEAST interest in the friend's story?"
+    **Options**: Really? / Tell me more. / OK. / That's amazing!
+    **Answer**: OK.
+    **Explanation**: "OK." é uma resposta neutra que NÃO convida o falante a continuar. Já "Really?", "Tell me more" e "That's amazing!" sinalizam interesse genuíno e mantêm a conversa viva.
 
 ### 2. Listening/Speaking (5 phrases)
 

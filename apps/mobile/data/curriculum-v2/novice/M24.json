@@ -130,14 +130,16 @@
           "explanation": "\"That's interesting\" — estrutura fixa em inglês: \"That's + adjetivo\". Não traduza literalmente do português \"É interessante isso\". Erro comum."
         },
         {
-          "type": "read_answer",
-          "passage": "Friend: 'I went to Japan last month.' You: 'Really? That's amazing! Tell me more.' Friend: 'It was incredible. I climbed Mount Fuji.' You: 'No way! What was that like?' Friend: 'Cold and beautiful.'",
-          "question": "What reaction shows the most interest in the friend's story?",
-          "answer": "Tell me more",
-          "accepts": [
-            "Really? That's amazing!"
+          "type": "multiple_choice",
+          "sentence": "Friend: 'I went to Japan last month.' You: 'Really? That's amazing! Tell me more.' Friend: 'It was incredible. I climbed Mount Fuji.' You: 'No way!' — Which reply shows the LEAST interest in the friend's story?",
+          "options": [
+            "Really?",
+            "Tell me more.",
+            "OK.",
+            "That's amazing!"
           ],
-          "explanation": "O texto mostra várias reações de interesse: \"Really?\", \"That's amazing!\", \"Tell me more\", \"No way!\", \"What was that like?\". Todas convidam o falante a continuar."
+          "answer": "OK.",
+          "explanation": "\"OK.\" é uma resposta neutra que NÃO convida o falante a continuar. Já \"Really?\", \"Tell me more\" e \"That's amazing!\" sinalizam interesse genuíno e mantêm a conversa viva."
         }
       ],
       "listening_speaking": [
