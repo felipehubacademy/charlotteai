@@ -90,10 +90,10 @@
         },
         {
           "type": "fill_gap",
-          "sentence": "He was _____ his car when I called.",
+          "sentence": "He was _____ his car with soap when I called.",
           "hint": "verb \"wash\" in -ing form",
           "answer": "washing",
-          "explanation": "\"Wash\" + ing = \"washing\". Note: no doubled consonant after vowel-consonant-y."
+          "explanation": "\"Wash\" + ing = \"washing\". \"With soap\" deixa claro que o verbo eh \"wash\" (nao \"fix\" / \"drive\"). Note: -ing simples, sem dobrar consoante."
         },
         {
           "type": "fix_error",

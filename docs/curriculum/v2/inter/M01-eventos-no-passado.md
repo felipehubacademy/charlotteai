@@ -58,10 +58,10 @@
    **Answer**: were
    **Explanation**: "They were talking" — past continuous plural.
 
-7. **fill_gap** — "He was _____ his car when I called."
+7. **fill_gap** — "He was _____ his car with soap when I called."
    **Hint**: verb "wash" in -ing form
    **Answer**: washing
-   **Explanation**: "Wash" + ing = "washing". Note: no doubled consonant after vowel-consonant-y.
+   **Explanation**: "Wash" + ing = "washing". "With soap" deixa claro que o verbo eh "wash" (nao "fix" / "drive"). Note: -ing simples, sem dobrar consoante.
 
 8. **fix_error** — "I were studying yesterday."
    **Hint**: I uses "was", not "were"

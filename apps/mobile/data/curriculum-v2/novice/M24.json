@@ -1006,10 +1006,16 @@
           "explanation": "\"By the way\" é o chunk fixo. Não tem variação \"by the way of the way\". Erro de duplicação por insegurança no chunk."
         },
         {
-          "type": "read_answer",
-          "passage": "Friend: 'So I was telling you about my trip...' You: 'Hold on, let me grab some water.' Friend: 'Sure!' You: 'OK, anyway, you were saying?' Friend: 'Right, so the flight was delayed. By the way, did you see the news today?'",
-          "question": "How does the conversation use 'by the way'?",
-          "answer": "to change topic / introduce a new subject (the news)",
+          "type": "multiple_choice",
+          "sentence": "Friend: 'So I was telling you about my trip...' You: 'Hold on, let me grab some water.' Friend: 'Sure!' You: 'OK, anyway, you were saying?' Friend: 'Right, so the flight was delayed. By the way, did you see the news today?' — How does the friend use 'by the way' here?",
+          "options": [
+            "To change topic",
+            "introduce a new subject",
+            "To apologize",
+            "To confirm understanding",
+            "To express surprise"
+          ],
+          "answer": "To change topic / introduce a new subject",
           "explanation": "\"By the way\" introduz uma mudança natural de assunto da viagem para as notícias do dia. Chunk universal de transição."
         }
       ],

@@ -750,10 +750,9 @@
    **Answer**: By the way...
    **Explanation**: "By the way" é o chunk fixo. Não tem variação "by the way of the way". Erro de duplicação por insegurança no chunk.
 
-10. **read_answer**
-    **Passage**: "Friend: 'So I was telling you about my trip...' You: 'Hold on, let me grab some water.' Friend: 'Sure!' You: 'OK, anyway, you were saying?' Friend: 'Right, so the flight was delayed. By the way, did you see the news today?'"
-    **Question**: How does the conversation use 'by the way'?
-    **Answer**: to change topic / introduce a new subject (the news)
+10. **multiple_choice** — "Friend: 'So I was telling you about my trip...' You: 'Hold on, let me grab some water.' Friend: 'Sure!' You: 'OK, anyway, you were saying?' Friend: 'Right, so the flight was delayed. By the way, did you see the news today?' — How does the friend use 'by the way' here?"
+    **Options**: To change topic / introduce a new subject / To apologize / To confirm understanding / To express surprise
+    **Answer**: To change topic / introduce a new subject
     **Explanation**: "By the way" introduz uma mudança natural de assunto da viagem para as notícias do dia. Chunk universal de transição.
 
 ### 2. Listening/Speaking (5 phrases)
