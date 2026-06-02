@@ -182,7 +182,8 @@ export default function RolePlayExerciseScreen() {
 
   const playAssistantOpener = useCallback(async (msgId: string, rpDef: RolePlay) => {
     try {
-      await setAudioModeAsync({ allowsRecording: false, playsInSilentMode: true }).catch(() => {});
+      await setAudioModeAsync({ allowsRecording: false, playsInSilentMode: true, interruptionMode: 'doNotMix' }).catch(() => {});
+      await setIsAudioActiveAsync(true).catch(() => {});
 
       // Modo scripted: usa o audio do CDN (cached). Baixa pra local pra consistency
       // com o player que usa local FS no resto do fluxo.
@@ -270,8 +271,10 @@ export default function RolePlayExerciseScreen() {
   // Pre-warm audio mode na entrada da tela — startRecording fica MUITO
   // mais rápido depois (não precisa reconfigurar a session a cada toque).
   useEffect(() => {
-    setAudioModeAsync({ allowsRecording: true, playsInSilentMode: true })
-      .catch(() => {});
+    (async () => {
+      await setAudioModeAsync({ allowsRecording: true, playsInSilentMode: true, interruptionMode: 'doNotMix' }).catch(() => {});
+      await setIsAudioActiveAsync(true).catch(() => {});
+    })();
   }, []);
 
   const startRec = useCallback(async () => {
@@ -387,6 +390,7 @@ export default function RolePlayExerciseScreen() {
             historyRef.current.push({ role: 'assistant', content: npcLine.text });
 
             await setAudioModeAsync({ allowsRecording: false, playsInSilentMode: true, interruptionMode: 'doNotMix' }).catch(() => {});
+            await setIsAudioActiveAsync(true).catch(() => {});
             const p = playerRef.current;
             if (p) {
               p.replace({ uri: localUri });
@@ -475,6 +479,7 @@ export default function RolePlayExerciseScreen() {
       // Autoplay assistant — reasserir doNotMix (soundEngine deixa em
       // mixWithOthers apos SFX; sem isso, Spotify toca junto da Charlotte).
       await setAudioModeAsync({ allowsRecording: false, playsInSilentMode: true, interruptionMode: 'doNotMix' }).catch(() => {});
+      await setIsAudioActiveAsync(true).catch(() => {});
       const p = playerRef.current;
       if (p) {
         p.replace({ uri: localUri });

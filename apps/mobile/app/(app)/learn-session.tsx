@@ -648,6 +648,7 @@ export default function LearnSessionScreen() {
       // AirPods e cortava a Charlotte no meio. Pre-warm de recording
       // acontece sob demanda no startRecording (aceitavel 100-300ms hit).
       await setAudioModeAsync({ allowsRecording: false, playsInSilentMode: true, shouldRouteThroughEarpiece: false, interruptionMode: 'doNotMix' }).catch(() => {});
+      await setIsAudioActiveAsync(true).catch(() => {});
     } catch {}
 
     // Always transition to listening — record button must always appear
@@ -792,11 +793,13 @@ export default function LearnSessionScreen() {
         // Registra a sessão no expo-audio antes do módulo nativo configurar a AVAudioSession.
         // Sem isso, o setAudioModeAsync do reset não consegue sobrescrever o estado que o
         // ExpoSpeechRecognitionModule deixa — causa earpiece persistente no iOS.
-        await setAudioModeAsync({ allowsRecording: true, playsInSilentMode: true });
+        await setAudioModeAsync({ allowsRecording: true, playsInSilentMode: true, interruptionMode: 'doNotMix' });
+        await setIsAudioActiveAsync(true).catch(() => {});
         ExpoSpeechRecognitionModule.start({ lang: 'en-US', interimResults: true, continuous: true });
       } else {
         // Recorder — Whisper fallback (when on-device ASR unavailable)
-        await setAudioModeAsync({ allowsRecording: true, playsInSilentMode: true });
+        await setAudioModeAsync({ allowsRecording: true, playsInSilentMode: true, interruptionMode: 'doNotMix' });
+        await setIsAudioActiveAsync(true).catch(() => {});
         await recorder.prepareToRecordAsync();
         recorder.record();
       }
@@ -821,6 +824,7 @@ export default function LearnSessionScreen() {
         try { await recorder.stop(); } catch {}
       }
       await setAudioModeAsync({ allowsRecording: false, playsInSilentMode: true, interruptionMode: 'doNotMix' });
+      await setIsAudioActiveAsync(true).catch(() => {});
       setPronStatus('listening');
       return;
     }
@@ -837,6 +841,7 @@ export default function LearnSessionScreen() {
         await new Promise(r => setTimeout(r, 300));
         // Restore speaker routing — ASR leaves iOS audio session in earpiece mode
         await setAudioModeAsync({ allowsRecording: false, playsInSilentMode: true, interruptionMode: 'doNotMix' });
+        await setIsAudioActiveAsync(true).catch(() => {});
 
         const transcript = speechTranscriptRef.current;
         const pct = transcript ? wordMatchPercent(transcript, currentStep.phrase.text ?? '') : 0;
@@ -882,6 +887,7 @@ export default function LearnSessionScreen() {
         // ── REPEAT fallback: Whisper transcription (no native ASR) ──
         await recorder.stop();
         await setAudioModeAsync({ allowsRecording: false, playsInSilentMode: true, interruptionMode: 'doNotMix' });
+        await setIsAudioActiveAsync(true).catch(() => {});
         const audioUri = recorder.uri;
         if (!audioUri) { setPronStatus('error'); return; }
 

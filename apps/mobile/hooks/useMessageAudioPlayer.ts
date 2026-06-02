@@ -6,7 +6,7 @@
  * the playbackStatusUpdate 'isLoaded' event before playing.
  */
 import { useRef, useState, useEffect, useCallback } from 'react';
-import { createAudioPlayer, AudioPlayer, setAudioModeAsync } from 'expo-audio';
+import { createAudioPlayer, AudioPlayer, setAudioModeAsync, setIsAudioActiveAsync } from 'expo-audio';
 import { AudioStatus } from 'expo-audio/build/Audio.types';
 
 export function useMessageAudioPlayer() {
@@ -85,7 +85,9 @@ export function useMessageAudioPlayer() {
         allowsRecording: false,
         playsInSilentMode: true,
         shouldRouteThroughEarpiece: false,
+        interruptionMode: 'doNotMix',
       });
+      await setIsAudioActiveAsync(true);
     } catch {}
 
     try { player.pause(); } catch {}
