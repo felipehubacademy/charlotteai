@@ -102,6 +102,9 @@ export default function GuidedChatExerciseScreen() {
   // Chat state
   const [messages, setMessages]               = useState<Message[]>([]);
   const [draft,    setDraft]                  = useState('');
+  // Spinner mostrado durante a ultima atividade do nivel — cobre o gap
+  // entre o click 'Concluir' e o PromotionModal aparecer na home (~1-2s).
+  const [isFinishing, setIsFinishing]         = useState(false);
   const [isProcessing, setIsProcessing]       = useState(false);
   const [objectivesMet, setObjectivesMet]       = useState<Set<number>>(new Set());
   const [sessionComplete, setSessionComplete]   = useState(false);
@@ -673,11 +676,13 @@ export default function GuidedChatExerciseScreen() {
                 </AppText>
               </TouchableOpacity>
               <TouchableOpacity
+                disabled={isFinishing}
                 onPress={() => {
                   // Chat eh ULTIMA activity da unit. Se passou:
                   //   - tem proxima unit no mesmo modulo → grammar dela
                   //   - eh ultima unit do modulo → grammar do M(n+1) N01
-                  //   - eh ultima unit do ultimo modulo → home
+                  //   - eh ultima unit do ultimo modulo → home (com spinner
+                  //     pra cobrir o gap ate o PromotionModal aparecer)
                   if (!allObjectivesDone) { router.back(); return; }
                   const allMods = listModules(level as any);
                   const modIdx  = allMods.findIndex(m => m.id === moduleId);
@@ -705,8 +710,13 @@ export default function GuidedChatExerciseScreen() {
                       return;
                     }
                   }
-                  // Sem proximo — celebra na home
-                  router.replace('/(app)/(tabs)' as any);
+                  // Sem proximo (= ultima unit do ultimo modulo = promocao
+                  // iminente). Mostra spinner aqui durante o gap ate o
+                  // PromotionModal aparecer na home.
+                  setIsFinishing(true);
+                  setTimeout(() => {
+                    router.replace('/(app)/(tabs)' as any);
+                  }, 1200);
                 }}
                 style={{
                   flex: 1, paddingVertical: 14, borderRadius: 14,
@@ -720,6 +730,18 @@ export default function GuidedChatExerciseScreen() {
               </TouchableOpacity>
             </View>
           </View>
+        </View>
+      )}
+
+      {/* Spinner cobrindo a tela enquanto navega pra home na promocao
+          iminente. Cobre o gap (~1s) ate o PromotionModal aparecer. */}
+      {isFinishing && (
+        <View pointerEvents="auto" style={{
+          position: 'absolute', top: 0, left: 0, right: 0, bottom: 0,
+          backgroundColor: 'rgba(244,243,250,0.95)',
+          alignItems: 'center', justifyContent: 'center',
+        }}>
+          <ActivityIndicator size="large" color="#7C3AED" />
         </View>
       )}
     </SafeAreaView>
