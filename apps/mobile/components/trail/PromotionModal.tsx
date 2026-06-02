@@ -27,7 +27,7 @@ const PROMOTION_VIDEO_REMOTE: Record<string, string> = {
 const { width: SCREEN_W, height: SCREEN_H } = Dimensions.get('window');
 
 const CONFETTI_COLORS = ['#7C3AED', '#F59E0B', '#10B981', '#EF4444', '#3B82F6', '#EC4899', '#FBBF24'];
-const CONFETTI_COUNT  = 140;
+const CONFETTI_COUNT  = 220;
 
 interface Piece {
   startX: number;
@@ -42,12 +42,15 @@ interface Piece {
 function makePieces(): Piece[] {
   return Array.from({ length: CONFETTI_COUNT }, (_, i) => ({
     startX: Math.random() * SCREEN_W,
-    delay:  Math.random() * 120, // burst quase simultaneo (era 600ms stagger)
+    // Stagger longo (0-1800ms): cortina continua caindo por mais tempo
+    // em vez de burst simultaneo. Densidade visual no momento permanece
+    // similar — sao apenas mais pecas espalhadas no tempo.
+    delay:  Math.random() * 1800,
     drift:  (Math.random() - 0.5) * 260,
     rot:    Math.random() * 720 - 360,
     color:  CONFETTI_COLORS[i % CONFETTI_COLORS.length],
     size:   6 + Math.floor(Math.random() * 8),
-    dur:    2200 + Math.random() * 1600,
+    dur:    2800 + Math.random() * 1400,
   }));
 }
 
@@ -163,12 +166,13 @@ export function PromotionModal({ event, onClose }: Props) {
   useEffect(() => {
     if (!useVideo || !videoPlayer) return;
     const sub = videoPlayer.addListener('playToEnd', () => {
-      // Video terminou. Burst de celebracao: SFX + confete dispara
-      // junto, momento "capelo pro alto". 3s antes do fade pra confete
-      // cair no chao (animacao de cada peca dura ~2.2-3.8s).
+      // Video terminou. Burst de celebracao: SFX + confete cortina
+      // longa. 4.5s antes do fade — confete tem stagger 0-1.8s + duracao
+      // 2.8-4.2s, entao a ultima peca cai ate ~6s. 4.5s deixa a maioria
+      // descer e o fade pega a cauda.
       soundEngine.play('level_promotion', { volume: 0.6 }).catch(() => {});
       setShowConfetti(true);
-      setTimeout(autoClose, 3000);
+      setTimeout(autoClose, 4500);
     });
     return () => { try { sub.remove(); } catch {} };
   }, [useVideo, videoPlayer, autoClose]);
