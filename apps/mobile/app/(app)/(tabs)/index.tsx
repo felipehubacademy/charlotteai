@@ -523,10 +523,13 @@ export default function HomeTab() {
       <PromotionModal event={promotionEvent} onClose={ackPromotion} />
 
       {/* Overlay enquanto promocao esta pendente — esconde TrailContent
-          loading + qualquer flash visual entre guided-chat unmount e o
-          modal montar. Flag eh clearada via setPromotionPending(false) no
-          PromotionModal.onClose. */}
-      {promoPending && !promotionEvent && (
+          loading + qualquer flash visual ate o modal mostrar o video.
+          Modal nativa do iOS renderiza POR CIMA de qualquer View RN,
+          entao mantemos o overlay LIGADO mesmo quando event esta set —
+          a modal cobre o overlay visualmente. Sem condicional em event
+          eliminamos a janela de gap entre overlay sumir e VideoView
+          inicializar. Flag eh clearada em PromotionModal.onClose. */}
+      {promoPending && (
         <View pointerEvents="auto" style={{
           position: 'absolute', top: 0, left: 0, right: 0, bottom: 0,
           backgroundColor: 'rgba(244,243,250,0.97)',
