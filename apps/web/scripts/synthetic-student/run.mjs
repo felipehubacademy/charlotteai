@@ -132,8 +132,12 @@ async function runRoleplayUnit(modId, unit) {
     transcript.push(`Charlotte: ${judgement.reply}`);
 
     if (judgement.objectives_met?.length > 0) {
-      for (const id of judgement.objectives_met) objectivesMet.add(id);
-      stuckTurns = 0;
+      const validIds = judgement.objectives_met.filter(id =>
+        rp.objectives.some(o => o.id === id)
+      );
+      const newMet = validIds.filter(id => !objectivesMet.has(id));
+      for (const id of validIds) objectivesMet.add(id);
+      if (newMet.length > 0) stuckTurns = 0; else stuckTurns++;
     } else {
       stuckTurns++;
     }
@@ -173,8 +177,12 @@ async function runChatUnit(modId, unit) {
     transcript.push(`Charlotte: ${judgement.reply}`);
 
     if (judgement.objectives_met?.length > 0) {
-      for (const id of judgement.objectives_met) objectivesMet.add(id);
-      stuckTurns = 0;
+      const validIds = judgement.objectives_met.filter(id =>
+        gc.objectives.some(o => o.id === id)
+      );
+      const newMet = validIds.filter(id => !objectivesMet.has(id));
+      for (const id of validIds) objectivesMet.add(id);
+      if (newMet.length > 0) stuckTurns = 0; else stuckTurns++;
     } else {
       stuckTurns++;
     }
