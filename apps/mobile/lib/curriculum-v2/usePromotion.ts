@@ -88,8 +88,10 @@ export function usePromotion() {
 
       checkedForCurrent.current = key;
       setEvent({ fromLevel: currentLevel, toLevel: nextLevel });
-      // Atualiza profile no contexto pra UI refletir
-      await refreshProfile();
+      // NAO chamamos refreshProfile aqui — fariamos o profile.charlotte_level
+      // mudar enquanto o modal ainda esta abrindo, e o TrailContent
+      // detectaria a mudanca de nivel e mostraria seu proprio spinner
+      // de loading. Adiado pra ack() (apos modal fechar).
     } finally {
       checking.current = false;
     }
@@ -100,7 +102,13 @@ export function usePromotion() {
     checkedForCurrent.current = null;
   }, [currentLevel, userId]);
 
-  function ack() { setEvent(null); setPromotionPending(false); }
+  function ack() {
+    setEvent(null);
+    setPromotionPending(false);
+    // Agora sim — modal fechou, podemos atualizar o profile que faz o trail
+    // re-renderizar com o novo nivel.
+    refreshProfile().catch(() => {});
+  }
 
   return { event, ack, checkAndPromote };
 }
