@@ -728,12 +728,16 @@ export default function GuidedChatExerciseScreen() {
                     }
                   }
                   // Sem proximo (= ultima unit do ultimo modulo = promocao
-                  // iminente). Mostra spinner aqui durante o gap ate o
-                  // PromotionModal aparecer na home.
+                  // iminente). Spinner cobre o gap COMPLETO ate o modal:
+                  // - 1.2s aqui (UX de "salvando")
+                  // - 1.5s adicional escondendo o gray spinner da home
+                  //   loading e a query de promocao.
+                  // Quando navega, home ja terminou load + promotion check
+                  // entao modal pop instantaneo.
                   setIsFinishing(true);
                   setTimeout(() => {
                     router.replace('/(app)/(tabs)' as any);
-                  }, 1200);
+                  }, 2700);
                 }}
                 style={{
                   flex: 1, paddingVertical: 14, borderRadius: 14,
