@@ -542,21 +542,20 @@
    **Answer**: finished
    **Explanation**: "Finished" termina em /sh/ (surdo) → /t/. "Finish-t" = /fIn-Isht/.
 
-5. **fill_gap** — "'Worked' sounds like /work_/."
-   **Hint**: Som após consoante surda
-   **Answer**: t
-   **Explanation**: /k/ é surdo → -ed soa /t/. "Worked" = /workt/.
+5. **multiple_choice** — "How does the -ed in 'worked' sound?"
+   **Options**: /t/ / /d/ / /ɪd/ / silent
+   **Answer**: /t/
+   **Explanation**: O som /k/ no fim de "work" é surdo (sem vibração) → o -ed soa /t/. "Worked" = /wɜːrkt/, uma sílaba só.
 
-6. **fill_gap** — "'Played' sounds like /play_/."
-   **Hint**: Som após vogal/sonora
-   **Answer**: d
-   **Explanation**: /eɪ/ (vogal) é sonoro → -ed soa /d/. "Played" = /pleId/.
+6. **multiple_choice** — "How does the -ed in 'played' sound?"
+   **Options**: /d/ / /t/ / /ɪd/ / silent
+   **Answer**: /d/
+   **Explanation**: A vogal /eɪ/ no fim de "play" é sonora (com vibração) → o -ed soa /d/. "Played" = /pleɪd/, uma sílaba só.
 
-7. **fill_gap** — "'Wanted' sounds like /want_d/."
-   **Hint**: Som após /t/ ou /d/
-   **Answer**: i
-**Accepts**: id
-   **Explanation**: Verbo termina em /t/ → -ed soa /id/, criando sílaba extra: "want-Id" = /wAnt-Id/.
+7. **multiple_choice** — "How does the -ed in 'wanted' sound?"
+   **Options**: /ɪd/ / /t/ / /d/ / silent
+   **Answer**: /ɪd/
+   **Explanation**: O verbo "want" termina em /t/ → o -ed forma uma sílaba extra e soa /ɪd/. "Wanted" = /ˈwɒntɪd/, duas sílabas.
 
 8. **fix_error** — "I pronounced 'visited' as /vIzId/."
    **Hint**: -ed após /t/ pede sílaba extra

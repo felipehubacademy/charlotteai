@@ -50,27 +50,22 @@
         },
         {
           "type": "multiple_choice",
-          "sentence": "Numbered argument: \"_____, it improves living standards. _____, it stimulates demand. _____, it has minimal effect on employment.\"",
+          "sentence": "Numbered argument climax: \"First, it improves living standards. Second, it stimulates demand. _____, it has minimal effect on employment.\"",
           "options": [
-            "First",
-            "Second",
-            "Finally — In one",
-            "In two",
-            "In three — Firstly",
-            "Secondly",
-            "Endly — One",
-            "Two",
-            "Three"
+            "Finally",
+            "Endly",
+            "Lately",
+            "In three"
           ],
-          "answer": "First / Second / Finally",
-          "explanation": "\"First / Second / Third / Finally\" — classic numbered structure. \"Firstly / Secondly\" are British; \"First / Second\" are universal. \"Finally\" is preferred over \"Third\" when ranking by importance (you save the strongest for last). C2 style values \"First / Second / Finally\" especially."
+          "answer": "Finally",
+          "explanation": "\"Finally\" is the C2 norm for the third and strongest argument in a numbered sequence — preferred over \"Third\" when saving the strongest for last. \"Endly\" is not a word; \"Lately\" means recently."
         },
         {
           "type": "fill_gap",
-          "sentence": "Argument escalation: \"One reason is that the policy saves money. _____ is that it saves lives. _____, it restores public trust.\"",
-          "hint": "\"Another is\" and \"Most importantly\"",
-          "answer": "Another / Most importantly",
-          "explanation": "Cascade pattern: \"One reason is..., Another is..., Most importantly...\". Each marker ranks the next claim higher. \"Most importantly\" (or \"Above all\", \"Crucially\") signals the climax — typically your strongest point."
+          "sentence": "Argument climax: \"One reason is that the policy saves money. Another is that it saves lives. _____, it restores public trust.\"",
+          "hint": "marcador de clímax argumentativo",
+          "answer": "Most importantly",
+          "explanation": "Cascade pattern: each marker ranks the next claim higher. \"Most importantly\" (or \"Above all\", \"Crucially\") signals the strongest point — the climax of the argument."
         },
         {
           "type": "fix_error",
@@ -193,19 +188,15 @@
       "grammar": [
         {
           "type": "multiple_choice",
-          "sentence": "Pre-empting: \"_____ that the policy would be too expensive. _____, the long-term savings are substantial.\"",
+          "sentence": "Pre-empting: \"_____ that the policy would be too expensive. However, the long-term savings are substantial.\"",
           "options": [
             "Some may object",
-            "However",
             "Some objected",
-            "Whereas",
-            "Some object",
-            "Therefore",
-            "Some might",
-            "Hence"
+            "Some agree",
+            "It is certain"
           ],
-          "answer": "Some may object / However",
-          "explanation": "\"Some may object that...\" opens a counterargument with appropriate hedge (\"may\" — acknowledging it could be raised). \"However, ...\" pivots to the rebuttal. This is the basic refutation move: name + rebut."
+          "answer": "Some may object",
+          "explanation": "\"Some may object that...\" opens a counterargument with the right hedge (\"may\" — acknowledging it could be raised). It is the standard move for naming an objection before rebutting."
         },
         {
           "type": "multiple_choice",
@@ -347,19 +338,14 @@
       "grammar": [
         {
           "type": "multiple_choice",
-          "sentence": "Anaphora: \"_____ we believe in fairness. _____ we believe in truth. _____ we believe that the two are inseparable.\"",
+          "sentence": "Identify the device: \"In our work we believe in fairness. In our lives we believe in truth. In our values we believe the two are inseparable.\" This is an example of _____.",
           "options": [
-            "First",
-            "Second",
-            "Above all — In our work",
-            "In our lives",
-            "In our values — We",
-            "We",
-            "We — One",
-            "Two",
-            "Three"
+            "anaphora",
+            "antithesis",
+            "tricolon",
+            "hyperbole"
           ],
-          "answer": "We / We / We (or \"In our work / In our lives / In our values\")",
+          "answer": "anaphora",
           "explanation": "Anaphora — repetition of the same word or phrase at the start of successive clauses. Classical rhetorical device. Creates rhythm, builds emphasis, signals conviction. Common in speeches (MLK, Obama, Churchill)."
         },
         {
@@ -502,17 +488,15 @@
       "grammar": [
         {
           "type": "multiple_choice",
-          "sentence": "Causal chain: \"Wages rose, _____ household spending increased, _____ retail sales hit a record.\"",
+          "sentence": "Causal chain: \"Wages rose, which led to higher household spending, _____ retail sales hit a record.\"",
           "options": [
-            "which led to",
             "which in turn",
-            "which led to",
-            "which in turn — therefore",
-            "therefore — as",
-            "as"
+            "which therefore",
+            "and so as",
+            "which led to"
           ],
-          "answer": "which led to / which in turn",
-          "explanation": "\"X, which led to Y, which in turn caused Z\" — embedded causal chain. \"Which in turn\" links the second causal step to the first. Common pattern in economic and explanatory writing. Each \"which\" attaches to the preceding noun phrase."
+          "answer": "which in turn",
+          "explanation": "\"Which in turn\" links the second causal step to the first in an embedded causal chain. Common pattern in economic and explanatory writing; each \"which\" attaches to the preceding noun phrase."
         },
         {
           "type": "multiple_choice",

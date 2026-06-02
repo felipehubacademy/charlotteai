@@ -694,10 +694,10 @@
 
 ### 1. Grammar (10 exercises)
 
-1. **multiple_choice** — "I _____ swim but I _____ dive."
-   **Options**: can/can't / can't/can / can/can
-   **Answer**: can/can't
-   **Explanation**: Contraste: positiva + negativa. "I can swim but I can't dive" = "Sei nadar mas não sei mergulhar".
+1. **multiple_choice** — "I can swim but I _____ dive."
+   **Options**: can't / can / don't / not
+   **Answer**: can't
+   **Explanation**: Contraste positiva + negativa. "I can swim but I can't dive" = "Sei nadar mas não sei mergulhar". A negativa de "can" é "can't".
 
 2. **multiple_choice** — "She _____ speak Italian."
    **Options**: can / cans / can to

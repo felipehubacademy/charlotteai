@@ -692,12 +692,6 @@
 
 ### 1. Grammar (10 exercises)
 
-1. **multiple_choice** — "I _____ in São Paulo, but I _____ in NYC this month."
-   **Options**: live / am living / lives
-   **Answer**: live / am living
-   
-   Hmm, this exercise wants two answers. Let me redo.
-
 1. **multiple_choice** — "I _____ in São Paulo (it's my home)."
    **Options**: live / am living / lives
    **Answer**: live
@@ -708,20 +702,20 @@
    **Answer**: am living
    **Explanation**: Estada temporária usa present continuous: "I am living in NYC this month". "Live" seria permanente.
 
-3. **word_bank** — "She usually _____ coffee, but today she _____ tea."
+3. **word_bank** — "She usually _____ coffee in the morning."
    **Choices**: drinks / is drinking / drink / drank
    **Answer**: drinks
-   **Explanation**: "Usually" indica rotina → present simple: "She drinks coffee". (A segunda parte usaria "is drinking" — continuous pra hoje.)
+   **Explanation**: "Usually" indica rotina → present simple. "She drinks coffee" — 3ª pessoa singular com -s.
 
 4. **word_bank** — "We _____ dinner right now."
    **Choices**: are having / have / has / had
    **Answer**: are having
    **Explanation**: "Right now" sinaliza continuous: "We are having dinner". Present simple seria rotina diária.
 
-5. **fill_gap** — "He _____ to the gym every day, but today he _____ at home."
-   **Hint**: 1) Rotina; 2) Está atualmente. Coloque o primeiro.
+5. **fill_gap** — "He _____ to the gym every day."
+   **Hint**: rotina, 3ª pessoa
    **Answer**: goes
-   **Explanation**: "Every day" indica rotina = present simple. "He goes to the gym". (E o segundo seria "is staying").
+   **Explanation**: "Every day" indica rotina → present simple. "He goes to the gym" — 3ª pessoa singular, "go" vira "goes".
 
 6. **fill_gap** — "She _____ Italian — she's a translator."
    **Hint**: Profissão / habilidade permanente

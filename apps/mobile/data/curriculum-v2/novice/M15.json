@@ -680,28 +680,40 @@
           "explanation": "\"Finished\" termina em /sh/ (surdo) → /t/. \"Finish-t\" = /fIn-Isht/."
         },
         {
-          "type": "fill_gap",
-          "sentence": "'Worked' sounds like /work_/.",
-          "hint": "Som após consoante surda",
-          "answer": "t",
-          "explanation": "/k/ é surdo → -ed soa /t/. \"Worked\" = /workt/."
-        },
-        {
-          "type": "fill_gap",
-          "sentence": "'Played' sounds like /play_/.",
-          "hint": "Som após vogal/sonora",
-          "answer": "d",
-          "explanation": "/eɪ/ (vogal) é sonoro → -ed soa /d/. \"Played\" = /pleId/."
-        },
-        {
-          "type": "fill_gap",
-          "sentence": "'Wanted' sounds like /want_d/.",
-          "hint": "Som após /t/ ou /d/",
-          "answer": "i",
-          "accepts": [
-            "id"
+          "type": "multiple_choice",
+          "sentence": "How does the -ed in 'worked' sound?",
+          "options": [
+            "t",
+            "d",
+            "ɪd",
+            "silent"
           ],
-          "explanation": "Verbo termina em /t/ → -ed soa /id/, criando sílaba extra: \"want-Id\" = /wAnt-Id/."
+          "answer": "/t/",
+          "explanation": "O som /k/ no fim de \"work\" é surdo (sem vibração) → o -ed soa /t/. \"Worked\" = /wɜːrkt/, uma sílaba só."
+        },
+        {
+          "type": "multiple_choice",
+          "sentence": "How does the -ed in 'played' sound?",
+          "options": [
+            "d",
+            "t",
+            "ɪd",
+            "silent"
+          ],
+          "answer": "/d/",
+          "explanation": "A vogal /eɪ/ no fim de \"play\" é sonora (com vibração) → o -ed soa /d/. \"Played\" = /pleɪd/, uma sílaba só."
+        },
+        {
+          "type": "multiple_choice",
+          "sentence": "How does the -ed in 'wanted' sound?",
+          "options": [
+            "ɪd",
+            "t",
+            "d",
+            "silent"
+          ],
+          "answer": "/ɪd/",
+          "explanation": "O verbo \"want\" termina em /t/ → o -ed forma uma sílaba extra e soa /ɪd/. \"Wanted\" = /ˈwɒntɪd/, duas sílabas."
         },
         {
           "type": "fix_error",

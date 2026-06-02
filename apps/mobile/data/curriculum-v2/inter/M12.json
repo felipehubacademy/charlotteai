@@ -65,17 +65,15 @@
         },
         {
           "type": "word_bank",
-          "sentence": "I _____ help you if I _____ here.",
+          "sentence": "I _____ help you if I were here.",
           "choices": [
             "would",
-            "were",
             "will",
             "am",
-            "would",
-            "were"
+            "could be"
           ],
-          "answer": "would / were",
-          "explanation": "\"I would help you if I were here\" — \"would\" in the main clause, \"were\" in the if-clause (even with \"I\")."
+          "answer": "would",
+          "explanation": "The main clause of the second conditional uses \"would + base form\". \"I would help you\" — the if-clause has the past form \"were\"."
         },
         {
           "type": "fill_gap",
@@ -93,10 +91,10 @@
         },
         {
           "type": "fill_gap",
-          "sentence": "If we _____ the lottery, what _____ we _____?",
-          "hint": "past simple \"win\" / would + base \"do\"",
-          "answer": "won / would / do",
-          "explanation": "\"If we won, what would we do?\" — past simple \"won\" + \"would + base do\" in the question."
+          "sentence": "If we _____ the lottery, what would we do?",
+          "hint": "past simple de \"win\"",
+          "answer": "won",
+          "explanation": "\"If we won\" — past simple \"won\" in the if-clause signals a hypothetical present. The main clause keeps \"would + base form\"."
         },
         {
           "type": "fix_error",
@@ -661,24 +659,24 @@
         },
         {
           "type": "fill_gap",
-          "sentence": "What _____ you do if you _____ in my position?",
-          "hint": "would (principal) + were (subjuntivo)",
-          "answer": "would / were",
-          "explanation": "\"Would you do\" + \"if you were\" — hypothetical question with \"were\" for the hypothesis."
+          "sentence": "What would you do if you _____ in my position?",
+          "hint": "subjuntivo \"were\" para hipótese",
+          "answer": "were",
+          "explanation": "\"If you were in my position\" — hypothetical scenario uses \"were\" (subjunctive) in the if-clause."
         },
         {
           "type": "fill_gap",
-          "sentence": "_____ you change jobs if you _____ the chance?",
-          "hint": "would / had",
-          "answer": "Would / had",
-          "explanation": "\"Would you change... if you had the chance?\" — yes/no second-conditional question."
+          "sentence": "Would you change jobs if you _____ the chance?",
+          "hint": "past simple \"have\"",
+          "answer": "had",
+          "explanation": "\"If you had the chance\" — past simple in the if-clause of a hypothetical question."
         },
         {
           "type": "fill_gap",
-          "sentence": "Where _____ you go if you _____ a free week?",
-          "hint": "would / had",
-          "answer": "would / had",
-          "explanation": "\"Where would you go if you had a free week?\" — WH + would + if + past simple."
+          "sentence": "Where would you go if you _____ a free week?",
+          "hint": "past simple \"have\"",
+          "answer": "had",
+          "explanation": "\"If you had a free week\" — past simple \"had\" signals a hypothetical present in the if-clause."
         },
         {
           "type": "fix_error",
@@ -829,35 +827,27 @@
         },
         {
           "type": "word_bank",
-          "sentence": "If I _____ you, I _____ accept the offer.",
+          "sentence": "If I were you, I _____ accept the offer.",
           "choices": [
-            "were",
             "would",
-            "was",
-            "would",
-            "am",
             "will",
-            "were",
-            "will"
+            "could be",
+            "should have"
           ],
-          "answer": "were / would",
-          "explanation": "\"If I were you, I would accept\" — fixed advice chunk."
+          "answer": "would",
+          "explanation": "\"If I were you, I would accept\" — fixed advice chunk. Main clause uses \"would + base form\"."
         },
         {
           "type": "word_bank",
-          "sentence": "What _____ you do if you _____ in my position?",
+          "sentence": "What would you do if you _____ in my position?",
           "choices": [
-            "would",
             "were",
-            "will",
             "are",
-            "would",
-            "will",
-            "would",
-            "was"
+            "will be",
+            "would be"
           ],
-          "answer": "would / were",
-          "explanation": "\"Would you do if you were\" — hypothetical question with \"were\"."
+          "answer": "were",
+          "explanation": "\"If you were in my position\" — hypothetical scenario uses \"were\" (subjunctive) for all persons."
         },
         {
           "type": "fill_gap",
@@ -868,17 +858,17 @@
         },
         {
           "type": "fill_gap",
-          "sentence": "If she _____ closer, we _____ see each other often.",
-          "hint": "past simple \"live\" + would + base \"see\"",
-          "answer": "lived / would",
-          "explanation": "\"If she lived closer, we would see each other\" — standard second conditional."
+          "sentence": "If she _____ closer, we would see each other often.",
+          "hint": "past simple \"live\" 3ª pessoa",
+          "answer": "lived",
+          "explanation": "\"If she lived closer\" — past simple in the if-clause of the second conditional, signaling a hypothetical present."
         },
         {
           "type": "fill_gap",
-          "sentence": "_____ you change anything if you _____ go back in time?",
-          "hint": "Would / could",
-          "answer": "Would / could",
-          "explanation": "\"Would you change... if you could go back?\" — question with \"could\" for ability."
+          "sentence": "Would you change anything if you _____ go back in time?",
+          "hint": "past de \"can\" (habilidade hipotética)",
+          "answer": "could",
+          "explanation": "\"If you could go back\" — \"could\" expresses hypothetical ability inside the if-clause."
         },
         {
           "type": "fix_error",

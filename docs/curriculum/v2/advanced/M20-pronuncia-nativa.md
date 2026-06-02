@@ -601,9 +601,9 @@
    **Answer**: shouldn't have (often pronounced "shouldn'ta" in casual speech)
    **Explanation**: "Shouldn't have" — standard written contraction of "should not have". In casual fast speech, often produced as "shouldn'ta" /ˈʃʊdn(ə)tə/ — the "have" reduces to a schwa-only sound. C2 listeners parse this; speakers may produce it in casual register.
 
-3. **fill_gap** — Fast-speech version of "next month": _____ month (with elision of /t/)
-   **Hint**: Drop the /t/ between "next" and "month"
-   **Answer**: nex' month (/nɛksˈmʌnθ/, /t/ elided)
+3. **multiple_choice** — In fast speech, how is "next month" most likely pronounced?
+   **Options**: nex' month (/t/ elided) / next-uh month / next monf / nex monf
+   **Answer**: nex' month (/t/ elided)
    **Explanation**: Elision: dropping a sound, usually /t/ or /d/, between consonant clusters. "Next month" → "nex' month". Same with "old man" → "ol' man", "first place" → "firs' place". The dropped sound is too hard to say cleanly between adjacent consonants, so native speakers skip it.
 
 4. **fix_error** — Native English speaker would most likely say which?

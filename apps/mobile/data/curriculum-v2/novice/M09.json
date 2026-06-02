@@ -846,16 +846,6 @@
       "grammar": [
         {
           "type": "multiple_choice",
-          "sentence": "I _____ in São Paulo, but I _____ in NYC this month.",
-          "options": [
-            "live",
-            "am living",
-            "lives"
-          ],
-          "answer": "live / am living"
-        },
-        {
-          "type": "multiple_choice",
           "sentence": "I _____ in São Paulo (it's my home).",
           "options": [
             "live",
@@ -878,7 +868,7 @@
         },
         {
           "type": "word_bank",
-          "sentence": "She usually _____ coffee, but today she _____ tea.",
+          "sentence": "She usually _____ coffee in the morning.",
           "choices": [
             "drinks",
             "is drinking",
@@ -886,7 +876,7 @@
             "drank"
           ],
           "answer": "drinks",
-          "explanation": "\"Usually\" indica rotina → present simple: \"She drinks coffee\". (A segunda parte usaria \"is drinking\" — continuous pra hoje.)"
+          "explanation": "\"Usually\" indica rotina → present simple. \"She drinks coffee\" — 3ª pessoa singular com -s."
         },
         {
           "type": "word_bank",
@@ -902,10 +892,10 @@
         },
         {
           "type": "fill_gap",
-          "sentence": "He _____ to the gym every day, but today he _____ at home.",
-          "hint": "1) Rotina; 2) Está atualmente. Coloque o primeiro.",
+          "sentence": "He _____ to the gym every day.",
+          "hint": "rotina, 3ª pessoa",
           "answer": "goes",
-          "explanation": "\"Every day\" indica rotina = present simple. \"He goes to the gym\". (E o segundo seria \"is staying\")."
+          "explanation": "\"Every day\" indica rotina → present simple. \"He goes to the gym\" — 3ª pessoa singular, \"go\" vira \"goes\"."
         },
         {
           "type": "fill_gap",

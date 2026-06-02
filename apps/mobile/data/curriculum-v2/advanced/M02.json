@@ -196,26 +196,22 @@
         },
         {
           "type": "multiple_choice",
-          "sentence": "No sooner _____ the project _____ the deadline changed.",
+          "sentence": "No sooner had we finished the project _____ the deadline changed.",
           "options": [
-            "had we finished",
             "than",
-            "did we finish",
             "when",
-            "had we finished",
-            "when",
-            "did we finish",
-            "than"
+            "that",
+            "and"
           ],
-          "answer": "had we finished / than",
-          "explanation": "\"No sooner + had + subject + past participle + than + past simple\". Note \"THAN\" not \"when\" — that's the trap. \"No sooner had we finished than the deadline changed.\""
+          "answer": "than",
+          "explanation": "\"No sooner + had + subject + past participle + than + past simple\". Note \"THAN\" not \"when\" — that's the trap."
         },
         {
           "type": "fill_gap",
-          "sentence": "Scarcely _____ I _____ the door when the rain started.",
-          "hint": "had / past participle of \"shut\"",
-          "answer": "had / shut",
-          "explanation": "\"Scarcely had I shut the door when...\" — same pattern as \"Hardly\". Past perfect + when + past simple. Slight literary register."
+          "sentence": "Scarcely had I _____ the door when the rain started.",
+          "hint": "particípio passado de \"shut\"",
+          "answer": "shut",
+          "explanation": "\"Scarcely had I shut the door when...\" — past perfect after the inversion. \"Shut\" is irregular: shut/shut/shut."
         },
         {
           "type": "fix_error",
@@ -362,10 +358,10 @@
         },
         {
           "type": "fill_gap",
-          "sentence": "Not only _____ he _____ on time, but he also brought everyone coffee.",
-          "hint": "\"did\" (past) / \"arrive\"",
-          "answer": "did / arrive",
-          "explanation": "\"Not only did he arrive\" — past, so \"did + subject + base\". Followed by \"but he also + verb\" — no inversion in the second clause."
+          "sentence": "Not only _____ he arrive on time, but he also brought everyone coffee.",
+          "hint": "auxiliar de inversão no past simple",
+          "answer": "did",
+          "explanation": "\"Not only did he arrive\" — past, so \"did + subject + base\". The fronted \"not only\" forces subject-auxiliary inversion."
         },
         {
           "type": "fix_error",
@@ -500,26 +496,22 @@
         },
         {
           "type": "multiple_choice",
-          "sentence": "Only by working together _____ we _____ this on time.",
+          "sentence": "Only by working together _____ we finish this on time.",
           "options": [
             "will",
-            "finish",
             "can",
-            "finish",
             "would",
-            "finished",
-            "are",
-            "finishing"
+            "are"
           ],
-          "answer": "will / finish",
-          "explanation": "\"Only by + -ing + will + subject + base\". The \"only by\" prepositional phrase fronts and inverts. Indicates the sole pathway to a future outcome."
+          "answer": "will",
+          "explanation": "\"Only by + -ing + will + subject + base\". The fronted \"only by\" phrase forces inversion and signals the sole future pathway to the outcome."
         },
         {
           "type": "fill_gap",
-          "sentence": "Little _____ he _____ that the offer was about to be withdrawn.",
-          "hint": "\"did\" / past simple base \"know\"",
-          "answer": "did / know",
-          "explanation": "\"Little did he know\" — classic dramatic irony opener. \"Little + did/does + subject + base\" expresses unawareness of something soon revealed. \"Little did I realise/imagine\" follows the same pattern."
+          "sentence": "Little _____ he know that the offer was about to be withdrawn.",
+          "hint": "auxiliar de inversão no past simple",
+          "answer": "did",
+          "explanation": "\"Little did he know\" — classic dramatic irony opener. \"Little + did + subject + base\" expresses unawareness of something soon revealed."
         },
         {
           "type": "fix_error",
@@ -666,10 +658,10 @@
         },
         {
           "type": "fill_gap",
-          "sentence": "At no time _____ the company _____ that policy.",
-          "hint": "\"did\" or \"has\" / \"endorse/endorsed\"",
-          "answer": "did / endorse",
-          "explanation": "\"At no time did the company endorse...\" — past inversion. Also acceptable: \"At no time has the company endorsed...\" for present perfect denial. Both register formal disavowal."
+          "sentence": "At no time _____ the company endorse that policy.",
+          "hint": "auxiliar de inversão no past simple",
+          "answer": "did",
+          "explanation": "\"At no time did the company endorse...\" — past inversion. The fronted negative phrase \"at no time\" forces \"did + subject + base\", a formal disavowal."
         },
         {
           "type": "fix_error",

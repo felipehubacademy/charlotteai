@@ -658,10 +658,17 @@
           "explanation": "\"Shouldn't have\" — standard written contraction of \"should not have\". In casual fast speech, often produced as \"shouldn'ta\" /ˈʃʊdn(ə)tə/ — the \"have\" reduces to a schwa-only sound. C2 listeners parse this; speakers may produce it in casual register."
         },
         {
-          "type": "fill_gap",
-          "sentence": "Fast-speech version of \"next month\": _____ month (with elision of /t/)",
-          "hint": "Drop the /t/ between \"next\" and \"month\"",
-          "answer": "nex' month (/nɛksˈmʌnθ/, /t/ elided)",
+          "type": "multiple_choice",
+          "sentence": "In fast speech, how is \"next month\" most likely pronounced?",
+          "options": [
+            "nex' month (",
+            "t",
+            "elided)",
+            "next-uh month",
+            "next monf",
+            "nex monf"
+          ],
+          "answer": "nex' month (/t/ elided)",
           "explanation": "Elision: dropping a sound, usually /t/ or /d/, between consonant clusters. \"Next month\" → \"nex' month\". Same with \"old man\" → \"ol' man\", \"first place\" → \"firs' place\". The dropped sound is too hard to say cleanly between adjacent consonants, so native speakers skip it."
         },
         {

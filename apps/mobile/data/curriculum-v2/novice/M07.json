@@ -853,17 +853,15 @@
       "grammar": [
         {
           "type": "multiple_choice",
-          "sentence": "I _____ swim but I _____ dive.",
+          "sentence": "I can swim but I _____ dive.",
           "options": [
-            "can",
-            "can't",
             "can't",
             "can",
-            "can",
-            "can"
+            "don't",
+            "not"
           ],
-          "answer": "can/can't",
-          "explanation": "Contraste: positiva + negativa. \"I can swim but I can't dive\" = \"Sei nadar mas não sei mergulhar\"."
+          "answer": "can't",
+          "explanation": "Contraste positiva + negativa. \"I can swim but I can't dive\" = \"Sei nadar mas não sei mergulhar\". A negativa de \"can\" é \"can't\"."
         },
         {
           "type": "multiple_choice",

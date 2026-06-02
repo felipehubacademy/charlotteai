@@ -42,16 +42,14 @@
         },
         {
           "type": "multiple_choice",
-          "sentence": "We'll have dinner _____ everyone _____ home.",
+          "sentence": "We'll have dinner when everyone _____ home.",
           "options": [
-            "when",
             "arrives",
-            "when",
             "will arrive",
-            "when",
-            "is arriving"
+            "is arriving",
+            "arrived"
           ],
-          "answer": "when / arrives",
+          "answer": "arrives",
           "explanation": "\"When everyone arrives\" — present simple 3rd person (\"everyone\" is singular). After \"when\" in future context, always present simple."
         },
         {
@@ -94,10 +92,10 @@
         },
         {
           "type": "fill_gap",
-          "sentence": "_____ they _____ the news, they'll be happy.",
-          "hint": "when + present simple de \"hear\" 3ª pessoa plural",
-          "answer": "When / hear",
-          "explanation": "\"When they hear\" — plural \"they\" uses the base form \"hear\"."
+          "sentence": "When they _____ the news, they'll be happy.",
+          "hint": "present simple de \"hear\" 3ª pessoa plural",
+          "answer": "hear",
+          "explanation": "\"When they hear\" — plural \"they\" uses the base form \"hear\". After \"when\" in future context, present simple."
         },
         {
           "type": "fix_error",
@@ -258,19 +256,15 @@
         },
         {
           "type": "word_bank",
-          "sentence": "_____ I _____ from work, I usually cook dinner.",
+          "sentence": "_____ I get home from work, I usually cook dinner.",
           "choices": [
             "After",
-            "get",
-            "Before",
-            "get",
-            "After",
-            "will get",
-            "Before",
-            "am getting"
+            "Until",
+            "By",
+            "While"
           ],
-          "answer": "After / get",
-          "explanation": "\"After I get from work\" — present simple with \"I\" + base form \"get\". Daily routine."
+          "answer": "After",
+          "explanation": "\"After I get home\" — describes a daily sequence: arriving home, then cooking. \"After + present simple\" for routine."
         },
         {
           "type": "fill_gap",
@@ -288,10 +282,10 @@
         },
         {
           "type": "fill_gap",
-          "sentence": "_____ you _____, please clean the kitchen.",
-          "hint": "before + present simple de \"leave\"",
-          "answer": "Before / leave",
-          "explanation": "\"Before you leave\" — a request for before departure. Present simple base form with \"you\"."
+          "sentence": "Before you _____, please clean the kitchen.",
+          "hint": "present simple de \"leave\" com you",
+          "answer": "leave",
+          "explanation": "\"Before you leave\" — a request for before departure. Present simple base form with \"you\", never \"will\"."
         },
         {
           "type": "fix_error",
@@ -473,9 +467,9 @@
         },
         {
           "type": "fill_gap",
-          "sentence": "_____ I _____ home, my parents will be asleep.",
-          "hint": "by the time + present simple \"get\"",
-          "answer": "By the time / get",
+          "sentence": "By the time I _____ home, my parents will be asleep.",
+          "hint": "present simple \"get\" com I",
+          "answer": "get",
           "explanation": "\"By the time I get home\" — when I get home, they'll already be asleep. Present simple after \"by the time\" in future contexts."
         },
         {
@@ -621,17 +615,15 @@
         },
         {
           "type": "multiple_choice",
-          "sentence": "_____ she _____ the news, she'll be happy.",
+          "sentence": "As soon as she _____ the news, she'll be happy.",
           "options": [
-            "As soon as",
             "hears",
-            "Until",
-            "hears",
-            "By the time",
-            "will hear"
+            "will hear",
+            "is hearing",
+            "heard"
           ],
-          "answer": "As soon as / hears",
-          "explanation": "\"As soon as she hears\" — present simple 3rd person \"hears\". Immediate reaction to receiving news."
+          "answer": "hears",
+          "explanation": "\"As soon as she hears\" — present simple 3rd person \"hears\". After \"as soon as\" in future contexts, present simple."
         },
         {
           "type": "word_bank",
@@ -647,39 +639,35 @@
         },
         {
           "type": "word_bank",
-          "sentence": "I'll let you know _____ I _____ a decision.",
+          "sentence": "I'll let you know as soon as I _____ a decision.",
           "choices": [
-            "as soon as",
             "make",
-            "as soon as",
             "will make",
-            "until",
-            "make",
-            "before",
-            "will make"
+            "am making",
+            "made"
           ],
-          "answer": "as soon as / make",
-          "explanation": "\"As soon as I make a decision\" — the moment I make the decision."
+          "answer": "make",
+          "explanation": "\"As soon as I make a decision\" — present simple after \"as soon as\" in future contexts."
         },
         {
           "type": "fill_gap",
-          "sentence": "_____ they _____ home, they'll start cooking.",
-          "hint": "as soon as + present simple \"get\" plural",
-          "answer": "As soon as / get",
+          "sentence": "As soon as they _____ home, they'll start cooking.",
+          "hint": "present simple \"get\" plural",
+          "answer": "get",
           "explanation": "\"As soon as they get home\" — plural without -s. Immediate reaction."
         },
         {
           "type": "fill_gap",
-          "sentence": "Call me _____ you _____ help.",
-          "hint": "as soon as + present simple \"need\"",
-          "answer": "as soon as / need",
-          "explanation": "\"As soon as you need help\" — immediate. A promise of availability."
+          "sentence": "Call me as soon as you _____ help.",
+          "hint": "present simple \"need\" com you",
+          "answer": "need",
+          "explanation": "\"As soon as you need help\" — immediate. A promise of availability, present simple base form."
         },
         {
           "type": "fill_gap",
-          "sentence": "I'll start _____ the music _____.",
-          "hint": "as soon as + present simple 3ª pessoa \"begin\"",
-          "answer": "as soon as / begins",
+          "sentence": "I'll start as soon as the music _____.",
+          "hint": "present simple 3ª pessoa \"begin\"",
+          "answer": "begins",
           "explanation": "\"As soon as the music begins\" — 3rd person singular \"begins\" with -s."
         },
         {
@@ -853,24 +841,24 @@
         },
         {
           "type": "fill_gap",
-          "sentence": "_____ I _____ home, dinner will be ready.",
-          "hint": "by the time + present simple \"get\"",
-          "answer": "By the time / get",
-          "explanation": "\"By the time I get home\" — future reference point."
+          "sentence": "By the time I _____ home, dinner will be ready.",
+          "hint": "present simple \"get\" com I",
+          "answer": "get",
+          "explanation": "\"By the time I get home\" — future reference point. Present simple after \"by the time\"."
         },
         {
           "type": "fill_gap",
-          "sentence": "Don't leave _____ I _____ you the documents.",
-          "hint": "until + present simple \"give\"",
-          "answer": "until / give",
-          "explanation": "\"Until I give you\" — duration until you receive the documents."
+          "sentence": "Don't leave until I _____ you the documents.",
+          "hint": "present simple \"give\" com I",
+          "answer": "give",
+          "explanation": "\"Until I give you\" — duration until you receive the documents. Present simple after \"until\"."
         },
         {
           "type": "fill_gap",
-          "sentence": "_____ we _____ dinner, let's relax.",
-          "hint": "after + present simple \"finish\"",
-          "answer": "After / finish",
-          "explanation": "\"After we finish\" — sequence: relax after dinner."
+          "sentence": "After we _____ dinner, let's relax.",
+          "hint": "present simple \"finish\" com we",
+          "answer": "finish",
+          "explanation": "\"After we finish\" — sequence: relax after dinner. Present simple after \"after\"."
         },
         {
           "type": "fix_error",

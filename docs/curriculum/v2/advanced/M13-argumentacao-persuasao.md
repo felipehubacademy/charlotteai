@@ -40,15 +40,15 @@
    **Answer**: The case for
    **Explanation**: "The case for + noun/-ing" — frames the speaker's position. "The case for raising X", "The case against doing Y". Standard rhetorical opener in op-eds, debate, advocacy writing. Equivalent: "The argument for / against".
 
-2. **multiple_choice** — Numbered argument: "_____, it improves living standards. _____, it stimulates demand. _____, it has minimal effect on employment."
-   **Options**: First / Second / Finally — In one / In two / In three — Firstly / Secondly / Endly — One / Two / Three
-   **Answer**: First / Second / Finally
-   **Explanation**: "First / Second / Third / Finally" — classic numbered structure. "Firstly / Secondly" are British; "First / Second" are universal. "Finally" is preferred over "Third" when ranking by importance (you save the strongest for last). C2 style values "First / Second / Finally" especially.
+2. **multiple_choice** — Numbered argument climax: "First, it improves living standards. Second, it stimulates demand. _____, it has minimal effect on employment."
+   **Options**: Finally / Endly / Lately / In three
+   **Answer**: Finally
+   **Explanation**: "Finally" is the C2 norm for the third and strongest argument in a numbered sequence — preferred over "Third" when saving the strongest for last. "Endly" is not a word; "Lately" means recently.
 
-3. **fill_gap** — Argument escalation: "One reason is that the policy saves money. _____ is that it saves lives. _____, it restores public trust."
-   **Hint**: "Another is" and "Most importantly"
-   **Answer**: Another / Most importantly
-   **Explanation**: Cascade pattern: "One reason is..., Another is..., Most importantly...". Each marker ranks the next claim higher. "Most importantly" (or "Above all", "Crucially") signals the climax — typically your strongest point.
+3. **fill_gap** — Argument climax: "One reason is that the policy saves money. Another is that it saves lives. _____, it restores public trust."
+   **Hint**: marcador de clímax argumentativo
+   **Answer**: Most importantly
+   **Explanation**: Cascade pattern: each marker ranks the next claim higher. "Most importantly" (or "Above all", "Crucially") signals the strongest point — the climax of the argument.
 
 4. **fix_error** — "Firstly the policy works. Secondly it's affordable. Lastly people support it."
    **Hint**: Punctuation — commas after enumerative adverbs
@@ -175,10 +175,10 @@
 
 ### 1. Grammar (5 exercises)
 
-1. **multiple_choice** — Pre-empting: "_____ that the policy would be too expensive. _____, the long-term savings are substantial."
-   **Options**: Some may object / However / Some objected / Whereas / Some object / Therefore / Some might / Hence
-   **Answer**: Some may object / However
-   **Explanation**: "Some may object that..." opens a counterargument with appropriate hedge ("may" — acknowledging it could be raised). "However, ..." pivots to the rebuttal. This is the basic refutation move: name + rebut.
+1. **multiple_choice** — Pre-empting: "_____ that the policy would be too expensive. However, the long-term savings are substantial."
+   **Options**: Some may object / Some objected / Some agree / It is certain
+   **Answer**: Some may object
+   **Explanation**: "Some may object that..." opens a counterargument with the right hedge ("may" — acknowledging it could be raised). It is the standard move for naming an objection before rebutting.
 
 2. **multiple_choice** — Stronger refutation: "Critics might argue the data is too sparse — _____."
    **Options**: but this overlooks the consistency across studies / but this is right / and we agree / so we should stop
@@ -315,9 +315,9 @@
 
 ### 1. Grammar (5 exercises)
 
-1. **multiple_choice** — Anaphora: "_____ we believe in fairness. _____ we believe in truth. _____ we believe that the two are inseparable."
-   **Options**: First / Second / Above all — In our work / In our lives / In our values — We / We / We — One / Two / Three
-   **Answer**: We / We / We (or "In our work / In our lives / In our values")
+1. **multiple_choice** — Identify the device: "In our work we believe in fairness. In our lives we believe in truth. In our values we believe the two are inseparable." This is an example of _____.
+   **Options**: anaphora / antithesis / tricolon / hyperbole
+   **Answer**: anaphora
    **Explanation**: Anaphora — repetition of the same word or phrase at the start of successive clauses. Classical rhetorical device. Creates rhythm, builds emphasis, signals conviction. Common in speeches (MLK, Obama, Churchill).
 
 2. **multiple_choice** — Antithesis: "Ask not what your country can do for you — _____."
@@ -455,10 +455,10 @@
 
 ### 1. Grammar (5 exercises)
 
-1. **multiple_choice** — Causal chain: "Wages rose, _____ household spending increased, _____ retail sales hit a record."
-   **Options**: which led to / which in turn / which led to / which in turn — therefore / therefore — as / as
-   **Answer**: which led to / which in turn
-   **Explanation**: "X, which led to Y, which in turn caused Z" — embedded causal chain. "Which in turn" links the second causal step to the first. Common pattern in economic and explanatory writing. Each "which" attaches to the preceding noun phrase.
+1. **multiple_choice** — Causal chain: "Wages rose, which led to higher household spending, _____ retail sales hit a record."
+   **Options**: which in turn / which therefore / and so as / which led to
+   **Answer**: which in turn
+   **Explanation**: "Which in turn" links the second causal step to the first in an embedded causal chain. Common pattern in economic and explanatory writing; each "which" attaches to the preceding noun phrase.
 
 2. **multiple_choice** — Drawing a conclusion: "_____ that the model must be revised."
    **Options**: From this it follows / From this following / This follows / This is following

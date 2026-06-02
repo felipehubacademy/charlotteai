@@ -30,31 +30,27 @@
       "grammar": [
         {
           "type": "multiple_choice",
-          "sentence": "My brother is _____ tall _____ my father.",
+          "sentence": "My brother is as tall _____ my father.",
           "options": [
             "as",
-            "as",
-            "so",
-            "as",
-            "more",
-            "than"
+            "than",
+            "like",
+            "so"
           ],
-          "answer": "as / as",
-          "explanation": "For equality, use \"as + adjective + as\": \"as tall as\". Note that \"so...as\" is archaic in affirmative sentences — only \"as...as\" works in modern English."
+          "answer": "as",
+          "explanation": "For equality, use \"as + adjective + as\": \"as tall as\". The second \"as\" closes the equality comparison — \"than\" and \"like\" don't fit this structure."
         },
         {
           "type": "multiple_choice",
-          "sentence": "This coffee is _____ strong _____ the one I had yesterday.",
+          "sentence": "This coffee is _____ strong as the one I had yesterday.",
           "options": [
             "as",
-            "as",
             "so",
-            "as",
             "very",
-            "as"
+            "more"
           ],
-          "answer": "as / as",
-          "explanation": "\"As strong as\" — direct equality comparison. Works with any descriptive adjective (strong, fast, easy, expensive)."
+          "answer": "as",
+          "explanation": "\"As strong as\" — direct equality comparison. The first \"as\" opens the equality structure. \"So...as\" is archaic in affirmatives."
         },
         {
           "type": "word_bank",
@@ -82,24 +78,24 @@
         },
         {
           "type": "fill_gap",
-          "sentence": "She runs _____ fast _____ her older brother.",
-          "hint": "estrutura de igualdade",
-          "answer": "as / as",
-          "explanation": "\"As fast as\" — equality of speed between two people. Both \"as\" are required."
+          "sentence": "She runs as fast _____ her older brother.",
+          "hint": "fecha a estrutura de igualdade",
+          "answer": "as",
+          "explanation": "\"As fast as\" — equality of speed between two people. The second \"as\" closes the comparison."
         },
         {
           "type": "fill_gap",
-          "sentence": "The exam was _____ difficult _____ I expected.",
-          "hint": "estrutura de igualdade comparando expectativa",
-          "answer": "as / as",
-          "explanation": "\"As difficult as I expected\" — confirming expectation. Common with expectation verbs (expected, thought, imagined)."
+          "sentence": "The exam was _____ difficult as I expected.",
+          "hint": "abre a estrutura de igualdade",
+          "answer": "as",
+          "explanation": "\"As difficult as I expected\" — the first \"as\" opens the equality structure with expectation verbs."
         },
         {
           "type": "fill_gap",
-          "sentence": "He works _____ hard _____ anyone in the office.",
-          "hint": "igualdade absoluta (= ninguém trabalha mais)",
-          "answer": "as / as",
-          "explanation": "\"As hard as anyone\" — used to highlight a maximum. \"Anyone\" implies no one surpasses it."
+          "sentence": "He works as hard _____ anyone in the office.",
+          "hint": "fecha o paralelo de igualdade",
+          "answer": "as",
+          "explanation": "\"As hard as anyone\" — used to highlight a maximum. The second \"as\" closes the structure."
         },
         {
           "type": "fix_error",
@@ -226,17 +222,15 @@
       "grammar": [
         {
           "type": "multiple_choice",
-          "sentence": "Today isn't _____ hot _____ yesterday.",
+          "sentence": "Today isn't as hot _____ yesterday.",
           "options": [
-            "so",
+            "as",
             "than",
-            "as",
-            "as",
-            "very",
-            "as"
+            "so",
+            "like"
           ],
-          "answer": "as / as",
-          "explanation": "\"Not as + adj + as\" = less than. Equivalent to \"less hot than\" but more natural in speech. Both \"as\" are still required."
+          "answer": "as",
+          "explanation": "\"Not as + adj + as\" = less than. The second \"as\" closes the comparison even in the negative form."
         },
         {
           "type": "multiple_choice",
@@ -276,17 +270,17 @@
         },
         {
           "type": "fill_gap",
-          "sentence": "The movie wasn't _____ exciting _____ the book.",
-          "hint": "estrutura \"not as...as\" com adjetivo",
-          "answer": "as / as",
-          "explanation": "\"Not as exciting as\" — common in film-adaptation comparisons. The movie is less enjoyable than the book."
+          "sentence": "The movie wasn't as exciting _____ the book.",
+          "hint": "fecha o \"not as...as\"",
+          "answer": "as",
+          "explanation": "\"Not as exciting as\" — common in film-adaptation comparisons. The second \"as\" closes the negative comparison."
         },
         {
           "type": "fill_gap",
-          "sentence": "I'm not _____ patient _____ my mother.",
-          "hint": "comparativo negativo",
-          "answer": "as / as",
-          "explanation": "\"Not as patient as\" — admitting a lesser quality in oneself. A common way to indirectly compliment someone else."
+          "sentence": "I'm not _____ patient as my mother.",
+          "hint": "abre o comparativo negativo",
+          "answer": "as",
+          "explanation": "\"Not as patient as\" — admitting a lesser quality in oneself. The first \"as\" opens the negative comparison."
         },
         {
           "type": "fill_gap",
@@ -422,31 +416,27 @@
       "grammar": [
         {
           "type": "multiple_choice",
-          "sentence": "He's _____ as fast _____ I am.",
+          "sentence": "He's _____ as fast as I am.",
           "options": [
             "twice",
-            "as",
             "two times",
-            "as",
             "second",
-            "as"
+            "double"
           ],
-          "answer": "twice / as",
+          "answer": "twice",
           "explanation": "\"Twice as + adj + as\" = 2x more. \"Twice\" is the idiomatic choice over \"two times\" in comparisons."
         },
         {
           "type": "multiple_choice",
-          "sentence": "This trip costs _____ as much _____ the last one.",
+          "sentence": "This trip costs _____ as much as the last one.",
           "options": [
             "three times",
-            "as",
             "three",
-            "times",
             "triple",
-            "as"
+            "thrice"
           ],
-          "answer": "three times / as",
-          "explanation": "From 3x onward, use \"three/four/five times as + adj + as\". \"Twice\" is the exception (\"two times\" isn't used in comparisons)."
+          "answer": "three times",
+          "explanation": "From 3x onward, use \"three/four/five times as + adj + as\". \"Triple\" and bare \"three\" don't fit this structure."
         },
         {
           "type": "word_bank",
@@ -474,28 +464,24 @@
         },
         {
           "type": "fill_gap",
-          "sentence": "He works _____ as hard _____ his colleague.",
-          "hint": "2x intensificador + estrutura as...as",
-          "answer": "twice / as",
-          "explanation": "\"Twice as hard as\" — doubled effort. \"Twice\" always before \"as\"."
+          "sentence": "He works _____ as hard as his colleague.",
+          "hint": "2x intensificador",
+          "answer": "twice",
+          "explanation": "\"Twice as hard as\" — doubled effort. \"Twice\" always comes before the first \"as\"."
         },
         {
           "type": "fill_gap",
-          "sentence": "This apartment is _____ times as expensive _____ the other.",
-          "hint": "3x ou mais",
-          "answer": "three / as",
-          "accepts": [
-            "four",
-            "five"
-          ],
-          "explanation": "Multipliers of 3+ use \"X times as + adj + as\"."
+          "sentence": "This apartment is three times as expensive _____ the other.",
+          "hint": "fecha a estrutura multiplicada",
+          "answer": "as",
+          "explanation": "Multipliers of 3+ use \"X times as + adj + as\" — the second \"as\" closes the comparison."
         },
         {
           "type": "fill_gap",
-          "sentence": "She spent _____ as much time on this project _____ I did.",
+          "sentence": "She spent _____ as much time on this project as I did.",
           "hint": "2x (time = uncountable)",
-          "answer": "twice / as",
-          "explanation": "\"Twice as much time as\" — time is uncountable, so \"much\"."
+          "answer": "twice",
+          "explanation": "\"Twice as much time as\" — time is uncountable, so \"much\". \"Twice\" opens the multiplier."
         },
         {
           "type": "fix_error",
@@ -624,17 +610,15 @@
       "grammar": [
         {
           "type": "multiple_choice",
-          "sentence": "_____ more I study, _____ better I understand.",
+          "sentence": "_____ more I study, the better I understand.",
           "options": [
             "The",
-            "the",
             "A",
-            "a",
             "More",
-            "better"
+            "How"
           ],
-          "answer": "The / the",
-          "explanation": "The parallel structure \"the more X, the more Y\" requires \"the\" before both comparatives. It signals simultaneous progression: the more X, the more Y."
+          "answer": "The",
+          "explanation": "The parallel structure \"the more X, the more Y\" requires \"the\" before both comparatives. The first \"the\" opens the progression."
         },
         {
           "type": "multiple_choice",
@@ -674,10 +658,10 @@
         },
         {
           "type": "fill_gap",
-          "sentence": "_____ harder you practice, _____ better you become.",
-          "hint": "estrutura paralela the + comparativo, the + comparativo",
-          "answer": "The / the",
-          "explanation": "\"The harder, the better\" — short -er comparatives also follow the parallel pattern. Harder practice = better outcome."
+          "sentence": "_____ harder you practice, the better you become.",
+          "hint": "abre o paralelo",
+          "answer": "The",
+          "explanation": "\"The harder, the better\" — short -er comparatives also follow the parallel pattern. The first \"The\" opens the progression."
         },
         {
           "type": "fill_gap",
@@ -818,31 +802,27 @@
       "grammar": [
         {
           "type": "multiple_choice",
-          "sentence": "He's _____ tall _____ his brother — both are 1m80.",
+          "sentence": "He's as tall _____ his brother — both are 1m80.",
           "options": [
             "as",
-            "as",
-            "so",
-            "as",
-            "more",
-            "than"
+            "than",
+            "like",
+            "so"
           ],
-          "answer": "as / as",
-          "explanation": "For exact equality, \"as + adj + as\". The context \"both are 1m80\" confirms equality."
+          "answer": "as",
+          "explanation": "For exact equality, \"as + adj + as\". The context \"both are 1m80\" confirms equality — second \"as\" closes the structure."
         },
         {
           "type": "multiple_choice",
-          "sentence": "Today _____ as cold _____ yesterday.",
+          "sentence": "Today _____ as cold as yesterday.",
           "options": [
             "isn't",
-            "as",
             "not",
-            "as",
-            "no",
-            "as"
+            "doesn't",
+            "no"
           ],
-          "answer": "isn't / as",
-          "explanation": "\"Isn't as cold as\" — negative inequality. Negative \"to be\" + as...as structure."
+          "answer": "isn't",
+          "explanation": "Negative \"to be\" + \"as...as\". \"Isn't as cold as\" = less cold than. With \"to be\" the negation is \"isn't\", never \"doesn't\"."
         },
         {
           "type": "word_bank",
@@ -858,19 +838,15 @@
         },
         {
           "type": "word_bank",
-          "sentence": "_____ more I practice, _____ better I get.",
+          "sentence": "_____ more I practice, the better I get.",
           "choices": [
             "The",
-            "the",
             "A",
-            "a",
             "More",
-            "more",
-            "The most",
-            "the best"
+            "How much"
           ],
-          "answer": "The / the",
-          "explanation": "Parallel structure: \"The more...the better\" — always \"the\" before the comparatives."
+          "answer": "The",
+          "explanation": "Parallel structure: \"The more...the better\" — always \"the\" before the comparatives. The first opens the progression."
         },
         {
           "type": "fill_gap",
@@ -881,17 +857,17 @@
         },
         {
           "type": "fill_gap",
-          "sentence": "This trip cost _____ as much _____ the last one.",
+          "sentence": "This trip cost _____ as much as the last one.",
           "hint": "3x mais",
-          "answer": "three times / as",
-          "explanation": "\"Three times as much as\" — multiplier + \"as much as\"."
+          "answer": "three times",
+          "explanation": "\"Three times as much as\" — multiplier opens the structure before \"as much as\"."
         },
         {
           "type": "fill_gap",
-          "sentence": "_____ harder you try, _____ more you accomplish.",
-          "hint": "paralelo: o + comparativo, o + comparativo",
-          "answer": "The / the",
-          "explanation": "\"The harder, the more\" — parallel structure with a short comparative."
+          "sentence": "_____ harder you try, the more you accomplish.",
+          "hint": "abre o paralelo",
+          "answer": "The",
+          "explanation": "\"The harder, the more\" — parallel structure with a short comparative. The first \"The\" opens the progression."
         },
         {
           "type": "fix_error",

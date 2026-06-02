@@ -59,10 +59,10 @@
         },
         {
           "type": "fill_gap",
-          "sentence": "_____ Mary _____ called me last night, not Jane.",
-          "hint": "\"It was\" / \"who\"",
-          "answer": "It was / who",
-          "explanation": "Subject emphasis with contrast. \"It was Mary who\" splits the original \"Mary called me last night\" so we can attach the contrast (\"not Jane\"). Cleft is ideal for correcting mistaken assumptions."
+          "sentence": "It was Mary _____ called me last night, not Jane.",
+          "hint": "pronome relativo para pessoas",
+          "answer": "who",
+          "explanation": "Subject-emphasis cleft. \"It was Mary who\" — after \"It was + person\", use \"who\" (or \"that\"), never \"which\". The cleft contrasts Mary with Jane."
         },
         {
           "type": "fix_error",
@@ -209,10 +209,10 @@
         },
         {
           "type": "fill_gap",
-          "sentence": "_____ I did _____ apologise immediately.",
-          "hint": "\"What\" / \"was\"",
-          "answer": "What / was",
-          "explanation": "\"What I did was apologise immediately.\" Note: after \"what I did was\", you can use base form (no \"to\") — a quirk of this cleft pattern. \"What I did was apologise\" / \"What I did was call him\" — base form."
+          "sentence": "What I did _____ apologise immediately.",
+          "hint": "ligação do cleft no past simple",
+          "answer": "was",
+          "explanation": "\"What I did was apologise immediately.\" After \"what I did was\", you can use base form (no \"to\") — a quirk of this cleft pattern."
         },
         {
           "type": "fix_error",
@@ -359,10 +359,10 @@
         },
         {
           "type": "fill_gap",
-          "sentence": "_____ asked _____ a fair chance.",
-          "hint": "\"All I\" / \"for was\" or \"All he\" / \"for was\"",
-          "answer": "All he / for was",
-          "explanation": "\"All he asked for was a fair chance.\" The cleft holds the modesty of the request — one thing, nothing more."
+          "sentence": "All he asked _____ was a fair chance.",
+          "hint": "preposição que pede \"ask\"",
+          "answer": "for",
+          "explanation": "\"All he asked for was a fair chance.\" The \"ask for + noun\" structure stays intact inside the cleft, which highlights the modesty of the request."
         },
         {
           "type": "fix_error",
@@ -485,42 +485,34 @@
       "grammar": [
         {
           "type": "multiple_choice",
-          "sentence": "_____ I left home _____ I understood my parents.",
+          "sentence": "It wasn't until I left home _____ I understood my parents.",
           "options": [
-            "It wasn't until",
             "that",
-            "Not until",
             "when",
-            "It was until",
-            "when",
-            "Until",
-            "that"
+            "which",
+            "and"
           ],
-          "answer": "It wasn't until / that",
-          "explanation": "\"It wasn't until + clause + that + main clause\" — the it-cleft form of delayed realisation. Compare to the inversion \"Not until I left home did I understand...\" (M02). Same idea, different structure."
+          "answer": "that",
+          "explanation": "\"It wasn't until + clause + that + main clause\" — the it-cleft form of delayed realisation. \"When\" feels natural but breaks the cleft pattern."
         },
         {
           "type": "multiple_choice",
-          "sentence": "_____ the second draft _____ the story started working.",
+          "sentence": "_____ the second draft that the story started working.",
           "options": [
             "It wasn't until",
-            "that",
             "Not until",
-            "when",
-            "Until that",
-            "when",
-            "It wasn't when",
-            "that"
+            "Until",
+            "It wasn't when"
           ],
-          "answer": "It wasn't until / that",
-          "explanation": "Time-clause + it-cleft. \"The story started working\" was delayed until the second draft — the cleft drama tises the delay."
+          "answer": "It wasn't until",
+          "explanation": "It-cleft of delayed result. \"It wasn't until + time-clause + that + result\" — the structure dramatises the delay until things started working."
         },
         {
           "type": "fill_gap",
-          "sentence": "_____ I _____ the photo _____ I recognised her.",
-          "hint": "\"It wasn't until\" / past simple \"see\" / \"that\"",
-          "answer": "It wasn't until / saw / that",
-          "explanation": "\"It wasn't until I saw the photo that I recognised her.\" Past simple in both clauses — the delay between seeing and recognising is the point."
+          "sentence": "It wasn't until I saw the photo _____ I recognised her.",
+          "hint": "conector que fecha o cleft",
+          "answer": "that",
+          "explanation": "\"It wasn't until I saw the photo that I recognised her.\" The cleft pattern is strictly \"It wasn't until X that Y\" — never \"when\"."
         },
         {
           "type": "fix_error",
@@ -652,26 +644,22 @@
         },
         {
           "type": "multiple_choice",
-          "sentence": "_____ surprised me _____ his lack of preparation.",
+          "sentence": "_____ surprised me was his lack of preparation.",
           "options": [
             "The thing that",
-            "was",
             "The thing was",
-            "what",
             "Thing that",
-            "was",
-            "What is",
-            "was"
+            "Was the thing"
           ],
-          "answer": "The thing that / was",
-          "explanation": "\"The thing that + clause + was + element\". Synonymous with \"What surprised me was...\" (wh-cleft) but using a noun (\"the thing\") as anchor. Slightly more colloquial."
+          "answer": "The thing that",
+          "explanation": "\"The thing that + clause + was + element\". Synonymous with \"What surprised me was...\" (wh-cleft) but using a noun anchor. Slightly more colloquial."
         },
         {
           "type": "fill_gap",
-          "sentence": "_____ I work _____ in a converted warehouse.",
-          "hint": "\"The place where\" / \"is\"",
-          "answer": "The place where / is",
-          "explanation": "\"The place where + clause + is + element\". Locative cleft. Modern usage permits \"The place I work is...\", but \"where\" makes the structure explicit."
+          "sentence": "The place where I work _____ in a converted warehouse.",
+          "hint": "ligação do cleft no present simple",
+          "answer": "is",
+          "explanation": "\"The place where + clause + is + element\" — locative cleft. The linking verb \"is\" delivers the spotlight onto the warehouse."
         },
         {
           "type": "fix_error",

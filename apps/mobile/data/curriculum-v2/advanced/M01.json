@@ -31,42 +31,34 @@
       "grammar": [
         {
           "type": "multiple_choice",
-          "sentence": "If I _____ medicine, I _____ in a hospital now.",
+          "sentence": "If I had studied medicine, I _____ in a hospital now.",
           "options": [
-            "had studied",
             "would be",
-            "studied",
+            "would have been",
             "will be",
-            "had studied",
-            "will be",
-            "studied",
-            "would be"
+            "am"
           ],
-          "answer": "had studied / would be",
-          "explanation": "Mixed conditional with past condition affecting present result: \"If + past perfect, would + base (now)\". Past perfect \"had studied\" sets up the unrealised past; \"would be\" describes the alternative present that didn't materialise."
+          "answer": "would be",
+          "explanation": "Mixed conditional with past condition affecting present result. The marker \"now\" anchors the result in the present, so use \"would + base\" — not \"would have been\" (pure third) or \"will be\" (first)."
         },
         {
           "type": "multiple_choice",
-          "sentence": "She _____ exhausted right now if she _____ overtime last night.",
+          "sentence": "She wouldn't be exhausted right now if she _____ overtime last night.",
           "options": [
-            "wouldn't be",
             "hadn't worked",
-            "wouldn't have been",
             "didn't work",
-            "wouldn't be",
-            "didn't work",
-            "isn't",
-            "hadn't worked"
+            "wouldn't have worked",
+            "doesn't work"
           ],
-          "answer": "wouldn't be / hadn't worked",
-          "explanation": "Past cause (\"hadn't worked overtime\") has a present effect (\"wouldn't be exhausted right now\"). The time-marker \"right now\" anchors the result clause in the present, forcing the mixed form rather than full third conditional."
+          "answer": "hadn't worked",
+          "explanation": "Past cause needs past perfect in the if-clause: \"hadn't worked overtime last night\". The present effect (\"wouldn't be exhausted\") signals the mixed form."
         },
         {
           "type": "fill_gap",
-          "sentence": "If we _____ that house in 2010, we _____ enough equity to retire by now.",
-          "hint": "past perfect \"buy\" / \"would have\"",
-          "answer": "had bought / would have",
-          "explanation": "\"Had bought\" — past perfect for the unrealised past decision. \"Would have enough equity now\" — present consequence. Notice \"have\" here is a stative present, not \"have + past participle\"."
+          "sentence": "If we had bought that house in 2010, we _____ enough equity to retire by now.",
+          "hint": "resultado presente: would + base \"have\"",
+          "answer": "would have",
+          "explanation": "Past cause (\"had bought\") + present result (\"would have enough equity now\"). Note: \"have\" here is the stative present verb, not \"have + past participle\"."
         },
         {
           "type": "fix_error",
@@ -188,42 +180,34 @@
       "grammar": [
         {
           "type": "multiple_choice",
-          "sentence": "If she _____ so stubborn, she _____ to a compromise weeks ago.",
+          "sentence": "If she weren't so stubborn, she _____ to a compromise weeks ago.",
           "options": [
-            "weren't",
             "would have agreed",
-            "wasn't",
+            "would agree",
             "agreed",
-            "weren't",
-            "agreed",
-            "wouldn't be",
-            "would have agreed"
+            "had agreed"
           ],
-          "answer": "weren't / would have agreed",
-          "explanation": "Permanent trait (\"weren't so stubborn\", a present/general state) explains a past failure (\"would have agreed weeks ago\"). The mixed reversed form: present condition → past result. Note \"weren't\" — subjunctive across all persons."
+          "answer": "would have agreed",
+          "explanation": "Mixed reversed form: present trait (\"weren't so stubborn\") with a past result (\"weeks ago\"). Past result requires \"would have + past participle\"."
         },
         {
           "type": "multiple_choice",
-          "sentence": "If I _____ a morning person, I _____ that early meeting yesterday.",
+          "sentence": "If I _____ a morning person, I would have accepted that early meeting yesterday.",
           "options": [
             "were",
-            "would have accepted",
             "was",
-            "accepted",
-            "were",
-            "accepted",
-            "would be",
-            "would have accepted"
+            "am",
+            "had been"
           ],
-          "answer": "were / would have accepted",
-          "explanation": "\"Were\" (present trait, subjunctive) + \"would have accepted\" (past hypothetical action). The trait explains why the past action didn't happen."
+          "answer": "were",
+          "explanation": "\"Were\" (subjunctive across all persons) marks a present/ongoing trait in the if-clause. The trait explains why the past action didn't happen."
         },
         {
           "type": "fill_gap",
-          "sentence": "If he _____ less sensitive, he _____ that comment so personally last week.",
-          "hint": "weren't / wouldn't have taken",
-          "answer": "weren't / wouldn't have taken",
-          "explanation": "Ongoing personality (\"isn't less sensitive\") explains last week's reaction. Mixed: present condition → past result."
+          "sentence": "If he weren't less sensitive, he _____ that comment so personally last week.",
+          "hint": "would + have + past participle (resultado passado)",
+          "answer": "wouldn't have taken",
+          "explanation": "Ongoing personality (present) explains last week's reaction (past). Mixed: present condition → past result with \"would have + past participle\"."
         },
         {
           "type": "fix_error",
@@ -370,10 +354,10 @@
         },
         {
           "type": "fill_gap",
-          "sentence": "_____ what I know now, I _____ that company years ago.",
-          "hint": "Inverted \"if I had known\" / \"would have left\"",
-          "answer": "Had I known / would have left",
-          "explanation": "\"Had I known\" — inverted form of \"If I had known\". Pairs naturally with \"would have left\" (third conditional result)."
+          "sentence": "_____ what I know now, I would have left that company years ago.",
+          "hint": "Inversão de \"If I had known\" (sem \"if\")",
+          "answer": "Had I known",
+          "explanation": "\"Had I known\" — inverted form of \"If I had known\". Inversion drops \"if\" and brings the auxiliary \"had\" before the subject."
         },
         {
           "type": "fix_error",

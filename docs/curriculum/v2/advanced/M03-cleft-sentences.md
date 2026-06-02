@@ -597,15 +597,15 @@
    **Answer**: The reason why
    **Explanation**: "The reason (why) + clause + is + that-clause/element". "Why" is optional in modern English ("the reason I'm leaving is..."). "Because" is incorrect here — the explanation comes after "is".
 
-2. **multiple_choice** — "_____ surprised me _____ his lack of preparation."
-   **Options**: The thing that / was / The thing was / what / Thing that / was / What is / was
-   **Answer**: The thing that / was
-   **Explanation**: "The thing that + clause + was + element". Synonymous with "What surprised me was..." (wh-cleft) but using a noun ("the thing") as anchor. Slightly more colloquial.
+2. **multiple_choice** — "_____ surprised me was his lack of preparation."
+   **Options**: The thing that / The thing was / Thing that / Was the thing
+   **Answer**: The thing that
+   **Explanation**: "The thing that + clause + was + element". Synonymous with "What surprised me was..." (wh-cleft) but using a noun anchor. Slightly more colloquial.
 
-3. **fill_gap** — "_____ I work _____ in a converted warehouse."
-   **Hint**: "The place where" / "is"
-   **Answer**: The place where / is
-   **Explanation**: "The place where + clause + is + element". Locative cleft. Modern usage permits "The place I work is...", but "where" makes the structure explicit.
+3. **fill_gap** — "The place where I work _____ in a converted warehouse."
+   **Hint**: ligação do cleft no present simple
+   **Answer**: is
+   **Explanation**: "The place where + clause + is + element" — locative cleft. The linking verb "is" delivers the spotlight onto the warehouse.
 
 4. **fix_error** — "The reason why I'm tired is because I didn't sleep."
    **Hint**: After "The reason ... is", use "that" or just a clause — not "because"
