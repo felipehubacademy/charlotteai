@@ -18,6 +18,7 @@ import {
 } from 'react-native';
 import { setAudioModeAsync, setIsAudioActiveAsync } from 'expo-audio';
 import { useAudioSessionKeeper } from '@/hooks/useAudioSessionKeeper';
+import { usePromotionVideoPrefetch } from '@/hooks/usePromotionVideoPrefetch';
 import { SafeAreaView, useSafeAreaInsets } from 'react-native-safe-area-context';
 import { router, useLocalSearchParams } from 'expo-router';
 import {
@@ -84,6 +85,22 @@ export default function GuidedChatExerciseScreen() {
 
   // Silent loop mantem AVAudioSession ativa pra Spotify nao voltar.
   useAudioSessionKeeper();
+
+  // Pre-fetch do video de promocao se essa for a ultima atividade do
+  // ultimo modulo do nivel (promocao iminente). Quando dispara, video
+  // ja esta em disco — modal carrega instantaneo.
+  const NEXT_LEVEL: Record<string, string | null> = {
+    Novice: 'Inter', Inter: 'Advanced', Advanced: null,
+  };
+  const isLastUnitOfLastModule = (() => {
+    const mods = listModules(level as any);
+    if (!mods.length) return false;
+    const lastMod = mods[mods.length - 1];
+    const lastUnit = lastMod?.units[lastMod.units.length - 1];
+    return moduleId === lastMod?.id && unitId === lastUnit?.id;
+  })();
+  const nextLevel = NEXT_LEVEL[level];
+  usePromotionVideoPrefetch(isLastUnitOfLastModule ? nextLevel : null);
 
   // Pausar musica externa enquanto chat ativo.
   useEffect(() => {

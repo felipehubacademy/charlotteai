@@ -13,11 +13,13 @@ import { Trophy, ArrowRight } from 'phosphor-react-native';
 import { VideoView, useVideoPlayer } from 'expo-video';
 import { AppText } from '@/components/ui/Text';
 import { soundEngine } from '@/lib/soundEngine';
+import { getPromotionVideoUri } from '@/hooks/usePromotionVideoPrefetch';
 import type { PromotionEvent } from '@/lib/curriculum-v2/usePromotion';
 
 // URLs dos videos de promocao no Supabase Storage. Pre-fetch eh feito quando
-// o aluno entra na ultima unit do ultimo modulo (TrailContent / learn-session).
-const PROMOTION_VIDEO: Record<string, string> = {
+// o aluno entra na ultima unit do ultimo modulo (guided-chat-exercise via
+// usePromotionVideoPrefetch). Modal usa URI local quando disponivel.
+const PROMOTION_VIDEO_REMOTE: Record<string, string> = {
   Inter:    'https://fnvjibzreepubageztoi.supabase.co/storage/v1/object/public/promotion-videos/novice-to-inter.mp4',
   // Advanced: aguardando geracao do video Inter→Advanced.
 };
@@ -131,11 +133,23 @@ export function PromotionModal({ event, onClose }: Props) {
   // Confete so dispara apos a fala terminar (junto com o SFX). Antes
   // estava no inicio competindo visualmente com a face da Charlotte.
   const [showConfetti, setShowConfetti] = useState(false);
+  // URI resolvida (local se pre-fetched, remoto fallback)
+  const [resolvedUri, setResolvedUri] = useState<string | null>(null);
 
-  const videoUrl = event ? PROMOTION_VIDEO[event.toLevel] : undefined;
-  const useVideo = !!videoUrl && !videoFailed;
+  // Resolve URI assim que event chega — checa se ja tem em disco
+  useEffect(() => {
+    if (!event) { setResolvedUri(null); return; }
+    let alive = true;
+    (async () => {
+      const uri = await getPromotionVideoUri(event.toLevel);
+      if (alive) setResolvedUri(uri);
+    })();
+    return () => { alive = false; };
+  }, [event?.toLevel]);
 
-  const videoPlayer = useVideoPlayer(videoUrl ?? null, (player) => {
+  const useVideo = !!resolvedUri && !videoFailed;
+
+  const videoPlayer = useVideoPlayer(resolvedUri ?? null, (player) => {
     player.loop = false;
     player.muted = false;
     player.volume = 1.0;
@@ -152,10 +166,11 @@ export function PromotionModal({ event, onClose }: Props) {
     if (!useVideo || !videoPlayer) return;
     const sub = videoPlayer.addListener('playToEnd', () => {
       // Video terminou. Burst de celebracao: SFX + confete dispara
-      // junto, momento "capelo pro alto". Janela de 1.6s antes do fade.
+      // junto, momento "capelo pro alto". 3s antes do fade pra confete
+      // cair no chao (animacao de cada peca dura ~2.2-3.8s).
       soundEngine.play('level_promotion', { volume: 0.6 }).catch(() => {});
       setShowConfetti(true);
-      setTimeout(autoClose, 1600);
+      setTimeout(autoClose, 3000);
     });
     return () => { try { sub.remove(); } catch {} };
   }, [useVideo, videoPlayer, autoClose]);
