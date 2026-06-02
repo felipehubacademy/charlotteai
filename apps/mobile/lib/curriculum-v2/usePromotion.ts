@@ -105,8 +105,7 @@ export function usePromotion() {
   function ack() {
     setEvent(null);
     setPromotionPending(false);
-    // Agora sim — modal fechou, podemos atualizar o profile que faz o trail
-    // re-renderizar com o novo nivel.
+    // Atualiza o profile (faz o trail re-renderizar com novo nivel).
     refreshProfile().catch(() => {});
   }
 

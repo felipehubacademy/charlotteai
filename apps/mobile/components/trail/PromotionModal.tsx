@@ -190,7 +190,8 @@ export function PromotionModal({ event, onClose }: Props) {
     // Set direto a 1 (sem animacao de entrada). A fade-in via Animated.timing
     // com useNativeDriver:true estava prendendo a opacity em meio-caminho no
     // iOS (Charlotte ficava 'ghost' transparente o tempo todo do video). A
-    // animacao de entrada quem cuida eh o Modal animationType='fade' nativo.
+    // animacao de entrada: instantanea (animationType=none + setValue 1).
+    // Fade-in animado estava prendendo opacity em meio-caminho no iOS.
     fade.setValue(1);
     scale.setValue(1);
 
@@ -228,7 +229,7 @@ export function PromotionModal({ event, onClose }: Props) {
   const cta      = isPortuguese ? `Continuar no ${labelLvl}` : `Continue in ${labelLvl}`;
 
   return (
-    <Modal visible transparent animationType="fade" onRequestClose={onClose}>
+    <Modal visible transparent animationType="none" onRequestClose={onClose}>
       {useVideo ? (
         // FULLSCREEN — Charlotte toma a tela toda, confete por cima, fade ao
         // final do video. Sem texto/botao (audio narra tudo, modelo Duolingo).
