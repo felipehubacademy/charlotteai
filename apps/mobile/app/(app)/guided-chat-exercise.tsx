@@ -16,7 +16,7 @@ import {
   View, TouchableOpacity, StatusBar, ActivityIndicator,
   KeyboardAvoidingView, Platform, TextInput, Animated,
 } from 'react-native';
-import { setAudioModeAsync } from 'expo-audio';
+import { setAudioModeAsync, setIsAudioActiveAsync } from 'expo-audio';
 import { SafeAreaView, useSafeAreaInsets } from 'react-native-safe-area-context';
 import { router, useLocalSearchParams } from 'expo-router';
 import {
@@ -83,10 +83,18 @@ export default function GuidedChatExerciseScreen() {
 
   // Pausar musica externa enquanto chat ativo. Modelo Duolingo: foco
   // total no exercicio, libera ao sair.
+  // setIsAudioActiveAsync(true) eh o que ativa a AVAudioSession e faz iOS
+  // pausar Spotify. setAudioModeAsync sozinho so configura categoria.
   useEffect(() => {
-    setAudioModeAsync({ playsInSilentMode: true, interruptionMode: 'doNotMix' }).catch(() => {});
+    (async () => {
+      await setAudioModeAsync({ playsInSilentMode: true, interruptionMode: 'doNotMix' }).catch(() => {});
+      await setIsAudioActiveAsync(true).catch(() => {});
+    })();
     return () => {
-      setAudioModeAsync({ playsInSilentMode: true, interruptionMode: 'mixWithOthers' }).catch(() => {});
+      (async () => {
+        await setIsAudioActiveAsync(false).catch(() => {});
+        await setAudioModeAsync({ playsInSilentMode: true, interruptionMode: 'mixWithOthers' }).catch(() => {});
+      })();
     };
   }, []);
 

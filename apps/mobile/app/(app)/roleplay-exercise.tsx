@@ -20,7 +20,7 @@ import { ArrowLeft, Microphone, X as XIcon, CheckCircle, Lightbulb, Trophy, Arro
 import * as FileSystem from 'expo-file-system/legacy';
 import * as Haptics from 'expo-haptics';
 import Constants from 'expo-constants';
-import { createAudioPlayer, setAudioModeAsync, AudioPlayer, RecordingPresets } from 'expo-audio';
+import { createAudioPlayer, setAudioModeAsync, setIsAudioActiveAsync, AudioPlayer, RecordingPresets } from 'expo-audio';
 
 import { AppText } from '@/components/ui/Text';
 import ChatBox, { Message } from '@/components/chat/ChatBox';
@@ -79,10 +79,20 @@ export default function RolePlayExerciseScreen() {
 
   // Pausar Spotify/outros apps de audio enquanto Charlotte fala no role-play.
   // Modelo Duolingo: foco total durante exercicio, libera ao sair.
+  //
+  // CRITICO: setAudioModeAsync({doNotMix}) so configura categoria, nao ativa
+  // a AVAudioSession. setIsAudioActiveAsync(true) faz iOS ativar a sessao
+  // (= Spotify pausa de verdade). Sem isso, doNotMix nao tem efeito.
   useEffect(() => {
-    setAudioModeAsync({ playsInSilentMode: true, interruptionMode: 'doNotMix' }).catch(() => {});
+    (async () => {
+      await setAudioModeAsync({ playsInSilentMode: true, interruptionMode: 'doNotMix' }).catch(() => {});
+      await setIsAudioActiveAsync(true).catch(() => {});
+    })();
     return () => {
-      setAudioModeAsync({ playsInSilentMode: true, interruptionMode: 'mixWithOthers' }).catch(() => {});
+      (async () => {
+        await setIsAudioActiveAsync(false).catch(() => {});
+        await setAudioModeAsync({ playsInSilentMode: true, interruptionMode: 'mixWithOthers' }).catch(() => {});
+      })();
     };
   }, []);
 

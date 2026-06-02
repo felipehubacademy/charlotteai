@@ -22,7 +22,7 @@ import { soundEngine } from '@/lib/soundEngine';
 import { scheduleReviews, markReviewDone, rescheduleReview } from '@/lib/spacedRepetition';
 import { track } from '@/lib/analytics';
 import * as FileSystem from 'expo-file-system/legacy';
-import { useAudioRecorder, setAudioModeAsync, RecordingPresets } from 'expo-audio';
+import { useAudioRecorder, setAudioModeAsync, setIsAudioActiveAsync, RecordingPresets } from 'expo-audio';
 import { Image } from 'expo-image';
 import {
   ExpoSpeechRecognitionModule,
@@ -311,12 +311,21 @@ export default function LearnSessionScreen() {
   useEffect(() => { soundEngine.resetStreak(); }, []);
 
   // Pausar Spotify/outros apps de audio enquanto a licao toca. Modelo
-  // Duolingo: ao entrar em exercicio, foco total — qualquer musica externa
-  // pausa. Ao sair, libera (volta a poder mixar).
+  // Duolingo: foco total durante exercicio, libera ao sair.
+  //
+  // CRITICO: setAudioModeAsync({doNotMix}) so configura a CATEGORIA do
+  // AVAudioSession. Pra iOS de fato pausar Spotify, precisa ATIVAR a sessao
+  // via setIsAudioActiveAsync(true). Sem isso, o doNotMix nao tem efeito.
   useEffect(() => {
-    setAudioModeAsync({ playsInSilentMode: true, interruptionMode: 'doNotMix' }).catch(() => {});
+    (async () => {
+      await setAudioModeAsync({ playsInSilentMode: true, interruptionMode: 'doNotMix' }).catch(() => {});
+      await setIsAudioActiveAsync(true).catch(() => {});
+    })();
     return () => {
-      setAudioModeAsync({ playsInSilentMode: true, interruptionMode: 'mixWithOthers' }).catch(() => {});
+      (async () => {
+        await setIsAudioActiveAsync(false).catch(() => {});
+        await setAudioModeAsync({ playsInSilentMode: true, interruptionMode: 'mixWithOthers' }).catch(() => {});
+      })();
     };
   }, []);
 
