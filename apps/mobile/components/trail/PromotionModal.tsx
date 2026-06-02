@@ -13,7 +13,7 @@ import { Trophy, ArrowRight } from 'phosphor-react-native';
 import { VideoView, useVideoPlayer } from 'expo-video';
 import { AppText } from '@/components/ui/Text';
 import { soundEngine } from '@/lib/soundEngine';
-import { getPromotionVideoUri } from '@/hooks/usePromotionVideoPrefetch';
+import { resolvePromotionVideoUriSync } from '@/hooks/usePromotionVideoPrefetch';
 import type { PromotionEvent } from '@/lib/curriculum-v2/usePromotion';
 
 // URLs dos videos de promocao no Supabase Storage. Pre-fetch eh feito quando
@@ -133,20 +133,11 @@ export function PromotionModal({ event, onClose }: Props) {
   // Confete so dispara apos a fala terminar (junto com o SFX). Antes
   // estava no inicio competindo visualmente com a face da Charlotte.
   const [showConfetti, setShowConfetti] = useState(false);
-  // URI resolvida (local se pre-fetched, remoto fallback)
-  const [resolvedUri, setResolvedUri] = useState<string | null>(null);
-
-  // Resolve URI assim que event chega — checa se ja tem em disco
-  useEffect(() => {
-    if (!event) { setResolvedUri(null); return; }
-    let alive = true;
-    (async () => {
-      const uri = await getPromotionVideoUri(event.toLevel);
-      if (alive) setResolvedUri(uri);
-    })();
-    return () => { alive = false; };
-  }, [event?.toLevel]);
-
+  // URI resolvida SINCRONAMENTE: usa local se ja baixou nesta sessao,
+  // senao remoto (com buffer). Sem useEffect async — evita o problema
+  // de renderizar fallback path primeiro (com confetti/SFX no inicio)
+  // antes de decidir que tem video.
+  const resolvedUri = event ? resolvePromotionVideoUriSync(event.toLevel) : null;
   const useVideo = !!resolvedUri && !videoFailed;
 
   const videoPlayer = useVideoPlayer(resolvedUri ?? null, (player) => {
@@ -157,9 +148,13 @@ export function PromotionModal({ event, onClose }: Props) {
 
   // Auto-close com fade quando video termina
   const autoClose = useCallback(() => {
-    // Pausa o video antes do fade pra evitar 'frozen last frame' visivel
-    // durante a transicao (iOS expo-video deixa rastro sem isso).
-    try { videoPlayer?.pause(); } catch {}
+    // Pausa + replace(null) limpa o surface do video antes do fade pra
+    // evitar 'ghost' visivel sobre a home (iOS expo-video deixa o ultimo
+    // frame pintado mesmo apos React desmontar o VideoView).
+    try {
+      videoPlayer?.pause();
+      videoPlayer?.replace(null);
+    } catch {}
     Animated.timing(fade, { toValue: 0, duration: 800, useNativeDriver: true }).start(() => {
       onClose();
     });

@@ -13,19 +13,25 @@ const PROMOTION_VIDEO_REMOTE: Record<string, string> = {
   // Advanced: pendente
 };
 
+// Module-level Set: rastreia quais niveis ja terminaram de baixar nesta
+// sessao. Permite resolucao SINCRONA na hora do modal abrir.
+const downloadedLevels = new Set<string>();
+
 export function promotionVideoLocalPath(toLevel: string): string {
   return `${FileSystem.documentDirectory}promotion-videos/${toLevel}.mp4`;
 }
 
-/** Retorna URI usavel (local se ja baixou, remoto como fallback). */
-export async function getPromotionVideoUri(toLevel: string): Promise<string | null> {
+/**
+ * Sincrono: retorna a URI a usar AGORA. Se ja baixamos nesta sessao,
+ * retorna o path local. Caso contrario, retorna o URL remoto (com buffer).
+ * SEM filesystem check async — usado direto no render.
+ */
+export function resolvePromotionVideoUriSync(toLevel: string): string | null {
   const remote = PROMOTION_VIDEO_REMOTE[toLevel];
   if (!remote) return null;
-  const local = promotionVideoLocalPath(toLevel);
-  try {
-    const info = await FileSystem.getInfoAsync(local);
-    if (info.exists && info.size && info.size > 0) return local;
-  } catch {}
+  if (downloadedLevels.has(toLevel)) {
+    return promotionVideoLocalPath(toLevel);
+  }
   return remote;
 }
 
@@ -40,9 +46,12 @@ export function usePromotionVideoPrefetch(toLevel: string | null, enabled: boole
     (async () => {
       const local = promotionVideoLocalPath(toLevel);
       try {
-        // Ja existe e tem tamanho — pular
+        // Ja existe e tem tamanho — registra no Set sync e pula
         const info = await FileSystem.getInfoAsync(local);
-        if (info.exists && info.size && info.size > 0) return;
+        if (info.exists && info.size && info.size > 0) {
+          downloadedLevels.add(toLevel);
+          return;
+        }
 
         // Garante diretorio
         const dir = `${FileSystem.documentDirectory}promotion-videos/`;
@@ -51,7 +60,9 @@ export function usePromotionVideoPrefetch(toLevel: string | null, enabled: boole
         // Download em background
         const res = await FileSystem.downloadAsync(remote, local);
         if (cancelled) return;
-        if (res.status !== 200) {
+        if (res.status === 200) {
+          downloadedLevels.add(toLevel);
+        } else {
           // Limpa download parcial pra retentar depois
           try { await FileSystem.deleteAsync(local, { idempotent: true }); } catch {}
         }
