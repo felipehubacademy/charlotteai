@@ -6,7 +6,7 @@
 // achievement_legendary SFX + haptic burst, 1 botao "Continuar no <novo
 // nivel>" que fecha. Bilingue conforme novo nivel.
 
-import React, { useEffect, useMemo, useRef, useState } from 'react';
+import React, { useCallback, useEffect, useMemo, useRef, useState } from 'react';
 import { View, Modal, TouchableOpacity, Animated, Platform, Dimensions, Easing } from 'react-native';
 import * as Haptics from 'expo-haptics';
 import { Trophy, ArrowRight } from 'phosphor-react-native';
@@ -132,15 +132,27 @@ export function PromotionModal({ event, onClose }: Props) {
   const videoUrl = event ? PROMOTION_VIDEO[event.toLevel] : undefined;
   const useVideo = !!videoUrl && !videoFailed;
 
-  // Video player (sempre criado mas so renderiza se useVideo). Hooks-rule:
-  // chamada estavel, condicional vai no render.
   const videoPlayer = useVideoPlayer(videoUrl ?? null, (player) => {
     player.loop = false;
     player.muted = false;
-    // Volume da narracao em 1.0 (palco principal). SFX entra em paralelo
-    // mais baixo como BG da fala.
     player.volume = 1.0;
   });
+
+  // Auto-close com fade quando video termina
+  const autoClose = useCallback(() => {
+    Animated.timing(fade, { toValue: 0, duration: 600, useNativeDriver: true }).start(() => {
+      onClose();
+    });
+  }, [fade, onClose]);
+
+  useEffect(() => {
+    if (!useVideo || !videoPlayer) return;
+    const sub = videoPlayer.addListener('playToEnd', () => {
+      // pequeno delay pra dar 'um respiro' antes do fade
+      setTimeout(autoClose, 400);
+    });
+    return () => { try { sub.remove(); } catch {} };
+  }, [useVideo, videoPlayer, autoClose]);
 
   useEffect(() => {
     if (event) {
@@ -179,36 +191,51 @@ export function PromotionModal({ event, onClose }: Props) {
 
   return (
     <Modal visible transparent animationType="fade" onRequestClose={onClose}>
-      <Animated.View style={{
-        flex: 1,
-        backgroundColor: 'rgba(0,0,0,0.55)',
-        justifyContent: 'center',
-        alignItems: 'center',
-        padding: 24,
-        opacity: fade,
-      }}>
-        <Animated.View style={[{
-          width: '100%', maxWidth: 360,
-          backgroundColor: '#FFFFFF',
-          borderRadius: 24,
-          padding: 28,
+      {useVideo ? (
+        // FULLSCREEN — Charlotte toma a tela toda, confete por cima, fade ao
+        // final do video. Sem texto/botao (audio narra tudo, modelo Duolingo).
+        <Animated.View style={{
+          flex: 1,
+          backgroundColor: '#F4F3FA', // mesmo cinza claro do fundo do video
+          opacity: fade,
+        }}>
+          <View style={{ flex: 1, overflow: 'hidden' }}>
+            <VideoView
+              player={videoPlayer}
+              style={{
+                width: '100%', height: '100%',
+                // Pequeno zoom + shift pra direita esconde a linha preta
+                // vertical da esquerda (artifact do Aurora). Mantem pes e
+                // cabeca visiveis porque video eh portrait e zoom eh suave.
+                transform: [{ scale: 1.06 }, { translateX: 12 }],
+              }}
+              contentFit="cover"
+              nativeControls={false}
+              allowsFullscreen={false}
+              allowsPictureInPicture={false}
+            />
+          </View>
+          {/* Confete por cima do video */}
+          <Confetti />
+        </Animated.View>
+      ) : (
+        // FALLBACK — modal card classico quando nao tem video pro nivel.
+        <Animated.View style={{
+          flex: 1,
+          backgroundColor: 'rgba(0,0,0,0.55)',
+          justifyContent: 'center',
           alignItems: 'center',
-          transform: [{ scale }],
-        }, shadow as any]}>
-          {useVideo ? (
-            <View style={{
-              width: 220, height: 280, borderRadius: 16, overflow: 'hidden',
-              marginBottom: 20, backgroundColor: '#F3F4F6',
-            }}>
-              <VideoView
-                player={videoPlayer}
-                style={{ width: '100%', height: '100%' }}
-                contentFit="cover"
-                nativeControls={false}
-                allowsFullscreen={false}
-              />
-            </View>
-          ) : (
+          padding: 24,
+          opacity: fade,
+        }}>
+          <Animated.View style={[{
+            width: '100%', maxWidth: 360,
+            backgroundColor: '#FFFFFF',
+            borderRadius: 24,
+            padding: 28,
+            alignItems: 'center',
+            transform: [{ scale }],
+          }, shadow as any]}>
             <View style={{
               width: 80, height: 80, borderRadius: 40,
               backgroundColor: `${accent}1a`,
@@ -217,40 +244,28 @@ export function PromotionModal({ event, onClose }: Props) {
             }}>
               <Trophy size={42} color={accent} weight="fill" />
             </View>
-          )}
-
-          <AppText style={{ fontSize: 24, fontWeight: '900', color: '#16153A', marginBottom: 8, textAlign: 'center' }}>
-            {title}
-          </AppText>
-
-          <AppText style={{ fontSize: 15, fontWeight: '500', color: '#5A5878', textAlign: 'center', lineHeight: 22, marginBottom: 24 }}>
-            {subtitle}
-          </AppText>
-
-          <TouchableOpacity
-            onPress={onClose}
-            activeOpacity={0.85}
-            style={{
-              backgroundColor: accent,
-              borderRadius: 14,
-              paddingVertical: 14,
-              paddingHorizontal: 24,
-              flexDirection: 'row',
-              alignItems: 'center',
-              gap: 8,
-              width: '100%',
-              justifyContent: 'center',
-            }}>
-            <AppText style={{ color: '#FFFFFF', fontSize: 15, fontWeight: '800' }}>
-              {cta}
+            <AppText style={{ fontSize: 24, fontWeight: '900', color: '#16153A', marginBottom: 8, textAlign: 'center' }}>
+              {title}
             </AppText>
-            <ArrowRight size={16} color="#FFFFFF" weight="bold" />
-          </TouchableOpacity>
+            <AppText style={{ fontSize: 15, fontWeight: '500', color: '#5A5878', textAlign: 'center', lineHeight: 22, marginBottom: 24 }}>
+              {subtitle}
+            </AppText>
+            <TouchableOpacity
+              onPress={onClose}
+              activeOpacity={0.85}
+              style={{
+                backgroundColor: accent, borderRadius: 14,
+                paddingVertical: 14, paddingHorizontal: 24,
+                flexDirection: 'row', alignItems: 'center', gap: 8,
+                width: '100%', justifyContent: 'center',
+              }}>
+              <AppText style={{ color: '#FFFFFF', fontSize: 15, fontWeight: '800' }}>{cta}</AppText>
+              <ArrowRight size={16} color="#FFFFFF" weight="bold" />
+            </TouchableOpacity>
+          </Animated.View>
+          <Confetti />
         </Animated.View>
-        {/* Confetti POR CIMA do card (renderiza last → topo do z-order).
-            pointerEvents='none' garante que toques passam pro botao Continue. */}
-        <Confetti />
-      </Animated.View>
+      )}
     </Modal>
   );
 }
