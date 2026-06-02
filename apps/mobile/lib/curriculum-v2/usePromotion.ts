@@ -39,6 +39,7 @@ export interface PromotionEvent {
 export function usePromotion() {
   const { profile, refreshProfile } = useAuth();
   const [event,   setEvent]   = useState<PromotionEvent | null>(null);
+  const [isChecking, setIsChecking] = useState(false);
   const checking              = useRef(false);
   const checkedForCurrent     = useRef<string | null>(null);
 
@@ -52,6 +53,7 @@ export function usePromotion() {
     const key = `${userId}:${currentLevel}`;
     if (checkedForCurrent.current === key) return;
     checking.current = true;
+    setIsChecking(true);
     try {
       // 1. Nivel precisa estar fechado (22 modulos compilados)
       const modules = listModules(currentLevel);
@@ -91,6 +93,7 @@ export function usePromotion() {
       await refreshProfile();
     } finally {
       checking.current = false;
+      setIsChecking(false);
     }
   }
 
@@ -101,5 +104,5 @@ export function usePromotion() {
 
   function ack() { setEvent(null); }
 
-  return { event, ack, checkAndPromote };
+  return { event, isChecking, ack, checkAndPromote };
 }

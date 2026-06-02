@@ -95,7 +95,7 @@ export default function HomeTab() {
   const level     = selectedLevel;
 
   // Promocao organica: checa apos cada focus da home.
-  const { event: promotionEvent, ack: ackPromotion, checkAndPromote } = usePromotion();
+  const { event: promotionEvent, isChecking: isCheckingPromotion, ack: ackPromotion, checkAndPromote } = usePromotion();
   useFocusEffect(useCallback(() => { checkAndPromote(); }, [checkAndPromote]));
   const name      = profile?.name ?? profile?.email?.split('@')[0] ?? 'Student';
   const isPt      = level === 'Novice';
@@ -506,6 +506,18 @@ export default function HomeTab() {
       />
 
       <PromotionModal event={promotionEvent} onClose={ackPromotion} />
+
+      {/* Overlay enquanto checa promocao — evita tela em branco entre o
+          aluno terminar a ultima atividade e o modal aparecer (~1-2s). */}
+      {isCheckingPromotion && !promotionEvent && (
+        <View pointerEvents="none" style={{
+          position: 'absolute', top: 0, left: 0, right: 0, bottom: 0,
+          backgroundColor: 'rgba(244,243,250,0.85)',
+          alignItems: 'center', justifyContent: 'center',
+        }}>
+          <ActivityIndicator size="large" color="#7C3AED" />
+        </View>
+      )}
 
     </View>
   );

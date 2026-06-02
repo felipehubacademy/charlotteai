@@ -154,27 +154,40 @@ export function PromotionModal({ event, onClose }: Props) {
     return () => { try { sub.remove(); } catch {} };
   }, [useVideo, videoPlayer, autoClose]);
 
+  // Trigger UMA vez por evento (estavel — refs nao precisam estar nas deps).
+  // Antes inclui useVideo + videoPlayer nas deps, mas videoPlayer pode
+  // recriar em re-render, re-executando play() ou interrompendo audio.
+  const triggeredForEvent = useRef<string | null>(null);
   useEffect(() => {
-    if (event) {
-      scale.setValue(0.92); fade.setValue(0);
-      Animated.parallel([
-        Animated.spring(scale, { toValue: 1, useNativeDriver: true, friction: 7, tension: 60 }),
-        Animated.timing(fade, { toValue: 1, duration: 220, useNativeDriver: true }),
-      ]).start();
-      // SFX level_promotion como BG ambiente da fala da Charlotte (vol baixo).
-      // Sem video (fallback Trophy), SFX toca em vol 1.0 normal.
-      soundEngine.play('level_promotion', { volume: useVideo ? 0.25 : 1.0 }).catch(() => {});
-      // Auto-play video assim que monta
-      if (useVideo) {
-        try { videoPlayer.play(); } catch {}
-      }
-      Haptics.notificationAsync(Haptics.NotificationFeedbackType.Success).catch(() => {});
-      const t = setTimeout(() => {
-        Haptics.impactAsync(Haptics.ImpactFeedbackStyle.Heavy).catch(() => {});
-      }, 350);
-      return () => clearTimeout(t);
+    if (!event) return;
+    const key = `${event.fromLevel}->${event.toLevel}`;
+    if (triggeredForEvent.current === key) return;
+    triggeredForEvent.current = key;
+
+    scale.setValue(0.92); fade.setValue(0);
+    Animated.parallel([
+      Animated.spring(scale, { toValue: 1, useNativeDriver: true, friction: 7, tension: 60 }),
+      Animated.timing(fade, { toValue: 1, duration: 220, useNativeDriver: true }),
+    ]).start();
+
+    // SFX so toca quando NAO ha video (video ja tem narracao emocional
+    // propria). SFX em paralelo competia pela sessao de audio e causava
+    // freeze no meio da playback (reportado pelo user 2026-06-01).
+    if (!useVideo) {
+      soundEngine.play('level_promotion', { volume: 1.0 }).catch(() => {});
     }
-  }, [event, scale, fade, useVideo, videoPlayer]);
+
+    if (useVideo) {
+      try { videoPlayer.play(); } catch {}
+    }
+    Haptics.notificationAsync(Haptics.NotificationFeedbackType.Success).catch(() => {});
+    const t = setTimeout(() => {
+      Haptics.impactAsync(Haptics.ImpactFeedbackStyle.Heavy).catch(() => {});
+    }, 350);
+    return () => clearTimeout(t);
+    // Deps minima: so o evento. Outras vars sao refs ou derivadas estaveis.
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [event]);
 
   if (!event) return null;
   const isPt   = event.toLevel === 'Inter'; // Inter ainda pode ser PT-explanation usuario; melhor pivot por toLevel
