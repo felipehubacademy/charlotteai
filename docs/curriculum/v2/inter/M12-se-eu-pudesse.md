@@ -42,10 +42,10 @@
    **Answer**: were
    **Explanation**: In formal/correct second conditional, "were" is used for ALL persons (I, he, she, it, we, you, they). "Were" is the subjunctive form. "Was" is acceptable in informal speech, but "were" is the standard.
 
-4. **word_bank** — "I _____ help you if I _____ here."
-   **Choices**: would / were / will / am / would / were
-   **Answer**: would / were
-   **Explanation**: "I would help you if I were here" — "would" in the main clause, "were" in the if-clause (even with "I").
+4. **word_bank** — "I _____ help you if I were here."
+   **Choices**: would / will / am / could be
+   **Answer**: would
+   **Explanation**: The main clause of the second conditional uses "would + base form". "I would help you" — the if-clause has the past form "were".
 
 5. **fill_gap** — "If I _____ you, I would accept the offer."
    **Hint**: "were" para hipóteses (subjuntivo)
@@ -57,10 +57,10 @@
    **Answer**: had
    **Explanation**: "If she had a car" — past simple "had" signaling a hypothetical present situation (she doesn't have a car now, but if she did...).
 
-7. **fill_gap** — "If we _____ the lottery, what _____ we _____?"
-   **Hint**: past simple "win" / would + base "do"
-   **Answer**: won / would / do
-   **Explanation**: "If we won, what would we do?" — past simple "won" + "would + base do" in the question.
+7. **fill_gap** — "If we _____ the lottery, what would we do?"
+   **Hint**: past simple de "win"
+   **Answer**: won
+   **Explanation**: "If we won" — past simple "won" in the if-clause signals a hypothetical present. The main clause keeps "would + base form".
 
 8. **fix_error** — "If I will have time, I would learn piano."
    **Hint**: Após "if", past simple — nunca "will" em second conditional
@@ -542,20 +542,20 @@
    **Answer**: had
    **Explanation**: After "if" in second conditional, always past simple. "Had a million" — hypothetical situation.
 
-5. **fill_gap** — "What _____ you do if you _____ in my position?"
-   **Hint**: would (principal) + were (subjuntivo)
-   **Answer**: would / were
-   **Explanation**: "Would you do" + "if you were" — hypothetical question with "were" for the hypothesis.
+5. **fill_gap** — "What would you do if you _____ in my position?"
+   **Hint**: subjuntivo "were" para hipótese
+   **Answer**: were
+   **Explanation**: "If you were in my position" — hypothetical scenario uses "were" (subjunctive) in the if-clause.
 
-6. **fill_gap** — "_____ you change jobs if you _____ the chance?"
-   **Hint**: would / had
-   **Answer**: Would / had
-   **Explanation**: "Would you change... if you had the chance?" — yes/no second-conditional question.
+6. **fill_gap** — "Would you change jobs if you _____ the chance?"
+   **Hint**: past simple "have"
+   **Answer**: had
+   **Explanation**: "If you had the chance" — past simple in the if-clause of a hypothetical question.
 
-7. **fill_gap** — "Where _____ you go if you _____ a free week?"
-   **Hint**: would / had
-   **Answer**: would / had
-   **Explanation**: "Where would you go if you had a free week?" — WH + would + if + past simple.
+7. **fill_gap** — "Where would you go if you _____ a free week?"
+   **Hint**: past simple "have"
+   **Answer**: had
+   **Explanation**: "If you had a free week" — past simple "had" signals a hypothetical present in the if-clause.
 
 8. **fix_error** — "What will you do if you won the lottery?"
    **Hint**: Para hipóteses, use "would", não "will"
@@ -697,30 +697,30 @@
    **Answer**: could
    **Explanation**: "I wish I could" for ability.
 
-3. **word_bank** — "If I _____ you, I _____ accept the offer."
-   **Choices**: were / would / was / would / am / will / were / will
-   **Answer**: were / would
-   **Explanation**: "If I were you, I would accept" — fixed advice chunk.
+3. **word_bank** — "If I were you, I _____ accept the offer."
+   **Choices**: would / will / could be / should have
+   **Answer**: would
+   **Explanation**: "If I were you, I would accept" — fixed advice chunk. Main clause uses "would + base form".
 
-4. **word_bank** — "What _____ you do if you _____ in my position?"
-   **Choices**: would / were / will / are / would / will / would / was
-   **Answer**: would / were
-   **Explanation**: "Would you do if you were" — hypothetical question with "were".
+4. **word_bank** — "What would you do if you _____ in my position?"
+   **Choices**: were / are / will be / would be
+   **Answer**: were
+   **Explanation**: "If you were in my position" — hypothetical scenario uses "were" (subjunctive) for all persons.
 
 5. **fill_gap** — "I wish I _____ more time to relax."
    **Hint**: past simple "have"
    **Answer**: had
    **Explanation**: "Wish I had" — present wish about time.
 
-6. **fill_gap** — "If she _____ closer, we _____ see each other often."
-   **Hint**: past simple "live" + would + base "see"
-   **Answer**: lived / would
-   **Explanation**: "If she lived closer, we would see each other" — standard second conditional.
+6. **fill_gap** — "If she _____ closer, we would see each other often."
+   **Hint**: past simple "live" 3ª pessoa
+   **Answer**: lived
+   **Explanation**: "If she lived closer" — past simple in the if-clause of the second conditional, signaling a hypothetical present.
 
-7. **fill_gap** — "_____ you change anything if you _____ go back in time?"
-   **Hint**: Would / could
-   **Answer**: Would / could
-   **Explanation**: "Would you change... if you could go back?" — question with "could" for ability.
+7. **fill_gap** — "Would you change anything if you _____ go back in time?"
+   **Hint**: past de "can" (habilidade hipotética)
+   **Answer**: could
+   **Explanation**: "If you could go back" — "could" expresses hypothetical ability inside the if-clause.
 
 8. **fix_error** — "If I will have time, I would learn Spanish."
    **Hint**: Second conditional não usa "will"

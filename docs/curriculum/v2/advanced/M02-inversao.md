@@ -176,15 +176,15 @@
    **Answer**: had I sat
    **Explanation**: "Hardly + had + subject + past participle + when + past simple". Two near-simultaneous past events: I'd just sat down, and immediately the phone rang. "When" links the second clause.
 
-2. **multiple_choice** — "No sooner _____ the project _____ the deadline changed."
-   **Options**: had we finished / than / did we finish / when / had we finished / when / did we finish / than
-   **Answer**: had we finished / than
-   **Explanation**: "No sooner + had + subject + past participle + than + past simple". Note "THAN" not "when" — that's the trap. "No sooner had we finished than the deadline changed."
+2. **multiple_choice** — "No sooner had we finished the project _____ the deadline changed."
+   **Options**: than / when / that / and
+   **Answer**: than
+   **Explanation**: "No sooner + had + subject + past participle + than + past simple". Note "THAN" not "when" — that's the trap.
 
-3. **fill_gap** — "Scarcely _____ I _____ the door when the rain started."
-   **Hint**: had / past participle of "shut"
-   **Answer**: had / shut
-   **Explanation**: "Scarcely had I shut the door when..." — same pattern as "Hardly". Past perfect + when + past simple. Slight literary register.
+3. **fill_gap** — "Scarcely had I _____ the door when the rain started."
+   **Hint**: particípio passado de "shut"
+   **Answer**: shut
+   **Explanation**: "Scarcely had I shut the door when..." — past perfect after the inversion. "Shut" is irregular: shut/shut/shut.
 
 4. **fix_error** — "Hardly I had sat down when the phone rang."
    **Hint**: Inversion required after "Hardly"
@@ -321,10 +321,10 @@
    **Answer**: did I understand
    **Explanation**: "Not until + clause + did + subject + base". The fronted "not until" inverts the main clause that follows. Past simple realisation triggered by past simple cue.
 
-3. **fill_gap** — "Not only _____ he _____ on time, but he also brought everyone coffee."
-   **Hint**: "did" (past) / "arrive"
-   **Answer**: did / arrive
-   **Explanation**: "Not only did he arrive" — past, so "did + subject + base". Followed by "but he also + verb" — no inversion in the second clause.
+3. **fill_gap** — "Not only _____ he arrive on time, but he also brought everyone coffee."
+   **Hint**: auxiliar de inversão no past simple
+   **Answer**: did
+   **Explanation**: "Not only did he arrive" — past, so "did + subject + base". The fronted "not only" forces subject-auxiliary inversion.
 
 4. **fix_error** — "Not only she sings, but she also writes her own songs."
    **Hint**: "Not only" demands inversion
@@ -456,15 +456,15 @@
    **Answer**: did I understand
    **Explanation**: "Only after + clause + did + subject + base". The cue clause ("after the meeting") triggers inversion in the main clause. Dramatises the delay.
 
-2. **multiple_choice** — "Only by working together _____ we _____ this on time."
-   **Options**: will / finish / can / finish / would / finished / are / finishing
-   **Answer**: will / finish
-   **Explanation**: "Only by + -ing + will + subject + base". The "only by" prepositional phrase fronts and inverts. Indicates the sole pathway to a future outcome.
+2. **multiple_choice** — "Only by working together _____ we finish this on time."
+   **Options**: will / can / would / are
+   **Answer**: will
+   **Explanation**: "Only by + -ing + will + subject + base". The fronted "only by" phrase forces inversion and signals the sole future pathway to the outcome.
 
-3. **fill_gap** — "Little _____ he _____ that the offer was about to be withdrawn."
-   **Hint**: "did" / past simple base "know"
-   **Answer**: did / know
-   **Explanation**: "Little did he know" — classic dramatic irony opener. "Little + did/does + subject + base" expresses unawareness of something soon revealed. "Little did I realise/imagine" follows the same pattern.
+3. **fill_gap** — "Little _____ he know that the offer was about to be withdrawn."
+   **Hint**: auxiliar de inversão no past simple
+   **Answer**: did
+   **Explanation**: "Little did he know" — classic dramatic irony opener. "Little + did + subject + base" expresses unawareness of something soon revealed.
 
 4. **fix_error** — "Only when I left home, I realised how much I missed it."
    **Hint**: "Only when + clause" requires inversion in main
@@ -601,10 +601,10 @@
    **Answer**: must you open
    **Explanation**: "On no account + must + subject + base". Strong prohibition. Note the structure persists: fronted negative phrase, then auxiliary, then subject.
 
-3. **fill_gap** — "At no time _____ the company _____ that policy."
-   **Hint**: "did" or "has" / "endorse/endorsed"
-   **Answer**: did / endorse
-   **Explanation**: "At no time did the company endorse..." — past inversion. Also acceptable: "At no time has the company endorsed..." for present perfect denial. Both register formal disavowal.
+3. **fill_gap** — "At no time _____ the company endorse that policy."
+   **Hint**: auxiliar de inversão no past simple
+   **Answer**: did
+   **Explanation**: "At no time did the company endorse..." — past inversion. The fronted negative phrase "at no time" forces "did + subject + base", a formal disavowal.
 
 4. **fix_error** — "In no way she meant to offend you."
    **Hint**: "In no way" fronted requires inversion

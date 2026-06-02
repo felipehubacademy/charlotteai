@@ -57,10 +57,10 @@
    **Answer**: would
    **Explanation**: "He would have come" — would + have + come. Full structure of the main clause.
 
-7. **fill_gap** — "If they _____ asked, I _____ have helped."
-   **Hint**: had asked / would
-   **Answer**: had / would
-   **Explanation**: "If they had asked, I would have helped" — past perfect + would have + past participle.
+7. **fill_gap** — "If they _____ asked, I would have helped."
+   **Hint**: past perfect auxiliar (3rd conditional)
+   **Answer**: had
+   **Explanation**: "If they had asked" — past perfect in the if-clause of the third conditional. The main clause keeps "would have + past participle".
 
 8. **fix_error** — "If I would have known, I would have helped."
    **Hint**: "Would" não vai na cláusula "if" — só past perfect
@@ -367,30 +367,30 @@
    **Answer**: Would
    **Explanation**: "Would + subject + have + past participle + if + past perfect?". "Would you have helped?" — yes/no third-conditional question.
 
-3. **word_bank** — "Where _____ you have gone if you _____ had the money?"
-   **Choices**: would / will / had / have / would / will / would / did
-   **Answer**: would / had
-   **Explanation**: "Would you have gone... if you had had..." — WH + would have + past participle + if + past perfect.
+3. **word_bank** — "Where would you have gone if you _____ had the money?"
+   **Choices**: had / have / would / did
+   **Answer**: had
+   **Explanation**: "If you had had the money" — past perfect auxiliary "had" in the if-clause of the third conditional.
 
-4. **word_bank** — "If you _____ been there, what _____ you have said?"
+4. **word_bank** — "If you _____ been there, what would you have said?"
    **Choices**: had / have / would / will
    **Answer**: had
-   **Explanation**: "If you had been" — past perfect in the if-clause. "What would you have said?" in the main clause.
+   **Explanation**: "If you had been there" — past perfect "had been" in the if-clause of the third conditional.
 
-5. **fill_gap** — "What _____ you have done if you _____ been in my place?"
-   **Hint**: would / had
-   **Answer**: would / had
-   **Explanation**: "What would you have done if you had been..." — question with past perfect in the if-clause.
+5. **fill_gap** — "What would you have done if you _____ been in my place?"
+   **Hint**: past perfect auxiliar
+   **Answer**: had
+   **Explanation**: "If you had been in my place" — past perfect in the if-clause for a hypothetical past situation.
 
-6. **fill_gap** — "_____ she have called you if she _____ known your number?"
-   **Hint**: Would / had
-   **Answer**: Would / had
-   **Explanation**: "Would she have called you if she had known?" — yes/no third-conditional question.
+6. **fill_gap** — "Would she have called you if she _____ known your number?"
+   **Hint**: past perfect auxiliar
+   **Answer**: had
+   **Explanation**: "If she had known your number" — past perfect in the if-clause of a yes/no third-conditional question.
 
-7. **fill_gap** — "How _____ you have reacted if it _____ happened to you?"
-   **Hint**: would / had
-   **Answer**: would / had
-   **Explanation**: "How would you have reacted if it had happened?" — question with "how" + past perfect.
+7. **fill_gap** — "How would you have reacted if it _____ happened to you?"
+   **Hint**: past perfect auxiliar
+   **Answer**: had
+   **Explanation**: "If it had happened to you" — past perfect "had + past participle" in the if-clause.
 
 8. **fix_error** — "What you would have done if you had known?"
    **Hint**: Inversão em pergunta — "would" antes do sujeito
@@ -522,40 +522,40 @@
 
 ### 1. Grammar (10 exercises)
 
-1. **multiple_choice** — "If the driver _____ braked in time, the accident _____ happened."
-   **Options**: hadn't / would have / had / wouldn't have / hadn't / wouldn't have / had / would have
-   **Answer**: hadn't / wouldn't have
-   **Explanation**: Third conditional negativo. "Hadn't braked" (não freou) + "wouldn't have happened" (não teria acontecido).
+1. **multiple_choice** — "If the driver had braked in time, the accident _____ happened."
+   **Options**: wouldn't have / would have / hadn't / didn't
+   **Answer**: wouldn't have
+   **Explanation**: Third conditional negative result. "Wouldn't have happened" — main clause uses "wouldn't have + past participle" for an outcome that DIDN'T occur.
 
-2. **multiple_choice** — "Nothing _____ wrong if we _____ followed the plan."
-   **Options**: would have gone / had / will go / has / would have gone / would have / would go / had
-   **Answer**: would have gone / had
-   **Explanation**: "Nothing would have gone wrong" + "if we had followed". Pronome indefinido ("nothing") + third conditional negativo enfático.
+2. **multiple_choice** — "Nothing _____ wrong if we had followed the plan."
+   **Options**: would have gone / would go / had gone / will go
+   **Answer**: would have gone
+   **Explanation**: "Nothing would have gone wrong" — main clause of third conditional with indefinite subject. Past participle "gone" after "would have".
 
-3. **word_bank** — "If I _____ missed the bus, I _____ met her, and we _____ together."
-   **Choices**: hadn't / would never have / wouldn't be / would have / have / will / hadn't / would never have / wouldn't have ended up
-   **Answer**: hadn't / would never have / wouldn't have ended up
-   **Explanation**: Encadeamento de três cláusulas no third conditional — uma ação leva à próxima. "Hadn't missed... would never have met... wouldn't have ended up together".
+3. **word_bank** — "If I hadn't missed the bus, I _____ her."
+   **Choices**: would never have met / would never met / hadn't met / wouldn't meet
+   **Answer**: would never have met
+   **Explanation**: Third conditional with "never" between "would" and "have". A close-call narrative — missing the bus led to meeting her.
 
-4. **word_bank** — "She _____ found the job if her friend _____ shared the link, and she _____ moved abroad."
-   **Choices**: wouldn't have / hadn't / would have / has / wouldn't have / hadn't / wouldn't have / had
-   **Answer**: wouldn't have / hadn't / wouldn't have
-   **Explanation**: Cadeia de três third conditionals: "wouldn't have found... hadn't shared... wouldn't have moved".
+4. **word_bank** — "She wouldn't have found the job if her friend _____ the link."
+   **Choices**: hadn't shared / didn't share / wouldn't share / hasn't shared
+   **Answer**: hadn't shared
+   **Explanation**: If-clause of the third conditional uses past perfect: "hadn't shared" — the friend's action made the job possible.
 
-5. **fill_gap** — "If I _____ taken that flight, I _____ been in the storm."
-   **Hint**: past perfect "had + past participle" / would have + past participle
-   **Answer**: had / would have
-   **Explanation**: Close call narrativo. "If I had taken... I would have been". Quase aconteceu, mas não.
+5. **fill_gap** — "If I had taken that flight, I _____ been in the storm."
+   **Hint**: would have + past participle (resultado hipotético)
+   **Answer**: would have
+   **Explanation**: Close call narrative. "I would have been in the storm" — main clause of the third conditional. The auxiliary "would have" introduces the hypothetical past result.
 
-6. **fill_gap** — "We _____ have made it if the train _____ been delayed."
-   **Hint**: wouldn't / hadn't
-   **Answer**: wouldn't / hadn't
-   **Explanation**: Third conditional negativo. "We wouldn't have made it if the train hadn't been delayed" — o atraso, paradoxalmente, salvou.
+6. **fill_gap** — "We wouldn't have made it if the train _____ been delayed."
+   **Hint**: past perfect negativo auxiliar
+   **Answer**: hadn't
+   **Explanation**: If-clause needs past perfect negative: "hadn't been delayed". Paradoxically, the delay saved them.
 
-7. **fill_gap** — "Nobody _____ have noticed if she _____ said anything."
-   **Hint**: would / hadn't
-   **Answer**: would / hadn't
-   **Explanation**: "Nobody would have noticed" + "if she hadn't said anything" — emphatic with an indefinite negative subject.
+7. **fill_gap** — "Nobody would have noticed if she _____ said anything."
+   **Hint**: past perfect negativo auxiliar
+   **Answer**: hadn't
+   **Explanation**: "If she hadn't said anything" — past perfect negative in the if-clause. Pairs with "nobody would have noticed" in the main clause.
 
 8. **fix_error** — "If he didn't call me, I wouldn't have known."
    **Hint**: Third conditional precisa de "had + past participle" na cláusula if
@@ -697,15 +697,15 @@
    **Answer**: had
    **Explanation**: "Wish + past perfect" for regret. "I wish I had said no" — I didn't say it, and I regret it.
 
-3. **word_bank** — "If she _____ studied harder, she _____ passed the exam."
-   **Choices**: had / would have / has / will / had / would / would / will have
-   **Answer**: had / would have
-   **Explanation**: Pure third conditional. "Had studied" + "would have passed" — hypothetical past.
+3. **word_bank** — "If she _____ studied harder, she would have passed the exam."
+   **Choices**: had / has / would have / did
+   **Answer**: had
+   **Explanation**: Past perfect "had studied" in the if-clause of the third conditional. The main clause keeps "would have + past participle".
 
-4. **word_bank** — "What _____ you have done if you _____ been there?"
-   **Choices**: would / had / will / are / would / will / would / was
-   **Answer**: would / had
-   **Explanation**: Third-conditional question. "Would you have done if you had been there?".
+4. **word_bank** — "What would you have done if you _____ been there?"
+   **Choices**: had / have / would / were
+   **Answer**: had
+   **Explanation**: Third-conditional question. "If you had been there" — past perfect in the if-clause.
 
 5. **fill_gap** — "We wouldn't have missed the train if we _____ left earlier."
    **Hint**: past perfect "had + past participle"
@@ -717,10 +717,10 @@
    **Answer**: had
    **Explanation**: "If only I had listened" — exclamation of regret.
 
-7. **fill_gap** — "Nothing _____ have gone wrong if we _____ followed the plan."
-   **Hint**: would / had
-   **Answer**: would / had
-   **Explanation**: Emphatic negative third conditional. "Nothing would have gone wrong" + "if we had followed" — typical close-call chaining.
+7. **fill_gap** — "Nothing would have gone wrong if we _____ followed the plan."
+   **Hint**: past perfect auxiliar
+   **Answer**: had
+   **Explanation**: Emphatic negative third conditional. "If we had followed the plan" — past perfect in the if-clause completes the regret narrative.
 
 8. **fix_error** — "If I would have known, I would have helped."
    **Hint**: "Would" nunca vai na cláusula if

@@ -65,12 +65,8 @@ class VoiceSFXEngine {
       const source = BUNDLED[id];
       if (!source) return false;
 
-      await setAudioModeAsync({
-        allowsRecording: false,
-        playsInSilentMode: true,
-        interruptionMode: 'mixWithOthers',
-      }).catch(() => {});
-
+      // NAO mudamos interruptionMode aqui (mesma razao do soundEngine):
+      // o SFX deve herdar o modo do screen, nao forcar mixWithOthers global.
       const player = createAudioPlayer(source);
       player.play();
       this.lastPlayedAt = now;

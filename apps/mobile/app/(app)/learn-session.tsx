@@ -310,11 +310,14 @@ export default function LearnSessionScreen() {
   // (Tier 4 — voiceSFX dispara em 3/5/10 acertos seguidos)
   useEffect(() => { soundEngine.resetStreak(); }, []);
 
-  // Pausar Spotify/outros apps de audio enquanto a licao toca Charlotte.
-  // soundEngine deixa a sessao em 'mixWithOthers' apos qualquer SFX — sem isso
-  // a musica continua tocando junto da voz da Charlotte na L&S.
+  // Pausar Spotify/outros apps de audio enquanto a licao toca. Modelo
+  // Duolingo: ao entrar em exercicio, foco total — qualquer musica externa
+  // pausa. Ao sair, libera (volta a poder mixar).
   useEffect(() => {
     setAudioModeAsync({ playsInSilentMode: true, interruptionMode: 'doNotMix' }).catch(() => {});
+    return () => {
+      setAudioModeAsync({ playsInSilentMode: true, interruptionMode: 'mixWithOthers' }).catch(() => {});
+    };
   }, []);
 
   // Loop de pulso do mic ring durante gravacao

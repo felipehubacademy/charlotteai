@@ -28,15 +28,15 @@
 
 ### 1. Grammar (10 exercises)
 
-1. **multiple_choice** — "My brother is _____ tall _____ my father."
-   **Options**: as / as / so / as / more / than
-   **Answer**: as / as
-   **Explanation**: For equality, use "as + adjective + as": "as tall as". Note that "so...as" is archaic in affirmative sentences — only "as...as" works in modern English.
+1. **multiple_choice** — "My brother is as tall _____ my father."
+   **Options**: as / than / like / so
+   **Answer**: as
+   **Explanation**: For equality, use "as + adjective + as": "as tall as". The second "as" closes the equality comparison — "than" and "like" don't fit this structure.
 
-2. **multiple_choice** — "This coffee is _____ strong _____ the one I had yesterday."
-   **Options**: as / as / so / as / very / as
-   **Answer**: as / as
-   **Explanation**: "As strong as" — direct equality comparison. Works with any descriptive adjective (strong, fast, easy, expensive).
+2. **multiple_choice** — "This coffee is _____ strong as the one I had yesterday."
+   **Options**: as / so / very / more
+   **Answer**: as
+   **Explanation**: "As strong as" — direct equality comparison. The first "as" opens the equality structure. "So...as" is archaic in affirmatives.
 
 3. **word_bank** — "It's _____ in São Paulo today."
    **Choices**: as hot as Rio / as hot than Rio / so hot as Rio / hotter as Rio
@@ -48,20 +48,20 @@
    **Answer**: as fast as
    **Explanation**: Equality comparison between two objects. "As fast as" is the standard form.
 
-5. **fill_gap** — "She runs _____ fast _____ her older brother."
-   **Hint**: estrutura de igualdade
-   **Answer**: as / as
-   **Explanation**: "As fast as" — equality of speed between two people. Both "as" are required.
+5. **fill_gap** — "She runs as fast _____ her older brother."
+   **Hint**: fecha a estrutura de igualdade
+   **Answer**: as
+   **Explanation**: "As fast as" — equality of speed between two people. The second "as" closes the comparison.
 
-6. **fill_gap** — "The exam was _____ difficult _____ I expected."
-   **Hint**: estrutura de igualdade comparando expectativa
-   **Answer**: as / as
-   **Explanation**: "As difficult as I expected" — confirming expectation. Common with expectation verbs (expected, thought, imagined).
+6. **fill_gap** — "The exam was _____ difficult as I expected."
+   **Hint**: abre a estrutura de igualdade
+   **Answer**: as
+   **Explanation**: "As difficult as I expected" — the first "as" opens the equality structure with expectation verbs.
 
-7. **fill_gap** — "He works _____ hard _____ anyone in the office."
-   **Hint**: igualdade absoluta (= ninguém trabalha mais)
-   **Answer**: as / as
-   **Explanation**: "As hard as anyone" — used to highlight a maximum. "Anyone" implies no one surpasses it.
+7. **fill_gap** — "He works as hard _____ anyone in the office."
+   **Hint**: fecha o paralelo de igualdade
+   **Answer**: as
+   **Explanation**: "As hard as anyone" — used to highlight a maximum. The second "as" closes the structure.
 
 8. **fix_error** — "She's so beautiful as her sister."
    **Hint**: For equality in modern English, use as...as (not so...as)
@@ -193,10 +193,10 @@
 
 ### 1. Grammar (10 exercises)
 
-1. **multiple_choice** — "Today isn't _____ hot _____ yesterday."
-   **Options**: so / than / as / as / very / as
-   **Answer**: as / as
-   **Explanation**: "Not as + adj + as" = less than. Equivalent to "less hot than" but more natural in speech. Both "as" are still required.
+1. **multiple_choice** — "Today isn't as hot _____ yesterday."
+   **Options**: as / than / so / like
+   **Answer**: as
+   **Explanation**: "Not as + adj + as" = less than. The second "as" closes the comparison even in the negative form.
 
 2. **multiple_choice** — "My new job _____ as stressful as the old one."
    **Options**: isn't / isn't no / not is / no isn't
@@ -213,15 +213,15 @@
    **Answer**: isn't
    **Explanation**: Negation of "to be": "isn't" before "as tall as".
 
-5. **fill_gap** — "The movie wasn't _____ exciting _____ the book."
-   **Hint**: estrutura "not as...as" com adjetivo
-   **Answer**: as / as
-   **Explanation**: "Not as exciting as" — common in film-adaptation comparisons. The movie is less enjoyable than the book.
+5. **fill_gap** — "The movie wasn't as exciting _____ the book."
+   **Hint**: fecha o "not as...as"
+   **Answer**: as
+   **Explanation**: "Not as exciting as" — common in film-adaptation comparisons. The second "as" closes the negative comparison.
 
-6. **fill_gap** — "I'm not _____ patient _____ my mother."
-   **Hint**: comparativo negativo
-   **Answer**: as / as
-   **Explanation**: "Not as patient as" — admitting a lesser quality in oneself. A common way to indirectly compliment someone else.
+6. **fill_gap** — "I'm not _____ patient as my mother."
+   **Hint**: abre o comparativo negativo
+   **Answer**: as
+   **Explanation**: "Not as patient as" — admitting a lesser quality in oneself. The first "as" opens the negative comparison.
 
 7. **fill_gap** — "This restaurant _____ as expensive as the one downtown."
    **Hint**: negação de to be 3ª pessoa
@@ -358,15 +358,15 @@
 
 ### 1. Grammar (10 exercises)
 
-1. **multiple_choice** — "He's _____ as fast _____ I am."
-   **Options**: twice / as / two times / as / second / as
-   **Answer**: twice / as
+1. **multiple_choice** — "He's _____ as fast as I am."
+   **Options**: twice / two times / second / double
+   **Answer**: twice
    **Explanation**: "Twice as + adj + as" = 2x more. "Twice" is the idiomatic choice over "two times" in comparisons.
 
-2. **multiple_choice** — "This trip costs _____ as much _____ the last one."
-   **Options**: three times / as / three / times / triple / as
-   **Answer**: three times / as
-   **Explanation**: From 3x onward, use "three/four/five times as + adj + as". "Twice" is the exception ("two times" isn't used in comparisons).
+2. **multiple_choice** — "This trip costs _____ as much as the last one."
+   **Options**: three times / three / triple / thrice
+   **Answer**: three times
+   **Explanation**: From 3x onward, use "three/four/five times as + adj + as". "Triple" and bare "three" don't fit this structure.
 
 3. **word_bank** — "She earns _____ I do."
    **Choices**: twice as much as / twice more than / twice as much than / two times as much as
@@ -378,21 +378,20 @@
    **Answer**: twice as many
    **Explanation**: "Twice as many" for countables (guests, people, books). "Twice as much" for uncountables (money, time, water).
 
-5. **fill_gap** — "He works _____ as hard _____ his colleague."
-   **Hint**: 2x intensificador + estrutura as...as
-   **Answer**: twice / as
-   **Explanation**: "Twice as hard as" — doubled effort. "Twice" always before "as".
+5. **fill_gap** — "He works _____ as hard as his colleague."
+   **Hint**: 2x intensificador
+   **Answer**: twice
+   **Explanation**: "Twice as hard as" — doubled effort. "Twice" always comes before the first "as".
 
-6. **fill_gap** — "This apartment is _____ times as expensive _____ the other."
-   **Hint**: 3x ou mais
-   **Answer**: three / as
-**Accepts**: four / five
-   **Explanation**: Multipliers of 3+ use "X times as + adj + as".
+6. **fill_gap** — "This apartment is three times as expensive _____ the other."
+   **Hint**: fecha a estrutura multiplicada
+   **Answer**: as
+   **Explanation**: Multipliers of 3+ use "X times as + adj + as" — the second "as" closes the comparison.
 
-7. **fill_gap** — "She spent _____ as much time on this project _____ I did."
+7. **fill_gap** — "She spent _____ as much time on this project as I did."
    **Hint**: 2x (time = uncountable)
-   **Answer**: twice / as
-   **Explanation**: "Twice as much time as" — time is uncountable, so "much".
+   **Answer**: twice
+   **Explanation**: "Twice as much time as" — time is uncountable, so "much". "Twice" opens the multiplier.
 
 8. **fix_error** — "He's two times faster as me."
    **Hint**: Use twice + as + adj + as
@@ -524,10 +523,10 @@
 
 ### 1. Grammar (10 exercises)
 
-1. **multiple_choice** — "_____ more I study, _____ better I understand."
-   **Options**: The / the / A / a / More / better
-   **Answer**: The / the
-   **Explanation**: The parallel structure "the more X, the more Y" requires "the" before both comparatives. It signals simultaneous progression: the more X, the more Y.
+1. **multiple_choice** — "_____ more I study, the better I understand."
+   **Options**: The / A / More / How
+   **Answer**: The
+   **Explanation**: The parallel structure "the more X, the more Y" requires "the" before both comparatives. The first "the" opens the progression.
 
 2. **multiple_choice** — "The harder you work, _____ you achieve."
    **Options**: the more / the better / so much / more
@@ -544,10 +543,10 @@
    **Answer**: the more
    **Explanation**: "The more" works as an adverb modifying the verb "means". The more years, the more importance.
 
-5. **fill_gap** — "_____ harder you practice, _____ better you become."
-   **Hint**: estrutura paralela the + comparativo, the + comparativo
-   **Answer**: The / the
-   **Explanation**: "The harder, the better" — short -er comparatives also follow the parallel pattern. Harder practice = better outcome.
+5. **fill_gap** — "_____ harder you practice, the better you become."
+   **Hint**: abre o paralelo
+   **Answer**: The
+   **Explanation**: "The harder, the better" — short -er comparatives also follow the parallel pattern. The first "The" opens the progression.
 
 6. **fill_gap** — "The sooner you start, _____ sooner you finish."
    **Hint**: completar o paralelo
@@ -689,40 +688,40 @@
 
 ### 1. Grammar (10 exercises)
 
-1. **multiple_choice** — "He's _____ tall _____ his brother — both are 1m80."
-   **Options**: as / as / so / as / more / than
-   **Answer**: as / as
-   **Explanation**: For exact equality, "as + adj + as". The context "both are 1m80" confirms equality.
+1. **multiple_choice** — "He's as tall _____ his brother — both are 1m80."
+   **Options**: as / than / like / so
+   **Answer**: as
+   **Explanation**: For exact equality, "as + adj + as". The context "both are 1m80" confirms equality — second "as" closes the structure.
 
-2. **multiple_choice** — "Today _____ as cold _____ yesterday."
-   **Options**: isn't / as / not / as / no / as
-   **Answer**: isn't / as
-   **Explanation**: "Isn't as cold as" — negative inequality. Negative "to be" + as...as structure.
+2. **multiple_choice** — "Today _____ as cold as yesterday."
+   **Options**: isn't / not / doesn't / no
+   **Answer**: isn't
+   **Explanation**: Negative "to be" + "as...as". "Isn't as cold as" = less cold than. With "to be" the negation is "isn't", never "doesn't".
 
 3. **word_bank** — "She earns _____ I do."
    **Choices**: twice as much as / two times more than / twice more than / twice as much than
    **Answer**: twice as much as
    **Explanation**: Multiplier "twice" + "as much as" (uncountable money). Other forms are incorrect.
 
-4. **word_bank** — "_____ more I practice, _____ better I get."
-   **Choices**: The / the / A / a / More / more / The most / the best
-   **Answer**: The / the
-   **Explanation**: Parallel structure: "The more...the better" — always "the" before the comparatives.
+4. **word_bank** — "_____ more I practice, the better I get."
+   **Choices**: The / A / More / How much
+   **Answer**: The
+   **Explanation**: Parallel structure: "The more...the better" — always "the" before the comparatives. The first opens the progression.
 
 5. **fill_gap** — "It's _____ as easy as it looks."
    **Hint**: negativo para suavizar
    **Answer**: not
    **Explanation**: "Not as easy as it looks" — common phrase to signal real difficulty.
 
-6. **fill_gap** — "This trip cost _____ as much _____ the last one."
+6. **fill_gap** — "This trip cost _____ as much as the last one."
    **Hint**: 3x mais
-   **Answer**: three times / as
-   **Explanation**: "Three times as much as" — multiplier + "as much as".
+   **Answer**: three times
+   **Explanation**: "Three times as much as" — multiplier opens the structure before "as much as".
 
-7. **fill_gap** — "_____ harder you try, _____ more you accomplish."
-   **Hint**: paralelo: o + comparativo, o + comparativo
-   **Answer**: The / the
-   **Explanation**: "The harder, the more" — parallel structure with a short comparative.
+7. **fill_gap** — "_____ harder you try, the more you accomplish."
+   **Hint**: abre o paralelo
+   **Answer**: The
+   **Explanation**: "The harder, the more" — parallel structure with a short comparative. The first "The" opens the progression.
 
 8. **fix_error** — "He's so tall as me."
    **Hint**: inglês moderno usa as...as em afirmativas

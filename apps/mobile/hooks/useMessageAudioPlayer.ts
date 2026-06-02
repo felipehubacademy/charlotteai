@@ -76,18 +76,15 @@ export function useMessageAudioPlayer() {
     subRef.current?.remove();
     subRef.current = null;
 
-    // Ensure speaker output (resets after recording or live voice call) E
-    // pausar musica externa (Spotify etc): soundEngine deixa a sessao em
-    // 'mixWithOthers' apos qualquer SFX — precisamos reasserir 'doNotMix'
-    // toda vez que Charlotte vai falar. AWAIT obrigatorio: trocar categoria
-    // do AVAudioSession durante replace/play causa hiccup que pausa o audio
-    // logo no comeco (e Spotify volta a tocar).
+    // Ensure speaker output (resets after recording or live voice call).
+    // NAO mudamos interruptionMode aqui — o screen mount ja setou doNotMix
+    // e soundEngine nao reverte mais. Mudar mode antes do replace causava
+    // hiccup que cortava o audio no comeco.
     try {
       await setAudioModeAsync({
         allowsRecording: false,
         playsInSilentMode: true,
         shouldRouteThroughEarpiece: false,
-        interruptionMode: 'doNotMix',
       });
     } catch {}
 

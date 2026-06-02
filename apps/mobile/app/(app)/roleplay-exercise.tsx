@@ -78,10 +78,12 @@ export default function RolePlayExerciseScreen() {
   }, [level, moduleId, unitId]);
 
   // Pausar Spotify/outros apps de audio enquanto Charlotte fala no role-play.
-  // soundEngine deixa a sessao em 'mixWithOthers' apos qualquer SFX — sem isso
-  // a musica continua tocando junto da Charlotte.
+  // Modelo Duolingo: foco total durante exercicio, libera ao sair.
   useEffect(() => {
     setAudioModeAsync({ playsInSilentMode: true, interruptionMode: 'doNotMix' }).catch(() => {});
+    return () => {
+      setAudioModeAsync({ playsInSilentMode: true, interruptionMode: 'mixWithOthers' }).catch(() => {});
+    };
   }, []);
 
   // ── Chat state ──────────────────────────────────────────────────

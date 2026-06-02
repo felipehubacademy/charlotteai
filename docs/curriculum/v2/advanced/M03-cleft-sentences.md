@@ -42,10 +42,10 @@
    **Answer**: It was
    **Explanation**: Time emphasis: "It was + time + that + clause". The original "We first met in 2015" gets rebuilt around the year. Use "that" (not "when") in this cleft pattern — "when" would also work in some registers, but "that" is the cleft standard.
 
-3. **fill_gap** — "_____ Mary _____ called me last night, not Jane."
-   **Hint**: "It was" / "who"
-   **Answer**: It was / who
-   **Explanation**: Subject emphasis with contrast. "It was Mary who" splits the original "Mary called me last night" so we can attach the contrast ("not Jane"). Cleft is ideal for correcting mistaken assumptions.
+3. **fill_gap** — "It was Mary _____ called me last night, not Jane."
+   **Hint**: pronome relativo para pessoas
+   **Answer**: who
+   **Explanation**: Subject-emphasis cleft. "It was Mary who" — after "It was + person", use "who" (or "that"), never "which". The cleft contrasts Mary with Jane.
 
 4. **fix_error** — "It was the manager which decided to cancel the project."
    **Hint**: For people, use "who", not "which"
@@ -182,10 +182,10 @@
    **Answer**: What surprised me was
    **Explanation**: "What + clause" sets up an expectation; "was + element" delivers it. Here the element is a noun clause ("how patient she stayed..."), which works fine after a wh-cleft.
 
-3. **fill_gap** — "_____ I did _____ apologise immediately."
-   **Hint**: "What" / "was"
-   **Answer**: What / was
-   **Explanation**: "What I did was apologise immediately." Note: after "what I did was", you can use base form (no "to") — a quirk of this cleft pattern. "What I did was apologise" / "What I did was call him" — base form.
+3. **fill_gap** — "What I did _____ apologise immediately."
+   **Hint**: ligação do cleft no past simple
+   **Answer**: was
+   **Explanation**: "What I did was apologise immediately." After "what I did was", you can use base form (no "to") — a quirk of this cleft pattern.
 
 4. **fix_error** — "What I need is to rest, sleep, eat."
    **Hint**: After "What I need is", you can use bare nouns or a single thing
@@ -322,10 +322,10 @@
    **Answer**: All she did was
    **Explanation**: "All + subject + did + was + base form". Note bare infinitive after "was" — no "to". Emphasises that her response was minimal or restrained.
 
-3. **fill_gap** — "_____ asked _____ a fair chance."
-   **Hint**: "All I" / "for was" or "All he" / "for was"
-   **Answer**: All he / for was
-   **Explanation**: "All he asked for was a fair chance." The cleft holds the modesty of the request — one thing, nothing more.
+3. **fill_gap** — "All he asked _____ was a fair chance."
+   **Hint**: preposição que pede "ask"
+   **Answer**: for
+   **Explanation**: "All he asked for was a fair chance." The "ask for + noun" structure stays intact inside the cleft, which highlights the modesty of the request.
 
 4. **fix_error** — "All I want is to be respect."
    **Hint**: After "All I want is", use a noun or "to + base" form
@@ -452,20 +452,20 @@
 
 ### 1. Grammar (5 exercises)
 
-1. **multiple_choice** — "_____ I left home _____ I understood my parents."
-   **Options**: It wasn't until / that / Not until / when / It was until / when / Until / that
-   **Answer**: It wasn't until / that
-   **Explanation**: "It wasn't until + clause + that + main clause" — the it-cleft form of delayed realisation. Compare to the inversion "Not until I left home did I understand..." (M02). Same idea, different structure.
+1. **multiple_choice** — "It wasn't until I left home _____ I understood my parents."
+   **Options**: that / when / which / and
+   **Answer**: that
+   **Explanation**: "It wasn't until + clause + that + main clause" — the it-cleft form of delayed realisation. "When" feels natural but breaks the cleft pattern.
 
-2. **multiple_choice** — "_____ the second draft _____ the story started working."
-   **Options**: It wasn't until / that / Not until / when / Until that / when / It wasn't when / that
-   **Answer**: It wasn't until / that
-   **Explanation**: Time-clause + it-cleft. "The story started working" was delayed until the second draft — the cleft drama tises the delay.
+2. **multiple_choice** — "_____ the second draft that the story started working."
+   **Options**: It wasn't until / Not until / Until / It wasn't when
+   **Answer**: It wasn't until
+   **Explanation**: It-cleft of delayed result. "It wasn't until + time-clause + that + result" — the structure dramatises the delay until things started working.
 
-3. **fill_gap** — "_____ I _____ the photo _____ I recognised her."
-   **Hint**: "It wasn't until" / past simple "see" / "that"
-   **Answer**: It wasn't until / saw / that
-   **Explanation**: "It wasn't until I saw the photo that I recognised her." Past simple in both clauses — the delay between seeing and recognising is the point.
+3. **fill_gap** — "It wasn't until I saw the photo _____ I recognised her."
+   **Hint**: conector que fecha o cleft
+   **Answer**: that
+   **Explanation**: "It wasn't until I saw the photo that I recognised her." The cleft pattern is strictly "It wasn't until X that Y" — never "when".
 
 4. **fix_error** — "It wasn't until I read the contract when I noticed the clause."
    **Hint**: After "It wasn't until + clause", use "that", not "when"

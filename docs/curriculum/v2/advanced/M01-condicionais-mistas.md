@@ -29,20 +29,20 @@
 
 ### 1. Grammar (5 exercises)
 
-1. **multiple_choice** — "If I _____ medicine, I _____ in a hospital now."
-   **Options**: had studied / would be / studied / will be / had studied / will be / studied / would be
-   **Answer**: had studied / would be
-   **Explanation**: Mixed conditional with past condition affecting present result: "If + past perfect, would + base (now)". Past perfect "had studied" sets up the unrealised past; "would be" describes the alternative present that didn't materialise.
+1. **multiple_choice** — "If I had studied medicine, I _____ in a hospital now."
+   **Options**: would be / would have been / will be / am
+   **Answer**: would be
+   **Explanation**: Mixed conditional with past condition affecting present result. The marker "now" anchors the result in the present, so use "would + base" — not "would have been" (pure third) or "will be" (first).
 
-2. **multiple_choice** — "She _____ exhausted right now if she _____ overtime last night."
-   **Options**: wouldn't be / hadn't worked / wouldn't have been / didn't work / wouldn't be / didn't work / isn't / hadn't worked
-   **Answer**: wouldn't be / hadn't worked
-   **Explanation**: Past cause ("hadn't worked overtime") has a present effect ("wouldn't be exhausted right now"). The time-marker "right now" anchors the result clause in the present, forcing the mixed form rather than full third conditional.
+2. **multiple_choice** — "She wouldn't be exhausted right now if she _____ overtime last night."
+   **Options**: hadn't worked / didn't work / wouldn't have worked / doesn't work
+   **Answer**: hadn't worked
+   **Explanation**: Past cause needs past perfect in the if-clause: "hadn't worked overtime last night". The present effect ("wouldn't be exhausted") signals the mixed form.
 
-3. **fill_gap** — "If we _____ that house in 2010, we _____ enough equity to retire by now."
-   **Hint**: past perfect "buy" / "would have"
-   **Answer**: had bought / would have
-   **Explanation**: "Had bought" — past perfect for the unrealised past decision. "Would have enough equity now" — present consequence. Notice "have" here is a stative present, not "have + past participle".
+3. **fill_gap** — "If we had bought that house in 2010, we _____ enough equity to retire by now."
+   **Hint**: resultado presente: would + base "have"
+   **Answer**: would have
+   **Explanation**: Past cause ("had bought") + present result ("would have enough equity now"). Note: "have" here is the stative present verb, not "have + past participle".
 
 4. **fix_error** — "If I had studied medicine, I would have been a doctor now."
    **Hint**: For a present state, use "would be" — not "would have been"
@@ -169,20 +169,20 @@
 
 ### 1. Grammar (5 exercises)
 
-1. **multiple_choice** — "If she _____ so stubborn, she _____ to a compromise weeks ago."
-   **Options**: weren't / would have agreed / wasn't / agreed / weren't / agreed / wouldn't be / would have agreed
-   **Answer**: weren't / would have agreed
-   **Explanation**: Permanent trait ("weren't so stubborn", a present/general state) explains a past failure ("would have agreed weeks ago"). The mixed reversed form: present condition → past result. Note "weren't" — subjunctive across all persons.
+1. **multiple_choice** — "If she weren't so stubborn, she _____ to a compromise weeks ago."
+   **Options**: would have agreed / would agree / agreed / had agreed
+   **Answer**: would have agreed
+   **Explanation**: Mixed reversed form: present trait ("weren't so stubborn") with a past result ("weeks ago"). Past result requires "would have + past participle".
 
-2. **multiple_choice** — "If I _____ a morning person, I _____ that early meeting yesterday."
-   **Options**: were / would have accepted / was / accepted / were / accepted / would be / would have accepted
-   **Answer**: were / would have accepted
-   **Explanation**: "Were" (present trait, subjunctive) + "would have accepted" (past hypothetical action). The trait explains why the past action didn't happen.
+2. **multiple_choice** — "If I _____ a morning person, I would have accepted that early meeting yesterday."
+   **Options**: were / was / am / had been
+   **Answer**: were
+   **Explanation**: "Were" (subjunctive across all persons) marks a present/ongoing trait in the if-clause. The trait explains why the past action didn't happen.
 
-3. **fill_gap** — "If he _____ less sensitive, he _____ that comment so personally last week."
-   **Hint**: weren't / wouldn't have taken
-   **Answer**: weren't / wouldn't have taken
-   **Explanation**: Ongoing personality ("isn't less sensitive") explains last week's reaction. Mixed: present condition → past result.
+3. **fill_gap** — "If he weren't less sensitive, he _____ that comment so personally last week."
+   **Hint**: would + have + past participle (resultado passado)
+   **Answer**: wouldn't have taken
+   **Explanation**: Ongoing personality (present) explains last week's reaction (past). Mixed: present condition → past result with "would have + past participle".
 
 4. **fix_error** — "If I weren't allergic to nuts, I would eat that cake at the party."
    **Hint**: The cake was at a past party — the result should also be past
@@ -319,10 +319,10 @@
    **Answer**: Had she accepted
    **Explanation**: "Had + subject + past participle" — inverted form. Note the mixed conditional consequence ("she'd be running the team now") — inversion works across third and mixed conditionals.
 
-3. **fill_gap** — "_____ what I know now, I _____ that company years ago."
-   **Hint**: Inverted "if I had known" / "would have left"
-   **Answer**: Had I known / would have left
-   **Explanation**: "Had I known" — inverted form of "If I had known". Pairs naturally with "would have left" (third conditional result).
+3. **fill_gap** — "_____ what I know now, I would have left that company years ago."
+   **Hint**: Inversão de "If I had known" (sem "if")
+   **Answer**: Had I known
+   **Explanation**: "Had I known" — inverted form of "If I had known". Inversion drops "if" and brings the auxiliary "had" before the subject.
 
 4. **fix_error** — "If had I known, I would have told you."
    **Hint**: When you invert, drop "if" entirely

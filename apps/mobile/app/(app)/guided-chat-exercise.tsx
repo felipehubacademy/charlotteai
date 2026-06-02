@@ -16,6 +16,7 @@ import {
   View, TouchableOpacity, StatusBar, ActivityIndicator,
   KeyboardAvoidingView, Platform, TextInput, Animated,
 } from 'react-native';
+import { setAudioModeAsync } from 'expo-audio';
 import { SafeAreaView, useSafeAreaInsets } from 'react-native-safe-area-context';
 import { router, useLocalSearchParams } from 'expo-router';
 import {
@@ -79,6 +80,15 @@ export default function GuidedChatExerciseScreen() {
     setGc(u.guided_chat);
     setUnitTitle(u.title);
   }, [level, moduleId, unitId]);
+
+  // Pausar musica externa enquanto chat ativo. Modelo Duolingo: foco
+  // total no exercicio, libera ao sair.
+  useEffect(() => {
+    setAudioModeAsync({ playsInSilentMode: true, interruptionMode: 'doNotMix' }).catch(() => {});
+    return () => {
+      setAudioModeAsync({ playsInSilentMode: true, interruptionMode: 'mixWithOthers' }).catch(() => {});
+    };
+  }, []);
 
   // Chat state
   const [messages, setMessages]               = useState<Message[]>([]);

@@ -129,12 +129,11 @@ class SoundEngine {
     try {
       const source = variants[this.pickVariantIdx(name, variants.length)];
 
-      await setAudioModeAsync({
-        allowsRecording: false,
-        playsInSilentMode: true,
-        interruptionMode: 'mixWithOthers',
-      }).catch(() => {});
-
+      // NAO mudamos o interruptionMode aqui. Antes setavamos mixWithOthers
+      // pra SFX mixar com musica externa, mas isso quebrava o doNotMix das
+      // licoes (Spotify voltava a tocar entre audio da Charlotte e SFX de
+      // resposta). Agora o SFX herda o modo atual do screen — licoes em
+      // doNotMix, home/rank/etc em mixWithOthers (default ambient).
       const player = createAudioPlayer(source);
       player.play();
 

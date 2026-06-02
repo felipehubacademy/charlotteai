@@ -34,9 +34,9 @@
    **Answer**: when
    **Explanation**: After "when" referring to the future, use present simple — never "will". The main clause can have "will" (I'll call), but the "when" clause stays in the present.
 
-2. **multiple_choice** — "We'll have dinner _____ everyone _____ home."
-   **Options**: when / arrives / when / will arrive / when / is arriving
-   **Answer**: when / arrives
+2. **multiple_choice** — "We'll have dinner when everyone _____ home."
+   **Options**: arrives / will arrive / is arriving / arrived
+   **Answer**: arrives
    **Explanation**: "When everyone arrives" — present simple 3rd person ("everyone" is singular). After "when" in future context, always present simple.
 
 3. **word_bank** — "She'll start cooking _____ she gets home."
@@ -59,10 +59,10 @@
    **Answer**: make
    **Explanation**: "When I make a decision" — present simple base form with "I".
 
-7. **fill_gap** — "_____ they _____ the news, they'll be happy."
-   **Hint**: when + present simple de "hear" 3ª pessoa plural
-   **Answer**: When / hear
-   **Explanation**: "When they hear" — plural "they" uses the base form "hear".
+7. **fill_gap** — "When they _____ the news, they'll be happy."
+   **Hint**: present simple de "hear" 3ª pessoa plural
+   **Answer**: hear
+   **Explanation**: "When they hear" — plural "they" uses the base form "hear". After "when" in future context, present simple.
 
 8. **fix_error** — "I'll call you when I will arrive."
    **Hint**: Nunca "will" após "when" em time clause futura
@@ -209,10 +209,10 @@
    **Answer**: before
    **Explanation**: Brushing your teeth happens BEFORE sleeping. "Before you go to bed" — present simple after "before" (routine/future).
 
-4. **word_bank** — "_____ I _____ from work, I usually cook dinner."
-   **Choices**: After / get / Before / get / After / will get / Before / am getting
-   **Answer**: After / get
-   **Explanation**: "After I get from work" — present simple with "I" + base form "get". Daily routine.
+4. **word_bank** — "_____ I get home from work, I usually cook dinner."
+   **Choices**: After / Until / By / While
+   **Answer**: After
+   **Explanation**: "After I get home" — describes a daily sequence: arriving home, then cooking. "After + present simple" for routine.
 
 5. **fill_gap** — "I'll text you before I _____ to the meeting."
    **Hint**: present simple "go" com I
@@ -224,10 +224,10 @@
    **Answer**: finishes
    **Explanation**: "After she finishes" — 3rd person singular with -es. "After + present simple" for future sequence.
 
-7. **fill_gap** — "_____ you _____, please clean the kitchen."
-   **Hint**: before + present simple de "leave"
-   **Answer**: Before / leave
-   **Explanation**: "Before you leave" — a request for before departure. Present simple base form with "you".
+7. **fill_gap** — "Before you _____, please clean the kitchen."
+   **Hint**: present simple de "leave" com you
+   **Answer**: leave
+   **Explanation**: "Before you leave" — a request for before departure. Present simple base form with "you", never "will".
 
 8. **fix_error** — "I'll call you before I will arrive."
    **Hint**: Após "before" em contexto futuro, present simple
@@ -384,9 +384,9 @@
    **Answer**: until
    **Explanation**: "Until I tell you" — stay here the whole time, until you get permission. Duration.
 
-6. **fill_gap** — "_____ I _____ home, my parents will be asleep."
-   **Hint**: by the time + present simple "get"
-   **Answer**: By the time / get
+6. **fill_gap** — "By the time I _____ home, my parents will be asleep."
+   **Hint**: present simple "get" com I
+   **Answer**: get
    **Explanation**: "By the time I get home" — when I get home, they'll already be asleep. Present simple after "by the time" in future contexts.
 
 7. **fill_gap** — "I'll keep trying _____ I succeed."
@@ -529,34 +529,34 @@
    **Answer**: as soon as
    **Explanation**: "As soon as" = the exact moment when / right after. Immediate action following another.
 
-2. **multiple_choice** — "_____ she _____ the news, she'll be happy."
-   **Options**: As soon as / hears / Until / hears / By the time / will hear
-   **Answer**: As soon as / hears
-   **Explanation**: "As soon as she hears" — present simple 3rd person "hears". Immediate reaction to receiving news.
+2. **multiple_choice** — "As soon as she _____ the news, she'll be happy."
+   **Options**: hears / will hear / is hearing / heard
+   **Answer**: hears
+   **Explanation**: "As soon as she hears" — present simple 3rd person "hears". After "as soon as" in future contexts, present simple.
 
 3. **word_bank** — "Send me a message _____ you arrive."
    **Choices**: as soon as / by the time / until / before
    **Answer**: as soon as
    **Explanation**: "As soon as you arrive" — immediately upon arrival. Immediacy.
 
-4. **word_bank** — "I'll let you know _____ I _____ a decision."
-   **Choices**: as soon as / make / as soon as / will make / until / make / before / will make
-   **Answer**: as soon as / make
-   **Explanation**: "As soon as I make a decision" — the moment I make the decision.
+4. **word_bank** — "I'll let you know as soon as I _____ a decision."
+   **Choices**: make / will make / am making / made
+   **Answer**: make
+   **Explanation**: "As soon as I make a decision" — present simple after "as soon as" in future contexts.
 
-5. **fill_gap** — "_____ they _____ home, they'll start cooking."
-   **Hint**: as soon as + present simple "get" plural
-   **Answer**: As soon as / get
+5. **fill_gap** — "As soon as they _____ home, they'll start cooking."
+   **Hint**: present simple "get" plural
+   **Answer**: get
    **Explanation**: "As soon as they get home" — plural without -s. Immediate reaction.
 
-6. **fill_gap** — "Call me _____ you _____ help."
-   **Hint**: as soon as + present simple "need"
-   **Answer**: as soon as / need
-   **Explanation**: "As soon as you need help" — immediate. A promise of availability.
+6. **fill_gap** — "Call me as soon as you _____ help."
+   **Hint**: present simple "need" com you
+   **Answer**: need
+   **Explanation**: "As soon as you need help" — immediate. A promise of availability, present simple base form.
 
-7. **fill_gap** — "I'll start _____ the music _____."
-   **Hint**: as soon as + present simple 3ª pessoa "begin"
-   **Answer**: as soon as / begins
+7. **fill_gap** — "I'll start as soon as the music _____."
+   **Hint**: present simple 3ª pessoa "begin"
+   **Answer**: begins
    **Explanation**: "As soon as the music begins" — 3rd person singular "begins" with -s.
 
 8. **fix_error** — "I'll text you as soon as I will arrive."
@@ -709,20 +709,20 @@
    **Answer**: After
    **Explanation**: "After the meeting ends" — sequence: lunch after the meeting.
 
-5. **fill_gap** — "_____ I _____ home, dinner will be ready."
-   **Hint**: by the time + present simple "get"
-   **Answer**: By the time / get
-   **Explanation**: "By the time I get home" — future reference point.
+5. **fill_gap** — "By the time I _____ home, dinner will be ready."
+   **Hint**: present simple "get" com I
+   **Answer**: get
+   **Explanation**: "By the time I get home" — future reference point. Present simple after "by the time".
 
-6. **fill_gap** — "Don't leave _____ I _____ you the documents."
-   **Hint**: until + present simple "give"
-   **Answer**: until / give
-   **Explanation**: "Until I give you" — duration until you receive the documents.
+6. **fill_gap** — "Don't leave until I _____ you the documents."
+   **Hint**: present simple "give" com I
+   **Answer**: give
+   **Explanation**: "Until I give you" — duration until you receive the documents. Present simple after "until".
 
-7. **fill_gap** — "_____ we _____ dinner, let's relax."
-   **Hint**: after + present simple "finish"
-   **Answer**: After / finish
-   **Explanation**: "After we finish" — sequence: relax after dinner.
+7. **fill_gap** — "After we _____ dinner, let's relax."
+   **Hint**: present simple "finish" com we
+   **Answer**: finish
+   **Explanation**: "After we finish" — sequence: relax after dinner. Present simple after "after".
 
 8. **fix_error** — "I'll text you as soon as I will land."
    **Hint**: Time clause sem "will"
