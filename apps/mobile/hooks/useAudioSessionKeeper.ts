@@ -17,6 +17,7 @@ export function useAudioSessionKeeper(enabled: boolean = true) {
   useEffect(() => {
     if (!enabled) return;
     let player: AudioPlayer | null = null;
+    let alive = true;
     try {
       // Reusa intro_app.mp3 (ja bundled). Volume 0 = silencioso. Loop = true
       // garante que a sessao fica continuamente ativa.
@@ -27,7 +28,23 @@ export function useAudioSessionKeeper(enabled: boolean = true) {
     } catch (e) {
       console.warn('[useAudioSessionKeeper] start failed', e);
     }
+
+    // Auto-resume polling: em L&S e role-play, ciclos de gravacao trocam
+    // a categoria do AVAudioSession (PlayAndRecord), o que pausa o silent
+    // loop. Sem retomar, Spotify volta a tocar nos gaps. Verifica a cada
+    // 400ms e re-toca se foi pausado.
+    const interval = setInterval(() => {
+      if (!alive || !player) return;
+      try {
+        if (!player.playing) {
+          player.play();
+        }
+      } catch {}
+    }, 400);
+
     return () => {
+      alive = false;
+      clearInterval(interval);
       try { player?.pause(); player?.remove(); } catch {}
     };
   }, [enabled]);
