@@ -128,6 +128,9 @@ export function PromotionModal({ event, onClose }: Props) {
   const scale = useRef(new Animated.Value(0.92)).current;
   const fade  = useRef(new Animated.Value(0)).current;
   const [videoFailed, setVideoFailed] = useState(false);
+  // Confete so dispara apos a fala terminar (junto com o SFX). Antes
+  // estava no inicio competindo visualmente com a face da Charlotte.
+  const [showConfetti, setShowConfetti] = useState(false);
 
   const videoUrl = event ? PROMOTION_VIDEO[event.toLevel] : undefined;
   const useVideo = !!videoUrl && !videoFailed;
@@ -148,10 +151,10 @@ export function PromotionModal({ event, onClose }: Props) {
   useEffect(() => {
     if (!useVideo || !videoPlayer) return;
     const sub = videoPlayer.addListener('playToEnd', () => {
-      // Video terminou. Toca o SFX celebratorio APOS a fala (nao em
-      // paralelo — antes competia pela sessao e causava freeze do video).
-      // Janela de respiro de 1.6s deixa o SFX brilhar antes do fade.
+      // Video terminou. Burst de celebracao: SFX + confete dispara
+      // junto, momento "capelo pro alto". Janela de 1.6s antes do fade.
       soundEngine.play('level_promotion', { volume: 0.6 }).catch(() => {});
+      setShowConfetti(true);
       setTimeout(autoClose, 1600);
     });
     return () => { try { sub.remove(); } catch {} };
@@ -173,11 +176,12 @@ export function PromotionModal({ event, onClose }: Props) {
       Animated.timing(fade, { toValue: 1, duration: 220, useNativeDriver: true }),
     ]).start();
 
-    // SFX so toca quando NAO ha video (video ja tem narracao emocional
-    // propria). SFX em paralelo competia pela sessao de audio e causava
-    // freeze no meio da playback (reportado pelo user 2026-06-01).
+    // SFX + confete so disparam ja no inicio quando NAO ha video (fallback
+    // Trophy). Com video, ambos sao adiados pro fim — momento "capelo pro
+    // alto" apos a fala da Charlotte (ver listener playToEnd acima).
     if (!useVideo) {
       soundEngine.play('level_promotion', { volume: 1.0 }).catch(() => {});
+      setShowConfetti(true);
     }
 
     if (useVideo) {
@@ -231,8 +235,9 @@ export function PromotionModal({ event, onClose }: Props) {
               allowsPictureInPicture={false}
             />
           </View>
-          {/* Confete por cima do video */}
-          <Confetti />
+          {/* Confete por cima do video — so dispara apos a fala terminar
+              (showConfetti vira true no listener playToEnd). */}
+          {showConfetti && <Confetti />}
         </Animated.View>
       ) : (
         // FALLBACK — modal card classico quando nao tem video pro nivel.
@@ -279,7 +284,7 @@ export function PromotionModal({ event, onClose }: Props) {
               <ArrowRight size={16} color="#FFFFFF" weight="bold" />
             </TouchableOpacity>
           </Animated.View>
-          <Confetti />
+          {showConfetti && <Confetti />}
         </Animated.View>
       )}
     </Modal>
