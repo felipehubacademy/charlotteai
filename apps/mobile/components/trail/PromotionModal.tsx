@@ -157,10 +157,13 @@ export function PromotionModal({ event, onClose }: Props) {
 
   // Auto-close com fade quando video termina
   const autoClose = useCallback(() => {
+    // Pausa o video antes do fade pra evitar 'frozen last frame' visivel
+    // durante a transicao (iOS expo-video deixa rastro sem isso).
+    try { videoPlayer?.pause(); } catch {}
     Animated.timing(fade, { toValue: 0, duration: 800, useNativeDriver: true }).start(() => {
       onClose();
     });
-  }, [fade, onClose]);
+  }, [fade, onClose, videoPlayer]);
 
   useEffect(() => {
     if (!useVideo || !videoPlayer) return;

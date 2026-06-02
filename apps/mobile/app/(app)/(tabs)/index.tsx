@@ -30,6 +30,7 @@ import { TrailContent } from '@/components/trail/TrailContent';
 import { TrailBanner } from '@/components/trail/TrailBanner';
 import { PromotionModal } from '@/components/trail/PromotionModal';
 import { usePromotion } from '@/lib/curriculum-v2/usePromotion';
+import { usePromotionVideoPrefetch } from '@/hooks/usePromotionVideoPrefetch';
 import { NewLayoutWelcomeSheet } from '@/components/onboarding/NewLayoutWelcomeSheet';
 
 // Module-level flag — persists for the JS session (like the legacy home screen)
@@ -97,6 +98,14 @@ export default function HomeTab() {
   // Promocao organica: checa apos cada focus da home.
   const { event: promotionEvent, ack: ackPromotion, checkAndPromote } = usePromotion();
   useFocusEffect(useCallback(() => { checkAndPromote(); }, [checkAndPromote]));
+
+  // Pre-fetch do video de promocao assim que entra na home, se o aluno
+  // estiver no nivel atual (Novice -> Inter video, Inter -> Advanced).
+  // Da tempo ENORME de baixar antes da promocao real disparar.
+  const NEXT_LEVEL_MAP: Record<string, string | null> = {
+    Novice: 'Inter', Inter: 'Advanced', Advanced: null,
+  };
+  usePromotionVideoPrefetch(NEXT_LEVEL_MAP[currentLevel] ?? null);
   const name      = profile?.name ?? profile?.email?.split('@')[0] ?? 'Student';
   const isPt      = level === 'Novice';
   const firstName = name.split(' ')[0] ?? name;
