@@ -762,7 +762,7 @@ export default function GuidedChatExerciseScreen() {
           backgroundColor: 'rgba(244,243,250,0.95)',
           alignItems: 'center', justifyContent: 'center',
         }}>
-          <ActivityIndicator size="large" color="#7C3AED" />
+          <ActivityIndicator size="large" color={C.navy} />
         </View>
       )}
     </SafeAreaView>
