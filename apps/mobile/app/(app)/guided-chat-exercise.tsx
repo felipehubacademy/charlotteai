@@ -120,9 +120,6 @@ export default function GuidedChatExerciseScreen() {
   // Chat state
   const [messages, setMessages]               = useState<Message[]>([]);
   const [draft,    setDraft]                  = useState('');
-  // Spinner mostrado durante a ultima atividade do nivel — cobre o gap
-  // entre o click 'Concluir' e o PromotionModal aparecer na home (~1-2s).
-  const [isFinishing, setIsFinishing]         = useState(false);
   const [isProcessing, setIsProcessing]       = useState(false);
   const [objectivesMet, setObjectivesMet]       = useState<Set<number>>(new Set());
   const [sessionComplete, setSessionComplete]   = useState(false);
@@ -694,7 +691,6 @@ export default function GuidedChatExerciseScreen() {
                 </AppText>
               </TouchableOpacity>
               <TouchableOpacity
-                disabled={isFinishing}
                 onPress={() => {
                   // Chat eh ULTIMA activity da unit. Se passou:
                   //   - tem proxima unit no mesmo modulo → grammar dela
@@ -729,15 +725,14 @@ export default function GuidedChatExerciseScreen() {
                     }
                   }
                   // Sem proximo (= ultima unit do ultimo modulo = promocao
-                  // iminente). Seta flag global -> home renderiza overlay
-                  // que esconde o TrailContent loading + qualquer spinner
-                  // proprio dele. Modal aparece sobre o overlay. Flag eh
-                  // limpa quando user fecha o modal (PromotionModal.ack).
+                  // iminente). Seta flag global ANTES de navegar — home
+                  // ja renderiza overlay assim que monta. Sem setTimeout
+                  // intermediario que causava transicao visivel (tab bar
+                  // pop-in quando guided-chat desmontava). Navega
+                  // imediato — overlay module-level persiste atraves
+                  // do unmount/mount.
                   setPromotionPending(true);
-                  setIsFinishing(true);
-                  setTimeout(() => {
-                    router.replace('/(app)/(tabs)' as any);
-                  }, 1200);
+                  router.replace('/(app)/(tabs)' as any);
                 }}
                 style={{
                   flex: 1, paddingVertical: 14, borderRadius: 14,
@@ -754,17 +749,6 @@ export default function GuidedChatExerciseScreen() {
         </View>
       )}
 
-      {/* Spinner cobrindo a tela enquanto navega pra home na promocao
-          iminente. Cobre o gap (~1s) ate o PromotionModal aparecer. */}
-      {isFinishing && (
-        <View pointerEvents="auto" style={{
-          position: 'absolute', top: 0, left: 0, right: 0, bottom: 0,
-          backgroundColor: 'rgba(244,243,250,0.95)',
-          alignItems: 'center', justifyContent: 'center',
-        }}>
-          <ActivityIndicator size="large" color={C.navy} />
-        </View>
-      )}
     </SafeAreaView>
   );
 }
