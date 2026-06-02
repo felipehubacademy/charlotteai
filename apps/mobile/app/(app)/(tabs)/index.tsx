@@ -31,6 +31,7 @@ import { TrailBanner } from '@/components/trail/TrailBanner';
 import { PromotionModal } from '@/components/trail/PromotionModal';
 import { usePromotion } from '@/lib/curriculum-v2/usePromotion';
 import { usePromotionVideoPrefetch } from '@/hooks/usePromotionVideoPrefetch';
+import { usePromotionPending } from '@/lib/promotionState';
 import { NewLayoutWelcomeSheet } from '@/components/onboarding/NewLayoutWelcomeSheet';
 
 // Module-level flag — persists for the JS session (like the legacy home screen)
@@ -106,6 +107,11 @@ export default function HomeTab() {
     Novice: 'Inter', Inter: 'Advanced', Advanced: null,
   };
   usePromotionVideoPrefetch(NEXT_LEVEL_MAP[currentLevel] ?? null);
+
+  // Flag global: guided-chat seta true ao concluir ultima atividade. Home
+  // entao cobre tudo com overlay ate o PromotionModal aparecer — esconde
+  // o loading do TrailContent que mostra spinner cinza ao trocar de level.
+  const promoPending = usePromotionPending();
   const name      = profile?.name ?? profile?.email?.split('@')[0] ?? 'Student';
   const isPt      = level === 'Novice';
   const firstName = name.split(' ')[0] ?? name;
@@ -515,6 +521,21 @@ export default function HomeTab() {
       />
 
       <PromotionModal event={promotionEvent} onClose={ackPromotion} />
+
+      {/* Overlay enquanto promocao esta pendente — esconde TrailContent
+          loading + qualquer flash visual entre guided-chat unmount e o
+          modal montar. Flag eh clearada via setPromotionPending(false) no
+          PromotionModal.onClose. */}
+      {promoPending && !promotionEvent && (
+        <View pointerEvents="auto" style={{
+          position: 'absolute', top: 0, left: 0, right: 0, bottom: 0,
+          backgroundColor: 'rgba(244,243,250,0.97)',
+          alignItems: 'center', justifyContent: 'center',
+          zIndex: 100,
+        }}>
+          <ActivityIndicator size="large" color={C.navy} />
+        </View>
+      )}
 
     </View>
   );

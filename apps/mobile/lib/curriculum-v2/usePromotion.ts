@@ -14,6 +14,7 @@
 import { useEffect, useRef, useState } from 'react';
 import { supabase } from '@/lib/supabase';
 import { useAuth } from '@/hooks/useAuth';
+import { setPromotionPending } from '@/lib/promotionState';
 import { listModules } from './loader';
 import type { Level } from './types';
 
@@ -99,7 +100,7 @@ export function usePromotion() {
     checkedForCurrent.current = null;
   }, [currentLevel, userId]);
 
-  function ack() { setEvent(null); }
+  function ack() { setEvent(null); setPromotionPending(false); }
 
   return { event, ack, checkAndPromote };
 }

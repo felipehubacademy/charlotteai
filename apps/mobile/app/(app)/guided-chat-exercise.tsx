@@ -19,6 +19,7 @@ import {
 import { setAudioModeAsync, setIsAudioActiveAsync } from 'expo-audio';
 import { useAudioSessionKeeper } from '@/hooks/useAudioSessionKeeper';
 import { usePromotionVideoPrefetch } from '@/hooks/usePromotionVideoPrefetch';
+import { setPromotionPending } from '@/lib/promotionState';
 import { SafeAreaView, useSafeAreaInsets } from 'react-native-safe-area-context';
 import { router, useLocalSearchParams } from 'expo-router';
 import {
@@ -728,16 +729,15 @@ export default function GuidedChatExerciseScreen() {
                     }
                   }
                   // Sem proximo (= ultima unit do ultimo modulo = promocao
-                  // iminente). Spinner cobre o gap COMPLETO ate o modal:
-                  // - 1.2s aqui (UX de "salvando")
-                  // - 1.5s adicional escondendo o gray spinner da home
-                  //   loading e a query de promocao.
-                  // Quando navega, home ja terminou load + promotion check
-                  // entao modal pop instantaneo.
+                  // iminente). Seta flag global -> home renderiza overlay
+                  // que esconde o TrailContent loading + qualquer spinner
+                  // proprio dele. Modal aparece sobre o overlay. Flag eh
+                  // limpa quando user fecha o modal (PromotionModal.ack).
+                  setPromotionPending(true);
                   setIsFinishing(true);
                   setTimeout(() => {
                     router.replace('/(app)/(tabs)' as any);
-                  }, 2700);
+                  }, 1200);
                 }}
                 style={{
                   flex: 1, paddingVertical: 14, borderRadius: 14,
