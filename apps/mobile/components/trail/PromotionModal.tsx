@@ -140,7 +140,7 @@ export function PromotionModal({ event, onClose }: Props) {
 
   // Auto-close com fade quando video termina
   const autoClose = useCallback(() => {
-    Animated.timing(fade, { toValue: 0, duration: 600, useNativeDriver: true }).start(() => {
+    Animated.timing(fade, { toValue: 0, duration: 800, useNativeDriver: true }).start(() => {
       onClose();
     });
   }, [fade, onClose]);
@@ -148,8 +148,11 @@ export function PromotionModal({ event, onClose }: Props) {
   useEffect(() => {
     if (!useVideo || !videoPlayer) return;
     const sub = videoPlayer.addListener('playToEnd', () => {
-      // pequeno delay pra dar 'um respiro' antes do fade
-      setTimeout(autoClose, 400);
+      // Video terminou. Toca o SFX celebratorio APOS a fala (nao em
+      // paralelo — antes competia pela sessao e causava freeze do video).
+      // Janela de respiro de 1.6s deixa o SFX brilhar antes do fade.
+      soundEngine.play('level_promotion', { volume: 0.6 }).catch(() => {});
+      setTimeout(autoClose, 1600);
     });
     return () => { try { sub.remove(); } catch {} };
   }, [useVideo, videoPlayer, autoClose]);
