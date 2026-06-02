@@ -147,6 +147,47 @@ async function runRoleplayUnit(modId, unit) {
   return { transcript, objectivesMet: Array.from(objectivesMet), score, turns };
 }
 
+// ── Run guided chat ──────────────────────────────────────────────
+async function runChatUnit(modId, unit) {
+  const gc = unit.guided_chat;
+  if (!gc || !gc.objectives) return null;
+
+  log(`\n### ${modId}/${unit.id} — Guided Chat (${gc.objectives.length} obj)\n`);
+
+  const history = [{ role: 'assistant', content: gc.opening_message }];
+  const objectivesMet = new Set();
+  const transcript = [`Charlotte: ${gc.opening_message}`];
+  let stuckTurns = 0;
+  let turns = 0;
+  const maxTurns = 10;
+
+  while (objectivesMet.size < gc.objectives.length && turns < maxTurns) {
+    turns++;
+    const nextObj = gc.objectives.find(o => !objectivesMet.has(o.id));
+    const studentReply = await generateStudentTurn(history, gc, nextObj);
+    transcript.push(`Student: ${studentReply}`);
+    history.push({ role: 'user', content: studentReply });
+
+    const judgement = await judgeTurn(gc, history, studentReply);
+    history.push({ role: 'assistant', content: judgement.reply });
+    transcript.push(`Charlotte: ${judgement.reply}`);
+
+    if (judgement.objectives_met?.length > 0) {
+      for (const id of judgement.objectives_met) objectivesMet.add(id);
+      stuckTurns = 0;
+    } else {
+      stuckTurns++;
+    }
+    if (stuckTurns >= 3) break;
+  }
+
+  const score = Math.round((objectivesMet.size / gc.objectives.length) * 100);
+  log(`  Transcript:`);
+  for (const line of transcript) log(`    ${line}`);
+  log(`  ✦ Chat score: ${score}% (${objectivesMet.size}/${gc.objectives.length}), turns: ${turns}`);
+  return { transcript, objectivesMet: Array.from(objectivesMet), score, turns };
+}
+
 async function generateStudentTurn(history, rp, nextObj) {
   const persona = `You are Felipe (beginner Brazilian). You are in a role-play. Generate ONE short reply (English or PT-BR mix) that attempts the next objective. Use only chunks you've learned. The next sub-objective hint suggests: "${nextObj.hint_en ?? nextObj.hint_pt}".`;
   const histText = history.map(h => `${h.role === 'assistant' ? 'Charlotte' : 'You'}: ${h.content}`).join('\n');
@@ -242,10 +283,13 @@ async function main() {
       log(`\n#### Unit ${unit.id} — ${unit.title ?? ''}`);
 
       const grammarRes = await runGrammarUnit(mod.id, unit);
+      // L&S nao tem como testar com IA (precisa voz humana pra Azure Speech)
+      // — mock-pass com nota 100 pra cascade desbloquear o resto.
+      log(`### ${mod.id}/${unit.id} — Listening & Speaking → SKIPPED (mock 100)`);
       const rpRes = await runRoleplayUnit(mod.id, unit);
-      // skip speaking + chat na v1 (chat == roleplay format = duplicado)
+      const chatRes = await runChatUnit(mod.id, unit);
 
-      unitResults.push({ id: unit.id, title: unit.title, grammar: grammarRes, roleplay: rpRes });
+      unitResults.push({ id: unit.id, title: unit.title, grammar: grammarRes, roleplay: rpRes, chat: chatRes });
     }
 
     const added = absorbModuleChunks(mod);
@@ -258,9 +302,11 @@ async function main() {
   for (const m of moduleResults) {
     const gScores = m.units.map(u => u.grammar?.score).filter(s => s != null);
     const rScores = m.units.map(u => u.roleplay?.score).filter(s => s != null);
+    const cScores = m.units.map(u => u.chat?.score).filter(s => s != null);
     const gAvg = gScores.length ? Math.round(gScores.reduce((a, b) => a + b, 0) / gScores.length) : null;
     const rAvg = rScores.length ? Math.round(rScores.reduce((a, b) => a + b, 0) / rScores.length) : null;
-    log(`- ${m.id}: grammar=${gAvg ?? '-'}% rp=${rAvg ?? '-'}% (vocab=${m.chunksAfter})`);
+    const cAvg = cScores.length ? Math.round(cScores.reduce((a, b) => a + b, 0) / cScores.length) : null;
+    log(`- ${m.id}: grammar=${gAvg ?? '-'}% rp=${rAvg ?? '-'}% chat=${cAvg ?? '-'}% (vocab=${m.chunksAfter})`);
   }
 
   // Write to file
