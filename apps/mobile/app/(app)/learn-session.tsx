@@ -1403,8 +1403,8 @@ export default function LearnSessionScreen() {
 
                 {/* Right col: passage + sentence/question */}
                 <View style={{ flex: 1 }}>
-                  {/* Passage (read_answer) */}
-                  {currentStep.exercise.type === 'read_answer' && currentStep.exercise.passage && (
+                  {/* Passage (read_answer e multiple_choice com passage) */}
+                  {(currentStep.exercise.type === 'read_answer' || currentStep.exercise.type === 'multiple_choice') && currentStep.exercise.passage && (
                     <View style={{ backgroundColor: C.ghost, borderRadius: 14, padding: 14, marginBottom: 12, borderLeftWidth: 3, borderLeftColor: accent }}>
                       {isPortuguese
                         ? <TranslatableText text={formatDialogue(currentStep.exercise.passage)} style={{ fontSize: 14, color: C.navy, lineHeight: 22 }} />
