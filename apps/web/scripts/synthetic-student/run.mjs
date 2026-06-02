@@ -14,6 +14,7 @@ import path from 'node:path';
 import { fileURLToPath } from 'node:url';
 import { checkGrammar } from './check-grammar.mjs';
 import { answerGrammarExercise } from './persona.mjs';
+import { callProdJudge } from './prod-judge.mjs';
 
 const __dirname = path.dirname(fileURLToPath(import.meta.url));
 const ROOT = path.resolve(__dirname, '..', '..', '..', '..');
@@ -127,7 +128,7 @@ async function runRoleplayUnit(modId, unit) {
     // synthetic student: hit a TEXT-mode fallback. For now we'll call the
     // chat-based judge logic directly via a parallel guided-chat call format.
     // (Synthetic v1: simplified — judge inline via gpt-4o-mini call.)
-    const judgement = await judgeTurn(rp, history, studentReply);
+    const judgement = await callProdJudge(OPENAI_KEY, rp, LEVEL, unit?.title, history);
     history.push({ role: 'assistant', content: judgement.reply });
     transcript.push(`Charlotte: ${judgement.reply}`);
 
@@ -172,7 +173,7 @@ async function runChatUnit(modId, unit) {
     transcript.push(`Student: ${studentReply}`);
     history.push({ role: 'user', content: studentReply });
 
-    const judgement = await judgeTurn(gc, history, studentReply);
+    const judgement = await callProdJudge(OPENAI_KEY, gc, LEVEL, unit?.title, history);
     history.push({ role: 'assistant', content: judgement.reply });
     transcript.push(`Charlotte: ${judgement.reply}`);
 

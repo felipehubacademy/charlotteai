@@ -32,36 +32,43 @@
 1. **multiple_choice** — "I think it _____ rain tomorrow."
    **Options**: will / is going to / does
    **Answer**: will
+   **Accepts**: 'll / is going to / are going to
    **Explanation**: "Will" pra previsões baseadas em opinião/feeling. "I think it will rain".
 
 2. **multiple_choice** — "She _____ probably come."
    **Options**: will / is going / does
    **Answer**: will
+   **Accepts**: 'll / is going to / are going to
    **Explanation**: "She will probably come" — predição com "probably". Will pra suposição.
 
 3. **word_bank** — "They _____ win the game!"
    **Choices**: will / are going / do / can
    **Answer**: will
+   **Accepts**: 'll / is going to / are going to
    **Explanation**: "They will win" — predição confiante. Will sem auxiliares.
 
 4. **word_bank** — "It _____ be a great year."
    **Choices**: will / is going / does / can
    **Answer**: will
+   **Accepts**: 'll / is going to / are going to
    **Explanation**: "It will be" — previsão positiva genérica.
 
 5. **fill_gap** — "I think she _____ love this gift."
    **Hint**: Modal de previsão
    **Answer**: will
+   **Accepts**: 'll / is going to / are going to
    **Explanation**: "She will love" — previsão. Will + base.
 
 6. **fill_gap** — "Maybe it _____ snow."
    **Hint**: Previsão de tempo com "maybe"
    **Answer**: will
+   **Accepts**: 'll / is going to / are going to
    **Explanation**: "Maybe it will snow" — previsão incerta. Will + base.
 
 7. **fill_gap** — "She _____ be 30 next year."
    **Hint**: Previsão de fato futuro
    **Answer**: will
+   **Accepts**: 'll / is going to / are going to
    **Explanation**: "She will be 30" — futuro certo, will + base.
 
 8. **fix_error** — "I will to call you."
@@ -202,16 +209,19 @@
 2. **multiple_choice** — "She _____ come if it rains."
    **Options**: won't / doesn't / isn't
    **Answer**: won't
+   **Accepts**: will not / isn't going to / aren't going to
    **Explanation**: "Won't" = will not. "She won't come" = ela não vai vir.
 
 3. **word_bank** — "I _____ call you tonight."
    **Choices**: will / am will / do will / would
    **Answer**: will
+   **Accepts**: 'll / is going to / are going to
    **Explanation**: "I will call" — decisão.
 
 4. **word_bank** — "He _____ tell anyone."
    **Choices**: won't / doesn't / isn't / can't
    **Answer**: won't
+   **Accepts**: will not / isn't going to / aren't going to
    **Explanation**: "He won't tell" — promessa negativa.
 
 5. **fill_gap** — "I _____ get the door!"
@@ -222,11 +232,13 @@
 6. **fill_gap** — "She _____ be late again."
    **Hint**: Negativa de will (contraída)
    **Answer**: won't
+   **Accepts**: will not / isn't going to / aren't going to
    **Explanation**: "She won't be late" — won't = will not.
 
 7. **fill_gap** — "I promise I _____ tell anyone."
    **Hint**: Negativa "won't"
    **Answer**: won't
+   **Accepts**: will not / isn't going to / aren't going to
    **Explanation**: "I won't tell" — promessa de não fazer.
 
 8. **fix_error** — "I will not to help."
@@ -384,6 +396,7 @@
 5. **fill_gap** — "I think she _____ love the surprise."
    **Hint**: Predição com "I think"
    **Answer**: will
+   **Accepts**: 'll / is going to / are going to
    **Explanation**: "I think + will" pra opinião sobre futuro.
 
 6. **fill_gap** — "I _____ go to the gym every day this week."
@@ -542,11 +555,13 @@
 3. **word_bank** — "I _____ help you with that."
    **Choices**: will / am / do / 'm going
    **Answer**: will
+   **Accepts**: 'll / is going to / are going to
    **Explanation**: Oferta espontânea: "I will help" — decisão no momento de ajudar. "I'll help" também.
 
 4. **word_bank** — "I promise I _____ be on time."
    **Choices**: will / 'm going / am / do
    **Answer**: will
+   **Accepts**: 'll / is going to / are going to
    **Explanation**: "I promise I will" — promessa formal. "I'll" também.
 
 5. **fill_gap** — "I _____ get you a coffee."
@@ -562,6 +577,7 @@
 7. **fill_gap** — "I promise I _____ tell anyone."
    **Hint**: Promessa negativa
    **Answer**: won't
+   **Accepts**: will not / isn't going to / aren't going to
    **Explanation**: "I won't tell" — promessa de não fazer.
 
 8. **fix_error** — "Will you to help?"
@@ -702,11 +718,13 @@
 2. **multiple_choice** — "I think AI _____ change the world."
    **Options**: will / is going / does
    **Answer**: will
+   **Accepts**: 'll / is going to / are going to
    **Explanation**: Predição genérica → will.
 
 3. **word_bank** — "She _____ probably win."
    **Choices**: will / is going / does / can
    **Answer**: will
+   **Accepts**: 'll / is going to / are going to
    **Explanation**: Predição com "probably" → will.
 
 4. **word_bank** — "I _____ buy a house in 5 years."
@@ -717,18 +735,19 @@
 5. **fill_gap** — "I _____ help you whenever you need."
    **Hint**: Promessa com will
    **Answer**: will
-   **Accepts**: ll
+   **Accepts**: ll / 'll / is going to / are going to
    **Explanation**: Promessa indefinida — will.
 
 6. **fill_gap** — "She _____ come if it rains."
    **Hint**: Negativa de will
    **Answer**: won't
+   **Accepts**: will not / isn't going to / aren't going to
    **Explanation**: "She won't come" — predição negativa.
 
 7. **fill_gap** — "I think they _____ love the gift."
    **Hint**: Predição
    **Answer**: will
-   **Accepts**: ll
+   **Accepts**: ll / 'll / is going to / are going to
    **Explanation**: Predição com "I think" — will.
 
 8. **fix_error** — "Look at the sky — it will rain."

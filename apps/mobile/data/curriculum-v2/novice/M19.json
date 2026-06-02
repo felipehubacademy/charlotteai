@@ -38,6 +38,11 @@
             "does"
           ],
           "answer": "will",
+          "accepts": [
+            "'ll",
+            "is going to",
+            "are going to"
+          ],
           "explanation": "\"Will\" pra previsões baseadas em opinião/feeling. \"I think it will rain\"."
         },
         {
@@ -49,6 +54,11 @@
             "does"
           ],
           "answer": "will",
+          "accepts": [
+            "'ll",
+            "is going to",
+            "are going to"
+          ],
           "explanation": "\"She will probably come\" — predição com \"probably\". Will pra suposição."
         },
         {
@@ -61,6 +71,11 @@
             "can"
           ],
           "answer": "will",
+          "accepts": [
+            "'ll",
+            "is going to",
+            "are going to"
+          ],
           "explanation": "\"They will win\" — predição confiante. Will sem auxiliares."
         },
         {
@@ -73,6 +88,11 @@
             "can"
           ],
           "answer": "will",
+          "accepts": [
+            "'ll",
+            "is going to",
+            "are going to"
+          ],
           "explanation": "\"It will be\" — previsão positiva genérica."
         },
         {
@@ -80,6 +100,11 @@
           "sentence": "I think she _____ love this gift.",
           "hint": "Modal de previsão",
           "answer": "will",
+          "accepts": [
+            "'ll",
+            "is going to",
+            "are going to"
+          ],
           "explanation": "\"She will love\" — previsão. Will + base."
         },
         {
@@ -87,6 +112,11 @@
           "sentence": "Maybe it _____ snow.",
           "hint": "Previsão de tempo com \"maybe\"",
           "answer": "will",
+          "accepts": [
+            "'ll",
+            "is going to",
+            "are going to"
+          ],
           "explanation": "\"Maybe it will snow\" — previsão incerta. Will + base."
         },
         {
@@ -94,6 +124,11 @@
           "sentence": "She _____ be 30 next year.",
           "hint": "Previsão de fato futuro",
           "answer": "will",
+          "accepts": [
+            "'ll",
+            "is going to",
+            "are going to"
+          ],
           "explanation": "\"She will be 30\" — futuro certo, will + base."
         },
         {
@@ -251,6 +286,11 @@
             "isn't"
           ],
           "answer": "won't",
+          "accepts": [
+            "will not",
+            "isn't going to",
+            "aren't going to"
+          ],
           "explanation": "\"Won't\" = will not. \"She won't come\" = ela não vai vir."
         },
         {
@@ -263,6 +303,11 @@
             "would"
           ],
           "answer": "will",
+          "accepts": [
+            "'ll",
+            "is going to",
+            "are going to"
+          ],
           "explanation": "\"I will call\" — decisão."
         },
         {
@@ -275,6 +320,11 @@
             "can't"
           ],
           "answer": "won't",
+          "accepts": [
+            "will not",
+            "isn't going to",
+            "aren't going to"
+          ],
           "explanation": "\"He won't tell\" — promessa negativa."
         },
         {
@@ -289,6 +339,11 @@
           "sentence": "She _____ be late again.",
           "hint": "Negativa de will (contraída)",
           "answer": "won't",
+          "accepts": [
+            "will not",
+            "isn't going to",
+            "aren't going to"
+          ],
           "explanation": "\"She won't be late\" — won't = will not."
         },
         {
@@ -296,6 +351,11 @@
           "sentence": "I promise I _____ tell anyone.",
           "hint": "Negativa \"won't\"",
           "answer": "won't",
+          "accepts": [
+            "will not",
+            "isn't going to",
+            "aren't going to"
+          ],
           "explanation": "\"I won't tell\" — promessa de não fazer."
         },
         {
@@ -492,6 +552,11 @@
           "sentence": "I think she _____ love the surprise.",
           "hint": "Predição com \"I think\"",
           "answer": "will",
+          "accepts": [
+            "'ll",
+            "is going to",
+            "are going to"
+          ],
           "explanation": "\"I think + will\" pra opinião sobre futuro."
         },
         {
@@ -685,6 +750,11 @@
             "'m going"
           ],
           "answer": "will",
+          "accepts": [
+            "'ll",
+            "is going to",
+            "are going to"
+          ],
           "explanation": "Oferta espontânea: \"I will help\" — decisão no momento de ajudar. \"I'll help\" também."
         },
         {
@@ -697,6 +767,11 @@
             "do"
           ],
           "answer": "will",
+          "accepts": [
+            "'ll",
+            "is going to",
+            "are going to"
+          ],
           "explanation": "\"I promise I will\" — promessa formal. \"I'll\" também."
         },
         {
@@ -718,6 +793,11 @@
           "sentence": "I promise I _____ tell anyone.",
           "hint": "Promessa negativa",
           "answer": "won't",
+          "accepts": [
+            "will not",
+            "isn't going to",
+            "aren't going to"
+          ],
           "explanation": "\"I won't tell\" — promessa de não fazer."
         },
         {
@@ -875,6 +955,11 @@
             "does"
           ],
           "answer": "will",
+          "accepts": [
+            "'ll",
+            "is going to",
+            "are going to"
+          ],
           "explanation": "Predição genérica → will."
         },
         {
@@ -887,6 +972,11 @@
             "can"
           ],
           "answer": "will",
+          "accepts": [
+            "'ll",
+            "is going to",
+            "are going to"
+          ],
           "explanation": "Predição com \"probably\" → will."
         },
         {
@@ -907,7 +997,10 @@
           "hint": "Promessa com will",
           "answer": "will",
           "accepts": [
-            "ll"
+            "ll",
+            "'ll",
+            "is going to",
+            "are going to"
           ],
           "explanation": "Promessa indefinida — will."
         },
@@ -916,6 +1009,11 @@
           "sentence": "She _____ come if it rains.",
           "hint": "Negativa de will",
           "answer": "won't",
+          "accepts": [
+            "will not",
+            "isn't going to",
+            "aren't going to"
+          ],
           "explanation": "\"She won't come\" — predição negativa."
         },
         {
@@ -924,7 +1022,10 @@
           "hint": "Predição",
           "answer": "will",
           "accepts": [
-            "ll"
+            "ll",
+            "'ll",
+            "is going to",
+            "are going to"
           ],
           "explanation": "Predição com \"I think\" — will."
         },
