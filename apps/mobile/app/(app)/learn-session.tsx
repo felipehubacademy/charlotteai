@@ -23,6 +23,7 @@ import { scheduleReviews, markReviewDone, rescheduleReview } from '@/lib/spacedR
 import { track } from '@/lib/analytics';
 import * as FileSystem from 'expo-file-system/legacy';
 import { useAudioRecorder, setAudioModeAsync, setIsAudioActiveAsync, RecordingPresets } from 'expo-audio';
+import { useAudioSessionKeeper } from '@/hooks/useAudioSessionKeeper';
 import { Image } from 'expo-image';
 import {
   ExpoSpeechRecognitionModule,
@@ -309,6 +310,10 @@ export default function LearnSessionScreen() {
   // Reset contador de acertos consecutivos ao iniciar a sessao
   // (Tier 4 — voiceSFX dispara em 3/5/10 acertos seguidos)
   useEffect(() => { soundEngine.resetStreak(); }, []);
+
+  // Silent loop (volume 0) mantem AVAudioSession ativa entre Charlotte/SFX.
+  // Sem isso Spotify volta a tocar nos gaps. Per-screen, morre no unmount.
+  useAudioSessionKeeper();
 
   // Pausar Spotify/outros apps de audio enquanto a licao toca. Modelo
   // Duolingo: foco total durante exercicio, libera ao sair.

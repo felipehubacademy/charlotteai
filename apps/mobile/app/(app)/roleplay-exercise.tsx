@@ -21,6 +21,7 @@ import * as FileSystem from 'expo-file-system/legacy';
 import * as Haptics from 'expo-haptics';
 import Constants from 'expo-constants';
 import { createAudioPlayer, setAudioModeAsync, setIsAudioActiveAsync, AudioPlayer, RecordingPresets } from 'expo-audio';
+import { useAudioSessionKeeper } from '@/hooks/useAudioSessionKeeper';
 
 import { AppText } from '@/components/ui/Text';
 import ChatBox, { Message } from '@/components/chat/ChatBox';
@@ -77,12 +78,11 @@ export default function RolePlayExerciseScreen() {
     setUnitTitle(u.title);
   }, [level, moduleId, unitId]);
 
+  // Silent loop mantem AVAudioSession ativa entre Charlotte/SFX.
+  useAudioSessionKeeper();
+
   // Pausar Spotify/outros apps de audio enquanto Charlotte fala no role-play.
   // Modelo Duolingo: foco total durante exercicio, libera ao sair.
-  //
-  // CRITICO: setAudioModeAsync({doNotMix}) so configura categoria, nao ativa
-  // a AVAudioSession. setIsAudioActiveAsync(true) faz iOS ativar a sessao
-  // (= Spotify pausa de verdade). Sem isso, doNotMix nao tem efeito.
   useEffect(() => {
     (async () => {
       await setAudioModeAsync({ playsInSilentMode: true, interruptionMode: 'doNotMix' }).catch(() => {});
