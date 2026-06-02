@@ -40,8 +40,8 @@ export type SoundName =
 const BUNDLED: Partial<Record<SoundName, number[]>> = {
   answer_correct: [
     require('../assets/audio/sfx/answer_correct_v1.mp3'),
-    require('../assets/audio/sfx/answer_correct_v2.mp3'),
     require('../assets/audio/sfx/answer_correct_v3.mp3'),
+    // v2 removido 2026-06-01 (soava mais como erro que acerto).
   ],
   answer_wrong: [
     require('../assets/audio/sfx/answer_wrong_v1.mp3'),
