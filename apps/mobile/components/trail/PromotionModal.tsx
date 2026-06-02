@@ -6,13 +6,21 @@
 // achievement_legendary SFX + haptic burst, 1 botao "Continuar no <novo
 // nivel>" que fecha. Bilingue conforme novo nivel.
 
-import React, { useEffect, useMemo, useRef } from 'react';
+import React, { useEffect, useMemo, useRef, useState } from 'react';
 import { View, Modal, TouchableOpacity, Animated, Platform, Dimensions, Easing } from 'react-native';
 import * as Haptics from 'expo-haptics';
 import { Trophy, ArrowRight } from 'phosphor-react-native';
+import { VideoView, useVideoPlayer } from 'expo-video';
 import { AppText } from '@/components/ui/Text';
 import { soundEngine } from '@/lib/soundEngine';
 import type { PromotionEvent } from '@/lib/curriculum-v2/usePromotion';
+
+// URLs dos videos de promocao no Supabase Storage. Pre-fetch eh feito quando
+// o aluno entra na ultima unit do ultimo modulo (TrailContent / learn-session).
+const PROMOTION_VIDEO: Record<string, string> = {
+  Inter:    'https://fnvjibzreepubageztoi.supabase.co/storage/v1/object/public/promotion-videos/novice-to-inter.mp4',
+  // Advanced: aguardando geracao do video Inter→Advanced.
+};
 
 const { width: SCREEN_W, height: SCREEN_H } = Dimensions.get('window');
 
@@ -119,6 +127,20 @@ interface Props {
 export function PromotionModal({ event, onClose }: Props) {
   const scale = useRef(new Animated.Value(0.92)).current;
   const fade  = useRef(new Animated.Value(0)).current;
+  const [videoFailed, setVideoFailed] = useState(false);
+
+  const videoUrl = event ? PROMOTION_VIDEO[event.toLevel] : undefined;
+  const useVideo = !!videoUrl && !videoFailed;
+
+  // Video player (sempre criado mas so renderiza se useVideo). Hooks-rule:
+  // chamada estavel, condicional vai no render.
+  const videoPlayer = useVideoPlayer(videoUrl ?? null, (player) => {
+    player.loop = false;
+    player.muted = false;
+    // Volume da narracao em 1.0 (palco principal). SFX entra em paralelo
+    // mais baixo como BG da fala.
+    player.volume = 1.0;
+  });
 
   useEffect(() => {
     if (event) {
@@ -127,16 +149,20 @@ export function PromotionModal({ event, onClose }: Props) {
         Animated.spring(scale, { toValue: 1, useNativeDriver: true, friction: 7, tension: 60 }),
         Animated.timing(fade, { toValue: 1, duration: 220, useNativeDriver: true }),
       ]).start();
-      // SFX level_promotion (= daily_goal.mp3 — vibe mais epica do catalogo,
-      // decisao do user 2026-06-01) + haptic burst.
-      soundEngine.play('level_promotion').catch(() => {});
+      // SFX level_promotion como BG ambiente da fala da Charlotte (vol baixo).
+      // Sem video (fallback Trophy), SFX toca em vol 1.0 normal.
+      soundEngine.play('level_promotion', { volume: useVideo ? 0.25 : 1.0 }).catch(() => {});
+      // Auto-play video assim que monta
+      if (useVideo) {
+        try { videoPlayer.play(); } catch {}
+      }
       Haptics.notificationAsync(Haptics.NotificationFeedbackType.Success).catch(() => {});
       const t = setTimeout(() => {
         Haptics.impactAsync(Haptics.ImpactFeedbackStyle.Heavy).catch(() => {});
       }, 350);
       return () => clearTimeout(t);
     }
-  }, [event, scale, fade]);
+  }, [event, scale, fade, useVideo, videoPlayer]);
 
   if (!event) return null;
   const isPt   = event.toLevel === 'Inter'; // Inter ainda pode ser PT-explanation usuario; melhor pivot por toLevel
@@ -161,7 +187,6 @@ export function PromotionModal({ event, onClose }: Props) {
         padding: 24,
         opacity: fade,
       }}>
-        <Confetti />
         <Animated.View style={[{
           width: '100%', maxWidth: 360,
           backgroundColor: '#FFFFFF',
@@ -170,14 +195,29 @@ export function PromotionModal({ event, onClose }: Props) {
           alignItems: 'center',
           transform: [{ scale }],
         }, shadow as any]}>
-          <View style={{
-            width: 80, height: 80, borderRadius: 40,
-            backgroundColor: `${accent}1a`,
-            alignItems: 'center', justifyContent: 'center',
-            marginBottom: 20,
-          }}>
-            <Trophy size={42} color={accent} weight="fill" />
-          </View>
+          {useVideo ? (
+            <View style={{
+              width: 220, height: 280, borderRadius: 16, overflow: 'hidden',
+              marginBottom: 20, backgroundColor: '#F3F4F6',
+            }}>
+              <VideoView
+                player={videoPlayer}
+                style={{ width: '100%', height: '100%' }}
+                contentFit="cover"
+                nativeControls={false}
+                allowsFullscreen={false}
+              />
+            </View>
+          ) : (
+            <View style={{
+              width: 80, height: 80, borderRadius: 40,
+              backgroundColor: `${accent}1a`,
+              alignItems: 'center', justifyContent: 'center',
+              marginBottom: 20,
+            }}>
+              <Trophy size={42} color={accent} weight="fill" />
+            </View>
+          )}
 
           <AppText style={{ fontSize: 24, fontWeight: '900', color: '#16153A', marginBottom: 8, textAlign: 'center' }}>
             {title}
@@ -207,6 +247,9 @@ export function PromotionModal({ event, onClose }: Props) {
             <ArrowRight size={16} color="#FFFFFF" weight="bold" />
           </TouchableOpacity>
         </Animated.View>
+        {/* Confetti POR CIMA do card (renderiza last → topo do z-order).
+            pointerEvents='none' garante que toques passam pro botao Continue. */}
+        <Confetti />
       </Animated.View>
     </Modal>
   );

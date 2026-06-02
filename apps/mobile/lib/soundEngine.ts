@@ -102,8 +102,8 @@ class SoundEngine {
     return idx;
   }
 
-  /** Toca um som. Fire-and-forget. */
-  async play(name: SoundName): Promise<void> {
+  /** Toca um som. Fire-and-forget. volume: 0-1, default 1. */
+  async play(name: SoundName, opts?: { volume?: number }): Promise<void> {
     if (this.muted) return;
 
     // xp_gained agora e SOMENTE haptico (decisao de design: toca dezenas de
@@ -135,6 +135,9 @@ class SoundEngine {
       // resposta). Agora o SFX herda o modo atual do screen — licoes em
       // doNotMix, home/rank/etc em mixWithOthers (default ambient).
       const player = createAudioPlayer(source);
+      if (typeof opts?.volume === 'number') {
+        try { player.volume = Math.max(0, Math.min(1, opts.volume)); } catch {}
+      }
       player.play();
 
       // Cleanup do player apos a duracao maxima esperada (intro_app ~3s e o mais longo)
