@@ -188,11 +188,12 @@ export function PromotionModal({ event, onClose }: Props) {
     if (triggeredForEvent.current === key) return;
     triggeredForEvent.current = key;
 
-    scale.setValue(0.92); fade.setValue(0);
-    Animated.parallel([
-      Animated.spring(scale, { toValue: 1, useNativeDriver: true, friction: 7, tension: 60 }),
-      Animated.timing(fade, { toValue: 1, duration: 220, useNativeDriver: true }),
-    ]).start();
+    // Set direto a 1 (sem animacao de entrada). A fade-in via Animated.timing
+    // com useNativeDriver:true estava prendendo a opacity em meio-caminho no
+    // iOS (Charlotte ficava 'ghost' transparente o tempo todo do video). A
+    // animacao de entrada quem cuida eh o Modal animationType='fade' nativo.
+    fade.setValue(1);
+    scale.setValue(1);
 
     // SFX + confete so disparam ja no inicio quando NAO ha video (fallback
     // Trophy). Com video, ambos sao adiados pro fim — momento "capelo pro
