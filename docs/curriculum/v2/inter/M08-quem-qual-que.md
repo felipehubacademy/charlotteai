@@ -47,7 +47,8 @@
 
 5. **fill_gap** — "She's the friend _____ I told you about."
    **Hint**: relative pronoun for person
-   **Answer**: who (or "that")
+   **Answer**: who
+   **Accepts**: that
    **Explanation**: "Who" or "that" for people.
 
 6. **fill_gap** — "The teacher _____ teaches us is great."
@@ -212,17 +213,20 @@
 
 5. **fill_gap** — "I love books _____ teach me something."
    **Hint**: things
-   **Answer**: that (or which)
+   **Answer**: that
+   **Accepts**: which
    **Explanation**: "Books that teach" — thing + action.
 
 6. **fill_gap** — "The phone _____ I bought is broken."
    **Hint**: thing, object of clause
-   **Answer**: that (or which, or omitted)
+   **Answer**: that
+   **Accepts**: which, / omitted
    **Explanation**: "The phone that I bought" — object: that/which/omitted.
 
 7. **fill_gap** — "It's the song _____ I love."
    **Hint**: thing
-   **Answer**: that (or which)
+   **Answer**: that
+   **Accepts**: which
    **Explanation**: "Song that I love".
 
 8. **fix_error** — "The book who I read was great."
@@ -232,7 +236,8 @@
 
 9. **fix_error** — "He has a car, which is red." (defining = no comma)
    **Hint**: No comma in defining
-   **Answer**: He has a car which is red. (or: He has a red car)
+   **Answer**: He has a car which is red.
+   **Accepts**: He has a red car
    **Explanation**: Defining → no comma. Non-defining (info adicional) → comma — but M19 covers that.
 
 10. **read_answer**
@@ -566,7 +571,8 @@
 10. **read_answer**
     **Passage**: "She's the woman whose husband is a doctor. He's the guy whose car I borrowed. I have a friend whose birthday is today."
     **Question**: Whose birthday is today?
-    **Answer**: my friend's (or "a friend's")
+    **Answer**: my friend's
+    **Accepts**: a friend's
     **Explanation**: The text says "a friend whose birthday is today".
 
 ### 2. Listening/Speaking (5 phrases)
@@ -709,7 +715,8 @@
 
 6. **fill_gap** — "I have a phone _____ takes great photos."
    **Hint**: thing
-   **Answer**: that (or which)
+   **Answer**: that
+   **Accepts**: which
    **Explanation**: That/which for things.
 
 7. **fill_gap** — "The school _____ I studied is famous."

@@ -696,7 +696,10 @@
           "type": "read_answer",
           "passage": "She got hurt in a car accident last week. They got married last summer in Italy. He got hired by a big tech company last month. My phone got stolen on the bus yesterday.",
           "question": "Where did they get married?",
-          "answer": "in Italy (or \"Italy\")",
+          "answer": "in Italy",
+          "accepts": [
+            "Italy"
+          ],
           "explanation": "The text says \"They got married last summer in Italy\"."
         }
       ],

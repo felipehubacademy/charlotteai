@@ -173,7 +173,8 @@
 
 1. **multiple_choice** — Cohesive chain: "She drove a 1972 Volvo. The car was barely roadworthy. _____ vehicle had been her father's pride."
    **Options**: The / This / That / Such
-   **Answer**: The (or "The same")
+   **Answer**: The
+   **Accepts**: The same
    **Explanation**: Lexical cohesion via superordinate hierarchy: "Volvo" (specific) → "car" (less specific) → "vehicle" (even less specific). Each refers to the same object. "The vehicle" — definite article + superordinate noun, picking up the referent without repetition. Hyponym → superordinate chain.
 
 2. **multiple_choice** — Synonym substitution: "The proposal was bold. The plan would change the entire department. _____ would also test the team."
@@ -323,7 +324,8 @@
 
 3. **fill_gap** — Formal: "The aforementioned report concluded that the policy had failed. _____ findings remain unchallenged."
    **Hint**: Synonymous formal demonstrative
-   **Answer**: These (or "The aforementioned")
+   **Answer**: These
+   **Accepts**: The aforementioned
    **Explanation**: "These findings" — anaphoric link to the report's content just mentioned. Alternatively, formal: "The aforementioned findings". "Aforementioned" itself is highly formal and slightly archaic — used in legal and very formal academic writing.
 
 4. **fix_error** — "We had two options: A and B. I prefer the formal."
@@ -463,7 +465,8 @@
 
 3. **fill_gap** — Information flow: "We discussed the budget. _____ revealed significant risks."
    **Hint**: Reference back with old info first
-   **Answer**: That discussion (or "The discussion")
+   **Answer**: That discussion
+   **Accepts**: The discussion
    **Explanation**: "That discussion" (referring back) → "revealed significant risks" (new info). Or "The discussion" — definite article carries old info. The sentence builds on what was just mentioned.
 
 4. **fix_error** — Reverse information flow: "Significant risks were revealed by our discussion of the budget."
@@ -608,7 +611,8 @@
 
 4. **fix_error** — Ambiguous reference: "I gave the report to my manager, but it was incomplete."
    **Hint**: What was incomplete — the report or the manager?
-   **Answer**: I gave the report to my manager, but the report was incomplete. (or: I gave my manager the report, which was still incomplete.)
+   **Answer**: I gave the report to my manager, but the report was incomplete.
+   **Accepts**: I gave my manager the report, which was still incomplete.
    **Explanation**: "It" could refer to the report or the manager. Repeat the noun to disambiguate, or restructure the sentence. C2 prose avoids reference ambiguity even at the cost of slight repetition.
 
 5. **read_answer**

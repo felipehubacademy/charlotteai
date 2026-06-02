@@ -245,7 +245,8 @@
 10. **read_answer**
     **Passage**: "I can swim but I can't dive. My friend can speak French but she can't write it well. We can both ride a bike."
     **Question**: What can the friend NOT do well?
-    **Answer**: write (or "write French")
+    **Answer**: write
+    **Accepts**: write French
     **Explanation**: O texto diz "she can't write it well".
 
 ### 2. Listening/Speaking (5 phrases)

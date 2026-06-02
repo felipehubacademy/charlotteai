@@ -76,7 +76,8 @@
 10. **read_answer**
     **Passage**: "I'm taller than my brother but he's older than me. Our sister is younger than both of us. She's also faster — she runs every morning."
     **Question**: Who is older than the speaker?
-    **Answer**: my brother (or "her/his brother")
+    **Answer**: my brother
+    **Accepts**: her/his brother
     **Explanation**: O texto diz "he's older than me" se referindo ao irmão.
 
 ### 2. Listening/Speaking (5 phrases)
@@ -736,7 +737,8 @@
 10. **read_answer**
     **Passage**: "I'm taller than my brother but he's much stronger. My sister is more patient than both of us. She's a better listener too."
     **Question**: Who is the best listener?
-    **Answer**: my sister (or "her sister" / "the sister")
+    **Answer**: my sister
+    **Accepts**: her sister / the sister
     **Explanation**: O texto diz "She's a better listener" — se referindo à irmã (melhor ouvinte que o falante e o irmão).
 
 ### 2. Listening/Speaking (5 phrases)

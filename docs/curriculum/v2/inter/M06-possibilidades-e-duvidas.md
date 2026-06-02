@@ -57,7 +57,8 @@
 
 7. **fill_gap** — "_____ I borrow your pen?" (asking permission politely)
    **Hint**: polite modal
-   **Answer**: Might (or May/Could)
+   **Answer**: Might
+   **Accepts**: May/Could
    **Explanation**: "Might I/May I/Could I" — polite request.
 
 8. **fix_error** — "She mights come."
@@ -401,7 +402,8 @@
 10. **read_answer**
     **Passage**: "It could be true. She could be at home. We could go to the beach later — it sounds nice."
     **Question**: What's the speaker considering?
-    **Answer**: going to the beach (or "the beach")
+    **Answer**: going to the beach
+    **Accepts**: the beach
     **Explanation**: The text says "We could go to the beach later".
 
 ### 2. Listening/Speaking (5 phrases)
@@ -565,7 +567,8 @@
 10. **read_answer**
     **Passage**: "That can't be John — he's in Paris. It can't be that simple. They can't be late — the meeting starts at 9."
     **Question**: Why is it not John?
-    **Answer**: he's in Paris (or "in Paris")
+    **Answer**: he's in Paris
+    **Accepts**: in Paris
     **Explanation**: The text says "he's in Paris" — reason it can't be him.
 
 ### 2. Listening/Speaking (5 phrases)
@@ -704,7 +707,8 @@
 
 5. **fill_gap** — "It _____ snow tonight — clouds are heavy."
    **Hint**: possibility
-   **Answer**: might (or may/could)
+   **Answer**: might
+   **Accepts**: may/could
    **Explanation**: All three express possibility.
 
 6. **fill_gap** — "That _____ be true — it's impossible!"
@@ -719,7 +723,8 @@
 
 8. **fix_error** — "She maybe come." (verb structure)
    **Hint**: "Maybe" is adverb; "may be" is modal + verb
-   **Answer**: She may come. (or "Maybe she'll come")
+   **Answer**: She may come.
+   **Accepts**: Maybe she'll come
    **Explanation**: "Maybe" (adv) is one word; "may + verb" needs space and base form.
 
 9. **fix_error** — "He might to be late."
@@ -730,7 +735,8 @@
 10. **read_answer**
     **Passage**: "She might be at home. He could be late. They may come tomorrow. That can't be John — too tall."
     **Question**: Why can't it be John?
-    **Answer**: too tall (or "John is too tall" or "shorter")
+    **Answer**: too tall
+    **Accepts**: John is too tall / shorter
     **Explanation**: The text says "too tall" reasoning.
 
 ### 2. Listening/Speaking (5 phrases)

@@ -570,7 +570,8 @@
 10. **read_answer**
     **Passage**: "She got hurt in a car accident last week. They got married last summer in Italy. He got hired by a big tech company last month. My phone got stolen on the bus yesterday."
     **Question**: Where did they get married?
-    **Answer**: in Italy (or "Italy")
+    **Answer**: in Italy
+    **Accepts**: Italy
     **Explanation**: The text says "They got married last summer in Italy".
 
 ### 2. Listening/Speaking (5 phrases)

@@ -305,7 +305,10 @@
           "type": "read_answer",
           "passage": "I have few friends but a few good ones. She has little time but a little energy. We make it work.",
           "question": "How many good friends does the speaker have?",
-          "answer": "a few (or \"a few good ones\")",
+          "answer": "a few",
+          "accepts": [
+            "a few good ones"
+          ],
           "explanation": "The text says \"a few good ones\"."
         }
       ],
@@ -495,7 +498,11 @@
           "type": "read_answer",
           "passage": "We have plenty of food but hardly any drinks. There's plenty of time but hardly any money.",
           "question": "What's scarce?",
-          "answer": "drinks and money (or \"drinks\" or \"money\")",
+          "answer": "drinks and money",
+          "accepts": [
+            "drinks",
+            "money"
+          ],
           "explanation": "\"Hardly any drinks\" and \"hardly any money\" — both scarce."
         }
       ],
@@ -671,7 +678,10 @@
           "type": "fix_error",
           "sentence": "I have several time.",
           "hint": "several = countable",
-          "answer": "I have plenty of time. (or \"a lot of time\")",
+          "answer": "I have plenty of time.",
+          "accepts": [
+            "a lot of time"
+          ],
           "explanation": "\"Several\" only with countable. For uncountable use \"plenty of\" or \"a lot of\"."
         },
         {
@@ -685,7 +695,10 @@
           "type": "read_answer",
           "passage": "I have several books on history. Most of my friends like to read. Most people prefer fiction over non-fiction.",
           "question": "What do most people prefer?",
-          "answer": "fiction (or \"fiction over non-fiction\")",
+          "answer": "fiction",
+          "accepts": [
+            "fiction over non-fiction"
+          ],
           "explanation": "The text says \"Most people prefer fiction\"."
         }
       ],
@@ -841,7 +854,10 @@
           "type": "fill_gap",
           "sentence": "There's _____ food in the fridge.",
           "hint": "small amount",
-          "answer": "a little (or some)",
+          "answer": "a little",
+          "accepts": [
+            "some"
+          ],
           "explanation": "\"A little food\" — small positive amount."
         },
         {
@@ -855,7 +871,10 @@
           "type": "fill_gap",
           "sentence": "I have _____ patience for delays today.",
           "hint": "negative (almost none)",
-          "answer": "little (or hardly any)",
+          "answer": "little",
+          "accepts": [
+            "hardly any"
+          ],
           "explanation": "\"Little patience\" or \"hardly any patience\"."
         },
         {

@@ -77,7 +77,8 @@
 10. **read_answer**
     **Passage**: "I'll call you when I arrive at the airport. We'll have dinner when everyone gets home. She'll let me know when she finishes the project. By the time you read this, I'll be on the plane."
     **Question**: When will the speaker call?
-    **Answer**: when I arrive at the airport (or "when arriving" or "after arrival")
+    **Answer**: when I arrive at the airport
+    **Accepts**: when arriving / after arrival
     **Explanation**: The text says "I'll call you when I arrive at the airport" — present simple in the time clause.
 
 ### 2. Listening/Speaking (5 phrases)
@@ -242,7 +243,8 @@
 10. **read_answer**
     **Passage**: "Before you leave, please lock the door. After we eat dinner, we'll go for a walk. I'll text you before I arrive. After she finishes the report, she'll send it."
     **Question**: When will the speaker text?
-    **Answer**: before I arrive (or "before arriving")
+    **Answer**: before I arrive
+    **Accepts**: before arriving
     **Explanation**: The text says "I'll text you before I arrive" — present simple "arrive" after "before" in future context.
 
 ### 2. Listening/Speaking (5 phrases)
@@ -407,7 +409,8 @@
 10. **read_answer**
     **Passage**: "I'll wait until you arrive at the station. By the time we finish dinner, it'll be 10pm. Stay here until I get back. By the time I write this, my flight will be boarding."
     **Question**: What will the speaker do until the listener arrives?
-    **Answer**: wait (or "wait at the station")
+    **Answer**: wait
+    **Accepts**: wait at the station
     **Explanation**: The text says "I'll wait until you arrive at the station".
 
 ### 2. Listening/Speaking (5 phrases)
@@ -572,7 +575,8 @@
 10. **read_answer**
     **Passage**: "I'll call you as soon as I get home. As soon as she hears the news, she'll be thrilled. Let me know as soon as you arrive. As soon as I have updates, I'll share them."
     **Question**: When will the speaker share updates?
-    **Answer**: as soon as I have updates (or "immediately when there are updates")
+    **Answer**: as soon as I have updates
+    **Accepts**: immediately when there are updates
     **Explanation**: The text says "As soon as I have updates, I'll share them" — present simple "have" after "as soon as".
 
 ### 2. Listening/Speaking (5 phrases)
@@ -737,7 +741,8 @@
 10. **read_answer**
     **Passage**: "As soon as I land, I'll text you. By the time we meet for dinner, I'll have unpacked. Until then, please water my plants. After I get back, we'll celebrate."
     **Question**: What should the listener do until the speaker meets them?
-    **Answer**: water my plants (or "water the plants")
+    **Answer**: water my plants
+    **Accepts**: water the plants
     **Explanation**: The text says "Until then, please water my plants" — instruction for the duration.
 
 ### 2. Listening/Speaking (5 phrases)

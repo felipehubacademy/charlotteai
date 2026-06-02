@@ -405,7 +405,8 @@
 10. **read_answer**
     **Passage**: "If you need help, I'll come. If you're hungry, I'll cook. If you have time, we'll chat. I'm here for you."
     **Question**: What will the speaker do if you're hungry?
-    **Answer**: cook (or "I'll cook")
+    **Answer**: cook
+    **Accepts**: I'll cook
     **Explanation**: O texto diz "If you're hungry, I'll cook".
 
 ### 2. Listening/Speaking (5 phrases)
@@ -570,7 +571,8 @@
 10. **read_answer**
     **Passage**: "I'll come to the party unless I'm tired. We'll go hiking unless it rains. I'll cook dinner unless you want pizza."
     **Question**: When won't the speaker come to the party?
-    **Answer**: if I'm tired (or "tired")
+    **Answer**: if I'm tired
+    **Accepts**: tired
     **Explanation**: O texto diz "I'll come unless I'm tired" — significando que não virá se estiver cansado.
 
 ### 2. Listening/Speaking (5 phrases)
@@ -735,7 +737,8 @@
 10. **read_answer**
     **Passage**: "If it's sunny tomorrow, I'll go to the beach. If it rains, I'll stay home. I'll meet my friend unless she cancels."
     **Question**: When won't the speaker meet the friend?
-    **Answer**: if she cancels (or "she cancels")
+    **Answer**: if she cancels
+    **Accepts**: she cancels
     **Explanation**: O texto diz "unless she cancels" — significando que não vão se encontrar se ela cancelar.
 
 ### 2. Listening/Speaking (5 phrases)

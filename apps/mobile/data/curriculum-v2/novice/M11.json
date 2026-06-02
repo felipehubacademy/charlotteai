@@ -321,7 +321,10 @@
           "type": "read_answer",
           "passage": "I like this dress (in my hand). That dress over there is too expensive. These shoes fit me. Those shoes don't fit.",
           "question": "Which item is expensive?",
-          "answer": "that dress (or \"the dress over there\")",
+          "answer": "that dress",
+          "accepts": [
+            "the dress over there"
+          ],
           "explanation": "O texto diz \"That dress over there is too expensive\"."
         }
       ],

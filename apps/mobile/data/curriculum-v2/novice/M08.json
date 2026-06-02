@@ -523,7 +523,10 @@
           "type": "read_answer",
           "passage": "My sister calls me every Sunday. I love talking to her. She tells me about her week. I tell her about mine.",
           "question": "Who calls every Sunday?",
-          "answer": "my sister (or \"the sister\")",
+          "answer": "my sister",
+          "accepts": [
+            "the sister"
+          ],
           "explanation": "O texto diz \"My sister calls me every Sunday\"."
         }
       ],
@@ -730,7 +733,10 @@
           "type": "read_answer",
           "passage": "I love pop music. I like action movies. I hate horror books. My sister loves classical music — totally different.",
           "question": "What kind of music does the sister love?",
-          "answer": "classical (or \"classical music\")",
+          "answer": "classical",
+          "accepts": [
+            "classical music"
+          ],
           "explanation": "O texto diz \"My sister loves classical music\"."
         }
       ],

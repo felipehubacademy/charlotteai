@@ -77,7 +77,8 @@
 10. **read_answer**
     **Passage**: "He said he was tired. She said she worked in finance. They said they lived in São Paulo. He said he was studying English."
     **Question**: What did she say she did for work?
-    **Answer**: worked in finance (or "she worked in finance")
+    **Answer**: worked in finance
+    **Accepts**: she worked in finance
     **Explanation**: The text says "She said she worked in finance".
 
 ### 2. Listening/Speaking (5 phrases)
@@ -236,7 +237,8 @@
 
 9. **fix_error** — "He told that the meeting was canceled."
    **Hint**: "Tell" precisa de pessoa — falta objeto
-   **Answer**: He said that the meeting was canceled. (or: He told everyone that...)
+   **Answer**: He said that the meeting was canceled.
+   **Accepts**: He told everyone that...
    **Explanation**: "Tell" without an object doesn't work. Either use "said" (no person), or add a person ("told someone, told everyone").
 
 10. **read_answer**
@@ -407,7 +409,8 @@
 10. **read_answer**
     **Passage**: "He said he had finished the report. She said she had visited Paris twice. He said he had seen the movie three times. They said they had been to Japan for vacation."
     **Question**: How many times had he seen the movie?
-    **Answer**: three times (or "three")
+    **Answer**: three times
+    **Accepts**: three
     **Explanation**: The text says "He said he had seen the movie three times".
 
 ### 2. Listening/Speaking (5 phrases)
@@ -572,7 +575,8 @@
 10. **read_answer**
     **Passage**: "He said he would call me later. She said she could speak three languages. He said he might be late for dinner. She said she had to leave early."
     **Question**: Why might he be late?
-    **Answer**: for dinner (or "he might be late for dinner")
+    **Answer**: for dinner
+    **Accepts**: he might be late for dinner
     **Explanation**: The text says "He said he might be late for dinner".
 
 ### 2. Listening/Speaking (5 phrases)
@@ -737,7 +741,8 @@
 10. **read_answer**
     **Passage**: "He said he was tired that day. She said she would come the next day. He said he had been there the day before. She said she loved that song."
     **Question**: When did she say she would come?
-    **Answer**: the next day (or "the following day")
+    **Answer**: the next day
+    **Accepts**: the following day
     **Explanation**: The text says "She said she would come the next day".
 
 ### 2. Listening/Speaking (5 phrases)

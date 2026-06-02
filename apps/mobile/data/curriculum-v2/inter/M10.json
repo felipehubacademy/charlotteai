@@ -287,7 +287,10 @@
           "type": "fill_gap",
           "sentence": "I _____ go to the beach if it's sunny on Saturday.",
           "hint": "future específico, contração de \"I will\"",
-          "answer": "'ll (or will)",
+          "answer": "'ll",
+          "accepts": [
+            "will"
+          ],
           "explanation": "\"On Saturday\" = specific event → first conditional. \"I'll go\" or \"I will go\" in the future consequence."
         },
         {
@@ -319,7 +322,10 @@
           "type": "read_answer",
           "passage": "If you don't water plants, they die — that's how nature works. If it rains tomorrow, I'll stay home and read. Plants need sunlight to grow, and if they don't get it, they wither.",
           "question": "What will the speaker do if it rains tomorrow?",
-          "answer": "stay home and read (or \"stay home\")",
+          "answer": "stay home and read",
+          "accepts": [
+            "stay home"
+          ],
           "explanation": "The text says \"If it rains tomorrow, I'll stay home and read\" — first conditional with specific future plan."
         }
       ],
@@ -706,7 +712,10 @@
           "type": "read_answer",
           "passage": "If you study consistently, you learn faster — that's universal. If I have free time this weekend, I'll catch up on reading. Plants need water; if they don't get it, they die. When it gets dark, I usually feel sleepy.",
           "question": "What does the speaker plan to do this weekend?",
-          "answer": "catch up on reading (or \"reading\")",
+          "answer": "catch up on reading",
+          "accepts": [
+            "reading"
+          ],
           "explanation": "The text says \"If I have free time this weekend, I'll catch up on reading\" — specific future plan."
         }
       ],
@@ -877,7 +886,10 @@
           "type": "fill_gap",
           "sentence": "_____ you study consistently, you make progress.",
           "hint": "\"if\" ou \"when\" — verdade geral",
-          "answer": "If (or When)",
+          "answer": "If",
+          "accepts": [
+            "When"
+          ],
           "explanation": "Both work in universal truths. \"If/When you study consistently\"."
         },
         {
@@ -898,7 +910,10 @@
           "type": "read_answer",
           "passage": "If you take this medicine three times a day, you'll feel better in a week. If I finish work early tomorrow, I'll join you for dinner. When water freezes, it expands — that's why pipes burst in winter.",
           "question": "When will the speaker join for dinner?",
-          "answer": "if I finish work early tomorrow (or \"tomorrow if work ends early\")",
+          "answer": "if I finish work early tomorrow",
+          "accepts": [
+            "tomorrow if work ends early"
+          ],
           "explanation": "The text says \"If I finish work early tomorrow, I'll join you for dinner\" — first conditional with specific plan."
         }
       ],

@@ -571,7 +571,8 @@
 10. **read_answer**
     **Passage**: "Q: Have you ever traveled solo? A: Yes, I have. Q: Has your sister tried sushi? A: No, she hasn't. She doesn't like fish."
     **Question**: Has the sister tried sushi?
-    **Answer**: no (or "she hasn't")
+    **Answer**: no
+    **Accepts**: she hasn't
     **Explanation**: The text says "No, she hasn't".
 
 ### 2. Listening/Speaking (5 phrases)

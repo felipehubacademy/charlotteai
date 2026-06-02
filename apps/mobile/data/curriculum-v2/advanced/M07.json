@@ -379,7 +379,10 @@
           "type": "read_answer",
           "passage": "She refused to accept the apology. He agreed to drop the issue but offered to revisit it after a week. By the time the week passed, neither had threatened to escalate further — and both had managed to find more important things to argue about.",
           "question": "What did he offer to do?",
-          "answer": "revisit it after a week (or \"revisit the issue after a week\")",
+          "answer": "revisit it after a week",
+          "accepts": [
+            "revisit the issue after a week"
+          ],
           "explanation": "Four verbs all \"+ to + infinitive\": \"refused to accept\", \"agreed to drop\", \"offered to revisit\", \"threatened to escalate\", \"managed to find\". Same family — fluent reporting demands recognising this group."
         }
       ],
@@ -668,7 +671,10 @@
           "type": "fix_error",
           "sentence": "According me, the meeting was a waste of time.",
           "hint": "\"According to + person\", not used for own opinion",
-          "answer": "In my opinion, the meeting was a waste of time. (or: I think the meeting was a waste of time.)",
+          "answer": "In my opinion, the meeting was a waste of time.",
+          "accepts": [
+            "I think the meeting was a waste of time."
+          ],
           "explanation": "\"According to\" is for citing OTHERS, not yourself. \"According to me\" is grammatically possible but stylistically wrong. Use \"In my opinion\" or \"I think\" for your own view."
         },
         {

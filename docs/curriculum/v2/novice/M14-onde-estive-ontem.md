@@ -738,7 +738,8 @@
 10. **read_answer**
     **Passage**: "When I was a child, we were poor but happy. My parents were always busy. It was a simple life."
     **Question**: How were the parents?
-    **Answer**: always busy (or "busy")
+    **Answer**: always busy
+    **Accepts**: busy
     **Explanation**: O texto diz "My parents were always busy".
 
 ### 2. Listening/Speaking (5 phrases)

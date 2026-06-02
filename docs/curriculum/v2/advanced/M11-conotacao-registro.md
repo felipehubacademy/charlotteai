@@ -49,18 +49,21 @@
 
 3. **fill_gap** — "She's not stingy with the budget — she's _____."
    **Hint**: positive word for careful with money
-   **Answer**: thrifty (or "frugal")
+   **Answer**: thrifty
+   **Accepts**: frugal
    **Explanation**: "Stingy" is strongly negative (selfishly cheap). "Thrifty" is positive (wisely economical). "Frugal" is neutral-positive (austere by choice). "Cheap" sits negative when applied to a person. Reframing "stingy" as "thrifty" reverses the moral charge while describing the same act.
 
 4. **fix_error** — "Your essay was great — really skinny and direct."
    **Hint**: "Skinny" is mildly negative for body, wrong word for prose
-   **Answer**: Your essay was great — really lean and direct. (or: tight, concise)
+   **Answer**: Your essay was great — really lean and direct.
+   **Accepts**: tight, concise
    **Explanation**: "Skinny" carries unkind body-image weight. Applied to writing, the better word is "lean" or "tight" or "concise" — all positive. Connotation matters: "slim" leans neutral, "slender" leans positive, "skinny/scrawny" lean negative.
 
 5. **read_answer**
    **Passage**: "The two profiles painted opposite pictures from the same facts. One described her as confident, assertive, and ambitious; the other called her cocky, aggressive, and ruthless. Both writers, the reporter realised, had spent the same hour with her. Only the connotations differed."
    **Question**: What did the reporter realise about the two profiles?
-   **Answer**: they used different connotations to describe the same facts (or "only the connotations differed")
+   **Answer**: they used different connotations to describe the same facts
+   **Accepts**: only the connotations differed
    **Explanation**: Three contrasting pairs: "confident vs cocky", "assertive vs aggressive", "ambitious vs ruthless". Each pair denotes similar behaviour but encodes a different judgement. Word choice is moral judgement compressed into a syllable.
 
 ### 2. Listening/Speaking (5 phrases)
@@ -329,7 +332,8 @@
 
 3. **fill_gap** — "Three hundred employees were _____ in the restructuring."
    **Hint**: Corporate euphemism for "fired"
-   **Answer**: let go (or "laid off")
+   **Answer**: let go
+   **Accepts**: laid off
    **Explanation**: "Let go" — corporate euphemism for "fired". "Laid off" specifically implies layoffs (no fault of the worker). "Fired" implies cause/fault. C1 register knows when each fits. Press releases prefer "let go" or "laid off"; HR conversations may use both depending on circumstance.
 
 4. **fix_error** — Funeral condolence: "Sorry about your grandmother — she died Tuesday, right?"
@@ -340,7 +344,8 @@
 5. **read_answer**
    **Passage**: "The obituary was full of soft phrases. 'After a long illness, she passed away peacefully at home, surrounded by loved ones. She is survived by her husband and three children.' Compare that to the medical report: 'Cause of death: metastatic breast cancer.' Same event, two registers — one private, one public."
    **Question**: How does the medical report differ in register from the obituary?
-   **Answer**: it's direct/clinical (or: it doesn't use euphemism / it states cause without softening)
+   **Answer**: it's direct/clinical
+   **Accepts**: it doesn't use euphemism / it states cause without softening
    **Explanation**: The obituary uses three euphemism layers: "passed away" (died), "peacefully" (comfort claim), "is survived by" (formal family-listing phrase). The medical record uses denotative direct language. Register sits between speaker, audience, and purpose.
 
 ### 2. Listening/Speaking (5 phrases)
@@ -474,13 +479,15 @@
 
 4. **fix_error** — "The new apartment isn't cheap exactly."
    **Hint**: Word order — "not exactly cheap"
-   **Answer**: The new apartment isn't exactly cheap. (or: The new apartment is not exactly cheap.)
+   **Answer**: The new apartment isn't exactly cheap.
+   **Accepts**: The new apartment is not exactly cheap.
    **Explanation**: "Not exactly + adjective" — litotes meaning "actually quite the opposite". "Not exactly cheap" means expensive. Fixed word order: "not exactly + X". "Not cheap exactly" is awkward — adverb placement matters.
 
 5. **read_answer**
    **Passage**: "His review was a small masterclass in understatement. 'The restaurant is not without its charms. The wine list is no small achievement. The chef is not exactly modest about his accomplishments — and, I have to admit, not without reason. I wouldn't say no to returning.' Behind every negation was a quiet enthusiasm."
    **Question**: How does the reviewer feel about returning to the restaurant?
-   **Answer**: positive / wants to return (or "would happily return")
+   **Answer**: positive / wants to return
+   **Accepts**: would happily return
    **Explanation**: Four litotes in four sentences: "not without its charms" (charming), "no small achievement" (impressive), "not exactly modest... not without reason" (justifiably proud), "wouldn't say no" (would say yes). British-style understatement runs the whole passage.
 
 ### 2. Listening/Speaking (5 phrases)
@@ -609,12 +616,14 @@
 
 3. **fill_gap** — Tech meeting among engineers: "We need to _____ the deployment script before merging."
    **Hint**: Verb that fits engineer-casual register
-   **Answer**: refactor (or "rewrite", "clean up")
+   **Answer**: refactor
+   **Accepts**: rewrite", "clean up
    **Explanation**: Engineer-register prefers technical verbs in casual contexts. "Refactor" is technical but conversational. "Restructure" would be formal-corporate. "Fix" would be too vague. C1 register fluency includes knowing the verb each subculture defaults to.
 
 4. **fix_error** — Slack message to your boss: "Yo, can you pop into the call?"
    **Hint**: "Yo" is too casual for any boss except in very informal cultures
-   **Answer**: Hey, do you have a moment to join the call? (or: Could you join the call?)
+   **Answer**: Hey, do you have a moment to join the call?
+   **Accepts**: Could you join the call?
    **Explanation**: "Yo" is youth-register, fits only specific subcultures. Most professional contexts read "yo" as too casual or jarring. Even in informal Slack cultures, "hey" is safer. Register-reading is part of professional C1.
 
 5. **read_answer**
@@ -754,7 +763,8 @@
 
 4. **fix_error** — Por português falar 'pretender', você diz em inglês: "I pretend to leave tomorrow."
    **Hint**: false cognate — "pretend" doesn't mean "intend"
-   **Answer**: I intend to leave tomorrow. (or: I plan to leave tomorrow.)
+   **Answer**: I intend to leave tomorrow.
+   **Accepts**: I plan to leave tomorrow.
    **Explanation**: "Pretend" in English = "fingir" (to feign). "Pretender" in Portuguese = "to intend" in English. Classic false cognate. Other traps: "push" (empurrar) ≠ "puxar"; "library" (biblioteca) ≠ "livraria" (bookstore); "actually" (na verdade) ≠ "atualmente" (currently).
 
 5. **read_answer**

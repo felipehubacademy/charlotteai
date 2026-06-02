@@ -49,7 +49,8 @@
 
 4. **fix_error** — "I want go to the cinema." (Answering "Why aren't you coming?")
    **Hint**: Either include the full verb or use "to" + ellipsis
-   **Answer**: I want to. (or: I want to go, but...)
+   **Answer**: I want to.
+   **Accepts**: I want to go, but...
    **Explanation**: "I want go" is ungrammatical — "want" requires "to + infinitive". For ellipsis: "I want to" (verb omitted, "to" kept). For full statement: "I want to go". Don't drop the "to" without dropping more.
 
 5. **read_answer**
@@ -184,7 +185,8 @@
 
 3. **fill_gap** — "Are you sure about the date?" "I _____, but let me double-check."
    **Hint**: "Believe so" or "think so"
-   **Answer**: believe so (or "think so")
+   **Answer**: believe so
+   **Accepts**: think so
    **Explanation**: "I believe so" — substitution after believe. Same pattern with other thinking verbs: think, suppose, imagine, presume, gather. All take "so" or "not" as clause replacements in conversation.
 
 4. **fix_error** — "Will she come? I think yes."
@@ -459,17 +461,20 @@
 
 2. **multiple_choice** — General: "He apologised, and she _____ shortly after."
    **Options**: did the same / did so / does it / made the same
-   **Answer**: did the same (or "did so")
+   **Answer**: did the same
+   **Accepts**: did so
    **Explanation**: "Did the same" — natural for the meaning "did what he did". "Did so" works too but is slightly more formal. The substitute replaces "apologised" so we don't repeat it. Both are valid C2 substitutions for verb phrases.
 
 3. **fill_gap** — "I told her I would email Monday, but she suggested I _____ today instead."
    **Hint**: "Do it" or "do so"
-   **Answer**: do so (or "do it")
+   **Answer**: do so
+   **Accepts**: do it
    **Explanation**: "Do so" or "do it" — both replace "email" here. "Do so" leans formal; "do it" leans conversational. C2 speakers choose by register.
 
 4. **fix_error** — "She walked into the room. He did so." (Stylistically — too repetitive of action)
    **Hint**: Native English often uses "He did the same" or "He did too"
-   **Answer**: She walked into the room. He did the same. (or: She walked into the room. He did too.)
+   **Answer**: She walked into the room. He did the same.
+   **Accepts**: She walked into the room. He did too.
    **Explanation**: "He did so" is grammatical but stylistically heavy in narrative — feels formal-stilted. "Did the same" or "did too" or "followed" reads more naturally. Register-aware substitution: "do so" for formal, "do the same / do too" for everyday narrative.
 
 5. **read_answer**
@@ -599,17 +604,20 @@
 
 2. **multiple_choice** — "I haven't seen that film." "_____."
    **Options**: Neither have I / So have I / Either have I / Me neither
-   **Answer**: Neither have I (or "Me neither" in casual register)
+   **Answer**: Neither have I
+   **Accepts**: Me neither" in casual register
    **Explanation**: "Neither have I" — echo for negative statements. Pattern: "Neither + auxiliary + subject". Both work: "Neither have I" (formal) and "Me neither" (informal). Some speakers say "Nor have I" — synonymous with "Neither have I".
 
 3. **fill_gap** — "She was tired." "_____."
    **Hint**: Echo with "so + was + subject"
-   **Answer**: So was I (or "So was he" / "So was everyone")
+   **Answer**: So was I
+   **Accepts**: So was he / So was everyone
    **Explanation**: Past simple of "be" → "So was + subject". Pattern: match the auxiliary form ("was") and invert with the subject. The whole verb phrase is replaced by the auxiliary echo.
 
 4. **fix_error** — "I don't like coffee." "Me too."
    **Hint**: For negative agreement, use "Me neither" or "Neither do I"
-   **Answer**: I don't like coffee. — Me neither. (or: Neither do I.)
+   **Answer**: I don't like coffee. — Me neither.
+   **Accepts**: Neither do I.
    **Explanation**: "Me too" is for positive agreement ("I like coffee. — Me too"). For negative agreement, use "Me neither" or "Neither do I". Common L2 error — defaulting to "me too" for all agreement.
 
 5. **read_answer**

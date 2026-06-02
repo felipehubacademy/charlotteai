@@ -71,7 +71,10 @@
           "type": "read_answer",
           "passage": "Linguists often note that bilingual children process language differently. Had Maria's parents spoken Portuguese to her at home, she would likely be fluent today. Instead, she has spent the last two years catching up on a language her own family treats as second nature.",
           "question": "Why isn't Maria fluent in Portuguese today, according to the passage?",
-          "answer": "her parents didn't speak Portuguese to her at home (or: they didn't speak it at home)",
+          "answer": "her parents didn't speak Portuguese to her at home",
+          "accepts": [
+            "they didn't speak it at home"
+          ],
           "explanation": "The inverted third conditional \"Had Maria's parents spoken...\" reveals the unmet past condition. The mixed form (\"would likely be fluent today\") makes the present consequence explicit."
         }
       ],
@@ -220,7 +223,10 @@
           "type": "read_answer",
           "passage": "Engineers tend to overplan. If our lead developer weren't so detail-obsessed, we would have shipped the prototype three months ago. As it stands, we're still polishing edges that no user will ever see.",
           "question": "Why hasn't the prototype shipped yet?",
-          "answer": "the lead developer is too detail-obsessed (or \"is overly detail-obsessed\")",
+          "answer": "the lead developer is too detail-obsessed",
+          "accepts": [
+            "is overly detail-obsessed"
+          ],
           "explanation": "The permanent trait (\"weren't so detail-obsessed\") explains the past failure (\"would have shipped three months ago\"). Mixed conditional in action."
         }
       ],
@@ -363,14 +369,20 @@
           "type": "fix_error",
           "sentence": "If had I known, I would have told you.",
           "hint": "When you invert, drop \"if\" entirely",
-          "answer": "Had I known, I would have told you. (or: If I had known, I would have told you.)",
+          "answer": "Had I known, I would have told you.",
+          "accepts": [
+            "If I had known, I would have told you."
+          ],
           "explanation": "You can either use \"if + had + subject\" OR invert (\"had + subject\" without \"if\"). Mixing both — \"if had I\" — is ungrammatical. Inversion replaces \"if\"."
         },
         {
           "type": "read_answer",
           "passage": "The architect's notebook reveals a single regret. 'Had I trusted my first instinct,' she wrote, 'the building would stand differently today.' Critics now agree that the compromise version softened what could have been her boldest work.",
           "question": "What does the architect regret?",
-          "answer": "not trusting her first instinct (or \"compromising her first instinct\")",
+          "answer": "not trusting her first instinct",
+          "accepts": [
+            "compromising her first instinct"
+          ],
           "explanation": "\"Had I trusted\" — inverted regret. The mixed conditional consequence (\"would stand differently today\") connects past hesitation to present reality."
         }
       ],
@@ -520,7 +532,10 @@
           "type": "read_answer",
           "passage": "The contract reads, in its closing clause: 'Were either party to withdraw before completion, the deposit shall be forfeit. Should circumstances require an extension, the parties may renegotiate in good faith.' The language is deliberately old-fashioned — clarity dressed as ceremony.",
           "question": "What happens if a party withdraws early?",
-          "answer": "the deposit is forfeit (or \"the deposit shall be forfeit\")",
+          "answer": "the deposit is forfeit",
+          "accepts": [
+            "the deposit shall be forfeit"
+          ],
           "explanation": "\"Were either party to withdraw\" — inverted second conditional. \"Shall be forfeit\" — formal passive future. The whole clause demonstrates legal-register inversion."
         }
       ],
@@ -667,7 +682,10 @@
           "type": "read_answer",
           "passage": "Suppose for a moment that the city had invested in flood barriers a decade ago. But for that investment, last year's storm would have done ten times more damage. The cost-benefit is rarely visible until disaster arrives — or doesn't.",
           "question": "What hypothetically prevented worse damage from last year's storm?",
-          "answer": "the investment in flood barriers a decade ago (or \"the flood barriers\")",
+          "answer": "the investment in flood barriers a decade ago",
+          "accepts": [
+            "the flood barriers"
+          ],
           "explanation": "\"Suppose\" opens the hypothetical; \"But for that investment\" gestures at the counterfactual (\"if it weren't for that investment, the damage would have been ten times worse\"). C1 phrasing layering two alternatives to \"if\"."
         }
       ],

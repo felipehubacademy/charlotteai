@@ -117,7 +117,10 @@
           "type": "read_answer",
           "passage": "English is spoken in many countries around the world. Coffee is grown in Brazil and Colombia. These shirts are made in Italy. Rice is grown mostly in Asia.",
           "question": "Where is coffee grown?",
-          "answer": "in Brazil and Colombia (or \"Brazil and Colombia\")",
+          "answer": "in Brazil and Colombia",
+          "accepts": [
+            "Brazil and Colombia"
+          ],
           "explanation": "The text says \"Coffee is grown in Brazil and Colombia\"."
         }
       ],
@@ -505,7 +508,11 @@
           "type": "read_answer",
           "passage": "The road is being repaired this week. The reports are being written right now. My car is being fixed today — I'll get it back tomorrow. The new houses are being built next to the park.",
           "question": "What is being built next to the park?",
-          "answer": "new houses (or \"houses\" or \"the new houses\")",
+          "answer": "new houses",
+          "accepts": [
+            "houses",
+            "the new houses"
+          ],
           "explanation": "The text says \"The new houses are being built next to the park\"."
         }
       ],
@@ -699,7 +706,10 @@
           "type": "read_answer",
           "passage": "The package has been delivered already. Three new schools have been built this year. The report has been finished and sent to the client. Many decisions have been made recently.",
           "question": "What has happened to the report?",
-          "answer": "it has been finished and sent (or \"finished and sent\")",
+          "answer": "it has been finished and sent",
+          "accepts": [
+            "finished and sent"
+          ],
           "explanation": "The text says \"The report has been finished and sent to the client\"."
         }
       ],

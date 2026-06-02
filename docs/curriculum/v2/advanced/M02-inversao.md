@@ -54,7 +54,8 @@
 5. **read_answer**
    **Passage**: "Reviewing the season, the coach was uncharacteristically blunt. 'Rarely have we played with so little discipline,' she said. 'Seldom does a team lose three games it should have won. We've earned exactly where we stand.'"
    **Question**: What does the coach criticize about the team?
-   **Answer**: their lack of discipline (or "playing with little discipline" or "losing winnable games")
+   **Answer**: their lack of discipline
+   **Accepts**: playing with little discipline / losing winnable games
    **Explanation**: Two fronted inversions ("Rarely have we played" and "Seldom does a team lose") emphasise the rarity — and weight — of the criticism. The coach is using formal-public register.
 
 ### 2. Listening/Speaking (5 phrases)
@@ -334,7 +335,8 @@
 5. **read_answer**
    **Passage**: "The award citation read: 'Not only has Dr. Lima reshaped the field through her research, but she has also mentored a generation of scientists. Not until we examined her full body of work did we appreciate how interconnected her contributions truly are.'"
    **Question**: What two achievements does the citation emphasise?
-   **Answer**: research that reshaped the field + mentoring a generation (or similar)
+   **Answer**: research that reshaped the field + mentoring a generation
+   **Accepts**: similar
    **Explanation**: "Not only... but also" layers two achievements; "Not until... did we appreciate" dramatises late recognition. Both inversions register formality and emphasis.
 
 ### 2. Listening/Speaking (5 phrases)
@@ -474,7 +476,8 @@
 5. **read_answer**
    **Passage**: "Looking back, the entrepreneur reflected: 'Only by losing my first company did I learn what entrepreneurship actually requires. Little did I know at twenty-five that failure would teach me what success never could.'"
    **Question**: What lesson does the entrepreneur say only failure could teach?
-   **Answer**: what entrepreneurship actually requires (or "what success couldn't teach")
+   **Answer**: what entrepreneurship actually requires
+   **Accepts**: what success couldn't teach
    **Explanation**: "Only by losing... did I learn" — inversion after restrictive phrase. "Little did I know... that failure would teach me" — inversion of dramatic irony. Both common in retrospective narrative.
 
 ### 2. Listening/Speaking (5 phrases)
@@ -614,7 +617,8 @@
 5. **read_answer**
    **Passage**: "The corporate code of conduct is unambiguous: 'Under no circumstances shall an employee share confidential client information with third parties. On no account may personal devices be used to store such data. At no time has this organisation tolerated breaches of trust.'"
    **Question**: What does the code prohibit?
-   **Answer**: sharing confidential client information with third parties (or "storing it on personal devices")
+   **Answer**: sharing confidential client information with third parties
+   **Accepts**: storing it on personal devices
    **Explanation**: Three stacked formal inversions ("Under no circumstances shall... On no account may... At no time has...") amplify the policy's seriousness. Corporate-formal register.
 
 ### 2. Listening/Speaking (5 phrases)

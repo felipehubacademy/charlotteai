@@ -239,7 +239,8 @@
 10. **read_answer**
     **Passage**: "I have few friends but a few good ones. She has little time but a little energy. We make it work."
     **Question**: How many good friends does the speaker have?
-    **Answer**: a few (or "a few good ones")
+    **Answer**: a few
+    **Accepts**: a few good ones
     **Explanation**: The text says "a few good ones".
 
 ### 2. Listening/Speaking (5 phrases)
@@ -404,7 +405,8 @@
 10. **read_answer**
     **Passage**: "We have plenty of food but hardly any drinks. There's plenty of time but hardly any money."
     **Question**: What's scarce?
-    **Answer**: drinks and money (or "drinks" or "money")
+    **Answer**: drinks and money
+    **Accepts**: drinks / money
     **Explanation**: "Hardly any drinks" and "hardly any money" — both scarce.
 
 ### 2. Listening/Speaking (5 phrases)
@@ -558,7 +560,8 @@
 
 8. **fix_error** — "I have several time."
    **Hint**: several = countable
-   **Answer**: I have plenty of time. (or "a lot of time")
+   **Answer**: I have plenty of time.
+   **Accepts**: a lot of time
    **Explanation**: "Several" only with countable. For uncountable use "plenty of" or "a lot of".
 
 9. **fix_error** — "Most of people like pizza."
@@ -569,7 +572,8 @@
 10. **read_answer**
     **Passage**: "I have several books on history. Most of my friends like to read. Most people prefer fiction over non-fiction."
     **Question**: What do most people prefer?
-    **Answer**: fiction (or "fiction over non-fiction")
+    **Answer**: fiction
+    **Accepts**: fiction over non-fiction
     **Explanation**: The text says "Most people prefer fiction".
 
 ### 2. Listening/Speaking (5 phrases)
@@ -708,7 +712,8 @@
 
 5. **fill_gap** — "There's _____ food in the fridge."
    **Hint**: small amount
-   **Answer**: a little (or some)
+   **Answer**: a little
+   **Accepts**: some
    **Explanation**: "A little food" — small positive amount.
 
 6. **fill_gap** — "_____ of my coworkers are friendly."
@@ -718,7 +723,8 @@
 
 7. **fill_gap** — "I have _____ patience for delays today."
    **Hint**: negative (almost none)
-   **Answer**: little (or hardly any)
+   **Answer**: little
+   **Accepts**: hardly any
    **Explanation**: "Little patience" or "hardly any patience".
 
 8. **fix_error** — "I have a little books."

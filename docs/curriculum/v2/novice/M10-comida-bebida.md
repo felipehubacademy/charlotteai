@@ -575,7 +575,8 @@
 10. **read_answer**
     **Passage**: "Waiter: What would you like? Customer: I'd like a pasta and a glass of water. Waiter: Anything else? Customer: No, that's all. Can I have the bill?"
     **Question**: What does the customer order to drink?
-    **Answer**: a glass of water (or "water")
+    **Answer**: a glass of water
+    **Accepts**: water
     **Explanation**: O texto diz "a glass of water".
 
 ### 2. Listening/Speaking (5 phrases)

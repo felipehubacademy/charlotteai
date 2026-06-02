@@ -571,7 +571,8 @@
 10. **read_answer**
     **Passage**: "I live on the second floor. My birthday is on the fourth of July. This is my first time in NYC."
     **Question**: When is the birthday?
-    **Answer**: the fourth of July (or "July 4")
+    **Answer**: the fourth of July
+    **Accepts**: July 4
     **Explanation**: O texto diz "My birthday is on the fourth of July".
 
 ### 2. Listening/Speaking (5 phrases)

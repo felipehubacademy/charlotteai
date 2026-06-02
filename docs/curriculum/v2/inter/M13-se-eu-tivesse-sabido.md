@@ -75,7 +75,8 @@
 10. **read_answer**
     **Passage**: "If I had known about the meeting, I would have come prepared. She would have called you back if she had had your number. We wouldn't have missed the train if we had left ten minutes earlier."
     **Question**: What would the speaker have done if they had known?
-    **Answer**: come prepared (or "would have come prepared")
+    **Answer**: come prepared
+    **Accepts**: would have come prepared
     **Explanation**: The text says "If I had known... I would have come prepared".
 
 ### 2. Listening/Speaking (5 phrases)
@@ -240,7 +241,8 @@
 10. **read_answer**
     **Passage**: "I wish I had studied harder in college. She wishes she had taken that job offer. If only we had left earlier — we wouldn't have missed the flight."
     **Question**: What does she wish she had done?
-    **Answer**: taken that job offer (or "taken the job")
+    **Answer**: taken that job offer
+    **Accepts**: taken the job
     **Explanation**: The text says "She wishes she had taken that job offer".
 
 ### 2. Listening/Speaking (5 phrases)
@@ -405,7 +407,8 @@
 10. **read_answer**
     **Passage**: "What would you have done if you had been in my position? Where would you have gone if you had had unlimited time? Would you have helped me if I had asked?"
     **Question**: What hypothetical question is asked about position?
-    **Answer**: what would you have done (or "what would you have done if you had been in my position")
+    **Answer**: what would you have done
+    **Accepts**: what would you have done if you had been in my position
     **Explanation**: The text asks "What would you have done if you had been in my position?".
 
 ### 2. Listening/Speaking (5 phrases)
@@ -570,7 +573,8 @@
 10. **read_answer**
     **Passage**: "If I hadn't taken the wrong train that morning, I wouldn't have met Sarah. We wouldn't have started talking. And I would never have moved to Berlin. One mistake changed everything."
     **Question**: What would have never happened if the speaker hadn't taken the wrong train?
-    **Answer**: moving to Berlin (or "moved to Berlin")
+    **Answer**: moving to Berlin
+    **Accepts**: moved to Berlin
     **Explanation**: The text says "I would never have moved to Berlin" — close-call narrative chain.
 
 ### 2. Listening/Speaking (5 phrases)
@@ -735,7 +739,8 @@
 10. **read_answer**
     **Passage**: "If I had studied harder, I would have passed. I wish I had taken that opportunity. If I hadn't missed the deadline, nothing would have gone wrong. What would you have done in my place?"
     **Question**: What does the speaker wish they had done?
-    **Answer**: taken that opportunity (or "the opportunity")
+    **Answer**: taken that opportunity
+    **Accepts**: the opportunity
     **Explanation**: The text says "I wish I had taken that opportunity".
 
 ### 2. Listening/Speaking (5 phrases)

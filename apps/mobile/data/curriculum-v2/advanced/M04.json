@@ -525,7 +525,10 @@
           "type": "read_answer",
           "passage": "The ambassador chose his words. 'Be that as it may, the agreement stands. Come what may, neither side will retreat from what was signed. Suffice it to say that any party tempted to abandon the treaty would face consequences I shall not detail here.'",
           "question": "What does the ambassador imply about leaving the treaty?",
-          "answer": "there would be undisclosed consequences (or \"serious consequences\")",
+          "answer": "there would be undisclosed consequences",
+          "accepts": [
+            "serious consequences"
+          ],
           "explanation": "Three fossilised subjunctives layered: \"Be that as it may\" (concession), \"Come what may\" (resolve), \"Suffice it to say\" (understatement). Diplomatic prose at its driest."
         }
       ],

@@ -245,7 +245,8 @@
 10. **read_answer**
     **Passage**: "I like this dress (in my hand). That dress over there is too expensive. These shoes fit me. Those shoes don't fit."
     **Question**: Which item is expensive?
-    **Answer**: that dress (or "the dress over there")
+    **Answer**: that dress
+    **Accepts**: the dress over there
     **Explanation**: O texto diz "That dress over there is too expensive".
 
 ### 2. Listening/Speaking (5 phrases)

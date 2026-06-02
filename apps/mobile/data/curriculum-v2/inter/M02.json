@@ -687,7 +687,10 @@
           "type": "read_answer",
           "passage": "Q: Have you ever traveled solo? A: Yes, I have. Q: Has your sister tried sushi? A: No, she hasn't. She doesn't like fish.",
           "question": "Has the sister tried sushi?",
-          "answer": "no (or \"she hasn't\")",
+          "answer": "no",
+          "accepts": [
+            "she hasn't"
+          ],
           "explanation": "The text says \"No, she hasn't\"."
         }
       ],

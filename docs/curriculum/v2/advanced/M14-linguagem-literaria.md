@@ -44,7 +44,8 @@
 
 3. **fill_gap** — Cultural metaphor: "Attention is _____ — finite, contested, and exploited."
    **Hint**: "the new currency" or "the new oil"
-   **Answer**: the new oil (or "the new currency")
+   **Answer**: the new oil
+   **Accepts**: the new currency
    **Explanation**: "X is the new Y" — modern metaphorical equation. "Attention is the new oil" is a famous tech-era metaphor (resource that drives the economy, and that one is extracted). This pattern compresses a whole argument into a phrase.
 
 4. **fix_error** — "She moved like she was walking on glass."
@@ -55,7 +56,8 @@
 5. **read_answer**
    **Passage**: "The metaphor ran through the essay. 'Memory is a city you have lived in too long. Its streets seem familiar, but you no longer notice them. Then one afternoon, after months away, you walk past a corner you have crossed a thousand times — and the light is different, and the city is again strange to you, and you realise you were never going to see it clearly while you lived inside it.'"
    **Question**: How does the passage extend the central metaphor?
-   **Answer**: by treating returning to a familiar place after absence as the only way to see it again (or: through the image of walking back into a place you stopped seeing)
+   **Answer**: by treating returning to a familiar place after absence as the only way to see it again
+   **Accepts**: through the image of walking back into a place you stopped seeing
    **Explanation**: Extended metaphor: "Memory is a city" — and the paragraph develops the comparison across multiple sentences (streets you stopped noticing, walking back after months, light is different, never see clearly while inside). Literary craft sustains the metaphor without re-stating it.
 
 ### 2. Listening/Speaking (5 phrases)
@@ -189,7 +191,8 @@
 
 4. **fix_error** — Personification attempt: "The wind was strong yesterday."
    **Hint**: To personify, give the wind a human-style verb or quality
-   **Answer**: The wind argued with the trees all afternoon. (or: The wind shouldered its way down the street.)
+   **Answer**: The wind argued with the trees all afternoon.
+   **Accepts**: The wind shouldered its way down the street.
    **Explanation**: The original is just description, not personification. To personify, give the wind a human action ("argued", "shouldered", "wrestled"). Personification makes the description active, not flat.
 
 5. **read_answer**
@@ -324,12 +327,14 @@
 
 3. **fill_gap** — Specific noun: "She drove past in a _____, headlights cutting through the rain."
    **Hint**: Specific car model + colour or detail
-   **Answer**: a red Toyota (or "a dented Volvo" or any specific car)
+   **Answer**: a red Toyota
+   **Accepts**: a dented Volvo / any specific car
    **Explanation**: Replacing "a car" with "a red Toyota" or similar specific image. Specific nouns ground prose in concrete reality. Mark Twain: "Don't say the old lady screamed. Bring her on and let her scream." Same principle: bring on the specific car.
 
 4. **fix_error** — "He walked slowly into the room, looking sadly at her, and then said something quietly."
    **Hint**: Replace verb+adverb pairs with vivid verbs
-   **Answer**: He trudged into the room, gazed sadly at her, and murmured something. (or: He shuffled in, met her eyes, and whispered.)
+   **Answer**: He trudged into the room, gazed sadly at her, and murmured something.
+   **Accepts**: He shuffled in, met her eyes, and whispered.
    **Explanation**: Three verb+adverb pairs: "walked slowly", "looked sadly", "said quietly". Each can become a single vivid verb: "trudged", "gazed" (still keeping "sadly" optionally), "murmured" / "whispered". Tightens prose, increases rhythm.
 
 5. **read_answer**
@@ -464,7 +469,8 @@
 
 3. **fill_gap** — Long sentence followed by short: "We had walked for hours, through the empty fields and along the river that we hadn't seen since childhood, talking about nothing in particular and everything at once — and then, suddenly, the silence. _____"
    **Hint**: A short impact sentence or fragment
-   **Answer**: Neither of us spoke for a long time. (or: Just the river. / Just walking. / Nobody.)
+   **Answer**: Neither of us spoke for a long time.
+   **Accepts**: Just the river. / Just walking. / Nobody.
    **Explanation**: After a long sweeping sentence, the next move is contraction. A short sentence or fragment ("Just the river.") drops the rhythm down dramatically. This is rhythm-as-meaning — the silence the long sentence describes is enacted by the short one.
 
 4. **fix_error** — All-long-sentences paragraph: "She walked into the room which was empty except for a chair by the window where her mother used to sit and read in the afternoons before everything changed and now nobody sat there at all."
@@ -604,7 +610,8 @@
 
 3. **fill_gap** — Convert "She was sad" to a shown version: "She _____"
    **Hint**: An observable detail or action that implies sadness
-   **Answer**: kept the wedding photo turned face-down for three weeks (or any specific behavioural detail)
+   **Answer**: kept the wedding photo turned face-down for three weeks
+   **Accepts**: any specific behavioural detail
    **Explanation**: Show sadness through behaviour — the face-down photo implies refusal to look, time passing, unresolved grief. Specific actions carry emotion more reliably than abstract emotion words. The reader does the inferring; the prose stays concrete.
 
 4. **fix_error** — "He was happy about the news."

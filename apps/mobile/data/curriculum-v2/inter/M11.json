@@ -115,7 +115,11 @@
           "type": "read_answer",
           "passage": "I'll call you when I arrive at the airport. We'll have dinner when everyone gets home. She'll let me know when she finishes the project. By the time you read this, I'll be on the plane.",
           "question": "When will the speaker call?",
-          "answer": "when I arrive at the airport (or \"when arriving\" or \"after arrival\")",
+          "answer": "when I arrive at the airport",
+          "accepts": [
+            "when arriving",
+            "after arrival"
+          ],
           "explanation": "The text says \"I'll call you when I arrive at the airport\" — present simple in the time clause."
         }
       ],
@@ -305,7 +309,10 @@
           "type": "read_answer",
           "passage": "Before you leave, please lock the door. After we eat dinner, we'll go for a walk. I'll text you before I arrive. After she finishes the report, she'll send it.",
           "question": "When will the speaker text?",
-          "answer": "before I arrive (or \"before arriving\")",
+          "answer": "before I arrive",
+          "accepts": [
+            "before arriving"
+          ],
           "explanation": "The text says \"I'll text you before I arrive\" — present simple \"arrive\" after \"before\" in future context."
         }
       ],
@@ -497,7 +504,10 @@
           "type": "read_answer",
           "passage": "I'll wait until you arrive at the station. By the time we finish dinner, it'll be 10pm. Stay here until I get back. By the time I write this, my flight will be boarding.",
           "question": "What will the speaker do until the listener arrives?",
-          "answer": "wait (or \"wait at the station\")",
+          "answer": "wait",
+          "accepts": [
+            "wait at the station"
+          ],
           "explanation": "The text says \"I'll wait until you arrive at the station\"."
         }
       ],
@@ -688,7 +698,10 @@
           "type": "read_answer",
           "passage": "I'll call you as soon as I get home. As soon as she hears the news, she'll be thrilled. Let me know as soon as you arrive. As soon as I have updates, I'll share them.",
           "question": "When will the speaker share updates?",
-          "answer": "as soon as I have updates (or \"immediately when there are updates\")",
+          "answer": "as soon as I have updates",
+          "accepts": [
+            "immediately when there are updates"
+          ],
           "explanation": "The text says \"As soon as I have updates, I'll share them\" — present simple \"have\" after \"as soon as\"."
         }
       ],
@@ -878,7 +891,10 @@
           "type": "read_answer",
           "passage": "As soon as I land, I'll text you. By the time we meet for dinner, I'll have unpacked. Until then, please water my plants. After I get back, we'll celebrate.",
           "question": "What should the listener do until the speaker meets them?",
-          "answer": "water my plants (or \"water the plants\")",
+          "answer": "water my plants",
+          "accepts": [
+            "water the plants"
+          ],
           "explanation": "The text says \"Until then, please water my plants\" — instruction for the duration."
         }
       ],

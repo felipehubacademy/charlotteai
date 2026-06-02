@@ -110,7 +110,10 @@
           "type": "read_answer",
           "passage": "I used to play soccer every weekend. My sister used to dance. We used to go to the beach every summer. Now things are different.",
           "question": "What did the sister use to do?",
-          "answer": "dance (or \"used to dance\")",
+          "answer": "dance",
+          "accepts": [
+            "used to dance"
+          ],
           "explanation": "The text says \"My sister used to dance\"."
         }
       ],
@@ -300,7 +303,10 @@
           "type": "read_answer",
           "passage": "I didn't use to like coffee, but now I love it. Did you use to play soccer? Yes, I did, but I stopped.",
           "question": "Did the speaker use to like coffee?",
-          "answer": "no (or \"didn't use to\")",
+          "answer": "no",
+          "accepts": [
+            "didn't use to"
+          ],
           "explanation": "The text says \"I didn't use to like coffee\"."
         }
       ],
@@ -490,7 +496,10 @@
           "type": "read_answer",
           "passage": "When I was a child, we would visit my grandparents every Sunday. My grandmother would cook a big lunch. We would play in the garden.",
           "question": "What would the grandmother do?",
-          "answer": "cook a big lunch (or \"cook lunch\")",
+          "answer": "cook a big lunch",
+          "accepts": [
+            "cook lunch"
+          ],
           "explanation": "The text says \"My grandmother would cook a big lunch\"."
         }
       ],
@@ -653,7 +662,10 @@
           "type": "fill_gap",
           "sentence": "We _____ go fishing every weekend.",
           "hint": "repeated action with \"every\"",
-          "answer": "would (or \"used to\")",
+          "answer": "would",
+          "accepts": [
+            "used to"
+          ],
           "explanation": "Repeated action with \"every\" — \"would go\" works perfectly."
         },
         {
@@ -836,7 +848,10 @@
           "type": "fill_gap",
           "sentence": "I _____ exercise every day, now I'm lazy.",
           "hint": "would or used to (action)",
-          "answer": "would (or used to)",
+          "answer": "would",
+          "accepts": [
+            "used to"
+          ],
           "explanation": "Past repeated action — both work."
         },
         {

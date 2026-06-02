@@ -78,7 +78,8 @@
 10. **read_answer**
     **Passage**: "English is spoken in many countries around the world. Coffee is grown in Brazil and Colombia. These shirts are made in Italy. Rice is grown mostly in Asia."
     **Question**: Where is coffee grown?
-    **Answer**: in Brazil and Colombia (or "Brazil and Colombia")
+    **Answer**: in Brazil and Colombia
+    **Accepts**: Brazil and Colombia
     **Explanation**: The text says "Coffee is grown in Brazil and Colombia".
 
 ### 2. Listening/Speaking (5 phrases)
@@ -408,7 +409,8 @@
 10. **read_answer**
     **Passage**: "The road is being repaired this week. The reports are being written right now. My car is being fixed today — I'll get it back tomorrow. The new houses are being built next to the park."
     **Question**: What is being built next to the park?
-    **Answer**: new houses (or "houses" or "the new houses")
+    **Answer**: new houses
+    **Accepts**: houses / the new houses
     **Explanation**: The text says "The new houses are being built next to the park".
 
 ### 2. Listening/Speaking (5 phrases)
@@ -573,7 +575,8 @@
 10. **read_answer**
     **Passage**: "The package has been delivered already. Three new schools have been built this year. The report has been finished and sent to the client. Many decisions have been made recently."
     **Question**: What has happened to the report?
-    **Answer**: it has been finished and sent (or "finished and sent")
+    **Answer**: it has been finished and sent
+    **Accepts**: finished and sent
     **Explanation**: The text says "The report has been finished and sent to the client".
 
 ### 2. Listening/Speaking (5 phrases)

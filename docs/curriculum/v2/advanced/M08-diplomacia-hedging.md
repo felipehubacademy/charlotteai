@@ -52,7 +52,8 @@
 
 4. **fix_error** — "I want you to look at this report."
    **Hint**: Soften with "I was wondering if you could..."
-   **Answer**: I was wondering if you could take a look at this report. (or: I was hoping you might look at this report.)
+   **Answer**: I was wondering if you could take a look at this report.
+   **Accepts**: I was hoping you might look at this report.
    **Explanation**: "I want you to" is direct and can read as demanding. The softer C1 register uses "I was wondering if you could..." or similar hedged forms. Especially important when asking up the hierarchy.
 
 5. **read_answer**
@@ -192,7 +193,8 @@
 
 4. **fix_error** — "You should fix the introduction."
    **Hint**: Soften with hedged suggestion
-   **Answer**: It might be worth revisiting the introduction. (or: You might want to look at the introduction again.)
+   **Answer**: It might be worth revisiting the introduction.
+   **Accepts**: You might want to look at the introduction again.
    **Explanation**: "You should" can land as criticism. Hedged forms preserve face — same content, different relational impact. C1 register often demands the softer version.
 
 5. **read_answer**
@@ -333,7 +335,8 @@
 
 4. **fix_error** — "You're wrong about that."
    **Hint**: Soften with "I'd see it differently"
-   **Answer**: I'd see it a little differently. (or: With respect, I'd see it differently.)
+   **Answer**: I'd see it a little differently.
+   **Accepts**: With respect, I'd see it differently.
    **Explanation**: "You're wrong" is blunt and damaging. "I'd see it differently" presents the same disagreement without attacking the other person. Crucial diplomatic shift.
 
 5. **read_answer**
@@ -473,7 +476,8 @@
 
 4. **fix_error** — "Arguably is the best film of the decade."
    **Hint**: "Arguably" needs to attach to a clause, not stand alone
-   **Answer**: Arguably, it's the best film of the decade. (or: It's arguably the best film of the decade.)
+   **Answer**: Arguably, it's the best film of the decade.
+   **Accepts**: It's arguably the best film of the decade.
    **Explanation**: "Arguably" is an adverb — attaches to a clause. "Arguably is" treats it as a verb form, which fails. Either fronted ("Arguably, X is...") or mid-position ("It's arguably the best...").
 
 5. **read_answer**
@@ -613,13 +617,15 @@
 
 4. **fix_error** — "I'm somewhat agree with you."
    **Hint**: "Somewhat" modifies adjective/adverb, not verb directly. Use "kind of agree" or "somewhat agreeable"
-   **Answer**: I kind of agree with you. (or: I somewhat agree with you, with the right rhythm.)
+   **Answer**: I kind of agree with you.
+   **Accepts**: I somewhat agree with you, with the right rhythm.
    **Explanation**: "Somewhat" modifies adjectives/adverbs in formal usage ("somewhat strange"). Modern spoken English does allow "I somewhat agree", but "kind of agree" / "sort of agree" is more natural.
 
 5. **read_answer**
    **Passage**: "Asked how the launch had gone, the founder hesitated. 'Mixed, I think. We hit roughly seventy percent of our targets, give or take. The team is sort of exhausted but more or less proud. We're somewhat behind on shipping, though — I'd say two weeks, approximately.' She had mastered the art of imprecision."
    **Question**: How behind on shipping is the team, approximately?
-   **Answer**: about two weeks (or "two weeks, approximately")
+   **Answer**: about two weeks
+   **Accepts**: two weeks, approximately
    **Explanation**: Six vague-language markers in one paragraph: "roughly", "give or take", "sort of", "more or less", "somewhat", "approximately". Spoken C1 leans heavily on these for natural rhythm.
 
 ### 2. Listening/Speaking (5 phrases)

@@ -42,7 +42,8 @@
 
 2. **multiple_choice** — "That _____ be the postman at the door."
    **Options**: will / must / should / can
-   **Answer**: will (or "must")
+   **Answer**: will
+   **Accepts**: must
    **Explanation**: "Will" — high-certainty prediction based on routine ("It's the time he usually comes"). "Must" works too if there's stronger evidence (a specific knock). The English habit of using "will" for confident predictions about the present surprises learners. "That'll be him" is everyday English.
 
 3. **fill_gap** — "She _____ be home by now — her shift ended at six."
@@ -332,7 +333,8 @@
 
 4. **fix_error** — Habitual past: "Every summer, we use to visit my aunt in Coimbra."
    **Hint**: Past tense — "used to" or "would"
-   **Answer**: Every summer, we used to visit my aunt in Coimbra. (or: ...we would visit my aunt in Coimbra.)
+   **Answer**: Every summer, we used to visit my aunt in Coimbra.
+   **Accepts**: ...we would visit my aunt in Coimbra.
    **Explanation**: "Use to" needs past form "used to" (note the d). Or replace with "would" for habitual past. Common spelling error — "use to" sounds like "used to" but only "used to" is grammatical past form.
 
 5. **read_answer**

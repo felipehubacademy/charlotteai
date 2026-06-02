@@ -116,7 +116,10 @@
           "type": "read_answer",
           "passage": "He said he was tired. She said she worked in finance. They said they lived in São Paulo. He said he was studying English.",
           "question": "What did she say she did for work?",
-          "answer": "worked in finance (or \"she worked in finance\")",
+          "answer": "worked in finance",
+          "accepts": [
+            "she worked in finance"
+          ],
           "explanation": "The text says \"She said she worked in finance\"."
         }
       ],
@@ -303,7 +306,10 @@
           "type": "fix_error",
           "sentence": "He told that the meeting was canceled.",
           "hint": "\"Tell\" precisa de pessoa — falta objeto",
-          "answer": "He said that the meeting was canceled. (or: He told everyone that...)",
+          "answer": "He said that the meeting was canceled.",
+          "accepts": [
+            "He told everyone that..."
+          ],
           "explanation": "\"Tell\" without an object doesn't work. Either use \"said\" (no person), or add a person (\"told someone, told everyone\")."
         },
         {
@@ -504,7 +510,10 @@
           "type": "read_answer",
           "passage": "He said he had finished the report. She said she had visited Paris twice. He said he had seen the movie three times. They said they had been to Japan for vacation.",
           "question": "How many times had he seen the movie?",
-          "answer": "three times (or \"three\")",
+          "answer": "three times",
+          "accepts": [
+            "three"
+          ],
           "explanation": "The text says \"He said he had seen the movie three times\"."
         }
       ],
@@ -698,7 +707,10 @@
           "type": "read_answer",
           "passage": "He said he would call me later. She said she could speak three languages. He said he might be late for dinner. She said she had to leave early.",
           "question": "Why might he be late?",
-          "answer": "for dinner (or \"he might be late for dinner\")",
+          "answer": "for dinner",
+          "accepts": [
+            "he might be late for dinner"
+          ],
           "explanation": "The text says \"He said he might be late for dinner\"."
         }
       ],
@@ -890,7 +902,10 @@
           "type": "read_answer",
           "passage": "He said he was tired that day. She said she would come the next day. He said he had been there the day before. She said she loved that song.",
           "question": "When did she say she would come?",
-          "answer": "the next day (or \"the following day\")",
+          "answer": "the next day",
+          "accepts": [
+            "the following day"
+          ],
           "explanation": "The text says \"She said she would come the next day\"."
         }
       ],

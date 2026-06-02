@@ -505,7 +505,10 @@
           "type": "read_answer",
           "passage": "He told me to close the door. She told me not to wait. He told us to be quiet. She told them not to speak loudly. He told me to open the window.",
           "question": "What did she tell them not to do?",
-          "answer": "speak loudly (or \"not to speak loudly\")",
+          "answer": "speak loudly",
+          "accepts": [
+            "not to speak loudly"
+          ],
           "explanation": "The text says \"She told them not to speak loudly\"."
         }
       ],
@@ -699,7 +702,10 @@
           "type": "read_answer",
           "passage": "She asked me to help her. He asked me not to tell anyone. She warned me to be careful. He begged me to reconsider. She urged me to try harder.",
           "question": "What did he beg her to do?",
-          "answer": "reconsider (or \"to reconsider\")",
+          "answer": "reconsider",
+          "accepts": [
+            "to reconsider"
+          ],
           "explanation": "The text says \"He begged me to reconsider\"."
         }
       ],
@@ -891,7 +897,10 @@
           "type": "read_answer",
           "passage": "She said she was tired. He asked if I was ready. She told me to close the door. He asked where I lived. She begged me to stay.",
           "question": "What did she beg me to do?",
-          "answer": "stay (or \"to stay\")",
+          "answer": "stay",
+          "accepts": [
+            "to stay"
+          ],
           "explanation": "The text says \"She begged me to stay\"."
         }
       ],

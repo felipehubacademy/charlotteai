@@ -117,7 +117,10 @@
           "type": "read_answer",
           "passage": "I wanted to go. However, I was too tired. The plan was risky. Nevertheless, we decided to proceed. She is intelligent. However, she lacks experience. I love coffee. On the other hand, my friend prefers tea.",
           "question": "Why didn't the speaker go?",
-          "answer": "too tired (or \"they were too tired\")",
+          "answer": "too tired",
+          "accepts": [
+            "they were too tired"
+          ],
           "explanation": "The text says \"However, I was too tired\"."
         }
       ],
@@ -297,21 +300,30 @@
           "type": "fix_error",
           "sentence": "Despite it was raining, we went out.",
           "hint": "\"Despite\" precisa de substantivo/-ing, não cláusula",
-          "answer": "Despite the rain, we went out. (or: Although it was raining, we went out.)",
+          "answer": "Despite the rain, we went out.",
+          "accepts": [
+            "Although it was raining, we went out."
+          ],
           "explanation": "\"Despite + clause\" is a common error. Use \"despite + noun/-ing\" OR \"although + full clause\"."
         },
         {
           "type": "fix_error",
           "sentence": "Although the rain, we went out.",
           "hint": "\"Although\" precisa de cláusula com sujeito e verbo",
-          "answer": "Although it was raining, we went out. (or: Despite the rain, we went out.)",
+          "answer": "Although it was raining, we went out.",
+          "accepts": [
+            "Despite the rain, we went out."
+          ],
           "explanation": "\"Although + noun\" alone doesn't work. It needs subject + verb."
         },
         {
           "type": "read_answer",
           "passage": "Although it was raining, we went out. Despite the cold, we enjoyed the picnic. Although he is rich, he isn't happy. Despite being tired, she finished the project.",
           "question": "Why is the rich man not happy?",
-          "answer": "he isn't happy (or \"the text doesn't say why\")",
+          "answer": "he isn't happy",
+          "accepts": [
+            "the text doesn't say why"
+          ],
           "explanation": "The text states \"Although he is rich, he isn't happy\" — the contrast is between wealth and happiness, no further reason given."
         }
       ],
@@ -498,14 +510,20 @@
           "type": "fix_error",
           "sentence": "He was sick, therefore he didn't come.",
           "hint": "\"Therefore\" prefere ponto/ponto-e-vírgula antes",
-          "answer": "He was sick. Therefore, he didn't come. (or: He was sick; therefore, he didn't come.)",
+          "answer": "He was sick. Therefore, he didn't come.",
+          "accepts": [
+            "He was sick; therefore, he didn't come."
+          ],
           "explanation": "A simple comma isn't strong enough for \"therefore\". Use a period or semicolon."
         },
         {
           "type": "read_answer",
           "passage": "Sales dropped. Therefore, we cut the budget. He missed the meeting. As a result, he wasn't informed. It rained heavily. Consequently, the road flooded.",
           "question": "Why did the road flood?",
-          "answer": "it rained heavily (or \"heavy rain\")",
+          "answer": "it rained heavily",
+          "accepts": [
+            "heavy rain"
+          ],
           "explanation": "The text says \"It rained heavily. Consequently, the road flooded\"."
         }
       ],
@@ -699,7 +717,10 @@
           "type": "read_answer",
           "passage": "The course is intensive. Furthermore, it's expensive. She's a great manager. Moreover, she's a wonderful person. He plays guitar. In addition, he writes songs.",
           "question": "What does he do besides playing guitar?",
-          "answer": "writes songs (or \"he writes songs\")",
+          "answer": "writes songs",
+          "accepts": [
+            "he writes songs"
+          ],
           "explanation": "The text says \"He plays guitar. In addition, he writes songs\"."
         }
       ],
@@ -891,7 +912,10 @@
           "type": "read_answer",
           "passage": "In conclusion, the project was a success. To sum up, the report shows positive trends. All in all, it was a great experience. Overall, I would recommend this approach.",
           "question": "What is the speaker's overall recommendation?",
-          "answer": "this approach (or \"they recommend this approach\")",
+          "answer": "this approach",
+          "accepts": [
+            "they recommend this approach"
+          ],
           "explanation": "The text says \"Overall, I would recommend this approach\"."
         }
       ],
@@ -1065,21 +1089,32 @@
           "type": "fill_gap",
           "sentence": "Our team's _____ is at 10 every morning.",
           "hint": "short daily meeting",
-          "answer": "meeting (or \"standup\" / \"sync\" / \"call\")",
+          "answer": "meeting",
+          "accepts": [
+            "standup",
+            "sync",
+            "call"
+          ],
           "explanation": "Workplace meeting vocabulary: \"meeting\" (general), \"standup\" (short daily — from agile), \"sync\" (catch-up between specific people), \"call\" (any meeting, often virtual), \"1-on-1\" (one-on-one with manager). Each has slightly different connotation."
         },
         {
           "type": "fix_error",
           "sentence": "I work in IBM.",
           "hint": "For company name, use \"work for\" or \"work at\"",
-          "answer": "I work for IBM. (or: I work at IBM.)",
+          "answer": "I work for IBM.",
+          "accepts": [
+            "I work at IBM."
+          ],
           "explanation": "\"Work in + company\" doesn't work in English. Use \"work for IBM\" (employer relationship) or \"work at IBM\" (location/affiliation). \"Work in\" only for field (\"I work in tech\") or location-as-area (\"I work in São Paulo\")."
         },
         {
           "type": "fix_error",
           "sentence": "My salary increased by 1000 dollars promotion.",
           "hint": "Restructure with \"raise\" or \"promotion\"",
-          "answer": "I got a $1000 raise. (or: I got a promotion with a $1000 raise.)",
+          "answer": "I got a $1000 raise.",
+          "accepts": [
+            "I got a promotion with a $1000 raise."
+          ],
           "explanation": "\"Salary increased by X promotion\" mixes terms incorrectly. Either describe it as a \"raise\" (salary increase) or a \"promotion\" (new role, may or may not include raise). Use \"got a raise\" / \"got promoted\" as natural verbal forms."
         },
         {

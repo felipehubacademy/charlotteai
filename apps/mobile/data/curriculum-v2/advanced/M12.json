@@ -213,14 +213,21 @@
           "type": "fill_gap",
           "sentence": "Subjective: \"I have found that students learn faster with feedback.\" Academic: \"_____ that students learn faster with feedback.\"",
           "hint": "\"The data\" or \"The results\" + verb",
-          "answer": "The data suggest (or \"The results indicate\" / \"The findings show\")",
+          "answer": "The data suggest",
+          "accepts": [
+            "The results indicate",
+            "The findings show"
+          ],
           "explanation": "Academic prose lets the evidence speak. \"The data suggest\" — note plural verb (data is technically plural, though \"data shows\" is now common). \"The findings indicate\", \"The results demonstrate\" — all variations of the impersonal evidence-as-agent construction."
         },
         {
           "type": "fix_error",
           "sentence": "Academic register: \"I believe this hypothesis is correct.\"",
           "hint": "Replace \"I believe\" with impersonal alternative",
-          "answer": "There is reason to believe this hypothesis is correct. (or: The evidence supports this hypothesis.)",
+          "answer": "There is reason to believe this hypothesis is correct.",
+          "accepts": [
+            "The evidence supports this hypothesis."
+          ],
           "explanation": "\"I believe\" is too subjective for academic prose. Alternatives: \"There is reason to believe\", \"The evidence supports\", \"It is plausible that\", \"It can be argued that\". Each preserves the modesty of a claim while removing the speaker."
         },
         {
@@ -370,7 +377,10 @@
           "type": "fix_error",
           "sentence": "Academic register: \"This proves that the drug works.\"",
           "hint": "Academic register avoids \"proves\" — use a hedged verb",
-          "answer": "This suggests that the drug is effective. (or: The evidence supports the conclusion that the drug is effective.)",
+          "answer": "This suggests that the drug is effective.",
+          "accepts": [
+            "The evidence supports the conclusion that the drug is effective."
+          ],
           "explanation": "\"Proves\" implies certainty that scientific epistemology rarely warrants. Even strong findings use \"supports\", \"suggests\", \"indicates\", or \"is consistent with\". The hedge isn't false modesty — it's accurate representation of evidence."
         },
         {
@@ -667,7 +677,10 @@
           "type": "fix_error",
           "sentence": "Paragraph opener: \"Also, the third experiment found similar results.\"",
           "hint": "\"Also\" is too casual to open an academic paragraph",
-          "answer": "Furthermore, the third experiment yielded similar results. (or: A third experiment yielded similar results, reinforcing the pattern.)",
+          "answer": "Furthermore, the third experiment yielded similar results.",
+          "accepts": [
+            "A third experiment yielded similar results, reinforcing the pattern."
+          ],
           "explanation": "\"Also\" is conversational. Academic register uses \"Furthermore\", \"Moreover\", \"In addition\", or restructures: \"A third experiment...\". Paragraph openers carry the connective load — too casual undercuts the register."
         },
         {

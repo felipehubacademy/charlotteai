@@ -40,21 +40,31 @@
             "Nothing else needed saying.",
             "There remained nothing to say."
           ],
-          "answer": "Nothing else to say. (or \"Nothing else needed saying.\")",
+          "answer": "Nothing else to say.",
+          "accepts": [
+            "Nothing else needed saying."
+          ],
           "explanation": "Sentence fragment for emphasis — drawing on M14 (literary rhythm). After a long sentence, a fragment lands the moment. Both options work; the fragment (\"Nothing else to say.\") is sharper, the participle phrase (\"Nothing else needed saying.\") is more elegant."
         },
         {
           "type": "fill_gap",
           "sentence": "Open the next sentence with a casual filler that fits the register: \"I knew what was coming. _____, it still surprised me when it actually arrived.\"",
           "hint": "Casual filler that signals casual register",
-          "answer": "I mean (or \"you know\" or \"honestly\")",
+          "answer": "I mean",
+          "accepts": [
+            "you know",
+            "honestly"
+          ],
           "explanation": "Casual filler drawn from M21 — \"I mean\" / \"you know\" / \"honestly\". Marks the shift from observation to feeling. Native narrative often uses one such filler per paragraph, particularly at moments of emotional pivot."
         },
         {
           "type": "fix_error",
           "sentence": "Sentence too long and dense for narrative rhythm: \"She had spent fifteen years working at the company and during that time she had built three teams, launched two products, and somehow managed to keep her sense of humour intact throughout every reorganisation and budget cut.\"",
           "hint": "Vary rhythm — long sentence + short follow-up or fragment",
-          "answer": "She had spent fifteen years working at the company. Three teams. Two products. And somehow — somehow — she had kept her sense of humour intact through every reorganisation. (or similar rhythm-varied version)",
+          "answer": "She had spent fifteen years working at the company. Three teams. Two products. And somehow — somehow — she had kept her sense of humour intact through every reorganisation.",
+          "accepts": [
+            "similar rhythm-varied version"
+          ],
           "explanation": "Long sentence + tricolon fragment + emphatic repetition. Drawn from M14 (rhythm) and M13 (tricolon). Native narrative breaks dense sentences for breath. The fragment \"Three teams. Two products.\" emphasises the scale."
         },
         {
@@ -196,7 +206,10 @@
           "type": "fill_gap",
           "sentence": "Open with an inverted concession: \"_____ has a single regulation produced such fierce debate as the proposed framework now before parliament.\"",
           "hint": "\"Rarely\" or \"Seldom\"",
-          "answer": "Rarely (or \"Seldom\")",
+          "answer": "Rarely",
+          "accepts": [
+            "Seldom"
+          ],
           "explanation": "Fronted negative frequency adverb triggers inversion — opener of choice for argumentative emphasis. \"Rarely has...\" opens with weight, signals importance. M02 inversion in argumentative service."
         },
         {
@@ -345,7 +358,11 @@
           "type": "fill_gap",
           "sentence": "Diplomatic reframe of a strong position: \"_____ that the proposal has merit — but the timing concerns are non-trivial.\"",
           "hint": "\"I can see / Granted / It's true\"",
-          "answer": "I can see (or \"Granted\" or \"It's true\")",
+          "answer": "I can see",
+          "accepts": [
+            "Granted",
+            "It's true"
+          ],
           "explanation": "Three diplomatic openers, all from M10 (concession markers). Each grants ground before pivoting. \"Granted, X — but Y\" / \"I can see X, but Y\" / \"It's true that X — but Y\". Diplomatic argument pivots on acknowledging the other side first."
         },
         {
@@ -494,7 +511,10 @@
           "type": "fill_gap",
           "sentence": "Casual reply with tag: \"We're meeting at the usual place, _____\"",
           "hint": "Tag for confirmation",
-          "answer": "aren't we (or \"right?\")",
+          "answer": "aren't we",
+          "accepts": [
+            "right?"
+          ],
           "explanation": "Tag question \"aren't we?\" for soft confirmation. Drawn from M21. Or universal \"right?\" for casual register. Both work; \"aren't we?\" is slightly more polished, \"right?\" slightly more casual."
         },
         {
@@ -643,7 +663,11 @@
           "type": "fill_gap",
           "sentence": "Diplomatic transition between casual and formal: \"_____ — coming back to the actual decision in front of us...\"",
           "hint": "Phrase that pivots from casual aside to substantive content",
-          "answer": "Anyway (or \"But to be serious for a moment\" or \"OK, getting back to it,\")",
+          "answer": "Anyway",
+          "accepts": [
+            "But to be serious for a moment",
+            "OK, getting back to it,"
+          ],
           "explanation": "\"Anyway\" — universal pivot from digression back to topic. Casual register marker that doubles as a structural device. Drawn from M21. Native speakers code-switch within a single conversation, and \"anyway\" is one of the standard pivot points."
         },
         {

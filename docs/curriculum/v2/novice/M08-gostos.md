@@ -410,7 +410,8 @@
 10. **read_answer**
     **Passage**: "My sister calls me every Sunday. I love talking to her. She tells me about her week. I tell her about mine."
     **Question**: Who calls every Sunday?
-    **Answer**: my sister (or "the sister")
+    **Answer**: my sister
+    **Accepts**: the sister
     **Explanation**: O texto diz "My sister calls me every Sunday".
 
 ### 2. Listening/Speaking (5 phrases)
@@ -576,7 +577,8 @@
 10. **read_answer**
     **Passage**: "I love pop music. I like action movies. I hate horror books. My sister loves classical music — totally different."
     **Question**: What kind of music does the sister love?
-    **Answer**: classical (or "classical music")
+    **Answer**: classical
+    **Accepts**: classical music
     **Explanation**: O texto diz "My sister loves classical music".
 
 ### 2. Listening/Speaking (5 phrases)

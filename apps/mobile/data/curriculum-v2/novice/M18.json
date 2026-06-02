@@ -314,7 +314,10 @@
           "type": "read_answer",
           "passage": "I'm not going to work tomorrow. It's my day off. My sister isn't going to come either. We aren't going to do anything special.",
           "question": "Why isn't the speaker working tomorrow?",
-          "answer": "it's my day off (or \"day off\")",
+          "answer": "it's my day off",
+          "accepts": [
+            "day off"
+          ],
           "explanation": "O texto diz \"It's my day off\"."
         }
       ],
@@ -518,7 +521,10 @@
           "type": "read_answer",
           "passage": "Q: Are you going to travel next month? A: Yes, I am. Q: Is your sister going to come? A: No, she isn't. She has work.",
           "question": "Is the sister going to come?",
-          "answer": "no (or \"she isn't\")",
+          "answer": "no",
+          "accepts": [
+            "she isn't"
+          ],
           "explanation": "The text says \"No, she isn't\"."
         }
       ],
@@ -922,7 +928,10 @@
           "type": "read_answer",
           "passage": "Tomorrow I'm going to work. I'm not going to eat out tonight — I'm tired. Next week I'm going to travel to Bahia.",
           "question": "Where is the speaker going next week?",
-          "answer": "Bahia (or \"to Bahia\")",
+          "answer": "Bahia",
+          "accepts": [
+            "to Bahia"
+          ],
           "explanation": "O texto diz \"travel to Bahia\"."
         }
       ],

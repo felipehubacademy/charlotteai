@@ -70,7 +70,10 @@
           "type": "fix_error",
           "sentence": "Actually, I don't think that's correct, in fact.",
           "hint": "Don't stack both nuancing markers in the same clause",
-          "answer": "Actually, I don't think that's correct. (or: In fact, I don't think that's correct.)",
+          "answer": "Actually, I don't think that's correct.",
+          "accepts": [
+            "In fact, I don't think that's correct."
+          ],
           "explanation": "\"Actually\" and \"in fact\" are near-synonyms. Stacking them creates redundancy. Pick one. C1 prose values economy — repetition of equivalent markers reads as nervous overcorrection."
         },
         {
@@ -225,7 +228,10 @@
           "type": "fix_error",
           "sentence": "She's talented. However, that said, she's also lazy.",
           "hint": "\"However\" and \"that said\" do the same work — don't stack",
-          "answer": "She's talented. That said, she's also lazy. (or: She's talented. However, she's also lazy.)",
+          "answer": "She's talented. That said, she's also lazy.",
+          "accepts": [
+            "She's talented. However, she's also lazy."
+          ],
           "explanation": "\"However\" and \"that said\" both mark concession. Stacking is redundant. C1 register prefers one well-placed marker. Choose by tone: \"however\" reads more formal-written, \"that said\" more conversational."
         },
         {

@@ -345,7 +345,8 @@
 
 4. **fix_error** — "She's a hard nut to broke."
    **Hint**: "Crack" (not "broke"), and "tough" is more common than "hard"
-   **Answer**: She's a tough nut to crack. (or: She's a hard nut to crack.)
+   **Answer**: She's a tough nut to crack.
+   **Accepts**: She's a hard nut to crack.
    **Explanation**: "Crack" is the fixed verb in this idiom — you "crack" a nut, not "break" it (although physically you do break shells, the idiom is fixed). "Tough" or "hard" both work, but the verb is non-negotiable.
 
 5. **read_answer**
@@ -491,7 +492,8 @@
 5. **read_answer**
    **Passage**: "She had spent six weeks chasing a contract that her boss called 'a wild goose chase from the start.' But she had managed to kill two birds with one stone — the meetings had revealed an entirely different opportunity, and she and the new prospect were now firmly on the same page. The ball was in legal's court, and she was content to play the rest of it by ear."
    **Question**: According to the passage, what does she plan to do about the rest of the deal?
-   **Answer**: play it by ear (or "play the rest of it by ear")
+   **Answer**: play it by ear
+   **Accepts**: play the rest of it by ear
    **Explanation**: Five idioms in one paragraph: "a wild goose chase" (fruitless pursuit), "kill two birds with one stone" (dual gain), "on the same page" (in agreement), "the ball is in legal's court" (their move), "play it by ear" (improvise). Strategic-speak at C1.
 
 ### 2. Listening/Speaking (5 phrases)

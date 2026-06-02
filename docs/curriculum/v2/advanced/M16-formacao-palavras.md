@@ -340,7 +340,8 @@
 5. **read_answer**
    **Passage**: "The architect's brief was unusually demanding. The building had to be beautiful but practical, ambitious but affordable, modern but respectful of its context. It had to be simultaneously accessible, sustainable, and adaptable to uses we could not yet predict. We were asked, in short, to standardise innovation — a paradox if there ever was one."
    **Question**: What paradox does the architect identify?
-   **Answer**: standardising innovation (or "to standardise innovation")
+   **Answer**: standardising innovation
+   **Accepts**: to standardise innovation
    **Explanation**: Many derived adjectives: beautiful (-ful), practical (-ical), ambitious (-ous), affordable (-able), respectful (-ful), accessible (-ible), sustainable (-able), adaptable (-able). Verb: standardise (-ise). Word-formation density is C2-typical.
 
 ### 2. Listening/Speaking (5 phrases)
@@ -469,7 +470,8 @@
 
 3. **fill_gap** — Open compound (two separate words): _____ school
    **Hint**: Common open compound for upper secondary education
-   **Answer**: high school (or "high school")
+   **Answer**: high school
+   **Accepts**: high school
    **Explanation**: "High school" is an open compound — two words but functioning as one concept. Other open compounds: ice cream, post office, real estate, peanut butter. The decision between open and closed often relates to age and frequency in the language.
 
 4. **fix_error** — "She is an well known author."
@@ -614,7 +616,8 @@
 
 4. **fix_error** — "I will sendmessage him later."
    **Hint**: "Message" can stand alone as a verb
-   **Answer**: I will message him later. (or: I will send him a message later.)
+   **Answer**: I will message him later.
+   **Accepts**: I will send him a message later.
    **Explanation**: "Sendmessage" isn't a word. Either use "message" alone (verb conversion) or "send + him + a message" (noun usage). The modern conversion makes "message" enough on its own.
 
 5. **read_answer**

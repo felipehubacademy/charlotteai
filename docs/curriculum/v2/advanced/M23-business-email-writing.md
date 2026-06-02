@@ -42,7 +42,8 @@
 
 3. **fill_gap** — Semi-formal opener for a coworker: "_____ you're doing well."
    **Hint**: friendly but professional opener
-   **Answer**: Hope (or "Hoping")
+   **Answer**: Hope
+   **Accepts**: Hoping
    **Explanation**: "Hope you're doing well" — common semi-formal opener for someone you know but aren't close to. Drops the formal "I" of "I hope" to feel warmer. Widely used in workplace email.
 
 4. **fix_error** — Cold email opening: "Hey there, what's going on?"

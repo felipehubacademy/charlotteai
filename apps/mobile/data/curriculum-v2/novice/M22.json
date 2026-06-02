@@ -103,14 +103,20 @@
           "type": "fix_error",
           "sentence": "I like dogs and cats but birds.",
           "hint": "Estrutura paralela",
-          "answer": "I like dogs, cats, and birds. (or use \"but\" with opposite idea)",
+          "answer": "I like dogs, cats, and birds.",
+          "accepts": [
+            "use \"but\" with opposite idea"
+          ],
           "explanation": "\"But\" sem ideia oposta soa estranho. Use \"and\" pra lista. \"But\" exigiria contraste."
         },
         {
           "type": "read_answer",
           "passage": "I like coffee and tea, but I don't like soda. I drink water all day. Do you prefer coffee or tea?",
           "question": "Does the speaker like soda?",
-          "answer": "no (or \"doesn't like\")",
+          "answer": "no",
+          "accepts": [
+            "doesn't like"
+          ],
           "explanation": "O texto diz \"I don't like soda\"."
         }
       ],
@@ -312,7 +318,10 @@
           "type": "read_answer",
           "passage": "I love English because it opens doors. I study every day, so I'm making progress. I'll keep going because it's fun.",
           "question": "Why does the speaker love English?",
-          "answer": "it opens doors (or \"opens doors\")",
+          "answer": "it opens doors",
+          "accepts": [
+            "opens doors"
+          ],
           "explanation": "O texto diz \"I love English because it opens doors\"."
         }
       ],
@@ -716,7 +725,10 @@
           "type": "read_answer",
           "passage": "Although I love coffee, I drink tea sometimes. I want to travel. However, I have no money right now.",
           "question": "Why doesn't the speaker travel now?",
-          "answer": "no money (or \"I have no money\")",
+          "answer": "no money",
+          "accepts": [
+            "I have no money"
+          ],
           "explanation": "The text says \"I have no money right now\"."
         }
       ],
@@ -918,7 +930,10 @@
           "type": "read_answer",
           "passage": "I'm Felipe. I'm from Brazil. I learned English for two years. I love it because it opens doors. Tomorrow I'm going to take a test. Although I'm nervous, I'll do my best.",
           "question": "Why does Felipe love English?",
-          "answer": "it opens doors (or \"opens doors\")",
+          "answer": "it opens doors",
+          "accepts": [
+            "opens doors"
+          ],
           "explanation": "O texto diz \"I love it because it opens doors\"."
         }
       ],

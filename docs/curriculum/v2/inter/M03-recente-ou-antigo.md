@@ -239,7 +239,8 @@
 10. **read_answer**
     **Passage**: "I have lived in São Paulo for ten years. I've worked at my company for five years. My sister has studied English for three years."
     **Question**: How long has the sister studied English?
-    **Answer**: three years (or "for three years")
+    **Answer**: three years
+    **Accepts**: for three years
     **Explanation**: The text says "for three years".
 
 ### 2. Listening/Speaking (5 phrases)
@@ -404,7 +405,8 @@
 10. **read_answer**
     **Passage**: "I have lived here since 2015. I have worked at this company since January. My best friend and I have been friends since school."
     **Question**: Since when has the speaker worked at this company?
-    **Answer**: January (or "since January")
+    **Answer**: January
+    **Accepts**: since January
     **Explanation**: The text says "since January".
 
 ### 2. Listening/Speaking (5 phrases)
@@ -569,7 +571,8 @@
 10. **read_answer**
     **Passage**: "Q: How long have you lived in São Paulo? A: For ten years. Q: Since when have you worked there? A: Since 2020."
     **Question**: Since when has the person worked there?
-    **Answer**: 2020 (or "since 2020")
+    **Answer**: 2020
+    **Accepts**: since 2020
     **Explanation**: The text says "Since 2020".
 
 ### 2. Listening/Speaking (5 phrases)

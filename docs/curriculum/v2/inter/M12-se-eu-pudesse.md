@@ -405,7 +405,8 @@
 10. **read_answer**
     **Passage**: "If I were you, I would talk to her honestly. If I were in your position, I would take the offer. If I were you, I would go for it — life is short."
     **Question**: What does the speaker think you should do?
-    **Answer**: go for it (or "take the offer" or "talk to her")
+    **Answer**: go for it
+    **Accepts**: take the offer / talk to her
     **Explanation**: The text suggests multiple actions; all are valid advice given in the second conditional with "if I were you".
 
 ### 2. Listening/Speaking (5 phrases)
@@ -570,7 +571,8 @@
 10. **read_answer**
     **Passage**: "What would you do if you won the lottery? Where would you live if you could choose any country? Would you travel more if you had more money?"
     **Question**: What hypothetical involves winning the lottery?
-    **Answer**: what would you do (or "what to do with the money")
+    **Answer**: what would you do
+    **Accepts**: what to do with the money
     **Explanation**: The text asks "What would you do if you won the lottery?".
 
 ### 2. Listening/Speaking (5 phrases)
@@ -735,7 +737,8 @@
 10. **read_answer**
     **Passage**: "If I had more time, I would travel more. I wish I could speak Italian fluently. If I were you, I would take the opportunity. What would you do if you won a lot of money?"
     **Question**: What does the speaker wish they could do?
-    **Answer**: speak Italian fluently (or "speak Italian")
+    **Answer**: speak Italian fluently
+    **Accepts**: speak Italian
     **Explanation**: The text says "I wish I could speak Italian fluently".
 
 ### 2. Listening/Speaking (5 phrases)

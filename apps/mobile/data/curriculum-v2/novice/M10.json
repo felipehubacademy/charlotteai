@@ -727,7 +727,10 @@
           "type": "read_answer",
           "passage": "Waiter: What would you like? Customer: I'd like a pasta and a glass of water. Waiter: Anything else? Customer: No, that's all. Can I have the bill?",
           "question": "What does the customer order to drink?",
-          "answer": "a glass of water (or \"water\")",
+          "answer": "a glass of water",
+          "accepts": [
+            "water"
+          ],
           "explanation": "O texto diz \"a glass of water\"."
         }
       ],

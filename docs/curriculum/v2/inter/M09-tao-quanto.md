@@ -76,7 +76,8 @@
 10. **read_answer**
     **Passage**: "My brother is as tall as my father — both are six feet. My sister is as smart as our mother. The new restaurant is as expensive as the old one — both are pricey but worth it."
     **Question**: How does the new restaurant compare to the old one?
-    **Answer**: as expensive as the old one (or "equally expensive")
+    **Answer**: as expensive as the old one
+    **Accepts**: equally expensive
     **Explanation**: The text says "The new restaurant is as expensive as the old one" — both are equally expensive.
 
 ### 2. Listening/Speaking (5 phrases)
@@ -241,7 +242,8 @@
 10. **read_answer**
     **Passage**: "My new apartment isn't as big as the old one, but it isn't as expensive either. The neighborhood isn't as quiet, but it isn't as far from work. Overall, it's a fair trade."
     **Question**: How does the new apartment compare to the old one in size?
-    **Answer**: isn't as big (or "smaller")
+    **Answer**: isn't as big
+    **Accepts**: smaller
     **Explanation**: The text says "My new apartment isn't as big as the old one" — meaning the new one is smaller.
 
 ### 2. Listening/Speaking (5 phrases)
@@ -406,7 +408,8 @@
 10. **read_answer**
     **Passage**: "She works twice as hard as I do — putting in extra hours daily. Her salary is also twice as much. This year, we have three times as many clients as last year — business is booming."
     **Question**: How many more clients does the company have this year?
-    **Answer**: three times as many (or "three times more")
+    **Answer**: three times as many
+    **Accepts**: three times more
     **Explanation**: The text says "we have three times as many clients as last year".
 
 ### 2. Listening/Speaking (5 phrases)
@@ -571,7 +574,8 @@
 10. **read_answer**
     **Passage**: "The more I learn English, the more confident I feel. The harder I practice speaking, the more naturally it comes. The older I get, the more I appreciate good conversations."
     **Question**: What happens when the speaker practices speaking harder?
-    **Answer**: it comes more naturally (or "the more naturally it comes")
+    **Answer**: it comes more naturally
+    **Accepts**: the more naturally it comes
     **Explanation**: The text says "the harder I practice speaking, the more naturally it comes".
 
 ### 2. Listening/Speaking (5 phrases)
@@ -736,7 +740,8 @@
 10. **read_answer**
     **Passage**: "My new apartment is as big as the old one, but it's not as quiet. The rent is twice as expensive, but the location is amazing. The more I live here, the more I appreciate the convenience."
     **Question**: How much more does the rent cost?
-    **Answer**: twice as much (or "twice as expensive")
+    **Answer**: twice as much
+    **Accepts**: twice as expensive
     **Explanation**: The text says "The rent is twice as expensive" — meaning the rent is doubled.
 
 ### 2. Listening/Speaking (5 phrases)

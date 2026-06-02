@@ -44,7 +44,8 @@
 
 3. **fill_gap** — Hedge in casual speech: "She's _____ the best manager I've ever had."
    **Hint**: "Kind of" or "sort of"
-   **Answer**: kind of (or "sort of")
+   **Answer**: kind of
+   **Accepts**: sort of
    **Explanation**: "Kind of" / "sort of" — hedges. Soften the absoluteness of "the best". "Kind of the best" = approximately the best, hesitant to claim full superlative. In writing this hedge is light; in speech it's heavy and frequent.
 
 4. **fix_error** — Casual speech, but over-filled: "Like, you know, I mean, like, the project was, sort of, really hard, you know?"
@@ -184,7 +185,8 @@
 
 3. **fill_gap** — Casual tag for "It's good weather today, _____" (very informal British)
    **Hint**: Universal informal tag
-   **Answer**: innit (or "isn't it" formal)
+   **Answer**: innit
+   **Accepts**: isn't it" formal
    **Explanation**: "Innit" — universal informal tag in British English, especially Cockney/London. Stands in for any positive→negative tag ("isn't it / aren't they / haven't they / didn't he"). Use cautiously — works in casual peer-to-peer speech but reads as too informal in professional contexts.
 
 4. **fix_error** — Tag mismatched: "You've been to Paris, haven't you?"
@@ -324,12 +326,14 @@
 
 3. **fill_gap** — Backchannel meaning "I'm tracking, keep going": "_____"
    **Hint**: Single syllable, neutral confirmation
-   **Answer**: Right (or "Mm-hm" or "Yeah")
+   **Answer**: Right
+   **Accepts**: Mm-hm / Yeah
    **Explanation**: "Right" — neutral confirmation backchannel. Often timed during pauses or at the end of a sentence. Allows the speaker to continue without seeking more elaborate confirmation. Stress-pattern: short, rising-falling pitch, almost throwaway.
 
 4. **fix_error** — Over-elaborate backchannel: "I am listening to your account with great interest."
    **Hint**: Use a short interjection instead
-   **Answer**: Mm-hm. (or "Right." / "Yeah." / "Oh.")
+   **Answer**: Mm-hm.
+   **Accepts**: Right. / Yeah. / Oh.
    **Explanation**: Formal acknowledgement reads as ironic or alien in casual speech. Native fluency uses short backchannels. "I am listening with interest" in casual chat = either sarcasm or non-native flag. C2 fluency replaces it with one-syllable confirmation.
 
 5. **read_answer**
@@ -469,7 +473,8 @@
 
 4. **fix_error** — Awkward sensitivity-opener: "With no offence, but you're wrong."
    **Hint**: "No offence" is the fixed phrase
-   **Answer**: No offence, but you're wrong. (or: With all due respect, but you're wrong.)
+   **Answer**: No offence, but you're wrong.
+   **Accepts**: With all due respect, but you're wrong.
    **Explanation**: "No offence" — set phrase preceding a potentially insulting statement. "With no offence" is non-standard. The phrase preempts any negative reaction: "I'm not trying to insult you, but...". Often softens what follows.
 
 5. **read_answer**

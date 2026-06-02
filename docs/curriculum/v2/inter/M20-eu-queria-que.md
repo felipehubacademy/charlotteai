@@ -77,7 +77,8 @@
 10. **read_answer**
     **Passage**: "I wish you would stop interrupting me. I wish she would listen to me. I wish people wouldn't smoke in restaurants. I wish it would stop raining. I wish my neighbors wouldn't make so much noise."
     **Question**: What does the speaker wish about restaurants?
-    **Answer**: people wouldn't smoke (or "that people wouldn't smoke")
+    **Answer**: people wouldn't smoke
+    **Accepts**: that people wouldn't smoke
     **Explanation**: The text says "I wish people wouldn't smoke in restaurants".
 
 ### 2. Listening/Speaking (5 phrases)
@@ -242,7 +243,8 @@
 10. **read_answer**
     **Passage**: "If only I had more time! If only I had studied harder! If only she were here now. If only we had left earlier! If only the rain would stop!"
     **Question**: What does the speaker wish about studying?
-    **Answer**: had studied harder (or "studied harder")
+    **Answer**: had studied harder
+    **Accepts**: studied harder
     **Explanation**: The text says "If only I had studied harder!".
 
 ### 2. Listening/Speaking (5 phrases)
@@ -737,7 +739,8 @@
 10. **read_answer**
     **Passage**: "I wish you would stop interrupting me. If only I had more time! I'd rather not go tonight. It's time we left for the airport. I'd rather you talked to me first."
     **Question**: What does the speaker prefer not to do tonight?
-    **Answer**: go (or "go tonight")
+    **Answer**: go
+    **Accepts**: go tonight
     **Explanation**: The text says "I'd rather not go tonight".
 
 ### 2. Listening/Speaking (5 phrases)

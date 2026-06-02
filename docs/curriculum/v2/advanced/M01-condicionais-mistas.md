@@ -52,7 +52,8 @@
 5. **read_answer**
    **Passage**: "Linguists often note that bilingual children process language differently. Had Maria's parents spoken Portuguese to her at home, she would likely be fluent today. Instead, she has spent the last two years catching up on a language her own family treats as second nature."
    **Question**: Why isn't Maria fluent in Portuguese today, according to the passage?
-   **Answer**: her parents didn't speak Portuguese to her at home (or: they didn't speak it at home)
+   **Answer**: her parents didn't speak Portuguese to her at home
+   **Accepts**: they didn't speak it at home
    **Explanation**: The inverted third conditional "Had Maria's parents spoken..." reveals the unmet past condition. The mixed form ("would likely be fluent today") makes the present consequence explicit.
 
 ### 2. Listening/Speaking (5 phrases)
@@ -192,7 +193,8 @@
 5. **read_answer**
    **Passage**: "Engineers tend to overplan. If our lead developer weren't so detail-obsessed, we would have shipped the prototype three months ago. As it stands, we're still polishing edges that no user will ever see."
    **Question**: Why hasn't the prototype shipped yet?
-   **Answer**: the lead developer is too detail-obsessed (or "is overly detail-obsessed")
+   **Answer**: the lead developer is too detail-obsessed
+   **Accepts**: is overly detail-obsessed
    **Explanation**: The permanent trait ("weren't so detail-obsessed") explains the past failure ("would have shipped three months ago"). Mixed conditional in action.
 
 ### 2. Listening/Speaking (5 phrases)
@@ -326,13 +328,15 @@
 
 4. **fix_error** — "If had I known, I would have told you."
    **Hint**: When you invert, drop "if" entirely
-   **Answer**: Had I known, I would have told you. (or: If I had known, I would have told you.)
+   **Answer**: Had I known, I would have told you.
+   **Accepts**: If I had known, I would have told you.
    **Explanation**: You can either use "if + had + subject" OR invert ("had + subject" without "if"). Mixing both — "if had I" — is ungrammatical. Inversion replaces "if".
 
 5. **read_answer**
    **Passage**: "The architect's notebook reveals a single regret. 'Had I trusted my first instinct,' she wrote, 'the building would stand differently today.' Critics now agree that the compromise version softened what could have been her boldest work."
    **Question**: What does the architect regret?
-   **Answer**: not trusting her first instinct (or "compromising her first instinct")
+   **Answer**: not trusting her first instinct
+   **Accepts**: compromising her first instinct
    **Explanation**: "Had I trusted" — inverted regret. The mixed conditional consequence ("would stand differently today") connects past hesitation to present reality.
 
 ### 2. Listening/Speaking (5 phrases)
@@ -472,7 +476,8 @@
 5. **read_answer**
    **Passage**: "The contract reads, in its closing clause: 'Were either party to withdraw before completion, the deposit shall be forfeit. Should circumstances require an extension, the parties may renegotiate in good faith.' The language is deliberately old-fashioned — clarity dressed as ceremony."
    **Question**: What happens if a party withdraws early?
-   **Answer**: the deposit is forfeit (or "the deposit shall be forfeit")
+   **Answer**: the deposit is forfeit
+   **Accepts**: the deposit shall be forfeit
    **Explanation**: "Were either party to withdraw" — inverted second conditional. "Shall be forfeit" — formal passive future. The whole clause demonstrates legal-register inversion.
 
 ### 2. Listening/Speaking (5 phrases)
@@ -612,7 +617,8 @@
 5. **read_answer**
    **Passage**: "Suppose for a moment that the city had invested in flood barriers a decade ago. But for that investment, last year's storm would have done ten times more damage. The cost-benefit is rarely visible until disaster arrives — or doesn't."
    **Question**: What hypothetically prevented worse damage from last year's storm?
-   **Answer**: the investment in flood barriers a decade ago (or "the flood barriers")
+   **Answer**: the investment in flood barriers a decade ago
+   **Accepts**: the flood barriers
    **Explanation**: "Suppose" opens the hypothetical; "But for that investment" gestures at the counterfactual ("if it weren't for that investment, the damage would have been ten times worse"). C1 phrasing layering two alternatives to "if".
 
 ### 2. Listening/Speaking (5 phrases)

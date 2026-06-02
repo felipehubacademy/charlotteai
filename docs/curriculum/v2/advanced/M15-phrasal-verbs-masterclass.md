@@ -205,7 +205,8 @@
 5. **read_answer**
    **Passage**: "The investigative report did the work the original news coverage had not. It refused to gloss over the systemic failures. It traced the small incidents that had cropped up over fifteen years, none of them sufficient on their own to draw attention. And it singled out three executives who had received warnings about each one — and chosen not to act."
    **Question**: What did the report do that the original coverage had not?
-   **Answer**: refused to gloss over the systemic failures (or "traced the small incidents that had cropped up over fifteen years and singled out three executives")
+   **Answer**: refused to gloss over the systemic failures
+   **Accepts**: traced the small incidents that had cropped up over fifteen years and singled out three executives
    **Explanation**: Three attention-related phrasal verbs: "gloss over" (downplay), "crop up" (appear over time), "single out" (highlight). Investigative-prose register; common in journalism and accountability writing.
 
 ### 2. Listening/Speaking (5 phrases)
@@ -345,7 +346,8 @@
 5. **read_answer**
    **Passage**: "The launch had not gone as planned. Two key contracts fell through in the same week. The product, despite the hype, failed to live up to expectations on the most-watched metric. Over the next quarter, the team ironed out the technical issues and rebuilt slowly. A small bridge loan from one of the founders' families tided them over until revenue caught up."
    **Question**: What helped the team financially during the difficult quarter?
-   **Answer**: a small bridge loan from one of the founders' families (or "the bridge loan tided them over")
+   **Answer**: a small bridge loan from one of the founders' families
+   **Accepts**: the bridge loan tided them over
    **Explanation**: Four C2 phrasal verbs: "fell through" (collapsed), "live up to" (meet expectations), "ironed out" (resolved), "tided them over" (sustained temporarily). Business-narrative register.
 
 ### 2. Listening/Speaking (5 phrases)

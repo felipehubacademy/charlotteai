@@ -71,7 +71,10 @@
           "type": "fix_error",
           "sentence": "I want you to look at this report.",
           "hint": "Soften with \"I was wondering if you could...\"",
-          "answer": "I was wondering if you could take a look at this report. (or: I was hoping you might look at this report.)",
+          "answer": "I was wondering if you could take a look at this report.",
+          "accepts": [
+            "I was hoping you might look at this report."
+          ],
           "explanation": "\"I want you to\" is direct and can read as demanding. The softer C1 register uses \"I was wondering if you could...\" or similar hedged forms. Especially important when asking up the hierarchy."
         },
         {
@@ -221,7 +224,10 @@
           "type": "fix_error",
           "sentence": "You should fix the introduction.",
           "hint": "Soften with hedged suggestion",
-          "answer": "It might be worth revisiting the introduction. (or: You might want to look at the introduction again.)",
+          "answer": "It might be worth revisiting the introduction.",
+          "accepts": [
+            "You might want to look at the introduction again."
+          ],
           "explanation": "\"You should\" can land as criticism. Hedged forms preserve face — same content, different relational impact. C1 register often demands the softer version."
         },
         {
@@ -375,7 +381,10 @@
           "type": "fix_error",
           "sentence": "You're wrong about that.",
           "hint": "Soften with \"I'd see it differently\"",
-          "answer": "I'd see it a little differently. (or: With respect, I'd see it differently.)",
+          "answer": "I'd see it a little differently.",
+          "accepts": [
+            "With respect, I'd see it differently."
+          ],
           "explanation": "\"You're wrong\" is blunt and damaging. \"I'd see it differently\" presents the same disagreement without attacking the other person. Crucial diplomatic shift."
         },
         {
@@ -525,7 +534,10 @@
           "type": "fix_error",
           "sentence": "Arguably is the best film of the decade.",
           "hint": "\"Arguably\" needs to attach to a clause, not stand alone",
-          "answer": "Arguably, it's the best film of the decade. (or: It's arguably the best film of the decade.)",
+          "answer": "Arguably, it's the best film of the decade.",
+          "accepts": [
+            "It's arguably the best film of the decade."
+          ],
           "explanation": "\"Arguably\" is an adverb — attaches to a clause. \"Arguably is\" treats it as a verb form, which fails. Either fronted (\"Arguably, X is...\") or mid-position (\"It's arguably the best...\")."
         },
         {
@@ -672,14 +684,20 @@
           "type": "fix_error",
           "sentence": "I'm somewhat agree with you.",
           "hint": "\"Somewhat\" modifies adjective/adverb, not verb directly. Use \"kind of agree\" or \"somewhat agreeable\"",
-          "answer": "I kind of agree with you. (or: I somewhat agree with you, with the right rhythm.)",
+          "answer": "I kind of agree with you.",
+          "accepts": [
+            "I somewhat agree with you, with the right rhythm."
+          ],
           "explanation": "\"Somewhat\" modifies adjectives/adverbs in formal usage (\"somewhat strange\"). Modern spoken English does allow \"I somewhat agree\", but \"kind of agree\" / \"sort of agree\" is more natural."
         },
         {
           "type": "read_answer",
           "passage": "Asked how the launch had gone, the founder hesitated. 'Mixed, I think. We hit roughly seventy percent of our targets, give or take. The team is sort of exhausted but more or less proud. We're somewhat behind on shipping, though — I'd say two weeks, approximately.' She had mastered the art of imprecision.",
           "question": "How behind on shipping is the team, approximately?",
-          "answer": "about two weeks (or \"two weeks, approximately\")",
+          "answer": "about two weeks",
+          "accepts": [
+            "two weeks, approximately"
+          ],
           "explanation": "Six vague-language markers in one paragraph: \"roughly\", \"give or take\", \"sort of\", \"more or less\", \"somewhat\", \"approximately\". Spoken C1 leans heavily on these for natural rhythm."
         }
       ],

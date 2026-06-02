@@ -476,7 +476,8 @@
 5. **read_answer**
    **Passage**: "The ambassador chose his words. 'Be that as it may, the agreement stands. Come what may, neither side will retreat from what was signed. Suffice it to say that any party tempted to abandon the treaty would face consequences I shall not detail here.'"
    **Question**: What does the ambassador imply about leaving the treaty?
-   **Answer**: there would be undisclosed consequences (or "serious consequences")
+   **Answer**: there would be undisclosed consequences
+   **Accepts**: serious consequences
    **Explanation**: Three fossilised subjunctives layered: "Be that as it may" (concession), "Come what may" (resolve), "Suffice it to say" (understatement). Diplomatic prose at its driest.
 
 ### 2. Listening/Speaking (5 phrases)

@@ -74,7 +74,8 @@
 10. **read_answer**
     **Passage**: "I get up at 6, put on my workout clothes, and go out for a run. When I come back, I turn on the coffee maker."
     **Question**: What does the speaker put on?
-    **Answer**: workout clothes (or "clothes")
+    **Answer**: workout clothes
+    **Accepts**: clothes
     **Explanation**: The text says "put on my workout clothes".
 
 ### 2. Listening/Speaking (5 phrases)
@@ -238,7 +239,8 @@
 10. **read_answer**
     **Passage**: "I'm looking for my phone. My sister looks after my kids on weekends. I always look up words I don't know."
     **Question**: Who looks after the kids?
-    **Answer**: my sister (or "her sister")
+    **Answer**: my sister
+    **Accepts**: her sister
     **Explanation**: The text says "My sister looks after my kids".
 
 ### 2. Listening/Speaking (5 phrases)
@@ -403,7 +405,8 @@
 10. **read_answer**
     **Passage**: "I found out about the party yesterday. I'll pick you up at 8. Don't give up trying!"
     **Question**: When will the speaker pick you up?
-    **Answer**: at 8 (or "8")
+    **Answer**: at 8
+    **Accepts**: 8
     **Explanation**: The text says "I'll pick you up at 8".
 
 ### 2. Listening/Speaking (5 phrases)
@@ -567,7 +570,8 @@
 10. **read_answer**
     **Passage**: "I turned the TV off. Can you pick me up at 7? She looks after her dad every weekend."
     **Question**: When should they pick the speaker up?
-    **Answer**: at 7 (or "7")
+    **Answer**: at 7
+    **Accepts**: 7
     **Explanation**: The text says "pick me up at 7".
 
 ### 2. Listening/Speaking (5 phrases)
@@ -732,7 +736,8 @@
 10. **read_answer**
     **Passage**: "I got up early today. I was looking for my keys. I gave up after 10 minutes — I called my friend who picked me up."
     **Question**: Who picked the speaker up?
-    **Answer**: my friend (or "the friend")
+    **Answer**: my friend
+    **Accepts**: the friend
     **Explanation**: The text says "my friend who picked me up".
 
 ### 2. Listening/Speaking (5 phrases)
@@ -871,7 +876,8 @@
 
 5. **fill_gap** — "She's on _____ line right now. Can I take a message?"
    **Hint**: indefinite article + word for telephone connection
-   **Answer**: another (or "the other")
+   **Answer**: another
+   **Accepts**: the other
    **Explanation**: "She's on another line" / "She's on the other line" — phone English for "she's busy with another call". "Another line" suggests there are multiple; "the other line" implies a specific second line.
 
 6. **fill_gap** — "Sorry, we were _____ off."

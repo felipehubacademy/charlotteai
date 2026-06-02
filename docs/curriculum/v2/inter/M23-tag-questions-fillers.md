@@ -391,7 +391,8 @@
 
 6. **fill_gap** — "She must be tired, _____ she?"
    **Hint**: "Must" usually pairs with "mustn't" in tag, though "must" often gets a different tag in real speech
-   **Answer**: mustn't (or "isn't" depending on register)
+   **Answer**: mustn't
+   **Accepts**: isn't" depending on register
    **Explanation**: "Must" technically pairs with "mustn't" in textbook tags. In real speech, "She must be tired, isn't she?" is more common when "must" expresses certainty rather than obligation.
 
 7. **fill_gap** — "You can drive, _____ you?"
@@ -541,7 +542,8 @@
 
 3. **word_bank** — "Open the door, _____ you?"
    **Choices**: will / do / can / would
-   **Answer**: will (or "would" / "could" depending on politeness)
+   **Answer**: will
+   **Accepts**: would / could" depending on politeness
    **Explanation**: Imperative + tag: "Open the door, will you?" — softens a command into a polite request. Variations: "would you?", "could you?", "won't you?". All make the imperative friendlier.
 
 4. **word_bank** — "Nobody called, _____ they?"
@@ -717,7 +719,8 @@
 
 5. **fill_gap** — Pause filler signaling you're searching for the word: "I, _____, don't really know what to say."
    **Hint**: short filler word for pause
-   **Answer**: like (or "you know")
+   **Answer**: like
+   **Accepts**: you know
    **Explanation**: "Like" — pause filler especially common in younger speech. Signals you're searching, processing, or about to give an example. Overuse sounds immature but moderate use is natural.
 
 6. **fill_gap** — Tag question with rising intonation (real question expecting answer): "She's coming tomorrow, _____ she?"
@@ -737,7 +740,8 @@
 
 9. **fix_error** — "Obviously you don't know what I'm talking about." (in a serious conversation)
    **Hint**: "Obviously" can sound condescending — use "I mean" or rephrase
-   **Answer**: I mean, you might not know what I'm talking about. (or simply: "Maybe you don't know what I'm talking about.")
+   **Answer**: I mean, you might not know what I'm talking about.
+   **Accepts**: simply: "Maybe you don't know what I'm talking about.
    **Explanation**: "Obviously" implies the listener should know — can sound condescending. In sensitive conversations, "I mean" or "actually" is softer. Register awareness is part of using fillers well.
 
 10. **read_answer**

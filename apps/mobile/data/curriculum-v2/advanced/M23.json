@@ -58,7 +58,10 @@
           "type": "fill_gap",
           "sentence": "Semi-formal opener for a coworker: \"_____ you're doing well.\"",
           "hint": "friendly but professional opener",
-          "answer": "Hope (or \"Hoping\")",
+          "answer": "Hope",
+          "accepts": [
+            "Hoping"
+          ],
           "explanation": "\"Hope you're doing well\" — common semi-formal opener for someone you know but aren't close to. Drops the formal \"I\" of \"I hope\" to feel warmer. Widely used in workplace email."
         },
         {

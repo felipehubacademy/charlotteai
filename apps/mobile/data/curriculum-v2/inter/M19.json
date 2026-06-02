@@ -309,7 +309,10 @@
           "type": "read_answer",
           "passage": "The Amazon, which is the longest river in South America, runs through Brazil. My new phone, which I bought last week, broke already. The book, which won an award last year, became a bestseller. Brazil, which is the largest country in South America, has many cultures.",
           "question": "What happened to the new phone?",
-          "answer": "it broke (or \"it broke already\")",
+          "answer": "it broke",
+          "accepts": [
+            "it broke already"
+          ],
           "explanation": "The text says \"My new phone, which I bought last week, broke already\"."
         }
       ],
@@ -503,7 +506,10 @@
           "type": "read_answer",
           "passage": "Maria, whose father is a doctor, is studying medicine. My neighbor, whose dog barks all night, is moving. The author, whose book I loved, is coming to town. Tom, whose wife is from Spain, speaks fluent Spanish.",
           "question": "Why does Tom speak fluent Spanish?",
-          "answer": "his wife is from Spain (or \"whose wife is from Spain\")",
+          "answer": "his wife is from Spain",
+          "accepts": [
+            "whose wife is from Spain"
+          ],
           "explanation": "The text says \"Tom, whose wife is from Spain, speaks fluent Spanish\"."
         }
       ],
@@ -697,7 +703,10 @@
           "type": "read_answer",
           "passage": "Paris, where I lived for a year, is beautiful. 2020, when the pandemic started, was a hard year. My hometown, where I grew up, is small. The summer of 2018, when I traveled to Europe, was unforgettable.",
           "question": "Where did the speaker grow up?",
-          "answer": "in my/their hometown (or \"their hometown\")",
+          "answer": "in my/their hometown",
+          "accepts": [
+            "their hometown"
+          ],
           "explanation": "The text says \"My hometown, where I grew up, is small\"."
         }
       ],
@@ -889,7 +898,11 @@
           "type": "read_answer",
           "passage": "The man who called me yesterday is my boss (defining — identifies which man). My boss, who called me yesterday, is great (non-defining — extra info about the only boss). The book that I bought is fascinating (defining). This book, which won an award, is fascinating (non-defining).",
           "question": "When do you use commas?",
-          "answer": "in non-defining clauses (or \"non-defining\" or \"when info is extra\")",
+          "answer": "in non-defining clauses",
+          "accepts": [
+            "non-defining",
+            "when info is extra"
+          ],
           "explanation": "The text explains that commas appear in non-defining clauses (extra information)."
         }
       ],

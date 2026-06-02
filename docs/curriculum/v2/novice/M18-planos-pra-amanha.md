@@ -240,7 +240,8 @@
 10. **read_answer**
     **Passage**: "I'm not going to work tomorrow. It's my day off. My sister isn't going to come either. We aren't going to do anything special."
     **Question**: Why isn't the speaker working tomorrow?
-    **Answer**: it's my day off (or "day off")
+    **Answer**: it's my day off
+    **Accepts**: day off
     **Explanation**: O texto diz "It's my day off".
 
 ### 2. Listening/Speaking (5 phrases)
@@ -405,7 +406,8 @@
 10. **read_answer**
     **Passage**: "Q: Are you going to travel next month? A: Yes, I am. Q: Is your sister going to come? A: No, she isn't. She has work."
     **Question**: Is the sister going to come?
-    **Answer**: no (or "she isn't")
+    **Answer**: no
+    **Accepts**: she isn't
     **Explanation**: The text says "No, she isn't".
 
 ### 2. Listening/Speaking (5 phrases)
@@ -735,7 +737,8 @@
 10. **read_answer**
     **Passage**: "Tomorrow I'm going to work. I'm not going to eat out tonight — I'm tired. Next week I'm going to travel to Bahia."
     **Question**: Where is the speaker going next week?
-    **Answer**: Bahia (or "to Bahia")
+    **Answer**: Bahia
+    **Accepts**: to Bahia
     **Explanation**: O texto diz "travel to Bahia".
 
 ### 2. Listening/Speaking (5 phrases)

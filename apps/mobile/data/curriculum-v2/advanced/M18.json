@@ -191,7 +191,10 @@
             "That",
             "Such"
           ],
-          "answer": "The (or \"The same\")",
+          "answer": "The",
+          "accepts": [
+            "The same"
+          ],
           "explanation": "Lexical cohesion via superordinate hierarchy: \"Volvo\" (specific) → \"car\" (less specific) → \"vehicle\" (even less specific). Each refers to the same object. \"The vehicle\" — definite article + superordinate noun, picking up the referent without repetition. Hyponym → superordinate chain."
         },
         {
@@ -360,7 +363,10 @@
           "type": "fill_gap",
           "sentence": "Formal: \"The aforementioned report concluded that the policy had failed. _____ findings remain unchallenged.\"",
           "hint": "Synonymous formal demonstrative",
-          "answer": "These (or \"The aforementioned\")",
+          "answer": "These",
+          "accepts": [
+            "The aforementioned"
+          ],
           "explanation": "\"These findings\" — anaphoric link to the report's content just mentioned. Alternatively, formal: \"The aforementioned findings\". \"Aforementioned\" itself is highly formal and slightly archaic — used in legal and very formal academic writing."
         },
         {
@@ -508,7 +514,10 @@
           "type": "fill_gap",
           "sentence": "Information flow: \"We discussed the budget. _____ revealed significant risks.\"",
           "hint": "Reference back with old info first",
-          "answer": "That discussion (or \"The discussion\")",
+          "answer": "That discussion",
+          "accepts": [
+            "The discussion"
+          ],
           "explanation": "\"That discussion\" (referring back) → \"revealed significant risks\" (new info). Or \"The discussion\" — definite article carries old info. The sentence builds on what was just mentioned."
         },
         {
@@ -662,7 +671,10 @@
           "type": "fix_error",
           "sentence": "Ambiguous reference: \"I gave the report to my manager, but it was incomplete.\"",
           "hint": "What was incomplete — the report or the manager?",
-          "answer": "I gave the report to my manager, but the report was incomplete. (or: I gave my manager the report, which was still incomplete.)",
+          "answer": "I gave the report to my manager, but the report was incomplete.",
+          "accepts": [
+            "I gave my manager the report, which was still incomplete."
+          ],
           "explanation": "\"It\" could refer to the report or the manager. Repeat the noun to disambiguate, or restructure the sentence. C2 prose avoids reference ambiguity even at the cost of slight repetition."
         },
         {

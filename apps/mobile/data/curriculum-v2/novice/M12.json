@@ -113,7 +113,11 @@
           "type": "read_answer",
           "passage": "I'm taller than my brother but he's older than me. Our sister is younger than both of us. She's also faster — she runs every morning.",
           "question": "Who is older than the speaker?",
-          "answer": "my brother (or \"her/his brother\")",
+          "answer": "my brother",
+          "accepts": [
+            "her",
+            "his brother"
+          ],
           "explanation": "O texto diz \"he's older than me\" se referindo ao irmão."
         }
       ],
@@ -924,7 +928,11 @@
           "type": "read_answer",
           "passage": "I'm taller than my brother but he's much stronger. My sister is more patient than both of us. She's a better listener too.",
           "question": "Who is the best listener?",
-          "answer": "my sister (or \"her sister\" / \"the sister\")",
+          "answer": "my sister",
+          "accepts": [
+            "her sister",
+            "the sister"
+          ],
           "explanation": "O texto diz \"She's a better listener\" — se referindo à irmã (melhor ouvinte que o falante e o irmão)."
         }
       ],

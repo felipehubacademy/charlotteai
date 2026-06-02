@@ -302,7 +302,10 @@
           "type": "fix_error",
           "sentence": "I will not to help.",
           "hint": "Sem \"to\" após will",
-          "answer": "I will not help. (or: I won't help.)",
+          "answer": "I will not help.",
+          "accepts": [
+            "I won't help."
+          ],
           "explanation": "Will + base, sem \"to\". \"I won't help\" ou \"I will not help\"."
         },
         {
@@ -316,7 +319,10 @@
           "type": "read_answer",
           "passage": "It's raining. I'll get an umbrella! She won't go out today. I promise I'll call you when I arrive.",
           "question": "What does the speaker promise?",
-          "answer": "I'll call you (when I arrive) (or \"to call\")",
+          "answer": "I'll call you (when I arrive)",
+          "accepts": [
+            "to call"
+          ],
           "explanation": "O texto diz \"I promise I'll call you\"."
         }
       ],
@@ -492,14 +498,20 @@
           "type": "fill_gap",
           "sentence": "I _____ go to the gym every day this week.",
           "hint": "Plano feito de antemão",
-          "answer": "'m going to (or am going to)",
+          "answer": "'m going to",
+          "accepts": [
+            "am going to"
+          ],
           "explanation": "\"I'm going to go\" — plano firme."
         },
         {
           "type": "fill_gap",
           "sentence": "Oh, I forgot my wallet! I _____ run home.",
           "hint": "Decisão na hora",
-          "answer": "'ll (or will)",
+          "answer": "'ll",
+          "accepts": [
+            "will"
+          ],
           "explanation": "\"I'll run home\" — decisão espontânea agora."
         },
         {
@@ -520,7 +532,11 @@
           "type": "read_answer",
           "passage": "I'm going to travel next month — I have tickets. But right now? Oh, the phone! I'll get it. I think it'll be my mom.",
           "question": "Why is the speaker going to travel (planejado vs espontâneo)?",
-          "answer": "planned (or \"tickets\" or \"has tickets\")",
+          "answer": "planned",
+          "accepts": [
+            "tickets",
+            "has tickets"
+          ],
           "explanation": "O texto diz \"I have tickets\" — indicando uma viagem planejada com going to."
         }
       ],
@@ -889,7 +905,10 @@
           "type": "fill_gap",
           "sentence": "I _____ help you whenever you need.",
           "hint": "Promessa com will",
-          "answer": "will (or 'll)",
+          "answer": "will",
+          "accepts": [
+            "ll"
+          ],
           "explanation": "Promessa indefinida — will."
         },
         {
@@ -903,7 +922,10 @@
           "type": "fill_gap",
           "sentence": "I think they _____ love the gift.",
           "hint": "Predição",
-          "answer": "will (or 'll)",
+          "answer": "will",
+          "accepts": [
+            "ll"
+          ],
           "explanation": "Predição com \"I think\" — will."
         },
         {

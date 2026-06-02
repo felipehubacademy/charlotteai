@@ -78,7 +78,8 @@
 10. **read_answer**
     **Passage**: "I wanted to go. However, I was too tired. The plan was risky. Nevertheless, we decided to proceed. She is intelligent. However, she lacks experience. I love coffee. On the other hand, my friend prefers tea."
     **Question**: Why didn't the speaker go?
-    **Answer**: too tired (or "they were too tired")
+    **Answer**: too tired
+    **Accepts**: they were too tired
     **Explanation**: The text says "However, I was too tired".
 
 ### 2. Listening/Speaking (5 phrases)
@@ -232,18 +233,21 @@
 
 8. **fix_error** — "Despite it was raining, we went out."
    **Hint**: "Despite" precisa de substantivo/-ing, não cláusula
-   **Answer**: Despite the rain, we went out. (or: Although it was raining, we went out.)
+   **Answer**: Despite the rain, we went out.
+   **Accepts**: Although it was raining, we went out.
    **Explanation**: "Despite + clause" is a common error. Use "despite + noun/-ing" OR "although + full clause".
 
 9. **fix_error** — "Although the rain, we went out."
    **Hint**: "Although" precisa de cláusula com sujeito e verbo
-   **Answer**: Although it was raining, we went out. (or: Despite the rain, we went out.)
+   **Answer**: Although it was raining, we went out.
+   **Accepts**: Despite the rain, we went out.
    **Explanation**: "Although + noun" alone doesn't work. It needs subject + verb.
 
 10. **read_answer**
     **Passage**: "Although it was raining, we went out. Despite the cold, we enjoyed the picnic. Although he is rich, he isn't happy. Despite being tired, she finished the project."
     **Question**: Why is the rich man not happy?
-    **Answer**: he isn't happy (or "the text doesn't say why")
+    **Answer**: he isn't happy
+    **Accepts**: the text doesn't say why
     **Explanation**: The text states "Although he is rich, he isn't happy" — the contrast is between wealth and happiness, no further reason given.
 
 ### 2. Listening/Speaking (5 phrases)
@@ -402,13 +406,15 @@
 
 9. **fix_error** — "He was sick, therefore he didn't come."
    **Hint**: "Therefore" prefere ponto/ponto-e-vírgula antes
-   **Answer**: He was sick. Therefore, he didn't come. (or: He was sick; therefore, he didn't come.)
+   **Answer**: He was sick. Therefore, he didn't come.
+   **Accepts**: He was sick; therefore, he didn't come.
    **Explanation**: A simple comma isn't strong enough for "therefore". Use a period or semicolon.
 
 10. **read_answer**
     **Passage**: "Sales dropped. Therefore, we cut the budget. He missed the meeting. As a result, he wasn't informed. It rained heavily. Consequently, the road flooded."
     **Question**: Why did the road flood?
-    **Answer**: it rained heavily (or "heavy rain")
+    **Answer**: it rained heavily
+    **Accepts**: heavy rain
     **Explanation**: The text says "It rained heavily. Consequently, the road flooded".
 
 ### 2. Listening/Speaking (5 phrases)
@@ -573,7 +579,8 @@
 10. **read_answer**
     **Passage**: "The course is intensive. Furthermore, it's expensive. She's a great manager. Moreover, she's a wonderful person. He plays guitar. In addition, he writes songs."
     **Question**: What does he do besides playing guitar?
-    **Answer**: writes songs (or "he writes songs")
+    **Answer**: writes songs
+    **Accepts**: he writes songs
     **Explanation**: The text says "He plays guitar. In addition, he writes songs".
 
 ### 2. Listening/Speaking (5 phrases)
@@ -738,7 +745,8 @@
 10. **read_answer**
     **Passage**: "In conclusion, the project was a success. To sum up, the report shows positive trends. All in all, it was a great experience. Overall, I would recommend this approach."
     **Question**: What is the speaker's overall recommendation?
-    **Answer**: this approach (or "they recommend this approach")
+    **Answer**: this approach
+    **Accepts**: they recommend this approach
     **Explanation**: The text says "Overall, I would recommend this approach".
 
 ### 2. Listening/Speaking (5 phrases)
@@ -887,17 +895,20 @@
 
 7. **fill_gap** — "Our team's _____ is at 10 every morning."
    **Hint**: short daily meeting
-   **Answer**: meeting (or "standup" / "sync" / "call")
+   **Answer**: meeting
+   **Accepts**: standup / sync / call
    **Explanation**: Workplace meeting vocabulary: "meeting" (general), "standup" (short daily — from agile), "sync" (catch-up between specific people), "call" (any meeting, often virtual), "1-on-1" (one-on-one with manager). Each has slightly different connotation.
 
 8. **fix_error** — "I work in IBM."
    **Hint**: For company name, use "work for" or "work at"
-   **Answer**: I work for IBM. (or: I work at IBM.)
+   **Answer**: I work for IBM.
+   **Accepts**: I work at IBM.
    **Explanation**: "Work in + company" doesn't work in English. Use "work for IBM" (employer relationship) or "work at IBM" (location/affiliation). "Work in" only for field ("I work in tech") or location-as-area ("I work in São Paulo").
 
 9. **fix_error** — "My salary increased by 1000 dollars promotion."
    **Hint**: Restructure with "raise" or "promotion"
-   **Answer**: I got a $1000 raise. (or: I got a promotion with a $1000 raise.)
+   **Answer**: I got a $1000 raise.
+   **Accepts**: I got a promotion with a $1000 raise.
    **Explanation**: "Salary increased by X promotion" mixes terms incorrectly. Either describe it as a "raise" (salary increase) or a "promotion" (new role, may or may not include raise). Use "got a raise" / "got promoted" as natural verbal forms.
 
 10. **read_answer**

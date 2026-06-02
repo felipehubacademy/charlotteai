@@ -408,7 +408,8 @@
 10. **read_answer**
     **Passage**: "He told me to close the door. She told me not to wait. He told us to be quiet. She told them not to speak loudly. He told me to open the window."
     **Question**: What did she tell them not to do?
-    **Answer**: speak loudly (or "not to speak loudly")
+    **Answer**: speak loudly
+    **Accepts**: not to speak loudly
     **Explanation**: The text says "She told them not to speak loudly".
 
 ### 2. Listening/Speaking (5 phrases)
@@ -573,7 +574,8 @@
 10. **read_answer**
     **Passage**: "She asked me to help her. He asked me not to tell anyone. She warned me to be careful. He begged me to reconsider. She urged me to try harder."
     **Question**: What did he beg her to do?
-    **Answer**: reconsider (or "to reconsider")
+    **Answer**: reconsider
+    **Accepts**: to reconsider
     **Explanation**: The text says "He begged me to reconsider".
 
 ### 2. Listening/Speaking (5 phrases)
@@ -738,7 +740,8 @@
 10. **read_answer**
     **Passage**: "She said she was tired. He asked if I was ready. She told me to close the door. He asked where I lived. She begged me to stay."
     **Question**: What did she beg me to do?
-    **Answer**: stay (or "to stay")
+    **Answer**: stay
+    **Accepts**: to stay
     **Explanation**: The text says "She begged me to stay".
 
 ### 2. Listening/Speaking (5 phrases)

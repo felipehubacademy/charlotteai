@@ -61,7 +61,10 @@
           "type": "fill_gap",
           "sentence": "Hedge in casual speech: \"She's _____ the best manager I've ever had.\"",
           "hint": "\"Kind of\" or \"sort of\"",
-          "answer": "kind of (or \"sort of\")",
+          "answer": "kind of",
+          "accepts": [
+            "sort of"
+          ],
           "explanation": "\"Kind of\" / \"sort of\" — hedges. Soften the absoluteness of \"the best\". \"Kind of the best\" = approximately the best, hesitant to claim full superlative. In writing this hedge is light; in speech it's heavy and frequent."
         },
         {
@@ -211,7 +214,10 @@
           "type": "fill_gap",
           "sentence": "Casual tag for \"It's good weather today, _____\" (very informal British)",
           "hint": "Universal informal tag",
-          "answer": "innit (or \"isn't it\" formal)",
+          "answer": "innit",
+          "accepts": [
+            "isn't it\" formal"
+          ],
           "explanation": "\"Innit\" — universal informal tag in British English, especially Cockney/London. Stands in for any positive→negative tag (\"isn't it / aren't they / haven't they / didn't he\"). Use cautiously — works in casual peer-to-peer speech but reads as too informal in professional contexts."
         },
         {
@@ -361,14 +367,23 @@
           "type": "fill_gap",
           "sentence": "Backchannel meaning \"I'm tracking, keep going\": \"_____\"",
           "hint": "Single syllable, neutral confirmation",
-          "answer": "Right (or \"Mm-hm\" or \"Yeah\")",
+          "answer": "Right",
+          "accepts": [
+            "Mm-hm",
+            "Yeah"
+          ],
           "explanation": "\"Right\" — neutral confirmation backchannel. Often timed during pauses or at the end of a sentence. Allows the speaker to continue without seeking more elaborate confirmation. Stress-pattern: short, rising-falling pitch, almost throwaway."
         },
         {
           "type": "fix_error",
           "sentence": "Over-elaborate backchannel: \"I am listening to your account with great interest.\"",
           "hint": "Use a short interjection instead",
-          "answer": "Mm-hm. (or \"Right.\" / \"Yeah.\" / \"Oh.\")",
+          "answer": "Mm-hm.",
+          "accepts": [
+            "Right.",
+            "Yeah.",
+            "Oh."
+          ],
           "explanation": "Formal acknowledgement reads as ironic or alien in casual speech. Native fluency uses short backchannels. \"I am listening with interest\" in casual chat = either sarcasm or non-native flag. C2 fluency replaces it with one-syllable confirmation."
         },
         {
@@ -518,7 +533,10 @@
           "type": "fix_error",
           "sentence": "Awkward sensitivity-opener: \"With no offence, but you're wrong.\"",
           "hint": "\"No offence\" is the fixed phrase",
-          "answer": "No offence, but you're wrong. (or: With all due respect, but you're wrong.)",
+          "answer": "No offence, but you're wrong.",
+          "accepts": [
+            "With all due respect, but you're wrong."
+          ],
           "explanation": "\"No offence\" — set phrase preceding a potentially insulting statement. \"With no offence\" is non-standard. The phrase preempts any negative reaction: \"I'm not trying to insult you, but...\". Often softens what follows."
         },
         {

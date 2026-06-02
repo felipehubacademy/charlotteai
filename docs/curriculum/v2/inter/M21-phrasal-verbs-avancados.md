@@ -86,7 +86,8 @@
 10. **read_answer**
     **Passage**: "I look forward to seeing you next week. She's getting used to waking up early for work. He objects to smoking in restaurants. We look forward to hearing from you soon."
     **Question**: What is she getting used to?
-    **Answer**: waking up early (or "waking up early for work")
+    **Answer**: waking up early
+    **Accepts**: waking up early for work
     **Explanation**: The text says "She's getting used to waking up early for work".
 
 ### 2. Listening/Speaking (5 phrases)
@@ -581,7 +582,8 @@
 10. **read_answer**
     **Passage**: "I need to catch up on my emails. Let's catch up next week! I want to make up for my mistake. It's hard to keep up with all the changes. I'll go through with the plan."
     **Question**: What do they need to do with their emails?
-    **Answer**: catch up on them (or "catch up on the emails")
+    **Answer**: catch up on them
+    **Accepts**: catch up on the emails
     **Explanation**: The text says "I need to catch up on my emails".
 
 ### 2. Listening/Speaking (5 phrases)
@@ -746,7 +748,8 @@
 10. **read_answer**
     **Passage**: "On second thought, let's go tomorrow instead. At the end of the day, what matters is being happy. In the long run, the investment will pay off. For the time being, I'll keep working from home."
     **Question**: What investment outlook does the speaker take?
-    **Answer**: long run (or "in the long run" or "long-term")
+    **Answer**: long run
+    **Accepts**: in the long run / long-term
     **Explanation**: The text says "In the long run, the investment will pay off".
 
 ### 2. Listening/Speaking (5 phrases)

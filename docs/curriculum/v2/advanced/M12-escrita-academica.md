@@ -186,12 +186,14 @@
 
 3. **fill_gap** — Subjective: "I have found that students learn faster with feedback." Academic: "_____ that students learn faster with feedback."
    **Hint**: "The data" or "The results" + verb
-   **Answer**: The data suggest (or "The results indicate" / "The findings show")
+   **Answer**: The data suggest
+   **Accepts**: The results indicate / The findings show
    **Explanation**: Academic prose lets the evidence speak. "The data suggest" — note plural verb (data is technically plural, though "data shows" is now common). "The findings indicate", "The results demonstrate" — all variations of the impersonal evidence-as-agent construction.
 
 4. **fix_error** — Academic register: "I believe this hypothesis is correct."
    **Hint**: Replace "I believe" with impersonal alternative
-   **Answer**: There is reason to believe this hypothesis is correct. (or: The evidence supports this hypothesis.)
+   **Answer**: There is reason to believe this hypothesis is correct.
+   **Accepts**: The evidence supports this hypothesis.
    **Explanation**: "I believe" is too subjective for academic prose. Alternatives: "There is reason to believe", "The evidence supports", "It is plausible that", "It can be argued that". Each preserves the modesty of a claim while removing the speaker.
 
 5. **read_answer**
@@ -331,7 +333,8 @@
 
 4. **fix_error** — Academic register: "This proves that the drug works."
    **Hint**: Academic register avoids "proves" — use a hedged verb
-   **Answer**: This suggests that the drug is effective. (or: The evidence supports the conclusion that the drug is effective.)
+   **Answer**: This suggests that the drug is effective.
+   **Accepts**: The evidence supports the conclusion that the drug is effective.
    **Explanation**: "Proves" implies certainty that scientific epistemology rarely warrants. Even strong findings use "supports", "suggests", "indicates", or "is consistent with". The hedge isn't false modesty — it's accurate representation of evidence.
 
 5. **read_answer**
@@ -611,7 +614,8 @@
 
 4. **fix_error** — Paragraph opener: "Also, the third experiment found similar results."
    **Hint**: "Also" is too casual to open an academic paragraph
-   **Answer**: Furthermore, the third experiment yielded similar results. (or: A third experiment yielded similar results, reinforcing the pattern.)
+   **Answer**: Furthermore, the third experiment yielded similar results.
+   **Accepts**: A third experiment yielded similar results, reinforcing the pattern.
    **Explanation**: "Also" is conversational. Academic register uses "Furthermore", "Moreover", "In addition", or restructures: "A third experiment...". Paragraph openers carry the connective load — too casual undercuts the register.
 
 5. **read_answer**

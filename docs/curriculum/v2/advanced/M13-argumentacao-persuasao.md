@@ -58,7 +58,8 @@
 5. **read_answer**
    **Passage**: "The case for the new programme rests on three pillars. First, the pilot study showed measurable gains in literacy across all participating schools. Second, the cost per student remains within budget — well below the threshold for similar interventions. Most importantly, the teachers themselves are asking for it. The evidence is unambiguous: this programme deserves expansion."
    **Question**: What does the speaker consider the strongest reason?
-   **Answer**: that the teachers are asking for it (or "teacher demand")
+   **Answer**: that the teachers are asking for it
+   **Accepts**: teacher demand
    **Explanation**: Three-stage structure: "First..." (evidence), "Second..." (feasibility), "Most importantly..." (teacher demand — climax). Closing line "The evidence is unambiguous: ..." lands the conclusion with confident summative force.
 
 ### 2. Listening/Speaking (5 phrases)
@@ -332,7 +333,8 @@
 
 4. **fix_error** — Make tricolon: "He fought injustice, he overcame poverty, his courage was admirable."
    **Hint**: Match grammatical structure — all three parts as subject-verb-object
-   **Answer**: He fought injustice, he overcame poverty, he inspired courage. (or: He fought injustice, overcame poverty, and inspired courage.)
+   **Answer**: He fought injustice, he overcame poverty, he inspired courage.
+   **Accepts**: He fought injustice, overcame poverty, and inspired courage.
    **Explanation**: Tricolon requires parallel structure. The third clause broke parallelism ("his courage was admirable" — different subject). Restoring "he" + verb + object pattern makes the rhythm work. Or compress into one subject across three verbs.
 
 5. **read_answer**
@@ -467,7 +469,8 @@
 
 3. **fill_gap** — Causal climax: "Resources shrank, talent left, morale collapsed — _____, the project failed."
    **Hint**: "Inevitably" or "As a result" or "Hence"
-   **Answer**: as a result (or "inevitably" or "hence")
+   **Answer**: as a result
+   **Accepts**: inevitably / hence
    **Explanation**: After a cascade of negative causes, a closing marker delivers the consequence. "As a result", "Hence", "Inevitably", "Consequently" — each works. "As a result" is neutral; "Inevitably" claims the outcome was unavoidable; "Hence" is formal.
 
 4. **fix_error** — "A causes B, which causes C, this causes D."
@@ -602,7 +605,8 @@
 
 2. **multiple_choice** — Conditional warning close: "_____ to act now, we will lose the window entirely."
    **Options**: If we fail / Should we fail / Were we to fail / If we will fail
-   **Answer**: If we fail (or "Should we fail")
+   **Answer**: If we fail
+   **Accepts**: Should we fail
    **Explanation**: "If we fail to + base" — direct conditional close. Or inverted formal: "Should we fail to + base". Both work; the formal inverted version (M01-style) registers more gravity. "If we will fail" is grammatically wrong (no "will" in if-clauses).
 
 3. **fill_gap** — Strong frame: "_____ before us is clear: pay the cost of action now or pay a higher one later."
@@ -612,7 +616,8 @@
 
 4. **fix_error** — "The stakes are not higher anywhere."
    **Hint**: Use idiomatic "The stakes could not be higher"
-   **Answer**: The stakes could not be higher. (or: The stakes have never been higher.)
+   **Answer**: The stakes could not be higher.
+   **Accepts**: The stakes have never been higher.
    **Explanation**: "The stakes could not be higher" — fixed idiomatic conclusion phrase. Variant: "The stakes have never been higher". These are climactic phrases — fixed forms, not constructed sentences. Familiarity with the phrase is part of C2.
 
 5. **read_answer**

@@ -125,7 +125,10 @@
           "type": "read_answer",
           "passage": "I look forward to seeing you next week. She's getting used to waking up early for work. He objects to smoking in restaurants. We look forward to hearing from you soon.",
           "question": "What is she getting used to?",
-          "answer": "waking up early (or \"waking up early for work\")",
+          "answer": "waking up early",
+          "accepts": [
+            "waking up early for work"
+          ],
           "explanation": "The text says \"She's getting used to waking up early for work\"."
         }
       ],
@@ -707,7 +710,10 @@
           "type": "read_answer",
           "passage": "I need to catch up on my emails. Let's catch up next week! I want to make up for my mistake. It's hard to keep up with all the changes. I'll go through with the plan.",
           "question": "What do they need to do with their emails?",
-          "answer": "catch up on them (or \"catch up on the emails\")",
+          "answer": "catch up on them",
+          "accepts": [
+            "catch up on the emails"
+          ],
           "explanation": "The text says \"I need to catch up on my emails\"."
         }
       ],
@@ -899,7 +905,11 @@
           "type": "read_answer",
           "passage": "On second thought, let's go tomorrow instead. At the end of the day, what matters is being happy. In the long run, the investment will pay off. For the time being, I'll keep working from home.",
           "question": "What investment outlook does the speaker take?",
-          "answer": "long run (or \"in the long run\" or \"long-term\")",
+          "answer": "long run",
+          "accepts": [
+            "in the long run",
+            "long-term"
+          ],
           "explanation": "The text says \"In the long run, the investment will pay off\"."
         }
       ],

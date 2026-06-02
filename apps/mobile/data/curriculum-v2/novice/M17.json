@@ -111,7 +111,10 @@
           "type": "read_answer",
           "passage": "I didn't work yesterday. I didn't go out either. I didn't see anyone. It was a quiet day.",
           "question": "Did the speaker work?",
-          "answer": "no (or \"didn't work\")",
+          "answer": "no",
+          "accepts": [
+            "didn't work"
+          ],
           "explanation": "O texto diz \"I didn't work yesterday\"."
         }
       ],
@@ -313,7 +316,10 @@
           "type": "read_answer",
           "passage": "Q: Did you go to the gym? A: Yes, I did. Q: Did your sister come? A: No, she didn't. She had work.",
           "question": "Did the sister come?",
-          "answer": "no (or \"she didn't\")",
+          "answer": "no",
+          "accepts": [
+            "she didn't"
+          ],
           "explanation": "The text says \"No, she didn't\"."
         }
       ],
@@ -517,7 +523,10 @@
           "type": "read_answer",
           "passage": "Q: Where did you go? A: I went to the beach. Q: What did you do? A: I swam and read. Q: When did you come back? A: At seven.",
           "question": "What did the speaker do at the beach?",
-          "answer": "swam and read (or \"swam, read\")",
+          "answer": "swam and read",
+          "accepts": [
+            "swam, read"
+          ],
           "explanation": "O texto diz \"I swam and read\"."
         }
       ],

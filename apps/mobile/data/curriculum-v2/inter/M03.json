@@ -303,7 +303,10 @@
           "type": "read_answer",
           "passage": "I have lived in São Paulo for ten years. I've worked at my company for five years. My sister has studied English for three years.",
           "question": "How long has the sister studied English?",
-          "answer": "three years (or \"for three years\")",
+          "answer": "three years",
+          "accepts": [
+            "for three years"
+          ],
           "explanation": "The text says \"for three years\"."
         }
       ],
@@ -495,7 +498,10 @@
           "type": "read_answer",
           "passage": "I have lived here since 2015. I have worked at this company since January. My best friend and I have been friends since school.",
           "question": "Since when has the speaker worked at this company?",
-          "answer": "January (or \"since January\")",
+          "answer": "January",
+          "accepts": [
+            "since January"
+          ],
           "explanation": "The text says \"since January\"."
         }
       ],
@@ -687,7 +693,10 @@
           "type": "read_answer",
           "passage": "Q: How long have you lived in São Paulo? A: For ten years. Q: Since when have you worked there? A: Since 2020.",
           "question": "Since when has the person worked there?",
-          "answer": "2020 (or \"since 2020\")",
+          "answer": "2020",
+          "accepts": [
+            "since 2020"
+          ],
           "explanation": "The text says \"Since 2020\"."
         }
       ],

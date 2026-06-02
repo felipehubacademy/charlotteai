@@ -317,7 +317,10 @@
           "type": "read_answer",
           "passage": "I can swim but I can't dive. My friend can speak French but she can't write it well. We can both ride a bike.",
           "question": "What can the friend NOT do well?",
-          "answer": "write (or \"write French\")",
+          "answer": "write",
+          "accepts": [
+            "write French"
+          ],
           "explanation": "O texto diz \"she can't write it well\"."
         }
       ],

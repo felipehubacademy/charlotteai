@@ -189,7 +189,8 @@
 
 4. **fix_error** — "What I need is to rest, sleep, eat."
    **Hint**: After "What I need is", you can use bare nouns or a single thing
-   **Answer**: What I need is rest, sleep, and food. (or: What I need is to rest, sleep, and eat.)
+   **Answer**: What I need is rest, sleep, and food.
+   **Accepts**: What I need is to rest, sleep, and eat.
    **Explanation**: Original mixed an infinitive ("to rest") with bare nouns ("sleep, eat"). Either commit to nouns (rest, sleep, food) or to infinitives (to rest, to sleep, to eat). Parallelism is mandatory.
 
 5. **read_answer**
@@ -329,13 +330,15 @@
 
 4. **fix_error** — "All I want is to be respect."
    **Hint**: After "All I want is", use a noun or "to + base" form
-   **Answer**: All I want is to be respected. (or: All I want is respect.)
+   **Answer**: All I want is to be respected.
+   **Accepts**: All I want is respect.
    **Explanation**: "To be respect" is ungrammatical — either "to be respected" (passive infinitive) or just "respect" (noun). The all-cleft requires a clean nominal or full infinitive.
 
 5. **read_answer**
    **Passage**: "When the journalist pressed him on whether he wanted revenge, he shook his head. 'All I want is the truth on the record,' he said. 'All they did was lie for fifteen years. I don't need a courtroom — I need an honest sentence in print.'"
    **Question**: What does the speaker want?
-   **Answer**: the truth on the record (or "an honest sentence in print")
+   **Answer**: the truth on the record
+   **Accepts**: an honest sentence in print
    **Explanation**: Two all-clefts: "All I want is..." (modest demand) and "All they did was lie" (minimised act, here ironically — fifteen years of lies framed as 'all they did'). The structure can carry humility or sarcasm.
 
 ### 2. Listening/Speaking (5 phrases)
@@ -475,7 +478,8 @@
 5. **read_answer**
    **Passage**: "Doctors often miss the rarer diagnoses. It wasn't until the third specialist that anyone considered the autoimmune angle. By then, three years had passed and several treatments had failed. 'It wasn't until I trusted my own instincts,' the patient said, 'that I started getting answers.'"
    **Question**: What finally led to answers?
-   **Answer**: trusting her own instincts (or "the third specialist considering autoimmune angle")
+   **Answer**: trusting her own instincts
+   **Accepts**: the third specialist considering autoimmune angle
    **Explanation**: Two it-not-until clefts: "It wasn't until the third specialist that..." and "It wasn't until I trusted my own instincts that...". Both highlight delayed turning points.
 
 ### 2. Listening/Speaking (5 phrases)
@@ -609,13 +613,15 @@
 
 4. **fix_error** — "The reason why I'm tired is because I didn't sleep."
    **Hint**: After "The reason ... is", use "that" or just a clause — not "because"
-   **Answer**: The reason why I'm tired is that I didn't sleep. (or: The reason I'm tired is that I didn't sleep.)
+   **Answer**: The reason why I'm tired is that I didn't sleep.
+   **Accepts**: The reason I'm tired is that I didn't sleep.
    **Explanation**: "The reason... is because" is redundant — "reason" already implies cause, and "because" duplicates it. Use "that" or simply a clause.
 
 5. **read_answer**
    **Passage**: "The retiring CEO summed it up. 'The reason we succeeded was discipline, not genius. The thing that holds most companies back is the temptation to chase fashion. The time when we changed course wasn't a board meeting — it was a kitchen table conversation with my partner.'"
    **Question**: According to the CEO, what causes most companies to fail?
-   **Answer**: chasing fashion (or "the temptation to chase fashion")
+   **Answer**: chasing fashion
+   **Accepts**: the temptation to chase fashion
    **Explanation**: Three layered lexical clefts: "The reason... was discipline", "The thing that holds... is the temptation to chase fashion", "The time when we changed course wasn't... it was...". Layered for rhetorical weight.
 
 ### 2. Listening/Speaking (5 phrases)

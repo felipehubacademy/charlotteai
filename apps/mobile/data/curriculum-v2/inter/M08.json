@@ -75,7 +75,10 @@
           "type": "fill_gap",
           "sentence": "She's the friend _____ I told you about.",
           "hint": "relative pronoun for person",
-          "answer": "who (or \"that\")",
+          "answer": "who",
+          "accepts": [
+            "that"
+          ],
           "explanation": "\"Who\" or \"that\" for people."
         },
         {
@@ -265,21 +268,31 @@
           "type": "fill_gap",
           "sentence": "I love books _____ teach me something.",
           "hint": "things",
-          "answer": "that (or which)",
+          "answer": "that",
+          "accepts": [
+            "which"
+          ],
           "explanation": "\"Books that teach\" — thing + action."
         },
         {
           "type": "fill_gap",
           "sentence": "The phone _____ I bought is broken.",
           "hint": "thing, object of clause",
-          "answer": "that (or which, or omitted)",
+          "answer": "that",
+          "accepts": [
+            "which,",
+            "omitted"
+          ],
           "explanation": "\"The phone that I bought\" — object: that/which/omitted."
         },
         {
           "type": "fill_gap",
           "sentence": "It's the song _____ I love.",
           "hint": "thing",
-          "answer": "that (or which)",
+          "answer": "that",
+          "accepts": [
+            "which"
+          ],
           "explanation": "\"Song that I love\"."
         },
         {
@@ -293,7 +306,10 @@
           "type": "fix_error",
           "sentence": "\"He has a car, which is red.\" (defining = no comma)",
           "hint": "No comma in defining",
-          "answer": "He has a car which is red. (or: He has a red car)",
+          "answer": "He has a car which is red.",
+          "accepts": [
+            "He has a red car"
+          ],
           "explanation": "Defining → no comma. Non-defining (info adicional) → comma — but M19 covers that."
         },
         {
@@ -678,7 +694,10 @@
           "type": "read_answer",
           "passage": "She's the woman whose husband is a doctor. He's the guy whose car I borrowed. I have a friend whose birthday is today.",
           "question": "Whose birthday is today?",
-          "answer": "my friend's (or \"a friend's\")",
+          "answer": "my friend's",
+          "accepts": [
+            "a friend's"
+          ],
           "explanation": "The text says \"a friend whose birthday is today\"."
         }
       ],
@@ -839,7 +858,10 @@
           "type": "fill_gap",
           "sentence": "I have a phone _____ takes great photos.",
           "hint": "thing",
-          "answer": "that (or which)",
+          "answer": "that",
+          "accepts": [
+            "which"
+          ],
           "explanation": "That/which for things."
         },
         {

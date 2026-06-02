@@ -42,17 +42,20 @@ This module does not introduce new chunks. Instead, it asks the student to deplo
 
 2. **multiple_choice** — Which closing sentence works as a literary fragment?
    **Options**: Nothing else to say. / There was nothing else to say. / Nothing else needed saying. / There remained nothing to say.
-   **Answer**: Nothing else to say. (or "Nothing else needed saying.")
+   **Answer**: Nothing else to say.
+   **Accepts**: Nothing else needed saying.
    **Explanation**: Sentence fragment for emphasis — drawing on M14 (literary rhythm). After a long sentence, a fragment lands the moment. Both options work; the fragment ("Nothing else to say.") is sharper, the participle phrase ("Nothing else needed saying.") is more elegant.
 
 3. **fill_gap** — Open the next sentence with a casual filler that fits the register: "I knew what was coming. _____, it still surprised me when it actually arrived."
    **Hint**: Casual filler that signals casual register
-   **Answer**: I mean (or "you know" or "honestly")
+   **Answer**: I mean
+   **Accepts**: you know / honestly
    **Explanation**: Casual filler drawn from M21 — "I mean" / "you know" / "honestly". Marks the shift from observation to feeling. Native narrative often uses one such filler per paragraph, particularly at moments of emotional pivot.
 
 4. **fix_error** — Sentence too long and dense for narrative rhythm: "She had spent fifteen years working at the company and during that time she had built three teams, launched two products, and somehow managed to keep her sense of humour intact throughout every reorganisation and budget cut."
    **Hint**: Vary rhythm — long sentence + short follow-up or fragment
-   **Answer**: She had spent fifteen years working at the company. Three teams. Two products. And somehow — somehow — she had kept her sense of humour intact through every reorganisation. (or similar rhythm-varied version)
+   **Answer**: She had spent fifteen years working at the company. Three teams. Two products. And somehow — somehow — she had kept her sense of humour intact through every reorganisation.
+   **Accepts**: similar rhythm-varied version
    **Explanation**: Long sentence + tricolon fragment + emphatic repetition. Drawn from M14 (rhythm) and M13 (tricolon). Native narrative breaks dense sentences for breath. The fragment "Three teams. Two products." emphasises the scale.
 
 5. **read_answer**
@@ -187,7 +190,8 @@ This module does not introduce new chunks. Instead, it asks the student to deplo
 
 3. **fill_gap** — Open with an inverted concession: "_____ has a single regulation produced such fierce debate as the proposed framework now before parliament."
    **Hint**: "Rarely" or "Seldom"
-   **Answer**: Rarely (or "Seldom")
+   **Answer**: Rarely
+   **Accepts**: Seldom
    **Explanation**: Fronted negative frequency adverb triggers inversion — opener of choice for argumentative emphasis. "Rarely has..." opens with weight, signals importance. M02 inversion in argumentative service.
 
 4. **fix_error** — Argumentative opener too casual: "AI is a big deal. People disagree about it. Some say it'll ruin things, others say it'll save us. What do you think?"
@@ -327,7 +331,8 @@ This module does not introduce new chunks. Instead, it asks the student to deplo
 
 3. **fill_gap** — Diplomatic reframe of a strong position: "_____ that the proposal has merit — but the timing concerns are non-trivial."
    **Hint**: "I can see / Granted / It's true"
-   **Answer**: I can see (or "Granted" or "It's true")
+   **Answer**: I can see
+   **Accepts**: Granted / It's true
    **Explanation**: Three diplomatic openers, all from M10 (concession markers). Each grants ground before pivoting. "Granted, X — but Y" / "I can see X, but Y" / "It's true that X — but Y". Diplomatic argument pivots on acknowledging the other side first.
 
 4. **fix_error** — Blunt feedback: "Your slides are bad and the message is confused."
@@ -467,7 +472,8 @@ This module does not introduce new chunks. Instead, it asks the student to deplo
 
 3. **fill_gap** — Casual reply with tag: "We're meeting at the usual place, _____"
    **Hint**: Tag for confirmation
-   **Answer**: aren't we (or "right?")
+   **Answer**: aren't we
+   **Accepts**: right?
    **Explanation**: Tag question "aren't we?" for soft confirmation. Drawn from M21. Or universal "right?" for casual register. Both work; "aren't we?" is slightly more polished, "right?" slightly more casual.
 
 4. **fix_error** — Too formal for casual context: "I will see you on Saturday. Would you be inclined to arrive at noon?"
@@ -607,7 +613,8 @@ This module does not introduce new chunks. Instead, it asks the student to deplo
 
 3. **fill_gap** — Diplomatic transition between casual and formal: "_____ — coming back to the actual decision in front of us..."
    **Hint**: Phrase that pivots from casual aside to substantive content
-   **Answer**: Anyway (or "But to be serious for a moment" or "OK, getting back to it,")
+   **Answer**: Anyway
+   **Accepts**: But to be serious for a moment / OK, getting back to it,
    **Explanation**: "Anyway" — universal pivot from digression back to topic. Casual register marker that doubles as a structural device. Drawn from M21. Native speakers code-switch within a single conversation, and "anyway" is one of the standard pivot points.
 
 4. **fix_error** — Same-register monotone across all turns: "Yes. Indeed. Yes. Indeed. Yes. The findings support that. Indeed. Yes."

@@ -74,7 +74,8 @@
 10. **read_answer**
     **Passage**: "I didn't work yesterday. I didn't go out either. I didn't see anyone. It was a quiet day."
     **Question**: Did the speaker work?
-    **Answer**: no (or "didn't work")
+    **Answer**: no
+    **Accepts**: didn't work
     **Explanation**: O texto diz "I didn't work yesterday".
 
 ### 2. Listening/Speaking (5 phrases)
@@ -239,7 +240,8 @@
 10. **read_answer**
     **Passage**: "Q: Did you go to the gym? A: Yes, I did. Q: Did your sister come? A: No, she didn't. She had work."
     **Question**: Did the sister come?
-    **Answer**: no (or "she didn't")
+    **Answer**: no
+    **Accepts**: she didn't
     **Explanation**: The text says "No, she didn't".
 
 ### 2. Listening/Speaking (5 phrases)
@@ -404,7 +406,8 @@
 10. **read_answer**
     **Passage**: "Q: Where did you go? A: I went to the beach. Q: What did you do? A: I swam and read. Q: When did you come back? A: At seven."
     **Question**: What did the speaker do at the beach?
-    **Answer**: swam and read (or "swam, read")
+    **Answer**: swam and read
+    **Accepts**: swam, read
     **Explanation**: O texto diz "I swam and read".
 
 ### 2. Listening/Speaking (5 phrases)

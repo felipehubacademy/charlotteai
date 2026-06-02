@@ -78,7 +78,8 @@
 10. **read_answer**
     **Passage**: "I think you should rest more. You shouldn't work so late. We should all take breaks."
     **Question**: What shouldn't the person do?
-    **Answer**: work so late (or "work late")
+    **Answer**: work so late
+    **Accepts**: work late
     **Explanation**: O texto diz "You shouldn't work so late".
 
 ### 2. Listening/Speaking (5 phrases)
@@ -243,7 +244,8 @@
 10. **read_answer**
     **Passage**: "I have to work tomorrow. My sister has to study for an exam. We all have to wake up early."
     **Question**: What does the sister have to do?
-    **Answer**: study (or "study for an exam")
+    **Answer**: study
+    **Accepts**: study for an exam
     **Explanation**: O texto diz "My sister has to study for an exam".
 
 ### 2. Listening/Speaking (5 phrases)
@@ -408,7 +410,8 @@
 10. **read_answer**
     **Passage**: "I don't have to work tomorrow — it's my day off. She doesn't have to come if she's busy. We don't have to do anything special."
     **Question**: Why doesn't the speaker have to work tomorrow?
-    **Answer**: it's my day off (or "day off")
+    **Answer**: it's my day off
+    **Accepts**: day off
     **Explanation**: O texto diz "it's my day off".
 
 ### 2. Listening/Speaking (5 phrases)
@@ -573,7 +576,8 @@
 10. **read_answer**
     **Passage**: "Q: Should I call her? A: Yes, you should. Q: Do I have to bring my passport? A: No, you don't have to."
     **Question**: Does the person have to bring the passport?
-    **Answer**: no (or "doesn't have to")
+    **Answer**: no
+    **Accepts**: doesn't have to
     **Explanation**: The text says "No, you don't have to".
 
 ### 2. Listening/Speaking (5 phrases)

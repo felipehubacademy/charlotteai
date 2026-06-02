@@ -78,7 +78,10 @@
           "type": "read_answer",
           "passage": "The case for the new programme rests on three pillars. First, the pilot study showed measurable gains in literacy across all participating schools. Second, the cost per student remains within budget — well below the threshold for similar interventions. Most importantly, the teachers themselves are asking for it. The evidence is unambiguous: this programme deserves expansion.",
           "question": "What does the speaker consider the strongest reason?",
-          "answer": "that the teachers are asking for it (or \"teacher demand\")",
+          "answer": "that the teachers are asking for it",
+          "accepts": [
+            "teacher demand"
+          ],
           "explanation": "Three-stage structure: \"First...\" (evidence), \"Second...\" (feasibility), \"Most importantly...\" (teacher demand — climax). Closing line \"The evidence is unambiguous: ...\" lands the conclusion with confident summative force."
         }
       ],
@@ -371,7 +374,10 @@
           "type": "fix_error",
           "sentence": "Make tricolon: \"He fought injustice, he overcame poverty, his courage was admirable.\"",
           "hint": "Match grammatical structure — all three parts as subject-verb-object",
-          "answer": "He fought injustice, he overcame poverty, he inspired courage. (or: He fought injustice, overcame poverty, and inspired courage.)",
+          "answer": "He fought injustice, he overcame poverty, he inspired courage.",
+          "accepts": [
+            "He fought injustice, overcame poverty, and inspired courage."
+          ],
           "explanation": "Tricolon requires parallel structure. The third clause broke parallelism (\"his courage was admirable\" — different subject). Restoring \"he\" + verb + object pattern makes the rhythm work. Or compress into one subject across three verbs."
         },
         {
@@ -514,7 +520,11 @@
           "type": "fill_gap",
           "sentence": "Causal climax: \"Resources shrank, talent left, morale collapsed — _____, the project failed.\"",
           "hint": "\"Inevitably\" or \"As a result\" or \"Hence\"",
-          "answer": "as a result (or \"inevitably\" or \"hence\")",
+          "answer": "as a result",
+          "accepts": [
+            "inevitably",
+            "hence"
+          ],
           "explanation": "After a cascade of negative causes, a closing marker delivers the consequence. \"As a result\", \"Hence\", \"Inevitably\", \"Consequently\" — each works. \"As a result\" is neutral; \"Inevitably\" claims the outcome was unavoidable; \"Hence\" is formal."
         },
         {
@@ -654,7 +664,10 @@
             "Were we to fail",
             "If we will fail"
           ],
-          "answer": "If we fail (or \"Should we fail\")",
+          "answer": "If we fail",
+          "accepts": [
+            "Should we fail"
+          ],
           "explanation": "\"If we fail to + base\" — direct conditional close. Or inverted formal: \"Should we fail to + base\". Both work; the formal inverted version (M01-style) registers more gravity. \"If we will fail\" is grammatically wrong (no \"will\" in if-clauses)."
         },
         {
@@ -668,7 +681,10 @@
           "type": "fix_error",
           "sentence": "The stakes are not higher anywhere.",
           "hint": "Use idiomatic \"The stakes could not be higher\"",
-          "answer": "The stakes could not be higher. (or: The stakes have never been higher.)",
+          "answer": "The stakes could not be higher.",
+          "accepts": [
+            "The stakes have never been higher."
+          ],
           "explanation": "\"The stakes could not be higher\" — fixed idiomatic conclusion phrase. Variant: \"The stakes have never been higher\". These are climactic phrases — fixed forms, not constructed sentences. Familiarity with the phrase is part of C2."
         },
         {

@@ -407,7 +407,8 @@
 10. **read_answer**
     **Passage**: "The grass is wet — it must have rained last night. She isn't answering her phone — she must have left already. He can't have stolen it — he was with me the whole day."
     **Question**: Why couldn't he have stolen it?
-    **Answer**: he was with me (or "he was with the speaker the whole day")
+    **Answer**: he was with me
+    **Accepts**: he was with the speaker the whole day
     **Explanation**: The text says "He can't have stolen it — he was with me the whole day".
 
 ### 2. Listening/Speaking (5 phrases)
@@ -572,7 +573,8 @@
 10. **read_answer**
     **Passage**: "She might have missed the bus — let me check. We needn't have booked the table — it was empty anyway. You needn't have brought a gift, but thank you."
     **Question**: Why didn't they need to book the table?
-    **Answer**: it was empty (or "it was empty anyway")
+    **Answer**: it was empty
+    **Accepts**: it was empty anyway
     **Explanation**: The text says "We needn't have booked the table — it was empty anyway".
 
 ### 2. Listening/Speaking (5 phrases)

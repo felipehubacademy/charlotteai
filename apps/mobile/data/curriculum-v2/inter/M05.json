@@ -109,7 +109,10 @@
           "type": "read_answer",
           "passage": "I get up at 6, put on my workout clothes, and go out for a run. When I come back, I turn on the coffee maker.",
           "question": "What does the speaker put on?",
-          "answer": "workout clothes (or \"clothes\")",
+          "answer": "workout clothes",
+          "accepts": [
+            "clothes"
+          ],
           "explanation": "The text says \"put on my workout clothes\"."
         }
       ],
@@ -298,7 +301,10 @@
           "type": "read_answer",
           "passage": "I'm looking for my phone. My sister looks after my kids on weekends. I always look up words I don't know.",
           "question": "Who looks after the kids?",
-          "answer": "my sister (or \"her sister\")",
+          "answer": "my sister",
+          "accepts": [
+            "her sister"
+          ],
           "explanation": "The text says \"My sister looks after my kids\"."
         }
       ],
@@ -488,7 +494,10 @@
           "type": "read_answer",
           "passage": "I found out about the party yesterday. I'll pick you up at 8. Don't give up trying!",
           "question": "When will the speaker pick you up?",
-          "answer": "at 8 (or \"8\")",
+          "answer": "at 8",
+          "accepts": [
+            "8"
+          ],
           "explanation": "The text says \"I'll pick you up at 8\"."
         }
       ],
@@ -679,7 +688,10 @@
           "type": "read_answer",
           "passage": "I turned the TV off. Can you pick me up at 7? She looks after her dad every weekend.",
           "question": "When should they pick the speaker up?",
-          "answer": "at 7 (or \"7\")",
+          "answer": "at 7",
+          "accepts": [
+            "7"
+          ],
           "explanation": "The text says \"pick me up at 7\"."
         }
       ],
@@ -869,7 +881,10 @@
           "type": "read_answer",
           "passage": "I got up early today. I was looking for my keys. I gave up after 10 minutes — I called my friend who picked me up.",
           "question": "Who picked the speaker up?",
-          "answer": "my friend (or \"the friend\")",
+          "answer": "my friend",
+          "accepts": [
+            "the friend"
+          ],
           "explanation": "The text says \"my friend who picked me up\"."
         }
       ],
@@ -1029,7 +1044,10 @@
           "type": "fill_gap",
           "sentence": "She's on _____ line right now. Can I take a message?",
           "hint": "indefinite article + word for telephone connection",
-          "answer": "another (or \"the other\")",
+          "answer": "another",
+          "accepts": [
+            "the other"
+          ],
           "explanation": "\"She's on another line\" / \"She's on the other line\" — phone English for \"she's busy with another call\". \"Another line\" suggests there are multiple; \"the other line\" implies a specific second line."
         },
         {

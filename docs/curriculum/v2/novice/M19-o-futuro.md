@@ -231,7 +231,8 @@
 
 8. **fix_error** — "I will not to help."
    **Hint**: Sem "to" após will
-   **Answer**: I will not help. (or: I won't help.)
+   **Answer**: I will not help.
+   **Accepts**: I won't help.
    **Explanation**: Will + base, sem "to". "I won't help" ou "I will not help".
 
 9. **fix_error** — "She willn't come."
@@ -242,7 +243,8 @@
 10. **read_answer**
     **Passage**: "It's raining. I'll get an umbrella! She won't go out today. I promise I'll call you when I arrive."
     **Question**: What does the speaker promise?
-    **Answer**: I'll call you (when I arrive) (or "to call")
+    **Answer**: I'll call you (when I arrive)
+    **Accepts**: to call
     **Explanation**: O texto diz "I promise I'll call you".
 
 ### 2. Listening/Speaking (5 phrases)
@@ -386,12 +388,14 @@
 
 6. **fill_gap** — "I _____ go to the gym every day this week."
    **Hint**: Plano feito de antemão
-   **Answer**: 'm going to (or am going to)
+   **Answer**: 'm going to
+   **Accepts**: am going to
    **Explanation**: "I'm going to go" — plano firme.
 
 7. **fill_gap** — "Oh, I forgot my wallet! I _____ run home."
    **Hint**: Decisão na hora
-   **Answer**: 'll (or will)
+   **Answer**: 'll
+   **Accepts**: will
    **Explanation**: "I'll run home" — decisão espontânea agora.
 
 8. **fix_error** — "I have a ticket — I will travel tomorrow."
@@ -407,7 +411,8 @@
 10. **read_answer**
     **Passage**: "I'm going to travel next month — I have tickets. But right now? Oh, the phone! I'll get it. I think it'll be my mom."
     **Question**: Why is the speaker going to travel (planejado vs espontâneo)?
-    **Answer**: planned (or "tickets" or "has tickets")
+    **Answer**: planned
+    **Accepts**: tickets / has tickets
     **Explanation**: O texto diz "I have tickets" — indicando uma viagem planejada com going to.
 
 ### 2. Listening/Speaking (5 phrases)
@@ -711,7 +716,8 @@
 
 5. **fill_gap** — "I _____ help you whenever you need."
    **Hint**: Promessa com will
-   **Answer**: will (or 'll)
+   **Answer**: will
+   **Accepts**: ll
    **Explanation**: Promessa indefinida — will.
 
 6. **fill_gap** — "She _____ come if it rains."
@@ -721,7 +727,8 @@
 
 7. **fill_gap** — "I think they _____ love the gift."
    **Hint**: Predição
-   **Answer**: will (or 'll)
+   **Answer**: will
+   **Accepts**: ll
    **Explanation**: Predição com "I think" — will.
 
 8. **fix_error** — "Look at the sky — it will rain."

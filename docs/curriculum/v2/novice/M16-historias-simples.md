@@ -240,7 +240,8 @@
 10. **read_answer**
     **Passage**: "I bought a sandwich and ate it quickly. Then I drank some coffee and found my friend at the café. We thought about going to the cinema."
     **Question**: What did the speaker drink?
-    **Answer**: coffee (or "some coffee")
+    **Answer**: coffee
+    **Accepts**: some coffee
     **Explanation**: O texto diz "I drank some coffee".
 
 ### 2. Listening/Speaking (5 phrases)
@@ -570,7 +571,8 @@
 10. **read_answer**
     **Passage**: "I cut the vegetables. Then I put them in the pan. I read the recipe carefully. The result was great."
     **Question**: What did the speaker put in the pan?
-    **Answer**: the vegetables (or "them")
+    **Answer**: the vegetables
+    **Accepts**: them
     **Explanation**: O texto diz "I put them in the pan" — se referindo aos vegetais recém cortados.
 
 ### 2. Listening/Speaking (5 phrases)

@@ -314,7 +314,10 @@
           "type": "read_answer",
           "passage": "I bought a sandwich and ate it quickly. Then I drank some coffee and found my friend at the café. We thought about going to the cinema.",
           "question": "What did the speaker drink?",
-          "answer": "coffee (or \"some coffee\")",
+          "answer": "coffee",
+          "accepts": [
+            "some coffee"
+          ],
           "explanation": "O texto diz \"I drank some coffee\"."
         }
       ],
@@ -718,7 +721,10 @@
           "type": "read_answer",
           "passage": "I cut the vegetables. Then I put them in the pan. I read the recipe carefully. The result was great.",
           "question": "What did the speaker put in the pan?",
-          "answer": "the vegetables (or \"them\")",
+          "answer": "the vegetables",
+          "accepts": [
+            "them"
+          ],
           "explanation": "O texto diz \"I put them in the pan\" — se referindo aos vegetais recém cortados."
         }
       ],

@@ -51,7 +51,8 @@
 
 4. **fix_error** — "Actually, I don't think that's correct, in fact."
    **Hint**: Don't stack both nuancing markers in the same clause
-   **Answer**: Actually, I don't think that's correct. (or: In fact, I don't think that's correct.)
+   **Answer**: Actually, I don't think that's correct.
+   **Accepts**: In fact, I don't think that's correct.
    **Explanation**: "Actually" and "in fact" are near-synonyms. Stacking them creates redundancy. Pick one. C1 prose values economy — repetition of equivalent markers reads as nervous overcorrection.
 
 5. **multiple_choice** — "The press release: 'The board respects the founder's decision. In fact, we asked her to take this step several weeks ago. As a matter of fact, the timing of her announcement was agreed jointly. Actually, the only surprise here is that the press caught up so quickly.' — What does this press release ULTIMATELY imply about the founder's decision?"
@@ -190,7 +191,8 @@
 
 4. **fix_error** — "She's talented. However, that said, she's also lazy."
    **Hint**: "However" and "that said" do the same work — don't stack
-   **Answer**: She's talented. That said, she's also lazy. (or: She's talented. However, she's also lazy.)
+   **Answer**: She's talented. That said, she's also lazy.
+   **Accepts**: She's talented. However, she's also lazy.
    **Explanation**: "However" and "that said" both mark concession. Stacking is redundant. C1 register prefers one well-placed marker. Choose by tone: "however" reads more formal-written, "that said" more conversational.
 
 5. **multiple_choice** — "She made a strong case for the move. Granted, the new market is competitive. Mind you, it's also growing twice as fast as our current one. Admittedly, our team would need to relocate or hire from scratch. That said, the cost of inaction is starting to look higher than the cost of action. — What does the speaker ultimately favour?"

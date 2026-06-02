@@ -502,7 +502,11 @@
           "type": "read_answer",
           "passage": "If I were you, I would talk to her honestly. If I were in your position, I would take the offer. If I were you, I would go for it — life is short.",
           "question": "What does the speaker think you should do?",
-          "answer": "go for it (or \"take the offer\" or \"talk to her\")",
+          "answer": "go for it",
+          "accepts": [
+            "take the offer",
+            "talk to her"
+          ],
           "explanation": "The text suggests multiple actions; all are valid advice given in the second conditional with \"if I were you\"."
         }
       ],
@@ -696,7 +700,10 @@
           "type": "read_answer",
           "passage": "What would you do if you won the lottery? Where would you live if you could choose any country? Would you travel more if you had more money?",
           "question": "What hypothetical involves winning the lottery?",
-          "answer": "what would you do (or \"what to do with the money\")",
+          "answer": "what would you do",
+          "accepts": [
+            "what to do with the money"
+          ],
           "explanation": "The text asks \"What would you do if you won the lottery?\"."
         }
       ],
@@ -888,7 +895,10 @@
           "type": "read_answer",
           "passage": "If I had more time, I would travel more. I wish I could speak Italian fluently. If I were you, I would take the opportunity. What would you do if you won a lot of money?",
           "question": "What does the speaker wish they could do?",
-          "answer": "speak Italian fluently (or \"speak Italian\")",
+          "answer": "speak Italian fluently",
+          "accepts": [
+            "speak Italian"
+          ],
           "explanation": "The text says \"I wish I could speak Italian fluently\"."
         }
       ],

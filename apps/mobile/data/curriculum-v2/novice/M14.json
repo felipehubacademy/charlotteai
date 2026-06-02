@@ -925,7 +925,10 @@
           "type": "read_answer",
           "passage": "When I was a child, we were poor but happy. My parents were always busy. It was a simple life.",
           "question": "How were the parents?",
-          "answer": "always busy (or \"busy\")",
+          "answer": "always busy",
+          "accepts": [
+            "busy"
+          ],
           "explanation": "O texto diz \"My parents were always busy\"."
         }
       ],

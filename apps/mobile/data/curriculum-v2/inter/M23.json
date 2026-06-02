@@ -481,7 +481,10 @@
           "type": "fill_gap",
           "sentence": "She must be tired, _____ she?",
           "hint": "\"Must\" usually pairs with \"mustn't\" in tag, though \"must\" often gets a different tag in real speech",
-          "answer": "mustn't (or \"isn't\" depending on register)",
+          "answer": "mustn't",
+          "accepts": [
+            "isn't\" depending on register"
+          ],
           "explanation": "\"Must\" technically pairs with \"mustn't\" in textbook tags. In real speech, \"She must be tired, isn't she?\" is more common when \"must\" expresses certainty rather than obligation."
         },
         {
@@ -650,7 +653,11 @@
             "can",
             "would"
           ],
-          "answer": "will (or \"would\" / \"could\" depending on politeness)",
+          "answer": "will",
+          "accepts": [
+            "would",
+            "could\" depending on politeness"
+          ],
           "explanation": "Imperative + tag: \"Open the door, will you?\" — softens a command into a polite request. Variations: \"would you?\", \"could you?\", \"won't you?\". All make the imperative friendlier."
         },
         {
@@ -865,7 +872,10 @@
           "type": "fill_gap",
           "sentence": "Pause filler signaling you're searching for the word: \"I, _____, don't really know what to say.\"",
           "hint": "short filler word for pause",
-          "answer": "like (or \"you know\")",
+          "answer": "like",
+          "accepts": [
+            "you know"
+          ],
           "explanation": "\"Like\" — pause filler especially common in younger speech. Signals you're searching, processing, or about to give an example. Overuse sounds immature but moderate use is natural."
         },
         {
@@ -893,7 +903,10 @@
           "type": "fix_error",
           "sentence": "\"Obviously you don't know what I'm talking about.\" (in a serious conversation)",
           "hint": "\"Obviously\" can sound condescending — use \"I mean\" or rephrase",
-          "answer": "I mean, you might not know what I'm talking about. (or simply: \"Maybe you don't know what I'm talking about.\")",
+          "answer": "I mean, you might not know what I'm talking about.",
+          "accepts": [
+            "simply: \"Maybe you don't know what I'm talking about."
+          ],
           "explanation": "\"Obviously\" implies the listener should know — can sound condescending. In sensitive conversations, \"I mean\" or \"actually\" is softer. Register awareness is part of using fillers well."
         },
         {

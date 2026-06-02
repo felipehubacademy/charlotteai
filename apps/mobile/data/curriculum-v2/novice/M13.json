@@ -721,7 +721,10 @@
           "type": "read_answer",
           "passage": "I live on the second floor. My birthday is on the fourth of July. This is my first time in NYC.",
           "question": "When is the birthday?",
-          "answer": "the fourth of July (or \"July 4\")",
+          "answer": "the fourth of July",
+          "accepts": [
+            "July 4"
+          ],
           "explanation": "O texto diz \"My birthday is on the fourth of July\"."
         }
       ],

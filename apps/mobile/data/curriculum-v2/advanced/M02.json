@@ -74,7 +74,11 @@
           "type": "read_answer",
           "passage": "Reviewing the season, the coach was uncharacteristically blunt. 'Rarely have we played with so little discipline,' she said. 'Seldom does a team lose three games it should have won. We've earned exactly where we stand.'",
           "question": "What does the coach criticize about the team?",
-          "answer": "their lack of discipline (or \"playing with little discipline\" or \"losing winnable games\")",
+          "answer": "their lack of discipline",
+          "accepts": [
+            "playing with little discipline",
+            "losing winnable games"
+          ],
           "explanation": "Two fronted inversions (\"Rarely have we played\" and \"Seldom does a team lose\") emphasise the rarity — and weight — of the criticism. The coach is using formal-public register."
         }
       ],
@@ -374,7 +378,10 @@
           "type": "read_answer",
           "passage": "The award citation read: 'Not only has Dr. Lima reshaped the field through her research, but she has also mentored a generation of scientists. Not until we examined her full body of work did we appreciate how interconnected her contributions truly are.'",
           "question": "What two achievements does the citation emphasise?",
-          "answer": "research that reshaped the field + mentoring a generation (or similar)",
+          "answer": "research that reshaped the field + mentoring a generation",
+          "accepts": [
+            "similar"
+          ],
           "explanation": "\"Not only... but also\" layers two achievements; \"Not until... did we appreciate\" dramatises late recognition. Both inversions register formality and emphasis."
         }
       ],
@@ -524,7 +531,10 @@
           "type": "read_answer",
           "passage": "Looking back, the entrepreneur reflected: 'Only by losing my first company did I learn what entrepreneurship actually requires. Little did I know at twenty-five that failure would teach me what success never could.'",
           "question": "What lesson does the entrepreneur say only failure could teach?",
-          "answer": "what entrepreneurship actually requires (or \"what success couldn't teach\")",
+          "answer": "what entrepreneurship actually requires",
+          "accepts": [
+            "what success couldn't teach"
+          ],
           "explanation": "\"Only by losing... did I learn\" — inversion after restrictive phrase. \"Little did I know... that failure would teach me\" — inversion of dramatic irony. Both common in retrospective narrative."
         }
       ],
@@ -674,7 +684,10 @@
           "type": "read_answer",
           "passage": "The corporate code of conduct is unambiguous: 'Under no circumstances shall an employee share confidential client information with third parties. On no account may personal devices be used to store such data. At no time has this organisation tolerated breaches of trust.'",
           "question": "What does the code prohibit?",
-          "answer": "sharing confidential client information with third parties (or \"storing it on personal devices\")",
+          "answer": "sharing confidential client information with third parties",
+          "accepts": [
+            "storing it on personal devices"
+          ],
           "explanation": "Three stacked formal inversions (\"Under no circumstances shall... On no account may... At no time has...\") amplify the policy's seriousness. Corporate-formal register."
         }
       ],

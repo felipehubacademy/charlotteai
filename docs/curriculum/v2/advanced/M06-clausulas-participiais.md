@@ -50,7 +50,8 @@
 
 4. **fix_error** — "Walking down the street, the rain started suddenly."
    **Hint**: Subject of participle must match subject of main clause
-   **Answer**: While I was walking down the street, the rain started suddenly. (or: Walking down the street, I felt the rain start suddenly.)
+   **Answer**: While I was walking down the street, the rain started suddenly.
+   **Accepts**: Walking down the street, I felt the rain start suddenly.
    **Explanation**: As written, the participle "walking" attaches to "the rain" — the rain wasn't walking! Classic dangling participle. Fix by adding a subject clause or rewriting so the participle subject matches the main clause.
 
 5. **read_answer**
@@ -196,7 +197,8 @@
 5. **read_answer**
    **Passage**: "Founded by immigrants and shaped by half a dozen architectural fashions, the neighbourhood has aged without ever quite settling. Lined with chestnut trees and crossed by trams that have outlived their schedules, it remains a place where strangers still nod at each other across narrow streets."
    **Question**: What two passive participle clauses describe the neighbourhood?
-   **Answer**: Founded by immigrants, lined with chestnut trees (also acceptable: shaped by half a dozen fashions; crossed by trams)
+   **Answer**: Founded by immigrants, lined with chestnut trees
+   **Accepts**: acceptable: shaped by half a dozen fashions; crossed by trams
    **Explanation**: Four passive participles open this passage: "Founded by...", "shaped by...", "Lined with...", "crossed by...". Compressed description heavy with passive past participles — a literary trademark.
 
 ### 2. Listening/Speaking (5 phrases)

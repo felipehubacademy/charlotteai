@@ -241,7 +241,8 @@
 10. **read_answer**
     **Passage**: "The Amazon, which is the longest river in South America, runs through Brazil. My new phone, which I bought last week, broke already. The book, which won an award last year, became a bestseller. Brazil, which is the largest country in South America, has many cultures."
     **Question**: What happened to the new phone?
-    **Answer**: it broke (or "it broke already")
+    **Answer**: it broke
+    **Accepts**: it broke already
     **Explanation**: The text says "My new phone, which I bought last week, broke already".
 
 ### 2. Listening/Speaking (5 phrases)
@@ -406,7 +407,8 @@
 10. **read_answer**
     **Passage**: "Maria, whose father is a doctor, is studying medicine. My neighbor, whose dog barks all night, is moving. The author, whose book I loved, is coming to town. Tom, whose wife is from Spain, speaks fluent Spanish."
     **Question**: Why does Tom speak fluent Spanish?
-    **Answer**: his wife is from Spain (or "whose wife is from Spain")
+    **Answer**: his wife is from Spain
+    **Accepts**: whose wife is from Spain
     **Explanation**: The text says "Tom, whose wife is from Spain, speaks fluent Spanish".
 
 ### 2. Listening/Speaking (5 phrases)
@@ -571,7 +573,8 @@
 10. **read_answer**
     **Passage**: "Paris, where I lived for a year, is beautiful. 2020, when the pandemic started, was a hard year. My hometown, where I grew up, is small. The summer of 2018, when I traveled to Europe, was unforgettable."
     **Question**: Where did the speaker grow up?
-    **Answer**: in my/their hometown (or "their hometown")
+    **Answer**: in my/their hometown
+    **Accepts**: their hometown
     **Explanation**: The text says "My hometown, where I grew up, is small".
 
 ### 2. Listening/Speaking (5 phrases)
@@ -736,7 +739,8 @@
 10. **read_answer**
     **Passage**: "The man who called me yesterday is my boss (defining — identifies which man). My boss, who called me yesterday, is great (non-defining — extra info about the only boss). The book that I bought is fascinating (defining). This book, which won an award, is fascinating (non-defining)."
     **Question**: When do you use commas?
-    **Answer**: in non-defining clauses (or "non-defining" or "when info is extra")
+    **Answer**: in non-defining clauses
+    **Accepts**: non-defining / when info is extra
     **Explanation**: The text explains that commas appear in non-defining clauses (extra information).
 
 ### 2. Listening/Speaking (5 phrases)

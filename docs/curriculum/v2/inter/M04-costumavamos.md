@@ -73,7 +73,8 @@
 10. **read_answer**
     **Passage**: "I used to play soccer every weekend. My sister used to dance. We used to go to the beach every summer. Now things are different."
     **Question**: What did the sister use to do?
-    **Answer**: dance (or "used to dance")
+    **Answer**: dance
+    **Accepts**: used to dance
     **Explanation**: The text says "My sister used to dance".
 
 ### 2. Listening/Speaking (5 phrases)
@@ -238,7 +239,8 @@
 10. **read_answer**
     **Passage**: "I didn't use to like coffee, but now I love it. Did you use to play soccer? Yes, I did, but I stopped."
     **Question**: Did the speaker use to like coffee?
-    **Answer**: no (or "didn't use to")
+    **Answer**: no
+    **Accepts**: didn't use to
     **Explanation**: The text says "I didn't use to like coffee".
 
 ### 2. Listening/Speaking (5 phrases)
@@ -403,7 +405,8 @@
 10. **read_answer**
     **Passage**: "When I was a child, we would visit my grandparents every Sunday. My grandmother would cook a big lunch. We would play in the garden."
     **Question**: What would the grandmother do?
-    **Answer**: cook a big lunch (or "cook lunch")
+    **Answer**: cook a big lunch
+    **Accepts**: cook lunch
     **Explanation**: The text says "My grandmother would cook a big lunch".
 
 ### 2. Listening/Speaking (5 phrases)
@@ -547,7 +550,8 @@
 
 6. **fill_gap** — "We _____ go fishing every weekend."
    **Hint**: repeated action with "every"
-   **Answer**: would (or "used to")
+   **Answer**: would
+   **Accepts**: used to
    **Explanation**: Repeated action with "every" — "would go" works perfectly.
 
 7. **fill_gap** — "She _____ be very shy as a kid."
@@ -707,7 +711,8 @@
 
 5. **fill_gap** — "I _____ exercise every day, now I'm lazy."
    **Hint**: would or used to (action)
-   **Answer**: would (or used to)
+   **Answer**: would
+   **Accepts**: used to
    **Explanation**: Past repeated action — both work.
 
 6. **fill_gap** — "She used to _____ piano."

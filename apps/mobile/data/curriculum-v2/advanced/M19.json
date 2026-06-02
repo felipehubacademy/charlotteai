@@ -57,7 +57,10 @@
             "should",
             "can"
           ],
-          "answer": "will (or \"must\")",
+          "answer": "will",
+          "accepts": [
+            "must"
+          ],
           "explanation": "\"Will\" — high-certainty prediction based on routine (\"It's the time he usually comes\"). \"Must\" works too if there's stronger evidence (a specific knock). The English habit of using \"will\" for confident predictions about the present surprises learners. \"That'll be him\" is everyday English."
         },
         {
@@ -371,7 +374,10 @@
           "type": "fix_error",
           "sentence": "Habitual past: \"Every summer, we use to visit my aunt in Coimbra.\"",
           "hint": "Past tense — \"used to\" or \"would\"",
-          "answer": "Every summer, we used to visit my aunt in Coimbra. (or: ...we would visit my aunt in Coimbra.)",
+          "answer": "Every summer, we used to visit my aunt in Coimbra.",
+          "accepts": [
+            "...we would visit my aunt in Coimbra."
+          ],
           "explanation": "\"Use to\" needs past form \"used to\" (note the d). Or replace with \"would\" for habitual past. Common spelling error — \"use to\" sounds like \"used to\" but only \"used to\" is grammatical past form."
         },
         {

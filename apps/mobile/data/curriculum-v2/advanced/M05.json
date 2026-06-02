@@ -225,7 +225,10 @@
           "type": "read_answer",
           "passage": "The CEO is said to be furious. She is reported to have demanded a complete review of last quarter's accounts. Two senior auditors are believed to have been dismissed since Monday. The company is thought to be preparing a public statement.",
           "question": "How many auditors are believed to have been dismissed?",
-          "answer": "two (or \"two senior auditors\")",
+          "answer": "two",
+          "accepts": [
+            "two senior auditors"
+          ],
           "explanation": "Four double passives in succession (\"is said to be... is reported to have demanded... are believed to have been dismissed... is thought to be preparing\"). Journalism-grade compression."
         }
       ],

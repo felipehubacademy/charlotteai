@@ -222,7 +222,8 @@
 
 6. **fill_gap** — "I _____ go to the beach if it's sunny on Saturday."
    **Hint**: future específico, contração de "I will"
-   **Answer**: 'll (or will)
+   **Answer**: 'll
+   **Accepts**: will
    **Explanation**: "On Saturday" = specific event → first conditional. "I'll go" or "I will go" in the future consequence.
 
 7. **fill_gap** — "If you exercise regularly, you _____ healthier — it's a fact."
@@ -244,7 +245,8 @@
 10. **read_answer**
     **Passage**: "If you don't water plants, they die — that's how nature works. If it rains tomorrow, I'll stay home and read. Plants need sunlight to grow, and if they don't get it, they wither."
     **Question**: What will the speaker do if it rains tomorrow?
-    **Answer**: stay home and read (or "stay home")
+    **Answer**: stay home and read
+    **Accepts**: stay home
     **Explanation**: The text says "If it rains tomorrow, I'll stay home and read" — first conditional with specific future plan.
 
 ### 2. Listening/Speaking (5 phrases)
@@ -576,7 +578,8 @@
 10. **read_answer**
     **Passage**: "If you study consistently, you learn faster — that's universal. If I have free time this weekend, I'll catch up on reading. Plants need water; if they don't get it, they die. When it gets dark, I usually feel sleepy."
     **Question**: What does the speaker plan to do this weekend?
-    **Answer**: catch up on reading (or "reading")
+    **Answer**: catch up on reading
+    **Accepts**: reading
     **Explanation**: The text says "If I have free time this weekend, I'll catch up on reading" — specific future plan.
 
 ### 2. Listening/Speaking (5 phrases)
@@ -725,7 +728,8 @@
 
 7. **fill_gap** — "_____ you study consistently, you make progress."
    **Hint**: "if" ou "when" — verdade geral
-   **Answer**: If (or When)
+   **Answer**: If
+   **Accepts**: When
    **Explanation**: Both work in universal truths. "If/When you study consistently".
 
 8. **fix_error** — "If I have time, I travel a lot." (sentido específico de "este ano")
@@ -741,7 +745,8 @@
 10. **read_answer**
     **Passage**: "If you take this medicine three times a day, you'll feel better in a week. If I finish work early tomorrow, I'll join you for dinner. When water freezes, it expands — that's why pipes burst in winter."
     **Question**: When will the speaker join for dinner?
-    **Answer**: if I finish work early tomorrow (or "tomorrow if work ends early")
+    **Answer**: if I finish work early tomorrow
+    **Accepts**: tomorrow if work ends early
     **Explanation**: The text says "If I finish work early tomorrow, I'll join you for dinner" — first conditional with specific plan.
 
 ### 2. Listening/Speaking (5 phrases)

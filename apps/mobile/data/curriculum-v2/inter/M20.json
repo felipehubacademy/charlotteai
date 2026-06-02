@@ -116,7 +116,10 @@
           "type": "read_answer",
           "passage": "I wish you would stop interrupting me. I wish she would listen to me. I wish people wouldn't smoke in restaurants. I wish it would stop raining. I wish my neighbors wouldn't make so much noise.",
           "question": "What does the speaker wish about restaurants?",
-          "answer": "people wouldn't smoke (or \"that people wouldn't smoke\")",
+          "answer": "people wouldn't smoke",
+          "accepts": [
+            "that people wouldn't smoke"
+          ],
           "explanation": "The text says \"I wish people wouldn't smoke in restaurants\"."
         }
       ],
@@ -310,7 +313,10 @@
           "type": "read_answer",
           "passage": "If only I had more time! If only I had studied harder! If only she were here now. If only we had left earlier! If only the rain would stop!",
           "question": "What does the speaker wish about studying?",
-          "answer": "had studied harder (or \"studied harder\")",
+          "answer": "had studied harder",
+          "accepts": [
+            "studied harder"
+          ],
           "explanation": "The text says \"If only I had studied harder!\"."
         }
       ],
@@ -890,7 +896,10 @@
           "type": "read_answer",
           "passage": "I wish you would stop interrupting me. If only I had more time! I'd rather not go tonight. It's time we left for the airport. I'd rather you talked to me first.",
           "question": "What does the speaker prefer not to do tonight?",
-          "answer": "go (or \"go tonight\")",
+          "answer": "go",
+          "accepts": [
+            "go tonight"
+          ],
           "explanation": "The text says \"I'd rather not go tonight\"."
         }
       ],
