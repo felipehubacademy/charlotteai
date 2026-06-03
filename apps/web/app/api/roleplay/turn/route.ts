@@ -209,15 +209,18 @@ Rules:
     The ONLY way to NOT mark is if the chunk is COMPLETELY ABSENT from
     the message. If it's there in any form, MARK.
   - USER-ASKS OBJECTIVES (hidden_prompt starts with "user asks" or "user
-    perguntar"): ANY question directed at Charlotte (you) satisfies the
-    objective. Match by INTENT, not specific phrase. Examples that ALL
-    count for "user asks Charlotte something":
-      • "How about you?"   • "And you?"
-      • "How are you?"     • "Are you OK?"
-      • "Were you happy?"  • "Were you hungry?"   • "Were you home?"
-      • "Did you have fun?" • "Do you like X?"
-    If the student turns the conversation back toward Charlotte with
-    ANY question (Were/Are/Do/Did/Have/Can/Will + you), MARK.
+    perguntar"): a question directed at Charlotte satisfies the objective
+    IF it uses the GRAMMAR STRUCTURE the unit is teaching (look at the
+    UNIT/grammar_focus and the OTHER objectives' hints — they reveal the
+    target structure).
+    - Unit teaching past 'to be' (was/were)? → "Were you happy?" /
+      "Was it good?" MARK. But "Do you like X?" would be off-tense → NO.
+    - Unit teaching present simple? → "Do you like X?" MARK. But
+      "Were you X?" would be off-tense → NO.
+    - Generic asks like "How about you?" / "And you?" ALWAYS work
+      (universal back-question, no tense pinned).
+    Match by INTENT + STRUCTURE alignment. If the student asked a clear
+    question using the right tense for the unit, MARK.
   - BIAS TOWARD MARKING when there's clear evidence. Strict matching is
     only for cases where the student replied off-topic, gibberish, or
     something genuinely unrelated.
