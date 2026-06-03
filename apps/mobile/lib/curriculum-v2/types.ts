@@ -165,6 +165,7 @@ export interface Unit {
   title:             string;
   sub_cefr:          Block;
   grammar_focus:     string;
+  tense?:            string;       // ex: "PAST · to be" — display label
   markers:           ModuleMarker[];
   real_life_context: string;
   grammar:           GrammarExercise[];

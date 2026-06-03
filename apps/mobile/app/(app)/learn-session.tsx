@@ -1121,6 +1121,7 @@ export default function LearnSessionScreen() {
 
   const modTitle   = CURRICULUM[level]?.[moduleIndex]?.title ?? '';
   const topicTitle = topic?.title ?? '';
+  const tenseTag   = (topic && (topic as any).tense) ? String((topic as any).tense) : '';
 
   // ── Completion screen ──────────────────────────────────────
   if (isComplete) {
@@ -1347,8 +1348,8 @@ export default function LearnSessionScreen() {
           <ArrowLeft size={22} color={C.navy} weight="bold" />
         </TouchableOpacity>
         <View style={{ flex: 1, alignItems: 'center' }}>
-          {params.reviewId ? (
-            /* Badge de revisão — substitui o modTitle quando é uma revisão */
+          {params.reviewId && (
+            /* Badge de revisão — fica no topo quando é uma revisão */
             <View style={{ flexDirection: 'row', alignItems: 'center', gap: 4,
               backgroundColor: C.violetBg, borderRadius: 8,
               paddingHorizontal: 8, paddingVertical: 2, marginBottom: 2 }}>
@@ -1357,14 +1358,15 @@ export default function LearnSessionScreen() {
                 {isPortuguese ? 'Revisão' : 'Review'}
               </AppText>
             </View>
-          ) : (
-            <AppText style={{ fontSize: 9, fontWeight: '700', color: C.navyLight, textTransform: 'uppercase', letterSpacing: 1 }}>
-              {modTitle}
-            </AppText>
           )}
           <AppText style={{ fontSize: 18, fontWeight: '800', color: C.navy, letterSpacing: -0.3 }} numberOfLines={1}>
             {topicTitle}
           </AppText>
+          {!!tenseTag && !params.reviewId && (
+            <AppText style={{ fontSize: 9, fontWeight: '700', color: C.navyLight, textTransform: 'uppercase', letterSpacing: 1, marginTop: 2 }}>
+              {tenseTag}
+            </AppText>
+          )}
         </View>
         <TouchableOpacity onPress={() => router.push({ pathname: '/(app)/stats', params: { sessionXP: String(sessionXP), totalXP: String(baseTotalXP + sessionXP), userId: userId ?? '', userLevel: userLevel ?? 'Inter', userName: '' } })} activeOpacity={0.7} hitSlop={{ top: 10, bottom: 10, left: 10, right: 10 }}>
           <AnimatedXPBadge xp={baseTotalXP + sessionXP} iconSize={13} fontSize={13} padH={10} padV={5} />

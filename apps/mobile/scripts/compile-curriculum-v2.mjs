@@ -294,6 +294,7 @@ function parseUnit(headerTitle, body) {
 
   const sub_cefr          = extractBlock(parseBlockquoteField(body, 'Sub-CEFR'));
   const grammar_focus     = parseBlockquoteField(body, 'Grammar focus');
+  const tense             = parseBlockquoteField(body, 'Tense') || undefined;
   const markers           = parseMarkers(parseBlockquoteField(body, 'Markers'));
   const real_life_context = parseBlockquoteField(body, 'Real-life context');
 
@@ -307,7 +308,7 @@ function parseUnit(headerTitle, body) {
     else if (/^\s*\d+\.\s*Guided\s+Chat/i.test(s.title))      guided_chat = parseGuidedChat(s.body);
   }
 
-  return { id, title, sub_cefr, grammar_focus, markers, real_life_context, grammar, listening_speaking, roleplay, guided_chat };
+  return { id, title, sub_cefr, grammar_focus, tense, markers, real_life_context, grammar, listening_speaking, roleplay, guided_chat };
 }
 
 // ─── Grammar parsing ──────────────────────────────────────────────
