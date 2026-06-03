@@ -111,7 +111,7 @@
         {
           "type": "read_answer",
           "passage": "Yesterday I worked all day. Then I watched a movie and called my sister. We played a game online.",
-          "question": "What did the speaker watch?",
+          "question": "O que o speaker assistiu?",
           "answer": "a movie",
           "explanation": "O texto diz \"Then I watched a movie\"."
         }
@@ -313,7 +313,7 @@
         {
           "type": "read_answer",
           "passage": "I planned a trip last week. I stopped at the bakery and tried a new bread. I enjoyed the day.",
-          "question": "What did the speaker try?",
+          "question": "O que o speaker experimentou?",
           "answer": "a new bread",
           "explanation": "O texto diz \"tried a new bread\"."
         }
@@ -515,7 +515,7 @@
         {
           "type": "read_answer",
           "passage": "I visited my grandparents last weekend. We talked for hours. Then we cooked together and laughed a lot.",
-          "question": "When did the speaker visit grandparents?",
+          "question": "Quando o speaker visitou os avós?",
           "answer": "last weekend",
           "explanation": "O texto diz \"last weekend\"."
         }
@@ -732,7 +732,7 @@
         {
           "type": "read_answer",
           "passage": "Yesterday I worked /workt/, watched /watcht/ a movie, and called /kAld/ my friend. Then I visited /vIzItId/ my parents.",
-          "question": "Which verb has the /id/ sound?",
+          "question": "Qual verbo tem o som /id/?",
           "answer": "visited",
           "explanation": "\"Visited\" termina em /id/ (3 sílabas). Os outros são /t/ ou /d/ (2 sílabas)."
         }
@@ -934,7 +934,7 @@
         {
           "type": "read_answer",
           "passage": "I started work at eight. I worked all morning. At noon I called my friend. We talked for an hour. Then I returned to my desk.",
-          "question": "What time did the speaker start work?",
+          "question": "A que horas o speaker começou a trabalhar?",
           "answer": "eight",
           "explanation": "O texto diz \"I started work at eight\"."
         }

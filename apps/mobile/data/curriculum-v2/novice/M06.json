@@ -120,7 +120,7 @@
         {
           "type": "read_answer",
           "passage": "Tom is my friend. He works in a bank. He studies German at night. He goes home at six.",
-          "question": "Where does Tom work?",
+          "question": "Onde Tom trabalha?",
           "answer": "in a bank",
           "explanation": "O texto diz \"He works in a bank\"."
         }
@@ -324,7 +324,7 @@
         {
           "type": "read_answer",
           "passage": "I don't drink coffee. My brother doesn't eat meat. We don't work on Sundays. Ana doesn't study at night.",
-          "question": "What does Ana not do?",
+          "question": "O que Ana não faz?",
           "answer": "study at night",
           "explanation": "O texto diz \"Ana doesn't study at night\"."
         }
@@ -528,7 +528,7 @@
         {
           "type": "read_answer",
           "passage": "Q: Do you study English? A: Yes, I do. Q: Does your sister study too? A: No, she doesn't. She studies French.",
-          "question": "What language does the sister study?",
+          "question": "Que idioma a irmã estuda?",
           "answer": "French",
           "explanation": "O texto diz \"She studies French\"."
         }
@@ -732,7 +732,7 @@
         {
           "type": "read_answer",
           "passage": "Q: Where do you work? A: I work in a hospital. Q: What time do you start? A: I start at eight. Q: When does your sister study? A: She studies at night.",
-          "question": "When does the sister study?",
+          "question": "Quando a irmã estuda?",
           "answer": "at night",
           "explanation": "O texto diz \"She studies at night\"."
         }
@@ -936,7 +936,7 @@
         {
           "type": "read_answer",
           "passage": "Lucas is my friend. He works in a school. He doesn't like coffee — he drinks tea. He goes to the gym every morning.",
-          "question": "What does Lucas drink?",
+          "question": "O que Lucas bebe?",
           "answer": "tea",
           "explanation": "O texto diz \"He doesn't like coffee — he drinks tea\"."
         }

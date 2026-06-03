@@ -112,7 +112,7 @@
         {
           "type": "read_answer",
           "passage": "I think you should rest more. You shouldn't work so late. We should all take breaks.",
-          "question": "What shouldn't the person do?",
+          "question": "O que a pessoa não deveria fazer?",
           "answer": "work so late",
           "accepts": [
             "work late"
@@ -319,7 +319,7 @@
         {
           "type": "read_answer",
           "passage": "I have to work tomorrow. My sister has to study for an exam. We all have to wake up early.",
-          "question": "What does the sister have to do?",
+          "question": "O que a irmã tem que fazer?",
           "answer": "study",
           "accepts": [
             "study for an exam"
@@ -524,7 +524,7 @@
         {
           "type": "read_answer",
           "passage": "I don't have to work tomorrow — it's my day off. She doesn't have to come if she's busy. We don't have to do anything special.",
-          "question": "Why doesn't the speaker have to work tomorrow?",
+          "question": "Por que o speaker não precisa trabalhar amanhã?",
           "answer": "it's my day off",
           "accepts": [
             "day off"
@@ -731,7 +731,7 @@
         {
           "type": "read_answer",
           "passage": "Q: Should I call her? A: Yes, you should. Q: Do I have to bring my passport? A: No, you don't have to.",
-          "question": "Does the person have to bring the passport?",
+          "question": "A pessoa precisa trazer o passaporte?",
           "answer": "no",
           "accepts": [
             "doesn't have to"
@@ -936,7 +936,7 @@
         {
           "type": "read_answer",
           "passage": "You should rest. I have to work tomorrow. We need to buy more milk. She doesn't have to come if she's busy.",
-          "question": "What does the speaker have to do tomorrow?",
+          "question": "O que o speaker tem que fazer amanhã?",
           "answer": "work",
           "explanation": "O texto diz \"I have to work tomorrow\"."
         }

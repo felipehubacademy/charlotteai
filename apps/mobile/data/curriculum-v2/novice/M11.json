@@ -114,7 +114,7 @@
         {
           "type": "read_answer",
           "passage": "I'd like to buy a black jacket. I'm looking for size M. Excuse me, where is the cashier? It's next to the door.",
-          "question": "Where is the cashier?",
+          "question": "Onde fica o caixa?",
           "answer": "next to the door",
           "explanation": "O texto diz \"It's next to the door\"."
         }
@@ -320,7 +320,7 @@
         {
           "type": "read_answer",
           "passage": "I like this dress (in my hand). That dress over there is too expensive. These shoes fit me. Those shoes don't fit.",
-          "question": "Which item is expensive?",
+          "question": "Qual item é caro?",
           "answer": "that dress",
           "accepts": [
             "the dress over there"
@@ -527,7 +527,7 @@
         {
           "type": "read_answer",
           "passage": "I'm at the supermarket. The bread is on the second shelf. The milk is in the fridge. The cookies are next to the cash register.",
-          "question": "Where are the cookies?",
+          "question": "Onde estão os biscoitos?",
           "answer": "next to the cash register",
           "explanation": "O texto diz \"next to the cash register\"."
         }
@@ -729,7 +729,7 @@
         {
           "type": "read_answer",
           "passage": "Customer: How much is this jacket? Cashier: Forty dollars. Customer: Can I pay with credit card? Cashier: Of course. Here's your receipt.",
-          "question": "How does the customer pay?",
+          "question": "Como o cliente paga?",
           "answer": "with credit card",
           "explanation": "O texto diz \"Can I pay with credit card?\"."
         }
@@ -932,7 +932,7 @@
         {
           "type": "read_answer",
           "passage": "I'd like to buy this shirt. How much is it? Twenty dollars. Can I try it on? Yes. The fitting room is next to the cashier.",
-          "question": "How much is the shirt?",
+          "question": "Quanto custa a camisa?",
           "answer": "twenty dollars",
           "explanation": "O texto diz \"Twenty dollars\"."
         }

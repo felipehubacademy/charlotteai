@@ -114,7 +114,7 @@
         {
           "type": "read_answer",
           "passage": "I love Italian food. I like Mexican food too. My sister hates spicy food. We all love chocolate.",
-          "question": "What does the sister hate?",
+          "question": "O que a irmã odeia?",
           "answer": "spicy food",
           "explanation": "O texto diz \"My sister hates spicy food\"."
         }
@@ -318,7 +318,7 @@
         {
           "type": "read_answer",
           "passage": "I love reading, but I hate cooking. My brother loves playing soccer. My sister likes painting and drawing.",
-          "question": "What does the sister like doing?",
+          "question": "O que a irmã gosta de fazer?",
           "answer": "painting and drawing",
           "explanation": "O texto diz \"My sister likes painting and drawing\"."
         }
@@ -522,7 +522,7 @@
         {
           "type": "read_answer",
           "passage": "My sister calls me every Sunday. I love talking to her. She tells me about her week. I tell her about mine.",
-          "question": "Who calls every Sunday?",
+          "question": "Quem liga todo domingo?",
           "answer": "my sister",
           "accepts": [
             "the sister"
@@ -732,7 +732,7 @@
         {
           "type": "read_answer",
           "passage": "I love pop music. I like action movies. I hate horror books. My sister loves classical music — totally different.",
-          "question": "What kind of music does the sister love?",
+          "question": "Que tipo de música a irmã ama?",
           "answer": "classical",
           "accepts": [
             "classical music"
@@ -937,7 +937,7 @@
         {
           "type": "read_answer",
           "passage": "I prefer tea over coffee. My sister prefers coffee. We both love chocolate. She hates sweet drinks but I like them.",
-          "question": "What does the sister prefer to drink?",
+          "question": "O que a irmã prefere beber?",
           "answer": "coffee",
           "explanation": "O texto diz \"My sister prefers coffee\"."
         }

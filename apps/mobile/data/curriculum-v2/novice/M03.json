@@ -126,7 +126,7 @@
         {
           "type": "read_answer",
           "passage": "My family is great. My mother is fifty. My father is fifty-five. My brother is twenty. He is Brazilian.",
-          "question": "How old is the father? (dê um número)",
+          "question": "Quantos anos o pai tem? (dê um número)",
           "answer": "55",
           "explanation": "O texto diz \"My father is fifty-five\". 55."
         }
@@ -330,7 +330,7 @@
         {
           "type": "read_answer",
           "passage": "I've got a small family. I have got one brother and one sister. My brother is twenty-five. My sister is fifteen.",
-          "question": "How old is the brother? (dê um número)",
+          "question": "Quantos anos o irmão tem? (dê um número)",
           "answer": "25",
           "explanation": "O texto diz \"My brother is twenty-five\". 25."
         }
@@ -532,7 +532,7 @@
         {
           "type": "read_answer",
           "passage": "John has got a great family. His wife is Italian. His son is ten. His daughter is fifteen.",
-          "question": "How old is John's daughter? (dê um número)",
+          "question": "Quantos anos a filha do John tem? (dê um número)",
           "answer": "15",
           "explanation": "O texto diz \"His daughter is fifteen\". 15."
         }
@@ -734,7 +734,7 @@
         {
           "type": "read_answer",
           "passage": "I've got a best friend. Her name is Sofia. She is Italian. She is twenty-three years old.",
-          "question": "What is Sofia's nationality?",
+          "question": "Qual é a nacionalidade de Sofia?",
           "answer": "Italian",
           "explanation": "O texto diz \"She is Italian\" — a nacionalidade de Sofia é italiana."
         }
@@ -936,7 +936,7 @@
         {
           "type": "read_answer",
           "passage": "Meet my family. My mother is fifty. My father is fifty-five. My brother is twenty. He is Brazilian like me.",
-          "question": "What is the brother's nationality?",
+          "question": "Qual é a nacionalidade do irmão?",
           "answer": "Brazilian",
           "explanation": "O texto diz \"He is Brazilian like me\" — a nacionalidade do irmão é brasileira."
         }

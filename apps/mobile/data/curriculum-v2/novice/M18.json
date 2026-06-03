@@ -111,7 +111,7 @@
         {
           "type": "read_answer",
           "passage": "Tomorrow I'm going to wake up early. I'm going to work in the morning and go to the gym in the afternoon. We're going to have dinner together.",
-          "question": "What is the speaker going to do in the afternoon?",
+          "question": "O que o speaker vai fazer à tarde?",
           "answer": "go to the gym",
           "explanation": "O texto diz \"go to the gym in the afternoon\"."
         }
@@ -313,7 +313,7 @@
         {
           "type": "read_answer",
           "passage": "I'm not going to work tomorrow. It's my day off. My sister isn't going to come either. We aren't going to do anything special.",
-          "question": "Why isn't the speaker working tomorrow?",
+          "question": "Por que o speaker não vai trabalhar amanhã?",
           "answer": "it's my day off",
           "accepts": [
             "day off"
@@ -520,7 +520,7 @@
         {
           "type": "read_answer",
           "passage": "Q: Are you going to travel next month? A: Yes, I am. Q: Is your sister going to come? A: No, she isn't. She has work.",
-          "question": "Is the sister going to come?",
+          "question": "A irmã vai vir?",
           "answer": "no",
           "accepts": [
             "she isn't"
@@ -725,7 +725,7 @@
         {
           "type": "read_answer",
           "passage": "I'm going to travel tomorrow. Next week I'm going to be in Italy. In two months I'm going to come back home.",
-          "question": "When is the speaker going to travel?",
+          "question": "Quando o speaker vai viajar?",
           "answer": "tomorrow",
           "explanation": "O texto diz \"I'm going to travel tomorrow\"."
         }
@@ -927,7 +927,7 @@
         {
           "type": "read_answer",
           "passage": "Tomorrow I'm going to work. I'm not going to eat out tonight — I'm tired. Next week I'm going to travel to Bahia.",
-          "question": "Where is the speaker going next week?",
+          "question": "Para onde o speaker vai na semana que vem?",
           "answer": "Bahia",
           "accepts": [
             "to Bahia"
@@ -1143,7 +1143,7 @@
         {
           "type": "read_answer",
           "passage": "I'm gonna grab some coffee — wanna come? Yeah, I gotta finish this email first. Whatcha working on? Just a quick reply to my boss. I gotta send it before the meeting. OK, I'll wait for you.",
-          "question": "What does \"I gotta finish this email\" mean in formal English?",
+          "question": "O que \"I gotta finish this email\" significa em inglês formal?",
           "answer": "I have to finish this email",
           "accepts": [
             "I've got to finish this email"

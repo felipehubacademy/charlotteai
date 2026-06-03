@@ -111,7 +111,7 @@
         {
           "type": "read_answer",
           "passage": "Yesterday I went to a café. I had a coffee and saw an old friend. We took a long walk and made plans for dinner.",
-          "question": "What did the speaker have?",
+          "question": "O que o speaker tinha?",
           "answer": "a coffee",
           "explanation": "O texto diz \"I had a coffee\"."
         }
@@ -313,7 +313,7 @@
         {
           "type": "read_answer",
           "passage": "I bought a sandwich and ate it quickly. Then I drank some coffee and found my friend at the café. We thought about going to the cinema.",
-          "question": "What did the speaker drink?",
+          "question": "O que o speaker bebeu?",
           "answer": "coffee",
           "accepts": [
             "some coffee"
@@ -518,7 +518,7 @@
         {
           "type": "read_answer",
           "passage": "I met an old friend yesterday. We left the café at six. I sent her a message later. She won a prize last week!",
-          "question": "What did the friend win?",
+          "question": "O que o amigo ganhou?",
           "answer": "a prize",
           "explanation": "O texto diz \"She won a prize last week\"."
         }
@@ -720,7 +720,7 @@
         {
           "type": "read_answer",
           "passage": "I cut the vegetables. Then I put them in the pan. I read the recipe carefully. The result was great.",
-          "question": "What did the speaker put in the pan?",
+          "question": "O que o speaker colocou na panela?",
           "answer": "the vegetables",
           "accepts": [
             "them"
@@ -925,7 +925,7 @@
         {
           "type": "read_answer",
           "passage": "Yesterday I went to a bookstore. I bought a novel. I came home and read it. I had a great evening!",
-          "question": "What did the speaker buy?",
+          "question": "O que o speaker comprou?",
           "answer": "a novel",
           "explanation": "O texto diz \"I bought a novel\"."
         }

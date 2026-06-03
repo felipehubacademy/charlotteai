@@ -114,7 +114,7 @@
         {
           "type": "read_answer",
           "passage": "I can speak English and Portuguese. My brother can play the guitar. We can both cook well.",
-          "question": "What can the brother play?",
+          "question": "O que o irmão sabe tocar?",
           "answer": "the guitar",
           "explanation": "O texto diz \"My brother can play the guitar\"."
         }
@@ -316,7 +316,7 @@
         {
           "type": "read_answer",
           "passage": "I can swim but I can't dive. My friend can speak French but she can't write it well. We can both ride a bike.",
-          "question": "What can the friend NOT do well?",
+          "question": "O que o amigo NÃO sabe fazer bem?",
           "answer": "write",
           "accepts": [
             "write French"
@@ -523,7 +523,7 @@
         {
           "type": "read_answer",
           "passage": "Q: Can you swim? A: Yes, I can. Q: Can your brother cook? A: No, he can't. He only makes sandwiches.",
-          "question": "What can the brother make?",
+          "question": "O que o irmão sabe fazer?",
           "answer": "sandwiches",
           "explanation": "O texto diz \"He only makes sandwiches\"."
         }
@@ -736,7 +736,7 @@
         {
           "type": "read_answer",
           "passage": "I can speak two languages: English and Italian. My brother can play the guitar. My sister can play tennis very well.",
-          "question": "What can the sister play?",
+          "question": "O que a irmã sabe tocar?",
           "answer": "tennis",
           "explanation": "O texto diz \"My sister can play tennis very well\"."
         }
@@ -939,7 +939,7 @@
         {
           "type": "read_answer",
           "passage": "I can speak English very well. I can't speak French at all. My friend can play three instruments — the piano, the guitar, and the violin.",
-          "question": "How many instruments can the friend play?",
+          "question": "Quantos instrumentos o amigo sabe tocar?",
           "answer": "three",
           "explanation": "O texto diz \"My friend can play three instruments\"."
         }

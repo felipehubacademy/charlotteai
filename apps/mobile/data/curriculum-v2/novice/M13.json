@@ -112,7 +112,7 @@
         {
           "type": "read_answer",
           "passage": "My brother is the tallest in our family. My sister is the youngest. I'm the oldest. We all live in the biggest house on the street.",
-          "question": "Who is the tallest?",
+          "question": "Quem é o mais alto?",
           "answer": "my brother",
           "explanation": "O texto diz \"My brother is the tallest\"."
         }
@@ -314,7 +314,7 @@
         {
           "type": "read_answer",
           "passage": "This is the most expensive restaurant in town. The food is the most delicious in the city. The service is also the most professional.",
-          "question": "How is the service?",
+          "question": "Como é o atendimento?",
           "answer": "the most professional",
           "explanation": "O texto diz \"The service is also the most professional\"."
         }
@@ -518,7 +518,7 @@
         {
           "type": "read_answer",
           "passage": "Ana is the best singer in our class. Lucas is the worst at math but the best at art. We all agree — she has the most talent.",
-          "question": "Who is the best at art?",
+          "question": "Quem é o melhor em arte?",
           "answer": "Lucas",
           "explanation": "O texto diz \"Lucas is... the best at art\"."
         }
@@ -720,7 +720,7 @@
         {
           "type": "read_answer",
           "passage": "I live on the second floor. My birthday is on the fourth of July. This is my first time in NYC.",
-          "question": "When is the birthday?",
+          "question": "Quando é o aniversário?",
           "answer": "the fourth of July",
           "accepts": [
             "July 4"
@@ -925,7 +925,7 @@
         {
           "type": "read_answer",
           "passage": "I live on the third floor. My building is the tallest in the neighborhood. This is the best apartment in the building. The view is the most beautiful.",
-          "question": "How is the view?",
+          "question": "Como é a vista?",
           "answer": "the most beautiful",
           "explanation": "O texto diz \"The view is the most beautiful\"."
         }

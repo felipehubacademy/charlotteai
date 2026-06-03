@@ -118,7 +118,7 @@
         {
           "type": "read_answer",
           "passage": "Hi! I am Mark. I am fifteen years old. My room is twelve.",
-          "question": "How old is Mark? (dê um número)",
+          "question": "Quantos anos Mark tem? (dê um número)",
           "answer": "15",
           "explanation": "Mark diz \"I am fifteen years old\". Fifteen = 15."
         }
@@ -312,7 +312,7 @@
         {
           "type": "read_answer",
           "passage": "Tom is twenty-three years old. Mary is fifty. Mike is eighty-five.",
-          "question": "How old is Mike? (dê um número)",
+          "question": "Quantos anos Mike tem? (dê um número)",
           "answer": "85",
           "explanation": "O texto diz \"Mike is eighty-five\". 85 = 80 + 5 = eighty-five."
         }
@@ -506,7 +506,7 @@
         {
           "type": "read_answer",
           "passage": "Anna is from Italy. Lucas is from Brazil. Maria is from Spain. They are all friends.",
-          "question": "Where is Lucas from?",
+          "question": "De onde Lucas é?",
           "answer": "Brazil",
           "explanation": "O texto diz \"Lucas is from Brazil\". Lucas vem do Brasil."
         }
@@ -702,7 +702,7 @@
         {
           "type": "read_answer",
           "passage": "My new team: John is American. Yuki is Japanese. Sofia is Italian.",
-          "question": "What nationality is Sofia?",
+          "question": "Qual é a nacionalidade de Sofia?",
           "answer": "Italian",
           "explanation": "O texto diz \"Sofia is Italian\". A nacionalidade de Sofia é italiana."
         }
@@ -896,7 +896,7 @@
         {
           "type": "read_answer",
           "passage": "Hello! My name is Ana. I'm twenty-six years old. I'm from São Paulo, Brazil. I'm Brazilian. Nice to meet you!",
-          "question": "What is Ana's nationality?",
+          "question": "Qual é a nacionalidade de Ana?",
           "answer": "Brazilian",
           "explanation": "Ana diz \"I'm Brazilian\". A nacionalidade dela é \"Brazilian\" (o adjetivo)."
         }

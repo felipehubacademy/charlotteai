@@ -116,7 +116,7 @@
         {
           "type": "read_answer",
           "passage": "For breakfast I have two eggs, some bread, and a cup of coffee. My sister has one apple and some yogurt.",
-          "question": "How many eggs does the speaker have?",
+          "question": "Quantos ovos o speaker tem?",
           "answer": "two",
           "explanation": "O texto diz \"I have two eggs\"."
         }
@@ -320,7 +320,7 @@
         {
           "type": "read_answer",
           "passage": "I have some bread but I don't have any milk. Is there any cheese? Yes, there's some cheese in the fridge.",
-          "question": "What does the speaker NOT have?",
+          "question": "O que o speaker NÃO tem?",
           "answer": "milk",
           "explanation": "O texto diz \"I don't have any milk\"."
         }
@@ -524,7 +524,7 @@
         {
           "type": "read_answer",
           "passage": "Q: How much is the coffee? A: It's $3. Q: How many cookies do you want? A: Three, please.",
-          "question": "How many cookies does the customer want?",
+          "question": "Quantos biscoitos o cliente quer?",
           "answer": "three",
           "explanation": "O texto diz \"Three, please\"."
         }
@@ -726,7 +726,7 @@
         {
           "type": "read_answer",
           "passage": "Waiter: What would you like? Customer: I'd like a pasta and a glass of water. Waiter: Anything else? Customer: No, that's all. Can I have the bill?",
-          "question": "What does the customer order to drink?",
+          "question": "O que o cliente pede pra beber?",
           "answer": "a glass of water",
           "accepts": [
             "water"
@@ -933,7 +933,7 @@
         {
           "type": "read_answer",
           "passage": "I'd like a sandwich and some water. We don't have any cookies. How many apples are there? Three.",
-          "question": "How many apples are there?",
+          "question": "Quantas maçãs tem?",
           "answer": "three",
           "explanation": "O texto responde \"Three\" à pergunta."
         }

@@ -148,7 +148,7 @@
         {
           "type": "read_answer",
           "passage": "I think it will rain tomorrow. She will probably stay home. We will all watch a movie together.",
-          "question": "What will the speaker do tomorrow?",
+          "question": "O que o speaker vai fazer amanhã?",
           "answer": "watch a movie",
           "explanation": "O texto diz \"We will all watch a movie together\"."
         }
@@ -378,7 +378,7 @@
         {
           "type": "read_answer",
           "passage": "It's raining. I'll get an umbrella! She won't go out today. I promise I'll call you when I arrive.",
-          "question": "What does the speaker promise?",
+          "question": "O que o speaker promete?",
           "answer": "I'll call you (when I arrive)",
           "accepts": [
             "to call"
@@ -596,7 +596,7 @@
         {
           "type": "read_answer",
           "passage": "I'm going to travel next month — I have tickets. But right now? Oh, the phone! I'll get it. I think it'll be my mom.",
-          "question": "Why is the speaker going to travel (planejado vs espontâneo)?",
+          "question": "Por que o speaker vai viajar (planejado vs espontâneo)?",
           "answer": "planned",
           "accepts": [
             "tickets",
@@ -817,7 +817,7 @@
         {
           "type": "read_answer",
           "passage": "Will you help me move? Sure, I'll come tomorrow. I promise I'll bring snacks too!",
-          "question": "What does the speaker promise to bring?",
+          "question": "O que o speaker promete trazer?",
           "answer": "snacks",
           "explanation": "O texto diz \"I'll bring snacks too\"."
         }
@@ -1046,7 +1046,7 @@
         {
           "type": "read_answer",
           "passage": "I'm going to travel next month — I have tickets. I think it will be a great trip. I'll send postcards too!",
-          "question": "What is the speaker going to do next month?",
+          "question": "O que o speaker vai fazer no mês que vem?",
           "answer": "travel",
           "explanation": "O texto diz \"I'm going to travel next month\"."
         }
@@ -1261,7 +1261,7 @@
         {
           "type": "read_answer",
           "passage": "It's really cold today — almost freezing. It's going to snow tonight, they say. Tomorrow will be even colder. I love winter, but this week is too much. Summer is my favorite season.",
-          "question": "What is the speaker's favorite season?",
+          "question": "Qual é a estação favorita do speaker?",
           "answer": "summer",
           "explanation": "O texto diz \"Summer is my favorite season\". Pratica leitura sobre clima e preferências por estações."
         }

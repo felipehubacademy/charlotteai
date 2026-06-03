@@ -133,7 +133,7 @@
         {
           "type": "read_answer",
           "passage": "I'd like to check in for my flight to São Paulo. My passport is here. I have one suitcase to check, and I'd like a window seat if possible. My flight leaves at 8:30 from gate 24.",
-          "question": "What time does the flight leave?",
+          "question": "A que horas o voo sai?",
           "answer": "8:30",
           "accepts": [
             "at 8:30"
@@ -351,7 +351,7 @@
         {
           "type": "read_answer",
           "passage": "Good evening. I have a reservation under the name of Silva. I'd like a non-smoking room with a king-size bed. Is breakfast included in the rate? And what time is check-out tomorrow?",
-          "question": "What kind of bed does the guest want?",
+          "question": "Que tipo de cama o hóspede quer?",
           "answer": "king-size",
           "accepts": [
             "a king-size bed"
@@ -569,7 +569,7 @@
         {
           "type": "read_answer",
           "passage": "Excuse me, can you help me? I'm looking for the train station. Just go straight ahead for two blocks, then turn left at the bank. The station is on the right, next to the pharmacy.",
-          "question": "What is next to the train station?",
+          "question": "O que fica ao lado da estação de trem?",
           "answer": "the pharmacy",
           "explanation": "O texto diz \"The station is on the right, next to the pharmacy\". Pratica identificação de relações espaciais."
         }
@@ -787,7 +787,7 @@
         {
           "type": "read_answer",
           "passage": "I don't feel well today. I have a headache and a sore throat. I think I might have a fever too. Where is the nearest pharmacy? I need some medicine and maybe I should see a doctor.",
-          "question": "What three symptoms does the speaker have?",
+          "question": "Quais três sintomas o speaker tem?",
           "answer": "headache, sore throat, and fever",
           "accepts": [
             "a headache",
@@ -1001,7 +1001,7 @@
         {
           "type": "read_answer",
           "passage": "Hello? Hi, this is Maria speaking. Can I speak to John, please? Oh, he's not there? Can I leave a message? Please tell him Maria called and I'll call him back tomorrow at 3 PM. Thank you!",
-          "question": "When will Maria call back?",
+          "question": "Quando Maria vai ligar de volta?",
           "answer": "tomorrow at 3 PM",
           "accepts": [
             "at 3 PM tomorrow"

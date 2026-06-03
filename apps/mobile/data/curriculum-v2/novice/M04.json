@@ -120,7 +120,7 @@
         {
           "type": "read_answer",
           "passage": "Welcome to my house! My house is big. My kitchen is small but nice. My bedroom has got a big window.",
-          "question": "How is the kitchen?",
+          "question": "Como é a cozinha?",
           "answer": "small",
           "explanation": "O texto diz \"My kitchen is small but nice\". A primeira palavra que descreve a cozinha é \"small\"."
         }
@@ -324,7 +324,7 @@
         {
           "type": "read_answer",
           "passage": "There is a big house in the neighborhood. There are four bedrooms. There is a kitchen and two bathrooms.",
-          "question": "How many bedrooms are there? (dê um número)",
+          "question": "Quantos quartos tem? (dê um número)",
           "answer": "four",
           "explanation": "O texto diz \"There are four bedrooms\". 4."
         }
@@ -526,7 +526,7 @@
         {
           "type": "read_answer",
           "passage": "My kitchen has got three chairs, two tables, and four windows. There are no doors inside the kitchen.",
-          "question": "How many tables are in the kitchen? (dê um número)",
+          "question": "Quantas mesas tem na cozinha? (dê um número)",
           "answer": "two",
           "explanation": "O texto diz \"two tables\". 2."
         }
@@ -730,7 +730,7 @@
         {
           "type": "read_answer",
           "passage": "I am a doctor. My hospital is big. The hospital has got 200 beds. There is an emergency room on the first floor.",
-          "question": "What does the speaker do? (dê uma profissão)",
+          "question": "O que o speaker faz? (dê uma profissão)",
           "answer": "doctor",
           "explanation": "O texto diz \"I am a doctor\". Note \"a doctor\" (artigo indefinido + profissão)."
         }
@@ -932,7 +932,7 @@
         {
           "type": "read_answer",
           "passage": "Welcome to my home! My house is big. There are four bedrooms, two bathrooms, and a kitchen. The kitchen has got two windows.",
-          "question": "How many bedrooms are there? (dê um número)",
+          "question": "Quantos quartos tem? (dê um número)",
           "answer": "four",
           "explanation": "O texto diz \"four bedrooms\". 4."
         }
