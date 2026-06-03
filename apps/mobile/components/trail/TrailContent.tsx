@@ -667,14 +667,20 @@ export function TrailContent({ userId, level, onCurrentTopicRef, useV2 }: TrailC
 
   // Ref pra scroll-to-active module
   const activeRef = useRef<View | null>(null);
+  // Guard: identifica o ultimo node ja dispatchado pra evitar re-trigger
+  // a cada render (ref callback eh nova func a cada render, dispararia loop).
+  const dispatchedNodeRef = useRef<View | null>(null);
   useEffect(() => {
-    if (onCurrentTopicRef && activeRef.current) {
+    if (onCurrentTopicRef && activeRef.current && dispatchedNodeRef.current !== activeRef.current) {
+      dispatchedNodeRef.current = activeRef.current;
       onCurrentTopicRef(activeRef.current);
     }
   }, [activeIdx, onCurrentTopicRef]);
   // Re-dispatch ref no focus — volta de exercicio re-scrolla pro ativo
   useFocusEffect(useCallback(() => {
     if (onCurrentTopicRef && activeRef.current) {
+      // No focus, RE-dispatcha mesmo no mesmo node (volta de exercicio)
+      dispatchedNodeRef.current = activeRef.current;
       onCurrentTopicRef(activeRef.current);
     }
   }, [onCurrentTopicRef]));
@@ -742,9 +748,13 @@ export function TrailContent({ userId, level, onCurrentTopicRef, useV2 }: TrailC
               isCurrentModule={i === activeIdx}
               onRef={i === activeIdx ? (r) => {
                 activeRef.current = r;
-                // Dispatch direto na attach — evita race em que o effect
-                // observando activeIdx roda antes do ref attachar.
-                if (r && onCurrentTopicRef) onCurrentTopicRef(r);
+                // Dispatch SO se for um node novo (primeira attach pra esse
+                // node) — evita re-trigger em re-renders normais que ficariam
+                // re-rolando pra trilha toda vez que user scrolla.
+                if (r && onCurrentTopicRef && dispatchedNodeRef.current !== r) {
+                  dispatchedNodeRef.current = r;
+                  onCurrentTopicRef(r);
+                }
               } : undefined}
             />
           </React.Fragment>
