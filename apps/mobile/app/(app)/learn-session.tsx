@@ -104,33 +104,61 @@ function normalise(s: string) {
   return s.trim().toLowerCase().replace(/[''']/g, "'").replace(/\s+/g, ' ');
 }
 
-// Expand common contractions so "haven't" matches "have not", etc.
+// Expand contractions pra que "haven't" match "have not", "I'll" match
+// "I will", "he's" match "he is", etc. Funciona em ambas direcoes (basta
+// chamar nos dois lados — ambos convergem pra forma separada).
+//
+// Nota: 's/'d sao ambiguos (he's = he is/has, I'd = I would/had). Default
+// pra "is"/"would" porque sao MUITO mais comuns no Novice/Inter. Casos
+// de present perfect onde "has" eh esperado devem usar **Accepts** explicit.
 function expandContractions(s: string) {
   return s
+    // Negativas (cobre TODAS via /n't/ depois)
     .replace(/won't/g, 'will not')
     .replace(/can't/g, 'cannot')
+    .replace(/shan't/g, 'shall not')
+    .replace(/ain't/g, 'is not') // informal
     .replace(/n't/g, ' not')
+    // Subject + 've (have)
     .replace(/i've/g, 'i have')
     .replace(/you've/g, 'you have')
     .replace(/we've/g, 'we have')
     .replace(/they've/g, 'they have')
-    .replace(/he's/g, 'he has')
-    .replace(/she's/g, 'she has')
-    .replace(/it's/g, 'it has')
+    .replace(/who've/g, 'who have')
+    // Subject + 'm (am)
     .replace(/i'm/g, 'i am')
+    // Subject + 're (are)
     .replace(/you're/g, 'you are')
     .replace(/we're/g, 'we are')
     .replace(/they're/g, 'they are')
+    .replace(/who're/g, 'who are')
+    // Subject + 's (is) — mais comum que has em Novice/Inter
+    .replace(/he's/g, 'he is')
+    .replace(/she's/g, 'she is')
+    .replace(/it's/g, 'it is')
+    .replace(/that's/g, 'that is')
+    .replace(/there's/g, 'there is')
+    .replace(/here's/g, 'here is')
+    .replace(/what's/g, 'what is')
+    .replace(/who's/g, 'who is')
+    .replace(/where's/g, 'where is')
+    .replace(/how's/g, 'how is')
+    .replace(/let's/g, 'let us')
+    // Subject + 'll (will)
     .replace(/i'll/g, 'i will')
     .replace(/you'll/g, 'you will')
     .replace(/he'll/g, 'he will')
     .replace(/she'll/g, 'she will')
+    .replace(/it'll/g, 'it will')
     .replace(/we'll/g, 'we will')
     .replace(/they'll/g, 'they will')
+    .replace(/that'll/g, 'that will')
+    // Subject + 'd (would) — default pra would (mais comum)
     .replace(/i'd/g, 'i would')
     .replace(/you'd/g, 'you would')
     .replace(/he'd/g, 'he would')
     .replace(/she'd/g, 'she would')
+    .replace(/it'd/g, 'it would')
     .replace(/we'd/g, 'we would')
     .replace(/they'd/g, 'they would');
 }

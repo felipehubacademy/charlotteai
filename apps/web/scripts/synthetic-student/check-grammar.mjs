@@ -7,20 +7,37 @@ function normalise(s) {
 
 function expandContractions(s) {
   return s
+    // Negativas
     .replace(/won't/g, 'will not')
     .replace(/can't/g, 'cannot')
+    .replace(/shan't/g, 'shall not')
+    .replace(/ain't/g, 'is not')
     .replace(/n't/g, ' not')
-    .replace(/i've/g, 'i have')
-    .replace(/you've/g, 'you have')
-    .replace(/we've/g, 'we have')
-    .replace(/they've/g, 'they have')
-    .replace(/he's/g, 'he has')
-    .replace(/she's/g, 'she has')
-    .replace(/it's/g, 'it has')
+    // 've
+    .replace(/i've/g, 'i have').replace(/you've/g, 'you have')
+    .replace(/we've/g, 'we have').replace(/they've/g, 'they have')
+    .replace(/who've/g, 'who have')
+    // 'm
     .replace(/i'm/g, 'i am')
-    .replace(/you're/g, 'you are')
-    .replace(/we're/g, 'we are')
-    .replace(/they're/g, 'they are');
+    // 're
+    .replace(/you're/g, 'you are').replace(/we're/g, 'we are')
+    .replace(/they're/g, 'they are').replace(/who're/g, 'who are')
+    // 's (= is, default)
+    .replace(/he's/g, 'he is').replace(/she's/g, 'she is').replace(/it's/g, 'it is')
+    .replace(/that's/g, 'that is').replace(/there's/g, 'there is')
+    .replace(/here's/g, 'here is').replace(/what's/g, 'what is')
+    .replace(/who's/g, 'who is').replace(/where's/g, 'where is')
+    .replace(/how's/g, 'how is').replace(/let's/g, 'let us')
+    // 'll (= will)
+    .replace(/i'll/g, 'i will').replace(/you'll/g, 'you will')
+    .replace(/he'll/g, 'he will').replace(/she'll/g, 'she will')
+    .replace(/it'll/g, 'it will').replace(/we'll/g, 'we will')
+    .replace(/they'll/g, 'they will').replace(/that'll/g, 'that will')
+    // 'd (= would, default)
+    .replace(/i'd/g, 'i would').replace(/you'd/g, 'you would')
+    .replace(/he'd/g, 'he would').replace(/she'd/g, 'she would')
+    .replace(/it'd/g, 'it would').replace(/we'd/g, 'we would')
+    .replace(/they'd/g, 'they would');
 }
 
 export function checkGrammar(ex, answer) {
