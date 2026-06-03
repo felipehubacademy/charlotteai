@@ -20,7 +20,7 @@
 
 ## Unit N01 — Eu não fiz
 
-> **Sub-CEFR**: A2 | **Grammar focus**: Past simple negative (didn't + base)
+> **Sub-CEFR**: A2 | **Grammar focus**: Past simple negative (didn't + base) | **Tense**: PAST · simple · negative
 > **Markers**: [denso]
 > **Real-life context**: Você esclarece o que NÃO fez ontem.
 
@@ -186,7 +186,7 @@
 
 ## Unit N02 — Você fez?
 
-> **Sub-CEFR**: A2 | **Grammar focus**: Past simple yes/no questions (Did you...?)
+> **Sub-CEFR**: A2 | **Grammar focus**: Past simple yes/no questions (Did you...?) | **Tense**: PAST · simple · question
 > **Markers**: [denso, qform]
 > **Real-life context**: Você pergunta sobre o que alguém fez ontem.
 
@@ -352,7 +352,7 @@
 
 ## Unit N03 — Onde, quando, o quê?
 
-> **Sub-CEFR**: A2 | **Grammar focus**: Past WH-questions (Where did you...? What did she...?)
+> **Sub-CEFR**: A2 | **Grammar focus**: Past WH-questions (Where did you...? What did she...?) | **Tense**: PAST · simple · question
 > **Markers**: [qform]
 > **Real-life context**: Você faz entrevistas curtas — onde, quando, com quem, por quê.
 
@@ -518,7 +518,7 @@
 
 ## Unit N04 — Eu nunca fiz isso
 
-> **Sub-CEFR**: A2 | **Grammar focus**: Past simple negative — extension (never + did/didn't)
+> **Sub-CEFR**: A2 | **Grammar focus**: Past simple negative — extension (never + did/didn't) | **Tense**: PAST · simple · negative
 > **Markers**: —
 > **Real-life context**: Você fala sobre o que nunca fez ou não fez.
 
@@ -683,7 +683,7 @@
 
 ## Unit N05 — Tudo no passado
 
-> **Sub-CEFR**: A2 | **Grammar focus**: Integration past simple (positive/negative/question/WH)
+> **Sub-CEFR**: A2 | **Grammar focus**: Integration past simple (positive/negative/question/WH) | **Tense**: PAST · simple
 > **Markers**: —
 > **Real-life context**: Você narra uma história completa com afirmativas, negativas e perguntas no passado.
 

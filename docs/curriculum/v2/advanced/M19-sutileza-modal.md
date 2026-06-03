@@ -29,7 +29,7 @@
 
 ## Unit A01 — Must, will, should — three shades of certainty
 
-> **Sub-CEFR**: C2 | **Grammar focus**: Distinguishing "must" (strong inference), "will" (high certainty), and "should" (expected outcome) in present-time predictions
+> **Sub-CEFR**: C2 | **Grammar focus**: Distinguishing "must" (strong inference), "will" (high certainty), and "should" (expected outcome) in present-time predictions | **Tense**: MODAL
 > **Markers**: [denso] [modal]
 > **Real-life context**: You predict or infer with the right strength — neither overclaiming nor underclaiming.
 
@@ -170,7 +170,7 @@
 
 ## Unit A02 — Might well, could well, may well
 
-> **Sub-CEFR**: C2 | **Grammar focus**: Hedged probable — adding "well" to a modal (might well, could well, may well) for "quite possibly / quite likely"
+> **Sub-CEFR**: C2 | **Grammar focus**: Hedged probable — adding "well" to a modal (might well, could well, may well) for "quite possibly / quite likely" | **Tense**: MODAL
 > **Markers**: [denso] [modal]
 > **Real-life context**: You signal that a possibility is more than just possible — it's quite likely — without claiming certainty.
 
@@ -310,7 +310,7 @@
 
 ## Unit A03 — Ought to, shall, would
 
-> **Sub-CEFR**: C2 | **Grammar focus**: Formal/archaic modals — "ought to" (moral obligation), "shall" (legal/contractual future), "would" (habitual past, willingness, conditional)
+> **Sub-CEFR**: C2 | **Grammar focus**: Formal/archaic modals — "ought to" (moral obligation), "shall" (legal/contractual future), "would" (habitual past, willingness, conditional) | **Tense**: MODAL
 > **Markers**: [denso] [modal]
 > **Real-life context**: You handle formal and contractual register where everyday modals are too casual.
 
@@ -451,7 +451,7 @@
 
 ## Unit A04 — Be bound to, be likely to, be supposed to
 
-> **Sub-CEFR**: C2 | **Grammar focus**: Quasi-modals — "be supposed to / be meant to" (expectation), "be bound to" (high probability), "be likely to / be unlikely to" (probability statement)
+> **Sub-CEFR**: C2 | **Grammar focus**: Quasi-modals — "be supposed to / be meant to" (expectation), "be bound to" (high probability), "be likely to / be unlikely to" (probability statement) | **Tense**: MODAL · quasi
 > **Markers**: [denso] [modal]
 > **Real-life context**: You express probability and expectation with structures that look adjectival but function modally.
 
@@ -591,7 +591,7 @@
 
 ## Unit A05 — Modal layering
 
-> **Sub-CEFR**: C2 | **Grammar focus**: Stacking modals with quasi-modals — "might have to / would have to / should have to / may need to / is going to have to" — for layered necessity-in-possibility
+> **Sub-CEFR**: C2 | **Grammar focus**: Stacking modals with quasi-modals — "might have to / would have to / should have to / may need to / is going to have to" — for layered necessity-in-possibility | **Tense**: MODAL
 > **Markers**: —
 > **Real-life context**: You express situations where one modal alone is not enough — necessity that depends on possibility, obligation in hypothetical contexts.
 

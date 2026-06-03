@@ -19,7 +19,7 @@
 
 ## Unit I01 — I used to be different
 
-> **Sub-CEFR**: B1 | **Grammar focus**: Used to (positive, habit/state)
+> **Sub-CEFR**: B1 | **Grammar focus**: Used to (positive, habit/state) | **Tense**: PAST · used to
 > **Markers**: [denso]
 > **Real-life context**: You describe how things used to be in your childhood or before.
 
@@ -185,7 +185,7 @@
 
 ## Unit I02 — I didn't use to
 
-> **Sub-CEFR**: B1 | **Grammar focus**: Used to negative + question
+> **Sub-CEFR**: B1 | **Grammar focus**: Used to negative + question | **Tense**: PAST · used to
 > **Markers**: —
 > **Real-life context**: You contrast past habits with current ones.
 
@@ -351,7 +351,7 @@
 
 ## Unit I03 — Would (past narrative)
 
-> **Sub-CEFR**: B1 | **Grammar focus**: Would for past repeated actions
+> **Sub-CEFR**: B1 | **Grammar focus**: Would for past repeated actions | **Tense**: PAST · would
 > **Markers**: —
 > **Real-life context**: You tell stories with repeated past actions.
 
@@ -517,7 +517,7 @@
 
 ## Unit I04 — Used to vs Would
 
-> **Sub-CEFR**: B1 | **Grammar focus**: Distinguish used to (states + actions) from would (actions only)
+> **Sub-CEFR**: B1 | **Grammar focus**: Distinguish used to (states + actions) from would (actions only) | **Tense**: PAST · used to vs would
 > **Markers**: [denso]
 > **Real-life context**: You choose correctly between both for narratives.
 
@@ -683,7 +683,7 @@
 
 ## Unit I05 — Then vs now
 
-> **Sub-CEFR**: B1 | **Grammar focus**: Integration used to + would + now
+> **Sub-CEFR**: B1 | **Grammar focus**: Integration used to + would + now | **Tense**: PAST · used to vs would
 > **Markers**: —
 > **Real-life context**: You contrast past habits with present reality.
 

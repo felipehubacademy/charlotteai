@@ -42,6 +42,7 @@
       "title": "Hit the nail on the head",
       "sub_cefr": "C1",
       "grammar_focus": "High-frequency conversational idioms (hit the nail on the head, break the ice, read between the lines, the elephant in the room, the tip of the iceberg)",
+      "tense": "IDIOM",
       "markers": [
         "denso",
         "idiom"
@@ -192,6 +193,7 @@
       "title": "Bite the bullet, cold feet",
       "sub_cefr": "C1",
       "grammar_focus": "Body and emotion idioms (bite the bullet, get cold feet, pull someone's leg, cost an arm and a leg, head over heels)",
+      "tense": "IDIOM",
       "markers": [
         "denso",
         "idiom"
@@ -345,6 +347,7 @@
       "title": "Piece of cake, spill the beans",
       "sub_cefr": "C1",
       "grammar_focus": "Food idioms and difficulty/secret idioms (a piece of cake, spill the beans, take with a grain of salt, a tough nut to crack, that's the way the cookie crumbles)",
+      "tense": "IDIOM",
       "markers": [
         "denso",
         "idiom"
@@ -498,6 +501,7 @@
       "title": "Two birds with one stone",
       "sub_cefr": "C1",
       "grammar_focus": "Animal idioms and efficiency/strategy idioms (kill two birds with one stone, the ball is in your court, burn bridges, play it by ear, a wild goose chase, on the same page)",
+      "tense": "IDIOM",
       "markers": [
         "denso",
         "idiom"
@@ -651,6 +655,7 @@
       "title": "Crystal clear, low-hanging fruit",
       "sub_cefr": "C1",
       "grammar_focus": "Compound idioms, similes, and modern business metaphors (crystal clear, low-hanging fruit, moving target, double-edged sword, like watching paint dry, a blessing in disguise)",
+      "tense": "IDIOM",
       "markers": [],
       "real_life_context": "You diversify your figurative range — using similes (\"as X as Y\" / \"like + clause\") and modern business metaphors alongside classical idioms.",
       "grammar": [

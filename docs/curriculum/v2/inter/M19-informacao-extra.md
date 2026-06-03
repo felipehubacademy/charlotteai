@@ -22,7 +22,7 @@
 
 ## Unit I01 — My brother, who
 
-> **Sub-CEFR**: B2 | **Grammar focus**: Non-defining relative clauses with "who" (people)
+> **Sub-CEFR**: B2 | **Grammar focus**: Non-defining relative clauses with "who" (people) | **Tense**: RELATIVE CLAUSE · non-defining
 > **Markers**: [denso]
 > **Real-life context**: You add extra information about a specific person already identified.
 
@@ -187,7 +187,7 @@
 
 ## Unit I02 — The Amazon, which
 
-> **Sub-CEFR**: B2 | **Grammar focus**: Non-defining relative clauses with "which" (things) and clause-referring "which"
+> **Sub-CEFR**: B2 | **Grammar focus**: Non-defining relative clauses with "which" (things) and clause-referring "which" | **Tense**: RELATIVE CLAUSE · non-defining
 > **Markers**: [denso]
 ' **Real-life context**: You add extra information about things, places, or even entire previous statements.
 
@@ -353,7 +353,7 @@
 
 ## Unit I03 — Maria, whose
 
-> **Sub-CEFR**: B2 | **Grammar focus**: Non-defining "whose" (possession)
+> **Sub-CEFR**: B2 | **Grammar focus**: Non-defining "whose" (possession) | **Tense**: RELATIVE CLAUSE · non-defining
 > **Markers**: [denso]
 > **Real-life context**: You describe possessions or attributes of a person with extra information.
 
@@ -519,7 +519,7 @@
 
 ## Unit I04 — Where, when
 
-> **Sub-CEFR**: B2 | **Grammar focus**: Non-defining "where" (place) and "when" (time)
+> **Sub-CEFR**: B2 | **Grammar focus**: Non-defining "where" (place) and "when" (time) | **Tense**: RELATIVE CLAUSE · non-defining
 > **Markers**: [denso]
 > **Real-life context**: You add extra information about places and time periods.
 
@@ -685,7 +685,7 @@
 
 ## Unit I05 — Defining vs non-defining
 
-> **Sub-CEFR**: B2 | **Grammar focus**: Difference between defining (no commas, "that" OK) and non-defining (commas, no "that")
+> **Sub-CEFR**: B2 | **Grammar focus**: Difference between defining (no commas, "that" OK) and non-defining (commas, no "that") | **Tense**: RELATIVE CLAUSE
 > **Markers**: —
 > **Real-life context**: You distinguish essential identifying info from extra info.
 

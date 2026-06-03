@@ -39,6 +39,7 @@
       "title": "Oi! Tudo bem?",
       "sub_cefr": "A1",
       "grammar_focus": "Greetings & survival chunks",
+      "tense": "CHUNKS",
       "markers": [],
       "real_life_context": "Você esbarra com alguém conhecido na rua e cumprimenta.",
       "grammar": [
@@ -229,6 +230,7 @@
       "title": "Meu nome é...",
       "sub_cefr": "A1",
       "grammar_focus": "Verb To Be (I am) + name + age",
+      "tense": "PRESENT · to be",
       "markers": [
         "denso"
       ],
@@ -416,6 +418,7 @@
       "title": "De onde você é?",
       "sub_cefr": "A1",
       "grammar_focus": "To Be: questions + nationalities/countries",
+      "tense": "PRESENT · to be · question",
       "markers": [
         "qform"
       ],
@@ -603,6 +606,7 @@
       "title": "Como você se sente?",
       "sub_cefr": "A1",
       "grammar_focus": "Feelings chunks (I'm + emotion adjective)",
+      "tense": "PRESENT · to be",
       "markers": [],
       "real_life_context": "Charlotte te chama pra um check-in. Pratica dizer como você se sente além de \"good\".",
       "grammar": [
@@ -788,6 +792,7 @@
       "title": "Tchau, até mais",
       "sub_cefr": "A1",
       "grammar_focus": "Goodbye chunks",
+      "tense": "CHUNKS",
       "markers": [],
       "real_life_context": "Você está terminando uma aula ou conversa e quer se despedir com carinho.",
       "grammar": [

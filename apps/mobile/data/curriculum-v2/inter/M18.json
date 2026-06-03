@@ -25,6 +25,7 @@
       "title": "He asked if",
       "sub_cefr": "B2",
       "grammar_focus": "Reported yes/no questions (if/whether + statement word order)",
+      "tense": "REPORTED SPEECH · question",
       "markers": [
         "qform"
       ],
@@ -219,6 +220,7 @@
       "title": "She asked where",
       "sub_cefr": "B2",
       "grammar_focus": "Reported WH-questions (where, what, when, who, why, how — no inversion)",
+      "tense": "REPORTED SPEECH · question",
       "markers": [
         "qform"
       ],
@@ -413,6 +415,7 @@
       "title": "He told me to",
       "sub_cefr": "B2",
       "grammar_focus": "Reported commands (told + person + to + base / told + person + not to + base)",
+      "tense": "REPORTED SPEECH · command",
       "markers": [
         "denso"
       ],
@@ -610,6 +613,7 @@
       "title": "She asked me to",
       "sub_cefr": "B2",
       "grammar_focus": "Reported requests (asked + person + to + base) and reporting verbs (asked, begged, urged, warned)",
+      "tense": "REPORTED SPEECH · request",
       "markers": [
         "denso"
       ],
@@ -807,6 +811,7 @@
       "title": "Mixed reports",
       "sub_cefr": "B2",
       "grammar_focus": "Integration of reported statements, questions, and commands",
+      "tense": "REPORTED SPEECH",
       "markers": [],
       "real_life_context": "You report complex conversations including statements, questions, and orders fluidly.",
       "grammar": [

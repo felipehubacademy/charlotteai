@@ -23,6 +23,7 @@
       "title": "Have you ever?",
       "sub_cefr": "B1",
       "grammar_focus": "Present perfect with ever/never (life experiences)",
+      "tense": "PRESENT · perfect",
       "markers": [
         "denso"
       ],
@@ -215,6 +216,7 @@
       "title": "I've been to many places",
       "sub_cefr": "B1",
       "grammar_focus": "Past participles — common irregulars",
+      "tense": "PRESENT · perfect",
       "markers": [
         "denso"
       ],
@@ -407,6 +409,7 @@
       "title": "Just, already, yet",
       "sub_cefr": "B1",
       "grammar_focus": "just / already / yet with present perfect",
+      "tense": "PRESENT · perfect",
       "markers": [],
       "real_life_context": "You talk about recently completed actions and pending tasks.",
       "grammar": [
@@ -597,6 +600,7 @@
       "title": "Have you been there?",
       "sub_cefr": "B1",
       "grammar_focus": "Present perfect questions and short answers",
+      "tense": "PRESENT · perfect · question",
       "markers": [
         "qform"
       ],
@@ -792,6 +796,7 @@
       "title": "Life so far",
       "sub_cefr": "B1",
       "grammar_focus": "Integration of present perfect",
+      "tense": "PRESENT · perfect",
       "markers": [],
       "real_life_context": "You tell a \"life so far\" summary integrating all PP forms.",
       "grammar": [

@@ -21,6 +21,7 @@
       "title": "Daily phrasal verbs",
       "sub_cefr": "B1",
       "grammar_focus": "Daily routine phrasal verbs (get up, wake up, go out)",
+      "tense": "CHUNKS",
       "markers": [],
       "real_life_context": "You describe your daily routine using phrasal verbs.",
       "grammar": [
@@ -213,6 +214,7 @@
       "title": "Look for, look after",
       "sub_cefr": "B1",
       "grammar_focus": "Phrasal verbs with \"look\" (look for, look after, look at, look up)",
+      "tense": "CHUNKS",
       "markers": [],
       "real_life_context": "You use \"look\" phrasal verbs to describe searching, caring, checking.",
       "grammar": [
@@ -406,6 +408,7 @@
       "title": "Find out, give up, pick up",
       "sub_cefr": "B1",
       "grammar_focus": "Phrasal verbs of discovery, ending, fetching",
+      "tense": "CHUNKS",
       "markers": [],
       "real_life_context": "You describe discovering information, quitting, and fetching things.",
       "grammar": [
@@ -598,6 +601,7 @@
       "title": "Separable vs inseparable",
       "sub_cefr": "B1",
       "grammar_focus": "Phrasal verbs — pronoun placement",
+      "tense": "CHUNKS",
       "markers": [
         "denso"
       ],
@@ -793,6 +797,7 @@
       "title": "Phrasal verbs combined",
       "sub_cefr": "B1",
       "grammar_focus": "Integration of phrasal verbs in narrative",
+      "tense": "CHUNKS",
       "markers": [],
       "real_life_context": "You tell a story using multiple phrasal verbs.",
       "grammar": [
@@ -986,6 +991,7 @@
       "title": "Phone English",
       "sub_cefr": "B1",
       "grammar_focus": "Phone English in Inter register — phrasals and expressions for business calls (Fase B extra unit)",
+      "tense": "CHUNKS",
       "markers": [
         "survival",
         "denso"

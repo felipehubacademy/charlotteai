@@ -27,6 +27,7 @@
       "title": "It is said that",
       "sub_cefr": "C1",
       "grammar_focus": "Impersonal passive with reporting verbs (It is said/believed/thought/reported/claimed that...)",
+      "tense": "PASSIVE · impersonal",
       "markers": [
         "denso",
         "formal"
@@ -177,6 +178,7 @@
       "title": "He is said to be",
       "sub_cefr": "C1",
       "grammar_focus": "Double passive — subject + is said/thought/believed + to + infinitive (or perfect/passive infinitive)",
+      "tense": "PASSIVE · impersonal",
       "markers": [
         "denso",
         "formal"
@@ -330,6 +332,7 @@
       "title": "Have something done",
       "sub_cefr": "C1",
       "grammar_focus": "Causative have/get + object + past participle (services others perform for you)",
+      "tense": "PASSIVE · causative",
       "markers": [
         "denso"
       ],
@@ -479,6 +482,7 @@
       "title": "Get yourself done",
       "sub_cefr": "C1",
       "grammar_focus": "Get-passive nuance — unintended/negative events, and \"have/get + something + done by + agent\"",
+      "tense": "PASSIVE · causative",
       "markers": [
         "denso"
       ],
@@ -628,6 +632,7 @@
       "title": "Mixed passive register",
       "sub_cefr": "C1",
       "grammar_focus": "Integration of impersonal passive, double passive, causative, get-passive across registers",
+      "tense": "PASSIVE",
       "markers": [],
       "real_life_context": "You select the passive form that suits the register — formal news, conversational misfortune, arranged service.",
       "grammar": [

@@ -32,6 +32,7 @@
       "title": "Assertive or pushy?",
       "sub_cefr": "C1",
       "grammar_focus": "Synonyms with different connotations — choosing the word that signals your judgement",
+      "tense": "REGISTER",
       "markers": [
         "denso",
         "connotation"
@@ -191,6 +192,7 @@
       "title": "Commence, ascertain, demonstrate",
       "sub_cefr": "C1",
       "grammar_focus": "Formal vs informal register pairs (start/commence, ask/inquire, find out/ascertain, get/obtain, show/demonstrate, put off/postpone, look into/investigate)",
+      "tense": "REGISTER",
       "markers": [
         "denso",
         "register"
@@ -341,6 +343,7 @@
       "title": "Pass away, between jobs",
       "sub_cefr": "C1",
       "grammar_focus": "Euphemism (passed away, between jobs, let go, downsized, pre-owned, in a better place, restroom) — softening sensitive topics",
+      "tense": "REGISTER",
       "markers": [
         "denso",
         "euphemism"
@@ -498,6 +501,7 @@
       "title": "Not bad, no small feat",
       "sub_cefr": "C1",
       "grammar_focus": "Litotes (understatement through negation) — \"not bad\", \"no small feat\", \"I wouldn't say no\", \"not exactly cheap\"",
+      "tense": "REGISTER",
       "markers": [
         "denso",
         "understatement"
@@ -654,6 +658,7 @@
       "title": "Code-switching",
       "sub_cefr": "C1",
       "grammar_focus": "Code-switching across registers within a conversation — formal to casual, casual to formal, technical to plain — and recognising when each fits",
+      "tense": "REGISTER",
       "markers": [],
       "real_life_context": "You move between contexts in one day — formal email, casual chat with colleague, technical discussion with peers — choosing register fluidly.",
       "grammar": [
@@ -807,6 +812,7 @@
       "title": "UK vs US + Falsos cognatos cross-link",
       "sub_cefr": "C1",
       "grammar_focus": "Awareness of UK vs US English (vocabulary, spelling, gotten/got) + final reinforcement of false cognates for Lusophones (Fase B extra unit)",
+      "tense": "REGISTER",
       "markers": [
         "awareness"
       ],

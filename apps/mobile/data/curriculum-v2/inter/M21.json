@@ -33,6 +33,7 @@
       "title": "Look forward to",
       "sub_cefr": "B2",
       "grammar_focus": "3-part phrasal verbs with -ing (look forward to, get used to, object to)",
+      "tense": "CHUNKS",
       "markers": [
         "denso"
       ],
@@ -230,6 +231,7 @@
       "title": "Put up with",
       "sub_cefr": "B2",
       "grammar_focus": "3-part phrasal verbs of tolerance/depletion (put up with, run out of, get away with)",
+      "tense": "CHUNKS",
       "markers": [
         "denso"
       ],
@@ -424,6 +426,7 @@
       "title": "Get along with",
       "sub_cefr": "B2",
       "grammar_focus": "3-part phrasals about relationships (get along with, look up to, look down on, get on with)",
+      "tense": "CHUNKS",
       "markers": [
         "denso"
       ],
@@ -618,6 +621,7 @@
       "title": "Catch up, make up",
       "sub_cefr": "B2",
       "grammar_focus": "Phrasals of time, compensation, commitment (catch up with, make up for, keep up with, go through with)",
+      "tense": "CHUNKS",
       "markers": [
         "denso"
       ],
@@ -815,6 +819,7 @@
       "title": "Idiomatic chunks",
       "sub_cefr": "B2",
       "grammar_focus": "High-frequency idiomatic chunks (on second thought, at the end of the day, in the long run, for the time being)",
+      "tense": "CHUNKS",
       "markers": [],
       "real_life_context": "You use natural conversational chunks for emphasis, qualification, or summary.",
       "grammar": [

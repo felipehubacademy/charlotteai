@@ -24,7 +24,7 @@
 
 ## Unit A01 — Email openings & closings
 
-> **Sub-CEFR**: C1 | **Grammar focus**: Email openings and closings — matching register to relationship and purpose (formal, semi-formal, casual professional)
+> **Sub-CEFR**: C1 | **Grammar focus**: Email openings and closings — matching register to relationship and purpose (formal, semi-formal, casual professional) | **Tense**: REGISTER · business
 > **Markers**: [register]
 > **Real-life context**: You open and close emails appropriately — neither too stiff for a coworker nor too casual for a client.
 
@@ -165,7 +165,7 @@
 
 ## Unit A02 — Job applications
 
-> **Sub-CEFR**: C1 | **Grammar focus**: Job application email body — opening line, why-me paragraph, role fit, closing line
+> **Sub-CEFR**: C1 | **Grammar focus**: Job application email body — opening line, why-me paragraph, role fit, closing line | **Tense**: REGISTER · business
 > **Markers**: [register]
 > **Real-life context**: You write an application email that gets read, demonstrates fit, and ends with a clear ask for the next step.
 
@@ -305,7 +305,7 @@
 
 ## Unit A03 — Cover letters & CVs language
 
-> **Sub-CEFR**: C1 | **Grammar focus**: Cover letter language and CV bullet points — strong action verbs, quantification, achievement framing
+> **Sub-CEFR**: C1 | **Grammar focus**: Cover letter language and CV bullet points — strong action verbs, quantification, achievement framing | **Tense**: REGISTER · business
 > **Markers**: [register]
 > **Real-life context**: You craft cover letter paragraphs and CV bullets that highlight achievements with concrete impact.
 
@@ -445,7 +445,7 @@
 
 ## Unit A04 — Follow-ups & check-ins
 
-> **Sub-CEFR**: C1 | **Grammar focus**: Follow-up emails after silence, post-meeting follow-ups, application follow-ups — gentle persistence without pushiness
+> **Sub-CEFR**: C1 | **Grammar focus**: Follow-up emails after silence, post-meeting follow-ups, application follow-ups — gentle persistence without pushiness | **Tense**: REGISTER · business
 > **Markers**: [register]
 > **Real-life context**: You re-engage someone who hasn't responded — politely persistent without being annoying.
 
@@ -585,7 +585,7 @@
 
 ## Unit A05 — Difficult emails
 
-> **Sub-CEFR**: C1 | **Grammar focus**: Declining politely, delivering bad news, asking for raises/promotions, apologizing professionally
+> **Sub-CEFR**: C1 | **Grammar focus**: Declining politely, delivering bad news, asking for raises/promotions, apologizing professionally | **Tense**: REGISTER · business
 > **Markers**: [register]
 > **Real-life context**: You handle the hardest emails — saying no, sharing bad news, advocating for yourself — with professional grace.
 

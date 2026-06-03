@@ -41,7 +41,7 @@
 
 ## Unit A01 — Hit the nail on the head
 
-> **Sub-CEFR**: C1 | **Grammar focus**: High-frequency conversational idioms (hit the nail on the head, break the ice, read between the lines, the elephant in the room, the tip of the iceberg)
+> **Sub-CEFR**: C1 | **Grammar focus**: High-frequency conversational idioms (hit the nail on the head, break the ice, read between the lines, the elephant in the room, the tip of the iceberg) | **Tense**: IDIOM
 > **Markers**: [denso] [idiom]
 > **Real-life context**: You react to ideas, observations, and conversations with idioms that signal genuine engagement.
 
@@ -181,7 +181,7 @@
 
 ## Unit A02 — Bite the bullet, cold feet
 
-> **Sub-CEFR**: C1 | **Grammar focus**: Body and emotion idioms (bite the bullet, get cold feet, pull someone's leg, cost an arm and a leg, head over heels)
+> **Sub-CEFR**: C1 | **Grammar focus**: Body and emotion idioms (bite the bullet, get cold feet, pull someone's leg, cost an arm and a leg, head over heels) | **Tense**: IDIOM
 > **Markers**: [denso] [idiom]
 > **Real-life context**: You describe decisions, hesitations, and emotional states with idiomatic precision.
 
@@ -322,7 +322,7 @@
 
 ## Unit A03 — Piece of cake, spill the beans
 
-> **Sub-CEFR**: C1 | **Grammar focus**: Food idioms and difficulty/secret idioms (a piece of cake, spill the beans, take with a grain of salt, a tough nut to crack, that's the way the cookie crumbles)
+> **Sub-CEFR**: C1 | **Grammar focus**: Food idioms and difficulty/secret idioms (a piece of cake, spill the beans, take with a grain of salt, a tough nut to crack, that's the way the cookie crumbles) | **Tense**: IDIOM
 > **Markers**: [denso] [idiom]
 > **Real-life context**: You describe ease, difficulty, secrets, and acceptance using everyday food-based idioms.
 
@@ -463,7 +463,7 @@
 
 ## Unit A04 — Two birds with one stone
 
-> **Sub-CEFR**: C1 | **Grammar focus**: Animal idioms and efficiency/strategy idioms (kill two birds with one stone, the ball is in your court, burn bridges, play it by ear, a wild goose chase, on the same page)
+> **Sub-CEFR**: C1 | **Grammar focus**: Animal idioms and efficiency/strategy idioms (kill two birds with one stone, the ball is in your court, burn bridges, play it by ear, a wild goose chase, on the same page) | **Tense**: IDIOM
 > **Markers**: [denso] [idiom]
 > **Real-life context**: You describe strategy, position, and approach with animal and game-based idioms.
 
@@ -604,7 +604,7 @@
 
 ## Unit A05 — Crystal clear, low-hanging fruit
 
-> **Sub-CEFR**: C1 | **Grammar focus**: Compound idioms, similes, and modern business metaphors (crystal clear, low-hanging fruit, moving target, double-edged sword, like watching paint dry, a blessing in disguise)
+> **Sub-CEFR**: C1 | **Grammar focus**: Compound idioms, similes, and modern business metaphors (crystal clear, low-hanging fruit, moving target, double-edged sword, like watching paint dry, a blessing in disguise) | **Tense**: IDIOM
 > **Markers**: —
 > **Real-life context**: You diversify your figurative range — using similes ("as X as Y" / "like + clause") and modern business metaphors alongside classical idioms.
 

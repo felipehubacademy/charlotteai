@@ -28,7 +28,7 @@
 
 ## Unit A01 — Nominalisation
 
-> **Sub-CEFR**: C2 | **Grammar focus**: Converting verbs to nouns for academic compactness (the rise of, the decline in, the emergence of, an increase in)
+> **Sub-CEFR**: C2 | **Grammar focus**: Converting verbs to nouns for academic compactness (the rise of, the decline in, the emergence of, an increase in) | **Tense**: REGISTER · academic
 > **Markers**: [denso] [academic]
 > **Real-life context**: You write academic introductions and abstracts that pack ideas into noun phrases — characteristic of scientific and humanities prose.
 
@@ -168,7 +168,7 @@
 
 ## Unit A02 — Impersonal voice
 
-> **Sub-CEFR**: C2 | **Grammar focus**: Removing first-person subjectivity (It is generally accepted that, It is widely held that, It is often argued that, this paper, the present study)
+> **Sub-CEFR**: C2 | **Grammar focus**: Removing first-person subjectivity (It is generally accepted that, It is widely held that, It is often argued that, this paper, the present study) | **Tense**: REGISTER · academic
 > **Markers**: [denso] [academic]
 > **Real-life context**: You write in the impersonal scholarly voice — no "I think", no "I believe" — letting evidence and argument carry the claim.
 
@@ -310,7 +310,7 @@
 
 ## Unit A03 — Hedged claims
 
-> **Sub-CEFR**: C2 | **Grammar focus**: Hedging strength of claim (this suggests, this implies, this indicates, the evidence points to, there is reason to believe, it could be argued)
+> **Sub-CEFR**: C2 | **Grammar focus**: Hedging strength of claim (this suggests, this implies, this indicates, the evidence points to, there is reason to believe, it could be argued) | **Tense**: REGISTER · academic
 > **Markers**: [denso] [academic]
 > **Real-life context**: You signal precisely how confident a claim is — preserving intellectual honesty in academic writing.
 
@@ -451,7 +451,7 @@
 
 ## Unit A04 — Citation patterns
 
-> **Sub-CEFR**: C2 | **Grammar focus**: Citation framing (according to X (2020), as noted by, X argues that, X contends, building on prior work)
+> **Sub-CEFR**: C2 | **Grammar focus**: Citation framing (according to X (2020), as noted by, X argues that, X contends, building on prior work) | **Tense**: REGISTER · academic
 > **Markers**: [denso] [academic]
 > **Real-life context**: You position your claim in the existing literature — citing, agreeing, contrasting, building.
 
@@ -591,7 +591,7 @@
 
 ## Unit A05 — Paragraph cohesion
 
-> **Sub-CEFR**: C2 | **Grammar focus**: Topic sentences, paragraph progression, transition devices (this finding / this pattern / a related question / by contrast)
+> **Sub-CEFR**: C2 | **Grammar focus**: Topic sentences, paragraph progression, transition devices (this finding / this pattern / a related question / by contrast) | **Tense**: REGISTER · academic
 > **Markers**: —
 > **Real-life context**: You connect paragraphs so each follows naturally from the last — building cumulative academic argument.
 

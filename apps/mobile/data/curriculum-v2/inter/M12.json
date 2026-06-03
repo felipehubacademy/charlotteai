@@ -22,6 +22,7 @@
       "title": "If I had time",
       "sub_cefr": "B2",
       "grammar_focus": "Second conditional structure (If + past simple, would + base)",
+      "tense": "CONDITIONAL · 2nd",
       "markers": [
         "denso"
       ],
@@ -216,6 +217,7 @@
       "title": "I wish I had",
       "sub_cefr": "B2",
       "grammar_focus": "Wishes about present (I wish + past simple)",
+      "tense": "CONDITIONAL · 2nd · wish",
       "markers": [
         "denso"
       ],
@@ -410,6 +412,7 @@
       "title": "If I were you",
       "sub_cefr": "B2",
       "grammar_focus": "Advice with \"If I were you, I would...\" (subjunctive in advice)",
+      "tense": "CONDITIONAL · 2nd",
       "markers": [
         "denso"
       ],
@@ -608,6 +611,7 @@
       "title": "What would you do?",
       "sub_cefr": "B2",
       "grammar_focus": "Questions in second conditional (Would you + base + if?)",
+      "tense": "CONDITIONAL · 2nd · question",
       "markers": [
         "qform"
       ],
@@ -805,6 +809,7 @@
       "title": "Hypothetical world",
       "sub_cefr": "B2",
       "grammar_focus": "Integration of second conditional + wishes",
+      "tense": "CONDITIONAL · 2nd",
       "markers": [],
       "real_life_context": "You combine hypothetical thinking fluidly — wishes, hypotheticals, advice, and questions.",
       "grammar": [

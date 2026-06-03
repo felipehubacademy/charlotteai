@@ -23,7 +23,7 @@
 
 ## Unit I01 — He said that
 
-> **Sub-CEFR**: B2 | **Grammar focus**: Reported speech with say/tell + backshift present → past
+> **Sub-CEFR**: B2 | **Grammar focus**: Reported speech with say/tell + backshift present → past | **Tense**: REPORTED SPEECH
 > **Markers**: [denso]
 > **Real-life context**: You report someone's statement, shifting present to past as time passes.
 
@@ -189,7 +189,7 @@
 
 ## Unit I02 — She told me
 
-> **Sub-CEFR**: B2 | **Grammar focus**: Reported speech: difference between "say" and "tell" (tell requires object)
+> **Sub-CEFR**: B2 | **Grammar focus**: Reported speech: difference between "say" and "tell" (tell requires object) | **Tense**: REPORTED SPEECH
 > **Markers**: [denso]
 > **Real-life context**: You choose between "say" (no object) and "tell" (always with object) when reporting.
 
@@ -355,7 +355,7 @@
 
 ## Unit I03 — She said she had
 
-> **Sub-CEFR**: B2 | **Grammar focus**: Reported speech backshift: past → past perfect; present perfect → past perfect
+> **Sub-CEFR**: B2 | **Grammar focus**: Reported speech backshift: past → past perfect; present perfect → past perfect | **Tense**: REPORTED SPEECH
 > **Markers**: [denso]
 > **Real-life context**: You report past actions someone described, shifting tenses one step back.
 
@@ -521,7 +521,7 @@
 
 ## Unit I04 — He said he would
 
-> **Sub-CEFR**: B2 | **Grammar focus**: Reported speech backshift for modals: will → would, can → could, may → might, must → had to
+> **Sub-CEFR**: B2 | **Grammar focus**: Reported speech backshift for modals: will → would, can → could, may → might, must → had to | **Tense**: REPORTED SPEECH
 > **Markers**: [denso]
 > **Real-life context**: You report promises, possibilities, abilities, and obligations someone mentioned.
 
@@ -687,7 +687,7 @@
 
 ## Unit I05 — Time and place shifts
 
-> **Sub-CEFR**: B2 | **Grammar focus**: Time/place changes in reported speech (today → that day, here → there, this → that, tomorrow → the next day, yesterday → the day before)
+> **Sub-CEFR**: B2 | **Grammar focus**: Time/place changes in reported speech (today → that day, here → there, this → that, tomorrow → the next day, yesterday → the day before) | **Tense**: REPORTED SPEECH
 > **Markers**: —
 > **Real-life context**: You report with full natural shifts of time/place references — mature reported speech.
 

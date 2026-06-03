@@ -23,7 +23,7 @@
 
 ## Unit N01 — Vai chover
 
-> **Sub-CEFR**: A2 | **Grammar focus**: Will for predictions
+> **Sub-CEFR**: A2 | **Grammar focus**: Will for predictions | **Tense**: FUTURE · will
 > **Markers**: [denso]
 > **Real-life context**: Você faz previsões sobre o tempo, futuro próximo ou opiniões sobre o que vai acontecer.
 
@@ -195,7 +195,7 @@
 
 ## Unit N02 — Não vou, vou sim
 
-> **Sub-CEFR**: A2 | **Grammar focus**: Will negative (won't) + spontaneous decisions
+> **Sub-CEFR**: A2 | **Grammar focus**: Will negative (won't) + spontaneous decisions | **Tense**: FUTURE · will · negative
 > **Markers**: —
 > **Real-life context**: Você toma decisões na hora ou faz promessas espontâneas.
 
@@ -367,7 +367,7 @@
 
 ## Unit N03 — Going to vs Will
 
-> **Sub-CEFR**: A2 | **Grammar focus**: Distinguishing going to (plans) vs will (predictions/spontaneous)
+> **Sub-CEFR**: A2 | **Grammar focus**: Distinguishing going to (plans) vs will (predictions/spontaneous) | **Tense**: FUTURE · will vs going to
 > **Markers**: [denso]
 > **Real-life context**: Você escolhe entre "going to" (planejado) e "will" (espontâneo) corretamente.
 
@@ -536,7 +536,7 @@
 
 ## Unit N04 — Vou te ajudar
 
-> **Sub-CEFR**: A2 | **Grammar focus**: Will for offers, promises, requests
+> **Sub-CEFR**: A2 | **Grammar focus**: Will for offers, promises, requests | **Tense**: FUTURE · will
 > **Markers**: —
 > **Real-life context**: Você oferece ajuda, faz promessas ou pede algo educadamente.
 
@@ -704,7 +704,7 @@
 
 ## Unit N05 — Imagino que sim
 
-> **Sub-CEFR**: A2 | **Grammar focus**: Will integrated with going to + predictions
+> **Sub-CEFR**: A2 | **Grammar focus**: Will integrated with going to + predictions | **Tense**: FUTURE · will
 > **Markers**: —
 > **Real-life context**: Você compartilha visão integrada do futuro próximo e distante.
 
@@ -874,7 +874,7 @@
 
 ## Unit N06 — Tempo e estações
 
-> **Sub-CEFR**: A1 | **Grammar focus**: Weather vocabulary + forecast com "will" e "going to" (Fase B extra unit)
+> **Sub-CEFR**: A1 | **Grammar focus**: Weather vocabulary + forecast com "will" e "going to" (Fase B extra unit) | **Tense**: FUTURE · will
 > **Markers**: [survival]
 > **Real-life context**: Você fala sobre o tempo (hoje, ontem, amanhã) — uma das conversas mais universais em inglês, especialmente em culturas britânicas.
 

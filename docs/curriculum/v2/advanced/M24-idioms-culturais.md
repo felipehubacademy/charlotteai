@@ -39,7 +39,7 @@
 
 ## Unit A01 — Idiomas com partes do corpo
 
-> **Sub-CEFR**: C2 | **Grammar focus**: Body-part idioms — embodied metaphors deeply rooted in English
+> **Sub-CEFR**: C2 | **Grammar focus**: Body-part idioms — embodied metaphors deeply rooted in English | **Tense**: IDIOM
 > **Markers**: [idiom] [cultural]
 > **Real-life context**: You recognise and use body-based idioms in conversation, literature, and media.
 
@@ -179,7 +179,7 @@
 
 ## Unit A02 — Idiomas com animais
 
-> **Sub-CEFR**: C2 | **Grammar focus**: Animal-based idioms — distinctly Anglo-cultural metaphors
+> **Sub-CEFR**: C2 | **Grammar focus**: Animal-based idioms — distinctly Anglo-cultural metaphors | **Tense**: IDIOM
 > **Markers**: [idiom] [cultural]
 > **Real-life context**: You use animal idioms naturally in conversation, recognising their idiomatic (not literal) meaning.
 
@@ -319,7 +319,7 @@
 
 ## Unit A03 — Idiomas de tempo e raridade
 
-> **Sub-CEFR**: C2 | **Grammar focus**: Time and frequency idioms — once in a blue moon, burn the midnight oil, out of the blue
+> **Sub-CEFR**: C2 | **Grammar focus**: Time and frequency idioms — once in a blue moon, burn the midnight oil, out of the blue | **Tense**: IDIOM
 > **Markers**: [idiom] [cultural]
 > **Real-life context**: You describe rare events, late work, and sudden changes with time-based idioms.
 
@@ -459,7 +459,7 @@
 
 ## Unit A04 — Idiomas de decisão e ação
 
-> **Sub-CEFR**: C2 | **Grammar focus**: Decision/action idioms — throw in the towel, ball is in your court, cutting corners, the last straw, back to square one
+> **Sub-CEFR**: C2 | **Grammar focus**: Decision/action idioms — throw in the towel, ball is in your court, cutting corners, the last straw, back to square one | **Tense**: IDIOM
 > **Markers**: [idiom] [cultural]
 > **Real-life context**: You describe decisions, persistence, shortcuts, breakdowns, and restarts with action idioms.
 
@@ -599,7 +599,7 @@
 
 ## Unit A05 — Idiomas conversacionais
 
-> **Sub-CEFR**: C2 | **Grammar focus**: Conversational idioms — speak of the devil, piece of cake, break the ice, hit the nail on the head, rule of thumb
+> **Sub-CEFR**: C2 | **Grammar focus**: Conversational idioms — speak of the devil, piece of cake, break the ice, hit the nail on the head, rule of thumb | **Tense**: IDIOM
 > **Markers**: [idiom] [cultural]
 > **Real-life context**: You use everyday conversational idioms that signal native fluency.
 

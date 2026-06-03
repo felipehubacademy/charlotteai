@@ -22,7 +22,7 @@
 
 ## Unit I01 — General truths
 
-> **Sub-CEFR**: B1 | **Grammar focus**: Zero conditional (If + present, present) for facts
+> **Sub-CEFR**: B1 | **Grammar focus**: Zero conditional (If + present, present) for facts | **Tense**: CONDITIONAL · zero
 > **Markers**: [denso]
 > **Real-life context**: You express scientific facts, life rules, and cause-effect that's always true.
 
@@ -189,7 +189,7 @@
 
 ## Unit I02 — Zero vs first
 
-> **Sub-CEFR**: B1 | **Grammar focus**: Distinguishing zero conditional (general truth) from first conditional (specific future)
+> **Sub-CEFR**: B1 | **Grammar focus**: Distinguishing zero conditional (general truth) from first conditional (specific future) | **Tense**: CONDITIONAL · zero vs 1st
 > **Markers**: [denso]
 > **Real-life context**: You choose the right conditional based on whether you're talking about always-true facts or specific future possibilities.
 
@@ -358,7 +358,7 @@
 
 ## Unit I03 — When vs If
 
-> **Sub-CEFR**: B1 | **Grammar focus**: When (certainty/routine) vs If (possibility) in conditional contexts
+> **Sub-CEFR**: B1 | **Grammar focus**: When (certainty/routine) vs If (possibility) in conditional contexts | **Tense**: CONDITIONAL · zero vs 1st
 > **Markers**: —
 > **Real-life context**: You choose between "when" and "if" based on how certain or uncertain the situation is.
 
@@ -524,7 +524,7 @@
 
 ## Unit I04 — Conditional review
 
-> **Sub-CEFR**: B1 | **Grammar focus**: Reviewing zero + first conditionals together
+> **Sub-CEFR**: B1 | **Grammar focus**: Reviewing zero + first conditionals together | **Tense**: CONDITIONAL · zero & 1st
 > **Markers**: —
 > **Real-life context**: You mix general truths and specific predictions naturally in the same conversation.
 
@@ -690,7 +690,7 @@
 
 ## Unit I05 — Conditionals in context
 
-> **Sub-CEFR**: B1 | **Grammar focus**: Full integration of zero + first conditionals in natural conversation
+> **Sub-CEFR**: B1 | **Grammar focus**: Full integration of zero + first conditionals in natural conversation | **Tense**: CONDITIONAL · zero & 1st
 > **Markers**: —
 > **Real-life context**: You speak conditionally without thinking — mixing truths, plans, and possibilities seamlessly.
 

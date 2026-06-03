@@ -26,7 +26,7 @@
 
 ## Unit A01 — Ellipsis after "to"
 
-> **Sub-CEFR**: C2 | **Grammar focus**: Verb-phrase ellipsis after "to" infinitive marker (I want to, but I can't — "go" omitted)
+> **Sub-CEFR**: C2 | **Grammar focus**: Verb-phrase ellipsis after "to" infinitive marker (I want to, but I can't — "go" omitted) | **Tense**: ELLIPSIS
 > **Markers**: [denso] [ellipsis]
 > **Real-life context**: You leave out verb phrases that can be recovered from context — a hallmark of fluent English.
 
@@ -167,7 +167,7 @@
 
 ## Unit A02 — So and not as substitutes
 
-> **Sub-CEFR**: C2 | **Grammar focus**: "So" and "not" replacing whole clauses (I think so / I don't think so / I'm afraid so / I hope not)
+> **Sub-CEFR**: C2 | **Grammar focus**: "So" and "not" replacing whole clauses (I think so / I don't think so / I'm afraid so / I hope not) | **Tense**: ELLIPSIS
 > **Markers**: [denso] [substitution]
 > **Real-life context**: You replace entire affirmed or denied clauses with a single word — extremely common in conversation.
 
@@ -308,7 +308,7 @@
 
 ## Unit A03 — One, ones, that of
 
-> **Sub-CEFR**: C2 | **Grammar focus**: "One" / "ones" replacing nouns (a strong one, the red ones) and "that of / those of" (academic equivalent for X)
+> **Sub-CEFR**: C2 | **Grammar focus**: "One" / "ones" replacing nouns (a strong one, the red ones) and "that of / those of" (academic equivalent for X) | **Tense**: ELLIPSIS
 > **Markers**: [denso] [substitution]
 > **Real-life context**: You avoid noun repetition by substituting "one/ones" in conversation and "that of/those of" in formal writing.
 
@@ -448,7 +448,7 @@
 
 ## Unit A04 — Do so / do it / do that
 
-> **Sub-CEFR**: C2 | **Grammar focus**: Verb-phrase substitution with "do so" (formal), "do it" / "do that" (general), and "do likewise" / "do the same"
+> **Sub-CEFR**: C2 | **Grammar focus**: Verb-phrase substitution with "do so" (formal), "do it" / "do that" (general), and "do likewise" / "do the same" | **Tense**: ELLIPSIS
 > **Markers**: [denso] [substitution]
 > **Real-life context**: You replace whole verb phrases with do-substitutes — "I went to Madrid; she did the same" instead of "she went to Madrid too".
 
@@ -591,7 +591,7 @@
 
 ## Unit A05 — So do I, neither do I
 
-> **Sub-CEFR**: C2 | **Grammar focus**: Echoing agreement and disagreement with inverted auxiliaries (so do I, neither do I, so am I, neither was she)
+> **Sub-CEFR**: C2 | **Grammar focus**: Echoing agreement and disagreement with inverted auxiliaries (so do I, neither do I, so am I, neither was she) | **Tense**: ELLIPSIS
 > **Markers**: —
 > **Real-life context**: You echo someone's statement quickly and naturally — agreeing positively (so do I) or negatively (neither do I).
 

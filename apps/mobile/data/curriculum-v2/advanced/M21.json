@@ -27,6 +27,7 @@
       "title": "Discourse fillers",
       "sub_cefr": "C2",
       "grammar_focus": "Filler words used deliberately (you know, I mean, like, sort of) — for thinking time, hedging, register softening",
+      "tense": "CHUNKS",
       "markers": [
         "denso",
         "pragmatic"
@@ -180,6 +181,7 @@
       "title": "Tag questions",
       "sub_cefr": "C2",
       "grammar_focus": "Tag questions (isn't it? aren't they? hasn't she? right? yeah?) — agreement-seeking, confirmation, rhetorical",
+      "tense": "TAG QUESTION",
       "markers": [
         "denso",
         "pragmatic"
@@ -333,6 +335,7 @@
       "title": "Backchannels",
       "sub_cefr": "C2",
       "grammar_focus": "Listening signals (mm-hm, right, yeah, okay, gotcha, oh, really, I see, no way) — confirming you're tracking the speaker",
+      "tense": "CHUNKS",
       "markers": [
         "denso",
         "pragmatic"
@@ -492,6 +495,7 @@
       "title": "Pragmatic openers",
       "sub_cefr": "C2",
       "grammar_focus": "Honest / honestly / frankly / to be fair / no offence / look — pragmatic markers that open sensitive turns",
+      "tense": "CHUNKS",
       "markers": [
         "denso",
         "pragmatic"
@@ -645,6 +649,7 @@
       "title": "The thing is, here's the thing",
       "sub_cefr": "C2",
       "grammar_focus": "Problem-naming openers (the thing is / here's the thing / look / I'll tell you what / I don't know about you but) — native conversational moves",
+      "tense": "CHUNKS",
       "markers": [],
       "real_life_context": "You introduce a complication, observation, or proposal with a native conversational opener.",
       "grammar": [

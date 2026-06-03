@@ -36,6 +36,7 @@
       "title": "Acordo cedo",
       "sub_cefr": "A1",
       "grammar_focus": "Present simple positivo (I/we) + verbos da manhã (wake up, sleep, have)",
+      "tense": "PRESENT · simple",
       "markers": [],
       "real_life_context": "Você descreve sua rotina matinal para um amigo curioso sobre como você começa o dia.",
       "grammar": [
@@ -238,6 +239,7 @@
       "title": "Eu trabalho, eu estudo",
       "sub_cefr": "A1",
       "grammar_focus": "Present simple positivo + verbos work, study + lugares",
+      "tense": "PRESENT · simple",
       "markers": [],
       "real_life_context": "Alguém quer saber o que você faz da vida — trabalho, estudo, onde, com quem.",
       "grammar": [
@@ -440,6 +442,7 @@
       "title": "O que como",
       "sub_cefr": "A1",
       "grammar_focus": "Present simple positivo + eat/drink/have + refeições",
+      "tense": "PRESENT · simple",
       "markers": [],
       "real_life_context": "Você descreve seus hábitos alimentares — o que come no café da manhã, almoço e jantar.",
       "grammar": [
@@ -642,6 +645,7 @@
       "title": "Vou e venho",
       "sub_cefr": "A1",
       "grammar_focus": "Present simple positivo + go/come + means of transport + places",
+      "tense": "PRESENT · simple",
       "markers": [],
       "real_life_context": "Você descreve seus deslocamentos diários — pra onde vai, como, e quando volta.",
       "grammar": [
@@ -844,6 +848,7 @@
       "title": "Minha rotina",
       "sub_cefr": "A1",
       "grammar_focus": "Adverbs of frequency (always/usually/sometimes/never) + integration M05",
+      "tense": "PRESENT · simple",
       "markers": [
         "denso"
       ],
@@ -1048,6 +1053,7 @@
       "title": "Que horas? Que dia?",
       "sub_cefr": "A1",
       "grammar_focus": "Telling time + dates + days/months/seasons (Fase B extra unit)",
+      "tense": "PRESENT · simple",
       "markers": [
         "survival"
       ],

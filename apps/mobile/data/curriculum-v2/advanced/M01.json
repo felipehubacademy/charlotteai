@@ -24,6 +24,7 @@
       "title": "Past condition, present result",
       "sub_cefr": "C1",
       "grammar_focus": "Mixed conditional past → present (If I had + pp, I would + base now)",
+      "tense": "CONDITIONAL · mixed",
       "markers": [
         "denso"
       ],
@@ -176,6 +177,7 @@
       "title": "Present state, past result",
       "sub_cefr": "C1",
       "grammar_focus": "Mixed conditional present → past (If I were + adj, I would have + pp)",
+      "tense": "CONDITIONAL · mixed",
       "markers": [
         "denso"
       ],
@@ -328,6 +330,7 @@
       "title": "Had I known (inverted)",
       "sub_cefr": "C1",
       "grammar_focus": "Inverted third conditional (Had I known... / Had she said...)",
+      "tense": "CONDITIONAL · 3rd · inverted",
       "markers": [
         "denso",
         "inversion"
@@ -484,6 +487,7 @@
       "title": "Were I to, Should you",
       "sub_cefr": "C1",
       "grammar_focus": "Inverted hypotheticals — \"Were I to + base\" (formal future hypothetical) and \"Should you + base\" (formal first conditional)",
+      "tense": "CONDITIONAL · inverted",
       "markers": [
         "denso",
         "inversion"
@@ -637,6 +641,7 @@
       "title": "Suppose, But for, Unless",
       "sub_cefr": "C1",
       "grammar_focus": "Alternatives to \"if\" — suppose/supposing, but for + noun, without, unless, provided that",
+      "tense": "CONDITIONAL",
       "markers": [],
       "real_life_context": "You diversify hypothetical scaffolding away from \"if\" — for nuance, register, or emphasis.",
       "grammar": [

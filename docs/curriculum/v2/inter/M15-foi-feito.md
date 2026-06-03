@@ -24,7 +24,7 @@
 
 ## Unit I01 — It is made
 
-> **Sub-CEFR**: B2 | **Grammar focus**: Present simple passive (am/is/are + past participle)
+> **Sub-CEFR**: B2 | **Grammar focus**: Present simple passive (am/is/are + past participle) | **Tense**: PASSIVE · present
 > **Markers**: [denso]
 > **Real-life context**: You describe general facts where the agent is unknown, unimportant, or implied.
 
@@ -190,7 +190,7 @@
 
 ## Unit I02 — It was built
 
-> **Sub-CEFR**: B2 | **Grammar focus**: Past simple passive (was/were + past participle)
+> **Sub-CEFR**: B2 | **Grammar focus**: Past simple passive (was/were + past participle) | **Tense**: PASSIVE · past
 > **Markers**: [denso]
 > **Real-life context**: You describe historical events, completed works, or past origins where the agent is general or known.
 
@@ -355,7 +355,7 @@
 
 ## Unit I03 — It's being done
 
-> **Sub-CEFR**: B2 | **Grammar focus**: Present continuous passive (am/is/are being + past participle)
+> **Sub-CEFR**: B2 | **Grammar focus**: Present continuous passive (am/is/are being + past participle) | **Tense**: PASSIVE · present continuous
 > **Markers**: [denso]
 > **Real-life context**: You describe ongoing processes — what is happening right now to something or someone.
 
@@ -521,7 +521,7 @@
 
 ## Unit I04 — It has been done
 
-> **Sub-CEFR**: B2 | **Grammar focus**: Present perfect passive (has/have been + past participle)
+> **Sub-CEFR**: B2 | **Grammar focus**: Present perfect passive (has/have been + past participle) | **Tense**: PASSIVE · present perfect
 > **Markers**: [denso]
 > **Real-life context**: You describe completed actions with present relevance, with focus on result not agent.
 
@@ -687,7 +687,7 @@
 
 ## Unit I05 — All passives together
 
-> **Sub-CEFR**: B2 | **Grammar focus**: Integration of present simple, past simple, present continuous, present perfect passive
+> **Sub-CEFR**: B2 | **Grammar focus**: Integration of present simple, past simple, present continuous, present perfect passive | **Tense**: PASSIVE
 > **Markers**: —
 > **Real-life context**: You mix passive tenses fluently in real description.
 

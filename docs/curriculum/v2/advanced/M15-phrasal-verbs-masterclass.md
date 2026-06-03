@@ -36,7 +36,7 @@
 
 ## Unit A01 — Bring about, bring round, come round
 
-> **Sub-CEFR**: C2 | **Grammar focus**: "Bring" and "come" multi-meaning phrasal verbs (bring about = cause; bring round = revive/persuade; come round = visit, change mind, regain consciousness)
+> **Sub-CEFR**: C2 | **Grammar focus**: "Bring" and "come" multi-meaning phrasal verbs (bring about = cause; bring round = revive/persuade; come round = visit, change mind, regain consciousness) | **Tense**: CHUNKS
 > **Markers**: [denso] [phrasal]
 > **Real-life context**: You handle one of English's most polysemous phrasal verb families — the same verb shifts meaning sharply with the particle and context.
 
@@ -176,7 +176,7 @@
 
 ## Unit A02 — Gloss over, crop up, single out
 
-> **Sub-CEFR**: C2 | **Grammar focus**: Phrasal verbs of attention and emphasis (gloss over = downplay; crop up = appear; single out = highlight individually; bring up = mention)
+> **Sub-CEFR**: C2 | **Grammar focus**: Phrasal verbs of attention and emphasis (gloss over = downplay; crop up = appear; single out = highlight individually; bring up = mention) | **Tense**: CHUNKS
 > **Markers**: [denso] [phrasal]
 > **Real-life context**: You discuss attention — what was ignored, what surfaced, what was specifically picked out.
 
@@ -317,7 +317,7 @@
 
 ## Unit A03 — Live up to, fall through, iron out
 
-> **Sub-CEFR**: C2 | **Grammar focus**: Phrasal verbs of expectation and resolution (live up to = meet expectations; fall through = collapse; iron out = resolve; tide over = sustain temporarily)
+> **Sub-CEFR**: C2 | **Grammar focus**: Phrasal verbs of expectation and resolution (live up to = meet expectations; fall through = collapse; iron out = resolve; tide over = sustain temporarily) | **Tense**: CHUNKS
 > **Markers**: [denso] [phrasal]
 > **Real-life context**: You discuss expectations, failed plans, and resolved problems with phrasals that are everyday in C2 conversation.
 
@@ -458,7 +458,7 @@
 
 ## Unit A04 — Talk down to, wear down, shake off
 
-> **Sub-CEFR**: C2 | **Grammar focus**: Phrasal verbs of interpersonal force (talk down to = patronise; wear down = gradually weaken; shake off = recover from; bear out = confirm)
+> **Sub-CEFR**: C2 | **Grammar focus**: Phrasal verbs of interpersonal force (talk down to = patronise; wear down = gradually weaken; shake off = recover from; bear out = confirm) | **Tense**: CHUNKS
 > **Markers**: [denso] [phrasal]
 > **Real-life context**: You describe interpersonal dynamics, persistence, and recovery using common-yet-tricky phrasals.
 
@@ -598,7 +598,7 @@
 
 ## Unit A05 — Stem from, amount to, water down
 
-> **Sub-CEFR**: C2 | **Grammar focus**: Phrasal verbs of origin, equivalence, and weakening (stem from = originate in; amount to = equal/total; water down = weaken; pass off as = pretend X is Y)
+> **Sub-CEFR**: C2 | **Grammar focus**: Phrasal verbs of origin, equivalence, and weakening (stem from = originate in; amount to = equal/total; water down = weaken; pass off as = pretend X is Y) | **Tense**: CHUNKS
 > **Markers**: —
 > **Real-life context**: You analyse origins, quantify effects, and describe how strong things become weak.
 

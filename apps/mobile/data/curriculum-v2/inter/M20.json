@@ -24,6 +24,7 @@
       "title": "I wish you would",
       "sub_cefr": "B2",
       "grammar_focus": "I wish + would + base (annoyance/desire about another's recurring action)",
+      "tense": "SUBJUNCTIVE · wish",
       "markers": [
         "denso"
       ],
@@ -221,6 +222,7 @@
       "title": "If only",
       "sub_cefr": "B2",
       "grammar_focus": "\"If only\" + past simple (present regret) and + past perfect (past regret)",
+      "tense": "SUBJUNCTIVE · if only",
       "markers": [
         "denso"
       ],
@@ -418,6 +420,7 @@
       "title": "I'd rather",
       "sub_cefr": "B2",
       "grammar_focus": "Would rather + base (own preference) and would rather + past simple (about another)",
+      "tense": "SUBJUNCTIVE · would rather",
       "markers": [
         "denso"
       ],
@@ -612,6 +615,7 @@
       "title": "It's time",
       "sub_cefr": "B2",
       "grammar_focus": "\"It's (high/about) time\" + past simple — urgent recommendation",
+      "tense": "SUBJUNCTIVE · it's time",
       "markers": [
         "denso"
       ],
@@ -806,6 +810,7 @@
       "title": "Mixed wishes and preferences",
       "sub_cefr": "B2",
       "grammar_focus": "Integration of wish + would, if only, would rather, it's time + past",
+      "tense": "SUBJUNCTIVE",
       "markers": [],
       "real_life_context": "You combine wish structures fluidly in conversation about preferences and regrets.",
       "grammar": [

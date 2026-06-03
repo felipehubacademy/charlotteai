@@ -37,6 +37,7 @@
       "title": "Bring about, bring round, come round",
       "sub_cefr": "C2",
       "grammar_focus": "\"Bring\" and \"come\" multi-meaning phrasal verbs (bring about = cause; bring round = revive/persuade; come round = visit, change mind, regain consciousness)",
+      "tense": "CHUNKS",
       "markers": [
         "denso",
         "phrasal"
@@ -187,6 +188,7 @@
       "title": "Gloss over, crop up, single out",
       "sub_cefr": "C2",
       "grammar_focus": "Phrasal verbs of attention and emphasis (gloss over = downplay; crop up = appear; single out = highlight individually; bring up = mention)",
+      "tense": "CHUNKS",
       "markers": [
         "denso",
         "phrasal"
@@ -340,6 +342,7 @@
       "title": "Live up to, fall through, iron out",
       "sub_cefr": "C2",
       "grammar_focus": "Phrasal verbs of expectation and resolution (live up to = meet expectations; fall through = collapse; iron out = resolve; tide over = sustain temporarily)",
+      "tense": "CHUNKS",
       "markers": [
         "denso",
         "phrasal"
@@ -493,6 +496,7 @@
       "title": "Talk down to, wear down, shake off",
       "sub_cefr": "C2",
       "grammar_focus": "Phrasal verbs of interpersonal force (talk down to = patronise; wear down = gradually weaken; shake off = recover from; bear out = confirm)",
+      "tense": "CHUNKS",
       "markers": [
         "denso",
         "phrasal"
@@ -643,6 +647,7 @@
       "title": "Stem from, amount to, water down",
       "sub_cefr": "C2",
       "grammar_focus": "Phrasal verbs of origin, equivalence, and weakening (stem from = originate in; amount to = equal/total; water down = weaken; pass off as = pretend X is Y)",
+      "tense": "CHUNKS",
       "markers": [],
       "real_life_context": "You analyse origins, quantify effects, and describe how strong things become weak.",
       "grammar": [

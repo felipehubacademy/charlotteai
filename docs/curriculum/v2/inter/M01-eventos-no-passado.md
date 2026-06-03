@@ -22,7 +22,7 @@
 
 ## Unit I01 — What were you doing?
 
-> **Sub-CEFR**: B1 | **Grammar focus**: Past continuous positive (was/were + verb-ing)
+> **Sub-CEFR**: B1 | **Grammar focus**: Past continuous positive (was/were + verb-ing) | **Tense**: PAST · continuous
 > **Markers**: [denso]
 > **Real-life context**: You describe what you were doing at a specific moment yesterday.
 
@@ -187,7 +187,7 @@
 
 ## Unit I02 — I wasn't doing that
 
-> **Sub-CEFR**: B1 | **Grammar focus**: Past continuous negative (wasn't/weren't + -ing)
+> **Sub-CEFR**: B1 | **Grammar focus**: Past continuous negative (wasn't/weren't + -ing) | **Tense**: PAST · continuous · negative
 > **Markers**: —
 > **Real-life context**: You correct assumptions about what you were doing.
 
@@ -352,7 +352,7 @@
 
 ## Unit I03 — Were you doing that?
 
-> **Sub-CEFR**: B1 | **Grammar focus**: Past continuous questions (Was/Were + subject + -ing?)
+> **Sub-CEFR**: B1 | **Grammar focus**: Past continuous questions (Was/Were + subject + -ing?) | **Tense**: PAST · continuous · question
 > **Markers**: [qform]
 > **Real-life context**: You ask others what they were doing at specific times.
 
@@ -517,7 +517,7 @@
 
 ## Unit I04 — While I was cooking
 
-> **Sub-CEFR**: B1 | **Grammar focus**: Past continuous + past simple (while/when/as)
+> **Sub-CEFR**: B1 | **Grammar focus**: Past continuous + past simple (while/when/as) | **Tense**: PAST · continuous
 > **Markers**: [denso]
 > **Real-life context**: You tell stories where one action interrupts another in the past.
 
@@ -682,7 +682,7 @@
 
 ## Unit I05 — Tell the full story
 
-> **Sub-CEFR**: B1 | **Grammar focus**: Integration past continuous + past simple in narrative
+> **Sub-CEFR**: B1 | **Grammar focus**: Integration past continuous + past simple in narrative | **Tense**: PAST · continuous
 > **Markers**: —
 > **Real-life context**: You tell a full short story combining past continuous (background) and past simple (events).
 

@@ -27,6 +27,7 @@
       "title": "Ellipsis after \"to\"",
       "sub_cefr": "C2",
       "grammar_focus": "Verb-phrase ellipsis after \"to\" infinitive marker (I want to, but I can't — \"go\" omitted)",
+      "tense": "ELLIPSIS",
       "markers": [
         "denso",
         "ellipsis"
@@ -180,6 +181,7 @@
       "title": "So and not as substitutes",
       "sub_cefr": "C2",
       "grammar_focus": "\"So\" and \"not\" replacing whole clauses (I think so / I don't think so / I'm afraid so / I hope not)",
+      "tense": "ELLIPSIS",
       "markers": [
         "denso",
         "substitution"
@@ -333,6 +335,7 @@
       "title": "One, ones, that of",
       "sub_cefr": "C2",
       "grammar_focus": "\"One\" / \"ones\" replacing nouns (a strong one, the red ones) and \"that of / those of\" (academic equivalent for X)",
+      "tense": "ELLIPSIS",
       "markers": [
         "denso",
         "substitution"
@@ -483,6 +486,7 @@
       "title": "Do so / do it / do that",
       "sub_cefr": "C2",
       "grammar_focus": "Verb-phrase substitution with \"do so\" (formal), \"do it\" / \"do that\" (general), and \"do likewise\" / \"do the same\"",
+      "tense": "ELLIPSIS",
       "markers": [
         "denso",
         "substitution"
@@ -642,6 +646,7 @@
       "title": "So do I, neither do I",
       "sub_cefr": "C2",
       "grammar_focus": "Echoing agreement and disagreement with inverted auxiliaries (so do I, neither do I, so am I, neither was she)",
+      "tense": "ELLIPSIS",
       "markers": [],
       "real_life_context": "You echo someone's statement quickly and naturally — agreeing positively (so do I) or negatively (neither do I).",
       "grammar": [

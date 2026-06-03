@@ -23,6 +23,7 @@
       "title": "What were you doing?",
       "sub_cefr": "B1",
       "grammar_focus": "Past continuous positive (was/were + verb-ing)",
+      "tense": "PAST · continuous",
       "markers": [
         "denso"
       ],
@@ -215,6 +216,7 @@
       "title": "I wasn't doing that",
       "sub_cefr": "B1",
       "grammar_focus": "Past continuous negative (wasn't/weren't + -ing)",
+      "tense": "PAST · continuous · negative",
       "markers": [],
       "real_life_context": "You correct assumptions about what you were doing.",
       "grammar": [
@@ -405,6 +407,7 @@
       "title": "Were you doing that?",
       "sub_cefr": "B1",
       "grammar_focus": "Past continuous questions (Was/Were + subject + -ing?)",
+      "tense": "PAST · continuous · question",
       "markers": [
         "qform"
       ],
@@ -597,6 +600,7 @@
       "title": "While I was cooking",
       "sub_cefr": "B1",
       "grammar_focus": "Past continuous + past simple (while/when/as)",
+      "tense": "PAST · continuous",
       "markers": [
         "denso"
       ],
@@ -789,6 +793,7 @@
       "title": "Tell the full story",
       "sub_cefr": "B1",
       "grammar_focus": "Integration past continuous + past simple in narrative",
+      "tense": "PAST · continuous",
       "markers": [],
       "real_life_context": "You tell a full short story combining past continuous (background) and past simple (events).",
       "grammar": [

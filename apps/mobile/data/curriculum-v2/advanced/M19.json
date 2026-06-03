@@ -30,6 +30,7 @@
       "title": "Must, will, should — three shades of certainty",
       "sub_cefr": "C2",
       "grammar_focus": "Distinguishing \"must\" (strong inference), \"will\" (high certainty), and \"should\" (expected outcome) in present-time predictions",
+      "tense": "MODAL",
       "markers": [
         "denso",
         "modal"
@@ -183,6 +184,7 @@
       "title": "Might well, could well, may well",
       "sub_cefr": "C2",
       "grammar_focus": "Hedged probable — adding \"well\" to a modal (might well, could well, may well) for \"quite possibly / quite likely\"",
+      "tense": "MODAL",
       "markers": [
         "denso",
         "modal"
@@ -333,6 +335,7 @@
       "title": "Ought to, shall, would",
       "sub_cefr": "C2",
       "grammar_focus": "Formal/archaic modals — \"ought to\" (moral obligation), \"shall\" (legal/contractual future), \"would\" (habitual past, willingness, conditional)",
+      "tense": "MODAL",
       "markers": [
         "denso",
         "modal"
@@ -486,6 +489,7 @@
       "title": "Be bound to, be likely to, be supposed to",
       "sub_cefr": "C2",
       "grammar_focus": "Quasi-modals — \"be supposed to / be meant to\" (expectation), \"be bound to\" (high probability), \"be likely to / be unlikely to\" (probability statement)",
+      "tense": "MODAL · quasi",
       "markers": [
         "denso",
         "modal"
@@ -636,6 +640,7 @@
       "title": "Modal layering",
       "sub_cefr": "C2",
       "grammar_focus": "Stacking modals with quasi-modals — \"might have to / would have to / should have to / may need to / is going to have to\" — for layered necessity-in-possibility",
+      "tense": "MODAL",
       "markers": [],
       "real_life_context": "You express situations where one modal alone is not enough — necessity that depends on possibility, obligation in hypothetical contexts.",
       "grammar": [

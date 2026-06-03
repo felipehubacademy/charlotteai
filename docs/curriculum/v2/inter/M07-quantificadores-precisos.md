@@ -20,7 +20,7 @@
 
 ## Unit I01 — A few or a little?
 
-> **Sub-CEFR**: B1 | **Grammar focus**: a few (countable) vs a little (uncountable)
+> **Sub-CEFR**: B1 | **Grammar focus**: a few (countable) vs a little (uncountable) | **Tense**: CHUNKS
 > **Markers**: [denso]
 > **Real-life context**: You quantify your possessions, time, friends.
 
@@ -185,7 +185,7 @@
 
 ## Unit I02 — Few vs a few (subtle)
 
-> **Sub-CEFR**: B1 | **Grammar focus**: few/little (almost none) vs a few/a little (some)
+> **Sub-CEFR**: B1 | **Grammar focus**: few/little (almost none) vs a few/a little (some) | **Tense**: CHUNKS
 > **Markers**: [denso]
 > **Real-life context**: You express positive (have some) vs negative (have almost none).
 
@@ -351,7 +351,7 @@
 
 ## Unit I03 — Plenty of, hardly any
 
-> **Sub-CEFR**: B1 | **Grammar focus**: plenty of (lots) vs hardly any (almost zero)
+> **Sub-CEFR**: B1 | **Grammar focus**: plenty of (lots) vs hardly any (almost zero) | **Tense**: CHUNKS
 > **Markers**: —
 > **Real-life context**: You express abundance or scarcity.
 
@@ -517,7 +517,7 @@
 
 ## Unit I04 — Several, most
 
-> **Sub-CEFR**: B1 | **Grammar focus**: several (3+) and most (majority)
+> **Sub-CEFR**: B1 | **Grammar focus**: several (3+) and most (majority) | **Tense**: CHUNKS
 > **Markers**: —
 > **Real-life context**: You quantify with precision — several vs most.
 
@@ -684,7 +684,7 @@
 
 ## Unit I05 — Quantifiers integrated
 
-> **Sub-CEFR**: B1 | **Grammar focus**: Integration of refined quantifiers
+> **Sub-CEFR**: B1 | **Grammar focus**: Integration of refined quantifiers | **Tense**: CHUNKS
 > **Markers**: —
 > **Real-life context**: You use different quantifiers in one description.
 

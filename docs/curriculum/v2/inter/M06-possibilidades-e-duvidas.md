@@ -19,7 +19,7 @@
 
 ## Unit I01 — It might rain
 
-> **Sub-CEFR**: B1 | **Grammar focus**: might for possibility
+> **Sub-CEFR**: B1 | **Grammar focus**: might for possibility | **Tense**: MODAL · might
 > **Markers**: [denso]
 > **Real-life context**: You speculate about possibilities for the day.
 
@@ -184,7 +184,7 @@
 
 ## Unit I02 — She may be busy
 
-> **Sub-CEFR**: B1 | **Grammar focus**: may for possibility (similar to might, slightly more formal)
+> **Sub-CEFR**: B1 | **Grammar focus**: may for possibility (similar to might, slightly more formal) | **Tense**: MODAL · may
 > **Markers**: —
 > **Real-life context**: You speculate using "may" — similar to might but more formal.
 
@@ -348,7 +348,7 @@
 
 ## Unit I03 — It could be
 
-> **Sub-CEFR**: B1 | **Grammar focus**: could for possibility
+> **Sub-CEFR**: B1 | **Grammar focus**: could for possibility | **Tense**: MODAL · could
 > **Markers**: —
 > **Real-life context**: You speculate with "could" — similar to might/may.
 
@@ -513,7 +513,7 @@
 
 ## Unit I04 — It can't be true
 
-> **Sub-CEFR**: B1 | **Grammar focus**: can't for impossibility (logical)
+> **Sub-CEFR**: B1 | **Grammar focus**: can't for impossibility (logical) | **Tense**: MODAL · can't
 > **Markers**: [denso]
 > **Real-life context**: You express logical impossibility.
 
@@ -679,7 +679,7 @@
 
 ## Unit I05 — All modals combined
 
-> **Sub-CEFR**: B1 | **Grammar focus**: Integration might/may/could/can't
+> **Sub-CEFR**: B1 | **Grammar focus**: Integration might/may/could/can't | **Tense**: MODAL · might/may/could
 > **Markers**: —
 > **Real-life context**: You combine modals to express different degrees of certainty.
 

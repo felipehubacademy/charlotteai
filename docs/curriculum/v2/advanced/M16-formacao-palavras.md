@@ -31,7 +31,7 @@
 
 ## Unit A01 — Negation prefixes
 
-> **Sub-CEFR**: C2 | **Grammar focus**: Negation prefixes (un-, dis-, in-, im-, il-, ir-, non-) and which root each takes
+> **Sub-CEFR**: C2 | **Grammar focus**: Negation prefixes (un-, dis-, in-, im-, il-, ir-, non-) and which root each takes | **Tense**: WORD FORMATION
 > **Markers**: [denso] [morphology]
 > **Real-life context**: You form negatives reliably — knowing which prefix attaches to which root and avoiding non-words.
 
@@ -171,7 +171,7 @@
 
 ## Unit A02 — Suffixes for nouns
 
-> **Sub-CEFR**: C2 | **Grammar focus**: Noun-forming suffixes (-tion, -ment, -ness, -ity, -ship, -hood, -ism, -ance/-ence)
+> **Sub-CEFR**: C2 | **Grammar focus**: Noun-forming suffixes (-tion, -ment, -ness, -ity, -ship, -hood, -ism, -ance/-ence) | **Tense**: WORD FORMATION
 > **Markers**: [denso] [morphology]
 > **Real-life context**: You convert verbs and adjectives into abstract nouns — essential for academic and analytic writing.
 
@@ -311,7 +311,7 @@
 
 ## Unit A03 — Suffixes for adjectives and verbs
 
-> **Sub-CEFR**: C2 | **Grammar focus**: Adjective suffixes (-able, -ible, -ful, -less, -ous, -al, -ical, -ish, -ive) and verb suffixes (-ise/-ize, -ify, -en)
+> **Sub-CEFR**: C2 | **Grammar focus**: Adjective suffixes (-able, -ible, -ful, -less, -ous, -al, -ical, -ish, -ive) and verb suffixes (-ise/-ize, -ify, -en) | **Tense**: WORD FORMATION
 > **Markers**: [denso] [morphology]
 > **Real-life context**: You convert nouns and verbs into adjectives, or nouns/adjectives into verbs — flexibly.
 
@@ -452,7 +452,7 @@
 
 ## Unit A04 — Compounds
 
-> **Sub-CEFR**: C2 | **Grammar focus**: Compounds — closed (lighthouse), hyphenated (well-known), open (high school) — and the rules for each
+> **Sub-CEFR**: C2 | **Grammar focus**: Compounds — closed (lighthouse), hyphenated (well-known), open (high school) — and the rules for each | **Tense**: WORD FORMATION
 > **Markers**: [denso] [morphology]
 > **Real-life context**: You write compounds with the right spacing — knowing when to close, hyphenate, or leave open.
 
@@ -593,7 +593,7 @@
 
 ## Unit A05 — Conversion
 
-> **Sub-CEFR**: C2 | **Grammar focus**: Conversion (zero derivation) — noun ↔ verb without affix change (email, google, friend, gift, message, text)
+> **Sub-CEFR**: C2 | **Grammar focus**: Conversion (zero derivation) — noun ↔ verb without affix change (email, google, friend, gift, message, text) | **Tense**: WORD FORMATION
 > **Markers**: —
 > **Real-life context**: You convert nouns to verbs (and vice versa) fluidly — typical of modern English, especially tech and social vocabulary.
 

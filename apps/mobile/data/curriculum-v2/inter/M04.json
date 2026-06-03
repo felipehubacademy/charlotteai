@@ -20,6 +20,7 @@
       "title": "I used to be different",
       "sub_cefr": "B1",
       "grammar_focus": "Used to (positive, habit/state)",
+      "tense": "PAST · used to",
       "markers": [
         "denso"
       ],
@@ -215,6 +216,7 @@
       "title": "I didn't use to",
       "sub_cefr": "B1",
       "grammar_focus": "Used to negative + question",
+      "tense": "PAST · used to",
       "markers": [],
       "real_life_context": "You contrast past habits with current ones.",
       "grammar": [
@@ -408,6 +410,7 @@
       "title": "Would (past narrative)",
       "sub_cefr": "B1",
       "grammar_focus": "Would for past repeated actions",
+      "tense": "PAST · would",
       "markers": [],
       "real_life_context": "You tell stories with repeated past actions.",
       "grammar": [
@@ -601,6 +604,7 @@
       "title": "Used to vs Would",
       "sub_cefr": "B1",
       "grammar_focus": "Distinguish used to (states + actions) from would (actions only)",
+      "tense": "PAST · used to vs would",
       "markers": [
         "denso"
       ],
@@ -795,6 +799,7 @@
       "title": "Then vs now",
       "sub_cefr": "B1",
       "grammar_focus": "Integration used to + would + now",
+      "tense": "PAST · used to vs would",
       "markers": [],
       "real_life_context": "You contrast past habits with present reality.",
       "grammar": [

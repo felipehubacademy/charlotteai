@@ -30,6 +30,7 @@
       "title": "Building the case",
       "sub_cefr": "C2",
       "grammar_focus": "Argument structure — claim + reasons + evidence with numbered or ranked progression",
+      "tense": "RHETORIC",
       "markers": [
         "denso",
         "argument"
@@ -183,6 +184,7 @@
       "title": "Anticipating counterargument",
       "sub_cefr": "C2",
       "grammar_focus": "Pre-empting and refuting objections (Some may object that... However... / Critics might argue... but this overlooks... / It would be a mistake to assume...)",
+      "tense": "RHETORIC",
       "markers": [
         "denso",
         "argument"
@@ -333,6 +335,7 @@
       "title": "Anaphora, antithesis, tricolon",
       "sub_cefr": "C2",
       "grammar_focus": "Classical rhetorical devices — anaphora (repeated openings), antithesis (X vs Y in parallel), tricolon (three-part structure)",
+      "tense": "RHETORIC",
       "markers": [
         "denso",
         "rhetoric"
@@ -486,6 +489,7 @@
       "title": "Cause-and-effect chains",
       "sub_cefr": "C2",
       "grammar_focus": "Argumentative causal chains (this leads to / which in turn / thereby / as a result / the consequence is / from this it follows that)",
+      "tense": "RHETORIC",
       "markers": [
         "denso",
         "argument"
@@ -640,6 +644,7 @@
       "title": "Strong conclusions",
       "sub_cefr": "C2",
       "grammar_focus": "Conclusion landing — call to action, vision close, stakes-naming (\"The stakes could not be higher\", \"What is at stake is\", \"If we fail to act, ...\", \"The choice before us is clear\")",
+      "tense": "RHETORIC",
       "markers": [],
       "real_life_context": "You close arguments memorably — leaving the reader with action, stakes, or a clarifying frame.",
       "grammar": [

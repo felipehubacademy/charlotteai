@@ -25,7 +25,7 @@
 
 ## Unit A01 — Never have I
 
-> **Sub-CEFR**: C1 | **Grammar focus**: Inversion after negative frequency adverbials (Never, Rarely, Seldom, Hardly ever)
+> **Sub-CEFR**: C1 | **Grammar focus**: Inversion after negative frequency adverbials (Never, Rarely, Seldom, Hardly ever) | **Tense**: INVERSION
 > **Markers**: [denso] [inversion]
 > **Real-life context**: You front a negative adverb for emphasis, dramatising rarity or extreme experience.
 
@@ -166,7 +166,7 @@
 
 ## Unit A02 — Hardly had I, No sooner had I
 
-> **Sub-CEFR**: C1 | **Grammar focus**: Inversion after "Hardly", "Scarcely", "No sooner" for near-simultaneous past events
+> **Sub-CEFR**: C1 | **Grammar focus**: Inversion after "Hardly", "Scarcely", "No sooner" for near-simultaneous past events | **Tense**: INVERSION
 > **Markers**: [denso] [inversion]
 > **Real-life context**: You narrate two past events as overlapping — one barely begun when the next intervenes.
 
@@ -306,7 +306,7 @@
 
 ## Unit A03 — Not only, Not until
 
-> **Sub-CEFR**: C1 | **Grammar focus**: Inversion after "Not only" (additive emphasis) and "Not until" (delayed realization)
+> **Sub-CEFR**: C1 | **Grammar focus**: Inversion after "Not only" (additive emphasis) and "Not until" (delayed realization) | **Tense**: INVERSION
 > **Markers**: [denso] [inversion]
 > **Real-life context**: You stack achievements/qualities with "not only" or dramatise late realisation with "not until".
 
@@ -447,7 +447,7 @@
 
 ## Unit A04 — Only after, Little did I know
 
-> **Sub-CEFR**: C1 | **Grammar focus**: Inversion after "Only after/when/by" (delayed cause) and "Little did + subject + know/realise" (dramatic irony)
+> **Sub-CEFR**: C1 | **Grammar focus**: Inversion after "Only after/when/by" (delayed cause) and "Little did + subject + know/realise" (dramatic irony) | **Tense**: INVERSION
 > **Markers**: [denso] [inversion]
 > **Real-life context**: You write or speak with literary flair — marking when realisation arrived (or didn't).
 
@@ -588,7 +588,7 @@
 
 ## Unit A05 — Under no circumstances
 
-> **Sub-CEFR**: C1 | **Grammar focus**: Inversion after restrictive negative phrases (Under no circumstances, On no account, In no way, At no time)
+> **Sub-CEFR**: C1 | **Grammar focus**: Inversion after restrictive negative phrases (Under no circumstances, On no account, In no way, At no time) | **Tense**: INVERSION
 > **Markers**: [denso] [inversion]
 > **Real-life context**: You write formal policy, contracts, or assert firm boundaries with elevated emphasis.
 

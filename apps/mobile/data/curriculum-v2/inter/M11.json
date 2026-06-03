@@ -24,6 +24,7 @@
       "title": "When in time clauses",
       "sub_cefr": "B1",
       "grammar_focus": "when + present simple (referring to future)",
+      "tense": "TIME CLAUSE",
       "markers": [
         "denso"
       ],
@@ -221,6 +222,7 @@
       "title": "Before and after",
       "sub_cefr": "B1",
       "grammar_focus": "before / after + present simple (future) or past (past)",
+      "tense": "TIME CLAUSE",
       "markers": [],
       "real_life_context": "You sequence actions — what comes first, what comes next.",
       "grammar": [
@@ -414,6 +416,7 @@
       "title": "Until and by the time",
       "sub_cefr": "B1",
       "grammar_focus": "until/till (continuous duration) + by the time (point of completion)",
+      "tense": "TIME CLAUSE",
       "markers": [
         "denso"
       ],
@@ -609,6 +612,7 @@
       "title": "As soon as",
       "sub_cefr": "B1",
       "grammar_focus": "as soon as + present (immediate sequence)",
+      "tense": "TIME CLAUSE",
       "markers": [],
       "real_life_context": "You express that one action will happen immediately after another.",
       "grammar": [
@@ -803,6 +807,7 @@
       "title": "All time clauses combined",
       "sub_cefr": "B1",
       "grammar_focus": "Integration of when/before/after/until/by the time/as soon as",
+      "tense": "TIME CLAUSE",
       "markers": [],
       "real_life_context": "You combine time clauses fluidly in conversation about plans, deadlines, and sequences.",
       "grammar": [

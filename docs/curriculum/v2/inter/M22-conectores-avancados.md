@@ -24,7 +24,7 @@
 
 ## Unit I01 — However
 
-> **Sub-CEFR**: B2 | **Grammar focus**: Contrast markers — however, nevertheless, on the other hand
+> **Sub-CEFR**: B2 | **Grammar focus**: Contrast markers — however, nevertheless, on the other hand | **Tense**: CHUNKS
 > **Markers**: [denso]
 > **Real-life context**: You introduce contrasting ideas formally in writing or measured speech.
 
@@ -190,7 +190,7 @@
 
 ## Unit I02 — Although, despite
 
-> **Sub-CEFR**: B2 | **Grammar focus**: Concession — although/even though + clause; despite/in spite of + noun/-ing
+> **Sub-CEFR**: B2 | **Grammar focus**: Concession — although/even though + clause; despite/in spite of + noun/-ing | **Tense**: CHUNKS
 > **Markers**: [denso]
 > **Real-life context**: You concede a point while introducing a contrast within one sentence.
 
@@ -358,7 +358,7 @@
 
 ## Unit I03 — Therefore, as a result
 
-> **Sub-CEFR**: B2 | **Grammar focus**: Cause-result markers (therefore, consequently, as a result, for that reason)
+> **Sub-CEFR**: B2 | **Grammar focus**: Cause-result markers (therefore, consequently, as a result, for that reason) | **Tense**: CHUNKS
 > **Markers**: [denso]
 > **Real-life context**: You connect cause and consequence formally.
 
@@ -525,7 +525,7 @@
 
 ## Unit I04 — Furthermore, in addition
 
-> **Sub-CEFR**: B2 | **Grammar focus**: Addition markers (furthermore, moreover, in addition, besides) and example markers (for instance, for example)
+> **Sub-CEFR**: B2 | **Grammar focus**: Addition markers (furthermore, moreover, in addition, besides) and example markers (for instance, for example) | **Tense**: CHUNKS
 > **Markers**: [denso]
 > **Real-life context**: You build arguments by adding points and giving examples.
 
@@ -691,7 +691,7 @@
 
 ## Unit I05 — In conclusion
 
-> **Sub-CEFR**: B2 | **Grammar focus**: Conclusion markers (in conclusion, to sum up, all in all, overall) + integration
+> **Sub-CEFR**: B2 | **Grammar focus**: Conclusion markers (in conclusion, to sum up, all in all, overall) + integration | **Tense**: CHUNKS
 > **Markers**: —
 > **Real-life context**: You wrap up arguments and integrate all discourse markers naturally.
 
@@ -857,7 +857,7 @@
 
 ## Unit I06 — Trabalho expandido
 
-> **Sub-CEFR**: B2 | **Grammar focus**: Workplace English — professional vocabulary, role descriptions, work context (Fase B extra unit)
+> **Sub-CEFR**: B2 | **Grammar focus**: Workplace English — professional vocabulary, role descriptions, work context (Fase B extra unit) | **Tense**: CHUNKS
 > **Markers**: [survival] [denso]
 > **Real-life context**: You discuss work life fluently — your role, company, colleagues, work modes, salary, career stages.
 

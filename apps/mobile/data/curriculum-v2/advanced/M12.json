@@ -29,6 +29,7 @@
       "title": "Nominalisation",
       "sub_cefr": "C2",
       "grammar_focus": "Converting verbs to nouns for academic compactness (the rise of, the decline in, the emergence of, an increase in)",
+      "tense": "REGISTER · academic",
       "markers": [
         "denso",
         "academic"
@@ -179,6 +180,7 @@
       "title": "Impersonal voice",
       "sub_cefr": "C2",
       "grammar_focus": "Removing first-person subjectivity (It is generally accepted that, It is widely held that, It is often argued that, this paper, the present study)",
+      "tense": "REGISTER · academic",
       "markers": [
         "denso",
         "academic"
@@ -336,6 +338,7 @@
       "title": "Hedged claims",
       "sub_cefr": "C2",
       "grammar_focus": "Hedging strength of claim (this suggests, this implies, this indicates, the evidence points to, there is reason to believe, it could be argued)",
+      "tense": "REGISTER · academic",
       "markers": [
         "denso",
         "academic"
@@ -489,6 +492,7 @@
       "title": "Citation patterns",
       "sub_cefr": "C2",
       "grammar_focus": "Citation framing (according to X (2020), as noted by, X argues that, X contends, building on prior work)",
+      "tense": "REGISTER · academic",
       "markers": [
         "denso",
         "academic"
@@ -639,6 +643,7 @@
       "title": "Paragraph cohesion",
       "sub_cefr": "C2",
       "grammar_focus": "Topic sentences, paragraph progression, transition devices (this finding / this pattern / a related question / by contrast)",
+      "tense": "REGISTER · academic",
       "markers": [],
       "real_life_context": "You connect paragraphs so each follows naturally from the last — building cumulative academic argument.",
       "grammar": [

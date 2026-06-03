@@ -27,6 +27,7 @@
       "title": "It was X who",
       "sub_cefr": "C1",
       "grammar_focus": "It-clefts for emphasis on subject, object, time, or place",
+      "tense": "CLEFT",
       "markers": [
         "denso",
         "emphasis"
@@ -177,6 +178,7 @@
       "title": "What I need is",
       "sub_cefr": "C1",
       "grammar_focus": "Wh-clefts (pseudo-clefts) — What + clause + is/was + emphasised element",
+      "tense": "CLEFT",
       "markers": [
         "denso",
         "emphasis"
@@ -330,6 +332,7 @@
       "title": "All I want is",
       "sub_cefr": "C1",
       "grammar_focus": "All-clefts and exclusive emphasis (\"All I want is...\", \"All she did was...\")",
+      "tense": "CLEFT",
       "markers": [
         "denso",
         "emphasis"
@@ -486,6 +489,7 @@
       "title": "It wasn't until",
       "sub_cefr": "C1",
       "grammar_focus": "\"It + negative + cleft\" — \"It wasn't until... that...\" for delayed realisation/event",
+      "tense": "CLEFT",
       "markers": [
         "denso",
         "emphasis"
@@ -639,6 +643,7 @@
       "title": "The reason is, The thing that",
       "sub_cefr": "C1",
       "grammar_focus": "Lexical clefts (\"The reason (why)... is...\", \"The thing that... is...\", \"The place where...\", \"The time when...\")",
+      "tense": "CLEFT",
       "markers": [],
       "real_life_context": "You frame an explanation, the salient feature, or the location/time precisely.",
       "grammar": [

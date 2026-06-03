@@ -28,6 +28,7 @@
       "title": "I suggest that he be",
       "sub_cefr": "C1",
       "grammar_focus": "Mandative subjunctive after verbs (suggest, recommend, propose, demand, insist, require, request, ask)",
+      "tense": "SUBJUNCTIVE",
       "markers": [
         "denso",
         "formal"
@@ -178,6 +179,7 @@
       "title": "It is essential that",
       "sub_cefr": "C1",
       "grammar_focus": "Subjunctive after impersonal expressions of necessity/importance",
+      "tense": "SUBJUNCTIVE",
       "markers": [
         "denso",
         "formal"
@@ -328,6 +330,7 @@
       "title": "I wish I were",
       "sub_cefr": "C1",
       "grammar_focus": "Past subjunctive \"were\" across all persons (wishes, if-clauses, would rather)",
+      "tense": "SUBJUNCTIVE",
       "markers": [
         "denso"
       ],
@@ -477,6 +480,7 @@
       "title": "Lest, So be it",
       "sub_cefr": "C1",
       "grammar_focus": "Subjunctive after \"lest\" (formal-archaic) and fossilised expressions (\"Be that as it may\", \"Come what may\", \"So be it\", \"Suffice it to say\")",
+      "tense": "SUBJUNCTIVE",
       "markers": [
         "denso",
         "literary"
@@ -630,6 +634,7 @@
       "title": "Mixed subjunctive",
       "sub_cefr": "C1",
       "grammar_focus": "Integration of mandative, hypothetical, fossilised subjunctive across registers",
+      "tense": "SUBJUNCTIVE",
       "markers": [],
       "real_life_context": "You select the subjunctive form that fits the register and intent.",
       "grammar": [

@@ -26,7 +26,7 @@
 
 ## Unit A01 — Discourse fillers
 
-> **Sub-CEFR**: C2 | **Grammar focus**: Filler words used deliberately (you know, I mean, like, sort of) — for thinking time, hedging, register softening
+> **Sub-CEFR**: C2 | **Grammar focus**: Filler words used deliberately (you know, I mean, like, sort of) — for thinking time, hedging, register softening | **Tense**: CHUNKS
 > **Markers**: [denso] [pragmatic]
 > **Real-life context**: You use fillers strategically — never overusing them, but sprinkling them in to sound natural rather than rehearsed.
 
@@ -167,7 +167,7 @@
 
 ## Unit A02 — Tag questions
 
-> **Sub-CEFR**: C2 | **Grammar focus**: Tag questions (isn't it? aren't they? hasn't she? right? yeah?) — agreement-seeking, confirmation, rhetorical
+> **Sub-CEFR**: C2 | **Grammar focus**: Tag questions (isn't it? aren't they? hasn't she? right? yeah?) — agreement-seeking, confirmation, rhetorical | **Tense**: TAG QUESTION
 > **Markers**: [denso] [pragmatic]
 > **Real-life context**: You add tags to statements to seek agreement, soften assertion, or invite conversation.
 
@@ -308,7 +308,7 @@
 
 ## Unit A03 — Backchannels
 
-> **Sub-CEFR**: C2 | **Grammar focus**: Listening signals (mm-hm, right, yeah, okay, gotcha, oh, really, I see, no way) — confirming you're tracking the speaker
+> **Sub-CEFR**: C2 | **Grammar focus**: Listening signals (mm-hm, right, yeah, okay, gotcha, oh, really, I see, no way) — confirming you're tracking the speaker | **Tense**: CHUNKS
 > **Markers**: [denso] [pragmatic]
 > **Real-life context**: You signal active listening through small interjections — without interrupting the speaker. Critical for casual fluency.
 
@@ -450,7 +450,7 @@
 
 ## Unit A04 — Pragmatic openers
 
-> **Sub-CEFR**: C2 | **Grammar focus**: Honest / honestly / frankly / to be fair / no offence / look — pragmatic markers that open sensitive turns
+> **Sub-CEFR**: C2 | **Grammar focus**: Honest / honestly / frankly / to be fair / no offence / look — pragmatic markers that open sensitive turns | **Tense**: CHUNKS
 > **Markers**: [denso] [pragmatic]
 > **Real-life context**: You preface what you're about to say with a marker that signals tone — honest, fair, gentle, or about to disagree.
 
@@ -591,7 +591,7 @@
 
 ## Unit A05 — The thing is, here's the thing
 
-> **Sub-CEFR**: C2 | **Grammar focus**: Problem-naming openers (the thing is / here's the thing / look / I'll tell you what / I don't know about you but) — native conversational moves
+> **Sub-CEFR**: C2 | **Grammar focus**: Problem-naming openers (the thing is / here's the thing / look / I'll tell you what / I don't know about you but) — native conversational moves | **Tense**: CHUNKS
 > **Markers**: —
 > **Real-life context**: You introduce a complication, observation, or proposal with a native conversational opener.
 

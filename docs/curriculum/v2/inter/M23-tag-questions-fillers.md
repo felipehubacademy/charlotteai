@@ -28,7 +28,7 @@
 
 ## Unit I01 — Tags com to be e have
 
-> **Sub-CEFR**: B1/B2 | **Grammar focus**: Tag questions with "to be" (present and past) and "have/has/had"
+> **Sub-CEFR**: B1/B2 | **Grammar focus**: Tag questions with "to be" (present and past) and "have/has/had" | **Tense**: TAG QUESTION
 > **Markers**: [conversation]
 > **Real-life context**: You confirm information or invite agreement using tag questions with the most common auxiliaries.
 
@@ -193,7 +193,7 @@
 
 ## Unit I02 — Tags com do/does/did
 
-> **Sub-CEFR**: B1/B2 | **Grammar focus**: Tag questions with "do/does/did" — for simple present and simple past with main verbs (not auxiliaries)
+> **Sub-CEFR**: B1/B2 | **Grammar focus**: Tag questions with "do/does/did" — for simple present and simple past with main verbs (not auxiliaries) | **Tense**: TAG QUESTION
 > **Markers**: [conversation]
 > **Real-life context**: You form tags when the main verb is a regular action verb (no "be", no "have", no modal).
 
@@ -358,7 +358,7 @@
 
 ## Unit I03 — Tags com modais
 
-> **Sub-CEFR**: B1/B2 | **Grammar focus**: Tag questions with modals (can, could, will, would, should, must)
+> **Sub-CEFR**: B1/B2 | **Grammar focus**: Tag questions with modals (can, could, will, would, should, must) | **Tense**: TAG QUESTION
 > **Markers**: [conversation]
 > **Real-life context**: You confirm abilities, possibilities, and obligations using modal-based tag questions.
 
@@ -524,7 +524,7 @@
 
 ## Unit I04 — Casos especiais
 
-> **Sub-CEFR**: B2 | **Grammar focus**: Special tag cases — "I am → aren't I", "Let's → shall we", imperative tags (will you?), tags with indefinite subjects (everyone, nobody, somebody)
+> **Sub-CEFR**: B2 | **Grammar focus**: Special tag cases — "I am → aren't I", "Let's → shall we", imperative tags (will you?), tags with indefinite subjects (everyone, nobody, somebody) | **Tense**: TAG QUESTION
 > **Markers**: [denso] [conversation]
 > **Real-life context**: You handle the tricky exceptions to the basic tag question rules — common cases that don't follow the standard pattern.
 
@@ -691,7 +691,7 @@
 
 ## Unit I05 — Fillers naturais
 
-> **Sub-CEFR**: B2 | **Grammar focus**: Conversational fillers (you know, I mean, like, well, so, right) used naturally — plus rising vs falling intonation distinction in tag questions
+> **Sub-CEFR**: B2 | **Grammar focus**: Conversational fillers (you know, I mean, like, well, so, right) used naturally — plus rising vs falling intonation distinction in tag questions | **Tense**: CHUNKS
 > **Markers**: [denso] [conversation]
 > **Real-life context**: You add fillers strategically to sound natural and confident — not nervous. You also know when a tag is a real question (rising) vs rhetorical (falling).
 

@@ -21,7 +21,7 @@
 
 ## Unit N01 — E, mas, ou
 
-> **Sub-CEFR**: A2 | **Grammar focus**: Basic linkers (and, but, or)
+> **Sub-CEFR**: A2 | **Grammar focus**: Basic linkers (and, but, or) | **Tense**: CHUNKS
 > **Markers**: —
 > **Real-life context**: Você conecta duas ideias em uma frase só.
 
@@ -188,7 +188,7 @@
 
 ## Unit N02 — Porque e então
 
-> **Sub-CEFR**: A2 | **Grammar focus**: Because (cause) + so (result)
+> **Sub-CEFR**: A2 | **Grammar focus**: Because (cause) + so (result) | **Tense**: CHUNKS
 > **Markers**: —
 > **Real-life context**: Você explica causas e consequências em suas decisões.
 
@@ -354,7 +354,7 @@
 
 ## Unit N03 — Rapidamente, cuidadosamente
 
-> **Sub-CEFR**: A2 | **Grammar focus**: Adverbs of manner (-ly)
+> **Sub-CEFR**: A2 | **Grammar focus**: Adverbs of manner (-ly) | **Tense**: CHUNKS
 > **Markers**: —
 > **Real-life context**: Você descreve COMO ações são feitas — rápido, devagar, cuidadosamente.
 
@@ -519,7 +519,7 @@
 
 ## Unit N04 — Embora, no entanto
 
-> **Sub-CEFR**: A2 | **Grammar focus**: Although / however (contrast)
+> **Sub-CEFR**: A2 | **Grammar focus**: Although / however (contrast) | **Tense**: CHUNKS
 > **Markers**: —
 > **Real-life context**: Você expressa contrastes mais formais entre ideias.
 
@@ -685,7 +685,7 @@
 
 ## Unit N05 — Eu falo inglês!
 
-> **Sub-CEFR**: A2 | **Grammar focus**: Integration — fechamento do Novice
+> **Sub-CEFR**: A2 | **Grammar focus**: Integration — fechamento do Novice | **Tense**: CHUNKS
 > **Markers**: —
 > **Real-life context**: Você combina TODOS os recursos do Novice numa conversa final.
 

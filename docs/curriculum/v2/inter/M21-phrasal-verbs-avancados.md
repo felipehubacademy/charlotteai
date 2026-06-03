@@ -32,7 +32,7 @@
 
 ## Unit I01 — Look forward to
 
-> **Sub-CEFR**: B2 | **Grammar focus**: 3-part phrasal verbs with -ing (look forward to, get used to, object to)
+> **Sub-CEFR**: B2 | **Grammar focus**: 3-part phrasal verbs with -ing (look forward to, get used to, object to) | **Tense**: CHUNKS
 > **Markers**: [denso]
 > **Real-life context**: You express anticipation, adaptation, or objection — all followed by -ing.
 
@@ -198,7 +198,7 @@
 
 ## Unit I02 — Put up with
 
-> **Sub-CEFR**: B2 | **Grammar focus**: 3-part phrasal verbs of tolerance/depletion (put up with, run out of, get away with)
+> **Sub-CEFR**: B2 | **Grammar focus**: 3-part phrasal verbs of tolerance/depletion (put up with, run out of, get away with) | **Tense**: CHUNKS
 > **Markers**: [denso]
 > **Real-life context**: You describe tolerating, running out, or escaping consequences.
 
@@ -363,7 +363,7 @@
 
 ## Unit I03 — Get along with
 
-> **Sub-CEFR**: B2 | **Grammar focus**: 3-part phrasals about relationships (get along with, look up to, look down on, get on with)
+> **Sub-CEFR**: B2 | **Grammar focus**: 3-part phrasals about relationships (get along with, look up to, look down on, get on with) | **Tense**: CHUNKS
 > **Markers**: [denso]
 > **Real-life context**: You describe how you relate to other people.
 
@@ -528,7 +528,7 @@
 
 ## Unit I04 — Catch up, make up
 
-> **Sub-CEFR**: B2 | **Grammar focus**: Phrasals of time, compensation, commitment (catch up with, make up for, keep up with, go through with)
+> **Sub-CEFR**: B2 | **Grammar focus**: Phrasals of time, compensation, commitment (catch up with, make up for, keep up with, go through with) | **Tense**: CHUNKS
 > **Markers**: [denso]
 > **Real-life context**: You handle deadlines, debts, news, and commitments.
 
@@ -694,7 +694,7 @@
 
 ## Unit I05 — Idiomatic chunks
 
-> **Sub-CEFR**: B2 | **Grammar focus**: High-frequency idiomatic chunks (on second thought, at the end of the day, in the long run, for the time being)
+> **Sub-CEFR**: B2 | **Grammar focus**: High-frequency idiomatic chunks (on second thought, at the end of the day, in the long run, for the time being) | **Tense**: CHUNKS
 > **Markers**: —
 > **Real-life context**: You use natural conversational chunks for emphasis, qualification, or summary.
 

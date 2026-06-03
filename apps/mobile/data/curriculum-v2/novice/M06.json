@@ -31,6 +31,7 @@
       "title": "Ela trabalha, ele estuda",
       "sub_cefr": "A1",
       "grammar_focus": "Present simple 3ª pessoa singular (-s, -es, -ies)",
+      "tense": "PRESENT · simple",
       "markers": [
         "denso"
       ],
@@ -235,6 +236,7 @@
       "title": "Eu não faço, ela não faz",
       "sub_cefr": "A1",
       "grammar_focus": "Negative present simple (don't / doesn't)",
+      "tense": "PRESENT · simple · negative",
       "markers": [
         "denso"
       ],
@@ -439,6 +441,7 @@
       "title": "Você faz? Ela faz?",
       "sub_cefr": "A1",
       "grammar_focus": "Yes/No questions (Do you...? Does she...?)",
+      "tense": "PRESENT · simple · question",
       "markers": [
         "denso"
       ],
@@ -643,6 +646,7 @@
       "title": "Onde, quando, como",
       "sub_cefr": "A1",
       "grammar_focus": "WH-questions with do/does (Where do you...? What does she...?)",
+      "tense": "PRESENT · simple · question",
       "markers": [
         "denso"
       ],
@@ -847,6 +851,7 @@
       "title": "Tudo junto",
       "sub_cefr": "A1",
       "grammar_focus": "Integration — positive + negative + question 3rd person",
+      "tense": "PRESENT · simple",
       "markers": [
         "denso"
       ],

@@ -23,7 +23,7 @@
 
 ## Unit I01 — I should have
 
-> **Sub-CEFR**: B2 | **Grammar focus**: should have / shouldn't have + past participle (regret + criticism)
+> **Sub-CEFR**: B2 | **Grammar focus**: should have / shouldn't have + past participle (regret + criticism) | **Tense**: MODAL · perfect
 > **Markers**: [denso]
 > **Real-life context**: You criticize past decisions — your own or others' — or express regret.
 
@@ -188,7 +188,7 @@
 
 ## Unit I02 — I could have
 
-> **Sub-CEFR**: B2 | **Grammar focus**: could have / couldn't have + past participle (past possibility/missed chance)
+> **Sub-CEFR**: B2 | **Grammar focus**: could have / couldn't have + past participle (past possibility/missed chance) | **Tense**: MODAL · perfect
 > **Markers**: [denso]
 > **Real-life context**: You talk about missed past opportunities or impossibilities.
 
@@ -353,7 +353,7 @@
 
 ## Unit I03 — Must have / Can't have
 
-> **Sub-CEFR**: B2 | **Grammar focus**: must have / can't have + past participle (strong inference about past)
+> **Sub-CEFR**: B2 | **Grammar focus**: must have / can't have + past participle (strong inference about past) | **Tense**: MODAL · perfect
 > **Markers**: [denso]
 > **Real-life context**: You make confident guesses about what happened based on evidence.
 
@@ -519,7 +519,7 @@
 
 ## Unit I04 — Might have / Needn't have
 
-> **Sub-CEFR**: B2 | **Grammar focus**: might have + past participle (uncertainty); needn't have + past participle (unnecessary done action)
+> **Sub-CEFR**: B2 | **Grammar focus**: might have + past participle (uncertainty); needn't have + past participle (unnecessary done action) | **Tense**: MODAL · perfect
 > **Markers**: [denso]
 > **Real-life context**: You speculate with uncertainty about the past, or notice actions that weren't needed.
 
@@ -685,7 +685,7 @@
 
 ## Unit I05 — All modal perfects together
 
-> **Sub-CEFR**: B2 | **Grammar focus**: Integration of all modal perfects
+> **Sub-CEFR**: B2 | **Grammar focus**: Integration of all modal perfects | **Tense**: MODAL · perfect
 > **Markers**: —
 > **Real-life context**: You mix should/could/would/might/must/can't/needn't + have done naturally.
 

@@ -25,7 +25,7 @@
 
 ## Unit A01 — This, that as reference
 
-> **Sub-CEFR**: C2 | **Grammar focus**: Demonstratives (this/that/these/those) as anaphoric reference to previous content
+> **Sub-CEFR**: C2 | **Grammar focus**: Demonstratives (this/that/these/those) as anaphoric reference to previous content | **Tense**: COHESION
 > **Markers**: [denso] [cohesion]
 > **Real-life context**: You point back to what's just been said with the right demonstrative — keeping discourse threaded without repetition.
 
@@ -165,7 +165,7 @@
 
 ## Unit A02 — Lexical chains
 
-> **Sub-CEFR**: C2 | **Grammar focus**: Lexical cohesion via synonyms, hyponyms, and superordinates (a Toyota → the car → the vehicle → the machine)
+> **Sub-CEFR**: C2 | **Grammar focus**: Lexical cohesion via synonyms, hyponyms, and superordinates (a Toyota → the car → the vehicle → the machine) | **Tense**: COHESION
 > **Markers**: [denso] [cohesion]
 > **Real-life context**: You vary vocabulary while keeping the referent clear — moving from specific to general or substituting synonyms.
 
@@ -306,7 +306,7 @@
 
 ## Unit A03 — The former, the latter, such
 
-> **Sub-CEFR**: C2 | **Grammar focus**: Formal anaphoric devices — the former / the latter, such X, the aforementioned, the X in question
+> **Sub-CEFR**: C2 | **Grammar focus**: Formal anaphoric devices — the former / the latter, such X, the aforementioned, the X in question | **Tense**: COHESION
 > **Markers**: [denso] [cohesion]
 > **Real-life context**: You write formal prose where you need to refer back unambiguously to one of two prior items, or summarise prior text.
 
@@ -447,7 +447,7 @@
 
 ## Unit A04 — Old information first
 
-> **Sub-CEFR**: C2 | **Grammar focus**: Information flow — placing old/given information at the start of a sentence and new information at the end (theme-rheme structure)
+> **Sub-CEFR**: C2 | **Grammar focus**: Information flow — placing old/given information at the start of a sentence and new information at the end (theme-rheme structure) | **Tense**: COHESION
 > **Markers**: [denso] [discourse]
 > **Real-life context**: You write extended prose where each sentence begins with what's already known and ends with new information — building cumulatively.
 
@@ -588,7 +588,7 @@
 
 ## Unit A05 — Bridging and avoiding ambiguous referents
 
-> **Sub-CEFR**: C2 | **Grammar focus**: Bridging (implied connections without explicit markers) and avoiding ambiguous "it / this / they" references
+> **Sub-CEFR**: C2 | **Grammar focus**: Bridging (implied connections without explicit markers) and avoiding ambiguous "it / this / they" references | **Tense**: COHESION
 > **Markers**: —
 > **Real-life context**: You write coherently even without explicit connectives — relying on inference — while making sure every pronoun has a clear antecedent.
 

@@ -40,6 +40,7 @@
       "title": "Idiomas com partes do corpo",
       "sub_cefr": "C2",
       "grammar_focus": "Body-part idioms — embodied metaphors deeply rooted in English",
+      "tense": "IDIOM",
       "markers": [
         "idiom",
         "cultural"
@@ -190,6 +191,7 @@
       "title": "Idiomas com animais",
       "sub_cefr": "C2",
       "grammar_focus": "Animal-based idioms — distinctly Anglo-cultural metaphors",
+      "tense": "IDIOM",
       "markers": [
         "idiom",
         "cultural"
@@ -340,6 +342,7 @@
       "title": "Idiomas de tempo e raridade",
       "sub_cefr": "C2",
       "grammar_focus": "Time and frequency idioms — once in a blue moon, burn the midnight oil, out of the blue",
+      "tense": "IDIOM",
       "markers": [
         "idiom",
         "cultural"
@@ -490,6 +493,7 @@
       "title": "Idiomas de decisão e ação",
       "sub_cefr": "C2",
       "grammar_focus": "Decision/action idioms — throw in the towel, ball is in your court, cutting corners, the last straw, back to square one",
+      "tense": "IDIOM",
       "markers": [
         "idiom",
         "cultural"
@@ -640,6 +644,7 @@
       "title": "Idiomas conversacionais",
       "sub_cefr": "C2",
       "grammar_focus": "Conversational idioms — speak of the devil, piece of cake, break the ice, hit the nail on the head, rule of thumb",
+      "tense": "IDIOM",
       "markers": [
         "idiom",
         "cultural"

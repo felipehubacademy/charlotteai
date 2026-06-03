@@ -27,7 +27,7 @@
 
 ## Unit A01 — Walking down the street
 
-> **Sub-CEFR**: C1 | **Grammar focus**: Present participle (-ing) clauses — simultaneous or causal action
+> **Sub-CEFR**: C1 | **Grammar focus**: Present participle (-ing) clauses — simultaneous or causal action | **Tense**: PARTICIPLE CLAUSE
 > **Markers**: [denso]
 > **Real-life context**: You compress two simultaneous past actions or describe ongoing setting + main action.
 
@@ -168,7 +168,7 @@
 
 ## Unit A02 — Built in 1900
 
-> **Sub-CEFR**: C1 | **Grammar focus**: Past participle (-ed) clauses — passive compression
+> **Sub-CEFR**: C1 | **Grammar focus**: Past participle (-ed) clauses — passive compression | **Tense**: PARTICIPLE CLAUSE
 > **Markers**: [denso]
 > **Real-life context**: You describe an object/person with its passive past, compressing "X, which was built..." into "Built..., X...".
 
@@ -309,7 +309,7 @@
 
 ## Unit A03 — Having finished
 
-> **Sub-CEFR**: C1 | **Grammar focus**: Perfect participle (Having + past participle) — completed action before main action
+> **Sub-CEFR**: C1 | **Grammar focus**: Perfect participle (Having + past participle) — completed action before main action | **Tense**: PARTICIPLE CLAUSE
 > **Markers**: [denso]
 > **Real-life context**: You signal that one event was finished before another began — clear temporal sequence in compressed form.
 
@@ -449,7 +449,7 @@
 
 ## Unit A04 — Having been told
 
-> **Sub-CEFR**: C1 | **Grammar focus**: Perfect passive participle (Having been + past participle) — completed passive event before main action
+> **Sub-CEFR**: C1 | **Grammar focus**: Perfect passive participle (Having been + past participle) — completed passive event before main action | **Tense**: PARTICIPLE CLAUSE
 > **Markers**: [denso]
 > **Real-life context**: You note what was done TO the subject before they themselves acted — passive history as preamble.
 
@@ -589,7 +589,7 @@
 
 ## Unit A05 — Reduced relatives + with-clauses
 
-> **Sub-CEFR**: C1 | **Grammar focus**: Reduced relative clauses (the man sitting / the book written) + with-clauses (with everyone watching)
+> **Sub-CEFR**: C1 | **Grammar focus**: Reduced relative clauses (the man sitting / the book written) + with-clauses (with everyone watching) | **Tense**: PARTICIPLE CLAUSE
 > **Markers**: —
 > **Real-life context**: You compress relative clauses into participle phrases and add accompanying circumstances with "with + noun + -ing/-ed".
 

@@ -29,6 +29,7 @@
       "title": "Tags com to be e have",
       "sub_cefr": "B1",
       "grammar_focus": "Tag questions with \"to be\" (present and past) and \"have/has/had\"",
+      "tense": "TAG QUESTION",
       "markers": [
         "conversation"
       ],
@@ -223,6 +224,7 @@
       "title": "Tags com do/does/did",
       "sub_cefr": "B1",
       "grammar_focus": "Tag questions with \"do/does/did\" — for simple present and simple past with main verbs (not auxiliaries)",
+      "tense": "TAG QUESTION",
       "markers": [
         "conversation"
       ],
@@ -417,6 +419,7 @@
       "title": "Tags com modais",
       "sub_cefr": "B1",
       "grammar_focus": "Tag questions with modals (can, could, will, would, should, must)",
+      "tense": "TAG QUESTION",
       "markers": [
         "conversation"
       ],
@@ -614,6 +617,7 @@
       "title": "Casos especiais",
       "sub_cefr": "B2",
       "grammar_focus": "Special tag cases — \"I am → aren't I\", \"Let's → shall we\", imperative tags (will you?), tags with indefinite subjects (everyone, nobody, somebody)",
+      "tense": "TAG QUESTION",
       "markers": [
         "denso",
         "conversation"
@@ -814,6 +818,7 @@
       "title": "Fillers naturais",
       "sub_cefr": "B2",
       "grammar_focus": "Conversational fillers (you know, I mean, like, well, so, right) used naturally — plus rising vs falling intonation distinction in tag questions",
+      "tense": "CHUNKS",
       "markers": [
         "denso",
         "conversation"

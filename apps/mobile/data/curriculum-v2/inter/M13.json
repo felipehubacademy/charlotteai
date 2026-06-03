@@ -22,6 +22,7 @@
       "title": "If I had known",
       "sub_cefr": "B2",
       "grammar_focus": "Third conditional structure (If + past perfect, would have + past participle)",
+      "tense": "CONDITIONAL · 3rd",
       "markers": [
         "denso"
       ],
@@ -219,6 +220,7 @@
       "title": "I wish I had",
       "sub_cefr": "B2",
       "grammar_focus": "Wishes about the past (I wish + past perfect) — regret",
+      "tense": "CONDITIONAL · 3rd · wish",
       "markers": [
         "denso"
       ],
@@ -416,6 +418,7 @@
       "title": "What would you have done?",
       "sub_cefr": "B2",
       "grammar_focus": "Questions in third conditional (Would you have + past participle + if?)",
+      "tense": "CONDITIONAL · 3rd · question",
       "markers": [
         "qform"
       ],
@@ -613,6 +616,7 @@
       "title": "What almost happened",
       "sub_cefr": "B2",
       "grammar_focus": "Chained third conditional in narrative — stringing multiple \"If + past perfect, would have + past participle\" to tell stories of close calls and alternate pasts. Negative forms (\"wouldn't have\", \"nothing would have happened\").",
+      "tense": "CONDITIONAL · 3rd",
       "markers": [
         "denso"
       ],
@@ -805,6 +809,7 @@
       "title": "Past hypotheticals together",
       "sub_cefr": "B2",
       "grammar_focus": "Integration of third conditional + wish + past + chained close calls",
+      "tense": "CONDITIONAL · 3rd",
       "markers": [],
       "real_life_context": "You alternate fluidly between past hypotheticals, wishes, and chained close-call narratives in real conversation.",
       "grammar": [

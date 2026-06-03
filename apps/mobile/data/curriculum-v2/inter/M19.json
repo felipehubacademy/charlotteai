@@ -23,6 +23,7 @@
       "title": "My brother, who",
       "sub_cefr": "B2",
       "grammar_focus": "Non-defining relative clauses with \"who\" (people)",
+      "tense": "RELATIVE CLAUSE · non-defining",
       "markers": [
         "denso"
       ],
@@ -217,6 +218,7 @@
       "title": "The Amazon, which",
       "sub_cefr": "B2",
       "grammar_focus": "Non-defining relative clauses with \"which\" (things) and clause-referring \"which\"",
+      "tense": "RELATIVE CLAUSE · non-defining",
       "markers": [
         "denso"
       ],
@@ -414,6 +416,7 @@
       "title": "Maria, whose",
       "sub_cefr": "B2",
       "grammar_focus": "Non-defining \"whose\" (possession)",
+      "tense": "RELATIVE CLAUSE · non-defining",
       "markers": [
         "denso"
       ],
@@ -611,6 +614,7 @@
       "title": "Where, when",
       "sub_cefr": "B2",
       "grammar_focus": "Non-defining \"where\" (place) and \"when\" (time)",
+      "tense": "RELATIVE CLAUSE · non-defining",
       "markers": [
         "denso"
       ],
@@ -808,6 +812,7 @@
       "title": "Defining vs non-defining",
       "sub_cefr": "B2",
       "grammar_focus": "Difference between defining (no commas, \"that\" OK) and non-defining (commas, no \"that\")",
+      "tense": "RELATIVE CLAUSE",
       "markers": [],
       "real_life_context": "You distinguish essential identifying info from extra info.",
       "grammar": [

@@ -26,6 +26,7 @@
       "title": "Word stress",
       "sub_cefr": "C2",
       "grammar_focus": "Word stress in multi-syllable words — especially noun/verb pairs (PROduce/proDUCE, CONtract/conTRACT) and Latinate words (phoTOgraphy, photoGRAphic)",
+      "tense": "PRONUNCIATION",
       "markers": [
         "denso",
         "pronunciation"
@@ -176,6 +177,7 @@
       "title": "Sentence stress and weak forms",
       "sub_cefr": "C2",
       "grammar_focus": "Content words (stressed) vs function words (weak/unstressed), schwa /ə/ in weak forms (of, for, to, and, a, the)",
+      "tense": "PRONUNCIATION",
       "markers": [
         "denso",
         "pronunciation"
@@ -327,6 +329,7 @@
       "title": "Connected speech",
       "sub_cefr": "C2",
       "grammar_focus": "Linking (consonant + vowel), intrusive /r/, /j/, /w/, assimilation, elision",
+      "tense": "PRONUNCIATION",
       "markers": [
         "denso",
         "pronunciation"
@@ -480,6 +483,7 @@
       "title": "Intonation",
       "sub_cefr": "C2",
       "grammar_focus": "Intonation patterns — yes/no question rise, wh-question fall, statement fall, list rise-rise-fall, sarcasm/disbelief patterns",
+      "tense": "PRONUNCIATION",
       "markers": [
         "denso",
         "pronunciation"
@@ -630,6 +634,7 @@
       "title": "Contractions and elision",
       "sub_cefr": "C2",
       "grammar_focus": "Contractions (he's, we'd, won't, shouldn't, mightn't) and elision (drop of /t/ /d/ between consonants — \"next month\" → \"nex' month\")",
+      "tense": "PRONUNCIATION",
       "markers": [],
       "real_life_context": "You produce the contractions and droppings that fluent English flows on — never speaking entirely \"carefully\" in conversation.",
       "grammar": [

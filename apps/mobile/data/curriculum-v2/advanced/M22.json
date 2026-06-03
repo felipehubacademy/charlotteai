@@ -14,6 +14,7 @@
       "title": "Mixed-register narrative",
       "sub_cefr": "C2",
       "grammar_focus": "Open narrative drawing on literary craft (M14), cleft sentences (M03), ellipsis (M17), and casual fillers (M21) within a single short passage",
+      "tense": "INTEGRATION",
       "markers": [
         "integrative"
       ],
@@ -173,6 +174,7 @@
       "title": "Argumentative essay opening",
       "sub_cefr": "C2",
       "grammar_focus": "Open an argument integrating inversion (M02), clefts (M03), academic register (M12), and argument structure (M13)",
+      "tense": "INTEGRATION",
       "markers": [
         "integrative"
       ],
@@ -325,6 +327,7 @@
       "title": "Diplomatic conversation",
       "sub_cefr": "C2",
       "grammar_focus": "Concession (M10) + hedging (M08) + register (M11) + pragmatic openers (M21) — disagree firmly while preserving the relationship",
+      "tense": "INTEGRATION",
       "markers": [
         "integrative"
       ],
@@ -478,6 +481,7 @@
       "title": "Spontaneous casual speech",
       "sub_cefr": "C2",
       "grammar_focus": "Contractions + connected speech (M20) + tag questions + backchannels + fillers (M21) + conversions (M16) — sounding fully native in informal exchange",
+      "tense": "INTEGRATION",
       "markers": [
         "integrative"
       ],
@@ -630,6 +634,7 @@
       "title": "Full synthesis",
       "sub_cefr": "C2",
       "grammar_focus": "Code-switching across registers in a single extended exchange — formal academic, diplomatic professional, casual personal — within one continuous conversation",
+      "tense": "INTEGRATION",
       "markers": [
         "integrative"
       ],

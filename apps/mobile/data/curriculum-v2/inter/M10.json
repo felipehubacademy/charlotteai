@@ -23,6 +23,7 @@
       "title": "General truths",
       "sub_cefr": "B1",
       "grammar_focus": "Zero conditional (If + present, present) for facts",
+      "tense": "CONDITIONAL · zero",
       "markers": [
         "denso"
       ],
@@ -225,6 +226,7 @@
       "title": "Zero vs first",
       "sub_cefr": "B1",
       "grammar_focus": "Distinguishing zero conditional (general truth) from first conditional (specific future)",
+      "tense": "CONDITIONAL · zero vs 1st",
       "markers": [
         "denso"
       ],
@@ -428,6 +430,7 @@
       "title": "When vs If",
       "sub_cefr": "B1",
       "grammar_focus": "When (certainty/routine) vs If (possibility) in conditional contexts",
+      "tense": "CONDITIONAL · zero vs 1st",
       "markers": [],
       "real_life_context": "You choose between \"when\" and \"if\" based on how certain or uncertain the situation is.",
       "grammar": [
@@ -623,6 +626,7 @@
       "title": "Conditional review",
       "sub_cefr": "B1",
       "grammar_focus": "Reviewing zero + first conditionals together",
+      "tense": "CONDITIONAL · zero & 1st",
       "markers": [],
       "real_life_context": "You mix general truths and specific predictions naturally in the same conversation.",
       "grammar": [
@@ -817,6 +821,7 @@
       "title": "Conditionals in context",
       "sub_cefr": "B1",
       "grammar_focus": "Full integration of zero + first conditionals in natural conversation",
+      "tense": "CONDITIONAL · zero & 1st",
       "markers": [],
       "real_life_context": "You speak conditionally without thinking — mixing truths, plans, and possibilities seamlessly.",
       "grammar": [

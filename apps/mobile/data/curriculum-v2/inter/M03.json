@@ -21,6 +21,7 @@
       "title": "Finished or still going?",
       "sub_cefr": "B1",
       "grammar_focus": "PP for connected past vs past simple for finished",
+      "tense": "PRESENT · perfect vs past",
       "markers": [
         "denso"
       ],
@@ -213,6 +214,7 @@
       "title": "For two years",
       "sub_cefr": "B1",
       "grammar_focus": "for + duration (with PP)",
+      "tense": "PRESENT · perfect",
       "markers": [
         "denso"
       ],
@@ -408,6 +410,7 @@
       "title": "Since 2010",
       "sub_cefr": "B1",
       "grammar_focus": "since + point in time",
+      "tense": "PRESENT · perfect",
       "markers": [
         "denso"
       ],
@@ -603,6 +606,7 @@
       "title": "How long have you?",
       "sub_cefr": "B1",
       "grammar_focus": "How long + present perfect (with for/since)",
+      "tense": "PRESENT · perfect · question",
       "markers": [
         "qform"
       ],
@@ -798,6 +802,7 @@
       "title": "Past or perfect?",
       "sub_cefr": "B1",
       "grammar_focus": "Integration past simple vs present perfect",
+      "tense": "PRESENT · perfect vs past",
       "markers": [
         "denso"
       ],

@@ -31,7 +31,7 @@
 
 ## Unit A01 — Assertive or pushy?
 
-> **Sub-CEFR**: C1 | **Grammar focus**: Synonyms with different connotations — choosing the word that signals your judgement
+> **Sub-CEFR**: C1 | **Grammar focus**: Synonyms with different connotations — choosing the word that signals your judgement | **Tense**: REGISTER
 > **Markers**: [denso] [connotation]
 > **Real-life context**: You describe the same behaviour positively, neutrally, or negatively depending on what you actually think.
 
@@ -174,7 +174,7 @@
 
 ## Unit A02 — Commence, ascertain, demonstrate
 
-> **Sub-CEFR**: C1 | **Grammar focus**: Formal vs informal register pairs (start/commence, ask/inquire, find out/ascertain, get/obtain, show/demonstrate, put off/postpone, look into/investigate)
+> **Sub-CEFR**: C1 | **Grammar focus**: Formal vs informal register pairs (start/commence, ask/inquire, find out/ascertain, get/obtain, show/demonstrate, put off/postpone, look into/investigate) | **Tense**: REGISTER
 > **Markers**: [denso] [register]
 > **Real-life context**: You shift register up for formal writing (academic, legal, business) or down for natural speech — knowing both halves of each pair.
 
@@ -314,7 +314,7 @@
 
 ## Unit A03 — Pass away, between jobs
 
-> **Sub-CEFR**: C1 | **Grammar focus**: Euphemism (passed away, between jobs, let go, downsized, pre-owned, in a better place, restroom) — softening sensitive topics
+> **Sub-CEFR**: C1 | **Grammar focus**: Euphemism (passed away, between jobs, let go, downsized, pre-owned, in a better place, restroom) — softening sensitive topics | **Tense**: REGISTER
 > **Markers**: [denso] [euphemism]
 > **Real-life context**: You handle death, job loss, age, illness, and other delicate topics with the words convention expects.
 
@@ -456,7 +456,7 @@
 
 ## Unit A04 — Not bad, no small feat
 
-> **Sub-CEFR**: C1 | **Grammar focus**: Litotes (understatement through negation) — "not bad", "no small feat", "I wouldn't say no", "not exactly cheap"
+> **Sub-CEFR**: C1 | **Grammar focus**: Litotes (understatement through negation) — "not bad", "no small feat", "I wouldn't say no", "not exactly cheap" | **Tense**: REGISTER
 > **Markers**: [denso] [understatement]
 > **Real-life context**: You signal positive evaluation by negating a negative — adding a dry, often British-tinged sophistication.
 
@@ -598,7 +598,7 @@
 
 ## Unit A05 — Code-switching
 
-> **Sub-CEFR**: C1 | **Grammar focus**: Code-switching across registers within a conversation — formal to casual, casual to formal, technical to plain — and recognising when each fits
+> **Sub-CEFR**: C1 | **Grammar focus**: Code-switching across registers within a conversation — formal to casual, casual to formal, technical to plain — and recognising when each fits | **Tense**: REGISTER
 > **Markers**: —
 > **Real-life context**: You move between contexts in one day — formal email, casual chat with colleague, technical discussion with peers — choosing register fluidly.
 
@@ -740,7 +740,7 @@
 
 ## Unit A06 — UK vs US + Falsos cognatos cross-link
 
-> **Sub-CEFR**: C1 | **Grammar focus**: Awareness of UK vs US English (vocabulary, spelling, gotten/got) + final reinforcement of false cognates for Lusophones (Fase B extra unit)
+> **Sub-CEFR**: C1 | **Grammar focus**: Awareness of UK vs US English (vocabulary, spelling, gotten/got) + final reinforcement of false cognates for Lusophones (Fase B extra unit) | **Tense**: REGISTER
 > **Markers**: [awareness]
 > **Real-life context**: You recognise British vs American English differences and avoid the most persistent false-cognate traps that catch Portuguese-speakers even at C1.
 

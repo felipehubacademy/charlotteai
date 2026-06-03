@@ -26,6 +26,7 @@
       "title": "Never have I",
       "sub_cefr": "C1",
       "grammar_focus": "Inversion after negative frequency adverbials (Never, Rarely, Seldom, Hardly ever)",
+      "tense": "INVERSION",
       "markers": [
         "denso",
         "inversion"
@@ -180,6 +181,7 @@
       "title": "Hardly had I, No sooner had I",
       "sub_cefr": "C1",
       "grammar_focus": "Inversion after \"Hardly\", \"Scarcely\", \"No sooner\" for near-simultaneous past events",
+      "tense": "INVERSION",
       "markers": [
         "denso",
         "inversion"
@@ -330,6 +332,7 @@
       "title": "Not only, Not until",
       "sub_cefr": "C1",
       "grammar_focus": "Inversion after \"Not only\" (additive emphasis) and \"Not until\" (delayed realization)",
+      "tense": "INVERSION",
       "markers": [
         "denso",
         "inversion"
@@ -483,6 +486,7 @@
       "title": "Only after, Little did I know",
       "sub_cefr": "C1",
       "grammar_focus": "Inversion after \"Only after/when/by\" (delayed cause) and \"Little did + subject + know/realise\" (dramatic irony)",
+      "tense": "INVERSION",
       "markers": [
         "denso",
         "inversion"
@@ -636,6 +640,7 @@
       "title": "Under no circumstances",
       "sub_cefr": "C1",
       "grammar_focus": "Inversion after restrictive negative phrases (Under no circumstances, On no account, In no way, At no time)",
+      "tense": "INVERSION",
       "markers": [
         "denso",
         "inversion"

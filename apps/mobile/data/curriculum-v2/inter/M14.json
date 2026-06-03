@@ -24,6 +24,7 @@
       "title": "I should have",
       "sub_cefr": "B2",
       "grammar_focus": "should have / shouldn't have + past participle (regret + criticism)",
+      "tense": "MODAL · perfect",
       "markers": [
         "denso"
       ],
@@ -218,6 +219,7 @@
       "title": "I could have",
       "sub_cefr": "B2",
       "grammar_focus": "could have / couldn't have + past participle (past possibility/missed chance)",
+      "tense": "MODAL · perfect",
       "markers": [
         "denso"
       ],
@@ -412,6 +414,7 @@
       "title": "Must have / Can't have",
       "sub_cefr": "B2",
       "grammar_focus": "must have / can't have + past participle (strong inference about past)",
+      "tense": "MODAL · perfect",
       "markers": [
         "denso"
       ],
@@ -609,6 +612,7 @@
       "title": "Might have / Needn't have",
       "sub_cefr": "B2",
       "grammar_focus": "might have + past participle (uncertainty); needn't have + past participle (unnecessary done action)",
+      "tense": "MODAL · perfect",
       "markers": [
         "denso"
       ],
@@ -806,6 +810,7 @@
       "title": "All modal perfects together",
       "sub_cefr": "B2",
       "grammar_focus": "Integration of all modal perfects",
+      "tense": "MODAL · perfect",
       "markers": [],
       "real_life_context": "You mix should/could/would/might/must/can't/needn't + have done naturally.",
       "grammar": [

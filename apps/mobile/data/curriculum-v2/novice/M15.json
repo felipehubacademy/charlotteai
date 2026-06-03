@@ -22,6 +22,7 @@
       "title": "Trabalhei ontem",
       "sub_cefr": "A2",
       "grammar_focus": "Past simple regular -ed (basic)",
+      "tense": "PAST · simple",
       "markers": [
         "denso"
       ],
@@ -226,6 +227,7 @@
       "title": "Liguei, cheguei, parei",
       "sub_cefr": "A2",
       "grammar_focus": "Past simple regular — spelling rules (e+d, double consonant, y→ied)",
+      "tense": "PAST · simple",
       "markers": [],
       "real_life_context": "Você usa verbos com regras especiais de spelling no passado.",
       "grammar": [
@@ -428,6 +430,7 @@
       "title": "Quando isso aconteceu?",
       "sub_cefr": "A2",
       "grammar_focus": "Past simple regular with time markers",
+      "tense": "PAST · simple",
       "markers": [],
       "real_life_context": "Você ancora ações passadas em pontos específicos do tempo.",
       "grammar": [
@@ -630,6 +633,7 @@
       "title": "Pronúncia do -ed",
       "sub_cefr": "A2",
       "grammar_focus": "-ed pronunciation rules (/t/, /d/, /id/)",
+      "tense": "PAST · simple",
       "markers": [],
       "real_life_context": "Você pronuncia -ed corretamente — /t/, /d/, /id/ — em diferentes verbos.",
       "grammar": [
@@ -847,6 +851,7 @@
       "title": "Meu dia ontem",
       "sub_cefr": "A2",
       "grammar_focus": "Integration past simple regular",
+      "tense": "PAST · simple",
       "markers": [],
       "real_life_context": "Você narra um dia completo passado usando verbos regulares.",
       "grammar": [

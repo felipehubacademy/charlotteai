@@ -26,6 +26,7 @@
       "title": "This, that as reference",
       "sub_cefr": "C2",
       "grammar_focus": "Demonstratives (this/that/these/those) as anaphoric reference to previous content",
+      "tense": "COHESION",
       "markers": [
         "denso",
         "cohesion"
@@ -176,6 +177,7 @@
       "title": "Lexical chains",
       "sub_cefr": "C2",
       "grammar_focus": "Lexical cohesion via synonyms, hyponyms, and superordinates (a Toyota → the car → the vehicle → the machine)",
+      "tense": "COHESION",
       "markers": [
         "denso",
         "cohesion"
@@ -329,6 +331,7 @@
       "title": "The former, the latter, such",
       "sub_cefr": "C2",
       "grammar_focus": "Formal anaphoric devices — the former / the latter, such X, the aforementioned, the X in question",
+      "tense": "COHESION",
       "markers": [
         "denso",
         "cohesion"
@@ -482,6 +485,7 @@
       "title": "Old information first",
       "sub_cefr": "C2",
       "grammar_focus": "Information flow — placing old/given information at the start of a sentence and new information at the end (theme-rheme structure)",
+      "tense": "COHESION",
       "markers": [
         "denso",
         "discourse"
@@ -633,6 +637,7 @@
       "title": "Bridging and avoiding ambiguous referents",
       "sub_cefr": "C2",
       "grammar_focus": "Bridging (implied connections without explicit markers) and avoiding ambiguous \"it / this / they\" references",
+      "tense": "COHESION",
       "markers": [],
       "real_life_context": "You write coherently even without explicit connectives — relying on inference — while making sure every pronoun has a clear antecedent.",
       "grammar": [

@@ -23,6 +23,7 @@
       "title": "As tall as",
       "sub_cefr": "B1",
       "grammar_focus": "as + adjective + as (equality between two things)",
+      "tense": "COMPARATIVE · as...as",
       "markers": [
         "denso"
       ],
@@ -220,6 +221,7 @@
       "title": "Not as...as",
       "sub_cefr": "B1",
       "grammar_focus": "not as + adjective + as (expressing inequality, \"less than\")",
+      "tense": "COMPARATIVE · as...as",
       "markers": [],
       "real_life_context": "You express that something is less than another in some quality — softer than \"X is more Y than Z\".",
       "grammar": [
@@ -415,6 +417,7 @@
       "title": "Twice as much",
       "sub_cefr": "B1",
       "grammar_focus": "Multipliers + as...as (twice, three times, half)",
+      "tense": "COMPARATIVE · as...as",
       "markers": [
         "denso"
       ],
@@ -612,6 +615,7 @@
       "title": "The more, the better",
       "sub_cefr": "B1",
       "grammar_focus": "Parallel comparatives — \"the more X, the more Y\"",
+      "tense": "COMPARATIVE",
       "markers": [
         "denso"
       ],
@@ -809,6 +813,7 @@
       "title": "All comparisons combined",
       "sub_cefr": "B1",
       "grammar_focus": "Integration — equality, inequality, multipliers, parallels",
+      "tense": "COMPARATIVE",
       "markers": [],
       "real_life_context": "You combine all comparison forms in one description, choosing the right structure for each idea.",
       "grammar": [

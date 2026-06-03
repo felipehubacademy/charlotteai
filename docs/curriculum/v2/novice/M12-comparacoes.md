@@ -22,7 +22,7 @@
 
 ## Unit N01 — Mais alto, mais baixo
 
-> **Sub-CEFR**: A2 | **Grammar focus**: Short adjectives + -er than
+> **Sub-CEFR**: A2 | **Grammar focus**: Short adjectives + -er than | **Tense**: COMPARATIVE
 > **Markers**: [denso]
 > **Real-life context**: Você compara pessoas (alturas), coisas (preços) e lugares (tamanhos) usando adjetivos curtos.
 
@@ -188,7 +188,7 @@
 
 ## Unit N02 — Mais bonito, mais interessante
 
-> **Sub-CEFR**: A2 | **Grammar focus**: Long adjectives (2+ syllables) + more + adj + than
+> **Sub-CEFR**: A2 | **Grammar focus**: Long adjectives (2+ syllables) + more + adj + than | **Tense**: COMPARATIVE
 > **Markers**: —
 > **Real-life context**: Você compara qualidades subjetivas — beleza, interesse, dificuldade.
 
@@ -353,7 +353,7 @@
 
 ## Unit N03 — Melhor, pior, mais, menos
 
-> **Sub-CEFR**: A2 | **Grammar focus**: Irregular comparatives (better/worse/more/less/farther)
+> **Sub-CEFR**: A2 | **Grammar focus**: Irregular comparatives (better/worse/more/less/farther) | **Tense**: COMPARATIVE
 > **Markers**: [denso]
 > **Real-life context**: Você compara usando os adjetivos irregulares mais comuns.
 
@@ -518,7 +518,7 @@
 
 ## Unit N04 — Bem mais, um pouco mais
 
-> **Sub-CEFR**: A2 | **Grammar focus**: Modifiers (much/a little/a bit + comparative)
+> **Sub-CEFR**: A2 | **Grammar focus**: Modifiers (much/a little/a bit + comparative) | **Tense**: COMPARATIVE
 > **Markers**: —
 > **Real-life context**: Você suaviza ou intensifica comparações — "muito mais", "um pouco mais", "um pouco menos".
 
@@ -683,7 +683,7 @@
 
 ## Unit N05 — Comparando tudo
 
-> **Sub-CEFR**: A2 | **Grammar focus**: Integration of all M12 comparatives
+> **Sub-CEFR**: A2 | **Grammar focus**: Integration of all M12 comparatives | **Tense**: COMPARATIVE
 > **Markers**: —
 > **Real-life context**: Você combina comparativos curtos, longos e irregulares em descrições completas.
 

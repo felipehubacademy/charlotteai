@@ -21,6 +21,7 @@
       "title": "Eu não fiz",
       "sub_cefr": "A2",
       "grammar_focus": "Past simple negative (didn't + base)",
+      "tense": "PAST · simple · negative",
       "markers": [
         "denso"
       ],
@@ -228,6 +229,7 @@
       "title": "Você fez?",
       "sub_cefr": "A2",
       "grammar_focus": "Past simple yes/no questions (Did you...?)",
+      "tense": "PAST · simple · question",
       "markers": [],
       "real_life_context": "Você pergunta sobre o que alguém fez ontem.",
       "grammar": [
@@ -433,6 +435,7 @@
       "title": "Onde, quando, o quê?",
       "sub_cefr": "A2",
       "grammar_focus": "Past WH-questions (Where did you...? What did she...?)",
+      "tense": "PAST · simple · question",
       "markers": [
         "qform"
       ],
@@ -640,6 +643,7 @@
       "title": "Eu nunca fiz isso",
       "sub_cefr": "A2",
       "grammar_focus": "Past simple negative — extension (never + did/didn't)",
+      "tense": "PAST · simple · negative",
       "markers": [],
       "real_life_context": "Você fala sobre o que nunca fez ou não fez.",
       "grammar": [
@@ -842,6 +846,7 @@
       "title": "Tudo no passado",
       "sub_cefr": "A2",
       "grammar_focus": "Integration past simple (positive/negative/question/WH)",
+      "tense": "PAST · simple",
       "markers": [],
       "real_life_context": "Você narra uma história completa com afirmativas, negativas e perguntas no passado.",
       "grammar": [

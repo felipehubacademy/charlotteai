@@ -19,7 +19,7 @@
 
 ## Unit I01 — The person who
 
-> **Sub-CEFR**: B1 | **Grammar focus**: who for people in defining clauses
+> **Sub-CEFR**: B1 | **Grammar focus**: who for people in defining clauses | **Tense**: RELATIVE CLAUSE
 > **Markers**: [denso]
 > **Real-life context**: You describe people by what they do.
 
@@ -185,7 +185,7 @@
 
 ## Unit I02 — The book which
 
-> **Sub-CEFR**: B1 | **Grammar focus**: which/that for things in defining clauses
+> **Sub-CEFR**: B1 | **Grammar focus**: which/that for things in defining clauses | **Tense**: RELATIVE CLAUSE
 > **Markers**: —
 > **Real-life context**: You describe things by features.
 
@@ -353,7 +353,7 @@
 
 ## Unit I03 — The place where
 
-> **Sub-CEFR**: B1 | **Grammar focus**: where for places
+> **Sub-CEFR**: B1 | **Grammar focus**: where for places | **Tense**: RELATIVE CLAUSE
 > **Markers**: —
 > **Real-life context**: You describe places using "where".
 
@@ -517,7 +517,7 @@
 
 ## Unit I04 — Whose
 
-> **Sub-CEFR**: B1 | **Grammar focus**: whose for possession
+> **Sub-CEFR**: B1 | **Grammar focus**: whose for possession | **Tense**: RELATIVE CLAUSE
 > **Markers**: —
 > **Real-life context**: You describe people by what they own or who's related.
 
@@ -682,7 +682,7 @@
 
 ## Unit I05 — All relatives combined
 
-> **Sub-CEFR**: B1 | **Grammar focus**: Integration who/which/that/where/whose
+> **Sub-CEFR**: B1 | **Grammar focus**: Integration who/which/that/where/whose | **Tense**: RELATIVE CLAUSE
 > **Markers**: —
 > **Real-life context**: You combine all relative pronouns in descriptions.
 

@@ -30,6 +30,7 @@
       "title": "I was wondering if",
       "sub_cefr": "C1",
       "grammar_focus": "Past continuous softening (I was wondering if / I was hoping...) for polite requests",
+      "tense": "HEDGING",
       "markers": [
         "denso",
         "hedging"
@@ -183,6 +184,7 @@
       "title": "It might be worth",
       "sub_cefr": "C1",
       "grammar_focus": "Hedging suggestions with modals (it might be worth + -ing, you might want to + base, you may wish to + base, perhaps + clause)",
+      "tense": "HEDGING",
       "markers": [
         "denso",
         "hedging"
@@ -340,6 +342,7 @@
       "title": "With respect, I'd see it differently",
       "sub_cefr": "C1",
       "grammar_focus": "Polite disagreement (I take your point, but / With respect, / I'd see it differently / I'm not entirely sure)",
+      "tense": "HEDGING",
       "markers": [
         "denso",
         "hedging"
@@ -493,6 +496,7 @@
       "title": "One might say, In a sense",
       "sub_cefr": "C1",
       "grammar_focus": "Impersonal hedging (one might say, it could be argued, in a sense, to some extent, arguably)",
+      "tense": "HEDGING",
       "markers": [
         "denso",
         "hedging"
@@ -646,6 +650,7 @@
       "title": "Sort of, more or less",
       "sub_cefr": "C1",
       "grammar_focus": "Vague language (sort of, kind of, more or less, roughly, approximately, give or take, somewhat)",
+      "tense": "HEDGING",
       "markers": [],
       "real_life_context": "You communicate when you don't have precise information, or when softening makes the moment kinder.",
       "grammar": [

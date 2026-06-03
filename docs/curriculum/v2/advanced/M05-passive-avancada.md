@@ -26,7 +26,7 @@
 
 ## Unit A01 — It is said that
 
-> **Sub-CEFR**: C1 | **Grammar focus**: Impersonal passive with reporting verbs (It is said/believed/thought/reported/claimed that...)
+> **Sub-CEFR**: C1 | **Grammar focus**: Impersonal passive with reporting verbs (It is said/believed/thought/reported/claimed that...) | **Tense**: PASSIVE · impersonal
 > **Markers**: [denso] [formal]
 > **Real-life context**: You report common belief or unverified claim without naming a source — news writing, academic hedging.
 
@@ -166,7 +166,7 @@
 
 ## Unit A02 — He is said to be
 
-> **Sub-CEFR**: C1 | **Grammar focus**: Double passive — subject + is said/thought/believed + to + infinitive (or perfect/passive infinitive)
+> **Sub-CEFR**: C1 | **Grammar focus**: Double passive — subject + is said/thought/believed + to + infinitive (or perfect/passive infinitive) | **Tense**: PASSIVE · impersonal
 > **Markers**: [denso] [formal]
 > **Real-life context**: You report a claim about a specific person, fronting them as the subject instead of using "It is said that...".
 
@@ -307,7 +307,7 @@
 
 ## Unit A03 — Have something done
 
-> **Sub-CEFR**: C1 | **Grammar focus**: Causative have/get + object + past participle (services others perform for you)
+> **Sub-CEFR**: C1 | **Grammar focus**: Causative have/get + object + past participle (services others perform for you) | **Tense**: PASSIVE · causative
 > **Markers**: [denso]
 > **Real-life context**: You describe having someone else do something for you — haircut, repairs, dry-cleaning, surgery.
 
@@ -447,7 +447,7 @@
 
 ## Unit A04 — Get yourself done
 
-> **Sub-CEFR**: C1 | **Grammar focus**: Get-passive nuance — unintended/negative events, and "have/get + something + done by + agent"
+> **Sub-CEFR**: C1 | **Grammar focus**: Get-passive nuance — unintended/negative events, and "have/get + something + done by + agent" | **Tense**: PASSIVE · causative
 > **Markers**: [denso]
 > **Real-life context**: You distinguish causative ("I had it done") from passive misfortune ("I had my wallet stolen").
 
@@ -587,7 +587,7 @@
 
 ## Unit A05 — Mixed passive register
 
-> **Sub-CEFR**: C1 | **Grammar focus**: Integration of impersonal passive, double passive, causative, get-passive across registers
+> **Sub-CEFR**: C1 | **Grammar focus**: Integration of impersonal passive, double passive, causative, get-passive across registers | **Tense**: PASSIVE
 > **Markers**: —
 > **Real-life context**: You select the passive form that suits the register — formal news, conversational misfortune, arranged service.
 

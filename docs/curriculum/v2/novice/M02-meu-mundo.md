@@ -30,7 +30,7 @@
 
 ## Unit N01 — De 1 a 20
 
-> **Sub-CEFR**: A1 | **Grammar focus**: Numbers 1-20 chunks + ages with "I am"
+> **Sub-CEFR**: A1 | **Grammar focus**: Numbers 1-20 chunks + ages with "I am" | **Tense**: PRESENT · to be
 > **Markers**: —
 > **Real-life context**: Você precisa dizer sua idade, número do quarto do hotel, ou andar do prédio.
 
@@ -188,7 +188,7 @@ Charlotte fala via ElevenLabs (Rachel). Aluno repete; Azure Speech avalia pronú
 
 ## Unit N02 — De 20 a 100
 
-> **Sub-CEFR**: A1 | **Grammar focus**: Numbers 20-100 com hífen (twenty-five) + ages adultas
+> **Sub-CEFR**: A1 | **Grammar focus**: Numbers 20-100 com hífen (twenty-five) + ages adultas | **Tense**: PRESENT · to be
 > **Markers**: —
 > **Real-life context**: Você precisa dizer sua idade adulta, um preço maior, ou uma temperatura.
 
@@ -344,7 +344,7 @@ Charlotte fala via ElevenLabs (Rachel). Aluno repete; Azure Speech avalia pronú
 
 ## Unit N03 — Países do mundo
 
-> **Sub-CEFR**: A1 | **Grammar focus**: Country names + "I'm from + country" + países que levam "the"
+> **Sub-CEFR**: A1 | **Grammar focus**: Country names + "I'm from + country" + países que levam "the" | **Tense**: PRESENT · to be
 > **Markers**: —
 > **Real-life context**: Você está numa conferência internacional e troca de onde cada um é.
 
@@ -500,7 +500,7 @@ Charlotte fala via ElevenLabs (Rachel). Aluno repete; Azure Speech avalia pronú
 
 ## Unit N04 — Nacionalidades
 
-> **Sub-CEFR**: A1 | **Grammar focus**: Nationality adjectives — "I'm + nationality"
+> **Sub-CEFR**: A1 | **Grammar focus**: Nationality adjectives — "I'm + nationality" | **Tense**: PRESENT · to be
 > **Markers**: [denso]
 > **Real-life context**: Você precisa explicar sua nacionalidade vs país de origem (confusão típica).
 
@@ -656,7 +656,7 @@ Charlotte fala via ElevenLabs (Rachel). Aluno repete; Azure Speech avalia pronú
 
 ## Unit N05 — Meu cartão de visitas
 
-> **Sub-CEFR**: A1 | **Grammar focus**: Apresentação completa integrada — name + age + origin + nationality
+> **Sub-CEFR**: A1 | **Grammar focus**: Apresentação completa integrada — name + age + origin + nationality | **Tense**: PRESENT · to be
 > **Markers**: —
 > **Real-life context**: Você está se apresentando completo numa reunião de equipe ou evento profissional.
 

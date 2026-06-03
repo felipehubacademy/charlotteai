@@ -29,7 +29,7 @@ This module does not introduce new chunks. Instead, it asks the student to deplo
 
 ## Unit A01 — Mixed-register narrative
 
-> **Sub-CEFR**: C2 | **Grammar focus**: Open narrative drawing on literary craft (M14), cleft sentences (M03), ellipsis (M17), and casual fillers (M21) within a single short passage
+> **Sub-CEFR**: C2 | **Grammar focus**: Open narrative drawing on literary craft (M14), cleft sentences (M03), ellipsis (M17), and casual fillers (M21) within a single short passage | **Tense**: INTEGRATION
 > **Markers**: [integrative]
 > **Real-life context**: You tell a short personal story that breathes — literary where it should breathe, casual where it should land.
 
@@ -172,7 +172,7 @@ This module does not introduce new chunks. Instead, it asks the student to deplo
 
 ## Unit A02 — Argumentative essay opening
 
-> **Sub-CEFR**: C2 | **Grammar focus**: Open an argument integrating inversion (M02), clefts (M03), academic register (M12), and argument structure (M13)
+> **Sub-CEFR**: C2 | **Grammar focus**: Open an argument integrating inversion (M02), clefts (M03), academic register (M12), and argument structure (M13) | **Tense**: INTEGRATION
 > **Markers**: [integrative]
 > **Real-life context**: You write the opening paragraph of a persuasive essay or op-ed — academic register, structural devices for emphasis, careful claim-hedging.
 
@@ -313,7 +313,7 @@ This module does not introduce new chunks. Instead, it asks the student to deplo
 
 ## Unit A03 — Diplomatic conversation
 
-> **Sub-CEFR**: C2 | **Grammar focus**: Concession (M10) + hedging (M08) + register (M11) + pragmatic openers (M21) — disagree firmly while preserving the relationship
+> **Sub-CEFR**: C2 | **Grammar focus**: Concession (M10) + hedging (M08) + register (M11) + pragmatic openers (M21) — disagree firmly while preserving the relationship | **Tense**: INTEGRATION
 > **Markers**: [integrative]
 > **Real-life context**: You deliver hard feedback or push back on a position without damaging the working relationship — diplomatic register sustained across a full exchange.
 
@@ -454,7 +454,7 @@ This module does not introduce new chunks. Instead, it asks the student to deplo
 
 ## Unit A04 — Spontaneous casual speech
 
-> **Sub-CEFR**: C2 | **Grammar focus**: Contractions + connected speech (M20) + tag questions + backchannels + fillers (M21) + conversions (M16) — sounding fully native in informal exchange
+> **Sub-CEFR**: C2 | **Grammar focus**: Contractions + connected speech (M20) + tag questions + backchannels + fillers (M21) + conversions (M16) — sounding fully native in informal exchange | **Tense**: INTEGRATION
 > **Markers**: [integrative]
 > **Real-life context**: You have a casual conversation that flows without effort — contractions, fillers, tags, backchannels, all naturally present.
 
@@ -595,7 +595,7 @@ This module does not introduce new chunks. Instead, it asks the student to deplo
 
 ## Unit A05 — Full synthesis
 
-> **Sub-CEFR**: C2 | **Grammar focus**: Code-switching across registers in a single extended exchange — formal academic, diplomatic professional, casual personal — within one continuous conversation
+> **Sub-CEFR**: C2 | **Grammar focus**: Code-switching across registers in a single extended exchange — formal academic, diplomatic professional, casual personal — within one continuous conversation | **Tense**: INTEGRATION
 > **Markers**: [integrative]
 > **Real-life context**: Real life shifts registers every minute. You hold a conversation that moves from formal to casual to diplomatic, all within ten exchanges — and your English shifts with it, every time, without you thinking about it.
 

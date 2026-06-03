@@ -22,6 +22,7 @@
       "title": "It must be done",
       "sub_cefr": "B2",
       "grammar_focus": "Modal passive (modal + be + past participle)",
+      "tense": "PASSIVE · modal",
       "markers": [
         "denso"
       ],
@@ -216,6 +217,7 @@
       "title": "It will be done",
       "sub_cefr": "B2",
       "grammar_focus": "Future passive (will be + past participle; is going to be + past participle)",
+      "tense": "PASSIVE · future",
       "markers": [
         "denso"
       ],
@@ -410,6 +412,7 @@
       "title": "By the artist",
       "sub_cefr": "B2",
       "grammar_focus": "Passive with \"by + agent\" — when to include and when to omit",
+      "tense": "PASSIVE",
       "markers": [
         "denso"
       ],
@@ -604,6 +607,7 @@
       "title": "Get + past participle",
       "sub_cefr": "B2",
       "grammar_focus": "\"Get\" passive (got hurt, got married, get done) — informal alternative to \"be\"",
+      "tense": "PASSIVE · get",
       "markers": [
         "denso"
       ],
@@ -801,6 +805,7 @@
       "title": "All passives expanded",
       "sub_cefr": "B2",
       "grammar_focus": "Integration of modal passive, future passive, agent passive, get passive",
+      "tense": "PASSIVE",
       "markers": [],
       "real_life_context": "You mix passive forms fluidly across registers (formal modal/future, informal get).",
       "grammar": [

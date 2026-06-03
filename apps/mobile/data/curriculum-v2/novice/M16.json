@@ -22,6 +22,7 @@
       "title": "Eu fui, eu vi, eu fiz",
       "sub_cefr": "A2",
       "grammar_focus": "Top 10 irregulars (go/see/do/have/make/come/take/get/give/say)",
+      "tense": "PAST · simple",
       "markers": [
         "denso"
       ],
@@ -226,6 +227,7 @@
       "title": "Comprei, paguei, encontrei",
       "sub_cefr": "A2",
       "grammar_focus": "More irregulars (buy/bring/think/find/eat/drink/sleep)",
+      "tense": "PAST · simple",
       "markers": [],
       "real_life_context": "Você usa mais irregulares em situações cotidianas — compras, encontros, refeições.",
       "grammar": [
@@ -431,6 +433,7 @@
       "title": "Conheci, escrevi, deixei",
       "sub_cefr": "A2",
       "grammar_focus": "More irregulars (meet/write/leave/lose/win/send/read/put)",
+      "tense": "PAST · simple",
       "markers": [],
       "real_life_context": "Você narra eventos sociais e profissionais usando irregulares variados.",
       "grammar": [
@@ -633,6 +636,7 @@
       "title": "Verbos que não mudam",
       "sub_cefr": "A2",
       "grammar_focus": "Irregulars without change (put/cut/let/read pronunciation)",
+      "tense": "PAST · simple",
       "markers": [],
       "real_life_context": "Você usa verbos cuja forma passada é IGUAL ao infinitivo — só muda o contexto.",
       "grammar": [
@@ -838,6 +842,7 @@
       "title": "Minha história ontem",
       "sub_cefr": "A2",
       "grammar_focus": "Integration top irregulars in narrative",
+      "tense": "PAST · simple",
       "markers": [],
       "real_life_context": "Você conta uma história curta integrando vários verbos irregulares no passado.",
       "grammar": [

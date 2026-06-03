@@ -22,6 +22,7 @@
       "title": "Vou viajar",
       "sub_cefr": "A2",
       "grammar_focus": "Going to positive",
+      "tense": "FUTURE · going to",
       "markers": [
         "denso"
       ],
@@ -226,6 +227,7 @@
       "title": "Não vou fazer isso",
       "sub_cefr": "A2",
       "grammar_focus": "Going to negative",
+      "tense": "FUTURE · going to · negative",
       "markers": [],
       "real_life_context": "Você esclarece planos que NÃO tem ou que cancelou.",
       "grammar": [
@@ -431,6 +433,7 @@
       "title": "Você vai fazer?",
       "sub_cefr": "A2",
       "grammar_focus": "Going to questions (Are you going to...? Is she going to...?)",
+      "tense": "FUTURE · going to · question",
       "markers": [
         "qform"
       ],
@@ -638,6 +641,7 @@
       "title": "Amanhã, semana que vem",
       "sub_cefr": "A2",
       "grammar_focus": "Future time markers (tomorrow, next week, soon, in X days)",
+      "tense": "FUTURE · going to",
       "markers": [],
       "real_life_context": "Você ancora seus planos em pontos específicos do futuro.",
       "grammar": [
@@ -840,6 +844,7 @@
       "title": "Meus planos completos",
       "sub_cefr": "A2",
       "grammar_focus": "Integration going to (positive/negative/question + time markers)",
+      "tense": "FUTURE · going to",
       "markers": [],
       "real_life_context": "Você compartilha planos completos de futuro próximo.",
       "grammar": [
@@ -1045,6 +1050,7 @@
       "title": "Listening: gonna, wanna, gotta",
       "sub_cefr": "A1",
       "grammar_focus": "Decodificar reduções coloquiais de inglês falado — RECEPÇÃO (não produção)",
+      "tense": "CHUNKS",
       "markers": [],
       "real_life_context": "Você ouve fala nativa em filmes, vídeos, podcasts, ou na rua e precisa entender as reduções \"gonna\", \"wanna\", \"gotta\", \"whatcha\".",
       "grammar": [

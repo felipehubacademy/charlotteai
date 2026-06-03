@@ -27,6 +27,7 @@
       "title": "Eu sei nadar",
       "sub_cefr": "A1",
       "grammar_focus": "Can (positive) — habilidades próprias",
+      "tense": "MODAL · can",
       "markers": [],
       "real_life_context": "Você conta o que sabe fazer — esportes, idiomas, habilidades práticas.",
       "grammar": [
@@ -229,6 +230,7 @@
       "title": "Eu não sei fazer isso",
       "sub_cefr": "A1",
       "grammar_focus": "Can't (cannot) — limitações honestas",
+      "tense": "MODAL · can · negative",
       "markers": [],
       "real_life_context": "Você reconhece o que NÃO sabe fazer ainda — habilidades que faltam.",
       "grammar": [
@@ -434,6 +436,7 @@
       "title": "Você sabe nadar?",
       "sub_cefr": "A1",
       "grammar_focus": "Can questions (Can you...? Can she...?)",
+      "tense": "MODAL · can · question",
       "markers": [
         "qform"
       ],
@@ -638,6 +641,7 @@
       "title": "Idiomas e talentos",
       "sub_cefr": "A1",
       "grammar_focus": "Can + speak/play + languages and instruments/sports",
+      "tense": "MODAL · can",
       "markers": [],
       "real_life_context": "Você descreve habilidades específicas — idiomas que fala, instrumentos que toca, esportes que pratica.",
       "grammar": [
@@ -851,6 +855,7 @@
       "title": "Tudo que sei e não sei",
       "sub_cefr": "A1",
       "grammar_focus": "Integration of can/can't (positive/negative/question)",
+      "tense": "MODAL · can",
       "markers": [],
       "real_life_context": "Você apresenta um retrato honesto das suas habilidades — o que sabe, o que não sabe, e descobre sobre o outro.",
       "grammar": [

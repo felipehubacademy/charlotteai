@@ -27,7 +27,7 @@
 
 ## Unit A01 — I suggest that he be
 
-> **Sub-CEFR**: C1 | **Grammar focus**: Mandative subjunctive after verbs (suggest, recommend, propose, demand, insist, require, request, ask)
+> **Sub-CEFR**: C1 | **Grammar focus**: Mandative subjunctive after verbs (suggest, recommend, propose, demand, insist, require, request, ask) | **Tense**: SUBJUNCTIVE
 > **Markers**: [denso] [formal]
 > **Real-life context**: You write formal recommendations, motions, or policy that requires base-form verbs regardless of person.
 
@@ -167,7 +167,7 @@
 
 ## Unit A02 — It is essential that
 
-> **Sub-CEFR**: C1 | **Grammar focus**: Subjunctive after impersonal expressions of necessity/importance
+> **Sub-CEFR**: C1 | **Grammar focus**: Subjunctive after impersonal expressions of necessity/importance | **Tense**: SUBJUNCTIVE
 > **Markers**: [denso] [formal]
 > **Real-life context**: You write academic/business prose where formality demands subjunctive after evaluative adjectives.
 
@@ -307,7 +307,7 @@
 
 ## Unit A03 — I wish I were
 
-> **Sub-CEFR**: C1 | **Grammar focus**: Past subjunctive "were" across all persons (wishes, if-clauses, would rather)
+> **Sub-CEFR**: C1 | **Grammar focus**: Past subjunctive "were" across all persons (wishes, if-clauses, would rather) | **Tense**: SUBJUNCTIVE
 > **Markers**: [denso]
 > **Real-life context**: You maintain formal correctness with "were" (not "was") in hypothetical/wish contexts.
 
@@ -447,7 +447,7 @@
 
 ## Unit A04 — Lest, So be it
 
-> **Sub-CEFR**: C1 | **Grammar focus**: Subjunctive after "lest" (formal-archaic) and fossilised expressions ("Be that as it may", "Come what may", "So be it", "Suffice it to say")
+> **Sub-CEFR**: C1 | **Grammar focus**: Subjunctive after "lest" (formal-archaic) and fossilised expressions ("Be that as it may", "Come what may", "So be it", "Suffice it to say") | **Tense**: SUBJUNCTIVE
 > **Markers**: [denso] [literary]
 > **Real-life context**: You recognise and occasionally deploy literary or archaic subjunctive forms.
 
@@ -588,7 +588,7 @@
 
 ## Unit A05 — Mixed subjunctive
 
-> **Sub-CEFR**: C1 | **Grammar focus**: Integration of mandative, hypothetical, fossilised subjunctive across registers
+> **Sub-CEFR**: C1 | **Grammar focus**: Integration of mandative, hypothetical, fossilised subjunctive across registers | **Tense**: SUBJUNCTIVE
 > **Markers**: —
 > **Real-life context**: You select the subjunctive form that fits the register and intent.
 

@@ -25,6 +25,7 @@
       "title": "It is made",
       "sub_cefr": "B2",
       "grammar_focus": "Present simple passive (am/is/are + past participle)",
+      "tense": "PASSIVE · present",
       "markers": [
         "denso"
       ],
@@ -222,6 +223,7 @@
       "title": "It was built",
       "sub_cefr": "B2",
       "grammar_focus": "Past simple passive (was/were + past participle)",
+      "tense": "PASSIVE · past",
       "markers": [
         "denso"
       ],
@@ -416,6 +418,7 @@
       "title": "It's being done",
       "sub_cefr": "B2",
       "grammar_focus": "Present continuous passive (am/is/are being + past participle)",
+      "tense": "PASSIVE · present continuous",
       "markers": [
         "denso"
       ],
@@ -614,6 +617,7 @@
       "title": "It has been done",
       "sub_cefr": "B2",
       "grammar_focus": "Present perfect passive (has/have been + past participle)",
+      "tense": "PASSIVE · present perfect",
       "markers": [
         "denso"
       ],
@@ -811,6 +815,7 @@
       "title": "All passives together",
       "sub_cefr": "B2",
       "grammar_focus": "Integration of present simple, past simple, present continuous, present perfect passive",
+      "tense": "PASSIVE",
       "markers": [],
       "real_life_context": "You mix passive tenses fluently in real description.",
       "grammar": [

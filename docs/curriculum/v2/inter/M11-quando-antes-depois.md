@@ -23,7 +23,7 @@
 
 ## Unit I01 — When in time clauses
 
-> **Sub-CEFR**: B1 | **Grammar focus**: when + present simple (referring to future)
+> **Sub-CEFR**: B1 | **Grammar focus**: when + present simple (referring to future) | **Tense**: TIME CLAUSE
 > **Markers**: [denso]
 > **Real-life context**: You promise actions for when something specific happens in the future.
 
@@ -189,7 +189,7 @@
 
 ## Unit I02 — Before and after
 
-> **Sub-CEFR**: B1 | **Grammar focus**: before / after + present simple (future) or past (past)
+> **Sub-CEFR**: B1 | **Grammar focus**: before / after + present simple (future) or past (past) | **Tense**: TIME CLAUSE
 > **Markers**: —
 > **Real-life context**: You sequence actions — what comes first, what comes next.
 
@@ -355,7 +355,7 @@
 
 ## Unit I03 — Until and by the time
 
-> **Sub-CEFR**: B1 | **Grammar focus**: until/till (continuous duration) + by the time (point of completion)
+> **Sub-CEFR**: B1 | **Grammar focus**: until/till (continuous duration) + by the time (point of completion) | **Tense**: TIME CLAUSE
 > **Markers**: [denso]
 > **Real-life context**: You express duration ("until something happens") and points of completion ("by the time something").
 
@@ -521,7 +521,7 @@
 
 ## Unit I04 — As soon as
 
-> **Sub-CEFR**: B1 | **Grammar focus**: as soon as + present (immediate sequence)
+> **Sub-CEFR**: B1 | **Grammar focus**: as soon as + present (immediate sequence) | **Tense**: TIME CLAUSE
 > **Markers**: —
 > **Real-life context**: You express that one action will happen immediately after another.
 
@@ -687,7 +687,7 @@
 
 ## Unit I05 — All time clauses combined
 
-> **Sub-CEFR**: B1 | **Grammar focus**: Integration of when/before/after/until/by the time/as soon as
+> **Sub-CEFR**: B1 | **Grammar focus**: Integration of when/before/after/until/by the time/as soon as | **Tense**: TIME CLAUSE
 > **Markers**: —
 > **Real-life context**: You combine time clauses fluidly in conversation about plans, deadlines, and sequences.
 

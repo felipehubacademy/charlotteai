@@ -20,7 +20,7 @@
 
 ## Unit I01 — Daily phrasal verbs
 
-> **Sub-CEFR**: B1 | **Grammar focus**: Daily routine phrasal verbs (get up, wake up, go out)
+> **Sub-CEFR**: B1 | **Grammar focus**: Daily routine phrasal verbs (get up, wake up, go out) | **Tense**: CHUNKS
 > **Markers**: —
 > **Real-life context**: You describe your daily routine using phrasal verbs.
 
@@ -185,7 +185,7 @@
 
 ## Unit I02 — Look for, look after
 
-> **Sub-CEFR**: B1 | **Grammar focus**: Phrasal verbs with "look" (look for, look after, look at, look up)
+> **Sub-CEFR**: B1 | **Grammar focus**: Phrasal verbs with "look" (look for, look after, look at, look up) | **Tense**: CHUNKS
 > **Markers**: —
 > **Real-life context**: You use "look" phrasal verbs to describe searching, caring, checking.
 
@@ -351,7 +351,7 @@
 
 ## Unit I03 — Find out, give up, pick up
 
-> **Sub-CEFR**: B1 | **Grammar focus**: Phrasal verbs of discovery, ending, fetching
+> **Sub-CEFR**: B1 | **Grammar focus**: Phrasal verbs of discovery, ending, fetching | **Tense**: CHUNKS
 > **Markers**: —
 > **Real-life context**: You describe discovering information, quitting, and fetching things.
 
@@ -516,7 +516,7 @@
 
 ## Unit I04 — Separable vs inseparable
 
-> **Sub-CEFR**: B1 | **Grammar focus**: Phrasal verbs — pronoun placement
+> **Sub-CEFR**: B1 | **Grammar focus**: Phrasal verbs — pronoun placement | **Tense**: CHUNKS
 > **Markers**: [denso]
 > **Real-life context**: You correctly position pronouns with separable phrasal verbs.
 
@@ -682,7 +682,7 @@
 
 ## Unit I05 — Phrasal verbs combined
 
-> **Sub-CEFR**: B1 | **Grammar focus**: Integration of phrasal verbs in narrative
+> **Sub-CEFR**: B1 | **Grammar focus**: Integration of phrasal verbs in narrative | **Tense**: CHUNKS
 > **Markers**: —
 > **Real-life context**: You tell a story using multiple phrasal verbs.
 
@@ -848,7 +848,7 @@
 
 ## Unit I06 — Phone English
 
-> **Sub-CEFR**: B1/B2 | **Grammar focus**: Phone English in Inter register — phrasals and expressions for business calls (Fase B extra unit)
+> **Sub-CEFR**: B1/B2 | **Grammar focus**: Phone English in Inter register — phrasals and expressions for business calls (Fase B extra unit) | **Tense**: CHUNKS
 > **Markers**: [survival] [denso]
 > **Real-life context**: You handle phone calls professionally — identifying yourself, transferring, taking messages, dealing with bad connections.
 

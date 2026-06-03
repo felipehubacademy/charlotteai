@@ -26,7 +26,7 @@
 
 ## Unit A01 — Metaphor and simile
 
-> **Sub-CEFR**: C2 | **Grammar focus**: Building fresh metaphor and simile — patterns ("like + noun/-ing", "as if + clause", "X is the new Y", "a metaphor for")
+> **Sub-CEFR**: C2 | **Grammar focus**: Building fresh metaphor and simile — patterns ("like + noun/-ing", "as if + clause", "X is the new Y", "a metaphor for") | **Tense**: LITERARY
 > **Markers**: [denso] [literary]
 > **Real-life context**: You write essays, reflections, or narrative passages that demand precision through image, not just word.
 
@@ -168,7 +168,7 @@
 
 ## Unit A02 — Personification
 
-> **Sub-CEFR**: C2 | **Grammar focus**: Giving human qualities to non-human entities (time crawled, the city slept, the deadline loomed, hope refused to leave)
+> **Sub-CEFR**: C2 | **Grammar focus**: Giving human qualities to non-human entities (time crawled, the city slept, the deadline loomed, hope refused to leave) | **Tense**: LITERARY
 > **Markers**: [denso] [literary]
 > **Real-life context**: You make abstract or inanimate things vivid by lending them human action — a literary staple from journalism to fiction.
 
@@ -309,7 +309,7 @@
 
 ## Unit A03 — Vivid verbs, specific nouns
 
-> **Sub-CEFR**: C2 | **Grammar focus**: Replacing generic verb+adverb with vivid verb (walked slowly → trudged, looked angrily → glared); replacing general nouns with specific ones (car → Toyota in the rain; person → woman in a red coat)
+> **Sub-CEFR**: C2 | **Grammar focus**: Replacing generic verb+adverb with vivid verb (walked slowly → trudged, looked angrily → glared); replacing general nouns with specific ones (car → Toyota in the rain; person → woman in a red coat) | **Tense**: LITERARY
 > **Markers**: [denso] [literary]
 > **Real-life context**: You write prose that earns its detail — every verb carries weight, every noun has texture.
 
@@ -451,7 +451,7 @@
 
 ## Unit A04 — Sentence rhythm and fragments
 
-> **Sub-CEFR**: C2 | **Grammar focus**: Controlling rhythm with sentence length variation, fragments for emphasis (Empty. Only one.), short sentences after long ones
+> **Sub-CEFR**: C2 | **Grammar focus**: Controlling rhythm with sentence length variation, fragments for emphasis (Empty. Only one.), short sentences after long ones | **Tense**: LITERARY
 > **Markers**: [denso] [literary]
 > **Real-life context**: You write prose where rhythm carries meaning — long sentences for thought, short ones for impact, fragments for emphasis.
 
@@ -592,7 +592,7 @@
 
 ## Unit A05 — Show, don't tell
 
-> **Sub-CEFR**: C2 | **Grammar focus**: Sensory and behavioural detail over abstract emotion words (don't write "she was nervous" — write "her thumbnail kept tracking the seam of her jacket")
+> **Sub-CEFR**: C2 | **Grammar focus**: Sensory and behavioural detail over abstract emotion words (don't write "she was nervous" — write "her thumbnail kept tracking the seam of her jacket") | **Tense**: LITERARY
 > **Markers**: —
 > **Real-life context**: You convey character, mood, and emotion through observable detail rather than telling the reader directly.
 

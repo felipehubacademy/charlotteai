@@ -26,7 +26,7 @@
 
 ## Unit A01 — It was X who
 
-> **Sub-CEFR**: C1 | **Grammar focus**: It-clefts for emphasis on subject, object, time, or place
+> **Sub-CEFR**: C1 | **Grammar focus**: It-clefts for emphasis on subject, object, time, or place | **Tense**: CLEFT
 > **Markers**: [denso] [emphasis]
 > **Real-life context**: You highlight one specific element by reframing the whole sentence around it.
 
@@ -166,7 +166,7 @@
 
 ## Unit A02 — What I need is
 
-> **Sub-CEFR**: C1 | **Grammar focus**: Wh-clefts (pseudo-clefts) — What + clause + is/was + emphasised element
+> **Sub-CEFR**: C1 | **Grammar focus**: Wh-clefts (pseudo-clefts) — What + clause + is/was + emphasised element | **Tense**: CLEFT
 > **Markers**: [denso] [emphasis]
 > **Real-life context**: You hold the listener's attention by setting up an expectation ("what I need is...") then landing the key word.
 
@@ -307,7 +307,7 @@
 
 ## Unit A03 — All I want is
 
-> **Sub-CEFR**: C1 | **Grammar focus**: All-clefts and exclusive emphasis ("All I want is...", "All she did was...")
+> **Sub-CEFR**: C1 | **Grammar focus**: All-clefts and exclusive emphasis ("All I want is...", "All she did was...") | **Tense**: CLEFT
 > **Markers**: [denso] [emphasis]
 > **Real-life context**: You minimise or single out — saying that one thing alone matters, or that only one act occurred.
 
@@ -449,7 +449,7 @@
 
 ## Unit A04 — It wasn't until
 
-> **Sub-CEFR**: C1 | **Grammar focus**: "It + negative + cleft" — "It wasn't until... that..." for delayed realisation/event
+> **Sub-CEFR**: C1 | **Grammar focus**: "It + negative + cleft" — "It wasn't until... that..." for delayed realisation/event | **Tense**: CLEFT
 > **Markers**: [denso] [emphasis]
 > **Real-life context**: You spotlight the late moment when something finally happened or was understood.
 
@@ -590,7 +590,7 @@
 
 ## Unit A05 — The reason is, The thing that
 
-> **Sub-CEFR**: C1 | **Grammar focus**: Lexical clefts ("The reason (why)... is...", "The thing that... is...", "The place where...", "The time when...")
+> **Sub-CEFR**: C1 | **Grammar focus**: Lexical clefts ("The reason (why)... is...", "The thing that... is...", "The place where...", "The time when...") | **Tense**: CLEFT
 > **Markers**: —
 > **Real-life context**: You frame an explanation, the salient feature, or the location/time precisely.
 

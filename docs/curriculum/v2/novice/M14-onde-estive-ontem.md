@@ -24,7 +24,7 @@
 
 ## Unit N01 — Eu estava lá
 
-> **Sub-CEFR**: A2 | **Grammar focus**: was/were positive
+> **Sub-CEFR**: A2 | **Grammar focus**: was/were positive | **Tense**: PAST · to be
 > **Markers**: [denso]
 > **Real-life context**: Você conta onde estava e como se sentia em momentos do passado.
 
@@ -189,7 +189,7 @@
 
 ## Unit N02 — Não estava lá
 
-> **Sub-CEFR**: A2 | **Grammar focus**: was/were negative (wasn't/weren't)
+> **Sub-CEFR**: A2 | **Grammar focus**: was/were negative (wasn't/weren't) | **Tense**: PAST · to be · negative
 > **Markers**: —
 > **Real-life context**: Você corrige informações erradas sobre o passado ou diz onde não estava.
 
@@ -354,7 +354,7 @@
 
 ## Unit N03 — Você estava lá?
 
-> **Sub-CEFR**: A2 | **Grammar focus**: was/were questions
+> **Sub-CEFR**: A2 | **Grammar focus**: was/were questions | **Tense**: PAST · to be · question
 > **Markers**: [qform]
 > **Real-life context**: Você pergunta sobre onde alguém estava e como estava.
 
@@ -519,7 +519,7 @@
 
 ## Unit N04 — Ontem, semana passada
 
-> **Sub-CEFR**: A2 | **Grammar focus**: Time markers of the past (yesterday, last X, X ago, in YEAR)
+> **Sub-CEFR**: A2 | **Grammar focus**: Time markers of the past (yesterday, last X, X ago, in YEAR) | **Tense**: PAST · to be
 > **Markers**: —
 > **Real-life context**: Você usa marcadores temporais pra ancorar eventos passados na linha do tempo.
 
@@ -684,7 +684,7 @@
 
 ## Unit N05 — Era assim antes
 
-> **Sub-CEFR**: A2 | **Grammar focus**: Integration was/were + descriptions of past states
+> **Sub-CEFR**: A2 | **Grammar focus**: Integration was/were + descriptions of past states | **Tense**: PAST · to be
 > **Markers**: —
 > **Real-life context**: Você descreve como era sua vida antes — onde, com quem, como.
 

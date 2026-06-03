@@ -28,6 +28,7 @@
       "title": "Walking down the street",
       "sub_cefr": "C1",
       "grammar_focus": "Present participle (-ing) clauses — simultaneous or causal action",
+      "tense": "PARTICIPLE CLAUSE",
       "markers": [
         "denso"
       ],
@@ -180,6 +181,7 @@
       "title": "Built in 1900",
       "sub_cefr": "C1",
       "grammar_focus": "Past participle (-ed) clauses — passive compression",
+      "tense": "PARTICIPLE CLAUSE",
       "markers": [
         "denso"
       ],
@@ -332,6 +334,7 @@
       "title": "Having finished",
       "sub_cefr": "C1",
       "grammar_focus": "Perfect participle (Having + past participle) — completed action before main action",
+      "tense": "PARTICIPLE CLAUSE",
       "markers": [
         "denso"
       ],
@@ -481,6 +484,7 @@
       "title": "Having been told",
       "sub_cefr": "C1",
       "grammar_focus": "Perfect passive participle (Having been + past participle) — completed passive event before main action",
+      "tense": "PARTICIPLE CLAUSE",
       "markers": [
         "denso"
       ],
@@ -630,6 +634,7 @@
       "title": "Reduced relatives + with-clauses",
       "sub_cefr": "C1",
       "grammar_focus": "Reduced relative clauses (the man sitting / the book written) + with-clauses (with everyone watching)",
+      "tense": "PARTICIPLE CLAUSE",
       "markers": [],
       "real_life_context": "You compress relative clauses into participle phrases and add accompanying circumstances with \"with + noun + -ing/-ed\".",
       "grammar": [

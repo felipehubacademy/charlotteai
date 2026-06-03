@@ -25,7 +25,7 @@
 
 ## Unit A01 — Word stress
 
-> **Sub-CEFR**: C2 | **Grammar focus**: Word stress in multi-syllable words — especially noun/verb pairs (PROduce/proDUCE, CONtract/conTRACT) and Latinate words (phoTOgraphy, photoGRAphic)
+> **Sub-CEFR**: C2 | **Grammar focus**: Word stress in multi-syllable words — especially noun/verb pairs (PROduce/proDUCE, CONtract/conTRACT) and Latinate words (phoTOgraphy, photoGRAphic) | **Tense**: PRONUNCIATION
 > **Markers**: [denso] [pronunciation]
 > **Real-life context**: You stress the right syllable so listeners parse the word without effort — wrong stress is one of the biggest comprehension blockers in C1+ speech.
 
@@ -165,7 +165,7 @@
 
 ## Unit A02 — Sentence stress and weak forms
 
-> **Sub-CEFR**: C2 | **Grammar focus**: Content words (stressed) vs function words (weak/unstressed), schwa /ə/ in weak forms (of, for, to, and, a, the)
+> **Sub-CEFR**: C2 | **Grammar focus**: Content words (stressed) vs function words (weak/unstressed), schwa /ə/ in weak forms (of, for, to, and, a, the) | **Tense**: PRONUNCIATION
 > **Markers**: [denso] [pronunciation]
 > **Real-life context**: You speak with the rhythm of English — stressing meaning-carrying words and weakening grammar-glue words.
 
@@ -305,7 +305,7 @@
 
 ## Unit A03 — Connected speech
 
-> **Sub-CEFR**: C2 | **Grammar focus**: Linking (consonant + vowel), intrusive /r/, /j/, /w/, assimilation, elision
+> **Sub-CEFR**: C2 | **Grammar focus**: Linking (consonant + vowel), intrusive /r/, /j/, /w/, assimilation, elision | **Tense**: PRONUNCIATION
 > **Markers**: [denso] [pronunciation]
 > **Real-life context**: You connect sounds across word boundaries — the way fluent English actually runs together.
 
@@ -445,7 +445,7 @@
 
 ## Unit A04 — Intonation
 
-> **Sub-CEFR**: C2 | **Grammar focus**: Intonation patterns — yes/no question rise, wh-question fall, statement fall, list rise-rise-fall, sarcasm/disbelief patterns
+> **Sub-CEFR**: C2 | **Grammar focus**: Intonation patterns — yes/no question rise, wh-question fall, statement fall, list rise-rise-fall, sarcasm/disbelief patterns | **Tense**: PRONUNCIATION
 > **Markers**: [denso] [pronunciation]
 > **Real-life context**: You signal meaning through pitch — questions, statements, lists, emotional nuance.
 
@@ -585,7 +585,7 @@
 
 ## Unit A05 — Contractions and elision
 
-> **Sub-CEFR**: C2 | **Grammar focus**: Contractions (he's, we'd, won't, shouldn't, mightn't) and elision (drop of /t/ /d/ between consonants — "next month" → "nex' month")
+> **Sub-CEFR**: C2 | **Grammar focus**: Contractions (he's, we'd, won't, shouldn't, mightn't) and elision (drop of /t/ /d/ between consonants — "next month" → "nex' month") | **Tense**: PRONUNCIATION
 > **Markers**: —
 > **Real-life context**: You produce the contractions and droppings that fluent English flows on — never speaking entirely "carefully" in conversation.
 

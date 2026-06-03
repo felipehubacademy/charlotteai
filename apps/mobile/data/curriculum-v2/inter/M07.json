@@ -21,6 +21,7 @@
       "title": "A few or a little?",
       "sub_cefr": "B1",
       "grammar_focus": "a few (countable) vs a little (uncountable)",
+      "tense": "CHUNKS",
       "markers": [
         "denso"
       ],
@@ -215,6 +216,7 @@
       "title": "Few vs a few (subtle)",
       "sub_cefr": "B1",
       "grammar_focus": "few/little (almost none) vs a few/a little (some)",
+      "tense": "CHUNKS",
       "markers": [
         "denso"
       ],
@@ -410,6 +412,7 @@
       "title": "Plenty of, hardly any",
       "sub_cefr": "B1",
       "grammar_focus": "plenty of (lots) vs hardly any (almost zero)",
+      "tense": "CHUNKS",
       "markers": [],
       "real_life_context": "You express abundance or scarcity.",
       "grammar": [
@@ -604,6 +607,7 @@
       "title": "Several, most",
       "sub_cefr": "B1",
       "grammar_focus": "several (3+) and most (majority)",
+      "tense": "CHUNKS",
       "markers": [],
       "real_life_context": "You quantify with precision — several vs most.",
       "grammar": [
@@ -800,6 +804,7 @@
       "title": "Quantifiers integrated",
       "sub_cefr": "B1",
       "grammar_focus": "Integration of refined quantifiers",
+      "tense": "CHUNKS",
       "markers": [],
       "real_life_context": "You use different quantifiers in one description.",
       "grammar": [

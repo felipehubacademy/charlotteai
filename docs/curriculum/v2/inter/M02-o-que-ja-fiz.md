@@ -22,7 +22,7 @@
 
 ## Unit I01 — Have you ever?
 
-> **Sub-CEFR**: B1 | **Grammar focus**: Present perfect with ever/never (life experiences)
+> **Sub-CEFR**: B1 | **Grammar focus**: Present perfect with ever/never (life experiences) | **Tense**: PRESENT · perfect
 > **Markers**: [denso]
 > **Real-life context**: You ask and answer about life experiences (travel, food, events).
 
@@ -187,7 +187,7 @@
 
 ## Unit I02 — I've been to many places
 
-> **Sub-CEFR**: B1 | **Grammar focus**: Past participles — common irregulars
+> **Sub-CEFR**: B1 | **Grammar focus**: Past participles — common irregulars | **Tense**: PRESENT · perfect
 > **Markers**: [denso]
 > **Real-life context**: You describe travel and life experiences using common irregular past participles.
 
@@ -352,7 +352,7 @@
 
 ## Unit I03 — Just, already, yet
 
-> **Sub-CEFR**: B1 | **Grammar focus**: just / already / yet with present perfect
+> **Sub-CEFR**: B1 | **Grammar focus**: just / already / yet with present perfect | **Tense**: PRESENT · perfect
 > **Markers**: —
 > **Real-life context**: You talk about recently completed actions and pending tasks.
 
@@ -517,7 +517,7 @@
 
 ## Unit I04 — Have you been there?
 
-> **Sub-CEFR**: B1 | **Grammar focus**: Present perfect questions and short answers
+> **Sub-CEFR**: B1 | **Grammar focus**: Present perfect questions and short answers | **Tense**: PRESENT · perfect · question
 > **Markers**: [qform]
 > **Real-life context**: You quiz friends about life experiences.
 
@@ -683,7 +683,7 @@
 
 ## Unit I05 — Life so far
 
-> **Sub-CEFR**: B1 | **Grammar focus**: Integration of present perfect
+> **Sub-CEFR**: B1 | **Grammar focus**: Integration of present perfect | **Tense**: PRESENT · perfect
 > **Markers**: —
 > **Real-life context**: You tell a "life so far" summary integrating all PP forms.
 

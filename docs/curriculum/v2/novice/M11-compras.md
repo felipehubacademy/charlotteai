@@ -26,7 +26,7 @@
 
 ## Unit N01 — Na loja
 
-> **Sub-CEFR**: A1 | **Grammar focus**: I'd like + noun + prepositions of place
+> **Sub-CEFR**: A1 | **Grammar focus**: I'd like + noun + prepositions of place | **Tense**: CHUNKS
 > **Markers**: —
 > **Real-life context**: Você entra numa loja procurando algo específico.
 
@@ -191,7 +191,7 @@
 
 ## Unit N02 — Este, esse, aquele
 
-> **Sub-CEFR**: A1 | **Grammar focus**: Demonstratives this / that / these / those
+> **Sub-CEFR**: A1 | **Grammar focus**: Demonstratives this / that / these / those | **Tense**: CHUNKS
 > **Markers**: [denso]
 > **Real-life context**: Você aponta para objetos próximos (this/these) ou distantes (that/those) na loja.
 
@@ -357,7 +357,7 @@
 
 ## Unit N03 — Em cima, embaixo, ao lado
 
-> **Sub-CEFR**: A1 | **Grammar focus**: Prepositions of place (in, on, at, next to, between, behind, in front of)
+> **Sub-CEFR**: A1 | **Grammar focus**: Prepositions of place (in, on, at, next to, between, behind, in front of) | **Tense**: CHUNKS
 > **Markers**: [denso]
 > **Real-life context**: Você diz onde estão as coisas — em prateleiras, ao lado de outras, atrás do balcão.
 
@@ -522,7 +522,7 @@
 
 ## Unit N04 — Pagando
 
-> **Sub-CEFR**: A1 | **Grammar focus**: Payment chunks + money vocab
+> **Sub-CEFR**: A1 | **Grammar focus**: Payment chunks + money vocab | **Tense**: CHUNKS
 > **Markers**: —
 > **Real-life context**: Você está no caixa pagando uma compra — cartão, dinheiro, troco.
 
@@ -687,7 +687,7 @@
 
 ## Unit N05 — Comprando completo
 
-> **Sub-CEFR**: A1 | **Grammar focus**: Integration M11 (I'd like + demonstratives + prepositions + payment)
+> **Sub-CEFR**: A1 | **Grammar focus**: Integration M11 (I'd like + demonstratives + prepositions + payment) | **Tense**: CHUNKS
 > **Markers**: —
 > **Real-life context**: Você completa uma compra do início ao fim numa loja de roupas.
 

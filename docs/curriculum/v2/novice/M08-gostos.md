@@ -26,7 +26,7 @@
 
 ## Unit N01 — Gosto, amo, odeio
 
-> **Sub-CEFR**: A1 | **Grammar focus**: like/love/hate + noun
+> **Sub-CEFR**: A1 | **Grammar focus**: like/love/hate + noun | **Tense**: PRESENT · simple
 > **Markers**: —
 > **Real-life context**: Você conta suas preferências fortes — comidas, filmes, lugares.
 
@@ -191,7 +191,7 @@
 
 ## Unit N02 — Gosto de fazer
 
-> **Sub-CEFR**: A1 | **Grammar focus**: like/love/hate + verb-ing
+> **Sub-CEFR**: A1 | **Grammar focus**: like/love/hate + verb-ing | **Tense**: PRESENT · simple
 > **Markers**: [denso]
 > **Real-life context**: Você fala de atividades que gosta de fazer — hobbies, esportes, hábitos.
 
@@ -356,7 +356,7 @@
 
 ## Unit N03 — Me, você, ele, ela
 
-> **Sub-CEFR**: A1 | **Grammar focus**: Object pronouns (me/you/him/her/it/us/them)
+> **Sub-CEFR**: A1 | **Grammar focus**: Object pronouns (me/you/him/her/it/us/them) | **Tense**: PRESENT · simple
 > **Markers**: [denso]
 > **Real-life context**: Você fala de relacionamentos e ações entre pessoas — "ela me liga", "eu vejo ele", "nos chamam".
 
@@ -522,7 +522,7 @@
 
 ## Unit N04 — Música, filmes, esportes
 
-> **Sub-CEFR**: A1 | **Grammar focus**: like/love/hate + topics (music, movies, books, sports, food, art)
+> **Sub-CEFR**: A1 | **Grammar focus**: like/love/hate + topics (music, movies, books, sports, food, art) | **Tense**: PRESENT · simple
 > **Markers**: —
 > **Real-life context**: Você compartilha gostos culturais — música favorita, filmes, séries, esportes.
 
@@ -689,7 +689,7 @@
 
 ## Unit N05 — O que prefiro
 
-> **Sub-CEFR**: A1 | **Grammar focus**: prefer + integration of like/love/hate
+> **Sub-CEFR**: A1 | **Grammar focus**: prefer + integration of like/love/hate | **Tense**: PRESENT · simple
 > **Markers**: —
 > **Real-life context**: Você compara preferências — "prefiro X em vez de Y".
 

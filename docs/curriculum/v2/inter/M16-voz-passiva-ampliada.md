@@ -21,7 +21,7 @@
 
 ## Unit I01 — It must be done
 
-> **Sub-CEFR**: B2 | **Grammar focus**: Modal passive (modal + be + past participle)
+> **Sub-CEFR**: B2 | **Grammar focus**: Modal passive (modal + be + past participle) | **Tense**: PASSIVE · modal
 > **Markers**: [denso]
 > **Real-life context**: You give instructions, state requirements, or speculate about what can/must/should be done.
 
@@ -186,7 +186,7 @@
 
 ## Unit I02 — It will be done
 
-> **Sub-CEFR**: B2 | **Grammar focus**: Future passive (will be + past participle; is going to be + past participle)
+> **Sub-CEFR**: B2 | **Grammar focus**: Future passive (will be + past participle; is going to be + past participle) | **Tense**: PASSIVE · future
 > **Markers**: [denso]
 > **Real-life context**: You announce upcoming events or planned actions where the recipient matters more than the agent.
 
@@ -351,7 +351,7 @@
 
 ## Unit I03 — By the artist
 
-> **Sub-CEFR**: B2 | **Grammar focus**: Passive with "by + agent" — when to include and when to omit
+> **Sub-CEFR**: B2 | **Grammar focus**: Passive with "by + agent" — when to include and when to omit | **Tense**: PASSIVE
 > **Markers**: [denso]
 > **Real-life context**: You credit the agent in passive when relevant; omit when generic or unimportant.
 
@@ -516,7 +516,7 @@
 
 ## Unit I04 — Get + past participle
 
-> **Sub-CEFR**: B2 | **Grammar focus**: "Get" passive (got hurt, got married, get done) — informal alternative to "be"
+> **Sub-CEFR**: B2 | **Grammar focus**: "Get" passive (got hurt, got married, get done) — informal alternative to "be" | **Tense**: PASSIVE · get
 > **Markers**: [denso]
 > **Real-life context**: You describe accidents, changes of state, or informal events with the "get + past participle" structure.
 
@@ -682,7 +682,7 @@
 
 ## Unit I05 — All passives expanded
 
-> **Sub-CEFR**: B2 | **Grammar focus**: Integration of modal passive, future passive, agent passive, get passive
+> **Sub-CEFR**: B2 | **Grammar focus**: Integration of modal passive, future passive, agent passive, get passive | **Tense**: PASSIVE
 > **Markers**: —
 > **Real-life context**: You mix passive forms fluidly across registers (formal modal/future, informal get).
 

@@ -27,6 +27,7 @@
       "title": "Metaphor and simile",
       "sub_cefr": "C2",
       "grammar_focus": "Building fresh metaphor and simile — patterns (\"like + noun/-ing\", \"as if + clause\", \"X is the new Y\", \"a metaphor for\")",
+      "tense": "LITERARY",
       "markers": [
         "denso",
         "literary"
@@ -183,6 +184,7 @@
       "title": "Personification",
       "sub_cefr": "C2",
       "grammar_focus": "Giving human qualities to non-human entities (time crawled, the city slept, the deadline loomed, hope refused to leave)",
+      "tense": "LITERARY",
       "markers": [
         "denso",
         "literary"
@@ -336,6 +338,7 @@
       "title": "Vivid verbs, specific nouns",
       "sub_cefr": "C2",
       "grammar_focus": "Replacing generic verb+adverb with vivid verb (walked slowly → trudged, looked angrily → glared); replacing general nouns with specific ones (car → Toyota in the rain; person → woman in a red coat)",
+      "tense": "LITERARY",
       "markers": [
         "denso",
         "literary"
@@ -493,6 +496,7 @@
       "title": "Sentence rhythm and fragments",
       "sub_cefr": "C2",
       "grammar_focus": "Controlling rhythm with sentence length variation, fragments for emphasis (Empty. Only one.), short sentences after long ones",
+      "tense": "LITERARY",
       "markers": [
         "denso",
         "literary"
@@ -648,6 +652,7 @@
       "title": "Show, don't tell",
       "sub_cefr": "C2",
       "grammar_focus": "Sensory and behavioural detail over abstract emotion words (don't write \"she was nervous\" — write \"her thumbnail kept tracking the seam of her jacket\")",
+      "tense": "LITERARY",
       "markers": [],
       "real_life_context": "You convey character, mood, and emotion through observable detail rather than telling the reader directly.",
       "grammar": [

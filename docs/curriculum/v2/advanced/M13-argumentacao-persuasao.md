@@ -29,7 +29,7 @@
 
 ## Unit A01 — Building the case
 
-> **Sub-CEFR**: C2 | **Grammar focus**: Argument structure — claim + reasons + evidence with numbered or ranked progression
+> **Sub-CEFR**: C2 | **Grammar focus**: Argument structure — claim + reasons + evidence with numbered or ranked progression | **Tense**: RHETORIC
 > **Markers**: [denso] [argument]
 > **Real-life context**: You build a persuasive case in writing or speech — laying out claims clearly, supporting them with evidence, and ranking them by force.
 
@@ -170,7 +170,7 @@
 
 ## Unit A02 — Anticipating counterargument
 
-> **Sub-CEFR**: C2 | **Grammar focus**: Pre-empting and refuting objections (Some may object that... However... / Critics might argue... but this overlooks... / It would be a mistake to assume...)
+> **Sub-CEFR**: C2 | **Grammar focus**: Pre-empting and refuting objections (Some may object that... However... / Critics might argue... but this overlooks... / It would be a mistake to assume...) | **Tense**: RHETORIC
 > **Markers**: [denso] [argument]
 > **Real-life context**: You strengthen your own argument by acknowledging the strongest counterargument and answering it — showing intellectual seriousness.
 
@@ -310,7 +310,7 @@
 
 ## Unit A03 — Anaphora, antithesis, tricolon
 
-> **Sub-CEFR**: C2 | **Grammar focus**: Classical rhetorical devices — anaphora (repeated openings), antithesis (X vs Y in parallel), tricolon (three-part structure)
+> **Sub-CEFR**: C2 | **Grammar focus**: Classical rhetorical devices — anaphora (repeated openings), antithesis (X vs Y in parallel), tricolon (three-part structure) | **Tense**: RHETORIC
 > **Markers**: [denso] [rhetoric]
 > **Real-life context**: You write speeches, manifestos, op-eds, or arguments that need memorability and rhythm.
 
@@ -451,7 +451,7 @@
 
 ## Unit A04 — Cause-and-effect chains
 
-> **Sub-CEFR**: C2 | **Grammar focus**: Argumentative causal chains (this leads to / which in turn / thereby / as a result / the consequence is / from this it follows that)
+> **Sub-CEFR**: C2 | **Grammar focus**: Argumentative causal chains (this leads to / which in turn / thereby / as a result / the consequence is / from this it follows that) | **Tense**: RHETORIC
 > **Markers**: [denso] [argument]
 > **Real-life context**: You connect chains of reasoning — A causes B, which causes C, which is why D matters.
 
@@ -592,7 +592,7 @@
 
 ## Unit A05 — Strong conclusions
 
-> **Sub-CEFR**: C2 | **Grammar focus**: Conclusion landing — call to action, vision close, stakes-naming ("The stakes could not be higher", "What is at stake is", "If we fail to act, ...", "The choice before us is clear")
+> **Sub-CEFR**: C2 | **Grammar focus**: Conclusion landing — call to action, vision close, stakes-naming ("The stakes could not be higher", "What is at stake is", "If we fail to act, ...", "The choice before us is clear") | **Tense**: RHETORIC
 > **Markers**: —
 > **Real-life context**: You close arguments memorably — leaving the reader with action, stakes, or a clarifying frame.
 

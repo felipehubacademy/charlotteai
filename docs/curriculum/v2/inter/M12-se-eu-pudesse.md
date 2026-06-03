@@ -21,7 +21,7 @@
 
 ## Unit I01 — If I had time
 
-> **Sub-CEFR**: B2 | **Grammar focus**: Second conditional structure (If + past simple, would + base)
+> **Sub-CEFR**: B2 | **Grammar focus**: Second conditional structure (If + past simple, would + base) | **Tense**: CONDITIONAL · 2nd
 > **Markers**: [denso]
 > **Real-life context**: You imagine alternative present realities — what you'd do differently if circumstances were different.
 
@@ -186,7 +186,7 @@
 
 ## Unit I02 — I wish I had
 
-> **Sub-CEFR**: B2 | **Grammar focus**: Wishes about present (I wish + past simple)
+> **Sub-CEFR**: B2 | **Grammar focus**: Wishes about present (I wish + past simple) | **Tense**: CONDITIONAL · 2nd · wish
 > **Markers**: [denso]
 > **Real-life context**: You express dissatisfaction with current reality and longing for something different.
 
@@ -351,7 +351,7 @@
 
 ## Unit I03 — If I were you
 
-> **Sub-CEFR**: B2 | **Grammar focus**: Advice with "If I were you, I would..." (subjunctive in advice)
+> **Sub-CEFR**: B2 | **Grammar focus**: Advice with "If I were you, I would..." (subjunctive in advice) | **Tense**: CONDITIONAL · 2nd
 > **Markers**: [denso]
 > **Real-life context**: You give advice diplomatically by imagining yourself in someone else's position.
 
@@ -517,7 +517,7 @@
 
 ## Unit I04 — What would you do?
 
-> **Sub-CEFR**: B2 | **Grammar focus**: Questions in second conditional (Would you + base + if?)
+> **Sub-CEFR**: B2 | **Grammar focus**: Questions in second conditional (Would you + base + if?) | **Tense**: CONDITIONAL · 2nd · question
 > **Markers**: [qform]
 > **Real-life context**: You ask hypothetical questions to explore values and choices.
 
@@ -683,7 +683,7 @@
 
 ## Unit I05 — Hypothetical world
 
-> **Sub-CEFR**: B2 | **Grammar focus**: Integration of second conditional + wishes
+> **Sub-CEFR**: B2 | **Grammar focus**: Integration of second conditional + wishes | **Tense**: CONDITIONAL · 2nd
 > **Markers**: —
 > **Real-life context**: You combine hypothetical thinking fluidly — wishes, hypotheticals, advice, and questions.
 

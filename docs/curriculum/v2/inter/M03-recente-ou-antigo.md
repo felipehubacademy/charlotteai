@@ -20,7 +20,7 @@
 
 ## Unit I01 — Finished or still going?
 
-> **Sub-CEFR**: B1 | **Grammar focus**: PP for connected past vs past simple for finished
+> **Sub-CEFR**: B1 | **Grammar focus**: PP for connected past vs past simple for finished | **Tense**: PRESENT · perfect vs past
 > **Markers**: [denso]
 > **Real-life context**: You distinguish what's finished from what's still relevant.
 
@@ -185,7 +185,7 @@
 
 ## Unit I02 — For two years
 
-> **Sub-CEFR**: B1 | **Grammar focus**: for + duration (with PP)
+> **Sub-CEFR**: B1 | **Grammar focus**: for + duration (with PP) | **Tense**: PRESENT · perfect
 > **Markers**: [denso]
 > **Real-life context**: You describe duration of ongoing situations.
 
@@ -351,7 +351,7 @@
 
 ## Unit I03 — Since 2010
 
-> **Sub-CEFR**: B1 | **Grammar focus**: since + point in time
+> **Sub-CEFR**: B1 | **Grammar focus**: since + point in time | **Tense**: PRESENT · perfect
 > **Markers**: [denso]
 > **Real-life context**: You anchor situations to a starting point.
 
@@ -517,7 +517,7 @@
 
 ## Unit I04 — How long have you?
 
-> **Sub-CEFR**: B1 | **Grammar focus**: How long + present perfect (with for/since)
+> **Sub-CEFR**: B1 | **Grammar focus**: How long + present perfect (with for/since) | **Tense**: PRESENT · perfect · question
 > **Markers**: [qform]
 > **Real-life context**: You ask and answer about durations of ongoing situations.
 
@@ -683,7 +683,7 @@
 
 ## Unit I05 — Past or perfect?
 
-> **Sub-CEFR**: B1 | **Grammar focus**: Integration past simple vs present perfect
+> **Sub-CEFR**: B1 | **Grammar focus**: Integration past simple vs present perfect | **Tense**: PRESENT · perfect vs past
 > **Markers**: [denso]
 > **Real-life context**: You combine both tenses naturally in conversation.
 

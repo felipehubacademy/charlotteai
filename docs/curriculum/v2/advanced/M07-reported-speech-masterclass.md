@@ -28,7 +28,7 @@
 
 ## Unit A01 — Apologise for, accuse of
 
-> **Sub-CEFR**: C1 | **Grammar focus**: Reporting verbs that take "+ preposition + -ing" (apologise for, accuse of, congratulate on, blame for)
+> **Sub-CEFR**: C1 | **Grammar focus**: Reporting verbs that take "+ preposition + -ing" (apologise for, accuse of, congratulate on, blame for) | **Tense**: REPORTED SPEECH
 > **Markers**: [denso]
 > **Real-life context**: You report blame, apology, praise — choosing the verb whose pattern fits.
 
@@ -169,7 +169,7 @@
 
 ## Unit A02 — Admit, deny, suggest
 
-> **Sub-CEFR**: C1 | **Grammar focus**: Reporting verbs that take "+ -ing" directly (admit, deny, suggest, recommend, mind, regret, consider)
+> **Sub-CEFR**: C1 | **Grammar focus**: Reporting verbs that take "+ -ing" directly (admit, deny, suggest, recommend, mind, regret, consider) | **Tense**: REPORTED SPEECH
 > **Markers**: [denso]
 > **Real-life context**: You report admissions, denials, and suggestions with verbs that resist "to + infinitive".
 
@@ -309,7 +309,7 @@
 
 ## Unit A03 — Promise, refuse, offer
 
-> **Sub-CEFR**: C1 | **Grammar focus**: Reporting verbs that take "+ to + infinitive" (promise, refuse, offer, threaten, agree, decide, manage, pretend)
+> **Sub-CEFR**: C1 | **Grammar focus**: Reporting verbs that take "+ to + infinitive" (promise, refuse, offer, threaten, agree, decide, manage, pretend) | **Tense**: REPORTED SPEECH
 > **Markers**: [denso]
 > **Real-life context**: You report commitments, refusals, and offers with verbs that take "to + infinitive" rather than "+ -ing".
 
@@ -450,7 +450,7 @@
 
 ## Unit A04 — Warn against, talk into
 
-> **Sub-CEFR**: C1 | **Grammar focus**: Complex reporting verbs (warn + person + against/about/not to, persuade/talk into + -ing, discourage from + -ing)
+> **Sub-CEFR**: C1 | **Grammar focus**: Complex reporting verbs (warn + person + against/about/not to, persuade/talk into + -ing, discourage from + -ing) | **Tense**: REPORTED SPEECH
 > **Markers**: [denso]
 > **Real-life context**: You report warnings, persuasion, prevention with their specific syntactic patterns.
 
@@ -590,7 +590,7 @@
 
 ## Unit A05 — According to, allegedly
 
-> **Sub-CEFR**: C1 | **Grammar focus**: Hedged reporting (according to + source, allegedly, supposedly, apparently, reportedly)
+> **Sub-CEFR**: C1 | **Grammar focus**: Hedged reporting (according to + source, allegedly, supposedly, apparently, reportedly) | **Tense**: REPORTED SPEECH
 > **Markers**: —
 > **Real-life context**: You report unverified claims with appropriate distance — journalism, gossip-with-care, academic citation.
 

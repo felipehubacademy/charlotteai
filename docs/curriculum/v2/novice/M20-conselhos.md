@@ -24,7 +24,7 @@
 
 ## Unit N01 — Você deveria descansar
 
-> **Sub-CEFR**: A2 | **Grammar focus**: Should/shouldn't for advice
+> **Sub-CEFR**: A2 | **Grammar focus**: Should/shouldn't for advice | **Tense**: MODAL · should
 > **Markers**: —
 > **Real-life context**: Você dá e recebe conselhos sobre saúde, estudo, vida.
 
@@ -190,7 +190,7 @@
 
 ## Unit N02 — Tenho que trabalhar
 
-> **Sub-CEFR**: A2 | **Grammar focus**: Have to / has to (obrigação)
+> **Sub-CEFR**: A2 | **Grammar focus**: Have to / has to (obrigação) | **Tense**: MODAL · have to
 > **Markers**: [denso]
 > **Real-life context**: Você fala de obrigações no trabalho, escola, casa.
 
@@ -356,7 +356,7 @@
 
 ## Unit N03 — Não preciso fazer isso
 
-> **Sub-CEFR**: A2 | **Grammar focus**: Don't have to / doesn't have to (absence of obligation)
+> **Sub-CEFR**: A2 | **Grammar focus**: Don't have to / doesn't have to (absence of obligation) | **Tense**: MODAL · have to · negative
 > **Markers**: —
 > **Real-life context**: Você esclarece que algo é OPCIONAL — não é obrigado a fazer.
 
@@ -522,7 +522,7 @@
 
 ## Unit N04 — Devo ir? Tenho que ir?
 
-> **Sub-CEFR**: A2 | **Grammar focus**: Questions with should / have to
+> **Sub-CEFR**: A2 | **Grammar focus**: Questions with should / have to | **Tense**: MODAL · should · question
 > **Markers**: [qform]
 > **Real-life context**: Você pede conselho ou esclarece obrigações.
 
@@ -688,7 +688,7 @@
 
 ## Unit N05 — Dever, precisar, sugerir
 
-> **Sub-CEFR**: A2 | **Grammar focus**: Integration should + have to + need to
+> **Sub-CEFR**: A2 | **Grammar focus**: Integration should + have to + need to | **Tense**: MODAL · should
 > **Markers**: —
 > **Real-life context**: Você combina os três modais pra falar de vida real — obrigações fortes, conselhos, necessidades.
 

@@ -20,6 +20,7 @@
       "title": "The person who",
       "sub_cefr": "B1",
       "grammar_focus": "who for people in defining clauses",
+      "tense": "RELATIVE CLAUSE",
       "markers": [
         "denso"
       ],
@@ -215,6 +216,7 @@
       "title": "The book which",
       "sub_cefr": "B1",
       "grammar_focus": "which/that for things in defining clauses",
+      "tense": "RELATIVE CLAUSE",
       "markers": [],
       "real_life_context": "You describe things by features.",
       "grammar": [
@@ -417,6 +419,7 @@
       "title": "The place where",
       "sub_cefr": "B1",
       "grammar_focus": "where for places",
+      "tense": "RELATIVE CLAUSE",
       "markers": [],
       "real_life_context": "You describe places using \"where\".",
       "grammar": [
@@ -606,6 +609,7 @@
       "title": "Whose",
       "sub_cefr": "B1",
       "grammar_focus": "whose for possession",
+      "tense": "RELATIVE CLAUSE",
       "markers": [],
       "real_life_context": "You describe people by what they own or who's related.",
       "grammar": [
@@ -798,6 +802,7 @@
       "title": "All relatives combined",
       "sub_cefr": "B1",
       "grammar_focus": "Integration who/which/that/where/whose",
+      "tense": "RELATIVE CLAUSE",
       "markers": [],
       "real_life_context": "You combine all relative pronouns in descriptions.",
       "grammar": [

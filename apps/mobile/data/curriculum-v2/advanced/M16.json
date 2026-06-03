@@ -32,6 +32,7 @@
       "title": "Negation prefixes",
       "sub_cefr": "C2",
       "grammar_focus": "Negation prefixes (un-, dis-, in-, im-, il-, ir-, non-) and which root each takes",
+      "tense": "WORD FORMATION",
       "markers": [
         "denso",
         "morphology"
@@ -182,6 +183,7 @@
       "title": "Suffixes for nouns",
       "sub_cefr": "C2",
       "grammar_focus": "Noun-forming suffixes (-tion, -ment, -ness, -ity, -ship, -hood, -ism, -ance/-ence)",
+      "tense": "WORD FORMATION",
       "markers": [
         "denso",
         "morphology"
@@ -332,6 +334,7 @@
       "title": "Suffixes for adjectives and verbs",
       "sub_cefr": "C2",
       "grammar_focus": "Adjective suffixes (-able, -ible, -ful, -less, -ous, -al, -ical, -ish, -ive) and verb suffixes (-ise/-ize, -ify, -en)",
+      "tense": "WORD FORMATION",
       "markers": [
         "denso",
         "morphology"
@@ -485,6 +488,7 @@
       "title": "Compounds",
       "sub_cefr": "C2",
       "grammar_focus": "Compounds — closed (lighthouse), hyphenated (well-known), open (high school) — and the rules for each",
+      "tense": "WORD FORMATION",
       "markers": [
         "denso",
         "morphology"
@@ -638,6 +642,7 @@
       "title": "Conversion",
       "sub_cefr": "C2",
       "grammar_focus": "Conversion (zero derivation) — noun ↔ verb without affix change (email, google, friend, gift, message, text)",
+      "tense": "WORD FORMATION",
       "markers": [],
       "real_life_context": "You convert nouns to verbs (and vice versa) fluidly — typical of modern English, especially tech and social vocabulary.",
       "grammar": [

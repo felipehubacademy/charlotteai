@@ -29,7 +29,7 @@
 
 ## Unit A01 — I was wondering if
 
-> **Sub-CEFR**: C1 | **Grammar focus**: Past continuous softening (I was wondering if / I was hoping...) for polite requests
+> **Sub-CEFR**: C1 | **Grammar focus**: Past continuous softening (I was wondering if / I was hoping...) for polite requests | **Tense**: HEDGING
 > **Markers**: [denso] [hedging]
 > **Real-life context**: You ask for favours, time, or attention with maximum politeness.
 
@@ -170,7 +170,7 @@
 
 ## Unit A02 — It might be worth
 
-> **Sub-CEFR**: C1 | **Grammar focus**: Hedging suggestions with modals (it might be worth + -ing, you might want to + base, you may wish to + base, perhaps + clause)
+> **Sub-CEFR**: C1 | **Grammar focus**: Hedging suggestions with modals (it might be worth + -ing, you might want to + base, you may wish to + base, perhaps + clause) | **Tense**: HEDGING
 > **Markers**: [denso] [hedging]
 > **Real-life context**: You suggest ideas without imposing — leaving room for the other to consider, accept, or decline.
 
@@ -312,7 +312,7 @@
 
 ## Unit A03 — With respect, I'd see it differently
 
-> **Sub-CEFR**: C1 | **Grammar focus**: Polite disagreement (I take your point, but / With respect, / I'd see it differently / I'm not entirely sure)
+> **Sub-CEFR**: C1 | **Grammar focus**: Polite disagreement (I take your point, but / With respect, / I'd see it differently / I'm not entirely sure) | **Tense**: HEDGING
 > **Markers**: [denso] [hedging]
 > **Real-life context**: You disagree firmly without damaging the relationship.
 
@@ -453,7 +453,7 @@
 
 ## Unit A04 — One might say, In a sense
 
-> **Sub-CEFR**: C1 | **Grammar focus**: Impersonal hedging (one might say, it could be argued, in a sense, to some extent, arguably)
+> **Sub-CEFR**: C1 | **Grammar focus**: Impersonal hedging (one might say, it could be argued, in a sense, to some extent, arguably) | **Tense**: HEDGING
 > **Markers**: [denso] [hedging]
 > **Real-life context**: You float a position without claiming it as your own — useful in academic writing, debate, careful conversation.
 
@@ -594,7 +594,7 @@
 
 ## Unit A05 — Sort of, more or less
 
-> **Sub-CEFR**: C1 | **Grammar focus**: Vague language (sort of, kind of, more or less, roughly, approximately, give or take, somewhat)
+> **Sub-CEFR**: C1 | **Grammar focus**: Vague language (sort of, kind of, more or less, roughly, approximately, give or take, somewhat) | **Tense**: HEDGING
 > **Markers**: —
 > **Real-life context**: You communicate when you don't have precise information, or when softening makes the moment kinder.
 

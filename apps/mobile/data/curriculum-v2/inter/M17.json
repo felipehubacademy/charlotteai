@@ -24,6 +24,7 @@
       "title": "He said that",
       "sub_cefr": "B2",
       "grammar_focus": "Reported speech with say/tell + backshift present → past",
+      "tense": "REPORTED SPEECH",
       "markers": [
         "denso"
       ],
@@ -221,6 +222,7 @@
       "title": "She told me",
       "sub_cefr": "B2",
       "grammar_focus": "Reported speech: difference between \"say\" and \"tell\" (tell requires object)",
+      "tense": "REPORTED SPEECH",
       "markers": [
         "denso"
       ],
@@ -418,6 +420,7 @@
       "title": "She said she had",
       "sub_cefr": "B2",
       "grammar_focus": "Reported speech backshift: past → past perfect; present perfect → past perfect",
+      "tense": "REPORTED SPEECH",
       "markers": [
         "denso"
       ],
@@ -615,6 +618,7 @@
       "title": "He said he would",
       "sub_cefr": "B2",
       "grammar_focus": "Reported speech backshift for modals: will → would, can → could, may → might, must → had to",
+      "tense": "REPORTED SPEECH",
       "markers": [
         "denso"
       ],
@@ -812,6 +816,7 @@
       "title": "Time and place shifts",
       "sub_cefr": "B2",
       "grammar_focus": "Time/place changes in reported speech (today → that day, here → there, this → that, tomorrow → the next day, yesterday → the day before)",
+      "tense": "REPORTED SPEECH",
       "markers": [],
       "real_life_context": "You report with full natural shifts of time/place references — mature reported speech.",
       "grammar": [

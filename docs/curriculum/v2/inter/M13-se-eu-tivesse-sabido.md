@@ -21,7 +21,7 @@
 
 ## Unit I01 — If I had known
 
-> **Sub-CEFR**: B2 | **Grammar focus**: Third conditional structure (If + past perfect, would have + past participle)
+> **Sub-CEFR**: B2 | **Grammar focus**: Third conditional structure (If + past perfect, would have + past participle) | **Tense**: CONDITIONAL · 3rd
 > **Markers**: [denso]
 > **Real-life context**: You imagine alternative pasts — what would have happened differently if you'd had different information.
 
@@ -187,7 +187,7 @@
 
 ## Unit I02 — I wish I had
 
-> **Sub-CEFR**: B2 | **Grammar focus**: Wishes about the past (I wish + past perfect) — regret
+> **Sub-CEFR**: B2 | **Grammar focus**: Wishes about the past (I wish + past perfect) — regret | **Tense**: CONDITIONAL · 3rd · wish
 > **Markers**: [denso]
 > **Real-life context**: You express deep regret about past actions or non-actions.
 
@@ -353,7 +353,7 @@
 
 ## Unit I03 — What would you have done?
 
-> **Sub-CEFR**: B2 | **Grammar focus**: Questions in third conditional (Would you have + past participle + if?)
+> **Sub-CEFR**: B2 | **Grammar focus**: Questions in third conditional (Would you have + past participle + if?) | **Tense**: CONDITIONAL · 3rd · question
 > **Markers**: [qform]
 > **Real-life context**: You ask hypothetical past questions to explore decisions and alternative outcomes.
 
@@ -519,7 +519,7 @@
 
 ## Unit I04 — What almost happened
 
-> **Sub-CEFR**: B2 | **Grammar focus**: Chained third conditional in narrative — stringing multiple "If + past perfect, would have + past participle" to tell stories of close calls and alternate pasts. Negative forms ("wouldn't have", "nothing would have happened").
+> **Sub-CEFR**: B2 | **Grammar focus**: Chained third conditional in narrative — stringing multiple "If + past perfect, would have + past participle" to tell stories of close calls and alternate pasts. Negative forms ("wouldn't have", "nothing would have happened"). | **Tense**: CONDITIONAL · 3rd
 > **Markers**: [denso]
 > **Real-life context**: You narrate "what almost happened" — close calls, near misses, and how one small different choice would have changed an entire chain of events.
 
@@ -685,7 +685,7 @@
 
 ## Unit I05 — Past hypotheticals together
 
-> **Sub-CEFR**: B2 | **Grammar focus**: Integration of third conditional + wish + past + chained close calls
+> **Sub-CEFR**: B2 | **Grammar focus**: Integration of third conditional + wish + past + chained close calls | **Tense**: CONDITIONAL · 3rd
 > **Markers**: —
 > **Real-life context**: You alternate fluidly between past hypotheticals, wishes, and chained close-call narratives in real conversation.
 

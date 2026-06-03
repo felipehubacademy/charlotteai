@@ -26,7 +26,7 @@
 
 ## Unit N01 — Eu sei nadar
 
-> **Sub-CEFR**: A1 | **Grammar focus**: Can (positive) — habilidades próprias
+> **Sub-CEFR**: A1 | **Grammar focus**: Can (positive) — habilidades próprias | **Tense**: MODAL · can
 > **Markers**: —
 > **Real-life context**: Você conta o que sabe fazer — esportes, idiomas, habilidades práticas.
 
@@ -191,7 +191,7 @@
 
 ## Unit N02 — Eu não sei fazer isso
 
-> **Sub-CEFR**: A1 | **Grammar focus**: Can't (cannot) — limitações honestas
+> **Sub-CEFR**: A1 | **Grammar focus**: Can't (cannot) — limitações honestas | **Tense**: MODAL · can · negative
 > **Markers**: —
 > **Real-life context**: Você reconhece o que NÃO sabe fazer ainda — habilidades que faltam.
 
@@ -357,7 +357,7 @@
 
 ## Unit N03 — Você sabe nadar?
 
-> **Sub-CEFR**: A1 | **Grammar focus**: Can questions (Can you...? Can she...?)
+> **Sub-CEFR**: A1 | **Grammar focus**: Can questions (Can you...? Can she...?) | **Tense**: MODAL · can · question
 > **Markers**: [qform]
 > **Real-life context**: Você pergunta a Charlotte e outros sobre habilidades — pode levar você a pedir ajuda ou descobrir talentos.
 
@@ -522,7 +522,7 @@
 
 ## Unit N04 — Idiomas e talentos
 
-> **Sub-CEFR**: A1 | **Grammar focus**: Can + speak/play + languages and instruments/sports
+> **Sub-CEFR**: A1 | **Grammar focus**: Can + speak/play + languages and instruments/sports | **Tense**: MODAL · can
 > **Markers**: —
 > **Real-life context**: Você descreve habilidades específicas — idiomas que fala, instrumentos que toca, esportes que pratica.
 
@@ -689,7 +689,7 @@
 
 ## Unit N05 — Tudo que sei e não sei
 
-> **Sub-CEFR**: A1 | **Grammar focus**: Integration of can/can't (positive/negative/question)
+> **Sub-CEFR**: A1 | **Grammar focus**: Integration of can/can't (positive/negative/question) | **Tense**: MODAL · can
 > **Markers**: —
 > **Real-life context**: Você apresenta um retrato honesto das suas habilidades — o que sabe, o que não sabe, e descobre sobre o outro.
 

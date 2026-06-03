@@ -22,7 +22,7 @@
 
 ## Unit I01 — As tall as
 
-> **Sub-CEFR**: B1 | **Grammar focus**: as + adjective + as (equality between two things)
+> **Sub-CEFR**: B1 | **Grammar focus**: as + adjective + as (equality between two things) | **Tense**: COMPARATIVE · as...as
 > **Markers**: [denso]
 > **Real-life context**: You compare two people, places, or things as being equal in some quality.
 
@@ -188,7 +188,7 @@
 
 ## Unit I02 — Not as...as
 
-> **Sub-CEFR**: B1 | **Grammar focus**: not as + adjective + as (expressing inequality, "less than")
+> **Sub-CEFR**: B1 | **Grammar focus**: not as + adjective + as (expressing inequality, "less than") | **Tense**: COMPARATIVE · as...as
 > **Markers**: —
 > **Real-life context**: You express that something is less than another in some quality — softer than "X is more Y than Z".
 
@@ -354,7 +354,7 @@
 
 ## Unit I03 — Twice as much
 
-> **Sub-CEFR**: B1 | **Grammar focus**: Multipliers + as...as (twice, three times, half)
+> **Sub-CEFR**: B1 | **Grammar focus**: Multipliers + as...as (twice, three times, half) | **Tense**: COMPARATIVE · as...as
 > **Markers**: [denso]
 > **Real-life context**: You compare with multiplied or divided quantities — emphasizing scale.
 
@@ -520,7 +520,7 @@
 
 ## Unit I04 — The more, the better
 
-> **Sub-CEFR**: B1 | **Grammar focus**: Parallel comparatives — "the more X, the more Y"
+> **Sub-CEFR**: B1 | **Grammar focus**: Parallel comparatives — "the more X, the more Y" | **Tense**: COMPARATIVE
 > **Markers**: [denso]
 > **Real-life context**: You express how two things increase or decrease together — cause-effect with intensity.
 
@@ -686,7 +686,7 @@
 
 ## Unit I05 — All comparisons combined
 
-> **Sub-CEFR**: B1 | **Grammar focus**: Integration — equality, inequality, multipliers, parallels
+> **Sub-CEFR**: B1 | **Grammar focus**: Integration — equality, inequality, multipliers, parallels | **Tense**: COMPARATIVE
 > **Markers**: —
 > **Real-life context**: You combine all comparison forms in one description, choosing the right structure for each idea.
 

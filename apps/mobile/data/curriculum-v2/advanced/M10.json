@@ -29,6 +29,7 @@
       "title": "In fact, as a matter of fact",
       "sub_cefr": "C1",
       "grammar_focus": "Nuancing markers (in fact, as a matter of fact, actually, indeed) — strengthening or correcting an earlier claim",
+      "tense": "DISCOURSE MARKER",
       "markers": [
         "denso",
         "discourse"
@@ -187,6 +188,7 @@
       "title": "That said, mind you",
       "sub_cefr": "C1",
       "grammar_focus": "Concession markers (that said, having said that, mind you, then again, granted, admittedly) — acknowledging the other side",
+      "tense": "DISCOURSE MARKER",
       "markers": [
         "denso",
         "discourse"
@@ -345,6 +347,7 @@
       "title": "In other words, put differently",
       "sub_cefr": "C1",
       "grammar_focus": "Reformulation markers (in other words, that is to say, put differently, to put it another way, by which I mean, or rather)",
+      "tense": "DISCOURSE MARKER",
       "markers": [
         "denso",
         "discourse"
@@ -495,6 +498,7 @@
       "title": "Above all, what's more",
       "sub_cefr": "C1",
       "grammar_focus": "Emphatic chain markers (above all, not least, what's more, for that matter, on top of that) — building up emphasis",
+      "tense": "DISCOURSE MARKER",
       "markers": [
         "denso",
         "discourse"
@@ -645,6 +649,7 @@
       "title": "All things considered, hence",
       "sub_cefr": "C1",
       "grammar_focus": "Conclusion markers (all things considered, on balance, on the whole, when all is said and done) + formal causal (hence, thereby, accordingly, by virtue of)",
+      "tense": "DISCOURSE MARKER",
       "markers": [],
       "real_life_context": "You close arguments with weighted conclusions, or draw formal causal links in writing.",
       "grammar": [

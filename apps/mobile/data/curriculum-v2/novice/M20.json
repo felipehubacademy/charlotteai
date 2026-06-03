@@ -25,6 +25,7 @@
       "title": "Você deveria descansar",
       "sub_cefr": "A2",
       "grammar_focus": "Should/shouldn't for advice",
+      "tense": "MODAL · should",
       "markers": [],
       "real_life_context": "Você dá e recebe conselhos sobre saúde, estudo, vida.",
       "grammar": [
@@ -230,6 +231,7 @@
       "title": "Tenho que trabalhar",
       "sub_cefr": "A2",
       "grammar_focus": "Have to / has to (obrigação)",
+      "tense": "MODAL · have to",
       "markers": [
         "denso"
       ],
@@ -437,6 +439,7 @@
       "title": "Não preciso fazer isso",
       "sub_cefr": "A2",
       "grammar_focus": "Don't have to / doesn't have to (absence of obligation)",
+      "tense": "MODAL · have to · negative",
       "markers": [],
       "real_life_context": "Você esclarece que algo é OPCIONAL — não é obrigado a fazer.",
       "grammar": [
@@ -642,6 +645,7 @@
       "title": "Devo ir? Tenho que ir?",
       "sub_cefr": "A2",
       "grammar_focus": "Questions with should / have to",
+      "tense": "MODAL · should · question",
       "markers": [
         "qform"
       ],
@@ -849,6 +853,7 @@
       "title": "Dever, precisar, sugerir",
       "sub_cefr": "A2",
       "grammar_focus": "Integration should + have to + need to",
+      "tense": "MODAL · should",
       "markers": [],
       "real_life_context": "Você combina os três modais pra falar de vida real — obrigações fortes, conselhos, necessidades.",
       "grammar": [

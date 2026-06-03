@@ -24,7 +24,7 @@
 
 ## Unit I01 — He asked if
 
-> **Sub-CEFR**: B2 | **Grammar focus**: Reported yes/no questions (if/whether + statement word order)
+> **Sub-CEFR**: B2 | **Grammar focus**: Reported yes/no questions (if/whether + statement word order) | **Tense**: REPORTED SPEECH · question
 > **Markers**: [qform]
 > **Real-life context**: You report yes/no questions someone asked, without inverting subject and verb.
 
@@ -189,7 +189,7 @@
 
 ## Unit I02 — She asked where
 
-> **Sub-CEFR**: B2 | **Grammar focus**: Reported WH-questions (where, what, when, who, why, how — no inversion)
+> **Sub-CEFR**: B2 | **Grammar focus**: Reported WH-questions (where, what, when, who, why, how — no inversion) | **Tense**: REPORTED SPEECH · question
 > **Markers**: [qform]
 > **Real-life context**: You report open-ended questions with WH-words.
 
@@ -354,7 +354,7 @@
 
 ## Unit I03 — He told me to
 
-> **Sub-CEFR**: B2 | **Grammar focus**: Reported commands (told + person + to + base / told + person + not to + base)
+> **Sub-CEFR**: B2 | **Grammar focus**: Reported commands (told + person + to + base / told + person + not to + base) | **Tense**: REPORTED SPEECH · command
 > **Markers**: [denso]
 > **Real-life context**: You report orders, instructions, or directives someone gave.
 
@@ -520,7 +520,7 @@
 
 ## Unit I04 — She asked me to
 
-> **Sub-CEFR**: B2 | **Grammar focus**: Reported requests (asked + person + to + base) and reporting verbs (asked, begged, urged, warned)
+> **Sub-CEFR**: B2 | **Grammar focus**: Reported requests (asked + person + to + base) and reporting verbs (asked, begged, urged, warned) | **Tense**: REPORTED SPEECH · request
 > **Markers**: [denso]
 > **Real-life context**: You report polite requests, pleas, warnings, and suggestions.
 
@@ -686,7 +686,7 @@
 
 ## Unit I05 — Mixed reports
 
-> **Sub-CEFR**: B2 | **Grammar focus**: Integration of reported statements, questions, and commands
+> **Sub-CEFR**: B2 | **Grammar focus**: Integration of reported statements, questions, and commands | **Tense**: REPORTED SPEECH
 > **Markers**: —
 > **Real-life context**: You report complex conversations including statements, questions, and orders fluidly.
 

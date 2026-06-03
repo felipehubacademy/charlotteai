@@ -23,7 +23,7 @@
 
 ## Unit A01 — Past condition, present result
 
-> **Sub-CEFR**: C1 | **Grammar focus**: Mixed conditional past → present (If I had + pp, I would + base now)
+> **Sub-CEFR**: C1 | **Grammar focus**: Mixed conditional past → present (If I had + pp, I would + base now) | **Tense**: CONDITIONAL · mixed
 > **Markers**: [denso]
 > **Real-life context**: You connect a past action to its present consequence — how your present would differ if your past had differed.
 
@@ -164,7 +164,7 @@
 
 ## Unit A02 — Present state, past result
 
-> **Sub-CEFR**: C1 | **Grammar focus**: Mixed conditional present → past (If I were + adj, I would have + pp)
+> **Sub-CEFR**: C1 | **Grammar focus**: Mixed conditional present → past (If I were + adj, I would have + pp) | **Tense**: CONDITIONAL · mixed
 > **Markers**: [denso]
 > **Real-life context**: You explain a past outcome by appealing to a permanent or ongoing trait — "if I weren't so X, I wouldn't have done Y".
 
@@ -305,7 +305,7 @@
 
 ## Unit A03 — Had I known (inverted)
 
-> **Sub-CEFR**: C1 | **Grammar focus**: Inverted third conditional (Had I known... / Had she said...)
+> **Sub-CEFR**: C1 | **Grammar focus**: Inverted third conditional (Had I known... / Had she said...) | **Tense**: CONDITIONAL · 3rd · inverted
 > **Markers**: [denso] [inversion]
 > **Real-life context**: You speak or write with formal-literary register, dropping "if" and inverting the auxiliary.
 
@@ -447,7 +447,7 @@
 
 ## Unit A04 — Were I to, Should you
 
-> **Sub-CEFR**: C1 | **Grammar focus**: Inverted hypotheticals — "Were I to + base" (formal future hypothetical) and "Should you + base" (formal first conditional)
+> **Sub-CEFR**: C1 | **Grammar focus**: Inverted hypotheticals — "Were I to + base" (formal future hypothetical) and "Should you + base" (formal first conditional) | **Tense**: CONDITIONAL · inverted
 > **Markers**: [denso] [inversion]
 > **Real-life context**: You write formal proposals, emails, contracts — registering the hypothetical with elevated diction.
 
@@ -588,7 +588,7 @@
 
 ## Unit A05 — Suppose, But for, Unless
 
-> **Sub-CEFR**: C1 | **Grammar focus**: Alternatives to "if" — suppose/supposing, but for + noun, without, unless, provided that
+> **Sub-CEFR**: C1 | **Grammar focus**: Alternatives to "if" — suppose/supposing, but for + noun, without, unless, provided that | **Tense**: CONDITIONAL
 > **Markers**: —
 > **Real-life context**: You diversify hypothetical scaffolding away from "if" — for nuance, register, or emphasis.
 

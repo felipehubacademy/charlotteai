@@ -28,7 +28,7 @@
 
 ## Unit A01 — In fact, as a matter of fact
 
-> **Sub-CEFR**: C1 | **Grammar focus**: Nuancing markers (in fact, as a matter of fact, actually, indeed) — strengthening or correcting an earlier claim
+> **Sub-CEFR**: C1 | **Grammar focus**: Nuancing markers (in fact, as a matter of fact, actually, indeed) — strengthening or correcting an earlier claim | **Tense**: DISCOURSE MARKER
 > **Markers**: [denso] [discourse]
 > **Real-life context**: You sharpen a previous statement, add a surprising detail, or politely correct an interlocutor.
 
@@ -168,7 +168,7 @@
 
 ## Unit A02 — That said, mind you
 
-> **Sub-CEFR**: C1 | **Grammar focus**: Concession markers (that said, having said that, mind you, then again, granted, admittedly) — acknowledging the other side
+> **Sub-CEFR**: C1 | **Grammar focus**: Concession markers (that said, having said that, mind you, then again, granted, admittedly) — acknowledging the other side | **Tense**: DISCOURSE MARKER
 > **Markers**: [denso] [discourse]
 > **Real-life context**: You build balanced argument by signalling that you've considered counterpoints — preventing your view from sounding one-sided.
 
@@ -308,7 +308,7 @@
 
 ## Unit A03 — In other words, put differently
 
-> **Sub-CEFR**: C1 | **Grammar focus**: Reformulation markers (in other words, that is to say, put differently, to put it another way, by which I mean, or rather)
+> **Sub-CEFR**: C1 | **Grammar focus**: Reformulation markers (in other words, that is to say, put differently, to put it another way, by which I mean, or rather) | **Tense**: DISCOURSE MARKER
 > **Markers**: [denso] [discourse]
 > **Real-life context**: You restate complex ideas more simply, recast a phrase, or correct yourself in real time.
 
@@ -448,7 +448,7 @@
 
 ## Unit A04 — Above all, what's more
 
-> **Sub-CEFR**: C1 | **Grammar focus**: Emphatic chain markers (above all, not least, what's more, for that matter, on top of that) — building up emphasis
+> **Sub-CEFR**: C1 | **Grammar focus**: Emphatic chain markers (above all, not least, what's more, for that matter, on top of that) — building up emphasis | **Tense**: DISCOURSE MARKER
 > **Markers**: [denso] [discourse]
 > **Real-life context**: You stack reasons or qualities — making the final element feel like the climax, not just another bullet point.
 
@@ -588,7 +588,7 @@
 
 ## Unit A05 — All things considered, hence
 
-> **Sub-CEFR**: C1 | **Grammar focus**: Conclusion markers (all things considered, on balance, on the whole, when all is said and done) + formal causal (hence, thereby, accordingly, by virtue of)
+> **Sub-CEFR**: C1 | **Grammar focus**: Conclusion markers (all things considered, on balance, on the whole, when all is said and done) + formal causal (hence, thereby, accordingly, by virtue of) | **Tense**: DISCOURSE MARKER
 > **Markers**: —
 > **Real-life context**: You close arguments with weighted conclusions, or draw formal causal links in writing.
 

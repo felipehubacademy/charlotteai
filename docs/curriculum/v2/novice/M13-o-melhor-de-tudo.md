@@ -22,7 +22,7 @@
 
 ## Unit N01 — O mais alto, o maior
 
-> **Sub-CEFR**: A2 | **Grammar focus**: Superlatives with short adjectives (the -est)
+> **Sub-CEFR**: A2 | **Grammar focus**: Superlatives with short adjectives (the -est) | **Tense**: SUPERLATIVE
 > **Markers**: [denso]
 > **Real-life context**: Você destaca o mais alto, o maior, o mais barato da família, da turma, do bairro.
 
@@ -187,7 +187,7 @@
 
 ## Unit N02 — O mais interessante
 
-> **Sub-CEFR**: A2 | **Grammar focus**: Superlatives with long adjectives (the most + adj)
+> **Sub-CEFR**: A2 | **Grammar focus**: Superlatives with long adjectives (the most + adj) | **Tense**: SUPERLATIVE
 > **Markers**: —
 > **Real-life context**: Você destaca o mais interessante, mais caro, mais bonito de uma lista ou categoria.
 
@@ -352,7 +352,7 @@
 
 ## Unit N03 — O melhor, o pior
 
-> **Sub-CEFR**: A2 | **Grammar focus**: Irregular superlatives (the best, the worst, the most/least)
+> **Sub-CEFR**: A2 | **Grammar focus**: Irregular superlatives (the best, the worst, the most/least) | **Tense**: SUPERLATIVE
 > **Markers**: [denso]
 > **Real-life context**: Você destaca o melhor e o pior em listas de favoritos.
 
@@ -517,7 +517,7 @@
 
 ## Unit N04 — Primeiro, segundo, terceiro
 
-> **Sub-CEFR**: A2 | **Grammar focus**: Ordinals (first, second, third...)
+> **Sub-CEFR**: A2 | **Grammar focus**: Ordinals (first, second, third...) | **Tense**: SUPERLATIVE
 > **Markers**: —
 > **Real-life context**: Você ordena coisas em sequência — andares, posições, datas, listas.
 
@@ -683,7 +683,7 @@
 
 ## Unit N05 — Rankings completos
 
-> **Sub-CEFR**: A2 | **Grammar focus**: Integration M13 — superlatives + ordinals
+> **Sub-CEFR**: A2 | **Grammar focus**: Integration M13 — superlatives + ordinals | **Tense**: SUPERLATIVE
 > **Markers**: —
 > **Real-life context**: Você ranqueia coisas da sua vida — melhores, piores e por ordem.
 

@@ -20,6 +20,7 @@
       "title": "It might rain",
       "sub_cefr": "B1",
       "grammar_focus": "might for possibility",
+      "tense": "MODAL · might",
       "markers": [
         "denso"
       ],
@@ -215,6 +216,7 @@
       "title": "She may be busy",
       "sub_cefr": "B1",
       "grammar_focus": "may for possibility (similar to might, slightly more formal)",
+      "tense": "MODAL · may",
       "markers": [],
       "real_life_context": "You speculate using \"may\" — similar to might but more formal.",
       "grammar": [
@@ -404,6 +406,7 @@
       "title": "It could be",
       "sub_cefr": "B1",
       "grammar_focus": "could for possibility",
+      "tense": "MODAL · could",
       "markers": [],
       "real_life_context": "You speculate with \"could\" — similar to might/may.",
       "grammar": [
@@ -596,6 +599,7 @@
       "title": "It can't be true",
       "sub_cefr": "B1",
       "grammar_focus": "can't for impossibility (logical)",
+      "tense": "MODAL · can't",
       "markers": [
         "denso"
       ],
@@ -791,6 +795,7 @@
       "title": "All modals combined",
       "sub_cefr": "B1",
       "grammar_focus": "Integration might/may/could/can't",
+      "tense": "MODAL · might/may/could",
       "markers": [],
       "real_life_context": "You combine modals to express different degrees of certainty.",
       "grammar": [

@@ -23,7 +23,7 @@
 
 ## Unit I01 — I wish you would
 
-> **Sub-CEFR**: B2 | **Grammar focus**: I wish + would + base (annoyance/desire about another's recurring action)
+> **Sub-CEFR**: B2 | **Grammar focus**: I wish + would + base (annoyance/desire about another's recurring action) | **Tense**: SUBJUNCTIVE · wish
 > **Markers**: [denso]
 > **Real-life context**: You express a wish that someone else would change their behavior.
 
@@ -189,7 +189,7 @@
 
 ## Unit I02 — If only
 
-> **Sub-CEFR**: B2 | **Grammar focus**: "If only" + past simple (present regret) and + past perfect (past regret)
+> **Sub-CEFR**: B2 | **Grammar focus**: "If only" + past simple (present regret) and + past perfect (past regret) | **Tense**: SUBJUNCTIVE · if only
 > **Markers**: [denso]
 > **Real-life context**: You express stronger or more dramatic regret than "I wish" with "if only".
 
@@ -355,7 +355,7 @@
 
 ## Unit I03 — I'd rather
 
-> **Sub-CEFR**: B2 | **Grammar focus**: Would rather + base (own preference) and would rather + past simple (about another)
+> **Sub-CEFR**: B2 | **Grammar focus**: Would rather + base (own preference) and would rather + past simple (about another) | **Tense**: SUBJUNCTIVE · would rather
 > **Markers**: [denso]
 > **Real-life context**: You state preferences politely or express what you'd prefer someone else to do.
 
@@ -520,7 +520,7 @@
 
 ## Unit I04 — It's time
 
-> **Sub-CEFR**: B2 | **Grammar focus**: "It's (high/about) time" + past simple — urgent recommendation
+> **Sub-CEFR**: B2 | **Grammar focus**: "It's (high/about) time" + past simple — urgent recommendation | **Tense**: SUBJUNCTIVE · it's time
 > **Markers**: [denso]
 > **Real-life context**: You urge someone to do something they should have already done.
 
@@ -685,7 +685,7 @@
 
 ## Unit I05 — Mixed wishes and preferences
 
-> **Sub-CEFR**: B2 | **Grammar focus**: Integration of wish + would, if only, would rather, it's time + past
+> **Sub-CEFR**: B2 | **Grammar focus**: Integration of wish + would, if only, would rather, it's time + past | **Tense**: SUBJUNCTIVE
 > **Markers**: —
 > **Real-life context**: You combine wish structures fluidly in conversation about preferences and regrets.
 
