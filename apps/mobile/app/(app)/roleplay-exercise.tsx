@@ -746,9 +746,14 @@ export default function RolePlayExerciseScreen() {
 
       {/* ── Scaffold INLINE acima do mic (sempre visivel, sem clique).
           Removidos botao Lightbulb + popup hint (redundantes). */}
-      {!sessionComplete && !isProcessing && (() => {
+      {!sessionComplete && !isProcessing && level !== 'Advanced' && (() => {
+        // Gradiente por nivel:
+        // - Novice: label PT + "Por exemplo: hint_en"
+        // - Inter:  label_en do objetivo (sem hint, sem exemplo)
+        // - Advanced: scaffold escondido (gate acima)
         let en: string | undefined;
         let pt: string | undefined;
+        let interLabel: string | undefined;
         if (rp.scripted && activeNpcLineId) {
           const exp = rp.scripted?.npc_lines?.[activeNpcLineId]?.expected_student_response;
           en = exp?.en;
@@ -757,6 +762,22 @@ export default function RolePlayExerciseScreen() {
           const pending = rp.objectives.find(o => !objectivesMet.has(o.id));
           en = pending?.hint_en;
           pt = pending?.label_pt;
+          interLabel = pending?.label_en;
+        }
+        if (level === 'Inter') {
+          if (!interLabel) return null;
+          return (
+            <View style={{
+              marginHorizontal: 16, marginBottom: 6,
+              backgroundColor: C.navy, borderRadius: 12, padding: 14,
+              flexDirection: 'row', gap: 10, alignItems: 'flex-start',
+            }}>
+              <Lightbulb size={18} color="#FFD27A" weight="fill" />
+              <AppText style={{ flex: 1, color: '#FFF', fontSize: 14, fontWeight: '600', lineHeight: 18 }}>
+                {interLabel}
+              </AppText>
+            </View>
+          );
         }
         if (!en) return null;
         return (
