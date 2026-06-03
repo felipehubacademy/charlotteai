@@ -381,12 +381,12 @@
    **Explanation**: "Where were you?" — WH + were + sujeito.
 
 5. **fill_gap** — "_____ he at the cinema?"
-   **Hint**: Auxiliar para he no passado
+   **Hint**: 'Was' ou 'were' para 'he'?
    **Answer**: Was
    **Explanation**: "Was he?" — he/she/it com "was" em pergunta.
 
 6. **fill_gap** — "How _____ your weekend?"
-   **Hint**: Auxiliar para "your weekend"
+   **Hint**: 'Was' ou 'were' para 'your weekend' (singular)?
    **Answer**: was
    **Explanation**: "How was your weekend?" — singular usa "was".
 
