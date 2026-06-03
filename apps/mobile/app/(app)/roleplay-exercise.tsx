@@ -773,6 +773,9 @@ export default function RolePlayExerciseScreen() {
                 </AppText>
               )}
               <AppText style={{ color: '#FFF', fontSize: 15, fontWeight: '700', lineHeight: 20 }}>
+                <AppText style={{ color: 'rgba(255,255,255,0.55)', fontWeight: '500' }}>
+                  {isPt ? 'Por exemplo: ' : 'For example: '}
+                </AppText>
                 {en}
               </AppText>
             </View>

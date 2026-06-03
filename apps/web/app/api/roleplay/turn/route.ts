@@ -73,6 +73,16 @@ function buildSystemPrompt(
     ? `\n\nSTUDENT IS STUCK ON OBJECTIVE ${nextObjectiveId} (${stuckTurns} turns).\nReformulate your last question to nudge them more directly toward this\nobjective. Make the question pointed and easier to answer. Stay in\ncharacter and do NOT reveal the objective list.`
     : '';
 
+  // NOVICE: injeta explicitamente qual obj eh o proximo + seu hint, pra
+  // remover ambiguidade. Forca cue a casar com o hint (pattern/tense),
+  // nao improvisar topico diferente.
+  const nextPending = (level === 'Novice' && nextObjectiveId !== undefined)
+    ? rp.objectives.find(o => o.id === nextObjectiveId)
+    : undefined;
+  const nextPendingBlock = nextPending
+    ? `\n\nNEXT PENDING OBJECTIVE: id=${nextPending.id}, label="${nextPending.label_pt || nextPending.label_en || ''}", hint="${nextPending.hint_en || nextPending.hint_pt || ''}".\nYour next utterance MUST cue THIS specific student answer. Pattern-match the hint's grammar (tense, structure) and ask the ONE question that elicits exactly that pattern. Example: hint="I wasn't happy" → ask "Were you happy?". hint="My sister wasn't home" → ask "Was your sister home?". DO NOT cue a different topic or skip ahead. If the hint is a question (user-asks obj), give a SHORT acknowledgment and stop — let the student lead.`
+    : '';
+
   // Novice = absolute/early beginner. Restrict to the simplest English
   // possible. M01 students may have zero English, so every word counts.
   const simplicityBlock = level === 'Novice'
@@ -244,7 +254,7 @@ Rules:
 - If the student goes off-topic, gently steer them back; do NOT mark
   objectives as met.
 - Do NOT correct grammar mid-conversation. Corrections happen post-game.
-- American English by default. Calorosa, encorajadora, paciente.${nudgeBlock}`;
+- American English by default. Calorosa, encorajadora, paciente.${nudgeBlock}${nextPendingBlock}`;
 }
 
 // ── Whisper hallucination filter ───────────────────────────────────
