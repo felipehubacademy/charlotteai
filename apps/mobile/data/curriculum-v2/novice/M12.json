@@ -23,7 +23,7 @@
       "title": "Mais alto, mais baixo",
       "sub_cefr": "A2",
       "grammar_focus": "Short adjectives + -er than",
-      "tense": "COMPARATIVE",
+      "tense": "COMPARATIVO",
       "markers": [
         "denso"
       ],
@@ -232,7 +232,7 @@
       "title": "Mais bonito, mais interessante",
       "sub_cefr": "A2",
       "grammar_focus": "Long adjectives (2+ syllables) + more + adj + than",
-      "tense": "COMPARATIVE",
+      "tense": "COMPARATIVO",
       "markers": [],
       "real_life_context": "Você compara qualidades subjetivas — beleza, interesse, dificuldade.",
       "grammar": [
@@ -435,7 +435,7 @@
       "title": "Melhor, pior, mais, menos",
       "sub_cefr": "A2",
       "grammar_focus": "Irregular comparatives (better/worse/more/less/farther)",
-      "tense": "COMPARATIVE",
+      "tense": "COMPARATIVO",
       "markers": [
         "denso"
       ],
@@ -640,7 +640,7 @@
       "title": "Bem mais, um pouco mais",
       "sub_cefr": "A2",
       "grammar_focus": "Modifiers (much/a little/a bit + comparative)",
-      "tense": "COMPARATIVE",
+      "tense": "COMPARATIVO",
       "markers": [],
       "real_life_context": "Você suaviza ou intensifica comparações — \"muito mais\", \"um pouco mais\", \"um pouco menos\".",
       "grammar": [
@@ -844,7 +844,7 @@
       "title": "Comparando tudo",
       "sub_cefr": "A2",
       "grammar_focus": "Integration of all M12 comparatives",
-      "tense": "COMPARATIVE",
+      "tense": "COMPARATIVO",
       "markers": [],
       "real_life_context": "Você combina comparativos curtos, longos e irregulares em descrições completas.",
       "grammar": [

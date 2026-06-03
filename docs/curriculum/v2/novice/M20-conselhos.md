@@ -356,7 +356,7 @@
 
 ## Unit N03 — Não preciso fazer isso
 
-> **Sub-CEFR**: A2 | **Grammar focus**: Don't have to / doesn't have to (absence of obligation) | **Tense**: MODAL · have to · negative
+> **Sub-CEFR**: A2 | **Grammar focus**: Don't have to / doesn't have to (absence of obligation) | **Tense**: MODAL · have to · negativo
 > **Markers**: —
 > **Real-life context**: Você esclarece que algo é OPCIONAL — não é obrigado a fazer.
 
@@ -522,7 +522,7 @@
 
 ## Unit N04 — Devo ir? Tenho que ir?
 
-> **Sub-CEFR**: A2 | **Grammar focus**: Questions with should / have to | **Tense**: MODAL · should · question
+> **Sub-CEFR**: A2 | **Grammar focus**: Questions with should / have to | **Tense**: MODAL · should · pergunta
 > **Markers**: [qform]
 > **Real-life context**: Você pede conselho ou esclarece obrigações.
 

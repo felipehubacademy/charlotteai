@@ -26,7 +26,7 @@
 
 ## Unit N01 — Mostrando interesse
 
-> **Sub-CEFR**: A2 | **Grammar focus**: Reações para mostrar engajamento na conversa | **Tense**: CHUNKS
+> **Sub-CEFR**: A2 | **Grammar focus**: Reações para mostrar engajamento na conversa | **Tense**: EXPRESSÕES
 > **Markers**: [conversation]
 > **Real-life context**: Alguém te conta algo e você quer mostrar que está prestando atenção e quer saber mais.
 
@@ -192,7 +192,7 @@
 
 ## Unit N02 — Surpresa e descrença
 
-> **Sub-CEFR**: A2 | **Grammar focus**: Reações de surpresa, espanto, descrença | **Tense**: CHUNKS
+> **Sub-CEFR**: A2 | **Grammar focus**: Reações de surpresa, espanto, descrença | **Tense**: EXPRESSÕES
 > **Markers**: [conversation]
 > **Real-life context**: Alguém te conta algo inesperado ou incrível e você quer reagir com força.
 
@@ -358,7 +358,7 @@
 
 ## Unit N03 — Confirmando entendimento
 
-> **Sub-CEFR**: A2 | **Grammar focus**: Confirmar que entendeu, mostrar que está acompanhando | **Tense**: CHUNKS
+> **Sub-CEFR**: A2 | **Grammar focus**: Confirmar que entendeu, mostrar que está acompanhando | **Tense**: EXPRESSÕES
 > **Markers**: [conversation]
 > **Real-life context**: Alguém te explica algo e você quer confirmar que entendeu sem interromper.
 
@@ -525,7 +525,7 @@
 
 ## Unit N04 — Reação a más notícias
 
-> **Sub-CEFR**: A2 | **Grammar focus**: Empatia, condolências leves, reações a notícias ruins | **Tense**: CHUNKS
+> **Sub-CEFR**: A2 | **Grammar focus**: Empatia, condolências leves, reações a notícias ruins | **Tense**: EXPRESSÕES
 > **Markers**: [conversation]
 > **Real-life context**: Alguém te conta uma notícia ruim e você quer reagir com empatia sem soar frio.
 
@@ -694,7 +694,7 @@
 
 ## Unit N05 — Pausas e transições
 
-> **Sub-CEFR**: A2 | **Grammar focus**: Ganhar tempo, pedir pausa, mudar de assunto | **Tense**: CHUNKS
+> **Sub-CEFR**: A2 | **Grammar focus**: Ganhar tempo, pedir pausa, mudar de assunto | **Tense**: EXPRESSÕES
 > **Markers**: [conversation]
 > **Real-life context**: Você precisa pensar antes de responder, ou quer mudar de tópico na conversa.
 

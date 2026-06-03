@@ -25,7 +25,7 @@
       "title": "Eu estava lá",
       "sub_cefr": "A2",
       "grammar_focus": "was/were positive",
-      "tense": "PAST · to be",
+      "tense": "PASSADO · to be",
       "markers": [
         "denso"
       ],
@@ -230,7 +230,7 @@
       "title": "Não estava lá",
       "sub_cefr": "A2",
       "grammar_focus": "was/were negative (wasn't/weren't)",
-      "tense": "PAST · to be · negative",
+      "tense": "PASSADO · to be · negativo",
       "markers": [],
       "real_life_context": "Você corrige informações erradas sobre o passado ou diz onde não estava.",
       "grammar": [
@@ -433,7 +433,7 @@
       "title": "Você estava lá?",
       "sub_cefr": "A2",
       "grammar_focus": "was/were questions",
-      "tense": "PAST · to be · question",
+      "tense": "PASSADO · to be · pergunta",
       "markers": [
         "qform"
       ],
@@ -638,7 +638,7 @@
       "title": "Ontem, semana passada",
       "sub_cefr": "A2",
       "grammar_focus": "Time markers of the past (yesterday, last X, X ago, in YEAR)",
-      "tense": "PAST · to be",
+      "tense": "PASSADO · to be",
       "markers": [],
       "real_life_context": "Você usa marcadores temporais pra ancorar eventos passados na linha do tempo.",
       "grammar": [
@@ -841,7 +841,7 @@
       "title": "Era assim antes",
       "sub_cefr": "A2",
       "grammar_focus": "Integration was/were + descriptions of past states",
-      "tense": "PAST · to be",
+      "tense": "PASSADO · to be",
       "markers": [],
       "real_life_context": "Você descreve como era sua vida antes — onde, com quem, como.",
       "grammar": [

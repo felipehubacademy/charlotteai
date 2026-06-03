@@ -27,7 +27,7 @@
       "title": "Na loja",
       "sub_cefr": "A1",
       "grammar_focus": "I'd like + noun + prepositions of place",
-      "tense": "CHUNKS",
+      "tense": "EXPRESSÕES",
       "markers": [],
       "real_life_context": "Você entra numa loja procurando algo específico.",
       "grammar": [
@@ -230,7 +230,7 @@
       "title": "Este, esse, aquele",
       "sub_cefr": "A1",
       "grammar_focus": "Demonstratives this / that / these / those",
-      "tense": "CHUNKS",
+      "tense": "EXPRESSÕES",
       "markers": [
         "denso"
       ],
@@ -440,7 +440,7 @@
       "title": "Em cima, embaixo, ao lado",
       "sub_cefr": "A1",
       "grammar_focus": "Prepositions of place (in, on, at, next to, between, behind, in front of)",
-      "tense": "CHUNKS",
+      "tense": "EXPRESSÕES",
       "markers": [
         "denso"
       ],
@@ -645,7 +645,7 @@
       "title": "Pagando",
       "sub_cefr": "A1",
       "grammar_focus": "Payment chunks + money vocab",
-      "tense": "CHUNKS",
+      "tense": "EXPRESSÕES",
       "markers": [],
       "real_life_context": "Você está no caixa pagando uma compra — cartão, dinheiro, troco.",
       "grammar": [
@@ -848,7 +848,7 @@
       "title": "Comprando completo",
       "sub_cefr": "A1",
       "grammar_focus": "Integration M11 (I'd like + demonstratives + prepositions + payment)",
-      "tense": "CHUNKS",
+      "tense": "EXPRESSÕES",
       "markers": [],
       "real_life_context": "Você completa uma compra do início ao fim numa loja de roupas.",
       "grammar": [

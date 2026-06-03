@@ -27,7 +27,7 @@
       "title": "Estou fazendo agora",
       "sub_cefr": "A1",
       "grammar_focus": "Present continuous positivo (am/is/are + verb-ing)",
-      "tense": "PRESENT · continuous",
+      "tense": "PRESENTE · contínuo",
       "markers": [
         "denso"
       ],
@@ -232,7 +232,7 @@
       "title": "Não estou fazendo",
       "sub_cefr": "A1",
       "grammar_focus": "Present continuous negativo (am not / isn't / aren't + verb-ing)",
-      "tense": "PRESENT · continuous · negative",
+      "tense": "PRESENTE · contínuo · negativo",
       "markers": [],
       "real_life_context": "Você corrige uma suposição errada ou diz o que NÃO está acontecendo agora.",
       "grammar": [
@@ -435,7 +435,7 @@
       "title": "Está fazendo?",
       "sub_cefr": "A1",
       "grammar_focus": "Present continuous questions (Are you...? Is she...?)",
-      "tense": "PRESENT · continuous · question",
+      "tense": "PRESENTE · contínuo · pergunta",
       "markers": [
         "qform"
       ],
@@ -640,7 +640,7 @@
       "title": "Hoje, agora, neste momento",
       "sub_cefr": "A1",
       "grammar_focus": "Time expressions for continuous (right now / at the moment / today / this week)",
-      "tense": "PRESENT · continuous",
+      "tense": "PRESENTE · contínuo",
       "markers": [],
       "real_life_context": "Você descreve atividades temporárias — desta semana, deste mês, neste momento.",
       "grammar": [
@@ -843,7 +843,7 @@
       "title": "Simple vs Continuous",
       "sub_cefr": "A1",
       "grammar_focus": "Contrast present simple vs present continuous",
-      "tense": "PRESENT · simple vs continuous",
+      "tense": "PRESENTE · simples vs contínuo",
       "markers": [
         "denso"
       ],

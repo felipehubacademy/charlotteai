@@ -26,7 +26,7 @@
 
 ## Unit N01 — Contáveis e incontáveis
 
-> **Sub-CEFR**: A1 | **Grammar focus**: Countable vs uncountable nouns | **Tense**: CHUNKS
+> **Sub-CEFR**: A1 | **Grammar focus**: Countable vs uncountable nouns | **Tense**: EXPRESSÕES
 > **Markers**: [denso]
 > **Real-life context**: Você diferencia comidas que se contam (uma maçã, dois pães) de coisas que não se contam (água, leite).
 
@@ -191,7 +191,7 @@
 
 ## Unit N02 — Some ou any?
 
-> **Sub-CEFR**: A1 | **Grammar focus**: some (afirmativas/pedidos) vs any (negativas/perguntas) | **Tense**: CHUNKS
+> **Sub-CEFR**: A1 | **Grammar focus**: some (afirmativas/pedidos) vs any (negativas/perguntas) | **Tense**: EXPRESSÕES
 > **Markers**: [denso]
 > **Real-life context**: Você abre a geladeira e descreve o que tem (some) ou não tem (any).
 
@@ -356,7 +356,7 @@
 
 ## Unit N03 — Quanto custa, quantos tem
 
-> **Sub-CEFR**: A1 | **Grammar focus**: How much (uncountable, price) vs How many (countable) | **Tense**: CHUNKS
+> **Sub-CEFR**: A1 | **Grammar focus**: How much (uncountable, price) vs How many (countable) | **Tense**: EXPRESSÕES
 > **Markers**: [denso]
 > **Real-life context**: Você pergunta quantidade ou preço em uma loja ou no mercado.
 
@@ -521,7 +521,7 @@
 
 ## Unit N04 — No restaurante
 
-> **Sub-CEFR**: A1 | **Grammar focus**: Restaurant chunks (I'd like, Can I have, the bill) | **Tense**: CHUNKS
+> **Sub-CEFR**: A1 | **Grammar focus**: Restaurant chunks (I'd like, Can I have, the bill) | **Tense**: EXPRESSÕES
 > **Markers**: —
 > **Real-life context**: Você está num restaurante fazendo pedidos.
 
@@ -687,7 +687,7 @@
 
 ## Unit N05 — Tudo sobre comida
 
-> **Sub-CEFR**: A1 | **Grammar focus**: Integration of countable/uncountable + some/any + how much/many + restaurant chunks | **Tense**: CHUNKS
+> **Sub-CEFR**: A1 | **Grammar focus**: Integration of countable/uncountable + some/any + how much/many + restaurant chunks | **Tense**: EXPRESSÕES
 > **Markers**: —
 > **Real-life context**: Você integra tudo em conversas sobre comida — preferências, pedidos, refeições, descrições.
 

@@ -27,7 +27,7 @@
       "title": "Contáveis e incontáveis",
       "sub_cefr": "A1",
       "grammar_focus": "Countable vs uncountable nouns",
-      "tense": "CHUNKS",
+      "tense": "EXPRESSÕES",
       "markers": [
         "denso"
       ],
@@ -232,7 +232,7 @@
       "title": "Some ou any?",
       "sub_cefr": "A1",
       "grammar_focus": "some (afirmativas/pedidos) vs any (negativas/perguntas)",
-      "tense": "CHUNKS",
+      "tense": "EXPRESSÕES",
       "markers": [
         "denso"
       ],
@@ -437,7 +437,7 @@
       "title": "Quanto custa, quantos tem",
       "sub_cefr": "A1",
       "grammar_focus": "How much (uncountable, price) vs How many (countable)",
-      "tense": "CHUNKS",
+      "tense": "EXPRESSÕES",
       "markers": [
         "denso"
       ],
@@ -642,7 +642,7 @@
       "title": "No restaurante",
       "sub_cefr": "A1",
       "grammar_focus": "Restaurant chunks (I'd like, Can I have, the bill)",
-      "tense": "CHUNKS",
+      "tense": "EXPRESSÕES",
       "markers": [],
       "real_life_context": "Você está num restaurante fazendo pedidos.",
       "grammar": [
@@ -848,7 +848,7 @@
       "title": "Tudo sobre comida",
       "sub_cefr": "A1",
       "grammar_focus": "Integration of countable/uncountable + some/any + how much/many + restaurant chunks",
-      "tense": "CHUNKS",
+      "tense": "EXPRESSÕES",
       "markers": [],
       "real_life_context": "Você integra tudo em conversas sobre comida — preferências, pedidos, refeições, descrições.",
       "grammar": [

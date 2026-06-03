@@ -30,7 +30,7 @@
 
 ## Unit N01 — Ela trabalha, ele estuda
 
-> **Sub-CEFR**: A1 | **Grammar focus**: Present simple 3ª pessoa singular (-s, -es, -ies) | **Tense**: PRESENT · simple
+> **Sub-CEFR**: A1 | **Grammar focus**: Present simple 3ª pessoa singular (-s, -es, -ies) | **Tense**: PRESENTE · simples
 > **Markers**: [denso]
 > **Real-life context**: Você fala sobre o que sua irmã, irmão ou amigo faz no dia-a-dia.
 
@@ -195,7 +195,7 @@
 
 ## Unit N02 — Eu não faço, ela não faz
 
-> **Sub-CEFR**: A1 | **Grammar focus**: Negative present simple (don't / doesn't) | **Tense**: PRESENT · simple · negative
+> **Sub-CEFR**: A1 | **Grammar focus**: Negative present simple (don't / doesn't) | **Tense**: PRESENTE · simples · negativo
 > **Markers**: [denso]
 > **Real-life context**: Você conta o que você (e outros) NÃO fazem — hábitos negativos, restrições.
 
@@ -360,7 +360,7 @@
 
 ## Unit N03 — Você faz? Ela faz?
 
-> **Sub-CEFR**: A1 | **Grammar focus**: Yes/No questions (Do you...? Does she...?) | **Tense**: PRESENT · simple · question
+> **Sub-CEFR**: A1 | **Grammar focus**: Yes/No questions (Do you...? Does she...?) | **Tense**: PRESENTE · simples · pergunta
 > **Markers**: [denso]
 > **Real-life context**: Você faz perguntas sobre hábitos — de amigos, da Charlotte, de família.
 
@@ -525,7 +525,7 @@
 
 ## Unit N04 — Onde, quando, como
 
-> **Sub-CEFR**: A1 | **Grammar focus**: WH-questions with do/does (Where do you...? What does she...?) | **Tense**: PRESENT · simple · question
+> **Sub-CEFR**: A1 | **Grammar focus**: WH-questions with do/does (Where do you...? What does she...?) | **Tense**: PRESENTE · simples · pergunta
 > **Markers**: [denso]
 > **Real-life context**: Entrevista informal — você faz perguntas WH pra alguém sobre vida e rotina.
 
@@ -690,7 +690,7 @@
 
 ## Unit N05 — Tudo junto
 
-> **Sub-CEFR**: A1 | **Grammar focus**: Integration — positive + negative + question 3rd person | **Tense**: PRESENT · simple
+> **Sub-CEFR**: A1 | **Grammar focus**: Integration — positive + negative + question 3rd person | **Tense**: PRESENTE · simples
 > **Markers**: [denso]
 > **Real-life context**: Você descreve alguém completamente — o que faz, o que não faz, e pergunta sobre alguém da Charlotte.
 

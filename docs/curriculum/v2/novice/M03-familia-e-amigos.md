@@ -36,7 +36,7 @@
 
 ## Unit N01 — Pai, mãe, irmãos
 
-> **Sub-CEFR**: A1 | **Grammar focus**: Possessive adjectives (my/his/her) + family chunks (mother/father/brother/sister) | **Tense**: PRESENT · simple
+> **Sub-CEFR**: A1 | **Grammar focus**: Possessive adjectives (my/his/her) + family chunks (mother/father/brother/sister) | **Tense**: PRESENTE · simples
 > **Markers**: [denso]
 > **Real-life context**: Você conta para alguém sobre sua família próxima — mãe, pai, irmãos.
 
@@ -201,7 +201,7 @@
 
 ## Unit N02 — Tenho dois irmãos
 
-> **Sub-CEFR**: A1 | **Grammar focus**: "have got" como chunk + numbers cumulativos (M02) | **Tense**: PRESENT · have got
+> **Sub-CEFR**: A1 | **Grammar focus**: "have got" como chunk + numbers cumulativos (M02) | **Tense**: PRESENTE · have got
 > **Markers**: [denso]
 > **Real-life context**: Alguém pergunta o tamanho da sua família — você diz quantos irmãos e irmãs tem.
 
@@ -366,7 +366,7 @@
 
 ## Unit N03 — Marido, esposa, filhos
 
-> **Sub-CEFR**: A1 | **Grammar focus**: Vocab husband/wife/son/daughter + possessives (his/her) + married/single | **Tense**: PRESENT · simple
+> **Sub-CEFR**: A1 | **Grammar focus**: Vocab husband/wife/son/daughter + possessives (his/her) + married/single | **Tense**: PRESENTE · simples
 > **Markers**: —
 > **Real-life context**: Conversa social — alguém pergunta se você é casado(a) e se tem filhos.
 
@@ -531,7 +531,7 @@
 
 ## Unit N04 — Meu melhor amigo
 
-> **Sub-CEFR**: A1 | **Grammar focus**: friend chunks + possessives (his/her name is) + describing friends with cumulative vocab | **Tense**: PRESENT · simple
+> **Sub-CEFR**: A1 | **Grammar focus**: friend chunks + possessives (his/her name is) + describing friends with cumulative vocab | **Tense**: PRESENTE · simples
 > **Markers**: —
 > **Real-life context**: Você descreve seu melhor amigo(a) — nome, idade, origem ou nacionalidade.
 
@@ -696,7 +696,7 @@
 
 ## Unit N05 — Apresentando minha família
 
-> **Sub-CEFR**: A1 | **Grammar focus**: Integration — possessives + family + cumulative (name/age/nationality from M01-M02) | **Tense**: PRESENT · simple
+> **Sub-CEFR**: A1 | **Grammar focus**: Integration — possessives + family + cumulative (name/age/nationality from M01-M02) | **Tense**: PRESENTE · simples
 > **Markers**: —
 > **Real-life context**: Você apresenta sua família para alguém pela primeira vez — mãe, pai, irmãos, descrevendo cada um.
 

@@ -35,7 +35,7 @@
 
 ## Unit N01 — Acordo cedo
 
-> **Sub-CEFR**: A1 | **Grammar focus**: Present simple positivo (I/we) + verbos da manhã (wake up, sleep, have) | **Tense**: PRESENT · simple
+> **Sub-CEFR**: A1 | **Grammar focus**: Present simple positivo (I/we) + verbos da manhã (wake up, sleep, have) | **Tense**: PRESENTE · simples
 > **Markers**: —
 > **Real-life context**: Você descreve sua rotina matinal para um amigo curioso sobre como você começa o dia.
 
@@ -200,7 +200,7 @@
 
 ## Unit N02 — Eu trabalho, eu estudo
 
-> **Sub-CEFR**: A1 | **Grammar focus**: Present simple positivo + verbos work, study + lugares | **Tense**: PRESENT · simple
+> **Sub-CEFR**: A1 | **Grammar focus**: Present simple positivo + verbos work, study + lugares | **Tense**: PRESENTE · simples
 > **Markers**: —
 > **Real-life context**: Alguém quer saber o que você faz da vida — trabalho, estudo, onde, com quem.
 
@@ -365,7 +365,7 @@
 
 ## Unit N03 — O que como
 
-> **Sub-CEFR**: A1 | **Grammar focus**: Present simple positivo + eat/drink/have + refeições | **Tense**: PRESENT · simple
+> **Sub-CEFR**: A1 | **Grammar focus**: Present simple positivo + eat/drink/have + refeições | **Tense**: PRESENTE · simples
 > **Markers**: —
 > **Real-life context**: Você descreve seus hábitos alimentares — o que come no café da manhã, almoço e jantar.
 
@@ -530,7 +530,7 @@
 
 ## Unit N04 — Vou e venho
 
-> **Sub-CEFR**: A1 | **Grammar focus**: Present simple positivo + go/come + means of transport + places | **Tense**: PRESENT · simple
+> **Sub-CEFR**: A1 | **Grammar focus**: Present simple positivo + go/come + means of transport + places | **Tense**: PRESENTE · simples
 > **Markers**: —
 > **Real-life context**: Você descreve seus deslocamentos diários — pra onde vai, como, e quando volta.
 
@@ -695,7 +695,7 @@
 
 ## Unit N05 — Minha rotina
 
-> **Sub-CEFR**: A1 | **Grammar focus**: Adverbs of frequency (always/usually/sometimes/never) + integration M05 | **Tense**: PRESENT · simple
+> **Sub-CEFR**: A1 | **Grammar focus**: Adverbs of frequency (always/usually/sometimes/never) + integration M05 | **Tense**: PRESENTE · simples
 > **Markers**: [denso]
 > **Real-life context**: Você conta sua rotina semanal típica usando advérbios de frequência pra dizer o que sempre/às vezes/nunca faz.
 
@@ -860,7 +860,7 @@
 
 ## Unit N06 — Que horas? Que dia?
 
-> **Sub-CEFR**: A1 | **Grammar focus**: Telling time + dates + days/months/seasons (Fase B extra unit) | **Tense**: PRESENT · simple
+> **Sub-CEFR**: A1 | **Grammar focus**: Telling time + dates + days/months/seasons (Fase B extra unit) | **Tense**: PRESENTE · simples
 > **Markers**: [survival]
 > **Real-life context**: Você pergunta e dá horas, dias da semana, datas — o vocabulário básico de tempo que aparece em quase toda conversa.
 

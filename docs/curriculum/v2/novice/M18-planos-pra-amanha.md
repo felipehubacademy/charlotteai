@@ -21,7 +21,7 @@
 
 ## Unit N01 — Vou viajar
 
-> **Sub-CEFR**: A2 | **Grammar focus**: Going to positive | **Tense**: FUTURE · going to
+> **Sub-CEFR**: A2 | **Grammar focus**: Going to positive | **Tense**: FUTURO · going to
 > **Markers**: [denso]
 > **Real-life context**: Você anuncia seus planos firmes pro futuro próximo.
 
@@ -186,7 +186,7 @@
 
 ## Unit N02 — Não vou fazer isso
 
-> **Sub-CEFR**: A2 | **Grammar focus**: Going to negative | **Tense**: FUTURE · going to · negative
+> **Sub-CEFR**: A2 | **Grammar focus**: Going to negative | **Tense**: FUTURO · going to · negativo
 > **Markers**: —
 > **Real-life context**: Você esclarece planos que NÃO tem ou que cancelou.
 
@@ -352,7 +352,7 @@
 
 ## Unit N03 — Você vai fazer?
 
-> **Sub-CEFR**: A2 | **Grammar focus**: Going to questions (Are you going to...? Is she going to...?) | **Tense**: FUTURE · going to · question
+> **Sub-CEFR**: A2 | **Grammar focus**: Going to questions (Are you going to...? Is she going to...?) | **Tense**: FUTURO · going to · pergunta
 > **Markers**: [qform]
 > **Real-life context**: Você pergunta sobre planos de alguém.
 
@@ -518,7 +518,7 @@
 
 ## Unit N04 — Amanhã, semana que vem
 
-> **Sub-CEFR**: A2 | **Grammar focus**: Future time markers (tomorrow, next week, soon, in X days) | **Tense**: FUTURE · going to
+> **Sub-CEFR**: A2 | **Grammar focus**: Future time markers (tomorrow, next week, soon, in X days) | **Tense**: FUTURO · going to
 > **Markers**: —
 > **Real-life context**: Você ancora seus planos em pontos específicos do futuro.
 
@@ -683,7 +683,7 @@
 
 ## Unit N05 — Meus planos completos
 
-> **Sub-CEFR**: A2 | **Grammar focus**: Integration going to (positive/negative/question + time markers) | **Tense**: FUTURE · going to
+> **Sub-CEFR**: A2 | **Grammar focus**: Integration going to (positive/negative/question + time markers) | **Tense**: FUTURO · going to
 > **Markers**: —
 > **Real-life context**: Você compartilha planos completos de futuro próximo.
 
@@ -849,7 +849,7 @@
 
 ## Unit N06 — Listening: gonna, wanna, gotta
 
-> **Sub-CEFR**: A1 | **Grammar focus**: Decodificar reduções coloquiais de inglês falado — RECEPÇÃO (não produção) | **Tense**: CHUNKS
+> **Sub-CEFR**: A1 | **Grammar focus**: Decodificar reduções coloquiais de inglês falado — RECEPÇÃO (não produção) | **Tense**: EXPRESSÕES
 > **Markers**: [listening-receptive]
 > **Real-life context**: Você ouve fala nativa em filmes, vídeos, podcasts, ou na rua e precisa entender as reduções "gonna", "wanna", "gotta", "whatcha".
 > **Notas pedagógicas**: Listening-first. Grammar exercises são de "match the spoken form to the formal form". Para Speaking (role-play e chat), o aluno ainda usa "going to" / "want to" formal — speaking natural fica pra Inter/Advanced.

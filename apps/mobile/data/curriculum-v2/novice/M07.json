@@ -230,7 +230,7 @@
       "title": "Eu não sei fazer isso",
       "sub_cefr": "A1",
       "grammar_focus": "Can't (cannot) — limitações honestas",
-      "tense": "MODAL · can · negative",
+      "tense": "MODAL · can · negativo",
       "markers": [],
       "real_life_context": "Você reconhece o que NÃO sabe fazer ainda — habilidades que faltam.",
       "grammar": [
@@ -436,7 +436,7 @@
       "title": "Você sabe nadar?",
       "sub_cefr": "A1",
       "grammar_focus": "Can questions (Can you...? Can she...?)",
-      "tense": "MODAL · can · question",
+      "tense": "MODAL · can · pergunta",
       "markers": [
         "qform"
       ],

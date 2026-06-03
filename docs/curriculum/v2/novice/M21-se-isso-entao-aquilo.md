@@ -21,7 +21,7 @@
 
 ## Unit N01 — Se chover, eu fico
 
-> **Sub-CEFR**: A2 | **Grammar focus**: First conditional (basic structure) | **Tense**: CONDITIONAL · 1st
+> **Sub-CEFR**: A2 | **Grammar focus**: First conditional (basic structure) | **Tense**: CONDICIONAL · 1º
 > **Markers**: [denso]
 > **Real-life context**: Você fala sobre o que vai fazer dependendo do tempo, agenda, decisão.
 
@@ -186,7 +186,7 @@
 
 ## Unit N02 — Se eu tiver tempo
 
-> **Sub-CEFR**: A2 | **Grammar focus**: Conditional with personal plans | **Tense**: CONDITIONAL · 1st
+> **Sub-CEFR**: A2 | **Grammar focus**: Conditional with personal plans | **Tense**: CONDICIONAL · 1º
 > **Markers**: —
 > **Real-life context**: Você condiciona ações suas a fatores como tempo, dinheiro, disposição.
 
@@ -351,7 +351,7 @@
 
 ## Unit N03 — Se você quiser
 
-> **Sub-CEFR**: A2 | **Grammar focus**: First conditional with "you" — invitations and promises | **Tense**: CONDITIONAL · 1st
+> **Sub-CEFR**: A2 | **Grammar focus**: First conditional with "you" — invitations and promises | **Tense**: CONDICIONAL · 1º
 > **Markers**: —
 > **Real-life context**: Você convida ou oferece algo dependendo da pessoa querer.
 
@@ -517,7 +517,7 @@
 
 ## Unit N04 — A menos que
 
-> **Sub-CEFR**: A2 | **Grammar focus**: Unless (= if not) | **Tense**: CONDITIONAL · 1st
+> **Sub-CEFR**: A2 | **Grammar focus**: Unless (= if not) | **Tense**: CONDICIONAL · 1º
 > **Markers**: —
 > **Real-life context**: Você expressa condições negativas com "unless" em vez de "if not".
 
@@ -683,7 +683,7 @@
 
 ## Unit N05 — Vida real condicional
 
-> **Sub-CEFR**: A2 | **Grammar focus**: Integration first conditional + unless | **Tense**: CONDITIONAL · 1st
+> **Sub-CEFR**: A2 | **Grammar focus**: Integration first conditional + unless | **Tense**: CONDICIONAL · 1º
 > **Markers**: —
 > **Real-life context**: Você combina condicionais variadas pra discutir vida real.
 

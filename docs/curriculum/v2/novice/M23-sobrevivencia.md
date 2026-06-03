@@ -35,7 +35,7 @@
 
 ## Unit N01 — No aeroporto
 
-> **Sub-CEFR**: A2 | **Grammar focus**: Chunks de check-in, direções no aeroporto (cumulativo M01-M22) | **Tense**: CHUNKS
+> **Sub-CEFR**: A2 | **Grammar focus**: Chunks de check-in, direções no aeroporto (cumulativo M01-M22) | **Tense**: EXPRESSÕES
 > **Markers**: [survival]
 > **Real-life context**: Você está no aeroporto e precisa encontrar o portão, fazer check-in, ou reportar um problema.
 
@@ -203,7 +203,7 @@
 
 ## Unit N02 — No hotel
 
-> **Sub-CEFR**: A2 | **Grammar focus**: Check-in/out de hotel, tipos de quarto, problemas | **Tense**: CHUNKS
+> **Sub-CEFR**: A2 | **Grammar focus**: Check-in/out de hotel, tipos de quarto, problemas | **Tense**: EXPRESSÕES
 > **Markers**: [survival]
 > **Real-life context**: Você chega ao hotel e precisa fazer check-in, ou tem um problema com o quarto.
 
@@ -372,7 +372,7 @@
 
 ## Unit N03 — Pedindo direções
 
-> **Sub-CEFR**: A2 | **Grammar focus**: Perguntar e dar direções, preposições de lugar | **Tense**: CHUNKS
+> **Sub-CEFR**: A2 | **Grammar focus**: Perguntar e dar direções, preposições de lugar | **Tense**: EXPRESSÕES
 > **Markers**: [survival]
 > **Real-life context**: Você está perdido na cidade e precisa de direções para chegar a algum lugar.
 
@@ -540,7 +540,7 @@
 
 ## Unit N04 — Não me sinto bem
 
-> **Sub-CEFR**: A2 | **Grammar focus**: Sintomas, partes do corpo, expressões médicas básicas | **Tense**: CHUNKS
+> **Sub-CEFR**: A2 | **Grammar focus**: Sintomas, partes do corpo, expressões médicas básicas | **Tense**: EXPRESSÕES
 > **Markers**: [survival]
 > **Real-life context**: Você está doente e precisa explicar os sintomas, pedir remédio ou ver um médico.
 
@@ -710,7 +710,7 @@
 
 ## Unit N05 — Ao telefone
 
-> **Sub-CEFR**: A2 | **Grammar focus**: Chunks de telefonema — abrir, identificar, pedir, recados, fechar | **Tense**: CHUNKS
+> **Sub-CEFR**: A2 | **Grammar focus**: Chunks de telefonema — abrir, identificar, pedir, recados, fechar | **Tense**: EXPRESSÕES
 > **Markers**: [survival]
 > **Real-life context**: Você atende ou faz uma ligação em inglês — apresentação, pedidos, deixar recado, encerrar.
 

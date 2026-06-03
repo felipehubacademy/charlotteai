@@ -38,7 +38,7 @@
 
 ## Unit N01 — Oi! Tudo bem?
 
-> **Sub-CEFR**: A1 | **Grammar focus**: Greetings & survival chunks | **Markers**: — | **Tense**: CHUNKS
+> **Sub-CEFR**: A1 | **Grammar focus**: Greetings & survival chunks | **Markers**: — | **Tense**: EXPRESSÕES
 > **Real-life context**: Você esbarra com alguém conhecido na rua e cumprimenta.
 
 ### 1. Grammar (10 exercises)
@@ -198,7 +198,7 @@ Charlotte fala via ElevenLabs (Rachel). Aluno repete; Azure Speech avalia pronú
 
 ## Unit N02 — Meu nome é...
 
-> **Sub-CEFR**: A1 | **Grammar focus**: Verb To Be (I am) + name + age | **Markers**: [denso] | **Tense**: PRESENT · to be
+> **Sub-CEFR**: A1 | **Grammar focus**: Verb To Be (I am) + name + age | **Markers**: [denso] | **Tense**: PRESENTE · to be
 > **Real-life context**: Primeiro dia em uma turma ou evento. Você se apresenta.
 
 ### 1. Grammar (10 exercises)
@@ -342,7 +342,7 @@ Charlotte fala via ElevenLabs (Rachel). Aluno repete; Azure Speech avalia pronú
 
 ## Unit N03 — De onde você é?
 
-> **Sub-CEFR**: A1 | **Grammar focus**: To Be: questions + nationalities/countries | **Markers**: [qform] | **Tense**: PRESENT · to be · question
+> **Sub-CEFR**: A1 | **Grammar focus**: To Be: questions + nationalities/countries | **Markers**: [qform] | **Tense**: PRESENTE · to be · pergunta
 > **Real-life context**: Conversando com um estranho no portão de embarque do aeroporto.
 
 ### 1. Grammar (10 exercises)
@@ -486,7 +486,7 @@ Charlotte fala via ElevenLabs (Rachel). Aluno repete; Azure Speech avalia pronú
 
 ## Unit N04 — Como você se sente?
 
-> **Sub-CEFR**: A1 | **Grammar focus**: Feelings chunks (I'm + emotion adjective) | **Markers**: — | **Tense**: PRESENT · to be
+> **Sub-CEFR**: A1 | **Grammar focus**: Feelings chunks (I'm + emotion adjective) | **Markers**: — | **Tense**: PRESENTE · to be
 > **Real-life context**: Charlotte te chama pra um check-in. Pratica dizer como você se sente além de "good".
 
 ### 1. Grammar (10 exercises)
@@ -630,7 +630,7 @@ Charlotte fala via ElevenLabs (Rachel). Aluno repete; Azure Speech avalia pronú
 
 ## Unit N05 — Tchau, até mais
 
-> **Sub-CEFR**: A1 | **Grammar focus**: Goodbye chunks | **Markers**: — | **Tense**: CHUNKS
+> **Sub-CEFR**: A1 | **Grammar focus**: Goodbye chunks | **Markers**: — | **Tense**: EXPRESSÕES
 > **Real-life context**: Você está terminando uma aula ou conversa e quer se despedir com carinho.
 
 ### 1. Grammar (10 exercises)

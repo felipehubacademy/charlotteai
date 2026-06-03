@@ -27,7 +27,7 @@
       "title": "Mostrando interesse",
       "sub_cefr": "A2",
       "grammar_focus": "Reações para mostrar engajamento na conversa",
-      "tense": "CHUNKS",
+      "tense": "EXPRESSÕES",
       "markers": [
         "conversation"
       ],
@@ -253,7 +253,7 @@
       "title": "Surpresa e descrença",
       "sub_cefr": "A2",
       "grammar_focus": "Reações de surpresa, espanto, descrença",
-      "tense": "CHUNKS",
+      "tense": "EXPRESSÕES",
       "markers": [
         "conversation"
       ],
@@ -464,7 +464,7 @@
       "title": "Confirmando entendimento",
       "sub_cefr": "A2",
       "grammar_focus": "Confirmar que entendeu, mostrar que está acompanhando",
-      "tense": "CHUNKS",
+      "tense": "EXPRESSÕES",
       "markers": [
         "conversation"
       ],
@@ -677,7 +677,7 @@
       "title": "Reação a más notícias",
       "sub_cefr": "A2",
       "grammar_focus": "Empatia, condolências leves, reações a notícias ruins",
-      "tense": "CHUNKS",
+      "tense": "EXPRESSÕES",
       "markers": [
         "conversation"
       ],
@@ -909,7 +909,7 @@
       "title": "Pausas e transições",
       "sub_cefr": "A2",
       "grammar_focus": "Ganhar tempo, pedir pausa, mudar de assunto",
-      "tense": "CHUNKS",
+      "tense": "EXPRESSÕES",
       "markers": [
         "conversation"
       ],

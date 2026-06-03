@@ -21,7 +21,7 @@
 
 ## Unit N01 — Eu fui, eu vi, eu fiz
 
-> **Sub-CEFR**: A2 | **Grammar focus**: Top 10 irregulars (go/see/do/have/make/come/take/get/give/say) | **Tense**: PAST · simple
+> **Sub-CEFR**: A2 | **Grammar focus**: Top 10 irregulars (go/see/do/have/make/come/take/get/give/say) | **Tense**: PASSADO · simples
 > **Markers**: [denso]
 > **Real-life context**: Você conta um dia ou viagem usando os 10 irregulares mais usados.
 
@@ -186,7 +186,7 @@
 
 ## Unit N02 — Comprei, paguei, encontrei
 
-> **Sub-CEFR**: A2 | **Grammar focus**: More irregulars (buy/bring/think/find/eat/drink/sleep) | **Tense**: PAST · simple
+> **Sub-CEFR**: A2 | **Grammar focus**: More irregulars (buy/bring/think/find/eat/drink/sleep) | **Tense**: PASSADO · simples
 > **Markers**: —
 > **Real-life context**: Você usa mais irregulares em situações cotidianas — compras, encontros, refeições.
 
@@ -352,7 +352,7 @@
 
 ## Unit N03 — Conheci, escrevi, deixei
 
-> **Sub-CEFR**: A2 | **Grammar focus**: More irregulars (meet/write/leave/lose/win/send/read/put) | **Tense**: PAST · simple
+> **Sub-CEFR**: A2 | **Grammar focus**: More irregulars (meet/write/leave/lose/win/send/read/put) | **Tense**: PASSADO · simples
 > **Markers**: —
 > **Real-life context**: Você narra eventos sociais e profissionais usando irregulares variados.
 
@@ -517,7 +517,7 @@
 
 ## Unit N04 — Verbos que não mudam
 
-> **Sub-CEFR**: A2 | **Grammar focus**: Irregulars without change (put/cut/let/read pronunciation) | **Tense**: PAST · simple
+> **Sub-CEFR**: A2 | **Grammar focus**: Irregulars without change (put/cut/let/read pronunciation) | **Tense**: PASSADO · simples
 > **Markers**: —
 > **Real-life context**: Você usa verbos cuja forma passada é IGUAL ao infinitivo — só muda o contexto.
 
@@ -683,7 +683,7 @@
 
 ## Unit N05 — Minha história ontem
 
-> **Sub-CEFR**: A2 | **Grammar focus**: Integration top irregulars in narrative | **Tense**: PAST · simple
+> **Sub-CEFR**: A2 | **Grammar focus**: Integration top irregulars in narrative | **Tense**: PASSADO · simples
 > **Markers**: —
 > **Real-life context**: Você conta uma história curta integrando vários verbos irregulares no passado.
 

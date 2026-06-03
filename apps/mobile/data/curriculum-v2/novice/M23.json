@@ -36,7 +36,7 @@
       "title": "No aeroporto",
       "sub_cefr": "A2",
       "grammar_focus": "Chunks de check-in, direções no aeroporto (cumulativo M01-M22)",
-      "tense": "CHUNKS",
+      "tense": "EXPRESSÕES",
       "markers": [
         "survival"
       ],
@@ -252,7 +252,7 @@
       "title": "No hotel",
       "sub_cefr": "A2",
       "grammar_focus": "Check-in/out de hotel, tipos de quarto, problemas",
-      "tense": "CHUNKS",
+      "tense": "EXPRESSÕES",
       "markers": [
         "survival"
       ],
@@ -471,7 +471,7 @@
       "title": "Pedindo direções",
       "sub_cefr": "A2",
       "grammar_focus": "Perguntar e dar direções, preposições de lugar",
-      "tense": "CHUNKS",
+      "tense": "EXPRESSÕES",
       "markers": [
         "survival"
       ],
@@ -687,7 +687,7 @@
       "title": "Não me sinto bem",
       "sub_cefr": "A2",
       "grammar_focus": "Sintomas, partes do corpo, expressões médicas básicas",
-      "tense": "CHUNKS",
+      "tense": "EXPRESSÕES",
       "markers": [
         "survival"
       ],
@@ -911,7 +911,7 @@
       "title": "Ao telefone",
       "sub_cefr": "A2",
       "grammar_focus": "Chunks de telefonema — abrir, identificar, pedir, recados, fechar",
-      "tense": "CHUNKS",
+      "tense": "EXPRESSÕES",
       "markers": [
         "survival"
       ],

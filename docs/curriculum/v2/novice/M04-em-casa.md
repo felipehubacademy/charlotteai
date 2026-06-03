@@ -32,7 +32,7 @@
 
 ## Unit N01 — Minha casa
 
-> **Sub-CEFR**: A1 | **Grammar focus**: House vocab + "This is my + room" + possessives (cumulativo M03) | **Tense**: PRESENT · to be
+> **Sub-CEFR**: A1 | **Grammar focus**: House vocab + "This is my + room" + possessives (cumulativo M03) | **Tense**: PRESENTE · to be
 > **Markers**: —
 > **Real-life context**: Você faz um vídeo-tour da sua casa para um amigo distante.
 
@@ -197,7 +197,7 @@
 
 ## Unit N02 — O que tem aqui?
 
-> **Sub-CEFR**: A1 | **Grammar focus**: There is / There are (formal intro) + a/an básicos | **Tense**: PRESENT · there is/are
+> **Sub-CEFR**: A1 | **Grammar focus**: There is / There are (formal intro) + a/an básicos | **Tense**: PRESENTE · there is/are
 > **Markers**: [denso]
 > **Real-life context**: Alguém pergunta o que tem na sua cozinha ou no seu quarto — você descreve usando there is/are.
 
@@ -362,7 +362,7 @@
 
 ## Unit N03 — Móveis e objetos
 
-> **Sub-CEFR**: A1 | **Grammar focus**: Regular plurals (-s, -es) + furniture vocab | **Tense**: PRESENT · simple
+> **Sub-CEFR**: A1 | **Grammar focus**: Regular plurals (-s, -es) + furniture vocab | **Tense**: PRESENTE · simples
 > **Markers**: —
 > **Real-life context**: Você lista os objetos da sua casa — mesas, cadeiras, janelas — para alguém.
 
@@ -527,7 +527,7 @@
 
 ## Unit N04 — Um, uma, o, a
 
-> **Sub-CEFR**: A1 | **Grammar focus**: Articles a/an/the — primeira aparição formal | **Tense**: PRESENT · simple
+> **Sub-CEFR**: A1 | **Grammar focus**: Articles a/an/the — primeira aparição formal | **Tense**: PRESENTE · simples
 > **Markers**: [denso]
 > **Real-life context**: Você usa a/an/the pra descrever objetos pela primeira vez (a) ou se referir a algo específico (the).
 
@@ -692,7 +692,7 @@
 
 ## Unit N05 — Bem-vindo à minha casa
 
-> **Sub-CEFR**: A1 | **Grammar focus**: Integration — there is/are + articles + plurals + possessives (cumulativo M01-M04) | **Tense**: PRESENT · there is/are
+> **Sub-CEFR**: A1 | **Grammar focus**: Integration — there is/are + articles + plurals + possessives (cumulativo M01-M04) | **Tense**: PRESENTE · there is/are
 > **Markers**: —
 > **Real-life context**: Você recebe alguém na sua casa pela primeira vez e faz um tour completo, descrevendo cômodos e objetos.
 

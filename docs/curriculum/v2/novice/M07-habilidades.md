@@ -191,7 +191,7 @@
 
 ## Unit N02 — Eu não sei fazer isso
 
-> **Sub-CEFR**: A1 | **Grammar focus**: Can't (cannot) — limitações honestas | **Tense**: MODAL · can · negative
+> **Sub-CEFR**: A1 | **Grammar focus**: Can't (cannot) — limitações honestas | **Tense**: MODAL · can · negativo
 > **Markers**: —
 > **Real-life context**: Você reconhece o que NÃO sabe fazer ainda — habilidades que faltam.
 
@@ -357,7 +357,7 @@
 
 ## Unit N03 — Você sabe nadar?
 
-> **Sub-CEFR**: A1 | **Grammar focus**: Can questions (Can you...? Can she...?) | **Tense**: MODAL · can · question
+> **Sub-CEFR**: A1 | **Grammar focus**: Can questions (Can you...? Can she...?) | **Tense**: MODAL · can · pergunta
 > **Markers**: [qform]
 > **Real-life context**: Você pergunta a Charlotte e outros sobre habilidades — pode levar você a pedir ajuda ou descobrir talentos.
 

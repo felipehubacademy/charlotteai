@@ -26,7 +26,7 @@
 
 ## Unit N01 — Estou fazendo agora
 
-> **Sub-CEFR**: A1 | **Grammar focus**: Present continuous positivo (am/is/are + verb-ing) | **Tense**: PRESENT · continuous
+> **Sub-CEFR**: A1 | **Grammar focus**: Present continuous positivo (am/is/are + verb-ing) | **Tense**: PRESENTE · contínuo
 > **Markers**: [denso]
 > **Real-life context**: Você descreve o que está fazendo agora — durante uma chamada de vídeo, por exemplo.
 
@@ -191,7 +191,7 @@
 
 ## Unit N02 — Não estou fazendo
 
-> **Sub-CEFR**: A1 | **Grammar focus**: Present continuous negativo (am not / isn't / aren't + verb-ing) | **Tense**: PRESENT · continuous · negative
+> **Sub-CEFR**: A1 | **Grammar focus**: Present continuous negativo (am not / isn't / aren't + verb-ing) | **Tense**: PRESENTE · contínuo · negativo
 > **Markers**: —
 > **Real-life context**: Você corrige uma suposição errada ou diz o que NÃO está acontecendo agora.
 
@@ -356,7 +356,7 @@
 
 ## Unit N03 — Está fazendo?
 
-> **Sub-CEFR**: A1 | **Grammar focus**: Present continuous questions (Are you...? Is she...?) | **Tense**: PRESENT · continuous · question
+> **Sub-CEFR**: A1 | **Grammar focus**: Present continuous questions (Are you...? Is she...?) | **Tense**: PRESENTE · contínuo · pergunta
 > **Markers**: [qform]
 > **Real-life context**: Você liga pra alguém e pergunta o que essa pessoa está fazendo.
 
@@ -521,7 +521,7 @@
 
 ## Unit N04 — Hoje, agora, neste momento
 
-> **Sub-CEFR**: A1 | **Grammar focus**: Time expressions for continuous (right now / at the moment / today / this week) | **Tense**: PRESENT · continuous
+> **Sub-CEFR**: A1 | **Grammar focus**: Time expressions for continuous (right now / at the moment / today / this week) | **Tense**: PRESENTE · contínuo
 > **Markers**: —
 > **Real-life context**: Você descreve atividades temporárias — desta semana, deste mês, neste momento.
 
@@ -686,7 +686,7 @@
 
 ## Unit N05 — Simple vs Continuous
 
-> **Sub-CEFR**: A1 | **Grammar focus**: Contrast present simple vs present continuous | **Tense**: PRESENT · simple vs continuous
+> **Sub-CEFR**: A1 | **Grammar focus**: Contrast present simple vs present continuous | **Tense**: PRESENTE · simples vs contínuo
 > **Markers**: [denso]
 > **Real-life context**: Você diferencia o que faz NORMALMENTE (rotina) do que está fazendo AGORA (temporário).
 

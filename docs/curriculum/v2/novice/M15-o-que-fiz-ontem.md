@@ -21,7 +21,7 @@
 
 ## Unit N01 — Trabalhei ontem
 
-> **Sub-CEFR**: A2 | **Grammar focus**: Past simple regular -ed (basic) | **Tense**: PAST · simple
+> **Sub-CEFR**: A2 | **Grammar focus**: Past simple regular -ed (basic) | **Tense**: PASSADO · simples
 > **Markers**: [denso]
 > **Real-life context**: Você conta ações simples que fez ontem ou semana passada.
 
@@ -186,7 +186,7 @@
 
 ## Unit N02 — Liguei, cheguei, parei
 
-> **Sub-CEFR**: A2 | **Grammar focus**: Past simple regular — spelling rules (e+d, double consonant, y→ied) | **Tense**: PAST · simple
+> **Sub-CEFR**: A2 | **Grammar focus**: Past simple regular — spelling rules (e+d, double consonant, y→ied) | **Tense**: PASSADO · simples
 > **Markers**: —
 > **Real-life context**: Você usa verbos com regras especiais de spelling no passado.
 
@@ -351,7 +351,7 @@
 
 ## Unit N03 — Quando isso aconteceu?
 
-> **Sub-CEFR**: A2 | **Grammar focus**: Past simple regular with time markers | **Tense**: PAST · simple
+> **Sub-CEFR**: A2 | **Grammar focus**: Past simple regular with time markers | **Tense**: PASSADO · simples
 > **Markers**: —
 > **Real-life context**: Você ancora ações passadas em pontos específicos do tempo.
 
@@ -516,7 +516,7 @@
 
 ## Unit N04 — Pronúncia do -ed
 
-> **Sub-CEFR**: A2 | **Grammar focus**: -ed pronunciation rules (/t/, /d/, /id/) | **Tense**: PAST · simple
+> **Sub-CEFR**: A2 | **Grammar focus**: -ed pronunciation rules (/t/, /d/, /id/) | **Tense**: PASSADO · simples
 > **Markers**: —
 > **Real-life context**: Você pronuncia -ed corretamente — /t/, /d/, /id/ — em diferentes verbos.
 
@@ -681,7 +681,7 @@
 
 ## Unit N05 — Meu dia ontem
 
-> **Sub-CEFR**: A2 | **Grammar focus**: Integration past simple regular | **Tense**: PAST · simple
+> **Sub-CEFR**: A2 | **Grammar focus**: Integration past simple regular | **Tense**: PASSADO · simples
 > **Markers**: —
 > **Real-life context**: Você narra um dia completo passado usando verbos regulares.
 

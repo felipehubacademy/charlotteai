@@ -439,7 +439,7 @@
       "title": "Não preciso fazer isso",
       "sub_cefr": "A2",
       "grammar_focus": "Don't have to / doesn't have to (absence of obligation)",
-      "tense": "MODAL · have to · negative",
+      "tense": "MODAL · have to · negativo",
       "markers": [],
       "real_life_context": "Você esclarece que algo é OPCIONAL — não é obrigado a fazer.",
       "grammar": [
@@ -645,7 +645,7 @@
       "title": "Devo ir? Tenho que ir?",
       "sub_cefr": "A2",
       "grammar_focus": "Questions with should / have to",
-      "tense": "MODAL · should · question",
+      "tense": "MODAL · should · pergunta",
       "markers": [
         "qform"
       ],
