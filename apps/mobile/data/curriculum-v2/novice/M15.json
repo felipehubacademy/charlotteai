@@ -97,7 +97,7 @@
         {
           "type": "fix_error",
           "sentence": "She worked last night?",
-          "hint": "Past simple question needs auxiliar",
+          "hint": "Pergunta no passado simples precisa de auxiliar",
           "answer": "Did she work last night?",
           "explanation": "Past simple pergunta: \"Did + sujeito + verbo base\". \"Did she work?\", não \"She worked?\" (que é afirmativa)."
         },
@@ -501,7 +501,7 @@
         {
           "type": "fix_error",
           "sentence": "I worked yesterday last week.",
-          "hint": "Dois time markers iguais",
+          "hint": "Os dois marcadores temporais são iguais",
           "answer": "I worked yesterday.",
           "explanation": "Não combina \"yesterday\" + \"last week\" — escolha um. Yesterday = ontem; last week = semana passada."
         },

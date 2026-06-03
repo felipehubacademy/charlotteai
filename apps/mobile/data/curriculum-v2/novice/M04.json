@@ -310,7 +310,7 @@
         {
           "type": "fix_error",
           "sentence": "There is two chairs in the kitchen.",
-          "hint": "Verbo errado para plural",
+          "hint": "Plural pede \"there are\", não \"there is\"",
           "answer": "There are two chairs in the kitchen.",
           "explanation": "\"Two chairs\" é plural, então usa \"There are\", não \"There is\". Regra: singular = \"there is\", plural = \"there are\"."
         },

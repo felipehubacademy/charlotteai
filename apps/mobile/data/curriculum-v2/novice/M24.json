@@ -125,7 +125,7 @@
         {
           "type": "fix_error",
           "sentence": "Is interesting that.",
-          "hint": "Estrutura correta — \"That's interesting\"",
+          "hint": "Comece com \"That's...\" (sujeito antes do verbo)",
           "answer": "That's interesting!",
           "explanation": "\"That's / That is interesting\" — estrutura fixa em inglês: \"That's / That is + adjetivo\". Não traduza literalmente do português \"É interessante isso\". Erro comum."
         },
@@ -329,7 +329,7 @@
         {
           "type": "fix_error",
           "sentence": "Truth?",
-          "hint": "\"For real?\" ou \"Really?\" — não traduza literal",
+          "hint": "\"Truth?\" não funciona como reação — pense nos chunks \"R___?\" ou \"F___?\"",
           "answer": "For real?",
           "accepts": [
             "Really?",
@@ -340,7 +340,7 @@
         {
           "type": "fix_error",
           "sentence": "I don't believe in this!",
-          "hint": "\"I can't believe it!\" (sem \"in\")",
+          "hint": "Em inglês não se usa \"believe in\" pra reação — troque o verbo e remova \"in\"",
           "answer": "I can't believe it!",
           "explanation": "\"Believe in\" significa \"acreditar em\" no sentido de fé (believe in God, believe in yourself). Para descrença sobre um fato: \"I can't / cannot believe it!\" (sem \"in\"). Erro comum de tradução do \"acreditar em\"."
         },
@@ -552,7 +552,7 @@
         {
           "type": "fix_error",
           "sentence": "Make sense for me.",
-          "hint": "\"Makes sense to me\" (sem artigo, com \"to\")",
+          "hint": "Verbo na 3ª pessoa e preposição \"to\" (não \"for\")",
           "answer": "Makes sense to me.",
           "explanation": "Dois erros: \"make\" deveria ser \"makes\" (3a pessoa singular implícita), e \"for me\" deveria ser \"to me\" neste chunk. Combinação fixa: \"makes sense to me\"."
         },
@@ -1003,7 +1003,7 @@
         {
           "type": "fix_error",
           "sentence": "By the way of the way...",
-          "hint": "É apenas \"By the way\"",
+          "hint": "O chunk tem só 3 palavras — não repete \"of the way\"",
           "answer": "By the way...",
           "explanation": "\"By the way\" é o chunk fixo. Não tem variação \"by the way of the way\". Erro de duplicação por insegurança no chunk."
         },

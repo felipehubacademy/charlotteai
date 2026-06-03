@@ -485,14 +485,14 @@
         {
           "type": "fill_gap",
           "sentence": "_____ he at the cinema?",
-          "hint": "'Was' ou 'were' para 'he'?",
+          "hint": "\"He\" é singular",
           "answer": "Was",
           "explanation": "\"Was he?\" — he/she/it com \"was\" em pergunta."
         },
         {
           "type": "fill_gap",
           "sentence": "How _____ your weekend?",
-          "hint": "'Was' ou 'were' para 'your weekend' (singular)?",
+          "hint": "\"Your weekend\" é singular",
           "answer": "was",
           "explanation": "\"How was your weekend?\" — singular usa \"was\"."
         },

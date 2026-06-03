@@ -331,7 +331,7 @@
         {
           "type": "fix_error",
           "sentence": "I want a room for two persons.",
-          "hint": "\"People\" é mais natural que \"persons\"",
+          "hint": "Plural natural de \"person\" no inglês moderno",
           "answer": "I want a room for two people.",
           "accepts": [
             "I'd like a room for two people."
@@ -341,7 +341,7 @@
         {
           "type": "fix_error",
           "sentence": "The shower not working in my room.",
-          "hint": "Falta \"is\" — \"is not working\"",
+          "hint": "Falta o verbo \"to be\" antes de \"not working\"",
           "answer": "The shower is not working in my room.",
           "accepts": [
             "The shower isn't working"
@@ -562,7 +562,7 @@
         {
           "type": "fix_error",
           "sentence": "Turn in the right.",
-          "hint": "Sem preposição — \"Turn right\"",
+          "hint": "\"Turn right/left\" — sem preposição",
           "answer": "Turn right.",
           "explanation": "\"Turn right\" / \"Turn left\" — direção sem \"in\" ou \"on\". Erro comum: lusófonos adicionam preposição que não existe no chunk inglês."
         },
@@ -767,7 +767,7 @@
         {
           "type": "fix_error",
           "sentence": "I am sick of the stomach.",
-          "hint": "\"Have a stomachache\" é mais natural",
+          "hint": "Use o substantivo \"stomachache\" com \"have\"",
           "answer": "I have a stomachache.",
           "accepts": [
             "I have stomach pain."
@@ -777,7 +777,7 @@
         {
           "type": "fix_error",
           "sentence": "I have hot.",
-          "hint": "Em inglês usa-se \"I have a fever\" ou \"I am hot\"",
+          "hint": "\"Hot\" não combina com \"have\" — pense em \"febre\" ou em \"to be\"",
           "answer": "I have a fever.",
           "accepts": [
             "I am hot."
@@ -984,14 +984,14 @@
         {
           "type": "fix_error",
           "sentence": "Hi, my name is John speaking.",
-          "hint": "Use \"This is John speaking\" (sem \"my name\")",
+          "hint": "No telefone, em inglês não se usa \"my name is\" — pense em \"este é...\"",
           "answer": "Hi, this is John speaking.",
           "explanation": "Em inglês ao telefone, dizemos \"This is + nome + speaking\", não \"my name is\". Erro comum de tradução literal do português \"aqui é o João\"."
         },
         {
           "type": "fix_error",
           "sentence": "Speak more slow, please.",
-          "hint": "Use \"slowly\" (advérbio)",
+          "hint": "\"Slow\" não vira \"more slow\" — use comparativo (-er) ou advérbio (-ly)",
           "answer": "Speak slower, please.",
           "accepts": [
             "Speak more slowly, please."

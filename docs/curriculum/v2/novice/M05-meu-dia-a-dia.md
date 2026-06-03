@@ -903,7 +903,7 @@
    **Explanation**: Dias da semana em inglês sempre com maiúscula: Monday, Tuesday, Wednesday, Thursday, Friday, Saturday, Sunday. Diferente do português (que usa minúscula).
 
 8. **fix_error** — "What's hour?"
-   **Hint**: Em inglês — "What time is it?"
+   **Hint**: Chunk fixo começa com "What time..."
    **Answer**: What time is it?
    **Explanation**: "What's / What is hour?" é tradução literal errada de "que horas?". O chunk correto é "What time is it?". Sempre com "time" e "is it" no fim. Erro muito comum entre lusófonos iniciantes.
 

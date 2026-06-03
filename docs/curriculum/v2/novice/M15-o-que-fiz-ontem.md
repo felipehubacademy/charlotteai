@@ -63,7 +63,7 @@
    **Explanation**: Verbos em -y após consoante: y → ied. "Study" → "studied".
 
 8. **fix_error** — "She worked last night?"
-   **Hint**: Past simple question needs auxiliar
+   **Hint**: Pergunta no passado simples precisa de auxiliar
    **Answer**: Did she work last night?
    **Explanation**: Past simple pergunta: "Did + sujeito + verbo base". "Did she work?", não "She worked?" (que é afirmativa).
 
@@ -393,7 +393,7 @@
    **Explanation**: Phrasal verb: "turn off" → "turned off". Passado + partícula.
 
 8. **fix_error** — "I worked yesterday last week."
-   **Hint**: Dois time markers iguais
+   **Hint**: Os dois marcadores temporais são iguais
    **Answer**: I worked yesterday.
    **Explanation**: Não combina "yesterday" + "last week" — escolha um. Yesterday = ontem; last week = semana passada.
 

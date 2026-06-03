@@ -124,7 +124,7 @@
         {
           "type": "fix_error",
           "sentence": "How you are?",
-          "hint": "Ordem do auxiliar em perguntas",
+          "hint": "Em perguntas, o verbo \"to be\" vem antes do sujeito",
           "answer": "How are you?",
           "explanation": "Em perguntas em inglês, o auxiliar \"are\" vem antes do sujeito \"you\". Por isso é \"How are you?\" e não \"How you are?\"."
         },
@@ -683,7 +683,7 @@
         {
           "type": "fix_error",
           "sentence": "How feels you?",
-          "hint": "Para perguntar sentimento, há duas formas",
+          "hint": "Use \"to be\" + verbo no -ing (\"How are you ___ing?\")",
           "answer": "How are you feeling?",
           "explanation": "A forma correta usa \"to be\" + verbo no -ing: \"How are you feeling?\" — não \"How feels you?\". Outra forma comum: \"How do you feel?\"."
         },

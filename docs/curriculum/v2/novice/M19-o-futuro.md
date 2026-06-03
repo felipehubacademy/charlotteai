@@ -54,7 +54,7 @@
    **Explanation**: "It will be" — previsão positiva genérica.
 
 5. **fill_gap** — "I think she _____ love this gift."
-   **Hint**: Modal de previsão
+   **Hint**: Predição com "I think" pede will
    **Answer**: will
    **Accepts**: 'll / is going to / are going to
    **Explanation**: "She will love" — previsão. Will + base.
@@ -66,7 +66,7 @@
    **Explanation**: "Maybe it will snow" — previsão incerta. Will + base.
 
 7. **fill_gap** — "She _____ be 30 next year."
-   **Hint**: Previsão de fato futuro
+   **Hint**: Futuro certo usa will
    **Answer**: will
    **Accepts**: 'll / is going to / are going to
    **Explanation**: "She will be 30" — futuro certo, will + base.
@@ -917,7 +917,7 @@
    **Explanation**: "It will be sunny" / "It'll / It will be sunny" — futuro com "will" + "be" + adjetivo. Não esquecer o "be" — erro comum dizer só "It will sunny".
 
 8. **fix_error** — "Is making cold today."
-   **Hint**: Em inglês — "It is cold today"
+   **Hint**: Clima em inglês usa "It is + adjetivo" (sem "making")
    **Answer**: It is cold today.
 **Accepts**: It's cold today.
    **Explanation**: "Is making cold" é tradução literal errada de "está fazendo frio". Em inglês, sempre "It is + adjetivo de clima": "It is cold / hot / sunny / rainy". Sem "making".

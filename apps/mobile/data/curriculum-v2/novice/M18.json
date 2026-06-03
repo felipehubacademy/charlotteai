@@ -1099,7 +1099,7 @@
         {
           "type": "fill_gap",
           "sentence": "Em fala formal escrita, \"I'm gonna\" se escreve como \"I'm _____ to\".",
-          "hint": "forma completa de \"going\"",
+          "hint": "\"Gonna\" expandido fica \"___ to\"",
           "answer": "going",
           "explanation": "\"Gonna\" só existe em fala informal ou textos que simulam fala (legendas, redes sociais). Em escrita formal, sempre \"I'm / I am going to\". Reconhecer a forma falada e saber a forma escrita."
         },

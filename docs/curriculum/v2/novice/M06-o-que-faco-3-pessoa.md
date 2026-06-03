@@ -732,7 +732,7 @@
    **Explanation**: Lucas = he → "Does Lucas study?".
 
 8. **fix_error** — "She don't likes coffee."
-   **Hint**: Dois erros: auxiliar e verbo
+   **Hint**: Auxiliar errado pra 3ª pessoa e verbo deveria ser base
    **Answer**: She doesn't like coffee.
    **Explanation**: She → "doesn't / does not" (não "don't / do not"). Após "doesn't / does not", verbo base "like" (não "likes"). Dois erros em uma frase.
 

@@ -877,7 +877,7 @@
    **Explanation**: "Whatcha" = redução falada de "What are you" (ou "What you"). Em fala rápida: "What are you doing?" → "Whatcha doing?". Pergunta extremamente comum em conversação informal.
 
 5. **fill_gap** — Em fala formal escrita, "I'm gonna" se escreve como "I'm _____ to".
-   **Hint**: forma completa de "going"
+   **Hint**: "Gonna" expandido fica "___ to"
    **Answer**: going
    **Explanation**: "Gonna" só existe em fala informal ou textos que simulam fala (legendas, redes sociais). Em escrita formal, sempre "I'm / I am going to". Reconhecer a forma falada e saber a forma escrita.
 

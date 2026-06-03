@@ -246,13 +246,13 @@
    **Explanation**: "Is breakfast included?" — pergunta padrão sobre o que vem incluído na diária. "Breakfast" não tem artigo neste chunk.
 
 8. **fix_error** — "I want a room for two persons."
-   **Hint**: "People" é mais natural que "persons"
+   **Hint**: Plural natural de "person" no inglês moderno
    **Answer**: I want a room for two people.
 **Accepts**: I'd like a room for two people.
    **Explanation**: "People" é o plural natural de "person" em inglês moderno. "Persons" só aparece em contextos legais formais. Melhor ainda: trocar "I want" por "I'd / I would like" (mais educado).
 
 9. **fix_error** — "The shower not working in my room."
-   **Hint**: Falta "is" — "is not working"
+   **Hint**: Falta o verbo "to be" antes de "not working"
    **Answer**: The shower is not working in my room.
 **Accepts**: The shower isn't working
    **Explanation**: Inglês exige verbo "to be" em frases negativas com -ing. "Is not working" ou contração "isn't / is not working". Sem "is", a frase fica incompleta.
@@ -422,7 +422,7 @@
    **Explanation**: Em inglês, perguntas com verbos de ação precisam de auxiliar "do/does/did". "How I go" sem "do" é estrutura de afirmação, não de pergunta.
 
 9. **fix_error** — "Turn in the right."
-   **Hint**: Sem preposição — "Turn right"
+   **Hint**: "Turn right/left" — sem preposição
    **Answer**: Turn right.
    **Explanation**: "Turn right" / "Turn left" — direção sem "in" ou "on". Erro comum: lusófonos adicionam preposição que não existe no chunk inglês.
 
@@ -584,13 +584,13 @@
    **Explanation**: "My stomach hurts" — chunk fixo para "minha barriga dói". "Hurt" é verbo regular: hurts (presente), hurt (passado, idêntico).
 
 8. **fix_error** — "I am sick of the stomach."
-   **Hint**: "Have a stomachache" é mais natural
+   **Hint**: Use o substantivo "stomachache" com "have"
    **Answer**: I have a stomachache.
 **Accepts**: I have stomach pain.
    **Explanation**: "Sick of" significa "cansado de" (idiomático). Para "dor de estômago", use "I have a stomachache" ou "My stomach hurts". Erro de tradução literal.
 
 9. **fix_error** — "I have hot."
-   **Hint**: Em inglês usa-se "I have a fever" ou "I am hot"
+   **Hint**: "Hot" não combina com "have" — pense em "febre" ou em "to be"
    **Answer**: I have a fever.
 **Accepts**: I am hot.
    **Explanation**: "I have hot" não existe em inglês. Para febre médica: "I have a fever". Para sensação de calor: "I am hot / I feel hot". Erro de tradução literal de "estou com calor/febre".
@@ -752,12 +752,12 @@
    **Explanation**: "Could you repeat that?" — pergunta educada para pedir repetição. Útil quando não se entende algo no telefone.
 
 8. **fix_error** — "Hi, my name is John speaking."
-   **Hint**: Use "This is John speaking" (sem "my name")
+   **Hint**: No telefone, em inglês não se usa "my name is" — pense em "este é..."
    **Answer**: Hi, this is John speaking.
    **Explanation**: Em inglês ao telefone, dizemos "This is + nome + speaking", não "my name is". Erro comum de tradução literal do português "aqui é o João".
 
 9. **fix_error** — "Speak more slow, please."
-   **Hint**: Use "slowly" (advérbio)
+   **Hint**: "Slow" não vira "more slow" — use comparativo (-er) ou advérbio (-ly)
    **Answer**: Speak slower, please.
 **Accepts**: Speak more slowly, please.
    **Explanation**: "Slow" é adjetivo; "slowly" é advérbio. Para modificar "speak" (verbo), usa-se "slowly". Comparativo: "more slowly" ou "slower". Ambos funcionam.

@@ -98,7 +98,7 @@
         {
           "type": "fill_gap",
           "sentence": "I think she _____ love this gift.",
-          "hint": "Modal de previsão",
+          "hint": "Predição com \"I think\" pede will",
           "answer": "will",
           "accepts": [
             "'ll",
@@ -122,7 +122,7 @@
         {
           "type": "fill_gap",
           "sentence": "She _____ be 30 next year.",
-          "hint": "Previsão de fato futuro",
+          "hint": "Futuro certo usa will",
           "answer": "will",
           "accepts": [
             "'ll",
@@ -1244,7 +1244,7 @@
         {
           "type": "fix_error",
           "sentence": "Is making cold today.",
-          "hint": "Em inglês — \"It is cold today\"",
+          "hint": "Clima em inglês usa \"It is + adjetivo\" (sem \"making\")",
           "answer": "It is cold today.",
           "accepts": [
             "It's cold today."

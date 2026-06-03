@@ -303,14 +303,14 @@
         {
           "type": "fix_error",
           "sentence": "I'm tired so I worked all day.",
-          "hint": "Causa pede because",
+          "hint": "Indique a causa, não o resultado",
           "answer": "I'm tired because I worked all day.",
           "explanation": "Trabalhar foi a CAUSA do cansaço. Use \"because\" pra introduzir causa, não \"so\"."
         },
         {
           "type": "fix_error",
           "sentence": "It's raining because we'll stay home.",
-          "hint": "Consequência pede so",
+          "hint": "Indique a consequência, não a causa",
           "answer": "It's raining, so we'll stay home.",
           "explanation": "Ficar em casa é a CONSEQUÊNCIA da chuva. Use \"so\" pra consequência."
         },

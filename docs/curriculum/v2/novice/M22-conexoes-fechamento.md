@@ -230,12 +230,12 @@
    **Explanation**: "Because she got a job" — explicação da felicidade.
 
 8. **fix_error** — "I'm tired so I worked all day."
-   **Hint**: Causa pede because
+   **Hint**: Indique a causa, não o resultado
    **Answer**: I'm tired because I worked all day.
    **Explanation**: Trabalhar foi a CAUSA do cansaço. Use "because" pra introduzir causa, não "so".
 
 9. **fix_error** — "It's raining because we'll stay home."
-   **Hint**: Consequência pede so
+   **Hint**: Indique a consequência, não a causa
    **Answer**: It's raining, so we'll stay home.
    **Explanation**: Ficar em casa é a CONSEQUÊNCIA da chuva. Use "so" pra consequência.
 

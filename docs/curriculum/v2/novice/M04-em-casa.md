@@ -239,7 +239,7 @@
    **Explanation**: Pergunta: "Is there + a/an + substantivo?". "Is there a chair?" = "Tem uma cadeira?". Note a inversão sujeito-verbo.
 
 8. **fix_error** — "There is two chairs in the kitchen."
-   **Hint**: Verbo errado para plural
+   **Hint**: Plural pede "there are", não "there is"
    **Answer**: There are two chairs in the kitchen.
    **Explanation**: "Two chairs" é plural, então usa "There are", não "There is". Regra: singular = "there is", plural = "there are".
 

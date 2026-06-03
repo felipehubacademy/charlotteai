@@ -85,7 +85,7 @@
    **Explanation**: A frase correta é "Nice to meet you" — "Good meet you" não existe em inglês. Note também o "to" entre "Nice" e "meet".
 
 9. **fix_error** — "How you are?"
-   **Hint**: Ordem do auxiliar em perguntas
+   **Hint**: Em perguntas, o verbo "to be" vem antes do sujeito
    **Answer**: How are you?
    **Explanation**: Em perguntas em inglês, o auxiliar "are" vem antes do sujeito "you". Por isso é "How are you?" e não "How you are?".
 
@@ -532,7 +532,7 @@ Charlotte fala via ElevenLabs (Rachel). Aluno repete; Azure Speech avalia pronú
    **Explanation**: A ordem em inglês é: sujeito + verbo + complemento. "I am tired" — não "I tired am" (que seria a ordem do PT-BR às vezes).
 
 9. **fix_error** — "How feels you?"
-   **Hint**: Para perguntar sentimento, há duas formas
+   **Hint**: Use "to be" + verbo no -ing ("How are you ___ing?")
    **Answer**: How are you feeling?
    **Explanation**: A forma correta usa "to be" + verbo no -ing: "How are you feeling?" — não "How feels you?". Outra forma comum: "How do you feel?".
 

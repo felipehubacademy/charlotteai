@@ -75,7 +75,7 @@
    **Explanation**: "OK. Continue." soa frio/comando. "Speak" e "I hear" são tradução literal. "Really? Tell me more!" mostra engajamento real — o padrão em inglês conversacional.
 
 9. **fix_error** — "Is interesting that."
-   **Hint**: Estrutura correta — "That's interesting"
+   **Hint**: Comece com "That's..." (sujeito antes do verbo)
    **Answer**: That's interesting!
    **Explanation**: "That's / That is interesting" — estrutura fixa em inglês: "That's / That is + adjetivo". Não traduza literalmente do português "É interessante isso". Erro comum.
 
@@ -234,13 +234,13 @@
    **Explanation**: "Are you serious?" — pergunta de descrença, verificando se é verdade. Mais formal que "Seriously?" mas mesmo sentido.
 
 8. **fix_error** — "Truth?"
-   **Hint**: "For real?" ou "Really?" — não traduza literal
+   **Hint**: "Truth?" não funciona como reação — pense nos chunks "R___?" ou "F___?"
    **Answer**: For real?
 **Accepts**: Really? / Seriously?
    **Explanation**: "Truth?" não funciona como reação em inglês. Para "verdade?" / "sério?", use "Really?", "Seriously?", "For real?", "Are you serious?". Erro de tradução literal.
 
 9. **fix_error** — "I don't believe in this!"
-   **Hint**: "I can't believe it!" (sem "in")
+   **Hint**: Em inglês não se usa "believe in" pra reação — troque o verbo e remova "in"
    **Answer**: I can't believe it!
    **Explanation**: "Believe in" significa "acreditar em" no sentido de fé (believe in God, believe in yourself). Para descrença sobre um fato: "I can't / cannot believe it!" (sem "in"). Erro comum de tradução do "acreditar em".
 
@@ -407,7 +407,7 @@
    **Explanation**: "Understand" é um verbo de estado mental (stative verb), normalmente NÃO usado em -ing. Sempre "I understand", nunca "I'm / I am understanding". Erro comum de lusófonos.
 
 9. **fix_error** — "Make sense for me."
-   **Hint**: "Makes sense to me" (sem artigo, com "to")
+   **Hint**: Verbo na 3ª pessoa e preposição "to" (não "for")
    **Answer**: Makes sense to me.
    **Explanation**: Dois erros: "make" deveria ser "makes" (3a pessoa singular implícita), e "for me" deveria ser "to me" neste chunk. Combinação fixa: "makes sense to me".
 
@@ -744,7 +744,7 @@
    **Explanation**: "One moment" é formal demais (atendente de banco). "Wait" e "Stop" soam ríspidos. Em conversa casual: "Hold on a sec", "Hang on a sec", "Just a sec", "Give me a sec".
 
 9. **fix_error** — "By the way of the way..."
-   **Hint**: É apenas "By the way"
+   **Hint**: O chunk tem só 3 palavras — não repete "of the way"
    **Answer**: By the way...
    **Explanation**: "By the way" é o chunk fixo. Não tem variação "by the way of the way". Erro de duplicação por insegurança no chunk.
 

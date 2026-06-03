@@ -1133,7 +1133,7 @@
         {
           "type": "fix_error",
           "sentence": "What's hour?",
-          "hint": "Em inglês — \"What time is it?\"",
+          "hint": "Chunk fixo começa com \"What time...\"",
           "answer": "What time is it?",
           "explanation": "\"What's / What is hour?\" é tradução literal errada de \"que horas?\". O chunk correto é \"What time is it?\". Sempre com \"time\" e \"is it\" no fim. Erro muito comum entre lusófonos iniciantes."
         },
