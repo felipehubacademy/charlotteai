@@ -740,7 +740,12 @@ export function TrailContent({ userId, level, onCurrentTopicRef, useV2 }: TrailC
               onStartLesson={handleStartLesson}
               isPt={isPt}
               isCurrentModule={i === activeIdx}
-              onRef={i === activeIdx ? (r) => { activeRef.current = r; } : undefined}
+              onRef={i === activeIdx ? (r) => {
+                activeRef.current = r;
+                // Dispatch direto na attach — evita race em que o effect
+                // observando activeIdx roda antes do ref attachar.
+                if (r && onCurrentTopicRef) onCurrentTopicRef(r);
+              } : undefined}
             />
           </React.Fragment>
         );
