@@ -508,7 +508,7 @@
         {
           "type": "fix_error",
           "sentence": "Do you working?",
-          "hint": "Present continuous não usa \"do\"",
+          "hint": "\"Do\" não cabe no continuous — use \"are\" + verb-ing",
           "answer": "Are you working?",
           "explanation": "Continuous pergunta com \"to be\" invertido, não com \"do/does\". \"Are you working?\", não \"Do you working?\"."
         },

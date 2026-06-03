@@ -514,7 +514,7 @@
         {
           "type": "fix_error",
           "sentence": "Do she like pizza?",
-          "hint": "Auxiliar errado para she",
+          "hint": "\"Do\" não cabe pra she — use \"does\"",
           "answer": "Does she like pizza?",
           "explanation": "Com he/she/it sempre \"Does\". \"Do\" é só pra I/you/we/they."
         },
@@ -718,7 +718,7 @@
         {
           "type": "fix_error",
           "sentence": "Where does you work?",
-          "hint": "Auxiliar errado para you",
+          "hint": "\"Does\" não cabe pra you — use \"do\"",
           "answer": "Where do you work?",
           "explanation": "\"You\" usa \"do\", não \"does\". Apenas he/she/it usa \"does\"."
         },

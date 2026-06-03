@@ -506,7 +506,7 @@
         {
           "type": "fix_error",
           "sentence": "Did you at home?",
-          "hint": "\"To be\" no passado usa was/were",
+          "hint": "\"Did\" não cabe aqui — verbo \"to be\" no passado é was/were",
           "answer": "Were you at home?",
           "explanation": "Pergunta com \"to be\" passado usa was/were, não \"did\". \"Did\" é pra outros verbos."
         },

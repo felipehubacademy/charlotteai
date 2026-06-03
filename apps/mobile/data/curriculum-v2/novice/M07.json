@@ -509,7 +509,7 @@
         {
           "type": "fix_error",
           "sentence": "Do you can swim?",
-          "hint": "Can não precisa de \"do\"",
+          "hint": "\"Do\" não cabe com can — pergunta inverte: \"Can you...\"",
           "answer": "Can you swim?",
           "explanation": "Modais formam pergunta por inversão direta — sem \"do/does\". \"Can you swim?\", não \"Do you can swim?\". Erro comum."
         },
@@ -932,7 +932,7 @@
         {
           "type": "fix_error",
           "sentence": "Do you can drive?",
-          "hint": "Can não precisa de \"do\"",
+          "hint": "\"Do\" não cabe com can — pergunta inverte: \"Can you...\"",
           "answer": "Can you drive?",
           "explanation": "Modais formam pergunta por inversão direta — sem \"do/does\". \"Can you drive?\", não \"Do you can drive?\"."
         },

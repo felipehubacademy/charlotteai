@@ -399,7 +399,7 @@
    **Explanation**: "Yes, I can" — resposta curta. Repete o auxiliar (can), não o verbo principal.
 
 8. **fix_error** — "Do you can swim?"
-   **Hint**: Can não precisa de "do"
+   **Hint**: "Do" não cabe com can — pergunta inverte: "Can you..."
    **Answer**: Can you swim?
    **Explanation**: Modais formam pergunta por inversão direta — sem "do/does". "Can you swim?", não "Do you can swim?". Erro comum.
 
@@ -736,7 +736,7 @@
    **Explanation**: Modais NÃO levam -s na 3ª pessoa. "She can", nunca "She cans".
 
 9. **fix_error** — "Do you can drive?"
-   **Hint**: Can não precisa de "do"
+   **Hint**: "Do" não cabe com can — pergunta inverte: "Can you..."
    **Answer**: Can you drive?
    **Explanation**: Modais formam pergunta por inversão direta — sem "do/does". "Can you drive?", não "Do you can drive?".
 

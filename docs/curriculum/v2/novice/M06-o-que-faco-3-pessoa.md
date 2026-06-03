@@ -402,7 +402,7 @@
    **Explanation**: Lucas = he → "Does Lucas play?". Verbo base após "Does".
 
 8. **fix_error** — "Do she like pizza?"
-   **Hint**: Auxiliar errado para she
+   **Hint**: "Do" não cabe pra she — use "does"
    **Answer**: Does she like pizza?
    **Explanation**: Com he/she/it sempre "Does". "Do" é só pra I/you/we/they.
 
@@ -567,7 +567,7 @@
    **Explanation**: "He" 3ª pessoa → "does". "What time does he wake up?".
 
 8. **fix_error** — "Where does you work?"
-   **Hint**: Auxiliar errado para you
+   **Hint**: "Does" não cabe pra you — use "do"
    **Answer**: Where do you work?
    **Explanation**: "You" usa "do", não "does". Apenas he/she/it usa "does".
 

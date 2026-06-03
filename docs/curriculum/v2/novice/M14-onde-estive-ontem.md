@@ -396,7 +396,7 @@
    **Explanation**: "Yes, I was" — short answer com to be passado.
 
 8. **fix_error** — "Did you at home?"
-   **Hint**: "To be" no passado usa was/were
+   **Hint**: "Did" não cabe aqui — verbo "to be" no passado é was/were
    **Answer**: Were you at home?
    **Explanation**: Pergunta com "to be" passado usa was/were, não "did". "Did" é pra outros verbos.
 

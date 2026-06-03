@@ -398,7 +398,7 @@
    **Explanation**: "Yes, I am" — short answer com to be. Repete o auxiliar.
 
 8. **fix_error** — "Do you working?"
-   **Hint**: Present continuous não usa "do"
+   **Hint**: "Do" não cabe no continuous — use "are" + verb-ing
    **Answer**: Are you working?
    **Explanation**: Continuous pergunta com "to be" invertido, não com "do/does". "Are you working?", não "Do you working?".
 
