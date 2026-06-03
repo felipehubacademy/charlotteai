@@ -241,7 +241,7 @@
             "no can"
           ],
           "answer": "can't",
-          "explanation": "Negativa de \"can\" é \"can't\" (cannot). \"I can't swim\" = \"Eu não sei nadar\". Pronúncia: /kænt/ (americano) ou /kɑːnt/ (britânico)."
+          "explanation": "Negativa de \"can\" é \"can't / cannot\" (cannot). \"I can't / cannot swim\" = \"Eu não sei nadar\". Pronúncia: /kænt/ (americano) ou /kɑːnt/ (britânico)."
         },
         {
           "type": "multiple_choice",
@@ -252,7 +252,7 @@
             "no can"
           ],
           "answer": "can't",
-          "explanation": "\"She can't drive\" — negativa de can é can't pra todas as pessoas. Sem -s, sem auxiliar."
+          "explanation": "\"She can't / cannot drive\" — negativa de can é can't pra todas as pessoas. Sem -s, sem auxiliar."
         },
         {
           "type": "word_bank",
@@ -264,7 +264,7 @@
             "no can"
           ],
           "answer": "can't",
-          "explanation": "\"We can't speak\" — can't é a única forma negativa de can."
+          "explanation": "\"We can't / cannot speak\" — can't é a única forma negativa de can."
         },
         {
           "type": "word_bank",
@@ -276,42 +276,42 @@
             "no can"
           ],
           "answer": "can't",
-          "explanation": "\"He can't cook at all\" = \"Ele não sabe cozinhar nada\". \"At all\" intensifica a negação."
+          "explanation": "\"He can't / cannot cook at all\" = \"Ele não sabe cozinhar nada\". \"At all\" intensifica a negação."
         },
         {
           "type": "fill_gap",
           "sentence": "I _____ ride a bike.",
           "hint": "Negativa de can",
           "answer": "can't",
-          "explanation": "\"I can't ride a bike\" = \"Não sei andar de bicicleta\". Forma contraída de \"cannot\"."
+          "explanation": "\"I can't / cannot ride a bike\" = \"Não sei andar de bicicleta\". Forma contraída de \"cannot\"."
         },
         {
           "type": "fill_gap",
           "sentence": "My father _____ sing — he's terrible at it.",
           "hint": "Negativa de can (3ª pessoa também usa can't)",
           "answer": "can't",
-          "explanation": "\"My father can't sing\" — mesmo na 3ª pessoa singular, can't."
+          "explanation": "\"My father can't / cannot sing\" — mesmo na 3ª pessoa singular, can't."
         },
         {
           "type": "fill_gap",
           "sentence": "Sorry, I _____ help you right now.",
           "hint": "Negativa polida com can",
           "answer": "can't",
-          "explanation": "\"I can't help\" — usado pra recusar polidamente. Comum em contextos sociais."
+          "explanation": "\"I can't / cannot help\" — usado pra recusar polidamente. Comum em contextos sociais."
         },
         {
           "type": "fix_error",
           "sentence": "She doesn't can drive.",
           "hint": "Negativa de can não usa doesn't",
           "answer": "She can't drive.",
-          "explanation": "Modais formam negativa direta com \"not\" (contraído: -n't). NÃO usa doesn't/don't. \"She can't drive\", nunca \"She doesn't can\"."
+          "explanation": "Modais formam negativa direta com \"not\" (contraído: -n't). NÃO usa doesn't/don't. \"She can't / cannot drive\", nunca \"She doesn't / does not can\"."
         },
         {
           "type": "fix_error",
           "sentence": "I no can swim.",
           "hint": "Forma da negativa em inglês",
           "answer": "I can't swim.",
-          "explanation": "\"No can\" é influência do português. A negativa correta é \"can't\" (cannot). Forma fixa."
+          "explanation": "\"No can\" é influência do português. A negativa correta é \"can't / cannot\" (cannot). Forma fixa."
         },
         {
           "type": "read_answer",
@@ -321,7 +321,7 @@
           "accepts": [
             "write French"
           ],
-          "explanation": "O texto diz \"she can't write it well\"."
+          "explanation": "O texto diz \"she can't / cannot write it well\"."
         }
       ],
       "listening_speaking": [
@@ -864,7 +864,7 @@
             "not"
           ],
           "answer": "can't",
-          "explanation": "Contraste positiva + negativa. \"I can swim but I can't dive\" = \"Sei nadar mas não sei mergulhar\". A negativa de \"can\" é \"can't\"."
+          "explanation": "Contraste positiva + negativa. \"I can swim but I can't / cannot dive\" = \"Sei nadar mas não sei mergulhar\". A negativa de \"can\" é \"can't / cannot\"."
         },
         {
           "type": "multiple_choice",
@@ -906,7 +906,7 @@
           "sentence": "I _____ drive yet.",
           "hint": "Negativa de can",
           "answer": "can't",
-          "explanation": "\"I can't drive yet\" = \"Ainda não sei dirigir\". \"Yet\" indica que vai aprender no futuro."
+          "explanation": "\"I can't / cannot drive yet\" = \"Ainda não sei dirigir\". \"Yet\" indica que vai aprender no futuro."
         },
         {
           "type": "fill_gap",

@@ -198,53 +198,53 @@
 1. **multiple_choice** — "I _____ at the party."
    **Options**: wasn't / weren't / am not
    **Answer**: wasn't
-   **Explanation**: "I wasn't" — passado negativo de "I". Contração de "was not".
+   **Explanation**: "I wasn't / was not" — passado negativo de "I". Contração de "was not".
 
 2. **multiple_choice** — "They _____ home yesterday."
    **Options**: weren't / wasn't / don't
    **Answer**: weren't
-   **Explanation**: "They weren't" — plural negativo passado. Contração de "were not".
+   **Explanation**: "They weren't / were not" — plural negativo passado. Contração de "were not".
 
 3. **word_bank** — "She _____ tired."
    **Choices**: wasn't / weren't / don't / not
    **Answer**: wasn't
-   **Explanation**: She → "wasn't". 3ª pessoa singular.
+   **Explanation**: She → "wasn't / was not". 3ª pessoa singular.
 
 4. **word_bank** — "We _____ at the cinema."
    **Choices**: weren't / wasn't / don't / no
    **Answer**: weren't
-   **Explanation**: We → "weren't". Plural negativo.
+   **Explanation**: We → "weren't / were not". Plural negativo.
 
 5. **fill_gap** — "I _____ at home last night."
    **Hint**: Negativo de "I was"
    **Answer**: wasn't
-   **Explanation**: "I wasn't at home" — passado negativo. Contraído.
+   **Explanation**: "I wasn't / was not at home" — passado negativo. Contraído.
 
 6. **fill_gap** — "They _____ happy with the result."
    **Hint**: Negativo de "they were"
    **Answer**: weren't
-   **Explanation**: "They weren't happy" — passado negativo plural.
+   **Explanation**: "They weren't / were not happy" — passado negativo plural.
 
 7. **fill_gap** — "He _____ at school today."
    **Hint**: Negativo de "he was"
    **Answer**: wasn't
-   **Explanation**: "He wasn't at school" — 3ª pessoa singular negativa.
+   **Explanation**: "He wasn't / was not at school" — 3ª pessoa singular negativa.
 
 8. **fix_error** — "We wasn't at the party."
    **Hint**: We é plural
    **Answer**: We weren't at the party.
-   **Explanation**: "We" plural → "weren't". "Wasn't" é só pra I/he/she/it.
+   **Explanation**: "We" plural → "weren't / were not". "Wasn't / Was not" é só pra I/he/she/it.
 
 9. **fix_error** — "She weren't happy."
    **Hint**: She é singular
    **Answer**: She wasn't happy.
-   **Explanation**: She → "wasn't". "Weren't" é pra plurais.
+   **Explanation**: She → "wasn't / was not". "Weren't / Were not" é pra plurais.
 
 10. **read_answer**
     **Passage**: "I wasn't at the party last night. My friends were there but I was tired. They weren't happy that I missed it."
     **Question**: Onde o narrador não estava?
     **Answer**: at the party
-    **Explanation**: O texto diz "I wasn't at the party last night".
+    **Explanation**: O texto diz "I wasn't / was not at the party last night".
 
 ### 2. Listening/Speaking (5 phrases)
 

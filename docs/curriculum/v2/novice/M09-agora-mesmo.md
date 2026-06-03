@@ -35,17 +35,17 @@
 1. **multiple_choice** — "I _____ working right now."
    **Options**: am / is / are
    **Answer**: am
-   **Explanation**: Com "I" usa "am" no present continuous: "I am working" ou contraído "I'm working".
+   **Explanation**: Com "I" usa "am" no present continuous: "I am working" ou contraído "I'm / I am working".
 
 2. **multiple_choice** — "She _____ sleeping."
    **Options**: is / am / are
    **Answer**: is
-   **Explanation**: Com he/she/it usa "is": "She is sleeping" ou "She's sleeping".
+   **Explanation**: Com he/she/it usa "is": "She is sleeping" ou "She's / She is sleeping".
 
 3. **word_bank** — "They _____ playing soccer."
    **Choices**: are / is / am / be
    **Answer**: are
-   **Explanation**: Com they/we/you usa "are": "They are playing" ou "They're playing".
+   **Explanation**: Com they/we/you usa "are": "They are playing" ou "They're / They are playing".
 
 4. **word_bank** — "I'm _____ a book."
    **Choices**: reading / read / readed / readinge
@@ -75,7 +75,7 @@
 9. **fix_error** — "She working."
    **Hint**: Falta verbo "to be"
    **Answer**: She is working.
-   **Explanation**: Present continuous SEMPRE precisa de "to be" + verb-ing. "She is working" ou "She's working", nunca "She working".
+   **Explanation**: Present continuous SEMPRE precisa de "to be" + verb-ing. "She is working" ou "She's / She is working", nunca "She working".
 
 10. **read_answer**
     **Passage**: "I'm working from home today. My sister is studying upstairs. My mother is cooking lunch. We are all busy!"
@@ -200,53 +200,53 @@
 1. **multiple_choice** — "I _____ working today. It's Sunday."
    **Options**: am not / is not / don't
    **Answer**: am not
-   **Explanation**: Negativa com "I": "I am not working" ou "I'm not working". Não usa don't (que é present simple).
+   **Explanation**: Negativa com "I": "I am not working" ou "I'm / I am not working". Não usa don't (que é present simple).
 
 2. **multiple_choice** — "She _____ sleeping; she's reading."
    **Options**: isn't / aren't / doesn't
    **Answer**: isn't
-   **Explanation**: "She isn't sleeping" — 3ª pessoa negativa = is + not = isn't. Forma contraída padrão.
+   **Explanation**: "She isn't / is not sleeping" — 3ª pessoa negativa = is + not = isn't. Forma contraída padrão.
 
 3. **word_bank** — "We _____ eating; we're talking."
    **Choices**: aren't / isn't / am not / don't
    **Answer**: aren't
-   **Explanation**: "We aren't" — plural negativa = are + not = aren't.
+   **Explanation**: "We aren't / are not" — plural negativa = are + not = aren't.
 
 4. **word_bank** — "He _____ working today; he's sick."
    **Choices**: isn't / aren't / doesn't / no
    **Answer**: isn't
-   **Explanation**: "He isn't working" — 3ª pessoa singular negativa.
+   **Explanation**: "He isn't / is not working" — 3ª pessoa singular negativa.
 
 5. **fill_gap** — "I _____ studying right now."
    **Hint**: Negativa com "I" (forma contraída)
    **Answer**: 'm not
-   **Explanation**: "I'm not studying" — "am not" contrai pra "'m not". Não existe "amn't" em inglês padrão.
+   **Explanation**: "I'm / I am not studying" — "am not" contrai pra "'m not". Não existe "amn't" em inglês padrão.
 
 6. **fill_gap** — "She _____ cooking."
    **Hint**: Negativa de "she is" (forma contraída)
    **Answer**: isn't
-   **Explanation**: "She isn't cooking" — is + not contrai pra "isn't".
+   **Explanation**: "She isn't / is not cooking" — is + not contrai pra "isn't / is not".
 
 7. **fill_gap** — "They _____ watching TV; they're playing games."
    **Hint**: Negativa de "they are" (contraída)
    **Answer**: aren't
-   **Explanation**: "They aren't watching" — are + not = aren't.
+   **Explanation**: "They aren't / are not watching" — are + not = aren't.
 
 8. **fix_error** — "She don't working."
    **Hint**: Present continuous negativa usa "isn't"
    **Answer**: She isn't working.
-   **Explanation**: Present continuous negativa = forma de "to be" + not + verb-ing. NÃO usa don't/doesn't (que é present simple). "She isn't working".
+   **Explanation**: Present continuous negativa = forma de "to be" + not + verb-ing. NÃO usa don't/doesn't (que é present simple). "She isn't / is not working".
 
 9. **fix_error** — "I amn't sleeping."
    **Hint**: "Amn't" não existe em inglês padrão
    **Answer**: I'm not sleeping.
-   **Explanation**: "Amn't" NÃO existe — apenas "I'm not". A contração de "am not" é só "'m not".
+   **Explanation**: "Amn't" NÃO existe — apenas "I'm / I am not". A contração de "am not" é só "'m not".
 
 10. **read_answer**
     **Passage**: "I'm not working today. My brother isn't studying — he's playing games. We aren't eating yet."
     **Question**: O que o irmão não está fazendo?
     **Answer**: studying
-    **Explanation**: O texto diz "My brother isn't studying".
+    **Explanation**: O texto diz "My brother isn't / is not studying".
 
 ### 2. Listening/Speaking (5 phrases)
 
@@ -411,7 +411,7 @@
     **Passage**: "Q: Are you working today? A: No, I'm not. I'm reading. Q: Is your sister studying? A: Yes, she is. She's preparing for an exam."
     **Question**: O que o narrador está fazendo?
     **Answer**: reading
-    **Explanation**: O texto diz "I'm reading".
+    **Explanation**: O texto diz "I'm / I am reading".
 
 ### 2. Listening/Speaking (5 phrases)
 
@@ -741,7 +741,7 @@
     **Passage**: "I usually wake up at seven, but today I'm waking up at nine — it's Sunday! My brother always cooks on Sundays. He's making pancakes right now."
     **Question**: O que o irmão está fazendo agora?
     **Answer**: pancakes
-    **Explanation**: O texto diz "He's making pancakes right now".
+    **Explanation**: O texto diz "He's / He is making pancakes right now".
 
 ### 2. Listening/Speaking (5 phrases)
 

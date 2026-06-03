@@ -29,54 +29,54 @@
 1. **multiple_choice** — "I _____ work yesterday."
    **Options**: didn't / wasn't / haven't
    **Answer**: didn't
-   **Explanation**: Past simple negativo: "didn't + verbo base". "Didn't work" = não trabalhei.
+   **Explanation**: Past simple negativo: "didn't / did not + verbo base". "Didn't / Did not work" = não trabalhei.
 
 2. **multiple_choice** — "She _____ go to the party."
    **Options**: didn't / wasn't / doesn't
    **Answer**: didn't
-   **Explanation**: "Didn't" pra todas as pessoas no passado. "She didn't go".
+   **Explanation**: "Didn't / Did not" pra todas as pessoas no passado. "She didn't / did not go".
 
 3. **word_bank** — "We _____ eat dinner."
    **Choices**: didn't / weren't / haven't / don't
    **Answer**: didn't
-   **Explanation**: "Didn't" + base. Plural ou singular, todos usam didn't.
+   **Explanation**: "Didn't / Did not" + base. Plural ou singular, todos usam didn't.
 
 4. **word_bank** — "He _____ see the movie."
    **Choices**: didn't / wasn't / hadn't / doesn't
    **Answer**: didn't
-   **Explanation**: "He didn't see" — past negativo com didn't + base. Mesmo em 3ª pessoa, didn't (não doesn't).
+   **Explanation**: "He didn't / did not see" — past negativo com didn't + base. Mesmo em 3ª pessoa, didn't (não doesn't).
 
 5. **fill_gap** — "I _____ have time yesterday."
    **Hint**: Negativa de "I had"
    **Answer**: didn't
-   **Explanation**: "I didn't have" — passado negativo. Note: verbo base "have", não "had".
+   **Explanation**: "I didn't / did not have" — passado negativo. Note: verbo base "have", não "had".
 
 6. **fill_gap** — "She _____ call me."
    **Hint**: Negativa passado de "she called"
    **Answer**: didn't
-   **Explanation**: "She didn't call" — didn't + base "call" (não "called").
+   **Explanation**: "She didn't / did not call" — didn't + base "call" (não "called").
 
 7. **fill_gap** — "They _____ go to school."
    **Hint**: Negativa passado plural
    **Answer**: didn't
-   **Explanation**: "They didn't go" — plural também usa didn't.
+   **Explanation**: "They didn't / did not go" — plural também usa didn't.
 
 8. **fix_error** — "He didn't went home."
    **Hint**: Após didn't, verbo base
    **Answer**: He didn't go home.
-   **Explanation**: Após "didn't", verbo SEMPRE base: "go", não "went". "Didn't already carries past — verbo principal volta pra forma base.
+   **Explanation**: Após "didn't / did not", verbo SEMPRE base: "go", não "went". "Didn't already carries past — verbo principal volta pra forma base.
 
 9. **fix_error** — "She doesn't call me yesterday."
    **Hint**: Yesterday é passado, usa didn't
    **Answer**: She didn't call me yesterday.
-   **Explanation**: "Yesterday" indica passado → "didn't" (não "doesn't" que é presente).
+   **Explanation**: "Yesterday" indica passado → "didn't / did not" (não "doesn't / does not" que é presente).
 
 10. **read_answer**
     **Passage**: "I didn't work yesterday. I didn't go out either. I didn't see anyone. It was a quiet day."
     **Question**: O narrador trabalhou?
     **Answer**: no
     **Accepts**: didn't work
-    **Explanation**: O texto diz "I didn't work yesterday".
+    **Explanation**: O texto diz "I didn't / did not work yesterday".
 
 ### 2. Listening/Speaking (5 phrases)
 
@@ -225,7 +225,7 @@
 7. **fill_gap** — "No, she _____." (response to "Did she come?")
    **Hint**: Resposta curta negativa contraída
    **Answer**: didn't
-   **Explanation**: "No, she didn't" — short answer negativa.
+   **Explanation**: "No, she didn't / did not" — short answer negativa.
 
 8. **fix_error** — "Did you went home?"
    **Hint**: Após Did, verbo base
@@ -242,7 +242,7 @@
     **Question**: A irmã veio?
     **Answer**: no
     **Accepts**: she didn't
-    **Explanation**: The text says "No, she didn't".
+    **Explanation**: The text says "No, she didn't / did not".
 
 ### 2. Listening/Speaking (5 phrases)
 
@@ -532,7 +532,7 @@
 2. **multiple_choice** — "She _____ come to the party."
    **Options**: didn't / not / no
    **Answer**: didn't
-   **Explanation**: Past negativo padrão: "didn't + base". "She didn't come".
+   **Explanation**: Past negativo padrão: "didn't / did not + base". "She didn't / did not come".
 
 3. **word_bank** — "We _____ knew."
    **Choices**: never / didn't / no / not
@@ -542,32 +542,32 @@
 4. **word_bank** — "He _____ understand the question."
    **Choices**: didn't / never / not / no
    **Answer**: didn't
-   **Explanation**: "He didn't understand" — past negativo. (Could also be "never understood" but with simple/no auxiliary structure).
+   **Explanation**: "He didn't / did not understand" — past negativo. (Could also be "never understood" but with simple/no auxiliary structure).
 
 5. **fill_gap** — "I _____ travel abroad."
    **Hint**: Negativa direta de past
    **Answer**: didn't
-   **Explanation**: "I didn't travel" — padrão. "I never traveled" também funciona (sem didn't).
+   **Explanation**: "I didn't / did not travel" — padrão. "I never traveled" também funciona (sem didn't).
 
 6. **fill_gap** — "She _____ said anything wrong."
    **Hint**: "Nunca" sem didn't
    **Answer**: never
-   **Explanation**: "She never said" — passado direto sem auxiliar. Equivale a "She didn't say anything".
+   **Explanation**: "She never said" — passado direto sem auxiliar. Equivale a "She didn't / did not say anything".
 
 7. **fill_gap** — "They _____ arrive on time."
    **Hint**: Past negativo padrão
    **Answer**: didn't
-   **Explanation**: "They didn't arrive" — passado negativo.
+   **Explanation**: "They didn't / did not arrive" — passado negativo.
 
 8. **fix_error** — "I never didn't go there."
    **Hint**: Dupla negativa
    **Answer**: I never went there.
-   **Explanation**: NÃO usa dupla negativa em inglês. Ou "I never went" OU "I didn't go" — não ambos.
+   **Explanation**: NÃO usa dupla negativa em inglês. Ou "I never went" OU "I didn't / did not go" — não ambos.
 
 9. **fix_error** — "She never come yesterday."
    **Hint**: Com "never", o verbo no passado simples
    **Answer**: She never came yesterday.
-   **Explanation**: "Never" + verbo no PASSADO (came), não na base. Diferente de "didn't + base".
+   **Explanation**: "Never" + verbo no PASSADO (came), não na base. Diferente de "didn't / did not + base".
 
 10. **read_answer**
     **Passage**: "I never visited Japan, but I went to China. My sister didn't travel last year. She stayed home."
@@ -717,7 +717,7 @@
 6. **fill_gap** — "She _____ stay long."
    **Hint**: Past negativo padrão
    **Answer**: didn't
-   **Explanation**: "She didn't stay" — negativa.
+   **Explanation**: "She didn't / did not stay" — negativa.
 
 7. **fill_gap** — "Why _____ he leave?"
    **Hint**: WH past
@@ -727,7 +727,7 @@
 8. **fix_error** — "She didn't went home."
    **Hint**: Após didn't, base
    **Answer**: She didn't go home.
-   **Explanation**: didn't + base, não "didn't went".
+   **Explanation**: didn't + base, não "didn't / did not went".
 
 9. **fix_error** — "Did you saw the movie?"
    **Hint**: Após Did, base
@@ -738,7 +738,7 @@
     **Passage**: "I went to a concert. I didn't stay long. Did my friend come? No, she didn't. What did she do? She worked late."
     **Question**: O amigo veio ao show?
     **Answer**: no
-    **Explanation**: The text says "No, she didn't".
+    **Explanation**: The text says "No, she didn't / did not".
 
 ### 2. Listening/Speaking (5 phrases)
 

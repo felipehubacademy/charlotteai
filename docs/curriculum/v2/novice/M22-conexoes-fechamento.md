@@ -78,7 +78,7 @@
     **Question**: O narrador gosta de refrigerante?
     **Answer**: no
     **Accepts**: doesn't like
-    **Explanation**: O texto diz "I don't like soda".
+    **Explanation**: O texto diz "I don't / do not like soda".
 
 ### 2. Listening/Speaking (5 phrases)
 
@@ -197,12 +197,12 @@
 1. **multiple_choice** — "I'm tired _____ I worked all day."
    **Options**: because / so / but
    **Answer**: because
-   **Explanation**: "Because" introduz a CAUSA. "I'm tired because I worked" — cansado por trabalhar.
+   **Explanation**: "Because" introduz a CAUSA. "I'm / I am tired because I worked" — cansado por trabalhar.
 
 2. **multiple_choice** — "I'm tired _____ I'll rest."
    **Options**: so / because / but
    **Answer**: so
-   **Explanation**: "So" introduz a CONSEQUÊNCIA. "I'm tired so I'll rest" — cansado, então descanso.
+   **Explanation**: "So" introduz a CONSEQUÊNCIA. "I'm tired so I'll / I will rest" — cansado, então descanso.
 
 3. **word_bank** — "She studies a lot _____ she wants to pass."
    **Choices**: because / so / but / and
@@ -538,7 +538,7 @@
 3. **word_bank** — "_____ he's tired, he keeps working."
    **Choices**: Although / Because / So / And
    **Answer**: Although
-   **Explanation**: "Although he's tired" — embora cansado.
+   **Explanation**: "Although he's / he is tired" — embora cansado.
 
 4. **word_bank** — "She studied a lot. _____, she didn't pass."
    **Choices**: However / Because / Although / And
@@ -553,12 +553,12 @@
 6. **fill_gap** — "It's raining. _____, we'll go anyway."
    **Hint**: No entanto (contraste forte)
    **Answer**: However
-   **Explanation**: "However, we'll go" — contraste após pausa.
+   **Explanation**: "However, we'll / we will go" — contraste após pausa.
 
 7. **fill_gap** — "_____ she's young, she's very smart."
    **Hint**: Embora
    **Answer**: Although
-   **Explanation**: "Although she's young" — concessão.
+   **Explanation**: "Although she's / she is young" — concessão.
 
 8. **fix_error** — "Although it's cold but I'll go out."
    **Hint**: Não use although + but juntos

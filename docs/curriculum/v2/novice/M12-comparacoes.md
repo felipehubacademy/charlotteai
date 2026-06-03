@@ -78,7 +78,7 @@
     **Question**: Quem é mais velho que o narrador?
     **Answer**: my brother
     **Accepts**: her/his brother
-    **Explanation**: O texto diz "he's older than me" se referindo ao irmão.
+    **Explanation**: O texto diz "he's / he is older than me" se referindo ao irmão.
 
 ### 2. Listening/Speaking (5 phrases)
 
@@ -739,7 +739,7 @@
     **Question**: Quem é o melhor ouvinte?
     **Answer**: my sister
     **Accepts**: her sister / the sister
-    **Explanation**: O texto diz "She's a better listener" — se referindo à irmã (melhor ouvinte que o falante e o irmão).
+    **Explanation**: O texto diz "She's / She is a better listener" — se referindo à irmã (melhor ouvinte que o falante e o irmão).
 
 ### 2. Listening/Speaking (5 phrases)
 

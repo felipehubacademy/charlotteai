@@ -373,7 +373,7 @@ Charlotte fala via ElevenLabs (Rachel). Aluno repete; Azure Speech avalia pronú
 5. **fill_gap** — "I'm from _____."
    **Hint**: País asiático cuja capital é Tokyo
    **Answer**: Japan
-   **Explanation**: "Japan" é o país. Nacionalidade: "Japanese". Não confundir — "I'm from Japan" (país) vs "I'm Japanese" (nacionalidade).
+   **Explanation**: "Japan" é o país. Nacionalidade: "Japanese". Não confundir — "I'm / I am from Japan" (país) vs "I'm / I am Japanese" (nacionalidade).
 
 6. **fill_gap** — "She is from _____."
    **Hint**: País europeu, capital Paris
@@ -665,7 +665,7 @@ Charlotte fala via ElevenLabs (Rachel). Aluno repete; Azure Speech avalia pronú
 1. **multiple_choice** — "I'm _____. I'm from São Paulo, Brazil."
    **Options**: Brazilian / Brazil / Brazilians
    **Answer**: Brazilian
-   **Explanation**: Nacionalidade = adjetivo (Brazilian). País = nome próprio (Brazil). Esta frase combina ambos: "I'm Brazilian, I'm from São Paulo, Brazil".
+   **Explanation**: Nacionalidade = adjetivo (Brazilian). País = nome próprio (Brazil). Esta frase combina ambos: "I'm / I am Brazilian, I'm from São Paulo, Brazil".
 
 2. **multiple_choice** — "_____ is twenty-five years old."
    **Options**: She / Her / Hers
@@ -675,7 +675,7 @@ Charlotte fala via ElevenLabs (Rachel). Aluno repete; Azure Speech avalia pronú
 3. **word_bank** — "Hi, _____ Felipe. I'm from Brazil."
    **Choices**: I'm / I am / My / Me
    **Answer**: I'm
-   **Explanation**: "I'm" é a contração de "I am" — forma padrão pra se apresentar. "My" é possessivo (My name is...). "Me" é pronome objeto.
+   **Explanation**: "I'm / I am" é a contração de "I am" — forma padrão pra se apresentar. "My" é possessivo (My name is...). "Me" é pronome objeto.
 
 4. **word_bank** — "She is thirty years old. She is _____."
    **Choices**: Spanish / Spain / Spainian / Spanishly
@@ -711,7 +711,7 @@ Charlotte fala via ElevenLabs (Rachel). Aluno repete; Azure Speech avalia pronú
     **Passage**: "Hello! My name is Ana. I'm twenty-six years old. I'm from São Paulo, Brazil. I'm Brazilian. Nice to meet you!"
     **Question**: Qual é a nacionalidade de Ana?
     **Answer**: Brazilian
-    **Explanation**: Ana diz "I'm Brazilian". A nacionalidade dela é "Brazilian" (o adjetivo).
+    **Explanation**: Ana diz "I'm / I am Brazilian". A nacionalidade dela é "Brazilian" (o adjetivo).
 
 ### 2. Listening/Speaking (5 phrases)
 

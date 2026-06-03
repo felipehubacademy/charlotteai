@@ -249,7 +249,7 @@
             "am not"
           ],
           "answer": "don't",
-          "explanation": "Com I/you/we/they usa \"don't\" + verbo base: \"I don't work\". \"Doesn't\" é só pra he/she/it."
+          "explanation": "Com I/you/we/they usa \"don't / do not\" + verbo base: \"I don't / do not work\". \"Doesn't / Does not\" é só pra he/she/it."
         },
         {
           "type": "multiple_choice",
@@ -260,7 +260,7 @@
             "not"
           ],
           "answer": "doesn't",
-          "explanation": "Com he/she/it usa \"doesn't\" + verbo base: \"She doesn't eat\". Atenção: depois de \"doesn't\" o verbo NÃO leva -s."
+          "explanation": "Com he/she/it usa \"doesn't / does not\" + verbo base: \"She doesn't / does not eat\". Atenção: depois de \"doesn't / does not\" o verbo NÃO leva -s."
         },
         {
           "type": "word_bank",
@@ -272,7 +272,7 @@
             "no"
           ],
           "answer": "don't",
-          "explanation": "\"We\" é plural → \"don't\". \"We don't live\" — verbo na forma base após don't."
+          "explanation": "\"We\" é plural → \"don't / do not\". \"We don't / do not live\" — verbo na forma base após don't."
         },
         {
           "type": "word_bank",
@@ -284,49 +284,49 @@
             "not"
           ],
           "answer": "doesn't",
-          "explanation": "\"He\" → \"doesn't\". Após \"doesn't\", verbo base: \"doesn't drink\", não \"doesn't drinks\"."
+          "explanation": "\"He\" → \"doesn't / does not\". Após \"doesn't / does not\", verbo base: \"doesn't / does not drink\", não \"doesn't / does not drinks\"."
         },
         {
           "type": "fill_gap",
           "sentence": "I _____ study French.",
           "hint": "Negativo de \"I\"",
           "answer": "don't",
-          "explanation": "\"I don't study\" — eu não estudo. \"Don't\" + forma base do verbo."
+          "explanation": "\"I don't / do not study\" — eu não estudo. \"Don't / Do not\" + forma base do verbo."
         },
         {
           "type": "fill_gap",
           "sentence": "My brother _____ work on weekends.",
           "hint": "Negativo para 3ª pessoa singular",
           "answer": "doesn't",
-          "explanation": "\"My brother\" = he → \"doesn't work\". Note: verbo base após \"doesn't\" (não \"doesn't works\")."
+          "explanation": "\"My brother\" = he → \"doesn't / does not work\". Note: verbo base após \"doesn't / does not\" (não \"doesn't / does not works\")."
         },
         {
           "type": "fill_gap",
           "sentence": "They _____ watch TV at night.",
           "hint": "Negativo para plural",
           "answer": "don't",
-          "explanation": "\"They\" plural → \"don't watch\". Sempre forma base após \"don't\"."
+          "explanation": "\"They\" plural → \"don't / do not watch\". Sempre forma base após \"don't / do not\"."
         },
         {
           "type": "fix_error",
           "sentence": "She don't like coffee.",
           "hint": "She é 3ª pessoa singular",
           "answer": "She doesn't like coffee.",
-          "explanation": "She → \"doesn't\" (não \"don't\"). Apenas I/you/we/they usam \"don't\". He/she/it sempre \"doesn't\"."
+          "explanation": "She → \"doesn't / does not\" (não \"don't / do not\"). Apenas I/you/we/they usam \"don't / do not\". He/she/it sempre \"doesn't / does not\"."
         },
         {
           "type": "fix_error",
           "sentence": "He doesn't works late.",
           "hint": "Após \"doesn't\" o verbo fica base",
           "answer": "He doesn't work late.",
-          "explanation": "\"Doesn't\" já carrega o -s da 3ª pessoa. O verbo principal volta pra forma base: \"doesn't work\" (não \"doesn't works\"). Erro super comum."
+          "explanation": "\"Doesn't / Does not\" já carrega o -s da 3ª pessoa. O verbo principal volta pra forma base: \"doesn't / does not work\" (não \"doesn't / does not works\"). Erro super comum."
         },
         {
           "type": "read_answer",
           "passage": "I don't drink coffee. My brother doesn't eat meat. We don't work on Sundays. Ana doesn't study at night.",
           "question": "O que Ana não faz?",
           "answer": "study at night",
-          "explanation": "O texto diz \"Ana doesn't study at night\"."
+          "explanation": "O texto diz \"Ana doesn't / does not study at night\"."
         }
       ],
       "listening_speaking": [
@@ -872,7 +872,7 @@
             "not"
           ],
           "answer": "doesn't",
-          "explanation": "\"He\" 3ª pessoa → \"doesn't\". Negativa: \"He doesn't live\"."
+          "explanation": "\"He\" 3ª pessoa → \"doesn't / does not\". Negativa: \"He doesn't / does not live\"."
         },
         {
           "type": "word_bank",
@@ -910,7 +910,7 @@
           "sentence": "She _____ work on weekends. She rests.",
           "hint": "Negativa 3ª pessoa singular",
           "answer": "doesn't",
-          "explanation": "\"She doesn't work\" — 3ª pessoa negativa usa \"doesn't\" + base."
+          "explanation": "\"She doesn't / does not work\" — 3ª pessoa negativa usa \"doesn't / does not\" + base."
         },
         {
           "type": "fill_gap",
@@ -924,7 +924,7 @@
           "sentence": "She don't likes coffee.",
           "hint": "Dois erros: auxiliar e verbo",
           "answer": "She doesn't like coffee.",
-          "explanation": "She → \"doesn't\" (não \"don't\"). Após \"doesn't\", verbo base \"like\" (não \"likes\"). Dois erros em uma frase."
+          "explanation": "She → \"doesn't / does not\" (não \"don't / do not\"). Após \"doesn't / does not\", verbo base \"like\" (não \"likes\"). Dois erros em uma frase."
         },
         {
           "type": "fix_error",
@@ -938,7 +938,7 @@
           "passage": "Lucas is my friend. He works in a school. He doesn't like coffee — he drinks tea. He goes to the gym every morning.",
           "question": "O que Lucas bebe?",
           "answer": "tea",
-          "explanation": "O texto diz \"He doesn't like coffee — he drinks tea\"."
+          "explanation": "O texto diz \"He doesn't / does not like coffee — he drinks tea\"."
         }
       ],
       "listening_speaking": [

@@ -241,7 +241,7 @@
             "am not"
           ],
           "answer": "wasn't",
-          "explanation": "\"I wasn't\" — passado negativo de \"I\". Contração de \"was not\"."
+          "explanation": "\"I wasn't / was not\" — passado negativo de \"I\". Contração de \"was not\"."
         },
         {
           "type": "multiple_choice",
@@ -252,7 +252,7 @@
             "don't"
           ],
           "answer": "weren't",
-          "explanation": "\"They weren't\" — plural negativo passado. Contração de \"were not\"."
+          "explanation": "\"They weren't / were not\" — plural negativo passado. Contração de \"were not\"."
         },
         {
           "type": "word_bank",
@@ -264,7 +264,7 @@
             "not"
           ],
           "answer": "wasn't",
-          "explanation": "She → \"wasn't\". 3ª pessoa singular."
+          "explanation": "She → \"wasn't / was not\". 3ª pessoa singular."
         },
         {
           "type": "word_bank",
@@ -276,49 +276,49 @@
             "no"
           ],
           "answer": "weren't",
-          "explanation": "We → \"weren't\". Plural negativo."
+          "explanation": "We → \"weren't / were not\". Plural negativo."
         },
         {
           "type": "fill_gap",
           "sentence": "I _____ at home last night.",
           "hint": "Negativo de \"I was\"",
           "answer": "wasn't",
-          "explanation": "\"I wasn't at home\" — passado negativo. Contraído."
+          "explanation": "\"I wasn't / was not at home\" — passado negativo. Contraído."
         },
         {
           "type": "fill_gap",
           "sentence": "They _____ happy with the result.",
           "hint": "Negativo de \"they were\"",
           "answer": "weren't",
-          "explanation": "\"They weren't happy\" — passado negativo plural."
+          "explanation": "\"They weren't / were not happy\" — passado negativo plural."
         },
         {
           "type": "fill_gap",
           "sentence": "He _____ at school today.",
           "hint": "Negativo de \"he was\"",
           "answer": "wasn't",
-          "explanation": "\"He wasn't at school\" — 3ª pessoa singular negativa."
+          "explanation": "\"He wasn't / was not at school\" — 3ª pessoa singular negativa."
         },
         {
           "type": "fix_error",
           "sentence": "We wasn't at the party.",
           "hint": "We é plural",
           "answer": "We weren't at the party.",
-          "explanation": "\"We\" plural → \"weren't\". \"Wasn't\" é só pra I/he/she/it."
+          "explanation": "\"We\" plural → \"weren't / were not\". \"Wasn't / Was not\" é só pra I/he/she/it."
         },
         {
           "type": "fix_error",
           "sentence": "She weren't happy.",
           "hint": "She é singular",
           "answer": "She wasn't happy.",
-          "explanation": "She → \"wasn't\". \"Weren't\" é pra plurais."
+          "explanation": "She → \"wasn't / was not\". \"Weren't / Were not\" é pra plurais."
         },
         {
           "type": "read_answer",
           "passage": "I wasn't at the party last night. My friends were there but I was tired. They weren't happy that I missed it.",
           "question": "Onde o narrador não estava?",
           "answer": "at the party",
-          "explanation": "O texto diz \"I wasn't at the party last night\"."
+          "explanation": "O texto diz \"I wasn't / was not at the party last night\"."
         }
       ],
       "listening_speaking": [

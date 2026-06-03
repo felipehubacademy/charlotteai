@@ -869,7 +869,7 @@
             "no"
           ],
           "answer": "never",
-          "explanation": "\"Never\" (nunca) é advérbio de frequência negativo. Posição: antes do verbo. \"I never work on weekends\" — não precisa de \"don't\", o \"never\" já carrega a negação."
+          "explanation": "\"Never\" (nunca) é advérbio de frequência negativo. Posição: antes do verbo. \"I never work on weekends\" — não precisa de \"don't / do not\", o \"never\" já carrega a negação."
         },
         {
           "type": "word_bank",
@@ -1075,7 +1075,7 @@
             "three's"
           ],
           "answer": "three",
-          "explanation": "\"It's three o'clock\" — chunk fixo de horário cheio. Sem artigo antes do número. \"O'clock\" só com horas cheias (3:00, 7:00), nunca com minutos."
+          "explanation": "\"It's / It is three o'clock\" — chunk fixo de horário cheio. Sem artigo antes do número. \"O'clock\" só com horas cheias (3:00, 7:00), nunca com minutos."
         },
         {
           "type": "word_bank",
@@ -1135,7 +1135,7 @@
           "sentence": "What's hour?",
           "hint": "Em inglês — \"What time is it?\"",
           "answer": "What time is it?",
-          "explanation": "\"What's hour?\" é tradução literal errada de \"que horas?\". O chunk correto é \"What time is it?\". Sempre com \"time\" e \"is it\" no fim. Erro muito comum entre lusófonos iniciantes."
+          "explanation": "\"What's / What is hour?\" é tradução literal errada de \"que horas?\". O chunk correto é \"What time is it?\". Sempre com \"time\" e \"is it\" no fim. Erro muito comum entre lusófonos iniciantes."
         },
         {
           "type": "fix_error",
@@ -1145,7 +1145,7 @@
           "accepts": [
             "It's three o'clock."
           ],
-          "explanation": "\"It's three o'clock\" — sem \"the\" e sem \"a\". Horário inglês não usa artigos. Erro de tradução literal de \"são três horas\"."
+          "explanation": "\"It's / It is three o'clock\" — sem \"the\" e sem \"a\". Horário inglês não usa artigos. Erro de tradução literal de \"são três horas\"."
         },
         {
           "type": "read_answer",

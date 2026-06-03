@@ -48,7 +48,7 @@
             "didn't"
           ],
           "answer": "shouldn't",
-          "explanation": "\"Shouldn't\" = não deveria. Aconselhamento negativo."
+          "explanation": "\"Shouldn't / Should not\" = não deveria. Aconselhamento negativo."
         },
         {
           "type": "word_bank",
@@ -72,7 +72,7 @@
             "didn't"
           ],
           "answer": "shouldn't",
-          "explanation": "\"He shouldn't eat junk food\" = ele não deveria."
+          "explanation": "\"He shouldn't / should not eat junk food\" = ele não deveria."
         },
         {
           "type": "fill_gap",
@@ -86,7 +86,7 @@
           "sentence": "She _____ stay up late.",
           "hint": "Conselho negativo",
           "answer": "shouldn't",
-          "explanation": "\"She shouldn't stay up late\" = ela não deveria ficar acordada."
+          "explanation": "\"She shouldn't / should not stay up late\" = ela não deveria ficar acordada."
         },
         {
           "type": "fill_gap",
@@ -117,7 +117,7 @@
           "accepts": [
             "work late"
           ],
-          "explanation": "O texto diz \"You shouldn't work so late\"."
+          "explanation": "O texto diz \"You shouldn't / should not work so late\"."
         }
       ],
       "listening_speaking": [
@@ -449,7 +449,7 @@
             "wasn't"
           ],
           "answer": "don't",
-          "explanation": "Negativa: \"don't have to\" = não precisa. Com I/you/we/they."
+          "explanation": "Negativa: \"don't / do not have to\" = não precisa. Com I/you/we/they."
         },
         {
           "type": "multiple_choice",
@@ -460,7 +460,7 @@
             "wasn't"
           ],
           "answer": "doesn't",
-          "explanation": "3ª pessoa: \"doesn't have to\"."
+          "explanation": "3ª pessoa: \"doesn't / does not have to\"."
         },
         {
           "type": "word_bank",
@@ -472,7 +472,7 @@
             "isn't"
           ],
           "answer": "don't",
-          "explanation": "\"We don't have to\" — plural."
+          "explanation": "\"We don't / do not have to\" — plural."
         },
         {
           "type": "word_bank",
@@ -484,42 +484,42 @@
             "can't"
           ],
           "answer": "doesn't",
-          "explanation": "\"He doesn't have to\" — 3ª pessoa."
+          "explanation": "\"He doesn't / does not have to\" — 3ª pessoa."
         },
         {
           "type": "fill_gap",
           "sentence": "I _____ have to study tonight.",
           "hint": "Negativa de \"have to\" com I",
           "answer": "don't",
-          "explanation": "\"I don't have to\" — ausência de obrigação."
+          "explanation": "\"I don't / do not have to\" — ausência de obrigação."
         },
         {
           "type": "fill_gap",
           "sentence": "She _____ have to wake up early.",
           "hint": "Negativa de \"has to\"",
           "answer": "doesn't",
-          "explanation": "\"She doesn't have to\" — 3ª pessoa."
+          "explanation": "\"She doesn't / does not have to\" — 3ª pessoa."
         },
         {
           "type": "fill_gap",
           "sentence": "You _____ have to come if you don't want.",
           "hint": "Negativa do \"have to\"",
           "answer": "don't",
-          "explanation": "\"You don't have to come\" — opcional."
+          "explanation": "\"You don't / do not have to come\" — opcional."
         },
         {
           "type": "fix_error",
           "sentence": "She don't have to work.",
           "hint": "3ª pessoa usa \"doesn't\"",
           "answer": "She doesn't have to work.",
-          "explanation": "She → \"doesn't\", não \"don't\"."
+          "explanation": "She → \"doesn't / does not\", não \"don't / do not\"."
         },
         {
           "type": "fix_error",
           "sentence": "I doesn't have to go.",
           "hint": "I usa \"don't\"",
           "answer": "I don't have to go.",
-          "explanation": "Com I sempre \"don't\", não \"doesn't\"."
+          "explanation": "Com I sempre \"don't / do not\", não \"doesn't / does not\"."
         },
         {
           "type": "read_answer",
@@ -529,7 +529,7 @@
           "accepts": [
             "day off"
           ],
-          "explanation": "O texto diz \"it's my day off\"."
+          "explanation": "O texto diz \"it's / it is my day off\"."
         }
       ],
       "listening_speaking": [
@@ -736,7 +736,7 @@
           "accepts": [
             "doesn't have to"
           ],
-          "explanation": "The text says \"No, you don't have to\"."
+          "explanation": "The text says \"No, you don't / do not have to\"."
         }
       ],
       "listening_speaking": [
@@ -884,7 +884,7 @@
             "mustn't"
           ],
           "answer": "don't have to",
-          "explanation": "\"Don't have to\" = não precisa, opcional. \"Shouldn't\" = não deveria (conselho)."
+          "explanation": "\"Don't / Do not have to\" = não precisa, opcional. \"Shouldn't / Should not\" = não deveria (conselho)."
         },
         {
           "type": "word_bank",

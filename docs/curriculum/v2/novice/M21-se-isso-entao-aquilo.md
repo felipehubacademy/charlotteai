@@ -35,12 +35,12 @@
 2. **multiple_choice** — "If she comes, we _____ have dinner."
    **Options**: will / would / are
    **Answer**: will
-   **Explanation**: Após if + present, usa "will + base" na consequência. "We will have" / "we'll have".
+   **Explanation**: Após if + present, usa "will + base" na consequência. "We will have" / "we'll / we will have".
 
 3. **word_bank** — "I _____ call you if I have time."
    **Choices**: will / would / can / am
    **Answer**: will
-   **Explanation**: "I'll call you" — consequência futura. Will + base.
+   **Explanation**: "I'll / I will call you" — consequência futura. Will + base.
 
 4. **word_bank** — "If you _____ early, you'll see the sunrise."
    **Choices**: wake up / will wake up / woke up / wakes up
@@ -70,13 +70,13 @@
 9. **fix_error** — "If she comes, we have dinner."
    **Hint**: Consequência precisa de will
    **Answer**: If she comes, we'll have dinner.
-   **Explanation**: Consequência futura precisa de WILL. "We'll have dinner", não "we have".
+   **Explanation**: Consequência futura precisa de WILL. "We'll / We will have dinner", não "we have".
 
 10. **read_answer**
     **Passage**: "If it rains tomorrow, I'll stay home. If it's sunny, we'll go hiking. If she comes, we'll have lunch together."
     **Question**: O que o narrador vai fazer se estiver ensolarado?
     **Answer**: go hiking
-    **Explanation**: O texto diz "If it's sunny, we'll go hiking".
+    **Explanation**: O texto diz "If it's sunny, we'll / we will go hiking".
 
 ### 2. Listening/Speaking (5 phrases)
 
@@ -235,13 +235,13 @@
 9. **fix_error** — "I will travel if I save."
    **Hint**: Contração natural
    **Answer**: I'll travel if I save.
-   **Explanation**: Em fala, usa-se "I'll" mais que "I will" — som mais natural. Ambas corretas mas "I'll" é melhor em diálogo.
+   **Explanation**: Em fala, usa-se "I'll / I will" mais que "I will" — som mais natural. Ambas corretas mas "I'll / I will" é melhor em diálogo.
 
 10. **read_answer**
     **Passage**: "If I have time tomorrow, I'll go to the gym. If I save enough, I'll buy a bike. If my friend calls, I'll go out with her."
     **Question**: O que o narrador vai comprar se economizar o suficiente?
     **Answer**: a bike
-    **Explanation**: O texto diz "If I save enough, I'll buy a bike".
+    **Explanation**: O texto diz "If I save enough, I'll / I will buy a bike".
 
 ### 2. Listening/Speaking (5 phrases)
 
@@ -390,7 +390,7 @@
 7. **fill_gap** — "We _____ go to the cinema if you want."
    **Hint**: Consequência futura
    **Answer**: will
-   **Explanation**: "We will go" — will + base. Ou "we'll go".
+   **Explanation**: "We will go" — will + base. Ou "we'll / we will go".
 
 8. **fix_error** — "If you will need help, I'll come."
    **Hint**: Sem will após if
@@ -400,14 +400,14 @@
 9. **fix_error** — "I help you if you ask."
    **Hint**: Consequência precisa de will
    **Answer**: I'll help you if you ask.
-   **Explanation**: Will + base na consequência. "I'll help" — will obrigatório.
+   **Explanation**: Will + base na consequência. "I'll / I will help" — will obrigatório.
 
 10. **read_answer**
     **Passage**: "If you need help, I'll come. If you're hungry, I'll cook. If you have time, we'll chat. I'm here for you."
     **Question**: O que o narrador vai fazer se você estiver com fome?
     **Answer**: cook
     **Accepts**: I'll cook
-    **Explanation**: O texto diz "If you're hungry, I'll cook".
+    **Explanation**: O texto diz "If you're hungry, I'll / I will cook".
 
 ### 2. Listening/Speaking (5 phrases)
 
@@ -526,17 +526,17 @@
 1. **multiple_choice** — "I'll go _____ it rains."
    **Options**: unless / if / when
    **Answer**: unless
-   **Explanation**: "Unless" = "if not" / "a menos que". "I'll go unless it rains" = irei a menos que chova.
+   **Explanation**: "Unless" = "if not" / "a menos que". "I'll / I will go unless it rains" = irei a menos que chova.
 
 2. **multiple_choice** — "She'll come _____ she's busy."
    **Options**: unless / if / when
    **Answer**: unless
-   **Explanation**: "Unless she's busy" = se ela não estiver ocupada.
+   **Explanation**: "Unless she's / she is busy" = se ela não estiver ocupada.
 
 3. **word_bank** — "We'll leave _____ you want to stay."
    **Choices**: unless / if not / when not / but
    **Answer**: unless
-   **Explanation**: "Unless you want to stay" = "if you don't want".
+   **Explanation**: "Unless you want to stay" = "if you don't / do not want".
 
 4. **word_bank** — "I _____ call you unless you ask me not to."
    **Choices**: will / would / can / am
@@ -546,7 +546,7 @@
 5. **fill_gap** — "I'll meet you _____ you're late."
    **Hint**: A menos que (a alternativa de "if not")
    **Answer**: unless
-   **Explanation**: "Unless you're late" = se você não estiver atrasado.
+   **Explanation**: "Unless you're / you are late" = se você não estiver atrasado.
 
 6. **fill_gap** — "She _____ come unless she's sick."
    **Hint**: Auxiliar futuro
@@ -573,7 +573,7 @@
     **Question**: Quando o narrador não vai à festa?
     **Answer**: if I'm tired
     **Accepts**: tired
-    **Explanation**: O texto diz "I'll come unless I'm tired" — significando que não virá se estiver cansado.
+    **Explanation**: O texto diz "I'll / I will come unless I'm tired" — significando que não virá se estiver cansado.
 
 ### 2. Listening/Speaking (5 phrases)
 
@@ -707,7 +707,7 @@
 4. **word_bank** — "I'll come _____ I'm sick."
    **Choices**: unless / if / when / before
    **Answer**: unless
-   **Explanation**: "Unless I'm sick" = a menos que esteja doente.
+   **Explanation**: "Unless I'm / I am sick" = a menos que esteja doente.
 
 5. **fill_gap** — "If she _____ early, we'll have time."
    **Hint**: Present simple 3ª pessoa "arrive"

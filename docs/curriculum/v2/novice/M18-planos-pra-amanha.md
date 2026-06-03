@@ -30,7 +30,7 @@
 1. **multiple_choice** — "I'm _____ travel next week."
    **Options**: going to / going / go to
    **Answer**: going to
-   **Explanation**: "Going to + verbo base" pra planos: "I'm going to travel".
+   **Explanation**: "Going to + verbo base" pra planos: "I'm / I am going to travel".
 
 2. **multiple_choice** — "She _____ visit her sister."
    **Options**: is going to / going to / will going to
@@ -45,12 +45,12 @@
 4. **word_bank** — "He's _____ start a new job."
    **Choices**: going to / go to / going / goes to
    **Answer**: going to
-   **Explanation**: "He's going to start" — contração "he is" + going to.
+   **Explanation**: "He's / He is going to start" — contração "he is" + going to.
 
 5. **fill_gap** — "I'm _____ to learn Spanish."
    **Hint**: Verbo de movimento (going)
    **Answer**: going
-   **Explanation**: "I'm going to learn" — chunk fixo. "Going" antes do "to".
+   **Explanation**: "I'm / I am going to learn" — chunk fixo. "Going" antes do "to".
 
 6. **fill_gap** — "She is going _____ buy a car."
    **Hint**: Partícula entre going e o verbo
@@ -65,7 +65,7 @@
 8. **fix_error** — "I going to eat."
    **Hint**: Falta verbo to be
    **Answer**: I'm going to eat.
-   **Explanation**: Going to precisa de "to be" antes: "I'M going to" ou "I am going to".
+   **Explanation**: Going to precisa de "to be" antes: "I'M / I am going to" ou "I am going to".
 
 9. **fix_error** — "She is going eat."
    **Hint**: Falta "to" antes do verbo
@@ -195,54 +195,54 @@
 1. **multiple_choice** — "I'm _____ work tomorrow."
    **Options**: not going to / going to not / don't going
    **Answer**: not going to
-   **Explanation**: Negativa: "I'm not going to + base". O "not" vai entre "am/is/are" e "going to".
+   **Explanation**: Negativa: "I'm / I am not going to + base". O "not" vai entre "am/is/are" e "going to".
 
 2. **multiple_choice** — "She _____ travel next month."
    **Options**: isn't going to / not going to / doesn't go
    **Answer**: isn't going to
-   **Explanation**: "She isn't going to" — contração de "is not".
+   **Explanation**: "She isn't / is not going to" — contração de "is not".
 
 3. **word_bank** — "We _____ eat out tonight."
    **Choices**: aren't going to / isn't going to / don't going / no go
    **Answer**: aren't going to
-   **Explanation**: "We aren't going to" — contração "are not".
+   **Explanation**: "We aren't / are not going to" — contração "are not".
 
 4. **word_bank** — "He _____ visit us."
    **Choices**: isn't going to / aren't going to / don't going / not go
    **Answer**: isn't going to
-   **Explanation**: He → "isn't going to".
+   **Explanation**: He → "isn't / is not going to".
 
 5. **fill_gap** — "I _____ going to call her."
    **Hint**: Negativa entre "am" e "going"
    **Answer**: 'm not
-   **Explanation**: "I'm not going to" — contraído. "Am not" = "'m not".
+   **Explanation**: "I'm / I am not going to" — contraído. "Am not" = "'m not".
 
 6. **fill_gap** — "She _____ going to come."
    **Hint**: Negativa de "she is" (contraída)
    **Answer**: isn't
-   **Explanation**: "She isn't going to" — is + not = isn't.
+   **Explanation**: "She isn't / is not going to" — is + not = isn't.
 
 7. **fill_gap** — "They _____ going to leave early."
    **Hint**: Negativa de "they are" (contraída)
    **Answer**: aren't
-   **Explanation**: "They aren't going to" — are + not = aren't.
+   **Explanation**: "They aren't / are not going to" — are + not = aren't.
 
 8. **fix_error** — "I don't going to work."
    **Hint**: Going to não usa "don't"
    **Answer**: I'm not going to work.
-   **Explanation**: Going to negativa usa "not" entre to-be e going. NÃO "don't going to".
+   **Explanation**: Going to negativa usa "not" entre to-be e going. NÃO "don't / do not going to".
 
 9. **fix_error** — "She isn't go to call."
    **Hint**: Falta "ing" e "to"
    **Answer**: She isn't going to call.
-   **Explanation**: "Going to" sempre completo: "going to + base". "isn't going to call".
+   **Explanation**: "Going to" sempre completo: "going to + base". "isn't / is not going to call".
 
 10. **read_answer**
     **Passage**: "I'm not going to work tomorrow. It's my day off. My sister isn't going to come either. We aren't going to do anything special."
     **Question**: Por que o narrador não vai trabalhar amanhã?
     **Answer**: it's my day off
     **Accepts**: day off
-    **Explanation**: O texto diz "It's my day off".
+    **Explanation**: O texto diz "It's / It is my day off".
 
 ### 2. Listening/Speaking (5 phrases)
 
@@ -408,7 +408,7 @@
     **Question**: A irmã vai vir?
     **Answer**: no
     **Accepts**: she isn't
-    **Explanation**: The text says "No, she isn't".
+    **Explanation**: The text says "No, she isn't / is not".
 
 ### 2. Listening/Speaking (5 phrases)
 
@@ -557,7 +557,7 @@
 7. **fill_gap** — "I'm going to finish _____."
    **Hint**: Marcador "em breve"
    **Answer**: soon
-   **Explanation**: "I'm going to finish soon" = vou terminar em breve.
+   **Explanation**: "I'm / I am going to finish soon" = vou terminar em breve.
 
 8. **fix_error** — "I'm going to travel yesterday."
    **Hint**: Yesterday é passado
@@ -573,7 +573,7 @@
     **Passage**: "I'm going to travel tomorrow. Next week I'm going to be in Italy. In two months I'm going to come back home."
     **Question**: Quando o narrador vai viajar?
     **Answer**: tomorrow
-    **Explanation**: O texto diz "I'm going to travel tomorrow".
+    **Explanation**: O texto diz "I'm / I am going to travel tomorrow".
 
 ### 2. Listening/Speaking (5 phrases)
 
@@ -692,12 +692,12 @@
 1. **multiple_choice** — "I'm _____ travel tomorrow."
    **Options**: going to / not going to / going
    **Answer**: going to
-   **Explanation**: Afirmativa simples: "I'm going to + base".
+   **Explanation**: Afirmativa simples: "I'm / I am going to + base".
 
 2. **multiple_choice** — "She _____ going to work."
    **Options**: isn't / aren't / doesn't
    **Answer**: isn't
-   **Explanation**: Negativa 3ª pessoa: "She isn't going to".
+   **Explanation**: Negativa 3ª pessoa: "She isn't / is not going to".
 
 3. **word_bank** — "_____ they going to come?"
    **Choices**: Are / Is / Do / Will
@@ -717,7 +717,7 @@
 6. **fill_gap** — "She _____ going to call tonight."
    **Hint**: Negativa "is not"
    **Answer**: isn't
-   **Explanation**: "She isn't going to call".
+   **Explanation**: "She isn't / is not going to call".
 
 7. **fill_gap** — "_____ you going to travel next year?"
    **Hint**: Pergunta com you
@@ -727,12 +727,12 @@
 8. **fix_error** — "I don't going to work."
    **Hint**: Going to não usa "don't"
    **Answer**: I'm not going to work.
-   **Explanation**: Negativa usa "to be + not + going to". Sem "don't".
+   **Explanation**: Negativa usa "to be + not + going to". Sem "don't / do not".
 
 9. **fix_error** — "She going to travel tomorrow."
    **Hint**: Falta verbo to be
    **Answer**: She's going to travel tomorrow.
-   **Explanation**: Going to precisa de "to be" antes. "She's going to" (she + is).
+   **Explanation**: Going to precisa de "to be" antes. "She's / She is going to" (she + is).
 
 10. **read_answer**
     **Passage**: "Tomorrow I'm going to work. I'm not going to eat out tonight — I'm tired. Next week I'm going to travel to Bahia."
@@ -879,7 +879,7 @@
 5. **fill_gap** — Em fala formal escrita, "I'm gonna" se escreve como "I'm _____ to".
    **Hint**: forma completa de "going"
    **Answer**: going
-   **Explanation**: "Gonna" só existe em fala informal ou textos que simulam fala (legendas, redes sociais). Em escrita formal, sempre "I'm going to". Reconhecer a forma falada e saber a forma escrita.
+   **Explanation**: "Gonna" só existe em fala informal ou textos que simulam fala (legendas, redes sociais). Em escrita formal, sempre "I'm / I am going to". Reconhecer a forma falada e saber a forma escrita.
 
 6. **fill_gap** — Em fala formal, "wanna" se escreve como "_____ to".
    **Hint**: forma completa de "wanna"
@@ -890,7 +890,7 @@
    **Hint**: tem que / preciso
    **Answer**: have got
 **Accepts**: got
-   **Explanation**: "Gotta" = "have got to" / "got to" (com sentido de obrigação). "I gotta go" = "I have to go" / "I've got to go". Reconhecer em fala rápida — usar forma completa em escrita.
+   **Explanation**: "Gotta" = "have got to" / "got to" (com sentido de obrigação). "I gotta go" = "I have to go" / "I've / I have got to go". Reconhecer em fala rápida — usar forma completa em escrita.
 
 8. **fix_error** — Email profissional: "I gonna send the report tomorrow."
    **Hint**: Em escrita formal, nunca "gonna"
@@ -909,7 +909,7 @@
     **Question**: O que "I gotta finish this email" significa em inglês formal?
     **Answer**: I have to finish this email
 **Accepts**: I've got to finish this email
-    **Explanation**: "I gotta finish this email" em escrita formal seria "I have to finish this email" ou "I've got to finish this email". "Gotta" carrega o sentido de obrigação. Reconhecer a redução em fala e saber a forma formal.
+    **Explanation**: "I gotta finish this email" em escrita formal seria "I have to finish this email" ou "I've / I have got to finish this email". "Gotta" carrega o sentido de obrigação. Reconhecer a redução em fala e saber a forma formal.
 
 ### 2. Listening/Speaking (5 phrases)
 

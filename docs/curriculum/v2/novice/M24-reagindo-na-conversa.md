@@ -40,7 +40,7 @@
 2. **multiple_choice** — "I just got a new job!" Reação positiva:
    **Options**: That's great! / Whatever. / I don't care. / OK.
    **Answer**: That's great!
-   **Explanation**: "That's great!" — reação positiva entusiástica para boas notícias. Variações: "That's awesome!" / "That's amazing!" / "How nice!". "OK" sozinho parece desinteresse.
+   **Explanation**: "That's / That is great!" — reação positiva entusiástica para boas notícias. Variações: "That's / That is awesome!" / "That's / That is amazing!" / "How nice!". "OK" sozinho parece desinteresse.
 
 3. **word_bank** — "_____ me more about it!"
    **Choices**: Tell / Say / Speak / Talk
@@ -77,12 +77,12 @@
 9. **fix_error** — "Is interesting that."
    **Hint**: Estrutura correta — "That's interesting"
    **Answer**: That's interesting!
-   **Explanation**: "That's interesting" — estrutura fixa em inglês: "That's + adjetivo". Não traduza literalmente do português "É interessante isso". Erro comum.
+   **Explanation**: "That's / That is interesting" — estrutura fixa em inglês: "That's / That is + adjetivo". Não traduza literalmente do português "É interessante isso". Erro comum.
 
 10. **multiple_choice** — "Friend: 'I went to Japan last month.' You: 'Really? That's amazing! Tell me more.' Friend: 'It was incredible. I climbed Mount Fuji.' You: 'No way!' — Which reply shows the LEAST interest in the friend's story?"
     **Options**: Really? / Tell me more. / OK. / That's amazing!
     **Answer**: OK.
-    **Explanation**: "OK." é uma resposta neutra que NÃO convida o falante a continuar. Já "Really?", "Tell me more" e "That's amazing!" sinalizam interesse genuíno e mantêm a conversa viva.
+    **Explanation**: "OK." é uma resposta neutra que NÃO convida o falante a continuar. Já "Really?", "Tell me more" e "That's / That is amazing!" sinalizam interesse genuíno e mantêm a conversa viva.
 
 ### 2. Listening/Speaking (5 phrases)
 
@@ -211,7 +211,7 @@
 3. **word_bank** — "_____ kidding!"
    **Choices**: You're / He's / It's / They're
    **Answer**: You're
-   **Explanation**: "You're kidding!" — chunk fixo de descrença. Significa "você tá brincando!". Sempre "you're" (segunda pessoa) neste chunk.
+   **Explanation**: "You're / You are kidding!" — chunk fixo de descrença. Significa "você tá brincando!". Sempre "you're / you are" (segunda pessoa) neste chunk.
 
 4. **word_bank** — "_____ out!" (reação de surpresa)
    **Choices**: Get / Move / Go / Take
@@ -226,7 +226,7 @@
 6. **fill_gap** — "_____ way!"
    **Hint**: negação
    **Answer**: No
-   **Explanation**: "No way!" — reação de descrença/surpresa. Pode ser positivo ("No way! You won!") ou negativo ("No way! That's terrible!"). Contexto define o tom.
+   **Explanation**: "No way!" — reação de descrença/surpresa. Pode ser positivo ("No way! You won!") ou negativo ("No way! That's / That is terrible!"). Contexto define o tom.
 
 7. **fill_gap** — "_____ you serious?"
    **Hint**: verbo to be
@@ -242,13 +242,13 @@
 9. **fix_error** — "I don't believe in this!"
    **Hint**: "I can't believe it!" (sem "in")
    **Answer**: I can't believe it!
-   **Explanation**: "Believe in" significa "acreditar em" no sentido de fé (believe in God, believe in yourself). Para descrença sobre um fato: "I can't believe it!" (sem "in"). Erro comum de tradução do "acreditar em".
+   **Explanation**: "Believe in" significa "acreditar em" no sentido de fé (believe in God, believe in yourself). Para descrença sobre um fato: "I can't / cannot believe it!" (sem "in"). Erro comum de tradução do "acreditar em".
 
 10. **read_answer**
     **Passage**: "Friend: 'I just got engaged!' You: 'No way! Seriously?' Friend: 'Yes! Last night, on the beach.' You: 'Get out! That's amazing!' Friend: 'I can't believe it either.'"
     **Question**: Como o narrador reage à notícia do noivado?
     **Answer**: with surprise — "No way! Seriously?" and "Get out! That's amazing!"
-    **Explanation**: O texto mostra várias reações de surpresa em sequência: "No way!", "Seriously?", "Get out!", "That's amazing!". Todas válidas para uma grande notícia.
+    **Explanation**: O texto mostra várias reações de surpresa em sequência: "No way!", "Seriously?", "Get out!", "That's / That is amazing!". Todas válidas para uma grande notícia.
 
 ### 2. Listening/Speaking (5 phrases)
 
@@ -393,7 +393,7 @@
    **Hint**: confirmar compreensão
    **Answer**: get
 **Accepts**: see
-   **Explanation**: "I get what you're saying" / "I see what you're saying" — ambos chunks naturais de "entendo o que você diz". "Get" e "see" funcionam aqui idiomaticamente.
+   **Explanation**: "I get what you're / you are saying" / "I see what you're / you are saying" — ambos chunks naturais de "entendo o que você diz". "Get" e "see" funcionam aqui idiomaticamente.
 
 7. **fill_gap** — "_____ you said is clear."
    **Hint**: pronome relativo
@@ -404,7 +404,7 @@
    **Hint**: "Understand" raramente usa -ing em inglês
    **Answer**: I understand you.
 **Accepts**: I get it.
-   **Explanation**: "Understand" é um verbo de estado mental (stative verb), normalmente NÃO usado em -ing. Sempre "I understand", nunca "I'm understanding". Erro comum de lusófonos.
+   **Explanation**: "Understand" é um verbo de estado mental (stative verb), normalmente NÃO usado em -ing. Sempre "I understand", nunca "I'm / I am understanding". Erro comum de lusófonos.
 
 9. **fix_error** — "Make sense for me."
    **Hint**: "Makes sense to me" (sem artigo, com "to")
@@ -539,7 +539,7 @@
 2. **multiple_choice** — "My grandmother passed away." Reação apropriada:
    **Options**: I'm so sorry. / OK. / Cool. / Whatever.
    **Answer**: I'm so sorry.
-   **Explanation**: "I'm so sorry" — condolências padrão. Chunk fixo para reagir a perda ou notícia muito ruim. Mostra empatia.
+   **Explanation**: "I'm / I am so sorry" — condolências padrão. Chunk fixo para reagir a perda ou notícia muito ruim. Mostra empatia.
 
 3. **word_bank** — "_____ no, that's terrible!"
    **Choices**: Oh / Ah / Eh / Ow
@@ -549,18 +549,18 @@
 4. **word_bank** — "That's a real _____."
    **Choices**: bummer / boring / OK / fine
    **Answer**: bummer
-   **Explanation**: "That's a bummer" — chunk fixo para "isso é uma chatice / é decepcionante". Informal. Reagir a coisas pequenas decepcionantes.
+   **Explanation**: "That's / That is a bummer" — chunk fixo para "isso é uma chatice / é decepcionante". Informal. Reagir a coisas pequenas decepcionantes.
 
 5. **fill_gap** — "I'm sorry to _____ that."
    **Hint**: verbo "ouvir"
    **Answer**: hear
-   **Explanation**: "I'm sorry to hear that" — chunk fixo para reagir a más notícias. "Hear" aqui não é literal — significa "saber". Padrão universal.
+   **Explanation**: "I'm / I am sorry to hear that" — chunk fixo para reagir a más notícias. "Hear" aqui não é literal — significa "saber". Padrão universal.
 
 6. **fill_gap** — "That _____ awful."
    **Hint**: verbo to be
    **Answer**: is
 **Accepts**: 's
-   **Explanation**: "That is awful" / "That's awful" — reação forte a algo ruim. "Awful" significa "horrível, terrível".
+   **Explanation**: "That is awful" / "That's / That is awful" — reação forte a algo ruim. "Awful" significa "horrível, terrível".
 
 7. **fill_gap** — "_____ a shame."
    **Hint**: artigo + sentimento
@@ -571,20 +571,20 @@
 8. **multiple_choice** — Amigo diz "My grandfather passed away yesterday." Qual reação soa mais natural em conversa?
    **Options**: How sad! / That's so sad. / Sad. / Bad news.
    **Answer**: That's so sad.
-   **Explanation**: "How sad!" funciona mas soa formal/dramatizado. Em conversa real, "That's so sad" é o padrão — adjetivo + "that's". "Sad" sozinho ou "Bad news" soam frios.
+   **Explanation**: "How sad!" funciona mas soa formal/dramatizado. Em conversa real, "That's / That is so sad" é o padrão — adjetivo + "that's / that is". "Sad" sozinho ou "Bad news" soam frios.
 
 9. **multiple_choice** — Amigo diz "I lost my wallet." Qual reação soa mais natural?
    **Options**: Pity! / What a pity! / That's a shame. / Disgrace.
    **Answer**: That's a shame.
    **Accepts**: What a pity!
-   **Explanation**: "Pity!" sozinho não funciona — vira gritado/incompleto. "That's a shame" é a reação mais usada em inglês americano cotidiano. "What a pity!" também serve, um pouco mais formal/britânico.
+   **Explanation**: "Pity!" sozinho não funciona — vira gritado/incompleto. "That's / That is a shame" é a reação mais usada em inglês americano cotidiano. "What a pity!" também serve, um pouco mais formal/britânico.
 
 10. **read_answer**
     **Passage**: "Friend: 'I didn't get the job.' You: 'Oh no, I'm so sorry to hear that.' Friend: 'It's okay. I'll find another one.' You: 'That's a bummer, but I'm sure you will.' Friend: 'Thanks for being supportive.'"
     **Question**: Como o narrador demonstra empatia? (escreva uma frase que o narrador usa)
     **Answer**: I'm so sorry to hear that
     **Accepts**: Oh no I'm so sorry / sorry to hear that / That's a bummer / I'm sure you will
-    **Explanation**: O texto mostra empatia através de reações como "Oh no", "I'm so sorry", "That's a bummer", combinadas com apoio "I'm sure you will".
+    **Explanation**: O texto mostra empatia através de reações como "Oh no", "I'm / I am so sorry", "That's / That is a bummer", combinadas com apoio "I'm / I am sure you will".
 
 ### 2. Listening/Speaking (5 phrases)
 

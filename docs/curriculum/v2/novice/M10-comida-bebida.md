@@ -205,7 +205,7 @@
 2. **multiple_choice** — "We don't have _____ milk."
    **Options**: any / some / much
    **Answer**: any
-   **Explanation**: Negativa → "any". "We don't have any milk" = "Não temos leite (nenhum)". Any pra negativo.
+   **Explanation**: Negativa → "any". "We don't / do not have any milk" = "Não temos leite (nenhum)". Any pra negativo.
 
 3. **word_bank** — "Is there _____ juice?"
    **Choices**: any / some / many / one
@@ -225,7 +225,7 @@
 6. **fill_gap** — "I don't have _____ time today."
    **Hint**: Negativa
    **Answer**: any
-   **Explanation**: "I don't have any time" — negativa usa any (= nenhum/nenhuma).
+   **Explanation**: "I don't / do not have any time" — negativa usa any (= nenhum/nenhuma).
 
 7. **fill_gap** — "Do you have _____ questions?"
    **Hint**: Pergunta
@@ -240,13 +240,13 @@
 9. **fix_error** — "We don't have some bread."
    **Hint**: Negativa pede "any"
    **Answer**: We don't have any bread.
-   **Explanation**: Negativa usa ANY, não some. "We don't have any bread".
+   **Explanation**: Negativa usa ANY, não some. "We don't / do not have any bread".
 
 10. **read_answer**
     **Passage**: "I have some bread but I don't have any milk. Is there any cheese? Yes, there's some cheese in the fridge."
     **Question**: O que o narrador NÃO tem?
     **Answer**: milk
-    **Explanation**: O texto diz "I don't have any milk".
+    **Explanation**: O texto diz "I don't / do not have any milk".
 
 ### 2. Listening/Speaking (5 phrases)
 
@@ -530,7 +530,7 @@
 1. **multiple_choice** — "_____ a coffee, please."
    **Options**: I'd like / I want / Give me
    **Answer**: I'd like
-   **Explanation**: "I'd like" (I would like) é o chunk educado pra pedir. "I want" é direto demais; "Give me" é rude.
+   **Explanation**: "I'd / I would like" (I would like) é o chunk educado pra pedir. "I want" é direto demais; "Give me" é rude.
 
 2. **multiple_choice** — "_____ I have the menu?"
    **Options**: Can / Do / Are
@@ -540,7 +540,7 @@
 3. **word_bank** — "I'd like _____ pizza, please."
    **Choices**: a / the / some / one
    **Answer**: a
-   **Explanation**: "A pizza" — pedido singular contável. "I'd like a pizza".
+   **Explanation**: "A pizza" — pedido singular contável. "I'd / I would like a pizza".
 
 4. **word_bank** — "_____ the bill, please."
    **Choices**: Can I have / I want / Bring me / Give me
@@ -550,7 +550,7 @@
 5. **fill_gap** — "I'd _____ a sandwich and a juice."
    **Hint**: Forma curta de "would"
    **Answer**: like
-   **Explanation**: "I'd like" = "I would like" (eu gostaria). Contração obrigatória em fala.
+   **Explanation**: "I'd / I would like" = "I would like" (eu gostaria). Contração obrigatória em fala.
 
 6. **fill_gap** — "Could I _____ the menu, please?"
    **Hint**: Verbo "ter / receber" no pedido
@@ -565,7 +565,7 @@
 8. **fix_error** — "I want one coffee."
    **Hint**: Mais educado em restaurante
    **Answer**: I'd like a coffee.
-   **Explanation**: "I want" é direto demais em contextos sociais/comerciais. "I'd like a coffee" é o padrão educado. Também "a coffee" (não "one coffee").
+   **Explanation**: "I want" é direto demais em contextos sociais/comerciais. "I'd / I would like a coffee" é o padrão educado. Também "a coffee" (não "one coffee").
 
 9. **fix_error** — "Give me the menu."
    **Hint**: Forma educada de pedir

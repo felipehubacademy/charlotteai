@@ -63,7 +63,7 @@
             "at"
           ],
           "answer": "to",
-          "explanation": "\"I'd like to + verbo\" — chunk fixo para pedidos educados. \"I'd like to check in\" — pedido educado padrão em aeroportos e hotéis."
+          "explanation": "\"I'd / I would like to + verbo\" — chunk fixo para pedidos educados. \"I'd / I would like to check in\" — pedido educado padrão em aeroportos e hotéis."
         },
         {
           "type": "word_bank",
@@ -75,7 +75,7 @@
             "does"
           ],
           "answer": "is",
-          "explanation": "Memorize \"My flight is delayed\" como CHUNK FIXO de aeroporto — não tente analisar a estrutura. Como \"I'm tired\" ou \"I'm ready\": é \"to be\" + adjetivo. \"Delayed\" funciona como adjetivo aqui (atrasado)."
+          "explanation": "Memorize \"My flight is delayed\" como CHUNK FIXO de aeroporto — não tente analisar a estrutura. Como \"I'm / I am tired\" ou \"I'm / I am ready\": é \"to be\" + adjetivo. \"Delayed\" funciona como adjetivo aqui (atrasado)."
         },
         {
           "type": "word_bank",
@@ -111,7 +111,7 @@
           "sentence": "I'm here _____ business.",
           "hint": "preposição para propósito",
           "answer": "for",
-          "explanation": "\"I'm here for + propósito\" — chunk fixo na imigração. \"I'm here for business / vacation / a conference\". Preposição \"for\" é obrigatória."
+          "explanation": "\"I'm / I am here for + propósito\" — chunk fixo na imigração. \"I'm here for business / vacation / a conference\". Preposição \"for\" é obrigatória."
         },
         {
           "type": "fix_error",
@@ -278,7 +278,7 @@
             "checked"
           ],
           "answer": "check",
-          "explanation": "Após \"I'd like to\", sempre verbo no infinitivo sem \"to\" extra. \"Check in\" — phrasal verb padrão de hotel."
+          "explanation": "Após \"I'd / I would like to\", sempre verbo no infinitivo sem \"to\" extra. \"Check in\" — phrasal verb padrão de hotel."
         },
         {
           "type": "word_bank",
@@ -336,7 +336,7 @@
           "accepts": [
             "I'd like a room for two people."
           ],
-          "explanation": "\"People\" é o plural natural de \"person\" em inglês moderno. \"Persons\" só aparece em contextos legais formais. Melhor ainda: trocar \"I want\" por \"I'd like\" (mais educado)."
+          "explanation": "\"People\" é o plural natural de \"person\" em inglês moderno. \"Persons\" só aparece em contextos legais formais. Melhor ainda: trocar \"I want\" por \"I'd / I would like\" (mais educado)."
         },
         {
           "type": "fix_error",
@@ -346,7 +346,7 @@
           "accepts": [
             "The shower isn't working"
           ],
-          "explanation": "Inglês exige verbo \"to be\" em frases negativas com -ing. \"Is not working\" ou contração \"isn't working\". Sem \"is\", a frase fica incompleta."
+          "explanation": "Inglês exige verbo \"to be\" em frases negativas com -ing. \"Is not working\" ou contração \"isn't / is not working\". Sem \"is\", a frase fica incompleta."
         },
         {
           "type": "read_answer",
@@ -356,7 +356,7 @@
           "accepts": [
             "a king-size bed"
           ],
-          "explanation": "O texto diz \"I'd like a non-smoking room with a king-size bed\". Pratica identificação de detalhes específicos em pedidos de hotel."
+          "explanation": "O texto diz \"I'd / I would like a non-smoking room with a king-size bed\". Pratica identificação de detalhes específicos em pedidos de hotel."
         }
       ],
       "listening_speaking": [
@@ -699,7 +699,7 @@
             "felt"
           ],
           "answer": "feel",
-          "explanation": "\"I don't feel + adjetivo\" — chunk fixo para reportar mal-estar. Após \"don't\", sempre verbo no infinitivo."
+          "explanation": "\"I don't / do not feel + adjetivo\" — chunk fixo para reportar mal-estar. Após \"don't / do not\", sempre verbo no infinitivo."
         },
         {
           "type": "multiple_choice",
@@ -972,7 +972,7 @@
           "sentence": "I'll _____ you back later.",
           "hint": "phrasal verb de retorno",
           "answer": "call",
-          "explanation": "\"Call back\" — phrasal verb para \"ligar de volta\". \"I'll call you back\" — promessa fixa ao telefone."
+          "explanation": "\"Call back\" — phrasal verb para \"ligar de volta\". \"I'll / I will call you back\" — promessa fixa ao telefone."
         },
         {
           "type": "fill_gap",
@@ -1006,7 +1006,7 @@
           "accepts": [
             "at 3 PM tomorrow"
           ],
-          "explanation": "O texto diz \"I'll call him back tomorrow at 3 PM\". Pratica leitura de detalhes em recado telefônico."
+          "explanation": "O texto diz \"I'll / I will call him back tomorrow at 3 PM\". Pratica leitura de detalhes em recado telefônico."
         }
       ],
       "listening_speaking": [

@@ -200,54 +200,54 @@
 1. **multiple_choice** — "I _____ swim well."
    **Options**: can't / don't can / no can
    **Answer**: can't
-   **Explanation**: Negativa de "can" é "can't" (cannot). "I can't swim" = "Eu não sei nadar". Pronúncia: /kænt/ (americano) ou /kɑːnt/ (britânico).
+   **Explanation**: Negativa de "can" é "can't / cannot" (cannot). "I can't / cannot swim" = "Eu não sei nadar". Pronúncia: /kænt/ (americano) ou /kɑːnt/ (britânico).
 
 2. **multiple_choice** — "She _____ drive a car."
    **Options**: can't / doesn't can / no can
    **Answer**: can't
-   **Explanation**: "She can't drive" — negativa de can é can't pra todas as pessoas. Sem -s, sem auxiliar.
+   **Explanation**: "She can't / cannot drive" — negativa de can é can't pra todas as pessoas. Sem -s, sem auxiliar.
 
 3. **word_bank** — "We _____ speak Japanese."
    **Choices**: can't / don't can / aren't can / no can
    **Answer**: can't
-   **Explanation**: "We can't speak" — can't é a única forma negativa de can.
+   **Explanation**: "We can't / cannot speak" — can't é a única forma negativa de can.
 
 4. **word_bank** — "He _____ cook at all."
    **Choices**: can't / doesn't can / cannot to / no can
    **Answer**: can't
-   **Explanation**: "He can't cook at all" = "Ele não sabe cozinhar nada". "At all" intensifica a negação.
+   **Explanation**: "He can't / cannot cook at all" = "Ele não sabe cozinhar nada". "At all" intensifica a negação.
 
 5. **fill_gap** — "I _____ ride a bike."
    **Hint**: Negativa de can
    **Answer**: can't
-   **Explanation**: "I can't ride a bike" = "Não sei andar de bicicleta". Forma contraída de "cannot".
+   **Explanation**: "I can't / cannot ride a bike" = "Não sei andar de bicicleta". Forma contraída de "cannot".
 
 6. **fill_gap** — "My father _____ sing — he's terrible at it."
    **Hint**: Negativa de can (3ª pessoa também usa can't)
    **Answer**: can't
-   **Explanation**: "My father can't sing" — mesmo na 3ª pessoa singular, can't.
+   **Explanation**: "My father can't / cannot sing" — mesmo na 3ª pessoa singular, can't.
 
 7. **fill_gap** — "Sorry, I _____ help you right now."
    **Hint**: Negativa polida com can
    **Answer**: can't
-   **Explanation**: "I can't help" — usado pra recusar polidamente. Comum em contextos sociais.
+   **Explanation**: "I can't / cannot help" — usado pra recusar polidamente. Comum em contextos sociais.
 
 8. **fix_error** — "She doesn't can drive."
    **Hint**: Negativa de can não usa doesn't
    **Answer**: She can't drive.
-   **Explanation**: Modais formam negativa direta com "not" (contraído: -n't). NÃO usa doesn't/don't. "She can't drive", nunca "She doesn't can".
+   **Explanation**: Modais formam negativa direta com "not" (contraído: -n't). NÃO usa doesn't/don't. "She can't / cannot drive", nunca "She doesn't / does not can".
 
 9. **fix_error** — "I no can swim."
    **Hint**: Forma da negativa em inglês
    **Answer**: I can't swim.
-   **Explanation**: "No can" é influência do português. A negativa correta é "can't" (cannot). Forma fixa.
+   **Explanation**: "No can" é influência do português. A negativa correta é "can't / cannot" (cannot). Forma fixa.
 
 10. **read_answer**
     **Passage**: "I can swim but I can't dive. My friend can speak French but she can't write it well. We can both ride a bike."
     **Question**: O que o amigo NÃO sabe fazer bem?
     **Answer**: write
     **Accepts**: write French
-    **Explanation**: O texto diz "she can't write it well".
+    **Explanation**: O texto diz "she can't / cannot write it well".
 
 ### 2. Listening/Speaking (5 phrases)
 
@@ -698,7 +698,7 @@
 1. **multiple_choice** — "I can swim but I _____ dive."
    **Options**: can't / can / don't / not
    **Answer**: can't
-   **Explanation**: Contraste positiva + negativa. "I can swim but I can't dive" = "Sei nadar mas não sei mergulhar". A negativa de "can" é "can't".
+   **Explanation**: Contraste positiva + negativa. "I can swim but I can't / cannot dive" = "Sei nadar mas não sei mergulhar". A negativa de "can" é "can't / cannot".
 
 2. **multiple_choice** — "She _____ speak Italian."
    **Options**: can / cans / can to
@@ -718,7 +718,7 @@
 5. **fill_gap** — "I _____ drive yet."
    **Hint**: Negativa de can
    **Answer**: can't
-   **Explanation**: "I can't drive yet" = "Ainda não sei dirigir". "Yet" indica que vai aprender no futuro.
+   **Explanation**: "I can't / cannot drive yet" = "Ainda não sei dirigir". "Yet" indica que vai aprender no futuro.
 
 6. **fill_gap** — "_____ your sister speak French?"
    **Hint**: Pergunta sobre habilidade

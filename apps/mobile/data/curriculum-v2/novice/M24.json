@@ -54,7 +54,7 @@
             "OK."
           ],
           "answer": "That's great!",
-          "explanation": "\"That's great!\" — reação positiva entusiástica para boas notícias. Variações: \"That's awesome!\" / \"That's amazing!\" / \"How nice!\". \"OK\" sozinho parece desinteresse."
+          "explanation": "\"That's / That is great!\" — reação positiva entusiástica para boas notícias. Variações: \"That's / That is awesome!\" / \"That's / That is amazing!\" / \"How nice!\". \"OK\" sozinho parece desinteresse."
         },
         {
           "type": "word_bank",
@@ -127,7 +127,7 @@
           "sentence": "Is interesting that.",
           "hint": "Estrutura correta — \"That's interesting\"",
           "answer": "That's interesting!",
-          "explanation": "\"That's interesting\" — estrutura fixa em inglês: \"That's + adjetivo\". Não traduza literalmente do português \"É interessante isso\". Erro comum."
+          "explanation": "\"That's / That is interesting\" — estrutura fixa em inglês: \"That's / That is + adjetivo\". Não traduza literalmente do português \"É interessante isso\". Erro comum."
         },
         {
           "type": "multiple_choice",
@@ -139,7 +139,7 @@
             "That's amazing!"
           ],
           "answer": "OK.",
-          "explanation": "\"OK.\" é uma resposta neutra que NÃO convida o falante a continuar. Já \"Really?\", \"Tell me more\" e \"That's amazing!\" sinalizam interesse genuíno e mantêm a conversa viva."
+          "explanation": "\"OK.\" é uma resposta neutra que NÃO convida o falante a continuar. Já \"Really?\", \"Tell me more\" e \"That's / That is amazing!\" sinalizam interesse genuíno e mantêm a conversa viva."
         }
       ],
       "listening_speaking": [
@@ -291,7 +291,7 @@
             "They're"
           ],
           "answer": "You're",
-          "explanation": "\"You're kidding!\" — chunk fixo de descrença. Significa \"você tá brincando!\". Sempre \"you're\" (segunda pessoa) neste chunk."
+          "explanation": "\"You're / You are kidding!\" — chunk fixo de descrença. Significa \"você tá brincando!\". Sempre \"you're / you are\" (segunda pessoa) neste chunk."
         },
         {
           "type": "word_bank",
@@ -317,7 +317,7 @@
           "sentence": "_____ way!",
           "hint": "negação",
           "answer": "No",
-          "explanation": "\"No way!\" — reação de descrença/surpresa. Pode ser positivo (\"No way! You won!\") ou negativo (\"No way! That's terrible!\"). Contexto define o tom."
+          "explanation": "\"No way!\" — reação de descrença/surpresa. Pode ser positivo (\"No way! You won!\") ou negativo (\"No way! That's / That is terrible!\"). Contexto define o tom."
         },
         {
           "type": "fill_gap",
@@ -342,14 +342,14 @@
           "sentence": "I don't believe in this!",
           "hint": "\"I can't believe it!\" (sem \"in\")",
           "answer": "I can't believe it!",
-          "explanation": "\"Believe in\" significa \"acreditar em\" no sentido de fé (believe in God, believe in yourself). Para descrença sobre um fato: \"I can't believe it!\" (sem \"in\"). Erro comum de tradução do \"acreditar em\"."
+          "explanation": "\"Believe in\" significa \"acreditar em\" no sentido de fé (believe in God, believe in yourself). Para descrença sobre um fato: \"I can't / cannot believe it!\" (sem \"in\"). Erro comum de tradução do \"acreditar em\"."
         },
         {
           "type": "read_answer",
           "passage": "Friend: 'I just got engaged!' You: 'No way! Seriously?' Friend: 'Yes! Last night, on the beach.' You: 'Get out! That's amazing!' Friend: 'I can't believe it either.'",
           "question": "Como o narrador reage à notícia do noivado?",
           "answer": "with surprise — \"No way! Seriously?\" and \"Get out! That's amazing!\"",
-          "explanation": "O texto mostra várias reações de surpresa em sequência: \"No way!\", \"Seriously?\", \"Get out!\", \"That's amazing!\". Todas válidas para uma grande notícia."
+          "explanation": "O texto mostra várias reações de surpresa em sequência: \"No way!\", \"Seriously?\", \"Get out!\", \"That's / That is amazing!\". Todas válidas para uma grande notícia."
         }
       ],
       "listening_speaking": [
@@ -530,7 +530,7 @@
           "accepts": [
             "see"
           ],
-          "explanation": "\"I get what you're saying\" / \"I see what you're saying\" — ambos chunks naturais de \"entendo o que você diz\". \"Get\" e \"see\" funcionam aqui idiomaticamente."
+          "explanation": "\"I get what you're / you are saying\" / \"I see what you're / you are saying\" — ambos chunks naturais de \"entendo o que você diz\". \"Get\" e \"see\" funcionam aqui idiomaticamente."
         },
         {
           "type": "fill_gap",
@@ -547,7 +547,7 @@
           "accepts": [
             "I get it."
           ],
-          "explanation": "\"Understand\" é um verbo de estado mental (stative verb), normalmente NÃO usado em -ing. Sempre \"I understand\", nunca \"I'm understanding\". Erro comum de lusófonos."
+          "explanation": "\"Understand\" é um verbo de estado mental (stative verb), normalmente NÃO usado em -ing. Sempre \"I understand\", nunca \"I'm / I am understanding\". Erro comum de lusófonos."
         },
         {
           "type": "fix_error",
@@ -701,7 +701,7 @@
             "Whatever."
           ],
           "answer": "I'm so sorry.",
-          "explanation": "\"I'm so sorry\" — condolências padrão. Chunk fixo para reagir a perda ou notícia muito ruim. Mostra empatia."
+          "explanation": "\"I'm / I am so sorry\" — condolências padrão. Chunk fixo para reagir a perda ou notícia muito ruim. Mostra empatia."
         },
         {
           "type": "word_bank",
@@ -725,14 +725,14 @@
             "fine"
           ],
           "answer": "bummer",
-          "explanation": "\"That's a bummer\" — chunk fixo para \"isso é uma chatice / é decepcionante\". Informal. Reagir a coisas pequenas decepcionantes."
+          "explanation": "\"That's / That is a bummer\" — chunk fixo para \"isso é uma chatice / é decepcionante\". Informal. Reagir a coisas pequenas decepcionantes."
         },
         {
           "type": "fill_gap",
           "sentence": "I'm sorry to _____ that.",
           "hint": "verbo \"ouvir\"",
           "answer": "hear",
-          "explanation": "\"I'm sorry to hear that\" — chunk fixo para reagir a más notícias. \"Hear\" aqui não é literal — significa \"saber\". Padrão universal."
+          "explanation": "\"I'm / I am sorry to hear that\" — chunk fixo para reagir a más notícias. \"Hear\" aqui não é literal — significa \"saber\". Padrão universal."
         },
         {
           "type": "fill_gap",
@@ -742,7 +742,7 @@
           "accepts": [
             "'s"
           ],
-          "explanation": "\"That is awful\" / \"That's awful\" — reação forte a algo ruim. \"Awful\" significa \"horrível, terrível\"."
+          "explanation": "\"That is awful\" / \"That's / That is awful\" — reação forte a algo ruim. \"Awful\" significa \"horrível, terrível\"."
         },
         {
           "type": "fill_gap",
@@ -764,7 +764,7 @@
             "Bad news."
           ],
           "answer": "That's so sad.",
-          "explanation": "\"How sad!\" funciona mas soa formal/dramatizado. Em conversa real, \"That's so sad\" é o padrão — adjetivo + \"that's\". \"Sad\" sozinho ou \"Bad news\" soam frios."
+          "explanation": "\"How sad!\" funciona mas soa formal/dramatizado. Em conversa real, \"That's / That is so sad\" é o padrão — adjetivo + \"that's / that is\". \"Sad\" sozinho ou \"Bad news\" soam frios."
         },
         {
           "type": "multiple_choice",
@@ -779,7 +779,7 @@
           "accepts": [
             "What a pity!"
           ],
-          "explanation": "\"Pity!\" sozinho não funciona — vira gritado/incompleto. \"That's a shame\" é a reação mais usada em inglês americano cotidiano. \"What a pity!\" também serve, um pouco mais formal/britânico."
+          "explanation": "\"Pity!\" sozinho não funciona — vira gritado/incompleto. \"That's / That is a shame\" é a reação mais usada em inglês americano cotidiano. \"What a pity!\" também serve, um pouco mais formal/britânico."
         },
         {
           "type": "read_answer",
@@ -792,7 +792,7 @@
             "That's a bummer",
             "I'm sure you will"
           ],
-          "explanation": "O texto mostra empatia através de reações como \"Oh no\", \"I'm so sorry\", \"That's a bummer\", combinadas com apoio \"I'm sure you will\"."
+          "explanation": "O texto mostra empatia através de reações como \"Oh no\", \"I'm / I am so sorry\", \"That's / That is a bummer\", combinadas com apoio \"I'm / I am sure you will\"."
         }
       ],
       "listening_speaking": [

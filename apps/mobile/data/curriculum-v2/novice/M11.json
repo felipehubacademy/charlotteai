@@ -39,7 +39,7 @@
             "I have"
           ],
           "answer": "I'd like",
-          "explanation": "\"I'd like to + verb\" é o chunk educado pra falar do que quer. \"I want\" é direto demais em loja."
+          "explanation": "\"I'd / I would like to + verb\" é o chunk educado pra falar do que quer. \"I want\" é direto demais em loja."
         },
         {
           "type": "multiple_choice",
@@ -50,7 +50,7 @@
             "to"
           ],
           "answer": "for",
-          "explanation": "\"Look for\" = procurar. Chunk fixo: \"I'm looking FOR + objeto\". Não confundir com \"look at\" (olhar pra)."
+          "explanation": "\"Look for\" = procurar. Chunk fixo: \"I'm / I am looking FOR + objeto\". Não confundir com \"look at\" (olhar pra)."
         },
         {
           "type": "word_bank",
@@ -95,14 +95,14 @@
           "sentence": "I'd like _____ buy two shirts.",
           "hint": "Particula entre \"like\" e o verbo",
           "answer": "to",
-          "explanation": "\"I'd like TO + verbo base\": \"I'd like to buy\". Após \"like\", \"to + base\"."
+          "explanation": "\"I'd / I would like TO + verbo base\": \"I'd / I would like to buy\". Após \"like\", \"to + base\"."
         },
         {
           "type": "fix_error",
           "sentence": "I want one shirt black.",
           "hint": "Ordem do adjetivo + educado",
           "answer": "I'd like a black shirt.",
-          "explanation": "Adjetivo VEM ANTES do substantivo: \"a BLACK shirt\" (não \"a shirt black\"). E \"I'd like\" é mais educado que \"I want\"."
+          "explanation": "Adjetivo VEM ANTES do substantivo: \"a BLACK shirt\" (não \"a shirt black\"). E \"I'd / I would like\" é mais educado que \"I want\"."
         },
         {
           "type": "fix_error",
@@ -116,7 +116,7 @@
           "passage": "I'd like to buy a black jacket. I'm looking for size M. Excuse me, where is the cashier? It's next to the door.",
           "question": "Onde fica o caixa?",
           "answer": "next to the door",
-          "explanation": "O texto diz \"It's next to the door\"."
+          "explanation": "O texto diz \"It's / It is next to the door\"."
         }
       ],
       "listening_speaking": [
@@ -677,7 +677,7 @@
             "for"
           ],
           "answer": "on",
-          "explanation": "\"On sale\" = em promoção. Chunk fixo: \"It's on sale\"."
+          "explanation": "\"On sale\" = em promoção. Chunk fixo: \"It's / It is on sale\"."
         },
         {
           "type": "word_bank",
@@ -856,7 +856,7 @@
             "I do"
           ],
           "answer": "I'd like",
-          "explanation": "\"I'd like to buy\" — chunk educado pra anunciar intenção de compra."
+          "explanation": "\"I'd / I would like to buy\" — chunk educado pra anunciar intenção de compra."
         },
         {
           "type": "multiple_choice",
@@ -899,7 +899,7 @@
           "sentence": "I'd like to _____ this dress on, please.",
           "hint": "Experimentar roupa",
           "answer": "try",
-          "explanation": "\"Try on\" = experimentar. \"I'd like to try this dress on\" ou \"try on this dress\"."
+          "explanation": "\"Try on\" = experimentar. \"I'd / I would like to try this dress on\" ou \"try on this dress\"."
         },
         {
           "type": "fill_gap",
@@ -920,7 +920,7 @@
           "sentence": "I want this shoes.",
           "hint": "Demonstrativo + plural",
           "answer": "I'd like these shoes.",
-          "explanation": "\"Shoes\" plural exige \"these\" (perto) ou \"those\" (longe). E \"I'd like\" mais educado."
+          "explanation": "\"Shoes\" plural exige \"these\" (perto) ou \"those\" (longe). E \"I'd / I would like\" mais educado."
         },
         {
           "type": "fix_error",

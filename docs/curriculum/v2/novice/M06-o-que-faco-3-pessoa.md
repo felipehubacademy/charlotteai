@@ -204,53 +204,53 @@
 1. **multiple_choice** — "I _____ work on Sundays."
    **Options**: don't / doesn't / am not
    **Answer**: don't
-   **Explanation**: Com I/you/we/they usa "don't" + verbo base: "I don't work". "Doesn't" é só pra he/she/it.
+   **Explanation**: Com I/you/we/they usa "don't / do not" + verbo base: "I don't / do not work". "Doesn't / Does not" é só pra he/she/it.
 
 2. **multiple_choice** — "She _____ eat meat."
    **Options**: doesn't / don't / not
    **Answer**: doesn't
-   **Explanation**: Com he/she/it usa "doesn't" + verbo base: "She doesn't eat". Atenção: depois de "doesn't" o verbo NÃO leva -s.
+   **Explanation**: Com he/she/it usa "doesn't / does not" + verbo base: "She doesn't / does not eat". Atenção: depois de "doesn't / does not" o verbo NÃO leva -s.
 
 3. **word_bank** — "We _____ live in Brazil."
    **Choices**: don't / doesn't / not / no
    **Answer**: don't
-   **Explanation**: "We" é plural → "don't". "We don't live" — verbo na forma base após don't.
+   **Explanation**: "We" é plural → "don't / do not". "We don't / do not live" — verbo na forma base após don't.
 
 4. **word_bank** — "He _____ drink coffee."
    **Choices**: doesn't / don't / no / not
    **Answer**: doesn't
-   **Explanation**: "He" → "doesn't". Após "doesn't", verbo base: "doesn't drink", não "doesn't drinks".
+   **Explanation**: "He" → "doesn't / does not". Após "doesn't / does not", verbo base: "doesn't / does not drink", não "doesn't / does not drinks".
 
 5. **fill_gap** — "I _____ study French."
    **Hint**: Negativo de "I"
    **Answer**: don't
-   **Explanation**: "I don't study" — eu não estudo. "Don't" + forma base do verbo.
+   **Explanation**: "I don't / do not study" — eu não estudo. "Don't / Do not" + forma base do verbo.
 
 6. **fill_gap** — "My brother _____ work on weekends."
    **Hint**: Negativo para 3ª pessoa singular
    **Answer**: doesn't
-   **Explanation**: "My brother" = he → "doesn't work". Note: verbo base após "doesn't" (não "doesn't works").
+   **Explanation**: "My brother" = he → "doesn't / does not work". Note: verbo base após "doesn't / does not" (não "doesn't / does not works").
 
 7. **fill_gap** — "They _____ watch TV at night."
    **Hint**: Negativo para plural
    **Answer**: don't
-   **Explanation**: "They" plural → "don't watch". Sempre forma base após "don't".
+   **Explanation**: "They" plural → "don't / do not watch". Sempre forma base após "don't / do not".
 
 8. **fix_error** — "She don't like coffee."
    **Hint**: She é 3ª pessoa singular
    **Answer**: She doesn't like coffee.
-   **Explanation**: She → "doesn't" (não "don't"). Apenas I/you/we/they usam "don't". He/she/it sempre "doesn't".
+   **Explanation**: She → "doesn't / does not" (não "don't / do not"). Apenas I/you/we/they usam "don't / do not". He/she/it sempre "doesn't / does not".
 
 9. **fix_error** — "He doesn't works late."
    **Hint**: Após "doesn't" o verbo fica base
    **Answer**: He doesn't work late.
-   **Explanation**: "Doesn't" já carrega o -s da 3ª pessoa. O verbo principal volta pra forma base: "doesn't work" (não "doesn't works"). Erro super comum.
+   **Explanation**: "Doesn't / Does not" já carrega o -s da 3ª pessoa. O verbo principal volta pra forma base: "doesn't / does not work" (não "doesn't / does not works"). Erro super comum.
 
 10. **read_answer**
     **Passage**: "I don't drink coffee. My brother doesn't eat meat. We don't work on Sundays. Ana doesn't study at night."
     **Question**: O que Ana não faz?
     **Answer**: study at night
-    **Explanation**: O texto diz "Ana doesn't study at night".
+    **Explanation**: O texto diz "Ana doesn't / does not study at night".
 
 ### 2. Listening/Speaking (5 phrases)
 
@@ -704,7 +704,7 @@
 2. **multiple_choice** — "He _____ live in Rio."
    **Options**: doesn't / don't / not
    **Answer**: doesn't
-   **Explanation**: "He" 3ª pessoa → "doesn't". Negativa: "He doesn't live".
+   **Explanation**: "He" 3ª pessoa → "doesn't / does not". Negativa: "He doesn't / does not live".
 
 3. **word_bank** — "_____ your brother work in a bank?"
    **Choices**: Does / Do / Is / Has
@@ -724,7 +724,7 @@
 6. **fill_gap** — "She _____ work on weekends. She rests."
    **Hint**: Negativa 3ª pessoa singular
    **Answer**: doesn't
-   **Explanation**: "She doesn't work" — 3ª pessoa negativa usa "doesn't" + base.
+   **Explanation**: "She doesn't / does not work" — 3ª pessoa negativa usa "doesn't / does not" + base.
 
 7. **fill_gap** — "_____ Lucas study at home?"
    **Hint**: Pergunta para he
@@ -734,7 +734,7 @@
 8. **fix_error** — "She don't likes coffee."
    **Hint**: Dois erros: auxiliar e verbo
    **Answer**: She doesn't like coffee.
-   **Explanation**: She → "doesn't" (não "don't"). Após "doesn't", verbo base "like" (não "likes"). Dois erros em uma frase.
+   **Explanation**: She → "doesn't / does not" (não "don't / do not"). Após "doesn't / does not", verbo base "like" (não "likes"). Dois erros em uma frase.
 
 9. **fix_error** — "Where she works?"
    **Hint**: WH-question precisa de auxiliar
@@ -745,7 +745,7 @@
     **Passage**: "Lucas is my friend. He works in a school. He doesn't like coffee — he drinks tea. He goes to the gym every morning."
     **Question**: O que Lucas bebe?
     **Answer**: tea
-    **Explanation**: O texto diz "He doesn't like coffee — he drinks tea".
+    **Explanation**: O texto diz "He doesn't / does not like coffee — he drinks tea".
 
 ### 2. Listening/Speaking (5 phrases)
 

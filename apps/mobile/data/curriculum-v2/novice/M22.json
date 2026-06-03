@@ -117,7 +117,7 @@
           "accepts": [
             "doesn't like"
           ],
-          "explanation": "O texto diz \"I don't like soda\"."
+          "explanation": "O texto diz \"I don't / do not like soda\"."
         }
       ],
       "listening_speaking": [
@@ -242,7 +242,7 @@
             "but"
           ],
           "answer": "because",
-          "explanation": "\"Because\" introduz a CAUSA. \"I'm tired because I worked\" — cansado por trabalhar."
+          "explanation": "\"Because\" introduz a CAUSA. \"I'm / I am tired because I worked\" — cansado por trabalhar."
         },
         {
           "type": "multiple_choice",
@@ -253,7 +253,7 @@
             "but"
           ],
           "answer": "so",
-          "explanation": "\"So\" introduz a CONSEQUÊNCIA. \"I'm tired so I'll rest\" — cansado, então descanso."
+          "explanation": "\"So\" introduz a CONSEQUÊNCIA. \"I'm tired so I'll / I will rest\" — cansado, então descanso."
         },
         {
           "type": "word_bank",
@@ -672,7 +672,7 @@
             "And"
           ],
           "answer": "Although",
-          "explanation": "\"Although he's tired\" — embora cansado."
+          "explanation": "\"Although he's / he is tired\" — embora cansado."
         },
         {
           "type": "word_bank",
@@ -698,14 +698,14 @@
           "sentence": "It's raining. _____, we'll go anyway.",
           "hint": "No entanto (contraste forte)",
           "answer": "However",
-          "explanation": "\"However, we'll go\" — contraste após pausa."
+          "explanation": "\"However, we'll / we will go\" — contraste após pausa."
         },
         {
           "type": "fill_gap",
           "sentence": "_____ she's young, she's very smart.",
           "hint": "Embora",
           "answer": "Although",
-          "explanation": "\"Although she's young\" — concessão."
+          "explanation": "\"Although she's / she is young\" — concessão."
         },
         {
           "type": "fix_error",

@@ -49,12 +49,12 @@
 2. **multiple_choice** — "I'd like _____ check in for my flight."
    **Options**: to / for / from / at
    **Answer**: to
-   **Explanation**: "I'd like to + verbo" — chunk fixo para pedidos educados. "I'd like to check in" — pedido educado padrão em aeroportos e hotéis.
+   **Explanation**: "I'd / I would like to + verbo" — chunk fixo para pedidos educados. "I'd / I would like to check in" — pedido educado padrão em aeroportos e hotéis.
 
 3. **word_bank** — "My flight _____ delayed by two hours."
    **Choices**: is / are / has / does
    **Answer**: is
-   **Explanation**: Memorize "My flight is delayed" como CHUNK FIXO de aeroporto — não tente analisar a estrutura. Como "I'm tired" ou "I'm ready": é "to be" + adjetivo. "Delayed" funciona como adjetivo aqui (atrasado).
+   **Explanation**: Memorize "My flight is delayed" como CHUNK FIXO de aeroporto — não tente analisar a estrutura. Como "I'm / I am tired" ou "I'm / I am ready": é "to be" + adjetivo. "Delayed" funciona como adjetivo aqui (atrasado).
 
 4. **word_bank** — "_____ I have a window seat, please?"
    **Choices**: Can / Do / Is / Are
@@ -75,7 +75,7 @@
 7. **fill_gap** — "I'm here _____ business."
    **Hint**: preposição para propósito
    **Answer**: for
-   **Explanation**: "I'm here for + propósito" — chunk fixo na imigração. "I'm here for business / vacation / a conference". Preposição "for" é obrigatória.
+   **Explanation**: "I'm / I am here for + propósito" — chunk fixo na imigração. "I'm here for business / vacation / a conference". Preposição "for" é obrigatória.
 
 8. **fix_error** — "I lost my luggages at the airport."
    **Hint**: "Luggage" é incontável em inglês
@@ -217,7 +217,7 @@
 2. **multiple_choice** — "I'd like to _____ in, please."
    **Options**: check / checking / checks / checked
    **Answer**: check
-   **Explanation**: Após "I'd like to", sempre verbo no infinitivo sem "to" extra. "Check in" — phrasal verb padrão de hotel.
+   **Explanation**: Após "I'd / I would like to", sempre verbo no infinitivo sem "to" extra. "Check in" — phrasal verb padrão de hotel.
 
 3. **word_bank** — "I have a reservation _____ the name of Silva."
    **Choices**: under / on / at / by
@@ -249,20 +249,20 @@
    **Hint**: "People" é mais natural que "persons"
    **Answer**: I want a room for two people.
 **Accepts**: I'd like a room for two people.
-   **Explanation**: "People" é o plural natural de "person" em inglês moderno. "Persons" só aparece em contextos legais formais. Melhor ainda: trocar "I want" por "I'd like" (mais educado).
+   **Explanation**: "People" é o plural natural de "person" em inglês moderno. "Persons" só aparece em contextos legais formais. Melhor ainda: trocar "I want" por "I'd / I would like" (mais educado).
 
 9. **fix_error** — "The shower not working in my room."
    **Hint**: Falta "is" — "is not working"
    **Answer**: The shower is not working in my room.
 **Accepts**: The shower isn't working
-   **Explanation**: Inglês exige verbo "to be" em frases negativas com -ing. "Is not working" ou contração "isn't working". Sem "is", a frase fica incompleta.
+   **Explanation**: Inglês exige verbo "to be" em frases negativas com -ing. "Is not working" ou contração "isn't / is not working". Sem "is", a frase fica incompleta.
 
 10. **read_answer**
     **Passage**: "Good evening. I have a reservation under the name of Silva. I'd like a non-smoking room with a king-size bed. Is breakfast included in the rate? And what time is check-out tomorrow?"
     **Question**: Que tipo de cama o hóspede quer?
     **Answer**: king-size
 **Accepts**: a king-size bed
-    **Explanation**: O texto diz "I'd like a non-smoking room with a king-size bed". Pratica identificação de detalhes específicos em pedidos de hotel.
+    **Explanation**: O texto diz "I'd / I would like a non-smoking room with a king-size bed". Pratica identificação de detalhes específicos em pedidos de hotel.
 
 ### 2. Listening/Speaking (5 phrases)
 
@@ -549,7 +549,7 @@
 1. **multiple_choice** — "I don't _____ well today."
    **Options**: feel / feels / feeling / felt
    **Answer**: feel
-   **Explanation**: "I don't feel + adjetivo" — chunk fixo para reportar mal-estar. Após "don't", sempre verbo no infinitivo.
+   **Explanation**: "I don't / do not feel + adjetivo" — chunk fixo para reportar mal-estar. Após "don't / do not", sempre verbo no infinitivo.
 
 2. **multiple_choice** — "I _____ a headache."
    **Options**: have / has / is / am
@@ -744,7 +744,7 @@
 6. **fill_gap** — "I'll _____ you back later."
    **Hint**: phrasal verb de retorno
    **Answer**: call
-   **Explanation**: "Call back" — phrasal verb para "ligar de volta". "I'll call you back" — promessa fixa ao telefone.
+   **Explanation**: "Call back" — phrasal verb para "ligar de volta". "I'll / I will call you back" — promessa fixa ao telefone.
 
 7. **fill_gap** — "Could you _____ that, please?"
    **Hint**: verbo para "repetir"
@@ -767,7 +767,7 @@
     **Question**: Quando Maria vai ligar de volta?
     **Answer**: tomorrow at 3 PM
 **Accepts**: at 3 PM tomorrow
-    **Explanation**: O texto diz "I'll call him back tomorrow at 3 PM". Pratica leitura de detalhes em recado telefônico.
+    **Explanation**: O texto diz "I'll / I will call him back tomorrow at 3 PM". Pratica leitura de detalhes em recado telefônico.
 
 ### 2. Listening/Speaking (5 phrases)
 

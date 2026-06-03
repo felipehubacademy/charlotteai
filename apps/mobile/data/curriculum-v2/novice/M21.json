@@ -47,7 +47,7 @@
             "are"
           ],
           "answer": "will",
-          "explanation": "Após if + present, usa \"will + base\" na consequência. \"We will have\" / \"we'll have\"."
+          "explanation": "Após if + present, usa \"will + base\" na consequência. \"We will have\" / \"we'll / we will have\"."
         },
         {
           "type": "word_bank",
@@ -59,7 +59,7 @@
             "am"
           ],
           "answer": "will",
-          "explanation": "\"I'll call you\" — consequência futura. Will + base."
+          "explanation": "\"I'll / I will call you\" — consequência futura. Will + base."
         },
         {
           "type": "word_bank",
@@ -106,14 +106,14 @@
           "sentence": "If she comes, we have dinner.",
           "hint": "Consequência precisa de will",
           "answer": "If she comes, we'll have dinner.",
-          "explanation": "Consequência futura precisa de WILL. \"We'll have dinner\", não \"we have\"."
+          "explanation": "Consequência futura precisa de WILL. \"We'll / We will have dinner\", não \"we have\"."
         },
         {
           "type": "read_answer",
           "passage": "If it rains tomorrow, I'll stay home. If it's sunny, we'll go hiking. If she comes, we'll have lunch together.",
           "question": "O que o narrador vai fazer se estiver ensolarado?",
           "answer": "go hiking",
-          "explanation": "O texto diz \"If it's sunny, we'll go hiking\"."
+          "explanation": "O texto diz \"If it's sunny, we'll / we will go hiking\"."
         }
       ],
       "listening_speaking": [
@@ -308,14 +308,14 @@
           "sentence": "I will travel if I save.",
           "hint": "Contração natural",
           "answer": "I'll travel if I save.",
-          "explanation": "Em fala, usa-se \"I'll\" mais que \"I will\" — som mais natural. Ambas corretas mas \"I'll\" é melhor em diálogo."
+          "explanation": "Em fala, usa-se \"I'll / I will\" mais que \"I will\" — som mais natural. Ambas corretas mas \"I'll / I will\" é melhor em diálogo."
         },
         {
           "type": "read_answer",
           "passage": "If I have time tomorrow, I'll go to the gym. If I save enough, I'll buy a bike. If my friend calls, I'll go out with her.",
           "question": "O que o narrador vai comprar se economizar o suficiente?",
           "answer": "a bike",
-          "explanation": "O texto diz \"If I save enough, I'll buy a bike\"."
+          "explanation": "O texto diz \"If I save enough, I'll / I will buy a bike\"."
         }
       ],
       "listening_speaking": [
@@ -496,7 +496,7 @@
           "sentence": "We _____ go to the cinema if you want.",
           "hint": "Consequência futura",
           "answer": "will",
-          "explanation": "\"We will go\" — will + base. Ou \"we'll go\"."
+          "explanation": "\"We will go\" — will + base. Ou \"we'll / we will go\"."
         },
         {
           "type": "fix_error",
@@ -510,7 +510,7 @@
           "sentence": "I help you if you ask.",
           "hint": "Consequência precisa de will",
           "answer": "I'll help you if you ask.",
-          "explanation": "Will + base na consequência. \"I'll help\" — will obrigatório."
+          "explanation": "Will + base na consequência. \"I'll / I will help\" — will obrigatório."
         },
         {
           "type": "read_answer",
@@ -520,7 +520,7 @@
           "accepts": [
             "I'll cook"
           ],
-          "explanation": "O texto diz \"If you're hungry, I'll cook\"."
+          "explanation": "O texto diz \"If you're hungry, I'll / I will cook\"."
         }
       ],
       "listening_speaking": [
@@ -645,7 +645,7 @@
             "when"
           ],
           "answer": "unless",
-          "explanation": "\"Unless\" = \"if not\" / \"a menos que\". \"I'll go unless it rains\" = irei a menos que chova."
+          "explanation": "\"Unless\" = \"if not\" / \"a menos que\". \"I'll / I will go unless it rains\" = irei a menos que chova."
         },
         {
           "type": "multiple_choice",
@@ -656,7 +656,7 @@
             "when"
           ],
           "answer": "unless",
-          "explanation": "\"Unless she's busy\" = se ela não estiver ocupada."
+          "explanation": "\"Unless she's / she is busy\" = se ela não estiver ocupada."
         },
         {
           "type": "word_bank",
@@ -668,7 +668,7 @@
             "but"
           ],
           "answer": "unless",
-          "explanation": "\"Unless you want to stay\" = \"if you don't want\"."
+          "explanation": "\"Unless you want to stay\" = \"if you don't / do not want\"."
         },
         {
           "type": "word_bank",
@@ -687,7 +687,7 @@
           "sentence": "I'll meet you _____ you're late.",
           "hint": "A menos que (a alternativa de \"if not\")",
           "answer": "unless",
-          "explanation": "\"Unless you're late\" = se você não estiver atrasado."
+          "explanation": "\"Unless you're / you are late\" = se você não estiver atrasado."
         },
         {
           "type": "fill_gap",
@@ -725,7 +725,7 @@
           "accepts": [
             "tired"
           ],
-          "explanation": "O texto diz \"I'll come unless I'm tired\" — significando que não virá se estiver cansado."
+          "explanation": "O texto diz \"I'll / I will come unless I'm tired\" — significando que não virá se estiver cansado."
         }
       ],
       "listening_speaking": [
@@ -885,7 +885,7 @@
             "before"
           ],
           "answer": "unless",
-          "explanation": "\"Unless I'm sick\" = a menos que esteja doente."
+          "explanation": "\"Unless I'm / I am sick\" = a menos que esteja doente."
         },
         {
           "type": "fill_gap",

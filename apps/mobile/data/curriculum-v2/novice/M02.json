@@ -473,7 +473,7 @@
           "sentence": "I'm from _____.",
           "hint": "País asiático cuja capital é Tokyo",
           "answer": "Japan",
-          "explanation": "\"Japan\" é o país. Nacionalidade: \"Japanese\". Não confundir — \"I'm from Japan\" (país) vs \"I'm Japanese\" (nacionalidade)."
+          "explanation": "\"Japan\" é o país. Nacionalidade: \"Japanese\". Não confundir — \"I'm / I am from Japan\" (país) vs \"I'm / I am Japanese\" (nacionalidade)."
         },
         {
           "type": "fill_gap",
@@ -821,7 +821,7 @@
             "Brazilians"
           ],
           "answer": "Brazilian",
-          "explanation": "Nacionalidade = adjetivo (Brazilian). País = nome próprio (Brazil). Esta frase combina ambos: \"I'm Brazilian, I'm from São Paulo, Brazil\"."
+          "explanation": "Nacionalidade = adjetivo (Brazilian). País = nome próprio (Brazil). Esta frase combina ambos: \"I'm / I am Brazilian, I'm from São Paulo, Brazil\"."
         },
         {
           "type": "multiple_choice",
@@ -844,7 +844,7 @@
             "Me"
           ],
           "answer": "I'm",
-          "explanation": "\"I'm\" é a contração de \"I am\" — forma padrão pra se apresentar. \"My\" é possessivo (My name is...). \"Me\" é pronome objeto."
+          "explanation": "\"I'm / I am\" é a contração de \"I am\" — forma padrão pra se apresentar. \"My\" é possessivo (My name is...). \"Me\" é pronome objeto."
         },
         {
           "type": "word_bank",
@@ -898,7 +898,7 @@
           "passage": "Hello! My name is Ana. I'm twenty-six years old. I'm from São Paulo, Brazil. I'm Brazilian. Nice to meet you!",
           "question": "Qual é a nacionalidade de Ana?",
           "answer": "Brazilian",
-          "explanation": "Ana diz \"I'm Brazilian\". A nacionalidade dela é \"Brazilian\" (o adjetivo)."
+          "explanation": "Ana diz \"I'm / I am Brazilian\". A nacionalidade dela é \"Brazilian\" (o adjetivo)."
         }
       ],
       "listening_speaking": [

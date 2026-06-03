@@ -35,7 +35,7 @@
             "haven't"
           ],
           "answer": "didn't",
-          "explanation": "Past simple negativo: \"didn't + verbo base\". \"Didn't work\" = não trabalhei."
+          "explanation": "Past simple negativo: \"didn't / did not + verbo base\". \"Didn't / Did not work\" = não trabalhei."
         },
         {
           "type": "multiple_choice",
@@ -46,7 +46,7 @@
             "doesn't"
           ],
           "answer": "didn't",
-          "explanation": "\"Didn't\" pra todas as pessoas no passado. \"She didn't go\"."
+          "explanation": "\"Didn't / Did not\" pra todas as pessoas no passado. \"She didn't / did not go\"."
         },
         {
           "type": "word_bank",
@@ -58,7 +58,7 @@
             "don't"
           ],
           "answer": "didn't",
-          "explanation": "\"Didn't\" + base. Plural ou singular, todos usam didn't."
+          "explanation": "\"Didn't / Did not\" + base. Plural ou singular, todos usam didn't."
         },
         {
           "type": "word_bank",
@@ -70,42 +70,42 @@
             "doesn't"
           ],
           "answer": "didn't",
-          "explanation": "\"He didn't see\" — past negativo com didn't + base. Mesmo em 3ª pessoa, didn't (não doesn't)."
+          "explanation": "\"He didn't / did not see\" — past negativo com didn't + base. Mesmo em 3ª pessoa, didn't (não doesn't)."
         },
         {
           "type": "fill_gap",
           "sentence": "I _____ have time yesterday.",
           "hint": "Negativa de \"I had\"",
           "answer": "didn't",
-          "explanation": "\"I didn't have\" — passado negativo. Note: verbo base \"have\", não \"had\"."
+          "explanation": "\"I didn't / did not have\" — passado negativo. Note: verbo base \"have\", não \"had\"."
         },
         {
           "type": "fill_gap",
           "sentence": "She _____ call me.",
           "hint": "Negativa passado de \"she called\"",
           "answer": "didn't",
-          "explanation": "\"She didn't call\" — didn't + base \"call\" (não \"called\")."
+          "explanation": "\"She didn't / did not call\" — didn't + base \"call\" (não \"called\")."
         },
         {
           "type": "fill_gap",
           "sentence": "They _____ go to school.",
           "hint": "Negativa passado plural",
           "answer": "didn't",
-          "explanation": "\"They didn't go\" — plural também usa didn't."
+          "explanation": "\"They didn't / did not go\" — plural também usa didn't."
         },
         {
           "type": "fix_error",
           "sentence": "He didn't went home.",
           "hint": "Após didn't, verbo base",
           "answer": "He didn't go home.",
-          "explanation": "Após \"didn't\", verbo SEMPRE base: \"go\", não \"went\". \"Didn't already carries past — verbo principal volta pra forma base."
+          "explanation": "Após \"didn't / did not\", verbo SEMPRE base: \"go\", não \"went\". \"Didn't already carries past — verbo principal volta pra forma base."
         },
         {
           "type": "fix_error",
           "sentence": "She doesn't call me yesterday.",
           "hint": "Yesterday é passado, usa didn't",
           "answer": "She didn't call me yesterday.",
-          "explanation": "\"Yesterday\" indica passado → \"didn't\" (não \"doesn't\" que é presente)."
+          "explanation": "\"Yesterday\" indica passado → \"didn't / did not\" (não \"doesn't / does not\" que é presente)."
         },
         {
           "type": "read_answer",
@@ -115,7 +115,7 @@
           "accepts": [
             "didn't work"
           ],
-          "explanation": "O texto diz \"I didn't work yesterday\"."
+          "explanation": "O texto diz \"I didn't / did not work yesterday\"."
         }
       ],
       "listening_speaking": [
@@ -296,7 +296,7 @@
           "sentence": "\"No, she _____.\" (response to \"Did she come?\")",
           "hint": "Resposta curta negativa contraída",
           "answer": "didn't",
-          "explanation": "\"No, she didn't\" — short answer negativa."
+          "explanation": "\"No, she didn't / did not\" — short answer negativa."
         },
         {
           "type": "fix_error",
@@ -320,7 +320,7 @@
           "accepts": [
             "she didn't"
           ],
-          "explanation": "The text says \"No, she didn't\"."
+          "explanation": "The text says \"No, she didn't / did not\"."
         }
       ],
       "listening_speaking": [
@@ -663,7 +663,7 @@
             "no"
           ],
           "answer": "didn't",
-          "explanation": "Past negativo padrão: \"didn't + base\". \"She didn't come\"."
+          "explanation": "Past negativo padrão: \"didn't / did not + base\". \"She didn't / did not come\"."
         },
         {
           "type": "word_bank",
@@ -687,42 +687,42 @@
             "no"
           ],
           "answer": "didn't",
-          "explanation": "\"He didn't understand\" — past negativo. (Could also be \"never understood\" but with simple/no auxiliary structure)."
+          "explanation": "\"He didn't / did not understand\" — past negativo. (Could also be \"never understood\" but with simple/no auxiliary structure)."
         },
         {
           "type": "fill_gap",
           "sentence": "I _____ travel abroad.",
           "hint": "Negativa direta de past",
           "answer": "didn't",
-          "explanation": "\"I didn't travel\" — padrão. \"I never traveled\" também funciona (sem didn't)."
+          "explanation": "\"I didn't / did not travel\" — padrão. \"I never traveled\" também funciona (sem didn't)."
         },
         {
           "type": "fill_gap",
           "sentence": "She _____ said anything wrong.",
           "hint": "\"Nunca\" sem didn't",
           "answer": "never",
-          "explanation": "\"She never said\" — passado direto sem auxiliar. Equivale a \"She didn't say anything\"."
+          "explanation": "\"She never said\" — passado direto sem auxiliar. Equivale a \"She didn't / did not say anything\"."
         },
         {
           "type": "fill_gap",
           "sentence": "They _____ arrive on time.",
           "hint": "Past negativo padrão",
           "answer": "didn't",
-          "explanation": "\"They didn't arrive\" — passado negativo."
+          "explanation": "\"They didn't / did not arrive\" — passado negativo."
         },
         {
           "type": "fix_error",
           "sentence": "I never didn't go there.",
           "hint": "Dupla negativa",
           "answer": "I never went there.",
-          "explanation": "NÃO usa dupla negativa em inglês. Ou \"I never went\" OU \"I didn't go\" — não ambos."
+          "explanation": "NÃO usa dupla negativa em inglês. Ou \"I never went\" OU \"I didn't / did not go\" — não ambos."
         },
         {
           "type": "fix_error",
           "sentence": "She never come yesterday.",
           "hint": "Com \"never\", o verbo no passado simples",
           "answer": "She never came yesterday.",
-          "explanation": "\"Never\" + verbo no PASSADO (came), não na base. Diferente de \"didn't + base\"."
+          "explanation": "\"Never\" + verbo no PASSADO (came), não na base. Diferente de \"didn't / did not + base\"."
         },
         {
           "type": "read_answer",
@@ -903,7 +903,7 @@
           "sentence": "She _____ stay long.",
           "hint": "Past negativo padrão",
           "answer": "didn't",
-          "explanation": "\"She didn't stay\" — negativa."
+          "explanation": "\"She didn't / did not stay\" — negativa."
         },
         {
           "type": "fill_gap",
@@ -917,7 +917,7 @@
           "sentence": "She didn't went home.",
           "hint": "Após didn't, base",
           "answer": "She didn't go home.",
-          "explanation": "didn't + base, não \"didn't went\"."
+          "explanation": "didn't + base, não \"didn't / did not went\"."
         },
         {
           "type": "fix_error",
@@ -931,7 +931,7 @@
           "passage": "I went to a concert. I didn't stay long. Did my friend come? No, she didn't. What did she do? She worked late.",
           "question": "O amigo veio ao show?",
           "answer": "no",
-          "explanation": "The text says \"No, she didn't\"."
+          "explanation": "The text says \"No, she didn't / did not\"."
         }
       ],
       "listening_speaking": [

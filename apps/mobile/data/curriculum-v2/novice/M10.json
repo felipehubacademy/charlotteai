@@ -256,7 +256,7 @@
             "much"
           ],
           "answer": "any",
-          "explanation": "Negativa → \"any\". \"We don't have any milk\" = \"Não temos leite (nenhum)\". Any pra negativo."
+          "explanation": "Negativa → \"any\". \"We don't / do not have any milk\" = \"Não temos leite (nenhum)\". Any pra negativo."
         },
         {
           "type": "word_bank",
@@ -294,7 +294,7 @@
           "sentence": "I don't have _____ time today.",
           "hint": "Negativa",
           "answer": "any",
-          "explanation": "\"I don't have any time\" — negativa usa any (= nenhum/nenhuma)."
+          "explanation": "\"I don't / do not have any time\" — negativa usa any (= nenhum/nenhuma)."
         },
         {
           "type": "fill_gap",
@@ -315,14 +315,14 @@
           "sentence": "We don't have some bread.",
           "hint": "Negativa pede \"any\"",
           "answer": "We don't have any bread.",
-          "explanation": "Negativa usa ANY, não some. \"We don't have any bread\"."
+          "explanation": "Negativa usa ANY, não some. \"We don't / do not have any bread\"."
         },
         {
           "type": "read_answer",
           "passage": "I have some bread but I don't have any milk. Is there any cheese? Yes, there's some cheese in the fridge.",
           "question": "O que o narrador NÃO tem?",
           "answer": "milk",
-          "explanation": "O texto diz \"I don't have any milk\"."
+          "explanation": "O texto diz \"I don't / do not have any milk\"."
         }
       ],
       "listening_speaking": [
@@ -651,7 +651,7 @@
             "Give me"
           ],
           "answer": "I'd like",
-          "explanation": "\"I'd like\" (I would like) é o chunk educado pra pedir. \"I want\" é direto demais; \"Give me\" é rude."
+          "explanation": "\"I'd / I would like\" (I would like) é o chunk educado pra pedir. \"I want\" é direto demais; \"Give me\" é rude."
         },
         {
           "type": "multiple_choice",
@@ -674,7 +674,7 @@
             "one"
           ],
           "answer": "a",
-          "explanation": "\"A pizza\" — pedido singular contável. \"I'd like a pizza\"."
+          "explanation": "\"A pizza\" — pedido singular contável. \"I'd / I would like a pizza\"."
         },
         {
           "type": "word_bank",
@@ -693,7 +693,7 @@
           "sentence": "I'd _____ a sandwich and a juice.",
           "hint": "Forma curta de \"would\"",
           "answer": "like",
-          "explanation": "\"I'd like\" = \"I would like\" (eu gostaria). Contração obrigatória em fala."
+          "explanation": "\"I'd / I would like\" = \"I would like\" (eu gostaria). Contração obrigatória em fala."
         },
         {
           "type": "fill_gap",
@@ -714,7 +714,7 @@
           "sentence": "I want one coffee.",
           "hint": "Mais educado em restaurante",
           "answer": "I'd like a coffee.",
-          "explanation": "\"I want\" é direto demais em contextos sociais/comerciais. \"I'd like a coffee\" é o padrão educado. Também \"a coffee\" (não \"one coffee\")."
+          "explanation": "\"I want\" é direto demais em contextos sociais/comerciais. \"I'd / I would like a coffee\" é o padrão educado. Também \"a coffee\" (não \"one coffee\")."
         },
         {
           "type": "fix_error",

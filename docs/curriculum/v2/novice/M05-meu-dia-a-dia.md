@@ -709,7 +709,7 @@
 2. **multiple_choice** — "I _____ work on weekends."
    **Options**: never / not / no
    **Answer**: never
-   **Explanation**: "Never" (nunca) é advérbio de frequência negativo. Posição: antes do verbo. "I never work on weekends" — não precisa de "don't", o "never" já carrega a negação.
+   **Explanation**: "Never" (nunca) é advérbio de frequência negativo. Posição: antes do verbo. "I never work on weekends" — não precisa de "don't / do not", o "never" já carrega a negação.
 
 3. **word_bank** — "We _____ go to the park on Sundays — almost every weekend."
    **Choices**: usually / never / once / not
@@ -874,7 +874,7 @@
 2. **multiple_choice** — "It's _____ o'clock."
    **Options**: three / a three / the three / three's
    **Answer**: three
-   **Explanation**: "It's three o'clock" — chunk fixo de horário cheio. Sem artigo antes do número. "O'clock" só com horas cheias (3:00, 7:00), nunca com minutos.
+   **Explanation**: "It's / It is three o'clock" — chunk fixo de horário cheio. Sem artigo antes do número. "O'clock" só com horas cheias (3:00, 7:00), nunca com minutos.
 
 3. **word_bank** — "It's _____ past four."
    **Choices**: quarter / quarter of / fourth / four
@@ -905,13 +905,13 @@
 8. **fix_error** — "What's hour?"
    **Hint**: Em inglês — "What time is it?"
    **Answer**: What time is it?
-   **Explanation**: "What's hour?" é tradução literal errada de "que horas?". O chunk correto é "What time is it?". Sempre com "time" e "is it" no fim. Erro muito comum entre lusófonos iniciantes.
+   **Explanation**: "What's / What is hour?" é tradução literal errada de "que horas?". O chunk correto é "What time is it?". Sempre com "time" e "is it" no fim. Erro muito comum entre lusófonos iniciantes.
 
 9. **fix_error** — "It is the three o'clock."
    **Hint**: Sem artigos antes do número
    **Answer**: It is three o'clock.
 **Accepts**: It's three o'clock.
-   **Explanation**: "It's three o'clock" — sem "the" e sem "a". Horário inglês não usa artigos. Erro de tradução literal de "são três horas".
+   **Explanation**: "It's / It is three o'clock" — sem "the" e sem "a". Horário inglês não usa artigos. Erro de tradução literal de "são três horas".
 
 10. **read_answer**
     **Passage**: "What time is it? It's quarter past nine. I have a meeting at half past nine — only fifteen minutes left. Today is Monday, the third of March. The weather is cold — winter is still here."

@@ -38,7 +38,7 @@
 2. **multiple_choice** — "She _____ work so much."
    **Options**: shouldn't / wouldn't / didn't
    **Answer**: shouldn't
-   **Explanation**: "Shouldn't" = não deveria. Aconselhamento negativo.
+   **Explanation**: "Shouldn't / Should not" = não deveria. Aconselhamento negativo.
 
 3. **word_bank** — "We _____ help her."
    **Choices**: should / are / do / will
@@ -48,7 +48,7 @@
 4. **word_bank** — "He _____ eat junk food."
    **Choices**: shouldn't / can't / doesn't / didn't
    **Answer**: shouldn't
-   **Explanation**: "He shouldn't eat junk food" = ele não deveria.
+   **Explanation**: "He shouldn't / should not eat junk food" = ele não deveria.
 
 5. **fill_gap** — "You _____ study more."
    **Hint**: Conselho positivo
@@ -58,7 +58,7 @@
 6. **fill_gap** — "She _____ stay up late."
    **Hint**: Conselho negativo
    **Answer**: shouldn't
-   **Explanation**: "She shouldn't stay up late" = ela não deveria ficar acordada.
+   **Explanation**: "She shouldn't / should not stay up late" = ela não deveria ficar acordada.
 
 7. **fill_gap** — "I think you _____ try yoga."
    **Hint**: Conselho com "I think"
@@ -80,7 +80,7 @@
     **Question**: O que a pessoa não deveria fazer?
     **Answer**: work so late
     **Accepts**: work late
-    **Explanation**: O texto diz "You shouldn't work so late".
+    **Explanation**: O texto diz "You shouldn't / should not work so late".
 
 ### 2. Listening/Speaking (5 phrases)
 
@@ -365,54 +365,54 @@
 1. **multiple_choice** — "I _____ have to work on Sundays."
    **Options**: don't / doesn't / wasn't
    **Answer**: don't
-   **Explanation**: Negativa: "don't have to" = não precisa. Com I/you/we/they.
+   **Explanation**: Negativa: "don't / do not have to" = não precisa. Com I/you/we/they.
 
 2. **multiple_choice** — "She _____ have to come."
    **Options**: doesn't / don't / wasn't
    **Answer**: doesn't
-   **Explanation**: 3ª pessoa: "doesn't have to".
+   **Explanation**: 3ª pessoa: "doesn't / does not have to".
 
 3. **word_bank** — "We _____ have to pay anything."
    **Choices**: don't / doesn't / aren't / isn't
    **Answer**: don't
-   **Explanation**: "We don't have to" — plural.
+   **Explanation**: "We don't / do not have to" — plural.
 
 4. **word_bank** — "He _____ have to wear a tie."
    **Choices**: doesn't / don't / isn't / can't
    **Answer**: doesn't
-   **Explanation**: "He doesn't have to" — 3ª pessoa.
+   **Explanation**: "He doesn't / does not have to" — 3ª pessoa.
 
 5. **fill_gap** — "I _____ have to study tonight."
    **Hint**: Negativa de "have to" com I
    **Answer**: don't
-   **Explanation**: "I don't have to" — ausência de obrigação.
+   **Explanation**: "I don't / do not have to" — ausência de obrigação.
 
 6. **fill_gap** — "She _____ have to wake up early."
    **Hint**: Negativa de "has to"
    **Answer**: doesn't
-   **Explanation**: "She doesn't have to" — 3ª pessoa.
+   **Explanation**: "She doesn't / does not have to" — 3ª pessoa.
 
 7. **fill_gap** — "You _____ have to come if you don't want."
    **Hint**: Negativa do "have to"
    **Answer**: don't
-   **Explanation**: "You don't have to come" — opcional.
+   **Explanation**: "You don't / do not have to come" — opcional.
 
 8. **fix_error** — "She don't have to work."
    **Hint**: 3ª pessoa usa "doesn't"
    **Answer**: She doesn't have to work.
-   **Explanation**: She → "doesn't", não "don't".
+   **Explanation**: She → "doesn't / does not", não "don't / do not".
 
 9. **fix_error** — "I doesn't have to go."
    **Hint**: I usa "don't"
    **Answer**: I don't have to go.
-   **Explanation**: Com I sempre "don't", não "doesn't".
+   **Explanation**: Com I sempre "don't / do not", não "doesn't / does not".
 
 10. **read_answer**
     **Passage**: "I don't have to work tomorrow — it's my day off. She doesn't have to come if she's busy. We don't have to do anything special."
     **Question**: Por que o narrador não precisa trabalhar amanhã?
     **Answer**: it's my day off
     **Accepts**: day off
-    **Explanation**: O texto diz "it's my day off".
+    **Explanation**: O texto diz "it's / it is my day off".
 
 ### 2. Listening/Speaking (5 phrases)
 
@@ -578,7 +578,7 @@
     **Question**: A pessoa precisa trazer o passaporte?
     **Answer**: no
     **Accepts**: doesn't have to
-    **Explanation**: The text says "No, you don't have to".
+    **Explanation**: The text says "No, you don't / do not have to".
 
 ### 2. Listening/Speaking (5 phrases)
 
@@ -707,7 +707,7 @@
 3. **word_bank** — "You _____ go if you don't want."
    **Choices**: don't have to / shouldn't / can't / mustn't
    **Answer**: don't have to
-   **Explanation**: "Don't have to" = não precisa, opcional. "Shouldn't" = não deveria (conselho).
+   **Explanation**: "Don't / Do not have to" = não precisa, opcional. "Shouldn't / Should not" = não deveria (conselho).
 
 4. **word_bank** — "She _____ buy groceries — we're out of milk."
    **Choices**: needs to / has to / should / will

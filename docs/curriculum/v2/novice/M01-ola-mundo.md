@@ -93,7 +93,7 @@
     **Passage**: "Ana: Good morning! How are you, Tom? Tom: I'm fine, thank you! And you? Ana: I'm great!"
     **Question**: Como Tom está? (responda em inglês com uma palavra)
     **Answer**: fine
-    **Explanation**: Tom diz "I'm fine, thank you" — "fine" significa bem/ótimo em inglês.
+    **Explanation**: Tom diz "I'm / I am fine, thank you" — "fine" significa bem/ótimo em inglês.
 
 ### 2. Listening/Speaking (5 phrases)
 
@@ -221,12 +221,12 @@ Charlotte fala via ElevenLabs (Rachel). Aluno repete; Azure Speech avalia pronú
 4. **word_bank** — "Hello, _____ John."
    **Choices**: I'm / You're / He's / She's
    **Answer**: I'm
-   **Explanation**: "I'm" é a contração de "I am". Ao se apresentar, você diz "I'm John" (sou o John). Bem mais comum que "I am John".
+   **Explanation**: "I'm / I am" é a contração de "I am". Ao se apresentar, você diz "I'm / I am John" (sou o John). Bem mais comum que "I am John".
 
 5. **fill_gap** — "I am _____ Brazil."
    **Hint**: Preposição de origem
    **Answer**: from
-   **Explanation**: "I'm from Brazil" = "Eu sou do Brasil". A preposição "from" indica origem em inglês.
+   **Explanation**: "I'm / I am from Brazil" = "Eu sou do Brasil". A preposição "from" indica origem em inglês.
 
 6. **fill_gap** — "Her name _____ Maria."
    **Hint**: Verbo "to be" para terceira pessoa
@@ -241,7 +241,7 @@ Charlotte fala via ElevenLabs (Rachel). Aluno repete; Azure Speech avalia pronú
 8. **fix_error** — "I are a student."
    **Hint**: Verbo "to be" com "I"
    **Answer**: I am a student.
-   **Explanation**: Com "I" sempre se usa "am", nunca "are". A frase correta é "I am a student" (ou contraído: "I'm a student").
+   **Explanation**: Com "I" sempre se usa "am", nunca "are". A frase correta é "I am a student" (ou contraído: "I'm / I am a student").
 
 9. **fix_error** — "My name am Ana."
    **Hint**: "My name" é terceira pessoa
@@ -540,7 +540,7 @@ Charlotte fala via ElevenLabs (Rachel). Aluno repete; Azure Speech avalia pronú
     **Passage**: "Tom: Hey Ana, are you okay? You look down. Ana: I'm tired and a bit stressed. Work is crazy this week."
     **Question**: Como Ana se sente? (dê uma palavra)
     **Answer**: tired
-    **Explanation**: Ana diz "I'm tired and a bit stressed". A primeira palavra que descreve ela é "tired" (cansada).
+    **Explanation**: Ana diz "I'm / I am tired and a bit stressed". A primeira palavra que descreve ela é "tired" (cansada).
 
 ### 2. Listening/Speaking (5 phrases)
 

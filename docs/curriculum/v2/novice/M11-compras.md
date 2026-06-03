@@ -35,12 +35,12 @@
 1. **multiple_choice** — "_____ to buy a shirt."
    **Options**: I'd like / I want / I have
    **Answer**: I'd like
-   **Explanation**: "I'd like to + verb" é o chunk educado pra falar do que quer. "I want" é direto demais em loja.
+   **Explanation**: "I'd / I would like to + verb" é o chunk educado pra falar do que quer. "I want" é direto demais em loja.
 
 2. **multiple_choice** — "I'm looking _____ a black shirt."
    **Options**: for / at / to
    **Answer**: for
-   **Explanation**: "Look for" = procurar. Chunk fixo: "I'm looking FOR + objeto". Não confundir com "look at" (olhar pra).
+   **Explanation**: "Look for" = procurar. Chunk fixo: "I'm / I am looking FOR + objeto". Não confundir com "look at" (olhar pra).
 
 3. **word_bank** — "The shirts are _____ the second floor."
    **Choices**: on / in / at / next
@@ -65,12 +65,12 @@
 7. **fill_gap** — "I'd like _____ buy two shirts."
    **Hint**: Particula entre "like" e o verbo
    **Answer**: to
-   **Explanation**: "I'd like TO + verbo base": "I'd like to buy". Após "like", "to + base".
+   **Explanation**: "I'd / I would like TO + verbo base": "I'd / I would like to buy". Após "like", "to + base".
 
 8. **fix_error** — "I want one shirt black."
    **Hint**: Ordem do adjetivo + educado
    **Answer**: I'd like a black shirt.
-   **Explanation**: Adjetivo VEM ANTES do substantivo: "a BLACK shirt" (não "a shirt black"). E "I'd like" é mais educado que "I want".
+   **Explanation**: Adjetivo VEM ANTES do substantivo: "a BLACK shirt" (não "a shirt black"). E "I'd / I would like" é mais educado que "I want".
 
 9. **fix_error** — "I'm looking the menu."
    **Hint**: Preposição correta com "look"
@@ -81,7 +81,7 @@
     **Passage**: "I'd like to buy a black jacket. I'm looking for size M. Excuse me, where is the cashier? It's next to the door."
     **Question**: Onde fica o caixa?
     **Answer**: next to the door
-    **Explanation**: O texto diz "It's next to the door".
+    **Explanation**: O texto diz "It's / It is next to the door".
 
 ### 2. Listening/Speaking (5 phrases)
 
@@ -541,7 +541,7 @@
 3. **word_bank** — "It's _____ sale today."
    **Choices**: on / in / at / for
    **Answer**: on
-   **Explanation**: "On sale" = em promoção. Chunk fixo: "It's on sale".
+   **Explanation**: "On sale" = em promoção. Chunk fixo: "It's / It is on sale".
 
 4. **word_bank** — "I'd like to pay _____ cash."
    **Choices**: with / by / for / in
@@ -696,7 +696,7 @@
 1. **multiple_choice** — "_____ to buy this jacket."
    **Options**: I'd like / I want / I do
    **Answer**: I'd like
-   **Explanation**: "I'd like to buy" — chunk educado pra anunciar intenção de compra.
+   **Explanation**: "I'd / I would like to buy" — chunk educado pra anunciar intenção de compra.
 
 2. **multiple_choice** — "_____ shoes over there are nice."
    **Options**: Those / This / These / That
@@ -716,7 +716,7 @@
 5. **fill_gap** — "I'd like to _____ this dress on, please."
    **Hint**: Experimentar roupa
    **Answer**: try
-   **Explanation**: "Try on" = experimentar. "I'd like to try this dress on" ou "try on this dress".
+   **Explanation**: "Try on" = experimentar. "I'd / I would like to try this dress on" ou "try on this dress".
 
 6. **fill_gap** — "The shirts are _____ the second floor."
    **Hint**: Preposição com andar
@@ -731,7 +731,7 @@
 8. **fix_error** — "I want this shoes."
    **Hint**: Demonstrativo + plural
    **Answer**: I'd like these shoes.
-   **Explanation**: "Shoes" plural exige "these" (perto) ou "those" (longe). E "I'd like" mais educado.
+   **Explanation**: "Shoes" plural exige "these" (perto) ou "those" (longe). E "I'd / I would like" mais educado.
 
 9. **fix_error** — "I pay for cash."
    **Hint**: Preposição com cash
