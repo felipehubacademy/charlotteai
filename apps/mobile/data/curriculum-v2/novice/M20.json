@@ -524,7 +524,7 @@
         {
           "type": "read_answer",
           "passage": "I don't have to work tomorrow — it's my day off. She doesn't have to come if she's busy. We don't have to do anything special.",
-          "question": "Por que o speaker não precisa trabalhar amanhã?",
+          "question": "Por que o narrador não precisa trabalhar amanhã?",
           "answer": "it's my day off",
           "accepts": [
             "day off"
@@ -936,7 +936,7 @@
         {
           "type": "read_answer",
           "passage": "You should rest. I have to work tomorrow. We need to buy more milk. She doesn't have to come if she's busy.",
-          "question": "O que o speaker tem que fazer amanhã?",
+          "question": "O que o narrador tem que fazer amanhã?",
           "answer": "work",
           "explanation": "O texto diz \"I have to work tomorrow\"."
         }

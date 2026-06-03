@@ -112,7 +112,7 @@
         {
           "type": "read_answer",
           "passage": "I'm taller than my brother but he's older than me. Our sister is younger than both of us. She's also faster — she runs every morning.",
-          "question": "Quem é mais velho que o speaker?",
+          "question": "Quem é mais velho que o narrador?",
           "answer": "my brother",
           "accepts": [
             "her",

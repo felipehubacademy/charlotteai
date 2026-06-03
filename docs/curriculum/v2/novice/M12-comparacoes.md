@@ -75,7 +75,7 @@
 
 10. **read_answer**
     **Passage**: "I'm taller than my brother but he's older than me. Our sister is younger than both of us. She's also faster — she runs every morning."
-    **Question**: Quem é mais velho que o speaker?
+    **Question**: Quem é mais velho que o narrador?
     **Answer**: my brother
     **Accepts**: her/his brother
     **Explanation**: O texto diz "he's older than me" se referindo ao irmão.

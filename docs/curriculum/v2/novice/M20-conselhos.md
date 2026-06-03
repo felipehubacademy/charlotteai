@@ -409,7 +409,7 @@
 
 10. **read_answer**
     **Passage**: "I don't have to work tomorrow — it's my day off. She doesn't have to come if she's busy. We don't have to do anything special."
-    **Question**: Por que o speaker não precisa trabalhar amanhã?
+    **Question**: Por que o narrador não precisa trabalhar amanhã?
     **Answer**: it's my day off
     **Accepts**: day off
     **Explanation**: O texto diz "it's my day off".
@@ -741,7 +741,7 @@
 
 10. **read_answer**
     **Passage**: "You should rest. I have to work tomorrow. We need to buy more milk. She doesn't have to come if she's busy."
-    **Question**: O que o speaker tem que fazer amanhã?
+    **Question**: O que o narrador tem que fazer amanhã?
     **Answer**: work
     **Explanation**: O texto diz "I have to work tomorrow".
 

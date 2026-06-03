@@ -75,7 +75,7 @@
 
 10. **read_answer**
     **Passage**: "I like coffee and tea, but I don't like soda. I drink water all day. Do you prefer coffee or tea?"
-    **Question**: O speaker gosta de refrigerante?
+    **Question**: O narrador gosta de refrigerante?
     **Answer**: no
     **Accepts**: doesn't like
     **Explanation**: O texto diz "I don't like soda".
@@ -241,7 +241,7 @@
 
 10. **read_answer**
     **Passage**: "I love English because it opens doors. I study every day, so I'm making progress. I'll keep going because it's fun."
-    **Question**: Por que o speaker ama inglês?
+    **Question**: Por que o narrador ama inglês?
     **Answer**: it opens doors
     **Accepts**: opens doors
     **Explanation**: O texto diz "I love English because it opens doors".
@@ -572,7 +572,7 @@
 
 10. **read_answer**
     **Passage**: "Although I love coffee, I drink tea sometimes. I want to travel. However, I have no money right now."
-    **Question**: Por que o speaker não viaja agora?
+    **Question**: Por que o narrador não viaja agora?
     **Answer**: no money
     **Accepts**: I have no money
     **Explanation**: The text says "I have no money right now".

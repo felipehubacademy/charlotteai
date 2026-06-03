@@ -83,7 +83,7 @@
 
 10. **read_answer**
     **Passage**: "I think it will rain tomorrow. She will probably stay home. We will all watch a movie together."
-    **Question**: O que o speaker vai fazer amanhã?
+    **Question**: O que o narrador vai fazer amanhã?
     **Answer**: watch a movie
     **Explanation**: O texto diz "We will all watch a movie together".
 
@@ -254,7 +254,7 @@
 
 10. **read_answer**
     **Passage**: "It's raining. I'll get an umbrella! She won't go out today. I promise I'll call you when I arrive."
-    **Question**: O que o speaker promete?
+    **Question**: O que o narrador promete?
     **Answer**: I'll call you (when I arrive)
     **Accepts**: to call
     **Explanation**: O texto diz "I promise I'll call you".
@@ -423,7 +423,7 @@
 
 10. **read_answer**
     **Passage**: "I'm going to travel next month — I have tickets. But right now? Oh, the phone! I'll get it. I think it'll be my mom."
-    **Question**: Por que o speaker vai viajar (planejado vs espontâneo)?
+    **Question**: Por que o narrador vai viajar (planejado vs espontâneo)?
     **Answer**: planned
     **Accepts**: tickets / has tickets
     **Explanation**: O texto diz "I have tickets" — indicando uma viagem planejada com going to.
@@ -592,7 +592,7 @@
 
 10. **read_answer**
     **Passage**: "Will you help me move? Sure, I'll come tomorrow. I promise I'll bring snacks too!"
-    **Question**: O que o speaker promete trazer?
+    **Question**: O que o narrador promete trazer?
     **Answer**: snacks
     **Explanation**: O texto diz "I'll bring snacks too".
 
@@ -762,7 +762,7 @@
 
 10. **read_answer**
     **Passage**: "I'm going to travel next month — I have tickets. I think it will be a great trip. I'll send postcards too!"
-    **Question**: O que o speaker vai fazer no mês que vem?
+    **Question**: O que o narrador vai fazer no mês que vem?
     **Answer**: travel
     **Explanation**: O texto diz "I'm going to travel next month".
 
@@ -929,7 +929,7 @@
 
 10. **read_answer**
     **Passage**: "It's really cold today — almost freezing. It's going to snow tonight, they say. Tomorrow will be even colder. I love winter, but this week is too much. Summer is my favorite season."
-    **Question**: Qual é a estação favorita do speaker?
+    **Question**: Qual é a estação favorita do narrador?
     **Answer**: summer
     **Explanation**: O texto diz "Summer is my favorite season". Pratica leitura sobre clima e preferências por estações.
 

@@ -522,7 +522,7 @@
         {
           "type": "read_answer",
           "passage": "Q: Are you working today? A: No, I'm not. I'm reading. Q: Is your sister studying? A: Yes, she is. She's preparing for an exam.",
-          "question": "O que o speaker está fazendo?",
+          "question": "O que o narrador está fazendo?",
           "answer": "reading",
           "explanation": "O texto diz \"I'm reading\"."
         }

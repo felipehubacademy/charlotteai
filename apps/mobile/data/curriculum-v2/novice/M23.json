@@ -787,7 +787,7 @@
         {
           "type": "read_answer",
           "passage": "I don't feel well today. I have a headache and a sore throat. I think I might have a fever too. Where is the nearest pharmacy? I need some medicine and maybe I should see a doctor.",
-          "question": "Quais três sintomas o speaker tem?",
+          "question": "Quais três sintomas o narrador tem?",
           "answer": "headache, sore throat, and fever",
           "accepts": [
             "a headache",

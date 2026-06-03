@@ -74,7 +74,7 @@
 
 10. **read_answer**
     **Passage**: "Tomorrow I'm going to wake up early. I'm going to work in the morning and go to the gym in the afternoon. We're going to have dinner together."
-    **Question**: O que o speaker vai fazer à tarde?
+    **Question**: O que o narrador vai fazer à tarde?
     **Answer**: go to the gym
     **Explanation**: O texto diz "go to the gym in the afternoon".
 
@@ -239,7 +239,7 @@
 
 10. **read_answer**
     **Passage**: "I'm not going to work tomorrow. It's my day off. My sister isn't going to come either. We aren't going to do anything special."
-    **Question**: Por que o speaker não vai trabalhar amanhã?
+    **Question**: Por que o narrador não vai trabalhar amanhã?
     **Answer**: it's my day off
     **Accepts**: day off
     **Explanation**: O texto diz "It's my day off".
@@ -571,7 +571,7 @@
 
 10. **read_answer**
     **Passage**: "I'm going to travel tomorrow. Next week I'm going to be in Italy. In two months I'm going to come back home."
-    **Question**: Quando o speaker vai viajar?
+    **Question**: Quando o narrador vai viajar?
     **Answer**: tomorrow
     **Explanation**: O texto diz "I'm going to travel tomorrow".
 
@@ -736,7 +736,7 @@
 
 10. **read_answer**
     **Passage**: "Tomorrow I'm going to work. I'm not going to eat out tonight — I'm tired. Next week I'm going to travel to Bahia."
-    **Question**: Para onde o speaker vai na semana que vem?
+    **Question**: Para onde o narrador vai na semana que vem?
     **Answer**: Bahia
     **Accepts**: to Bahia
     **Explanation**: O texto diz "travel to Bahia".

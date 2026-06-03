@@ -597,7 +597,7 @@
 
 10. **read_answer**
     **Passage**: "I don't feel well today. I have a headache and a sore throat. I think I might have a fever too. Where is the nearest pharmacy? I need some medicine and maybe I should see a doctor."
-    **Question**: Quais três sintomas o speaker tem?
+    **Question**: Quais três sintomas o narrador tem?
     **Answer**: headache, sore throat, and fever
 **Accepts**: a headache / a sore throat / and possibly a fever
     **Explanation**: O texto lista três sintomas: "I have a headache and a sore throat. I think I might have a fever too". Pratica leitura de descrição de sintomas.

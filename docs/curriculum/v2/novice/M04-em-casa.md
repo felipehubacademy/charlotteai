@@ -580,7 +580,7 @@
 
 10. **read_answer**
     **Passage**: "I am a doctor. My hospital is big. The hospital has got 200 beds. There is an emergency room on the first floor."
-    **Question**: O que o speaker faz? (dê uma profissão)
+    **Question**: O que o narrador faz? (dê uma profissão)
     **Answer**: doctor
     **Explanation**: O texto diz "I am a doctor". Note "a doctor" (artigo indefinido + profissão).
 

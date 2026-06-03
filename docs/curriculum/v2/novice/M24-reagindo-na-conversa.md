@@ -246,7 +246,7 @@
 
 10. **read_answer**
     **Passage**: "Friend: 'I just got engaged!' You: 'No way! Seriously?' Friend: 'Yes! Last night, on the beach.' You: 'Get out! That's amazing!' Friend: 'I can't believe it either.'"
-    **Question**: Como o speaker reage à notícia do noivado?
+    **Question**: Como o narrador reage à notícia do noivado?
     **Answer**: with surprise — "No way! Seriously?" and "Get out! That's amazing!"
     **Explanation**: O texto mostra várias reações de surpresa em sequência: "No way!", "Seriously?", "Get out!", "That's amazing!". Todas válidas para uma grande notícia.
 
@@ -413,7 +413,7 @@
 
 10. **read_answer**
     **Passage**: "Friend: 'First, you log in. Then click Settings. After that, change your password.' You: 'Got it. Log in, click Settings, change password. Makes sense.' Friend: 'Exactly!' You: 'I see. Easy enough.'"
-    **Question**: Como o speaker confirma que entendeu?
+    **Question**: Como o narrador confirma que entendeu?
     **Answer**: with "Got it", "Makes sense", "I see"
     **Explanation**: O texto mostra três reações de confirmação em sequência: "Got it", "Makes sense", "I see". Todas válidas para mostrar que se entendeu.
 
@@ -581,7 +581,7 @@
 
 10. **read_answer**
     **Passage**: "Friend: 'I didn't get the job.' You: 'Oh no, I'm so sorry to hear that.' Friend: 'It's okay. I'll find another one.' You: 'That's a bummer, but I'm sure you will.' Friend: 'Thanks for being supportive.'"
-    **Question**: Como o speaker demonstra empatia? (escreva uma frase que o speaker usa)
+    **Question**: Como o narrador demonstra empatia? (escreva uma frase que o narrador usa)
     **Answer**: I'm so sorry to hear that
     **Accepts**: Oh no I'm so sorry / sorry to hear that / That's a bummer / I'm sure you will
     **Explanation**: O texto mostra empatia através de reações como "Oh no", "I'm so sorry", "That's a bummer", combinadas com apoio "I'm sure you will".

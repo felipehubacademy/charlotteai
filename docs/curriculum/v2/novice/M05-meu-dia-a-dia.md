@@ -253,7 +253,7 @@
 
 10. **read_answer**
     **Passage**: "I work in a big company. I study English in the morning. I work with my colleagues in a big office."
-    **Question**: Onde o speaker trabalha?
+    **Question**: Onde o narrador trabalha?
     **Answer**: in a big company
     **Explanation**: O texto diz "I work in a big company".
 
@@ -583,7 +583,7 @@
 
 10. **read_answer**
     **Passage**: "I go to work by car. I come home at six. We go to the park on Saturdays. I come back at eight."
-    **Question**: Como o speaker vai pro trabalho?
+    **Question**: Como o narrador vai pro trabalho?
     **Answer**: by car
     **Explanation**: O texto diz "I go to work by car".
 
@@ -748,7 +748,7 @@
 
 10. **read_answer**
     **Passage**: "I always wake up at seven. I usually have coffee and bread. I sometimes go to the gym. I never work on Sundays."
-    **Question**: Quando o speaker não trabalha?
+    **Question**: Quando o narrador não trabalha?
     **Answer**: Sundays
     **Explanation**: O texto diz "I never work on Sundays". Logo, o falante não trabalha aos domingos.
 

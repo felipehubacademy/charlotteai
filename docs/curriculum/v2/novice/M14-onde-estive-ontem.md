@@ -77,7 +77,7 @@
 
 10. **read_answer**
     **Passage**: "Yesterday I was at home. My family was with me. We were happy together. It was a great day."
-    **Question**: Onde o speaker estava ontem?
+    **Question**: Onde o narrador estava ontem?
     **Answer**: at home
     **Explanation**: O texto diz "I was at home".
 
@@ -242,7 +242,7 @@
 
 10. **read_answer**
     **Passage**: "I wasn't at the party last night. My friends were there but I was tired. They weren't happy that I missed it."
-    **Question**: Onde o speaker não estava?
+    **Question**: Onde o narrador não estava?
     **Answer**: at the party
     **Explanation**: O texto diz "I wasn't at the party last night".
 
@@ -572,7 +572,7 @@
 
 10. **read_answer**
     **Passage**: "I was in São Paulo last month. Two years ago I was in Rio. In 2020 I was in Lisbon."
-    **Question**: Quando o speaker esteve em Lisbon?
+    **Question**: Quando o narrador esteve em Lisbon?
     **Answer**: in 2020
     **Explanation**: O texto diz "In 2020 I was in Lisbon".
 

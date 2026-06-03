@@ -112,7 +112,7 @@
         {
           "type": "read_answer",
           "passage": "I like coffee and tea, but I don't like soda. I drink water all day. Do you prefer coffee or tea?",
-          "question": "O speaker gosta de refrigerante?",
+          "question": "O narrador gosta de refrigerante?",
           "answer": "no",
           "accepts": [
             "doesn't like"
@@ -317,7 +317,7 @@
         {
           "type": "read_answer",
           "passage": "I love English because it opens doors. I study every day, so I'm making progress. I'll keep going because it's fun.",
-          "question": "Por que o speaker ama inglês?",
+          "question": "Por que o narrador ama inglês?",
           "answer": "it opens doors",
           "accepts": [
             "opens doors"
@@ -724,7 +724,7 @@
         {
           "type": "read_answer",
           "passage": "Although I love coffee, I drink tea sometimes. I want to travel. However, I have no money right now.",
-          "question": "Por que o speaker não viaja agora?",
+          "question": "Por que o narrador não viaja agora?",
           "answer": "no money",
           "accepts": [
             "I have no money"

@@ -325,7 +325,7 @@
         {
           "type": "read_answer",
           "passage": "I work in a big company. I study English in the morning. I work with my colleagues in a big office.",
-          "question": "Onde o speaker trabalha?",
+          "question": "Onde o narrador trabalha?",
           "answer": "in a big company",
           "explanation": "O texto diz \"I work in a big company\"."
         }
@@ -729,7 +729,7 @@
         {
           "type": "read_answer",
           "passage": "I go to work by car. I come home at six. We go to the park on Saturdays. I come back at eight.",
-          "question": "Como o speaker vai pro trabalho?",
+          "question": "Como o narrador vai pro trabalho?",
           "answer": "by car",
           "explanation": "O texto diz \"I go to work by car\"."
         }
@@ -933,7 +933,7 @@
         {
           "type": "read_answer",
           "passage": "I always wake up at seven. I usually have coffee and bread. I sometimes go to the gym. I never work on Sundays.",
-          "question": "Quando o speaker não trabalha?",
+          "question": "Quando o narrador não trabalha?",
           "answer": "Sundays",
           "explanation": "O texto diz \"I never work on Sundays\". Logo, o falante não trabalha aos domingos."
         }

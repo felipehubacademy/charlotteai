@@ -409,7 +409,7 @@
 
 10. **read_answer**
     **Passage**: "Q: Are you working today? A: No, I'm not. I'm reading. Q: Is your sister studying? A: Yes, she is. She's preparing for an exam."
-    **Question**: O que o speaker está fazendo?
+    **Question**: O que o narrador está fazendo?
     **Answer**: reading
     **Explanation**: O texto diz "I'm reading".
 

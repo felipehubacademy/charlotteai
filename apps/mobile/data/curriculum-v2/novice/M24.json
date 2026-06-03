@@ -347,7 +347,7 @@
         {
           "type": "read_answer",
           "passage": "Friend: 'I just got engaged!' You: 'No way! Seriously?' Friend: 'Yes! Last night, on the beach.' You: 'Get out! That's amazing!' Friend: 'I can't believe it either.'",
-          "question": "Como o speaker reage à notícia do noivado?",
+          "question": "Como o narrador reage à notícia do noivado?",
           "answer": "with surprise — \"No way! Seriously?\" and \"Get out! That's amazing!\"",
           "explanation": "O texto mostra várias reações de surpresa em sequência: \"No way!\", \"Seriously?\", \"Get out!\", \"That's amazing!\". Todas válidas para uma grande notícia."
         }
@@ -559,7 +559,7 @@
         {
           "type": "read_answer",
           "passage": "Friend: 'First, you log in. Then click Settings. After that, change your password.' You: 'Got it. Log in, click Settings, change password. Makes sense.' Friend: 'Exactly!' You: 'I see. Easy enough.'",
-          "question": "Como o speaker confirma que entendeu?",
+          "question": "Como o narrador confirma que entendeu?",
           "answer": "with \"Got it\", \"Makes sense\", \"I see\"",
           "explanation": "O texto mostra três reações de confirmação em sequência: \"Got it\", \"Makes sense\", \"I see\". Todas válidas para mostrar que se entendeu."
         }
@@ -784,7 +784,7 @@
         {
           "type": "read_answer",
           "passage": "Friend: 'I didn't get the job.' You: 'Oh no, I'm so sorry to hear that.' Friend: 'It's okay. I'll find another one.' You: 'That's a bummer, but I'm sure you will.' Friend: 'Thanks for being supportive.'",
-          "question": "Como o speaker demonstra empatia? (escreva uma frase que o speaker usa)",
+          "question": "Como o narrador demonstra empatia? (escreva uma frase que o narrador usa)",
           "answer": "I'm so sorry to hear that",
           "accepts": [
             "Oh no I'm so sorry",

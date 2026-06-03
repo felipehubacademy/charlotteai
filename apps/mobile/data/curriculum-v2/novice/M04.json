@@ -730,7 +730,7 @@
         {
           "type": "read_answer",
           "passage": "I am a doctor. My hospital is big. The hospital has got 200 beds. There is an emergency room on the first floor.",
-          "question": "O que o speaker faz? (dê uma profissão)",
+          "question": "O que o narrador faz? (dê uma profissão)",
           "answer": "doctor",
           "explanation": "O texto diz \"I am a doctor\". Note \"a doctor\" (artigo indefinido + profissão)."
         }

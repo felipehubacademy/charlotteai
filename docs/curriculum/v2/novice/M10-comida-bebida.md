@@ -79,7 +79,7 @@
 
 10. **read_answer**
     **Passage**: "For breakfast I have two eggs, some bread, and a cup of coffee. My sister has one apple and some yogurt."
-    **Question**: Quantos ovos o speaker tem?
+    **Question**: Quantos ovos o narrador tem?
     **Answer**: two
     **Explanation**: O texto diz "I have two eggs".
 
@@ -244,7 +244,7 @@
 
 10. **read_answer**
     **Passage**: "I have some bread but I don't have any milk. Is there any cheese? Yes, there's some cheese in the fridge."
-    **Question**: O que o speaker NÃO tem?
+    **Question**: O que o narrador NÃO tem?
     **Answer**: milk
     **Explanation**: O texto diz "I don't have any milk".
 

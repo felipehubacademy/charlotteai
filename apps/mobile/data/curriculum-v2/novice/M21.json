@@ -111,7 +111,7 @@
         {
           "type": "read_answer",
           "passage": "If it rains tomorrow, I'll stay home. If it's sunny, we'll go hiking. If she comes, we'll have lunch together.",
-          "question": "O que o speaker vai fazer se estiver ensolarado?",
+          "question": "O que o narrador vai fazer se estiver ensolarado?",
           "answer": "go hiking",
           "explanation": "O texto diz \"If it's sunny, we'll go hiking\"."
         }
@@ -313,7 +313,7 @@
         {
           "type": "read_answer",
           "passage": "If I have time tomorrow, I'll go to the gym. If I save enough, I'll buy a bike. If my friend calls, I'll go out with her.",
-          "question": "O que o speaker vai comprar se economizar o suficiente?",
+          "question": "O que o narrador vai comprar se economizar o suficiente?",
           "answer": "a bike",
           "explanation": "O texto diz \"If I save enough, I'll buy a bike\"."
         }
@@ -515,7 +515,7 @@
         {
           "type": "read_answer",
           "passage": "If you need help, I'll come. If you're hungry, I'll cook. If you have time, we'll chat. I'm here for you.",
-          "question": "O que o speaker vai fazer se você estiver com fome?",
+          "question": "O que o narrador vai fazer se você estiver com fome?",
           "answer": "cook",
           "accepts": [
             "I'll cook"
@@ -720,7 +720,7 @@
         {
           "type": "read_answer",
           "passage": "I'll come to the party unless I'm tired. We'll go hiking unless it rains. I'll cook dinner unless you want pizza.",
-          "question": "Quando o speaker não vai à festa?",
+          "question": "Quando o narrador não vai à festa?",
           "answer": "if I'm tired",
           "accepts": [
             "tired"
@@ -925,7 +925,7 @@
         {
           "type": "read_answer",
           "passage": "If it's sunny tomorrow, I'll go to the beach. If it rains, I'll stay home. I'll meet my friend unless she cancels.",
-          "question": "Quando o speaker não vai encontrar o amigo?",
+          "question": "Quando o narrador não vai encontrar o amigo?",
           "answer": "if she cancels",
           "accepts": [
             "she cancels"

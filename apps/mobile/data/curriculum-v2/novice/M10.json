@@ -116,7 +116,7 @@
         {
           "type": "read_answer",
           "passage": "For breakfast I have two eggs, some bread, and a cup of coffee. My sister has one apple and some yogurt.",
-          "question": "Quantos ovos o speaker tem?",
+          "question": "Quantos ovos o narrador tem?",
           "answer": "two",
           "explanation": "O texto diz \"I have two eggs\"."
         }
@@ -320,7 +320,7 @@
         {
           "type": "read_answer",
           "passage": "I have some bread but I don't have any milk. Is there any cheese? Yes, there's some cheese in the fridge.",
-          "question": "O que o speaker NÃO tem?",
+          "question": "O que o narrador NÃO tem?",
           "answer": "milk",
           "explanation": "O texto diz \"I don't have any milk\"."
         }

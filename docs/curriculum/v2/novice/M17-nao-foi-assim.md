@@ -73,7 +73,7 @@
 
 10. **read_answer**
     **Passage**: "I didn't work yesterday. I didn't go out either. I didn't see anyone. It was a quiet day."
-    **Question**: O speaker trabalhou?
+    **Question**: O narrador trabalhou?
     **Answer**: no
     **Accepts**: didn't work
     **Explanation**: O texto diz "I didn't work yesterday".
@@ -405,7 +405,7 @@
 
 10. **read_answer**
     **Passage**: "Q: Where did you go? A: I went to the beach. Q: What did you do? A: I swam and read. Q: When did you come back? A: At seven."
-    **Question**: O que o speaker fez na praia?
+    **Question**: O que o narrador fez na praia?
     **Answer**: swam and read
     **Accepts**: swam, read
     **Explanation**: O texto diz "I swam and read".
