@@ -208,6 +208,16 @@ Rules:
       • "I dunno let me think bro"
     The ONLY way to NOT mark is if the chunk is COMPLETELY ABSENT from
     the message. If it's there in any form, MARK.
+  - USER-ASKS OBJECTIVES (hidden_prompt starts with "user asks" or "user
+    perguntar"): ANY question directed at Charlotte (you) satisfies the
+    objective. Match by INTENT, not specific phrase. Examples that ALL
+    count for "user asks Charlotte something":
+      • "How about you?"   • "And you?"
+      • "How are you?"     • "Are you OK?"
+      • "Were you happy?"  • "Were you hungry?"   • "Were you home?"
+      • "Did you have fun?" • "Do you like X?"
+    If the student turns the conversation back toward Charlotte with
+    ANY question (Were/Are/Do/Did/Have/Can/Will + you), MARK.
   - BIAS TOWARD MARKING when there's clear evidence. Strict matching is
     only for cases where the student replied off-topic, gibberish, or
     something genuinely unrelated.
