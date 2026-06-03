@@ -37,29 +37,24 @@ export function checkGrammar(ex, answer) {
   }
   if (ex.type === 'multiple_choice' || ex.type === 'word_bank' || ex.type === 'word_order') return false;
 
-  const answerHasContraction = /n't|'ve|'re|'ll|'d|'m/.test(c);
-
+  // Aceita contracao OU forma separada SEMPRE.
   if (ex.type === 'fill_gap') {
     if (u.includes(c)) return true;
-    if (!answerHasContraction) {
-      const uExp = expandContractions(u);
-      const cExp = expandContractions(c);
-      if (uExp === cExp || uExp.includes(cExp)) return true;
-    }
+    const uExp = expandContractions(u);
+    const cExp = expandContractions(c);
+    if (uExp === cExp || uExp.includes(cExp)) return true;
     return false;
   }
   if (ex.type === 'fix_error') {
     if (u.includes(c) || c.includes(u)) return true;
-    if (!answerHasContraction) {
-      const uExp = expandContractions(u);
-      const cExp = expandContractions(c);
-      if (uExp.includes(cExp) || cExp.includes(uExp)) return true;
-    }
+    const uExp = expandContractions(u);
+    const cExp = expandContractions(c);
+    if (uExp.includes(cExp) || cExp.includes(uExp)) return true;
     return false;
   }
   if (ex.type === 'read_answer') {
-    const cExp = answerHasContraction ? c : expandContractions(c);
-    const uExp = answerHasContraction ? u : expandContractions(u);
+    const cExp = expandContractions(c);
+    const uExp = expandContractions(u);
     const words = cExp.split(' ').filter(w => w.length > 2);
     return words.length > 0 && words.filter(w => uExp.includes(w)).length >= Math.ceil(words.length * 0.6);
   }

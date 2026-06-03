@@ -152,31 +152,28 @@ function checkGrammar(ex: GrammarEx, answer: string): boolean {
   }
   if (ex.type === 'multiple_choice' || ex.type === 'word_bank' || ex.type === 'word_order') return false;
 
-  // If the expected answer uses a contraction, don't expand — test is specifically
-  // checking the contracted form. Only expand when the answer uses the full form.
-  const answerHasContraction = /n't|'ve|'re|'ll|'d|'m/.test(c);
+  // Politica: aceitar contracao OU forma separada SEMPRE (a norma culta eh a
+  // separada e a maioria dos exercicios nao testa contracao especificamente).
+  // Exercicios que QUEREM testar a forma contraida explicitamente devem usar
+  // `Accepts` ou estar em unidade focada em contracoes (que o conteudo trata).
 
   if (ex.type === 'fill_gap') {
     if (u.includes(c)) return true; // accepts full sentence
-    if (!answerHasContraction) {
-      const uExp = expandContractions(u);
-      const cExp = expandContractions(c);
-      if (uExp === cExp || uExp.includes(cExp)) return true;
-    }
+    const uExp = expandContractions(u);
+    const cExp = expandContractions(c);
+    if (uExp === cExp || uExp.includes(cExp)) return true;
     return false;
   }
   if (ex.type === 'fix_error') {
     if (u.includes(c) || c.includes(u)) return true;
-    if (!answerHasContraction) {
-      const uExp = expandContractions(u);
-      const cExp = expandContractions(c);
-      if (uExp.includes(cExp) || cExp.includes(uExp)) return true;
-    }
+    const uExp = expandContractions(u);
+    const cExp = expandContractions(c);
+    if (uExp.includes(cExp) || cExp.includes(uExp)) return true;
     return false;
   }
   if (ex.type === 'read_answer') {
-    const cExp = answerHasContraction ? c : expandContractions(c);
-    const uExp = answerHasContraction ? u : expandContractions(u);
+    const cExp = expandContractions(c);
+    const uExp = expandContractions(u);
     const words = cExp.split(' ').filter(w => w.length > 2);
     return words.length > 0 && words.filter(w => uExp.includes(w)).length >= Math.ceil(words.length * 0.6);
   }
