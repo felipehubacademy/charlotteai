@@ -197,7 +197,7 @@
    **Passage**: "The candidate dodged the policy question and went personal. 'What this country needs is leadership that listens,' he said. 'What we don't need is another decade of slogans dressed up as plans.' The audience cheered the rhythm more than the substance."
    **Question**: What does the candidate claim the country needs?
    **Answer**: leadership that listens
-   **Explanation**: "What this country needs is leadership that listens." Wh-cleft used rhetorically. Followed by the inverse wh-cleft ("What we don't need is...") — a rhythm device common in political speech.
+   **Explanation**: "What this country needs is leadership that listens." Wh-cleft used rhetorically. Followed by the inverse wh-cleft ("What we don't / do not need is...") — a rhythm device common in political speech.
 
 ### 2. Listening/Speaking (5 phrases)
 
@@ -458,29 +458,29 @@
 1. **multiple_choice** — "It wasn't until I left home _____ I understood my parents."
    **Options**: that / when / which / and
    **Answer**: that
-   **Explanation**: "It wasn't until + clause + that + main clause" — the it-cleft form of delayed realisation. "When" feels natural but breaks the cleft pattern.
+   **Explanation**: "It wasn't / was not until + clause + that + main clause" — the it-cleft form of delayed realisation. "When" feels natural but breaks the cleft pattern.
 
 2. **multiple_choice** — "_____ the second draft that the story started working."
    **Options**: It wasn't until / Not until / Until / It wasn't when
    **Answer**: It wasn't until
-   **Explanation**: It-cleft of delayed result. "It wasn't until + time-clause + that + result" — the structure dramatises the delay until things started working.
+   **Explanation**: It-cleft of delayed result. "It wasn't / was not until + time-clause + that + result" — the structure dramatises the delay until things started working.
 
 3. **fill_gap** — "It wasn't until I saw the photo _____ I recognised her."
    **Hint**: conector que fecha o cleft
    **Answer**: that
-   **Explanation**: "It wasn't until I saw the photo that I recognised her." The cleft pattern is strictly "It wasn't until X that Y" — never "when".
+   **Explanation**: "It wasn't / was not until I saw the photo that I recognised her." The cleft pattern is strictly "It wasn't / was not until X that Y" — never "when".
 
 4. **fix_error** — "It wasn't until I read the contract when I noticed the clause."
    **Hint**: After "It wasn't until + clause", use "that", not "when"
    **Answer**: It wasn't until I read the contract that I noticed the clause.
-   **Explanation**: "When" feels natural but breaks the cleft pattern. The cleft structure is strictly "It wasn't until X that Y". "When" works for plain temporal links, not for the cleft emphasis form.
+   **Explanation**: "When" feels natural but breaks the cleft pattern. The cleft structure is strictly "It wasn't / was not until X that Y". "When" works for plain temporal links, not for the cleft emphasis form.
 
 5. **read_answer**
    **Passage**: "Doctors often miss the rarer diagnoses. It wasn't until the third specialist that anyone considered the autoimmune angle. By then, three years had passed and several treatments had failed. 'It wasn't until I trusted my own instincts,' the patient said, 'that I started getting answers.'"
    **Question**: What finally led to answers?
    **Answer**: trusting her own instincts
    **Accepts**: the third specialist considering autoimmune angle
-   **Explanation**: Two it-not-until clefts: "It wasn't until the third specialist that..." and "It wasn't until I trusted my own instincts that...". Both highlight delayed turning points.
+   **Explanation**: Two it-not-until clefts: "It wasn't / was not until the third specialist that..." and "It wasn't / was not until I trusted my own instincts that...". Both highlight delayed turning points.
 
 ### 2. Listening/Speaking (5 phrases)
 
@@ -599,7 +599,7 @@
 1. **multiple_choice** — "_____ I'm leaving is that I want a new challenge."
    **Options**: The reason why / The reason because / Reason that / Why the reason
    **Answer**: The reason why
-   **Explanation**: "The reason (why) + clause + is + that-clause/element". "Why" is optional in modern English ("the reason I'm leaving is..."). "Because" is incorrect here — the explanation comes after "is".
+   **Explanation**: "The reason (why) + clause + is + that-clause/element". "Why" is optional in modern English ("the reason I'm / I am leaving is..."). "Because" is incorrect here — the explanation comes after "is".
 
 2. **multiple_choice** — "_____ surprised me was his lack of preparation."
    **Options**: The thing that / The thing was / Thing that / Was the thing
@@ -622,7 +622,7 @@
    **Question**: According to the CEO, what causes most companies to fail?
    **Answer**: chasing fashion
    **Accepts**: the temptation to chase fashion
-   **Explanation**: Three layered lexical clefts: "The reason... was discipline", "The thing that holds... is the temptation to chase fashion", "The time when we changed course wasn't... it was...". Layered for rhetorical weight.
+   **Explanation**: Three layered lexical clefts: "The reason... was discipline", "The thing that holds... is the temptation to chase fashion", "The time when we changed course wasn't / was not... it was...". Layered for rhetorical weight.
 
 ### 2. Listening/Speaking (5 phrases)
 

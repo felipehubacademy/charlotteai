@@ -224,7 +224,7 @@
 6. **fill_gap** — "_____ she's young, she's very mature."
    **Hint**: Although + cláusula
    **Answer**: Although
-   **Explanation**: "Although she's young" — full clause after "although".
+   **Explanation**: "Although she's / she is young" — full clause after "although".
 
 7. **fill_gap** — "_____ having a bad day, he stayed kind."
    **Hint**: Despite + -ing
@@ -248,7 +248,7 @@
     **Question**: Why is the rich man not happy?
     **Answer**: he isn't happy
     **Accepts**: the text doesn't say why
-    **Explanation**: The text states "Although he is rich, he isn't happy" — the contrast is between wealth and happiness, no further reason given.
+    **Explanation**: The text states "Although he is rich, he isn't / is not happy" — the contrast is between wealth and happiness, no further reason given.
 
 ### 2. Listening/Speaking (5 phrases)
 

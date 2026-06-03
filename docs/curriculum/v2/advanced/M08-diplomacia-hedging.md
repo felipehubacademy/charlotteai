@@ -43,12 +43,12 @@
 2. **multiple_choice** — "_____ you might be able to help with something."
    **Options**: I was hoping / I hoped / I am hoping / I hope
    **Answer**: I was hoping
-   **Explanation**: "I was hoping that..." — past continuous of hope, used to introduce a soft request. Equivalent to "I'm wondering" but with slight emotional warmth. "I hope" reads as already-committed; the past form softens.
+   **Explanation**: "I was hoping that..." — past continuous of hope, used to introduce a soft request. Equivalent to "I'm / I am wondering" but with slight emotional warmth. "I hope" reads as already-committed; the past form softens.
 
 3. **fill_gap** — "_____ if you'd mind looking over this draft when you have a moment."
    **Hint**: "I was wondering"
    **Answer**: I was wondering
-   **Explanation**: Soft request opener. The full structure: "I was wondering if you'd mind + -ing". Double softening: past continuous + "would you mind" + -ing.
+   **Explanation**: Soft request opener. The full structure: "I was wondering if you'd / you would mind + -ing". Double softening: past continuous + "would you mind" + -ing.
 
 4. **fix_error** — "I want you to look at this report."
    **Hint**: Soften with "I was wondering if you could..."
@@ -331,13 +331,13 @@
 3. **fill_gap** — "_____ entirely sure I agree with that framing."
    **Hint**: "I'm not"
    **Answer**: I'm not
-   **Explanation**: "I'm not entirely sure I agree" — soft disagreement. "Not entirely" hedges; "I'm not sure I agree" is softer than "I disagree". Common in academic and professional contexts.
+   **Explanation**: "I'm / I am not entirely sure I agree" — soft disagreement. "Not entirely" hedges; "I'm / I am not sure I agree" is softer than "I disagree". Common in academic and professional contexts.
 
 4. **fix_error** — "You're wrong about that."
    **Hint**: Soften with "I'd see it differently"
    **Answer**: I'd see it a little differently.
    **Accepts**: With respect, I'd see it differently.
-   **Explanation**: "You're wrong" is blunt and damaging. "I'd see it differently" presents the same disagreement without attacking the other person. Crucial diplomatic shift.
+   **Explanation**: "You're / You are wrong" is blunt and damaging. "I'd / I would see it differently" presents the same disagreement without attacking the other person. Crucial diplomatic shift.
 
 5. **read_answer**
    **Passage**: "The diplomat had a phrase for every situation. 'With respect, I'd see the geography rather differently. I take your point about the timeline, but the local context complicates it. I'm not entirely convinced we're talking about the same problem.' Each disagreement was delivered like a gift, wrapped carefully."
@@ -478,7 +478,7 @@
    **Hint**: "Arguably" needs to attach to a clause, not stand alone
    **Answer**: Arguably, it's the best film of the decade.
    **Accepts**: It's arguably the best film of the decade.
-   **Explanation**: "Arguably" is an adverb — attaches to a clause. "Arguably is" treats it as a verb form, which fails. Either fronted ("Arguably, X is...") or mid-position ("It's arguably the best...").
+   **Explanation**: "Arguably" is an adverb — attaches to a clause. "Arguably is" treats it as a verb form, which fails. Either fronted ("Arguably, X is...") or mid-position ("It's / It is arguably the best...").
 
 5. **read_answer**
    **Passage**: "The reviewer hedged everywhere. 'It could be argued that this is the author's strongest work. One might say the prose has matured considerably. In a sense, the book completes a trilogy that began twenty years ago. Arguably, the ending falters — but only slightly.' Even the critique was wrapped in conditionals."

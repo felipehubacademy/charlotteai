@@ -46,7 +46,7 @@
 4. **word_bank** — "Tom, _____ I've known for years, just got married."
    **Choices**: who / that / which / whose
    **Answer**: who
-   **Explanation**: "Who I've known for years" — extra info about Tom. Specific person, commas.
+   **Explanation**: "Who I've / I have known for years" — extra info about Tom. Specific person, commas.
 
 5. **fill_gap** — "My sister, _____ studies medicine, lives in São Paulo."
    **Hint**: relative pronoun para pessoa em non-defining

@@ -522,7 +522,7 @@
 1. **multiple_choice** — "That _____ be true!"
    **Options**: can't / mustn't / shouldn't
    **Answer**: can't
-   **Explanation**: "Can't" for logical impossibility — "It can't be true!" = it's impossible.
+   **Explanation**: "Can't / Cannot" for logical impossibility — "It can't / cannot be true!" = it's impossible.
 
 2. **multiple_choice** — "He _____ be there now — I just saw him here."
    **Options**: can't / shouldn't / mustn't
@@ -532,7 +532,7 @@
 3. **word_bank** — "It _____ be that easy."
    **Choices**: can't / shouldn't / wouldn't / wasn't
    **Answer**: can't
-   **Explanation**: "Can't be" — logical impossibility.
+   **Explanation**: "Can't / Cannot be" — logical impossibility.
 
 4. **word_bank** — "She _____ be 100 — she looks 30."
    **Choices**: can't / mustn't / wouldn't / shouldn't
@@ -542,12 +542,12 @@
 5. **fill_gap** — "That _____ be right — it's wrong."
    **Hint**: impossibility
    **Answer**: can't
-   **Explanation**: "Can't be right" — impossible.
+   **Explanation**: "Can't / Cannot be right" — impossible.
 
 6. **fill_gap** — "They _____ be coming — it's too late."
    **Hint**: impossibility (continuous)
    **Answer**: can't
-   **Explanation**: "Can't be coming" — impossibility with continuous.
+   **Explanation**: "Can't / Cannot be coming" — impossibility with continuous.
 
 7. **fill_gap** — "He _____ be at home — his car is here."
    **Hint**: logical conclusion
@@ -557,7 +557,7 @@
 8. **fix_error** — "She mustn't be at home." (meaning impossible)
    **Hint**: For impossibility, use can't
    **Answer**: She can't be at home.
-   **Explanation**: "Mustn't" = prohibition. "Can't" = impossibility.
+   **Explanation**: "Mustn't / Must not" = prohibition. "Can't / Cannot" = impossibility.
 
 9. **fix_error** — "It can't to be true."
    **Hint**: No "to" after can't
@@ -569,7 +569,7 @@
     **Question**: Why is it not John?
     **Answer**: he's in Paris
     **Accepts**: in Paris
-    **Explanation**: The text says "he's in Paris" — reason it can't be him.
+    **Explanation**: The text says "he's / he is in Paris" — reason it can't be him.
 
 ### 2. Listening/Speaking (5 phrases)
 
@@ -714,7 +714,7 @@
 6. **fill_gap** — "That _____ be true — it's impossible!"
    **Hint**: impossibility
    **Answer**: can't
-   **Explanation**: "Can't be" — logical impossibility.
+   **Explanation**: "Can't / Cannot be" — logical impossibility.
 
 7. **fill_gap** — "_____ I borrow your pen?" (formal polite)
    **Hint**: may/might for formal

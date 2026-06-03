@@ -88,7 +88,7 @@
     **Question**: What is she getting used to?
     **Answer**: waking up early
     **Accepts**: waking up early for work
-    **Explanation**: The text says "She's getting used to waking up early for work".
+    **Explanation**: The text says "She's / She is getting used to waking up early for work".
 
 ### 2. Listening/Speaking (5 phrases)
 
@@ -237,7 +237,7 @@
 7. **fill_gap** — "He won't _____ cheating this time."
    **Hint**: get away with
    **Answer**: get away with
-   **Explanation**: "Won't get away with cheating" — won't escape consequences.
+   **Explanation**: "Won't / Will not get away with cheating" — won't escape consequences.
 
 8. **fix_error** — "I can't put with this noise."
    **Hint**: 3 partes — put UP with
@@ -387,7 +387,7 @@
 4. **word_bank** — "We don't _____ each other."
    **Choices**: get along with / get up with / get on / get along
    **Answer**: get along with
-   **Explanation**: "Don't get along with each other" — bad relationship. Always with "with".
+   **Explanation**: "Don't / Do not get along with each other" — bad relationship. Always with "with".
 
 5. **fill_gap** — "I really _____ my old boss — she was inspiring."
    **Hint**: look up to (admirar)

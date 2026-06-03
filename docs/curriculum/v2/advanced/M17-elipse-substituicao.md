@@ -35,12 +35,12 @@
 1. **multiple_choice** — "Are you coming to the meeting?" "I want to, but I _____."
    **Options**: can't / can't to / can't go / cannot
    **Answer**: can't
-   **Explanation**: Ellipsis after modal: "I can't [come to the meeting]" — the verb phrase is omitted because it's recoverable from the question. "I can't to" is wrong (no "to" needed after modals). "I can't go" is grammatically correct but unnecessarily explicit; native speakers prefer the elliptical "I can't".
+   **Explanation**: Ellipsis after modal: "I can't / cannot [come to the meeting]" — the verb phrase is omitted because it's recoverable from the question. "I can't / cannot to" is wrong (no "to" needed after modals). "I can't / cannot go" is grammatically correct but unnecessarily explicit; native speakers prefer the elliptical "I can't / cannot".
 
 2. **multiple_choice** — "Will you call him?" "I'd like _____, but I don't have his number."
    **Options**: to / to call him / it / so
    **Answer**: to
-   **Explanation**: Ellipsis after "to": "I'd like to [call him]" — the infinitive verb is omitted but "to" remains as the marker. Standard ellipsis pattern: "would like to / want to / mean to / hope to + ellipsis" — the "to" stays.
+   **Explanation**: Ellipsis after "to": "I'd / I would like to [call him]" — the infinitive verb is omitted but "to" remains as the marker. Standard ellipsis pattern: "would like to / want to / mean to / hope to + ellipsis" — the "to" stays.
 
 3. **fill_gap** — "Did you go to the party?" "I planned _____, but something came up."
    **Hint**: Infinitive marker retained
@@ -57,7 +57,7 @@
    **Passage**: "She had been invited to three events that evening. She would have gone to all of them if she could have. She would have liked to at least drop in on one. In the end, she didn't go to any. 'I meant to,' she said the next day. 'I just couldn't.'"
    **Question**: What word is omitted after "couldn't" in her final line?
    **Answer**: go (the verb is elided)
-   **Explanation**: Four ellipses in five sentences: "if she could have [gone]", "She would have liked to [drop in / go]", "didn't go to any [of them]", "I meant to [go]", "I just couldn't [go]". Verb phrases recovered from context — fluent C2 economy.
+   **Explanation**: Four ellipses in five sentences: "if she could have [gone]", "She would have liked to [drop in / go]", "didn't / did not go to any [of them]", "I meant to [go]", "I just couldn't / could not [go]". Verb phrases recovered from context — fluent C2 economy.
 
 ### 2. Listening/Speaking (5 phrases)
 
@@ -176,12 +176,12 @@
 1. **multiple_choice** — "Is the train on time?" "I _____."
    **Options**: think so / think it / think yes / think to
    **Answer**: think so
-   **Explanation**: "I think so" — "so" replaces the entire clause "that the train is on time". Common verbs: think, hope, believe, suppose, expect, guess. Negative: "I don't think so" (with "not" after the verb, not "I think not", although the latter exists in formal register).
+   **Explanation**: "I think so" — "so" replaces the entire clause "that the train is on time". Common verbs: think, hope, believe, suppose, expect, guess. Negative: "I don't / do not think so" (with "not" after the verb, not "I think not", although the latter exists in formal register).
 
 2. **multiple_choice** — "Will it rain tomorrow?" "I hope _____."
    **Options**: not / not so / no / never
    **Answer**: not
-   **Explanation**: "I hope not" — "not" replaces the negative version of the clause ("that it won't rain"). Same pattern: "I'm afraid not", "I guess not", "I suppose not". The negative substitute is "not" placed directly after the verb.
+   **Explanation**: "I hope not" — "not" replaces the negative version of the clause ("that it won't / will not rain"). Same pattern: "I'm / I am afraid not", "I guess not", "I suppose not". The negative substitute is "not" placed directly after the verb.
 
 3. **fill_gap** — "Are you sure about the date?" "I _____, but let me double-check."
    **Hint**: "Believe so" or "think so"
@@ -198,7 +198,7 @@
    **Passage**: "The meeting was full of softened uncertainties. 'Will the deal close this quarter?' 'I think so.' 'Are we still on track for launch?' 'I hope so.' 'Is the CFO going to push back?' 'I'm afraid so.' 'And the board?' 'I expect not.' Four answers, each carrying just enough to keep the conversation moving."
    **Question**: How does the speaker respond to whether the board will push back?
    **Answer**: I expect not (he/she doesn't expect them to push back)
-   **Explanation**: Four substitutions in five exchanges: "I think so", "I hope so", "I'm afraid so", "I expect not". Each replaces a whole clause. Conversation moves on without restating.
+   **Explanation**: Four substitutions in five exchanges: "I think so", "I hope so", "I'm / I am afraid so", "I expect not". Each replaces a whole clause. Conversation moves on without restating.
 
 ### 2. Listening/Speaking (5 phrases)
 

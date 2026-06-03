@@ -362,7 +362,7 @@
           "sentence": "I'd rather you _____ smoke in the house.",
           "hint": "past simple negative \"smoke\"",
           "answer": "didn't",
-          "explanation": "\"I'd rather + subject + past simple\" for preference about another person's behaviour. Strictly speaking, \"didn't smoke\" is the past subjunctive form here — same surface as past simple, but mood is hypothetical."
+          "explanation": "\"I'd / I would rather + subject + past simple\" for preference about another person's behaviour. Strictly speaking, \"didn't / did not smoke\" is the past subjunctive form here — same surface as past simple, but mood is hypothetical."
         },
         {
           "type": "fix_error",

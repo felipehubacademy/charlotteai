@@ -194,7 +194,7 @@
 1. **multiple_choice** — "I _____ like coffee, but now I love it."
    **Options**: didn't use to / didn't used to / don't use to
    **Answer**: didn't use to
-   **Explanation**: Negative: "didn't use to + base". Note: "use" (no -d) after didn't.
+   **Explanation**: Negative: "didn't / did not use to + base". Note: "use" (no -d) after didn't.
 
 2. **multiple_choice** — "_____ you use to study English?"
    **Options**: Did / Do / Were
@@ -204,7 +204,7 @@
 3. **word_bank** — "She _____ play piano."
    **Choices**: didn't use to / didn't used to / doesn't use to / no use to
    **Answer**: didn't use to
-   **Explanation**: Negative uses "didn't use to" (base "use", not "used").
+   **Explanation**: Negative uses "didn't / did not use to" (base "use", not "used").
 
 4. **word_bank** — "_____ she use to live in Rio?"
    **Choices**: Did / Was / Has / Does
@@ -214,7 +214,7 @@
 5. **fill_gap** — "I didn't use _____ exercise."
    **Hint**: particle "to"
    **Answer**: to
-   **Explanation**: "Didn't use TO + base".
+   **Explanation**: "Didn't / Did not use TO + base".
 
 6. **fill_gap** — "_____ you use to read every day?"
    **Hint**: past question auxiliary
@@ -224,12 +224,12 @@
 7. **fill_gap** — "She didn't _____ to drink tea."
    **Hint**: form of "use" after didn't
    **Answer**: use
-   **Explanation**: After "didn't", base form: "use" (not "used").
+   **Explanation**: After "didn't / did not", base form: "use" (not "used").
 
 8. **fix_error** — "I didn't used to like coffee."
    **Hint**: After didn't, base "use"
    **Answer**: I didn't use to like coffee.
-   **Explanation**: After "didn't", base form: "use" (not "used"). Common mistake.
+   **Explanation**: After "didn't / did not", base form: "use" (not "used"). Common mistake.
 
 9. **fix_error** — "Did you used to live here?"
    **Hint**: After Did, base form
@@ -241,7 +241,7 @@
     **Question**: Did the speaker use to like coffee?
     **Answer**: no
     **Accepts**: didn't use to
-    **Explanation**: The text says "I didn't use to like coffee".
+    **Explanation**: The text says "I didn't / did not use to like coffee".
 
 ### 2. Listening/Speaking (5 phrases)
 
@@ -733,7 +733,7 @@
 9. **fix_error** — "I didn't used to drink coffee."
    **Hint**: After didn't, "use" (no -d)
    **Answer**: I didn't use to drink coffee.
-   **Explanation**: "Didn't use to" — base "use".
+   **Explanation**: "Didn't / Did not use to" — base "use".
 
 10. **read_answer**
     **Passage**: "I used to be very shy. I didn't use to talk much. But I would write a lot in my journal. Now I'm more outgoing."

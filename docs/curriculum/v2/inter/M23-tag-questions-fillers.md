@@ -37,53 +37,53 @@
 1. **multiple_choice** — "She's a teacher, _____ she?"
    **Options**: isn't / is / aren't / are
    **Answer**: isn't
-   **Explanation**: Positive statement with "is" → negative tag "isn't she?". Tag questions reverse polarity. Positive statement + negative tag, or negative statement + positive tag. Auxiliary matches the verb in the main clause.
+   **Explanation**: Positive statement with "is" → negative tag "isn't / is not she?". Tag questions reverse polarity. Positive statement + negative tag, or negative statement + positive tag. Auxiliary matches the verb in the main clause.
 
 2. **multiple_choice** — "You aren't tired, _____ you?"
    **Options**: are / aren't / is / isn't
    **Answer**: are
-   **Explanation**: Negative statement "aren't" → positive tag "are you?". Reverse polarity rule. Match the auxiliary (in this case, the "be" verb) to the original.
+   **Explanation**: Negative statement "aren't / are not" → positive tag "are you?". Reverse polarity rule. Match the auxiliary (in this case, the "be" verb) to the original.
 
 3. **word_bank** — "They were at the meeting, _____ they?"
    **Choices**: weren't / wasn't / aren't / didn't
    **Answer**: weren't
-   **Explanation**: Past tense "were" → past tense negative tag "weren't they?". Match tense and verb form. "Wasn't" would be singular (she/he/it).
+   **Explanation**: Past tense "were" → past tense negative tag "weren't / were not they?". Match tense and verb form. "Wasn't / Was not" would be singular (she/he/it).
 
 4. **word_bank** — "He has finished the project, _____ he?"
    **Choices**: hasn't / haven't / didn't / isn't
    **Answer**: hasn't
-   **Explanation**: Present perfect "has" → negative tag "hasn't he?". When "have" is the auxiliary in the main clause, use "have/has" in the tag too.
+   **Explanation**: Present perfect "has" → negative tag "hasn't / has not he?". When "have" is the auxiliary in the main clause, use "have/has" in the tag too.
 
 5. **fill_gap** — "We've met before, _____ we?"
    **Hint**: negative tag of "have"
    **Answer**: haven't
-   **Explanation**: "We've" = "we have" → negative tag "haven't we?". Always match the contracted auxiliary in the statement.
+   **Explanation**: "We've / We have" = "we have" → negative tag "haven't / have not we?". Always match the contracted auxiliary in the statement.
 
 6. **fill_gap** — "It's a beautiful day, _____ it?"
    **Hint**: negative tag of "is"
    **Answer**: isn't
-   **Explanation**: "It's a beautiful day, isn't it?" — extremely common conversational tag. Almost a fixed greeting/observation pattern in English.
+   **Explanation**: "It's a beautiful day, isn't / is not it?" — extremely common conversational tag. Almost a fixed greeting/observation pattern in English.
 
 7. **fill_gap** — "She wasn't at the party, _____ she?"
    **Hint**: positive tag of "wasn't"
    **Answer**: was
-   **Explanation**: Negative "wasn't" → positive tag "was she?". Reverse polarity. The tag asks if the negative is true, expecting yes/no confirmation.
+   **Explanation**: Negative "wasn't / was not" → positive tag "was she?". Reverse polarity. The tag asks if the negative is true, expecting yes/no confirmation.
 
 8. **fix_error** — "You are tired, isn't you?"
    **Hint**: Tag for "are" should be "aren't", not "isn't"
    **Answer**: You are tired, aren't you?
-   **Explanation**: Tag verb must match the main verb. "Are" → "aren't" for negative tag, not "isn't". "Isn't" is the negative of "is" (third person singular).
+   **Explanation**: Tag verb must match the main verb. "Are" → "aren't / are not" for negative tag, not "isn't / is not". "Isn't / Is not" is the negative of "is" (third person singular).
 
 9. **fix_error** — "He has been working hard, isn't he?"
    **Hint**: For "has been", use "hasn't" tag
    **Answer**: He has been working hard, hasn't he?
-   **Explanation**: When the main verb is "has been + -ing" (present perfect continuous), the tag uses the auxiliary "has" → "hasn't he?". "Isn't" doesn't fit because "is" isn't the auxiliary here.
+   **Explanation**: When the main verb is "has been + -ing" (present perfect continuous), the tag uses the auxiliary "has" → "hasn't / has not he?". "Isn't / Is not" doesn't fit because "is" isn't the auxiliary here.
 
 10. **read_answer**
     **Passage**: "You're new here, aren't you? I haven't seen you before. She's the new manager, isn't she? And they were just hired last week, weren't they? Everyone's still learning each other's names."
     **Question**: How many tag questions are in the passage?
     **Answer**: three (aren't you, isn't she, weren't they) — or four if "haven't seen" counted, though that isn't a tag
-    **Explanation**: Three tag questions: "aren't you?", "isn't she?", "weren't they?". Each reverses polarity from positive to negative. The passage uses tags for social warmth — opening conversation, confirming knowledge.
+    **Explanation**: Three tag questions: "aren't / are not you?", "isn't / is not she?", "weren't / were not they?". Each reverses polarity from positive to negative. The passage uses tags for social warmth — opening conversation, confirming knowledge.
 
 ### 2. Listening/Speaking (5 phrases)
 
@@ -202,53 +202,53 @@
 1. **multiple_choice** — "You like coffee, _____ you?"
    **Options**: don't / aren't / haven't / isn't
    **Answer**: don't
-   **Explanation**: Main verb is "like" (no auxiliary visible) → tag uses "do/does". "You like" is present simple, second person → "don't you?". Always add "do" support for action verbs without "be" or modal.
+   **Explanation**: Main verb is "like" (no auxiliary visible) → tag uses "do/does". "You like" is present simple, second person → "don't / do not you?". Always add "do" support for action verbs without "be" or modal.
 
 2. **multiple_choice** — "She works downtown, _____ she?"
    **Options**: doesn't / don't / isn't / hasn't
    **Answer**: doesn't
-   **Explanation**: "She works" (third person singular present simple) → "doesn't she?". "Works" implies "does work", so the tag uses "doesn't".
+   **Explanation**: "She works" (third person singular present simple) → "doesn't / does not she?". "Works" implies "does work", so the tag uses "doesn't / does not".
 
 3. **word_bank** — "They went to the concert, _____ they?"
    **Choices**: didn't / weren't / haven't / aren't
    **Answer**: didn't
-   **Explanation**: "Went" is past simple → tag uses "did/didn't". Past simple action verb → "didn't they?". "Weren't" would only fit if the main verb were "were".
+   **Explanation**: "Went" is past simple → tag uses "did/didn't". Past simple action verb → "didn't / did not they?". "Weren't / Were not" would only fit if the main verb were "were".
 
 4. **word_bank** — "He doesn't speak Spanish, _____ he?"
    **Choices**: does / doesn't / is / has
    **Answer**: does
-   **Explanation**: Negative "doesn't speak" → positive tag "does he?". Reverse polarity rule applies to "do/does/did" too.
+   **Explanation**: Negative "doesn't / does not speak" → positive tag "does he?". Reverse polarity rule applies to "do/does/did" too.
 
 5. **fill_gap** — "You didn't see her, _____ you?"
    **Hint**: positive tag of "didn't"
    **Answer**: did
-   **Explanation**: "Didn't see" (negative) → positive tag "did you?". Reverse polarity. Common when confirming someone wasn't seen or didn't happen.
+   **Explanation**: "Didn't / Did not see" (negative) → positive tag "did you?". Reverse polarity. Common when confirming someone wasn't seen or didn't happen.
 
 6. **fill_gap** — "She speaks three languages, _____ she?"
    **Hint**: negative tag of "speaks"
    **Answer**: doesn't
-   **Explanation**: "Speaks" (present simple third person) → "doesn't she?". Reminder: the third person "s" disappears in the tag because "doesn't" carries it.
+   **Explanation**: "Speaks" (present simple third person) → "doesn't / does not she?". Reminder: the third person "s" disappears in the tag because "doesn't / does not" carries it.
 
 7. **fill_gap** — "They lived in Paris last year, _____ they?"
    **Hint**: negative tag of "lived"
    **Answer**: didn't
-   **Explanation**: "Lived" (past simple) → "didn't they?". Past tense in main clause requires "did/didn't" in tag.
+   **Explanation**: "Lived" (past simple) → "didn't / did not they?". Past tense in main clause requires "did/didn't" in tag.
 
 8. **fix_error** — "You like pizza, aren't you?"
    **Hint**: Main verb is "like" — use "don't", not "aren't"
    **Answer**: You like pizza, don't you?
-   **Explanation**: Tag must match the auxiliary that would be used in negation/question of the main verb. "You like" → "Do you like?" / "You don't like" → so tag is "don't you?". "Aren't" doesn't fit "like".
+   **Explanation**: Tag must match the auxiliary that would be used in negation/question of the main verb. "You like" → "Do you like?" / "You don't / do not like" → so tag is "don't / do not you?". "Aren't / Are not" doesn't fit "like".
 
 9. **fix_error** — "He drinks coffee, don't he?"
    **Hint**: Third person singular — use "doesn't"
    **Answer**: He drinks coffee, doesn't he?
-   **Explanation**: "He drinks" is third person singular → auxiliary "does/doesn't". "Don't" is only for I/you/we/they. Common error: forgetting third person -s in the tag.
+   **Explanation**: "He drinks" is third person singular → auxiliary "does/doesn't". "Don't / Do not" is only for I/you/we/they. Common error: forgetting third person -s in the tag.
 
 10. **read_answer**
     **Passage**: "You go to the gym every morning, don't you? I see you there sometimes. She works out too, doesn't she? Last week they were both there at 6am, weren't they? You all wake up so early — I don't know how you do it."
     **Question**: Which tag question uses "don't"?
     **Answer**: "you go to the gym every morning, don't you?"
-    **Explanation**: The passage uses three different tag formations: "don't you?" (for "you go"), "doesn't she?" (for "she works out"), "weren't they?" (for "they were"). Each tag matches the verb form in the main clause.
+    **Explanation**: The passage uses three different tag formations: "don't / do not you?" (for "you go"), "doesn't / does not she?" (for "she works out"), "weren't / were not they?" (for "they were"). Each tag matches the verb form in the main clause.
 
 ### 2. Listening/Speaking (5 phrases)
 
@@ -367,54 +367,54 @@
 1. **multiple_choice** — "You can swim, _____ you?"
    **Options**: can't / don't / aren't / won't
    **Answer**: can't
-   **Explanation**: Modal "can" → negative tag "can't you?". With modals, the tag uses the same modal. No "do/does" needed since modals are auxiliaries themselves.
+   **Explanation**: Modal "can" → negative tag "can't / cannot you?". With modals, the tag uses the same modal. No "do/does" needed since modals are auxiliaries themselves.
 
 2. **multiple_choice** — "She'll be there, _____ she?"
    **Options**: won't / will / doesn't / isn't
    **Answer**: won't
-   **Explanation**: "Will" (contracted in "she'll") → negative tag "won't she?". Future modal "will" pairs with "won't" in negative tag.
+   **Explanation**: "Will" (contracted in "she'll / she will") → negative tag "won't / will not she?". Future modal "will" pairs with "won't / will not" in negative tag.
 
 3. **word_bank** — "We should leave early, _____ we?"
    **Choices**: shouldn't / don't / won't / haven't
    **Answer**: shouldn't
-   **Explanation**: Modal "should" → negative tag "shouldn't we?". Same modal echoes in the tag with negation.
+   **Explanation**: Modal "should" → negative tag "shouldn't / should not we?". Same modal echoes in the tag with negation.
 
 4. **word_bank** — "He couldn't come yesterday, _____ he?"
    **Choices**: could / can / did / would
    **Answer**: could
-   **Explanation**: Negative "couldn't" → positive tag "could he?". Modal stays the same; polarity reverses.
+   **Explanation**: Negative "couldn't / could not" → positive tag "could he?". Modal stays the same; polarity reverses.
 
 5. **fill_gap** — "You wouldn't lie to me, _____ you?"
    **Hint**: positive tag of "wouldn't"
    **Answer**: would
-   **Explanation**: "Wouldn't" → "would you?". Conditional modal "would" in positive tag.
+   **Explanation**: "Wouldn't / Would not" → "would you?". Conditional modal "would" in positive tag.
 
 6. **fill_gap** — "She must be tired, _____ she?"
    **Hint**: "Must" usually pairs with "mustn't" in tag, though "must" often gets a different tag in real speech
    **Answer**: mustn't
    **Accepts**: isn't" depending on register
-   **Explanation**: "Must" technically pairs with "mustn't" in textbook tags. In real speech, "She must be tired, isn't she?" is more common when "must" expresses certainty rather than obligation.
+   **Explanation**: "Must" technically pairs with "mustn't / must not" in textbook tags. In real speech, "She must be tired, isn't / is not she?" is more common when "must" expresses certainty rather than obligation.
 
 7. **fill_gap** — "You can drive, _____ you?"
    **Hint**: negative tag of "can"
    **Answer**: can't
-   **Explanation**: "Can you?" / "Can't you?" — "can" tag forms regularly. Note: in tag, "can't" never spelled "cant".
+   **Explanation**: "Can you?" / "Can't / Cannot you?" — "can" tag forms regularly. Note: in tag, "can't / cannot" never spelled "cant".
 
 8. **fix_error** — "You should call her, don't you?"
    **Hint**: Tag should use "should" — "shouldn't you?"
    **Answer**: You should call her, shouldn't you?
-   **Explanation**: Modal "should" pairs with "shouldn't" in negative tag. "Don't" only works for action verbs without modals. Mistake comes from forgetting that "should" is an auxiliary itself.
+   **Explanation**: Modal "should" pairs with "shouldn't / should not" in negative tag. "Don't / Do not" only works for action verbs without modals. Mistake comes from forgetting that "should" is an auxiliary itself.
 
 9. **fix_error** — "He can play guitar, can he?"
    **Hint**: Positive statement needs negative tag — "can't he?"
    **Answer**: He can play guitar, can't he?
-   **Explanation**: Positive statement "can play" requires negative tag "can't he?". The tag with "can he?" would only be correct after a negative statement like "He can't play guitar, can he?".
+   **Explanation**: Positive statement "can play" requires negative tag "can't / cannot he?". The tag with "can he?" would only be correct after a negative statement like "He can't / cannot play guitar, can he?".
 
 10. **read_answer**
     **Passage**: "We should leave by eight, shouldn't we? Traffic gets terrible after that. You'll be ready, won't you? Marco can drive us, can't he? It would be faster than the train, wouldn't it?"
     **Question**: Which modal appears most often?
     **Answer**: "would" (in "wouldn't it?" and implied), or "will/should/can" each once
-    **Explanation**: The passage uses modal tags: "shouldn't we?", "won't you?", "can't he?", "wouldn't it?". Each tag echoes the modal of the main clause with negation. The structure is uniform across different modals.
+    **Explanation**: The passage uses modal tags: "shouldn't / should not we?", "won't / will not you?", "can't / cannot he?", "wouldn't / would not it?". Each tag echoes the modal of the main clause with negation. The structure is uniform across different modals.
 
 ### 2. Listening/Speaking (5 phrases)
 
@@ -533,18 +533,18 @@
 1. **multiple_choice** — "I am right, _____ I?"
    **Options**: aren't / am not / amn't / isn't
    **Answer**: aren't
-   **Explanation**: Special case: "I am" → tag uses "aren't I?". Logically should be "amn't I?" (which exists in Scottish/Irish dialects) but standard English uses "aren't I?" to avoid the awkward "amn't". One of the strangest exceptions in English grammar.
+   **Explanation**: Special case: "I am" → tag uses "aren't / are not I?". Logically should be "amn't I?" (which exists in Scottish/Irish dialects) but standard English uses "aren't / are not I?" to avoid the awkward "amn't". One of the strangest exceptions in English grammar.
 
 2. **multiple_choice** — "Let's go to the park, _____ we?"
    **Options**: shall / don't / won't / aren't
    **Answer**: shall
-   **Explanation**: Special case: "Let's" → tag is "shall we?". Sounds slightly formal but it's the correct form. "Let's" is suggestion + invitation, and "shall we?" extends the invitation. Don't use "do we?" or "don't we?".
+   **Explanation**: Special case: "Let's" → tag is "shall we?". Sounds slightly formal but it's the correct form. "Let's" is suggestion + invitation, and "shall we?" extends the invitation. Don't use "do we?" or "don't / do not we?".
 
 3. **word_bank** — "Open the door, _____ you?"
    **Choices**: will / do / can / would
    **Answer**: will
    **Accepts**: would / could" depending on politeness
-   **Explanation**: Imperative + tag: "Open the door, will you?" — softens a command into a polite request. Variations: "would you?", "could you?", "won't you?". All make the imperative friendlier.
+   **Explanation**: Imperative + tag: "Open the door, will you?" — softens a command into a polite request. Variations: "would you?", "could you?", "won't / will not you?". All make the imperative friendlier.
 
 4. **word_bank** — "Nobody called, _____ they?"
    **Choices**: did / didn't / has / hasn't
@@ -554,7 +554,7 @@
 5. **fill_gap** — "I am late, _____ I?"
    **Hint**: tag special case for "I am"
    **Answer**: aren't
-   **Explanation**: "Aren't I?" — the standard English solution to the missing negative of "I am". "Amn't" exists in some dialects but isn't standard. C2 awareness: this is one of the few cases where "are" pairs with "I".
+   **Explanation**: "Aren't / Are not I?" — the standard English solution to the missing negative of "I am". "Amn't" exists in some dialects but isn't standard. C2 awareness: this is one of the few cases where "are" pairs with "I".
 
 6. **fill_gap** — "Let's stop here, _____ we?"
    **Hint**: tag for "let's"
@@ -564,12 +564,12 @@
 7. **fill_gap** — "Everyone enjoys music, _____ they?"
    **Hint**: tag for indefinite "everyone"
    **Answer**: don't
-   **Explanation**: "Everyone" takes a singular verb ("enjoys") but the tag uses plural "they" — "don't they?". This avoids gender-specific "he/she" while staying natural. Common pattern with everyone/somebody/anyone/nobody.
+   **Explanation**: "Everyone" takes a singular verb ("enjoys") but the tag uses plural "they" — "don't / do not they?". This avoids gender-specific "he/she" while staying natural. Common pattern with everyone/somebody/anyone/nobody.
 
 8. **fix_error** — "I am wrong, am I not?"
    **Hint**: Standard form is "aren't I?"
    **Answer**: I am wrong, aren't I?
-   **Explanation**: "Am I not?" is grammatically logical but extremely formal/old-fashioned. Standard modern English uses "aren't I?" as the accepted irregular tag for "I am". C2 awareness of register.
+   **Explanation**: "Am I not?" is grammatically logical but extremely formal/old-fashioned. Standard modern English uses "aren't / are not I?" as the accepted irregular tag for "I am". C2 awareness of register.
 
 9. **fix_error** — "Let's leave, will we?"
    **Hint**: Correct tag for "let's" is "shall we?"
@@ -580,7 +580,7 @@
     **Passage**: "I am late, aren't I? Sorry. Let's order food, shall we? You don't mind if I pay later, do you? Nobody else is coming, are they? Open the window, would you? It's stuffy in here."
     **Question**: Which two tags are special exceptions to the standard rule?
     **Answer**: "aren't I?" (special tag for "I am") and "shall we?" (special tag for "let's"). Also "are they?" (for "nobody") and "would you?" (after imperative).
-    **Explanation**: The passage strings together multiple special cases: "aren't I?" (irregular for "I am"), "shall we?" (for "let's"), "are they?" (indefinite subject "nobody"), "would you?" (softening imperative). All exceptions to the basic positive-negative rule.
+    **Explanation**: The passage strings together multiple special cases: "aren't / are not I?" (irregular for "I am"), "shall we?" (for "let's"), "are they?" (indefinite subject "nobody"), "would you?" (softening imperative). All exceptions to the basic positive-negative rule.
 
 ### 2. Listening/Speaking (5 phrases)
 
@@ -726,12 +726,12 @@
 6. **fill_gap** — Tag question with rising intonation (real question expecting answer): "She's coming tomorrow, _____ she?"
    **Hint**: tag with rising intonation expecting confirmation
    **Answer**: isn't
-   **Explanation**: "Isn't she?" with rising intonation = genuine question seeking confirmation. The speaker isn't sure and wants the listener to confirm or deny. Different from rhetorical use.
+   **Explanation**: "Isn't / Is not she?" with rising intonation = genuine question seeking confirmation. The speaker isn't sure and wants the listener to confirm or deny. Different from rhetorical use.
 
 7. **fill_gap** — Tag question with falling intonation (rhetorical, expecting agreement): "It's a beautiful day, _____ it?"
    **Hint**: same tag form but with falling intonation
    **Answer**: isn't
-   **Explanation**: "Isn't it?" with falling intonation = rhetorical statement seeking agreement, not info. The speaker assumes agreement. Same tag form; intonation carries the function.
+   **Explanation**: "Isn't / Is not it?" with falling intonation = rhetorical statement seeking agreement, not info. The speaker assumes agreement. Same tag form; intonation carries the function.
 
 8. **fix_error** — "I, like, you know, I mean, kind of, well, don't really know."
    **Hint**: Too many fillers — sound nervous; pick one or two
@@ -748,7 +748,7 @@
     **Passage**: "Well, I think — I mean, you know how it is — sometimes you just need a break. Kind of. So I told my boss I needed a few days. She was, like, totally understanding. It's a good company to work for, isn't it?"
     **Question**: How many different fillers appear in the passage?
     **Answer**: at least six — "Well", "I mean", "you know", "Kind of", "So", "like"
-    **Explanation**: The passage uses many fillers naturally: "Well" (opener), "I mean" (clarification), "you know" (shared understanding), "Kind of" (hedge), "So" (transition), "like" (pause/example). Combined sparingly, they create natural conversational rhythm. "Isn't it?" at the end is a tag, not a filler.
+    **Explanation**: The passage uses many fillers naturally: "Well" (opener), "I mean" (clarification), "you know" (shared understanding), "Kind of" (hedge), "So" (transition), "like" (pause/example). Combined sparingly, they create natural conversational rhythm. "Isn't / Is not it?" at the end is a tag, not a filler.
 
 ### 2. Listening/Speaking (5 phrases)
 

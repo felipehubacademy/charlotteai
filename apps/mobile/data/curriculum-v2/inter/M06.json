@@ -610,7 +610,7 @@
             "shouldn't"
           ],
           "answer": "can't",
-          "explanation": "\"Can't\" for logical impossibility — \"It can't be true!\" = it's impossible."
+          "explanation": "\"Can't / Cannot\" for logical impossibility — \"It can't / cannot be true!\" = it's impossible."
         },
         {
           "type": "multiple_choice",
@@ -633,7 +633,7 @@
             "wasn't"
           ],
           "answer": "can't",
-          "explanation": "\"Can't be\" — logical impossibility."
+          "explanation": "\"Can't / Cannot be\" — logical impossibility."
         },
         {
           "type": "word_bank",
@@ -652,14 +652,14 @@
           "sentence": "That _____ be right — it's wrong.",
           "hint": "impossibility",
           "answer": "can't",
-          "explanation": "\"Can't be right\" — impossible."
+          "explanation": "\"Can't / Cannot be right\" — impossible."
         },
         {
           "type": "fill_gap",
           "sentence": "They _____ be coming — it's too late.",
           "hint": "impossibility (continuous)",
           "answer": "can't",
-          "explanation": "\"Can't be coming\" — impossibility with continuous."
+          "explanation": "\"Can't / Cannot be coming\" — impossibility with continuous."
         },
         {
           "type": "fill_gap",
@@ -673,7 +673,7 @@
           "sentence": "\"She mustn't be at home.\" (meaning impossible)",
           "hint": "For impossibility, use can't",
           "answer": "She can't be at home.",
-          "explanation": "\"Mustn't\" = prohibition. \"Can't\" = impossibility."
+          "explanation": "\"Mustn't / Must not\" = prohibition. \"Can't / Cannot\" = impossibility."
         },
         {
           "type": "fix_error",
@@ -690,7 +690,7 @@
           "accepts": [
             "in Paris"
           ],
-          "explanation": "The text says \"he's in Paris\" — reason it can't be him."
+          "explanation": "The text says \"he's / he is in Paris\" — reason it can't be him."
         }
       ],
       "listening_speaking": [
@@ -856,7 +856,7 @@
           "sentence": "That _____ be true — it's impossible!",
           "hint": "impossibility",
           "answer": "can't",
-          "explanation": "\"Can't be\" — logical impossibility."
+          "explanation": "\"Can't / Cannot be\" — logical impossibility."
         },
         {
           "type": "fill_gap",

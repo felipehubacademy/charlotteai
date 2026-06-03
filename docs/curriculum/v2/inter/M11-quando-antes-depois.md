@@ -79,7 +79,7 @@
     **Question**: When will the speaker call?
     **Answer**: when I arrive at the airport
     **Accepts**: when arriving / after arrival
-    **Explanation**: The text says "I'll call you when I arrive at the airport" — present simple in the time clause.
+    **Explanation**: The text says "I'll / I will call you when I arrive at the airport" — present simple in the time clause.
 
 ### 2. Listening/Speaking (5 phrases)
 
@@ -245,7 +245,7 @@
     **Question**: When will the speaker text?
     **Answer**: before I arrive
     **Accepts**: before arriving
-    **Explanation**: The text says "I'll text you before I arrive" — present simple "arrive" after "before" in future context.
+    **Explanation**: The text says "I'll / I will text you before I arrive" — present simple "arrive" after "before" in future context.
 
 ### 2. Listening/Speaking (5 phrases)
 
@@ -364,7 +364,7 @@
 1. **multiple_choice** — "I'll wait _____ you arrive."
    **Options**: until / before / since
    **Answer**: until
-   **Explanation**: "Until" = up to (continuous duration up to a point). "I'll wait until you arrive" — the waiting continues up to that moment.
+   **Explanation**: "Until" = up to (continuous duration up to a point). "I'll / I will wait until you arrive" — the waiting continues up to that moment.
 
 2. **multiple_choice** — "_____ you finish reading, dinner will be ready."
    **Options**: By the time / Until / Before
@@ -404,14 +404,14 @@
 9. **fix_error** — "By the time you will finish, I'll be home."
    **Hint**: Sem "will" após "by the time"
    **Answer**: By the time you finish, I'll be home.
-   **Explanation**: "By the time you finish" — present simple. "Will" only in the main clause "I'll be home".
+   **Explanation**: "By the time you finish" — present simple. "Will" only in the main clause "I'll / I will be home".
 
 10. **read_answer**
     **Passage**: "I'll wait until you arrive at the station. By the time we finish dinner, it'll be 10pm. Stay here until I get back. By the time I write this, my flight will be boarding."
     **Question**: What will the speaker do until the listener arrives?
     **Answer**: wait
     **Accepts**: wait at the station
-    **Explanation**: The text says "I'll wait until you arrive at the station".
+    **Explanation**: The text says "I'll / I will wait until you arrive at the station".
 
 ### 2. Listening/Speaking (5 phrases)
 
@@ -570,14 +570,14 @@
 9. **fix_error** — "As soon as she will hear, she'll call me."
    **Hint**: Present simple após "as soon as"
    **Answer**: As soon as she hears, she'll call me.
-   **Explanation**: "Hears" — 3rd person present simple. "Will" only in the main clause "she'll call".
+   **Explanation**: "Hears" — 3rd person present simple. "Will" only in the main clause "she'll / she will call".
 
 10. **read_answer**
     **Passage**: "I'll call you as soon as I get home. As soon as she hears the news, she'll be thrilled. Let me know as soon as you arrive. As soon as I have updates, I'll share them."
     **Question**: When will the speaker share updates?
     **Answer**: as soon as I have updates
     **Accepts**: immediately when there are updates
-    **Explanation**: The text says "As soon as I have updates, I'll share them" — present simple "have" after "as soon as".
+    **Explanation**: The text says "As soon as I have updates, I'll / I will share them" — present simple "have" after "as soon as".
 
 ### 2. Listening/Speaking (5 phrases)
 

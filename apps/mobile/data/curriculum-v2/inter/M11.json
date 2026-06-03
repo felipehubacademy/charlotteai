@@ -120,7 +120,7 @@
             "when arriving",
             "after arrival"
           ],
-          "explanation": "The text says \"I'll call you when I arrive at the airport\" — present simple in the time clause."
+          "explanation": "The text says \"I'll / I will call you when I arrive at the airport\" — present simple in the time clause."
         }
       ],
       "listening_speaking": [
@@ -313,7 +313,7 @@
           "accepts": [
             "before arriving"
           ],
-          "explanation": "The text says \"I'll text you before I arrive\" — present simple \"arrive\" after \"before\" in future context."
+          "explanation": "The text says \"I'll / I will text you before I arrive\" — present simple \"arrive\" after \"before\" in future context."
         }
       ],
       "listening_speaking": [
@@ -428,7 +428,7 @@
             "since"
           ],
           "answer": "until",
-          "explanation": "\"Until\" = up to (continuous duration up to a point). \"I'll wait until you arrive\" — the waiting continues up to that moment."
+          "explanation": "\"Until\" = up to (continuous duration up to a point). \"I'll / I will wait until you arrive\" — the waiting continues up to that moment."
         },
         {
           "type": "multiple_choice",
@@ -498,7 +498,7 @@
           "sentence": "By the time you will finish, I'll be home.",
           "hint": "Sem \"will\" após \"by the time\"",
           "answer": "By the time you finish, I'll be home.",
-          "explanation": "\"By the time you finish\" — present simple. \"Will\" only in the main clause \"I'll be home\"."
+          "explanation": "\"By the time you finish\" — present simple. \"Will\" only in the main clause \"I'll / I will be home\"."
         },
         {
           "type": "read_answer",
@@ -508,7 +508,7 @@
           "accepts": [
             "wait at the station"
           ],
-          "explanation": "The text says \"I'll wait until you arrive at the station\"."
+          "explanation": "The text says \"I'll / I will wait until you arrive at the station\"."
         }
       ],
       "listening_speaking": [
@@ -692,7 +692,7 @@
           "sentence": "As soon as she will hear, she'll call me.",
           "hint": "Present simple após \"as soon as\"",
           "answer": "As soon as she hears, she'll call me.",
-          "explanation": "\"Hears\" — 3rd person present simple. \"Will\" only in the main clause \"she'll call\"."
+          "explanation": "\"Hears\" — 3rd person present simple. \"Will\" only in the main clause \"she'll / she will call\"."
         },
         {
           "type": "read_answer",
@@ -702,7 +702,7 @@
           "accepts": [
             "immediately when there are updates"
           ],
-          "explanation": "The text says \"As soon as I have updates, I'll share them\" — present simple \"have\" after \"as soon as\"."
+          "explanation": "The text says \"As soon as I have updates, I'll / I will share them\" — present simple \"have\" after \"as soon as\"."
         }
       ],
       "listening_speaking": [

@@ -129,7 +129,7 @@
           "accepts": [
             "waking up early for work"
           ],
-          "explanation": "The text says \"She's getting used to waking up early for work\"."
+          "explanation": "The text says \"She's / She is getting used to waking up early for work\"."
         }
       ],
       "listening_speaking": [
@@ -302,7 +302,7 @@
           "sentence": "He won't _____ cheating this time.",
           "hint": "get away with",
           "answer": "get away with",
-          "explanation": "\"Won't get away with cheating\" — won't escape consequences."
+          "explanation": "\"Won't / Will not get away with cheating\" — won't escape consequences."
         },
         {
           "type": "fix_error",
@@ -475,7 +475,7 @@
             "get along"
           ],
           "answer": "get along with",
-          "explanation": "\"Don't get along with each other\" — bad relationship. Always with \"with\"."
+          "explanation": "\"Don't / Do not get along with each other\" — bad relationship. Always with \"with\"."
         },
         {
           "type": "fill_gap",

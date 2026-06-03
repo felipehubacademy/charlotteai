@@ -533,7 +533,7 @@
           "sentence": "Offered cake: \"Well, _____.\"",
           "hint": "Litotes meaning \"yes, please\"",
           "answer": "I wouldn't say no",
-          "explanation": "\"I wouldn't say no\" — litotes for accepting eagerly. Polite-British register. Saying \"I wouldn't say no\" to cake is much warmer than \"yes\". Cultural code: the litotes signals you want it but won't be greedy about asking."
+          "explanation": "\"I wouldn't / would not say no\" — litotes for accepting eagerly. Polite-British register. Saying \"I wouldn't / would not say no\" to cake is much warmer than \"yes\". Cultural code: the litotes signals you want it but won't be greedy about asking."
         },
         {
           "type": "fix_error",
@@ -553,7 +553,7 @@
           "accepts": [
             "would happily return"
           ],
-          "explanation": "Four litotes in four sentences: \"not without its charms\" (charming), \"no small achievement\" (impressive), \"not exactly modest... not without reason\" (justifiably proud), \"wouldn't say no\" (would say yes). British-style understatement runs the whole passage."
+          "explanation": "Four litotes in four sentences: \"not without its charms\" (charming), \"no small achievement\" (impressive), \"not exactly modest... not without reason\" (justifiably proud), \"wouldn't / would not say no\" (would say yes). British-style understatement runs the whole passage."
         }
       ],
       "listening_speaking": [
@@ -841,7 +841,7 @@
           "sentence": "In American English, the past participle of \"get\" is often \"_____\" rather than British \"got\".",
           "hint": "alternative past participle form",
           "answer": "gotten",
-          "explanation": "\"Gotten\" — American past participle of \"get\". British English uses \"got\" for past participle. \"I've gotten better at this\" (American) vs \"I've got better at this\" (British). Note: \"have got\" meaning \"have/possess\" uses \"got\" in both."
+          "explanation": "\"Gotten\" — American past participle of \"get\". British English uses \"got\" for past participle. \"I've / I have gotten better at this\" (American) vs \"I've / I have got better at this\" (British). Note: \"have got\" meaning \"have/possess\" uses \"got\" in both."
         },
         {
           "type": "fix_error",

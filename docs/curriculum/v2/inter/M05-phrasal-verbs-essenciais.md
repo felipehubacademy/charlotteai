@@ -407,7 +407,7 @@
     **Question**: When will the speaker pick you up?
     **Answer**: at 8
     **Accepts**: 8
-    **Explanation**: The text says "I'll pick you up at 8".
+    **Explanation**: The text says "I'll / I will pick you up at 8".
 
 ### 2. Listening/Speaking (5 phrases)
 
@@ -867,18 +867,18 @@
 3. **word_bank** — Confirming you are the person being asked for: "Yes, _____."
    **Choices**: speaking / I'm here / it's me / talking
    **Answer**: speaking
-   **Explanation**: "Yes, speaking" — concise phone-specific confirmation that you are the person being asked for. Fixed phone convention. "Yes, it's me" works casually but "speaking" is more professional.
+   **Explanation**: "Yes, speaking" — concise phone-specific confirmation that you are the person being asked for. Fixed phone convention. "Yes, it's / it is me" works casually but "speaking" is more professional.
 
 4. **word_bank** — Transferring a call: "I'll _____ you through."
    **Choices**: put / pass / get / send
    **Answer**: put
-   **Explanation**: "I'll put you through" — phrasal verb meaning "transfer". Fixed phone English. "Put you through to [department]" or just "put you through" (when context is clear). Common in receptionist/secretary speak.
+   **Explanation**: "I'll / I will put you through" — phrasal verb meaning "transfer". Fixed phone English. "Put you through to [department]" or just "put you through" (when context is clear). Common in receptionist/secretary speak.
 
 5. **fill_gap** — "She's on _____ line right now. Can I take a message?"
    **Hint**: indefinite article + word for telephone connection
    **Answer**: another
    **Accepts**: the other
-   **Explanation**: "She's on another line" / "She's on the other line" — phone English for "she's busy with another call". "Another line" suggests there are multiple; "the other line" implies a specific second line.
+   **Explanation**: "She's / She is on another line" / "She's / She is on the other line" — phone English for "she's / she is busy with another call". "Another line" suggests there are multiple; "the other line" implies a specific second line.
 
 6. **fill_gap** — "Sorry, we were _____ off."
    **Hint**: phrasal for connection drop
@@ -888,7 +888,7 @@
 7. **fill_gap** — "I'll _____ back to you tomorrow."
    **Hint**: phrasal verb for "respond later"
    **Answer**: get
-   **Explanation**: "I'll get back to you" — phrasal verb for "I'll respond later" or "I'll follow up". Standard professional phone close when you can't answer immediately. Different from "call you back" (which means literally make another call).
+   **Explanation**: "I'll / I will get back to you" — phrasal verb for "I'll / I will respond later" or "I'll / I will follow up". Standard professional phone close when you can't answer immediately. Different from "call you back" (which means literally make another call).
 
 8. **fix_error** — On the phone: "Hello, my name is John."
    **Hint**: On phone — use "This is John"

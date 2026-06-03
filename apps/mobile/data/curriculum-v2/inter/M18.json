@@ -499,7 +499,7 @@
           "sentence": "Direct: \"Don't shout.\" Reported: \"She told me to don't shout.\"",
           "hint": "\"Not to + base\", sem \"don't\"",
           "answer": "She told me not to shout.",
-          "explanation": "In reported speech, \"don't\" disappears. The negative is \"NOT TO + base\". \"To don't shout\" doesn't exist."
+          "explanation": "In reported speech, \"don't / do not\" disappears. The negative is \"NOT TO + base\". \"To don't / do not shout\" doesn't exist."
         },
         {
           "type": "read_answer",

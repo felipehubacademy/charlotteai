@@ -46,7 +46,7 @@
             "can"
           ],
           "answer": "must",
-          "explanation": "\"Must\" — strong inference from evidence. \"He hasn't answered\" → conclusion: \"he must be travelling\". \"Will\" would be slightly weaker (logical expectation), \"should\" weaker still (expected but uncertain), \"can\" doesn't fit here. \"Must\" matches the strength of the evidence-driven conclusion."
+          "explanation": "\"Must\" — strong inference from evidence. \"He hasn't / has not answered\" → conclusion: \"he must be travelling\". \"Will\" would be slightly weaker (logical expectation), \"should\" weaker still (expected but uncertain), \"can\" doesn't fit here. \"Must\" matches the strength of the evidence-driven conclusion."
         },
         {
           "type": "multiple_choice",
@@ -61,14 +61,14 @@
           "accepts": [
             "must"
           ],
-          "explanation": "\"Will\" — high-certainty prediction based on routine (\"It's the time he usually comes\"). \"Must\" works too if there's stronger evidence (a specific knock). The English habit of using \"will\" for confident predictions about the present surprises learners. \"That'll be him\" is everyday English."
+          "explanation": "\"Will\" — high-certainty prediction based on routine (\"It's / It is the time he usually comes\"). \"Must\" works too if there's stronger evidence (a specific knock). The English habit of using \"will\" for confident predictions about the present surprises learners. \"That'll be him\" is everyday English."
         },
         {
           "type": "fill_gap",
           "sentence": "She _____ be home by now — her shift ended at six.",
           "hint": "Modal of expected outcome based on schedule",
           "answer": "should",
-          "explanation": "\"Should\" — mild expectation based on knowledge of routine. Weaker than \"must\" or \"will\". Implies \"based on what I know, this is expected — but I'm not certain\". Common for time-based expectations."
+          "explanation": "\"Should\" — mild expectation based on knowledge of routine. Weaker than \"must\" or \"will\". Implies \"based on what I know, this is expected — but I'm / I am not certain\". Common for time-based expectations."
         },
         {
           "type": "fix_error",
@@ -218,7 +218,7 @@
           "sentence": "We _____ be wrong about this — but the data so far supports our reading.",
           "hint": "\"May\" + well",
           "answer": "may well",
-          "explanation": "\"May well + base form\" — hedged probability. \"We may well be wrong\" = \"It's quite possible we're wrong, even likely\". Formal register equivalent of \"might well\". Choice between \"may well\" / \"might well\" / \"could well\" often comes down to register."
+          "explanation": "\"May well + base form\" — hedged probability. \"We may well be wrong\" = \"It's quite possible we're / we are wrong, even likely\". Formal register equivalent of \"might well\". Choice between \"may well\" / \"might well\" / \"could well\" often comes down to register."
         },
         {
           "type": "fix_error",
@@ -649,7 +649,7 @@
             "would can"
           ],
           "answer": "might have to",
-          "explanation": "English doesn't allow two true modals together (e.g., \"might must\"). Instead, layer with quasi-modal: \"might have to + base\" (possibility + necessity). \"Might have to cut\" = \"it's possible we'll need to cut\". Standard C2 layered modality."
+          "explanation": "English doesn't allow two true modals together (e.g., \"might must\"). Instead, layer with quasi-modal: \"might have to + base\" (possibility + necessity). \"Might have to cut\" = \"it's possible we'll / we will need to cut\". Standard C2 layered modality."
         },
         {
           "type": "multiple_choice",

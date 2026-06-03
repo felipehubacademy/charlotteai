@@ -37,7 +37,7 @@
 2. **multiple_choice** — "She wouldn't be exhausted right now if she _____ overtime last night."
    **Options**: hadn't worked / didn't work / wouldn't have worked / doesn't work
    **Answer**: hadn't worked
-   **Explanation**: Past cause needs past perfect in the if-clause: "hadn't worked overtime last night". The present effect ("wouldn't be exhausted") signals the mixed form.
+   **Explanation**: Past cause needs past perfect in the if-clause: "hadn't / had not worked overtime last night". The present effect ("wouldn't / would not be exhausted") signals the mixed form.
 
 3. **fill_gap** — "If we had bought that house in 2010, we _____ enough equity to retire by now."
    **Hint**: resultado presente: would + base "have"
@@ -173,7 +173,7 @@
 1. **multiple_choice** — "If she weren't so stubborn, she _____ to a compromise weeks ago."
    **Options**: would have agreed / would agree / agreed / had agreed
    **Answer**: would have agreed
-   **Explanation**: Mixed reversed form: present trait ("weren't so stubborn") with a past result ("weeks ago"). Past result requires "would have + past participle".
+   **Explanation**: Mixed reversed form: present trait ("weren't / were not so stubborn") with a past result ("weeks ago"). Past result requires "would have + past participle".
 
 2. **multiple_choice** — "If I _____ a morning person, I would have accepted that early meeting yesterday."
    **Options**: were / was / am / had been
@@ -188,14 +188,14 @@
 4. **fix_error** — "If I weren't allergic to nuts, I would eat that cake at the party."
    **Hint**: The cake was at a past party — the result should also be past
    **Answer**: If I weren't allergic to nuts, I would have eaten that cake at the party.
-   **Explanation**: The allergy is permanent (present condition, "weren't"), but the cake event was a specific past moment ("at the party"). Past result requires "would have eaten", not "would eat".
+   **Explanation**: The allergy is permanent (present condition, "weren't / were not"), but the cake event was a specific past moment ("at the party"). Past result requires "would have eaten", not "would eat".
 
 5. **read_answer**
    **Passage**: "Engineers tend to overplan. If our lead developer weren't so detail-obsessed, we would have shipped the prototype three months ago. As it stands, we're still polishing edges that no user will ever see."
    **Question**: Why hasn't the prototype shipped yet?
    **Answer**: the lead developer is too detail-obsessed
    **Accepts**: is overly detail-obsessed
-   **Explanation**: The permanent trait ("weren't so detail-obsessed") explains the past failure ("would have shipped three months ago"). Mixed conditional in action.
+   **Explanation**: The permanent trait ("weren't / were not so detail-obsessed") explains the past failure ("would have shipped three months ago"). Mixed conditional in action.
 
 ### 2. Listening/Speaking (5 phrases)
 
@@ -319,7 +319,7 @@
 2. **multiple_choice** — "_____ the offer, she'd be running the team now."
    **Options**: Had she accepted / If she accept / Had accepted she / She had accept
    **Answer**: Had she accepted
-   **Explanation**: "Had + subject + past participle" — inverted form. Note the mixed conditional consequence ("she'd be running the team now") — inversion works across third and mixed conditionals.
+   **Explanation**: "Had + subject + past participle" — inverted form. Note the mixed conditional consequence ("she'd / she would be running the team now") — inversion works across third and mixed conditionals.
 
 3. **fill_gap** — "_____ what I know now, I would have left that company years ago."
    **Hint**: Inversão de "If I had known" (sem "if")
@@ -602,7 +602,7 @@
 2. **multiple_choice** — "_____ his support, we wouldn't have launched on time."
    **Options**: But for / Unless / Provided / Without
    **Answer**: But for
-   **Explanation**: "But for + noun" = "if it hadn't been for + noun". Formal, slightly literary. "But for his support" = without his support, in the past hypothetical sense. Pairs with third conditional result.
+   **Explanation**: "But for + noun" = "if it hadn't / had not been for + noun". Formal, slightly literary. "But for his support" = without his support, in the past hypothetical sense. Pairs with third conditional result.
 
 3. **fill_gap** — "We'll go ahead _____ the weather doesn't turn."
    **Hint**: "Unless" or "as long as" or "provided that"
@@ -612,14 +612,14 @@
 4. **fix_error** — "Unless you don't tell me the truth, I can't help you."
    **Hint**: "Unless" already carries the negative meaning
    **Answer**: Unless you tell me the truth, I can't help you.
-   **Explanation**: "Unless" = "if... not". Double-negative ("unless you don't") flips meaning back to positive — saying you must lie. Drop the redundant "don't".
+   **Explanation**: "Unless" = "if... not". Double-negative ("unless you don't / do not") flips meaning back to positive — saying you must lie. Drop the redundant "don't / do not".
 
 5. **read_answer**
    **Passage**: "Suppose for a moment that the city had invested in flood barriers a decade ago. But for that investment, last year's storm would have done ten times more damage. The cost-benefit is rarely visible until disaster arrives — or doesn't."
    **Question**: What hypothetically prevented worse damage from last year's storm?
    **Answer**: the investment in flood barriers a decade ago
    **Accepts**: the flood barriers
-   **Explanation**: "Suppose" opens the hypothetical; "But for that investment" gestures at the counterfactual ("if it weren't for that investment, the damage would have been ten times worse"). C1 phrasing layering two alternatives to "if".
+   **Explanation**: "Suppose" opens the hypothetical; "But for that investment" gestures at the counterfactual ("if it weren't / were not for that investment, the damage would have been ten times worse"). C1 phrasing layering two alternatives to "if".
 
 ### 2. Listening/Speaking (5 phrases)
 

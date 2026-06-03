@@ -87,7 +87,7 @@
           "sentence": "Children _____ unsupervised.",
           "hint": "shouldn't be + past participle \"leave\"",
           "answer": "shouldn't be left",
-          "explanation": "\"Shouldn't be left unsupervised\" — passive prohibition."
+          "explanation": "\"Shouldn't / Should not be left unsupervised\" — passive prohibition."
         },
         {
           "type": "fill_gap",
@@ -108,7 +108,7 @@
           "sentence": "Children shouldn't left alone.",
           "hint": "Falta \"be\"",
           "answer": "Children shouldn't be left alone.",
-          "explanation": "\"Shouldn't BE left\" — modal + be + past participle. Fixed form."
+          "explanation": "\"Shouldn't / Should not BE left\" — modal + be + past participle. Fixed form."
         },
         {
           "type": "read_answer",

@@ -96,7 +96,7 @@
           "sentence": "Direct: \"I don't understand.\" Reported: \"She said she _____ understand.\"",
           "hint": "past simple negative \"didn't\"",
           "answer": "didn't",
-          "explanation": "\"Don't\" (present) → \"didn't\" (past) in reported speech."
+          "explanation": "\"Don't / Do not\" (present) → \"didn't / did not\" (past) in reported speech."
         },
         {
           "type": "fix_error",
@@ -673,14 +673,14 @@
           "sentence": "Direct: \"I won't be there.\" Reported: \"He said he _____ be there.\"",
           "hint": "would + not (wouldn't)",
           "answer": "wouldn't",
-          "explanation": "\"Won't\" (will not) → \"wouldn't\" (would not) em reported."
+          "explanation": "\"Won't / Will not\" (will not) → \"wouldn't / would not\" (would not) em reported."
         },
         {
           "type": "fill_gap",
           "sentence": "Direct: \"I can't do it.\" Reported: \"She said she _____ do it.\"",
           "hint": "couldn't (can't → couldn't)",
           "answer": "couldn't",
-          "explanation": "\"Can't\" → \"couldn't\" em reported. Backshift padrão."
+          "explanation": "\"Can't / Cannot\" → \"couldn't / could not\" em reported. Backshift padrão."
         },
         {
           "type": "fill_gap",

@@ -40,7 +40,7 @@
             "Hello."
           ],
           "answer": "I hope this email finds you well.",
-          "explanation": "\"I hope this email finds you well\" — quintessential formal email opener for first contact with senior or unknown recipients. Slightly clichéd but universally accepted. \"Hi there!\" and \"Hey, what's up?\" are too casual for formal contexts."
+          "explanation": "\"I hope this email finds you well\" — quintessential formal email opener for first contact with senior or unknown recipients. Slightly clichéd but universally accepted. \"Hi there!\" and \"Hey, what's / what is up?\" are too casual for formal contexts."
         },
         {
           "type": "multiple_choice",
@@ -62,14 +62,14 @@
           "accepts": [
             "Hoping"
           ],
-          "explanation": "\"Hope you're doing well\" — common semi-formal opener for someone you know but aren't close to. Drops the formal \"I\" of \"I hope\" to feel warmer. Widely used in workplace email."
+          "explanation": "\"Hope you're / you are doing well\" — common semi-formal opener for someone you know but aren't close to. Drops the formal \"I\" of \"I hope\" to feel warmer. Widely used in workplace email."
         },
         {
           "type": "fix_error",
           "sentence": "Cold email opening: \"Hey there, what's going on?\"",
           "hint": "Too casual for a cold business email",
           "answer": "Dear [Name], I hope this email finds you well. I'm reaching out regarding...",
-          "explanation": "\"Hey there, what's going on?\" is appropriate among friends but jarring in business cold-outreach. Cold emails need formal openings: \"Dear [Name]\" + \"I hope this email finds you well\" or \"I'm reaching out regarding...\". Register match is essential."
+          "explanation": "\"Hey there, what's / what is going on?\" is appropriate among friends but jarring in business cold-outreach. Cold emails need formal openings: \"Dear [Name]\" + \"I hope this email finds you well\" or \"I'm / I am reaching out regarding...\". Register match is essential."
         },
         {
           "type": "read_answer",
@@ -639,7 +639,7 @@
             "Maybe another time."
           ],
           "answer": "Thank you for thinking of me. Unfortunately, this isn't a fit for my current focus, but I'd be happy to recommend others.",
-          "explanation": "Professional declines combine gratitude (\"thank you\"), reason (\"isn't a fit for my current focus\"), and offer of value (\"happy to recommend others\"). The others damage relationships or sound abrupt."
+          "explanation": "Professional declines combine gratitude (\"thank you\"), reason (\"isn't / is not a fit for my current focus\"), and offer of value (\"happy to recommend others\"). The others damage relationships or sound abrupt."
         },
         {
           "type": "multiple_choice",
@@ -665,7 +665,7 @@
           "sentence": "Decline email: \"No, I won't be coming to the meeting. I'm busy.\"",
           "hint": "Too curt — soften with apology + alternative",
           "answer": "Unfortunately, I won't be able to attend the meeting on Friday — I have a competing commitment. Happy to follow up on the action items afterward.",
-          "explanation": "Professional declines soften the no (\"Unfortunately\"), give a brief reason (\"competing commitment\"), and offer engagement (\"happy to follow up\"). \"I'm busy\" sounds dismissive."
+          "explanation": "Professional declines soften the no (\"Unfortunately\"), give a brief reason (\"competing commitment\"), and offer engagement (\"happy to follow up\"). \"I'm / I am busy\" sounds dismissive."
         },
         {
           "type": "read_answer",

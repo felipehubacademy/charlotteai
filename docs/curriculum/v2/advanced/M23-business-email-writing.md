@@ -33,7 +33,7 @@
 1. **multiple_choice** — Most formal opening (cold email to senior executive):
    **Options**: I hope this email finds you well. / Hi there! / Hey, what's up? / Hello.
    **Answer**: I hope this email finds you well.
-   **Explanation**: "I hope this email finds you well" — quintessential formal email opener for first contact with senior or unknown recipients. Slightly clichéd but universally accepted. "Hi there!" and "Hey, what's up?" are too casual for formal contexts.
+   **Explanation**: "I hope this email finds you well" — quintessential formal email opener for first contact with senior or unknown recipients. Slightly clichéd but universally accepted. "Hi there!" and "Hey, what's / what is up?" are too casual for formal contexts.
 
 2. **multiple_choice** — Most appropriate closing for a formal cover letter:
    **Options**: Kind regards / Best / Cheers / Talk soon
@@ -44,12 +44,12 @@
    **Hint**: friendly but professional opener
    **Answer**: Hope
    **Accepts**: Hoping
-   **Explanation**: "Hope you're doing well" — common semi-formal opener for someone you know but aren't close to. Drops the formal "I" of "I hope" to feel warmer. Widely used in workplace email.
+   **Explanation**: "Hope you're / you are doing well" — common semi-formal opener for someone you know but aren't close to. Drops the formal "I" of "I hope" to feel warmer. Widely used in workplace email.
 
 4. **fix_error** — Cold email opening: "Hey there, what's going on?"
    **Hint**: Too casual for a cold business email
    **Answer**: Dear [Name], I hope this email finds you well. I'm reaching out regarding...
-   **Explanation**: "Hey there, what's going on?" is appropriate among friends but jarring in business cold-outreach. Cold emails need formal openings: "Dear [Name]" + "I hope this email finds you well" or "I'm reaching out regarding...". Register match is essential.
+   **Explanation**: "Hey there, what's / what is going on?" is appropriate among friends but jarring in business cold-outreach. Cold emails need formal openings: "Dear [Name]" + "I hope this email finds you well" or "I'm / I am reaching out regarding...". Register match is essential.
 
 5. **read_answer**
    **Passage**: "Dear Ms. Silva, I hope this email finds you well. I'm reaching out regarding the position you advertised last week. Please find my CV attached for your consideration. I would welcome the opportunity to discuss how my experience aligns with your team's needs. Kind regards, Maria."
@@ -594,7 +594,7 @@
 1. **multiple_choice** — Most professional decline:
    **Options**: Thank you for thinking of me. Unfortunately, this isn't a fit for my current focus, but I'd be happy to recommend others. / No, I'm not interested. / I don't want to. / Maybe another time.
    **Answer**: Thank you for thinking of me. Unfortunately, this isn't a fit for my current focus, but I'd be happy to recommend others.
-   **Explanation**: Professional declines combine gratitude ("thank you"), reason ("isn't a fit for my current focus"), and offer of value ("happy to recommend others"). The others damage relationships or sound abrupt.
+   **Explanation**: Professional declines combine gratitude ("thank you"), reason ("isn't / is not a fit for my current focus"), and offer of value ("happy to recommend others"). The others damage relationships or sound abrupt.
 
 2. **multiple_choice** — Strongest framing for asking for a raise:
    **Options**: I'd like to discuss compensation given my expanded role and impact over the past 18 months. / I want more money. / Give me a raise please. / I deserve more pay.
@@ -609,7 +609,7 @@
 4. **fix_error** — Decline email: "No, I won't be coming to the meeting. I'm busy."
    **Hint**: Too curt — soften with apology + alternative
    **Answer**: Unfortunately, I won't be able to attend the meeting on Friday — I have a competing commitment. Happy to follow up on the action items afterward.
-   **Explanation**: Professional declines soften the no ("Unfortunately"), give a brief reason ("competing commitment"), and offer engagement ("happy to follow up"). "I'm busy" sounds dismissive.
+   **Explanation**: Professional declines soften the no ("Unfortunately"), give a brief reason ("competing commitment"), and offer engagement ("happy to follow up"). "I'm / I am busy" sounds dismissive.
 
 5. **read_answer**
    **Passage**: "Hi João, Thanks for sending the proposal — I appreciate the work that went into it. Unfortunately, the budget for this project isn't going to allow us to move forward at the scope you've outlined. I'd love to keep the door open for a scaled-down version, or a future collaboration when budgets reset in Q1. Apologies for any inconvenience, and thanks again for putting it together. Best, Maria."

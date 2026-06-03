@@ -262,7 +262,7 @@
             "dies"
           ],
           "answer": "die",
-          "explanation": "\"That's how nature works\" signals a universal truth → zero conditional. \"Plants die\" — present simple plural."
+          "explanation": "\"That's / That is how nature works\" signals a universal truth → zero conditional. \"Plants die\" — present simple plural."
         },
         {
           "type": "word_bank",
@@ -291,7 +291,7 @@
           "accepts": [
             "will"
           ],
-          "explanation": "\"On Saturday\" = specific event → first conditional. \"I'll go\" or \"I will go\" in the future consequence."
+          "explanation": "\"On Saturday\" = specific event → first conditional. \"I'll / I will go\" or \"I will go\" in the future consequence."
         },
         {
           "type": "fill_gap",
@@ -302,7 +302,7 @@
             "get",
             "become"
           ],
-          "explanation": "\"It's a fact\" reinforces a general truth → zero conditional. The consequence also stays in present simple."
+          "explanation": "\"It's / It is a fact\" reinforces a general truth → zero conditional. The consequence also stays in present simple."
         },
         {
           "type": "fix_error",
@@ -326,7 +326,7 @@
           "accepts": [
             "stay home"
           ],
-          "explanation": "The text says \"If it rains tomorrow, I'll stay home and read\" — first conditional with specific future plan."
+          "explanation": "The text says \"If it rains tomorrow, I'll / I will stay home and read\" — first conditional with specific future plan."
         }
       ],
       "listening_speaking": [
@@ -494,7 +494,7 @@
           "sentence": "_____ you don't feel well, take a break.",
           "hint": "possibilidade (pode ou não estar doente)",
           "answer": "If",
-          "explanation": "You aren't always sick — it varies. \"If you don't feel well\" — possibility."
+          "explanation": "You aren't always sick — it varies. \"If you don't / do not feel well\" — possibility."
         },
         {
           "type": "fill_gap",
@@ -685,7 +685,7 @@
           "sentence": "Plants die if you don't _____ them regularly.",
           "hint": "present simple de \"water\" (regar) com \"you\"",
           "answer": "water",
-          "explanation": "Universal truth about plants → zero conditional. \"If you don't water them\" — negative present simple with \"you\"."
+          "explanation": "Universal truth about plants → zero conditional. \"If you don't / do not water them\" — negative present simple with \"you\"."
         },
         {
           "type": "fill_gap",
@@ -716,7 +716,7 @@
           "accepts": [
             "reading"
           ],
-          "explanation": "The text says \"If I have free time this weekend, I'll catch up on reading\" — specific future plan."
+          "explanation": "The text says \"If I have free time this weekend, I'll / I will catch up on reading\" — specific future plan."
         }
       ],
       "listening_speaking": [
@@ -914,7 +914,7 @@
           "accepts": [
             "tomorrow if work ends early"
           ],
-          "explanation": "The text says \"If I finish work early tomorrow, I'll join you for dinner\" — first conditional with specific plan."
+          "explanation": "The text says \"If I finish work early tomorrow, I'll / I will join you for dinner\" — first conditional with specific plan."
         }
       ],
       "listening_speaking": [

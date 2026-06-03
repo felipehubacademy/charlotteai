@@ -43,7 +43,7 @@
             "cannot"
           ],
           "answer": "can't",
-          "explanation": "Ellipsis after modal: \"I can't [come to the meeting]\" — the verb phrase is omitted because it's recoverable from the question. \"I can't to\" is wrong (no \"to\" needed after modals). \"I can't go\" is grammatically correct but unnecessarily explicit; native speakers prefer the elliptical \"I can't\"."
+          "explanation": "Ellipsis after modal: \"I can't / cannot [come to the meeting]\" — the verb phrase is omitted because it's recoverable from the question. \"I can't / cannot to\" is wrong (no \"to\" needed after modals). \"I can't / cannot go\" is grammatically correct but unnecessarily explicit; native speakers prefer the elliptical \"I can't / cannot\"."
         },
         {
           "type": "multiple_choice",
@@ -55,7 +55,7 @@
             "so"
           ],
           "answer": "to",
-          "explanation": "Ellipsis after \"to\": \"I'd like to [call him]\" — the infinitive verb is omitted but \"to\" remains as the marker. Standard ellipsis pattern: \"would like to / want to / mean to / hope to + ellipsis\" — the \"to\" stays."
+          "explanation": "Ellipsis after \"to\": \"I'd / I would like to [call him]\" — the infinitive verb is omitted but \"to\" remains as the marker. Standard ellipsis pattern: \"would like to / want to / mean to / hope to + ellipsis\" — the \"to\" stays."
         },
         {
           "type": "fill_gap",
@@ -79,7 +79,7 @@
           "passage": "She had been invited to three events that evening. She would have gone to all of them if she could have. She would have liked to at least drop in on one. In the end, she didn't go to any. 'I meant to,' she said the next day. 'I just couldn't.'",
           "question": "What word is omitted after \"couldn't\" in her final line?",
           "answer": "go (the verb is elided)",
-          "explanation": "Four ellipses in five sentences: \"if she could have [gone]\", \"She would have liked to [drop in / go]\", \"didn't go to any [of them]\", \"I meant to [go]\", \"I just couldn't [go]\". Verb phrases recovered from context — fluent C2 economy."
+          "explanation": "Four ellipses in five sentences: \"if she could have [gone]\", \"She would have liked to [drop in / go]\", \"didn't / did not go to any [of them]\", \"I meant to [go]\", \"I just couldn't / could not [go]\". Verb phrases recovered from context — fluent C2 economy."
         }
       ],
       "listening_speaking": [
@@ -196,7 +196,7 @@
             "think to"
           ],
           "answer": "think so",
-          "explanation": "\"I think so\" — \"so\" replaces the entire clause \"that the train is on time\". Common verbs: think, hope, believe, suppose, expect, guess. Negative: \"I don't think so\" (with \"not\" after the verb, not \"I think not\", although the latter exists in formal register)."
+          "explanation": "\"I think so\" — \"so\" replaces the entire clause \"that the train is on time\". Common verbs: think, hope, believe, suppose, expect, guess. Negative: \"I don't / do not think so\" (with \"not\" after the verb, not \"I think not\", although the latter exists in formal register)."
         },
         {
           "type": "multiple_choice",
@@ -208,7 +208,7 @@
             "never"
           ],
           "answer": "not",
-          "explanation": "\"I hope not\" — \"not\" replaces the negative version of the clause (\"that it won't rain\"). Same pattern: \"I'm afraid not\", \"I guess not\", \"I suppose not\". The negative substitute is \"not\" placed directly after the verb."
+          "explanation": "\"I hope not\" — \"not\" replaces the negative version of the clause (\"that it won't / will not rain\"). Same pattern: \"I'm / I am afraid not\", \"I guess not\", \"I suppose not\". The negative substitute is \"not\" placed directly after the verb."
         },
         {
           "type": "fill_gap",
@@ -232,7 +232,7 @@
           "passage": "The meeting was full of softened uncertainties. 'Will the deal close this quarter?' 'I think so.' 'Are we still on track for launch?' 'I hope so.' 'Is the CFO going to push back?' 'I'm afraid so.' 'And the board?' 'I expect not.' Four answers, each carrying just enough to keep the conversation moving.",
           "question": "How does the speaker respond to whether the board will push back?",
           "answer": "I expect not (he/she doesn't expect them to push back)",
-          "explanation": "Four substitutions in five exchanges: \"I think so\", \"I hope so\", \"I'm afraid so\", \"I expect not\". Each replaces a whole clause. Conversation moves on without restating."
+          "explanation": "Four substitutions in five exchanges: \"I think so\", \"I hope so\", \"I'm / I am afraid so\", \"I expect not\". Each replaces a whole clause. Conversation moves on without restating."
         }
       ],
       "listening_speaking": [

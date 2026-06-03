@@ -53,7 +53,7 @@
 4. **fix_error** — "Firstly the policy works. Secondly it's affordable. Lastly people support it."
    **Hint**: Punctuation — commas after enumerative adverbs
    **Answer**: First, the policy works. Second, it is affordable. Finally, people support it.
-   **Explanation**: Adverbial sequencers ("First", "Second", "Finally") take a comma when fronted. Also: avoid contractions in formal argument ("it is", not "it's"). "Lastly" exists but "Finally" is the C2 norm for argumentative climax.
+   **Explanation**: Adverbial sequencers ("First", "Second", "Finally") take a comma when fronted. Also: avoid contractions in formal argument ("it is", not "it's / it is"). "Lastly" exists but "Finally" is the C2 norm for argumentative climax.
 
 5. **read_answer**
    **Passage**: "The case for the new programme rests on three pillars. First, the pilot study showed measurable gains in literacy across all participating schools. Second, the cost per student remains within budget — well below the threshold for similar interventions. Most importantly, the teachers themselves are asking for it. The evidence is unambiguous: this programme deserves expansion."

@@ -462,7 +462,7 @@
 2. **multiple_choice** — "The product is well-designed. _____, the price is unbeatable."
    **Options**: What's more / What more / What's most / What is the more
    **Answer**: What's more
-   **Explanation**: "What's more" introduces an additional point that strengthens the case. Less climactic than "above all" — used mid-list to keep escalating. Fixed contraction with apostrophe.
+   **Explanation**: "What's / What is more" introduces an additional point that strengthens the case. Less climactic than "above all" — used mid-list to keep escalating. Fixed contraction with apostrophe.
 
 3. **fill_gap** — "He's a great teacher — _____, the students adore him."
    **Hint**: "Not least"
@@ -478,7 +478,7 @@
    **Passage**: "The job offer was strong on every front. The pay was generous. What's more, the team was small and experienced. Not least, the office was a fifteen-minute walk from her flat. Above all, she would finally be working for someone she respected without reservation. She had said yes before the call ended."
    **Question**: According to the passage, what was the most important factor in her decision?
    **Answer**: she would finally be working for someone she respected
-   **Explanation**: Four emphatic markers building a climax: "What's more" (adding), "Not least" (emphasising), "Above all" (final crown). Each marker escalates the emphasis. The marker "above all" signals the most important item.
+   **Explanation**: Four emphatic markers building a climax: "What's / What is more" (adding), "Not least" (emphasising), "Above all" (final crown). Each marker escalates the emphasis. The marker "above all" signals the most important item.
 
 ### 2. Listening/Speaking (5 phrases)
 

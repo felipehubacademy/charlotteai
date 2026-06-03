@@ -287,7 +287,7 @@
           "sentence": "_____ she's young, she's very mature.",
           "hint": "Although + cláusula",
           "answer": "Although",
-          "explanation": "\"Although she's young\" — full clause after \"although\"."
+          "explanation": "\"Although she's / she is young\" — full clause after \"although\"."
         },
         {
           "type": "fill_gap",
@@ -324,7 +324,7 @@
           "accepts": [
             "the text doesn't say why"
           ],
-          "explanation": "The text states \"Although he is rich, he isn't happy\" — the contrast is between wealth and happiness, no further reason given."
+          "explanation": "The text states \"Although he is rich, he isn't / is not happy\" — the contrast is between wealth and happiness, no further reason given."
         }
       ],
       "listening_speaking": [

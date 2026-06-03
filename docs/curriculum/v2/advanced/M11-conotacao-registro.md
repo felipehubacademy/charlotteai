@@ -475,7 +475,7 @@
 3. **fill_gap** — Offered cake: "Well, _____."
    **Hint**: Litotes meaning "yes, please"
    **Answer**: I wouldn't say no
-   **Explanation**: "I wouldn't say no" — litotes for accepting eagerly. Polite-British register. Saying "I wouldn't say no" to cake is much warmer than "yes". Cultural code: the litotes signals you want it but won't be greedy about asking.
+   **Explanation**: "I wouldn't / would not say no" — litotes for accepting eagerly. Polite-British register. Saying "I wouldn't / would not say no" to cake is much warmer than "yes". Cultural code: the litotes signals you want it but won't be greedy about asking.
 
 4. **fix_error** — "The new apartment isn't cheap exactly."
    **Hint**: Word order — "not exactly cheap"
@@ -488,7 +488,7 @@
    **Question**: How does the reviewer feel about returning to the restaurant?
    **Answer**: positive / wants to return
    **Accepts**: would happily return
-   **Explanation**: Four litotes in four sentences: "not without its charms" (charming), "no small achievement" (impressive), "not exactly modest... not without reason" (justifiably proud), "wouldn't say no" (would say yes). British-style understatement runs the whole passage.
+   **Explanation**: Four litotes in four sentences: "not without its charms" (charming), "no small achievement" (impressive), "not exactly modest... not without reason" (justifiably proud), "wouldn't / would not say no" (would say yes). British-style understatement runs the whole passage.
 
 ### 2. Listening/Speaking (5 phrases)
 
@@ -759,7 +759,7 @@
 3. **fill_gap** — In American English, the past participle of "get" is often "_____" rather than British "got".
    **Hint**: alternative past participle form
    **Answer**: gotten
-   **Explanation**: "Gotten" — American past participle of "get". British English uses "got" for past participle. "I've gotten better at this" (American) vs "I've got better at this" (British). Note: "have got" meaning "have/possess" uses "got" in both.
+   **Explanation**: "Gotten" — American past participle of "get". British English uses "got" for past participle. "I've / I have gotten better at this" (American) vs "I've / I have got better at this" (British). Note: "have got" meaning "have/possess" uses "got" in both.
 
 4. **fix_error** — Por português falar 'pretender', você diz em inglês: "I pretend to leave tomorrow."
    **Hint**: false cognate — "pretend" doesn't mean "intend"

@@ -329,7 +329,7 @@
    **Hint**: Specific car model + colour or detail
    **Answer**: a red Toyota
    **Accepts**: a dented Volvo / any specific car
-   **Explanation**: Replacing "a car" with "a red Toyota" or similar specific image. Specific nouns ground prose in concrete reality. Mark Twain: "Don't say the old lady screamed. Bring her on and let her scream." Same principle: bring on the specific car.
+   **Explanation**: Replacing "a car" with "a red Toyota" or similar specific image. Specific nouns ground prose in concrete reality. Mark Twain: "Don't / Do not say the old lady screamed. Bring her on and let her scream." Same principle: bring on the specific car.
 
 4. **fix_error** — "He walked slowly into the room, looking sadly at her, and then said something quietly."
    **Hint**: Replace verb+adverb pairs with vivid verbs
@@ -601,12 +601,12 @@
 1. **multiple_choice** — Show, don't tell: which version "shows" nervousness?
    **Options**: She was extremely nervous. / Her thumbnail kept tracking the seam of her jacket. / She felt anxiety. / The situation made her nervous.
    **Answer**: Her thumbnail kept tracking the seam of her jacket.
-   **Explanation**: "Show, don't tell" — convey emotion through observable detail. The thumbnail tracking the seam is a small physical tic readers recognise as nervous behaviour. The reader infers the emotion; the writer doesn't name it. C2 literary discipline.
+   **Explanation**: "Show, don't / do not tell" — convey emotion through observable detail. The thumbnail tracking the seam is a small physical tic readers recognise as nervous behaviour. The reader infers the emotion; the writer doesn't name it. C2 literary discipline.
 
 2. **multiple_choice** — Shown anger: "_____."
    **Options**: He was very angry / He didn't sit down. He didn't sit down for the entire meeting. / He felt rage / The argument made him mad.
    **Answer**: He didn't sit down. He didn't sit down for the entire meeting.
-   **Explanation**: The repeated short sentence — "He didn't sit down. He didn't sit down for the entire meeting." — shows the contained, pressurised anger through a behavioural detail. The repetition itself enacts the refusal. Reader infers fury.
+   **Explanation**: The repeated short sentence — "He didn't / did not sit down. He didn't sit down for the entire meeting." — shows the contained, pressurised anger through a behavioural detail. The repetition itself enacts the refusal. Reader infers fury.
 
 3. **fill_gap** — Convert "She was sad" to a shown version: "She _____"
    **Hint**: An observable detail or action that implies sadness

@@ -602,7 +602,7 @@
 2. **multiple_choice** — Ambiguous: "Maria told her sister that she would arrive late." Who would arrive late?
    **Options**: Maria / Her sister / Unclear / Both
    **Answer**: Unclear
-   **Explanation**: "She" is ambiguous — could refer to Maria or her sister. C2 writing fixes this. Clearer: "Maria told her sister that Maria would arrive late" (repetition) or "Maria told her sister, 'I'll be late.'" (direct speech) or "Maria warned her sister of her own late arrival." (rephrase).
+   **Explanation**: "She" is ambiguous — could refer to Maria or her sister. C2 writing fixes this. Clearer: "Maria told her sister that Maria would arrive late" (repetition) or "Maria told her sister, 'I'll / I will be late.'" (direct speech) or "Maria warned her sister of her own late arrival." (rephrase).
 
 3. **fill_gap** — Disambiguate: "When Maria saw her colleague at the conference, she was already heading to the door. To be clear: _____ was heading to the door."
    **Hint**: Specify Maria or the colleague

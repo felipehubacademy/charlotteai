@@ -208,7 +208,7 @@
 3. **word_bank** — "If you don't water plants, they _____ — that's how nature works."
    **Choices**: die / will die / are dying / dies
    **Answer**: die
-   **Explanation**: "That's how nature works" signals a universal truth → zero conditional. "Plants die" — present simple plural.
+   **Explanation**: "That's / That is how nature works" signals a universal truth → zero conditional. "Plants die" — present simple plural.
 
 4. **word_bank** — "If it _____ tomorrow, I'll stay home."
    **Choices**: rains / will rain / rained / is raining
@@ -224,13 +224,13 @@
    **Hint**: future específico, contração de "I will"
    **Answer**: 'll
    **Accepts**: will
-   **Explanation**: "On Saturday" = specific event → first conditional. "I'll go" or "I will go" in the future consequence.
+   **Explanation**: "On Saturday" = specific event → first conditional. "I'll / I will go" or "I will go" in the future consequence.
 
 7. **fill_gap** — "If you exercise regularly, you _____ healthier — it's a fact."
    **Hint**: verbo "feel/become/get" no present simple
    **Answer**: feel
 **Accepts**: get / become
-   **Explanation**: "It's a fact" reinforces a general truth → zero conditional. The consequence also stays in present simple.
+   **Explanation**: "It's / It is a fact" reinforces a general truth → zero conditional. The consequence also stays in present simple.
 
 8. **fix_error** — "If I will have time tomorrow, I'll call you."
    **Hint**: Após "if", nunca usar "will" — sempre present simple
@@ -247,7 +247,7 @@
     **Question**: What will the speaker do if it rains tomorrow?
     **Answer**: stay home and read
     **Accepts**: stay home
-    **Explanation**: The text says "If it rains tomorrow, I'll stay home and read" — first conditional with specific future plan.
+    **Explanation**: The text says "If it rains tomorrow, I'll / I will stay home and read" — first conditional with specific future plan.
 
 ### 2. Listening/Speaking (5 phrases)
 
@@ -393,7 +393,7 @@
 6. **fill_gap** — "_____ you don't feel well, take a break."
    **Hint**: possibilidade (pode ou não estar doente)
    **Answer**: If
-   **Explanation**: You aren't always sick — it varies. "If you don't feel well" — possibility.
+   **Explanation**: You aren't always sick — it varies. "If you don't / do not feel well" — possibility.
 
 7. **fill_gap** — "_____ I get home from work, I take off my shoes and sit down."
    **Hint**: rotina diária garantida
@@ -558,7 +558,7 @@
 6. **fill_gap** — "Plants die if you don't _____ them regularly."
    **Hint**: present simple de "water" (regar) com "you"
    **Answer**: water
-   **Explanation**: Universal truth about plants → zero conditional. "If you don't water them" — negative present simple with "you".
+   **Explanation**: Universal truth about plants → zero conditional. "If you don't / do not water them" — negative present simple with "you".
 
 7. **fill_gap** — "I'll be there if you _____ me to be."
    **Hint**: present simple de "want" 2ª pessoa
@@ -580,7 +580,7 @@
     **Question**: What does the speaker plan to do this weekend?
     **Answer**: catch up on reading
     **Accepts**: reading
-    **Explanation**: The text says "If I have free time this weekend, I'll catch up on reading" — specific future plan.
+    **Explanation**: The text says "If I have free time this weekend, I'll / I will catch up on reading" — specific future plan.
 
 ### 2. Listening/Speaking (5 phrases)
 
@@ -747,7 +747,7 @@
     **Question**: When will the speaker join for dinner?
     **Answer**: if I finish work early tomorrow
     **Accepts**: tomorrow if work ends early
-    **Explanation**: The text says "If I finish work early tomorrow, I'll join you for dinner" — first conditional with specific plan.
+    **Explanation**: The text says "If I finish work early tomorrow, I'll / I will join you for dinner" — first conditional with specific plan.
 
 ### 2. Listening/Speaking (5 phrases)
 

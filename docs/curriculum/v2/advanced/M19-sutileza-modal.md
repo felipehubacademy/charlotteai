@@ -38,18 +38,18 @@
 1. **multiple_choice** — "He hasn't answered his phone all day. He _____ be travelling."
    **Options**: must / will / should / can
    **Answer**: must
-   **Explanation**: "Must" — strong inference from evidence. "He hasn't answered" → conclusion: "he must be travelling". "Will" would be slightly weaker (logical expectation), "should" weaker still (expected but uncertain), "can" doesn't fit here. "Must" matches the strength of the evidence-driven conclusion.
+   **Explanation**: "Must" — strong inference from evidence. "He hasn't / has not answered" → conclusion: "he must be travelling". "Will" would be slightly weaker (logical expectation), "should" weaker still (expected but uncertain), "can" doesn't fit here. "Must" matches the strength of the evidence-driven conclusion.
 
 2. **multiple_choice** — "That _____ be the postman at the door."
    **Options**: will / must / should / can
    **Answer**: will
    **Accepts**: must
-   **Explanation**: "Will" — high-certainty prediction based on routine ("It's the time he usually comes"). "Must" works too if there's stronger evidence (a specific knock). The English habit of using "will" for confident predictions about the present surprises learners. "That'll be him" is everyday English.
+   **Explanation**: "Will" — high-certainty prediction based on routine ("It's / It is the time he usually comes"). "Must" works too if there's stronger evidence (a specific knock). The English habit of using "will" for confident predictions about the present surprises learners. "That'll be him" is everyday English.
 
 3. **fill_gap** — "She _____ be home by now — her shift ended at six."
    **Hint**: Modal of expected outcome based on schedule
    **Answer**: should
-   **Explanation**: "Should" — mild expectation based on knowledge of routine. Weaker than "must" or "will". Implies "based on what I know, this is expected — but I'm not certain". Common for time-based expectations.
+   **Explanation**: "Should" — mild expectation based on knowledge of routine. Weaker than "must" or "will". Implies "based on what I know, this is expected — but I'm / I am not certain". Common for time-based expectations.
 
 4. **fix_error** — "He hasn't replied to the email. He must has been busy."
    **Hint**: After modals (must/should/will), use base form — not "has been"
@@ -189,7 +189,7 @@
 3. **fill_gap** — "We _____ be wrong about this — but the data so far supports our reading."
    **Hint**: "May" + well
    **Answer**: may well
-   **Explanation**: "May well + base form" — hedged probability. "We may well be wrong" = "It's quite possible we're wrong, even likely". Formal register equivalent of "might well". Choice between "may well" / "might well" / "could well" often comes down to register.
+   **Explanation**: "May well + base form" — hedged probability. "We may well be wrong" = "It's quite possible we're / we are wrong, even likely". Formal register equivalent of "might well". Choice between "may well" / "might well" / "could well" often comes down to register.
 
 4. **fix_error** — "He might good be right."
    **Hint**: It's "might WELL", not "might good"
@@ -600,7 +600,7 @@
 1. **multiple_choice** — Layered possibility + necessity: "If sales fall further, we _____ cut the budget."
    **Options**: might have to / will must / can have to / would can
    **Answer**: might have to
-   **Explanation**: English doesn't allow two true modals together (e.g., "might must"). Instead, layer with quasi-modal: "might have to + base" (possibility + necessity). "Might have to cut" = "it's possible we'll need to cut". Standard C2 layered modality.
+   **Explanation**: English doesn't allow two true modals together (e.g., "might must"). Instead, layer with quasi-modal: "might have to + base" (possibility + necessity). "Might have to cut" = "it's possible we'll / we will need to cut". Standard C2 layered modality.
 
 2. **multiple_choice** — Hypothetical obligation: "If the proposal passes, we _____ restructure the team."
    **Options**: would have to / will have to / would must / will must

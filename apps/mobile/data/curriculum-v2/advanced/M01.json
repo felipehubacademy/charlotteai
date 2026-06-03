@@ -51,7 +51,7 @@
             "doesn't work"
           ],
           "answer": "hadn't worked",
-          "explanation": "Past cause needs past perfect in the if-clause: \"hadn't worked overtime last night\". The present effect (\"wouldn't be exhausted\") signals the mixed form."
+          "explanation": "Past cause needs past perfect in the if-clause: \"hadn't / had not worked overtime last night\". The present effect (\"wouldn't / would not be exhausted\") signals the mixed form."
         },
         {
           "type": "fill_gap",
@@ -191,7 +191,7 @@
             "had agreed"
           ],
           "answer": "would have agreed",
-          "explanation": "Mixed reversed form: present trait (\"weren't so stubborn\") with a past result (\"weeks ago\"). Past result requires \"would have + past participle\"."
+          "explanation": "Mixed reversed form: present trait (\"weren't / were not so stubborn\") with a past result (\"weeks ago\"). Past result requires \"would have + past participle\"."
         },
         {
           "type": "multiple_choice",
@@ -217,7 +217,7 @@
           "sentence": "If I weren't allergic to nuts, I would eat that cake at the party.",
           "hint": "The cake was at a past party — the result should also be past",
           "answer": "If I weren't allergic to nuts, I would have eaten that cake at the party.",
-          "explanation": "The allergy is permanent (present condition, \"weren't\"), but the cake event was a specific past moment (\"at the party\"). Past result requires \"would have eaten\", not \"would eat\"."
+          "explanation": "The allergy is permanent (present condition, \"weren't / were not\"), but the cake event was a specific past moment (\"at the party\"). Past result requires \"would have eaten\", not \"would eat\"."
         },
         {
           "type": "read_answer",
@@ -227,7 +227,7 @@
           "accepts": [
             "is overly detail-obsessed"
           ],
-          "explanation": "The permanent trait (\"weren't so detail-obsessed\") explains the past failure (\"would have shipped three months ago\"). Mixed conditional in action."
+          "explanation": "The permanent trait (\"weren't / were not so detail-obsessed\") explains the past failure (\"would have shipped three months ago\"). Mixed conditional in action."
         }
       ],
       "listening_speaking": [
@@ -356,7 +356,7 @@
             "She had accept"
           ],
           "answer": "Had she accepted",
-          "explanation": "\"Had + subject + past participle\" — inverted form. Note the mixed conditional consequence (\"she'd be running the team now\") — inversion works across third and mixed conditionals."
+          "explanation": "\"Had + subject + past participle\" — inverted form. Note the mixed conditional consequence (\"she'd / she would be running the team now\") — inversion works across third and mixed conditionals."
         },
         {
           "type": "fill_gap",
@@ -662,7 +662,7 @@
             "Without"
           ],
           "answer": "But for",
-          "explanation": "\"But for + noun\" = \"if it hadn't been for + noun\". Formal, slightly literary. \"But for his support\" = without his support, in the past hypothetical sense. Pairs with third conditional result."
+          "explanation": "\"But for + noun\" = \"if it hadn't / had not been for + noun\". Formal, slightly literary. \"But for his support\" = without his support, in the past hypothetical sense. Pairs with third conditional result."
         },
         {
           "type": "fill_gap",
@@ -676,7 +676,7 @@
           "sentence": "Unless you don't tell me the truth, I can't help you.",
           "hint": "\"Unless\" already carries the negative meaning",
           "answer": "Unless you tell me the truth, I can't help you.",
-          "explanation": "\"Unless\" = \"if... not\". Double-negative (\"unless you don't\") flips meaning back to positive — saying you must lie. Drop the redundant \"don't\"."
+          "explanation": "\"Unless\" = \"if... not\". Double-negative (\"unless you don't / do not\") flips meaning back to positive — saying you must lie. Drop the redundant \"don't / do not\"."
         },
         {
           "type": "read_answer",
@@ -686,7 +686,7 @@
           "accepts": [
             "the flood barriers"
           ],
-          "explanation": "\"Suppose\" opens the hypothetical; \"But for that investment\" gestures at the counterfactual (\"if it weren't for that investment, the damage would have been ten times worse\"). C1 phrasing layering two alternatives to \"if\"."
+          "explanation": "\"Suppose\" opens the hypothetical; \"But for that investment\" gestures at the counterfactual (\"if it weren't / were not for that investment, the damage would have been ten times worse\"). C1 phrasing layering two alternatives to \"if\"."
         }
       ],
       "listening_speaking": [

@@ -61,7 +61,7 @@
             "will"
           ],
           "answer": "had",
-          "explanation": "\"If + past perfect\" — \"had left\". The contrast with \"wouldn't have missed\" reveals the third conditional."
+          "explanation": "\"If + past perfect\" — \"had left\". The contrast with \"wouldn't / would not have missed\" reveals the third conditional."
         },
         {
           "type": "word_bank",
@@ -628,7 +628,7 @@
             "didn't"
           ],
           "answer": "wouldn't have",
-          "explanation": "Third conditional negative result. \"Wouldn't have happened\" — main clause uses \"wouldn't have + past participle\" for an outcome that DIDN'T occur."
+          "explanation": "Third conditional negative result. \"Wouldn't / Would not have happened\" — main clause uses \"wouldn't / would not have + past participle\" for an outcome that DIDN'T occur."
         },
         {
           "type": "multiple_choice",
@@ -664,7 +664,7 @@
             "hasn't shared"
           ],
           "answer": "hadn't shared",
-          "explanation": "If-clause of the third conditional uses past perfect: \"hadn't shared\" — the friend's action made the job possible."
+          "explanation": "If-clause of the third conditional uses past perfect: \"hadn't / had not shared\" — the friend's action made the job possible."
         },
         {
           "type": "fill_gap",
@@ -678,21 +678,21 @@
           "sentence": "We wouldn't have made it if the train _____ been delayed.",
           "hint": "past perfect negativo auxiliar",
           "answer": "hadn't",
-          "explanation": "If-clause needs past perfect negative: \"hadn't been delayed\". Paradoxically, the delay saved them."
+          "explanation": "If-clause needs past perfect negative: \"hadn't / had not been delayed\". Paradoxically, the delay saved them."
         },
         {
           "type": "fill_gap",
           "sentence": "Nobody would have noticed if she _____ said anything.",
           "hint": "past perfect negativo auxiliar",
           "answer": "hadn't",
-          "explanation": "\"If she hadn't said anything\" — past perfect negative in the if-clause. Pairs with \"nobody would have noticed\" in the main clause."
+          "explanation": "\"If she hadn't / had not said anything\" — past perfect negative in the if-clause. Pairs with \"nobody would have noticed\" in the main clause."
         },
         {
           "type": "fix_error",
           "sentence": "If he didn't call me, I wouldn't have known.",
           "hint": "Third conditional precisa de \"had + past participle\" na cláusula if",
           "answer": "If he hadn't called me, I wouldn't have known.",
-          "explanation": "\"Didn't call\" is past simple — it doesn't fit in third conditional. Always \"hadn't called\" (past perfect)."
+          "explanation": "\"Didn't / Did not call\" is past simple — it doesn't fit in third conditional. Always \"hadn't / had not called\" (past perfect)."
         },
         {
           "type": "fix_error",

@@ -340,7 +340,7 @@
             "I disagree completely."
           ],
           "answer": "With respect, I'd see it differently — though I take your point about timeline.",
-          "explanation": "Three diplomatic moves in one sentence: \"With respect\" (formal hedge), \"I'd see it differently\" (soft contrast), \"I take your point about\" (concession). Drawn from M08 (hedging) and M10 (concession markers). Disagreement without damage."
+          "explanation": "Three diplomatic moves in one sentence: \"With respect\" (formal hedge), \"I'd / I would see it differently\" (soft contrast), \"I take your point about\" (concession). Drawn from M08 (hedging) and M10 (concession markers). Disagreement without damage."
         },
         {
           "type": "multiple_choice",
@@ -363,7 +363,7 @@
             "Granted",
             "It's true"
           ],
-          "explanation": "Three diplomatic openers, all from M10 (concession markers). Each grants ground before pivoting. \"Granted, X — but Y\" / \"I can see X, but Y\" / \"It's true that X — but Y\". Diplomatic argument pivots on acknowledging the other side first."
+          "explanation": "Three diplomatic openers, all from M10 (concession markers). Each grants ground before pivoting. \"Granted, X — but Y\" / \"I can see X, but Y\" / \"It's / It is true that X — but Y\". Diplomatic argument pivots on acknowledging the other side first."
         },
         {
           "type": "fix_error",
@@ -493,7 +493,7 @@
             "I'd like to fetch coffee."
           ],
           "answer": "I'm gonna grab a coffee — wanna come?",
-          "explanation": "Casual register integrates contractions (\"I'm\"), reduced \"going to\" → \"gonna\", noun→verb conversion (\"grab\"), reduced \"want to\" → \"wanna\". All drawn from M16 (conversion) and M20 (pronunciation reductions). The other options sound formal, translated, or alien."
+          "explanation": "Casual register integrates contractions (\"I'm / I am\"), reduced \"going to\" → \"gonna\", noun→verb conversion (\"grab\"), reduced \"want to\" → \"wanna\". All drawn from M16 (conversion) and M20 (pronunciation reductions). The other options sound formal, translated, or alien."
         },
         {
           "type": "multiple_choice",
@@ -505,7 +505,7 @@
             "I shall be free, I believe."
           ],
           "answer": "Should be — what's up?",
-          "explanation": "\"Should be\" — ellipsis-rich casual reply (drops \"I\"; \"be\" replaces full verb phrase). \"What's up?\" — informal opener inviting continuation. Integrates M17 (ellipsis), M20 (contractions), M21 (informal opener). Native short-answer pattern."
+          "explanation": "\"Should be\" — ellipsis-rich casual reply (drops \"I\"; \"be\" replaces full verb phrase). \"What's / What is up?\" — informal opener inviting continuation. Integrates M17 (ellipsis), M20 (contractions), M21 (informal opener). Native short-answer pattern."
         },
         {
           "type": "fill_gap",
@@ -515,14 +515,14 @@
           "accepts": [
             "right?"
           ],
-          "explanation": "Tag question \"aren't we?\" for soft confirmation. Drawn from M21. Or universal \"right?\" for casual register. Both work; \"aren't we?\" is slightly more polished, \"right?\" slightly more casual."
+          "explanation": "Tag question \"aren't / are not we?\" for soft confirmation. Drawn from M21. Or universal \"right?\" for casual register. Both work; \"aren't / are not we?\" is slightly more polished, \"right?\" slightly more casual."
         },
         {
           "type": "fix_error",
           "sentence": "Too formal for casual context: \"I will see you on Saturday. Would you be inclined to arrive at noon?\"",
           "hint": "Casual contractions and conversational rhythm",
           "answer": "I'll see you Saturday. Wanna meet at noon? (or: See you Saturday — noon work for you?)",
-          "explanation": "Casual rewrite: \"I'll\" (contraction), drop \"on\" before \"Saturday\" in casual register, \"Wanna meet\" (gonna/wanna conversion), question framed as \"X work for you?\" — short native pattern. Removes formal phrasing not needed in casual exchange."
+          "explanation": "Casual rewrite: \"I'll / I will\" (contraction), drop \"on\" before \"Saturday\" in casual register, \"Wanna meet\" (gonna/wanna conversion), question framed as \"X work for you?\" — short native pattern. Removes formal phrasing not needed in casual exchange."
         },
         {
           "type": "read_answer",
@@ -657,7 +657,7 @@
             "It is correct that we have not met for an extended period."
           ],
           "answer": "I know, right? It's been crazy.",
-          "explanation": "Casual personal opener → casual personal reply. Contracted (\"I know, right? It's been\"), informal vocabulary (\"crazy\"), tag question for warmth. Mismatching with formality would feel cold or robotic. Drawn from M11 (register) and M21 (casual register)."
+          "explanation": "Casual personal opener → casual personal reply. Contracted (\"I know, right? It's / It is been\"), informal vocabulary (\"crazy\"), tag question for warmth. Mismatching with formality would feel cold or robotic. Drawn from M11 (register) and M21 (casual register)."
         },
         {
           "type": "fill_gap",

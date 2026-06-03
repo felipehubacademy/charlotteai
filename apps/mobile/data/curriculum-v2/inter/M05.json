@@ -498,7 +498,7 @@
           "accepts": [
             "8"
           ],
-          "explanation": "The text says \"I'll pick you up at 8\"."
+          "explanation": "The text says \"I'll / I will pick you up at 8\"."
         }
       ],
       "listening_speaking": [
@@ -1026,7 +1026,7 @@
             "talking"
           ],
           "answer": "speaking",
-          "explanation": "\"Yes, speaking\" — concise phone-specific confirmation that you are the person being asked for. Fixed phone convention. \"Yes, it's me\" works casually but \"speaking\" is more professional."
+          "explanation": "\"Yes, speaking\" — concise phone-specific confirmation that you are the person being asked for. Fixed phone convention. \"Yes, it's / it is me\" works casually but \"speaking\" is more professional."
         },
         {
           "type": "word_bank",
@@ -1038,7 +1038,7 @@
             "send"
           ],
           "answer": "put",
-          "explanation": "\"I'll put you through\" — phrasal verb meaning \"transfer\". Fixed phone English. \"Put you through to [department]\" or just \"put you through\" (when context is clear). Common in receptionist/secretary speak."
+          "explanation": "\"I'll / I will put you through\" — phrasal verb meaning \"transfer\". Fixed phone English. \"Put you through to [department]\" or just \"put you through\" (when context is clear). Common in receptionist/secretary speak."
         },
         {
           "type": "fill_gap",
@@ -1048,7 +1048,7 @@
           "accepts": [
             "the other"
           ],
-          "explanation": "\"She's on another line\" / \"She's on the other line\" — phone English for \"she's busy with another call\". \"Another line\" suggests there are multiple; \"the other line\" implies a specific second line."
+          "explanation": "\"She's / She is on another line\" / \"She's / She is on the other line\" — phone English for \"she's / she is busy with another call\". \"Another line\" suggests there are multiple; \"the other line\" implies a specific second line."
         },
         {
           "type": "fill_gap",
@@ -1062,7 +1062,7 @@
           "sentence": "I'll _____ back to you tomorrow.",
           "hint": "phrasal verb for \"respond later\"",
           "answer": "get",
-          "explanation": "\"I'll get back to you\" — phrasal verb for \"I'll respond later\" or \"I'll follow up\". Standard professional phone close when you can't answer immediately. Different from \"call you back\" (which means literally make another call)."
+          "explanation": "\"I'll / I will get back to you\" — phrasal verb for \"I'll / I will respond later\" or \"I'll / I will follow up\". Standard professional phone close when you can't answer immediately. Different from \"call you back\" (which means literally make another call)."
         },
         {
           "type": "fix_error",

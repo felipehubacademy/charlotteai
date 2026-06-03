@@ -62,7 +62,7 @@
 7. **fill_gap** — Direct: "I don't understand." Reported: "She said she _____ understand."
    **Hint**: past simple negative "didn't"
    **Answer**: didn't
-   **Explanation**: "Don't" (present) → "didn't" (past) in reported speech.
+   **Explanation**: "Don't / Do not" (present) → "didn't / did not" (past) in reported speech.
 
 8. **fix_error** — Direct: "I'm tired." Reported: "He said that he is tired."
    **Hint**: Após "said" (passado), present muda para past
@@ -550,12 +550,12 @@
 5. **fill_gap** — Direct: "I won't be there." Reported: "He said he _____ be there."
    **Hint**: would + not (wouldn't)
    **Answer**: wouldn't
-   **Explanation**: "Won't" (will not) → "wouldn't" (would not) em reported.
+   **Explanation**: "Won't / Will not" (will not) → "wouldn't / would not" (would not) em reported.
 
 6. **fill_gap** — Direct: "I can't do it." Reported: "She said she _____ do it."
    **Hint**: couldn't (can't → couldn't)
    **Answer**: couldn't
-   **Explanation**: "Can't" → "couldn't" em reported. Backshift padrão.
+   **Explanation**: "Can't / Cannot" → "couldn't / could not" em reported. Backshift padrão.
 
 7. **fill_gap** — Direct: "I'll send the email." Reported: "He said he _____ send the email."
    **Hint**: would (will → would)

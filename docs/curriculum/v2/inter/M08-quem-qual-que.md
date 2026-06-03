@@ -392,7 +392,7 @@
 7. **fill_gap** — "She lives in a country _____ it's always sunny."
    **Hint**: place
    **Answer**: where
-   **Explanation**: "Country where it's sunny".
+   **Explanation**: "Country where it's / it is sunny".
 
 8. **fix_error** — "It's the city which I grew up."
    **Hint**: For places use where (or "in which")

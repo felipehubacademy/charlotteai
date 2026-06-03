@@ -63,7 +63,7 @@
             "don't"
           ],
           "answer": "wouldn't",
-          "explanation": "\"Wouldn't smoke\" — negative wish. General complaint about others' behavior."
+          "explanation": "\"Wouldn't / Would not smoke\" — negative wish. General complaint about others' behavior."
         },
         {
           "type": "word_bank",
@@ -89,7 +89,7 @@
           "sentence": "I wish my neighbors _____ make so much noise.",
           "hint": "wouldn't (negativo)",
           "answer": "wouldn't",
-          "explanation": "\"Wouldn't make noise\" — ongoing complaint. Standard negative."
+          "explanation": "\"Wouldn't / Would not make noise\" — ongoing complaint. Standard negative."
         },
         {
           "type": "fill_gap",
@@ -120,7 +120,7 @@
           "accepts": [
             "that people wouldn't smoke"
           ],
-          "explanation": "The text says \"I wish people wouldn't smoke in restaurants\"."
+          "explanation": "The text says \"I wish people wouldn't / would not smoke in restaurants\"."
         }
       ],
       "listening_speaking": [
@@ -457,7 +457,7 @@
             "won't"
           ],
           "answer": "didn't",
-          "explanation": "\"Would rather + person + past simple\" for preference about another person. \"Didn't smoke\" — negative past simple."
+          "explanation": "\"Would rather + person + past simple\" for preference about another person. \"Didn't / Did not smoke\" — negative past simple."
         },
         {
           "type": "word_bank",
@@ -469,7 +469,7 @@
             "never"
           ],
           "answer": "not",
-          "explanation": "Negative: \"I'd rather NOT + base\". \"Not stay\" — negative preference."
+          "explanation": "Negative: \"I'd / I would rather NOT + base\". \"Not stay\" — negative preference."
         },
         {
           "type": "fill_gap",
@@ -483,7 +483,7 @@
           "sentence": "I'd rather you _____ to me before deciding.",
           "hint": "past simple \"talk\"",
           "answer": "talked",
-          "explanation": "\"I'd rather you talked\" — preference about the other person's behavior. Past simple, not base form."
+          "explanation": "\"I'd / I would rather you talked\" — preference about the other person's behavior. Past simple, not base form."
         },
         {
           "type": "fill_gap",
@@ -511,7 +511,7 @@
           "passage": "I'd rather stay home tonight. I'd rather have pizza than sushi. I'd rather you didn't smoke here. I'd rather not go out today. I'd rather you talked to me before deciding.",
           "question": "What would the speaker rather have for dinner?",
           "answer": "pizza",
-          "explanation": "The text says \"I'd rather have pizza than sushi\"."
+          "explanation": "The text says \"I'd / I would rather have pizza than sushi\"."
         }
       ],
       "listening_speaking": [
@@ -627,7 +627,7 @@
             "will leave"
           ],
           "answer": "left",
-          "explanation": "\"It's time + past simple\" expressa urgência. \"It's time we left\" = é hora de sairmos (já passamos do momento ideal)."
+          "explanation": "\"It's / It is time + past simple\" expressa urgência. \"It's / It is time we left\" = é hora de sairmos (já passamos do momento ideal)."
         },
         {
           "type": "multiple_choice",
@@ -639,7 +639,7 @@
             "making"
           ],
           "answer": "made",
-          "explanation": "\"It's high time + past simple\" — versão mais enfática. \"It's high time\" indica que está MUITO atrasado."
+          "explanation": "\"It's / It is high time + past simple\" — versão mais enfática. \"It's / It is high time\" indica que está MUITO atrasado."
         },
         {
           "type": "word_bank",
@@ -651,7 +651,7 @@
             "going"
           ],
           "answer": "went",
-          "explanation": "\"It's about time\" — quase sinônimo de \"it's high time\", também urgente. + past simple."
+          "explanation": "\"It's / It is about time\" — quase sinônimo de \"it's / it is high time\", também urgente. + past simple."
         },
         {
           "type": "word_bank",
@@ -663,49 +663,49 @@
             "taking"
           ],
           "answer": "took",
-          "explanation": "\"It's time we took\" — sugestão urgente. Past simple."
+          "explanation": "\"It's / It is time we took\" — sugestão urgente. Past simple."
         },
         {
           "type": "fill_gap",
           "sentence": "It's high time you _____ a real vacation.",
           "hint": "past simple \"have\"",
           "answer": "had",
-          "explanation": "\"It's high time you had a vacation\" — urgência enfática."
+          "explanation": "\"It's / It is high time you had a vacation\" — urgência enfática."
         },
         {
           "type": "fill_gap",
           "sentence": "It's about time he _____ growing up.",
           "hint": "past simple \"start\"",
           "answer": "started",
-          "explanation": "\"It's about time he started growing up\" — emphatic suggestion about someone."
+          "explanation": "\"It's / It is about time he started growing up\" — emphatic suggestion about someone."
         },
         {
           "type": "fill_gap",
           "sentence": "It's time we _____ honest with each other.",
           "hint": "past simple \"be\" → were",
           "answer": "were",
-          "explanation": "\"It's time we were honest\" — past simple \"were\" (universal subjuntivo). Não \"are\"."
+          "explanation": "\"It's / It is time we were honest\" — past simple \"were\" (universal subjuntivo). Não \"are\"."
         },
         {
           "type": "fix_error",
           "sentence": "It's time we leave.",
           "hint": "Past simple, não present",
           "answer": "It's time we left.",
-          "explanation": "\"It's time\" doesn't take present simple directly. Always past simple (\"left\")."
+          "explanation": "\"It's / It is time\" doesn't take present simple directly. Always past simple (\"left\")."
         },
         {
           "type": "fix_error",
           "sentence": "It's high time you will make a decision.",
           "hint": "Sem \"will\" — past simple",
           "answer": "It's high time you made a decision.",
-          "explanation": "\"Will\" doesn't fit. The pattern is \"it's high time + past simple\" (\"made\")."
+          "explanation": "\"Will\" doesn't fit. The pattern is \"it's / it is high time + past simple\" (\"made\")."
         },
         {
           "type": "read_answer",
           "passage": "It's time we left for the airport. It's high time you made a decision. It's about time you went to bed. It's time we took this seriously.",
           "question": "What should you go to?",
           "answer": "bed",
-          "explanation": "The text says \"It's about time you went to bed\"."
+          "explanation": "The text says \"It's / It is about time you went to bed\"."
         }
       ],
       "listening_speaking": [
@@ -843,7 +843,7 @@
             "nothing"
           ],
           "answer": "not",
-          "explanation": "\"I'd rather not + base\" — negative preference."
+          "explanation": "\"I'd / I would rather not + base\" — negative preference."
         },
         {
           "type": "word_bank",
@@ -855,14 +855,14 @@
             "taking"
           ],
           "answer": "took",
-          "explanation": "\"It's time + past simple\" — urgency."
+          "explanation": "\"It's / It is time + past simple\" — urgency."
         },
         {
           "type": "fill_gap",
           "sentence": "I'd rather you _____ to me before deciding.",
           "hint": "past simple \"talk\"",
           "answer": "talked",
-          "explanation": "\"I'd rather you + past simple\" for preference about the other person."
+          "explanation": "\"I'd / I would rather you + past simple\" for preference about the other person."
         },
         {
           "type": "fill_gap",
@@ -876,7 +876,7 @@
           "sentence": "It's high time you _____ a real job.",
           "hint": "past simple \"get\"",
           "answer": "got",
-          "explanation": "\"It's high time + past simple\" — emphatic urgency."
+          "explanation": "\"It's / It is high time + past simple\" — emphatic urgency."
         },
         {
           "type": "fix_error",
@@ -890,7 +890,7 @@
           "sentence": "It's time we leave.",
           "hint": "Past simple \"left\"",
           "answer": "It's time we left.",
-          "explanation": "\"It's time\" takes past simple, not present."
+          "explanation": "\"It's / It is time\" takes past simple, not present."
         },
         {
           "type": "read_answer",
@@ -900,7 +900,7 @@
           "accepts": [
             "go tonight"
           ],
-          "explanation": "The text says \"I'd rather not go tonight\"."
+          "explanation": "The text says \"I'd / I would rather not go tonight\"."
         }
       ],
       "listening_speaking": [

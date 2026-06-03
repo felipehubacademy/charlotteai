@@ -229,7 +229,7 @@
           "passage": "The candidate dodged the policy question and went personal. 'What this country needs is leadership that listens,' he said. 'What we don't need is another decade of slogans dressed up as plans.' The audience cheered the rhythm more than the substance.",
           "question": "What does the candidate claim the country needs?",
           "answer": "leadership that listens",
-          "explanation": "\"What this country needs is leadership that listens.\" Wh-cleft used rhetorically. Followed by the inverse wh-cleft (\"What we don't need is...\") — a rhythm device common in political speech."
+          "explanation": "\"What this country needs is leadership that listens.\" Wh-cleft used rhetorically. Followed by the inverse wh-cleft (\"What we don't / do not need is...\") — a rhythm device common in political speech."
         }
       ],
       "listening_speaking": [
@@ -502,7 +502,7 @@
             "and"
           ],
           "answer": "that",
-          "explanation": "\"It wasn't until + clause + that + main clause\" — the it-cleft form of delayed realisation. \"When\" feels natural but breaks the cleft pattern."
+          "explanation": "\"It wasn't / was not until + clause + that + main clause\" — the it-cleft form of delayed realisation. \"When\" feels natural but breaks the cleft pattern."
         },
         {
           "type": "multiple_choice",
@@ -514,21 +514,21 @@
             "It wasn't when"
           ],
           "answer": "It wasn't until",
-          "explanation": "It-cleft of delayed result. \"It wasn't until + time-clause + that + result\" — the structure dramatises the delay until things started working."
+          "explanation": "It-cleft of delayed result. \"It wasn't / was not until + time-clause + that + result\" — the structure dramatises the delay until things started working."
         },
         {
           "type": "fill_gap",
           "sentence": "It wasn't until I saw the photo _____ I recognised her.",
           "hint": "conector que fecha o cleft",
           "answer": "that",
-          "explanation": "\"It wasn't until I saw the photo that I recognised her.\" The cleft pattern is strictly \"It wasn't until X that Y\" — never \"when\"."
+          "explanation": "\"It wasn't / was not until I saw the photo that I recognised her.\" The cleft pattern is strictly \"It wasn't / was not until X that Y\" — never \"when\"."
         },
         {
           "type": "fix_error",
           "sentence": "It wasn't until I read the contract when I noticed the clause.",
           "hint": "After \"It wasn't until + clause\", use \"that\", not \"when\"",
           "answer": "It wasn't until I read the contract that I noticed the clause.",
-          "explanation": "\"When\" feels natural but breaks the cleft pattern. The cleft structure is strictly \"It wasn't until X that Y\". \"When\" works for plain temporal links, not for the cleft emphasis form."
+          "explanation": "\"When\" feels natural but breaks the cleft pattern. The cleft structure is strictly \"It wasn't / was not until X that Y\". \"When\" works for plain temporal links, not for the cleft emphasis form."
         },
         {
           "type": "read_answer",
@@ -538,7 +538,7 @@
           "accepts": [
             "the third specialist considering autoimmune angle"
           ],
-          "explanation": "Two it-not-until clefts: \"It wasn't until the third specialist that...\" and \"It wasn't until I trusted my own instincts that...\". Both highlight delayed turning points."
+          "explanation": "Two it-not-until clefts: \"It wasn't / was not until the third specialist that...\" and \"It wasn't / was not until I trusted my own instincts that...\". Both highlight delayed turning points."
         }
       ],
       "listening_speaking": [
@@ -652,7 +652,7 @@
             "Why the reason"
           ],
           "answer": "The reason why",
-          "explanation": "\"The reason (why) + clause + is + that-clause/element\". \"Why\" is optional in modern English (\"the reason I'm leaving is...\"). \"Because\" is incorrect here — the explanation comes after \"is\"."
+          "explanation": "\"The reason (why) + clause + is + that-clause/element\". \"Why\" is optional in modern English (\"the reason I'm / I am leaving is...\"). \"Because\" is incorrect here — the explanation comes after \"is\"."
         },
         {
           "type": "multiple_choice",
@@ -691,7 +691,7 @@
           "accepts": [
             "the temptation to chase fashion"
           ],
-          "explanation": "Three layered lexical clefts: \"The reason... was discipline\", \"The thing that holds... is the temptation to chase fashion\", \"The time when we changed course wasn't... it was...\". Layered for rhetorical weight."
+          "explanation": "Three layered lexical clefts: \"The reason... was discipline\", \"The thing that holds... is the temptation to chase fashion\", \"The time when we changed course wasn't / was not... it was...\". Layered for rhetorical weight."
         }
       ],
       "listening_speaking": [

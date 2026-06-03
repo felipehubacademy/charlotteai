@@ -322,7 +322,7 @@ This module does not introduce new chunks. Instead, it asks the student to deplo
 1. **multiple_choice** — Most diplomatic refusal:
    **Options**: With respect, I'd see it differently — though I take your point about timeline. / You're wrong. / No, that's not right. / I disagree completely.
    **Answer**: With respect, I'd see it differently — though I take your point about timeline.
-   **Explanation**: Three diplomatic moves in one sentence: "With respect" (formal hedge), "I'd see it differently" (soft contrast), "I take your point about" (concession). Drawn from M08 (hedging) and M10 (concession markers). Disagreement without damage.
+   **Explanation**: Three diplomatic moves in one sentence: "With respect" (formal hedge), "I'd / I would see it differently" (soft contrast), "I take your point about" (concession). Drawn from M08 (hedging) and M10 (concession markers). Disagreement without damage.
 
 2. **multiple_choice** — Which feedback opener is most face-saving?
    **Options**: Honestly — and I mean this constructively — I'd push back on one specific point. / You're completely wrong. / This is bad. / I don't like it.
@@ -333,7 +333,7 @@ This module does not introduce new chunks. Instead, it asks the student to deplo
    **Hint**: "I can see / Granted / It's true"
    **Answer**: I can see
    **Accepts**: Granted / It's true
-   **Explanation**: Three diplomatic openers, all from M10 (concession markers). Each grants ground before pivoting. "Granted, X — but Y" / "I can see X, but Y" / "It's true that X — but Y". Diplomatic argument pivots on acknowledging the other side first.
+   **Explanation**: Three diplomatic openers, all from M10 (concession markers). Each grants ground before pivoting. "Granted, X — but Y" / "I can see X, but Y" / "It's / It is true that X — but Y". Diplomatic argument pivots on acknowledging the other side first.
 
 4. **fix_error** — Blunt feedback: "Your slides are bad and the message is confused."
    **Hint**: Rewrite diplomatically with at least three softening moves
@@ -463,23 +463,23 @@ This module does not introduce new chunks. Instead, it asks the student to deplo
 1. **multiple_choice** — Most natural casual register:
    **Options**: I'm gonna grab a coffee — wanna come? / I am going to obtain coffee — would you like to accompany me? / I am going for coffee. / I'd like to fetch coffee.
    **Answer**: I'm gonna grab a coffee — wanna come?
-   **Explanation**: Casual register integrates contractions ("I'm"), reduced "going to" → "gonna", noun→verb conversion ("grab"), reduced "want to" → "wanna". All drawn from M16 (conversion) and M20 (pronunciation reductions). The other options sound formal, translated, or alien.
+   **Explanation**: Casual register integrates contractions ("I'm / I am"), reduced "going to" → "gonna", noun→verb conversion ("grab"), reduced "want to" → "wanna". All drawn from M16 (conversion) and M20 (pronunciation reductions). The other options sound formal, translated, or alien.
 
 2. **multiple_choice** — Most native conversational reply to "Are you free Saturday?":
    **Options**: Should be — what's up? / I am free on Saturday. May I ask why? / Yes. / I shall be free, I believe.
    **Answer**: Should be — what's up?
-   **Explanation**: "Should be" — ellipsis-rich casual reply (drops "I"; "be" replaces full verb phrase). "What's up?" — informal opener inviting continuation. Integrates M17 (ellipsis), M20 (contractions), M21 (informal opener). Native short-answer pattern.
+   **Explanation**: "Should be" — ellipsis-rich casual reply (drops "I"; "be" replaces full verb phrase). "What's / What is up?" — informal opener inviting continuation. Integrates M17 (ellipsis), M20 (contractions), M21 (informal opener). Native short-answer pattern.
 
 3. **fill_gap** — Casual reply with tag: "We're meeting at the usual place, _____"
    **Hint**: Tag for confirmation
    **Answer**: aren't we
    **Accepts**: right?
-   **Explanation**: Tag question "aren't we?" for soft confirmation. Drawn from M21. Or universal "right?" for casual register. Both work; "aren't we?" is slightly more polished, "right?" slightly more casual.
+   **Explanation**: Tag question "aren't / are not we?" for soft confirmation. Drawn from M21. Or universal "right?" for casual register. Both work; "aren't / are not we?" is slightly more polished, "right?" slightly more casual.
 
 4. **fix_error** — Too formal for casual context: "I will see you on Saturday. Would you be inclined to arrive at noon?"
    **Hint**: Casual contractions and conversational rhythm
    **Answer**: I'll see you Saturday. Wanna meet at noon? (or: See you Saturday — noon work for you?)
-   **Explanation**: Casual rewrite: "I'll" (contraction), drop "on" before "Saturday" in casual register, "Wanna meet" (gonna/wanna conversion), question framed as "X work for you?" — short native pattern. Removes formal phrasing not needed in casual exchange.
+   **Explanation**: Casual rewrite: "I'll / I will" (contraction), drop "on" before "Saturday" in casual register, "Wanna meet" (gonna/wanna conversion), question framed as "X work for you?" — short native pattern. Removes formal phrasing not needed in casual exchange.
 
 5. **read_answer**
    **Passage**: "The conversation flowed. 'You been working late again?' 'Mm-hm. Should be done by Friday, though.' 'Want to grab a drink after, yeah?' 'I'd love to. Same place as last time?' 'Yeah, sounds good.' 'Cool — text me when you're heading out.' Six exchanges, twelve seconds, zero formality."
@@ -609,7 +609,7 @@ This module does not introduce new chunks. Instead, it asks the student to deplo
 2. **multiple_choice** — Register-appropriate reply to "We haven't seen each other in ages":
    **Options**: I know, right? It's been crazy. / Indeed. The intervening period has been considerable. / Yes. Time has elapsed. / It is correct that we have not met for an extended period.
    **Answer**: I know, right? It's been crazy.
-   **Explanation**: Casual personal opener → casual personal reply. Contracted ("I know, right? It's been"), informal vocabulary ("crazy"), tag question for warmth. Mismatching with formality would feel cold or robotic. Drawn from M11 (register) and M21 (casual register).
+   **Explanation**: Casual personal opener → casual personal reply. Contracted ("I know, right? It's / It is been"), informal vocabulary ("crazy"), tag question for warmth. Mismatching with formality would feel cold or robotic. Drawn from M11 (register) and M21 (casual register).
 
 3. **fill_gap** — Diplomatic transition between casual and formal: "_____ — coming back to the actual decision in front of us..."
    **Hint**: Phrase that pivots from casual aside to substantive content

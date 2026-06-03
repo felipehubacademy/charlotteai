@@ -42,7 +42,7 @@
 3. **word_bank** — "I wish people _____ smoke in restaurants."
    **Choices**: wouldn't / didn't / won't / don't
    **Answer**: wouldn't
-   **Explanation**: "Wouldn't smoke" — negative wish. General complaint about others' behavior.
+   **Explanation**: "Wouldn't / Would not smoke" — negative wish. General complaint about others' behavior.
 
 4. **word_bank** — "I wish it _____ raining!"
    **Choices**: would stop / will stop / stops / stopped
@@ -57,7 +57,7 @@
 6. **fill_gap** — "I wish my neighbors _____ make so much noise."
    **Hint**: wouldn't (negativo)
    **Answer**: wouldn't
-   **Explanation**: "Wouldn't make noise" — ongoing complaint. Standard negative.
+   **Explanation**: "Wouldn't / Would not make noise" — ongoing complaint. Standard negative.
 
 7. **fill_gap** — "I wish he _____ stop complaining."
    **Hint**: would
@@ -79,7 +79,7 @@
     **Question**: What does the speaker wish about restaurants?
     **Answer**: people wouldn't smoke
     **Accepts**: that people wouldn't smoke
-    **Explanation**: The text says "I wish people wouldn't smoke in restaurants".
+    **Explanation**: The text says "I wish people wouldn't / would not smoke in restaurants".
 
 ### 2. Listening/Speaking (5 phrases)
 
@@ -374,12 +374,12 @@
 3. **word_bank** — "I'd rather you _____ smoke here."
    **Choices**: didn't / don't / wouldn't / won't
    **Answer**: didn't
-   **Explanation**: "Would rather + person + past simple" for preference about another person. "Didn't smoke" — negative past simple.
+   **Explanation**: "Would rather + person + past simple" for preference about another person. "Didn't / Did not smoke" — negative past simple.
 
 4. **word_bank** — "I'd rather _____ stay than go out."
    **Choices**: not / no / nothing / never
    **Answer**: not
-   **Explanation**: Negative: "I'd rather NOT + base". "Not stay" — negative preference.
+   **Explanation**: Negative: "I'd / I would rather NOT + base". "Not stay" — negative preference.
 
 5. **fill_gap** — "I'd rather _____ coffee than tea."
    **Hint**: base form "drink"
@@ -389,7 +389,7 @@
 6. **fill_gap** — "I'd rather you _____ to me before deciding."
    **Hint**: past simple "talk"
    **Answer**: talked
-   **Explanation**: "I'd rather you talked" — preference about the other person's behavior. Past simple, not base form.
+   **Explanation**: "I'd / I would rather you talked" — preference about the other person's behavior. Past simple, not base form.
 
 7. **fill_gap** — "She'd rather _____ outside on the patio."
    **Hint**: base form "sit"
@@ -410,7 +410,7 @@
     **Passage**: "I'd rather stay home tonight. I'd rather have pizza than sushi. I'd rather you didn't smoke here. I'd rather not go out today. I'd rather you talked to me before deciding."
     **Question**: What would the speaker rather have for dinner?
     **Answer**: pizza
-    **Explanation**: The text says "I'd rather have pizza than sushi".
+    **Explanation**: The text says "I'd / I would rather have pizza than sushi".
 
 ### 2. Listening/Speaking (5 phrases)
 
@@ -529,53 +529,53 @@
 1. **multiple_choice** — "It's time we _____."
    **Options**: left / leave / leaving / will leave
    **Answer**: left
-   **Explanation**: "It's time + past simple" expressa urgência. "It's time we left" = é hora de sairmos (já passamos do momento ideal).
+   **Explanation**: "It's / It is time + past simple" expressa urgência. "It's / It is time we left" = é hora de sairmos (já passamos do momento ideal).
 
 2. **multiple_choice** — "It's high time you _____ a decision."
    **Options**: made / make / will make / making
    **Answer**: made
-   **Explanation**: "It's high time + past simple" — versão mais enfática. "It's high time" indica que está MUITO atrasado.
+   **Explanation**: "It's / It is high time + past simple" — versão mais enfática. "It's / It is high time" indica que está MUITO atrasado.
 
 3. **word_bank** — "It's about time you _____ to bed."
    **Choices**: went / go / will go / going
    **Answer**: went
-   **Explanation**: "It's about time" — quase sinônimo de "it's high time", também urgente. + past simple.
+   **Explanation**: "It's / It is about time" — quase sinônimo de "it's / it is high time", também urgente. + past simple.
 
 4. **word_bank** — "It's time we _____ this seriously."
    **Choices**: took / take / will take / taking
    **Answer**: took
-   **Explanation**: "It's time we took" — sugestão urgente. Past simple.
+   **Explanation**: "It's / It is time we took" — sugestão urgente. Past simple.
 
 5. **fill_gap** — "It's high time you _____ a real vacation."
    **Hint**: past simple "have"
    **Answer**: had
-   **Explanation**: "It's high time you had a vacation" — urgência enfática.
+   **Explanation**: "It's / It is high time you had a vacation" — urgência enfática.
 
 6. **fill_gap** — "It's about time he _____ growing up."
    **Hint**: past simple "start"
    **Answer**: started
-   **Explanation**: "It's about time he started growing up" — emphatic suggestion about someone.
+   **Explanation**: "It's / It is about time he started growing up" — emphatic suggestion about someone.
 
 7. **fill_gap** — "It's time we _____ honest with each other."
    **Hint**: past simple "be" → were
    **Answer**: were
-   **Explanation**: "It's time we were honest" — past simple "were" (universal subjuntivo). Não "are".
+   **Explanation**: "It's / It is time we were honest" — past simple "were" (universal subjuntivo). Não "are".
 
 8. **fix_error** — "It's time we leave."
    **Hint**: Past simple, não present
    **Answer**: It's time we left.
-   **Explanation**: "It's time" doesn't take present simple directly. Always past simple ("left").
+   **Explanation**: "It's / It is time" doesn't take present simple directly. Always past simple ("left").
 
 9. **fix_error** — "It's high time you will make a decision."
    **Hint**: Sem "will" — past simple
    **Answer**: It's high time you made a decision.
-   **Explanation**: "Will" doesn't fit. The pattern is "it's high time + past simple" ("made").
+   **Explanation**: "Will" doesn't fit. The pattern is "it's / it is high time + past simple" ("made").
 
 10. **read_answer**
     **Passage**: "It's time we left for the airport. It's high time you made a decision. It's about time you went to bed. It's time we took this seriously."
     **Question**: What should you go to?
     **Answer**: bed
-    **Explanation**: The text says "It's about time you went to bed".
+    **Explanation**: The text says "It's / It is about time you went to bed".
 
 ### 2. Listening/Speaking (5 phrases)
 
@@ -704,17 +704,17 @@
 3. **word_bank** — "I'd rather _____ stay home tonight."
    **Choices**: not / no / never / nothing
    **Answer**: not
-   **Explanation**: "I'd rather not + base" — negative preference.
+   **Explanation**: "I'd / I would rather not + base" — negative preference.
 
 4. **word_bank** — "It's time we _____ this seriously."
    **Choices**: took / take / will take / taking
    **Answer**: took
-   **Explanation**: "It's time + past simple" — urgency.
+   **Explanation**: "It's / It is time + past simple" — urgency.
 
 5. **fill_gap** — "I'd rather you _____ to me before deciding."
    **Hint**: past simple "talk"
    **Answer**: talked
-   **Explanation**: "I'd rather you + past simple" for preference about the other person.
+   **Explanation**: "I'd / I would rather you + past simple" for preference about the other person.
 
 6. **fill_gap** — "If only she _____ understand me!"
    **Hint**: would
@@ -724,7 +724,7 @@
 7. **fill_gap** — "It's high time you _____ a real job."
    **Hint**: past simple "get"
    **Answer**: got
-   **Explanation**: "It's high time + past simple" — emphatic urgency.
+   **Explanation**: "It's / It is high time + past simple" — emphatic urgency.
 
 8. **fix_error** — "I wish you will be quiet."
    **Hint**: Wish + would, não "will"
@@ -734,14 +734,14 @@
 9. **fix_error** — "It's time we leave."
    **Hint**: Past simple "left"
    **Answer**: It's time we left.
-   **Explanation**: "It's time" takes past simple, not present.
+   **Explanation**: "It's / It is time" takes past simple, not present.
 
 10. **read_answer**
     **Passage**: "I wish you would stop interrupting me. If only I had more time! I'd rather not go tonight. It's time we left for the airport. I'd rather you talked to me first."
     **Question**: What does the speaker prefer not to do tonight?
     **Answer**: go
     **Accepts**: go tonight
-    **Explanation**: The text says "I'd rather not go tonight".
+    **Explanation**: The text says "I'd / I would rather not go tonight".
 
 ### 2. Listening/Speaking (5 phrases)
 

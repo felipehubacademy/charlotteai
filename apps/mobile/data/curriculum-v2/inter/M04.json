@@ -227,7 +227,7 @@
             "don't use to"
           ],
           "answer": "didn't use to",
-          "explanation": "Negative: \"didn't use to + base\". Note: \"use\" (no -d) after didn't."
+          "explanation": "Negative: \"didn't / did not use to + base\". Note: \"use\" (no -d) after didn't."
         },
         {
           "type": "multiple_choice",
@@ -250,7 +250,7 @@
             "no use to"
           ],
           "answer": "didn't use to",
-          "explanation": "Negative uses \"didn't use to\" (base \"use\", not \"used\")."
+          "explanation": "Negative uses \"didn't / did not use to\" (base \"use\", not \"used\")."
         },
         {
           "type": "word_bank",
@@ -269,7 +269,7 @@
           "sentence": "I didn't use _____ exercise.",
           "hint": "particle \"to\"",
           "answer": "to",
-          "explanation": "\"Didn't use TO + base\"."
+          "explanation": "\"Didn't / Did not use TO + base\"."
         },
         {
           "type": "fill_gap",
@@ -283,14 +283,14 @@
           "sentence": "She didn't _____ to drink tea.",
           "hint": "form of \"use\" after didn't",
           "answer": "use",
-          "explanation": "After \"didn't\", base form: \"use\" (not \"used\")."
+          "explanation": "After \"didn't / did not\", base form: \"use\" (not \"used\")."
         },
         {
           "type": "fix_error",
           "sentence": "I didn't used to like coffee.",
           "hint": "After didn't, base \"use\"",
           "answer": "I didn't use to like coffee.",
-          "explanation": "After \"didn't\", base form: \"use\" (not \"used\"). Common mistake."
+          "explanation": "After \"didn't / did not\", base form: \"use\" (not \"used\"). Common mistake."
         },
         {
           "type": "fix_error",
@@ -307,7 +307,7 @@
           "accepts": [
             "didn't use to"
           ],
-          "explanation": "The text says \"I didn't use to like coffee\"."
+          "explanation": "The text says \"I didn't / did not use to like coffee\"."
         }
       ],
       "listening_speaking": [
@@ -880,7 +880,7 @@
           "sentence": "I didn't used to drink coffee.",
           "hint": "After didn't, \"use\" (no -d)",
           "answer": "I didn't use to drink coffee.",
-          "explanation": "\"Didn't use to\" — base \"use\"."
+          "explanation": "\"Didn't / Did not use to\" — base \"use\"."
         },
         {
           "type": "read_answer",

@@ -8,7 +8,11 @@
 import fs from 'node:fs';
 import path from 'node:path';
 
-const NOVICE_DIR = '/Users/felipexavier/charlotteai/docs/curriculum/v2/novice';
+const DIRS = [
+  '/Users/felipexavier/charlotteai/docs/curriculum/v2/novice',
+  '/Users/felipexavier/charlotteai/docs/curriculum/v2/inter',
+  '/Users/felipexavier/charlotteai/docs/curriculum/v2/advanced',
+];
 
 // Mapeamento de contracoes pras suas formas expandidas
 const CONTRACTIONS = [
@@ -91,17 +95,24 @@ function expandQuotedPhrases(text) {
 
 let totalLines = 0;
 let totalFiles = 0;
-for (const f of fs.readdirSync(NOVICE_DIR).filter(x => x.endsWith('.md')).sort()) {
-  const fp = path.join(NOVICE_DIR, f);
-  const lines = fs.readFileSync(fp, 'utf8').split('\n');
-  let changed = false;
-  for (let i = 0; i < lines.length; i++) {
-    if (!/^\s*\*\*Explanation\*\*:/i.test(lines[i])) continue;
-    const before = lines[i];
-    lines[i] = expandQuotedPhrases(lines[i]);
-    if (lines[i] !== before) { changed = true; totalLines++; }
+for (const dir of DIRS) {
+  if (!fs.existsSync(dir)) continue;
+  let levelLines = 0, levelFiles = 0;
+  for (const f of fs.readdirSync(dir).filter(x => x.endsWith('.md')).sort()) {
+    const fp = path.join(dir, f);
+    const lines = fs.readFileSync(fp, 'utf8').split('\n');
+    let changed = false;
+    for (let i = 0; i < lines.length; i++) {
+      if (!/^\s*\*\*Explanation\*\*:/i.test(lines[i])) continue;
+      const before = lines[i];
+      lines[i] = expandQuotedPhrases(lines[i]);
+      if (lines[i] !== before) { changed = true; levelLines++; }
+    }
+    if (changed) { fs.writeFileSync(fp, lines.join('\n')); levelFiles++; }
   }
-  if (changed) { fs.writeFileSync(fp, lines.join('\n')); totalFiles++; }
+  console.log(`  ${path.basename(dir)}: ${levelLines} lines, ${levelFiles} files`);
+  totalLines += levelLines;
+  totalFiles += levelFiles;
 }
 
-console.log(`Updated ${totalLines} lines across ${totalFiles} files`);
+console.log(`\nTOTAL: ${totalLines} lines across ${totalFiles} files`);

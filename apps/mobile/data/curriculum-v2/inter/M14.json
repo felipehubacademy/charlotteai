@@ -63,7 +63,7 @@
             "didn't have"
           ],
           "answer": "shouldn't have",
-          "explanation": "\"Shouldn't have + past participle\" to criticize a wrong past action. \"She shouldn't have said\" — she said it and it was wrong."
+          "explanation": "\"Shouldn't / Should not have + past participle\" to criticize a wrong past action. \"She shouldn't / should not have said\" — she said it and it was wrong."
         },
         {
           "type": "word_bank",
@@ -89,7 +89,7 @@
           "sentence": "I _____ have eaten so much.",
           "hint": "shouldn't (arrependimento)",
           "answer": "shouldn't",
-          "explanation": "\"I shouldn't have eaten so much\" — I ate too much, I regret it."
+          "explanation": "\"I shouldn't / should not have eaten so much\" — I ate too much, I regret it."
         },
         {
           "type": "fill_gap",
@@ -110,7 +110,7 @@
           "sentence": "She shouldn't said that.",
           "hint": "Falta \"have\"",
           "answer": "She shouldn't have said that.",
-          "explanation": "\"Shouldn't have + past participle\". \"Shouldn't said\" isn't grammatical."
+          "explanation": "\"Shouldn't / Should not have + past participle\". \"Shouldn't / Should not said\" isn't grammatical."
         },
         {
           "type": "read_answer",
@@ -290,7 +290,7 @@
           "sentence": "She _____ have known — she wasn't even there.",
           "hint": "couldn't (impossibilidade)",
           "answer": "couldn't",
-          "explanation": "\"She couldn't have known\" — past logical impossibility. There was no way to know."
+          "explanation": "\"She couldn't / could not have known\" — past logical impossibility. There was no way to know."
         },
         {
           "type": "fix_error",
@@ -304,14 +304,14 @@
           "sentence": "She couldn't known about it.",
           "hint": "Falta \"have\"",
           "answer": "She couldn't have known about it.",
-          "explanation": "\"Couldn't have + past participle\". Without \"have\", the sentence is incorrect."
+          "explanation": "\"Couldn't / Could not have + past participle\". Without \"have\", the sentence is incorrect."
         },
         {
           "type": "read_answer",
           "passage": "I could have called you yesterday but I forgot. She could have won the race if she hadn't fallen. He couldn't have known about the meeting — he was on vacation.",
           "question": "Why couldn't he have known about the meeting?",
           "answer": "he was on vacation",
-          "explanation": "The text says \"He couldn't have known about the meeting — he was on vacation\"."
+          "explanation": "The text says \"He couldn't / could not have known about the meeting — he was on vacation\"."
         }
       ],
       "listening_speaking": [
@@ -439,7 +439,7 @@
             "didn't"
           ],
           "answer": "can't have",
-          "explanation": "\"Can't have + past participle\" = logical impossibility based on evidence. He was with me → impossible he stole it."
+          "explanation": "\"Can't / Cannot have + past participle\" = logical impossibility based on evidence. He was with me → impossible he stole it."
         },
         {
           "type": "word_bank",
@@ -463,7 +463,7 @@
             "didn't"
           ],
           "answer": "can't have",
-          "explanation": "\"Can't have heard\" = impossible to have heard (headphones). Strong negative inference."
+          "explanation": "\"Can't / Cannot have heard\" = impossible to have heard (headphones). Strong negative inference."
         },
         {
           "type": "fill_gap",
@@ -484,7 +484,7 @@
           "sentence": "She _____ have arrived — her car isn't here.",
           "hint": "can't (impossibilidade)",
           "answer": "can't",
-          "explanation": "\"She can't have arrived\" — no car = she didn't arrive. Negative inference."
+          "explanation": "\"She can't / cannot have arrived\" — no car = she didn't arrive. Negative inference."
         },
         {
           "type": "fix_error",
@@ -498,7 +498,7 @@
           "sentence": "He can't stole it — he was with me!",
           "hint": "Falta \"have\" — \"can't HAVE stolen\"",
           "answer": "He can't have stolen it — he was with me!",
-          "explanation": "\"Can't HAVE + past participle\". And note: stolen, not stole, as the past participle."
+          "explanation": "\"Can't / Cannot HAVE + past participle\". And note: stolen, not stole, as the past participle."
         },
         {
           "type": "read_answer",
@@ -508,7 +508,7 @@
           "accepts": [
             "he was with the speaker the whole day"
           ],
-          "explanation": "The text says \"He can't have stolen it — he was with me the whole day\"."
+          "explanation": "The text says \"He can't / cannot have stolen it — he was with me the whole day\"."
         }
       ],
       "listening_speaking": [
@@ -855,7 +855,7 @@
             "would have"
           ],
           "answer": "can't have",
-          "explanation": "\"Can't have heard\" — logical impossibility (headphones)."
+          "explanation": "\"Can't / Cannot have heard\" — logical impossibility (headphones)."
         },
         {
           "type": "fill_gap",
@@ -876,7 +876,7 @@
           "sentence": "I _____ have spoken so loudly — sorry.",
           "hint": "shouldn't (auto-crítica)",
           "answer": "shouldn't",
-          "explanation": "\"Shouldn't have spoken so loudly\" — regret about a past action."
+          "explanation": "\"Shouldn't / Should not have spoken so loudly\" — regret about a past action."
         },
         {
           "type": "fix_error",
@@ -890,7 +890,7 @@
           "sentence": "You shouldn't said that.",
           "hint": "Falta \"have\"",
           "answer": "You shouldn't have said that.",
-          "explanation": "\"Shouldn't have + past participle\". Fixed form."
+          "explanation": "\"Shouldn't / Should not have + past participle\". Fixed form."
         },
         {
           "type": "read_answer",

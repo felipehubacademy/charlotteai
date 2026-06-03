@@ -42,7 +42,7 @@
 3. **word_bank** — "She _____ said anything — it wasn't her business."
    **Choices**: shouldn't have / shouldn't / wouldn't have / didn't have
    **Answer**: shouldn't have
-   **Explanation**: "Shouldn't have + past participle" to criticize a wrong past action. "She shouldn't have said" — she said it and it was wrong.
+   **Explanation**: "Shouldn't / Should not have + past participle" to criticize a wrong past action. "She shouldn't / should not have said" — she said it and it was wrong.
 
 4. **word_bank** — "We _____ left earlier — we missed the train."
    **Choices**: should have / should / would have / had
@@ -57,7 +57,7 @@
 6. **fill_gap** — "I _____ have eaten so much."
    **Hint**: shouldn't (arrependimento)
    **Answer**: shouldn't
-   **Explanation**: "I shouldn't have eaten so much" — I ate too much, I regret it.
+   **Explanation**: "I shouldn't / should not have eaten so much" — I ate too much, I regret it.
 
 7. **fill_gap** — "You _____ have called me first."
    **Hint**: should (sugestão retrospectiva)
@@ -72,7 +72,7 @@
 9. **fix_error** — "She shouldn't said that."
    **Hint**: Falta "have"
    **Answer**: She shouldn't have said that.
-   **Explanation**: "Shouldn't have + past participle". "Shouldn't said" isn't grammatical.
+   **Explanation**: "Shouldn't / Should not have + past participle". "Shouldn't / Should not said" isn't grammatical.
 
 10. **read_answer**
     **Passage**: "I should have studied harder. You should have told her the truth. We shouldn't have eaten so much. He should have apologized when he had the chance."
@@ -227,7 +227,7 @@
 7. **fill_gap** — "She _____ have known — she wasn't even there."
    **Hint**: couldn't (impossibilidade)
    **Answer**: couldn't
-   **Explanation**: "She couldn't have known" — past logical impossibility. There was no way to know.
+   **Explanation**: "She couldn't / could not have known" — past logical impossibility. There was no way to know.
 
 8. **fix_error** — "I could called you but I forgot."
    **Hint**: Falta "have" — "could HAVE called"
@@ -237,13 +237,13 @@
 9. **fix_error** — "She couldn't known about it."
    **Hint**: Falta "have"
    **Answer**: She couldn't have known about it.
-   **Explanation**: "Couldn't have + past participle". Without "have", the sentence is incorrect.
+   **Explanation**: "Couldn't / Could not have + past participle". Without "have", the sentence is incorrect.
 
 10. **read_answer**
     **Passage**: "I could have called you yesterday but I forgot. She could have won the race if she hadn't fallen. He couldn't have known about the meeting — he was on vacation."
     **Question**: Why couldn't he have known about the meeting?
     **Answer**: he was on vacation
-    **Explanation**: The text says "He couldn't have known about the meeting — he was on vacation".
+    **Explanation**: The text says "He couldn't / could not have known about the meeting — he was on vacation".
 
 ### 2. Listening/Speaking (5 phrases)
 
@@ -367,7 +367,7 @@
 2. **multiple_choice** — "He _____ stolen it — he was with me all day!"
    **Options**: can't have / must have / shouldn't have / didn't
    **Answer**: can't have
-   **Explanation**: "Can't have + past participle" = logical impossibility based on evidence. He was with me → impossible he stole it.
+   **Explanation**: "Can't / Cannot have + past participle" = logical impossibility based on evidence. He was with me → impossible he stole it.
 
 3. **word_bank** — "The grass is wet — it _____ rained last night."
    **Choices**: must have / could have / would have / can have
@@ -377,7 +377,7 @@
 4. **word_bank** — "She _____ heard you — she had headphones on."
    **Choices**: can't have / must have / shouldn't have / didn't
    **Answer**: can't have
-   **Explanation**: "Can't have heard" = impossible to have heard (headphones). Strong negative inference.
+   **Explanation**: "Can't / Cannot have heard" = impossible to have heard (headphones). Strong negative inference.
 
 5. **fill_gap** — "He looks tired — he _____ slept much last night."
    **Hint**: can't have (impossibilidade)
@@ -392,7 +392,7 @@
 7. **fill_gap** — "She _____ have arrived — her car isn't here."
    **Hint**: can't (impossibilidade)
    **Answer**: can't
-   **Explanation**: "She can't have arrived" — no car = she didn't arrive. Negative inference.
+   **Explanation**: "She can't / cannot have arrived" — no car = she didn't arrive. Negative inference.
 
 8. **fix_error** — "She must left already — she's not answering."
    **Hint**: Falta "have" — "must HAVE left"
@@ -402,14 +402,14 @@
 9. **fix_error** — "He can't stole it — he was with me!"
    **Hint**: Falta "have" — "can't HAVE stolen"
    **Answer**: He can't have stolen it — he was with me!
-   **Explanation**: "Can't HAVE + past participle". And note: stolen, not stole, as the past participle.
+   **Explanation**: "Can't / Cannot HAVE + past participle". And note: stolen, not stole, as the past participle.
 
 10. **read_answer**
     **Passage**: "The grass is wet — it must have rained last night. She isn't answering her phone — she must have left already. He can't have stolen it — he was with me the whole day."
     **Question**: Why couldn't he have stolen it?
     **Answer**: he was with me
     **Accepts**: he was with the speaker the whole day
-    **Explanation**: The text says "He can't have stolen it — he was with me the whole day".
+    **Explanation**: The text says "He can't / cannot have stolen it — he was with me the whole day".
 
 ### 2. Listening/Speaking (5 phrases)
 
@@ -709,7 +709,7 @@
 4. **word_bank** — "She _____ heard us — she had headphones on."
    **Choices**: can't have / must have / should have / would have
    **Answer**: can't have
-   **Explanation**: "Can't have heard" — logical impossibility (headphones).
+   **Explanation**: "Can't / Cannot have heard" — logical impossibility (headphones).
 
 5. **fill_gap** — "You _____ have asked — I would have helped."
    **Hint**: could (oportunidade perdida)
@@ -724,7 +724,7 @@
 7. **fill_gap** — "I _____ have spoken so loudly — sorry."
    **Hint**: shouldn't (auto-crítica)
    **Answer**: shouldn't
-   **Explanation**: "Shouldn't have spoken so loudly" — regret about a past action.
+   **Explanation**: "Shouldn't / Should not have spoken so loudly" — regret about a past action.
 
 8. **fix_error** — "She must left already."
    **Hint**: Falta "have"
@@ -734,7 +734,7 @@
 9. **fix_error** — "You shouldn't said that."
    **Hint**: Falta "have"
    **Answer**: You shouldn't have said that.
-   **Explanation**: "Shouldn't have + past participle". Fixed form.
+   **Explanation**: "Shouldn't / Should not have + past participle". Fixed form.
 
 10. **read_answer**
     **Passage**: "I should have called you sooner. She must have left already. He can't have known about it. We needn't have rushed — there was plenty of time. You could have asked me for help."

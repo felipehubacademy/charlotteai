@@ -245,7 +245,7 @@
             "no isn't"
           ],
           "answer": "isn't",
-          "explanation": "The negation goes on the verb \"to be\" before \"as\". \"Isn't as stressful as\" = is less stressful than."
+          "explanation": "The negation goes on the verb \"to be\" before \"as\". \"Isn't / Is not as stressful as\" = is less stressful than."
         },
         {
           "type": "word_bank",
@@ -257,7 +257,7 @@
             "better as"
           ],
           "answer": "as good as",
-          "explanation": "\"Not as good as\" — negative comparison. Note: \"isn't as good as\" means INFERIOR to the other."
+          "explanation": "\"Not as good as\" — negative comparison. Note: \"isn't / is not as good as\" means INFERIOR to the other."
         },
         {
           "type": "word_bank",
@@ -269,7 +269,7 @@
             "not is"
           ],
           "answer": "isn't",
-          "explanation": "Negation of \"to be\": \"isn't\" before \"as tall as\"."
+          "explanation": "Negation of \"to be\": \"isn't / is not\" before \"as tall as\"."
         },
         {
           "type": "fill_gap",
@@ -290,7 +290,7 @@
           "sentence": "This restaurant _____ as expensive as the one downtown.",
           "hint": "negação de to be 3ª pessoa",
           "answer": "isn't",
-          "explanation": "\"Isn't as expensive as\" — lower price than another option."
+          "explanation": "\"Isn't / Is not as expensive as\" — lower price than another option."
         },
         {
           "type": "fix_error",
@@ -304,7 +304,7 @@
           "sentence": "She doesn't as smart as her brother.",
           "hint": "Negação do verbo to be, não usa \"doesn't\"",
           "answer": "She isn't as smart as her brother.",
-          "explanation": "When the main verb is \"to be\", the negative uses \"isn't/aren't\", not \"doesn't/don't\". \"She isn't as smart as her brother\"."
+          "explanation": "When the main verb is \"to be\", the negative uses \"isn't/aren't\", not \"doesn't/don't\". \"She isn't / is not as smart as her brother\"."
         },
         {
           "type": "read_answer",
@@ -314,7 +314,7 @@
           "accepts": [
             "smaller"
           ],
-          "explanation": "The text says \"My new apartment isn't as big as the old one\" — meaning the new one is smaller."
+          "explanation": "The text says \"My new apartment isn't / is not as big as the old one\" — meaning the new one is smaller."
         }
       ],
       "listening_speaking": [
@@ -834,7 +834,7 @@
             "no"
           ],
           "answer": "isn't",
-          "explanation": "Negative \"to be\" + \"as...as\". \"Isn't as cold as\" = less cold than. With \"to be\" the negation is \"isn't\", never \"doesn't\"."
+          "explanation": "Negative \"to be\" + \"as...as\". \"Isn't / Is not as cold as\" = less cold than. With \"to be\" the negation is \"isn't / is not\", never \"doesn't / does not\"."
         },
         {
           "type": "word_bank",

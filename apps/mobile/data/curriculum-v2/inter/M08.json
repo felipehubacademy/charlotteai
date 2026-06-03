@@ -485,7 +485,7 @@
           "sentence": "She lives in a country _____ it's always sunny.",
           "hint": "place",
           "answer": "where",
-          "explanation": "\"Country where it's sunny\"."
+          "explanation": "\"Country where it's / it is sunny\"."
         },
         {
           "type": "fix_error",

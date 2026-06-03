@@ -179,7 +179,7 @@
 2. **multiple_choice** — Weak form of "of" in connected speech:
    **Options**: /əv/ / /oʊf/ / /ʊf/ / /əf/ (strong)
    **Answer**: /əv/
-   **Explanation**: "Of" weakens to /əv/ in normal speech — schwa + soft v. "Cup of tea" → "cupəv tea". Native speakers almost never say "OFF" with full stress unless contrasting ("It's of the BOOK, not from it"). Weak forms are nearly invisible but constant.
+   **Explanation**: "Of" weakens to /əv/ in normal speech — schwa + soft v. "Cup of tea" → "cupəv tea". Native speakers almost never say "OFF" with full stress unless contrasting ("It's / It is of the BOOK, not from it"). Weak forms are nearly invisible but constant.
 
 3. **fill_gap** — Identify weak form of "to": "I want to go" → "I want _____ go." (in connected fast speech)
    **Hint**: schwa + t
@@ -189,7 +189,7 @@
 4. **fix_error** — Which sentence has the more native rhythm? "I AM going TO the STORE" or "I'm going to the STORE"?
    **Hint**: Native English weakens auxiliaries and uses contractions
    **Answer**: I'm going to the STORE.
-   **Explanation**: Equal stress on every word ("I AM going TO the STORE") sounds robotic. Native rhythm contracts ("I'm") and weakens function words ("going tə the"). Only content words get full stress: "I'm GOing to the STORE". Stress-timed rhythm.
+   **Explanation**: Equal stress on every word ("I AM going TO the STORE") sounds robotic. Native rhythm contracts ("I'm / I am") and weakens function words ("going tə the"). Only content words get full stress: "I'm / I am GOing to the STORE". Stress-timed rhythm.
 
 5. **read_answer**
    **Passage**: "English is stress-timed. The amount of time between stressed syllables stays roughly constant, no matter how many unstressed syllables sit between them. 'BEN went HOME' takes about the same time as 'BENjamin has GONE to the HOUSE' — the function words and unstressed syllables compress to keep the beat. Native rhythm is built on this compression."
@@ -329,7 +329,7 @@
 4. **fix_error** — Which is closer to natural fast speech of "don't you know"?
    **Hint**: Assimilation creates "doncha"
    **Answer**: "doncha know" (assimilation: don't + you → doncha)
-   **Explanation**: Assimilation: when adjacent sounds change to be more similar. "Don't you" → "doncha" /ˈdoʊnʧə/. "Did you" → "didja" /ˈdɪʤə/. "Would you" → "wouldja". These aren't lazy — they're the natural shape of fast English. C2 awareness includes both producing and parsing them.
+   **Explanation**: Assimilation: when adjacent sounds change to be more similar. "Don't / Do not you" → "doncha" /ˈdoʊnʧə/. "Did you" → "didja" /ˈdɪʤə/. "Would you" → "wouldja". These aren't lazy — they're the natural shape of fast English. C2 awareness includes both producing and parsing them.
 
 5. **read_answer**
    **Passage**: "Native English in flow rarely sounds like written English. 'I'm going to find out what he said' compresses to 'I'm-gonna-fine-DOUT what-he-SAID' — linking, weak forms, elision. The written words are unchanged. The sounds are barely recognisable to learners taught only the careful version. Connected speech is the gap between textbook and spoken English."
@@ -594,12 +594,12 @@
 1. **multiple_choice** — Contraction of "he is going":
    **Options**: he's going / he'is going / he is going / hes going
    **Answer**: he's going
-   **Explanation**: "He's going" — contraction of "he is". The apostrophe replaces the missing letter. C2 speakers default to contractions in spoken English. Writing without contractions reads as formal or stiff; speaking without contractions reads as foreign.
+   **Explanation**: "He's / He is going" — contraction of "he is". The apostrophe replaces the missing letter. C2 speakers default to contractions in spoken English. Writing without contractions reads as formal or stiff; speaking without contractions reads as foreign.
 
 2. **multiple_choice** — Negative contraction of "should have":
    **Options**: shouldn't have / shouldn'tve / should'nt have / shouldnt'have
    **Answer**: shouldn't have (often pronounced "shouldn'ta" in casual speech)
-   **Explanation**: "Shouldn't have" — standard written contraction of "should not have". In casual fast speech, often produced as "shouldn'ta" /ˈʃʊdn(ə)tə/ — the "have" reduces to a schwa-only sound. C2 listeners parse this; speakers may produce it in casual register.
+   **Explanation**: "Shouldn't / Should not have" — standard written contraction of "should not have". In casual fast speech, often produced as "shouldn'ta" /ˈʃʊdn(ə)tə/ — the "have" reduces to a schwa-only sound. C2 listeners parse this; speakers may produce it in casual register.
 
 3. **multiple_choice** — In fast speech, how is "next month" most likely pronounced?
    **Options**: nex' month (/t/ elided) / next-uh month / next monf / nex monf
@@ -609,7 +609,7 @@
 4. **fix_error** — Native English speaker would most likely say which?
    **Hint**: Contracted form
    **Answer**: "I'd've gone if I'd known."
-   **Explanation**: "I would have gone if I had known" → casual contracted: "I'd've gone if I'd known". Two contractions stacked: "I'd" (I would) and "'ve" (have). In writing, "I would've" is common; "I'd've" is very informal and mostly spoken. C2 listeners recognise these even when they don't appear in print.
+   **Explanation**: "I would have gone if I had known" → casual contracted: "I'd / I would've gone if I'd known". Two contractions stacked: "I'd / I would" (I would) and "'ve" (have). In writing, "I would've" is common; "I'd / I would've" is very informal and mostly spoken. C2 listeners recognise these even when they don't appear in print.
 
 5. **read_answer**
    **Passage**: "Native speech is built on contraction and elision. 'Should not have' becomes 'shouldn't've' or 'shouldn'ta'. 'Next month' becomes 'nex' month'. 'Going to' becomes 'gonna'. None of these are lazy — they are the natural sound shape of the language at speed. Speaking only the full forms is the marker of either great formality or great foreignness."

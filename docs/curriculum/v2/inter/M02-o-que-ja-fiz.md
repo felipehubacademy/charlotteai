@@ -31,12 +31,12 @@
 1. **multiple_choice** — "I _____ visited Italy."
    **Options**: have / has / had
    **Answer**: have
-   **Explanation**: Present perfect with I/you/we/they uses "have" + past participle. "I have visited" or "I've visited".
+   **Explanation**: Present perfect with I/you/we/they uses "have" + past participle. "I have visited" or "I've / I have visited".
 
 2. **multiple_choice** — "She _____ tried sushi before."
    **Options**: has / have / had
    **Answer**: has
-   **Explanation**: She/he/it uses "has" + past participle. "She has tried" or "She's tried".
+   **Explanation**: She/he/it uses "has" + past participle. "She has tried" or "She's / She is tried".
 
 3. **word_bank** — "_____ you ever been to Brazil?"
    **Choices**: Have / Has / Did / Are
@@ -46,7 +46,7 @@
 4. **word_bank** — "I have _____ seen that movie."
    **Choices**: never / no / not / nothing
    **Answer**: never
-   **Explanation**: "I've never seen" — "never" is the standard negative in PP for life experiences.
+   **Explanation**: "I've / I have never seen" — "never" is the standard negative in PP for life experiences.
 
 5. **fill_gap** — "I _____ never tried that food."
    **Hint**: have/has for I
@@ -376,7 +376,7 @@
 4. **word_bank** — "I haven't seen that movie _____."
    **Choices**: yet / just / already / since
    **Answer**: yet
-   **Explanation**: "Yet" at end of negative sentence: "I haven't seen it yet" = ainda não.
+   **Explanation**: "Yet" at end of negative sentence: "I haven't / have not seen it yet" = ainda não.
 
 5. **fill_gap** — "She has _____ left the office."
    **Hint**: a moment ago
@@ -386,7 +386,7 @@
 6. **fill_gap** — "I've _____ done my homework — finished an hour ago."
    **Hint**: sooner than expected
    **Answer**: already
-   **Explanation**: "Already" = before now (sooner). "I've already done".
+   **Explanation**: "Already" = before now (sooner). "I've / I have already done".
 
 7. **fill_gap** — "Have they arrived _____?"
    **Hint**: question with yet
@@ -407,7 +407,7 @@
     **Passage**: "I've just finished my report. I've already eaten lunch. I haven't called my mom yet — I'll do it soon."
     **Question**: What hasn't the speaker done yet?
     **Answer**: called my mom
-    **Explanation**: The text says "I haven't called my mom yet".
+    **Explanation**: The text says "I haven't / have not called my mom yet".
 
 ### 2. Listening/Speaking (5 phrases)
 
@@ -551,7 +551,7 @@
 6. **fill_gap** — "No, she _____." (response to "Has she finished?")
    **Hint**: Short answer negative (contracted)
    **Answer**: hasn't
-   **Explanation**: "No, she hasn't" — short negative answer.
+   **Explanation**: "No, she hasn't / has not" — short negative answer.
 
 7. **fill_gap** — "_____ you eaten breakfast?"
    **Hint**: Have/Has for you
@@ -573,7 +573,7 @@
     **Question**: Has the sister tried sushi?
     **Answer**: no
     **Accepts**: she hasn't
-    **Explanation**: The text says "No, she hasn't".
+    **Explanation**: The text says "No, she hasn't / has not".
 
 ### 2. Listening/Speaking (5 phrases)
 

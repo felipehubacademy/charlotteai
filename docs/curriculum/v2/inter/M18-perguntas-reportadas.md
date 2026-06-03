@@ -403,7 +403,7 @@
 9. **fix_error** — Direct: "Don't shout." Reported: "She told me to don't shout."
    **Hint**: "Not to + base", sem "don't"
    **Answer**: She told me not to shout.
-   **Explanation**: In reported speech, "don't" disappears. The negative is "NOT TO + base". "To don't shout" doesn't exist.
+   **Explanation**: In reported speech, "don't / do not" disappears. The negative is "NOT TO + base". "To don't / do not shout" doesn't exist.
 
 10. **read_answer**
     **Passage**: "He told me to close the door. She told me not to wait. He told us to be quiet. She told them not to speak loudly. He told me to open the window."

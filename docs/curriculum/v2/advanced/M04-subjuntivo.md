@@ -326,7 +326,7 @@
 3. **fill_gap** — "I'd rather you _____ smoke in the house."
    **Hint**: past simple negative "smoke"
    **Answer**: didn't
-   **Explanation**: "I'd rather + subject + past simple" for preference about another person's behaviour. Strictly speaking, "didn't smoke" is the past subjunctive form here — same surface as past simple, but mood is hypothetical.
+   **Explanation**: "I'd / I would rather + subject + past simple" for preference about another person's behaviour. Strictly speaking, "didn't / did not smoke" is the past subjunctive form here — same surface as past simple, but mood is hypothetical.
 
 4. **fix_error** — "If I was you, I would accept the offer."
    **Hint**: Subjunctive "were" universal in formal "If I _____ you"

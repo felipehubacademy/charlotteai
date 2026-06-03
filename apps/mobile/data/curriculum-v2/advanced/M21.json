@@ -196,7 +196,7 @@
             "it isn't?"
           ],
           "answer": "isn't it?",
-          "explanation": "Tag question rule: positive statement + negative tag. \"It's beautiful\" (positive, \"is\") → \"isn't it?\" (negative). Tags reverse polarity. Common pattern: \"She's coming, isn't she?\" / \"They've left, haven't they?\" / \"You like coffee, don't you?\". Agreement-seeking move."
+          "explanation": "Tag question rule: positive statement + negative tag. \"It's / It is beautiful\" (positive, \"is\") → \"isn't / is not it?\" (negative). Tags reverse polarity. Common pattern: \"She's coming, isn't / is not she?\" / \"They've left, haven't / have not they?\" / \"You like coffee, don't / do not you?\". Agreement-seeking move."
         },
         {
           "type": "multiple_choice",
@@ -208,7 +208,7 @@
             "she does?"
           ],
           "answer": "does she?",
-          "explanation": "Negative statement → positive tag. \"She doesn't speak\" (negative, \"doesn't\") → \"does she?\" (positive). Reverse polarity. Common error: matching the polarity. The point of the tag is to flip and check."
+          "explanation": "Negative statement → positive tag. \"She doesn't / does not speak\" (negative, \"doesn't / does not\") → \"does she?\" (positive). Reverse polarity. Common error: matching the polarity. The point of the tag is to flip and check."
         },
         {
           "type": "fill_gap",
@@ -225,7 +225,7 @@
           "sentence": "Tag mismatched: \"You've been to Paris, haven't you?\"",
           "hint": "Actually, that's correct. Try: \"You haven't been to Paris, have you?\"",
           "answer": "You haven't been to Paris, have you? (negative → positive tag)",
-          "explanation": "Common L2 error is matching polarity. Native English always reverses: pos → neg tag, neg → pos tag. \"You've been\" (positive perfect) + \"haven't you?\" (negative). \"You haven't been\" (negative) + \"have you?\" (positive). Polarity always inverts."
+          "explanation": "Common L2 error is matching polarity. Native English always reverses: pos → neg tag, neg → pos tag. \"You've / You have been\" (positive perfect) + \"haven't / have not you?\" (negative). \"You haven't / have not been\" (negative) + \"have you?\" (positive). Polarity always inverts."
         },
         {
           "type": "read_answer",
@@ -349,7 +349,7 @@
             "Continue, please."
           ],
           "answer": "Mm-hm. Right. Yeah.",
-          "explanation": "Native speakers signal listening with short interjections — not full sentences. \"Mm-hm\", \"right\", \"yeah\", \"okay\", \"oh\", \"gotcha\" — each is a small confirmation that the listener is tracking. Long acknowledgements (\"I understand what you're saying\") interrupt and feel formal."
+          "explanation": "Native speakers signal listening with short interjections — not full sentences. \"Mm-hm\", \"right\", \"yeah\", \"okay\", \"oh\", \"gotcha\" — each is a small confirmation that the listener is tracking. Long acknowledgements (\"I understand what you're / you are saying\") interrupt and feel formal."
         },
         {
           "type": "multiple_choice",
@@ -508,7 +508,7 @@
             "Apologies"
           ],
           "answer": "Honestly",
-          "explanation": "\"Honestly, ...\" — opens a candid statement. Slightly informal. Synonyms: \"Frankly, ...\", \"To be honest, ...\", \"I'll be honest with you, ...\". Marks that the speaker is dropping diplomatic cover. Common in feedback or honest assessments."
+          "explanation": "\"Honestly, ...\" — opens a candid statement. Slightly informal. Synonyms: \"Frankly, ...\", \"To be honest, ...\", \"I'll / I will be honest with you, ...\". Marks that the speaker is dropping diplomatic cover. Common in feedback or honest assessments."
         },
         {
           "type": "multiple_choice",
@@ -527,7 +527,7 @@
           "sentence": "Casual opener for sensitive topic: \"_____, I think we should reconsider.\"",
           "hint": "Attention-getter with deliberate pause",
           "answer": "Look",
-          "explanation": "\"Look, ...\" — informal attention-getter, often preceding a sensitive or direct statement. Casual register. Synonyms: \"Listen, ...\". Signals \"I'm about to be direct\" — used in interpersonal conversation, feedback, or persuasion."
+          "explanation": "\"Look, ...\" — informal attention-getter, often preceding a sensitive or direct statement. Casual register. Synonyms: \"Listen, ...\". Signals \"I'm / I am about to be direct\" — used in interpersonal conversation, feedback, or persuasion."
         },
         {
           "type": "fix_error",
@@ -537,7 +537,7 @@
           "accepts": [
             "With all due respect, but you're wrong."
           ],
-          "explanation": "\"No offence\" — set phrase preceding a potentially insulting statement. \"With no offence\" is non-standard. The phrase preempts any negative reaction: \"I'm not trying to insult you, but...\". Often softens what follows."
+          "explanation": "\"No offence\" — set phrase preceding a potentially insulting statement. \"With no offence\" is non-standard. The phrase preempts any negative reaction: \"I'm / I am not trying to insult you, but...\". Often softens what follows."
         },
         {
           "type": "read_answer",
@@ -670,14 +670,14 @@
             "I'll tell you so — call."
           ],
           "answer": "I'll tell you what — let's just call her and ask.",
-          "explanation": "\"I'll tell you what, ...\" or \"Tell you what, ...\" — opens a casual proposal. Comes with the rhythm of someone arriving at an idea on the spot. Common in spoken English; rare in writing."
+          "explanation": "\"I'll / I will tell you what, ...\" or \"Tell you what, ...\" — opens a casual proposal. Comes with the rhythm of someone arriving at an idea on the spot. Common in spoken English; rare in writing."
         },
         {
           "type": "fill_gap",
           "sentence": "Opener inviting shared opinion: \"_____ but I think we should rethink the whole approach.\"",
           "hint": "\"I don't know about you, but...\"",
           "answer": "I don't know about you,",
-          "explanation": "\"I don't know about you, but ...\" — opens a personal opinion in a way that invites the listener's response. Hedges the assertion as personal. Common in casual feedback and informal opinion-sharing."
+          "explanation": "\"I don't / do not know about you, but ...\" — opens a personal opinion in a way that invites the listener's response. Hedges the assertion as personal. Common in casual feedback and informal opinion-sharing."
         },
         {
           "type": "fix_error",
