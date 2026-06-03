@@ -101,7 +101,13 @@ type SessionStep = GrammarStep | PronStepWrap;
 
 // ── Grammar helpers ────────────────────────────────────────────
 function normalise(s: string) {
-  return s.trim().toLowerCase().replace(/[''']/g, "'").replace(/\s+/g, ' ');
+  // Replace smart quotes (iOS auto-corrige ' pra ’) por apostrofe ASCII.
+  // Antes o regex era /[''']/g — visualmente parecia ter smart quotes mas
+  // o source so tinha 3x ASCII apostrofe = nao normalizava nada do iOS.
+  return s.trim().toLowerCase()
+    .replace(/[‘’‚‛]/g, "'")
+    .replace(/[“”„‟]/g, '"')
+    .replace(/\s+/g, ' ');
 }
 
 // Expand contractions pra que "haven't" match "have not", "I'll" match

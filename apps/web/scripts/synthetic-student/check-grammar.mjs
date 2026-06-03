@@ -2,7 +2,10 @@
 // pra sintetic student validar respostas localmente sem precisar do app.
 
 function normalise(s) {
-  return s.trim().toLowerCase().replace(/[''']/g, "'").replace(/\s+/g, ' ');
+  return s.trim().toLowerCase()
+    .replace(/[‘’‚‛]/g, "'")
+    .replace(/[“”„‟]/g, '"')
+    .replace(/\s+/g, ' ');
 }
 
 function expandContractions(s) {
