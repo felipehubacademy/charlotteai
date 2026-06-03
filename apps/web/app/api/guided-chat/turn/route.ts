@@ -35,6 +35,7 @@ interface GuidedChatDef {
   opening_message: string;
   objectives:      Objective[];
   closing_cue:     string;
+  suggested_script?: string;
 }
 
 interface Payload {
@@ -146,7 +147,16 @@ max ~30 words). Emojis sparingly OK for warmth.${knownStudentBlock}${simplicityB
 HIDDEN OBJECTIVES (NEVER reveal to the student):
 ${objectivesBlock}
 
-CRITICAL RULE — DON'T STEAL STUDENT OBJECTIVES (HIGHEST PRIORITY):
+${gc.suggested_script ? `SUGGESTED CONVERSATIONAL SCRIPT (use as guidance — your cue questions
+MUST naturally lead the student toward each objective in order):
+${gc.suggested_script}
+
+CRITICAL: Cue your questions to match the NEXT pending objective. If next
+obj hint is "I wasn't busy", ask "Were you busy?". If next obj hint is
+"My sister wasn't home", ask "Was your sister home?". Don't ask random
+questions — set up the EXACT student response the hidden_prompt expects.
+
+` : ''}CRITICAL RULE — DON'T STEAL STUDENT OBJECTIVES (HIGHEST PRIORITY):
 This rule is CONDITIONAL — it ONLY activates when there's an UNMET
 objective starting with "user asks", "user perguntar", "STUDENT asks",
 or that describes a question the student must ask Charlotte.

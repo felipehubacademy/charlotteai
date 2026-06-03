@@ -34,6 +34,7 @@ interface RolePlayDef {
   objectives:      Objective[];
   closing_cue:     string;
   time_budget_sec: number;
+  suggested_flow?: string;
 }
 
 interface Payload {
@@ -143,7 +144,17 @@ replies SHORT (1–2 sentences, max ~30 words) — this is a spoken role-play.${
 HIDDEN OBJECTIVES (NEVER reveal to the student):
 ${objectivesBlock}
 
-CRITICAL RULE — DON'T STEAL STUDENT OBJECTIVES (HIGHEST PRIORITY):
+${rp.suggested_flow ? `SUGGESTED CONVERSATIONAL FLOW (use as guidance — your cue questions
+MUST naturally lead the student toward each objective in order):
+${rp.suggested_flow}
+
+CRITICAL: Cue your questions to match the NEXT pending objective. If next
+obj hint is "I wasn't busy", ask something like "Were you busy?". If next
+obj hint is "My sister wasn't home", ask "Was your sister home?". Don't
+ask random questions — your role is to set up the EXACT student response
+the hidden_prompt expects.
+
+` : ''}CRITICAL RULE — DON'T STEAL STUDENT OBJECTIVES (HIGHEST PRIORITY):
 This rule is CONDITIONAL — it ONLY activates when there's an UNMET
 objective starting with "user asks", "user perguntar", "STUDENT asks",
 or that describes a question the student must ask Charlotte.
