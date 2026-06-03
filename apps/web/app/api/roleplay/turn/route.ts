@@ -219,25 +219,33 @@ Rules:
     The ONLY way to NOT mark is if the chunk is COMPLETELY ABSENT from
     the message. If it's there in any form, MARK.
   - USER-ASKS OBJECTIVES (hidden_prompt starts with "user asks" or "user
-    perguntar"): the message MUST be an ACTUAL QUESTION directed at
-    Charlotte. A statement, single-word reply, or affirmation does NOT
-    satisfy this objective.
-    HARD REQUIREMENTS (all must hold):
-      1. The message contains a question mark, OR starts with a WH-word
-         (what/where/when/who/why/how) OR an auxiliary
-         (do/does/did/is/are/was/were/can/could/will/would/have/has).
-      2. The question uses the GRAMMAR STRUCTURE the unit is teaching
+    perguntar"): the message MUST satisfy ALL THREE checks. Use semantic
+    reasoning — you are an LLM, not a regex.
+      1. FORM: it is a question (contains '?' OR starts with WH-word
+         what/where/when/who/why/how OR auxiliary do/does/did/is/are/
+         was/were/can/could/will/would/have/has). Statements, single
+         words ("Yes", "No"), or affirmations DO NOT pass.
+      2. TENSE/STRUCTURE: it uses the grammar the unit is teaching
          (check UNIT/grammar_focus and OTHER objectives' hints).
-    EXAMPLES:
-    - Unit teaching past 'to be'? → "Were you happy?" / "Was it good?"
-      MARK. "Yes" / "No, I wasn't" / "I was tired" DO NOT MARK (not
-      questions). "Do you like X?" DO NOT MARK (off-tense).
-    - Unit teaching present simple? → "Do you like pizza?" MARK.
-      "I like pizza." DO NOT MARK (statement). "Were you X?" DO NOT
-      MARK (off-tense).
-    - Generic asks like "How about you?" / "And you?" / "What about
-      you?" ALWAYS MARK (universal back-question).
-    Match by INTENT + STRUCTURE + ACTUAL-QUESTION-FORM alignment.
+      3. INTENT MATCH: it asks ABOUT WHAT THE OBJECTIVE SPECIFIES.
+         Read the hidden_prompt literally — if it says "ask what
+         Charlotte did yesterday", the question must be ABOUT WHAT
+         CHARLOTTE DID YESTERDAY, not about something else.
+    EXAMPLES — applied to obj "user asks what Charlotte did yesterday"
+    (unit: past simple):
+      • "What did you do yesterday?" → MARK (form ✓, tense ✓, intent ✓)
+      • "What will you do?" → DO NOT MARK (form ✓, tense ✗ — future)
+      • "Where were you?" → DO NOT MARK (form ✓, tense ✓, intent ✗ —
+        asks WHERE not WHAT)
+      • "Did you have fun?" → DO NOT MARK (form ✓, tense ✓, intent ✗ —
+        asks about feelings, not about what she did)
+    EXAMPLES — applied to obj "user asks Charlotte" (GENERIC, no
+    specific topic in hidden_prompt):
+      • "How about you?" / "And you?" / "What about you?" → ALWAYS MARK
+        (universal back-question, always valid)
+      • Any well-formed question in the unit's tense → MARK
+    RULE OF THUMB: if a teacher reading the hidden_prompt would say
+    "yes, that question asks exactly that" → MARK. Otherwise DO NOT.
   - BIAS TOWARD MARKING when there's clear evidence. Strict matching is
     only for cases where the student replied off-topic, gibberish, or
     something genuinely unrelated.
