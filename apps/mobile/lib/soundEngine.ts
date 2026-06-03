@@ -33,6 +33,24 @@ export type SoundName =
   | 'level_promotion'
   | 'intro_app';
 
+// Volume default por SFX (0-1). Reducao global pq aluno reportou SFX
+// muito altos (Duolingo no mesmo nivel de volume e mais suave). Longos
+// (achievements, daily_goal, topic/module/level) entram mais baixo.
+const DEFAULT_VOLUME: Partial<Record<SoundName, number>> = {
+  answer_correct:        0.55,
+  answer_wrong:          0.55,
+  achievement_common:    0.45,
+  achievement_rare:      0.45,
+  achievement_epic:      0.45,
+  achievement_legendary: 0.45,
+  streak_alive:          0.50,
+  daily_goal:            0.45,
+  topic_complete:        0.45,
+  module_complete:       0.45,
+  level_promotion:       0.45,
+  intro_app:             0.55,
+};
+
 // ── Catalogo de assets bundled ───────────────────────────────────────────────
 // Cada SoundName mapeia para 1+ variantes (number = id de modulo Metro).
 // xp_gained NAO esta aqui — eh no-op puramente haptico (vide play()).
@@ -102,7 +120,7 @@ class SoundEngine {
     return idx;
   }
 
-  /** Toca um som. Fire-and-forget. volume: 0-1, default 1. */
+  /** Toca um som. Fire-and-forget. volume: 0-1, default por sound (DEFAULT_VOLUME). */
   async play(name: SoundName, opts?: { volume?: number }): Promise<void> {
     if (this.muted) return;
 
@@ -135,9 +153,13 @@ class SoundEngine {
       // resposta). Agora o SFX herda o modo atual do screen — licoes em
       // doNotMix, home/rank/etc em mixWithOthers (default ambient).
       const player = createAudioPlayer(source);
-      if (typeof opts?.volume === 'number') {
-        try { player.volume = Math.max(0, Math.min(1, opts.volume)); } catch {}
-      }
+      // Volume final: opts.volume override > DEFAULT_VOLUME[name] > 0.7.
+      // Reducao global pq aluno reportou SFX muito altos comparado a Duolingo
+      // no mesmo nivel de volume do device.
+      const targetVol = typeof opts?.volume === 'number'
+        ? opts.volume
+        : (DEFAULT_VOLUME[name] ?? 0.7);
+      try { player.volume = Math.max(0, Math.min(1, targetVol)); } catch {}
       player.play();
 
       // Cleanup do player apos a duracao maxima esperada (intro_app ~3s e o mais longo)

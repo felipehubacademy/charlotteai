@@ -237,18 +237,25 @@ Rules:
     The ONLY way to NOT mark is if the chunk is COMPLETELY ABSENT from
     the message. If it's there in any form, MARK.
   - USER-ASKS OBJECTIVES (hidden_prompt starts with "user asks" or "user
-    perguntar"): a question directed at Charlotte satisfies the objective
-    IF it uses the GRAMMAR STRUCTURE the unit is teaching (look at the
-    UNIT/grammar_focus and the OTHER objectives' hints — they reveal the
-    target structure).
-    - Unit teaching past 'to be' (was/were)? → "Were you happy?" /
-      "Was it good?" MARK. But "Do you like X?" would be off-tense → NO.
-    - Unit teaching present simple? → "Do you like X?" MARK. But
-      "Were you X?" would be off-tense → NO.
-    - Generic asks like "How about you?" / "And you?" ALWAYS work
-      (universal back-question, no tense pinned).
-    Match by INTENT + STRUCTURE alignment. If the student asked a clear
-    question using the right tense for the unit, MARK.
+    perguntar"): the message MUST be an ACTUAL QUESTION directed at
+    Charlotte. A statement, single-word reply, or affirmation does NOT
+    satisfy this objective.
+    HARD REQUIREMENTS (all must hold):
+      1. The message contains a question mark, OR starts with a WH-word
+         (what/where/when/who/why/how) OR an auxiliary
+         (do/does/did/is/are/was/were/can/could/will/would/have/has).
+      2. The question uses the GRAMMAR STRUCTURE the unit is teaching
+         (check UNIT/grammar_focus and OTHER objectives' hints).
+    EXAMPLES:
+    - Unit teaching past 'to be'? → "Were you happy?" / "Was it good?"
+      MARK. "Yes" / "No, I wasn't" / "I was tired" DO NOT MARK (not
+      questions). "Do you like X?" DO NOT MARK (off-tense).
+    - Unit teaching present simple? → "Do you like pizza?" MARK.
+      "I like pizza." DO NOT MARK (statement). "Were you X?" DO NOT
+      MARK (off-tense).
+    - Generic asks like "How about you?" / "And you?" / "What about
+      you?" ALWAYS MARK (universal back-question).
+    Match by INTENT + STRUCTURE + ACTUAL-QUESTION-FORM alignment.
   - BIAS TOWARD MARKING when there's clear evidence. Strict matching is
     only for cases where the student replied off-topic, gibberish, or
     something genuinely unrelated.
