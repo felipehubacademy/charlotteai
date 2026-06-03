@@ -360,6 +360,10 @@ export default function HomeTab() {
   const trailScrolledRef = useRef(false);
   // FAB scroll: toggle entre topo e topico ativo
   const [scrollY, setScrollY] = useState(0);
+  // STATE (nao ref) — ref nao dispara re-render, FAB nao aparecia ate
+  // o user rolar manualmente. Com state, mudanca dispara re-render e
+  // o conditional do FAB reavalia assim que o trail mede a posicao.
+  const [activeTopicY, setActiveTopicY] = useState(0);
   const activeTopicYRef = useRef<number>(0);
   const isNearTop = scrollY < 80;
   const goActive = useCallback(() => {
@@ -391,6 +395,7 @@ export default function HomeTab() {
       (_x: number, y: number) => {
         if (y > 0) {
           activeTopicYRef.current = y;
+          setActiveTopicY(y); // dispara re-render pro FAB aparecer
           trailScrollRef.current?.scrollTo({ y: Math.max(0, y - 24), animated: false });
           trailScrolledRef.current = true;
         } else if (attempt < 5) {
@@ -495,7 +500,7 @@ export default function HomeTab() {
       </ScrollView>
 
       {/* FAB scroll toggle: no topo → ir pro topico ativo; embaixo → voltar pro topo */}
-      {activeTopicYRef.current > 200 && (
+      {activeTopicY > 200 && (
         <TouchableOpacity
           activeOpacity={0.85}
           onPress={isNearTop ? goActive : goTop}
