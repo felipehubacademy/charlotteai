@@ -74,7 +74,7 @@
 
 10. **read_answer**
     **Passage**: "Yesterday I worked all day. Then I watched a movie and called my sister. We played a game online."
-    **Question**: What did the speaker watch?
+    **Question**: O que o speaker assistiu?
     **Answer**: a movie
     **Explanation**: O texto diz "Then I watched a movie".
 
@@ -239,7 +239,7 @@
 
 10. **read_answer**
     **Passage**: "I planned a trip last week. I stopped at the bakery and tried a new bread. I enjoyed the day."
-    **Question**: What did the speaker try?
+    **Question**: O que o speaker experimentou?
     **Answer**: a new bread
     **Explanation**: O texto diz "tried a new bread".
 
@@ -404,7 +404,7 @@
 
 10. **read_answer**
     **Passage**: "I visited my grandparents last weekend. We talked for hours. Then we cooked together and laughed a lot."
-    **Question**: When did the speaker visit grandparents?
+    **Question**: Quando o speaker visitou os avós?
     **Answer**: last weekend
     **Explanation**: O texto diz "last weekend".
 
@@ -569,7 +569,7 @@
 
 10. **read_answer**
     **Passage**: "Yesterday I worked /workt/, watched /watcht/ a movie, and called /kAld/ my friend. Then I visited /vIzItId/ my parents."
-    **Question**: Which verb has the /id/ sound?
+    **Question**: Qual verbo tem o som /id/?
     **Answer**: visited
     **Explanation**: "Visited" termina em /id/ (3 sílabas). Os outros são /t/ ou /d/ (2 sílabas).
 
@@ -734,7 +734,7 @@
 
 10. **read_answer**
     **Passage**: "I started work at eight. I worked all morning. At noon I called my friend. We talked for an hour. Then I returned to my desk."
-    **Question**: What time did the speaker start work?
+    **Question**: A que horas o speaker começou a trabalhar?
     **Answer**: eight
     **Explanation**: O texto diz "I started work at eight".
 

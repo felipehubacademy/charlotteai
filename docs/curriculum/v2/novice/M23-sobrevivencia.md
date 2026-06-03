@@ -90,7 +90,7 @@
 
 10. **read_answer**
     **Passage**: "I'd like to check in for my flight to São Paulo. My passport is here. I have one suitcase to check, and I'd like a window seat if possible. My flight leaves at 8:30 from gate 24."
-    **Question**: What time does the flight leave?
+    **Question**: A que horas o voo sai?
     **Answer**: 8:30
 **Accepts**: at 8:30
     **Explanation**: O texto diz "My flight leaves at 8:30 from gate 24". Resposta direta — pratica leitura de informações específicas em situações de viagem.
@@ -259,7 +259,7 @@
 
 10. **read_answer**
     **Passage**: "Good evening. I have a reservation under the name of Silva. I'd like a non-smoking room with a king-size bed. Is breakfast included in the rate? And what time is check-out tomorrow?"
-    **Question**: What kind of bed does the guest want?
+    **Question**: Que tipo de cama o hóspede quer?
     **Answer**: king-size
 **Accepts**: a king-size bed
     **Explanation**: O texto diz "I'd like a non-smoking room with a king-size bed". Pratica identificação de detalhes específicos em pedidos de hotel.
@@ -428,7 +428,7 @@
 
 10. **read_answer**
     **Passage**: "Excuse me, can you help me? I'm looking for the train station. Just go straight ahead for two blocks, then turn left at the bank. The station is on the right, next to the pharmacy."
-    **Question**: What is next to the train station?
+    **Question**: O que fica ao lado da estação de trem?
     **Answer**: the pharmacy
     **Explanation**: O texto diz "The station is on the right, next to the pharmacy". Pratica identificação de relações espaciais.
 
@@ -597,7 +597,7 @@
 
 10. **read_answer**
     **Passage**: "I don't feel well today. I have a headache and a sore throat. I think I might have a fever too. Where is the nearest pharmacy? I need some medicine and maybe I should see a doctor."
-    **Question**: What three symptoms does the speaker have?
+    **Question**: Quais três sintomas o speaker tem?
     **Answer**: headache, sore throat, and fever
 **Accepts**: a headache / a sore throat / and possibly a fever
     **Explanation**: O texto lista três sintomas: "I have a headache and a sore throat. I think I might have a fever too". Pratica leitura de descrição de sintomas.
@@ -764,7 +764,7 @@
 
 10. **read_answer**
     **Passage**: "Hello? Hi, this is Maria speaking. Can I speak to John, please? Oh, he's not there? Can I leave a message? Please tell him Maria called and I'll call him back tomorrow at 3 PM. Thank you!"
-    **Question**: When will Maria call back?
+    **Question**: Quando Maria vai ligar de volta?
     **Answer**: tomorrow at 3 PM
 **Accepts**: at 3 PM tomorrow
     **Explanation**: O texto diz "I'll call him back tomorrow at 3 PM". Pratica leitura de detalhes em recado telefônico.

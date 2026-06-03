@@ -74,7 +74,7 @@
 
 10. **read_answer**
     **Passage**: "Yesterday I went to a café. I had a coffee and saw an old friend. We took a long walk and made plans for dinner."
-    **Question**: What did the speaker have?
+    **Question**: O que o speaker tinha?
     **Answer**: a coffee
     **Explanation**: O texto diz "I had a coffee".
 
@@ -239,7 +239,7 @@
 
 10. **read_answer**
     **Passage**: "I bought a sandwich and ate it quickly. Then I drank some coffee and found my friend at the café. We thought about going to the cinema."
-    **Question**: What did the speaker drink?
+    **Question**: O que o speaker bebeu?
     **Answer**: coffee
     **Accepts**: some coffee
     **Explanation**: O texto diz "I drank some coffee".
@@ -405,7 +405,7 @@
 
 10. **read_answer**
     **Passage**: "I met an old friend yesterday. We left the café at six. I sent her a message later. She won a prize last week!"
-    **Question**: What did the friend win?
+    **Question**: O que o amigo ganhou?
     **Answer**: a prize
     **Explanation**: O texto diz "She won a prize last week".
 
@@ -570,7 +570,7 @@
 
 10. **read_answer**
     **Passage**: "I cut the vegetables. Then I put them in the pan. I read the recipe carefully. The result was great."
-    **Question**: What did the speaker put in the pan?
+    **Question**: O que o speaker colocou na panela?
     **Answer**: the vegetables
     **Accepts**: them
     **Explanation**: O texto diz "I put them in the pan" — se referindo aos vegetais recém cortados.
@@ -736,7 +736,7 @@
 
 10. **read_answer**
     **Passage**: "Yesterday I went to a bookstore. I bought a novel. I came home and read it. I had a great evening!"
-    **Question**: What did the speaker buy?
+    **Question**: O que o speaker comprou?
     **Answer**: a novel
     **Explanation**: O texto diz "I bought a novel".
 

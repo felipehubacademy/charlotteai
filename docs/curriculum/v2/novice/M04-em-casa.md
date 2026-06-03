@@ -85,7 +85,7 @@
 
 10. **read_answer**
     **Passage**: "Welcome to my house! My house is big. My kitchen is small but nice. My bedroom has got a big window."
-    **Question**: How is the kitchen?
+    **Question**: Como é a cozinha?
     **Answer**: small
     **Explanation**: O texto diz "My kitchen is small but nice". A primeira palavra que descreve a cozinha é "small".
 
@@ -250,7 +250,7 @@
 
 10. **read_answer**
     **Passage**: "There is a big house in the neighborhood. There are four bedrooms. There is a kitchen and two bathrooms."
-    **Question**: How many bedrooms are there? (dê um número)
+    **Question**: Quantos quartos tem? (dê um número)
     **Answer**: four
     **Explanation**: O texto diz "There are four bedrooms". 4.
 
@@ -415,7 +415,7 @@
 
 10. **read_answer**
     **Passage**: "My kitchen has got three chairs, two tables, and four windows. There are no doors inside the kitchen."
-    **Question**: How many tables are in the kitchen? (dê um número)
+    **Question**: Quantas mesas tem na cozinha? (dê um número)
     **Answer**: two
     **Explanation**: O texto diz "two tables". 2.
 
@@ -580,7 +580,7 @@
 
 10. **read_answer**
     **Passage**: "I am a doctor. My hospital is big. The hospital has got 200 beds. There is an emergency room on the first floor."
-    **Question**: What does the speaker do? (dê uma profissão)
+    **Question**: O que o speaker faz? (dê uma profissão)
     **Answer**: doctor
     **Explanation**: O texto diz "I am a doctor". Note "a doctor" (artigo indefinido + profissão).
 
@@ -745,7 +745,7 @@
 
 10. **read_answer**
     **Passage**: "Welcome to my home! My house is big. There are four bedrooms, two bathrooms, and a kitchen. The kitchen has got two windows."
-    **Question**: How many bedrooms are there? (dê um número)
+    **Question**: Quantos quartos tem? (dê um número)
     **Answer**: four
     **Explanation**: O texto diz "four bedrooms". 4.
 

@@ -79,7 +79,7 @@
 
 10. **read_answer**
     **Passage**: "I'm working from home today. My sister is studying upstairs. My mother is cooking lunch. We are all busy!"
-    **Question**: What is the sister doing?
+    **Question**: O que a irmã está fazendo?
     **Answer**: studying
     **Explanation**: O texto diz "My sister is studying upstairs".
 
@@ -244,7 +244,7 @@
 
 10. **read_answer**
     **Passage**: "I'm not working today. My brother isn't studying — he's playing games. We aren't eating yet."
-    **Question**: What isn't the brother doing?
+    **Question**: O que o irmão não está fazendo?
     **Answer**: studying
     **Explanation**: O texto diz "My brother isn't studying".
 
@@ -409,7 +409,7 @@
 
 10. **read_answer**
     **Passage**: "Q: Are you working today? A: No, I'm not. I'm reading. Q: Is your sister studying? A: Yes, she is. She's preparing for an exam."
-    **Question**: What is the speaker doing?
+    **Question**: O que o speaker está fazendo?
     **Answer**: reading
     **Explanation**: O texto diz "I'm reading".
 
@@ -574,7 +574,7 @@
 
 10. **read_answer**
     **Passage**: "I'm working from home this week. My sister is visiting from London. We're having dinner together every night."
-    **Question**: Where is the sister visiting from?
+    **Question**: De onde a irmã está visitando?
     **Answer**: London
     **Explanation**: O texto diz "My sister is visiting from London".
 
@@ -739,7 +739,7 @@
 
 10. **read_answer**
     **Passage**: "I usually wake up at seven, but today I'm waking up at nine — it's Sunday! My brother always cooks on Sundays. He's making pancakes right now."
-    **Question**: What is the brother making right now?
+    **Question**: O que o irmão está fazendo agora?
     **Answer**: pancakes
     **Explanation**: O texto diz "He's making pancakes right now".
 

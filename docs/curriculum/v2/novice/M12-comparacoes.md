@@ -75,7 +75,7 @@
 
 10. **read_answer**
     **Passage**: "I'm taller than my brother but he's older than me. Our sister is younger than both of us. She's also faster — she runs every morning."
-    **Question**: Who is older than the speaker?
+    **Question**: Quem é mais velho que o speaker?
     **Answer**: my brother
     **Accepts**: her/his brother
     **Explanation**: O texto diz "he's older than me" se referindo ao irmão.
@@ -241,7 +241,7 @@
 
 10. **read_answer**
     **Passage**: "This city is more beautiful than my hometown. The food here is more expensive but more delicious. The people are friendlier."
-    **Question**: How is the food described?
+    **Question**: Como a comida é descrita?
     **Answer**: more expensive but more delicious
     **Explanation**: O texto diz "The food here is more expensive but more delicious".
 
@@ -406,7 +406,7 @@
 
 10. **read_answer**
     **Passage**: "My new phone is better than my old one. The camera is much better but the battery is worse. I have more apps than before."
-    **Question**: How is the battery compared to the old one?
+    **Question**: Como a bateria é comparada com a antiga?
     **Answer**: worse
     **Explanation**: O texto diz "the battery is worse".
 
@@ -571,7 +571,7 @@
 
 10. **read_answer**
     **Passage**: "My new apartment is much bigger than the old one. The kitchen is a little smaller, but the bedroom is much more comfortable."
-    **Question**: How is the bedroom?
+    **Question**: Como é o quarto?
     **Answer**: much more comfortable
     **Explanation**: O texto diz "the bedroom is much more comfortable".
 
@@ -736,7 +736,7 @@
 
 10. **read_answer**
     **Passage**: "I'm taller than my brother but he's much stronger. My sister is more patient than both of us. She's a better listener too."
-    **Question**: Who is the best listener?
+    **Question**: Quem é o melhor ouvinte?
     **Answer**: my sister
     **Accepts**: her sister / the sister
     **Explanation**: O texto diz "She's a better listener" — se referindo à irmã (melhor ouvinte que o falante e o irmão).

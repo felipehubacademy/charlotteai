@@ -77,7 +77,7 @@
 
 10. **read_answer**
     **Passage**: "I think you should rest more. You shouldn't work so late. We should all take breaks."
-    **Question**: What shouldn't the person do?
+    **Question**: O que a pessoa não deveria fazer?
     **Answer**: work so late
     **Accepts**: work late
     **Explanation**: O texto diz "You shouldn't work so late".
@@ -243,7 +243,7 @@
 
 10. **read_answer**
     **Passage**: "I have to work tomorrow. My sister has to study for an exam. We all have to wake up early."
-    **Question**: What does the sister have to do?
+    **Question**: O que a irmã tem que fazer?
     **Answer**: study
     **Accepts**: study for an exam
     **Explanation**: O texto diz "My sister has to study for an exam".
@@ -409,7 +409,7 @@
 
 10. **read_answer**
     **Passage**: "I don't have to work tomorrow — it's my day off. She doesn't have to come if she's busy. We don't have to do anything special."
-    **Question**: Why doesn't the speaker have to work tomorrow?
+    **Question**: Por que o speaker não precisa trabalhar amanhã?
     **Answer**: it's my day off
     **Accepts**: day off
     **Explanation**: O texto diz "it's my day off".
@@ -575,7 +575,7 @@
 
 10. **read_answer**
     **Passage**: "Q: Should I call her? A: Yes, you should. Q: Do I have to bring my passport? A: No, you don't have to."
-    **Question**: Does the person have to bring the passport?
+    **Question**: A pessoa precisa trazer o passaporte?
     **Answer**: no
     **Accepts**: doesn't have to
     **Explanation**: The text says "No, you don't have to".
@@ -741,7 +741,7 @@
 
 10. **read_answer**
     **Passage**: "You should rest. I have to work tomorrow. We need to buy more milk. She doesn't have to come if she's busy."
-    **Question**: What does the speaker have to do tomorrow?
+    **Question**: O que o speaker tem que fazer amanhã?
     **Answer**: work
     **Explanation**: O texto diz "I have to work tomorrow".
 

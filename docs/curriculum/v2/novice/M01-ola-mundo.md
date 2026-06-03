@@ -250,7 +250,7 @@ Charlotte fala via ElevenLabs (Rachel). Aluno repete; Azure Speech avalia pronú
 
 10. **read_answer**
     **Passage**: "Hi! My name is Sarah. I am 30 years old, and I am from New York. Nice to meet you!"
-    **Question**: How old is Sarah? (responda com um número)
+    **Question**: Quantos anos Sarah tem? (responda com um número)
     **Answer**: 30
     **Explanation**: Sarah diz "I am 30 years old". A idade dela é 30.
 
@@ -394,7 +394,7 @@ Charlotte fala via ElevenLabs (Rachel). Aluno repete; Azure Speech avalia pronú
 
 10. **read_answer**
     **Passage**: "I have two friends abroad. Anna is from Italy and she lives in Rome. Lucas is from Brazil but lives in Lisbon."
-    **Question**: Where is Anna from?
+    **Question**: De onde Anna é?
     **Answer**: Italy
     **Explanation**: O texto diz "Anna is from Italy". Note que ela MORA em Roma, mas é DE Itália.
 
@@ -538,7 +538,7 @@ Charlotte fala via ElevenLabs (Rachel). Aluno repete; Azure Speech avalia pronú
 
 10. **read_answer**
     **Passage**: "Tom: Hey Ana, are you okay? You look down. Ana: I'm tired and a bit stressed. Work is crazy this week."
-    **Question**: How does Ana feel? (dê uma palavra)
+    **Question**: Como Ana se sente? (dê uma palavra)
     **Answer**: tired
     **Explanation**: Ana diz "I'm tired and a bit stressed". A primeira palavra que descreve ela é "tired" (cansada).
 
@@ -682,7 +682,7 @@ Charlotte fala via ElevenLabs (Rachel). Aluno repete; Azure Speech avalia pronú
 
 10. **read_answer**
     **Passage**: "Ana: This dinner was lovely! Thank you for inviting me. Tom: My pleasure! Drive safely. Take care!"
-    **Question**: What does Tom say at the end? (dê 2 palavras)
+    **Question**: O que Tom diz no final? (dê 2 palavras)
     **Answer**: Take care
     **Explanation**: Tom termina com "Take care!" — uma despedida calorosa após o jantar.
 

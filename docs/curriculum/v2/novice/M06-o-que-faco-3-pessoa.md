@@ -83,7 +83,7 @@
 
 10. **read_answer**
     **Passage**: "Tom is my friend. He works in a bank. He studies German at night. He goes home at six."
-    **Question**: Where does Tom work?
+    **Question**: Onde Tom trabalha?
     **Answer**: in a bank
     **Explanation**: O texto diz "He works in a bank".
 
@@ -248,7 +248,7 @@
 
 10. **read_answer**
     **Passage**: "I don't drink coffee. My brother doesn't eat meat. We don't work on Sundays. Ana doesn't study at night."
-    **Question**: What does Ana not do?
+    **Question**: O que Ana não faz?
     **Answer**: study at night
     **Explanation**: O texto diz "Ana doesn't study at night".
 
@@ -413,7 +413,7 @@
 
 10. **read_answer**
     **Passage**: "Q: Do you study English? A: Yes, I do. Q: Does your sister study too? A: No, she doesn't. She studies French."
-    **Question**: What language does the sister study?
+    **Question**: Que idioma a irmã estuda?
     **Answer**: French
     **Explanation**: O texto diz "She studies French".
 
@@ -578,7 +578,7 @@
 
 10. **read_answer**
     **Passage**: "Q: Where do you work? A: I work in a hospital. Q: What time do you start? A: I start at eight. Q: When does your sister study? A: She studies at night."
-    **Question**: When does the sister study?
+    **Question**: Quando a irmã estuda?
     **Answer**: at night
     **Explanation**: O texto diz "She studies at night".
 
@@ -743,7 +743,7 @@
 
 10. **read_answer**
     **Passage**: "Lucas is my friend. He works in a school. He doesn't like coffee — he drinks tea. He goes to the gym every morning."
-    **Question**: What does Lucas drink?
+    **Question**: O que Lucas bebe?
     **Answer**: tea
     **Explanation**: O texto diz "He doesn't like coffee — he drinks tea".
 

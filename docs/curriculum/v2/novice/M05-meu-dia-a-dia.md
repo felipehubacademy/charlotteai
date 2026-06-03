@@ -88,7 +88,7 @@
 
 10. **read_answer**
     **Passage**: "I wake up at six. I have coffee at six-thirty. I eat breakfast at seven. I go to work at eight."
-    **Question**: At what time do I wake up?
+    **Question**: A que horas eu acordo?
     **Answer**: six
     **Explanation**: O texto diz "I wake up at six". 6.
 
@@ -253,7 +253,7 @@
 
 10. **read_answer**
     **Passage**: "I work in a big company. I study English in the morning. I work with my colleagues in a big office."
-    **Question**: Where does the speaker work?
+    **Question**: Onde o speaker trabalha?
     **Answer**: in a big company
     **Explanation**: O texto diz "I work in a big company".
 
@@ -418,7 +418,7 @@
 
 10. **read_answer**
     **Passage**: "I eat fruit every morning. I have a sandwich for lunch. I drink coffee at three. We have dinner at eight."
-    **Question**: What do I drink at three?
+    **Question**: O que eu bebo às três?
     **Answer**: coffee
     **Explanation**: O texto diz "I drink coffee at three".
 
@@ -583,7 +583,7 @@
 
 10. **read_answer**
     **Passage**: "I go to work by car. I come home at six. We go to the park on Saturdays. I come back at eight."
-    **Question**: How does the speaker go to work?
+    **Question**: Como o speaker vai pro trabalho?
     **Answer**: by car
     **Explanation**: O texto diz "I go to work by car".
 
@@ -748,7 +748,7 @@
 
 10. **read_answer**
     **Passage**: "I always wake up at seven. I usually have coffee and bread. I sometimes go to the gym. I never work on Sundays."
-    **Question**: When does the speaker not work?
+    **Question**: Quando o speaker não trabalha?
     **Answer**: Sundays
     **Explanation**: O texto diz "I never work on Sundays". Logo, o falante não trabalha aos domingos.
 
@@ -915,7 +915,7 @@
 
 10. **read_answer**
     **Passage**: "What time is it? It's quarter past nine. I have a meeting at half past nine — only fifteen minutes left. Today is Monday, the third of March. The weather is cold — winter is still here."
-    **Question**: What time is the meeting?
+    **Question**: A que horas é a reunião?
     **Answer**: half past nine
 **Accepts**: 9:30
     **Explanation**: O texto diz "I have a meeting at half past nine". "Half past nine" = 9:30. Pratica leitura de horário e contexto temporal.

@@ -74,7 +74,7 @@
 
 10. **read_answer**
     **Passage**: "If it rains tomorrow, I'll stay home. If it's sunny, we'll go hiking. If she comes, we'll have lunch together."
-    **Question**: What will the speaker do if it's sunny?
+    **Question**: O que o speaker vai fazer se estiver ensolarado?
     **Answer**: go hiking
     **Explanation**: O texto diz "If it's sunny, we'll go hiking".
 
@@ -239,7 +239,7 @@
 
 10. **read_answer**
     **Passage**: "If I have time tomorrow, I'll go to the gym. If I save enough, I'll buy a bike. If my friend calls, I'll go out with her."
-    **Question**: What will the speaker buy if they save enough?
+    **Question**: O que o speaker vai comprar se economizar o suficiente?
     **Answer**: a bike
     **Explanation**: O texto diz "If I save enough, I'll buy a bike".
 
@@ -404,7 +404,7 @@
 
 10. **read_answer**
     **Passage**: "If you need help, I'll come. If you're hungry, I'll cook. If you have time, we'll chat. I'm here for you."
-    **Question**: What will the speaker do if you're hungry?
+    **Question**: O que o speaker vai fazer se você estiver com fome?
     **Answer**: cook
     **Accepts**: I'll cook
     **Explanation**: O texto diz "If you're hungry, I'll cook".
@@ -570,7 +570,7 @@
 
 10. **read_answer**
     **Passage**: "I'll come to the party unless I'm tired. We'll go hiking unless it rains. I'll cook dinner unless you want pizza."
-    **Question**: When won't the speaker come to the party?
+    **Question**: Quando o speaker não vai à festa?
     **Answer**: if I'm tired
     **Accepts**: tired
     **Explanation**: O texto diz "I'll come unless I'm tired" — significando que não virá se estiver cansado.
@@ -736,7 +736,7 @@
 
 10. **read_answer**
     **Passage**: "If it's sunny tomorrow, I'll go to the beach. If it rains, I'll stay home. I'll meet my friend unless she cancels."
-    **Question**: When won't the speaker meet the friend?
+    **Question**: Quando o speaker não vai encontrar o amigo?
     **Answer**: if she cancels
     **Accepts**: she cancels
     **Explanation**: O texto diz "unless she cancels" — significando que não vão se encontrar se ela cancelar.

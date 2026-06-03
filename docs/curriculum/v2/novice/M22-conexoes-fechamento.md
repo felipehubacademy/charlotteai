@@ -75,7 +75,7 @@
 
 10. **read_answer**
     **Passage**: "I like coffee and tea, but I don't like soda. I drink water all day. Do you prefer coffee or tea?"
-    **Question**: Does the speaker like soda?
+    **Question**: O speaker gosta de refrigerante?
     **Answer**: no
     **Accepts**: doesn't like
     **Explanation**: O texto diz "I don't like soda".
@@ -241,7 +241,7 @@
 
 10. **read_answer**
     **Passage**: "I love English because it opens doors. I study every day, so I'm making progress. I'll keep going because it's fun."
-    **Question**: Why does the speaker love English?
+    **Question**: Por que o speaker ama inglês?
     **Answer**: it opens doors
     **Accepts**: opens doors
     **Explanation**: O texto diz "I love English because it opens doors".
@@ -407,7 +407,7 @@
 
 10. **read_answer**
     **Passage**: "She speaks slowly and clearly. He drives carefully. They study seriously. We all sing happily."
-    **Question**: How does she speak?
+    **Question**: Como ela fala?
     **Answer**: slowly and clearly
     **Explanation**: O texto diz "She speaks slowly and clearly".
 
@@ -572,7 +572,7 @@
 
 10. **read_answer**
     **Passage**: "Although I love coffee, I drink tea sometimes. I want to travel. However, I have no money right now."
-    **Question**: Why doesn't the speaker travel now?
+    **Question**: Por que o speaker não viaja agora?
     **Answer**: no money
     **Accepts**: I have no money
     **Explanation**: The text says "I have no money right now".
@@ -738,7 +738,7 @@
 
 10. **read_answer**
     **Passage**: "I'm Felipe. I'm from Brazil. I learned English for two years. I love it because it opens doors. Tomorrow I'm going to take a test. Although I'm nervous, I'll do my best."
-    **Question**: Why does Felipe love English?
+    **Question**: Por que Felipe ama inglês?
     **Answer**: it opens doors
     **Accepts**: opens doors
     **Explanation**: O texto diz "I love it because it opens doors".

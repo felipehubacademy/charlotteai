@@ -369,6 +369,28 @@ export async function POST(request: NextRequest) {
         ? "Go ahead — your answer?"
         : "Tell me more.";
     }
+
+    // ANTI-STEAL POST-CHECK (deterministico): se Charlotte respondeu com
+    // chunk que pertence a um objetivo "user asks/uses X" nao batido,
+    // sobrescreve com ack curto. gpt-4o-mini ignora a regra mesmo com
+    // prompt forte — guard server-side eh necessario.
+    const repliedLower = clean.toLowerCase().replace(/[''']/g, "'");
+    const unmetUserAsk = rp.objectives.find(o =>
+      !objectivesMet.includes(o.id) &&
+      /user\s*(asks|uses|perguntar)/i.test(o.hidden_prompt) &&
+      o.hint_en &&
+      repliedLower.includes(o.hint_en.toLowerCase().replace(/[''']/g, "'"))
+    );
+    if (unmetUserAsk) {
+      console.warn('[roleplay/turn] anti-steal violation — Charlotte said student chunk', {
+        objectiveId: unmetUserAsk.id,
+        hint: unmetUserAsk.hint_en,
+        original: clean,
+      });
+      const SAFE_ACKS = ['Nice.', 'Got it.', 'Sure!', 'Sounds good.', 'Cool.'];
+      clean = SAFE_ACKS[Math.floor(Math.random() * SAFE_ACKS.length)];
+    }
+
     const audioBuf = await tts(clean, rp.voiced_by);
     logOpenAIUsage({
       endpoint:     '/api/roleplay/turn:tts',

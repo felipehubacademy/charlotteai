@@ -79,7 +79,7 @@
 
 10. **read_answer**
     **Passage**: "I love Italian food. I like Mexican food too. My sister hates spicy food. We all love chocolate."
-    **Question**: What does the sister hate?
+    **Question**: O que a irmã odeia?
     **Answer**: spicy food
     **Explanation**: O texto diz "My sister hates spicy food".
 
@@ -244,7 +244,7 @@
 
 10. **read_answer**
     **Passage**: "I love reading, but I hate cooking. My brother loves playing soccer. My sister likes painting and drawing."
-    **Question**: What does the sister like doing?
+    **Question**: O que a irmã gosta de fazer?
     **Answer**: painting and drawing
     **Explanation**: O texto diz "My sister likes painting and drawing".
 
@@ -409,7 +409,7 @@
 
 10. **read_answer**
     **Passage**: "My sister calls me every Sunday. I love talking to her. She tells me about her week. I tell her about mine."
-    **Question**: Who calls every Sunday?
+    **Question**: Quem liga todo domingo?
     **Answer**: my sister
     **Accepts**: the sister
     **Explanation**: O texto diz "My sister calls me every Sunday".
@@ -576,7 +576,7 @@
 
 10. **read_answer**
     **Passage**: "I love pop music. I like action movies. I hate horror books. My sister loves classical music — totally different."
-    **Question**: What kind of music does the sister love?
+    **Question**: Que tipo de música a irmã ama?
     **Answer**: classical
     **Accepts**: classical music
     **Explanation**: O texto diz "My sister loves classical music".
@@ -742,7 +742,7 @@
 
 10. **read_answer**
     **Passage**: "I prefer tea over coffee. My sister prefers coffee. We both love chocolate. She hates sweet drinks but I like them."
-    **Question**: What does the sister prefer to drink?
+    **Question**: O que a irmã prefere beber?
     **Answer**: coffee
     **Explanation**: O texto diz "My sister prefers coffee".
 

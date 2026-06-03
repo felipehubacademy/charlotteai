@@ -73,7 +73,7 @@
 
 10. **read_answer**
     **Passage**: "I didn't work yesterday. I didn't go out either. I didn't see anyone. It was a quiet day."
-    **Question**: Did the speaker work?
+    **Question**: O speaker trabalhou?
     **Answer**: no
     **Accepts**: didn't work
     **Explanation**: O texto diz "I didn't work yesterday".
@@ -239,7 +239,7 @@
 
 10. **read_answer**
     **Passage**: "Q: Did you go to the gym? A: Yes, I did. Q: Did your sister come? A: No, she didn't. She had work."
-    **Question**: Did the sister come?
+    **Question**: A irmã veio?
     **Answer**: no
     **Accepts**: she didn't
     **Explanation**: The text says "No, she didn't".
@@ -405,7 +405,7 @@
 
 10. **read_answer**
     **Passage**: "Q: Where did you go? A: I went to the beach. Q: What did you do? A: I swam and read. Q: When did you come back? A: At seven."
-    **Question**: What did the speaker do at the beach?
+    **Question**: O que o speaker fez na praia?
     **Answer**: swam and read
     **Accepts**: swam, read
     **Explanation**: O texto diz "I swam and read".
@@ -571,7 +571,7 @@
 
 10. **read_answer**
     **Passage**: "I never visited Japan, but I went to China. My sister didn't travel last year. She stayed home."
-    **Question**: Where did the sister stay?
+    **Question**: Onde a irmã ficou?
     **Answer**: home
     **Explanation**: O texto diz "She stayed home".
 
@@ -736,7 +736,7 @@
 
 10. **read_answer**
     **Passage**: "I went to a concert. I didn't stay long. Did my friend come? No, she didn't. What did she do? She worked late."
-    **Question**: Did the friend come to the concert?
+    **Question**: O amigo veio ao show?
     **Answer**: no
     **Explanation**: The text says "No, she didn't".
 

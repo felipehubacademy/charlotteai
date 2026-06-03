@@ -77,7 +77,7 @@
 
 10. **read_answer**
     **Passage**: "Yesterday I was at home. My family was with me. We were happy together. It was a great day."
-    **Question**: Where was the speaker yesterday?
+    **Question**: Onde o speaker estava ontem?
     **Answer**: at home
     **Explanation**: O texto diz "I was at home".
 
@@ -242,7 +242,7 @@
 
 10. **read_answer**
     **Passage**: "I wasn't at the party last night. My friends were there but I was tired. They weren't happy that I missed it."
-    **Question**: Where wasn't the speaker?
+    **Question**: Onde o speaker não estava?
     **Answer**: at the party
     **Explanation**: O texto diz "I wasn't at the party last night".
 
@@ -407,7 +407,7 @@
 
 10. **read_answer**
     **Passage**: "Q: Were you at the meeting? A: Yes, I was. Q: Was Maria there too? A: No, she wasn't. She was sick."
-    **Question**: Where was Maria?
+    **Question**: Onde Maria estava?
     **Answer**: sick (or "she was sick" — at home implied)
     **Explanation**: O texto diz "She was sick" — explicando por que ela não estava na reunião.
 
@@ -572,7 +572,7 @@
 
 10. **read_answer**
     **Passage**: "I was in São Paulo last month. Two years ago I was in Rio. In 2020 I was in Lisbon."
-    **Question**: When was the speaker in Lisbon?
+    **Question**: Quando o speaker esteve em Lisbon?
     **Answer**: in 2020
     **Explanation**: O texto diz "In 2020 I was in Lisbon".
 
@@ -737,7 +737,7 @@
 
 10. **read_answer**
     **Passage**: "When I was a child, we were poor but happy. My parents were always busy. It was a simple life."
-    **Question**: How were the parents?
+    **Question**: Como estavam os pais?
     **Answer**: always busy
     **Accepts**: busy
     **Explanation**: O texto diz "My parents were always busy".

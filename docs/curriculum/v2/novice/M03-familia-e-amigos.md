@@ -89,7 +89,7 @@
 
 10. **read_answer**
     **Passage**: "My family is great. My mother is fifty. My father is fifty-five. My brother is twenty. He is Brazilian."
-    **Question**: How old is the father? (dê um número)
+    **Question**: Quantos anos o pai tem? (dê um número)
     **Answer**: 55
     **Explanation**: O texto diz "My father is fifty-five". 55.
 
@@ -254,7 +254,7 @@
 
 10. **read_answer**
     **Passage**: "I've got a small family. I have got one brother and one sister. My brother is twenty-five. My sister is fifteen."
-    **Question**: How old is the brother? (dê um número)
+    **Question**: Quantos anos o irmão tem? (dê um número)
     **Answer**: 25
     **Explanation**: O texto diz "My brother is twenty-five". 25.
 
@@ -419,7 +419,7 @@
 
 10. **read_answer**
     **Passage**: "John has got a great family. His wife is Italian. His son is ten. His daughter is fifteen."
-    **Question**: How old is John's daughter? (dê um número)
+    **Question**: Quantos anos a filha do John tem? (dê um número)
     **Answer**: 15
     **Explanation**: O texto diz "His daughter is fifteen". 15.
 
@@ -584,7 +584,7 @@
 
 10. **read_answer**
     **Passage**: "I've got a best friend. Her name is Sofia. She is Italian. She is twenty-three years old."
-    **Question**: What is Sofia's nationality?
+    **Question**: Qual é a nacionalidade de Sofia?
     **Answer**: Italian
     **Explanation**: O texto diz "She is Italian" — a nacionalidade de Sofia é italiana.
 
@@ -749,7 +749,7 @@
 
 10. **read_answer**
     **Passage**: "Meet my family. My mother is fifty. My father is fifty-five. My brother is twenty. He is Brazilian like me."
-    **Question**: What is the brother's nationality?
+    **Question**: Qual é a nacionalidade do irmão?
     **Answer**: Brazilian
     **Explanation**: O texto diz "He is Brazilian like me" — a nacionalidade do irmão é brasileira.
 

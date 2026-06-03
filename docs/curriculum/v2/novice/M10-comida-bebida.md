@@ -79,7 +79,7 @@
 
 10. **read_answer**
     **Passage**: "For breakfast I have two eggs, some bread, and a cup of coffee. My sister has one apple and some yogurt."
-    **Question**: How many eggs does the speaker have?
+    **Question**: Quantos ovos o speaker tem?
     **Answer**: two
     **Explanation**: O texto diz "I have two eggs".
 
@@ -244,7 +244,7 @@
 
 10. **read_answer**
     **Passage**: "I have some bread but I don't have any milk. Is there any cheese? Yes, there's some cheese in the fridge."
-    **Question**: What does the speaker NOT have?
+    **Question**: O que o speaker NÃO tem?
     **Answer**: milk
     **Explanation**: O texto diz "I don't have any milk".
 
@@ -409,7 +409,7 @@
 
 10. **read_answer**
     **Passage**: "Q: How much is the coffee? A: It's $3. Q: How many cookies do you want? A: Three, please."
-    **Question**: How many cookies does the customer want?
+    **Question**: Quantos biscoitos o cliente quer?
     **Answer**: three
     **Explanation**: O texto diz "Three, please".
 
@@ -574,7 +574,7 @@
 
 10. **read_answer**
     **Passage**: "Waiter: What would you like? Customer: I'd like a pasta and a glass of water. Waiter: Anything else? Customer: No, that's all. Can I have the bill?"
-    **Question**: What does the customer order to drink?
+    **Question**: O que o cliente pede pra beber?
     **Answer**: a glass of water
     **Accepts**: water
     **Explanation**: O texto diz "a glass of water".
@@ -740,7 +740,7 @@
 
 10. **read_answer**
     **Passage**: "I'd like a sandwich and some water. We don't have any cookies. How many apples are there? Three."
-    **Question**: How many apples are there?
+    **Question**: Quantas maçãs tem?
     **Answer**: three
     **Explanation**: O texto responde "Three" à pergunta.
 

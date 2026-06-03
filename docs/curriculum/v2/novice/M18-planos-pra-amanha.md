@@ -74,7 +74,7 @@
 
 10. **read_answer**
     **Passage**: "Tomorrow I'm going to wake up early. I'm going to work in the morning and go to the gym in the afternoon. We're going to have dinner together."
-    **Question**: What is the speaker going to do in the afternoon?
+    **Question**: O que o speaker vai fazer à tarde?
     **Answer**: go to the gym
     **Explanation**: O texto diz "go to the gym in the afternoon".
 
@@ -239,7 +239,7 @@
 
 10. **read_answer**
     **Passage**: "I'm not going to work tomorrow. It's my day off. My sister isn't going to come either. We aren't going to do anything special."
-    **Question**: Why isn't the speaker working tomorrow?
+    **Question**: Por que o speaker não vai trabalhar amanhã?
     **Answer**: it's my day off
     **Accepts**: day off
     **Explanation**: O texto diz "It's my day off".
@@ -405,7 +405,7 @@
 
 10. **read_answer**
     **Passage**: "Q: Are you going to travel next month? A: Yes, I am. Q: Is your sister going to come? A: No, she isn't. She has work."
-    **Question**: Is the sister going to come?
+    **Question**: A irmã vai vir?
     **Answer**: no
     **Accepts**: she isn't
     **Explanation**: The text says "No, she isn't".
@@ -571,7 +571,7 @@
 
 10. **read_answer**
     **Passage**: "I'm going to travel tomorrow. Next week I'm going to be in Italy. In two months I'm going to come back home."
-    **Question**: When is the speaker going to travel?
+    **Question**: Quando o speaker vai viajar?
     **Answer**: tomorrow
     **Explanation**: O texto diz "I'm going to travel tomorrow".
 
@@ -736,7 +736,7 @@
 
 10. **read_answer**
     **Passage**: "Tomorrow I'm going to work. I'm not going to eat out tonight — I'm tired. Next week I'm going to travel to Bahia."
-    **Question**: Where is the speaker going next week?
+    **Question**: Para onde o speaker vai na semana que vem?
     **Answer**: Bahia
     **Accepts**: to Bahia
     **Explanation**: O texto diz "travel to Bahia".
@@ -906,7 +906,7 @@
 
 10. **read_answer**
     **Passage**: "I'm gonna grab some coffee — wanna come? Yeah, I gotta finish this email first. Whatcha working on? Just a quick reply to my boss. I gotta send it before the meeting. OK, I'll wait for you."
-    **Question**: What does "I gotta finish this email" mean in formal English?
+    **Question**: O que "I gotta finish this email" significa em inglês formal?
     **Answer**: I have to finish this email
 **Accepts**: I've got to finish this email
     **Explanation**: "I gotta finish this email" em escrita formal seria "I have to finish this email" ou "I've got to finish this email". "Gotta" carrega o sentido de obrigação. Reconhecer a redução em fala e saber a forma formal.

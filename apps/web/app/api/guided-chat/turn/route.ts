@@ -299,6 +299,28 @@ export async function POST(request: NextRequest) {
         : "Tell me more.";
     }
 
+    // ANTI-STEAL POST-CHECK (deterministico): se a Charlotte respondeu com
+    // um chunk que pertence a um objetivo "user asks/uses X" ainda nao
+    // batido, ela roubou o turno. Sobrescreve com ack curto.
+    // (gpt-4o-mini ignora a regra mesmo com prompt forte, entao guard
+    // server-side eh necessario.)
+    const repliedLower = reply.toLowerCase().replace(/[''']/g, "'");
+    const unmetUserAsk = gc.objectives.find(o =>
+      !objectivesMet.includes(o.id) &&
+      /user\s*(asks|uses|perguntar|asks?|use)/i.test(o.hidden_prompt) &&
+      o.hint_en &&
+      repliedLower.includes(o.hint_en.toLowerCase().replace(/[''']/g, "'"))
+    );
+    if (unmetUserAsk) {
+      console.warn('[guided-chat/turn] anti-steal violation — Charlotte said the student chunk', {
+        objectiveId: unmetUserAsk.id,
+        hint: unmetUserAsk.hint_en,
+        original: reply,
+      });
+      const SAFE_ACKS = ['Nice.', 'Got it.', 'Sure!', 'Sounds good.', 'Cool.'];
+      reply = SAFE_ACKS[Math.floor(Math.random() * SAFE_ACKS.length)];
+    }
+
     return NextResponse.json({
       reply,
       objectives_met: objectivesMet,

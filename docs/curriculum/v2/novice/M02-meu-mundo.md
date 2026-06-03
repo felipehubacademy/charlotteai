@@ -83,7 +83,7 @@
 
 10. **read_answer**
     **Passage**: "Hi! I am Mark. I am fifteen years old. My room is twelve."
-    **Question**: How old is Mark? (dê um número)
+    **Question**: Quantos anos Mark tem? (dê um número)
     **Answer**: 15
     **Explanation**: Mark diz "I am fifteen years old". Fifteen = 15.
 
@@ -241,7 +241,7 @@ Charlotte fala via ElevenLabs (Rachel). Aluno repete; Azure Speech avalia pronú
 
 10. **read_answer**
     **Passage**: "Tom is twenty-three years old. Mary is fifty. Mike is eighty-five."
-    **Question**: How old is Mike? (dê um número)
+    **Question**: Quantos anos Mike tem? (dê um número)
     **Answer**: 85
     **Explanation**: O texto diz "Mike is eighty-five". 85 = 80 + 5 = eighty-five.
 
@@ -397,7 +397,7 @@ Charlotte fala via ElevenLabs (Rachel). Aluno repete; Azure Speech avalia pronú
 
 10. **read_answer**
     **Passage**: "Anna is from Italy. Lucas is from Brazil. Maria is from Spain. They are all friends."
-    **Question**: Where is Lucas from?
+    **Question**: De onde Lucas é?
     **Answer**: Brazil
     **Explanation**: O texto diz "Lucas is from Brazil". Lucas vem do Brasil.
 
@@ -553,7 +553,7 @@ Charlotte fala via ElevenLabs (Rachel). Aluno repete; Azure Speech avalia pronú
 
 10. **read_answer**
     **Passage**: "My new team: John is American. Yuki is Japanese. Sofia is Italian."
-    **Question**: What nationality is Sofia?
+    **Question**: Qual é a nacionalidade de Sofia?
     **Answer**: Italian
     **Explanation**: O texto diz "Sofia is Italian". A nacionalidade de Sofia é italiana.
 
@@ -709,7 +709,7 @@ Charlotte fala via ElevenLabs (Rachel). Aluno repete; Azure Speech avalia pronú
 
 10. **read_answer**
     **Passage**: "Hello! My name is Ana. I'm twenty-six years old. I'm from São Paulo, Brazil. I'm Brazilian. Nice to meet you!"
-    **Question**: What is Ana's nationality?
+    **Question**: Qual é a nacionalidade de Ana?
     **Answer**: Brazilian
     **Explanation**: Ana diz "I'm Brazilian". A nacionalidade dela é "Brazilian" (o adjetivo).
 
