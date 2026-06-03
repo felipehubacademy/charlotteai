@@ -51,7 +51,8 @@ export function getV2TopicForUnit(
     pronunciation,
     v2Title:  unit.title,
     v2UnitId: unit.id,
-  };
+    tense:    unit.tense,
+  } as any;
 }
 
 /**

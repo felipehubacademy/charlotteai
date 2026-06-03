@@ -1340,16 +1340,18 @@ export default function LearnSessionScreen() {
 
       {/* ── Header ── */}
       <View style={{
-        flexDirection: 'row', alignItems: 'center',
+        flexDirection: 'row', alignItems: 'center', justifyContent: 'space-between',
         paddingHorizontal: 16, height: 52,
         borderBottomWidth: 1, borderBottomColor: C.border,
+        position: 'relative',
       }}>
-        <TouchableOpacity onPress={() => router.back()} hitSlop={{ top: 12, bottom: 12, left: 12, right: 12 }}>
+        <TouchableOpacity onPress={() => router.back()} hitSlop={{ top: 12, bottom: 12, left: 12, right: 12 }} style={{ zIndex: 2 }}>
           <ArrowLeft size={22} color={C.navy} weight="bold" />
         </TouchableOpacity>
-        <View style={{ flex: 1, alignItems: 'center' }}>
+        {/* Titulo absoluto — centraliza na largura TOTAL do header, nao
+            entre o arrow e o badge. pointerEvents:none deixa toques passarem. */}
+        <View pointerEvents="none" style={{ position: 'absolute', left: 0, right: 0, top: 0, bottom: 0, alignItems: 'center', justifyContent: 'center' }}>
           {params.reviewId && (
-            /* Badge de revisão — fica no topo quando é uma revisão */
             <View style={{ flexDirection: 'row', alignItems: 'center', gap: 4,
               backgroundColor: C.violetBg, borderRadius: 8,
               paddingHorizontal: 8, paddingVertical: 2, marginBottom: 2 }}>
@@ -1359,7 +1361,7 @@ export default function LearnSessionScreen() {
               </AppText>
             </View>
           )}
-          <AppText style={{ fontSize: 18, fontWeight: '800', color: C.navy, letterSpacing: -0.3 }} numberOfLines={1}>
+          <AppText style={{ fontSize: 18, fontWeight: '800', color: C.navy, letterSpacing: -0.3, maxWidth: '70%', textAlign: 'center' }} numberOfLines={1}>
             {topicTitle}
           </AppText>
           {!!tenseTag && !params.reviewId && (
@@ -1368,7 +1370,7 @@ export default function LearnSessionScreen() {
             </AppText>
           )}
         </View>
-        <TouchableOpacity onPress={() => router.push({ pathname: '/(app)/stats', params: { sessionXP: String(sessionXP), totalXP: String(baseTotalXP + sessionXP), userId: userId ?? '', userLevel: userLevel ?? 'Inter', userName: '' } })} activeOpacity={0.7} hitSlop={{ top: 10, bottom: 10, left: 10, right: 10 }}>
+        <TouchableOpacity onPress={() => router.push({ pathname: '/(app)/stats', params: { sessionXP: String(sessionXP), totalXP: String(baseTotalXP + sessionXP), userId: userId ?? '', userLevel: userLevel ?? 'Inter', userName: '' } })} activeOpacity={0.7} hitSlop={{ top: 10, bottom: 10, left: 10, right: 10 }} style={{ zIndex: 2 }}>
           <AnimatedXPBadge xp={baseTotalXP + sessionXP} iconSize={13} fontSize={13} padH={10} padV={5} />
         </TouchableOpacity>
       </View>
