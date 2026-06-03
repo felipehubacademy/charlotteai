@@ -951,14 +951,6 @@ export default function RolePlayExerciseScreen() {
                 </AppText>
               </View>
               <View style={{ alignItems: 'center' }}>
-                <AppText style={{ fontSize: 18, fontWeight: '800', color: C.navy }}>
-                  {hintsUsed}
-                </AppText>
-                <AppText style={{ fontSize: 10, fontWeight: '600', color: C.navyLight, textTransform: 'uppercase', letterSpacing: 0.6 }}>
-                  {isPt ? 'Dicas' : 'Hints'}
-                </AppText>
-              </View>
-              <View style={{ alignItems: 'center' }}>
                 <AppText style={{ fontSize: 18, fontWeight: '800', color: allObjectivesDone ? C.greenDark : '#B45309' }}>
                   {Math.round((objectivesDone / objectivesTotal) * 100)}%
                 </AppText>
