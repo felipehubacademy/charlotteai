@@ -437,7 +437,11 @@ export async function POST(request: NextRequest) {
       objectivesMet = objectivesMet.filter(id => {
         const o = rp.objectives.find(x => x.id === id);
         if (!o) return true;
-        const isUserAsks = /user\s*(asks?|perguntar|uses?)/i.test(o.hidden_prompt);
+        // SO match objs onde a INTENCAO eh pergunta (asks/perguntar).
+        // NAO incluir "uses" — "user uses 'I will + base + time'" eh
+        // statement obj, nao question. Bug critico que zerou ~35 units
+        // no synthetic student.
+        const isUserAsks = /\buser\s+(asks?|perguntar)\b/i.test(o.hidden_prompt);
         if (isUserAsks) {
           blocked.push(id);
           return false;
