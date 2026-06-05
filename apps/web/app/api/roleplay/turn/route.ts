@@ -235,9 +235,23 @@ Rules:
     message against those exemplars. If it aligns with a PASS example
     (paraphrase OK), MARK. If it aligns with a FAIL example, do NOT mark.
     Use semantic reasoning, not regex — you are an LLM.
-  - BIAS TOWARD MARKING when there's clear evidence. Strict matching is
-    only for cases where the student replied off-topic, gibberish, or
-    something genuinely unrelated.
+  - STRUCTURE REQUIREMENT: when an objective's hidden_prompt explicitly
+    specifies a STRUCTURE (e.g., "user says 'The best X was Y'", "user
+    uses 'I + verb-ed'", "user says 'I was + adjective'"), the student's
+    message MUST contain that structure (not just a related word).
+    Examples:
+    - obj "user says 'The best meal was + X'" + student "Pasta" →
+      DO NOT MARK (bare noun, no superlative structure produced)
+    - obj "user says 'The best meal was + X'" + student "The best meal
+      was pasta" → MARK
+    - obj "user says 'I + verb-ed'" + student "yesterday" → DO NOT MARK
+      (no verb-ed produced)
+    - obj "user says 'I + verb-ed'" + student "I worked" → MARK
+    Bare words, fragments, or naming things WITHOUT producing the
+    target structure DO NOT count. The pedagogical goal is the structure.
+  - BIAS TOWARD MARKING when student produced the target structure
+    with clear intent. Strict matching applies when reply is off-topic,
+    gibberish, or skips the structure entirely.
   - Broken English with the right INTENT counts; a fluent but completely
     unrelated sentence does NOT.
 - If the student's message is empty, gibberish, a single random word, or
