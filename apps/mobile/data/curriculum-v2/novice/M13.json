@@ -77,14 +77,14 @@
         },
         {
           "type": "fill_gap",
-          "sentence": "She is _____ in the team.",
+          "sentence": "She is _____ in the team — nobody beats her time.",
           "hint": "Superlativo de \"fast\"",
           "answer": "the fastest",
           "explanation": "\"Fast\" → \"fastest\". \"The fastest\" = a mais rápida."
         },
         {
           "type": "fill_gap",
-          "sentence": "This is _____ exam of the semester.",
+          "sentence": "This is _____ exam of the semester — only basic questions.",
           "hint": "Superlativo de \"easy\"",
           "answer": "the easiest",
           "explanation": "\"Easy\" → \"easiest\" (y → iest). \"The easiest exam\"."
@@ -216,7 +216,17 @@
             "label_en": "Ask Charlotte",
             "hidden_prompt": "user asks 'How about you?'",
             "hint_pt": "How about you?",
-            "hint_en": "How about you?"
+            "hint_en": "How about you?",
+            "examples_pass": [
+              "How about you?",
+              "And you?",
+              "What about you?"
+            ],
+            "examples_fail": [
+              "Me too (statement)",
+              "Yes (single word)",
+              "What did you do? (off-intent)"
+            ]
           }
         ],
         "closing_cue": "Charlotte encerra com \"Top of the list!\" quando obj_3 baterem.",
@@ -280,21 +290,21 @@
         },
         {
           "type": "fill_gap",
-          "sentence": "She is _____ teacher in the school.",
+          "sentence": "She is _____ teacher in the school — she never gets angry.",
           "hint": "Superlativo longo de \"patient\"",
           "answer": "the most patient",
           "explanation": "\"Patient\" → \"the most patient\" (2 sílabas+, usa \"most\")."
         },
         {
           "type": "fill_gap",
-          "sentence": "It's _____ topic of the year.",
+          "sentence": "It's _____ topic of the year — everyone is talking about it.",
           "hint": "Superlativo longo de \"popular\"",
           "answer": "the most popular",
           "explanation": "\"Popular\" → \"the most popular\". Sempre \"most\" antes de adj longo."
         },
         {
           "type": "fill_gap",
-          "sentence": "This is _____ book in the library.",
+          "sentence": "This is _____ book in the library — I almost fell asleep.",
           "hint": "Superlativo longo de \"boring\"",
           "answer": "the most boring",
           "explanation": "\"Boring\" (2 sílabas) → \"the most boring\"."
@@ -419,7 +429,17 @@
             "label_en": "Ask Charlotte",
             "hidden_prompt": "user asks 'How about you?'",
             "hint_pt": "How about you?",
-            "hint_en": "How about you?"
+            "hint_en": "How about you?",
+            "examples_pass": [
+              "How about you?",
+              "And you?",
+              "What about you?"
+            ],
+            "examples_fail": [
+              "Me too (statement)",
+              "Yes (single word)",
+              "What did you do? (off-intent)"
+            ]
           }
         ],
         "closing_cue": "Charlotte encerra com \"Big league answers!\" quando obj_3 baterem.",
@@ -485,14 +505,14 @@
         },
         {
           "type": "fill_gap",
-          "sentence": "He is _____ teacher in the school.",
+          "sentence": "He is _____ teacher in the school — students love his classes.",
           "hint": "Irregular superlativo de \"good\"",
           "answer": "the best",
           "explanation": "\"The best\" — superlativo de \"good\". Decora a lista: good/better/best."
         },
         {
           "type": "fill_gap",
-          "sentence": "It's _____ thing about Mondays.",
+          "sentence": "It's _____ thing about Mondays — waking up so early!",
           "hint": "Irregular superlativo de \"bad\"",
           "answer": "the worst",
           "explanation": "\"The worst\" — superlativo de \"bad\". Lista: bad/worse/worst."
@@ -624,7 +644,17 @@
             "label_en": "Ask Charlotte",
             "hidden_prompt": "user asks 'How about you?'",
             "hint_pt": "How about you?",
-            "hint_en": "How about you?"
+            "hint_en": "How about you?",
+            "examples_pass": [
+              "How about you?",
+              "And you?",
+              "What about you?"
+            ],
+            "examples_fail": [
+              "Me too (statement)",
+              "Yes (single word)",
+              "What did you do? (off-intent)"
+            ]
           }
         ],
         "closing_cue": "Charlotte encerra com \"Bests and worsts done!\" quando obj_3 baterem.",
@@ -830,7 +860,17 @@
             "label_en": "Ask Charlotte",
             "hidden_prompt": "user asks 'How about you?' or 'When is your...?'",
             "hint_pt": "How about you?",
-            "hint_en": "How about you?"
+            "hint_en": "How about you?",
+            "examples_pass": [
+              "How about you?",
+              "And you?",
+              "What about you?"
+            ],
+            "examples_fail": [
+              "Me too (statement)",
+              "Yes (single word)",
+              "What did you do? (off-intent)"
+            ]
           }
         ],
         "closing_cue": "Charlotte encerra com \"Order achieved!\" quando obj_3 baterem.",
@@ -908,7 +948,7 @@
         },
         {
           "type": "fill_gap",
-          "sentence": "She is _____ student in class.",
+          "sentence": "She is _____ student in class — top grades every test.",
           "hint": "Irregular superlativo de \"good\"",
           "answer": "the best",
           "explanation": "Good → the best (irregular)."
@@ -1033,7 +1073,17 @@
             "label_en": "Ask Charlotte",
             "hidden_prompt": "user asks 'How about you?'",
             "hint_pt": "How about you?",
-            "hint_en": "How about you?"
+            "hint_en": "How about you?",
+            "examples_pass": [
+              "How about you?",
+              "And you?",
+              "What about you?"
+            ],
+            "examples_fail": [
+              "Me too (statement)",
+              "Yes (single word)",
+              "What did you do? (off-intent)"
+            ]
           }
         ],
         "closing_cue": "Charlotte encerra com \"Mastered the rankings!\" quando obj_3 baterem.",

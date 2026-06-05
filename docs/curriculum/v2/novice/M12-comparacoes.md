@@ -48,17 +48,17 @@
    **Answer**: bigger
    **Explanation**: "Big" → "bigger" (dobra o g antes de -er). Regra de spelling: consoante-vogal-consoante dobra.
 
-5. **fill_gap** — "She is _____ than her sister."
+5. **fill_gap** — "She is _____ than her sister — only fifteen years old."
    **Hint**: Comparativo de "young"
    **Answer**: younger
    **Explanation**: "Young" → "younger" (adiciona -er regularmente).
 
-6. **fill_gap** — "Today is _____ than yesterday."
+6. **fill_gap** — "Today is _____ than yesterday — over thirty degrees!"
    **Hint**: Comparativo de "hot"
    **Answer**: hotter
    **Explanation**: "Hot" → "hotter" (dobra o t). Mesma regra de "big → bigger".
 
-7. **fill_gap** — "This test is _____ than the last one."
+7. **fill_gap** — "This test is _____ than the last one — only ten questions!"
    **Hint**: Comparativo de "easy"
    **Answer**: easier
    **Explanation**: "Easy" → "easier" (y → ier). Adjetivos em -y trocam y por -ier.
@@ -169,6 +169,8 @@
    **hidden_prompt**: "user asks Charlotte 'How about you?' or 'Which is + adj-er for you?'"
    **hint_pt**: "How about you?"
    **hint_en**: "How about you?"
+   **example_pass**: How about you? | And you? | What about you?
+   **example_fail**: Me too (statement) | Yes (single word) | What did you do? (off-intent)
 
 **Closing cue**: Charlotte encerra com "Same and different!" quando obj_3 baterem.
 
@@ -214,17 +216,17 @@
    **Answer**: more difficult
    **Explanation**: "Difficult" (3 sílabas) → "more difficult". Long adj usa "more".
 
-5. **fill_gap** — "Yoga is _____ than running."
+5. **fill_gap** — "Yoga is _____ than running — perfect for stress."
    **Hint**: Comparativo longo de "relaxing"
    **Answer**: more relaxing
    **Explanation**: "Relaxing" tem 3 sílabas → "more relaxing".
 
-6. **fill_gap** — "This puzzle is _____ than the last one."
+6. **fill_gap** — "This puzzle is _____ than the last one — it's taking hours."
    **Hint**: Comparativo longo de "challenging"
    **Answer**: more challenging
    **Explanation**: "Challenging" 3+ sílabas → "more challenging".
 
-7. **fill_gap** — "She is _____ than him."
+7. **fill_gap** — "She is _____ than him — she always solves the hardest problems."
    **Hint**: Comparativo longo de "intelligent"
    **Answer**: more intelligent
    **Explanation**: "Intelligent" 4 sílabas → "more intelligent". Sem -er.
@@ -334,6 +336,8 @@
    **hidden_prompt**: "user asks Charlotte 'How about you?' or 'Which is more + adj for you?'"
    **hint_pt**: "How about you?"
    **hint_en**: "How about you?"
+   **example_pass**: How about you? | And you? | What about you?
+   **example_fail**: Me too (statement) | Yes (single word) | What did you do? (off-intent)
 
 **Closing cue**: Charlotte encerra com "Great chat!" quando obj_3 baterem.
 
@@ -379,12 +383,12 @@
    **Answer**: more
    **Explanation**: "More + plural countable" (more books). "Many" usado só em pergunta/negativa.
 
-5. **fill_gap** — "My car is _____ than yours."
+5. **fill_gap** — "My car is _____ than yours — newer and faster."
    **Hint**: Irregular comparativo de "good"
    **Answer**: better
    **Explanation**: "Good" → "better". Memorize: good/better/best.
 
-6. **fill_gap** — "This movie is _____ than I expected."
+6. **fill_gap** — "This movie is _____ than I expected — really boring."
    **Hint**: Irregular comparativo de "bad"
    **Answer**: worse
    **Explanation**: "Bad" → "worse". Memorize: bad/worse/worst.
@@ -499,6 +503,8 @@
    **hidden_prompt**: "user asks 'How about you?' or 'Better or worse?'"
    **hint_pt**: "How about you?"
    **hint_en**: "How about you?"
+   **example_pass**: How about you? | And you? | What about you?
+   **example_fail**: Me too (statement) | Yes (single word) | What did you do? (off-intent)
 
 **Closing cue**: Charlotte encerra com "Solid chat!" quando obj_3 baterem.
 
@@ -664,6 +670,8 @@
    **hidden_prompt**: "user asks 'How about you?' or similar"
    **hint_pt**: "How about you?"
    **hint_en**: "How about you?"
+   **example_pass**: How about you? | And you? | What about you?
+   **example_fail**: Me too (statement) | Yes (single word) | What did you do? (off-intent)
 
 **Closing cue**: Charlotte encerra com "Subtle observations!" quando obj_3 baterem.
 

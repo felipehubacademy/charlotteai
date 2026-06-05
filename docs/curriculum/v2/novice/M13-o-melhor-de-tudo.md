@@ -48,12 +48,12 @@
    **Answer**: the hottest
    **Explanation**: "Hot" → "hottest" (dobra o t). "The hottest day".
 
-5. **fill_gap** — "She is _____ in the team."
+5. **fill_gap** — "She is _____ in the team — nobody beats her time."
    **Hint**: Superlativo de "fast"
    **Answer**: the fastest
    **Explanation**: "Fast" → "fastest". "The fastest" = a mais rápida.
 
-6. **fill_gap** — "This is _____ exam of the semester."
+6. **fill_gap** — "This is _____ exam of the semester — only basic questions."
    **Hint**: Superlativo de "easy"
    **Answer**: the easiest
    **Explanation**: "Easy" → "easiest" (y → iest). "The easiest exam".
@@ -168,6 +168,8 @@
    **hidden_prompt**: "user asks 'How about you?'"
    **hint_pt**: "How about you?"
    **hint_en**: "How about you?"
+   **example_pass**: How about you? | And you? | What about you?
+   **example_fail**: Me too (statement) | Yes (single word) | What did you do? (off-intent)
 
 **Closing cue**: Charlotte encerra com "Top of the list!" quando obj_3 baterem.
 
@@ -213,17 +215,17 @@
    **Answer**: the most difficult
    **Explanation**: "Difficult" (3 sílabas) → "the most difficult".
 
-5. **fill_gap** — "She is _____ teacher in the school."
+5. **fill_gap** — "She is _____ teacher in the school — she never gets angry."
    **Hint**: Superlativo longo de "patient"
    **Answer**: the most patient
    **Explanation**: "Patient" → "the most patient" (2 sílabas+, usa "most").
 
-6. **fill_gap** — "It's _____ topic of the year."
+6. **fill_gap** — "It's _____ topic of the year — everyone is talking about it."
    **Hint**: Superlativo longo de "popular"
    **Answer**: the most popular
    **Explanation**: "Popular" → "the most popular". Sempre "most" antes de adj longo.
 
-7. **fill_gap** — "This is _____ book in the library."
+7. **fill_gap** — "This is _____ book in the library — I almost fell asleep."
    **Hint**: Superlativo longo de "boring"
    **Answer**: the most boring
    **Explanation**: "Boring" (2 sílabas) → "the most boring".
@@ -333,6 +335,8 @@
    **hidden_prompt**: "user asks 'How about you?'"
    **hint_pt**: "How about you?"
    **hint_en**: "How about you?"
+   **example_pass**: How about you? | And you? | What about you?
+   **example_fail**: Me too (statement) | Yes (single word) | What did you do? (off-intent)
 
 **Closing cue**: Charlotte encerra com "Big league answers!" quando obj_3 baterem.
 
@@ -378,12 +382,12 @@
    **Answer**: the worst
    **Explanation**: "The worst" — irregular superlativo de "bad".
 
-5. **fill_gap** — "He is _____ teacher in the school."
+5. **fill_gap** — "He is _____ teacher in the school — students love his classes."
    **Hint**: Irregular superlativo de "good"
    **Answer**: the best
    **Explanation**: "The best" — superlativo de "good". Decora a lista: good/better/best.
 
-6. **fill_gap** — "It's _____ thing about Mondays."
+6. **fill_gap** — "It's _____ thing about Mondays — waking up so early!"
    **Hint**: Irregular superlativo de "bad"
    **Answer**: the worst
    **Explanation**: "The worst" — superlativo de "bad". Lista: bad/worse/worst.
@@ -498,6 +502,8 @@
    **hidden_prompt**: "user asks 'How about you?'"
    **hint_pt**: "How about you?"
    **hint_en**: "How about you?"
+   **example_pass**: How about you? | And you? | What about you?
+   **example_fail**: Me too (statement) | Yes (single word) | What did you do? (off-intent)
 
 **Closing cue**: Charlotte encerra com "Bests and worsts done!" quando obj_3 baterem.
 
@@ -664,6 +670,8 @@
    **hidden_prompt**: "user asks 'How about you?' or 'When is your...?'"
    **hint_pt**: "How about you?"
    **hint_en**: "How about you?"
+   **example_pass**: How about you? | And you? | What about you?
+   **example_fail**: Me too (statement) | Yes (single word) | What did you do? (off-intent)
 
 **Closing cue**: Charlotte encerra com "Order achieved!" quando obj_3 baterem.
 
@@ -719,7 +727,7 @@
    **Answer**: the biggest
    **Explanation**: "Big" → "the biggest" (dobra g).
 
-7. **fill_gap** — "She is _____ student in class."
+7. **fill_gap** — "She is _____ student in class — top grades every test."
    **Hint**: Irregular superlativo de "good"
    **Answer**: the best
    **Explanation**: Good → the best (irregular).
@@ -829,6 +837,8 @@
    **hidden_prompt**: "user asks 'How about you?'"
    **hint_pt**: "How about you?"
    **hint_en**: "How about you?"
+   **example_pass**: How about you? | And you? | What about you?
+   **example_fail**: Me too (statement) | Yes (single word) | What did you do? (off-intent)
 
 **Closing cue**: Charlotte encerra com "Mastered the rankings!" quando obj_3 baterem.
 

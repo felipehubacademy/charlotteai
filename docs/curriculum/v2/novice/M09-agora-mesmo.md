@@ -57,12 +57,12 @@
    **Answer**: is
    **Explanation**: "He is watching" — present continuous com he/she/it usa "is".
 
-6. **fill_gap** — "We are _____ in the park."
+6. **fill_gap** — "We are _____ in the park for exercise."
    **Hint**: Verbo "correr" no -ing (dobra o n)
    **Answer**: running
    **Explanation**: Verbos curtos terminados em consoante-vogal-consoante dobram a última consoante antes de -ing: run → running, sit → sitting, swim → swimming.
 
-7. **fill_gap** — "She is _____ a cake."
+7. **fill_gap** — "She is _____ a cake for the party."
    **Hint**: Verbo "fazer" no -ing (drop o -e)
    **Answer**: making
    **Explanation**: Verbos terminados em -e mudo perdem o e antes de -ing: make → making, write → writing, take → taking.
@@ -172,6 +172,8 @@
    **hidden_prompt**: "user asks 'What are you doing?' or 'How about you?'"
    **hint_pt**: "What are you doing?"
    **hint_en**: "What are you doing?"
+   **example_pass**: What are you doing? | And you? | How about you?
+   **example_fail**: I'm reading (statement) | Yes (single word) | What did you do? (wrong tense (past))
 
 **Closing cue**: Charlotte encerra com "Real-time updates!" quando obj_3 baterem.
 
@@ -337,6 +339,8 @@
    **hidden_prompt**: "AFTER objs 1 e 2 met, user asks Charlotte 'How about you?' or 'What aren't you doing?'. CRITICAL: Charlotte MUST NOT ask 'how about you?' to the student — wait for student to ask back."
    **hint_pt**: "How about you?"
    **hint_en**: "How about you?"
+   **example_pass**: How about you? | And you? | What about you?
+   **example_fail**: Me too (statement) | Yes (single word) | What did you do? (wrong tense (past))
 
 **Closing cue**: Charlotte encerra com "Cool — clear scene!" quando obj_3 baterem.
 
@@ -439,6 +443,8 @@
    **hidden_prompt**: "user asks 'What are you doing?' or 'Are you + verb-ing?'"
    **hint_pt**: "What are you doing?"
    **hint_en**: "What are you doing?"
+   **example_pass**: What are you doing? | And you? | How about you?
+   **example_fail**: I'm reading (statement) | Yes (single word) | What did you do? (wrong tense (past))
 
 2. **id**: 2
    **label_pt**: "Perguntar se ela está fazendo algo específico"
@@ -446,6 +452,8 @@
    **hidden_prompt**: "user asks 'Are you + verb-ing?' with a specific verb"
    **hint_pt**: "Are you working?"
    **hint_en**: "Are you working?"
+   **example_pass**: Are you working? | And you? | How about you?
+   **example_fail**: Yes I am (statement) | Yes (single word) | What did you do? (wrong tense (past))
 
 3. **id**: 3
    **label_pt**: "Perguntar sobre alguém próximo dela"
@@ -453,6 +461,8 @@
    **hidden_prompt**: "user asks 'Is your + person + verb-ing?'"
    **hint_pt**: "Is your friend working?"
    **hint_en**: "Is your friend working?"
+   **example_pass**: Is your friend working? | And you? | How about you?
+   **example_fail**: I do that too (statement) | Yes (single word) | What did you do? (wrong tense (past))
 
 **Closing cue**: Charlotte fecha com "Great questions!" quando obj_3 baterem.
 
@@ -488,6 +498,8 @@
    **hidden_prompt**: "user asks 'What are you doing?'"
    **hint_pt**: "What are you doing?"
    **hint_en**: "What are you doing?"
+   **example_pass**: What are you doing? | And you? | How about you?
+   **example_fail**: I'm reading (statement) | Yes (single word) | What did you do? (wrong tense (past))
 
 2. **id**: 2
    **label_pt**: "Perguntar se ela está em algum lugar"
@@ -495,6 +507,8 @@
    **hidden_prompt**: "user asks 'Are you + verb-ing/at place?' or 'Where are you working?'"
    **hint_pt**: "Are you at home?"
    **hint_en**: "Are you at home?"
+   **example_pass**: Are you at home? | And you? | How about you?
+   **example_fail**: Yes I am (statement) | Yes (single word) | What did you do? (wrong tense (past))
 
 3. **id**: 3
    **label_pt**: "Perguntar sobre alguém"
@@ -502,6 +516,8 @@
    **hidden_prompt**: "user asks 'Is + person + verb-ing?'"
    **hint_pt**: "Is your sister sleeping?"
    **hint_en**: "Is your sister sleeping?"
+   **example_pass**: Is your sister sleeping? | And you? | How about you?
+   **example_fail**: I do that too (statement) | Yes (single word) | What did you do? (wrong tense (past))
 
 **Closing cue**: Charlotte encerra com "Loved your curiosity!" quando obj_3 baterem.
 
@@ -667,6 +683,8 @@
    **hidden_prompt**: "user asks 'How about you?' or 'What are you doing this week?'"
    **hint_pt**: "How about you?"
    **hint_en**: "How about you?"
+   **example_pass**: How about you? | And you? | What about you?
+   **example_fail**: Me too (statement) | Yes (single word) | What did you do? (wrong tense (past))
 
 **Closing cue**: Charlotte encerra com "Cool week ahead!" quando obj_3 baterem.
 
@@ -712,7 +730,7 @@
    **Answer**: are having
    **Explanation**: "Right now" sinaliza continuous: "We are having dinner". Present simple seria rotina diária.
 
-5. **fill_gap** — "He _____ to the gym every day."
+5. **fill_gap** — "He _____ to the gym every day after work."
    **Hint**: rotina, 3ª pessoa
    **Answer**: goes
    **Explanation**: "Every day" indica rotina → present simple. "He goes to the gym" — 3ª pessoa singular, "go" vira "goes".
@@ -832,6 +850,8 @@
    **hidden_prompt**: "user asks Charlotte for the contrast with 'How about you?' or similar"
    **hint_pt**: "How about you?"
    **hint_en**: "How about you?"
+   **example_pass**: How about you? | And you? | What about you?
+   **example_fail**: Me too (statement) | Yes (single word) | What did you do? (wrong tense (past))
 
 **Closing cue**: Charlotte encerra com "Tense mastery!" quando obj_3 baterem.
 

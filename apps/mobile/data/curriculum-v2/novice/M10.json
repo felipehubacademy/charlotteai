@@ -220,7 +220,17 @@
             "label_en": "Ask Charlotte",
             "hidden_prompt": "user asks Charlotte with 'How about you?' or 'And you?'",
             "hint_pt": "How about you?",
-            "hint_en": "How about you?"
+            "hint_en": "How about you?",
+            "examples_pass": [
+              "How about you?",
+              "And you?",
+              "What about you?"
+            ],
+            "examples_fail": [
+              "Me too (statement)",
+              "Yes (single word)",
+              "Where were you? (wrong tense (past))"
+            ]
           }
         ],
         "closing_cue": "Charlotte encerra com \"Same vibes!\" quando obj_3 baterem.",
@@ -384,7 +394,17 @@
             "label_en": "Ask Charlotte with 'any'",
             "hidden_prompt": "user asks 'Do you have any + noun?' or 'Is there any + noun?'",
             "hint_pt": "Do you have any apples?",
-            "hint_en": "Do you have any apples?"
+            "hint_en": "Do you have any apples?",
+            "examples_pass": [
+              "Do you have any apples?",
+              "And you?",
+              "How about you?"
+            ],
+            "examples_fail": [
+              "Yes I do (statement)",
+              "Yes (single word)",
+              "Where were you? (wrong tense (past))"
+            ]
           }
         ],
         "closing_cue": "Charlotte fecha com \"Got the fridge map!\" quando obj_3 baterem.",
@@ -425,7 +445,17 @@
             "label_en": "Ask Charlotte back",
             "hidden_prompt": "AFTER objs 1 e 2 met, user asks Charlotte 'Do you have any + noun?' or 'How about you?'. CRITICAL: Charlotte MUST NOT ask 'how about you?' or 'do you have any?' to the student first — wait for the student to ask back.",
             "hint_pt": "Do you have any snacks?",
-            "hint_en": "Do you have any snacks?"
+            "hint_en": "Do you have any snacks?",
+            "examples_pass": [
+              "Do you have any snacks?",
+              "And you?",
+              "How about you?"
+            ],
+            "examples_fail": [
+              "Yes I do (statement)",
+              "Yes (single word)",
+              "Where were you? (wrong tense (past))"
+            ]
           }
         ],
         "closing_cue": "Charlotte encerra com \"Snack swap!\" quando obj_3 baterem.",
@@ -573,7 +603,17 @@
             "label_en": "Ask 'how many' for countable",
             "hidden_prompt": "user asks 'How many + plural countable + are there/do you have?'",
             "hint_pt": "How many apples are there?",
-            "hint_en": "How many apples are there?"
+            "hint_en": "How many apples are there?",
+            "examples_pass": [
+              "How many apples are there?",
+              "And you?",
+              "How about you?"
+            ],
+            "examples_fail": [
+              "I have two (statement)",
+              "Yes (single word)",
+              "Where were you? (wrong tense (past))"
+            ]
           },
           {
             "id": 2,
@@ -581,7 +621,17 @@
             "label_en": "Ask 'how much' for uncountable",
             "hidden_prompt": "user asks 'How much + uncountable + do you have?'",
             "hint_pt": "How much milk do you have?",
-            "hint_en": "How much milk do you have?"
+            "hint_en": "How much milk do you have?",
+            "examples_pass": [
+              "How much milk do you have?",
+              "And you?",
+              "How about you?"
+            ],
+            "examples_fail": [
+              "It's cheap (statement)",
+              "Yes (single word)",
+              "Where were you? (wrong tense (past))"
+            ]
           },
           {
             "id": 3,
@@ -589,7 +639,17 @@
             "label_en": "Ask the price",
             "hidden_prompt": "user asks 'How much is + item?' or 'How much does it cost?'",
             "hint_pt": "How much is the coffee?",
-            "hint_en": "How much is the coffee?"
+            "hint_en": "How much is the coffee?",
+            "examples_pass": [
+              "How much is the coffee?",
+              "And you?",
+              "How about you?"
+            ],
+            "examples_fail": [
+              "It's cheap (statement)",
+              "Yes (single word)",
+              "Where were you? (wrong tense (past))"
+            ]
           }
         ],
         "closing_cue": "Charlotte fecha com \"Great shopping skills!\" quando obj_3 baterem.",
@@ -614,7 +674,17 @@
             "label_en": "Ask 'how many'",
             "hidden_prompt": "user asks 'How many + plural countable?'",
             "hint_pt": "How many eggs?",
-            "hint_en": "How many eggs?"
+            "hint_en": "How many eggs?",
+            "examples_pass": [
+              "How many eggs?",
+              "And you?",
+              "How about you?"
+            ],
+            "examples_fail": [
+              "I have two (statement)",
+              "Yes (single word)",
+              "Where were you? (wrong tense (past))"
+            ]
           },
           {
             "id": 2,
@@ -622,7 +692,17 @@
             "label_en": "Ask 'how much'",
             "hidden_prompt": "user asks 'How much + uncountable?'",
             "hint_pt": "How much bread?",
-            "hint_en": "How much bread?"
+            "hint_en": "How much bread?",
+            "examples_pass": [
+              "How much bread?",
+              "And you?",
+              "How about you?"
+            ],
+            "examples_fail": [
+              "It's cheap (statement)",
+              "Yes (single word)",
+              "Where were you? (wrong tense (past))"
+            ]
           },
           {
             "id": 3,
@@ -630,7 +710,17 @@
             "label_en": "Ask the price",
             "hidden_prompt": "user asks 'How much is + item?' or 'How much does + item + cost?'",
             "hint_pt": "How much is the cheese?",
-            "hint_en": "How much is the cheese?"
+            "hint_en": "How much is the cheese?",
+            "examples_pass": [
+              "How much is the cheese?",
+              "And you?",
+              "How about you?"
+            ],
+            "examples_fail": [
+              "It's cheap (statement)",
+              "Yes (single word)",
+              "Where were you? (wrong tense (past))"
+            ]
           }
         ],
         "closing_cue": "Charlotte encerra com \"Shopping list complete!\" quando obj_3 baterem.",
@@ -795,7 +885,17 @@
             "label_en": "Ask for the bill",
             "hidden_prompt": "user asks 'Can I have the bill, please?' or 'Could I have the check?'",
             "hint_pt": "Can I have the bill, please?",
-            "hint_en": "Can I have the bill, please?"
+            "hint_en": "Can I have the bill, please?",
+            "examples_pass": [
+              "Can I have the bill, please?",
+              "And you?",
+              "How about you?"
+            ],
+            "examples_fail": [
+              "I do that too (statement)",
+              "Yes (single word)",
+              "What will you do? (wrong tense (future))"
+            ]
           }
         ],
         "closing_cue": "Charlotte fecha com \"Coming right up!\" quando obj_3 baterem.",
@@ -836,7 +936,17 @@
             "label_en": "Ask the total",
             "hidden_prompt": "user asks total with 'How much is it?' or 'How much in total?'",
             "hint_pt": "How much is it?",
-            "hint_en": "How much is it?"
+            "hint_en": "How much is it?",
+            "examples_pass": [
+              "How much is it?",
+              "And you?",
+              "How about you?"
+            ],
+            "examples_fail": [
+              "It's cheap (statement)",
+              "Yes (single word)",
+              "What will you do? (wrong tense (future))"
+            ]
           }
         ],
         "closing_cue": "Charlotte encerra com \"Order placed!\" quando obj_3 baterem.",
@@ -992,7 +1102,17 @@
             "label_en": "Ask price with 'How much'",
             "hidden_prompt": "user asks 'How much is + item?'",
             "hint_pt": "How much is the sandwich?",
-            "hint_en": "How much is the sandwich?"
+            "hint_en": "How much is the sandwich?",
+            "examples_pass": [
+              "How much is the sandwich?",
+              "And you?",
+              "How about you?"
+            ],
+            "examples_fail": [
+              "It's cheap (statement)",
+              "Yes (single word)",
+              "What will you do? (wrong tense (future))"
+            ]
           },
           {
             "id": 3,
@@ -1000,7 +1120,17 @@
             "label_en": "Ask for the bill",
             "hidden_prompt": "user asks 'Can I have the bill?'",
             "hint_pt": "Can I have the bill, please?",
-            "hint_en": "Can I have the bill, please?"
+            "hint_en": "Can I have the bill, please?",
+            "examples_pass": [
+              "Can I have the bill, please?",
+              "And you?",
+              "How about you?"
+            ],
+            "examples_fail": [
+              "I do that too (statement)",
+              "Yes (single word)",
+              "What will you do? (wrong tense (future))"
+            ]
           }
         ],
         "closing_cue": "Charlotte fecha com \"Thanks — come again!\" quando obj_3 baterem.",
@@ -1041,7 +1171,17 @@
             "label_en": "Ask quantity or price",
             "hidden_prompt": "user asks 'How much/many + noun?' or 'How much is it?'",
             "hint_pt": "How much pasta?",
-            "hint_en": "How much pasta?"
+            "hint_en": "How much pasta?",
+            "examples_pass": [
+              "How much pasta?",
+              "And you?",
+              "How about you?"
+            ],
+            "examples_fail": [
+              "It's cheap (statement)",
+              "Yes (single word)",
+              "What will you do? (wrong tense (future))"
+            ]
           }
         ],
         "closing_cue": "Charlotte encerra com \"Bon appétit!\" quando obj_3 baterem.",

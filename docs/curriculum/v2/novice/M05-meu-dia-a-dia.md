@@ -61,7 +61,7 @@
    **Answer**: wake up
    **Explanation**: "We" usa forma base: "wake up". "Wake up" é phrasal verb — duas palavras juntas com o mesmo significado de "acordar".
 
-5. **fill_gap** — "I _____ at eleven on weekends."
+5. **fill_gap** — "I _____ at eleven on weekends because I am tired."
    **Hint**: Verbo "dormir" forma base
    **Answer**: sleep
    **Explanation**: "I sleep at eleven" = "Eu durmo às onze". Forma base do verbo com "I". "On weekends" indica padrão semanal.
@@ -226,12 +226,12 @@
    **Answer**: study
    **Explanation**: Com "you" sempre forma base: "study". -s é só pra he/she/it.
 
-5. **fill_gap** — "I _____ from nine to five."
+5. **fill_gap** — "I _____ from nine to five at my office."
    **Hint**: Verbo "trabalhar" forma base
    **Answer**: work
    **Explanation**: "I work" — forma base. "From nine to five" é expressão padrão pra horário comercial.
 
-6. **fill_gap** — "We _____ English on Mondays and Wednesdays."
+6. **fill_gap** — "We _____ English on Mondays and Wednesdays at school."
    **Hint**: Verbo "estudar"
    **Answer**: study
    **Explanation**: "We study English" — pronome plural com forma base. Sem -s.
@@ -346,6 +346,8 @@
    **hidden_prompt**: "user asks Charlotte about her work with 'how about you', 'and yours', or 'and you'"
    **hint_pt**: "How about you?"
    **hint_en**: "How about you?"
+   **example_pass**: How about you? | And you? | What about you?
+   **example_fail**: Me too (statement) | Yes (single word) | What do you do? (wrong tense (present))
 
 **Closing cue**: Charlotte encerra com "Cool! Sounds good." quando obj_3 baterem.
 
@@ -391,12 +393,12 @@
    **Answer**: have
    **Explanation**: "We have dinner" — plural com forma base. "Have dinner" = "jantar". Chunk fixo pra refeições.
 
-5. **fill_gap** — "I _____ a sandwich for lunch."
+5. **fill_gap** — "I _____ a sandwich for lunch every day."
    **Hint**: Verbo "comer"
    **Answer**: eat
    **Explanation**: "I eat a sandwich" — forma base. "Eat" = comer. "A sandwich" = chunk com artigo indefinido.
 
-6. **fill_gap** — "We _____ coffee in the morning."
+6. **fill_gap** — "We _____ coffee in the morning at the cafe."
    **Hint**: Verbo "beber"
    **Answer**: drink
    **Explanation**: "We drink coffee" — plural, forma base. "Drink" = beber.
@@ -511,6 +513,8 @@
    **hidden_prompt**: "user asks Charlotte about her food with 'how about you' or 'and you'"
    **hint_pt**: "How about you?"
    **hint_en**: "How about you?"
+   **example_pass**: How about you? | And you? | What about you?
+   **example_fail**: Me too (statement) | Yes (single word) | What did you do? (wrong tense (past))
 
 **Closing cue**: Charlotte encerra com "Nice! Food talk is the best." quando obj_3 baterem.
 
@@ -556,17 +560,17 @@
    **Answer**: go
    **Explanation**: Com "you" sempre forma base: "go". -s é só pra he/she/it.
 
-5. **fill_gap** — "I _____ to work at eight."
+5. **fill_gap** — "I _____ to work at eight every day."
    **Hint**: Verbo "ir" forma base
    **Answer**: go
    **Explanation**: "I go to work" — forma base com "I". Estrutura: "I go to + lugar + at + time".
 
-6. **fill_gap** — "We _____ home together after class."
+6. **fill_gap** — "We _____ home together after class on foot."
    **Hint**: Verbo "vir / voltar"
    **Answer**: come
    **Explanation**: "We come home" — plural, forma base. "Come home" = "voltar pra casa". Chunk fixo.
 
-7. **fill_gap** — "I _____ to the park on Sundays."
+7. **fill_gap** — "I _____ to the park on Sundays to run."
    **Hint**: Verbo "ir"
    **Answer**: go
    **Explanation**: "I go to the park" — atividade dominical. Forma base com "I".
@@ -676,6 +680,8 @@
    **hidden_prompt**: "user asks Charlotte with 'how about you', 'and you', or 'where do you go'"
    **hint_pt**: "How about you?"
    **hint_en**: "How about you?"
+   **example_pass**: How about you? | And you? | What about you?
+   **example_fail**: Me too (statement) | Yes (single word) | What do you do? (wrong tense (present))
 
 **Closing cue**: Charlotte encerra com "Nice! Lots of places to be." quando obj_3 baterem.
 
@@ -721,7 +727,7 @@
    **Answer**: never
    **Explanation**: "I prefer tea" indica que NÃO bebe café. "Never" (0%) é o adequado pra hábito que não tem.
 
-5. **fill_gap** — "I _____ have breakfast at seven."
+5. **fill_gap** — "I _____ have breakfast at seven — every single morning."
    **Hint**: Advérbio de frequência alta (100%, todas as vezes)
    **Answer**: always
    **Explanation**: "Always" = sempre, 100%. Posição: antes do verbo principal: "I always have breakfast".
@@ -1009,6 +1015,8 @@
    **hidden_prompt**: "user asks Charlotte about her favorite day or time"
    **hint_pt**: "What about you?"
    **hint_en**: "What about you?"
+   **example_pass**: What about you? | And you? | How about you?
+   **example_fail**: I do that too (statement) | Yes (single word) | Where were you? (wrong tense (past))
 
 **Closing cue**: Charlotte fecha com "Time and days, sorted!" quando obj_3 bater.
 

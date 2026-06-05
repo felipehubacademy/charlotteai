@@ -61,7 +61,7 @@
    **Answer**: Can
    **Explanation**: "Can I have...?" — pedido educado em check-in. Padrão para solicitar coisas específicas: "Can I have a window seat / aisle seat / extra blanket?".
 
-5. **fill_gap** — "I _____ my passport at the security check."
+5. **fill_gap** — "I _____ my passport at the security check — I can't find it anywhere!"
    **Hint**: passado de "lose"
    **Answer**: lost
    **Explanation**: "Lost" — passado simples de "lose". Verbo irregular: lose → lost → lost. "I lost my passport" — frase crítica para reportar perda no aeroporto.
@@ -128,6 +128,8 @@
    **hidden_prompt**: "user asks 'Where is the gate?' or 'Which gate?'"
    **hint_pt**: "Which gate is it, please?"
    **hint_en**: "Which gate is it, please?"
+   **example_pass**: Which gate is it, please? | And you? | How about you?
+   **example_fail**: This one (statement) | Yes (single word) | What will you do? (wrong tense (future))
 
 3. **id**: 3
    **label_pt**: "Reagir se houver problema (atraso)"
@@ -177,6 +179,8 @@
    **hidden_prompt**: "user asks a practical airport question"
    **hint_pt**: "How early should I arrive?"
    **hint_en**: "How early should I arrive?"
+   **example_pass**: How early should I arrive? | And you? | How about you?
+   **example_fail**: I do that too (statement) | Yes (single word) | What will you do? (wrong tense (future))
 
 3. **id**: 3
    **label_pt**: "Perguntar a Charlotte sobre ela"
@@ -184,6 +188,8 @@
    **hidden_prompt**: "user asks Charlotte about her travel experience"
    **hint_pt**: "Do you travel a lot?"
    **hint_en**: "Do you travel a lot?"
+   **example_pass**: Do you travel a lot? | And you? | How about you?
+   **example_fail**: Yes I do (statement) | Yes (single word) | What will you do? (wrong tense (future))
 
 **Closing cue**: Charlotte fecha com "You'll do great!" quando obj_3 bater.
 
@@ -297,6 +303,8 @@
    **hidden_prompt**: "user asks about included services"
    **hint_pt**: "Is breakfast included?"
    **hint_en**: "Is breakfast included?"
+   **example_pass**: Is breakfast included? | And you? | How about you?
+   **example_fail**: I do that too (statement) | Yes (single word) | What will you do? (wrong tense (future))
 
 3. **id**: 3
    **label_pt**: "Perguntar sobre check-out"
@@ -304,6 +312,8 @@
    **hidden_prompt**: "user asks 'What time is check-out?'"
    **hint_pt**: "What time is check-out tomorrow?"
    **hint_en**: "What time is check-out tomorrow?"
+   **example_pass**: What time is check-out tomorrow? | And you? | How about you?
+   **example_fail**: I do that too (statement) | Yes (single word) | What will you do? (wrong tense (future))
 
 **Closing cue**: Charlotte fecha com "Enjoy your stay!" quando obj_3 bater.
 
@@ -353,6 +363,8 @@
    **hidden_prompt**: "user asks Charlotte about her hotels"
    **hint_pt**: "What about you?"
    **hint_en**: "What about you?"
+   **example_pass**: What about you? | And you? | How about you?
+   **example_fail**: I do that too (statement) | Yes (single word) | What will you do? (wrong tense (future))
 
 **Closing cue**: Charlotte fecha com "Stories shared!" quando obj_3 bater.
 
@@ -472,6 +484,8 @@
    **hidden_prompt**: "user asks 'Is it far?' or 'How long?'"
    **hint_pt**: "Is it far from here?"
    **hint_en**: "Is it far from here?"
+   **example_pass**: Is it far from here? | And you? | How about you?
+   **example_fail**: I do that too (statement) | Yes (single word) | Where were you? (wrong tense (past))
 
 **Closing cue**: Charlotte fecha com "Hope you find it!" quando obj_3 bater.
 
@@ -521,6 +535,8 @@
    **hidden_prompt**: "user asks Charlotte about her sense of direction"
    **hint_pt**: "How about you?"
    **hint_en**: "How about you?"
+   **example_pass**: How about you? | And you? | What about you?
+   **example_fail**: Me too (statement) | Yes (single word) | Where were you? (wrong tense (past))
 
 **Closing cue**: Charlotte fecha com "We all get lost sometimes!" quando obj_3 bater.
 
@@ -566,7 +582,7 @@
    **Answer**: doctor
    **Explanation**: "Call a doctor" — chamada de socorro padrão. "Nurse" é enfermeiro; "patient" é paciente; "hospital" é o lugar.
 
-5. **fill_gap** — "I need some _____ for the pain."
+5. **fill_gap** — "I need some _____ for the pain — my head hurts so much."
    **Hint**: remédio
    **Answer**: medicine
 **Accepts**: medication
@@ -642,6 +658,8 @@
    **hidden_prompt**: "user asks 'Do you have something for...?'"
    **hint_pt**: "Do you have something for the pain?"
    **hint_en**: "Do you have something for the pain?"
+   **example_pass**: Do you have something for the pain? | And you? | How about you?
+   **example_fail**: Yes I do (statement) | Yes (single word) | Where were you? (wrong tense (past))
 
 **Closing cue**: Charlotte fecha com "Feel better soon!" quando obj_3 bater.
 
@@ -691,6 +709,8 @@
    **hidden_prompt**: "user asks Charlotte about her habits"
    **hint_pt**: "What do you do?"
    **hint_en**: "What do you do?"
+   **example_pass**: What do you do? | And you? | How about you?
+   **example_fail**: I work here (statement) | Yes (single word) | Where were you? (wrong tense (past))
 
 **Closing cue**: Charlotte fecha com "Stay healthy!" quando obj_3 bater.
 
@@ -736,12 +756,12 @@
    **Answer**: wrong
    **Explanation**: "Wrong number" — chunk fixo. "Sorry, wrong number" é o que se diz quando você ligou para o número errado. Não é "bad" ou "incorrect" no chunk.
 
-5. **fill_gap** — "Can I _____ a message?"
+5. **fill_gap** — "Can I _____ a message for him, please?"
    **Hint**: verbo para "deixar"
    **Answer**: leave
    **Explanation**: "Leave a message" — chunk fixo. "Leave" significa "deixar". Padrão para gravar recado quando a pessoa não está.
 
-6. **fill_gap** — "I'll _____ you back later."
+6. **fill_gap** — "I'll _____ you back later on the phone."
    **Hint**: phrasal verb de retorno
    **Answer**: call
    **Explanation**: "Call back" — phrasal verb para "ligar de volta". "I'll / I will call you back" — promessa fixa ao telefone.
@@ -858,6 +878,8 @@
    **hidden_prompt**: "user asks Charlotte for tips"
    **hint_pt**: "Any tips?"
    **hint_en**: "Any tips?"
+   **example_pass**: Any tips? | And you? | How about you?
+   **example_fail**: I do that too (statement) | Yes (single word) | Where were you? (wrong tense (past))
 
 **Closing cue**: Charlotte fecha com "Practice makes it easier!" quando obj_3 bater.
 

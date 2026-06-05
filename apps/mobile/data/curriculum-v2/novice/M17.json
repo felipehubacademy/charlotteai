@@ -217,7 +217,17 @@
             "label_en": "Ask Charlotte",
             "hidden_prompt": "user asks 'How about you?'",
             "hint_pt": "How about you?",
-            "hint_en": "How about you?"
+            "hint_en": "How about you?",
+            "examples_pass": [
+              "How about you?",
+              "And you?",
+              "What about you?"
+            ],
+            "examples_fail": [
+              "Me too (statement)",
+              "Yes (single word)",
+              "Where are you? (wrong tense (present))"
+            ]
           }
         ],
         "closing_cue": "Charlotte encerra com \"Same chill!\" quando obj_3 baterem.",
@@ -366,7 +376,17 @@
             "label_en": "Ask 'Did you...?'",
             "hidden_prompt": "user asks 'Did you + verb base...?'",
             "hint_pt": "Did you work?",
-            "hint_en": "Did you work?"
+            "hint_en": "Did you work?",
+            "examples_pass": [
+              "Did you work?",
+              "And you?",
+              "How about you?"
+            ],
+            "examples_fail": [
+              "Yes I did (statement)",
+              "Yes (single word)",
+              "Where are you? (wrong tense (present))"
+            ]
           },
           {
             "id": 2,
@@ -374,7 +394,17 @@
             "label_en": "Ask another 'Did you...?'",
             "hidden_prompt": "user asks another 'Did you + verb base'",
             "hint_pt": "Did you eat lunch?",
-            "hint_en": "Did you eat lunch?"
+            "hint_en": "Did you eat lunch?",
+            "examples_pass": [
+              "Did you eat lunch?",
+              "And you?",
+              "How about you?"
+            ],
+            "examples_fail": [
+              "Yes I did (statement)",
+              "Yes (single word)",
+              "Where are you? (wrong tense (present))"
+            ]
           },
           {
             "id": 3,
@@ -382,7 +412,17 @@
             "label_en": "Ask about someone (Did she/he)",
             "hidden_prompt": "user asks 'Did + 3rd person + verb base?'",
             "hint_pt": "Did your friend come?",
-            "hint_en": "Did your friend come?"
+            "hint_en": "Did your friend come?",
+            "examples_pass": [
+              "Did your friend come?",
+              "And you?",
+              "How about you?"
+            ],
+            "examples_fail": [
+              "Yes I did (statement)",
+              "Yes (single word)",
+              "Where are you? (wrong tense (present))"
+            ]
           }
         ],
         "closing_cue": "Charlotte fecha com \"Great questions!\" quando obj_3 baterem.",
@@ -415,7 +455,17 @@
             "label_en": "Ask Charlotte",
             "hidden_prompt": "user asks 'Did you + verb base?'",
             "hint_pt": "Did you travel?",
-            "hint_en": "Did you travel?"
+            "hint_en": "Did you travel?",
+            "examples_pass": [
+              "Did you travel?",
+              "And you?",
+              "How about you?"
+            ],
+            "examples_fail": [
+              "Yes I did (statement)",
+              "Yes (single word)",
+              "Where are you? (wrong tense (present))"
+            ]
           },
           {
             "id": 3,
@@ -423,7 +473,17 @@
             "label_en": "Ask another",
             "hidden_prompt": "user asks another 'Did you...?'",
             "hint_pt": "Did you cook?",
-            "hint_en": "Did you cook?"
+            "hint_en": "Did you cook?",
+            "examples_pass": [
+              "Did you cook?",
+              "And you?",
+              "How about you?"
+            ],
+            "examples_fail": [
+              "Yes I did (statement)",
+              "Yes (single word)",
+              "Where are you? (wrong tense (present))"
+            ]
           }
         ],
         "closing_cue": "Charlotte encerra com \"Lots of Qs!\" quando obj_3 baterem.",
@@ -574,7 +634,17 @@
             "label_en": "Ask 'Where did you go?'",
             "hidden_prompt": "user asks 'Where did you + verb base?'",
             "hint_pt": "Where did you go?",
-            "hint_en": "Where did you go?"
+            "hint_en": "Where did you go?",
+            "examples_pass": [
+              "Where did you go?",
+              "And you?",
+              "How about you?"
+            ],
+            "examples_fail": [
+              "I went home (statement)",
+              "Yes (single word)",
+              "Where are you? (wrong tense (present))"
+            ]
           },
           {
             "id": 2,
@@ -582,7 +652,17 @@
             "label_en": "Ask 'What did you do?'",
             "hidden_prompt": "user asks 'What did you + verb base?'",
             "hint_pt": "What did you do?",
-            "hint_en": "What did you do?"
+            "hint_en": "What did you do?",
+            "examples_pass": [
+              "What did you do?",
+              "And you?",
+              "How about you?"
+            ],
+            "examples_fail": [
+              "I went out (statement)",
+              "Yes (single word)",
+              "Where are you? (wrong tense (present))"
+            ]
           },
           {
             "id": 3,
@@ -590,7 +670,17 @@
             "label_en": "Ask when or why",
             "hidden_prompt": "user asks 'When/Why did you + verb base?'",
             "hint_pt": "When did you come back?",
-            "hint_en": "When did you come back?"
+            "hint_en": "When did you come back?",
+            "examples_pass": [
+              "When did you come back?",
+              "And you?",
+              "How about you?"
+            ],
+            "examples_fail": [
+              "Yesterday (statement)",
+              "Yes (single word)",
+              "Where are you? (wrong tense (present))"
+            ]
           }
         ],
         "closing_cue": "Charlotte fecha com \"Solid interview!\" quando obj_3 baterem.",
@@ -615,7 +705,17 @@
             "label_en": "Ask where",
             "hidden_prompt": "user asks 'Where did you go?'",
             "hint_pt": "Where did you go?",
-            "hint_en": "Where did you go?"
+            "hint_en": "Where did you go?",
+            "examples_pass": [
+              "Where did you go?",
+              "And you?",
+              "How about you?"
+            ],
+            "examples_fail": [
+              "I went home (statement)",
+              "Yes (single word)",
+              "Where are you? (wrong tense (present))"
+            ]
           },
           {
             "id": 2,
@@ -623,7 +723,17 @@
             "label_en": "Ask with whom",
             "hidden_prompt": "user asks 'Who did you go with?' or 'Who did you meet?'",
             "hint_pt": "Who did you go with?",
-            "hint_en": "Who did you go with?"
+            "hint_en": "Who did you go with?",
+            "examples_pass": [
+              "Who did you go with?",
+              "And you?",
+              "How about you?"
+            ],
+            "examples_fail": [
+              "It's me (statement)",
+              "Yes (single word)",
+              "Where are you? (wrong tense (present))"
+            ]
           },
           {
             "id": 3,
@@ -631,7 +741,17 @@
             "label_en": "Ask how long or when",
             "hidden_prompt": "user asks 'How long did you stay?' or 'When did you come back?'",
             "hint_pt": "How long did you stay?",
-            "hint_en": "How long did you stay?"
+            "hint_en": "How long did you stay?",
+            "examples_pass": [
+              "How long did you stay?",
+              "And you?",
+              "How about you?"
+            ],
+            "examples_fail": [
+              "I do that too (statement)",
+              "Yes (single word)",
+              "Where are you? (wrong tense (present))"
+            ]
           }
         ],
         "closing_cue": "Charlotte encerra com \"Cool interview!\" quando obj_3 baterem.",
@@ -834,7 +954,17 @@
             "label_en": "Ask Charlotte",
             "hidden_prompt": "user asks 'How about you?'",
             "hint_pt": "How about you?",
-            "hint_en": "How about you?"
+            "hint_en": "How about you?",
+            "examples_pass": [
+              "How about you?",
+              "And you?",
+              "What about you?"
+            ],
+            "examples_fail": [
+              "Me too (statement)",
+              "Yes (single word)",
+              "What do you do? (wrong tense (present))"
+            ]
           }
         ],
         "closing_cue": "Charlotte encerra com \"Sharing the never-list!\" quando obj_3 baterem.",
@@ -996,7 +1126,17 @@
             "label_en": "Ask Charlotte",
             "hidden_prompt": "user asks 'Did you + base?' or WH past",
             "hint_pt": "Did you have fun?",
-            "hint_en": "Did you have fun?"
+            "hint_en": "Did you have fun?",
+            "examples_pass": [
+              "Did you have fun?",
+              "And you?",
+              "How about you?"
+            ],
+            "examples_fail": [
+              "Yes I did (statement)",
+              "Yes (single word)",
+              "Where are you? (wrong tense (present))"
+            ]
           }
         ],
         "closing_cue": "Charlotte fecha com \"Past mastered!\" quando obj_3 baterem.",
@@ -1037,7 +1177,17 @@
             "label_en": "Ask Charlotte",
             "hidden_prompt": "user asks 'Did you + base?' or WH past",
             "hint_pt": "Did you go out?",
-            "hint_en": "Did you go out?"
+            "hint_en": "Did you go out?",
+            "examples_pass": [
+              "Did you go out?",
+              "And you?",
+              "How about you?"
+            ],
+            "examples_fail": [
+              "Yes I did (statement)",
+              "Yes (single word)",
+              "Where are you? (wrong tense (present))"
+            ]
           }
         ],
         "closing_cue": "Charlotte encerra com \"Past simple covered!\" quando obj_3 baterem.",

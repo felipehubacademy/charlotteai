@@ -167,6 +167,8 @@
    **hidden_prompt**: "user asks 'How about you?'"
    **hint_pt**: "How about you?"
    **hint_en**: "How about you?"
+   **example_pass**: How about you? | And you? | What about you?
+   **example_fail**: Me too (statement) | Yes (single word) | Where are you? (wrong tense (present))
 
 **Closing cue**: Charlotte encerra com "Same chill!" quando obj_3 baterem.
 
@@ -270,6 +272,8 @@
    **hidden_prompt**: "user asks 'Did you + verb base...?'"
    **hint_pt**: "Did you work?"
    **hint_en**: "Did you work?"
+   **example_pass**: Did you work? | And you? | How about you?
+   **example_fail**: Yes I did (statement) | Yes (single word) | Where are you? (wrong tense (present))
 
 2. **id**: 2
    **label_pt**: "Fazer outra pergunta com 'Did you'"
@@ -277,6 +281,8 @@
    **hidden_prompt**: "user asks another 'Did you + verb base'"
    **hint_pt**: "Did you eat lunch?"
    **hint_en**: "Did you eat lunch?"
+   **example_pass**: Did you eat lunch? | And you? | How about you?
+   **example_fail**: Yes I did (statement) | Yes (single word) | Where are you? (wrong tense (present))
 
 3. **id**: 3
    **label_pt**: "Fazer pergunta sobre alguém (Did she/he/they)"
@@ -284,6 +290,8 @@
    **hidden_prompt**: "user asks 'Did + 3rd person + verb base?'"
    **hint_pt**: "Did your friend come?"
    **hint_en**: "Did your friend come?"
+   **example_pass**: Did your friend come? | And you? | How about you?
+   **example_fail**: Yes I did (statement) | Yes (single word) | Where are you? (wrong tense (present))
 
 **Closing cue**: Charlotte fecha com "Great questions!" quando obj_3 baterem.
 
@@ -326,6 +334,8 @@
    **hidden_prompt**: "user asks 'Did you + verb base?'"
    **hint_pt**: "Did you travel?"
    **hint_en**: "Did you travel?"
+   **example_pass**: Did you travel? | And you? | How about you?
+   **example_fail**: Yes I did (statement) | Yes (single word) | Where are you? (wrong tense (present))
 
 3. **id**: 3
    **label_pt**: "Fazer outra pergunta"
@@ -333,6 +343,8 @@
    **hidden_prompt**: "user asks another 'Did you...?'"
    **hint_pt**: "Did you cook?"
    **hint_en**: "Did you cook?"
+   **example_pass**: Did you cook? | And you? | How about you?
+   **example_fail**: Yes I did (statement) | Yes (single word) | Where are you? (wrong tense (present))
 
 **Closing cue**: Charlotte encerra com "Lots of Qs!" quando obj_3 baterem.
 
@@ -436,6 +448,8 @@
    **hidden_prompt**: "user asks 'Where did you + verb base?'"
    **hint_pt**: "Where did you go?"
    **hint_en**: "Where did you go?"
+   **example_pass**: Where did you go? | And you? | How about you?
+   **example_fail**: I went home (statement) | Yes (single word) | Where are you? (wrong tense (present))
 
 2. **id**: 2
    **label_pt**: "Perguntar o que ela fez (What did)"
@@ -443,6 +457,8 @@
    **hidden_prompt**: "user asks 'What did you + verb base?'"
    **hint_pt**: "What did you do?"
    **hint_en**: "What did you do?"
+   **example_pass**: What did you do? | And you? | How about you?
+   **example_fail**: I went out (statement) | Yes (single word) | Where are you? (wrong tense (present))
 
 3. **id**: 3
    **label_pt**: "Perguntar quando ou por quê"
@@ -450,6 +466,8 @@
    **hidden_prompt**: "user asks 'When/Why did you + verb base?'"
    **hint_pt**: "When did you come back?"
    **hint_en**: "When did you come back?"
+   **example_pass**: When did you come back? | And you? | How about you?
+   **example_fail**: Yesterday (statement) | Yes (single word) | Where are you? (wrong tense (present))
 
 **Closing cue**: Charlotte fecha com "Solid interview!" quando obj_3 baterem.
 
@@ -485,6 +503,8 @@
    **hidden_prompt**: "user asks 'Where did you go?'"
    **hint_pt**: "Where did you go?"
    **hint_en**: "Where did you go?"
+   **example_pass**: Where did you go? | And you? | How about you?
+   **example_fail**: I went home (statement) | Yes (single word) | Where are you? (wrong tense (present))
 
 2. **id**: 2
    **label_pt**: "Perguntar com quem"
@@ -492,6 +512,8 @@
    **hidden_prompt**: "user asks 'Who did you go with?' or 'Who did you meet?'"
    **hint_pt**: "Who did you go with?"
    **hint_en**: "Who did you go with?"
+   **example_pass**: Who did you go with? | And you? | How about you?
+   **example_fail**: It's me (statement) | Yes (single word) | Where are you? (wrong tense (present))
 
 3. **id**: 3
    **label_pt**: "Perguntar quanto tempo ou quando"
@@ -499,6 +521,8 @@
    **hidden_prompt**: "user asks 'How long did you stay?' or 'When did you come back?'"
    **hint_pt**: "How long did you stay?"
    **hint_en**: "How long did you stay?"
+   **example_pass**: How long did you stay? | And you? | How about you?
+   **example_fail**: I do that too (statement) | Yes (single word) | Where are you? (wrong tense (present))
 
 **Closing cue**: Charlotte encerra com "Cool interview!" quando obj_3 baterem.
 
@@ -664,6 +688,8 @@
    **hidden_prompt**: "user asks 'How about you?'"
    **hint_pt**: "How about you?"
    **hint_en**: "How about you?"
+   **example_pass**: How about you? | And you? | What about you?
+   **example_fail**: Me too (statement) | Yes (single word) | What do you do? (wrong tense (present))
 
 **Closing cue**: Charlotte encerra com "Sharing the never-list!" quando obj_3 baterem.
 
@@ -780,6 +806,8 @@
    **hidden_prompt**: "user asks 'Did you + base?' or WH past"
    **hint_pt**: "Did you have fun?"
    **hint_en**: "Did you have fun?"
+   **example_pass**: Did you have fun? | And you? | How about you?
+   **example_fail**: Yes I did (statement) | Yes (single word) | Where are you? (wrong tense (present))
 
 **Closing cue**: Charlotte fecha com "Past mastered!" quando obj_3 baterem.
 
@@ -829,6 +857,8 @@
    **hidden_prompt**: "user asks 'Did you + base?' or WH past"
    **hint_pt**: "Did you go out?"
    **hint_en**: "Did you go out?"
+   **example_pass**: Did you go out? | And you? | How about you?
+   **example_fail**: Yes I did (statement) | Yes (single word) | Where are you? (wrong tense (present))
 
 **Closing cue**: Charlotte encerra com "Past simple covered!" quando obj_3 baterem.
 

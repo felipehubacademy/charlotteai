@@ -56,17 +56,17 @@
    **Answer**: watches
    **Explanation**: Verbos terminados em -ch, -sh, -ss, -x, -o levam -es: "watches", "goes", "fixes". Não é "watchs".
 
-5. **fill_gap** — "She _____ coffee in the morning."
+5. **fill_gap** — "She _____ coffee in the morning before work."
    **Hint**: Verbo "beber" na 3ª pessoa singular
    **Answer**: drinks
    **Explanation**: "She drinks" — 3ª pessoa leva -s. Drink + s = drinks.
 
-6. **fill_gap** — "Lucas _____ to school by bus."
+6. **fill_gap** — "Lucas _____ to school by bus every day."
    **Hint**: Verbo "ir" na 3ª pessoa singular
    **Answer**: goes
    **Explanation**: "Go" termina em -o, leva -es: "goes". Lucas = he, então "Lucas goes".
 
-7. **fill_gap** — "My mother _____ in a small office."
+7. **fill_gap** — "My mother _____ in a small office as a manager."
    **Hint**: Verbo "trabalhar" na 3ª pessoa
    **Answer**: works
    **Explanation**: "My mother" = she — 3ª pessoa singular. "Works" (work + s).
@@ -176,6 +176,8 @@
    **hidden_prompt**: "user asks Charlotte with 'how about you' or 'and you' or 'what do you do'"
    **hint_pt**: "How about you?"
    **hint_en**: "How about you?"
+   **example_pass**: How about you? | And you? | What about you?
+   **example_fail**: Me too (statement) | Yes (single word) | Where were you? (wrong tense (past))
 
 **Closing cue**: Charlotte encerra com "Cool family!" quando obj_3 baterem.
 
@@ -341,6 +343,8 @@
    **hidden_prompt**: "user asks Charlotte what she doesn't do with 'how about you' or 'and you'"
    **hint_pt**: "How about you?"
    **hint_en**: "How about you?"
+   **example_pass**: How about you? | And you? | What about you?
+   **example_fail**: Me too (statement) | Yes (single word) | Where were you? (wrong tense (past))
 
 **Closing cue**: Charlotte encerra com "Nice insights!" quando obj_3 baterem.
 
@@ -443,6 +447,8 @@
    **hidden_prompt**: "user asks Charlotte a yes/no question with 'Do you + verb base...?'"
    **hint_pt**: "Do you work?"
    **hint_en**: "Do you work?"
+   **example_pass**: Do you work? | And you? | How about you?
+   **example_fail**: Yes I do (statement) | Yes (single word) | Where were you? (wrong tense (past))
 
 2. **id**: 2
    **label_pt**: "Fazer outra pergunta com 'Do you...?'"
@@ -450,6 +456,8 @@
    **hidden_prompt**: "user asks another yes/no question with 'Do you + verb base'"
    **hint_pt**: "Do you drink coffee?"
    **hint_en**: "Do you drink coffee?"
+   **example_pass**: Do you drink coffee? | And you? | How about you?
+   **example_fail**: Yes I do (statement) | Yes (single word) | Where were you? (wrong tense (past))
 
 3. **id**: 3
    **label_pt**: "Fazer pergunta usando 'Does' (sobre amigo, irmão, etc.)"
@@ -457,6 +465,8 @@
    **hidden_prompt**: "user asks about someone with 'Does + 3rd person + verb base?'"
    **hint_pt**: "Does your friend speak Portuguese?"
    **hint_en**: "Does your friend speak Portuguese?"
+   **example_pass**: Does your friend speak Portuguese? | And you? | How about you?
+   **example_fail**: I do that too (statement) | Yes (single word) | Where were you? (wrong tense (past))
 
 **Closing cue**: Charlotte fecha com "Great questions!" quando obj_3 baterem.
 
@@ -492,6 +502,8 @@
    **hidden_prompt**: "user asks 'Do you + verb base...?' to Charlotte"
    **hint_pt**: "Do you work from home?"
    **hint_en**: "Do you work from home?"
+   **example_pass**: Do you work from home? | And you? | How about you?
+   **example_fail**: Yes I do (statement) | Yes (single word) | Where were you? (wrong tense (past))
 
 2. **id**: 2
    **label_pt**: "Perguntar se ela gosta de algo"
@@ -499,6 +511,8 @@
    **hidden_prompt**: "user asks 'Do you like + noun?' — accept nouns only (verb-ing comes in M08)"
    **hint_pt**: "Do you like coffee?"
    **hint_en**: "Do you like coffee?"
+   **example_pass**: Do you like coffee? | And you? | How about you?
+   **example_fail**: Yes I do (statement) | Yes (single word) | Where were you? (wrong tense (past))
 
 3. **id**: 3
    **label_pt**: "Perguntar sobre alguém na vida de Charlotte (Does)"
@@ -506,6 +520,8 @@
    **hidden_prompt**: "user asks 'Does + 3rd person + verb base?' about someone"
    **hint_pt**: "Does your friend live in São Paulo?"
    **hint_en**: "Does your friend live in São Paulo?"
+   **example_pass**: Does your friend live in São Paulo? | And you? | How about you?
+   **example_fail**: I do that too (statement) | Yes (single word) | Where were you? (wrong tense (past))
 
 **Closing cue**: Charlotte encerra com "Fun chat!" quando obj_3 baterem.
 
@@ -608,6 +624,8 @@
    **hidden_prompt**: "user asks Charlotte where she works with 'Where do you + verb base'"
    **hint_pt**: "Where do you work?"
    **hint_en**: "Where do you work?"
+   **example_pass**: Where do you work? | And you? | How about you?
+   **example_fail**: I live here (statement) | Yes (single word) | Where were you? (wrong tense (past))
 
 2. **id**: 2
    **label_pt**: "Perguntar quando ela faz algo (When do you)"
@@ -615,6 +633,8 @@
    **hidden_prompt**: "user asks when Charlotte does something with 'When do you + verb' or 'What time do you + verb'"
    **hint_pt**: "When do you have lunch?"
    **hint_en**: "When do you have lunch?"
+   **example_pass**: When do you have lunch? | And you? | How about you?
+   **example_fail**: Yesterday (statement) | Yes (single word) | Where were you? (wrong tense (past))
 
 3. **id**: 3
    **label_pt**: "Perguntar sobre alguém da vida dela (Where/What does)"
@@ -622,6 +642,8 @@
    **hidden_prompt**: "user asks about someone with WH + does + 3rd person + verb base"
    **hint_pt**: "Where does your friend live?"
    **hint_en**: "Where does your friend live?"
+   **example_pass**: Where does your friend live? | And you? | How about you?
+   **example_fail**: I do that too (statement) | Yes (single word) | Where were you? (wrong tense (past))
 
 **Closing cue**: Charlotte fecha com "Great interview!" quando obj_3 baterem.
 
@@ -657,6 +679,8 @@
    **hidden_prompt**: "user asks 'Where do you + verb' (live, work, study, eat, etc.)"
    **hint_pt**: "Where do you live?"
    **hint_en**: "Where do you live?"
+   **example_pass**: Where do you live? | And you? | How about you?
+   **example_fail**: I live here (statement) | Yes (single word) | Where were you? (wrong tense (past))
 
 2. **id**: 2
    **label_pt**: "Perguntar o que ela faz / estuda"
@@ -664,6 +688,8 @@
    **hidden_prompt**: "user asks 'What do you + verb' or 'What does + 3rd person + verb'"
    **hint_pt**: "What do you study?"
    **hint_en**: "What do you study?"
+   **example_pass**: What do you study? | And you? | How about you?
+   **example_fail**: I work here (statement) | Yes (single word) | Where were you? (wrong tense (past))
 
 3. **id**: 3
    **label_pt**: "Perguntar quando ou como"
@@ -671,6 +697,8 @@
    **hidden_prompt**: "user asks 'When do you + verb' or 'How do you + verb'"
    **hint_pt**: "When do you wake up?"
    **hint_en**: "When do you wake up?"
+   **example_pass**: When do you wake up? | And you? | How about you?
+   **example_fail**: Yesterday (statement) | Yes (single word) | Where were you? (wrong tense (past))
 
 **Closing cue**: Charlotte encerra com "Loved your questions!" quando obj_3 baterem.
 
@@ -787,6 +815,8 @@
    **hidden_prompt**: "user asks question about Charlotte's friend with 'Does + your friend + verb base?'"
    **hint_pt**: "Does your friend work too?"
    **hint_en**: "Does your friend work too?"
+   **example_pass**: Does your friend work too? | And you? | How about you?
+   **example_fail**: I do that too (statement) | Yes (single word) | Where were you? (wrong tense (past))
 
 **Closing cue**: Charlotte fecha com "Awesome storytelling!" quando obj_3 baterem.
 
@@ -836,6 +866,8 @@
    **hidden_prompt**: "user asks Charlotte about someone with 'Does your + person + verb?'"
    **hint_pt**: "Does your friend live nearby?"
    **hint_en**: "Does your friend live nearby?"
+   **example_pass**: Does your friend live nearby? | And you? | How about you?
+   **example_fail**: I do that too (statement) | Yes (single word) | Where were you? (wrong tense (past))
 
 **Closing cue**: Charlotte encerra com "Loved this chat!" quando obj_3 baterem.
 

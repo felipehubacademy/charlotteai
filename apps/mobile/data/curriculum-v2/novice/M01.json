@@ -592,9 +592,20 @@
             "id": 3,
             "label_pt": "Perguntar de onde Charlotte é",
             "label_en": "Ask where Charlotte is from",
-            "hidden_prompt": "user asks Charlotte where she's from ('where are you from', 'and you', or similar)",
+            "hidden_prompt": "user asks Charlotte where she's from, using present 'to be' question (Where are you from?) or short tag ('And you?')",
             "hint_pt": "Where are you from?",
-            "hint_en": "Where are you from?"
+            "hint_en": "Where are you from?",
+            "examples_pass": [
+              "Where are you from?",
+              "And you?",
+              "How about you?"
+            ],
+            "examples_fail": [
+              "I'm from Brazil (statement)",
+              "Yes (single word)",
+              "Where were you from? (wrong tense)",
+              "Where do you live? (off-intent)"
+            ]
           }
         ],
         "closing_cue": "Charlotte encerra com \"Awesome! Talk soon.\" quando obj_3 baterem.",
@@ -770,9 +781,20 @@
             "id": 2,
             "label_pt": "Devolver a pergunta",
             "label_en": "Ask back",
-            "hidden_prompt": "user asks Charlotte back with 'and you', 'how about you', 'how are you', or similar",
+            "hidden_prompt": "user asks Charlotte back about how she's feeling, using a tag question ('And you?', 'How about you?') or full present question ('How are you feeling?')",
             "hint_pt": "And you?",
-            "hint_en": "And you?"
+            "hint_en": "And you?",
+            "examples_pass": [
+              "And you?",
+              "How about you?",
+              "How are you feeling?"
+            ],
+            "examples_fail": [
+              "I'm tired (statement)",
+              "Yeah (single word)",
+              "And you were? (wrong tense)",
+              "What's your name? (off-intent)"
+            ]
           },
           {
             "id": 3,

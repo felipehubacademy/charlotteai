@@ -170,6 +170,8 @@
    **hidden_prompt**: "user asks 'How about you?' or 'Where were you?'"
    **hint_pt**: "How about you?"
    **hint_en**: "How about you?"
+   **example_pass**: How about you? | And you? | What about you?
+   **example_fail**: Me too (statement) | Yes (single word) | Where are you? (wrong tense (present))
 
 **Closing cue**: Charlotte encerra com "Yesterday vibes!" quando obj_3 baterem.
 
@@ -335,6 +337,8 @@
    **hidden_prompt**: "user asks 'How about you?' or 'Were you at home?'"
    **hint_pt**: "Were you home?"
    **hint_en**: "Were you home?"
+   **example_pass**: Were you home? | And you? | How about you?
+   **example_fail**: Yes I was (statement) | Yes (single word) | Where are you? (wrong tense (present))
 
 **Closing cue**: Charlotte encerra com "Yesterday's mysteries solved!" quando obj_3 baterem.
 
@@ -444,6 +448,8 @@
    **hidden_prompt**: "user asks 'How was yours?' or 'Were you busy?'"
    **hint_pt**: "How was yours?"
    **hint_en**: "How was yours?"
+   **example_pass**: How was yours? | And you? | How about you?
+   **example_fail**: It was great (statement) | Yes (single word) | Where are you? (wrong tense (present))
 
 3. **id**: 3
    **label_pt**: "Perguntar onde ela estava"
@@ -451,6 +457,8 @@
    **hidden_prompt**: "user asks 'Where were you?' or 'Where were you on Sunday?'"
    **hint_pt**: "Where were you?"
    **hint_en**: "Where were you?"
+   **example_pass**: Where were you? | And you? | How about you?
+   **example_fail**: I was at home (statement) | Yes (single word) | Where are you? (wrong tense (present))
 
 **Closing cue**: Charlotte fecha com "Loved catching up!" quando obj_3 baterem.
 
@@ -493,6 +501,8 @@
    **hidden_prompt**: "user asks 'Where were you?'"
    **hint_pt**: "Where were you?"
    **hint_en**: "Where were you?"
+   **example_pass**: Where were you? | And you? | How about you?
+   **example_fail**: I was at home (statement) | Yes (single word) | Where are you? (wrong tense (present))
 
 3. **id**: 3
    **label_pt**: "Perguntar como foi o dia/fim de semana dela"
@@ -500,6 +510,8 @@
    **hidden_prompt**: "user asks 'How was your day/weekend?'"
    **hint_pt**: "How was your weekend?"
    **hint_en**: "How was your weekend?"
+   **example_pass**: How was your weekend? | And you? | How about you?
+   **example_fail**: It was great (statement) | Yes (single word) | Where are you? (wrong tense (present))
 
 **Closing cue**: Charlotte encerra com "Weekend recap done!" quando obj_3 baterem.
 
@@ -665,6 +677,8 @@
    **hidden_prompt**: "user asks 'How about you?' or 'Where were you?'"
    **hint_pt**: "How about you?"
    **hint_en**: "How about you?"
+   **example_pass**: How about you? | And you? | What about you?
+   **example_fail**: Me too (statement) | Yes (single word) | Where are you? (wrong tense (present))
 
 **Closing cue**: Charlotte encerra com "Great timeline!" quando obj_3 baterem.
 
@@ -831,6 +845,8 @@
    **hidden_prompt**: "user asks 'How about you?' or 'Were you the same?'"
    **hint_pt**: "How about you?"
    **hint_en**: "How about you?"
+   **example_pass**: How about you? | And you? | What about you?
+   **example_fail**: Me too (statement) | Yes (single word) | Where are you? (wrong tense (present))
 
 **Closing cue**: Charlotte encerra com "Time changes us!" quando obj_3 baterem.
 

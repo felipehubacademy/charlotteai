@@ -76,21 +76,21 @@
         },
         {
           "type": "fill_gap",
-          "sentence": "I _____ my friend yesterday.",
+          "sentence": "I _____ my friend yesterday on the phone.",
           "hint": "Passado de \"call\"",
           "answer": "called",
           "explanation": "\"Called\" — call + ed. Som /d/."
         },
         {
           "type": "fill_gap",
-          "sentence": "They _____ the door.",
+          "sentence": "They _____ the door before entering the house.",
           "hint": "Passado de \"open\"",
           "answer": "opened",
           "explanation": "\"Opened\" — open + ed."
         },
         {
           "type": "fill_gap",
-          "sentence": "She _____ a lot last week.",
+          "sentence": "She _____ a lot last week for the exam.",
           "hint": "Passado de \"study\" (y → ied)",
           "answer": "studied",
           "explanation": "Verbos em -y após consoante: y → ied. \"Study\" → \"studied\"."
@@ -215,7 +215,17 @@
             "label_en": "Ask Charlotte",
             "hidden_prompt": "user asks 'How about you?' or 'What did you do?'",
             "hint_pt": "How about you?",
-            "hint_en": "How about you?"
+            "hint_en": "How about you?",
+            "examples_pass": [
+              "How about you?",
+              "And you?",
+              "What about you?"
+            ],
+            "examples_fail": [
+              "Me too (statement)",
+              "Yes (single word)",
+              "What do you do? (wrong tense (present))"
+            ]
           }
         ],
         "closing_cue": "Charlotte encerra com \"Yesterday recap done!\" quando obj_3 baterem.",
@@ -279,21 +289,21 @@
         },
         {
           "type": "fill_gap",
-          "sentence": "I _____ all morning.",
+          "sentence": "I _____ all morning after the sad movie.",
           "hint": "Passado de \"cry\" (y após consoante)",
           "answer": "cried",
           "explanation": "\"Cry\" → \"cried\" (y → ied). Mesma regra de \"try → tried\"."
         },
         {
           "type": "fill_gap",
-          "sentence": "She _____ to the store.",
+          "sentence": "She _____ to the store on foot.",
           "hint": "Passado de \"walk\"",
           "answer": "walked",
           "explanation": "\"Walk\" → \"walked\" (regular básico)."
         },
         {
           "type": "fill_gap",
-          "sentence": "They _____ a great movie.",
+          "sentence": "They _____ a great movie at the cinema.",
           "hint": "Passado de \"enjoy\"",
           "answer": "enjoyed",
           "explanation": "\"Enjoy\" → \"enjoyed\". Verbos em vogal + y mantêm y: \"enjoyed\", \"played\", \"stayed\"."
@@ -418,7 +428,17 @@
             "label_en": "Ask Charlotte",
             "hidden_prompt": "user asks 'How about you?' or 'What did you try?'",
             "hint_pt": "How about you?",
-            "hint_en": "How about you?"
+            "hint_en": "How about you?",
+            "examples_pass": [
+              "How about you?",
+              "And you?",
+              "What about you?"
+            ],
+            "examples_fail": [
+              "Me too (statement)",
+              "Yes (single word)",
+              "What do you do? (wrong tense (present))"
+            ]
           }
         ],
         "closing_cue": "Charlotte encerra com \"Spelled it right!\" quando obj_3 baterem.",
@@ -482,14 +502,14 @@
         },
         {
           "type": "fill_gap",
-          "sentence": "I _____ a great song yesterday.",
+          "sentence": "I _____ a great song yesterday on Spotify.",
           "hint": "Passado de \"discover\"",
           "answer": "discovered",
           "explanation": "\"Discover\" → \"discovered\". Regular -ed."
         },
         {
           "type": "fill_gap",
-          "sentence": "She _____ a beautiful painting.",
+          "sentence": "She _____ a beautiful painting with oil colors.",
           "hint": "Passado de \"paint\"",
           "answer": "painted",
           "explanation": "\"Paint\" → \"painted\". Pronúncia /id/ (verbos terminados em -t ou -d)."
@@ -621,7 +641,17 @@
             "label_en": "Ask Charlotte",
             "hidden_prompt": "user asks 'How about you?'",
             "hint_pt": "How about you?",
-            "hint_en": "How about you?"
+            "hint_en": "How about you?",
+            "examples_pass": [
+              "How about you?",
+              "And you?",
+              "What about you?"
+            ],
+            "examples_fail": [
+              "Me too (statement)",
+              "Yes (single word)",
+              "What do you do? (wrong tense (present))"
+            ]
           }
         ],
         "closing_cue": "Charlotte encerra com \"Past activities mapped!\" quando obj_3 baterem.",
@@ -839,7 +869,17 @@
             "label_en": "Ask Charlotte",
             "hidden_prompt": "user asks 'How about you?'",
             "hint_pt": "How about you?",
-            "hint_en": "How about you?"
+            "hint_en": "How about you?",
+            "examples_pass": [
+              "How about you?",
+              "And you?",
+              "What about you?"
+            ],
+            "examples_fail": [
+              "Me too (statement)",
+              "Yes (single word)",
+              "What do you do? (wrong tense (present))"
+            ]
           }
         ],
         "closing_cue": "Charlotte encerra com \"Weekend done!\" quando obj_3 baterem.",
@@ -903,21 +943,21 @@
         },
         {
           "type": "fill_gap",
-          "sentence": "I _____ my room yesterday.",
+          "sentence": "I _____ my room yesterday — it was so messy.",
           "hint": "Passado de \"clean\"",
           "answer": "cleaned",
           "explanation": "\"Cleaned\" — clean + ed."
         },
         {
           "type": "fill_gap",
-          "sentence": "She _____ for the test all week.",
+          "sentence": "She _____ for the test all week at the library.",
           "hint": "Passado de \"study\"",
           "answer": "studied",
           "explanation": "\"Studied\" — y → ied."
         },
         {
           "type": "fill_gap",
-          "sentence": "They _____ at the party.",
+          "sentence": "They _____ at the party two hours late.",
           "hint": "Passado de \"arrive\"",
           "answer": "arrived",
           "explanation": "\"Arrived\" — arrive + d (e mudo + d)."
@@ -1042,7 +1082,17 @@
             "label_en": "Ask Charlotte",
             "hidden_prompt": "user asks 'How about you?'",
             "hint_pt": "How about you?",
-            "hint_en": "How about you?"
+            "hint_en": "How about you?",
+            "examples_pass": [
+              "How about you?",
+              "And you?",
+              "What about you?"
+            ],
+            "examples_fail": [
+              "Me too (statement)",
+              "Yes (single word)",
+              "What do you do? (wrong tense (present))"
+            ]
           }
         ],
         "closing_cue": "Charlotte encerra com \"Yesterday on the books!\" quando obj_3 baterem.",

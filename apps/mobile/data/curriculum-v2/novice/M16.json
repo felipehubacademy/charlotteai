@@ -76,21 +76,21 @@
         },
         {
           "type": "fill_gap",
-          "sentence": "I _____ home at six.",
+          "sentence": "I _____ home at six after work.",
           "hint": "Passado de \"come\"",
           "answer": "came",
           "explanation": "\"Come\" → \"came\" (irregular). Note: pronúncia diferente (kAm vs keIm)."
         },
         {
           "type": "fill_gap",
-          "sentence": "She _____ a taxi.",
+          "sentence": "She _____ a taxi to the airport.",
           "hint": "Passado de \"take\"",
           "answer": "took",
           "explanation": "\"Take\" → \"took\" (irregular). Decorar."
         },
         {
           "type": "fill_gap",
-          "sentence": "I _____ your message.",
+          "sentence": "I _____ your message yesterday on my phone.",
           "hint": "Passado de \"get\"",
           "answer": "got",
           "explanation": "\"Get\" → \"got\" (irregular)."
@@ -215,7 +215,17 @@
             "label_en": "Ask Charlotte",
             "hidden_prompt": "user asks 'How about you?'",
             "hint_pt": "How about you?",
-            "hint_en": "How about you?"
+            "hint_en": "How about you?",
+            "examples_pass": [
+              "How about you?",
+              "And you?",
+              "What about you?"
+            ],
+            "examples_fail": [
+              "Me too (statement)",
+              "Yes (single word)",
+              "What do you do? (wrong tense (present))"
+            ]
           }
         ],
         "closing_cue": "Charlotte encerra com \"Cool story!\" quando obj_3 baterem.",
@@ -279,21 +289,21 @@
         },
         {
           "type": "fill_gap",
-          "sentence": "I _____ pizza for dinner.",
+          "sentence": "I _____ pizza for dinner with my family.",
           "hint": "Passado de \"eat\"",
           "answer": "ate",
           "explanation": "\"Eat\" → \"ate\" (irregular). Pronúncia /eIt/."
         },
         {
           "type": "fill_gap",
-          "sentence": "She _____ a lot of water.",
+          "sentence": "She _____ a lot of water after the gym.",
           "hint": "Passado de \"drink\"",
           "answer": "drank",
           "explanation": "\"Drink\" → \"drank\" (irregular)."
         },
         {
           "type": "fill_gap",
-          "sentence": "He _____ for ten hours.",
+          "sentence": "He _____ for ten hours last night.",
           "hint": "Passado de \"sleep\"",
           "answer": "slept",
           "explanation": "\"Sleep\" → \"slept\" (irregular)."
@@ -421,7 +431,17 @@
             "label_en": "Ask Charlotte",
             "hidden_prompt": "user asks 'How about you?'",
             "hint_pt": "How about you?",
-            "hint_en": "How about you?"
+            "hint_en": "How about you?",
+            "examples_pass": [
+              "How about you?",
+              "And you?",
+              "What about you?"
+            ],
+            "examples_fail": [
+              "Me too (statement)",
+              "Yes (single word)",
+              "What do you do? (wrong tense (present))"
+            ]
           }
         ],
         "closing_cue": "Charlotte encerra com \"Daily check done!\" quando obj_3 baterem.",
@@ -485,21 +505,21 @@
         },
         {
           "type": "fill_gap",
-          "sentence": "She _____ the race yesterday.",
+          "sentence": "She _____ the race yesterday — first place!",
           "hint": "Passado de \"win\"",
           "answer": "won",
           "explanation": "\"Win\" → \"won\" (irregular)."
         },
         {
           "type": "fill_gap",
-          "sentence": "I _____ you a message.",
+          "sentence": "I _____ you a message on WhatsApp.",
           "hint": "Passado de \"send\"",
           "answer": "sent",
           "explanation": "\"Send\" → \"sent\" (irregular)."
         },
         {
           "type": "fill_gap",
-          "sentence": "I _____ that book last week.",
+          "sentence": "I _____ that book last week from cover to cover.",
           "hint": "Passado de \"read\" (escrita igual, pronúncia diferente)",
           "answer": "read",
           "explanation": "\"Read\" → \"read\" — escrita IGUAL, mas pronúncia muda: /ri:d/ presente → /red/ passado."
@@ -624,7 +644,17 @@
             "label_en": "Ask Charlotte",
             "hidden_prompt": "user asks 'How about you?'",
             "hint_pt": "How about you?",
-            "hint_en": "How about you?"
+            "hint_en": "How about you?",
+            "examples_pass": [
+              "How about you?",
+              "And you?",
+              "What about you?"
+            ],
+            "examples_fail": [
+              "Me too (statement)",
+              "Yes (single word)",
+              "What do you do? (wrong tense (present))"
+            ]
           }
         ],
         "closing_cue": "Charlotte encerra com \"Lots happening!\" quando obj_3 baterem.",
@@ -688,21 +718,21 @@
         },
         {
           "type": "fill_gap",
-          "sentence": "I _____ my coat in the closet.",
+          "sentence": "I _____ my coat in the closet before dinner.",
           "hint": "Passado de \"put\" (igual)",
           "answer": "put",
           "explanation": "\"Put\" igual ao presente. Sem -ed."
         },
         {
           "type": "fill_gap",
-          "sentence": "She _____ the apple in half.",
+          "sentence": "She _____ the apple in half with a knife.",
           "hint": "Passado de \"cut\" (igual)",
           "answer": "cut",
           "explanation": "\"Cut\" igual. Mesma forma."
         },
         {
           "type": "fill_gap",
-          "sentence": "I _____ the article yesterday.",
+          "sentence": "I _____ the article yesterday in the newspaper.",
           "hint": "Passado de \"read\" — escrita igual, mas atenção à pronúncia",
           "answer": "read",
           "explanation": "\"Read\" no passado: escrita /read/, mas se pronuncia /red/. Mudança só fonética."
@@ -830,7 +860,17 @@
             "label_en": "Ask Charlotte",
             "hidden_prompt": "user asks 'How about you?'",
             "hint_pt": "How about you?",
-            "hint_en": "How about you?"
+            "hint_en": "How about you?",
+            "examples_pass": [
+              "How about you?",
+              "And you?",
+              "What about you?"
+            ],
+            "examples_fail": [
+              "Me too (statement)",
+              "Yes (single word)",
+              "What do you do? (wrong tense (present))"
+            ]
           }
         ],
         "closing_cue": "Charlotte encerra com \"Same form, different time!\" quando obj_3 baterem.",
@@ -894,21 +934,21 @@
         },
         {
           "type": "fill_gap",
-          "sentence": "I _____ a new book.",
+          "sentence": "I _____ a new book at the store.",
           "hint": "Passado de \"buy\"",
           "answer": "bought",
           "explanation": "Buy → bought."
         },
         {
           "type": "fill_gap",
-          "sentence": "She _____ home at ten.",
+          "sentence": "She _____ home at ten after the party.",
           "hint": "Passado de \"come\"",
           "answer": "came",
           "explanation": "Come → came."
         },
         {
           "type": "fill_gap",
-          "sentence": "I _____ my friend a message.",
+          "sentence": "I _____ my friend a message on WhatsApp.",
           "hint": "Passado de \"send\"",
           "answer": "sent",
           "explanation": "Send → sent."
@@ -1033,7 +1073,17 @@
             "label_en": "Ask Charlotte",
             "hidden_prompt": "user asks 'How about you?'",
             "hint_pt": "How about you?",
-            "hint_en": "How about you?"
+            "hint_en": "How about you?",
+            "examples_pass": [
+              "How about you?",
+              "And you?",
+              "What about you?"
+            ],
+            "examples_fail": [
+              "Me too (statement)",
+              "Yes (single word)",
+              "What do you do? (wrong tense (present))"
+            ]
           }
         ],
         "closing_cue": "Charlotte encerra com \"Memorable!\" quando obj_3 baterem.",

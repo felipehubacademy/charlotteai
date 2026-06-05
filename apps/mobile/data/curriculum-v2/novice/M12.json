@@ -77,21 +77,21 @@
         },
         {
           "type": "fill_gap",
-          "sentence": "She is _____ than her sister.",
+          "sentence": "She is _____ than her sister — only fifteen years old.",
           "hint": "Comparativo de \"young\"",
           "answer": "younger",
           "explanation": "\"Young\" → \"younger\" (adiciona -er regularmente)."
         },
         {
           "type": "fill_gap",
-          "sentence": "Today is _____ than yesterday.",
+          "sentence": "Today is _____ than yesterday — over thirty degrees!",
           "hint": "Comparativo de \"hot\"",
           "answer": "hotter",
           "explanation": "\"Hot\" → \"hotter\" (dobra o t). Mesma regra de \"big → bigger\"."
         },
         {
           "type": "fill_gap",
-          "sentence": "This test is _____ than the last one.",
+          "sentence": "This test is _____ than the last one — only ten questions!",
           "hint": "Comparativo de \"easy\"",
           "answer": "easier",
           "explanation": "\"Easy\" → \"easier\" (y → ier). Adjetivos em -y trocam y por -ier."
@@ -220,7 +220,17 @@
             "label_en": "Ask Charlotte",
             "hidden_prompt": "user asks Charlotte 'How about you?' or 'Which is + adj-er for you?'",
             "hint_pt": "How about you?",
-            "hint_en": "How about you?"
+            "hint_en": "How about you?",
+            "examples_pass": [
+              "How about you?",
+              "And you?",
+              "What about you?"
+            ],
+            "examples_fail": [
+              "Me too (statement)",
+              "Yes (single word)",
+              "What did you do? (off-intent)"
+            ]
           }
         ],
         "closing_cue": "Charlotte encerra com \"Same and different!\" quando obj_3 baterem.",
@@ -284,21 +294,21 @@
         },
         {
           "type": "fill_gap",
-          "sentence": "Yoga is _____ than running.",
+          "sentence": "Yoga is _____ than running — perfect for stress.",
           "hint": "Comparativo longo de \"relaxing\"",
           "answer": "more relaxing",
           "explanation": "\"Relaxing\" tem 3 sílabas → \"more relaxing\"."
         },
         {
           "type": "fill_gap",
-          "sentence": "This puzzle is _____ than the last one.",
+          "sentence": "This puzzle is _____ than the last one — it's taking hours.",
           "hint": "Comparativo longo de \"challenging\"",
           "answer": "more challenging",
           "explanation": "\"Challenging\" 3+ sílabas → \"more challenging\"."
         },
         {
           "type": "fill_gap",
-          "sentence": "She is _____ than him.",
+          "sentence": "She is _____ than him — she always solves the hardest problems.",
           "hint": "Comparativo longo de \"intelligent\"",
           "answer": "more intelligent",
           "explanation": "\"Intelligent\" 4 sílabas → \"more intelligent\". Sem -er."
@@ -423,7 +433,17 @@
             "label_en": "Ask Charlotte",
             "hidden_prompt": "user asks Charlotte 'How about you?' or 'Which is more + adj for you?'",
             "hint_pt": "How about you?",
-            "hint_en": "How about you?"
+            "hint_en": "How about you?",
+            "examples_pass": [
+              "How about you?",
+              "And you?",
+              "What about you?"
+            ],
+            "examples_fail": [
+              "Me too (statement)",
+              "Yes (single word)",
+              "What did you do? (off-intent)"
+            ]
           }
         ],
         "closing_cue": "Charlotte encerra com \"Great chat!\" quando obj_3 baterem.",
@@ -489,14 +509,14 @@
         },
         {
           "type": "fill_gap",
-          "sentence": "My car is _____ than yours.",
+          "sentence": "My car is _____ than yours — newer and faster.",
           "hint": "Irregular comparativo de \"good\"",
           "answer": "better",
           "explanation": "\"Good\" → \"better\". Memorize: good/better/best."
         },
         {
           "type": "fill_gap",
-          "sentence": "This movie is _____ than I expected.",
+          "sentence": "This movie is _____ than I expected — really boring.",
           "hint": "Irregular comparativo de \"bad\"",
           "answer": "worse",
           "explanation": "\"Bad\" → \"worse\". Memorize: bad/worse/worst."
@@ -628,7 +648,17 @@
             "label_en": "Ask Charlotte",
             "hidden_prompt": "user asks 'How about you?' or 'Better or worse?'",
             "hint_pt": "How about you?",
-            "hint_en": "How about you?"
+            "hint_en": "How about you?",
+            "examples_pass": [
+              "How about you?",
+              "And you?",
+              "What about you?"
+            ],
+            "examples_fail": [
+              "Me too (statement)",
+              "Yes (single word)",
+              "What did you do? (off-intent)"
+            ]
           }
         ],
         "closing_cue": "Charlotte encerra com \"Solid chat!\" quando obj_3 baterem.",
@@ -832,7 +862,17 @@
             "label_en": "Ask Charlotte",
             "hidden_prompt": "user asks 'How about you?' or similar",
             "hint_pt": "How about you?",
-            "hint_en": "How about you?"
+            "hint_en": "How about you?",
+            "examples_pass": [
+              "How about you?",
+              "And you?",
+              "What about you?"
+            ],
+            "examples_fail": [
+              "Me too (statement)",
+              "Yes (single word)",
+              "What did you do? (off-intent)"
+            ]
           }
         ],
         "closing_cue": "Charlotte encerra com \"Subtle observations!\" quando obj_3 baterem.",

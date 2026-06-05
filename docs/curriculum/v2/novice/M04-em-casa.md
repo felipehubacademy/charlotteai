@@ -178,6 +178,8 @@
    **hidden_prompt**: "user asks Charlotte about her house with 'how about you', 'and yours', or 'what's your house like'"
    **hint_pt**: "How about you?"
    **hint_en**: "How about you?"
+   **example_pass**: How about you? | And you? | What about you?
+   **example_fail**: Me too (statement) | Yes (single word) | Where were you? (wrong tense (past))
 
 **Closing cue**: Charlotte encerra com "Cool! Sounds nice." quando obj_3 baterem.
 
@@ -508,6 +510,8 @@
    **hidden_prompt**: "user asks Charlotte about her items with 'how about you', 'and yours', or 'have you got + items'"
    **hint_pt**: "How about you?"
    **hint_en**: "How about you?"
+   **example_pass**: How about you? | And you? | What about you?
+   **example_fail**: Me too (statement) | Yes (single word) | Where were you? (wrong tense (past))
 
 **Closing cue**: Charlotte encerra com "Cool houses we've got!" quando obj_3 baterem.
 

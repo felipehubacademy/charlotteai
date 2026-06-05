@@ -47,17 +47,17 @@
    **Answer**: cleaned
    **Explanation**: "Clean" → "cleaned". Verbo regular + ed.
 
-5. **fill_gap** — "I _____ my friend yesterday."
+5. **fill_gap** — "I _____ my friend yesterday on the phone."
    **Hint**: Passado de "call"
    **Answer**: called
    **Explanation**: "Called" — call + ed. Som /d/.
 
-6. **fill_gap** — "They _____ the door."
+6. **fill_gap** — "They _____ the door before entering the house."
    **Hint**: Passado de "open"
    **Answer**: opened
    **Explanation**: "Opened" — open + ed.
 
-7. **fill_gap** — "She _____ a lot last week."
+7. **fill_gap** — "She _____ a lot last week for the exam."
    **Hint**: Passado de "study" (y → ied)
    **Answer**: studied
    **Explanation**: Verbos em -y após consoante: y → ied. "Study" → "studied".
@@ -167,6 +167,8 @@
    **hidden_prompt**: "user asks 'How about you?' or 'What did you do?'"
    **hint_pt**: "How about you?"
    **hint_en**: "How about you?"
+   **example_pass**: How about you? | And you? | What about you?
+   **example_fail**: Me too (statement) | Yes (single word) | What do you do? (wrong tense (present))
 
 **Closing cue**: Charlotte encerra com "Yesterday recap done!" quando obj_3 baterem.
 
@@ -212,17 +214,17 @@
    **Answer**: planned
    **Explanation**: "Plan" dobra o n: "planned". Mesma regra de "stop → stopped".
 
-5. **fill_gap** — "I _____ all morning."
+5. **fill_gap** — "I _____ all morning after the sad movie."
    **Hint**: Passado de "cry" (y após consoante)
    **Answer**: cried
    **Explanation**: "Cry" → "cried" (y → ied). Mesma regra de "try → tried".
 
-6. **fill_gap** — "She _____ to the store."
+6. **fill_gap** — "She _____ to the store on foot."
    **Hint**: Passado de "walk"
    **Answer**: walked
    **Explanation**: "Walk" → "walked" (regular básico).
 
-7. **fill_gap** — "They _____ a great movie."
+7. **fill_gap** — "They _____ a great movie at the cinema."
    **Hint**: Passado de "enjoy"
    **Answer**: enjoyed
    **Explanation**: "Enjoy" → "enjoyed". Verbos em vogal + y mantêm y: "enjoyed", "played", "stayed".
@@ -332,6 +334,8 @@
    **hidden_prompt**: "user asks 'How about you?' or 'What did you try?'"
    **hint_pt**: "How about you?"
    **hint_en**: "How about you?"
+   **example_pass**: How about you? | And you? | What about you?
+   **example_fail**: Me too (statement) | Yes (single word) | What do you do? (wrong tense (present))
 
 **Closing cue**: Charlotte encerra com "Spelled it right!" quando obj_3 baterem.
 
@@ -377,12 +381,12 @@
    **Answer**: finished
    **Explanation**: "Finish" → "finished". Pronúncia /t/ (após sons surdos).
 
-5. **fill_gap** — "I _____ a great song yesterday."
+5. **fill_gap** — "I _____ a great song yesterday on Spotify."
    **Hint**: Passado de "discover"
    **Answer**: discovered
    **Explanation**: "Discover" → "discovered". Regular -ed.
 
-6. **fill_gap** — "She _____ a beautiful painting."
+6. **fill_gap** — "She _____ a beautiful painting with oil colors."
    **Hint**: Passado de "paint"
    **Answer**: painted
    **Explanation**: "Paint" → "painted". Pronúncia /id/ (verbos terminados em -t ou -d).
@@ -497,6 +501,8 @@
    **hidden_prompt**: "user asks 'How about you?'"
    **hint_pt**: "How about you?"
    **hint_en**: "How about you?"
+   **example_pass**: How about you? | And you? | What about you?
+   **example_fail**: Me too (statement) | Yes (single word) | What do you do? (wrong tense (present))
 
 **Closing cue**: Charlotte encerra com "Past activities mapped!" quando obj_3 baterem.
 
@@ -662,6 +668,8 @@
    **hidden_prompt**: "user asks 'How about you?'"
    **hint_pt**: "How about you?"
    **hint_en**: "How about you?"
+   **example_pass**: How about you? | And you? | What about you?
+   **example_fail**: Me too (statement) | Yes (single word) | What do you do? (wrong tense (present))
 
 **Closing cue**: Charlotte encerra com "Weekend done!" quando obj_3 baterem.
 
@@ -707,17 +715,17 @@
    **Answer**: locked
    **Explanation**: "Lock" → "locked". Past regular.
 
-5. **fill_gap** — "I _____ my room yesterday."
+5. **fill_gap** — "I _____ my room yesterday — it was so messy."
    **Hint**: Passado de "clean"
    **Answer**: cleaned
    **Explanation**: "Cleaned" — clean + ed.
 
-6. **fill_gap** — "She _____ for the test all week."
+6. **fill_gap** — "She _____ for the test all week at the library."
    **Hint**: Passado de "study"
    **Answer**: studied
    **Explanation**: "Studied" — y → ied.
 
-7. **fill_gap** — "They _____ at the party."
+7. **fill_gap** — "They _____ at the party two hours late."
    **Hint**: Passado de "arrive"
    **Answer**: arrived
    **Explanation**: "Arrived" — arrive + d (e mudo + d).
@@ -827,6 +835,8 @@
    **hidden_prompt**: "user asks 'How about you?'"
    **hint_pt**: "How about you?"
    **hint_en**: "How about you?"
+   **example_pass**: How about you? | And you? | What about you?
+   **example_fail**: Me too (statement) | Yes (single word) | What do you do? (wrong tense (present))
 
 **Closing cue**: Charlotte encerra com "Yesterday on the books!" quando obj_3 baterem.
 

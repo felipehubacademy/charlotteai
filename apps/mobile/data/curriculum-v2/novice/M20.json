@@ -219,7 +219,17 @@
             "label_en": "Ask Charlotte for more tips",
             "hidden_prompt": "user asks 'What should I + base?' or 'Any other tips?'",
             "hint_pt": "What should I do too?",
-            "hint_en": "What should I do too?"
+            "hint_en": "What should I do too?",
+            "examples_pass": [
+              "What should I do too?",
+              "And you?",
+              "How about you?"
+            ],
+            "examples_fail": [
+              "I do that too (statement)",
+              "Yes (single word)",
+              "What did you do? (wrong tense (past))"
+            ]
           }
         ],
         "closing_cue": "Charlotte encerra com \"Great advice exchange!\" quando obj_3 baterem.",
@@ -427,7 +437,17 @@
             "label_en": "Ask Charlotte",
             "hidden_prompt": "user asks 'How about you?'",
             "hint_pt": "How about you?",
-            "hint_en": "How about you?"
+            "hint_en": "How about you?",
+            "examples_pass": [
+              "How about you?",
+              "And you?",
+              "What about you?"
+            ],
+            "examples_fail": [
+              "Me too (statement)",
+              "Yes (single word)",
+              "Where were you? (wrong tense (past))"
+            ]
           }
         ],
         "closing_cue": "Charlotte encerra com \"Long to-do list!\" quando obj_3 baterem.",
@@ -633,7 +653,17 @@
             "label_en": "Ask Charlotte",
             "hidden_prompt": "user asks 'How about you?'",
             "hint_pt": "How about you?",
-            "hint_en": "How about you?"
+            "hint_en": "How about you?",
+            "examples_pass": [
+              "How about you?",
+              "And you?",
+              "What about you?"
+            ],
+            "examples_fail": [
+              "Me too (statement)",
+              "Yes (single word)",
+              "What did you do? (wrong tense (past))"
+            ]
           }
         ],
         "closing_cue": "Charlotte encerra com \"Weekend freedom!\" quando obj_3 baterem.",
@@ -784,7 +814,17 @@
             "label_en": "Ask for advice with 'Should I'",
             "hidden_prompt": "user asks 'Should I + base?'",
             "hint_pt": "Should I see a doctor?",
-            "hint_en": "Should I see a doctor?"
+            "hint_en": "Should I see a doctor?",
+            "examples_pass": [
+              "Should I see a doctor?",
+              "And you?",
+              "How about you?"
+            ],
+            "examples_fail": [
+              "Yes you should (statement)",
+              "Yes (single word)",
+              "What did you do? (wrong tense (past))"
+            ]
           },
           {
             "id": 2,
@@ -792,7 +832,17 @@
             "label_en": "Ask obligation with 'Do I have to'",
             "hidden_prompt": "user asks 'Do I have to + base?'",
             "hint_pt": "Do I have to bring my ID?",
-            "hint_en": "Do I have to bring my ID?"
+            "hint_en": "Do I have to bring my ID?",
+            "examples_pass": [
+              "Do I have to bring my ID?",
+              "And you?",
+              "How about you?"
+            ],
+            "examples_fail": [
+              "I do that too (statement)",
+              "Yes (single word)",
+              "What did you do? (wrong tense (past))"
+            ]
           },
           {
             "id": 3,
@@ -800,7 +850,17 @@
             "label_en": "Another should/have to Q",
             "hidden_prompt": "user asks another should or have to question",
             "hint_pt": "Should I call her?",
-            "hint_en": "Should I call her?"
+            "hint_en": "Should I call her?",
+            "examples_pass": [
+              "Should I call her?",
+              "And you?",
+              "How about you?"
+            ],
+            "examples_fail": [
+              "Yes you should (statement)",
+              "Yes (single word)",
+              "What did you do? (wrong tense (past))"
+            ]
           }
         ],
         "closing_cue": "Charlotte fecha com \"All questions covered!\" quando obj_3 baterem.",
@@ -825,7 +885,17 @@
             "label_en": "Ask advice",
             "hidden_prompt": "user asks 'Should I + base?'",
             "hint_pt": "Should I take a vacation?",
-            "hint_en": "Should I take a vacation?"
+            "hint_en": "Should I take a vacation?",
+            "examples_pass": [
+              "Should I take a vacation?",
+              "And you?",
+              "How about you?"
+            ],
+            "examples_fail": [
+              "Yes you should (statement)",
+              "Yes (single word)",
+              "What did you do? (wrong tense (past))"
+            ]
           },
           {
             "id": 2,
@@ -833,7 +903,17 @@
             "label_en": "Ask obligation",
             "hidden_prompt": "user asks 'Do I have to + base?'",
             "hint_pt": "Do I have to study every day?",
-            "hint_en": "Do I have to study every day?"
+            "hint_en": "Do I have to study every day?",
+            "examples_pass": [
+              "Do I have to study every day?",
+              "And you?",
+              "How about you?"
+            ],
+            "examples_fail": [
+              "I do that too (statement)",
+              "Yes (single word)",
+              "What did you do? (wrong tense (past))"
+            ]
           },
           {
             "id": 3,
@@ -841,7 +921,17 @@
             "label_en": "One more",
             "hidden_prompt": "user asks another should/have to question",
             "hint_pt": "Should I learn another language?",
-            "hint_en": "Should I learn another language?"
+            "hint_en": "Should I learn another language?",
+            "examples_pass": [
+              "Should I learn another language?",
+              "And you?",
+              "How about you?"
+            ],
+            "examples_fail": [
+              "Yes you should (statement)",
+              "Yes (single word)",
+              "What did you do? (wrong tense (past))"
+            ]
           }
         ],
         "closing_cue": "Charlotte encerra com \"Advisor session done!\" quando obj_3 baterem.",

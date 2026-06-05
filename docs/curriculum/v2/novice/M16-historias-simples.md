@@ -47,17 +47,17 @@
    **Answer**: made
    **Explanation**: "Make" → "made" (irregular).
 
-5. **fill_gap** — "I _____ home at six."
+5. **fill_gap** — "I _____ home at six after work."
    **Hint**: Passado de "come"
    **Answer**: came
    **Explanation**: "Come" → "came" (irregular). Note: pronúncia diferente (kAm vs keIm).
 
-6. **fill_gap** — "She _____ a taxi."
+6. **fill_gap** — "She _____ a taxi to the airport."
    **Hint**: Passado de "take"
    **Answer**: took
    **Explanation**: "Take" → "took" (irregular). Decorar.
 
-7. **fill_gap** — "I _____ your message."
+7. **fill_gap** — "I _____ your message yesterday on my phone."
    **Hint**: Passado de "get"
    **Answer**: got
    **Explanation**: "Get" → "got" (irregular).
@@ -167,6 +167,8 @@
    **hidden_prompt**: "user asks 'How about you?'"
    **hint_pt**: "How about you?"
    **hint_en**: "How about you?"
+   **example_pass**: How about you? | And you? | What about you?
+   **example_fail**: Me too (statement) | Yes (single word) | What do you do? (wrong tense (present))
 
 **Closing cue**: Charlotte encerra com "Cool story!" quando obj_3 baterem.
 
@@ -212,17 +214,17 @@
    **Answer**: found
    **Explanation**: "Find" → "found" (irregular).
 
-5. **fill_gap** — "I _____ pizza for dinner."
+5. **fill_gap** — "I _____ pizza for dinner with my family."
    **Hint**: Passado de "eat"
    **Answer**: ate
    **Explanation**: "Eat" → "ate" (irregular). Pronúncia /eIt/.
 
-6. **fill_gap** — "She _____ a lot of water."
+6. **fill_gap** — "She _____ a lot of water after the gym."
    **Hint**: Passado de "drink"
    **Answer**: drank
    **Explanation**: "Drink" → "drank" (irregular).
 
-7. **fill_gap** — "He _____ for ten hours."
+7. **fill_gap** — "He _____ for ten hours last night."
    **Hint**: Passado de "sleep"
    **Answer**: slept
    **Explanation**: "Sleep" → "slept" (irregular).
@@ -333,6 +335,8 @@
    **hidden_prompt**: "user asks 'How about you?'"
    **hint_pt**: "How about you?"
    **hint_en**: "How about you?"
+   **example_pass**: How about you? | And you? | What about you?
+   **example_fail**: Me too (statement) | Yes (single word) | What do you do? (wrong tense (present))
 
 **Closing cue**: Charlotte encerra com "Daily check done!" quando obj_3 baterem.
 
@@ -378,17 +382,17 @@
    **Answer**: lost
    **Explanation**: "Lose" → "lost" (irregular). Note: "loose" é adjetivo.
 
-5. **fill_gap** — "She _____ the race yesterday."
+5. **fill_gap** — "She _____ the race yesterday — first place!"
    **Hint**: Passado de "win"
    **Answer**: won
    **Explanation**: "Win" → "won" (irregular).
 
-6. **fill_gap** — "I _____ you a message."
+6. **fill_gap** — "I _____ you a message on WhatsApp."
    **Hint**: Passado de "send"
    **Answer**: sent
    **Explanation**: "Send" → "sent" (irregular).
 
-7. **fill_gap** — "I _____ that book last week."
+7. **fill_gap** — "I _____ that book last week from cover to cover."
    **Hint**: Passado de "read" (escrita igual, pronúncia diferente)
    **Answer**: read
    **Explanation**: "Read" → "read" — escrita IGUAL, mas pronúncia muda: /ri:d/ presente → /red/ passado.
@@ -498,6 +502,8 @@
    **hidden_prompt**: "user asks 'How about you?'"
    **hint_pt**: "How about you?"
    **hint_en**: "How about you?"
+   **example_pass**: How about you? | And you? | What about you?
+   **example_fail**: Me too (statement) | Yes (single word) | What do you do? (wrong tense (present))
 
 **Closing cue**: Charlotte encerra com "Lots happening!" quando obj_3 baterem.
 
@@ -543,17 +549,17 @@
    **Answer**: read
    **Explanation**: "Read" → "read" — IGUAL na escrita, MAS pronúncia muda: /red/ no passado.
 
-5. **fill_gap** — "I _____ my coat in the closet."
+5. **fill_gap** — "I _____ my coat in the closet before dinner."
    **Hint**: Passado de "put" (igual)
    **Answer**: put
    **Explanation**: "Put" igual ao presente. Sem -ed.
 
-6. **fill_gap** — "She _____ the apple in half."
+6. **fill_gap** — "She _____ the apple in half with a knife."
    **Hint**: Passado de "cut" (igual)
    **Answer**: cut
    **Explanation**: "Cut" igual. Mesma forma.
 
-7. **fill_gap** — "I _____ the article yesterday."
+7. **fill_gap** — "I _____ the article yesterday in the newspaper."
    **Hint**: Passado de "read" — escrita igual, mas atenção à pronúncia
    **Answer**: read
    **Explanation**: "Read" no passado: escrita /read/, mas se pronuncia /red/. Mudança só fonética.
@@ -664,6 +670,8 @@
    **hidden_prompt**: "user asks 'How about you?'"
    **hint_pt**: "How about you?"
    **hint_en**: "How about you?"
+   **example_pass**: How about you? | And you? | What about you?
+   **example_fail**: Me too (statement) | Yes (single word) | What do you do? (wrong tense (present))
 
 **Closing cue**: Charlotte encerra com "Same form, different time!" quando obj_3 baterem.
 
@@ -709,17 +717,17 @@
    **Answer**: had
    **Explanation**: Have → had.
 
-5. **fill_gap** — "I _____ a new book."
+5. **fill_gap** — "I _____ a new book at the store."
    **Hint**: Passado de "buy"
    **Answer**: bought
    **Explanation**: Buy → bought.
 
-6. **fill_gap** — "She _____ home at ten."
+6. **fill_gap** — "She _____ home at ten after the party."
    **Hint**: Passado de "come"
    **Answer**: came
    **Explanation**: Come → came.
 
-7. **fill_gap** — "I _____ my friend a message."
+7. **fill_gap** — "I _____ my friend a message on WhatsApp."
    **Hint**: Passado de "send"
    **Answer**: sent
    **Explanation**: Send → sent.
@@ -829,6 +837,8 @@
    **hidden_prompt**: "user asks 'How about you?'"
    **hint_pt**: "How about you?"
    **hint_en**: "How about you?"
+   **example_pass**: How about you? | And you? | What about you?
+   **example_fail**: Me too (statement) | Yes (single word) | What do you do? (wrong tense (present))
 
 **Closing cue**: Charlotte encerra com "Memorable!" quando obj_3 baterem.
 

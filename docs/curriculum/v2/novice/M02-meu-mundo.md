@@ -434,6 +434,7 @@ Charlotte fala via ElevenLabs (Rachel). Aluno repete; Azure Speech avalia pronú
    **hidden_prompt**: "user asks Charlotte's origin, using present 'to be' question (Where are you from?) or short tag ('And you?')"
    **hint_pt**: "Where are you from?"
    **hint_en**: "Where are you from?"
+   
    **example_pass**: Where are you from? | And you? | How about you?
    **example_fail**: I'm from Brazil (statement) | Yes (single word) | Where were you from? (wrong tense) | What's your name? (off-intent)
 
@@ -476,6 +477,7 @@ Charlotte fala via ElevenLabs (Rachel). Aluno repete; Azure Speech avalia pronú
    **hidden_prompt**: "user asks Charlotte where she's from, using present 'to be' question (Where are you from?) or short tag ('And you?')"
    **hint_pt**: "Where are you from?"
    **hint_en**: "Where are you from?"
+   
    **example_pass**: Where are you from? | And you? | How about you?
    **example_fail**: I'm from Brazil (statement) | Yes (single word) | Where were you from? (wrong tense) | What's your name? (off-intent)
 
@@ -641,6 +643,7 @@ Charlotte fala via ElevenLabs (Rachel). Aluno repete; Azure Speech avalia pronú
    **hidden_prompt**: "user asks Charlotte's nationality, using present 'to be' question ('Are you + nationality?' or 'What's your nationality?') or short tag ('And you?')"
    **hint_pt**: "Are you American?"
    **hint_en**: "Are you American?"
+   
    **example_pass**: Are you American? | What's your nationality? | And you?
    **example_fail**: I'm Brazilian (statement) | Yes (single word) | Were you American? (wrong tense) | Where do you live? (off-intent)
 

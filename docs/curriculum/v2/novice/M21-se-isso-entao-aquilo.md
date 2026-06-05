@@ -167,6 +167,8 @@
    **hidden_prompt**: "user asks 'What will you do if...?'"
    **hint_pt**: "What will you do if it rains?"
    **hint_en**: "What will you do if it rains?"
+   **example_pass**: What will you do if it rains? | And you? | How about you?
+   **example_fail**: I'll travel (statement) | Yes (single word) | Where were you? (wrong tense (past))
 
 **Closing cue**: Charlotte encerra com "Plan B ready!" quando obj_3 baterem.
 
@@ -332,6 +334,8 @@
    **hidden_prompt**: "user asks Charlotte 'What will you do if...?'"
    **hint_pt**: "What will you do if it rains?"
    **hint_en**: "What will you do if it rains?"
+   **example_pass**: What will you do if it rains? | And you? | How about you?
+   **example_fail**: I'll travel (statement) | Yes (single word) | Where were you? (wrong tense (past))
 
 **Closing cue**: Charlotte encerra com "Flexible weekend!" quando obj_3 baterem.
 
@@ -498,6 +502,8 @@
    **hidden_prompt**: "user asks 'What will you do if I...?'"
    **hint_pt**: "What will you do if I'm late?"
    **hint_en**: "What will you do if I'm late?"
+   **example_pass**: What will you do if I'm late? | And you? | How about you?
+   **example_fail**: I'll travel (statement) | Yes (single word) | Where were you? (wrong tense (past))
 
 **Closing cue**: Charlotte encerra com "Real friendship!" quando obj_3 baterem.
 
@@ -664,6 +670,8 @@
    **hidden_prompt**: "user asks Charlotte 'What will you do if...?'"
    **hint_pt**: "Will you come unless it's late?"
    **hint_en**: "Will you come unless it's late?"
+   **example_pass**: Will you come unless it's late? | And you? | How about you?
+   **example_fail**: Yes I will (statement) | Yes (single word) | What did you do? (wrong tense (past))
 
 **Closing cue**: Charlotte encerra com "Plans set!" quando obj_3 baterem.
 
@@ -781,6 +789,8 @@
    **hidden_prompt**: "user asks 'What will you do if...?'"
    **hint_pt**: "What will you do if it rains?"
    **hint_en**: "What will you do if it rains?"
+   **example_pass**: What will you do if it rains? | And you? | How about you?
+   **example_fail**: I'll travel (statement) | Yes (single word) | Where were you? (wrong tense (past))
 
 **Closing cue**: Charlotte fecha com "Conditional master!" quando obj_3 baterem.
 
@@ -830,6 +840,8 @@
    **hidden_prompt**: "user asks 'What will you do if...?'"
    **hint_pt**: "What will you do this weekend?"
    **hint_en**: "What will you do this weekend?"
+   **example_pass**: What will you do this weekend? | And you? | How about you?
+   **example_fail**: I'll travel (statement) | Yes (single word) | Where were you? (wrong tense (past))
 
 **Closing cue**: Charlotte encerra com "Week planned!" quando obj_3 baterem.
 

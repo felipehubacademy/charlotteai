@@ -167,6 +167,8 @@
    **hidden_prompt**: "user asks 'How about you?' or 'What are you going to do?'"
    **hint_pt**: "How about you?"
    **hint_en**: "How about you?"
+   **example_pass**: How about you? | And you? | What about you?
+   **example_fail**: Me too (statement) | Yes (single word) | What did you do? (wrong tense (past))
 
 **Closing cue**: Charlotte encerra com "Sounds great!" quando obj_3 baterem.
 
@@ -333,6 +335,8 @@
    **hidden_prompt**: "user asks 'How about you?'"
    **hint_pt**: "How about you?"
    **hint_en**: "How about you?"
+   **example_pass**: How about you? | And you? | What about you?
+   **example_fail**: Me too (statement) | Yes (single word) | What did you do? (wrong tense (past))
 
 **Closing cue**: Charlotte encerra com "Anti-plans set!" quando obj_3 baterem.
 
@@ -436,6 +440,8 @@
    **hidden_prompt**: "user asks 'Are you going to + verb base?'"
    **hint_pt**: "Are you going to travel?"
    **hint_en**: "Are you going to travel?"
+   **example_pass**: Are you going to travel? | And you? | How about you?
+   **example_fail**: Yes I am (statement) | Yes (single word) | What did you do? (wrong tense (past))
 
 2. **id**: 2
    **label_pt**: "Outra pergunta com 'Are you going to'"
@@ -443,6 +449,8 @@
    **hidden_prompt**: "user asks another 'Are you going to + base?'"
    **hint_pt**: "Are you going to study?"
    **hint_en**: "Are you going to study?"
+   **example_pass**: Are you going to study? | And you? | How about you?
+   **example_fail**: Yes I am (statement) | Yes (single word) | What did you do? (wrong tense (past))
 
 3. **id**: 3
    **label_pt**: "WH pergunta com going to"
@@ -450,6 +458,8 @@
    **hidden_prompt**: "user asks WH + 'are you going to + base?'"
    **hint_pt**: "What are you going to do?"
    **hint_en**: "What are you going to do?"
+   **example_pass**: What are you going to do? | And you? | How about you?
+   **example_fail**: I'm reading (statement) | Yes (single word) | What did you do? (wrong tense (past))
 
 **Closing cue**: Charlotte fecha com "Curious mind!" quando obj_3 baterem.
 
@@ -485,6 +495,8 @@
    **hidden_prompt**: "user asks 'Are you going to + verb base?'"
    **hint_pt**: "Are you going to travel?"
    **hint_en**: "Are you going to travel?"
+   **example_pass**: Are you going to travel? | And you? | How about you?
+   **example_fail**: Yes I am (statement) | Yes (single word) | What did you do? (wrong tense (past))
 
 2. **id**: 2
    **label_pt**: "Outra pergunta"
@@ -492,6 +504,8 @@
    **hidden_prompt**: "user asks another going to question"
    **hint_pt**: "Are you going to study?"
    **hint_en**: "Are you going to study?"
+   **example_pass**: Are you going to study? | And you? | How about you?
+   **example_fail**: Yes I am (statement) | Yes (single word) | What did you do? (wrong tense (past))
 
 3. **id**: 3
    **label_pt**: "WH pergunta"
@@ -499,6 +513,8 @@
    **hidden_prompt**: "user asks WH + going to"
    **hint_pt**: "Where are you going to go?"
    **hint_en**: "Where are you going to go?"
+   **example_pass**: Where are you going to go? | And you? | How about you?
+   **example_fail**: I do that too (statement) | Yes (single word) | What did you do? (wrong tense (past))
 
 **Closing cue**: Charlotte encerra com "Plan reveal complete!" quando obj_3 baterem.
 
@@ -664,6 +680,8 @@
    **hidden_prompt**: "user asks 'How about you?'"
    **hint_pt**: "How about you?"
    **hint_en**: "How about you?"
+   **example_pass**: How about you? | And you? | What about you?
+   **example_fail**: Me too (statement) | Yes (single word) | What do you do? (wrong tense (present))
 
 **Closing cue**: Charlotte encerra com "Calendar synced!" quando obj_3 baterem.
 
@@ -781,6 +799,8 @@
    **hidden_prompt**: "user asks 'Are you going to + base?' or WH"
    **hint_pt**: "Are you going to travel?"
    **hint_en**: "Are you going to travel?"
+   **example_pass**: Are you going to travel? | And you? | How about you?
+   **example_fail**: Yes I am (statement) | Yes (single word) | What did you do? (wrong tense (past))
 
 **Closing cue**: Charlotte fecha com "Future mapped!" quando obj_3 baterem.
 
@@ -830,6 +850,8 @@
    **hidden_prompt**: "user asks 'How about you?'"
    **hint_pt**: "How about you?"
    **hint_en**: "How about you?"
+   **example_pass**: How about you? | And you? | What about you?
+   **example_fail**: Me too (statement) | Yes (single word) | What did you do? (wrong tense (past))
 
 **Closing cue**: Charlotte encerra com "Solid month ahead!" quando obj_3 baterem.
 
@@ -944,6 +966,8 @@
    **hidden_prompt**: "user asks 'What are you doing?' or 'Could you repeat?'"
    **hint_pt**: "What are you doing later?"
    **hint_en**: "What are you doing later?"
+   **example_pass**: What are you doing later? | And you? | How about you?
+   **example_fail**: I'm reading (statement) | Yes (single word) | What did you do? (wrong tense (past))
 
 3. **id**: 3
    **label_pt**: "Falar plano com 'I'm going to'"
@@ -1000,6 +1024,8 @@
    **hidden_prompt**: "user asks Charlotte more"
    **hint_pt**: "What time are you going to start?"
    **hint_en**: "What time are you going to start?"
+   **example_pass**: What time are you going to start? | And you? | How about you?
+   **example_fail**: I do that too (statement) | Yes (single word) | What did you do? (wrong tense (past))
 
 **Closing cue**: Charlotte fecha com "OK, see ya tomorrow!" quando obj_3 bater.
 

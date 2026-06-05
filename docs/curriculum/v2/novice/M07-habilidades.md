@@ -172,6 +172,8 @@
    **hidden_prompt**: "user asks 'What can you do?' or 'How about you?' or 'Can you + verb?'"
    **hint_pt**: "What can you do?"
    **hint_en**: "What can you do?"
+   **example_pass**: What can you do? | And you? | How about you?
+   **example_fail**: I do that too (statement) | Yes (single word) | What did you do? (wrong tense (past))
 
 **Closing cue**: Charlotte encerra com "We've got skills!" quando obj_3 baterem.
 
@@ -217,7 +219,7 @@
    **Answer**: can't
    **Explanation**: "He can't / cannot cook at all" = "Ele não sabe cozinhar nada". "At all" intensifica a negação.
 
-5. **fill_gap** — "I _____ ride a bike."
+5. **fill_gap** — "I _____ ride a bike — I never learned."
    **Hint**: Negativa de can
    **Answer**: can't
    **Explanation**: "I can't / cannot ride a bike" = "Não sei andar de bicicleta". Forma contraída de "cannot".
@@ -227,7 +229,7 @@
    **Answer**: can't
    **Explanation**: "My father can't / cannot sing" — mesmo na 3ª pessoa singular, can't.
 
-7. **fill_gap** — "Sorry, I _____ help you right now."
+7. **fill_gap** — "Sorry, I _____ help you right now — I'm too busy."
    **Hint**: Negativa polida com can
    **Answer**: can't
    **Explanation**: "I can't / cannot help" — usado pra recusar polidamente. Comum em contextos sociais.
@@ -338,6 +340,8 @@
    **hidden_prompt**: "user asks 'What can't you do?' or 'How about you?'"
    **hint_pt**: "How about you?"
    **hint_en**: "How about you?"
+   **example_pass**: How about you? | And you? | What about you?
+   **example_fail**: Me too (statement) | Yes (single word) | What did you do? (wrong tense (past))
 
 **Closing cue**: Charlotte encerra com "Same boat!" quando obj_3 baterem.
 
@@ -440,6 +444,8 @@
    **hidden_prompt**: "user asks 'Can you + verb base?' to Charlotte"
    **hint_pt**: "Can you swim?"
    **hint_en**: "Can you swim?"
+   **example_pass**: Can you swim? | And you? | How about you?
+   **example_fail**: Yes I can (statement) | Yes (single word) | What did you do? (wrong tense (past))
 
 2. **id**: 2
    **label_pt**: "Perguntar outra habilidade"
@@ -447,6 +453,8 @@
    **hidden_prompt**: "user asks another 'Can you + verb base?'"
    **hint_pt**: "Can you cook?"
    **hint_en**: "Can you cook?"
+   **example_pass**: Can you cook? | And you? | How about you?
+   **example_fail**: Yes I can (statement) | Yes (single word) | What did you do? (wrong tense (past))
 
 3. **id**: 3
    **label_pt**: "Perguntar sobre habilidade de outra pessoa (Can she/he...?)"
@@ -454,6 +462,8 @@
    **hidden_prompt**: "user asks 'Can + 3rd person + verb base?'"
    **hint_pt**: "Can your friend dance?"
    **hint_en**: "Can your friend dance?"
+   **example_pass**: Can your friend dance? | And you? | How about you?
+   **example_fail**: Yes I can (statement) | Yes (single word) | What did you do? (wrong tense (past))
 
 **Closing cue**: Charlotte fecha com "Fun quiz!" quando obj_3 baterem.
 
@@ -489,6 +499,8 @@
    **hidden_prompt**: "user asks 'Can you + verb base?'"
    **hint_pt**: "Can you sing?"
    **hint_en**: "Can you sing?"
+   **example_pass**: Can you sing? | And you? | How about you?
+   **example_fail**: Yes I can (statement) | Yes (single word) | What did you do? (wrong tense (past))
 
 2. **id**: 2
    **label_pt**: "Perguntar idiomas"
@@ -496,6 +508,8 @@
    **hidden_prompt**: "user asks 'Can you speak + language?'"
    **hint_pt**: "Can you speak Spanish?"
    **hint_en**: "Can you speak Spanish?"
+   **example_pass**: Can you speak Spanish? | And you? | How about you?
+   **example_fail**: Yes I can (statement) | Yes (single word) | What did you do? (wrong tense (past))
 
 3. **id**: 3
    **label_pt**: "Perguntar sobre alguém de Charlotte"
@@ -503,6 +517,8 @@
    **hidden_prompt**: "user asks 'Can + 3rd person + verb base?'"
    **hint_pt**: "Can your sister cook?"
    **hint_en**: "Can your sister cook?"
+   **example_pass**: Can your sister cook? | And you? | How about you?
+   **example_fail**: Yes I can (statement) | Yes (single word) | What did you do? (wrong tense (past))
 
 **Closing cue**: Charlotte encerra com "Loved the quiz!" quando obj_3 baterem.
 
@@ -670,6 +686,8 @@
    **hidden_prompt**: "user asks Charlotte 'Can you + verb' or 'What can you do?' or 'How about you?'"
    **hint_pt**: "How about you?"
    **hint_en**: "How about you?"
+   **example_pass**: How about you? | And you? | What about you?
+   **example_fail**: Me too (statement) | Yes (single word) | What did you do? (wrong tense (past))
 
 **Closing cue**: Charlotte encerra com "Awesome skills!" quando obj_3 baterem.
 
@@ -715,7 +733,7 @@
    **Answer**: can
    **Explanation**: "He can play" — modal can igual em todas as pessoas, verbo base.
 
-5. **fill_gap** — "I _____ drive yet."
+5. **fill_gap** — "I _____ drive yet — I'm only fifteen."
    **Hint**: Negativa de can
    **Answer**: can't
    **Explanation**: "I can't / cannot drive yet" = "Ainda não sei dirigir". "Yet" indica que vai aprender no futuro.
@@ -786,6 +804,8 @@
    **hidden_prompt**: "user asks 'Can you + verb base?' to Charlotte"
    **hint_pt**: "Can you sing?"
    **hint_en**: "Can you sing?"
+   **example_pass**: Can you sing? | And you? | How about you?
+   **example_fail**: Yes I can (statement) | Yes (single word) | Where were you? (wrong tense (past))
 
 **Closing cue**: Charlotte fecha com "What a portrait!" quando obj_3 baterem.
 
@@ -835,6 +855,8 @@
    **hidden_prompt**: "user asks 'Can you + verb?' to Charlotte"
    **hint_pt**: "Can you cook?"
    **hint_en**: "Can you cook?"
+   **example_pass**: Can you cook? | And you? | How about you?
+   **example_fail**: Yes I can (statement) | Yes (single word) | Where were you? (wrong tense (past))
 
 **Closing cue**: Charlotte encerra com "Skill swap complete!" quando obj_3 baterem.
 

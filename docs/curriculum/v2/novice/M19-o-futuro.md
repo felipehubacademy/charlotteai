@@ -176,6 +176,8 @@
    **hidden_prompt**: "user asks 'How about you?'"
    **hint_pt**: "How about you?"
    **hint_en**: "How about you?"
+   **example_pass**: How about you? | And you? | What about you?
+   **example_fail**: Me too (statement) | Yes (single word) | What did you do? (wrong tense (past))
 
 **Closing cue**: Charlotte encerra com "Future glimpsed!" quando obj_3 baterem.
 
@@ -517,6 +519,8 @@
    **hidden_prompt**: "user asks 'How about you?'"
    **hint_pt**: "How about you?"
    **hint_en**: "How about you?"
+   **example_pass**: How about you? | And you? | What about you?
+   **example_fail**: Me too (statement) | Yes (single word) | What did you do? (wrong tense (past))
 
 **Closing cue**: Charlotte encerra com "Two-tense mastery!" quando obj_3 baterem.
 
@@ -636,6 +640,8 @@
    **hidden_prompt**: "user asks 'Will you + base?'"
    **hint_pt**: "Will you bring snacks?"
    **hint_en**: "Will you bring snacks?"
+   **example_pass**: Will you bring snacks? | And you? | How about you?
+   **example_fail**: Yes I will (statement) | Yes (single word) | What did you do? (wrong tense (past))
 
 **Closing cue**: Charlotte fecha com "Teamwork!" quando obj_3 baterem.
 
@@ -685,6 +691,8 @@
    **hidden_prompt**: "user asks 'Will you + base?' or 'What else?'"
    **hint_pt**: "Will you need help setting up?"
    **hint_en**: "Will you need help setting up?"
+   **example_pass**: Will you need help setting up? | And you? | How about you?
+   **example_fail**: Yes I will (statement) | Yes (single word) | What did you do? (wrong tense (past))
 
 **Closing cue**: Charlotte encerra com "Best friend!" quando obj_3 baterem.
 
@@ -855,6 +863,8 @@
    **hidden_prompt**: "user asks 'How about you?'"
    **hint_pt**: "How about you?"
    **hint_en**: "How about you?"
+   **example_pass**: How about you? | And you? | What about you?
+   **example_fail**: Me too (statement) | Yes (single word) | What did you do? (wrong tense (past))
 
 **Closing cue**: Charlotte encerra com "Future mapped!" quando obj_3 baterem.
 
@@ -1022,6 +1032,8 @@
    **hidden_prompt**: "user asks Charlotte"
    **hint_pt**: "What about you?"
    **hint_en**: "What about you?"
+   **example_pass**: What about you? | And you? | How about you?
+   **example_fail**: I do that too (statement) | Yes (single word) | What did you do? (wrong tense (past))
 
 **Closing cue**: Charlotte fecha com "Weather preferences shared!" quando obj_3 bater.
 

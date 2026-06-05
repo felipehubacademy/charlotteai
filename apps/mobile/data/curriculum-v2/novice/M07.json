@@ -218,7 +218,17 @@
             "label_en": "Ask Charlotte what she can do",
             "hidden_prompt": "user asks 'What can you do?' or 'How about you?' or 'Can you + verb?'",
             "hint_pt": "What can you do?",
-            "hint_en": "What can you do?"
+            "hint_en": "What can you do?",
+            "examples_pass": [
+              "What can you do?",
+              "And you?",
+              "How about you?"
+            ],
+            "examples_fail": [
+              "I do that too (statement)",
+              "Yes (single word)",
+              "What did you do? (wrong tense (past))"
+            ]
           }
         ],
         "closing_cue": "Charlotte encerra com \"We've got skills!\" quando obj_3 baterem.",
@@ -282,7 +292,7 @@
         },
         {
           "type": "fill_gap",
-          "sentence": "I _____ ride a bike.",
+          "sentence": "I _____ ride a bike — I never learned.",
           "hint": "Negativa de can",
           "answer": "can't",
           "explanation": "\"I can't / cannot ride a bike\" = \"Não sei andar de bicicleta\". Forma contraída de \"cannot\"."
@@ -296,7 +306,7 @@
         },
         {
           "type": "fill_gap",
-          "sentence": "Sorry, I _____ help you right now.",
+          "sentence": "Sorry, I _____ help you right now — I'm too busy.",
           "hint": "Negativa polida com can",
           "answer": "can't",
           "explanation": "\"I can't / cannot help\" — usado pra recusar polidamente. Comum em contextos sociais."
@@ -424,7 +434,17 @@
             "label_en": "Ask Charlotte",
             "hidden_prompt": "user asks 'What can't you do?' or 'How about you?'",
             "hint_pt": "How about you?",
-            "hint_en": "How about you?"
+            "hint_en": "How about you?",
+            "examples_pass": [
+              "How about you?",
+              "And you?",
+              "What about you?"
+            ],
+            "examples_fail": [
+              "Me too (statement)",
+              "Yes (single word)",
+              "What did you do? (wrong tense (past))"
+            ]
           }
         ],
         "closing_cue": "Charlotte encerra com \"Same boat!\" quando obj_3 baterem.",
@@ -572,7 +592,17 @@
             "label_en": "Ask Charlotte about an ability",
             "hidden_prompt": "user asks 'Can you + verb base?' to Charlotte",
             "hint_pt": "Can you swim?",
-            "hint_en": "Can you swim?"
+            "hint_en": "Can you swim?",
+            "examples_pass": [
+              "Can you swim?",
+              "And you?",
+              "How about you?"
+            ],
+            "examples_fail": [
+              "Yes I can (statement)",
+              "Yes (single word)",
+              "What did you do? (wrong tense (past))"
+            ]
           },
           {
             "id": 2,
@@ -580,7 +610,17 @@
             "label_en": "Ask another ability",
             "hidden_prompt": "user asks another 'Can you + verb base?'",
             "hint_pt": "Can you cook?",
-            "hint_en": "Can you cook?"
+            "hint_en": "Can you cook?",
+            "examples_pass": [
+              "Can you cook?",
+              "And you?",
+              "How about you?"
+            ],
+            "examples_fail": [
+              "Yes I can (statement)",
+              "Yes (single word)",
+              "What did you do? (wrong tense (past))"
+            ]
           },
           {
             "id": 3,
@@ -588,7 +628,17 @@
             "label_en": "Ask about someone else's ability",
             "hidden_prompt": "user asks 'Can + 3rd person + verb base?'",
             "hint_pt": "Can your friend dance?",
-            "hint_en": "Can your friend dance?"
+            "hint_en": "Can your friend dance?",
+            "examples_pass": [
+              "Can your friend dance?",
+              "And you?",
+              "How about you?"
+            ],
+            "examples_fail": [
+              "Yes I can (statement)",
+              "Yes (single word)",
+              "What did you do? (wrong tense (past))"
+            ]
           }
         ],
         "closing_cue": "Charlotte fecha com \"Fun quiz!\" quando obj_3 baterem.",
@@ -613,7 +663,17 @@
             "label_en": "Ask one ability",
             "hidden_prompt": "user asks 'Can you + verb base?'",
             "hint_pt": "Can you sing?",
-            "hint_en": "Can you sing?"
+            "hint_en": "Can you sing?",
+            "examples_pass": [
+              "Can you sing?",
+              "And you?",
+              "How about you?"
+            ],
+            "examples_fail": [
+              "Yes I can (statement)",
+              "Yes (single word)",
+              "What did you do? (wrong tense (past))"
+            ]
           },
           {
             "id": 2,
@@ -621,7 +681,17 @@
             "label_en": "Ask about languages",
             "hidden_prompt": "user asks 'Can you speak + language?'",
             "hint_pt": "Can you speak Spanish?",
-            "hint_en": "Can you speak Spanish?"
+            "hint_en": "Can you speak Spanish?",
+            "examples_pass": [
+              "Can you speak Spanish?",
+              "And you?",
+              "How about you?"
+            ],
+            "examples_fail": [
+              "Yes I can (statement)",
+              "Yes (single word)",
+              "What did you do? (wrong tense (past))"
+            ]
           },
           {
             "id": 3,
@@ -629,7 +699,17 @@
             "label_en": "Ask about someone Charlotte knows",
             "hidden_prompt": "user asks 'Can + 3rd person + verb base?'",
             "hint_pt": "Can your sister cook?",
-            "hint_en": "Can your sister cook?"
+            "hint_en": "Can your sister cook?",
+            "examples_pass": [
+              "Can your sister cook?",
+              "And you?",
+              "How about you?"
+            ],
+            "examples_fail": [
+              "Yes I can (statement)",
+              "Yes (single word)",
+              "What did you do? (wrong tense (past))"
+            ]
           }
         ],
         "closing_cue": "Charlotte encerra com \"Loved the quiz!\" quando obj_3 baterem.",
@@ -843,7 +923,17 @@
             "label_en": "Ask Charlotte",
             "hidden_prompt": "user asks Charlotte 'Can you + verb' or 'What can you do?' or 'How about you?'",
             "hint_pt": "How about you?",
-            "hint_en": "How about you?"
+            "hint_en": "How about you?",
+            "examples_pass": [
+              "How about you?",
+              "And you?",
+              "What about you?"
+            ],
+            "examples_fail": [
+              "Me too (statement)",
+              "Yes (single word)",
+              "What did you do? (wrong tense (past))"
+            ]
           }
         ],
         "closing_cue": "Charlotte encerra com \"Awesome skills!\" quando obj_3 baterem.",
@@ -908,7 +998,7 @@
         },
         {
           "type": "fill_gap",
-          "sentence": "I _____ drive yet.",
+          "sentence": "I _____ drive yet — I'm only fifteen.",
           "hint": "Negativa de can",
           "answer": "can't",
           "explanation": "\"I can't / cannot drive yet\" = \"Ainda não sei dirigir\". \"Yet\" indica que vai aprender no futuro."
@@ -1006,7 +1096,17 @@
             "label_en": "Ask Charlotte about an ability",
             "hidden_prompt": "user asks 'Can you + verb base?' to Charlotte",
             "hint_pt": "Can you sing?",
-            "hint_en": "Can you sing?"
+            "hint_en": "Can you sing?",
+            "examples_pass": [
+              "Can you sing?",
+              "And you?",
+              "How about you?"
+            ],
+            "examples_fail": [
+              "Yes I can (statement)",
+              "Yes (single word)",
+              "Where were you? (wrong tense (past))"
+            ]
           }
         ],
         "closing_cue": "Charlotte fecha com \"What a portrait!\" quando obj_3 baterem.",
@@ -1047,7 +1147,17 @@
             "label_en": "Ask Charlotte",
             "hidden_prompt": "user asks 'Can you + verb?' to Charlotte",
             "hint_pt": "Can you cook?",
-            "hint_en": "Can you cook?"
+            "hint_en": "Can you cook?",
+            "examples_pass": [
+              "Can you cook?",
+              "And you?",
+              "How about you?"
+            ],
+            "examples_fail": [
+              "Yes I can (statement)",
+              "Yes (single word)",
+              "Where were you? (wrong tense (past))"
+            ]
           }
         ],
         "closing_cue": "Charlotte encerra com \"Skill swap complete!\" quando obj_3 baterem.",

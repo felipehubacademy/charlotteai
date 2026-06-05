@@ -88,14 +88,14 @@
         },
         {
           "type": "fill_gap",
-          "sentence": "We are _____ in the park.",
+          "sentence": "We are _____ in the park for exercise.",
           "hint": "Verbo \"correr\" no -ing (dobra o n)",
           "answer": "running",
           "explanation": "Verbos curtos terminados em consoante-vogal-consoante dobram a última consoante antes de -ing: run → running, sit → sitting, swim → swimming."
         },
         {
           "type": "fill_gap",
-          "sentence": "She is _____ a cake.",
+          "sentence": "She is _____ a cake for the party.",
           "hint": "Verbo \"fazer\" no -ing (drop o -e)",
           "answer": "making",
           "explanation": "Verbos terminados em -e mudo perdem o e antes de -ing: make → making, write → writing, take → taking."
@@ -220,7 +220,17 @@
             "label_en": "Ask Charlotte",
             "hidden_prompt": "user asks 'What are you doing?' or 'How about you?'",
             "hint_pt": "What are you doing?",
-            "hint_en": "What are you doing?"
+            "hint_en": "What are you doing?",
+            "examples_pass": [
+              "What are you doing?",
+              "And you?",
+              "How about you?"
+            ],
+            "examples_fail": [
+              "I'm reading (statement)",
+              "Yes (single word)",
+              "What did you do? (wrong tense (past))"
+            ]
           }
         ],
         "closing_cue": "Charlotte encerra com \"Real-time updates!\" quando obj_3 baterem.",
@@ -423,7 +433,17 @@
             "label_en": "Ask Charlotte back",
             "hidden_prompt": "AFTER objs 1 e 2 met, user asks Charlotte 'How about you?' or 'What aren't you doing?'. CRITICAL: Charlotte MUST NOT ask 'how about you?' to the student — wait for student to ask back.",
             "hint_pt": "How about you?",
-            "hint_en": "How about you?"
+            "hint_en": "How about you?",
+            "examples_pass": [
+              "How about you?",
+              "And you?",
+              "What about you?"
+            ],
+            "examples_fail": [
+              "Me too (statement)",
+              "Yes (single word)",
+              "What did you do? (wrong tense (past))"
+            ]
           }
         ],
         "closing_cue": "Charlotte encerra com \"Cool — clear scene!\" quando obj_3 baterem.",
@@ -571,7 +591,17 @@
             "label_en": "Ask what Charlotte is doing",
             "hidden_prompt": "user asks 'What are you doing?' or 'Are you + verb-ing?'",
             "hint_pt": "What are you doing?",
-            "hint_en": "What are you doing?"
+            "hint_en": "What are you doing?",
+            "examples_pass": [
+              "What are you doing?",
+              "And you?",
+              "How about you?"
+            ],
+            "examples_fail": [
+              "I'm reading (statement)",
+              "Yes (single word)",
+              "What did you do? (wrong tense (past))"
+            ]
           },
           {
             "id": 2,
@@ -579,7 +609,17 @@
             "label_en": "Ask if she's doing something specific",
             "hidden_prompt": "user asks 'Are you + verb-ing?' with a specific verb",
             "hint_pt": "Are you working?",
-            "hint_en": "Are you working?"
+            "hint_en": "Are you working?",
+            "examples_pass": [
+              "Are you working?",
+              "And you?",
+              "How about you?"
+            ],
+            "examples_fail": [
+              "Yes I am (statement)",
+              "Yes (single word)",
+              "What did you do? (wrong tense (past))"
+            ]
           },
           {
             "id": 3,
@@ -587,7 +627,17 @@
             "label_en": "Ask about someone near her",
             "hidden_prompt": "user asks 'Is your + person + verb-ing?'",
             "hint_pt": "Is your friend working?",
-            "hint_en": "Is your friend working?"
+            "hint_en": "Is your friend working?",
+            "examples_pass": [
+              "Is your friend working?",
+              "And you?",
+              "How about you?"
+            ],
+            "examples_fail": [
+              "I do that too (statement)",
+              "Yes (single word)",
+              "What did you do? (wrong tense (past))"
+            ]
           }
         ],
         "closing_cue": "Charlotte fecha com \"Great questions!\" quando obj_3 baterem.",
@@ -612,7 +662,17 @@
             "label_en": "Ask what Charlotte is doing",
             "hidden_prompt": "user asks 'What are you doing?'",
             "hint_pt": "What are you doing?",
-            "hint_en": "What are you doing?"
+            "hint_en": "What are you doing?",
+            "examples_pass": [
+              "What are you doing?",
+              "And you?",
+              "How about you?"
+            ],
+            "examples_fail": [
+              "I'm reading (statement)",
+              "Yes (single word)",
+              "What did you do? (wrong tense (past))"
+            ]
           },
           {
             "id": 2,
@@ -620,7 +680,17 @@
             "label_en": "Ask if she's somewhere",
             "hidden_prompt": "user asks 'Are you + verb-ing/at place?' or 'Where are you working?'",
             "hint_pt": "Are you at home?",
-            "hint_en": "Are you at home?"
+            "hint_en": "Are you at home?",
+            "examples_pass": [
+              "Are you at home?",
+              "And you?",
+              "How about you?"
+            ],
+            "examples_fail": [
+              "Yes I am (statement)",
+              "Yes (single word)",
+              "What did you do? (wrong tense (past))"
+            ]
           },
           {
             "id": 3,
@@ -628,7 +698,17 @@
             "label_en": "Ask about someone",
             "hidden_prompt": "user asks 'Is + person + verb-ing?'",
             "hint_pt": "Is your sister sleeping?",
-            "hint_en": "Is your sister sleeping?"
+            "hint_en": "Is your sister sleeping?",
+            "examples_pass": [
+              "Is your sister sleeping?",
+              "And you?",
+              "How about you?"
+            ],
+            "examples_fail": [
+              "I do that too (statement)",
+              "Yes (single word)",
+              "What did you do? (wrong tense (past))"
+            ]
           }
         ],
         "closing_cue": "Charlotte encerra com \"Loved your curiosity!\" quando obj_3 baterem.",
@@ -831,7 +911,17 @@
             "label_en": "Ask Charlotte",
             "hidden_prompt": "user asks 'How about you?' or 'What are you doing this week?'",
             "hint_pt": "How about you?",
-            "hint_en": "How about you?"
+            "hint_en": "How about you?",
+            "examples_pass": [
+              "How about you?",
+              "And you?",
+              "What about you?"
+            ],
+            "examples_fail": [
+              "Me too (statement)",
+              "Yes (single word)",
+              "What did you do? (wrong tense (past))"
+            ]
           }
         ],
         "closing_cue": "Charlotte encerra com \"Cool week ahead!\" quando obj_3 baterem.",
@@ -897,7 +987,7 @@
         },
         {
           "type": "fill_gap",
-          "sentence": "He _____ to the gym every day.",
+          "sentence": "He _____ to the gym every day after work.",
           "hint": "rotina, 3ª pessoa",
           "answer": "goes",
           "explanation": "\"Every day\" indica rotina → present simple. \"He goes to the gym\" — 3ª pessoa singular, \"go\" vira \"goes\"."
@@ -1036,7 +1126,17 @@
             "label_en": "Ask Charlotte",
             "hidden_prompt": "user asks Charlotte for the contrast with 'How about you?' or similar",
             "hint_pt": "How about you?",
-            "hint_en": "How about you?"
+            "hint_en": "How about you?",
+            "examples_pass": [
+              "How about you?",
+              "And you?",
+              "What about you?"
+            ],
+            "examples_fail": [
+              "Me too (statement)",
+              "Yes (single word)",
+              "What did you do? (wrong tense (past))"
+            ]
           }
         ],
         "closing_cue": "Charlotte encerra com \"Tense mastery!\" quando obj_3 baterem.",

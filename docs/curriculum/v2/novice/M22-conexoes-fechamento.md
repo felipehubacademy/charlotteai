@@ -169,6 +169,8 @@
    **hidden_prompt**: "user asks 'How about you?'"
    **hint_pt**: "How about you?"
    **hint_en**: "How about you?"
+   **example_pass**: How about you? | And you? | What about you?
+   **example_fail**: Me too (statement) | Yes (single word) | Where were you? (wrong tense (past))
 
 **Closing cue**: Charlotte encerra com "Connector confidence!" quando obj_3 baterem.
 
@@ -335,6 +337,8 @@
    **hidden_prompt**: "user asks 'How about you?' or 'Why?'"
    **hint_pt**: "How about you?"
    **hint_en**: "How about you?"
+   **example_pass**: How about you? | And you? | What about you?
+   **example_fail**: Me too (statement) | Yes (single word) | What did you do? (wrong tense (past))
 
 **Closing cue**: Charlotte encerra com "Smart connections!" quando obj_3 baterem.
 
@@ -380,17 +384,17 @@
    **Answer**: loudly
    **Explanation**: "Loud" → "loudly". Junto, sem hífen.
 
-5. **fill_gap** — "She always laughs _____."
+5. **fill_gap** — "She always laughs _____ at funny jokes."
    **Hint**: Advérbio de "happy" (y → ily)
    **Answer**: happily
    **Explanation**: "Happy" → "happily" (y → ily). Regra de spelling.
 
-6. **fill_gap** — "He walks _____ in the morning."
+6. **fill_gap** — "He walks _____ in the morning — never in a rush."
    **Hint**: Advérbio de "slow"
    **Answer**: slowly
    **Explanation**: "Slow" + ly = "slowly".
 
-7. **fill_gap** — "Please speak _____."
+7. **fill_gap** — "Please speak _____ — the baby is sleeping."
    **Hint**: Advérbio de "quiet"
    **Answer**: quietly
    **Explanation**: "Quiet" → "quietly". Manter o "t".
@@ -500,6 +504,8 @@
    **hidden_prompt**: "user asks Charlotte 'How does X act?'"
    **hint_pt**: "How does your friend act?"
    **hint_en**: "How does your friend act?"
+   **example_pass**: How does your friend act? | And you? | How about you?
+   **example_fail**: I do that too (statement) | Yes (single word) | Where were you? (wrong tense (past))
 
 **Closing cue**: Charlotte encerra com "Adverb art!" quando obj_3 baterem.
 
@@ -666,6 +672,8 @@
    **hidden_prompt**: "user asks 'How about you?'"
    **hint_pt**: "How about you?"
    **hint_en**: "How about you?"
+   **example_pass**: How about you? | And you? | What about you?
+   **example_fail**: Me too (statement) | Yes (single word) | Where were you? (wrong tense (past))
 
 **Closing cue**: Charlotte encerra com "Life's nuances!" quando obj_3 baterem.
 
@@ -716,7 +724,7 @@
    **Answer**: went
    **Explanation**: Go → went.
 
-6. **fill_gap** — "She speaks English _____."
+6. **fill_gap** — "She speaks English _____ — almost like a native."
    **Hint**: Advérbio de "well" (good irregular)
    **Answer**: well
    **Explanation**: "Speak well" — well é irregular.

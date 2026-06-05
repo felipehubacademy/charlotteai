@@ -171,6 +171,8 @@
    **hidden_prompt**: "user asks 'What should I + base?' or 'Any other tips?'"
    **hint_pt**: "What should I do too?"
    **hint_en**: "What should I do too?"
+   **example_pass**: What should I do too? | And you? | How about you?
+   **example_fail**: I do that too (statement) | Yes (single word) | What did you do? (wrong tense (past))
 
 **Closing cue**: Charlotte encerra com "Great advice exchange!" quando obj_3 baterem.
 
@@ -337,6 +339,8 @@
    **hidden_prompt**: "user asks 'How about you?'"
    **hint_pt**: "How about you?"
    **hint_en**: "How about you?"
+   **example_pass**: How about you? | And you? | What about you?
+   **example_fail**: Me too (statement) | Yes (single word) | Where were you? (wrong tense (past))
 
 **Closing cue**: Charlotte encerra com "Long to-do list!" quando obj_3 baterem.
 
@@ -503,6 +507,8 @@
    **hidden_prompt**: "user asks 'How about you?'"
    **hint_pt**: "How about you?"
    **hint_en**: "How about you?"
+   **example_pass**: How about you? | And you? | What about you?
+   **example_fail**: Me too (statement) | Yes (single word) | What did you do? (wrong tense (past))
 
 **Closing cue**: Charlotte encerra com "Weekend freedom!" quando obj_3 baterem.
 
@@ -606,6 +612,8 @@
    **hidden_prompt**: "user asks 'Should I + base?'"
    **hint_pt**: "Should I see a doctor?"
    **hint_en**: "Should I see a doctor?"
+   **example_pass**: Should I see a doctor? | And you? | How about you?
+   **example_fail**: Yes you should (statement) | Yes (single word) | What did you do? (wrong tense (past))
 
 2. **id**: 2
    **label_pt**: "Perguntar obrigação com 'Do I have to'"
@@ -613,6 +621,8 @@
    **hidden_prompt**: "user asks 'Do I have to + base?'"
    **hint_pt**: "Do I have to bring my ID?"
    **hint_en**: "Do I have to bring my ID?"
+   **example_pass**: Do I have to bring my ID? | And you? | How about you?
+   **example_fail**: I do that too (statement) | Yes (single word) | What did you do? (wrong tense (past))
 
 3. **id**: 3
    **label_pt**: "Outra pergunta should/have to"
@@ -620,6 +630,8 @@
    **hidden_prompt**: "user asks another should or have to question"
    **hint_pt**: "Should I call her?"
    **hint_en**: "Should I call her?"
+   **example_pass**: Should I call her? | And you? | How about you?
+   **example_fail**: Yes you should (statement) | Yes (single word) | What did you do? (wrong tense (past))
 
 **Closing cue**: Charlotte fecha com "All questions covered!" quando obj_3 baterem.
 
@@ -655,6 +667,8 @@
    **hidden_prompt**: "user asks 'Should I + base?'"
    **hint_pt**: "Should I take a vacation?"
    **hint_en**: "Should I take a vacation?"
+   **example_pass**: Should I take a vacation? | And you? | How about you?
+   **example_fail**: Yes you should (statement) | Yes (single word) | What did you do? (wrong tense (past))
 
 2. **id**: 2
    **label_pt**: "Perguntar obrigação"
@@ -662,6 +676,8 @@
    **hidden_prompt**: "user asks 'Do I have to + base?'"
    **hint_pt**: "Do I have to study every day?"
    **hint_en**: "Do I have to study every day?"
+   **example_pass**: Do I have to study every day? | And you? | How about you?
+   **example_fail**: I do that too (statement) | Yes (single word) | What did you do? (wrong tense (past))
 
 3. **id**: 3
    **label_pt**: "Mais uma pergunta"
@@ -669,6 +685,8 @@
    **hidden_prompt**: "user asks another should/have to question"
    **hint_pt**: "Should I learn another language?"
    **hint_en**: "Should I learn another language?"
+   **example_pass**: Should I learn another language? | And you? | How about you?
+   **example_fail**: Yes you should (statement) | Yes (single word) | What did you do? (wrong tense (past))
 
 **Closing cue**: Charlotte encerra com "Advisor session done!" quando obj_3 baterem.
 

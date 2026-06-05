@@ -64,7 +64,7 @@
 **Accepts**: Why
    **Explanation**: "How is that so?" — pergunta de aprofundamento mostrando interesse. Pede que a pessoa explique mais. Alternativa: "Why is that?".
 
-7. **fill_gap** — "_____ me more."
+7. **fill_gap** — "_____ me more about your trip."
    **Hint**: chunk de interesse curto
    **Answer**: Tell
    **Explanation**: "Tell me more" — chunk universal de mostrar interesse e pedir continuação. Funciona em quase qualquer conversa.
@@ -332,6 +332,8 @@
    **hidden_prompt**: "user asks for details"
    **hint_pt**: "What kind of competition?"
    **hint_en**: "What kind of competition?"
+   **example_pass**: What kind of competition? | And you? | How about you?
+   **example_fail**: I do that too (statement) | Yes (single word) | Where were you? (wrong tense (past))
 
 3. **id**: 3
    **label_pt**: "Reagir à informação final"
@@ -384,12 +386,12 @@
    **Answer**: Right
    **Explanation**: "Right, I understand." — "right" como confirmação. Chunk universal de "certo, entendi". Funciona com qualquer tipo de explicação.
 
-5. **fill_gap** — "_____ sense to me."
+5. **fill_gap** — "That _____ sense to me now."
    **Hint**: verbo fazer (sentido)
    **Answer**: Makes
    **Explanation**: "Makes sense to me" — variação completa de "makes sense". Adiciona "to me" para confirmar que é lógico do seu ponto de vista.
 
-6. **fill_gap** — "I _____ what you're saying."
+6. **fill_gap** — "I _____ what you're saying — it's clear."
    **Hint**: confirmar compreensão
    **Answer**: get
 **Accepts**: see
@@ -551,7 +553,7 @@
    **Answer**: bummer
    **Explanation**: "That's / That is a bummer" — chunk fixo para "isso é uma chatice / é decepcionante". Informal. Reagir a coisas pequenas decepcionantes.
 
-5. **fill_gap** — "I'm sorry to _____ that."
+5. **fill_gap** — "I'm sorry to _____ that — that's terrible news."
    **Hint**: verbo "ouvir"
    **Answer**: hear
    **Explanation**: "I'm / I am sorry to hear that" — chunk fixo para reagir a más notícias. "Hear" aqui não é literal — significa "saber". Padrão universal.
@@ -720,7 +722,7 @@
    **Answer**: Hang on
    **Explanation**: "Hang on a second" — chunk fixo de pausa, sinônimo de "hold on". "Hang on" é literalmente "se segura" mas idiomaticamente "espera".
 
-5. **fill_gap** — "Wait, let me _____ about this."
+5. **fill_gap** — "Wait, let me _____ about this for a moment."
    **Hint**: verbo para "pensar"
    **Answer**: think
    **Explanation**: "Let me think" — chunk fixo para ganhar tempo enquanto pensa. Sinaliza que você está processando, não ignorando.
@@ -780,6 +782,8 @@
    **hidden_prompt**: "AFTER Charlotte's opening question, user asks for pause with 'Hold on', 'Hang on', 'Let me think', 'Wait', or 'Just a sec'."
    **hint_pt**: "Hold on, let me think."
    **hint_en**: "Hold on, let me think."
+   **example_pass**: Hold on, let me think? | And you? | How about you?
+   **example_fail**: I do that too (statement) | Yes (single word) | Where were you? (wrong tense (past))
 
 2. **id**: 2
    **label_pt**: "Mudar de assunto com 'By the way'"
@@ -829,6 +833,8 @@
    **hidden_prompt**: "AFTER Charlotte's opening question, user asks for time with 'Wait', 'Hold on', 'Let me think', 'Just a sec', etc."
    **hint_pt**: "Wait, let me think about this."
    **hint_en**: "Wait, let me think about this."
+   **example_pass**: Wait, let me think about this? | And you? | How about you?
+   **example_fail**: I do that too (statement) | Yes (single word) | Where were you? (wrong tense (past))
 
 2. **id**: 2
    **label_pt**: "Dar uma resposta após pausa"

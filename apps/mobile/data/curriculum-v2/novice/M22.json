@@ -219,7 +219,17 @@
             "label_en": "Ask Charlotte",
             "hidden_prompt": "user asks 'How about you?'",
             "hint_pt": "How about you?",
-            "hint_en": "How about you?"
+            "hint_en": "How about you?",
+            "examples_pass": [
+              "How about you?",
+              "And you?",
+              "What about you?"
+            ],
+            "examples_fail": [
+              "Me too (statement)",
+              "Yes (single word)",
+              "Where were you? (wrong tense (past))"
+            ]
           }
         ],
         "closing_cue": "Charlotte encerra com \"Connector confidence!\" quando obj_3 baterem.",
@@ -425,7 +435,17 @@
             "label_en": "Ask Charlotte",
             "hidden_prompt": "user asks 'How about you?' or 'Why?'",
             "hint_pt": "How about you?",
-            "hint_en": "How about you?"
+            "hint_en": "How about you?",
+            "examples_pass": [
+              "How about you?",
+              "And you?",
+              "What about you?"
+            ],
+            "examples_fail": [
+              "Me too (statement)",
+              "Yes (single word)",
+              "What did you do? (wrong tense (past))"
+            ]
           }
         ],
         "closing_cue": "Charlotte encerra com \"Smart connections!\" quando obj_3 baterem.",
@@ -489,21 +509,21 @@
         },
         {
           "type": "fill_gap",
-          "sentence": "She always laughs _____.",
+          "sentence": "She always laughs _____ at funny jokes.",
           "hint": "Advérbio de \"happy\" (y → ily)",
           "answer": "happily",
           "explanation": "\"Happy\" → \"happily\" (y → ily). Regra de spelling."
         },
         {
           "type": "fill_gap",
-          "sentence": "He walks _____ in the morning.",
+          "sentence": "He walks _____ in the morning — never in a rush.",
           "hint": "Advérbio de \"slow\"",
           "answer": "slowly",
           "explanation": "\"Slow\" + ly = \"slowly\"."
         },
         {
           "type": "fill_gap",
-          "sentence": "Please speak _____.",
+          "sentence": "Please speak _____ — the baby is sleeping.",
           "hint": "Advérbio de \"quiet\"",
           "answer": "quietly",
           "explanation": "\"Quiet\" → \"quietly\". Manter o \"t\"."
@@ -628,7 +648,17 @@
             "label_en": "Ask Charlotte",
             "hidden_prompt": "user asks Charlotte 'How does X act?'",
             "hint_pt": "How does your friend act?",
-            "hint_en": "How does your friend act?"
+            "hint_en": "How does your friend act?",
+            "examples_pass": [
+              "How does your friend act?",
+              "And you?",
+              "How about you?"
+            ],
+            "examples_fail": [
+              "I do that too (statement)",
+              "Yes (single word)",
+              "Where were you? (wrong tense (past))"
+            ]
           }
         ],
         "closing_cue": "Charlotte encerra com \"Adverb art!\" quando obj_3 baterem.",
@@ -834,7 +864,17 @@
             "label_en": "Ask Charlotte",
             "hidden_prompt": "user asks 'How about you?'",
             "hint_pt": "How about you?",
-            "hint_en": "How about you?"
+            "hint_en": "How about you?",
+            "examples_pass": [
+              "How about you?",
+              "And you?",
+              "What about you?"
+            ],
+            "examples_fail": [
+              "Me too (statement)",
+              "Yes (single word)",
+              "Where were you? (wrong tense (past))"
+            ]
           }
         ],
         "closing_cue": "Charlotte encerra com \"Life's nuances!\" quando obj_3 baterem.",
@@ -905,7 +945,7 @@
         },
         {
           "type": "fill_gap",
-          "sentence": "She speaks English _____.",
+          "sentence": "She speaks English _____ — almost like a native.",
           "hint": "Advérbio de \"well\" (good irregular)",
           "answer": "well",
           "explanation": "\"Speak well\" — well é irregular."

@@ -52,7 +52,7 @@
    **Answer**: likes
    **Explanation**: "He likes" — 3ª pessoa leva -s. "He" → "likes Italian food".
 
-5. **fill_gap** — "We _____ music very much."
+5. **fill_gap** — "We _____ music very much — it makes us happy."
    **Hint**: Verbo "amar" para "we"
    **Answer**: love
    **Explanation**: "We love music" — plural usa forma base.
@@ -62,7 +62,7 @@
    **Answer**: hates
    **Explanation**: "She hates" — 3ª pessoa + -s. "Hate" → "hates".
 
-7. **fill_gap** — "I _____ this song!"
+7. **fill_gap** — "I _____ this song! It's my favorite!"
    **Hint**: Verbo de afeto forte
    **Answer**: love
    **Explanation**: "I love this song" — afeto forte por música. "Love" + objeto direto.
@@ -172,6 +172,8 @@
    **hidden_prompt**: "user asks Charlotte with 'how about you' or 'and you' or 'what do you love/hate'"
    **hint_pt**: "How about you?"
    **hint_en**: "How about you?"
+   **example_pass**: How about you? | And you? | What about you?
+   **example_fail**: Me too (statement) | Yes (single word) | Where were you? (wrong tense (past))
 
 **Closing cue**: Charlotte encerra com "Love this taste exchange!" quando obj_3 baterem.
 
@@ -337,6 +339,8 @@
    **hidden_prompt**: "user asks 'What do you like doing?' or 'How about you?' or 'Do you like + verb-ing?'"
    **hint_pt**: "How about you?"
    **hint_en**: "How about you?"
+   **example_pass**: How about you? | And you? | What about you?
+   **example_fail**: Me too (statement) | Yes (single word) | What did you do? (wrong tense (past))
 
 **Closing cue**: Charlotte encerra com "Awesome — hobbies match!" quando obj_3 baterem.
 
@@ -503,6 +507,8 @@
    **hidden_prompt**: "AFTER objs 1 e 2 met, user asks Charlotte 'how about you?' or 'and you?'. CRITICAL: Charlotte MUST NOT ask 'how about you?' or 'and you?' to the student first — wait for the student to ask back."
    **hint_pt**: "How about you?"
    **hint_en**: "How about you?"
+   **example_pass**: How about you? | And you? | What about you?
+   **example_fail**: Me too (statement) | Yes (single word) | Where were you? (wrong tense (past))
 
 **Closing cue**: Charlotte encerra com "Beautiful bonds!" quando obj_3 baterem.
 
@@ -670,6 +676,8 @@
    **hidden_prompt**: "user asks Charlotte with 'how about you' or 'and you'"
    **hint_pt**: "How about you?"
    **hint_en**: "How about you?"
+   **example_pass**: How about you? | And you? | What about you?
+   **example_fail**: Me too (statement) | Yes (single word) | Where were you? (wrong tense (past))
 
 **Closing cue**: Charlotte encerra com "Fun culture talk!" quando obj_3 baterem.
 
@@ -725,7 +733,7 @@
    **Answer**: prefers
    **Explanation**: "She prefers playing tennis" — 3ª pessoa + -s.
 
-7. **fill_gap** — "We _____ the beach to the mountains."
+7. **fill_gap** — "We _____ the beach to the mountains for vacation."
    **Hint**: Verbo "preferir" plural
    **Answer**: prefer
    **Explanation**: "We prefer" — plural forma base.
@@ -835,6 +843,8 @@
    **hidden_prompt**: "user asks 'How about you?' or 'And you?'"
    **hint_pt**: "How about you?"
    **hint_en**: "How about you?"
+   **example_pass**: How about you? | And you? | What about you?
+   **example_fail**: Me too (statement) | Yes (single word) | Where were you? (wrong tense (past))
 
 **Closing cue**: Charlotte encerra com "Great choices!" quando obj_3 baterem.
 

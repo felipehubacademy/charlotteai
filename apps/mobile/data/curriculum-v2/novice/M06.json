@@ -85,21 +85,21 @@
         },
         {
           "type": "fill_gap",
-          "sentence": "She _____ coffee in the morning.",
+          "sentence": "She _____ coffee in the morning before work.",
           "hint": "Verbo \"beber\" na 3ª pessoa singular",
           "answer": "drinks",
           "explanation": "\"She drinks\" — 3ª pessoa leva -s. Drink + s = drinks."
         },
         {
           "type": "fill_gap",
-          "sentence": "Lucas _____ to school by bus.",
+          "sentence": "Lucas _____ to school by bus every day.",
           "hint": "Verbo \"ir\" na 3ª pessoa singular",
           "answer": "goes",
           "explanation": "\"Go\" termina em -o, leva -es: \"goes\". Lucas = he, então \"Lucas goes\"."
         },
         {
           "type": "fill_gap",
-          "sentence": "My mother _____ in a small office.",
+          "sentence": "My mother _____ in a small office as a manager.",
           "hint": "Verbo \"trabalhar\" na 3ª pessoa",
           "answer": "works",
           "explanation": "\"My mother\" = she — 3ª pessoa singular. \"Works\" (work + s)."
@@ -224,7 +224,17 @@
             "label_en": "Ask about Charlotte",
             "hidden_prompt": "user asks Charlotte with 'how about you' or 'and you' or 'what do you do'",
             "hint_pt": "How about you?",
-            "hint_en": "How about you?"
+            "hint_en": "How about you?",
+            "examples_pass": [
+              "How about you?",
+              "And you?",
+              "What about you?"
+            ],
+            "examples_fail": [
+              "Me too (statement)",
+              "Yes (single word)",
+              "Where were you? (wrong tense (past))"
+            ]
           }
         ],
         "closing_cue": "Charlotte encerra com \"Cool family!\" quando obj_3 baterem.",
@@ -429,7 +439,17 @@
             "label_en": "Ask Charlotte",
             "hidden_prompt": "user asks Charlotte what she doesn't do with 'how about you' or 'and you'",
             "hint_pt": "How about you?",
-            "hint_en": "How about you?"
+            "hint_en": "How about you?",
+            "examples_pass": [
+              "How about you?",
+              "And you?",
+              "What about you?"
+            ],
+            "examples_fail": [
+              "Me too (statement)",
+              "Yes (single word)",
+              "Where were you? (wrong tense (past))"
+            ]
           }
         ],
         "closing_cue": "Charlotte encerra com \"Nice insights!\" quando obj_3 baterem.",
@@ -577,7 +597,17 @@
             "label_en": "Ask a question with 'Do you...?'",
             "hidden_prompt": "user asks Charlotte a yes/no question with 'Do you + verb base...?'",
             "hint_pt": "Do you work?",
-            "hint_en": "Do you work?"
+            "hint_en": "Do you work?",
+            "examples_pass": [
+              "Do you work?",
+              "And you?",
+              "How about you?"
+            ],
+            "examples_fail": [
+              "Yes I do (statement)",
+              "Yes (single word)",
+              "Where were you? (wrong tense (past))"
+            ]
           },
           {
             "id": 2,
@@ -585,7 +615,17 @@
             "label_en": "Ask another 'Do you...?' question",
             "hidden_prompt": "user asks another yes/no question with 'Do you + verb base'",
             "hint_pt": "Do you drink coffee?",
-            "hint_en": "Do you drink coffee?"
+            "hint_en": "Do you drink coffee?",
+            "examples_pass": [
+              "Do you drink coffee?",
+              "And you?",
+              "How about you?"
+            ],
+            "examples_fail": [
+              "Yes I do (statement)",
+              "Yes (single word)",
+              "Where were you? (wrong tense (past))"
+            ]
           },
           {
             "id": 3,
@@ -593,7 +633,17 @@
             "label_en": "Ask a 'Does...?' question about someone",
             "hidden_prompt": "user asks about someone with 'Does + 3rd person + verb base?'",
             "hint_pt": "Does your friend speak Portuguese?",
-            "hint_en": "Does your friend speak Portuguese?"
+            "hint_en": "Does your friend speak Portuguese?",
+            "examples_pass": [
+              "Does your friend speak Portuguese?",
+              "And you?",
+              "How about you?"
+            ],
+            "examples_fail": [
+              "I do that too (statement)",
+              "Yes (single word)",
+              "Where were you? (wrong tense (past))"
+            ]
           }
         ],
         "closing_cue": "Charlotte fecha com \"Great questions!\" quando obj_3 baterem.",
@@ -618,7 +668,17 @@
             "label_en": "Ask if Charlotte does something",
             "hidden_prompt": "user asks 'Do you + verb base...?' to Charlotte",
             "hint_pt": "Do you work from home?",
-            "hint_en": "Do you work from home?"
+            "hint_en": "Do you work from home?",
+            "examples_pass": [
+              "Do you work from home?",
+              "And you?",
+              "How about you?"
+            ],
+            "examples_fail": [
+              "Yes I do (statement)",
+              "Yes (single word)",
+              "Where were you? (wrong tense (past))"
+            ]
           },
           {
             "id": 2,
@@ -626,7 +686,17 @@
             "label_en": "Ask if she likes something",
             "hidden_prompt": "user asks 'Do you like + noun?' — accept nouns only (verb-ing comes in M08)",
             "hint_pt": "Do you like coffee?",
-            "hint_en": "Do you like coffee?"
+            "hint_en": "Do you like coffee?",
+            "examples_pass": [
+              "Do you like coffee?",
+              "And you?",
+              "How about you?"
+            ],
+            "examples_fail": [
+              "Yes I do (statement)",
+              "Yes (single word)",
+              "Where were you? (wrong tense (past))"
+            ]
           },
           {
             "id": 3,
@@ -634,7 +704,17 @@
             "label_en": "Ask about someone Charlotte knows",
             "hidden_prompt": "user asks 'Does + 3rd person + verb base?' about someone",
             "hint_pt": "Does your friend live in São Paulo?",
-            "hint_en": "Does your friend live in São Paulo?"
+            "hint_en": "Does your friend live in São Paulo?",
+            "examples_pass": [
+              "Does your friend live in São Paulo?",
+              "And you?",
+              "How about you?"
+            ],
+            "examples_fail": [
+              "I do that too (statement)",
+              "Yes (single word)",
+              "Where were you? (wrong tense (past))"
+            ]
           }
         ],
         "closing_cue": "Charlotte encerra com \"Fun chat!\" quando obj_3 baterem.",
@@ -782,7 +862,17 @@
             "label_en": "Ask where she works",
             "hidden_prompt": "user asks Charlotte where she works with 'Where do you + verb base'",
             "hint_pt": "Where do you work?",
-            "hint_en": "Where do you work?"
+            "hint_en": "Where do you work?",
+            "examples_pass": [
+              "Where do you work?",
+              "And you?",
+              "How about you?"
+            ],
+            "examples_fail": [
+              "I live here (statement)",
+              "Yes (single word)",
+              "Where were you? (wrong tense (past))"
+            ]
           },
           {
             "id": 2,
@@ -790,7 +880,17 @@
             "label_en": "Ask when she does something",
             "hidden_prompt": "user asks when Charlotte does something with 'When do you + verb' or 'What time do you + verb'",
             "hint_pt": "When do you have lunch?",
-            "hint_en": "When do you have lunch?"
+            "hint_en": "When do you have lunch?",
+            "examples_pass": [
+              "When do you have lunch?",
+              "And you?",
+              "How about you?"
+            ],
+            "examples_fail": [
+              "Yesterday (statement)",
+              "Yes (single word)",
+              "Where were you? (wrong tense (past))"
+            ]
           },
           {
             "id": 3,
@@ -798,7 +898,17 @@
             "label_en": "Ask about someone in her life",
             "hidden_prompt": "user asks about someone with WH + does + 3rd person + verb base",
             "hint_pt": "Where does your friend live?",
-            "hint_en": "Where does your friend live?"
+            "hint_en": "Where does your friend live?",
+            "examples_pass": [
+              "Where does your friend live?",
+              "And you?",
+              "How about you?"
+            ],
+            "examples_fail": [
+              "I do that too (statement)",
+              "Yes (single word)",
+              "Where were you? (wrong tense (past))"
+            ]
           }
         ],
         "closing_cue": "Charlotte fecha com \"Great interview!\" quando obj_3 baterem.",
@@ -823,7 +933,17 @@
             "label_en": "Ask where Charlotte lives or works",
             "hidden_prompt": "user asks 'Where do you + verb' (live, work, study, eat, etc.)",
             "hint_pt": "Where do you live?",
-            "hint_en": "Where do you live?"
+            "hint_en": "Where do you live?",
+            "examples_pass": [
+              "Where do you live?",
+              "And you?",
+              "How about you?"
+            ],
+            "examples_fail": [
+              "I live here (statement)",
+              "Yes (single word)",
+              "Where were you? (wrong tense (past))"
+            ]
           },
           {
             "id": 2,
@@ -831,7 +951,17 @@
             "label_en": "Ask what she does/studies",
             "hidden_prompt": "user asks 'What do you + verb' or 'What does + 3rd person + verb'",
             "hint_pt": "What do you study?",
-            "hint_en": "What do you study?"
+            "hint_en": "What do you study?",
+            "examples_pass": [
+              "What do you study?",
+              "And you?",
+              "How about you?"
+            ],
+            "examples_fail": [
+              "I work here (statement)",
+              "Yes (single word)",
+              "Where were you? (wrong tense (past))"
+            ]
           },
           {
             "id": 3,
@@ -839,7 +969,17 @@
             "label_en": "Ask when or how",
             "hidden_prompt": "user asks 'When do you + verb' or 'How do you + verb'",
             "hint_pt": "When do you wake up?",
-            "hint_en": "When do you wake up?"
+            "hint_en": "When do you wake up?",
+            "examples_pass": [
+              "When do you wake up?",
+              "And you?",
+              "How about you?"
+            ],
+            "examples_fail": [
+              "Yesterday (statement)",
+              "Yes (single word)",
+              "Where were you? (wrong tense (past))"
+            ]
           }
         ],
         "closing_cue": "Charlotte encerra com \"Loved your questions!\" quando obj_3 baterem.",
@@ -1003,7 +1143,17 @@
             "label_en": "Ask about Charlotte's friend",
             "hidden_prompt": "user asks question about Charlotte's friend with 'Does + your friend + verb base?'",
             "hint_pt": "Does your friend work too?",
-            "hint_en": "Does your friend work too?"
+            "hint_en": "Does your friend work too?",
+            "examples_pass": [
+              "Does your friend work too?",
+              "And you?",
+              "How about you?"
+            ],
+            "examples_fail": [
+              "I do that too (statement)",
+              "Yes (single word)",
+              "Where were you? (wrong tense (past))"
+            ]
           }
         ],
         "closing_cue": "Charlotte fecha com \"Awesome storytelling!\" quando obj_3 baterem.",
@@ -1044,7 +1194,17 @@
             "label_en": "Ask about Charlotte's person",
             "hidden_prompt": "user asks Charlotte about someone with 'Does your + person + verb?'",
             "hint_pt": "Does your friend live nearby?",
-            "hint_en": "Does your friend live nearby?"
+            "hint_en": "Does your friend live nearby?",
+            "examples_pass": [
+              "Does your friend live nearby?",
+              "And you?",
+              "How about you?"
+            ],
+            "examples_fail": [
+              "I do that too (statement)",
+              "Yes (single word)",
+              "Where were you? (wrong tense (past))"
+            ]
           }
         ],
         "closing_cue": "Charlotte encerra com \"Loved this chat!\" quando obj_3 baterem.",

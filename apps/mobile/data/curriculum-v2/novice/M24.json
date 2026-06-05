@@ -106,7 +106,7 @@
         },
         {
           "type": "fill_gap",
-          "sentence": "_____ me more.",
+          "sentence": "_____ me more about your trip.",
           "hint": "chunk de interesse curto",
           "answer": "Tell",
           "explanation": "\"Tell me more\" — chunk universal de mostrar interesse e pedir continuação. Funciona em quase qualquer conversa."
@@ -444,7 +444,17 @@
             "label_en": "Ask for details",
             "hidden_prompt": "user asks for details",
             "hint_pt": "What kind of competition?",
-            "hint_en": "What kind of competition?"
+            "hint_en": "What kind of competition?",
+            "examples_pass": [
+              "What kind of competition?",
+              "And you?",
+              "How about you?"
+            ],
+            "examples_fail": [
+              "I do that too (statement)",
+              "Yes (single word)",
+              "Where were you? (wrong tense (past))"
+            ]
           },
           {
             "id": 3,
@@ -520,14 +530,14 @@
         },
         {
           "type": "fill_gap",
-          "sentence": "_____ sense to me.",
+          "sentence": "That _____ sense to me now.",
           "hint": "verbo fazer (sentido)",
           "answer": "Makes",
           "explanation": "\"Makes sense to me\" — variação completa de \"makes sense\". Adiciona \"to me\" para confirmar que é lógico do seu ponto de vista."
         },
         {
           "type": "fill_gap",
-          "sentence": "I _____ what you're saying.",
+          "sentence": "I _____ what you're saying — it's clear.",
           "hint": "confirmar compreensão",
           "answer": "get",
           "accepts": [
@@ -733,7 +743,7 @@
         },
         {
           "type": "fill_gap",
-          "sentence": "I'm sorry to _____ that.",
+          "sentence": "I'm sorry to _____ that — that's terrible news.",
           "hint": "verbo \"ouvir\"",
           "answer": "hear",
           "explanation": "\"I'm / I am sorry to hear that\" — chunk fixo para reagir a más notícias. \"Hear\" aqui não é literal — significa \"saber\". Padrão universal."
@@ -965,7 +975,7 @@
         },
         {
           "type": "fill_gap",
-          "sentence": "Wait, let me _____ about this.",
+          "sentence": "Wait, let me _____ about this for a moment.",
           "hint": "verbo para \"pensar\"",
           "answer": "think",
           "explanation": "\"Let me think\" — chunk fixo para ganhar tempo enquanto pensa. Sinaliza que você está processando, não ignorando."
@@ -1067,7 +1077,17 @@
             "label_en": "Ask for thinking pause",
             "hidden_prompt": "AFTER Charlotte's opening question, user asks for pause with 'Hold on', 'Hang on', 'Let me think', 'Wait', or 'Just a sec'.",
             "hint_pt": "Hold on, let me think.",
-            "hint_en": "Hold on, let me think."
+            "hint_en": "Hold on, let me think.",
+            "examples_pass": [
+              "Hold on, let me think?",
+              "And you?",
+              "How about you?"
+            ],
+            "examples_fail": [
+              "I do that too (statement)",
+              "Yes (single word)",
+              "Where were you? (wrong tense (past))"
+            ]
           },
           {
             "id": 2,
@@ -1108,7 +1128,17 @@
             "label_en": "Ask for processing pause",
             "hidden_prompt": "AFTER Charlotte's opening question, user asks for time with 'Wait', 'Hold on', 'Let me think', 'Just a sec', etc.",
             "hint_pt": "Wait, let me think about this.",
-            "hint_en": "Wait, let me think about this."
+            "hint_en": "Wait, let me think about this.",
+            "examples_pass": [
+              "Wait, let me think about this?",
+              "And you?",
+              "How about you?"
+            ],
+            "examples_fail": [
+              "I do that too (statement)",
+              "Yes (single word)",
+              "Where were you? (wrong tense (past))"
+            ]
           },
           {
             "id": 2,

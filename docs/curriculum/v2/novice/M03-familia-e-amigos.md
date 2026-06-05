@@ -298,6 +298,8 @@
    **hidden_prompt**: "user asks Charlotte about siblings with 'Have you got + brothers/sisters', 'how about you', or 'and you'"
    **hint_pt**: "Have you got any?"
    **hint_en**: "Have you got any?"
+   **example_pass**: Have you got any? | And you? | How about you?
+   **example_fail**: Yes I have (statement) | Yes (single word) | Where were you? (wrong tense (past))
 
 **Closing cue**: Charlotte fecha com "Nice! Family map done." quando obj_3 baterem.
 
@@ -347,6 +349,8 @@
    **hidden_prompt**: "user asks Charlotte about her family with 'Have you got + member', 'how about you', or 'and you'"
    **hint_pt**: "How about you?"
    **hint_en**: "How about you?"
+   **example_pass**: How about you? | And you? | What about you?
+   **example_fail**: Me too (statement) | Yes (single word) | Where were you? (wrong tense (past))
 
 **Closing cue**: Charlotte encerra com "Cool! Same here." quando obj_3 baterem.
 
@@ -463,6 +467,8 @@
    **hidden_prompt**: "user asks Charlotte back with 'Are you married', 'have you got children', 'how about you', or 'and you'"
    **hint_pt**: "How about you?"
    **hint_en**: "How about you?"
+   **example_pass**: How about you? | And you? | What about you?
+   **example_fail**: Me too (statement) | Yes (single word) | Where were you? (wrong tense (past))
 
 **Closing cue**: Charlotte fecha com "Nice family setup!" quando obj_3 baterem.
 
@@ -512,6 +518,8 @@
    **hidden_prompt**: "user asks Charlotte back with 'how about you', 'and you', or 'are you married'"
    **hint_pt**: "How about you?"
    **hint_en**: "How about you?"
+   **example_pass**: How about you? | And you? | What about you?
+   **example_fail**: Me too (statement) | Yes (single word) | Where were you? (wrong tense (past))
 
 **Closing cue**: Charlotte encerra com "Cool! Nice catching up." quando obj_3 baterem.
 
@@ -677,6 +685,8 @@
    **hidden_prompt**: "user asks Charlotte about her best friend with 'who's your best friend', 'and yours', or 'how about you'"
    **hint_pt**: "How about you?"
    **hint_en**: "How about you?"
+   **example_pass**: How about you? | And you? | What about you?
+   **example_fail**: Me too (statement) | Yes (single word) | Where were you? (wrong tense (past))
 
 **Closing cue**: Charlotte encerra com "Nice! Friends are everything." quando obj_3 baterem.
 
