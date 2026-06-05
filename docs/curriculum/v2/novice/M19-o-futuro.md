@@ -1013,8 +1013,8 @@
 **Sub-objectives** (3 objetivos):
 
 1. **id**: 1
-   **label_pt**: "Dizer sua preferência"
-   **label_en**: "State your preference"
+   **label_pt**: "Dizer preferência de clima"
+   **label_en**: "State your weather preference"
    **hidden_prompt**: "user states weather preference"
    **hint_pt**: "I prefer cold weather."
    **hint_en**: "I prefer cold weather."

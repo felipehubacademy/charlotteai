@@ -961,8 +961,8 @@
    **hint_en**: "Yes, I want to come. Where are we going?"
 
 2. **id**: 2
-   **label_pt**: "Pedir clarificação se necessário"
-   **label_en**: "Ask for clarification if needed"
+   **label_pt**: "Perguntar o que Charlotte vai fazer"
+   **label_en**: "Ask what Charlotte is doing later"
    **hidden_prompt**: "user asks 'What are you doing?' or 'Could you repeat?'"
    **hint_pt**: "What are you doing later?"
    **hint_en**: "What are you doing later?"

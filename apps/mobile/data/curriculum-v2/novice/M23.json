@@ -969,8 +969,8 @@
         "objectives": [
           {
             "id": 1,
-            "label_pt": "Descrever sua estratégia",
-            "label_en": "Describe your strategy",
+            "label_pt": "Dizer o que faz quando está doente",
+            "label_en": "Say what you do when sick",
             "hidden_prompt": "user describes what they do when sick",
             "hint_pt": "I always rest at home.",
             "hint_en": "I always rest at home."
@@ -1192,8 +1192,8 @@
         "objectives": [
           {
             "id": 1,
-            "label_pt": "Descrever como você se sente",
-            "label_en": "Describe how you feel",
+            "label_pt": "Dizer como se sente ao telefone",
+            "label_en": "Say how you feel on the phone",
             "hidden_prompt": "user describes their feeling about phone calls",
             "hint_pt": "I get really nervous on the phone.",
             "hint_en": "I get really nervous on the phone."

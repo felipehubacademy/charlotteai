@@ -1093,8 +1093,8 @@
           },
           {
             "id": 2,
-            "label_pt": "Dizer onde estava ou o que fazia",
-            "label_en": "Say where you were",
+            "label_pt": "Dizer outro estado seu (papel ou lugar)",
+            "label_en": "Say another past state of yours",
             "hidden_prompt": "user says 'I was + place' or 'I was + role (student, etc.)'",
             "hint_pt": "I was a student.",
             "hint_en": "I was a student."
