@@ -336,6 +336,37 @@ export async function POST(request: NextRequest) {
         : "Tell me more.";
     }
 
+    // USER-ASKS DETERMINISTIC GUARD: independe do LLM. Se o student
+    // message NAO eh uma pergunta REAL (?, wh-word, auxiliar), remove
+    // qualquer obj user-asks que o judge tenha marcado erroneamente.
+    // Aluno reportou "Yes" marcando obj de perguntar — bug grave porque
+    // cascateia anti-steal (post-check ignora obj ja met).
+    const msgTrim = user_message.trim();
+    const msgLower = msgTrim.toLowerCase().replace(/[¿¡]/g, '');
+    const hasQuestionMark = msgTrim.includes('?');
+    const startsWithQuestionWord = /^(what|where|when|who|why|how|which|whose|whom|do|does|did|is|are|was|were|am|can|could|will|would|should|may|might|must|shall|have|has|had)\b/i.test(msgLower);
+    const isRealQuestion = hasQuestionMark || startsWithQuestionWord;
+    if (!isRealQuestion && objectivesMet.length > 0) {
+      const blocked: number[] = [];
+      objectivesMet = objectivesMet.filter(id => {
+        const o = gc.objectives.find(x => x.id === id);
+        if (!o) return true;
+        const isUserAsks = /user\s*(asks?|perguntar|uses?)/i.test(o.hidden_prompt);
+        if (isUserAsks) {
+          blocked.push(id);
+          return false;
+        }
+        return true;
+      });
+      if (blocked.length > 0) {
+        console.warn('[guided-chat/turn] user-asks guard blocked judge marking', {
+          blockedObjIds: blocked,
+          userMessage: msgTrim,
+          reason: 'not a real question (no ?, no wh-, no aux)',
+        });
+      }
+    }
+
     // ANTI-STEAL POST-CHECK (deterministico): se a Charlotte respondeu com
     // um chunk que pertence a um objetivo "user asks/uses X" ainda nao
     // batido, ela roubou o turno. Sobrescreve com ack curto.

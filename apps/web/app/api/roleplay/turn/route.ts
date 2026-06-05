@@ -408,6 +408,37 @@ export async function POST(request: NextRequest) {
         : "Tell me more.";
     }
 
+    // USER-ASKS DETERMINISTIC GUARD: independe do LLM. Se o student
+    // utterance NAO eh uma pergunta REAL (?, wh-word, auxiliar), remove
+    // qualquer obj user-asks que o judge tenha marcado erroneamente.
+    // Cascateia anti-steal: se obj user-asks ja eh "met", anti-steal
+    // post-check libera Charlotte a falar "How about you?". Guard impede.
+    const userMsg = (userTranscript || '').trim();
+    const userMsgLower = userMsg.toLowerCase().replace(/[¿¡]/g, '');
+    const hasQuestionMark = userMsg.includes('?');
+    const startsWithQuestionWord = /^(what|where|when|who|why|how|which|whose|whom|do|does|did|is|are|was|were|am|can|could|will|would|should|may|might|must|shall|have|has|had)\b/i.test(userMsgLower);
+    const isRealQuestion = hasQuestionMark || startsWithQuestionWord;
+    if (!isRealQuestion && objectivesMet.length > 0) {
+      const blocked: number[] = [];
+      objectivesMet = objectivesMet.filter(id => {
+        const o = rp.objectives.find(x => x.id === id);
+        if (!o) return true;
+        const isUserAsks = /user\s*(asks?|perguntar|uses?)/i.test(o.hidden_prompt);
+        if (isUserAsks) {
+          blocked.push(id);
+          return false;
+        }
+        return true;
+      });
+      if (blocked.length > 0) {
+        console.warn('[roleplay/turn] user-asks guard blocked judge marking', {
+          blockedObjIds: blocked,
+          userTranscript: userMsg,
+          reason: 'not a real question (no ?, no wh-, no aux)',
+        });
+      }
+    }
+
     // ANTI-STEAL POST-CHECK (deterministico): se Charlotte respondeu com
     // chunk que pertence a um objetivo "user asks/uses X" nao batido,
     // sobrescreve com ack curto. gpt-4o-mini ignora a regra mesmo com
