@@ -61,7 +61,13 @@ function buildSystemPrompt(
     const hintLine = o.hint_en
       ? `\n    Canonical example (mark obj if student's reply clearly aligns): "${o.hint_en}"`
       : '';
-    return `  - Objective ${o.id}: ${o.hidden_prompt}${hintLine}`;
+    const passLine = (o as any).examples_pass?.length
+      ? `\n    EXAMPLES THAT MARK: ${(o as any).examples_pass.map((e: string) => `"${e}"`).join(' | ')}`
+      : '';
+    const failLine = (o as any).examples_fail?.length
+      ? `\n    EXAMPLES THAT DO NOT MARK: ${(o as any).examples_fail.map((e: string) => `"${e}"`).join(' | ')}`
+      : '';
+    return `  - Objective ${o.id}: ${o.hidden_prompt}${hintLine}${passLine}${failLine}`;
   }).join('\n');
 
   const nudgeBlock = (stuckTurns >= 2 && nextObjectiveId !== undefined)
@@ -237,33 +243,16 @@ Rules:
     The ONLY way to NOT mark is if the chunk is COMPLETELY ABSENT from
     the message. If it's there in any form, MARK.
   - USER-ASKS OBJECTIVES (hidden_prompt starts with "user asks" or "user
-    perguntar"): the message MUST satisfy ALL THREE checks. Use semantic
-    reasoning — you are an LLM, not a regex.
-      1. FORM: it is a question (contains '?' OR starts with WH-word
-         what/where/when/who/why/how OR auxiliary do/does/did/is/are/
-         was/were/can/could/will/would/have/has). Statements, single
-         words ("Yes", "No"), or affirmations DO NOT pass.
-      2. TENSE/STRUCTURE: it uses the grammar the unit is teaching
-         (check UNIT/grammar_focus and OTHER objectives' hints).
-      3. INTENT MATCH: it asks ABOUT WHAT THE OBJECTIVE SPECIFIES.
-         Read the hidden_prompt literally — if it says "ask what
-         Charlotte did yesterday", the question must be ABOUT WHAT
-         CHARLOTTE DID YESTERDAY, not about something else.
-    EXAMPLES — applied to obj "user asks what Charlotte did yesterday"
-    (unit: past simple):
-      • "What did you do yesterday?" → MARK (form ✓, tense ✓, intent ✓)
-      • "What will you do?" → DO NOT MARK (form ✓, tense ✗ — future)
-      • "Where were you?" → DO NOT MARK (form ✓, tense ✓, intent ✗ —
-        asks WHERE not WHAT)
-      • "Did you have fun?" → DO NOT MARK (form ✓, tense ✓, intent ✗ —
-        asks about feelings, not about what she did)
-    EXAMPLES — applied to obj "user asks Charlotte" (GENERIC, no
-    specific topic in hidden_prompt):
-      • "How about you?" / "And you?" / "What about you?" → ALWAYS MARK
-        (universal back-question, always valid)
-      • Any well-formed question in the unit's tense → MARK
-    RULE OF THUMB: if a teacher reading the hidden_prompt would say
-    "yes, that question asks exactly that" → MARK. Otherwise DO NOT.
+    perguntar"): the message MUST satisfy ALL THREE checks:
+      1. FORM — is a question (has '?' OR starts with wh-word/auxiliary).
+         Single words ("Yes", "No"), statements, affirmations DO NOT pass.
+      2. TENSE — uses the grammar the unit teaches (check UNIT/grammar_focus).
+      3. INTENT — asks ABOUT WHAT the hidden_prompt specifies.
+    When the objective has EXAMPLES THAT MARK / EXAMPLES THAT DO NOT MARK
+    listed above, USE THEM as ground truth. Pattern-match the student's
+    message against those exemplars. If it aligns with a PASS example
+    (paraphrase OK), MARK. If it aligns with a FAIL example, do NOT mark.
+    Use semantic reasoning, not regex — you are an LLM.
   - BIAS TOWARD MARKING when there's clear evidence. Strict matching is
     only for cases where the student replied off-topic, gibberish, or
     something genuinely unrelated.

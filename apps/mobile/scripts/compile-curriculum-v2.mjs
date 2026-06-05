@@ -458,6 +458,11 @@ function parseObjectives(text) {
     const hidden_prompt = stripQuotes(field(raw, 'hidden_prompt'));
     const hint_pt       = stripQuotes(field(raw, 'hint_pt'));
     const hint_en       = stripQuotes(field(raw, 'hint_en'));
+    // examples_pass / examples_fail: pipe-separated no MD.
+    // Usados pra ancorar o judge LLM em casos de discriminacao fina
+    // (form + tense + intent pra user-asks objs).
+    const examples_pass = splitPipes(field(raw, 'examples_pass') || field(raw, 'example_pass'));
+    const examples_fail = splitPipes(field(raw, 'examples_fail') || field(raw, 'example_fail'));
     // Inter/Advanced: descartar campos PT (regra "zero PT no Inter+").
     // Markdown source pode manter bilingue como orientacao da autora;
     // JSON entregue ao app fica EN-only. Mobile ja faz fallback p/ EN.
@@ -468,8 +473,15 @@ function parseObjectives(text) {
       hidden_prompt,
       ...(hint_pt ? { hint_pt } : {}),
       ...(hint_en ? { hint_en } : {}),
+      ...(examples_pass.length ? { examples_pass } : {}),
+      ...(examples_fail.length ? { examples_fail } : {}),
     };
   });
+}
+
+function splitPipes(s) {
+  if (!s) return [];
+  return s.split('|').map(t => t.trim()).filter(Boolean);
 }
 
 // ─── Generic parsing helpers ──────────────────────────────────────

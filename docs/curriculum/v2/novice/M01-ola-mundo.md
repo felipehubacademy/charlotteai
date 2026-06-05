@@ -464,9 +464,11 @@ Charlotte fala via ElevenLabs (Rachel). Aluno repete; Azure Speech avalia pronú
 3. **id**: 3
    **label_pt**: "Perguntar de onde Charlotte é"
    **label_en**: "Ask where Charlotte is from"
-   **hidden_prompt**: "user asks Charlotte where she's from ('where are you from', 'and you', or similar)"
+   **hidden_prompt**: "user asks Charlotte where she's from, using present 'to be' question (Where are you from?) or short tag ('And you?')"
    **hint_pt**: "Where are you from?"
    **hint_en**: "Where are you from?"
+   **example_pass**: Where are you from? | And you? | How about you?
+   **example_fail**: I'm from Brazil (statement) | Yes (single word) | Where were you from? (wrong tense) | Where do you live? (off-intent)
 
 **Closing cue**: Charlotte encerra com "Awesome! Talk soon." quando obj_3 baterem.
 
@@ -601,9 +603,11 @@ Charlotte fala via ElevenLabs (Rachel). Aluno repete; Azure Speech avalia pronú
 2. **id**: 2
    **label_pt**: "Devolver a pergunta"
    **label_en**: "Ask back"
-   **hidden_prompt**: "user asks Charlotte back with 'and you', 'how about you', 'how are you', or similar"
+   **hidden_prompt**: "user asks Charlotte back about how she's feeling, using a tag question ('And you?', 'How about you?') or full present question ('How are you feeling?')"
    **hint_pt**: "And you?"
    **hint_en**: "And you?"
+   **example_pass**: And you? | How about you? | How are you feeling?
+   **example_fail**: I'm tired (statement) | Yeah (single word) | And you were? (wrong tense) | What's your name? (off-intent)
 
 3. **id**: 3
    **label_pt**: "Reagir com empatia"

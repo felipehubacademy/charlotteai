@@ -64,6 +64,11 @@ export interface Objective {
   hidden_prompt:  string;          // condition the LLM evaluates to emit [OBJECTIVE_MET:id]
   hint_pt?:       string;          // Need a hand? copy (PT, Novice)
   hint_en?:       string;          // Need a hand? copy (EN, Inter)
+  // Exemplos pra ancorar o judge em casos de discriminacao fina.
+  // Pipe-separated no MD; parser quebra em array. Usados pra user-asks
+  // objectives (form+tense+intent) mas vale pra qualquer obj ambiguo.
+  examples_pass?: string[];        // mensagens que MARCAM o obj
+  examples_fail?: string[];        // mensagens que NAO marcam, com motivo
 }
 
 // ── Scripted flow (POC v1) ────────────────────────────────────────

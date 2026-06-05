@@ -431,9 +431,11 @@ Charlotte fala via ElevenLabs (Rachel). Aluno repete; Azure Speech avalia pronú
 2. **id**: 2
    **label_pt**: "Perguntar de onde Charlotte é"
    **label_en**: "Ask where Charlotte is from"
-   **hidden_prompt**: "user asks Charlotte's origin with 'where are you from', 'and you', 'how about you', or similar"
+   **hidden_prompt**: "user asks Charlotte's origin, using present 'to be' question (Where are you from?) or short tag ('And you?')"
    **hint_pt**: "Where are you from?"
    **hint_en**: "Where are you from?"
+   **example_pass**: Where are you from? | And you? | How about you?
+   **example_fail**: I'm from Brazil (statement) | Yes (single word) | Where were you from? (wrong tense) | What's your name? (off-intent)
 
 **Closing cue**: Charlotte fecha com "Nice meeting you! Have a great conference." quando obj_2 baterem.
 
@@ -471,9 +473,11 @@ Charlotte fala via ElevenLabs (Rachel). Aluno repete; Azure Speech avalia pronú
 2. **id**: 2
    **label_pt**: "Perguntar de onde Charlotte é"
    **label_en**: "Ask Charlotte's origin"
-   **hidden_prompt**: "user asks Charlotte where she's from with 'where are you from', 'and you', or similar"
+   **hidden_prompt**: "user asks Charlotte where she's from, using present 'to be' question (Where are you from?) or short tag ('And you?')"
    **hint_pt**: "Where are you from?"
    **hint_en**: "Where are you from?"
+   **example_pass**: Where are you from? | And you? | How about you?
+   **example_fail**: I'm from Brazil (statement) | Yes (single word) | Where were you from? (wrong tense) | What's your name? (off-intent)
 
 3. **id**: 3
    **label_pt**: "Comentar positivamente sobre o país de Charlotte"
@@ -634,9 +638,11 @@ Charlotte fala via ElevenLabs (Rachel). Aluno repete; Azure Speech avalia pronú
 3. **id**: 3
    **label_pt**: "Perguntar a nacionalidade de Charlotte"
    **label_en**: "Ask Charlotte's nationality"
-   **hidden_prompt**: "user asks Charlotte's nationality with 'are you + nationality', 'what's your nationality', 'and you', or 'how about you'"
+   **hidden_prompt**: "user asks Charlotte's nationality, using present 'to be' question ('Are you + nationality?' or 'What's your nationality?') or short tag ('And you?')"
    **hint_pt**: "Are you American?"
    **hint_en**: "Are you American?"
+   **example_pass**: Are you American? | What's your nationality? | And you?
+   **example_fail**: I'm Brazilian (statement) | Yes (single word) | Were you American? (wrong tense) | Where do you live? (off-intent)
 
 **Closing cue**: Charlotte encerra com "Cool! Great intro round." quando obj_3 baterem.
 
