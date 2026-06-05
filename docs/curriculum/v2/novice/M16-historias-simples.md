@@ -104,6 +104,8 @@
    **hidden_prompt**: "user uses 'I went to + place'"
    **hint_pt**: "I went to Rio."
    **hint_en**: "I went to Rio."
+   **example_pass**: I went to Rio. | I went to Rio, yes. | Yes, i went to rio.
+   **example_fail**: Rio (bare word — no subject + verb) | Yes (no structure) | I don't know (off-topic)
 
 2. **id**: 2
    **label_pt**: "Dizer o que você fez ou viu (saw/did/had)"
@@ -111,6 +113,8 @@
    **hidden_prompt**: "user uses 'I saw/did/had + something' (irregular past)"
    **hint_pt**: "I saw the beach."
    **hint_en**: "I saw the beach."
+   **example_pass**: I saw the beach. | She works at a hospital. | He lives in São Paulo.
+   **example_fail**: Work (no subject + -s) | She work (missing -s) | Hospital (bare noun)
 
 3. **id**: 3
    **label_pt**: "Dizer com quem você foi (came/took)"
@@ -118,6 +122,8 @@
    **hidden_prompt**: "user uses 'I came with' or 'We took + transport'"
    **hint_pt**: "I came with my family."
    **hint_en**: "I came with my family."
+   **example_pass**: I came with my family. | I came with my family, yes. | Yes, i came with my family.
+   **example_fail**: family (bare word — no subject + verb) | Yes (no structure) | I don't know (off-topic)
 
 **Closing cue**: Charlotte fecha com "Sounds amazing!" quando obj_3 baterem.
 
@@ -153,6 +159,8 @@
    **hidden_prompt**: "user uses past irregular 'I went/did/had/made/saw + ...'"
    **hint_pt**: "I went to a concert."
    **hint_en**: "I went to a concert."
+   **example_pass**: I went to a concert. | I went to a concert, yes. | Yes, i went to a concert.
+   **example_fail**: concert (bare word — no subject + verb) | Yes (no structure) | I don't know (off-topic)
 
 2. **id**: 2
    **label_pt**: "Dizer mais detalhe"
@@ -160,6 +168,8 @@
    **hidden_prompt**: "user adds detail with another irregular past verb"
    **hint_pt**: "I saw my favorite band."
    **hint_en**: "I saw my favorite band."
+   **example_pass**: I saw my favorite band. | I saw my favorite band, yes. | Yes, i saw my favorite band.
+   **example_fail**: band (bare word — no subject + verb) | Yes (no structure) | I don't know (off-topic)
 
 3. **id**: 3
    **label_pt**: "Perguntar à Charlotte"
@@ -272,6 +282,8 @@
    **hidden_prompt**: "user uses 'I ate + food'"
    **hint_pt**: "I ate pasta."
    **hint_en**: "I ate pasta."
+   **example_pass**: I ate pasta. | I ate pasta, yes. | Yes, i ate pasta.
+   **example_fail**: pasta (bare word — no subject + verb) | Yes (no structure) | I don't know (off-topic)
 
 2. **id**: 2
    **label_pt**: "Dizer o que bebeu (drank)"
@@ -279,6 +291,8 @@
    **hidden_prompt**: "user uses 'I drank + drink'"
    **hint_pt**: "I drank water."
    **hint_en**: "I drank water."
+   **example_pass**: I drank water. | I drank water, yes. | Yes, i drank water.
+   **example_fail**: water (bare word — no subject + verb) | Yes (no structure) | I don't know (off-topic)
 
 3. **id**: 3
    **label_pt**: "Dizer outra ação irregular (bought/slept/found/etc.)"
@@ -286,6 +300,8 @@
    **hidden_prompt**: "user uses another irregular past verb"
    **hint_pt**: "I slept early."
    **hint_en**: "I slept early."
+   **example_pass**: I slept early. | I slept early, yes. | Yes, i slept early.
+   **example_fail**: early (bare word — no subject + verb) | Yes (no structure) | I don't know (off-topic)
 
 **Closing cue**: Charlotte fecha com "Nice details!" quando obj_3 baterem.
 
@@ -321,6 +337,8 @@
    **hidden_prompt**: "user uses 'I slept + adverb/duration'"
    **hint_pt**: "I slept eight hours."
    **hint_en**: "I slept eight hours."
+   **example_pass**: I slept eight hours. | I slept eight hours, yes. | Yes, i slept eight hours.
+   **example_fail**: hours (bare word — no subject + verb) | Yes (no structure) | I don't know (off-topic)
 
 2. **id**: 2
    **label_pt**: "Dizer o que comeu/bebeu hoje cedo"
@@ -328,6 +346,8 @@
    **hidden_prompt**: "user uses 'I ate/drank + food/drink'"
    **hint_pt**: "I ate cereal."
    **hint_en**: "I ate cereal."
+   **example_pass**: I ate cereal. | I ate cereal, yes. | Yes, i ate cereal.
+   **example_fail**: cereal (bare word — no subject + verb) | Yes (no structure) | I don't know (off-topic)
 
 3. **id**: 3
    **label_pt**: "Perguntar à Charlotte"
@@ -439,6 +459,8 @@
    **hidden_prompt**: "user uses 'I met + person/group'"
    **hint_pt**: "I met an old friend."
    **hint_en**: "I met an old friend."
+   **example_pass**: I met an old friend. | I met an old friend, yes. | Yes, i met an old friend.
+   **example_fail**: friend (bare word — no subject + verb) | Yes (no structure) | I don't know (off-topic)
 
 2. **id**: 2
    **label_pt**: "Dizer o que fizeram (leave/write/etc.)"
@@ -446,6 +468,8 @@
    **hidden_prompt**: "user uses another irregular: 'We left/wrote/read/sent...'"
    **hint_pt**: "We left at six."
    **hint_en**: "We left at six."
+   **example_pass**: We left at six. | We left at six, yes. | Yes, we left at six.
+   **example_fail**: six (bare word — no subject + verb) | Yes (no structure) | I don't know (off-topic)
 
 3. **id**: 3
    **label_pt**: "Mais um detalhe (sent/lost/etc.)"
@@ -453,6 +477,8 @@
    **hidden_prompt**: "user uses one more irregular past verb"
    **hint_pt**: "I sent her a message after."
    **hint_en**: "I sent her a message after."
+   **example_pass**: I sent her a message after. | Pizza is better than salad. | My house is bigger than yours.
+   **example_fail**: Better (bare adjective) | Pizza salad (no comparison structure) | Big (no -er/than)
 
 **Closing cue**: Charlotte fecha com "Great story!" quando obj_3 baterem.
 
@@ -488,6 +514,8 @@
    **hidden_prompt**: "user uses 'I read + book/article'"
    **hint_pt**: "I read a novel."
    **hint_en**: "I read a novel."
+   **example_pass**: I read a novel. | I read a novel, yes. | Yes, i read a novel.
+   **example_fail**: novel (bare word — no subject + verb) | Yes (no structure) | I don't know (off-topic)
 
 2. **id**: 2
    **label_pt**: "Outra ação social (met/sent/wrote)"
@@ -495,6 +523,8 @@
    **hidden_prompt**: "user uses another irregular: met/sent/wrote/etc."
    **hint_pt**: "I met my classmates."
    **hint_en**: "I met my classmates."
+   **example_pass**: I met my classmates. | I met my classmates, yes. | Yes, i met my classmates.
+   **example_fail**: classmates (bare word — no subject + verb) | Yes (no structure) | I don't know (off-topic)
 
 3. **id**: 3
    **label_pt**: "Perguntar à Charlotte"
@@ -607,6 +637,8 @@
    **hidden_prompt**: "user uses 'I put + object + place'"
    **hint_pt**: "I put my keys on the table."
    **hint_en**: "I put my keys on the table."
+   **example_pass**: I put my keys on the table. | I put my keys on the table, yes. | Yes, i put my keys on the table.
+   **example_fail**: table (bare word — no subject + verb) | Yes (no structure) | I don't know (off-topic)
 
 2. **id**: 2
    **label_pt**: "Dizer algo que cortou (cut)"
@@ -614,6 +646,8 @@
    **hidden_prompt**: "user uses 'I cut + object'"
    **hint_pt**: "I cut some bread."
    **hint_en**: "I cut some bread."
+   **example_pass**: I cut some bread. | I cut some bread, yes. | Yes, i cut some bread.
+   **example_fail**: bread (bare word — no subject + verb) | Yes (no structure) | I don't know (off-topic)
 
 3. **id**: 3
    **label_pt**: "Dizer o que leu (read)"
@@ -621,6 +655,8 @@
    **hidden_prompt**: "user uses 'I read + book/article'"
    **hint_pt**: "I read a book."
    **hint_en**: "I read a book."
+   **example_pass**: I read a book. | I read a book, yes. | Yes, i read a book.
+   **example_fail**: book (bare word — no subject + verb) | Yes (no structure) | I don't know (off-topic)
 
 **Closing cue**: Charlotte fecha com "Unchanged verbs locked!" quando obj_3 baterem.
 
@@ -656,6 +692,8 @@
    **hidden_prompt**: "user uses 'I read + something'"
    **hint_pt**: "I read the news."
    **hint_en**: "I read the news."
+   **example_pass**: I read the news. | She works at a hospital. | He lives in São Paulo.
+   **example_fail**: Work (no subject + -s) | She work (missing -s) | Hospital (bare noun)
 
 2. **id**: 2
    **label_pt**: "Dizer onde colocou algo"
@@ -663,6 +701,8 @@
    **hidden_prompt**: "user uses 'I put + object + place'"
    **hint_pt**: "I put my bag in the car."
    **hint_en**: "I put my bag in the car."
+   **example_pass**: I put my bag in the car. | I put my bag in the car, yes. | Yes, i put my bag in the car.
+   **example_fail**: car (bare word — no subject + verb) | Yes (no structure) | I don't know (off-topic)
 
 3. **id**: 3
    **label_pt**: "Perguntar à Charlotte"
@@ -774,6 +814,8 @@
    **hidden_prompt**: "user starts with 'I went to + place'"
    **hint_pt**: "I went to the gym."
    **hint_en**: "I went to the gym."
+   **example_pass**: I went to the gym. | I went to the gym, yes. | Yes, i went to the gym.
+   **example_fail**: gym (bare word — no subject + verb) | Yes (no structure) | I don't know (off-topic)
 
 2. **id**: 2
    **label_pt**: "Continuar com outra ação irregular"
@@ -781,6 +823,8 @@
    **hidden_prompt**: "user uses another irregular past verb (saw/met/had/bought/etc.)"
    **hint_pt**: "I saw my friend there."
    **hint_en**: "I saw my friend there."
+   **example_pass**: I saw my friend there. | I saw my friend there, yes. | Yes, i saw my friend there.
+   **example_fail**: there (bare word — no subject + verb) | Yes (no structure) | I don't know (off-topic)
 
 3. **id**: 3
    **label_pt**: "Fechar com outra ação"
@@ -788,6 +832,8 @@
    **hidden_prompt**: "user uses one more irregular past"
    **hint_pt**: "We had coffee after."
    **hint_en**: "We had coffee after."
+   **example_pass**: We had coffee after. | Pizza is better than salad. | My house is bigger than yours.
+   **example_fail**: Better (bare adjective) | Pizza salad (no comparison structure) | Big (no -er/than)
 
 **Closing cue**: Charlotte fecha com "Loved the story!" quando obj_3 baterem.
 
@@ -823,6 +869,8 @@
    **hidden_prompt**: "user starts with 'I went/had/made + something'"
    **hint_pt**: "I went to Italy."
    **hint_en**: "I went to Italy."
+   **example_pass**: I went to Italy. | She works at a hospital. | He lives in São Paulo.
+   **example_fail**: Work (no subject + -s) | She work (missing -s) | Hospital (bare noun)
 
 2. **id**: 2
    **label_pt**: "Continuar com mais detalhes (irregulares)"
@@ -830,6 +878,8 @@
    **hidden_prompt**: "user adds details with irregular past verbs"
    **hint_pt**: "I ate amazing food."
    **hint_en**: "I ate amazing food."
+   **example_pass**: I ate amazing food. | I ate amazing food, yes. | Yes, i ate amazing food.
+   **example_fail**: food (bare word — no subject + verb) | Yes (no structure) | I don't know (off-topic)
 
 3. **id**: 3
    **label_pt**: "Perguntar à Charlotte"

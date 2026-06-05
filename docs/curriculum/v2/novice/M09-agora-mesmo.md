@@ -109,6 +109,8 @@
    **hidden_prompt**: "user states current activity with 'I'm + verb-ing' (working, studying, reading, etc.)"
    **hint_pt**: "I'm studying English."
    **hint_en**: "I'm studying English."
+   **example_pass**: I'm studying English. | I'm working right now. | I am studying at the moment.
+   **example_fail**: Working (no subject + 'am') | I work now (wrong tense — present simple) | Now (no verb)
 
 2. **id**: 2
    **label_pt**: "Dizer o que alguém na sua casa está fazendo"
@@ -116,6 +118,8 @@
    **hidden_prompt**: "user states what someone else is doing with 'He/She is + verb-ing'"
    **hint_pt**: "My sister is cooking."
    **hint_en**: "My sister is cooking."
+   **example_pass**: My sister is cooking. | She works at a hospital. | He lives in São Paulo.
+   **example_fail**: Work (no subject + -s) | She work (missing -s) | Hospital (bare noun)
 
 3. **id**: 3
    **label_pt**: "Dizer o que vocês estão fazendo juntos OU outra atividade"
@@ -123,6 +127,8 @@
    **hidden_prompt**: "user states 'We are + verb-ing' or another current activity"
    **hint_pt**: "We're eating lunch."
    **hint_en**: "We're eating lunch."
+   **example_pass**: We're eating lunch. | We're eating lunch, yes. | Yes, we're eating lunch.
+   **example_fail**: lunch (bare word — no subject + verb) | Yes (no structure) | I don't know (off-topic)
 
 **Closing cue**: Charlotte fecha com "Busy day!" quando obj_3 baterem.
 
@@ -158,6 +164,8 @@
    **hidden_prompt**: "user says 'I'm + verb-ing'"
    **hint_pt**: "I'm reading."
    **hint_en**: "I'm reading."
+   **example_pass**: I'm reading. | I'm working right now. | I am studying at the moment.
+   **example_fail**: Working (no subject + 'am') | I work now (wrong tense — present simple) | Now (no verb)
 
 2. **id**: 2
    **label_pt**: "Dizer o que alguém perto de você está fazendo"
@@ -165,6 +173,8 @@
    **hidden_prompt**: "user says 'He/She is + verb-ing'"
    **hint_pt**: "My brother is sleeping."
    **hint_en**: "My brother is sleeping."
+   **example_pass**: My brother is sleeping. | She works at a hospital. | He lives in São Paulo.
+   **example_fail**: Work (no subject + -s) | She work (missing -s) | Hospital (bare noun)
 
 3. **id**: 3
    **label_pt**: "Perguntar à Charlotte"
@@ -620,6 +630,8 @@
    **hidden_prompt**: "user states temporary activity with 'I'm + verb-ing + this week/today/this month'"
    **hint_pt**: "I'm working from home this week."
    **hint_en**: "I'm working from home this week."
+   **example_pass**: I'm working from home this week. | I'm working right now. | I am studying at the moment.
+   **example_fail**: Working (no subject + 'am') | I work now (wrong tense — present simple) | Now (no verb)
 
 2. **id**: 2
    **label_pt**: "Dizer o que está fazendo agora mesmo"
@@ -627,6 +639,8 @@
    **hidden_prompt**: "user states 'I'm + verb-ing + right now/at the moment'"
    **hint_pt**: "I'm studying English right now."
    **hint_en**: "I'm studying English right now."
+   **example_pass**: I'm studying English right now. | I'm working right now. | I am studying at the moment.
+   **example_fail**: Working (no subject + 'am') | I work now (wrong tense — present simple) | Now (no verb)
 
 3. **id**: 3
    **label_pt**: "Dizer atividade temporária de alguém"
@@ -634,6 +648,8 @@
    **hidden_prompt**: "user states 'He/She is + verb-ing + temporary marker'"
    **hint_pt**: "My friend is traveling this month."
    **hint_en**: "My friend is traveling this month."
+   **example_pass**: My friend is traveling this month. | She works at a hospital. | He lives in São Paulo.
+   **example_fail**: Work (no subject + -s) | She work (missing -s) | Hospital (bare noun)
 
 **Closing cue**: Charlotte fecha com "Sounds busy!" quando obj_3 baterem.
 
@@ -669,6 +685,8 @@
    **hidden_prompt**: "user says 'I'm + verb-ing + this week/today'"
    **hint_pt**: "I'm studying for an exam this week."
    **hint_en**: "I'm studying for an exam this week."
+   **example_pass**: I'm studying for an exam this week. | I'm working right now. | I am studying at the moment.
+   **example_fail**: Working (no subject + 'am') | I work now (wrong tense — present simple) | Now (no verb)
 
 2. **id**: 2
    **label_pt**: "Dizer algo do momento"
@@ -676,6 +694,8 @@
    **hidden_prompt**: "user says 'I'm + verb-ing + right now/at the moment'"
    **hint_pt**: "I'm having lunch right now."
    **hint_en**: "I'm having lunch right now."
+   **example_pass**: I'm having lunch right now. | I'm working right now. | I am studying at the moment.
+   **example_fail**: Working (no subject + 'am') | I work now (wrong tense — present simple) | Now (no verb)
 
 3. **id**: 3
    **label_pt**: "Perguntar à Charlotte"
@@ -787,6 +807,8 @@
    **hidden_prompt**: "user states routine with 'I + verb' + frequency/place adverb (every day, on Mondays, usually, in NYC, etc.)"
    **hint_pt**: "I work in São Paulo."
    **hint_en**: "I work in São Paulo."
+   **example_pass**: I work in São Paulo. | I live in Brazil. | I work at a school.
+   **example_fail**: Brazil (bare noun) | Live (no subject) | Work (bare verb)
 
 2. **id**: 2
    **label_pt**: "Dizer algo do momento (continuous)"
@@ -794,6 +816,8 @@
    **hidden_prompt**: "user states current with 'I'm + verb-ing + now/today/this week'"
    **hint_pt**: "I'm studying English right now."
    **hint_en**: "I'm studying English right now."
+   **example_pass**: I'm studying English right now. | I'm working right now. | I am studying at the moment.
+   **example_fail**: Working (no subject + 'am') | I work now (wrong tense — present simple) | Now (no verb)
 
 3. **id**: 3
    **label_pt**: "Fazer contraste claro"
@@ -801,6 +825,8 @@
    **hidden_prompt**: "user contrasts routine vs current with 'Usually I + verb, but today/now I'm + verb-ing'"
    **hint_pt**: "I usually drink coffee, but today I'm drinking tea."
    **hint_en**: "I usually drink coffee, but today I'm drinking tea."
+   **example_pass**: I usually drink coffee, but today I'm drinking tea. | I'm working right now. | I am studying at the moment.
+   **example_fail**: Working (no subject + 'am') | I work now (wrong tense — present simple) | Now (no verb)
 
 **Closing cue**: Charlotte fecha com "Got the contrast!" quando obj_3 baterem.
 
@@ -836,6 +862,8 @@
    **hidden_prompt**: "user says 'I + verb' with routine adverb"
    **hint_pt**: "I usually have coffee."
    **hint_en**: "I usually have coffee."
+   **example_pass**: I usually have coffee. | I live in Brazil. | I work at a school.
+   **example_fail**: Brazil (bare noun) | Live (no subject) | Work (bare verb)
 
 2. **id**: 2
    **label_pt**: "Dizer algo do momento"
@@ -843,6 +871,8 @@
    **hidden_prompt**: "user says 'I'm + verb-ing + now/today'"
    **hint_pt**: "I'm drinking tea today."
    **hint_en**: "I'm drinking tea today."
+   **example_pass**: I'm drinking tea today. | I'm working right now. | I am studying at the moment.
+   **example_fail**: Working (no subject + 'am') | I work now (wrong tense — present simple) | Now (no verb)
 
 3. **id**: 3
    **label_pt**: "Perguntar à Charlotte"

@@ -195,7 +195,17 @@
             "label_en": "Weather prediction",
             "hidden_prompt": "user makes weather prediction with 'I think it will + verb base' or 'It will + verb base'",
             "hint_pt": "I think it will rain tomorrow.",
-            "hint_en": "I think it will rain tomorrow."
+            "hint_en": "I think it will rain tomorrow.",
+            "examples_pass": [
+              "I think it will rain tomorrow.",
+              "I'm going to travel tomorrow.",
+              "I will study tonight."
+            ],
+            "examples_fail": [
+              "Tomorrow (no verb)",
+              "I travel tomorrow (wrong tense — present)",
+              "Travel (bare verb, no future)"
+            ]
           },
           {
             "id": 2,
@@ -203,7 +213,17 @@
             "label_en": "Prediction about person/event",
             "hidden_prompt": "user predicts with 'She/He/They will + base'",
             "hint_pt": "She will love the party.",
-            "hint_en": "She will love the party."
+            "hint_en": "She will love the party.",
+            "examples_pass": [
+              "She will love the party.",
+              "I'm going to travel tomorrow.",
+              "I will study tonight."
+            ],
+            "examples_fail": [
+              "Tomorrow (no verb)",
+              "I travel tomorrow (wrong tense — present)",
+              "Travel (bare verb, no future)"
+            ]
           },
           {
             "id": 3,
@@ -211,7 +231,17 @@
             "label_en": "Prediction about own future",
             "hidden_prompt": "user predicts with 'I will + base + future time'",
             "hint_pt": "I will be 30 next year.",
-            "hint_en": "I will be 30 next year."
+            "hint_en": "I will be 30 next year.",
+            "examples_pass": [
+              "I will be 30 next year.",
+              "I'm going to travel tomorrow.",
+              "I will study tonight."
+            ],
+            "examples_fail": [
+              "Tomorrow (no verb)",
+              "I travel tomorrow (wrong tense — present)",
+              "Travel (bare verb, no future)"
+            ]
           }
         ],
         "closing_cue": "Charlotte fecha com \"Fortune teller!\" quando obj_3 baterem.",
@@ -236,7 +266,17 @@
             "label_en": "Prediction about you",
             "hidden_prompt": "user uses 'I will/I'll + base + time'",
             "hint_pt": "I'll travel next year.",
-            "hint_en": "I'll travel next year."
+            "hint_en": "I'll travel next year.",
+            "examples_pass": [
+              "I'll travel next year.",
+              "I'm going to travel tomorrow.",
+              "I will study tonight."
+            ],
+            "examples_fail": [
+              "Tomorrow (no verb)",
+              "I travel tomorrow (wrong tense — present)",
+              "Travel (bare verb, no future)"
+            ]
           },
           {
             "id": 2,
@@ -244,7 +284,17 @@
             "label_en": "Prediction about world/family",
             "hidden_prompt": "user uses 'X will + base'",
             "hint_pt": "My sister will move to NYC.",
-            "hint_en": "My sister will move to NYC."
+            "hint_en": "My sister will move to NYC.",
+            "examples_pass": [
+              "My sister will move to NYC.",
+              "I'm going to travel tomorrow.",
+              "I will study tonight."
+            ],
+            "examples_fail": [
+              "Tomorrow (no verb)",
+              "I travel tomorrow (wrong tense — present)",
+              "Travel (bare verb, no future)"
+            ]
           },
           {
             "id": 3,
@@ -439,7 +489,17 @@
             "label_en": "Spontaneous decision (I'll)",
             "hidden_prompt": "user reacts with 'I'll + verb base' (get it, answer, help, etc.)",
             "hint_pt": "I'll get it!",
-            "hint_en": "I'll get it!"
+            "hint_en": "I'll get it!",
+            "examples_pass": [
+              "I'll get it.",
+              "I'm going to travel tomorrow.",
+              "I will study tonight."
+            ],
+            "examples_fail": [
+              "Tomorrow (no verb)",
+              "I travel tomorrow (wrong tense — present)",
+              "Travel (bare verb, no future)"
+            ]
           },
           {
             "id": 2,
@@ -447,7 +507,17 @@
             "label_en": "Promise (I'll)",
             "hidden_prompt": "user makes a promise with 'I promise I'll + base' or 'I'll + base'",
             "hint_pt": "I'll call you later.",
-            "hint_en": "I'll call you later."
+            "hint_en": "I'll call you later.",
+            "examples_pass": [
+              "I'll call you later.",
+              "I'm going to travel tomorrow.",
+              "I will study tonight."
+            ],
+            "examples_fail": [
+              "Tomorrow (no verb)",
+              "I travel tomorrow (wrong tense — present)",
+              "Travel (bare verb, no future)"
+            ]
           },
           {
             "id": 3,
@@ -455,7 +525,17 @@
             "label_en": "Negative with won't",
             "hidden_prompt": "user uses 'I won't + base'",
             "hint_pt": "I won't tell anyone.",
-            "hint_en": "I won't tell anyone."
+            "hint_en": "I won't tell anyone.",
+            "examples_pass": [
+              "I won't tell anyone.",
+              "I won't tell anyone, yes.",
+              "Yes, i won't tell anyone."
+            ],
+            "examples_fail": [
+              "anyone (bare word — no subject + verb)",
+              "Yes (no structure)",
+              "I don't know (off-topic)"
+            ]
           }
         ],
         "closing_cue": "Charlotte fecha com \"Quick decisions!\" quando obj_3 baterem.",
@@ -480,7 +560,17 @@
             "label_en": "Offer help",
             "hidden_prompt": "user uses 'I'll help' or 'I'll + base'",
             "hint_pt": "I'll help you.",
-            "hint_en": "I'll help you."
+            "hint_en": "I'll help you.",
+            "examples_pass": [
+              "I'll help you.",
+              "I'm going to travel tomorrow.",
+              "I will study tonight."
+            ],
+            "examples_fail": [
+              "Tomorrow (no verb)",
+              "I travel tomorrow (wrong tense — present)",
+              "Travel (bare verb, no future)"
+            ]
           },
           {
             "id": 2,
@@ -488,7 +578,17 @@
             "label_en": "Make a promise",
             "hidden_prompt": "user uses 'I promise I'll + base' or 'I'll + base'",
             "hint_pt": "I'll be there at five.",
-            "hint_en": "I'll be there at five."
+            "hint_en": "I'll be there at five.",
+            "examples_pass": [
+              "I'll be there at five.",
+              "I'm going to travel tomorrow.",
+              "I will study tonight."
+            ],
+            "examples_fail": [
+              "Tomorrow (no verb)",
+              "I travel tomorrow (wrong tense — present)",
+              "Travel (bare verb, no future)"
+            ]
           },
           {
             "id": 3,
@@ -496,7 +596,17 @@
             "label_en": "Negative with won't",
             "hidden_prompt": "user uses 'I won't + base'",
             "hint_pt": "I won't forget.",
-            "hint_en": "I won't forget."
+            "hint_en": "I won't forget.",
+            "examples_pass": [
+              "I won't forget.",
+              "I won't forget, yes.",
+              "Yes, i won't forget."
+            ],
+            "examples_fail": [
+              "forget (bare word — no subject + verb)",
+              "Yes (no structure)",
+              "I don't know (off-topic)"
+            ]
           }
         ],
         "closing_cue": "Charlotte encerra com \"Trustworthy friend!\" quando obj_3 baterem.",
@@ -659,7 +769,17 @@
             "label_en": "Plan with going to",
             "hidden_prompt": "user uses 'I'm going to + base' for a planned event",
             "hint_pt": "I'm going to travel next week.",
-            "hint_en": "I'm going to travel next week."
+            "hint_en": "I'm going to travel next week.",
+            "examples_pass": [
+              "I'm going to travel next week.",
+              "I'm going to travel tomorrow.",
+              "I will study tonight."
+            ],
+            "examples_fail": [
+              "Tomorrow (no verb)",
+              "I travel tomorrow (wrong tense — present)",
+              "Travel (bare verb, no future)"
+            ]
           },
           {
             "id": 2,
@@ -667,7 +787,17 @@
             "label_en": "Spontaneous decision with will",
             "hidden_prompt": "user uses 'I'll + base' for spontaneous reaction",
             "hint_pt": "I'll get it!",
-            "hint_en": "I'll get it!"
+            "hint_en": "I'll get it!",
+            "examples_pass": [
+              "I'll get it.",
+              "I'm going to travel tomorrow.",
+              "I will study tonight."
+            ],
+            "examples_fail": [
+              "Tomorrow (no verb)",
+              "I travel tomorrow (wrong tense — present)",
+              "Travel (bare verb, no future)"
+            ]
           },
           {
             "id": 3,
@@ -675,7 +805,17 @@
             "label_en": "Prediction with will",
             "hidden_prompt": "user uses 'I think + will + base' for prediction",
             "hint_pt": "I think it'll rain.",
-            "hint_en": "I think it'll rain."
+            "hint_en": "I think it'll rain.",
+            "examples_pass": [
+              "I think it'll rain.",
+              "I'm going to travel tomorrow.",
+              "I will study tonight."
+            ],
+            "examples_fail": [
+              "Tomorrow (no verb)",
+              "I travel tomorrow (wrong tense — present)",
+              "Travel (bare verb, no future)"
+            ]
           }
         ],
         "closing_cue": "Charlotte fecha com \"Choice mastered!\" quando obj_3 baterem.",
@@ -700,7 +840,17 @@
             "label_en": "Plan with going to",
             "hidden_prompt": "user uses 'I'm going to + base'",
             "hint_pt": "I'm going to study tonight.",
-            "hint_en": "I'm going to study tonight."
+            "hint_en": "I'm going to study tonight.",
+            "examples_pass": [
+              "I'm going to study tonight.",
+              "I'm going to travel tomorrow.",
+              "I will study tonight."
+            ],
+            "examples_fail": [
+              "Tomorrow (no verb)",
+              "I travel tomorrow (wrong tense — present)",
+              "Travel (bare verb, no future)"
+            ]
           },
           {
             "id": 2,
@@ -708,7 +858,17 @@
             "label_en": "Reaction with will",
             "hidden_prompt": "user uses 'I'll + base'",
             "hint_pt": "I'll help if you need.",
-            "hint_en": "I'll help if you need."
+            "hint_en": "I'll help if you need.",
+            "examples_pass": [
+              "I'll help if you need.",
+              "I'm going to travel tomorrow.",
+              "I will study tonight."
+            ],
+            "examples_fail": [
+              "Tomorrow (no verb)",
+              "I travel tomorrow (wrong tense — present)",
+              "Travel (bare verb, no future)"
+            ]
           },
           {
             "id": 3,
@@ -887,7 +1047,17 @@
             "label_en": "Accept with 'I'll'",
             "hidden_prompt": "user accepts with 'I'll + base'",
             "hint_pt": "Sure, I'll help.",
-            "hint_en": "Sure, I'll help."
+            "hint_en": "Sure, I'll help.",
+            "examples_pass": [
+              "Sure, I'll help.",
+              "I'm going to travel tomorrow.",
+              "I will study tonight."
+            ],
+            "examples_fail": [
+              "Tomorrow (no verb)",
+              "I travel tomorrow (wrong tense — present)",
+              "Travel (bare verb, no future)"
+            ]
           },
           {
             "id": 2,
@@ -895,7 +1065,17 @@
             "label_en": "Make a promise",
             "hidden_prompt": "user makes promise with 'I'll + base'",
             "hint_pt": "I'll be there at five.",
-            "hint_en": "I'll be there at five."
+            "hint_en": "I'll be there at five.",
+            "examples_pass": [
+              "I'll be there at five.",
+              "I'm going to travel tomorrow.",
+              "I will study tonight."
+            ],
+            "examples_fail": [
+              "Tomorrow (no verb)",
+              "I travel tomorrow (wrong tense — present)",
+              "Travel (bare verb, no future)"
+            ]
           },
           {
             "id": 3,
@@ -938,7 +1118,17 @@
             "label_en": "Accept the invite",
             "hidden_prompt": "user accepts with 'I'll come' or 'Yes, I will'",
             "hint_pt": "Yes, I'll come.",
-            "hint_en": "Yes, I'll come."
+            "hint_en": "Yes, I'll come.",
+            "examples_pass": [
+              "Yes, I'll come.",
+              "I'm going to travel tomorrow.",
+              "I will study tonight."
+            ],
+            "examples_fail": [
+              "Tomorrow (no verb)",
+              "I travel tomorrow (wrong tense — present)",
+              "Travel (bare verb, no future)"
+            ]
           },
           {
             "id": 2,
@@ -946,7 +1136,17 @@
             "label_en": "Offer to bring something",
             "hidden_prompt": "user uses 'I'll bring + something'",
             "hint_pt": "I'll bring a cake.",
-            "hint_en": "I'll bring a cake."
+            "hint_en": "I'll bring a cake.",
+            "examples_pass": [
+              "I'll bring a cake.",
+              "I'm going to travel tomorrow.",
+              "I will study tonight."
+            ],
+            "examples_fail": [
+              "Tomorrow (no verb)",
+              "I travel tomorrow (wrong tense — present)",
+              "Travel (bare verb, no future)"
+            ]
           },
           {
             "id": 3,
@@ -1137,7 +1337,17 @@
             "label_en": "Plan with going to",
             "hidden_prompt": "user uses 'I'm going to + base + time'",
             "hint_pt": "I'm going to travel next month.",
-            "hint_en": "I'm going to travel next month."
+            "hint_en": "I'm going to travel next month.",
+            "examples_pass": [
+              "I'm going to travel next month.",
+              "I'm going to travel tomorrow.",
+              "I will study tonight."
+            ],
+            "examples_fail": [
+              "Tomorrow (no verb)",
+              "I travel tomorrow (wrong tense — present)",
+              "Travel (bare verb, no future)"
+            ]
           },
           {
             "id": 2,
@@ -1145,7 +1355,17 @@
             "label_en": "Prediction with will",
             "hidden_prompt": "user uses 'I think + will' or 'It will + base'",
             "hint_pt": "I think it will be fun.",
-            "hint_en": "I think it will be fun."
+            "hint_en": "I think it will be fun.",
+            "examples_pass": [
+              "I think it will be fun.",
+              "I'm going to travel tomorrow.",
+              "I will study tonight."
+            ],
+            "examples_fail": [
+              "Tomorrow (no verb)",
+              "I travel tomorrow (wrong tense — present)",
+              "Travel (bare verb, no future)"
+            ]
           },
           {
             "id": 3,
@@ -1153,7 +1373,17 @@
             "label_en": "Offer with will",
             "hidden_prompt": "user uses 'I'll + base' as offer",
             "hint_pt": "I'll help you pack.",
-            "hint_en": "I'll help you pack."
+            "hint_en": "I'll help you pack.",
+            "examples_pass": [
+              "I'll help you pack.",
+              "I'm going to travel tomorrow.",
+              "I will study tonight."
+            ],
+            "examples_fail": [
+              "Tomorrow (no verb)",
+              "I travel tomorrow (wrong tense — present)",
+              "Travel (bare verb, no future)"
+            ]
           }
         ],
         "closing_cue": "Charlotte fecha com \"Future verbs mastered!\" quando obj_3 baterem.",
@@ -1178,7 +1408,17 @@
             "label_en": "Firm plan",
             "hidden_prompt": "user uses 'I'm going to + base'",
             "hint_pt": "I'm going to learn Spanish.",
-            "hint_en": "I'm going to learn Spanish."
+            "hint_en": "I'm going to learn Spanish.",
+            "examples_pass": [
+              "I'm going to learn Spanish.",
+              "I'm going to travel tomorrow.",
+              "I will study tonight."
+            ],
+            "examples_fail": [
+              "Tomorrow (no verb)",
+              "I travel tomorrow (wrong tense — present)",
+              "Travel (bare verb, no future)"
+            ]
           },
           {
             "id": 2,
@@ -1186,7 +1426,17 @@
             "label_en": "Prediction",
             "hidden_prompt": "user uses 'I think + will'",
             "hint_pt": "I think I'll be happy.",
-            "hint_en": "I think I'll be happy."
+            "hint_en": "I think I'll be happy.",
+            "examples_pass": [
+              "I think I'll be happy.",
+              "I think I'll be happy, yes.",
+              "Yes, i think i'll be happy."
+            ],
+            "examples_fail": [
+              "happy (bare word — no subject + verb)",
+              "Yes (no structure)",
+              "I don't know (off-topic)"
+            ]
           },
           {
             "id": 3,
@@ -1363,7 +1613,17 @@
             "label_en": "Describe current weather",
             "hidden_prompt": "user describes weather with 'It's...'",
             "hint_pt": "It's really sunny and warm today.",
-            "hint_en": "It's really sunny and warm today."
+            "hint_en": "It's really sunny and warm today.",
+            "examples_pass": [
+              "It's really sunny and warm today.",
+              "It's really sunny and warm today, yes.",
+              "Yes, it's really sunny and warm today."
+            ],
+            "examples_fail": [
+              "today (bare word — no subject + verb)",
+              "Yes (no structure)",
+              "I don't know (off-topic)"
+            ]
           },
           {
             "id": 2,
@@ -1371,7 +1631,17 @@
             "label_en": "Talk about tomorrow's forecast",
             "hidden_prompt": "user uses 'going to' or 'will' for forecast",
             "hint_pt": "It's going to rain tomorrow.",
-            "hint_en": "It's going to rain tomorrow."
+            "hint_en": "It's going to rain tomorrow.",
+            "examples_pass": [
+              "It's going to rain tomorrow.",
+              "I'm going to travel tomorrow.",
+              "I will study tonight."
+            ],
+            "examples_fail": [
+              "Tomorrow (no verb)",
+              "I travel tomorrow (wrong tense — present)",
+              "Travel (bare verb, no future)"
+            ]
           },
           {
             "id": 3,
@@ -1379,7 +1649,17 @@
             "label_en": "Talk about favorite season",
             "hidden_prompt": "user mentions favorite season",
             "hint_pt": "Summer is my favorite season.",
-            "hint_en": "Summer is my favorite season."
+            "hint_en": "Summer is my favorite season.",
+            "examples_pass": [
+              "Summer is my favorite season.",
+              "I love pizza.",
+              "My favorite food is sushi."
+            ],
+            "examples_fail": [
+              "Pizza (bare noun)",
+              "Like (incomplete)",
+              "Yes (no preference structure)"
+            ]
           }
         ],
         "closing_cue": "Charlotte fecha com \"Weather talk forever!\" quando obj_3 bater.",
@@ -1404,7 +1684,17 @@
             "label_en": "State your weather preference",
             "hidden_prompt": "user states weather preference",
             "hint_pt": "I prefer cold weather.",
-            "hint_en": "I prefer cold weather."
+            "hint_en": "I prefer cold weather.",
+            "examples_pass": [
+              "I prefer cold weather.",
+              "I prefer cold weather, yes.",
+              "Yes, i prefer cold weather."
+            ],
+            "examples_fail": [
+              "weather (bare word — no subject + verb)",
+              "Yes (no structure)",
+              "I don't know (off-topic)"
+            ]
           },
           {
             "id": 2,
@@ -1412,7 +1702,17 @@
             "label_en": "Talk about current weather",
             "hidden_prompt": "user describes current weather",
             "hint_pt": "Right now it's cool and cloudy.",
-            "hint_en": "Right now it's cool and cloudy."
+            "hint_en": "Right now it's cool and cloudy.",
+            "examples_pass": [
+              "Right now it's cool and cloudy.",
+              "Right now it's cool and cloudy, yes.",
+              "Yes, right now it's cool and cloudy."
+            ],
+            "examples_fail": [
+              "cloudy (bare word — no subject + verb)",
+              "Yes (no structure)",
+              "I don't know (off-topic)"
+            ]
           },
           {
             "id": 3,

@@ -104,6 +104,8 @@
    **hidden_prompt**: "user uses 'If it rains, I'll + base'"
    **hint_pt**: "If it rains, I'll stay home."
    **hint_en**: "If it rains, I'll stay home."
+   **example_pass**: If it rains, I'll stay home. | I'm going to travel tomorrow. | I will study tonight.
+   **example_fail**: Tomorrow (no verb) | I travel tomorrow (wrong tense — present) | Travel (bare verb, no future)
 
 2. **id**: 2
    **label_pt**: "Outra condicional"
@@ -111,6 +113,8 @@
    **hidden_prompt**: "user uses another 'If + present, will + base'"
    **hint_pt**: "If it's sunny, I'll go to the park."
    **hint_en**: "If it's sunny, I'll go to the park."
+   **example_pass**: If it's sunny, I'll go to the park. | I'm going to travel tomorrow. | I will study tonight.
+   **example_fail**: Tomorrow (no verb) | I travel tomorrow (wrong tense — present) | Travel (bare verb, no future)
 
 3. **id**: 3
    **label_pt**: "Condicional sobre planos"
@@ -118,6 +122,8 @@
    **hidden_prompt**: "user uses 'If + present, will + base' for a plan"
    **hint_pt**: "If my friend calls, we'll meet up."
    **hint_en**: "If my friend calls, we'll meet up."
+   **example_pass**: If my friend calls, we'll meet up. | I'm going to travel tomorrow. | I will study tonight.
+   **example_fail**: Tomorrow (no verb) | I travel tomorrow (wrong tense — present) | Travel (bare verb, no future)
 
 **Closing cue**: Charlotte fecha com "Flexible plans!" quando obj_3 baterem.
 
@@ -153,6 +159,8 @@
    **hidden_prompt**: "user uses 'If it + verb, I'll + base' (about weather)"
    **hint_pt**: "If it rains, I'll stay in."
    **hint_en**: "If it rains, I'll stay in."
+   **example_pass**: If it rains, I'll stay in. | I'm going to travel tomorrow. | I will study tonight.
+   **example_fail**: Tomorrow (no verb) | I travel tomorrow (wrong tense — present) | Travel (bare verb, no future)
 
 2. **id**: 2
    **label_pt**: "Outra condicional"
@@ -160,6 +168,8 @@
    **hidden_prompt**: "user uses another conditional"
    **hint_pt**: "If I have time, I'll call you."
    **hint_en**: "If I have time, I'll call you."
+   **example_pass**: If I have time, I'll call you. | If it rains, I stay home. | If I have time, I'll go.
+   **example_fail**: Rain (no if-clause) | I stay home (no condition) | If (incomplete)
 
 3. **id**: 3
    **label_pt**: "Perguntar à Charlotte"
@@ -271,6 +281,8 @@
    **hidden_prompt**: "user uses 'If I have time, I'll + base'"
    **hint_pt**: "If I have time, I'll exercise."
    **hint_en**: "If I have time, I'll exercise."
+   **example_pass**: If I have time, I'll exercise. | I'm going to travel tomorrow. | I will study tonight.
+   **example_fail**: Tomorrow (no verb) | I travel tomorrow (wrong tense — present) | Travel (bare verb, no future)
 
 2. **id**: 2
    **label_pt**: "Condicional sobre dinheiro"
@@ -278,6 +290,8 @@
    **hidden_prompt**: "user uses 'If I have/save money, I'll + base'"
    **hint_pt**: "If I save money, I'll travel."
    **hint_en**: "If I save money, I'll travel."
+   **example_pass**: If I save money, I'll travel. | I'm going to travel tomorrow. | I will study tonight.
+   **example_fail**: Tomorrow (no verb) | I travel tomorrow (wrong tense — present) | Travel (bare verb, no future)
 
 3. **id**: 3
    **label_pt**: "Condicional sobre humor/disposição"
@@ -285,6 +299,8 @@
    **hidden_prompt**: "user uses 'If I feel + adj, I'll + base'"
    **hint_pt**: "If I feel tired, I'll rest."
    **hint_en**: "If I feel tired, I'll rest."
+   **example_pass**: If I feel tired, I'll rest. | I'm going to travel tomorrow. | I will study tonight.
+   **example_fail**: Tomorrow (no verb) | I travel tomorrow (wrong tense — present) | Travel (bare verb, no future)
 
 **Closing cue**: Charlotte fecha com "Realistic plans!" quando obj_3 baterem.
 
@@ -320,6 +336,8 @@
    **hidden_prompt**: "user uses 'If X, I'll + base'"
    **hint_pt**: "If the weather is nice, I'll go to the beach."
    **hint_en**: "If the weather is nice, I'll go to the beach."
+   **example_pass**: If the weather is nice, I'll go to the beach. | I'm going to travel tomorrow. | I will study tonight.
+   **example_fail**: Tomorrow (no verb) | I travel tomorrow (wrong tense — present) | Travel (bare verb, no future)
 
 2. **id**: 2
    **label_pt**: "Plano condicional 2"
@@ -327,6 +345,8 @@
    **hidden_prompt**: "user uses another conditional"
    **hint_pt**: "If my friends call, I'll meet them."
    **hint_en**: "If my friends call, I'll meet them."
+   **example_pass**: If my friends call, I'll meet them. | If it rains, I stay home. | If I have time, I'll go.
+   **example_fail**: Rain (no if-clause) | I stay home (no condition) | If (incomplete)
 
 3. **id**: 3
    **label_pt**: "Perguntar à Charlotte"
@@ -439,6 +459,8 @@
    **hidden_prompt**: "user uses 'If you need + something, I'll + base'"
    **hint_pt**: "If you need help, I'll come."
    **hint_en**: "If you need help, I'll come."
+   **example_pass**: If you need help, I'll come. | I'm going to travel tomorrow. | I will study tonight.
+   **example_fail**: Tomorrow (no verb) | I travel tomorrow (wrong tense — present) | Travel (bare verb, no future)
 
 2. **id**: 2
    **label_pt**: "Outra oferta condicional"
@@ -446,6 +468,8 @@
    **hidden_prompt**: "user uses another 'If you + present, I'll + base'"
    **hint_pt**: "If you're hungry, I'll bring food."
    **hint_en**: "If you're hungry, I'll bring food."
+   **example_pass**: If you're hungry, I'll bring food. | I'm going to travel tomorrow. | I will study tonight.
+   **example_fail**: Tomorrow (no verb) | I travel tomorrow (wrong tense — present) | Travel (bare verb, no future)
 
 3. **id**: 3
    **label_pt**: "Convite condicional"
@@ -453,6 +477,8 @@
    **hidden_prompt**: "user uses 'If you have time, we'll + base'"
    **hint_pt**: "If you have time, we'll grab coffee."
    **hint_en**: "If you have time, we'll grab coffee."
+   **example_pass**: If you have time, we'll grab coffee. | I'm going to travel tomorrow. | I will study tonight.
+   **example_fail**: Tomorrow (no verb) | I travel tomorrow (wrong tense — present) | Travel (bare verb, no future)
 
 **Closing cue**: Charlotte fecha com "Such a kind friend!" quando obj_3 baterem.
 
@@ -488,6 +514,8 @@
    **hidden_prompt**: "user uses 'If you + present, I'll + base'"
    **hint_pt**: "If you're sad, I'll listen."
    **hint_en**: "If you're sad, I'll listen."
+   **example_pass**: If you're sad, I'll listen. | I'm going to travel tomorrow. | I will study tonight.
+   **example_fail**: Tomorrow (no verb) | I travel tomorrow (wrong tense — present) | Travel (bare verb, no future)
 
 2. **id**: 2
    **label_pt**: "Outra oferta"
@@ -495,6 +523,8 @@
    **hidden_prompt**: "user uses another conditional offer"
    **hint_pt**: "If you need company, I'll come over."
    **hint_en**: "If you need company, I'll come over."
+   **example_pass**: If you need company, I'll come over. | If it rains, I stay home. | If I have time, I'll go.
+   **example_fail**: Rain (no if-clause) | I stay home (no condition) | If (incomplete)
 
 3. **id**: 3
    **label_pt**: "Perguntar à Charlotte"
@@ -607,6 +637,8 @@
    **hidden_prompt**: "user uses 'I'll + base + unless + present'"
    **hint_pt**: "I'll go out unless it rains."
    **hint_en**: "I'll go out unless it rains."
+   **example_pass**: I'll go out unless it rains. | I'm going to travel tomorrow. | I will study tonight.
+   **example_fail**: Tomorrow (no verb) | I travel tomorrow (wrong tense — present) | Travel (bare verb, no future)
 
 2. **id**: 2
    **label_pt**: "Outra com unless"
@@ -614,6 +646,8 @@
    **hidden_prompt**: "user uses another sentence with unless"
    **hint_pt**: "I'll cook unless you want delivery."
    **hint_en**: "I'll cook unless you want delivery."
+   **example_pass**: I'll cook unless you want delivery. | I'll cook unless you want delivery, yes. | Yes, i'll cook unless you want delivery.
+   **example_fail**: delivery (bare word — no subject + verb) | Yes (no structure) | I don't know (off-topic)
 
 3. **id**: 3
    **label_pt**: "Unless no início"
@@ -621,6 +655,8 @@
    **hidden_prompt**: "user uses 'Unless + present, I'll + base'"
    **hint_pt**: "Unless I'm too tired, I'll exercise."
    **hint_en**: "Unless I'm too tired, I'll exercise."
+   **example_pass**: Unless I'm too tired, I'll exercise. | I'm going to travel tomorrow. | I will study tonight.
+   **example_fail**: Tomorrow (no verb) | I travel tomorrow (wrong tense — present) | Travel (bare verb, no future)
 
 **Closing cue**: Charlotte fecha com "Unless covered!" quando obj_3 baterem.
 
@@ -656,6 +692,8 @@
    **hidden_prompt**: "user uses 'Yes, I'll + base + unless + present'"
    **hint_pt**: "Yes, I'll come unless I'm sick."
    **hint_en**: "Yes, I'll come unless I'm sick."
+   **example_pass**: Yes, I'll come unless I'm sick. | I'm going to travel tomorrow. | I will study tonight.
+   **example_fail**: Tomorrow (no verb) | I travel tomorrow (wrong tense — present) | Travel (bare verb, no future)
 
 2. **id**: 2
    **label_pt**: "Outro plano com unless"
@@ -663,6 +701,8 @@
    **hidden_prompt**: "user uses another 'I'll + base + unless'"
    **hint_pt**: "I'll bring snacks unless you have enough."
    **hint_en**: "I'll bring snacks unless you have enough."
+   **example_pass**: I'll bring snacks unless you have enough. | I'm going to travel tomorrow. | I will study tonight.
+   **example_fail**: Tomorrow (no verb) | I travel tomorrow (wrong tense — present) | Travel (bare verb, no future)
 
 3. **id**: 3
    **label_pt**: "Perguntar à Charlotte"
@@ -775,6 +815,8 @@
    **hidden_prompt**: "user uses 'If + present, I'll + base'"
    **hint_pt**: "If I save enough, I'll buy a car."
    **hint_en**: "If I save enough, I'll buy a car."
+   **example_pass**: If I save enough, I'll buy a car. | I'm going to travel tomorrow. | I will study tonight.
+   **example_fail**: Tomorrow (no verb) | I travel tomorrow (wrong tense — present) | Travel (bare verb, no future)
 
 2. **id**: 2
    **label_pt**: "Condicional negativa (Unless)"
@@ -782,6 +824,8 @@
    **hidden_prompt**: "user uses 'I'll + base + unless + present'"
    **hint_pt**: "I'll go unless it rains."
    **hint_en**: "I'll go unless it rains."
+   **example_pass**: I'll go unless it rains. | I'm going to travel tomorrow. | I will study tonight.
+   **example_fail**: Tomorrow (no verb) | I travel tomorrow (wrong tense — present) | Travel (bare verb, no future)
 
 3. **id**: 3
    **label_pt**: "Pergunta condicional"
@@ -826,6 +870,8 @@
    **hidden_prompt**: "user uses 'If X, I'll + base'"
    **hint_pt**: "If I have time, I'll visit my family."
    **hint_en**: "If I have time, I'll visit my family."
+   **example_pass**: If I have time, I'll visit my family. | I'm going to travel tomorrow. | I will study tonight.
+   **example_fail**: Tomorrow (no verb) | I travel tomorrow (wrong tense — present) | Travel (bare verb, no future)
 
 2. **id**: 2
    **label_pt**: "Plano com unless"
@@ -833,6 +879,8 @@
    **hidden_prompt**: "user uses 'I'll + base + unless + present'"
    **hint_pt**: "I'll work out unless I'm too tired."
    **hint_en**: "I'll work out unless I'm too tired."
+   **example_pass**: I'll work out unless I'm too tired. | I'm going to travel tomorrow. | I will study tonight.
+   **example_fail**: Tomorrow (no verb) | I travel tomorrow (wrong tense — present) | Travel (bare verb, no future)
 
 3. **id**: 3
    **label_pt**: "Perguntar à Charlotte"

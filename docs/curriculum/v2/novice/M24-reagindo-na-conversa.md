@@ -110,6 +110,8 @@
    **hidden_prompt**: "user uses 'That's great!' / 'That's amazing!' / 'Wow!'"
    **hint_pt**: "That's amazing!"
    **hint_en**: "That's amazing!"
+   **example_pass**: That's amazing. | Wow, that's cool! | Oh nice, sounds great.
+   **example_fail**: Ok (no reaction) | Yes (single word) | Bye (off-intent)
 
 2. **id**: 2
    **label_pt**: "Pedir mais detalhes"
@@ -117,6 +119,8 @@
    **hidden_prompt**: "user uses 'Tell me more' or 'Where?'"
    **hint_pt**: "Tell me more!"
    **hint_en**: "Tell me more!"
+   **example_pass**: Tell me more. | Pizza is better than salad. | My house is bigger than yours.
+   **example_fail**: Better (bare adjective) | Pizza salad (no comparison structure) | Big (no -er/than)
 
 3. **id**: 3
    **label_pt**: "Reagir com surpresa positiva"
@@ -124,6 +128,8 @@
    **hidden_prompt**: "user uses 'Really?' or 'Oh yeah?'"
    **hint_pt**: "Really? That sounds incredible!"
    **hint_en**: "Really? That sounds incredible!"
+   **example_pass**: Really? That sounds incredible. | Really? That sounds incredible, yes. | Yes, really? that sounds incredible.
+   **example_fail**: incredible (bare word — no subject + verb) | Yes (no structure) | I don't know (off-topic)
 
 **Closing cue**: Charlotte fecha com "Thanks for listening!" quando obj_3 bater.
 
@@ -159,6 +165,8 @@
    **hidden_prompt**: "user reacts with interest filler"
    **hint_pt**: "Really? What happened?"
    **hint_en**: "Really? What happened?"
+   **example_pass**: Really? What happened. | Wow, that's cool! | Oh nice, sounds great.
+   **example_fail**: Ok (no reaction) | Yes (single word) | Bye (off-intent)
 
 2. **id**: 2
    **label_pt**: "Pedir mais"
@@ -166,6 +174,8 @@
    **hidden_prompt**: "user says 'Tell me more'"
    **hint_pt**: "Tell me more!"
    **hint_en**: "Tell me more!"
+   **example_pass**: Tell me more. | Pizza is better than salad. | My house is bigger than yours.
+   **example_fail**: Better (bare adjective) | Pizza salad (no comparison structure) | Big (no -er/than)
 
 3. **id**: 3
    **label_pt**: "Reagir ao final"
@@ -173,6 +183,8 @@
    **hidden_prompt**: "user reacts to the story conclusion"
    **hint_pt**: "That's so funny!"
    **hint_en**: "That's so funny!"
+   **example_pass**: That's so funny. | She works at a hospital. | He lives in São Paulo.
+   **example_fail**: Work (no subject + -s) | She work (missing -s) | Hospital (bare noun)
 
 **Closing cue**: Charlotte fecha com "Glad you found it funny!" quando obj_3 bater.
 
@@ -276,6 +288,8 @@
    **hidden_prompt**: "user reacts with 'No way!' or 'Seriously?'"
    **hint_pt**: "No way! Seriously?"
    **hint_en**: "No way! Seriously?"
+   **example_pass**: No way! Seriously. | Wow, that's cool! | Oh nice, sounds great.
+   **example_fail**: Ok (no reaction) | Yes (single word) | Bye (off-intent)
 
 2. **id**: 2
    **label_pt**: "Descrença com 'You're kidding!' ou 'For real?'"
@@ -283,6 +297,8 @@
    **hidden_prompt**: "user uses 'You're kidding!' or 'For real?'"
    **hint_pt**: "You're kidding!"
    **hint_en**: "You're kidding!"
+   **example_pass**: You're kidding. | You're kidding, yes. | Yes, you're kidding.
+   **example_fail**: kidding (bare word — no subject + verb) | Yes (no structure) | I don't know (off-topic)
 
 3. **id**: 3
    **label_pt**: "Reagir à terceira notícia"
@@ -290,6 +306,8 @@
    **hidden_prompt**: "user reacts with surprise to third news"
    **hint_pt**: "Get out! That's incredible!"
    **hint_en**: "Get out! That's incredible!"
+   **example_pass**: Get out! That's incredible. | Wow, that's cool! | Oh nice, sounds great.
+   **example_fail**: Ok (no reaction) | Yes (single word) | Bye (off-intent)
 
 **Closing cue**: Charlotte fecha com "I told you it was crazy!" quando obj_3 bater.
 
@@ -325,6 +343,8 @@
    **hidden_prompt**: "user reacts with surprise"
    **hint_pt**: "No way! Really?"
    **hint_en**: "No way! Really?"
+   **example_pass**: No way! Really. | Wow, that's cool! | Oh nice, sounds great.
+   **example_fail**: Ok (no reaction) | Yes (single word) | Bye (off-intent)
 
 2. **id**: 2
    **label_pt**: "Pedir mais detalhes"
@@ -341,6 +361,8 @@
    **hidden_prompt**: "user gives final reaction"
    **hint_pt**: "That's awesome!"
    **hint_en**: "That's awesome!"
+   **example_pass**: That's awesome. | Wow, that's cool! | Oh nice, sounds great.
+   **example_fail**: Ok (no reaction) | Yes (single word) | Bye (off-intent)
 
 **Closing cue**: Charlotte fecha com "Cool story, right?" quando obj_3 bater.
 
@@ -445,6 +467,8 @@
    **hidden_prompt**: "user confirms with 'Got it' or 'Okay'"
    **hint_pt**: "Got it."
    **hint_en**: "Got it."
+   **example_pass**: Got it. | Got it, yes. | Yes, got it.
+   **example_fail**: it (bare word — no subject + verb) | Yes (no structure) | I don't know (off-topic)
 
 2. **id**: 2
    **label_pt**: "Confirmar com 'Makes sense'"
@@ -452,6 +476,8 @@
    **hidden_prompt**: "user uses 'Makes sense'"
    **hint_pt**: "Makes sense."
    **hint_en**: "Makes sense."
+   **example_pass**: Makes sense. | Makes sense, yes. | Yes, makes sense.
+   **example_fail**: sense (bare word — no subject + verb) | Yes (no structure) | I don't know (off-topic)
 
 3. **id**: 3
    **label_pt**: "Confirmar com 'I see' ou 'Right'"
@@ -459,6 +485,8 @@
    **hidden_prompt**: "user confirms with 'I see' or 'Right'"
    **hint_pt**: "Right, I understand."
    **hint_en**: "Right, I understand."
+   **example_pass**: Right, I understand. | Right, I understand, yes. | Yes, right, i understand.
+   **example_fail**: understand (bare word — no subject + verb) | Yes (no structure) | I don't know (off-topic)
 
 **Closing cue**: Charlotte fecha com "You're a quick learner!" quando obj_3 bater.
 
@@ -494,6 +522,8 @@
    **hidden_prompt**: "user confirms first instruction"
    **hint_pt**: "Got it. Fresh beans."
    **hint_en**: "Got it. Fresh beans."
+   **example_pass**: Got it. Fresh beans. | Got it. Fresh beans, yes. | Yes, got it. fresh beans.
+   **example_fail**: beans (bare word — no subject + verb) | Yes (no structure) | I don't know (off-topic)
 
 2. **id**: 2
    **label_pt**: "Confirmar com 'makes sense' ou 'right'"
@@ -501,6 +531,8 @@
    **hidden_prompt**: "user confirms with 'makes sense' or 'right'"
    **hint_pt**: "Makes sense."
    **hint_en**: "Makes sense."
+   **example_pass**: Makes sense. | Makes sense, yes. | Yes, makes sense.
+   **example_fail**: sense (bare word — no subject + verb) | Yes (no structure) | I don't know (off-topic)
 
 3. **id**: 3
    **label_pt**: "Resumir o que entendeu"
@@ -508,6 +540,8 @@
    **hidden_prompt**: "user summarizes understanding"
    **hint_pt**: "So I grind, brew, wait, drink. Got it!"
    **hint_en**: "So I grind, brew, wait, drink. Got it!"
+   **example_pass**: So I grind, brew, wait, drink. Got it. | So I grind, brew, wait, drink. Got it, yes. | Yes, so i grind, brew, wait, drink. got it.
+   **example_fail**: it (bare word — no subject + verb) | Yes (no structure) | I don't know (off-topic)
 
 **Closing cue**: Charlotte fecha com "Now go make some great coffee!" quando obj_3 bater.
 
@@ -663,6 +697,8 @@
    **hidden_prompt**: "user reacts with empathy chunk like 'Oh no', 'That's terrible', 'I'm sorry'. After this, Charlotte continues the story (e.g. 'Yeah, it was a disaster' or similar) — NEVER ask the student 'how are you?' or 'are you okay?' because that is the STUDENT's next objective (obj 2)."
    **hint_pt**: "Oh no, that's terrible!"
    **hint_en**: "Oh no, that's terrible!"
+   **example_pass**: Oh no, that's terrible. | I love pizza. | My favorite food is sushi.
+   **example_fail**: Pizza (bare noun) | Like (incomplete) | Yes (no preference structure)
 
 2. **id**: 2
    **label_pt**: "Perguntar se Charlotte está bem"
@@ -670,6 +706,8 @@
    **hidden_prompt**: "STUDENT asks Charlotte if she's okay — accept 'Are you okay?', 'How are you?', 'You okay?', 'How are you now?', 'Are you alright?', etc. CRITICAL: Charlotte (assistant) MUST NOT ask the student 'how are you?' or 'are you okay?' — those questions belong to the STUDENT. Charlotte only describes her situation and waits for the student to ask."
    **hint_pt**: "Are you okay now?"
    **hint_en**: "Are you okay now?"
+   **example_pass**: Are you okay now. | If it rains, I stay home. | If I have time, I'll go.
+   **example_fail**: Rain (no if-clause) | I stay home (no condition) | If (incomplete)
 
 3. **id**: 3
    **label_pt**: "Oferecer apoio"
@@ -677,6 +715,8 @@
    **hidden_prompt**: "user offers practical or emotional support — 'Let me know if you need anything', 'I'm here for you', 'Call me if you need help', 'Anything I can do?', etc."
    **hint_pt**: "Let me know if you need anything."
    **hint_en**: "Let me know if you need anything."
+   **example_pass**: Let me know if you need anything. | I can swim. | I can speak English.
+   **example_fail**: Swim (no 'I can') | I swim (no 'can' — wrong structure) | Can (incomplete)
 
 **Closing cue**: Charlotte fecha com "Thanks. You're a good friend." quando obj_3 bater.
 
@@ -842,6 +882,8 @@
    **hidden_prompt**: "user gives a simple answer in present simple: 'I think + my favorite is X' or 'I love X because Y'. No present perfect."
    **hint_pt**: "I think the park is the best."
    **hint_en**: "I think the park is the best."
+   **example_pass**: I think the park is the best. | I love pizza. | My favorite food is sushi.
+   **example_fail**: Pizza (bare noun) | Like (incomplete) | Yes (no preference structure)
 
 3. **id**: 3
    **label_pt**: "Mudar de tópico com 'By the way'"
@@ -849,6 +891,8 @@
    **hidden_prompt**: "user uses 'By the way' + a different simple question (about Charlotte's city, day, hobbies, etc) in present simple."
    **hint_pt**: "By the way, what's your favorite place?"
    **hint_en**: "By the way, what's your favorite place?"
+   **example_pass**: By the way, what's your favorite place. | If it rains, I stay home. | If I have time, I'll go.
+   **example_fail**: Rain (no if-clause) | I stay home (no condition) | If (incomplete)
 
 **Closing cue**: Charlotte fecha com "Good chat!" quando obj_3 bater.
 

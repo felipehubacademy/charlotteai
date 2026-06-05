@@ -163,7 +163,17 @@
             "label_en": "Say what you're doing now",
             "hidden_prompt": "user states current activity with 'I'm + verb-ing' (working, studying, reading, etc.)",
             "hint_pt": "I'm studying English.",
-            "hint_en": "I'm studying English."
+            "hint_en": "I'm studying English.",
+            "examples_pass": [
+              "I'm studying English.",
+              "I'm working right now.",
+              "I am studying at the moment."
+            ],
+            "examples_fail": [
+              "Working (no subject + 'am')",
+              "I work now (wrong tense — present simple)",
+              "Now (no verb)"
+            ]
           },
           {
             "id": 2,
@@ -171,7 +181,17 @@
             "label_en": "Say what someone at home is doing",
             "hidden_prompt": "user states what someone else is doing with 'He/She is + verb-ing'",
             "hint_pt": "My sister is cooking.",
-            "hint_en": "My sister is cooking."
+            "hint_en": "My sister is cooking.",
+            "examples_pass": [
+              "My sister is cooking.",
+              "She works at a hospital.",
+              "He lives in São Paulo."
+            ],
+            "examples_fail": [
+              "Work (no subject + -s)",
+              "She work (missing -s)",
+              "Hospital (bare noun)"
+            ]
           },
           {
             "id": 3,
@@ -179,7 +199,17 @@
             "label_en": "Say a group activity or another",
             "hidden_prompt": "user states 'We are + verb-ing' or another current activity",
             "hint_pt": "We're eating lunch.",
-            "hint_en": "We're eating lunch."
+            "hint_en": "We're eating lunch.",
+            "examples_pass": [
+              "We're eating lunch.",
+              "We're eating lunch, yes.",
+              "Yes, we're eating lunch."
+            ],
+            "examples_fail": [
+              "lunch (bare word — no subject + verb)",
+              "Yes (no structure)",
+              "I don't know (off-topic)"
+            ]
           }
         ],
         "closing_cue": "Charlotte fecha com \"Busy day!\" quando obj_3 baterem.",
@@ -204,7 +234,17 @@
             "label_en": "Say current activity",
             "hidden_prompt": "user says 'I'm + verb-ing'",
             "hint_pt": "I'm reading.",
-            "hint_en": "I'm reading."
+            "hint_en": "I'm reading.",
+            "examples_pass": [
+              "I'm reading.",
+              "I'm working right now.",
+              "I am studying at the moment."
+            ],
+            "examples_fail": [
+              "Working (no subject + 'am')",
+              "I work now (wrong tense — present simple)",
+              "Now (no verb)"
+            ]
           },
           {
             "id": 2,
@@ -212,7 +252,17 @@
             "label_en": "Say what someone near you is doing",
             "hidden_prompt": "user says 'He/She is + verb-ing'",
             "hint_pt": "My brother is sleeping.",
-            "hint_en": "My brother is sleeping."
+            "hint_en": "My brother is sleeping.",
+            "examples_pass": [
+              "My brother is sleeping.",
+              "She works at a hospital.",
+              "He lives in São Paulo."
+            ],
+            "examples_fail": [
+              "Work (no subject + -s)",
+              "She work (missing -s)",
+              "Hospital (bare noun)"
+            ]
           },
           {
             "id": 3,
@@ -854,7 +904,17 @@
             "label_en": "Say something temporary this week",
             "hidden_prompt": "user states temporary activity with 'I'm + verb-ing + this week/today/this month'",
             "hint_pt": "I'm working from home this week.",
-            "hint_en": "I'm working from home this week."
+            "hint_en": "I'm working from home this week.",
+            "examples_pass": [
+              "I'm working from home this week.",
+              "I'm working right now.",
+              "I am studying at the moment."
+            ],
+            "examples_fail": [
+              "Working (no subject + 'am')",
+              "I work now (wrong tense — present simple)",
+              "Now (no verb)"
+            ]
           },
           {
             "id": 2,
@@ -862,7 +922,17 @@
             "label_en": "Say what you're doing right now",
             "hidden_prompt": "user states 'I'm + verb-ing + right now/at the moment'",
             "hint_pt": "I'm studying English right now.",
-            "hint_en": "I'm studying English right now."
+            "hint_en": "I'm studying English right now.",
+            "examples_pass": [
+              "I'm studying English right now.",
+              "I'm working right now.",
+              "I am studying at the moment."
+            ],
+            "examples_fail": [
+              "Working (no subject + 'am')",
+              "I work now (wrong tense — present simple)",
+              "Now (no verb)"
+            ]
           },
           {
             "id": 3,
@@ -870,7 +940,17 @@
             "label_en": "Say someone else's temporary activity",
             "hidden_prompt": "user states 'He/She is + verb-ing + temporary marker'",
             "hint_pt": "My friend is traveling this month.",
-            "hint_en": "My friend is traveling this month."
+            "hint_en": "My friend is traveling this month.",
+            "examples_pass": [
+              "My friend is traveling this month.",
+              "She works at a hospital.",
+              "He lives in São Paulo."
+            ],
+            "examples_fail": [
+              "Work (no subject + -s)",
+              "She work (missing -s)",
+              "Hospital (bare noun)"
+            ]
           }
         ],
         "closing_cue": "Charlotte fecha com \"Sounds busy!\" quando obj_3 baterem.",
@@ -895,7 +975,17 @@
             "label_en": "Say something happening this week",
             "hidden_prompt": "user says 'I'm + verb-ing + this week/today'",
             "hint_pt": "I'm studying for an exam this week.",
-            "hint_en": "I'm studying for an exam this week."
+            "hint_en": "I'm studying for an exam this week.",
+            "examples_pass": [
+              "I'm studying for an exam this week.",
+              "I'm working right now.",
+              "I am studying at the moment."
+            ],
+            "examples_fail": [
+              "Working (no subject + 'am')",
+              "I work now (wrong tense — present simple)",
+              "Now (no verb)"
+            ]
           },
           {
             "id": 2,
@@ -903,7 +993,17 @@
             "label_en": "Say something at the moment",
             "hidden_prompt": "user says 'I'm + verb-ing + right now/at the moment'",
             "hint_pt": "I'm having lunch right now.",
-            "hint_en": "I'm having lunch right now."
+            "hint_en": "I'm having lunch right now.",
+            "examples_pass": [
+              "I'm having lunch right now.",
+              "I'm working right now.",
+              "I am studying at the moment."
+            ],
+            "examples_fail": [
+              "Working (no subject + 'am')",
+              "I work now (wrong tense — present simple)",
+              "Now (no verb)"
+            ]
           },
           {
             "id": 3,
@@ -1069,7 +1169,17 @@
             "label_en": "Say something routine (simple)",
             "hidden_prompt": "user states routine with 'I + verb' + frequency/place adverb (every day, on Mondays, usually, in NYC, etc.)",
             "hint_pt": "I work in São Paulo.",
-            "hint_en": "I work in São Paulo."
+            "hint_en": "I work in São Paulo.",
+            "examples_pass": [
+              "I work in São Paulo.",
+              "I live in Brazil.",
+              "I work at a school."
+            ],
+            "examples_fail": [
+              "Brazil (bare noun)",
+              "Live (no subject)",
+              "Work (bare verb)"
+            ]
           },
           {
             "id": 2,
@@ -1077,7 +1187,17 @@
             "label_en": "Say something happening now",
             "hidden_prompt": "user states current with 'I'm + verb-ing + now/today/this week'",
             "hint_pt": "I'm studying English right now.",
-            "hint_en": "I'm studying English right now."
+            "hint_en": "I'm studying English right now.",
+            "examples_pass": [
+              "I'm studying English right now.",
+              "I'm working right now.",
+              "I am studying at the moment."
+            ],
+            "examples_fail": [
+              "Working (no subject + 'am')",
+              "I work now (wrong tense — present simple)",
+              "Now (no verb)"
+            ]
           },
           {
             "id": 3,
@@ -1085,7 +1205,17 @@
             "label_en": "Make a clear contrast",
             "hidden_prompt": "user contrasts routine vs current with 'Usually I + verb, but today/now I'm + verb-ing'",
             "hint_pt": "I usually drink coffee, but today I'm drinking tea.",
-            "hint_en": "I usually drink coffee, but today I'm drinking tea."
+            "hint_en": "I usually drink coffee, but today I'm drinking tea.",
+            "examples_pass": [
+              "I usually drink coffee, but today I'm drinking tea.",
+              "I'm working right now.",
+              "I am studying at the moment."
+            ],
+            "examples_fail": [
+              "Working (no subject + 'am')",
+              "I work now (wrong tense — present simple)",
+              "Now (no verb)"
+            ]
           }
         ],
         "closing_cue": "Charlotte fecha com \"Got the contrast!\" quando obj_3 baterem.",
@@ -1110,7 +1240,17 @@
             "label_en": "Say a routine thing",
             "hidden_prompt": "user says 'I + verb' with routine adverb",
             "hint_pt": "I usually have coffee.",
-            "hint_en": "I usually have coffee."
+            "hint_en": "I usually have coffee.",
+            "examples_pass": [
+              "I usually have coffee.",
+              "I live in Brazil.",
+              "I work at a school."
+            ],
+            "examples_fail": [
+              "Brazil (bare noun)",
+              "Live (no subject)",
+              "Work (bare verb)"
+            ]
           },
           {
             "id": 2,
@@ -1118,7 +1258,17 @@
             "label_en": "Say a current thing",
             "hidden_prompt": "user says 'I'm + verb-ing + now/today'",
             "hint_pt": "I'm drinking tea today.",
-            "hint_en": "I'm drinking tea today."
+            "hint_en": "I'm drinking tea today.",
+            "examples_pass": [
+              "I'm drinking tea today.",
+              "I'm working right now.",
+              "I am studying at the moment."
+            ],
+            "examples_fail": [
+              "Working (no subject + 'am')",
+              "I work now (wrong tense — present simple)",
+              "Now (no verb)"
+            ]
           },
           {
             "id": 3,

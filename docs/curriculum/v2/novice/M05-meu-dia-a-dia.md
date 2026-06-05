@@ -118,6 +118,8 @@
    **hidden_prompt**: "user states wake-up time with 'I wake up at + time' or 'I get up at + time'"
    **hint_pt**: "I wake up at seven."
    **hint_en**: "I wake up at seven."
+   **example_pass**: I wake up at seven. | I wake up at seven, yes. | Yes, i wake up at seven.
+   **example_fail**: seven (bare word — no subject + verb) | Yes (no structure) | I don't know (off-topic)
 
 2. **id**: 2
    **label_pt**: "Dizer o que você toma no café da manhã"
@@ -125,6 +127,8 @@
    **hidden_prompt**: "user mentions breakfast with 'I have + food/drink', 'I eat + food', or 'I drink + drink'"
    **hint_pt**: "I have coffee."
    **hint_en**: "I have coffee."
+   **example_pass**: I have coffee. | I have coffee, yes. | Yes, i have coffee.
+   **example_fail**: coffee (bare word — no subject + verb) | Yes (no structure) | I don't know (off-topic)
 
 3. **id**: 3
    **label_pt**: "Dizer outra coisa que você faz de manhã"
@@ -132,6 +136,8 @@
    **hidden_prompt**: "user mentions another morning activity with 'I + verb + ...' (any base form verb: study, go, drink, eat, etc.)"
    **hint_pt**: "I go to work."
    **hint_en**: "I go to work."
+   **example_pass**: I go to work. | I live in Brazil. | I work at a school.
+   **example_fail**: Brazil (bare noun) | Live (no subject) | Work (bare verb)
 
 **Closing cue**: Charlotte fecha com "Nice morning!" quando obj_3 baterem.
 
@@ -167,6 +173,8 @@
    **hidden_prompt**: "user says wake-up time with 'I wake up at + time'"
    **hint_pt**: "I wake up at seven."
    **hint_en**: "I wake up at seven."
+   **example_pass**: I wake up at seven. | I wake up at seven, yes. | Yes, i wake up at seven.
+   **example_fail**: seven (bare word — no subject + verb) | Yes (no structure) | I don't know (off-topic)
 
 2. **id**: 2
    **label_pt**: "Dizer o que você toma no café da manhã"
@@ -174,6 +182,8 @@
    **hidden_prompt**: "user mentions breakfast with 'I have + food/drink' or 'I eat/drink + something'"
    **hint_pt**: "I have toast and coffee."
    **hint_en**: "I have toast and coffee."
+   **example_pass**: I have toast and coffee. | She works at a hospital. | He lives in São Paulo.
+   **example_fail**: Work (no subject + -s) | She work (missing -s) | Hospital (bare noun)
 
 3. **id**: 3
    **label_pt**: "Dizer outra atividade matinal"
@@ -181,6 +191,8 @@
    **hidden_prompt**: "user mentions another morning activity with 'I + verb + ...'"
    **hint_pt**: "I go to work at eight."
    **hint_en**: "I go to work at eight."
+   **example_pass**: I go to work at eight. | I live in Brazil. | I work at a school.
+   **example_fail**: Brazil (bare noun) | Live (no subject) | Work (bare verb)
 
 **Closing cue**: Charlotte encerra com "Sounds like a great morning routine!" quando obj_3 baterem.
 
@@ -283,6 +295,8 @@
    **hidden_prompt**: "user says where they work or study with 'I work in/at + place' or 'I study at + place'"
    **hint_pt**: "I work in an office."
    **hint_en**: "I work in an office."
+   **example_pass**: I work in an office. | I live in Brazil. | I work at a school.
+   **example_fail**: Brazil (bare noun) | Live (no subject) | Work (bare verb)
 
 2. **id**: 2
    **label_pt**: "Dizer o que você estuda ou faz no trabalho"
@@ -290,6 +304,8 @@
    **hidden_prompt**: "user says what they study/do with 'I study + subject' or 'I + verb in present simple'"
    **hint_pt**: "I study English."
    **hint_en**: "I study English."
+   **example_pass**: I study English. | She works at a hospital. | He lives in São Paulo.
+   **example_fail**: Work (no subject + -s) | She work (missing -s) | Hospital (bare noun)
 
 3. **id**: 3
    **label_pt**: "Dizer com quem você trabalha ou estuda"
@@ -297,6 +313,8 @@
    **hidden_prompt**: "user mentions colleagues/classmates with 'I work with + people' or 'We work/study together'"
    **hint_pt**: "I work with great people."
    **hint_en**: "I work with great people."
+   **example_pass**: I work with great people. | I live in Brazil. | I work at a school.
+   **example_fail**: Brazil (bare noun) | Live (no subject) | Work (bare verb)
 
 **Closing cue**: Charlotte fecha com "Sounds like a busy week!" quando obj_3 baterem.
 
@@ -332,6 +350,8 @@
    **hidden_prompt**: "user states workplace with 'I work in/at + place'"
    **hint_pt**: "I work in a hospital."
    **hint_en**: "I work in a hospital."
+   **example_pass**: I work in a hospital. | I live in Brazil. | I work at a school.
+   **example_fail**: Brazil (bare noun) | Live (no subject) | Work (bare verb)
 
 2. **id**: 2
    **label_pt**: "Dizer o que você estuda"
@@ -339,6 +359,8 @@
    **hidden_prompt**: "user states what they study with 'I study + subject/language' or 'I study at + place'"
    **hint_pt**: "I study English."
    **hint_en**: "I study English."
+   **example_pass**: I study English. | She works at a hospital. | He lives in São Paulo.
+   **example_fail**: Work (no subject + -s) | She work (missing -s) | Hospital (bare noun)
 
 3. **id**: 3
    **label_pt**: "Perguntar sobre o trabalho da Charlotte"
@@ -450,6 +472,8 @@
    **hidden_prompt**: "user mentions breakfast with 'I have + food/drink', 'I eat + food', or 'I drink + drink'"
    **hint_pt**: "I have coffee and bread."
    **hint_en**: "I have coffee and bread."
+   **example_pass**: I have coffee and bread. | I have coffee and bread, yes. | Yes, i have coffee and bread.
+   **example_fail**: bread (bare word — no subject + verb) | Yes (no structure) | I don't know (off-topic)
 
 2. **id**: 2
    **label_pt**: "Dizer o que você come no almoço"
@@ -457,6 +481,8 @@
    **hidden_prompt**: "user mentions lunch with 'I have + food', 'I eat + food', or similar"
    **hint_pt**: "I eat a sandwich."
    **hint_en**: "I eat a sandwich."
+   **example_pass**: I eat a sandwich. | I eat a sandwich, yes. | Yes, i eat a sandwich.
+   **example_fail**: sandwich (bare word — no subject + verb) | Yes (no structure) | I don't know (off-topic)
 
 3. **id**: 3
    **label_pt**: "Dizer o que você toma durante o dia"
@@ -464,6 +490,8 @@
    **hidden_prompt**: "user mentions drinks with 'I drink + beverage' (water/coffee/tea/juice/etc.)"
    **hint_pt**: "I drink water all day."
    **hint_en**: "I drink water all day."
+   **example_pass**: I drink water all day. | I drink water all day, yes. | Yes, i drink water all day.
+   **example_fail**: day (bare word — no subject + verb) | Yes (no structure) | I don't know (off-topic)
 
 **Closing cue**: Charlotte fecha com "Sounds like a healthy day!" quando obj_3 baterem.
 
@@ -499,6 +527,8 @@
    **hidden_prompt**: "user describes breakfast with 'I have + food/drink' or 'I eat/drink + something'"
    **hint_pt**: "I have toast and coffee."
    **hint_en**: "I have toast and coffee."
+   **example_pass**: I have toast and coffee. | She works at a hospital. | He lives in São Paulo.
+   **example_fail**: Work (no subject + -s) | She work (missing -s) | Hospital (bare noun)
 
 2. **id**: 2
    **label_pt**: "Dizer o que você come no almoço ou jantar"
@@ -506,6 +536,8 @@
    **hidden_prompt**: "user describes lunch/dinner with 'I have + food', 'I eat + food', or similar"
    **hint_pt**: "I eat rice and beans."
    **hint_en**: "I eat rice and beans."
+   **example_pass**: I eat rice and beans. | I eat rice and beans, yes. | Yes, i eat rice and beans.
+   **example_fail**: beans (bare word — no subject + verb) | Yes (no structure) | I don't know (off-topic)
 
 3. **id**: 3
    **label_pt**: "Perguntar sobre a comida da Charlotte"
@@ -617,6 +649,8 @@
    **hidden_prompt**: "user states where they go with 'I go to + place' (work, school, gym, etc.)"
    **hint_pt**: "I go to work."
    **hint_en**: "I go to work."
+   **example_pass**: I go to work. | I go to work, yes. | Yes, i go to work.
+   **example_fail**: work (bare word — no subject + verb) | Yes (no structure) | I don't know (off-topic)
 
 2. **id**: 2
    **label_pt**: "Dizer como você vai (transporte)"
@@ -624,6 +658,8 @@
    **hidden_prompt**: "user states means of transport with 'I go by + transport' (bus/car/train/bike) or 'on foot/walking'"
    **hint_pt**: "I go by bus."
    **hint_en**: "I go by bus."
+   **example_pass**: I go by bus. | I go by bus, yes. | Yes, i go by bus.
+   **example_fail**: bus (bare word — no subject + verb) | Yes (no structure) | I don't know (off-topic)
 
 3. **id**: 3
    **label_pt**: "Dizer quando você volta pra casa"
@@ -631,6 +667,8 @@
    **hidden_prompt**: "user states return time with 'I come home at + time' or 'I come back at + time'"
    **hint_pt**: "I come home at six."
    **hint_en**: "I come home at six."
+   **example_pass**: How about you? | And you? | What about you?
+   **example_fail**: Me too (statement) | Yes (single word) | Where were you? (wrong tense — past)
 
 **Closing cue**: Charlotte fecha com "Got it. Busy days!" quando obj_3 baterem.
 
@@ -666,6 +704,8 @@
    **hidden_prompt**: "user states morning destination with 'I go to + place'"
    **hint_pt**: "I go to work."
    **hint_en**: "I go to work."
+   **example_pass**: I go to work. | I go to work, yes. | Yes, i go to work.
+   **example_fail**: work (bare word — no subject + verb) | Yes (no structure) | I don't know (off-topic)
 
 2. **id**: 2
    **label_pt**: "Dizer pra onde você vai no fim de semana"
@@ -673,6 +713,8 @@
    **hidden_prompt**: "user states weekend place with 'I go to + place' (park, gym, friend's house, etc.)"
    **hint_pt**: "I go to the park."
    **hint_en**: "I go to the park."
+   **example_pass**: I go to the park. | I go to the park, yes. | Yes, i go to the park.
+   **example_fail**: park (bare word — no subject + verb) | Yes (no structure) | I don't know (off-topic)
 
 3. **id**: 3
    **label_pt**: "Perguntar sobre os deslocamentos da Charlotte"
@@ -784,6 +826,8 @@
    **hidden_prompt**: "user uses 'always' before a verb with 'I always + verb + ...' (wake up, have breakfast, drink coffee, etc.)"
    **hint_pt**: "I always wake up at seven."
    **hint_en**: "I always wake up at seven."
+   **example_pass**: I always wake up at seven. | I always wake up at seven, yes. | Yes, i always wake up at seven.
+   **example_fail**: seven (bare word — no subject + verb) | Yes (no structure) | I don't know (off-topic)
 
 2. **id**: 2
    **label_pt**: "Dizer algo que você normalmente faz (com 'usually')"
@@ -791,6 +835,8 @@
    **hidden_prompt**: "user uses 'usually' before a verb with 'I usually + verb'"
    **hint_pt**: "I usually drink coffee."
    **hint_en**: "I usually drink coffee."
+   **example_pass**: I usually drink coffee. | I usually drink coffee, yes. | Yes, i usually drink coffee.
+   **example_fail**: coffee (bare word — no subject + verb) | Yes (no structure) | I don't know (off-topic)
 
 3. **id**: 3
    **label_pt**: "Dizer algo que você nunca faz (com 'never')"
@@ -798,6 +844,8 @@
    **hidden_prompt**: "user uses 'never' before a verb with 'I never + verb'"
    **hint_pt**: "I never sleep late."
    **hint_en**: "I never sleep late."
+   **example_pass**: I never sleep late. | I never sleep late, yes. | Yes, i never sleep late.
+   **example_fail**: late (bare word — no subject + verb) | Yes (no structure) | I don't know (off-topic)
 
 **Closing cue**: Charlotte fecha com "Great routine!" quando obj_3 baterem.
 
@@ -833,6 +881,8 @@
    **hidden_prompt**: "user uses 'always' with a routine verb: 'I always + verb' (wake up, have, drink, eat, go, work, study)"
    **hint_pt**: "I always have coffee."
    **hint_en**: "I always have coffee."
+   **example_pass**: I always have coffee. | I always have coffee, yes. | Yes, i always have coffee.
+   **example_fail**: coffee (bare word — no subject + verb) | Yes (no structure) | I don't know (off-topic)
 
 2. **id**: 2
    **label_pt**: "Dizer algo que você normalmente ou às vezes faz"
@@ -840,6 +890,8 @@
    **hidden_prompt**: "user uses 'usually' or 'sometimes' with a verb: 'I usually/sometimes + verb'"
    **hint_pt**: "I usually go to bed at eleven."
    **hint_en**: "I usually go to bed at eleven."
+   **example_pass**: I usually go to bed at eleven. | I usually go to bed at eleven, yes. | Yes, i usually go to bed at eleven.
+   **example_fail**: eleven (bare word — no subject + verb) | Yes (no structure) | I don't know (off-topic)
 
 3. **id**: 3
    **label_pt**: "Dizer algo que você nunca faz"
@@ -847,6 +899,8 @@
    **hidden_prompt**: "user uses 'never' with a verb: 'I never + verb'"
    **hint_pt**: "I never eat fast food."
    **hint_en**: "I never eat fast food."
+   **example_pass**: I never eat fast food. | I never eat fast food, yes. | Yes, i never eat fast food.
+   **example_fail**: food (bare word — no subject + verb) | Yes (no structure) | I don't know (off-topic)
 
 **Closing cue**: Charlotte encerra com "Nice routine!" quando obj_3 baterem.
 
@@ -952,6 +1006,8 @@
    **hidden_prompt**: "user gives current time with 'It's...'"
    **hint_pt**: "It's quarter past three in the afternoon."
    **hint_en**: "It's quarter past three in the afternoon."
+   **example_pass**: It's quarter past three in the afternoon. | It's quarter past three in the afternoon, yes. | Yes, it's quarter past three in the afternoon.
+   **example_fail**: afternoon (bare word — no subject + verb) | Yes (no structure) | I don't know (off-topic)
 
 2. **id**: 2
    **label_pt**: "Dar o dia da semana"
@@ -959,6 +1015,8 @@
    **hidden_prompt**: "user gives day of week"
    **hint_pt**: "Today is Wednesday."
    **hint_en**: "Today is Wednesday."
+   **example_pass**: Today is Wednesday. | Today is Wednesday, yes. | Yes, today is wednesday.
+   **example_fail**: Wednesday (bare word — no subject + verb) | Yes (no structure) | I don't know (off-topic)
 
 3. **id**: 3
    **label_pt**: "Falar do período do dia"
@@ -966,6 +1024,8 @@
    **hidden_prompt**: "user mentions morning/afternoon/evening"
    **hint_pt**: "I work in the morning and study in the evening."
    **hint_en**: "I work in the morning and study in the evening."
+   **example_pass**: I work in the morning and study in the evening. | I work in the morning and study in the evening, yes. | Yes, i work in the morning and study in the evening.
+   **example_fail**: evening (bare word — no subject + verb) | Yes (no structure) | I don't know (off-topic)
 
 **Closing cue**: Charlotte fecha com "Time mastered!" quando obj_3 bater.
 
@@ -1001,6 +1061,8 @@
    **hidden_prompt**: "user says favorite day"
    **hint_pt**: "My favorite day is Friday."
    **hint_en**: "My favorite day is Friday."
+   **example_pass**: My favorite day is Friday. | I love pizza. | My favorite food is sushi.
+   **example_fail**: Pizza (bare noun) | Like (incomplete) | Yes (no preference structure)
 
 2. **id**: 2
    **label_pt**: "Falar de um horário típico seu"
@@ -1008,6 +1070,8 @@
    **hidden_prompt**: "user mentions typical time"
    **hint_pt**: "I usually wake up at seven."
    **hint_en**: "I usually wake up at seven."
+   **example_pass**: I usually wake up at seven. | I usually wake up at seven, yes. | Yes, i usually wake up at seven.
+   **example_fail**: seven (bare word — no subject + verb) | Yes (no structure) | I don't know (off-topic)
 
 3. **id**: 3
    **label_pt**: "Perguntar a Charlotte"

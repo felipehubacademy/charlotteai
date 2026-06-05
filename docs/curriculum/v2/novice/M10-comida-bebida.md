@@ -109,6 +109,8 @@
    **hidden_prompt**: "user states countable food with 'I ate/had + number + plural noun' (two apples, three sandwiches, etc.)"
    **hint_pt**: "I had two eggs."
    **hint_en**: "I had two eggs."
+   **example_pass**: I had two eggs. | I had two eggs, yes. | Yes, i had two eggs.
+   **example_fail**: eggs (bare word — no subject + verb) | Yes (no structure) | I don't know (off-topic)
 
 2. **id**: 2
    **label_pt**: "Dizer bebida incontável com 'some'"
@@ -116,6 +118,8 @@
    **hidden_prompt**: "user states uncountable with 'some + noun' (some water, some milk, some coffee)"
    **hint_pt**: "I had some coffee."
    **hint_en**: "I had some coffee."
+   **example_pass**: I had some coffee. | I had some coffee, yes. | Yes, i had some coffee.
+   **example_fail**: coffee (bare word — no subject + verb) | Yes (no structure) | I don't know (off-topic)
 
 3. **id**: 3
    **label_pt**: "Dizer outra comida ou bebida"
@@ -123,6 +127,8 @@
    **hidden_prompt**: "user mentions another food/drink, countable or uncountable"
    **hint_pt**: "I had a sandwich."
    **hint_en**: "I had a sandwich."
+   **example_pass**: I had a sandwich. | I had a sandwich, yes. | Yes, i had a sandwich.
+   **example_fail**: sandwich (bare word — no subject + verb) | Yes (no structure) | I don't know (off-topic)
 
 **Closing cue**: Charlotte fecha com "Yum!" quando obj_3 baterem.
 
@@ -158,6 +164,8 @@
    **hidden_prompt**: "user says 'I had + number/a/an + countable food'"
    **hint_pt**: "I had a sandwich."
    **hint_en**: "I had a sandwich."
+   **example_pass**: I had a sandwich. | I had a sandwich, yes. | Yes, i had a sandwich.
+   **example_fail**: sandwich (bare word — no subject + verb) | Yes (no structure) | I don't know (off-topic)
 
 2. **id**: 2
    **label_pt**: "Dizer bebida incontável"
@@ -165,6 +173,8 @@
    **hidden_prompt**: "user says 'I had some + uncountable' or 'a cup of + drink'"
    **hint_pt**: "I had some juice."
    **hint_en**: "I had some juice."
+   **example_pass**: I had some juice. | I had some juice, yes. | Yes, i had some juice.
+   **example_fail**: juice (bare word — no subject + verb) | Yes (no structure) | I don't know (off-topic)
 
 3. **id**: 3
    **label_pt**: "Perguntar à Charlotte"
@@ -276,6 +286,8 @@
    **hidden_prompt**: "user states what's there with 'I have some + noun' or 'There is/are some + noun'"
    **hint_pt**: "I have some milk."
    **hint_en**: "I have some milk."
+   **example_pass**: I have some milk. | I have some milk, yes. | Yes, i have some milk.
+   **example_fail**: milk (bare word — no subject + verb) | Yes (no structure) | I don't know (off-topic)
 
 2. **id**: 2
    **label_pt**: "Dizer o que NÃO TEM (negativa com 'any')"
@@ -283,6 +295,8 @@
    **hidden_prompt**: "user states what's missing with 'I don't have any + noun' or 'There isn't any + noun'"
    **hint_pt**: "I don't have any cheese."
    **hint_en**: "I don't have any cheese."
+   **example_pass**: I don't have any cheese. | I don't have any cheese, yes. | Yes, i don't have any cheese.
+   **example_fail**: cheese (bare word — no subject + verb) | Yes (no structure) | I don't know (off-topic)
 
 3. **id**: 3
    **label_pt**: "Perguntar à Charlotte se ela tem algo (com 'any')"
@@ -623,6 +637,8 @@
    **hidden_prompt**: "user orders food with 'I'd like + food' or 'Can I have + food'"
    **hint_pt**: "I'd like a pizza, please."
    **hint_en**: "I'd like a pizza, please."
+   **example_pass**: I'd like a pizza, please. | I can swim. | I can speak English.
+   **example_fail**: Swim (no 'I can') | I swim (no 'can' — wrong structure) | Can (incomplete)
 
 2. **id**: 2
    **label_pt**: "Pedir bebida"
@@ -630,6 +646,8 @@
    **hidden_prompt**: "user orders drink with 'I'd like + drink' or 'Can I have + drink'"
    **hint_pt**: "I'd like a glass of water."
    **hint_en**: "I'd like a glass of water."
+   **example_pass**: I'd like a glass of water. | I can swim. | I can speak English.
+   **example_fail**: Swim (no 'I can') | I swim (no 'can' — wrong structure) | Can (incomplete)
 
 3. **id**: 3
    **label_pt**: "Pedir a conta no fim"
@@ -674,6 +692,8 @@
    **hidden_prompt**: "user orders with 'I'd like + food' or 'Can I have + food'"
    **hint_pt**: "I'd like a burger."
    **hint_en**: "I'd like a burger."
+   **example_pass**: I'd like a burger. | I can swim. | I can speak English.
+   **example_fail**: Swim (no 'I can') | I swim (no 'can' — wrong structure) | Can (incomplete)
 
 2. **id**: 2
    **label_pt**: "Pedir uma bebida"
@@ -681,6 +701,8 @@
    **hidden_prompt**: "user orders a drink with 'I'd like + drink'"
    **hint_pt**: "I'd like a Coke."
    **hint_en**: "I'd like a Coke."
+   **example_pass**: I'd like a Coke. | I love pizza. | My favorite food is sushi.
+   **example_fail**: Pizza (bare noun) | Like (incomplete) | Yes (no preference structure)
 
 3. **id**: 3
    **label_pt**: "Confirmar e perguntar valor"
@@ -792,6 +814,8 @@
    **hidden_prompt**: "user orders with 'I'd like + food/drink'"
    **hint_pt**: "I'd like a sandwich."
    **hint_en**: "I'd like a sandwich."
+   **example_pass**: I'd like a sandwich. | I love pizza. | My favorite food is sushi.
+   **example_fail**: Pizza (bare noun) | Like (incomplete) | Yes (no preference structure)
 
 2. **id**: 2
    **label_pt**: "Perguntar preço com 'How much'"
@@ -845,6 +869,8 @@
    **hidden_prompt**: "user states food with 'I have some + food' or 'I'd like + food'"
    **hint_pt**: "I have some pasta."
    **hint_en**: "I have some pasta."
+   **example_pass**: I have some pasta. | I love pizza. | My favorite food is sushi.
+   **example_fail**: Pizza (bare noun) | Like (incomplete) | Yes (no preference structure)
 
 2. **id**: 2
    **label_pt**: "Dizer o que falta ou perguntar à Charlotte"
@@ -852,6 +878,8 @@
    **hidden_prompt**: "user says 'I don't have any + noun' or 'Do you have any + noun?'"
    **hint_pt**: "I don't have any sauce."
    **hint_en**: "I don't have any sauce."
+   **example_pass**: I don't have any sauce. | I don't have any sauce, yes. | Yes, i don't have any sauce.
+   **example_fail**: sauce (bare word — no subject + verb) | Yes (no structure) | I don't know (off-topic)
 
 3. **id**: 3
    **label_pt**: "Perguntar quantidade ou preço"

@@ -121,6 +121,8 @@
    **hidden_prompt**: "user uses 'I'd like to check in' or 'Can I check in'"
    **hint_pt**: "I'd like to check in for my flight to São Paulo."
    **hint_en**: "I'd like to check in for my flight to São Paulo."
+   **example_pass**: I'd like to check in for my flight to São Paulo. | I can swim. | I can speak English.
+   **example_fail**: Swim (no 'I can') | I swim (no 'can' — wrong structure) | Can (incomplete)
 
 2. **id**: 2
    **label_pt**: "Perguntar sobre o portão"
@@ -137,6 +139,8 @@
    **hidden_prompt**: "user responds to a delay with 'Oh, really?' or 'Is it delayed?'"
    **hint_pt**: "Oh no, is the flight delayed?"
    **hint_en**: "Oh no, is the flight delayed?"
+   **example_pass**: Oh no, is the flight delayed. | Oh no, is the flight delayed, yes. | Yes, oh no, is the flight delayed.
+   **example_fail**: delayed (bare word — no subject + verb) | Yes (no structure) | I don't know (off-topic)
 
 **Closing cue**: Charlotte fecha com "All set! Have a good flight!" quando obj_3 baterem.
 
@@ -172,6 +176,8 @@
    **hidden_prompt**: "user describes an airport situation using vocab"
    **hint_pt**: "I always get nervous about check-in."
    **hint_en**: "I always get nervous about check-in."
+   **example_pass**: I always get nervous about check-in. | I always get nervous about check-in, yes. | Yes, i always get nervous about check-in.
+   **example_fail**: in (bare word — no subject + verb) | Yes (no structure) | I don't know (off-topic)
 
 2. **id**: 2
    **label_pt**: "Perguntar algo prático"
@@ -296,6 +302,8 @@
    **hidden_prompt**: "user uses 'I have a reservation under...'"
    **hint_pt**: "Yes, I have a reservation under the name of Silva."
    **hint_en**: "Yes, I have a reservation under the name of Silva."
+   **example_pass**: Yes, I have a reservation under the name of Silva. | Yes, I have a reservation under the name of Silva, yes. | Yes, yes, i have a reservation under the name of silva.
+   **example_fail**: Silva (bare word — no subject + verb) | Yes (no structure) | I don't know (off-topic)
 
 2. **id**: 2
    **label_pt**: "Perguntar sobre breakfast ou wifi"
@@ -349,6 +357,8 @@
    **hidden_prompt**: "user shares hotel experience"
    **hint_pt**: "I stayed at a hotel in Rio last year."
    **hint_en**: "I stayed at a hotel in Rio last year."
+   **example_pass**: I stayed at a hotel in Rio last year. | I stayed at a hotel in Rio last year, yes. | Yes, i stayed at a hotel in rio last year.
+   **example_fail**: year (bare word — no subject + verb) | Yes (no structure) | I don't know (off-topic)
 
 2. **id**: 2
    **label_pt**: "Descrever um detalhe (positivo ou negativo)"
@@ -356,6 +366,8 @@
    **hidden_prompt**: "user describes a hotel detail"
    **hint_pt**: "The breakfast was excellent."
    **hint_en**: "The breakfast was excellent."
+   **example_pass**: The breakfast was excellent. | The breakfast was excellent, yes. | Yes, the breakfast was excellent.
+   **example_fail**: excellent (bare word — no subject + verb) | Yes (no structure) | I don't know (off-topic)
 
 3. **id**: 3
    **label_pt**: "Perguntar a Charlotte"
@@ -470,6 +482,8 @@
    **hidden_prompt**: "user uses 'Excuse me' + 'How do I get to...'"
    **hint_pt**: "Excuse me, how do I get to the train station?"
    **hint_en**: "Excuse me, how do I get to the train station?"
+   **example_pass**: Excuse me, how do I get to the train station. | Excuse me, how do I get to the train station, yes. | Yes, excuse me, how do i get to the train station.
+   **example_fail**: station (bare word — no subject + verb) | Yes (no structure) | I don't know (off-topic)
 
 2. **id**: 2
    **label_pt**: "Confirmar ou pedir pra repetir"
@@ -477,6 +491,8 @@
    **hidden_prompt**: "user says 'Could you repeat that?' or 'So I turn left?'"
    **hint_pt**: "So I turn left at the corner?"
    **hint_en**: "So I turn left at the corner?"
+   **example_pass**: So I turn left at the corner. | So I turn left at the corner, yes. | Yes, so i turn left at the corner.
+   **example_fail**: corner (bare word — no subject + verb) | Yes (no structure) | I don't know (off-topic)
 
 3. **id**: 3
    **label_pt**: "Perguntar sobre distância"
@@ -521,6 +537,8 @@
    **hidden_prompt**: "user describes their direction skills"
    **hint_pt**: "I always get lost."
    **hint_en**: "I always get lost."
+   **example_pass**: I always get lost. | I always get lost, yes. | Yes, i always get lost.
+   **example_fail**: lost (bare word — no subject + verb) | Yes (no structure) | I don't know (off-topic)
 
 2. **id**: 2
    **label_pt**: "Contar uma vez que se perdeu"
@@ -528,6 +546,8 @@
    **hidden_prompt**: "user shares a lost-in-a-city story"
    **hint_pt**: "I got lost in Lisbon last year."
    **hint_en**: "I got lost in Lisbon last year."
+   **example_pass**: I got lost in Lisbon last year. | I got lost in Lisbon last year, yes. | Yes, i got lost in lisbon last year.
+   **example_fail**: year (bare word — no subject + verb) | Yes (no structure) | I don't know (off-topic)
 
 3. **id**: 3
    **label_pt**: "Perguntar a Charlotte"
@@ -644,6 +664,8 @@
    **hidden_prompt**: "user says 'I don't feel well' or 'I'm not feeling well'"
    **hint_pt**: "Hi, I don't feel well today."
    **hint_en**: "Hi, I don't feel well today."
+   **example_pass**: Hi, I don't feel well today. | Hi, I don't feel well today, yes. | Yes, hi, i don't feel well today.
+   **example_fail**: today (bare word — no subject + verb) | Yes (no structure) | I don't know (off-topic)
 
 2. **id**: 2
    **label_pt**: "Descrever sintomas específicos"
@@ -651,6 +673,8 @@
    **hidden_prompt**: "user describes symptoms with 'I have a...'"
    **hint_pt**: "I have a headache and a sore throat."
    **hint_en**: "I have a headache and a sore throat."
+   **example_pass**: I have a headache and a sore throat. | I have a headache and a sore throat, yes. | Yes, i have a headache and a sore throat.
+   **example_fail**: throat (bare word — no subject + verb) | Yes (no structure) | I don't know (off-topic)
 
 3. **id**: 3
    **label_pt**: "Perguntar sobre remédio"
@@ -695,6 +719,8 @@
    **hidden_prompt**: "user describes what they do when sick"
    **hint_pt**: "I always rest at home."
    **hint_en**: "I always rest at home."
+   **example_pass**: I always rest at home. | I always rest at home, yes. | Yes, i always rest at home.
+   **example_fail**: home (bare word — no subject + verb) | Yes (no structure) | I don't know (off-topic)
 
 2. **id**: 2
    **label_pt**: "Falar do último resfriado/doença"
@@ -702,6 +728,8 @@
    **hidden_prompt**: "user describes their last cold or illness"
    **hint_pt**: "Last month I had a bad cold."
    **hint_en**: "Last month I had a bad cold."
+   **example_pass**: Last month I had a bad cold. | Last month I had a bad cold, yes. | Yes, last month i had a bad cold.
+   **example_fail**: cold (bare word — no subject + verb) | Yes (no structure) | I don't know (off-topic)
 
 3. **id**: 3
    **label_pt**: "Perguntar a Charlotte"
@@ -815,6 +843,8 @@
    **hidden_prompt**: "user uses 'This is X speaking' or 'Hi, this is X'"
    **hint_pt**: "Hi, this is Maria speaking."
    **hint_en**: "Hi, this is Maria speaking."
+   **example_pass**: Hi, this is Maria speaking. | Hi, this is Maria speaking, yes. | Yes, hi, this is maria speaking.
+   **example_fail**: speaking (bare word — no subject + verb) | Yes (no structure) | I don't know (off-topic)
 
 2. **id**: 2
    **label_pt**: "Pedir pra falar com alguém"
@@ -822,6 +852,8 @@
    **hidden_prompt**: "user uses 'Can I speak to...?'"
    **hint_pt**: "Can I speak to John, please?"
    **hint_en**: "Can I speak to John, please?"
+   **example_pass**: Can I speak to John, please. | I can swim. | I can speak English.
+   **example_fail**: Swim (no 'I can') | I swim (no 'can' — wrong structure) | Can (incomplete)
 
 3. **id**: 3
    **label_pt**: "Deixar recado ou prometer retorno"
@@ -829,6 +861,8 @@
    **hidden_prompt**: "user uses 'Can I leave a message?' or 'I'll call back'"
    **hint_pt**: "Can I leave a message?"
    **hint_en**: "Can I leave a message?"
+   **example_pass**: Can I leave a message. | I'm going to travel tomorrow. | I will study tonight.
+   **example_fail**: Tomorrow (no verb) | I travel tomorrow (wrong tense — present) | Travel (bare verb, no future)
 
 **Closing cue**: Charlotte fecha com "I'll let him know!" quando obj_3 bater.
 
@@ -864,6 +898,8 @@
    **hidden_prompt**: "user describes their feeling about phone calls"
    **hint_pt**: "I get really nervous on the phone."
    **hint_en**: "I get really nervous on the phone."
+   **example_pass**: I get really nervous on the phone. | I get really nervous on the phone, yes. | Yes, i get really nervous on the phone.
+   **example_fail**: phone (bare word — no subject + verb) | Yes (no structure) | I don't know (off-topic)
 
 2. **id**: 2
    **label_pt**: "Contar uma experiência"
@@ -871,6 +907,8 @@
    **hidden_prompt**: "user shares a phone call experience"
    **hint_pt**: "Last week I called a hotel in English."
    **hint_en**: "Last week I called a hotel in English."
+   **example_pass**: Last week I called a hotel in English. | Last week I called a hotel in English, yes. | Yes, last week i called a hotel in english.
+   **example_fail**: English (bare word — no subject + verb) | Yes (no structure) | I don't know (off-topic)
 
 3. **id**: 3
    **label_pt**: "Perguntar a Charlotte"

@@ -163,7 +163,17 @@
             "label_en": "Say a countable food with a number",
             "hidden_prompt": "user states countable food with 'I ate/had + number + plural noun' (two apples, three sandwiches, etc.)",
             "hint_pt": "I had two eggs.",
-            "hint_en": "I had two eggs."
+            "hint_en": "I had two eggs.",
+            "examples_pass": [
+              "I had two eggs.",
+              "I had two eggs, yes.",
+              "Yes, i had two eggs."
+            ],
+            "examples_fail": [
+              "eggs (bare word — no subject + verb)",
+              "Yes (no structure)",
+              "I don't know (off-topic)"
+            ]
           },
           {
             "id": 2,
@@ -171,7 +181,17 @@
             "label_en": "Say an uncountable drink with 'some'",
             "hidden_prompt": "user states uncountable with 'some + noun' (some water, some milk, some coffee)",
             "hint_pt": "I had some coffee.",
-            "hint_en": "I had some coffee."
+            "hint_en": "I had some coffee.",
+            "examples_pass": [
+              "I had some coffee.",
+              "I had some coffee, yes.",
+              "Yes, i had some coffee."
+            ],
+            "examples_fail": [
+              "coffee (bare word — no subject + verb)",
+              "Yes (no structure)",
+              "I don't know (off-topic)"
+            ]
           },
           {
             "id": 3,
@@ -179,7 +199,17 @@
             "label_en": "Say one more food or drink",
             "hidden_prompt": "user mentions another food/drink, countable or uncountable",
             "hint_pt": "I had a sandwich.",
-            "hint_en": "I had a sandwich."
+            "hint_en": "I had a sandwich.",
+            "examples_pass": [
+              "I had a sandwich.",
+              "I had a sandwich, yes.",
+              "Yes, i had a sandwich."
+            ],
+            "examples_fail": [
+              "sandwich (bare word — no subject + verb)",
+              "Yes (no structure)",
+              "I don't know (off-topic)"
+            ]
           }
         ],
         "closing_cue": "Charlotte fecha com \"Yum!\" quando obj_3 baterem.",
@@ -204,7 +234,17 @@
             "label_en": "Say a countable food",
             "hidden_prompt": "user says 'I had + number/a/an + countable food'",
             "hint_pt": "I had a sandwich.",
-            "hint_en": "I had a sandwich."
+            "hint_en": "I had a sandwich.",
+            "examples_pass": [
+              "I had a sandwich.",
+              "I had a sandwich, yes.",
+              "Yes, i had a sandwich."
+            ],
+            "examples_fail": [
+              "sandwich (bare word — no subject + verb)",
+              "Yes (no structure)",
+              "I don't know (off-topic)"
+            ]
           },
           {
             "id": 2,
@@ -212,7 +252,17 @@
             "label_en": "Say uncountable drink",
             "hidden_prompt": "user says 'I had some + uncountable' or 'a cup of + drink'",
             "hint_pt": "I had some juice.",
-            "hint_en": "I had some juice."
+            "hint_en": "I had some juice.",
+            "examples_pass": [
+              "I had some juice.",
+              "I had some juice, yes.",
+              "Yes, i had some juice."
+            ],
+            "examples_fail": [
+              "juice (bare word — no subject + verb)",
+              "Yes (no structure)",
+              "I don't know (off-topic)"
+            ]
           },
           {
             "id": 3,
@@ -378,7 +428,17 @@
             "label_en": "Say what's there (affirmative some)",
             "hidden_prompt": "user states what's there with 'I have some + noun' or 'There is/are some + noun'",
             "hint_pt": "I have some milk.",
-            "hint_en": "I have some milk."
+            "hint_en": "I have some milk.",
+            "examples_pass": [
+              "I have some milk.",
+              "I have some milk, yes.",
+              "Yes, i have some milk."
+            ],
+            "examples_fail": [
+              "milk (bare word — no subject + verb)",
+              "Yes (no structure)",
+              "I don't know (off-topic)"
+            ]
           },
           {
             "id": 2,
@@ -386,7 +446,17 @@
             "label_en": "Say what isn't there (negative any)",
             "hidden_prompt": "user states what's missing with 'I don't have any + noun' or 'There isn't any + noun'",
             "hint_pt": "I don't have any cheese.",
-            "hint_en": "I don't have any cheese."
+            "hint_en": "I don't have any cheese.",
+            "examples_pass": [
+              "I don't have any cheese.",
+              "I don't have any cheese, yes.",
+              "Yes, i don't have any cheese."
+            ],
+            "examples_fail": [
+              "cheese (bare word — no subject + verb)",
+              "Yes (no structure)",
+              "I don't know (off-topic)"
+            ]
           },
           {
             "id": 3,
@@ -869,7 +939,17 @@
             "label_en": "Order food politely",
             "hidden_prompt": "user orders food with 'I'd like + food' or 'Can I have + food'",
             "hint_pt": "I'd like a pizza, please.",
-            "hint_en": "I'd like a pizza, please."
+            "hint_en": "I'd like a pizza, please.",
+            "examples_pass": [
+              "I'd like a pizza, please.",
+              "I can swim.",
+              "I can speak English."
+            ],
+            "examples_fail": [
+              "Swim (no 'I can')",
+              "I swim (no 'can' — wrong structure)",
+              "Can (incomplete)"
+            ]
           },
           {
             "id": 2,
@@ -877,7 +957,17 @@
             "label_en": "Order a drink",
             "hidden_prompt": "user orders drink with 'I'd like + drink' or 'Can I have + drink'",
             "hint_pt": "I'd like a glass of water.",
-            "hint_en": "I'd like a glass of water."
+            "hint_en": "I'd like a glass of water.",
+            "examples_pass": [
+              "I'd like a glass of water.",
+              "I can swim.",
+              "I can speak English."
+            ],
+            "examples_fail": [
+              "Swim (no 'I can')",
+              "I swim (no 'can' — wrong structure)",
+              "Can (incomplete)"
+            ]
           },
           {
             "id": 3,
@@ -920,7 +1010,17 @@
             "label_en": "Order a dish",
             "hidden_prompt": "user orders with 'I'd like + food' or 'Can I have + food'",
             "hint_pt": "I'd like a burger.",
-            "hint_en": "I'd like a burger."
+            "hint_en": "I'd like a burger.",
+            "examples_pass": [
+              "I'd like a burger.",
+              "I can swim.",
+              "I can speak English."
+            ],
+            "examples_fail": [
+              "Swim (no 'I can')",
+              "I swim (no 'can' — wrong structure)",
+              "Can (incomplete)"
+            ]
           },
           {
             "id": 2,
@@ -928,7 +1028,17 @@
             "label_en": "Order a drink",
             "hidden_prompt": "user orders a drink with 'I'd like + drink'",
             "hint_pt": "I'd like a Coke.",
-            "hint_en": "I'd like a Coke."
+            "hint_en": "I'd like a Coke.",
+            "examples_pass": [
+              "I'd like a Coke.",
+              "I love pizza.",
+              "My favorite food is sushi."
+            ],
+            "examples_fail": [
+              "Pizza (bare noun)",
+              "Like (incomplete)",
+              "Yes (no preference structure)"
+            ]
           },
           {
             "id": 3,
@@ -1094,7 +1204,17 @@
             "label_en": "Order with 'I'd like'",
             "hidden_prompt": "user orders with 'I'd like + food/drink'",
             "hint_pt": "I'd like a sandwich.",
-            "hint_en": "I'd like a sandwich."
+            "hint_en": "I'd like a sandwich.",
+            "examples_pass": [
+              "I'd like a sandwich.",
+              "I love pizza.",
+              "My favorite food is sushi."
+            ],
+            "examples_fail": [
+              "Pizza (bare noun)",
+              "Like (incomplete)",
+              "Yes (no preference structure)"
+            ]
           },
           {
             "id": 2,
@@ -1155,7 +1275,17 @@
             "label_en": "Say what you have/want",
             "hidden_prompt": "user states food with 'I have some + food' or 'I'd like + food'",
             "hint_pt": "I have some pasta.",
-            "hint_en": "I have some pasta."
+            "hint_en": "I have some pasta.",
+            "examples_pass": [
+              "I have some pasta.",
+              "I love pizza.",
+              "My favorite food is sushi."
+            ],
+            "examples_fail": [
+              "Pizza (bare noun)",
+              "Like (incomplete)",
+              "Yes (no preference structure)"
+            ]
           },
           {
             "id": 2,
@@ -1163,7 +1293,17 @@
             "label_en": "Say what's missing",
             "hidden_prompt": "user says 'I don't have any + noun' or 'Do you have any + noun?'",
             "hint_pt": "I don't have any sauce.",
-            "hint_en": "I don't have any sauce."
+            "hint_en": "I don't have any sauce.",
+            "examples_pass": [
+              "I don't have any sauce.",
+              "I don't have any sauce, yes.",
+              "Yes, i don't have any sauce."
+            ],
+            "examples_fail": [
+              "sauce (bare word — no subject + verb)",
+              "Yes (no structure)",
+              "I don't know (off-topic)"
+            ]
           },
           {
             "id": 3,

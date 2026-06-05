@@ -108,6 +108,8 @@
    **hidden_prompt**: "user gives advice with 'You should + base'"
    **hint_pt**: "You should rest."
    **hint_en**: "You should rest."
+   **example_pass**: You should rest. | You should rest. | You shouldn't drink so much coffee.
+   **example_fail**: Rest (no 'you should') | I rest (wrong subject) | Should (incomplete)
 
 2. **id**: 2
    **label_pt**: "Dar conselho negativo (shouldn't)"
@@ -115,6 +117,8 @@
    **hidden_prompt**: "user advises against with 'You shouldn't + base'"
    **hint_pt**: "You shouldn't work so much."
    **hint_en**: "You shouldn't work so much."
+   **example_pass**: You shouldn't work so much. | You should rest. | You shouldn't drink so much coffee.
+   **example_fail**: Rest (no 'you should') | I rest (wrong subject) | Should (incomplete)
 
 3. **id**: 3
    **label_pt**: "Mais um conselho"
@@ -122,6 +126,8 @@
    **hidden_prompt**: "user gives another advice with should/shouldn't"
    **hint_pt**: "You should take a vacation."
    **hint_en**: "You should take a vacation."
+   **example_pass**: You should take a vacation. | You should rest. | You shouldn't drink so much coffee.
+   **example_fail**: Rest (no 'you should') | I rest (wrong subject) | Should (incomplete)
 
 **Closing cue**: Charlotte fecha com "Wise advice!" quando obj_3 baterem.
 
@@ -157,6 +163,8 @@
    **hidden_prompt**: "user uses 'You should + base'"
    **hint_pt**: "You should practice every day."
    **hint_en**: "You should practice every day."
+   **example_pass**: You should practice every day. | You should rest. | You shouldn't drink so much coffee.
+   **example_fail**: Rest (no 'you should') | I rest (wrong subject) | Should (incomplete)
 
 2. **id**: 2
    **label_pt**: "Dar conselho negativo"
@@ -164,6 +172,8 @@
    **hidden_prompt**: "user uses 'You shouldn't + base'"
    **hint_pt**: "You shouldn't translate everything."
    **hint_en**: "You shouldn't translate everything."
+   **example_pass**: You shouldn't translate everything. | You should rest. | You shouldn't drink so much coffee.
+   **example_fail**: Rest (no 'you should') | I rest (wrong subject) | Should (incomplete)
 
 3. **id**: 3
    **label_pt**: "Perguntar à Charlotte se ela tem outras dicas"
@@ -276,6 +286,8 @@
    **hidden_prompt**: "user states obligation with 'I have to + base'"
    **hint_pt**: "I have to work."
    **hint_en**: "I have to work."
+   **example_pass**: I have to work. | I have to work, yes. | Yes, i have to work.
+   **example_fail**: work (bare word — no subject + verb) | Yes (no structure) | I don't know (off-topic)
 
 2. **id**: 2
    **label_pt**: "Outra obrigação"
@@ -283,6 +295,8 @@
    **hidden_prompt**: "user uses another 'I have to + base'"
    **hint_pt**: "I have to finish a report."
    **hint_en**: "I have to finish a report."
+   **example_pass**: I have to finish a report. | I have to finish a report, yes. | Yes, i have to finish a report.
+   **example_fail**: report (bare word — no subject + verb) | Yes (no structure) | I don't know (off-topic)
 
 3. **id**: 3
    **label_pt**: "Obrigação de alguém da família (has to)"
@@ -290,6 +304,8 @@
    **hidden_prompt**: "user uses 'He/She has to + base'"
    **hint_pt**: "My sister has to study."
    **hint_en**: "My sister has to study."
+   **example_pass**: My sister has to study. | She works at a hospital. | He lives in São Paulo.
+   **example_fail**: Work (no subject + -s) | She work (missing -s) | Hospital (bare noun)
 
 **Closing cue**: Charlotte fecha com "Busy week!" quando obj_3 baterem.
 
@@ -325,6 +341,8 @@
    **hidden_prompt**: "user uses 'I have to + base'"
    **hint_pt**: "I have to clean my room."
    **hint_en**: "I have to clean my room."
+   **example_pass**: I have to clean my room. | I have to clean my room, yes. | Yes, i have to clean my room.
+   **example_fail**: room (bare word — no subject + verb) | Yes (no structure) | I don't know (off-topic)
 
 2. **id**: 2
    **label_pt**: "Outra obrigação"
@@ -332,6 +350,8 @@
    **hidden_prompt**: "user uses another 'I have to + base'"
    **hint_pt**: "I have to cook dinner."
    **hint_en**: "I have to cook dinner."
+   **example_pass**: I have to cook dinner. | I have to cook dinner, yes. | Yes, i have to cook dinner.
+   **example_fail**: dinner (bare word — no subject + verb) | Yes (no structure) | I don't know (off-topic)
 
 3. **id**: 3
    **label_pt**: "Perguntar à Charlotte"
@@ -444,6 +464,8 @@
    **hidden_prompt**: "user uses 'I don't have to + base'"
    **hint_pt**: "No, I don't have to work."
    **hint_en**: "No, I don't have to work."
+   **example_pass**: No, I don't have to work. | No, I don't have to work, yes. | Yes, no, i don't have to work.
+   **example_fail**: work (bare word — no subject + verb) | Yes (no structure) | I don't know (off-topic)
 
 2. **id**: 2
    **label_pt**: "Outra coisa que não precisa fazer"
@@ -451,6 +473,8 @@
    **hidden_prompt**: "user uses another 'I don't have to + base'"
    **hint_pt**: "I don't have to wake up early."
    **hint_en**: "I don't have to wake up early."
+   **example_pass**: I don't have to wake up early. | I don't have to wake up early, yes. | Yes, i don't have to wake up early.
+   **example_fail**: early (bare word — no subject + verb) | Yes (no structure) | I don't know (off-topic)
 
 3. **id**: 3
    **label_pt**: "Alguém da família que não precisa"
@@ -458,6 +482,8 @@
    **hidden_prompt**: "user uses 'He/She doesn't have to + base'"
    **hint_pt**: "My sister doesn't have to come."
    **hint_en**: "My sister doesn't have to come."
+   **example_pass**: My sister doesn't have to come. | She works at a hospital. | He lives in São Paulo.
+   **example_fail**: Work (no subject + -s) | She work (missing -s) | Hospital (bare noun)
 
 **Closing cue**: Charlotte fecha com "Freedom acknowledged!" quando obj_3 baterem.
 
@@ -493,6 +519,8 @@
    **hidden_prompt**: "user uses 'I don't have to + base'"
    **hint_pt**: "I don't have to set alarms."
    **hint_en**: "I don't have to set alarms."
+   **example_pass**: I don't have to set alarms. | I don't have to set alarms, yes. | Yes, i don't have to set alarms.
+   **example_fail**: alarms (bare word — no subject + verb) | Yes (no structure) | I don't know (off-topic)
 
 2. **id**: 2
    **label_pt**: "Outra coisa opcional"
@@ -500,6 +528,8 @@
    **hidden_prompt**: "user uses another 'I don't have to'"
    **hint_pt**: "I don't have to cook."
    **hint_en**: "I don't have to cook."
+   **example_pass**: I don't have to cook. | I don't have to cook, yes. | Yes, i don't have to cook.
+   **example_fail**: cook (bare word — no subject + verb) | Yes (no structure) | I don't know (off-topic)
 
 3. **id**: 3
    **label_pt**: "Perguntar à Charlotte"
@@ -789,6 +819,8 @@
    **hidden_prompt**: "user gives advice with 'You should + base'"
    **hint_pt**: "You should rest."
    **hint_en**: "You should rest."
+   **example_pass**: You should rest. | You should rest. | You shouldn't drink so much coffee.
+   **example_fail**: Rest (no 'you should') | I rest (wrong subject) | Should (incomplete)
 
 2. **id**: 2
    **label_pt**: "Mencionar obrigação sua (have to)"
@@ -796,6 +828,8 @@
    **hidden_prompt**: "user uses 'I have to + base'"
    **hint_pt**: "I have to study too."
    **hint_en**: "I have to study too."
+   **example_pass**: I have to study too. | I have to study too, yes. | Yes, i have to study too.
+   **example_fail**: too (bare word — no subject + verb) | Yes (no structure) | I don't know (off-topic)
 
 3. **id**: 3
    **label_pt**: "Mencionar necessidade (need to)"
@@ -803,6 +837,8 @@
    **hidden_prompt**: "user uses 'We need to + base' or 'I need to + base'"
    **hint_pt**: "We need to take breaks."
    **hint_en**: "We need to take breaks."
+   **example_pass**: We need to take breaks. | We need to take breaks, yes. | Yes, we need to take breaks.
+   **example_fail**: breaks (bare word — no subject + verb) | Yes (no structure) | I don't know (off-topic)
 
 **Closing cue**: Charlotte fecha com "Three modals mastered!" quando obj_3 baterem.
 
@@ -838,6 +874,8 @@
    **hidden_prompt**: "user uses 'I have to + base'"
    **hint_pt**: "I have to finish a report."
    **hint_en**: "I have to finish a report."
+   **example_pass**: I have to finish a report. | I have to finish a report, yes. | Yes, i have to finish a report.
+   **example_fail**: report (bare word — no subject + verb) | Yes (no structure) | I don't know (off-topic)
 
 2. **id**: 2
    **label_pt**: "Mencionar necessidade"
@@ -845,6 +883,8 @@
    **hidden_prompt**: "user uses 'I need to + base'"
    **hint_pt**: "I need to call my doctor."
    **hint_en**: "I need to call my doctor."
+   **example_pass**: I need to call my doctor. | I need to call my doctor, yes. | Yes, i need to call my doctor.
+   **example_fail**: doctor (bare word — no subject + verb) | Yes (no structure) | I don't know (off-topic)
 
 3. **id**: 3
    **label_pt**: "Dar conselho à Charlotte"
@@ -852,6 +892,8 @@
    **hidden_prompt**: "user uses 'You should + base' for Charlotte"
    **hint_pt**: "You should take time off."
    **hint_en**: "You should take time off."
+   **example_pass**: You should take time off. | You should rest. | You shouldn't drink so much coffee.
+   **example_fail**: Rest (no 'you should') | I rest (wrong subject) | Should (incomplete)
 
 **Closing cue**: Charlotte encerra com "Real-life talk!" quando obj_3 baterem.
 

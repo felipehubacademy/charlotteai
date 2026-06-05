@@ -109,6 +109,8 @@
    **hidden_prompt**: "user states love with 'I love + noun' (food, music, place, person, activity)"
    **hint_pt**: "I love coffee."
    **hint_en**: "I love coffee."
+   **example_pass**: I love coffee. | I love pizza. | My favorite food is sushi.
+   **example_fail**: Pizza (bare noun) | Like (incomplete) | Yes (no preference structure)
 
 2. **id**: 2
    **label_pt**: "Dizer algo que você odeia (I hate)"
@@ -116,6 +118,8 @@
    **hidden_prompt**: "user states dislike with 'I hate + noun'"
    **hint_pt**: "I hate Mondays."
    **hint_en**: "I hate Mondays."
+   **example_pass**: I hate Mondays. | I love pizza. | My favorite food is sushi.
+   **example_fail**: Pizza (bare noun) | Like (incomplete) | Yes (no preference structure)
 
 3. **id**: 3
    **label_pt**: "Dizer o que alguém da família gosta (3ª pessoa)"
@@ -123,6 +127,8 @@
    **hidden_prompt**: "user states 3rd person preference with 'He/She/My + person + likes/loves/hates + noun' (3rd person -s)"
    **hint_pt**: "My sister loves dogs."
    **hint_en**: "My sister loves dogs."
+   **example_pass**: My sister loves dogs. | I love pizza. | My favorite food is sushi.
+   **example_fail**: Pizza (bare noun) | Like (incomplete) | Yes (no preference structure)
 
 **Closing cue**: Charlotte fecha com "Interesting tastes!" quando obj_3 baterem.
 
@@ -158,6 +164,8 @@
    **hidden_prompt**: "user says 'I love + noun'"
    **hint_pt**: "I love pizza."
    **hint_en**: "I love pizza."
+   **example_pass**: I love pizza. | I love pizza. | My favorite food is sushi.
+   **example_fail**: Pizza (bare noun) | Like (incomplete) | Yes (no preference structure)
 
 2. **id**: 2
    **label_pt**: "Dizer o que você odeia"
@@ -165,6 +173,8 @@
    **hidden_prompt**: "user says 'I hate + noun'"
    **hint_pt**: "I hate traffic."
    **hint_en**: "I hate traffic."
+   **example_pass**: I hate traffic. | I love pizza. | My favorite food is sushi.
+   **example_fail**: Pizza (bare noun) | Like (incomplete) | Yes (no preference structure)
 
 3. **id**: 3
    **label_pt**: "Perguntar à Charlotte"
@@ -276,6 +286,8 @@
    **hidden_prompt**: "user states activity with 'I love + verb-ing' (reading, cooking, dancing, etc.)"
    **hint_pt**: "I love reading."
    **hint_en**: "I love reading."
+   **example_pass**: I love reading. | I love pizza. | My favorite food is sushi.
+   **example_fail**: Pizza (bare noun) | Like (incomplete) | Yes (no preference structure)
 
 2. **id**: 2
    **label_pt**: "Dizer atividade que você odeia"
@@ -283,6 +295,8 @@
    **hidden_prompt**: "user states 'I hate + verb-ing'"
    **hint_pt**: "I hate waking up early."
    **hint_en**: "I hate waking up early."
+   **example_pass**: I hate waking up early. | I love pizza. | My favorite food is sushi.
+   **example_fail**: Pizza (bare noun) | Like (incomplete) | Yes (no preference structure)
 
 3. **id**: 3
    **label_pt**: "Dizer atividade que alguém da família gosta"
@@ -290,6 +304,8 @@
    **hidden_prompt**: "user states 3rd person with 'He/She likes/loves + verb-ing'"
    **hint_pt**: "My brother loves playing soccer."
    **hint_en**: "My brother loves playing soccer."
+   **example_pass**: My brother loves playing soccer. | I love pizza. | My favorite food is sushi.
+   **example_fail**: Pizza (bare noun) | Like (incomplete) | Yes (no preference structure)
 
 **Closing cue**: Charlotte fecha com "Cool hobbies!" quando obj_3 baterem.
 
@@ -325,6 +341,8 @@
    **hidden_prompt**: "user says 'I love + verb-ing'"
    **hint_pt**: "I love cooking."
    **hint_en**: "I love cooking."
+   **example_pass**: I love cooking. | I love pizza. | My favorite food is sushi.
+   **example_fail**: Pizza (bare noun) | Like (incomplete) | Yes (no preference structure)
 
 2. **id**: 2
    **label_pt**: "Dizer outra atividade que você gosta"
@@ -332,6 +350,8 @@
    **hidden_prompt**: "user says 'I like + verb-ing'"
    **hint_pt**: "I like dancing."
    **hint_en**: "I like dancing."
+   **example_pass**: I like dancing. | I love pizza. | My favorite food is sushi.
+   **example_fail**: Pizza (bare noun) | Like (incomplete) | Yes (no preference structure)
 
 3. **id**: 3
    **label_pt**: "Perguntar à Charlotte o que ela gosta"
@@ -444,6 +464,8 @@
    **hidden_prompt**: "user states 'I love him' or 'I love her' referring to a person"
    **hint_pt**: "I love her."
    **hint_en**: "I love her."
+   **example_pass**: I love her. | I love pizza. | My favorite food is sushi.
+   **example_fail**: Pizza (bare noun) | Like (incomplete) | Yes (no preference structure)
 
 2. **id**: 2
    **label_pt**: "Dizer que alguém te chama ou visita (usando 'me')"
@@ -451,6 +473,8 @@
    **hidden_prompt**: "user states 'She/He calls me' or 'visits me' or 'helps me' — using 'me' as object"
    **hint_pt**: "She calls me every day."
    **hint_en**: "She calls me every day."
+   **example_pass**: She calls me every day. | She works at a hospital. | He lives in São Paulo.
+   **example_fail**: Work (no subject + -s) | She work (missing -s) | Hospital (bare noun)
 
 3. **id**: 3
    **label_pt**: "Dizer que vocês veem alguém juntos (usando 'them')"
@@ -458,6 +482,8 @@
    **hidden_prompt**: "user states 'We see them' or 'We visit them' using 'them' as object"
    **hint_pt**: "We see them on Sundays."
    **hint_en**: "We see them on Sundays."
+   **example_pass**: We see them on Sundays. | We see them on Sundays, yes. | Yes, we see them on sundays.
+   **example_fail**: Sundays (bare word — no subject + verb) | Yes (no structure) | I don't know (off-topic)
 
 **Closing cue**: Charlotte fecha com "Sweet connections!" quando obj_3 baterem.
 
@@ -493,6 +519,8 @@
    **hidden_prompt**: "user says 'I love him' or 'I love her'"
    **hint_pt**: "I love him."
    **hint_en**: "I love him."
+   **example_pass**: I love him. | I love pizza. | My favorite food is sushi.
+   **example_fail**: Pizza (bare noun) | Like (incomplete) | Yes (no preference structure)
 
 2. **id**: 2
    **label_pt**: "Dizer que alguém faz algo por você (me)"
@@ -500,6 +528,8 @@
    **hidden_prompt**: "user says 'She/He + verb + me' (calls me, helps me, visits me)"
    **hint_pt**: "He helps me a lot."
    **hint_en**: "He helps me a lot."
+   **example_pass**: He helps me a lot. | She works at a hospital. | He lives in São Paulo.
+   **example_fail**: Work (no subject + -s) | She work (missing -s) | Hospital (bare noun)
 
 3. **id**: 3
    **label_pt**: "Perguntar à Charlotte (devolver a pergunta)"
@@ -613,6 +643,8 @@
    **hidden_prompt**: "user states music preference with 'I love + genre + music' (pop, rock, classical, jazz, etc.)"
    **hint_pt**: "I love pop music."
    **hint_en**: "I love pop music."
+   **example_pass**: I love pop music. | I love pizza. | My favorite food is sushi.
+   **example_fail**: Pizza (bare noun) | Like (incomplete) | Yes (no preference structure)
 
 2. **id**: 2
    **label_pt**: "Dizer um gênero de filme que gosta"
@@ -620,6 +652,8 @@
    **hidden_prompt**: "user states movie preference with 'I like + genre + movies' (action, comedy, horror, etc.)"
    **hint_pt**: "I like action movies."
    **hint_en**: "I like action movies."
+   **example_pass**: I like action movies. | I love pizza. | My favorite food is sushi.
+   **example_fail**: Pizza (bare noun) | Like (incomplete) | Yes (no preference structure)
 
 3. **id**: 3
    **label_pt**: "Dizer algo cultural que odeia"
@@ -627,6 +661,8 @@
    **hidden_prompt**: "user states cultural dislike with 'I hate + noun' (horror movies, slow songs, etc.)"
    **hint_pt**: "I hate horror movies."
    **hint_en**: "I hate horror movies."
+   **example_pass**: I hate horror movies. | I love pizza. | My favorite food is sushi.
+   **example_fail**: Pizza (bare noun) | Like (incomplete) | Yes (no preference structure)
 
 **Closing cue**: Charlotte fecha com "Cool tastes!" quando obj_3 baterem.
 
@@ -662,6 +698,8 @@
    **hidden_prompt**: "user states music with 'I love/like + genre + music'"
    **hint_pt**: "I love rock music."
    **hint_en**: "I love rock music."
+   **example_pass**: I love rock music. | I love pizza. | My favorite food is sushi.
+   **example_fail**: Pizza (bare noun) | Like (incomplete) | Yes (no preference structure)
 
 2. **id**: 2
    **label_pt**: "Dizer filme ou livro preferido"
@@ -669,6 +707,8 @@
    **hidden_prompt**: "user states 'I like/love + genre + movies/books'"
    **hint_pt**: "I love comedy movies."
    **hint_en**: "I love comedy movies."
+   **example_pass**: I love comedy movies. | I love pizza. | My favorite food is sushi.
+   **example_fail**: Pizza (bare noun) | Like (incomplete) | Yes (no preference structure)
 
 3. **id**: 3
    **label_pt**: "Perguntar à Charlotte"
@@ -780,6 +820,8 @@
    **hidden_prompt**: "user states preference with 'I prefer + X' or 'I prefer X over/to Y'"
    **hint_pt**: "I prefer tea over coffee."
    **hint_en**: "I prefer tea over coffee."
+   **example_pass**: I prefer tea over coffee. | I prefer tea over coffee, yes. | Yes, i prefer tea over coffee.
+   **example_fail**: coffee (bare word — no subject + verb) | Yes (no structure) | I don't know (off-topic)
 
 2. **id**: 2
    **label_pt**: "Dizer outra preferência (atividade)"
@@ -787,6 +829,8 @@
    **hidden_prompt**: "user states preference with 'I prefer + verb-ing'"
    **hint_pt**: "I prefer walking."
    **hint_en**: "I prefer walking."
+   **example_pass**: I prefer walking. | I prefer walking, yes. | Yes, i prefer walking.
+   **example_fail**: walking (bare word — no subject + verb) | Yes (no structure) | I don't know (off-topic)
 
 3. **id**: 3
    **label_pt**: "Dizer preferência de alguém da família"
@@ -794,6 +838,8 @@
    **hidden_prompt**: "user states 'He/She prefers + X' (3rd person -s)"
    **hint_pt**: "My sister prefers coffee."
    **hint_en**: "My sister prefers coffee."
+   **example_pass**: My sister prefers coffee. | She works at a hospital. | He lives in São Paulo.
+   **example_fail**: Work (no subject + -s) | She work (missing -s) | Hospital (bare noun)
 
 **Closing cue**: Charlotte fecha com "Clear preferences!" quando obj_3 baterem.
 
@@ -829,6 +875,8 @@
    **hidden_prompt**: "user says 'I prefer + noun' or 'I prefer + verb-ing'"
    **hint_pt**: "I prefer the beach."
    **hint_en**: "I prefer the beach."
+   **example_pass**: I prefer the beach. | I prefer the beach, yes. | Yes, i prefer the beach.
+   **example_fail**: beach (bare word — no subject + verb) | Yes (no structure) | I don't know (off-topic)
 
 2. **id**: 2
    **label_pt**: "Dizer atividade preferida"
@@ -836,6 +884,8 @@
    **hidden_prompt**: "user says 'I prefer + verb-ing'"
    **hint_pt**: "I prefer swimming."
    **hint_en**: "I prefer swimming."
+   **example_pass**: I prefer swimming. | I prefer swimming, yes. | Yes, i prefer swimming.
+   **example_fail**: swimming (bare word — no subject + verb) | Yes (no structure) | I don't know (off-topic)
 
 3. **id**: 3
    **label_pt**: "Perguntar à Charlotte"

@@ -162,7 +162,17 @@
             "label_en": "Sentence with 'and'",
             "hidden_prompt": "user uses 'X and Y' to connect two ideas",
             "hint_pt": "I like reading and swimming.",
-            "hint_en": "I like reading and swimming."
+            "hint_en": "I like reading and swimming.",
+            "examples_pass": [
+              "I like reading and swimming.",
+              "I like reading and swimming, yes.",
+              "Yes, i like reading and swimming."
+            ],
+            "examples_fail": [
+              "swimming (bare word — no subject + verb)",
+              "Yes (no structure)",
+              "I don't know (off-topic)"
+            ]
           },
           {
             "id": 2,
@@ -170,7 +180,17 @@
             "label_en": "Sentence with 'but'",
             "hidden_prompt": "user uses 'X but Y' for contrast",
             "hint_pt": "I like coffee but not tea.",
-            "hint_en": "I like coffee but not tea."
+            "hint_en": "I like coffee but not tea.",
+            "examples_pass": [
+              "I like coffee but not tea.",
+              "I like coffee but not tea, yes.",
+              "Yes, i like coffee but not tea."
+            ],
+            "examples_fail": [
+              "tea (bare word — no subject + verb)",
+              "Yes (no structure)",
+              "I don't know (off-topic)"
+            ]
           },
           {
             "id": 3,
@@ -178,7 +198,17 @@
             "label_en": "Sentence with 'so'",
             "hidden_prompt": "user uses 'X, so Y' for consequence",
             "hint_pt": "I'm tired, so I'll rest.",
-            "hint_en": "I'm tired, so I'll rest."
+            "hint_en": "I'm tired, so I'll rest.",
+            "examples_pass": [
+              "I'm tired, so I'll rest.",
+              "I'm tired, so I'll rest, yes.",
+              "Yes, i'm tired, so i'll rest."
+            ],
+            "examples_fail": [
+              "rest (bare word — no subject + verb)",
+              "Yes (no structure)",
+              "I don't know (off-topic)"
+            ]
           }
         ],
         "closing_cue": "Charlotte fecha com \"Connected ideas!\" quando obj_3 baterem.",
@@ -203,7 +233,17 @@
             "label_en": "Connect with and",
             "hidden_prompt": "user uses 'X and Y'",
             "hint_pt": "I like reading and traveling.",
-            "hint_en": "I like reading and traveling."
+            "hint_en": "I like reading and traveling.",
+            "examples_pass": [
+              "I like reading and traveling.",
+              "I like reading and traveling, yes.",
+              "Yes, i like reading and traveling."
+            ],
+            "examples_fail": [
+              "traveling (bare word — no subject + verb)",
+              "Yes (no structure)",
+              "I don't know (off-topic)"
+            ]
           },
           {
             "id": 2,
@@ -211,7 +251,17 @@
             "label_en": "Connect with but",
             "hidden_prompt": "user uses 'X but Y'",
             "hint_pt": "I like sweets but not too much.",
-            "hint_en": "I like sweets but not too much."
+            "hint_en": "I like sweets but not too much.",
+            "examples_pass": [
+              "I like sweets but not too much.",
+              "I like sweets but not too much, yes.",
+              "Yes, i like sweets but not too much."
+            ],
+            "examples_fail": [
+              "much (bare word — no subject + verb)",
+              "Yes (no structure)",
+              "I don't know (off-topic)"
+            ]
           },
           {
             "id": 3,
@@ -378,7 +428,17 @@
             "label_en": "Explain cause with 'because'",
             "hidden_prompt": "user uses 'X because Y'",
             "hint_pt": "I study English because I want to travel.",
-            "hint_en": "I study English because I want to travel."
+            "hint_en": "I study English because I want to travel.",
+            "examples_pass": [
+              "I study English because I want to travel.",
+              "I study English because I want to travel, yes.",
+              "Yes, i study english because i want to travel."
+            ],
+            "examples_fail": [
+              "travel (bare word — no subject + verb)",
+              "Yes (no structure)",
+              "I don't know (off-topic)"
+            ]
           },
           {
             "id": 2,
@@ -386,7 +446,17 @@
             "label_en": "Explain result with 'so'",
             "hidden_prompt": "user uses 'X, so Y'",
             "hint_pt": "I work hard, so I get tired.",
-            "hint_en": "I work hard, so I get tired."
+            "hint_en": "I work hard, so I get tired.",
+            "examples_pass": [
+              "I work hard, so I get tired.",
+              "I work hard, so I get tired, yes.",
+              "Yes, i work hard, so i get tired."
+            ],
+            "examples_fail": [
+              "tired (bare word — no subject + verb)",
+              "Yes (no structure)",
+              "I don't know (off-topic)"
+            ]
           },
           {
             "id": 3,
@@ -394,7 +464,17 @@
             "label_en": "Another cause or result",
             "hidden_prompt": "user uses another because or so sentence",
             "hint_pt": "I love coffee because it gives me energy.",
-            "hint_en": "I love coffee because it gives me energy."
+            "hint_en": "I love coffee because it gives me energy.",
+            "examples_pass": [
+              "I love coffee because it gives me energy.",
+              "I love coffee because it gives me energy, yes.",
+              "Yes, i love coffee because it gives me energy."
+            ],
+            "examples_fail": [
+              "energy (bare word — no subject + verb)",
+              "Yes (no structure)",
+              "I don't know (off-topic)"
+            ]
           }
         ],
         "closing_cue": "Charlotte fecha com \"Cause-effect clear!\" quando obj_3 baterem.",
@@ -419,7 +499,17 @@
             "label_en": "Explain with because",
             "hidden_prompt": "user uses 'because + reason'",
             "hint_pt": "Because I want a better job.",
-            "hint_en": "Because I want a better job."
+            "hint_en": "Because I want a better job.",
+            "examples_pass": [
+              "Because I want a better job.",
+              "Because I want a better job, yes.",
+              "Yes, because i want a better job."
+            ],
+            "examples_fail": [
+              "job (bare word — no subject + verb)",
+              "Yes (no structure)",
+              "I don't know (off-topic)"
+            ]
           },
           {
             "id": 2,
@@ -427,7 +517,17 @@
             "label_en": "Give result with so",
             "hidden_prompt": "user uses 'X, so Y'",
             "hint_pt": "I study every day, so I improve fast.",
-            "hint_en": "I study every day, so I improve fast."
+            "hint_en": "I study every day, so I improve fast.",
+            "examples_pass": [
+              "I study every day, so I improve fast.",
+              "I study every day, so I improve fast, yes.",
+              "Yes, i study every day, so i improve fast."
+            ],
+            "examples_fail": [
+              "fast (bare word — no subject + verb)",
+              "Yes (no structure)",
+              "I don't know (off-topic)"
+            ]
           },
           {
             "id": 3,
@@ -591,7 +691,17 @@
             "label_en": "Describe action with -ly",
             "hidden_prompt": "user uses 'X + verb + adverb-ly'",
             "hint_pt": "She speaks quickly.",
-            "hint_en": "She speaks quickly."
+            "hint_en": "She speaks quickly.",
+            "examples_pass": [
+              "She speaks quickly.",
+              "She speaks quickly, yes.",
+              "Yes, she speaks quickly."
+            ],
+            "examples_fail": [
+              "quickly (bare word — no subject + verb)",
+              "Yes (no structure)",
+              "I don't know (off-topic)"
+            ]
           },
           {
             "id": 2,
@@ -599,7 +709,17 @@
             "label_en": "Another -ly action",
             "hidden_prompt": "user uses another adverb-ly",
             "hint_pt": "He drives carefully.",
-            "hint_en": "He drives carefully."
+            "hint_en": "He drives carefully.",
+            "examples_pass": [
+              "He drives carefully.",
+              "He drives carefully, yes.",
+              "Yes, he drives carefully."
+            ],
+            "examples_fail": [
+              "carefully (bare word — no subject + verb)",
+              "Yes (no structure)",
+              "I don't know (off-topic)"
+            ]
           },
           {
             "id": 3,
@@ -607,7 +727,17 @@
             "label_en": "Use irregular or y→ily",
             "hidden_prompt": "user uses 'well' or 'happily/easily/etc.'",
             "hint_pt": "She sings happily.",
-            "hint_en": "She sings happily."
+            "hint_en": "She sings happily.",
+            "examples_pass": [
+              "She sings happily.",
+              "She sings happily, yes.",
+              "Yes, she sings happily."
+            ],
+            "examples_fail": [
+              "happily (bare word — no subject + verb)",
+              "Yes (no structure)",
+              "I don't know (off-topic)"
+            ]
           }
         ],
         "closing_cue": "Charlotte fecha com \"Description on point!\" quando obj_3 baterem.",
@@ -632,7 +762,17 @@
             "label_en": "Describe person 1",
             "hidden_prompt": "user uses 'X + verb + adverb-ly'",
             "hint_pt": "My sister sings beautifully.",
-            "hint_en": "My sister sings beautifully."
+            "hint_en": "My sister sings beautifully.",
+            "examples_pass": [
+              "My sister sings beautifully.",
+              "My sister sings beautifully, yes.",
+              "Yes, my sister sings beautifully."
+            ],
+            "examples_fail": [
+              "beautifully (bare word — no subject + verb)",
+              "Yes (no structure)",
+              "I don't know (off-topic)"
+            ]
           },
           {
             "id": 2,
@@ -640,7 +780,17 @@
             "label_en": "Describe person 2",
             "hidden_prompt": "user uses another adverb-ly",
             "hint_pt": "My brother drives quickly.",
-            "hint_en": "My brother drives quickly."
+            "hint_en": "My brother drives quickly.",
+            "examples_pass": [
+              "My brother drives quickly.",
+              "My brother drives quickly, yes.",
+              "Yes, my brother drives quickly."
+            ],
+            "examples_fail": [
+              "quickly (bare word — no subject + verb)",
+              "Yes (no structure)",
+              "I don't know (off-topic)"
+            ]
           },
           {
             "id": 3,
@@ -807,7 +957,17 @@
             "label_en": "Contrast with 'although'",
             "hidden_prompt": "user uses 'Although + X, Y'",
             "hint_pt": "Although I'm tired, I'll keep working.",
-            "hint_en": "Although I'm tired, I'll keep working."
+            "hint_en": "Although I'm tired, I'll keep working.",
+            "examples_pass": [
+              "Although I'm tired, I'll keep working.",
+              "Although I'm tired, I'll keep working, yes.",
+              "Yes, although i'm tired, i'll keep working."
+            ],
+            "examples_fail": [
+              "working (bare word — no subject + verb)",
+              "Yes (no structure)",
+              "I don't know (off-topic)"
+            ]
           },
           {
             "id": 2,
@@ -815,7 +975,17 @@
             "label_en": "Another with 'although'",
             "hidden_prompt": "user uses another although sentence",
             "hint_pt": "Although it's late, I'll call her.",
-            "hint_en": "Although it's late, I'll call her."
+            "hint_en": "Although it's late, I'll call her.",
+            "examples_pass": [
+              "Although it's late, I'll call her.",
+              "Although it's late, I'll call her, yes.",
+              "Yes, although it's late, i'll call her."
+            ],
+            "examples_fail": [
+              "her (bare word — no subject + verb)",
+              "Yes (no structure)",
+              "I don't know (off-topic)"
+            ]
           },
           {
             "id": 3,
@@ -823,7 +993,17 @@
             "label_en": "Contrast with 'however'",
             "hidden_prompt": "user uses 'X. However, Y'",
             "hint_pt": "I want to relax. However, I have to study.",
-            "hint_en": "I want to relax. However, I have to study."
+            "hint_en": "I want to relax. However, I have to study.",
+            "examples_pass": [
+              "I want to relax. However, I have to study.",
+              "I want to relax. However, I have to study, yes.",
+              "Yes, i want to relax. however, i have to study."
+            ],
+            "examples_fail": [
+              "study (bare word — no subject + verb)",
+              "Yes (no structure)",
+              "I don't know (off-topic)"
+            ]
           }
         ],
         "closing_cue": "Charlotte fecha com \"Sophisticated contrasts!\" quando obj_3 baterem.",
@@ -848,7 +1028,17 @@
             "label_en": "Although contrast",
             "hidden_prompt": "user uses 'Although + ...'",
             "hint_pt": "Although I love my job, it's stressful.",
-            "hint_en": "Although I love my job, it's stressful."
+            "hint_en": "Although I love my job, it's stressful.",
+            "examples_pass": [
+              "Although I love my job, it's stressful.",
+              "Although I love my job, it's stressful, yes.",
+              "Yes, although i love my job, it's stressful."
+            ],
+            "examples_fail": [
+              "stressful (bare word — no subject + verb)",
+              "Yes (no structure)",
+              "I don't know (off-topic)"
+            ]
           },
           {
             "id": 2,
@@ -856,7 +1046,17 @@
             "label_en": "However contrast",
             "hidden_prompt": "user uses 'X. However, Y'",
             "hint_pt": "I want to sleep more. However, I wake up early.",
-            "hint_en": "I want to sleep more. However, I wake up early."
+            "hint_en": "I want to sleep more. However, I wake up early.",
+            "examples_pass": [
+              "I want to sleep more. However, I wake up early.",
+              "I want to sleep more. However, I wake up early, yes.",
+              "Yes, i want to sleep more. however, i wake up early."
+            ],
+            "examples_fail": [
+              "early (bare word — no subject + verb)",
+              "Yes (no structure)",
+              "I don't know (off-topic)"
+            ]
           },
           {
             "id": 3,
@@ -1023,7 +1223,17 @@
             "label_en": "Talk about past",
             "hidden_prompt": "user uses past simple: 'I + past verb + ...'",
             "hint_pt": "Last year I traveled to Italy.",
-            "hint_en": "Last year I traveled to Italy."
+            "hint_en": "Last year I traveled to Italy.",
+            "examples_pass": [
+              "Last year I traveled to Italy.",
+              "Yesterday I worked all day.",
+              "I watched TV last night."
+            ],
+            "examples_fail": [
+              "Yesterday (no verb)",
+              "I work yesterday (wrong tense — present)",
+              "Work (bare verb, no past)"
+            ]
           },
           {
             "id": 2,
@@ -1031,7 +1241,17 @@
             "label_en": "Talk about present routine",
             "hidden_prompt": "user uses present simple: 'I + verb'",
             "hint_pt": "Now I study English every day.",
-            "hint_en": "Now I study English every day."
+            "hint_en": "Now I study English every day.",
+            "examples_pass": [
+              "Now I study English every day.",
+              "I live in Brazil.",
+              "I work at a school."
+            ],
+            "examples_fail": [
+              "Brazil (bare noun)",
+              "Live (no subject)",
+              "Work (bare verb)"
+            ]
           },
           {
             "id": 3,
@@ -1039,7 +1259,17 @@
             "label_en": "Talk about future",
             "hidden_prompt": "user uses future: 'I'm going to + base' or 'I'll + base'",
             "hint_pt": "Next year I'll be fluent.",
-            "hint_en": "Next year I'll be fluent."
+            "hint_en": "Next year I'll be fluent.",
+            "examples_pass": [
+              "Next year I'll be fluent.",
+              "I'm going to travel tomorrow.",
+              "I will study tonight."
+            ],
+            "examples_fail": [
+              "Tomorrow (no verb)",
+              "I travel tomorrow (wrong tense — present)",
+              "Travel (bare verb, no future)"
+            ]
           }
         ],
         "closing_cue": "Charlotte fecha com \"Novice complete!\" quando obj_3 baterem.",
@@ -1064,7 +1294,17 @@
             "label_en": "Say how you feel",
             "hidden_prompt": "user uses 'I feel + adj' or 'I'm + adj'",
             "hint_pt": "I feel proud and excited.",
-            "hint_en": "I feel proud and excited."
+            "hint_en": "I feel proud and excited.",
+            "examples_pass": [
+              "I feel proud and excited.",
+              "I feel proud and excited, yes.",
+              "Yes, i feel proud and excited."
+            ],
+            "examples_fail": [
+              "excited (bare word — no subject + verb)",
+              "Yes (no structure)",
+              "I don't know (off-topic)"
+            ]
           },
           {
             "id": 2,
@@ -1072,7 +1312,17 @@
             "label_en": "Say upcoming plans",
             "hidden_prompt": "user uses 'I'm going to + base' or 'I'll + base'",
             "hint_pt": "I'm going to start the Inter level.",
-            "hint_en": "I'm going to start the Inter level."
+            "hint_en": "I'm going to start the Inter level.",
+            "examples_pass": [
+              "I'm going to start the Inter level.",
+              "I'm going to travel tomorrow.",
+              "I will study tonight."
+            ],
+            "examples_fail": [
+              "Tomorrow (no verb)",
+              "I travel tomorrow (wrong tense — present)",
+              "Travel (bare verb, no future)"
+            ]
           },
           {
             "id": 3,
@@ -1080,7 +1330,17 @@
             "label_en": "Thank Charlotte",
             "hidden_prompt": "user expresses gratitude or reflection",
             "hint_pt": "Thank you, Charlotte!",
-            "hint_en": "Thank you, Charlotte!"
+            "hint_en": "Thank you, Charlotte!",
+            "examples_pass": [
+              "Thank you, Charlotte.",
+              "Thank you, Charlotte, yes.",
+              "Yes, thank you, charlotte."
+            ],
+            "examples_fail": [
+              "Charlotte (bare word — no subject + verb)",
+              "Yes (no structure)",
+              "I don't know (off-topic)"
+            ]
           }
         ],
         "closing_cue": "Charlotte encerra com \"On to Inter!\" quando obj_3 baterem.",

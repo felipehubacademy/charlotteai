@@ -115,6 +115,8 @@ Charlotte fala via ElevenLabs (Rachel). Aluno repete; Azure Speech avalia pronú
    **hidden_prompt**: "user states an age using 'I am' or 'I'm' + a number (any number 1-100) + 'years old' — number can be digit or spelled out"
    **hint_pt**: "I'm twenty years old!"
    **hint_en**: "I'm twenty years old!"
+   **example_pass**: I'm twenty years old! | I am 18 years old. | I'm thirty years old.
+   **example_fail**: Twenty (bare number) | I have 20 years (wrong verb — PT translation) | I'm old (no number)
 
 2. **id**: 2
    **label_pt**: "Dizer outro número de contexto (andar, quarto, ou favorito)"
@@ -122,6 +124,8 @@ Charlotte fala via ElevenLabs (Rachel). Aluno repete; Azure Speech avalia pronú
    **hidden_prompt**: "user states another number with chunks like 'floor + number', 'room + number', 'my favorite number is + number', or 'it's + number' — any number 1-20 counts"
    **hint_pt**: "Floor twelve."
    **hint_en**: "Floor twelve."
+   **example_pass**: Floor twelve. | Room seven. | My favorite number is nine.
+   **example_fail**: Twelve (bare number) | Floor (no number) | I'm twelve (age, not chunk)
 
 **Closing cue**: Charlotte fecha com "Nice! You got the numbers down." quando obj_2 baterem.
 
@@ -155,6 +159,8 @@ Charlotte fala via ElevenLabs (Rachel). Aluno repete; Azure Speech avalia pronú
    **hidden_prompt**: "user states age with 'I'm + number + years old' or just 'I'm + number'"
    **hint_pt**: "I'm twenty years old."
    **hint_en**: "I'm twenty years old."
+   **example_pass**: I'm twenty years old. | I'm 18. | I am twenty years old.
+   **example_fail**: Twenty (bare number) | I have 20 years (wrong verb) | Years old (no number)
 
 2. **id**: 2
    **label_pt**: "Dizer um andar ou número de quarto"
@@ -162,6 +168,8 @@ Charlotte fala via ElevenLabs (Rachel). Aluno repete; Azure Speech avalia pronú
    **hidden_prompt**: "user states a floor or room number with 'floor + number', 'room + number', or 'it's floor/room + number'"
    **hint_pt**: "Floor five."
    **hint_en**: "Floor five."
+   **example_pass**: Floor five. | Room ten. | It's floor three.
+   **example_fail**: Five (bare number) | Floor (no number) | The five (no chunk)
 
 3. **id**: 3
    **label_pt**: "Dizer seu número favorito"
@@ -169,6 +177,8 @@ Charlotte fala via ElevenLabs (Rachel). Aluno repete; Azure Speech avalia pronú
    **hidden_prompt**: "user states a favorite number with 'My favorite number is + number' or 'It's + number'"
    **hint_pt**: "My favorite number is seven."
    **hint_en**: "My favorite number is seven."
+   **example_pass**: My favorite number is seven. | It's seven. | My favorite is nine.
+   **example_fail**: Seven (bare number) | I like seven (off-chunk) | Favorite (no number)
 
 **Closing cue**: Charlotte encerra com "Awesome — numbers locked in!" quando obj_3 baterem.
 
@@ -271,6 +281,8 @@ Charlotte fala via ElevenLabs (Rachel). Aluno repete; Azure Speech avalia pronú
    **hidden_prompt**: "user states an age using 'I'm + number + years old' with a number between 20 and 100 (digit or spelled out, with or without hyphen)"
    **hint_pt**: "I'm thirty years old!"
    **hint_en**: "I'm thirty years old!"
+   **example_pass**: I'm thirty years old! | I'm twenty-five. | I am forty years old.
+   **example_fail**: Thirty (bare number) | I'm ten (under 20) | I have 30 years (wrong verb)
 
 2. **id**: 2
    **label_pt**: "Dizer um preço ou temperatura (número grande)"
@@ -278,6 +290,8 @@ Charlotte fala via ElevenLabs (Rachel). Aluno repete; Azure Speech avalia pronú
    **hidden_prompt**: "user states a price or temperature with 'it's + number + dollars' or 'it's + number + degrees' — number above 20"
    **hint_pt**: "It's fifty dollars."
    **hint_en**: "It's fifty dollars."
+   **example_pass**: It's fifty dollars. | It's thirty degrees. | It's one hundred dollars.
+   **example_fail**: Fifty dollars (no subject + verb) | It's five (number too low, no unit) | Dollars (no number)
 
 **Closing cue**: Charlotte fecha com "Great! Big numbers under control." quando obj_2 baterem.
 
@@ -311,6 +325,8 @@ Charlotte fala via ElevenLabs (Rachel). Aluno repete; Azure Speech avalia pronú
    **hidden_prompt**: "user states age with 'I'm + number + years old' or 'I am + number' — number 20+"
    **hint_pt**: "I'm twenty-five."
    **hint_en**: "I'm twenty-five."
+   **example_pass**: I'm twenty-five. | I'm thirty years old. | I am forty.
+   **example_fail**: Twenty-five (bare number) | I'm ten (under 20) | I have 25 years (wrong verb)
 
 2. **id**: 2
    **label_pt**: "Dizer um preço"
@@ -318,6 +334,8 @@ Charlotte fala via ElevenLabs (Rachel). Aluno repete; Azure Speech avalia pronú
    **hidden_prompt**: "user states a price with 'it's + number + dollars' or just 'number + dollars'"
    **hint_pt**: "It's fifty dollars."
    **hint_en**: "It's fifty dollars."
+   **example_pass**: It's fifty dollars. | Twenty dollars. | It's one hundred dollars.
+   **example_fail**: Fifty (no unit) | Dollars (no number) | It's expensive (no number or unit)
 
 3. **id**: 3
    **label_pt**: "Dizer a temperatura agora"
@@ -325,6 +343,8 @@ Charlotte fala via ElevenLabs (Rachel). Aluno repete; Azure Speech avalia pronú
    **hidden_prompt**: "user states a temperature with 'it's + number + degrees' or 'the temperature is + number'"
    **hint_pt**: "It's thirty degrees."
    **hint_en**: "It's thirty degrees."
+   **example_pass**: It's thirty degrees. | The temperature is twenty degrees. | It's twenty-five degrees.
+   **example_fail**: Thirty (bare number) | Degrees (no number) | It's hot (no number/unit)
 
 **Closing cue**: Charlotte encerra com "Numbers mastered. Nice!" quando obj_3 baterem.
 
@@ -427,6 +447,8 @@ Charlotte fala via ElevenLabs (Rachel). Aluno repete; Azure Speech avalia pronú
    **hidden_prompt**: "user states origin with 'I'm from + country name' — any country counts, must be a country (not just a city or 'here')"
    **hint_pt**: "I'm from Brazil!"
    **hint_en**: "I'm from Brazil!"
+   **example_pass**: I'm from Brazil! | I am from Japan. | I'm from the United States.
+   **example_fail**: Brazil (bare country) | I'm from here (no country) | I'm Brazilian (nationality, not origin)
 
 2. **id**: 2
    **label_pt**: "Perguntar de onde Charlotte é"
@@ -470,6 +492,8 @@ Charlotte fala via ElevenLabs (Rachel). Aluno repete; Azure Speech avalia pronú
    **hidden_prompt**: "user states origin with 'I'm from + country name'"
    **hint_pt**: "I'm from Brazil."
    **hint_en**: "I'm from Brazil."
+   **example_pass**: I'm from Brazil. | I am from Japan. | I'm from the United States.
+   **example_fail**: Brazil (bare country) | From Brazil (no subject + verb) | I'm Brazilian (nationality, not origin)
 
 2. **id**: 2
    **label_pt**: "Perguntar de onde Charlotte é"
@@ -487,6 +511,8 @@ Charlotte fala via ElevenLabs (Rachel). Aluno repete; Azure Speech avalia pronú
    **hidden_prompt**: "user reacts positively to Charlotte's country with 'cool', 'nice', 'I love + country', 'awesome', or similar"
    **hint_pt**: "I love New York!"
    **hint_en**: "I love New York!"
+   **example_pass**: I love New York! | Cool! | Nice, I love that country.
+   **example_fail**: Ok (no reaction) | I'm from Brazil (off-intent) | New York (bare noun, no reaction)
 
 **Closing cue**: Charlotte encerra com "Same! Nice chatting." quando obj_3 baterem.
 
@@ -589,6 +615,8 @@ Charlotte fala via ElevenLabs (Rachel). Aluno repete; Azure Speech avalia pronú
    **hidden_prompt**: "user states nationality with 'I'm + nationality adjective' (e.g., 'I'm Brazilian', 'I'm Portuguese', 'I'm American')"
    **hint_pt**: "I'm Brazilian!"
    **hint_en**: "I'm Brazilian!"
+   **example_pass**: I'm Brazilian! | I am American. | I'm Portuguese.
+   **example_fail**: Brazilian (bare adjective) | I'm from Brazil (origin, not nationality) | Brazil (bare country)
 
 2. **id**: 2
    **label_pt**: "Dizer de onde você é (país) — distinguir do anterior"
@@ -596,6 +624,8 @@ Charlotte fala via ElevenLabs (Rachel). Aluno repete; Azure Speech avalia pronú
    **hidden_prompt**: "user states origin with 'I'm from + country name' — must be country, not nationality (Brazil not Brazilian)"
    **hint_pt**: "I'm from Brazil."
    **hint_en**: "I'm from Brazil."
+   **example_pass**: I'm from Brazil. | I am from Japan. | I'm from the United States.
+   **example_fail**: Brazil (bare country) | I'm from Brazilian (nationality, not country) | I'm Brazilian (nationality structure)
 
 **Closing cue**: Charlotte fecha com "Nice! You got nationality vs country down." quando obj_2 baterem.
 
@@ -629,6 +659,8 @@ Charlotte fala via ElevenLabs (Rachel). Aluno repete; Azure Speech avalia pronú
    **hidden_prompt**: "user states nationality with 'I'm + nationality adjective'"
    **hint_pt**: "I'm Brazilian."
    **hint_en**: "I'm Brazilian."
+   **example_pass**: I'm Brazilian. | I am American. | I'm Portuguese.
+   **example_fail**: Brazilian (bare adjective) | I'm from Brazil (origin) | Brazil (bare country)
 
 2. **id**: 2
    **label_pt**: "Dizer de onde você é (país)"
@@ -636,6 +668,8 @@ Charlotte fala via ElevenLabs (Rachel). Aluno repete; Azure Speech avalia pronú
    **hidden_prompt**: "user states origin with 'I'm from + country'"
    **hint_pt**: "I'm from Brazil."
    **hint_en**: "I'm from Brazil."
+   **example_pass**: I'm from Brazil. | I am from Japan. | I'm from the United States.
+   **example_fail**: Brazil (bare country) | I'm Brazilian (nationality) | From Brazil (no subject + verb)
 
 3. **id**: 3
    **label_pt**: "Perguntar a nacionalidade de Charlotte"
@@ -748,6 +782,8 @@ Charlotte fala via ElevenLabs (Rachel). Aluno repete; Azure Speech avalia pronú
    **hidden_prompt**: "user introduces themselves with both name AND age — uses 'I'm + name' or 'my name is + name' AND 'I'm + number + years old' (or 'I'm + number')"
    **hint_pt**: "I'm Felipe and I'm twenty-five."
    **hint_en**: "I'm Felipe and I'm twenty-five."
+   **example_pass**: I'm Felipe and I'm twenty-five. | My name is Ana, I'm 30. | I'm Tom, twenty years old.
+   **example_fail**: I'm Felipe (no age) | I'm 25 (no name) | Felipe, 25 (no subject + verb)
 
 2. **id**: 2
    **label_pt**: "Dizer origem e nacionalidade juntas"
@@ -755,6 +791,8 @@ Charlotte fala via ElevenLabs (Rachel). Aluno repete; Azure Speech avalia pronú
    **hidden_prompt**: "user states origin AND nationality — uses 'I'm from + country' AND 'I'm + nationality adjective'"
    **hint_pt**: "I'm from Brazil. I'm Brazilian."
    **hint_en**: "I'm from Brazil. I'm Brazilian."
+   **example_pass**: I'm from Brazil. I'm Brazilian. | I'm from Japan, I'm Japanese. | I am from Italy and I'm Italian.
+   **example_fail**: I'm from Brazil (no nationality) | I'm Brazilian (no origin) | Brazil, Brazilian (no subject + verb)
 
 **Closing cue**: Charlotte fecha com "Awesome intro. Great to have you on the team!" quando obj_2 baterem.
 
@@ -788,6 +826,8 @@ Charlotte fala via ElevenLabs (Rachel). Aluno repete; Azure Speech avalia pronú
    **hidden_prompt**: "user states name AND age in the same or adjacent messages with 'I'm + name' and 'I'm + number + years old'"
    **hint_pt**: "I'm Felipe, twenty-five."
    **hint_en**: "I'm Felipe, twenty-five."
+   **example_pass**: I'm Felipe, twenty-five. | My name is Ana, I'm 30. | I'm Tom and I'm 25 years old.
+   **example_fail**: I'm Felipe (no age) | Twenty-five (no name) | Felipe, 25 (no subject + verb)
 
 2. **id**: 2
    **label_pt**: "Dizer origem e nacionalidade"
@@ -795,6 +835,8 @@ Charlotte fala via ElevenLabs (Rachel). Aluno repete; Azure Speech avalia pronú
    **hidden_prompt**: "user states origin AND nationality with 'I'm from + country' and 'I'm + nationality'"
    **hint_pt**: "I'm from Brazil, I'm Brazilian."
    **hint_en**: "I'm from Brazil, I'm Brazilian."
+   **example_pass**: I'm from Brazil, I'm Brazilian. | I'm from Japan. I am Japanese. | I'm from Italy and I'm Italian.
+   **example_fail**: I'm from Brazil (no nationality) | I'm Brazilian (no origin) | Brazil, Brazilian (no structure)
 
 3. **id**: 3
    **label_pt**: "Fechar a apresentação com gentileza"
@@ -802,6 +844,8 @@ Charlotte fala via ElevenLabs (Rachel). Aluno repete; Azure Speech avalia pronú
    **hidden_prompt**: "user closes the intro with a warm closing AFTER stating name/origin: 'happy to be here', 'glad to meet you all', 'thanks for the welcome', 'nice to meet you too', or similar. Must come AFTER the name + origin objectives."
    **hint_pt**: "Happy to be here!"
    **hint_en**: "Happy to be here!"
+   **example_pass**: Happy to be here! | Nice to meet you all! | Thanks for the welcome.
+   **example_fail**: Happy (bare adjective) | I'm Brazilian (origin/nationality, not closing) | Hi (greeting, not closing)
 
 **Closing cue**: Charlotte encerra com "Same here! Welcome to the team." quando obj_3 baterem.
 

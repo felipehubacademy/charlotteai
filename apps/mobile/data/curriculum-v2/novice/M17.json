@@ -160,7 +160,17 @@
             "label_en": "Correct her with 'I didn't'",
             "hidden_prompt": "user corrects with 'No, I didn't + verb base'",
             "hint_pt": "No, I didn't go to the gym.",
-            "hint_en": "No, I didn't go to the gym."
+            "hint_en": "No, I didn't go to the gym.",
+            "examples_pass": [
+              "No, I didn't go to the gym.",
+              "No, I didn't go to the gym, yes.",
+              "Yes, no, i didn't go to the gym."
+            ],
+            "examples_fail": [
+              "gym (bare word — no subject + verb)",
+              "Yes (no structure)",
+              "I don't know (off-topic)"
+            ]
           },
           {
             "id": 2,
@@ -168,7 +178,17 @@
             "label_en": "Say another thing you didn't do",
             "hidden_prompt": "user uses another 'I didn't + verb base'",
             "hint_pt": "I didn't have time.",
-            "hint_en": "I didn't have time."
+            "hint_en": "I didn't have time.",
+            "examples_pass": [
+              "I didn't have time.",
+              "I didn't have time, yes.",
+              "Yes, i didn't have time."
+            ],
+            "examples_fail": [
+              "time (bare word — no subject + verb)",
+              "Yes (no structure)",
+              "I don't know (off-topic)"
+            ]
           },
           {
             "id": 3,
@@ -176,7 +196,17 @@
             "label_en": "Say someone didn't do something",
             "hidden_prompt": "user uses 'He/She didn't + base'",
             "hint_pt": "My sister didn't come.",
-            "hint_en": "My sister didn't come."
+            "hint_en": "My sister didn't come.",
+            "examples_pass": [
+              "My sister didn't come.",
+              "She works at a hospital.",
+              "He lives in São Paulo."
+            ],
+            "examples_fail": [
+              "Work (no subject + -s)",
+              "She work (missing -s)",
+              "Hospital (bare noun)"
+            ]
           }
         ],
         "closing_cue": "Charlotte fecha com \"Cleared up!\" quando obj_3 baterem.",
@@ -201,7 +231,17 @@
             "label_en": "Say what you didn't do",
             "hidden_prompt": "user uses 'I didn't + verb base'",
             "hint_pt": "I didn't work.",
-            "hint_en": "I didn't work."
+            "hint_en": "I didn't work.",
+            "examples_pass": [
+              "I didn't work.",
+              "I didn't work, yes.",
+              "Yes, i didn't work."
+            ],
+            "examples_fail": [
+              "work (bare word — no subject + verb)",
+              "Yes (no structure)",
+              "I don't know (off-topic)"
+            ]
           },
           {
             "id": 2,
@@ -209,7 +249,17 @@
             "label_en": "Say another negative",
             "hidden_prompt": "user uses another 'I didn't + verb base'",
             "hint_pt": "I didn't see anyone.",
-            "hint_en": "I didn't see anyone."
+            "hint_en": "I didn't see anyone.",
+            "examples_pass": [
+              "I didn't see anyone.",
+              "I didn't see anyone, yes.",
+              "Yes, i didn't see anyone."
+            ],
+            "examples_fail": [
+              "anyone (bare word — no subject + verb)",
+              "Yes (no structure)",
+              "I don't know (off-topic)"
+            ]
           },
           {
             "id": 3,
@@ -447,7 +497,17 @@
             "label_en": "Short-answer the question",
             "hidden_prompt": "user gives short answer 'Yes, I did' or 'No, I didn't'",
             "hint_pt": "Yes, I did.",
-            "hint_en": "Yes, I did."
+            "hint_en": "Yes, I did.",
+            "examples_pass": [
+              "Yes, I did.",
+              "Yes, I did, yes.",
+              "Yes, yes, i did."
+            ],
+            "examples_fail": [
+              "did (bare word — no subject + verb)",
+              "Yes (no structure)",
+              "I don't know (off-topic)"
+            ]
           },
           {
             "id": 2,
@@ -897,7 +957,17 @@
             "label_en": "Say something you never did",
             "hidden_prompt": "user uses 'I never + verb past' (never visited, never tried, never went)",
             "hint_pt": "I never visited Japan.",
-            "hint_en": "I never visited Japan."
+            "hint_en": "I never visited Japan.",
+            "examples_pass": [
+              "I never visited Japan.",
+              "I never visited Japan, yes.",
+              "Yes, i never visited japan."
+            ],
+            "examples_fail": [
+              "Japan (bare word — no subject + verb)",
+              "Yes (no structure)",
+              "I don't know (off-topic)"
+            ]
           },
           {
             "id": 2,
@@ -905,7 +975,17 @@
             "label_en": "Another thing you never did",
             "hidden_prompt": "user uses 'I never + past verb'",
             "hint_pt": "I never tried sushi.",
-            "hint_en": "I never tried sushi."
+            "hint_en": "I never tried sushi.",
+            "examples_pass": [
+              "I never tried sushi.",
+              "I never tried sushi, yes.",
+              "Yes, i never tried sushi."
+            ],
+            "examples_fail": [
+              "sushi (bare word — no subject + verb)",
+              "Yes (no structure)",
+              "I don't know (off-topic)"
+            ]
           },
           {
             "id": 3,
@@ -913,7 +993,17 @@
             "label_en": "Say what you didn't do yesterday",
             "hidden_prompt": "user uses 'I didn't + verb base + yesterday/last week'",
             "hint_pt": "I didn't go out yesterday.",
-            "hint_en": "I didn't go out yesterday."
+            "hint_en": "I didn't go out yesterday.",
+            "examples_pass": [
+              "I didn't go out yesterday.",
+              "Yesterday I worked all day.",
+              "I watched TV last night."
+            ],
+            "examples_fail": [
+              "Yesterday (no verb)",
+              "I work yesterday (wrong tense — present)",
+              "Work (bare verb, no past)"
+            ]
           }
         ],
         "closing_cue": "Charlotte fecha com \"Honest list!\" quando obj_3 baterem.",
@@ -938,7 +1028,17 @@
             "label_en": "Say what you've never done",
             "hidden_prompt": "user uses 'I never + past verb'",
             "hint_pt": "I never went skiing.",
-            "hint_en": "I never went skiing."
+            "hint_en": "I never went skiing.",
+            "examples_pass": [
+              "I never went skiing.",
+              "I never went skiing, yes.",
+              "Yes, i never went skiing."
+            ],
+            "examples_fail": [
+              "skiing (bare word — no subject + verb)",
+              "Yes (no structure)",
+              "I don't know (off-topic)"
+            ]
           },
           {
             "id": 2,
@@ -946,7 +1046,17 @@
             "label_en": "Say another",
             "hidden_prompt": "user uses another 'I never + past'",
             "hint_pt": "I never ate raw fish.",
-            "hint_en": "I never ate raw fish."
+            "hint_en": "I never ate raw fish.",
+            "examples_pass": [
+              "I never ate raw fish.",
+              "I never ate raw fish, yes.",
+              "Yes, i never ate raw fish."
+            ],
+            "examples_fail": [
+              "fish (bare word — no subject + verb)",
+              "Yes (no structure)",
+              "I don't know (off-topic)"
+            ]
           },
           {
             "id": 3,
@@ -1110,7 +1220,17 @@
             "label_en": "Say positive past",
             "hidden_prompt": "user uses 'I + verb past + ...'",
             "hint_pt": "I went to the gym.",
-            "hint_en": "I went to the gym."
+            "hint_en": "I went to the gym.",
+            "examples_pass": [
+              "I went to the gym.",
+              "I live in Brazil.",
+              "I work at a school."
+            ],
+            "examples_fail": [
+              "Brazil (bare noun)",
+              "Live (no subject)",
+              "Work (bare verb)"
+            ]
           },
           {
             "id": 2,
@@ -1118,7 +1238,17 @@
             "label_en": "Say negative past",
             "hidden_prompt": "user uses 'I didn't + base'",
             "hint_pt": "I didn't eat dinner.",
-            "hint_en": "I didn't eat dinner."
+            "hint_en": "I didn't eat dinner.",
+            "examples_pass": [
+              "I didn't eat dinner.",
+              "I didn't eat dinner, yes.",
+              "Yes, i didn't eat dinner."
+            ],
+            "examples_fail": [
+              "dinner (bare word — no subject + verb)",
+              "Yes (no structure)",
+              "I don't know (off-topic)"
+            ]
           },
           {
             "id": 3,
@@ -1161,7 +1291,17 @@
             "label_en": "Say what you did (positive)",
             "hidden_prompt": "user uses 'I + verb past'",
             "hint_pt": "I went to a wedding.",
-            "hint_en": "I went to a wedding."
+            "hint_en": "I went to a wedding.",
+            "examples_pass": [
+              "I went to a wedding.",
+              "I live in Brazil.",
+              "I work at a school."
+            ],
+            "examples_fail": [
+              "Brazil (bare noun)",
+              "Live (no subject)",
+              "Work (bare verb)"
+            ]
           },
           {
             "id": 2,
@@ -1169,7 +1309,17 @@
             "label_en": "Say what you didn't do",
             "hidden_prompt": "user uses 'I didn't + base'",
             "hint_pt": "I didn't dance.",
-            "hint_en": "I didn't dance."
+            "hint_en": "I didn't dance.",
+            "examples_pass": [
+              "I didn't dance.",
+              "I didn't dance, yes.",
+              "Yes, i didn't dance."
+            ],
+            "examples_fail": [
+              "dance (bare word — no subject + verb)",
+              "Yes (no structure)",
+              "I don't know (off-topic)"
+            ]
           },
           {
             "id": 3,

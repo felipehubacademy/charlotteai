@@ -105,6 +105,8 @@
    **hidden_prompt**: "user uses 'the + short adj-est + in/of + family/group'"
    **hint_pt**: "My brother is the tallest."
    **hint_en**: "My brother is the tallest."
+   **example_pass**: My brother is the tallest. | She works at a hospital. | He lives in São Paulo.
+   **example_fail**: Work (no subject + -s) | She work (missing -s) | Hospital (bare noun)
 
 2. **id**: 2
    **label_pt**: "Destacar o maior/mais barato/mais quente de um grupo"
@@ -112,6 +114,8 @@
    **hidden_prompt**: "user uses 'the + adj-est + in/of + group'"
    **hint_pt**: "This is the cheapest store."
    **hint_en**: "This is the cheapest store."
+   **example_pass**: This is the cheapest store. | She works at a hospital. | He lives in São Paulo.
+   **example_fail**: Work (no subject + -s) | She work (missing -s) | Hospital (bare noun)
 
 3. **id**: 3
    **label_pt**: "Mais um superlativo curto"
@@ -119,6 +123,8 @@
    **hidden_prompt**: "user uses another 'the + adj-est' construction"
    **hint_pt**: "It's the hottest day of the year."
    **hint_en**: "It's the hottest day of the year."
+   **example_pass**: It's the hottest day of the year. | She works at a hospital. | He lives in São Paulo.
+   **example_fail**: Work (no subject + -s) | She work (missing -s) | Hospital (bare noun)
 
 **Closing cue**: Charlotte fecha com "Strong superlatives!" quando obj_3 baterem.
 
@@ -154,6 +160,8 @@
    **hidden_prompt**: "user uses 'the + adj-est'"
    **hint_pt**: "I'm the oldest in my family."
    **hint_en**: "I'm the oldest in my family."
+   **example_pass**: I'm the oldest in my family. | She works at a hospital. | He lives in São Paulo.
+   **example_fail**: Work (no subject + -s) | She work (missing -s) | Hospital (bare noun)
 
 2. **id**: 2
    **label_pt**: "Segundo superlativo curto"
@@ -161,6 +169,8 @@
    **hidden_prompt**: "user uses another 'the + adj-est'"
    **hint_pt**: "São Paulo is the biggest city."
    **hint_en**: "São Paulo is the biggest city."
+   **example_pass**: São Paulo is the biggest city. | She works at a hospital. | He lives in São Paulo.
+   **example_fail**: Work (no subject + -s) | She work (missing -s) | Hospital (bare noun)
 
 3. **id**: 3
    **label_pt**: "Perguntar à Charlotte"
@@ -272,6 +282,8 @@
    **hidden_prompt**: "user uses 'the most interesting + noun'"
    **hint_pt**: "Yoga is the most interesting hobby."
    **hint_en**: "Yoga is the most interesting hobby."
+   **example_pass**: Yoga is the most interesting hobby. | The best meal was pasta. | Pizza is the best food.
+   **example_fail**: Pasta (bare noun) | Best (bare adjective) | I like pasta (no superlative)
 
 2. **id**: 2
    **label_pt**: "Dizer 'the most expensive/beautiful + algo'"
@@ -279,6 +291,8 @@
    **hidden_prompt**: "user uses 'the most + long adj + noun'"
    **hint_pt**: "Rome is the most beautiful city."
    **hint_en**: "Rome is the most beautiful city."
+   **example_pass**: Rome is the most beautiful city. | The best meal was pasta. | Pizza is the best food.
+   **example_fail**: Pasta (bare noun) | Best (bare adjective) | I like pasta (no superlative)
 
 3. **id**: 3
    **label_pt**: "Terceiro superlativo longo"
@@ -286,6 +300,8 @@
    **hidden_prompt**: "user uses another 'the most + long adj'"
    **hint_pt**: "She is the most patient person."
    **hint_en**: "She is the most patient person."
+   **example_pass**: She is the most patient person. | The best meal was pasta. | Pizza is the best food.
+   **example_fail**: Pasta (bare noun) | Best (bare adjective) | I like pasta (no superlative)
 
 **Closing cue**: Charlotte fecha com "Big opinions!" quando obj_3 baterem.
 
@@ -321,6 +337,8 @@
    **hidden_prompt**: "user says 'My + thing + is the most expensive'"
    **hint_pt**: "My phone is the most expensive."
    **hint_en**: "My phone is the most expensive."
+   **example_pass**: My phone is the most expensive. | The best meal was pasta. | Pizza is the best food.
+   **example_fail**: Pasta (bare noun) | Best (bare adjective) | I like pasta (no superlative)
 
 2. **id**: 2
    **label_pt**: "Dizer outro superlativo longo"
@@ -328,6 +346,8 @@
    **hidden_prompt**: "user uses 'the most + long adj'"
    **hint_pt**: "Travel is the most exciting thing."
    **hint_en**: "Travel is the most exciting thing."
+   **example_pass**: Travel is the most exciting thing. | The best meal was pasta. | Pizza is the best food.
+   **example_fail**: Pasta (bare noun) | Best (bare adjective) | I like pasta (no superlative)
 
 3. **id**: 3
    **label_pt**: "Perguntar à Charlotte"
@@ -439,6 +459,8 @@
    **hidden_prompt**: "user uses 'the best + noun' or 'X is the best'"
    **hint_pt**: "This is the best pizza in town."
    **hint_en**: "This is the best pizza in town."
+   **example_pass**: This is the best pizza in town. | The best meal was pasta. | Pizza is the best food.
+   **example_fail**: Pasta (bare noun) | Best (bare adjective) | I like pasta (no superlative)
 
 2. **id**: 2
    **label_pt**: "Dizer o pior (the worst)"
@@ -446,6 +468,8 @@
    **hidden_prompt**: "user uses 'the worst + noun' or 'X is the worst'"
    **hint_pt**: "Mondays are the worst."
    **hint_en**: "Mondays are the worst."
+   **example_pass**: Mondays are the worst. | She works at a hospital. | He lives in São Paulo.
+   **example_fail**: Work (no subject + -s) | She work (missing -s) | Hospital (bare noun)
 
 3. **id**: 3
    **label_pt**: "Dizer 'the most' de algo"
@@ -453,6 +477,8 @@
    **hidden_prompt**: "user uses 'the most + noun'"
    **hint_pt**: "She has the most talent."
    **hint_en**: "She has the most talent."
+   **example_pass**: She has the most talent. | The best meal was pasta. | Pizza is the best food.
+   **example_fail**: Pasta (bare noun) | Best (bare adjective) | I like pasta (no superlative)
 
 **Closing cue**: Charlotte fecha com "Strong picks!" quando obj_3 baterem.
 
@@ -488,6 +514,8 @@
    **hidden_prompt**: "user says 'The best meal was + X' or 'X is the best meal'"
    **hint_pt**: "The best meal was pasta."
    **hint_en**: "The best meal was pasta."
+   **example_pass**: The best meal was pasta. | The best meal was pasta. | Pizza is the best food.
+   **example_fail**: Pasta (bare noun) | Best (bare adjective) | I like pasta (no superlative)
 
 2. **id**: 2
    **label_pt**: "Dizer a pior experiência"
@@ -495,6 +523,8 @@
    **hidden_prompt**: "user uses 'the worst + noun'"
    **hint_pt**: "The worst day was Monday."
    **hint_en**: "The worst day was Monday."
+   **example_pass**: The worst day was Monday. | She works at a hospital. | He lives in São Paulo.
+   **example_fail**: Work (no subject + -s) | She work (missing -s) | Hospital (bare noun)
 
 3. **id**: 3
    **label_pt**: "Perguntar à Charlotte"
@@ -607,6 +637,8 @@
    **hidden_prompt**: "user uses 'I live on the + ordinal + floor'"
    **hint_pt**: "I live on the third floor."
    **hint_en**: "I live on the third floor."
+   **example_pass**: I live on the third floor. | She works at a hospital. | He lives in São Paulo.
+   **example_fail**: Work (no subject + -s) | She work (missing -s) | Hospital (bare noun)
 
 2. **id**: 2
    **label_pt**: "Dizer 'é minha primeira/segunda vez fazendo algo'"
@@ -614,6 +646,8 @@
    **hidden_prompt**: "user uses 'It's my + ordinal + time + verb-ing'"
    **hint_pt**: "It's my first time visiting."
    **hint_en**: "It's my first time visiting."
+   **example_pass**: It's my first time visiting. | It's my first time visiting, yes. | Yes, it's my first time visiting.
+   **example_fail**: visiting (bare word — no subject + verb) | Yes (no structure) | I don't know (off-topic)
 
 3. **id**: 3
    **label_pt**: "Dizer uma data ou aniversário"
@@ -621,6 +655,8 @@
    **hidden_prompt**: "user uses 'on the + ordinal + of + month' for a date"
    **hint_pt**: "My birthday is on the fifteenth."
    **hint_en**: "My birthday is on the fifteenth."
+   **example_pass**: My birthday is on the fifteenth. | She works at a hospital. | He lives in São Paulo.
+   **example_fail**: Work (no subject + -s) | She work (missing -s) | Hospital (bare noun)
 
 **Closing cue**: Charlotte fecha com "Ordered!" quando obj_3 baterem.
 
@@ -656,6 +692,8 @@
    **hidden_prompt**: "user uses 'It's my + ordinal + time' or 'No, second/third time'"
    **hint_pt**: "It's my first time."
    **hint_en**: "It's my first time."
+   **example_pass**: It's my first time. | It's my first time, yes. | Yes, it's my first time.
+   **example_fail**: time (bare word — no subject + verb) | Yes (no structure) | I don't know (off-topic)
 
 2. **id**: 2
    **label_pt**: "Dizer ordem de algo (segundo, terceiro)"
@@ -663,6 +701,8 @@
    **hidden_prompt**: "user uses 'the + ordinal + noun'"
    **hint_pt**: "This is my second coffee."
    **hint_en**: "This is my second coffee."
+   **example_pass**: This is my second coffee. | She works at a hospital. | He lives in São Paulo.
+   **example_fail**: Work (no subject + -s) | She work (missing -s) | Hospital (bare noun)
 
 3. **id**: 3
    **label_pt**: "Perguntar à Charlotte"
@@ -774,6 +814,8 @@
    **hidden_prompt**: "user uses 'the + adj-est'"
    **hint_pt**: "My brother is the tallest."
    **hint_en**: "My brother is the tallest."
+   **example_pass**: My brother is the tallest. | She works at a hospital. | He lives in São Paulo.
+   **example_fail**: Work (no subject + -s) | She work (missing -s) | Hospital (bare noun)
 
 2. **id**: 2
    **label_pt**: "Usar um superlativo longo ou irregular"
@@ -781,6 +823,8 @@
    **hidden_prompt**: "user uses 'the most + long adj' OR 'the best/worst'"
    **hint_pt**: "This is the best coffee."
    **hint_en**: "This is the best coffee."
+   **example_pass**: This is the best coffee. | The best meal was pasta. | Pizza is the best food.
+   **example_fail**: Pasta (bare noun) | Best (bare adjective) | I like pasta (no superlative)
 
 3. **id**: 3
    **label_pt**: "Usar um ordinal"
@@ -788,6 +832,8 @@
    **hidden_prompt**: "user uses ordinal (first/second/third/etc.) in context"
    **hint_pt**: "It's my first time here."
    **hint_en**: "It's my first time here."
+   **example_pass**: It's my first time here. | It's my first time here, yes. | Yes, it's my first time here.
+   **example_fail**: here (bare word — no subject + verb) | Yes (no structure) | I don't know (off-topic)
 
 **Closing cue**: Charlotte fecha com "Top tier rankings!" quando obj_3 baterem.
 
@@ -823,6 +869,8 @@
    **hidden_prompt**: "user uses 'the best + noun' or 'X is the best'"
    **hint_pt**: "The best trip was Italy."
    **hint_en**: "The best trip was Italy."
+   **example_pass**: The best trip was Italy. | The best meal was pasta. | Pizza is the best food.
+   **example_fail**: Pasta (bare noun) | Best (bare adjective) | I like pasta (no superlative)
 
 2. **id**: 2
    **label_pt**: "Usar um ordinal"
@@ -830,6 +878,8 @@
    **hidden_prompt**: "user uses ordinal (first/second/etc.)"
    **hint_pt**: "It's my first time skiing."
    **hint_en**: "It's my first time skiing."
+   **example_pass**: It's my first time skiing. | It's my first time skiing, yes. | Yes, it's my first time skiing.
+   **example_fail**: skiing (bare word — no subject + verb) | Yes (no structure) | I don't know (off-topic)
 
 3. **id**: 3
    **label_pt**: "Perguntar à Charlotte"

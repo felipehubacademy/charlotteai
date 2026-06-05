@@ -104,6 +104,8 @@
    **hidden_prompt**: "user uses 'I'm going to + verb base' for a plan"
    **hint_pt**: "I'm going to travel."
    **hint_en**: "I'm going to travel."
+   **example_pass**: I'm going to travel. | I'm going to travel tomorrow. | I will study tonight.
+   **example_fail**: Tomorrow (no verb) | I travel tomorrow (wrong tense — present) | Travel (bare verb, no future)
 
 2. **id**: 2
    **label_pt**: "Outro plano"
@@ -111,6 +113,8 @@
    **hidden_prompt**: "user uses another 'I'm going to + base'"
    **hint_pt**: "I'm going to study English."
    **hint_en**: "I'm going to study English."
+   **example_pass**: I'm going to study English. | I'm going to travel tomorrow. | I will study tonight.
+   **example_fail**: Tomorrow (no verb) | I travel tomorrow (wrong tense — present) | Travel (bare verb, no future)
 
 3. **id**: 3
    **label_pt**: "Plano de alguém da família"
@@ -118,6 +122,8 @@
    **hidden_prompt**: "user uses 'He/She is going to + base'"
    **hint_pt**: "My sister is going to visit me."
    **hint_en**: "My sister is going to visit me."
+   **example_pass**: My sister is going to visit me. | I'm going to travel tomorrow. | I will study tonight.
+   **example_fail**: Tomorrow (no verb) | I travel tomorrow (wrong tense — present) | Travel (bare verb, no future)
 
 **Closing cue**: Charlotte fecha com "Big week ahead!" quando obj_3 baterem.
 
@@ -153,6 +159,8 @@
    **hidden_prompt**: "user uses 'I'm going to + verb base'"
    **hint_pt**: "I'm going to relax."
    **hint_en**: "I'm going to relax."
+   **example_pass**: I'm going to relax. | I'm going to travel tomorrow. | I will study tonight.
+   **example_fail**: Tomorrow (no verb) | I travel tomorrow (wrong tense — present) | Travel (bare verb, no future)
 
 2. **id**: 2
    **label_pt**: "Outro plano"
@@ -160,6 +168,8 @@
    **hidden_prompt**: "user uses another 'I'm going to'"
    **hint_pt**: "I'm going to see friends."
    **hint_en**: "I'm going to see friends."
+   **example_pass**: I'm going to see friends. | I'm going to travel tomorrow. | I will study tonight.
+   **example_fail**: Tomorrow (no verb) | I travel tomorrow (wrong tense — present) | Travel (bare verb, no future)
 
 3. **id**: 3
    **label_pt**: "Perguntar à Charlotte"
@@ -272,6 +282,8 @@
    **hidden_prompt**: "user uses 'I'm not going to + verb base'"
    **hint_pt**: "No, I'm not going to the gym."
    **hint_en**: "No, I'm not going to the gym."
+   **example_pass**: No, I'm not going to the gym. | I'm going to travel tomorrow. | I will study tonight.
+   **example_fail**: Tomorrow (no verb) | I travel tomorrow (wrong tense — present) | Travel (bare verb, no future)
 
 2. **id**: 2
    **label_pt**: "Outra negativa"
@@ -279,6 +291,8 @@
    **hidden_prompt**: "user uses another 'I'm not going to + base'"
    **hint_pt**: "I'm not going to eat out."
    **hint_en**: "I'm not going to eat out."
+   **example_pass**: I'm not going to eat out. | I'm going to travel tomorrow. | I will study tonight.
+   **example_fail**: Tomorrow (no verb) | I travel tomorrow (wrong tense — present) | Travel (bare verb, no future)
 
 3. **id**: 3
    **label_pt**: "Negativa de alguém da família"
@@ -286,6 +300,8 @@
    **hidden_prompt**: "user uses 'He/She isn't going to + base'"
    **hint_pt**: "My sister isn't going to come."
    **hint_en**: "My sister isn't going to come."
+   **example_pass**: My sister isn't going to come. | I'm going to travel tomorrow. | I will study tonight.
+   **example_fail**: Tomorrow (no verb) | I travel tomorrow (wrong tense — present) | Travel (bare verb, no future)
 
 **Closing cue**: Charlotte fecha com "Plans clear!" quando obj_3 baterem.
 
@@ -321,6 +337,8 @@
    **hidden_prompt**: "user uses 'I'm not going to + verb base'"
    **hint_pt**: "I'm not going to work."
    **hint_en**: "I'm not going to work."
+   **example_pass**: I'm not going to work. | I'm going to travel tomorrow. | I will study tonight.
+   **example_fail**: Tomorrow (no verb) | I travel tomorrow (wrong tense — present) | Travel (bare verb, no future)
 
 2. **id**: 2
    **label_pt**: "Outra negativa"
@@ -328,6 +346,8 @@
    **hidden_prompt**: "user uses another 'I'm not going to'"
    **hint_pt**: "I'm not going to clean."
    **hint_en**: "I'm not going to clean."
+   **example_pass**: I'm not going to clean. | I'm going to travel tomorrow. | I will study tonight.
+   **example_fail**: Tomorrow (no verb) | I travel tomorrow (wrong tense — present) | Travel (bare verb, no future)
 
 3. **id**: 3
    **label_pt**: "Perguntar à Charlotte"
@@ -617,6 +637,8 @@
    **hidden_prompt**: "user uses 'I'm going to + verb base + tomorrow'"
    **hint_pt**: "I'm going to work tomorrow."
    **hint_en**: "I'm going to work tomorrow."
+   **example_pass**: I'm going to work tomorrow. | I'm going to travel tomorrow. | I will study tonight.
+   **example_fail**: Tomorrow (no verb) | I travel tomorrow (wrong tense — present) | Travel (bare verb, no future)
 
 2. **id**: 2
    **label_pt**: "Plano com 'next week'"
@@ -624,6 +646,8 @@
    **hidden_prompt**: "user uses 'I'm going to + base + next week/month'"
    **hint_pt**: "I'm going to travel next week."
    **hint_en**: "I'm going to travel next week."
+   **example_pass**: I'm going to travel next week. | I'm going to travel tomorrow. | I will study tonight.
+   **example_fail**: Tomorrow (no verb) | I travel tomorrow (wrong tense — present) | Travel (bare verb, no future)
 
 3. **id**: 3
    **label_pt**: "Plano com 'in X days/in soon'"
@@ -631,6 +655,8 @@
    **hidden_prompt**: "user uses 'I'm going to + base + in X days' or 'soon'"
    **hint_pt**: "I'm going to finish in two days."
    **hint_en**: "I'm going to finish in two days."
+   **example_pass**: I'm going to finish in two days. | I'm going to travel tomorrow. | I will study tonight.
+   **example_fail**: Tomorrow (no verb) | I travel tomorrow (wrong tense — present) | Travel (bare verb, no future)
 
 **Closing cue**: Charlotte fecha com "Schedule packed!" quando obj_3 baterem.
 
@@ -666,6 +692,8 @@
    **hidden_prompt**: "user uses going to + tomorrow"
    **hint_pt**: "Tomorrow I'm going to study."
    **hint_en**: "Tomorrow I'm going to study."
+   **example_pass**: Tomorrow I'm going to study. | I'm going to travel tomorrow. | I will study tonight.
+   **example_fail**: Tomorrow (no verb) | I travel tomorrow (wrong tense — present) | Travel (bare verb, no future)
 
 2. **id**: 2
    **label_pt**: "Plano com 'next week' ou 'this weekend'"
@@ -673,6 +701,8 @@
    **hidden_prompt**: "user uses going to with these markers"
    **hint_pt**: "This weekend I'm going to relax."
    **hint_en**: "This weekend I'm going to relax."
+   **example_pass**: This weekend I'm going to relax. | I'm going to travel tomorrow. | I will study tonight.
+   **example_fail**: Tomorrow (no verb) | I travel tomorrow (wrong tense — present) | Travel (bare verb, no future)
 
 3. **id**: 3
    **label_pt**: "Perguntar à Charlotte"
@@ -785,6 +815,8 @@
    **hidden_prompt**: "user uses 'I'm going to + base + time'"
    **hint_pt**: "I'm going to study tomorrow."
    **hint_en**: "I'm going to study tomorrow."
+   **example_pass**: I'm going to study tomorrow. | I'm going to travel tomorrow. | I will study tonight.
+   **example_fail**: Tomorrow (no verb) | I travel tomorrow (wrong tense — present) | Travel (bare verb, no future)
 
 2. **id**: 2
    **label_pt**: "Plano negativo"
@@ -792,6 +824,8 @@
    **hidden_prompt**: "user uses 'I'm not going to + base'"
    **hint_pt**: "I'm not going to work this weekend."
    **hint_en**: "I'm not going to work this weekend."
+   **example_pass**: I'm not going to work this weekend. | I'm going to travel tomorrow. | I will study tonight.
+   **example_fail**: Tomorrow (no verb) | I travel tomorrow (wrong tense — present) | Travel (bare verb, no future)
 
 3. **id**: 3
    **label_pt**: "Pergunta à Charlotte"
@@ -836,6 +870,8 @@
    **hidden_prompt**: "user uses 'I'm going to + base + time'"
    **hint_pt**: "I'm going to take a vacation next month."
    **hint_en**: "I'm going to take a vacation next month."
+   **example_pass**: I'm going to take a vacation next month. | I'm going to travel tomorrow. | I will study tonight.
+   **example_fail**: Tomorrow (no verb) | I travel tomorrow (wrong tense — present) | Travel (bare verb, no future)
 
 2. **id**: 2
    **label_pt**: "Dizer o que não vai fazer"
@@ -843,6 +879,8 @@
    **hidden_prompt**: "user uses 'I'm not going to + base'"
    **hint_pt**: "I'm not going to work overtime."
    **hint_en**: "I'm not going to work overtime."
+   **example_pass**: I'm not going to work overtime. | I'm going to travel tomorrow. | I will study tonight.
+   **example_fail**: Tomorrow (no verb) | I travel tomorrow (wrong tense — present) | Travel (bare verb, no future)
 
 3. **id**: 3
    **label_pt**: "Perguntar à Charlotte"
@@ -959,6 +997,8 @@
    **hidden_prompt**: "user uses 'I want to' or 'I'd like to' in reply"
    **hint_pt**: "Yes, I want to come. Where are we going?"
    **hint_en**: "Yes, I want to come. Where are we going?"
+   **example_pass**: Yes, I want to come. Where are we going. | I love pizza. | My favorite food is sushi.
+   **example_fail**: Pizza (bare noun) | Like (incomplete) | Yes (no preference structure)
 
 2. **id**: 2
    **label_pt**: "Perguntar o que Charlotte vai fazer"
@@ -975,6 +1015,8 @@
    **hidden_prompt**: "user uses formal 'I'm going to'"
    **hint_pt**: "I'm going to work after coffee."
    **hint_en**: "I'm going to work after coffee."
+   **example_pass**: I'm going to work after coffee. | I'm going to travel tomorrow. | I will study tonight.
+   **example_fail**: Tomorrow (no verb) | I travel tomorrow (wrong tense — present) | Travel (bare verb, no future)
 
 **Closing cue**: Charlotte fecha com "Cool, let's go!" quando obj_3 bater.
 
@@ -1010,6 +1052,8 @@
    **hidden_prompt**: "user replies with formal 'I want to' or 'I don't want to'"
    **hint_pt**: "I don't really want to wake up that early."
    **hint_en**: "I don't really want to wake up that early."
+   **example_pass**: I don't really want to wake up that early. | I don't really want to wake up that early, yes. | Yes, i don't really want to wake up that early.
+   **example_fail**: early (bare word — no subject + verb) | Yes (no structure) | I don't know (off-topic)
 
 2. **id**: 2
    **label_pt**: "Reagir a 'gotta'"
@@ -1017,6 +1061,8 @@
    **hidden_prompt**: "user understands 'gotta' = 'have to' and responds"
    **hint_pt**: "You don't have to do it every day."
    **hint_en**: "You don't have to do it every day."
+   **example_pass**: You don't have to do it every day. | You don't have to do it every day, yes. | Yes, you don't have to do it every day.
+   **example_fail**: day (bare word — no subject + verb) | Yes (no structure) | I don't know (off-topic)
 
 3. **id**: 3
    **label_pt**: "Perguntar a Charlotte"

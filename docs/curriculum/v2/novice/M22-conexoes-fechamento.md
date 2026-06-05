@@ -106,6 +106,8 @@
    **hidden_prompt**: "user uses 'X and Y' to connect two ideas"
    **hint_pt**: "I like reading and swimming."
    **hint_en**: "I like reading and swimming."
+   **example_pass**: I like reading and swimming. | I like reading and swimming, yes. | Yes, i like reading and swimming.
+   **example_fail**: swimming (bare word — no subject + verb) | Yes (no structure) | I don't know (off-topic)
 
 2. **id**: 2
    **label_pt**: "Frase com 'but'"
@@ -113,6 +115,8 @@
    **hidden_prompt**: "user uses 'X but Y' for contrast"
    **hint_pt**: "I like coffee but not tea."
    **hint_en**: "I like coffee but not tea."
+   **example_pass**: I like coffee but not tea. | I like coffee but not tea, yes. | Yes, i like coffee but not tea.
+   **example_fail**: tea (bare word — no subject + verb) | Yes (no structure) | I don't know (off-topic)
 
 3. **id**: 3
    **label_pt**: "Frase com 'so'"
@@ -120,6 +124,8 @@
    **hidden_prompt**: "user uses 'X, so Y' for consequence"
    **hint_pt**: "I'm tired, so I'll rest."
    **hint_en**: "I'm tired, so I'll rest."
+   **example_pass**: I'm tired, so I'll rest. | I'm tired, so I'll rest, yes. | Yes, i'm tired, so i'll rest.
+   **example_fail**: rest (bare word — no subject + verb) | Yes (no structure) | I don't know (off-topic)
 
 **Closing cue**: Charlotte fecha com "Connected ideas!" quando obj_3 baterem.
 
@@ -155,6 +161,8 @@
    **hidden_prompt**: "user uses 'X and Y'"
    **hint_pt**: "I like reading and traveling."
    **hint_en**: "I like reading and traveling."
+   **example_pass**: I like reading and traveling. | I like reading and traveling, yes. | Yes, i like reading and traveling.
+   **example_fail**: traveling (bare word — no subject + verb) | Yes (no structure) | I don't know (off-topic)
 
 2. **id**: 2
    **label_pt**: "Conectar com but"
@@ -162,6 +170,8 @@
    **hidden_prompt**: "user uses 'X but Y'"
    **hint_pt**: "I like sweets but not too much."
    **hint_en**: "I like sweets but not too much."
+   **example_pass**: I like sweets but not too much. | I like sweets but not too much, yes. | Yes, i like sweets but not too much.
+   **example_fail**: much (bare word — no subject + verb) | Yes (no structure) | I don't know (off-topic)
 
 3. **id**: 3
    **label_pt**: "Perguntar à Charlotte"
@@ -274,6 +284,8 @@
    **hidden_prompt**: "user uses 'X because Y'"
    **hint_pt**: "I study English because I want to travel."
    **hint_en**: "I study English because I want to travel."
+   **example_pass**: I study English because I want to travel. | I study English because I want to travel, yes. | Yes, i study english because i want to travel.
+   **example_fail**: travel (bare word — no subject + verb) | Yes (no structure) | I don't know (off-topic)
 
 2. **id**: 2
    **label_pt**: "Explicar consequência com 'so'"
@@ -281,6 +293,8 @@
    **hidden_prompt**: "user uses 'X, so Y'"
    **hint_pt**: "I work hard, so I get tired."
    **hint_en**: "I work hard, so I get tired."
+   **example_pass**: I work hard, so I get tired. | I work hard, so I get tired, yes. | Yes, i work hard, so i get tired.
+   **example_fail**: tired (bare word — no subject + verb) | Yes (no structure) | I don't know (off-topic)
 
 3. **id**: 3
    **label_pt**: "Outra causa ou consequência"
@@ -288,6 +302,8 @@
    **hidden_prompt**: "user uses another because or so sentence"
    **hint_pt**: "I love coffee because it gives me energy."
    **hint_en**: "I love coffee because it gives me energy."
+   **example_pass**: I love coffee because it gives me energy. | I love coffee because it gives me energy, yes. | Yes, i love coffee because it gives me energy.
+   **example_fail**: energy (bare word — no subject + verb) | Yes (no structure) | I don't know (off-topic)
 
 **Closing cue**: Charlotte fecha com "Cause-effect clear!" quando obj_3 baterem.
 
@@ -323,6 +339,8 @@
    **hidden_prompt**: "user uses 'because + reason'"
    **hint_pt**: "Because I want a better job."
    **hint_en**: "Because I want a better job."
+   **example_pass**: Because I want a better job. | Because I want a better job, yes. | Yes, because i want a better job.
+   **example_fail**: job (bare word — no subject + verb) | Yes (no structure) | I don't know (off-topic)
 
 2. **id**: 2
    **label_pt**: "Dar consequência com so"
@@ -330,6 +348,8 @@
    **hidden_prompt**: "user uses 'X, so Y'"
    **hint_pt**: "I study every day, so I improve fast."
    **hint_en**: "I study every day, so I improve fast."
+   **example_pass**: I study every day, so I improve fast. | I study every day, so I improve fast, yes. | Yes, i study every day, so i improve fast.
+   **example_fail**: fast (bare word — no subject + verb) | Yes (no structure) | I don't know (off-topic)
 
 3. **id**: 3
    **label_pt**: "Perguntar à Charlotte"
@@ -441,6 +461,8 @@
    **hidden_prompt**: "user uses 'X + verb + adverb-ly'"
    **hint_pt**: "She speaks quickly."
    **hint_en**: "She speaks quickly."
+   **example_pass**: She speaks quickly. | She speaks quickly, yes. | Yes, she speaks quickly.
+   **example_fail**: quickly (bare word — no subject + verb) | Yes (no structure) | I don't know (off-topic)
 
 2. **id**: 2
    **label_pt**: "Outra ação com -ly"
@@ -448,6 +470,8 @@
    **hidden_prompt**: "user uses another adverb-ly"
    **hint_pt**: "He drives carefully."
    **hint_en**: "He drives carefully."
+   **example_pass**: He drives carefully. | He drives carefully, yes. | Yes, he drives carefully.
+   **example_fail**: carefully (bare word — no subject + verb) | Yes (no structure) | I don't know (off-topic)
 
 3. **id**: 3
    **label_pt**: "Usar irregular ou y→ily"
@@ -455,6 +479,8 @@
    **hidden_prompt**: "user uses 'well' or 'happily/easily/etc.'"
    **hint_pt**: "She sings happily."
    **hint_en**: "She sings happily."
+   **example_pass**: She sings happily. | She sings happily, yes. | Yes, she sings happily.
+   **example_fail**: happily (bare word — no subject + verb) | Yes (no structure) | I don't know (off-topic)
 
 **Closing cue**: Charlotte fecha com "Description on point!" quando obj_3 baterem.
 
@@ -490,6 +516,8 @@
    **hidden_prompt**: "user uses 'X + verb + adverb-ly'"
    **hint_pt**: "My sister sings beautifully."
    **hint_en**: "My sister sings beautifully."
+   **example_pass**: My sister sings beautifully. | My sister sings beautifully, yes. | Yes, my sister sings beautifully.
+   **example_fail**: beautifully (bare word — no subject + verb) | Yes (no structure) | I don't know (off-topic)
 
 2. **id**: 2
    **label_pt**: "Descrever pessoa 2"
@@ -497,6 +525,8 @@
    **hidden_prompt**: "user uses another adverb-ly"
    **hint_pt**: "My brother drives quickly."
    **hint_en**: "My brother drives quickly."
+   **example_pass**: My brother drives quickly. | My brother drives quickly, yes. | Yes, my brother drives quickly.
+   **example_fail**: quickly (bare word — no subject + verb) | Yes (no structure) | I don't know (off-topic)
 
 3. **id**: 3
    **label_pt**: "Perguntar à Charlotte"
@@ -609,6 +639,8 @@
    **hidden_prompt**: "user uses 'Although + X, Y'"
    **hint_pt**: "Although I'm tired, I'll keep working."
    **hint_en**: "Although I'm tired, I'll keep working."
+   **example_pass**: Although I'm tired, I'll keep working. | Although I'm tired, I'll keep working, yes. | Yes, although i'm tired, i'll keep working.
+   **example_fail**: working (bare word — no subject + verb) | Yes (no structure) | I don't know (off-topic)
 
 2. **id**: 2
    **label_pt**: "Outro contraste com 'although'"
@@ -616,6 +648,8 @@
    **hidden_prompt**: "user uses another although sentence"
    **hint_pt**: "Although it's late, I'll call her."
    **hint_en**: "Although it's late, I'll call her."
+   **example_pass**: Although it's late, I'll call her. | Although it's late, I'll call her, yes. | Yes, although it's late, i'll call her.
+   **example_fail**: her (bare word — no subject + verb) | Yes (no structure) | I don't know (off-topic)
 
 3. **id**: 3
    **label_pt**: "Contraste com 'however'"
@@ -623,6 +657,8 @@
    **hidden_prompt**: "user uses 'X. However, Y'"
    **hint_pt**: "I want to relax. However, I have to study."
    **hint_en**: "I want to relax. However, I have to study."
+   **example_pass**: I want to relax. However, I have to study. | I want to relax. However, I have to study, yes. | Yes, i want to relax. however, i have to study.
+   **example_fail**: study (bare word — no subject + verb) | Yes (no structure) | I don't know (off-topic)
 
 **Closing cue**: Charlotte fecha com "Sophisticated contrasts!" quando obj_3 baterem.
 
@@ -658,6 +694,8 @@
    **hidden_prompt**: "user uses 'Although + ...'"
    **hint_pt**: "Although I love my job, it's stressful."
    **hint_en**: "Although I love my job, it's stressful."
+   **example_pass**: Although I love my job, it's stressful. | Although I love my job, it's stressful, yes. | Yes, although i love my job, it's stressful.
+   **example_fail**: stressful (bare word — no subject + verb) | Yes (no structure) | I don't know (off-topic)
 
 2. **id**: 2
    **label_pt**: "Contraste com however"
@@ -665,6 +703,8 @@
    **hidden_prompt**: "user uses 'X. However, Y'"
    **hint_pt**: "I want to sleep more. However, I wake up early."
    **hint_en**: "I want to sleep more. However, I wake up early."
+   **example_pass**: I want to sleep more. However, I wake up early. | I want to sleep more. However, I wake up early, yes. | Yes, i want to sleep more. however, i wake up early.
+   **example_fail**: early (bare word — no subject + verb) | Yes (no structure) | I don't know (off-topic)
 
 3. **id**: 3
    **label_pt**: "Perguntar à Charlotte"
@@ -777,6 +817,8 @@
    **hidden_prompt**: "user uses past simple: 'I + past verb + ...'"
    **hint_pt**: "Last year I traveled to Italy."
    **hint_en**: "Last year I traveled to Italy."
+   **example_pass**: Last year I traveled to Italy. | Yesterday I worked all day. | I watched TV last night.
+   **example_fail**: Yesterday (no verb) | I work yesterday (wrong tense — present) | Work (bare verb, no past)
 
 2. **id**: 2
    **label_pt**: "Falar do presente (rotina)"
@@ -784,6 +826,8 @@
    **hidden_prompt**: "user uses present simple: 'I + verb'"
    **hint_pt**: "Now I study English every day."
    **hint_en**: "Now I study English every day."
+   **example_pass**: Now I study English every day. | I live in Brazil. | I work at a school.
+   **example_fail**: Brazil (bare noun) | Live (no subject) | Work (bare verb)
 
 3. **id**: 3
    **label_pt**: "Falar do futuro (going to ou will)"
@@ -791,6 +835,8 @@
    **hidden_prompt**: "user uses future: 'I'm going to + base' or 'I'll + base'"
    **hint_pt**: "Next year I'll be fluent."
    **hint_en**: "Next year I'll be fluent."
+   **example_pass**: Next year I'll be fluent. | I'm going to travel tomorrow. | I will study tonight.
+   **example_fail**: Tomorrow (no verb) | I travel tomorrow (wrong tense — present) | Travel (bare verb, no future)
 
 **Closing cue**: Charlotte fecha com "Novice complete!" quando obj_3 baterem.
 
@@ -826,6 +872,8 @@
    **hidden_prompt**: "user uses 'I feel + adj' or 'I'm + adj'"
    **hint_pt**: "I feel proud and excited."
    **hint_en**: "I feel proud and excited."
+   **example_pass**: I feel proud and excited. | I feel proud and excited, yes. | Yes, i feel proud and excited.
+   **example_fail**: excited (bare word — no subject + verb) | Yes (no structure) | I don't know (off-topic)
 
 2. **id**: 2
    **label_pt**: "Falar sobre planos próximos"
@@ -833,6 +881,8 @@
    **hidden_prompt**: "user uses 'I'm going to + base' or 'I'll + base'"
    **hint_pt**: "I'm going to start the Inter level."
    **hint_en**: "I'm going to start the Inter level."
+   **example_pass**: I'm going to start the Inter level. | I'm going to travel tomorrow. | I will study tonight.
+   **example_fail**: Tomorrow (no verb) | I travel tomorrow (wrong tense — present) | Travel (bare verb, no future)
 
 3. **id**: 3
    **label_pt**: "Agradecer a Charlotte ou refletir"
@@ -840,6 +890,8 @@
    **hidden_prompt**: "user expresses gratitude or reflection"
    **hint_pt**: "Thank you, Charlotte!"
    **hint_en**: "Thank you, Charlotte!"
+   **example_pass**: Thank you, Charlotte. | Thank you, Charlotte, yes. | Yes, thank you, charlotte.
+   **example_fail**: Charlotte (bare word — no subject + verb) | Yes (no structure) | I don't know (off-topic)
 
 **Closing cue**: Charlotte encerra com "On to Inter!" quando obj_3 baterem.
 

@@ -159,7 +159,17 @@
             "label_en": "Highlight a family superlative",
             "hidden_prompt": "user uses 'the + short adj-est + in/of + family/group'",
             "hint_pt": "My brother is the tallest.",
-            "hint_en": "My brother is the tallest."
+            "hint_en": "My brother is the tallest.",
+            "examples_pass": [
+              "My brother is the tallest.",
+              "She works at a hospital.",
+              "He lives in São Paulo."
+            ],
+            "examples_fail": [
+              "Work (no subject + -s)",
+              "She work (missing -s)",
+              "Hospital (bare noun)"
+            ]
           },
           {
             "id": 2,
@@ -167,7 +177,17 @@
             "label_en": "Highlight another superlative",
             "hidden_prompt": "user uses 'the + adj-est + in/of + group'",
             "hint_pt": "This is the cheapest store.",
-            "hint_en": "This is the cheapest store."
+            "hint_en": "This is the cheapest store.",
+            "examples_pass": [
+              "This is the cheapest store.",
+              "She works at a hospital.",
+              "He lives in São Paulo."
+            ],
+            "examples_fail": [
+              "Work (no subject + -s)",
+              "She work (missing -s)",
+              "Hospital (bare noun)"
+            ]
           },
           {
             "id": 3,
@@ -175,7 +195,17 @@
             "label_en": "One more short superlative",
             "hidden_prompt": "user uses another 'the + adj-est' construction",
             "hint_pt": "It's the hottest day of the year.",
-            "hint_en": "It's the hottest day of the year."
+            "hint_en": "It's the hottest day of the year.",
+            "examples_pass": [
+              "It's the hottest day of the year.",
+              "She works at a hospital.",
+              "He lives in São Paulo."
+            ],
+            "examples_fail": [
+              "Work (no subject + -s)",
+              "She work (missing -s)",
+              "Hospital (bare noun)"
+            ]
           }
         ],
         "closing_cue": "Charlotte fecha com \"Strong superlatives!\" quando obj_3 baterem.",
@@ -200,7 +230,17 @@
             "label_en": "First short superlative",
             "hidden_prompt": "user uses 'the + adj-est'",
             "hint_pt": "I'm the oldest in my family.",
-            "hint_en": "I'm the oldest in my family."
+            "hint_en": "I'm the oldest in my family.",
+            "examples_pass": [
+              "I'm the oldest in my family.",
+              "She works at a hospital.",
+              "He lives in São Paulo."
+            ],
+            "examples_fail": [
+              "Work (no subject + -s)",
+              "She work (missing -s)",
+              "Hospital (bare noun)"
+            ]
           },
           {
             "id": 2,
@@ -208,7 +248,17 @@
             "label_en": "Second short superlative",
             "hidden_prompt": "user uses another 'the + adj-est'",
             "hint_pt": "São Paulo is the biggest city.",
-            "hint_en": "São Paulo is the biggest city."
+            "hint_en": "São Paulo is the biggest city.",
+            "examples_pass": [
+              "São Paulo is the biggest city.",
+              "She works at a hospital.",
+              "He lives in São Paulo."
+            ],
+            "examples_fail": [
+              "Work (no subject + -s)",
+              "She work (missing -s)",
+              "Hospital (bare noun)"
+            ]
           },
           {
             "id": 3,
@@ -372,7 +422,17 @@
             "label_en": "Say 'the most interesting'",
             "hidden_prompt": "user uses 'the most interesting + noun'",
             "hint_pt": "Yoga is the most interesting hobby.",
-            "hint_en": "Yoga is the most interesting hobby."
+            "hint_en": "Yoga is the most interesting hobby.",
+            "examples_pass": [
+              "Yoga is the most interesting hobby.",
+              "The best meal was pasta.",
+              "Pizza is the best food."
+            ],
+            "examples_fail": [
+              "Pasta (bare noun)",
+              "Best (bare adjective)",
+              "I like pasta (no superlative)"
+            ]
           },
           {
             "id": 2,
@@ -380,7 +440,17 @@
             "label_en": "Say 'the most expensive/beautiful'",
             "hidden_prompt": "user uses 'the most + long adj + noun'",
             "hint_pt": "Rome is the most beautiful city.",
-            "hint_en": "Rome is the most beautiful city."
+            "hint_en": "Rome is the most beautiful city.",
+            "examples_pass": [
+              "Rome is the most beautiful city.",
+              "The best meal was pasta.",
+              "Pizza is the best food."
+            ],
+            "examples_fail": [
+              "Pasta (bare noun)",
+              "Best (bare adjective)",
+              "I like pasta (no superlative)"
+            ]
           },
           {
             "id": 3,
@@ -388,7 +458,17 @@
             "label_en": "Third long superlative",
             "hidden_prompt": "user uses another 'the most + long adj'",
             "hint_pt": "She is the most patient person.",
-            "hint_en": "She is the most patient person."
+            "hint_en": "She is the most patient person.",
+            "examples_pass": [
+              "She is the most patient person.",
+              "The best meal was pasta.",
+              "Pizza is the best food."
+            ],
+            "examples_fail": [
+              "Pasta (bare noun)",
+              "Best (bare adjective)",
+              "I like pasta (no superlative)"
+            ]
           }
         ],
         "closing_cue": "Charlotte fecha com \"Big opinions!\" quando obj_3 baterem.",
@@ -413,7 +493,17 @@
             "label_en": "Answer about 'most expensive'",
             "hidden_prompt": "user says 'My + thing + is the most expensive'",
             "hint_pt": "My phone is the most expensive.",
-            "hint_en": "My phone is the most expensive."
+            "hint_en": "My phone is the most expensive.",
+            "examples_pass": [
+              "My phone is the most expensive.",
+              "The best meal was pasta.",
+              "Pizza is the best food."
+            ],
+            "examples_fail": [
+              "Pasta (bare noun)",
+              "Best (bare adjective)",
+              "I like pasta (no superlative)"
+            ]
           },
           {
             "id": 2,
@@ -421,7 +511,17 @@
             "label_en": "Say another long superlative",
             "hidden_prompt": "user uses 'the most + long adj'",
             "hint_pt": "Travel is the most exciting thing.",
-            "hint_en": "Travel is the most exciting thing."
+            "hint_en": "Travel is the most exciting thing.",
+            "examples_pass": [
+              "Travel is the most exciting thing.",
+              "The best meal was pasta.",
+              "Pizza is the best food."
+            ],
+            "examples_fail": [
+              "Pasta (bare noun)",
+              "Best (bare adjective)",
+              "I like pasta (no superlative)"
+            ]
           },
           {
             "id": 3,
@@ -587,7 +687,17 @@
             "label_en": "Say the best of something",
             "hidden_prompt": "user uses 'the best + noun' or 'X is the best'",
             "hint_pt": "This is the best pizza in town.",
-            "hint_en": "This is the best pizza in town."
+            "hint_en": "This is the best pizza in town.",
+            "examples_pass": [
+              "This is the best pizza in town.",
+              "The best meal was pasta.",
+              "Pizza is the best food."
+            ],
+            "examples_fail": [
+              "Pasta (bare noun)",
+              "Best (bare adjective)",
+              "I like pasta (no superlative)"
+            ]
           },
           {
             "id": 2,
@@ -595,7 +705,17 @@
             "label_en": "Say the worst",
             "hidden_prompt": "user uses 'the worst + noun' or 'X is the worst'",
             "hint_pt": "Mondays are the worst.",
-            "hint_en": "Mondays are the worst."
+            "hint_en": "Mondays are the worst.",
+            "examples_pass": [
+              "Mondays are the worst.",
+              "She works at a hospital.",
+              "He lives in São Paulo."
+            ],
+            "examples_fail": [
+              "Work (no subject + -s)",
+              "She work (missing -s)",
+              "Hospital (bare noun)"
+            ]
           },
           {
             "id": 3,
@@ -603,7 +723,17 @@
             "label_en": "Say 'the most' of something",
             "hidden_prompt": "user uses 'the most + noun'",
             "hint_pt": "She has the most talent.",
-            "hint_en": "She has the most talent."
+            "hint_en": "She has the most talent.",
+            "examples_pass": [
+              "She has the most talent.",
+              "The best meal was pasta.",
+              "Pizza is the best food."
+            ],
+            "examples_fail": [
+              "Pasta (bare noun)",
+              "Best (bare adjective)",
+              "I like pasta (no superlative)"
+            ]
           }
         ],
         "closing_cue": "Charlotte fecha com \"Strong picks!\" quando obj_3 baterem.",
@@ -628,7 +758,17 @@
             "label_en": "Say best meal",
             "hidden_prompt": "user says 'The best meal was + X' or 'X is the best meal'",
             "hint_pt": "The best meal was pasta.",
-            "hint_en": "The best meal was pasta."
+            "hint_en": "The best meal was pasta.",
+            "examples_pass": [
+              "The best meal was pasta.",
+              "The best meal was pasta.",
+              "Pizza is the best food."
+            ],
+            "examples_fail": [
+              "Pasta (bare noun)",
+              "Best (bare adjective)",
+              "I like pasta (no superlative)"
+            ]
           },
           {
             "id": 2,
@@ -636,7 +776,17 @@
             "label_en": "Say the worst experience",
             "hidden_prompt": "user uses 'the worst + noun'",
             "hint_pt": "The worst day was Monday.",
-            "hint_en": "The worst day was Monday."
+            "hint_en": "The worst day was Monday.",
+            "examples_pass": [
+              "The worst day was Monday.",
+              "She works at a hospital.",
+              "He lives in São Paulo."
+            ],
+            "examples_fail": [
+              "Work (no subject + -s)",
+              "She work (missing -s)",
+              "Hospital (bare noun)"
+            ]
           },
           {
             "id": 3,
@@ -803,7 +953,17 @@
             "label_en": "Say your floor",
             "hidden_prompt": "user uses 'I live on the + ordinal + floor'",
             "hint_pt": "I live on the third floor.",
-            "hint_en": "I live on the third floor."
+            "hint_en": "I live on the third floor.",
+            "examples_pass": [
+              "I live on the third floor.",
+              "She works at a hospital.",
+              "He lives in São Paulo."
+            ],
+            "examples_fail": [
+              "Work (no subject + -s)",
+              "She work (missing -s)",
+              "Hospital (bare noun)"
+            ]
           },
           {
             "id": 2,
@@ -811,7 +971,17 @@
             "label_en": "Say 'first/second time...'",
             "hidden_prompt": "user uses 'It's my + ordinal + time + verb-ing'",
             "hint_pt": "It's my first time visiting.",
-            "hint_en": "It's my first time visiting."
+            "hint_en": "It's my first time visiting.",
+            "examples_pass": [
+              "It's my first time visiting.",
+              "It's my first time visiting, yes.",
+              "Yes, it's my first time visiting."
+            ],
+            "examples_fail": [
+              "visiting (bare word — no subject + verb)",
+              "Yes (no structure)",
+              "I don't know (off-topic)"
+            ]
           },
           {
             "id": 3,
@@ -819,7 +989,17 @@
             "label_en": "Say a date",
             "hidden_prompt": "user uses 'on the + ordinal + of + month' for a date",
             "hint_pt": "My birthday is on the fifteenth.",
-            "hint_en": "My birthday is on the fifteenth."
+            "hint_en": "My birthday is on the fifteenth.",
+            "examples_pass": [
+              "My birthday is on the fifteenth.",
+              "She works at a hospital.",
+              "He lives in São Paulo."
+            ],
+            "examples_fail": [
+              "Work (no subject + -s)",
+              "She work (missing -s)",
+              "Hospital (bare noun)"
+            ]
           }
         ],
         "closing_cue": "Charlotte fecha com \"Ordered!\" quando obj_3 baterem.",
@@ -844,7 +1024,17 @@
             "label_en": "Answer about 'first time'",
             "hidden_prompt": "user uses 'It's my + ordinal + time' or 'No, second/third time'",
             "hint_pt": "It's my first time.",
-            "hint_en": "It's my first time."
+            "hint_en": "It's my first time.",
+            "examples_pass": [
+              "It's my first time.",
+              "It's my first time, yes.",
+              "Yes, it's my first time."
+            ],
+            "examples_fail": [
+              "time (bare word — no subject + verb)",
+              "Yes (no structure)",
+              "I don't know (off-topic)"
+            ]
           },
           {
             "id": 2,
@@ -852,7 +1042,17 @@
             "label_en": "Say order of something",
             "hidden_prompt": "user uses 'the + ordinal + noun'",
             "hint_pt": "This is my second coffee.",
-            "hint_en": "This is my second coffee."
+            "hint_en": "This is my second coffee.",
+            "examples_pass": [
+              "This is my second coffee.",
+              "She works at a hospital.",
+              "He lives in São Paulo."
+            ],
+            "examples_fail": [
+              "Work (no subject + -s)",
+              "She work (missing -s)",
+              "Hospital (bare noun)"
+            ]
           },
           {
             "id": 3,
@@ -1016,7 +1216,17 @@
             "label_en": "Use short superlative",
             "hidden_prompt": "user uses 'the + adj-est'",
             "hint_pt": "My brother is the tallest.",
-            "hint_en": "My brother is the tallest."
+            "hint_en": "My brother is the tallest.",
+            "examples_pass": [
+              "My brother is the tallest.",
+              "She works at a hospital.",
+              "He lives in São Paulo."
+            ],
+            "examples_fail": [
+              "Work (no subject + -s)",
+              "She work (missing -s)",
+              "Hospital (bare noun)"
+            ]
           },
           {
             "id": 2,
@@ -1024,7 +1234,17 @@
             "label_en": "Use long or irregular superlative",
             "hidden_prompt": "user uses 'the most + long adj' OR 'the best/worst'",
             "hint_pt": "This is the best coffee.",
-            "hint_en": "This is the best coffee."
+            "hint_en": "This is the best coffee.",
+            "examples_pass": [
+              "This is the best coffee.",
+              "The best meal was pasta.",
+              "Pizza is the best food."
+            ],
+            "examples_fail": [
+              "Pasta (bare noun)",
+              "Best (bare adjective)",
+              "I like pasta (no superlative)"
+            ]
           },
           {
             "id": 3,
@@ -1032,7 +1252,17 @@
             "label_en": "Use an ordinal",
             "hidden_prompt": "user uses ordinal (first/second/third/etc.) in context",
             "hint_pt": "It's my first time here.",
-            "hint_en": "It's my first time here."
+            "hint_en": "It's my first time here.",
+            "examples_pass": [
+              "It's my first time here.",
+              "It's my first time here, yes.",
+              "Yes, it's my first time here."
+            ],
+            "examples_fail": [
+              "here (bare word — no subject + verb)",
+              "Yes (no structure)",
+              "I don't know (off-topic)"
+            ]
           }
         ],
         "closing_cue": "Charlotte fecha com \"Top tier rankings!\" quando obj_3 baterem.",
@@ -1057,7 +1287,17 @@
             "label_en": "Say 'the best'",
             "hidden_prompt": "user uses 'the best + noun' or 'X is the best'",
             "hint_pt": "The best trip was Italy.",
-            "hint_en": "The best trip was Italy."
+            "hint_en": "The best trip was Italy.",
+            "examples_pass": [
+              "The best trip was Italy.",
+              "The best meal was pasta.",
+              "Pizza is the best food."
+            ],
+            "examples_fail": [
+              "Pasta (bare noun)",
+              "Best (bare adjective)",
+              "I like pasta (no superlative)"
+            ]
           },
           {
             "id": 2,
@@ -1065,7 +1305,17 @@
             "label_en": "Use an ordinal",
             "hidden_prompt": "user uses ordinal (first/second/etc.)",
             "hint_pt": "It's my first time skiing.",
-            "hint_en": "It's my first time skiing."
+            "hint_en": "It's my first time skiing.",
+            "examples_pass": [
+              "It's my first time skiing.",
+              "It's my first time skiing, yes.",
+              "Yes, it's my first time skiing."
+            ],
+            "examples_fail": [
+              "skiing (bare word — no subject + verb)",
+              "Yes (no structure)",
+              "I don't know (off-topic)"
+            ]
           },
           {
             "id": 3,

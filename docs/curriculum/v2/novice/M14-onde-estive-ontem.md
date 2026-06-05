@@ -107,6 +107,8 @@
    **hidden_prompt**: "user states past location with 'I was at/in + place + yesterday'"
    **hint_pt**: "I was at home yesterday."
    **hint_en**: "I was at home yesterday."
+   **example_pass**: I was at home yesterday. | I had pizza for lunch. | Yesterday I ate a sandwich.
+   **example_fail**: Pizza (bare noun) | I eat pizza (wrong tense — present) | Yesterday (no verb)
 
 2. **id**: 2
    **label_pt**: "Dizer como você estava"
@@ -114,6 +116,8 @@
    **hidden_prompt**: "user states past state with 'I was + adjective' (tired/happy/busy/sad)"
    **hint_pt**: "I was tired."
    **hint_en**: "I was tired."
+   **example_pass**: I was tired. | I was at the park yesterday. | We were at home last night.
+   **example_fail**: Park (bare noun) | I am at the park (wrong tense — present) | Was (incomplete)
 
 3. **id**: 3
    **label_pt**: "Dizer onde alguém da família estava"
@@ -121,6 +125,8 @@
    **hidden_prompt**: "user states 'My + family member + was + place/state' or 'They were + place/state'"
    **hint_pt**: "My sister was at school."
    **hint_en**: "My sister was at school."
+   **example_pass**: My sister was at school. | I was at the park yesterday. | We were at home last night.
+   **example_fail**: Park (bare noun) | I am at the park (wrong tense — present) | Was (incomplete)
 
 **Closing cue**: Charlotte fecha com "Got the picture!" quando obj_3 baterem.
 
@@ -156,6 +162,8 @@
    **hidden_prompt**: "user says 'It was + adjective' (great/tiring/long/short)"
    **hint_pt**: "It was great."
    **hint_en**: "It was great."
+   **example_pass**: It was great. | I was at the park yesterday. | We were at home last night.
+   **example_fail**: Park (bare noun) | I am at the park (wrong tense — present) | Was (incomplete)
 
 2. **id**: 2
    **label_pt**: "Dizer onde você estava"
@@ -163,6 +171,8 @@
    **hidden_prompt**: "user says 'I was at + place'"
    **hint_pt**: "I was at work."
    **hint_en**: "I was at work."
+   **example_pass**: I was at work. | I was at the park yesterday. | We were at home last night.
+   **example_fail**: Park (bare noun) | I am at the park (wrong tense — present) | Was (incomplete)
 
 3. **id**: 3
    **label_pt**: "Perguntar à Charlotte"
@@ -274,6 +284,8 @@
    **hidden_prompt**: "user corrects with 'No, I wasn't at + place'"
    **hint_pt**: "No, I wasn't at the gym."
    **hint_en**: "No, I wasn't at the gym."
+   **example_pass**: No, I wasn't at the gym. | I was at the park yesterday. | We were at home last night.
+   **example_fail**: Park (bare noun) | I am at the park (wrong tense — present) | Was (incomplete)
 
 2. **id**: 2
    **label_pt**: "Dizer como NÃO se sentia"
@@ -281,6 +293,8 @@
    **hidden_prompt**: "user says 'I wasn't + adjective' (tired, happy, busy)"
    **hint_pt**: "I wasn't busy."
    **hint_en**: "I wasn't busy."
+   **example_pass**: I wasn't busy. | I was at the park yesterday. | We were at home last night.
+   **example_fail**: Park (bare noun) | I am at the park (wrong tense — present) | Was (incomplete)
 
 3. **id**: 3
    **label_pt**: "Dizer onde alguém NÃO estava"
@@ -288,6 +302,8 @@
    **hidden_prompt**: "user says 'He/She wasn't + place' or 'They weren't + place'"
    **hint_pt**: "My sister wasn't home."
    **hint_en**: "My sister wasn't home."
+   **example_pass**: My sister wasn't home. | I was at the park yesterday. | We were at home last night.
+   **example_fail**: Park (bare noun) | I am at the park (wrong tense — present) | Was (incomplete)
 
 **Closing cue**: Charlotte fecha com "Set straight!" quando obj_3 baterem.
 
@@ -323,6 +339,8 @@
    **hidden_prompt**: "user says 'No, I wasn't at + place'"
    **hint_pt**: "No, I wasn't at home."
    **hint_en**: "No, I wasn't at home."
+   **example_pass**: No, I wasn't at home. | I was at the park yesterday. | We were at home last night.
+   **example_fail**: Park (bare noun) | I am at the park (wrong tense — present) | Was (incomplete)
 
 2. **id**: 2
    **label_pt**: "Dizer como não se sentiu"
@@ -330,6 +348,8 @@
    **hidden_prompt**: "user says 'I wasn't + adjective'"
    **hint_pt**: "I wasn't happy."
    **hint_en**: "I wasn't happy."
+   **example_pass**: I wasn't happy. | I was at the park yesterday. | We were at home last night.
+   **example_fail**: Park (bare noun) | I am at the park (wrong tense — present) | Was (incomplete)
 
 3. **id**: 3
    **label_pt**: "Perguntar à Charlotte"
@@ -441,6 +461,8 @@
    **hidden_prompt**: "user answers 'It was + adjective' (great/tiring/relaxing/busy)"
    **hint_pt**: "It was great!"
    **hint_en**: "It was great!"
+   **example_pass**: It was great. | I was at the park yesterday. | We were at home last night.
+   **example_fail**: Park (bare noun) | I am at the park (wrong tense — present) | Was (incomplete)
 
 2. **id**: 2
    **label_pt**: "Perguntar à Charlotte sobre o dela"
@@ -494,6 +516,8 @@
    **hidden_prompt**: "user says 'I was at + place'"
    **hint_pt**: "I was at home."
    **hint_en**: "I was at home."
+   **example_pass**: I was at home. | I was at the park yesterday. | We were at home last night.
+   **example_fail**: Park (bare noun) | I am at the park (wrong tense — present) | Was (incomplete)
 
 2. **id**: 2
    **label_pt**: "Perguntar onde Charlotte estava"
@@ -614,6 +638,8 @@
    **hidden_prompt**: "user uses 'I was + place + X ago' or 'last year'"
    **hint_pt**: "I was in Rio a year ago."
    **hint_en**: "I was in Rio a year ago."
+   **example_pass**: I was in Rio a year ago. | I was at the park yesterday. | We were at home last night.
+   **example_fail**: Park (bare noun) | I am at the park (wrong tense — present) | Was (incomplete)
 
 2. **id**: 2
    **label_pt**: "Dizer algo que aconteceu na semana passada"
@@ -621,6 +647,8 @@
    **hidden_prompt**: "user uses 'I was + state/place + last week/last month'"
    **hint_pt**: "I was on vacation last week."
    **hint_en**: "I was on vacation last week."
+   **example_pass**: I was on vacation last week. | I was at the park yesterday. | We were at home last night.
+   **example_fail**: Park (bare noun) | I am at the park (wrong tense — present) | Was (incomplete)
 
 3. **id**: 3
    **label_pt**: "Dizer algo de um ano específico"
@@ -628,6 +656,8 @@
    **hidden_prompt**: "user uses 'I was + state/place + in + year'"
    **hint_pt**: "I was in school in 2010."
    **hint_en**: "I was in school in 2010."
+   **example_pass**: I was in school in 2010. | I was at the park yesterday. | We were at home last night.
+   **example_fail**: Park (bare noun) | I am at the park (wrong tense — present) | Was (incomplete)
 
 **Closing cue**: Charlotte fecha com "Timeline locked in!" quando obj_3 baterem.
 
@@ -663,6 +693,8 @@
    **hidden_prompt**: "user says 'I was + place/state + in 2020'"
    **hint_pt**: "I was at university in 2020."
    **hint_en**: "I was at university in 2020."
+   **example_pass**: I was at university in 2020. | I was at the park yesterday. | We were at home last night.
+   **example_fail**: Park (bare noun) | I am at the park (wrong tense — present) | Was (incomplete)
 
 2. **id**: 2
    **label_pt**: "Dizer onde estava ontem"
@@ -670,6 +702,8 @@
    **hidden_prompt**: "user says 'I was + place + yesterday' or 'last night'"
    **hint_pt**: "I was at work yesterday."
    **hint_en**: "I was at work yesterday."
+   **example_pass**: I was at work yesterday. | Yesterday I worked all day. | I watched TV last night.
+   **example_fail**: Yesterday (no verb) | I work yesterday (wrong tense — present) | Work (bare verb, no past)
 
 3. **id**: 3
    **label_pt**: "Perguntar à Charlotte"
@@ -782,6 +816,8 @@
    **hidden_prompt**: "user says 'It was + adjective' or 'Life was + adjective'"
    **hint_pt**: "Life was simple."
    **hint_en**: "Life was simple."
+   **example_pass**: Life was simple. | I was at the park yesterday. | We were at home last night.
+   **example_fail**: Park (bare noun) | I am at the park (wrong tense — present) | Was (incomplete)
 
 2. **id**: 2
    **label_pt**: "Dizer onde você morava"
@@ -789,6 +825,8 @@
    **hidden_prompt**: "user says 'I was in + place' or 'We were in + place'"
    **hint_pt**: "I was in a small town."
    **hint_en**: "I was in a small town."
+   **example_pass**: I was in a small town. | I was at the park yesterday. | We were at home last night.
+   **example_fail**: Park (bare noun) | I am at the park (wrong tense — present) | Was (incomplete)
 
 3. **id**: 3
    **label_pt**: "Dizer com quem você estava"
@@ -796,6 +834,8 @@
    **hidden_prompt**: "user says 'My family was + adj' or 'My friends were + adj'"
    **hint_pt**: "My family was big and happy."
    **hint_en**: "My family was big and happy."
+   **example_pass**: My family was big and happy. | I was at the park yesterday. | We were at home last night.
+   **example_fail**: Park (bare noun) | I am at the park (wrong tense — present) | Was (incomplete)
 
 **Closing cue**: Charlotte fecha com "Sweet memories!" quando obj_3 baterem.
 
@@ -831,6 +871,8 @@
    **hidden_prompt**: "user says 'I was + adj/state + 10 years ago'"
    **hint_pt**: "I was younger."
    **hint_en**: "I was younger."
+   **example_pass**: I was younger. | I was at the park yesterday. | We were at home last night.
+   **example_fail**: Park (bare noun) | I am at the park (wrong tense — present) | Was (incomplete)
 
 2. **id**: 2
    **label_pt**: "Dizer outro estado seu (papel ou lugar)"
@@ -838,6 +880,8 @@
    **hidden_prompt**: "user says 'I was + place' or 'I was + role (student, etc.)'"
    **hint_pt**: "I was a student."
    **hint_en**: "I was a student."
+   **example_pass**: I was a student. | I was at the park yesterday. | We were at home last night.
+   **example_fail**: Park (bare noun) | I am at the park (wrong tense — present) | Was (incomplete)
 
 3. **id**: 3
    **label_pt**: "Perguntar à Charlotte"

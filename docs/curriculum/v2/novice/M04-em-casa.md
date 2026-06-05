@@ -115,6 +115,8 @@
    **hidden_prompt**: "user introduces the kitchen with 'This is my kitchen' or 'My kitchen is + adjective'"
    **hint_pt**: "This is my kitchen."
    **hint_en**: "This is my kitchen."
+   **example_pass**: This is my kitchen. | My kitchen is small. | Here is my kitchen.
+   **example_fail**: Kitchen (bare noun) | Small (bare adjective) | Cook (off-topic)
 
 2. **id**: 2
    **label_pt**: "Apresentar outro cômodo (quarto ou sala)"
@@ -122,6 +124,8 @@
    **hidden_prompt**: "user introduces another room with 'This is my bedroom/living room' or 'My + room + is + adjective'"
    **hint_pt**: "This is my bedroom."
    **hint_en**: "This is my bedroom."
+   **example_pass**: This is my bedroom. | My living room is big. | Here's my bedroom.
+   **example_fail**: Bedroom (bare noun) | Big (bare adjective) | Sleep (off-topic)
 
 3. **id**: 3
    **label_pt**: "Descrever um cômodo com adjetivo (grande, pequeno, novo)"
@@ -129,6 +133,8 @@
    **hidden_prompt**: "user describes a room with 'My + room + is + adjective' (big/small/new/nice/great)"
    **hint_pt**: "My kitchen is small."
    **hint_en**: "My kitchen is small."
+   **example_pass**: My kitchen is small. | My bedroom is big. | My living room is nice.
+   **example_fail**: Small (bare adjective) | Kitchen (no adjective) | I like it (no descriptor structure)
 
 **Closing cue**: Charlotte fecha com "Nice place! Thanks for the tour." quando obj_3 baterem.
 
@@ -164,6 +170,8 @@
    **hidden_prompt**: "user describes their house with 'My house is + adjective' (big/small/new/nice/great)"
    **hint_pt**: "My house is big."
    **hint_en**: "My house is big."
+   **example_pass**: My house is big. | My house is small. | My home is nice.
+   **example_fail**: Big (bare adjective) | House (bare noun) | I like it (no descriptor structure)
 
 2. **id**: 2
    **label_pt**: "Mencionar um cômodo específico"
@@ -171,6 +179,8 @@
    **hidden_prompt**: "user mentions a specific room with 'I've got a + room' or 'My + room + is + adjective'"
    **hint_pt**: "My kitchen is small."
    **hint_en**: "My kitchen is small."
+   **example_pass**: My kitchen is small. | I've got a big bedroom. | My living room is nice.
+   **example_fail**: Kitchen (bare noun) | Small (bare adjective) | I have (incomplete)
 
 3. **id**: 3
    **label_pt**: "Devolver a pergunta pra Charlotte"
@@ -282,6 +292,8 @@
    **hidden_prompt**: "user says 'There is a table' or 'I've got a table' — singular item with article"
    **hint_pt**: "There is a table."
    **hint_en**: "There is a table."
+   **example_pass**: There is a table. | I've got a table. | There's a big table.
+   **example_fail**: Table (bare noun) | There is table (missing 'a') | A table (no 'there is')
 
 2. **id**: 2
    **label_pt**: "Dizer que tem cadeiras (plural com número)"
@@ -289,6 +301,8 @@
    **hidden_prompt**: "user states number of chairs with 'There are + number + chairs' — plural form correct"
    **hint_pt**: "There are four chairs."
    **hint_en**: "There are four chairs."
+   **example_pass**: There are four chairs. | There are six chairs. | There are two chairs.
+   **example_fail**: Four chairs (no 'there are') | There is four chairs (wrong number agreement) | Chairs (bare noun)
 
 3. **id**: 3
    **label_pt**: "Mencionar outro item (janela, porta, geladeira)"
@@ -296,6 +310,8 @@
    **hidden_prompt**: "user mentions another item with 'There is a + item' or 'There are + items' — any household item"
    **hint_pt**: "There is a big window."
    **hint_en**: "There is a big window."
+   **example_pass**: There is a big window. | There are two doors. | There is a fridge.
+   **example_fail**: Window (bare noun) | Big (bare adjective) | There is (incomplete)
 
 **Closing cue**: Charlotte fecha com "Sounds like a great kitchen!" quando obj_3 baterem.
 
@@ -331,6 +347,8 @@
    **hidden_prompt**: "user says 'There is a bed' or 'I've got a bed' — singular bed"
    **hint_pt**: "There is a bed."
    **hint_en**: "There is a bed."
+   **example_pass**: There is a bed. | I've got a bed. | There's a big bed.
+   **example_fail**: Bed (bare noun) | There is bed (missing 'a') | A bed (no 'there is')
 
 2. **id**: 2
    **label_pt**: "Dizer quantas janelas tem"
@@ -338,6 +356,8 @@
    **hidden_prompt**: "user states number of windows with 'There is one window' or 'There are + number + windows'"
    **hint_pt**: "There are two windows."
    **hint_en**: "There are two windows."
+   **example_pass**: There are two windows. | There is one window. | There are three windows.
+   **example_fail**: Two (bare number) | Windows (bare noun) | There is two windows (wrong agreement)
 
 3. **id**: 3
    **label_pt**: "Mencionar mais um item"
@@ -345,6 +365,8 @@
    **hidden_prompt**: "user mentions another item with 'There is/are + item(s)' — any bedroom item (desk, lamp, chair, shelf, etc.)"
    **hint_pt**: "There is a desk."
    **hint_en**: "There is a desk."
+   **example_pass**: There is a desk. | There are two lamps. | There is a shelf.
+   **example_fail**: Desk (bare noun) | There is (incomplete) | A desk (no 'there is')
 
 **Closing cue**: Charlotte encerra com "Cozy room!" quando obj_3 baterem.
 
@@ -447,6 +469,8 @@
    **hidden_prompt**: "user states number of chairs with 'There are + number + chairs' or 'I've got + number + chairs' — plural form correct"
    **hint_pt**: "There are four chairs."
    **hint_en**: "There are four chairs."
+   **example_pass**: There are four chairs. | I've got six chairs. | There are three chairs.
+   **example_fail**: Four (bare number) | There is four chairs (wrong agreement) | Chairs (bare noun)
 
 2. **id**: 2
    **label_pt**: "Dizer quantas mesas tem"
@@ -454,6 +478,8 @@
    **hidden_prompt**: "user states number of tables with 'There are + number + tables' or 'I've got + number + tables'"
    **hint_pt**: "I've got two tables."
    **hint_en**: "I've got two tables."
+   **example_pass**: I've got two tables. | There are three tables. | I have one table.
+   **example_fail**: Two (bare number) | Tables (bare noun) | Table (no count or structure)
 
 3. **id**: 3
    **label_pt**: "Mencionar mais um item plural (janelas, portas, livros)"
@@ -461,6 +487,8 @@
    **hidden_prompt**: "user mentions plural items with 'There are + number + plural noun' — any household plural"
    **hint_pt**: "There are three windows."
    **hint_en**: "There are three windows."
+   **example_pass**: There are three windows. | There are four doors. | There are five books.
+   **example_fail**: Windows (bare noun) | Three (bare number) | There is three windows (wrong agreement)
 
 **Closing cue**: Charlotte fecha com "Nice setup!" quando obj_3 baterem.
 
@@ -496,6 +524,8 @@
    **hidden_prompt**: "user states number of chairs with 'I've got + number + chairs' or 'There are + number + chairs'"
    **hint_pt**: "I've got six chairs."
    **hint_en**: "I've got six chairs."
+   **example_pass**: I've got six chairs. | There are four chairs. | I have two chairs.
+   **example_fail**: Six (bare number) | Chairs (bare noun) | Yes (no count given)
 
 2. **id**: 2
    **label_pt**: "Dizer quantas janelas tem"
@@ -503,6 +533,8 @@
    **hidden_prompt**: "user states number of windows with 'I've got + number + windows' or 'There are + number + windows'"
    **hint_pt**: "There are three windows."
    **hint_en**: "There are three windows."
+   **example_pass**: There are three windows. | I've got two windows. | There is one window.
+   **example_fail**: Three (bare number) | Windows (bare noun) | Big windows (no count + structure)
 
 3. **id**: 3
    **label_pt**: "Perguntar sobre a casa da Charlotte"
@@ -614,6 +646,8 @@
    **hidden_prompt**: "user says they have something using 'I've got a + noun' or 'I've got an + noun' — article must match consonant/vowel sound"
    **hint_pt**: "I've got an apple."
    **hint_en**: "I've got an apple."
+   **example_pass**: I've got an apple. | I've got a chair. | I have a dog.
+   **example_fail**: Apple (bare noun) | I've got apple (missing article) | I've got a apple (wrong article)
 
 2. **id**: 2
    **label_pt**: "Mencionar um cômodo específico usando 'the'"
@@ -621,6 +655,8 @@
    **hidden_prompt**: "user mentions a specific room with 'The kitchen is...', 'The bedroom is...', or 'The living room is...'"
    **hint_pt**: "The kitchen is small."
    **hint_en**: "The kitchen is small."
+   **example_pass**: The kitchen is small. | The bedroom is big. | The living room is nice.
+   **example_fail**: Kitchen (no 'the') | My kitchen (possessive instead of 'the') | Small (bare adjective)
 
 3. **id**: 3
    **label_pt**: "Dizer sua profissão (real ou inventada) com 'I am a/an + profissão'"
@@ -628,6 +664,8 @@
    **hidden_prompt**: "user states a profession with 'I am a + profession' or 'I am an + profession' (e.g., 'I am a teacher', 'I am an engineer')"
    **hint_pt**: "I am a teacher."
    **hint_en**: "I am a teacher."
+   **example_pass**: I am a teacher. | I'm an engineer. | I am a doctor.
+   **example_fail**: Teacher (bare noun) | I am teacher (missing article) | I work (off-structure)
 
 **Closing cue**: Charlotte fecha com "Nice articles practice!" quando obj_3 baterem.
 
@@ -663,6 +701,8 @@
    **hidden_prompt**: "user says 'I've got a + noun' where the noun starts with a consonant sound (a chair, a door, a window, a bed, etc.)"
    **hint_pt**: "I've got a chair."
    **hint_en**: "I've got a chair."
+   **example_pass**: I've got a chair. | I've got a door. | I have a bed.
+   **example_fail**: Chair (bare noun) | I've got chair (missing article) | I've got an chair (wrong article)
 
 2. **id**: 2
    **label_pt**: "Dizer que tem algo usando 'an' antes de vogal"
@@ -670,6 +710,8 @@
    **hidden_prompt**: "user says 'I've got an + noun' where the noun starts with a vowel sound (an apple, an engineer, an hour, etc.)"
    **hint_pt**: "I've got an apple."
    **hint_en**: "I've got an apple."
+   **example_pass**: I've got an apple. | I've got an orange. | I have an idea.
+   **example_fail**: Apple (bare noun) | I've got a apple (wrong article) | I've got apple (missing article)
 
 3. **id**: 3
    **label_pt**: "Falar de uma coisa específica com 'the'"
@@ -677,6 +719,8 @@
    **hidden_prompt**: "user uses 'the' to refer to something specific — 'the kitchen', 'the door', 'the table', 'the bedroom', etc."
    **hint_pt**: "The kitchen is big."
    **hint_en**: "The kitchen is big."
+   **example_pass**: The kitchen is big. | The door is open. | The bedroom is small.
+   **example_fail**: Kitchen is big (no 'the') | A kitchen (wrong article — indefinite) | The (incomplete)
 
 **Closing cue**: Charlotte encerra com "Articles nailed!" quando obj_3 baterem.
 
@@ -779,6 +823,8 @@
    **hidden_prompt**: "user describes house overall with 'My house is + adjective' or 'Welcome to my home, it is + adjective'"
    **hint_pt**: "My house is big."
    **hint_en**: "My house is big."
+   **example_pass**: My house is big. | My home is small. | My house is nice.
+   **example_fail**: Big (bare adjective) | House (bare noun) | I like it (no descriptor structure)
 
 2. **id**: 2
    **label_pt**: "Dizer quantos cômodos ou quartos tem"
@@ -786,6 +832,8 @@
    **hidden_prompt**: "user states number of rooms with 'There are + number + bedrooms/rooms' or 'I've got + number + bedrooms'"
    **hint_pt**: "There are three bedrooms."
    **hint_en**: "There are three bedrooms."
+   **example_pass**: There are three bedrooms. | I've got two bedrooms. | There are four rooms.
+   **example_fail**: Three (bare number) | Bedrooms (bare noun) | Big (no count + structure)
 
 3. **id**: 3
    **label_pt**: "Descrever um cômodo específico com um objeto"
@@ -793,6 +841,8 @@
    **hidden_prompt**: "user describes a specific room with 'The + room + has got + object' or 'There is/are + object + in the + room'"
    **hint_pt**: "The kitchen has got a big window."
    **hint_en**: "The kitchen has got a big window."
+   **example_pass**: The kitchen has got a big window. | There is a table in the bedroom. | The living room has a sofa.
+   **example_fail**: Window (bare noun) | Kitchen big window (no structure) | Has a window (no subject)
 
 **Closing cue**: Charlotte fecha com "Lovely place!" quando obj_3 baterem.
 
@@ -828,6 +878,8 @@
    **hidden_prompt**: "user introduces home with 'Welcome to my home', 'My house is + adjective', or 'This is my house'"
    **hint_pt**: "Welcome to my home."
    **hint_en**: "Welcome to my home."
+   **example_pass**: Welcome to my home. | This is my house. | My house is big.
+   **example_fail**: Welcome (incomplete) | Home (bare noun) | Hi (no intro structure)
 
 2. **id**: 2
    **label_pt**: "Dizer quantos cômodos ou objetos tem"
@@ -835,6 +887,8 @@
    **hidden_prompt**: "user mentions number of rooms or items with 'There are + number + bedrooms/rooms/chairs/etc.' or 'I've got + number'"
    **hint_pt**: "There are three bedrooms."
    **hint_en**: "There are three bedrooms."
+   **example_pass**: There are three bedrooms. | I've got two bathrooms. | There are four chairs.
+   **example_fail**: Three (bare number) | Bedrooms (bare noun) | Big house (no count + structure)
 
 3. **id**: 3
    **label_pt**: "Descrever um cômodo específico"
@@ -842,6 +896,8 @@
    **hidden_prompt**: "user describes a specific room with 'The + room + is + adjective' or 'My + room + has got + item'"
    **hint_pt**: "The kitchen is small."
    **hint_en**: "The kitchen is small."
+   **example_pass**: The kitchen is small. | My bedroom has got a desk. | The living room is big.
+   **example_fail**: Kitchen (bare noun) | Small (bare adjective) | Has a desk (no subject)
 
 **Closing cue**: Charlotte encerra com "Sounds like a nice place." quando obj_3 baterem.
 

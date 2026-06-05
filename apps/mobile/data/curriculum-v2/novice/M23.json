@@ -183,7 +183,17 @@
             "label_en": "Politely request check-in",
             "hidden_prompt": "user uses 'I'd like to check in' or 'Can I check in'",
             "hint_pt": "I'd like to check in for my flight to São Paulo.",
-            "hint_en": "I'd like to check in for my flight to São Paulo."
+            "hint_en": "I'd like to check in for my flight to São Paulo.",
+            "examples_pass": [
+              "I'd like to check in for my flight to São Paulo.",
+              "I can swim.",
+              "I can speak English."
+            ],
+            "examples_fail": [
+              "Swim (no 'I can')",
+              "I swim (no 'can' — wrong structure)",
+              "Can (incomplete)"
+            ]
           },
           {
             "id": 2,
@@ -209,7 +219,17 @@
             "label_en": "React to a problem (delay)",
             "hidden_prompt": "user responds to a delay with 'Oh, really?' or 'Is it delayed?'",
             "hint_pt": "Oh no, is the flight delayed?",
-            "hint_en": "Oh no, is the flight delayed?"
+            "hint_en": "Oh no, is the flight delayed?",
+            "examples_pass": [
+              "Oh no, is the flight delayed.",
+              "Oh no, is the flight delayed, yes.",
+              "Yes, oh no, is the flight delayed."
+            ],
+            "examples_fail": [
+              "delayed (bare word — no subject + verb)",
+              "Yes (no structure)",
+              "I don't know (off-topic)"
+            ]
           }
         ],
         "closing_cue": "Charlotte fecha com \"All set! Have a good flight!\" quando obj_3 baterem.",
@@ -234,7 +254,17 @@
             "label_en": "Talk about an airport situation",
             "hidden_prompt": "user describes an airport situation using vocab",
             "hint_pt": "I always get nervous about check-in.",
-            "hint_en": "I always get nervous about check-in."
+            "hint_en": "I always get nervous about check-in.",
+            "examples_pass": [
+              "I always get nervous about check-in.",
+              "I always get nervous about check-in, yes.",
+              "Yes, i always get nervous about check-in."
+            ],
+            "examples_fail": [
+              "in (bare word — no subject + verb)",
+              "Yes (no structure)",
+              "I don't know (off-topic)"
+            ]
           },
           {
             "id": 2,
@@ -432,7 +462,17 @@
             "label_en": "Identify yourself with reservation",
             "hidden_prompt": "user uses 'I have a reservation under...'",
             "hint_pt": "Yes, I have a reservation under the name of Silva.",
-            "hint_en": "Yes, I have a reservation under the name of Silva."
+            "hint_en": "Yes, I have a reservation under the name of Silva.",
+            "examples_pass": [
+              "Yes, I have a reservation under the name of Silva.",
+              "Yes, I have a reservation under the name of Silva, yes.",
+              "Yes, yes, i have a reservation under the name of silva."
+            ],
+            "examples_fail": [
+              "Silva (bare word — no subject + verb)",
+              "Yes (no structure)",
+              "I don't know (off-topic)"
+            ]
           },
           {
             "id": 2,
@@ -493,7 +533,17 @@
             "label_en": "Share a hotel experience",
             "hidden_prompt": "user shares hotel experience",
             "hint_pt": "I stayed at a hotel in Rio last year.",
-            "hint_en": "I stayed at a hotel in Rio last year."
+            "hint_en": "I stayed at a hotel in Rio last year.",
+            "examples_pass": [
+              "I stayed at a hotel in Rio last year.",
+              "I stayed at a hotel in Rio last year, yes.",
+              "Yes, i stayed at a hotel in rio last year."
+            ],
+            "examples_fail": [
+              "year (bare word — no subject + verb)",
+              "Yes (no structure)",
+              "I don't know (off-topic)"
+            ]
           },
           {
             "id": 2,
@@ -501,7 +551,17 @@
             "label_en": "Describe a detail",
             "hidden_prompt": "user describes a hotel detail",
             "hint_pt": "The breakfast was excellent.",
-            "hint_en": "The breakfast was excellent."
+            "hint_en": "The breakfast was excellent.",
+            "examples_pass": [
+              "The breakfast was excellent.",
+              "The breakfast was excellent, yes.",
+              "Yes, the breakfast was excellent."
+            ],
+            "examples_fail": [
+              "excellent (bare word — no subject + verb)",
+              "Yes (no structure)",
+              "I don't know (off-topic)"
+            ]
           },
           {
             "id": 3,
@@ -678,7 +738,17 @@
             "label_en": "Politely ask for directions",
             "hidden_prompt": "user uses 'Excuse me' + 'How do I get to...'",
             "hint_pt": "Excuse me, how do I get to the train station?",
-            "hint_en": "Excuse me, how do I get to the train station?"
+            "hint_en": "Excuse me, how do I get to the train station?",
+            "examples_pass": [
+              "Excuse me, how do I get to the train station.",
+              "Excuse me, how do I get to the train station, yes.",
+              "Yes, excuse me, how do i get to the train station."
+            ],
+            "examples_fail": [
+              "station (bare word — no subject + verb)",
+              "Yes (no structure)",
+              "I don't know (off-topic)"
+            ]
           },
           {
             "id": 2,
@@ -686,7 +756,17 @@
             "label_en": "Confirm or ask to repeat",
             "hidden_prompt": "user says 'Could you repeat that?' or 'So I turn left?'",
             "hint_pt": "So I turn left at the corner?",
-            "hint_en": "So I turn left at the corner?"
+            "hint_en": "So I turn left at the corner?",
+            "examples_pass": [
+              "So I turn left at the corner.",
+              "So I turn left at the corner, yes.",
+              "Yes, so i turn left at the corner."
+            ],
+            "examples_fail": [
+              "corner (bare word — no subject + verb)",
+              "Yes (no structure)",
+              "I don't know (off-topic)"
+            ]
           },
           {
             "id": 3,
@@ -729,7 +809,17 @@
             "label_en": "Describe yourself good or bad at directions",
             "hidden_prompt": "user describes their direction skills",
             "hint_pt": "I always get lost.",
-            "hint_en": "I always get lost."
+            "hint_en": "I always get lost.",
+            "examples_pass": [
+              "I always get lost.",
+              "I always get lost, yes.",
+              "Yes, i always get lost."
+            ],
+            "examples_fail": [
+              "lost (bare word — no subject + verb)",
+              "Yes (no structure)",
+              "I don't know (off-topic)"
+            ]
           },
           {
             "id": 2,
@@ -737,7 +827,17 @@
             "label_en": "Tell a time you got lost",
             "hidden_prompt": "user shares a lost-in-a-city story",
             "hint_pt": "I got lost in Lisbon last year.",
-            "hint_en": "I got lost in Lisbon last year."
+            "hint_en": "I got lost in Lisbon last year.",
+            "examples_pass": [
+              "I got lost in Lisbon last year.",
+              "I got lost in Lisbon last year, yes.",
+              "Yes, i got lost in lisbon last year."
+            ],
+            "examples_fail": [
+              "year (bare word — no subject + verb)",
+              "Yes (no structure)",
+              "I don't know (off-topic)"
+            ]
           },
           {
             "id": 3,
@@ -922,7 +1022,17 @@
             "label_en": "Report feeling unwell",
             "hidden_prompt": "user says 'I don't feel well' or 'I'm not feeling well'",
             "hint_pt": "Hi, I don't feel well today.",
-            "hint_en": "Hi, I don't feel well today."
+            "hint_en": "Hi, I don't feel well today.",
+            "examples_pass": [
+              "Hi, I don't feel well today.",
+              "Hi, I don't feel well today, yes.",
+              "Yes, hi, i don't feel well today."
+            ],
+            "examples_fail": [
+              "today (bare word — no subject + verb)",
+              "Yes (no structure)",
+              "I don't know (off-topic)"
+            ]
           },
           {
             "id": 2,
@@ -930,7 +1040,17 @@
             "label_en": "Describe specific symptoms",
             "hidden_prompt": "user describes symptoms with 'I have a...'",
             "hint_pt": "I have a headache and a sore throat.",
-            "hint_en": "I have a headache and a sore throat."
+            "hint_en": "I have a headache and a sore throat.",
+            "examples_pass": [
+              "I have a headache and a sore throat.",
+              "I have a headache and a sore throat, yes.",
+              "Yes, i have a headache and a sore throat."
+            ],
+            "examples_fail": [
+              "throat (bare word — no subject + verb)",
+              "Yes (no structure)",
+              "I don't know (off-topic)"
+            ]
           },
           {
             "id": 3,
@@ -973,7 +1093,17 @@
             "label_en": "Say what you do when sick",
             "hidden_prompt": "user describes what they do when sick",
             "hint_pt": "I always rest at home.",
-            "hint_en": "I always rest at home."
+            "hint_en": "I always rest at home.",
+            "examples_pass": [
+              "I always rest at home.",
+              "I always rest at home, yes.",
+              "Yes, i always rest at home."
+            ],
+            "examples_fail": [
+              "home (bare word — no subject + verb)",
+              "Yes (no structure)",
+              "I don't know (off-topic)"
+            ]
           },
           {
             "id": 2,
@@ -981,7 +1111,17 @@
             "label_en": "Talk about your last illness",
             "hidden_prompt": "user describes their last cold or illness",
             "hint_pt": "Last month I had a bad cold.",
-            "hint_en": "Last month I had a bad cold."
+            "hint_en": "Last month I had a bad cold.",
+            "examples_pass": [
+              "Last month I had a bad cold.",
+              "Last month I had a bad cold, yes.",
+              "Yes, last month i had a bad cold."
+            ],
+            "examples_fail": [
+              "cold (bare word — no subject + verb)",
+              "Yes (no structure)",
+              "I don't know (off-topic)"
+            ]
           },
           {
             "id": 3,
@@ -1155,7 +1295,17 @@
             "label_en": "Identify yourself on the phone",
             "hidden_prompt": "user uses 'This is X speaking' or 'Hi, this is X'",
             "hint_pt": "Hi, this is Maria speaking.",
-            "hint_en": "Hi, this is Maria speaking."
+            "hint_en": "Hi, this is Maria speaking.",
+            "examples_pass": [
+              "Hi, this is Maria speaking.",
+              "Hi, this is Maria speaking, yes.",
+              "Yes, hi, this is maria speaking."
+            ],
+            "examples_fail": [
+              "speaking (bare word — no subject + verb)",
+              "Yes (no structure)",
+              "I don't know (off-topic)"
+            ]
           },
           {
             "id": 2,
@@ -1163,7 +1313,17 @@
             "label_en": "Ask to speak to someone",
             "hidden_prompt": "user uses 'Can I speak to...?'",
             "hint_pt": "Can I speak to John, please?",
-            "hint_en": "Can I speak to John, please?"
+            "hint_en": "Can I speak to John, please?",
+            "examples_pass": [
+              "Can I speak to John, please.",
+              "I can swim.",
+              "I can speak English."
+            ],
+            "examples_fail": [
+              "Swim (no 'I can')",
+              "I swim (no 'can' — wrong structure)",
+              "Can (incomplete)"
+            ]
           },
           {
             "id": 3,
@@ -1171,7 +1331,17 @@
             "label_en": "Leave a message or promise to call back",
             "hidden_prompt": "user uses 'Can I leave a message?' or 'I'll call back'",
             "hint_pt": "Can I leave a message?",
-            "hint_en": "Can I leave a message?"
+            "hint_en": "Can I leave a message?",
+            "examples_pass": [
+              "Can I leave a message.",
+              "I'm going to travel tomorrow.",
+              "I will study tonight."
+            ],
+            "examples_fail": [
+              "Tomorrow (no verb)",
+              "I travel tomorrow (wrong tense — present)",
+              "Travel (bare verb, no future)"
+            ]
           }
         ],
         "closing_cue": "Charlotte fecha com \"I'll let him know!\" quando obj_3 bater.",
@@ -1196,7 +1366,17 @@
             "label_en": "Say how you feel on the phone",
             "hidden_prompt": "user describes their feeling about phone calls",
             "hint_pt": "I get really nervous on the phone.",
-            "hint_en": "I get really nervous on the phone."
+            "hint_en": "I get really nervous on the phone.",
+            "examples_pass": [
+              "I get really nervous on the phone.",
+              "I get really nervous on the phone, yes.",
+              "Yes, i get really nervous on the phone."
+            ],
+            "examples_fail": [
+              "phone (bare word — no subject + verb)",
+              "Yes (no structure)",
+              "I don't know (off-topic)"
+            ]
           },
           {
             "id": 2,
@@ -1204,7 +1384,17 @@
             "label_en": "Share an experience",
             "hidden_prompt": "user shares a phone call experience",
             "hint_pt": "Last week I called a hotel in English.",
-            "hint_en": "Last week I called a hotel in English."
+            "hint_en": "Last week I called a hotel in English.",
+            "examples_pass": [
+              "Last week I called a hotel in English.",
+              "Last week I called a hotel in English, yes.",
+              "Yes, last week i called a hotel in english."
+            ],
+            "examples_fail": [
+              "English (bare word — no subject + verb)",
+              "Yes (no structure)",
+              "I don't know (off-topic)"
+            ]
           },
           {
             "id": 3,

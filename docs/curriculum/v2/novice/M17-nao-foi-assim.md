@@ -104,6 +104,8 @@
    **hidden_prompt**: "user corrects with 'No, I didn't + verb base'"
    **hint_pt**: "No, I didn't go to the gym."
    **hint_en**: "No, I didn't go to the gym."
+   **example_pass**: No, I didn't go to the gym. | No, I didn't go to the gym, yes. | Yes, no, i didn't go to the gym.
+   **example_fail**: gym (bare word — no subject + verb) | Yes (no structure) | I don't know (off-topic)
 
 2. **id**: 2
    **label_pt**: "Dizer outra coisa que não fez"
@@ -111,6 +113,8 @@
    **hidden_prompt**: "user uses another 'I didn't + verb base'"
    **hint_pt**: "I didn't have time."
    **hint_en**: "I didn't have time."
+   **example_pass**: I didn't have time. | I didn't have time, yes. | Yes, i didn't have time.
+   **example_fail**: time (bare word — no subject + verb) | Yes (no structure) | I don't know (off-topic)
 
 3. **id**: 3
    **label_pt**: "Dizer que alguém não fez algo (didn't + base)"
@@ -118,6 +122,8 @@
    **hidden_prompt**: "user uses 'He/She didn't + base'"
    **hint_pt**: "My sister didn't come."
    **hint_en**: "My sister didn't come."
+   **example_pass**: My sister didn't come. | She works at a hospital. | He lives in São Paulo.
+   **example_fail**: Work (no subject + -s) | She work (missing -s) | Hospital (bare noun)
 
 **Closing cue**: Charlotte fecha com "Cleared up!" quando obj_3 baterem.
 
@@ -153,6 +159,8 @@
    **hidden_prompt**: "user uses 'I didn't + verb base'"
    **hint_pt**: "I didn't work."
    **hint_en**: "I didn't work."
+   **example_pass**: I didn't work. | I didn't work, yes. | Yes, i didn't work.
+   **example_fail**: work (bare word — no subject + verb) | Yes (no structure) | I don't know (off-topic)
 
 2. **id**: 2
    **label_pt**: "Dizer outra negativa"
@@ -160,6 +168,8 @@
    **hidden_prompt**: "user uses another 'I didn't + verb base'"
    **hint_pt**: "I didn't see anyone."
    **hint_en**: "I didn't see anyone."
+   **example_pass**: I didn't see anyone. | I didn't see anyone, yes. | Yes, i didn't see anyone.
+   **example_fail**: anyone (bare word — no subject + verb) | Yes (no structure) | I don't know (off-topic)
 
 3. **id**: 3
    **label_pt**: "Perguntar à Charlotte"
@@ -327,6 +337,8 @@
    **hidden_prompt**: "user gives short answer 'Yes, I did' or 'No, I didn't'"
    **hint_pt**: "Yes, I did."
    **hint_en**: "Yes, I did."
+   **example_pass**: Yes, I did. | Yes, I did, yes. | Yes, yes, i did.
+   **example_fail**: did (bare word — no subject + verb) | Yes (no structure) | I don't know (off-topic)
 
 2. **id**: 2
    **label_pt**: "Fazer pergunta à Charlotte"
@@ -625,6 +637,8 @@
    **hidden_prompt**: "user uses 'I never + verb past' (never visited, never tried, never went)"
    **hint_pt**: "I never visited Japan."
    **hint_en**: "I never visited Japan."
+   **example_pass**: I never visited Japan. | I never visited Japan, yes. | Yes, i never visited japan.
+   **example_fail**: Japan (bare word — no subject + verb) | Yes (no structure) | I don't know (off-topic)
 
 2. **id**: 2
    **label_pt**: "Outra coisa que nunca fez"
@@ -632,6 +646,8 @@
    **hidden_prompt**: "user uses 'I never + past verb'"
    **hint_pt**: "I never tried sushi."
    **hint_en**: "I never tried sushi."
+   **example_pass**: I never tried sushi. | I never tried sushi, yes. | Yes, i never tried sushi.
+   **example_fail**: sushi (bare word — no subject + verb) | Yes (no structure) | I don't know (off-topic)
 
 3. **id**: 3
    **label_pt**: "Dizer algo que não fez ontem (didn't + base)"
@@ -639,6 +655,8 @@
    **hidden_prompt**: "user uses 'I didn't + verb base + yesterday/last week'"
    **hint_pt**: "I didn't go out yesterday."
    **hint_en**: "I didn't go out yesterday."
+   **example_pass**: I didn't go out yesterday. | Yesterday I worked all day. | I watched TV last night.
+   **example_fail**: Yesterday (no verb) | I work yesterday (wrong tense — present) | Work (bare verb, no past)
 
 **Closing cue**: Charlotte fecha com "Honest list!" quando obj_3 baterem.
 
@@ -674,6 +692,8 @@
    **hidden_prompt**: "user uses 'I never + past verb'"
    **hint_pt**: "I never went skiing."
    **hint_en**: "I never went skiing."
+   **example_pass**: I never went skiing. | I never went skiing, yes. | Yes, i never went skiing.
+   **example_fail**: skiing (bare word — no subject + verb) | Yes (no structure) | I don't know (off-topic)
 
 2. **id**: 2
    **label_pt**: "Dizer outra"
@@ -681,6 +701,8 @@
    **hidden_prompt**: "user uses another 'I never + past'"
    **hint_pt**: "I never ate raw fish."
    **hint_en**: "I never ate raw fish."
+   **example_pass**: I never ate raw fish. | I never ate raw fish, yes. | Yes, i never ate raw fish.
+   **example_fail**: fish (bare word — no subject + verb) | Yes (no structure) | I don't know (off-topic)
 
 3. **id**: 3
    **label_pt**: "Perguntar à Charlotte"
@@ -792,6 +814,8 @@
    **hidden_prompt**: "user uses 'I + verb past + ...'"
    **hint_pt**: "I went to the gym."
    **hint_en**: "I went to the gym."
+   **example_pass**: I went to the gym. | I live in Brazil. | I work at a school.
+   **example_fail**: Brazil (bare noun) | Live (no subject) | Work (bare verb)
 
 2. **id**: 2
    **label_pt**: "Dizer negativa passada"
@@ -799,6 +823,8 @@
    **hidden_prompt**: "user uses 'I didn't + base'"
    **hint_pt**: "I didn't eat dinner."
    **hint_en**: "I didn't eat dinner."
+   **example_pass**: I didn't eat dinner. | I didn't eat dinner, yes. | Yes, i didn't eat dinner.
+   **example_fail**: dinner (bare word — no subject + verb) | Yes (no structure) | I don't know (off-topic)
 
 3. **id**: 3
    **label_pt**: "Fazer pergunta passada (à Charlotte)"
@@ -843,6 +869,8 @@
    **hidden_prompt**: "user uses 'I + verb past'"
    **hint_pt**: "I went to a wedding."
    **hint_en**: "I went to a wedding."
+   **example_pass**: I went to a wedding. | I live in Brazil. | I work at a school.
+   **example_fail**: Brazil (bare noun) | Live (no subject) | Work (bare verb)
 
 2. **id**: 2
    **label_pt**: "Dizer algo que não fez (negativa)"
@@ -850,6 +878,8 @@
    **hidden_prompt**: "user uses 'I didn't + base'"
    **hint_pt**: "I didn't dance."
    **hint_en**: "I didn't dance."
+   **example_pass**: I didn't dance. | I didn't dance, yes. | Yes, i didn't dance.
+   **example_fail**: dance (bare word — no subject + verb) | Yes (no structure) | I don't know (off-topic)
 
 3. **id**: 3
    **label_pt**: "Perguntar à Charlotte"

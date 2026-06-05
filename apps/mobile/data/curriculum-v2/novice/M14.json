@@ -161,7 +161,17 @@
             "label_en": "Say where you were yesterday",
             "hidden_prompt": "user states past location with 'I was at/in + place + yesterday'",
             "hint_pt": "I was at home yesterday.",
-            "hint_en": "I was at home yesterday."
+            "hint_en": "I was at home yesterday.",
+            "examples_pass": [
+              "I was at home yesterday.",
+              "I had pizza for lunch.",
+              "Yesterday I ate a sandwich."
+            ],
+            "examples_fail": [
+              "Pizza (bare noun)",
+              "I eat pizza (wrong tense — present)",
+              "Yesterday (no verb)"
+            ]
           },
           {
             "id": 2,
@@ -169,7 +179,17 @@
             "label_en": "Say how you were",
             "hidden_prompt": "user states past state with 'I was + adjective' (tired/happy/busy/sad)",
             "hint_pt": "I was tired.",
-            "hint_en": "I was tired."
+            "hint_en": "I was tired.",
+            "examples_pass": [
+              "I was tired.",
+              "I was at the park yesterday.",
+              "We were at home last night."
+            ],
+            "examples_fail": [
+              "Park (bare noun)",
+              "I am at the park (wrong tense — present)",
+              "Was (incomplete)"
+            ]
           },
           {
             "id": 3,
@@ -177,7 +197,17 @@
             "label_en": "Say where someone was",
             "hidden_prompt": "user states 'My + family member + was + place/state' or 'They were + place/state'",
             "hint_pt": "My sister was at school.",
-            "hint_en": "My sister was at school."
+            "hint_en": "My sister was at school.",
+            "examples_pass": [
+              "My sister was at school.",
+              "I was at the park yesterday.",
+              "We were at home last night."
+            ],
+            "examples_fail": [
+              "Park (bare noun)",
+              "I am at the park (wrong tense — present)",
+              "Was (incomplete)"
+            ]
           }
         ],
         "closing_cue": "Charlotte fecha com \"Got the picture!\" quando obj_3 baterem.",
@@ -202,7 +232,17 @@
             "label_en": "Say how your day was",
             "hidden_prompt": "user says 'It was + adjective' (great/tiring/long/short)",
             "hint_pt": "It was great.",
-            "hint_en": "It was great."
+            "hint_en": "It was great.",
+            "examples_pass": [
+              "It was great.",
+              "I was at the park yesterday.",
+              "We were at home last night."
+            ],
+            "examples_fail": [
+              "Park (bare noun)",
+              "I am at the park (wrong tense — present)",
+              "Was (incomplete)"
+            ]
           },
           {
             "id": 2,
@@ -210,7 +250,17 @@
             "label_en": "Say where you were",
             "hidden_prompt": "user says 'I was at + place'",
             "hint_pt": "I was at work.",
-            "hint_en": "I was at work."
+            "hint_en": "I was at work.",
+            "examples_pass": [
+              "I was at work.",
+              "I was at the park yesterday.",
+              "We were at home last night."
+            ],
+            "examples_fail": [
+              "Park (bare noun)",
+              "I am at the park (wrong tense — present)",
+              "Was (incomplete)"
+            ]
           },
           {
             "id": 3,
@@ -374,7 +424,17 @@
             "label_en": "Correct her with where you weren't",
             "hidden_prompt": "user corrects with 'No, I wasn't at + place'",
             "hint_pt": "No, I wasn't at the gym.",
-            "hint_en": "No, I wasn't at the gym."
+            "hint_en": "No, I wasn't at the gym.",
+            "examples_pass": [
+              "No, I wasn't at the gym.",
+              "I was at the park yesterday.",
+              "We were at home last night."
+            ],
+            "examples_fail": [
+              "Park (bare noun)",
+              "I am at the park (wrong tense — present)",
+              "Was (incomplete)"
+            ]
           },
           {
             "id": 2,
@@ -382,7 +442,17 @@
             "label_en": "Say how you weren't feeling",
             "hidden_prompt": "user says 'I wasn't + adjective' (tired, happy, busy)",
             "hint_pt": "I wasn't busy.",
-            "hint_en": "I wasn't busy."
+            "hint_en": "I wasn't busy.",
+            "examples_pass": [
+              "I wasn't busy.",
+              "I was at the park yesterday.",
+              "We were at home last night."
+            ],
+            "examples_fail": [
+              "Park (bare noun)",
+              "I am at the park (wrong tense — present)",
+              "Was (incomplete)"
+            ]
           },
           {
             "id": 3,
@@ -390,7 +460,17 @@
             "label_en": "Say where someone wasn't",
             "hidden_prompt": "user says 'He/She wasn't + place' or 'They weren't + place'",
             "hint_pt": "My sister wasn't home.",
-            "hint_en": "My sister wasn't home."
+            "hint_en": "My sister wasn't home.",
+            "examples_pass": [
+              "My sister wasn't home.",
+              "I was at the park yesterday.",
+              "We were at home last night."
+            ],
+            "examples_fail": [
+              "Park (bare noun)",
+              "I am at the park (wrong tense — present)",
+              "Was (incomplete)"
+            ]
           }
         ],
         "closing_cue": "Charlotte fecha com \"Set straight!\" quando obj_3 baterem.",
@@ -415,7 +495,17 @@
             "label_en": "Say where you weren't",
             "hidden_prompt": "user says 'No, I wasn't at + place'",
             "hint_pt": "No, I wasn't at home.",
-            "hint_en": "No, I wasn't at home."
+            "hint_en": "No, I wasn't at home.",
+            "examples_pass": [
+              "No, I wasn't at home.",
+              "I was at the park yesterday.",
+              "We were at home last night."
+            ],
+            "examples_fail": [
+              "Park (bare noun)",
+              "I am at the park (wrong tense — present)",
+              "Was (incomplete)"
+            ]
           },
           {
             "id": 2,
@@ -423,7 +513,17 @@
             "label_en": "Say how you didn't feel",
             "hidden_prompt": "user says 'I wasn't + adjective'",
             "hint_pt": "I wasn't happy.",
-            "hint_en": "I wasn't happy."
+            "hint_en": "I wasn't happy.",
+            "examples_pass": [
+              "I wasn't happy.",
+              "I was at the park yesterday.",
+              "We were at home last night."
+            ],
+            "examples_fail": [
+              "Park (bare noun)",
+              "I am at the park (wrong tense — present)",
+              "Was (incomplete)"
+            ]
           },
           {
             "id": 3,
@@ -589,7 +689,17 @@
             "label_en": "Answer about the weekend",
             "hidden_prompt": "user answers 'It was + adjective' (great/tiring/relaxing/busy)",
             "hint_pt": "It was great!",
-            "hint_en": "It was great!"
+            "hint_en": "It was great!",
+            "examples_pass": [
+              "It was great.",
+              "I was at the park yesterday.",
+              "We were at home last night."
+            ],
+            "examples_fail": [
+              "Park (bare noun)",
+              "I am at the park (wrong tense — present)",
+              "Was (incomplete)"
+            ]
           },
           {
             "id": 2,
@@ -650,7 +760,17 @@
             "label_en": "Answer where you were",
             "hidden_prompt": "user says 'I was at + place'",
             "hint_pt": "I was at home.",
-            "hint_en": "I was at home."
+            "hint_en": "I was at home.",
+            "examples_pass": [
+              "I was at home.",
+              "I was at the park yesterday.",
+              "We were at home last night."
+            ],
+            "examples_fail": [
+              "Park (bare noun)",
+              "I am at the park (wrong tense — present)",
+              "Was (incomplete)"
+            ]
           },
           {
             "id": 2,
@@ -832,7 +952,17 @@
             "label_en": "Say where you were a year ago",
             "hidden_prompt": "user uses 'I was + place + X ago' or 'last year'",
             "hint_pt": "I was in Rio a year ago.",
-            "hint_en": "I was in Rio a year ago."
+            "hint_en": "I was in Rio a year ago.",
+            "examples_pass": [
+              "I was in Rio a year ago.",
+              "I was at the park yesterday.",
+              "We were at home last night."
+            ],
+            "examples_fail": [
+              "Park (bare noun)",
+              "I am at the park (wrong tense — present)",
+              "Was (incomplete)"
+            ]
           },
           {
             "id": 2,
@@ -840,7 +970,17 @@
             "label_en": "Say something from last week",
             "hidden_prompt": "user uses 'I was + state/place + last week/last month'",
             "hint_pt": "I was on vacation last week.",
-            "hint_en": "I was on vacation last week."
+            "hint_en": "I was on vacation last week.",
+            "examples_pass": [
+              "I was on vacation last week.",
+              "I was at the park yesterday.",
+              "We were at home last night."
+            ],
+            "examples_fail": [
+              "Park (bare noun)",
+              "I am at the park (wrong tense — present)",
+              "Was (incomplete)"
+            ]
           },
           {
             "id": 3,
@@ -848,7 +988,17 @@
             "label_en": "Say something from a specific year",
             "hidden_prompt": "user uses 'I was + state/place + in + year'",
             "hint_pt": "I was in school in 2010.",
-            "hint_en": "I was in school in 2010."
+            "hint_en": "I was in school in 2010.",
+            "examples_pass": [
+              "I was in school in 2010.",
+              "I was at the park yesterday.",
+              "We were at home last night."
+            ],
+            "examples_fail": [
+              "Park (bare noun)",
+              "I am at the park (wrong tense — present)",
+              "Was (incomplete)"
+            ]
           }
         ],
         "closing_cue": "Charlotte fecha com \"Timeline locked in!\" quando obj_3 baterem.",
@@ -873,7 +1023,17 @@
             "label_en": "Answer about 2020",
             "hidden_prompt": "user says 'I was + place/state + in 2020'",
             "hint_pt": "I was at university in 2020.",
-            "hint_en": "I was at university in 2020."
+            "hint_en": "I was at university in 2020.",
+            "examples_pass": [
+              "I was at university in 2020.",
+              "I was at the park yesterday.",
+              "We were at home last night."
+            ],
+            "examples_fail": [
+              "Park (bare noun)",
+              "I am at the park (wrong tense — present)",
+              "Was (incomplete)"
+            ]
           },
           {
             "id": 2,
@@ -881,7 +1041,17 @@
             "label_en": "Say where you were yesterday",
             "hidden_prompt": "user says 'I was + place + yesterday' or 'last night'",
             "hint_pt": "I was at work yesterday.",
-            "hint_en": "I was at work yesterday."
+            "hint_en": "I was at work yesterday.",
+            "examples_pass": [
+              "I was at work yesterday.",
+              "Yesterday I worked all day.",
+              "I watched TV last night."
+            ],
+            "examples_fail": [
+              "Yesterday (no verb)",
+              "I work yesterday (wrong tense — present)",
+              "Work (bare verb, no past)"
+            ]
           },
           {
             "id": 3,
@@ -1048,7 +1218,17 @@
             "label_en": "Say how life was",
             "hidden_prompt": "user says 'It was + adjective' or 'Life was + adjective'",
             "hint_pt": "Life was simple.",
-            "hint_en": "Life was simple."
+            "hint_en": "Life was simple.",
+            "examples_pass": [
+              "Life was simple.",
+              "I was at the park yesterday.",
+              "We were at home last night."
+            ],
+            "examples_fail": [
+              "Park (bare noun)",
+              "I am at the park (wrong tense — present)",
+              "Was (incomplete)"
+            ]
           },
           {
             "id": 2,
@@ -1056,7 +1236,17 @@
             "label_en": "Say where you lived",
             "hidden_prompt": "user says 'I was in + place' or 'We were in + place'",
             "hint_pt": "I was in a small town.",
-            "hint_en": "I was in a small town."
+            "hint_en": "I was in a small town.",
+            "examples_pass": [
+              "I was in a small town.",
+              "I was at the park yesterday.",
+              "We were at home last night."
+            ],
+            "examples_fail": [
+              "Park (bare noun)",
+              "I am at the park (wrong tense — present)",
+              "Was (incomplete)"
+            ]
           },
           {
             "id": 3,
@@ -1064,7 +1254,17 @@
             "label_en": "Say who you were with",
             "hidden_prompt": "user says 'My family was + adj' or 'My friends were + adj'",
             "hint_pt": "My family was big and happy.",
-            "hint_en": "My family was big and happy."
+            "hint_en": "My family was big and happy.",
+            "examples_pass": [
+              "My family was big and happy.",
+              "I was at the park yesterday.",
+              "We were at home last night."
+            ],
+            "examples_fail": [
+              "Park (bare noun)",
+              "I am at the park (wrong tense — present)",
+              "Was (incomplete)"
+            ]
           }
         ],
         "closing_cue": "Charlotte fecha com \"Sweet memories!\" quando obj_3 baterem.",
@@ -1089,7 +1289,17 @@
             "label_en": "Say how you were 10 years ago",
             "hidden_prompt": "user says 'I was + adj/state + 10 years ago'",
             "hint_pt": "I was younger.",
-            "hint_en": "I was younger."
+            "hint_en": "I was younger.",
+            "examples_pass": [
+              "I was younger.",
+              "I was at the park yesterday.",
+              "We were at home last night."
+            ],
+            "examples_fail": [
+              "Park (bare noun)",
+              "I am at the park (wrong tense — present)",
+              "Was (incomplete)"
+            ]
           },
           {
             "id": 2,
@@ -1097,7 +1307,17 @@
             "label_en": "Say another past state of yours",
             "hidden_prompt": "user says 'I was + place' or 'I was + role (student, etc.)'",
             "hint_pt": "I was a student.",
-            "hint_en": "I was a student."
+            "hint_en": "I was a student.",
+            "examples_pass": [
+              "I was a student.",
+              "I was at the park yesterday.",
+              "We were at home last night."
+            ],
+            "examples_fail": [
+              "Park (bare noun)",
+              "I am at the park (wrong tense — present)",
+              "Was (incomplete)"
+            ]
           },
           {
             "id": 3,

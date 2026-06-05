@@ -109,6 +109,8 @@
    **hidden_prompt**: "user states what they want with 'I'd like to buy + item' or 'I'm looking for + item'"
    **hint_pt**: "I'd like to buy a shirt."
    **hint_en**: "I'd like to buy a shirt."
+   **example_pass**: I'd like to buy a shirt. | I love pizza. | My favorite food is sushi.
+   **example_fail**: Pizza (bare noun) | Like (incomplete) | Yes (no preference structure)
 
 2. **id**: 2
    **label_pt**: "Perguntar onde fica"
@@ -162,6 +164,8 @@
    **hidden_prompt**: "user says 'I'm looking for + item' or 'I'd like to buy + item'"
    **hint_pt**: "I'm looking for shoes."
    **hint_en**: "I'm looking for shoes."
+   **example_pass**: I'm looking for shoes. | I love pizza. | My favorite food is sushi.
+   **example_fail**: Pizza (bare noun) | Like (incomplete) | Yes (no preference structure)
 
 2. **id**: 2
    **label_pt**: "Especificar tamanho ou cor"
@@ -169,6 +173,8 @@
    **hidden_prompt**: "user specifies with 'in size + letter/number' or 'in + color'"
    **hint_pt**: "In size 42."
    **hint_en**: "In size 42."
+   **example_pass**: In size 42. | If it rains, I stay home. | If I have time, I'll go.
+   **example_fail**: Rain (no if-clause) | I stay home (no condition) | If (incomplete)
 
 3. **id**: 3
    **label_pt**: "Perguntar preço"
@@ -281,6 +287,8 @@
    **hidden_prompt**: "user uses 'this + singular' or 'these + plural' for close items"
    **hint_pt**: "I like this shirt."
    **hint_en**: "I like this shirt."
+   **example_pass**: I like this shirt. | She works at a hospital. | He lives in São Paulo.
+   **example_fail**: Work (no subject + -s) | She work (missing -s) | Hospital (bare noun)
 
 2. **id**: 2
    **label_pt**: "Apontar algo distante (that/those)"
@@ -288,6 +296,8 @@
    **hidden_prompt**: "user uses 'that + singular' or 'those + plural' for far items"
    **hint_pt**: "Those pants look great."
    **hint_en**: "Those pants look great."
+   **example_pass**: Those pants look great. | She works at a hospital. | He lives in São Paulo.
+   **example_fail**: Work (no subject + -s) | She work (missing -s) | Hospital (bare noun)
 
 3. **id**: 3
    **label_pt**: "Perguntar preço de algo específico"
@@ -332,6 +342,8 @@
    **hidden_prompt**: "user uses 'this/that + singular noun + is + adjective'"
    **hint_pt**: "This dress is nice."
    **hint_en**: "This dress is nice."
+   **example_pass**: This dress is nice. | She works at a hospital. | He lives in São Paulo.
+   **example_fail**: Work (no subject + -s) | She work (missing -s) | Hospital (bare noun)
 
 2. **id**: 2
    **label_pt**: "Comentar sobre algo (plural)"
@@ -339,6 +351,8 @@
    **hidden_prompt**: "user uses 'these/those + plural noun + are + adjective'"
    **hint_pt**: "Those shoes are cool."
    **hint_en**: "Those shoes are cool."
+   **example_pass**: Those shoes are cool. | Those shoes are cool, yes. | Yes, those shoes are cool.
+   **example_fail**: cool (bare word — no subject + verb) | Yes (no structure) | I don't know (off-topic)
 
 3. **id**: 3
    **label_pt**: "Escolher um favorito"
@@ -346,6 +360,8 @@
    **hidden_prompt**: "user picks one with 'I'd like this/that one' or 'I prefer these/those'"
    **hint_pt**: "I'd like this one."
    **hint_en**: "I'd like this one."
+   **example_pass**: I'd like this one. | I love pizza. | My favorite food is sushi.
+   **example_fail**: Pizza (bare noun) | Like (incomplete) | Yes (no preference structure)
 
 **Closing cue**: Charlotte encerra com "Great choice!" quando obj_3 baterem.
 
@@ -457,6 +473,8 @@
    **hidden_prompt**: "user says 'It's + preposition (on/in/at/next to/behind/in front of) + place'"
    **hint_pt**: "It's next to the door."
    **hint_en**: "It's next to the door."
+   **example_pass**: It's next to the door. | It's next to the door, yes. | Yes, it's next to the door.
+   **example_fail**: door (bare word — no subject + verb) | Yes (no structure) | I don't know (off-topic)
 
 3. **id**: 3
    **label_pt**: "Outra localização diferente"
@@ -464,6 +482,8 @@
    **hidden_prompt**: "user says another 'item is + preposition + place'"
    **hint_pt**: "The shirts are on the second floor."
    **hint_en**: "The shirts are on the second floor."
+   **example_pass**: The shirts are on the second floor. | The shirts are on the second floor, yes. | Yes, the shirts are on the second floor.
+   **example_fail**: floor (bare word — no subject + verb) | Yes (no structure) | I don't know (off-topic)
 
 **Closing cue**: Charlotte fecha com "Found it!" quando obj_3 baterem.
 
@@ -499,6 +519,8 @@
    **hidden_prompt**: "user says 'It's + preposition + place' (next to/on/in/at)"
    **hint_pt**: "It's next to the bank."
    **hint_en**: "It's next to the bank."
+   **example_pass**: It's next to the bank. | It's next to the bank, yes. | Yes, it's next to the bank.
+   **example_fail**: bank (bare word — no subject + verb) | Yes (no structure) | I don't know (off-topic)
 
 2. **id**: 2
    **label_pt**: "Dizer onde está outra coisa"
@@ -506,6 +528,8 @@
    **hidden_prompt**: "user says 'X is + preposition + Y'"
    **hint_pt**: "The supermarket is between two cafes."
    **hint_en**: "The supermarket is between two cafes."
+   **example_pass**: The supermarket is between two cafes. | The supermarket is between two cafes, yes. | Yes, the supermarket is between two cafes.
+   **example_fail**: cafes (bare word — no subject + verb) | Yes (no structure) | I don't know (off-topic)
 
 3. **id**: 3
    **label_pt**: "Perguntar à Charlotte sobre o bairro dela"
@@ -626,6 +650,8 @@
    **hidden_prompt**: "user says 'I'd like to pay with + cash/credit card' or 'Can I pay with...?'"
    **hint_pt**: "Can I pay with credit card?"
    **hint_en**: "Can I pay with credit card?"
+   **example_pass**: Can I pay with credit card. | I can swim. | I can speak English.
+   **example_fail**: Swim (no 'I can') | I swim (no 'can' — wrong structure) | Can (incomplete)
 
 3. **id**: 3
    **label_pt**: "Pedir o recibo"
@@ -670,6 +696,8 @@
    **hidden_prompt**: "user states payment with 'I'll pay with + method' or 'Can I pay with...?'"
    **hint_pt**: "I'll pay with credit card."
    **hint_en**: "I'll pay with credit card."
+   **example_pass**: I'll pay with credit card. | I'm going to travel tomorrow. | I will study tonight.
+   **example_fail**: Tomorrow (no verb) | I travel tomorrow (wrong tense — present) | Travel (bare verb, no future)
 
 2. **id**: 2
    **label_pt**: "Perguntar o total"
@@ -790,6 +818,8 @@
    **hidden_prompt**: "user says 'I'd like to buy + item' or 'I'm looking for + item'"
    **hint_pt**: "I'd like to buy a shirt."
    **hint_en**: "I'd like to buy a shirt."
+   **example_pass**: I'd like to buy a shirt. | I love pizza. | My favorite food is sushi.
+   **example_fail**: Pizza (bare noun) | Like (incomplete) | Yes (no preference structure)
 
 2. **id**: 2
    **label_pt**: "Apontar com demonstrativo + experimentar"
@@ -797,6 +827,8 @@
    **hidden_prompt**: "user picks item with 'this/that/these/those' OR asks 'Can I try it on?'"
    **hint_pt**: "I like this one. Can I try it on?"
    **hint_en**: "I like this one. Can I try it on?"
+   **example_pass**: I like this one. Can I try it on. | I can swim. | I can speak English.
+   **example_fail**: Swim (no 'I can') | I swim (no 'can' — wrong structure) | Can (incomplete)
 
 3. **id**: 3
    **label_pt**: "Fechar a compra — preço e pagamento"
@@ -841,6 +873,8 @@
    **hidden_prompt**: "user says what they bought with 'I bought + item' or 'I got + item'"
    **hint_pt**: "I bought a new jacket."
    **hint_en**: "I bought a new jacket."
+   **example_pass**: I bought a new jacket. | I bought a new jacket, yes. | Yes, i bought a new jacket.
+   **example_fail**: jacket (bare word — no subject + verb) | Yes (no structure) | I don't know (off-topic)
 
 2. **id**: 2
    **label_pt**: "Dizer o preço"
@@ -848,6 +882,8 @@
    **hidden_prompt**: "user states price with 'It was + amount' or 'It cost + amount'"
    **hint_pt**: "It was fifty dollars."
    **hint_en**: "It was fifty dollars."
+   **example_pass**: It was fifty dollars. | I was at the park yesterday. | We were at home last night.
+   **example_fail**: Park (bare noun) | I am at the park (wrong tense — present) | Was (incomplete)
 
 3. **id**: 3
    **label_pt**: "Perguntar à Charlotte"

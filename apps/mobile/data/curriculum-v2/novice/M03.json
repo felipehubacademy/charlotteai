@@ -173,7 +173,17 @@
             "label_en": "Say something about your mother",
             "hidden_prompt": "user says something about their mother with 'My mother is + age/nationality/adjective' (e.g., 'My mother is fifty', 'My mother is Brazilian')",
             "hint_pt": "My mother is fifty.",
-            "hint_en": "My mother is fifty."
+            "hint_en": "My mother is fifty.",
+            "examples_pass": [
+              "My mother is fifty.",
+              "My mother is Brazilian.",
+              "My mother is a teacher."
+            ],
+            "examples_fail": [
+              "Mother (bare noun)",
+              "She is fifty (no 'my mother')",
+              "Fifty (bare number)"
+            ]
           },
           {
             "id": 2,
@@ -181,7 +191,17 @@
             "label_en": "Say something about your father",
             "hidden_prompt": "user says something about their father with 'My father is + age/nationality/adjective'",
             "hint_pt": "My father is American.",
-            "hint_en": "My father is American."
+            "hint_en": "My father is American.",
+            "examples_pass": [
+              "My father is American.",
+              "My father is fifty-five.",
+              "My dad is from Brazil."
+            ],
+            "examples_fail": [
+              "Father (bare noun)",
+              "American (bare adjective)",
+              "He is American (no 'my father')"
+            ]
           },
           {
             "id": 3,
@@ -189,7 +209,17 @@
             "label_en": "Say something about a brother or sister",
             "hidden_prompt": "user mentions a brother or sister with 'My brother/sister is + age/nationality/something'",
             "hint_pt": "My brother is twenty.",
-            "hint_en": "My brother is twenty."
+            "hint_en": "My brother is twenty.",
+            "examples_pass": [
+              "My brother is twenty.",
+              "My sister is fifteen.",
+              "My brother is a student."
+            ],
+            "examples_fail": [
+              "Brother (bare noun)",
+              "Twenty (bare number)",
+              "He is twenty (no 'my brother/sister')"
+            ]
           }
         ],
         "closing_cue": "Charlotte fecha com \"Nice family! Thanks for sharing.\" quando obj_3 baterem.",
@@ -214,7 +244,17 @@
             "label_en": "Talk about your mother",
             "hidden_prompt": "user says something about their mother with 'My mother is + name/age/nationality'",
             "hint_pt": "My mother is Maria.",
-            "hint_en": "My mother is Maria."
+            "hint_en": "My mother is Maria.",
+            "examples_pass": [
+              "My mother is Maria.",
+              "My mother is fifty.",
+              "My mom is Brazilian."
+            ],
+            "examples_fail": [
+              "Maria (bare name)",
+              "Mother (bare noun)",
+              "She is Maria (no 'my mother')"
+            ]
           },
           {
             "id": 2,
@@ -222,7 +262,17 @@
             "label_en": "Talk about your father",
             "hidden_prompt": "user says something about their father with 'My father is + name/age/nationality'",
             "hint_pt": "My father is fifty-five.",
-            "hint_en": "My father is fifty-five."
+            "hint_en": "My father is fifty-five.",
+            "examples_pass": [
+              "My father is fifty-five.",
+              "My father is John.",
+              "My dad is American."
+            ],
+            "examples_fail": [
+              "Father (bare noun)",
+              "Fifty-five (bare number)",
+              "He is fifty-five (no 'my father')"
+            ]
           },
           {
             "id": 3,
@@ -230,7 +280,17 @@
             "label_en": "Talk about a brother or sister",
             "hidden_prompt": "user mentions a brother or sister with 'My brother/sister is + name/age'",
             "hint_pt": "My sister is twenty.",
-            "hint_en": "My sister is twenty."
+            "hint_en": "My sister is twenty.",
+            "examples_pass": [
+              "My sister is twenty.",
+              "My brother is Pedro.",
+              "My sister is fifteen years old."
+            ],
+            "examples_fail": [
+              "Sister (bare noun)",
+              "Twenty (bare number)",
+              "She is twenty (no 'my sister/brother')"
+            ]
           }
         ],
         "closing_cue": "Charlotte encerra com \"Cool family! Thanks.\" quando obj_3 baterem.",
@@ -378,7 +438,17 @@
             "label_en": "Say how many brothers you have",
             "hidden_prompt": "user states number of brothers with 'I've got + number + brothers' or 'I have got + number' or 'I don't have any' or 'none' — zero counts too",
             "hint_pt": "I've got two brothers.",
-            "hint_en": "I've got two brothers."
+            "hint_en": "I've got two brothers.",
+            "examples_pass": [
+              "I've got two brothers.",
+              "I have one brother.",
+              "I don't have any brothers."
+            ],
+            "examples_fail": [
+              "Two (bare number)",
+              "Brothers (bare noun)",
+              "Yes (no count given)"
+            ]
           },
           {
             "id": 2,
@@ -386,7 +456,17 @@
             "label_en": "Say how many sisters you have",
             "hidden_prompt": "user states number of sisters with 'I've got + number + sisters' or 'I don't have sisters' or 'none'",
             "hint_pt": "I've got one sister.",
-            "hint_en": "I've got one sister."
+            "hint_en": "I've got one sister.",
+            "examples_pass": [
+              "I've got one sister.",
+              "I have two sisters.",
+              "I don't have any sisters."
+            ],
+            "examples_fail": [
+              "One (bare number)",
+              "Sisters (bare noun)",
+              "Yes (no count given)"
+            ]
           },
           {
             "id": 3,
@@ -429,7 +509,17 @@
             "label_en": "Describe your family size",
             "hidden_prompt": "user describes family size with 'I've got a big family', 'I've got a small family', or specifies people with 'I have got + number'",
             "hint_pt": "I've got a small family.",
-            "hint_en": "I've got a small family."
+            "hint_en": "I've got a small family.",
+            "examples_pass": [
+              "I've got a small family.",
+              "I have a big family.",
+              "I've got four people in my family."
+            ],
+            "examples_fail": [
+              "Small (bare adjective)",
+              "Family (bare noun)",
+              "Big (bare adjective)"
+            ]
           },
           {
             "id": 2,
@@ -437,7 +527,17 @@
             "label_en": "Say how many brothers or sisters you have",
             "hidden_prompt": "user states number of siblings with 'I've got + number + brothers/sisters' or 'I don't have any'",
             "hint_pt": "I've got two brothers.",
-            "hint_en": "I've got two brothers."
+            "hint_en": "I've got two brothers.",
+            "examples_pass": [
+              "I've got two brothers.",
+              "I have one sister.",
+              "I don't have any siblings."
+            ],
+            "examples_fail": [
+              "Two (bare number)",
+              "Brothers (bare noun)",
+              "Yes (no count given)"
+            ]
           },
           {
             "id": 3,
@@ -601,7 +701,17 @@
             "label_en": "Answer about marital status",
             "hidden_prompt": "user responds about marital status with 'Yes, I'm married', 'No, I'm not married', 'I'm single', or similar",
             "hint_pt": "I'm married.",
-            "hint_en": "I'm married."
+            "hint_en": "I'm married.",
+            "examples_pass": [
+              "I'm married.",
+              "Yes, I'm married.",
+              "No, I'm single."
+            ],
+            "examples_fail": [
+              "Married (bare adjective)",
+              "Yes (no status structure)",
+              "Wife (off-intent)"
+            ]
           },
           {
             "id": 2,
@@ -609,7 +719,17 @@
             "label_en": "Say if you have children",
             "hidden_prompt": "user states if they have children with 'I've got + number + sons/daughters/children' or 'I don't have children' or 'no kids'",
             "hint_pt": "I've got two sons.",
-            "hint_en": "I've got two sons."
+            "hint_en": "I've got two sons.",
+            "examples_pass": [
+              "I've got two sons.",
+              "I have one daughter.",
+              "I don't have kids."
+            ],
+            "examples_fail": [
+              "Two (bare number)",
+              "Sons (bare noun)",
+              "Yes (no count given)"
+            ]
           },
           {
             "id": 3,
@@ -652,7 +772,17 @@
             "label_en": "Answer about marital status",
             "hidden_prompt": "user responds about marital status with 'I'm married', 'I'm single', or similar",
             "hint_pt": "I'm married.",
-            "hint_en": "I'm married."
+            "hint_en": "I'm married.",
+            "examples_pass": [
+              "I'm married.",
+              "Yes, married.",
+              "I'm single."
+            ],
+            "examples_fail": [
+              "Married (bare adjective)",
+              "Yes (no status structure)",
+              "Wife (off-intent)"
+            ]
           },
           {
             "id": 2,
@@ -660,7 +790,17 @@
             "label_en": "Talk about kids (or that you have none)",
             "hidden_prompt": "user mentions children with 'I've got + sons/daughters' or 'I don't have children' or 'no kids'",
             "hint_pt": "I've got one daughter.",
-            "hint_en": "I've got one daughter."
+            "hint_en": "I've got one daughter.",
+            "examples_pass": [
+              "I've got one daughter.",
+              "I have two sons.",
+              "No kids."
+            ],
+            "examples_fail": [
+              "One (bare number)",
+              "Daughter (bare noun)",
+              "Yes (no count given)"
+            ]
           },
           {
             "id": 3,
@@ -824,7 +964,17 @@
             "label_en": "Say your best friend's name",
             "hidden_prompt": "user states best friend's name with 'My best friend is + name', 'His/Her name is + name', or 'It's + name'",
             "hint_pt": "My best friend is Ana.",
-            "hint_en": "My best friend is Ana."
+            "hint_en": "My best friend is Ana.",
+            "examples_pass": [
+              "My best friend is Ana.",
+              "Her name is Sofia.",
+              "His name is Pedro."
+            ],
+            "examples_fail": [
+              "Ana (bare name)",
+              "Best friend (no name)",
+              "Friend (no name or possessive)"
+            ]
           },
           {
             "id": 2,
@@ -832,7 +982,17 @@
             "label_en": "Say your friend's age",
             "hidden_prompt": "user states friend's age with 'He/She is + number + years old' or just 'He/She is + number'",
             "hint_pt": "She is twenty-five.",
-            "hint_en": "She is twenty-five."
+            "hint_en": "She is twenty-five.",
+            "examples_pass": [
+              "She is twenty-five.",
+              "He is 30 years old.",
+              "She is 25."
+            ],
+            "examples_fail": [
+              "Twenty-five (bare number)",
+              "Years old (no number)",
+              "I'm 25 (wrong subject)"
+            ]
           },
           {
             "id": 3,
@@ -840,7 +1000,17 @@
             "label_en": "Say your friend's nationality or origin",
             "hidden_prompt": "user states friend's nationality or origin with 'He/She is + nationality' or 'He/She is from + country'",
             "hint_pt": "She is Brazilian.",
-            "hint_en": "She is Brazilian."
+            "hint_en": "She is Brazilian.",
+            "examples_pass": [
+              "She is Brazilian.",
+              "He is from Italy.",
+              "She is American."
+            ],
+            "examples_fail": [
+              "Brazilian (bare adjective)",
+              "Brazil (bare country)",
+              "I'm Brazilian (wrong subject)"
+            ]
           }
         ],
         "closing_cue": "Charlotte fecha com \"Sounds like a great friend!\" quando obj_3 baterem.",
@@ -865,7 +1035,17 @@
             "label_en": "Introduce your friend with their name",
             "hidden_prompt": "user introduces friend with 'My friend is + name' or 'His/Her name is + name'",
             "hint_pt": "Her name is Sofia.",
-            "hint_en": "Her name is Sofia."
+            "hint_en": "Her name is Sofia.",
+            "examples_pass": [
+              "Her name is Sofia.",
+              "My friend is Pedro.",
+              "His name is Tom."
+            ],
+            "examples_fail": [
+              "Sofia (bare name)",
+              "Friend (bare noun)",
+              "She is nice (no name structure)"
+            ]
           },
           {
             "id": 2,
@@ -873,7 +1053,17 @@
             "label_en": "Share friend's age or origin",
             "hidden_prompt": "user shares friend's age OR origin with 'She/He is + age/from country/nationality'",
             "hint_pt": "She is from Italy.",
-            "hint_en": "She is from Italy."
+            "hint_en": "She is from Italy.",
+            "examples_pass": [
+              "She is from Italy.",
+              "He is twenty-five.",
+              "She is Italian."
+            ],
+            "examples_fail": [
+              "Italy (bare country)",
+              "Twenty-five (bare number)",
+              "I'm from Italy (wrong subject)"
+            ]
           },
           {
             "id": 3,
@@ -1037,7 +1227,17 @@
             "label_en": "Introduce your mother",
             "hidden_prompt": "user introduces mother with 'My mother is + name/age/nationality' or 'Her name is + name'",
             "hint_pt": "My mother is fifty.",
-            "hint_en": "My mother is fifty."
+            "hint_en": "My mother is fifty.",
+            "examples_pass": [
+              "My mother is fifty.",
+              "My mom is Maria.",
+              "Her name is Ana."
+            ],
+            "examples_fail": [
+              "Mother (bare noun)",
+              "Fifty (bare number)",
+              "She is fifty (no 'my mother' or 'her name')"
+            ]
           },
           {
             "id": 2,
@@ -1045,7 +1245,17 @@
             "label_en": "Introduce your father",
             "hidden_prompt": "user introduces father with 'My father is + name/age/nationality'",
             "hint_pt": "My father is American.",
-            "hint_en": "My father is American."
+            "hint_en": "My father is American.",
+            "examples_pass": [
+              "My father is American.",
+              "My father is fifty-five.",
+              "My dad is John."
+            ],
+            "examples_fail": [
+              "Father (bare noun)",
+              "American (bare adjective)",
+              "He is American (no 'my father')"
+            ]
           },
           {
             "id": 3,
@@ -1053,7 +1263,17 @@
             "label_en": "Introduce one more family member or friend",
             "hidden_prompt": "user introduces another close person with 'My + brother/sister/son/daughter/friend/husband/wife + is + name/age/nationality/something' — any of these family/friend roles count",
             "hint_pt": "My sister is twenty. / My friend is from Italy.",
-            "hint_en": "My sister is twenty. / My friend is from Italy."
+            "hint_en": "My sister is twenty. / My friend is from Italy.",
+            "examples_pass": [
+              "My sister is twenty.",
+              "My friend is from Italy.",
+              "My husband is John."
+            ],
+            "examples_fail": [
+              "Sister (bare noun)",
+              "Twenty (bare number)",
+              "She is twenty (no possessive + family role)"
+            ]
           }
         ],
         "closing_cue": "Charlotte fecha com \"What a lovely family!\" quando obj_3 baterem.",
@@ -1078,7 +1298,17 @@
             "label_en": "Introduce your mother",
             "hidden_prompt": "user introduces mother with 'My mother is + name/age/nationality'",
             "hint_pt": "My mother is Maria.",
-            "hint_en": "My mother is Maria."
+            "hint_en": "My mother is Maria.",
+            "examples_pass": [
+              "My mother is Maria.",
+              "My mom is fifty.",
+              "My mother is Brazilian."
+            ],
+            "examples_fail": [
+              "Maria (bare name)",
+              "Mother (bare noun)",
+              "She is Maria (no 'my mother')"
+            ]
           },
           {
             "id": 2,
@@ -1086,7 +1316,17 @@
             "label_en": "Introduce your father",
             "hidden_prompt": "user introduces father with 'My father is + name/age/nationality'",
             "hint_pt": "My father is fifty-five.",
-            "hint_en": "My father is fifty-five."
+            "hint_en": "My father is fifty-five.",
+            "examples_pass": [
+              "My father is fifty-five.",
+              "My dad is John.",
+              "My father is American."
+            ],
+            "examples_fail": [
+              "Father (bare noun)",
+              "Fifty-five (bare number)",
+              "He is fifty-five (no 'my father')"
+            ]
           },
           {
             "id": 3,
@@ -1094,7 +1334,17 @@
             "label_en": "Introduce a brother, sister, or friend",
             "hidden_prompt": "user introduces another close person with 'My + brother/sister/friend + is + something'",
             "hint_pt": "My sister is fifteen.",
-            "hint_en": "My sister is fifteen."
+            "hint_en": "My sister is fifteen.",
+            "examples_pass": [
+              "My sister is fifteen.",
+              "My brother is twenty.",
+              "My friend is from Italy."
+            ],
+            "examples_fail": [
+              "Sister (bare noun)",
+              "Fifteen (bare number)",
+              "She is fifteen (no possessive + family role)"
+            ]
           }
         ],
         "closing_cue": "Charlotte encerra com \"Such a great family. Thanks for sharing.\" quando obj_3 baterem.",

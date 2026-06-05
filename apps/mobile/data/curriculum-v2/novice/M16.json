@@ -158,7 +158,17 @@
             "label_en": "Say where you went",
             "hidden_prompt": "user uses 'I went to + place'",
             "hint_pt": "I went to Rio.",
-            "hint_en": "I went to Rio."
+            "hint_en": "I went to Rio.",
+            "examples_pass": [
+              "I went to Rio.",
+              "I went to Rio, yes.",
+              "Yes, i went to rio."
+            ],
+            "examples_fail": [
+              "Rio (bare word — no subject + verb)",
+              "Yes (no structure)",
+              "I don't know (off-topic)"
+            ]
           },
           {
             "id": 2,
@@ -166,7 +176,17 @@
             "label_en": "Say what you saw/did/had",
             "hidden_prompt": "user uses 'I saw/did/had + something' (irregular past)",
             "hint_pt": "I saw the beach.",
-            "hint_en": "I saw the beach."
+            "hint_en": "I saw the beach.",
+            "examples_pass": [
+              "I saw the beach.",
+              "She works at a hospital.",
+              "He lives in São Paulo."
+            ],
+            "examples_fail": [
+              "Work (no subject + -s)",
+              "She work (missing -s)",
+              "Hospital (bare noun)"
+            ]
           },
           {
             "id": 3,
@@ -174,7 +194,17 @@
             "label_en": "Say who came/took with you",
             "hidden_prompt": "user uses 'I came with' or 'We took + transport'",
             "hint_pt": "I came with my family.",
-            "hint_en": "I came with my family."
+            "hint_en": "I came with my family.",
+            "examples_pass": [
+              "I came with my family.",
+              "I came with my family, yes.",
+              "Yes, i came with my family."
+            ],
+            "examples_fail": [
+              "family (bare word — no subject + verb)",
+              "Yes (no structure)",
+              "I don't know (off-topic)"
+            ]
           }
         ],
         "closing_cue": "Charlotte fecha com \"Sounds amazing!\" quando obj_3 baterem.",
@@ -199,7 +229,17 @@
             "label_en": "Say what you did",
             "hidden_prompt": "user uses past irregular 'I went/did/had/made/saw + ...'",
             "hint_pt": "I went to a concert.",
-            "hint_en": "I went to a concert."
+            "hint_en": "I went to a concert.",
+            "examples_pass": [
+              "I went to a concert.",
+              "I went to a concert, yes.",
+              "Yes, i went to a concert."
+            ],
+            "examples_fail": [
+              "concert (bare word — no subject + verb)",
+              "Yes (no structure)",
+              "I don't know (off-topic)"
+            ]
           },
           {
             "id": 2,
@@ -207,7 +247,17 @@
             "label_en": "Add detail",
             "hidden_prompt": "user adds detail with another irregular past verb",
             "hint_pt": "I saw my favorite band.",
-            "hint_en": "I saw my favorite band."
+            "hint_en": "I saw my favorite band.",
+            "examples_pass": [
+              "I saw my favorite band.",
+              "I saw my favorite band, yes.",
+              "Yes, i saw my favorite band."
+            ],
+            "examples_fail": [
+              "band (bare word — no subject + verb)",
+              "Yes (no structure)",
+              "I don't know (off-topic)"
+            ]
           },
           {
             "id": 3,
@@ -374,7 +424,17 @@
             "label_en": "Say what you ate",
             "hidden_prompt": "user uses 'I ate + food'",
             "hint_pt": "I ate pasta.",
-            "hint_en": "I ate pasta."
+            "hint_en": "I ate pasta.",
+            "examples_pass": [
+              "I ate pasta.",
+              "I ate pasta, yes.",
+              "Yes, i ate pasta."
+            ],
+            "examples_fail": [
+              "pasta (bare word — no subject + verb)",
+              "Yes (no structure)",
+              "I don't know (off-topic)"
+            ]
           },
           {
             "id": 2,
@@ -382,7 +442,17 @@
             "label_en": "Say what you drank",
             "hidden_prompt": "user uses 'I drank + drink'",
             "hint_pt": "I drank water.",
-            "hint_en": "I drank water."
+            "hint_en": "I drank water.",
+            "examples_pass": [
+              "I drank water.",
+              "I drank water, yes.",
+              "Yes, i drank water."
+            ],
+            "examples_fail": [
+              "water (bare word — no subject + verb)",
+              "Yes (no structure)",
+              "I don't know (off-topic)"
+            ]
           },
           {
             "id": 3,
@@ -390,7 +460,17 @@
             "label_en": "Say another irregular action",
             "hidden_prompt": "user uses another irregular past verb",
             "hint_pt": "I slept early.",
-            "hint_en": "I slept early."
+            "hint_en": "I slept early.",
+            "examples_pass": [
+              "I slept early.",
+              "I slept early, yes.",
+              "Yes, i slept early."
+            ],
+            "examples_fail": [
+              "early (bare word — no subject + verb)",
+              "Yes (no structure)",
+              "I don't know (off-topic)"
+            ]
           }
         ],
         "closing_cue": "Charlotte fecha com \"Nice details!\" quando obj_3 baterem.",
@@ -415,7 +495,17 @@
             "label_en": "Answer about sleep",
             "hidden_prompt": "user uses 'I slept + adverb/duration'",
             "hint_pt": "I slept eight hours.",
-            "hint_en": "I slept eight hours."
+            "hint_en": "I slept eight hours.",
+            "examples_pass": [
+              "I slept eight hours.",
+              "I slept eight hours, yes.",
+              "Yes, i slept eight hours."
+            ],
+            "examples_fail": [
+              "hours (bare word — no subject + verb)",
+              "Yes (no structure)",
+              "I don't know (off-topic)"
+            ]
           },
           {
             "id": 2,
@@ -423,7 +513,17 @@
             "label_en": "Say what you ate/drank earlier",
             "hidden_prompt": "user uses 'I ate/drank + food/drink'",
             "hint_pt": "I ate cereal.",
-            "hint_en": "I ate cereal."
+            "hint_en": "I ate cereal.",
+            "examples_pass": [
+              "I ate cereal.",
+              "I ate cereal, yes.",
+              "Yes, i ate cereal."
+            ],
+            "examples_fail": [
+              "cereal (bare word — no subject + verb)",
+              "Yes (no structure)",
+              "I don't know (off-topic)"
+            ]
           },
           {
             "id": 3,
@@ -587,7 +687,17 @@
             "label_en": "Say who you met",
             "hidden_prompt": "user uses 'I met + person/group'",
             "hint_pt": "I met an old friend.",
-            "hint_en": "I met an old friend."
+            "hint_en": "I met an old friend.",
+            "examples_pass": [
+              "I met an old friend.",
+              "I met an old friend, yes.",
+              "Yes, i met an old friend."
+            ],
+            "examples_fail": [
+              "friend (bare word — no subject + verb)",
+              "Yes (no structure)",
+              "I don't know (off-topic)"
+            ]
           },
           {
             "id": 2,
@@ -595,7 +705,17 @@
             "label_en": "Say what you did",
             "hidden_prompt": "user uses another irregular: 'We left/wrote/read/sent...'",
             "hint_pt": "We left at six.",
-            "hint_en": "We left at six."
+            "hint_en": "We left at six.",
+            "examples_pass": [
+              "We left at six.",
+              "We left at six, yes.",
+              "Yes, we left at six."
+            ],
+            "examples_fail": [
+              "six (bare word — no subject + verb)",
+              "Yes (no structure)",
+              "I don't know (off-topic)"
+            ]
           },
           {
             "id": 3,
@@ -603,7 +723,17 @@
             "label_en": "One more detail",
             "hidden_prompt": "user uses one more irregular past verb",
             "hint_pt": "I sent her a message after.",
-            "hint_en": "I sent her a message after."
+            "hint_en": "I sent her a message after.",
+            "examples_pass": [
+              "I sent her a message after.",
+              "Pizza is better than salad.",
+              "My house is bigger than yours."
+            ],
+            "examples_fail": [
+              "Better (bare adjective)",
+              "Pizza salad (no comparison structure)",
+              "Big (no -er/than)"
+            ]
           }
         ],
         "closing_cue": "Charlotte fecha com \"Great story!\" quando obj_3 baterem.",
@@ -628,7 +758,17 @@
             "label_en": "Say what you read",
             "hidden_prompt": "user uses 'I read + book/article'",
             "hint_pt": "I read a novel.",
-            "hint_en": "I read a novel."
+            "hint_en": "I read a novel.",
+            "examples_pass": [
+              "I read a novel.",
+              "I read a novel, yes.",
+              "Yes, i read a novel."
+            ],
+            "examples_fail": [
+              "novel (bare word — no subject + verb)",
+              "Yes (no structure)",
+              "I don't know (off-topic)"
+            ]
           },
           {
             "id": 2,
@@ -636,7 +776,17 @@
             "label_en": "Another social action",
             "hidden_prompt": "user uses another irregular: met/sent/wrote/etc.",
             "hint_pt": "I met my classmates.",
-            "hint_en": "I met my classmates."
+            "hint_en": "I met my classmates.",
+            "examples_pass": [
+              "I met my classmates.",
+              "I met my classmates, yes.",
+              "Yes, i met my classmates."
+            ],
+            "examples_fail": [
+              "classmates (bare word — no subject + verb)",
+              "Yes (no structure)",
+              "I don't know (off-topic)"
+            ]
           },
           {
             "id": 3,
@@ -803,7 +953,17 @@
             "label_en": "Say where you put something",
             "hidden_prompt": "user uses 'I put + object + place'",
             "hint_pt": "I put my keys on the table.",
-            "hint_en": "I put my keys on the table."
+            "hint_en": "I put my keys on the table.",
+            "examples_pass": [
+              "I put my keys on the table.",
+              "I put my keys on the table, yes.",
+              "Yes, i put my keys on the table."
+            ],
+            "examples_fail": [
+              "table (bare word — no subject + verb)",
+              "Yes (no structure)",
+              "I don't know (off-topic)"
+            ]
           },
           {
             "id": 2,
@@ -811,7 +971,17 @@
             "label_en": "Say something you cut",
             "hidden_prompt": "user uses 'I cut + object'",
             "hint_pt": "I cut some bread.",
-            "hint_en": "I cut some bread."
+            "hint_en": "I cut some bread.",
+            "examples_pass": [
+              "I cut some bread.",
+              "I cut some bread, yes.",
+              "Yes, i cut some bread."
+            ],
+            "examples_fail": [
+              "bread (bare word — no subject + verb)",
+              "Yes (no structure)",
+              "I don't know (off-topic)"
+            ]
           },
           {
             "id": 3,
@@ -819,7 +989,17 @@
             "label_en": "Say what you read",
             "hidden_prompt": "user uses 'I read + book/article'",
             "hint_pt": "I read a book.",
-            "hint_en": "I read a book."
+            "hint_en": "I read a book.",
+            "examples_pass": [
+              "I read a book.",
+              "I read a book, yes.",
+              "Yes, i read a book."
+            ],
+            "examples_fail": [
+              "book (bare word — no subject + verb)",
+              "Yes (no structure)",
+              "I don't know (off-topic)"
+            ]
           }
         ],
         "closing_cue": "Charlotte fecha com \"Unchanged verbs locked!\" quando obj_3 baterem.",
@@ -844,7 +1024,17 @@
             "label_en": "Say what you read",
             "hidden_prompt": "user uses 'I read + something'",
             "hint_pt": "I read the news.",
-            "hint_en": "I read the news."
+            "hint_en": "I read the news.",
+            "examples_pass": [
+              "I read the news.",
+              "She works at a hospital.",
+              "He lives in São Paulo."
+            ],
+            "examples_fail": [
+              "Work (no subject + -s)",
+              "She work (missing -s)",
+              "Hospital (bare noun)"
+            ]
           },
           {
             "id": 2,
@@ -852,7 +1042,17 @@
             "label_en": "Say where you put something",
             "hidden_prompt": "user uses 'I put + object + place'",
             "hint_pt": "I put my bag in the car.",
-            "hint_en": "I put my bag in the car."
+            "hint_en": "I put my bag in the car.",
+            "examples_pass": [
+              "I put my bag in the car.",
+              "I put my bag in the car, yes.",
+              "Yes, i put my bag in the car."
+            ],
+            "examples_fail": [
+              "car (bare word — no subject + verb)",
+              "Yes (no structure)",
+              "I don't know (off-topic)"
+            ]
           },
           {
             "id": 3,
@@ -1016,7 +1216,17 @@
             "label_en": "Start with 'I went to'",
             "hidden_prompt": "user starts with 'I went to + place'",
             "hint_pt": "I went to the gym.",
-            "hint_en": "I went to the gym."
+            "hint_en": "I went to the gym.",
+            "examples_pass": [
+              "I went to the gym.",
+              "I went to the gym, yes.",
+              "Yes, i went to the gym."
+            ],
+            "examples_fail": [
+              "gym (bare word — no subject + verb)",
+              "Yes (no structure)",
+              "I don't know (off-topic)"
+            ]
           },
           {
             "id": 2,
@@ -1024,7 +1234,17 @@
             "label_en": "Continue with another irregular",
             "hidden_prompt": "user uses another irregular past verb (saw/met/had/bought/etc.)",
             "hint_pt": "I saw my friend there.",
-            "hint_en": "I saw my friend there."
+            "hint_en": "I saw my friend there.",
+            "examples_pass": [
+              "I saw my friend there.",
+              "I saw my friend there, yes.",
+              "Yes, i saw my friend there."
+            ],
+            "examples_fail": [
+              "there (bare word — no subject + verb)",
+              "Yes (no structure)",
+              "I don't know (off-topic)"
+            ]
           },
           {
             "id": 3,
@@ -1032,7 +1252,17 @@
             "label_en": "Close with another action",
             "hidden_prompt": "user uses one more irregular past",
             "hint_pt": "We had coffee after.",
-            "hint_en": "We had coffee after."
+            "hint_en": "We had coffee after.",
+            "examples_pass": [
+              "We had coffee after.",
+              "Pizza is better than salad.",
+              "My house is bigger than yours."
+            ],
+            "examples_fail": [
+              "Better (bare adjective)",
+              "Pizza salad (no comparison structure)",
+              "Big (no -er/than)"
+            ]
           }
         ],
         "closing_cue": "Charlotte fecha com \"Loved the story!\" quando obj_3 baterem.",
@@ -1057,7 +1287,17 @@
             "label_en": "Start the story",
             "hidden_prompt": "user starts with 'I went/had/made + something'",
             "hint_pt": "I went to Italy.",
-            "hint_en": "I went to Italy."
+            "hint_en": "I went to Italy.",
+            "examples_pass": [
+              "I went to Italy.",
+              "She works at a hospital.",
+              "He lives in São Paulo."
+            ],
+            "examples_fail": [
+              "Work (no subject + -s)",
+              "She work (missing -s)",
+              "Hospital (bare noun)"
+            ]
           },
           {
             "id": 2,
@@ -1065,7 +1305,17 @@
             "label_en": "Continue with details",
             "hidden_prompt": "user adds details with irregular past verbs",
             "hint_pt": "I ate amazing food.",
-            "hint_en": "I ate amazing food."
+            "hint_en": "I ate amazing food.",
+            "examples_pass": [
+              "I ate amazing food.",
+              "I ate amazing food, yes.",
+              "Yes, i ate amazing food."
+            ],
+            "examples_fail": [
+              "food (bare word — no subject + verb)",
+              "Yes (no structure)",
+              "I don't know (off-topic)"
+            ]
           },
           {
             "id": 3,

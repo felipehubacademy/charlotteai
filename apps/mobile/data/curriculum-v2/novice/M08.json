@@ -161,7 +161,17 @@
             "label_en": "Say something you love",
             "hidden_prompt": "user states love with 'I love + noun' (food, music, place, person, activity)",
             "hint_pt": "I love coffee.",
-            "hint_en": "I love coffee."
+            "hint_en": "I love coffee.",
+            "examples_pass": [
+              "I love coffee.",
+              "I love pizza.",
+              "My favorite food is sushi."
+            ],
+            "examples_fail": [
+              "Pizza (bare noun)",
+              "Like (incomplete)",
+              "Yes (no preference structure)"
+            ]
           },
           {
             "id": 2,
@@ -169,7 +179,17 @@
             "label_en": "Say something you hate",
             "hidden_prompt": "user states dislike with 'I hate + noun'",
             "hint_pt": "I hate Mondays.",
-            "hint_en": "I hate Mondays."
+            "hint_en": "I hate Mondays.",
+            "examples_pass": [
+              "I hate Mondays.",
+              "I love pizza.",
+              "My favorite food is sushi."
+            ],
+            "examples_fail": [
+              "Pizza (bare noun)",
+              "Like (incomplete)",
+              "Yes (no preference structure)"
+            ]
           },
           {
             "id": 3,
@@ -177,7 +197,17 @@
             "label_en": "Say what a family member likes",
             "hidden_prompt": "user states 3rd person preference with 'He/She/My + person + likes/loves/hates + noun' (3rd person -s)",
             "hint_pt": "My sister loves dogs.",
-            "hint_en": "My sister loves dogs."
+            "hint_en": "My sister loves dogs.",
+            "examples_pass": [
+              "My sister loves dogs.",
+              "I love pizza.",
+              "My favorite food is sushi."
+            ],
+            "examples_fail": [
+              "Pizza (bare noun)",
+              "Like (incomplete)",
+              "Yes (no preference structure)"
+            ]
           }
         ],
         "closing_cue": "Charlotte fecha com \"Interesting tastes!\" quando obj_3 baterem.",
@@ -202,7 +232,17 @@
             "label_en": "Say what you love",
             "hidden_prompt": "user says 'I love + noun'",
             "hint_pt": "I love pizza.",
-            "hint_en": "I love pizza."
+            "hint_en": "I love pizza.",
+            "examples_pass": [
+              "I love pizza.",
+              "I love pizza.",
+              "My favorite food is sushi."
+            ],
+            "examples_fail": [
+              "Pizza (bare noun)",
+              "Like (incomplete)",
+              "Yes (no preference structure)"
+            ]
           },
           {
             "id": 2,
@@ -210,7 +250,17 @@
             "label_en": "Say what you hate",
             "hidden_prompt": "user says 'I hate + noun'",
             "hint_pt": "I hate traffic.",
-            "hint_en": "I hate traffic."
+            "hint_en": "I hate traffic.",
+            "examples_pass": [
+              "I hate traffic.",
+              "I love pizza.",
+              "My favorite food is sushi."
+            ],
+            "examples_fail": [
+              "Pizza (bare noun)",
+              "Like (incomplete)",
+              "Yes (no preference structure)"
+            ]
           },
           {
             "id": 3,
@@ -376,7 +426,17 @@
             "label_en": "Say an activity you love",
             "hidden_prompt": "user states activity with 'I love + verb-ing' (reading, cooking, dancing, etc.)",
             "hint_pt": "I love reading.",
-            "hint_en": "I love reading."
+            "hint_en": "I love reading.",
+            "examples_pass": [
+              "I love reading.",
+              "I love pizza.",
+              "My favorite food is sushi."
+            ],
+            "examples_fail": [
+              "Pizza (bare noun)",
+              "Like (incomplete)",
+              "Yes (no preference structure)"
+            ]
           },
           {
             "id": 2,
@@ -384,7 +444,17 @@
             "label_en": "Say an activity you hate",
             "hidden_prompt": "user states 'I hate + verb-ing'",
             "hint_pt": "I hate waking up early.",
-            "hint_en": "I hate waking up early."
+            "hint_en": "I hate waking up early.",
+            "examples_pass": [
+              "I hate waking up early.",
+              "I love pizza.",
+              "My favorite food is sushi."
+            ],
+            "examples_fail": [
+              "Pizza (bare noun)",
+              "Like (incomplete)",
+              "Yes (no preference structure)"
+            ]
           },
           {
             "id": 3,
@@ -392,7 +462,17 @@
             "label_en": "Say a family member's favorite activity",
             "hidden_prompt": "user states 3rd person with 'He/She likes/loves + verb-ing'",
             "hint_pt": "My brother loves playing soccer.",
-            "hint_en": "My brother loves playing soccer."
+            "hint_en": "My brother loves playing soccer.",
+            "examples_pass": [
+              "My brother loves playing soccer.",
+              "I love pizza.",
+              "My favorite food is sushi."
+            ],
+            "examples_fail": [
+              "Pizza (bare noun)",
+              "Like (incomplete)",
+              "Yes (no preference structure)"
+            ]
           }
         ],
         "closing_cue": "Charlotte fecha com \"Cool hobbies!\" quando obj_3 baterem.",
@@ -417,7 +497,17 @@
             "label_en": "Say an activity you love",
             "hidden_prompt": "user says 'I love + verb-ing'",
             "hint_pt": "I love cooking.",
-            "hint_en": "I love cooking."
+            "hint_en": "I love cooking.",
+            "examples_pass": [
+              "I love cooking.",
+              "I love pizza.",
+              "My favorite food is sushi."
+            ],
+            "examples_fail": [
+              "Pizza (bare noun)",
+              "Like (incomplete)",
+              "Yes (no preference structure)"
+            ]
           },
           {
             "id": 2,
@@ -425,7 +515,17 @@
             "label_en": "Say another activity you like",
             "hidden_prompt": "user says 'I like + verb-ing'",
             "hint_pt": "I like dancing.",
-            "hint_en": "I like dancing."
+            "hint_en": "I like dancing.",
+            "examples_pass": [
+              "I like dancing.",
+              "I love pizza.",
+              "My favorite food is sushi."
+            ],
+            "examples_fail": [
+              "Pizza (bare noun)",
+              "Like (incomplete)",
+              "Yes (no preference structure)"
+            ]
           },
           {
             "id": 3,
@@ -594,7 +694,17 @@
             "label_en": "Say you love someone (using him/her)",
             "hidden_prompt": "user states 'I love him' or 'I love her' referring to a person",
             "hint_pt": "I love her.",
-            "hint_en": "I love her."
+            "hint_en": "I love her.",
+            "examples_pass": [
+              "I love her.",
+              "I love pizza.",
+              "My favorite food is sushi."
+            ],
+            "examples_fail": [
+              "Pizza (bare noun)",
+              "Like (incomplete)",
+              "Yes (no preference structure)"
+            ]
           },
           {
             "id": 2,
@@ -602,7 +712,17 @@
             "label_en": "Say someone calls or visits you",
             "hidden_prompt": "user states 'She/He calls me' or 'visits me' or 'helps me' — using 'me' as object",
             "hint_pt": "She calls me every day.",
-            "hint_en": "She calls me every day."
+            "hint_en": "She calls me every day.",
+            "examples_pass": [
+              "She calls me every day.",
+              "She works at a hospital.",
+              "He lives in São Paulo."
+            ],
+            "examples_fail": [
+              "Work (no subject + -s)",
+              "She work (missing -s)",
+              "Hospital (bare noun)"
+            ]
           },
           {
             "id": 3,
@@ -610,7 +730,17 @@
             "label_en": "Say you see someone together (using them)",
             "hidden_prompt": "user states 'We see them' or 'We visit them' using 'them' as object",
             "hint_pt": "We see them on Sundays.",
-            "hint_en": "We see them on Sundays."
+            "hint_en": "We see them on Sundays.",
+            "examples_pass": [
+              "We see them on Sundays.",
+              "We see them on Sundays, yes.",
+              "Yes, we see them on sundays."
+            ],
+            "examples_fail": [
+              "Sundays (bare word — no subject + verb)",
+              "Yes (no structure)",
+              "I don't know (off-topic)"
+            ]
           }
         ],
         "closing_cue": "Charlotte fecha com \"Sweet connections!\" quando obj_3 baterem.",
@@ -635,7 +765,17 @@
             "label_en": "Say you love him/her",
             "hidden_prompt": "user says 'I love him' or 'I love her'",
             "hint_pt": "I love him.",
-            "hint_en": "I love him."
+            "hint_en": "I love him.",
+            "examples_pass": [
+              "I love him.",
+              "I love pizza.",
+              "My favorite food is sushi."
+            ],
+            "examples_fail": [
+              "Pizza (bare noun)",
+              "Like (incomplete)",
+              "Yes (no preference structure)"
+            ]
           },
           {
             "id": 2,
@@ -643,7 +783,17 @@
             "label_en": "Say someone does something for you",
             "hidden_prompt": "user says 'She/He + verb + me' (calls me, helps me, visits me)",
             "hint_pt": "He helps me a lot.",
-            "hint_en": "He helps me a lot."
+            "hint_en": "He helps me a lot.",
+            "examples_pass": [
+              "He helps me a lot.",
+              "She works at a hospital.",
+              "He lives in São Paulo."
+            ],
+            "examples_fail": [
+              "Work (no subject + -s)",
+              "She work (missing -s)",
+              "Hospital (bare noun)"
+            ]
           },
           {
             "id": 3,
@@ -815,7 +965,17 @@
             "label_en": "Say a music genre you love",
             "hidden_prompt": "user states music preference with 'I love + genre + music' (pop, rock, classical, jazz, etc.)",
             "hint_pt": "I love pop music.",
-            "hint_en": "I love pop music."
+            "hint_en": "I love pop music.",
+            "examples_pass": [
+              "I love pop music.",
+              "I love pizza.",
+              "My favorite food is sushi."
+            ],
+            "examples_fail": [
+              "Pizza (bare noun)",
+              "Like (incomplete)",
+              "Yes (no preference structure)"
+            ]
           },
           {
             "id": 2,
@@ -823,7 +983,17 @@
             "label_en": "Say a movie genre you like",
             "hidden_prompt": "user states movie preference with 'I like + genre + movies' (action, comedy, horror, etc.)",
             "hint_pt": "I like action movies.",
-            "hint_en": "I like action movies."
+            "hint_en": "I like action movies.",
+            "examples_pass": [
+              "I like action movies.",
+              "I love pizza.",
+              "My favorite food is sushi."
+            ],
+            "examples_fail": [
+              "Pizza (bare noun)",
+              "Like (incomplete)",
+              "Yes (no preference structure)"
+            ]
           },
           {
             "id": 3,
@@ -831,7 +1001,17 @@
             "label_en": "Say a cultural thing you hate",
             "hidden_prompt": "user states cultural dislike with 'I hate + noun' (horror movies, slow songs, etc.)",
             "hint_pt": "I hate horror movies.",
-            "hint_en": "I hate horror movies."
+            "hint_en": "I hate horror movies.",
+            "examples_pass": [
+              "I hate horror movies.",
+              "I love pizza.",
+              "My favorite food is sushi."
+            ],
+            "examples_fail": [
+              "Pizza (bare noun)",
+              "Like (incomplete)",
+              "Yes (no preference structure)"
+            ]
           }
         ],
         "closing_cue": "Charlotte fecha com \"Cool tastes!\" quando obj_3 baterem.",
@@ -856,7 +1036,17 @@
             "label_en": "Say music preference",
             "hidden_prompt": "user states music with 'I love/like + genre + music'",
             "hint_pt": "I love rock music.",
-            "hint_en": "I love rock music."
+            "hint_en": "I love rock music.",
+            "examples_pass": [
+              "I love rock music.",
+              "I love pizza.",
+              "My favorite food is sushi."
+            ],
+            "examples_fail": [
+              "Pizza (bare noun)",
+              "Like (incomplete)",
+              "Yes (no preference structure)"
+            ]
           },
           {
             "id": 2,
@@ -864,7 +1054,17 @@
             "label_en": "Say movie or book preference",
             "hidden_prompt": "user states 'I like/love + genre + movies/books'",
             "hint_pt": "I love comedy movies.",
-            "hint_en": "I love comedy movies."
+            "hint_en": "I love comedy movies.",
+            "examples_pass": [
+              "I love comedy movies.",
+              "I love pizza.",
+              "My favorite food is sushi."
+            ],
+            "examples_fail": [
+              "Pizza (bare noun)",
+              "Like (incomplete)",
+              "Yes (no preference structure)"
+            ]
           },
           {
             "id": 3,
@@ -1028,7 +1228,17 @@
             "label_en": "Say a preference (X over Y)",
             "hidden_prompt": "user states preference with 'I prefer + X' or 'I prefer X over/to Y'",
             "hint_pt": "I prefer tea over coffee.",
-            "hint_en": "I prefer tea over coffee."
+            "hint_en": "I prefer tea over coffee.",
+            "examples_pass": [
+              "I prefer tea over coffee.",
+              "I prefer tea over coffee, yes.",
+              "Yes, i prefer tea over coffee."
+            ],
+            "examples_fail": [
+              "coffee (bare word — no subject + verb)",
+              "Yes (no structure)",
+              "I don't know (off-topic)"
+            ]
           },
           {
             "id": 2,
@@ -1036,7 +1246,17 @@
             "label_en": "Say another preference (activity)",
             "hidden_prompt": "user states preference with 'I prefer + verb-ing'",
             "hint_pt": "I prefer walking.",
-            "hint_en": "I prefer walking."
+            "hint_en": "I prefer walking.",
+            "examples_pass": [
+              "I prefer walking.",
+              "I prefer walking, yes.",
+              "Yes, i prefer walking."
+            ],
+            "examples_fail": [
+              "walking (bare word — no subject + verb)",
+              "Yes (no structure)",
+              "I don't know (off-topic)"
+            ]
           },
           {
             "id": 3,
@@ -1044,7 +1264,17 @@
             "label_en": "Say a family member's preference",
             "hidden_prompt": "user states 'He/She prefers + X' (3rd person -s)",
             "hint_pt": "My sister prefers coffee.",
-            "hint_en": "My sister prefers coffee."
+            "hint_en": "My sister prefers coffee.",
+            "examples_pass": [
+              "My sister prefers coffee.",
+              "She works at a hospital.",
+              "He lives in São Paulo."
+            ],
+            "examples_fail": [
+              "Work (no subject + -s)",
+              "She work (missing -s)",
+              "Hospital (bare noun)"
+            ]
           }
         ],
         "closing_cue": "Charlotte fecha com \"Clear preferences!\" quando obj_3 baterem.",
@@ -1069,7 +1299,17 @@
             "label_en": "Say a strong preference",
             "hidden_prompt": "user says 'I prefer + noun' or 'I prefer + verb-ing'",
             "hint_pt": "I prefer the beach.",
-            "hint_en": "I prefer the beach."
+            "hint_en": "I prefer the beach.",
+            "examples_pass": [
+              "I prefer the beach.",
+              "I prefer the beach, yes.",
+              "Yes, i prefer the beach."
+            ],
+            "examples_fail": [
+              "beach (bare word — no subject + verb)",
+              "Yes (no structure)",
+              "I don't know (off-topic)"
+            ]
           },
           {
             "id": 2,
@@ -1077,7 +1317,17 @@
             "label_en": "Say a preferred activity",
             "hidden_prompt": "user says 'I prefer + verb-ing'",
             "hint_pt": "I prefer swimming.",
-            "hint_en": "I prefer swimming."
+            "hint_en": "I prefer swimming.",
+            "examples_pass": [
+              "I prefer swimming.",
+              "I prefer swimming, yes.",
+              "Yes, i prefer swimming."
+            ],
+            "examples_fail": [
+              "swimming (bare word — no subject + verb)",
+              "Yes (no structure)",
+              "I don't know (off-topic)"
+            ]
           },
           {
             "id": 3,

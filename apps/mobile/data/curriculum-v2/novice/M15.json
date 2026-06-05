@@ -158,7 +158,17 @@
             "label_en": "Say one thing you did",
             "hidden_prompt": "user states past action with 'I + verb-ed' (worked, played, watched, etc.)",
             "hint_pt": "I worked yesterday.",
-            "hint_en": "I worked yesterday."
+            "hint_en": "I worked yesterday.",
+            "examples_pass": [
+              "I worked yesterday.",
+              "I had pizza for lunch.",
+              "Yesterday I ate a sandwich."
+            ],
+            "examples_fail": [
+              "Pizza (bare noun)",
+              "I eat pizza (wrong tense — present)",
+              "Yesterday (no verb)"
+            ]
           },
           {
             "id": 2,
@@ -166,7 +176,17 @@
             "label_en": "Say another action",
             "hidden_prompt": "user says another 'I + verb-ed'",
             "hint_pt": "I watched a movie.",
-            "hint_en": "I watched a movie."
+            "hint_en": "I watched a movie.",
+            "examples_pass": [
+              "I watched a movie.",
+              "Yesterday I worked all day.",
+              "I watched TV last night."
+            ],
+            "examples_fail": [
+              "Yesterday (no verb)",
+              "I work yesterday (wrong tense — present)",
+              "Work (bare verb, no past)"
+            ]
           },
           {
             "id": 3,
@@ -174,7 +194,17 @@
             "label_en": "Say what someone else did",
             "hidden_prompt": "user says 'He/She + verb-ed' (no -s in past)",
             "hint_pt": "She studied for hours.",
-            "hint_en": "She studied for hours."
+            "hint_en": "She studied for hours.",
+            "examples_pass": [
+              "She studied for hours.",
+              "Yesterday I worked all day.",
+              "I watched TV last night."
+            ],
+            "examples_fail": [
+              "Yesterday (no verb)",
+              "I work yesterday (wrong tense — present)",
+              "Work (bare verb, no past)"
+            ]
           }
         ],
         "closing_cue": "Charlotte fecha com \"Productive day!\" quando obj_3 baterem.",
@@ -199,7 +229,17 @@
             "label_en": "First action",
             "hidden_prompt": "user states 'I + verb-ed'",
             "hint_pt": "I worked.",
-            "hint_en": "I worked."
+            "hint_en": "I worked.",
+            "examples_pass": [
+              "I worked.",
+              "I had pizza for lunch.",
+              "Yesterday I ate a sandwich."
+            ],
+            "examples_fail": [
+              "Pizza (bare noun)",
+              "I eat pizza (wrong tense — present)",
+              "Yesterday (no verb)"
+            ]
           },
           {
             "id": 2,
@@ -207,7 +247,17 @@
             "label_en": "Second action",
             "hidden_prompt": "user states another 'I + verb-ed'",
             "hint_pt": "I called my sister.",
-            "hint_en": "I called my sister."
+            "hint_en": "I called my sister.",
+            "examples_pass": [
+              "I called my sister.",
+              "I had pizza for lunch.",
+              "Yesterday I ate a sandwich."
+            ],
+            "examples_fail": [
+              "Pizza (bare noun)",
+              "I eat pizza (wrong tense — present)",
+              "Yesterday (no verb)"
+            ]
           },
           {
             "id": 3,
@@ -371,7 +421,17 @@
             "label_en": "Use verb with -e (+d)",
             "hidden_prompt": "user uses verb ending in -e: 'I arrived/closed/lived/liked + ...'",
             "hint_pt": "I arrived late.",
-            "hint_en": "I arrived late."
+            "hint_en": "I arrived late.",
+            "examples_pass": [
+              "I arrived late.",
+              "I love pizza.",
+              "My favorite food is sushi."
+            ],
+            "examples_fail": [
+              "Pizza (bare noun)",
+              "Like (incomplete)",
+              "Yes (no preference structure)"
+            ]
           },
           {
             "id": 2,
@@ -379,7 +439,17 @@
             "label_en": "Use double-consonant verb",
             "hidden_prompt": "user uses doubled consonant verb: 'I stopped/planned + ...'",
             "hint_pt": "I stopped at the store.",
-            "hint_en": "I stopped at the store."
+            "hint_en": "I stopped at the store.",
+            "examples_pass": [
+              "I stopped at the store.",
+              "I stopped at the store, yes.",
+              "Yes, i stopped at the store."
+            ],
+            "examples_fail": [
+              "store (bare word — no subject + verb)",
+              "Yes (no structure)",
+              "I don't know (off-topic)"
+            ]
           },
           {
             "id": 3,
@@ -387,7 +457,17 @@
             "label_en": "Use y→ied verb",
             "hidden_prompt": "user uses y→ied verb: 'I tried/cried/studied + ...'",
             "hint_pt": "I tried a new dish.",
-            "hint_en": "I tried a new dish."
+            "hint_en": "I tried a new dish.",
+            "examples_pass": [
+              "I tried a new dish.",
+              "I tried a new dish, yes.",
+              "Yes, i tried a new dish."
+            ],
+            "examples_fail": [
+              "dish (bare word — no subject + verb)",
+              "Yes (no structure)",
+              "I don't know (off-topic)"
+            ]
           }
         ],
         "closing_cue": "Charlotte fecha com \"All spelling tricks covered!\" quando obj_3 baterem.",
@@ -412,7 +492,17 @@
             "label_en": "Say what you tried",
             "hidden_prompt": "user says 'I tried + noun'",
             "hint_pt": "I tried sushi.",
-            "hint_en": "I tried sushi."
+            "hint_en": "I tried sushi.",
+            "examples_pass": [
+              "I tried sushi.",
+              "I tried sushi, yes.",
+              "Yes, i tried sushi."
+            ],
+            "examples_fail": [
+              "sushi (bare word — no subject + verb)",
+              "Yes (no structure)",
+              "I don't know (off-topic)"
+            ]
           },
           {
             "id": 2,
@@ -420,7 +510,17 @@
             "label_en": "Say where you stopped/planned",
             "hidden_prompt": "user uses 'I stopped/planned + ...'",
             "hint_pt": "I stopped at the market.",
-            "hint_en": "I stopped at the market."
+            "hint_en": "I stopped at the market.",
+            "examples_pass": [
+              "I stopped at the market.",
+              "I stopped at the market, yes.",
+              "Yes, i stopped at the market."
+            ],
+            "examples_fail": [
+              "market (bare word — no subject + verb)",
+              "Yes (no structure)",
+              "I don't know (off-topic)"
+            ]
           },
           {
             "id": 3,
@@ -584,7 +684,17 @@
             "label_en": "Say action + yesterday",
             "hidden_prompt": "user uses 'I + verb-ed + yesterday'",
             "hint_pt": "I visited my friend yesterday.",
-            "hint_en": "I visited my friend yesterday."
+            "hint_en": "I visited my friend yesterday.",
+            "examples_pass": [
+              "I visited my friend yesterday.",
+              "Yesterday I worked all day.",
+              "I watched TV last night."
+            ],
+            "examples_fail": [
+              "Yesterday (no verb)",
+              "I work yesterday (wrong tense — present)",
+              "Work (bare verb, no past)"
+            ]
           },
           {
             "id": 2,
@@ -592,7 +702,17 @@
             "label_en": "Say action + last week",
             "hidden_prompt": "user uses 'I + verb-ed + last week/month'",
             "hint_pt": "I traveled last week.",
-            "hint_en": "I traveled last week."
+            "hint_en": "I traveled last week.",
+            "examples_pass": [
+              "I traveled last week.",
+              "Yesterday I worked all day.",
+              "I watched TV last night."
+            ],
+            "examples_fail": [
+              "Yesterday (no verb)",
+              "I work yesterday (wrong tense — present)",
+              "Work (bare verb, no past)"
+            ]
           },
           {
             "id": 3,
@@ -600,7 +720,17 @@
             "label_en": "Say action + ago",
             "hidden_prompt": "user uses 'I + verb-ed + X ago'",
             "hint_pt": "I called her two days ago.",
-            "hint_en": "I called her two days ago."
+            "hint_en": "I called her two days ago.",
+            "examples_pass": [
+              "I called her two days ago.",
+              "Yesterday I worked all day.",
+              "I watched TV last night."
+            ],
+            "examples_fail": [
+              "Yesterday (no verb)",
+              "I work yesterday (wrong tense — present)",
+              "Work (bare verb, no past)"
+            ]
           }
         ],
         "closing_cue": "Charlotte fecha com \"Time-anchored!\" quando obj_3 baterem.",
@@ -625,7 +755,17 @@
             "label_en": "Say what you did last weekend",
             "hidden_prompt": "user uses 'I + verb-ed + last weekend'",
             "hint_pt": "I visited my parents last weekend.",
-            "hint_en": "I visited my parents last weekend."
+            "hint_en": "I visited my parents last weekend.",
+            "examples_pass": [
+              "I visited my parents last weekend.",
+              "Yesterday I worked all day.",
+              "I watched TV last night."
+            ],
+            "examples_fail": [
+              "Yesterday (no verb)",
+              "I work yesterday (wrong tense — present)",
+              "Work (bare verb, no past)"
+            ]
           },
           {
             "id": 2,
@@ -633,7 +773,17 @@
             "label_en": "Say another recent action",
             "hidden_prompt": "user uses another past action with time marker",
             "hint_pt": "I cleaned my house yesterday.",
-            "hint_en": "I cleaned my house yesterday."
+            "hint_en": "I cleaned my house yesterday.",
+            "examples_pass": [
+              "I cleaned my house yesterday.",
+              "I cleaned my house yesterday, yes.",
+              "Yes, i cleaned my house yesterday."
+            ],
+            "examples_fail": [
+              "yesterday (bare word — no subject + verb)",
+              "Yes (no structure)",
+              "I don't know (off-topic)"
+            ]
           },
           {
             "id": 3,
@@ -812,7 +962,17 @@
             "label_en": "Say a /t/ verb",
             "hidden_prompt": "user says a past tense verb ending in voiceless consonant (worked, watched, finished, asked, etc.)",
             "hint_pt": "I worked.",
-            "hint_en": "I worked."
+            "hint_en": "I worked.",
+            "examples_pass": [
+              "I worked.",
+              "I worked, yes.",
+              "Yes, i worked."
+            ],
+            "examples_fail": [
+              "worked (bare word — no subject + verb)",
+              "Yes (no structure)",
+              "I don't know (off-topic)"
+            ]
           },
           {
             "id": 2,
@@ -820,7 +980,17 @@
             "label_en": "Say a /d/ verb",
             "hidden_prompt": "user says a past tense verb ending in voiced sound (played, lived, called, opened, etc.)",
             "hint_pt": "I played soccer.",
-            "hint_en": "I played soccer."
+            "hint_en": "I played soccer.",
+            "examples_pass": [
+              "I played soccer.",
+              "I played soccer, yes.",
+              "Yes, i played soccer."
+            ],
+            "examples_fail": [
+              "soccer (bare word — no subject + verb)",
+              "Yes (no structure)",
+              "I don't know (off-topic)"
+            ]
           },
           {
             "id": 3,
@@ -828,7 +998,17 @@
             "label_en": "Say a /id/ verb",
             "hidden_prompt": "user says a past tense verb ending in /id/ (visited, painted, wanted, started, ended)",
             "hint_pt": "I visited my friend.",
-            "hint_en": "I visited my friend."
+            "hint_en": "I visited my friend.",
+            "examples_pass": [
+              "I visited my friend.",
+              "I visited my friend, yes.",
+              "Yes, i visited my friend."
+            ],
+            "examples_fail": [
+              "friend (bare word — no subject + verb)",
+              "Yes (no structure)",
+              "I don't know (off-topic)"
+            ]
           }
         ],
         "closing_cue": "Charlotte fecha com \"All three sounds covered!\" quando obj_3 baterem.",
@@ -853,7 +1033,17 @@
             "label_en": "Say main action",
             "hidden_prompt": "user states past action with -ed verb",
             "hint_pt": "I visited friends.",
-            "hint_en": "I visited friends."
+            "hint_en": "I visited friends.",
+            "examples_pass": [
+              "I visited friends.",
+              "I visited friends, yes.",
+              "Yes, i visited friends."
+            ],
+            "examples_fail": [
+              "friends (bare word — no subject + verb)",
+              "Yes (no structure)",
+              "I don't know (off-topic)"
+            ]
           },
           {
             "id": 2,
@@ -861,7 +1051,17 @@
             "label_en": "Say another action",
             "hidden_prompt": "user states another -ed past action",
             "hint_pt": "We watched a movie.",
-            "hint_en": "We watched a movie."
+            "hint_en": "We watched a movie.",
+            "examples_pass": [
+              "We watched a movie.",
+              "We watched a movie, yes.",
+              "Yes, we watched a movie."
+            ],
+            "examples_fail": [
+              "movie (bare word — no subject + verb)",
+              "Yes (no structure)",
+              "I don't know (off-topic)"
+            ]
           },
           {
             "id": 3,
@@ -1025,7 +1225,17 @@
             "label_en": "First action yesterday",
             "hidden_prompt": "user states 'I + verb-ed + (time)' for morning/start",
             "hint_pt": "I worked all morning.",
-            "hint_en": "I worked all morning."
+            "hint_en": "I worked all morning.",
+            "examples_pass": [
+              "I worked all morning.",
+              "I had pizza for lunch.",
+              "Yesterday I ate a sandwich."
+            ],
+            "examples_fail": [
+              "Pizza (bare noun)",
+              "I eat pizza (wrong tense — present)",
+              "Yesterday (no verb)"
+            ]
           },
           {
             "id": 2,
@@ -1033,7 +1243,17 @@
             "label_en": "Second action",
             "hidden_prompt": "user states another 'I + verb-ed' for afternoon/middle",
             "hint_pt": "I called my mother.",
-            "hint_en": "I called my mother."
+            "hint_en": "I called my mother.",
+            "examples_pass": [
+              "I called my mother.",
+              "I had pizza for lunch.",
+              "Yesterday I ate a sandwich."
+            ],
+            "examples_fail": [
+              "Pizza (bare noun)",
+              "I eat pizza (wrong tense — present)",
+              "Yesterday (no verb)"
+            ]
           },
           {
             "id": 3,
@@ -1041,7 +1261,17 @@
             "label_en": "Third action",
             "hidden_prompt": "user states another 'I + verb-ed' for evening/end",
             "hint_pt": "I cooked dinner.",
-            "hint_en": "I cooked dinner."
+            "hint_en": "I cooked dinner.",
+            "examples_pass": [
+              "I cooked dinner.",
+              "I had pizza for lunch.",
+              "Yesterday I ate a sandwich."
+            ],
+            "examples_fail": [
+              "Pizza (bare noun)",
+              "I eat pizza (wrong tense — present)",
+              "Yesterday (no verb)"
+            ]
           }
         ],
         "closing_cue": "Charlotte fecha com \"Full day captured!\" quando obj_3 baterem.",
@@ -1066,7 +1296,17 @@
             "label_en": "Say morning action",
             "hidden_prompt": "user uses 'I + verb-ed' for morning action",
             "hint_pt": "I worked.",
-            "hint_en": "I worked."
+            "hint_en": "I worked.",
+            "examples_pass": [
+              "I worked.",
+              "Yesterday I worked all day.",
+              "I watched TV last night."
+            ],
+            "examples_fail": [
+              "Yesterday (no verb)",
+              "I work yesterday (wrong tense — present)",
+              "Work (bare verb, no past)"
+            ]
           },
           {
             "id": 2,
@@ -1074,7 +1314,17 @@
             "label_en": "Say afternoon/evening action",
             "hidden_prompt": "user uses another 'I + verb-ed'",
             "hint_pt": "I watched a movie.",
-            "hint_en": "I watched a movie."
+            "hint_en": "I watched a movie.",
+            "examples_pass": [
+              "I watched a movie.",
+              "Yesterday I worked all day.",
+              "I watched TV last night."
+            ],
+            "examples_fail": [
+              "Yesterday (no verb)",
+              "I work yesterday (wrong tense — present)",
+              "Work (bare verb, no past)"
+            ]
           },
           {
             "id": 3,

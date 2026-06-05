@@ -119,6 +119,8 @@
    **hidden_prompt**: "user says something about their mother with 'My mother is + age/nationality/adjective' (e.g., 'My mother is fifty', 'My mother is Brazilian')"
    **hint_pt**: "My mother is fifty."
    **hint_en**: "My mother is fifty."
+   **example_pass**: My mother is fifty. | My mother is Brazilian. | My mother is a teacher.
+   **example_fail**: Mother (bare noun) | She is fifty (no 'my mother') | Fifty (bare number)
 
 2. **id**: 2
    **label_pt**: "Falar sobre seu pai"
@@ -126,6 +128,8 @@
    **hidden_prompt**: "user says something about their father with 'My father is + age/nationality/adjective'"
    **hint_pt**: "My father is American."
    **hint_en**: "My father is American."
+   **example_pass**: My father is American. | My father is fifty-five. | My dad is from Brazil.
+   **example_fail**: Father (bare noun) | American (bare adjective) | He is American (no 'my father')
 
 3. **id**: 3
    **label_pt**: "Falar sobre um irmão ou irmã"
@@ -133,6 +137,8 @@
    **hidden_prompt**: "user mentions a brother or sister with 'My brother/sister is + age/nationality/something'"
    **hint_pt**: "My brother is twenty."
    **hint_en**: "My brother is twenty."
+   **example_pass**: My brother is twenty. | My sister is fifteen. | My brother is a student.
+   **example_fail**: Brother (bare noun) | Twenty (bare number) | He is twenty (no 'my brother/sister')
 
 **Closing cue**: Charlotte fecha com "Nice family! Thanks for sharing." quando obj_3 baterem.
 
@@ -168,6 +174,8 @@
    **hidden_prompt**: "user says something about their mother with 'My mother is + name/age/nationality'"
    **hint_pt**: "My mother is Maria."
    **hint_en**: "My mother is Maria."
+   **example_pass**: My mother is Maria. | My mother is fifty. | My mom is Brazilian.
+   **example_fail**: Maria (bare name) | Mother (bare noun) | She is Maria (no 'my mother')
 
 2. **id**: 2
    **label_pt**: "Falar sobre seu pai"
@@ -175,6 +183,8 @@
    **hidden_prompt**: "user says something about their father with 'My father is + name/age/nationality'"
    **hint_pt**: "My father is fifty-five."
    **hint_en**: "My father is fifty-five."
+   **example_pass**: My father is fifty-five. | My father is John. | My dad is American.
+   **example_fail**: Father (bare noun) | Fifty-five (bare number) | He is fifty-five (no 'my father')
 
 3. **id**: 3
    **label_pt**: "Falar sobre um irmão ou irmã"
@@ -182,6 +192,8 @@
    **hidden_prompt**: "user mentions a brother or sister with 'My brother/sister is + name/age'"
    **hint_pt**: "My sister is twenty."
    **hint_en**: "My sister is twenty."
+   **example_pass**: My sister is twenty. | My brother is Pedro. | My sister is fifteen years old.
+   **example_fail**: Sister (bare noun) | Twenty (bare number) | She is twenty (no 'my sister/brother')
 
 **Closing cue**: Charlotte encerra com "Cool family! Thanks." quando obj_3 baterem.
 
@@ -284,6 +296,8 @@
    **hidden_prompt**: "user states number of brothers with 'I've got + number + brothers' or 'I have got + number' or 'I don't have any' or 'none' — zero counts too"
    **hint_pt**: "I've got two brothers."
    **hint_en**: "I've got two brothers."
+   **example_pass**: I've got two brothers. | I have one brother. | I don't have any brothers.
+   **example_fail**: Two (bare number) | Brothers (bare noun) | Yes (no count given)
 
 2. **id**: 2
    **label_pt**: "Dizer quantas irmãs você tem"
@@ -291,6 +305,8 @@
    **hidden_prompt**: "user states number of sisters with 'I've got + number + sisters' or 'I don't have sisters' or 'none'"
    **hint_pt**: "I've got one sister."
    **hint_en**: "I've got one sister."
+   **example_pass**: I've got one sister. | I have two sisters. | I don't have any sisters.
+   **example_fail**: One (bare number) | Sisters (bare noun) | Yes (no count given)
 
 3. **id**: 3
    **label_pt**: "Perguntar a Charlotte se ela tem irmãos"
@@ -335,6 +351,8 @@
    **hidden_prompt**: "user describes family size with 'I've got a big family', 'I've got a small family', or specifies people with 'I have got + number'"
    **hint_pt**: "I've got a small family."
    **hint_en**: "I've got a small family."
+   **example_pass**: I've got a small family. | I have a big family. | I've got four people in my family.
+   **example_fail**: Small (bare adjective) | Family (bare noun) | Big (bare adjective)
 
 2. **id**: 2
    **label_pt**: "Dizer quantos irmãos ou irmãs você tem"
@@ -342,6 +360,8 @@
    **hidden_prompt**: "user states number of siblings with 'I've got + number + brothers/sisters' or 'I don't have any'"
    **hint_pt**: "I've got two brothers."
    **hint_en**: "I've got two brothers."
+   **example_pass**: I've got two brothers. | I have one sister. | I don't have any siblings.
+   **example_fail**: Two (bare number) | Brothers (bare noun) | Yes (no count given)
 
 3. **id**: 3
    **label_pt**: "Perguntar sobre a família de Charlotte"
@@ -453,6 +473,8 @@
    **hidden_prompt**: "user responds about marital status with 'Yes, I'm married', 'No, I'm not married', 'I'm single', or similar"
    **hint_pt**: "I'm married."
    **hint_en**: "I'm married."
+   **example_pass**: I'm married. | Yes, I'm married. | No, I'm single.
+   **example_fail**: Married (bare adjective) | Yes (no status structure) | Wife (off-intent)
 
 2. **id**: 2
    **label_pt**: "Dizer se tem filhos (quantos) ou nenhum"
@@ -460,6 +482,8 @@
    **hidden_prompt**: "user states if they have children with 'I've got + number + sons/daughters/children' or 'I don't have children' or 'no kids'"
    **hint_pt**: "I've got two sons."
    **hint_en**: "I've got two sons."
+   **example_pass**: I've got two sons. | I have one daughter. | I don't have kids.
+   **example_fail**: Two (bare number) | Sons (bare noun) | Yes (no count given)
 
 3. **id**: 3
    **label_pt**: "Perguntar a Charlotte sobre a família dela"
@@ -504,6 +528,8 @@
    **hidden_prompt**: "user responds about marital status with 'I'm married', 'I'm single', or similar"
    **hint_pt**: "I'm married."
    **hint_en**: "I'm married."
+   **example_pass**: I'm married. | Yes, married. | I'm single.
+   **example_fail**: Married (bare adjective) | Yes (no status structure) | Wife (off-intent)
 
 2. **id**: 2
    **label_pt**: "Falar sobre filhos (ou que não tem)"
@@ -511,6 +537,8 @@
    **hidden_prompt**: "user mentions children with 'I've got + sons/daughters' or 'I don't have children' or 'no kids'"
    **hint_pt**: "I've got one daughter."
    **hint_en**: "I've got one daughter."
+   **example_pass**: I've got one daughter. | I have two sons. | No kids.
+   **example_fail**: One (bare number) | Daughter (bare noun) | Yes (no count given)
 
 3. **id**: 3
    **label_pt**: "Devolver a pergunta"
@@ -622,6 +650,8 @@
    **hidden_prompt**: "user states best friend's name with 'My best friend is + name', 'His/Her name is + name', or 'It's + name'"
    **hint_pt**: "My best friend is Ana."
    **hint_en**: "My best friend is Ana."
+   **example_pass**: My best friend is Ana. | Her name is Sofia. | His name is Pedro.
+   **example_fail**: Ana (bare name) | Best friend (no name) | Friend (no name or possessive)
 
 2. **id**: 2
    **label_pt**: "Dizer a idade do amigo(a)"
@@ -629,6 +659,8 @@
    **hidden_prompt**: "user states friend's age with 'He/She is + number + years old' or just 'He/She is + number'"
    **hint_pt**: "She is twenty-five."
    **hint_en**: "She is twenty-five."
+   **example_pass**: She is twenty-five. | He is 30 years old. | She is 25.
+   **example_fail**: Twenty-five (bare number) | Years old (no number) | I'm 25 (wrong subject)
 
 3. **id**: 3
    **label_pt**: "Dizer a nacionalidade ou origem do amigo(a)"
@@ -636,6 +668,8 @@
    **hidden_prompt**: "user states friend's nationality or origin with 'He/She is + nationality' or 'He/She is from + country'"
    **hint_pt**: "She is Brazilian."
    **hint_en**: "She is Brazilian."
+   **example_pass**: She is Brazilian. | He is from Italy. | She is American.
+   **example_fail**: Brazilian (bare adjective) | Brazil (bare country) | I'm Brazilian (wrong subject)
 
 **Closing cue**: Charlotte fecha com "Sounds like a great friend!" quando obj_3 baterem.
 
@@ -671,6 +705,8 @@
    **hidden_prompt**: "user introduces friend with 'My friend is + name' or 'His/Her name is + name'"
    **hint_pt**: "Her name is Sofia."
    **hint_en**: "Her name is Sofia."
+   **example_pass**: Her name is Sofia. | My friend is Pedro. | His name is Tom.
+   **example_fail**: Sofia (bare name) | Friend (bare noun) | She is nice (no name structure)
 
 2. **id**: 2
    **label_pt**: "Dizer idade ou origem do amigo(a)"
@@ -678,6 +714,8 @@
    **hidden_prompt**: "user shares friend's age OR origin with 'She/He is + age/from country/nationality'"
    **hint_pt**: "She is from Italy."
    **hint_en**: "She is from Italy."
+   **example_pass**: She is from Italy. | He is twenty-five. | She is Italian.
+   **example_fail**: Italy (bare country) | Twenty-five (bare number) | I'm from Italy (wrong subject)
 
 3. **id**: 3
    **label_pt**: "Perguntar a Charlotte sobre o(a) melhor amigo(a) dela"
@@ -789,6 +827,8 @@
    **hidden_prompt**: "user introduces mother with 'My mother is + name/age/nationality' or 'Her name is + name'"
    **hint_pt**: "My mother is fifty."
    **hint_en**: "My mother is fifty."
+   **example_pass**: My mother is fifty. | My mom is Maria. | Her name is Ana.
+   **example_fail**: Mother (bare noun) | Fifty (bare number) | She is fifty (no 'my mother' or 'her name')
 
 2. **id**: 2
    **label_pt**: "Apresentar seu pai"
@@ -796,6 +836,8 @@
    **hidden_prompt**: "user introduces father with 'My father is + name/age/nationality'"
    **hint_pt**: "My father is American."
    **hint_en**: "My father is American."
+   **example_pass**: My father is American. | My father is fifty-five. | My dad is John.
+   **example_fail**: Father (bare noun) | American (bare adjective) | He is American (no 'my father')
 
 3. **id**: 3
    **label_pt**: "Apresentar mais uma pessoa da família ou amigo"
@@ -803,6 +845,8 @@
    **hidden_prompt**: "user introduces another close person with 'My + brother/sister/son/daughter/friend/husband/wife + is + name/age/nationality/something' — any of these family/friend roles count"
    **hint_pt**: "My sister is twenty. / My friend is from Italy."
    **hint_en**: "My sister is twenty. / My friend is from Italy."
+   **example_pass**: My sister is twenty. | My friend is from Italy. | My husband is John.
+   **example_fail**: Sister (bare noun) | Twenty (bare number) | She is twenty (no possessive + family role)
 
 **Closing cue**: Charlotte fecha com "What a lovely family!" quando obj_3 baterem.
 
@@ -838,6 +882,8 @@
    **hidden_prompt**: "user introduces mother with 'My mother is + name/age/nationality'"
    **hint_pt**: "My mother is Maria."
    **hint_en**: "My mother is Maria."
+   **example_pass**: My mother is Maria. | My mom is fifty. | My mother is Brazilian.
+   **example_fail**: Maria (bare name) | Mother (bare noun) | She is Maria (no 'my mother')
 
 2. **id**: 2
    **label_pt**: "Apresentar seu pai"
@@ -845,6 +891,8 @@
    **hidden_prompt**: "user introduces father with 'My father is + name/age/nationality'"
    **hint_pt**: "My father is fifty-five."
    **hint_en**: "My father is fifty-five."
+   **example_pass**: My father is fifty-five. | My dad is John. | My father is American.
+   **example_fail**: Father (bare noun) | Fifty-five (bare number) | He is fifty-five (no 'my father')
 
 3. **id**: 3
    **label_pt**: "Apresentar um irmão, irmã ou amigo"
@@ -852,6 +900,8 @@
    **hidden_prompt**: "user introduces another close person with 'My + brother/sister/friend + is + something'"
    **hint_pt**: "My sister is fifteen."
    **hint_en**: "My sister is fifteen."
+   **example_pass**: My sister is fifteen. | My brother is twenty. | My friend is from Italy.
+   **example_fail**: Sister (bare noun) | Fifteen (bare number) | She is fifteen (no possessive + family role)
 
 **Closing cue**: Charlotte encerra com "Such a great family. Thanks for sharing." quando obj_3 baterem.
 

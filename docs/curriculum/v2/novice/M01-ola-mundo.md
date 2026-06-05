@@ -123,6 +123,8 @@ Charlotte fala via ElevenLabs (Rachel). Aluno repete; Azure Speech avalia pronú
    **hidden_prompt**: "user says any positive state (good/fine/great/ok/well)"
    **hint_pt**: "I'm good!"
    **hint_en**: "I'm good!"
+   **example_pass**: I'm good! | I'm fine, thanks. | Great, and you?
+   **example_fail**: Yes (no state) | Hello (greeting, not a state) | I'm sad (negative state)
 
 **Closing cue**: Charlotte fecha com "Great! Nice to see you. Talk to you later!" quando obj_1 baterem.
 
@@ -163,6 +165,8 @@ Charlotte fala via ElevenLabs (Rachel). Aluno repete; Azure Speech avalia pronú
    **hidden_prompt**: "user greets back with 'good morning', 'morning', 'hi', 'hello' or similar"
    **hint_pt**: "Good morning!"
    **hint_en**: "Good morning!"
+   **example_pass**: Good morning! | Morning! | Hi, Charlotte!
+   **example_fail**: Good (incomplete) | Yes (no greeting) | Goodbye (wrong intent)
 
 2. **id**: 2
    **label_pt**: "Dizer como você está"
@@ -170,6 +174,8 @@ Charlotte fala via ElevenLabs (Rachel). Aluno repete; Azure Speech avalia pronú
    **hidden_prompt**: "user says any positive state (fine/good/great/ok/well)"
    **hint_pt**: "I'm fine!"
    **hint_en**: "I'm fine!"
+   **example_pass**: I'm fine! | I'm great, thanks. | Good, and you?
+   **example_fail**: Fine (no subject + verb) | Yes (no state) | I'm sad (negative state)
 
 3. **id**: 3
    **label_pt**: "Aceitar o café"
@@ -177,6 +183,8 @@ Charlotte fala via ElevenLabs (Rachel). Aluno repete; Azure Speech avalia pronú
    **hidden_prompt**: "user accepts the invitation (yes/sure/please/of course)"
    **hint_pt**: "Yes, please!"
    **hint_en**: "Yes, please!"
+   **example_pass**: Yes, please! | Sure! | Of course, thanks!
+   **example_fail**: No, thanks (rejection) | Coffee (bare noun) | Maybe later (not an acceptance)
 
 **Closing cue**: Charlotte encerra com "Awesome, see you later!" quando obj_3 baterem.
 
@@ -280,6 +288,8 @@ Charlotte fala via ElevenLabs (Rachel). Aluno repete; Azure Speech avalia pronú
    **hidden_prompt**: "user introduces themselves using 'I'm + name' or 'my name is + name' — any name counts, the structure is what matters"
    **hint_pt**: "I'm Felipe!"
    **hint_en**: "I'm Felipe!"
+   **example_pass**: I'm Felipe! | My name is Ana. | Hi, I'm Tom.
+   **example_fail**: Felipe (bare name) | Hello (greeting only) | Nice to meet you (no name given)
 
 **Closing cue**: Charlotte fecha com "Nice to meet you! Great intro." quando obj_1 baterem.
 
@@ -309,6 +319,8 @@ Charlotte fala via ElevenLabs (Rachel). Aluno repete; Azure Speech avalia pronú
    **hidden_prompt**: "user introduces themselves with 'I'm + name' or 'my name is + name'"
    **hint_pt**: "I'm Felipe!"
    **hint_en**: "I'm Felipe!"
+   **example_pass**: I'm Felipe! | My name is Ana. | Hi, I'm Tom.
+   **example_fail**: Felipe (bare name) | Hello (greeting only) | I am (incomplete)
 
 2. **id**: 2
    **label_pt**: "Dizer sua idade"
@@ -316,6 +328,8 @@ Charlotte fala via ElevenLabs (Rachel). Aluno repete; Azure Speech avalia pronú
    **hidden_prompt**: "user states their age using 'I'm + number + years old' or just 'I'm + number'"
    **hint_pt**: "I'm 25 years old."
    **hint_en**: "I'm 25 years old."
+   **example_pass**: I'm 25 years old. | I'm 30. | I am 18 years old.
+   **example_fail**: 25 (bare number) | Years old (no number/subject) | I have 25 years (wrong verb — translation from PT)
 
 3. **id**: 3
    **label_pt**: "Dizer de onde você é"
@@ -323,6 +337,8 @@ Charlotte fala via ElevenLabs (Rachel). Aluno repete; Azure Speech avalia pronú
    **hidden_prompt**: "user states origin using 'I'm from + place'"
    **hint_pt**: "I'm from Brazil."
    **hint_en**: "I'm from Brazil."
+   **example_pass**: I'm from Brazil. | I'm from São Paulo. | I am from Portugal.
+   **example_fail**: Brazil (bare place) | I'm Brazilian (nationality, not origin structure) | From Brazil (no subject + verb)
 
 **Closing cue**: Charlotte encerra com "Nice — great to meet you!" quando obj_3 baterem.
 
@@ -424,6 +440,8 @@ Charlotte fala via ElevenLabs (Rachel). Aluno repete; Azure Speech avalia pronú
    **hidden_prompt**: "user states their origin using 'I'm from + place' — city or country both count"
    **hint_pt**: "I'm from Brazil!"
    **hint_en**: "I'm from Brazil!"
+   **example_pass**: I'm from Brazil! | I'm from São Paulo. | I am from Portugal.
+   **example_fail**: Brazil (bare place) | I'm Brazilian (nationality, not origin structure) | From Brazil (no subject + verb)
 
 **Closing cue**: Charlotte fecha com "Cool! Have a great flight." quando obj_1 baterem.
 
@@ -453,6 +471,8 @@ Charlotte fala via ElevenLabs (Rachel). Aluno repete; Azure Speech avalia pronú
    **hidden_prompt**: "user states origin with 'I'm from + place'"
    **hint_pt**: "I'm from Brazil."
    **hint_en**: "I'm from Brazil."
+   **example_pass**: I'm from Brazil. | I'm from São Paulo. | I am from Portugal.
+   **example_fail**: Brazil (bare place) | I'm Brazilian (nationality, not origin) | From Brazil (no subject + verb)
 
 2. **id**: 2
    **label_pt**: "Dizer sua nacionalidade"
@@ -460,6 +480,8 @@ Charlotte fala via ElevenLabs (Rachel). Aluno repete; Azure Speech avalia pronú
    **hidden_prompt**: "user states nationality with 'I'm + nationality adjective' (e.g., 'I'm Brazilian', 'I'm Portuguese')"
    **hint_pt**: "I'm Brazilian."
    **hint_en**: "I'm Brazilian."
+   **example_pass**: I'm Brazilian. | I am Portuguese. | Yes, I'm Brazilian.
+   **example_fail**: Brazilian (bare adjective) | I'm from Brazil (origin, not nationality structure) | Brazil (bare country)
 
 3. **id**: 3
    **label_pt**: "Perguntar de onde Charlotte é"
@@ -570,6 +592,8 @@ Charlotte fala via ElevenLabs (Rachel). Aluno repete; Azure Speech avalia pronú
    **hidden_prompt**: "user describes feeling with 'I'm + adjective' beyond just 'good' or 'fine' — tired/happy/busy/excited/stressed/hungry all count"
    **hint_pt**: "I'm tired!"
    **hint_en**: "I'm tired!"
+   **example_pass**: I'm tired! | I'm so happy today. | I'm a bit stressed.
+   **example_fail**: Tired (bare adjective) | I'm good (too generic — not beyond 'good') | Yes (no adjective)
 
 **Closing cue**: Charlotte fecha com "Thanks for sharing. Take care!" quando obj_1 baterem.
 
@@ -599,6 +623,8 @@ Charlotte fala via ElevenLabs (Rachel). Aluno repete; Azure Speech avalia pronú
    **hidden_prompt**: "user describes feeling with 'I'm + adjective' (tired/busy/excited/happy/stressed) — must be more than just 'good'"
    **hint_pt**: "I'm tired."
    **hint_en**: "I'm tired."
+   **example_pass**: I'm tired. | I'm so happy today. | I'm a bit stressed.
+   **example_fail**: Tired (bare adjective) | I'm good (too generic) | Yes (no adjective)
 
 2. **id**: 2
    **label_pt**: "Devolver a pergunta"
@@ -615,6 +641,8 @@ Charlotte fala via ElevenLabs (Rachel). Aluno repete; Azure Speech avalia pronú
    **hidden_prompt**: "user reacts to Charlotte's reply with empathy ('I'm sorry to hear', 'oh nice', 'glad to hear', 'that's great')"
    **hint_pt**: "I'm sorry to hear that."
    **hint_en**: "I'm sorry to hear that."
+   **example_pass**: I'm sorry to hear that. | Oh, that's tough. | Glad to hear!
+   **example_fail**: Ok (no empathy) | Yes (no reaction) | Bye (off-intent)
 
 **Closing cue**: Charlotte encerra com "Thanks! Talk to you later." quando obj_3 baterem.
 
@@ -716,6 +744,8 @@ Charlotte fala via ElevenLabs (Rachel). Aluno repete; Azure Speech avalia pronú
    **hidden_prompt**: "user says a warm goodbye like 'see you later', 'take care', 'have a good one', 'thanks bye', 'see you' — anything beyond just 'bye'"
    **hint_pt**: "See you later!"
    **hint_en**: "See you later!"
+   **example_pass**: See you later! | Take care! | Thanks, bye!
+   **example_fail**: Bye (just 'bye' — too cold) | Hi (greeting) | Ok (no closing chunk)
 
 **Closing cue**: Charlotte fecha com "Take care! See you next time." quando obj_1 baterem.
 
@@ -745,6 +775,8 @@ Charlotte fala via ElevenLabs (Rachel). Aluno repete; Azure Speech avalia pronú
    **hidden_prompt**: "user signals it was good talking with 'it was great talking', 'nice talking', 'good chat', or similar"
    **hint_pt**: "It was great talking!"
    **hint_en**: "It was great talking!"
+   **example_pass**: It was great talking! | Nice talking to you. | Good chat!
+   **example_fail**: Great (bare adjective) | Bye (no signal) | Thanks (no closing meta-comment)
 
 2. **id**: 2
    **label_pt**: "Desejar um bom dia"
@@ -752,6 +784,8 @@ Charlotte fala via ElevenLabs (Rachel). Aluno repete; Azure Speech avalia pronú
    **hidden_prompt**: "user wishes Charlotte a good day or weekend ('have a great day', 'have a nice weekend')"
    **hint_pt**: "Have a great day!"
    **hint_en**: "Have a great day!"
+   **example_pass**: Have a great day! | Have a nice weekend! | Have a good one!
+   **example_fail**: Great day (missing 'have a') | Good (bare adjective) | Bye (no wish)
 
 3. **id**: 3
    **label_pt**: "Encerrar com 'take care' ou variação calorosa"
@@ -759,6 +793,8 @@ Charlotte fala via ElevenLabs (Rachel). Aluno repete; Azure Speech avalia pronú
    **hidden_prompt**: "user closes with 'take care', 'you too', 'talk soon', or similar warm sign-off"
    **hint_pt**: "Take care!"
    **hint_en**: "Take care!"
+   **example_pass**: Take care! | You too! | Talk soon!
+   **example_fail**: Bye (too cold) | Ok (no warm sign-off) | Care (incomplete)
 
 **Closing cue**: Charlotte encerra com "Bye for now! Take care." quando obj_3 baterem.
 

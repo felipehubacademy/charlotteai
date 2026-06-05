@@ -113,6 +113,8 @@
    **hidden_prompt**: "user states sibling's workplace with 'He/She works in/at + place' — uses 3rd person -s correctly"
    **hint_pt**: "He works in an office."
    **hint_en**: "He works in an office."
+   **example_pass**: He works in an office. | She works at a hospital. | He lives in São Paulo.
+   **example_fail**: Work (no subject + -s) | She work (missing -s) | Hospital (bare noun)
 
 2. **id**: 2
    **label_pt**: "Dizer o que seu irmão/irmã estuda"
@@ -120,6 +122,8 @@
    **hidden_prompt**: "user states what sibling studies with 'He/She studies + subject' — 3rd person -ies"
    **hint_pt**: "She studies English."
    **hint_en**: "She studies English."
+   **example_pass**: She studies English. | She works at a hospital. | He lives in São Paulo.
+   **example_fail**: Work (no subject + -s) | She work (missing -s) | Hospital (bare noun)
 
 3. **id**: 3
    **label_pt**: "Dizer outra coisa que ele/ela faz"
@@ -127,6 +131,8 @@
    **hidden_prompt**: "user mentions another activity with 'He/She + verb-s + ...' (any 3rd person -s verb)"
    **hint_pt**: "He goes to the gym."
    **hint_en**: "He goes to the gym."
+   **example_pass**: He goes to the gym. | She works at a hospital. | He lives in São Paulo.
+   **example_fail**: Work (no subject + -s) | She work (missing -s) | Hospital (bare noun)
 
 **Closing cue**: Charlotte fecha com "Sounds great!" quando obj_3 baterem.
 
@@ -162,6 +168,8 @@
    **hidden_prompt**: "user states what their sister/friend does with 'She works/studies/goes/lives/etc.'"
    **hint_pt**: "She works in a school."
    **hint_en**: "She works in a school."
+   **example_pass**: She works in a school. | She works at a hospital. | He lives in São Paulo.
+   **example_fail**: Work (no subject + -s) | She work (missing -s) | Hospital (bare noun)
 
 2. **id**: 2
    **label_pt**: "Dizer outra atividade dela"
@@ -169,6 +177,8 @@
    **hidden_prompt**: "user mentions another activity with 'She + verb-s + ...' — 3rd person -s correct"
    **hint_pt**: "She drinks coffee every morning."
    **hint_en**: "She drinks coffee every morning."
+   **example_pass**: She drinks coffee every morning. | She works at a hospital. | He lives in São Paulo.
+   **example_fail**: Work (no subject + -s) | She work (missing -s) | Hospital (bare noun)
 
 3. **id**: 3
    **label_pt**: "Perguntar sobre a Charlotte"
@@ -280,6 +290,8 @@
    **hidden_prompt**: "user states something they don't do with 'I don't + verb base'"
    **hint_pt**: "I don't drink coffee."
    **hint_en**: "I don't drink coffee."
+   **example_pass**: I don't drink coffee. | I don't drink coffee, yes. | Yes, i don't drink coffee.
+   **example_fail**: coffee (bare word — no subject + verb) | Yes (no structure) | I don't know (off-topic)
 
 2. **id**: 2
    **label_pt**: "Dizer algo que alguém da família não faz (com 'doesn't')"
@@ -287,6 +299,8 @@
    **hidden_prompt**: "user states something a family member doesn't do with 'He/She doesn't + verb base'"
    **hint_pt**: "My sister doesn't eat meat."
    **hint_en**: "My sister doesn't eat meat."
+   **example_pass**: My sister doesn't eat meat. | She works at a hospital. | He lives in São Paulo.
+   **example_fail**: Work (no subject + -s) | She work (missing -s) | Hospital (bare noun)
 
 3. **id**: 3
    **label_pt**: "Dizer algo que vocês não fazem (com 'we don't')"
@@ -294,6 +308,8 @@
    **hidden_prompt**: "user mentions something they don't do as a group with 'We don't + verb base'"
    **hint_pt**: "We don't work on weekends."
    **hint_en**: "We don't work on weekends."
+   **example_pass**: We don't work on weekends. | We don't work on weekends, yes. | Yes, we don't work on weekends.
+   **example_fail**: weekends (bare word — no subject + verb) | Yes (no structure) | I don't know (off-topic)
 
 **Closing cue**: Charlotte fecha com "Cool — negative form down!" quando obj_3 baterem.
 
@@ -329,6 +345,8 @@
    **hidden_prompt**: "user says 'I don't + verb base'"
    **hint_pt**: "I don't watch TV."
    **hint_en**: "I don't watch TV."
+   **example_pass**: I don't watch TV. | I don't watch TV, yes. | Yes, i don't watch tv.
+   **example_fail**: TV (bare word — no subject + verb) | Yes (no structure) | I don't know (off-topic)
 
 2. **id**: 2
    **label_pt**: "Dizer algo que alguém da família não faz"
@@ -336,6 +354,8 @@
    **hidden_prompt**: "user says 'He/She doesn't + verb base'"
    **hint_pt**: "My father doesn't drink coffee."
    **hint_en**: "My father doesn't drink coffee."
+   **example_pass**: My father doesn't drink coffee. | She works at a hospital. | He lives in São Paulo.
+   **example_fail**: Work (no subject + -s) | She work (missing -s) | Hospital (bare noun)
 
 3. **id**: 3
    **label_pt**: "Perguntar à Charlotte"
@@ -801,6 +821,8 @@
    **hidden_prompt**: "user states what friend does with 'He/She + verb-s + ...' (3rd person -s)"
    **hint_pt**: "He works in a bank."
    **hint_en**: "He works in a bank."
+   **example_pass**: He works in a bank. | She works at a hospital. | He lives in São Paulo.
+   **example_fail**: Work (no subject + -s) | She work (missing -s) | Hospital (bare noun)
 
 2. **id**: 2
    **label_pt**: "Dizer o que ele/ela não faz (negativa)"
@@ -808,6 +830,8 @@
    **hidden_prompt**: "user states what friend doesn't do with 'He/She doesn't + verb base'"
    **hint_pt**: "She doesn't drink coffee."
    **hint_en**: "She doesn't drink coffee."
+   **example_pass**: She doesn't drink coffee. | She works at a hospital. | He lives in São Paulo.
+   **example_fail**: Work (no subject + -s) | She work (missing -s) | Hospital (bare noun)
 
 3. **id**: 3
    **label_pt**: "Perguntar sobre o(a) amigo(a) de Charlotte"
@@ -852,6 +876,8 @@
    **hidden_prompt**: "user states activity with 'He/She + verb-s'"
    **hint_pt**: "My brother studies music."
    **hint_en**: "My brother studies music."
+   **example_pass**: My brother studies music. | She works at a hospital. | He lives in São Paulo.
+   **example_fail**: Work (no subject + -s) | She work (missing -s) | Hospital (bare noun)
 
 2. **id**: 2
    **label_pt**: "Dizer algo que ela não faz"
@@ -859,6 +885,8 @@
    **hidden_prompt**: "user states negative with 'He/She doesn't + verb base'"
    **hint_pt**: "He doesn't watch TV."
    **hint_en**: "He doesn't watch TV."
+   **example_pass**: He doesn't watch TV. | She works at a hospital. | He lives in São Paulo.
+   **example_fail**: Work (no subject + -s) | She work (missing -s) | Hospital (bare noun)
 
 3. **id**: 3
    **label_pt**: "Perguntar à Charlotte sobre alguém dela"

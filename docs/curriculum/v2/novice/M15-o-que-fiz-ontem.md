@@ -104,6 +104,8 @@
    **hidden_prompt**: "user states past action with 'I + verb-ed' (worked, played, watched, etc.)"
    **hint_pt**: "I worked yesterday."
    **hint_en**: "I worked yesterday."
+   **example_pass**: I worked yesterday. | I had pizza for lunch. | Yesterday I ate a sandwich.
+   **example_fail**: Pizza (bare noun) | I eat pizza (wrong tense — present) | Yesterday (no verb)
 
 2. **id**: 2
    **label_pt**: "Dizer outra ação"
@@ -111,6 +113,8 @@
    **hidden_prompt**: "user says another 'I + verb-ed'"
    **hint_pt**: "I watched a movie."
    **hint_en**: "I watched a movie."
+   **example_pass**: I watched a movie. | Yesterday I worked all day. | I watched TV last night.
+   **example_fail**: Yesterday (no verb) | I work yesterday (wrong tense — present) | Work (bare verb, no past)
 
 3. **id**: 3
    **label_pt**: "Dizer o que alguém fez (3ª pessoa)"
@@ -118,6 +122,8 @@
    **hidden_prompt**: "user says 'He/She + verb-ed' (no -s in past)"
    **hint_pt**: "She studied for hours."
    **hint_en**: "She studied for hours."
+   **example_pass**: She studied for hours. | Yesterday I worked all day. | I watched TV last night.
+   **example_fail**: Yesterday (no verb) | I work yesterday (wrong tense — present) | Work (bare verb, no past)
 
 **Closing cue**: Charlotte fecha com "Productive day!" quando obj_3 baterem.
 
@@ -153,6 +159,8 @@
    **hidden_prompt**: "user states 'I + verb-ed'"
    **hint_pt**: "I worked."
    **hint_en**: "I worked."
+   **example_pass**: I worked. | I had pizza for lunch. | Yesterday I ate a sandwich.
+   **example_fail**: Pizza (bare noun) | I eat pizza (wrong tense — present) | Yesterday (no verb)
 
 2. **id**: 2
    **label_pt**: "Segunda ação (verb-ed)"
@@ -160,6 +168,8 @@
    **hidden_prompt**: "user states another 'I + verb-ed'"
    **hint_pt**: "I called my sister."
    **hint_en**: "I called my sister."
+   **example_pass**: I called my sister. | I had pizza for lunch. | Yesterday I ate a sandwich.
+   **example_fail**: Pizza (bare noun) | I eat pizza (wrong tense — present) | Yesterday (no verb)
 
 3. **id**: 3
    **label_pt**: "Perguntar à Charlotte"
@@ -271,6 +281,8 @@
    **hidden_prompt**: "user uses verb ending in -e: 'I arrived/closed/lived/liked + ...'"
    **hint_pt**: "I arrived late."
    **hint_en**: "I arrived late."
+   **example_pass**: I arrived late. | I love pizza. | My favorite food is sushi.
+   **example_fail**: Pizza (bare noun) | Like (incomplete) | Yes (no preference structure)
 
 2. **id**: 2
    **label_pt**: "Usar verbo que dobra consoante (stop, plan, etc.)"
@@ -278,6 +290,8 @@
    **hidden_prompt**: "user uses doubled consonant verb: 'I stopped/planned + ...'"
    **hint_pt**: "I stopped at the store."
    **hint_en**: "I stopped at the store."
+   **example_pass**: I stopped at the store. | I stopped at the store, yes. | Yes, i stopped at the store.
+   **example_fail**: store (bare word — no subject + verb) | Yes (no structure) | I don't know (off-topic)
 
 3. **id**: 3
    **label_pt**: "Usar verbo y → ied (try, cry, study)"
@@ -285,6 +299,8 @@
    **hidden_prompt**: "user uses y→ied verb: 'I tried/cried/studied + ...'"
    **hint_pt**: "I tried a new dish."
    **hint_en**: "I tried a new dish."
+   **example_pass**: I tried a new dish. | I tried a new dish, yes. | Yes, i tried a new dish.
+   **example_fail**: dish (bare word — no subject + verb) | Yes (no structure) | I don't know (off-topic)
 
 **Closing cue**: Charlotte fecha com "All spelling tricks covered!" quando obj_3 baterem.
 
@@ -320,6 +336,8 @@
    **hidden_prompt**: "user says 'I tried + noun'"
    **hint_pt**: "I tried sushi."
    **hint_en**: "I tried sushi."
+   **example_pass**: I tried sushi. | I tried sushi, yes. | Yes, i tried sushi.
+   **example_fail**: sushi (bare word — no subject + verb) | Yes (no structure) | I don't know (off-topic)
 
 2. **id**: 2
    **label_pt**: "Dizer onde você parou ou planejou"
@@ -327,6 +345,8 @@
    **hidden_prompt**: "user uses 'I stopped/planned + ...'"
    **hint_pt**: "I stopped at the market."
    **hint_en**: "I stopped at the market."
+   **example_pass**: I stopped at the market. | I stopped at the market, yes. | Yes, i stopped at the market.
+   **example_fail**: market (bare word — no subject + verb) | Yes (no structure) | I don't know (off-topic)
 
 3. **id**: 3
    **label_pt**: "Perguntar à Charlotte"
@@ -438,6 +458,8 @@
    **hidden_prompt**: "user uses 'I + verb-ed + yesterday'"
    **hint_pt**: "I visited my friend yesterday."
    **hint_en**: "I visited my friend yesterday."
+   **example_pass**: I visited my friend yesterday. | Yesterday I worked all day. | I watched TV last night.
+   **example_fail**: Yesterday (no verb) | I work yesterday (wrong tense — present) | Work (bare verb, no past)
 
 2. **id**: 2
    **label_pt**: "Dizer ação + 'last week'"
@@ -445,6 +467,8 @@
    **hidden_prompt**: "user uses 'I + verb-ed + last week/month'"
    **hint_pt**: "I traveled last week."
    **hint_en**: "I traveled last week."
+   **example_pass**: I traveled last week. | Yesterday I worked all day. | I watched TV last night.
+   **example_fail**: Yesterday (no verb) | I work yesterday (wrong tense — present) | Work (bare verb, no past)
 
 3. **id**: 3
    **label_pt**: "Dizer ação + 'ago'"
@@ -452,6 +476,8 @@
    **hidden_prompt**: "user uses 'I + verb-ed + X ago'"
    **hint_pt**: "I called her two days ago."
    **hint_en**: "I called her two days ago."
+   **example_pass**: I called her two days ago. | Yesterday I worked all day. | I watched TV last night.
+   **example_fail**: Yesterday (no verb) | I work yesterday (wrong tense — present) | Work (bare verb, no past)
 
 **Closing cue**: Charlotte fecha com "Time-anchored!" quando obj_3 baterem.
 
@@ -487,6 +513,8 @@
    **hidden_prompt**: "user uses 'I + verb-ed + last weekend'"
    **hint_pt**: "I visited my parents last weekend."
    **hint_en**: "I visited my parents last weekend."
+   **example_pass**: I visited my parents last weekend. | Yesterday I worked all day. | I watched TV last night.
+   **example_fail**: Yesterday (no verb) | I work yesterday (wrong tense — present) | Work (bare verb, no past)
 
 2. **id**: 2
    **label_pt**: "Dizer outra ação recente"
@@ -494,6 +522,8 @@
    **hidden_prompt**: "user uses another past action with time marker"
    **hint_pt**: "I cleaned my house yesterday."
    **hint_en**: "I cleaned my house yesterday."
+   **example_pass**: I cleaned my house yesterday. | I cleaned my house yesterday, yes. | Yes, i cleaned my house yesterday.
+   **example_fail**: yesterday (bare word — no subject + verb) | Yes (no structure) | I don't know (off-topic)
 
 3. **id**: 3
    **label_pt**: "Perguntar à Charlotte"
@@ -605,6 +635,8 @@
    **hidden_prompt**: "user says a past tense verb ending in voiceless consonant (worked, watched, finished, asked, etc.)"
    **hint_pt**: "I worked."
    **hint_en**: "I worked."
+   **example_pass**: I worked. | I worked, yes. | Yes, i worked.
+   **example_fail**: worked (bare word — no subject + verb) | Yes (no structure) | I don't know (off-topic)
 
 2. **id**: 2
    **label_pt**: "Falar um verbo com som /d/"
@@ -612,6 +644,8 @@
    **hidden_prompt**: "user says a past tense verb ending in voiced sound (played, lived, called, opened, etc.)"
    **hint_pt**: "I played soccer."
    **hint_en**: "I played soccer."
+   **example_pass**: I played soccer. | I played soccer, yes. | Yes, i played soccer.
+   **example_fail**: soccer (bare word — no subject + verb) | Yes (no structure) | I don't know (off-topic)
 
 3. **id**: 3
    **label_pt**: "Falar um verbo com som /id/"
@@ -619,6 +653,8 @@
    **hidden_prompt**: "user says a past tense verb ending in /id/ (visited, painted, wanted, started, ended)"
    **hint_pt**: "I visited my friend."
    **hint_en**: "I visited my friend."
+   **example_pass**: I visited my friend. | I visited my friend, yes. | Yes, i visited my friend.
+   **example_fail**: friend (bare word — no subject + verb) | Yes (no structure) | I don't know (off-topic)
 
 **Closing cue**: Charlotte fecha com "All three sounds covered!" quando obj_3 baterem.
 
@@ -654,6 +690,8 @@
    **hidden_prompt**: "user states past action with -ed verb"
    **hint_pt**: "I visited friends."
    **hint_en**: "I visited friends."
+   **example_pass**: I visited friends. | I visited friends, yes. | Yes, i visited friends.
+   **example_fail**: friends (bare word — no subject + verb) | Yes (no structure) | I don't know (off-topic)
 
 2. **id**: 2
    **label_pt**: "Dizer outra ação"
@@ -661,6 +699,8 @@
    **hidden_prompt**: "user states another -ed past action"
    **hint_pt**: "We watched a movie."
    **hint_en**: "We watched a movie."
+   **example_pass**: We watched a movie. | We watched a movie, yes. | Yes, we watched a movie.
+   **example_fail**: movie (bare word — no subject + verb) | Yes (no structure) | I don't know (off-topic)
 
 3. **id**: 3
    **label_pt**: "Perguntar à Charlotte"
@@ -772,6 +812,8 @@
    **hidden_prompt**: "user states 'I + verb-ed + (time)' for morning/start"
    **hint_pt**: "I worked all morning."
    **hint_en**: "I worked all morning."
+   **example_pass**: I worked all morning. | I had pizza for lunch. | Yesterday I ate a sandwich.
+   **example_fail**: Pizza (bare noun) | I eat pizza (wrong tense — present) | Yesterday (no verb)
 
 2. **id**: 2
    **label_pt**: "Segunda ação"
@@ -779,6 +821,8 @@
    **hidden_prompt**: "user states another 'I + verb-ed' for afternoon/middle"
    **hint_pt**: "I called my mother."
    **hint_en**: "I called my mother."
+   **example_pass**: I called my mother. | I had pizza for lunch. | Yesterday I ate a sandwich.
+   **example_fail**: Pizza (bare noun) | I eat pizza (wrong tense — present) | Yesterday (no verb)
 
 3. **id**: 3
    **label_pt**: "Terceira ação"
@@ -786,6 +830,8 @@
    **hidden_prompt**: "user states another 'I + verb-ed' for evening/end"
    **hint_pt**: "I cooked dinner."
    **hint_en**: "I cooked dinner."
+   **example_pass**: I cooked dinner. | I had pizza for lunch. | Yesterday I ate a sandwich.
+   **example_fail**: Pizza (bare noun) | I eat pizza (wrong tense — present) | Yesterday (no verb)
 
 **Closing cue**: Charlotte fecha com "Full day captured!" quando obj_3 baterem.
 
@@ -821,6 +867,8 @@
    **hidden_prompt**: "user uses 'I + verb-ed' for morning action"
    **hint_pt**: "I worked."
    **hint_en**: "I worked."
+   **example_pass**: I worked. | Yesterday I worked all day. | I watched TV last night.
+   **example_fail**: Yesterday (no verb) | I work yesterday (wrong tense — present) | Work (bare verb, no past)
 
 2. **id**: 2
    **label_pt**: "Dizer ação à tarde/noite"
@@ -828,6 +876,8 @@
    **hidden_prompt**: "user uses another 'I + verb-ed'"
    **hint_pt**: "I watched a movie."
    **hint_en**: "I watched a movie."
+   **example_pass**: I watched a movie. | Yesterday I worked all day. | I watched TV last night.
+   **example_fail**: Yesterday (no verb) | I work yesterday (wrong tense — present) | Work (bare verb, no past)
 
 3. **id**: 3
    **label_pt**: "Perguntar à Charlotte"

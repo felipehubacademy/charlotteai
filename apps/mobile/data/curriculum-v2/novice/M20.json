@@ -162,7 +162,17 @@
             "label_en": "Give positive advice (should)",
             "hidden_prompt": "user gives advice with 'You should + base'",
             "hint_pt": "You should rest.",
-            "hint_en": "You should rest."
+            "hint_en": "You should rest.",
+            "examples_pass": [
+              "You should rest.",
+              "You should rest.",
+              "You shouldn't drink so much coffee."
+            ],
+            "examples_fail": [
+              "Rest (no 'you should')",
+              "I rest (wrong subject)",
+              "Should (incomplete)"
+            ]
           },
           {
             "id": 2,
@@ -170,7 +180,17 @@
             "label_en": "Give negative advice (shouldn't)",
             "hidden_prompt": "user advises against with 'You shouldn't + base'",
             "hint_pt": "You shouldn't work so much.",
-            "hint_en": "You shouldn't work so much."
+            "hint_en": "You shouldn't work so much.",
+            "examples_pass": [
+              "You shouldn't work so much.",
+              "You should rest.",
+              "You shouldn't drink so much coffee."
+            ],
+            "examples_fail": [
+              "Rest (no 'you should')",
+              "I rest (wrong subject)",
+              "Should (incomplete)"
+            ]
           },
           {
             "id": 3,
@@ -178,7 +198,17 @@
             "label_en": "One more advice",
             "hidden_prompt": "user gives another advice with should/shouldn't",
             "hint_pt": "You should take a vacation.",
-            "hint_en": "You should take a vacation."
+            "hint_en": "You should take a vacation.",
+            "examples_pass": [
+              "You should take a vacation.",
+              "You should rest.",
+              "You shouldn't drink so much coffee."
+            ],
+            "examples_fail": [
+              "Rest (no 'you should')",
+              "I rest (wrong subject)",
+              "Should (incomplete)"
+            ]
           }
         ],
         "closing_cue": "Charlotte fecha com \"Wise advice!\" quando obj_3 baterem.",
@@ -203,7 +233,17 @@
             "label_en": "Give positive advice",
             "hidden_prompt": "user uses 'You should + base'",
             "hint_pt": "You should practice every day.",
-            "hint_en": "You should practice every day."
+            "hint_en": "You should practice every day.",
+            "examples_pass": [
+              "You should practice every day.",
+              "You should rest.",
+              "You shouldn't drink so much coffee."
+            ],
+            "examples_fail": [
+              "Rest (no 'you should')",
+              "I rest (wrong subject)",
+              "Should (incomplete)"
+            ]
           },
           {
             "id": 2,
@@ -211,7 +251,17 @@
             "label_en": "Give negative advice",
             "hidden_prompt": "user uses 'You shouldn't + base'",
             "hint_pt": "You shouldn't translate everything.",
-            "hint_en": "You shouldn't translate everything."
+            "hint_en": "You shouldn't translate everything.",
+            "examples_pass": [
+              "You shouldn't translate everything.",
+              "You should rest.",
+              "You shouldn't drink so much coffee."
+            ],
+            "examples_fail": [
+              "Rest (no 'you should')",
+              "I rest (wrong subject)",
+              "Should (incomplete)"
+            ]
           },
           {
             "id": 3,
@@ -380,7 +430,17 @@
             "label_en": "Say one obligation",
             "hidden_prompt": "user states obligation with 'I have to + base'",
             "hint_pt": "I have to work.",
-            "hint_en": "I have to work."
+            "hint_en": "I have to work.",
+            "examples_pass": [
+              "I have to work.",
+              "I have to work, yes.",
+              "Yes, i have to work."
+            ],
+            "examples_fail": [
+              "work (bare word — no subject + verb)",
+              "Yes (no structure)",
+              "I don't know (off-topic)"
+            ]
           },
           {
             "id": 2,
@@ -388,7 +448,17 @@
             "label_en": "Another obligation",
             "hidden_prompt": "user uses another 'I have to + base'",
             "hint_pt": "I have to finish a report.",
-            "hint_en": "I have to finish a report."
+            "hint_en": "I have to finish a report.",
+            "examples_pass": [
+              "I have to finish a report.",
+              "I have to finish a report, yes.",
+              "Yes, i have to finish a report."
+            ],
+            "examples_fail": [
+              "report (bare word — no subject + verb)",
+              "Yes (no structure)",
+              "I don't know (off-topic)"
+            ]
           },
           {
             "id": 3,
@@ -396,7 +466,17 @@
             "label_en": "Family member's obligation",
             "hidden_prompt": "user uses 'He/She has to + base'",
             "hint_pt": "My sister has to study.",
-            "hint_en": "My sister has to study."
+            "hint_en": "My sister has to study.",
+            "examples_pass": [
+              "My sister has to study.",
+              "She works at a hospital.",
+              "He lives in São Paulo."
+            ],
+            "examples_fail": [
+              "Work (no subject + -s)",
+              "She work (missing -s)",
+              "Hospital (bare noun)"
+            ]
           }
         ],
         "closing_cue": "Charlotte fecha com \"Busy week!\" quando obj_3 baterem.",
@@ -421,7 +501,17 @@
             "label_en": "Say obligation",
             "hidden_prompt": "user uses 'I have to + base'",
             "hint_pt": "I have to clean my room.",
-            "hint_en": "I have to clean my room."
+            "hint_en": "I have to clean my room.",
+            "examples_pass": [
+              "I have to clean my room.",
+              "I have to clean my room, yes.",
+              "Yes, i have to clean my room."
+            ],
+            "examples_fail": [
+              "room (bare word — no subject + verb)",
+              "Yes (no structure)",
+              "I don't know (off-topic)"
+            ]
           },
           {
             "id": 2,
@@ -429,7 +519,17 @@
             "label_en": "Another obligation",
             "hidden_prompt": "user uses another 'I have to + base'",
             "hint_pt": "I have to cook dinner.",
-            "hint_en": "I have to cook dinner."
+            "hint_en": "I have to cook dinner.",
+            "examples_pass": [
+              "I have to cook dinner.",
+              "I have to cook dinner, yes.",
+              "Yes, i have to cook dinner."
+            ],
+            "examples_fail": [
+              "dinner (bare word — no subject + verb)",
+              "Yes (no structure)",
+              "I don't know (off-topic)"
+            ]
           },
           {
             "id": 3,
@@ -596,7 +696,17 @@
             "label_en": "Clarify you don't have to",
             "hidden_prompt": "user uses 'I don't have to + base'",
             "hint_pt": "No, I don't have to work.",
-            "hint_en": "No, I don't have to work."
+            "hint_en": "No, I don't have to work.",
+            "examples_pass": [
+              "No, I don't have to work.",
+              "No, I don't have to work, yes.",
+              "Yes, no, i don't have to work."
+            ],
+            "examples_fail": [
+              "work (bare word — no subject + verb)",
+              "Yes (no structure)",
+              "I don't know (off-topic)"
+            ]
           },
           {
             "id": 2,
@@ -604,7 +714,17 @@
             "label_en": "Another thing you don't have to do",
             "hidden_prompt": "user uses another 'I don't have to + base'",
             "hint_pt": "I don't have to wake up early.",
-            "hint_en": "I don't have to wake up early."
+            "hint_en": "I don't have to wake up early.",
+            "examples_pass": [
+              "I don't have to wake up early.",
+              "I don't have to wake up early, yes.",
+              "Yes, i don't have to wake up early."
+            ],
+            "examples_fail": [
+              "early (bare word — no subject + verb)",
+              "Yes (no structure)",
+              "I don't know (off-topic)"
+            ]
           },
           {
             "id": 3,
@@ -612,7 +732,17 @@
             "label_en": "Family member's absence",
             "hidden_prompt": "user uses 'He/She doesn't have to + base'",
             "hint_pt": "My sister doesn't have to come.",
-            "hint_en": "My sister doesn't have to come."
+            "hint_en": "My sister doesn't have to come.",
+            "examples_pass": [
+              "My sister doesn't have to come.",
+              "She works at a hospital.",
+              "He lives in São Paulo."
+            ],
+            "examples_fail": [
+              "Work (no subject + -s)",
+              "She work (missing -s)",
+              "Hospital (bare noun)"
+            ]
           }
         ],
         "closing_cue": "Charlotte fecha com \"Freedom acknowledged!\" quando obj_3 baterem.",
@@ -637,7 +767,17 @@
             "label_en": "Something you don't have to do",
             "hidden_prompt": "user uses 'I don't have to + base'",
             "hint_pt": "I don't have to set alarms.",
-            "hint_en": "I don't have to set alarms."
+            "hint_en": "I don't have to set alarms.",
+            "examples_pass": [
+              "I don't have to set alarms.",
+              "I don't have to set alarms, yes.",
+              "Yes, i don't have to set alarms."
+            ],
+            "examples_fail": [
+              "alarms (bare word — no subject + verb)",
+              "Yes (no structure)",
+              "I don't know (off-topic)"
+            ]
           },
           {
             "id": 2,
@@ -645,7 +785,17 @@
             "label_en": "Another optional thing",
             "hidden_prompt": "user uses another 'I don't have to'",
             "hint_pt": "I don't have to cook.",
-            "hint_en": "I don't have to cook."
+            "hint_en": "I don't have to cook.",
+            "examples_pass": [
+              "I don't have to cook.",
+              "I don't have to cook, yes.",
+              "Yes, i don't have to cook."
+            ],
+            "examples_fail": [
+              "cook (bare word — no subject + verb)",
+              "Yes (no structure)",
+              "I don't know (off-topic)"
+            ]
           },
           {
             "id": 3,
@@ -1077,7 +1227,17 @@
             "label_en": "Give advice with should",
             "hidden_prompt": "user gives advice with 'You should + base'",
             "hint_pt": "You should rest.",
-            "hint_en": "You should rest."
+            "hint_en": "You should rest.",
+            "examples_pass": [
+              "You should rest.",
+              "You should rest.",
+              "You shouldn't drink so much coffee."
+            ],
+            "examples_fail": [
+              "Rest (no 'you should')",
+              "I rest (wrong subject)",
+              "Should (incomplete)"
+            ]
           },
           {
             "id": 2,
@@ -1085,7 +1245,17 @@
             "label_en": "Mention your obligation (have to)",
             "hidden_prompt": "user uses 'I have to + base'",
             "hint_pt": "I have to study too.",
-            "hint_en": "I have to study too."
+            "hint_en": "I have to study too.",
+            "examples_pass": [
+              "I have to study too.",
+              "I have to study too, yes.",
+              "Yes, i have to study too."
+            ],
+            "examples_fail": [
+              "too (bare word — no subject + verb)",
+              "Yes (no structure)",
+              "I don't know (off-topic)"
+            ]
           },
           {
             "id": 3,
@@ -1093,7 +1263,17 @@
             "label_en": "Mention a need (need to)",
             "hidden_prompt": "user uses 'We need to + base' or 'I need to + base'",
             "hint_pt": "We need to take breaks.",
-            "hint_en": "We need to take breaks."
+            "hint_en": "We need to take breaks.",
+            "examples_pass": [
+              "We need to take breaks.",
+              "We need to take breaks, yes.",
+              "Yes, we need to take breaks."
+            ],
+            "examples_fail": [
+              "breaks (bare word — no subject + verb)",
+              "Yes (no structure)",
+              "I don't know (off-topic)"
+            ]
           }
         ],
         "closing_cue": "Charlotte fecha com \"Three modals mastered!\" quando obj_3 baterem.",
@@ -1118,7 +1298,17 @@
             "label_en": "Mention obligation",
             "hidden_prompt": "user uses 'I have to + base'",
             "hint_pt": "I have to finish a report.",
-            "hint_en": "I have to finish a report."
+            "hint_en": "I have to finish a report.",
+            "examples_pass": [
+              "I have to finish a report.",
+              "I have to finish a report, yes.",
+              "Yes, i have to finish a report."
+            ],
+            "examples_fail": [
+              "report (bare word — no subject + verb)",
+              "Yes (no structure)",
+              "I don't know (off-topic)"
+            ]
           },
           {
             "id": 2,
@@ -1126,7 +1316,17 @@
             "label_en": "Mention necessity",
             "hidden_prompt": "user uses 'I need to + base'",
             "hint_pt": "I need to call my doctor.",
-            "hint_en": "I need to call my doctor."
+            "hint_en": "I need to call my doctor.",
+            "examples_pass": [
+              "I need to call my doctor.",
+              "I need to call my doctor, yes.",
+              "Yes, i need to call my doctor."
+            ],
+            "examples_fail": [
+              "doctor (bare word — no subject + verb)",
+              "Yes (no structure)",
+              "I don't know (off-topic)"
+            ]
           },
           {
             "id": 3,
@@ -1134,7 +1334,17 @@
             "label_en": "Give Charlotte advice",
             "hidden_prompt": "user uses 'You should + base' for Charlotte",
             "hint_pt": "You should take time off.",
-            "hint_en": "You should take time off."
+            "hint_en": "You should take time off.",
+            "examples_pass": [
+              "You should take time off.",
+              "You should rest.",
+              "You shouldn't drink so much coffee."
+            ],
+            "examples_fail": [
+              "Rest (no 'you should')",
+              "I rest (wrong subject)",
+              "Should (incomplete)"
+            ]
           }
         ],
         "closing_cue": "Charlotte encerra com \"Real-life talk!\" quando obj_3 baterem.",

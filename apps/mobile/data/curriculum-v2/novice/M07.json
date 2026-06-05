@@ -161,7 +161,17 @@
             "label_en": "Say one ability",
             "hidden_prompt": "user states an ability with 'I can + verb base' (swim, cook, drive, speak, dance, sing, play, etc.)",
             "hint_pt": "I can swim.",
-            "hint_en": "I can swim."
+            "hint_en": "I can swim.",
+            "examples_pass": [
+              "I can swim.",
+              "I can swim.",
+              "I can speak English."
+            ],
+            "examples_fail": [
+              "Swim (no 'I can')",
+              "I swim (no 'can' — wrong structure)",
+              "Can (incomplete)"
+            ]
           },
           {
             "id": 2,
@@ -169,7 +179,17 @@
             "label_en": "Say another ability",
             "hidden_prompt": "user states another ability with 'I can + verb base'",
             "hint_pt": "I can cook Italian food.",
-            "hint_en": "I can cook Italian food."
+            "hint_en": "I can cook Italian food.",
+            "examples_pass": [
+              "I can cook Italian food.",
+              "I can swim.",
+              "I can speak English."
+            ],
+            "examples_fail": [
+              "Swim (no 'I can')",
+              "I swim (no 'can' — wrong structure)",
+              "Can (incomplete)"
+            ]
           },
           {
             "id": 3,
@@ -177,7 +197,17 @@
             "label_en": "Say someone else's ability",
             "hidden_prompt": "user states someone else's ability with 'He/She/My brother/etc. can + verb base'",
             "hint_pt": "My sister can dance very well.",
-            "hint_en": "My sister can dance very well."
+            "hint_en": "My sister can dance very well.",
+            "examples_pass": [
+              "My sister can dance very well.",
+              "I can swim.",
+              "I can speak English."
+            ],
+            "examples_fail": [
+              "Swim (no 'I can')",
+              "I swim (no 'can' — wrong structure)",
+              "Can (incomplete)"
+            ]
           }
         ],
         "closing_cue": "Charlotte fecha com \"Talented!\" quando obj_3 baterem.",
@@ -202,7 +232,17 @@
             "label_en": "Say your ability",
             "hidden_prompt": "user states ability with 'I can + verb base'",
             "hint_pt": "I can speak English.",
-            "hint_en": "I can speak English."
+            "hint_en": "I can speak English.",
+            "examples_pass": [
+              "I can speak English.",
+              "I can swim.",
+              "I can speak English."
+            ],
+            "examples_fail": [
+              "Swim (no 'I can')",
+              "I swim (no 'can' — wrong structure)",
+              "Can (incomplete)"
+            ]
           },
           {
             "id": 2,
@@ -210,7 +250,17 @@
             "label_en": "Say another ability or language",
             "hidden_prompt": "user states another ability with 'I can + verb base'",
             "hint_pt": "I can play soccer.",
-            "hint_en": "I can play soccer."
+            "hint_en": "I can play soccer.",
+            "examples_pass": [
+              "I can play soccer.",
+              "I can swim.",
+              "I can speak English."
+            ],
+            "examples_fail": [
+              "Swim (no 'I can')",
+              "I swim (no 'can' — wrong structure)",
+              "Can (incomplete)"
+            ]
           },
           {
             "id": 3,
@@ -377,7 +427,17 @@
             "label_en": "Say one thing you can't do",
             "hidden_prompt": "user states inability with 'I can't + verb base'",
             "hint_pt": "I can't ride a bike.",
-            "hint_en": "I can't ride a bike."
+            "hint_en": "I can't ride a bike.",
+            "examples_pass": [
+              "I can't ride a bike.",
+              "I can swim.",
+              "I can speak English."
+            ],
+            "examples_fail": [
+              "Swim (no 'I can')",
+              "I swim (no 'can' — wrong structure)",
+              "Can (incomplete)"
+            ]
           },
           {
             "id": 2,
@@ -385,7 +445,17 @@
             "label_en": "Say another limitation",
             "hidden_prompt": "user states another inability with 'I can't + verb base'",
             "hint_pt": "I can't speak French.",
-            "hint_en": "I can't speak French."
+            "hint_en": "I can't speak French.",
+            "examples_pass": [
+              "I can't speak French.",
+              "I can swim.",
+              "I can speak English."
+            ],
+            "examples_fail": [
+              "Swim (no 'I can')",
+              "I swim (no 'can' — wrong structure)",
+              "Can (incomplete)"
+            ]
           },
           {
             "id": 3,
@@ -393,7 +463,17 @@
             "label_en": "Say a family member's limitation",
             "hidden_prompt": "user states someone else's inability with 'He/She can't + verb base'",
             "hint_pt": "My father can't cook.",
-            "hint_en": "My father can't cook."
+            "hint_en": "My father can't cook.",
+            "examples_pass": [
+              "My father can't cook.",
+              "I can swim.",
+              "I can speak English."
+            ],
+            "examples_fail": [
+              "Swim (no 'I can')",
+              "I swim (no 'can' — wrong structure)",
+              "Can (incomplete)"
+            ]
           }
         ],
         "closing_cue": "Charlotte fecha com \"Honest! Room to grow.\" quando obj_3 baterem.",
@@ -418,7 +498,17 @@
             "label_en": "Say one limitation",
             "hidden_prompt": "user says 'I can't + verb base'",
             "hint_pt": "I can't dance.",
-            "hint_en": "I can't dance."
+            "hint_en": "I can't dance.",
+            "examples_pass": [
+              "I can't dance.",
+              "I can swim.",
+              "I can speak English."
+            ],
+            "examples_fail": [
+              "Swim (no 'I can')",
+              "I swim (no 'can' — wrong structure)",
+              "Can (incomplete)"
+            ]
           },
           {
             "id": 2,
@@ -426,7 +516,17 @@
             "label_en": "Say someone's limitation",
             "hidden_prompt": "user says 'He/She can't + verb base'",
             "hint_pt": "My brother can't sing.",
-            "hint_en": "My brother can't sing."
+            "hint_en": "My brother can't sing.",
+            "examples_pass": [
+              "My brother can't sing.",
+              "She works at a hospital.",
+              "He lives in São Paulo."
+            ],
+            "examples_fail": [
+              "Work (no subject + -s)",
+              "She work (missing -s)",
+              "Hospital (bare noun)"
+            ]
           },
           {
             "id": 3,
@@ -866,7 +966,17 @@
             "label_en": "Say a language you can speak",
             "hidden_prompt": "user states a language with 'I can speak + language' (no article)",
             "hint_pt": "I can speak English.",
-            "hint_en": "I can speak English."
+            "hint_en": "I can speak English.",
+            "examples_pass": [
+              "I can speak English.",
+              "I can swim.",
+              "I can speak English."
+            ],
+            "examples_fail": [
+              "Swim (no 'I can')",
+              "I swim (no 'can' — wrong structure)",
+              "Can (incomplete)"
+            ]
           },
           {
             "id": 2,
@@ -874,7 +984,17 @@
             "label_en": "Say a sport or instrument",
             "hidden_prompt": "user states 'I can play + sport' (no article) or 'I can play the + instrument' (with article)",
             "hint_pt": "I can play soccer.",
-            "hint_en": "I can play soccer."
+            "hint_en": "I can play soccer.",
+            "examples_pass": [
+              "I can play soccer.",
+              "I can swim.",
+              "I can speak English."
+            ],
+            "examples_fail": [
+              "Swim (no 'I can')",
+              "I swim (no 'can' — wrong structure)",
+              "Can (incomplete)"
+            ]
           },
           {
             "id": 3,
@@ -882,7 +1002,17 @@
             "label_en": "Say another ability",
             "hidden_prompt": "user states another ability with 'I can + verb base' (cook, dance, sing, draw, etc.)",
             "hint_pt": "I can cook well.",
-            "hint_en": "I can cook well."
+            "hint_en": "I can cook well.",
+            "examples_pass": [
+              "I can cook well.",
+              "I can swim.",
+              "I can speak English."
+            ],
+            "examples_fail": [
+              "Swim (no 'I can')",
+              "I swim (no 'can' — wrong structure)",
+              "Can (incomplete)"
+            ]
           }
         ],
         "closing_cue": "Charlotte fecha com \"Talented!\" quando obj_3 baterem.",
@@ -907,7 +1037,17 @@
             "label_en": "Say a language",
             "hidden_prompt": "user states 'I can speak + language' (no article)",
             "hint_pt": "I can speak Portuguese.",
-            "hint_en": "I can speak Portuguese."
+            "hint_en": "I can speak Portuguese.",
+            "examples_pass": [
+              "I can speak Portuguese.",
+              "I can swim.",
+              "I can speak English."
+            ],
+            "examples_fail": [
+              "Swim (no 'I can')",
+              "I swim (no 'can' — wrong structure)",
+              "Can (incomplete)"
+            ]
           },
           {
             "id": 2,
@@ -915,7 +1055,17 @@
             "label_en": "Say an instrument or sport",
             "hidden_prompt": "user states 'I can play + sport' or 'I can play the + instrument'",
             "hint_pt": "I can play the piano.",
-            "hint_en": "I can play the piano."
+            "hint_en": "I can play the piano.",
+            "examples_pass": [
+              "I can play the piano.",
+              "I can swim.",
+              "I can speak English."
+            ],
+            "examples_fail": [
+              "Swim (no 'I can')",
+              "I swim (no 'can' — wrong structure)",
+              "Can (incomplete)"
+            ]
           },
           {
             "id": 3,
@@ -1080,7 +1230,17 @@
             "label_en": "Say what you can do",
             "hidden_prompt": "user states ability with 'I can + verb base'",
             "hint_pt": "I can speak English.",
-            "hint_en": "I can speak English."
+            "hint_en": "I can speak English.",
+            "examples_pass": [
+              "I can speak English.",
+              "I can swim.",
+              "I can speak English."
+            ],
+            "examples_fail": [
+              "Swim (no 'I can')",
+              "I swim (no 'can' — wrong structure)",
+              "Can (incomplete)"
+            ]
           },
           {
             "id": 2,
@@ -1088,7 +1248,17 @@
             "label_en": "Say what you can't do",
             "hidden_prompt": "user states inability with 'I can't + verb base'",
             "hint_pt": "I can't play the piano.",
-            "hint_en": "I can't play the piano."
+            "hint_en": "I can't play the piano.",
+            "examples_pass": [
+              "I can't play the piano.",
+              "I can swim.",
+              "I can speak English."
+            ],
+            "examples_fail": [
+              "Swim (no 'I can')",
+              "I swim (no 'can' — wrong structure)",
+              "Can (incomplete)"
+            ]
           },
           {
             "id": 3,
@@ -1131,7 +1301,17 @@
             "label_en": "Say something you can do",
             "hidden_prompt": "user states 'I can + verb base'",
             "hint_pt": "I can swim.",
-            "hint_en": "I can swim."
+            "hint_en": "I can swim.",
+            "examples_pass": [
+              "I can swim.",
+              "I can swim.",
+              "I can speak English."
+            ],
+            "examples_fail": [
+              "Swim (no 'I can')",
+              "I swim (no 'can' — wrong structure)",
+              "Can (incomplete)"
+            ]
           },
           {
             "id": 2,
@@ -1139,7 +1319,17 @@
             "label_en": "Say something you can't do",
             "hidden_prompt": "user states 'I can't + verb base'",
             "hint_pt": "I can't drive.",
-            "hint_en": "I can't drive."
+            "hint_en": "I can't drive.",
+            "examples_pass": [
+              "I can't drive.",
+              "I can swim.",
+              "I can speak English."
+            ],
+            "examples_fail": [
+              "Swim (no 'I can')",
+              "I swim (no 'can' — wrong structure)",
+              "Can (incomplete)"
+            ]
           },
           {
             "id": 3,
