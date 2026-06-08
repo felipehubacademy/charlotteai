@@ -325,6 +325,53 @@ async function tts(text: string, voicedBy: 'charlotte' | 'charlie'): Promise<Buf
 }
 
 // ── Handler ─────────────────────────────────────────────────────────
+// ── Judge-only prompt (usa gpt-4o pra decisao confiavel de objectives_met) ──
+function buildJudgeOnlyPrompt(rp: RolePlayDef, level: string, unitTitle?: string): string {
+  const objectivesBlock = rp.objectives.map(o => {
+    const hintLine = o.hint_en ? `\n    Canonical: "${o.hint_en}"` : '';
+    const passLine = (o as any).examples_pass?.length
+      ? `\n    EXAMPLES THAT MARK: ${(o as any).examples_pass.map((e: string) => `"${e}"`).join(' | ')}`
+      : '';
+    const failLine = (o as any).examples_fail?.length
+      ? `\n    EXAMPLES THAT DO NOT MARK: ${(o as any).examples_fail.map((e: string) => `"${e}"`).join(' | ')}`
+      : '';
+    return `  - Objective ${o.id}: ${o.hidden_prompt}${hintLine}${passLine}${failLine}`;
+  }).join('\n');
+
+  return `You are a JUDGE for an English-learning role-play. Your ONLY job is to decide which objectives the student's LAST utterance satisfies.
+
+UNIT: ${unitTitle ?? ''}
+STUDENT CEFR LEVEL: ${level}
+
+OBJECTIVES:
+${objectivesBlock}
+
+JUDGING RULES (semantic reasoning, not regex):
+
+1. USER-ASKS OBJECTIVES (hidden_prompt starts with "user asks" or "user perguntar"):
+   The student's utterance MUST satisfy ALL THREE:
+   a. FORM — actual question (has '?' OR starts with wh-word OR auxiliary). "Yes"/"No"/statements DO NOT pass.
+   b. TENSE — uses grammar the unit teaches.
+   c. INTENT — asks ABOUT WHAT the hidden_prompt specifies.
+   Use EXAMPLES THAT MARK / EXAMPLES THAT DO NOT MARK as ground truth.
+
+2. STATEMENT OBJECTIVES ("user says X is/was Y", "user uses 'I + verb-ed'", etc.):
+   The utterance MUST CONTAIN the target structure. Bare nouns/fragments DO NOT pass.
+
+3. PORTUGUESE: if student spoke Portuguese → DO NOT mark anything. The objective is practicing ENGLISH.
+
+4. OFF-TOPIC / GIBBERISH / WHISPER ARTIFACTS ("Thanks for watching", "Subscribe", silence): DO NOT mark anything.
+
+5. Multiple objectives marked SAME turn ONLY if utterance clearly satisfies each.
+
+6. Objective met in PRIOR turn (visible in history) must NOT appear again.
+
+7. BIAS: when student clearly produces target structure or matches pass example (paraphrase OK), MARK.
+
+Output ONLY this JSON:
+{"objectives_met": [<ids>]}`;
+}
+
 export async function POST(request: NextRequest) {
   try {
     const formData = await request.formData();
@@ -371,25 +418,47 @@ export async function POST(request: NextRequest) {
       meta:     { ms: Date.now() - t0 },
     });
 
-    // 2) GPT chat completion
+    // 2) GPT chat completion (HIBRIDO — chat gpt-4o-mini + judge gpt-4o)
     const messages: OpenAI.Chat.ChatCompletionMessageParam[] = [
       { role: 'system', content: buildSystemPrompt(rp, level, unit_title, stuck_turns, next_objective_id, user_name) },
       ...history.map(h => ({ role: h.role, content: h.content })),
       { role: 'user', content: userTranscript },
     ];
-    const completion = await openai.chat.completions.create({
-      model:           'gpt-4o-mini',
-      messages,
-      temperature:     0.7,
-      max_tokens:      250,
-      response_format: { type: 'json_object' },
-    });
+    const judgeMessages: OpenAI.Chat.ChatCompletionMessageParam[] = [
+      { role: 'system', content: buildJudgeOnlyPrompt(rp, level, unit_title) },
+      ...history.map(h => ({ role: h.role, content: h.content })),
+      { role: 'user', content: userTranscript },
+    ];
+    const [completion, judgeCompletion] = await Promise.all([
+      openai.chat.completions.create({
+        model:           'gpt-4o-mini',
+        messages,
+        temperature:     0.7,
+        max_tokens:      250,
+        response_format: { type: 'json_object' },
+      }),
+      openai.chat.completions.create({
+        model:           'gpt-4o',
+        messages:        judgeMessages,
+        temperature:     0.2,
+        max_tokens:      80,
+        response_format: { type: 'json_object' },
+      }),
+    ]);
     const rawText = completion.choices[0]?.message?.content ?? '{}';
+    const judgeRaw = judgeCompletion.choices[0]?.message?.content ?? '{}';
     logOpenAIUsage({
       endpoint:         '/api/roleplay/turn:chat',
       model:            'gpt-4o-mini',
       promptTokens:     completion.usage?.prompt_tokens,
       completionTokens: completion.usage?.completion_tokens,
+      userId,
+    });
+    logOpenAIUsage({
+      endpoint:         '/api/roleplay/turn:judge',
+      model:            'gpt-4o',
+      promptTokens:     judgeCompletion.usage?.prompt_tokens,
+      completionTokens: judgeCompletion.usage?.completion_tokens,
       userId,
     });
 
@@ -403,10 +472,20 @@ export async function POST(request: NextRequest) {
         objectives_met?:   number[];
         session_complete?: boolean;
       };
+      // Judge da gpt-4o sobrescreve objectives_met (mais confiavel).
+      let judgeObjs: number[] = [];
+      try {
+        const judgeParsed = JSON.parse(judgeRaw) as { objectives_met?: number[] };
+        judgeObjs = Array.isArray(judgeParsed.objectives_met)
+          ? judgeParsed.objectives_met.filter(n => typeof n === 'number')
+          : [];
+      } catch {
+        judgeObjs = Array.isArray(parsed.objectives_met)
+          ? parsed.objectives_met.filter(n => typeof n === 'number')
+          : [];
+      }
       clean = (parsed.reply ?? '').trim();
-      objectivesMet = Array.isArray(parsed.objectives_met)
-        ? parsed.objectives_met.filter(n => typeof n === 'number')
-        : [];
+      objectivesMet = judgeObjs;
       complete = parsed.session_complete === true;
     } catch (e) {
       console.warn('[roleplay/turn] JSON parse failed, using raw text', e, { rawText });

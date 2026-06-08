@@ -288,6 +288,58 @@ Rules:
 - American English by default. Calorosa, encorajadora, paciente.${nudgeBlock}${nextPendingBlock}`;
 }
 
+// ── Judge-only prompt (usa gpt-4o pra decisao confiavel de objectives_met) ──
+function buildJudgeOnlyPrompt(gc: GuidedChatDef, level: string, unitTitle?: string): string {
+  const objectivesBlock = gc.objectives.map(o => {
+    const hintLine = o.hint_en ? `\n    Canonical: "${o.hint_en}"` : '';
+    const passLine = (o as any).examples_pass?.length
+      ? `\n    EXAMPLES THAT MARK: ${(o as any).examples_pass.map((e: string) => `"${e}"`).join(' | ')}`
+      : '';
+    const failLine = (o as any).examples_fail?.length
+      ? `\n    EXAMPLES THAT DO NOT MARK: ${(o as any).examples_fail.map((e: string) => `"${e}"`).join(' | ')}`
+      : '';
+    return `  - Objective ${o.id}: ${o.hidden_prompt}${hintLine}${passLine}${failLine}`;
+  }).join('\n');
+
+  return `You are a JUDGE for an English-learning conversation. Your ONLY job is to decide which objectives the student's LAST message satisfies.
+
+UNIT: ${unitTitle ?? ''}
+STUDENT CEFR LEVEL: ${level}
+
+OBJECTIVES:
+${objectivesBlock}
+
+JUDGING RULES (apply with semantic reasoning, not regex):
+
+1. USER-ASKS OBJECTIVES (hidden_prompt starts with "user asks" or "user perguntar"):
+   The student's message MUST satisfy ALL THREE checks:
+   a. FORM — actual question (contains '?' OR starts with wh-word OR auxiliary).
+      Single words ("Yes", "No"), statements, affirmations DO NOT pass.
+   b. TENSE — uses grammar the unit teaches.
+   c. INTENT — asks ABOUT WHAT the hidden_prompt specifies.
+   Use EXAMPLES THAT MARK / EXAMPLES THAT DO NOT MARK as ground truth.
+
+2. STATEMENT OBJECTIVES (hidden_prompt says "user says X is/was Y", "user uses 'I + verb-ed'", etc.):
+   The student's message MUST CONTAIN the target structure.
+   - "Pasta" → DO NOT MARK obj "user says 'The best meal was X'" (bare noun, no superlative)
+   - "The best meal was pasta" → MARK
+   - "yesterday" → DO NOT MARK obj "user says 'I + verb-ed'" (no verb)
+   - "I worked" → MARK
+
+3. PORTUGUESE: if student responds in Portuguese (single PT word or full PT sentence) → DO NOT mark anything. The objective is practicing ENGLISH.
+
+4. OFF-TOPIC / GIBBERISH: DO NOT mark anything.
+
+5. Multiple objectives can be marked in the SAME turn ONLY if the student's message clearly satisfies each one.
+
+6. An objective met in a PRIOR turn (visible in history) must NOT appear again.
+
+7. BIAS: when the student clearly produces the target structure or matches a pass example (paraphrase OK), MARK. Strict matching only for off-topic/empty/gibberish/PT.
+
+Output ONLY this JSON (no other text):
+{"objectives_met": [<ids of objectives the LAST student message satisfied>]}`;
+}
+
 export async function POST(request: NextRequest) {
   try {
     const body = (await request.json()) as Payload & { user_id?: string };
@@ -300,25 +352,53 @@ export async function POST(request: NextRequest) {
       return NextResponse.json({ error: 'Missing user_message' }, { status: 400 });
     }
 
+    const sysPrompt = buildSystemPrompt(gc, level, unit_title, stuck_turns, next_objective_id, user_name);
     const messages: OpenAI.Chat.ChatCompletionMessageParam[] = [
-      { role: 'system', content: buildSystemPrompt(gc, level, unit_title, stuck_turns, next_objective_id, user_name) },
+      { role: 'system', content: sysPrompt },
       ...history.map(h => ({ role: h.role, content: h.content })),
       { role: 'user', content: user_message },
     ];
 
-    const completion = await openai.chat.completions.create({
-      model:           'gpt-4o-mini',
-      messages,
-      temperature:     0.7,
-      max_tokens:      250,
-      response_format: { type: 'json_object' },
-    });
+    // HIBRIDO: chat (gpt-4o-mini) + judge (gpt-4o) em paralelo.
+    // Chat: rapido e barato pra resposta natural da Charlotte.
+    // Judge: gpt-4o pra decisao de objectives_met (instruction following melhor).
+    const judgePrompt = buildJudgeOnlyPrompt(gc, level, unit_title);
+    const judgeMessages: OpenAI.Chat.ChatCompletionMessageParam[] = [
+      { role: 'system', content: judgePrompt },
+      ...history.map(h => ({ role: h.role, content: h.content })),
+      { role: 'user', content: user_message },
+    ];
+
+    const [completion, judgeCompletion] = await Promise.all([
+      openai.chat.completions.create({
+        model:           'gpt-4o-mini',
+        messages,
+        temperature:     0.7,
+        max_tokens:      250,
+        response_format: { type: 'json_object' },
+      }),
+      openai.chat.completions.create({
+        model:           'gpt-4o',
+        messages:        judgeMessages,
+        temperature:     0.2,
+        max_tokens:      80,
+        response_format: { type: 'json_object' },
+      }),
+    ]);
     const rawText = completion.choices[0]?.message?.content ?? '{}';
+    const judgeRaw = judgeCompletion.choices[0]?.message?.content ?? '{}';
     logOpenAIUsage({
       endpoint:         '/api/guided-chat/turn',
       model:            'gpt-4o-mini',
       promptTokens:     completion.usage?.prompt_tokens,
       completionTokens: completion.usage?.completion_tokens,
+      userId,
+    });
+    logOpenAIUsage({
+      endpoint:         '/api/guided-chat/turn:judge',
+      model:            'gpt-4o',
+      promptTokens:     judgeCompletion.usage?.prompt_tokens,
+      completionTokens: judgeCompletion.usage?.completion_tokens,
       userId,
     });
 
@@ -331,10 +411,21 @@ export async function POST(request: NextRequest) {
         objectives_met?:   number[];
         session_complete?: boolean;
       };
+      // Judge da gpt-4o sobrescreve objectives_met (mais confiavel).
+      let judgeObjs: number[] = [];
+      try {
+        const judgeParsed = JSON.parse(judgeRaw) as { objectives_met?: number[] };
+        judgeObjs = Array.isArray(judgeParsed.objectives_met)
+          ? judgeParsed.objectives_met.filter(n => typeof n === 'number')
+          : [];
+      } catch {
+        // Fallback: usa o judge do gpt-4o-mini se gpt-4o falhar
+        judgeObjs = Array.isArray(parsed.objectives_met)
+          ? parsed.objectives_met.filter(n => typeof n === 'number')
+          : [];
+      }
       reply = (parsed.reply ?? '').trim();
-      objectivesMet = Array.isArray(parsed.objectives_met)
-        ? parsed.objectives_met.filter(n => typeof n === 'number')
-        : [];
+      objectivesMet = judgeObjs;
       complete = parsed.session_complete === true;
     } catch (e) {
       console.warn('[guided-chat/turn] JSON parse failed', e, { rawText });
