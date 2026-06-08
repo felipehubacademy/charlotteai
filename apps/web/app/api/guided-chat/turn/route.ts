@@ -385,6 +385,26 @@ export async function POST(request: NextRequest) {
       }
     }
 
+    // SCAFFOLD-EXACT FALLBACK (deterministico): se aluno digitou EXATAMENTE
+    // (ou contem) o hint_en de algum obj pendente, MARCA esse obj.
+    // Garantia: scaffold copiado SEMPRE passa, independe do LLM.
+    // Pedagogicamente: aluno frustrado tem valvula de escape garantida.
+    {
+      const msgNorm = user_message.toLowerCase().replace(/[''']/g, "'").trim();
+      const pending = gc.objectives.filter(o => !objectivesMet.includes(o.id));
+      for (const o of pending) {
+        if (!o.hint_en) continue;
+        const hintNorm = o.hint_en.toLowerCase().replace(/[''']/g, "'").trim();
+        if (hintNorm.length >= 4 && (msgNorm === hintNorm || msgNorm.includes(hintNorm))) {
+          objectivesMet.push(o.id);
+          console.info('[guided-chat/turn] scaffold-exact fallback marked obj', {
+            objId: o.id, hint: o.hint_en, userMsg: user_message,
+          });
+          break; // marca so o primeiro pending — evita over-marking
+        }
+      }
+    }
+
     // ANTI-STEAL POST-CHECK (deterministico): se a Charlotte respondeu com
     // um chunk que pertence a um objetivo "user asks/uses X" ainda nao
     // batido, ela roubou o turno. Sobrescreve com ack curto.

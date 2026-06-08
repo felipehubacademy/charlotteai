@@ -457,6 +457,25 @@ export async function POST(request: NextRequest) {
       }
     }
 
+    // SCAFFOLD-EXACT FALLBACK (deterministico): se aluno disse EXATAMENTE
+    // (ou contem) o hint_en de algum obj pendente, MARCA esse obj.
+    // Garantia: scaffold copiado SEMPRE passa, independe do LLM.
+    {
+      const msgNorm = (userTranscript || '').toLowerCase().replace(/[''']/g, "'").trim();
+      const pending = rp.objectives.filter(o => !objectivesMet.includes(o.id));
+      for (const o of pending) {
+        if (!o.hint_en) continue;
+        const hintNorm = o.hint_en.toLowerCase().replace(/[''']/g, "'").trim();
+        if (hintNorm.length >= 4 && (msgNorm === hintNorm || msgNorm.includes(hintNorm))) {
+          objectivesMet.push(o.id);
+          console.info('[roleplay/turn] scaffold-exact fallback marked obj', {
+            objId: o.id, hint: o.hint_en, userMsg: userTranscript,
+          });
+          break;
+        }
+      }
+    }
+
     // ANTI-STEAL POST-CHECK (deterministico): se Charlotte respondeu com
     // chunk que pertence a um objetivo "user asks/uses X" nao batido,
     // sobrescreve com ack curto. gpt-4o-mini ignora a regra mesmo com

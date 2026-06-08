@@ -58,10 +58,16 @@ function log(line = '') {
 }
 
 // ── Student persona ───────────────────────────────────────────────
-// "good" = follows the suggested hint reasonably
+// "good" = follows the suggested hint reasonably (via LLM)
 // "sloppy" = sometimes uses bare words or fragments
 // "bare" = always answers with minimal bare nouns (to test STRUCTURE rule)
+// "literal_scaffold" = sends EXACTLY hint_en of next pending obj.
+//   Worst-case test: aluno trava e copia o scaffold literal, sem improviso.
+//   NAO chama LLM — deterministico. Revela teto real do sistema.
 async function generateStudentTurn(history, gc, nextObj, profile = STUDENT_PROFILE) {
+  if (profile === 'literal_scaffold') {
+    return (nextObj?.hint_en ?? nextObj?.hint_pt ?? '').trim();
+  }
   const hintLine = nextObj?.hint_en
     ? `The next objective hint suggests: "${nextObj.hint_en}".`
     : '';
