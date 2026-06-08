@@ -511,48 +511,48 @@
 **Voiced by**: `charlotte`
 **Persona**: Charlotte
 **Persona outfit**: `charlotte_casual`
-**Intro (em PT)**: "Charlotte abre um chat e quer ser entrevistada. Pratica perguntas Do/Does."
-**Opening message**: "Ask me about my daily routine."
+**Intro (em PT)**: "Charlotte abre chat pra ser entrevistada. Pratica Do/Does — uma sobre rotina, uma sobre gostos, uma sobre alguém da vida dela."
+**Opening message**: "Interview time! First, ask me about something I do every day — use 'Do you...?'"
 
 **Sub-objectives** (M03+ gradiente: 3 objetivos):
 
 1. **id**: 1
-   **label_pt**: "Perguntar se Charlotte faz algo (Do you)"
-   **label_en**: "Ask if Charlotte does something"
-   **hidden_prompt**: "user asks 'Do you + verb base...?' to Charlotte"
+   **label_pt**: "Perguntar uma rotina (Do you + verb)"
+   **label_en**: "Ask about a routine (Do you + verb)"
+   **hidden_prompt**: "user asks 'Do you + verb base...?' to Charlotte (work, sleep, eat, study, etc — NOT 'like')"
    **hint_pt**: "Do you work from home?"
    **hint_en**: "Do you work from home?"
-   **example_pass**: Do you work from home? | And you? | How about you?
-   **example_fail**: Yes I do (statement) | Yes (single word) | Where were you? (wrong tense (past))
+   **example_pass**: Do you work from home? | Do you study English? | Do you exercise every day?
+   **example_fail**: Do you like coffee? (that's a preference — obj 2) | Yes I do (statement) | Does your friend... (3rd person — obj 3)
 
 2. **id**: 2
-   **label_pt**: "Perguntar se ela gosta de algo"
-   **label_en**: "Ask if she likes something"
+   **label_pt**: "Perguntar uma preferência (Do you like + noun)"
+   **label_en**: "Ask a preference (Do you like + noun)"
    **hidden_prompt**: "user asks 'Do you like + noun?' — accept nouns only (verb-ing comes in M08)"
    **hint_pt**: "Do you like coffee?"
    **hint_en**: "Do you like coffee?"
-   **example_pass**: Do you like coffee? | And you? | How about you?
-   **example_fail**: Yes I do (statement) | Yes (single word) | Where were you? (wrong tense (past))
+   **example_pass**: Do you like coffee? | Do you like pizza? | Do you like music?
+   **example_fail**: Do you work? (that's routine — obj 1) | Yes I like (incomplete) | Does she like... (3rd person — obj 3)
 
 3. **id**: 3
-   **label_pt**: "Perguntar sobre alguém na vida de Charlotte (Does)"
-   **label_en**: "Ask about someone Charlotte knows"
-   **hidden_prompt**: "user asks 'Does + 3rd person + verb base?' about someone"
+   **label_pt**: "Perguntar sobre alguém da vida dela (Does + 3a pessoa)"
+   **label_en**: "Ask about someone she knows (Does + 3rd person)"
+   **hidden_prompt**: "user asks 'Does + 3rd person + verb base?' about someone (your friend/sister/brother/mom/dad)"
    **hint_pt**: "Does your friend live in São Paulo?"
    **hint_en**: "Does your friend live in São Paulo?"
-   **example_pass**: Does your friend live in São Paulo? | And you? | How about you?
-   **example_fail**: I do that too (statement) | Yes (single word) | Where were you? (wrong tense (past))
+   **example_pass**: Does your friend live in São Paulo? | Does your sister cook? | Does your brother work?
+   **example_fail**: Do you live? (about you — obj 1) | Yes she does (statement) | She lives in NYC (statement, not question)
 
 **Closing cue**: Charlotte encerra com "Fun chat!" quando obj_3 baterem.
 
-**Script** (referencial, 7 turnos):
+**Suggested flow** (Charlotte cua explicitamente cada obj):
 
-1. **Charlotte**: "Ask me about my daily routine."
-2. **Student**: "Do you work from home?"
-3. **Charlotte**: "Yes, I do!"
-4. **Student**: "Do you like coffee?"
-5. **Charlotte**: "No, I don't — tea fan."
-6. **Student**: "Does your friend live in São Paulo?"
+1. **Charlotte**: "Interview time! First, ask me about something I do every day — use 'Do you...?'"
+2. **Student**: ~"Do you work from home?"
+3. **Charlotte**: "Yes, I do! Now, ask if I LIKE something — use 'Do you like + noun?'"
+4. **Student**: ~"Do you like coffee?"
+5. **Charlotte**: "No, I'm a tea fan. Now, ask about MY family or friend — use 'Does + your sister/brother/friend...?'"
+6. **Student**: ~"Does your friend live in São Paulo?"
 7. **Charlotte**: "No, she lives in NYC. Fun chat!"
 
 > N03 chat = LLM puro.

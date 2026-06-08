@@ -759,66 +759,65 @@
         "voiced_by": "charlotte",
         "persona": "Charlotte",
         "persona_outfit": "charlotte_casual",
-        "intro_pt": "Charlotte abre um chat e quer ser entrevistada. Pratica perguntas Do/Does.",
-        "opening_message": "Ask me about my daily routine.",
+        "intro_pt": "Charlotte abre chat pra ser entrevistada. Pratica Do/Does — uma sobre rotina, uma sobre gostos, uma sobre alguém da vida dela.",
+        "opening_message": "Interview time! First, ask me about something I do every day — use 'Do you...?'",
         "objectives": [
           {
             "id": 1,
-            "label_pt": "Perguntar se Charlotte faz algo (Do you)",
-            "label_en": "Ask if Charlotte does something",
-            "hidden_prompt": "user asks 'Do you + verb base...?' to Charlotte",
+            "label_pt": "Perguntar uma rotina (Do you + verb)",
+            "label_en": "Ask about a routine (Do you + verb)",
+            "hidden_prompt": "user asks 'Do you + verb base...?' to Charlotte (work, sleep, eat, study, etc — NOT 'like')",
             "hint_pt": "Do you work from home?",
             "hint_en": "Do you work from home?",
             "examples_pass": [
               "Do you work from home?",
-              "And you?",
-              "How about you?"
+              "Do you study English?",
+              "Do you exercise every day?"
             ],
             "examples_fail": [
+              "Do you like coffee? (that's a preference — obj 2)",
               "Yes I do (statement)",
-              "Yes (single word)",
-              "Where were you? (wrong tense (past))"
+              "Does your friend... (3rd person — obj 3)"
             ]
           },
           {
             "id": 2,
-            "label_pt": "Perguntar se ela gosta de algo",
-            "label_en": "Ask if she likes something",
+            "label_pt": "Perguntar uma preferência (Do you like + noun)",
+            "label_en": "Ask a preference (Do you like + noun)",
             "hidden_prompt": "user asks 'Do you like + noun?' — accept nouns only (verb-ing comes in M08)",
             "hint_pt": "Do you like coffee?",
             "hint_en": "Do you like coffee?",
             "examples_pass": [
               "Do you like coffee?",
-              "And you?",
-              "How about you?"
+              "Do you like pizza?",
+              "Do you like music?"
             ],
             "examples_fail": [
-              "Yes I do (statement)",
-              "Yes (single word)",
-              "Where were you? (wrong tense (past))"
+              "Do you work? (that's routine — obj 1)",
+              "Yes I like (incomplete)",
+              "Does she like... (3rd person — obj 3)"
             ]
           },
           {
             "id": 3,
-            "label_pt": "Perguntar sobre alguém na vida de Charlotte (Does)",
-            "label_en": "Ask about someone Charlotte knows",
-            "hidden_prompt": "user asks 'Does + 3rd person + verb base?' about someone",
+            "label_pt": "Perguntar sobre alguém da vida dela (Does + 3a pessoa)",
+            "label_en": "Ask about someone she knows (Does + 3rd person)",
+            "hidden_prompt": "user asks 'Does + 3rd person + verb base?' about someone (your friend/sister/brother/mom/dad)",
             "hint_pt": "Does your friend live in São Paulo?",
             "hint_en": "Does your friend live in São Paulo?",
             "examples_pass": [
               "Does your friend live in São Paulo?",
-              "And you?",
-              "How about you?"
+              "Does your sister cook?",
+              "Does your brother work?"
             ],
             "examples_fail": [
-              "I do that too (statement)",
-              "Yes (single word)",
-              "Where were you? (wrong tense (past))"
+              "Do you live? (about you — obj 1)",
+              "Yes she does (statement)",
+              "She lives in NYC (statement, not question)"
             ]
           }
         ],
-        "closing_cue": "Charlotte encerra com \"Fun chat!\" quando obj_3 baterem.",
-        "suggested_script": "**Script** (referencial, 7 turnos):\n\n1. **Charlotte**: \"Ask me about my daily routine.\"\n2. **Student**: \"Do you work from home?\"\n3. **Charlotte**: \"Yes, I do!\"\n4. **Student**: \"Do you like coffee?\"\n5. **Charlotte**: \"No, I don't — tea fan.\"\n6. **Student**: \"Does your friend live in São Paulo?\"\n7. **Charlotte**: \"No, she lives in NYC. Fun chat!\"\n\n> N03 chat = LLM puro.\n\n---"
+        "closing_cue": "Charlotte encerra com \"Fun chat!\" quando obj_3 baterem."
       }
     },
     {
