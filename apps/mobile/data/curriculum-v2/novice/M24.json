@@ -1330,14 +1330,14 @@
             "hint_pt": "Wait, let me think about this.",
             "hint_en": "Wait, let me think about this.",
             "examples_pass": [
-              "Wait, let me think about this?",
-              "And you?",
-              "How about you?"
+              "Wait, let me think about this.",
+              "Hold on a second.",
+              "Let me think."
             ],
             "examples_fail": [
-              "I do that too (statement)",
-              "Yes (single word)",
-              "Where were you? (wrong tense (past))"
+              "Yes (no pause request)",
+              "The park (bare answer, no pause)",
+              "I love it (statement, no pause)"
             ]
           },
           {
@@ -1366,14 +1366,14 @@
             "hint_pt": "By the way, what's your favorite place?",
             "hint_en": "By the way, what's your favorite place?",
             "examples_pass": [
-              "By the way, what's your favorite place.",
-              "If it rains, I stay home.",
-              "If I have time, I'll go."
+              "By the way, what's your favorite place?",
+              "By the way, what do you like?",
+              "By the way, where are you from?"
             ],
             "examples_fail": [
-              "Rain (no if-clause)",
-              "I stay home (no condition)",
-              "If (incomplete)"
+              "What's your favorite place? (no \"By the way\")",
+              "By the way (incomplete, no question)",
+              "Favorite place (bare phrase, no transition)"
             ]
           }
         ],

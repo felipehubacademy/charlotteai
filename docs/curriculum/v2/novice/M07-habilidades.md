@@ -508,48 +508,48 @@
 **Voiced by**: `charlotte`
 **Persona**: Charlotte
 **Persona outfit**: `charlotte_casual`
-**Intro (em PT)**: "Charlotte propõe quiz rápido. Pratica perguntas com Can."
-**Opening message**: "Quiz! Ask me what I can do."
+**Intro (em PT)**: "Charlotte propõe quiz rápido. Pratica perguntas com Can — uma habilidade, um idioma, e algo sobre a família dela."
+**Opening message**: "Quiz time! First, ask me about a sport or activity — can I do it?"
 
 **Sub-objectives** (M03+ gradiente: 3 objetivos):
 
 1. **id**: 1
-   **label_pt**: "Perguntar uma habilidade"
-   **label_en**: "Ask one ability"
-   **hidden_prompt**: "user asks 'Can you + verb base?'"
-   **hint_pt**: "Can you sing?"
-   **hint_en**: "Can you sing?"
-   **example_pass**: Can you sing? | And you? | How about you?
-   **example_fail**: Yes I can (statement) | Yes (single word) | What did you do? (wrong tense (past))
+   **label_pt**: "Perguntar uma habilidade (esporte ou atividade)"
+   **label_en**: "Ask one ability (sport or activity)"
+   **hidden_prompt**: "user asks 'Can you + activity/sport verb?' (e.g., dance, swim, cook, sing, draw)"
+   **hint_pt**: "Can you swim?"
+   **hint_en**: "Can you swim?"
+   **example_pass**: Can you swim? | Can you sing? | Can you dance?
+   **example_fail**: Yes I can (statement) | Yes (single word) | Can you speak French? (that's a language — obj 2)
 
 2. **id**: 2
-   **label_pt**: "Perguntar idiomas"
-   **label_en**: "Ask about languages"
-   **hidden_prompt**: "user asks 'Can you speak + language?'"
+   **label_pt**: "Perguntar sobre um idioma"
+   **label_en**: "Ask about a language"
+   **hidden_prompt**: "user asks 'Can you speak + LANGUAGE?' (Spanish, French, Italian, etc.)"
    **hint_pt**: "Can you speak Spanish?"
    **hint_en**: "Can you speak Spanish?"
-   **example_pass**: Can you speak Spanish? | And you? | How about you?
-   **example_fail**: Yes I can (statement) | Yes (single word) | What did you do? (wrong tense (past))
+   **example_pass**: Can you speak Spanish? | Can you speak French? | Can you speak Italian?
+   **example_fail**: Can you sing? (that's a skill — obj 1) | Yes I can speak Spanish (statement) | Spanish (bare noun)
 
 3. **id**: 3
-   **label_pt**: "Perguntar sobre alguém de Charlotte"
-   **label_en**: "Ask about someone Charlotte knows"
-   **hidden_prompt**: "user asks 'Can + 3rd person + verb base?'"
+   **label_pt**: "Perguntar sobre alguém da família dela"
+   **label_en**: "Ask about her family member"
+   **hidden_prompt**: "user asks 'Can your + family member + verb?' (sister/brother/mom/dad + any verb)"
    **hint_pt**: "Can your sister cook?"
    **hint_en**: "Can your sister cook?"
-   **example_pass**: Can your sister cook? | And you? | How about you?
-   **example_fail**: Yes I can (statement) | Yes (single word) | What did you do? (wrong tense (past))
+   **example_pass**: Can your sister cook? | Can your brother swim? | Can your mom drive?
+   **example_fail**: Can you cook? (about you, not family — obj 1) | Yes she can (statement) | Sister (bare noun)
 
 **Closing cue**: Charlotte encerra com "Loved the quiz!" quando obj_3 baterem.
 
-**Script** (referencial, 7 turnos):
+**Suggested flow** (Charlotte cua explicitamente cada obj):
 
-1. **Charlotte**: "Quiz! Ask me what I can do."
-2. **Student**: "Can you sing?"
-3. **Charlotte**: "Yes, badly!"
-4. **Student**: "Can you speak Spanish?"
-5. **Charlotte**: "A little."
-6. **Student**: "Can your sister cook?"
+1. **Charlotte**: "Quiz time! First, ask me about a sport or activity — can I do it?"
+2. **Student**: ~"Can you swim?"
+3. **Charlotte**: "Yes, a little! Now, ask about a language I might speak."
+4. **Student**: ~"Can you speak Spanish?"
+5. **Charlotte**: "Just a few words. Now, ask about my family — sister, brother, mom, dad."
+6. **Student**: ~"Can your sister cook?"
 7. **Charlotte**: "Yes, amazingly. Loved the quiz!"
 
 > N03 chat = LLM puro.

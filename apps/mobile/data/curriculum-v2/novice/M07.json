@@ -754,66 +754,65 @@
         "voiced_by": "charlotte",
         "persona": "Charlotte",
         "persona_outfit": "charlotte_casual",
-        "intro_pt": "Charlotte propõe quiz rápido. Pratica perguntas com Can.",
-        "opening_message": "Quiz! Ask me what I can do.",
+        "intro_pt": "Charlotte propõe quiz rápido. Pratica perguntas com Can — uma habilidade, um idioma, e algo sobre a família dela.",
+        "opening_message": "Quiz time! First, ask me about a sport or activity — can I do it?",
         "objectives": [
           {
             "id": 1,
-            "label_pt": "Perguntar uma habilidade",
-            "label_en": "Ask one ability",
-            "hidden_prompt": "user asks 'Can you + verb base?'",
-            "hint_pt": "Can you sing?",
-            "hint_en": "Can you sing?",
+            "label_pt": "Perguntar uma habilidade (esporte ou atividade)",
+            "label_en": "Ask one ability (sport or activity)",
+            "hidden_prompt": "user asks 'Can you + activity/sport verb?' (e.g., dance, swim, cook, sing, draw)",
+            "hint_pt": "Can you swim?",
+            "hint_en": "Can you swim?",
             "examples_pass": [
+              "Can you swim?",
               "Can you sing?",
-              "And you?",
-              "How about you?"
+              "Can you dance?"
             ],
             "examples_fail": [
               "Yes I can (statement)",
               "Yes (single word)",
-              "What did you do? (wrong tense (past))"
+              "Can you speak French? (that's a language — obj 2)"
             ]
           },
           {
             "id": 2,
-            "label_pt": "Perguntar idiomas",
-            "label_en": "Ask about languages",
-            "hidden_prompt": "user asks 'Can you speak + language?'",
+            "label_pt": "Perguntar sobre um idioma",
+            "label_en": "Ask about a language",
+            "hidden_prompt": "user asks 'Can you speak + LANGUAGE?' (Spanish, French, Italian, etc.)",
             "hint_pt": "Can you speak Spanish?",
             "hint_en": "Can you speak Spanish?",
             "examples_pass": [
               "Can you speak Spanish?",
-              "And you?",
-              "How about you?"
+              "Can you speak French?",
+              "Can you speak Italian?"
             ],
             "examples_fail": [
-              "Yes I can (statement)",
-              "Yes (single word)",
-              "What did you do? (wrong tense (past))"
+              "Can you sing? (that's a skill — obj 1)",
+              "Yes I can speak Spanish (statement)",
+              "Spanish (bare noun)"
             ]
           },
           {
             "id": 3,
-            "label_pt": "Perguntar sobre alguém de Charlotte",
-            "label_en": "Ask about someone Charlotte knows",
-            "hidden_prompt": "user asks 'Can + 3rd person + verb base?'",
+            "label_pt": "Perguntar sobre alguém da família dela",
+            "label_en": "Ask about her family member",
+            "hidden_prompt": "user asks 'Can your + family member + verb?' (sister/brother/mom/dad + any verb)",
             "hint_pt": "Can your sister cook?",
             "hint_en": "Can your sister cook?",
             "examples_pass": [
               "Can your sister cook?",
-              "And you?",
-              "How about you?"
+              "Can your brother swim?",
+              "Can your mom drive?"
             ],
             "examples_fail": [
-              "Yes I can (statement)",
-              "Yes (single word)",
-              "What did you do? (wrong tense (past))"
+              "Can you cook? (about you, not family — obj 1)",
+              "Yes she can (statement)",
+              "Sister (bare noun)"
             ]
           }
         ],
-        "closing_cue": "Charlotte encerra com \"Loved the quiz!\" quando obj_3 baterem.",
-        "suggested_script": "**Script** (referencial, 7 turnos):\n\n1. **Charlotte**: \"Quiz! Ask me what I can do.\"\n2. **Student**: \"Can you sing?\"\n3. **Charlotte**: \"Yes, badly!\"\n4. **Student**: \"Can you speak Spanish?\"\n5. **Charlotte**: \"A little.\"\n6. **Student**: \"Can your sister cook?\"\n7. **Charlotte**: \"Yes, amazingly. Loved the quiz!\"\n\n> N03 chat = LLM puro.\n\n---"
+        "closing_cue": "Charlotte encerra com \"Loved the quiz!\" quando obj_3 baterem."
       }
     },
     {

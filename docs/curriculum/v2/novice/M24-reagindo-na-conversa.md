@@ -873,8 +873,8 @@
    **hidden_prompt**: "AFTER Charlotte's opening question, user asks for time with 'Wait', 'Hold on', 'Let me think', 'Just a sec', etc."
    **hint_pt**: "Wait, let me think about this."
    **hint_en**: "Wait, let me think about this."
-   **example_pass**: Wait, let me think about this? | And you? | How about you?
-   **example_fail**: I do that too (statement) | Yes (single word) | Where were you? (wrong tense (past))
+   **example_pass**: Wait, let me think about this. | Hold on a second. | Let me think.
+   **example_fail**: Yes (no pause request) | The park (bare answer, no pause) | I love it (statement, no pause)
 
 2. **id**: 2
    **label_pt**: "Dar uma resposta após pausa"
@@ -891,8 +891,8 @@
    **hidden_prompt**: "user uses 'By the way' + a different simple question (about Charlotte's city, day, hobbies, etc) in present simple."
    **hint_pt**: "By the way, what's your favorite place?"
    **hint_en**: "By the way, what's your favorite place?"
-   **example_pass**: By the way, what's your favorite place. | If it rains, I stay home. | If I have time, I'll go.
-   **example_fail**: Rain (no if-clause) | I stay home (no condition) | If (incomplete)
+   **example_pass**: By the way, what's your favorite place? | By the way, what do you like? | By the way, where are you from?
+   **example_fail**: What's your favorite place? (no "By the way") | By the way (incomplete, no question) | Favorite place (bare phrase, no transition)
 
 **Closing cue**: Charlotte fecha com "Good chat!" quando obj_3 bater.
 
