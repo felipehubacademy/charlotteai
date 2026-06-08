@@ -464,7 +464,7 @@ export async function POST(request: NextRequest) {
     const repliedLower = clean.toLowerCase().replace(/[''']/g, "'");
     const unmetUserAsk = rp.objectives.find(o =>
       !objectivesMet.includes(o.id) &&
-      /user\s*(asks|uses|perguntar)/i.test(o.hidden_prompt) &&
+      /\buser\s+(asks?|perguntar)\b/i.test(o.hidden_prompt) &&
       o.hint_en &&
       repliedLower.includes(o.hint_en.toLowerCase().replace(/[''']/g, "'"))
     );

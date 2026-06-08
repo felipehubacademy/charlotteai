@@ -393,7 +393,7 @@ export async function POST(request: NextRequest) {
     const repliedLower = reply.toLowerCase().replace(/[''']/g, "'");
     const unmetUserAsk = gc.objectives.find(o =>
       !objectivesMet.includes(o.id) &&
-      /user\s*(asks|uses|perguntar|asks?|use)/i.test(o.hidden_prompt) &&
+      /\buser\s+(asks?|perguntar)\b/i.test(o.hidden_prompt) &&
       o.hint_en &&
       repliedLower.includes(o.hint_en.toLowerCase().replace(/[''']/g, "'"))
     );
