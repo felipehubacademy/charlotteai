@@ -157,19 +157,49 @@
             "id": 1,
             "label_en": "Past habit",
             "hidden_prompt": "user uses 'I used to + base'",
-            "hint_en": "I used to play outside."
+            "hint_en": "I used to play outside.",
+            "examples_pass": [
+              "I used to play outside.",
+              "We used to live in a small town.",
+              "He didn't use to like coffee."
+            ],
+            "examples_fail": [
+              "tennis (bare noun)",
+              "I play tennis (present, not 'used to')",
+              "I will play tennis (future, not past habit)"
+            ]
           },
           {
             "id": 2,
             "label_en": "Another habit",
             "hidden_prompt": "user uses another 'I used to'",
-            "hint_en": "I used to read comics."
+            "hint_en": "I used to read comics.",
+            "examples_pass": [
+              "I used to read comics.",
+              "She would always read before bed.",
+              "We used to live in a small town."
+            ],
+            "examples_fail": [
+              "tennis (bare noun)",
+              "I play tennis (present, not 'used to')",
+              "I will play tennis (future, not past habit)"
+            ]
           },
           {
             "id": 3,
             "label_en": "Family habit",
             "hidden_prompt": "user uses 'My X used to + base'",
-            "hint_en": "My family used to travel a lot."
+            "hint_en": "My family used to travel a lot.",
+            "examples_pass": [
+              "My family used to travel a lot.",
+              "I used to play tennis every weekend.",
+              "She would always read before bed."
+            ],
+            "examples_fail": [
+              "tennis (bare noun)",
+              "I play tennis (present, not 'used to')",
+              "I will play tennis (future, not past habit)"
+            ]
           }
         ],
         "closing_cue": "Charlotte closes with \"Childhood vibes!\" when obj_3 hits.",
@@ -192,19 +222,49 @@
             "id": 1,
             "label_en": "Used to love",
             "hidden_prompt": "user uses 'I used to love + noun/verb-ing'",
-            "hint_en": "I used to love cartoons."
+            "hint_en": "I used to love cartoons.",
+            "examples_pass": [
+              "I used to love cartoons.",
+              "We used to live in a small town.",
+              "He didn't use to like coffee."
+            ],
+            "examples_fail": [
+              "tennis (bare noun)",
+              "I play tennis (present, not 'used to')",
+              "I will play tennis (future, not past habit)"
+            ]
           },
           {
             "id": 2,
             "label_en": "Another habit",
             "hidden_prompt": "user uses another 'I used to + base'",
-            "hint_en": "I used to collect stickers."
+            "hint_en": "I used to collect stickers.",
+            "examples_pass": [
+              "I used to collect stickers.",
+              "She would always read before bed.",
+              "We used to live in a small town."
+            ],
+            "examples_fail": [
+              "tennis (bare noun)",
+              "I play tennis (present, not 'used to')",
+              "I will play tennis (future, not past habit)"
+            ]
           },
           {
             "id": 3,
             "label_en": "Ask Charlotte",
             "hidden_prompt": "user asks 'What did you use to do?'",
-            "hint_en": "What did you use to do?"
+            "hint_en": "What did you use to do?",
+            "examples_pass": [
+              "What did you use to do?",
+              "I used to play tennis every weekend.",
+              "How about you?"
+            ],
+            "examples_fail": [
+              "tennis (bare noun)",
+              "I play tennis (present, not 'used to')",
+              "I will play tennis (future, not past habit)"
+            ]
           }
         ],
         "closing_cue": "Charlotte closes with \"Nostalgia trip!\" when obj_3 hits.",
@@ -351,19 +411,49 @@
             "id": 1,
             "label_en": "Didn't use to like",
             "hidden_prompt": "user uses 'I didn't use to + base'",
-            "hint_en": "I didn't use to like coffee."
+            "hint_en": "I didn't use to like coffee.",
+            "examples_pass": [
+              "I didn't use to like coffee.",
+              "We used to live in a small town.",
+              "He didn't use to like coffee."
+            ],
+            "examples_fail": [
+              "tennis (bare noun)",
+              "I play tennis (present, not 'used to')",
+              "I will play tennis (future, not past habit)"
+            ]
           },
           {
             "id": 2,
             "label_en": "Another didn't use to",
             "hidden_prompt": "user uses another 'I didn't use to'",
-            "hint_en": "I didn't use to exercise."
+            "hint_en": "I didn't use to exercise.",
+            "examples_pass": [
+              "I didn't use to exercise.",
+              "She would always read before bed.",
+              "We used to live in a small town."
+            ],
+            "examples_fail": [
+              "tennis (bare noun)",
+              "I play tennis (present, not 'used to')",
+              "I will play tennis (future, not past habit)"
+            ]
           },
           {
             "id": 3,
             "label_en": "Ask Charlotte (Did you use to)",
             "hidden_prompt": "user asks 'Did you use to + base?'",
-            "hint_en": "Did you use to play sports?"
+            "hint_en": "Did you use to play sports?",
+            "examples_pass": [
+              "Did you use to play sports?",
+              "We used to live in a small town.",
+              "How about you?"
+            ],
+            "examples_fail": [
+              "tennis (bare noun)",
+              "I play tennis (present, not 'used to')",
+              "I will play tennis (future, not past habit)"
+            ]
           }
         ],
         "closing_cue": "Charlotte closes with \"Changing tastes!\" when obj_3 hits.",
@@ -386,19 +476,49 @@
             "id": 1,
             "label_en": "Current habit you didn't have",
             "hidden_prompt": "user uses 'I didn't use to + base'",
-            "hint_en": "I didn't use to meditate."
+            "hint_en": "I didn't use to meditate.",
+            "examples_pass": [
+              "I didn't use to meditate.",
+              "We used to live in a small town.",
+              "He didn't use to like coffee."
+            ],
+            "examples_fail": [
+              "tennis (bare noun)",
+              "I play tennis (present, not 'used to')",
+              "I will play tennis (future, not past habit)"
+            ]
           },
           {
             "id": 2,
             "label_en": "Another change",
             "hidden_prompt": "user uses another 'I didn't use to'",
-            "hint_en": "I didn't use to like vegetables."
+            "hint_en": "I didn't use to like vegetables.",
+            "examples_pass": [
+              "I didn't use to like vegetables.",
+              "I used to play tennis every weekend.",
+              "She would always read before bed."
+            ],
+            "examples_fail": [
+              "tennis (bare noun)",
+              "I play tennis (present, not 'used to')",
+              "I will play tennis (future, not past habit)"
+            ]
           },
           {
             "id": 3,
             "label_en": "Ask Charlotte",
             "hidden_prompt": "user asks 'Did you use to...?'",
-            "hint_en": "Did you use to live abroad?"
+            "hint_en": "Did you use to live abroad?",
+            "examples_pass": [
+              "Did you use to live abroad?",
+              "We used to live in a small town.",
+              "How about you?"
+            ],
+            "examples_fail": [
+              "tennis (bare noun)",
+              "I play tennis (present, not 'used to')",
+              "I will play tennis (future, not past habit)"
+            ]
           }
         ],
         "closing_cue": "Charlotte closes with \"We grow!\" when obj_3 hits.",
@@ -545,19 +665,49 @@
             "id": 1,
             "label_en": "Repeated past routine",
             "hidden_prompt": "user uses 'We/I would + base'",
-            "hint_en": "We would go to the park."
+            "hint_en": "We would go to the park.",
+            "examples_pass": [
+              "We would go to the park.",
+              "She would always read before bed.",
+              "We used to live in a small town."
+            ],
+            "examples_fail": [
+              "tennis (bare noun)",
+              "I play tennis (present, not 'used to')",
+              "I will play tennis (future, not past habit)"
+            ]
           },
           {
             "id": 2,
             "label_en": "Another would routine",
             "hidden_prompt": "user uses another 'would + base'",
-            "hint_en": "My mom would read to me."
+            "hint_en": "My mom would read to me.",
+            "examples_pass": [
+              "My mom would read to me.",
+              "She would always read before bed.",
+              "We used to live in a small town."
+            ],
+            "examples_fail": [
+              "tennis (bare noun)",
+              "I play tennis (present, not 'used to')",
+              "I will play tennis (future, not past habit)"
+            ]
           },
           {
             "id": 3,
             "label_en": "One more with 'every X'",
             "hidden_prompt": "user uses 'Every + day/week/summer, X would + base'",
-            "hint_en": "Every summer, we would travel."
+            "hint_en": "Every summer, we would travel.",
+            "examples_pass": [
+              "Every summer, we would travel.",
+              "He didn't use to like coffee.",
+              "I used to play tennis every weekend."
+            ],
+            "examples_fail": [
+              "tennis (bare noun)",
+              "I play tennis (present, not 'used to')",
+              "I will play tennis (future, not past habit)"
+            ]
           }
         ],
         "closing_cue": "Charlotte closes with \"Sweet memories!\" when obj_3 hits.",
@@ -580,19 +730,49 @@
             "id": 1,
             "label_en": "Repeated activity",
             "hidden_prompt": "user uses 'I/We would + base'",
-            "hint_en": "We would play board games."
+            "hint_en": "We would play board games.",
+            "examples_pass": [
+              "We would play board games.",
+              "I used to play tennis every weekend.",
+              "She would always read before bed."
+            ],
+            "examples_fail": [
+              "tennis (bare noun)",
+              "I play tennis (present, not 'used to')",
+              "I will play tennis (future, not past habit)"
+            ]
           },
           {
             "id": 2,
             "label_en": "Another",
             "hidden_prompt": "user uses another 'would + base'",
-            "hint_en": "My dad would tell jokes."
+            "hint_en": "My dad would tell jokes.",
+            "examples_pass": [
+              "My dad would tell jokes.",
+              "She would always read before bed.",
+              "We used to live in a small town."
+            ],
+            "examples_fail": [
+              "tennis (bare noun)",
+              "I play tennis (present, not 'used to')",
+              "I will play tennis (future, not past habit)"
+            ]
           },
           {
             "id": 3,
             "label_en": "Ask Charlotte",
             "hidden_prompt": "user asks about her past with would",
-            "hint_en": "What would you do as a kid?"
+            "hint_en": "What would you do as a kid?",
+            "examples_pass": [
+              "What would you do as a kid?",
+              "He didn't use to like coffee.",
+              "How about you?"
+            ],
+            "examples_fail": [
+              "tennis (bare noun)",
+              "I play tennis (present, not 'used to')",
+              "I will play tennis (future, not past habit)"
+            ]
           }
         ],
         "closing_cue": "Charlotte closes with \"Childhood echoes!\" when obj_3 hits.",
@@ -740,19 +920,49 @@
             "id": 1,
             "label_en": "Used to + state",
             "hidden_prompt": "user uses 'I used to be/live/have/like + something'",
-            "hint_en": "I used to be shy."
+            "hint_en": "I used to be shy.",
+            "examples_pass": [
+              "I used to be shy.",
+              "We used to live in a small town.",
+              "He didn't use to like coffee."
+            ],
+            "examples_fail": [
+              "tennis (bare noun)",
+              "I play tennis (present, not 'used to')",
+              "I will play tennis (future, not past habit)"
+            ]
           },
           {
             "id": 2,
             "label_en": "Would + repeated action",
             "hidden_prompt": "user uses 'We/I would + action verb'",
-            "hint_en": "We would play soccer every day."
+            "hint_en": "We would play soccer every day.",
+            "examples_pass": [
+              "We would play soccer every day.",
+              "He didn't use to like coffee.",
+              "I used to play tennis every weekend."
+            ],
+            "examples_fail": [
+              "tennis (bare noun)",
+              "I play tennis (present, not 'used to')",
+              "I will play tennis (future, not past habit)"
+            ]
           },
           {
             "id": 3,
             "label_en": "One more",
             "hidden_prompt": "user uses another used to or would",
-            "hint_en": "I used to live in Rio."
+            "hint_en": "I used to live in Rio.",
+            "examples_pass": [
+              "I used to live in Rio.",
+              "I used to play tennis every weekend.",
+              "She would always read before bed."
+            ],
+            "examples_fail": [
+              "tennis (bare noun)",
+              "I play tennis (present, not 'used to')",
+              "I will play tennis (future, not past habit)"
+            ]
           }
         ],
         "closing_cue": "Charlotte closes with \"Mixed narrative!\" when obj_3 hits.",
@@ -775,19 +985,49 @@
             "id": 1,
             "label_en": "Used to + state/place",
             "hidden_prompt": "user uses 'I used to live + place'",
-            "hint_en": "I used to live in a small town."
+            "hint_en": "I used to live in a small town.",
+            "examples_pass": [
+              "I used to live in a small town.",
+              "I used to play tennis every weekend.",
+              "She would always read before bed."
+            ],
+            "examples_fail": [
+              "tennis (bare noun)",
+              "I play tennis (present, not 'used to')",
+              "I will play tennis (future, not past habit)"
+            ]
           },
           {
             "id": 2,
             "label_en": "Would + repeated action",
             "hidden_prompt": "user uses 'I/We would + action'",
-            "hint_en": "We would walk to school."
+            "hint_en": "We would walk to school.",
+            "examples_pass": [
+              "We would walk to school.",
+              "He didn't use to like coffee.",
+              "I used to play tennis every weekend."
+            ],
+            "examples_fail": [
+              "tennis (bare noun)",
+              "I play tennis (present, not 'used to')",
+              "I will play tennis (future, not past habit)"
+            ]
           },
           {
             "id": 3,
             "label_en": "Ask Charlotte",
             "hidden_prompt": "user asks about her past with used to or would",
-            "hint_en": "Where did you use to live?"
+            "hint_en": "Where did you use to live?",
+            "examples_pass": [
+              "Where did you use to live?",
+              "I used to play tennis every weekend.",
+              "How about you?"
+            ],
+            "examples_fail": [
+              "tennis (bare noun)",
+              "I play tennis (present, not 'used to')",
+              "I will play tennis (future, not past habit)"
+            ]
           }
         ],
         "closing_cue": "Charlotte closes with \"Past portraits!\" when obj_3 hits.",
@@ -934,19 +1174,49 @@
             "id": 1,
             "label_en": "Past vs present habit",
             "hidden_prompt": "user contrasts past (used to/would) with present",
-            "hint_en": "I used to smoke, but now I don't."
+            "hint_en": "I used to smoke, but now I don't.",
+            "examples_pass": [
+              "I used to smoke, but now I don't.",
+              "We used to live in a small town.",
+              "He didn't use to like coffee."
+            ],
+            "examples_fail": [
+              "tennis (bare noun)",
+              "I play tennis (present, not 'used to')",
+              "I will play tennis (future, not past habit)"
+            ]
           },
           {
             "id": 2,
             "label_en": "Another contrast",
             "hidden_prompt": "user uses another contrast",
-            "hint_en": "I would exercise daily, but now I'm lazy."
+            "hint_en": "I would exercise daily, but now I'm lazy.",
+            "examples_pass": [
+              "I would exercise daily, but now I'm lazy.",
+              "She would always read before bed.",
+              "We used to live in a small town."
+            ],
+            "examples_fail": [
+              "tennis (bare noun)",
+              "I play tennis (present, not 'used to')",
+              "I will play tennis (future, not past habit)"
+            ]
           },
           {
             "id": 3,
             "label_en": "Didn't use to but now does",
             "hidden_prompt": "user uses 'I didn't use to + base + but now + present'",
-            "hint_en": "I didn't use to like vegetables, but now I do."
+            "hint_en": "I didn't use to like vegetables, but now I do.",
+            "examples_pass": [
+              "I didn't use to like vegetables, but now I do.",
+              "He didn't use to like coffee.",
+              "I used to play tennis every weekend."
+            ],
+            "examples_fail": [
+              "tennis (bare noun)",
+              "I play tennis (present, not 'used to')",
+              "I will play tennis (future, not past habit)"
+            ]
           }
         ],
         "closing_cue": "Charlotte closes with \"Evolution!\" when obj_3 hits.",
@@ -969,19 +1239,49 @@
             "id": 1,
             "label_en": "Habit that changed",
             "hidden_prompt": "user uses 'I used to + base + but now + present'",
-            "hint_en": "I used to wake up late, but now I'm up at 6."
+            "hint_en": "I used to wake up late, but now I'm up at 6.",
+            "examples_pass": [
+              "I used to wake up late, but now I'm up at 6.",
+              "We used to live in a small town.",
+              "He didn't use to like coffee."
+            ],
+            "examples_fail": [
+              "tennis (bare noun)",
+              "I play tennis (present, not 'used to')",
+              "I will play tennis (future, not past habit)"
+            ]
           },
           {
             "id": 2,
             "label_en": "Another change",
             "hidden_prompt": "user uses 'would' or 'used to' for contrast",
-            "hint_en": "I would go out a lot."
+            "hint_en": "I would go out a lot.",
+            "examples_pass": [
+              "I would go out a lot.",
+              "I used to play tennis every weekend.",
+              "She would always read before bed."
+            ],
+            "examples_fail": [
+              "tennis (bare noun)",
+              "I play tennis (present, not 'used to')",
+              "I will play tennis (future, not past habit)"
+            ]
           },
           {
             "id": 3,
             "label_en": "Ask Charlotte",
             "hidden_prompt": "user asks 'How about you?'",
-            "hint_en": "How about you?"
+            "hint_en": "How about you?",
+            "examples_pass": [
+              "How about you?",
+              "She would always read before bed.",
+              "And you?"
+            ],
+            "examples_fail": [
+              "tennis (bare noun)",
+              "I play tennis (present, not 'used to')",
+              "I will play tennis (future, not past habit)"
+            ]
           }
         ],
         "closing_cue": "Charlotte closes with \"Same and different!\" when obj_3 hits.",

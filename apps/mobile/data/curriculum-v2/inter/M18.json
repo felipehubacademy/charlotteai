@@ -161,19 +161,49 @@
             "id": 1,
             "label_en": "Yes/no reported (present → past)",
             "hidden_prompt": "user uses 'X asked if I + past tense'",
-            "hint_en": "She asked if I had time."
+            "hint_en": "She asked if I had time.",
+            "examples_pass": [
+              "She asked if I had time.",
+              "She asked me what time it was.",
+              "He asked whether I could help."
+            ],
+            "examples_fail": [
+              "busy (bare adjective)",
+              "She asked 'are you busy?' (direct, not reported)",
+              "She asked me am I busy (wrong word order)"
+            ]
           },
           {
             "id": 2,
             "label_en": "Another yes/no (modal)",
             "hidden_prompt": "user uses 'asked if I could/would'",
-            "hint_en": "He asked if I could help him."
+            "hint_en": "He asked if I could help him.",
+            "examples_pass": [
+              "He asked if I could help him.",
+              "He wanted to know where I lived.",
+              "She asked me what time it was."
+            ],
+            "examples_fail": [
+              "busy (bare adjective)",
+              "She asked 'are you busy?' (direct, not reported)",
+              "She asked me am I busy (wrong word order)"
+            ]
           },
           {
             "id": 3,
             "label_en": "Question with 'whether'",
             "hidden_prompt": "user uses 'asked whether'",
-            "hint_en": "She wanted to know whether I had read the book."
+            "hint_en": "She wanted to know whether I had read the book.",
+            "examples_pass": [
+              "She wanted to know whether I had read the book.",
+              "She asked if I was busy.",
+              "He wanted to know where I lived."
+            ],
+            "examples_fail": [
+              "busy (bare adjective)",
+              "She asked 'are you busy?' (direct, not reported)",
+              "She asked me am I busy (wrong word order)"
+            ]
           }
         ],
         "closing_cue": "Charlotte fecha com \"Yes/no reports done!\" quando obj_3 baterem.",
@@ -196,19 +226,49 @@
             "id": 1,
             "label_en": "Report the interview question",
             "hidden_prompt": "user uses 'She asked if you had experience'",
-            "hint_en": "She asked if you had experience with project management."
+            "hint_en": "She asked if you had experience with project management.",
+            "examples_pass": [
+              "She asked if you had experience with project management.",
+              "He asked whether I could help.",
+              "She asked if I was busy."
+            ],
+            "examples_fail": [
+              "busy (bare adjective)",
+              "She asked 'are you busy?' (direct, not reported)",
+              "She asked me am I busy (wrong word order)"
+            ]
           },
           {
             "id": 2,
             "label_en": "Report another question",
             "hidden_prompt": "user reports another yes/no question",
-            "hint_en": "She also asked if you could start in two weeks."
+            "hint_en": "She also asked if you could start in two weeks.",
+            "examples_pass": [
+              "She also asked if you could start in two weeks.",
+              "She asked me what time it was.",
+              "He asked whether I could help."
+            ],
+            "examples_fail": [
+              "busy (bare adjective)",
+              "She asked 'are you busy?' (direct, not reported)",
+              "She asked me am I busy (wrong word order)"
+            ]
           },
           {
             "id": 3,
             "label_en": "Ask Charlotte",
             "hidden_prompt": "user asks about the outcome",
-            "hint_en": "Did you get the job?"
+            "hint_en": "Did you get the job?",
+            "examples_pass": [
+              "Did you get the job?",
+              "He wanted to know where I lived.",
+              "How about you?"
+            ],
+            "examples_fail": [
+              "busy (bare adjective)",
+              "She asked 'are you busy?' (direct, not reported)",
+              "She asked me am I busy (wrong word order)"
+            ]
           }
         ],
         "closing_cue": "Charlotte fecha com \"Interview replay done!\" quando obj_3 baterem.",
@@ -356,19 +416,49 @@
             "id": 1,
             "label_en": "Report with 'where/when'",
             "hidden_prompt": "user uses 'X asked where/when I + past tense'",
-            "hint_en": "He asked where I worked."
+            "hint_en": "He asked where I worked.",
+            "examples_pass": [
+              "He asked where I worked.",
+              "He asked whether I could help.",
+              "She asked if I was busy."
+            ],
+            "examples_fail": [
+              "busy (bare adjective)",
+              "She asked 'are you busy?' (direct, not reported)",
+              "She asked me am I busy (wrong word order)"
+            ]
           },
           {
             "id": 2,
             "label_en": "Report with 'what/how'",
             "hidden_prompt": "user uses 'X asked what/how + subject + past tense'",
-            "hint_en": "She asked how I had learned English."
+            "hint_en": "She asked how I had learned English.",
+            "examples_pass": [
+              "She asked how I had learned English.",
+              "He asked whether I could help.",
+              "She asked if I was busy."
+            ],
+            "examples_fail": [
+              "busy (bare adjective)",
+              "She asked 'are you busy?' (direct, not reported)",
+              "She asked me am I busy (wrong word order)"
+            ]
           },
           {
             "id": 3,
             "label_en": "Report with 'why/who'",
             "hidden_prompt": "user uses 'X asked why/who + subject + past tense'",
-            "hint_en": "He asked why I had moved."
+            "hint_en": "He asked why I had moved.",
+            "examples_pass": [
+              "He asked why I had moved.",
+              "She asked if I was busy.",
+              "He wanted to know where I lived."
+            ],
+            "examples_fail": [
+              "busy (bare adjective)",
+              "She asked 'are you busy?' (direct, not reported)",
+              "She asked me am I busy (wrong word order)"
+            ]
           }
         ],
         "closing_cue": "Charlotte fecha com \"WH-reports nailed!\" quando obj_3 baterem.",
@@ -391,19 +481,49 @@
             "id": 1,
             "label_en": "Report his question",
             "hidden_prompt": "user uses 'He asked why you had missed the meeting'",
-            "hint_en": "He asked why you had missed the meeting."
+            "hint_en": "He asked why you had missed the meeting.",
+            "examples_pass": [
+              "He asked why you had missed the meeting.",
+              "She asked if I was busy.",
+              "He wanted to know where I lived."
+            ],
+            "examples_fail": [
+              "busy (bare adjective)",
+              "She asked 'are you busy?' (direct, not reported)",
+              "She asked me am I busy (wrong word order)"
+            ]
           },
           {
             "id": 2,
             "label_en": "Another WH-question",
             "hidden_prompt": "user reports another WH-question",
-            "hint_en": "He also asked what you had been working on."
+            "hint_en": "He also asked what you had been working on.",
+            "examples_pass": [
+              "He also asked what you had been working on.",
+              "She asked if I was busy.",
+              "He wanted to know where I lived."
+            ],
+            "examples_fail": [
+              "busy (bare adjective)",
+              "She asked 'are you busy?' (direct, not reported)",
+              "She asked me am I busy (wrong word order)"
+            ]
           },
           {
             "id": 3,
             "label_en": "Ask Charlotte",
             "hidden_prompt": "user asks Charlotte for more details",
-            "hint_en": "What did you say?"
+            "hint_en": "What did you say?",
+            "examples_pass": [
+              "What did you say?",
+              "She asked me what time it was.",
+              "How about you?"
+            ],
+            "examples_fail": [
+              "busy (bare adjective)",
+              "She asked 'are you busy?' (direct, not reported)",
+              "She asked me am I busy (wrong word order)"
+            ]
           }
         ],
         "closing_cue": "Charlotte fecha com \"Q&A reported!\" quando obj_3 baterem.",
@@ -554,19 +674,49 @@
             "id": 1,
             "label_en": "Command with 'told me to'",
             "hidden_prompt": "user uses 'X told me to + base'",
-            "hint_en": "My boss told me to send the report."
+            "hint_en": "My boss told me to send the report.",
+            "examples_pass": [
+              "My boss told me to send the report.",
+              "She asked me what time it was.",
+              "He asked whether I could help."
+            ],
+            "examples_fail": [
+              "busy (bare adjective)",
+              "She asked 'are you busy?' (direct, not reported)",
+              "She asked me am I busy (wrong word order)"
+            ]
           },
           {
             "id": 2,
             "label_en": "Negative command 'told me not to'",
             "hidden_prompt": "user uses 'X told me not to + base'",
-            "hint_en": "My mom told me not to worry."
+            "hint_en": "My mom told me not to worry.",
+            "examples_pass": [
+              "My mom told me not to worry.",
+              "He wanted to know where I lived.",
+              "She asked me what time it was."
+            ],
+            "examples_fail": [
+              "busy (bare adjective)",
+              "She asked 'are you busy?' (direct, not reported)",
+              "She asked me am I busy (wrong word order)"
+            ]
           },
           {
             "id": 3,
             "label_en": "Another reported command",
             "hidden_prompt": "user uses another 'told + person + to + base'",
-            "hint_en": "The doctor told me to drink more water."
+            "hint_en": "The doctor told me to drink more water.",
+            "examples_pass": [
+              "The doctor told me to drink more water.",
+              "She asked if I was busy.",
+              "He wanted to know where I lived."
+            ],
+            "examples_fail": [
+              "busy (bare adjective)",
+              "She asked 'are you busy?' (direct, not reported)",
+              "She asked me am I busy (wrong word order)"
+            ]
           }
         ],
         "closing_cue": "Charlotte fecha com \"Commands reported!\" quando obj_3 baterem.",
@@ -589,19 +739,49 @@
             "id": 1,
             "label_en": "Report her command",
             "hidden_prompt": "user uses 'She told you to exercise more'",
-            "hint_en": "She told you to exercise more."
+            "hint_en": "She told you to exercise more.",
+            "examples_pass": [
+              "She told you to exercise more.",
+              "She asked if I was busy.",
+              "He wanted to know where I lived."
+            ],
+            "examples_fail": [
+              "busy (bare adjective)",
+              "She asked 'are you busy?' (direct, not reported)",
+              "She asked me am I busy (wrong word order)"
+            ]
           },
           {
             "id": 2,
             "label_en": "Another reported command",
             "hidden_prompt": "user reports another command",
-            "hint_en": "She also told you to drink less coffee."
+            "hint_en": "She also told you to drink less coffee.",
+            "examples_pass": [
+              "She also told you to drink less coffee.",
+              "He asked whether I could help.",
+              "She asked if I was busy."
+            ],
+            "examples_fail": [
+              "busy (bare adjective)",
+              "She asked 'are you busy?' (direct, not reported)",
+              "She asked me am I busy (wrong word order)"
+            ]
           },
           {
             "id": 3,
             "label_en": "Ask Charlotte",
             "hidden_prompt": "user asks Charlotte if she'll follow the orders",
-            "hint_en": "Are you going to follow her advice?"
+            "hint_en": "Are you going to follow her advice?",
+            "examples_pass": [
+              "Are you going to follow her advice?",
+              "He wanted to know where I lived.",
+              "How about you?"
+            ],
+            "examples_fail": [
+              "busy (bare adjective)",
+              "She asked 'are you busy?' (direct, not reported)",
+              "She asked me am I busy (wrong word order)"
+            ]
           }
         ],
         "closing_cue": "Charlotte fecha com \"Orders relayed!\" quando obj_3 baterem.",
@@ -752,19 +932,49 @@
             "id": 1,
             "label_en": "Request with 'asked me to'",
             "hidden_prompt": "user uses 'X asked me to + base'",
-            "hint_en": "A friend asked me to drive him to the airport."
+            "hint_en": "A friend asked me to drive him to the airport.",
+            "examples_pass": [
+              "A friend asked me to drive him to the airport.",
+              "He wanted to know where I lived.",
+              "She asked me what time it was."
+            ],
+            "examples_fail": [
+              "busy (bare adjective)",
+              "She asked 'are you busy?' (direct, not reported)",
+              "She asked me am I busy (wrong word order)"
+            ]
           },
           {
             "id": 2,
             "label_en": "Warning with 'warned me to'",
             "hidden_prompt": "user uses 'X warned me to/not to + base'",
-            "hint_en": "My mom warned me not to overwork."
+            "hint_en": "My mom warned me not to overwork.",
+            "examples_pass": [
+              "My mom warned me not to overwork.",
+              "He asked whether I could help.",
+              "She asked if I was busy."
+            ],
+            "examples_fail": [
+              "busy (bare adjective)",
+              "She asked 'are you busy?' (direct, not reported)",
+              "She asked me am I busy (wrong word order)"
+            ]
           },
           {
             "id": 3,
             "label_en": "Plea with 'begged me to'",
             "hidden_prompt": "user uses 'X begged me to + base'",
-            "hint_en": "She begged me to stay one more day."
+            "hint_en": "She begged me to stay one more day.",
+            "examples_pass": [
+              "She begged me to stay one more day.",
+              "He wanted to know where I lived.",
+              "She asked me what time it was."
+            ],
+            "examples_fail": [
+              "busy (bare adjective)",
+              "She asked 'are you busy?' (direct, not reported)",
+              "She asked me am I busy (wrong word order)"
+            ]
           }
         ],
         "closing_cue": "Charlotte fecha com \"Reporting verbs varied!\" quando obj_3 baterem.",
@@ -787,19 +997,49 @@
             "id": 1,
             "label_en": "Report the boss's request",
             "hidden_prompt": "user uses 'She asked you to take on extra work'",
-            "hint_en": "She asked you to take on extra work."
+            "hint_en": "She asked you to take on extra work.",
+            "examples_pass": [
+              "She asked you to take on extra work.",
+              "He asked whether I could help.",
+              "She asked if I was busy."
+            ],
+            "examples_fail": [
+              "busy (bare adjective)",
+              "She asked 'are you busy?' (direct, not reported)",
+              "She asked me am I busy (wrong word order)"
+            ]
           },
           {
             "id": 2,
             "label_en": "Report another request with different verb",
             "hidden_prompt": "user uses 'warned/begged/urged + person + to + base'",
-            "hint_en": "Your friend begged you to take a vacation."
+            "hint_en": "Your friend begged you to take a vacation.",
+            "examples_pass": [
+              "Your friend begged you to take a vacation.",
+              "She asked me what time it was.",
+              "He asked whether I could help."
+            ],
+            "examples_fail": [
+              "busy (bare adjective)",
+              "She asked 'are you busy?' (direct, not reported)",
+              "She asked me am I busy (wrong word order)"
+            ]
           },
           {
             "id": 3,
             "label_en": "Ask Charlotte",
             "hidden_prompt": "user asks Charlotte how she handled it",
-            "hint_en": "How did you handle all of it?"
+            "hint_en": "How did you handle all of it?",
+            "examples_pass": [
+              "How did you handle all of it?",
+              "She asked me what time it was.",
+              "How about you?"
+            ],
+            "examples_fail": [
+              "busy (bare adjective)",
+              "She asked 'are you busy?' (direct, not reported)",
+              "She asked me am I busy (wrong word order)"
+            ]
           }
         ],
         "closing_cue": "Charlotte fecha com \"Stress mapped!\" quando obj_3 baterem.",
@@ -948,19 +1188,49 @@
             "id": 1,
             "label_en": "Report a statement",
             "hidden_prompt": "user uses 'X said (that) + past tense'",
-            "hint_en": "She said she had been busy."
+            "hint_en": "She said she had been busy.",
+            "examples_pass": [
+              "She said she had been busy.",
+              "He wanted to know where I lived.",
+              "She asked me what time it was."
+            ],
+            "examples_fail": [
+              "busy (bare adjective)",
+              "She asked 'are you busy?' (direct, not reported)",
+              "She asked me am I busy (wrong word order)"
+            ]
           },
           {
             "id": 2,
             "label_en": "Report a question",
             "hidden_prompt": "user uses 'X asked if/where/what + statement order'",
-            "hint_en": "He asked where I had gone."
+            "hint_en": "He asked where I had gone.",
+            "examples_pass": [
+              "He asked where I had gone.",
+              "He wanted to know where I lived.",
+              "She asked me what time it was."
+            ],
+            "examples_fail": [
+              "busy (bare adjective)",
+              "She asked 'are you busy?' (direct, not reported)",
+              "She asked me am I busy (wrong word order)"
+            ]
           },
           {
             "id": 3,
             "label_en": "Report a command",
             "hidden_prompt": "user uses 'X told me to/not to + base'",
-            "hint_en": "She told me to call her later."
+            "hint_en": "She told me to call her later.",
+            "examples_pass": [
+              "She told me to call her later.",
+              "He wanted to know where I lived.",
+              "She asked me what time it was."
+            ],
+            "examples_fail": [
+              "busy (bare adjective)",
+              "She asked 'are you busy?' (direct, not reported)",
+              "She asked me am I busy (wrong word order)"
+            ]
           }
         ],
         "closing_cue": "Charlotte fecha com \"All reports done!\" quando obj_3 baterem.",
@@ -983,19 +1253,49 @@
             "id": 1,
             "label_en": "Report the question",
             "hidden_prompt": "user uses 'She asked if you were coming for dinner'",
-            "hint_en": "She asked if you were coming for dinner."
+            "hint_en": "She asked if you were coming for dinner.",
+            "examples_pass": [
+              "She asked if you were coming for dinner.",
+              "He wanted to know where I lived.",
+              "She asked me what time it was."
+            ],
+            "examples_fail": [
+              "busy (bare adjective)",
+              "She asked 'are you busy?' (direct, not reported)",
+              "She asked me am I busy (wrong word order)"
+            ]
           },
           {
             "id": 2,
             "label_en": "Report the command",
             "hidden_prompt": "user uses 'She told you to bring dessert'",
-            "hint_en": "She also told you to bring dessert."
+            "hint_en": "She also told you to bring dessert.",
+            "examples_pass": [
+              "She also told you to bring dessert.",
+              "She asked if I was busy.",
+              "He wanted to know where I lived."
+            ],
+            "examples_fail": [
+              "busy (bare adjective)",
+              "She asked 'are you busy?' (direct, not reported)",
+              "She asked me am I busy (wrong word order)"
+            ]
           },
           {
             "id": 3,
             "label_en": "Ask Charlotte",
             "hidden_prompt": "user asks Charlotte more",
-            "hint_en": "What else did she say?"
+            "hint_en": "What else did she say?",
+            "examples_pass": [
+              "What else did she say?",
+              "She asked me what time it was.",
+              "How about you?"
+            ],
+            "examples_fail": [
+              "busy (bare adjective)",
+              "She asked 'are you busy?' (direct, not reported)",
+              "She asked me am I busy (wrong word order)"
+            ]
           }
         ],
         "closing_cue": "Charlotte fecha com \"Family chat reported!\" quando obj_3 baterem.",

@@ -172,19 +172,49 @@
             "id": 1,
             "label_en": "Anticipation with 'look forward to + ing'",
             "hidden_prompt": "user uses 'I look forward to + verb-ing'",
-            "hint_en": "I look forward to traveling this summer."
+            "hint_en": "I look forward to traveling this summer.",
+            "examples_pass": [
+              "I look forward to traveling this summer.",
+              "I'm getting used to working remotely.",
+              "She objects to smoking inside."
+            ],
+            "examples_fail": [
+              "seeing (bare gerund)",
+              "I look forward to see you (base form, not -ing)",
+              "I want to see you (no phrasal verb)"
+            ]
           },
           {
             "id": 2,
             "label_en": "Adaptation with 'getting used to + ing'",
             "hidden_prompt": "user uses 'I'm getting used to + verb-ing'",
-            "hint_en": "I'm getting used to working remotely."
+            "hint_en": "I'm getting used to working remotely.",
+            "examples_pass": [
+              "I'm getting used to working remotely.",
+              "We're looking forward to the trip.",
+              "I look forward to seeing you."
+            ],
+            "examples_fail": [
+              "seeing (bare gerund)",
+              "I look forward to see you (base form, not -ing)",
+              "I want to see you (no phrasal verb)"
+            ]
           },
           {
             "id": 3,
             "label_en": "Opposition with 'object to + ing'",
             "hidden_prompt": "user uses 'I object to + verb-ing'",
-            "hint_en": "I object to working on Sundays."
+            "hint_en": "I object to working on Sundays.",
+            "examples_pass": [
+              "I object to working on Sundays.",
+              "She objects to smoking inside.",
+              "We're looking forward to the trip."
+            ],
+            "examples_fail": [
+              "seeing (bare gerund)",
+              "I look forward to see you (base form, not -ing)",
+              "I want to see you (no phrasal verb)"
+            ]
           }
         ],
         "closing_cue": "Charlotte fecha com \"-ing chunks nailed!\" quando obj_3 baterem.",
@@ -207,19 +237,49 @@
             "id": 1,
             "label_en": "Anticipation",
             "hidden_prompt": "user uses 'look forward to + -ing'",
-            "hint_en": "I'm looking forward to seeing my family."
+            "hint_en": "I'm looking forward to seeing my family.",
+            "examples_pass": [
+              "I'm looking forward to seeing my family.",
+              "I'm getting used to working remotely.",
+              "She objects to smoking inside."
+            ],
+            "examples_fail": [
+              "seeing (bare gerund)",
+              "I look forward to see you (base form, not -ing)",
+              "I want to see you (no phrasal verb)"
+            ]
           },
           {
             "id": 2,
             "label_en": "Adaptation or opposition",
             "hidden_prompt": "user uses 'getting used to' or 'object to + -ing'",
-            "hint_en": "I'm getting used to having early meetings."
+            "hint_en": "I'm getting used to having early meetings.",
+            "examples_pass": [
+              "I'm getting used to having early meetings.",
+              "We're looking forward to the trip.",
+              "I look forward to seeing you."
+            ],
+            "examples_fail": [
+              "seeing (bare gerund)",
+              "I look forward to see you (base form, not -ing)",
+              "I want to see you (no phrasal verb)"
+            ]
           },
           {
             "id": 3,
             "label_en": "Ask Charlotte",
             "hidden_prompt": "user asks Charlotte about her trip",
-            "hint_en": "Where are you going?"
+            "hint_en": "Where are you going?",
+            "examples_pass": [
+              "Where are you going?",
+              "We're looking forward to the trip.",
+              "How about you?"
+            ],
+            "examples_fail": [
+              "seeing (bare gerund)",
+              "I look forward to see you (base form, not -ing)",
+              "I want to see you (no phrasal verb)"
+            ]
           }
         ],
         "closing_cue": "Charlotte fecha com \"Anticipations exchanged!\" quando obj_3 baterem.",
@@ -367,19 +427,49 @@
             "id": 1,
             "label_en": "Tolerate with 'put up with'",
             "hidden_prompt": "user uses 'I can't put up with + noun'",
-            "hint_en": "I can't put up with my neighbor's loud music."
+            "hint_en": "I can't put up with my neighbor's loud music.",
+            "examples_pass": [
+              "I can't put up with my neighbor's loud music.",
+              "I'm getting used to working remotely.",
+              "She objects to smoking inside."
+            ],
+            "examples_fail": [
+              "seeing (bare gerund)",
+              "I look forward to see you (base form, not -ing)",
+              "I want to see you (no phrasal verb)"
+            ]
           },
           {
             "id": 2,
             "label_en": "Deplete with 'run out of'",
             "hidden_prompt": "user uses 'I ran/we ran out of + noun'",
-            "hint_en": "I ran out of patience by Friday."
+            "hint_en": "I ran out of patience by Friday.",
+            "examples_pass": [
+              "I ran out of patience by Friday.",
+              "I look forward to seeing you.",
+              "I'm getting used to working remotely."
+            ],
+            "examples_fail": [
+              "seeing (bare gerund)",
+              "I look forward to see you (base form, not -ing)",
+              "I want to see you (no phrasal verb)"
+            ]
           },
           {
             "id": 3,
             "label_en": "Escape with 'get away with'",
             "hidden_prompt": "user uses 'X gets away with + noun/ing'",
-            "hint_en": "He always gets away with arriving late."
+            "hint_en": "He always gets away with arriving late.",
+            "examples_pass": [
+              "He always gets away with arriving late.",
+              "I'm getting used to working remotely.",
+              "She objects to smoking inside."
+            ],
+            "examples_fail": [
+              "seeing (bare gerund)",
+              "I look forward to see you (base form, not -ing)",
+              "I want to see you (no phrasal verb)"
+            ]
           }
         ],
         "closing_cue": "Charlotte fecha com \"Annoyances vented!\" quando obj_3 baterem.",
@@ -402,19 +492,49 @@
             "id": 1,
             "label_en": "Limit with 'put up with'",
             "hidden_prompt": "user uses 'I can't put up with' or similar",
-            "hint_en": "I can't put up with constant interruptions."
+            "hint_en": "I can't put up with constant interruptions.",
+            "examples_pass": [
+              "I can't put up with constant interruptions.",
+              "She objects to smoking inside.",
+              "We're looking forward to the trip."
+            ],
+            "examples_fail": [
+              "seeing (bare gerund)",
+              "I look forward to see you (base form, not -ing)",
+              "I want to see you (no phrasal verb)"
+            ]
           },
           {
             "id": 2,
             "label_en": "Depletion with 'run out of'",
             "hidden_prompt": "user uses 'running out of + noun'",
-            "hint_en": "I'm running out of motivation."
+            "hint_en": "I'm running out of motivation.",
+            "examples_pass": [
+              "I'm running out of motivation.",
+              "We're looking forward to the trip.",
+              "I look forward to seeing you."
+            ],
+            "examples_fail": [
+              "seeing (bare gerund)",
+              "I look forward to see you (base form, not -ing)",
+              "I want to see you (no phrasal verb)"
+            ]
           },
           {
             "id": 3,
             "label_en": "Ask Charlotte",
             "hidden_prompt": "user asks Charlotte more about her energy",
-            "hint_en": "What's draining you?"
+            "hint_en": "What's draining you?",
+            "examples_pass": [
+              "What's draining you?",
+              "She objects to smoking inside.",
+              "How about you?"
+            ],
+            "examples_fail": [
+              "seeing (bare gerund)",
+              "I look forward to see you (base form, not -ing)",
+              "I want to see you (no phrasal verb)"
+            ]
           }
         ],
         "closing_cue": "Charlotte fecha com \"Mutual exhaustion mapped!\" quando obj_3 baterem.",
@@ -562,19 +682,49 @@
             "id": 1,
             "label_en": "Harmony with 'get along with'",
             "hidden_prompt": "user uses 'I get along with + person'",
-            "hint_en": "I get along really well with my brother."
+            "hint_en": "I get along really well with my brother.",
+            "examples_pass": [
+              "I get along really well with my brother.",
+              "I'm getting used to working remotely.",
+              "She objects to smoking inside."
+            ],
+            "examples_fail": [
+              "seeing (bare gerund)",
+              "I look forward to see you (base form, not -ing)",
+              "I want to see you (no phrasal verb)"
+            ]
           },
           {
             "id": 2,
             "label_en": "Admiration with 'look up to'",
             "hidden_prompt": "user uses 'I look up to + person'",
-            "hint_en": "I look up to my old English teacher."
+            "hint_en": "I look up to my old English teacher.",
+            "examples_pass": [
+              "I look up to my old English teacher.",
+              "We're looking forward to the trip.",
+              "I look forward to seeing you."
+            ],
+            "examples_fail": [
+              "seeing (bare gerund)",
+              "I look forward to see you (base form, not -ing)",
+              "I want to see you (no phrasal verb)"
+            ]
           },
           {
             "id": 3,
             "label_en": "Disapproval with 'look down on'",
             "hidden_prompt": "user uses 'I/he/she looks down on + person'",
-            "hint_en": "I don't like people who look down on others."
+            "hint_en": "I don't like people who look down on others.",
+            "examples_pass": [
+              "I don't like people who look down on others.",
+              "She objects to smoking inside.",
+              "We're looking forward to the trip."
+            ],
+            "examples_fail": [
+              "seeing (bare gerund)",
+              "I look forward to see you (base form, not -ing)",
+              "I want to see you (no phrasal verb)"
+            ]
           }
         ],
         "closing_cue": "Charlotte fecha com \"Relationships mapped!\" quando obj_3 baterem.",
@@ -597,19 +747,49 @@
             "id": 1,
             "label_en": "Mentor with 'look up to'",
             "hidden_prompt": "user uses 'I look up to + person'",
-            "hint_en": "I look up to my dad — he's so patient."
+            "hint_en": "I look up to my dad — he's so patient.",
+            "examples_pass": [
+              "I look up to my dad — he's so patient.",
+              "I'm getting used to working remotely.",
+              "She objects to smoking inside."
+            ],
+            "examples_fail": [
+              "seeing (bare gerund)",
+              "I look forward to see you (base form, not -ing)",
+              "I want to see you (no phrasal verb)"
+            ]
           },
           {
             "id": 2,
             "label_en": "Another relationship",
             "hidden_prompt": "user uses 'get along with' or 'look down on'",
-            "hint_en": "I get along really well with my sister-in-law."
+            "hint_en": "I get along really well with my sister-in-law.",
+            "examples_pass": [
+              "I get along really well with my sister-in-law.",
+              "She objects to smoking inside.",
+              "We're looking forward to the trip."
+            ],
+            "examples_fail": [
+              "seeing (bare gerund)",
+              "I look forward to see you (base form, not -ing)",
+              "I want to see you (no phrasal verb)"
+            ]
           },
           {
             "id": 3,
             "label_en": "Ask Charlotte",
             "hidden_prompt": "user asks Charlotte more about her mentor",
-            "hint_en": "What did she teach you?"
+            "hint_en": "What did she teach you?",
+            "examples_pass": [
+              "What did she teach you?",
+              "She objects to smoking inside.",
+              "How about you?"
+            ],
+            "examples_fail": [
+              "seeing (bare gerund)",
+              "I look forward to see you (base form, not -ing)",
+              "I want to see you (no phrasal verb)"
+            ]
           }
         ],
         "closing_cue": "Charlotte fecha com \"Mentors honored!\" quando obj_3 baterem.",
@@ -760,19 +940,49 @@
             "id": 1,
             "label_en": "Catch up on something behind",
             "hidden_prompt": "user uses 'catch up on + noun'",
-            "hint_en": "I need to catch up on sleep this weekend."
+            "hint_en": "I need to catch up on sleep this weekend.",
+            "examples_pass": [
+              "I need to catch up on sleep this weekend.",
+              "We're looking forward to the trip.",
+              "I look forward to seeing you."
+            ],
+            "examples_fail": [
+              "seeing (bare gerund)",
+              "I look forward to see you (base form, not -ing)",
+              "I want to see you (no phrasal verb)"
+            ]
           },
           {
             "id": 2,
             "label_en": "Compensate with 'make up for'",
             "hidden_prompt": "user uses 'I want to make up for + noun'",
-            "hint_en": "I want to make up for lost time with my family."
+            "hint_en": "I want to make up for lost time with my family.",
+            "examples_pass": [
+              "I want to make up for lost time with my family.",
+              "We're looking forward to the trip.",
+              "I look forward to seeing you."
+            ],
+            "examples_fail": [
+              "seeing (bare gerund)",
+              "I look forward to see you (base form, not -ing)",
+              "I want to see you (no phrasal verb)"
+            ]
           },
           {
             "id": 3,
             "label_en": "Commit with 'go through with'",
             "hidden_prompt": "user uses 'I'll go through with + noun'",
-            "hint_en": "I'll go through with the renovation despite the cost."
+            "hint_en": "I'll go through with the renovation despite the cost.",
+            "examples_pass": [
+              "I'll go through with the renovation despite the cost.",
+              "We're looking forward to the trip.",
+              "I look forward to seeing you."
+            ],
+            "examples_fail": [
+              "seeing (bare gerund)",
+              "I look forward to see you (base form, not -ing)",
+              "I want to see you (no phrasal verb)"
+            ]
           }
         ],
         "closing_cue": "Charlotte fecha com \"Plans aligned!\" quando obj_3 baterem.",
@@ -795,19 +1005,49 @@
             "id": 1,
             "label_en": "Something to catch up on",
             "hidden_prompt": "user uses 'catch up on + noun'",
-            "hint_en": "I need to catch up on my reading."
+            "hint_en": "I need to catch up on my reading.",
+            "examples_pass": [
+              "I need to catch up on my reading.",
+              "We're looking forward to the trip.",
+              "I look forward to seeing you."
+            ],
+            "examples_fail": [
+              "seeing (bare gerund)",
+              "I look forward to see you (base form, not -ing)",
+              "I want to see you (no phrasal verb)"
+            ]
           },
           {
             "id": 2,
             "label_en": "Compensation or commitment",
             "hidden_prompt": "user uses 'make up for' or 'go through with'",
-            "hint_en": "I want to make up for missing my friend's birthday."
+            "hint_en": "I want to make up for missing my friend's birthday.",
+            "examples_pass": [
+              "I want to make up for missing my friend's birthday.",
+              "We're looking forward to the trip.",
+              "I look forward to seeing you."
+            ],
+            "examples_fail": [
+              "seeing (bare gerund)",
+              "I look forward to see you (base form, not -ing)",
+              "I want to see you (no phrasal verb)"
+            ]
           },
           {
             "id": 3,
             "label_en": "Ask Charlotte",
             "hidden_prompt": "user asks Charlotte more about her inbox",
-            "hint_en": "How many unread?"
+            "hint_en": "How many unread?",
+            "examples_pass": [
+              "How many unread?",
+              "I'm getting used to working remotely.",
+              "How about you?"
+            ],
+            "examples_fail": [
+              "seeing (bare gerund)",
+              "I look forward to see you (base form, not -ing)",
+              "I want to see you (no phrasal verb)"
+            ]
           }
         ],
         "closing_cue": "Charlotte fecha com \"Backlogs compared!\" quando obj_3 baterem.",
@@ -957,19 +1197,49 @@
             "id": 1,
             "label_en": "On second thought",
             "hidden_prompt": "user uses 'On second thought + clause'",
-            "hint_en": "On second thought, I'll skip the meeting."
+            "hint_en": "On second thought, I'll skip the meeting.",
+            "examples_pass": [
+              "On second thought, I'll skip the meeting.",
+              "We're looking forward to the trip.",
+              "I look forward to seeing you."
+            ],
+            "examples_fail": [
+              "seeing (bare gerund)",
+              "I look forward to see you (base form, not -ing)",
+              "I want to see you (no phrasal verb)"
+            ]
           },
           {
             "id": 2,
             "label_en": "At the end of the day",
             "hidden_prompt": "user uses 'At the end of the day + clause'",
-            "hint_en": "At the end of the day, health comes first."
+            "hint_en": "At the end of the day, health comes first.",
+            "examples_pass": [
+              "At the end of the day, health comes first.",
+              "I look forward to seeing you.",
+              "I'm getting used to working remotely."
+            ],
+            "examples_fail": [
+              "seeing (bare gerund)",
+              "I look forward to see you (base form, not -ing)",
+              "I want to see you (no phrasal verb)"
+            ]
           },
           {
             "id": 3,
             "label_en": "In the long run or for the time being",
             "hidden_prompt": "user uses 'in the long run' or 'for the time being'",
-            "hint_en": "In the long run, learning English will pay off."
+            "hint_en": "In the long run, learning English will pay off.",
+            "examples_pass": [
+              "In the long run, learning English will pay off.",
+              "She objects to smoking inside.",
+              "We're looking forward to the trip."
+            ],
+            "examples_fail": [
+              "seeing (bare gerund)",
+              "I look forward to see you (base form, not -ing)",
+              "I want to see you (no phrasal verb)"
+            ]
           }
         ],
         "closing_cue": "Charlotte fecha com \"Idiomatic flow!\" quando obj_3 baterem.",
@@ -992,19 +1262,49 @@
             "id": 1,
             "label_en": "Response with idiomatic chunk",
             "hidden_prompt": "user uses 'At the end of the day' or similar chunk",
-            "hint_en": "At the end of the day, my family is what matters."
+            "hint_en": "At the end of the day, my family is what matters.",
+            "examples_pass": [
+              "At the end of the day, my family is what matters.",
+              "We're looking forward to the trip.",
+              "I look forward to seeing you."
+            ],
+            "examples_fail": [
+              "seeing (bare gerund)",
+              "I look forward to see you (base form, not -ing)",
+              "I want to see you (no phrasal verb)"
+            ]
           },
           {
             "id": 2,
             "label_en": "Another chunk in sentence",
             "hidden_prompt": "user uses another idiomatic chunk",
-            "hint_en": "In the long run, I want financial freedom."
+            "hint_en": "In the long run, I want financial freedom.",
+            "examples_pass": [
+              "In the long run, I want financial freedom.",
+              "I'm getting used to working remotely.",
+              "She objects to smoking inside."
+            ],
+            "examples_fail": [
+              "seeing (bare gerund)",
+              "I look forward to see you (base form, not -ing)",
+              "I want to see you (no phrasal verb)"
+            ]
           },
           {
             "id": 3,
             "label_en": "Ask Charlotte",
             "hidden_prompt": "user asks Charlotte about her priorities",
-            "hint_en": "What about you?"
+            "hint_en": "What about you?",
+            "examples_pass": [
+              "What about you?",
+              "We're looking forward to the trip.",
+              "How about you?"
+            ],
+            "examples_fail": [
+              "seeing (bare gerund)",
+              "I look forward to see you (base form, not -ing)",
+              "I want to see you (no phrasal verb)"
+            ]
           }
         ],
         "closing_cue": "Charlotte fecha com \"Priorities clarified!\" quando obj_3 baterem.",

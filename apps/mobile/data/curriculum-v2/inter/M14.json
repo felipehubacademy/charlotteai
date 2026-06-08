@@ -160,19 +160,49 @@
             "id": 1,
             "label_en": "Criticism with 'should have'",
             "hidden_prompt": "user uses 'X should have + past participle'",
-            "hint_en": "He should have apologized sooner."
+            "hint_en": "He should have apologized sooner.",
+            "examples_pass": [
+              "He should have apologized sooner.",
+              "She might have forgotten.",
+              "We shouldn't have waited."
+            ],
+            "examples_fail": [
+              "told (bare verb)",
+              "You should tell me (present advice, not past regret)",
+              "You told me (past simple, no modal perfect)"
+            ]
           },
           {
             "id": 2,
             "label_en": "Criticism with 'shouldn't have'",
             "hidden_prompt": "user uses 'X shouldn't have + past participle'",
-            "hint_en": "She shouldn't have left without saying goodbye."
+            "hint_en": "She shouldn't have left without saying goodbye.",
+            "examples_pass": [
+              "She shouldn't have left without saying goodbye.",
+              "I could have helped you.",
+              "She might have forgotten."
+            ],
+            "examples_fail": [
+              "told (bare verb)",
+              "You should tell me (present advice, not past regret)",
+              "You told me (past simple, no modal perfect)"
+            ]
           },
           {
             "id": 3,
             "label_en": "Additional retrospective advice",
             "hidden_prompt": "user uses another 'should/shouldn't have' construction",
-            "hint_en": "They should have planned better."
+            "hint_en": "They should have planned better.",
+            "examples_pass": [
+              "They should have planned better.",
+              "We shouldn't have waited.",
+              "You should have told me earlier."
+            ],
+            "examples_fail": [
+              "told (bare verb)",
+              "You should tell me (present advice, not past regret)",
+              "You told me (past simple, no modal perfect)"
+            ]
           }
         ],
         "closing_cue": "Charlotte fecha com \"Sharp judgment!\" quando obj_3 baterem.",
@@ -195,19 +225,49 @@
             "id": 1,
             "label_en": "Opinion with 'should/shouldn't have'",
             "hidden_prompt": "user uses 'you should have' or 'you shouldn't have'",
-            "hint_en": "You shouldn't have sent it without thinking."
+            "hint_en": "You shouldn't have sent it without thinking.",
+            "examples_pass": [
+              "You shouldn't have sent it without thinking.",
+              "She might have forgotten.",
+              "We shouldn't have waited."
+            ],
+            "examples_fail": [
+              "told (bare verb)",
+              "You should tell me (present advice, not past regret)",
+              "You told me (past simple, no modal perfect)"
+            ]
           },
           {
             "id": 2,
             "label_en": "Alternative in retrospect",
             "hidden_prompt": "user suggests what she should have done instead",
-            "hint_en": "You should have talked to him first."
+            "hint_en": "You should have talked to him first.",
+            "examples_pass": [
+              "You should have talked to him first.",
+              "You should have told me earlier.",
+              "I could have helped you."
+            ],
+            "examples_fail": [
+              "told (bare verb)",
+              "You should tell me (present advice, not past regret)",
+              "You told me (past simple, no modal perfect)"
+            ]
           },
           {
             "id": 3,
             "label_en": "Question for Charlotte",
             "hidden_prompt": "user asks Charlotte how she feels or what she'll do",
-            "hint_en": "How do you feel about it now?"
+            "hint_en": "How do you feel about it now?",
+            "examples_pass": [
+              "How do you feel about it now?",
+              "I could have helped you.",
+              "How about you?"
+            ],
+            "examples_fail": [
+              "told (bare verb)",
+              "You should tell me (present advice, not past regret)",
+              "You told me (past simple, no modal perfect)"
+            ]
           }
         ],
         "closing_cue": "Charlotte fecha com \"Honest feedback received!\" quando obj_3 baterem.",
@@ -355,19 +415,49 @@
             "id": 1,
             "label_en": "Missed opportunity with 'could have'",
             "hidden_prompt": "user uses 'X could have + past participle'",
-            "hint_en": "He could have won the prize."
+            "hint_en": "He could have won the prize.",
+            "examples_pass": [
+              "He could have won the prize.",
+              "I could have helped you.",
+              "She might have forgotten."
+            ],
+            "examples_fail": [
+              "told (bare verb)",
+              "You should tell me (present advice, not past regret)",
+              "You told me (past simple, no modal perfect)"
+            ]
           },
           {
             "id": 2,
             "label_en": "Another past possibility",
             "hidden_prompt": "user uses another 'could have + past participle'",
-            "hint_en": "She could have gotten the promotion."
+            "hint_en": "She could have gotten the promotion.",
+            "examples_pass": [
+              "She could have gotten the promotion.",
+              "She might have forgotten.",
+              "We shouldn't have waited."
+            ],
+            "examples_fail": [
+              "told (bare verb)",
+              "You should tell me (present advice, not past regret)",
+              "You told me (past simple, no modal perfect)"
+            ]
           },
           {
             "id": 3,
             "label_en": "Impossibility with 'couldn't have'",
             "hidden_prompt": "user uses 'X couldn't have + past participle'",
-            "hint_en": "They couldn't have arrived on time."
+            "hint_en": "They couldn't have arrived on time.",
+            "examples_pass": [
+              "They couldn't have arrived on time.",
+              "I could have helped you.",
+              "She might have forgotten."
+            ],
+            "examples_fail": [
+              "told (bare verb)",
+              "You should tell me (present advice, not past regret)",
+              "You told me (past simple, no modal perfect)"
+            ]
           }
         ],
         "closing_cue": "Charlotte fecha com \"Possibilities mapped!\" quando obj_3 baterem.",
@@ -390,19 +480,49 @@
             "id": 1,
             "label_en": "Possible consequence with 'could have'",
             "hidden_prompt": "user uses 'you could have + past participle'",
-            "hint_en": "You could have missed the meeting entirely."
+            "hint_en": "You could have missed the meeting entirely.",
+            "examples_pass": [
+              "You could have missed the meeting entirely.",
+              "I could have helped you.",
+              "She might have forgotten."
+            ],
+            "examples_fail": [
+              "told (bare verb)",
+              "You should tell me (present advice, not past regret)",
+              "You told me (past simple, no modal perfect)"
+            ]
           },
           {
             "id": 2,
             "label_en": "Another possibility or relief",
             "hidden_prompt": "user uses another 'could have' or describes relief",
-            "hint_en": "You could have lost a lot of money."
+            "hint_en": "You could have lost a lot of money.",
+            "examples_pass": [
+              "You could have lost a lot of money.",
+              "I could have helped you.",
+              "She might have forgotten."
+            ],
+            "examples_fail": [
+              "told (bare verb)",
+              "You should tell me (present advice, not past regret)",
+              "You told me (past simple, no modal perfect)"
+            ]
           },
           {
             "id": 3,
             "label_en": "Question for Charlotte",
             "hidden_prompt": "user asks Charlotte 'How did you make it?' or similar",
-            "hint_en": "How did you make it in time?"
+            "hint_en": "How did you make it in time?",
+            "examples_pass": [
+              "How did you make it in time?",
+              "You should have told me earlier.",
+              "How about you?"
+            ],
+            "examples_fail": [
+              "told (bare verb)",
+              "You should tell me (present advice, not past regret)",
+              "You told me (past simple, no modal perfect)"
+            ]
           }
         ],
         "closing_cue": "Charlotte fecha com \"Close call examined!\" quando obj_3 baterem.",
@@ -553,19 +673,49 @@
             "id": 1,
             "label_en": "Deduction with 'must have'",
             "hidden_prompt": "user uses 'X must have + past participle'",
-            "hint_en": "She must have forgotten the keys."
+            "hint_en": "She must have forgotten the keys.",
+            "examples_pass": [
+              "She must have forgotten the keys.",
+              "You should have told me earlier.",
+              "I could have helped you."
+            ],
+            "examples_fail": [
+              "told (bare verb)",
+              "You should tell me (present advice, not past regret)",
+              "You told me (past simple, no modal perfect)"
+            ]
           },
           {
             "id": 2,
             "label_en": "Negative deduction with 'can't have'",
             "hidden_prompt": "user uses 'X can't have + past participle'",
-            "hint_en": "He can't have done it alone."
+            "hint_en": "He can't have done it alone.",
+            "examples_pass": [
+              "He can't have done it alone.",
+              "She might have forgotten.",
+              "We shouldn't have waited."
+            ],
+            "examples_fail": [
+              "told (bare verb)",
+              "You should tell me (present advice, not past regret)",
+              "You told me (past simple, no modal perfect)"
+            ]
           },
           {
             "id": 3,
             "label_en": "Another strong deduction",
             "hidden_prompt": "user uses another 'must have' or 'can't have'",
-            "hint_en": "They must have left in a hurry."
+            "hint_en": "They must have left in a hurry.",
+            "examples_pass": [
+              "They must have left in a hurry.",
+              "She might have forgotten.",
+              "We shouldn't have waited."
+            ],
+            "examples_fail": [
+              "told (bare verb)",
+              "You should tell me (present advice, not past regret)",
+              "You told me (past simple, no modal perfect)"
+            ]
           }
         ],
         "closing_cue": "Charlotte fecha com \"Mysteries solved!\" quando obj_3 baterem.",
@@ -588,19 +738,49 @@
             "id": 1,
             "label_en": "Positive speculation with 'must have'",
             "hidden_prompt": "user uses 'he must have + past participle'",
-            "hint_en": "He must have broken up with someone."
+            "hint_en": "He must have broken up with someone.",
+            "examples_pass": [
+              "He must have broken up with someone.",
+              "You should have told me earlier.",
+              "I could have helped you."
+            ],
+            "examples_fail": [
+              "told (bare verb)",
+              "You should tell me (present advice, not past regret)",
+              "You told me (past simple, no modal perfect)"
+            ]
           },
           {
             "id": 2,
             "label_en": "Negative speculation with 'can't have'",
             "hidden_prompt": "user uses 'he can't have + past participle'",
-            "hint_en": "He can't have planned for that."
+            "hint_en": "He can't have planned for that.",
+            "examples_pass": [
+              "He can't have planned for that.",
+              "She might have forgotten.",
+              "We shouldn't have waited."
+            ],
+            "examples_fail": [
+              "told (bare verb)",
+              "You should tell me (present advice, not past regret)",
+              "You told me (past simple, no modal perfect)"
+            ]
           },
           {
             "id": 3,
             "label_en": "Comment or question",
             "hidden_prompt": "user comments or asks Charlotte more",
-            "hint_en": "Did you talk to him?"
+            "hint_en": "Did you talk to him?",
+            "examples_pass": [
+              "Did you talk to him?",
+              "She might have forgotten.",
+              "We shouldn't have waited."
+            ],
+            "examples_fail": [
+              "told (bare verb)",
+              "You should tell me (present advice, not past regret)",
+              "You told me (past simple, no modal perfect)"
+            ]
           }
         ],
         "closing_cue": "Charlotte fecha com \"Scene decoded!\" quando obj_3 baterem.",
@@ -751,19 +931,49 @@
             "id": 1,
             "label_en": "Speculation with 'might have'",
             "hidden_prompt": "user uses 'X might have + past participle'",
-            "hint_en": "She might have lost her phone."
+            "hint_en": "She might have lost her phone.",
+            "examples_pass": [
+              "She might have lost her phone.",
+              "She might have forgotten.",
+              "We shouldn't have waited."
+            ],
+            "examples_fail": [
+              "told (bare verb)",
+              "You should tell me (present advice, not past regret)",
+              "You told me (past simple, no modal perfect)"
+            ]
           },
           {
             "id": 2,
             "label_en": "Comment with 'needn't have'",
             "hidden_prompt": "user uses 'X needn't have + past participle'",
-            "hint_en": "You needn't have apologized — it was fine."
+            "hint_en": "You needn't have apologized — it was fine.",
+            "examples_pass": [
+              "You needn't have apologized — it was fine.",
+              "You should have told me earlier.",
+              "I could have helped you."
+            ],
+            "examples_fail": [
+              "told (bare verb)",
+              "You should tell me (present advice, not past regret)",
+              "You told me (past simple, no modal perfect)"
+            ]
           },
           {
             "id": 3,
             "label_en": "Another speculation",
             "hidden_prompt": "user uses another 'might have' or 'needn't have'",
-            "hint_en": "He might have changed his mind."
+            "hint_en": "He might have changed his mind.",
+            "examples_pass": [
+              "He might have changed his mind.",
+              "She might have forgotten.",
+              "We shouldn't have waited."
+            ],
+            "examples_fail": [
+              "told (bare verb)",
+              "You should tell me (present advice, not past regret)",
+              "You told me (past simple, no modal perfect)"
+            ]
           }
         ],
         "closing_cue": "Charlotte fecha com \"Subtle speculation!\" quando obj_3 baterem.",
@@ -786,19 +996,49 @@
             "id": 1,
             "label_en": "Soft speculation",
             "hidden_prompt": "user uses 'they might have + past participle'",
-            "hint_en": "They might have noticed."
+            "hint_en": "They might have noticed.",
+            "examples_pass": [
+              "They might have noticed.",
+              "We shouldn't have waited.",
+              "You should have told me earlier."
+            ],
+            "examples_fail": [
+              "told (bare verb)",
+              "You should tell me (present advice, not past regret)",
+              "You told me (past simple, no modal perfect)"
+            ]
           },
           {
             "id": 2,
             "label_en": "Reassure with 'needn't have worried'",
             "hidden_prompt": "user uses 'you needn't have + past participle'",
-            "hint_en": "You needn't have worried — it happens."
+            "hint_en": "You needn't have worried — it happens.",
+            "examples_pass": [
+              "You needn't have worried — it happens.",
+              "You should have told me earlier.",
+              "I could have helped you."
+            ],
+            "examples_fail": [
+              "told (bare verb)",
+              "You should tell me (present advice, not past regret)",
+              "You told me (past simple, no modal perfect)"
+            ]
           },
           {
             "id": 3,
             "label_en": "Question for Charlotte",
             "hidden_prompt": "user asks Charlotte a follow-up",
-            "hint_en": "Did anyone reply?"
+            "hint_en": "Did anyone reply?",
+            "examples_pass": [
+              "Did anyone reply?",
+              "She might have forgotten.",
+              "How about you?"
+            ],
+            "examples_fail": [
+              "told (bare verb)",
+              "You should tell me (present advice, not past regret)",
+              "You told me (past simple, no modal perfect)"
+            ]
           }
         ],
         "closing_cue": "Charlotte fecha com \"Reassurance received!\" quando obj_3 baterem.",
@@ -944,19 +1184,49 @@
             "id": 1,
             "label_en": "Comment with 'should/shouldn't have'",
             "hidden_prompt": "user uses 'should have' or 'shouldn't have'",
-            "hint_en": "You should have planned ahead."
+            "hint_en": "You should have planned ahead.",
+            "examples_pass": [
+              "You should have planned ahead.",
+              "We shouldn't have waited.",
+              "You should have told me earlier."
+            ],
+            "examples_fail": [
+              "told (bare verb)",
+              "You should tell me (present advice, not past regret)",
+              "You told me (past simple, no modal perfect)"
+            ]
           },
           {
             "id": 2,
             "label_en": "Inference or speculation with 'must/might have'",
             "hidden_prompt": "user uses 'must have' or 'might have'",
-            "hint_en": "You must have been exhausted."
+            "hint_en": "You must have been exhausted.",
+            "examples_pass": [
+              "You must have been exhausted.",
+              "I could have helped you.",
+              "She might have forgotten."
+            ],
+            "examples_fail": [
+              "told (bare verb)",
+              "You should tell me (present advice, not past regret)",
+              "You told me (past simple, no modal perfect)"
+            ]
           },
           {
             "id": 3,
             "label_en": "Comment with 'could/needn't have'",
             "hidden_prompt": "user uses 'could have' or 'needn't have'",
-            "hint_en": "You could have asked for help."
+            "hint_en": "You could have asked for help.",
+            "examples_pass": [
+              "You could have asked for help.",
+              "She might have forgotten.",
+              "We shouldn't have waited."
+            ],
+            "examples_fail": [
+              "told (bare verb)",
+              "You should tell me (present advice, not past regret)",
+              "You told me (past simple, no modal perfect)"
+            ]
           }
         ],
         "closing_cue": "Charlotte fecha com \"Modal mastery!\" quando obj_3 baterem.",
@@ -979,19 +1249,49 @@
             "id": 1,
             "label_en": "Criticism with 'should/shouldn't have'",
             "hidden_prompt": "user uses 'should/shouldn't have'",
-            "hint_en": "She should have apologized."
+            "hint_en": "She should have apologized.",
+            "examples_pass": [
+              "She should have apologized.",
+              "We shouldn't have waited.",
+              "You should have told me earlier."
+            ],
+            "examples_fail": [
+              "told (bare verb)",
+              "You should tell me (present advice, not past regret)",
+              "You told me (past simple, no modal perfect)"
+            ]
           },
           {
             "id": 2,
             "label_en": "Speculation or inference",
             "hidden_prompt": "user uses 'might have' or 'must have'",
-            "hint_en": "She might have had a real emergency."
+            "hint_en": "She might have had a real emergency.",
+            "examples_pass": [
+              "She might have had a real emergency.",
+              "You should have told me earlier.",
+              "I could have helped you."
+            ],
+            "examples_fail": [
+              "told (bare verb)",
+              "You should tell me (present advice, not past regret)",
+              "You told me (past simple, no modal perfect)"
+            ]
           },
           {
             "id": 3,
             "label_en": "Question or extra comment",
             "hidden_prompt": "user asks 'Did you talk to her?' or adds another modal perfect",
-            "hint_en": "Did you talk to her about it?"
+            "hint_en": "Did you talk to her about it?",
+            "examples_pass": [
+              "Did you talk to her about it?",
+              "We shouldn't have waited.",
+              "How about you?"
+            ],
+            "examples_fail": [
+              "told (bare verb)",
+              "You should tell me (present advice, not past regret)",
+              "You told me (past simple, no modal perfect)"
+            ]
           }
         ],
         "closing_cue": "Charlotte fecha com \"Layered take!\" quando obj_3 baterem.",

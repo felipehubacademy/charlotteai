@@ -157,19 +157,49 @@
             "id": 1,
             "label_en": "Say what you were doing at a time",
             "hidden_prompt": "user states past continuous activity with 'I was + verb-ing + at + time'",
-            "hint_en": "I was studying at 8pm."
+            "hint_en": "I was studying at 8pm.",
+            "examples_pass": [
+              "I was studying at 8pm.",
+              "We were watching TV last night.",
+              "I was working at 7am."
+            ],
+            "examples_fail": [
+              "studying (no subject + 'was')",
+              "I studied at 8pm (past simple, not continuous)",
+              "I'm studying now (present, not past continuous)"
+            ]
           },
           {
             "id": 2,
             "label_en": "Say what someone was doing",
             "hidden_prompt": "user uses 'He/She was + verb-ing' or 'They were + verb-ing'",
-            "hint_en": "My sister was watching TV."
+            "hint_en": "My sister was watching TV.",
+            "examples_pass": [
+              "My sister was watching TV.",
+              "I was working at 7am.",
+              "She was sleeping at midnight."
+            ],
+            "examples_fail": [
+              "studying (no subject + 'was')",
+              "I studied at 8pm (past simple, not continuous)",
+              "I'm studying now (present, not past continuous)"
+            ]
           },
           {
             "id": 3,
             "label_en": "One more ongoing activity",
             "hidden_prompt": "user uses another past continuous",
-            "hint_en": "We were eating dinner."
+            "hint_en": "We were eating dinner.",
+            "examples_pass": [
+              "We were eating dinner.",
+              "She was sleeping at midnight.",
+              "They were eating dinner at 8pm."
+            ],
+            "examples_fail": [
+              "studying (no subject + 'was')",
+              "I studied at 8pm (past simple, not continuous)",
+              "I'm studying now (present, not past continuous)"
+            ]
           }
         ],
         "closing_cue": "Charlotte closes with \"Busy evening!\" when obj_3 hits.",
@@ -192,19 +222,49 @@
             "id": 1,
             "label_en": "Say last night ongoing activity",
             "hidden_prompt": "user uses 'I was + verb-ing'",
-            "hint_en": "I was reading."
+            "hint_en": "I was reading.",
+            "examples_pass": [
+              "I was reading.",
+              "I was working at 7am.",
+              "She was sleeping at midnight."
+            ],
+            "examples_fail": [
+              "studying (no subject + 'was')",
+              "I studied at 8pm (past simple, not continuous)",
+              "I'm studying now (present, not past continuous)"
+            ]
           },
           {
             "id": 2,
             "label_en": "Say what someone else was doing",
             "hidden_prompt": "user uses 'X was + verb-ing'",
-            "hint_en": "My brother was playing games."
+            "hint_en": "My brother was playing games.",
+            "examples_pass": [
+              "My brother was playing games.",
+              "They were eating dinner at 8pm.",
+              "We were watching TV last night."
+            ],
+            "examples_fail": [
+              "studying (no subject + 'was')",
+              "I studied at 8pm (past simple, not continuous)",
+              "I'm studying now (present, not past continuous)"
+            ]
           },
           {
             "id": 3,
             "label_en": "Ask Charlotte",
             "hidden_prompt": "user asks 'What were you doing?' or 'How about you?'",
-            "hint_en": "What were you doing?"
+            "hint_en": "What were you doing?",
+            "examples_pass": [
+              "What were you doing?",
+              "I was working at 7am.",
+              "How about you?"
+            ],
+            "examples_fail": [
+              "studying (no subject + 'was')",
+              "I studied at 8pm (past simple, not continuous)",
+              "I'm studying now (present, not past continuous)"
+            ]
           }
         ],
         "closing_cue": "Charlotte closes with \"Cozy night around!\" when obj_3 hits.",
@@ -348,19 +408,49 @@
             "id": 1,
             "label_en": "Correct Charlotte (I wasn't)",
             "hidden_prompt": "user uses 'I wasn't + verb-ing'",
-            "hint_en": "I wasn't sleeping."
+            "hint_en": "I wasn't sleeping.",
+            "examples_pass": [
+              "I wasn't sleeping.",
+              "They were eating dinner at 8pm.",
+              "We were watching TV last night."
+            ],
+            "examples_fail": [
+              "studying (no subject + 'was')",
+              "I studied at 8pm (past simple, not continuous)",
+              "I'm studying now (present, not past continuous)"
+            ]
           },
           {
             "id": 2,
             "label_en": "Say what you WERE doing",
             "hidden_prompt": "user uses 'I was + verb-ing'",
-            "hint_en": "I was reading."
+            "hint_en": "I was reading.",
+            "examples_pass": [
+              "I was reading.",
+              "I was working at 7am.",
+              "She was sleeping at midnight."
+            ],
+            "examples_fail": [
+              "studying (no subject + 'was')",
+              "I studied at 8pm (past simple, not continuous)",
+              "I'm studying now (present, not past continuous)"
+            ]
           },
           {
             "id": 3,
             "label_en": "Say what someone wasn't doing",
             "hidden_prompt": "user uses 'He/She wasn't + verb-ing' or 'They weren't + verb-ing'",
-            "hint_en": "My sister wasn't sleeping either."
+            "hint_en": "My sister wasn't sleeping either.",
+            "examples_pass": [
+              "My sister wasn't sleeping either.",
+              "They were eating dinner at 8pm.",
+              "We were watching TV last night."
+            ],
+            "examples_fail": [
+              "studying (no subject + 'was')",
+              "I studied at 8pm (past simple, not continuous)",
+              "I'm studying now (present, not past continuous)"
+            ]
           }
         ],
         "closing_cue": "Charlotte closes with \"Mystery solved!\" when obj_3 hits.",
@@ -383,19 +473,49 @@
             "id": 1,
             "label_en": "Say what you weren't doing",
             "hidden_prompt": "user uses 'I wasn't + verb-ing'",
-            "hint_en": "I wasn't working."
+            "hint_en": "I wasn't working.",
+            "examples_pass": [
+              "I wasn't working.",
+              "I was working at 7am.",
+              "She was sleeping at midnight."
+            ],
+            "examples_fail": [
+              "studying (no subject + 'was')",
+              "I studied at 8pm (past simple, not continuous)",
+              "I'm studying now (present, not past continuous)"
+            ]
           },
           {
             "id": 2,
             "label_en": "Say what someone wasn't doing",
             "hidden_prompt": "user uses 'He/She wasn't + verb-ing'",
-            "hint_en": "My brother wasn't studying."
+            "hint_en": "My brother wasn't studying.",
+            "examples_pass": [
+              "My brother wasn't studying.",
+              "She was sleeping at midnight.",
+              "They were eating dinner at 8pm."
+            ],
+            "examples_fail": [
+              "studying (no subject + 'was')",
+              "I studied at 8pm (past simple, not continuous)",
+              "I'm studying now (present, not past continuous)"
+            ]
           },
           {
             "id": 3,
             "label_en": "Ask Charlotte",
             "hidden_prompt": "user asks 'How about you?'",
-            "hint_en": "How about you?"
+            "hint_en": "How about you?",
+            "examples_pass": [
+              "How about you?",
+              "She was sleeping at midnight.",
+              "And you?"
+            ],
+            "examples_fail": [
+              "studying (no subject + 'was')",
+              "I studied at 8pm (past simple, not continuous)",
+              "I'm studying now (present, not past continuous)"
+            ]
           }
         ],
         "closing_cue": "Charlotte closes with \"Got the picture!\" when obj_3 hits.",
@@ -541,19 +661,49 @@
             "id": 1,
             "label_en": "Ask 'Were you...?'",
             "hidden_prompt": "user asks 'Were you + verb-ing?'",
-            "hint_en": "Were you watching TV?"
+            "hint_en": "Were you watching TV?",
+            "examples_pass": [
+              "Were you watching TV?",
+              "They were eating dinner at 8pm.",
+              "How about you?"
+            ],
+            "examples_fail": [
+              "studying (no subject + 'was')",
+              "I studied at 8pm (past simple, not continuous)",
+              "I'm studying now (present, not past continuous)"
+            ]
           },
           {
             "id": 2,
             "label_en": "WH question with past continuous",
             "hidden_prompt": "user asks 'What/Where/Who were you + verb-ing?'",
-            "hint_en": "What were you doing at 9?"
+            "hint_en": "What were you doing at 9?",
+            "examples_pass": [
+              "What were you doing at 9?",
+              "They were eating dinner at 8pm.",
+              "How about you?"
+            ],
+            "examples_fail": [
+              "studying (no subject + 'was')",
+              "I studied at 8pm (past simple, not continuous)",
+              "I'm studying now (present, not past continuous)"
+            ]
           },
           {
             "id": 3,
             "label_en": "Ask about someone (Was)",
             "hidden_prompt": "user asks 'Was + 3rd person + verb-ing?'",
-            "hint_en": "Was your sister cooking?"
+            "hint_en": "Was your sister cooking?",
+            "examples_pass": [
+              "Was your sister cooking?",
+              "She was sleeping at midnight.",
+              "How about you?"
+            ],
+            "examples_fail": [
+              "studying (no subject + 'was')",
+              "I studied at 8pm (past simple, not continuous)",
+              "I'm studying now (present, not past continuous)"
+            ]
           }
         ],
         "closing_cue": "Charlotte closes with \"Great questions!\" when obj_3 hits.",
@@ -576,19 +726,49 @@
             "id": 1,
             "label_en": "Yes/no with Were",
             "hidden_prompt": "user asks 'Were you + verb-ing?'",
-            "hint_en": "Were you cooking?"
+            "hint_en": "Were you cooking?",
+            "examples_pass": [
+              "Were you cooking?",
+              "She was sleeping at midnight.",
+              "How about you?"
+            ],
+            "examples_fail": [
+              "studying (no subject + 'was')",
+              "I studied at 8pm (past simple, not continuous)",
+              "I'm studying now (present, not past continuous)"
+            ]
           },
           {
             "id": 2,
             "label_en": "Yes/no with Was",
             "hidden_prompt": "user asks 'Was + 3rd person + verb-ing?'",
-            "hint_en": "Was your friend with you?"
+            "hint_en": "Was your friend with you?",
+            "examples_pass": [
+              "Was your friend with you?",
+              "They were eating dinner at 8pm.",
+              "How about you?"
+            ],
+            "examples_fail": [
+              "studying (no subject + 'was')",
+              "I studied at 8pm (past simple, not continuous)",
+              "I'm studying now (present, not past continuous)"
+            ]
           },
           {
             "id": 3,
             "label_en": "WH question",
             "hidden_prompt": "user asks WH + were/was + verb-ing",
-            "hint_en": "What were you doing at 3?"
+            "hint_en": "What were you doing at 3?",
+            "examples_pass": [
+              "What were you doing at 3?",
+              "I was working at 7am.",
+              "How about you?"
+            ],
+            "examples_fail": [
+              "studying (no subject + 'was')",
+              "I studied at 8pm (past simple, not continuous)",
+              "I'm studying now (present, not past continuous)"
+            ]
           }
         ],
         "closing_cue": "Charlotte closes with \"Quiz solved!\" when obj_3 hits.",
@@ -734,19 +914,49 @@
             "id": 1,
             "label_en": "Scene with 'when' (interruption)",
             "hidden_prompt": "user uses 'I was + verb-ing + when + past simple'",
-            "hint_en": "I was reading when the phone rang."
+            "hint_en": "I was reading when the phone rang.",
+            "examples_pass": [
+              "I was reading when the phone rang.",
+              "She was sleeping at midnight.",
+              "They were eating dinner at 8pm."
+            ],
+            "examples_fail": [
+              "studying (no subject + 'was')",
+              "I studied at 8pm (past simple, not continuous)",
+              "I'm studying now (present, not past continuous)"
+            ]
           },
           {
             "id": 2,
             "label_en": "Scene with 'while'",
             "hidden_prompt": "user uses 'While + past continuous, past simple'",
-            "hint_en": "While I was cooking, she arrived."
+            "hint_en": "While I was cooking, she arrived.",
+            "examples_pass": [
+              "While I was cooking, she arrived.",
+              "They were eating dinner at 8pm.",
+              "We were watching TV last night."
+            ],
+            "examples_fail": [
+              "studying (no subject + 'was')",
+              "I studied at 8pm (past simple, not continuous)",
+              "I'm studying now (present, not past continuous)"
+            ]
           },
           {
             "id": 3,
             "label_en": "Another scene with 'as' or 'when'",
             "hidden_prompt": "user uses another time clause structure",
-            "hint_en": "As I was walking, I saw a friend."
+            "hint_en": "As I was walking, I saw a friend.",
+            "examples_pass": [
+              "As I was walking, I saw a friend.",
+              "I was working at 7am.",
+              "She was sleeping at midnight."
+            ],
+            "examples_fail": [
+              "studying (no subject + 'was')",
+              "I studied at 8pm (past simple, not continuous)",
+              "I'm studying now (present, not past continuous)"
+            ]
           }
         ],
         "closing_cue": "Charlotte closes with \"Vivid story!\" when obj_3 hits.",
@@ -769,19 +979,49 @@
             "id": 1,
             "label_en": "While scene",
             "hidden_prompt": "user uses 'While + past continuous, past simple'",
-            "hint_en": "While I was eating, the cat jumped."
+            "hint_en": "While I was eating, the cat jumped.",
+            "examples_pass": [
+              "While I was eating, the cat jumped.",
+              "She was sleeping at midnight.",
+              "They were eating dinner at 8pm."
+            ],
+            "examples_fail": [
+              "studying (no subject + 'was')",
+              "I studied at 8pm (past simple, not continuous)",
+              "I'm studying now (present, not past continuous)"
+            ]
           },
           {
             "id": 2,
             "label_en": "When scene",
             "hidden_prompt": "user uses 'I was + ing + when + past simple'",
-            "hint_en": "I was watching TV when the lights went off."
+            "hint_en": "I was watching TV when the lights went off.",
+            "examples_pass": [
+              "I was watching TV when the lights went off.",
+              "I was working at 7am.",
+              "She was sleeping at midnight."
+            ],
+            "examples_fail": [
+              "studying (no subject + 'was')",
+              "I studied at 8pm (past simple, not continuous)",
+              "I'm studying now (present, not past continuous)"
+            ]
           },
           {
             "id": 3,
             "label_en": "Ask Charlotte",
             "hidden_prompt": "user asks 'What about you?'",
-            "hint_en": "What about you?"
+            "hint_en": "What about you?",
+            "examples_pass": [
+              "What about you?",
+              "We were watching TV last night.",
+              "How about you?"
+            ],
+            "examples_fail": [
+              "studying (no subject + 'was')",
+              "I studied at 8pm (past simple, not continuous)",
+              "I'm studying now (present, not past continuous)"
+            ]
           }
         ],
         "closing_cue": "Charlotte closes with \"Funny moments!\" when obj_3 hits.",
@@ -925,19 +1165,49 @@
             "id": 1,
             "label_en": "First sentence: continuous + simple",
             "hidden_prompt": "user uses 'I was + ing + when + past simple'",
-            "hint_en": "I was walking when it started to rain."
+            "hint_en": "I was walking when it started to rain.",
+            "examples_pass": [
+              "I was walking when it started to rain.",
+              "They were eating dinner at 8pm.",
+              "We were watching TV last night."
+            ],
+            "examples_fail": [
+              "studying (no subject + 'was')",
+              "I studied at 8pm (past simple, not continuous)",
+              "I'm studying now (present, not past continuous)"
+            ]
           },
           {
             "id": 2,
             "label_en": "Second with while",
             "hidden_prompt": "user uses 'While + past continuous, past simple'",
-            "hint_en": "While I was running for shelter, I saw a friend."
+            "hint_en": "While I was running for shelter, I saw a friend.",
+            "examples_pass": [
+              "While I was running for shelter, I saw a friend.",
+              "We were watching TV last night.",
+              "I was working at 7am."
+            ],
+            "examples_fail": [
+              "studying (no subject + 'was')",
+              "I studied at 8pm (past simple, not continuous)",
+              "I'm studying now (present, not past continuous)"
+            ]
           },
           {
             "id": 3,
             "label_en": "Third sentence closing the story",
             "hidden_prompt": "user uses another past continuous + simple combination",
-            "hint_en": "We were talking when our boss called us."
+            "hint_en": "We were talking when our boss called us.",
+            "examples_pass": [
+              "We were talking when our boss called us.",
+              "We were watching TV last night.",
+              "I was working at 7am."
+            ],
+            "examples_fail": [
+              "studying (no subject + 'was')",
+              "I studied at 8pm (past simple, not continuous)",
+              "I'm studying now (present, not past continuous)"
+            ]
           }
         ],
         "closing_cue": "Charlotte closes with \"Great narrative!\" when obj_3 hits.",
@@ -960,19 +1230,49 @@
             "id": 1,
             "label_en": "Start with continuous setting",
             "hidden_prompt": "user starts with 'I was + verb-ing'",
-            "hint_en": "I was traveling in Italy."
+            "hint_en": "I was traveling in Italy.",
+            "examples_pass": [
+              "I was traveling in Italy.",
+              "I was working at 7am.",
+              "She was sleeping at midnight."
+            ],
+            "examples_fail": [
+              "studying (no subject + 'was')",
+              "I studied at 8pm (past simple, not continuous)",
+              "I'm studying now (present, not past continuous)"
+            ]
           },
           {
             "id": 2,
             "label_en": "Add event with when",
             "hidden_prompt": "user adds event with 'when + past simple'",
-            "hint_en": "When I met an old friend by chance."
+            "hint_en": "When I met an old friend by chance.",
+            "examples_pass": [
+              "When I met an old friend by chance.",
+              "They were eating dinner at 8pm.",
+              "We were watching TV last night."
+            ],
+            "examples_fail": [
+              "studying (no subject + 'was')",
+              "I studied at 8pm (past simple, not continuous)",
+              "I'm studying now (present, not past continuous)"
+            ]
           },
           {
             "id": 3,
             "label_en": "Ask Charlotte",
             "hidden_prompt": "user asks 'How about you?'",
-            "hint_en": "How about you?"
+            "hint_en": "How about you?",
+            "examples_pass": [
+              "How about you?",
+              "She was sleeping at midnight.",
+              "And you?"
+            ],
+            "examples_fail": [
+              "studying (no subject + 'was')",
+              "I studied at 8pm (past simple, not continuous)",
+              "I'm studying now (present, not past continuous)"
+            ]
           }
         ],
         "closing_cue": "Charlotte closes with \"Cool memory!\" when obj_3 hits.",

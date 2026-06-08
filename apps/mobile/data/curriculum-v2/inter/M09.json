@@ -162,19 +162,49 @@
             "id": 1,
             "label_en": "Equality comparison between people",
             "hidden_prompt": "user uses 'X is as + adj + as Y' to compare two people (family/friends)",
-            "hint_en": "I'm as tall as my mother."
+            "hint_en": "I'm as tall as my mother.",
+            "examples_pass": [
+              "I'm as tall as my mother.",
+              "It's not as hot as yesterday.",
+              "He runs as fast as his brother."
+            ],
+            "examples_fail": [
+              "tall (bare adjective)",
+              "She is taller than me (comparative, not 'as...as')",
+              "She is tall (no comparison)"
+            ]
           },
           {
             "id": 2,
             "label_en": "Comparison between things or places",
             "hidden_prompt": "user uses 'as + adj + as' to compare objects, cities, or items",
-            "hint_en": "My phone is as fast as my laptop."
+            "hint_en": "My phone is as fast as my laptop.",
+            "examples_pass": [
+              "My phone is as fast as my laptop.",
+              "He runs as fast as his brother.",
+              "This is the same as that one."
+            ],
+            "examples_fail": [
+              "tall (bare adjective)",
+              "She is taller than me (comparative, not 'as...as')",
+              "She is tall (no comparison)"
+            ]
           },
           {
             "id": 3,
             "label_en": "Comparison involving time, weather, or expectation",
             "hidden_prompt": "user uses 'as + adj + as' with weather/expectation/days",
-            "hint_en": "Today is as cold as yesterday."
+            "hint_en": "Today is as cold as yesterday.",
+            "examples_pass": [
+              "Today is as cold as yesterday.",
+              "This is the same as that one.",
+              "She's as tall as me."
+            ],
+            "examples_fail": [
+              "tall (bare adjective)",
+              "She is taller than me (comparative, not 'as...as')",
+              "She is tall (no comparison)"
+            ]
           }
         ],
         "closing_cue": "Charlotte fecha com \"Three solid equality comparisons!\" quando obj_3 baterem.",
@@ -197,19 +227,49 @@
             "id": 1,
             "label_en": "Two equally good things",
             "hidden_prompt": "user states 'X is as + good/enjoyable/fun + as Y'",
-            "hint_en": "Books are as fun as movies."
+            "hint_en": "Books are as fun as movies.",
+            "examples_pass": [
+              "Books are as fun as movies.",
+              "She's as tall as me.",
+              "It's not as hot as yesterday."
+            ],
+            "examples_fail": [
+              "tall (bare adjective)",
+              "She is taller than me (comparative, not 'as...as')",
+              "She is tall (no comparison)"
+            ]
           },
           {
             "id": 2,
             "label_en": "Two equally hard or tiring things",
             "hidden_prompt": "user uses 'as + difficult/tiring/hard + as'",
-            "hint_en": "Studying is as tiring as exercise."
+            "hint_en": "Studying is as tiring as exercise.",
+            "examples_pass": [
+              "Studying is as tiring as exercise.",
+              "He runs as fast as his brother.",
+              "This is the same as that one."
+            ],
+            "examples_fail": [
+              "tall (bare adjective)",
+              "She is taller than me (comparative, not 'as...as')",
+              "She is tall (no comparison)"
+            ]
           },
           {
             "id": 3,
             "label_en": "Ask Charlotte about something equally good for her",
             "hidden_prompt": "user asks Charlotte 'what's as + adj + as ... for you?' or 'how about you?'",
-            "hint_en": "How about you?"
+            "hint_en": "How about you?",
+            "examples_pass": [
+              "How about you?",
+              "It's not as hot as yesterday.",
+              "And you?"
+            ],
+            "examples_fail": [
+              "tall (bare adjective)",
+              "She is taller than me (comparative, not 'as...as')",
+              "She is tall (no comparison)"
+            ]
           }
         ],
         "closing_cue": "Charlotte fecha com \"Equal pairs everywhere!\" quando obj_3 baterem.",
@@ -358,19 +418,49 @@
             "id": 1,
             "label_en": "Not as...as comparison about a place or home",
             "hidden_prompt": "user uses 'X isn't as + adj + as Y' for a place/home",
-            "hint_en": "My new place isn't as quiet as the old one."
+            "hint_en": "My new place isn't as quiet as the old one.",
+            "examples_pass": [
+              "My new place isn't as quiet as the old one.",
+              "He runs as fast as his brother.",
+              "This is the same as that one."
+            ],
+            "examples_fail": [
+              "tall (bare adjective)",
+              "She is taller than me (comparative, not 'as...as')",
+              "She is tall (no comparison)"
+            ]
           },
           {
             "id": 2,
             "label_en": "Not as...as recent vs past",
             "hidden_prompt": "user uses 'X isn't as + adj + as Y' for recent vs past",
-            "hint_en": "This week isn't as busy as last week."
+            "hint_en": "This week isn't as busy as last week.",
+            "examples_pass": [
+              "This week isn't as busy as last week.",
+              "He runs as fast as his brother.",
+              "This is the same as that one."
+            ],
+            "examples_fail": [
+              "tall (bare adjective)",
+              "She is taller than me (comparative, not 'as...as')",
+              "She is tall (no comparison)"
+            ]
           },
           {
             "id": 3,
             "label_en": "Not as...as about yourself",
             "hidden_prompt": "user uses 'I'm not as + adj + as ...' (self-comparison)",
-            "hint_en": "I'm not as organized as my sister."
+            "hint_en": "I'm not as organized as my sister.",
+            "examples_pass": [
+              "I'm not as organized as my sister.",
+              "This is the same as that one.",
+              "She's as tall as me."
+            ],
+            "examples_fail": [
+              "tall (bare adjective)",
+              "She is taller than me (comparative, not 'as...as')",
+              "She is tall (no comparison)"
+            ]
           }
         ],
         "closing_cue": "Charlotte fecha com \"Honest comparisons!\" quando obj_3 baterem.",
@@ -393,19 +483,49 @@
             "id": 1,
             "label_en": "Something that wasn't as good as said",
             "hidden_prompt": "user uses 'X wasn't as + good/great + as ...' for a disappointing experience",
-            "hint_en": "The movie wasn't as good as I expected."
+            "hint_en": "The movie wasn't as good as I expected.",
+            "examples_pass": [
+              "The movie wasn't as good as I expected.",
+              "This is the same as that one.",
+              "She's as tall as me."
+            ],
+            "examples_fail": [
+              "tall (bare adjective)",
+              "She is taller than me (comparative, not 'as...as')",
+              "She is tall (no comparison)"
+            ]
           },
           {
             "id": 2,
             "label_en": "Something not as hard as it seems",
             "hidden_prompt": "user uses 'X isn't as + difficult/hard + as ...' (positive surprise)",
-            "hint_en": "Cooking isn't as hard as it seems."
+            "hint_en": "Cooking isn't as hard as it seems.",
+            "examples_pass": [
+              "Cooking isn't as hard as it seems.",
+              "He runs as fast as his brother.",
+              "This is the same as that one."
+            ],
+            "examples_fail": [
+              "tall (bare adjective)",
+              "She is taller than me (comparative, not 'as...as')",
+              "She is tall (no comparison)"
+            ]
           },
           {
             "id": 3,
             "label_en": "Ask Charlotte about a disappointment of hers",
             "hidden_prompt": "user asks 'what wasn't as + adj + as for you?' or 'how about you?'",
-            "hint_en": "How about you?"
+            "hint_en": "How about you?",
+            "examples_pass": [
+              "How about you?",
+              "It's not as hot as yesterday.",
+              "And you?"
+            ],
+            "examples_fail": [
+              "tall (bare adjective)",
+              "She is taller than me (comparative, not 'as...as')",
+              "She is tall (no comparison)"
+            ]
           }
         ],
         "closing_cue": "Charlotte fecha com \"Reality check exchange!\" quando obj_3 baterem.",
@@ -556,19 +676,49 @@
             "id": 1,
             "label_en": "Something that doubled",
             "hidden_prompt": "user uses 'twice as + much/many/adj + as'",
-            "hint_en": "I drink twice as much coffee as last year."
+            "hint_en": "I drink twice as much coffee as last year.",
+            "examples_pass": [
+              "I drink twice as much coffee as last year.",
+              "It's not as hot as yesterday.",
+              "He runs as fast as his brother."
+            ],
+            "examples_fail": [
+              "tall (bare adjective)",
+              "She is taller than me (comparative, not 'as...as')",
+              "She is tall (no comparison)"
+            ]
           },
           {
             "id": 2,
             "label_en": "Something that tripled+",
             "hidden_prompt": "user uses 'three times as + adj/much/many + as'",
-            "hint_en": "My commute is three times as long as before."
+            "hint_en": "My commute is three times as long as before.",
+            "examples_pass": [
+              "My commute is three times as long as before.",
+              "This is the same as that one.",
+              "She's as tall as me."
+            ],
+            "examples_fail": [
+              "tall (bare adjective)",
+              "She is taller than me (comparative, not 'as...as')",
+              "She is tall (no comparison)"
+            ]
           },
           {
             "id": 3,
             "label_en": "Multiplied comparison with another person",
             "hidden_prompt": "user uses 'X is twice/three times as + adj + as Y' comparing people",
-            "hint_en": "My brother is twice as patient as I am."
+            "hint_en": "My brother is twice as patient as I am.",
+            "examples_pass": [
+              "My brother is twice as patient as I am.",
+              "He runs as fast as his brother.",
+              "This is the same as that one."
+            ],
+            "examples_fail": [
+              "tall (bare adjective)",
+              "She is taller than me (comparative, not 'as...as')",
+              "She is tall (no comparison)"
+            ]
           }
         ],
         "closing_cue": "Charlotte fecha com \"Big changes!\" quando obj_3 baterem.",
@@ -591,19 +741,49 @@
             "id": 1,
             "label_en": "Something costing 2x or 3x",
             "hidden_prompt": "user uses 'X costs twice/three times as much as + reference'",
-            "hint_en": "Coffee costs twice as much as before."
+            "hint_en": "Coffee costs twice as much as before.",
+            "examples_pass": [
+              "Coffee costs twice as much as before.",
+              "He runs as fast as his brother.",
+              "This is the same as that one."
+            ],
+            "examples_fail": [
+              "tall (bare adjective)",
+              "She is taller than me (comparative, not 'as...as')",
+              "She is tall (no comparison)"
+            ]
           },
           {
             "id": 2,
             "label_en": "Another scaled change (time, work)",
             "hidden_prompt": "user uses 'twice/three times as + adj/much + as'",
-            "hint_en": "I work twice as much as I used to."
+            "hint_en": "I work twice as much as I used to.",
+            "examples_pass": [
+              "I work twice as much as I used to.",
+              "She's as tall as me.",
+              "It's not as hot as yesterday."
+            ],
+            "examples_fail": [
+              "tall (bare adjective)",
+              "She is taller than me (comparative, not 'as...as')",
+              "She is tall (no comparison)"
+            ]
           },
           {
             "id": 3,
             "label_en": "Ask Charlotte a scaled change of hers",
             "hidden_prompt": "user asks Charlotte 'what's twice/three times as... for you?'",
-            "hint_en": "How about you?"
+            "hint_en": "How about you?",
+            "examples_pass": [
+              "How about you?",
+              "It's not as hot as yesterday.",
+              "And you?"
+            ],
+            "examples_fail": [
+              "tall (bare adjective)",
+              "She is taller than me (comparative, not 'as...as')",
+              "She is tall (no comparison)"
+            ]
           }
         ],
         "closing_cue": "Charlotte fecha com \"Scaled life updates!\" quando obj_3 baterem.",
@@ -754,19 +934,49 @@
             "id": 1,
             "label_en": "Observation about study, work, or growth",
             "hidden_prompt": "user uses 'The more I + verb, the more/better I + verb'",
-            "hint_en": "The more I read, the more I learn."
+            "hint_en": "The more I read, the more I learn.",
+            "examples_pass": [
+              "The more I read, the more I learn.",
+              "He runs as fast as his brother.",
+              "This is the same as that one."
+            ],
+            "examples_fail": [
+              "tall (bare adjective)",
+              "She is taller than me (comparative, not 'as...as')",
+              "She is tall (no comparison)"
+            ]
           },
           {
             "id": 2,
             "label_en": "Observation about relationships or time",
             "hidden_prompt": "user uses 'The more X, the more Y' about people or time",
-            "hint_en": "The more I see her, the more I appreciate her."
+            "hint_en": "The more I see her, the more I appreciate her.",
+            "examples_pass": [
+              "The more I see her, the more I appreciate her.",
+              "It's not as hot as yesterday.",
+              "He runs as fast as his brother."
+            ],
+            "examples_fail": [
+              "tall (bare adjective)",
+              "She is taller than me (comparative, not 'as...as')",
+              "She is tall (no comparison)"
+            ]
           },
           {
             "id": 3,
             "label_en": "Observation about money, effort, or health",
             "hidden_prompt": "user uses 'The harder/more X, the more Y'",
-            "hint_en": "The harder I exercise, the better I sleep."
+            "hint_en": "The harder I exercise, the better I sleep.",
+            "examples_pass": [
+              "The harder I exercise, the better I sleep.",
+              "This is the same as that one.",
+              "She's as tall as me."
+            ],
+            "examples_fail": [
+              "tall (bare adjective)",
+              "She is taller than me (comparative, not 'as...as')",
+              "She is tall (no comparison)"
+            ]
           }
         ],
         "closing_cue": "Charlotte fecha com \"Insightful parallels!\" quando obj_3 baterem.",
@@ -789,19 +999,49 @@
             "id": 1,
             "label_en": "Personal reflection with 'the more...the more'",
             "hidden_prompt": "user uses 'The more + clause, the more + clause' for personal insight",
-            "hint_en": "The more I travel, the more curious I become."
+            "hint_en": "The more I travel, the more curious I become.",
+            "examples_pass": [
+              "The more I travel, the more curious I become.",
+              "This is the same as that one.",
+              "She's as tall as me."
+            ],
+            "examples_fail": [
+              "tall (bare adjective)",
+              "She is taller than me (comparative, not 'as...as')",
+              "She is tall (no comparison)"
+            ]
           },
           {
             "id": 2,
             "label_en": "Another reflection (can use less or short comparative)",
             "hidden_prompt": "user uses 'The less/harder/older + clause, the more/better/happier + clause'",
-            "hint_en": "The less I worry, the happier I feel."
+            "hint_en": "The less I worry, the happier I feel.",
+            "examples_pass": [
+              "The less I worry, the happier I feel.",
+              "It's not as hot as yesterday.",
+              "He runs as fast as his brother."
+            ],
+            "examples_fail": [
+              "tall (bare adjective)",
+              "She is taller than me (comparative, not 'as...as')",
+              "She is tall (no comparison)"
+            ]
           },
           {
             "id": 3,
             "label_en": "Ask Charlotte about her parallel",
             "hidden_prompt": "user asks 'How about you?' or 'What's your parallel?'",
-            "hint_en": "How about you?"
+            "hint_en": "How about you?",
+            "examples_pass": [
+              "How about you?",
+              "It's not as hot as yesterday.",
+              "And you?"
+            ],
+            "examples_fail": [
+              "tall (bare adjective)",
+              "She is taller than me (comparative, not 'as...as')",
+              "She is tall (no comparison)"
+            ]
           }
         ],
         "closing_cue": "Charlotte fecha com \"Wisdom traded!\" quando obj_3 baterem.",
@@ -950,19 +1190,49 @@
             "id": 1,
             "label_en": "Equality or inequality",
             "hidden_prompt": "user uses 'as + adj + as' or 'not as + adj + as'",
-            "hint_en": "I'm as busy as I was, but not as stressed."
+            "hint_en": "I'm as busy as I was, but not as stressed.",
+            "examples_pass": [
+              "I'm as busy as I was, but not as stressed.",
+              "This is the same as that one.",
+              "She's as tall as me."
+            ],
+            "examples_fail": [
+              "tall (bare adjective)",
+              "She is taller than me (comparative, not 'as...as')",
+              "She is tall (no comparison)"
+            ]
           },
           {
             "id": 2,
             "label_en": "Comparison with multiplier",
             "hidden_prompt": "user uses 'twice/three times as + adj/much/many + as'",
-            "hint_en": "I have twice as many responsibilities now."
+            "hint_en": "I have twice as many responsibilities now.",
+            "examples_pass": [
+              "I have twice as many responsibilities now.",
+              "She's as tall as me.",
+              "It's not as hot as yesterday."
+            ],
+            "examples_fail": [
+              "tall (bare adjective)",
+              "She is taller than me (comparative, not 'as...as')",
+              "She is tall (no comparison)"
+            ]
           },
           {
             "id": 3,
             "label_en": "Parallel reflection",
             "hidden_prompt": "user uses 'The more X, the more Y'",
-            "hint_en": "The more I grow, the more grateful I become."
+            "hint_en": "The more I grow, the more grateful I become.",
+            "examples_pass": [
+              "The more I grow, the more grateful I become.",
+              "She's as tall as me.",
+              "It's not as hot as yesterday."
+            ],
+            "examples_fail": [
+              "tall (bare adjective)",
+              "She is taller than me (comparative, not 'as...as')",
+              "She is tall (no comparison)"
+            ]
           }
         ],
         "closing_cue": "Charlotte fecha com \"Full comparison toolkit!\" quando obj_3 baterem.",
@@ -985,19 +1255,49 @@
             "id": 1,
             "label_en": "Simple comparison",
             "hidden_prompt": "user uses 'as + adj + as' or 'not as + adj + as'",
-            "hint_en": "Modern life isn't as peaceful as before."
+            "hint_en": "Modern life isn't as peaceful as before.",
+            "examples_pass": [
+              "Modern life isn't as peaceful as before.",
+              "She's as tall as me.",
+              "It's not as hot as yesterday."
+            ],
+            "examples_fail": [
+              "tall (bare adjective)",
+              "She is taller than me (comparative, not 'as...as')",
+              "She is tall (no comparison)"
+            ]
           },
           {
             "id": 2,
             "label_en": "Multiplier or parallel",
             "hidden_prompt": "user uses 'twice/three times as' or 'the more X, the more Y'",
-            "hint_en": "We're twice as connected but not always closer."
+            "hint_en": "We're twice as connected but not always closer.",
+            "examples_pass": [
+              "We're twice as connected but not always closer.",
+              "She's as tall as me.",
+              "It's not as hot as yesterday."
+            ],
+            "examples_fail": [
+              "tall (bare adjective)",
+              "She is taller than me (comparative, not 'as...as')",
+              "She is tall (no comparison)"
+            ]
           },
           {
             "id": 3,
             "label_en": "Ask Charlotte for her comparison",
             "hidden_prompt": "user asks 'How about you?' or 'What do you think?'",
-            "hint_en": "How about you?"
+            "hint_en": "How about you?",
+            "examples_pass": [
+              "How about you?",
+              "It's not as hot as yesterday.",
+              "And you?"
+            ],
+            "examples_fail": [
+              "tall (bare adjective)",
+              "She is taller than me (comparative, not 'as...as')",
+              "She is tall (no comparison)"
+            ]
           }
         ],
         "closing_cue": "Charlotte fecha com \"Modern vs past explored!\" quando obj_3 baterem.",

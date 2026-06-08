@@ -103,6 +103,8 @@
    **hidden_prompt**: "user uses 'X is the person who + verb'"
    **hint_pt**: "She's the friend who helps me."
    **hint_en**: "She's the friend who helps me."
+   **example_pass**: She's the friend who helps me. | The book that I read was great. | She's the person whose car broke down.
+   **example_fail**: boss (bare noun) | The man called my boss (no relative clause) | The man and my boss (no relative pronoun)
 
 2. **id**: 2
    **label_pt**: "Outra pessoa"
@@ -110,6 +112,8 @@
    **hidden_prompt**: "user uses another 'who' clause"
    **hint_pt**: "He's the teacher who taught me."
    **hint_en**: "He's the teacher who taught me."
+   **example_pass**: He's the teacher who taught me. | The city where I grew up is small. | The man who called is my boss.
+   **example_fail**: boss (bare noun) | The man called my boss (no relative clause) | The man and my boss (no relative pronoun)
 
 3. **id**: 3
    **label_pt**: "Mais uma pessoa"
@@ -117,6 +121,8 @@
    **hidden_prompt**: "user uses one more 'who' clause"
    **hint_pt**: "She's the colleague who sits next to me."
    **hint_en**: "She's the colleague who sits next to me."
+   **example_pass**: She's the colleague who sits next to me. | The city where I grew up is small. | The man who called is my boss.
+   **example_fail**: boss (bare noun) | The man called my boss (no relative clause) | The man and my boss (no relative pronoun)
 
 **Closing cue**: Charlotte closes with "People described!" when obj_3 hits.
 
@@ -152,6 +158,8 @@
    **hidden_prompt**: "user uses 'someone who + verb'"
    **hint_pt**: "My mother is someone who never gives up."
    **hint_en**: "My mother is someone who never gives up."
+   **example_pass**: My mother is someone who never gives up. | She's the person whose car broke down. | The city where I grew up is small.
+   **example_fail**: boss (bare noun) | The man called my boss (no relative clause) | The man and my boss (no relative pronoun)
 
 2. **id**: 2
    **label_pt**: "Outra pessoa especial"
@@ -159,6 +167,8 @@
    **hidden_prompt**: "user uses another 'who' clause"
    **hint_pt**: "I have a friend who always listens."
    **hint_en**: "I have a friend who always listens."
+   **example_pass**: I have a friend who always listens. | The book that I read was great. | She's the person whose car broke down.
+   **example_fail**: boss (bare noun) | The man called my boss (no relative clause) | The man and my boss (no relative pronoun)
 
 3. **id**: 3
    **label_pt**: "Perguntar à Charlotte"
@@ -166,6 +176,8 @@
    **hidden_prompt**: "user asks about someone Charlotte admires"
    **hint_pt**: "Who inspires you?"
    **hint_en**: "Who inspires you?"
+   **example_pass**: Who inspires you? | The city where I grew up is small. | How about you?
+   **example_fail**: boss (bare noun) | The man called my boss (no relative clause) | The man and my boss (no relative pronoun)
 
 **Closing cue**: Charlotte closes with "People matter!" when obj_3 hits.
 
@@ -272,6 +284,8 @@
    **hidden_prompt**: "user uses 'X is a thing which/that + verb'"
    **hint_pt**: "It's a book that changed my life."
    **hint_en**: "It's a book that changed my life."
+   **example_pass**: It's a book that changed my life. | She's the person whose car broke down. | The city where I grew up is small.
+   **example_fail**: boss (bare noun) | The man called my boss (no relative clause) | The man and my boss (no relative pronoun)
 
 2. **id**: 2
    **label_pt**: "Outra coisa"
@@ -279,6 +293,8 @@
    **hidden_prompt**: "user uses another 'which/that' clause"
    **hint_pt**: "I have a phone which never breaks."
    **hint_en**: "I have a phone which never breaks."
+   **example_pass**: I have a phone which never breaks. | The book that I read was great. | She's the person whose car broke down.
+   **example_fail**: boss (bare noun) | The man called my boss (no relative clause) | The man and my boss (no relative pronoun)
 
 3. **id**: 3
    **label_pt**: "Mais um item"
@@ -286,6 +302,8 @@
    **hidden_prompt**: "user uses one more 'which/that' clause"
    **hint_pt**: "This is the song I love."
    **hint_en**: "This is the song I love."
+   **example_pass**: This is the song I love. | The book that I read was great. | She's the person whose car broke down.
+   **example_fail**: boss (bare noun) | The man called my boss (no relative clause) | The man and my boss (no relative pronoun)
 
 **Closing cue**: Charlotte closes with "Things described!" when obj_3 hits.
 
@@ -320,6 +338,8 @@
    **hidden_prompt**: "user uses 'X is a + noun + that/which + clause'"
    **hint_pt**: "It's a watch that belonged to my grandfather."
    **hint_en**: "It's a watch that belonged to my grandfather."
+   **example_pass**: It's a watch that belonged to my grandfather. | The book that I read was great. | She's the person whose car broke down.
+   **example_fail**: boss (bare noun) | The man called my boss (no relative clause) | The man and my boss (no relative pronoun)
 
 2. **id**: 2
    **label_pt**: "Outro objeto"
@@ -327,6 +347,8 @@
    **hidden_prompt**: "user uses another 'which/that' clause"
    **hint_pt**: "I have books that I've kept for years."
    **hint_en**: "I have books that I've kept for years."
+   **example_pass**: I have books that I've kept for years. | The man who called is my boss. | The book that I read was great.
+   **example_fail**: boss (bare noun) | The man called my boss (no relative clause) | The man and my boss (no relative pronoun)
 
 3. **id**: 3
    **label_pt**: "Perguntar à Charlotte"
@@ -334,6 +356,8 @@
    **hidden_prompt**: "user asks Charlotte about her meaningful object"
    **hint_pt**: "What about you?"
    **hint_en**: "What about you?"
+   **example_pass**: What about you? | The city where I grew up is small. | How about you?
+   **example_fail**: boss (bare noun) | The man called my boss (no relative clause) | The man and my boss (no relative pronoun)
 
 **Closing cue**: Charlotte closes with "Sentimental items!" when obj_3 hits.
 
@@ -436,6 +460,8 @@
    **hidden_prompt**: "user uses 'X is the place where + clause'"
    **hint_pt**: "This is the city where I was born."
    **hint_en**: "This is the city where I was born."
+   **example_pass**: This is the city where I was born. | The man who called is my boss. | The book that I read was great.
+   **example_fail**: boss (bare noun) | The man called my boss (no relative clause) | The man and my boss (no relative pronoun)
 
 2. **id**: 2
    **label_pt**: "Outro lugar"
@@ -443,6 +469,8 @@
    **hidden_prompt**: "user uses another 'where' clause"
    **hint_pt**: "It's a park where I run every morning."
    **hint_en**: "It's a park where I run every morning."
+   **example_pass**: It's a park where I run every morning. | She's the person whose car broke down. | The city where I grew up is small.
+   **example_fail**: boss (bare noun) | The man called my boss (no relative clause) | The man and my boss (no relative pronoun)
 
 3. **id**: 3
    **label_pt**: "Mais um lugar"
@@ -450,6 +478,8 @@
    **hidden_prompt**: "user uses one more 'where' clause"
    **hint_pt**: "I love the café where we used to meet."
    **hint_en**: "I love the café where we used to meet."
+   **example_pass**: I love the café where we used to meet. | The city where I grew up is small. | The man who called is my boss.
+   **example_fail**: boss (bare noun) | The man called my boss (no relative clause) | The man and my boss (no relative pronoun)
 
 **Closing cue**: Charlotte closes with "Places mapped!" when obj_3 hits.
 
@@ -484,6 +514,8 @@
    **hidden_prompt**: "user uses 'a place where + clause'"
    **hint_pt**: "The beach where I go in summer."
    **hint_en**: "The beach where I go in summer."
+   **example_pass**: The beach where I go in summer. | The man who called is my boss. | The book that I read was great.
+   **example_fail**: boss (bare noun) | The man called my boss (no relative clause) | The man and my boss (no relative pronoun)
 
 2. **id**: 2
    **label_pt**: "Outro lugar"
@@ -491,6 +523,8 @@
    **hidden_prompt**: "user uses another 'where' clause"
    **hint_pt**: "My grandma's house where I spent summers."
    **hint_en**: "My grandma's house where I spent summers."
+   **example_pass**: My grandma's house where I spent summers. | She's the person whose car broke down. | The city where I grew up is small.
+   **example_fail**: boss (bare noun) | The man called my boss (no relative clause) | The man and my boss (no relative pronoun)
 
 3. **id**: 3
    **label_pt**: "Perguntar à Charlotte"
@@ -498,6 +532,8 @@
    **hidden_prompt**: "user asks 'How about you?'"
    **hint_pt**: "How about you?"
    **hint_en**: "How about you?"
+   **example_pass**: How about you? | The book that I read was great. | And you?
+   **example_fail**: boss (bare noun) | The man called my boss (no relative clause) | The man and my boss (no relative pronoun)
 
 **Closing cue**: Charlotte closes with "Soul spots!" when obj_3 hits.
 
@@ -601,6 +637,8 @@
    **hidden_prompt**: "user uses 'X is + person + whose + noun'"
    **hint_pt**: "She's my friend whose dog is huge."
    **hint_en**: "She's my friend whose dog is huge."
+   **example_pass**: She's my friend whose dog is huge. | The city where I grew up is small. | The man who called is my boss.
+   **example_fail**: boss (bare noun) | The man called my boss (no relative clause) | The man and my boss (no relative pronoun)
 
 2. **id**: 2
    **label_pt**: "Outra pessoa"
@@ -608,6 +646,8 @@
    **hidden_prompt**: "user uses another 'whose' clause"
    **hint_pt**: "He's the colleague whose office is next to mine."
    **hint_en**: "He's the colleague whose office is next to mine."
+   **example_pass**: He's the colleague whose office is next to mine. | The man who called is my boss. | The book that I read was great.
+   **example_fail**: boss (bare noun) | The man called my boss (no relative clause) | The man and my boss (no relative pronoun)
 
 3. **id**: 3
    **label_pt**: "Mais um whose"
@@ -615,6 +655,8 @@
    **hidden_prompt**: "user uses another 'whose' clause"
    **hint_pt**: "I know someone whose grandfather was a pilot."
    **hint_en**: "I know someone whose grandfather was a pilot."
+   **example_pass**: I know someone whose grandfather was a pilot. | The man who called is my boss. | The book that I read was great.
+   **example_fail**: boss (bare noun) | The man called my boss (no relative clause) | The man and my boss (no relative pronoun)
 
 **Closing cue**: Charlotte closes with "Relations mapped!" when obj_3 hits.
 
@@ -649,6 +691,8 @@
    **hidden_prompt**: "user uses 'a friend whose + noun + verb'"
    **hint_pt**: "A friend whose family travels often."
    **hint_en**: "A friend whose family travels often."
+   **example_pass**: A friend whose family travels often. | The man who called is my boss. | The book that I read was great.
+   **example_fail**: boss (bare noun) | The man called my boss (no relative clause) | The man and my boss (no relative pronoun)
 
 2. **id**: 2
    **label_pt**: "Outra pessoa"
@@ -656,6 +700,8 @@
    **hidden_prompt**: "user uses another 'whose'"
    **hint_pt**: "A colleague whose son is talented."
    **hint_en**: "A colleague whose son is talented."
+   **example_pass**: A colleague whose son is talented. | The city where I grew up is small. | The man who called is my boss.
+   **example_fail**: boss (bare noun) | The man called my boss (no relative clause) | The man and my boss (no relative pronoun)
 
 3. **id**: 3
    **label_pt**: "Perguntar à Charlotte"
@@ -663,6 +709,8 @@
    **hidden_prompt**: "user asks about someone Charlotte knows"
    **hint_pt**: "How about you?"
    **hint_en**: "How about you?"
+   **example_pass**: How about you? | The book that I read was great. | And you?
+   **example_fail**: boss (bare noun) | The man called my boss (no relative clause) | The man and my boss (no relative pronoun)
 
 **Closing cue**: Charlotte closes with "People stories!" when obj_3 hits.
 
@@ -766,6 +814,8 @@
    **hidden_prompt**: "user uses 'who' clause for person"
    **hint_pt**: "I know a woman who runs marathons."
    **hint_en**: "I know a woman who runs marathons."
+   **example_pass**: I know a woman who runs marathons. | The man who called is my boss. | The book that I read was great.
+   **example_fail**: boss (bare noun) | The man called my boss (no relative clause) | The man and my boss (no relative pronoun)
 
 2. **id**: 2
    **label_pt**: "Coisa ou lugar (that/where)"
@@ -773,6 +823,8 @@
    **hidden_prompt**: "user uses 'that' or 'where' clause"
    **hint_pt**: "It's a city where I'd love to live."
    **hint_en**: "It's a city where I'd love to live."
+   **example_pass**: It's a city where I'd love to live. | The city where I grew up is small. | The man who called is my boss.
+   **example_fail**: boss (bare noun) | The man called my boss (no relative clause) | The man and my boss (no relative pronoun)
 
 3. **id**: 3
    **label_pt**: "Posse com whose"
@@ -780,6 +832,8 @@
    **hidden_prompt**: "user uses 'whose' clause"
    **hint_pt**: "He's the guy whose business is growing."
    **hint_en**: "He's the guy whose business is growing."
+   **example_pass**: He's the guy whose business is growing. | She's the person whose car broke down. | The city where I grew up is small.
+   **example_fail**: boss (bare noun) | The man called my boss (no relative clause) | The man and my boss (no relative pronoun)
 
 **Closing cue**: Charlotte closes with "Relatives mastered!" when obj_3 hits.
 
@@ -815,6 +869,8 @@
    **hidden_prompt**: "user uses 'who' clause"
    **hint_pt**: "I work with people who inspire me."
    **hint_en**: "I work with people who inspire me."
+   **example_pass**: I work with people who inspire me. | The book that I read was great. | She's the person whose car broke down.
+   **example_fail**: boss (bare noun) | The man called my boss (no relative clause) | The man and my boss (no relative pronoun)
 
 2. **id**: 2
    **label_pt**: "Coisa ou lugar"
@@ -822,6 +878,8 @@
    **hidden_prompt**: "user uses 'that' or 'where' clause"
    **hint_pt**: "I read books that challenge me."
    **hint_en**: "I read books that challenge me."
+   **example_pass**: I read books that challenge me. | The city where I grew up is small. | The man who called is my boss.
+   **example_fail**: boss (bare noun) | The man called my boss (no relative clause) | The man and my boss (no relative pronoun)
 
 3. **id**: 3
    **label_pt**: "Perguntar à Charlotte"
@@ -829,6 +887,8 @@
    **hidden_prompt**: "user asks Charlotte"
    **hint_pt**: "How about you?"
    **hint_en**: "How about you?"
+   **example_pass**: How about you? | The book that I read was great. | And you?
+   **example_fail**: boss (bare noun) | The man called my boss (no relative clause) | The man and my boss (no relative pronoun)
 
 **Closing cue**: Charlotte closes with "Connected sentences!" when obj_3 hits.
 

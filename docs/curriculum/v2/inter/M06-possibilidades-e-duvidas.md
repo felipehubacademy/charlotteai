@@ -103,6 +103,8 @@
    **hidden_prompt**: "user uses 'I might + base'"
    **hint_pt**: "I might go hiking."
    **hint_en**: "I might go hiking."
+   **example_pass**: I might go hiking. | She might come tomorrow. | He could be at home.
+   **example_fail**: come (bare verb) | She comes tomorrow (no modal of possibility) | She will come (certainty, not possibility)
 
 2. **id**: 2
    **label_pt**: "Outra possibilidade"
@@ -110,6 +112,8 @@
    **hidden_prompt**: "user uses another 'might + base'"
    **hint_pt**: "I might stay home."
    **hint_en**: "I might stay home."
+   **example_pass**: I might stay home. | It may rain later. | They must be tired.
+   **example_fail**: come (bare verb) | She comes tomorrow (no modal of possibility) | She will come (certainty, not possibility)
 
 3. **id**: 3
    **label_pt**: "Sobre alguém"
@@ -117,6 +121,8 @@
    **hidden_prompt**: "user uses 'X might + base'"
    **hint_pt**: "My friend might join me."
    **hint_en**: "My friend might join me."
+   **example_pass**: My friend might join me. | They must be tired. | She might come tomorrow.
+   **example_fail**: come (bare verb) | She comes tomorrow (no modal of possibility) | She will come (certainty, not possibility)
 
 **Closing cue**: Charlotte closes with "So many options!" when obj_3 hits.
 
@@ -151,6 +157,8 @@
    **hidden_prompt**: "user uses 'I might + base'"
    **hint_pt**: "I might work from home."
    **hint_en**: "I might work from home."
+   **example_pass**: I might work from home. | She might come tomorrow. | He could be at home.
+   **example_fail**: come (bare verb) | She comes tomorrow (no modal of possibility) | She will come (certainty, not possibility)
 
 2. **id**: 2
    **label_pt**: "Outra"
@@ -158,6 +166,8 @@
    **hidden_prompt**: "user uses another 'might'"
    **hint_pt**: "I might exercise."
    **hint_en**: "I might exercise."
+   **example_pass**: I might exercise. | She might come tomorrow. | He could be at home.
+   **example_fail**: come (bare verb) | She comes tomorrow (no modal of possibility) | She will come (certainty, not possibility)
 
 3. **id**: 3
    **label_pt**: "Perguntar à Charlotte"
@@ -165,6 +175,8 @@
    **hidden_prompt**: "user asks 'What might you do?'"
    **hint_pt**: "What might you do?"
    **hint_en**: "What might you do?"
+   **example_pass**: What might you do? | She might come tomorrow. | How about you?
+   **example_fail**: come (bare verb) | She comes tomorrow (no modal of possibility) | She will come (certainty, not possibility)
 
 **Closing cue**: Charlotte closes with "Possibilities open!" when obj_3 hits.
 
@@ -267,6 +279,8 @@
    **hidden_prompt**: "user uses 'It/She/He may + base'"
    **hint_pt**: "It may rain."
    **hint_en**: "It may rain."
+   **example_pass**: It may rain. | She might come tomorrow. | He could be at home.
+   **example_fail**: come (bare verb) | She comes tomorrow (no modal of possibility) | She will come (certainty, not possibility)
 
 2. **id**: 2
    **label_pt**: "Outra com may"
@@ -274,6 +288,8 @@
    **hidden_prompt**: "user uses another may + base"
    **hint_pt**: "She may come over."
    **hint_en**: "She may come over."
+   **example_pass**: She may come over. | He could be at home. | It may rain later.
+   **example_fail**: come (bare verb) | She comes tomorrow (no modal of possibility) | She will come (certainty, not possibility)
 
 3. **id**: 3
    **label_pt**: "Pedido formal com May I"
@@ -281,6 +297,8 @@
    **hidden_prompt**: "user uses 'May I + base?'"
    **hint_pt**: "May I ask a favor?"
    **hint_en**: "May I ask a favor?"
+   **example_pass**: May I ask a favor? | He could be at home. | It may rain later.
+   **example_fail**: come (bare verb) | She comes tomorrow (no modal of possibility) | She will come (certainty, not possibility)
 
 **Closing cue**: Charlotte closes with "Politely possible!" when obj_3 hits.
 
@@ -315,6 +333,8 @@
    **hidden_prompt**: "user uses 'X may + base'"
    **hint_pt**: "I may travel."
    **hint_en**: "I may travel."
+   **example_pass**: I may travel. | She might come tomorrow. | He could be at home.
+   **example_fail**: come (bare verb) | She comes tomorrow (no modal of possibility) | She will come (certainty, not possibility)
 
 2. **id**: 2
    **label_pt**: "Outra"
@@ -322,6 +342,8 @@
    **hidden_prompt**: "user uses another may"
    **hint_pt**: "My boss may call me."
    **hint_en**: "My boss may call me."
+   **example_pass**: My boss may call me. | She might come tomorrow. | He could be at home.
+   **example_fail**: come (bare verb) | She comes tomorrow (no modal of possibility) | She will come (certainty, not possibility)
 
 3. **id**: 3
    **label_pt**: "Perguntar à Charlotte"
@@ -329,6 +351,8 @@
    **hidden_prompt**: "user asks 'What may you do?'"
    **hint_pt**: "What may you do?"
    **hint_en**: "What may you do?"
+   **example_pass**: What may you do? | It may rain later. | How about you?
+   **example_fail**: come (bare verb) | She comes tomorrow (no modal of possibility) | She will come (certainty, not possibility)
 
 **Closing cue**: Charlotte closes with "Open scenarios!" when obj_3 hits.
 
@@ -432,6 +456,8 @@
    **hidden_prompt**: "user uses 'We could + base'"
    **hint_pt**: "We could go hiking."
    **hint_en**: "We could go hiking."
+   **example_pass**: We could go hiking. | He could be at home. | It may rain later.
+   **example_fail**: come (bare verb) | She comes tomorrow (no modal of possibility) | She will come (certainty, not possibility)
 
 2. **id**: 2
    **label_pt**: "Outra sugestão"
@@ -439,6 +465,8 @@
    **hidden_prompt**: "user uses another could + base"
    **hint_pt**: "We could see a movie."
    **hint_en**: "We could see a movie."
+   **example_pass**: We could see a movie. | They must be tired. | She might come tomorrow.
+   **example_fail**: come (bare verb) | She comes tomorrow (no modal of possibility) | She will come (certainty, not possibility)
 
 3. **id**: 3
    **label_pt**: "Pedido com Could you"
@@ -446,6 +474,8 @@
    **hidden_prompt**: "user uses 'Could you + base?'"
    **hint_pt**: "Could you drive?"
    **hint_en**: "Could you drive?"
+   **example_pass**: Could you drive? | He could be at home. | It may rain later.
+   **example_fail**: come (bare verb) | She comes tomorrow (no modal of possibility) | She will come (certainty, not possibility)
 
 **Closing cue**: Charlotte closes with "Many options!" when obj_3 hits.
 
@@ -480,6 +510,8 @@
    **hidden_prompt**: "user uses 'You could + base'"
    **hint_pt**: "You could read a book."
    **hint_en**: "You could read a book."
+   **example_pass**: You could read a book. | It may rain later. | They must be tired.
+   **example_fail**: come (bare verb) | She comes tomorrow (no modal of possibility) | She will come (certainty, not possibility)
 
 2. **id**: 2
    **label_pt**: "Outra"
@@ -487,6 +519,8 @@
    **hidden_prompt**: "user uses another could"
    **hint_pt**: "You could call a friend."
    **hint_en**: "You could call a friend."
+   **example_pass**: You could call a friend. | They must be tired. | She might come tomorrow.
+   **example_fail**: come (bare verb) | She comes tomorrow (no modal of possibility) | She will come (certainty, not possibility)
 
 3. **id**: 3
    **label_pt**: "Mais uma ou perguntar"
@@ -494,6 +528,8 @@
    **hidden_prompt**: "user uses one more 'could' or asks"
    **hint_pt**: "You could try yoga."
    **hint_en**: "You could try yoga."
+   **example_pass**: You could try yoga. | He could be at home. | It may rain later.
+   **example_fail**: come (bare verb) | She comes tomorrow (no modal of possibility) | She will come (certainty, not possibility)
 
 **Closing cue**: Charlotte closes with "Saved from boredom!" when obj_3 hits.
 
@@ -597,6 +633,8 @@
    **hidden_prompt**: "user uses 'That can't be true' or similar"
    **hint_pt**: "That can't be true!"
    **hint_en**: "That can't be true!"
+   **example_pass**: That can't be true! | It may rain later. | They must be tired.
+   **example_fail**: come (bare verb) | She comes tomorrow (no modal of possibility) | She will come (certainty, not possibility)
 
 2. **id**: 2
    **label_pt**: "Mais ceticismo"
@@ -604,6 +642,8 @@
    **hidden_prompt**: "user uses 'It can't be + adjective'"
    **hint_pt**: "It can't be that easy."
    **hint_en**: "It can't be that easy."
+   **example_pass**: It can't be that easy. | It may rain later. | They must be tired.
+   **example_fail**: come (bare verb) | She comes tomorrow (no modal of possibility) | She will come (certainty, not possibility)
 
 3. **id**: 3
    **label_pt**: "Conclusão lógica"
@@ -611,6 +651,8 @@
    **hidden_prompt**: "user uses 'X can't be + state'"
    **hint_pt**: "He can't be lying."
    **hint_en**: "He can't be lying."
+   **example_pass**: He can't be lying. | It may rain later. | They must be tired.
+   **example_fail**: come (bare verb) | She comes tomorrow (no modal of possibility) | She will come (certainty, not possibility)
 
 **Closing cue**: Charlotte closes with "Healthy skepticism!" when obj_3 hits.
 
@@ -646,6 +688,8 @@
    **hidden_prompt**: "user uses 'That can't + base'"
    **hint_pt**: "That can't be true!"
    **hint_en**: "That can't be true!"
+   **example_pass**: That can't be true! | It may rain later. | They must be tired.
+   **example_fail**: come (bare verb) | She comes tomorrow (no modal of possibility) | She will come (certainty, not possibility)
 
 2. **id**: 2
    **label_pt**: "Mais ceticismo"
@@ -653,6 +697,8 @@
    **hidden_prompt**: "user uses another can't"
    **hint_pt**: "It can't be possible."
    **hint_en**: "It can't be possible."
+   **example_pass**: It can't be possible. | She might come tomorrow. | He could be at home.
+   **example_fail**: come (bare verb) | She comes tomorrow (no modal of possibility) | She will come (certainty, not possibility)
 
 3. **id**: 3
    **label_pt**: "Perguntar mais"
@@ -660,6 +706,8 @@
    **hidden_prompt**: "user asks for more info"
    **hint_pt**: "Are you sure?"
    **hint_en**: "Are you sure?"
+   **example_pass**: Are you sure? | They must be tired. | How about you?
+   **example_fail**: come (bare verb) | She comes tomorrow (no modal of possibility) | She will come (certainty, not possibility)
 
 **Closing cue**: Charlotte closes with "Surprised much!" when obj_3 hits.
 
@@ -765,6 +813,8 @@
    **hidden_prompt**: "user uses might/could + base"
    **hint_pt**: "She might be home."
    **hint_en**: "She might be home."
+   **example_pass**: She might be home. | They must be tired. | She might come tomorrow.
+   **example_fail**: come (bare verb) | She comes tomorrow (no modal of possibility) | She will come (certainty, not possibility)
 
 2. **id**: 2
    **label_pt**: "Impossibilidade com can't"
@@ -772,6 +822,8 @@
    **hidden_prompt**: "user uses 'can't + base' for impossibility"
    **hint_pt**: "That can't be right."
    **hint_en**: "That can't be right."
+   **example_pass**: That can't be right. | He could be at home. | It may rain later.
+   **example_fail**: come (bare verb) | She comes tomorrow (no modal of possibility) | She will come (certainty, not possibility)
 
 3. **id**: 3
    **label_pt**: "Pedido formal com May I"
@@ -779,6 +831,8 @@
    **hidden_prompt**: "user uses 'May I + base?'"
    **hint_pt**: "May I ask a question?"
    **hint_en**: "May I ask a question?"
+   **example_pass**: May I ask a question? | They must be tired. | She might come tomorrow.
+   **example_fail**: come (bare verb) | She comes tomorrow (no modal of possibility) | She will come (certainty, not possibility)
 
 **Closing cue**: Charlotte closes with "Modal master!" when obj_3 hits.
 
@@ -814,6 +868,8 @@
    **hidden_prompt**: "user uses might/may/could + base"
    **hint_pt**: "I might travel."
    **hint_en**: "I might travel."
+   **example_pass**: I might travel. | It may rain later. | They must be tired.
+   **example_fail**: come (bare verb) | She comes tomorrow (no modal of possibility) | She will come (certainty, not possibility)
 
 2. **id**: 2
    **label_pt**: "Outra ou impossibilidade"
@@ -821,6 +877,8 @@
    **hidden_prompt**: "user uses another modal"
    **hint_pt**: "She can't be busy now."
    **hint_en**: "She can't be busy now."
+   **example_pass**: She can't be busy now. | He could be at home. | It may rain later.
+   **example_fail**: come (bare verb) | She comes tomorrow (no modal of possibility) | She will come (certainty, not possibility)
 
 3. **id**: 3
    **label_pt**: "Perguntar à Charlotte"
@@ -828,6 +886,8 @@
    **hidden_prompt**: "user asks 'What might/could you do?'"
    **hint_pt**: "What might you do?"
    **hint_en**: "What might you do?"
+   **example_pass**: What might you do? | She might come tomorrow. | How about you?
+   **example_fail**: come (bare verb) | She comes tomorrow (no modal of possibility) | She will come (certainty, not possibility)
 
 **Closing cue**: Charlotte closes with "Modals nailed!" when obj_3 hits.
 

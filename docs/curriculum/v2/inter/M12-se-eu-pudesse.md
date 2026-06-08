@@ -104,6 +104,8 @@
    **hidden_prompt**: "user uses 'If I had + noun, I would + base'"
    **hint_pt**: "If I had more money, I would travel."
    **hint_en**: "If I had more money, I would travel."
+   **example_pass**: If I had more money, I would travel. | If I had time, I would travel more. | If she studied harder, she would pass.
+   **example_fail**: time (bare noun) | If I have time, I will travel (1st conditional, not 2nd) | I travel more (no conditional)
 
 2. **id**: 2
    **label_pt**: "Hipótese com 'if I were + adjetivo/role'"
@@ -111,6 +113,8 @@
    **hidden_prompt**: "user uses 'If I were + adj/noun, I would + base'"
    **hint_pt**: "If I were taller, I would play basketball."
    **hint_en**: "If I were taller, I would play basketball."
+   **example_pass**: If I were taller, I would play basketball. | If I had time, I would travel more. | If she studied harder, she would pass.
+   **example_fail**: time (bare noun) | If I have time, I will travel (1st conditional, not 2nd) | I travel more (no conditional)
 
 3. **id**: 3
    **label_pt**: "Hipótese sobre outra pessoa ou contexto"
@@ -118,6 +122,8 @@
    **hidden_prompt**: "user uses 'If + 3rd person + past, would + base'"
    **hint_pt**: "If my brother lived closer, we would hang out more."
    **hint_en**: "If my brother lived closer, we would hang out more."
+   **example_pass**: If my brother lived closer, we would hang out more. | If she studied harder, she would pass. | If I were you, I'd take the job.
+   **example_fail**: time (bare noun) | If I have time, I will travel (1st conditional, not 2nd) | I travel more (no conditional)
 
 **Closing cue**: Charlotte fecha com "Hypotheticals explored!" quando obj_3 baterem.
 
@@ -153,6 +159,8 @@
    **hidden_prompt**: "user uses 'I would + base' for hypothetical change"
    **hint_pt**: "I would change my job."
    **hint_en**: "I would change my job."
+   **example_pass**: I would change my job. | If she studied harder, she would pass. | If I were you, I'd take the job.
+   **example_fail**: time (bare noun) | If I have time, I will travel (1st conditional, not 2nd) | I travel more (no conditional)
 
 2. **id**: 2
    **label_pt**: "Hipótese mais elaborada com 'if'"
@@ -160,6 +168,8 @@
    **hidden_prompt**: "user uses 'If + past simple, I would + base'"
    **hint_pt**: "If I had a year off, I would travel the world."
    **hint_en**: "If I had a year off, I would travel the world."
+   **example_pass**: If I had a year off, I would travel the world. | I would help if I could. | If I had time, I would travel more.
+   **example_fail**: time (bare noun) | If I have time, I will travel (1st conditional, not 2nd) | I travel more (no conditional)
 
 3. **id**: 3
    **label_pt**: "Perguntar à Charlotte"
@@ -167,6 +177,8 @@
    **hidden_prompt**: "user asks 'How about you?' or 'What would you change?'"
    **hint_pt**: "How about you?"
    **hint_en**: "How about you?"
+   **example_pass**: How about you? | If she studied harder, she would pass. | And you?
+   **example_fail**: time (bare noun) | If I have time, I will travel (1st conditional, not 2nd) | I travel more (no conditional)
 
 **Closing cue**: Charlotte fecha com "Dream worlds compared!" quando obj_3 baterem.
 
@@ -269,6 +281,8 @@
    **hidden_prompt**: "user uses 'I wish I had + noun'"
    **hint_pt**: "I wish I had more energy."
    **hint_en**: "I wish I had more energy."
+   **example_pass**: I wish I had more energy. | If she studied harder, she would pass. | If I were you, I'd take the job.
+   **example_fail**: time (bare noun) | If I have time, I will travel (1st conditional, not 2nd) | I travel more (no conditional)
 
 2. **id**: 2
    **label_pt**: "Wish com 'I wish I were' (estado)"
@@ -276,6 +290,8 @@
    **hidden_prompt**: "user uses 'I wish I were + adj/noun'"
    **hint_pt**: "I wish I were less busy."
    **hint_en**: "I wish I were less busy."
+   **example_pass**: I wish I were less busy. | If I had time, I would travel more. | If she studied harder, she would pass.
+   **example_fail**: time (bare noun) | If I have time, I will travel (1st conditional, not 2nd) | I travel more (no conditional)
 
 3. **id**: 3
    **label_pt**: "Wish com 'I wish I could' (habilidade)"
@@ -283,6 +299,8 @@
    **hidden_prompt**: "user uses 'I wish I could + base'"
    **hint_pt**: "I wish I could play the piano."
    **hint_en**: "I wish I could play the piano."
+   **example_pass**: I wish I could play the piano. | If I had time, I would travel more. | If she studied harder, she would pass.
+   **example_fail**: time (bare noun) | If I have time, I will travel (1st conditional, not 2nd) | I travel more (no conditional)
 
 **Closing cue**: Charlotte fecha com "Wishes shared!" quando obj_3 baterem.
 
@@ -318,6 +336,8 @@
    **hidden_prompt**: "user uses 'I wish + past simple' for present"
    **hint_pt**: "I wish I had more vacation days."
    **hint_en**: "I wish I had more vacation days."
+   **example_pass**: I wish I had more vacation days. | If she studied harder, she would pass. | If I were you, I'd take the job.
+   **example_fail**: time (bare noun) | If I have time, I will travel (1st conditional, not 2nd) | I travel more (no conditional)
 
 2. **id**: 2
    **label_pt**: "Outro desejo (could/were)"
@@ -325,6 +345,8 @@
    **hidden_prompt**: "user uses another wish structure"
    **hint_pt**: "I wish I could travel more."
    **hint_en**: "I wish I could travel more."
+   **example_pass**: I wish I could travel more. | I would help if I could. | If I had time, I would travel more.
+   **example_fail**: time (bare noun) | If I have time, I will travel (1st conditional, not 2nd) | I travel more (no conditional)
 
 3. **id**: 3
    **label_pt**: "Perguntar à Charlotte"
@@ -332,6 +354,8 @@
    **hidden_prompt**: "user asks 'How about you?' or 'What do you wish?'"
    **hint_pt**: "How about you?"
    **hint_en**: "How about you?"
+   **example_pass**: How about you? | If she studied harder, she would pass. | And you?
+   **example_fail**: time (bare noun) | If I have time, I will travel (1st conditional, not 2nd) | I travel more (no conditional)
 
 **Closing cue**: Charlotte fecha com "Honest wishes exchanged!" quando obj_3 baterem.
 
@@ -435,6 +459,8 @@
    **hidden_prompt**: "after Charlotte's FIRST problem (job offer in another city), user gives advice with 'If I were you, I would + base'. Accept repeating the same chunk in later objectives — what matters is responding to this specific problem."
    **hint_pt**: "If I were you, I would take the offer."
    **hint_en**: "If I were you, I would take the offer."
+   **example_pass**: If I were you, I would take the offer. | If I were you, I'd take the job. | I would help if I could.
+   **example_fail**: time (bare noun) | If I have time, I will travel (1st conditional, not 2nd) | I travel more (no conditional)
 
 2. **id**: 2
    **label_pt**: "Conselho sobre o conflito com a amiga"
@@ -442,6 +468,8 @@
    **hidden_prompt**: "after Charlotte's SECOND problem (conflict with a friend / unclear conversation), user gives advice — accept 'If I were you, I would' or 'If I were in your position'. Same opener as obj 1 is fine; tied to NEW problem."
    **hint_pt**: "If I were you, I would talk to her directly."
    **hint_en**: "If I were you, I would talk to her directly."
+   **example_pass**: If I were you, I would talk to her directly. | If I had time, I would travel more. | If she studied harder, she would pass.
+   **example_fail**: time (bare noun) | If I have time, I will travel (1st conditional, not 2nd) | I travel more (no conditional)
 
 3. **id**: 3
    **label_pt**: "Conselho sobre a decisão maior"
@@ -449,6 +477,8 @@
    **hidden_prompt**: "after Charlotte's THIRD problem (bigger life decision — moving, studying, etc), user gives final advice. Any 'If I were you' or 'in your position' chunk works. Repetition of openers from objs 1/2 is fine — what matters is reacting to this third problem."
    **hint_pt**: "If I were in your position, I would wait."
    **hint_en**: "If I were in your position, I would wait."
+   **example_pass**: If I were in your position, I would wait. | If she studied harder, she would pass. | If I were you, I'd take the job.
+   **example_fail**: time (bare noun) | If I have time, I will travel (1st conditional, not 2nd) | I travel more (no conditional)
 
 **Closing cue**: Charlotte fecha com "Thoughtful advice!" quando obj_3 baterem.
 
@@ -484,6 +514,8 @@
    **hidden_prompt**: "user uses 'If I were you, I would + base'"
    **hint_pt**: "If I were you, I would take the one closer to home."
    **hint_en**: "If I were you, I would take the one closer to home."
+   **example_pass**: If I were you, I would take the one closer to home. | If I were you, I'd take the job. | I would help if I could.
+   **example_fail**: time (bare noun) | If I have time, I will travel (1st conditional, not 2nd) | I travel more (no conditional)
 
 2. **id**: 2
    **label_pt**: "Razão ou conselho adicional"
@@ -491,6 +523,8 @@
    **hidden_prompt**: "user adds another 'I would + base' or 'If I were you'"
    **hint_pt**: "I would think about long-term growth."
    **hint_en**: "I would think about long-term growth."
+   **example_pass**: I would think about long-term growth. | I would help if I could. | If I had time, I would travel more.
+   **example_fail**: time (bare noun) | If I have time, I will travel (1st conditional, not 2nd) | I travel more (no conditional)
 
 3. **id**: 3
    **label_pt**: "Perguntar mais sobre o dilema"
@@ -498,6 +532,8 @@
    **hidden_prompt**: "user asks Charlotte a clarifying question"
    **hint_pt**: "What does your gut say?"
    **hint_en**: "What does your gut say?"
+   **example_pass**: What does your gut say? | If I were you, I'd take the job. | How about you?
+   **example_fail**: time (bare noun) | If I have time, I will travel (1st conditional, not 2nd) | I travel more (no conditional)
 
 **Closing cue**: Charlotte fecha com "Helpful perspective!" quando obj_3 baterem.
 
@@ -601,6 +637,8 @@
    **hidden_prompt**: "user asks 'What would you do if + past simple?'"
    **hint_pt**: "What would you do if you won a million dollars?"
    **hint_en**: "What would you do if you won a million dollars?"
+   **example_pass**: What would you do if you won a million dollars? | If I had time, I would travel more. | How about you?
+   **example_fail**: time (bare noun) | If I have time, I will travel (1st conditional, not 2nd) | I travel more (no conditional)
 
 2. **id**: 2
    **label_pt**: "Outra pergunta hipotética (Where/Who)"
@@ -608,6 +646,8 @@
    **hidden_prompt**: "user asks 'Where/Who/How would you + base + if + past?'"
    **hint_pt**: "Where would you go if you could travel anywhere?"
    **hint_en**: "Where would you go if you could travel anywhere?"
+   **example_pass**: Where would you go if you could travel anywhere? | If I had time, I would travel more. | How about you?
+   **example_fail**: time (bare noun) | If I have time, I will travel (1st conditional, not 2nd) | I travel more (no conditional)
 
 3. **id**: 3
    **label_pt**: "Pergunta yes/no com 'Would you'"
@@ -615,6 +655,8 @@
    **hidden_prompt**: "user asks 'Would you + base + if + past?'"
    **hint_pt**: "Would you change careers if you had the chance?"
    **hint_en**: "Would you change careers if you had the chance?"
+   **example_pass**: Would you change careers if you had the chance? | If I were you, I'd take the job. | How about you?
+   **example_fail**: time (bare noun) | If I have time, I will travel (1st conditional, not 2nd) | I travel more (no conditional)
 
 **Closing cue**: Charlotte fecha com "Great hypotheticals!" quando obj_3 baterem.
 
@@ -650,6 +692,8 @@
    **hidden_prompt**: "user asks 'What would you do if + past simple?'"
    **hint_pt**: "What would you do if you had a year off?"
    **hint_en**: "What would you do if you had a year off?"
+   **example_pass**: What would you do if you had a year off? | If I had time, I would travel more. | How about you?
+   **example_fail**: time (bare noun) | If I have time, I will travel (1st conditional, not 2nd) | I travel more (no conditional)
 
 2. **id**: 2
    **label_pt**: "Pergunta hipotética 2 (different topic)"
@@ -657,6 +701,8 @@
    **hidden_prompt**: "user asks another 'Would you?' or 'What would?'"
    **hint_pt**: "Would you move abroad if you had the chance?"
    **hint_en**: "Would you move abroad if you had the chance?"
+   **example_pass**: Would you move abroad if you had the chance? | I would help if I could. | How about you?
+   **example_fail**: time (bare noun) | If I have time, I will travel (1st conditional, not 2nd) | I travel more (no conditional)
 
 3. **id**: 3
    **label_pt**: "Pergunta hipotética 3 (deep)"
@@ -664,6 +710,8 @@
    **hidden_prompt**: "user asks one more deep hypothetical"
    **hint_pt**: "What would you change if you could redo your career?"
    **hint_en**: "What would you change if you could redo your career?"
+   **example_pass**: What would you change if you could redo your career? | I would help if I could. | How about you?
+   **example_fail**: time (bare noun) | If I have time, I will travel (1st conditional, not 2nd) | I travel more (no conditional)
 
 **Closing cue**: Charlotte fecha com "Great Q&A!" quando obj_3 baterem.
 
@@ -767,6 +815,8 @@
    **hidden_prompt**: "user uses 'I wish + past simple'"
    **hint_pt**: "I wish I had more free time."
    **hint_en**: "I wish I had more free time."
+   **example_pass**: I wish I had more free time. | If I had time, I would travel more. | If she studied harder, she would pass.
+   **example_fail**: time (bare noun) | If I have time, I will travel (1st conditional, not 2nd) | I travel more (no conditional)
 
 2. **id**: 2
    **label_pt**: "Hipótese com 'if + past, would + base'"
@@ -774,6 +824,8 @@
    **hidden_prompt**: "user uses 'If + past simple, would + base'"
    **hint_pt**: "If I had a sabbatical, I would write a book."
    **hint_en**: "If I had a sabbatical, I would write a book."
+   **example_pass**: If I had a sabbatical, I would write a book. | If she studied harder, she would pass. | If I were you, I'd take the job.
+   **example_fail**: time (bare noun) | If I have time, I will travel (1st conditional, not 2nd) | I travel more (no conditional)
 
 3. **id**: 3
    **label_pt**: "Conselho com 'If I were you'"
@@ -781,6 +833,8 @@
    **hidden_prompt**: "user uses 'If I were you, I would + base'"
    **hint_pt**: "If I were you, I would try a new hobby."
    **hint_en**: "If I were you, I would try a new hobby."
+   **example_pass**: If I were you, I would try a new hobby. | If I had time, I would travel more. | If she studied harder, she would pass.
+   **example_fail**: time (bare noun) | If I have time, I will travel (1st conditional, not 2nd) | I travel more (no conditional)
 
 **Closing cue**: Charlotte fecha com "Hypothetical fluency!" quando obj_3 baterem.
 
@@ -816,6 +870,8 @@
    **hidden_prompt**: "user uses 'If + past, I would + base' for big change"
    **hint_pt**: "If I could choose, I would live by the ocean."
    **hint_en**: "If I could choose, I would live by the ocean."
+   **example_pass**: If I could choose, I would live by the ocean. | If I had time, I would travel more. | If she studied harder, she would pass.
+   **example_fail**: time (bare noun) | If I have time, I will travel (1st conditional, not 2nd) | I travel more (no conditional)
 
 2. **id**: 2
    **label_pt**: "Wish ou hipótese adicional"
@@ -823,6 +879,8 @@
    **hidden_prompt**: "user uses 'I wish' or another hypothetical"
    **hint_pt**: "I wish I had more courage to try new things."
    **hint_en**: "I wish I had more courage to try new things."
+   **example_pass**: I wish I had more courage to try new things. | If I were you, I'd take the job. | I would help if I could.
+   **example_fail**: time (bare noun) | If I have time, I will travel (1st conditional, not 2nd) | I travel more (no conditional)
 
 3. **id**: 3
    **label_pt**: "Perguntar à Charlotte"
@@ -830,6 +888,8 @@
    **hidden_prompt**: "user asks 'How about you?' or 'What would you change?'"
    **hint_pt**: "How about you?"
    **hint_en**: "How about you?"
+   **example_pass**: How about you? | If she studied harder, she would pass. | And you?
+   **example_fail**: time (bare noun) | If I have time, I will travel (1st conditional, not 2nd) | I travel more (no conditional)
 
 **Closing cue**: Charlotte fecha com "Alternative lives explored!" quando obj_3 baterem.
 

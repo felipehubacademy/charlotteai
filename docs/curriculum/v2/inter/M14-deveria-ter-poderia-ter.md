@@ -106,6 +106,8 @@
    **hidden_prompt**: "user uses 'X should have + past participle'"
    **hint_pt**: "He should have apologized sooner."
    **hint_en**: "He should have apologized sooner."
+   **example_pass**: He should have apologized sooner. | She might have forgotten. | We shouldn't have waited.
+   **example_fail**: told (bare verb) | You should tell me (present advice, not past regret) | You told me (past simple, no modal perfect)
 
 2. **id**: 2
    **label_pt**: "Crítica com 'shouldn't have'"
@@ -113,6 +115,8 @@
    **hidden_prompt**: "user uses 'X shouldn't have + past participle'"
    **hint_pt**: "She shouldn't have left without saying goodbye."
    **hint_en**: "She shouldn't have left without saying goodbye."
+   **example_pass**: She shouldn't have left without saying goodbye. | I could have helped you. | She might have forgotten.
+   **example_fail**: told (bare verb) | You should tell me (present advice, not past regret) | You told me (past simple, no modal perfect)
 
 3. **id**: 3
    **label_pt**: "Crítica/conselho retrospectivo extra"
@@ -120,6 +124,8 @@
    **hidden_prompt**: "user uses another 'should/shouldn't have' construction"
    **hint_pt**: "They should have planned better."
    **hint_en**: "They should have planned better."
+   **example_pass**: They should have planned better. | We shouldn't have waited. | You should have told me earlier.
+   **example_fail**: told (bare verb) | You should tell me (present advice, not past regret) | You told me (past simple, no modal perfect)
 
 **Closing cue**: Charlotte fecha com "Sharp judgment!" quando obj_3 baterem.
 
@@ -155,6 +161,8 @@
    **hidden_prompt**: "user uses 'you should have' or 'you shouldn't have'"
    **hint_pt**: "You shouldn't have sent it without thinking."
    **hint_en**: "You shouldn't have sent it without thinking."
+   **example_pass**: You shouldn't have sent it without thinking. | She might have forgotten. | We shouldn't have waited.
+   **example_fail**: told (bare verb) | You should tell me (present advice, not past regret) | You told me (past simple, no modal perfect)
 
 2. **id**: 2
    **label_pt**: "Alternativa retrospectiva"
@@ -162,6 +170,8 @@
    **hidden_prompt**: "user suggests what she should have done instead"
    **hint_pt**: "You should have talked to him first."
    **hint_en**: "You should have talked to him first."
+   **example_pass**: You should have talked to him first. | You should have told me earlier. | I could have helped you.
+   **example_fail**: told (bare verb) | You should tell me (present advice, not past regret) | You told me (past simple, no modal perfect)
 
 3. **id**: 3
    **label_pt**: "Pergunta para Charlotte"
@@ -169,6 +179,8 @@
    **hidden_prompt**: "user asks Charlotte how she feels or what she'll do"
    **hint_pt**: "How do you feel about it now?"
    **hint_en**: "How do you feel about it now?"
+   **example_pass**: How do you feel about it now? | I could have helped you. | How about you?
+   **example_fail**: told (bare verb) | You should tell me (present advice, not past regret) | You told me (past simple, no modal perfect)
 
 **Closing cue**: Charlotte fecha com "Honest feedback received!" quando obj_3 baterem.
 
@@ -271,6 +283,8 @@
    **hidden_prompt**: "user uses 'X could have + past participle'"
    **hint_pt**: "He could have won the prize."
    **hint_en**: "He could have won the prize."
+   **example_pass**: He could have won the prize. | I could have helped you. | She might have forgotten.
+   **example_fail**: told (bare verb) | You should tell me (present advice, not past regret) | You told me (past simple, no modal perfect)
 
 2. **id**: 2
    **label_pt**: "Outra possibilidade passada"
@@ -278,6 +292,8 @@
    **hidden_prompt**: "user uses another 'could have + past participle'"
    **hint_pt**: "She could have gotten the promotion."
    **hint_en**: "She could have gotten the promotion."
+   **example_pass**: She could have gotten the promotion. | She might have forgotten. | We shouldn't have waited.
+   **example_fail**: told (bare verb) | You should tell me (present advice, not past regret) | You told me (past simple, no modal perfect)
 
 3. **id**: 3
    **label_pt**: "Impossibilidade com 'couldn't have'"
@@ -285,6 +301,8 @@
    **hidden_prompt**: "user uses 'X couldn't have + past participle'"
    **hint_pt**: "They couldn't have arrived on time."
    **hint_en**: "They couldn't have arrived on time."
+   **example_pass**: They couldn't have arrived on time. | I could have helped you. | She might have forgotten.
+   **example_fail**: told (bare verb) | You should tell me (present advice, not past regret) | You told me (past simple, no modal perfect)
 
 **Closing cue**: Charlotte fecha com "Possibilities mapped!" quando obj_3 baterem.
 
@@ -320,6 +338,8 @@
    **hidden_prompt**: "user uses 'you could have + past participle'"
    **hint_pt**: "You could have missed the meeting entirely."
    **hint_en**: "You could have missed the meeting entirely."
+   **example_pass**: You could have missed the meeting entirely. | I could have helped you. | She might have forgotten.
+   **example_fail**: told (bare verb) | You should tell me (present advice, not past regret) | You told me (past simple, no modal perfect)
 
 2. **id**: 2
    **label_pt**: "Outra possibilidade ou alívio"
@@ -327,6 +347,8 @@
    **hidden_prompt**: "user uses another 'could have' or describes relief"
    **hint_pt**: "You could have lost a lot of money."
    **hint_en**: "You could have lost a lot of money."
+   **example_pass**: You could have lost a lot of money. | I could have helped you. | She might have forgotten.
+   **example_fail**: told (bare verb) | You should tell me (present advice, not past regret) | You told me (past simple, no modal perfect)
 
 3. **id**: 3
    **label_pt**: "Pergunta para Charlotte"
@@ -334,6 +356,8 @@
    **hidden_prompt**: "user asks Charlotte 'How did you make it?' or similar"
    **hint_pt**: "How did you make it in time?"
    **hint_en**: "How did you make it in time?"
+   **example_pass**: How did you make it in time? | You should have told me earlier. | How about you?
+   **example_fail**: told (bare verb) | You should tell me (present advice, not past regret) | You told me (past simple, no modal perfect)
 
 **Closing cue**: Charlotte fecha com "Close call examined!" quando obj_3 baterem.
 
@@ -437,6 +461,8 @@
    **hidden_prompt**: "user uses 'X must have + past participle'"
    **hint_pt**: "She must have forgotten the keys."
    **hint_en**: "She must have forgotten the keys."
+   **example_pass**: She must have forgotten the keys. | You should have told me earlier. | I could have helped you.
+   **example_fail**: told (bare verb) | You should tell me (present advice, not past regret) | You told me (past simple, no modal perfect)
 
 2. **id**: 2
    **label_pt**: "Dedução negativa com 'can't have'"
@@ -444,6 +470,8 @@
    **hidden_prompt**: "user uses 'X can't have + past participle'"
    **hint_pt**: "He can't have done it alone."
    **hint_en**: "He can't have done it alone."
+   **example_pass**: He can't have done it alone. | She might have forgotten. | We shouldn't have waited.
+   **example_fail**: told (bare verb) | You should tell me (present advice, not past regret) | You told me (past simple, no modal perfect)
 
 3. **id**: 3
    **label_pt**: "Outra dedução forte"
@@ -451,6 +479,8 @@
    **hidden_prompt**: "user uses another 'must have' or 'can't have'"
    **hint_pt**: "They must have left in a hurry."
    **hint_en**: "They must have left in a hurry."
+   **example_pass**: They must have left in a hurry. | She might have forgotten. | We shouldn't have waited.
+   **example_fail**: told (bare verb) | You should tell me (present advice, not past regret) | You told me (past simple, no modal perfect)
 
 **Closing cue**: Charlotte fecha com "Mysteries solved!" quando obj_3 baterem.
 
@@ -486,6 +516,8 @@
    **hidden_prompt**: "user uses 'he must have + past participle'"
    **hint_pt**: "He must have broken up with someone."
    **hint_en**: "He must have broken up with someone."
+   **example_pass**: He must have broken up with someone. | You should have told me earlier. | I could have helped you.
+   **example_fail**: told (bare verb) | You should tell me (present advice, not past regret) | You told me (past simple, no modal perfect)
 
 2. **id**: 2
    **label_pt**: "Especulação negativa com 'can't have'"
@@ -493,6 +525,8 @@
    **hidden_prompt**: "user uses 'he can't have + past participle'"
    **hint_pt**: "He can't have planned for that."
    **hint_en**: "He can't have planned for that."
+   **example_pass**: He can't have planned for that. | She might have forgotten. | We shouldn't have waited.
+   **example_fail**: told (bare verb) | You should tell me (present advice, not past regret) | You told me (past simple, no modal perfect)
 
 3. **id**: 3
    **label_pt**: "Comentário ou pergunta"
@@ -500,6 +534,8 @@
    **hidden_prompt**: "user comments or asks Charlotte more"
    **hint_pt**: "Did you talk to him?"
    **hint_en**: "Did you talk to him?"
+   **example_pass**: Did you talk to him? | She might have forgotten. | We shouldn't have waited.
+   **example_fail**: told (bare verb) | You should tell me (present advice, not past regret) | You told me (past simple, no modal perfect)
 
 **Closing cue**: Charlotte fecha com "Scene decoded!" quando obj_3 baterem.
 
@@ -603,6 +639,8 @@
    **hidden_prompt**: "user uses 'X might have + past participle'"
    **hint_pt**: "She might have lost her phone."
    **hint_en**: "She might have lost her phone."
+   **example_pass**: She might have lost her phone. | She might have forgotten. | We shouldn't have waited.
+   **example_fail**: told (bare verb) | You should tell me (present advice, not past regret) | You told me (past simple, no modal perfect)
 
 2. **id**: 2
    **label_pt**: "Comentário com 'needn't have'"
@@ -610,6 +648,8 @@
    **hidden_prompt**: "user uses 'X needn't have + past participle'"
    **hint_pt**: "You needn't have apologized — it was fine."
    **hint_en**: "You needn't have apologized — it was fine."
+   **example_pass**: You needn't have apologized — it was fine. | You should have told me earlier. | I could have helped you.
+   **example_fail**: told (bare verb) | You should tell me (present advice, not past regret) | You told me (past simple, no modal perfect)
 
 3. **id**: 3
    **label_pt**: "Outra especulação"
@@ -617,6 +657,8 @@
    **hidden_prompt**: "user uses another 'might have' or 'needn't have'"
    **hint_pt**: "He might have changed his mind."
    **hint_en**: "He might have changed his mind."
+   **example_pass**: He might have changed his mind. | She might have forgotten. | We shouldn't have waited.
+   **example_fail**: told (bare verb) | You should tell me (present advice, not past regret) | You told me (past simple, no modal perfect)
 
 **Closing cue**: Charlotte fecha com "Subtle speculation!" quando obj_3 baterem.
 
@@ -652,6 +694,8 @@
    **hidden_prompt**: "user uses 'they might have + past participle'"
    **hint_pt**: "They might have noticed."
    **hint_en**: "They might have noticed."
+   **example_pass**: They might have noticed. | We shouldn't have waited. | You should have told me earlier.
+   **example_fail**: told (bare verb) | You should tell me (present advice, not past regret) | You told me (past simple, no modal perfect)
 
 2. **id**: 2
    **label_pt**: "Tranquilizar com 'needn't have worried'"
@@ -659,6 +703,8 @@
    **hidden_prompt**: "user uses 'you needn't have + past participle'"
    **hint_pt**: "You needn't have worried — it happens."
    **hint_en**: "You needn't have worried — it happens."
+   **example_pass**: You needn't have worried — it happens. | You should have told me earlier. | I could have helped you.
+   **example_fail**: told (bare verb) | You should tell me (present advice, not past regret) | You told me (past simple, no modal perfect)
 
 3. **id**: 3
    **label_pt**: "Pergunta para Charlotte"
@@ -666,6 +712,8 @@
    **hidden_prompt**: "user asks Charlotte a follow-up"
    **hint_pt**: "Did anyone reply?"
    **hint_en**: "Did anyone reply?"
+   **example_pass**: Did anyone reply? | She might have forgotten. | How about you?
+   **example_fail**: told (bare verb) | You should tell me (present advice, not past regret) | You told me (past simple, no modal perfect)
 
 **Closing cue**: Charlotte fecha com "Reassurance received!" quando obj_3 baterem.
 
@@ -768,6 +816,8 @@
    **hidden_prompt**: "user uses 'should have' or 'shouldn't have'"
    **hint_pt**: "You should have planned ahead."
    **hint_en**: "You should have planned ahead."
+   **example_pass**: You should have planned ahead. | We shouldn't have waited. | You should have told me earlier.
+   **example_fail**: told (bare verb) | You should tell me (present advice, not past regret) | You told me (past simple, no modal perfect)
 
 2. **id**: 2
    **label_pt**: "Inferência ou especulação com 'must/might have'"
@@ -775,6 +825,8 @@
    **hidden_prompt**: "user uses 'must have' or 'might have'"
    **hint_pt**: "You must have been exhausted."
    **hint_en**: "You must have been exhausted."
+   **example_pass**: You must have been exhausted. | I could have helped you. | She might have forgotten.
+   **example_fail**: told (bare verb) | You should tell me (present advice, not past regret) | You told me (past simple, no modal perfect)
 
 3. **id**: 3
    **label_pt**: "Comentário com 'could/needn't have'"
@@ -782,6 +834,8 @@
    **hidden_prompt**: "user uses 'could have' or 'needn't have'"
    **hint_pt**: "You could have asked for help."
    **hint_en**: "You could have asked for help."
+   **example_pass**: You could have asked for help. | She might have forgotten. | We shouldn't have waited.
+   **example_fail**: told (bare verb) | You should tell me (present advice, not past regret) | You told me (past simple, no modal perfect)
 
 **Closing cue**: Charlotte fecha com "Modal mastery!" quando obj_3 baterem.
 
@@ -817,6 +871,8 @@
    **hidden_prompt**: "user uses 'should/shouldn't have'"
    **hint_pt**: "She should have apologized."
    **hint_en**: "She should have apologized."
+   **example_pass**: She should have apologized. | We shouldn't have waited. | You should have told me earlier.
+   **example_fail**: told (bare verb) | You should tell me (present advice, not past regret) | You told me (past simple, no modal perfect)
 
 2. **id**: 2
    **label_pt**: "Especulação ou inferência"
@@ -824,6 +880,8 @@
    **hidden_prompt**: "user uses 'might have' or 'must have'"
    **hint_pt**: "She might have had a real emergency."
    **hint_en**: "She might have had a real emergency."
+   **example_pass**: She might have had a real emergency. | You should have told me earlier. | I could have helped you.
+   **example_fail**: told (bare verb) | You should tell me (present advice, not past regret) | You told me (past simple, no modal perfect)
 
 3. **id**: 3
    **label_pt**: "Pergunta ou comentário extra"
@@ -831,6 +889,8 @@
    **hidden_prompt**: "user asks 'Did you talk to her?' or adds another modal perfect"
    **hint_pt**: "Did you talk to her about it?"
    **hint_en**: "Did you talk to her about it?"
+   **example_pass**: Did you talk to her about it? | We shouldn't have waited. | How about you?
+   **example_fail**: told (bare verb) | You should tell me (present advice, not past regret) | You told me (past simple, no modal perfect)
 
 **Closing cue**: Charlotte fecha com "Layered take!" quando obj_3 baterem.
 

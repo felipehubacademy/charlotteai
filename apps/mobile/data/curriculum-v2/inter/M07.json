@@ -157,19 +157,49 @@
             "id": 1,
             "label_en": "Countable quantity",
             "hidden_prompt": "user uses 'I have a few + plural'",
-            "hint_en": "I have a few close friends."
+            "hint_en": "I have a few close friends.",
+            "examples_pass": [
+              "I have a few close friends.",
+              "I have hardly any money.",
+              "I have a few questions."
+            ],
+            "examples_fail": [
+              "milk (bare noun)",
+              "I have money (no quantifier)",
+              "I have many milk (wrong quantifier for uncountable)"
+            ]
           },
           {
             "id": 2,
             "label_en": "Uncountable quantity",
             "hidden_prompt": "user uses 'I have a little + uncountable'",
-            "hint_en": "I have a little time."
+            "hint_en": "I have a little time.",
+            "examples_pass": [
+              "I have a little time.",
+              "There's a little milk left.",
+              "We have plenty of time."
+            ],
+            "examples_fail": [
+              "milk (bare noun)",
+              "I have money (no quantifier)",
+              "I have many milk (wrong quantifier for uncountable)"
+            ]
           },
           {
             "id": 3,
             "label_en": "One more quantifier",
             "hidden_prompt": "user uses a few or a little correctly",
-            "hint_en": "I have a little money."
+            "hint_en": "I have a little money.",
+            "examples_pass": [
+              "I have a little money.",
+              "We have plenty of time.",
+              "I have hardly any money."
+            ],
+            "examples_fail": [
+              "milk (bare noun)",
+              "I have money (no quantifier)",
+              "I have many milk (wrong quantifier for uncountable)"
+            ]
           }
         ],
         "closing_cue": "Charlotte closes with \"Quantities clear!\" when obj_3 hits.",
@@ -192,19 +222,49 @@
             "id": 1,
             "label_en": "Countable item",
             "hidden_prompt": "user uses 'a few + plural noun'",
-            "hint_en": "I have a few apples."
+            "hint_en": "I have a few apples.",
+            "examples_pass": [
+              "I have a few apples.",
+              "I have hardly any money.",
+              "I have a few questions."
+            ],
+            "examples_fail": [
+              "milk (bare noun)",
+              "I have money (no quantifier)",
+              "I have many milk (wrong quantifier for uncountable)"
+            ]
           },
           {
             "id": 2,
             "label_en": "Uncountable item",
             "hidden_prompt": "user uses 'a little + uncountable'",
-            "hint_en": "I have a little milk."
+            "hint_en": "I have a little milk.",
+            "examples_pass": [
+              "I have a little milk.",
+              "I have hardly any money.",
+              "I have a few questions."
+            ],
+            "examples_fail": [
+              "milk (bare noun)",
+              "I have money (no quantifier)",
+              "I have many milk (wrong quantifier for uncountable)"
+            ]
           },
           {
             "id": 3,
             "label_en": "Ask Charlotte",
             "hidden_prompt": "user asks Charlotte what she has",
-            "hint_en": "What do you have?"
+            "hint_en": "What do you have?",
+            "examples_pass": [
+              "What do you have?",
+              "I have hardly any money.",
+              "How about you?"
+            ],
+            "examples_fail": [
+              "milk (bare noun)",
+              "I have money (no quantifier)",
+              "I have many milk (wrong quantifier for uncountable)"
+            ]
           }
         ],
         "closing_cue": "Charlotte closes with \"Pantry inventory!\" when obj_3 hits.",
@@ -353,19 +413,49 @@
             "id": 1,
             "label_en": "Few negative",
             "hidden_prompt": "user uses 'few + plural' meaning almost none",
-            "hint_en": "I have few options."
+            "hint_en": "I have few options.",
+            "examples_pass": [
+              "I have few options.",
+              "There's a little milk left.",
+              "We have plenty of time."
+            ],
+            "examples_fail": [
+              "milk (bare noun)",
+              "I have money (no quantifier)",
+              "I have many milk (wrong quantifier for uncountable)"
+            ]
           },
           {
             "id": 2,
             "label_en": "A few positive",
             "hidden_prompt": "user uses 'a few + plural' meaning some",
-            "hint_en": "I have a few hobbies."
+            "hint_en": "I have a few hobbies.",
+            "examples_pass": [
+              "I have a few hobbies.",
+              "We have plenty of time.",
+              "I have hardly any money."
+            ],
+            "examples_fail": [
+              "milk (bare noun)",
+              "I have money (no quantifier)",
+              "I have many milk (wrong quantifier for uncountable)"
+            ]
           },
           {
             "id": 3,
             "label_en": "Little or a little",
             "hidden_prompt": "user uses 'little' or 'a little' with uncountable",
-            "hint_en": "I have little time."
+            "hint_en": "I have little time.",
+            "examples_pass": [
+              "I have little time.",
+              "I have a few questions.",
+              "There's a little milk left."
+            ],
+            "examples_fail": [
+              "milk (bare noun)",
+              "I have money (no quantifier)",
+              "I have many milk (wrong quantifier for uncountable)"
+            ]
           }
         ],
         "closing_cue": "Charlotte closes with \"Subtle quantifier!\" when obj_3 hits.",
@@ -388,19 +478,49 @@
             "id": 1,
             "label_en": "Negative",
             "hidden_prompt": "user uses 'few/little' (negative)",
-            "hint_en": "I have little patience today."
+            "hint_en": "I have little patience today.",
+            "examples_pass": [
+              "I have little patience today.",
+              "I have hardly any money.",
+              "I have a few questions."
+            ],
+            "examples_fail": [
+              "milk (bare noun)",
+              "I have money (no quantifier)",
+              "I have many milk (wrong quantifier for uncountable)"
+            ]
           },
           {
             "id": 2,
             "label_en": "Positive",
             "hidden_prompt": "user uses 'a few/a little' (positive)",
-            "hint_en": "I have a few free hours."
+            "hint_en": "I have a few free hours.",
+            "examples_pass": [
+              "I have a few free hours.",
+              "There's a little milk left.",
+              "We have plenty of time."
+            ],
+            "examples_fail": [
+              "milk (bare noun)",
+              "I have money (no quantifier)",
+              "I have many milk (wrong quantifier for uncountable)"
+            ]
           },
           {
             "id": 3,
             "label_en": "Ask Charlotte",
             "hidden_prompt": "user asks 'How about you?'",
-            "hint_en": "How about you?"
+            "hint_en": "How about you?",
+            "examples_pass": [
+              "How about you?",
+              "There's a little milk left.",
+              "And you?"
+            ],
+            "examples_fail": [
+              "milk (bare noun)",
+              "I have money (no quantifier)",
+              "I have many milk (wrong quantifier for uncountable)"
+            ]
           }
         ],
         "closing_cue": "Charlotte closes with \"Glass half full or empty!\" when obj_3 hits.",
@@ -548,19 +668,49 @@
             "id": 1,
             "label_en": "Abundance",
             "hidden_prompt": "user uses 'I have plenty of + noun'",
-            "hint_en": "I have plenty of books."
+            "hint_en": "I have plenty of books.",
+            "examples_pass": [
+              "I have plenty of books.",
+              "We have plenty of time.",
+              "I have hardly any money."
+            ],
+            "examples_fail": [
+              "milk (bare noun)",
+              "I have money (no quantifier)",
+              "I have many milk (wrong quantifier for uncountable)"
+            ]
           },
           {
             "id": 2,
             "label_en": "Scarcity",
             "hidden_prompt": "user uses 'I have hardly any + noun'",
-            "hint_en": "I have hardly any free time."
+            "hint_en": "I have hardly any free time.",
+            "examples_pass": [
+              "I have hardly any free time.",
+              "I have a few questions.",
+              "There's a little milk left."
+            ],
+            "examples_fail": [
+              "milk (bare noun)",
+              "I have money (no quantifier)",
+              "I have many milk (wrong quantifier for uncountable)"
+            ]
           },
           {
             "id": 3,
             "label_en": "One more",
             "hidden_prompt": "user uses another plenty of or hardly any",
-            "hint_en": "We have plenty of work."
+            "hint_en": "We have plenty of work.",
+            "examples_pass": [
+              "We have plenty of work.",
+              "We have plenty of time.",
+              "I have hardly any money."
+            ],
+            "examples_fail": [
+              "milk (bare noun)",
+              "I have money (no quantifier)",
+              "I have many milk (wrong quantifier for uncountable)"
+            ]
           }
         ],
         "closing_cue": "Charlotte closes with \"Balance check!\" when obj_3 hits.",
@@ -583,19 +733,49 @@
             "id": 1,
             "label_en": "Abundance",
             "hidden_prompt": "user uses 'plenty of'",
-            "hint_en": "Plenty of work."
+            "hint_en": "Plenty of work.",
+            "examples_pass": [
+              "Plenty of work.",
+              "We have plenty of time.",
+              "I have hardly any money."
+            ],
+            "examples_fail": [
+              "milk (bare noun)",
+              "I have money (no quantifier)",
+              "I have many milk (wrong quantifier for uncountable)"
+            ]
           },
           {
             "id": 2,
             "label_en": "Scarcity",
             "hidden_prompt": "user uses 'hardly any'",
-            "hint_en": "Hardly any sleep."
+            "hint_en": "Hardly any sleep.",
+            "examples_pass": [
+              "Hardly any sleep.",
+              "I have hardly any money.",
+              "I have a few questions."
+            ],
+            "examples_fail": [
+              "milk (bare noun)",
+              "I have money (no quantifier)",
+              "I have many milk (wrong quantifier for uncountable)"
+            ]
           },
           {
             "id": 3,
             "label_en": "Ask Charlotte",
             "hidden_prompt": "user asks 'How about you?'",
-            "hint_en": "How about you?"
+            "hint_en": "How about you?",
+            "examples_pass": [
+              "How about you?",
+              "There's a little milk left.",
+              "And you?"
+            ],
+            "examples_fail": [
+              "milk (bare noun)",
+              "I have money (no quantifier)",
+              "I have many milk (wrong quantifier for uncountable)"
+            ]
           }
         ],
         "closing_cue": "Charlotte closes with \"Life snapshot!\" when obj_3 hits.",
@@ -745,19 +925,49 @@
             "id": 1,
             "label_en": "Something with several",
             "hidden_prompt": "user uses 'several + plural'",
-            "hint_en": "I have several hobbies."
+            "hint_en": "I have several hobbies.",
+            "examples_pass": [
+              "I have several hobbies.",
+              "There's a little milk left.",
+              "We have plenty of time."
+            ],
+            "examples_fail": [
+              "milk (bare noun)",
+              "I have money (no quantifier)",
+              "I have many milk (wrong quantifier for uncountable)"
+            ]
           },
           {
             "id": 2,
             "label_en": "Most + general plural",
             "hidden_prompt": "user uses 'Most + general plural'",
-            "hint_en": "Most people drink coffee."
+            "hint_en": "Most people drink coffee.",
+            "examples_pass": [
+              "Most people drink coffee.",
+              "We have plenty of time.",
+              "I have hardly any money."
+            ],
+            "examples_fail": [
+              "milk (bare noun)",
+              "I have money (no quantifier)",
+              "I have many milk (wrong quantifier for uncountable)"
+            ]
           },
           {
             "id": 3,
             "label_en": "Most of the/my",
             "hidden_prompt": "user uses 'Most of the/my + plural'",
-            "hint_en": "Most of my friends live in São Paulo."
+            "hint_en": "Most of my friends live in São Paulo.",
+            "examples_pass": [
+              "Most of my friends live in São Paulo.",
+              "I have a few questions.",
+              "There's a little milk left."
+            ],
+            "examples_fail": [
+              "milk (bare noun)",
+              "I have money (no quantifier)",
+              "I have many milk (wrong quantifier for uncountable)"
+            ]
           }
         ],
         "closing_cue": "Charlotte closes with \"Precise quantities!\" when obj_3 hits.",
@@ -780,19 +990,49 @@
             "id": 1,
             "label_en": "Most of my friends",
             "hidden_prompt": "user uses 'Most of my friends + verb'",
-            "hint_en": "Most of my friends work in tech."
+            "hint_en": "Most of my friends work in tech.",
+            "examples_pass": [
+              "Most of my friends work in tech.",
+              "There's a little milk left.",
+              "We have plenty of time."
+            ],
+            "examples_fail": [
+              "milk (bare noun)",
+              "I have money (no quantifier)",
+              "I have many milk (wrong quantifier for uncountable)"
+            ]
           },
           {
             "id": 2,
             "label_en": "Several of something",
             "hidden_prompt": "user uses 'several + plural'",
-            "hint_en": "Several of them play soccer."
+            "hint_en": "Several of them play soccer.",
+            "examples_pass": [
+              "Several of them play soccer.",
+              "I have a few questions.",
+              "There's a little milk left."
+            ],
+            "examples_fail": [
+              "milk (bare noun)",
+              "I have money (no quantifier)",
+              "I have many milk (wrong quantifier for uncountable)"
+            ]
           },
           {
             "id": 3,
             "label_en": "Ask Charlotte",
             "hidden_prompt": "user asks 'How about your friends?'",
-            "hint_en": "How about yours?"
+            "hint_en": "How about yours?",
+            "examples_pass": [
+              "How about yours?",
+              "We have plenty of time.",
+              "How about you?"
+            ],
+            "examples_fail": [
+              "milk (bare noun)",
+              "I have money (no quantifier)",
+              "I have many milk (wrong quantifier for uncountable)"
+            ]
           }
         ],
         "closing_cue": "Charlotte closes with \"Group patterns!\" when obj_3 hits.",
@@ -943,19 +1183,49 @@
             "id": 1,
             "label_en": "Positive quantifier",
             "hidden_prompt": "user uses a few/a little/plenty of",
-            "hint_en": "I have plenty of work."
+            "hint_en": "I have plenty of work.",
+            "examples_pass": [
+              "I have plenty of work.",
+              "I have hardly any money.",
+              "I have a few questions."
+            ],
+            "examples_fail": [
+              "milk (bare noun)",
+              "I have money (no quantifier)",
+              "I have many milk (wrong quantifier for uncountable)"
+            ]
           },
           {
             "id": 2,
             "label_en": "Negative quantifier",
             "hidden_prompt": "user uses few/little/hardly any",
-            "hint_en": "I have hardly any time."
+            "hint_en": "I have hardly any time.",
+            "examples_pass": [
+              "I have hardly any time.",
+              "We have plenty of time.",
+              "I have hardly any money."
+            ],
+            "examples_fail": [
+              "milk (bare noun)",
+              "I have money (no quantifier)",
+              "I have many milk (wrong quantifier for uncountable)"
+            ]
           },
           {
             "id": 3,
             "label_en": "Most or several",
             "hidden_prompt": "user uses 'most + plural' or 'several + plural'",
-            "hint_en": "Most of my friends live abroad."
+            "hint_en": "Most of my friends live abroad.",
+            "examples_pass": [
+              "Most of my friends live abroad.",
+              "I have a few questions.",
+              "There's a little milk left."
+            ],
+            "examples_fail": [
+              "milk (bare noun)",
+              "I have money (no quantifier)",
+              "I have many milk (wrong quantifier for uncountable)"
+            ]
           }
         ],
         "closing_cue": "Charlotte closes with \"Quantifier rich!\" when obj_3 hits.",
@@ -978,19 +1248,49 @@
             "id": 1,
             "label_en": "First quantifier",
             "hidden_prompt": "user uses a quantifier (plenty of/a few/several)",
-            "hint_en": "I have several books."
+            "hint_en": "I have several books.",
+            "examples_pass": [
+              "I have several books.",
+              "I have hardly any money.",
+              "I have a few questions."
+            ],
+            "examples_fail": [
+              "milk (bare noun)",
+              "I have money (no quantifier)",
+              "I have many milk (wrong quantifier for uncountable)"
+            ]
           },
           {
             "id": 2,
             "label_en": "Second quantifier",
             "hidden_prompt": "user uses another quantifier",
-            "hint_en": "Most people are kind."
+            "hint_en": "Most people are kind.",
+            "examples_pass": [
+              "Most people are kind.",
+              "I have a few questions.",
+              "There's a little milk left."
+            ],
+            "examples_fail": [
+              "milk (bare noun)",
+              "I have money (no quantifier)",
+              "I have many milk (wrong quantifier for uncountable)"
+            ]
           },
           {
             "id": 3,
             "label_en": "Third quantifier",
             "hidden_prompt": "user uses one more quantifier",
-            "hint_en": "I have hardly any free time."
+            "hint_en": "I have hardly any free time.",
+            "examples_pass": [
+              "I have hardly any free time.",
+              "I have a few questions.",
+              "There's a little milk left."
+            ],
+            "examples_fail": [
+              "milk (bare noun)",
+              "I have money (no quantifier)",
+              "I have many milk (wrong quantifier for uncountable)"
+            ]
           }
         ],
         "closing_cue": "Charlotte closes with \"Quantifier feast!\" when obj_3 hits.",

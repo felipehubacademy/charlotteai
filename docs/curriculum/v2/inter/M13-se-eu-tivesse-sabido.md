@@ -105,6 +105,8 @@
    **hidden_prompt**: "user uses 'If I had known, I would have + past participle'"
    **hint_pt**: "If I had known, I would have come earlier."
    **hint_en**: "If I had known, I would have come earlier."
+   **example_pass**: If I had known, I would have come earlier. | If I had known, I would have called. | If she had studied, she would have passed.
+   **example_fail**: known (bare participle) | If I knew, I would call (2nd conditional, not 3rd) | If I had time, I would call (mixed, not 3rd cond)
 
 2. **id**: 2
    **label_pt**: "Outra hipótese (different verb)"
@@ -112,6 +114,8 @@
    **hidden_prompt**: "user uses another 'If + past perfect, would have + past participle'"
    **hint_pt**: "If they had told me, I would have prepared better."
    **hint_en**: "If they had told me, I would have prepared better."
+   **example_pass**: If they had told me, I would have prepared better. | If we had left earlier, we wouldn't have missed it. | I would have gone if I had had time.
+   **example_fail**: known (bare participle) | If I knew, I would call (2nd conditional, not 3rd) | If I had time, I would call (mixed, not 3rd cond)
 
 3. **id**: 3
    **label_pt**: "Hipótese negativa (wouldn't have)"
@@ -119,6 +123,8 @@
    **hidden_prompt**: "user uses 'I wouldn't have + past participle if...'"
    **hint_pt**: "I wouldn't have taken the job if I had known."
    **hint_en**: "I wouldn't have taken the job if I had known."
+   **example_pass**: I wouldn't have taken the job if I had known. | If I had known, I would have called. | If she had studied, she would have passed.
+   **example_fail**: known (bare participle) | If I knew, I would call (2nd conditional, not 3rd) | If I had time, I would call (mixed, not 3rd cond)
 
 **Closing cue**: Charlotte fecha com "Past rewritten!" quando obj_3 baterem.
 
@@ -154,6 +160,8 @@
    **hidden_prompt**: "user uses 'I would have + past participle'"
    **hint_pt**: "I would have traveled more."
    **hint_en**: "I would have traveled more."
+   **example_pass**: I would have traveled more. | If I had known, I would have called. | If she had studied, she would have passed.
+   **example_fail**: known (bare participle) | If I knew, I would call (2nd conditional, not 3rd) | If I had time, I would call (mixed, not 3rd cond)
 
 2. **id**: 2
    **label_pt**: "Com condição 'if + past perfect'"
@@ -161,6 +169,8 @@
    **hidden_prompt**: "user uses 'if I had + past participle'"
    **hint_pt**: "If I had saved more, I would have traveled."
    **hint_en**: "If I had saved more, I would have traveled."
+   **example_pass**: If I had saved more, I would have traveled. | If I had known, I would have called. | If she had studied, she would have passed.
+   **example_fail**: known (bare participle) | If I knew, I would call (2nd conditional, not 3rd) | If I had time, I would call (mixed, not 3rd cond)
 
 3. **id**: 3
    **label_pt**: "Perguntar à Charlotte"
@@ -168,6 +178,8 @@
    **hidden_prompt**: "user asks 'How about you?' or 'What would you have done?'"
    **hint_pt**: "What would you have done differently?"
    **hint_en**: "What would you have done differently?"
+   **example_pass**: What would you have done differently? | If she had studied, she would have passed. | How about you?
+   **example_fail**: known (bare participle) | If I knew, I would call (2nd conditional, not 3rd) | If I had time, I would call (mixed, not 3rd cond)
 
 **Closing cue**: Charlotte fecha com "Honest reflection!" quando obj_3 baterem.
 
@@ -271,6 +283,8 @@
    **hidden_prompt**: "user uses 'I wish I had + past participle'"
    **hint_pt**: "I wish I had studied harder."
    **hint_en**: "I wish I had studied harder."
+   **example_pass**: I wish I had studied harder. | If I had known, I would have called. | If she had studied, she would have passed.
+   **example_fail**: known (bare participle) | If I knew, I would call (2nd conditional, not 3rd) | If I had time, I would call (mixed, not 3rd cond)
 
 2. **id**: 2
    **label_pt**: "Outro arrependimento"
@@ -278,6 +292,8 @@
    **hidden_prompt**: "user uses another 'I wish I had + past participle'"
    **hint_pt**: "I wish I had traveled more when I was younger."
    **hint_en**: "I wish I had traveled more when I was younger."
+   **example_pass**: I wish I had traveled more when I was younger. | If she had studied, she would have passed. | If we had left earlier, we wouldn't have missed it.
+   **example_fail**: known (bare participle) | If I knew, I would call (2nd conditional, not 3rd) | If I had time, I would call (mixed, not 3rd cond)
 
 3. **id**: 3
    **label_pt**: "Arrependimento com 'If only'"
@@ -285,6 +301,8 @@
    **hidden_prompt**: "user uses 'If only I had + past participle'"
    **hint_pt**: "If only I had saved more money."
    **hint_en**: "If only I had saved more money."
+   **example_pass**: If only I had saved more money. | I would have gone if I had had time. | If I had known, I would have called.
+   **example_fail**: known (bare participle) | If I knew, I would call (2nd conditional, not 3rd) | If I had time, I would call (mixed, not 3rd cond)
 
 **Closing cue**: Charlotte fecha com "Heard you!" quando obj_3 baterem.
 
@@ -320,6 +338,8 @@
    **hidden_prompt**: "user uses 'I wish I had + past participle'"
    **hint_pt**: "I wish I had started learning English earlier."
    **hint_en**: "I wish I had started learning English earlier."
+   **example_pass**: I wish I had started learning English earlier. | If she had studied, she would have passed. | If we had left earlier, we wouldn't have missed it.
+   **example_fail**: known (bare participle) | If I knew, I would call (2nd conditional, not 3rd) | If I had time, I would call (mixed, not 3rd cond)
 
 2. **id**: 2
    **label_pt**: "Razão ou outro arrependimento"
@@ -327,6 +347,8 @@
    **hidden_prompt**: "user adds another wish or reason"
    **hint_pt**: "I wish I had made more time for my family."
    **hint_en**: "I wish I had made more time for my family."
+   **example_pass**: I wish I had made more time for my family. | If I had known, I would have called. | If she had studied, she would have passed.
+   **example_fail**: known (bare participle) | If I knew, I would call (2nd conditional, not 3rd) | If I had time, I would call (mixed, not 3rd cond)
 
 3. **id**: 3
    **label_pt**: "Perguntar à Charlotte"
@@ -334,6 +356,8 @@
    **hidden_prompt**: "user asks 'How about you?' or 'What about you?'"
    **hint_pt**: "How about you?"
    **hint_en**: "How about you?"
+   **example_pass**: How about you? | If she had studied, she would have passed. | And you?
+   **example_fail**: known (bare participle) | If I knew, I would call (2nd conditional, not 3rd) | If I had time, I would call (mixed, not 3rd cond)
 
 **Closing cue**: Charlotte fecha com "Honest exchange!" quando obj_3 baterem.
 
@@ -437,6 +461,8 @@
    **hidden_prompt**: "user uses 'I would have + past participle'"
    **hint_pt**: "I would have taken the offer."
    **hint_en**: "I would have taken the offer."
+   **example_pass**: I would have taken the offer. | If I had known, I would have called. | If she had studied, she would have passed.
+   **example_fail**: known (bare participle) | If I knew, I would call (2nd conditional, not 3rd) | If I had time, I would call (mixed, not 3rd cond)
 
 2. **id**: 2
    **label_pt**: "Resposta com 'I wouldn't have'"
@@ -444,6 +470,8 @@
    **hidden_prompt**: "user uses 'I wouldn't have + past participle'"
    **hint_pt**: "I wouldn't have said anything."
    **hint_en**: "I wouldn't have said anything."
+   **example_pass**: I wouldn't have said anything. | If we had left earlier, we wouldn't have missed it. | I would have gone if I had had time.
+   **example_fail**: known (bare participle) | If I knew, I would call (2nd conditional, not 3rd) | If I had time, I would call (mixed, not 3rd cond)
 
 3. **id**: 3
    **label_pt**: "Pergunta de volta com 'would have'"
@@ -451,6 +479,8 @@
    **hidden_prompt**: "user asks 'What would you have done?' or similar"
    **hint_pt**: "What would you have done?"
    **hint_en**: "What would you have done?"
+   **example_pass**: What would you have done? | If she had studied, she would have passed. | How about you?
+   **example_fail**: known (bare participle) | If I knew, I would call (2nd conditional, not 3rd) | If I had time, I would call (mixed, not 3rd cond)
 
 **Closing cue**: Charlotte fecha com "Past dilemmas discussed!" quando obj_3 baterem.
 
@@ -486,6 +516,8 @@
    **hidden_prompt**: "user uses 'I would have + past participle' or 'I wouldn't have'"
    **hint_pt**: "Yes, I would have gone."
    **hint_en**: "Yes, I would have gone."
+   **example_pass**: Yes, I would have gone. | If I had known, I would have called. | If she had studied, she would have passed.
+   **example_fail**: known (bare participle) | If I knew, I would call (2nd conditional, not 3rd) | If I had time, I would call (mixed, not 3rd cond)
 
 2. **id**: 2
    **label_pt**: "Razão ou condição"
@@ -493,6 +525,8 @@
    **hidden_prompt**: "user adds 'if + past perfect' or reason"
    **hint_pt**: "If I had been braver, I would have done it."
    **hint_en**: "If I had been braver, I would have done it."
+   **example_pass**: If I had been braver, I would have done it. | If we had left earlier, we wouldn't have missed it. | I would have gone if I had had time.
+   **example_fail**: known (bare participle) | If I knew, I would call (2nd conditional, not 3rd) | If I had time, I would call (mixed, not 3rd cond)
 
 3. **id**: 3
    **label_pt**: "Perguntar à Charlotte"
@@ -500,6 +534,8 @@
    **hidden_prompt**: "user asks 'Would you have?' question to Charlotte"
    **hint_pt**: "Would you have moved abroad?"
    **hint_en**: "Would you have moved abroad?"
+   **example_pass**: Would you have moved abroad? | I would have gone if I had had time. | How about you?
+   **example_fail**: known (bare participle) | If I knew, I would call (2nd conditional, not 3rd) | If I had time, I would call (mixed, not 3rd cond)
 
 **Closing cue**: Charlotte fecha com "Hypothetical lives compared!" quando obj_3 baterem.
 
@@ -603,6 +639,8 @@
    **hidden_prompt**: "user opens the story with 'If I hadn't + past participle, I would (n't) have + past participle'"
    **hint_pt**: "If I hadn't missed that flight, I would have been in the storm."
    **hint_en**: "If I hadn't missed that flight, I would have been in the storm."
+   **example_pass**: If I hadn't missed that flight, I would have been in the storm. | I would have gone if I had had time. | If I had known, I would have called.
+   **example_fail**: known (bare participle) | If I knew, I would call (2nd conditional, not 3rd) | If I had time, I would call (mixed, not 3rd cond)
 
 2. **id**: 2
    **label_pt**: "Encadear segundo third conditional"
@@ -610,6 +648,8 @@
    **hidden_prompt**: "user adds a second third conditional that links to the first event"
    **hint_pt**: "And if I had been on that plane, I would never have met my best friend."
    **hint_en**: "And if I had been on that plane, I would never have met my best friend."
+   **example_pass**: And if I had been on that plane, I would never have met my best friend. | If I had known, I would have called. | If she had studied, she would have passed.
+   **example_fail**: known (bare participle) | If I knew, I would call (2nd conditional, not 3rd) | If I had time, I would call (mixed, not 3rd cond)
 
 3. **id**: 3
    **label_pt**: "Fechar com reflexão"
@@ -617,6 +657,8 @@
    **hidden_prompt**: "user closes with an emphatic third conditional (e.g. 'Everything would have been different' / 'Nothing would have happened')"
    **hint_pt**: "Everything would have been different if I had made one different choice."
    **hint_en**: "Everything would have been different if I had made one different choice."
+   **example_pass**: Everything would have been different if I had made one different choice. | I would have gone if I had had time. | If I had known, I would have called.
+   **example_fail**: known (bare participle) | If I knew, I would call (2nd conditional, not 3rd) | If I had time, I would call (mixed, not 3rd cond)
 
 **Closing cue**: Charlotte fecha com "What a close call!" quando obj_3 baterem.
 
@@ -652,6 +694,8 @@
    **hidden_prompt**: "user states a first third conditional with negative form ('If X hadn't... Y wouldn't have...')"
    **hint_pt**: "If the internet hadn't been invented, we wouldn't have this conversation."
    **hint_en**: "If the internet hadn't been invented, we wouldn't have this conversation."
+   **example_pass**: If the internet hadn't been invented, we wouldn't have this conversation. | I would have gone if I had had time. | If I had known, I would have called.
+   **example_fail**: known (bare participle) | If I knew, I would call (2nd conditional, not 3rd) | If I had time, I would call (mixed, not 3rd cond)
 
 2. **id**: 2
    **label_pt**: "Encadear consequência"
@@ -659,6 +703,8 @@
    **hidden_prompt**: "user adds another third conditional connected to the first"
    **hint_pt**: "And if we hadn't had this conversation, I would never have practiced English today."
    **hint_en**: "And if we hadn't had this conversation, I would never have practiced English today."
+   **example_pass**: And if we hadn't had this conversation, I would never have practiced English today. | If I had known, I would have called. | If she had studied, she would have passed.
+   **example_fail**: known (bare participle) | If I knew, I would call (2nd conditional, not 3rd) | If I had time, I would call (mixed, not 3rd cond)
 
 3. **id**: 3
    **label_pt**: "Perguntar à Charlotte"
@@ -666,6 +712,8 @@
    **hidden_prompt**: "user asks Charlotte 'What about you?' or 'What would have changed for you?' or similar"
    **hint_pt**: "What would have changed for you?"
    **hint_en**: "What would have changed for you?"
+   **example_pass**: What would have changed for you? | If I had known, I would have called. | How about you?
+   **example_fail**: known (bare participle) | If I knew, I would call (2nd conditional, not 3rd) | If I had time, I would call (mixed, not 3rd cond)
 
 **Closing cue**: Charlotte fecha com "Cascade mapped!" quando obj_3 baterem.
 
@@ -769,6 +817,8 @@
    **hidden_prompt**: "user uses 'If I had + past participle, I would have + past participle'"
    **hint_pt**: "If I had left earlier, I wouldn't have missed the meeting."
    **hint_en**: "If I had left earlier, I wouldn't have missed the meeting."
+   **example_pass**: If I had left earlier, I wouldn't have missed the meeting. | If we had left earlier, we wouldn't have missed it. | I would have gone if I had had time.
+   **example_fail**: known (bare participle) | If I knew, I would call (2nd conditional, not 3rd) | If I had time, I would call (mixed, not 3rd cond)
 
 2. **id**: 2
    **label_pt**: "Arrependimento com 'wish'"
@@ -776,6 +826,8 @@
    **hidden_prompt**: "user uses 'I wish I had + past participle'"
    **hint_pt**: "I wish I had studied abroad."
    **hint_en**: "I wish I had studied abroad."
+   **example_pass**: I wish I had studied abroad. | I would have gone if I had had time. | If I had known, I would have called.
+   **example_fail**: known (bare participle) | If I knew, I would call (2nd conditional, not 3rd) | If I had time, I would call (mixed, not 3rd cond)
 
 3. **id**: 3
    **label_pt**: "Close call encadeado"
@@ -783,6 +835,8 @@
    **hidden_prompt**: "user uses 'If I hadn't... I would never have...' or similar negative chained third conditional"
    **hint_pt**: "If I hadn't taken that flight, I would never have met my best friend."
    **hint_en**: "If I hadn't taken that flight, I would never have met my best friend."
+   **example_pass**: If I hadn't taken that flight, I would never have met my best friend. | If I had known, I would have called. | If she had studied, she would have passed.
+   **example_fail**: known (bare participle) | If I knew, I would call (2nd conditional, not 3rd) | If I had time, I would call (mixed, not 3rd cond)
 
 **Closing cue**: Charlotte fecha com "Conditional fluency!" quando obj_3 baterem.
 
@@ -818,6 +872,8 @@
    **hidden_prompt**: "user uses 'I would have + past participle'"
    **hint_pt**: "I would have spoken up more."
    **hint_en**: "I would have spoken up more."
+   **example_pass**: I would have spoken up more. | If we had left earlier, we wouldn't have missed it. | I would have gone if I had had time.
+   **example_fail**: known (bare participle) | If I knew, I would call (2nd conditional, not 3rd) | If I had time, I would call (mixed, not 3rd cond)
 
 2. **id**: 2
    **label_pt**: "Wish ou close call encadeado"
@@ -825,6 +881,8 @@
    **hidden_prompt**: "user uses 'I wish I had' or a chained third conditional ('If I hadn't... I would never have...')"
    **hint_pt**: "I wish I had been more confident — if I hadn't doubted myself, I would have taken more risks."
    **hint_en**: "I wish I had been more confident — if I hadn't doubted myself, I would have taken more risks."
+   **example_pass**: I wish I had been more confident — if I hadn't doubted myself, I would have taken more risks. | If we had left earlier, we wouldn't have missed it. | I would have gone if I had had time.
+   **example_fail**: known (bare participle) | If I knew, I would call (2nd conditional, not 3rd) | If I had time, I would call (mixed, not 3rd cond)
 
 3. **id**: 3
    **label_pt**: "Perguntar à Charlotte"
@@ -832,6 +890,8 @@
    **hidden_prompt**: "user asks 'What would you have changed?' or 'How about you?'"
    **hint_pt**: "What would you have changed?"
    **hint_en**: "What would you have changed?"
+   **example_pass**: What would you have changed? | If she had studied, she would have passed. | How about you?
+   **example_fail**: known (bare participle) | If I knew, I would call (2nd conditional, not 3rd) | If I had time, I would call (mixed, not 3rd cond)
 
 **Closing cue**: Charlotte fecha com "Deep reflection done!" quando obj_3 baterem.
 

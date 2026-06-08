@@ -164,19 +164,49 @@
             "id": 1,
             "label_en": "Fact about food/product (passive)",
             "hidden_prompt": "user uses 'X is/are + past participle' for food or product",
-            "hint_en": "Coffee is grown in many countries."
+            "hint_en": "Coffee is grown in many countries.",
+            "examples_pass": [
+              "Coffee is grown in many countries.",
+              "The letter was sent yesterday.",
+              "The book was written by her."
+            ],
+            "examples_fail": [
+              "written (bare participle)",
+              "She wrote the book (active, not passive)",
+              "The book writes (wrong voice)"
+            ]
           },
           {
             "id": 2,
             "label_en": "Fact about language (passive)",
             "hidden_prompt": "user uses 'X is/are spoken' or similar passive about language",
-            "hint_en": "Spanish is spoken across Latin America."
+            "hint_en": "Spanish is spoken across Latin America.",
+            "examples_pass": [
+              "Spanish is spoken across Latin America.",
+              "The cake is made by my mom.",
+              "The house was built in 1990."
+            ],
+            "examples_fail": [
+              "written (bare participle)",
+              "She wrote the book (active, not passive)",
+              "The book writes (wrong voice)"
+            ]
           },
           {
             "id": 3,
             "label_en": "Fact about material/process",
             "hidden_prompt": "user uses another passive present simple",
-            "hint_en": "Cheese is made from milk."
+            "hint_en": "Cheese is made from milk.",
+            "examples_pass": [
+              "Cheese is made from milk.",
+              "The letter was sent yesterday.",
+              "The book was written by her."
+            ],
+            "examples_fail": [
+              "written (bare participle)",
+              "She wrote the book (active, not passive)",
+              "The book writes (wrong voice)"
+            ]
           }
         ],
         "closing_cue": "Charlotte fecha com \"General facts collected!\" quando obj_3 baterem.",
@@ -199,19 +229,49 @@
             "id": 1,
             "label_en": "Product with passive",
             "hidden_prompt": "user uses passive 'is/are + past participle' for Brazilian product",
-            "hint_en": "Coffee is grown in many parts of Brazil."
+            "hint_en": "Coffee is grown in many parts of Brazil.",
+            "examples_pass": [
+              "Coffee is grown in many parts of Brazil.",
+              "The house was built in 1990.",
+              "The letter was sent yesterday."
+            ],
+            "examples_fail": [
+              "written (bare participle)",
+              "She wrote the book (active, not passive)",
+              "The book writes (wrong voice)"
+            ]
           },
           {
             "id": 2,
             "label_en": "Another product/custom",
             "hidden_prompt": "user uses another passive sentence",
-            "hint_en": "Cars are made in São Paulo and other cities."
+            "hint_en": "Cars are made in São Paulo and other cities.",
+            "examples_pass": [
+              "Cars are made in São Paulo and other cities.",
+              "The cake is made by my mom.",
+              "The house was built in 1990."
+            ],
+            "examples_fail": [
+              "written (bare participle)",
+              "She wrote the book (active, not passive)",
+              "The book writes (wrong voice)"
+            ]
           },
           {
             "id": 3,
             "label_en": "Ask Charlotte",
             "hidden_prompt": "user asks 'What about your country?' or similar",
-            "hint_en": "What's grown in your country?"
+            "hint_en": "What's grown in your country?",
+            "examples_pass": [
+              "What's grown in your country?",
+              "The book was written by her.",
+              "How about you?"
+            ],
+            "examples_fail": [
+              "written (bare participle)",
+              "She wrote the book (active, not passive)",
+              "The book writes (wrong voice)"
+            ]
           }
         ],
         "closing_cue": "Charlotte fecha com \"Country facts shared!\" quando obj_3 baterem.",
@@ -359,19 +419,49 @@
             "id": 1,
             "label_en": "Construction with 'was/were built'",
             "hidden_prompt": "user uses 'X was/were built + time/place'",
-            "hint_en": "Christ the Redeemer was built in 1931."
+            "hint_en": "Christ the Redeemer was built in 1931.",
+            "examples_pass": [
+              "Christ the Redeemer was built in 1931.",
+              "The cake is made by my mom.",
+              "The house was built in 1990."
+            ],
+            "examples_fail": [
+              "written (bare participle)",
+              "She wrote the book (active, not passive)",
+              "The book writes (wrong voice)"
+            ]
           },
           {
             "id": 2,
             "label_en": "Work with 'was/were written/painted'",
             "hidden_prompt": "user uses passive past simple for a book/painting",
-            "hint_en": "Don Quixote was written by Cervantes."
+            "hint_en": "Don Quixote was written by Cervantes.",
+            "examples_pass": [
+              "Don Quixote was written by Cervantes.",
+              "The book was written by her.",
+              "The cake is made by my mom."
+            ],
+            "examples_fail": [
+              "written (bare participle)",
+              "She wrote the book (active, not passive)",
+              "The book writes (wrong voice)"
+            ]
           },
           {
             "id": 3,
             "label_en": "Discovery or invention",
             "hidden_prompt": "user uses passive past simple for discovery/invention",
-            "hint_en": "The telephone was invented in the 19th century."
+            "hint_en": "The telephone was invented in the 19th century.",
+            "examples_pass": [
+              "The telephone was invented in the 19th century.",
+              "The letter was sent yesterday.",
+              "The book was written by her."
+            ],
+            "examples_fail": [
+              "written (bare participle)",
+              "She wrote the book (active, not passive)",
+              "The book writes (wrong voice)"
+            ]
           }
         ],
         "closing_cue": "Charlotte fecha com \"History told!\" quando obj_3 baterem.",
@@ -394,19 +484,49 @@
             "id": 1,
             "label_en": "Landmark with 'was built'",
             "hidden_prompt": "user uses 'X was built in...'",
-            "hint_en": "The cathedral was built in the 1800s."
+            "hint_en": "The cathedral was built in the 1800s.",
+            "examples_pass": [
+              "The cathedral was built in the 1800s.",
+              "The house was built in 1990.",
+              "The letter was sent yesterday."
+            ],
+            "examples_fail": [
+              "written (bare participle)",
+              "She wrote the book (active, not passive)",
+              "The book writes (wrong voice)"
+            ]
           },
           {
             "id": 2,
             "label_en": "Additional detail (passive)",
             "hidden_prompt": "user uses another passive past sentence",
-            "hint_en": "It was designed by a famous architect."
+            "hint_en": "It was designed by a famous architect.",
+            "examples_pass": [
+              "It was designed by a famous architect.",
+              "The letter was sent yesterday.",
+              "The book was written by her."
+            ],
+            "examples_fail": [
+              "written (bare participle)",
+              "She wrote the book (active, not passive)",
+              "The book writes (wrong voice)"
+            ]
           },
           {
             "id": 3,
             "label_en": "Ask Charlotte",
             "hidden_prompt": "user asks Charlotte about her city's landmarks",
-            "hint_en": "What about your city?"
+            "hint_en": "What about your city?",
+            "examples_pass": [
+              "What about your city?",
+              "The house was built in 1990.",
+              "How about you?"
+            ],
+            "examples_fail": [
+              "written (bare participle)",
+              "She wrote the book (active, not passive)",
+              "The book writes (wrong voice)"
+            ]
           }
         ],
         "closing_cue": "Charlotte fecha com \"Landmarks exchanged!\" quando obj_3 baterem.",
@@ -558,19 +678,49 @@
             "id": 1,
             "label_en": "Something being done at home/work",
             "hidden_prompt": "user uses 'X is/are being + past participle'",
-            "hint_en": "The kitchen is being renovated."
+            "hint_en": "The kitchen is being renovated.",
+            "examples_pass": [
+              "The kitchen is being renovated.",
+              "The house was built in 1990.",
+              "The letter was sent yesterday."
+            ],
+            "examples_fail": [
+              "written (bare participle)",
+              "She wrote the book (active, not passive)",
+              "The book writes (wrong voice)"
+            ]
           },
           {
             "id": 2,
             "label_en": "Something being done in the city",
             "hidden_prompt": "user uses another 'is/are being + past participle'",
-            "hint_en": "A new metro line is being built."
+            "hint_en": "A new metro line is being built.",
+            "examples_pass": [
+              "A new metro line is being built.",
+              "The cake is made by my mom.",
+              "The house was built in 1990."
+            ],
+            "examples_fail": [
+              "written (bare participle)",
+              "She wrote the book (active, not passive)",
+              "The book writes (wrong voice)"
+            ]
           },
           {
             "id": 3,
             "label_en": "Something being discussed/decided",
             "hidden_prompt": "user uses passive present continuous for abstract process",
-            "hint_en": "A new law is being discussed."
+            "hint_en": "A new law is being discussed.",
+            "examples_pass": [
+              "A new law is being discussed.",
+              "The cake is made by my mom.",
+              "The house was built in 1990."
+            ],
+            "examples_fail": [
+              "written (bare participle)",
+              "She wrote the book (active, not passive)",
+              "The book writes (wrong voice)"
+            ]
           }
         ],
         "closing_cue": "Charlotte fecha com \"Ongoing projects mapped!\" quando obj_3 baterem.",
@@ -593,19 +743,49 @@
             "id": 1,
             "label_en": "Ongoing change",
             "hidden_prompt": "user uses 'X is being + past participle'",
-            "hint_en": "My bathroom is being renovated."
+            "hint_en": "My bathroom is being renovated.",
+            "examples_pass": [
+              "My bathroom is being renovated.",
+              "The cake is made by my mom.",
+              "The house was built in 1990."
+            ],
+            "examples_fail": [
+              "written (bare participle)",
+              "She wrote the book (active, not passive)",
+              "The book writes (wrong voice)"
+            ]
           },
           {
             "id": 2,
             "label_en": "Detail or another change",
             "hidden_prompt": "user adds another passive continuous",
-            "hint_en": "New tiles are being installed."
+            "hint_en": "New tiles are being installed.",
+            "examples_pass": [
+              "New tiles are being installed.",
+              "The house was built in 1990.",
+              "The letter was sent yesterday."
+            ],
+            "examples_fail": [
+              "written (bare participle)",
+              "She wrote the book (active, not passive)",
+              "The book writes (wrong voice)"
+            ]
           },
           {
             "id": 3,
             "label_en": "Ask Charlotte",
             "hidden_prompt": "user asks Charlotte about her ongoing changes",
-            "hint_en": "What's being changed in your life?"
+            "hint_en": "What's being changed in your life?",
+            "examples_pass": [
+              "What's being changed in your life?",
+              "The house was built in 1990.",
+              "How about you?"
+            ],
+            "examples_fail": [
+              "written (bare participle)",
+              "She wrote the book (active, not passive)",
+              "The book writes (wrong voice)"
+            ]
           }
         ],
         "closing_cue": "Charlotte fecha com \"Changes shared!\" quando obj_3 baterem.",
@@ -756,19 +936,49 @@
             "id": 1,
             "label_en": "Something completed recently",
             "hidden_prompt": "user uses 'X has/have been + past participle'",
-            "hint_en": "The new app has been launched."
+            "hint_en": "The new app has been launched.",
+            "examples_pass": [
+              "The new app has been launched.",
+              "The book was written by her.",
+              "The cake is made by my mom."
+            ],
+            "examples_fail": [
+              "written (bare participle)",
+              "She wrote the book (active, not passive)",
+              "The book writes (wrong voice)"
+            ]
           },
           {
             "id": 2,
             "label_en": "Another completed item",
             "hidden_prompt": "user uses another passive present perfect",
-            "hint_en": "Three changes have been made to the policy."
+            "hint_en": "Three changes have been made to the policy.",
+            "examples_pass": [
+              "Three changes have been made to the policy.",
+              "The book was written by her.",
+              "The cake is made by my mom."
+            ],
+            "examples_fail": [
+              "written (bare participle)",
+              "She wrote the book (active, not passive)",
+              "The book writes (wrong voice)"
+            ]
           },
           {
             "id": 3,
             "label_en": "Something finished at home/work",
             "hidden_prompt": "user uses 'has/have been + past participle' for home/work",
-            "hint_en": "The painting has been finished."
+            "hint_en": "The painting has been finished.",
+            "examples_pass": [
+              "The painting has been finished.",
+              "The cake is made by my mom.",
+              "The house was built in 1990."
+            ],
+            "examples_fail": [
+              "written (bare participle)",
+              "She wrote the book (active, not passive)",
+              "The book writes (wrong voice)"
+            ]
           }
         ],
         "closing_cue": "Charlotte fecha com \"Recent accomplishments noted!\" quando obj_3 baterem.",
@@ -791,19 +1001,49 @@
             "id": 1,
             "label_en": "Something completed at work",
             "hidden_prompt": "user uses 'X has been + past participle'",
-            "hint_en": "The website has been redesigned."
+            "hint_en": "The website has been redesigned.",
+            "examples_pass": [
+              "The website has been redesigned.",
+              "The house was built in 1990.",
+              "The letter was sent yesterday."
+            ],
+            "examples_fail": [
+              "written (bare participle)",
+              "She wrote the book (active, not passive)",
+              "The book writes (wrong voice)"
+            ]
           },
           {
             "id": 2,
             "label_en": "Detail or another completion",
             "hidden_prompt": "user uses another passive present perfect",
-            "hint_en": "Two new features have been added."
+            "hint_en": "Two new features have been added.",
+            "examples_pass": [
+              "Two new features have been added.",
+              "The cake is made by my mom.",
+              "The house was built in 1990."
+            ],
+            "examples_fail": [
+              "written (bare participle)",
+              "She wrote the book (active, not passive)",
+              "The book writes (wrong voice)"
+            ]
           },
           {
             "id": 3,
             "label_en": "Ask Charlotte",
             "hidden_prompt": "user asks Charlotte about her team's accomplishments",
-            "hint_en": "What's been finished on your team?"
+            "hint_en": "What's been finished on your team?",
+            "examples_pass": [
+              "What's been finished on your team?",
+              "The book was written by her.",
+              "How about you?"
+            ],
+            "examples_fail": [
+              "written (bare participle)",
+              "She wrote the book (active, not passive)",
+              "The book writes (wrong voice)"
+            ]
           }
         ],
         "closing_cue": "Charlotte fecha com \"Team wins shared!\" quando obj_3 baterem.",
@@ -949,19 +1189,49 @@
             "id": 1,
             "label_en": "Passive present simple",
             "hidden_prompt": "user uses 'X is/are + past participle' general",
-            "hint_en": "Coffee is grown in Brazil."
+            "hint_en": "Coffee is grown in Brazil.",
+            "examples_pass": [
+              "Coffee is grown in Brazil.",
+              "The house was built in 1990.",
+              "The letter was sent yesterday."
+            ],
+            "examples_fail": [
+              "written (bare participle)",
+              "She wrote the book (active, not passive)",
+              "The book writes (wrong voice)"
+            ]
           },
           {
             "id": 2,
             "label_en": "Passive past simple",
             "hidden_prompt": "user uses 'X was/were + past participle' historical",
-            "hint_en": "The bridge was built in 1880."
+            "hint_en": "The bridge was built in 1880.",
+            "examples_pass": [
+              "The bridge was built in 1880.",
+              "The letter was sent yesterday.",
+              "The book was written by her."
+            ],
+            "examples_fail": [
+              "written (bare participle)",
+              "She wrote the book (active, not passive)",
+              "The book writes (wrong voice)"
+            ]
           },
           {
             "id": 3,
             "label_en": "Passive ongoing or recent",
             "hidden_prompt": "user uses 'is/are being' or 'has/have been + past participle'",
-            "hint_en": "A new tower has been built downtown."
+            "hint_en": "A new tower has been built downtown.",
+            "examples_pass": [
+              "A new tower has been built downtown.",
+              "The book was written by her.",
+              "The cake is made by my mom."
+            ],
+            "examples_fail": [
+              "written (bare participle)",
+              "She wrote the book (active, not passive)",
+              "The book writes (wrong voice)"
+            ]
           }
         ],
         "closing_cue": "Charlotte fecha com \"Passive fluency!\" quando obj_3 baterem.",
@@ -984,19 +1254,49 @@
             "id": 1,
             "label_en": "Recent change (present perfect passive)",
             "hidden_prompt": "user uses 'has/have been + past participle'",
-            "hint_en": "A new park has been built downtown."
+            "hint_en": "A new park has been built downtown.",
+            "examples_pass": [
+              "A new park has been built downtown.",
+              "The cake is made by my mom.",
+              "The house was built in 1990."
+            ],
+            "examples_fail": [
+              "written (bare participle)",
+              "She wrote the book (active, not passive)",
+              "The book writes (wrong voice)"
+            ]
           },
           {
             "id": 2,
             "label_en": "Ongoing change (present continuous passive)",
             "hidden_prompt": "user uses 'is/are being + past participle'",
-            "hint_en": "Two metro lines are being built."
+            "hint_en": "Two metro lines are being built.",
+            "examples_pass": [
+              "Two metro lines are being built.",
+              "The letter was sent yesterday.",
+              "The book was written by her."
+            ],
+            "examples_fail": [
+              "written (bare participle)",
+              "She wrote the book (active, not passive)",
+              "The book writes (wrong voice)"
+            ]
           },
           {
             "id": 3,
             "label_en": "Historic change (past simple passive)",
             "hidden_prompt": "user uses 'was/were + past participle'",
-            "hint_en": "The old market was demolished in 2010."
+            "hint_en": "The old market was demolished in 2010.",
+            "examples_pass": [
+              "The old market was demolished in 2010.",
+              "The cake is made by my mom.",
+              "The house was built in 1990."
+            ],
+            "examples_fail": [
+              "written (bare participle)",
+              "She wrote the book (active, not passive)",
+              "The book writes (wrong voice)"
+            ]
           }
         ],
         "closing_cue": "Charlotte fecha com \"City transformation mapped!\" quando obj_3 baterem.",

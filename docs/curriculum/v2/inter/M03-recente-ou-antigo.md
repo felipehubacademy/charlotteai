@@ -103,6 +103,8 @@
    **hidden_prompt**: "user uses past simple with time marker (last year, yesterday, in 2020)"
    **hint_pt**: "I went to Italy last year."
    **hint_en**: "I went to Italy last year."
+   **example_pass**: I went to Italy last year. | I just finished my homework. | She has already left.
+   **example_fail**: finished (bare verb) | I finished it (past simple, no 'just/already/yet') | I am finishing it (present continuous)
 
 2. **id**: 2
    **label_pt**: "Experiência de vida (PP)"
@@ -110,6 +112,8 @@
    **hidden_prompt**: "user uses 'I have + past participle' for life experience"
    **hint_pt**: "I have visited five countries."
    **hint_en**: "I have visited five countries."
+   **example_pass**: I have visited five countries. | She has already left. | I haven't called him yet.
+   **example_fail**: finished (bare verb) | I finished it (past simple, no 'just/already/yet') | I am finishing it (present continuous)
 
 3. **id**: 3
    **label_pt**: "Outra distinção"
@@ -117,6 +121,8 @@
    **hidden_prompt**: "user uses one more past simple or PP with appropriate marker"
    **hint_pt**: "I have never tried sushi."
    **hint_en**: "I have never tried sushi."
+   **example_pass**: I have never tried sushi. | We've been working all day. | I just finished my homework.
+   **example_fail**: finished (bare verb) | I finished it (past simple, no 'just/already/yet') | I am finishing it (present continuous)
 
 **Closing cue**: Charlotte closes with "Good distinction!" when obj_3 hits.
 
@@ -152,6 +158,8 @@
    **hidden_prompt**: "user uses past simple with specific time"
    **hint_pt**: "I traveled to Rio last weekend."
    **hint_en**: "I traveled to Rio last weekend."
+   **example_pass**: I traveled to Rio last weekend. | I haven't called him yet. | We've been working all day.
+   **example_fail**: finished (bare verb) | I finished it (past simple, no 'just/already/yet') | I am finishing it (present continuous)
 
 2. **id**: 2
    **label_pt**: "Experiência geral (PP)"
@@ -159,6 +167,8 @@
    **hidden_prompt**: "user uses PP for life experience"
    **hint_pt**: "I've traveled a lot."
    **hint_en**: "I've traveled a lot."
+   **example_pass**: I've traveled a lot. | I just finished my homework. | She has already left.
+   **example_fail**: finished (bare verb) | I finished it (past simple, no 'just/already/yet') | I am finishing it (present continuous)
 
 3. **id**: 3
    **label_pt**: "Perguntar à Charlotte"
@@ -166,6 +176,8 @@
    **hidden_prompt**: "user asks specific or experience question"
    **hint_pt**: "Have you ever been to Brazil?"
    **hint_en**: "Have you ever been to Brazil?"
+   **example_pass**: Have you ever been to Brazil? | We've been working all day. | How about you?
+   **example_fail**: finished (bare verb) | I finished it (past simple, no 'just/already/yet') | I am finishing it (present continuous)
 
 **Closing cue**: Charlotte closes with "Tense mastery!" when obj_3 hits.
 
@@ -269,6 +281,8 @@
    **hidden_prompt**: "user uses 'I've lived/been there for + duration'"
    **hint_pt**: "I've lived here for ten years."
    **hint_en**: "I've lived here for ten years."
+   **example_pass**: I've lived here for ten years. | We've been working all day. | I just finished my homework.
+   **example_fail**: finished (bare verb) | I finished it (past simple, no 'just/already/yet') | I am finishing it (present continuous)
 
 2. **id**: 2
    **label_pt**: "Quanto tempo trabalha (for + duration)"
@@ -276,6 +290,8 @@
    **hidden_prompt**: "user uses 'I've worked there for + duration'"
    **hint_pt**: "I've worked there for five years."
    **hint_en**: "I've worked there for five years."
+   **example_pass**: I've worked there for five years. | I haven't called him yet. | We've been working all day.
+   **example_fail**: finished (bare verb) | I finished it (past simple, no 'just/already/yet') | I am finishing it (present continuous)
 
 3. **id**: 3
    **label_pt**: "Outra duração (estudo, amizade)"
@@ -283,6 +299,8 @@
    **hidden_prompt**: "user uses 'I've + past participle + for + duration'"
    **hint_pt**: "I've studied English for two years."
    **hint_en**: "I've studied English for two years."
+   **example_pass**: I've studied English for two years. | I haven't called him yet. | We've been working all day.
+   **example_fail**: finished (bare verb) | I finished it (past simple, no 'just/already/yet') | I am finishing it (present continuous)
 
 **Closing cue**: Charlotte closes with "Long-term things!" when obj_3 hits.
 
@@ -318,6 +336,8 @@
    **hidden_prompt**: "user uses 'I've known + person + for + duration'"
    **hint_pt**: "I've known her for ten years."
    **hint_en**: "I've known her for ten years."
+   **example_pass**: I've known her for ten years. | We've been working all day. | I just finished my homework.
+   **example_fail**: finished (bare verb) | I finished it (past simple, no 'just/already/yet') | I am finishing it (present continuous)
 
 2. **id**: 2
    **label_pt**: "Outra duração"
@@ -325,6 +345,8 @@
    **hidden_prompt**: "user uses another PP + for"
    **hint_pt**: "I've worked here for two years."
    **hint_en**: "I've worked here for two years."
+   **example_pass**: I've worked here for two years. | I haven't called him yet. | We've been working all day.
+   **example_fail**: finished (bare verb) | I finished it (past simple, no 'just/already/yet') | I am finishing it (present continuous)
 
 3. **id**: 3
    **label_pt**: "Perguntar à Charlotte"
@@ -332,6 +354,8 @@
    **hidden_prompt**: "user asks 'How long have you...?'"
    **hint_pt**: "How long have you taught?"
    **hint_en**: "How long have you taught?"
+   **example_pass**: How long have you taught? | We've been working all day. | How about you?
+   **example_fail**: finished (bare verb) | I finished it (past simple, no 'just/already/yet') | I am finishing it (present continuous)
 
 **Closing cue**: Charlotte closes with "Time flies!" when obj_3 hits.
 
@@ -435,6 +459,8 @@
    **hidden_prompt**: "user uses 'I've + past participle + since + year'"
    **hint_pt**: "I've worked here since 2020."
    **hint_en**: "I've worked here since 2020."
+   **example_pass**: I've worked here since 2020. | We've been working all day. | I just finished my homework.
+   **example_fail**: finished (bare verb) | I finished it (past simple, no 'just/already/yet') | I am finishing it (present continuous)
 
 2. **id**: 2
    **label_pt**: "Algo desde um mês ou dia"
@@ -442,6 +468,8 @@
    **hidden_prompt**: "user uses 'since + month/day'"
    **hint_pt**: "I've been busy since Monday."
    **hint_en**: "I've been busy since Monday."
+   **example_pass**: I've been busy since Monday. | I just finished my homework. | She has already left.
+   **example_fail**: finished (bare verb) | I finished it (past simple, no 'just/already/yet') | I am finishing it (present continuous)
 
 3. **id**: 3
    **label_pt**: "Algo desde um evento da vida"
@@ -449,6 +477,8 @@
    **hidden_prompt**: "user uses 'since + clause' (since I was..., since I moved...)"
    **hint_pt**: "I've lived here since I was 18."
    **hint_en**: "I've lived here since I was 18."
+   **example_pass**: I've lived here since I was 18. | I just finished my homework. | She has already left.
+   **example_fail**: finished (bare verb) | I finished it (past simple, no 'just/already/yet') | I am finishing it (present continuous)
 
 **Closing cue**: Charlotte closes with "Anchored in time!" when obj_3 hits.
 
@@ -484,6 +514,8 @@
    **hidden_prompt**: "user uses 'since + point'"
    **hint_pt**: "Since 2022."
    **hint_en**: "Since 2022."
+   **example_pass**: Since 2022. | I haven't called him yet. | We've been working all day.
+   **example_fail**: finished (bare verb) | I finished it (past simple, no 'just/already/yet') | I am finishing it (present continuous)
 
 2. **id**: 2
    **label_pt**: "Outra coisa com since"
@@ -491,6 +523,8 @@
    **hidden_prompt**: "user uses 'I've + past participle + since'"
    **hint_pt**: "I've lived here since 2015."
    **hint_en**: "I've lived here since 2015."
+   **example_pass**: I've lived here since 2015. | We've been working all day. | I just finished my homework.
+   **example_fail**: finished (bare verb) | I finished it (past simple, no 'just/already/yet') | I am finishing it (present continuous)
 
 3. **id**: 3
    **label_pt**: "Perguntar à Charlotte"
@@ -498,6 +532,8 @@
    **hidden_prompt**: "user asks 'Since when have you...?'"
    **hint_pt**: "Since when have you taught?"
    **hint_en**: "Since when have you taught?"
+   **example_pass**: Since when have you taught? | She has already left. | How about you?
+   **example_fail**: finished (bare verb) | I finished it (past simple, no 'just/already/yet') | I am finishing it (present continuous)
 
 **Closing cue**: Charlotte closes with "Starting points clear!" when obj_3 hits.
 
@@ -601,6 +637,8 @@
    **hidden_prompt**: "user uses 'For + duration'"
    **hint_pt**: "For two years."
    **hint_en**: "For two years."
+   **example_pass**: For two years. | We've been working all day. | I just finished my homework.
+   **example_fail**: finished (bare verb) | I finished it (past simple, no 'just/already/yet') | I am finishing it (present continuous)
 
 2. **id**: 2
    **label_pt**: "Outra resposta com since"
@@ -608,6 +646,8 @@
    **hidden_prompt**: "user uses 'Since + point'"
    **hint_pt**: "Since 2022."
    **hint_en**: "Since 2022."
+   **example_pass**: Since 2022. | I haven't called him yet. | We've been working all day.
+   **example_fail**: finished (bare verb) | I finished it (past simple, no 'just/already/yet') | I am finishing it (present continuous)
 
 3. **id**: 3
    **label_pt**: "Perguntar à Charlotte (How long)"
@@ -615,6 +655,8 @@
    **hidden_prompt**: "user asks 'How long have you + past participle?'"
    **hint_pt**: "How long have you been a teacher?"
    **hint_en**: "How long have you been a teacher?"
+   **example_pass**: How long have you been a teacher? | She has already left. | How about you?
+   **example_fail**: finished (bare verb) | I finished it (past simple, no 'just/already/yet') | I am finishing it (present continuous)
 
 **Closing cue**: Charlotte closes with "Duration questions covered!" when obj_3 hits.
 
@@ -650,6 +692,8 @@
    **hidden_prompt**: "user uses 'For + duration'"
    **hint_pt**: "For three years."
    **hint_en**: "For three years."
+   **example_pass**: For three years. | She has already left. | I haven't called him yet.
+   **example_fail**: finished (bare verb) | I finished it (past simple, no 'just/already/yet') | I am finishing it (present continuous)
 
 2. **id**: 2
    **label_pt**: "Outra duração"
@@ -657,6 +701,8 @@
    **hidden_prompt**: "user uses 'for + duration' or 'since + point'"
    **hint_pt**: "Since 2021."
    **hint_en**: "Since 2021."
+   **example_pass**: Since 2021. | She has already left. | I haven't called him yet.
+   **example_fail**: finished (bare verb) | I finished it (past simple, no 'just/already/yet') | I am finishing it (present continuous)
 
 3. **id**: 3
    **label_pt**: "Perguntar à Charlotte"
@@ -664,6 +710,8 @@
    **hidden_prompt**: "user asks 'How long have you...?'"
    **hint_pt**: "How long have you lived in NYC?"
    **hint_en**: "How long have you lived in NYC?"
+   **example_pass**: How long have you lived in NYC? | We've been working all day. | How about you?
+   **example_fail**: finished (bare verb) | I finished it (past simple, no 'just/already/yet') | I am finishing it (present continuous)
 
 **Closing cue**: Charlotte closes with "Time on the books!" when obj_3 hits.
 
@@ -766,6 +814,8 @@
    **hidden_prompt**: "user uses past simple + specific time"
    **hint_pt**: "I traveled to Italy in 2019."
    **hint_en**: "I traveled to Italy in 2019."
+   **example_pass**: I traveled to Italy in 2019. | We've been working all day. | I just finished my homework.
+   **example_fail**: finished (bare verb) | I finished it (past simple, no 'just/already/yet') | I am finishing it (present continuous)
 
 2. **id**: 2
    **label_pt**: "Experiência de vida (PP)"
@@ -773,6 +823,8 @@
    **hidden_prompt**: "user uses 'I've + past participle' for experience"
    **hint_pt**: "I've never been to Asia."
    **hint_en**: "I've never been to Asia."
+   **example_pass**: I've never been to Asia. | I just finished my homework. | She has already left.
+   **example_fail**: finished (bare verb) | I finished it (past simple, no 'just/already/yet') | I am finishing it (present continuous)
 
 3. **id**: 3
    **label_pt**: "Pergunta integrada à Charlotte"
@@ -780,6 +832,8 @@
    **hidden_prompt**: "user asks PP or past simple question"
    **hint_pt**: "Have you been to Asia?"
    **hint_en**: "Have you been to Asia?"
+   **example_pass**: Have you been to Asia? | We've been working all day. | How about you?
+   **example_fail**: finished (bare verb) | I finished it (past simple, no 'just/already/yet') | I am finishing it (present continuous)
 
 **Closing cue**: Charlotte closes with "Tenses mastered!" when obj_3 hits.
 
@@ -815,6 +869,8 @@
    **hidden_prompt**: "user uses past simple with time marker"
    **hint_pt**: "I got promoted last month."
    **hint_en**: "I got promoted last month."
+   **example_pass**: I got promoted last month. | She has already left. | I haven't called him yet.
+   **example_fail**: finished (bare verb) | I finished it (past simple, no 'just/already/yet') | I am finishing it (present continuous)
 
 2. **id**: 2
    **label_pt**: "Experiência geral (PP)"
@@ -822,6 +878,8 @@
    **hidden_prompt**: "user uses PP for life experience"
    **hint_pt**: "I've never had such a good year."
    **hint_en**: "I've never had such a good year."
+   **example_pass**: I've never had such a good year. | I just finished my homework. | She has already left.
+   **example_fail**: finished (bare verb) | I finished it (past simple, no 'just/already/yet') | I am finishing it (present continuous)
 
 3. **id**: 3
    **label_pt**: "Perguntar à Charlotte"
@@ -829,6 +887,8 @@
    **hidden_prompt**: "user asks past simple or PP question"
    **hint_pt**: "How about you?"
    **hint_en**: "How about you?"
+   **example_pass**: How about you? | She has already left. | And you?
+   **example_fail**: finished (bare verb) | I finished it (past simple, no 'just/already/yet') | I am finishing it (present continuous)
 
 **Closing cue**: Charlotte closes with "Two tenses, one chat!" when obj_3 hits.
 

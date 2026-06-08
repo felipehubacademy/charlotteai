@@ -107,6 +107,8 @@
    **hidden_prompt**: "user uses 'I'll + base + when I + present' for daily action"
    **hint_pt**: "I'll relax when I get home."
    **hint_en**: "I'll relax when I get home."
+   **example_pass**: I'll relax when I get home. | After she finishes, we'll start. | As soon as he calls, tell me.
+   **example_fail**: arrive (bare verb) | I called you when I arrived (past, not future planning) | I'll call you (no time clause)
 
 2. **id**: 2
    **label_pt**: "Promessa com 'when + alguém + verbo'"
@@ -114,6 +116,8 @@
    **hidden_prompt**: "user uses 'I'll + base + when + 3rd person + verb-s'"
    **hint_pt**: "I'll celebrate when my brother graduates."
    **hint_en**: "I'll celebrate when my brother graduates."
+   **example_pass**: I'll celebrate when my brother graduates. | As soon as he calls, tell me. | I'll call you when I arrive.
+   **example_fail**: arrive (bare verb) | I called you when I arrived (past, not future planning) | I'll call you (no time clause)
 
 3. **id**: 3
    **label_pt**: "Promessa futura com 'when'"
@@ -121,6 +125,8 @@
    **hidden_prompt**: "user uses another 'when' clause with present simple"
    **hint_pt**: "I'll travel when I have enough money saved."
    **hint_en**: "I'll travel when I have enough money saved."
+   **example_pass**: I'll travel when I have enough money saved. | I'll call you when I arrive. | Before I leave, I'll lock the door.
+   **example_fail**: arrive (bare verb) | I called you when I arrived (past, not future planning) | I'll call you (no time clause)
 
 **Closing cue**: Charlotte fecha com "Future promises set!" quando obj_3 baterem.
 
@@ -156,6 +162,8 @@
    **hidden_prompt**: "user uses 'I'll + base + when I have time' or similar"
    **hint_pt**: "I'll read more when I have free time."
    **hint_en**: "I'll read more when I have free time."
+   **example_pass**: I'll read more when I have free time. | Before I leave, I'll lock the door. | After she finishes, we'll start.
+   **example_fail**: arrive (bare verb) | I called you when I arrived (past, not future planning) | I'll call you (no time clause)
 
 2. **id**: 2
    **label_pt**: "Outra promessa com 'when'"
@@ -163,6 +171,8 @@
    **hidden_prompt**: "user uses another 'when' clause"
    **hint_pt**: "I'll move out when I save enough money."
    **hint_en**: "I'll move out when I save enough money."
+   **example_pass**: I'll move out when I save enough money. | Before I leave, I'll lock the door. | After she finishes, we'll start.
+   **example_fail**: arrive (bare verb) | I called you when I arrived (past, not future planning) | I'll call you (no time clause)
 
 3. **id**: 3
    **label_pt**: "Perguntar à Charlotte"
@@ -170,6 +180,8 @@
    **hidden_prompt**: "user asks 'What will you do when...?' or 'How about you?'"
    **hint_pt**: "How about you?"
    **hint_en**: "How about you?"
+   **example_pass**: How about you? | Before I leave, I'll lock the door. | And you?
+   **example_fail**: arrive (bare verb) | I called you when I arrived (past, not future planning) | I'll call you (no time clause)
 
 **Closing cue**: Charlotte fecha com "Future milestones mapped!" quando obj_3 baterem.
 
@@ -273,6 +285,8 @@
    **hidden_prompt**: "user uses 'I'll + base + before + present' or 'Before + present, I'll + base'"
    **hint_pt**: "I'll take a shower before I leave."
    **hint_en**: "I'll take a shower before I leave."
+   **example_pass**: I'll take a shower before I leave. | Before I leave, I'll lock the door. | After she finishes, we'll start.
+   **example_fail**: arrive (bare verb) | I called you when I arrived (past, not future planning) | I'll call you (no time clause)
 
 2. **id**: 2
    **label_pt**: "Ação com 'after' (depois de outra)"
@@ -280,6 +294,8 @@
    **hidden_prompt**: "user uses 'I'll + base + after + present'"
    **hint_pt**: "After I finish work, I'll grab dinner."
    **hint_en**: "After I finish work, I'll grab dinner."
+   **example_pass**: After I finish work, I'll grab dinner. | Before I leave, I'll lock the door. | After she finishes, we'll start.
+   **example_fail**: arrive (bare verb) | I called you when I arrived (past, not future planning) | I'll call you (no time clause)
 
 3. **id**: 3
    **label_pt**: "Mais uma ação na sequência"
@@ -287,6 +303,8 @@
    **hidden_prompt**: "user uses another before/after sequence"
    **hint_pt**: "Before we meet, I'll send you the address."
    **hint_en**: "Before we meet, I'll send you the address."
+   **example_pass**: Before we meet, I'll send you the address. | After she finishes, we'll start. | As soon as he calls, tell me.
+   **example_fail**: arrive (bare verb) | I called you when I arrived (past, not future planning) | I'll call you (no time clause)
 
 **Closing cue**: Charlotte fecha com "Sequence locked in!" quando obj_3 baterem.
 
@@ -322,6 +340,8 @@
    **hidden_prompt**: "user uses 'Before I + present, I + present/will' for pre-work routine"
    **hint_pt**: "Before I start work, I have coffee."
    **hint_en**: "Before I start work, I have coffee."
+   **example_pass**: Before I start work, I have coffee. | I'll call you when I arrive. | Before I leave, I'll lock the door.
+   **example_fail**: arrive (bare verb) | I called you when I arrived (past, not future planning) | I'll call you (no time clause)
 
 2. **id**: 2
    **label_pt**: "Ação depois (after)"
@@ -329,6 +349,8 @@
    **hidden_prompt**: "user uses 'After I + present, I + present/will'"
    **hint_pt**: "After I check emails, I plan my day."
    **hint_en**: "After I check emails, I plan my day."
+   **example_pass**: After I check emails, I plan my day. | After she finishes, we'll start. | As soon as he calls, tell me.
+   **example_fail**: arrive (bare verb) | I called you when I arrived (past, not future planning) | I'll call you (no time clause)
 
 3. **id**: 3
    **label_pt**: "Perguntar à Charlotte"
@@ -336,6 +358,8 @@
    **hidden_prompt**: "user asks 'How about you?' or 'What about your routine?'"
    **hint_pt**: "How about you?"
    **hint_en**: "How about you?"
+   **example_pass**: How about you? | Before I leave, I'll lock the door. | And you?
+   **example_fail**: arrive (bare verb) | I called you when I arrived (past, not future planning) | I'll call you (no time clause)
 
 **Closing cue**: Charlotte fecha com "Sequence mapped!" quando obj_3 baterem.
 
@@ -439,6 +463,8 @@
    **hidden_prompt**: "user uses 'I'll + base + until + present'"
    **hint_pt**: "I'll work until I finish this project."
    **hint_en**: "I'll work until I finish this project."
+   **example_pass**: I'll work until I finish this project. | After she finishes, we'll start. | As soon as he calls, tell me.
+   **example_fail**: arrive (bare verb) | I called you when I arrived (past, not future planning) | I'll call you (no time clause)
 
 2. **id**: 2
    **label_pt**: "Prazo com 'by the time'"
@@ -446,6 +472,8 @@
    **hidden_prompt**: "user uses 'By the time + present, will + base' or 'will + base + by the time + present'"
    **hint_pt**: "By the time you arrive, dinner will be ready."
    **hint_en**: "By the time you arrive, dinner will be ready."
+   **example_pass**: By the time you arrive, dinner will be ready. | As soon as he calls, tell me. | I'll call you when I arrive.
+   **example_fail**: arrive (bare verb) | I called you when I arrived (past, not future planning) | I'll call you (no time clause)
 
 3. **id**: 3
    **label_pt**: "Mais uma com 'until' ou 'by the time'"
@@ -453,6 +481,8 @@
    **hidden_prompt**: "user uses another until/by the time clause"
    **hint_pt**: "I won't stop until I master English."
    **hint_en**: "I won't stop until I master English."
+   **example_pass**: I won't stop until I master English. | As soon as he calls, tell me. | I'll call you when I arrive.
+   **example_fail**: arrive (bare verb) | I called you when I arrived (past, not future planning) | I'll call you (no time clause)
 
 **Closing cue**: Charlotte fecha com "Deadlines and durations!" quando obj_3 baterem.
 
@@ -488,6 +518,8 @@
    **hidden_prompt**: "user uses 'I'll + base + until + time' for ongoing action"
    **hint_pt**: "I'll be working hard until next month."
    **hint_en**: "I'll be working hard until next month."
+   **example_pass**: I'll be working hard until next month. | After she finishes, we'll start. | As soon as he calls, tell me.
+   **example_fail**: arrive (bare verb) | I called you when I arrived (past, not future planning) | I'll call you (no time clause)
 
 2. **id**: 2
    **label_pt**: "Algo que estará pronto 'by the time'"
@@ -495,6 +527,8 @@
    **hidden_prompt**: "user uses 'By the time + present, will + base'"
    **hint_pt**: "By the time the month ends, I'll have finished the project."
    **hint_en**: "By the time the month ends, I'll have finished the project."
+   **example_pass**: By the time the month ends, I'll have finished the project. | I'll call you when I arrive. | Before I leave, I'll lock the door.
+   **example_fail**: arrive (bare verb) | I called you when I arrived (past, not future planning) | I'll call you (no time clause)
 
 3. **id**: 3
    **label_pt**: "Perguntar à Charlotte"
@@ -502,6 +536,8 @@
    **hidden_prompt**: "user asks 'How about you?' or 'What are your deadlines?'"
    **hint_pt**: "How about you?"
    **hint_en**: "How about you?"
+   **example_pass**: How about you? | Before I leave, I'll lock the door. | And you?
+   **example_fail**: arrive (bare verb) | I called you when I arrived (past, not future planning) | I'll call you (no time clause)
 
 **Closing cue**: Charlotte fecha com "Timeframes set!" quando obj_3 baterem.
 
@@ -605,6 +641,8 @@
    **hidden_prompt**: "user uses 'I'll + base + as soon as I + present'"
    **hint_pt**: "I'll text you as soon as I arrive."
    **hint_en**: "I'll text you as soon as I arrive."
+   **example_pass**: I'll text you as soon as I arrive. | Before I leave, I'll lock the door. | After she finishes, we'll start.
+   **example_fail**: arrive (bare verb) | I called you when I arrived (past, not future planning) | I'll call you (no time clause)
 
 2. **id**: 2
    **label_pt**: "Reação imediata a uma notícia"
@@ -612,6 +650,8 @@
    **hidden_prompt**: "user uses 'I'll + base + as soon as I + present (hear/get/receive)'"
    **hint_pt**: "I'll call my parents as soon as I hear back."
    **hint_en**: "I'll call my parents as soon as I hear back."
+   **example_pass**: I'll call my parents as soon as I hear back. | After she finishes, we'll start. | As soon as he calls, tell me.
+   **example_fail**: arrive (bare verb) | I called you when I arrived (past, not future planning) | I'll call you (no time clause)
 
 3. **id**: 3
    **label_pt**: "Mais uma promessa imediata"
@@ -619,6 +659,8 @@
    **hidden_prompt**: "user uses another 'as soon as' clause"
    **hint_pt**: "I'll start celebrating as soon as I finish this."
    **hint_en**: "I'll start celebrating as soon as I finish this."
+   **example_pass**: I'll start celebrating as soon as I finish this. | Before I leave, I'll lock the door. | After she finishes, we'll start.
+   **example_fail**: arrive (bare verb) | I called you when I arrived (past, not future planning) | I'll call you (no time clause)
 
 **Closing cue**: Charlotte fecha com "Immediate promises!" quando obj_3 baterem.
 
@@ -654,6 +696,8 @@
    **hidden_prompt**: "user uses 'I'll + base + as soon as I + present' for news/updates"
    **hint_pt**: "I'll let you know as soon as I have news."
    **hint_en**: "I'll let you know as soon as I have news."
+   **example_pass**: I'll let you know as soon as I have news. | I'll call you when I arrive. | Before I leave, I'll lock the door.
+   **example_fail**: arrive (bare verb) | I called you when I arrived (past, not future planning) | I'll call you (no time clause)
 
 2. **id**: 2
    **label_pt**: "Outra promessa de update"
@@ -661,6 +705,8 @@
    **hidden_prompt**: "user uses another 'as soon as' clause"
    **hint_pt**: "I'll send a photo as soon as I get there."
    **hint_en**: "I'll send a photo as soon as I get there."
+   **example_pass**: I'll send a photo as soon as I get there. | As soon as he calls, tell me. | I'll call you when I arrive.
+   **example_fail**: arrive (bare verb) | I called you when I arrived (past, not future planning) | I'll call you (no time clause)
 
 3. **id**: 3
    **label_pt**: "Perguntar à Charlotte"
@@ -668,6 +714,8 @@
    **hidden_prompt**: "user asks 'How about you?' or 'What do you do as soon as...?'"
    **hint_pt**: "How about you?"
    **hint_en**: "How about you?"
+   **example_pass**: How about you? | Before I leave, I'll lock the door. | And you?
+   **example_fail**: arrive (bare verb) | I called you when I arrived (past, not future planning) | I'll call you (no time clause)
 
 **Closing cue**: Charlotte fecha com "Quick updates locked!" quando obj_3 baterem.
 
@@ -771,6 +819,8 @@
    **hidden_prompt**: "user uses 'when' or 'as soon as' + present simple"
    **hint_pt**: "I'll start when I have my coffee."
    **hint_en**: "I'll start when I have my coffee."
+   **example_pass**: I'll start when I have my coffee. | Before I leave, I'll lock the door. | After she finishes, we'll start.
+   **example_fail**: arrive (bare verb) | I called you when I arrived (past, not future planning) | I'll call you (no time clause)
 
 2. **id**: 2
    **label_pt**: "Time clause com 'before' ou 'after'"
@@ -778,6 +828,8 @@
    **hidden_prompt**: "user uses 'before' or 'after' + present simple"
    **hint_pt**: "After I finish work, I'll go for a run."
    **hint_en**: "After I finish work, I'll go for a run."
+   **example_pass**: After I finish work, I'll go for a run. | I'll call you when I arrive. | Before I leave, I'll lock the door.
+   **example_fail**: arrive (bare verb) | I called you when I arrived (past, not future planning) | I'll call you (no time clause)
 
 3. **id**: 3
    **label_pt**: "Time clause com 'until' ou 'by the time'"
@@ -785,6 +837,8 @@
    **hidden_prompt**: "user uses 'until' or 'by the time' + present simple"
    **hint_pt**: "By the time I get home, dinner will be ready."
    **hint_en**: "By the time I get home, dinner will be ready."
+   **example_pass**: By the time I get home, dinner will be ready. | As soon as he calls, tell me. | I'll call you when I arrive.
+   **example_fail**: arrive (bare verb) | I called you when I arrived (past, not future planning) | I'll call you (no time clause)
 
 **Closing cue**: Charlotte fecha com "Time clauses mastered!" quando obj_3 baterem.
 
@@ -820,6 +874,8 @@
    **hidden_prompt**: "user uses 'when/before/after/as soon as' + present simple"
    **hint_pt**: "I'll start as soon as I have time."
    **hint_en**: "I'll start as soon as I have time."
+   **example_pass**: I'll start as soon as I have time. | As soon as he calls, tell me. | I'll call you when I arrive.
+   **example_fail**: arrive (bare verb) | I called you when I arrived (past, not future planning) | I'll call you (no time clause)
 
 2. **id**: 2
    **label_pt**: "Time clause de duração ou ponto de fim"
@@ -827,6 +883,8 @@
    **hidden_prompt**: "user uses 'until' or 'by the time' + present"
    **hint_pt**: "I'll work until I finish it completely."
    **hint_en**: "I'll work until I finish it completely."
+   **example_pass**: I'll work until I finish it completely. | After she finishes, we'll start. | As soon as he calls, tell me.
+   **example_fail**: arrive (bare verb) | I called you when I arrived (past, not future planning) | I'll call you (no time clause)
 
 3. **id**: 3
    **label_pt**: "Perguntar à Charlotte"
@@ -834,6 +892,8 @@
    **hidden_prompt**: "user asks 'How about you?' or about her project"
    **hint_pt**: "How about you?"
    **hint_en**: "How about you?"
+   **example_pass**: How about you? | Before I leave, I'll lock the door. | And you?
+   **example_fail**: arrive (bare verb) | I called you when I arrived (past, not future planning) | I'll call you (no time clause)
 
 **Closing cue**: Charlotte fecha com "Timeline articulated!" quando obj_3 baterem.
 

@@ -107,6 +107,8 @@
    **hidden_prompt**: "user uses 'If + present, present' for a scientific/physical fact (water/heat/cold/light)"
    **hint_pt**: "If you heat water, it boils."
    **hint_en**: "If you heat water, it boils."
+   **example_pass**: If you heat water, it boils. | The sun rises in the east. | Babies cry when they're hungry.
+   **example_fail**: boil (bare verb) | Water is boiling (present continuous, not general truth) | Water boiled (past, not general truth)
 
 2. **id**: 2
    **label_pt**: "Verdade biológica ou do corpo"
@@ -114,6 +116,8 @@
    **hidden_prompt**: "user uses zero conditional for biology (sleep, eat, exercise consequences)"
    **hint_pt**: "If you don't eat, you get hungry."
    **hint_en**: "If you don't eat, you get hungry."
+   **example_pass**: If you don't eat, you get hungry. | Babies cry when they're hungry. | Plants need light to grow.
+   **example_fail**: boil (bare verb) | Water is boiling (present continuous, not general truth) | Water boiled (past, not general truth)
 
 3. **id**: 3
    **label_pt**: "Verdade da natureza ou do tempo"
@@ -121,6 +125,8 @@
    **hidden_prompt**: "user uses zero conditional with weather/nature/seasons"
    **hint_pt**: "When the sun sets, it gets dark."
    **hint_en**: "When the sun sets, it gets dark."
+   **example_pass**: When the sun sets, it gets dark. | Water boils at 100 degrees. | The sun rises in the east.
+   **example_fail**: boil (bare verb) | Water is boiling (present continuous, not general truth) | Water boiled (past, not general truth)
 
 **Closing cue**: Charlotte fecha com "Universal patterns!" quando obj_3 baterem.
 
@@ -156,6 +162,8 @@
    **hidden_prompt**: "user uses 'If/When I + present, I + present' for a personal pattern"
    **hint_pt**: "If I don't have coffee, I feel grumpy."
    **hint_en**: "If I don't have coffee, I feel grumpy."
+   **example_pass**: If I don't have coffee, I feel grumpy. | Plants need light to grow. | Water boils at 100 degrees.
+   **example_fail**: boil (bare verb) | Water is boiling (present continuous, not general truth) | Water boiled (past, not general truth)
 
 2. **id**: 2
    **label_pt**: "Outro padrão de causa-efeito pessoal"
@@ -163,6 +171,8 @@
    **hidden_prompt**: "user uses another 'When/If + present, present' personal pattern"
    **hint_pt**: "When I exercise, I sleep better."
    **hint_en**: "When I exercise, I sleep better."
+   **example_pass**: When I exercise, I sleep better. | The sun rises in the east. | Babies cry when they're hungry.
+   **example_fail**: boil (bare verb) | Water is boiling (present continuous, not general truth) | Water boiled (past, not general truth)
 
 3. **id**: 3
    **label_pt**: "Perguntar à Charlotte sobre um padrão dela"
@@ -170,6 +180,8 @@
    **hidden_prompt**: "user asks 'How about you?' or 'What's true for you?'"
    **hint_pt**: "How about you?"
    **hint_en**: "How about you?"
+   **example_pass**: How about you? | The sun rises in the east. | And you?
+   **example_fail**: boil (bare verb) | Water is boiling (present continuous, not general truth) | Water boiled (past, not general truth)
 
 **Closing cue**: Charlotte fecha com "Personal patterns shared!" quando obj_3 baterem.
 
@@ -275,6 +287,8 @@
    **hidden_prompt**: "user uses 'If + present, present' for an always-true statement"
    **hint_pt**: "If you exercise, you feel better."
    **hint_en**: "If you exercise, you feel better."
+   **example_pass**: If you exercise, you feel better. | The sun rises in the east. | Babies cry when they're hungry.
+   **example_fail**: boil (bare verb) | Water is boiling (present continuous, not general truth) | Water boiled (past, not general truth)
 
 2. **id**: 2
    **label_pt**: "Predição específica em first conditional"
@@ -282,6 +296,8 @@
    **hidden_prompt**: "user uses 'If + present, will + base' for tomorrow/next week"
    **hint_pt**: "If I have time tomorrow, I'll exercise."
    **hint_en**: "If I have time tomorrow, I'll exercise."
+   **example_pass**: If I have time tomorrow, I'll exercise. | Babies cry when they're hungry. | Plants need light to grow.
+   **example_fail**: boil (bare verb) | Water is boiling (present continuous, not general truth) | Water boiled (past, not general truth)
 
 3. **id**: 3
    **label_pt**: "Outra verdade geral OU plano específico (diferente da primeira)"
@@ -289,6 +305,8 @@
    **hidden_prompt**: "user uses zero or first conditional, with awareness of which"
    **hint_pt**: "If I save money, I'll buy a new phone."
    **hint_en**: "If I save money, I'll buy a new phone."
+   **example_pass**: If I save money, I'll buy a new phone. | Babies cry when they're hungry. | Plants need light to grow.
+   **example_fail**: boil (bare verb) | Water is boiling (present continuous, not general truth) | Water boiled (past, not general truth)
 
 **Closing cue**: Charlotte fecha com "Conditional choice mastered!" quando obj_3 baterem.
 
@@ -325,6 +343,8 @@
    **hidden_prompt**: "user uses 'If/When + present, present' for a personal life truth"
    **hint_pt**: "If you read more, you write better."
    **hint_en**: "If you read more, you write better."
+   **example_pass**: If you read more, you write better. | Plants need light to grow. | Water boils at 100 degrees.
+   **example_fail**: boil (bare verb) | Water is boiling (present continuous, not general truth) | Water boiled (past, not general truth)
 
 2. **id**: 2
    **label_pt**: "Plano específico para esta semana (first conditional)"
@@ -332,6 +352,8 @@
    **hidden_prompt**: "user uses 'If + present, I'll/will + base' for a specific plan"
    **hint_pt**: "If I finish work early Friday, I'll meet my friends."
    **hint_en**: "If I finish work early Friday, I'll meet my friends."
+   **example_pass**: If I finish work early Friday, I'll meet my friends. | Babies cry when they're hungry. | Plants need light to grow.
+   **example_fail**: boil (bare verb) | Water is boiling (present continuous, not general truth) | Water boiled (past, not general truth)
 
 3. **id**: 3
    **label_pt**: "Perguntar à Charlotte"
@@ -339,6 +361,8 @@
    **hidden_prompt**: "user asks 'How about you?' or 'What's your truth/plan?'"
    **hint_pt**: "How about you?"
    **hint_en**: "How about you?"
+   **example_pass**: How about you? | The sun rises in the east. | And you?
+   **example_fail**: boil (bare verb) | Water is boiling (present continuous, not general truth) | Water boiled (past, not general truth)
 
 **Closing cue**: Charlotte fecha com "Truths and plans!" quando obj_3 baterem.
 
@@ -442,6 +466,8 @@
    **hidden_prompt**: "user uses 'When + present, present/will' for certain events or daily routine"
    **hint_pt**: "When I get home, I make dinner."
    **hint_en**: "When I get home, I make dinner."
+   **example_pass**: When I get home, I make dinner. | The sun rises in the east. | Babies cry when they're hungry.
+   **example_fail**: boil (bare verb) | Water is boiling (present continuous, not general truth) | Water boiled (past, not general truth)
 
 2. **id**: 2
    **label_pt**: "Frase com 'if' (possibilidade incerta)"
@@ -449,6 +475,8 @@
    **hidden_prompt**: "user uses 'If + present, will + base' for uncertain future"
    **hint_pt**: "If my friend calls, I'll meet up."
    **hint_en**: "If my friend calls, I'll meet up."
+   **example_pass**: If my friend calls, I'll meet up. | Babies cry when they're hungry. | Plants need light to grow.
+   **example_fail**: boil (bare verb) | Water is boiling (present continuous, not general truth) | Water boiled (past, not general truth)
 
 3. **id**: 3
    **label_pt**: "Mais uma com 'when' ou 'if' apropriado"
@@ -456,6 +484,8 @@
    **hidden_prompt**: "user uses correct when/if based on certainty level"
    **hint_pt**: "When summer comes, I travel."
    **hint_en**: "When summer comes, I travel."
+   **example_pass**: When summer comes, I travel. | Plants need light to grow. | Water boils at 100 degrees.
+   **example_fail**: boil (bare verb) | Water is boiling (present continuous, not general truth) | Water boiled (past, not general truth)
 
 **Closing cue**: Charlotte fecha com "When-if precision!" quando obj_3 baterem.
 
@@ -491,6 +521,8 @@
    **hidden_prompt**: "user uses 'When + present, present' for daily routine"
    **hint_pt**: "When I get to work, I check emails."
    **hint_en**: "When I get to work, I check emails."
+   **example_pass**: When I get to work, I check emails. | The sun rises in the east. | Babies cry when they're hungry.
+   **example_fail**: boil (bare verb) | Water is boiling (present continuous, not general truth) | Water boiled (past, not general truth)
 
 2. **id**: 2
    **label_pt**: "Algo que depende do tempo (with 'if')"
@@ -498,6 +530,8 @@
    **hidden_prompt**: "user uses 'If + present, will + base' for weather-dependent plans"
    **hint_pt**: "If it's sunny on Friday, I'll go to the park."
    **hint_en**: "If it's sunny on Friday, I'll go to the park."
+   **example_pass**: If it's sunny on Friday, I'll go to the park. | The sun rises in the east. | Babies cry when they're hungry.
+   **example_fail**: boil (bare verb) | Water is boiling (present continuous, not general truth) | Water boiled (past, not general truth)
 
 3. **id**: 3
    **label_pt**: "Perguntar à Charlotte"
@@ -505,6 +539,8 @@
    **hidden_prompt**: "user asks 'How about you?' or 'What's your routine/possibility?'"
    **hint_pt**: "How about you?"
    **hint_en**: "How about you?"
+   **example_pass**: How about you? | The sun rises in the east. | And you?
+   **example_fail**: boil (bare verb) | Water is boiling (present continuous, not general truth) | Water boiled (past, not general truth)
 
 **Closing cue**: Charlotte fecha com "Time and chance!" quando obj_3 baterem.
 
@@ -608,6 +644,8 @@
    **hidden_prompt**: "user uses 'If + present, present' for universal truth"
    **hint_pt**: "If you exercise, you feel good."
    **hint_en**: "If you exercise, you feel good."
+   **example_pass**: If you exercise, you feel good. | Water boils at 100 degrees. | The sun rises in the east.
+   **example_fail**: boil (bare verb) | Water is boiling (present continuous, not general truth) | Water boiled (past, not general truth)
 
 2. **id**: 2
    **label_pt**: "Plano específico futuro (first conditional)"
@@ -615,6 +653,8 @@
    **hidden_prompt**: "user uses 'If + present, will + base' for specific future"
    **hint_pt**: "If it rains tomorrow, I'll stay home."
    **hint_en**: "If it rains tomorrow, I'll stay home."
+   **example_pass**: If it rains tomorrow, I'll stay home. | Babies cry when they're hungry. | Plants need light to grow.
+   **example_fail**: boil (bare verb) | Water is boiling (present continuous, not general truth) | Water boiled (past, not general truth)
 
 3. **id**: 3
    **label_pt**: "Rotina ou ambição com 'when'/'if'"
@@ -622,6 +662,8 @@
    **hidden_prompt**: "user uses 'When/If + present, present/will' appropriately"
    **hint_pt**: "If I work hard, I'll achieve my goals."
    **hint_en**: "If I work hard, I'll achieve my goals."
+   **example_pass**: If I work hard, I'll achieve my goals. | The sun rises in the east. | Babies cry when they're hungry.
+   **example_fail**: boil (bare verb) | Water is boiling (present continuous, not general truth) | Water boiled (past, not general truth)
 
 **Closing cue**: Charlotte fecha com "Conditional clarity achieved!" quando obj_3 baterem.
 
@@ -657,6 +699,8 @@
    **hidden_prompt**: "user uses 'If/When + present, present' for personal life rule"
    **hint_pt**: "If you read more, you write better."
    **hint_en**: "If you read more, you write better."
+   **example_pass**: If you read more, you write better. | Plants need light to grow. | Water boils at 100 degrees.
+   **example_fail**: boil (bare verb) | Water is boiling (present continuous, not general truth) | Water boiled (past, not general truth)
 
 2. **id**: 2
    **label_pt**: "Plano para amanhã em first conditional"
@@ -664,6 +708,8 @@
    **hidden_prompt**: "user uses 'If + present, will + base' for tomorrow"
    **hint_pt**: "If I finish work early, I'll relax."
    **hint_en**: "If I finish work early, I'll relax."
+   **example_pass**: If I finish work early, I'll relax. | Plants need light to grow. | Water boils at 100 degrees.
+   **example_fail**: boil (bare verb) | Water is boiling (present continuous, not general truth) | Water boiled (past, not general truth)
 
 3. **id**: 3
    **label_pt**: "Perguntar à Charlotte"
@@ -671,6 +717,8 @@
    **hidden_prompt**: "user asks 'How about you?' or 'What's your rule/plan?'"
    **hint_pt**: "How about you?"
    **hint_en**: "How about you?"
+   **example_pass**: How about you? | The sun rises in the east. | And you?
+   **example_fail**: boil (bare verb) | Water is boiling (present continuous, not general truth) | Water boiled (past, not general truth)
 
 **Closing cue**: Charlotte fecha com "Two conditionals, one flow!" quando obj_3 baterem.
 
@@ -775,6 +823,8 @@
    **hidden_prompt**: "user uses any conditional structure correctly"
    **hint_pt**: "If I save enough money, I'll travel to Japan."
    **hint_en**: "If I save enough money, I'll travel to Japan."
+   **example_pass**: If I save enough money, I'll travel to Japan. | Babies cry when they're hungry. | Plants need light to grow.
+   **example_fail**: boil (bare verb) | Water is boiling (present continuous, not general truth) | Water boiled (past, not general truth)
 
 2. **id**: 2
    **label_pt**: "Segunda frase conectada (verdade ou plano)"
@@ -782,6 +832,8 @@
    **hidden_prompt**: "user uses another conditional that connects to the first"
    **hint_pt**: "If you don't sleep enough, you feel terrible the next day."
    **hint_en**: "If you don't sleep enough, you feel terrible the next day."
+   **example_pass**: If you don't sleep enough, you feel terrible the next day. | The sun rises in the east. | Babies cry when they're hungry.
+   **example_fail**: boil (bare verb) | Water is boiling (present continuous, not general truth) | Water boiled (past, not general truth)
 
 3. **id**: 3
    **label_pt**: "Terceira frase fechando a história"
@@ -789,6 +841,8 @@
    **hidden_prompt**: "user uses one more conditional to close the narrative"
    **hint_pt**: "If it's nice tomorrow, I'll walk to the office."
    **hint_en**: "If it's nice tomorrow, I'll walk to the office."
+   **example_pass**: If it's nice tomorrow, I'll walk to the office. | Plants need light to grow. | Water boils at 100 degrees.
+   **example_fail**: boil (bare verb) | Water is boiling (present continuous, not general truth) | Water boiled (past, not general truth)
 
 **Closing cue**: Charlotte fecha com "Conditional storytelling!" quando obj_3 baterem.
 
@@ -824,6 +878,8 @@
    **hidden_prompt**: "user uses 'if + present, will + base' or 'if + present, present' about their week"
    **hint_pt**: "If I finish work early Friday, I'll cook a nice dinner."
    **hint_en**: "If I finish work early Friday, I'll cook a nice dinner."
+   **example_pass**: If I finish work early Friday, I'll cook a nice dinner. | Babies cry when they're hungry. | Plants need light to grow.
+   **example_fail**: boil (bare verb) | Water is boiling (present continuous, not general truth) | Water boiled (past, not general truth)
 
 2. **id**: 2
    **label_pt**: "Outra observação ou plano"
@@ -831,6 +887,8 @@
    **hidden_prompt**: "user uses another conditional structure"
    **hint_pt**: "If I get tired in the afternoon, I take a short break."
    **hint_en**: "If I get tired in the afternoon, I take a short break."
+   **example_pass**: If I get tired in the afternoon, I take a short break. | Babies cry when they're hungry. | Plants need light to grow.
+   **example_fail**: boil (bare verb) | Water is boiling (present continuous, not general truth) | Water boiled (past, not general truth)
 
 3. **id**: 3
    **label_pt**: "Perguntar à Charlotte"
@@ -838,6 +896,8 @@
    **hidden_prompt**: "user asks 'How about you?' or 'What's your if-then?'"
    **hint_pt**: "How about you?"
    **hint_en**: "How about you?"
+   **example_pass**: How about you? | The sun rises in the east. | And you?
+   **example_fail**: boil (bare verb) | Water is boiling (present continuous, not general truth) | Water boiled (past, not general truth)
 
 **Closing cue**: Charlotte fecha com "Life in conditionals!" quando obj_3 baterem.
 

@@ -106,6 +106,8 @@
    **hidden_prompt**: "user uses 'X is as + adj + as Y' to compare two people (family/friends)"
    **hint_pt**: "I'm as tall as my mother."
    **hint_en**: "I'm as tall as my mother."
+   **example_pass**: I'm as tall as my mother. | It's not as hot as yesterday. | He runs as fast as his brother.
+   **example_fail**: tall (bare adjective) | She is taller than me (comparative, not 'as...as') | She is tall (no comparison)
 
 2. **id**: 2
    **label_pt**: "Comparação entre coisas ou lugares"
@@ -113,6 +115,8 @@
    **hidden_prompt**: "user uses 'as + adj + as' to compare objects, cities, or items"
    **hint_pt**: "My phone is as fast as my laptop."
    **hint_en**: "My phone is as fast as my laptop."
+   **example_pass**: My phone is as fast as my laptop. | He runs as fast as his brother. | This is the same as that one.
+   **example_fail**: tall (bare adjective) | She is taller than me (comparative, not 'as...as') | She is tall (no comparison)
 
 3. **id**: 3
    **label_pt**: "Comparação envolvendo tempo, clima ou expectativa"
@@ -120,6 +124,8 @@
    **hidden_prompt**: "user uses 'as + adj + as' with weather/expectation/days"
    **hint_pt**: "Today is as cold as yesterday."
    **hint_en**: "Today is as cold as yesterday."
+   **example_pass**: Today is as cold as yesterday. | This is the same as that one. | She's as tall as me.
+   **example_fail**: tall (bare adjective) | She is taller than me (comparative, not 'as...as') | She is tall (no comparison)
 
 **Closing cue**: Charlotte fecha com "Three solid equality comparisons!" quando obj_3 baterem.
 
@@ -155,6 +161,8 @@
    **hidden_prompt**: "user states 'X is as + good/enjoyable/fun + as Y'"
    **hint_pt**: "Books are as fun as movies."
    **hint_en**: "Books are as fun as movies."
+   **example_pass**: Books are as fun as movies. | She's as tall as me. | It's not as hot as yesterday.
+   **example_fail**: tall (bare adjective) | She is taller than me (comparative, not 'as...as') | She is tall (no comparison)
 
 2. **id**: 2
    **label_pt**: "Duas atividades igualmente difíceis ou cansativas"
@@ -162,6 +170,8 @@
    **hidden_prompt**: "user uses 'as + difficult/tiring/hard + as'"
    **hint_pt**: "Studying is as tiring as exercise."
    **hint_en**: "Studying is as tiring as exercise."
+   **example_pass**: Studying is as tiring as exercise. | He runs as fast as his brother. | This is the same as that one.
+   **example_fail**: tall (bare adjective) | She is taller than me (comparative, not 'as...as') | She is tall (no comparison)
 
 3. **id**: 3
    **label_pt**: "Perguntar à Charlotte sobre uma equivalência dela"
@@ -169,6 +179,8 @@
    **hidden_prompt**: "user asks Charlotte 'what's as + adj + as ... for you?' or 'how about you?'"
    **hint_pt**: "How about you?"
    **hint_en**: "How about you?"
+   **example_pass**: How about you? | It's not as hot as yesterday. | And you?
+   **example_fail**: tall (bare adjective) | She is taller than me (comparative, not 'as...as') | She is tall (no comparison)
 
 **Closing cue**: Charlotte fecha com "Equal pairs everywhere!" quando obj_3 baterem.
 
@@ -272,6 +284,8 @@
    **hidden_prompt**: "user uses 'X isn't as + adj + as Y' for a place/home"
    **hint_pt**: "My new place isn't as quiet as the old one."
    **hint_en**: "My new place isn't as quiet as the old one."
+   **example_pass**: My new place isn't as quiet as the old one. | He runs as fast as his brother. | This is the same as that one.
+   **example_fail**: tall (bare adjective) | She is taller than me (comparative, not 'as...as') | She is tall (no comparison)
 
 2. **id**: 2
    **label_pt**: "Comparação negativa sobre algo recente vs passado"
@@ -279,6 +293,8 @@
    **hidden_prompt**: "user uses 'X isn't as + adj + as Y' for recent vs past"
    **hint_pt**: "This week isn't as busy as last week."
    **hint_en**: "This week isn't as busy as last week."
+   **example_pass**: This week isn't as busy as last week. | He runs as fast as his brother. | This is the same as that one.
+   **example_fail**: tall (bare adjective) | She is taller than me (comparative, not 'as...as') | She is tall (no comparison)
 
 3. **id**: 3
    **label_pt**: "Comparação negativa sobre si mesmo"
@@ -286,6 +302,8 @@
    **hidden_prompt**: "user uses 'I'm not as + adj + as ...' (self-comparison)"
    **hint_pt**: "I'm not as organized as my sister."
    **hint_en**: "I'm not as organized as my sister."
+   **example_pass**: I'm not as organized as my sister. | This is the same as that one. | She's as tall as me.
+   **example_fail**: tall (bare adjective) | She is taller than me (comparative, not 'as...as') | She is tall (no comparison)
 
 **Closing cue**: Charlotte fecha com "Honest comparisons!" quando obj_3 baterem.
 
@@ -321,6 +339,8 @@
    **hidden_prompt**: "user uses 'X wasn't as + good/great + as ...' for a disappointing experience"
    **hint_pt**: "The movie wasn't as good as I expected."
    **hint_en**: "The movie wasn't as good as I expected."
+   **example_pass**: The movie wasn't as good as I expected. | This is the same as that one. | She's as tall as me.
+   **example_fail**: tall (bare adjective) | She is taller than me (comparative, not 'as...as') | She is tall (no comparison)
 
 2. **id**: 2
    **label_pt**: "Algo que não é tão difícil quanto parece"
@@ -328,6 +348,8 @@
    **hidden_prompt**: "user uses 'X isn't as + difficult/hard + as ...' (positive surprise)"
    **hint_pt**: "Cooking isn't as hard as it seems."
    **hint_en**: "Cooking isn't as hard as it seems."
+   **example_pass**: Cooking isn't as hard as it seems. | He runs as fast as his brother. | This is the same as that one.
+   **example_fail**: tall (bare adjective) | She is taller than me (comparative, not 'as...as') | She is tall (no comparison)
 
 3. **id**: 3
    **label_pt**: "Perguntar à Charlotte sobre uma decepção dela"
@@ -335,6 +357,8 @@
    **hidden_prompt**: "user asks 'what wasn't as + adj + as for you?' or 'how about you?'"
    **hint_pt**: "How about you?"
    **hint_en**: "How about you?"
+   **example_pass**: How about you? | It's not as hot as yesterday. | And you?
+   **example_fail**: tall (bare adjective) | She is taller than me (comparative, not 'as...as') | She is tall (no comparison)
 
 **Closing cue**: Charlotte fecha com "Reality check exchange!" quando obj_3 baterem.
 
@@ -438,6 +462,8 @@
    **hidden_prompt**: "user uses 'twice as + much/many/adj + as'"
    **hint_pt**: "I drink twice as much coffee as last year."
    **hint_en**: "I drink twice as much coffee as last year."
+   **example_pass**: I drink twice as much coffee as last year. | It's not as hot as yesterday. | He runs as fast as his brother.
+   **example_fail**: tall (bare adjective) | She is taller than me (comparative, not 'as...as') | She is tall (no comparison)
 
 2. **id**: 2
    **label_pt**: "Algo que triplicou ou mais (three/four times)"
@@ -445,6 +471,8 @@
    **hidden_prompt**: "user uses 'three times as + adj/much/many + as'"
    **hint_pt**: "My commute is three times as long as before."
    **hint_en**: "My commute is three times as long as before."
+   **example_pass**: My commute is three times as long as before. | This is the same as that one. | She's as tall as me.
+   **example_fail**: tall (bare adjective) | She is taller than me (comparative, not 'as...as') | She is tall (no comparison)
 
 3. **id**: 3
    **label_pt**: "Comparação multiplicada com outra pessoa"
@@ -452,6 +480,8 @@
    **hidden_prompt**: "user uses 'X is twice/three times as + adj + as Y' comparing people"
    **hint_pt**: "My brother is twice as patient as I am."
    **hint_en**: "My brother is twice as patient as I am."
+   **example_pass**: My brother is twice as patient as I am. | He runs as fast as his brother. | This is the same as that one.
+   **example_fail**: tall (bare adjective) | She is taller than me (comparative, not 'as...as') | She is tall (no comparison)
 
 **Closing cue**: Charlotte fecha com "Big changes!" quando obj_3 baterem.
 
@@ -487,6 +517,8 @@
    **hidden_prompt**: "user uses 'X costs twice/three times as much as + reference'"
    **hint_pt**: "Coffee costs twice as much as before."
    **hint_en**: "Coffee costs twice as much as before."
+   **example_pass**: Coffee costs twice as much as before. | He runs as fast as his brother. | This is the same as that one.
+   **example_fail**: tall (bare adjective) | She is taller than me (comparative, not 'as...as') | She is tall (no comparison)
 
 2. **id**: 2
    **label_pt**: "Outra mudança em escala (tempo, trabalho)"
@@ -494,6 +526,8 @@
    **hidden_prompt**: "user uses 'twice/three times as + adj/much + as'"
    **hint_pt**: "I work twice as much as I used to."
    **hint_en**: "I work twice as much as I used to."
+   **example_pass**: I work twice as much as I used to. | She's as tall as me. | It's not as hot as yesterday.
+   **example_fail**: tall (bare adjective) | She is taller than me (comparative, not 'as...as') | She is tall (no comparison)
 
 3. **id**: 3
    **label_pt**: "Perguntar à Charlotte uma mudança dela"
@@ -501,6 +535,8 @@
    **hidden_prompt**: "user asks Charlotte 'what's twice/three times as... for you?'"
    **hint_pt**: "How about you?"
    **hint_en**: "How about you?"
+   **example_pass**: How about you? | It's not as hot as yesterday. | And you?
+   **example_fail**: tall (bare adjective) | She is taller than me (comparative, not 'as...as') | She is tall (no comparison)
 
 **Closing cue**: Charlotte fecha com "Scaled life updates!" quando obj_3 baterem.
 
@@ -604,6 +640,8 @@
    **hidden_prompt**: "user uses 'The more I + verb, the more/better I + verb'"
    **hint_pt**: "The more I read, the more I learn."
    **hint_en**: "The more I read, the more I learn."
+   **example_pass**: The more I read, the more I learn. | He runs as fast as his brother. | This is the same as that one.
+   **example_fail**: tall (bare adjective) | She is taller than me (comparative, not 'as...as') | She is tall (no comparison)
 
 2. **id**: 2
    **label_pt**: "Observação sobre relacionamentos ou tempo"
@@ -611,6 +649,8 @@
    **hidden_prompt**: "user uses 'The more X, the more Y' about people or time"
    **hint_pt**: "The more I see her, the more I appreciate her."
    **hint_en**: "The more I see her, the more I appreciate her."
+   **example_pass**: The more I see her, the more I appreciate her. | It's not as hot as yesterday. | He runs as fast as his brother.
+   **example_fail**: tall (bare adjective) | She is taller than me (comparative, not 'as...as') | She is tall (no comparison)
 
 3. **id**: 3
    **label_pt**: "Observação sobre dinheiro, esforço ou saúde"
@@ -618,6 +658,8 @@
    **hidden_prompt**: "user uses 'The harder/more X, the more Y'"
    **hint_pt**: "The harder I exercise, the better I sleep."
    **hint_en**: "The harder I exercise, the better I sleep."
+   **example_pass**: The harder I exercise, the better I sleep. | This is the same as that one. | She's as tall as me.
+   **example_fail**: tall (bare adjective) | She is taller than me (comparative, not 'as...as') | She is tall (no comparison)
 
 **Closing cue**: Charlotte fecha com "Insightful parallels!" quando obj_3 baterem.
 
@@ -653,6 +695,8 @@
    **hidden_prompt**: "user uses 'The more + clause, the more + clause' for personal insight"
    **hint_pt**: "The more I travel, the more curious I become."
    **hint_en**: "The more I travel, the more curious I become."
+   **example_pass**: The more I travel, the more curious I become. | This is the same as that one. | She's as tall as me.
+   **example_fail**: tall (bare adjective) | She is taller than me (comparative, not 'as...as') | She is tall (no comparison)
 
 2. **id**: 2
    **label_pt**: "Outra reflexão (pode usar less ou comparativo curto)"
@@ -660,6 +704,8 @@
    **hidden_prompt**: "user uses 'The less/harder/older + clause, the more/better/happier + clause'"
    **hint_pt**: "The less I worry, the happier I feel."
    **hint_en**: "The less I worry, the happier I feel."
+   **example_pass**: The less I worry, the happier I feel. | It's not as hot as yesterday. | He runs as fast as his brother.
+   **example_fail**: tall (bare adjective) | She is taller than me (comparative, not 'as...as') | She is tall (no comparison)
 
 3. **id**: 3
    **label_pt**: "Perguntar à Charlotte sobre uma verdade dela"
@@ -667,6 +713,8 @@
    **hidden_prompt**: "user asks 'How about you?' or 'What's your parallel?'"
    **hint_pt**: "How about you?"
    **hint_en**: "How about you?"
+   **example_pass**: How about you? | It's not as hot as yesterday. | And you?
+   **example_fail**: tall (bare adjective) | She is taller than me (comparative, not 'as...as') | She is tall (no comparison)
 
 **Closing cue**: Charlotte fecha com "Wisdom traded!" quando obj_3 baterem.
 
@@ -770,6 +818,8 @@
    **hidden_prompt**: "user uses 'as + adj + as' or 'not as + adj + as'"
    **hint_pt**: "I'm as busy as I was, but not as stressed."
    **hint_en**: "I'm as busy as I was, but not as stressed."
+   **example_pass**: I'm as busy as I was, but not as stressed. | This is the same as that one. | She's as tall as me.
+   **example_fail**: tall (bare adjective) | She is taller than me (comparative, not 'as...as') | She is tall (no comparison)
 
 2. **id**: 2
    **label_pt**: "Comparação com multiplicador"
@@ -777,6 +827,8 @@
    **hidden_prompt**: "user uses 'twice/three times as + adj/much/many + as'"
    **hint_pt**: "I have twice as many responsibilities now."
    **hint_en**: "I have twice as many responsibilities now."
+   **example_pass**: I have twice as many responsibilities now. | She's as tall as me. | It's not as hot as yesterday.
+   **example_fail**: tall (bare adjective) | She is taller than me (comparative, not 'as...as') | She is tall (no comparison)
 
 3. **id**: 3
    **label_pt**: "Reflexão paralela com 'the more X, the more Y'"
@@ -784,6 +836,8 @@
    **hidden_prompt**: "user uses 'The more X, the more Y'"
    **hint_pt**: "The more I grow, the more grateful I become."
    **hint_en**: "The more I grow, the more grateful I become."
+   **example_pass**: The more I grow, the more grateful I become. | She's as tall as me. | It's not as hot as yesterday.
+   **example_fail**: tall (bare adjective) | She is taller than me (comparative, not 'as...as') | She is tall (no comparison)
 
 **Closing cue**: Charlotte fecha com "Full comparison toolkit!" quando obj_3 baterem.
 
@@ -819,6 +873,8 @@
    **hidden_prompt**: "user uses 'as + adj + as' or 'not as + adj + as'"
    **hint_pt**: "Modern life isn't as peaceful as before."
    **hint_en**: "Modern life isn't as peaceful as before."
+   **example_pass**: Modern life isn't as peaceful as before. | She's as tall as me. | It's not as hot as yesterday.
+   **example_fail**: tall (bare adjective) | She is taller than me (comparative, not 'as...as') | She is tall (no comparison)
 
 2. **id**: 2
    **label_pt**: "Comparação com multiplicador ou paralelo"
@@ -826,6 +882,8 @@
    **hidden_prompt**: "user uses 'twice/three times as' or 'the more X, the more Y'"
    **hint_pt**: "We're twice as connected but not always closer."
    **hint_en**: "We're twice as connected but not always closer."
+   **example_pass**: We're twice as connected but not always closer. | She's as tall as me. | It's not as hot as yesterday.
+   **example_fail**: tall (bare adjective) | She is taller than me (comparative, not 'as...as') | She is tall (no comparison)
 
 3. **id**: 3
    **label_pt**: "Perguntar à Charlotte uma comparação dela"
@@ -833,6 +891,8 @@
    **hidden_prompt**: "user asks 'How about you?' or 'What do you think?'"
    **hint_pt**: "How about you?"
    **hint_en**: "How about you?"
+   **example_pass**: How about you? | It's not as hot as yesterday. | And you?
+   **example_fail**: tall (bare adjective) | She is taller than me (comparative, not 'as...as') | She is tall (no comparison)
 
 **Closing cue**: Charlotte fecha com "Modern vs past explored!" quando obj_3 baterem.
 

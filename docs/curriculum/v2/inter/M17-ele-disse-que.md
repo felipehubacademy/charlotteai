@@ -107,6 +107,8 @@
    **hidden_prompt**: "user uses 'X said (that) he/she + past tense'"
    **hint_pt**: "She said she was a teacher."
    **hint_en**: "She said she was a teacher."
+   **example_pass**: She said she was a teacher. | She mentioned she had visited Paris. | She said she was tired.
+   **example_fail**: tired (bare adjective) | She said she IS tired (no back-shift) | She is tired (direct speech, not reported)
 
 2. **id**: 2
    **label_pt**: "Outro reporte"
@@ -114,6 +116,8 @@
    **hidden_prompt**: "user uses another 'said (that)' construction"
    **hint_pt**: "He said he lived in Rio."
    **hint_en**: "He said he lived in Rio."
+   **example_pass**: He said he lived in Rio. | They said they would come. | She mentioned she had visited Paris.
+   **example_fail**: tired (bare adjective) | She said she IS tired (no back-shift) | She is tired (direct speech, not reported)
 
 3. **id**: 3
    **label_pt**: "Reportar uma atividade em curso"
@@ -121,6 +125,8 @@
    **hidden_prompt**: "user uses 'said he/she was + ing'"
    **hint_pt**: "She said she was working on a project."
    **hint_en**: "She said she was working on a project."
+   **example_pass**: She said she was working on a project. | She said she was tired. | He told me he had finished.
+   **example_fail**: tired (bare adjective) | She said she IS tired (no back-shift) | She is tired (direct speech, not reported)
 
 **Closing cue**: Charlotte fecha com "Reports made!" quando obj_3 baterem.
 
@@ -156,6 +162,8 @@
    **hidden_prompt**: "user uses 'You said your sister was moving to Berlin'"
    **hint_pt**: "You said your sister was moving to Berlin."
    **hint_en**: "You said your sister was moving to Berlin."
+   **example_pass**: You said your sister was moving to Berlin. | She mentioned she had visited Paris. | She said she was tired.
+   **example_fail**: tired (bare adjective) | She said she IS tired (no back-shift) | She is tired (direct speech, not reported)
 
 2. **id**: 2
    **label_pt**: "Outro reporte (mais conversa)"
@@ -163,6 +171,8 @@
    **hidden_prompt**: "user reports another statement with 'said'"
    **hint_pt**: "You said she had found a job there."
    **hint_en**: "You said she had found a job there."
+   **example_pass**: You said she had found a job there. | He told me he had finished. | They said they would come.
+   **example_fail**: tired (bare adjective) | She said she IS tired (no back-shift) | She is tired (direct speech, not reported)
 
 3. **id**: 3
    **label_pt**: "Perguntar à Charlotte"
@@ -170,6 +180,8 @@
    **hidden_prompt**: "user asks Charlotte more about the situation"
    **hint_pt**: "Did she say when she's leaving?"
    **hint_en**: "Did she say when she's leaving?"
+   **example_pass**: Did she say when she's leaving? | She mentioned she had visited Paris. | How about you?
+   **example_fail**: tired (bare adjective) | She said she IS tired (no back-shift) | She is tired (direct speech, not reported)
 
 **Closing cue**: Charlotte fecha com "Conversation reported!" quando obj_3 baterem.
 
@@ -273,6 +285,8 @@
    **hidden_prompt**: "user uses 'X told me (that) + past tense'"
    **hint_pt**: "My boss told me I was getting a raise."
    **hint_en**: "My boss told me I was getting a raise."
+   **example_pass**: My boss told me I was getting a raise. | She mentioned she had visited Paris. | She said she was tired.
+   **example_fail**: tired (bare adjective) | She said she IS tired (no back-shift) | She is tired (direct speech, not reported)
 
 2. **id**: 2
    **label_pt**: "Reporte com 'said'"
@@ -280,6 +294,8 @@
    **hidden_prompt**: "user uses 'X said (that) + past tense' without object"
    **hint_pt**: "He said the deadline was Friday."
    **hint_en**: "He said the deadline was Friday."
+   **example_pass**: He said the deadline was Friday. | He told me he had finished. | They said they would come.
+   **example_fail**: tired (bare adjective) | She said she IS tired (no back-shift) | She is tired (direct speech, not reported)
 
 3. **id**: 3
    **label_pt**: "Reporte com 'mentioned' ou 'spoke about'"
@@ -287,6 +303,8 @@
    **hidden_prompt**: "user uses another reporting verb"
    **hint_pt**: "She mentioned that she was tired."
    **hint_en**: "She mentioned that she was tired."
+   **example_pass**: She mentioned that she was tired. | He told me he had finished. | They said they would come.
+   **example_fail**: tired (bare adjective) | She said she IS tired (no back-shift) | She is tired (direct speech, not reported)
 
 **Closing cue**: Charlotte fecha com "Reporting verbs nailed!" quando obj_3 baterem.
 
@@ -322,6 +340,8 @@
    **hidden_prompt**: "user reports 'You said your coworker was...'"
    **hint_pt**: "You said your coworker was thinking of quitting."
    **hint_en**: "You said your coworker was thinking of quitting."
+   **example_pass**: You said your coworker was thinking of quitting. | She said she was tired. | He told me he had finished.
+   **example_fail**: tired (bare adjective) | She said she IS tired (no back-shift) | She is tired (direct speech, not reported)
 
 2. **id**: 2
    **label_pt**: "Detalhe adicional"
@@ -329,6 +349,8 @@
    **hidden_prompt**: "user adds another reported statement"
    **hint_pt**: "She told me she had been unhappy for a while."
    **hint_en**: "She told me she had been unhappy for a while."
+   **example_pass**: She told me she had been unhappy for a while. | She said she was tired. | He told me he had finished.
+   **example_fail**: tired (bare adjective) | She said she IS tired (no back-shift) | She is tired (direct speech, not reported)
 
 3. **id**: 3
    **label_pt**: "Pergunta para Charlotte"
@@ -336,6 +358,8 @@
    **hidden_prompt**: "user asks Charlotte more about it"
    **hint_pt**: "What did she say her plans were?"
    **hint_en**: "What did she say her plans were?"
+   **example_pass**: What did she say her plans were? | He told me he had finished. | How about you?
+   **example_fail**: tired (bare adjective) | She said she IS tired (no back-shift) | She is tired (direct speech, not reported)
 
 **Closing cue**: Charlotte fecha com "Gossip reported!" quando obj_3 baterem.
 
@@ -439,6 +463,8 @@
    **hidden_prompt**: "user uses 'X said he/she had + past participle'"
    **hint_pt**: "He said he had finished the report."
    **hint_en**: "He said he had finished the report."
+   **example_pass**: He said he had finished the report. | He told me he had finished. | They said they would come.
+   **example_fail**: tired (bare adjective) | She said she IS tired (no back-shift) | She is tired (direct speech, not reported)
 
 2. **id**: 2
    **label_pt**: "Outro reporte com past perfect"
@@ -446,6 +472,8 @@
    **hidden_prompt**: "user uses another 'had + past participle'"
    **hint_pt**: "She told me she had visited Paris twice."
    **hint_en**: "She told me she had visited Paris twice."
+   **example_pass**: She told me she had visited Paris twice. | She mentioned she had visited Paris. | She said she was tired.
+   **example_fail**: tired (bare adjective) | She said she IS tired (no back-shift) | She is tired (direct speech, not reported)
 
 3. **id**: 3
    **label_pt**: "Reporte com 'never' ou 'already'"
@@ -453,6 +481,8 @@
    **hidden_prompt**: "user uses 'said had never/already + past participle'"
    **hint_pt**: "He said he had never tried sushi."
    **hint_en**: "He said he had never tried sushi."
+   **example_pass**: He said he had never tried sushi. | They said they would come. | She mentioned she had visited Paris.
+   **example_fail**: tired (bare adjective) | She said she IS tired (no back-shift) | She is tired (direct speech, not reported)
 
 **Closing cue**: Charlotte fecha com "Past perfect reports!" quando obj_3 baterem.
 
@@ -488,6 +518,8 @@
    **hidden_prompt**: "user uses 'She said she had + past participle'"
    **hint_pt**: "She said she had completed her part."
    **hint_en**: "She said she had completed her part."
+   **example_pass**: She said she had completed her part. | She mentioned she had visited Paris. | She said she was tired.
+   **example_fail**: tired (bare adjective) | She said she IS tired (no back-shift) | She is tired (direct speech, not reported)
 
 2. **id**: 2
    **label_pt**: "Reportar outra fala"
@@ -495,6 +527,8 @@
    **hidden_prompt**: "user uses another reported past perfect"
    **hint_pt**: "Another colleague said he had already sent his notes."
    **hint_en**: "Another colleague said he had already sent his notes."
+   **example_pass**: Another colleague said he had already sent his notes. | She said she was tired. | He told me he had finished.
+   **example_fail**: tired (bare adjective) | She said she IS tired (no back-shift) | She is tired (direct speech, not reported)
 
 3. **id**: 3
    **label_pt**: "Perguntar à Charlotte"
@@ -502,6 +536,8 @@
    **hidden_prompt**: "user asks Charlotte more about the meeting"
    **hint_pt**: "Did anyone say they hadn't finished?"
    **hint_en**: "Did anyone say they hadn't finished?"
+   **example_pass**: Did anyone say they hadn't finished? | He told me he had finished. | How about you?
+   **example_fail**: tired (bare adjective) | She said she IS tired (no back-shift) | She is tired (direct speech, not reported)
 
 **Closing cue**: Charlotte fecha com "Meeting reported!" quando obj_3 baterem.
 
@@ -605,6 +641,8 @@
    **hidden_prompt**: "user uses 'X said he/she would + base'"
    **hint_pt**: "He said he would help me with the project."
    **hint_en**: "He said he would help me with the project."
+   **example_pass**: He said he would help me with the project. | She mentioned she had visited Paris. | She said she was tired.
+   **example_fail**: tired (bare adjective) | She said she IS tired (no back-shift) | She is tired (direct speech, not reported)
 
 2. **id**: 2
    **label_pt**: "Reporte com 'could' (can)"
@@ -612,6 +650,8 @@
    **hidden_prompt**: "user uses 'X said he/she could + base'"
    **hint_pt**: "She said she could speak French fluently."
    **hint_en**: "She said she could speak French fluently."
+   **example_pass**: She said she could speak French fluently. | She mentioned she had visited Paris. | She said she was tired.
+   **example_fail**: tired (bare adjective) | She said she IS tired (no back-shift) | She is tired (direct speech, not reported)
 
 3. **id**: 3
    **label_pt**: "Reporte com 'might' ou 'had to'"
@@ -619,6 +659,8 @@
    **hidden_prompt**: "user uses 'X said he/she might/had to + base'"
    **hint_pt**: "He said he might be late."
    **hint_en**: "He said he might be late."
+   **example_pass**: He said he might be late. | She mentioned she had visited Paris. | She said she was tired.
+   **example_fail**: tired (bare adjective) | She said she IS tired (no back-shift) | She is tired (direct speech, not reported)
 
 **Closing cue**: Charlotte fecha com "Modal reports nailed!" quando obj_3 baterem.
 
@@ -654,6 +696,8 @@
    **hidden_prompt**: "user uses 'She said she would + base'"
    **hint_pt**: "She said she would visit you next month."
    **hint_en**: "She said she would visit you next month."
+   **example_pass**: She said she would visit you next month. | She mentioned she had visited Paris. | She said she was tired.
+   **example_fail**: tired (bare adjective) | She said she IS tired (no back-shift) | She is tired (direct speech, not reported)
 
 2. **id**: 2
    **label_pt**: "Reportar outra informação modal"
@@ -661,6 +705,8 @@
    **hidden_prompt**: "user uses another 'said could/might/had to'"
    **hint_pt**: "She mentioned she might bring her sister."
    **hint_en**: "She mentioned she might bring her sister."
+   **example_pass**: She mentioned she might bring her sister. | He told me he had finished. | They said they would come.
+   **example_fail**: tired (bare adjective) | She said she IS tired (no back-shift) | She is tired (direct speech, not reported)
 
 3. **id**: 3
    **label_pt**: "Pergunta para Charlotte"
@@ -668,6 +714,8 @@
    **hidden_prompt**: "user asks Charlotte more about the visit"
    **hint_pt**: "Did she say when she would arrive?"
    **hint_en**: "Did she say when she would arrive?"
+   **example_pass**: Did she say when she would arrive? | She mentioned she had visited Paris. | How about you?
+   **example_fail**: tired (bare adjective) | She said she IS tired (no back-shift) | She is tired (direct speech, not reported)
 
 **Closing cue**: Charlotte fecha com "Promises tracked!" quando obj_3 baterem.
 
@@ -771,6 +819,8 @@
    **hidden_prompt**: "user uses 'said... that day' or 'said... the day before'"
    **hint_pt**: "He said he was tired that day."
    **hint_en**: "He said he was tired that day."
+   **example_pass**: He said he was tired that day. | She mentioned she had visited Paris. | She said she was tired.
+   **example_fail**: tired (bare adjective) | She said she IS tired (no back-shift) | She is tired (direct speech, not reported)
 
 2. **id**: 2
    **label_pt**: "Reporte com 'the next day' ou 'the following week'"
@@ -778,6 +828,8 @@
    **hidden_prompt**: "user uses 'said would + base + the next day/following week'"
    **hint_pt**: "She said she would come the next day."
    **hint_en**: "She said she would come the next day."
+   **example_pass**: She said she would come the next day. | She said she was tired. | He told me he had finished.
+   **example_fail**: tired (bare adjective) | She said she IS tired (no back-shift) | She is tired (direct speech, not reported)
 
 3. **id**: 3
    **label_pt**: "Reporte com mudança de lugar (here → there)"
@@ -785,6 +837,8 @@
    **hidden_prompt**: "user uses 'said... there' instead of 'here'"
    **hint_pt**: "He said he had been there before."
    **hint_en**: "He said he had been there before."
+   **example_pass**: He said he had been there before. | She mentioned she had visited Paris. | She said she was tired.
+   **example_fail**: tired (bare adjective) | She said she IS tired (no back-shift) | She is tired (direct speech, not reported)
 
 **Closing cue**: Charlotte fecha com "Time-place shifts done!" quando obj_3 baterem.
 
@@ -820,6 +874,8 @@
    **hidden_prompt**: "user uses 'She said she was moving there'"
    **hint_pt**: "She said she was moving there."
    **hint_en**: "She said she was moving there."
+   **example_pass**: She said she was moving there. | They said they would come. | She mentioned she had visited Paris.
+   **example_fail**: tired (bare adjective) | She said she IS tired (no back-shift) | She is tired (direct speech, not reported)
 
 2. **id**: 2
    **label_pt**: "Reporte com shift de tempo"
@@ -827,6 +883,8 @@
    **hidden_prompt**: "user uses 'she said she would arrive the following week' or similar"
    **hint_pt**: "She said she would arrive the following month."
    **hint_en**: "She said she would arrive the following month."
+   **example_pass**: She said she would arrive the following month. | She mentioned she had visited Paris. | She said she was tired.
+   **example_fail**: tired (bare adjective) | She said she IS tired (no back-shift) | She is tired (direct speech, not reported)
 
 3. **id**: 3
    **label_pt**: "Perguntar à Charlotte"
@@ -834,6 +892,8 @@
    **hidden_prompt**: "user asks Charlotte more about the conversation"
    **hint_pt**: "Did she say why she was moving?"
    **hint_en**: "Did she say why she was moving?"
+   **example_pass**: Did she say why she was moving? | She said she was tired. | How about you?
+   **example_fail**: tired (bare adjective) | She said she IS tired (no back-shift) | She is tired (direct speech, not reported)
 
 **Closing cue**: Charlotte fecha com "Layered conversation reported!" quando obj_3 baterem.
 

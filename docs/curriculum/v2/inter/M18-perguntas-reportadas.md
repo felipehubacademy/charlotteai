@@ -107,6 +107,8 @@
    **hidden_prompt**: "user uses 'X asked if I + past tense'"
    **hint_pt**: "She asked if I had time."
    **hint_en**: "She asked if I had time."
+   **example_pass**: She asked if I had time. | She asked me what time it was. | He asked whether I could help.
+   **example_fail**: busy (bare adjective) | She asked 'are you busy?' (direct, not reported) | She asked me am I busy (wrong word order)
 
 2. **id**: 2
    **label_pt**: "Outra pergunta yes/no (modal)"
@@ -114,6 +116,8 @@
    **hidden_prompt**: "user uses 'asked if I could/would'"
    **hint_pt**: "He asked if I could help him."
    **hint_en**: "He asked if I could help him."
+   **example_pass**: He asked if I could help him. | He wanted to know where I lived. | She asked me what time it was.
+   **example_fail**: busy (bare adjective) | She asked 'are you busy?' (direct, not reported) | She asked me am I busy (wrong word order)
 
 3. **id**: 3
    **label_pt**: "Pergunta com 'whether' (sinônimo formal de 'if')"
@@ -121,6 +125,8 @@
    **hidden_prompt**: "user uses 'asked whether'"
    **hint_pt**: "She wanted to know whether I had read the book."
    **hint_en**: "She wanted to know whether I had read the book."
+   **example_pass**: She wanted to know whether I had read the book. | She asked if I was busy. | He wanted to know where I lived.
+   **example_fail**: busy (bare adjective) | She asked 'are you busy?' (direct, not reported) | She asked me am I busy (wrong word order)
 
 **Closing cue**: Charlotte fecha com "Yes/no reports done!" quando obj_3 baterem.
 
@@ -156,6 +162,8 @@
    **hidden_prompt**: "user uses 'She asked if you had experience'"
    **hint_pt**: "She asked if you had experience with project management."
    **hint_en**: "She asked if you had experience with project management."
+   **example_pass**: She asked if you had experience with project management. | He asked whether I could help. | She asked if I was busy.
+   **example_fail**: busy (bare adjective) | She asked 'are you busy?' (direct, not reported) | She asked me am I busy (wrong word order)
 
 2. **id**: 2
    **label_pt**: "Reportar outra pergunta"
@@ -163,6 +171,8 @@
    **hidden_prompt**: "user reports another yes/no question"
    **hint_pt**: "She also asked if you could start in two weeks."
    **hint_en**: "She also asked if you could start in two weeks."
+   **example_pass**: She also asked if you could start in two weeks. | She asked me what time it was. | He asked whether I could help.
+   **example_fail**: busy (bare adjective) | She asked 'are you busy?' (direct, not reported) | She asked me am I busy (wrong word order)
 
 3. **id**: 3
    **label_pt**: "Perguntar à Charlotte"
@@ -170,6 +180,8 @@
    **hidden_prompt**: "user asks about the outcome"
    **hint_pt**: "Did you get the job?"
    **hint_en**: "Did you get the job?"
+   **example_pass**: Did you get the job? | He wanted to know where I lived. | How about you?
+   **example_fail**: busy (bare adjective) | She asked 'are you busy?' (direct, not reported) | She asked me am I busy (wrong word order)
 
 **Closing cue**: Charlotte fecha com "Interview replay done!" quando obj_3 baterem.
 
@@ -272,6 +284,8 @@
    **hidden_prompt**: "user uses 'X asked where/when I + past tense'"
    **hint_pt**: "He asked where I worked."
    **hint_en**: "He asked where I worked."
+   **example_pass**: He asked where I worked. | He asked whether I could help. | She asked if I was busy.
+   **example_fail**: busy (bare adjective) | She asked 'are you busy?' (direct, not reported) | She asked me am I busy (wrong word order)
 
 2. **id**: 2
    **label_pt**: "Reporte com 'what/how'"
@@ -279,6 +293,8 @@
    **hidden_prompt**: "user uses 'X asked what/how + subject + past tense'"
    **hint_pt**: "She asked how I had learned English."
    **hint_en**: "She asked how I had learned English."
+   **example_pass**: She asked how I had learned English. | He asked whether I could help. | She asked if I was busy.
+   **example_fail**: busy (bare adjective) | She asked 'are you busy?' (direct, not reported) | She asked me am I busy (wrong word order)
 
 3. **id**: 3
    **label_pt**: "Reporte com 'why/who'"
@@ -286,6 +302,8 @@
    **hidden_prompt**: "user uses 'X asked why/who + subject + past tense'"
    **hint_pt**: "He asked why I had moved."
    **hint_en**: "He asked why I had moved."
+   **example_pass**: He asked why I had moved. | She asked if I was busy. | He wanted to know where I lived.
+   **example_fail**: busy (bare adjective) | She asked 'are you busy?' (direct, not reported) | She asked me am I busy (wrong word order)
 
 **Closing cue**: Charlotte fecha com "WH-reports nailed!" quando obj_3 baterem.
 
@@ -321,6 +339,8 @@
    **hidden_prompt**: "user uses 'He asked why you had missed the meeting'"
    **hint_pt**: "He asked why you had missed the meeting."
    **hint_en**: "He asked why you had missed the meeting."
+   **example_pass**: He asked why you had missed the meeting. | She asked if I was busy. | He wanted to know where I lived.
+   **example_fail**: busy (bare adjective) | She asked 'are you busy?' (direct, not reported) | She asked me am I busy (wrong word order)
 
 2. **id**: 2
    **label_pt**: "Outra WH-pergunta"
@@ -328,6 +348,8 @@
    **hidden_prompt**: "user reports another WH-question"
    **hint_pt**: "He also asked what you had been working on."
    **hint_en**: "He also asked what you had been working on."
+   **example_pass**: He also asked what you had been working on. | She asked if I was busy. | He wanted to know where I lived.
+   **example_fail**: busy (bare adjective) | She asked 'are you busy?' (direct, not reported) | She asked me am I busy (wrong word order)
 
 3. **id**: 3
    **label_pt**: "Perguntar à Charlotte"
@@ -335,6 +357,8 @@
    **hidden_prompt**: "user asks Charlotte for more details"
    **hint_pt**: "What did you say?"
    **hint_en**: "What did you say?"
+   **example_pass**: What did you say? | She asked me what time it was. | How about you?
+   **example_fail**: busy (bare adjective) | She asked 'are you busy?' (direct, not reported) | She asked me am I busy (wrong word order)
 
 **Closing cue**: Charlotte fecha com "Q&A reported!" quando obj_3 baterem.
 
@@ -438,6 +462,8 @@
    **hidden_prompt**: "user uses 'X told me to + base'"
    **hint_pt**: "My boss told me to send the report."
    **hint_en**: "My boss told me to send the report."
+   **example_pass**: My boss told me to send the report. | She asked me what time it was. | He asked whether I could help.
+   **example_fail**: busy (bare adjective) | She asked 'are you busy?' (direct, not reported) | She asked me am I busy (wrong word order)
 
 2. **id**: 2
    **label_pt**: "Comando negativo 'told me not to'"
@@ -445,6 +471,8 @@
    **hidden_prompt**: "user uses 'X told me not to + base'"
    **hint_pt**: "My mom told me not to worry."
    **hint_en**: "My mom told me not to worry."
+   **example_pass**: My mom told me not to worry. | He wanted to know where I lived. | She asked me what time it was.
+   **example_fail**: busy (bare adjective) | She asked 'are you busy?' (direct, not reported) | She asked me am I busy (wrong word order)
 
 3. **id**: 3
    **label_pt**: "Outro comando reportado"
@@ -452,6 +480,8 @@
    **hidden_prompt**: "user uses another 'told + person + to + base'"
    **hint_pt**: "The doctor told me to drink more water."
    **hint_en**: "The doctor told me to drink more water."
+   **example_pass**: The doctor told me to drink more water. | She asked if I was busy. | He wanted to know where I lived.
+   **example_fail**: busy (bare adjective) | She asked 'are you busy?' (direct, not reported) | She asked me am I busy (wrong word order)
 
 **Closing cue**: Charlotte fecha com "Commands reported!" quando obj_3 baterem.
 
@@ -487,6 +517,8 @@
    **hidden_prompt**: "user uses 'She told you to exercise more'"
    **hint_pt**: "She told you to exercise more."
    **hint_en**: "She told you to exercise more."
+   **example_pass**: She told you to exercise more. | She asked if I was busy. | He wanted to know where I lived.
+   **example_fail**: busy (bare adjective) | She asked 'are you busy?' (direct, not reported) | She asked me am I busy (wrong word order)
 
 2. **id**: 2
    **label_pt**: "Outra ordem reportada"
@@ -494,6 +526,8 @@
    **hidden_prompt**: "user reports another command"
    **hint_pt**: "She also told you to drink less coffee."
    **hint_en**: "She also told you to drink less coffee."
+   **example_pass**: She also told you to drink less coffee. | He asked whether I could help. | She asked if I was busy.
+   **example_fail**: busy (bare adjective) | She asked 'are you busy?' (direct, not reported) | She asked me am I busy (wrong word order)
 
 3. **id**: 3
    **label_pt**: "Perguntar à Charlotte"
@@ -501,6 +535,8 @@
    **hidden_prompt**: "user asks Charlotte if she'll follow the orders"
    **hint_pt**: "Are you going to follow her advice?"
    **hint_en**: "Are you going to follow her advice?"
+   **example_pass**: Are you going to follow her advice? | He wanted to know where I lived. | How about you?
+   **example_fail**: busy (bare adjective) | She asked 'are you busy?' (direct, not reported) | She asked me am I busy (wrong word order)
 
 **Closing cue**: Charlotte fecha com "Orders relayed!" quando obj_3 baterem.
 
@@ -604,6 +640,8 @@
    **hidden_prompt**: "user uses 'X asked me to + base'"
    **hint_pt**: "A friend asked me to drive him to the airport."
    **hint_en**: "A friend asked me to drive him to the airport."
+   **example_pass**: A friend asked me to drive him to the airport. | He wanted to know where I lived. | She asked me what time it was.
+   **example_fail**: busy (bare adjective) | She asked 'are you busy?' (direct, not reported) | She asked me am I busy (wrong word order)
 
 2. **id**: 2
    **label_pt**: "Aviso com 'warned me to'"
@@ -611,6 +649,8 @@
    **hidden_prompt**: "user uses 'X warned me to/not to + base'"
    **hint_pt**: "My mom warned me not to overwork."
    **hint_en**: "My mom warned me not to overwork."
+   **example_pass**: My mom warned me not to overwork. | He asked whether I could help. | She asked if I was busy.
+   **example_fail**: busy (bare adjective) | She asked 'are you busy?' (direct, not reported) | She asked me am I busy (wrong word order)
 
 3. **id**: 3
    **label_pt**: "Súplica com 'begged me to'"
@@ -618,6 +658,8 @@
    **hidden_prompt**: "user uses 'X begged me to + base'"
    **hint_pt**: "She begged me to stay one more day."
    **hint_en**: "She begged me to stay one more day."
+   **example_pass**: She begged me to stay one more day. | He wanted to know where I lived. | She asked me what time it was.
+   **example_fail**: busy (bare adjective) | She asked 'are you busy?' (direct, not reported) | She asked me am I busy (wrong word order)
 
 **Closing cue**: Charlotte fecha com "Reporting verbs varied!" quando obj_3 baterem.
 
@@ -653,6 +695,8 @@
    **hidden_prompt**: "user uses 'She asked you to take on extra work'"
    **hint_pt**: "She asked you to take on extra work."
    **hint_en**: "She asked you to take on extra work."
+   **example_pass**: She asked you to take on extra work. | He asked whether I could help. | She asked if I was busy.
+   **example_fail**: busy (bare adjective) | She asked 'are you busy?' (direct, not reported) | She asked me am I busy (wrong word order)
 
 2. **id**: 2
    **label_pt**: "Reportar outro pedido com verbo diferente"
@@ -660,6 +704,8 @@
    **hidden_prompt**: "user uses 'warned/begged/urged + person + to + base'"
    **hint_pt**: "Your friend begged you to take a vacation."
    **hint_en**: "Your friend begged you to take a vacation."
+   **example_pass**: Your friend begged you to take a vacation. | She asked me what time it was. | He asked whether I could help.
+   **example_fail**: busy (bare adjective) | She asked 'are you busy?' (direct, not reported) | She asked me am I busy (wrong word order)
 
 3. **id**: 3
    **label_pt**: "Perguntar à Charlotte"
@@ -667,6 +713,8 @@
    **hidden_prompt**: "user asks Charlotte how she handled it"
    **hint_pt**: "How did you handle all of it?"
    **hint_en**: "How did you handle all of it?"
+   **example_pass**: How did you handle all of it? | She asked me what time it was. | How about you?
+   **example_fail**: busy (bare adjective) | She asked 'are you busy?' (direct, not reported) | She asked me am I busy (wrong word order)
 
 **Closing cue**: Charlotte fecha com "Stress mapped!" quando obj_3 baterem.
 
@@ -770,6 +818,8 @@
    **hidden_prompt**: "user uses 'X said (that) + past tense'"
    **hint_pt**: "She said she had been busy."
    **hint_en**: "She said she had been busy."
+   **example_pass**: She said she had been busy. | He wanted to know where I lived. | She asked me what time it was.
+   **example_fail**: busy (bare adjective) | She asked 'are you busy?' (direct, not reported) | She asked me am I busy (wrong word order)
 
 2. **id**: 2
    **label_pt**: "Reporte de pergunta"
@@ -777,6 +827,8 @@
    **hidden_prompt**: "user uses 'X asked if/where/what + statement order'"
    **hint_pt**: "He asked where I had gone."
    **hint_en**: "He asked where I had gone."
+   **example_pass**: He asked where I had gone. | He wanted to know where I lived. | She asked me what time it was.
+   **example_fail**: busy (bare adjective) | She asked 'are you busy?' (direct, not reported) | She asked me am I busy (wrong word order)
 
 3. **id**: 3
    **label_pt**: "Reporte de comando"
@@ -784,6 +836,8 @@
    **hidden_prompt**: "user uses 'X told me to/not to + base'"
    **hint_pt**: "She told me to call her later."
    **hint_en**: "She told me to call her later."
+   **example_pass**: She told me to call her later. | He wanted to know where I lived. | She asked me what time it was.
+   **example_fail**: busy (bare adjective) | She asked 'are you busy?' (direct, not reported) | She asked me am I busy (wrong word order)
 
 **Closing cue**: Charlotte fecha com "All reports done!" quando obj_3 baterem.
 
@@ -819,6 +873,8 @@
    **hidden_prompt**: "user uses 'She asked if you were coming for dinner'"
    **hint_pt**: "She asked if you were coming for dinner."
    **hint_en**: "She asked if you were coming for dinner."
+   **example_pass**: She asked if you were coming for dinner. | He wanted to know where I lived. | She asked me what time it was.
+   **example_fail**: busy (bare adjective) | She asked 'are you busy?' (direct, not reported) | She asked me am I busy (wrong word order)
 
 2. **id**: 2
    **label_pt**: "Reportar o comando"
@@ -826,6 +882,8 @@
    **hidden_prompt**: "user uses 'She told you to bring dessert'"
    **hint_pt**: "She also told you to bring dessert."
    **hint_en**: "She also told you to bring dessert."
+   **example_pass**: She also told you to bring dessert. | She asked if I was busy. | He wanted to know where I lived.
+   **example_fail**: busy (bare adjective) | She asked 'are you busy?' (direct, not reported) | She asked me am I busy (wrong word order)
 
 3. **id**: 3
    **label_pt**: "Perguntar à Charlotte"
@@ -833,6 +891,8 @@
    **hidden_prompt**: "user asks Charlotte more"
    **hint_pt**: "What else did she say?"
    **hint_en**: "What else did she say?"
+   **example_pass**: What else did she say? | She asked me what time it was. | How about you?
+   **example_fail**: busy (bare adjective) | She asked 'are you busy?' (direct, not reported) | She asked me am I busy (wrong word order)
 
 **Closing cue**: Charlotte fecha com "Family chat reported!" quando obj_3 baterem.
 

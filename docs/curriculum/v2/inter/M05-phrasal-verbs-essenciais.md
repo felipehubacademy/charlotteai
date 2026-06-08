@@ -104,6 +104,8 @@
    **hidden_prompt**: "user uses 'I get up at + time'"
    **hint_pt**: "I get up at 7."
    **hint_en**: "I get up at 7."
+   **example_pass**: I get up at 7. | I gave up smoking last year. | She looks after her sister.
+   **example_fail**: smoking (bare verb) | I gave (missing particle 'up') | I quit yesterday (no phrasal verb)
 
 2. **id**: 2
    **label_pt**: "Outro phrasal de manhã"
@@ -111,6 +113,8 @@
    **hidden_prompt**: "user uses another phrasal (put on, turn on, go out)"
    **hint_pt**: "I put on my work clothes."
    **hint_en**: "I put on my work clothes."
+   **example_pass**: I put on my work clothes. | I gave up smoking last year. | She looks after her sister.
+   **example_fail**: smoking (bare verb) | I gave (missing particle 'up') | I quit yesterday (no phrasal verb)
 
 3. **id**: 3
    **label_pt**: "Phrasal para sair de casa"
@@ -118,6 +122,8 @@
    **hidden_prompt**: "user uses 'I go out' or similar"
    **hint_pt**: "I go out at 8."
    **hint_en**: "I go out at 8."
+   **example_pass**: I go out at 8. | Turn off the lights, please. | I ran into an old friend.
+   **example_fail**: smoking (bare verb) | I gave (missing particle 'up') | I quit yesterday (no phrasal verb)
 
 **Closing cue**: Charlotte closes with "Routine clear!" when obj_3 hits.
 
@@ -152,6 +158,8 @@
    **hidden_prompt**: "user uses 'I come back' or 'I get home'"
    **hint_pt**: "I come back at 6."
    **hint_en**: "I come back at 6."
+   **example_pass**: I come back at 6. | I ran into an old friend. | I gave up smoking last year.
+   **example_fail**: smoking (bare verb) | I gave (missing particle 'up') | I quit yesterday (no phrasal verb)
 
 2. **id**: 2
    **label_pt**: "Outro phrasal verb (take off/turn on)"
@@ -159,6 +167,8 @@
    **hidden_prompt**: "user uses 'take off' or 'turn on'"
    **hint_pt**: "I take off my shoes."
    **hint_en**: "I take off my shoes."
+   **example_pass**: I take off my shoes. | I ran into an old friend. | I gave up smoking last year.
+   **example_fail**: smoking (bare verb) | I gave (missing particle 'up') | I quit yesterday (no phrasal verb)
 
 3. **id**: 3
    **label_pt**: "Perguntar à Charlotte"
@@ -166,6 +176,8 @@
    **hidden_prompt**: "user asks about Charlotte's routine"
    **hint_pt**: "What do you do at home?"
    **hint_en**: "What do you do at home?"
+   **example_pass**: What do you do at home? | I gave up smoking last year. | How about you?
+   **example_fail**: smoking (bare verb) | I gave (missing particle 'up') | I quit yesterday (no phrasal verb)
 
 **Closing cue**: Charlotte closes with "Cozy evenings!" when obj_3 hits.
 
@@ -269,6 +281,8 @@
    **hidden_prompt**: "user uses 'I'm looking for + thing'"
    **hint_pt**: "I'm looking for a new apartment."
    **hint_en**: "I'm looking for a new apartment."
+   **example_pass**: I'm looking for a new apartment. | I gave up smoking last year. | She looks after her sister.
+   **example_fail**: smoking (bare verb) | I gave (missing particle 'up') | I quit yesterday (no phrasal verb)
 
 2. **id**: 2
    **label_pt**: "Alguém ou algo que cuida (look after)"
@@ -276,6 +290,8 @@
    **hidden_prompt**: "user uses 'I look after + person/pet'"
    **hint_pt**: "I look after my dog."
    **hint_en**: "I look after my dog."
+   **example_pass**: I look after my dog. | Turn off the lights, please. | I ran into an old friend.
+   **example_fail**: smoking (bare verb) | I gave (missing particle 'up') | I quit yesterday (no phrasal verb)
 
 3. **id**: 3
    **label_pt**: "Algo que pesquisou (looked up)"
@@ -283,6 +299,8 @@
    **hidden_prompt**: "user uses 'I looked up + something'"
    **hint_pt**: "I looked up a recipe."
    **hint_en**: "I looked up a recipe."
+   **example_pass**: I looked up a recipe. | I ran into an old friend. | I gave up smoking last year.
+   **example_fail**: smoking (bare verb) | I gave (missing particle 'up') | I quit yesterday (no phrasal verb)
 
 **Closing cue**: Charlotte closes with "Multitasker!" when obj_3 hits.
 
@@ -318,6 +336,8 @@
    **hidden_prompt**: "user uses 'I look after + person/pet'"
    **hint_pt**: "I look after my niece."
    **hint_en**: "I look after my niece."
+   **example_pass**: I look after my niece. | I gave up smoking last year. | She looks after her sister.
+   **example_fail**: smoking (bare verb) | I gave (missing particle 'up') | I quit yesterday (no phrasal verb)
 
 2. **id**: 2
    **label_pt**: "Algo que procura"
@@ -325,6 +345,8 @@
    **hidden_prompt**: "user uses 'I'm looking for + thing'"
    **hint_pt**: "I'm looking for a new hobby."
    **hint_en**: "I'm looking for a new hobby."
+   **example_pass**: I'm looking for a new hobby. | I gave up smoking last year. | She looks after her sister.
+   **example_fail**: smoking (bare verb) | I gave (missing particle 'up') | I quit yesterday (no phrasal verb)
 
 3. **id**: 3
    **label_pt**: "Perguntar à Charlotte"
@@ -332,6 +354,8 @@
    **hidden_prompt**: "user asks 'How about you?'"
    **hint_pt**: "How about you?"
    **hint_en**: "How about you?"
+   **example_pass**: How about you? | She looks after her sister. | And you?
+   **example_fail**: smoking (bare verb) | I gave (missing particle 'up') | I quit yesterday (no phrasal verb)
 
 **Closing cue**: Charlotte closes with "Caring crew!" when obj_3 hits.
 
@@ -435,6 +459,8 @@
    **hidden_prompt**: "user uses 'I found out + something'"
    **hint_pt**: "I found out about a new job."
    **hint_en**: "I found out about a new job."
+   **example_pass**: I found out about a new job. | I gave up smoking last year. | She looks after her sister.
+   **example_fail**: smoking (bare verb) | I gave (missing particle 'up') | I quit yesterday (no phrasal verb)
 
 2. **id**: 2
    **label_pt**: "Algo que abandonou (gave up)"
@@ -442,6 +468,8 @@
    **hidden_prompt**: "user uses 'I gave up + something'"
    **hint_pt**: "I gave up coffee."
    **hint_en**: "I gave up coffee."
+   **example_pass**: I gave up coffee. | I ran into an old friend. | I gave up smoking last year.
+   **example_fail**: smoking (bare verb) | I gave (missing particle 'up') | I quit yesterday (no phrasal verb)
 
 3. **id**: 3
    **label_pt**: "Pedir pra buscar (pick up)"
@@ -449,6 +477,8 @@
    **hidden_prompt**: "user uses 'Can you pick me up?'"
    **hint_pt**: "Can you pick me up at 7?"
    **hint_en**: "Can you pick me up at 7?"
+   **example_pass**: Can you pick me up at 7? | I gave up smoking last year. | She looks after her sister.
+   **example_fail**: smoking (bare verb) | I gave (missing particle 'up') | I quit yesterday (no phrasal verb)
 
 **Closing cue**: Charlotte closes with "News and plans!" when obj_3 hits.
 
@@ -483,6 +513,8 @@
    **hidden_prompt**: "user uses 'I found out + ...'"
    **hint_pt**: "I found out my friend is moving."
    **hint_en**: "I found out my friend is moving."
+   **example_pass**: I found out my friend is moving. | She looks after her sister. | Turn off the lights, please.
+   **example_fail**: smoking (bare verb) | I gave (missing particle 'up') | I quit yesterday (no phrasal verb)
 
 2. **id**: 2
    **label_pt**: "Algo que largou"
@@ -490,6 +522,8 @@
    **hidden_prompt**: "user uses 'I gave up + something'"
    **hint_pt**: "I gave up sweets."
    **hint_en**: "I gave up sweets."
+   **example_pass**: I gave up sweets. | Turn off the lights, please. | I ran into an old friend.
+   **example_fail**: smoking (bare verb) | I gave (missing particle 'up') | I quit yesterday (no phrasal verb)
 
 3. **id**: 3
    **label_pt**: "Perguntar à Charlotte"
@@ -497,6 +531,8 @@
    **hidden_prompt**: "user asks 'How about you?'"
    **hint_pt**: "How about you?"
    **hint_en**: "How about you?"
+   **example_pass**: How about you? | She looks after her sister. | And you?
+   **example_fail**: smoking (bare verb) | I gave (missing particle 'up') | I quit yesterday (no phrasal verb)
 
 **Closing cue**: Charlotte closes with "News exchange!" when obj_3 hits.
 
@@ -600,6 +636,8 @@
    **hidden_prompt**: "user splits separable phrasal with pronoun"
    **hint_pt**: "I turned it off."
    **hint_en**: "I turned it off."
+   **example_pass**: I turned it off. | She looks after her sister. | Turn off the lights, please.
+   **example_fail**: smoking (bare verb) | I gave (missing particle 'up') | I quit yesterday (no phrasal verb)
 
 2. **id**: 2
    **label_pt**: "Inseparável (look after, etc.)"
@@ -607,6 +645,8 @@
    **hidden_prompt**: "user uses inseparable phrasal correctly"
    **hint_pt**: "She looks after them."
    **hint_en**: "She looks after them."
+   **example_pass**: She looks after them. | Turn off the lights, please. | I ran into an old friend.
+   **example_fail**: smoking (bare verb) | I gave (missing particle 'up') | I quit yesterday (no phrasal verb)
 
 3. **id**: 3
    **label_pt**: "Mais um phrasal correto"
@@ -614,6 +654,8 @@
    **hidden_prompt**: "user uses another phrasal verb correctly"
    **hint_pt**: "He picked me up at 8."
    **hint_en**: "He picked me up at 8."
+   **example_pass**: He picked me up at 8. | I ran into an old friend. | I gave up smoking last year.
+   **example_fail**: smoking (bare verb) | I gave (missing particle 'up') | I quit yesterday (no phrasal verb)
 
 **Closing cue**: Charlotte closes with "Pronoun pro!" when obj_3 hits.
 
@@ -649,6 +691,8 @@
    **hidden_prompt**: "user uses 'I'll pick you up'"
    **hint_pt**: "I'll pick you up at 6."
    **hint_en**: "I'll pick you up at 6."
+   **example_pass**: I'll pick you up at 6. | Turn off the lights, please. | I ran into an old friend.
+   **example_fail**: smoking (bare verb) | I gave (missing particle 'up') | I quit yesterday (no phrasal verb)
 
 2. **id**: 2
    **label_pt**: "Outra oferta (turn on/off)"
@@ -656,6 +700,8 @@
    **hidden_prompt**: "user uses another phrasal correctly"
    **hint_pt**: "I'll turn the lights off."
    **hint_en**: "I'll turn the lights off."
+   **example_pass**: I'll turn the lights off. | Turn off the lights, please. | I ran into an old friend.
+   **example_fail**: smoking (bare verb) | I gave (missing particle 'up') | I quit yesterday (no phrasal verb)
 
 3. **id**: 3
    **label_pt**: "Perguntar à Charlotte"
@@ -663,6 +709,8 @@
    **hidden_prompt**: "user asks Charlotte something using phrasal verb"
    **hint_pt**: "Can you look after my dog?"
    **hint_en**: "Can you look after my dog?"
+   **example_pass**: Can you look after my dog? | She looks after her sister. | How about you?
+   **example_fail**: smoking (bare verb) | I gave (missing particle 'up') | I quit yesterday (no phrasal verb)
 
 **Closing cue**: Charlotte closes with "Team work!" when obj_3 hits.
 
@@ -766,6 +814,8 @@
    **hidden_prompt**: "user uses a phrasal verb in past or present"
    **hint_pt**: "I got up at 6."
    **hint_en**: "I got up at 6."
+   **example_pass**: I got up at 6. | She looks after her sister. | Turn off the lights, please.
+   **example_fail**: smoking (bare verb) | I gave (missing particle 'up') | I quit yesterday (no phrasal verb)
 
 2. **id**: 2
    **label_pt**: "Segunda com phrasal diferente"
@@ -773,6 +823,8 @@
    **hidden_prompt**: "user uses another phrasal verb"
    **hint_pt**: "I was looking for my phone."
    **hint_en**: "I was looking for my phone."
+   **example_pass**: I was looking for my phone. | I gave up smoking last year. | She looks after her sister.
+   **example_fail**: smoking (bare verb) | I gave (missing particle 'up') | I quit yesterday (no phrasal verb)
 
 3. **id**: 3
    **label_pt**: "Terceira com mais um phrasal"
@@ -780,6 +832,8 @@
    **hidden_prompt**: "user uses one more phrasal verb"
    **hint_pt**: "I gave up and called a taxi."
    **hint_en**: "I gave up and called a taxi."
+   **example_pass**: I gave up and called a taxi. | Turn off the lights, please. | I ran into an old friend.
+   **example_fail**: smoking (bare verb) | I gave (missing particle 'up') | I quit yesterday (no phrasal verb)
 
 **Closing cue**: Charlotte closes with "Phrasal storyteller!" when obj_3 hits.
 
@@ -815,6 +869,8 @@
    **hidden_prompt**: "user uses a phrasal verb"
    **hint_pt**: "I got up at 7."
    **hint_en**: "I got up at 7."
+   **example_pass**: I got up at 7. | Turn off the lights, please. | I ran into an old friend.
+   **example_fail**: smoking (bare verb) | I gave (missing particle 'up') | I quit yesterday (no phrasal verb)
 
 2. **id**: 2
    **label_pt**: "Outra atividade com phrasal"
@@ -822,6 +878,8 @@
    **hidden_prompt**: "user uses another phrasal"
    **hint_pt**: "I went out for lunch."
    **hint_en**: "I went out for lunch."
+   **example_pass**: I went out for lunch. | Turn off the lights, please. | I ran into an old friend.
+   **example_fail**: smoking (bare verb) | I gave (missing particle 'up') | I quit yesterday (no phrasal verb)
 
 3. **id**: 3
    **label_pt**: "Perguntar à Charlotte"
@@ -829,6 +887,8 @@
    **hidden_prompt**: "user asks 'How about you?'"
    **hint_pt**: "How about you?"
    **hint_en**: "How about you?"
+   **example_pass**: How about you? | She looks after her sister. | And you?
+   **example_fail**: smoking (bare verb) | I gave (missing particle 'up') | I quit yesterday (no phrasal verb)
 
 **Closing cue**: Charlotte closes with "Full day, full phrasals!" when obj_3 hits.
 
@@ -932,6 +992,8 @@
    **hidden_prompt**: "user uses 'This is...speaking' and 'Can I speak to'"
    **hint_pt**: "Hello, this is Maria Silva from Beta Industries. Can I speak to João Costa in the sales department, please?"
    **hint_en**: "Hello, this is Maria Silva from Beta Industries. Can I speak to João Costa in the sales department, please?"
+   **example_pass**: Hello, this is Maria Silva from Beta Industries. Can I speak to João Costa in the sales department, please? | She looks after her sister. | Turn off the lights, please.
+   **example_fail**: smoking (bare verb) | I gave (missing particle 'up') | I quit yesterday (no phrasal verb)
 
 2. **id**: 2
    **label_pt**: "Pedir para deixar recado"
@@ -939,6 +1001,8 @@
    **hidden_prompt**: "user uses 'Can I leave a message?'"
    **hint_pt**: "He's on another line? OK — can I leave a message?"
    **hint_en**: "He's on another line? OK — can I leave a message?"
+   **example_pass**: He's on another line? OK — can I leave a message? | I ran into an old friend. | I gave up smoking last year.
+   **example_fail**: smoking (bare verb) | I gave (missing particle 'up') | I quit yesterday (no phrasal verb)
 
 3. **id**: 3
    **label_pt**: "Pedir retorno"
@@ -946,6 +1010,8 @@
    **hidden_prompt**: "user asks for callback with 'get back to me' or 'call back'"
    **hint_pt**: "Please ask him to get back to me when he's free. My number is on the file."
    **hint_en**: "Please ask him to get back to me when he's free. My number is on the file."
+   **example_pass**: Please ask him to get back to me when he's free. My number is on the file. | I gave up smoking last year. | How about you?
+   **example_fail**: smoking (bare verb) | I gave (missing particle 'up') | I quit yesterday (no phrasal verb)
 
 **Closing cue**: Charlotte fecha com "I'll let him know right away." quando obj_3 bater.
 
@@ -981,6 +1047,8 @@
    **hidden_prompt**: "user confirms with 'Yes, speaking'"
    **hint_pt**: "Yes, speaking. How can I help you?"
    **hint_en**: "Yes, speaking. How can I help you?"
+   **example_pass**: Yes, speaking. How can I help you? | I ran into an old friend. | I gave up smoking last year.
+   **example_fail**: smoking (bare verb) | I gave (missing particle 'up') | I quit yesterday (no phrasal verb)
 
 2. **id**: 2
    **label_pt**: "Reportar problema de conexão"
@@ -988,6 +1056,8 @@
    **hidden_prompt**: "user reports cut off or asks to repeat"
    **hint_pt**: "Sorry, I think we got cut off for a moment. Could you repeat that?"
    **hint_en**: "Sorry, I think we got cut off for a moment. Could you repeat that?"
+   **example_pass**: Sorry, I think we got cut off for a moment. Could you repeat that? | Turn off the lights, please. | I ran into an old friend.
+   **example_fail**: smoking (bare verb) | I gave (missing particle 'up') | I quit yesterday (no phrasal verb)
 
 3. **id**: 3
    **label_pt**: "Confirmar e prometer retorno"
@@ -995,6 +1065,8 @@
    **hidden_prompt**: "user confirms and uses 'get back to you'"
    **hint_pt**: "OK, I'll confirm the time and get back to you by end of day."
    **hint_en**: "OK, I'll confirm the time and get back to you by end of day."
+   **example_pass**: OK, I'll confirm the time and get back to you by end of day. | I ran into an old friend. | I gave up smoking last year.
+   **example_fail**: smoking (bare verb) | I gave (missing particle 'up') | I quit yesterday (no phrasal verb)
 
 **Closing cue**: Charlotte fecha com "Perfect, talk soon." quando obj_3 bater.
 

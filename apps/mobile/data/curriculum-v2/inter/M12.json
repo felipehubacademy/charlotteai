@@ -158,19 +158,49 @@
             "id": 1,
             "label_en": "Hypothetical with 'if I had + time/money'",
             "hidden_prompt": "user uses 'If I had + noun, I would + base'",
-            "hint_en": "If I had more money, I would travel."
+            "hint_en": "If I had more money, I would travel.",
+            "examples_pass": [
+              "If I had more money, I would travel.",
+              "If I had time, I would travel more.",
+              "If she studied harder, she would pass."
+            ],
+            "examples_fail": [
+              "time (bare noun)",
+              "If I have time, I will travel (1st conditional, not 2nd)",
+              "I travel more (no conditional)"
+            ]
           },
           {
             "id": 2,
             "label_en": "Hypothetical with 'if I were'",
             "hidden_prompt": "user uses 'If I were + adj/noun, I would + base'",
-            "hint_en": "If I were taller, I would play basketball."
+            "hint_en": "If I were taller, I would play basketball.",
+            "examples_pass": [
+              "If I were taller, I would play basketball.",
+              "If I had time, I would travel more.",
+              "If she studied harder, she would pass."
+            ],
+            "examples_fail": [
+              "time (bare noun)",
+              "If I have time, I will travel (1st conditional, not 2nd)",
+              "I travel more (no conditional)"
+            ]
           },
           {
             "id": 3,
             "label_en": "Hypothetical about someone else",
             "hidden_prompt": "user uses 'If + 3rd person + past, would + base'",
-            "hint_en": "If my brother lived closer, we would hang out more."
+            "hint_en": "If my brother lived closer, we would hang out more.",
+            "examples_pass": [
+              "If my brother lived closer, we would hang out more.",
+              "If she studied harder, she would pass.",
+              "If I were you, I'd take the job."
+            ],
+            "examples_fail": [
+              "time (bare noun)",
+              "If I have time, I will travel (1st conditional, not 2nd)",
+              "I travel more (no conditional)"
+            ]
           }
         ],
         "closing_cue": "Charlotte fecha com \"Hypotheticals explored!\" quando obj_3 baterem.",
@@ -193,19 +223,49 @@
             "id": 1,
             "label_en": "Something to change",
             "hidden_prompt": "user uses 'I would + base' for hypothetical change",
-            "hint_en": "I would change my job."
+            "hint_en": "I would change my job.",
+            "examples_pass": [
+              "I would change my job.",
+              "If she studied harder, she would pass.",
+              "If I were you, I'd take the job."
+            ],
+            "examples_fail": [
+              "time (bare noun)",
+              "If I have time, I will travel (1st conditional, not 2nd)",
+              "I travel more (no conditional)"
+            ]
           },
           {
             "id": 2,
             "label_en": "Elaborate hypothetical with 'if'",
             "hidden_prompt": "user uses 'If + past simple, I would + base'",
-            "hint_en": "If I had a year off, I would travel the world."
+            "hint_en": "If I had a year off, I would travel the world.",
+            "examples_pass": [
+              "If I had a year off, I would travel the world.",
+              "I would help if I could.",
+              "If I had time, I would travel more."
+            ],
+            "examples_fail": [
+              "time (bare noun)",
+              "If I have time, I will travel (1st conditional, not 2nd)",
+              "I travel more (no conditional)"
+            ]
           },
           {
             "id": 3,
             "label_en": "Ask Charlotte",
             "hidden_prompt": "user asks 'How about you?' or 'What would you change?'",
-            "hint_en": "How about you?"
+            "hint_en": "How about you?",
+            "examples_pass": [
+              "How about you?",
+              "If she studied harder, she would pass.",
+              "And you?"
+            ],
+            "examples_fail": [
+              "time (bare noun)",
+              "If I have time, I will travel (1st conditional, not 2nd)",
+              "I travel more (no conditional)"
+            ]
           }
         ],
         "closing_cue": "Charlotte fecha com \"Dream worlds compared!\" quando obj_3 baterem.",
@@ -353,19 +413,49 @@
             "id": 1,
             "label_en": "Wish with 'I wish I had'",
             "hidden_prompt": "user uses 'I wish I had + noun'",
-            "hint_en": "I wish I had more energy."
+            "hint_en": "I wish I had more energy.",
+            "examples_pass": [
+              "I wish I had more energy.",
+              "If she studied harder, she would pass.",
+              "If I were you, I'd take the job."
+            ],
+            "examples_fail": [
+              "time (bare noun)",
+              "If I have time, I will travel (1st conditional, not 2nd)",
+              "I travel more (no conditional)"
+            ]
           },
           {
             "id": 2,
             "label_en": "Wish with 'I wish I were'",
             "hidden_prompt": "user uses 'I wish I were + adj/noun'",
-            "hint_en": "I wish I were less busy."
+            "hint_en": "I wish I were less busy.",
+            "examples_pass": [
+              "I wish I were less busy.",
+              "If I had time, I would travel more.",
+              "If she studied harder, she would pass."
+            ],
+            "examples_fail": [
+              "time (bare noun)",
+              "If I have time, I will travel (1st conditional, not 2nd)",
+              "I travel more (no conditional)"
+            ]
           },
           {
             "id": 3,
             "label_en": "Wish with 'I wish I could'",
             "hidden_prompt": "user uses 'I wish I could + base'",
-            "hint_en": "I wish I could play the piano."
+            "hint_en": "I wish I could play the piano.",
+            "examples_pass": [
+              "I wish I could play the piano.",
+              "If I had time, I would travel more.",
+              "If she studied harder, she would pass."
+            ],
+            "examples_fail": [
+              "time (bare noun)",
+              "If I have time, I will travel (1st conditional, not 2nd)",
+              "I travel more (no conditional)"
+            ]
           }
         ],
         "closing_cue": "Charlotte fecha com \"Wishes shared!\" quando obj_3 baterem.",
@@ -388,19 +478,49 @@
             "id": 1,
             "label_en": "Present wish",
             "hidden_prompt": "user uses 'I wish + past simple' for present",
-            "hint_en": "I wish I had more vacation days."
+            "hint_en": "I wish I had more vacation days.",
+            "examples_pass": [
+              "I wish I had more vacation days.",
+              "If she studied harder, she would pass.",
+              "If I were you, I'd take the job."
+            ],
+            "examples_fail": [
+              "time (bare noun)",
+              "If I have time, I will travel (1st conditional, not 2nd)",
+              "I travel more (no conditional)"
+            ]
           },
           {
             "id": 2,
             "label_en": "Another wish",
             "hidden_prompt": "user uses another wish structure",
-            "hint_en": "I wish I could travel more."
+            "hint_en": "I wish I could travel more.",
+            "examples_pass": [
+              "I wish I could travel more.",
+              "I would help if I could.",
+              "If I had time, I would travel more."
+            ],
+            "examples_fail": [
+              "time (bare noun)",
+              "If I have time, I will travel (1st conditional, not 2nd)",
+              "I travel more (no conditional)"
+            ]
           },
           {
             "id": 3,
             "label_en": "Ask Charlotte",
             "hidden_prompt": "user asks 'How about you?' or 'What do you wish?'",
-            "hint_en": "How about you?"
+            "hint_en": "How about you?",
+            "examples_pass": [
+              "How about you?",
+              "If she studied harder, she would pass.",
+              "And you?"
+            ],
+            "examples_fail": [
+              "time (bare noun)",
+              "If I have time, I will travel (1st conditional, not 2nd)",
+              "I travel more (no conditional)"
+            ]
           }
         ],
         "closing_cue": "Charlotte fecha com \"Honest wishes exchanged!\" quando obj_3 baterem.",
@@ -552,19 +672,49 @@
             "id": 1,
             "label_en": "Advice about the job offer",
             "hidden_prompt": "after Charlotte's FIRST problem (job offer in another city), user gives advice with 'If I were you, I would + base'. Accept repeating the same chunk in later objectives — what matters is responding to this specific problem.",
-            "hint_en": "If I were you, I would take the offer."
+            "hint_en": "If I were you, I would take the offer.",
+            "examples_pass": [
+              "If I were you, I would take the offer.",
+              "If I were you, I'd take the job.",
+              "I would help if I could."
+            ],
+            "examples_fail": [
+              "time (bare noun)",
+              "If I have time, I will travel (1st conditional, not 2nd)",
+              "I travel more (no conditional)"
+            ]
           },
           {
             "id": 2,
             "label_en": "Advice about the conflict with her friend",
             "hidden_prompt": "after Charlotte's SECOND problem (conflict with a friend / unclear conversation), user gives advice — accept 'If I were you, I would' or 'If I were in your position'. Same opener as obj 1 is fine; tied to NEW problem.",
-            "hint_en": "If I were you, I would talk to her directly."
+            "hint_en": "If I were you, I would talk to her directly.",
+            "examples_pass": [
+              "If I were you, I would talk to her directly.",
+              "If I had time, I would travel more.",
+              "If she studied harder, she would pass."
+            ],
+            "examples_fail": [
+              "time (bare noun)",
+              "If I have time, I will travel (1st conditional, not 2nd)",
+              "I travel more (no conditional)"
+            ]
           },
           {
             "id": 3,
             "label_en": "Advice about the bigger life decision",
             "hidden_prompt": "after Charlotte's THIRD problem (bigger life decision — moving, studying, etc), user gives final advice. Any 'If I were you' or 'in your position' chunk works. Repetition of openers from objs 1/2 is fine — what matters is reacting to this third problem.",
-            "hint_en": "If I were in your position, I would wait."
+            "hint_en": "If I were in your position, I would wait.",
+            "examples_pass": [
+              "If I were in your position, I would wait.",
+              "If she studied harder, she would pass.",
+              "If I were you, I'd take the job."
+            ],
+            "examples_fail": [
+              "time (bare noun)",
+              "If I have time, I will travel (1st conditional, not 2nd)",
+              "I travel more (no conditional)"
+            ]
           }
         ],
         "closing_cue": "Charlotte fecha com \"Thoughtful advice!\" quando obj_3 baterem.",
@@ -587,19 +737,49 @@
             "id": 1,
             "label_en": "Initial advice",
             "hidden_prompt": "user uses 'If I were you, I would + base'",
-            "hint_en": "If I were you, I would take the one closer to home."
+            "hint_en": "If I were you, I would take the one closer to home.",
+            "examples_pass": [
+              "If I were you, I would take the one closer to home.",
+              "If I were you, I'd take the job.",
+              "I would help if I could."
+            ],
+            "examples_fail": [
+              "time (bare noun)",
+              "If I have time, I will travel (1st conditional, not 2nd)",
+              "I travel more (no conditional)"
+            ]
           },
           {
             "id": 2,
             "label_en": "Reason or additional advice",
             "hidden_prompt": "user adds another 'I would + base' or 'If I were you'",
-            "hint_en": "I would think about long-term growth."
+            "hint_en": "I would think about long-term growth.",
+            "examples_pass": [
+              "I would think about long-term growth.",
+              "I would help if I could.",
+              "If I had time, I would travel more."
+            ],
+            "examples_fail": [
+              "time (bare noun)",
+              "If I have time, I will travel (1st conditional, not 2nd)",
+              "I travel more (no conditional)"
+            ]
           },
           {
             "id": 3,
             "label_en": "Ask more about the dilemma",
             "hidden_prompt": "user asks Charlotte a clarifying question",
-            "hint_en": "What does your gut say?"
+            "hint_en": "What does your gut say?",
+            "examples_pass": [
+              "What does your gut say?",
+              "If I were you, I'd take the job.",
+              "How about you?"
+            ],
+            "examples_fail": [
+              "time (bare noun)",
+              "If I have time, I will travel (1st conditional, not 2nd)",
+              "I travel more (no conditional)"
+            ]
           }
         ],
         "closing_cue": "Charlotte fecha com \"Helpful perspective!\" quando obj_3 baterem.",
@@ -750,19 +930,49 @@
             "id": 1,
             "label_en": "Hypothetical 'What would you do if?'",
             "hidden_prompt": "user asks 'What would you do if + past simple?'",
-            "hint_en": "What would you do if you won a million dollars?"
+            "hint_en": "What would you do if you won a million dollars?",
+            "examples_pass": [
+              "What would you do if you won a million dollars?",
+              "If I had time, I would travel more.",
+              "How about you?"
+            ],
+            "examples_fail": [
+              "time (bare noun)",
+              "If I have time, I will travel (1st conditional, not 2nd)",
+              "I travel more (no conditional)"
+            ]
           },
           {
             "id": 2,
             "label_en": "Another hypothetical (Where/Who)",
             "hidden_prompt": "user asks 'Where/Who/How would you + base + if + past?'",
-            "hint_en": "Where would you go if you could travel anywhere?"
+            "hint_en": "Where would you go if you could travel anywhere?",
+            "examples_pass": [
+              "Where would you go if you could travel anywhere?",
+              "If I had time, I would travel more.",
+              "How about you?"
+            ],
+            "examples_fail": [
+              "time (bare noun)",
+              "If I have time, I will travel (1st conditional, not 2nd)",
+              "I travel more (no conditional)"
+            ]
           },
           {
             "id": 3,
             "label_en": "Yes/no 'Would you' question",
             "hidden_prompt": "user asks 'Would you + base + if + past?'",
-            "hint_en": "Would you change careers if you had the chance?"
+            "hint_en": "Would you change careers if you had the chance?",
+            "examples_pass": [
+              "Would you change careers if you had the chance?",
+              "If I were you, I'd take the job.",
+              "How about you?"
+            ],
+            "examples_fail": [
+              "time (bare noun)",
+              "If I have time, I will travel (1st conditional, not 2nd)",
+              "I travel more (no conditional)"
+            ]
           }
         ],
         "closing_cue": "Charlotte fecha com \"Great hypotheticals!\" quando obj_3 baterem.",
@@ -785,19 +995,49 @@
             "id": 1,
             "label_en": "Hypothetical question 1",
             "hidden_prompt": "user asks 'What would you do if + past simple?'",
-            "hint_en": "What would you do if you had a year off?"
+            "hint_en": "What would you do if you had a year off?",
+            "examples_pass": [
+              "What would you do if you had a year off?",
+              "If I had time, I would travel more.",
+              "How about you?"
+            ],
+            "examples_fail": [
+              "time (bare noun)",
+              "If I have time, I will travel (1st conditional, not 2nd)",
+              "I travel more (no conditional)"
+            ]
           },
           {
             "id": 2,
             "label_en": "Hypothetical question 2",
             "hidden_prompt": "user asks another 'Would you?' or 'What would?'",
-            "hint_en": "Would you move abroad if you had the chance?"
+            "hint_en": "Would you move abroad if you had the chance?",
+            "examples_pass": [
+              "Would you move abroad if you had the chance?",
+              "I would help if I could.",
+              "How about you?"
+            ],
+            "examples_fail": [
+              "time (bare noun)",
+              "If I have time, I will travel (1st conditional, not 2nd)",
+              "I travel more (no conditional)"
+            ]
           },
           {
             "id": 3,
             "label_en": "Hypothetical 3 (deeper)",
             "hidden_prompt": "user asks one more deep hypothetical",
-            "hint_en": "What would you change if you could redo your career?"
+            "hint_en": "What would you change if you could redo your career?",
+            "examples_pass": [
+              "What would you change if you could redo your career?",
+              "I would help if I could.",
+              "How about you?"
+            ],
+            "examples_fail": [
+              "time (bare noun)",
+              "If I have time, I will travel (1st conditional, not 2nd)",
+              "I travel more (no conditional)"
+            ]
           }
         ],
         "closing_cue": "Charlotte fecha com \"Great Q&A!\" quando obj_3 baterem.",
@@ -946,19 +1186,49 @@
             "id": 1,
             "label_en": "Present wish",
             "hidden_prompt": "user uses 'I wish + past simple'",
-            "hint_en": "I wish I had more free time."
+            "hint_en": "I wish I had more free time.",
+            "examples_pass": [
+              "I wish I had more free time.",
+              "If I had time, I would travel more.",
+              "If she studied harder, she would pass."
+            ],
+            "examples_fail": [
+              "time (bare noun)",
+              "If I have time, I will travel (1st conditional, not 2nd)",
+              "I travel more (no conditional)"
+            ]
           },
           {
             "id": 2,
             "label_en": "Hypothetical with 'if + past, would + base'",
             "hidden_prompt": "user uses 'If + past simple, would + base'",
-            "hint_en": "If I had a sabbatical, I would write a book."
+            "hint_en": "If I had a sabbatical, I would write a book.",
+            "examples_pass": [
+              "If I had a sabbatical, I would write a book.",
+              "If she studied harder, she would pass.",
+              "If I were you, I'd take the job."
+            ],
+            "examples_fail": [
+              "time (bare noun)",
+              "If I have time, I will travel (1st conditional, not 2nd)",
+              "I travel more (no conditional)"
+            ]
           },
           {
             "id": 3,
             "label_en": "Advice with 'If I were you'",
             "hidden_prompt": "user uses 'If I were you, I would + base'",
-            "hint_en": "If I were you, I would try a new hobby."
+            "hint_en": "If I were you, I would try a new hobby.",
+            "examples_pass": [
+              "If I were you, I would try a new hobby.",
+              "If I had time, I would travel more.",
+              "If she studied harder, she would pass."
+            ],
+            "examples_fail": [
+              "time (bare noun)",
+              "If I have time, I will travel (1st conditional, not 2nd)",
+              "I travel more (no conditional)"
+            ]
           }
         ],
         "closing_cue": "Charlotte fecha com \"Hypothetical fluency!\" quando obj_3 baterem.",
@@ -981,19 +1251,49 @@
             "id": 1,
             "label_en": "Big hypothetical change",
             "hidden_prompt": "user uses 'If + past, I would + base' for big change",
-            "hint_en": "If I could choose, I would live by the ocean."
+            "hint_en": "If I could choose, I would live by the ocean.",
+            "examples_pass": [
+              "If I could choose, I would live by the ocean.",
+              "If I had time, I would travel more.",
+              "If she studied harder, she would pass."
+            ],
+            "examples_fail": [
+              "time (bare noun)",
+              "If I have time, I will travel (1st conditional, not 2nd)",
+              "I travel more (no conditional)"
+            ]
           },
           {
             "id": 2,
             "label_en": "Additional wish or hypothetical",
             "hidden_prompt": "user uses 'I wish' or another hypothetical",
-            "hint_en": "I wish I had more courage to try new things."
+            "hint_en": "I wish I had more courage to try new things.",
+            "examples_pass": [
+              "I wish I had more courage to try new things.",
+              "If I were you, I'd take the job.",
+              "I would help if I could."
+            ],
+            "examples_fail": [
+              "time (bare noun)",
+              "If I have time, I will travel (1st conditional, not 2nd)",
+              "I travel more (no conditional)"
+            ]
           },
           {
             "id": 3,
             "label_en": "Ask Charlotte",
             "hidden_prompt": "user asks 'How about you?' or 'What would you change?'",
-            "hint_en": "How about you?"
+            "hint_en": "How about you?",
+            "examples_pass": [
+              "How about you?",
+              "If she studied harder, she would pass.",
+              "And you?"
+            ],
+            "examples_fail": [
+              "time (bare noun)",
+              "If I have time, I will travel (1st conditional, not 2nd)",
+              "I travel more (no conditional)"
+            ]
           }
         ],
         "closing_cue": "Charlotte fecha com \"Alternative lives explored!\" quando obj_3 baterem.",

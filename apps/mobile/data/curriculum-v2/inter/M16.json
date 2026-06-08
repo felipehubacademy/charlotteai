@@ -158,19 +158,49 @@
             "id": 1,
             "label_en": "Instruction with 'must be'",
             "hidden_prompt": "user uses 'X must be + past participle'",
-            "hint_en": "The reports must be submitted by Friday."
+            "hint_en": "The reports must be submitted by Friday.",
+            "examples_pass": [
+              "The reports must be submitted by Friday.",
+              "The road has been repaired.",
+              "Mistakes were made."
+            ],
+            "examples_fail": [
+              "finished (bare participle)",
+              "They finish the project (active, not passive)",
+              "The project finishes (intransitive, not passive)"
+            ]
           },
           {
             "id": 2,
             "label_en": "Recommendation with 'should be'",
             "hidden_prompt": "user uses 'X should be + past participle'",
-            "hint_en": "Emails should be checked twice a day."
+            "hint_en": "Emails should be checked twice a day.",
+            "examples_pass": [
+              "Emails should be checked twice a day.",
+              "The road has been repaired.",
+              "Mistakes were made."
+            ],
+            "examples_fail": [
+              "finished (bare participle)",
+              "They finish the project (active, not passive)",
+              "The project finishes (intransitive, not passive)"
+            ]
           },
           {
             "id": 3,
             "label_en": "Requirement with 'have to be'",
             "hidden_prompt": "user uses 'X has/have to be + past participle'",
-            "hint_en": "Documents have to be signed before submission."
+            "hint_en": "Documents have to be signed before submission.",
+            "examples_pass": [
+              "Documents have to be signed before submission.",
+              "The package will be delivered tomorrow.",
+              "The project is being finished this week."
+            ],
+            "examples_fail": [
+              "finished (bare participle)",
+              "They finish the project (active, not passive)",
+              "The project finishes (intransitive, not passive)"
+            ]
           }
         ],
         "closing_cue": "Charlotte fecha com \"Clear protocols!\" quando obj_3 baterem.",
@@ -193,19 +223,49 @@
             "id": 1,
             "label_en": "Rule with 'must be'",
             "hidden_prompt": "user uses 'X must be + past participle'",
-            "hint_en": "Phones must be silenced during meetings."
+            "hint_en": "Phones must be silenced during meetings.",
+            "examples_pass": [
+              "Phones must be silenced during meetings.",
+              "The package will be delivered tomorrow.",
+              "The project is being finished this week."
+            ],
+            "examples_fail": [
+              "finished (bare participle)",
+              "They finish the project (active, not passive)",
+              "The project finishes (intransitive, not passive)"
+            ]
           },
           {
             "id": 2,
             "label_en": "Another rule with modal passive",
             "hidden_prompt": "user uses 'should be' or 'have to be' + past participle",
-            "hint_en": "Emails should be answered within 24 hours."
+            "hint_en": "Emails should be answered within 24 hours.",
+            "examples_pass": [
+              "Emails should be answered within 24 hours.",
+              "Mistakes were made.",
+              "The package will be delivered tomorrow."
+            ],
+            "examples_fail": [
+              "finished (bare participle)",
+              "They finish the project (active, not passive)",
+              "The project finishes (intransitive, not passive)"
+            ]
           },
           {
             "id": 3,
             "label_en": "Ask Charlotte",
             "hidden_prompt": "user asks Charlotte about her workplace rules",
-            "hint_en": "What's a rule at your work?"
+            "hint_en": "What's a rule at your work?",
+            "examples_pass": [
+              "What's a rule at your work?",
+              "The road has been repaired.",
+              "How about you?"
+            ],
+            "examples_fail": [
+              "finished (bare participle)",
+              "They finish the project (active, not passive)",
+              "The project finishes (intransitive, not passive)"
+            ]
           }
         ],
         "closing_cue": "Charlotte fecha com \"Workplace norms compared!\" quando obj_3 baterem.",
@@ -353,19 +413,49 @@
             "id": 1,
             "label_en": "Announcement with 'will be'",
             "hidden_prompt": "user uses 'X will be + past participle'",
-            "hint_en": "The results will be announced on Friday."
+            "hint_en": "The results will be announced on Friday.",
+            "examples_pass": [
+              "The results will be announced on Friday.",
+              "The package will be delivered tomorrow.",
+              "The project is being finished this week."
+            ],
+            "examples_fail": [
+              "finished (bare participle)",
+              "They finish the project (active, not passive)",
+              "The project finishes (intransitive, not passive)"
+            ]
           },
           {
             "id": 2,
             "label_en": "Plan with 'is going to be'",
             "hidden_prompt": "user uses 'X is/are going to be + past participle'",
-            "hint_en": "A new park is going to be built downtown."
+            "hint_en": "A new park is going to be built downtown.",
+            "examples_pass": [
+              "A new park is going to be built downtown.",
+              "The road has been repaired.",
+              "Mistakes were made."
+            ],
+            "examples_fail": [
+              "finished (bare participle)",
+              "They finish the project (active, not passive)",
+              "The project finishes (intransitive, not passive)"
+            ]
           },
           {
             "id": 3,
             "label_en": "Another future event passive",
             "hidden_prompt": "user uses another future passive",
-            "hint_en": "The conference will be held in Rio."
+            "hint_en": "The conference will be held in Rio.",
+            "examples_pass": [
+              "The conference will be held in Rio.",
+              "The project is being finished this week.",
+              "The road has been repaired."
+            ],
+            "examples_fail": [
+              "finished (bare participle)",
+              "They finish the project (active, not passive)",
+              "The project finishes (intransitive, not passive)"
+            ]
           }
         ],
         "closing_cue": "Charlotte fecha com \"Upcoming events announced!\" quando obj_3 baterem.",
@@ -388,19 +478,49 @@
             "id": 1,
             "label_en": "Future plan with 'is going to be'",
             "hidden_prompt": "user uses 'X is going to be + past participle'",
-            "hint_en": "A new metro line is going to be built."
+            "hint_en": "A new metro line is going to be built.",
+            "examples_pass": [
+              "A new metro line is going to be built.",
+              "Mistakes were made.",
+              "The package will be delivered tomorrow."
+            ],
+            "examples_fail": [
+              "finished (bare participle)",
+              "They finish the project (active, not passive)",
+              "The project finishes (intransitive, not passive)"
+            ]
           },
           {
             "id": 2,
             "label_en": "Another future passive plan",
             "hidden_prompt": "user uses 'will be + past participle'",
-            "hint_en": "The old market will be renovated."
+            "hint_en": "The old market will be renovated.",
+            "examples_pass": [
+              "The old market will be renovated.",
+              "The road has been repaired.",
+              "Mistakes were made."
+            ],
+            "examples_fail": [
+              "finished (bare participle)",
+              "They finish the project (active, not passive)",
+              "The project finishes (intransitive, not passive)"
+            ]
           },
           {
             "id": 3,
             "label_en": "Ask Charlotte",
             "hidden_prompt": "user asks Charlotte about upcoming plans in her area",
-            "hint_en": "What's going to be built in your area?"
+            "hint_en": "What's going to be built in your area?",
+            "examples_pass": [
+              "What's going to be built in your area?",
+              "Mistakes were made.",
+              "How about you?"
+            ],
+            "examples_fail": [
+              "finished (bare participle)",
+              "They finish the project (active, not passive)",
+              "The project finishes (intransitive, not passive)"
+            ]
           }
         ],
         "closing_cue": "Charlotte fecha com \"Future plans compared!\" quando obj_3 baterem.",
@@ -548,19 +668,49 @@
             "id": 1,
             "label_en": "Artwork with 'by'",
             "hidden_prompt": "user uses 'X was painted/created by + person'",
-            "hint_en": "Guernica was painted by Picasso."
+            "hint_en": "Guernica was painted by Picasso.",
+            "examples_pass": [
+              "Guernica was painted by Picasso.",
+              "The road has been repaired.",
+              "Mistakes were made."
+            ],
+            "examples_fail": [
+              "finished (bare participle)",
+              "They finish the project (active, not passive)",
+              "The project finishes (intransitive, not passive)"
+            ]
           },
           {
             "id": 2,
             "label_en": "Book with 'by'",
             "hidden_prompt": "user uses 'X was written by + author'",
-            "hint_en": "Dom Casmurro was written by Machado de Assis."
+            "hint_en": "Dom Casmurro was written by Machado de Assis.",
+            "examples_pass": [
+              "Dom Casmurro was written by Machado de Assis.",
+              "Mistakes were made.",
+              "The package will be delivered tomorrow."
+            ],
+            "examples_fail": [
+              "finished (bare participle)",
+              "They finish the project (active, not passive)",
+              "The project finishes (intransitive, not passive)"
+            ]
           },
           {
             "id": 3,
             "label_en": "Food or object with 'by'",
             "hidden_prompt": "user uses 'X was made/cooked by + person'",
-            "hint_en": "The cake was made by my grandmother."
+            "hint_en": "The cake was made by my grandmother.",
+            "examples_pass": [
+              "The cake was made by my grandmother.",
+              "The road has been repaired.",
+              "Mistakes were made."
+            ],
+            "examples_fail": [
+              "finished (bare participle)",
+              "They finish the project (active, not passive)",
+              "The project finishes (intransitive, not passive)"
+            ]
           }
         ],
         "closing_cue": "Charlotte fecha com \"Creators credited!\" quando obj_3 baterem.",
@@ -583,19 +733,49 @@
             "id": 1,
             "label_en": "Favorite book + author",
             "hidden_prompt": "user uses 'X was written by + author'",
-            "hint_en": "My favorite book was written by Jorge Amado."
+            "hint_en": "My favorite book was written by Jorge Amado.",
+            "examples_pass": [
+              "My favorite book was written by Jorge Amado.",
+              "The package will be delivered tomorrow.",
+              "The project is being finished this week."
+            ],
+            "examples_fail": [
+              "finished (bare participle)",
+              "They finish the project (active, not passive)",
+              "The project finishes (intransitive, not passive)"
+            ]
           },
           {
             "id": 2,
             "label_en": "Another favorite (film, music)",
             "hidden_prompt": "user uses 'X was directed/composed/sung by + person'",
-            "hint_en": "My favorite song was sung by Caetano."
+            "hint_en": "My favorite song was sung by Caetano.",
+            "examples_pass": [
+              "My favorite song was sung by Caetano.",
+              "The road has been repaired.",
+              "Mistakes were made."
+            ],
+            "examples_fail": [
+              "finished (bare participle)",
+              "They finish the project (active, not passive)",
+              "The project finishes (intransitive, not passive)"
+            ]
           },
           {
             "id": 3,
             "label_en": "Ask Charlotte",
             "hidden_prompt": "user asks Charlotte about her favorites",
-            "hint_en": "What's your favorite book and by whom?"
+            "hint_en": "What's your favorite book and by whom?",
+            "examples_pass": [
+              "What's your favorite book and by whom?",
+              "The project is being finished this week.",
+              "How about you?"
+            ],
+            "examples_fail": [
+              "finished (bare participle)",
+              "They finish the project (active, not passive)",
+              "The project finishes (intransitive, not passive)"
+            ]
           }
         ],
         "closing_cue": "Charlotte fecha com \"Favorites swapped!\" quando obj_3 baterem.",
@@ -746,19 +926,49 @@
             "id": 1,
             "label_en": "Life event with 'got + past participle'",
             "hidden_prompt": "user uses 'X got married/hired/promoted/engaged'",
-            "hint_en": "I got married three years ago."
+            "hint_en": "I got married three years ago.",
+            "examples_pass": [
+              "I got married three years ago.",
+              "The project is being finished this week.",
+              "The road has been repaired."
+            ],
+            "examples_fail": [
+              "finished (bare participle)",
+              "They finish the project (active, not passive)",
+              "The project finishes (intransitive, not passive)"
+            ]
           },
           {
             "id": 2,
             "label_en": "Accident or problem with 'got'",
             "hidden_prompt": "user uses 'X got hurt/lost/stolen'",
-            "hint_en": "I got lost on my first day in São Paulo."
+            "hint_en": "I got lost on my first day in São Paulo.",
+            "examples_pass": [
+              "I got lost on my first day in São Paulo.",
+              "The road has been repaired.",
+              "Mistakes were made."
+            ],
+            "examples_fail": [
+              "finished (bare participle)",
+              "They finish the project (active, not passive)",
+              "The project finishes (intransitive, not passive)"
+            ]
           },
           {
             "id": 3,
             "label_en": "Another 'get' passive",
             "hidden_prompt": "user uses another 'got + past participle'",
-            "hint_en": "My car got stolen last year."
+            "hint_en": "My car got stolen last year.",
+            "examples_pass": [
+              "My car got stolen last year.",
+              "Mistakes were made.",
+              "The package will be delivered tomorrow."
+            ],
+            "examples_fail": [
+              "finished (bare participle)",
+              "They finish the project (active, not passive)",
+              "The project finishes (intransitive, not passive)"
+            ]
           }
         ],
         "closing_cue": "Charlotte fecha com \"Life events shared!\" quando obj_3 baterem.",
@@ -781,19 +991,49 @@
             "id": 1,
             "label_en": "Story with 'got'",
             "hidden_prompt": "user uses 'I got + past participle'",
-            "hint_en": "I got stuck in traffic for two hours."
+            "hint_en": "I got stuck in traffic for two hours.",
+            "examples_pass": [
+              "I got stuck in traffic for two hours.",
+              "The package will be delivered tomorrow.",
+              "The project is being finished this week."
+            ],
+            "examples_fail": [
+              "finished (bare participle)",
+              "They finish the project (active, not passive)",
+              "The project finishes (intransitive, not passive)"
+            ]
           },
           {
             "id": 2,
             "label_en": "Another event with 'got'",
             "hidden_prompt": "user uses another 'got + past participle'",
-            "hint_en": "My bag got soaked too."
+            "hint_en": "My bag got soaked too.",
+            "examples_pass": [
+              "My bag got soaked too.",
+              "The road has been repaired.",
+              "Mistakes were made."
+            ],
+            "examples_fail": [
+              "finished (bare participle)",
+              "They finish the project (active, not passive)",
+              "The project finishes (intransitive, not passive)"
+            ]
           },
           {
             "id": 3,
             "label_en": "Ask Charlotte",
             "hidden_prompt": "user asks Charlotte more about her event",
-            "hint_en": "How did you get home?"
+            "hint_en": "How did you get home?",
+            "examples_pass": [
+              "How did you get home?",
+              "The project is being finished this week.",
+              "How about you?"
+            ],
+            "examples_fail": [
+              "finished (bare participle)",
+              "They finish the project (active, not passive)",
+              "The project finishes (intransitive, not passive)"
+            ]
           }
         ],
         "closing_cue": "Charlotte fecha com \"Soggy stories shared!\" quando obj_3 baterem.",
@@ -939,19 +1179,49 @@
             "id": 1,
             "label_en": "Modal passive",
             "hidden_prompt": "user uses 'modal + be + past participle'",
-            "hint_en": "The report must be sent today."
+            "hint_en": "The report must be sent today.",
+            "examples_pass": [
+              "The report must be sent today.",
+              "Mistakes were made.",
+              "The package will be delivered tomorrow."
+            ],
+            "examples_fail": [
+              "finished (bare participle)",
+              "They finish the project (active, not passive)",
+              "The project finishes (intransitive, not passive)"
+            ]
           },
           {
             "id": 2,
             "label_en": "Future passive or agent passive",
             "hidden_prompt": "user uses 'will be + past participle' or 'was + past participle + by'",
-            "hint_en": "The book was written by a famous author."
+            "hint_en": "The book was written by a famous author.",
+            "examples_pass": [
+              "The book was written by a famous author.",
+              "The project is being finished this week.",
+              "The road has been repaired."
+            ],
+            "examples_fail": [
+              "finished (bare participle)",
+              "They finish the project (active, not passive)",
+              "The project finishes (intransitive, not passive)"
+            ]
           },
           {
             "id": 3,
             "label_en": "Informal get passive",
             "hidden_prompt": "user uses 'got + past participle'",
-            "hint_en": "I got promoted last month."
+            "hint_en": "I got promoted last month.",
+            "examples_pass": [
+              "I got promoted last month.",
+              "The road has been repaired.",
+              "Mistakes were made."
+            ],
+            "examples_fail": [
+              "finished (bare participle)",
+              "They finish the project (active, not passive)",
+              "The project finishes (intransitive, not passive)"
+            ]
           }
         ],
         "closing_cue": "Charlotte fecha com \"Passive variety achieved!\" quando obj_3 baterem.",
@@ -974,19 +1244,49 @@
             "id": 1,
             "label_en": "What's been done",
             "hidden_prompt": "user uses 'has/have been + past participle'",
-            "hint_en": "The website has been redesigned."
+            "hint_en": "The website has been redesigned.",
+            "examples_pass": [
+              "The website has been redesigned.",
+              "Mistakes were made.",
+              "The package will be delivered tomorrow."
+            ],
+            "examples_fail": [
+              "finished (bare participle)",
+              "They finish the project (active, not passive)",
+              "The project finishes (intransitive, not passive)"
+            ]
           },
           {
             "id": 2,
             "label_en": "What's being done",
             "hidden_prompt": "user uses 'is/are being + past participle'",
-            "hint_en": "New features are being tested."
+            "hint_en": "New features are being tested.",
+            "examples_pass": [
+              "New features are being tested.",
+              "The road has been repaired.",
+              "Mistakes were made."
+            ],
+            "examples_fail": [
+              "finished (bare participle)",
+              "They finish the project (active, not passive)",
+              "The project finishes (intransitive, not passive)"
+            ]
           },
           {
             "id": 3,
             "label_en": "What will be done",
             "hidden_prompt": "user uses 'will be + past participle'",
-            "hint_en": "A new version will be released next month."
+            "hint_en": "A new version will be released next month.",
+            "examples_pass": [
+              "A new version will be released next month.",
+              "The project is being finished this week.",
+              "The road has been repaired."
+            ],
+            "examples_fail": [
+              "finished (bare participle)",
+              "They finish the project (active, not passive)",
+              "The project finishes (intransitive, not passive)"
+            ]
           }
         ],
         "closing_cue": "Charlotte fecha com \"Full passive map!\" quando obj_3 baterem.",

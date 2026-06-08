@@ -163,19 +163,49 @@
             "id": 1,
             "label_en": "Complaint with 'I wish + would'",
             "hidden_prompt": "user uses 'I wish X would + base'",
-            "hint_en": "I wish my boss would give clearer instructions."
+            "hint_en": "I wish my boss would give clearer instructions.",
+            "examples_pass": [
+              "I wish my boss would give clearer instructions.",
+              "I wish I had more time.",
+              "I wish I knew the answer."
+            ],
+            "examples_fail": [
+              "time (bare noun)",
+              "I want more time (no 'wish')",
+              "I wish I have more time (wrong tense after wish)"
+            ]
           },
           {
             "id": 2,
             "label_en": "Negative complaint with 'wouldn't'",
             "hidden_prompt": "user uses 'I wish X wouldn't + base'",
-            "hint_en": "I wish people wouldn't talk loudly on the phone in public."
+            "hint_en": "I wish people wouldn't talk loudly on the phone in public.",
+            "examples_pass": [
+              "I wish people wouldn't talk loudly on the phone in public.",
+              "I wish I hadn't said that.",
+              "I wish she would call."
+            ],
+            "examples_fail": [
+              "time (bare noun)",
+              "I want more time (no 'wish')",
+              "I wish I have more time (wrong tense after wish)"
+            ]
           },
           {
             "id": 3,
             "label_en": "Another complaint",
             "hidden_prompt": "user uses another 'I wish + would/wouldn't'",
-            "hint_en": "I wish drivers would respect crosswalks."
+            "hint_en": "I wish drivers would respect crosswalks.",
+            "examples_pass": [
+              "I wish drivers would respect crosswalks.",
+              "I wish I hadn't said that.",
+              "I wish she would call."
+            ],
+            "examples_fail": [
+              "time (bare noun)",
+              "I want more time (no 'wish')",
+              "I wish I have more time (wrong tense after wish)"
+            ]
           }
         ],
         "closing_cue": "Charlotte fecha com \"Frustrations heard!\" quando obj_3 baterem.",
@@ -198,19 +228,49 @@
             "id": 1,
             "label_en": "Complaint about someone specific",
             "hidden_prompt": "user uses 'I wish X would + base'",
-            "hint_en": "I wish my brother would clean his room."
+            "hint_en": "I wish my brother would clean his room.",
+            "examples_pass": [
+              "I wish my brother would clean his room.",
+              "I wish I knew the answer.",
+              "I wish I hadn't said that."
+            ],
+            "examples_fail": [
+              "time (bare noun)",
+              "I want more time (no 'wish')",
+              "I wish I have more time (wrong tense after wish)"
+            ]
           },
           {
             "id": 2,
             "label_en": "Another complaint (negative)",
             "hidden_prompt": "user uses 'I wish X wouldn't + base'",
-            "hint_en": "I wish my cat wouldn't wake me up at 5 AM."
+            "hint_en": "I wish my cat wouldn't wake me up at 5 AM.",
+            "examples_pass": [
+              "I wish my cat wouldn't wake me up at 5 AM.",
+              "I wish she would call.",
+              "I wish I had more time."
+            ],
+            "examples_fail": [
+              "time (bare noun)",
+              "I want more time (no 'wish')",
+              "I wish I have more time (wrong tense after wish)"
+            ]
           },
           {
             "id": 3,
             "label_en": "Question for Charlotte",
             "hidden_prompt": "user asks Charlotte more about her annoyance",
-            "hint_en": "Have you told them?"
+            "hint_en": "Have you told them?",
+            "examples_pass": [
+              "Have you told them?",
+              "I wish I knew the answer.",
+              "How about you?"
+            ],
+            "examples_fail": [
+              "time (bare noun)",
+              "I want more time (no 'wish')",
+              "I wish I have more time (wrong tense after wish)"
+            ]
           }
         ],
         "closing_cue": "Charlotte fecha com \"Mutual venting!\" quando obj_3 baterem.",
@@ -361,19 +421,49 @@
             "id": 1,
             "label_en": "If only about present",
             "hidden_prompt": "user uses 'If only + past simple' for present",
-            "hint_en": "If only I had more energy!"
+            "hint_en": "If only I had more energy!",
+            "examples_pass": [
+              "If only I had more energy!",
+              "I wish I knew the answer.",
+              "I wish I hadn't said that."
+            ],
+            "examples_fail": [
+              "time (bare noun)",
+              "I want more time (no 'wish')",
+              "I wish I have more time (wrong tense after wish)"
+            ]
           },
           {
             "id": 2,
             "label_en": "If only about past",
             "hidden_prompt": "user uses 'If only + past perfect'",
-            "hint_en": "If only I had taken that opportunity!"
+            "hint_en": "If only I had taken that opportunity!",
+            "examples_pass": [
+              "If only I had taken that opportunity!",
+              "I wish I knew the answer.",
+              "I wish I hadn't said that."
+            ],
+            "examples_fail": [
+              "time (bare noun)",
+              "I want more time (no 'wish')",
+              "I wish I have more time (wrong tense after wish)"
+            ]
           },
           {
             "id": 3,
             "label_en": "If only with 'would'",
             "hidden_prompt": "user uses 'If only X would + base'",
-            "hint_en": "If only my boss would notice my hard work!"
+            "hint_en": "If only my boss would notice my hard work!",
+            "examples_pass": [
+              "If only my boss would notice my hard work!",
+              "I wish I had more time.",
+              "I wish I knew the answer."
+            ],
+            "examples_fail": [
+              "time (bare noun)",
+              "I want more time (no 'wish')",
+              "I wish I have more time (wrong tense after wish)"
+            ]
           }
         ],
         "closing_cue": "Charlotte fecha com \"Dramatic wishes voiced!\" quando obj_3 baterem.",
@@ -396,19 +486,49 @@
             "id": 1,
             "label_en": "If only about past regret",
             "hidden_prompt": "user uses 'If only + past perfect'",
-            "hint_en": "If only I had started exercising earlier."
+            "hint_en": "If only I had started exercising earlier.",
+            "examples_pass": [
+              "If only I had started exercising earlier.",
+              "I wish I knew the answer.",
+              "I wish I hadn't said that."
+            ],
+            "examples_fail": [
+              "time (bare noun)",
+              "I want more time (no 'wish')",
+              "I wish I have more time (wrong tense after wish)"
+            ]
           },
           {
             "id": 2,
             "label_en": "If only about present wish",
             "hidden_prompt": "user uses 'If only + past simple' or 'were'",
-            "hint_en": "If only I had more free time."
+            "hint_en": "If only I had more free time.",
+            "examples_pass": [
+              "If only I had more free time.",
+              "I wish I knew the answer.",
+              "I wish I hadn't said that."
+            ],
+            "examples_fail": [
+              "time (bare noun)",
+              "I want more time (no 'wish')",
+              "I wish I have more time (wrong tense after wish)"
+            ]
           },
           {
             "id": 3,
             "label_en": "Ask Charlotte",
             "hidden_prompt": "user asks Charlotte why she didn't learn piano",
-            "hint_en": "Why didn't you learn?"
+            "hint_en": "Why didn't you learn?",
+            "examples_pass": [
+              "Why didn't you learn?",
+              "I wish I had more time.",
+              "How about you?"
+            ],
+            "examples_fail": [
+              "time (bare noun)",
+              "I want more time (no 'wish')",
+              "I wish I have more time (wrong tense after wish)"
+            ]
           }
         ],
         "closing_cue": "Charlotte fecha com \"Deep wishes shared!\" quando obj_3 baterem.",
@@ -556,19 +676,49 @@
             "id": 1,
             "label_en": "Own preference 'I'd rather + base'",
             "hidden_prompt": "user uses 'I'd rather + base form'",
-            "hint_en": "I'd rather watch a movie at home."
+            "hint_en": "I'd rather watch a movie at home.",
+            "examples_pass": [
+              "I'd rather watch a movie at home.",
+              "I wish I hadn't said that.",
+              "I wish she would call."
+            ],
+            "examples_fail": [
+              "time (bare noun)",
+              "I want more time (no 'wish')",
+              "I wish I have more time (wrong tense after wish)"
+            ]
           },
           {
             "id": 2,
             "label_en": "Negative 'I'd rather not'",
             "hidden_prompt": "user uses 'I'd rather not + base'",
-            "hint_en": "I'd rather not work this weekend."
+            "hint_en": "I'd rather not work this weekend.",
+            "examples_pass": [
+              "I'd rather not work this weekend.",
+              "I wish she would call.",
+              "I wish I had more time."
+            ],
+            "examples_fail": [
+              "time (bare noun)",
+              "I want more time (no 'wish')",
+              "I wish I have more time (wrong tense after wish)"
+            ]
           },
           {
             "id": 3,
             "label_en": "Preference about another person",
             "hidden_prompt": "user uses 'I'd rather you + past simple'",
-            "hint_en": "I'd rather you called me before coming over."
+            "hint_en": "I'd rather you called me before coming over.",
+            "examples_pass": [
+              "I'd rather you called me before coming over.",
+              "I wish I had more time.",
+              "I wish I knew the answer."
+            ],
+            "examples_fail": [
+              "time (bare noun)",
+              "I want more time (no 'wish')",
+              "I wish I have more time (wrong tense after wish)"
+            ]
           }
         ],
         "closing_cue": "Charlotte fecha com \"Preferences set!\" quando obj_3 baterem.",
@@ -591,19 +741,49 @@
             "id": 1,
             "label_en": "Work or lifestyle preference",
             "hidden_prompt": "user uses 'I'd rather + base + than + base'",
-            "hint_en": "I'd rather work in person than remotely."
+            "hint_en": "I'd rather work in person than remotely.",
+            "examples_pass": [
+              "I'd rather work in person than remotely.",
+              "I wish I knew the answer.",
+              "I wish I hadn't said that."
+            ],
+            "examples_fail": [
+              "time (bare noun)",
+              "I want more time (no 'wish')",
+              "I wish I have more time (wrong tense after wish)"
+            ]
           },
           {
             "id": 2,
             "label_en": "Another preference",
             "hidden_prompt": "user uses another 'I'd rather'",
-            "hint_en": "I'd rather travel than stay home."
+            "hint_en": "I'd rather travel than stay home.",
+            "examples_pass": [
+              "I'd rather travel than stay home.",
+              "I wish she would call.",
+              "I wish I had more time."
+            ],
+            "examples_fail": [
+              "time (bare noun)",
+              "I want more time (no 'wish')",
+              "I wish I have more time (wrong tense after wish)"
+            ]
           },
           {
             "id": 3,
             "label_en": "Ask Charlotte",
             "hidden_prompt": "user asks Charlotte more about her preference",
-            "hint_en": "Why do you prefer remote?"
+            "hint_en": "Why do you prefer remote?",
+            "examples_pass": [
+              "Why do you prefer remote?",
+              "I wish she would call.",
+              "How about you?"
+            ],
+            "examples_fail": [
+              "time (bare noun)",
+              "I want more time (no 'wish')",
+              "I wish I have more time (wrong tense after wish)"
+            ]
           }
         ],
         "closing_cue": "Charlotte fecha com \"Preferences compared!\" quando obj_3 baterem.",
@@ -751,19 +931,49 @@
             "id": 1,
             "label_en": "Urgency with 'It's time'",
             "hidden_prompt": "user uses 'It's time + subject + past simple'",
-            "hint_en": "It's time we addressed this issue."
+            "hint_en": "It's time we addressed this issue.",
+            "examples_pass": [
+              "It's time we addressed this issue.",
+              "I wish I had more time.",
+              "I wish I knew the answer."
+            ],
+            "examples_fail": [
+              "time (bare noun)",
+              "I want more time (no 'wish')",
+              "I wish I have more time (wrong tense after wish)"
+            ]
           },
           {
             "id": 2,
             "label_en": "Emphatic 'It's high time'",
             "hidden_prompt": "user uses 'It's high time + subject + past simple'",
-            "hint_en": "It's high time he found a stable job."
+            "hint_en": "It's high time he found a stable job.",
+            "examples_pass": [
+              "It's high time he found a stable job.",
+              "I wish I had more time.",
+              "I wish I knew the answer."
+            ],
+            "examples_fail": [
+              "time (bare noun)",
+              "I want more time (no 'wish')",
+              "I wish I have more time (wrong tense after wish)"
+            ]
           },
           {
             "id": 3,
             "label_en": "Urgency about own behavior",
             "hidden_prompt": "user uses 'It's about time I + past simple'",
-            "hint_en": "It's about time I started exercising again."
+            "hint_en": "It's about time I started exercising again.",
+            "examples_pass": [
+              "It's about time I started exercising again.",
+              "I wish I had more time.",
+              "I wish I knew the answer."
+            ],
+            "examples_fail": [
+              "time (bare noun)",
+              "I want more time (no 'wish')",
+              "I wish I have more time (wrong tense after wish)"
+            ]
           }
         ],
         "closing_cue": "Charlotte fecha com \"Time to act!\" quando obj_3 baterem.",
@@ -786,19 +996,49 @@
             "id": 1,
             "label_en": "Something overdue for you",
             "hidden_prompt": "user uses 'It's (high/about) time I + past simple'",
-            "hint_en": "It's about time I called my grandmother."
+            "hint_en": "It's about time I called my grandmother.",
+            "examples_pass": [
+              "It's about time I called my grandmother.",
+              "I wish I hadn't said that.",
+              "I wish she would call."
+            ],
+            "examples_fail": [
+              "time (bare noun)",
+              "I want more time (no 'wish')",
+              "I wish I have more time (wrong tense after wish)"
+            ]
           },
           {
             "id": 2,
             "label_en": "Another urgency",
             "hidden_prompt": "user uses another 'It's time + past'",
-            "hint_en": "It's high time I learned to cook properly."
+            "hint_en": "It's high time I learned to cook properly.",
+            "examples_pass": [
+              "It's high time I learned to cook properly.",
+              "I wish I had more time.",
+              "I wish I knew the answer."
+            ],
+            "examples_fail": [
+              "time (bare noun)",
+              "I want more time (no 'wish')",
+              "I wish I have more time (wrong tense after wish)"
+            ]
           },
           {
             "id": 3,
             "label_en": "Ask Charlotte",
             "hidden_prompt": "user asks Charlotte more",
-            "hint_en": "Why now for the closet?"
+            "hint_en": "Why now for the closet?",
+            "examples_pass": [
+              "Why now for the closet?",
+              "I wish I knew the answer.",
+              "How about you?"
+            ],
+            "examples_fail": [
+              "time (bare noun)",
+              "I want more time (no 'wish')",
+              "I wish I have more time (wrong tense after wish)"
+            ]
           }
         ],
         "closing_cue": "Charlotte fecha com \"Mutual nudge!\" quando obj_3 baterem.",
@@ -947,19 +1187,49 @@
             "id": 1,
             "label_en": "I wish + would",
             "hidden_prompt": "user uses 'I wish X would + base'",
-            "hint_en": "I wish my dog would stop barking."
+            "hint_en": "I wish my dog would stop barking.",
+            "examples_pass": [
+              "I wish my dog would stop barking.",
+              "I wish I knew the answer.",
+              "I wish I hadn't said that."
+            ],
+            "examples_fail": [
+              "time (bare noun)",
+              "I want more time (no 'wish')",
+              "I wish I have more time (wrong tense after wish)"
+            ]
           },
           {
             "id": 2,
             "label_en": "If only + past",
             "hidden_prompt": "user uses 'If only + past simple/perfect'",
-            "hint_en": "If only I had taken that opportunity."
+            "hint_en": "If only I had taken that opportunity.",
+            "examples_pass": [
+              "If only I had taken that opportunity.",
+              "I wish I hadn't said that.",
+              "I wish she would call."
+            ],
+            "examples_fail": [
+              "time (bare noun)",
+              "I want more time (no 'wish')",
+              "I wish I have more time (wrong tense after wish)"
+            ]
           },
           {
             "id": 3,
             "label_en": "Would rather or It's time",
             "hidden_prompt": "user uses 'I'd rather' or 'It's time'",
-            "hint_en": "It's high time I made a change."
+            "hint_en": "It's high time I made a change.",
+            "examples_pass": [
+              "It's high time I made a change.",
+              "I wish she would call.",
+              "I wish I had more time."
+            ],
+            "examples_fail": [
+              "time (bare noun)",
+              "I want more time (no 'wish')",
+              "I wish I have more time (wrong tense after wish)"
+            ]
           }
         ],
         "closing_cue": "Charlotte fecha com \"Wish fluency!\" quando obj_3 baterem.",
@@ -982,19 +1252,49 @@
             "id": 1,
             "label_en": "Deep wish with 'If only' or 'I wish'",
             "hidden_prompt": "user uses 'If only' or 'I wish' for deep desire",
-            "hint_en": "If only I had been more patient with myself."
+            "hint_en": "If only I had been more patient with myself.",
+            "examples_pass": [
+              "If only I had been more patient with myself.",
+              "I wish she would call.",
+              "I wish I had more time."
+            ],
+            "examples_fail": [
+              "time (bare noun)",
+              "I want more time (no 'wish')",
+              "I wish I have more time (wrong tense after wish)"
+            ]
           },
           {
             "id": 2,
             "label_en": "Preference 'I'd rather' or urgency 'It's time'",
             "hidden_prompt": "user uses 'I'd rather' or 'It's time + past'",
-            "hint_en": "It's about time I forgave myself."
+            "hint_en": "It's about time I forgave myself.",
+            "examples_pass": [
+              "It's about time I forgave myself.",
+              "I wish I hadn't said that.",
+              "I wish she would call."
+            ],
+            "examples_fail": [
+              "time (bare noun)",
+              "I want more time (no 'wish')",
+              "I wish I have more time (wrong tense after wish)"
+            ]
           },
           {
             "id": 3,
             "label_en": "Ask Charlotte",
             "hidden_prompt": "user asks Charlotte more about her courage wish",
-            "hint_en": "What would courage look like?"
+            "hint_en": "What would courage look like?",
+            "examples_pass": [
+              "What would courage look like?",
+              "I wish I hadn't said that.",
+              "How about you?"
+            ],
+            "examples_fail": [
+              "time (bare noun)",
+              "I want more time (no 'wish')",
+              "I wish I have more time (wrong tense after wish)"
+            ]
           }
         ],
         "closing_cue": "Charlotte fecha com \"Honest reflection done!\" quando obj_3 baterem.",

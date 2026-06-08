@@ -155,19 +155,49 @@
             "id": 1,
             "label_en": "Specific past event",
             "hidden_prompt": "user uses past simple with time marker (last year, yesterday, in 2020)",
-            "hint_en": "I went to Italy last year."
+            "hint_en": "I went to Italy last year.",
+            "examples_pass": [
+              "I went to Italy last year.",
+              "I just finished my homework.",
+              "She has already left."
+            ],
+            "examples_fail": [
+              "finished (bare verb)",
+              "I finished it (past simple, no 'just/already/yet')",
+              "I am finishing it (present continuous)"
+            ]
           },
           {
             "id": 2,
             "label_en": "Life experience (PP)",
             "hidden_prompt": "user uses 'I have + past participle' for life experience",
-            "hint_en": "I have visited five countries."
+            "hint_en": "I have visited five countries.",
+            "examples_pass": [
+              "I have visited five countries.",
+              "She has already left.",
+              "I haven't called him yet."
+            ],
+            "examples_fail": [
+              "finished (bare verb)",
+              "I finished it (past simple, no 'just/already/yet')",
+              "I am finishing it (present continuous)"
+            ]
           },
           {
             "id": 3,
             "label_en": "Another distinction",
             "hidden_prompt": "user uses one more past simple or PP with appropriate marker",
-            "hint_en": "I have never tried sushi."
+            "hint_en": "I have never tried sushi.",
+            "examples_pass": [
+              "I have never tried sushi.",
+              "We've been working all day.",
+              "I just finished my homework."
+            ],
+            "examples_fail": [
+              "finished (bare verb)",
+              "I finished it (past simple, no 'just/already/yet')",
+              "I am finishing it (present continuous)"
+            ]
           }
         ],
         "closing_cue": "Charlotte closes with \"Good distinction!\" when obj_3 hits.",
@@ -190,19 +220,49 @@
             "id": 1,
             "label_en": "Specific event",
             "hidden_prompt": "user uses past simple with specific time",
-            "hint_en": "I traveled to Rio last weekend."
+            "hint_en": "I traveled to Rio last weekend.",
+            "examples_pass": [
+              "I traveled to Rio last weekend.",
+              "I haven't called him yet.",
+              "We've been working all day."
+            ],
+            "examples_fail": [
+              "finished (bare verb)",
+              "I finished it (past simple, no 'just/already/yet')",
+              "I am finishing it (present continuous)"
+            ]
           },
           {
             "id": 2,
             "label_en": "General experience",
             "hidden_prompt": "user uses PP for life experience",
-            "hint_en": "I've traveled a lot."
+            "hint_en": "I've traveled a lot.",
+            "examples_pass": [
+              "I've traveled a lot.",
+              "I just finished my homework.",
+              "She has already left."
+            ],
+            "examples_fail": [
+              "finished (bare verb)",
+              "I finished it (past simple, no 'just/already/yet')",
+              "I am finishing it (present continuous)"
+            ]
           },
           {
             "id": 3,
             "label_en": "Ask Charlotte",
             "hidden_prompt": "user asks specific or experience question",
-            "hint_en": "Have you ever been to Brazil?"
+            "hint_en": "Have you ever been to Brazil?",
+            "examples_pass": [
+              "Have you ever been to Brazil?",
+              "We've been working all day.",
+              "How about you?"
+            ],
+            "examples_fail": [
+              "finished (bare verb)",
+              "I finished it (past simple, no 'just/already/yet')",
+              "I am finishing it (present continuous)"
+            ]
           }
         ],
         "closing_cue": "Charlotte closes with \"Tense mastery!\" when obj_3 hits.",
@@ -351,19 +411,49 @@
             "id": 1,
             "label_en": "How long lived (for + duration)",
             "hidden_prompt": "user uses 'I've lived/been there for + duration'",
-            "hint_en": "I've lived here for ten years."
+            "hint_en": "I've lived here for ten years.",
+            "examples_pass": [
+              "I've lived here for ten years.",
+              "We've been working all day.",
+              "I just finished my homework."
+            ],
+            "examples_fail": [
+              "finished (bare verb)",
+              "I finished it (past simple, no 'just/already/yet')",
+              "I am finishing it (present continuous)"
+            ]
           },
           {
             "id": 2,
             "label_en": "How long worked",
             "hidden_prompt": "user uses 'I've worked there for + duration'",
-            "hint_en": "I've worked there for five years."
+            "hint_en": "I've worked there for five years.",
+            "examples_pass": [
+              "I've worked there for five years.",
+              "I haven't called him yet.",
+              "We've been working all day."
+            ],
+            "examples_fail": [
+              "finished (bare verb)",
+              "I finished it (past simple, no 'just/already/yet')",
+              "I am finishing it (present continuous)"
+            ]
           },
           {
             "id": 3,
             "label_en": "Another duration",
             "hidden_prompt": "user uses 'I've + past participle + for + duration'",
-            "hint_en": "I've studied English for two years."
+            "hint_en": "I've studied English for two years.",
+            "examples_pass": [
+              "I've studied English for two years.",
+              "I haven't called him yet.",
+              "We've been working all day."
+            ],
+            "examples_fail": [
+              "finished (bare verb)",
+              "I finished it (past simple, no 'just/already/yet')",
+              "I am finishing it (present continuous)"
+            ]
           }
         ],
         "closing_cue": "Charlotte closes with \"Long-term things!\" when obj_3 hits.",
@@ -386,19 +476,49 @@
             "id": 1,
             "label_en": "How long known",
             "hidden_prompt": "user uses 'I've known + person + for + duration'",
-            "hint_en": "I've known her for ten years."
+            "hint_en": "I've known her for ten years.",
+            "examples_pass": [
+              "I've known her for ten years.",
+              "We've been working all day.",
+              "I just finished my homework."
+            ],
+            "examples_fail": [
+              "finished (bare verb)",
+              "I finished it (past simple, no 'just/already/yet')",
+              "I am finishing it (present continuous)"
+            ]
           },
           {
             "id": 2,
             "label_en": "Another duration",
             "hidden_prompt": "user uses another PP + for",
-            "hint_en": "I've worked here for two years."
+            "hint_en": "I've worked here for two years.",
+            "examples_pass": [
+              "I've worked here for two years.",
+              "I haven't called him yet.",
+              "We've been working all day."
+            ],
+            "examples_fail": [
+              "finished (bare verb)",
+              "I finished it (past simple, no 'just/already/yet')",
+              "I am finishing it (present continuous)"
+            ]
           },
           {
             "id": 3,
             "label_en": "Ask Charlotte",
             "hidden_prompt": "user asks 'How long have you...?'",
-            "hint_en": "How long have you taught?"
+            "hint_en": "How long have you taught?",
+            "examples_pass": [
+              "How long have you taught?",
+              "We've been working all day.",
+              "How about you?"
+            ],
+            "examples_fail": [
+              "finished (bare verb)",
+              "I finished it (past simple, no 'just/already/yet')",
+              "I am finishing it (present continuous)"
+            ]
           }
         ],
         "closing_cue": "Charlotte closes with \"Time flies!\" when obj_3 hits.",
@@ -547,19 +667,49 @@
             "id": 1,
             "label_en": "Something since a year",
             "hidden_prompt": "user uses 'I've + past participle + since + year'",
-            "hint_en": "I've worked here since 2020."
+            "hint_en": "I've worked here since 2020.",
+            "examples_pass": [
+              "I've worked here since 2020.",
+              "We've been working all day.",
+              "I just finished my homework."
+            ],
+            "examples_fail": [
+              "finished (bare verb)",
+              "I finished it (past simple, no 'just/already/yet')",
+              "I am finishing it (present continuous)"
+            ]
           },
           {
             "id": 2,
             "label_en": "Something since month or day",
             "hidden_prompt": "user uses 'since + month/day'",
-            "hint_en": "I've been busy since Monday."
+            "hint_en": "I've been busy since Monday.",
+            "examples_pass": [
+              "I've been busy since Monday.",
+              "I just finished my homework.",
+              "She has already left."
+            ],
+            "examples_fail": [
+              "finished (bare verb)",
+              "I finished it (past simple, no 'just/already/yet')",
+              "I am finishing it (present continuous)"
+            ]
           },
           {
             "id": 3,
             "label_en": "Something since a life event",
             "hidden_prompt": "user uses 'since + clause' (since I was..., since I moved...)",
-            "hint_en": "I've lived here since I was 18."
+            "hint_en": "I've lived here since I was 18.",
+            "examples_pass": [
+              "I've lived here since I was 18.",
+              "I just finished my homework.",
+              "She has already left."
+            ],
+            "examples_fail": [
+              "finished (bare verb)",
+              "I finished it (past simple, no 'just/already/yet')",
+              "I am finishing it (present continuous)"
+            ]
           }
         ],
         "closing_cue": "Charlotte closes with \"Anchored in time!\" when obj_3 hits.",
@@ -582,19 +732,49 @@
             "id": 1,
             "label_en": "Answer with since",
             "hidden_prompt": "user uses 'since + point'",
-            "hint_en": "Since 2022."
+            "hint_en": "Since 2022.",
+            "examples_pass": [
+              "Since 2022.",
+              "I haven't called him yet.",
+              "We've been working all day."
+            ],
+            "examples_fail": [
+              "finished (bare verb)",
+              "I finished it (past simple, no 'just/already/yet')",
+              "I am finishing it (present continuous)"
+            ]
           },
           {
             "id": 2,
             "label_en": "Another with since",
             "hidden_prompt": "user uses 'I've + past participle + since'",
-            "hint_en": "I've lived here since 2015."
+            "hint_en": "I've lived here since 2015.",
+            "examples_pass": [
+              "I've lived here since 2015.",
+              "We've been working all day.",
+              "I just finished my homework."
+            ],
+            "examples_fail": [
+              "finished (bare verb)",
+              "I finished it (past simple, no 'just/already/yet')",
+              "I am finishing it (present continuous)"
+            ]
           },
           {
             "id": 3,
             "label_en": "Ask Charlotte",
             "hidden_prompt": "user asks 'Since when have you...?'",
-            "hint_en": "Since when have you taught?"
+            "hint_en": "Since when have you taught?",
+            "examples_pass": [
+              "Since when have you taught?",
+              "She has already left.",
+              "How about you?"
+            ],
+            "examples_fail": [
+              "finished (bare verb)",
+              "I finished it (past simple, no 'just/already/yet')",
+              "I am finishing it (present continuous)"
+            ]
           }
         ],
         "closing_cue": "Charlotte closes with \"Starting points clear!\" when obj_3 hits.",
@@ -743,19 +923,49 @@
             "id": 1,
             "label_en": "Answer with for + duration",
             "hidden_prompt": "user uses 'For + duration'",
-            "hint_en": "For two years."
+            "hint_en": "For two years.",
+            "examples_pass": [
+              "For two years.",
+              "We've been working all day.",
+              "I just finished my homework."
+            ],
+            "examples_fail": [
+              "finished (bare verb)",
+              "I finished it (past simple, no 'just/already/yet')",
+              "I am finishing it (present continuous)"
+            ]
           },
           {
             "id": 2,
             "label_en": "Another answer with since",
             "hidden_prompt": "user uses 'Since + point'",
-            "hint_en": "Since 2022."
+            "hint_en": "Since 2022.",
+            "examples_pass": [
+              "Since 2022.",
+              "I haven't called him yet.",
+              "We've been working all day."
+            ],
+            "examples_fail": [
+              "finished (bare verb)",
+              "I finished it (past simple, no 'just/already/yet')",
+              "I am finishing it (present continuous)"
+            ]
           },
           {
             "id": 3,
             "label_en": "Ask Charlotte (How long)",
             "hidden_prompt": "user asks 'How long have you + past participle?'",
-            "hint_en": "How long have you been a teacher?"
+            "hint_en": "How long have you been a teacher?",
+            "examples_pass": [
+              "How long have you been a teacher?",
+              "She has already left.",
+              "How about you?"
+            ],
+            "examples_fail": [
+              "finished (bare verb)",
+              "I finished it (past simple, no 'just/already/yet')",
+              "I am finishing it (present continuous)"
+            ]
           }
         ],
         "closing_cue": "Charlotte closes with \"Duration questions covered!\" when obj_3 hits.",
@@ -778,19 +988,49 @@
             "id": 1,
             "label_en": "Answer with for",
             "hidden_prompt": "user uses 'For + duration'",
-            "hint_en": "For three years."
+            "hint_en": "For three years.",
+            "examples_pass": [
+              "For three years.",
+              "She has already left.",
+              "I haven't called him yet."
+            ],
+            "examples_fail": [
+              "finished (bare verb)",
+              "I finished it (past simple, no 'just/already/yet')",
+              "I am finishing it (present continuous)"
+            ]
           },
           {
             "id": 2,
             "label_en": "Another duration",
             "hidden_prompt": "user uses 'for + duration' or 'since + point'",
-            "hint_en": "Since 2021."
+            "hint_en": "Since 2021.",
+            "examples_pass": [
+              "Since 2021.",
+              "She has already left.",
+              "I haven't called him yet."
+            ],
+            "examples_fail": [
+              "finished (bare verb)",
+              "I finished it (past simple, no 'just/already/yet')",
+              "I am finishing it (present continuous)"
+            ]
           },
           {
             "id": 3,
             "label_en": "Ask Charlotte",
             "hidden_prompt": "user asks 'How long have you...?'",
-            "hint_en": "How long have you lived in NYC?"
+            "hint_en": "How long have you lived in NYC?",
+            "examples_pass": [
+              "How long have you lived in NYC?",
+              "We've been working all day.",
+              "How about you?"
+            ],
+            "examples_fail": [
+              "finished (bare verb)",
+              "I finished it (past simple, no 'just/already/yet')",
+              "I am finishing it (present continuous)"
+            ]
           }
         ],
         "closing_cue": "Charlotte closes with \"Time on the books!\" when obj_3 hits.",
@@ -936,19 +1176,49 @@
             "id": 1,
             "label_en": "Specific event (past simple)",
             "hidden_prompt": "user uses past simple + specific time",
-            "hint_en": "I traveled to Italy in 2019."
+            "hint_en": "I traveled to Italy in 2019.",
+            "examples_pass": [
+              "I traveled to Italy in 2019.",
+              "We've been working all day.",
+              "I just finished my homework."
+            ],
+            "examples_fail": [
+              "finished (bare verb)",
+              "I finished it (past simple, no 'just/already/yet')",
+              "I am finishing it (present continuous)"
+            ]
           },
           {
             "id": 2,
             "label_en": "Life experience (PP)",
             "hidden_prompt": "user uses 'I've + past participle' for experience",
-            "hint_en": "I've never been to Asia."
+            "hint_en": "I've never been to Asia.",
+            "examples_pass": [
+              "I've never been to Asia.",
+              "I just finished my homework.",
+              "She has already left."
+            ],
+            "examples_fail": [
+              "finished (bare verb)",
+              "I finished it (past simple, no 'just/already/yet')",
+              "I am finishing it (present continuous)"
+            ]
           },
           {
             "id": 3,
             "label_en": "Integrated question",
             "hidden_prompt": "user asks PP or past simple question",
-            "hint_en": "Have you been to Asia?"
+            "hint_en": "Have you been to Asia?",
+            "examples_pass": [
+              "Have you been to Asia?",
+              "We've been working all day.",
+              "How about you?"
+            ],
+            "examples_fail": [
+              "finished (bare verb)",
+              "I finished it (past simple, no 'just/already/yet')",
+              "I am finishing it (present continuous)"
+            ]
           }
         ],
         "closing_cue": "Charlotte closes with \"Tenses mastered!\" when obj_3 hits.",
@@ -971,19 +1241,49 @@
             "id": 1,
             "label_en": "Specific past event",
             "hidden_prompt": "user uses past simple with time marker",
-            "hint_en": "I got promoted last month."
+            "hint_en": "I got promoted last month.",
+            "examples_pass": [
+              "I got promoted last month.",
+              "She has already left.",
+              "I haven't called him yet."
+            ],
+            "examples_fail": [
+              "finished (bare verb)",
+              "I finished it (past simple, no 'just/already/yet')",
+              "I am finishing it (present continuous)"
+            ]
           },
           {
             "id": 2,
             "label_en": "General experience (PP)",
             "hidden_prompt": "user uses PP for life experience",
-            "hint_en": "I've never had such a good year."
+            "hint_en": "I've never had such a good year.",
+            "examples_pass": [
+              "I've never had such a good year.",
+              "I just finished my homework.",
+              "She has already left."
+            ],
+            "examples_fail": [
+              "finished (bare verb)",
+              "I finished it (past simple, no 'just/already/yet')",
+              "I am finishing it (present continuous)"
+            ]
           },
           {
             "id": 3,
             "label_en": "Ask Charlotte",
             "hidden_prompt": "user asks past simple or PP question",
-            "hint_en": "How about you?"
+            "hint_en": "How about you?",
+            "examples_pass": [
+              "How about you?",
+              "She has already left.",
+              "And you?"
+            ],
+            "examples_fail": [
+              "finished (bare verb)",
+              "I finished it (past simple, no 'just/already/yet')",
+              "I am finishing it (present continuous)"
+            ]
           }
         ],
         "closing_cue": "Charlotte closes with \"Two tenses, one chat!\" when obj_3 hits.",

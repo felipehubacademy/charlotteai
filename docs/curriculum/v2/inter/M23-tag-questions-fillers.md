@@ -111,6 +111,8 @@
    **hidden_prompt**: "user uses 'isn't she?' or 'aren't they?' to confirm"
    **hint_pt**: "Yes! And she's the new project lead, isn't she?"
    **hint_en**: "Yes! And she's the new project lead, isn't she?"
+   **example_pass**: Yes! And she's the new project lead, isn't she? | You know, it's complicated. | You're coming, aren't you?
+   **example_fail**: nice (bare adjective) | She is nice (no tag question) | Is she nice? (full question, not tag)
 
 2. **id**: 2
    **label_pt**: "Tag com 'have / has'"
@@ -118,6 +120,8 @@
    **hidden_prompt**: "user uses 'hasn't' or 'haven't' tag"
    **hint_pt**: "She's been here for two years now, hasn't she?"
    **hint_en**: "She's been here for two years now, hasn't she?"
+   **example_pass**: She's been here for two years now, hasn't she? | She's nice, isn't she? | Well, I think so.
+   **example_fail**: nice (bare adjective) | She is nice (no tag question) | Is she nice? (full question, not tag)
 
 3. **id**: 3
    **label_pt**: "Tag com past 'were/was'"
@@ -125,6 +129,8 @@
    **hidden_prompt**: "user uses 'weren't' or 'wasn't' tag"
    **hint_pt**: "You were at last year's conference too, weren't you?"
    **hint_en**: "You were at last year's conference too, weren't you?"
+   **example_pass**: You were at last year's conference too, weren't you? | Well, I think so. | You know, it's complicated.
+   **example_fail**: nice (bare adjective) | She is nice (no tag question) | Is she nice? (full question, not tag)
 
 **Closing cue**: Charlotte closes with "Small world, isn't it?" once obj_3 lands.
 
@@ -160,6 +166,8 @@
    **hidden_prompt**: "user agrees and makes another tag question"
    **hint_pt**: "Yes! Summers are getting hotter every year, aren't they?"
    **hint_en**: "Yes! Summers are getting hotter every year, aren't they?"
+   **example_pass**: Yes! Summers are getting hotter every year, aren't they? | You're coming, aren't you? | She's nice, isn't she?
+   **example_fail**: nice (bare adjective) | She is nice (no tag question) | Is she nice? (full question, not tag)
 
 2. **id**: 2
    **label_pt**: "Tag com 'have'"
@@ -167,6 +175,8 @@
    **hidden_prompt**: "user uses tag with 'have/has'"
    **hint_pt**: "You've been here a while too, haven't you?"
    **hint_en**: "You've been here a while too, haven't you?"
+   **example_pass**: You've been here a while too, haven't you? | Well, I think so. | You know, it's complicated.
+   **example_fail**: nice (bare adjective) | She is nice (no tag question) | Is she nice? (full question, not tag)
 
 3. **id**: 3
    **label_pt**: "Tag negativa com 'wasn't / weren't'"
@@ -174,6 +184,8 @@
    **hidden_prompt**: "user uses past be negative tag"
    **hint_pt**: "It wasn't this hot last summer, was it?"
    **hint_en**: "It wasn't this hot last summer, was it?"
+   **example_pass**: It wasn't this hot last summer, was it? | You're coming, aren't you? | She's nice, isn't she?
+   **example_fail**: nice (bare adjective) | She is nice (no tag question) | Is she nice? (full question, not tag)
 
 **Closing cue**: Charlotte closes with "It really wasn't!" once obj_3 lands.
 
@@ -276,6 +288,8 @@
    **hidden_prompt**: "user uses 'don't / doesn't' tag"
    **hint_pt**: "Yes! He works at the same company as you, doesn't he?"
    **hint_en**: "Yes! He works at the same company as you, doesn't he?"
+   **example_pass**: Yes! He works at the same company as you, doesn't he? | She's nice, isn't she? | Well, I think so.
+   **example_fail**: nice (bare adjective) | She is nice (no tag question) | Is she nice? (full question, not tag)
 
 2. **id**: 2
    **label_pt**: "Tag passada com 'didn't'"
@@ -283,6 +297,8 @@
    **hidden_prompt**: "user uses 'didn't' past tag"
    **hint_pt**: "He moved here from São Paulo last year, didn't he?"
    **hint_en**: "He moved here from São Paulo last year, didn't he?"
+   **example_pass**: He moved here from São Paulo last year, didn't he? | She's nice, isn't she? | Well, I think so.
+   **example_fail**: nice (bare adjective) | She is nice (no tag question) | Is she nice? (full question, not tag)
 
 3. **id**: 3
    **label_pt**: "Tag negativa → positiva"
@@ -290,6 +306,8 @@
    **hidden_prompt**: "user uses negative statement + positive tag"
    **hint_pt**: "He doesn't speak Portuguese with you, does he?"
    **hint_en**: "He doesn't speak Portuguese with you, does he?"
+   **example_pass**: He doesn't speak Portuguese with you, does he? | You're coming, aren't you? | She's nice, isn't she?
+   **example_fail**: nice (bare adjective) | She is nice (no tag question) | Is she nice? (full question, not tag)
 
 **Closing cue**: Charlotte closes with "Always nice catching up." once obj_3 lands.
 
@@ -325,6 +343,8 @@
    **hidden_prompt**: "user uses 'didn't she?' or 'doesn't she?'"
    **hint_pt**: "Really? She just got promoted last year, didn't she?"
    **hint_en**: "Really? She just got promoted last year, didn't she?"
+   **example_pass**: Really? She just got promoted last year, didn't she? | You're coming, aren't you? | She's nice, isn't she?
+   **example_fail**: nice (bare adjective) | She is nice (no tag question) | Is she nice? (full question, not tag)
 
 2. **id**: 2
    **label_pt**: "Tag com 'doesn't' presente"
@@ -332,6 +352,8 @@
    **hidden_prompt**: "user uses 'doesn't' present tag"
    **hint_pt**: "She works really long hours, doesn't she?"
    **hint_en**: "She works really long hours, doesn't she?"
+   **example_pass**: She works really long hours, doesn't she? | You know, it's complicated. | You're coming, aren't you?
+   **example_fail**: nice (bare adjective) | She is nice (no tag question) | Is she nice? (full question, not tag)
 
 3. **id**: 3
    **label_pt**: "Tag negativa pra pergunta"
@@ -339,6 +361,8 @@
    **hidden_prompt**: "user uses 'don't / doesn't' + positive tag pattern"
    **hint_pt**: "She doesn't take breaks much, does she?"
    **hint_en**: "She doesn't take breaks much, does she?"
+   **example_pass**: She doesn't take breaks much, does she? | You're coming, aren't you? | She's nice, isn't she?
+   **example_fail**: nice (bare adjective) | She is nice (no tag question) | Is she nice? (full question, not tag)
 
 **Closing cue**: Charlotte closes with "She deserves it, honestly." once obj_3 lands.
 
@@ -442,6 +466,8 @@
    **hidden_prompt**: "user uses 'can't' or 'can' tag"
    **hint_pt**: "Yes! And Marco's coming too, isn't he? He said he could drive."
    **hint_en**: "Yes! And Marco's coming too, isn't he? He said he could drive."
+   **example_pass**: Yes! And Marco's coming too, isn't he? He said he could drive. | You know, it's complicated. | You're coming, aren't you?
+   **example_fail**: nice (bare adjective) | She is nice (no tag question) | Is she nice? (full question, not tag)
 
 2. **id**: 2
    **label_pt**: "Tag com 'should / shouldn't'"
@@ -449,6 +475,8 @@
    **hidden_prompt**: "user uses 'should / shouldn't' tag"
    **hint_pt**: "We should bring something to drink, shouldn't we?"
    **hint_en**: "We should bring something to drink, shouldn't we?"
+   **example_pass**: We should bring something to drink, shouldn't we? | She's nice, isn't she? | Well, I think so.
+   **example_fail**: nice (bare adjective) | She is nice (no tag question) | Is she nice? (full question, not tag)
 
 3. **id**: 3
    **label_pt**: "Tag com 'will / won't'"
@@ -456,6 +484,8 @@
    **hidden_prompt**: "user uses 'will / won't' future tag"
    **hint_pt**: "It'll be a long evening, won't it?"
    **hint_en**: "It'll be a long evening, won't it?"
+   **example_pass**: It'll be a long evening, won't it? | You know, it's complicated. | You're coming, aren't you?
+   **example_fail**: nice (bare adjective) | She is nice (no tag question) | Is she nice? (full question, not tag)
 
 **Closing cue**: Charlotte closes with "Saturday's going to be great!" once obj_3 lands.
 
@@ -491,6 +521,8 @@
    **hidden_prompt**: "user uses modal tag to accept"
    **hint_pt**: "Yes! I should bring wine, shouldn't I?"
    **hint_en**: "Yes! I should bring wine, shouldn't I?"
+   **example_pass**: Yes! I should bring wine, shouldn't I? | You know, it's complicated. | You're coming, aren't you?
+   **example_fail**: nice (bare adjective) | She is nice (no tag question) | Is she nice? (full question, not tag)
 
 2. **id**: 2
    **label_pt**: "Tag com 'can'"
@@ -498,6 +530,8 @@
    **hidden_prompt**: "user uses 'can/can't' tag"
    **hint_pt**: "Pedro can come too, can't he?"
    **hint_en**: "Pedro can come too, can't he?"
+   **example_pass**: Pedro can come too, can't he? | You know, it's complicated. | You're coming, aren't you?
+   **example_fail**: nice (bare adjective) | She is nice (no tag question) | Is she nice? (full question, not tag)
 
 3. **id**: 3
    **label_pt**: "Tag com 'would'"
@@ -505,6 +539,8 @@
    **hidden_prompt**: "user uses 'would/wouldn't' tag"
    **hint_pt**: "It wouldn't be a problem if I came a bit late, would it?"
    **hint_en**: "It wouldn't be a problem if I came a bit late, would it?"
+   **example_pass**: It wouldn't be a problem if I came a bit late, would it? | She's nice, isn't she? | Well, I think so.
+   **example_fail**: nice (bare adjective) | She is nice (no tag question) | Is she nice? (full question, not tag)
 
 **Closing cue**: Charlotte closes with "Whenever you can — see you then!" once obj_3 lands.
 
@@ -608,6 +644,8 @@
    **hidden_prompt**: "user uses 'aren't I?' tag"
    **hint_pt**: "Sure! I'm always up for a walk, aren't I?"
    **hint_en**: "Sure! I'm always up for a walk, aren't I?"
+   **example_pass**: Sure! I'm always up for a walk, aren't I? | You know, it's complicated. | You're coming, aren't you?
+   **example_fail**: nice (bare adjective) | She is nice (no tag question) | Is she nice? (full question, not tag)
 
 2. **id**: 2
    **label_pt**: "Imperativo com 'will you?'"
@@ -615,6 +653,8 @@
    **hidden_prompt**: "user uses imperative + 'will you?' or 'would you?'"
    **hint_pt**: "Just give me ten minutes to finish this, will you?"
    **hint_en**: "Just give me ten minutes to finish this, will you?"
+   **example_pass**: Just give me ten minutes to finish this, will you? | You know, it's complicated. | You're coming, aren't you?
+   **example_fail**: nice (bare adjective) | She is nice (no tag question) | Is she nice? (full question, not tag)
 
 3. **id**: 3
    **label_pt**: "Tag com sujeito indefinido"
@@ -622,6 +662,8 @@
    **hidden_prompt**: "user uses 'nobody / everyone / somebody' with tag"
    **hint_pt**: "Nobody else wants to come, do they?"
    **hint_en**: "Nobody else wants to come, do they?"
+   **example_pass**: Nobody else wants to come, do they? | You're coming, aren't you? | She's nice, isn't she?
+   **example_fail**: nice (bare adjective) | She is nice (no tag question) | Is she nice? (full question, not tag)
 
 **Closing cue**: Charlotte closes with "Just us then — perfect!" once obj_3 lands.
 
@@ -658,6 +700,8 @@
    **hidden_prompt**: "user uses 'aren't I?' in a self-aware way"
    **hint_pt**: "Hey, I'm always on time, aren't I? Mostly?"
    **hint_en**: "Hey, I'm always on time, aren't I? Mostly?"
+   **example_pass**: Hey, I'm always on time, aren't I? Mostly? | You're coming, aren't you? | She's nice, isn't she?
+   **example_fail**: nice (bare adjective) | She is nice (no tag question) | Is she nice? (full question, not tag)
 
 2. **id**: 2
    **label_pt**: "Tag indefinida — 'nobody / everyone'"
@@ -665,6 +709,8 @@
    **hidden_prompt**: "user uses indefinite subject + tag"
    **hint_pt**: "Everyone runs a bit late sometimes, don't they?"
    **hint_en**: "Everyone runs a bit late sometimes, don't they?"
+   **example_pass**: Everyone runs a bit late sometimes, don't they? | Well, I think so. | You know, it's complicated.
+   **example_fail**: nice (bare adjective) | She is nice (no tag question) | Is she nice? (full question, not tag)
 
 3. **id**: 3
    **label_pt**: "Tag com 'let's'"
@@ -672,6 +718,8 @@
    **hidden_prompt**: "user uses 'let's...shall we?'"
    **hint_pt**: "Let's just order, shall we?"
    **hint_en**: "Let's just order, shall we?"
+   **example_pass**: Let's just order, shall we? | You're coming, aren't you? | She's nice, isn't she?
+   **example_fail**: nice (bare adjective) | She is nice (no tag question) | Is she nice? (full question, not tag)
 
 **Closing cue**: Charlotte closes with "Saved by the menu!" once obj_3 lands.
 
@@ -776,6 +824,8 @@
    **hidden_prompt**: "user uses 'Well' to open"
    **hint_pt**: "Well, I think it's interesting, but, you know, a bit ambitious."
    **hint_en**: "Well, I think it's interesting, but, you know, a bit ambitious."
+   **example_pass**: Well, I think it's interesting, but, you know, a bit ambitious. | You're coming, aren't you? | She's nice, isn't she?
+   **example_fail**: nice (bare adjective) | She is nice (no tag question) | Is she nice? (full question, not tag)
 
 2. **id**: 2
    **label_pt**: "Filler 'I mean' para esclarecer"
@@ -783,6 +833,8 @@
    **hidden_prompt**: "user uses 'I mean' to clarify"
    **hint_pt**: "I mean, the deadline is kind of tight, isn't it?"
    **hint_en**: "I mean, the deadline is kind of tight, isn't it?"
+   **example_pass**: I mean, the deadline is kind of tight, isn't it? | She's nice, isn't she? | Well, I think so.
+   **example_fail**: nice (bare adjective) | She is nice (no tag question) | Is she nice? (full question, not tag)
 
 3. **id**: 3
    **label_pt**: "Tag question com 'aren't they?' ou similar"
@@ -790,6 +842,8 @@
    **hidden_prompt**: "user uses a tag question naturally"
    **hint_pt**: "But the team is really capable, aren't they?"
    **hint_en**: "But the team is really capable, aren't they?"
+   **example_pass**: But the team is really capable, aren't they? | Well, I think so. | You know, it's complicated.
+   **example_fail**: nice (bare adjective) | She is nice (no tag question) | Is she nice? (full question, not tag)
 
 **Closing cue**: Charlotte closes with "Yeah, they really are." once obj_3 lands.
 
@@ -825,6 +879,8 @@
    **hidden_prompt**: "user uses 'Well' or 'I mean' opener"
    **hint_pt**: "Well, I actually liked it more than I expected."
    **hint_en**: "Well, I actually liked it more than I expected."
+   **example_pass**: Well, I actually liked it more than I expected. | She's nice, isn't she? | Well, I think so.
+   **example_fail**: nice (bare adjective) | She is nice (no tag question) | Is she nice? (full question, not tag)
 
 2. **id**: 2
    **label_pt**: "Hedge com 'kind of' ou 'sort of'"
@@ -832,6 +888,8 @@
    **hidden_prompt**: "user uses 'kind of' or 'sort of' hedge"
    **hint_pt**: "The ending was kind of confusing, wasn't it?"
    **hint_en**: "The ending was kind of confusing, wasn't it?"
+   **example_pass**: The ending was kind of confusing, wasn't it? | You're coming, aren't you? | She's nice, isn't she?
+   **example_fail**: nice (bare adjective) | She is nice (no tag question) | Is she nice? (full question, not tag)
 
 3. **id**: 3
    **label_pt**: "Tag question pra confirmar"
@@ -839,6 +897,8 @@
    **hidden_prompt**: "user uses a tag question"
    **hint_pt**: "But the soundtrack was amazing, wasn't it?"
    **hint_en**: "But the soundtrack was amazing, wasn't it?"
+   **example_pass**: But the soundtrack was amazing, wasn't it? | You're coming, aren't you? | She's nice, isn't she?
+   **example_fail**: nice (bare adjective) | She is nice (no tag question) | Is she nice? (full question, not tag)
 
 **Closing cue**: Charlotte closes with "Best part by far." once obj_3 lands.
 
