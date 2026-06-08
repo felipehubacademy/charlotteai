@@ -870,7 +870,7 @@
 1. **id**: 1
    **label_pt**: "Pedir pausa pra processar"
    **label_en**: "Ask for processing pause"
-   **hidden_prompt**: "AFTER Charlotte's opening question, user asks for time with 'Wait', 'Hold on', 'Let me think', 'Just a sec', etc."
+   **hidden_prompt**: "AFTER Charlotte's opening question, user requests pause with 'Wait', 'Hold on', 'Let me think', 'Just a sec', etc."
    **hint_pt**: "Wait, let me think about this."
    **hint_en**: "Wait, let me think about this."
    **example_pass**: Wait, let me think about this. | Hold on a second. | Let me think.
