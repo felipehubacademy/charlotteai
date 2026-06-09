@@ -126,7 +126,10 @@
             "examples_pass": [
               "It was, you know, the kind of meeting where everyone had something to say and nobody was actually listening.",
               "Honestly, that's a total game-changer.",
-              "I'm not gonna lie, it threw me off completely."
+              "I'm not gonna lie, it threw me off completely.",
+              "She's, you know, the sort of manager who reads the room before saying anything herself.",
+              "It's, you know, one of those situations where the right answer is also the least convenient one.",
+              "He's, you know, brilliant — but in a way that takes a while to notice."
             ],
             "examples_fail": [
               "cool (bare slang, no sentence)",
@@ -142,7 +145,10 @@
             "examples_pass": [
               "I mean, the project wasn't bad — it just wasn't what anyone hoped it would be.",
               "That's super interesting, actually.",
-              "To be fair, it could've gone either way."
+              "To be fair, it could've gone either way.",
+              "I mean, she's a strong candidate, but she's clearly being courted by three other companies.",
+              "I mean, we could push the launch back, but then we'd lose the entire holiday window.",
+              "I mean, the data is good — the question is whether anyone in leadership is going to actually act on it."
             ],
             "examples_fail": [
               "cool (bare slang, no sentence)",
@@ -158,7 +164,10 @@
             "examples_pass": [
               "It's sort of one of those situations where there isn't a right answer, just a less wrong one.",
               "I'm low-key obsessed with that show.",
-              "It's kind of a big deal, ngl."
+              "It's kind of a big deal, ngl.",
+              "She kind of inherited the role without anyone formally giving it to her.",
+              "It was kind of a strange meeting — friendly on the surface, but no one really said what they meant.",
+              "He's sort of running the team now, even though nobody has officially announced it."
             ],
             "examples_fail": [
               "cool (bare slang, no sentence)",
@@ -191,7 +200,11 @@
             "examples_pass": [
               "I mean, week three is when those problems usually surface — early enough to be visible, late enough that pulling back feels expensive.",
               "Honestly, that's a total game-changer.",
-              "I'm not gonna lie, it threw me off completely."
+              "I'm not gonna lie, it threw me off completely.",
+              "I mean, the project wasn't bad — it just wasn't what anyone hoped it would be.",
+              "I mean, she's a strong candidate, but she's clearly being courted by three other companies.",
+              "I mean, we could push the launch back, but then we'd lose the entire holiday window.",
+              "I mean, the data is good — the question is whether anyone in leadership is going to actually act on it."
             ],
             "examples_fail": [
               "cool (bare slang, no sentence)",
@@ -207,7 +220,10 @@
             "examples_pass": [
               "It's sort of the design version of compound interest — small wrong calls in the first week add up by the third.",
               "That's super interesting, actually.",
-              "To be fair, it could've gone either way."
+              "To be fair, it could've gone either way.",
+              "It's kind of one of those situations where the right answer is also the most uncomfortable one.",
+              "It's sort of like managing a team — you don't really know what works until you try it on a real project.",
+              "It's kind of frustrating, honestly — we keep ending up in the same conversation in slightly different rooms."
             ],
             "examples_fail": [
               "cool (bare slang, no sentence)",
@@ -223,7 +239,12 @@
             "examples_pass": [
               "What was the one decision that did it?",
               "I'm low-key obsessed with that show.",
-              "It's kind of a big deal, ngl."
+              "It's kind of a big deal, ngl.",
+              "And you?",
+              "What about you?",
+              "How about yourself?",
+              "Same for you?",
+              "What's your take on it?"
             ],
             "examples_fail": [
               "cool (bare slang, no sentence)",

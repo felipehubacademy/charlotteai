@@ -123,7 +123,11 @@
             "examples_pass": [
               "It is reported that the minister will step down by the end of the month.",
               "The report has been reviewed by the committee.",
-              "The decision should have been made earlier."
+              "The decision should have been made earlier.",
+              "It is reported that the regulator will issue new guidance before the quarter ends.",
+              "It is reported that the company has begun preliminary talks with two potential acquirers.",
+              "It has been reported that several senior executives are considering early retirement.",
+              "It is widely reported that the policy change will take effect by year-end."
             ],
             "examples_fail": [
               "built (bare participle, no agent or structure)",
@@ -139,7 +143,11 @@
             "examples_pass": [
               "It is believed that the suspect crossed the border two days ago.",
               "The project is said to have been delayed.",
-              "She had her car repaired last week."
+              "She had her car repaired last week.",
+              "It is believed that the breach originated from a third-party vendor.",
+              "It is believed that fewer than ten people knew about the merger in advance.",
+              "It is widely believed that the founder will step down within the next twelve months.",
+              "It is believed that the manuscript dates from the early 1700s."
             ],
             "examples_fail": [
               "built (bare participle, no agent or structure)",
@@ -155,7 +163,11 @@
             "examples_pass": [
               "It cannot be denied that the system has been failing for years.",
               "The contract was signed by both parties.",
-              "Mistakes were made during the process."
+              "Mistakes were made during the process.",
+              "It cannot be denied that the new strategy has produced uneven results.",
+              "It has been argued that the original timeline was always unrealistic.",
+              "It is generally accepted that the field has shifted significantly in the last five years.",
+              "It is understood that several board members opposed the decision behind closed doors."
             ],
             "examples_fail": [
               "built (bare participle, no agent or structure)",
@@ -188,7 +200,11 @@
             "examples_pass": [
               "It is believed that most jobs will change rather than disappear.",
               "The report has been reviewed by the committee.",
-              "The decision should have been made earlier."
+              "The decision should have been made earlier.",
+              "It is rumoured that the founder is planning to step down by the end of the year.",
+              "It is widely accepted that the original framework needs significant updating.",
+              "It is generally understood that performance reviews will be redesigned next quarter.",
+              "It is believed that the leak came from inside the company."
             ],
             "examples_fail": [
               "built (bare participle, no agent or structure)",
@@ -204,7 +220,10 @@
             "examples_pass": [
               "It cannot be denied that adaptation will be uneven across industries.",
               "The project is said to have been delayed.",
-              "She had her car repaired last week."
+              "She had her car repaired last week.",
+              "It cannot be denied that the system has been failing quietly for years.",
+              "It cannot be denied that the original framework no longer fits the data.",
+              "It cannot be denied that public trust has eroded significantly over the past decade."
             ],
             "examples_fail": [
               "built (bare participle, no agent or structure)",
@@ -220,7 +239,12 @@
             "examples_pass": [
               "What's the outlook in teaching?",
               "The contract was signed by both parties.",
-              "Mistakes were made during the process."
+              "Mistakes were made during the process.",
+              "And you?",
+              "What about you?",
+              "How about yourself?",
+              "Same for you?",
+              "What's your take on it?"
             ],
             "examples_fail": [
               "built (bare participle, no agent or structure)",
@@ -337,7 +361,11 @@
             "examples_pass": [
               "The new minister is said to be a careful negotiator.",
               "The report has been reviewed by the committee.",
-              "The decision should have been made earlier."
+              "The decision should have been made earlier.",
+              "The chief executive is said to be considering an early exit.",
+              "She is widely believed to be the strongest negotiator on the leadership team.",
+              "The minister is said to be deeply opposed to the new directive.",
+              "He is reported to be one of the few people the founder still trusts."
             ],
             "examples_fail": [
               "built (bare participle, no agent or structure)",
@@ -353,7 +381,11 @@
             "examples_pass": [
               "The executive is believed to have signed off on the deal last spring.",
               "The project is said to have been delayed.",
-              "She had her car repaired last week."
+              "She had her car repaired last week.",
+              "The executive is believed to have approved the transfer last spring.",
+              "She is thought to have been involved in the early planning stages.",
+              "The board is said to have rejected an earlier version of the proposal.",
+              "He is believed to have authored the original strategy document in 2019."
             ],
             "examples_fail": [
               "built (bare participle, no agent or structure)",
@@ -369,7 +401,11 @@
             "examples_pass": [
               "The board is reported to be reviewing all senior contracts.",
               "The contract was signed by both parties.",
-              "Mistakes were made during the process."
+              "Mistakes were made during the process.",
+              "The company is reported to be exploring acquisitions in two new markets.",
+              "Several investors are said to be reconsidering their commitments.",
+              "The CFO is thought to be preparing for a difficult earnings call.",
+              "The team is reported to be working around the clock to meet the deadline."
             ],
             "examples_fail": [
               "built (bare participle, no agent or structure)",
@@ -402,7 +438,11 @@
             "examples_pass": [
               "Two of the cofounders are thought to be against the sale.",
               "The report has been reviewed by the committee.",
-              "The decision should have been made earlier."
+              "The decision should have been made earlier.",
+              "Two of the co-founders are thought to be against the sale.",
+              "The new minister is said to be a careful negotiator behind closed doors.",
+              "Several senior executives are reported to be considering early retirement.",
+              "She is widely thought to be the strongest internal candidate for the open role."
             ],
             "examples_fail": [
               "built (bare participle, no agent or structure)",
@@ -418,7 +458,11 @@
             "examples_pass": [
               "An early investor is reported to have already exited his position.",
               "The project is said to have been delayed.",
-              "She had her car repaired last week."
+              "She had her car repaired last week.",
+              "An early investor is reported to have exited his position quietly last quarter.",
+              "The executive is believed to have signed off on the transfer last spring.",
+              "She is thought to have been involved in the early planning stages.",
+              "The board is said to have considered a more aggressive version of the strategy."
             ],
             "examples_fail": [
               "built (bare participle, no agent or structure)",
@@ -434,7 +478,12 @@
             "examples_pass": [
               "Any names yet?",
               "The contract was signed by both parties.",
-              "Mistakes were made during the process."
+              "Mistakes were made during the process.",
+              "And you?",
+              "What about you?",
+              "How about yourself?",
+              "Same for you?",
+              "What's your take on it?"
             ],
             "examples_fail": [
               "built (bare participle, no agent or structure)",
@@ -757,7 +806,11 @@
             "examples_pass": [
               "I had my bag snatched at a café in Lisbon.",
               "The report has been reviewed by the committee.",
-              "The decision should have been made earlier."
+              "The decision should have been made earlier.",
+              "I had my bag stolen on the metro during rush hour.",
+              "I had my wallet pickpocketed at the train station in Rome.",
+              "I had my passport taken at the border for a routine check.",
+              "I had my phone snatched right out of my hand on the street."
             ],
             "examples_fail": [
               "built (bare participle, no agent or structure)",
@@ -773,7 +826,11 @@
             "examples_pass": [
               "I had my flight rerouted to a different city.",
               "The project is said to have been delayed.",
-              "She had her car repaired last week."
+              "She had her car repaired last week.",
+              "I had my flight cancelled twice in the same week.",
+              "I had my booking lost by the hotel and ended up in a worse room.",
+              "I got my reservation rebooked at the last minute when the restaurant overbooked.",
+              "I had my whole evening ruined by a single bad phone call."
             ],
             "examples_fail": [
               "built (bare participle, no agent or structure)",
@@ -789,7 +846,11 @@
             "examples_pass": [
               "I got my laptop screen cracked when my bag fell.",
               "The contract was signed by both parties.",
-              "Mistakes were made during the process."
+              "Mistakes were made during the process.",
+              "I got my phone screen cracked when I dropped it on the stone floor.",
+              "I got my car scratched in the parking lot by someone who didn't leave a note.",
+              "I got my luggage damaged on the connecting flight.",
+              "I got my new glasses broken on the very first day."
             ],
             "examples_fail": [
               "built (bare participle, no agent or structure)",
@@ -822,7 +883,11 @@
             "examples_pass": [
               "I had my package marked as delivered when it never arrived.",
               "The report has been reviewed by the committee.",
-              "The decision should have been made earlier."
+              "The decision should have been made earlier.",
+              "I had my package marked as delivered when it had never actually arrived.",
+              "I had my reservation cancelled at the last minute without any real explanation.",
+              "I had my flight rerouted three times before I finally landed in the right city.",
+              "I got my luggage damaged on the connecting flight, and the airline barely acknowledged it."
             ],
             "examples_fail": [
               "built (bare participle, no agent or structure)",
@@ -838,7 +903,11 @@
             "examples_pass": [
               "I had my reservation cancelled at the last minute.",
               "The project is said to have been delayed.",
-              "She had her car repaired last week."
+              "She had her car repaired last week.",
+              "I had my package marked as delivered when it had never actually arrived.",
+              "I had my reservation cancelled at the last minute without any real explanation.",
+              "I had my flight rerouted three times before I finally landed in the right city.",
+              "I got my luggage damaged on the connecting flight, and the airline barely acknowledged it."
             ],
             "examples_fail": [
               "built (bare participle, no agent or structure)",
@@ -854,7 +923,12 @@
             "examples_pass": [
               "How did you sort the passport?",
               "The contract was signed by both parties.",
-              "Mistakes were made during the process."
+              "Mistakes were made during the process.",
+              "And you?",
+              "What about you?",
+              "How about yourself?",
+              "Same for you?",
+              "What's your take on it?"
             ],
             "examples_fail": [
               "built (bare participle, no agent or structure)",

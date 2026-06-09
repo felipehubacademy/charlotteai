@@ -768,7 +768,11 @@
             "examples_pass": [
               "It wasn't until I changed jobs that I understood how unhappy I had been.",
               "It was her dedication that impressed me most.",
-              "What I really value is honest feedback."
+              "What I really value is honest feedback.",
+              "It wasn't until I read the whole report that I understood what they were proposing.",
+              "It wasn't until I started teaching that I really learned the material myself.",
+              "It wasn't until the third meeting that anyone admitted the project was in trouble.",
+              "It wasn't until I lost the client that I realised how much I'd been coasting."
             ],
             "examples_fail": [
               "money (bare word, no cleft structure)",
@@ -784,7 +788,11 @@
             "examples_pass": [
               "It wasn't until 30 that I learned to cook properly.",
               "It was in 2010 that we first met.",
-              "What surprised me was his calm reaction."
+              "What surprised me was his calm reaction.",
+              "It wasn't until my forties that I learned how to take a real holiday.",
+              "It wasn't until last winter that the doctor finally gave me a proper diagnosis.",
+              "It wasn't until 2018 that the company turned its first real profit.",
+              "It wasn't until after the move that we noticed how much lighter we both felt."
             ],
             "examples_fail": [
               "money (bare word, no cleft structure)",
@@ -800,7 +808,11 @@
             "examples_pass": [
               "It wasn't until last week that my brother told me the whole story.",
               "It is the silence that bothers me, not the noise.",
-              "All I want is a quiet weekend."
+              "All I want is a quiet weekend.",
+              "It wasn't until I read the whole report that I understood what they were proposing.",
+              "It wasn't until I started teaching that I really learned the material myself.",
+              "It wasn't until the third meeting that anyone admitted the project was in trouble.",
+              "It wasn't until I lost the client that I realised how much I'd been coasting."
             ],
             "examples_fail": [
               "money (bare word, no cleft structure)",
@@ -833,7 +845,11 @@
             "examples_pass": [
               "It wasn't until I lost a friend that I started replying to texts on the same day.",
               "It was her dedication that impressed me most.",
-              "What I really value is honest feedback."
+              "What I really value is honest feedback.",
+              "It wasn't until I left the country that I really appreciated how much it had shaped me.",
+              "It wasn't until I quit that I realised how unhappy the job had been making me.",
+              "It wasn't until I changed manager that I started enjoying my work again.",
+              "It wasn't until my forties that I finally learned to take real holidays."
             ],
             "examples_fail": [
               "money (bare word, no cleft structure)",
@@ -849,7 +865,11 @@
             "examples_pass": [
               "It wasn't until I tried therapy that I noticed how angry I was.",
               "It was in 2010 that we first met.",
-              "What surprised me was his calm reaction."
+              "What surprised me was his calm reaction.",
+              "It wasn't until I left the country that I really appreciated how much it had shaped me.",
+              "It wasn't until I quit that I realised how unhappy the job had been making me.",
+              "It wasn't until I changed manager that I started enjoying my work again.",
+              "It wasn't until my forties that I finally learned to take real holidays."
             ],
             "examples_fail": [
               "money (bare word, no cleft structure)",
@@ -865,7 +885,12 @@
             "examples_pass": [
               "What flipped the switch on sleep for you?",
               "It is the silence that bothers me, not the noise.",
-              "All I want is a quiet weekend."
+              "All I want is a quiet weekend.",
+              "And you?",
+              "What about you?",
+              "How about yourself?",
+              "Same for you?",
+              "What's your take on it?"
             ],
             "examples_fail": [
               "money (bare word, no cleft structure)",
@@ -982,7 +1007,11 @@
             "examples_pass": [
               "The reason I started running is that my back wouldn't stop hurting.",
               "It was her dedication that impressed me most.",
-              "What I really value is honest feedback."
+              "What I really value is honest feedback.",
+              "The reason I left wasn't the salary — it was the silence after every difficult question.",
+              "The reason this is taking so long is that no two people have agreed on the brief.",
+              "The reason she's so good at this is that she's done it for fifteen years quietly.",
+              "The reason the project failed is that nobody owned the integration layer."
             ],
             "examples_fail": [
               "money (bare word, no cleft structure)",
@@ -998,7 +1027,11 @@
             "examples_pass": [
               "The thing that kept me going was a single email from a stranger.",
               "It was in 2010 that we first met.",
-              "What surprised me was his calm reaction."
+              "What surprised me was his calm reaction.",
+              "The thing that kept me going through that year was a single line my therapist said.",
+              "The thing that broke the team wasn't workload — it was the lack of honest feedback.",
+              "The thing that finally made the difference was hiring one senior engineer.",
+              "The thing that surprised everyone was how quickly she rebuilt the team after the layoffs."
             ],
             "examples_fail": [
               "money (bare word, no cleft structure)",
@@ -1014,7 +1047,11 @@
             "examples_pass": [
               "The time when I felt most myself was the year I lived alone in Lisbon.",
               "It is the silence that bothers me, not the noise.",
-              "All I want is a quiet weekend."
+              "All I want is a quiet weekend.",
+              "The time when I felt most alive was the year I lived above a bakery in Lisbon.",
+              "The place where I think most clearly is a small park near my old apartment.",
+              "The moment when everything shifted was the morning I finally said no.",
+              "The year when the whole company turned around was the one nobody wants to talk about anymore."
             ],
             "examples_fail": [
               "money (bare word, no cleft structure)",
@@ -1047,7 +1084,11 @@
             "examples_pass": [
               "The reason I write every morning is that I think better when nobody's watching.",
               "It was her dedication that impressed me most.",
-              "What I really value is honest feedback."
+              "What I really value is honest feedback.",
+              "The reason I left wasn't the salary — it was the silence after every difficult question.",
+              "The reason she's so good at this is that she's been doing it quietly for fifteen years.",
+              "The reason the project failed is that nobody owned the integration layer end-to-end.",
+              "The reason this is taking so long is that no two people have agreed on the brief yet."
             ],
             "examples_fail": [
               "money (bare word, no cleft structure)",
@@ -1063,7 +1104,11 @@
             "examples_pass": [
               "The thing that changed me most was my first proper failure.",
               "It was in 2010 that we first met.",
-              "What surprised me was his calm reaction."
+              "What surprised me was his calm reaction.",
+              "The thing that kept me going through that year was a single line my therapist said.",
+              "The thing that broke the team wasn't workload — it was the lack of honest feedback.",
+              "The thing that finally made the difference was hiring one senior engineer.",
+              "The thing that surprised everyone was how quickly she rebuilt the team after the layoffs."
             ],
             "examples_fail": [
               "money (bare word, no cleft structure)",
@@ -1079,7 +1124,12 @@
             "examples_pass": [
               "Who was the teacher?",
               "It is the silence that bothers me, not the noise.",
-              "All I want is a quiet weekend."
+              "All I want is a quiet weekend.",
+              "And you?",
+              "What about you?",
+              "How about yourself?",
+              "Same for you?",
+              "What's your take on it?"
             ],
             "examples_fail": [
               "money (bare word, no cleft structure)",

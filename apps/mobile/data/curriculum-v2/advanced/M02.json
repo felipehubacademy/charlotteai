@@ -126,7 +126,11 @@
             "examples_pass": [
               "Never have I tasted coffee that good.",
               "Never have I seen such a beautiful sunset.",
-              "Rarely does she complain about her workload."
+              "Rarely does she complain about her workload.",
+              "Never have I felt so out of place at a conference.",
+              "Never have I read a novel that landed with such precision.",
+              "Never have I worked with a team this aligned from day one.",
+              "Never in my life have I tasted a wine quite like that."
             ],
             "examples_fail": [
               "never seen (bare fragment, no inversion)",
@@ -142,7 +146,11 @@
             "examples_pass": [
               "Rarely do I feel this prepared for a meeting.",
               "Not only did he finish on time, but he also exceeded the target.",
-              "Hardly had we arrived when the storm broke."
+              "Hardly had we arrived when the storm broke.",
+              "Seldom does an opportunity like this come along twice in one career.",
+              "Rarely do I see a candidate this prepared on a first interview.",
+              "Seldom have I encountered a regulation written this clearly.",
+              "Rarely does a single conversation change my mind, but that one did."
             ],
             "examples_fail": [
               "never seen (bare fragment, no inversion)",
@@ -158,7 +166,11 @@
             "examples_pass": [
               "Hardly ever does my dog sleep through a thunderstorm.",
               "Seldom have I encountered such generosity.",
-              "Little did I know what was coming next."
+              "Little did I know what was coming next.",
+              "Hardly ever do I take calls before nine in the morning.",
+              "Hardly ever does my brother return a text within the same week.",
+              "Hardly ever have I seen a launch this smooth.",
+              "Hardly ever does the team disagree this loudly in front of the client."
             ],
             "examples_fail": [
               "never seen (bare fragment, no inversion)",
@@ -191,7 +203,11 @@
             "examples_pass": [
               "Never have I cried so much at a film.",
               "Never have I seen such a beautiful sunset.",
-              "Rarely does she complain about her workload."
+              "Rarely does she complain about her workload.",
+              "Never have I felt so out of place at a conference.",
+              "Never have I read a novel that landed with such precision.",
+              "Never have I worked with a team this aligned from day one.",
+              "Never in my life have I tasted a wine quite like that."
             ],
             "examples_fail": [
               "never seen (bare fragment, no inversion)",
@@ -207,7 +223,11 @@
             "examples_pass": [
               "Rarely do strangers make me feel that welcome.",
               "Not only did he finish on time, but he also exceeded the target.",
-              "Hardly had we arrived when the storm broke."
+              "Hardly had we arrived when the storm broke.",
+              "Seldom does an opportunity like this come along twice in one career.",
+              "Rarely do I see a candidate this prepared on a first interview.",
+              "Seldom have I encountered a regulation written this clearly.",
+              "Rarely does a single conversation change my mind, but that one did."
             ],
             "examples_fail": [
               "never seen (bare fragment, no inversion)",
@@ -223,7 +243,12 @@
             "examples_pass": [
               "What's your rarest?",
               "Seldom have I encountered such generosity.",
-              "Little did I know what was coming next."
+              "Little did I know what was coming next.",
+              "And you?",
+              "What about you?",
+              "How about yourself?",
+              "Same for you?",
+              "What's your take on it?"
             ],
             "examples_fail": [
               "never seen (bare fragment, no inversion)",
@@ -551,7 +576,11 @@
             "examples_pass": [
               "Not only is she fluent in three languages, but she also teaches them.",
               "Never have I seen such a beautiful sunset.",
-              "Rarely does she complain about her workload."
+              "Rarely does she complain about her workload.",
+              "Not only is the design elegant, but it's also far cheaper to manufacture.",
+              "Not only is she a brilliant engineer, but she's also a patient teacher.",
+              "Not only is the app faster, but it also uses a fraction of the battery.",
+              "Not only is the proposal bold, but it's also remarkably well-budgeted."
             ],
             "examples_fail": [
               "never seen (bare fragment, no inversion)",
@@ -567,7 +596,11 @@
             "examples_pass": [
               "Not only did we hit the target, but we also exceeded it by 20%.",
               "Not only did he finish on time, but he also exceeded the target.",
-              "Hardly had we arrived when the storm broke."
+              "Hardly had we arrived when the storm broke.",
+              "Not only did we ship on time, but we also came in under budget.",
+              "Not only did the campaign exceed targets, but it also won an industry award.",
+              "Not only did she resign, but she also took half the team with her.",
+              "Not only did I miss the flight, but I also lost my passport in the process."
             ],
             "examples_fail": [
               "never seen (bare fragment, no inversion)",
@@ -583,7 +616,11 @@
             "examples_pass": [
               "Not until I left the city did I appreciate the quiet.",
               "Seldom have I encountered such generosity.",
-              "Little did I know what was coming next."
+              "Little did I know what was coming next.",
+              "Not until I moved abroad did I realise how much my city had shaped me.",
+              "Not until the audit started did anyone notice the missing entries.",
+              "Not until I read it a third time did the argument fully land.",
+              "Not until she walked away did the team understand what she'd been holding together."
             ],
             "examples_fail": [
               "never seen (bare fragment, no inversion)",
@@ -616,7 +653,11 @@
             "examples_pass": [
               "Not only did my dad teach himself English, but he also learned coding at 60.",
               "Never have I seen such a beautiful sunset.",
-              "Rarely does she complain about her workload."
+              "Rarely does she complain about her workload.",
+              "Not only did my mother raise three kids alone, but she also went back to school in her fifties.",
+              "Not only did the team ship on time, but they also delivered above scope.",
+              "Not only is the new policy fairer, but it's also significantly easier to administer.",
+              "Not only did he apologise publicly, but he also rebuilt the relationship over the following year."
             ],
             "examples_fail": [
               "never seen (bare fragment, no inversion)",
@@ -632,7 +673,11 @@
             "examples_pass": [
               "Not until I had my own kid did I understand how much they did.",
               "Not only did he finish on time, but he also exceeded the target.",
-              "Hardly had we arrived when the storm broke."
+              "Hardly had we arrived when the storm broke.",
+              "Not until I moved abroad did I realise how much my city had shaped me.",
+              "Not until the audit started did anyone notice the missing entries.",
+              "Not until I read it a third time did the argument fully land.",
+              "Not until she walked away did the team understand what she'd been holding together."
             ],
             "examples_fail": [
               "never seen (bare fragment, no inversion)",
@@ -648,7 +693,12 @@
             "examples_pass": [
               "What did she study?",
               "Seldom have I encountered such generosity.",
-              "Little did I know what was coming next."
+              "Little did I know what was coming next.",
+              "And you?",
+              "What about you?",
+              "How about yourself?",
+              "Same for you?",
+              "What's your take on it?"
             ],
             "examples_fail": [
               "never seen (bare fragment, no inversion)",
@@ -765,7 +815,11 @@
             "examples_pass": [
               "Only after I quit did I realise how much that job was costing me.",
               "Never have I seen such a beautiful sunset.",
-              "Rarely does she complain about her workload."
+              "Rarely does she complain about her workload.",
+              "Only after I left the company did I realise how exhausted I had been.",
+              "Only when the numbers came in did the board start taking the warning seriously.",
+              "Only after losing the contract did we understand what our weak spot was.",
+              "Only when she stopped explaining herself did people finally start listening."
             ],
             "examples_fail": [
               "never seen (bare fragment, no inversion)",
@@ -781,7 +835,11 @@
             "examples_pass": [
               "Only by saying no a hundred times did I learn to protect my time.",
               "Not only did he finish on time, but he also exceeded the target.",
-              "Hardly had we arrived when the storm broke."
+              "Hardly had we arrived when the storm broke.",
+              "Only by saying no for an entire quarter did I get any real work done.",
+              "Only by rebuilding the team from scratch did we recover from that year.",
+              "Only by automating the routine work did the senior engineers find time to think.",
+              "Only by talking to actual customers did we discover where the product was failing."
             ],
             "examples_fail": [
               "never seen (bare fragment, no inversion)",
@@ -797,7 +855,11 @@
             "examples_pass": [
               "Little did I know that conversation would change my career.",
               "Seldom have I encountered such generosity.",
-              "Little did I know what was coming next."
+              "Little did I know what was coming next.",
+              "Little did I know that the casual coffee would turn into a job offer.",
+              "Little did I realise how much that one decision would shape the next decade.",
+              "Little did we imagine the company would be acquired within a year.",
+              "Little did I suspect that the quietest member of the team would become its strongest leader."
             ],
             "examples_fail": [
               "never seen (bare fragment, no inversion)",
@@ -830,7 +892,11 @@
             "examples_pass": [
               "Only after losing a friend did I start texting people back the same day.",
               "Never have I seen such a beautiful sunset.",
-              "Rarely does she complain about her workload."
+              "Rarely does she complain about her workload.",
+              "Only after I lost a close friend did I start replying to messages the same day.",
+              "Only when the company nearly folded did the founders finally agree on a strategy.",
+              "Only after working with her for a year did I understand how she actually made decisions.",
+              "Only when the audit revealed the gap did anyone take the warnings seriously."
             ],
             "examples_fail": [
               "never seen (bare fragment, no inversion)",
@@ -846,7 +912,11 @@
             "examples_pass": [
               "Little did I know that one email would lead to a new career.",
               "Not only did he finish on time, but he also exceeded the target.",
-              "Hardly had we arrived when the storm broke."
+              "Hardly had we arrived when the storm broke.",
+              "Little did I know that the casual coffee would turn into a job offer.",
+              "Little did I realise how much that one decision would shape the next decade.",
+              "Little did we imagine the company would be acquired within a year.",
+              "Little did I suspect that the quietest member of the team would become its strongest leader."
             ],
             "examples_fail": [
               "never seen (bare fragment, no inversion)",
@@ -862,7 +932,12 @@
             "examples_pass": [
               "What's your foreshadowing moment?",
               "Seldom have I encountered such generosity.",
-              "Little did I know what was coming next."
+              "Little did I know what was coming next.",
+              "And you?",
+              "What about you?",
+              "How about yourself?",
+              "Same for you?",
+              "What's your take on it?"
             ],
             "examples_fail": [
               "never seen (bare fragment, no inversion)",
@@ -979,7 +1054,11 @@
             "examples_pass": [
               "Under no circumstances should staff share passwords.",
               "Never have I seen such a beautiful sunset.",
-              "Rarely does she complain about her workload."
+              "Rarely does she complain about her workload.",
+              "Under no circumstances should sensitive client data leave the company network.",
+              "Under no circumstances must production code be deployed without review.",
+              "Under no circumstances should we negotiate against ourselves before the counteroffer arrives.",
+              "Under no circumstances will we compromise on the safety standards."
             ],
             "examples_fail": [
               "never seen (bare fragment, no inversion)",
@@ -995,7 +1074,11 @@
             "examples_pass": [
               "On no account may client data leave the secure server.",
               "Not only did he finish on time, but he also exceeded the target.",
-              "Hardly had we arrived when the storm broke."
+              "Hardly had we arrived when the storm broke.",
+              "On no account must this document be shared outside the working group.",
+              "On no account should the keys be stored alongside the encrypted backup.",
+              "On no account may the design files be sent to external vendors without approval.",
+              "On no account are interns to handle live customer accounts unsupervised."
             ],
             "examples_fail": [
               "never seen (bare fragment, no inversion)",
@@ -1011,7 +1094,11 @@
             "examples_pass": [
               "At no time has the company authorised such a deduction.",
               "Seldom have I encountered such generosity.",
-              "Little did I know what was coming next."
+              "Little did I know what was coming next.",
+              "At no time has the company agreed to those terms in writing.",
+              "At no time did the team commit to a Q3 launch date.",
+              "At no time has the regulator approved that interpretation of the policy.",
+              "At no time were we informed of the change in ownership."
             ],
             "examples_fail": [
               "never seen (bare fragment, no inversion)",
@@ -1044,7 +1131,11 @@
             "examples_pass": [
               "In no way does this campaign reflect our values.",
               "Never have I seen such a beautiful sunset.",
-              "Rarely does she complain about her workload."
+              "Rarely does she complain about her workload.",
+              "At no time has the company agreed to those terms in writing.",
+              "At no time did the team commit to a Q3 launch date.",
+              "At no time has the regulator approved that interpretation of the policy.",
+              "At no time were we informed of the change in ownership."
             ],
             "examples_fail": [
               "never seen (bare fragment, no inversion)",
@@ -1060,7 +1151,11 @@
             "examples_pass": [
               "Under no circumstances will we accept responsibility for content we didn't approve.",
               "Not only did he finish on time, but he also exceeded the target.",
-              "Hardly had we arrived when the storm broke."
+              "Hardly had we arrived when the storm broke.",
+              "Under no circumstances should sensitive client data leave the company network.",
+              "Under no circumstances must production code be deployed without review.",
+              "Under no circumstances should we negotiate against ourselves before the counteroffer arrives.",
+              "Under no circumstances will we compromise on the safety standards."
             ],
             "examples_fail": [
               "never seen (bare fragment, no inversion)",
@@ -1076,7 +1171,12 @@
             "examples_pass": [
               "Too strong, or about right?",
               "Seldom have I encountered such generosity.",
-              "Little did I know what was coming next."
+              "Little did I know what was coming next.",
+              "And you?",
+              "What about you?",
+              "How about yourself?",
+              "Same for you?",
+              "What's your take on it?"
             ],
             "examples_fail": [
               "never seen (bare fragment, no inversion)",

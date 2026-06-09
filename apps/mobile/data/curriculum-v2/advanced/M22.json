@@ -119,7 +119,11 @@
             "examples_pass": [
               "It was a Sunday in late August that I finally decided to apply — three months later than I should have, and only because my sister sent me a single text I couldn't ignore.",
               "Had I known then what I know now, I'd have approached it differently.",
-              "It is precisely this nuance that makes the issue so complex."
+              "It is precisely this nuance that makes the issue so complex.",
+              "It was on a quiet Sunday in late August that I finally decided to apply — three months later than I should have, and only because my sister sent me a single text I couldn't ignore.",
+              "It was a single conversation in a tiny café in Porto that quietly reshaped the next decade of my life.",
+              "It was at the most uneventful all-hands meeting of the year that the founder, almost casually, announced his decision to step down.",
+              "It was on the train back from the conference that I finally understood what the keynote had actually been about."
             ],
             "examples_fail": [
               "yes (bare reply, no synthesis)",
@@ -135,7 +139,10 @@
             "examples_pass": [
               "Sitting on the floor of my living room, I read the requirements three times, hoping — you know — that something would tell me whether I was qualified or just stubborn.",
               "Never have I encountered a more compelling argument.",
-              "Were we to adopt this approach, the results could be transformative."
+              "Were we to adopt this approach, the results could be transformative.",
+              "Walking through the empty office at the end of the year, I realised — sort of — that I'd been more attached to the place than I'd ever admitted out loud.",
+              "Reading her resignation letter on the train, I felt — honestly — a kind of relief I wasn't expecting to feel.",
+              "Standing on the balcony, watching the city wake up, I knew — in some quiet way — that the next year was going to be very different from the last."
             ],
             "examples_fail": [
               "yes (bare reply, no synthesis)",
@@ -151,7 +158,10 @@
             "examples_pass": [
               "I clicked submit before I could change my mind. Done. Whatever happened next, it would not be the version of me that had spent the year not trying.",
               "What truly sets this apart is the depth of its analysis.",
-              "Having considered all angles, I remain convinced of my position."
+              "Having considered all angles, I remain convinced of my position.",
+              "I sent the email. Two minutes later, the reply. Then everything moved very fast.",
+              "I packed the apartment in a single weekend. Three boxes. One car. A new city by Tuesday.",
+              "I left the meeting without saying a word. Walked the long way home. Then made the call I'd been avoiding for months."
             ],
             "examples_fail": [
               "yes (bare reply, no synthesis)",
@@ -184,7 +194,10 @@
             "examples_pass": [
               "Opening the email, I knew before I'd read a word. It was the second sentence that confirmed it — three lines down, between the formalities and the contract details.",
               "Had I known then what I know now, I'd have approached it differently.",
-              "It is precisely this nuance that makes the issue so complex."
+              "It is precisely this nuance that makes the issue so complex.",
+              "Walking into the meeting, I sensed the shift immediately. It was the way the room went quiet that told me what was about to happen.",
+              "Reading her message on the train, I already knew the answer. It was the closing line, written so casually, that left no room for doubt.",
+              "Sitting across from him at lunch, I understood before he spoke. It was the small pause before each sentence that gave the news away."
             ],
             "examples_fail": [
               "yes (bare reply, no synthesis)",
@@ -200,7 +213,11 @@
             "examples_pass": [
               "What surprised me was how immediately my body knew before my mind had read the words — shoulders dropping, breath finally arriving without being asked.",
               "Never have I encountered a more compelling argument.",
-              "Were we to adopt this approach, the results could be transformative."
+              "Were we to adopt this approach, the results could be transformative.",
+              "What surprised me was how quickly the whole room shifted opinion.",
+              "What struck me most was how little anyone questioned the plan.",
+              "What caught me off guard was how willing she was to admit she'd been wrong.",
+              "What stayed with me was the silence after he asked the question."
             ],
             "examples_fail": [
               "yes (bare reply, no synthesis)",
@@ -216,7 +233,12 @@
             "examples_pass": [
               "What about you — what was the email that changed your year?",
               "What truly sets this apart is the depth of its analysis.",
-              "Having considered all angles, I remain convinced of my position."
+              "Having considered all angles, I remain convinced of my position.",
+              "And you?",
+              "What about you?",
+              "How about yourself?",
+              "Same for you?",
+              "What's your take on it?"
             ],
             "examples_fail": [
               "yes (bare reply, no synthesis)",
@@ -759,7 +781,12 @@
             "examples_pass": [
               "Yeah, I've been swamped — barely had time to eat properly. You been busy too, or just chilling this week?",
               "Had I known then what I know now, I'd have approached it differently.",
-              "It is precisely this nuance that makes the issue so complex."
+              "It is precisely this nuance that makes the issue so complex.",
+              "And you?",
+              "What about you?",
+              "How about yourself?",
+              "Same for you?",
+              "What's your take on it?"
             ],
             "examples_fail": [
               "yes (bare reply, no synthesis)",
@@ -775,7 +802,10 @@
             "examples_pass": [
               "We're still doing the thing on Saturday, right? I want to make sure I haven't double-booked myself.",
               "Never have I encountered a more compelling argument.",
-              "Were we to adopt this approach, the results could be transformative."
+              "Were we to adopt this approach, the results could be transformative.",
+              "You're coming to the dinner on Friday, aren't you? I'd love to actually catch up properly.",
+              "We're meeting at noon, right? I want to leave enough time to grab coffee on the way.",
+              "You've already booked the hotel, haven't you? Or did you want me to handle that?"
             ],
             "examples_fail": [
               "yes (bare reply, no synthesis)",
@@ -791,7 +821,10 @@
             "examples_pass": [
               "Cool. I'll, you know, text you Friday afternoon — make sure we're still on.",
               "What truly sets this apart is the depth of its analysis.",
-              "Having considered all angles, I remain convinced of my position."
+              "Having considered all angles, I remain convinced of my position.",
+              "Alright, sounds good. I'll, like, drop you a note tomorrow once I've thought about it more.",
+              "Yeah, no, that works. I'll, you know, send something over by the end of the week and we'll go from there.",
+              "Cool, cool. Talk soon — I'll, you know, ping you when I've heard back from the team."
             ],
             "examples_fail": [
               "yes (bare reply, no synthesis)",
@@ -824,7 +857,10 @@
             "examples_pass": [
               "Yeah, I know — it's been months, hasn't it? I've been buried under this project, honestly.",
               "Had I known then what I know now, I'd have approached it differently.",
-              "It is precisely this nuance that makes the issue so complex."
+              "It is precisely this nuance that makes the issue so complex.",
+              "Yeah, no, I'm okay. Tired, but okay. You? How's that whole thing with the new boss going?",
+              "Honestly, it's been a weird month — lots of small fires, nothing huge, but the weight is starting to show.",
+              "Yeah, sorry, I know I've been quiet. Things have just been kind of relentless on my end since the new launch."
             ],
             "examples_fail": [
               "yes (bare reply, no synthesis)",
@@ -840,7 +876,12 @@
             "examples_pass": [
               "How's stuff with you? Still doing the freelance thing, or did the full-time offer come through?",
               "Never have I encountered a more compelling argument.",
-              "Were we to adopt this approach, the results could be transformative."
+              "Were we to adopt this approach, the results could be transformative.",
+              "And you?",
+              "What about you?",
+              "How about yourself?",
+              "Same for you?",
+              "What's your take on it?"
             ],
             "examples_fail": [
               "yes (bare reply, no synthesis)",
@@ -856,7 +897,12 @@
             "examples_pass": [
               "We should grab dinner before another six months go by — I'm free, like, two Fridays from now?",
               "What truly sets this apart is the depth of its analysis.",
-              "Having considered all angles, I remain convinced of my position."
+              "Having considered all angles, I remain convinced of my position.",
+              "And you?",
+              "What about you?",
+              "How about yourself?",
+              "Same for you?",
+              "What's your take on it?"
             ],
             "examples_fail": [
               "yes (bare reply, no synthesis)",

@@ -352,7 +352,11 @@
             "examples_pass": [
               "I bit the bullet and quit without another job lined up.",
               "I'm absolutely over the moon about the news.",
-              "He really hit the nail on the head with that comment."
+              "He really hit the nail on the head with that comment.",
+              "I finally bit the bullet and bought the more expensive laptop.",
+              "We bit the bullet and let two underperforming hires go before the quarter closed.",
+              "She bit the bullet and started learning to code at forty.",
+              "I bit the bullet and had the difficult conversation I'd been postponing for months."
             ],
             "examples_fail": [
               "tired (literal word, no idiom)",
@@ -368,7 +372,11 @@
             "examples_pass": [
               "I got cold feet about moving abroad and stayed another year.",
               "Let's not beat around the bush — say what you mean.",
-              "She's burning the candle at both ends lately."
+              "She's burning the candle at both ends lately.",
+              "He got cold feet about moving abroad and stayed another year.",
+              "The investor got cold feet at the very last moment, and the round fell apart.",
+              "She got cold feet two weeks before the launch and tried to delay everything.",
+              "I got cold feet about the speech and almost cancelled the morning of the event."
             ],
             "examples_fail": [
               "tired (literal word, no idiom)",
@@ -384,7 +392,11 @@
             "examples_pass": [
               "The apartment renovation cost an arm and a leg, but we love it.",
               "That comment really rubbed me the wrong way.",
-              "Don't throw in the towel just yet."
+              "Don't throw in the towel just yet.",
+              "That renovation cost us an arm and a leg, but the kitchen is finally usable.",
+              "The new logistics software costs an arm and a leg and barely does what the old one did.",
+              "The wedding cost an arm and a leg — but we'd do it again.",
+              "Living in central Paris cost us an arm and a leg, but the year was worth every euro."
             ],
             "examples_fail": [
               "tired (literal word, no idiom)",
@@ -417,7 +429,11 @@
             "examples_pass": [
               "I bit the bullet and told my boss I wanted to step back from leadership.",
               "I'm absolutely over the moon about the news.",
-              "He really hit the nail on the head with that comment."
+              "He really hit the nail on the head with that comment.",
+              "I finally bit the bullet and bought the more expensive laptop.",
+              "We bit the bullet and let two underperforming hires go before the quarter closed.",
+              "She bit the bullet and started learning to code at forty.",
+              "I bit the bullet and had the difficult conversation I'd been postponing for months."
             ],
             "examples_fail": [
               "tired (literal word, no idiom)",
@@ -433,7 +449,11 @@
             "examples_pass": [
               "I'd had cold feet about it for months — kept thinking I'd be giving up too much.",
               "Let's not beat around the bush — say what you mean.",
-              "She's burning the candle at both ends lately."
+              "She's burning the candle at both ends lately.",
+              "I'd had cold feet about it for months — kept thinking I'd be giving up too much to take the role.",
+              "He got cold feet about the move the week before we were supposed to sign the lease.",
+              "She had cold feet right up until the morning of, and then went through with it without flinching.",
+              "I'd had cold feet on every major decision in my twenties — turns out instinct was usually right anyway."
             ],
             "examples_fail": [
               "tired (literal word, no idiom)",
@@ -449,7 +469,12 @@
             "examples_pass": [
               "How did your parents take it?",
               "That comment really rubbed me the wrong way.",
-              "Don't throw in the towel just yet."
+              "Don't throw in the towel just yet.",
+              "And you?",
+              "What about you?",
+              "How about yourself?",
+              "Same for you?",
+              "What's your take on it?"
             ],
             "examples_fail": [
               "tired (literal word, no idiom)",
@@ -566,7 +591,11 @@
             "examples_pass": [
               "The migration turned out to be a piece of cake compared to what we feared.",
               "I'm absolutely over the moon about the news.",
-              "He really hit the nail on the head with that comment."
+              "He really hit the nail on the head with that comment.",
+              "The migration turned out to be a piece of cake compared to what we'd feared.",
+              "After last quarter's launch, this one is going to be a piece of cake.",
+              "Once you understand the structure, the rest of the exam is a piece of cake.",
+              "The interview was a piece of cake — they basically offered me the role on the spot."
             ],
             "examples_fail": [
               "tired (literal word, no idiom)",
@@ -582,7 +611,11 @@
             "examples_pass": [
               "Someone in marketing spilled the beans about the rebrand a week early.",
               "Let's not beat around the bush — say what you mean.",
-              "She's burning the candle at both ends lately."
+              "She's burning the candle at both ends lately.",
+              "Someone in marketing spilled the beans about the rebrand a week before the announcement.",
+              "She spilled the beans about her engagement before she meant to.",
+              "Don't spill the beans about the surprise party — it's taken weeks to plan.",
+              "He spilled the beans about the layoffs to a journalist, and the story broke that evening."
             ],
             "examples_fail": [
               "tired (literal word, no idiom)",
@@ -598,7 +631,11 @@
             "examples_pass": [
               "Take the optimistic projections with a grain of salt — they always slip.",
               "That comment really rubbed me the wrong way.",
-              "Don't throw in the towel just yet."
+              "Don't throw in the towel just yet.",
+              "Take their optimistic projections with a grain of salt — they've missed three quarters in a row.",
+              "That client is a tough nut to crack, but the contract is worth the patience.",
+              "You should take her recommendation with a grain of salt — she's been wrong about him before.",
+              "The regulatory team is a tough nut to crack, but we'll get there with the right framing."
             ],
             "examples_fail": [
               "tired (literal word, no idiom)",
@@ -631,7 +668,11 @@
             "examples_pass": [
               "Whoever spilled the beans must have known the timing would hit hard.",
               "I'm absolutely over the moon about the news.",
-              "He really hit the nail on the head with that comment."
+              "He really hit the nail on the head with that comment.",
+              "Someone in marketing spilled the beans about the rebrand a week before the announcement.",
+              "She spilled the beans about her engagement before she meant to.",
+              "Don't spill the beans about the surprise party — it's taken weeks to plan.",
+              "He spilled the beans about the layoffs to a journalist, and the story broke that evening."
             ],
             "examples_fail": [
               "tired (literal word, no idiom)",
@@ -647,7 +688,11 @@
             "examples_pass": [
               "Containing it will be no piece of cake — once the numbers are out, you can't un-leak them.",
               "Let's not beat around the bush — say what you mean.",
-              "She's burning the candle at both ends lately."
+              "She's burning the candle at both ends lately.",
+              "The migration turned out to be a piece of cake compared to what we'd feared.",
+              "After last quarter's launch, this one is going to be a piece of cake.",
+              "Once you understand the structure, the rest of the exam is a piece of cake.",
+              "The interview was a piece of cake — they basically offered me the role on the spot."
             ],
             "examples_fail": [
               "tired (literal word, no idiom)",
@@ -663,7 +708,12 @@
             "examples_pass": [
               "How is HR handling it?",
               "That comment really rubbed me the wrong way.",
-              "Don't throw in the towel just yet."
+              "Don't throw in the towel just yet.",
+              "And you?",
+              "What about you?",
+              "How about yourself?",
+              "Same for you?",
+              "What's your take on it?"
             ],
             "examples_fail": [
               "tired (literal word, no idiom)",
@@ -780,7 +830,11 @@
             "examples_pass": [
               "If we record the demo and the training in one session, we kill two birds with one stone.",
               "I'm absolutely over the moon about the news.",
-              "He really hit the nail on the head with that comment."
+              "He really hit the nail on the head with that comment.",
+              "If we record the keynote and the training in the same day, we kill two birds with one stone.",
+              "By bundling the audit and the strategy review, we'll kill two birds with one stone.",
+              "We can kill two birds with one stone by combining the customer interviews with the user research.",
+              "Visiting my family on the way to the conference let me kill two birds with one stone."
             ],
             "examples_fail": [
               "tired (literal word, no idiom)",
@@ -796,7 +850,10 @@
             "examples_pass": [
               "We're on the same page internally — now the ball is in the client's court.",
               "Let's not beat around the bush — say what you mean.",
-              "She's burning the candle at both ends lately."
+              "She's burning the candle at both ends lately.",
+              "Once I sent the proposal, the ball was in their court for almost two weeks.",
+              "Make sure the leadership team is on the same page before the announcement goes out.",
+              "The ball is now firmly in their court, and we'll see how serious they really are."
             ],
             "examples_fail": [
               "tired (literal word, no idiom)",
@@ -812,7 +869,11 @@
             "examples_pass": [
               "For the launch event, we'll play it by ear and see how the audience reacts.",
               "That comment really rubbed me the wrong way.",
-              "Don't throw in the towel just yet."
+              "Don't throw in the towel just yet.",
+              "We'll play it by ear during the launch and adjust the messaging as we see how people react.",
+              "Let's just play it by ear — too many plans this early tend to fall apart anyway.",
+              "She decided to play it by ear with the new client rather than scripting every meeting.",
+              "We had no agenda for the offsite, and we played the whole thing by ear."
             ],
             "examples_fail": [
               "tired (literal word, no idiom)",
@@ -845,7 +906,11 @@
             "examples_pass": [
               "Now the ball is in my team's court — we'll review and come back with edits by Wednesday.",
               "I'm absolutely over the moon about the news.",
-              "He really hit the nail on the head with that comment."
+              "He really hit the nail on the head with that comment.",
+              "We're on the same page internally — now the ball is in the client's court.",
+              "Once I sent the proposal, the ball was in their court for almost two weeks.",
+              "Make sure the leadership team is on the same page before the announcement goes out.",
+              "The ball is now firmly in their court, and we'll see how serious they really are."
             ],
             "examples_fail": [
               "tired (literal word, no idiom)",
@@ -861,7 +926,11 @@
             "examples_pass": [
               "We can kill two birds with one stone by reviewing the brief during our existing standup.",
               "Let's not beat around the bush — say what you mean.",
-              "She's burning the candle at both ends lately."
+              "She's burning the candle at both ends lately.",
+              "We'll play it by ear during the launch and adjust the messaging as we see how people react.",
+              "Let's just play it by ear — too many plans this early tend to fall apart anyway.",
+              "She decided to play it by ear with the new client rather than scripting every meeting.",
+              "We had no agenda for the offsite, and we played the whole thing by ear."
             ],
             "examples_fail": [
               "tired (literal word, no idiom)",
@@ -877,7 +946,12 @@
             "examples_pass": [
               "What's the highest priority for you?",
               "That comment really rubbed me the wrong way.",
-              "Don't throw in the towel just yet."
+              "Don't throw in the towel just yet.",
+              "And you?",
+              "What about you?",
+              "How about yourself?",
+              "Same for you?",
+              "What's your take on it?"
             ],
             "examples_fail": [
               "tired (literal word, no idiom)",
@@ -988,7 +1062,11 @@
             "examples_pass": [
               "The new policy on remote work is crystal clear — three days a week, no exceptions.",
               "I'm absolutely over the moon about the news.",
-              "He really hit the nail on the head with that comment."
+              "He really hit the nail on the head with that comment.",
+              "The CEO's instructions on the new policy are crystal clear — three days a week in office, no exceptions.",
+              "Let me be crystal clear: we will not compromise on the security review.",
+              "The deadline was crystal clear from the first message, and yet half the team missed it.",
+              "Her position on the matter is crystal clear — she's said it in every meeting for the last six months."
             ],
             "examples_fail": [
               "tired (literal word, no idiom)",
@@ -1004,7 +1082,11 @@
             "examples_pass": [
               "We started with the low-hanging fruit and saw a 10% lift in two weeks.",
               "Let's not beat around the bush — say what you mean.",
-              "She's burning the candle at both ends lately."
+              "She's burning the candle at both ends lately.",
+              "We started with the low-hanging fruit and saw a measurable lift within two weeks.",
+              "Before we tackle the hard problems, let's at least pick the low-hanging fruit.",
+              "The first round of changes was all low-hanging fruit; the harder calls come next.",
+              "Improving the onboarding flow is the low-hanging fruit nobody's bothered to pick yet."
             ],
             "examples_fail": [
               "tired (literal word, no idiom)",
@@ -1020,7 +1102,11 @@
             "examples_pass": [
               "Being acquired was a blessing in disguise — losing autonomy hurt, but the resources accelerated everything.",
               "That comment really rubbed me the wrong way.",
-              "Don't throw in the towel just yet."
+              "Don't throw in the towel just yet.",
+              "The acquisition turned out to be a blessing in disguise — painful at the time, but it forced us to focus.",
+              "Remote work has been a double-edged sword: flexibility on one side, isolation on the other.",
+              "Missing that funding round was a blessing in disguise; the company we became was leaner and clearer.",
+              "Success on that scale is a double-edged sword — the expectations now are almost impossible to meet."
             ],
             "examples_fail": [
               "tired (literal word, no idiom)",
@@ -1053,7 +1139,11 @@
             "examples_pass": [
               "Getting laid off in 2020 turned out to be a blessing in disguise — I started the consulting work I'd been afraid to try.",
               "I'm absolutely over the moon about the news.",
-              "He really hit the nail on the head with that comment."
+              "He really hit the nail on the head with that comment.",
+              "The acquisition turned out to be a blessing in disguise — painful at the time, but it forced us to focus.",
+              "Remote work has been a double-edged sword: flexibility on one side, isolation on the other.",
+              "Missing that funding round was a blessing in disguise; the company we became was leaner and clearer.",
+              "Success on that scale is a double-edged sword — the expectations now are almost impossible to meet."
             ],
             "examples_fail": [
               "tired (literal word, no idiom)",
@@ -1069,7 +1159,11 @@
             "examples_pass": [
               "Independence is a double-edged sword — full agency, but also full responsibility for finding the next project.",
               "Let's not beat around the bush — say what you mean.",
-              "She's burning the candle at both ends lately."
+              "She's burning the candle at both ends lately.",
+              "The CEO's instructions on the new policy are crystal clear — three days a week in office, no exceptions.",
+              "Let me be crystal clear: we will not compromise on the security review.",
+              "The deadline was crystal clear from the first message, and yet half the team missed it.",
+              "Her position on the matter is crystal clear — she's said it in every meeting for the last six months."
             ],
             "examples_fail": [
               "tired (literal word, no idiom)",
@@ -1085,7 +1179,12 @@
             "examples_pass": [
               "What made it crystal clear it was time?",
               "That comment really rubbed me the wrong way.",
-              "Don't throw in the towel just yet."
+              "Don't throw in the towel just yet.",
+              "And you?",
+              "What about you?",
+              "How about yourself?",
+              "Same for you?",
+              "What's your take on it?"
             ],
             "examples_fail": [
               "tired (literal word, no idiom)",

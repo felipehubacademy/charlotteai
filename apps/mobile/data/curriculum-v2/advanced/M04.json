@@ -124,7 +124,11 @@
             "examples_pass": [
               "I suggest that the proposal be reviewed by an external auditor.",
               "It is essential that he be present at the meeting.",
-              "I wish I were able to help you more."
+              "I wish I were able to help you more.",
+              "I suggest that the new policy be reviewed by an external advisor before rollout.",
+              "I would suggest that every proposal be circulated at least 48 hours in advance.",
+              "I propose that the draft be sent to legal for one final check.",
+              "I suggest that all contractors be subjected to the same onboarding process."
             ],
             "examples_fail": [
               "important (bare adjective, no clause)",
@@ -140,7 +144,11 @@
             "examples_pass": [
               "I recommend that the team adopt a stricter review process.",
               "I suggest that she take a break.",
-              "If I were in your position, I would speak up."
+              "If I were in your position, I would speak up.",
+              "I recommend that the team adopt a stricter code-review cadence.",
+              "I recommend that we hire a fractional CFO before the next fundraise.",
+              "Our legal counsel recommends that the company disclose the incident promptly.",
+              "I recommend that every senior hire spend a week in customer support."
             ],
             "examples_fail": [
               "important (bare adjective, no clause)",
@@ -156,7 +164,11 @@
             "examples_pass": [
               "I insist that every member be informed before the vote.",
               "It is crucial that they arrive on time.",
-              "I demand that he apologise immediately."
+              "I demand that he apologise immediately.",
+              "I insist that every team member be present for the postmortem on Friday.",
+              "The board demands that every transaction over fifty thousand be approved in writing.",
+              "I insist that the contract be reviewed by our lawyer before we sign anything.",
+              "Regulators insist that all customer data remain within the country's borders."
             ],
             "examples_fail": [
               "important (bare adjective, no clause)",
@@ -189,7 +201,10 @@
             "examples_pass": [
               "I recommend that every candidate be interviewed by at least three panel members.",
               "It is essential that he be present at the meeting.",
-              "I wish I were able to help you more."
+              "I wish I were able to help you more.",
+              "I suggest that the policy be reviewed by an external advisor before rollout.",
+              "I propose that every senior hire spend their first week in customer support.",
+              "Our legal team recommends that the disclosure be made before the press cycle picks it up."
             ],
             "examples_fail": [
               "important (bare adjective, no clause)",
@@ -205,7 +220,11 @@
             "examples_pass": [
               "I also propose that hiring criteria be made public on the company website.",
               "I suggest that she take a break.",
-              "If I were in your position, I would speak up."
+              "If I were in your position, I would speak up.",
+              "I recommend that every candidate be interviewed by at least three panel members.",
+              "I suggest that the policy be reviewed by an external advisor before rollout.",
+              "I propose that every senior hire spend their first week in customer support.",
+              "Our legal team recommends that the disclosure be made before the press cycle picks it up."
             ],
             "examples_fail": [
               "important (bare adjective, no clause)",
@@ -221,7 +240,12 @@
             "examples_pass": [
               "Will you bring it to a vote?",
               "It is crucial that they arrive on time.",
-              "I demand that he apologise immediately."
+              "I demand that he apologise immediately.",
+              "And you?",
+              "What about you?",
+              "How about yourself?",
+              "Same for you?",
+              "What's your take on it?"
             ],
             "examples_fail": [
               "important (bare adjective, no clause)",
@@ -335,7 +359,11 @@
             "examples_pass": [
               "It is essential that every employee receive proper training.",
               "It is essential that he be present at the meeting.",
-              "I wish I were able to help you more."
+              "I wish I were able to help you more.",
+              "It is essential that every new hire receive proper onboarding within the first week.",
+              "It is essential that the leadership team be aligned before we communicate externally.",
+              "It is essential that every user be informed before we change the pricing model.",
+              "It is essential that the technical debt be addressed before we attempt to scale."
             ],
             "examples_fail": [
               "important (bare adjective, no clause)",
@@ -351,7 +379,11 @@
             "examples_pass": [
               "It is vital that confidential data be protected at all times.",
               "I suggest that she take a break.",
-              "If I were in your position, I would speak up."
+              "If I were in your position, I would speak up.",
+              "It is vital that confidential information be handled with extreme care.",
+              "It is vital that the timeline be respected by every department involved.",
+              "It is vital that customer feedback be incorporated into the next iteration.",
+              "It is vital that the testing environment mirror production as closely as possible."
             ],
             "examples_fail": [
               "important (bare adjective, no clause)",
@@ -367,7 +399,11 @@
             "examples_pass": [
               "It is imperative that the process remain transparent.",
               "It is crucial that they arrive on time.",
-              "I demand that he apologise immediately."
+              "I demand that he apologise immediately.",
+              "It is imperative that the process remain transparent at every stage.",
+              "It is imperative that every employee complete the compliance training by month-end.",
+              "It is imperative that the source code never be shared outside the company network.",
+              "It is imperative that the executive team speak with one voice on this issue."
             ],
             "examples_fail": [
               "important (bare adjective, no clause)",
@@ -400,7 +436,11 @@
             "examples_pass": [
               "It is essential that every voice be heard in team decisions.",
               "It is essential that he be present at the meeting.",
-              "I wish I were able to help you more."
+              "I wish I were able to help you more.",
+              "It is essential that every voice be heard during team decisions, not just the loudest ones.",
+              "It is crucial that feedback be given respectfully and in private, not in a group setting.",
+              "It is vital that the leadership team be aligned before the announcement is communicated externally.",
+              "It is imperative that the timeline be respected by every department involved."
             ],
             "examples_fail": [
               "important (bare adjective, no clause)",
@@ -416,7 +456,11 @@
             "examples_pass": [
               "It is crucial that feedback be given respectfully and in private.",
               "I suggest that she take a break.",
-              "If I were in your position, I would speak up."
+              "If I were in your position, I would speak up.",
+              "It is essential that every voice be heard during team decisions, not just the loudest ones.",
+              "It is crucial that feedback be given respectfully and in private, not in a group setting.",
+              "It is vital that the leadership team be aligned before the announcement is communicated externally.",
+              "It is imperative that the timeline be respected by every department involved."
             ],
             "examples_fail": [
               "important (bare adjective, no clause)",
@@ -432,7 +476,12 @@
             "examples_pass": [
               "What would you add?",
               "It is crucial that they arrive on time.",
-              "I demand that he apologise immediately."
+              "I demand that he apologise immediately.",
+              "And you?",
+              "What about you?",
+              "How about yourself?",
+              "Same for you?",
+              "What's your take on it?"
             ],
             "examples_fail": [
               "important (bare adjective, no clause)",
