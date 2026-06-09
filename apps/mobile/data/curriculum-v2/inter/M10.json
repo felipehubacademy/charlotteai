@@ -434,7 +434,10 @@
             "examples_pass": [
               "If you exercise, you feel better.",
               "The sun rises in the east.",
-              "Babies cry when they're hungry."
+              "Babies cry when they're hungry.",
+              "If you heat water, it boils.",
+              "If you mix red and blue, you get purple.",
+              "Plants die if they don't get water."
             ],
             "examples_fail": [
               "boil (bare verb)",
@@ -450,7 +453,10 @@
             "examples_pass": [
               "If I have time tomorrow, I'll exercise.",
               "Babies cry when they're hungry.",
-              "Plants need light to grow."
+              "Plants need light to grow.",
+              "When it rains, the streets flood.",
+              "When you press this, it opens.",
+              "When water freezes, it becomes ice."
             ],
             "examples_fail": [
               "boil (bare verb)",
@@ -466,7 +472,10 @@
             "examples_pass": [
               "If I save money, I'll buy a new phone.",
               "Babies cry when they're hungry.",
-              "Plants need light to grow."
+              "Plants need light to grow.",
+              "What happens if you do that?",
+              "What about you, what's a fact you know?",
+              "How about you?"
             ],
             "examples_fail": [
               "boil (bare verb)",
@@ -500,7 +509,10 @@
             "examples_pass": [
               "If you read more, you write better.",
               "Plants need light to grow.",
-              "Water boils at 100 degrees."
+              "Water boils at 100 degrees.",
+              "If I don't sleep, I get cranky.",
+              "If you eat too much, you feel sick.",
+              "If you exercise, you feel better."
             ],
             "examples_fail": [
               "boil (bare verb)",
@@ -516,7 +528,10 @@
             "examples_pass": [
               "If I finish work early Friday, I'll meet my friends.",
               "Babies cry when they're hungry.",
-              "Plants need light to grow."
+              "Plants need light to grow.",
+              "When I'm stressed, I can't eat.",
+              "When the sun sets, it gets cold.",
+              "When I drink coffee, I can't sleep."
             ],
             "examples_fail": [
               "boil (bare verb)",
@@ -532,6 +547,9 @@
             "examples_pass": [
               "How about you?",
               "The sun rises in the east.",
+              "And you?",
+              "What about you?",
+              "How about you?",
               "And you?"
             ],
             "examples_fail": [
@@ -1199,7 +1217,7 @@
         "objectives": [
           {
             "id": 1,
-            "label_en": "First conditional sentence",
+            "label_en": "First sentence with a conditional",
             "hidden_prompt": "user uses any conditional structure correctly",
             "hint_en": "If I save enough money, I'll travel to Japan.",
             "examples_pass": [

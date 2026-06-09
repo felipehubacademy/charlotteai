@@ -163,7 +163,10 @@
             "examples_pass": [
               "My sister, who lives in Curitiba, is a nurse.",
               "Paris, where I lived, is beautiful.",
-              "The man, who is my boss, called."
+              "The man, who is my boss, called.",
+              "My brother, who lives in Lisbon, is visiting.",
+              "Anna, who works with me, is amazing.",
+              "The new manager, who joined last month, is great."
             ],
             "examples_fail": [
               "boss (bare noun)",
@@ -179,7 +182,10 @@
             "examples_pass": [
               "My best friend, who I've known since school, lives nearby.",
               "The book, which I bought yesterday, is great.",
-              "Paris, where I lived, is beautiful."
+              "Paris, where I lived, is beautiful.",
+              "My laptop, which is brand new, broke.",
+              "This book, which I borrowed, is great.",
+              "His car, which is red, is parked outside."
             ],
             "examples_fail": [
               "boss (bare noun)",
@@ -195,7 +201,10 @@
             "examples_pass": [
               "My boss, who is from England, speaks Portuguese well.",
               "The man, who is my boss, called.",
-              "My sister, who lives in Rio, visited me."
+              "My sister, who lives in Rio, visited me.",
+              "Tell me about someone close to you.",
+              "How about you?",
+              "What about you?"
             ],
             "examples_fail": [
               "boss (bare noun)",
@@ -228,7 +237,10 @@
             "examples_pass": [
               "My uncle, who works in Germany, sends me photos every week.",
               "The man, who is my boss, called.",
-              "My sister, who lives in Rio, visited me."
+              "My sister, who lives in Rio, visited me.",
+              "My best friend, who lives in Spain, called me.",
+              "My boss, who is very kind, helped me.",
+              "My cousin, who is a doctor, gave me advice."
             ],
             "examples_fail": [
               "boss (bare noun)",
@@ -244,7 +256,10 @@
             "examples_pass": [
               "My cousin, who I see every Christmas, just started college.",
               "The book, which I bought yesterday, is great.",
-              "Paris, where I lived, is beautiful."
+              "Paris, where I lived, is beautiful.",
+              "This phone, which I bought last week, is amazing.",
+              "That movie, which won an Oscar, was great.",
+              "The cafe, which just opened, is wonderful."
             ],
             "examples_fail": [
               "boss (bare noun)",
@@ -260,7 +275,10 @@
             "examples_pass": [
               "When is your aunt arriving?",
               "The book, which I bought yesterday, is great.",
-              "How about you?"
+              "How about you?",
+              "What about you?",
+              "How about you?",
+              "And you?"
             ],
             "examples_fail": [
               "boss (bare noun)",
@@ -421,7 +439,10 @@
             "examples_pass": [
               "Rio, which is famous for its beaches, has amazing views.",
               "My sister, who lives in Rio, visited me.",
-              "The book, which I bought yesterday, is great."
+              "The book, which I bought yesterday, is great.",
+              "Paris, where I was born, is beautiful.",
+              "Tokyo, where I worked once, is huge.",
+              "My hometown, where my family still lives, is small."
             ],
             "examples_fail": [
               "boss (bare noun)",
@@ -437,7 +458,10 @@
             "examples_pass": [
               "My car, which I bought last year, is electric.",
               "Paris, where I lived, is beautiful.",
-              "The man, who is my boss, called."
+              "The man, who is my boss, called.",
+              "2020, when the pandemic started, was hard.",
+              "Last summer, when I graduated, was special.",
+              "December, when we got married, was magical."
             ],
             "examples_fail": [
               "boss (bare noun)",
@@ -453,7 +477,10 @@
             "examples_pass": [
               "He forgot my birthday, which hurt my feelings.",
               "The book, which I bought yesterday, is great.",
-              "Paris, where I lived, is beautiful."
+              "Paris, where I lived, is beautiful.",
+              "Where would you take me?",
+              "How about you?",
+              "What about you?"
             ],
             "examples_fail": [
               "boss (bare noun)",
@@ -486,7 +513,10 @@
             "examples_pass": [
               "My favorite city is Florianópolis, which has beautiful beaches.",
               "My sister, who lives in Rio, visited me.",
-              "The book, which I bought yesterday, is great."
+              "The book, which I bought yesterday, is great.",
+              "My apartment, where I've lived for five years, is cozy.",
+              "The park, where we used to play, is gone.",
+              "Madrid, where I studied, holds great memories."
             ],
             "examples_fail": [
               "boss (bare noun)",
@@ -502,7 +532,10 @@
             "examples_pass": [
               "My favorite book, which I've read twice, is by Saramago.",
               "Paris, where I lived, is beautiful.",
-              "The man, who is my boss, called."
+              "The man, who is my boss, called.",
+              "The day when I met him was rainy.",
+              "The year when I moved was 2018.",
+              "The month when we opened was June."
             ],
             "examples_fail": [
               "boss (bare noun)",
@@ -518,7 +551,10 @@
             "examples_pass": [
               "What do you love about Lisbon?",
               "Paris, where I lived, is beautiful.",
-              "How about you?"
+              "How about you?",
+              "And you?",
+              "How about you?",
+              "What about you?"
             ],
             "examples_fail": [
               "boss (bare noun)",
@@ -679,7 +715,10 @@
             "examples_pass": [
               "Carla, whose mother is a chef, cooks amazing food.",
               "Paris, where I lived, is beautiful.",
-              "The man, who is my boss, called."
+              "The man, who is my boss, called.",
+              "The man whose car broke down is my neighbor.",
+              "The girl whose dog ran away cried.",
+              "The boy whose father is a chef cooks well."
             ],
             "examples_fail": [
               "boss (bare noun)",
@@ -695,7 +734,10 @@
             "examples_pass": [
               "My neighbor, whose car is always parked badly, never apologizes.",
               "Paris, where I lived, is beautiful.",
-              "The man, who is my boss, called."
+              "The man, who is my boss, called.",
+              "My friend, whose wedding is next month, is excited.",
+              "The teacher, whose son is in my class, is nice.",
+              "The lady, whose cat I feed, is lovely."
             ],
             "examples_fail": [
               "boss (bare noun)",
@@ -711,7 +753,10 @@
             "examples_pass": [
               "My friend, whose paintings are amazing, just had a show.",
               "Paris, where I lived, is beautiful.",
-              "The man, who is my boss, called."
+              "The man, who is my boss, called.",
+              "Who do you know with an interesting story?",
+              "How about you?",
+              "What about you?"
             ],
             "examples_fail": [
               "boss (bare noun)",
@@ -744,7 +789,10 @@
             "examples_pass": [
               "My neighbor, whose kids are always playing outside, is great with them.",
               "The book, which I bought yesterday, is great.",
-              "Paris, where I lived, is beautiful."
+              "Paris, where I lived, is beautiful.",
+              "The kid whose bike was stolen was sad.",
+              "The author whose books I love is here.",
+              "The neighbor whose music is loud is moving out."
             ],
             "examples_fail": [
               "boss (bare noun)",
@@ -760,7 +808,10 @@
             "examples_pass": [
               "An old friend, whose family I know well, called me yesterday.",
               "My sister, who lives in Rio, visited me.",
-              "The book, which I bought yesterday, is great."
+              "The book, which I bought yesterday, is great.",
+              "My colleague, whose project I helped with, got a promotion.",
+              "My cousin, whose baby was born last week, is overjoyed.",
+              "My friend, whose mom is sick, needs support."
             ],
             "examples_fail": [
               "boss (bare noun)",
@@ -776,7 +827,10 @@
             "examples_pass": [
               "What does your neighbor do?",
               "The book, which I bought yesterday, is great.",
-              "How about you?"
+              "How about you?",
+              "What about you?",
+              "How about you?",
+              "And you?"
             ],
             "examples_fail": [
               "boss (bare noun)",
@@ -1194,7 +1248,10 @@
             "examples_pass": [
               "The teacher who taught me French... My French teacher, who is from Paris,...",
               "My sister, who lives in Rio, visited me.",
-              "The book, which I bought yesterday, is great."
+              "The book, which I bought yesterday, is great.",
+              "My friend Maria, who lives in Rio and works as a teacher, is visiting.",
+              "My uncle, who's a doctor and lives in Spain, called.",
+              "My boss, who's been mentoring me for years, retired."
             ],
             "examples_fail": [
               "boss (bare noun)",
@@ -1210,7 +1267,10 @@
             "examples_pass": [
               "The city where I work... São Paulo, where I work,...",
               "The book, which I bought yesterday, is great.",
-              "Paris, where I lived, is beautiful."
+              "Paris, where I lived, is beautiful.",
+              "The book, which won the Pulitzer in 2019, is incredible.",
+              "Her house, which she just bought, is huge.",
+              "This restaurant, which opened last year, is my favorite."
             ],
             "examples_fail": [
               "boss (bare noun)",
@@ -1226,7 +1286,10 @@
             "examples_pass": [
               "The book that won the award... My favorite book, which won the award,...",
               "My sister, who lives in Rio, visited me.",
-              "The book, which I bought yesterday, is great."
+              "The book, which I bought yesterday, is great.",
+              "Tell me about someone special.",
+              "How about you?",
+              "What about you?"
             ],
             "examples_fail": [
               "boss (bare noun)",
@@ -1259,7 +1322,10 @@
             "examples_pass": [
               "The friend who I met at university lives nearby.",
               "Paris, where I lived, is beautiful.",
-              "The man, who is my boss, called."
+              "The man, who is my boss, called.",
+              "My grandmother, who turned 90 last week, is amazing.",
+              "My friend, who just got engaged, is glowing.",
+              "My professor, who's an expert in physics, inspired me."
             ],
             "examples_fail": [
               "boss (bare noun)",
@@ -1275,7 +1341,10 @@
             "examples_pass": [
               "Pedro, who I met at university, just got married.",
               "The man, who is my boss, called.",
-              "My sister, who lives in Rio, visited me."
+              "My sister, who lives in Rio, visited me.",
+              "The novel, which I read in two days, is brilliant.",
+              "His startup, which launched in March, is growing fast.",
+              "Our team, which just won the championship, is celebrating."
             ],
             "examples_fail": [
               "boss (bare noun)",
@@ -1291,7 +1360,10 @@
             "examples_pass": [
               "How about your friends?",
               "The book, which I bought yesterday, is great.",
-              "How about you?"
+              "How about you?",
+              "And you?",
+              "How about you?",
+              "What about you?"
             ],
             "examples_fail": [
               "boss (bare noun)",

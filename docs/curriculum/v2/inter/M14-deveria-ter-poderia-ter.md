@@ -639,7 +639,7 @@
    **hidden_prompt**: "user uses 'X might have + past participle'"
    **hint_pt**: "She might have lost her phone."
    **hint_en**: "She might have lost her phone."
-   **example_pass**: She might have lost her phone. | She might have forgotten. | We shouldn't have waited.
+   **example_pass**: She might have lost her phone. | She might have forgotten. | We shouldn't have waited. | I should have called her. | I should have studied more. | I ought to have apologized.
    **example_fail**: told (bare verb) | You should tell me (present advice, not past regret) | You told me (past simple, no modal perfect)
 
 2. **id**: 2
@@ -648,7 +648,7 @@
    **hidden_prompt**: "user uses 'X needn't have + past participle'"
    **hint_pt**: "You needn't have apologized — it was fine."
    **hint_en**: "You needn't have apologized — it was fine."
-   **example_pass**: You needn't have apologized — it was fine. | You should have told me earlier. | I could have helped you.
+   **example_pass**: You needn't have apologized — it was fine. | You should have told me earlier. | I could have helped you. | I could have helped you. | I could have done better. | I could have warned them.
    **example_fail**: told (bare verb) | You should tell me (present advice, not past regret) | You told me (past simple, no modal perfect)
 
 3. **id**: 3
@@ -657,7 +657,7 @@
    **hidden_prompt**: "user uses another 'might have' or 'needn't have'"
    **hint_pt**: "He might have changed his mind."
    **hint_en**: "He might have changed his mind."
-   **example_pass**: He might have changed his mind. | She might have forgotten. | We shouldn't have waited.
+   **example_pass**: He might have changed his mind. | She might have forgotten. | We shouldn't have waited. | What should you have done? | Any regrets? | How about you?
    **example_fail**: told (bare verb) | You should tell me (present advice, not past regret) | You told me (past simple, no modal perfect)
 
 **Closing cue**: Charlotte fecha com "Subtle speculation!" quando obj_3 baterem.
@@ -694,7 +694,7 @@
    **hidden_prompt**: "user uses 'they might have + past participle'"
    **hint_pt**: "They might have noticed."
    **hint_en**: "They might have noticed."
-   **example_pass**: They might have noticed. | We shouldn't have waited. | You should have told me earlier.
+   **example_pass**: They might have noticed. | We shouldn't have waited. | You should have told me earlier. | I should have left earlier. | I should have brought a jacket. | I should have said yes.
    **example_fail**: told (bare verb) | You should tell me (present advice, not past regret) | You told me (past simple, no modal perfect)
 
 2. **id**: 2
@@ -703,7 +703,7 @@
    **hidden_prompt**: "user uses 'you needn't have + past participle'"
    **hint_pt**: "You needn't have worried — it happens."
    **hint_en**: "You needn't have worried — it happens."
-   **example_pass**: You needn't have worried — it happens. | You should have told me earlier. | I could have helped you.
+   **example_pass**: You needn't have worried — it happens. | You should have told me earlier. | I could have helped you. | I could have taken the train. | I could have called a friend. | I could have stayed home.
    **example_fail**: told (bare verb) | You should tell me (present advice, not past regret) | You told me (past simple, no modal perfect)
 
 3. **id**: 3
@@ -712,7 +712,7 @@
    **hidden_prompt**: "user asks Charlotte a follow-up"
    **hint_pt**: "Did anyone reply?"
    **hint_en**: "Did anyone reply?"
-   **example_pass**: Did anyone reply? | She might have forgotten. | How about you?
+   **example_pass**: Did anyone reply? | She might have forgotten. | How about you? | And you? | How about you? | What about you?
    **example_fail**: told (bare verb) | You should tell me (present advice, not past regret) | You told me (past simple, no modal perfect)
 
 **Closing cue**: Charlotte fecha com "Reassurance received!" quando obj_3 baterem.

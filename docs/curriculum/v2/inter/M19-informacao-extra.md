@@ -105,7 +105,7 @@
    **hidden_prompt**: "user uses 'X, who + verb, + main clause'"
    **hint_pt**: "My sister, who lives in Curitiba, is a nurse."
    **hint_en**: "My sister, who lives in Curitiba, is a nurse."
-   **example_pass**: My sister, who lives in Curitiba, is a nurse. | Paris, where I lived, is beautiful. | The man, who is my boss, called.
+   **example_pass**: My sister, who lives in Curitiba, is a nurse. | Paris, where I lived, is beautiful. | The man, who is my boss, called. | My brother, who lives in Lisbon, is visiting. | Anna, who works with me, is amazing. | The new manager, who joined last month, is great.
    **example_fail**: boss (bare noun) | The man is my boss who called (clause misplaced) | My boss called (no non-defining clause)
 
 2. **id**: 2
@@ -114,7 +114,7 @@
    **hidden_prompt**: "user uses another non-defining 'who'"
    **hint_pt**: "My best friend, who I've known since school, lives nearby."
    **hint_en**: "My best friend, who I've known since school, lives nearby."
-   **example_pass**: My best friend, who I've known since school, lives nearby. | The book, which I bought yesterday, is great. | Paris, where I lived, is beautiful.
+   **example_pass**: My best friend, who I've known since school, lives nearby. | The book, which I bought yesterday, is great. | Paris, where I lived, is beautiful. | My laptop, which is brand new, broke. | This book, which I borrowed, is great. | His car, which is red, is parked outside.
    **example_fail**: boss (bare noun) | The man is my boss who called (clause misplaced) | My boss called (no non-defining clause)
 
 3. **id**: 3
@@ -123,7 +123,7 @@
    **hidden_prompt**: "user uses 'colleague/boss, who + verb'"
    **hint_pt**: "My boss, who is from England, speaks Portuguese well."
    **hint_en**: "My boss, who is from England, speaks Portuguese well."
-   **example_pass**: My boss, who is from England, speaks Portuguese well. | The man, who is my boss, called. | My sister, who lives in Rio, visited me.
+   **example_pass**: My boss, who is from England, speaks Portuguese well. | The man, who is my boss, called. | My sister, who lives in Rio, visited me. | Tell me about someone close to you. | How about you? | What about you?
    **example_fail**: boss (bare noun) | The man is my boss who called (clause misplaced) | My boss called (no non-defining clause)
 
 **Closing cue**: Charlotte fecha com "People described!" quando obj_3 baterem.
@@ -160,7 +160,7 @@
    **hidden_prompt**: "user uses 'X, who + extra info'"
    **hint_pt**: "My uncle, who works in Germany, sends me photos every week."
    **hint_en**: "My uncle, who works in Germany, sends me photos every week."
-   **example_pass**: My uncle, who works in Germany, sends me photos every week. | The man, who is my boss, called. | My sister, who lives in Rio, visited me.
+   **example_pass**: My uncle, who works in Germany, sends me photos every week. | The man, who is my boss, called. | My sister, who lives in Rio, visited me. | My best friend, who lives in Spain, called me. | My boss, who is very kind, helped me. | My cousin, who is a doctor, gave me advice.
    **example_fail**: boss (bare noun) | The man is my boss who called (clause misplaced) | My boss called (no non-defining clause)
 
 2. **id**: 2
@@ -169,7 +169,7 @@
    **hidden_prompt**: "user uses another non-defining clause"
    **hint_pt**: "My cousin, who I see every Christmas, just started college."
    **hint_en**: "My cousin, who I see every Christmas, just started college."
-   **example_pass**: My cousin, who I see every Christmas, just started college. | The book, which I bought yesterday, is great. | Paris, where I lived, is beautiful.
+   **example_pass**: My cousin, who I see every Christmas, just started college. | The book, which I bought yesterday, is great. | Paris, where I lived, is beautiful. | This phone, which I bought last week, is amazing. | That movie, which won an Oscar, was great. | The cafe, which just opened, is wonderful.
    **example_fail**: boss (bare noun) | The man is my boss who called (clause misplaced) | My boss called (no non-defining clause)
 
 3. **id**: 3
@@ -178,7 +178,7 @@
    **hidden_prompt**: "user asks Charlotte about her relative"
    **hint_pt**: "When is your aunt arriving?"
    **hint_en**: "When is your aunt arriving?"
-   **example_pass**: When is your aunt arriving? | The book, which I bought yesterday, is great. | How about you?
+   **example_pass**: When is your aunt arriving? | The book, which I bought yesterday, is great. | How about you? | What about you? | How about you? | And you?
    **example_fail**: boss (bare noun) | The man is my boss who called (clause misplaced) | My boss called (no non-defining clause)
 
 **Closing cue**: Charlotte fecha com "Family ties shared!" quando obj_3 baterem.
@@ -283,7 +283,7 @@
    **hidden_prompt**: "user uses 'X, which + extra info' for place"
    **hint_pt**: "Rio, which is famous for its beaches, has amazing views."
    **hint_en**: "Rio, which is famous for its beaches, has amazing views."
-   **example_pass**: Rio, which is famous for its beaches, has amazing views. | My sister, who lives in Rio, visited me. | The book, which I bought yesterday, is great.
+   **example_pass**: Rio, which is famous for its beaches, has amazing views. | My sister, who lives in Rio, visited me. | The book, which I bought yesterday, is great. | Paris, where I was born, is beautiful. | Tokyo, where I worked once, is huge. | My hometown, where my family still lives, is small.
    **example_fail**: boss (bare noun) | The man is my boss who called (clause misplaced) | My boss called (no non-defining clause)
 
 2. **id**: 2
@@ -292,7 +292,7 @@
    **hidden_prompt**: "user uses 'X, which + extra info' for object"
    **hint_pt**: "My car, which I bought last year, is electric."
    **hint_en**: "My car, which I bought last year, is electric."
-   **example_pass**: My car, which I bought last year, is electric. | Paris, where I lived, is beautiful. | The man, who is my boss, called.
+   **example_pass**: My car, which I bought last year, is electric. | Paris, where I lived, is beautiful. | The man, who is my boss, called. | 2020, when the pandemic started, was hard. | Last summer, when I graduated, was special. | December, when we got married, was magical.
    **example_fail**: boss (bare noun) | The man is my boss who called (clause misplaced) | My boss called (no non-defining clause)
 
 3. **id**: 3
@@ -301,7 +301,7 @@
    **hidden_prompt**: "user uses 'X happened, which + reaction'"
    **hint_pt**: "He forgot my birthday, which hurt my feelings."
    **hint_en**: "He forgot my birthday, which hurt my feelings."
-   **example_pass**: He forgot my birthday, which hurt my feelings. | The book, which I bought yesterday, is great. | Paris, where I lived, is beautiful.
+   **example_pass**: He forgot my birthday, which hurt my feelings. | The book, which I bought yesterday, is great. | Paris, where I lived, is beautiful. | Where would you take me? | How about you? | What about you?
    **example_fail**: boss (bare noun) | The man is my boss who called (clause misplaced) | My boss called (no non-defining clause)
 
 **Closing cue**: Charlotte fecha com "Extra info mastered!" quando obj_3 baterem.
@@ -338,7 +338,7 @@
    **hidden_prompt**: "user uses 'X, which + extra info, is my favorite'"
    **hint_pt**: "My favorite city is Florianópolis, which has beautiful beaches."
    **hint_en**: "My favorite city is Florianópolis, which has beautiful beaches."
-   **example_pass**: My favorite city is Florianópolis, which has beautiful beaches. | My sister, who lives in Rio, visited me. | The book, which I bought yesterday, is great.
+   **example_pass**: My favorite city is Florianópolis, which has beautiful beaches. | My sister, who lives in Rio, visited me. | The book, which I bought yesterday, is great. | My apartment, where I've lived for five years, is cozy. | The park, where we used to play, is gone. | Madrid, where I studied, holds great memories.
    **example_fail**: boss (bare noun) | The man is my boss who called (clause misplaced) | My boss called (no non-defining clause)
 
 2. **id**: 2
@@ -347,7 +347,7 @@
    **hidden_prompt**: "user uses another non-defining 'which'"
    **hint_pt**: "My favorite book, which I've read twice, is by Saramago."
    **hint_en**: "My favorite book, which I've read twice, is by Saramago."
-   **example_pass**: My favorite book, which I've read twice, is by Saramago. | Paris, where I lived, is beautiful. | The man, who is my boss, called.
+   **example_pass**: My favorite book, which I've read twice, is by Saramago. | Paris, where I lived, is beautiful. | The man, who is my boss, called. | The day when I met him was rainy. | The year when I moved was 2018. | The month when we opened was June.
    **example_fail**: boss (bare noun) | The man is my boss who called (clause misplaced) | My boss called (no non-defining clause)
 
 3. **id**: 3
@@ -356,7 +356,7 @@
    **hidden_prompt**: "user asks Charlotte more about Lisbon or her favorites"
    **hint_pt**: "What do you love about Lisbon?"
    **hint_en**: "What do you love about Lisbon?"
-   **example_pass**: What do you love about Lisbon? | Paris, where I lived, is beautiful. | How about you?
+   **example_pass**: What do you love about Lisbon? | Paris, where I lived, is beautiful. | How about you? | And you? | How about you? | What about you?
    **example_fail**: boss (bare noun) | The man is my boss who called (clause misplaced) | My boss called (no non-defining clause)
 
 **Closing cue**: Charlotte fecha com "Favorites swapped!" quando obj_3 baterem.
@@ -461,7 +461,7 @@
    **hidden_prompt**: "user uses 'X, whose father/mother/sister/brother + verb'"
    **hint_pt**: "Carla, whose mother is a chef, cooks amazing food."
    **hint_en**: "Carla, whose mother is a chef, cooks amazing food."
-   **example_pass**: Carla, whose mother is a chef, cooks amazing food. | Paris, where I lived, is beautiful. | The man, who is my boss, called.
+   **example_pass**: Carla, whose mother is a chef, cooks amazing food. | Paris, where I lived, is beautiful. | The man, who is my boss, called. | The man whose car broke down is my neighbor. | The girl whose dog ran away cried. | The boy whose father is a chef cooks well.
    **example_fail**: boss (bare noun) | The man is my boss who called (clause misplaced) | My boss called (no non-defining clause)
 
 2. **id**: 2
@@ -470,7 +470,7 @@
    **hidden_prompt**: "user uses 'X, whose + object + verb'"
    **hint_pt**: "My neighbor, whose car is always parked badly, never apologizes."
    **hint_en**: "My neighbor, whose car is always parked badly, never apologizes."
-   **example_pass**: My neighbor, whose car is always parked badly, never apologizes. | Paris, where I lived, is beautiful. | The man, who is my boss, called.
+   **example_pass**: My neighbor, whose car is always parked badly, never apologizes. | Paris, where I lived, is beautiful. | The man, who is my boss, called. | My friend, whose wedding is next month, is excited. | The teacher, whose son is in my class, is nice. | The lady, whose cat I feed, is lovely.
    **example_fail**: boss (bare noun) | The man is my boss who called (clause misplaced) | My boss called (no non-defining clause)
 
 3. **id**: 3
@@ -479,7 +479,7 @@
    **hidden_prompt**: "user uses 'X, whose + work/quality + verb'"
    **hint_pt**: "My friend, whose paintings are amazing, just had a show."
    **hint_en**: "My friend, whose paintings are amazing, just had a show."
-   **example_pass**: My friend, whose paintings are amazing, just had a show. | Paris, where I lived, is beautiful. | The man, who is my boss, called.
+   **example_pass**: My friend, whose paintings are amazing, just had a show. | Paris, where I lived, is beautiful. | The man, who is my boss, called. | Who do you know with an interesting story? | How about you? | What about you?
    **example_fail**: boss (bare noun) | The man is my boss who called (clause misplaced) | My boss called (no non-defining clause)
 
 **Closing cue**: Charlotte fecha com "Possessions mapped!" quando obj_3 baterem.
@@ -516,7 +516,7 @@
    **hidden_prompt**: "user uses 'X, whose + noun, + verb'"
    **hint_pt**: "My neighbor, whose kids are always playing outside, is great with them."
    **hint_en**: "My neighbor, whose kids are always playing outside, is great with them."
-   **example_pass**: My neighbor, whose kids are always playing outside, is great with them. | The book, which I bought yesterday, is great. | Paris, where I lived, is beautiful.
+   **example_pass**: My neighbor, whose kids are always playing outside, is great with them. | The book, which I bought yesterday, is great. | Paris, where I lived, is beautiful. | The kid whose bike was stolen was sad. | The author whose books I love is here. | The neighbor whose music is loud is moving out.
    **example_fail**: boss (bare noun) | The man is my boss who called (clause misplaced) | My boss called (no non-defining clause)
 
 2. **id**: 2
@@ -525,7 +525,7 @@
    **hidden_prompt**: "user uses another non-defining 'whose'"
    **hint_pt**: "An old friend, whose family I know well, called me yesterday."
    **hint_en**: "An old friend, whose family I know well, called me yesterday."
-   **example_pass**: An old friend, whose family I know well, called me yesterday. | My sister, who lives in Rio, visited me. | The book, which I bought yesterday, is great.
+   **example_pass**: An old friend, whose family I know well, called me yesterday. | My sister, who lives in Rio, visited me. | The book, which I bought yesterday, is great. | My colleague, whose project I helped with, got a promotion. | My cousin, whose baby was born last week, is overjoyed. | My friend, whose mom is sick, needs support.
    **example_fail**: boss (bare noun) | The man is my boss who called (clause misplaced) | My boss called (no non-defining clause)
 
 3. **id**: 3
@@ -534,7 +534,7 @@
    **hidden_prompt**: "user asks Charlotte more about her neighbor"
    **hint_pt**: "What does your neighbor do?"
    **hint_en**: "What does your neighbor do?"
-   **example_pass**: What does your neighbor do? | The book, which I bought yesterday, is great. | How about you?
+   **example_pass**: What does your neighbor do? | The book, which I bought yesterday, is great. | How about you? | What about you? | How about you? | And you?
    **example_fail**: boss (bare noun) | The man is my boss who called (clause misplaced) | My boss called (no non-defining clause)
 
 **Closing cue**: Charlotte fecha com "Connections explained!" quando obj_3 baterem.
@@ -817,7 +817,7 @@
    **hidden_prompt**: "user uses both defining and non-defining for a person"
    **hint_pt**: "The teacher who taught me French... My French teacher, who is from Paris,..."
    **hint_en**: "The teacher who taught me French... My French teacher, who is from Paris,..."
-   **example_pass**: The teacher who taught me French... My French teacher, who is from Paris,... | My sister, who lives in Rio, visited me. | The book, which I bought yesterday, is great.
+   **example_pass**: The teacher who taught me French... My French teacher, who is from Paris,... | My sister, who lives in Rio, visited me. | The book, which I bought yesterday, is great. | My friend Maria, who lives in Rio and works as a teacher, is visiting. | My uncle, who's a doctor and lives in Spain, called. | My boss, who's been mentoring me for years, retired.
    **example_fail**: boss (bare noun) | The man is my boss who called (clause misplaced) | My boss called (no non-defining clause)
 
 2. **id**: 2
@@ -826,7 +826,7 @@
    **hidden_prompt**: "user uses both for a place"
    **hint_pt**: "The city where I work... São Paulo, where I work,..."
    **hint_en**: "The city where I work... São Paulo, where I work,..."
-   **example_pass**: The city where I work... São Paulo, where I work,... | The book, which I bought yesterday, is great. | Paris, where I lived, is beautiful.
+   **example_pass**: The city where I work... São Paulo, where I work,... | The book, which I bought yesterday, is great. | Paris, where I lived, is beautiful. | The book, which won the Pulitzer in 2019, is incredible. | Her house, which she just bought, is huge. | This restaurant, which opened last year, is my favorite.
    **example_fail**: boss (bare noun) | The man is my boss who called (clause misplaced) | My boss called (no non-defining clause)
 
 3. **id**: 3
@@ -835,7 +835,7 @@
    **hidden_prompt**: "user uses both for an object"
    **hint_pt**: "The book that won the award... My favorite book, which won the award,..."
    **hint_en**: "The book that won the award... My favorite book, which won the award,..."
-   **example_pass**: The book that won the award... My favorite book, which won the award,... | My sister, who lives in Rio, visited me. | The book, which I bought yesterday, is great.
+   **example_pass**: The book that won the award... My favorite book, which won the award,... | My sister, who lives in Rio, visited me. | The book, which I bought yesterday, is great. | Tell me about someone special. | How about you? | What about you?
    **example_fail**: boss (bare noun) | The man is my boss who called (clause misplaced) | My boss called (no non-defining clause)
 
 **Closing cue**: Charlotte fecha com "Distinction mastered!" quando obj_3 baterem.
@@ -872,7 +872,7 @@
    **hidden_prompt**: "user uses defining clause (no commas)"
    **hint_pt**: "The friend who I met at university lives nearby."
    **hint_en**: "The friend who I met at university lives nearby."
-   **example_pass**: The friend who I met at university lives nearby. | Paris, where I lived, is beautiful. | The man, who is my boss, called.
+   **example_pass**: The friend who I met at university lives nearby. | Paris, where I lived, is beautiful. | The man, who is my boss, called. | My grandmother, who turned 90 last week, is amazing. | My friend, who just got engaged, is glowing. | My professor, who's an expert in physics, inspired me.
    **example_fail**: boss (bare noun) | The man is my boss who called (clause misplaced) | My boss called (no non-defining clause)
 
 2. **id**: 2
@@ -881,7 +881,7 @@
    **hidden_prompt**: "user uses non-defining with commas"
    **hint_pt**: "Pedro, who I met at university, just got married."
    **hint_en**: "Pedro, who I met at university, just got married."
-   **example_pass**: Pedro, who I met at university, just got married. | The man, who is my boss, called. | My sister, who lives in Rio, visited me.
+   **example_pass**: Pedro, who I met at university, just got married. | The man, who is my boss, called. | My sister, who lives in Rio, visited me. | The novel, which I read in two days, is brilliant. | His startup, which launched in March, is growing fast. | Our team, which just won the championship, is celebrating.
    **example_fail**: boss (bare noun) | The man is my boss who called (clause misplaced) | My boss called (no non-defining clause)
 
 3. **id**: 3
@@ -890,7 +890,7 @@
    **hidden_prompt**: "user asks Charlotte or adds another mix"
    **hint_pt**: "How about your friends?"
    **hint_en**: "How about your friends?"
-   **example_pass**: How about your friends? | The book, which I bought yesterday, is great. | How about you?
+   **example_pass**: How about your friends? | The book, which I bought yesterday, is great. | How about you? | And you? | How about you? | What about you?
    **example_fail**: boss (bare noun) | The man is my boss who called (clause misplaced) | My boss called (no non-defining clause)
 
 **Closing cue**: Charlotte fecha com "Both styles fluent!" quando obj_3 baterem.

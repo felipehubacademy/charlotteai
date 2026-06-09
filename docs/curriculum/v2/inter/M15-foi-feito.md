@@ -108,7 +108,7 @@
    **hidden_prompt**: "user uses 'X is/are + past participle' for food or product"
    **hint_pt**: "Coffee is grown in many countries."
    **hint_en**: "Coffee is grown in many countries."
-   **example_pass**: Coffee is grown in many countries. | The letter was sent yesterday. | The book was written by her.
+   **example_pass**: Coffee is grown in many countries. | The letter was sent yesterday. | The book was written by her. | The cake was made by my grandmother. | The house was built in 1990. | The book was written by Tolkien.
    **example_fail**: written (bare participle) | She wrote the book (active, not passive) | The book writes (wrong voice)
 
 2. **id**: 2
@@ -117,7 +117,7 @@
    **hidden_prompt**: "user uses 'X is/are spoken' or similar passive about language"
    **hint_pt**: "Spanish is spoken across Latin America."
    **hint_en**: "Spanish is spoken across Latin America."
-   **example_pass**: Spanish is spoken across Latin America. | The cake is made by my mom. | The house was built in 1990.
+   **example_pass**: Spanish is spoken across Latin America. | The cake is made by my mom. | The house was built in 1990. | The window was broken last night. | The car was stolen yesterday. | The keys were lost in the park.
    **example_fail**: written (bare participle) | She wrote the book (active, not passive) | The book writes (wrong voice)
 
 3. **id**: 3
@@ -126,7 +126,7 @@
    **hidden_prompt**: "user uses another passive present simple"
    **hint_pt**: "Cheese is made from milk."
    **hint_en**: "Cheese is made from milk."
-   **example_pass**: Cheese is made from milk. | The letter was sent yesterday. | The book was written by her.
+   **example_pass**: Cheese is made from milk. | The letter was sent yesterday. | The book was written by her. | What was made for you? | How about you? | What about you?
    **example_fail**: written (bare participle) | She wrote the book (active, not passive) | The book writes (wrong voice)
 
 **Closing cue**: Charlotte fecha com "General facts collected!" quando obj_3 baterem.
@@ -163,7 +163,7 @@
    **hidden_prompt**: "user uses passive 'is/are + past participle' for Brazilian product"
    **hint_pt**: "Coffee is grown in many parts of Brazil."
    **hint_en**: "Coffee is grown in many parts of Brazil."
-   **example_pass**: Coffee is grown in many parts of Brazil. | The house was built in 1990. | The letter was sent yesterday.
+   **example_pass**: Coffee is grown in many parts of Brazil. | The house was built in 1990. | The letter was sent yesterday. | The painting was made by a friend. | The song was written in 2020. | The bread was baked this morning.
    **example_fail**: written (bare participle) | She wrote the book (active, not passive) | The book writes (wrong voice)
 
 2. **id**: 2
@@ -172,7 +172,7 @@
    **hidden_prompt**: "user uses another passive sentence"
    **hint_pt**: "Cars are made in São Paulo and other cities."
    **hint_en**: "Cars are made in São Paulo and other cities."
-   **example_pass**: Cars are made in São Paulo and other cities. | The cake is made by my mom. | The house was built in 1990.
+   **example_pass**: Cars are made in São Paulo and other cities. | The cake is made by my mom. | The house was built in 1990. | The package was delivered yesterday. | The decision was made last week. | The email was sent on Monday.
    **example_fail**: written (bare participle) | She wrote the book (active, not passive) | The book writes (wrong voice)
 
 3. **id**: 3
@@ -181,7 +181,7 @@
    **hidden_prompt**: "user asks 'What about your country?' or similar"
    **hint_pt**: "What's grown in your country?"
    **hint_en**: "What's grown in your country?"
-   **example_pass**: What's grown in your country? | The book was written by her. | How about you?
+   **example_pass**: What's grown in your country? | The book was written by her. | How about you? | What about you? | How about you? | And you?
    **example_fail**: written (bare participle) | She wrote the book (active, not passive) | The book writes (wrong voice)
 
 **Closing cue**: Charlotte fecha com "Country facts shared!" quando obj_3 baterem.
@@ -463,7 +463,7 @@
    **hidden_prompt**: "user uses 'X is/are being + past participle'"
    **hint_pt**: "The kitchen is being renovated."
    **hint_en**: "The kitchen is being renovated."
-   **example_pass**: The kitchen is being renovated. | The house was built in 1990. | The letter was sent yesterday.
+   **example_pass**: The kitchen is being renovated. | The house was built in 1990. | The letter was sent yesterday. | English is spoken here. | Coffee is grown in Brazil. | Rice is eaten daily.
    **example_fail**: written (bare participle) | She wrote the book (active, not passive) | The book writes (wrong voice)
 
 2. **id**: 2
@@ -472,7 +472,7 @@
    **hidden_prompt**: "user uses another 'is/are being + past participle'"
    **hint_pt**: "A new metro line is being built."
    **hint_en**: "A new metro line is being built."
-   **example_pass**: A new metro line is being built. | The cake is made by my mom. | The house was built in 1990.
+   **example_pass**: A new metro line is being built. | The cake is made by my mom. | The house was built in 1990. | The streets are cleaned every morning. | Bread is delivered fresh. | The mail is delivered at noon.
    **example_fail**: written (bare participle) | She wrote the book (active, not passive) | The book writes (wrong voice)
 
 3. **id**: 3
@@ -481,7 +481,7 @@
    **hidden_prompt**: "user uses passive present continuous for abstract process"
    **hint_pt**: "A new law is being discussed."
    **hint_en**: "A new law is being discussed."
-   **example_pass**: A new law is being discussed. | The cake is made by my mom. | The house was built in 1990.
+   **example_pass**: A new law is being discussed. | The cake is made by my mom. | The house was built in 1990. | What's done where you live? | How about you? | What about you?
    **example_fail**: written (bare participle) | She wrote the book (active, not passive) | The book writes (wrong voice)
 
 **Closing cue**: Charlotte fecha com "Ongoing projects mapped!" quando obj_3 baterem.
@@ -518,7 +518,7 @@
    **hidden_prompt**: "user uses 'X is being + past participle'"
    **hint_pt**: "My bathroom is being renovated."
    **hint_en**: "My bathroom is being renovated."
-   **example_pass**: My bathroom is being renovated. | The cake is made by my mom. | The house was built in 1990.
+   **example_pass**: My bathroom is being renovated. | The cake is made by my mom. | The house was built in 1990. | Spanish is spoken in many countries. | Tea is grown in India. | Soccer is played everywhere.
    **example_fail**: written (bare participle) | She wrote the book (active, not passive) | The book writes (wrong voice)
 
 2. **id**: 2
@@ -527,7 +527,7 @@
    **hidden_prompt**: "user adds another passive continuous"
    **hint_pt**: "New tiles are being installed."
    **hint_en**: "New tiles are being installed."
-   **example_pass**: New tiles are being installed. | The house was built in 1990. | The letter was sent yesterday.
+   **example_pass**: New tiles are being installed. | The house was built in 1990. | The letter was sent yesterday. | The trash is collected every Tuesday. | The streets are washed weekly. | Bills are paid online.
    **example_fail**: written (bare participle) | She wrote the book (active, not passive) | The book writes (wrong voice)
 
 3. **id**: 3
@@ -536,7 +536,7 @@
    **hidden_prompt**: "user asks Charlotte about her ongoing changes"
    **hint_pt**: "What's being changed in your life?"
    **hint_en**: "What's being changed in your life?"
-   **example_pass**: What's being changed in your life? | The house was built in 1990. | How about you?
+   **example_pass**: What's being changed in your life? | The house was built in 1990. | How about you? | What about you? | How about you? | And you?
    **example_fail**: written (bare participle) | She wrote the book (active, not passive) | The book writes (wrong voice)
 
 **Closing cue**: Charlotte fecha com "Changes shared!" quando obj_3 baterem.
@@ -641,7 +641,7 @@
    **hidden_prompt**: "user uses 'X has/have been + past participle'"
    **hint_pt**: "The new app has been launched."
    **hint_en**: "The new app has been launched."
-   **example_pass**: The new app has been launched. | The book was written by her. | The cake is made by my mom.
+   **example_pass**: The new app has been launched. | The book was written by her. | The cake is made by my mom. | My phone is being repaired. | The car is being washed. | Dinner is being prepared.
    **example_fail**: written (bare participle) | She wrote the book (active, not passive) | The book writes (wrong voice)
 
 2. **id**: 2
@@ -650,7 +650,7 @@
    **hidden_prompt**: "user uses another passive present perfect"
    **hint_pt**: "Three changes have been made to the policy."
    **hint_en**: "Three changes have been made to the policy."
-   **example_pass**: Three changes have been made to the policy. | The book was written by her. | The cake is made by my mom.
+   **example_pass**: Three changes have been made to the policy. | The book was written by her. | The cake is made by my mom. | The bridge was being built last year. | My house was being painted yesterday. | The road was being fixed.
    **example_fail**: written (bare participle) | She wrote the book (active, not passive) | The book writes (wrong voice)
 
 3. **id**: 3
@@ -659,7 +659,7 @@
    **hidden_prompt**: "user uses 'has/have been + past participle' for home/work"
    **hint_pt**: "The painting has been finished."
    **hint_en**: "The painting has been finished."
-   **example_pass**: The painting has been finished. | The cake is made by my mom. | The house was built in 1990.
+   **example_pass**: The painting has been finished. | The cake is made by my mom. | The house was built in 1990. | Is anything being done at your place? | How about you? | What about you?
    **example_fail**: written (bare participle) | She wrote the book (active, not passive) | The book writes (wrong voice)
 
 **Closing cue**: Charlotte fecha com "Recent accomplishments noted!" quando obj_3 baterem.
@@ -696,7 +696,7 @@
    **hidden_prompt**: "user uses 'X has been + past participle'"
    **hint_pt**: "The website has been redesigned."
    **hint_en**: "The website has been redesigned."
-   **example_pass**: The website has been redesigned. | The house was built in 1990. | The letter was sent yesterday.
+   **example_pass**: The website has been redesigned. | The house was built in 1990. | The letter was sent yesterday. | The office is being renovated. | My bag is being repaired. | Lunch is being served.
    **example_fail**: written (bare participle) | She wrote the book (active, not passive) | The book writes (wrong voice)
 
 2. **id**: 2
@@ -705,7 +705,7 @@
    **hidden_prompt**: "user uses another passive present perfect"
    **hint_pt**: "Two new features have been added."
    **hint_en**: "Two new features have been added."
-   **example_pass**: Two new features have been added. | The cake is made by my mom. | The house was built in 1990.
+   **example_pass**: Two new features have been added. | The cake is made by my mom. | The house was built in 1990. | The walls were being painted yesterday. | The kitchen was being remodeled. | The garden was being watered.
    **example_fail**: written (bare participle) | She wrote the book (active, not passive) | The book writes (wrong voice)
 
 3. **id**: 3
@@ -714,7 +714,7 @@
    **hidden_prompt**: "user asks Charlotte about her team's accomplishments"
    **hint_pt**: "What's been finished on your team?"
    **hint_en**: "What's been finished on your team?"
-   **example_pass**: What's been finished on your team? | The book was written by her. | How about you?
+   **example_pass**: What's been finished on your team? | The book was written by her. | How about you? | What about you? | How about you? | And you?
    **example_fail**: written (bare participle) | She wrote the book (active, not passive) | The book writes (wrong voice)
 
 **Closing cue**: Charlotte fecha com "Team wins shared!" quando obj_3 baterem.

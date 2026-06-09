@@ -161,7 +161,10 @@
             "examples_pass": [
               "She's the friend who helps me.",
               "The book that I read was great.",
-              "She's the person whose car broke down."
+              "She's the person whose car broke down.",
+              "The man who lives next door is nice.",
+              "The person who called you is my boss.",
+              "The woman who teaches us is great."
             ],
             "examples_fail": [
               "boss (bare noun)",
@@ -177,7 +180,10 @@
             "examples_pass": [
               "He's the teacher who taught me.",
               "The city where I grew up is small.",
-              "The man who called is my boss."
+              "The man who called is my boss.",
+              "The book which I read was amazing.",
+              "The movie that we saw was boring.",
+              "The car which broke down is old."
             ],
             "examples_fail": [
               "boss (bare noun)",
@@ -193,7 +199,10 @@
             "examples_pass": [
               "She's the colleague who sits next to me.",
               "The city where I grew up is small.",
-              "The man who called is my boss."
+              "The man who called is my boss.",
+              "Who is the person you talked about?",
+              "What's the thing you mentioned?",
+              "And you, who do you know?"
             ],
             "examples_fail": [
               "boss (bare noun)",
@@ -226,7 +235,10 @@
             "examples_pass": [
               "My mother is someone who never gives up.",
               "She's the person whose car broke down.",
-              "The city where I grew up is small."
+              "The city where I grew up is small.",
+              "My friend who works in Madrid visited me.",
+              "The teacher who taught me English moved.",
+              "The guy who fixed my bike is my neighbor."
             ],
             "examples_fail": [
               "boss (bare noun)",
@@ -242,7 +254,10 @@
             "examples_pass": [
               "I have a friend who always listens.",
               "The book that I read was great.",
-              "She's the person whose car broke down."
+              "She's the person whose car broke down.",
+              "The book that changed my life is here.",
+              "The song which I love is on.",
+              "The phone that I bought broke."
             ],
             "examples_fail": [
               "boss (bare noun)",
@@ -258,7 +273,10 @@
             "examples_pass": [
               "Who inspires you?",
               "The city where I grew up is small.",
-              "How about you?"
+              "How about you?",
+              "What about you?",
+              "How about you?",
+              "And you?"
             ],
             "examples_fail": [
               "boss (bare noun)",
@@ -425,7 +443,10 @@
             "examples_pass": [
               "It's a book that changed my life.",
               "She's the person whose car broke down.",
-              "The city where I grew up is small."
+              "The city where I grew up is small.",
+              "The place where I grew up is small.",
+              "The town where I was born is quiet.",
+              "The city where she lives is huge."
             ],
             "examples_fail": [
               "boss (bare noun)",
@@ -441,7 +462,10 @@
             "examples_pass": [
               "I have a phone which never breaks.",
               "The book that I read was great.",
-              "She's the person whose car broke down."
+              "She's the person whose car broke down.",
+              "The day when we met was rainy.",
+              "The year when I moved was 2020.",
+              "The time when I called him was late."
             ],
             "examples_fail": [
               "boss (bare noun)",
@@ -457,7 +481,10 @@
             "examples_pass": [
               "This is the song I love.",
               "The book that I read was great.",
-              "She's the person whose car broke down."
+              "She's the person whose car broke down.",
+              "Where did you grow up?",
+              "How about you?",
+              "What about you?"
             ],
             "examples_fail": [
               "boss (bare noun)",
@@ -489,7 +516,10 @@
             "examples_pass": [
               "It's a watch that belonged to my grandfather.",
               "The book that I read was great.",
-              "She's the person whose car broke down."
+              "She's the person whose car broke down.",
+              "The neighborhood where I live is quiet.",
+              "The country where I was born is small.",
+              "The school where I studied closed."
             ],
             "examples_fail": [
               "boss (bare noun)",
@@ -505,7 +535,10 @@
             "examples_pass": [
               "I have books that I've kept for years.",
               "The man who called is my boss.",
-              "The book that I read was great."
+              "The book that I read was great.",
+              "The moment when I realized was scary.",
+              "The day when I graduated was the best.",
+              "The year when I started was 2015."
             ],
             "examples_fail": [
               "boss (bare noun)",
@@ -521,7 +554,10 @@
             "examples_pass": [
               "What about you?",
               "The city where I grew up is small.",
-              "How about you?"
+              "How about you?",
+              "And you?",
+              "How about you?",
+              "What about you?"
             ],
             "examples_fail": [
               "boss (bare noun)",
@@ -1191,7 +1227,7 @@
           },
           {
             "id": 2,
-            "label_en": "Thing or place",
+            "label_en": "Thing or place (that/where)",
             "hidden_prompt": "user uses 'that' or 'where' clause",
             "hint_en": "It's a city where I'd love to live.",
             "examples_pass": [

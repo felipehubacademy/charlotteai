@@ -168,7 +168,10 @@
             "examples_pass": [
               "Coffee is grown in many countries.",
               "The letter was sent yesterday.",
-              "The book was written by her."
+              "The book was written by her.",
+              "The cake was made by my grandmother.",
+              "The house was built in 1990.",
+              "The book was written by Tolkien."
             ],
             "examples_fail": [
               "written (bare participle)",
@@ -184,7 +187,10 @@
             "examples_pass": [
               "Spanish is spoken across Latin America.",
               "The cake is made by my mom.",
-              "The house was built in 1990."
+              "The house was built in 1990.",
+              "The window was broken last night.",
+              "The car was stolen yesterday.",
+              "The keys were lost in the park."
             ],
             "examples_fail": [
               "written (bare participle)",
@@ -200,7 +206,10 @@
             "examples_pass": [
               "Cheese is made from milk.",
               "The letter was sent yesterday.",
-              "The book was written by her."
+              "The book was written by her.",
+              "What was made for you?",
+              "How about you?",
+              "What about you?"
             ],
             "examples_fail": [
               "written (bare participle)",
@@ -233,7 +242,10 @@
             "examples_pass": [
               "Coffee is grown in many parts of Brazil.",
               "The house was built in 1990.",
-              "The letter was sent yesterday."
+              "The letter was sent yesterday.",
+              "The painting was made by a friend.",
+              "The song was written in 2020.",
+              "The bread was baked this morning."
             ],
             "examples_fail": [
               "written (bare participle)",
@@ -249,7 +261,10 @@
             "examples_pass": [
               "Cars are made in São Paulo and other cities.",
               "The cake is made by my mom.",
-              "The house was built in 1990."
+              "The house was built in 1990.",
+              "The package was delivered yesterday.",
+              "The decision was made last week.",
+              "The email was sent on Monday."
             ],
             "examples_fail": [
               "written (bare participle)",
@@ -265,7 +280,10 @@
             "examples_pass": [
               "What's grown in your country?",
               "The book was written by her.",
-              "How about you?"
+              "How about you?",
+              "What about you?",
+              "How about you?",
+              "And you?"
             ],
             "examples_fail": [
               "written (bare participle)",
@@ -682,7 +700,10 @@
             "examples_pass": [
               "The kitchen is being renovated.",
               "The house was built in 1990.",
-              "The letter was sent yesterday."
+              "The letter was sent yesterday.",
+              "English is spoken here.",
+              "Coffee is grown in Brazil.",
+              "Rice is eaten daily."
             ],
             "examples_fail": [
               "written (bare participle)",
@@ -698,7 +719,10 @@
             "examples_pass": [
               "A new metro line is being built.",
               "The cake is made by my mom.",
-              "The house was built in 1990."
+              "The house was built in 1990.",
+              "The streets are cleaned every morning.",
+              "Bread is delivered fresh.",
+              "The mail is delivered at noon."
             ],
             "examples_fail": [
               "written (bare participle)",
@@ -714,7 +738,10 @@
             "examples_pass": [
               "A new law is being discussed.",
               "The cake is made by my mom.",
-              "The house was built in 1990."
+              "The house was built in 1990.",
+              "What's done where you live?",
+              "How about you?",
+              "What about you?"
             ],
             "examples_fail": [
               "written (bare participle)",
@@ -747,7 +774,10 @@
             "examples_pass": [
               "My bathroom is being renovated.",
               "The cake is made by my mom.",
-              "The house was built in 1990."
+              "The house was built in 1990.",
+              "Spanish is spoken in many countries.",
+              "Tea is grown in India.",
+              "Soccer is played everywhere."
             ],
             "examples_fail": [
               "written (bare participle)",
@@ -763,7 +793,10 @@
             "examples_pass": [
               "New tiles are being installed.",
               "The house was built in 1990.",
-              "The letter was sent yesterday."
+              "The letter was sent yesterday.",
+              "The trash is collected every Tuesday.",
+              "The streets are washed weekly.",
+              "Bills are paid online."
             ],
             "examples_fail": [
               "written (bare participle)",
@@ -779,7 +812,10 @@
             "examples_pass": [
               "What's being changed in your life?",
               "The house was built in 1990.",
-              "How about you?"
+              "How about you?",
+              "What about you?",
+              "How about you?",
+              "And you?"
             ],
             "examples_fail": [
               "written (bare participle)",
@@ -940,7 +976,10 @@
             "examples_pass": [
               "The new app has been launched.",
               "The book was written by her.",
-              "The cake is made by my mom."
+              "The cake is made by my mom.",
+              "My phone is being repaired.",
+              "The car is being washed.",
+              "Dinner is being prepared."
             ],
             "examples_fail": [
               "written (bare participle)",
@@ -956,7 +995,10 @@
             "examples_pass": [
               "Three changes have been made to the policy.",
               "The book was written by her.",
-              "The cake is made by my mom."
+              "The cake is made by my mom.",
+              "The bridge was being built last year.",
+              "My house was being painted yesterday.",
+              "The road was being fixed."
             ],
             "examples_fail": [
               "written (bare participle)",
@@ -972,7 +1014,10 @@
             "examples_pass": [
               "The painting has been finished.",
               "The cake is made by my mom.",
-              "The house was built in 1990."
+              "The house was built in 1990.",
+              "Is anything being done at your place?",
+              "How about you?",
+              "What about you?"
             ],
             "examples_fail": [
               "written (bare participle)",
@@ -1005,7 +1050,10 @@
             "examples_pass": [
               "The website has been redesigned.",
               "The house was built in 1990.",
-              "The letter was sent yesterday."
+              "The letter was sent yesterday.",
+              "The office is being renovated.",
+              "My bag is being repaired.",
+              "Lunch is being served."
             ],
             "examples_fail": [
               "written (bare participle)",
@@ -1021,7 +1069,10 @@
             "examples_pass": [
               "Two new features have been added.",
               "The cake is made by my mom.",
-              "The house was built in 1990."
+              "The house was built in 1990.",
+              "The walls were being painted yesterday.",
+              "The kitchen was being remodeled.",
+              "The garden was being watered."
             ],
             "examples_fail": [
               "written (bare participle)",
@@ -1037,7 +1088,10 @@
             "examples_pass": [
               "What's been finished on your team?",
               "The book was written by her.",
-              "How about you?"
+              "How about you?",
+              "What about you?",
+              "How about you?",
+              "And you?"
             ],
             "examples_fail": [
               "written (bare participle)",

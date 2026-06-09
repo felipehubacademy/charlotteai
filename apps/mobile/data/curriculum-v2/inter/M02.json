@@ -155,7 +155,7 @@
         "objectives": [
           {
             "id": 1,
-            "label_en": "Say where you've been",
+            "label_en": "Say where you've been (I've been to)",
             "hidden_prompt": "user uses 'I've been to + place' or 'I have visited + place'",
             "hint_en": "I've been to Italy.",
             "examples_pass": [
@@ -414,7 +414,10 @@
             "examples_pass": [
               "I've been to Argentina.",
               "We've been to that restaurant before.",
-              "I have visited Paris."
+              "I have visited Paris.",
+              "I haven't been to Paris yet.",
+              "I haven't tried Japanese food.",
+              "I haven't visited Argentina before."
             ],
             "examples_fail": [
               "Paris (bare noun)",
@@ -424,13 +427,16 @@
           },
           {
             "id": 2,
-            "label_en": "Food you've eaten",
+            "label_en": "Food you've eaten (eaten/tried)",
             "hidden_prompt": "user uses 'I've eaten + food' or 'I've tried + food'",
             "hint_en": "I've eaten sushi.",
             "examples_pass": [
               "I've eaten sushi.",
               "I have known her since 2010.",
-              "We've been to that restaurant before."
+              "We've been to that restaurant before.",
+              "I've never tried surfing.",
+              "I've never been skiing.",
+              "I've never eaten octopus."
             ],
             "examples_fail": [
               "Paris (bare noun)",
@@ -440,13 +446,16 @@
           },
           {
             "id": 3,
-            "label_en": "Something you've done/seen/read",
+            "label_en": "Something you've done (done/seen/read)",
             "hidden_prompt": "user uses 'I've done/seen/read + something'",
             "hint_en": "I've read three books this month.",
             "examples_pass": [
               "I've read three books this month.",
               "She has lived in Rio for ten years.",
-              "I have known her since 2010."
+              "I have known her since 2010.",
+              "Have you been to Brazil?",
+              "Have you ever tried churrasco?",
+              "Have you visited South America?"
             ],
             "examples_fail": [
               "Paris (bare noun)",
@@ -473,13 +482,16 @@
         "objectives": [
           {
             "id": 1,
-            "label_en": "Achievement",
+            "label_en": "Achievement (done/learned/finished)",
             "hidden_prompt": "user uses 'I've done/learned/finished + something'",
             "hint_en": "I've learned English.",
             "examples_pass": [
               "I've learned English.",
               "I have known her since 2010.",
-              "We've been to that restaurant before."
+              "We've been to that restaurant before.",
+              "I haven't seen that movie yet.",
+              "I haven't read that book.",
+              "I haven't watched the new series."
             ],
             "examples_fail": [
               "Paris (bare noun)",
@@ -495,7 +507,10 @@
             "examples_pass": [
               "I've traveled to Europe.",
               "We've been to that restaurant before.",
-              "I have visited Paris."
+              "I have visited Paris.",
+              "I've never been to a concert.",
+              "I've never tried rock climbing.",
+              "I've never seen snow in person."
             ],
             "examples_fail": [
               "Paris (bare noun)",
@@ -511,7 +526,10 @@
             "examples_pass": [
               "What have you achieved?",
               "She has lived in Rio for ten years.",
-              "How about you?"
+              "How about you?",
+              "Have you been there?",
+              "Have you ever tried it?",
+              "What about you?"
             ],
             "examples_fail": [
               "Paris (bare noun)",
@@ -921,7 +939,10 @@
             "examples_pass": [
               "Have you ever traveled abroad?",
               "I have known her since 2010.",
-              "How about you?"
+              "How about you?",
+              "I've already finished my homework.",
+              "I've already had lunch.",
+              "I've already called the doctor."
             ],
             "examples_fail": [
               "Paris (bare noun)",
@@ -937,7 +958,10 @@
             "examples_pass": [
               "Have you eaten sushi?",
               "She has lived in Rio for ten years.",
-              "How about you?"
+              "How about you?",
+              "I haven't replied yet.",
+              "I haven't started cooking yet.",
+              "I haven't packed my bags yet."
             ],
             "examples_fail": [
               "Paris (bare noun)",
@@ -953,7 +977,10 @@
             "examples_pass": [
               "Has your sister been to Europe?",
               "She has lived in Rio for ten years.",
-              "How about you?"
+              "How about you?",
+              "Have you finished it yet?",
+              "Have you done that already?",
+              "Have you talked to him yet?"
             ],
             "examples_fail": [
               "Paris (bare noun)",
@@ -986,7 +1013,10 @@
             "examples_pass": [
               "I've always wanted to visit Japan.",
               "She has lived in Rio for ten years.",
-              "I have known her since 2010."
+              "I have known her since 2010.",
+              "I've already booked the tickets.",
+              "I've already paid the bill.",
+              "I've already eaten breakfast."
             ],
             "examples_fail": [
               "Paris (bare noun)",
@@ -1002,7 +1032,10 @@
             "examples_pass": [
               "Have you ever been there?",
               "I have visited Paris.",
-              "How about you?"
+              "How about you?",
+              "I haven't called her yet.",
+              "I haven't packed yet.",
+              "I haven't decided yet."
             ],
             "examples_fail": [
               "Paris (bare noun)",
@@ -1018,7 +1051,10 @@
             "examples_pass": [
               "Have you traveled solo?",
               "I have visited Paris.",
-              "How about you?"
+              "How about you?",
+              "Have you done it yet?",
+              "How about you?",
+              "And you?"
             ],
             "examples_fail": [
               "Paris (bare noun)",
@@ -1166,7 +1202,7 @@
         "objectives": [
           {
             "id": 1,
-            "label_en": "Major experience",
+            "label_en": "Major experience (I've + past participle)",
             "hidden_prompt": "user uses 'I've + past participle' for major experience",
             "hint_en": "I've traveled to Italy.",
             "examples_pass": [

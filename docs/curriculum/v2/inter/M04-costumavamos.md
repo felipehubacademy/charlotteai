@@ -455,11 +455,11 @@
 
 1. **id**: 1
    **label_pt**: "Rotina repetida no passado (would)"
-   **label_en**: "Repeated past routine"
+   **label_en**: "Repeated past routine (would)"
    **hidden_prompt**: "user uses 'We/I would + base'"
    **hint_pt**: "We would go to the park."
    **hint_en**: "We would go to the park."
-   **example_pass**: We would go to the park. | She would always read before bed. | We used to live in a small town.
+   **example_pass**: We would go to the park. | She would always read before bed. | We used to live in a small town. | I used to play soccer every weekend. | I used to read comic books. | I used to ride my bike to school.
    **example_fail**: tennis (bare noun) | I play tennis (present, not 'used to') | I will play tennis (future, not past habit)
 
 2. **id**: 2
@@ -468,7 +468,7 @@
    **hidden_prompt**: "user uses another 'would + base'"
    **hint_pt**: "My mom would read to me."
    **hint_en**: "My mom would read to me."
-   **example_pass**: My mom would read to me. | She would always read before bed. | We used to live in a small town.
+   **example_pass**: My mom would read to me. | She would always read before bed. | We used to live in a small town. | I would visit my grandmother every summer. | I would spend hours drawing as a kid. | Every weekend I would go to the park.
    **example_fail**: tennis (bare noun) | I play tennis (present, not 'used to') | I will play tennis (future, not past habit)
 
 3. **id**: 3
@@ -477,7 +477,7 @@
    **hidden_prompt**: "user uses 'Every + day/week/summer, X would + base'"
    **hint_pt**: "Every summer, we would travel."
    **hint_en**: "Every summer, we would travel."
-   **example_pass**: Every summer, we would travel. | He didn't use to like coffee. | I used to play tennis every weekend.
+   **example_pass**: Every summer, we would travel. | He didn't use to like coffee. | I used to play tennis every weekend. | Did you use to do that too? | How about you? | What about you?
    **example_fail**: tennis (bare noun) | I play tennis (present, not 'used to') | I will play tennis (future, not past habit)
 
 **Closing cue**: Charlotte closes with "Sweet memories!" when obj_3 hits.
@@ -514,7 +514,7 @@
    **hidden_prompt**: "user uses 'I/We would + base'"
    **hint_pt**: "We would play board games."
    **hint_en**: "We would play board games."
-   **example_pass**: We would play board games. | I used to play tennis every weekend. | She would always read before bed.
+   **example_pass**: We would play board games. | I used to play tennis every weekend. | She would always read before bed. | I used to watch cartoons every morning. | I used to collect stickers. | I used to hate vegetables.
    **example_fail**: tennis (bare noun) | I play tennis (present, not 'used to') | I will play tennis (future, not past habit)
 
 2. **id**: 2
@@ -523,7 +523,7 @@
    **hidden_prompt**: "user uses another 'would + base'"
    **hint_pt**: "My dad would tell jokes."
    **hint_en**: "My dad would tell jokes."
-   **example_pass**: My dad would tell jokes. | She would always read before bed. | We used to live in a small town.
+   **example_pass**: My dad would tell jokes. | She would always read before bed. | We used to live in a small town. | I would always wake up early. | I would help my mom cook. | I would play outside all day.
    **example_fail**: tennis (bare noun) | I play tennis (present, not 'used to') | I will play tennis (future, not past habit)
 
 3. **id**: 3
@@ -532,7 +532,7 @@
    **hidden_prompt**: "user asks about her past with would"
    **hint_pt**: "What would you do as a kid?"
    **hint_en**: "What would you do as a kid?"
-   **example_pass**: What would you do as a kid? | He didn't use to like coffee. | How about you?
+   **example_pass**: What would you do as a kid? | He didn't use to like coffee. | How about you? | And you? | How about you? | Did you use to do that?
    **example_fail**: tennis (bare noun) | I play tennis (present, not 'used to') | I will play tennis (future, not past habit)
 
 **Closing cue**: Charlotte closes with "Childhood echoes!" when obj_3 hits.
@@ -651,7 +651,7 @@
 
 3. **id**: 3
    **label_pt**: "Mais um com used to ou would"
-   **label_en**: "One more"
+   **label_en**: "One more with used to or would"
    **hidden_prompt**: "user uses another used to or would"
    **hint_pt**: "I used to live in Rio."
    **hint_en**: "I used to live in Rio."

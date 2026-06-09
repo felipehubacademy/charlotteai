@@ -425,7 +425,10 @@
             "examples_pass": [
               "If only I had more energy!",
               "I wish I knew the answer.",
-              "I wish I hadn't said that."
+              "I wish I hadn't said that.",
+              "I wish I had more time.",
+              "I wish I knew the answer.",
+              "I wish I were taller."
             ],
             "examples_fail": [
               "time (bare noun)",
@@ -441,7 +444,10 @@
             "examples_pass": [
               "If only I had taken that opportunity!",
               "I wish I knew the answer.",
-              "I wish I hadn't said that."
+              "I wish I hadn't said that.",
+              "If only I had more money.",
+              "If only I could speak French.",
+              "If only I were younger."
             ],
             "examples_fail": [
               "time (bare noun)",
@@ -457,7 +463,10 @@
             "examples_pass": [
               "If only my boss would notice my hard work!",
               "I wish I had more time.",
-              "I wish I knew the answer."
+              "I wish I knew the answer.",
+              "What do you wish for?",
+              "How about you?",
+              "What about you?"
             ],
             "examples_fail": [
               "time (bare noun)",
@@ -490,7 +499,10 @@
             "examples_pass": [
               "If only I had started exercising earlier.",
               "I wish I knew the answer.",
-              "I wish I hadn't said that."
+              "I wish I hadn't said that.",
+              "I wish I lived by the beach.",
+              "I wish I had a pet.",
+              "I wish I spoke five languages."
             ],
             "examples_fail": [
               "time (bare noun)",
@@ -506,7 +518,10 @@
             "examples_pass": [
               "If only I had more free time.",
               "I wish I knew the answer.",
-              "I wish I hadn't said that."
+              "I wish I hadn't said that.",
+              "If only I had patience.",
+              "If only I were better at math.",
+              "If only I had a sibling."
             ],
             "examples_fail": [
               "time (bare noun)",
@@ -522,7 +537,10 @@
             "examples_pass": [
               "Why didn't you learn?",
               "I wish I had more time.",
-              "How about you?"
+              "How about you?",
+              "What about you?",
+              "How about you?",
+              "And you?"
             ],
             "examples_fail": [
               "time (bare noun)",
@@ -680,7 +698,10 @@
             "examples_pass": [
               "I'd rather watch a movie at home.",
               "I wish I hadn't said that.",
-              "I wish she would call."
+              "I wish she would call.",
+              "I wish I had studied harder.",
+              "I wish I had traveled more.",
+              "I wish I had said yes."
             ],
             "examples_fail": [
               "time (bare noun)",
@@ -696,7 +717,10 @@
             "examples_pass": [
               "I'd rather not work this weekend.",
               "I wish she would call.",
-              "I wish I had more time."
+              "I wish I had more time.",
+              "If only I had known.",
+              "If only I had listened.",
+              "If only I had been there."
             ],
             "examples_fail": [
               "time (bare noun)",
@@ -712,7 +736,10 @@
             "examples_pass": [
               "I'd rather you called me before coming over.",
               "I wish I had more time.",
-              "I wish I knew the answer."
+              "I wish I knew the answer.",
+              "What do you regret?",
+              "How about you?",
+              "What about you?"
             ],
             "examples_fail": [
               "time (bare noun)",
@@ -745,7 +772,10 @@
             "examples_pass": [
               "I'd rather work in person than remotely.",
               "I wish I knew the answer.",
-              "I wish I hadn't said that."
+              "I wish I hadn't said that.",
+              "I wish I had taken that job.",
+              "I wish I had saved more.",
+              "I wish I had kept in touch."
             ],
             "examples_fail": [
               "time (bare noun)",
@@ -761,7 +791,10 @@
             "examples_pass": [
               "I'd rather travel than stay home.",
               "I wish she would call.",
-              "I wish I had more time."
+              "I wish I had more time.",
+              "If only I had asked.",
+              "If only I had stayed.",
+              "If only I had tried harder."
             ],
             "examples_fail": [
               "time (bare noun)",
@@ -777,7 +810,10 @@
             "examples_pass": [
               "Why do you prefer remote?",
               "I wish she would call.",
-              "How about you?"
+              "How about you?",
+              "And you?",
+              "How about you?",
+              "What about you?"
             ],
             "examples_fail": [
               "time (bare noun)",
@@ -935,7 +971,10 @@
             "examples_pass": [
               "It's time we addressed this issue.",
               "I wish I had more time.",
-              "I wish I knew the answer."
+              "I wish I knew the answer.",
+              "I wish you would stop smoking.",
+              "I wish he would call me.",
+              "I wish they would be quieter."
             ],
             "examples_fail": [
               "time (bare noun)",
@@ -951,7 +990,10 @@
             "examples_pass": [
               "It's high time he found a stable job.",
               "I wish I had more time.",
-              "I wish I knew the answer."
+              "I wish I knew the answer.",
+              "If only she would listen.",
+              "If only he would help.",
+              "If only they would understand."
             ],
             "examples_fail": [
               "time (bare noun)",
@@ -967,7 +1009,10 @@
             "examples_pass": [
               "It's about time I started exercising again.",
               "I wish I had more time.",
-              "I wish I knew the answer."
+              "I wish I knew the answer.",
+              "What do you wish others would do?",
+              "How about you?",
+              "What about you?"
             ],
             "examples_fail": [
               "time (bare noun)",
@@ -1000,7 +1045,10 @@
             "examples_pass": [
               "It's about time I called my grandmother.",
               "I wish I hadn't said that.",
-              "I wish she would call."
+              "I wish she would call.",
+              "I wish my neighbor would be quieter.",
+              "I wish my boss would respond.",
+              "I wish my friend would visit."
             ],
             "examples_fail": [
               "time (bare noun)",
@@ -1016,7 +1064,10 @@
             "examples_pass": [
               "It's high time I learned to cook properly.",
               "I wish I had more time.",
-              "I wish I knew the answer."
+              "I wish I knew the answer.",
+              "If only he would change.",
+              "If only she would forgive me.",
+              "If only they would invite us."
             ],
             "examples_fail": [
               "time (bare noun)",
@@ -1032,7 +1083,10 @@
             "examples_pass": [
               "Why now for the closet?",
               "I wish I knew the answer.",
-              "How about you?"
+              "How about you?",
+              "What about you?",
+              "How about you?",
+              "And you?"
             ],
             "examples_fail": [
               "time (bare noun)",
@@ -1191,7 +1245,10 @@
             "examples_pass": [
               "I wish my dog would stop barking.",
               "I wish I knew the answer.",
-              "I wish I hadn't said that."
+              "I wish I hadn't said that.",
+              "I wish I had a bigger house.",
+              "I wish I hadn't quit.",
+              "I wish you would stay."
             ],
             "examples_fail": [
               "time (bare noun)",
@@ -1207,7 +1264,10 @@
             "examples_pass": [
               "If only I had taken that opportunity.",
               "I wish I hadn't said that.",
-              "I wish she would call."
+              "I wish she would call.",
+              "If only I were rich.",
+              "If only I had known earlier.",
+              "If only she would come back."
             ],
             "examples_fail": [
               "time (bare noun)",
@@ -1223,7 +1283,10 @@
             "examples_pass": [
               "It's high time I made a change.",
               "I wish she would call.",
-              "I wish I had more time."
+              "I wish I had more time.",
+              "What's your biggest wish?",
+              "How about you?",
+              "What about you?"
             ],
             "examples_fail": [
               "time (bare noun)",
@@ -1256,7 +1319,10 @@
             "examples_pass": [
               "If only I had been more patient with myself.",
               "I wish she would call.",
-              "I wish I had more time."
+              "I wish I had more time.",
+              "I wish I had more free time.",
+              "I wish I hadn't said that.",
+              "I wish he would apologize."
             ],
             "examples_fail": [
               "time (bare noun)",
@@ -1272,7 +1338,10 @@
             "examples_pass": [
               "It's about time I forgave myself.",
               "I wish I hadn't said that.",
-              "I wish she would call."
+              "I wish she would call.",
+              "If only I were braver.",
+              "If only I had made that choice.",
+              "If only they would listen."
             ],
             "examples_fail": [
               "time (bare noun)",
@@ -1288,7 +1357,10 @@
             "examples_pass": [
               "What would courage look like?",
               "I wish I hadn't said that.",
-              "How about you?"
+              "How about you?",
+              "And you?",
+              "How about you?",
+              "What about you?"
             ],
             "examples_fail": [
               "time (bare noun)",

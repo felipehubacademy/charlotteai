@@ -116,7 +116,7 @@
    **hidden_prompt**: "user uses 'I look forward to + verb-ing'"
    **hint_pt**: "I look forward to traveling this summer."
    **hint_en**: "I look forward to traveling this summer."
-   **example_pass**: I look forward to traveling this summer. | I'm getting used to working remotely. | She objects to smoking inside.
+   **example_pass**: I look forward to traveling this summer. | I'm getting used to working remotely. | She objects to smoking inside. | I can't put up with the noise. | I can't tolerate that. | I won't deal with this anymore.
    **example_fail**: seeing (bare gerund) | I look forward to see you (base form, not -ing) | I want to see you (no phrasal verb)
 
 2. **id**: 2
@@ -125,7 +125,7 @@
    **hidden_prompt**: "user uses 'I'm getting used to + verb-ing'"
    **hint_pt**: "I'm getting used to working remotely."
    **hint_en**: "I'm getting used to working remotely."
-   **example_pass**: I'm getting used to working remotely. | We're looking forward to the trip. | I look forward to seeing you.
+   **example_pass**: I'm getting used to working remotely. | We're looking forward to the trip. | I look forward to seeing you. | I look forward to the weekend. | I'm excited about the trip. | I can't wait for Friday.
    **example_fail**: seeing (bare gerund) | I look forward to see you (base form, not -ing) | I want to see you (no phrasal verb)
 
 3. **id**: 3
@@ -134,7 +134,7 @@
    **hidden_prompt**: "user uses 'I object to + verb-ing'"
    **hint_pt**: "I object to working on Sundays."
    **hint_en**: "I object to working on Sundays."
-   **example_pass**: I object to working on Sundays. | She objects to smoking inside. | We're looking forward to the trip.
+   **example_pass**: I object to working on Sundays. | She objects to smoking inside. | We're looking forward to the trip. | What can't you put up with? | How about you? | What about you?
    **example_fail**: seeing (bare gerund) | I look forward to see you (base form, not -ing) | I want to see you (no phrasal verb)
 
 **Closing cue**: Charlotte fecha com "-ing chunks nailed!" quando obj_3 baterem.
@@ -171,7 +171,7 @@
    **hidden_prompt**: "user uses 'look forward to + -ing'"
    **hint_pt**: "I'm looking forward to seeing my family."
    **hint_en**: "I'm looking forward to seeing my family."
-   **example_pass**: I'm looking forward to seeing my family. | I'm getting used to working remotely. | She objects to smoking inside.
+   **example_pass**: I'm looking forward to seeing my family. | I'm getting used to working remotely. | She objects to smoking inside. | I can't put up with rudeness. | I can't stand loud chewing. | I won't tolerate disrespect.
    **example_fail**: seeing (bare gerund) | I look forward to see you (base form, not -ing) | I want to see you (no phrasal verb)
 
 2. **id**: 2
@@ -180,7 +180,7 @@
    **hidden_prompt**: "user uses 'getting used to' or 'object to + -ing'"
    **hint_pt**: "I'm getting used to having early meetings."
    **hint_en**: "I'm getting used to having early meetings."
-   **example_pass**: I'm getting used to having early meetings. | We're looking forward to the trip. | I look forward to seeing you.
+   **example_pass**: I'm getting used to having early meetings. | We're looking forward to the trip. | I look forward to seeing you. | I look forward to vacation. | I'm looking forward to seeing you. | I can't wait for the holidays.
    **example_fail**: seeing (bare gerund) | I look forward to see you (base form, not -ing) | I want to see you (no phrasal verb)
 
 3. **id**: 3
@@ -189,7 +189,7 @@
    **hidden_prompt**: "user asks Charlotte about her trip"
    **hint_pt**: "Where are you going?"
    **hint_en**: "Where are you going?"
-   **example_pass**: Where are you going? | We're looking forward to the trip. | How about you?
+   **example_pass**: Where are you going? | We're looking forward to the trip. | How about you? | What about you? | How about you? | And you?
    **example_fail**: seeing (bare gerund) | I look forward to see you (base form, not -ing) | I want to see you (no phrasal verb)
 
 **Closing cue**: Charlotte fecha com "Anticipations exchanged!" quando obj_3 baterem.
@@ -293,7 +293,7 @@
    **hidden_prompt**: "user uses 'I can't put up with + noun'"
    **hint_pt**: "I can't put up with my neighbor's loud music."
    **hint_en**: "I can't put up with my neighbor's loud music."
-   **example_pass**: I can't put up with my neighbor's loud music. | I'm getting used to working remotely. | She objects to smoking inside.
+   **example_pass**: I can't put up with my neighbor's loud music. | I'm getting used to working remotely. | She objects to smoking inside. | I came across an old photo. | I ran into my ex. | I bumped into a colleague.
    **example_fail**: seeing (bare gerund) | I look forward to see you (base form, not -ing) | I want to see you (no phrasal verb)
 
 2. **id**: 2
@@ -302,7 +302,7 @@
    **hidden_prompt**: "user uses 'I ran/we ran out of + noun'"
    **hint_pt**: "I ran out of patience by Friday."
    **hint_en**: "I ran out of patience by Friday."
-   **example_pass**: I ran out of patience by Friday. | I look forward to seeing you. | I'm getting used to working remotely.
+   **example_pass**: I ran out of patience by Friday. | I look forward to seeing you. | I'm getting used to working remotely. | I came up with a new idea. | I thought of a plan. | I figured out the answer.
    **example_fail**: seeing (bare gerund) | I look forward to see you (base form, not -ing) | I want to see you (no phrasal verb)
 
 3. **id**: 3
@@ -311,7 +311,7 @@
    **hidden_prompt**: "user uses 'X gets away with + noun/ing'"
    **hint_pt**: "He always gets away with arriving late."
    **hint_en**: "He always gets away with arriving late."
-   **example_pass**: He always gets away with arriving late. | I'm getting used to working remotely. | She objects to smoking inside.
+   **example_pass**: He always gets away with arriving late. | I'm getting used to working remotely. | She objects to smoking inside. | Did anything similar happen to you? | How about you? | What about you?
    **example_fail**: seeing (bare gerund) | I look forward to see you (base form, not -ing) | I want to see you (no phrasal verb)
 
 **Closing cue**: Charlotte fecha com "Annoyances vented!" quando obj_3 baterem.
@@ -348,7 +348,7 @@
    **hidden_prompt**: "user uses 'I can't put up with' or similar"
    **hint_pt**: "I can't put up with constant interruptions."
    **hint_en**: "I can't put up with constant interruptions."
-   **example_pass**: I can't put up with constant interruptions. | She objects to smoking inside. | We're looking forward to the trip.
+   **example_pass**: I can't put up with constant interruptions. | She objects to smoking inside. | We're looking forward to the trip. | I came across a great book. | I ran into my old teacher. | I bumped into a friend at the mall.
    **example_fail**: seeing (bare gerund) | I look forward to see you (base form, not -ing) | I want to see you (no phrasal verb)
 
 2. **id**: 2
@@ -357,7 +357,7 @@
    **hidden_prompt**: "user uses 'running out of + noun'"
    **hint_pt**: "I'm running out of motivation."
    **hint_en**: "I'm running out of motivation."
-   **example_pass**: I'm running out of motivation. | We're looking forward to the trip. | I look forward to seeing you.
+   **example_pass**: I'm running out of motivation. | We're looking forward to the trip. | I look forward to seeing you. | I came up with a recipe. | I thought of a solution. | I figured out how to fix it.
    **example_fail**: seeing (bare gerund) | I look forward to see you (base form, not -ing) | I want to see you (no phrasal verb)
 
 3. **id**: 3
@@ -366,7 +366,7 @@
    **hidden_prompt**: "user asks Charlotte more about her energy"
    **hint_pt**: "What's draining you?"
    **hint_en**: "What's draining you?"
-   **example_pass**: What's draining you? | She objects to smoking inside. | How about you?
+   **example_pass**: What's draining you? | She objects to smoking inside. | How about you? | And you? | How about you? | What about you?
    **example_fail**: seeing (bare gerund) | I look forward to see you (base form, not -ing) | I want to see you (no phrasal verb)
 
 **Closing cue**: Charlotte fecha com "Mutual exhaustion mapped!" quando obj_3 baterem.
@@ -470,7 +470,7 @@
    **hidden_prompt**: "user uses 'I get along with + person'"
    **hint_pt**: "I get along really well with my brother."
    **hint_en**: "I get along really well with my brother."
-   **example_pass**: I get along really well with my brother. | I'm getting used to working remotely. | She objects to smoking inside.
+   **example_pass**: I get along really well with my brother. | I'm getting used to working remotely. | She objects to smoking inside. | I take after my mom. | I resemble my father. | I'm a lot like my sister.
    **example_fail**: seeing (bare gerund) | I look forward to see you (base form, not -ing) | I want to see you (no phrasal verb)
 
 2. **id**: 2
@@ -479,7 +479,7 @@
    **hidden_prompt**: "user uses 'I look up to + person'"
    **hint_pt**: "I look up to my old English teacher."
    **hint_en**: "I look up to my old English teacher."
-   **example_pass**: I look up to my old English teacher. | We're looking forward to the trip. | I look forward to seeing you.
+   **example_pass**: I look up to my old English teacher. | We're looking forward to the trip. | I look forward to seeing you. | I get along with my brother. | I'm close to my cousin. | I have a great relationship with my parents.
    **example_fail**: seeing (bare gerund) | I look forward to see you (base form, not -ing) | I want to see you (no phrasal verb)
 
 3. **id**: 3
@@ -488,7 +488,7 @@
    **hidden_prompt**: "user uses 'I/he/she looks down on + person'"
    **hint_pt**: "I don't like people who look down on others."
    **hint_en**: "I don't like people who look down on others."
-   **example_pass**: I don't like people who look down on others. | She objects to smoking inside. | We're looking forward to the trip.
+   **example_pass**: I don't like people who look down on others. | She objects to smoking inside. | We're looking forward to the trip. | Who do you take after? | How about you? | What about you?
    **example_fail**: seeing (bare gerund) | I look forward to see you (base form, not -ing) | I want to see you (no phrasal verb)
 
 **Closing cue**: Charlotte fecha com "Relationships mapped!" quando obj_3 baterem.
@@ -525,7 +525,7 @@
    **hidden_prompt**: "user uses 'I look up to + person'"
    **hint_pt**: "I look up to my dad — he's so patient."
    **hint_en**: "I look up to my dad — he's so patient."
-   **example_pass**: I look up to my dad — he's so patient. | I'm getting used to working remotely. | She objects to smoking inside.
+   **example_pass**: I look up to my dad — he's so patient. | I'm getting used to working remotely. | She objects to smoking inside. | I take after my dad. | I look like my grandmother. | I resemble my aunt.
    **example_fail**: seeing (bare gerund) | I look forward to see you (base form, not -ing) | I want to see you (no phrasal verb)
 
 2. **id**: 2
@@ -534,7 +534,7 @@
    **hidden_prompt**: "user uses 'get along with' or 'look down on'"
    **hint_pt**: "I get along really well with my sister-in-law."
    **hint_en**: "I get along really well with my sister-in-law."
-   **example_pass**: I get along really well with my sister-in-law. | She objects to smoking inside. | We're looking forward to the trip.
+   **example_pass**: I get along really well with my sister-in-law. | She objects to smoking inside. | We're looking forward to the trip. | I get along well with my coworkers. | I'm close to my best friend. | I have a strong bond with my siblings.
    **example_fail**: seeing (bare gerund) | I look forward to see you (base form, not -ing) | I want to see you (no phrasal verb)
 
 3. **id**: 3
@@ -543,7 +543,7 @@
    **hidden_prompt**: "user asks Charlotte more about her mentor"
    **hint_pt**: "What did she teach you?"
    **hint_en**: "What did she teach you?"
-   **example_pass**: What did she teach you? | She objects to smoking inside. | How about you?
+   **example_pass**: What did she teach you? | She objects to smoking inside. | How about you? | What about you? | How about you? | And you?
    **example_fail**: seeing (bare gerund) | I look forward to see you (base form, not -ing) | I want to see you (no phrasal verb)
 
 **Closing cue**: Charlotte fecha com "Mentors honored!" quando obj_3 baterem.
@@ -648,7 +648,7 @@
    **hidden_prompt**: "user uses 'catch up on + noun'"
    **hint_pt**: "I need to catch up on sleep this weekend."
    **hint_en**: "I need to catch up on sleep this weekend."
-   **example_pass**: I need to catch up on sleep this weekend. | We're looking forward to the trip. | I look forward to seeing you.
+   **example_pass**: I need to catch up on sleep this weekend. | We're looking forward to the trip. | I look forward to seeing you. | I called off the meeting. | I canceled the trip. | I had to scrap the plan.
    **example_fail**: seeing (bare gerund) | I look forward to see you (base form, not -ing) | I want to see you (no phrasal verb)
 
 2. **id**: 2
@@ -657,7 +657,7 @@
    **hidden_prompt**: "user uses 'I want to make up for + noun'"
    **hint_pt**: "I want to make up for lost time with my family."
    **hint_en**: "I want to make up for lost time with my family."
-   **example_pass**: I want to make up for lost time with my family. | We're looking forward to the trip. | I look forward to seeing you.
+   **example_pass**: I want to make up for lost time with my family. | We're looking forward to the trip. | I look forward to seeing you. | I'll look into it. | I'll check it out. | I'll investigate.
    **example_fail**: seeing (bare gerund) | I look forward to see you (base form, not -ing) | I want to see you (no phrasal verb)
 
 3. **id**: 3
@@ -666,7 +666,7 @@
    **hidden_prompt**: "user uses 'I'll go through with + noun'"
    **hint_pt**: "I'll go through with the renovation despite the cost."
    **hint_en**: "I'll go through with the renovation despite the cost."
-   **example_pass**: I'll go through with the renovation despite the cost. | We're looking forward to the trip. | I look forward to seeing you.
+   **example_pass**: I'll go through with the renovation despite the cost. | We're looking forward to the trip. | I look forward to seeing you. | What did you call off recently? | How about you? | What about you?
    **example_fail**: seeing (bare gerund) | I look forward to see you (base form, not -ing) | I want to see you (no phrasal verb)
 
 **Closing cue**: Charlotte fecha com "Plans aligned!" quando obj_3 baterem.
@@ -703,7 +703,7 @@
    **hidden_prompt**: "user uses 'catch up on + noun'"
    **hint_pt**: "I need to catch up on my reading."
    **hint_en**: "I need to catch up on my reading."
-   **example_pass**: I need to catch up on my reading. | We're looking forward to the trip. | I look forward to seeing you.
+   **example_pass**: I need to catch up on my reading. | We're looking forward to the trip. | I look forward to seeing you. | I called off the party. | I canceled my subscription. | I had to scrap the project.
    **example_fail**: seeing (bare gerund) | I look forward to see you (base form, not -ing) | I want to see you (no phrasal verb)
 
 2. **id**: 2
@@ -712,7 +712,7 @@
    **hidden_prompt**: "user uses 'make up for' or 'go through with'"
    **hint_pt**: "I want to make up for missing my friend's birthday."
    **hint_en**: "I want to make up for missing my friend's birthday."
-   **example_pass**: I want to make up for missing my friend's birthday. | We're looking forward to the trip. | I look forward to seeing you.
+   **example_pass**: I want to make up for missing my friend's birthday. | We're looking forward to the trip. | I look forward to seeing you. | I'll look into the issue. | I'll check the details. | I'll find out for you.
    **example_fail**: seeing (bare gerund) | I look forward to see you (base form, not -ing) | I want to see you (no phrasal verb)
 
 3. **id**: 3
@@ -721,7 +721,7 @@
    **hidden_prompt**: "user asks Charlotte more about her inbox"
    **hint_pt**: "How many unread?"
    **hint_en**: "How many unread?"
-   **example_pass**: How many unread? | I'm getting used to working remotely. | How about you?
+   **example_pass**: How many unread? | I'm getting used to working remotely. | How about you? | And you? | How about you? | What about you?
    **example_fail**: seeing (bare gerund) | I look forward to see you (base form, not -ing) | I want to see you (no phrasal verb)
 
 **Closing cue**: Charlotte fecha com "Backlogs compared!" quando obj_3 baterem.

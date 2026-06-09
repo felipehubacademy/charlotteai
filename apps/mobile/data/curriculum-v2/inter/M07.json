@@ -161,7 +161,10 @@
             "examples_pass": [
               "I have a few close friends.",
               "I have hardly any money.",
-              "I have a few questions."
+              "I have a few questions.",
+              "I have a few friends here.",
+              "I have a little time.",
+              "I have some snacks."
             ],
             "examples_fail": [
               "milk (bare noun)",
@@ -177,7 +180,10 @@
             "examples_pass": [
               "I have a little time.",
               "There's a little milk left.",
-              "We have plenty of time."
+              "We have plenty of time.",
+              "There aren't many people.",
+              "There's not much food left.",
+              "I don't have much money."
             ],
             "examples_fail": [
               "milk (bare noun)",
@@ -193,7 +199,10 @@
             "examples_pass": [
               "I have a little money.",
               "We have plenty of time.",
-              "I have hardly any money."
+              "I have hardly any money.",
+              "How many do you have?",
+              "How much time do you have?",
+              "What about you?"
             ],
             "examples_fail": [
               "milk (bare noun)",
@@ -226,7 +235,10 @@
             "examples_pass": [
               "I have a few apples.",
               "I have hardly any money.",
-              "I have a few questions."
+              "I have a few questions.",
+              "I have a few books on my desk.",
+              "There's a little milk in the fridge.",
+              "I have some questions."
             ],
             "examples_fail": [
               "milk (bare noun)",
@@ -242,7 +254,10 @@
             "examples_pass": [
               "I have a little milk.",
               "I have hardly any money.",
-              "I have a few questions."
+              "I have a few questions.",
+              "I don't have many friends here.",
+              "There's not much sugar left.",
+              "I have little patience for that."
             ],
             "examples_fail": [
               "milk (bare noun)",
@@ -258,7 +273,10 @@
             "examples_pass": [
               "What do you have?",
               "I have hardly any money.",
-              "How about you?"
+              "How about you?",
+              "How about you?",
+              "What about you?",
+              "And you?"
             ],
             "examples_fail": [
               "milk (bare noun)",
@@ -417,7 +435,10 @@
             "examples_pass": [
               "I have few options.",
               "There's a little milk left.",
-              "We have plenty of time."
+              "We have plenty of time.",
+              "There are too many cars on the road.",
+              "There's too much noise here.",
+              "I have too much work to do."
             ],
             "examples_fail": [
               "milk (bare noun)",
@@ -433,7 +454,10 @@
             "examples_pass": [
               "I have a few hobbies.",
               "We have plenty of time.",
-              "I have hardly any money."
+              "I have hardly any money.",
+              "I don't have enough time.",
+              "There isn't enough food.",
+              "We don't have enough chairs."
             ],
             "examples_fail": [
               "milk (bare noun)",
@@ -449,7 +473,10 @@
             "examples_pass": [
               "I have little time.",
               "I have a few questions.",
-              "There's a little milk left."
+              "There's a little milk left.",
+              "Do you have enough?",
+              "Is there enough?",
+              "How about you?"
             ],
             "examples_fail": [
               "milk (bare noun)",
@@ -482,7 +509,10 @@
             "examples_pass": [
               "I have little patience today.",
               "I have hardly any money.",
-              "I have a few questions."
+              "I have a few questions.",
+              "There's too much sugar in this.",
+              "I have too many emails to answer.",
+              "There are too many options."
             ],
             "examples_fail": [
               "milk (bare noun)",
@@ -498,7 +528,10 @@
             "examples_pass": [
               "I have a few free hours.",
               "There's a little milk left.",
-              "We have plenty of time."
+              "We have plenty of time.",
+              "I don't have enough energy.",
+              "There isn't enough space.",
+              "We don't have enough money."
             ],
             "examples_fail": [
               "milk (bare noun)",
@@ -514,7 +547,10 @@
             "examples_pass": [
               "How about you?",
               "There's a little milk left.",
-              "And you?"
+              "And you?",
+              "What about you?",
+              "How about you?",
+              "Do you?"
             ],
             "examples_fail": [
               "milk (bare noun)",
@@ -929,7 +965,10 @@
             "examples_pass": [
               "I have several hobbies.",
               "There's a little milk left.",
-              "We have plenty of time."
+              "We have plenty of time.",
+              "All of my friends came.",
+              "Some of them are nice.",
+              "None of my coworkers showed up."
             ],
             "examples_fail": [
               "milk (bare noun)",
@@ -945,7 +984,10 @@
             "examples_pass": [
               "Most people drink coffee.",
               "We have plenty of time.",
-              "I have hardly any money."
+              "I have hardly any money.",
+              "Most people agree.",
+              "Several students passed.",
+              "A few of them complained."
             ],
             "examples_fail": [
               "milk (bare noun)",
@@ -961,7 +1003,10 @@
             "examples_pass": [
               "Most of my friends live in São Paulo.",
               "I have a few questions.",
-              "There's a little milk left."
+              "There's a little milk left.",
+              "How many of yours came?",
+              "How about you?",
+              "What about you?"
             ],
             "examples_fail": [
               "milk (bare noun)",
@@ -994,7 +1039,10 @@
             "examples_pass": [
               "Most of my friends work in tech.",
               "There's a little milk left.",
-              "We have plenty of time."
+              "We have plenty of time.",
+              "All of my colleagues are friendly.",
+              "Some of my classmates moved away.",
+              "None of them replied."
             ],
             "examples_fail": [
               "milk (bare noun)",
@@ -1010,7 +1058,10 @@
             "examples_pass": [
               "Several of them play soccer.",
               "I have a few questions.",
-              "There's a little milk left."
+              "There's a little milk left.",
+              "Most of my friends are married.",
+              "Several of my coworkers quit.",
+              "A few of them stayed."
             ],
             "examples_fail": [
               "milk (bare noun)",
@@ -1026,7 +1077,10 @@
             "examples_pass": [
               "How about yours?",
               "We have plenty of time.",
-              "How about you?"
+              "How about you?",
+              "How about you?",
+              "And you?",
+              "What about you?"
             ],
             "examples_fail": [
               "milk (bare noun)",
@@ -1181,7 +1235,7 @@
         "objectives": [
           {
             "id": 1,
-            "label_en": "Positive quantifier",
+            "label_en": "Positive quantifier (a few/a little/plenty of)",
             "hidden_prompt": "user uses a few/a little/plenty of",
             "hint_en": "I have plenty of work.",
             "examples_pass": [
@@ -1197,7 +1251,7 @@
           },
           {
             "id": 2,
-            "label_en": "Negative quantifier",
+            "label_en": "Negative quantifier (few/little/hardly any)",
             "hidden_prompt": "user uses few/little/hardly any",
             "hint_en": "I have hardly any time.",
             "examples_pass": [

@@ -458,7 +458,7 @@
 
 1. **id**: 1
    **label_pt**: "Algo que dobrou (twice as much/many/adj)"
-   **label_en**: "Something that doubled"
+   **label_en**: "Something doubled (twice as much/many/adj)"
    **hidden_prompt**: "user uses 'twice as + much/many/adj + as'"
    **hint_pt**: "I drink twice as much coffee as last year."
    **hint_en**: "I drink twice as much coffee as last year."
@@ -467,7 +467,7 @@
 
 2. **id**: 2
    **label_pt**: "Algo que triplicou ou mais (three/four times)"
-   **label_en**: "Something that tripled+"
+   **label_en**: "Something tripled+ (three/four times)"
    **hidden_prompt**: "user uses 'three times as + adj/much/many + as'"
    **hint_pt**: "My commute is three times as long as before."
    **hint_en**: "My commute is three times as long as before."
@@ -832,7 +832,7 @@
 
 3. **id**: 3
    **label_pt**: "Reflexão paralela com 'the more X, the more Y'"
-   **label_en**: "Parallel reflection"
+   **label_en**: "Parallel reflection with 'the more X, the more Y'"
    **hidden_prompt**: "user uses 'The more X, the more Y'"
    **hint_pt**: "The more I grow, the more grateful I become."
    **hint_en**: "The more I grow, the more grateful I become."
@@ -869,7 +869,7 @@
 
 1. **id**: 1
    **label_pt**: "Comparação simples (as...as ou not as...as)"
-   **label_en**: "Simple comparison"
+   **label_en**: "Simple comparison (as...as or not as...as)"
    **hidden_prompt**: "user uses 'as + adj + as' or 'not as + adj + as'"
    **hint_pt**: "Modern life isn't as peaceful as before."
    **hint_en**: "Modern life isn't as peaceful as before."

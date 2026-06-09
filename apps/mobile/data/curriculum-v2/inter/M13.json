@@ -681,7 +681,10 @@
             "examples_pass": [
               "I would have taken the offer.",
               "If I had known, I would have called.",
-              "If she had studied, she would have passed."
+              "If she had studied, she would have passed.",
+              "If I had known, I would have called you.",
+              "If I had studied, I would have passed.",
+              "If I had left earlier, I would have made it."
             ],
             "examples_fail": [
               "known (bare participle)",
@@ -697,7 +700,10 @@
             "examples_pass": [
               "I wouldn't have said anything.",
               "If we had left earlier, we wouldn't have missed it.",
-              "I would have gone if I had had time."
+              "I would have gone if I had had time.",
+              "I wouldn't have missed the flight.",
+              "I would have said something different.",
+              "I would have brought an umbrella."
             ],
             "examples_fail": [
               "known (bare participle)",
@@ -713,7 +719,10 @@
             "examples_pass": [
               "What would you have done?",
               "If she had studied, she would have passed.",
-              "How about you?"
+              "How about you?",
+              "What would you have done?",
+              "How about you?",
+              "What about you?"
             ],
             "examples_fail": [
               "known (bare participle)",
@@ -746,7 +755,10 @@
             "examples_pass": [
               "Yes, I would have gone.",
               "If I had known, I would have called.",
-              "If she had studied, she would have passed."
+              "If she had studied, she would have passed.",
+              "If I had woken up earlier, I wouldn't have been late.",
+              "If I had saved money, I could have traveled.",
+              "If I had listened, this wouldn't have happened."
             ],
             "examples_fail": [
               "known (bare participle)",
@@ -762,7 +774,10 @@
             "examples_pass": [
               "If I had been braver, I would have done it.",
               "If we had left earlier, we wouldn't have missed it.",
-              "I would have gone if I had had time."
+              "I would have gone if I had had time.",
+              "I would have answered the phone.",
+              "I would have done it differently.",
+              "I would have stayed longer."
             ],
             "examples_fail": [
               "known (bare participle)",
@@ -778,7 +793,10 @@
             "examples_pass": [
               "Would you have moved abroad?",
               "I would have gone if I had had time.",
-              "How about you?"
+              "How about you?",
+              "What about you?",
+              "How about you?",
+              "And you?"
             ],
             "examples_fail": [
               "known (bare participle)",
@@ -934,7 +952,10 @@
             "examples_pass": [
               "If I hadn't missed that flight, I would have been in the storm.",
               "I would have gone if I had had time.",
-              "If I had known, I would have called."
+              "If I had known, I would have called.",
+              "If I had studied medicine, I would be a doctor now.",
+              "If I had taken the job, I'd be in Berlin now.",
+              "If I had married him, my life would be different."
             ],
             "examples_fail": [
               "known (bare participle)",
@@ -950,7 +971,10 @@
             "examples_pass": [
               "And if I had been on that plane, I would never have met my best friend.",
               "If I had known, I would have called.",
-              "If she had studied, she would have passed."
+              "If she had studied, she would have passed.",
+              "I'd be rich now.",
+              "I would be happier.",
+              "I'd be living abroad."
             ],
             "examples_fail": [
               "known (bare participle)",
@@ -966,7 +990,10 @@
             "examples_pass": [
               "Everything would have been different if I had made one different choice.",
               "I would have gone if I had had time.",
-              "If I had known, I would have called."
+              "If I had known, I would have called.",
+              "What about your regrets?",
+              "How about you?",
+              "What about you?"
             ],
             "examples_fail": [
               "known (bare participle)",
@@ -999,7 +1026,10 @@
             "examples_pass": [
               "If the internet hadn't been invented, we wouldn't have this conversation.",
               "I would have gone if I had had time.",
-              "If I had known, I would have called."
+              "If I had known, I would have called.",
+              "If I had moved to Lisbon, I'd live there now.",
+              "If I had accepted, I'd be working there today.",
+              "If I had stayed, I would still be there."
             ],
             "examples_fail": [
               "known (bare participle)",
@@ -1015,7 +1045,10 @@
             "examples_pass": [
               "And if we hadn't had this conversation, I would never have practiced English today.",
               "If I had known, I would have called.",
-              "If she had studied, she would have passed."
+              "If she had studied, she would have passed.",
+              "I'd be in a totally different place.",
+              "I would be more relaxed.",
+              "I'd probably be married."
             ],
             "examples_fail": [
               "known (bare participle)",
@@ -1031,7 +1064,10 @@
             "examples_pass": [
               "What would have changed for you?",
               "If I had known, I would have called.",
-              "How about you?"
+              "How about you?",
+              "And you?",
+              "How about you?",
+              "What about you?"
             ],
             "examples_fail": [
               "known (bare participle)",

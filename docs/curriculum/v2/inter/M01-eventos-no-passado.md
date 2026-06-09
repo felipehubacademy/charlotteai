@@ -105,7 +105,7 @@
    **hidden_prompt**: "user states past continuous activity with 'I was + verb-ing + at + time'"
    **hint_pt**: "I was studying at 8pm."
    **hint_en**: "I was studying at 8pm."
-   **example_pass**: I was studying at 8pm. | We were watching TV last night. | I was working at 7am.
+   **example_pass**: I was studying at 8pm. | We were watching TV last night. | I was working at 7am. | I was reading at 9pm. | I was cooking around 8pm yesterday. | Yesterday at 8pm I was studying English.
    **example_fail**: studying (no subject + 'was') | I studied at 8pm (past simple, not continuous) | I'm studying now (present, not past continuous)
 
 2. **id**: 2
@@ -114,7 +114,7 @@
    **hidden_prompt**: "user uses 'He/She was + verb-ing' or 'They were + verb-ing'"
    **hint_pt**: "My sister was watching TV."
    **hint_en**: "My sister was watching TV."
-   **example_pass**: My sister was watching TV. | I was working at 7am. | She was sleeping at midnight.
+   **example_pass**: My sister was watching TV. | I was working at 7am. | She was sleeping at midnight. | My brother was playing video games. | My mom was talking on the phone. | He was washing the dishes.
    **example_fail**: studying (no subject + 'was') | I studied at 8pm (past simple, not continuous) | I'm studying now (present, not past continuous)
 
 3. **id**: 3
@@ -123,7 +123,7 @@
    **hidden_prompt**: "user uses another past continuous"
    **hint_pt**: "We were eating dinner."
    **hint_en**: "We were eating dinner."
-   **example_pass**: We were eating dinner. | She was sleeping at midnight. | They were eating dinner at 8pm.
+   **example_pass**: We were eating dinner. | She was sleeping at midnight. | They were eating dinner at 8pm. | My parents were watching a movie. | We were having a long conversation. | They were getting ready for bed.
    **example_fail**: studying (no subject + 'was') | I studied at 8pm (past simple, not continuous) | I'm studying now (present, not past continuous)
 
 **Closing cue**: Charlotte closes with "Busy evening!" when obj_3 hits.
@@ -160,7 +160,7 @@
    **hidden_prompt**: "user uses 'I was + verb-ing'"
    **hint_pt**: "I was reading."
    **hint_en**: "I was reading."
-   **example_pass**: I was reading. | I was working at 7am. | She was sleeping at midnight.
+   **example_pass**: I was reading. | I was working at 7am. | She was sleeping at midnight. | I was watching a series. | I was studying for an exam. | I was relaxing on the couch.
    **example_fail**: studying (no subject + 'was') | I studied at 8pm (past simple, not continuous) | I'm studying now (present, not past continuous)
 
 2. **id**: 2
@@ -169,7 +169,7 @@
    **hidden_prompt**: "user uses 'X was + verb-ing'"
    **hint_pt**: "My brother was playing games."
    **hint_en**: "My brother was playing games."
-   **example_pass**: My brother was playing games. | They were eating dinner at 8pm. | We were watching TV last night.
+   **example_pass**: My brother was playing games. | They were eating dinner at 8pm. | We were watching TV last night. | My sister was on her phone. | He was working late. | My parents were already sleeping.
    **example_fail**: studying (no subject + 'was') | I studied at 8pm (past simple, not continuous) | I'm studying now (present, not past continuous)
 
 3. **id**: 3
@@ -178,7 +178,7 @@
    **hidden_prompt**: "user asks 'What were you doing?' or 'How about you?'"
    **hint_pt**: "What were you doing?"
    **hint_en**: "What were you doing?"
-   **example_pass**: What were you doing? | I was working at 7am. | How about you?
+   **example_pass**: What were you doing? | I was working at 7am. | How about you? | And you? | How about you? | What about you, Charlotte?
    **example_fail**: studying (no subject + 'was') | I studied at 8pm (past simple, not continuous) | I'm studying now (present, not past continuous)
 
 **Closing cue**: Charlotte closes with "Cozy night around!" when obj_3 hits.
@@ -636,7 +636,7 @@
    **hidden_prompt**: "user uses 'I was + verb-ing + when + past simple'"
    **hint_pt**: "I was reading when the phone rang."
    **hint_en**: "I was reading when the phone rang."
-   **example_pass**: I was reading when the phone rang. | She was sleeping at midnight. | They were eating dinner at 8pm.
+   **example_pass**: I was reading when the phone rang. | She was sleeping at midnight. | They were eating dinner at 8pm. | I was watching TV when the doorbell rang. | I was sleeping when the alarm went off. | I was eating when she texted me.
    **example_fail**: studying (no subject + 'was') | I studied at 8pm (past simple, not continuous) | I'm studying now (present, not past continuous)
 
 2. **id**: 2
@@ -645,7 +645,7 @@
    **hidden_prompt**: "user uses 'While + past continuous, past simple'"
    **hint_pt**: "While I was cooking, she arrived."
    **hint_en**: "While I was cooking, she arrived."
-   **example_pass**: While I was cooking, she arrived. | They were eating dinner at 8pm. | We were watching TV last night.
+   **example_pass**: While I was cooking, she arrived. | They were eating dinner at 8pm. | We were watching TV last night. | While I was studying, my friend called. | While we were having dinner, the lights went out. | While she was driving, the rain started.
    **example_fail**: studying (no subject + 'was') | I studied at 8pm (past simple, not continuous) | I'm studying now (present, not past continuous)
 
 3. **id**: 3
@@ -654,7 +654,7 @@
    **hidden_prompt**: "user uses another time clause structure"
    **hint_pt**: "As I was walking, I saw a friend."
    **hint_en**: "As I was walking, I saw a friend."
-   **example_pass**: As I was walking, I saw a friend. | I was working at 7am. | She was sleeping at midnight.
+   **example_pass**: As I was walking, I saw a friend. | I was working at 7am. | She was sleeping at midnight. | As I was leaving the house, I got a call. | When I was walking home, I bumped into him. | As we were talking, the music stopped.
    **example_fail**: studying (no subject + 'was') | I studied at 8pm (past simple, not continuous) | I'm studying now (present, not past continuous)
 
 **Closing cue**: Charlotte closes with "Vivid story!" when obj_3 hits.
@@ -691,7 +691,7 @@
    **hidden_prompt**: "user uses 'While + past continuous, past simple'"
    **hint_pt**: "While I was eating, the cat jumped."
    **hint_en**: "While I was eating, the cat jumped."
-   **example_pass**: While I was eating, the cat jumped. | She was sleeping at midnight. | They were eating dinner at 8pm.
+   **example_pass**: While I was eating, the cat jumped. | She was sleeping at midnight. | They were eating dinner at 8pm. | While I was working, my dog ran in. | While we were eating, someone knocked. | While I was on a call, my kid interrupted.
    **example_fail**: studying (no subject + 'was') | I studied at 8pm (past simple, not continuous) | I'm studying now (present, not past continuous)
 
 2. **id**: 2
@@ -700,7 +700,7 @@
    **hidden_prompt**: "user uses 'I was + ing + when + past simple'"
    **hint_pt**: "I was watching TV when the lights went off."
    **hint_en**: "I was watching TV when the lights went off."
-   **example_pass**: I was watching TV when the lights went off. | I was working at 7am. | She was sleeping at midnight.
+   **example_pass**: I was watching TV when the lights went off. | I was working at 7am. | She was sleeping at midnight. | I was cooking when the smoke alarm went off. | I was driving when it started snowing. | I was reading when my battery died.
    **example_fail**: studying (no subject + 'was') | I studied at 8pm (past simple, not continuous) | I'm studying now (present, not past continuous)
 
 3. **id**: 3
@@ -709,7 +709,7 @@
    **hidden_prompt**: "user asks 'What about you?'"
    **hint_pt**: "What about you?"
    **hint_en**: "What about you?"
-   **example_pass**: What about you? | We were watching TV last night. | How about you?
+   **example_pass**: What about you? | We were watching TV last night. | How about you? | How about you? | And you, Charlotte? | What about you?
    **example_fail**: studying (no subject + 'was') | I studied at 8pm (past simple, not continuous) | I'm studying now (present, not past continuous)
 
 **Closing cue**: Charlotte closes with "Funny moments!" when obj_3 hits.

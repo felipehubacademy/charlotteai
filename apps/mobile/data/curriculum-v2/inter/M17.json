@@ -425,7 +425,10 @@
             "examples_pass": [
               "My boss told me I was getting a raise.",
               "She mentioned she had visited Paris.",
-              "She said she was tired."
+              "She said she was tired.",
+              "She said she was tired.",
+              "He told me he was busy.",
+              "They said they were leaving."
             ],
             "examples_fail": [
               "tired (bare adjective)",
@@ -441,7 +444,10 @@
             "examples_pass": [
               "He said the deadline was Friday.",
               "He told me he had finished.",
-              "They said they would come."
+              "They said they would come.",
+              "She said she had finished her work.",
+              "He told me he had eaten already.",
+              "They said they had seen the movie."
             ],
             "examples_fail": [
               "tired (bare adjective)",
@@ -457,7 +463,10 @@
             "examples_pass": [
               "She mentioned that she was tired.",
               "He told me he had finished.",
-              "They said they would come."
+              "They said they would come.",
+              "What did she tell you?",
+              "What did he say?",
+              "How about you?"
             ],
             "examples_fail": [
               "tired (bare adjective)",
@@ -490,7 +499,10 @@
             "examples_pass": [
               "You said your coworker was thinking of quitting.",
               "She said she was tired.",
-              "He told me he had finished."
+              "He told me he had finished.",
+              "He said he was on his way.",
+              "She told me she was working.",
+              "They said they were having fun."
             ],
             "examples_fail": [
               "tired (bare adjective)",
@@ -506,7 +518,10 @@
             "examples_pass": [
               "She told me she had been unhappy for a while.",
               "She said she was tired.",
-              "He told me he had finished."
+              "He told me he had finished.",
+              "She said she had called you.",
+              "He told me he had been there.",
+              "They said they had visited Italy."
             ],
             "examples_fail": [
               "tired (bare adjective)",
@@ -522,7 +537,10 @@
             "examples_pass": [
               "What did she say her plans were?",
               "He told me he had finished.",
-              "How about you?"
+              "How about you?",
+              "What about you?",
+              "How about you?",
+              "And you?"
             ],
             "examples_fail": [
               "tired (bare adjective)",
@@ -683,7 +701,10 @@
             "examples_pass": [
               "He said he had finished the report.",
               "He told me he had finished.",
-              "They said they would come."
+              "They said they would come.",
+              "He said he would come.",
+              "She told me she would help.",
+              "They said they would call later."
             ],
             "examples_fail": [
               "tired (bare adjective)",
@@ -699,7 +720,10 @@
             "examples_pass": [
               "She told me she had visited Paris twice.",
               "She mentioned she had visited Paris.",
-              "She said she was tired."
+              "She said she was tired.",
+              "She said she could swim.",
+              "He told me he could drive.",
+              "They said they could come."
             ],
             "examples_fail": [
               "tired (bare adjective)",
@@ -715,7 +739,10 @@
             "examples_pass": [
               "He said he had never tried sushi.",
               "They said they would come.",
-              "She mentioned she had visited Paris."
+              "She mentioned she had visited Paris.",
+              "What did they say they would do?",
+              "How about you?",
+              "What about you?"
             ],
             "examples_fail": [
               "tired (bare adjective)",
@@ -748,7 +775,10 @@
             "examples_pass": [
               "She said she had completed her part.",
               "She mentioned she had visited Paris.",
-              "She said she was tired."
+              "She said she was tired.",
+              "He said he would arrive late.",
+              "She told me she would text me.",
+              "They said they would join us."
             ],
             "examples_fail": [
               "tired (bare adjective)",
@@ -764,7 +794,10 @@
             "examples_pass": [
               "Another colleague said he had already sent his notes.",
               "She said she was tired.",
-              "He told me he had finished."
+              "He told me he had finished.",
+              "She said she could speak French.",
+              "He told me he could fix it.",
+              "They said they could come over."
             ],
             "examples_fail": [
               "tired (bare adjective)",
@@ -780,7 +813,10 @@
             "examples_pass": [
               "Did anyone say they hadn't finished?",
               "He told me he had finished.",
-              "How about you?"
+              "How about you?",
+              "And you?",
+              "How about you?",
+              "What about you?"
             ],
             "examples_fail": [
               "tired (bare adjective)",
@@ -941,7 +977,10 @@
             "examples_pass": [
               "He said he would help me with the project.",
               "She mentioned she had visited Paris.",
-              "She said she was tired."
+              "She said she was tired.",
+              "He said he had been working all day.",
+              "She told me she had been studying for hours.",
+              "They said they had been waiting."
             ],
             "examples_fail": [
               "tired (bare adjective)",
@@ -957,7 +996,10 @@
             "examples_pass": [
               "She said she could speak French fluently.",
               "She mentioned she had visited Paris.",
-              "She said she was tired."
+              "She said she was tired.",
+              "She said the meeting had been canceled.",
+              "He told me his car had been stolen.",
+              "They said their flight had been delayed."
             ],
             "examples_fail": [
               "tired (bare adjective)",
@@ -973,7 +1015,10 @@
             "examples_pass": [
               "He said he might be late.",
               "She mentioned she had visited Paris.",
-              "She said she was tired."
+              "She said she was tired.",
+              "What did they tell you?",
+              "How about you?",
+              "What about you?"
             ],
             "examples_fail": [
               "tired (bare adjective)",
@@ -1006,7 +1051,10 @@
             "examples_pass": [
               "She said she would visit you next month.",
               "She mentioned she had visited Paris.",
-              "She said she was tired."
+              "She said she was tired.",
+              "He said he had been thinking about it.",
+              "She told me she had been crying.",
+              "They said they had been planning it."
             ],
             "examples_fail": [
               "tired (bare adjective)",
@@ -1022,7 +1070,10 @@
             "examples_pass": [
               "She mentioned she might bring her sister.",
               "He told me he had finished.",
-              "They said they would come."
+              "They said they would come.",
+              "She said the project had been postponed.",
+              "He told me the meeting had been moved.",
+              "They said the order had been shipped."
             ],
             "examples_fail": [
               "tired (bare adjective)",
@@ -1038,7 +1089,10 @@
             "examples_pass": [
               "Did she say when she would arrive?",
               "She mentioned she had visited Paris.",
-              "How about you?"
+              "How about you?",
+              "What about you?",
+              "How about you?",
+              "And you?"
             ],
             "examples_fail": [
               "tired (bare adjective)",
@@ -1191,7 +1245,7 @@
         "objectives": [
           {
             "id": 1,
-            "label_en": "Report with time shift",
+            "label_en": "Report with time shift (today→that day)",
             "hidden_prompt": "user uses 'said... that day' or 'said... the day before'",
             "hint_en": "He said he was tired that day.",
             "examples_pass": [

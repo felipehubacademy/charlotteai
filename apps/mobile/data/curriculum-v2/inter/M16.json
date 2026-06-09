@@ -162,7 +162,10 @@
             "examples_pass": [
               "The reports must be submitted by Friday.",
               "The road has been repaired.",
-              "Mistakes were made."
+              "Mistakes were made.",
+              "I was given a gift.",
+              "She was told the news.",
+              "They were sent a package."
             ],
             "examples_fail": [
               "finished (bare participle)",
@@ -178,7 +181,10 @@
             "examples_pass": [
               "Emails should be checked twice a day.",
               "The road has been repaired.",
-              "Mistakes were made."
+              "Mistakes were made.",
+              "I was shown the photos.",
+              "He was offered a job.",
+              "We were given good advice."
             ],
             "examples_fail": [
               "finished (bare participle)",
@@ -194,7 +200,10 @@
             "examples_pass": [
               "Documents have to be signed before submission.",
               "The package will be delivered tomorrow.",
-              "The project is being finished this week."
+              "The project is being finished this week.",
+              "Have you been given anything?",
+              "How about you?",
+              "What about you?"
             ],
             "examples_fail": [
               "finished (bare participle)",
@@ -227,7 +236,10 @@
             "examples_pass": [
               "Phones must be silenced during meetings.",
               "The package will be delivered tomorrow.",
-              "The project is being finished this week."
+              "The project is being finished this week.",
+              "I was given a promotion.",
+              "She was sent flowers.",
+              "They were told the truth."
             ],
             "examples_fail": [
               "finished (bare participle)",
@@ -243,7 +255,10 @@
             "examples_pass": [
               "Emails should be answered within 24 hours.",
               "Mistakes were made.",
-              "The package will be delivered tomorrow."
+              "The package will be delivered tomorrow.",
+              "I was offered help.",
+              "He was shown around.",
+              "We were given keys to the office."
             ],
             "examples_fail": [
               "finished (bare participle)",
@@ -259,7 +274,10 @@
             "examples_pass": [
               "What's a rule at your work?",
               "The road has been repaired.",
-              "How about you?"
+              "How about you?",
+              "What about you?",
+              "How about you?",
+              "And you?"
             ],
             "examples_fail": [
               "finished (bare participle)",
@@ -417,7 +435,10 @@
             "examples_pass": [
               "The results will be announced on Friday.",
               "The package will be delivered tomorrow.",
-              "The project is being finished this week."
+              "The project is being finished this week.",
+              "It is said that he's rich.",
+              "It is believed that they're moving.",
+              "It is reported that prices will rise."
             ],
             "examples_fail": [
               "finished (bare participle)",
@@ -433,7 +454,10 @@
             "examples_pass": [
               "A new park is going to be built downtown.",
               "The road has been repaired.",
-              "Mistakes were made."
+              "Mistakes were made.",
+              "He is said to be a genius.",
+              "She is believed to live abroad.",
+              "They are thought to be married."
             ],
             "examples_fail": [
               "finished (bare participle)",
@@ -449,7 +473,10 @@
             "examples_pass": [
               "The conference will be held in Rio.",
               "The project is being finished this week.",
-              "The road has been repaired."
+              "The road has been repaired.",
+              "What is said about you?",
+              "How about you?",
+              "What about you?"
             ],
             "examples_fail": [
               "finished (bare participle)",
@@ -482,7 +509,10 @@
             "examples_pass": [
               "A new metro line is going to be built.",
               "Mistakes were made.",
-              "The package will be delivered tomorrow."
+              "The package will be delivered tomorrow.",
+              "It is said that the boss is leaving.",
+              "It is believed that the project failed.",
+              "It is thought that he's hiding something."
             ],
             "examples_fail": [
               "finished (bare participle)",
@@ -498,7 +528,10 @@
             "examples_pass": [
               "The old market will be renovated.",
               "The road has been repaired.",
-              "Mistakes were made."
+              "Mistakes were made.",
+              "She is said to be very kind.",
+              "He is believed to have left.",
+              "They are thought to be guilty."
             ],
             "examples_fail": [
               "finished (bare participle)",
@@ -514,7 +547,10 @@
             "examples_pass": [
               "What's going to be built in your area?",
               "Mistakes were made.",
-              "How about you?"
+              "How about you?",
+              "And you?",
+              "How about you?",
+              "What about you?"
             ],
             "examples_fail": [
               "finished (bare participle)",
@@ -930,7 +966,10 @@
             "examples_pass": [
               "I got married three years ago.",
               "The project is being finished this week.",
-              "The road has been repaired."
+              "The road has been repaired.",
+              "My hair is being cut tomorrow.",
+              "I'm having my car fixed.",
+              "The package needs to be delivered."
             ],
             "examples_fail": [
               "finished (bare participle)",
@@ -946,7 +985,10 @@
             "examples_pass": [
               "I got lost on my first day in São Paulo.",
               "The road has been repaired.",
-              "Mistakes were made."
+              "Mistakes were made.",
+              "The report has to be finished by Friday.",
+              "Dinner must be ready by 7.",
+              "The room should be cleaned."
             ],
             "examples_fail": [
               "finished (bare participle)",
@@ -962,7 +1004,10 @@
             "examples_pass": [
               "My car got stolen last year.",
               "Mistakes were made.",
-              "The package will be delivered tomorrow."
+              "The package will be delivered tomorrow.",
+              "What needs to be done at your place?",
+              "How about you?",
+              "What about you?"
             ],
             "examples_fail": [
               "finished (bare participle)",
@@ -995,7 +1040,10 @@
             "examples_pass": [
               "I got stuck in traffic for two hours.",
               "The package will be delivered tomorrow.",
-              "The project is being finished this week."
+              "The project is being finished this week.",
+              "My nails are being done today.",
+              "I'm having my windows cleaned.",
+              "The dog has to be walked."
             ],
             "examples_fail": [
               "finished (bare participle)",
@@ -1011,7 +1059,10 @@
             "examples_pass": [
               "My bag got soaked too.",
               "The road has been repaired.",
-              "Mistakes were made."
+              "Mistakes were made.",
+              "The bills have to be paid.",
+              "The car needs to be washed.",
+              "The dishes must be done."
             ],
             "examples_fail": [
               "finished (bare participle)",
@@ -1027,7 +1078,10 @@
             "examples_pass": [
               "How did you get home?",
               "The project is being finished this week.",
-              "How about you?"
+              "How about you?",
+              "What about you?",
+              "How about you?",
+              "And you?"
             ],
             "examples_fail": [
               "finished (bare participle)",
@@ -1242,7 +1296,7 @@
         "objectives": [
           {
             "id": 1,
-            "label_en": "What's been done",
+            "label_en": "What's been done (present perfect passive)",
             "hidden_prompt": "user uses 'has/have been + past participle'",
             "hint_en": "The website has been redesigned.",
             "examples_pass": [
@@ -1258,7 +1312,7 @@
           },
           {
             "id": 2,
-            "label_en": "What's being done",
+            "label_en": "What's being done (present continuous passive)",
             "hidden_prompt": "user uses 'is/are being + past participle'",
             "hint_en": "New features are being tested.",
             "examples_pass": [

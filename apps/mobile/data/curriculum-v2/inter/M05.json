@@ -160,7 +160,10 @@
             "examples_pass": [
               "I get up at 7.",
               "I gave up smoking last year.",
-              "She looks after her sister."
+              "She looks after her sister.",
+              "I get up at 6am every day.",
+              "I usually wake up early.",
+              "I get out of bed around 7."
             ],
             "examples_fail": [
               "smoking (bare verb)",
@@ -176,7 +179,10 @@
             "examples_pass": [
               "I put on my work clothes.",
               "I gave up smoking last year.",
-              "She looks after her sister."
+              "She looks after her sister.",
+              "I look up new words in a dictionary.",
+              "I check up on my friends regularly.",
+              "I look after my little brother."
             ],
             "examples_fail": [
               "smoking (bare verb)",
@@ -192,7 +198,10 @@
             "examples_pass": [
               "I go out at 8.",
               "Turn off the lights, please.",
-              "I ran into an old friend."
+              "I ran into an old friend.",
+              "What time do you get up?",
+              "How about you?",
+              "What about you?"
             ],
             "examples_fail": [
               "smoking (bare verb)",
@@ -224,7 +233,10 @@
             "examples_pass": [
               "I come back at 6.",
               "I ran into an old friend.",
-              "I gave up smoking last year."
+              "I gave up smoking last year.",
+              "I get up around 7am.",
+              "I usually wake up at 6:30.",
+              "I get out of bed pretty late on weekends."
             ],
             "examples_fail": [
               "smoking (bare verb)",
@@ -234,13 +246,16 @@
           },
           {
             "id": 2,
-            "label_en": "Another phrasal verb",
+            "label_en": "Another phrasal verb (take off/turn on)",
             "hidden_prompt": "user uses 'take off' or 'turn on'",
             "hint_en": "I take off my shoes.",
             "examples_pass": [
               "I take off my shoes.",
               "I ran into an old friend.",
-              "I gave up smoking last year."
+              "I gave up smoking last year.",
+              "I look up recipes online.",
+              "I take after my mom.",
+              "I run into old friends sometimes."
             ],
             "examples_fail": [
               "smoking (bare verb)",
@@ -256,7 +271,10 @@
             "examples_pass": [
               "What do you do at home?",
               "I gave up smoking last year.",
-              "How about you?"
+              "How about you?",
+              "What about you?",
+              "How about you?",
+              "And you?"
             ],
             "examples_fail": [
               "smoking (bare verb)",
@@ -407,7 +425,7 @@
         "objectives": [
           {
             "id": 1,
-            "label_en": "Something searching",
+            "label_en": "Something you're looking for",
             "hidden_prompt": "user uses 'I'm looking for + thing'",
             "hint_en": "I'm looking for a new apartment.",
             "examples_pass": [
@@ -661,7 +679,7 @@
         "objectives": [
           {
             "id": 1,
-            "label_en": "Discovery",
+            "label_en": "Something you found out",
             "hidden_prompt": "user uses 'I found out + something'",
             "hint_en": "I found out about a new job.",
             "examples_pass": [
@@ -916,13 +934,16 @@
         "objectives": [
           {
             "id": 1,
-            "label_en": "Separable with pronoun",
+            "label_en": "Separable with pronoun (it/him/them)",
             "hidden_prompt": "user splits separable phrasal with pronoun",
             "hint_en": "I turned it off.",
             "examples_pass": [
               "I turned it off.",
               "She looks after her sister.",
-              "Turn off the lights, please."
+              "Turn off the lights, please.",
+              "I gave up smoking last year.",
+              "I quit drinking coffee.",
+              "I stopped eating junk food."
             ],
             "examples_fail": [
               "smoking (bare verb)",
@@ -938,7 +959,10 @@
             "examples_pass": [
               "She looks after them.",
               "Turn off the lights, please.",
-              "I ran into an old friend."
+              "I ran into an old friend.",
+              "I picked up a new hobby.",
+              "I started learning guitar.",
+              "I took up running."
             ],
             "examples_fail": [
               "smoking (bare verb)",
@@ -954,7 +978,10 @@
             "examples_pass": [
               "He picked me up at 8.",
               "I ran into an old friend.",
-              "I gave up smoking last year."
+              "I gave up smoking last year.",
+              "What habits did you give up?",
+              "How about you?",
+              "What about you?"
             ],
             "examples_fail": [
               "smoking (bare verb)",
@@ -987,7 +1014,10 @@
             "examples_pass": [
               "I'll pick you up at 6.",
               "Turn off the lights, please.",
-              "I ran into an old friend."
+              "I ran into an old friend.",
+              "I gave up sugar.",
+              "I quit social media for a while.",
+              "I stopped buying takeout."
             ],
             "examples_fail": [
               "smoking (bare verb)",
@@ -997,13 +1027,16 @@
           },
           {
             "id": 2,
-            "label_en": "Another offer",
+            "label_en": "Another offer (turn on/off)",
             "hidden_prompt": "user uses another phrasal correctly",
             "hint_en": "I'll turn the lights off.",
             "examples_pass": [
               "I'll turn the lights off.",
               "Turn off the lights, please.",
-              "I ran into an old friend."
+              "I ran into an old friend.",
+              "I picked up reading again.",
+              "I started going to the gym.",
+              "I took up meditation."
             ],
             "examples_fail": [
               "smoking (bare verb)",
@@ -1019,7 +1052,10 @@
             "examples_pass": [
               "Can you look after my dog?",
               "She looks after her sister.",
-              "How about you?"
+              "How about you?",
+              "And you?",
+              "How about you?",
+              "What about you?"
             ],
             "examples_fail": [
               "smoking (bare verb)",

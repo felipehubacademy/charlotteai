@@ -103,7 +103,7 @@
    **hidden_prompt**: "user uses 'I have a few + plural'"
    **hint_pt**: "I have a few close friends."
    **hint_en**: "I have a few close friends."
-   **example_pass**: I have a few close friends. | I have hardly any money. | I have a few questions.
+   **example_pass**: I have a few close friends. | I have hardly any money. | I have a few questions. | I have a few friends here. | I have a little time. | I have some snacks.
    **example_fail**: milk (bare noun) | I have money (no quantifier) | I have many milk (wrong quantifier for uncountable)
 
 2. **id**: 2
@@ -112,7 +112,7 @@
    **hidden_prompt**: "user uses 'I have a little + uncountable'"
    **hint_pt**: "I have a little time."
    **hint_en**: "I have a little time."
-   **example_pass**: I have a little time. | There's a little milk left. | We have plenty of time.
+   **example_pass**: I have a little time. | There's a little milk left. | We have plenty of time. | There aren't many people. | There's not much food left. | I don't have much money.
    **example_fail**: milk (bare noun) | I have money (no quantifier) | I have many milk (wrong quantifier for uncountable)
 
 3. **id**: 3
@@ -121,7 +121,7 @@
    **hidden_prompt**: "user uses a few or a little correctly"
    **hint_pt**: "I have a little money."
    **hint_en**: "I have a little money."
-   **example_pass**: I have a little money. | We have plenty of time. | I have hardly any money.
+   **example_pass**: I have a little money. | We have plenty of time. | I have hardly any money. | How many do you have? | How much time do you have? | What about you?
    **example_fail**: milk (bare noun) | I have money (no quantifier) | I have many milk (wrong quantifier for uncountable)
 
 **Closing cue**: Charlotte closes with "Quantities clear!" when obj_3 hits.
@@ -158,7 +158,7 @@
    **hidden_prompt**: "user uses 'a few + plural noun'"
    **hint_pt**: "I have a few apples."
    **hint_en**: "I have a few apples."
-   **example_pass**: I have a few apples. | I have hardly any money. | I have a few questions.
+   **example_pass**: I have a few apples. | I have hardly any money. | I have a few questions. | I have a few books on my desk. | There's a little milk in the fridge. | I have some questions.
    **example_fail**: milk (bare noun) | I have money (no quantifier) | I have many milk (wrong quantifier for uncountable)
 
 2. **id**: 2
@@ -167,7 +167,7 @@
    **hidden_prompt**: "user uses 'a little + uncountable'"
    **hint_pt**: "I have a little milk."
    **hint_en**: "I have a little milk."
-   **example_pass**: I have a little milk. | I have hardly any money. | I have a few questions.
+   **example_pass**: I have a little milk. | I have hardly any money. | I have a few questions. | I don't have many friends here. | There's not much sugar left. | I have little patience for that.
    **example_fail**: milk (bare noun) | I have money (no quantifier) | I have many milk (wrong quantifier for uncountable)
 
 3. **id**: 3
@@ -176,7 +176,7 @@
    **hidden_prompt**: "user asks Charlotte what she has"
    **hint_pt**: "What do you have?"
    **hint_en**: "What do you have?"
-   **example_pass**: What do you have? | I have hardly any money. | How about you?
+   **example_pass**: What do you have? | I have hardly any money. | How about you? | How about you? | What about you? | And you?
    **example_fail**: milk (bare noun) | I have money (no quantifier) | I have many milk (wrong quantifier for uncountable)
 
 **Closing cue**: Charlotte closes with "Pantry inventory!" when obj_3 hits.
@@ -281,7 +281,7 @@
    **hidden_prompt**: "user uses 'few + plural' meaning almost none"
    **hint_pt**: "I have few options."
    **hint_en**: "I have few options."
-   **example_pass**: I have few options. | There's a little milk left. | We have plenty of time.
+   **example_pass**: I have few options. | There's a little milk left. | We have plenty of time. | There are too many cars on the road. | There's too much noise here. | I have too much work to do.
    **example_fail**: milk (bare noun) | I have money (no quantifier) | I have many milk (wrong quantifier for uncountable)
 
 2. **id**: 2
@@ -290,7 +290,7 @@
    **hidden_prompt**: "user uses 'a few + plural' meaning some"
    **hint_pt**: "I have a few hobbies."
    **hint_en**: "I have a few hobbies."
-   **example_pass**: I have a few hobbies. | We have plenty of time. | I have hardly any money.
+   **example_pass**: I have a few hobbies. | We have plenty of time. | I have hardly any money. | I don't have enough time. | There isn't enough food. | We don't have enough chairs.
    **example_fail**: milk (bare noun) | I have money (no quantifier) | I have many milk (wrong quantifier for uncountable)
 
 3. **id**: 3
@@ -299,7 +299,7 @@
    **hidden_prompt**: "user uses 'little' or 'a little' with uncountable"
    **hint_pt**: "I have little time."
    **hint_en**: "I have little time."
-   **example_pass**: I have little time. | I have a few questions. | There's a little milk left.
+   **example_pass**: I have little time. | I have a few questions. | There's a little milk left. | Do you have enough? | Is there enough? | How about you?
    **example_fail**: milk (bare noun) | I have money (no quantifier) | I have many milk (wrong quantifier for uncountable)
 
 **Closing cue**: Charlotte closes with "Subtle quantifier!" when obj_3 hits.
@@ -336,7 +336,7 @@
    **hidden_prompt**: "user uses 'few/little' (negative)"
    **hint_pt**: "I have little patience today."
    **hint_en**: "I have little patience today."
-   **example_pass**: I have little patience today. | I have hardly any money. | I have a few questions.
+   **example_pass**: I have little patience today. | I have hardly any money. | I have a few questions. | There's too much sugar in this. | I have too many emails to answer. | There are too many options.
    **example_fail**: milk (bare noun) | I have money (no quantifier) | I have many milk (wrong quantifier for uncountable)
 
 2. **id**: 2
@@ -345,7 +345,7 @@
    **hidden_prompt**: "user uses 'a few/a little' (positive)"
    **hint_pt**: "I have a few free hours."
    **hint_en**: "I have a few free hours."
-   **example_pass**: I have a few free hours. | There's a little milk left. | We have plenty of time.
+   **example_pass**: I have a few free hours. | There's a little milk left. | We have plenty of time. | I don't have enough energy. | There isn't enough space. | We don't have enough money.
    **example_fail**: milk (bare noun) | I have money (no quantifier) | I have many milk (wrong quantifier for uncountable)
 
 3. **id**: 3
@@ -354,7 +354,7 @@
    **hidden_prompt**: "user asks 'How about you?'"
    **hint_pt**: "How about you?"
    **hint_en**: "How about you?"
-   **example_pass**: How about you? | There's a little milk left. | And you?
+   **example_pass**: How about you? | There's a little milk left. | And you? | What about you? | How about you? | Do you?
    **example_fail**: milk (bare noun) | I have money (no quantifier) | I have many milk (wrong quantifier for uncountable)
 
 **Closing cue**: Charlotte closes with "Glass half full or empty!" when obj_3 hits.
@@ -638,7 +638,7 @@
    **hidden_prompt**: "user uses 'several + plural'"
    **hint_pt**: "I have several hobbies."
    **hint_en**: "I have several hobbies."
-   **example_pass**: I have several hobbies. | There's a little milk left. | We have plenty of time.
+   **example_pass**: I have several hobbies. | There's a little milk left. | We have plenty of time. | All of my friends came. | Some of them are nice. | None of my coworkers showed up.
    **example_fail**: milk (bare noun) | I have money (no quantifier) | I have many milk (wrong quantifier for uncountable)
 
 2. **id**: 2
@@ -647,7 +647,7 @@
    **hidden_prompt**: "user uses 'Most + general plural'"
    **hint_pt**: "Most people drink coffee."
    **hint_en**: "Most people drink coffee."
-   **example_pass**: Most people drink coffee. | We have plenty of time. | I have hardly any money.
+   **example_pass**: Most people drink coffee. | We have plenty of time. | I have hardly any money. | Most people agree. | Several students passed. | A few of them complained.
    **example_fail**: milk (bare noun) | I have money (no quantifier) | I have many milk (wrong quantifier for uncountable)
 
 3. **id**: 3
@@ -656,7 +656,7 @@
    **hidden_prompt**: "user uses 'Most of the/my + plural'"
    **hint_pt**: "Most of my friends live in São Paulo."
    **hint_en**: "Most of my friends live in São Paulo."
-   **example_pass**: Most of my friends live in São Paulo. | I have a few questions. | There's a little milk left.
+   **example_pass**: Most of my friends live in São Paulo. | I have a few questions. | There's a little milk left. | How many of yours came? | How about you? | What about you?
    **example_fail**: milk (bare noun) | I have money (no quantifier) | I have many milk (wrong quantifier for uncountable)
 
 **Closing cue**: Charlotte closes with "Precise quantities!" when obj_3 hits.
@@ -693,7 +693,7 @@
    **hidden_prompt**: "user uses 'Most of my friends + verb'"
    **hint_pt**: "Most of my friends work in tech."
    **hint_en**: "Most of my friends work in tech."
-   **example_pass**: Most of my friends work in tech. | There's a little milk left. | We have plenty of time.
+   **example_pass**: Most of my friends work in tech. | There's a little milk left. | We have plenty of time. | All of my colleagues are friendly. | Some of my classmates moved away. | None of them replied.
    **example_fail**: milk (bare noun) | I have money (no quantifier) | I have many milk (wrong quantifier for uncountable)
 
 2. **id**: 2
@@ -702,7 +702,7 @@
    **hidden_prompt**: "user uses 'several + plural'"
    **hint_pt**: "Several of them play soccer."
    **hint_en**: "Several of them play soccer."
-   **example_pass**: Several of them play soccer. | I have a few questions. | There's a little milk left.
+   **example_pass**: Several of them play soccer. | I have a few questions. | There's a little milk left. | Most of my friends are married. | Several of my coworkers quit. | A few of them stayed.
    **example_fail**: milk (bare noun) | I have money (no quantifier) | I have many milk (wrong quantifier for uncountable)
 
 3. **id**: 3
@@ -711,7 +711,7 @@
    **hidden_prompt**: "user asks 'How about your friends?'"
    **hint_pt**: "How about yours?"
    **hint_en**: "How about yours?"
-   **example_pass**: How about yours? | We have plenty of time. | How about you?
+   **example_pass**: How about yours? | We have plenty of time. | How about you? | How about you? | And you? | What about you?
    **example_fail**: milk (bare noun) | I have money (no quantifier) | I have many milk (wrong quantifier for uncountable)
 
 **Closing cue**: Charlotte closes with "Group patterns!" when obj_3 hits.
@@ -813,7 +813,7 @@
 
 1. **id**: 1
    **label_pt**: "Quantificador positivo (a few/a little/plenty of)"
-   **label_en**: "Positive quantifier"
+   **label_en**: "Positive quantifier (a few/a little/plenty of)"
    **hidden_prompt**: "user uses a few/a little/plenty of"
    **hint_pt**: "I have plenty of work."
    **hint_en**: "I have plenty of work."
@@ -822,7 +822,7 @@
 
 2. **id**: 2
    **label_pt**: "Quantificador negativo (few/little/hardly any)"
-   **label_en**: "Negative quantifier"
+   **label_en**: "Negative quantifier (few/little/hardly any)"
    **hidden_prompt**: "user uses few/little/hardly any"
    **hint_pt**: "I have hardly any time."
    **hint_en**: "I have hardly any time."

@@ -356,7 +356,7 @@
    **example_fail**: nice (bare adjective) | She is nice (no tag question) | Is she nice? (full question, not tag)
 
 3. **id**: 3
-   **label_pt**: "Tag negativa pra pergunta"
+   **label_pt**: "Frase negativa → tag positiva"
    **label_en**: "Negative statement → positive tag"
    **hidden_prompt**: "user uses 'don't / doesn't' + positive tag pattern"
    **hint_pt**: "She doesn't take breaks much, does she?"
@@ -644,7 +644,7 @@
    **hidden_prompt**: "user uses 'aren't I?' tag"
    **hint_pt**: "Sure! I'm always up for a walk, aren't I?"
    **hint_en**: "Sure! I'm always up for a walk, aren't I?"
-   **example_pass**: Sure! I'm always up for a walk, aren't I? | You know, it's complicated. | You're coming, aren't you?
+   **example_pass**: Sure! I'm always up for a walk, aren't I? | You know, it's complicated. | You're coming, aren't you? | You're coming, aren't you? | He's late, isn't he? | They're nice, aren't they?
    **example_fail**: nice (bare adjective) | She is nice (no tag question) | Is she nice? (full question, not tag)
 
 2. **id**: 2
@@ -653,7 +653,7 @@
    **hidden_prompt**: "user uses imperative + 'will you?' or 'would you?'"
    **hint_pt**: "Just give me ten minutes to finish this, will you?"
    **hint_en**: "Just give me ten minutes to finish this, will you?"
-   **example_pass**: Just give me ten minutes to finish this, will you? | You know, it's complicated. | You're coming, aren't you?
+   **example_pass**: Just give me ten minutes to finish this, will you? | You know, it's complicated. | You're coming, aren't you? | So, well, you know what I mean. | Um, like, it was crazy. | Actually, well, it depends.
    **example_fail**: nice (bare adjective) | She is nice (no tag question) | Is she nice? (full question, not tag)
 
 3. **id**: 3
@@ -662,7 +662,7 @@
    **hidden_prompt**: "user uses 'nobody / everyone / somebody' with tag"
    **hint_pt**: "Nobody else wants to come, do they?"
    **hint_en**: "Nobody else wants to come, do they?"
-   **example_pass**: Nobody else wants to come, do they? | You're coming, aren't you? | She's nice, isn't she?
+   **example_pass**: Nobody else wants to come, do they? | You're coming, aren't you? | She's nice, isn't she? | What do you think, right? | How about you? | What about you?
    **example_fail**: nice (bare adjective) | She is nice (no tag question) | Is she nice? (full question, not tag)
 
 **Closing cue**: Charlotte closes with "Just us then — perfect!" once obj_3 lands.
@@ -700,7 +700,7 @@
    **hidden_prompt**: "user uses 'aren't I?' in a self-aware way"
    **hint_pt**: "Hey, I'm always on time, aren't I? Mostly?"
    **hint_en**: "Hey, I'm always on time, aren't I? Mostly?"
-   **example_pass**: Hey, I'm always on time, aren't I? Mostly? | You're coming, aren't you? | She's nice, isn't she?
+   **example_pass**: Hey, I'm always on time, aren't I? Mostly? | You're coming, aren't you? | She's nice, isn't she? | You went there, didn't you? | She's coming, isn't she? | They knew, didn't they?
    **example_fail**: nice (bare adjective) | She is nice (no tag question) | Is she nice? (full question, not tag)
 
 2. **id**: 2
@@ -709,7 +709,7 @@
    **hidden_prompt**: "user uses indefinite subject + tag"
    **hint_pt**: "Everyone runs a bit late sometimes, don't they?"
    **hint_en**: "Everyone runs a bit late sometimes, don't they?"
-   **example_pass**: Everyone runs a bit late sometimes, don't they? | Well, I think so. | You know, it's complicated.
+   **example_pass**: Everyone runs a bit late sometimes, don't they? | Well, I think so. | You know, it's complicated. | Well, I mean, it's complicated. | You know, like, it was weird. | So, basically, I agreed.
    **example_fail**: nice (bare adjective) | She is nice (no tag question) | Is she nice? (full question, not tag)
 
 3. **id**: 3
@@ -718,7 +718,7 @@
    **hidden_prompt**: "user uses 'let's...shall we?'"
    **hint_pt**: "Let's just order, shall we?"
    **hint_en**: "Let's just order, shall we?"
-   **example_pass**: Let's just order, shall we? | You're coming, aren't you? | She's nice, isn't she?
+   **example_pass**: Let's just order, shall we? | You're coming, aren't you? | She's nice, isn't she? | What about you? | How about you? | And you?
    **example_fail**: nice (bare adjective) | She is nice (no tag question) | Is she nice? (full question, not tag)
 
 **Closing cue**: Charlotte closes with "Saved by the menu!" once obj_3 lands.

@@ -287,7 +287,7 @@
    **hidden_prompt**: "user uses 'If + present, present' for an always-true statement"
    **hint_pt**: "If you exercise, you feel better."
    **hint_en**: "If you exercise, you feel better."
-   **example_pass**: If you exercise, you feel better. | The sun rises in the east. | Babies cry when they're hungry.
+   **example_pass**: If you exercise, you feel better. | The sun rises in the east. | Babies cry when they're hungry. | If you heat water, it boils. | If you mix red and blue, you get purple. | Plants die if they don't get water.
    **example_fail**: boil (bare verb) | Water is boiling (present continuous, not general truth) | Water boiled (past, not general truth)
 
 2. **id**: 2
@@ -296,7 +296,7 @@
    **hidden_prompt**: "user uses 'If + present, will + base' for tomorrow/next week"
    **hint_pt**: "If I have time tomorrow, I'll exercise."
    **hint_en**: "If I have time tomorrow, I'll exercise."
-   **example_pass**: If I have time tomorrow, I'll exercise. | Babies cry when they're hungry. | Plants need light to grow.
+   **example_pass**: If I have time tomorrow, I'll exercise. | Babies cry when they're hungry. | Plants need light to grow. | When it rains, the streets flood. | When you press this, it opens. | When water freezes, it becomes ice.
    **example_fail**: boil (bare verb) | Water is boiling (present continuous, not general truth) | Water boiled (past, not general truth)
 
 3. **id**: 3
@@ -305,7 +305,7 @@
    **hidden_prompt**: "user uses zero or first conditional, with awareness of which"
    **hint_pt**: "If I save money, I'll buy a new phone."
    **hint_en**: "If I save money, I'll buy a new phone."
-   **example_pass**: If I save money, I'll buy a new phone. | Babies cry when they're hungry. | Plants need light to grow.
+   **example_pass**: If I save money, I'll buy a new phone. | Babies cry when they're hungry. | Plants need light to grow. | What happens if you do that? | What about you, what's a fact you know? | How about you?
    **example_fail**: boil (bare verb) | Water is boiling (present continuous, not general truth) | Water boiled (past, not general truth)
 
 **Closing cue**: Charlotte fecha com "Conditional choice mastered!" quando obj_3 baterem.
@@ -343,7 +343,7 @@
    **hidden_prompt**: "user uses 'If/When + present, present' for a personal life truth"
    **hint_pt**: "If you read more, you write better."
    **hint_en**: "If you read more, you write better."
-   **example_pass**: If you read more, you write better. | Plants need light to grow. | Water boils at 100 degrees.
+   **example_pass**: If you read more, you write better. | Plants need light to grow. | Water boils at 100 degrees. | If I don't sleep, I get cranky. | If you eat too much, you feel sick. | If you exercise, you feel better.
    **example_fail**: boil (bare verb) | Water is boiling (present continuous, not general truth) | Water boiled (past, not general truth)
 
 2. **id**: 2
@@ -352,7 +352,7 @@
    **hidden_prompt**: "user uses 'If + present, I'll/will + base' for a specific plan"
    **hint_pt**: "If I finish work early Friday, I'll meet my friends."
    **hint_en**: "If I finish work early Friday, I'll meet my friends."
-   **example_pass**: If I finish work early Friday, I'll meet my friends. | Babies cry when they're hungry. | Plants need light to grow.
+   **example_pass**: If I finish work early Friday, I'll meet my friends. | Babies cry when they're hungry. | Plants need light to grow. | When I'm stressed, I can't eat. | When the sun sets, it gets cold. | When I drink coffee, I can't sleep.
    **example_fail**: boil (bare verb) | Water is boiling (present continuous, not general truth) | Water boiled (past, not general truth)
 
 3. **id**: 3
@@ -361,7 +361,7 @@
    **hidden_prompt**: "user asks 'How about you?' or 'What's your truth/plan?'"
    **hint_pt**: "How about you?"
    **hint_en**: "How about you?"
-   **example_pass**: How about you? | The sun rises in the east. | And you?
+   **example_pass**: How about you? | The sun rises in the east. | And you? | What about you? | How about you? | And you?
    **example_fail**: boil (bare verb) | Water is boiling (present continuous, not general truth) | Water boiled (past, not general truth)
 
 **Closing cue**: Charlotte fecha com "Truths and plans!" quando obj_3 baterem.
@@ -819,7 +819,7 @@
 
 1. **id**: 1
    **label_pt**: "Primeira frase com conditional (zero ou first)"
-   **label_en**: "First conditional sentence"
+   **label_en**: "First sentence with a conditional"
    **hidden_prompt**: "user uses any conditional structure correctly"
    **hint_pt**: "If I save enough money, I'll travel to Japan."
    **hint_en**: "If I save enough money, I'll travel to Japan."

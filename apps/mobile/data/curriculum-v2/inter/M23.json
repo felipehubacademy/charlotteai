@@ -942,7 +942,10 @@
             "examples_pass": [
               "Sure! I'm always up for a walk, aren't I?",
               "You know, it's complicated.",
-              "You're coming, aren't you?"
+              "You're coming, aren't you?",
+              "You're coming, aren't you?",
+              "He's late, isn't he?",
+              "They're nice, aren't they?"
             ],
             "examples_fail": [
               "nice (bare adjective)",
@@ -958,7 +961,10 @@
             "examples_pass": [
               "Just give me ten minutes to finish this, will you?",
               "You know, it's complicated.",
-              "You're coming, aren't you?"
+              "You're coming, aren't you?",
+              "So, well, you know what I mean.",
+              "Um, like, it was crazy.",
+              "Actually, well, it depends."
             ],
             "examples_fail": [
               "nice (bare adjective)",
@@ -974,7 +980,10 @@
             "examples_pass": [
               "Nobody else wants to come, do they?",
               "You're coming, aren't you?",
-              "She's nice, isn't she?"
+              "She's nice, isn't she?",
+              "What do you think, right?",
+              "How about you?",
+              "What about you?"
             ],
             "examples_fail": [
               "nice (bare adjective)",
@@ -1008,7 +1017,10 @@
             "examples_pass": [
               "Hey, I'm always on time, aren't I? Mostly?",
               "You're coming, aren't you?",
-              "She's nice, isn't she?"
+              "She's nice, isn't she?",
+              "You went there, didn't you?",
+              "She's coming, isn't she?",
+              "They knew, didn't they?"
             ],
             "examples_fail": [
               "nice (bare adjective)",
@@ -1024,7 +1036,10 @@
             "examples_pass": [
               "Everyone runs a bit late sometimes, don't they?",
               "Well, I think so.",
-              "You know, it's complicated."
+              "You know, it's complicated.",
+              "Well, I mean, it's complicated.",
+              "You know, like, it was weird.",
+              "So, basically, I agreed."
             ],
             "examples_fail": [
               "nice (bare adjective)",
@@ -1040,7 +1055,10 @@
             "examples_pass": [
               "Let's just order, shall we?",
               "You're coming, aren't you?",
-              "She's nice, isn't she?"
+              "She's nice, isn't she?",
+              "What about you?",
+              "How about you?",
+              "And you?"
             ],
             "examples_fail": [
               "nice (bare adjective)",

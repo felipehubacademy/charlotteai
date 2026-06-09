@@ -285,7 +285,7 @@
    **hidden_prompt**: "user uses 'If only + past simple' for present"
    **hint_pt**: "If only I had more energy!"
    **hint_en**: "If only I had more energy!"
-   **example_pass**: If only I had more energy! | I wish I knew the answer. | I wish I hadn't said that.
+   **example_pass**: If only I had more energy! | I wish I knew the answer. | I wish I hadn't said that. | I wish I had more time. | I wish I knew the answer. | I wish I were taller.
    **example_fail**: time (bare noun) | I want more time (no 'wish') | I wish I have more time (wrong tense after wish)
 
 2. **id**: 2
@@ -294,7 +294,7 @@
    **hidden_prompt**: "user uses 'If only + past perfect'"
    **hint_pt**: "If only I had taken that opportunity!"
    **hint_en**: "If only I had taken that opportunity!"
-   **example_pass**: If only I had taken that opportunity! | I wish I knew the answer. | I wish I hadn't said that.
+   **example_pass**: If only I had taken that opportunity! | I wish I knew the answer. | I wish I hadn't said that. | If only I had more money. | If only I could speak French. | If only I were younger.
    **example_fail**: time (bare noun) | I want more time (no 'wish') | I wish I have more time (wrong tense after wish)
 
 3. **id**: 3
@@ -303,7 +303,7 @@
    **hidden_prompt**: "user uses 'If only X would + base'"
    **hint_pt**: "If only my boss would notice my hard work!"
    **hint_en**: "If only my boss would notice my hard work!"
-   **example_pass**: If only my boss would notice my hard work! | I wish I had more time. | I wish I knew the answer.
+   **example_pass**: If only my boss would notice my hard work! | I wish I had more time. | I wish I knew the answer. | What do you wish for? | How about you? | What about you?
    **example_fail**: time (bare noun) | I want more time (no 'wish') | I wish I have more time (wrong tense after wish)
 
 **Closing cue**: Charlotte fecha com "Dramatic wishes voiced!" quando obj_3 baterem.
@@ -340,7 +340,7 @@
    **hidden_prompt**: "user uses 'If only + past perfect'"
    **hint_pt**: "If only I had started exercising earlier."
    **hint_en**: "If only I had started exercising earlier."
-   **example_pass**: If only I had started exercising earlier. | I wish I knew the answer. | I wish I hadn't said that.
+   **example_pass**: If only I had started exercising earlier. | I wish I knew the answer. | I wish I hadn't said that. | I wish I lived by the beach. | I wish I had a pet. | I wish I spoke five languages.
    **example_fail**: time (bare noun) | I want more time (no 'wish') | I wish I have more time (wrong tense after wish)
 
 2. **id**: 2
@@ -349,7 +349,7 @@
    **hidden_prompt**: "user uses 'If only + past simple' or 'were'"
    **hint_pt**: "If only I had more free time."
    **hint_en**: "If only I had more free time."
-   **example_pass**: If only I had more free time. | I wish I knew the answer. | I wish I hadn't said that.
+   **example_pass**: If only I had more free time. | I wish I knew the answer. | I wish I hadn't said that. | If only I had patience. | If only I were better at math. | If only I had a sibling.
    **example_fail**: time (bare noun) | I want more time (no 'wish') | I wish I have more time (wrong tense after wish)
 
 3. **id**: 3
@@ -358,7 +358,7 @@
    **hidden_prompt**: "user asks Charlotte why she didn't learn piano"
    **hint_pt**: "Why didn't you learn?"
    **hint_en**: "Why didn't you learn?"
-   **example_pass**: Why didn't you learn? | I wish I had more time. | How about you?
+   **example_pass**: Why didn't you learn? | I wish I had more time. | How about you? | What about you? | How about you? | And you?
    **example_fail**: time (bare noun) | I want more time (no 'wish') | I wish I have more time (wrong tense after wish)
 
 **Closing cue**: Charlotte fecha com "Deep wishes shared!" quando obj_3 baterem.
@@ -462,7 +462,7 @@
    **hidden_prompt**: "user uses 'I'd rather + base form'"
    **hint_pt**: "I'd rather watch a movie at home."
    **hint_en**: "I'd rather watch a movie at home."
-   **example_pass**: I'd rather watch a movie at home. | I wish I hadn't said that. | I wish she would call.
+   **example_pass**: I'd rather watch a movie at home. | I wish I hadn't said that. | I wish she would call. | I wish I had studied harder. | I wish I had traveled more. | I wish I had said yes.
    **example_fail**: time (bare noun) | I want more time (no 'wish') | I wish I have more time (wrong tense after wish)
 
 2. **id**: 2
@@ -471,7 +471,7 @@
    **hidden_prompt**: "user uses 'I'd rather not + base'"
    **hint_pt**: "I'd rather not work this weekend."
    **hint_en**: "I'd rather not work this weekend."
-   **example_pass**: I'd rather not work this weekend. | I wish she would call. | I wish I had more time.
+   **example_pass**: I'd rather not work this weekend. | I wish she would call. | I wish I had more time. | If only I had known. | If only I had listened. | If only I had been there.
    **example_fail**: time (bare noun) | I want more time (no 'wish') | I wish I have more time (wrong tense after wish)
 
 3. **id**: 3
@@ -480,7 +480,7 @@
    **hidden_prompt**: "user uses 'I'd rather you + past simple'"
    **hint_pt**: "I'd rather you called me before coming over."
    **hint_en**: "I'd rather you called me before coming over."
-   **example_pass**: I'd rather you called me before coming over. | I wish I had more time. | I wish I knew the answer.
+   **example_pass**: I'd rather you called me before coming over. | I wish I had more time. | I wish I knew the answer. | What do you regret? | How about you? | What about you?
    **example_fail**: time (bare noun) | I want more time (no 'wish') | I wish I have more time (wrong tense after wish)
 
 **Closing cue**: Charlotte fecha com "Preferences set!" quando obj_3 baterem.
@@ -517,7 +517,7 @@
    **hidden_prompt**: "user uses 'I'd rather + base + than + base'"
    **hint_pt**: "I'd rather work in person than remotely."
    **hint_en**: "I'd rather work in person than remotely."
-   **example_pass**: I'd rather work in person than remotely. | I wish I knew the answer. | I wish I hadn't said that.
+   **example_pass**: I'd rather work in person than remotely. | I wish I knew the answer. | I wish I hadn't said that. | I wish I had taken that job. | I wish I had saved more. | I wish I had kept in touch.
    **example_fail**: time (bare noun) | I want more time (no 'wish') | I wish I have more time (wrong tense after wish)
 
 2. **id**: 2
@@ -526,7 +526,7 @@
    **hidden_prompt**: "user uses another 'I'd rather'"
    **hint_pt**: "I'd rather travel than stay home."
    **hint_en**: "I'd rather travel than stay home."
-   **example_pass**: I'd rather travel than stay home. | I wish she would call. | I wish I had more time.
+   **example_pass**: I'd rather travel than stay home. | I wish she would call. | I wish I had more time. | If only I had asked. | If only I had stayed. | If only I had tried harder.
    **example_fail**: time (bare noun) | I want more time (no 'wish') | I wish I have more time (wrong tense after wish)
 
 3. **id**: 3
@@ -535,7 +535,7 @@
    **hidden_prompt**: "user asks Charlotte more about her preference"
    **hint_pt**: "Why do you prefer remote?"
    **hint_en**: "Why do you prefer remote?"
-   **example_pass**: Why do you prefer remote? | I wish she would call. | How about you?
+   **example_pass**: Why do you prefer remote? | I wish she would call. | How about you? | And you? | How about you? | What about you?
    **example_fail**: time (bare noun) | I want more time (no 'wish') | I wish I have more time (wrong tense after wish)
 
 **Closing cue**: Charlotte fecha com "Preferences compared!" quando obj_3 baterem.
@@ -639,7 +639,7 @@
    **hidden_prompt**: "user uses 'It's time + subject + past simple'"
    **hint_pt**: "It's time we addressed this issue."
    **hint_en**: "It's time we addressed this issue."
-   **example_pass**: It's time we addressed this issue. | I wish I had more time. | I wish I knew the answer.
+   **example_pass**: It's time we addressed this issue. | I wish I had more time. | I wish I knew the answer. | I wish you would stop smoking. | I wish he would call me. | I wish they would be quieter.
    **example_fail**: time (bare noun) | I want more time (no 'wish') | I wish I have more time (wrong tense after wish)
 
 2. **id**: 2
@@ -648,7 +648,7 @@
    **hidden_prompt**: "user uses 'It's high time + subject + past simple'"
    **hint_pt**: "It's high time he found a stable job."
    **hint_en**: "It's high time he found a stable job."
-   **example_pass**: It's high time he found a stable job. | I wish I had more time. | I wish I knew the answer.
+   **example_pass**: It's high time he found a stable job. | I wish I had more time. | I wish I knew the answer. | If only she would listen. | If only he would help. | If only they would understand.
    **example_fail**: time (bare noun) | I want more time (no 'wish') | I wish I have more time (wrong tense after wish)
 
 3. **id**: 3
@@ -657,7 +657,7 @@
    **hidden_prompt**: "user uses 'It's about time I + past simple'"
    **hint_pt**: "It's about time I started exercising again."
    **hint_en**: "It's about time I started exercising again."
-   **example_pass**: It's about time I started exercising again. | I wish I had more time. | I wish I knew the answer.
+   **example_pass**: It's about time I started exercising again. | I wish I had more time. | I wish I knew the answer. | What do you wish others would do? | How about you? | What about you?
    **example_fail**: time (bare noun) | I want more time (no 'wish') | I wish I have more time (wrong tense after wish)
 
 **Closing cue**: Charlotte fecha com "Time to act!" quando obj_3 baterem.
@@ -694,7 +694,7 @@
    **hidden_prompt**: "user uses 'It's (high/about) time I + past simple'"
    **hint_pt**: "It's about time I called my grandmother."
    **hint_en**: "It's about time I called my grandmother."
-   **example_pass**: It's about time I called my grandmother. | I wish I hadn't said that. | I wish she would call.
+   **example_pass**: It's about time I called my grandmother. | I wish I hadn't said that. | I wish she would call. | I wish my neighbor would be quieter. | I wish my boss would respond. | I wish my friend would visit.
    **example_fail**: time (bare noun) | I want more time (no 'wish') | I wish I have more time (wrong tense after wish)
 
 2. **id**: 2
@@ -703,7 +703,7 @@
    **hidden_prompt**: "user uses another 'It's time + past'"
    **hint_pt**: "It's high time I learned to cook properly."
    **hint_en**: "It's high time I learned to cook properly."
-   **example_pass**: It's high time I learned to cook properly. | I wish I had more time. | I wish I knew the answer.
+   **example_pass**: It's high time I learned to cook properly. | I wish I had more time. | I wish I knew the answer. | If only he would change. | If only she would forgive me. | If only they would invite us.
    **example_fail**: time (bare noun) | I want more time (no 'wish') | I wish I have more time (wrong tense after wish)
 
 3. **id**: 3
@@ -712,7 +712,7 @@
    **hidden_prompt**: "user asks Charlotte more"
    **hint_pt**: "Why now for the closet?"
    **hint_en**: "Why now for the closet?"
-   **example_pass**: Why now for the closet? | I wish I knew the answer. | How about you?
+   **example_pass**: Why now for the closet? | I wish I knew the answer. | How about you? | What about you? | How about you? | And you?
    **example_fail**: time (bare noun) | I want more time (no 'wish') | I wish I have more time (wrong tense after wish)
 
 **Closing cue**: Charlotte fecha com "Mutual nudge!" quando obj_3 baterem.
@@ -817,7 +817,7 @@
    **hidden_prompt**: "user uses 'I wish X would + base'"
    **hint_pt**: "I wish my dog would stop barking."
    **hint_en**: "I wish my dog would stop barking."
-   **example_pass**: I wish my dog would stop barking. | I wish I knew the answer. | I wish I hadn't said that.
+   **example_pass**: I wish my dog would stop barking. | I wish I knew the answer. | I wish I hadn't said that. | I wish I had a bigger house. | I wish I hadn't quit. | I wish you would stay.
    **example_fail**: time (bare noun) | I want more time (no 'wish') | I wish I have more time (wrong tense after wish)
 
 2. **id**: 2
@@ -826,7 +826,7 @@
    **hidden_prompt**: "user uses 'If only + past simple/perfect'"
    **hint_pt**: "If only I had taken that opportunity."
    **hint_en**: "If only I had taken that opportunity."
-   **example_pass**: If only I had taken that opportunity. | I wish I hadn't said that. | I wish she would call.
+   **example_pass**: If only I had taken that opportunity. | I wish I hadn't said that. | I wish she would call. | If only I were rich. | If only I had known earlier. | If only she would come back.
    **example_fail**: time (bare noun) | I want more time (no 'wish') | I wish I have more time (wrong tense after wish)
 
 3. **id**: 3
@@ -835,7 +835,7 @@
    **hidden_prompt**: "user uses 'I'd rather' or 'It's time'"
    **hint_pt**: "It's high time I made a change."
    **hint_en**: "It's high time I made a change."
-   **example_pass**: It's high time I made a change. | I wish she would call. | I wish I had more time.
+   **example_pass**: It's high time I made a change. | I wish she would call. | I wish I had more time. | What's your biggest wish? | How about you? | What about you?
    **example_fail**: time (bare noun) | I want more time (no 'wish') | I wish I have more time (wrong tense after wish)
 
 **Closing cue**: Charlotte fecha com "Wish fluency!" quando obj_3 baterem.
@@ -872,7 +872,7 @@
    **hidden_prompt**: "user uses 'If only' or 'I wish' for deep desire"
    **hint_pt**: "If only I had been more patient with myself."
    **hint_en**: "If only I had been more patient with myself."
-   **example_pass**: If only I had been more patient with myself. | I wish she would call. | I wish I had more time.
+   **example_pass**: If only I had been more patient with myself. | I wish she would call. | I wish I had more time. | I wish I had more free time. | I wish I hadn't said that. | I wish he would apologize.
    **example_fail**: time (bare noun) | I want more time (no 'wish') | I wish I have more time (wrong tense after wish)
 
 2. **id**: 2
@@ -881,7 +881,7 @@
    **hidden_prompt**: "user uses 'I'd rather' or 'It's time + past'"
    **hint_pt**: "It's about time I forgave myself."
    **hint_en**: "It's about time I forgave myself."
-   **example_pass**: It's about time I forgave myself. | I wish I hadn't said that. | I wish she would call.
+   **example_pass**: It's about time I forgave myself. | I wish I hadn't said that. | I wish she would call. | If only I were braver. | If only I had made that choice. | If only they would listen.
    **example_fail**: time (bare noun) | I want more time (no 'wish') | I wish I have more time (wrong tense after wish)
 
 3. **id**: 3
@@ -890,7 +890,7 @@
    **hidden_prompt**: "user asks Charlotte more about her courage wish"
    **hint_pt**: "What would courage look like?"
    **hint_en**: "What would courage look like?"
-   **example_pass**: What would courage look like? | I wish I hadn't said that. | How about you?
+   **example_pass**: What would courage look like? | I wish I hadn't said that. | How about you? | And you? | How about you? | What about you?
    **example_fail**: time (bare noun) | I want more time (no 'wish') | I wish I have more time (wrong tense after wish)
 
 **Closing cue**: Charlotte fecha com "Honest reflection done!" quando obj_3 baterem.

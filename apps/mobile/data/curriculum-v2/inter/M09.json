@@ -674,7 +674,7 @@
         "objectives": [
           {
             "id": 1,
-            "label_en": "Something that doubled",
+            "label_en": "Something doubled (twice as much/many/adj)",
             "hidden_prompt": "user uses 'twice as + much/many/adj + as'",
             "hint_en": "I drink twice as much coffee as last year.",
             "examples_pass": [
@@ -690,7 +690,7 @@
           },
           {
             "id": 2,
-            "label_en": "Something that tripled+",
+            "label_en": "Something tripled+ (three/four times)",
             "hidden_prompt": "user uses 'three times as + adj/much/many + as'",
             "hint_en": "My commute is three times as long as before.",
             "examples_pass": [
@@ -1220,7 +1220,7 @@
           },
           {
             "id": 3,
-            "label_en": "Parallel reflection",
+            "label_en": "Parallel reflection with 'the more X, the more Y'",
             "hidden_prompt": "user uses 'The more X, the more Y'",
             "hint_en": "The more I grow, the more grateful I become.",
             "examples_pass": [
@@ -1253,7 +1253,7 @@
         "objectives": [
           {
             "id": 1,
-            "label_en": "Simple comparison",
+            "label_en": "Simple comparison (as...as or not as...as)",
             "hidden_prompt": "user uses 'as + adj + as' or 'not as + adj + as'",
             "hint_en": "Modern life isn't as peaceful as before.",
             "examples_pass": [

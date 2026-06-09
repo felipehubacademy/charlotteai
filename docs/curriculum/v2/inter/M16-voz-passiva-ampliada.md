@@ -104,7 +104,7 @@
    **hidden_prompt**: "user uses 'X must be + past participle'"
    **hint_pt**: "The reports must be submitted by Friday."
    **hint_en**: "The reports must be submitted by Friday."
-   **example_pass**: The reports must be submitted by Friday. | The road has been repaired. | Mistakes were made.
+   **example_pass**: The reports must be submitted by Friday. | The road has been repaired. | Mistakes were made. | I was given a gift. | She was told the news. | They were sent a package.
    **example_fail**: finished (bare participle) | They finish the project (active, not passive) | The project finishes (intransitive, not passive)
 
 2. **id**: 2
@@ -113,7 +113,7 @@
    **hidden_prompt**: "user uses 'X should be + past participle'"
    **hint_pt**: "Emails should be checked twice a day."
    **hint_en**: "Emails should be checked twice a day."
-   **example_pass**: Emails should be checked twice a day. | The road has been repaired. | Mistakes were made.
+   **example_pass**: Emails should be checked twice a day. | The road has been repaired. | Mistakes were made. | I was shown the photos. | He was offered a job. | We were given good advice.
    **example_fail**: finished (bare participle) | They finish the project (active, not passive) | The project finishes (intransitive, not passive)
 
 3. **id**: 3
@@ -122,7 +122,7 @@
    **hidden_prompt**: "user uses 'X has/have to be + past participle'"
    **hint_pt**: "Documents have to be signed before submission."
    **hint_en**: "Documents have to be signed before submission."
-   **example_pass**: Documents have to be signed before submission. | The package will be delivered tomorrow. | The project is being finished this week.
+   **example_pass**: Documents have to be signed before submission. | The package will be delivered tomorrow. | The project is being finished this week. | Have you been given anything? | How about you? | What about you?
    **example_fail**: finished (bare participle) | They finish the project (active, not passive) | The project finishes (intransitive, not passive)
 
 **Closing cue**: Charlotte fecha com "Clear protocols!" quando obj_3 baterem.
@@ -159,7 +159,7 @@
    **hidden_prompt**: "user uses 'X must be + past participle'"
    **hint_pt**: "Phones must be silenced during meetings."
    **hint_en**: "Phones must be silenced during meetings."
-   **example_pass**: Phones must be silenced during meetings. | The package will be delivered tomorrow. | The project is being finished this week.
+   **example_pass**: Phones must be silenced during meetings. | The package will be delivered tomorrow. | The project is being finished this week. | I was given a promotion. | She was sent flowers. | They were told the truth.
    **example_fail**: finished (bare participle) | They finish the project (active, not passive) | The project finishes (intransitive, not passive)
 
 2. **id**: 2
@@ -168,7 +168,7 @@
    **hidden_prompt**: "user uses 'should be' or 'have to be' + past participle"
    **hint_pt**: "Emails should be answered within 24 hours."
    **hint_en**: "Emails should be answered within 24 hours."
-   **example_pass**: Emails should be answered within 24 hours. | Mistakes were made. | The package will be delivered tomorrow.
+   **example_pass**: Emails should be answered within 24 hours. | Mistakes were made. | The package will be delivered tomorrow. | I was offered help. | He was shown around. | We were given keys to the office.
    **example_fail**: finished (bare participle) | They finish the project (active, not passive) | The project finishes (intransitive, not passive)
 
 3. **id**: 3
@@ -177,7 +177,7 @@
    **hidden_prompt**: "user asks Charlotte about her workplace rules"
    **hint_pt**: "What's a rule at your work?"
    **hint_en**: "What's a rule at your work?"
-   **example_pass**: What's a rule at your work? | The road has been repaired. | How about you?
+   **example_pass**: What's a rule at your work? | The road has been repaired. | How about you? | What about you? | How about you? | And you?
    **example_fail**: finished (bare participle) | They finish the project (active, not passive) | The project finishes (intransitive, not passive)
 
 **Closing cue**: Charlotte fecha com "Workplace norms compared!" quando obj_3 baterem.
@@ -281,7 +281,7 @@
    **hidden_prompt**: "user uses 'X will be + past participle'"
    **hint_pt**: "The results will be announced on Friday."
    **hint_en**: "The results will be announced on Friday."
-   **example_pass**: The results will be announced on Friday. | The package will be delivered tomorrow. | The project is being finished this week.
+   **example_pass**: The results will be announced on Friday. | The package will be delivered tomorrow. | The project is being finished this week. | It is said that he's rich. | It is believed that they're moving. | It is reported that prices will rise.
    **example_fail**: finished (bare participle) | They finish the project (active, not passive) | The project finishes (intransitive, not passive)
 
 2. **id**: 2
@@ -290,7 +290,7 @@
    **hidden_prompt**: "user uses 'X is/are going to be + past participle'"
    **hint_pt**: "A new park is going to be built downtown."
    **hint_en**: "A new park is going to be built downtown."
-   **example_pass**: A new park is going to be built downtown. | The road has been repaired. | Mistakes were made.
+   **example_pass**: A new park is going to be built downtown. | The road has been repaired. | Mistakes were made. | He is said to be a genius. | She is believed to live abroad. | They are thought to be married.
    **example_fail**: finished (bare participle) | They finish the project (active, not passive) | The project finishes (intransitive, not passive)
 
 3. **id**: 3
@@ -299,7 +299,7 @@
    **hidden_prompt**: "user uses another future passive"
    **hint_pt**: "The conference will be held in Rio."
    **hint_en**: "The conference will be held in Rio."
-   **example_pass**: The conference will be held in Rio. | The project is being finished this week. | The road has been repaired.
+   **example_pass**: The conference will be held in Rio. | The project is being finished this week. | The road has been repaired. | What is said about you? | How about you? | What about you?
    **example_fail**: finished (bare participle) | They finish the project (active, not passive) | The project finishes (intransitive, not passive)
 
 **Closing cue**: Charlotte fecha com "Upcoming events announced!" quando obj_3 baterem.
@@ -336,7 +336,7 @@
    **hidden_prompt**: "user uses 'X is going to be + past participle'"
    **hint_pt**: "A new metro line is going to be built."
    **hint_en**: "A new metro line is going to be built."
-   **example_pass**: A new metro line is going to be built. | Mistakes were made. | The package will be delivered tomorrow.
+   **example_pass**: A new metro line is going to be built. | Mistakes were made. | The package will be delivered tomorrow. | It is said that the boss is leaving. | It is believed that the project failed. | It is thought that he's hiding something.
    **example_fail**: finished (bare participle) | They finish the project (active, not passive) | The project finishes (intransitive, not passive)
 
 2. **id**: 2
@@ -345,7 +345,7 @@
    **hidden_prompt**: "user uses 'will be + past participle'"
    **hint_pt**: "The old market will be renovated."
    **hint_en**: "The old market will be renovated."
-   **example_pass**: The old market will be renovated. | The road has been repaired. | Mistakes were made.
+   **example_pass**: The old market will be renovated. | The road has been repaired. | Mistakes were made. | She is said to be very kind. | He is believed to have left. | They are thought to be guilty.
    **example_fail**: finished (bare participle) | They finish the project (active, not passive) | The project finishes (intransitive, not passive)
 
 3. **id**: 3
@@ -354,7 +354,7 @@
    **hidden_prompt**: "user asks Charlotte about upcoming plans in her area"
    **hint_pt**: "What's going to be built in your area?"
    **hint_en**: "What's going to be built in your area?"
-   **example_pass**: What's going to be built in your area? | Mistakes were made. | How about you?
+   **example_pass**: What's going to be built in your area? | Mistakes were made. | How about you? | And you? | How about you? | What about you?
    **example_fail**: finished (bare participle) | They finish the project (active, not passive) | The project finishes (intransitive, not passive)
 
 **Closing cue**: Charlotte fecha com "Future plans compared!" quando obj_3 baterem.
@@ -636,7 +636,7 @@
    **hidden_prompt**: "user uses 'X got married/hired/promoted/engaged'"
    **hint_pt**: "I got married three years ago."
    **hint_en**: "I got married three years ago."
-   **example_pass**: I got married three years ago. | The project is being finished this week. | The road has been repaired.
+   **example_pass**: I got married three years ago. | The project is being finished this week. | The road has been repaired. | My hair is being cut tomorrow. | I'm having my car fixed. | The package needs to be delivered.
    **example_fail**: finished (bare participle) | They finish the project (active, not passive) | The project finishes (intransitive, not passive)
 
 2. **id**: 2
@@ -645,7 +645,7 @@
    **hidden_prompt**: "user uses 'X got hurt/lost/stolen'"
    **hint_pt**: "I got lost on my first day in São Paulo."
    **hint_en**: "I got lost on my first day in São Paulo."
-   **example_pass**: I got lost on my first day in São Paulo. | The road has been repaired. | Mistakes were made.
+   **example_pass**: I got lost on my first day in São Paulo. | The road has been repaired. | Mistakes were made. | The report has to be finished by Friday. | Dinner must be ready by 7. | The room should be cleaned.
    **example_fail**: finished (bare participle) | They finish the project (active, not passive) | The project finishes (intransitive, not passive)
 
 3. **id**: 3
@@ -654,7 +654,7 @@
    **hidden_prompt**: "user uses another 'got + past participle'"
    **hint_pt**: "My car got stolen last year."
    **hint_en**: "My car got stolen last year."
-   **example_pass**: My car got stolen last year. | Mistakes were made. | The package will be delivered tomorrow.
+   **example_pass**: My car got stolen last year. | Mistakes were made. | The package will be delivered tomorrow. | What needs to be done at your place? | How about you? | What about you?
    **example_fail**: finished (bare participle) | They finish the project (active, not passive) | The project finishes (intransitive, not passive)
 
 **Closing cue**: Charlotte fecha com "Life events shared!" quando obj_3 baterem.
@@ -691,7 +691,7 @@
    **hidden_prompt**: "user uses 'I got + past participle'"
    **hint_pt**: "I got stuck in traffic for two hours."
    **hint_en**: "I got stuck in traffic for two hours."
-   **example_pass**: I got stuck in traffic for two hours. | The package will be delivered tomorrow. | The project is being finished this week.
+   **example_pass**: I got stuck in traffic for two hours. | The package will be delivered tomorrow. | The project is being finished this week. | My nails are being done today. | I'm having my windows cleaned. | The dog has to be walked.
    **example_fail**: finished (bare participle) | They finish the project (active, not passive) | The project finishes (intransitive, not passive)
 
 2. **id**: 2
@@ -700,7 +700,7 @@
    **hidden_prompt**: "user uses another 'got + past participle'"
    **hint_pt**: "My bag got soaked too."
    **hint_en**: "My bag got soaked too."
-   **example_pass**: My bag got soaked too. | The road has been repaired. | Mistakes were made.
+   **example_pass**: My bag got soaked too. | The road has been repaired. | Mistakes were made. | The bills have to be paid. | The car needs to be washed. | The dishes must be done.
    **example_fail**: finished (bare participle) | They finish the project (active, not passive) | The project finishes (intransitive, not passive)
 
 3. **id**: 3
@@ -709,7 +709,7 @@
    **hidden_prompt**: "user asks Charlotte more about her event"
    **hint_pt**: "How did you get home?"
    **hint_en**: "How did you get home?"
-   **example_pass**: How did you get home? | The project is being finished this week. | How about you?
+   **example_pass**: How did you get home? | The project is being finished this week. | How about you? | What about you? | How about you? | And you?
    **example_fail**: finished (bare participle) | They finish the project (active, not passive) | The project finishes (intransitive, not passive)
 
 **Closing cue**: Charlotte fecha com "Soggy stories shared!" quando obj_3 baterem.
@@ -864,7 +864,7 @@
 
 1. **id**: 1
    **label_pt**: "O que foi feito (present perfect passive)"
-   **label_en**: "What's been done"
+   **label_en**: "What's been done (present perfect passive)"
    **hidden_prompt**: "user uses 'has/have been + past participle'"
    **hint_pt**: "The website has been redesigned."
    **hint_en**: "The website has been redesigned."
@@ -873,7 +873,7 @@
 
 2. **id**: 2
    **label_pt**: "O que está em curso (present continuous passive)"
-   **label_en**: "What's being done"
+   **label_en**: "What's being done (present continuous passive)"
    **hidden_prompt**: "user uses 'is/are being + past participle'"
    **hint_pt**: "New features are being tested."
    **hint_en**: "New features are being tested."

@@ -101,7 +101,7 @@
 
 1. **id**: 1
    **label_pt**: "Dizer onde já foi (I've been to)"
-   **label_en**: "Say where you've been"
+   **label_en**: "Say where you've been (I've been to)"
    **hidden_prompt**: "user uses 'I've been to + place' or 'I have visited + place'"
    **hint_pt**: "I've been to Italy."
    **hint_en**: "I've been to Italy."
@@ -282,25 +282,25 @@
    **hidden_prompt**: "user uses 'I've been to + place'"
    **hint_pt**: "I've been to Argentina."
    **hint_en**: "I've been to Argentina."
-   **example_pass**: I've been to Argentina. | We've been to that restaurant before. | I have visited Paris.
+   **example_pass**: I've been to Argentina. | We've been to that restaurant before. | I have visited Paris. | I haven't been to Paris yet. | I haven't tried Japanese food. | I haven't visited Argentina before.
    **example_fail**: Paris (bare noun) | I went to Paris (past simple, no perfect) | I will visit Paris (future, not perfect)
 
 2. **id**: 2
    **label_pt**: "Comida que já comeu (eaten/tried)"
-   **label_en**: "Food you've eaten"
+   **label_en**: "Food you've eaten (eaten/tried)"
    **hidden_prompt**: "user uses 'I've eaten + food' or 'I've tried + food'"
    **hint_pt**: "I've eaten sushi."
    **hint_en**: "I've eaten sushi."
-   **example_pass**: I've eaten sushi. | I have known her since 2010. | We've been to that restaurant before.
+   **example_pass**: I've eaten sushi. | I have known her since 2010. | We've been to that restaurant before. | I've never tried surfing. | I've never been skiing. | I've never eaten octopus.
    **example_fail**: Paris (bare noun) | I went to Paris (past simple, no perfect) | I will visit Paris (future, not perfect)
 
 3. **id**: 3
    **label_pt**: "Algo que já fez (done/seen/read)"
-   **label_en**: "Something you've done/seen/read"
+   **label_en**: "Something you've done (done/seen/read)"
    **hidden_prompt**: "user uses 'I've done/seen/read + something'"
    **hint_pt**: "I've read three books this month."
    **hint_en**: "I've read three books this month."
-   **example_pass**: I've read three books this month. | She has lived in Rio for ten years. | I have known her since 2010.
+   **example_pass**: I've read three books this month. | She has lived in Rio for ten years. | I have known her since 2010. | Have you been to Brazil? | Have you ever tried churrasco? | Have you visited South America?
    **example_fail**: Paris (bare noun) | I went to Paris (past simple, no perfect) | I will visit Paris (future, not perfect)
 
 **Closing cue**: Charlotte closes with "Rich life!" when obj_3 hits.
@@ -333,11 +333,11 @@
 
 1. **id**: 1
    **label_pt**: "Conquista (done/learned/finished)"
-   **label_en**: "Achievement"
+   **label_en**: "Achievement (done/learned/finished)"
    **hidden_prompt**: "user uses 'I've done/learned/finished + something'"
    **hint_pt**: "I've learned English."
    **hint_en**: "I've learned English."
-   **example_pass**: I've learned English. | I have known her since 2010. | We've been to that restaurant before.
+   **example_pass**: I've learned English. | I have known her since 2010. | We've been to that restaurant before. | I haven't seen that movie yet. | I haven't read that book. | I haven't watched the new series.
    **example_fail**: Paris (bare noun) | I went to Paris (past simple, no perfect) | I will visit Paris (future, not perfect)
 
 2. **id**: 2
@@ -346,7 +346,7 @@
    **hidden_prompt**: "user uses another past participle"
    **hint_pt**: "I've traveled to Europe."
    **hint_en**: "I've traveled to Europe."
-   **example_pass**: I've traveled to Europe. | We've been to that restaurant before. | I have visited Paris.
+   **example_pass**: I've traveled to Europe. | We've been to that restaurant before. | I have visited Paris. | I've never been to a concert. | I've never tried rock climbing. | I've never seen snow in person.
    **example_fail**: Paris (bare noun) | I went to Paris (past simple, no perfect) | I will visit Paris (future, not perfect)
 
 3. **id**: 3
@@ -355,7 +355,7 @@
    **hidden_prompt**: "user asks 'How about you?' or 'What have you done?'"
    **hint_pt**: "What have you achieved?"
    **hint_en**: "What have you achieved?"
-   **example_pass**: What have you achieved? | She has lived in Rio for ten years. | How about you?
+   **example_pass**: What have you achieved? | She has lived in Rio for ten years. | How about you? | Have you been there? | Have you ever tried it? | What about you?
    **example_fail**: Paris (bare noun) | I went to Paris (past simple, no perfect) | I will visit Paris (future, not perfect)
 
 **Closing cue**: Charlotte closes with "Impressive lives!" when obj_3 hits.
@@ -637,7 +637,7 @@
    **hidden_prompt**: "user asks 'Have you ever + past participle?'"
    **hint_pt**: "Have you ever traveled abroad?"
    **hint_en**: "Have you ever traveled abroad?"
-   **example_pass**: Have you ever traveled abroad? | I have known her since 2010. | How about you?
+   **example_pass**: Have you ever traveled abroad? | I have known her since 2010. | How about you? | I've already finished my homework. | I've already had lunch. | I've already called the doctor.
    **example_fail**: Paris (bare noun) | I went to Paris (past simple, no perfect) | I will visit Paris (future, not perfect)
 
 2. **id**: 2
@@ -646,7 +646,7 @@
    **hidden_prompt**: "user asks another 'Have you + past participle?'"
    **hint_pt**: "Have you eaten sushi?"
    **hint_en**: "Have you eaten sushi?"
-   **example_pass**: Have you eaten sushi? | She has lived in Rio for ten years. | How about you?
+   **example_pass**: Have you eaten sushi? | She has lived in Rio for ten years. | How about you? | I haven't replied yet. | I haven't started cooking yet. | I haven't packed my bags yet.
    **example_fail**: Paris (bare noun) | I went to Paris (past simple, no perfect) | I will visit Paris (future, not perfect)
 
 3. **id**: 3
@@ -655,7 +655,7 @@
    **hidden_prompt**: "user asks 'Has + 3rd person + past participle?'"
    **hint_pt**: "Has your sister been to Europe?"
    **hint_en**: "Has your sister been to Europe?"
-   **example_pass**: Has your sister been to Europe? | She has lived in Rio for ten years. | How about you?
+   **example_pass**: Has your sister been to Europe? | She has lived in Rio for ten years. | How about you? | Have you finished it yet? | Have you done that already? | Have you talked to him yet?
    **example_fail**: Paris (bare noun) | I went to Paris (past simple, no perfect) | I will visit Paris (future, not perfect)
 
 **Closing cue**: Charlotte closes with "Great quiz!" when obj_3 hits.
@@ -692,7 +692,7 @@
    **hidden_prompt**: "user uses 'I've always wanted to + base' or 'I've + past participle'"
    **hint_pt**: "I've always wanted to visit Japan."
    **hint_en**: "I've always wanted to visit Japan."
-   **example_pass**: I've always wanted to visit Japan. | She has lived in Rio for ten years. | I have known her since 2010.
+   **example_pass**: I've always wanted to visit Japan. | She has lived in Rio for ten years. | I have known her since 2010. | I've already booked the tickets. | I've already paid the bill. | I've already eaten breakfast.
    **example_fail**: Paris (bare noun) | I went to Paris (past simple, no perfect) | I will visit Paris (future, not perfect)
 
 2. **id**: 2
@@ -701,7 +701,7 @@
    **hidden_prompt**: "user asks 'Have you ever + past participle?'"
    **hint_pt**: "Have you ever been there?"
    **hint_en**: "Have you ever been there?"
-   **example_pass**: Have you ever been there? | I have visited Paris. | How about you?
+   **example_pass**: Have you ever been there? | I have visited Paris. | How about you? | I haven't called her yet. | I haven't packed yet. | I haven't decided yet.
    **example_fail**: Paris (bare noun) | I went to Paris (past simple, no perfect) | I will visit Paris (future, not perfect)
 
 3. **id**: 3
@@ -710,7 +710,7 @@
    **hidden_prompt**: "user asks another 'Have you...?'"
    **hint_pt**: "Have you traveled solo?"
    **hint_en**: "Have you traveled solo?"
-   **example_pass**: Have you traveled solo? | I have visited Paris. | How about you?
+   **example_pass**: Have you traveled solo? | I have visited Paris. | How about you? | Have you done it yet? | How about you? | And you?
    **example_fail**: Paris (bare noun) | I went to Paris (past simple, no perfect) | I will visit Paris (future, not perfect)
 
 **Closing cue**: Charlotte closes with "Lots to share!" when obj_3 hits.
@@ -810,7 +810,7 @@
 
 1. **id**: 1
    **label_pt**: "Experiência marcante (I've + past participle)"
-   **label_en**: "Major experience"
+   **label_en**: "Major experience (I've + past participle)"
    **hidden_prompt**: "user uses 'I've + past participle' for major experience"
    **hint_pt**: "I've traveled to Italy."
    **hint_en**: "I've traveled to Italy."

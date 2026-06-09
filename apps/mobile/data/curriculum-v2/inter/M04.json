@@ -663,13 +663,16 @@
         "objectives": [
           {
             "id": 1,
-            "label_en": "Repeated past routine",
+            "label_en": "Repeated past routine (would)",
             "hidden_prompt": "user uses 'We/I would + base'",
             "hint_en": "We would go to the park.",
             "examples_pass": [
               "We would go to the park.",
               "She would always read before bed.",
-              "We used to live in a small town."
+              "We used to live in a small town.",
+              "I used to play soccer every weekend.",
+              "I used to read comic books.",
+              "I used to ride my bike to school."
             ],
             "examples_fail": [
               "tennis (bare noun)",
@@ -685,7 +688,10 @@
             "examples_pass": [
               "My mom would read to me.",
               "She would always read before bed.",
-              "We used to live in a small town."
+              "We used to live in a small town.",
+              "I would visit my grandmother every summer.",
+              "I would spend hours drawing as a kid.",
+              "Every weekend I would go to the park."
             ],
             "examples_fail": [
               "tennis (bare noun)",
@@ -701,7 +707,10 @@
             "examples_pass": [
               "Every summer, we would travel.",
               "He didn't use to like coffee.",
-              "I used to play tennis every weekend."
+              "I used to play tennis every weekend.",
+              "Did you use to do that too?",
+              "How about you?",
+              "What about you?"
             ],
             "examples_fail": [
               "tennis (bare noun)",
@@ -734,7 +743,10 @@
             "examples_pass": [
               "We would play board games.",
               "I used to play tennis every weekend.",
-              "She would always read before bed."
+              "She would always read before bed.",
+              "I used to watch cartoons every morning.",
+              "I used to collect stickers.",
+              "I used to hate vegetables."
             ],
             "examples_fail": [
               "tennis (bare noun)",
@@ -750,7 +762,10 @@
             "examples_pass": [
               "My dad would tell jokes.",
               "She would always read before bed.",
-              "We used to live in a small town."
+              "We used to live in a small town.",
+              "I would always wake up early.",
+              "I would help my mom cook.",
+              "I would play outside all day."
             ],
             "examples_fail": [
               "tennis (bare noun)",
@@ -766,7 +781,10 @@
             "examples_pass": [
               "What would you do as a kid?",
               "He didn't use to like coffee.",
-              "How about you?"
+              "How about you?",
+              "And you?",
+              "How about you?",
+              "Did you use to do that?"
             ],
             "examples_fail": [
               "tennis (bare noun)",
@@ -950,7 +968,7 @@
           },
           {
             "id": 3,
-            "label_en": "One more",
+            "label_en": "One more with used to or would",
             "hidden_prompt": "user uses another used to or would",
             "hint_en": "I used to live in Rio.",
             "examples_pass": [

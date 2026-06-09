@@ -492,7 +492,7 @@
           },
           {
             "id": 2,
-            "label_en": "Another wish",
+            "label_en": "Another wish (could/were)",
             "hidden_prompt": "user uses another wish structure",
             "hint_en": "I wish I could travel more.",
             "examples_pass": [
@@ -676,7 +676,10 @@
             "examples_pass": [
               "If I were you, I would take the offer.",
               "If I were you, I'd take the job.",
-              "I would help if I could."
+              "I would help if I could.",
+              "If I had more time, I'd travel.",
+              "If I were rich, I'd buy a house.",
+              "If I had a car, I'd drive everywhere."
             ],
             "examples_fail": [
               "time (bare noun)",
@@ -692,7 +695,10 @@
             "examples_pass": [
               "If I were you, I would talk to her directly.",
               "If I had time, I would travel more.",
-              "If she studied harder, she would pass."
+              "If she studied harder, she would pass.",
+              "I would learn three languages.",
+              "I'd start my own business.",
+              "I would help my family more."
             ],
             "examples_fail": [
               "time (bare noun)",
@@ -708,7 +714,10 @@
             "examples_pass": [
               "If I were in your position, I would wait.",
               "If she studied harder, she would pass.",
-              "If I were you, I'd take the job."
+              "If I were you, I'd take the job.",
+              "What would you do?",
+              "How about you?",
+              "What about you?"
             ],
             "examples_fail": [
               "time (bare noun)",
@@ -741,7 +750,10 @@
             "examples_pass": [
               "If I were you, I would take the one closer to home.",
               "If I were you, I'd take the job.",
-              "I would help if I could."
+              "I would help if I could.",
+              "If I won the lottery, I'd quit my job.",
+              "If I lived abroad, I'd be happier.",
+              "If I had wings, I'd fly home."
             ],
             "examples_fail": [
               "time (bare noun)",
@@ -757,7 +769,10 @@
             "examples_pass": [
               "I would think about long-term growth.",
               "I would help if I could.",
-              "If I had time, I would travel more."
+              "If I had time, I would travel more.",
+              "I'd travel the world.",
+              "I would buy a small island.",
+              "I'd donate to charity."
             ],
             "examples_fail": [
               "time (bare noun)",
@@ -773,7 +788,10 @@
             "examples_pass": [
               "What does your gut say?",
               "If I were you, I'd take the job.",
-              "How about you?"
+              "How about you?",
+              "And you?",
+              "How about you?",
+              "What about you?"
             ],
             "examples_fail": [
               "time (bare noun)",
@@ -1190,7 +1208,10 @@
             "examples_pass": [
               "I wish I had more free time.",
               "If I had time, I would travel more.",
-              "If she studied harder, she would pass."
+              "If she studied harder, she would pass.",
+              "If I had a million dollars, I'd retire.",
+              "If I could change my job, I'd become a chef.",
+              "If I were taller, I'd play basketball."
             ],
             "examples_fail": [
               "time (bare noun)",
@@ -1206,7 +1227,10 @@
             "examples_pass": [
               "If I had a sabbatical, I would write a book.",
               "If she studied harder, she would pass.",
-              "If I were you, I'd take the job."
+              "If I were you, I'd take the job.",
+              "I'd buy a beach house.",
+              "I would adopt more dogs.",
+              "I'd start a foundation."
             ],
             "examples_fail": [
               "time (bare noun)",
@@ -1222,7 +1246,10 @@
             "examples_pass": [
               "If I were you, I would try a new hobby.",
               "If I had time, I would travel more.",
-              "If she studied harder, she would pass."
+              "If she studied harder, she would pass.",
+              "What would you change?",
+              "How about you?",
+              "What about you?"
             ],
             "examples_fail": [
               "time (bare noun)",
@@ -1255,7 +1282,10 @@
             "examples_pass": [
               "If I could choose, I would live by the ocean.",
               "If I had time, I would travel more.",
-              "If she studied harder, she would pass."
+              "If she studied harder, she would pass.",
+              "If I had more energy, I'd go out more.",
+              "If I were younger, I'd study abroad.",
+              "If I had patience, I'd learn piano."
             ],
             "examples_fail": [
               "time (bare noun)",
@@ -1271,7 +1301,10 @@
             "examples_pass": [
               "I wish I had more courage to try new things.",
               "If I were you, I'd take the job.",
-              "I would help if I could."
+              "I would help if I could.",
+              "I would write a book.",
+              "I'd live by the ocean.",
+              "I would learn to cook."
             ],
             "examples_fail": [
               "time (bare noun)",
@@ -1287,6 +1320,9 @@
             "examples_pass": [
               "How about you?",
               "If she studied harder, she would pass.",
+              "And you?",
+              "What about you?",
+              "How about you?",
               "And you?"
             ],
             "examples_fail": [

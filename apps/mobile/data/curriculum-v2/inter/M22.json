@@ -168,7 +168,10 @@
             "examples_pass": [
               "Working from home is convenient. However, it can feel isolating.",
               "However, I disagree.",
-              "Despite the rain, we went out."
+              "Despite the rain, we went out.",
+              "I wanted to go, however, I was tired.",
+              "I tried hard, however, I failed.",
+              "It was raining, however, we went out."
             ],
             "examples_fail": [
               "rain (bare noun)",
@@ -184,7 +187,10 @@
             "examples_pass": [
               "The deadline was tight. Nevertheless, we delivered on time.",
               "Nevertheless, we tried.",
-              "On the other hand, it's cheaper."
+              "On the other hand, it's cheaper.",
+              "Nevertheless, I kept trying.",
+              "Nevertheless, she succeeded.",
+              "Nevertheless, we made it."
             ],
             "examples_fail": [
               "rain (bare noun)",
@@ -200,7 +206,10 @@
             "examples_pass": [
               "I love Rio. On the other hand, São Paulo has more opportunities.",
               "Nevertheless, we tried.",
-              "On the other hand, it's cheaper."
+              "On the other hand, it's cheaper.",
+              "What about your experience?",
+              "How about you?",
+              "What about you?"
             ],
             "examples_fail": [
               "rain (bare noun)",
@@ -233,7 +242,10 @@
             "examples_pass": [
               "I enjoy city life. However, I need quiet weekends.",
               "Nevertheless, we tried.",
-              "On the other hand, it's cheaper."
+              "On the other hand, it's cheaper.",
+              "The job was hard, however, I learned a lot.",
+              "It was expensive, however, worth it.",
+              "She was tired, however, she kept going."
             ],
             "examples_fail": [
               "rain (bare noun)",
@@ -249,7 +261,10 @@
             "examples_pass": [
               "Rural life is peaceful. On the other hand, services are limited.",
               "Nevertheless, we tried.",
-              "On the other hand, it's cheaper."
+              "On the other hand, it's cheaper.",
+              "Nevertheless, I'm grateful.",
+              "Nevertheless, we tried.",
+              "Nevertheless, it was fun."
             ],
             "examples_fail": [
               "rain (bare noun)",
@@ -265,7 +280,10 @@
             "examples_pass": [
               "What do you prefer?",
               "On the other hand, it's cheaper.",
-              "How about you?"
+              "How about you?",
+              "What about you?",
+              "How about you?",
+              "And you?"
             ],
             "examples_fail": [
               "rain (bare noun)",
@@ -432,7 +450,10 @@
             "examples_pass": [
               "Although I was nervous, I gave the presentation.",
               "Despite the rain, we went out.",
-              "Nevertheless, we tried."
+              "Nevertheless, we tried.",
+              "Although it was cold, we went out.",
+              "Although I was tired, I finished.",
+              "Although she's young, she's wise."
             ],
             "examples_fail": [
               "rain (bare noun)",
@@ -448,7 +469,10 @@
             "examples_pass": [
               "Despite the rain, I went running.",
               "On the other hand, it's cheaper.",
-              "However, I disagree."
+              "However, I disagree.",
+              "Despite the rain, we walked.",
+              "Despite being tired, I kept working.",
+              "Despite the price, I bought it."
             ],
             "examples_fail": [
               "rain (bare noun)",
@@ -464,7 +488,10 @@
             "examples_pass": [
               "Despite feeling unsure, I took the job.",
               "Nevertheless, we tried.",
-              "On the other hand, it's cheaper."
+              "On the other hand, it's cheaper.",
+              "What did you do despite difficulties?",
+              "How about you?",
+              "What about you?"
             ],
             "examples_fail": [
               "rain (bare noun)",
@@ -497,7 +524,10 @@
             "examples_pass": [
               "Despite my doubts, I applied for the role.",
               "Despite the rain, we went out.",
-              "Nevertheless, we tried."
+              "Nevertheless, we tried.",
+              "Although it was late, I kept reading.",
+              "Although I was nervous, I spoke up.",
+              "Although it rained, the party was great."
             ],
             "examples_fail": [
               "rain (bare noun)",
@@ -513,7 +543,10 @@
             "examples_pass": [
               "Although I had no experience, they hired me.",
               "Despite the rain, we went out.",
-              "Nevertheless, we tried."
+              "Nevertheless, we tried.",
+              "Despite the traffic, I arrived on time.",
+              "Despite my fears, I tried it.",
+              "Despite everything, I'm happy."
             ],
             "examples_fail": [
               "rain (bare noun)",
@@ -529,7 +562,10 @@
             "examples_pass": [
               "How did it go?",
               "Despite the rain, we went out.",
-              "How about you?"
+              "How about you?",
+              "And you?",
+              "How about you?",
+              "What about you?"
             ],
             "examples_fail": [
               "rain (bare noun)",
@@ -693,7 +729,10 @@
             "examples_pass": [
               "I didn't sleep well. Therefore, I'm tired today.",
               "Nevertheless, we tried.",
-              "On the other hand, it's cheaper."
+              "On the other hand, it's cheaper.",
+              "I was tired, therefore I went to bed.",
+              "It was cold, therefore I stayed in.",
+              "I was late, therefore I took a taxi."
             ],
             "examples_fail": [
               "rain (bare noun)",
@@ -709,7 +748,10 @@
             "examples_pass": [
               "Traffic was awful. Consequently, I was late.",
               "Despite the rain, we went out.",
-              "Nevertheless, we tried."
+              "Nevertheless, we tried.",
+              "Consequently, I missed the meeting.",
+              "As a result, we lost the game.",
+              "Thus, the plan failed."
             ],
             "examples_fail": [
               "rain (bare noun)",
@@ -725,7 +767,10 @@
             "examples_pass": [
               "We launched late. As a result, sales were low.",
               "On the other hand, it's cheaper.",
-              "However, I disagree."
+              "However, I disagree.",
+              "What's a result you experienced?",
+              "How about you?",
+              "What about you?"
             ],
             "examples_fail": [
               "rain (bare noun)",
@@ -758,7 +803,10 @@
             "examples_pass": [
               "I get distracted easily. Therefore, I work in short blocks.",
               "However, I disagree.",
-              "Despite the rain, we went out."
+              "Despite the rain, we went out.",
+              "I didn't sleep well, therefore I'm exhausted.",
+              "She forgot her keys, therefore she called me.",
+              "It was raining, therefore we stayed home."
             ],
             "examples_fail": [
               "rain (bare noun)",
@@ -774,7 +822,10 @@
             "examples_pass": [
               "I have evening meetings. As a result, I exercise at lunch.",
               "Despite the rain, we went out.",
-              "Nevertheless, we tried."
+              "Nevertheless, we tried.",
+              "Consequently, we had to change plans.",
+              "As a result, sales dropped.",
+              "Thus, I decided to leave."
             ],
             "examples_fail": [
               "rain (bare noun)",
@@ -790,7 +841,10 @@
             "examples_pass": [
               "What's your morning routine?",
               "However, I disagree.",
-              "How about you?"
+              "How about you?",
+              "What about you?",
+              "How about you?",
+              "And you?"
             ],
             "examples_fail": [
               "rain (bare noun)",
@@ -951,7 +1005,10 @@
             "examples_pass": [
               "My grandmother is incredibly patient.",
               "Despite the rain, we went out.",
-              "Nevertheless, we tried."
+              "Nevertheless, we tried.",
+              "First, I wake up. Then, I have coffee. Finally, I get dressed.",
+              "First, I plan. Then, I act. Finally, I review.",
+              "First, prepare. Then cook. Finally, serve."
             ],
             "examples_fail": [
               "rain (bare noun)",
@@ -967,7 +1024,10 @@
             "examples_pass": [
               "Furthermore, she always knows what to say.",
               "However, I disagree.",
-              "Despite the rain, we went out."
+              "Despite the rain, we went out.",
+              "In addition, I also exercise.",
+              "Moreover, I read every day.",
+              "Furthermore, I meditate."
             ],
             "examples_fail": [
               "rain (bare noun)",
@@ -983,7 +1043,10 @@
             "examples_pass": [
               "In addition, she's a wonderful cook.",
               "Nevertheless, we tried.",
-              "On the other hand, it's cheaper."
+              "On the other hand, it's cheaper.",
+              "Tell me your morning routine in order.",
+              "How about you?",
+              "What about you?"
             ],
             "examples_fail": [
               "rain (bare noun)",
@@ -1016,7 +1079,10 @@
             "examples_pass": [
               "My best friend is funny.",
               "Nevertheless, we tried.",
-              "On the other hand, it's cheaper."
+              "On the other hand, it's cheaper.",
+              "First, I shower. Then, I dress. Finally, I leave.",
+              "First, I check email. Then, I plan. Finally, I work.",
+              "First, dinner. Then, TV. Finally, bed."
             ],
             "examples_fail": [
               "rain (bare noun)",
@@ -1032,7 +1098,10 @@
             "examples_pass": [
               "Moreover, he's incredibly loyal.",
               "Nevertheless, we tried.",
-              "On the other hand, it's cheaper."
+              "On the other hand, it's cheaper.",
+              "In addition, I make my bed.",
+              "Moreover, I drink water.",
+              "Furthermore, I journal."
             ],
             "examples_fail": [
               "rain (bare noun)",
@@ -1048,7 +1117,10 @@
             "examples_pass": [
               "How long have you known her?",
               "Nevertheless, we tried.",
-              "How about you?"
+              "How about you?",
+              "And you?",
+              "How about you?",
+              "What about you?"
             ],
             "examples_fail": [
               "rain (bare noun)",

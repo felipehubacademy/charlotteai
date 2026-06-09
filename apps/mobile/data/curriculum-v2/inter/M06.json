@@ -162,7 +162,10 @@
             "examples_pass": [
               "I might go hiking.",
               "She might come tomorrow.",
-              "He could be at home."
+              "He could be at home.",
+              "It might rain tomorrow.",
+              "It could be sunny.",
+              "Maybe it'll be cloudy."
             ],
             "examples_fail": [
               "come (bare verb)",
@@ -178,7 +181,10 @@
             "examples_pass": [
               "I might stay home.",
               "It may rain later.",
-              "They must be tired."
+              "They must be tired.",
+              "I might go to the beach.",
+              "I could visit my parents.",
+              "I may stay home."
             ],
             "examples_fail": [
               "come (bare verb)",
@@ -194,7 +200,10 @@
             "examples_pass": [
               "My friend might join me.",
               "They must be tired.",
-              "She might come tomorrow."
+              "She might come tomorrow.",
+              "What might you do this weekend?",
+              "How about you?",
+              "What about you?"
             ],
             "examples_fail": [
               "come (bare verb)",
@@ -226,7 +235,10 @@
             "examples_pass": [
               "I might work from home.",
               "She might come tomorrow.",
-              "He could be at home."
+              "He could be at home.",
+              "I might watch a movie tonight.",
+              "I could order pizza.",
+              "I may just stay in."
             ],
             "examples_fail": [
               "come (bare verb)",
@@ -242,7 +254,10 @@
             "examples_pass": [
               "I might exercise.",
               "She might come tomorrow.",
-              "He could be at home."
+              "He could be at home.",
+              "He might be at work.",
+              "She could be sleeping.",
+              "They may have gone out."
             ],
             "examples_fail": [
               "come (bare verb)",
@@ -258,7 +273,10 @@
             "examples_pass": [
               "What might you do?",
               "She might come tomorrow.",
-              "How about you?"
+              "How about you?",
+              "What about you?",
+              "How about you?",
+              "And you?"
             ],
             "examples_fail": [
               "come (bare verb)",
@@ -412,7 +430,10 @@
             "examples_pass": [
               "It may rain.",
               "She might come tomorrow.",
-              "He could be at home."
+              "He could be at home.",
+              "You should drink more water.",
+              "You ought to rest.",
+              "You should see a doctor."
             ],
             "examples_fail": [
               "come (bare verb)",
@@ -428,7 +449,10 @@
             "examples_pass": [
               "She may come over.",
               "He could be at home.",
-              "It may rain later."
+              "It may rain later.",
+              "You shouldn't worry so much.",
+              "You shouldn't skip meals.",
+              "You shouldn't stay up late."
             ],
             "examples_fail": [
               "come (bare verb)",
@@ -444,7 +468,10 @@
             "examples_pass": [
               "May I ask a favor?",
               "He could be at home.",
-              "It may rain later."
+              "It may rain later.",
+              "What should I do?",
+              "What do you think I should do?",
+              "Any advice?"
             ],
             "examples_fail": [
               "come (bare verb)",
@@ -476,7 +503,10 @@
             "examples_pass": [
               "I may travel.",
               "She might come tomorrow.",
-              "He could be at home."
+              "He could be at home.",
+              "You should take a break.",
+              "You ought to call her.",
+              "You should try yoga."
             ],
             "examples_fail": [
               "come (bare verb)",
@@ -492,7 +522,10 @@
             "examples_pass": [
               "My boss may call me.",
               "She might come tomorrow.",
-              "He could be at home."
+              "He could be at home.",
+              "You shouldn't push yourself too hard.",
+              "You shouldn't ignore the problem.",
+              "You shouldn't eat so late."
             ],
             "examples_fail": [
               "come (bare verb)",
@@ -508,7 +541,10 @@
             "examples_pass": [
               "What may you do?",
               "It may rain later.",
-              "How about you?"
+              "How about you?",
+              "What should I do?",
+              "Any advice?",
+              "What would you do?"
             ],
             "examples_fail": [
               "come (bare verb)",
@@ -1182,7 +1218,10 @@
             "examples_pass": [
               "She might be home.",
               "They must be tired.",
-              "She might come tomorrow."
+              "She might come tomorrow.",
+              "I have to finish this report.",
+              "I must go to the dentist.",
+              "I need to call my mom."
             ],
             "examples_fail": [
               "come (bare verb)",
@@ -1198,7 +1237,10 @@
             "examples_pass": [
               "That can't be right.",
               "He could be at home.",
-              "It may rain later."
+              "It may rain later.",
+              "You don't have to come.",
+              "You don't need to bring anything.",
+              "We don't have to leave early."
             ],
             "examples_fail": [
               "come (bare verb)",
@@ -1214,7 +1256,10 @@
             "examples_pass": [
               "May I ask a question?",
               "They must be tired.",
-              "She might come tomorrow."
+              "She might come tomorrow.",
+              "Do you have to work tomorrow?",
+              "How about you?",
+              "What about you?"
             ],
             "examples_fail": [
               "come (bare verb)",
@@ -1247,7 +1292,10 @@
             "examples_pass": [
               "I might travel.",
               "It may rain later.",
-              "They must be tired."
+              "They must be tired.",
+              "I have to wake up early.",
+              "I must finish this task.",
+              "I need to pay the bills."
             ],
             "examples_fail": [
               "come (bare verb)",
@@ -1263,7 +1311,10 @@
             "examples_pass": [
               "She can't be busy now.",
               "He could be at home.",
-              "It may rain later."
+              "It may rain later.",
+              "You don't have to do that.",
+              "You don't need to apologize.",
+              "We don't have to hurry."
             ],
             "examples_fail": [
               "come (bare verb)",
@@ -1279,7 +1330,10 @@
             "examples_pass": [
               "What might you do?",
               "She might come tomorrow.",
-              "How about you?"
+              "How about you?",
+              "And you?",
+              "How about you?",
+              "What about you?"
             ],
             "examples_fail": [
               "come (bare verb)",

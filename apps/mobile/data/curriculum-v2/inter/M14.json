@@ -935,7 +935,10 @@
             "examples_pass": [
               "She might have lost her phone.",
               "She might have forgotten.",
-              "We shouldn't have waited."
+              "We shouldn't have waited.",
+              "I should have called her.",
+              "I should have studied more.",
+              "I ought to have apologized."
             ],
             "examples_fail": [
               "told (bare verb)",
@@ -951,7 +954,10 @@
             "examples_pass": [
               "You needn't have apologized — it was fine.",
               "You should have told me earlier.",
-              "I could have helped you."
+              "I could have helped you.",
+              "I could have helped you.",
+              "I could have done better.",
+              "I could have warned them."
             ],
             "examples_fail": [
               "told (bare verb)",
@@ -967,7 +973,10 @@
             "examples_pass": [
               "He might have changed his mind.",
               "She might have forgotten.",
-              "We shouldn't have waited."
+              "We shouldn't have waited.",
+              "What should you have done?",
+              "Any regrets?",
+              "How about you?"
             ],
             "examples_fail": [
               "told (bare verb)",
@@ -1000,7 +1009,10 @@
             "examples_pass": [
               "They might have noticed.",
               "We shouldn't have waited.",
-              "You should have told me earlier."
+              "You should have told me earlier.",
+              "I should have left earlier.",
+              "I should have brought a jacket.",
+              "I should have said yes."
             ],
             "examples_fail": [
               "told (bare verb)",
@@ -1016,7 +1028,10 @@
             "examples_pass": [
               "You needn't have worried — it happens.",
               "You should have told me earlier.",
-              "I could have helped you."
+              "I could have helped you.",
+              "I could have taken the train.",
+              "I could have called a friend.",
+              "I could have stayed home."
             ],
             "examples_fail": [
               "told (bare verb)",
@@ -1032,7 +1047,10 @@
             "examples_pass": [
               "Did anyone reply?",
               "She might have forgotten.",
-              "How about you?"
+              "How about you?",
+              "And you?",
+              "How about you?",
+              "What about you?"
             ],
             "examples_fail": [
               "told (bare verb)",

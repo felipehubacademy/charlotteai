@@ -153,13 +153,16 @@
         "objectives": [
           {
             "id": 1,
-            "label_en": "Specific past event",
+            "label_en": "Specific past event (past simple)",
             "hidden_prompt": "user uses past simple with time marker (last year, yesterday, in 2020)",
             "hint_en": "I went to Italy last year.",
             "examples_pass": [
               "I went to Italy last year.",
               "I just finished my homework.",
-              "She has already left."
+              "She has already left.",
+              "I've been studying English for three years.",
+              "I've been working here for five months.",
+              "I've been learning guitar for a year."
             ],
             "examples_fail": [
               "finished (bare verb)",
@@ -175,7 +178,10 @@
             "examples_pass": [
               "I have visited five countries.",
               "She has already left.",
-              "I haven't called him yet."
+              "I haven't called him yet.",
+              "I've been working out since January.",
+              "I've been living here since 2020.",
+              "I've been dating him since college."
             ],
             "examples_fail": [
               "finished (bare verb)",
@@ -191,7 +197,10 @@
             "examples_pass": [
               "I have never tried sushi.",
               "We've been working all day.",
-              "I just finished my homework."
+              "I just finished my homework.",
+              "How long have you been doing it?",
+              "How long have you been here?",
+              "What about you?"
             ],
             "examples_fail": [
               "finished (bare verb)",
@@ -224,7 +233,10 @@
             "examples_pass": [
               "I traveled to Rio last weekend.",
               "I haven't called him yet.",
-              "We've been working all day."
+              "We've been working all day.",
+              "I've been reading a lot lately.",
+              "I've been working from home recently.",
+              "I've been exercising every morning."
             ],
             "examples_fail": [
               "finished (bare verb)",
@@ -240,7 +252,10 @@
             "examples_pass": [
               "I've traveled a lot.",
               "I just finished my homework.",
-              "She has already left."
+              "She has already left.",
+              "I've been waiting for an hour.",
+              "I've been thinking about it all day.",
+              "I've been trying to call you all morning."
             ],
             "examples_fail": [
               "finished (bare verb)",
@@ -256,7 +271,10 @@
             "examples_pass": [
               "Have you ever been to Brazil?",
               "We've been working all day.",
-              "How about you?"
+              "How about you?",
+              "And you?",
+              "How about you?",
+              "What about you, Charlotte?"
             ],
             "examples_fail": [
               "finished (bare verb)",
@@ -671,7 +689,10 @@
             "examples_pass": [
               "I've worked here since 2020.",
               "We've been working all day.",
-              "I just finished my homework."
+              "I just finished my homework.",
+              "I've finished the report.",
+              "I've already had lunch.",
+              "I've cleaned my room."
             ],
             "examples_fail": [
               "finished (bare verb)",
@@ -687,7 +708,10 @@
             "examples_pass": [
               "I've been busy since Monday.",
               "I just finished my homework.",
-              "She has already left."
+              "She has already left.",
+              "I've been working on it all day.",
+              "I've been cleaning since morning.",
+              "I've been writing for hours."
             ],
             "examples_fail": [
               "finished (bare verb)",
@@ -703,7 +727,10 @@
             "examples_pass": [
               "I've lived here since I was 18.",
               "I just finished my homework.",
-              "She has already left."
+              "She has already left.",
+              "What have you been up to?",
+              "What about you?",
+              "How about you?"
             ],
             "examples_fail": [
               "finished (bare verb)",
@@ -736,7 +763,10 @@
             "examples_pass": [
               "Since 2022.",
               "I haven't called him yet.",
-              "We've been working all day."
+              "We've been working all day.",
+              "I've watched three episodes already.",
+              "I've finished two books this month.",
+              "I've done a lot of work today."
             ],
             "examples_fail": [
               "finished (bare verb)",
@@ -752,7 +782,10 @@
             "examples_pass": [
               "I've lived here since 2015.",
               "We've been working all day.",
-              "I just finished my homework."
+              "I just finished my homework.",
+              "I've been studying all week.",
+              "I've been working out daily.",
+              "I've been practicing every day."
             ],
             "examples_fail": [
               "finished (bare verb)",
@@ -768,6 +801,9 @@
             "examples_pass": [
               "Since when have you taught?",
               "She has already left.",
+              "How about you?",
+              "And you?",
+              "What about you?",
               "How about you?"
             ],
             "examples_fail": [
@@ -927,7 +963,10 @@
             "examples_pass": [
               "For two years.",
               "We've been working all day.",
-              "I just finished my homework."
+              "I just finished my homework.",
+              "I've lived in Brazil for ten years.",
+              "I've worked here for five years.",
+              "I've known her since high school."
             ],
             "examples_fail": [
               "finished (bare verb)",
@@ -943,7 +982,10 @@
             "examples_pass": [
               "Since 2022.",
               "I haven't called him yet.",
-              "We've been working all day."
+              "We've been working all day.",
+              "I've been working on this project all week.",
+              "I've been waiting for hours.",
+              "I've been writing the same email all morning."
             ],
             "examples_fail": [
               "finished (bare verb)",
@@ -959,7 +1001,10 @@
             "examples_pass": [
               "How long have you been a teacher?",
               "She has already left.",
-              "How about you?"
+              "How about you?",
+              "How long have you been here?",
+              "How about you?",
+              "And you?"
             ],
             "examples_fail": [
               "finished (bare verb)",
@@ -992,7 +1037,10 @@
             "examples_pass": [
               "For three years.",
               "She has already left.",
-              "I haven't called him yet."
+              "I haven't called him yet.",
+              "I've already had dinner.",
+              "I've finished the assignment.",
+              "I've watched that movie before."
             ],
             "examples_fail": [
               "finished (bare verb)",
@@ -1008,7 +1056,10 @@
             "examples_pass": [
               "Since 2021.",
               "She has already left.",
-              "I haven't called him yet."
+              "I haven't called him yet.",
+              "I've been thinking about it.",
+              "I've been planning the trip.",
+              "I've been studying for the test."
             ],
             "examples_fail": [
               "finished (bare verb)",
@@ -1024,7 +1075,10 @@
             "examples_pass": [
               "How long have you lived in NYC?",
               "We've been working all day.",
-              "How about you?"
+              "How about you?",
+              "What about you?",
+              "How about you?",
+              "And you?"
             ],
             "examples_fail": [
               "finished (bare verb)",

@@ -108,7 +108,7 @@
    **hidden_prompt**: "user uses 'X. However, Y.'"
    **hint_pt**: "Working from home is convenient. However, it can feel isolating."
    **hint_en**: "Working from home is convenient. However, it can feel isolating."
-   **example_pass**: Working from home is convenient. However, it can feel isolating. | However, I disagree. | Despite the rain, we went out.
+   **example_pass**: Working from home is convenient. However, it can feel isolating. | However, I disagree. | Despite the rain, we went out. | I wanted to go, however, I was tired. | I tried hard, however, I failed. | It was raining, however, we went out.
    **example_fail**: rain (bare noun) | We went out and it rained (no connector contrast) | However (connector alone, no clause)
 
 2. **id**: 2
@@ -117,7 +117,7 @@
    **hidden_prompt**: "user uses 'X. Nevertheless, Y.'"
    **hint_pt**: "The deadline was tight. Nevertheless, we delivered on time."
    **hint_en**: "The deadline was tight. Nevertheless, we delivered on time."
-   **example_pass**: The deadline was tight. Nevertheless, we delivered on time. | Nevertheless, we tried. | On the other hand, it's cheaper.
+   **example_pass**: The deadline was tight. Nevertheless, we delivered on time. | Nevertheless, we tried. | On the other hand, it's cheaper. | Nevertheless, I kept trying. | Nevertheless, she succeeded. | Nevertheless, we made it.
    **example_fail**: rain (bare noun) | We went out and it rained (no connector contrast) | However (connector alone, no clause)
 
 3. **id**: 3
@@ -126,7 +126,7 @@
    **hidden_prompt**: "user uses 'X. On the other hand, Y.'"
    **hint_pt**: "I love Rio. On the other hand, São Paulo has more opportunities."
    **hint_en**: "I love Rio. On the other hand, São Paulo has more opportunities."
-   **example_pass**: I love Rio. On the other hand, São Paulo has more opportunities. | Nevertheless, we tried. | On the other hand, it's cheaper.
+   **example_pass**: I love Rio. On the other hand, São Paulo has more opportunities. | Nevertheless, we tried. | On the other hand, it's cheaper. | What about your experience? | How about you? | What about you?
    **example_fail**: rain (bare noun) | We went out and it rained (no connector contrast) | However (connector alone, no clause)
 
 **Closing cue**: Charlotte fecha com "Contrast mastery!" quando obj_3 baterem.
@@ -163,7 +163,7 @@
    **hidden_prompt**: "user uses 'however' or 'on the other hand'"
    **hint_pt**: "I enjoy city life. However, I need quiet weekends."
    **hint_en**: "I enjoy city life. However, I need quiet weekends."
-   **example_pass**: I enjoy city life. However, I need quiet weekends. | Nevertheless, we tried. | On the other hand, it's cheaper.
+   **example_pass**: I enjoy city life. However, I need quiet weekends. | Nevertheless, we tried. | On the other hand, it's cheaper. | The job was hard, however, I learned a lot. | It was expensive, however, worth it. | She was tired, however, she kept going.
    **example_fail**: rain (bare noun) | We went out and it rained (no connector contrast) | However (connector alone, no clause)
 
 2. **id**: 2
@@ -172,7 +172,7 @@
    **hidden_prompt**: "user uses another discourse marker"
    **hint_pt**: "Rural life is peaceful. On the other hand, services are limited."
    **hint_en**: "Rural life is peaceful. On the other hand, services are limited."
-   **example_pass**: Rural life is peaceful. On the other hand, services are limited. | Nevertheless, we tried. | On the other hand, it's cheaper.
+   **example_pass**: Rural life is peaceful. On the other hand, services are limited. | Nevertheless, we tried. | On the other hand, it's cheaper. | Nevertheless, I'm grateful. | Nevertheless, we tried. | Nevertheless, it was fun.
    **example_fail**: rain (bare noun) | We went out and it rained (no connector contrast) | However (connector alone, no clause)
 
 3. **id**: 3
@@ -181,7 +181,7 @@
    **hidden_prompt**: "user asks Charlotte for her view"
    **hint_pt**: "What do you prefer?"
    **hint_en**: "What do you prefer?"
-   **example_pass**: What do you prefer? | On the other hand, it's cheaper. | How about you?
+   **example_pass**: What do you prefer? | On the other hand, it's cheaper. | How about you? | What about you? | How about you? | And you?
    **example_fail**: rain (bare noun) | We went out and it rained (no connector contrast) | However (connector alone, no clause)
 
 **Closing cue**: Charlotte fecha com "Balanced views!" quando obj_3 baterem.
@@ -288,7 +288,7 @@
    **hidden_prompt**: "user uses 'Although + subject + verb'"
    **hint_pt**: "Although I was nervous, I gave the presentation."
    **hint_en**: "Although I was nervous, I gave the presentation."
-   **example_pass**: Although I was nervous, I gave the presentation. | Despite the rain, we went out. | Nevertheless, we tried.
+   **example_pass**: Although I was nervous, I gave the presentation. | Despite the rain, we went out. | Nevertheless, we tried. | Although it was cold, we went out. | Although I was tired, I finished. | Although she's young, she's wise.
    **example_fail**: rain (bare noun) | We went out and it rained (no connector contrast) | However (connector alone, no clause)
 
 2. **id**: 2
@@ -297,7 +297,7 @@
    **hidden_prompt**: "user uses 'Despite + noun'"
    **hint_pt**: "Despite the rain, I went running."
    **hint_en**: "Despite the rain, I went running."
-   **example_pass**: Despite the rain, I went running. | On the other hand, it's cheaper. | However, I disagree.
+   **example_pass**: Despite the rain, I went running. | On the other hand, it's cheaper. | However, I disagree. | Despite the rain, we walked. | Despite being tired, I kept working. | Despite the price, I bought it.
    **example_fail**: rain (bare noun) | We went out and it rained (no connector contrast) | However (connector alone, no clause)
 
 3. **id**: 3
@@ -306,7 +306,7 @@
    **hidden_prompt**: "user uses 'Even though' or 'Despite + -ing'"
    **hint_pt**: "Despite feeling unsure, I took the job."
    **hint_en**: "Despite feeling unsure, I took the job."
-   **example_pass**: Despite feeling unsure, I took the job. | Nevertheless, we tried. | On the other hand, it's cheaper.
+   **example_pass**: Despite feeling unsure, I took the job. | Nevertheless, we tried. | On the other hand, it's cheaper. | What did you do despite difficulties? | How about you? | What about you?
    **example_fail**: rain (bare noun) | We went out and it rained (no connector contrast) | However (connector alone, no clause)
 
 **Closing cue**: Charlotte fecha com "Resilience shown!" quando obj_3 baterem.
@@ -343,7 +343,7 @@
    **hidden_prompt**: "user uses 'despite' or 'although' for own story"
    **hint_pt**: "Despite my doubts, I applied for the role."
    **hint_en**: "Despite my doubts, I applied for the role."
-   **example_pass**: Despite my doubts, I applied for the role. | Despite the rain, we went out. | Nevertheless, we tried.
+   **example_pass**: Despite my doubts, I applied for the role. | Despite the rain, we went out. | Nevertheless, we tried. | Although it was late, I kept reading. | Although I was nervous, I spoke up. | Although it rained, the party was great.
    **example_fail**: rain (bare noun) | We went out and it rained (no connector contrast) | However (connector alone, no clause)
 
 2. **id**: 2
@@ -352,7 +352,7 @@
    **hidden_prompt**: "user uses another concession marker"
    **hint_pt**: "Although I had no experience, they hired me."
    **hint_en**: "Although I had no experience, they hired me."
-   **example_pass**: Although I had no experience, they hired me. | Despite the rain, we went out. | Nevertheless, we tried.
+   **example_pass**: Although I had no experience, they hired me. | Despite the rain, we went out. | Nevertheless, we tried. | Despite the traffic, I arrived on time. | Despite my fears, I tried it. | Despite everything, I'm happy.
    **example_fail**: rain (bare noun) | We went out and it rained (no connector contrast) | However (connector alone, no clause)
 
 3. **id**: 3
@@ -361,7 +361,7 @@
    **hidden_prompt**: "user asks Charlotte more about her talk"
    **hint_pt**: "How did it go?"
    **hint_en**: "How did it go?"
-   **example_pass**: How did it go? | Despite the rain, we went out. | How about you?
+   **example_pass**: How did it go? | Despite the rain, we went out. | How about you? | And you? | How about you? | What about you?
    **example_fail**: rain (bare noun) | We went out and it rained (no connector contrast) | However (connector alone, no clause)
 
 **Closing cue**: Charlotte fecha com "Persistence celebrated!" quando obj_3 baterem.
@@ -467,7 +467,7 @@
    **hidden_prompt**: "user uses 'X. Therefore, Y.'"
    **hint_pt**: "I didn't sleep well. Therefore, I'm tired today."
    **hint_en**: "I didn't sleep well. Therefore, I'm tired today."
-   **example_pass**: I didn't sleep well. Therefore, I'm tired today. | Nevertheless, we tried. | On the other hand, it's cheaper.
+   **example_pass**: I didn't sleep well. Therefore, I'm tired today. | Nevertheless, we tried. | On the other hand, it's cheaper. | I was tired, therefore I went to bed. | It was cold, therefore I stayed in. | I was late, therefore I took a taxi.
    **example_fail**: rain (bare noun) | We went out and it rained (no connector contrast) | However (connector alone, no clause)
 
 2. **id**: 2
@@ -476,7 +476,7 @@
    **hidden_prompt**: "user uses 'X. Consequently, Y.'"
    **hint_pt**: "Traffic was awful. Consequently, I was late."
    **hint_en**: "Traffic was awful. Consequently, I was late."
-   **example_pass**: Traffic was awful. Consequently, I was late. | Despite the rain, we went out. | Nevertheless, we tried.
+   **example_pass**: Traffic was awful. Consequently, I was late. | Despite the rain, we went out. | Nevertheless, we tried. | Consequently, I missed the meeting. | As a result, we lost the game. | Thus, the plan failed.
    **example_fail**: rain (bare noun) | We went out and it rained (no connector contrast) | However (connector alone, no clause)
 
 3. **id**: 3
@@ -485,7 +485,7 @@
    **hidden_prompt**: "user uses 'X. As a result, Y.'"
    **hint_pt**: "We launched late. As a result, sales were low."
    **hint_en**: "We launched late. As a result, sales were low."
-   **example_pass**: We launched late. As a result, sales were low. | On the other hand, it's cheaper. | However, I disagree.
+   **example_pass**: We launched late. As a result, sales were low. | On the other hand, it's cheaper. | However, I disagree. | What's a result you experienced? | How about you? | What about you?
    **example_fail**: rain (bare noun) | We went out and it rained (no connector contrast) | However (connector alone, no clause)
 
 **Closing cue**: Charlotte fecha com "Causal logic clear!" quando obj_3 baterem.
@@ -522,7 +522,7 @@
    **hidden_prompt**: "user uses cause-result marker"
    **hint_pt**: "I get distracted easily. Therefore, I work in short blocks."
    **hint_en**: "I get distracted easily. Therefore, I work in short blocks."
-   **example_pass**: I get distracted easily. Therefore, I work in short blocks. | However, I disagree. | Despite the rain, we went out.
+   **example_pass**: I get distracted easily. Therefore, I work in short blocks. | However, I disagree. | Despite the rain, we went out. | I didn't sleep well, therefore I'm exhausted. | She forgot her keys, therefore she called me. | It was raining, therefore we stayed home.
    **example_fail**: rain (bare noun) | We went out and it rained (no connector contrast) | However (connector alone, no clause)
 
 2. **id**: 2
@@ -531,7 +531,7 @@
    **hidden_prompt**: "user uses another causal marker"
    **hint_pt**: "I have evening meetings. As a result, I exercise at lunch."
    **hint_en**: "I have evening meetings. As a result, I exercise at lunch."
-   **example_pass**: I have evening meetings. As a result, I exercise at lunch. | Despite the rain, we went out. | Nevertheless, we tried.
+   **example_pass**: I have evening meetings. As a result, I exercise at lunch. | Despite the rain, we went out. | Nevertheless, we tried. | Consequently, we had to change plans. | As a result, sales dropped. | Thus, I decided to leave.
    **example_fail**: rain (bare noun) | We went out and it rained (no connector contrast) | However (connector alone, no clause)
 
 3. **id**: 3
@@ -540,7 +540,7 @@
    **hidden_prompt**: "user asks Charlotte more about her routine"
    **hint_pt**: "What's your morning routine?"
    **hint_en**: "What's your morning routine?"
-   **example_pass**: What's your morning routine? | However, I disagree. | How about you?
+   **example_pass**: What's your morning routine? | However, I disagree. | How about you? | What about you? | How about you? | And you?
    **example_fail**: rain (bare noun) | We went out and it rained (no connector contrast) | However (connector alone, no clause)
 
 **Closing cue**: Charlotte fecha com "Routines logical!" quando obj_3 baterem.
@@ -645,7 +645,7 @@
    **hidden_prompt**: "user states base quality"
    **hint_pt**: "My grandmother is incredibly patient."
    **hint_en**: "My grandmother is incredibly patient."
-   **example_pass**: My grandmother is incredibly patient. | Despite the rain, we went out. | Nevertheless, we tried.
+   **example_pass**: My grandmother is incredibly patient. | Despite the rain, we went out. | Nevertheless, we tried. | First, I wake up. Then, I have coffee. Finally, I get dressed. | First, I plan. Then, I act. Finally, I review. | First, prepare. Then cook. Finally, serve.
    **example_fail**: rain (bare noun) | We went out and it rained (no connector contrast) | However (connector alone, no clause)
 
 2. **id**: 2
@@ -654,7 +654,7 @@
    **hidden_prompt**: "user uses 'Furthermore' or 'Moreover'"
    **hint_pt**: "Furthermore, she always knows what to say."
    **hint_en**: "Furthermore, she always knows what to say."
-   **example_pass**: Furthermore, she always knows what to say. | However, I disagree. | Despite the rain, we went out.
+   **example_pass**: Furthermore, she always knows what to say. | However, I disagree. | Despite the rain, we went out. | In addition, I also exercise. | Moreover, I read every day. | Furthermore, I meditate.
    **example_fail**: rain (bare noun) | We went out and it rained (no connector contrast) | However (connector alone, no clause)
 
 3. **id**: 3
@@ -663,7 +663,7 @@
    **hidden_prompt**: "user uses 'In addition'"
    **hint_pt**: "In addition, she's a wonderful cook."
    **hint_en**: "In addition, she's a wonderful cook."
-   **example_pass**: In addition, she's a wonderful cook. | Nevertheless, we tried. | On the other hand, it's cheaper.
+   **example_pass**: In addition, she's a wonderful cook. | Nevertheless, we tried. | On the other hand, it's cheaper. | Tell me your morning routine in order. | How about you? | What about you?
    **example_fail**: rain (bare noun) | We went out and it rained (no connector contrast) | However (connector alone, no clause)
 
 **Closing cue**: Charlotte fecha com "Layered praise!" quando obj_3 baterem.
@@ -700,7 +700,7 @@
    **hidden_prompt**: "user states a quality"
    **hint_pt**: "My best friend is funny."
    **hint_en**: "My best friend is funny."
-   **example_pass**: My best friend is funny. | Nevertheless, we tried. | On the other hand, it's cheaper.
+   **example_pass**: My best friend is funny. | Nevertheless, we tried. | On the other hand, it's cheaper. | First, I shower. Then, I dress. Finally, I leave. | First, I check email. Then, I plan. Finally, I work. | First, dinner. Then, TV. Finally, bed.
    **example_fail**: rain (bare noun) | We went out and it rained (no connector contrast) | However (connector alone, no clause)
 
 2. **id**: 2
@@ -709,7 +709,7 @@
    **hidden_prompt**: "user uses 'moreover' or 'in addition'"
    **hint_pt**: "Moreover, he's incredibly loyal."
    **hint_en**: "Moreover, he's incredibly loyal."
-   **example_pass**: Moreover, he's incredibly loyal. | Nevertheless, we tried. | On the other hand, it's cheaper.
+   **example_pass**: Moreover, he's incredibly loyal. | Nevertheless, we tried. | On the other hand, it's cheaper. | In addition, I make my bed. | Moreover, I drink water. | Furthermore, I journal.
    **example_fail**: rain (bare noun) | We went out and it rained (no connector contrast) | However (connector alone, no clause)
 
 3. **id**: 3
@@ -718,7 +718,7 @@
    **hidden_prompt**: "user asks Charlotte more"
    **hint_pt**: "How long have you known her?"
    **hint_en**: "How long have you known her?"
-   **example_pass**: How long have you known her? | Nevertheless, we tried. | How about you?
+   **example_pass**: How long have you known her? | Nevertheless, we tried. | How about you? | And you? | How about you? | What about you?
    **example_fail**: rain (bare noun) | We went out and it rained (no connector contrast) | However (connector alone, no clause)
 
 **Closing cue**: Charlotte fecha com "Friends celebrated!" quando obj_3 baterem.

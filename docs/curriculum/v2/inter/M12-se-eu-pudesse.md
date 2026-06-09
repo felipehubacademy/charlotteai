@@ -341,7 +341,7 @@
 
 2. **id**: 2
    **label_pt**: "Outro desejo (could/were)"
-   **label_en**: "Another wish"
+   **label_en**: "Another wish (could/were)"
    **hidden_prompt**: "user uses another wish structure"
    **hint_pt**: "I wish I could travel more."
    **hint_en**: "I wish I could travel more."
@@ -459,7 +459,7 @@
    **hidden_prompt**: "after Charlotte's FIRST problem (job offer in another city), user gives advice with 'If I were you, I would + base'. Accept repeating the same chunk in later objectives — what matters is responding to this specific problem."
    **hint_pt**: "If I were you, I would take the offer."
    **hint_en**: "If I were you, I would take the offer."
-   **example_pass**: If I were you, I would take the offer. | If I were you, I'd take the job. | I would help if I could.
+   **example_pass**: If I were you, I would take the offer. | If I were you, I'd take the job. | I would help if I could. | If I had more time, I'd travel. | If I were rich, I'd buy a house. | If I had a car, I'd drive everywhere.
    **example_fail**: time (bare noun) | If I have time, I will travel (1st conditional, not 2nd) | I travel more (no conditional)
 
 2. **id**: 2
@@ -468,7 +468,7 @@
    **hidden_prompt**: "after Charlotte's SECOND problem (conflict with a friend / unclear conversation), user gives advice — accept 'If I were you, I would' or 'If I were in your position'. Same opener as obj 1 is fine; tied to NEW problem."
    **hint_pt**: "If I were you, I would talk to her directly."
    **hint_en**: "If I were you, I would talk to her directly."
-   **example_pass**: If I were you, I would talk to her directly. | If I had time, I would travel more. | If she studied harder, she would pass.
+   **example_pass**: If I were you, I would talk to her directly. | If I had time, I would travel more. | If she studied harder, she would pass. | I would learn three languages. | I'd start my own business. | I would help my family more.
    **example_fail**: time (bare noun) | If I have time, I will travel (1st conditional, not 2nd) | I travel more (no conditional)
 
 3. **id**: 3
@@ -477,7 +477,7 @@
    **hidden_prompt**: "after Charlotte's THIRD problem (bigger life decision — moving, studying, etc), user gives final advice. Any 'If I were you' or 'in your position' chunk works. Repetition of openers from objs 1/2 is fine — what matters is reacting to this third problem."
    **hint_pt**: "If I were in your position, I would wait."
    **hint_en**: "If I were in your position, I would wait."
-   **example_pass**: If I were in your position, I would wait. | If she studied harder, she would pass. | If I were you, I'd take the job.
+   **example_pass**: If I were in your position, I would wait. | If she studied harder, she would pass. | If I were you, I'd take the job. | What would you do? | How about you? | What about you?
    **example_fail**: time (bare noun) | If I have time, I will travel (1st conditional, not 2nd) | I travel more (no conditional)
 
 **Closing cue**: Charlotte fecha com "Thoughtful advice!" quando obj_3 baterem.
@@ -514,7 +514,7 @@
    **hidden_prompt**: "user uses 'If I were you, I would + base'"
    **hint_pt**: "If I were you, I would take the one closer to home."
    **hint_en**: "If I were you, I would take the one closer to home."
-   **example_pass**: If I were you, I would take the one closer to home. | If I were you, I'd take the job. | I would help if I could.
+   **example_pass**: If I were you, I would take the one closer to home. | If I were you, I'd take the job. | I would help if I could. | If I won the lottery, I'd quit my job. | If I lived abroad, I'd be happier. | If I had wings, I'd fly home.
    **example_fail**: time (bare noun) | If I have time, I will travel (1st conditional, not 2nd) | I travel more (no conditional)
 
 2. **id**: 2
@@ -523,7 +523,7 @@
    **hidden_prompt**: "user adds another 'I would + base' or 'If I were you'"
    **hint_pt**: "I would think about long-term growth."
    **hint_en**: "I would think about long-term growth."
-   **example_pass**: I would think about long-term growth. | I would help if I could. | If I had time, I would travel more.
+   **example_pass**: I would think about long-term growth. | I would help if I could. | If I had time, I would travel more. | I'd travel the world. | I would buy a small island. | I'd donate to charity.
    **example_fail**: time (bare noun) | If I have time, I will travel (1st conditional, not 2nd) | I travel more (no conditional)
 
 3. **id**: 3
@@ -532,7 +532,7 @@
    **hidden_prompt**: "user asks Charlotte a clarifying question"
    **hint_pt**: "What does your gut say?"
    **hint_en**: "What does your gut say?"
-   **example_pass**: What does your gut say? | If I were you, I'd take the job. | How about you?
+   **example_pass**: What does your gut say? | If I were you, I'd take the job. | How about you? | And you? | How about you? | What about you?
    **example_fail**: time (bare noun) | If I have time, I will travel (1st conditional, not 2nd) | I travel more (no conditional)
 
 **Closing cue**: Charlotte fecha com "Helpful perspective!" quando obj_3 baterem.
@@ -815,7 +815,7 @@
    **hidden_prompt**: "user uses 'I wish + past simple'"
    **hint_pt**: "I wish I had more free time."
    **hint_en**: "I wish I had more free time."
-   **example_pass**: I wish I had more free time. | If I had time, I would travel more. | If she studied harder, she would pass.
+   **example_pass**: I wish I had more free time. | If I had time, I would travel more. | If she studied harder, she would pass. | If I had a million dollars, I'd retire. | If I could change my job, I'd become a chef. | If I were taller, I'd play basketball.
    **example_fail**: time (bare noun) | If I have time, I will travel (1st conditional, not 2nd) | I travel more (no conditional)
 
 2. **id**: 2
@@ -824,7 +824,7 @@
    **hidden_prompt**: "user uses 'If + past simple, would + base'"
    **hint_pt**: "If I had a sabbatical, I would write a book."
    **hint_en**: "If I had a sabbatical, I would write a book."
-   **example_pass**: If I had a sabbatical, I would write a book. | If she studied harder, she would pass. | If I were you, I'd take the job.
+   **example_pass**: If I had a sabbatical, I would write a book. | If she studied harder, she would pass. | If I were you, I'd take the job. | I'd buy a beach house. | I would adopt more dogs. | I'd start a foundation.
    **example_fail**: time (bare noun) | If I have time, I will travel (1st conditional, not 2nd) | I travel more (no conditional)
 
 3. **id**: 3
@@ -833,7 +833,7 @@
    **hidden_prompt**: "user uses 'If I were you, I would + base'"
    **hint_pt**: "If I were you, I would try a new hobby."
    **hint_en**: "If I were you, I would try a new hobby."
-   **example_pass**: If I were you, I would try a new hobby. | If I had time, I would travel more. | If she studied harder, she would pass.
+   **example_pass**: If I were you, I would try a new hobby. | If I had time, I would travel more. | If she studied harder, she would pass. | What would you change? | How about you? | What about you?
    **example_fail**: time (bare noun) | If I have time, I will travel (1st conditional, not 2nd) | I travel more (no conditional)
 
 **Closing cue**: Charlotte fecha com "Hypothetical fluency!" quando obj_3 baterem.
@@ -870,7 +870,7 @@
    **hidden_prompt**: "user uses 'If + past, I would + base' for big change"
    **hint_pt**: "If I could choose, I would live by the ocean."
    **hint_en**: "If I could choose, I would live by the ocean."
-   **example_pass**: If I could choose, I would live by the ocean. | If I had time, I would travel more. | If she studied harder, she would pass.
+   **example_pass**: If I could choose, I would live by the ocean. | If I had time, I would travel more. | If she studied harder, she would pass. | If I had more energy, I'd go out more. | If I were younger, I'd study abroad. | If I had patience, I'd learn piano.
    **example_fail**: time (bare noun) | If I have time, I will travel (1st conditional, not 2nd) | I travel more (no conditional)
 
 2. **id**: 2
@@ -879,7 +879,7 @@
    **hidden_prompt**: "user uses 'I wish' or another hypothetical"
    **hint_pt**: "I wish I had more courage to try new things."
    **hint_en**: "I wish I had more courage to try new things."
-   **example_pass**: I wish I had more courage to try new things. | If I were you, I'd take the job. | I would help if I could.
+   **example_pass**: I wish I had more courage to try new things. | If I were you, I'd take the job. | I would help if I could. | I would write a book. | I'd live by the ocean. | I would learn to cook.
    **example_fail**: time (bare noun) | If I have time, I will travel (1st conditional, not 2nd) | I travel more (no conditional)
 
 3. **id**: 3
@@ -888,7 +888,7 @@
    **hidden_prompt**: "user asks 'How about you?' or 'What would you change?'"
    **hint_pt**: "How about you?"
    **hint_en**: "How about you?"
-   **example_pass**: How about you? | If she studied harder, she would pass. | And you?
+   **example_pass**: How about you? | If she studied harder, she would pass. | And you? | What about you? | How about you? | And you?
    **example_fail**: time (bare noun) | If I have time, I will travel (1st conditional, not 2nd) | I travel more (no conditional)
 
 **Closing cue**: Charlotte fecha com "Alternative lives explored!" quando obj_3 baterem.
