@@ -89,6 +89,8 @@
    **hidden_prompt**: "user negates adjective with un- or in-"
    **hint_pt**: "From 'The candidate seems qualified.' → 'The candidate seems unqualified, given the role's requirements.'"
    **hint_en**: "From 'The candidate seems qualified.' → 'The candidate seems unqualified, given the role's requirements.'"
+   **example_pass**: From 'The candidate seems qualified.' → 'The candidate seems unqualified, given the role's requirements.' | Her unwavering commitment was truly inspirational. | The misunderstanding led to widespread misinformation.
+   **example_fail**: happy (bare root, no derivation) | I am happy today (no derived form used) | The day was sunny (off-topic, no word formation)
 
 2. **id**: 2
    **label_pt**: "Negação com 'ir-' ou 'il-'"
@@ -96,6 +98,8 @@
    **hidden_prompt**: "user negates with ir- or il- correctly"
    **hint_pt**: "From 'The decision was reversible.' → 'The decision was irreversible — once it was signed, there was no going back.'"
    **hint_en**: "From 'The decision was reversible.' → 'The decision was irreversible — once it was signed, there was no going back.'"
+   **example_pass**: From 'The decision was reversible.' → 'The decision was irreversible — once it was signed, there was no going back.' | Industrialisation transformed the countryside dramatically. | The reorganisation was both costly and disruptive.
+   **example_fail**: happy (bare root, no derivation) | I am happy today (no derived form used) | The day was sunny (off-topic, no word formation)
 
 3. **id**: 3
    **label_pt**: "Negação com 'dis-' ou 'mis-'"
@@ -103,6 +107,8 @@
    **hidden_prompt**: "user uses dis- or mis- correctly"
    **hint_pt**: "From 'I trust him.' → 'I distrust him in financial matters specifically — he's been misled before, and his judgment shows it.'"
    **hint_en**: "From 'I trust him.' → 'I distrust him in financial matters specifically — he's been misled before, and his judgment shows it.'"
+   **example_pass**: From 'I trust him.' → 'I distrust him in financial matters specifically — he's been misled before, and his judgment shows it.' | His thoughtfulness made the gesture unforgettable. | A meaningful collaboration produced remarkable results.
+   **example_fail**: happy (bare root, no derivation) | I am happy today (no derived form used) | The day was sunny (off-topic, no word formation)
 
 **Closing cue**: Charlotte closes with "Prefixes, correctly chosen." once obj_3 lands.
 
@@ -138,6 +144,8 @@
    **hidden_prompt**: "user replaces 'unresponsible' with 'irresponsible'"
    **hint_pt**: "Small correction — it's 'irresponsible' with 'ir-' before the 'r' of 'responsible'."
    **hint_en**: "Small correction — it's 'irresponsible' with 'ir-' before the 'r' of 'responsible'."
+   **example_pass**: Small correction — it's 'irresponsible' with 'ir-' before the 'r' of 'responsible'. | Her unwavering commitment was truly inspirational. | The misunderstanding led to widespread misinformation.
+   **example_fail**: happy (bare root, no derivation) | I am happy today (no derived form used) | The day was sunny (off-topic, no word formation)
 
 2. **id**: 2
    **label_pt**: "Acrescentar exemplo com outra negação correta"
@@ -145,6 +153,8 @@
    **hidden_prompt**: "user uses another prefix-formed negation"
    **hint_pt**: "And his approach to clients was unprofessional — late replies, missed details. The pattern was hard to ignore."
    **hint_en**: "And his approach to clients was unprofessional — late replies, missed details. The pattern was hard to ignore."
+   **example_pass**: And his approach to clients was unprofessional — late replies, missed details. The pattern was hard to ignore. | Industrialisation transformed the countryside dramatically. | The reorganisation was both costly and disruptive.
+   **example_fail**: happy (bare root, no derivation) | I am happy today (no derived form used) | The day was sunny (off-topic, no word formation)
 
 3. **id**: 3
    **label_pt**: "Perguntar a Charlotte"
@@ -152,6 +162,8 @@
    **hidden_prompt**: "user asks Charlotte if he ever changed"
    **hint_pt**: "Did he ever change?"
    **hint_en**: "Did he ever change?"
+   **example_pass**: Did he ever change? | His thoughtfulness made the gesture unforgettable. | A meaningful collaboration produced remarkable results.
+   **example_fail**: happy (bare root, no derivation) | I am happy today (no derived form used) | The day was sunny (off-topic, no word formation)
 
 **Closing cue**: Charlotte closes with "Vocabulary calibrated." once obj_3 lands.
 
@@ -229,6 +241,8 @@
    **hidden_prompt**: "user uses noun form of a verb"
    **hint_pt**: "From 'They decided to expand' → 'The decision to expand was made unanimously.'"
    **hint_en**: "From 'They decided to expand' → 'The decision to expand was made unanimously.'"
+   **example_pass**: From 'They decided to expand' → 'The decision to expand was made unanimously.' | Her unwavering commitment was truly inspirational. | The misunderstanding led to widespread misinformation.
+   **example_fail**: happy (bare root, no derivation) | I am happy today (no derived form used) | The day was sunny (off-topic, no word formation)
 
 2. **id**: 2
    **label_pt**: "Adjetivo → substantivo (-ness / -ity)"
@@ -236,6 +250,8 @@
    **hidden_prompt**: "user uses noun form of adjective"
    **hint_pt**: "From 'She was kind to the new hires' → 'Her kindness to the new hires set the tone for their entire onboarding.'"
    **hint_en**: "From 'She was kind to the new hires' → 'Her kindness to the new hires set the tone for their entire onboarding.'"
+   **example_pass**: From 'She was kind to the new hires' → 'Her kindness to the new hires set the tone for their entire onboarding.' | Industrialisation transformed the countryside dramatically. | The reorganisation was both costly and disruptive.
+   **example_fail**: happy (bare root, no derivation) | I am happy today (no derived form used) | The day was sunny (off-topic, no word formation)
 
 3. **id**: 3
    **label_pt**: "Estado → substantivo (-ship / -hood)"
@@ -243,6 +259,8 @@
    **hidden_prompt**: "user uses -ship or -hood form"
    **hint_pt**: "From 'They worked as partners for ten years' → 'Their partnership lasted ten years, surviving three industries and two countries.'"
    **hint_en**: "From 'They worked as partners for ten years' → 'Their partnership lasted ten years, surviving three industries and two countries.'"
+   **example_pass**: From 'They worked as partners for ten years' → 'Their partnership lasted ten years, surviving three industries and two countries.' | His thoughtfulness made the gesture unforgettable. | A meaningful collaboration produced remarkable results.
+   **example_fail**: happy (bare root, no derivation) | I am happy today (no derived form used) | The day was sunny (off-topic, no word formation)
 
 **Closing cue**: Charlotte closes with "Abstractions, fitted." once obj_3 lands.
 
@@ -278,6 +296,8 @@
    **hidden_prompt**: "user uses 'decision' and 'performance'"
    **hint_pt**: "Try: 'The decision to expand was followed by a measurable improvement in team performance.'"
    **hint_en**: "Try: 'The decision to expand was followed by a measurable improvement in team performance.'"
+   **example_pass**: Try: 'The decision to expand was followed by a measurable improvement in team performance.' | Her unwavering commitment was truly inspirational. | The misunderstanding led to widespread misinformation.
+   **example_fail**: happy (bare root, no derivation) | I am happy today (no derived form used) | The day was sunny (off-topic, no word formation)
 
 2. **id**: 2
    **label_pt**: "Nominalizar 'grew'"
@@ -285,6 +305,8 @@
    **hidden_prompt**: "user uses 'growth'"
    **hint_pt**: "Then: 'Subsequent growth outpaced that of competitors over the same period.'"
    **hint_en**: "Then: 'Subsequent growth outpaced that of competitors over the same period.'"
+   **example_pass**: Then: 'Subsequent growth outpaced that of competitors over the same period.' | Industrialisation transformed the countryside dramatically. | The reorganisation was both costly and disruptive.
+   **example_fail**: happy (bare root, no derivation) | I am happy today (no derived form used) | The day was sunny (off-topic, no word formation)
 
 3. **id**: 3
    **label_pt**: "Perguntar a Charlotte"
@@ -292,6 +314,8 @@
    **hidden_prompt**: "user asks Charlotte who the audience is"
    **hint_pt**: "Who is the audience — internal board or shareholders?"
    **hint_en**: "Who is the audience — internal board or shareholders?"
+   **example_pass**: Who is the audience — internal board or shareholders? | His thoughtfulness made the gesture unforgettable. | A meaningful collaboration produced remarkable results.
+   **example_fail**: happy (bare root, no derivation) | I am happy today (no derived form used) | The day was sunny (off-topic, no word formation)
 
 **Closing cue**: Charlotte closes with "Verbs to nouns, register lifted." once obj_3 lands.
 
@@ -370,6 +394,8 @@
    **hidden_prompt**: "user forms -able or -ible adjective"
    **hint_pt**: "From 'predict' → 'predictable'. From 'access' → 'accessible'. Use both: 'The system is both predictable and accessible.'"
    **hint_en**: "From 'predict' → 'predictable'. From 'access' → 'accessible'. Use both: 'The system is both predictable and accessible.'"
+   **example_pass**: From 'predict' → 'predictable'. From 'access' → 'accessible'. Use both: 'The system is both predictable and accessible.' | Her unwavering commitment was truly inspirational. | The misunderstanding led to widespread misinformation.
+   **example_fail**: happy (bare root, no derivation) | I am happy today (no derived form used) | The day was sunny (off-topic, no word formation)
 
 2. **id**: 2
    **label_pt**: "Verbo com -ise / -ify"
@@ -377,6 +403,8 @@
    **hidden_prompt**: "user forms -ise or -ify verb"
    **hint_pt**: "From 'standard' → 'standardise'. 'We need to standardise the process before we can scale.'"
    **hint_en**: "From 'standard' → 'standardise'. 'We need to standardise the process before we can scale.'"
+   **example_pass**: From 'standard' → 'standardise'. 'We need to standardise the process before we can scale.' | Industrialisation transformed the countryside dramatically. | The reorganisation was both costly and disruptive.
+   **example_fail**: happy (bare root, no derivation) | I am happy today (no derived form used) | The day was sunny (off-topic, no word formation)
 
 3. **id**: 3
    **label_pt**: "Adjetivo com -ous / -ful"
@@ -384,6 +412,8 @@
    **hidden_prompt**: "user forms -ous or -ful adjective"
    **hint_pt**: "From 'mystery' → 'mysterious'. 'Her sudden departure was mysterious enough to spark every rumour in the office.'"
    **hint_en**: "From 'mystery' → 'mysterious'. 'Her sudden departure was mysterious enough to spark every rumour in the office.'"
+   **example_pass**: From 'mystery' → 'mysterious'. 'Her sudden departure was mysterious enough to spark every rumour in the office.' | His thoughtfulness made the gesture unforgettable. | A meaningful collaboration produced remarkable results.
+   **example_fail**: happy (bare root, no derivation) | I am happy today (no derived form used) | The day was sunny (off-topic, no word formation)
 
 **Closing cue**: Charlotte closes with "Suffixes, mapped." once obj_3 lands.
 
@@ -419,6 +449,8 @@
    **hidden_prompt**: "user corrects 'relyable' to 'reliable'"
    **hint_pt**: "Close — it's 'reliable'. The 'y' in 'rely' becomes 'i' before '-able'."
    **hint_en**: "Close — it's 'reliable'. The 'y' in 'rely' becomes 'i' before '-able'."
+   **example_pass**: Close — it's 'reliable'. The 'y' in 'rely' becomes 'i' before '-able'. | Her unwavering commitment was truly inspirational. | The misunderstanding led to widespread misinformation.
+   **example_fail**: happy (bare root, no derivation) | I am happy today (no derived form used) | The day was sunny (off-topic, no word formation)
 
 2. **id**: 2
    **label_pt**: "Acrescentar outra derivação correlata"
@@ -426,6 +458,8 @@
    **hidden_prompt**: "user offers another -able or -ible derivation"
    **hint_pt**: "Same pattern: 'predict' becomes 'predictable', 'apply' becomes 'applicable' — same y→i rule when applicable."
    **hint_en**: "Same pattern: 'predict' becomes 'predictable', 'apply' becomes 'applicable' — same y→i rule when applicable."
+   **example_pass**: Same pattern: 'predict' becomes 'predictable', 'apply' becomes 'applicable' — same y→i rule when applicable. | Industrialisation transformed the countryside dramatically. | The reorganisation was both costly and disruptive.
+   **example_fail**: happy (bare root, no derivation) | I am happy today (no derived form used) | The day was sunny (off-topic, no word formation)
 
 3. **id**: 3
    **label_pt**: "Perguntar a Charlotte"
@@ -433,6 +467,8 @@
    **hidden_prompt**: "user asks Charlotte who she's describing"
    **hint_pt**: "Who are you describing as reliable?"
    **hint_en**: "Who are you describing as reliable?"
+   **example_pass**: Who are you describing as reliable? | His thoughtfulness made the gesture unforgettable. | A meaningful collaboration produced remarkable results.
+   **example_fail**: happy (bare root, no derivation) | I am happy today (no derived form used) | The day was sunny (off-topic, no word formation)
 
 **Closing cue**: Charlotte closes with "Spellings, finally trusted." once obj_3 lands.
 
@@ -511,6 +547,8 @@
    **hidden_prompt**: "user uses a closed compound (one word)"
    **hint_pt**: "The smartphone has replaced almost every device on my old desk — camera, calculator, dictionary, alarm clock."
    **hint_en**: "The smartphone has replaced almost every device on my old desk — camera, calculator, dictionary, alarm clock."
+   **example_pass**: The smartphone has replaced almost every device on my old desk — camera, calculator, dictionary, alarm clock. | Her unwavering commitment was truly inspirational. | The misunderstanding led to widespread misinformation.
+   **example_fail**: happy (bare root, no derivation) | I am happy today (no derived form used) | The day was sunny (off-topic, no word formation)
 
 2. **id**: 2
    **label_pt**: "Hyphenated compound (antes do substantivo)"
@@ -518,6 +556,8 @@
    **hidden_prompt**: "user uses a hyphenated compound before noun"
    **hint_pt**: "A state-of-the-art facility opened last month — automated lighting, voice-controlled rooms, the works."
    **hint_en**: "A state-of-the-art facility opened last month — automated lighting, voice-controlled rooms, the works."
+   **example_pass**: A state-of-the-art facility opened last month — automated lighting, voice-controlled rooms, the works. | Industrialisation transformed the countryside dramatically. | The reorganisation was both costly and disruptive.
+   **example_fail**: happy (bare root, no derivation) | I am happy today (no derived form used) | The day was sunny (off-topic, no word formation)
 
 3. **id**: 3
    **label_pt**: "Open compound"
@@ -525,6 +565,8 @@
    **hidden_prompt**: "user uses an open compound (two separate words)"
    **hint_pt**: "She walked into the post office, paid in exact change, and left without saying a word."
    **hint_en**: "She walked into the post office, paid in exact change, and left without saying a word."
+   **example_pass**: She walked into the post office, paid in exact change, and left without saying a word. | His thoughtfulness made the gesture unforgettable. | A meaningful collaboration produced remarkable results.
+   **example_fail**: happy (bare root, no derivation) | I am happy today (no derived form used) | The day was sunny (off-topic, no word formation)
 
 **Closing cue**: Charlotte closes with "Compounds, properly spaced." once obj_3 lands.
 
@@ -560,6 +602,8 @@
    **hidden_prompt**: "user corrects to 'state-of-the-art' when before noun"
    **hint_pt**: "Almost — 'state-of-the-art' is hyphenated when it modifies a noun (your smartphone). After a noun, it stays open: 'My smartphone is state of the art.'"
    **hint_en**: "Almost — 'state-of-the-art' is hyphenated when it modifies a noun (your smartphone). After a noun, it stays open: 'My smartphone is state of the art.'"
+   **example_pass**: Almost — 'state-of-the-art' is hyphenated when it modifies a noun (your smartphone). After a noun, it stays open: 'My smartphone is state of the art.' | Her unwavering commitment was truly inspirational. | The misunderstanding led to widespread misinformation.
+   **example_fail**: happy (bare root, no derivation) | I am happy today (no derived form used) | The day was sunny (off-topic, no word formation)
 
 2. **id**: 2
    **label_pt**: "Confirmar 'smartphone' e 'post office'"
@@ -567,6 +611,8 @@
    **hidden_prompt**: "user confirms closed vs open compounds"
    **hint_pt**: "'Smartphone' is correctly closed, and 'post office' is correctly open — those two were already right."
    **hint_en**: "'Smartphone' is correctly closed, and 'post office' is correctly open — those two were already right."
+   **example_pass**: 'Smartphone' is correctly closed, and 'post office' is correctly open — those two were already right. | Industrialisation transformed the countryside dramatically. | The reorganisation was both costly and disruptive.
+   **example_fail**: happy (bare root, no derivation) | I am happy today (no derived form used) | The day was sunny (off-topic, no word formation)
 
 3. **id**: 3
    **label_pt**: "Perguntar a Charlotte"
@@ -574,6 +620,8 @@
    **hidden_prompt**: "user asks Charlotte about a specific compound she's unsure of"
    **hint_pt**: "Anything else you're unsure about?"
    **hint_en**: "Anything else you're unsure about?"
+   **example_pass**: Anything else you're unsure about? | His thoughtfulness made the gesture unforgettable. | A meaningful collaboration produced remarkable results.
+   **example_fail**: happy (bare root, no derivation) | I am happy today (no derived form used) | The day was sunny (off-topic, no word formation)
 
 **Closing cue**: Charlotte closes with "Spacing audit, complete." once obj_3 lands.
 
@@ -652,6 +700,8 @@
    **hidden_prompt**: "user uses 'message' as verb"
    **hint_pt**: "I'll message you the details once the venue is confirmed."
    **hint_en**: "I'll message you the details once the venue is confirmed."
+   **example_pass**: I'll message you the details once the venue is confirmed. | Her unwavering commitment was truly inspirational. | The misunderstanding led to widespread misinformation.
+   **example_fail**: happy (bare root, no derivation) | I am happy today (no derived form used) | The day was sunny (off-topic, no word formation)
 
 2. **id**: 2
    **label_pt**: "'Gift' como verbo"
@@ -659,6 +709,8 @@
    **hidden_prompt**: "user uses 'gift' as verb"
    **hint_pt**: "She gifted me a first edition for my birthday — a single book that meant more than any wrapped pile."
    **hint_en**: "She gifted me a first edition for my birthday — a single book that meant more than any wrapped pile."
+   **example_pass**: She gifted me a first edition for my birthday — a single book that meant more than any wrapped pile. | Industrialisation transformed the countryside dramatically. | The reorganisation was both costly and disruptive.
+   **example_fail**: happy (bare root, no derivation) | I am happy today (no derived form used) | The day was sunny (off-topic, no word formation)
 
 3. **id**: 3
    **label_pt**: "'Screenshot' como verbo"
@@ -666,6 +718,8 @@
    **hidden_prompt**: "user uses 'screenshot' as verb"
    **hint_pt**: "I screenshotted the conversation just in case anyone needed proof of the timeline."
    **hint_en**: "I screenshotted the conversation just in case anyone needed proof of the timeline."
+   **example_pass**: I screenshotted the conversation just in case anyone needed proof of the timeline. | His thoughtfulness made the gesture unforgettable. | A meaningful collaboration produced remarkable results.
+   **example_fail**: happy (bare root, no derivation) | I am happy today (no derived form used) | The day was sunny (off-topic, no word formation)
 
 **Closing cue**: Charlotte closes with "Conversions, fully fluent." once obj_3 lands.
 
@@ -701,6 +755,8 @@
    **hidden_prompt**: "user suggests 'text' as verb"
    **hint_pt**: "She probably laughed at 'send a text message' — natives just say 'I'll text you'. The noun has become its own verb."
    **hint_en**: "She probably laughed at 'send a text message' — natives just say 'I'll text you'. The noun has become its own verb."
+   **example_pass**: She probably laughed at 'send a text message' — natives just say 'I'll text you'. The noun has become its own verb. | Her unwavering commitment was truly inspirational. | The misunderstanding led to widespread misinformation.
+   **example_fail**: happy (bare root, no derivation) | I am happy today (no derived form used) | The day was sunny (off-topic, no word formation)
 
 2. **id**: 2
    **label_pt**: "Acrescentar outras conversões modernas"
@@ -708,6 +764,8 @@
    **hidden_prompt**: "user adds other conversion verbs"
    **hint_pt**: "Same goes for 'send her an email' → 'email her'. And 'do a Google search' → 'google it'. Conversion makes English faster."
    **hint_en**: "Same goes for 'send her an email' → 'email her'. And 'do a Google search' → 'google it'. Conversion makes English faster."
+   **example_pass**: Same goes for 'send her an email' → 'email her'. And 'do a Google search' → 'google it'. Conversion makes English faster. | Industrialisation transformed the countryside dramatically. | The reorganisation was both costly and disruptive.
+   **example_fail**: happy (bare root, no derivation) | I am happy today (no derived form used) | The day was sunny (off-topic, no word formation)
 
 3. **id**: 3
    **label_pt**: "Perguntar a Charlotte"
@@ -715,6 +773,8 @@
    **hidden_prompt**: "user asks Charlotte how old her daughter is"
    **hint_pt**: "How old is your daughter?"
    **hint_en**: "How old is your daughter?"
+   **example_pass**: How old is your daughter? | His thoughtfulness made the gesture unforgettable. | A meaningful collaboration produced remarkable results.
+   **example_fail**: happy (bare root, no derivation) | I am happy today (no derived form used) | The day was sunny (off-topic, no word formation)
 
 **Closing cue**: Charlotte closes with "Modern English speeds up — conversions everywhere." once obj_3 lands.
 

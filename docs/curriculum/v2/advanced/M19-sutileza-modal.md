@@ -88,6 +88,8 @@
    **hidden_prompt**: "user uses 'X must be / must have + past participle'"
    **hint_pt**: "Three voicemails and no reply since Tuesday — he must be either ill or off the grid. There's no third explanation that fits."
    **hint_en**: "Three voicemails and no reply since Tuesday — he must be either ill or off the grid. There's no third explanation that fits."
+   **example_pass**: Three voicemails and no reply since Tuesday — he must be either ill or off the grid. There's no third explanation that fits. | He must have forgotten about the meeting. | She might have been delayed by traffic.
+   **example_fail**: must (bare modal, no nuance) | He did it (no modal at all) | I'm tired (off-topic, no speculative modal)
 
 2. **id**: 2
    **label_pt**: "Predição confiante com 'will'"
@@ -95,6 +97,8 @@
    **hidden_prompt**: "user uses 'will + base' for high-confidence present prediction"
    **hint_pt**: "That'll be the courier — he comes at almost exactly this time every Wednesday."
    **hint_en**: "That'll be the courier — he comes at almost exactly this time every Wednesday."
+   **example_pass**: That'll be the courier — he comes at almost exactly this time every Wednesday. | They could have been trying to reach us. | It can't have been easy for them.
+   **example_fail**: must (bare modal, no nuance) | He did it (no modal at all) | I'm tired (off-topic, no speculative modal)
 
 3. **id**: 3
    **label_pt**: "Expectativa com 'should'"
@@ -102,6 +106,8 @@
    **hidden_prompt**: "user uses 'should + base' for expected outcome"
    **hint_pt**: "Her train should be pulling in any minute now, assuming nothing's gone wrong on the line."
    **hint_en**: "Her train should be pulling in any minute now, assuming nothing's gone wrong on the line."
+   **example_pass**: Her train should be pulling in any minute now, assuming nothing's gone wrong on the line. | He may well have misunderstood the instructions. | She might possibly have changed her mind.
+   **example_fail**: must (bare modal, no nuance) | He did it (no modal at all) | I'm tired (off-topic, no speculative modal)
 
 **Closing cue**: Charlotte closes with "Three modals, three certainties." once obj_3 lands.
 
@@ -137,6 +143,8 @@
    **hidden_prompt**: "user uses 'might / could / must' to theorise"
    **hint_pt**: "She might have a deadline. Or she could be looking after someone who needs the light on."
    **hint_en**: "She might have a deadline. Or she could be looking after someone who needs the light on."
+   **example_pass**: She might have a deadline. Or she could be looking after someone who needs the light on. | He must have forgotten about the meeting. | She might have been delayed by traffic.
+   **example_fail**: must (bare modal, no nuance) | He did it (no modal at all) | I'm tired (off-topic, no speculative modal)
 
 2. **id**: 2
    **label_pt**: "Calibração com 'must' ou 'should'"
@@ -144,6 +152,8 @@
    **hidden_prompt**: "user uses 'must' for strongest inference or 'should' for expectation"
    **hint_pt**: "If it's been three nights running, something must have changed in her routine — and whatever it is, she should be exhausted by now."
    **hint_en**: "If it's been three nights running, something must have changed in her routine — and whatever it is, she should be exhausted by now."
+   **example_pass**: If it's been three nights running, something must have changed in her routine — and whatever it is, she should be exhausted by now. | They could have been trying to reach us. | It can't have been easy for them.
+   **example_fail**: must (bare modal, no nuance) | He did it (no modal at all) | I'm tired (off-topic, no speculative modal)
 
 3. **id**: 3
    **label_pt**: "Perguntar a Charlotte"
@@ -151,6 +161,8 @@
    **hidden_prompt**: "user asks Charlotte if she knows her neighbour"
    **hint_pt**: "Do you know her well enough to knock?"
    **hint_en**: "Do you know her well enough to knock?"
+   **example_pass**: Do you know her well enough to knock? | He may well have misunderstood the instructions. | She might possibly have changed her mind.
+   **example_fail**: must (bare modal, no nuance) | He did it (no modal at all) | I'm tired (off-topic, no speculative modal)
 
 **Closing cue**: Charlotte closes with "Inferences, properly weighted." once obj_3 lands.
 
@@ -228,6 +240,8 @@
    **hidden_prompt**: "user uses 'X might well + base'"
    **hint_pt**: "Given how the conversation has been going, the negotiation might well end this week."
    **hint_en**: "Given how the conversation has been going, the negotiation might well end this week."
+   **example_pass**: Given how the conversation has been going, the negotiation might well end this week. | He must have forgotten about the meeting. | She might have been delayed by traffic.
+   **example_fail**: must (bare modal, no nuance) | He did it (no modal at all) | I'm tired (off-topic, no speculative modal)
 
 2. **id**: 2
    **label_pt**: "'Could well' (cenário plausível)"
@@ -235,6 +249,8 @@
    **hidden_prompt**: "user uses 'X could well + base'"
    **hint_pt**: "If oil prices stay high for another quarter, inflation could well force another rate hike before year-end."
    **hint_en**: "If oil prices stay high for another quarter, inflation could well force another rate hike before year-end."
+   **example_pass**: If oil prices stay high for another quarter, inflation could well force another rate hike before year-end. | They could have been trying to reach us. | It can't have been easy for them.
+   **example_fail**: must (bare modal, no nuance) | He did it (no modal at all) | I'm tired (off-topic, no speculative modal)
 
 3. **id**: 3
    **label_pt**: "'May well' (formal hedge)"
@@ -242,6 +258,8 @@
    **hidden_prompt**: "user uses 'X may well + base' formally"
    **hint_pt**: "The committee may well reject the proposal — the political winds have shifted since the original submission."
    **hint_en**: "The committee may well reject the proposal — the political winds have shifted since the original submission."
+   **example_pass**: The committee may well reject the proposal — the political winds have shifted since the original submission. | He may well have misunderstood the instructions. | She might possibly have changed her mind.
+   **example_fail**: must (bare modal, no nuance) | He did it (no modal at all) | I'm tired (off-topic, no speculative modal)
 
 **Closing cue**: Charlotte closes with "Hedged probabilities, calibrated." once obj_3 lands.
 
@@ -277,6 +295,8 @@
    **hidden_prompt**: "user uses 'might well / could well / may well'"
    **hint_pt**: "It could well be a coordinated signal that input costs have finally moved beyond what any of them can absorb."
    **hint_en**: "It could well be a coordinated signal that input costs have finally moved beyond what any of them can absorb."
+   **example_pass**: It could well be a coordinated signal that input costs have finally moved beyond what any of them can absorb. | He must have forgotten about the meeting. | She might have been delayed by traffic.
+   **example_fail**: must (bare modal, no nuance) | He did it (no modal at all) | I'm tired (off-topic, no speculative modal)
 
 2. **id**: 2
    **label_pt**: "Aprofundar com outro hedged probable"
@@ -284,6 +304,8 @@
    **hidden_prompt**: "user uses another well-modal"
    **hint_pt**: "And if that's the case, we may well find ourselves under pressure to follow within six weeks — or risk looking like we don't share their pricing power."
    **hint_en**: "And if that's the case, we may well find ourselves under pressure to follow within six weeks — or risk looking like we don't share their pricing power."
+   **example_pass**: And if that's the case, we may well find ourselves under pressure to follow within six weeks — or risk looking like we don't share their pricing power. | They could have been trying to reach us. | It can't have been easy for them.
+   **example_fail**: must (bare modal, no nuance) | He did it (no modal at all) | I'm tired (off-topic, no speculative modal)
 
 3. **id**: 3
    **label_pt**: "Perguntar a Charlotte"
@@ -291,6 +313,8 @@
    **hidden_prompt**: "user asks Charlotte if her team has discussed it"
    **hint_pt**: "Has your team modelled the move yet?"
    **hint_en**: "Has your team modelled the move yet?"
+   **example_pass**: Has your team modelled the move yet? | He may well have misunderstood the instructions. | She might possibly have changed her mind.
+   **example_fail**: must (bare modal, no nuance) | He did it (no modal at all) | I'm tired (off-topic, no speculative modal)
 
 **Closing cue**: Charlotte closes with "Probabilities, evenly hedged." once obj_3 lands.
 
@@ -369,6 +393,8 @@
    **hidden_prompt**: "user uses 'X ought to + base'"
    **hint_pt**: "If the error was ours, we ought to take responsibility publicly — even if the legal team prefers we say less."
    **hint_en**: "If the error was ours, we ought to take responsibility publicly — even if the legal team prefers we say less."
+   **example_pass**: If the error was ours, we ought to take responsibility publicly — even if the legal team prefers we say less. | He must have forgotten about the meeting. | She might have been delayed by traffic.
+   **example_fail**: must (bare modal, no nuance) | He did it (no modal at all) | I'm tired (off-topic, no speculative modal)
 
 2. **id**: 2
    **label_pt**: "Contratual com 'shall'"
@@ -376,6 +402,8 @@
    **hidden_prompt**: "user uses 'X shall + base' in contractual register"
    **hint_pt**: "The supplier shall deliver no later than the fifteenth of each month; any delay shall be reported in writing within twenty-four hours."
    **hint_en**: "The supplier shall deliver no later than the fifteenth of each month; any delay shall be reported in writing within twenty-four hours."
+   **example_pass**: The supplier shall deliver no later than the fifteenth of each month; any delay shall be reported in writing within twenty-four hours. | They could have been trying to reach us. | It can't have been easy for them.
+   **example_fail**: must (bare modal, no nuance) | He did it (no modal at all) | I'm tired (off-topic, no speculative modal)
 
 3. **id**: 3
    **label_pt**: "Habitual passado com 'would'"
@@ -383,6 +411,8 @@
    **hidden_prompt**: "user uses 'X would + base' for past habit"
    **hint_pt**: "When my father retired, he would walk the same five-kilometre loop every morning at six — rain, snow, anything but ice."
    **hint_en**: "When my father retired, he would walk the same five-kilometre loop every morning at six — rain, snow, anything but ice."
+   **example_pass**: When my father retired, he would walk the same five-kilometre loop every morning at six — rain, snow, anything but ice. | He may well have misunderstood the instructions. | She might possibly have changed her mind.
+   **example_fail**: must (bare modal, no nuance) | He did it (no modal at all) | I'm tired (off-topic, no speculative modal)
 
 **Closing cue**: Charlotte closes with "Formal modals, three registers." once obj_3 lands.
 
@@ -418,6 +448,8 @@
    **hidden_prompt**: "user uses 'X shall + base'"
    **hint_pt**: "The contractor shall maintain professional liability insurance throughout the duration of this engagement, with coverage no less than five hundred thousand euros."
    **hint_en**: "The contractor shall maintain professional liability insurance throughout the duration of this engagement, with coverage no less than five hundred thousand euros."
+   **example_pass**: The contractor shall maintain professional liability insurance throughout the duration of this engagement, with coverage no less than five hundred thousand euros. | He must have forgotten about the meeting. | She might have been delayed by traffic.
+   **example_fail**: must (bare modal, no nuance) | He did it (no modal at all) | I'm tired (off-topic, no speculative modal)
 
 2. **id**: 2
    **label_pt**: "Obrigação moral com 'ought to'"
@@ -425,6 +457,8 @@
    **hidden_prompt**: "user uses 'X ought to + base'"
    **hint_pt**: "Beyond the contract, both parties ought to communicate openly about delays — even when no specific clause requires it."
    **hint_en**: "Beyond the contract, both parties ought to communicate openly about delays — even when no specific clause requires it."
+   **example_pass**: Beyond the contract, both parties ought to communicate openly about delays — even when no specific clause requires it. | They could have been trying to reach us. | It can't have been easy for them.
+   **example_fail**: must (bare modal, no nuance) | He did it (no modal at all) | I'm tired (off-topic, no speculative modal)
 
 3. **id**: 3
    **label_pt**: "Lembrança com 'would'"
@@ -432,6 +466,8 @@
    **hidden_prompt**: "user uses 'X would + base' for past habit"
    **hint_pt**: "My old mentor would always start contracts by asking what the other party most feared — that question shaped every clause after."
    **hint_en**: "My old mentor would always start contracts by asking what the other party most feared — that question shaped every clause after."
+   **example_pass**: My old mentor would always start contracts by asking what the other party most feared — that question shaped every clause after. | He may well have misunderstood the instructions. | She might possibly have changed her mind.
+   **example_fail**: must (bare modal, no nuance) | He did it (no modal at all) | I'm tired (off-topic, no speculative modal)
 
 **Closing cue**: Charlotte closes with "Shall, ought, would — three eras." once obj_3 lands.
 
@@ -509,6 +545,8 @@
    **hidden_prompt**: "user uses 'X is/was bound to + base'"
    **hint_pt**: "With the surplus they've accumulated, the company is bound to announce a dividend by year-end."
    **hint_en**: "With the surplus they've accumulated, the company is bound to announce a dividend by year-end."
+   **example_pass**: With the surplus they've accumulated, the company is bound to announce a dividend by year-end. | He must have forgotten about the meeting. | She might have been delayed by traffic.
+   **example_fail**: must (bare modal, no nuance) | He did it (no modal at all) | I'm tired (off-topic, no speculative modal)
 
 2. **id**: 2
    **label_pt**: "'Be supposed to' (expectativa quebrada)"
@@ -516,6 +554,8 @@
    **hidden_prompt**: "user uses 'X was/were supposed to + base'"
    **hint_pt**: "We were supposed to finalise the design last Friday, but the client added two new requirements at the eleventh hour."
    **hint_en**: "We were supposed to finalise the design last Friday, but the client added two new requirements at the eleventh hour."
+   **example_pass**: We were supposed to finalise the design last Friday, but the client added two new requirements at the eleventh hour. | They could have been trying to reach us. | It can't have been easy for them.
+   **example_fail**: must (bare modal, no nuance) | He did it (no modal at all) | I'm tired (off-topic, no speculative modal)
 
 3. **id**: 3
    **label_pt**: "'Be likely to / unlikely to' (probabilidade analítica)"
@@ -523,6 +563,8 @@
    **hidden_prompt**: "user uses 'X is/are (un)likely to + base'"
    **hint_pt**: "Given the current market sentiment, the regulator is unlikely to approve the merger before the spring at the earliest."
    **hint_en**: "Given the current market sentiment, the regulator is unlikely to approve the merger before the spring at the earliest."
+   **example_pass**: Given the current market sentiment, the regulator is unlikely to approve the merger before the spring at the earliest. | He may well have misunderstood the instructions. | She might possibly have changed her mind.
+   **example_fail**: must (bare modal, no nuance) | He did it (no modal at all) | I'm tired (off-topic, no speculative modal)
 
 **Closing cue**: Charlotte closes with "Quasi-modals, three expectations." once obj_3 lands.
 
@@ -558,6 +600,8 @@
    **hidden_prompt**: "user uses 'is likely to / is unlikely to'"
    **hint_pt**: "If three weeks have already slipped, March is unlikely to hold — June is starting to look like the realistic baseline."
    **hint_en**: "If three weeks have already slipped, March is unlikely to hold — June is starting to look like the realistic baseline."
+   **example_pass**: If three weeks have already slipped, March is unlikely to hold — June is starting to look like the realistic baseline. | He must have forgotten about the meeting. | She might have been delayed by traffic.
+   **example_fail**: must (bare modal, no nuance) | He did it (no modal at all) | I'm tired (off-topic, no speculative modal)
 
 2. **id**: 2
    **label_pt**: "Consequência com 'bound to'"
@@ -565,6 +609,8 @@
    **hidden_prompt**: "user uses 'is/are bound to'"
    **hint_pt**: "And once a date slips publicly, the next one is bound to be questioned — credibility is the hidden cost of these delays."
    **hint_en**: "And once a date slips publicly, the next one is bound to be questioned — credibility is the hidden cost of these delays."
+   **example_pass**: And once a date slips publicly, the next one is bound to be questioned — credibility is the hidden cost of these delays. | They could have been trying to reach us. | It can't have been easy for them.
+   **example_fail**: must (bare modal, no nuance) | He did it (no modal at all) | I'm tired (off-topic, no speculative modal)
 
 3. **id**: 3
    **label_pt**: "Perguntar a Charlotte"
@@ -572,6 +618,8 @@
    **hidden_prompt**: "user asks Charlotte what was supposed to be ready by March"
    **hint_pt**: "What specifically was supposed to be ready?"
    **hint_en**: "What specifically was supposed to be ready?"
+   **example_pass**: What specifically was supposed to be ready? | He may well have misunderstood the instructions. | She might possibly have changed her mind.
+   **example_fail**: must (bare modal, no nuance) | He did it (no modal at all) | I'm tired (off-topic, no speculative modal)
 
 **Closing cue**: Charlotte closes with "Timing, modally weighed." once obj_3 lands.
 
@@ -649,6 +697,8 @@
    **hidden_prompt**: "user uses 'X might have to + base'"
    **hint_pt**: "If the conference loses a major sponsor, we might have to scale back the venue and reduce the speaker honorariums."
    **hint_en**: "If the conference loses a major sponsor, we might have to scale back the venue and reduce the speaker honorariums."
+   **example_pass**: If the conference loses a major sponsor, we might have to scale back the venue and reduce the speaker honorariums. | He must have forgotten about the meeting. | She might have been delayed by traffic.
+   **example_fail**: must (bare modal, no nuance) | He did it (no modal at all) | I'm tired (off-topic, no speculative modal)
 
 2. **id**: 2
    **label_pt**: "'Would have to'"
@@ -656,6 +706,8 @@
    **hidden_prompt**: "user uses 'X would have to + base'"
    **hint_pt**: "If we wanted to enter the German market by Q1, we would have to register the local entity by the end of this month."
    **hint_en**: "If we wanted to enter the German market by Q1, we would have to register the local entity by the end of this month."
+   **example_pass**: If we wanted to enter the German market by Q1, we would have to register the local entity by the end of this month. | They could have been trying to reach us. | It can't have been easy for them.
+   **example_fail**: must (bare modal, no nuance) | He did it (no modal at all) | I'm tired (off-topic, no speculative modal)
 
 3. **id**: 3
    **label_pt**: "'Are going to have to'"
@@ -663,6 +715,8 @@
    **hidden_prompt**: "user uses 'X is/are going to have to + base'"
    **hint_pt**: "Given the new accessibility standards, every team is going to have to retrain their designers within six months — there's no version where this doesn't apply to us."
    **hint_en**: "Given the new accessibility standards, every team is going to have to retrain their designers within six months — there's no version where this doesn't apply to us."
+   **example_pass**: Given the new accessibility standards, every team is going to have to retrain their designers within six months — there's no version where this doesn't apply to us. | He may well have misunderstood the instructions. | She might possibly have changed her mind.
+   **example_fail**: must (bare modal, no nuance) | He did it (no modal at all) | I'm tired (off-topic, no speculative modal)
 
 **Closing cue**: Charlotte closes with "Layered modals, three certainties." once obj_3 lands.
 
@@ -698,6 +752,8 @@
    **hidden_prompt**: "user uses 'might have to + base'"
    **hint_pt**: "If we close ten to twenty percent below target, we might have to delay the planned hiring by a quarter — uncomfortable but survivable."
    **hint_en**: "If we close ten to twenty percent below target, we might have to delay the planned hiring by a quarter — uncomfortable but survivable."
+   **example_pass**: If we close ten to twenty percent below target, we might have to delay the planned hiring by a quarter — uncomfortable but survivable. | He must have forgotten about the meeting. | She might have been delayed by traffic.
+   **example_fail**: must (bare modal, no nuance) | He did it (no modal at all) | I'm tired (off-topic, no speculative modal)
 
 2. **id**: 2
    **label_pt**: "Cenário pior com 'would have to'"
@@ -705,6 +761,8 @@
    **hidden_prompt**: "user uses 'would have to + base'"
    **hint_pt**: "If we close more than thirty percent below, we would have to revisit the entire two-year plan — at that point, the strategy isn't the same business."
    **hint_en**: "If we close more than thirty percent below, we would have to revisit the entire two-year plan — at that point, the strategy isn't the same business."
+   **example_pass**: If we close more than thirty percent below, we would have to revisit the entire two-year plan — at that point, the strategy isn't the same business. | They could have been trying to reach us. | It can't have been easy for them.
+   **example_fail**: must (bare modal, no nuance) | He did it (no modal at all) | I'm tired (off-topic, no speculative modal)
 
 3. **id**: 3
    **label_pt**: "Perguntar a Charlotte"
@@ -712,6 +770,8 @@
    **hidden_prompt**: "user asks Charlotte where the line of acceptable is"
    **hint_pt**: "Where's your line of acceptable?"
    **hint_en**: "Where's your line of acceptable?"
+   **example_pass**: Where's your line of acceptable? | He may well have misunderstood the instructions. | She might possibly have changed her mind.
+   **example_fail**: must (bare modal, no nuance) | He did it (no modal at all) | I'm tired (off-topic, no speculative modal)
 
 **Closing cue**: Charlotte closes with "Contingencies, modally layered. C2 modal subtlety, complete." once obj_3 lands.
 

@@ -84,6 +84,8 @@
    **hidden_prompt**: "user uses 'It was/is + person + who + clause'"
    **hint_pt**: "It was my mother who taught me to cook."
    **hint_en**: "It was my mother who taught me to cook."
+   **example_pass**: It was my mother who taught me to cook. | It was her dedication that impressed me most. | What I really value is honest feedback.
+   **example_fail**: money (bare word, no cleft structure) | I value family most (simple sentence, no cleft) | I like cooking (off-topic, no 'it is' or 'what')
 
 2. **id**: 2
    **label_pt**: "It-cleft com ênfase em tempo"
@@ -91,6 +93,8 @@
    **hidden_prompt**: "user uses 'It was + time + that + clause'"
    **hint_pt**: "It was in college that I discovered my passion for writing."
    **hint_en**: "It was in college that I discovered my passion for writing."
+   **example_pass**: It was in college that I discovered my passion for writing. | It was in 2010 that we first met. | What surprised me was his calm reaction.
+   **example_fail**: money (bare word, no cleft structure) | I value family most (simple sentence, no cleft) | I like cooking (off-topic, no 'it is' or 'what')
 
 3. **id**: 3
    **label_pt**: "It-cleft com ênfase em lugar"
@@ -98,6 +102,8 @@
    **hidden_prompt**: "user uses 'It was at/in + place + that + clause'"
    **hint_pt**: "It was at a coffee shop in Lisbon that we first spoke."
    **hint_en**: "It was at a coffee shop in Lisbon that we first spoke."
+   **example_pass**: It was at a coffee shop in Lisbon that we first spoke. | It is the silence that bothers me, not the noise. | All I want is a quiet weekend.
+   **example_fail**: money (bare word, no cleft structure) | I value family most (simple sentence, no cleft) | I like cooking (off-topic, no 'it is' or 'what')
 
 **Closing cue**: Charlotte closes with "Emphasis surgically placed." once obj_3 lands.
 
@@ -133,6 +139,8 @@
    **hidden_prompt**: "user uses 'It was + person + who + clause'"
    **hint_pt**: "It was a small founding team of three who built it."
    **hint_en**: "It was a small founding team of three who built it."
+   **example_pass**: It was a small founding team of three who built it. | It was her dedication that impressed me most. | What I really value is honest feedback.
+   **example_fail**: money (bare word, no cleft structure) | I value family most (simple sentence, no cleft) | I like cooking (off-topic, no 'it is' or 'what')
 
 2. **id**: 2
    **label_pt**: "Aprofundar com it-cleft de tempo"
@@ -140,6 +148,8 @@
    **hidden_prompt**: "user uses 'It was + time + that + clause'"
    **hint_pt**: "It was over a weekend in 2019 that we finished the first version."
    **hint_en**: "It was over a weekend in 2019 that we finished the first version."
+   **example_pass**: It was over a weekend in 2019 that we finished the first version. | It was in 2010 that we first met. | What surprised me was his calm reaction.
+   **example_fail**: money (bare word, no cleft structure) | I value family most (simple sentence, no cleft) | I like cooking (off-topic, no 'it is' or 'what')
 
 3. **id**: 3
    **label_pt**: "Perguntar a Charlotte"
@@ -147,6 +157,8 @@
    **hidden_prompt**: "user asks Charlotte a probing question back"
    **hint_pt**: "What do you want to know next?"
    **hint_en**: "What do you want to know next?"
+   **example_pass**: What do you want to know next? | It is the silence that bothers me, not the noise. | All I want is a quiet weekend.
+   **example_fail**: money (bare word, no cleft structure) | I value family most (simple sentence, no cleft) | I like cooking (off-topic, no 'it is' or 'what')
 
 **Closing cue**: Charlotte closes with "Origin story documented." once obj_3 lands.
 
@@ -225,6 +237,8 @@
    **hidden_prompt**: "user uses 'What I need is + noun'"
    **hint_pt**: "What I need is a clear deadline and less micromanagement."
    **hint_en**: "What I need is a clear deadline and less micromanagement."
+   **example_pass**: What I need is a clear deadline and less micromanagement. | It was her dedication that impressed me most. | What I really value is honest feedback.
+   **example_fail**: money (bare word, no cleft structure) | I value family most (simple sentence, no cleft) | I like cooking (off-topic, no 'it is' or 'what')
 
 2. **id**: 2
    **label_pt**: "Wh-cleft com 'What surprised me was'"
@@ -232,6 +246,8 @@
    **hidden_prompt**: "user uses 'What surprised me was + element'"
    **hint_pt**: "What surprised me was how calm she stayed under pressure."
    **hint_en**: "What surprised me was how calm she stayed under pressure."
+   **example_pass**: What surprised me was how calm she stayed under pressure. | It was in 2010 that we first met. | What surprised me was his calm reaction.
+   **example_fail**: money (bare word, no cleft structure) | I value family most (simple sentence, no cleft) | I like cooking (off-topic, no 'it is' or 'what')
 
 3. **id**: 3
    **label_pt**: "Wh-cleft com 'What I did was'"
@@ -239,6 +255,8 @@
    **hidden_prompt**: "user uses 'What I did was + base form'"
    **hint_pt**: "What I did was step away from the screen for an hour."
    **hint_en**: "What I did was step away from the screen for an hour."
+   **example_pass**: What I did was step away from the screen for an hour. | It is the silence that bothers me, not the noise. | All I want is a quiet weekend.
+   **example_fail**: money (bare word, no cleft structure) | I value family most (simple sentence, no cleft) | I like cooking (off-topic, no 'it is' or 'what')
 
 **Closing cue**: Charlotte closes with "Spotlight calibrated." once obj_3 lands.
 
@@ -274,6 +292,8 @@
    **hidden_prompt**: "user uses 'What I need is + noun/clause'"
    **hint_pt**: "What I need is two hours of uninterrupted focus."
    **hint_en**: "What I need is two hours of uninterrupted focus."
+   **example_pass**: What I need is two hours of uninterrupted focus. | It was her dedication that impressed me most. | What I really value is honest feedback.
+   **example_fail**: money (bare word, no cleft structure) | I value family most (simple sentence, no cleft) | I like cooking (off-topic, no 'it is' or 'what')
 
 2. **id**: 2
    **label_pt**: "Surpresa ou observação com wh-cleft"
@@ -281,6 +301,8 @@
    **hidden_prompt**: "user uses 'What surprised/struck me was + element'"
    **hint_pt**: "What surprised me was how much I missed silence."
    **hint_en**: "What surprised me was how much I missed silence."
+   **example_pass**: What surprised me was how much I missed silence. | It was in 2010 that we first met. | What surprised me was his calm reaction.
+   **example_fail**: money (bare word, no cleft structure) | I value family most (simple sentence, no cleft) | I like cooking (off-topic, no 'it is' or 'what')
 
 3. **id**: 3
    **label_pt**: "Perguntar a Charlotte"
@@ -288,6 +310,8 @@
    **hidden_prompt**: "user asks Charlotte what she needs"
    **hint_pt**: "What's missing from yours?"
    **hint_en**: "What's missing from yours?"
+   **example_pass**: What's missing from yours? | It is the silence that bothers me, not the noise. | All I want is a quiet weekend.
+   **example_fail**: money (bare word, no cleft structure) | I value family most (simple sentence, no cleft) | I like cooking (off-topic, no 'it is' or 'what')
 
 **Closing cue**: Charlotte closes with "Needs named, plainly." once obj_3 lands.
 
@@ -367,6 +391,8 @@
    **hidden_prompt**: "user uses 'All I want is + noun/clause'"
    **hint_pt**: "All I want is a Friday without meetings."
    **hint_en**: "All I want is a Friday without meetings."
+   **example_pass**: All I want is a Friday without meetings. | It was her dedication that impressed me most. | What I really value is honest feedback.
+   **example_fail**: money (bare word, no cleft structure) | I value family most (simple sentence, no cleft) | I like cooking (off-topic, no 'it is' or 'what')
 
 2. **id**: 2
    **label_pt**: "All-cleft de ação própria"
@@ -374,6 +400,8 @@
    **hidden_prompt**: "user uses 'All I did was + base form'"
    **hint_pt**: "All I did was ask one honest question."
    **hint_en**: "All I did was ask one honest question."
+   **example_pass**: All I did was ask one honest question. | It was in 2010 that we first met. | What surprised me was his calm reaction.
+   **example_fail**: money (bare word, no cleft structure) | I value family most (simple sentence, no cleft) | I like cooking (off-topic, no 'it is' or 'what')
 
 3. **id**: 3
    **label_pt**: "All-cleft de outra pessoa"
@@ -381,6 +409,8 @@
    **hidden_prompt**: "user uses 'All he/she/they did was + base form'"
    **hint_pt**: "All my boss did was nod and walk away."
    **hint_en**: "All my boss did was nod and walk away."
+   **example_pass**: All my boss did was nod and walk away. | It is the silence that bothers me, not the noise. | All I want is a quiet weekend.
+   **example_fail**: money (bare word, no cleft structure) | I value family most (simple sentence, no cleft) | I like cooking (off-topic, no 'it is' or 'what')
 
 **Closing cue**: Charlotte closes with "Minimised, emphasised." once obj_3 lands.
 
@@ -416,6 +446,8 @@
    **hidden_prompt**: "user uses 'All I want is + noun/clause'"
    **hint_pt**: "All I want is to feel less rushed in the mornings."
    **hint_en**: "All I want is to feel less rushed in the mornings."
+   **example_pass**: All I want is to feel less rushed in the mornings. | It was her dedication that impressed me most. | What I really value is honest feedback.
+   **example_fail**: money (bare word, no cleft structure) | I value family most (simple sentence, no cleft) | I like cooking (off-topic, no 'it is' or 'what')
 
 2. **id**: 2
    **label_pt**: "Ação minimizada"
@@ -423,6 +455,8 @@
    **hidden_prompt**: "user uses 'All I did was + base'"
    **hint_pt**: "All I did was start setting my alarm twenty minutes earlier."
    **hint_en**: "All I did was start setting my alarm twenty minutes earlier."
+   **example_pass**: All I did was start setting my alarm twenty minutes earlier. | It was in 2010 that we first met. | What surprised me was his calm reaction.
+   **example_fail**: money (bare word, no cleft structure) | I value family most (simple sentence, no cleft) | I like cooking (off-topic, no 'it is' or 'what')
 
 3. **id**: 3
    **label_pt**: "Perguntar a Charlotte"
@@ -430,6 +464,8 @@
    **hidden_prompt**: "user asks Charlotte for one specific change she made"
    **hint_pt**: "What did you actually change?"
    **hint_en**: "What did you actually change?"
+   **example_pass**: What did you actually change? | It is the silence that bothers me, not the noise. | All I want is a quiet weekend.
+   **example_fail**: money (bare word, no cleft structure) | I value family most (simple sentence, no cleft) | I like cooking (off-topic, no 'it is' or 'what')
 
 **Closing cue**: Charlotte closes with "Essentials only." once obj_3 lands.
 
@@ -508,6 +544,8 @@
    **hidden_prompt**: "user uses 'It wasn't until + clause + that + main'"
    **hint_pt**: "It wasn't until I changed jobs that I understood how unhappy I had been."
    **hint_en**: "It wasn't until I changed jobs that I understood how unhappy I had been."
+   **example_pass**: It wasn't until I changed jobs that I understood how unhappy I had been. | It was her dedication that impressed me most. | What I really value is honest feedback.
+   **example_fail**: money (bare word, no cleft structure) | I value family most (simple sentence, no cleft) | I like cooking (off-topic, no 'it is' or 'what')
 
 2. **id**: 2
    **label_pt**: "Evento tardio (não realização)"
@@ -515,6 +553,8 @@
    **hidden_prompt**: "user uses 'It wasn't until + time + that + event'"
    **hint_pt**: "It wasn't until 30 that I learned to cook properly."
    **hint_en**: "It wasn't until 30 that I learned to cook properly."
+   **example_pass**: It wasn't until 30 that I learned to cook properly. | It was in 2010 that we first met. | What surprised me was his calm reaction.
+   **example_fail**: money (bare word, no cleft structure) | I value family most (simple sentence, no cleft) | I like cooking (off-topic, no 'it is' or 'what')
 
 3. **id**: 3
    **label_pt**: "Tardia + sobre outra pessoa"
@@ -522,6 +562,8 @@
    **hidden_prompt**: "user uses 'It wasn't until + clause + that + he/she + clause'"
    **hint_pt**: "It wasn't until last week that my brother told me the whole story."
    **hint_en**: "It wasn't until last week that my brother told me the whole story."
+   **example_pass**: It wasn't until last week that my brother told me the whole story. | It is the silence that bothers me, not the noise. | All I want is a quiet weekend.
+   **example_fail**: money (bare word, no cleft structure) | I value family most (simple sentence, no cleft) | I like cooking (off-topic, no 'it is' or 'what')
 
 **Closing cue**: Charlotte closes with "Late but legible." once obj_3 lands.
 
@@ -557,6 +599,8 @@
    **hidden_prompt**: "user uses 'It wasn't until X that Y'"
    **hint_pt**: "It wasn't until I lost a friend that I started replying to texts on the same day."
    **hint_en**: "It wasn't until I lost a friend that I started replying to texts on the same day."
+   **example_pass**: It wasn't until I lost a friend that I started replying to texts on the same day. | It was her dedication that impressed me most. | What I really value is honest feedback.
+   **example_fail**: money (bare word, no cleft structure) | I value family most (simple sentence, no cleft) | I like cooking (off-topic, no 'it is' or 'what')
 
 2. **id**: 2
    **label_pt**: "Outra realização atrasada"
@@ -564,6 +608,8 @@
    **hidden_prompt**: "user uses another 'It wasn't until' cleft"
    **hint_pt**: "It wasn't until I tried therapy that I noticed how angry I was."
    **hint_en**: "It wasn't until I tried therapy that I noticed how angry I was."
+   **example_pass**: It wasn't until I tried therapy that I noticed how angry I was. | It was in 2010 that we first met. | What surprised me was his calm reaction.
+   **example_fail**: money (bare word, no cleft structure) | I value family most (simple sentence, no cleft) | I like cooking (off-topic, no 'it is' or 'what')
 
 3. **id**: 3
    **label_pt**: "Perguntar a Charlotte"
@@ -571,6 +617,8 @@
    **hidden_prompt**: "user asks Charlotte what made her finally take sleep seriously"
    **hint_pt**: "What flipped the switch on sleep for you?"
    **hint_en**: "What flipped the switch on sleep for you?"
+   **example_pass**: What flipped the switch on sleep for you? | It is the silence that bothers me, not the noise. | All I want is a quiet weekend.
+   **example_fail**: money (bare word, no cleft structure) | I value family most (simple sentence, no cleft) | I like cooking (off-topic, no 'it is' or 'what')
 
 **Closing cue**: Charlotte closes with "Late, not lost." once obj_3 lands.
 
@@ -650,6 +698,8 @@
    **hidden_prompt**: "user uses 'The reason (why) + clause + is + that-clause/element'"
    **hint_pt**: "The reason I started running is that my back wouldn't stop hurting."
    **hint_en**: "The reason I started running is that my back wouldn't stop hurting."
+   **example_pass**: The reason I started running is that my back wouldn't stop hurting. | It was her dedication that impressed me most. | What I really value is honest feedback.
+   **example_fail**: money (bare word, no cleft structure) | I value family most (simple sentence, no cleft) | I like cooking (off-topic, no 'it is' or 'what')
 
 2. **id**: 2
    **label_pt**: "'The thing that... is/was'"
@@ -657,6 +707,8 @@
    **hidden_prompt**: "user uses 'The thing that + clause + is/was + element'"
    **hint_pt**: "The thing that kept me going was a single email from a stranger."
    **hint_en**: "The thing that kept me going was a single email from a stranger."
+   **example_pass**: The thing that kept me going was a single email from a stranger. | It was in 2010 that we first met. | What surprised me was his calm reaction.
+   **example_fail**: money (bare word, no cleft structure) | I value family most (simple sentence, no cleft) | I like cooking (off-topic, no 'it is' or 'what')
 
 3. **id**: 3
    **label_pt**: "'The place where' ou 'The time when'"
@@ -664,6 +716,8 @@
    **hidden_prompt**: "user uses 'The place where + clause + is/was' or 'The time when + clause + was'"
    **hint_pt**: "The time when I felt most myself was the year I lived alone in Lisbon."
    **hint_en**: "The time when I felt most myself was the year I lived alone in Lisbon."
+   **example_pass**: The time when I felt most myself was the year I lived alone in Lisbon. | It is the silence that bothers me, not the noise. | All I want is a quiet weekend.
+   **example_fail**: money (bare word, no cleft structure) | I value family most (simple sentence, no cleft) | I like cooking (off-topic, no 'it is' or 'what')
 
 **Closing cue**: Charlotte closes with "Three frames, three spotlights." once obj_3 lands.
 
@@ -699,6 +753,8 @@
    **hidden_prompt**: "user uses 'The reason + clause + is + that-clause'"
    **hint_pt**: "The reason I write every morning is that I think better when nobody's watching."
    **hint_en**: "The reason I write every morning is that I think better when nobody's watching."
+   **example_pass**: The reason I write every morning is that I think better when nobody's watching. | It was her dedication that impressed me most. | What I really value is honest feedback.
+   **example_fail**: money (bare word, no cleft structure) | I value family most (simple sentence, no cleft) | I like cooking (off-topic, no 'it is' or 'what')
 
 2. **id**: 2
    **label_pt**: "'The thing that' definidor"
@@ -706,6 +762,8 @@
    **hidden_prompt**: "user uses 'The thing that + clause + is/was + element'"
    **hint_pt**: "The thing that changed me most was my first proper failure."
    **hint_en**: "The thing that changed me most was my first proper failure."
+   **example_pass**: The thing that changed me most was my first proper failure. | It was in 2010 that we first met. | What surprised me was his calm reaction.
+   **example_fail**: money (bare word, no cleft structure) | I value family most (simple sentence, no cleft) | I like cooking (off-topic, no 'it is' or 'what')
 
 3. **id**: 3
    **label_pt**: "Perguntar a Charlotte"
@@ -713,6 +771,8 @@
    **hidden_prompt**: "user asks Charlotte about her teacher"
    **hint_pt**: "Who was the teacher?"
    **hint_en**: "Who was the teacher?"
+   **example_pass**: Who was the teacher? | It is the silence that bothers me, not the noise. | All I want is a quiet weekend.
+   **example_fail**: money (bare word, no cleft structure) | I value family most (simple sentence, no cleft) | I like cooking (off-topic, no 'it is' or 'what')
 
 **Closing cue**: Charlotte closes with "Self-portrait, in clefts." once obj_3 lands.
 

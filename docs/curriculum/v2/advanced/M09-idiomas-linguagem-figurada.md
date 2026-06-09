@@ -99,6 +99,8 @@
    **hidden_prompt**: "user uses 'You hit the nail on the head' or similar"
    **hint_pt**: "Your analyst hit the nail on the head with that diagnosis."
    **hint_en**: "Your analyst hit the nail on the head with that diagnosis."
+   **example_pass**: Your analyst hit the nail on the head with that diagnosis. | I'm absolutely over the moon about the news. | He really hit the nail on the head with that comment.
+   **example_fail**: tired (literal word, no idiom) | I am very tired (literal, no figurative language) | I went to bed (off-topic, no idiom)
 
 2. **id**: 2
    **label_pt**: "Nomear o problema evitado"
@@ -106,6 +108,8 @@
    **hidden_prompt**: "user uses 'the elephant in the room'"
    **hint_pt**: "The elephant in the room is that nobody trusts the new system."
    **hint_en**: "The elephant in the room is that nobody trusts the new system."
+   **example_pass**: The elephant in the room is that nobody trusts the new system. | Let's not beat around the bush — say what you mean. | She's burning the candle at both ends lately.
+   **example_fail**: tired (literal word, no idiom) | I am very tired (literal, no figurative language) | I went to bed (off-topic, no idiom)
 
 3. **id**: 3
    **label_pt**: "Comentar profundidade do problema"
@@ -113,6 +117,8 @@
    **hidden_prompt**: "user uses 'tip of the iceberg' or 'read between the lines'"
    **hint_pt**: "What surfaced last week is just the tip of the iceberg."
    **hint_en**: "What surfaced last week is just the tip of the iceberg."
+   **example_pass**: What surfaced last week is just the tip of the iceberg. | That comment really rubbed me the wrong way. | Don't throw in the towel just yet.
+   **example_fail**: tired (literal word, no idiom) | I am very tired (literal, no figurative language) | I went to bed (off-topic, no idiom)
 
 **Closing cue**: Charlotte closes with "Idiomatic instinct, sharp." once obj_3 lands.
 
@@ -148,6 +154,8 @@
    **hidden_prompt**: "user uses an idiom like 'just the tip of the iceberg' or 'elephant in the room'"
    **hint_pt**: "Compensation might be the tip of the iceberg — the real story is usually managers."
    **hint_en**: "Compensation might be the tip of the iceberg — the real story is usually managers."
+   **example_pass**: Compensation might be the tip of the iceberg — the real story is usually managers. | I'm absolutely over the moon about the news. | He really hit the nail on the head with that comment.
+   **example_fail**: tired (literal word, no idiom) | I am very tired (literal, no figurative language) | I went to bed (off-topic, no idiom)
 
 2. **id**: 2
    **label_pt**: "Aprofundar com outro idiom"
@@ -155,6 +163,8 @@
    **hidden_prompt**: "user uses another idiom"
    **hint_pt**: "The elephant in the room is that people don't believe leadership listens."
    **hint_en**: "The elephant in the room is that people don't believe leadership listens."
+   **example_pass**: The elephant in the room is that people don't believe leadership listens. | Let's not beat around the bush — say what you mean. | She's burning the candle at both ends lately.
+   **example_fail**: tired (literal word, no idiom) | I am very tired (literal, no figurative language) | I went to bed (off-topic, no idiom)
 
 3. **id**: 3
    **label_pt**: "Perguntar a Charlotte"
@@ -162,6 +172,8 @@
    **hidden_prompt**: "user asks Charlotte what her instinct says"
    **hint_pt**: "What does your gut say?"
    **hint_en**: "What does your gut say?"
+   **example_pass**: What does your gut say? | That comment really rubbed me the wrong way. | Don't throw in the towel just yet.
+   **example_fail**: tired (literal word, no idiom) | I am very tired (literal, no figurative language) | I went to bed (off-topic, no idiom)
 
 **Closing cue**: Charlotte closes with "Diagnosis, idiomatically grounded." once obj_3 lands.
 
@@ -240,6 +252,8 @@
    **hidden_prompt**: "user uses 'I bit the bullet and + clause'"
    **hint_pt**: "I bit the bullet and quit without another job lined up."
    **hint_en**: "I bit the bullet and quit without another job lined up."
+   **example_pass**: I bit the bullet and quit without another job lined up. | I'm absolutely over the moon about the news. | He really hit the nail on the head with that comment.
+   **example_fail**: tired (literal word, no idiom) | I am very tired (literal, no figurative language) | I went to bed (off-topic, no idiom)
 
 2. **id**: 2
    **label_pt**: "Hesitação com 'cold feet'"
@@ -247,6 +261,8 @@
    **hidden_prompt**: "user uses 'I/he/she got cold feet'"
    **hint_pt**: "I got cold feet about moving abroad and stayed another year."
    **hint_en**: "I got cold feet about moving abroad and stayed another year."
+   **example_pass**: I got cold feet about moving abroad and stayed another year. | Let's not beat around the bush — say what you mean. | She's burning the candle at both ends lately.
+   **example_fail**: tired (literal word, no idiom) | I am very tired (literal, no figurative language) | I went to bed (off-topic, no idiom)
 
 3. **id**: 3
    **label_pt**: "Compra cara com 'arm and a leg'"
@@ -254,6 +270,8 @@
    **hidden_prompt**: "user uses 'cost an arm and a leg'"
    **hint_pt**: "The apartment renovation cost an arm and a leg, but we love it."
    **hint_en**: "The apartment renovation cost an arm and a leg, but we love it."
+   **example_pass**: The apartment renovation cost an arm and a leg, but we love it. | That comment really rubbed me the wrong way. | Don't throw in the towel just yet.
+   **example_fail**: tired (literal word, no idiom) | I am very tired (literal, no figurative language) | I went to bed (off-topic, no idiom)
 
 **Closing cue**: Charlotte closes with "Body idioms, fully integrated." once obj_3 lands.
 
@@ -289,6 +307,8 @@
    **hidden_prompt**: "user uses 'I bit the bullet and + clause'"
    **hint_pt**: "I bit the bullet and told my boss I wanted to step back from leadership."
    **hint_en**: "I bit the bullet and told my boss I wanted to step back from leadership."
+   **example_pass**: I bit the bullet and told my boss I wanted to step back from leadership. | I'm absolutely over the moon about the news. | He really hit the nail on the head with that comment.
+   **example_fail**: tired (literal word, no idiom) | I am very tired (literal, no figurative language) | I went to bed (off-topic, no idiom)
 
 2. **id**: 2
    **label_pt**: "Reação adicional ou hesitação"
@@ -296,6 +316,8 @@
    **hidden_prompt**: "user uses 'cold feet' or 'pulling my leg' or another body idiom"
    **hint_pt**: "I'd had cold feet about it for months — kept thinking I'd be giving up too much."
    **hint_en**: "I'd had cold feet about it for months — kept thinking I'd be giving up too much."
+   **example_pass**: I'd had cold feet about it for months — kept thinking I'd be giving up too much. | Let's not beat around the bush — say what you mean. | She's burning the candle at both ends lately.
+   **example_fail**: tired (literal word, no idiom) | I am very tired (literal, no figurative language) | I went to bed (off-topic, no idiom)
 
 3. **id**: 3
    **label_pt**: "Perguntar a Charlotte"
@@ -303,6 +325,8 @@
    **hidden_prompt**: "user asks Charlotte how her parents took it"
    **hint_pt**: "How did your parents take it?"
    **hint_en**: "How did your parents take it?"
+   **example_pass**: How did your parents take it? | That comment really rubbed me the wrong way. | Don't throw in the towel just yet.
+   **example_fail**: tired (literal word, no idiom) | I am very tired (literal, no figurative language) | I went to bed (off-topic, no idiom)
 
 **Closing cue**: Charlotte closes with "Hard moments, idiomatically held." once obj_3 lands.
 
@@ -381,6 +405,8 @@
    **hidden_prompt**: "user uses 'a piece of cake'"
    **hint_pt**: "The migration turned out to be a piece of cake compared to what we feared."
    **hint_en**: "The migration turned out to be a piece of cake compared to what we feared."
+   **example_pass**: The migration turned out to be a piece of cake compared to what we feared. | I'm absolutely over the moon about the news. | He really hit the nail on the head with that comment.
+   **example_fail**: tired (literal word, no idiom) | I am very tired (literal, no figurative language) | I went to bed (off-topic, no idiom)
 
 2. **id**: 2
    **label_pt**: "Vazamento com 'spill the beans'"
@@ -388,6 +414,8 @@
    **hidden_prompt**: "user uses 'spilled the beans' or 'spill the beans'"
    **hint_pt**: "Someone in marketing spilled the beans about the rebrand a week early."
    **hint_en**: "Someone in marketing spilled the beans about the rebrand a week early."
+   **example_pass**: Someone in marketing spilled the beans about the rebrand a week early. | Let's not beat around the bush — say what you mean. | She's burning the candle at both ends lately.
+   **example_fail**: tired (literal word, no idiom) | I am very tired (literal, no figurative language) | I went to bed (off-topic, no idiom)
 
 3. **id**: 3
    **label_pt**: "Ceticismo com 'grain of salt' ou dureza com 'tough nut'"
@@ -395,6 +423,8 @@
    **hidden_prompt**: "user uses 'grain of salt' or 'tough nut to crack'"
    **hint_pt**: "Take the optimistic projections with a grain of salt — they always slip."
    **hint_en**: "Take the optimistic projections with a grain of salt — they always slip."
+   **example_pass**: Take the optimistic projections with a grain of salt — they always slip. | That comment really rubbed me the wrong way. | Don't throw in the towel just yet.
+   **example_fail**: tired (literal word, no idiom) | I am very tired (literal, no figurative language) | I went to bed (off-topic, no idiom)
 
 **Closing cue**: Charlotte closes with "Food idioms, properly served." once obj_3 lands.
 
@@ -430,6 +460,8 @@
    **hidden_prompt**: "user uses 'spilled the beans' or similar"
    **hint_pt**: "Whoever spilled the beans must have known the timing would hit hard."
    **hint_en**: "Whoever spilled the beans must have known the timing would hit hard."
+   **example_pass**: Whoever spilled the beans must have known the timing would hit hard. | I'm absolutely over the moon about the news. | He really hit the nail on the head with that comment.
+   **example_fail**: tired (literal word, no idiom) | I am very tired (literal, no figurative language) | I went to bed (off-topic, no idiom)
 
 2. **id**: 2
    **label_pt**: "Aprofundar com outro food idiom"
@@ -437,6 +469,8 @@
    **hidden_prompt**: "user uses 'grain of salt' or 'tough nut' or 'piece of cake'"
    **hint_pt**: "Containing it will be no piece of cake — once the numbers are out, you can't un-leak them."
    **hint_en**: "Containing it will be no piece of cake — once the numbers are out, you can't un-leak them."
+   **example_pass**: Containing it will be no piece of cake — once the numbers are out, you can't un-leak them. | Let's not beat around the bush — say what you mean. | She's burning the candle at both ends lately.
+   **example_fail**: tired (literal word, no idiom) | I am very tired (literal, no figurative language) | I went to bed (off-topic, no idiom)
 
 3. **id**: 3
    **label_pt**: "Perguntar a Charlotte"
@@ -444,6 +478,8 @@
    **hidden_prompt**: "user asks Charlotte how HR is responding"
    **hint_pt**: "How is HR handling it?"
    **hint_en**: "How is HR handling it?"
+   **example_pass**: How is HR handling it? | That comment really rubbed me the wrong way. | Don't throw in the towel just yet.
+   **example_fail**: tired (literal word, no idiom) | I am very tired (literal, no figurative language) | I went to bed (off-topic, no idiom)
 
 **Closing cue**: Charlotte closes with "Crisis chat, food-idiomatic." once obj_3 lands.
 
@@ -522,6 +558,8 @@
    **hidden_prompt**: "user uses 'kill two birds with one stone'"
    **hint_pt**: "If we record the demo and the training in one session, we kill two birds with one stone."
    **hint_en**: "If we record the demo and the training in one session, we kill two birds with one stone."
+   **example_pass**: If we record the demo and the training in one session, we kill two birds with one stone. | I'm absolutely over the moon about the news. | He really hit the nail on the head with that comment.
+   **example_fail**: tired (literal word, no idiom) | I am very tired (literal, no figurative language) | I went to bed (off-topic, no idiom)
 
 2. **id**: 2
    **label_pt**: "Posição com 'ball is in your court' ou 'on the same page'"
@@ -529,6 +567,8 @@
    **hidden_prompt**: "user uses 'the ball is in X's court' or 'on the same page'"
    **hint_pt**: "We're on the same page internally — now the ball is in the client's court."
    **hint_en**: "We're on the same page internally — now the ball is in the client's court."
+   **example_pass**: We're on the same page internally — now the ball is in the client's court. | Let's not beat around the bush — say what you mean. | She's burning the candle at both ends lately.
+   **example_fail**: tired (literal word, no idiom) | I am very tired (literal, no figurative language) | I went to bed (off-topic, no idiom)
 
 3. **id**: 3
    **label_pt**: "Flexibilidade com 'play it by ear'"
@@ -536,6 +576,8 @@
    **hidden_prompt**: "user uses 'play it by ear'"
    **hint_pt**: "For the launch event, we'll play it by ear and see how the audience reacts."
    **hint_en**: "For the launch event, we'll play it by ear and see how the audience reacts."
+   **example_pass**: For the launch event, we'll play it by ear and see how the audience reacts. | That comment really rubbed me the wrong way. | Don't throw in the towel just yet.
+   **example_fail**: tired (literal word, no idiom) | I am very tired (literal, no figurative language) | I went to bed (off-topic, no idiom)
 
 **Closing cue**: Charlotte closes with "Strategic idiom in flow." once obj_3 lands.
 
@@ -571,6 +613,8 @@
    **hidden_prompt**: "user uses 'the ball is in X's court' or 'on the same page'"
    **hint_pt**: "Now the ball is in my team's court — we'll review and come back with edits by Wednesday."
    **hint_en**: "Now the ball is in my team's court — we'll review and come back with edits by Wednesday."
+   **example_pass**: Now the ball is in my team's court — we'll review and come back with edits by Wednesday. | I'm absolutely over the moon about the news. | He really hit the nail on the head with that comment.
+   **example_fail**: tired (literal word, no idiom) | I am very tired (literal, no figurative language) | I went to bed (off-topic, no idiom)
 
 2. **id**: 2
    **label_pt**: "Combinar tarefas ou improvisar"
@@ -578,6 +622,8 @@
    **hidden_prompt**: "user uses 'kill two birds' or 'play it by ear'"
    **hint_pt**: "We can kill two birds with one stone by reviewing the brief during our existing standup."
    **hint_en**: "We can kill two birds with one stone by reviewing the brief during our existing standup."
+   **example_pass**: We can kill two birds with one stone by reviewing the brief during our existing standup. | Let's not beat around the bush — say what you mean. | She's burning the candle at both ends lately.
+   **example_fail**: tired (literal word, no idiom) | I am very tired (literal, no figurative language) | I went to bed (off-topic, no idiom)
 
 3. **id**: 3
    **label_pt**: "Perguntar a Charlotte"
@@ -585,6 +631,8 @@
    **hidden_prompt**: "user asks Charlotte about priorities"
    **hint_pt**: "What's the highest priority for you?"
    **hint_en**: "What's the highest priority for you?"
+   **example_pass**: What's the highest priority for you? | That comment really rubbed me the wrong way. | Don't throw in the towel just yet.
+   **example_fail**: tired (literal word, no idiom) | I am very tired (literal, no figurative language) | I went to bed (off-topic, no idiom)
 
 **Closing cue**: Charlotte closes with "Handoff cleanly framed." once obj_3 lands.
 
@@ -662,6 +710,8 @@
    **hidden_prompt**: "user uses 'crystal clear'"
    **hint_pt**: "The new policy on remote work is crystal clear — three days a week, no exceptions."
    **hint_en**: "The new policy on remote work is crystal clear — three days a week, no exceptions."
+   **example_pass**: The new policy on remote work is crystal clear — three days a week, no exceptions. | I'm absolutely over the moon about the news. | He really hit the nail on the head with that comment.
+   **example_fail**: tired (literal word, no idiom) | I am very tired (literal, no figurative language) | I went to bed (off-topic, no idiom)
 
 2. **id**: 2
    **label_pt**: "Ganhos fáceis com 'low-hanging fruit'"
@@ -669,6 +719,8 @@
    **hidden_prompt**: "user uses 'low-hanging fruit'"
    **hint_pt**: "We started with the low-hanging fruit and saw a 10% lift in two weeks."
    **hint_en**: "We started with the low-hanging fruit and saw a 10% lift in two weeks."
+   **example_pass**: We started with the low-hanging fruit and saw a 10% lift in two weeks. | Let's not beat around the bush — say what you mean. | She's burning the candle at both ends lately.
+   **example_fail**: tired (literal word, no idiom) | I am very tired (literal, no figurative language) | I went to bed (off-topic, no idiom)
 
 3. **id**: 3
    **label_pt**: "Trade-off com 'double-edged sword' ou 'blessing in disguise'"
@@ -676,6 +728,8 @@
    **hidden_prompt**: "user uses 'double-edged sword' or 'blessing in disguise'"
    **hint_pt**: "Being acquired was a blessing in disguise — losing autonomy hurt, but the resources accelerated everything."
    **hint_en**: "Being acquired was a blessing in disguise — losing autonomy hurt, but the resources accelerated everything."
+   **example_pass**: Being acquired was a blessing in disguise — losing autonomy hurt, but the resources accelerated everything. | That comment really rubbed me the wrong way. | Don't throw in the towel just yet.
+   **example_fail**: tired (literal word, no idiom) | I am very tired (literal, no figurative language) | I went to bed (off-topic, no idiom)
 
 **Closing cue**: Charlotte closes with "Modern figurative, sharp." once obj_3 lands.
 
@@ -711,6 +765,8 @@
    **hidden_prompt**: "user uses 'blessing in disguise'"
    **hint_pt**: "Getting laid off in 2020 turned out to be a blessing in disguise — I started the consulting work I'd been afraid to try."
    **hint_en**: "Getting laid off in 2020 turned out to be a blessing in disguise — I started the consulting work I'd been afraid to try."
+   **example_pass**: Getting laid off in 2020 turned out to be a blessing in disguise — I started the consulting work I'd been afraid to try. | I'm absolutely over the moon about the news. | He really hit the nail on the head with that comment.
+   **example_fail**: tired (literal word, no idiom) | I am very tired (literal, no figurative language) | I went to bed (off-topic, no idiom)
 
 2. **id**: 2
    **label_pt**: "Aprofundar com outra metáfora"
@@ -718,6 +774,8 @@
    **hidden_prompt**: "user uses 'double-edged sword' or 'crystal clear' or another metaphor"
    **hint_pt**: "Independence is a double-edged sword — full agency, but also full responsibility for finding the next project."
    **hint_en**: "Independence is a double-edged sword — full agency, but also full responsibility for finding the next project."
+   **example_pass**: Independence is a double-edged sword — full agency, but also full responsibility for finding the next project. | Let's not beat around the bush — say what you mean. | She's burning the candle at both ends lately.
+   **example_fail**: tired (literal word, no idiom) | I am very tired (literal, no figurative language) | I went to bed (off-topic, no idiom)
 
 3. **id**: 3
    **label_pt**: "Perguntar a Charlotte"
@@ -725,6 +783,8 @@
    **hidden_prompt**: "user asks Charlotte what gave her clarity"
    **hint_pt**: "What made it crystal clear it was time?"
    **hint_en**: "What made it crystal clear it was time?"
+   **example_pass**: What made it crystal clear it was time? | That comment really rubbed me the wrong way. | Don't throw in the towel just yet.
+   **example_fail**: tired (literal word, no idiom) | I am very tired (literal, no figurative language) | I went to bed (off-topic, no idiom)
 
 **Closing cue**: Charlotte closes with "C1 closing — figurative breath." once obj_3 lands.
 

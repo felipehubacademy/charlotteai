@@ -84,6 +84,8 @@
    **hidden_prompt**: "user uses 'It is reported that + clause'"
    **hint_pt**: "It is reported that the minister will step down by the end of the month."
    **hint_en**: "It is reported that the minister will step down by the end of the month."
+   **example_pass**: It is reported that the minister will step down by the end of the month. | The report has been reviewed by the committee. | The decision should have been made earlier.
+   **example_fail**: built (bare participle, no agent or structure) | They built the bridge in 1900 (active voice, not passive) | The bridge is nice (off-topic, no passive construction)
 
 2. **id**: 2
    **label_pt**: "'It is believed that' (opinião geral)"
@@ -91,6 +93,8 @@
    **hidden_prompt**: "user uses 'It is believed that + clause'"
    **hint_pt**: "It is believed that the suspect crossed the border two days ago."
    **hint_en**: "It is believed that the suspect crossed the border two days ago."
+   **example_pass**: It is believed that the suspect crossed the border two days ago. | The project is said to have been delayed. | She had her car repaired last week.
+   **example_fail**: built (bare participle, no agent or structure) | They built the bridge in 1900 (active voice, not passive) | The bridge is nice (off-topic, no passive construction)
 
 3. **id**: 3
    **label_pt**: "'It is widely thought / It cannot be denied'"
@@ -98,6 +102,8 @@
    **hidden_prompt**: "user uses another impersonal passive variant"
    **hint_pt**: "It cannot be denied that the system has been failing for years."
    **hint_en**: "It cannot be denied that the system has been failing for years."
+   **example_pass**: It cannot be denied that the system has been failing for years. | The contract was signed by both parties. | Mistakes were made during the process.
+   **example_fail**: built (bare participle, no agent or structure) | They built the bridge in 1900 (active voice, not passive) | The bridge is nice (off-topic, no passive construction)
 
 **Closing cue**: Charlotte closes with "Bylines dressed." once obj_3 lands.
 
@@ -133,6 +139,8 @@
    **hidden_prompt**: "user uses 'It is + past participle + that-clause'"
    **hint_pt**: "It is believed that most jobs will change rather than disappear."
    **hint_en**: "It is believed that most jobs will change rather than disappear."
+   **example_pass**: It is believed that most jobs will change rather than disappear. | The report has been reviewed by the committee. | The decision should have been made earlier.
+   **example_fail**: built (bare participle, no agent or structure) | They built the bridge in 1900 (active voice, not passive) | The bridge is nice (off-topic, no passive construction)
 
 2. **id**: 2
    **label_pt**: "Acrescentar nuance"
@@ -140,6 +148,8 @@
    **hidden_prompt**: "user uses another impersonal passive or 'It cannot be denied'"
    **hint_pt**: "It cannot be denied that adaptation will be uneven across industries."
    **hint_en**: "It cannot be denied that adaptation will be uneven across industries."
+   **example_pass**: It cannot be denied that adaptation will be uneven across industries. | The project is said to have been delayed. | She had her car repaired last week.
+   **example_fail**: built (bare participle, no agent or structure) | They built the bridge in 1900 (active voice, not passive) | The bridge is nice (off-topic, no passive construction)
 
 3. **id**: 3
    **label_pt**: "Perguntar a Charlotte"
@@ -147,6 +157,8 @@
    **hidden_prompt**: "user asks Charlotte for her field's outlook"
    **hint_pt**: "What's the outlook in teaching?"
    **hint_en**: "What's the outlook in teaching?"
+   **example_pass**: What's the outlook in teaching? | The contract was signed by both parties. | Mistakes were made during the process.
+   **example_fail**: built (bare participle, no agent or structure) | They built the bridge in 1900 (active voice, not passive) | The bridge is nice (off-topic, no passive construction)
 
 **Closing cue**: Charlotte closes with "Hedged, honestly." once obj_3 lands.
 
@@ -225,6 +237,8 @@
    **hidden_prompt**: "user uses 'X is said/believed to be + complement'"
    **hint_pt**: "The new minister is said to be a careful negotiator."
    **hint_en**: "The new minister is said to be a careful negotiator."
+   **example_pass**: The new minister is said to be a careful negotiator. | The report has been reviewed by the committee. | The decision should have been made earlier.
+   **example_fail**: built (bare participle, no agent or structure) | They built the bridge in 1900 (active voice, not passive) | The bridge is nice (off-topic, no passive construction)
 
 2. **id**: 2
    **label_pt**: "'X is believed to have done' (passado)"
@@ -232,6 +246,8 @@
    **hidden_prompt**: "user uses 'X is believed/thought to have + past participle'"
    **hint_pt**: "The executive is believed to have signed off on the deal last spring."
    **hint_en**: "The executive is believed to have signed off on the deal last spring."
+   **example_pass**: The executive is believed to have signed off on the deal last spring. | The project is said to have been delayed. | She had her car repaired last week.
+   **example_fail**: built (bare participle, no agent or structure) | They built the bridge in 1900 (active voice, not passive) | The bridge is nice (off-topic, no passive construction)
 
 3. **id**: 3
    **label_pt**: "'X is reported to be + ing' (em curso)"
@@ -239,6 +255,8 @@
    **hidden_prompt**: "user uses 'X is reported/thought to be + -ing'"
    **hint_pt**: "The board is reported to be reviewing all senior contracts."
    **hint_en**: "The board is reported to be reviewing all senior contracts."
+   **example_pass**: The board is reported to be reviewing all senior contracts. | The contract was signed by both parties. | Mistakes were made during the process.
+   **example_fail**: built (bare participle, no agent or structure) | They built the bridge in 1900 (active voice, not passive) | The bridge is nice (off-topic, no passive construction)
 
 **Closing cue**: Charlotte closes with "Three claims, properly framed." once obj_3 lands.
 
@@ -274,6 +292,8 @@
    **hidden_prompt**: "user uses 'X is said/thought to be...'"
    **hint_pt**: "Two of the cofounders are thought to be against the sale."
    **hint_en**: "Two of the cofounders are thought to be against the sale."
+   **example_pass**: Two of the cofounders are thought to be against the sale. | The report has been reviewed by the committee. | The decision should have been made earlier.
+   **example_fail**: built (bare participle, no agent or structure) | They built the bridge in 1900 (active voice, not passive) | The bridge is nice (off-topic, no passive construction)
 
 2. **id**: 2
    **label_pt**: "Double passive de passado"
@@ -281,6 +301,8 @@
    **hidden_prompt**: "user uses 'X is believed/reported to have + past participle'"
    **hint_pt**: "An early investor is reported to have already exited his position."
    **hint_en**: "An early investor is reported to have already exited his position."
+   **example_pass**: An early investor is reported to have already exited his position. | The project is said to have been delayed. | She had her car repaired last week.
+   **example_fail**: built (bare participle, no agent or structure) | They built the bridge in 1900 (active voice, not passive) | The bridge is nice (off-topic, no passive construction)
 
 3. **id**: 3
    **label_pt**: "Perguntar a Charlotte"
@@ -288,6 +310,8 @@
    **hidden_prompt**: "user asks Charlotte for one more rumour"
    **hint_pt**: "Any names yet?"
    **hint_en**: "Any names yet?"
+   **example_pass**: Any names yet? | The contract was signed by both parties. | Mistakes were made during the process.
+   **example_fail**: built (bare participle, no agent or structure) | They built the bridge in 1900 (active voice, not passive) | The bridge is nice (off-topic, no passive construction)
 
 **Closing cue**: Charlotte closes with "Column drafted." once obj_3 lands.
 
@@ -365,6 +389,8 @@
    **hidden_prompt**: "user uses 'I had + object + past participle'"
    **hint_pt**: "I had my hair cut on Saturday."
    **hint_en**: "I had my hair cut on Saturday."
+   **example_pass**: I had my hair cut on Saturday. | The report has been reviewed by the committee. | The decision should have been made earlier.
+   **example_fail**: built (bare participle, no agent or structure) | They built the bridge in 1900 (active voice, not passive) | The bridge is nice (off-topic, no passive construction)
 
 2. **id**: 2
    **label_pt**: "Reparo com 'got + done'"
@@ -372,6 +398,8 @@
    **hidden_prompt**: "user uses 'I got + object + past participle'"
    **hint_pt**: "I got my phone screen replaced last month."
    **hint_en**: "I got my phone screen replaced last month."
+   **example_pass**: I got my phone screen replaced last month. | The project is said to have been delayed. | She had her car repaired last week.
+   **example_fail**: built (bare participle, no agent or structure) | They built the bridge in 1900 (active voice, not passive) | The bridge is nice (off-topic, no passive construction)
 
 3. **id**: 3
    **label_pt**: "Causative em curso ou futuro"
@@ -379,6 +407,8 @@
    **hidden_prompt**: "user uses 'I'm having' or 'I need to have/get'"
    **hint_pt**: "I'm having my apartment painted next week."
    **hint_en**: "I'm having my apartment painted next week."
+   **example_pass**: I'm having my apartment painted next week. | The contract was signed by both parties. | Mistakes were made during the process.
+   **example_fail**: built (bare participle, no agent or structure) | They built the bridge in 1900 (active voice, not passive) | The bridge is nice (off-topic, no passive construction)
 
 **Closing cue**: Charlotte closes with "Services tallied." once obj_3 lands.
 
@@ -414,6 +444,8 @@
    **hidden_prompt**: "user uses 'I had/got + object + past participle'"
    **hint_pt**: "I had my taxes done by an accountant this year."
    **hint_en**: "I had my taxes done by an accountant this year."
+   **example_pass**: I had my taxes done by an accountant this year. | The report has been reviewed by the committee. | The decision should have been made earlier.
+   **example_fail**: built (bare participle, no agent or structure) | They built the bridge in 1900 (active voice, not passive) | The bridge is nice (off-topic, no passive construction)
 
 2. **id**: 2
    **label_pt**: "Outro causative ou plano"
@@ -421,6 +453,8 @@
    **hidden_prompt**: "user uses 'I'm getting' or 'I need to have'"
    **hint_pt**: "I need to have my passport renewed before the trip."
    **hint_en**: "I need to have my passport renewed before the trip."
+   **example_pass**: I need to have my passport renewed before the trip. | The project is said to have been delayed. | She had her car repaired last week.
+   **example_fail**: built (bare participle, no agent or structure) | They built the bridge in 1900 (active voice, not passive) | The bridge is nice (off-topic, no passive construction)
 
 3. **id**: 3
    **label_pt**: "Perguntar a Charlotte"
@@ -428,6 +462,8 @@
    **hidden_prompt**: "user asks Charlotte more about her bike"
    **hint_pt**: "Was the service worth it?"
    **hint_en**: "Was the service worth it?"
+   **example_pass**: Was the service worth it? | The contract was signed by both parties. | Mistakes were made during the process.
+   **example_fail**: built (bare participle, no agent or structure) | They built the bridge in 1900 (active voice, not passive) | The bridge is nice (off-topic, no passive construction)
 
 **Closing cue**: Charlotte closes with "Logistics, sorted." once obj_3 lands.
 
@@ -505,6 +541,8 @@
    **hidden_prompt**: "user uses 'I had + object + stolen/lost/taken'"
    **hint_pt**: "I had my bag snatched at a café in Lisbon."
    **hint_en**: "I had my bag snatched at a café in Lisbon."
+   **example_pass**: I had my bag snatched at a café in Lisbon. | The report has been reviewed by the committee. | The decision should have been made earlier.
+   **example_fail**: built (bare participle, no agent or structure) | They built the bridge in 1900 (active voice, not passive) | The bridge is nice (off-topic, no passive construction)
 
 2. **id**: 2
    **label_pt**: "Erro de serviço"
@@ -512,6 +550,8 @@
    **hidden_prompt**: "user uses 'I had/got + object + ruined/cancelled/lost'"
    **hint_pt**: "I had my flight rerouted to a different city."
    **hint_en**: "I had my flight rerouted to a different city."
+   **example_pass**: I had my flight rerouted to a different city. | The project is said to have been delayed. | She had her car repaired last week.
+   **example_fail**: built (bare participle, no agent or structure) | They built the bridge in 1900 (active voice, not passive) | The bridge is nice (off-topic, no passive construction)
 
 3. **id**: 3
    **label_pt**: "Acidente leve"
@@ -519,6 +559,8 @@
    **hidden_prompt**: "user uses 'I got + object + broken/scratched/damaged'"
    **hint_pt**: "I got my laptop screen cracked when my bag fell."
    **hint_en**: "I got my laptop screen cracked when my bag fell."
+   **example_pass**: I got my laptop screen cracked when my bag fell. | The contract was signed by both parties. | Mistakes were made during the process.
+   **example_fail**: built (bare participle, no agent or structure) | They built the bridge in 1900 (active voice, not passive) | The bridge is nice (off-topic, no passive construction)
 
 **Closing cue**: Charlotte closes with "Year's hardships, archived." once obj_3 lands.
 
@@ -554,6 +596,8 @@
    **hidden_prompt**: "user uses 'I had/got + object + past participle' for misfortune"
    **hint_pt**: "I had my package marked as delivered when it never arrived."
    **hint_en**: "I had my package marked as delivered when it never arrived."
+   **example_pass**: I had my package marked as delivered when it never arrived. | The report has been reviewed by the committee. | The decision should have been made earlier.
+   **example_fail**: built (bare participle, no agent or structure) | They built the bridge in 1900 (active voice, not passive) | The bridge is nice (off-topic, no passive construction)
 
 2. **id**: 2
    **label_pt**: "Outro contratempo"
@@ -561,6 +605,8 @@
    **hidden_prompt**: "user uses another have/got + past participle event"
    **hint_pt**: "I had my reservation cancelled at the last minute."
    **hint_en**: "I had my reservation cancelled at the last minute."
+   **example_pass**: I had my reservation cancelled at the last minute. | The project is said to have been delayed. | She had her car repaired last week.
+   **example_fail**: built (bare participle, no agent or structure) | They built the bridge in 1900 (active voice, not passive) | The bridge is nice (off-topic, no passive construction)
 
 3. **id**: 3
    **label_pt**: "Perguntar a Charlotte"
@@ -568,6 +614,8 @@
    **hidden_prompt**: "user asks Charlotte how she resolved the passport mess"
    **hint_pt**: "How did you sort the passport?"
    **hint_en**: "How did you sort the passport?"
+   **example_pass**: How did you sort the passport? | The contract was signed by both parties. | Mistakes were made during the process.
+   **example_fail**: built (bare participle, no agent or structure) | They built the bridge in 1900 (active voice, not passive) | The bridge is nice (off-topic, no passive construction)
 
 **Closing cue**: Charlotte closes with "Minor agonies, mutual." once obj_3 lands.
 
@@ -645,6 +693,8 @@
    **hidden_prompt**: "user uses 'It is + past participle + that + clause'"
    **hint_pt**: "It is said that the company is preparing for an IPO."
    **hint_en**: "It is said that the company is preparing for an IPO."
+   **example_pass**: It is said that the company is preparing for an IPO. | The report has been reviewed by the committee. | The decision should have been made earlier.
+   **example_fail**: built (bare participle, no agent or structure) | They built the bridge in 1900 (active voice, not passive) | The bridge is nice (off-topic, no passive construction)
 
 2. **id**: 2
    **label_pt**: "Double passive"
@@ -652,6 +702,8 @@
    **hidden_prompt**: "user uses 'X is + past participle + to + infinitive'"
    **hint_pt**: "The CEO is believed to have approved the merger last week."
    **hint_en**: "The CEO is believed to have approved the merger last week."
+   **example_pass**: The CEO is believed to have approved the merger last week. | The project is said to have been delayed. | She had her car repaired last week.
+   **example_fail**: built (bare participle, no agent or structure) | They built the bridge in 1900 (active voice, not passive) | The bridge is nice (off-topic, no passive construction)
 
 3. **id**: 3
    **label_pt**: "Causative"
@@ -659,6 +711,8 @@
    **hidden_prompt**: "user uses 'I had/got + object + past participle'"
    **hint_pt**: "I had the contract reviewed by my lawyer before signing."
    **hint_en**: "I had the contract reviewed by my lawyer before signing."
+   **example_pass**: I had the contract reviewed by my lawyer before signing. | The contract was signed by both parties. | Mistakes were made during the process.
+   **example_fail**: built (bare participle, no agent or structure) | They built the bridge in 1900 (active voice, not passive) | The bridge is nice (off-topic, no passive construction)
 
 **Closing cue**: Charlotte closes with "Three passives, three voices." once obj_3 lands.
 
@@ -694,6 +748,8 @@
    **hidden_prompt**: "user uses 'X is said/believed/thought to + infinitive'"
    **hint_pt**: "Their CFO is said to have already met with three potential buyers."
    **hint_en**: "Their CFO is said to have already met with three potential buyers."
+   **example_pass**: Their CFO is said to have already met with three potential buyers. | The report has been reviewed by the committee. | The decision should have been made earlier.
+   **example_fail**: built (bare participle, no agent or structure) | They built the bridge in 1900 (active voice, not passive) | The bridge is nice (off-topic, no passive construction)
 
 2. **id**: 2
    **label_pt**: "Aprofundar com causative"
@@ -701,6 +757,8 @@
    **hidden_prompt**: "user uses 'I'm having' or 'I need to have'"
    **hint_pt**: "I'm having our own contracts reviewed in case we need to move quickly."
    **hint_en**: "I'm having our own contracts reviewed in case we need to move quickly."
+   **example_pass**: I'm having our own contracts reviewed in case we need to move quickly. | The project is said to have been delayed. | She had her car repaired last week.
+   **example_fail**: built (bare participle, no agent or structure) | They built the bridge in 1900 (active voice, not passive) | The bridge is nice (off-topic, no passive construction)
 
 3. **id**: 3
    **label_pt**: "Perguntar a Charlotte"
@@ -708,6 +766,8 @@
    **hidden_prompt**: "user asks Charlotte what she thinks the implication is"
    **hint_pt**: "What do you think it means for us?"
    **hint_en**: "What do you think it means for us?"
+   **example_pass**: What do you think it means for us? | The contract was signed by both parties. | Mistakes were made during the process.
+   **example_fail**: built (bare participle, no agent or structure) | They built the bridge in 1900 (active voice, not passive) | The bridge is nice (off-topic, no passive construction)
 
 **Closing cue**: Charlotte closes with "Passive layered, situation tracked." once obj_3 lands.
 

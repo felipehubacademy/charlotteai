@@ -122,19 +122,49 @@
             "id": 1,
             "label_en": "Simultaneous action (walking/looking)",
             "hidden_prompt": "user uses '-ing clause + main clause with same subject'",
-            "hint_en": "Walking to work this morning, I realised I'd left my laptop at home."
+            "hint_en": "Walking to work this morning, I realised I'd left my laptop at home.",
+            "examples_pass": [
+              "Walking to work this morning, I realised I'd left my laptop at home.",
+              "Having finished the report, I sent it to my boss.",
+              "Built in 1900, the house still stands strong."
+            ],
+            "examples_fail": [
+              "finished (bare participle, no clause)",
+              "After I had finished the report, I sent it (full clause, not participial)",
+              "I worked all day (off-topic, no participial reduction)"
+            ]
           },
           {
             "id": 2,
             "label_en": "Background action + main action",
             "hidden_prompt": "user uses '-ing clause' for ongoing background",
-            "hint_en": "Sitting in the café, I overheard a strange conversation."
+            "hint_en": "Sitting in the café, I overheard a strange conversation.",
+            "examples_pass": [
+              "Sitting in the café, I overheard a strange conversation.",
+              "Surprised by the news, she sat down quietly.",
+              "Walking through the park, I noticed the autumn colours."
+            ],
+            "examples_fail": [
+              "finished (bare participle, no clause)",
+              "After I had finished the report, I sent it (full clause, not participial)",
+              "I worked all day (off-topic, no participial reduction)"
+            ]
           },
           {
             "id": 3,
             "label_en": "Cause with -ing clause",
             "hidden_prompt": "user uses '-ing clause' as causal",
-            "hint_en": "Knowing she was tired, I offered to drive."
+            "hint_en": "Knowing she was tired, I offered to drive.",
+            "examples_pass": [
+              "Knowing she was tired, I offered to drive.",
+              "Exhausted from the trip, we slept for ten hours.",
+              "Knowing the risks, he proceeded carefully."
+            ],
+            "examples_fail": [
+              "finished (bare participle, no clause)",
+              "After I had finished the report, I sent it (full clause, not participial)",
+              "I worked all day (off-topic, no participial reduction)"
+            ]
           }
         ],
         "closing_cue": "Charlotte closes with \"Three openings, three compressions.\" once obj_3 lands.",
@@ -157,19 +187,49 @@
             "id": 1,
             "label_en": "Vignette with opening -ing",
             "hidden_prompt": "user uses '-ing clause + main clause'",
-            "hint_en": "Walking through my neighbourhood, I noticed three new cafés had appeared."
+            "hint_en": "Walking through my neighbourhood, I noticed three new cafés had appeared.",
+            "examples_pass": [
+              "Walking through my neighbourhood, I noticed three new cafés had appeared.",
+              "Having finished the report, I sent it to my boss.",
+              "Built in 1900, the house still stands strong."
+            ],
+            "examples_fail": [
+              "finished (bare participle, no clause)",
+              "After I had finished the report, I sent it (full clause, not participial)",
+              "I worked all day (off-topic, no participial reduction)"
+            ]
           },
           {
             "id": 2,
             "label_en": "Deepen with another -ing",
             "hidden_prompt": "user uses another participle clause",
-            "hint_en": "Crossing the bridge, I realised I hadn't done that walk in years."
+            "hint_en": "Crossing the bridge, I realised I hadn't done that walk in years.",
+            "examples_pass": [
+              "Crossing the bridge, I realised I hadn't done that walk in years.",
+              "Surprised by the news, she sat down quietly.",
+              "Walking through the park, I noticed the autumn colours."
+            ],
+            "examples_fail": [
+              "finished (bare participle, no clause)",
+              "After I had finished the report, I sent it (full clause, not participial)",
+              "I worked all day (off-topic, no participial reduction)"
+            ]
           },
           {
             "id": 3,
             "label_en": "Ask Charlotte",
             "hidden_prompt": "user asks Charlotte more about her school walk",
-            "hint_en": "What changed at your school?"
+            "hint_en": "What changed at your school?",
+            "examples_pass": [
+              "What changed at your school?",
+              "Exhausted from the trip, we slept for ten hours.",
+              "Knowing the risks, he proceeded carefully."
+            ],
+            "examples_fail": [
+              "finished (bare participle, no clause)",
+              "After I had finished the report, I sent it (full clause, not participial)",
+              "I worked all day (off-topic, no participial reduction)"
+            ]
           }
         ],
         "closing_cue": "Charlotte closes with \"Vignettes, properly opened.\" once obj_3 lands.",
@@ -275,19 +335,49 @@
             "id": 1,
             "label_en": "Construction/creation",
             "hidden_prompt": "user uses 'Built/Made/Designed + by/in + clause + main'",
-            "hint_en": "Built in 1872, the old town hall still hosts weekly markets."
+            "hint_en": "Built in 1872, the old town hall still hosts weekly markets.",
+            "examples_pass": [
+              "Built in 1872, the old town hall still hosts weekly markets.",
+              "Having finished the report, I sent it to my boss.",
+              "Built in 1900, the house still stands strong."
+            ],
+            "examples_fail": [
+              "finished (bare participle, no clause)",
+              "After I had finished the report, I sent it (full clause, not participial)",
+              "I worked all day (off-topic, no participial reduction)"
+            ]
           },
           {
             "id": 2,
             "label_en": "Biography ('Born in...')",
             "hidden_prompt": "user uses 'Born + place/time, + main clause'",
-            "hint_en": "Born in Recife and raised in Belo Horizonte, she speaks two distinct Portuguese rhythms."
+            "hint_en": "Born in Recife and raised in Belo Horizonte, she speaks two distinct Portuguese rhythms.",
+            "examples_pass": [
+              "Born in Recife and raised in Belo Horizonte, she speaks two distinct Portuguese rhythms.",
+              "Surprised by the news, she sat down quietly.",
+              "Walking through the park, I noticed the autumn colours."
+            ],
+            "examples_fail": [
+              "finished (bare participle, no clause)",
+              "After I had finished the report, I sent it (full clause, not participial)",
+              "I worked all day (off-topic, no participial reduction)"
+            ]
           },
           {
             "id": 3,
             "label_en": "Passive characteristic",
             "hidden_prompt": "user uses another past participle opener",
-            "hint_en": "Surrounded by trees on three sides, the cabin is invisible from the road."
+            "hint_en": "Surrounded by trees on three sides, the cabin is invisible from the road.",
+            "examples_pass": [
+              "Surrounded by trees on three sides, the cabin is invisible from the road.",
+              "Exhausted from the trip, we slept for ten hours.",
+              "Knowing the risks, he proceeded carefully."
+            ],
+            "examples_fail": [
+              "finished (bare participle, no clause)",
+              "After I had finished the report, I sent it (full clause, not participial)",
+              "I worked all day (off-topic, no participial reduction)"
+            ]
           }
         ],
         "closing_cue": "Charlotte closes with \"Compressions, descriptive grade.\" once obj_3 lands.",
@@ -310,19 +400,49 @@
             "id": 1,
             "label_en": "Place with past participle opener",
             "hidden_prompt": "user uses 'Past participle clause, + main'",
-            "hint_en": "Built in the 1930s, my building has the kind of doors they don't make anymore."
+            "hint_en": "Built in the 1930s, my building has the kind of doors they don't make anymore.",
+            "examples_pass": [
+              "Built in the 1930s, my building has the kind of doors they don't make anymore.",
+              "Having finished the report, I sent it to my boss.",
+              "Built in 1900, the house still stands strong."
+            ],
+            "examples_fail": [
+              "finished (bare participle, no clause)",
+              "After I had finished the report, I sent it (full clause, not participial)",
+              "I worked all day (off-topic, no participial reduction)"
+            ]
           },
           {
             "id": 2,
             "label_en": "Person or tradition",
             "hidden_prompt": "user uses another past participle compression",
-            "hint_en": "Raised on her grandmother's stories, my daughter now tells better ones than I do."
+            "hint_en": "Raised on her grandmother's stories, my daughter now tells better ones than I do.",
+            "examples_pass": [
+              "Raised on her grandmother's stories, my daughter now tells better ones than I do.",
+              "Surprised by the news, she sat down quietly.",
+              "Walking through the park, I noticed the autumn colours."
+            ],
+            "examples_fail": [
+              "finished (bare participle, no clause)",
+              "After I had finished the report, I sent it (full clause, not participial)",
+              "I worked all day (off-topic, no participial reduction)"
+            ]
           },
           {
             "id": 3,
             "label_en": "Ask Charlotte",
             "hidden_prompt": "user asks Charlotte more about the bookshop",
-            "hint_en": "Does the monk still work there?"
+            "hint_en": "Does the monk still work there?",
+            "examples_pass": [
+              "Does the monk still work there?",
+              "Exhausted from the trip, we slept for ten hours.",
+              "Knowing the risks, he proceeded carefully."
+            ],
+            "examples_fail": [
+              "finished (bare participle, no clause)",
+              "After I had finished the report, I sent it (full clause, not participial)",
+              "I worked all day (off-topic, no participial reduction)"
+            ]
           }
         ],
         "closing_cue": "Charlotte closes with \"Places and people, opened in passive.\" once obj_3 lands.",
@@ -425,19 +545,49 @@
             "id": 1,
             "label_en": "Time sequence ('Having finished')",
             "hidden_prompt": "user uses 'Having + past participle + main clause'",
-            "hint_en": "Having finished my morning run, I felt ready for the meeting."
+            "hint_en": "Having finished my morning run, I felt ready for the meeting.",
+            "examples_pass": [
+              "Having finished my morning run, I felt ready for the meeting.",
+              "Having finished the report, I sent it to my boss.",
+              "Built in 1900, the house still stands strong."
+            ],
+            "examples_fail": [
+              "finished (bare participle, no clause)",
+              "After I had finished the report, I sent it (full clause, not participial)",
+              "I worked all day (off-topic, no participial reduction)"
+            ]
           },
           {
             "id": 2,
             "label_en": "Long experience ('Having lived/worked')",
             "hidden_prompt": "user uses 'Having + past participle' for long experience",
-            "hint_en": "Having worked from home for two years, I forgot how loud offices are."
+            "hint_en": "Having worked from home for two years, I forgot how loud offices are.",
+            "examples_pass": [
+              "Having worked from home for two years, I forgot how loud offices are.",
+              "Surprised by the news, she sat down quietly.",
+              "Walking through the park, I noticed the autumn colours."
+            ],
+            "examples_fail": [
+              "finished (bare participle, no clause)",
+              "After I had finished the report, I sent it (full clause, not participial)",
+              "I worked all day (off-topic, no participial reduction)"
+            ]
           },
           {
             "id": 3,
             "label_en": "Discourse marker 'Having said that'",
             "hidden_prompt": "user uses 'Having said that, + clause'",
-            "hint_en": "I disagree with him on most things. Having said that, he's a good colleague."
+            "hint_en": "I disagree with him on most things. Having said that, he's a good colleague.",
+            "examples_pass": [
+              "I disagree with him on most things. Having said that, he's a good colleague.",
+              "Exhausted from the trip, we slept for ten hours.",
+              "Knowing the risks, he proceeded carefully."
+            ],
+            "examples_fail": [
+              "finished (bare participle, no clause)",
+              "After I had finished the report, I sent it (full clause, not participial)",
+              "I worked all day (off-topic, no participial reduction)"
+            ]
           }
         ],
         "closing_cue": "Charlotte closes with \"Sequenced and shaded.\" once obj_3 lands.",
@@ -460,19 +610,49 @@
             "id": 1,
             "label_en": "Experience + insight",
             "hidden_prompt": "user uses 'Having + past participle + clause'",
-            "hint_en": "Having managed people for ten years, I finally learned to stop solving for them."
+            "hint_en": "Having managed people for ten years, I finally learned to stop solving for them.",
+            "examples_pass": [
+              "Having managed people for ten years, I finally learned to stop solving for them.",
+              "Having finished the report, I sent it to my boss.",
+              "Built in 1900, the house still stands strong."
+            ],
+            "examples_fail": [
+              "finished (bare participle, no clause)",
+              "After I had finished the report, I sent it (full clause, not participial)",
+              "I worked all day (off-topic, no participial reduction)"
+            ]
           },
           {
             "id": 2,
             "label_en": "Add with 'Having said that'",
             "hidden_prompt": "user uses 'Having said that, + clause'",
-            "hint_en": "Having said that, every team still finds a way to surprise me."
+            "hint_en": "Having said that, every team still finds a way to surprise me.",
+            "examples_pass": [
+              "Having said that, every team still finds a way to surprise me.",
+              "Surprised by the news, she sat down quietly.",
+              "Walking through the park, I noticed the autumn colours."
+            ],
+            "examples_fail": [
+              "finished (bare participle, no clause)",
+              "After I had finished the report, I sent it (full clause, not participial)",
+              "I worked all day (off-topic, no participial reduction)"
+            ]
           },
           {
             "id": 3,
             "label_en": "Ask Charlotte",
             "hidden_prompt": "user asks Charlotte for one specific student lesson",
-            "hint_en": "What did students teach you?"
+            "hint_en": "What did students teach you?",
+            "examples_pass": [
+              "What did students teach you?",
+              "Exhausted from the trip, we slept for ten hours.",
+              "Knowing the risks, he proceeded carefully."
+            ],
+            "examples_fail": [
+              "finished (bare participle, no clause)",
+              "After I had finished the report, I sent it (full clause, not participial)",
+              "I worked all day (off-topic, no participial reduction)"
+            ]
           }
         ],
         "closing_cue": "Charlotte closes with \"Experience, properly placed.\" once obj_3 lands.",
@@ -575,19 +755,49 @@
             "id": 1,
             "label_en": "Upbringing or education ('raised/educated')",
             "hidden_prompt": "user uses 'Having been raised/educated/taught + clause'",
-            "hint_en": "Having been raised by two musicians, I can't imagine a quiet house."
+            "hint_en": "Having been raised by two musicians, I can't imagine a quiet house.",
+            "examples_pass": [
+              "Having been raised by two musicians, I can't imagine a quiet house.",
+              "Having finished the report, I sent it to my boss.",
+              "Built in 1900, the house still stands strong."
+            ],
+            "examples_fail": [
+              "finished (bare participle, no clause)",
+              "After I had finished the report, I sent it (full clause, not participial)",
+              "I worked all day (off-topic, no participial reduction)"
+            ]
           },
           {
             "id": 2,
             "label_en": "Receiving news or warning",
             "hidden_prompt": "user uses 'Having been told/warned/informed'",
-            "hint_en": "Having been warned about the traffic, I left an hour earlier."
+            "hint_en": "Having been warned about the traffic, I left an hour earlier.",
+            "examples_pass": [
+              "Having been warned about the traffic, I left an hour earlier.",
+              "Surprised by the news, she sat down quietly.",
+              "Walking through the park, I noticed the autumn colours."
+            ],
+            "examples_fail": [
+              "finished (bare participle, no clause)",
+              "After I had finished the report, I sent it (full clause, not participial)",
+              "I worked all day (off-topic, no participial reduction)"
+            ]
           },
           {
             "id": 3,
             "label_en": "Repeated formative experience",
             "hidden_prompt": "user uses 'Having been + past participle' for repeated event",
-            "hint_en": "Having been overlooked at three previous companies, she finally spoke up at this one."
+            "hint_en": "Having been overlooked at three previous companies, she finally spoke up at this one.",
+            "examples_pass": [
+              "Having been overlooked at three previous companies, she finally spoke up at this one.",
+              "Exhausted from the trip, we slept for ten hours.",
+              "Knowing the risks, he proceeded carefully."
+            ],
+            "examples_fail": [
+              "finished (bare participle, no clause)",
+              "After I had finished the report, I sent it (full clause, not participial)",
+              "I worked all day (off-topic, no participial reduction)"
+            ]
           }
         ],
         "closing_cue": "Charlotte closes with \"Passive past, present self.\" once obj_3 lands.",
@@ -610,19 +820,49 @@
             "id": 1,
             "label_en": "Person who shaped you (passive)",
             "hidden_prompt": "user uses 'Having been + past participle + by + person'",
-            "hint_en": "Having been taught patience by my grandfather, I find rushing strange."
+            "hint_en": "Having been taught patience by my grandfather, I find rushing strange.",
+            "examples_pass": [
+              "Having been taught patience by my grandfather, I find rushing strange.",
+              "Having finished the report, I sent it to my boss.",
+              "Built in 1900, the house still stands strong."
+            ],
+            "examples_fail": [
+              "finished (bare participle, no clause)",
+              "After I had finished the report, I sent it (full clause, not participial)",
+              "I worked all day (off-topic, no participial reduction)"
+            ]
           },
           {
             "id": 2,
             "label_en": "Another formative experience",
             "hidden_prompt": "user uses another 'Having been + past participle'",
-            "hint_en": "Having been pushed too hard early on, I now coach my team gently."
+            "hint_en": "Having been pushed too hard early on, I now coach my team gently.",
+            "examples_pass": [
+              "Having been pushed too hard early on, I now coach my team gently.",
+              "Surprised by the news, she sat down quietly.",
+              "Walking through the park, I noticed the autumn colours."
+            ],
+            "examples_fail": [
+              "finished (bare participle, no clause)",
+              "After I had finished the report, I sent it (full clause, not participial)",
+              "I worked all day (off-topic, no participial reduction)"
+            ]
           },
           {
             "id": 3,
             "label_en": "Ask Charlotte",
             "hidden_prompt": "user asks Charlotte about her mentor's edits",
-            "hint_en": "What did she edit out?"
+            "hint_en": "What did she edit out?",
+            "examples_pass": [
+              "What did she edit out?",
+              "Exhausted from the trip, we slept for ten hours.",
+              "Knowing the risks, he proceeded carefully."
+            ],
+            "examples_fail": [
+              "finished (bare participle, no clause)",
+              "After I had finished the report, I sent it (full clause, not participial)",
+              "I worked all day (off-topic, no participial reduction)"
+            ]
           }
         ],
         "closing_cue": "Charlotte closes with \"Inheritance, in passive voice.\" once obj_3 lands.",
@@ -723,19 +963,49 @@
             "id": 1,
             "label_en": "Reduced relative active (-ing)",
             "hidden_prompt": "user uses 'the X + -ing'",
-            "hint_en": "The woman standing at the bar gave me a long look."
+            "hint_en": "The woman standing at the bar gave me a long look.",
+            "examples_pass": [
+              "The woman standing at the bar gave me a long look.",
+              "Having finished the report, I sent it to my boss.",
+              "Built in 1900, the house still stands strong."
+            ],
+            "examples_fail": [
+              "finished (bare participle, no clause)",
+              "After I had finished the report, I sent it (full clause, not participial)",
+              "I worked all day (off-topic, no participial reduction)"
+            ]
           },
           {
             "id": 2,
             "label_en": "Reduced relative passive (-ed)",
             "hidden_prompt": "user uses 'the X + past participle'",
-            "hint_en": "The letter sent last week never reached him."
+            "hint_en": "The letter sent last week never reached him.",
+            "examples_pass": [
+              "The letter sent last week never reached him.",
+              "Surprised by the news, she sat down quietly.",
+              "Walking through the park, I noticed the autumn colours."
+            ],
+            "examples_fail": [
+              "finished (bare participle, no clause)",
+              "After I had finished the report, I sent it (full clause, not participial)",
+              "I worked all day (off-topic, no participial reduction)"
+            ]
           },
           {
             "id": 3,
             "label_en": "Circumstance with 'with + noun + -ing/-ed'",
             "hidden_prompt": "user uses 'With + noun + -ing/-ed, + main clause'",
-            "hint_en": "With my hands shaking, I signed the agreement."
+            "hint_en": "With my hands shaking, I signed the agreement.",
+            "examples_pass": [
+              "With my hands shaking, I signed the agreement.",
+              "Exhausted from the trip, we slept for ten hours.",
+              "Knowing the risks, he proceeded carefully."
+            ],
+            "examples_fail": [
+              "finished (bare participle, no clause)",
+              "After I had finished the report, I sent it (full clause, not participial)",
+              "I worked all day (off-topic, no participial reduction)"
+            ]
           }
         ],
         "closing_cue": "Charlotte closes with \"Compressions, sharp and clear.\" once obj_3 lands.",
@@ -758,19 +1028,49 @@
             "id": 1,
             "label_en": "Scene with reduced relative",
             "hidden_prompt": "user uses past participle reduced relative for scene",
-            "hint_en": "The park, lit only by a single streetlight, is where I called my mother."
+            "hint_en": "The park, lit only by a single streetlight, is where I called my mother.",
+            "examples_pass": [
+              "The park, lit only by a single streetlight, is where I called my mother.",
+              "Having finished the report, I sent it to my boss.",
+              "Built in 1900, the house still stands strong."
+            ],
+            "examples_fail": [
+              "finished (bare participle, no clause)",
+              "After I had finished the report, I sent it (full clause, not participial)",
+              "I worked all day (off-topic, no participial reduction)"
+            ]
           },
           {
             "id": 2,
             "label_en": "Detail with 'with' clause",
             "hidden_prompt": "user uses 'With + noun + -ing/-ed'",
-            "hint_en": "With my heart pounding, I told her the news."
+            "hint_en": "With my heart pounding, I told her the news.",
+            "examples_pass": [
+              "With my heart pounding, I told her the news.",
+              "Surprised by the news, she sat down quietly.",
+              "Walking through the park, I noticed the autumn colours."
+            ],
+            "examples_fail": [
+              "finished (bare participle, no clause)",
+              "After I had finished the report, I sent it (full clause, not participial)",
+              "I worked all day (off-topic, no participial reduction)"
+            ]
           },
           {
             "id": 3,
             "label_en": "Ask Charlotte",
             "hidden_prompt": "user asks Charlotte who she called",
-            "hint_en": "Who did you call?"
+            "hint_en": "Who did you call?",
+            "examples_pass": [
+              "Who did you call?",
+              "Exhausted from the trip, we slept for ten hours.",
+              "Knowing the risks, he proceeded carefully."
+            ],
+            "examples_fail": [
+              "finished (bare participle, no clause)",
+              "After I had finished the report, I sent it (full clause, not participial)",
+              "I worked all day (off-topic, no participial reduction)"
+            ]
           }
         ],
         "closing_cue": "Charlotte closes with \"Scenes compressed, edges intact.\" once obj_3 lands.",

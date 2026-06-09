@@ -90,6 +90,8 @@ This module does not introduce new chunks. Instead, it asks the student to deplo
    **hidden_prompt**: "user opens with 'It was + element + that...'"
    **hint_pt**: "It was a Sunday in late August that I finally decided to apply — three months later than I should have, and only because my sister sent me a single text I couldn't ignore."
    **hint_en**: "It was a Sunday in late August that I finally decided to apply — three months later than I should have, and only because my sister sent me a single text I couldn't ignore."
+   **example_pass**: It was a Sunday in late August that I finally decided to apply — three months later than I should have, and only because my sister sent me a single text I couldn't ignore. | Had I known then what I know now, I'd have approached it differently. | It is precisely this nuance that makes the issue so complex.
+   **example_fail**: yes (bare reply, no synthesis) | I agree with that (simple statement, no integrated C1-C2 structures) | The food was good (off-topic, no advanced synthesis)
 
 2. **id**: 2
    **label_pt**: "Participle clause no meio"
@@ -97,6 +99,8 @@ This module does not introduce new chunks. Instead, it asks the student to deplo
    **hidden_prompt**: "user uses participle clause + filler"
    **hint_pt**: "Sitting on the floor of my living room, I read the requirements three times, hoping — you know — that something would tell me whether I was qualified or just stubborn."
    **hint_en**: "Sitting on the floor of my living room, I read the requirements three times, hoping — you know — that something would tell me whether I was qualified or just stubborn."
+   **example_pass**: Sitting on the floor of my living room, I read the requirements three times, hoping — you know — that something would tell me whether I was qualified or just stubborn. | Never have I encountered a more compelling argument. | Were we to adopt this approach, the results could be transformative.
+   **example_fail**: yes (bare reply, no synthesis) | I agree with that (simple statement, no integrated C1-C2 structures) | The food was good (off-topic, no advanced synthesis)
 
 3. **id**: 3
    **label_pt**: "Fragment de fechamento"
@@ -104,6 +108,8 @@ This module does not introduce new chunks. Instead, it asks the student to deplo
    **hidden_prompt**: "user closes with sentence fragment"
    **hint_pt**: "I clicked submit before I could change my mind. Done. Whatever happened next, it would not be the version of me that had spent the year not trying."
    **hint_en**: "I clicked submit before I could change my mind. Done. Whatever happened next, it would not be the version of me that had spent the year not trying."
+   **example_pass**: I clicked submit before I could change my mind. Done. Whatever happened next, it would not be the version of me that had spent the year not trying. | What truly sets this apart is the depth of its analysis. | Having considered all angles, I remain convinced of my position.
+   **example_fail**: yes (bare reply, no synthesis) | I agree with that (simple statement, no integrated C1-C2 structures) | The food was good (off-topic, no advanced synthesis)
 
 **Closing cue**: Charlotte closes with "Narrative threaded with C2 moves." once obj_3 lands.
 
@@ -139,6 +145,8 @@ This module does not introduce new chunks. Instead, it asks the student to deplo
    **hidden_prompt**: "user uses participle clause + cleft"
    **hint_pt**: "Opening the email, I knew before I'd read a word. It was the second sentence that confirmed it — three lines down, between the formalities and the contract details."
    **hint_en**: "Opening the email, I knew before I'd read a word. It was the second sentence that confirmed it — three lines down, between the formalities and the contract details."
+   **example_pass**: Opening the email, I knew before I'd read a word. It was the second sentence that confirmed it — three lines down, between the formalities and the contract details. | Had I known then what I know now, I'd have approached it differently. | It is precisely this nuance that makes the issue so complex.
+   **example_fail**: yes (bare reply, no synthesis) | I agree with that (simple statement, no integrated C1-C2 structures) | The food was good (off-topic, no advanced synthesis)
 
 2. **id**: 2
    **label_pt**: "Reflexão com pseudo-cleft"
@@ -146,6 +154,8 @@ This module does not introduce new chunks. Instead, it asks the student to deplo
    **hidden_prompt**: "user uses 'What surprised me was...'"
    **hint_pt**: "What surprised me was how immediately my body knew before my mind had read the words — shoulders dropping, breath finally arriving without being asked."
    **hint_en**: "What surprised me was how immediately my body knew before my mind had read the words — shoulders dropping, breath finally arriving without being asked."
+   **example_pass**: What surprised me was how immediately my body knew before my mind had read the words — shoulders dropping, breath finally arriving without being asked. | Never have I encountered a more compelling argument. | Were we to adopt this approach, the results could be transformative.
+   **example_fail**: yes (bare reply, no synthesis) | I agree with that (simple statement, no integrated C1-C2 structures) | The food was good (off-topic, no advanced synthesis)
 
 3. **id**: 3
    **label_pt**: "Perguntar a Charlotte"
@@ -153,6 +163,8 @@ This module does not introduce new chunks. Instead, it asks the student to deplo
    **hidden_prompt**: "user asks Charlotte for her version of the moment"
    **hint_pt**: "What about you — what was the email that changed your year?"
    **hint_en**: "What about you — what was the email that changed your year?"
+   **example_pass**: What about you — what was the email that changed your year? | What truly sets this apart is the depth of its analysis. | Having considered all angles, I remain convinced of my position.
+   **example_fail**: yes (bare reply, no synthesis) | I agree with that (simple statement, no integrated C1-C2 structures) | The food was good (off-topic, no advanced synthesis)
 
 **Closing cue**: Charlotte closes with "Narrative continues, mastery intact." once obj_3 lands.
 
@@ -231,6 +243,8 @@ This module does not introduce new chunks. Instead, it asks the student to deplo
    **hidden_prompt**: "user opens with inverted negative adverbial"
    **hint_pt**: "Rarely has a workplace reform produced as broad a coalition of advocates — and as deep a bench of sceptics — as the four-day workweek."
    **hint_en**: "Rarely has a workplace reform produced as broad a coalition of advocates — and as deep a bench of sceptics — as the four-day workweek."
+   **example_pass**: Rarely has a workplace reform produced as broad a coalition of advocates — and as deep a bench of sceptics — as the four-day workweek. | Had I known then what I know now, I'd have approached it differently. | It is precisely this nuance that makes the issue so complex.
+   **example_fail**: yes (bare reply, no synthesis) | I agree with that (simple statement, no integrated C1-C2 structures) | The food was good (off-topic, no advanced synthesis)
 
 2. **id**: 2
    **label_pt**: "Cleft + hedge"
@@ -238,6 +252,8 @@ This module does not introduce new chunks. Instead, it asks the student to deplo
    **hidden_prompt**: "user uses 'It is X that' + hedge"
    **hint_pt**: "It is increasingly accepted that the standard five-day week reflects historical accident more than productive necessity, though it could be argued that the four-day alternative has yet to prove itself outside knowledge work."
    **hint_en**: "It is increasingly accepted that the standard five-day week reflects historical accident more than productive necessity, though it could be argued that the four-day alternative has yet to prove itself outside knowledge work."
+   **example_pass**: It is increasingly accepted that the standard five-day week reflects historical accident more than productive necessity, though it could be argued that the four-day alternative has yet to prove itself outside knowledge work. | Never have I encountered a more compelling argument. | Were we to adopt this approach, the results could be transformative.
+   **example_fail**: yes (bare reply, no synthesis) | I agree with that (simple statement, no integrated C1-C2 structures) | The food was good (off-topic, no advanced synthesis)
 
 3. **id**: 3
    **label_pt**: "Thesis com pseudo-cleft"
@@ -245,6 +261,8 @@ This module does not introduce new chunks. Instead, it asks the student to deplo
    **hidden_prompt**: "user uses 'What this paper argues is...'"
    **hint_pt**: "What this paper argues is that the question is no longer whether to pilot the four-day week, but how to design pilots that produce learning rather than predetermined conclusions."
    **hint_en**: "What this paper argues is that the question is no longer whether to pilot the four-day week, but how to design pilots that produce learning rather than predetermined conclusions."
+   **example_pass**: What this paper argues is that the question is no longer whether to pilot the four-day week, but how to design pilots that produce learning rather than predetermined conclusions. | What truly sets this apart is the depth of its analysis. | Having considered all angles, I remain convinced of my position.
+   **example_fail**: yes (bare reply, no synthesis) | I agree with that (simple statement, no integrated C1-C2 structures) | The food was good (off-topic, no advanced synthesis)
 
 **Closing cue**: Charlotte closes with "Essay opening, fully integrated." once obj_3 lands.
 
@@ -280,6 +298,8 @@ This module does not introduce new chunks. Instead, it asks the student to deplo
    **hidden_prompt**: "user opens with inversion"
    **hint_pt**: "Rarely has a management orthodoxy lasted as long, or done as much damage in plain sight, as the conviction that what gets measured gets managed."
    **hint_en**: "Rarely has a management orthodoxy lasted as long, or done as much damage in plain sight, as the conviction that what gets measured gets managed."
+   **example_pass**: Rarely has a management orthodoxy lasted as long, or done as much damage in plain sight, as the conviction that what gets measured gets managed. | Had I known then what I know now, I'd have approached it differently. | It is precisely this nuance that makes the issue so complex.
+   **example_fail**: yes (bare reply, no synthesis) | I agree with that (simple statement, no integrated C1-C2 structures) | The food was good (off-topic, no advanced synthesis)
 
 2. **id**: 2
    **label_pt**: "Cleft + reframe"
@@ -287,6 +307,8 @@ This module does not introduce new chunks. Instead, it asks the student to deplo
    **hidden_prompt**: "user uses cleft + reframes question"
    **hint_pt**: "It is widely accepted that data improves decisions, but what too often goes unsaid is that bad metrics actively make decisions worse — distorting the very behaviours they were meant to measure."
    **hint_en**: "It is widely accepted that data improves decisions, but what too often goes unsaid is that bad metrics actively make decisions worse — distorting the very behaviours they were meant to measure."
+   **example_pass**: It is widely accepted that data improves decisions, but what too often goes unsaid is that bad metrics actively make decisions worse — distorting the very behaviours they were meant to measure. | Never have I encountered a more compelling argument. | Were we to adopt this approach, the results could be transformative.
+   **example_fail**: yes (bare reply, no synthesis) | I agree with that (simple statement, no integrated C1-C2 structures) | The food was good (off-topic, no advanced synthesis)
 
 3. **id**: 3
    **label_pt**: "Perguntar a Charlotte"
@@ -294,6 +316,8 @@ This module does not introduce new chunks. Instead, it asks the student to deplo
    **hidden_prompt**: "user asks Charlotte where the op-ed goes next"
    **hint_pt**: "Where does the op-ed go from here?"
    **hint_en**: "Where does the op-ed go from here?"
+   **example_pass**: Where does the op-ed go from here? | What truly sets this apart is the depth of its analysis. | Having considered all angles, I remain convinced of my position.
+   **example_fail**: yes (bare reply, no synthesis) | I agree with that (simple statement, no integrated C1-C2 structures) | The food was good (off-topic, no advanced synthesis)
 
 **Closing cue**: Charlotte closes with "Op-ed opener, fully C2." once obj_3 lands.
 
@@ -372,6 +396,8 @@ This module does not introduce new chunks. Instead, it asks the student to deplo
    **hidden_prompt**: "user opens with concession marker"
    **hint_pt**: "I can see why you'd want to fast-track this — the market window is genuinely closing, and the data on early-mover advantage is hard to argue with."
    **hint_en**: "I can see why you'd want to fast-track this — the market window is genuinely closing, and the data on early-mover advantage is hard to argue with."
+   **example_pass**: I can see why you'd want to fast-track this — the market window is genuinely closing, and the data on early-mover advantage is hard to argue with. | Had I known then what I know now, I'd have approached it differently. | It is precisely this nuance that makes the issue so complex.
+   **example_fail**: yes (bare reply, no synthesis) | I agree with that (simple statement, no integrated C1-C2 structures) | The food was good (off-topic, no advanced synthesis)
 
 2. **id**: 2
    **label_pt**: "Hedge + reframe"
@@ -379,6 +405,8 @@ This module does not introduce new chunks. Instead, it asks the student to deplo
    **hidden_prompt**: "user uses hedge and reframe"
    **hint_pt**: "That said, with respect, I think the deeper question is whether we have the operational capacity to actually deliver if we win the early-mover position."
    **hint_en**: "That said, with respect, I think the deeper question is whether we have the operational capacity to actually deliver if we win the early-mover position."
+   **example_pass**: That said, with respect, I think the deeper question is whether we have the operational capacity to actually deliver if we win the early-mover position. | Never have I encountered a more compelling argument. | Were we to adopt this approach, the results could be transformative.
+   **example_fail**: yes (bare reply, no synthesis) | I agree with that (simple statement, no integrated C1-C2 structures) | The food was good (off-topic, no advanced synthesis)
 
 3. **id**: 3
    **label_pt**: "Conclusão construtiva"
@@ -386,6 +414,8 @@ This module does not introduce new chunks. Instead, it asks the student to deplo
    **hidden_prompt**: "user closes with constructive proposal"
    **hint_pt**: "What I'd propose, honestly, is a six-week pilot at limited scope — close enough to the full plan that we'd learn fast, narrow enough that we wouldn't break anything in the process."
    **hint_en**: "What I'd propose, honestly, is a six-week pilot at limited scope — close enough to the full plan that we'd learn fast, narrow enough that we wouldn't break anything in the process."
+   **example_pass**: What I'd propose, honestly, is a six-week pilot at limited scope — close enough to the full plan that we'd learn fast, narrow enough that we wouldn't break anything in the process. | What truly sets this apart is the depth of its analysis. | Having considered all angles, I remain convinced of my position.
+   **example_fail**: yes (bare reply, no synthesis) | I agree with that (simple statement, no integrated C1-C2 structures) | The food was good (off-topic, no advanced synthesis)
 
 **Closing cue**: Charlotte closes with "Disagreement, relationship intact." once obj_3 lands.
 
@@ -421,6 +451,8 @@ This module does not introduce new chunks. Instead, it asks the student to deplo
    **hidden_prompt**: "user opens with concession"
    **hint_pt**: "I can see the case — six months is genuinely long, and most of the pattern data points the way you're describing."
    **hint_en**: "I can see the case — six months is genuinely long, and most of the pattern data points the way you're describing."
+   **example_pass**: I can see the case — six months is genuinely long, and most of the pattern data points the way you're describing. | Had I known then what I know now, I'd have approached it differently. | It is precisely this nuance that makes the issue so complex.
+   **example_fail**: yes (bare reply, no synthesis) | I agree with that (simple statement, no integrated C1-C2 structures) | The food was good (off-topic, no advanced synthesis)
 
 2. **id**: 2
    **label_pt**: "Push back diplomático"
@@ -428,6 +460,8 @@ This module does not introduce new chunks. Instead, it asks the student to deplo
    **hidden_prompt**: "user pushes back with hedge"
    **hint_pt**: "With respect, the question I'd want answered first is whether the warnings were specific enough to act on — sometimes 'no real change' means the brief was the problem, not the person."
    **hint_en**: "With respect, the question I'd want answered first is whether the warnings were specific enough to act on — sometimes 'no real change' means the brief was the problem, not the person."
+   **example_pass**: With respect, the question I'd want answered first is whether the warnings were specific enough to act on — sometimes 'no real change' means the brief was the problem, not the person. | Never have I encountered a more compelling argument. | Were we to adopt this approach, the results could be transformative.
+   **example_fail**: yes (bare reply, no synthesis) | I agree with that (simple statement, no integrated C1-C2 structures) | The food was good (off-topic, no advanced synthesis)
 
 3. **id**: 3
    **label_pt**: "Perguntar a Charlotte"
@@ -435,6 +469,8 @@ This module does not introduce new chunks. Instead, it asks the student to deplo
    **hidden_prompt**: "user asks Charlotte what specifically was asked"
    **hint_pt**: "What did the warnings actually ask for?"
    **hint_en**: "What did the warnings actually ask for?"
+   **example_pass**: What did the warnings actually ask for? | What truly sets this apart is the depth of its analysis. | Having considered all angles, I remain convinced of my position.
+   **example_fail**: yes (bare reply, no synthesis) | I agree with that (simple statement, no integrated C1-C2 structures) | The food was good (off-topic, no advanced synthesis)
 
 **Closing cue**: Charlotte closes with "Diplomatic register, sustained." once obj_3 lands.
 
@@ -513,6 +549,8 @@ This module does not introduce new chunks. Instead, it asks the student to deplo
    **hidden_prompt**: "user uses contractions and informal register"
    **hint_pt**: "Yeah, I've been swamped — barely had time to eat properly. You been busy too, or just chilling this week?"
    **hint_en**: "Yeah, I've been swamped — barely had time to eat properly. You been busy too, or just chilling this week?"
+   **example_pass**: Yeah, I've been swamped — barely had time to eat properly. You been busy too, or just chilling this week? | Had I known then what I know now, I'd have approached it differently. | It is precisely this nuance that makes the issue so complex.
+   **example_fail**: yes (bare reply, no synthesis) | I agree with that (simple statement, no integrated C1-C2 structures) | The food was good (off-topic, no advanced synthesis)
 
 2. **id**: 2
    **label_pt**: "Tag question casual"
@@ -520,6 +558,8 @@ This module does not introduce new chunks. Instead, it asks the student to deplo
    **hidden_prompt**: "user adds tag and casual filler"
    **hint_pt**: "We're still doing the thing on Saturday, right? I want to make sure I haven't double-booked myself."
    **hint_en**: "We're still doing the thing on Saturday, right? I want to make sure I haven't double-booked myself."
+   **example_pass**: We're still doing the thing on Saturday, right? I want to make sure I haven't double-booked myself. | Never have I encountered a more compelling argument. | Were we to adopt this approach, the results could be transformative.
+   **example_fail**: yes (bare reply, no synthesis) | I agree with that (simple statement, no integrated C1-C2 structures) | The food was good (off-topic, no advanced synthesis)
 
 3. **id**: 3
    **label_pt**: "Fechamento casual + filler"
@@ -527,6 +567,8 @@ This module does not introduce new chunks. Instead, it asks the student to deplo
    **hidden_prompt**: "user closes casually with filler"
    **hint_pt**: "Cool. I'll, you know, text you Friday afternoon — make sure we're still on."
    **hint_en**: "Cool. I'll, you know, text you Friday afternoon — make sure we're still on."
+   **example_pass**: Cool. I'll, you know, text you Friday afternoon — make sure we're still on. | What truly sets this apart is the depth of its analysis. | Having considered all angles, I remain convinced of my position.
+   **example_fail**: yes (bare reply, no synthesis) | I agree with that (simple statement, no integrated C1-C2 structures) | The food was good (off-topic, no advanced synthesis)
 
 **Closing cue**: Charlotte closes with "Casual register, fully native." once obj_3 lands.
 
@@ -562,6 +604,8 @@ This module does not introduce new chunks. Instead, it asks the student to deplo
    **hidden_prompt**: "user replies casually with contractions and filler"
    **hint_pt**: "Yeah, I know — it's been months, hasn't it? I've been buried under this project, honestly."
    **hint_en**: "Yeah, I know — it's been months, hasn't it? I've been buried under this project, honestly."
+   **example_pass**: Yeah, I know — it's been months, hasn't it? I've been buried under this project, honestly. | Had I known then what I know now, I'd have approached it differently. | It is precisely this nuance that makes the issue so complex.
+   **example_fail**: yes (bare reply, no synthesis) | I agree with that (simple statement, no integrated C1-C2 structures) | The food was good (off-topic, no advanced synthesis)
 
 2. **id**: 2
    **label_pt**: "Pergunta casual"
@@ -569,6 +613,8 @@ This module does not introduce new chunks. Instead, it asks the student to deplo
    **hidden_prompt**: "user asks casual reciprocal question"
    **hint_pt**: "How's stuff with you? Still doing the freelance thing, or did the full-time offer come through?"
    **hint_en**: "How's stuff with you? Still doing the freelance thing, or did the full-time offer come through?"
+   **example_pass**: How's stuff with you? Still doing the freelance thing, or did the full-time offer come through? | Never have I encountered a more compelling argument. | Were we to adopt this approach, the results could be transformative.
+   **example_fail**: yes (bare reply, no synthesis) | I agree with that (simple statement, no integrated C1-C2 structures) | The food was good (off-topic, no advanced synthesis)
 
 3. **id**: 3
    **label_pt**: "Plano combinado"
@@ -576,6 +622,8 @@ This module does not introduce new chunks. Instead, it asks the student to deplo
    **hidden_prompt**: "user proposes a casual catch-up plan"
    **hint_pt**: "We should grab dinner before another six months go by — I'm free, like, two Fridays from now?"
    **hint_en**: "We should grab dinner before another six months go by — I'm free, like, two Fridays from now?"
+   **example_pass**: We should grab dinner before another six months go by — I'm free, like, two Fridays from now? | What truly sets this apart is the depth of its analysis. | Having considered all angles, I remain convinced of my position.
+   **example_fail**: yes (bare reply, no synthesis) | I agree with that (simple statement, no integrated C1-C2 structures) | The food was good (off-topic, no advanced synthesis)
 
 **Closing cue**: Charlotte closes with "Casual mastery, end of M21+M20 integration." once obj_3 lands.
 
@@ -654,6 +702,8 @@ This module does not introduce new chunks. Instead, it asks the student to deplo
    **hidden_prompt**: "user produces formal academic/business register"
    **hint_pt**: "In the formal setting: 'I would propose, with respect, that we defer the decision pending a fuller review of the operational risks — particularly those flagged in the legal team's memo from last week.'"
    **hint_en**: "In the formal setting: 'I would propose, with respect, that we defer the decision pending a fuller review of the operational risks — particularly those flagged in the legal team's memo from last week.'"
+   **example_pass**: In the formal setting: 'I would propose, with respect, that we defer the decision pending a fuller review of the operational risks — particularly those flagged in the legal team's memo from last week.' | Had I known then what I know now, I'd have approached it differently. | It is precisely this nuance that makes the issue so complex.
+   **example_fail**: yes (bare reply, no synthesis) | I agree with that (simple statement, no integrated C1-C2 structures) | The food was good (off-topic, no advanced synthesis)
 
 2. **id**: 2
    **label_pt**: "Registro casual com peer"
@@ -661,6 +711,8 @@ This module does not introduce new chunks. Instead, it asks the student to deplo
    **hidden_prompt**: "user produces casual professional register"
    **hint_pt**: "To the peer: 'Look — between us, I think they're nowhere near ready. We're going to need to push the whole thing back a week, maybe two. Let's just be honest with each other about it before the next meeting.'"
    **hint_en**: "To the peer: 'Look — between us, I think they're nowhere near ready. We're going to need to push the whole thing back a week, maybe two. Let's just be honest with each other about it before the next meeting.'"
+   **example_pass**: To the peer: 'Look — between us, I think they're nowhere near ready. We're going to need to push the whole thing back a week, maybe two. Let's just be honest with each other about it before the next meeting.' | Never have I encountered a more compelling argument. | Were we to adopt this approach, the results could be transformative.
+   **example_fail**: yes (bare reply, no synthesis) | I agree with that (simple statement, no integrated C1-C2 structures) | The food was good (off-topic, no advanced synthesis)
 
 3. **id**: 3
    **label_pt**: "Registro íntimo com amigo"
@@ -668,6 +720,8 @@ This module does not introduce new chunks. Instead, it asks the student to deplo
    **hidden_prompt**: "user produces intimate casual register"
    **hint_pt**: "To the friend: 'Honestly? I'm exhausted. Three months of this, and I'm starting to wonder whether I'm built for senior leadership or just stubbornly pretending I am.'"
    **hint_en**: "To the friend: 'Honestly? I'm exhausted. Three months of this, and I'm starting to wonder whether I'm built for senior leadership or just stubbornly pretending I am.'"
+   **example_pass**: To the friend: 'Honestly? I'm exhausted. Three months of this, and I'm starting to wonder whether I'm built for senior leadership or just stubbornly pretending I am.' | What truly sets this apart is the depth of its analysis. | Having considered all angles, I remain convinced of my position.
+   **example_fail**: yes (bare reply, no synthesis) | I agree with that (simple statement, no integrated C1-C2 structures) | The food was good (off-topic, no advanced synthesis)
 
 **Closing cue**: Charlotte closes with "Three registers, one fluency. Curriculum closed." once obj_3 lands.
 
@@ -703,6 +757,8 @@ This module does not introduce new chunks. Instead, it asks the student to deplo
    **hidden_prompt**: "user uses formal academic/professional register"
    **hint_pt**: "I'd group them into three categories: structural commitments we cannot defer, market opportunities with closing windows, and capacity-building investments that the next two quarters will demand. The first category, in my view, is non-negotiable for Q1; the second deserves a sharper prioritisation conversation; the third is the one we keep postponing at our peril."
    **hint_en**: "I'd group them into three categories: structural commitments we cannot defer, market opportunities with closing windows, and capacity-building investments that the next two quarters will demand. The first category, in my view, is non-negotiable for Q1; the second deserves a sharper prioritisation conversation; the third is the one we keep postponing at our peril."
+   **example_pass**: I'd group them into three categories: structural commitments we cannot defer, market opportunities with closing windows, and capacity-building investments that the next two quarters will demand. The first category, in my view, is non-negotiable for Q1; the second deserves a sharper prioritisation conversation; the third is the one we keep postponing at our peril. | Had I known then what I know now, I'd have approached it differently. | It is precisely this nuance that makes the issue so complex.
+   **example_fail**: yes (bare reply, no synthesis) | I agree with that (simple statement, no integrated C1-C2 structures) | The food was good (off-topic, no advanced synthesis)
 
 2. **id**: 2
    **label_pt**: "Resposta casual ao colega"
@@ -710,6 +766,8 @@ This module does not introduce new chunks. Instead, it asks the student to deplo
    **hidden_prompt**: "user shifts to casual professional register"
    **hint_pt**: "Honestly? Between us — half the so-called priorities are theatre. The real Q1 question is whether we finally have the conversation about the engineering bottleneck, or whether we ride out another quarter pretending we don't have one."
    **hint_en**: "Honestly? Between us — half the so-called priorities are theatre. The real Q1 question is whether we finally have the conversation about the engineering bottleneck, or whether we ride out another quarter pretending we don't have one."
+   **example_pass**: Honestly? Between us — half the so-called priorities are theatre. The real Q1 question is whether we finally have the conversation about the engineering bottleneck, or whether we ride out another quarter pretending we don't have one. | Never have I encountered a more compelling argument. | Were we to adopt this approach, the results could be transformative.
+   **example_fail**: yes (bare reply, no synthesis) | I agree with that (simple statement, no integrated C1-C2 structures) | The food was good (off-topic, no advanced synthesis)
 
 3. **id**: 3
    **label_pt**: "Resposta íntima ao amigo"
@@ -717,6 +775,8 @@ This module does not introduce new chunks. Instead, it asks the student to deplo
    **hidden_prompt**: "user shifts to intimate register"
    **hint_pt**: "Look, the truth is I'm tired. Three quarters in a row of running on inherited problems and pretending they're my new initiatives. I don't know how much longer I want to keep doing it — and that's a sentence I would never say in a meeting."
    **hint_en**: "Look, the truth is I'm tired. Three quarters in a row of running on inherited problems and pretending they're my new initiatives. I don't know how much longer I want to keep doing it — and that's a sentence I would never say in a meeting."
+   **example_pass**: Look, the truth is I'm tired. Three quarters in a row of running on inherited problems and pretending they're my new initiatives. I don't know how much longer I want to keep doing it — and that's a sentence I would never say in a meeting. | What truly sets this apart is the depth of its analysis. | Having considered all angles, I remain convinced of my position.
+   **example_fail**: yes (bare reply, no synthesis) | I agree with that (simple statement, no integrated C1-C2 structures) | The food was good (off-topic, no advanced synthesis)
 
 **Closing cue**: Charlotte closes with "Three registers across three rooms. Curriculum complete." once obj_3 lands.
 

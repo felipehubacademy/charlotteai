@@ -86,6 +86,8 @@
    **hidden_prompt**: "user uses 'As a matter of fact, + clause'"
    **hint_pt**: "As a matter of fact, the launch was last Tuesday, not Wednesday."
    **hint_en**: "As a matter of fact, the launch was last Tuesday, not Wednesday."
+   **example_pass**: As a matter of fact, the launch was last Tuesday, not Wednesday. | On the one hand, it's expensive; on the other hand, it lasts forever. | Having said that, there are still some concerns.
+   **example_fail**: and (bare connector, no discourse marker) | I like it. I bought it (simple statements, no markers) | The weather is nice (off-topic, no discourse organisation)
 
 2. **id**: 2
    **label_pt**: "Escalada com 'in fact'"
@@ -93,6 +95,8 @@
    **hidden_prompt**: "user uses 'In fact, + clause' to intensify"
    **hint_pt**: "She didn't just attend the meeting — in fact, she led most of it."
    **hint_en**: "She didn't just attend the meeting — in fact, she led most of it."
+   **example_pass**: She didn't just attend the meeting — in fact, she led most of it. | As a matter of fact, I had the same experience. | To put it differently, we need a fresh approach.
+   **example_fail**: and (bare connector, no discourse marker) | I like it. I bought it (simple statements, no markers) | The weather is nice (off-topic, no discourse organisation)
 
 3. **id**: 3
    **label_pt**: "Esclarecimento com 'actually'"
@@ -100,6 +104,8 @@
    **hidden_prompt**: "user uses 'Actually, + clause'"
    **hint_pt**: "Actually, the deadline was extended on Friday afternoon."
    **hint_en**: "Actually, the deadline was extended on Friday afternoon."
+   **example_pass**: Actually, the deadline was extended on Friday afternoon. | In any case, the deadline remains the same. | That said, we should still consider the alternatives.
+   **example_fail**: and (bare connector, no discourse marker) | I like it. I bought it (simple statements, no markers) | The weather is nice (off-topic, no discourse organisation)
 
 **Closing cue**: Charlotte closes with "Refinements landed." once obj_3 lands.
 
@@ -135,6 +141,8 @@
    **hidden_prompt**: "user uses 'In fact / As a matter of fact / Actually + clause'"
    **hint_pt**: "Actually, most measured studies show productivity rose or held steady, not fell."
    **hint_en**: "Actually, most measured studies show productivity rose or held steady, not fell."
+   **example_pass**: Actually, most measured studies show productivity rose or held steady, not fell. | On the one hand, it's expensive; on the other hand, it lasts forever. | Having said that, there are still some concerns.
+   **example_fail**: and (bare connector, no discourse marker) | I like it. I bought it (simple statements, no markers) | The weather is nice (off-topic, no discourse organisation)
 
 2. **id**: 2
    **label_pt**: "Aprofundar com outro marcador"
@@ -142,6 +150,8 @@
    **hidden_prompt**: "user uses another nuancing marker"
    **hint_pt**: "In fact, the productivity dip people remember was driven by the pandemic itself, not by where people worked."
    **hint_en**: "In fact, the productivity dip people remember was driven by the pandemic itself, not by where people worked."
+   **example_pass**: In fact, the productivity dip people remember was driven by the pandemic itself, not by where people worked. | As a matter of fact, I had the same experience. | To put it differently, we need a fresh approach.
+   **example_fail**: and (bare connector, no discourse marker) | I like it. I bought it (simple statements, no markers) | The weather is nice (off-topic, no discourse organisation)
 
 3. **id**: 3
    **label_pt**: "Perguntar a Charlotte"
@@ -149,6 +159,8 @@
    **hidden_prompt**: "user asks Charlotte where she's hearing it"
    **hint_pt**: "Who's saying it?"
    **hint_en**: "Who's saying it?"
+   **example_pass**: Who's saying it? | In any case, the deadline remains the same. | That said, we should still consider the alternatives.
+   **example_fail**: and (bare connector, no discourse marker) | I like it. I bought it (simple statements, no markers) | The weather is nice (off-topic, no discourse organisation)
 
 **Closing cue**: Charlotte closes with "Assumption properly nuanced." once obj_3 lands.
 
@@ -226,6 +238,8 @@
    **hidden_prompt**: "user uses 'That said, + clause'"
    **hint_pt**: "The product launch was successful. That said, the support tickets tell a more complicated story."
    **hint_en**: "The product launch was successful. That said, the support tickets tell a more complicated story."
+   **example_pass**: The product launch was successful. That said, the support tickets tell a more complicated story. | On the one hand, it's expensive; on the other hand, it lasts forever. | Having said that, there are still some concerns.
+   **example_fail**: and (bare connector, no discourse marker) | I like it. I bought it (simple statements, no markers) | The weather is nice (off-topic, no discourse organisation)
 
 2. **id**: 2
    **label_pt**: "'Mind you' (informal)"
@@ -233,6 +247,8 @@
    **hidden_prompt**: "user uses 'Mind you, + clause'"
    **hint_pt**: "He's a strong negotiator. Mind you, he sometimes wins the battle and loses the relationship."
    **hint_en**: "He's a strong negotiator. Mind you, he sometimes wins the battle and loses the relationship."
+   **example_pass**: He's a strong negotiator. Mind you, he sometimes wins the battle and loses the relationship. | As a matter of fact, I had the same experience. | To put it differently, we need a fresh approach.
+   **example_fail**: and (bare connector, no discourse marker) | I like it. I bought it (simple statements, no markers) | The weather is nice (off-topic, no discourse organisation)
 
 3. **id**: 3
    **label_pt**: "Reconsideração com 'Then again' ou 'Granted'"
@@ -240,6 +256,8 @@
    **hidden_prompt**: "user uses 'Then again, + clause' or 'Granted, + clause'"
    **hint_pt**: "Granted, the data is preliminary — but the trend is hard to dismiss."
    **hint_en**: "Granted, the data is preliminary — but the trend is hard to dismiss."
+   **example_pass**: Granted, the data is preliminary — but the trend is hard to dismiss. | In any case, the deadline remains the same. | That said, we should still consider the alternatives.
+   **example_fail**: and (bare connector, no discourse marker) | I like it. I bought it (simple statements, no markers) | The weather is nice (off-topic, no discourse organisation)
 
 **Closing cue**: Charlotte closes with "Argument balanced, edges shown." once obj_3 lands.
 
@@ -275,6 +293,8 @@
    **hidden_prompt**: "user uses 'That said' or 'Mind you' or 'Granted'"
    **hint_pt**: "There's something to that. That said, 'most' is doing a lot of work in that sentence."
    **hint_en**: "There's something to that. That said, 'most' is doing a lot of work in that sentence."
+   **example_pass**: There's something to that. That said, 'most' is doing a lot of work in that sentence. | On the one hand, it's expensive; on the other hand, it lasts forever. | Having said that, there are still some concerns.
+   **example_fail**: and (bare connector, no discourse marker) | I like it. I bought it (simple statements, no markers) | The weather is nice (off-topic, no discourse organisation)
 
 2. **id**: 2
    **label_pt**: "Aprofundar com outro concession marker"
@@ -282,6 +302,8 @@
    **hidden_prompt**: "user uses 'Then again' or 'Mind you' or 'Admittedly'"
    **hint_pt**: "Then again, every major shift looked total in advance and partial in retrospect."
    **hint_en**: "Then again, every major shift looked total in advance and partial in retrospect."
+   **example_pass**: Then again, every major shift looked total in advance and partial in retrospect. | As a matter of fact, I had the same experience. | To put it differently, we need a fresh approach.
+   **example_fail**: and (bare connector, no discourse marker) | I like it. I bought it (simple statements, no markers) | The weather is nice (off-topic, no discourse organisation)
 
 3. **id**: 3
    **label_pt**: "Perguntar a Charlotte"
@@ -289,6 +311,8 @@
    **hidden_prompt**: "user asks Charlotte how she'd hedge her own claim"
    **hint_pt**: "What's the strongest counter you'd make to yourself?"
    **hint_en**: "What's the strongest counter you'd make to yourself?"
+   **example_pass**: What's the strongest counter you'd make to yourself? | In any case, the deadline remains the same. | That said, we should still consider the alternatives.
+   **example_fail**: and (bare connector, no discourse marker) | I like it. I bought it (simple statements, no markers) | The weather is nice (off-topic, no discourse organisation)
 
 **Closing cue**: Charlotte closes with "Position complicated, fairly." once obj_3 lands.
 
@@ -366,6 +390,8 @@
    **hidden_prompt**: "user uses 'In other words, + clause'"
    **hint_pt**: "Our customer acquisition cost is rising faster than lifetime value. In other words, we're paying more to land each customer than they're worth to us."
    **hint_en**: "Our customer acquisition cost is rising faster than lifetime value. In other words, we're paying more to land each customer than they're worth to us."
+   **example_pass**: Our customer acquisition cost is rising faster than lifetime value. In other words, we're paying more to land each customer than they're worth to us. | On the one hand, it's expensive; on the other hand, it lasts forever. | Having said that, there are still some concerns.
+   **example_fail**: and (bare connector, no discourse marker) | I like it. I bought it (simple statements, no markers) | The weather is nice (off-topic, no discourse organisation)
 
 2. **id**: 2
    **label_pt**: "Reformulação formal com 'That is to say'"
@@ -373,6 +399,8 @@
    **hidden_prompt**: "user uses 'That is to say, + clause'"
    **hint_pt**: "The model assumes diminishing returns. That is to say, each additional dollar produces less impact than the one before it."
    **hint_en**: "The model assumes diminishing returns. That is to say, each additional dollar produces less impact than the one before it."
+   **example_pass**: The model assumes diminishing returns. That is to say, each additional dollar produces less impact than the one before it. | As a matter of fact, I had the same experience. | To put it differently, we need a fresh approach.
+   **example_fail**: and (bare connector, no discourse marker) | I like it. I bought it (simple statements, no markers) | The weather is nice (off-topic, no discourse organisation)
 
 3. **id**: 3
    **label_pt**: "Auto-correção com 'Or rather'"
@@ -380,6 +408,8 @@
    **hidden_prompt**: "user uses 'Or rather, + clause'"
    **hint_pt**: "She's resistant to change. Or rather, she's protective of what's been working."
    **hint_en**: "She's resistant to change. Or rather, she's protective of what's been working."
+   **example_pass**: She's resistant to change. Or rather, she's protective of what's been working. | In any case, the deadline remains the same. | That said, we should still consider the alternatives.
+   **example_fail**: and (bare connector, no discourse marker) | I like it. I bought it (simple statements, no markers) | The weather is nice (off-topic, no discourse organisation)
 
 **Closing cue**: Charlotte closes with "Translation, in three registers." once obj_3 lands.
 
@@ -415,6 +445,8 @@
    **hidden_prompt**: "user uses 'In other words / That is to say + clause'"
    **hint_pt**: "In other words, you're chasing big wins in a small market without spending much money to play."
    **hint_en**: "In other words, you're chasing big wins in a small market without spending much money to play."
+   **example_pass**: In other words, you're chasing big wins in a small market without spending much money to play. | On the one hand, it's expensive; on the other hand, it lasts forever. | Having said that, there are still some concerns.
+   **example_fail**: and (bare connector, no discourse marker) | I like it. I bought it (simple statements, no markers) | The weather is nice (off-topic, no discourse organisation)
 
 2. **id**: 2
    **label_pt**: "Pedir confirmação com reformulação"
@@ -422,6 +454,8 @@
    **hidden_prompt**: "user uses 'To put it another way' or 'Put differently'"
    **hint_pt**: "Put differently — you want to find the few customers who'll pay a lot, without burning cash to find them."
    **hint_en**: "Put differently — you want to find the few customers who'll pay a lot, without burning cash to find them."
+   **example_pass**: Put differently — you want to find the few customers who'll pay a lot, without burning cash to find them. | As a matter of fact, I had the same experience. | To put it differently, we need a fresh approach.
+   **example_fail**: and (bare connector, no discourse marker) | I like it. I bought it (simple statements, no markers) | The weather is nice (off-topic, no discourse organisation)
 
 3. **id**: 3
    **label_pt**: "Perguntar a Charlotte"
@@ -429,6 +463,8 @@
    **hidden_prompt**: "user asks Charlotte if the translation is right"
    **hint_pt**: "Have I got it right?"
    **hint_en**: "Have I got it right?"
+   **example_pass**: Have I got it right? | In any case, the deadline remains the same. | That said, we should still consider the alternatives.
+   **example_fail**: and (bare connector, no discourse marker) | I like it. I bought it (simple statements, no markers) | The weather is nice (off-topic, no discourse organisation)
 
 **Closing cue**: Charlotte closes with "Jargon decoded, plainly." once obj_3 lands.
 
@@ -506,6 +542,8 @@
    **hidden_prompt**: "user uses 'What's more, + clause' in a pitch"
    **hint_pt**: "The neighbourhood is quiet and full of small bakeries. What's more, the metro stops two minutes from the door."
    **hint_en**: "The neighbourhood is quiet and full of small bakeries. What's more, the metro stops two minutes from the door."
+   **example_pass**: The neighbourhood is quiet and full of small bakeries. What's more, the metro stops two minutes from the door. | On the one hand, it's expensive; on the other hand, it lasts forever. | Having said that, there are still some concerns.
+   **example_fail**: and (bare connector, no discourse marker) | I like it. I bought it (simple statements, no markers) | The weather is nice (off-topic, no discourse organisation)
 
 2. **id**: 2
    **label_pt**: "Pitch com 'Not least'"
@@ -513,6 +551,8 @@
    **hidden_prompt**: "user uses 'Not least, + clause'"
    **hint_pt**: "She's experienced, articulate, and — not least — calm under pressure."
    **hint_en**: "She's experienced, articulate, and — not least — calm under pressure."
+   **example_pass**: She's experienced, articulate, and — not least — calm under pressure. | As a matter of fact, I had the same experience. | To put it differently, we need a fresh approach.
+   **example_fail**: and (bare connector, no discourse marker) | I like it. I bought it (simple statements, no markers) | The weather is nice (off-topic, no discourse organisation)
 
 3. **id**: 3
    **label_pt**: "Climax com 'Above all'"
@@ -520,6 +560,8 @@
    **hidden_prompt**: "user uses 'Above all, + clause'"
    **hint_pt**: "The idea is fundable, timely, and — above all — solves a problem nobody else is looking at."
    **hint_en**: "The idea is fundable, timely, and — above all — solves a problem nobody else is looking at."
+   **example_pass**: The idea is fundable, timely, and — above all — solves a problem nobody else is looking at. | In any case, the deadline remains the same. | That said, we should still consider the alternatives.
+   **example_fail**: and (bare connector, no discourse marker) | I like it. I bought it (simple statements, no markers) | The weather is nice (off-topic, no discourse organisation)
 
 **Closing cue**: Charlotte closes with "Pitches stacked, climax landed." once obj_3 lands.
 
@@ -555,6 +597,8 @@
    **hidden_prompt**: "user uses 'What's more, + clause'"
    **hint_pt**: "The work itself still excites me. What's more, my manager has actually been listening to my career goals."
    **hint_en**: "The work itself still excites me. What's more, my manager has actually been listening to my career goals."
+   **example_pass**: The work itself still excites me. What's more, my manager has actually been listening to my career goals. | On the one hand, it's expensive; on the other hand, it lasts forever. | Having said that, there are still some concerns.
+   **example_fail**: and (bare connector, no discourse marker) | I like it. I bought it (simple statements, no markers) | The weather is nice (off-topic, no discourse organisation)
 
 2. **id**: 2
    **label_pt**: "Ponto específico com 'Not least'"
@@ -562,6 +606,8 @@
    **hidden_prompt**: "user uses 'Not least, + clause'"
    **hint_pt**: "Not least, the team I built took years to assemble and I'd be starting from zero somewhere else."
    **hint_en**: "Not least, the team I built took years to assemble and I'd be starting from zero somewhere else."
+   **example_pass**: Not least, the team I built took years to assemble and I'd be starting from zero somewhere else. | As a matter of fact, I had the same experience. | To put it differently, we need a fresh approach.
+   **example_fail**: and (bare connector, no discourse marker) | I like it. I bought it (simple statements, no markers) | The weather is nice (off-topic, no discourse organisation)
 
 3. **id**: 3
    **label_pt**: "Climax com 'Above all'"
@@ -569,6 +615,8 @@
    **hidden_prompt**: "user uses 'Above all, + clause'"
    **hint_pt**: "Above all, the fancier offer was about title — and I've already learned that's the thinnest reason to move."
    **hint_en**: "Above all, the fancier offer was about title — and I've already learned that's the thinnest reason to move."
+   **example_pass**: Above all, the fancier offer was about title — and I've already learned that's the thinnest reason to move. | In any case, the deadline remains the same. | That said, we should still consider the alternatives.
+   **example_fail**: and (bare connector, no discourse marker) | I like it. I bought it (simple statements, no markers) | The weather is nice (off-topic, no discourse organisation)
 
 **Closing cue**: Charlotte closes with "Defended, with proper climax." once obj_3 lands.
 
@@ -646,6 +694,8 @@
    **hidden_prompt**: "user uses 'All things considered, + clause'"
    **hint_pt**: "All things considered, leaving that job a year early was the right call."
    **hint_en**: "All things considered, leaving that job a year early was the right call."
+   **example_pass**: All things considered, leaving that job a year early was the right call. | On the one hand, it's expensive; on the other hand, it lasts forever. | Having said that, there are still some concerns.
+   **example_fail**: and (bare connector, no discourse marker) | I like it. I bought it (simple statements, no markers) | The weather is nice (off-topic, no discourse organisation)
 
 2. **id**: 2
    **label_pt**: "Veredito com 'On balance'"
@@ -653,6 +703,8 @@
    **hidden_prompt**: "user uses 'On balance, + clause'"
    **hint_pt**: "On balance, the move abroad cost more than I expected but gave more than I imagined."
    **hint_en**: "On balance, the move abroad cost more than I expected but gave more than I imagined."
+   **example_pass**: On balance, the move abroad cost more than I expected but gave more than I imagined. | As a matter of fact, I had the same experience. | To put it differently, we need a fresh approach.
+   **example_fail**: and (bare connector, no discourse marker) | I like it. I bought it (simple statements, no markers) | The weather is nice (off-topic, no discourse organisation)
 
 3. **id**: 3
    **label_pt**: "Causal formal com 'Hence' ou 'Accordingly'"
@@ -660,6 +712,8 @@
    **hidden_prompt**: "user uses 'Hence, + clause' or 'Accordingly, + clause'"
    **hint_pt**: "The model has proven robust across markets. Hence, we're rolling it out company-wide."
    **hint_en**: "The model has proven robust across markets. Hence, we're rolling it out company-wide."
+   **example_pass**: The model has proven robust across markets. Hence, we're rolling it out company-wide. | In any case, the deadline remains the same. | That said, we should still consider the alternatives.
+   **example_fail**: and (bare connector, no discourse marker) | I like it. I bought it (simple statements, no markers) | The weather is nice (off-topic, no discourse organisation)
 
 **Closing cue**: Charlotte closes with "Verdicts properly weighted." once obj_3 lands.
 
@@ -695,6 +749,8 @@
    **hidden_prompt**: "user uses 'On balance / On the whole / All things considered'"
    **hint_pt**: "On balance, the year was harder than the last one but more meaningful."
    **hint_en**: "On balance, the year was harder than the last one but more meaningful."
+   **example_pass**: On balance, the year was harder than the last one but more meaningful. | On the one hand, it's expensive; on the other hand, it lasts forever. | Having said that, there are still some concerns.
+   **example_fail**: and (bare connector, no discourse marker) | I like it. I bought it (simple statements, no markers) | The weather is nice (off-topic, no discourse organisation)
 
 2. **id**: 2
    **label_pt**: "Concessão e emphasis"
@@ -702,6 +758,8 @@
    **hidden_prompt**: "user uses 'Granted / That said' + 'Above all / Not least'"
    **hint_pt**: "Granted, two big bets failed. That said, the lesson from each was probably worth the cost. Above all, I learned where my actual limits are."
    **hint_en**: "Granted, two big bets failed. That said, the lesson from each was probably worth the cost. Above all, I learned where my actual limits are."
+   **example_pass**: Granted, two big bets failed. That said, the lesson from each was probably worth the cost. Above all, I learned where my actual limits are. | As a matter of fact, I had the same experience. | To put it differently, we need a fresh approach.
+   **example_fail**: and (bare connector, no discourse marker) | I like it. I bought it (simple statements, no markers) | The weather is nice (off-topic, no discourse organisation)
 
 3. **id**: 3
    **label_pt**: "Perguntar a Charlotte"
@@ -709,6 +767,8 @@
    **hidden_prompt**: "user asks Charlotte for her own retrospective"
    **hint_pt**: "How would you sum up yours?"
    **hint_en**: "How would you sum up yours?"
+   **example_pass**: How would you sum up yours? | In any case, the deadline remains the same. | That said, we should still consider the alternatives.
+   **example_fail**: and (bare connector, no discourse marker) | I like it. I bought it (simple statements, no markers) | The weather is nice (off-topic, no discourse organisation)
 
 **Closing cue**: Charlotte closes with "Year, summed properly." once obj_3 lands.
 

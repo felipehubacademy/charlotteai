@@ -129,19 +129,49 @@
             "id": 1,
             "label_en": "Soft correction with 'as a matter of fact'",
             "hidden_prompt": "user uses 'As a matter of fact, + clause'",
-            "hint_en": "As a matter of fact, the launch was last Tuesday, not Wednesday."
+            "hint_en": "As a matter of fact, the launch was last Tuesday, not Wednesday.",
+            "examples_pass": [
+              "As a matter of fact, the launch was last Tuesday, not Wednesday.",
+              "On the one hand, it's expensive; on the other hand, it lasts forever.",
+              "Having said that, there are still some concerns."
+            ],
+            "examples_fail": [
+              "and (bare connector, no discourse marker)",
+              "I like it. I bought it (simple statements, no markers)",
+              "The weather is nice (off-topic, no discourse organisation)"
+            ]
           },
           {
             "id": 2,
             "label_en": "Escalation with 'in fact'",
             "hidden_prompt": "user uses 'In fact, + clause' to intensify",
-            "hint_en": "She didn't just attend the meeting — in fact, she led most of it."
+            "hint_en": "She didn't just attend the meeting — in fact, she led most of it.",
+            "examples_pass": [
+              "She didn't just attend the meeting — in fact, she led most of it.",
+              "As a matter of fact, I had the same experience.",
+              "To put it differently, we need a fresh approach."
+            ],
+            "examples_fail": [
+              "and (bare connector, no discourse marker)",
+              "I like it. I bought it (simple statements, no markers)",
+              "The weather is nice (off-topic, no discourse organisation)"
+            ]
           },
           {
             "id": 3,
             "label_en": "Clarification with 'actually'",
             "hidden_prompt": "user uses 'Actually, + clause'",
-            "hint_en": "Actually, the deadline was extended on Friday afternoon."
+            "hint_en": "Actually, the deadline was extended on Friday afternoon.",
+            "examples_pass": [
+              "Actually, the deadline was extended on Friday afternoon.",
+              "In any case, the deadline remains the same.",
+              "That said, we should still consider the alternatives."
+            ],
+            "examples_fail": [
+              "and (bare connector, no discourse marker)",
+              "I like it. I bought it (simple statements, no markers)",
+              "The weather is nice (off-topic, no discourse organisation)"
+            ]
           }
         ],
         "closing_cue": "Charlotte closes with \"Refinements landed.\" once obj_3 lands.",
@@ -164,19 +194,49 @@
             "id": 1,
             "label_en": "Correction of premise",
             "hidden_prompt": "user uses 'In fact / As a matter of fact / Actually + clause'",
-            "hint_en": "Actually, most measured studies show productivity rose or held steady, not fell."
+            "hint_en": "Actually, most measured studies show productivity rose or held steady, not fell.",
+            "examples_pass": [
+              "Actually, most measured studies show productivity rose or held steady, not fell.",
+              "On the one hand, it's expensive; on the other hand, it lasts forever.",
+              "Having said that, there are still some concerns."
+            ],
+            "examples_fail": [
+              "and (bare connector, no discourse marker)",
+              "I like it. I bought it (simple statements, no markers)",
+              "The weather is nice (off-topic, no discourse organisation)"
+            ]
           },
           {
             "id": 2,
             "label_en": "Deepen with another marker",
             "hidden_prompt": "user uses another nuancing marker",
-            "hint_en": "In fact, the productivity dip people remember was driven by the pandemic itself, not by where people worked."
+            "hint_en": "In fact, the productivity dip people remember was driven by the pandemic itself, not by where people worked.",
+            "examples_pass": [
+              "In fact, the productivity dip people remember was driven by the pandemic itself, not by where people worked.",
+              "As a matter of fact, I had the same experience.",
+              "To put it differently, we need a fresh approach."
+            ],
+            "examples_fail": [
+              "and (bare connector, no discourse marker)",
+              "I like it. I bought it (simple statements, no markers)",
+              "The weather is nice (off-topic, no discourse organisation)"
+            ]
           },
           {
             "id": 3,
             "label_en": "Ask Charlotte",
             "hidden_prompt": "user asks Charlotte where she's hearing it",
-            "hint_en": "Who's saying it?"
+            "hint_en": "Who's saying it?",
+            "examples_pass": [
+              "Who's saying it?",
+              "In any case, the deadline remains the same.",
+              "That said, we should still consider the alternatives."
+            ],
+            "examples_fail": [
+              "and (bare connector, no discourse marker)",
+              "I like it. I bought it (simple statements, no markers)",
+              "The weather is nice (off-topic, no discourse organisation)"
+            ]
           }
         ],
         "closing_cue": "Charlotte closes with \"Assumption properly nuanced.\" once obj_3 lands.",
@@ -288,19 +348,49 @@
             "id": 1,
             "label_en": "Concession with 'That said'",
             "hidden_prompt": "user uses 'That said, + clause'",
-            "hint_en": "The product launch was successful. That said, the support tickets tell a more complicated story."
+            "hint_en": "The product launch was successful. That said, the support tickets tell a more complicated story.",
+            "examples_pass": [
+              "The product launch was successful. That said, the support tickets tell a more complicated story.",
+              "On the one hand, it's expensive; on the other hand, it lasts forever.",
+              "Having said that, there are still some concerns."
+            ],
+            "examples_fail": [
+              "and (bare connector, no discourse marker)",
+              "I like it. I bought it (simple statements, no markers)",
+              "The weather is nice (off-topic, no discourse organisation)"
+            ]
           },
           {
             "id": 2,
             "label_en": "'Mind you' (informal)",
             "hidden_prompt": "user uses 'Mind you, + clause'",
-            "hint_en": "He's a strong negotiator. Mind you, he sometimes wins the battle and loses the relationship."
+            "hint_en": "He's a strong negotiator. Mind you, he sometimes wins the battle and loses the relationship.",
+            "examples_pass": [
+              "He's a strong negotiator. Mind you, he sometimes wins the battle and loses the relationship.",
+              "As a matter of fact, I had the same experience.",
+              "To put it differently, we need a fresh approach."
+            ],
+            "examples_fail": [
+              "and (bare connector, no discourse marker)",
+              "I like it. I bought it (simple statements, no markers)",
+              "The weather is nice (off-topic, no discourse organisation)"
+            ]
           },
           {
             "id": 3,
             "label_en": "Reconsideration with 'Then again' or 'Granted'",
             "hidden_prompt": "user uses 'Then again, + clause' or 'Granted, + clause'",
-            "hint_en": "Granted, the data is preliminary — but the trend is hard to dismiss."
+            "hint_en": "Granted, the data is preliminary — but the trend is hard to dismiss.",
+            "examples_pass": [
+              "Granted, the data is preliminary — but the trend is hard to dismiss.",
+              "In any case, the deadline remains the same.",
+              "That said, we should still consider the alternatives."
+            ],
+            "examples_fail": [
+              "and (bare connector, no discourse marker)",
+              "I like it. I bought it (simple statements, no markers)",
+              "The weather is nice (off-topic, no discourse organisation)"
+            ]
           }
         ],
         "closing_cue": "Charlotte closes with \"Argument balanced, edges shown.\" once obj_3 lands.",
@@ -323,19 +413,49 @@
             "id": 1,
             "label_en": "Partial agreement with concession",
             "hidden_prompt": "user uses 'That said' or 'Mind you' or 'Granted'",
-            "hint_en": "There's something to that. That said, 'most' is doing a lot of work in that sentence."
+            "hint_en": "There's something to that. That said, 'most' is doing a lot of work in that sentence.",
+            "examples_pass": [
+              "There's something to that. That said, 'most' is doing a lot of work in that sentence.",
+              "On the one hand, it's expensive; on the other hand, it lasts forever.",
+              "Having said that, there are still some concerns."
+            ],
+            "examples_fail": [
+              "and (bare connector, no discourse marker)",
+              "I like it. I bought it (simple statements, no markers)",
+              "The weather is nice (off-topic, no discourse organisation)"
+            ]
           },
           {
             "id": 2,
             "label_en": "Deepen with another concession marker",
             "hidden_prompt": "user uses 'Then again' or 'Mind you' or 'Admittedly'",
-            "hint_en": "Then again, every major shift looked total in advance and partial in retrospect."
+            "hint_en": "Then again, every major shift looked total in advance and partial in retrospect.",
+            "examples_pass": [
+              "Then again, every major shift looked total in advance and partial in retrospect.",
+              "As a matter of fact, I had the same experience.",
+              "To put it differently, we need a fresh approach."
+            ],
+            "examples_fail": [
+              "and (bare connector, no discourse marker)",
+              "I like it. I bought it (simple statements, no markers)",
+              "The weather is nice (off-topic, no discourse organisation)"
+            ]
           },
           {
             "id": 3,
             "label_en": "Ask Charlotte",
             "hidden_prompt": "user asks Charlotte how she'd hedge her own claim",
-            "hint_en": "What's the strongest counter you'd make to yourself?"
+            "hint_en": "What's the strongest counter you'd make to yourself?",
+            "examples_pass": [
+              "What's the strongest counter you'd make to yourself?",
+              "In any case, the deadline remains the same.",
+              "That said, we should still consider the alternatives."
+            ],
+            "examples_fail": [
+              "and (bare connector, no discourse marker)",
+              "I like it. I bought it (simple statements, no markers)",
+              "The weather is nice (off-topic, no discourse organisation)"
+            ]
           }
         ],
         "closing_cue": "Charlotte closes with \"Position complicated, fairly.\" once obj_3 lands.",
@@ -439,19 +559,49 @@
             "id": 1,
             "label_en": "Paraphrase with 'In other words'",
             "hidden_prompt": "user uses 'In other words, + clause'",
-            "hint_en": "Our customer acquisition cost is rising faster than lifetime value. In other words, we're paying more to land each customer than they're worth to us."
+            "hint_en": "Our customer acquisition cost is rising faster than lifetime value. In other words, we're paying more to land each customer than they're worth to us.",
+            "examples_pass": [
+              "Our customer acquisition cost is rising faster than lifetime value. In other words, we're paying more to land each customer than they're worth to us.",
+              "On the one hand, it's expensive; on the other hand, it lasts forever.",
+              "Having said that, there are still some concerns."
+            ],
+            "examples_fail": [
+              "and (bare connector, no discourse marker)",
+              "I like it. I bought it (simple statements, no markers)",
+              "The weather is nice (off-topic, no discourse organisation)"
+            ]
           },
           {
             "id": 2,
             "label_en": "Formal reformulation with 'That is to say'",
             "hidden_prompt": "user uses 'That is to say, + clause'",
-            "hint_en": "The model assumes diminishing returns. That is to say, each additional dollar produces less impact than the one before it."
+            "hint_en": "The model assumes diminishing returns. That is to say, each additional dollar produces less impact than the one before it.",
+            "examples_pass": [
+              "The model assumes diminishing returns. That is to say, each additional dollar produces less impact than the one before it.",
+              "As a matter of fact, I had the same experience.",
+              "To put it differently, we need a fresh approach."
+            ],
+            "examples_fail": [
+              "and (bare connector, no discourse marker)",
+              "I like it. I bought it (simple statements, no markers)",
+              "The weather is nice (off-topic, no discourse organisation)"
+            ]
           },
           {
             "id": 3,
             "label_en": "Self-correction with 'Or rather'",
             "hidden_prompt": "user uses 'Or rather, + clause'",
-            "hint_en": "She's resistant to change. Or rather, she's protective of what's been working."
+            "hint_en": "She's resistant to change. Or rather, she's protective of what's been working.",
+            "examples_pass": [
+              "She's resistant to change. Or rather, she's protective of what's been working.",
+              "In any case, the deadline remains the same.",
+              "That said, we should still consider the alternatives."
+            ],
+            "examples_fail": [
+              "and (bare connector, no discourse marker)",
+              "I like it. I bought it (simple statements, no markers)",
+              "The weather is nice (off-topic, no discourse organisation)"
+            ]
           }
         ],
         "closing_cue": "Charlotte closes with \"Translation, in three registers.\" once obj_3 lands.",
@@ -474,19 +624,49 @@
             "id": 1,
             "label_en": "Translation to clear English",
             "hidden_prompt": "user uses 'In other words / That is to say + clause'",
-            "hint_en": "In other words, you're chasing big wins in a small market without spending much money to play."
+            "hint_en": "In other words, you're chasing big wins in a small market without spending much money to play.",
+            "examples_pass": [
+              "In other words, you're chasing big wins in a small market without spending much money to play.",
+              "On the one hand, it's expensive; on the other hand, it lasts forever.",
+              "Having said that, there are still some concerns."
+            ],
+            "examples_fail": [
+              "and (bare connector, no discourse marker)",
+              "I like it. I bought it (simple statements, no markers)",
+              "The weather is nice (off-topic, no discourse organisation)"
+            ]
           },
           {
             "id": 2,
             "label_en": "Confirm with reformulation",
             "hidden_prompt": "user uses 'To put it another way' or 'Put differently'",
-            "hint_en": "Put differently — you want to find the few customers who'll pay a lot, without burning cash to find them."
+            "hint_en": "Put differently — you want to find the few customers who'll pay a lot, without burning cash to find them.",
+            "examples_pass": [
+              "Put differently — you want to find the few customers who'll pay a lot, without burning cash to find them.",
+              "As a matter of fact, I had the same experience.",
+              "To put it differently, we need a fresh approach."
+            ],
+            "examples_fail": [
+              "and (bare connector, no discourse marker)",
+              "I like it. I bought it (simple statements, no markers)",
+              "The weather is nice (off-topic, no discourse organisation)"
+            ]
           },
           {
             "id": 3,
             "label_en": "Ask Charlotte",
             "hidden_prompt": "user asks Charlotte if the translation is right",
-            "hint_en": "Have I got it right?"
+            "hint_en": "Have I got it right?",
+            "examples_pass": [
+              "Have I got it right?",
+              "In any case, the deadline remains the same.",
+              "That said, we should still consider the alternatives."
+            ],
+            "examples_fail": [
+              "and (bare connector, no discourse marker)",
+              "I like it. I bought it (simple statements, no markers)",
+              "The weather is nice (off-topic, no discourse organisation)"
+            ]
           }
         ],
         "closing_cue": "Charlotte closes with \"Jargon decoded, plainly.\" once obj_3 lands.",
@@ -590,19 +770,49 @@
             "id": 1,
             "label_en": "Pitch with 'What's more'",
             "hidden_prompt": "user uses 'What's more, + clause' in a pitch",
-            "hint_en": "The neighbourhood is quiet and full of small bakeries. What's more, the metro stops two minutes from the door."
+            "hint_en": "The neighbourhood is quiet and full of small bakeries. What's more, the metro stops two minutes from the door.",
+            "examples_pass": [
+              "The neighbourhood is quiet and full of small bakeries. What's more, the metro stops two minutes from the door.",
+              "On the one hand, it's expensive; on the other hand, it lasts forever.",
+              "Having said that, there are still some concerns."
+            ],
+            "examples_fail": [
+              "and (bare connector, no discourse marker)",
+              "I like it. I bought it (simple statements, no markers)",
+              "The weather is nice (off-topic, no discourse organisation)"
+            ]
           },
           {
             "id": 2,
             "label_en": "Pitch with 'Not least'",
             "hidden_prompt": "user uses 'Not least, + clause'",
-            "hint_en": "She's experienced, articulate, and — not least — calm under pressure."
+            "hint_en": "She's experienced, articulate, and — not least — calm under pressure.",
+            "examples_pass": [
+              "She's experienced, articulate, and — not least — calm under pressure.",
+              "As a matter of fact, I had the same experience.",
+              "To put it differently, we need a fresh approach."
+            ],
+            "examples_fail": [
+              "and (bare connector, no discourse marker)",
+              "I like it. I bought it (simple statements, no markers)",
+              "The weather is nice (off-topic, no discourse organisation)"
+            ]
           },
           {
             "id": 3,
             "label_en": "Climax with 'Above all'",
             "hidden_prompt": "user uses 'Above all, + clause'",
-            "hint_en": "The idea is fundable, timely, and — above all — solves a problem nobody else is looking at."
+            "hint_en": "The idea is fundable, timely, and — above all — solves a problem nobody else is looking at.",
+            "examples_pass": [
+              "The idea is fundable, timely, and — above all — solves a problem nobody else is looking at.",
+              "In any case, the deadline remains the same.",
+              "That said, we should still consider the alternatives."
+            ],
+            "examples_fail": [
+              "and (bare connector, no discourse marker)",
+              "I like it. I bought it (simple statements, no markers)",
+              "The weather is nice (off-topic, no discourse organisation)"
+            ]
           }
         ],
         "closing_cue": "Charlotte closes with \"Pitches stacked, climax landed.\" once obj_3 lands.",
@@ -625,19 +835,49 @@
             "id": 1,
             "label_en": "Cumulative reason with 'What's more'",
             "hidden_prompt": "user uses 'What's more, + clause'",
-            "hint_en": "The work itself still excites me. What's more, my manager has actually been listening to my career goals."
+            "hint_en": "The work itself still excites me. What's more, my manager has actually been listening to my career goals.",
+            "examples_pass": [
+              "The work itself still excites me. What's more, my manager has actually been listening to my career goals.",
+              "On the one hand, it's expensive; on the other hand, it lasts forever.",
+              "Having said that, there are still some concerns."
+            ],
+            "examples_fail": [
+              "and (bare connector, no discourse marker)",
+              "I like it. I bought it (simple statements, no markers)",
+              "The weather is nice (off-topic, no discourse organisation)"
+            ]
           },
           {
             "id": 2,
             "label_en": "Specific point with 'Not least'",
             "hidden_prompt": "user uses 'Not least, + clause'",
-            "hint_en": "Not least, the team I built took years to assemble and I'd be starting from zero somewhere else."
+            "hint_en": "Not least, the team I built took years to assemble and I'd be starting from zero somewhere else.",
+            "examples_pass": [
+              "Not least, the team I built took years to assemble and I'd be starting from zero somewhere else.",
+              "As a matter of fact, I had the same experience.",
+              "To put it differently, we need a fresh approach."
+            ],
+            "examples_fail": [
+              "and (bare connector, no discourse marker)",
+              "I like it. I bought it (simple statements, no markers)",
+              "The weather is nice (off-topic, no discourse organisation)"
+            ]
           },
           {
             "id": 3,
             "label_en": "Climax with 'Above all'",
             "hidden_prompt": "user uses 'Above all, + clause'",
-            "hint_en": "Above all, the fancier offer was about title — and I've already learned that's the thinnest reason to move."
+            "hint_en": "Above all, the fancier offer was about title — and I've already learned that's the thinnest reason to move.",
+            "examples_pass": [
+              "Above all, the fancier offer was about title — and I've already learned that's the thinnest reason to move.",
+              "In any case, the deadline remains the same.",
+              "That said, we should still consider the alternatives."
+            ],
+            "examples_fail": [
+              "and (bare connector, no discourse marker)",
+              "I like it. I bought it (simple statements, no markers)",
+              "The weather is nice (off-topic, no discourse organisation)"
+            ]
           }
         ],
         "closing_cue": "Charlotte closes with \"Defended, with proper climax.\" once obj_3 lands.",
@@ -738,19 +978,49 @@
             "id": 1,
             "label_en": "Verdict with 'All things considered'",
             "hidden_prompt": "user uses 'All things considered, + clause'",
-            "hint_en": "All things considered, leaving that job a year early was the right call."
+            "hint_en": "All things considered, leaving that job a year early was the right call.",
+            "examples_pass": [
+              "All things considered, leaving that job a year early was the right call.",
+              "On the one hand, it's expensive; on the other hand, it lasts forever.",
+              "Having said that, there are still some concerns."
+            ],
+            "examples_fail": [
+              "and (bare connector, no discourse marker)",
+              "I like it. I bought it (simple statements, no markers)",
+              "The weather is nice (off-topic, no discourse organisation)"
+            ]
           },
           {
             "id": 2,
             "label_en": "Verdict with 'On balance'",
             "hidden_prompt": "user uses 'On balance, + clause'",
-            "hint_en": "On balance, the move abroad cost more than I expected but gave more than I imagined."
+            "hint_en": "On balance, the move abroad cost more than I expected but gave more than I imagined.",
+            "examples_pass": [
+              "On balance, the move abroad cost more than I expected but gave more than I imagined.",
+              "As a matter of fact, I had the same experience.",
+              "To put it differently, we need a fresh approach."
+            ],
+            "examples_fail": [
+              "and (bare connector, no discourse marker)",
+              "I like it. I bought it (simple statements, no markers)",
+              "The weather is nice (off-topic, no discourse organisation)"
+            ]
           },
           {
             "id": 3,
             "label_en": "Formal causal with 'Hence' or 'Accordingly'",
             "hidden_prompt": "user uses 'Hence, + clause' or 'Accordingly, + clause'",
-            "hint_en": "The model has proven robust across markets. Hence, we're rolling it out company-wide."
+            "hint_en": "The model has proven robust across markets. Hence, we're rolling it out company-wide.",
+            "examples_pass": [
+              "The model has proven robust across markets. Hence, we're rolling it out company-wide.",
+              "In any case, the deadline remains the same.",
+              "That said, we should still consider the alternatives."
+            ],
+            "examples_fail": [
+              "and (bare connector, no discourse marker)",
+              "I like it. I bought it (simple statements, no markers)",
+              "The weather is nice (off-topic, no discourse organisation)"
+            ]
           }
         ],
         "closing_cue": "Charlotte closes with \"Verdicts properly weighted.\" once obj_3 lands.",
@@ -773,19 +1043,49 @@
             "id": 1,
             "label_en": "Initial verdict with marker",
             "hidden_prompt": "user uses 'On balance / On the whole / All things considered'",
-            "hint_en": "On balance, the year was harder than the last one but more meaningful."
+            "hint_en": "On balance, the year was harder than the last one but more meaningful.",
+            "examples_pass": [
+              "On balance, the year was harder than the last one but more meaningful.",
+              "On the one hand, it's expensive; on the other hand, it lasts forever.",
+              "Having said that, there are still some concerns."
+            ],
+            "examples_fail": [
+              "and (bare connector, no discourse marker)",
+              "I like it. I bought it (simple statements, no markers)",
+              "The weather is nice (off-topic, no discourse organisation)"
+            ]
           },
           {
             "id": 2,
             "label_en": "Concession and emphasis",
             "hidden_prompt": "user uses 'Granted / That said' + 'Above all / Not least'",
-            "hint_en": "Granted, two big bets failed. That said, the lesson from each was probably worth the cost. Above all, I learned where my actual limits are."
+            "hint_en": "Granted, two big bets failed. That said, the lesson from each was probably worth the cost. Above all, I learned where my actual limits are.",
+            "examples_pass": [
+              "Granted, two big bets failed. That said, the lesson from each was probably worth the cost. Above all, I learned where my actual limits are.",
+              "As a matter of fact, I had the same experience.",
+              "To put it differently, we need a fresh approach."
+            ],
+            "examples_fail": [
+              "and (bare connector, no discourse marker)",
+              "I like it. I bought it (simple statements, no markers)",
+              "The weather is nice (off-topic, no discourse organisation)"
+            ]
           },
           {
             "id": 3,
             "label_en": "Ask Charlotte",
             "hidden_prompt": "user asks Charlotte for her own retrospective",
-            "hint_en": "How would you sum up yours?"
+            "hint_en": "How would you sum up yours?",
+            "examples_pass": [
+              "How would you sum up yours?",
+              "In any case, the deadline remains the same.",
+              "That said, we should still consider the alternatives."
+            ],
+            "examples_fail": [
+              "and (bare connector, no discourse marker)",
+              "I like it. I bought it (simple statements, no markers)",
+              "The weather is nice (off-topic, no discourse organisation)"
+            ]
           }
         ],
         "closing_cue": "Charlotte closes with \"Year, summed properly.\" once obj_3 lands.",

@@ -120,19 +120,49 @@
             "id": 1,
             "label_en": "Suggestion with 'suggest that... be'",
             "hidden_prompt": "user uses 'I suggest that + subject + be + adj/past participle'",
-            "hint_en": "I suggest that the proposal be reviewed by an external auditor."
+            "hint_en": "I suggest that the proposal be reviewed by an external auditor.",
+            "examples_pass": [
+              "I suggest that the proposal be reviewed by an external auditor.",
+              "It is essential that he be present at the meeting.",
+              "I wish I were able to help you more."
+            ],
+            "examples_fail": [
+              "important (bare adjective, no clause)",
+              "It is important that he comes (indicative, not subjunctive)",
+              "He arrived late (off-topic, no subjunctive trigger)"
+            ]
           },
           {
             "id": 2,
             "label_en": "Recommendation with base form",
             "hidden_prompt": "user uses 'I recommend that + subject + base form'",
-            "hint_en": "I recommend that the team adopt a stricter review process."
+            "hint_en": "I recommend that the team adopt a stricter review process.",
+            "examples_pass": [
+              "I recommend that the team adopt a stricter review process.",
+              "I suggest that she take a break.",
+              "If I were in your position, I would speak up."
+            ],
+            "examples_fail": [
+              "important (bare adjective, no clause)",
+              "It is important that he comes (indicative, not subjunctive)",
+              "He arrived late (off-topic, no subjunctive trigger)"
+            ]
           },
           {
             "id": 3,
             "label_en": "Demand with 'demand/insist that... be'",
             "hidden_prompt": "user uses 'demand/insist that + subject + be/base'",
-            "hint_en": "I insist that every member be informed before the vote."
+            "hint_en": "I insist that every member be informed before the vote.",
+            "examples_pass": [
+              "I insist that every member be informed before the vote.",
+              "It is crucial that they arrive on time.",
+              "I demand that he apologise immediately."
+            ],
+            "examples_fail": [
+              "important (bare adjective, no clause)",
+              "It is important that he comes (indicative, not subjunctive)",
+              "He arrived late (off-topic, no subjunctive trigger)"
+            ]
           }
         ],
         "closing_cue": "Charlotte closes with \"Motions properly drafted.\" once obj_3 lands.",
@@ -155,19 +185,49 @@
             "id": 1,
             "label_en": "Formal recommendation with subjunctive",
             "hidden_prompt": "user uses 'I recommend/suggest that + subject + base'",
-            "hint_en": "I recommend that every candidate be interviewed by at least three panel members."
+            "hint_en": "I recommend that every candidate be interviewed by at least three panel members.",
+            "examples_pass": [
+              "I recommend that every candidate be interviewed by at least three panel members.",
+              "It is essential that he be present at the meeting.",
+              "I wish I were able to help you more."
+            ],
+            "examples_fail": [
+              "important (bare adjective, no clause)",
+              "It is important that he comes (indicative, not subjunctive)",
+              "He arrived late (off-topic, no subjunctive trigger)"
+            ]
           },
           {
             "id": 2,
             "label_en": "Add another recommendation",
             "hidden_prompt": "user uses another mandative subjunctive",
-            "hint_en": "I also propose that hiring criteria be made public on the company website."
+            "hint_en": "I also propose that hiring criteria be made public on the company website.",
+            "examples_pass": [
+              "I also propose that hiring criteria be made public on the company website.",
+              "I suggest that she take a break.",
+              "If I were in your position, I would speak up."
+            ],
+            "examples_fail": [
+              "important (bare adjective, no clause)",
+              "It is important that he comes (indicative, not subjunctive)",
+              "He arrived late (off-topic, no subjunctive trigger)"
+            ]
           },
           {
             "id": 3,
             "label_en": "Ask Charlotte",
             "hidden_prompt": "user asks Charlotte if she'll bring it to vote",
-            "hint_en": "Will you bring it to a vote?"
+            "hint_en": "Will you bring it to a vote?",
+            "examples_pass": [
+              "Will you bring it to a vote?",
+              "It is crucial that they arrive on time.",
+              "I demand that he apologise immediately."
+            ],
+            "examples_fail": [
+              "important (bare adjective, no clause)",
+              "It is important that he comes (indicative, not subjunctive)",
+              "He arrived late (off-topic, no subjunctive trigger)"
+            ]
           }
         ],
         "closing_cue": "Charlotte closes with \"Recommendations recorded.\" once obj_3 lands.",
@@ -271,19 +331,49 @@
             "id": 1,
             "label_en": "'It is essential that' + base/be",
             "hidden_prompt": "user uses 'It is essential that + subject + base/be'",
-            "hint_en": "It is essential that every employee receive proper training."
+            "hint_en": "It is essential that every employee receive proper training.",
+            "examples_pass": [
+              "It is essential that every employee receive proper training.",
+              "It is essential that he be present at the meeting.",
+              "I wish I were able to help you more."
+            ],
+            "examples_fail": [
+              "important (bare adjective, no clause)",
+              "It is important that he comes (indicative, not subjunctive)",
+              "He arrived late (off-topic, no subjunctive trigger)"
+            ]
           },
           {
             "id": 2,
             "label_en": "'It is vital that' + passive base/be",
             "hidden_prompt": "user uses 'It is vital that + subject + be + past participle'",
-            "hint_en": "It is vital that confidential data be protected at all times."
+            "hint_en": "It is vital that confidential data be protected at all times.",
+            "examples_pass": [
+              "It is vital that confidential data be protected at all times.",
+              "I suggest that she take a break.",
+              "If I were in your position, I would speak up."
+            ],
+            "examples_fail": [
+              "important (bare adjective, no clause)",
+              "It is important that he comes (indicative, not subjunctive)",
+              "He arrived late (off-topic, no subjunctive trigger)"
+            ]
           },
           {
             "id": 3,
             "label_en": "'It is imperative that'",
             "hidden_prompt": "user uses 'It is imperative that + subject + base'",
-            "hint_en": "It is imperative that the process remain transparent."
+            "hint_en": "It is imperative that the process remain transparent.",
+            "examples_pass": [
+              "It is imperative that the process remain transparent.",
+              "It is crucial that they arrive on time.",
+              "I demand that he apologise immediately."
+            ],
+            "examples_fail": [
+              "important (bare adjective, no clause)",
+              "It is important that he comes (indicative, not subjunctive)",
+              "He arrived late (off-topic, no subjunctive trigger)"
+            ]
           }
         ],
         "closing_cue": "Charlotte closes with \"Necessity formally registered.\" once obj_3 lands.",
@@ -306,19 +396,49 @@
             "id": 1,
             "label_en": "Formal principle with subjunctive",
             "hidden_prompt": "user uses 'It is essential/vital/crucial that + subject + base/be'",
-            "hint_en": "It is essential that every voice be heard in team decisions."
+            "hint_en": "It is essential that every voice be heard in team decisions.",
+            "examples_pass": [
+              "It is essential that every voice be heard in team decisions.",
+              "It is essential that he be present at the meeting.",
+              "I wish I were able to help you more."
+            ],
+            "examples_fail": [
+              "important (bare adjective, no clause)",
+              "It is important that he comes (indicative, not subjunctive)",
+              "He arrived late (off-topic, no subjunctive trigger)"
+            ]
           },
           {
             "id": 2,
             "label_en": "Add second principle",
             "hidden_prompt": "user uses another subjunctive necessity statement",
-            "hint_en": "It is crucial that feedback be given respectfully and in private."
+            "hint_en": "It is crucial that feedback be given respectfully and in private.",
+            "examples_pass": [
+              "It is crucial that feedback be given respectfully and in private.",
+              "I suggest that she take a break.",
+              "If I were in your position, I would speak up."
+            ],
+            "examples_fail": [
+              "important (bare adjective, no clause)",
+              "It is important that he comes (indicative, not subjunctive)",
+              "He arrived late (off-topic, no subjunctive trigger)"
+            ]
           },
           {
             "id": 3,
             "label_en": "Ask Charlotte",
             "hidden_prompt": "user asks Charlotte for her contribution",
-            "hint_en": "What would you add?"
+            "hint_en": "What would you add?",
+            "examples_pass": [
+              "What would you add?",
+              "It is crucial that they arrive on time.",
+              "I demand that he apologise immediately."
+            ],
+            "examples_fail": [
+              "important (bare adjective, no clause)",
+              "It is important that he comes (indicative, not subjunctive)",
+              "He arrived late (off-topic, no subjunctive trigger)"
+            ]
           }
         ],
         "closing_cue": "Charlotte closes with \"Handbook spine, written.\" once obj_3 lands.",
@@ -421,19 +541,49 @@
             "id": 1,
             "label_en": "Wish with 'were'",
             "hidden_prompt": "user uses 'I wish I/he/she/it were + element'",
-            "hint_en": "I wish I were better at saying no."
+            "hint_en": "I wish I were better at saying no.",
+            "examples_pass": [
+              "I wish I were better at saying no.",
+              "It is essential that he be present at the meeting.",
+              "I wish I were able to help you more."
+            ],
+            "examples_fail": [
+              "important (bare adjective, no clause)",
+              "It is important that he comes (indicative, not subjunctive)",
+              "He arrived late (off-topic, no subjunctive trigger)"
+            ]
           },
           {
             "id": 2,
             "label_en": "'If I were you'",
             "hidden_prompt": "user uses 'If I were you, I would + base'",
-            "hint_en": "If I were you, I'd take the longer view."
+            "hint_en": "If I were you, I'd take the longer view.",
+            "examples_pass": [
+              "If I were you, I'd take the longer view.",
+              "I suggest that she take a break.",
+              "If I were in your position, I would speak up."
+            ],
+            "examples_fail": [
+              "important (bare adjective, no clause)",
+              "It is important that he comes (indicative, not subjunctive)",
+              "He arrived late (off-topic, no subjunctive trigger)"
+            ]
           },
           {
             "id": 3,
             "label_en": "'As if + were'",
             "hidden_prompt": "user uses 'X acts/talks/looks as if + subject + were'",
-            "hint_en": "He talks as if he were already in charge."
+            "hint_en": "He talks as if he were already in charge.",
+            "examples_pass": [
+              "He talks as if he were already in charge.",
+              "It is crucial that they arrive on time.",
+              "I demand that he apologise immediately."
+            ],
+            "examples_fail": [
+              "important (bare adjective, no clause)",
+              "It is important that he comes (indicative, not subjunctive)",
+              "He arrived late (off-topic, no subjunctive trigger)"
+            ]
           }
         ],
         "closing_cue": "Charlotte closes with \"Mood maintained.\" once obj_3 lands.",
@@ -456,19 +606,49 @@
             "id": 1,
             "label_en": "Own wish with 'were'",
             "hidden_prompt": "user uses 'I wish I were + element'",
-            "hint_en": "I wish I were less attached to my phone."
+            "hint_en": "I wish I were less attached to my phone.",
+            "examples_pass": [
+              "I wish I were less attached to my phone.",
+              "It is essential that he be present at the meeting.",
+              "I wish I were able to help you more."
+            ],
+            "examples_fail": [
+              "important (bare adjective, no clause)",
+              "It is important that he comes (indicative, not subjunctive)",
+              "He arrived late (off-topic, no subjunctive trigger)"
+            ]
           },
           {
             "id": 2,
             "label_en": "If clause with 'were'",
             "hidden_prompt": "user uses 'If I were + element/person'",
-            "hint_en": "If I were braver, I'd already have deleted the apps."
+            "hint_en": "If I were braver, I'd already have deleted the apps.",
+            "examples_pass": [
+              "If I were braver, I'd already have deleted the apps.",
+              "I suggest that she take a break.",
+              "If I were in your position, I would speak up."
+            ],
+            "examples_fail": [
+              "important (bare adjective, no clause)",
+              "It is important that he comes (indicative, not subjunctive)",
+              "He arrived late (off-topic, no subjunctive trigger)"
+            ]
           },
           {
             "id": 3,
             "label_en": "Ask Charlotte",
             "hidden_prompt": "user asks Charlotte if she's tried becoming a morning person",
-            "hint_en": "Have you tried becoming one?"
+            "hint_en": "Have you tried becoming one?",
+            "examples_pass": [
+              "Have you tried becoming one?",
+              "It is crucial that they arrive on time.",
+              "I demand that he apologise immediately."
+            ],
+            "examples_fail": [
+              "important (bare adjective, no clause)",
+              "It is important that he comes (indicative, not subjunctive)",
+              "He arrived late (off-topic, no subjunctive trigger)"
+            ]
           }
         ],
         "closing_cue": "Charlotte closes with \"Mood across, intact.\" once obj_3 lands.",
@@ -575,19 +755,49 @@
             "id": 1,
             "label_en": "'Be that as it may'",
             "hidden_prompt": "user uses 'Be that as it may, + clause'",
-            "hint_en": "Be that as it may, the deadline is non-negotiable."
+            "hint_en": "Be that as it may, the deadline is non-negotiable.",
+            "examples_pass": [
+              "Be that as it may, the deadline is non-negotiable.",
+              "It is essential that he be present at the meeting.",
+              "I wish I were able to help you more."
+            ],
+            "examples_fail": [
+              "important (bare adjective, no clause)",
+              "It is important that he comes (indicative, not subjunctive)",
+              "He arrived late (off-topic, no subjunctive trigger)"
+            ]
           },
           {
             "id": 2,
             "label_en": "'Come what may'",
             "hidden_prompt": "user uses 'Come what may, + clause'",
-            "hint_en": "Come what may, I'll see this through to the end."
+            "hint_en": "Come what may, I'll see this through to the end.",
+            "examples_pass": [
+              "Come what may, I'll see this through to the end.",
+              "I suggest that she take a break.",
+              "If I were in your position, I would speak up."
+            ],
+            "examples_fail": [
+              "important (bare adjective, no clause)",
+              "It is important that he comes (indicative, not subjunctive)",
+              "He arrived late (off-topic, no subjunctive trigger)"
+            ]
           },
           {
             "id": 3,
             "label_en": "'Suffice it to say' or 'lest'",
             "hidden_prompt": "user uses 'Suffice it to say...' or 'lest + subjunctive'",
-            "hint_en": "Suffice it to say, the meeting did not go well."
+            "hint_en": "Suffice it to say, the meeting did not go well.",
+            "examples_pass": [
+              "Suffice it to say, the meeting did not go well.",
+              "It is crucial that they arrive on time.",
+              "I demand that he apologise immediately."
+            ],
+            "examples_fail": [
+              "important (bare adjective, no clause)",
+              "It is important that he comes (indicative, not subjunctive)",
+              "He arrived late (off-topic, no subjunctive trigger)"
+            ]
           }
         ],
         "closing_cue": "Charlotte closes with \"Old forms, alive enough.\" once obj_3 lands.",
@@ -610,19 +820,49 @@
             "id": 1,
             "label_en": "Reply with fossilised subjunctive",
             "hidden_prompt": "user uses 'Be that as it may' or 'Come what may' in a reply",
-            "hint_en": "Come what may, I'm not stopping until I can read novels in English."
+            "hint_en": "Come what may, I'm not stopping until I can read novels in English.",
+            "examples_pass": [
+              "Come what may, I'm not stopping until I can read novels in English.",
+              "It is essential that he be present at the meeting.",
+              "I wish I were able to help you more."
+            ],
+            "examples_fail": [
+              "important (bare adjective, no clause)",
+              "It is important that he comes (indicative, not subjunctive)",
+              "He arrived late (off-topic, no subjunctive trigger)"
+            ]
           },
           {
             "id": 2,
             "label_en": "Another fossilised expression",
             "hidden_prompt": "user uses 'Suffice it to say' or 'lest + subjunctive'",
-            "hint_en": "Suffice it to say, the grammar still surprises me weekly."
+            "hint_en": "Suffice it to say, the grammar still surprises me weekly.",
+            "examples_pass": [
+              "Suffice it to say, the grammar still surprises me weekly.",
+              "I suggest that she take a break.",
+              "If I were in your position, I would speak up."
+            ],
+            "examples_fail": [
+              "important (bare adjective, no clause)",
+              "It is important that he comes (indicative, not subjunctive)",
+              "He arrived late (off-topic, no subjunctive trigger)"
+            ]
           },
           {
             "id": 3,
             "label_en": "Ask Charlotte",
             "hidden_prompt": "user asks Charlotte how she keeps her own English sharp",
-            "hint_en": "How do you keep yours sharp?"
+            "hint_en": "How do you keep yours sharp?",
+            "examples_pass": [
+              "How do you keep yours sharp?",
+              "It is crucial that they arrive on time.",
+              "I demand that he apologise immediately."
+            ],
+            "examples_fail": [
+              "important (bare adjective, no clause)",
+              "It is important that he comes (indicative, not subjunctive)",
+              "He arrived late (off-topic, no subjunctive trigger)"
+            ]
           }
         ],
         "closing_cue": "Charlotte closes with \"Essay drafted in old idiom.\" once obj_3 lands.",
@@ -723,19 +963,49 @@
             "id": 1,
             "label_en": "Mandative subjunctive",
             "hidden_prompt": "user uses 'suggest/recommend/insist that + subject + base'",
-            "hint_en": "I recommend that the proposal be revised before the next meeting."
+            "hint_en": "I recommend that the proposal be revised before the next meeting.",
+            "examples_pass": [
+              "I recommend that the proposal be revised before the next meeting.",
+              "It is essential that he be present at the meeting.",
+              "I wish I were able to help you more."
+            ],
+            "examples_fail": [
+              "important (bare adjective, no clause)",
+              "It is important that he comes (indicative, not subjunctive)",
+              "He arrived late (off-topic, no subjunctive trigger)"
+            ]
           },
           {
             "id": 2,
             "label_en": "Hypothetical with 'were'",
             "hidden_prompt": "user uses 'If I/he/she were' or 'I wish I were'",
-            "hint_en": "If I were in charge, I'd cancel half the meetings."
+            "hint_en": "If I were in charge, I'd cancel half the meetings.",
+            "examples_pass": [
+              "If I were in charge, I'd cancel half the meetings.",
+              "I suggest that she take a break.",
+              "If I were in your position, I would speak up."
+            ],
+            "examples_fail": [
+              "important (bare adjective, no clause)",
+              "It is important that he comes (indicative, not subjunctive)",
+              "He arrived late (off-topic, no subjunctive trigger)"
+            ]
           },
           {
             "id": 3,
             "label_en": "Fossilised expression",
             "hidden_prompt": "user uses 'Be that as it may' / 'Come what may' / 'Suffice it to say'",
-            "hint_en": "Be that as it may, the launch happens Monday."
+            "hint_en": "Be that as it may, the launch happens Monday.",
+            "examples_pass": [
+              "Be that as it may, the launch happens Monday.",
+              "It is crucial that they arrive on time.",
+              "I demand that he apologise immediately."
+            ],
+            "examples_fail": [
+              "important (bare adjective, no clause)",
+              "It is important that he comes (indicative, not subjunctive)",
+              "He arrived late (off-topic, no subjunctive trigger)"
+            ]
           }
         ],
         "closing_cue": "Charlotte closes with \"Subjunctive range full.\" once obj_3 lands.",
@@ -758,19 +1028,49 @@
             "id": 1,
             "label_en": "Formal recommendation",
             "hidden_prompt": "user uses 'I would recommend that + subject + base'",
-            "hint_en": "I would recommend that we establish clearer ownership for each deliverable."
+            "hint_en": "I would recommend that we establish clearer ownership for each deliverable.",
+            "examples_pass": [
+              "I would recommend that we establish clearer ownership for each deliverable.",
+              "It is essential that he be present at the meeting.",
+              "I wish I were able to help you more."
+            ],
+            "examples_fail": [
+              "important (bare adjective, no clause)",
+              "It is important that he comes (indicative, not subjunctive)",
+              "He arrived late (off-topic, no subjunctive trigger)"
+            ]
           },
           {
             "id": 2,
             "label_en": "Personal reflection with 'were'",
             "hidden_prompt": "user uses 'If I were... I would'",
-            "hint_en": "If I were her manager, I'd ask a direct question before assuming intent."
+            "hint_en": "If I were her manager, I'd ask a direct question before assuming intent.",
+            "examples_pass": [
+              "If I were her manager, I'd ask a direct question before assuming intent.",
+              "I suggest that she take a break.",
+              "If I were in your position, I would speak up."
+            ],
+            "examples_fail": [
+              "important (bare adjective, no clause)",
+              "It is important that he comes (indicative, not subjunctive)",
+              "He arrived late (off-topic, no subjunctive trigger)"
+            ]
           },
           {
             "id": 3,
             "label_en": "Ask Charlotte",
             "hidden_prompt": "user asks Charlotte how she'd open the conversation",
-            "hint_en": "How would you open it?"
+            "hint_en": "How would you open it?",
+            "examples_pass": [
+              "How would you open it?",
+              "It is crucial that they arrive on time.",
+              "I demand that he apologise immediately."
+            ],
+            "examples_fail": [
+              "important (bare adjective, no clause)",
+              "It is important that he comes (indicative, not subjunctive)",
+              "He arrived late (off-topic, no subjunctive trigger)"
+            ]
           }
         ],
         "closing_cue": "Charlotte closes with \"Mood matched to moment.\" once obj_3 lands.",

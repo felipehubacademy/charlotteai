@@ -86,6 +86,8 @@
    **hidden_prompt**: "user uses 'like + noun' freshly"
    **hint_pt**: "Silence in that house was like a guest no one had introduced — present at every meal, never directly addressed."
    **hint_en**: "Silence in that house was like a guest no one had introduced — present at every meal, never directly addressed."
+   **example_pass**: Silence in that house was like a guest no one had introduced — present at every meal, never directly addressed. | The silence hung in the air like an unanswered question. | Her laughter rippled through the room, bright as morning light.
+   **example_fail**: the sea (bare noun, no literary device) | The sea was blue (plain description, no figure) | I went swimming (off-topic, no literary register)
 
 2. **id**: 2
    **label_pt**: "Símile com 'as if + clause'"
@@ -93,6 +95,8 @@
    **hidden_prompt**: "user uses 'as if + clause' freshly"
    **hint_pt**: "Deadlines approach as if they have agendas of their own — patient at first, then suddenly impatient at three a.m."
    **hint_en**: "Deadlines approach as if they have agendas of their own — patient at first, then suddenly impatient at three a.m."
+   **example_pass**: Deadlines approach as if they have agendas of their own — patient at first, then suddenly impatient at three a.m. | The city sighed under the weight of its own ambition. | Hope flickered, fragile as a candle in the wind.
+   **example_fail**: the sea (bare noun, no literary device) | The sea was blue (plain description, no figure) | I went swimming (off-topic, no literary register)
 
 3. **id**: 3
    **label_pt**: "Metáfora 'X is Y' fresca"
@@ -100,6 +104,8 @@
    **hidden_prompt**: "user uses 'X is Y' metaphor, not cliché"
    **hint_pt**: "Hope is the rent you pay to live with yourself through bad years."
    **hint_en**: "Hope is the rent you pay to live with yourself through bad years."
+   **example_pass**: Hope is the rent you pay to live with yourself through bad years. | Time slipped through my fingers, grain by quiet grain. | The forest whispered secrets only the trees remembered.
+   **example_fail**: the sea (bare noun, no literary device) | The sea was blue (plain description, no figure) | I went swimming (off-topic, no literary register)
 
 **Closing cue**: Charlotte closes with "Three fresh images. Cliché avoided." once obj_3 lands.
 
@@ -135,6 +141,8 @@
    **hidden_prompt**: "user opens metaphor 'attention is the new oil'"
    **hint_pt**: "Attention is the new oil — and we are quietly running the same playbook on it."
    **hint_en**: "Attention is the new oil — and we are quietly running the same playbook on it."
+   **example_pass**: Attention is the new oil — and we are quietly running the same playbook on it. | The silence hung in the air like an unanswered question. | Her laughter rippled through the room, bright as morning light.
+   **example_fail**: the sea (bare noun, no literary device) | The sea was blue (plain description, no figure) | I went swimming (off-topic, no literary register)
 
 2. **id**: 2
    **label_pt**: "Estender sem reformular"
@@ -142,6 +150,8 @@
    **hidden_prompt**: "user extends the metaphor with related image"
    **hint_pt**: "Drilling deeper into private spaces, refining cruder feeds into more potent ones, pumping the surplus into political markets and consumer ones alike."
    **hint_en**: "Drilling deeper into private spaces, refining cruder feeds into more potent ones, pumping the surplus into political markets and consumer ones alike."
+   **example_pass**: Drilling deeper into private spaces, refining cruder feeds into more potent ones, pumping the surplus into political markets and consumer ones alike. | The city sighed under the weight of its own ambition. | Hope flickered, fragile as a candle in the wind.
+   **example_fail**: the sea (bare noun, no literary device) | The sea was blue (plain description, no figure) | I went swimming (off-topic, no literary register)
 
 3. **id**: 3
    **label_pt**: "Fechar com o eco do início"
@@ -149,6 +159,8 @@
    **hidden_prompt**: "user closes with metaphor echoed"
    **hint_pt**: "And like every oil age before it, the externalities — the climate, the wars, the costs we do not yet name — are quietly accumulating elsewhere."
    **hint_en**: "And like every oil age before it, the externalities — the climate, the wars, the costs we do not yet name — are quietly accumulating elsewhere."
+   **example_pass**: And like every oil age before it, the externalities — the climate, the wars, the costs we do not yet name — are quietly accumulating elsewhere. | Time slipped through my fingers, grain by quiet grain. | The forest whispered secrets only the trees remembered.
+   **example_fail**: the sea (bare noun, no literary device) | The sea was blue (plain description, no figure) | I went swimming (off-topic, no literary register)
 
 **Closing cue**: Charlotte closes with "Metaphor sustained, not stated." once obj_3 lands.
 
@@ -227,6 +239,8 @@
    **hidden_prompt**: "user replaces neutral verb with personifying verb"
    **hint_pt**: "From 'Time passed slowly.' → 'Time dragged its feet that afternoon, refusing to be hurried.'"
    **hint_en**: "From 'Time passed slowly.' → 'Time dragged its feet that afternoon, refusing to be hurried.'"
+   **example_pass**: From 'Time passed slowly.' → 'Time dragged its feet that afternoon, refusing to be hurried.' | The silence hung in the air like an unanswered question. | Her laughter rippled through the room, bright as morning light.
+   **example_fail**: the sea (bare noun, no literary device) | The sea was blue (plain description, no figure) | I went swimming (off-topic, no literary register)
 
 2. **id**: 2
    **label_pt**: "Personificar uma cidade ou prédio"
@@ -234,6 +248,8 @@
    **hidden_prompt**: "user gives city/building human action"
    **hint_pt**: "From 'The building was old.' → 'The building leaned tiredly against the corner, holding itself up out of habit.'"
    **hint_en**: "From 'The building was old.' → 'The building leaned tiredly against the corner, holding itself up out of habit.'"
+   **example_pass**: From 'The building was old.' → 'The building leaned tiredly against the corner, holding itself up out of habit.' | The city sighed under the weight of its own ambition. | Hope flickered, fragile as a candle in the wind.
+   **example_fail**: the sea (bare noun, no literary device) | The sea was blue (plain description, no figure) | I went swimming (off-topic, no literary register)
 
 3. **id**: 3
    **label_pt**: "Personificar uma emoção"
@@ -241,6 +257,8 @@
    **hidden_prompt**: "user gives emotion human will or action"
    **hint_pt**: "From 'I felt regret.' → 'Regret followed me around the house all morning, sitting on every empty chair.'"
    **hint_en**: "From 'I felt regret.' → 'Regret followed me around the house all morning, sitting on every empty chair.'"
+   **example_pass**: From 'I felt regret.' → 'Regret followed me around the house all morning, sitting on every empty chair.' | Time slipped through my fingers, grain by quiet grain. | The forest whispered secrets only the trees remembered.
+   **example_fail**: the sea (bare noun, no literary device) | The sea was blue (plain description, no figure) | I went swimming (off-topic, no literary register)
 
 **Closing cue**: Charlotte closes with "Sentences brought to life." once obj_3 lands.
 
@@ -276,6 +294,8 @@
    **hidden_prompt**: "user revises 'office was empty' with personification"
    **hint_pt**: "Try: 'The office held its breath in the absence of anyone to hold it for.'"
    **hint_en**: "Try: 'The office held its breath in the absence of anyone to hold it for.'"
+   **example_pass**: Try: 'The office held its breath in the absence of anyone to hold it for.' | The silence hung in the air like an unanswered question. | Her laughter rippled through the room, bright as morning light.
+   **example_fail**: the sea (bare noun, no literary device) | The sea was blue (plain description, no figure) | I went swimming (off-topic, no literary register)
 
 2. **id**: 2
    **label_pt**: "Personificar as luzes ou o relógio"
@@ -283,6 +303,8 @@
    **hidden_prompt**: "user personifies lights or clock"
    **hint_pt**: "And: 'The overhead lights kept their nightly vigil over no one in particular. The clock, indifferent as always, announced eight in red.'"
    **hint_en**: "And: 'The overhead lights kept their nightly vigil over no one in particular. The clock, indifferent as always, announced eight in red.'"
+   **example_pass**: And: 'The overhead lights kept their nightly vigil over no one in particular. The clock, indifferent as always, announced eight in red.' | The city sighed under the weight of its own ambition. | Hope flickered, fragile as a candle in the wind.
+   **example_fail**: the sea (bare noun, no literary device) | The sea was blue (plain description, no figure) | I went swimming (off-topic, no literary register)
 
 3. **id**: 3
    **label_pt**: "Perguntar a Charlotte"
@@ -290,6 +312,8 @@
    **hidden_prompt**: "user asks Charlotte what mood she wants"
    **hint_pt**: "What mood are you going for?"
    **hint_en**: "What mood are you going for?"
+   **example_pass**: What mood are you going for? | Time slipped through my fingers, grain by quiet grain. | The forest whispered secrets only the trees remembered.
+   **example_fail**: the sea (bare noun, no literary device) | The sea was blue (plain description, no figure) | I went swimming (off-topic, no literary register)
 
 **Closing cue**: Charlotte closes with "Description, finally animate." once obj_3 lands.
 
@@ -369,6 +393,8 @@
    **hidden_prompt**: "user replaces 'walked + adverb' with vivid verb"
    **hint_pt**: "From 'He walked angrily into the room.' → 'He stormed into the room.'"
    **hint_en**: "From 'He walked angrily into the room.' → 'He stormed into the room.'"
+   **example_pass**: From 'He walked angrily into the room.' → 'He stormed into the room.' | The silence hung in the air like an unanswered question. | Her laughter rippled through the room, bright as morning light.
+   **example_fail**: the sea (bare noun, no literary device) | The sea was blue (plain description, no figure) | I went swimming (off-topic, no literary register)
 
 2. **id**: 2
    **label_pt**: "Substantivo específico"
@@ -376,6 +402,8 @@
    **hidden_prompt**: "user replaces generic noun with specific one"
    **hint_pt**: "From 'A car drove by.' → 'A grey Peugeot crawled past, windows fogged.'"
    **hint_en**: "From 'A car drove by.' → 'A grey Peugeot crawled past, windows fogged.'"
+   **example_pass**: From 'A car drove by.' → 'A grey Peugeot crawled past, windows fogged.' | The city sighed under the weight of its own ambition. | Hope flickered, fragile as a candle in the wind.
+   **example_fail**: the sea (bare noun, no literary device) | The sea was blue (plain description, no figure) | I went swimming (off-topic, no literary register)
 
 3. **id**: 3
    **label_pt**: "Verbo vívido + substantivo específico"
@@ -383,6 +411,8 @@
    **hidden_prompt**: "user replaces both"
    **hint_pt**: "From 'She looked sadly at the photo.' → 'She gazed at the polaroid of her grandmother, fingers tightening around the frame.'"
    **hint_en**: "From 'She looked sadly at the photo.' → 'She gazed at the polaroid of her grandmother, fingers tightening around the frame.'"
+   **example_pass**: From 'She looked sadly at the photo.' → 'She gazed at the polaroid of her grandmother, fingers tightening around the frame.' | Time slipped through my fingers, grain by quiet grain. | The forest whispered secrets only the trees remembered.
+   **example_fail**: the sea (bare noun, no literary device) | The sea was blue (plain description, no figure) | I went swimming (off-topic, no literary register)
 
 **Closing cue**: Charlotte closes with "Three sentences, sharper." once obj_3 lands.
 
@@ -418,6 +448,8 @@
    **hidden_prompt**: "user replaces 'went' / 'sat down' with vivid verbs"
    **hint_pt**: "Try: 'She pushed through the door of the café and slid into the booth by the window.'"
    **hint_en**: "Try: 'She pushed through the door of the café and slid into the booth by the window.'"
+   **example_pass**: Try: 'She pushed through the door of the café and slid into the booth by the window.' | The silence hung in the air like an unanswered question. | Her laughter rippled through the room, bright as morning light.
+   **example_fail**: the sea (bare noun, no literary device) | The sea was blue (plain description, no figure) | I went swimming (off-topic, no literary register)
 
 2. **id**: 2
    **label_pt**: "Substituir 'a man' por substantivo específico"
@@ -425,6 +457,8 @@
    **hidden_prompt**: "user adds specific detail to 'a man'"
    **hint_pt**: "Then: 'In the corner, a man in a grey overcoat was hunched over his phone, thumb scrolling slowly enough to suggest he wasn't reading anything.'"
    **hint_en**: "Then: 'In the corner, a man in a grey overcoat was hunched over his phone, thumb scrolling slowly enough to suggest he wasn't reading anything.'"
+   **example_pass**: Then: 'In the corner, a man in a grey overcoat was hunched over his phone, thumb scrolling slowly enough to suggest he wasn't reading anything.' | The city sighed under the weight of its own ambition. | Hope flickered, fragile as a candle in the wind.
+   **example_fail**: the sea (bare noun, no literary device) | The sea was blue (plain description, no figure) | I went swimming (off-topic, no literary register)
 
 3. **id**: 3
    **label_pt**: "Perguntar a Charlotte"
@@ -432,6 +466,8 @@
    **hidden_prompt**: "user asks Charlotte what mood she wants in the scene"
    **hint_pt**: "What's the scene meant to feel like?"
    **hint_en**: "What's the scene meant to feel like?"
+   **example_pass**: What's the scene meant to feel like? | Time slipped through my fingers, grain by quiet grain. | The forest whispered secrets only the trees remembered.
+   **example_fail**: the sea (bare noun, no literary device) | The sea was blue (plain description, no figure) | I went swimming (off-topic, no literary register)
 
 **Closing cue**: Charlotte closes with "Scene, alive." once obj_3 lands.
 
@@ -510,6 +546,8 @@
    **hidden_prompt**: "user completes with short impact sentence"
    **hint_pt**: "Long: 'After ten years of saving, two years of planning, and six months of paperwork that would have broken anyone less stubborn, she finally bought the cottage by the sea.' Short: 'She slept that first night.'"
    **hint_en**: "Long: 'After ten years of saving, two years of planning, and six months of paperwork that would have broken anyone less stubborn, she finally bought the cottage by the sea.' Short: 'She slept that first night.'"
+   **example_pass**: Long: 'After ten years of saving, two years of planning, and six months of paperwork that would have broken anyone less stubborn, she finally bought the cottage by the sea.' Short: 'She slept that first night.' | The silence hung in the air like an unanswered question. | Her laughter rippled through the room, bright as morning light.
+   **example_fail**: the sea (bare noun, no literary device) | The sea was blue (plain description, no figure) | I went swimming (off-topic, no literary register)
 
 2. **id**: 2
    **label_pt**: "Fragmento para ênfase"
@@ -517,6 +555,8 @@
    **hidden_prompt**: "user uses fragment(s) for impact"
    **hint_pt**: "Long: 'The room contained the same books, the same chair, the same window onto the same courtyard, and even the same dust pattern across the same desk where she had once written her first novel.' Fragment: 'Same room. Different woman.'"
    **hint_en**: "Long: 'The room contained the same books, the same chair, the same window onto the same courtyard, and even the same dust pattern across the same desk where she had once written her first novel.' Fragment: 'Same room. Different woman.'"
+   **example_pass**: Long: 'The room contained the same books, the same chair, the same window onto the same courtyard, and even the same dust pattern across the same desk where she had once written her first novel.' Fragment: 'Same room. Different woman.' | The city sighed under the weight of its own ambition. | Hope flickered, fragile as a candle in the wind.
+   **example_fail**: the sea (bare noun, no literary device) | The sea was blue (plain description, no figure) | I went swimming (off-topic, no literary register)
 
 3. **id**: 3
    **label_pt**: "Trío de fragmentos para finalizar"
@@ -524,6 +564,8 @@
    **hidden_prompt**: "user closes with rhythmic fragments"
    **hint_pt**: "Long: 'They had spoken on the phone every Sunday for sixteen years, exchanged photographs of children and dogs, sent birthday cards on time even when nothing else in their lives was on time.' Trio: 'Then she didn't call. Then she didn't pick up. Then we knew.'"
    **hint_en**: "Long: 'They had spoken on the phone every Sunday for sixteen years, exchanged photographs of children and dogs, sent birthday cards on time even when nothing else in their lives was on time.' Trio: 'Then she didn't call. Then she didn't pick up. Then we knew.'"
+   **example_pass**: Long: 'They had spoken on the phone every Sunday for sixteen years, exchanged photographs of children and dogs, sent birthday cards on time even when nothing else in their lives was on time.' Trio: 'Then she didn't call. Then she didn't pick up. Then we knew.' | Time slipped through my fingers, grain by quiet grain. | The forest whispered secrets only the trees remembered.
+   **example_fail**: the sea (bare noun, no literary device) | The sea was blue (plain description, no figure) | I went swimming (off-topic, no literary register)
 
 **Closing cue**: Charlotte closes with "Rhythm, doing the work." once obj_3 lands.
 
@@ -559,6 +601,8 @@
    **hidden_prompt**: "user breaks into sentences with varied length"
    **hint_pt**: "Try: 'When my father died, I was thirty-two. The house felt strange — not different, exactly, but watchful, the way a room is after someone leaves a meeting they will not return to.'"
    **hint_en**: "Try: 'When my father died, I was thirty-two. The house felt strange — not different, exactly, but watchful, the way a room is after someone leaves a meeting they will not return to.'"
+   **example_pass**: Try: 'When my father died, I was thirty-two. The house felt strange — not different, exactly, but watchful, the way a room is after someone leaves a meeting they will not return to.' | The silence hung in the air like an unanswered question. | Her laughter rippled through the room, bright as morning light.
+   **example_fail**: the sea (bare noun, no literary device) | The sea was blue (plain description, no figure) | I went swimming (off-topic, no literary register)
 
 2. **id**: 2
    **label_pt**: "Acrescentar fragmento de impacto"
@@ -566,6 +610,8 @@
    **hidden_prompt**: "user adds short sentence or fragment"
    **hint_pt**: "Then add: 'I did not know what to do. Nothing made sense for a long time. That was the year I learned to live with not-knowing.'"
    **hint_en**: "Then add: 'I did not know what to do. Nothing made sense for a long time. That was the year I learned to live with not-knowing.'"
+   **example_pass**: Then add: 'I did not know what to do. Nothing made sense for a long time. That was the year I learned to live with not-knowing.' | The city sighed under the weight of its own ambition. | Hope flickered, fragile as a candle in the wind.
+   **example_fail**: the sea (bare noun, no literary device) | The sea was blue (plain description, no figure) | I went swimming (off-topic, no literary register)
 
 3. **id**: 3
    **label_pt**: "Perguntar a Charlotte"
@@ -573,6 +619,8 @@
    **hidden_prompt**: "user asks Charlotte where the paragraph is going"
    **hint_pt**: "Where does the paragraph go next?"
    **hint_en**: "Where does the paragraph go next?"
+   **example_pass**: Where does the paragraph go next? | Time slipped through my fingers, grain by quiet grain. | The forest whispered secrets only the trees remembered.
+   **example_fail**: the sea (bare noun, no literary device) | The sea was blue (plain description, no figure) | I went swimming (off-topic, no literary register)
 
 **Closing cue**: Charlotte closes with "Rhythm carries the grief." once obj_3 lands.
 
@@ -651,6 +699,8 @@
    **hidden_prompt**: "user shows nervousness through behavioural detail"
    **hint_pt**: "From 'He was nervous before the interview.' → 'He checked his watch four times in two minutes. The receptionist offered him water. He said no, then changed his mind.'"
    **hint_en**: "From 'He was nervous before the interview.' → 'He checked his watch four times in two minutes. The receptionist offered him water. He said no, then changed his mind.'"
+   **example_pass**: From 'He was nervous before the interview.' → 'He checked his watch four times in two minutes. The receptionist offered him water. He said no, then changed his mind.' | The silence hung in the air like an unanswered question. | Her laughter rippled through the room, bright as morning light.
+   **example_fail**: the sea (bare noun, no literary device) | The sea was blue (plain description, no figure) | I went swimming (off-topic, no literary register)
 
 2. **id**: 2
    **label_pt**: "Mostrar tristeza"
@@ -658,6 +708,8 @@
    **hidden_prompt**: "user shows sadness through specific behavioural detail"
    **hint_pt**: "From 'She was sad after the move.' → 'For three weeks, the boxes stayed in the hallway. She walked around them without looking down.'"
    **hint_en**: "From 'She was sad after the move.' → 'For three weeks, the boxes stayed in the hallway. She walked around them without looking down.'"
+   **example_pass**: From 'She was sad after the move.' → 'For three weeks, the boxes stayed in the hallway. She walked around them without looking down.' | The city sighed under the weight of its own ambition. | Hope flickered, fragile as a candle in the wind.
+   **example_fail**: the sea (bare noun, no literary device) | The sea was blue (plain description, no figure) | I went swimming (off-topic, no literary register)
 
 3. **id**: 3
    **label_pt**: "Mostrar alegria contida"
@@ -665,6 +717,8 @@
    **hidden_prompt**: "user shows joy through restrained behaviour"
    **hint_pt**: "From 'He was thrilled about the offer.' → 'He read the email twice. Then he did the small, private dance he only ever did when nobody was watching.'"
    **hint_en**: "From 'He was thrilled about the offer.' → 'He read the email twice. Then he did the small, private dance he only ever did when nobody was watching.'"
+   **example_pass**: From 'He was thrilled about the offer.' → 'He read the email twice. Then he did the small, private dance he only ever did when nobody was watching.' | Time slipped through my fingers, grain by quiet grain. | The forest whispered secrets only the trees remembered.
+   **example_fail**: the sea (bare noun, no literary device) | The sea was blue (plain description, no figure) | I went swimming (off-topic, no literary register)
 
 **Closing cue**: Charlotte closes with "Emotions, finally shown." once obj_3 lands.
 
@@ -700,6 +754,8 @@
    **hidden_prompt**: "user shows loneliness through detail"
    **hint_pt**: "Try: 'She kept the radio on while she cooked, then while she ate, then while she fell asleep. The voices of strangers, at least, didn't change.'"
    **hint_en**: "Try: 'She kept the radio on while she cooked, then while she ate, then while she fell asleep. The voices of strangers, at least, didn't change.'"
+   **example_pass**: Try: 'She kept the radio on while she cooked, then while she ate, then while she fell asleep. The voices of strangers, at least, didn't change.' | The silence hung in the air like an unanswered question. | Her laughter rippled through the room, bright as morning light.
+   **example_fail**: the sea (bare noun, no literary device) | The sea was blue (plain description, no figure) | I went swimming (off-topic, no literary register)
 
 2. **id**: 2
    **label_pt**: "Mostrar o apartamento vazio"
@@ -707,6 +763,8 @@
    **hidden_prompt**: "user shows emptiness through detail"
    **hint_pt**: "Then: 'The chair she bought for two had been pulled to face the window. Nobody ever needed to sit across from her.'"
    **hint_en**: "Then: 'The chair she bought for two had been pulled to face the window. Nobody ever needed to sit across from her.'"
+   **example_pass**: Then: 'The chair she bought for two had been pulled to face the window. Nobody ever needed to sit across from her.' | The city sighed under the weight of its own ambition. | Hope flickered, fragile as a candle in the wind.
+   **example_fail**: the sea (bare noun, no literary device) | The sea was blue (plain description, no figure) | I went swimming (off-topic, no literary register)
 
 3. **id**: 3
    **label_pt**: "Mostrar saudade dos amigos"
@@ -714,6 +772,8 @@
    **hidden_prompt**: "user shows missing friends through detail"
    **hint_pt**: "Close with: 'She kept opening the group chat without typing. Sometimes she read old messages instead of writing new ones.'"
    **hint_en**: "Close with: 'She kept opening the group chat without typing. Sometimes she read old messages instead of writing new ones.'"
+   **example_pass**: Close with: 'She kept opening the group chat without typing. Sometimes she read old messages instead of writing new ones.' | Time slipped through my fingers, grain by quiet grain. | The forest whispered secrets only the trees remembered.
+   **example_fail**: the sea (bare noun, no literary device) | The sea was blue (plain description, no figure) | I went swimming (off-topic, no literary register)
 
 **Closing cue**: Charlotte closes with "Scene shown, not told. C2 literary craft set." once obj_3 lands.
 

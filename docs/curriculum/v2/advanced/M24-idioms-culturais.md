@@ -97,6 +97,8 @@
    **hidden_prompt**: "user uses 'cost an arm and a leg' or 'wear heart on sleeve'"
    **hint_pt**: "I went to that new restaurant downtown — the meal cost an arm and a leg, but the food was extraordinary."
    **hint_en**: "I went to that new restaurant downtown — the meal cost an arm and a leg, but the food was extraordinary."
+   **example_pass**: I went to that new restaurant downtown — the meal cost an arm and a leg, but the food was extraordinary. | It's raining cats and dogs out there. | Break a leg with your presentation tomorrow!
+   **example_fail**: good morning (bare greeting, no cultural idiom) | I am very happy (literal, no cultural idiom) | I ate breakfast (off-topic, no idiom)
 
 2. **id**: 2
    **label_pt**: "Idiom 'cold shoulder'"
@@ -104,6 +106,8 @@
    **hidden_prompt**: "user uses 'cold shoulder'"
    **hint_pt**: "My brother gave me the cold shoulder for two weeks after our argument — finally we talked it out."
    **hint_en**: "My brother gave me the cold shoulder for two weeks after our argument — finally we talked it out."
+   **example_pass**: My brother gave me the cold shoulder for two weeks after our argument — finally we talked it out. | Don't cry over spilt milk — it's done. | We're really in the same boat on this one.
+   **example_fail**: good morning (bare greeting, no cultural idiom) | I am very happy (literal, no cultural idiom) | I ate breakfast (off-topic, no idiom)
 
 3. **id**: 3
    **label_pt**: "Idiom 'bite the bullet'"
@@ -111,6 +115,8 @@
    **hidden_prompt**: "user uses 'bite the bullet'"
    **hint_pt**: "I'd been putting off the dentist for a year, but yesterday I bit the bullet and went."
    **hint_en**: "I'd been putting off the dentist for a year, but yesterday I bit the bullet and went."
+   **example_pass**: I'd been putting off the dentist for a year, but yesterday I bit the bullet and went. | Let's call it a day and pick up tomorrow. | He really has a chip on his shoulder about it.
+   **example_fail**: good morning (bare greeting, no cultural idiom) | I am very happy (literal, no cultural idiom) | I ate breakfast (off-topic, no idiom)
 
 **Closing cue**: Charlotte closes with "Body idioms, three for three." once obj_3 lands.
 
@@ -146,6 +152,8 @@
    **hidden_prompt**: "user uses 'cold shoulder' to describe the situation"
    **hint_pt**: "Five years of giving each other the cold shoulder must make every Christmas dinner painful."
    **hint_en**: "Five years of giving each other the cold shoulder must make every Christmas dinner painful."
+   **example_pass**: Five years of giving each other the cold shoulder must make every Christmas dinner painful. | It's raining cats and dogs out there. | Break a leg with your presentation tomorrow!
+   **example_fail**: good morning (bare greeting, no cultural idiom) | I am very happy (literal, no cultural idiom) | I ate breakfast (off-topic, no idiom)
 
 2. **id**: 2
    **label_pt**: "Sugerir intervenção com 'bite the bullet'"
@@ -153,6 +161,8 @@
    **hidden_prompt**: "user suggests 'bite the bullet' to reconcile"
    **hint_pt**: "Someone needs to bite the bullet and play mediator before another family event."
    **hint_en**: "Someone needs to bite the bullet and play mediator before another family event."
+   **example_pass**: Someone needs to bite the bullet and play mediator before another family event. | Don't cry over spilt milk — it's done. | We're really in the same boat on this one.
+   **example_fail**: good morning (bare greeting, no cultural idiom) | I am very happy (literal, no cultural idiom) | I ate breakfast (off-topic, no idiom)
 
 3. **id**: 3
    **label_pt**: "Perguntar com 'heart on sleeve'"
@@ -160,6 +170,8 @@
    **hidden_prompt**: "user asks about feelings using 'heart on sleeve'"
    **hint_pt**: "Are either of them the kind to wear their heart on their sleeve, or do they both keep things bottled up?"
    **hint_en**: "Are either of them the kind to wear their heart on their sleeve, or do they both keep things bottled up?"
+   **example_pass**: Are either of them the kind to wear their heart on their sleeve, or do they both keep things bottled up? | Let's call it a day and pick up tomorrow. | He really has a chip on his shoulder about it.
+   **example_fail**: good morning (bare greeting, no cultural idiom) | I am very happy (literal, no cultural idiom) | I ate breakfast (off-topic, no idiom)
 
 **Closing cue**: Charlotte closes with "That's exactly the problem." once obj_3 lands.
 
@@ -237,6 +249,8 @@
    **hidden_prompt**: "user uses 'barking up the wrong tree'"
    **hint_pt**: "Honestly, if they're blaming the engineering team for the missed deadline, they're barking up the wrong tree — the spec changed three times in two weeks."
    **hint_en**: "Honestly, if they're blaming the engineering team for the missed deadline, they're barking up the wrong tree — the spec changed three times in two weeks."
+   **example_pass**: Honestly, if they're blaming the engineering team for the missed deadline, they're barking up the wrong tree — the spec changed three times in two weeks. | It's raining cats and dogs out there. | Break a leg with your presentation tomorrow!
+   **example_fail**: good morning (bare greeting, no cultural idiom) | I am very happy (literal, no cultural idiom) | I ate breakfast (off-topic, no idiom)
 
 2. **id**: 2
    **label_pt**: "Idiom 'elephant in the room' ou 'cat out of bag'"
@@ -244,6 +258,8 @@
    **hidden_prompt**: "user uses 'elephant in the room' or 'let the cat out of the bag'"
    **hint_pt**: "Someone needs to address the elephant in the room — half the team is exhausted and we're still planning aggressive Q4 targets."
    **hint_en**: "Someone needs to address the elephant in the room — half the team is exhausted and we're still planning aggressive Q4 targets."
+   **example_pass**: Someone needs to address the elephant in the room — half the team is exhausted and we're still planning aggressive Q4 targets. | Don't cry over spilt milk — it's done. | We're really in the same boat on this one.
+   **example_fail**: good morning (bare greeting, no cultural idiom) | I am very happy (literal, no cultural idiom) | I ate breakfast (off-topic, no idiom)
 
 3. **id**: 3
    **label_pt**: "Idiom 'when pigs fly'"
@@ -251,6 +267,8 @@
    **hidden_prompt**: "user uses 'when pigs fly'"
    **hint_pt**: "Will the budget include design tools next year? Sure — when pigs fly. They've been promising that for three years."
    **hint_en**: "Will the budget include design tools next year? Sure — when pigs fly. They've been promising that for three years."
+   **example_pass**: Will the budget include design tools next year? Sure — when pigs fly. They've been promising that for three years. | Let's call it a day and pick up tomorrow. | He really has a chip on his shoulder about it.
+   **example_fail**: good morning (bare greeting, no cultural idiom) | I am very happy (literal, no cultural idiom) | I ate breakfast (off-topic, no idiom)
 
 **Closing cue**: Charlotte closes with "Animal idioms, deployed." once obj_3 lands.
 
@@ -286,6 +304,8 @@
    **hidden_prompt**: "user uses 'elephant in the room'"
    **hint_pt**: "Layoffs are the obvious elephant in the room, and his refusal to name it makes the silence worse."
    **hint_en**: "Layoffs are the obvious elephant in the room, and his refusal to name it makes the silence worse."
+   **example_pass**: Layoffs are the obvious elephant in the room, and his refusal to name it makes the silence worse. | It's raining cats and dogs out there. | Break a leg with your presentation tomorrow!
+   **example_fail**: good morning (bare greeting, no cultural idiom) | I am very happy (literal, no cultural idiom) | I ate breakfast (off-topic, no idiom)
 
 2. **id**: 2
    **label_pt**: "Comentário com 'let cat out of bag'"
@@ -293,6 +313,8 @@
    **hidden_prompt**: "user uses 'let the cat out of the bag'"
    **hint_pt**: "Someone will accidentally let the cat out of the bag in a Slack channel before management makes it official — they always do."
    **hint_en**: "Someone will accidentally let the cat out of the bag in a Slack channel before management makes it official — they always do."
+   **example_pass**: Someone will accidentally let the cat out of the bag in a Slack channel before management makes it official — they always do. | Don't cry over spilt milk — it's done. | We're really in the same boat on this one.
+   **example_fail**: good morning (bare greeting, no cultural idiom) | I am very happy (literal, no cultural idiom) | I ate breakfast (off-topic, no idiom)
 
 3. **id**: 3
    **label_pt**: "Comentário com 'pigs fly'"
@@ -300,6 +322,8 @@
    **hidden_prompt**: "user uses 'when pigs fly'"
    **hint_pt**: "Will they give the team warning before the cuts? When pigs fly — corporate transparency is a one-way street."
    **hint_en**: "Will they give the team warning before the cuts? When pigs fly — corporate transparency is a one-way street."
+   **example_pass**: Will they give the team warning before the cuts? When pigs fly — corporate transparency is a one-way street. | Let's call it a day and pick up tomorrow. | He really has a chip on his shoulder about it.
+   **example_fail**: good morning (bare greeting, no cultural idiom) | I am very happy (literal, no cultural idiom) | I ate breakfast (off-topic, no idiom)
 
 **Closing cue**: Charlotte closes with "Exactly. The cynicism is earned." once obj_3 lands.
 
@@ -377,6 +401,8 @@
    **hidden_prompt**: "user uses 'out of the blue'"
    **hint_pt**: "Actually yes — completely out of the blue, my old university roommate called last week after eight years of silence."
    **hint_en**: "Actually yes — completely out of the blue, my old university roommate called last week after eight years of silence."
+   **example_pass**: Actually yes — completely out of the blue, my old university roommate called last week after eight years of silence. | It's raining cats and dogs out there. | Break a leg with your presentation tomorrow!
+   **example_fail**: good morning (bare greeting, no cultural idiom) | I am very happy (literal, no cultural idiom) | I ate breakfast (off-topic, no idiom)
 
 2. **id**: 2
    **label_pt**: "Idiom 'burn the midnight oil' ou 'once in a blue moon'"
@@ -384,6 +410,8 @@
    **hidden_prompt**: "user uses 'burn the midnight oil' or 'once in a blue moon'"
    **hint_pt**: "I've been burning the midnight oil all month — there's a product launch on the 15th and we're nowhere near ready."
    **hint_en**: "I've been burning the midnight oil all month — there's a product launch on the 15th and we're nowhere near ready."
+   **example_pass**: I've been burning the midnight oil all month — there's a product launch on the 15th and we're nowhere near ready. | Don't cry over spilt milk — it's done. | We're really in the same boat on this one.
+   **example_fail**: good morning (bare greeting, no cultural idiom) | I am very happy (literal, no cultural idiom) | I ate breakfast (off-topic, no idiom)
 
 3. **id**: 3
    **label_pt**: "Idiom 'take a rain check' ou 'time flies'"
@@ -391,6 +419,8 @@
    **hidden_prompt**: "user uses 'rain check' or 'time flies'"
    **hint_pt**: "My friends wanted to do brunch this weekend, but I had to take a rain check — I just need a real day off."
    **hint_en**: "My friends wanted to do brunch this weekend, but I had to take a rain check — I just need a real day off."
+   **example_pass**: My friends wanted to do brunch this weekend, but I had to take a rain check — I just need a real day off. | Let's call it a day and pick up tomorrow. | He really has a chip on his shoulder about it.
+   **example_fail**: good morning (bare greeting, no cultural idiom) | I am very happy (literal, no cultural idiom) | I ate breakfast (off-topic, no idiom)
 
 **Closing cue**: Charlotte closes with "Time idioms, naturally placed." once obj_3 lands.
 
@@ -426,6 +456,8 @@
    **hidden_prompt**: "user uses 'time flies'"
    **hint_pt**: "Time really does fly when you're not looking — the year between January and August disappears the moment you blink."
    **hint_en**: "Time really does fly when you're not looking — the year between January and August disappears the moment you blink."
+   **example_pass**: Time really does fly when you're not looking — the year between January and August disappears the moment you blink. | It's raining cats and dogs out there. | Break a leg with your presentation tomorrow!
+   **example_fail**: good morning (bare greeting, no cultural idiom) | I am very happy (literal, no cultural idiom) | I ate breakfast (off-topic, no idiom)
 
 2. **id**: 2
    **label_pt**: "Comentário com 'once in a blue moon'"
@@ -433,6 +465,8 @@
    **hidden_prompt**: "user uses 'once in a blue moon'"
    **hint_pt**: "I only see most of my old friends once in a blue moon now — and I miss those weekly coffees we used to have."
    **hint_en**: "I only see most of my old friends once in a blue moon now — and I miss those weekly coffees we used to have."
+   **example_pass**: I only see most of my old friends once in a blue moon now — and I miss those weekly coffees we used to have. | Don't cry over spilt milk — it's done. | We're really in the same boat on this one.
+   **example_fail**: good morning (bare greeting, no cultural idiom) | I am very happy (literal, no cultural idiom) | I ate breakfast (off-topic, no idiom)
 
 3. **id**: 3
    **label_pt**: "Reflexão com 'out of the blue'"
@@ -440,6 +474,8 @@
    **hidden_prompt**: "user uses 'out of the blue'"
    **hint_pt**: "Sometimes the best things still happen out of the blue, though — the right book in the wrong week, a stranger's kindness on a hard day."
    **hint_en**: "Sometimes the best things still happen out of the blue, though — the right book in the wrong week, a stranger's kindness on a hard day."
+   **example_pass**: Sometimes the best things still happen out of the blue, though — the right book in the wrong week, a stranger's kindness on a hard day. | Let's call it a day and pick up tomorrow. | He really has a chip on his shoulder about it.
+   **example_fail**: good morning (bare greeting, no cultural idiom) | I am very happy (literal, no cultural idiom) | I ate breakfast (off-topic, no idiom)
 
 **Closing cue**: Charlotte closes with "That's the part to hold on to." once obj_3 lands.
 
@@ -517,6 +553,8 @@
    **hidden_prompt**: "user uses 'cutting corners' or 'the last straw'"
    **hint_pt**: "They'd been cutting corners on QA for months, and the production outage last week was the last straw — leadership finally invested in proper testing."
    **hint_en**: "They'd been cutting corners on QA for months, and the production outage last week was the last straw — leadership finally invested in proper testing."
+   **example_pass**: They'd been cutting corners on QA for months, and the production outage last week was the last straw — leadership finally invested in proper testing. | It's raining cats and dogs out there. | Break a leg with your presentation tomorrow!
+   **example_fail**: good morning (bare greeting, no cultural idiom) | I am very happy (literal, no cultural idiom) | I ate breakfast (off-topic, no idiom)
 
 2. **id**: 2
    **label_pt**: "Idiom 'throw in the towel' ou 'back to square one'"
@@ -524,6 +562,8 @@
    **hidden_prompt**: "user uses 'throw in the towel' or 'back to square one'"
    **hint_pt**: "After three failed pivots, the founder finally threw in the towel and shut the company down — six years of work, back to square one for everyone."
    **hint_en**: "After three failed pivots, the founder finally threw in the towel and shut the company down — six years of work, back to square one for everyone."
+   **example_pass**: After three failed pivots, the founder finally threw in the towel and shut the company down — six years of work, back to square one for everyone. | Don't cry over spilt milk — it's done. | We're really in the same boat on this one.
+   **example_fail**: good morning (bare greeting, no cultural idiom) | I am very happy (literal, no cultural idiom) | I ate breakfast (off-topic, no idiom)
 
 3. **id**: 3
    **label_pt**: "Idiom 'ball is in your court'"
@@ -531,6 +571,8 @@
    **hidden_prompt**: "user uses 'ball is in your court'"
    **hint_pt**: "We've sent the proposal, demonstrated the prototype, and answered every question. The ball is firmly in their court now — we wait."
    **hint_en**: "We've sent the proposal, demonstrated the prototype, and answered every question. The ball is firmly in their court now — we wait."
+   **example_pass**: We've sent the proposal, demonstrated the prototype, and answered every question. The ball is firmly in their court now — we wait. | Let's call it a day and pick up tomorrow. | He really has a chip on his shoulder about it.
+   **example_fail**: good morning (bare greeting, no cultural idiom) | I am very happy (literal, no cultural idiom) | I ate breakfast (off-topic, no idiom)
 
 **Closing cue**: Charlotte closes with "Action idioms, deployed sharply." once obj_3 lands.
 
@@ -566,6 +608,8 @@
    **hidden_prompt**: "user encourages with 'don't throw in the towel'"
    **hint_pt**: "Don't throw in the towel yet — six months of effort is usually right before the breakthrough or the honest admission it's not the right project."
    **hint_en**: "Don't throw in the towel yet — six months of effort is usually right before the breakthrough or the honest admission it's not the right project."
+   **example_pass**: Don't throw in the towel yet — six months of effort is usually right before the breakthrough or the honest admission it's not the right project. | It's raining cats and dogs out there. | Break a leg with your presentation tomorrow!
+   **example_fail**: good morning (bare greeting, no cultural idiom) | I am very happy (literal, no cultural idiom) | I ate breakfast (off-topic, no idiom)
 
 2. **id**: 2
    **label_pt**: "Diagnose com 'cutting corners' ou 'back to square one'"
@@ -573,6 +617,8 @@
    **hidden_prompt**: "user diagnoses with 'cutting corners' or 'back to square one'"
    **hint_pt**: "Are you cutting corners somewhere you shouldn't? Sometimes the breaks are signal that an earlier shortcut needs revisiting — even if it means back to square one for one component."
    **hint_en**: "Are you cutting corners somewhere you shouldn't? Sometimes the breaks are signal that an earlier shortcut needs revisiting — even if it means back to square one for one component."
+   **example_pass**: Are you cutting corners somewhere you shouldn't? Sometimes the breaks are signal that an earlier shortcut needs revisiting — even if it means back to square one for one component. | Don't cry over spilt milk — it's done. | We're really in the same boat on this one.
+   **example_fail**: good morning (bare greeting, no cultural idiom) | I am very happy (literal, no cultural idiom) | I ate breakfast (off-topic, no idiom)
 
 3. **id**: 3
    **label_pt**: "Devolver com 'ball is in your court'"
@@ -580,6 +626,8 @@
    **hidden_prompt**: "user reframes with 'ball is in your court'"
    **hint_pt**: "The ball is in your court for the next decision — keep pushing, redesign one piece, or pause for a month. Any of those is a valid move."
    **hint_en**: "The ball is in your court for the next decision — keep pushing, redesign one piece, or pause for a month. Any of those is a valid move."
+   **example_pass**: The ball is in your court for the next decision — keep pushing, redesign one piece, or pause for a month. Any of those is a valid move. | Let's call it a day and pick up tomorrow. | He really has a chip on his shoulder about it.
+   **example_fail**: good morning (bare greeting, no cultural idiom) | I am very happy (literal, no cultural idiom) | I ate breakfast (off-topic, no idiom)
 
 **Closing cue**: Charlotte closes with "Pause for a month. I'll redesign during the break." once obj_3 lands.
 
@@ -657,6 +705,8 @@
    **hidden_prompt**: "user suggests an icebreaker"
    **hint_pt**: "Open with something light — 'Quick question to break the ice — what was the best part of your weekend?' That gets the room talking before the agenda kicks in."
    **hint_en**: "Open with something light — 'Quick question to break the ice — what was the best part of your weekend?' That gets the room talking before the agenda kicks in."
+   **example_pass**: Open with something light — 'Quick question to break the ice — what was the best part of your weekend?' That gets the room talking before the agenda kicks in. | It's raining cats and dogs out there. | Break a leg with your presentation tomorrow!
+   **example_fail**: good morning (bare greeting, no cultural idiom) | I am very happy (literal, no cultural idiom) | I ate breakfast (off-topic, no idiom)
 
 2. **id**: 2
    **label_pt**: "Comentar com 'hit the nail on the head'"
@@ -664,6 +714,8 @@
    **hidden_prompt**: "user uses 'hit the nail on the head'"
    **hint_pt**: "When Maria summarised the problem in one sentence, she hit the nail on the head — everyone in the room nodded at the same time."
    **hint_en**: "When Maria summarised the problem in one sentence, she hit the nail on the head — everyone in the room nodded at the same time."
+   **example_pass**: When Maria summarised the problem in one sentence, she hit the nail on the head — everyone in the room nodded at the same time. | Don't cry over spilt milk — it's done. | We're really in the same boat on this one.
+   **example_fail**: good morning (bare greeting, no cultural idiom) | I am very happy (literal, no cultural idiom) | I ate breakfast (off-topic, no idiom)
 
 3. **id**: 3
    **label_pt**: "Comentar com 'piece of cake' ou 'rule of thumb'"
@@ -671,6 +723,8 @@
    **hidden_prompt**: "user uses 'piece of cake' or 'rule of thumb'"
    **hint_pt**: "As a rule of thumb, the first half of a meeting is for context, the second half for decisions — and if we keep to that, this one's going to be a piece of cake."
    **hint_en**: "As a rule of thumb, the first half of a meeting is for context, the second half for decisions — and if we keep to that, this one's going to be a piece of cake."
+   **example_pass**: As a rule of thumb, the first half of a meeting is for context, the second half for decisions — and if we keep to that, this one's going to be a piece of cake. | Let's call it a day and pick up tomorrow. | He really has a chip on his shoulder about it.
+   **example_fail**: good morning (bare greeting, no cultural idiom) | I am very happy (literal, no cultural idiom) | I ate breakfast (off-topic, no idiom)
 
 **Closing cue**: Charlotte closes with "Meeting saved, idiomatically." once obj_3 lands.
 
@@ -706,6 +760,8 @@
    **hidden_prompt**: "user uses 'piece of cake'"
    **hint_pt**: "Sounds like it ended up being a piece of cake — funny how the things we dread for weeks turn out to be the easiest part."
    **hint_en**: "Sounds like it ended up being a piece of cake — funny how the things we dread for weeks turn out to be the easiest part."
+   **example_pass**: Sounds like it ended up being a piece of cake — funny how the things we dread for weeks turn out to be the easiest part. | It's raining cats and dogs out there. | Break a leg with your presentation tomorrow!
+   **example_fail**: good morning (bare greeting, no cultural idiom) | I am very happy (literal, no cultural idiom) | I ate breakfast (off-topic, no idiom)
 
 2. **id**: 2
    **label_pt**: "Perguntar com 'break the ice'"
@@ -713,6 +769,8 @@
    **hidden_prompt**: "user asks about how she broke the ice"
    **hint_pt**: "How did you break the ice with the board? That first thirty seconds usually decides how the rest of the room sits with you."
    **hint_en**: "How did you break the ice with the board? That first thirty seconds usually decides how the rest of the room sits with you."
+   **example_pass**: How did you break the ice with the board? That first thirty seconds usually decides how the rest of the room sits with you. | Don't cry over spilt milk — it's done. | We're really in the same boat on this one.
+   **example_fail**: good morning (bare greeting, no cultural idiom) | I am very happy (literal, no cultural idiom) | I ate breakfast (off-topic, no idiom)
 
 3. **id**: 3
    **label_pt**: "Idiom 'speak of the devil' ou 'hit the nail on the head'"
@@ -720,6 +778,8 @@
    **hidden_prompt**: "user uses 'speak of the devil' or 'hit the nail on the head'"
    **hint_pt**: "Speak of the devil — your assistant just walked in with what looks like the board's written feedback. Hopefully someone hit the nail on the head with the praise."
    **hint_en**: "Speak of the devil — your assistant just walked in with what looks like the board's written feedback. Hopefully someone hit the nail on the head with the praise."
+   **example_pass**: Speak of the devil — your assistant just walked in with what looks like the board's written feedback. Hopefully someone hit the nail on the head with the praise. | Let's call it a day and pick up tomorrow. | He really has a chip on his shoulder about it.
+   **example_fail**: good morning (bare greeting, no cultural idiom) | I am very happy (literal, no cultural idiom) | I ate breakfast (off-topic, no idiom)
 
 **Closing cue**: Charlotte closes with "Let me open it now." once obj_3 lands.
 

@@ -119,19 +119,49 @@
             "id": 1,
             "label_en": "It-cleft emphasising person",
             "hidden_prompt": "user uses 'It was/is + person + who + clause'",
-            "hint_en": "It was my mother who taught me to cook."
+            "hint_en": "It was my mother who taught me to cook.",
+            "examples_pass": [
+              "It was my mother who taught me to cook.",
+              "It was her dedication that impressed me most.",
+              "What I really value is honest feedback."
+            ],
+            "examples_fail": [
+              "money (bare word, no cleft structure)",
+              "I value family most (simple sentence, no cleft)",
+              "I like cooking (off-topic, no 'it is' or 'what')"
+            ]
           },
           {
             "id": 2,
             "label_en": "It-cleft emphasising time",
             "hidden_prompt": "user uses 'It was + time + that + clause'",
-            "hint_en": "It was in college that I discovered my passion for writing."
+            "hint_en": "It was in college that I discovered my passion for writing.",
+            "examples_pass": [
+              "It was in college that I discovered my passion for writing.",
+              "It was in 2010 that we first met.",
+              "What surprised me was his calm reaction."
+            ],
+            "examples_fail": [
+              "money (bare word, no cleft structure)",
+              "I value family most (simple sentence, no cleft)",
+              "I like cooking (off-topic, no 'it is' or 'what')"
+            ]
           },
           {
             "id": 3,
             "label_en": "It-cleft emphasising place",
             "hidden_prompt": "user uses 'It was at/in + place + that + clause'",
-            "hint_en": "It was at a coffee shop in Lisbon that we first spoke."
+            "hint_en": "It was at a coffee shop in Lisbon that we first spoke.",
+            "examples_pass": [
+              "It was at a coffee shop in Lisbon that we first spoke.",
+              "It is the silence that bothers me, not the noise.",
+              "All I want is a quiet weekend."
+            ],
+            "examples_fail": [
+              "money (bare word, no cleft structure)",
+              "I value family most (simple sentence, no cleft)",
+              "I like cooking (off-topic, no 'it is' or 'what')"
+            ]
           }
         ],
         "closing_cue": "Charlotte closes with \"Emphasis surgically placed.\" once obj_3 lands.",
@@ -154,19 +184,49 @@
             "id": 1,
             "label_en": "Reply with it-cleft about person",
             "hidden_prompt": "user uses 'It was + person + who + clause'",
-            "hint_en": "It was a small founding team of three who built it."
+            "hint_en": "It was a small founding team of three who built it.",
+            "examples_pass": [
+              "It was a small founding team of three who built it.",
+              "It was her dedication that impressed me most.",
+              "What I really value is honest feedback."
+            ],
+            "examples_fail": [
+              "money (bare word, no cleft structure)",
+              "I value family most (simple sentence, no cleft)",
+              "I like cooking (off-topic, no 'it is' or 'what')"
+            ]
           },
           {
             "id": 2,
             "label_en": "Deepen with it-cleft of time",
             "hidden_prompt": "user uses 'It was + time + that + clause'",
-            "hint_en": "It was over a weekend in 2019 that we finished the first version."
+            "hint_en": "It was over a weekend in 2019 that we finished the first version.",
+            "examples_pass": [
+              "It was over a weekend in 2019 that we finished the first version.",
+              "It was in 2010 that we first met.",
+              "What surprised me was his calm reaction."
+            ],
+            "examples_fail": [
+              "money (bare word, no cleft structure)",
+              "I value family most (simple sentence, no cleft)",
+              "I like cooking (off-topic, no 'it is' or 'what')"
+            ]
           },
           {
             "id": 3,
             "label_en": "Ask Charlotte",
             "hidden_prompt": "user asks Charlotte a probing question back",
-            "hint_en": "What do you want to know next?"
+            "hint_en": "What do you want to know next?",
+            "examples_pass": [
+              "What do you want to know next?",
+              "It is the silence that bothers me, not the noise.",
+              "All I want is a quiet weekend."
+            ],
+            "examples_fail": [
+              "money (bare word, no cleft structure)",
+              "I value family most (simple sentence, no cleft)",
+              "I like cooking (off-topic, no 'it is' or 'what')"
+            ]
           }
         ],
         "closing_cue": "Charlotte closes with \"Origin story documented.\" once obj_3 lands.",
@@ -273,19 +333,49 @@
             "id": 1,
             "label_en": "Wh-cleft with 'What I need is'",
             "hidden_prompt": "user uses 'What I need is + noun'",
-            "hint_en": "What I need is a clear deadline and less micromanagement."
+            "hint_en": "What I need is a clear deadline and less micromanagement.",
+            "examples_pass": [
+              "What I need is a clear deadline and less micromanagement.",
+              "It was her dedication that impressed me most.",
+              "What I really value is honest feedback."
+            ],
+            "examples_fail": [
+              "money (bare word, no cleft structure)",
+              "I value family most (simple sentence, no cleft)",
+              "I like cooking (off-topic, no 'it is' or 'what')"
+            ]
           },
           {
             "id": 2,
             "label_en": "Wh-cleft with 'What surprised me was'",
             "hidden_prompt": "user uses 'What surprised me was + element'",
-            "hint_en": "What surprised me was how calm she stayed under pressure."
+            "hint_en": "What surprised me was how calm she stayed under pressure.",
+            "examples_pass": [
+              "What surprised me was how calm she stayed under pressure.",
+              "It was in 2010 that we first met.",
+              "What surprised me was his calm reaction."
+            ],
+            "examples_fail": [
+              "money (bare word, no cleft structure)",
+              "I value family most (simple sentence, no cleft)",
+              "I like cooking (off-topic, no 'it is' or 'what')"
+            ]
           },
           {
             "id": 3,
             "label_en": "Wh-cleft with 'What I did was'",
             "hidden_prompt": "user uses 'What I did was + base form'",
-            "hint_en": "What I did was step away from the screen for an hour."
+            "hint_en": "What I did was step away from the screen for an hour.",
+            "examples_pass": [
+              "What I did was step away from the screen for an hour.",
+              "It is the silence that bothers me, not the noise.",
+              "All I want is a quiet weekend."
+            ],
+            "examples_fail": [
+              "money (bare word, no cleft structure)",
+              "I value family most (simple sentence, no cleft)",
+              "I like cooking (off-topic, no 'it is' or 'what')"
+            ]
           }
         ],
         "closing_cue": "Charlotte closes with \"Spotlight calibrated.\" once obj_3 lands.",
@@ -308,19 +398,49 @@
             "id": 1,
             "label_en": "Clear need with wh-cleft",
             "hidden_prompt": "user uses 'What I need is + noun/clause'",
-            "hint_en": "What I need is two hours of uninterrupted focus."
+            "hint_en": "What I need is two hours of uninterrupted focus.",
+            "examples_pass": [
+              "What I need is two hours of uninterrupted focus.",
+              "It was her dedication that impressed me most.",
+              "What I really value is honest feedback."
+            ],
+            "examples_fail": [
+              "money (bare word, no cleft structure)",
+              "I value family most (simple sentence, no cleft)",
+              "I like cooking (off-topic, no 'it is' or 'what')"
+            ]
           },
           {
             "id": 2,
             "label_en": "Surprise or observation with wh-cleft",
             "hidden_prompt": "user uses 'What surprised/struck me was + element'",
-            "hint_en": "What surprised me was how much I missed silence."
+            "hint_en": "What surprised me was how much I missed silence.",
+            "examples_pass": [
+              "What surprised me was how much I missed silence.",
+              "It was in 2010 that we first met.",
+              "What surprised me was his calm reaction."
+            ],
+            "examples_fail": [
+              "money (bare word, no cleft structure)",
+              "I value family most (simple sentence, no cleft)",
+              "I like cooking (off-topic, no 'it is' or 'what')"
+            ]
           },
           {
             "id": 3,
             "label_en": "Ask Charlotte",
             "hidden_prompt": "user asks Charlotte what she needs",
-            "hint_en": "What's missing from yours?"
+            "hint_en": "What's missing from yours?",
+            "examples_pass": [
+              "What's missing from yours?",
+              "It is the silence that bothers me, not the noise.",
+              "All I want is a quiet weekend."
+            ],
+            "examples_fail": [
+              "money (bare word, no cleft structure)",
+              "I value family most (simple sentence, no cleft)",
+              "I like cooking (off-topic, no 'it is' or 'what')"
+            ]
           }
         ],
         "closing_cue": "Charlotte closes with \"Needs named, plainly.\" once obj_3 lands.",
@@ -430,19 +550,49 @@
             "id": 1,
             "label_en": "All-cleft of desire",
             "hidden_prompt": "user uses 'All I want is + noun/clause'",
-            "hint_en": "All I want is a Friday without meetings."
+            "hint_en": "All I want is a Friday without meetings.",
+            "examples_pass": [
+              "All I want is a Friday without meetings.",
+              "It was her dedication that impressed me most.",
+              "What I really value is honest feedback."
+            ],
+            "examples_fail": [
+              "money (bare word, no cleft structure)",
+              "I value family most (simple sentence, no cleft)",
+              "I like cooking (off-topic, no 'it is' or 'what')"
+            ]
           },
           {
             "id": 2,
             "label_en": "All-cleft of own action",
             "hidden_prompt": "user uses 'All I did was + base form'",
-            "hint_en": "All I did was ask one honest question."
+            "hint_en": "All I did was ask one honest question.",
+            "examples_pass": [
+              "All I did was ask one honest question.",
+              "It was in 2010 that we first met.",
+              "What surprised me was his calm reaction."
+            ],
+            "examples_fail": [
+              "money (bare word, no cleft structure)",
+              "I value family most (simple sentence, no cleft)",
+              "I like cooking (off-topic, no 'it is' or 'what')"
+            ]
           },
           {
             "id": 3,
             "label_en": "All-cleft of someone else",
             "hidden_prompt": "user uses 'All he/she/they did was + base form'",
-            "hint_en": "All my boss did was nod and walk away."
+            "hint_en": "All my boss did was nod and walk away.",
+            "examples_pass": [
+              "All my boss did was nod and walk away.",
+              "It is the silence that bothers me, not the noise.",
+              "All I want is a quiet weekend."
+            ],
+            "examples_fail": [
+              "money (bare word, no cleft structure)",
+              "I value family most (simple sentence, no cleft)",
+              "I like cooking (off-topic, no 'it is' or 'what')"
+            ]
           }
         ],
         "closing_cue": "Charlotte closes with \"Minimised, emphasised.\" once obj_3 lands.",
@@ -465,19 +615,49 @@
             "id": 1,
             "label_en": "Essential desire",
             "hidden_prompt": "user uses 'All I want is + noun/clause'",
-            "hint_en": "All I want is to feel less rushed in the mornings."
+            "hint_en": "All I want is to feel less rushed in the mornings.",
+            "examples_pass": [
+              "All I want is to feel less rushed in the mornings.",
+              "It was her dedication that impressed me most.",
+              "What I really value is honest feedback."
+            ],
+            "examples_fail": [
+              "money (bare word, no cleft structure)",
+              "I value family most (simple sentence, no cleft)",
+              "I like cooking (off-topic, no 'it is' or 'what')"
+            ]
           },
           {
             "id": 2,
             "label_en": "Minimised action",
             "hidden_prompt": "user uses 'All I did was + base'",
-            "hint_en": "All I did was start setting my alarm twenty minutes earlier."
+            "hint_en": "All I did was start setting my alarm twenty minutes earlier.",
+            "examples_pass": [
+              "All I did was start setting my alarm twenty minutes earlier.",
+              "It was in 2010 that we first met.",
+              "What surprised me was his calm reaction."
+            ],
+            "examples_fail": [
+              "money (bare word, no cleft structure)",
+              "I value family most (simple sentence, no cleft)",
+              "I like cooking (off-topic, no 'it is' or 'what')"
+            ]
           },
           {
             "id": 3,
             "label_en": "Ask Charlotte",
             "hidden_prompt": "user asks Charlotte for one specific change she made",
-            "hint_en": "What did you actually change?"
+            "hint_en": "What did you actually change?",
+            "examples_pass": [
+              "What did you actually change?",
+              "It is the silence that bothers me, not the noise.",
+              "All I want is a quiet weekend."
+            ],
+            "examples_fail": [
+              "money (bare word, no cleft structure)",
+              "I value family most (simple sentence, no cleft)",
+              "I like cooking (off-topic, no 'it is' or 'what')"
+            ]
           }
         ],
         "closing_cue": "Charlotte closes with \"Essentials only.\" once obj_3 lands.",
@@ -584,19 +764,49 @@
             "id": 1,
             "label_en": "Personal late realisation",
             "hidden_prompt": "user uses 'It wasn't until + clause + that + main'",
-            "hint_en": "It wasn't until I changed jobs that I understood how unhappy I had been."
+            "hint_en": "It wasn't until I changed jobs that I understood how unhappy I had been.",
+            "examples_pass": [
+              "It wasn't until I changed jobs that I understood how unhappy I had been.",
+              "It was her dedication that impressed me most.",
+              "What I really value is honest feedback."
+            ],
+            "examples_fail": [
+              "money (bare word, no cleft structure)",
+              "I value family most (simple sentence, no cleft)",
+              "I like cooking (off-topic, no 'it is' or 'what')"
+            ]
           },
           {
             "id": 2,
             "label_en": "Late event (not realisation)",
             "hidden_prompt": "user uses 'It wasn't until + time + that + event'",
-            "hint_en": "It wasn't until 30 that I learned to cook properly."
+            "hint_en": "It wasn't until 30 that I learned to cook properly.",
+            "examples_pass": [
+              "It wasn't until 30 that I learned to cook properly.",
+              "It was in 2010 that we first met.",
+              "What surprised me was his calm reaction."
+            ],
+            "examples_fail": [
+              "money (bare word, no cleft structure)",
+              "I value family most (simple sentence, no cleft)",
+              "I like cooking (off-topic, no 'it is' or 'what')"
+            ]
           },
           {
             "id": 3,
             "label_en": "Late + about someone else",
             "hidden_prompt": "user uses 'It wasn't until + clause + that + he/she + clause'",
-            "hint_en": "It wasn't until last week that my brother told me the whole story."
+            "hint_en": "It wasn't until last week that my brother told me the whole story.",
+            "examples_pass": [
+              "It wasn't until last week that my brother told me the whole story.",
+              "It is the silence that bothers me, not the noise.",
+              "All I want is a quiet weekend."
+            ],
+            "examples_fail": [
+              "money (bare word, no cleft structure)",
+              "I value family most (simple sentence, no cleft)",
+              "I like cooking (off-topic, no 'it is' or 'what')"
+            ]
           }
         ],
         "closing_cue": "Charlotte closes with \"Late but legible.\" once obj_3 lands.",
@@ -619,19 +829,49 @@
             "id": 1,
             "label_en": "Late lesson",
             "hidden_prompt": "user uses 'It wasn't until X that Y'",
-            "hint_en": "It wasn't until I lost a friend that I started replying to texts on the same day."
+            "hint_en": "It wasn't until I lost a friend that I started replying to texts on the same day.",
+            "examples_pass": [
+              "It wasn't until I lost a friend that I started replying to texts on the same day.",
+              "It was her dedication that impressed me most.",
+              "What I really value is honest feedback."
+            ],
+            "examples_fail": [
+              "money (bare word, no cleft structure)",
+              "I value family most (simple sentence, no cleft)",
+              "I like cooking (off-topic, no 'it is' or 'what')"
+            ]
           },
           {
             "id": 2,
             "label_en": "Another delayed realisation",
             "hidden_prompt": "user uses another 'It wasn't until' cleft",
-            "hint_en": "It wasn't until I tried therapy that I noticed how angry I was."
+            "hint_en": "It wasn't until I tried therapy that I noticed how angry I was.",
+            "examples_pass": [
+              "It wasn't until I tried therapy that I noticed how angry I was.",
+              "It was in 2010 that we first met.",
+              "What surprised me was his calm reaction."
+            ],
+            "examples_fail": [
+              "money (bare word, no cleft structure)",
+              "I value family most (simple sentence, no cleft)",
+              "I like cooking (off-topic, no 'it is' or 'what')"
+            ]
           },
           {
             "id": 3,
             "label_en": "Ask Charlotte",
             "hidden_prompt": "user asks Charlotte what made her finally take sleep seriously",
-            "hint_en": "What flipped the switch on sleep for you?"
+            "hint_en": "What flipped the switch on sleep for you?",
+            "examples_pass": [
+              "What flipped the switch on sleep for you?",
+              "It is the silence that bothers me, not the noise.",
+              "All I want is a quiet weekend."
+            ],
+            "examples_fail": [
+              "money (bare word, no cleft structure)",
+              "I value family most (simple sentence, no cleft)",
+              "I like cooking (off-topic, no 'it is' or 'what')"
+            ]
           }
         ],
         "closing_cue": "Charlotte closes with \"Late, not lost.\" once obj_3 lands.",
@@ -738,19 +978,49 @@
             "id": 1,
             "label_en": "'The reason... is'",
             "hidden_prompt": "user uses 'The reason (why) + clause + is + that-clause/element'",
-            "hint_en": "The reason I started running is that my back wouldn't stop hurting."
+            "hint_en": "The reason I started running is that my back wouldn't stop hurting.",
+            "examples_pass": [
+              "The reason I started running is that my back wouldn't stop hurting.",
+              "It was her dedication that impressed me most.",
+              "What I really value is honest feedback."
+            ],
+            "examples_fail": [
+              "money (bare word, no cleft structure)",
+              "I value family most (simple sentence, no cleft)",
+              "I like cooking (off-topic, no 'it is' or 'what')"
+            ]
           },
           {
             "id": 2,
             "label_en": "'The thing that... is/was'",
             "hidden_prompt": "user uses 'The thing that + clause + is/was + element'",
-            "hint_en": "The thing that kept me going was a single email from a stranger."
+            "hint_en": "The thing that kept me going was a single email from a stranger.",
+            "examples_pass": [
+              "The thing that kept me going was a single email from a stranger.",
+              "It was in 2010 that we first met.",
+              "What surprised me was his calm reaction."
+            ],
+            "examples_fail": [
+              "money (bare word, no cleft structure)",
+              "I value family most (simple sentence, no cleft)",
+              "I like cooking (off-topic, no 'it is' or 'what')"
+            ]
           },
           {
             "id": 3,
             "label_en": "'The place where' or 'The time when'",
             "hidden_prompt": "user uses 'The place where + clause + is/was' or 'The time when + clause + was'",
-            "hint_en": "The time when I felt most myself was the year I lived alone in Lisbon."
+            "hint_en": "The time when I felt most myself was the year I lived alone in Lisbon.",
+            "examples_pass": [
+              "The time when I felt most myself was the year I lived alone in Lisbon.",
+              "It is the silence that bothers me, not the noise.",
+              "All I want is a quiet weekend."
+            ],
+            "examples_fail": [
+              "money (bare word, no cleft structure)",
+              "I value family most (simple sentence, no cleft)",
+              "I like cooking (off-topic, no 'it is' or 'what')"
+            ]
           }
         ],
         "closing_cue": "Charlotte closes with \"Three frames, three spotlights.\" once obj_3 lands.",
@@ -773,19 +1043,49 @@
             "id": 1,
             "label_en": "Personal 'The reason'",
             "hidden_prompt": "user uses 'The reason + clause + is + that-clause'",
-            "hint_en": "The reason I write every morning is that I think better when nobody's watching."
+            "hint_en": "The reason I write every morning is that I think better when nobody's watching.",
+            "examples_pass": [
+              "The reason I write every morning is that I think better when nobody's watching.",
+              "It was her dedication that impressed me most.",
+              "What I really value is honest feedback."
+            ],
+            "examples_fail": [
+              "money (bare word, no cleft structure)",
+              "I value family most (simple sentence, no cleft)",
+              "I like cooking (off-topic, no 'it is' or 'what')"
+            ]
           },
           {
             "id": 2,
             "label_en": "Defining 'The thing that'",
             "hidden_prompt": "user uses 'The thing that + clause + is/was + element'",
-            "hint_en": "The thing that changed me most was my first proper failure."
+            "hint_en": "The thing that changed me most was my first proper failure.",
+            "examples_pass": [
+              "The thing that changed me most was my first proper failure.",
+              "It was in 2010 that we first met.",
+              "What surprised me was his calm reaction."
+            ],
+            "examples_fail": [
+              "money (bare word, no cleft structure)",
+              "I value family most (simple sentence, no cleft)",
+              "I like cooking (off-topic, no 'it is' or 'what')"
+            ]
           },
           {
             "id": 3,
             "label_en": "Ask Charlotte",
             "hidden_prompt": "user asks Charlotte about her teacher",
-            "hint_en": "Who was the teacher?"
+            "hint_en": "Who was the teacher?",
+            "examples_pass": [
+              "Who was the teacher?",
+              "It is the silence that bothers me, not the noise.",
+              "All I want is a quiet weekend."
+            ],
+            "examples_fail": [
+              "money (bare word, no cleft structure)",
+              "I value family most (simple sentence, no cleft)",
+              "I like cooking (off-topic, no 'it is' or 'what')"
+            ]
           }
         ],
         "closing_cue": "Charlotte closes with \"Self-portrait, in clefts.\" once obj_3 lands.",

@@ -86,6 +86,8 @@
    **hidden_prompt**: "user uses 'The rise of + noun phrase' to open"
    **hint_pt**: "The rise of remote work has transformed how organisations think about office space."
    **hint_en**: "The rise of remote work has transformed how organisations think about office space."
+   **example_pass**: The rise of remote work has transformed how organisations think about office space. | The findings suggest a significant correlation between the two variables. | This study aims to examine the underlying mechanisms.
+   **example_fail**: important (bare adjective, casual register) | This is really important and stuff (casual, not academic) | I went to the park (off-topic, no academic register)
 
 2. **id**: 2
    **label_pt**: "'The decline in' ou 'A shift towards'"
@@ -93,6 +95,8 @@
    **hidden_prompt**: "user uses 'The decline in + noun' or 'A shift towards + noun'"
    **hint_pt**: "The decline in newspaper readership has been documented across every Western democracy."
    **hint_en**: "The decline in newspaper readership has been documented across every Western democracy."
+   **example_pass**: The decline in newspaper readership has been documented across every Western democracy. | Subsequent analysis revealed inconsistencies in the dataset. | The data indicate a notable shift in consumer behaviour.
+   **example_fail**: important (bare adjective, casual register) | This is really important and stuff (casual, not academic) | I went to the park (off-topic, no academic register)
 
 3. **id**: 3
    **label_pt**: "'The emergence of' ou 'An increase in'"
@@ -100,6 +104,8 @@
    **hidden_prompt**: "user uses 'The emergence of' or 'An increase in'"
    **hint_pt**: "The emergence of large language models has accelerated debates about the future of knowledge work."
    **hint_en**: "The emergence of large language models has accelerated debates about the future of knowledge work."
+   **example_pass**: The emergence of large language models has accelerated debates about the future of knowledge work. | These results have important implications for further research. | The methodology employed in this investigation is comprehensive.
+   **example_fail**: important (bare adjective, casual register) | This is really important and stuff (casual, not academic) | I went to the park (off-topic, no academic register)
 
 **Closing cue**: Charlotte closes with "Three openers, academically packed." once obj_3 lands.
 
@@ -135,6 +141,8 @@
    **hidden_prompt**: "user uses 'The increase in / The rise in / A marked rise in' nominalisation"
    **hint_pt**: "Try: 'The increase in corporate cybersecurity spending has accelerated in each of the past five years.'"
    **hint_en**: "Try: 'The increase in corporate cybersecurity spending has accelerated in each of the past five years.'"
+   **example_pass**: Try: 'The increase in corporate cybersecurity spending has accelerated in each of the past five years.' | The findings suggest a significant correlation between the two variables. | This study aims to examine the underlying mechanisms.
+   **example_fail**: important (bare adjective, casual register) | This is really important and stuff (casual, not academic) | I went to the park (off-topic, no academic register)
 
 2. **id**: 2
    **label_pt**: "Aprofundar com outra nominalização"
@@ -142,6 +150,8 @@
    **hidden_prompt**: "user adds 'The emergence of / The shift towards'"
    **hint_pt**: "If you want to bring in the cause, you could add: 'driven in part by the emergence of new threat vectors and a shift towards remote work.'"
    **hint_en**: "If you want to bring in the cause, you could add: 'driven in part by the emergence of new threat vectors and a shift towards remote work.'"
+   **example_pass**: If you want to bring in the cause, you could add: 'driven in part by the emergence of new threat vectors and a shift towards remote work.' | Subsequent analysis revealed inconsistencies in the dataset. | The data indicate a notable shift in consumer behaviour.
+   **example_fail**: important (bare adjective, casual register) | This is really important and stuff (casual, not academic) | I went to the park (off-topic, no academic register)
 
 3. **id**: 3
    **label_pt**: "Perguntar a Charlotte"
@@ -149,6 +159,8 @@
    **hidden_prompt**: "user asks Charlotte what the paper actually argues"
    **hint_pt**: "What does the paper actually claim?"
    **hint_en**: "What does the paper actually claim?"
+   **example_pass**: What does the paper actually claim? | These results have important implications for further research. | The methodology employed in this investigation is comprehensive.
+   **example_fail**: important (bare adjective, casual register) | This is really important and stuff (casual, not academic) | I went to the park (off-topic, no academic register)
 
 **Closing cue**: Charlotte closes with "Opener academically pitched." once obj_3 lands.
 
@@ -228,6 +240,8 @@
    **hidden_prompt**: "user uses 'It is widely accepted/held/argued that + clause'"
    **hint_pt**: "From 'Most experts agree exercise helps' → 'It is widely accepted that regular exercise improves cognitive function.'"
    **hint_en**: "From 'Most experts agree exercise helps' → 'It is widely accepted that regular exercise improves cognitive function.'"
+   **example_pass**: From 'Most experts agree exercise helps' → 'It is widely accepted that regular exercise improves cognitive function.' | The findings suggest a significant correlation between the two variables. | This study aims to examine the underlying mechanisms.
+   **example_fail**: important (bare adjective, casual register) | This is really important and stuff (casual, not academic) | I went to the park (off-topic, no academic register)
 
 2. **id**: 2
    **label_pt**: "'This paper / The present study'"
@@ -235,6 +249,8 @@
    **hidden_prompt**: "user uses 'This paper argues / The present study examines'"
    **hint_pt**: "From 'I argue that the model fails' → 'This paper argues that the existing model fails to account for non-linear effects.'"
    **hint_en**: "From 'I argue that the model fails' → 'This paper argues that the existing model fails to account for non-linear effects.'"
+   **example_pass**: From 'I argue that the model fails' → 'This paper argues that the existing model fails to account for non-linear effects.' | Subsequent analysis revealed inconsistencies in the dataset. | The data indicate a notable shift in consumer behaviour.
+   **example_fail**: important (bare adjective, casual register) | This is really important and stuff (casual, not academic) | I went to the park (off-topic, no academic register)
 
 3. **id**: 3
    **label_pt**: "'The data suggest / The evidence indicates'"
@@ -242,6 +258,8 @@
    **hidden_prompt**: "user uses 'The data suggest / The evidence indicates + clause'"
    **hint_pt**: "From 'I found that women earned less for the same work' → 'The data indicate that women in the sample earned 18% less for equivalent work.'"
    **hint_en**: "From 'I found that women earned less for the same work' → 'The data indicate that women in the sample earned 18% less for equivalent work.'"
+   **example_pass**: From 'I found that women earned less for the same work' → 'The data indicate that women in the sample earned 18% less for equivalent work.' | These results have important implications for further research. | The methodology employed in this investigation is comprehensive.
+   **example_fail**: important (bare adjective, casual register) | This is really important and stuff (casual, not academic) | I went to the park (off-topic, no academic register)
 
 **Closing cue**: Charlotte closes with "Voice depersonalised, claims preserved." once obj_3 lands.
 
@@ -277,6 +295,8 @@
    **hidden_prompt**: "user uses 'The data suggest' or 'The findings indicate' or 'It is observed that'"
    **hint_pt**: "Try: 'The data suggest that students perform measurably better when feedback is delivered within 24 hours.'"
    **hint_en**: "Try: 'The data suggest that students perform measurably better when feedback is delivered within 24 hours.'"
+   **example_pass**: Try: 'The data suggest that students perform measurably better when feedback is delivered within 24 hours.' | The findings suggest a significant correlation between the two variables. | This study aims to examine the underlying mechanisms.
+   **example_fail**: important (bare adjective, casual register) | This is really important and stuff (casual, not academic) | I went to the park (off-topic, no academic register)
 
 2. **id**: 2
    **label_pt**: "Reescrever a interpretação"
@@ -284,6 +304,8 @@
    **hidden_prompt**: "user uses 'This may be attributed to' or 'A plausible explanation is that'"
    **hint_pt**: "And: 'A plausible explanation is that the temporal proximity between task and response strengthens the cognitive link between effort and outcome.'"
    **hint_en**: "And: 'A plausible explanation is that the temporal proximity between task and response strengthens the cognitive link between effort and outcome.'"
+   **example_pass**: And: 'A plausible explanation is that the temporal proximity between task and response strengthens the cognitive link between effort and outcome.' | Subsequent analysis revealed inconsistencies in the dataset. | The data indicate a notable shift in consumer behaviour.
+   **example_fail**: important (bare adjective, casual register) | This is really important and stuff (casual, not academic) | I went to the park (off-topic, no academic register)
 
 3. **id**: 3
    **label_pt**: "Perguntar a Charlotte"
@@ -291,6 +313,8 @@
    **hidden_prompt**: "user asks Charlotte how strong the evidence actually is"
    **hint_pt**: "How strong is the evidence — is this from a study or your classroom?"
    **hint_en**: "How strong is the evidence — is this from a study or your classroom?"
+   **example_pass**: How strong is the evidence — is this from a study or your classroom? | These results have important implications for further research. | The methodology employed in this investigation is comprehensive.
+   **example_fail**: important (bare adjective, casual register) | This is really important and stuff (casual, not academic) | I went to the park (off-topic, no academic register)
 
 **Closing cue**: Charlotte closes with "Paragraph academically dressed." once obj_3 lands.
 
@@ -369,6 +393,8 @@
    **hidden_prompt**: "user uses 'This suggests that' or 'The data indicate'"
    **hint_pt**: "From 'The policy worked' → 'The data suggest that the policy contributed to the observed improvement.'"
    **hint_en**: "From 'The policy worked' → 'The data suggest that the policy contributed to the observed improvement.'"
+   **example_pass**: From 'The policy worked' → 'The data suggest that the policy contributed to the observed improvement.' | The findings suggest a significant correlation between the two variables. | This study aims to examine the underlying mechanisms.
+   **example_fail**: important (bare adjective, casual register) | This is really important and stuff (casual, not academic) | I went to the park (off-topic, no academic register)
 
 2. **id**: 2
    **label_pt**: "Hedge forte com 'evidence supports'"
@@ -376,6 +402,8 @@
    **hidden_prompt**: "user uses 'The evidence supports' or 'There is strong reason to believe'"
    **hint_pt**: "From 'It's true that...' → 'The accumulated evidence supports the conclusion that...'"
    **hint_en**: "From 'It's true that...' → 'The accumulated evidence supports the conclusion that...'"
+   **example_pass**: From 'It's true that...' → 'The accumulated evidence supports the conclusion that...' | Subsequent analysis revealed inconsistencies in the dataset. | The data indicate a notable shift in consumer behaviour.
+   **example_fail**: important (bare adjective, casual register) | This is really important and stuff (casual, not academic) | I went to the park (off-topic, no academic register)
 
 3. **id**: 3
    **label_pt**: "Hedge fraco com 'conceivable'"
@@ -383,6 +411,8 @@
    **hidden_prompt**: "user uses 'It is conceivable that' or 'A possible interpretation is'"
    **hint_pt**: "From 'Maybe X causes Y' → 'It is conceivable, though not yet established, that X plays a causal role in Y.'"
    **hint_en**: "From 'Maybe X causes Y' → 'It is conceivable, though not yet established, that X plays a causal role in Y.'"
+   **example_pass**: From 'Maybe X causes Y' → 'It is conceivable, though not yet established, that X plays a causal role in Y.' | These results have important implications for further research. | The methodology employed in this investigation is comprehensive.
+   **example_fail**: important (bare adjective, casual register) | This is really important and stuff (casual, not academic) | I went to the park (off-topic, no academic register)
 
 **Closing cue**: Charlotte closes with "Confidence calibrated, honestly." once obj_3 lands.
 
@@ -418,6 +448,8 @@
    **hidden_prompt**: "user replaces 'prove' with appropriate hedge"
    **hint_pt**: "Try: 'Our findings suggest that, within the sample studied, remote workers demonstrated higher productivity on the measures examined.'"
    **hint_en**: "Try: 'Our findings suggest that, within the sample studied, remote workers demonstrated higher productivity on the measures examined.'"
+   **example_pass**: Try: 'Our findings suggest that, within the sample studied, remote workers demonstrated higher productivity on the measures examined.' | The findings suggest a significant correlation between the two variables. | This study aims to examine the underlying mechanisms.
+   **example_fail**: important (bare adjective, casual register) | This is really important and stuff (casual, not academic) | I went to the park (off-topic, no academic register)
 
 2. **id**: 2
    **label_pt**: "Acrescentar limitação"
@@ -425,6 +457,8 @@
    **hidden_prompt**: "user adds limitation with 'It should be noted that' or 'This finding is consistent with'"
    **hint_pt**: "And: 'It should be noted that the effect was modest and may not generalise to roles requiring extensive in-person collaboration.'"
    **hint_en**: "And: 'It should be noted that the effect was modest and may not generalise to roles requiring extensive in-person collaboration.'"
+   **example_pass**: And: 'It should be noted that the effect was modest and may not generalise to roles requiring extensive in-person collaboration.' | Subsequent analysis revealed inconsistencies in the dataset. | The data indicate a notable shift in consumer behaviour.
+   **example_fail**: important (bare adjective, casual register) | This is really important and stuff (casual, not academic) | I went to the park (off-topic, no academic register)
 
 3. **id**: 3
    **label_pt**: "Perguntar a Charlotte"
@@ -432,6 +466,8 @@
    **hidden_prompt**: "user asks Charlotte how big the effect was"
    **hint_pt**: "How big was the effect, actually?"
    **hint_en**: "How big was the effect, actually?"
+   **example_pass**: How big was the effect, actually? | These results have important implications for further research. | The methodology employed in this investigation is comprehensive.
+   **example_fail**: important (bare adjective, casual register) | This is really important and stuff (casual, not academic) | I went to the park (off-topic, no academic register)
 
 **Closing cue**: Charlotte closes with "Claim accurate, hedge fitting." once obj_3 lands.
 
@@ -509,6 +545,8 @@
    **hidden_prompt**: "user uses 'According to X (year), + claim'"
    **hint_pt**: "According to Patel (2021), the intervention was most effective in early-stage cases."
    **hint_en**: "According to Patel (2021), the intervention was most effective in early-stage cases."
+   **example_pass**: According to Patel (2021), the intervention was most effective in early-stage cases. | The findings suggest a significant correlation between the two variables. | This study aims to examine the underlying mechanisms.
+   **example_fail**: important (bare adjective, casual register) | This is really important and stuff (casual, not academic) | I went to the park (off-topic, no academic register)
 
 2. **id**: 2
    **label_pt**: "Citação com verbo de argumento"
@@ -516,6 +554,8 @@
    **hidden_prompt**: "user uses 'X (year) argues / contends / suggests that'"
    **hint_pt**: "Williams (2019) argues that the existing framework underestimates contextual factors."
    **hint_en**: "Williams (2019) argues that the existing framework underestimates contextual factors."
+   **example_pass**: Williams (2019) argues that the existing framework underestimates contextual factors. | Subsequent analysis revealed inconsistencies in the dataset. | The data indicate a notable shift in consumer behaviour.
+   **example_fail**: important (bare adjective, casual register) | This is really important and stuff (casual, not academic) | I went to the park (off-topic, no academic register)
 
 3. **id**: 3
    **label_pt**: "Posicionamento com 'Building on'"
@@ -523,6 +563,8 @@
    **hidden_prompt**: "user uses 'Building on + prior work, + this study'"
    **hint_pt**: "Building on Müller's (2022) work, this analysis introduces a new measure of cognitive flexibility."
    **hint_en**: "Building on Müller's (2022) work, this analysis introduces a new measure of cognitive flexibility."
+   **example_pass**: Building on Müller's (2022) work, this analysis introduces a new measure of cognitive flexibility. | These results have important implications for further research. | The methodology employed in this investigation is comprehensive.
+   **example_fail**: important (bare adjective, casual register) | This is really important and stuff (casual, not academic) | I went to the park (off-topic, no academic register)
 
 **Closing cue**: Charlotte closes with "Citations academically placed." once obj_3 lands.
 
@@ -558,6 +600,8 @@
    **hidden_prompt**: "user uses 'Smith (2020) argues that' or 'According to Smith (2020)'"
    **hint_pt**: "Try: 'Smith (2020) argues that early feedback has a measurable effect on subsequent performance.'"
    **hint_en**: "Try: 'Smith (2020) argues that early feedback has a measurable effect on subsequent performance.'"
+   **example_pass**: Try: 'Smith (2020) argues that early feedback has a measurable effect on subsequent performance.' | The findings suggest a significant correlation between the two variables. | This study aims to examine the underlying mechanisms.
+   **example_fail**: important (bare adjective, casual register) | This is really important and stuff (casual, not academic) | I went to the park (off-topic, no academic register)
 
 2. **id**: 2
    **label_pt**: "Conectar à sua pesquisa"
@@ -565,6 +609,8 @@
    **hidden_prompt**: "user uses 'Building on' or 'Extending' or 'The present study'"
    **hint_pt**: "Then: 'Building on Smith's (2020) framework, the present study examines whether the effect persists in longer-cycle creative tasks.'"
    **hint_en**: "Then: 'Building on Smith's (2020) framework, the present study examines whether the effect persists in longer-cycle creative tasks.'"
+   **example_pass**: Then: 'Building on Smith's (2020) framework, the present study examines whether the effect persists in longer-cycle creative tasks.' | Subsequent analysis revealed inconsistencies in the dataset. | The data indicate a notable shift in consumer behaviour.
+   **example_fail**: important (bare adjective, casual register) | This is really important and stuff (casual, not academic) | I went to the park (off-topic, no academic register)
 
 3. **id**: 3
    **label_pt**: "Perguntar a Charlotte"
@@ -572,6 +618,8 @@
    **hidden_prompt**: "user asks Charlotte what other citations she's using"
    **hint_pt**: "What other sources are you weaving in?"
    **hint_en**: "What other sources are you weaving in?"
+   **example_pass**: What other sources are you weaving in? | These results have important implications for further research. | The methodology employed in this investigation is comprehensive.
+   **example_fail**: important (bare adjective, casual register) | This is really important and stuff (casual, not academic) | I went to the park (off-topic, no academic register)
 
 **Closing cue**: Charlotte closes with "Literature review, properly framed." once obj_3 lands.
 
@@ -650,6 +698,8 @@
    **hidden_prompt**: "user uses 'This finding / This pattern / This observation' + main"
    **hint_pt**: "This finding raises a related question about how the effect varies by income level."
    **hint_en**: "This finding raises a related question about how the effect varies by income level."
+   **example_pass**: This finding raises a related question about how the effect varies by income level. | The findings suggest a significant correlation between the two variables. | This study aims to examine the underlying mechanisms.
+   **example_fail**: important (bare adjective, casual register) | This is really important and stuff (casual, not academic) | I went to the park (off-topic, no academic register)
 
 2. **id**: 2
    **label_pt**: "Contrast com 'By contrast' ou 'However'"
@@ -657,6 +707,8 @@
    **hidden_prompt**: "user uses 'By contrast' or 'However'"
    **hint_pt**: "By contrast, longitudinal studies in similar populations show a weaker effect over time."
    **hint_en**: "By contrast, longitudinal studies in similar populations show a weaker effect over time."
+   **example_pass**: By contrast, longitudinal studies in similar populations show a weaker effect over time. | Subsequent analysis revealed inconsistencies in the dataset. | The data indicate a notable shift in consumer behaviour.
+   **example_fail**: important (bare adjective, casual register) | This is really important and stuff (casual, not academic) | I went to the park (off-topic, no academic register)
 
 3. **id**: 3
    **label_pt**: "Synthesis com 'Taken together'"
@@ -664,6 +716,8 @@
    **hidden_prompt**: "user uses 'Taken together, + these + noun'"
    **hint_pt**: "Taken together, these results suggest the relationship is real but moderated by context."
    **hint_en**: "Taken together, these results suggest the relationship is real but moderated by context."
+   **example_pass**: Taken together, these results suggest the relationship is real but moderated by context. | These results have important implications for further research. | The methodology employed in this investigation is comprehensive.
+   **example_fail**: important (bare adjective, casual register) | This is really important and stuff (casual, not academic) | I went to the park (off-topic, no academic register)
 
 **Closing cue**: Charlotte closes with "Paragraphs threaded." once obj_3 lands.
 
@@ -699,6 +753,8 @@
    **hidden_prompt**: "user uses 'This effect / This reduction / This finding'"
    **hint_pt**: "Try: 'This reduction in anxiety, while substantial, was not uniform across subgroups.'"
    **hint_en**: "Try: 'This reduction in anxiety, while substantial, was not uniform across subgroups.'"
+   **example_pass**: Try: 'This reduction in anxiety, while substantial, was not uniform across subgroups.' | The findings suggest a significant correlation between the two variables. | This study aims to examine the underlying mechanisms.
+   **example_fail**: important (bare adjective, casual register) | This is really important and stuff (casual, not academic) | I went to the park (off-topic, no academic register)
 
 2. **id**: 2
    **label_pt**: "Sugerir um contraste ou síntese"
@@ -706,6 +762,8 @@
    **hidden_prompt**: "user uses 'By contrast' or 'Taken together'"
    **hint_pt**: "Or, if you're contrasting: 'By contrast, depressive symptoms showed only a marginal change over the same period.'"
    **hint_en**: "Or, if you're contrasting: 'By contrast, depressive symptoms showed only a marginal change over the same period.'"
+   **example_pass**: Or, if you're contrasting: 'By contrast, depressive symptoms showed only a marginal change over the same period.' | Subsequent analysis revealed inconsistencies in the dataset. | The data indicate a notable shift in consumer behaviour.
+   **example_fail**: important (bare adjective, casual register) | This is really important and stuff (casual, not academic) | I went to the park (off-topic, no academic register)
 
 3. **id**: 3
    **label_pt**: "Perguntar a Charlotte"
@@ -713,6 +771,8 @@
    **hidden_prompt**: "user asks Charlotte how she plans to end the discussion"
    **hint_pt**: "How are you planning to land the conclusion?"
    **hint_en**: "How are you planning to land the conclusion?"
+   **example_pass**: How are you planning to land the conclusion? | These results have important implications for further research. | The methodology employed in this investigation is comprehensive.
+   **example_fail**: important (bare adjective, casual register) | This is really important and stuff (casual, not academic) | I went to the park (off-topic, no academic register)
 
 **Closing cue**: Charlotte closes with "Discussion threaded, C2 opener landed." once obj_3 lands.
 

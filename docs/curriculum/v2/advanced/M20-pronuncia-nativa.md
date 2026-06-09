@@ -83,6 +83,8 @@
    **hidden_prompt**: "user produces stress shifts across the word family"
    **hint_pt**: "She studied photography in Paris before she ever took a single photograph that satisfied her — and what fascinates her now is photographic memory."
    **hint_en**: "She studied photography in Paris before she ever took a single photograph that satisfied her — and what fascinates her now is photographic memory."
+   **example_pass**: She studied photography in Paris before she ever took a single photograph that satisfied her — and what fascinates her now is photographic memory. | I think the weather will improve tomorrow. | She thoroughly enjoyed the performance last night.
+   **example_fail**: th (bare phoneme, no word) | I said it correctly (no specific pronunciation focus) | I like English (off-topic, no pronunciation feature)
 
 2. **id**: 2
    **label_pt**: "Par nome/verbo com 'record'"
@@ -90,6 +92,8 @@
    **hidden_prompt**: "user uses 'record' both as noun and verb"
    **hint_pt**: "We need to record a new podcast episode this afternoon — last week's record came out unusable because of the construction noise."
    **hint_en**: "We need to record a new podcast episode this afternoon — last week's record came out unusable because of the construction noise."
+   **example_pass**: We need to record a new podcast episode this afternoon — last week's record came out unusable because of the construction noise. | The third thing I noticed was the silence. | I'd rather not discuss it right now.
+   **example_fail**: th (bare phoneme, no word) | I said it correctly (no specific pronunciation focus) | I like English (off-topic, no pronunciation feature)
 
 3. **id**: 3
    **label_pt**: "Verbo + nome com 'develop'"
@@ -97,6 +101,8 @@
    **hidden_prompt**: "user uses 'develop' and 'development' with correct stress"
    **hint_pt**: "It takes weeks to develop a new feature, but the development of the whole platform took years."
    **hint_en**: "It takes weeks to develop a new feature, but the development of the whole platform took years."
+   **example_pass**: It takes weeks to develop a new feature, but the development of the whole platform took years. | He pronounces 'comfortable' as three syllables. | The word 'colonel' sounds like 'kernel'.
+   **example_fail**: th (bare phoneme, no word) | I said it correctly (no specific pronunciation focus) | I like English (off-topic, no pronunciation feature)
 
 **Closing cue**: Charlotte closes with "Stress, deliberately placed." once obj_3 lands.
 
@@ -132,6 +138,8 @@
    **hidden_prompt**: "user names a word with stress they often misplace"
    **hint_pt**: "For me it's 'develop' — I'd always stress the first syllable until I noticed natives go to the second: deVELop."
    **hint_en**: "For me it's 'develop' — I'd always stress the first syllable until I noticed natives go to the second: deVELop."
+   **example_pass**: For me it's 'develop' — I'd always stress the first syllable until I noticed natives go to the second: deVELop. | I think the weather will improve tomorrow. | She thoroughly enjoyed the performance last night.
+   **example_fail**: th (bare phoneme, no word) | I said it correctly (no specific pronunciation focus) | I like English (off-topic, no pronunciation feature)
 
 2. **id**: 2
    **label_pt**: "Discutir padrão de stress"
@@ -139,6 +147,8 @@
    **hidden_prompt**: "user generalises about a stress pattern"
    **hint_pt**: "And the suffix matters too — 'PHO-tograph' becomes 'pho-TO-graphy'. The stress migrates with the ending."
    **hint_en**: "And the suffix matters too — 'PHO-tograph' becomes 'pho-TO-graphy'. The stress migrates with the ending."
+   **example_pass**: And the suffix matters too — 'PHO-tograph' becomes 'pho-TO-graphy'. The stress migrates with the ending. | The third thing I noticed was the silence. | I'd rather not discuss it right now.
+   **example_fail**: th (bare phoneme, no word) | I said it correctly (no specific pronunciation focus) | I like English (off-topic, no pronunciation feature)
 
 3. **id**: 3
    **label_pt**: "Perguntar a Charlotte"
@@ -146,6 +156,8 @@
    **hidden_prompt**: "user asks Charlotte if 'comfortable' has a fast-speech reduction"
    **hint_pt**: "Do natives still say all four syllables of 'comfortable'?"
    **hint_en**: "Do natives still say all four syllables of 'comfortable'?"
+   **example_pass**: Do natives still say all four syllables of 'comfortable'? | He pronounces 'comfortable' as three syllables. | The word 'colonel' sounds like 'kernel'.
+   **example_fail**: th (bare phoneme, no word) | I said it correctly (no specific pronunciation focus) | I like English (off-topic, no pronunciation feature)
 
 **Closing cue**: Charlotte closes with "Stress patterns, traded openly." once obj_3 lands.
 
@@ -223,6 +235,8 @@
    **hidden_prompt**: "user produces sentence with clear content stress and weak function words"
    **hint_pt**: "She left a note on the kitchen table — 'BACK in an HOUR, kettle's STILL warm.'"
    **hint_en**: "She left a note on the kitchen table — 'BACK in an HOUR, kettle's STILL warm.'"
+   **example_pass**: She left a note on the kitchen table — 'BACK in an HOUR, kettle's STILL warm.' | I think the weather will improve tomorrow. | She thoroughly enjoyed the performance last night.
+   **example_fail**: th (bare phoneme, no word) | I said it correctly (no specific pronunciation focus) | I like English (off-topic, no pronunciation feature)
 
 2. **id**: 2
    **label_pt**: "Frase com contractions + 'to' weakened"
@@ -230,6 +244,8 @@
    **hidden_prompt**: "user uses contractions and weak 'to'"
    **hint_pt**: "I'm going to the conference tomorrow — I'll catch the early train, and I should be there by ten."
    **hint_en**: "I'm going to the conference tomorrow — I'll catch the early train, and I should be there by ten."
+   **example_pass**: I'm going to the conference tomorrow — I'll catch the early train, and I should be there by ten. | The third thing I noticed was the silence. | I'd rather not discuss it right now.
+   **example_fail**: th (bare phoneme, no word) | I said it correctly (no specific pronunciation focus) | I like English (off-topic, no pronunciation feature)
 
 3. **id**: 3
    **label_pt**: "Frase longa com ritmo controlado"
@@ -237,6 +253,8 @@
    **hidden_prompt**: "user paces a longer sentence with stress-timed rhythm"
    **hint_pt**: "We've been talking about this for months, but nobody's actually had the conversation with the team that needs to happen."
    **hint_en**: "We've been talking about this for months, but nobody's actually had the conversation with the team that needs to happen."
+   **example_pass**: We've been talking about this for months, but nobody's actually had the conversation with the team that needs to happen. | He pronounces 'comfortable' as three syllables. | The word 'colonel' sounds like 'kernel'.
+   **example_fail**: th (bare phoneme, no word) | I said it correctly (no specific pronunciation focus) | I like English (off-topic, no pronunciation feature)
 
 **Closing cue**: Charlotte closes with "Rhythm, content first." once obj_3 lands.
 
@@ -272,6 +290,8 @@
    **hidden_prompt**: "user shares a rhythm-internalisation strategy"
    **hint_pt**: "What helped me most was reading aloud with podcasts — copying the way native speakers stress only two or three words per sentence and let the rest blur."
    **hint_en**: "What helped me most was reading aloud with podcasts — copying the way native speakers stress only two or three words per sentence and let the rest blur."
+   **example_pass**: What helped me most was reading aloud with podcasts — copying the way native speakers stress only two or three words per sentence and let the rest blur. | I think the weather will improve tomorrow. | She thoroughly enjoyed the performance last night.
+   **example_fail**: th (bare phoneme, no word) | I said it correctly (no specific pronunciation focus) | I like English (off-topic, no pronunciation feature)
 
 2. **id**: 2
    **label_pt**: "Outro insight rítmico"
@@ -279,6 +299,8 @@
    **hidden_prompt**: "user shares another insight"
    **hint_pt**: "And I started practising contractions deliberately — saying 'I'm' instead of 'I am' even in writing, just to feel the weight shift."
    **hint_en**: "And I started practising contractions deliberately — saying 'I'm' instead of 'I am' even in writing, just to feel the weight shift."
+   **example_pass**: And I started practising contractions deliberately — saying 'I'm' instead of 'I am' even in writing, just to feel the weight shift. | The third thing I noticed was the silence. | I'd rather not discuss it right now.
+   **example_fail**: th (bare phoneme, no word) | I said it correctly (no specific pronunciation focus) | I like English (off-topic, no pronunciation feature)
 
 3. **id**: 3
    **label_pt**: "Perguntar a Charlotte"
@@ -286,6 +308,8 @@
    **hidden_prompt**: "user asks Charlotte for a recommended audio source"
    **hint_pt**: "Which audio sources do you recommend most?"
    **hint_en**: "Which audio sources do you recommend most?"
+   **example_pass**: Which audio sources do you recommend most? | He pronounces 'comfortable' as three syllables. | The word 'colonel' sounds like 'kernel'.
+   **example_fail**: th (bare phoneme, no word) | I said it correctly (no specific pronunciation focus) | I like English (off-topic, no pronunciation feature)
 
 **Closing cue**: Charlotte closes with "Rhythm, internalised slowly." once obj_3 lands.
 
@@ -363,6 +387,8 @@
    **hidden_prompt**: "user links across word boundaries"
    **hint_pt**: "I found out about it on Friday — three days before everyone else heard a word about it."
    **hint_en**: "I found out about it on Friday — three days before everyone else heard a word about it."
+   **example_pass**: I found out about it on Friday — three days before everyone else heard a word about it. | I think the weather will improve tomorrow. | She thoroughly enjoyed the performance last night.
+   **example_fail**: th (bare phoneme, no word) | I said it correctly (no specific pronunciation focus) | I like English (off-topic, no pronunciation feature)
 
 2. **id**: 2
    **label_pt**: "Intrusive sound"
@@ -370,6 +396,8 @@
    **hidden_prompt**: "user uses intrusive /r/, /j/, or /w/"
    **hint_pt**: "She'll be here in an hour or so, I imagine — and I think we should wait."
    **hint_en**: "She'll be here in an hour or so, I imagine — and I think we should wait."
+   **example_pass**: She'll be here in an hour or so, I imagine — and I think we should wait. | The third thing I noticed was the silence. | I'd rather not discuss it right now.
+   **example_fail**: th (bare phoneme, no word) | I said it correctly (no specific pronunciation focus) | I like English (off-topic, no pronunciation feature)
 
 3. **id**: 3
    **label_pt**: "Assimilation casual"
@@ -377,6 +405,8 @@
    **hidden_prompt**: "user produces 'doncha / didja / wouldja' or similar"
    **hint_pt**: "Didja get the email I sent on Tuesday? I never heard back."
    **hint_en**: "Didja get the email I sent on Tuesday? I never heard back."
+   **example_pass**: Didja get the email I sent on Tuesday? I never heard back. | He pronounces 'comfortable' as three syllables. | The word 'colonel' sounds like 'kernel'.
+   **example_fail**: th (bare phoneme, no word) | I said it correctly (no specific pronunciation focus) | I like English (off-topic, no pronunciation feature)
 
 **Closing cue**: Charlotte closes with "Connected speech, sounding native." once obj_3 lands.
 
@@ -412,6 +442,8 @@
    **hidden_prompt**: "user shares what surprised them"
    **hint_pt**: "For me it was 'gonna' and 'wanna' — I'd been carefully pronouncing 'going to' and 'want to', and natives were always saying 'gonna' and 'wanna' instead."
    **hint_en**: "For me it was 'gonna' and 'wanna' — I'd been carefully pronouncing 'going to' and 'want to', and natives were always saying 'gonna' and 'wanna' instead."
+   **example_pass**: For me it was 'gonna' and 'wanna' — I'd been carefully pronouncing 'going to' and 'want to', and natives were always saying 'gonna' and 'wanna' instead. | I think the weather will improve tomorrow. | She thoroughly enjoyed the performance last night.
+   **example_fail**: th (bare phoneme, no word) | I said it correctly (no specific pronunciation focus) | I like English (off-topic, no pronunciation feature)
 
 2. **id**: 2
    **label_pt**: "Outra observação"
@@ -419,6 +451,8 @@
    **hidden_prompt**: "user shares another observation about connected speech"
    **hint_pt**: "And 'what are you doing' compresses to something close to 'whatcha doin' — without the 't' of 'what' and without the 'g' of 'doing'."
    **hint_en**: "And 'what are you doing' compresses to something close to 'whatcha doin' — without the 't' of 'what' and without the 'g' of 'doing'."
+   **example_pass**: And 'what are you doing' compresses to something close to 'whatcha doin' — without the 't' of 'what' and without the 'g' of 'doing'. | The third thing I noticed was the silence. | I'd rather not discuss it right now.
+   **example_fail**: th (bare phoneme, no word) | I said it correctly (no specific pronunciation focus) | I like English (off-topic, no pronunciation feature)
 
 3. **id**: 3
    **label_pt**: "Perguntar a Charlotte"
@@ -426,6 +460,8 @@
    **hidden_prompt**: "user asks Charlotte how to practise connected speech"
    **hint_pt**: "How do you practise this without sounding fake?"
    **hint_en**: "How do you practise this without sounding fake?"
+   **example_pass**: How do you practise this without sounding fake? | He pronounces 'comfortable' as three syllables. | The word 'colonel' sounds like 'kernel'.
+   **example_fail**: th (bare phoneme, no word) | I said it correctly (no specific pronunciation focus) | I like English (off-topic, no pronunciation feature)
 
 **Closing cue**: Charlotte closes with "Textbook vs reality, charted." once obj_3 lands.
 
@@ -503,6 +539,8 @@
    **hidden_prompt**: "user produces yes/no question with rising intonation"
    **hint_pt**: "Have you spoken to her about it yet? — make sure the pitch climbs on 'yet'."
    **hint_en**: "Have you spoken to her about it yet? — make sure the pitch climbs on 'yet'."
+   **example_pass**: Have you spoken to her about it yet? — make sure the pitch climbs on 'yet'. | I think the weather will improve tomorrow. | She thoroughly enjoyed the performance last night.
+   **example_fail**: th (bare phoneme, no word) | I said it correctly (no specific pronunciation focus) | I like English (off-topic, no pronunciation feature)
 
 2. **id**: 2
    **label_pt**: "Lista com rise-rise-rise-fall"
@@ -510,6 +548,8 @@
    **hidden_prompt**: "user produces a list with correct intonation"
    **hint_pt**: "I need to pick up coffee, milk, eggs, and bread before the store closes — bread is the falling beat."
    **hint_en**: "I need to pick up coffee, milk, eggs, and bread before the store closes — bread is the falling beat."
+   **example_pass**: I need to pick up coffee, milk, eggs, and bread before the store closes — bread is the falling beat. | The third thing I noticed was the silence. | I'd rather not discuss it right now.
+   **example_fail**: th (bare phoneme, no word) | I said it correctly (no specific pronunciation focus) | I like English (off-topic, no pronunciation feature)
 
 3. **id**: 3
    **label_pt**: "Sceptical echo com falling"
@@ -517,6 +557,8 @@
    **hidden_prompt**: "user produces 'really' or 'sure' with sceptical falling pitch"
    **hint_pt**: "When he said he'd be there by ten, I just said 'sure' — flat and falling — and he heard the doubt in two syllables."
    **hint_en**: "When he said he'd be there by ten, I just said 'sure' — flat and falling — and he heard the doubt in two syllables."
+   **example_pass**: When he said he'd be there by ten, I just said 'sure' — flat and falling — and he heard the doubt in two syllables. | He pronounces 'comfortable' as three syllables. | The word 'colonel' sounds like 'kernel'.
+   **example_fail**: th (bare phoneme, no word) | I said it correctly (no specific pronunciation focus) | I like English (off-topic, no pronunciation feature)
 
 **Closing cue**: Charlotte closes with "Pitch, doing semantic work." once obj_3 lands.
 
@@ -552,6 +594,8 @@
    **hidden_prompt**: "user describes genuine 'fine' intonation"
    **hint_pt**: "Genuine 'fine' is short, medium pitch, neutral — like reporting the weather. No emotional weight."
    **hint_en**: "Genuine 'fine' is short, medium pitch, neutral — like reporting the weather. No emotional weight."
+   **example_pass**: Genuine 'fine' is short, medium pitch, neutral — like reporting the weather. No emotional weight. | I think the weather will improve tomorrow. | She thoroughly enjoyed the performance last night.
+   **example_fail**: th (bare phoneme, no word) | I said it correctly (no specific pronunciation focus) | I like English (off-topic, no pronunciation feature)
 
 2. **id**: 2
    **label_pt**: "Passivo-agressivo"
@@ -559,6 +603,8 @@
    **hidden_prompt**: "user describes passive-aggressive 'fine' intonation"
    **hint_pt**: "Passive-aggressive 'fine' is longer, falling pitch, slightly clipped — it means 'this conversation is over and you've lost'."
    **hint_en**: "Passive-aggressive 'fine' is longer, falling pitch, slightly clipped — it means 'this conversation is over and you've lost'."
+   **example_pass**: Passive-aggressive 'fine' is longer, falling pitch, slightly clipped — it means 'this conversation is over and you've lost'. | The third thing I noticed was the silence. | I'd rather not discuss it right now.
+   **example_fail**: th (bare phoneme, no word) | I said it correctly (no specific pronunciation focus) | I like English (off-topic, no pronunciation feature)
 
 3. **id**: 3
    **label_pt**: "Perguntar a Charlotte"
@@ -566,6 +612,8 @@
    **hidden_prompt**: "user asks Charlotte for the third meaning"
    **hint_pt**: "What's the third meaning you noticed?"
    **hint_en**: "What's the third meaning you noticed?"
+   **example_pass**: What's the third meaning you noticed? | He pronounces 'comfortable' as three syllables. | The word 'colonel' sounds like 'kernel'.
+   **example_fail**: th (bare phoneme, no word) | I said it correctly (no specific pronunciation focus) | I like English (off-topic, no pronunciation feature)
 
 **Closing cue**: Charlotte closes with "Intonation, the silent language." once obj_3 lands.
 
@@ -643,6 +691,8 @@
    **hidden_prompt**: "user uses 'I'd've / he'd've / we'd've'"
    **hint_pt**: "I'd've called you sooner if I'd known you were back in town — your number wasn't in my phone anymore."
    **hint_en**: "I'd've called you sooner if I'd known you were back in town — your number wasn't in my phone anymore."
+   **example_pass**: I'd've called you sooner if I'd known you were back in town — your number wasn't in my phone anymore. | I think the weather will improve tomorrow. | She thoroughly enjoyed the performance last night.
+   **example_fail**: th (bare phoneme, no word) | I said it correctly (no specific pronunciation focus) | I like English (off-topic, no pronunciation feature)
 
 2. **id**: 2
    **label_pt**: "Elisão entre consoantes"
@@ -650,6 +700,8 @@
    **hidden_prompt**: "user drops /t/ or /d/ between consonants"
    **hint_pt**: "We need to finish the firs' draft by Friday — nex' week is too late, the regulator's pushed the deadline forward."
    **hint_en**: "We need to finish the firs' draft by Friday — nex' week is too late, the regulator's pushed the deadline forward."
+   **example_pass**: We need to finish the firs' draft by Friday — nex' week is too late, the regulator's pushed the deadline forward. | The third thing I noticed was the silence. | I'd rather not discuss it right now.
+   **example_fail**: th (bare phoneme, no word) | I said it correctly (no specific pronunciation focus) | I like English (off-topic, no pronunciation feature)
 
 3. **id**: 3
    **label_pt**: "Contrações + redução"
@@ -657,6 +709,8 @@
    **hidden_prompt**: "user produces 'going to / want to / got to' as gonna/wanna/gotta"
    **hint_pt**: "I'm gonna grab a coffee — you wanna come with me, or you've gotta finish that email first?"
    **hint_en**: "I'm gonna grab a coffee — you wanna come with me, or you've gotta finish that email first?"
+   **example_pass**: I'm gonna grab a coffee — you wanna come with me, or you've gotta finish that email first? | He pronounces 'comfortable' as three syllables. | The word 'colonel' sounds like 'kernel'.
+   **example_fail**: th (bare phoneme, no word) | I said it correctly (no specific pronunciation focus) | I like English (off-topic, no pronunciation feature)
 
 **Closing cue**: Charlotte closes with "Contracted and dropped, C2 pronunciation closing." once obj_3 lands.
 
@@ -692,6 +746,8 @@
    **hidden_prompt**: "user replies with 'I've / we've / it's' contractions"
    **hint_pt**: "I've been at it since six this morning — there's a deadline I shouldn'ta agreed to, and now I'm paying the price."
    **hint_en**: "I've been at it since six this morning — there's a deadline I shouldn'ta agreed to, and now I'm paying the price."
+   **example_pass**: I've been at it since six this morning — there's a deadline I shouldn'ta agreed to, and now I'm paying the price. | I think the weather will improve tomorrow. | She thoroughly enjoyed the performance last night.
+   **example_fail**: th (bare phoneme, no word) | I said it correctly (no specific pronunciation focus) | I like English (off-topic, no pronunciation feature)
 
 2. **id**: 2
    **label_pt**: "Aprofundar com gonna/wanna"
@@ -699,6 +755,8 @@
    **hidden_prompt**: "user uses 'gonna / wanna / gotta'"
    **hint_pt**: "I'm gonna call it a day in about an hour — wanna grab a drink if you're around?"
    **hint_en**: "I'm gonna call it a day in about an hour — wanna grab a drink if you're around?"
+   **example_pass**: I'm gonna call it a day in about an hour — wanna grab a drink if you're around? | The third thing I noticed was the silence. | I'd rather not discuss it right now.
+   **example_fail**: th (bare phoneme, no word) | I said it correctly (no specific pronunciation focus) | I like English (off-topic, no pronunciation feature)
 
 3. **id**: 3
    **label_pt**: "Perguntar a Charlotte"
@@ -706,6 +764,8 @@
    **hidden_prompt**: "user asks Charlotte casually about her own day"
    **hint_pt**: "How's your day been?"
    **hint_en**: "How's your day been?"
+   **example_pass**: How's your day been? | He pronounces 'comfortable' as three syllables. | The word 'colonel' sounds like 'kernel'.
+   **example_fail**: th (bare phoneme, no word) | I said it correctly (no specific pronunciation focus) | I like English (off-topic, no pronunciation feature)
 
 **Closing cue**: Charlotte closes with "Casual register, pronunciation aligned." once obj_3 lands.
 

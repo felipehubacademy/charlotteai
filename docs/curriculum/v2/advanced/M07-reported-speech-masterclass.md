@@ -87,6 +87,8 @@
    **hidden_prompt**: "user uses 'X apologised for + -ing'"
    **hint_pt**: "He apologised for sending the email to the wrong list."
    **hint_en**: "He apologised for sending the email to the wrong list."
+   **example_pass**: He apologised for sending the email to the wrong list. | She told me she was going to leave the next day. | He claimed he had finished the work earlier.
+   **example_fail**: she said (bare reporting, no backshift) | She said 'I am tired' (direct speech, not reported) | She is tired now (off-topic, no reporting verb)
 
 2. **id**: 2
    **label_pt**: "Acusação com 'accuse of + -ing'"
@@ -94,6 +96,8 @@
    **hidden_prompt**: "user uses 'X accused Y of + -ing'"
    **hint_pt**: "She accused him of taking credit for her work."
    **hint_en**: "She accused him of taking credit for her work."
+   **example_pass**: She accused him of taking credit for her work. | They mentioned that they were considering the offer. | She admitted that she had made a mistake.
+   **example_fail**: she said (bare reporting, no backshift) | She said 'I am tired' (direct speech, not reported) | She is tired now (off-topic, no reporting verb)
 
 3. **id**: 3
    **label_pt**: "Congratulações com 'congratulate on'"
@@ -101,6 +105,8 @@
    **hidden_prompt**: "user uses 'X congratulated Y on + noun/-ing'"
    **hint_pt**: "The whole team congratulated her on winning the award."
    **hint_en**: "The whole team congratulated her on winning the award."
+   **example_pass**: The whole team congratulated her on winning the award. | He insisted that he had nothing to do with it. | My boss asked whether I had completed the report.
+   **example_fail**: she said (bare reporting, no backshift) | She said 'I am tired' (direct speech, not reported) | She is tired now (off-topic, no reporting verb)
 
 **Closing cue**: Charlotte closes with "Verb patterns honoured." once obj_3 lands.
 
@@ -136,6 +142,8 @@
    **hidden_prompt**: "user uses 'I would have + reported verb + preposition + -ing'"
    **hint_pt**: "I would have apologised for any role in the misunderstanding, then asked for evidence."
    **hint_en**: "I would have apologised for any role in the misunderstanding, then asked for evidence."
+   **example_pass**: I would have apologised for any role in the misunderstanding, then asked for evidence. | She told me she was going to leave the next day. | He claimed he had finished the work earlier.
+   **example_fail**: she said (bare reporting, no backshift) | She said 'I am tired' (direct speech, not reported) | She is tired now (off-topic, no reporting verb)
 
 2. **id**: 2
    **label_pt**: "Outra observação com verb pattern"
@@ -143,6 +151,8 @@
    **hidden_prompt**: "user uses another reporting verb + preposition + -ing"
    **hint_pt**: "I'd blame the lack of clear ownership for situations like this."
    **hint_en**: "I'd blame the lack of clear ownership for situations like this."
+   **example_pass**: I'd blame the lack of clear ownership for situations like this. | They mentioned that they were considering the offer. | She admitted that she had made a mistake.
+   **example_fail**: she said (bare reporting, no backshift) | She said 'I am tired' (direct speech, not reported) | She is tired now (off-topic, no reporting verb)
 
 3. **id**: 3
    **label_pt**: "Perguntar a Charlotte"
@@ -150,6 +160,8 @@
    **hidden_prompt**: "user asks Charlotte what she actually did"
    **hint_pt**: "What did you actually do?"
    **hint_en**: "What did you actually do?"
+   **example_pass**: What did you actually do? | He insisted that he had nothing to do with it. | My boss asked whether I had completed the report.
+   **example_fail**: she said (bare reporting, no backshift) | She said 'I am tired' (direct speech, not reported) | She is tired now (off-topic, no reporting verb)
 
 **Closing cue**: Charlotte closes with "Patterns hold the line." once obj_3 lands.
 
@@ -227,6 +239,8 @@
    **hidden_prompt**: "user uses 'X admitted + -ing'"
    **hint_pt**: "I have to admit losing track of time during that meeting."
    **hint_en**: "I have to admit losing track of time during that meeting."
+   **example_pass**: I have to admit losing track of time during that meeting. | She told me she was going to leave the next day. | He claimed he had finished the work earlier.
+   **example_fail**: she said (bare reporting, no backshift) | She said 'I am tired' (direct speech, not reported) | She is tired now (off-topic, no reporting verb)
 
 2. **id**: 2
    **label_pt**: "Negação com '+ -ing'"
@@ -234,6 +248,8 @@
    **hidden_prompt**: "user uses 'X denied + -ing'"
    **hint_pt**: "She denied having seen the email at all."
    **hint_en**: "She denied having seen the email at all."
+   **example_pass**: She denied having seen the email at all. | They mentioned that they were considering the offer. | She admitted that she had made a mistake.
+   **example_fail**: she said (bare reporting, no backshift) | She said 'I am tired' (direct speech, not reported) | She is tired now (off-topic, no reporting verb)
 
 3. **id**: 3
    **label_pt**: "Sugestão com '+ -ing'"
@@ -241,6 +257,8 @@
    **hidden_prompt**: "user uses 'I suggest + -ing'"
    **hint_pt**: "I suggest taking a break before we decide anything."
    **hint_en**: "I suggest taking a break before we decide anything."
+   **example_pass**: I suggest taking a break before we decide anything. | He insisted that he had nothing to do with it. | My boss asked whether I had completed the report.
+   **example_fail**: she said (bare reporting, no backshift) | She said 'I am tired' (direct speech, not reported) | She is tired now (off-topic, no reporting verb)
 
 **Closing cue**: Charlotte closes with "Patterns held, finely." once obj_3 lands.
 
@@ -276,6 +294,8 @@
    **hidden_prompt**: "user uses 'I'd admit/I admit + -ing'"
    **hint_pt**: "I have to admit checking my phone first thing in the morning."
    **hint_en**: "I have to admit checking my phone first thing in the morning."
+   **example_pass**: I have to admit checking my phone first thing in the morning. | She told me she was going to leave the next day. | He claimed he had finished the work earlier.
+   **example_fail**: she said (bare reporting, no backshift) | She said 'I am tired' (direct speech, not reported) | She is tired now (off-topic, no reporting verb)
 
 2. **id**: 2
    **label_pt**: "Sugestão com '+ -ing'"
@@ -283,6 +303,8 @@
    **hidden_prompt**: "user uses 'I suggest/recommend + -ing'"
    **hint_pt**: "I'd suggest leaving the phone in another room for the first hour."
    **hint_en**: "I'd suggest leaving the phone in another room for the first hour."
+   **example_pass**: I'd suggest leaving the phone in another room for the first hour. | They mentioned that they were considering the offer. | She admitted that she had made a mistake.
+   **example_fail**: she said (bare reporting, no backshift) | She said 'I am tired' (direct speech, not reported) | She is tired now (off-topic, no reporting verb)
 
 3. **id**: 3
    **label_pt**: "Perguntar a Charlotte"
@@ -290,6 +312,8 @@
    **hidden_prompt**: "user asks Charlotte why Mondays changed"
    **hint_pt**: "What changed about Mondays?"
    **hint_en**: "What changed about Mondays?"
+   **example_pass**: What changed about Mondays? | He insisted that he had nothing to do with it. | My boss asked whether I had completed the report.
+   **example_fail**: she said (bare reporting, no backshift) | She said 'I am tired' (direct speech, not reported) | She is tired now (off-topic, no reporting verb)
 
 **Closing cue**: Charlotte closes with "Admissions, in pattern." once obj_3 lands.
 
@@ -368,6 +392,8 @@
    **hidden_prompt**: "user uses 'X promised to + base'"
    **hint_pt**: "My manager promised to give me feedback by Friday."
    **hint_en**: "My manager promised to give me feedback by Friday."
+   **example_pass**: My manager promised to give me feedback by Friday. | She told me she was going to leave the next day. | He claimed he had finished the work earlier.
+   **example_fail**: she said (bare reporting, no backshift) | She said 'I am tired' (direct speech, not reported) | She is tired now (off-topic, no reporting verb)
 
 2. **id**: 2
    **label_pt**: "Recusa com 'refuse to'"
@@ -375,6 +401,8 @@
    **hidden_prompt**: "user uses 'X refused to + base'"
    **hint_pt**: "The customer refused to pay until the issue was fixed."
    **hint_en**: "The customer refused to pay until the issue was fixed."
+   **example_pass**: The customer refused to pay until the issue was fixed. | They mentioned that they were considering the offer. | She admitted that she had made a mistake.
+   **example_fail**: she said (bare reporting, no backshift) | She said 'I am tired' (direct speech, not reported) | She is tired now (off-topic, no reporting verb)
 
 3. **id**: 3
    **label_pt**: "Oferta com 'offer to'"
@@ -382,6 +410,8 @@
    **hidden_prompt**: "user uses 'X offered to + base'"
    **hint_pt**: "My neighbour offered to water the plants while we're away."
    **hint_en**: "My neighbour offered to water the plants while we're away."
+   **example_pass**: My neighbour offered to water the plants while we're away. | He insisted that he had nothing to do with it. | My boss asked whether I had completed the report.
+   **example_fail**: she said (bare reporting, no backshift) | She said 'I am tired' (direct speech, not reported) | She is tired now (off-topic, no reporting verb)
 
 **Closing cue**: Charlotte closes with "Three verbs, three commitments." once obj_3 lands.
 
@@ -417,6 +447,8 @@
    **hidden_prompt**: "user uses 'I promised to + base' or 'agreed to + base'"
    **hint_pt**: "I promised to call my mother every Sunday, and so far I've kept it."
    **hint_en**: "I promised to call my mother every Sunday, and so far I've kept it."
+   **example_pass**: I promised to call my mother every Sunday, and so far I've kept it. | She told me she was going to leave the next day. | He claimed he had finished the work earlier.
+   **example_fail**: she said (bare reporting, no backshift) | She said 'I am tired' (direct speech, not reported) | She is tired now (off-topic, no reporting verb)
 
 2. **id**: 2
    **label_pt**: "Recusa pessoal"
@@ -424,6 +456,8 @@
    **hidden_prompt**: "user uses 'I refused to + base'"
    **hint_pt**: "I refused to take work calls after eight PM, and it changed my evenings."
    **hint_en**: "I refused to take work calls after eight PM, and it changed my evenings."
+   **example_pass**: I refused to take work calls after eight PM, and it changed my evenings. | They mentioned that they were considering the offer. | She admitted that she had made a mistake.
+   **example_fail**: she said (bare reporting, no backshift) | She said 'I am tired' (direct speech, not reported) | She is tired now (off-topic, no reporting verb)
 
 3. **id**: 3
    **label_pt**: "Perguntar a Charlotte"
@@ -431,6 +465,8 @@
    **hidden_prompt**: "user asks Charlotte why she delayed the appointment"
    **hint_pt**: "Why did you delay?"
    **hint_en**: "Why did you delay?"
+   **example_pass**: Why did you delay? | He insisted that he had nothing to do with it. | My boss asked whether I had completed the report.
+   **example_fail**: she said (bare reporting, no backshift) | She said 'I am tired' (direct speech, not reported) | She is tired now (off-topic, no reporting verb)
 
 **Closing cue**: Charlotte closes with "Commitments, with patterns held." once obj_3 lands.
 
@@ -508,6 +544,8 @@
    **hidden_prompt**: "user uses 'X warned + person + about/not to'"
    **hint_pt**: "My boss warned me not to commit to that timeline."
    **hint_en**: "My boss warned me not to commit to that timeline."
+   **example_pass**: My boss warned me not to commit to that timeline. | She told me she was going to leave the next day. | He claimed he had finished the work earlier.
+   **example_fail**: she said (bare reporting, no backshift) | She said 'I am tired' (direct speech, not reported) | She is tired now (off-topic, no reporting verb)
 
 2. **id**: 2
    **label_pt**: "Persuasão com 'persuade to' ou 'talk into'"
@@ -515,6 +553,8 @@
    **hidden_prompt**: "user uses 'X persuaded Y to + base' or 'talked Y into + -ing'"
    **hint_pt**: "My sister talked me into trying the new restaurant."
    **hint_en**: "My sister talked me into trying the new restaurant."
+   **example_pass**: My sister talked me into trying the new restaurant. | They mentioned that they were considering the offer. | She admitted that she had made a mistake.
+   **example_fail**: she said (bare reporting, no backshift) | She said 'I am tired' (direct speech, not reported) | She is tired now (off-topic, no reporting verb)
 
 3. **id**: 3
    **label_pt**: "Desencorajamento com 'discourage from'"
@@ -522,6 +562,8 @@
    **hidden_prompt**: "user uses 'X discouraged + person + from + -ing'"
    **hint_pt**: "Our mentor discouraged us from rushing the launch."
    **hint_en**: "Our mentor discouraged us from rushing the launch."
+   **example_pass**: Our mentor discouraged us from rushing the launch. | He insisted that he had nothing to do with it. | My boss asked whether I had completed the report.
+   **example_fail**: she said (bare reporting, no backshift) | She said 'I am tired' (direct speech, not reported) | She is tired now (off-topic, no reporting verb)
 
 **Closing cue**: Charlotte closes with "Patterns sharper than instinct." once obj_3 lands.
 
@@ -557,6 +599,8 @@
    **hidden_prompt**: "user uses 'X talked me into + -ing' or 'X persuaded me to + base'"
    **hint_pt**: "My old boss talked me into applying for a role I thought was too senior."
    **hint_en**: "My old boss talked me into applying for a role I thought was too senior."
+   **example_pass**: My old boss talked me into applying for a role I thought was too senior. | She told me she was going to leave the next day. | He claimed he had finished the work earlier.
+   **example_fail**: she said (bare reporting, no backshift) | She said 'I am tired' (direct speech, not reported) | She is tired now (off-topic, no reporting verb)
 
 2. **id**: 2
    **label_pt**: "Aviso recebido"
@@ -564,6 +608,8 @@
    **hidden_prompt**: "user uses 'X warned me + about/not to/against'"
    **hint_pt**: "A friend warned me against committing to anything in my first month."
    **hint_en**: "A friend warned me against committing to anything in my first month."
+   **example_pass**: A friend warned me against committing to anything in my first month. | They mentioned that they were considering the offer. | She admitted that she had made a mistake.
+   **example_fail**: she said (bare reporting, no backshift) | She said 'I am tired' (direct speech, not reported) | She is tired now (off-topic, no reporting verb)
 
 3. **id**: 3
    **label_pt**: "Perguntar a Charlotte"
@@ -571,6 +617,8 @@
    **hidden_prompt**: "user asks Charlotte where she studied abroad"
    **hint_pt**: "Where did you go?"
    **hint_en**: "Where did you go?"
+   **example_pass**: Where did you go? | He insisted that he had nothing to do with it. | My boss asked whether I had completed the report.
+   **example_fail**: she said (bare reporting, no backshift) | She said 'I am tired' (direct speech, not reported) | She is tired now (off-topic, no reporting verb)
 
 **Closing cue**: Charlotte closes with "Influence reported, correctly framed." once obj_3 lands.
 
@@ -649,6 +697,8 @@
    **hidden_prompt**: "user uses 'According to + source, + clause'"
    **hint_pt**: "According to the financial filing, profits doubled in the third quarter."
    **hint_en**: "According to the financial filing, profits doubled in the third quarter."
+   **example_pass**: According to the financial filing, profits doubled in the third quarter. | She told me she was going to leave the next day. | He claimed he had finished the work earlier.
+   **example_fail**: she said (bare reporting, no backshift) | She said 'I am tired' (direct speech, not reported) | She is tired now (off-topic, no reporting verb)
 
 2. **id**: 2
    **label_pt**: "'Allegedly' (legal-news)"
@@ -656,6 +706,8 @@
    **hidden_prompt**: "user uses 'X allegedly + verb'"
    **hint_pt**: "The accountant allegedly transferred funds to a personal account."
    **hint_en**: "The accountant allegedly transferred funds to a personal account."
+   **example_pass**: The accountant allegedly transferred funds to a personal account. | They mentioned that they were considering the offer. | She admitted that she had made a mistake.
+   **example_fail**: she said (bare reporting, no backshift) | She said 'I am tired' (direct speech, not reported) | She is tired now (off-topic, no reporting verb)
 
 3. **id**: 3
    **label_pt**: "'Apparently' ou 'reportedly'"
@@ -663,6 +715,8 @@
    **hidden_prompt**: "user uses 'Apparently/Reportedly + clause'"
    **hint_pt**: "Apparently, two board members have already resigned."
    **hint_en**: "Apparently, two board members have already resigned."
+   **example_pass**: Apparently, two board members have already resigned. | He insisted that he had nothing to do with it. | My boss asked whether I had completed the report.
+   **example_fail**: she said (bare reporting, no backshift) | She said 'I am tired' (direct speech, not reported) | She is tired now (off-topic, no reporting verb)
 
 **Closing cue**: Charlotte closes with "Story filed, hedges intact." once obj_3 lands.
 
@@ -698,6 +752,8 @@
    **hidden_prompt**: "user uses 'According to' or 'allegedly' or 'apparently'"
    **hint_pt**: "According to a colleague, three teams are being merged."
    **hint_en**: "According to a colleague, three teams are being merged."
+   **example_pass**: According to a colleague, three teams are being merged. | She told me she was going to leave the next day. | He claimed he had finished the work earlier.
+   **example_fail**: she said (bare reporting, no backshift) | She said 'I am tired' (direct speech, not reported) | She is tired now (off-topic, no reporting verb)
 
 2. **id**: 2
    **label_pt**: "Acrescentar outra fonte"
@@ -705,6 +761,8 @@
    **hidden_prompt**: "user uses another hedging device"
    **hint_pt**: "Reportedly, leadership wants the announcement done before Friday."
    **hint_en**: "Reportedly, leadership wants the announcement done before Friday."
+   **example_pass**: Reportedly, leadership wants the announcement done before Friday. | They mentioned that they were considering the offer. | She admitted that she had made a mistake.
+   **example_fail**: she said (bare reporting, no backshift) | She said 'I am tired' (direct speech, not reported) | She is tired now (off-topic, no reporting verb)
 
 3. **id**: 3
    **label_pt**: "Perguntar a Charlotte"
@@ -712,6 +770,8 @@
    **hidden_prompt**: "user asks Charlotte where she heard it"
    **hint_pt**: "Where did you hear it?"
    **hint_en**: "Where did you hear it?"
+   **example_pass**: Where did you hear it? | He insisted that he had nothing to do with it. | My boss asked whether I had completed the report.
+   **example_fail**: she said (bare reporting, no backshift) | She said 'I am tired' (direct speech, not reported) | She is tired now (off-topic, no reporting verb)
 
 **Closing cue**: Charlotte closes with "News traded, hedges preserved." once obj_3 lands.
 

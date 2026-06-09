@@ -83,6 +83,8 @@
    **hidden_prompt**: "user uses 'This + summary noun' for prior abstract claim"
    **hint_pt**: "First: 'Two of our top engineers gave notice last week.' Follow: 'This loss leaves a gap nobody on the bench is ready to fill.'"
    **hint_en**: "First: 'Two of our top engineers gave notice last week.' Follow: 'This loss leaves a gap nobody on the bench is ready to fill.'"
+   **example_pass**: First: 'Two of our top engineers gave notice last week.' Follow: 'This loss leaves a gap nobody on the bench is ready to fill.' | The project, which we launched last year, has exceeded all expectations. | This approach, as mentioned earlier, has clear limitations.
+   **example_fail**: this (bare pronoun, no cohesive chain) | I went out. I saw a friend. I ate (no anaphoric reference) | The weather is nice (off-topic, no cohesion target)
 
 2. **id**: 2
    **label_pt**: "Referência com 'These' (plural lista)"
@@ -90,6 +92,8 @@
    **hidden_prompt**: "user uses 'These + plural noun'"
    **hint_pt**: "First: 'The report flagged three risks: regulatory, financial, and reputational.' Follow: 'These risks will need to be addressed before the launch can proceed.'"
    **hint_en**: "First: 'The report flagged three risks: regulatory, financial, and reputational.' Follow: 'These risks will need to be addressed before the launch can proceed.'"
+   **example_pass**: First: 'The report flagged three risks: regulatory, financial, and reputational.' Follow: 'These risks will need to be addressed before the launch can proceed.' | Such challenges, however significant, can be overcome with planning. | The findings, taken together, point to a structural shift.
+   **example_fail**: this (bare pronoun, no cohesive chain) | I went out. I saw a friend. I ate (no anaphoric reference) | The weather is nice (off-topic, no cohesion target)
 
 3. **id**: 3
    **label_pt**: "Referência com 'That' (distante)"
@@ -97,6 +101,8 @@
    **hidden_prompt**: "user uses 'That' for emotional or temporal distance"
    **hint_pt**: "First: 'We laid off forty percent of the team in 2008.' Follow: 'That decision still shapes how we think about hiring.'"
    **hint_en**: "First: 'We laid off forty percent of the team in 2008.' Follow: 'That decision still shapes how we think about hiring.'"
+   **example_pass**: First: 'We laid off forty percent of the team in 2008.' Follow: 'That decision still shapes how we think about hiring.' | These developments, far from being isolated, reflect a broader trend. | The argument, although compelling, rests on shaky assumptions.
+   **example_fail**: this (bare pronoun, no cohesive chain) | I went out. I saw a friend. I ate (no anaphoric reference) | The weather is nice (off-topic, no cohesion target)
 
 **Closing cue**: Charlotte closes with "Demonstratives threading." once obj_3 lands.
 
@@ -132,6 +138,8 @@
    **hidden_prompt**: "user adds 'These three problems' or similar"
    **hint_pt**: "Try: 'These three pressures reinforce one another in ways the leadership team hasn't yet acknowledged.'"
    **hint_en**: "Try: 'These three pressures reinforce one another in ways the leadership team hasn't yet acknowledged.'"
+   **example_pass**: Try: 'These three pressures reinforce one another in ways the leadership team hasn't yet acknowledged.' | The project, which we launched last year, has exceeded all expectations. | This approach, as mentioned earlier, has clear limitations.
+   **example_fail**: this (bare pronoun, no cohesive chain) | I went out. I saw a friend. I ate (no anaphoric reference) | The weather is nice (off-topic, no cohesion target)
 
 2. **id**: 2
    **label_pt**: "Acrescentar referência com 'this'"
@@ -139,6 +147,8 @@
    **hidden_prompt**: "user uses 'This + summary noun'"
    **hint_pt**: "And close with: 'This combination of pressures rarely resolves itself — addressing one in isolation tends to make the others worse.'"
    **hint_en**: "And close with: 'This combination of pressures rarely resolves itself — addressing one in isolation tends to make the others worse.'"
+   **example_pass**: And close with: 'This combination of pressures rarely resolves itself — addressing one in isolation tends to make the others worse.' | Such challenges, however significant, can be overcome with planning. | The findings, taken together, point to a structural shift.
+   **example_fail**: this (bare pronoun, no cohesive chain) | I went out. I saw a friend. I ate (no anaphoric reference) | The weather is nice (off-topic, no cohesion target)
 
 3. **id**: 3
    **label_pt**: "Perguntar a Charlotte"
@@ -146,6 +156,8 @@
    **hidden_prompt**: "user asks Charlotte where the paragraph is going"
    **hint_pt**: "Where does the paragraph land?"
    **hint_en**: "Where does the paragraph land?"
+   **example_pass**: Where does the paragraph land? | These developments, far from being isolated, reflect a broader trend. | The argument, although compelling, rests on shaky assumptions.
+   **example_fail**: this (bare pronoun, no cohesive chain) | I went out. I saw a friend. I ate (no anaphoric reference) | The weather is nice (off-topic, no cohesion target)
 
 **Closing cue**: Charlotte closes with "Paragraph stitched, demonstratively." once obj_3 lands.
 
@@ -224,6 +236,8 @@
    **hidden_prompt**: "user uses MacBook → the laptop → the machine etc."
    **hint_pt**: "First sentence with the specific noun: 'She bought a MacBook in October — the new one with the dark grey finish.'"
    **hint_en**: "First sentence with the specific noun: 'She bought a MacBook in October — the new one with the dark grey finish.'"
+   **example_pass**: First sentence with the specific noun: 'She bought a MacBook in October — the new one with the dark grey finish.' | The project, which we launched last year, has exceeded all expectations. | This approach, as mentioned earlier, has clear limitations.
+   **example_fail**: this (bare pronoun, no cohesive chain) | I went out. I saw a friend. I ate (no anaphoric reference) | The weather is nice (off-topic, no cohesion target)
 
 2. **id**: 2
    **label_pt**: "Superordenado ou sinônimo"
@@ -231,6 +245,8 @@
    **hidden_prompt**: "user uses 'the laptop' or 'the machine'"
    **hint_pt**: "Second: 'The laptop was an upgrade she had been postponing for three years.'"
    **hint_en**: "Second: 'The laptop was an upgrade she had been postponing for three years.'"
+   **example_pass**: Second: 'The laptop was an upgrade she had been postponing for three years.' | Such challenges, however significant, can be overcome with planning. | The findings, taken together, point to a structural shift.
+   **example_fail**: this (bare pronoun, no cohesive chain) | I went out. I saw a friend. I ate (no anaphoric reference) | The weather is nice (off-topic, no cohesion target)
 
 3. **id**: 3
    **label_pt**: "Outro variante (mais geral ou descritivo)"
@@ -238,6 +254,8 @@
    **hidden_prompt**: "user uses 'the device' or 'the new machine'"
    **hint_pt**: "Third: 'The new machine has kept her at her desk for hours longer than the old one ever did.'"
    **hint_en**: "Third: 'The new machine has kept her at her desk for hours longer than the old one ever did.'"
+   **example_pass**: Third: 'The new machine has kept her at her desk for hours longer than the old one ever did.' | These developments, far from being isolated, reflect a broader trend. | The argument, although compelling, rests on shaky assumptions.
+   **example_fail**: this (bare pronoun, no cohesive chain) | I went out. I saw a friend. I ate (no anaphoric reference) | The weather is nice (off-topic, no cohesion target)
 
 **Closing cue**: Charlotte closes with "Chain woven, no repetition." once obj_3 lands.
 
@@ -273,6 +291,8 @@
    **hidden_prompt**: "user replaces some 'CEO' with synonym or descriptive variant"
    **hint_pt**: "Try: 'The CEO announced the merger. The chief executive said it would close in March.'"
    **hint_en**: "Try: 'The CEO announced the merger. The chief executive said it would close in March.'"
+   **example_pass**: Try: 'The CEO announced the merger. The chief executive said it would close in March.' | The project, which we launched last year, has exceeded all expectations. | This approach, as mentioned earlier, has clear limitations.
+   **example_fail**: this (bare pronoun, no cohesive chain) | I went out. I saw a friend. I ate (no anaphoric reference) | The weather is nice (off-topic, no cohesion target)
 
 2. **id**: 2
    **label_pt**: "Substituição com pronome ou role description"
@@ -280,6 +300,8 @@
    **hidden_prompt**: "user uses 'he/she' and 'the executive'"
    **hint_pt**: "Continue: 'She refused to take questions. The executive walked out before the press could press further.'"
    **hint_en**: "Continue: 'She refused to take questions. The executive walked out before the press could press further.'"
+   **example_pass**: Continue: 'She refused to take questions. The executive walked out before the press could press further.' | Such challenges, however significant, can be overcome with planning. | The findings, taken together, point to a structural shift.
+   **example_fail**: this (bare pronoun, no cohesive chain) | I went out. I saw a friend. I ate (no anaphoric reference) | The weather is nice (off-topic, no cohesion target)
 
 3. **id**: 3
    **label_pt**: "Perguntar a Charlotte"
@@ -287,6 +309,8 @@
    **hidden_prompt**: "user asks Charlotte about her own draft style"
    **hint_pt**: "Why does this trip you up?"
    **hint_en**: "Why does this trip you up?"
+   **example_pass**: Why does this trip you up? | These developments, far from being isolated, reflect a broader trend. | The argument, although compelling, rests on shaky assumptions.
+   **example_fail**: this (bare pronoun, no cohesive chain) | I went out. I saw a friend. I ate (no anaphoric reference) | The weather is nice (off-topic, no cohesion target)
 
 **Closing cue**: Charlotte closes with "Repetition replaced, prose breathes." once obj_3 lands.
 
@@ -365,6 +389,8 @@
    **hidden_prompt**: "user uses 'the former offers / has / provides'"
    **hint_pt**: "Two cities: São Paulo and Rio. The former offers a denser professional ecosystem."
    **hint_en**: "Two cities: São Paulo and Rio. The former offers a denser professional ecosystem."
+   **example_pass**: Two cities: São Paulo and Rio. The former offers a denser professional ecosystem. | The project, which we launched last year, has exceeded all expectations. | This approach, as mentioned earlier, has clear limitations.
+   **example_fail**: this (bare pronoun, no cohesive chain) | I went out. I saw a friend. I ate (no anaphoric reference) | The weather is nice (off-topic, no cohesion target)
 
 2. **id**: 2
    **label_pt**: "Comparação com 'the latter'"
@@ -372,6 +398,8 @@
    **hidden_prompt**: "user uses 'the latter offers / has / provides'"
    **hint_pt**: "The latter, by contrast, offers a sense of place that comes from coastline rather than skyline."
    **hint_en**: "The latter, by contrast, offers a sense of place that comes from coastline rather than skyline."
+   **example_pass**: The latter, by contrast, offers a sense of place that comes from coastline rather than skyline. | Such challenges, however significant, can be overcome with planning. | The findings, taken together, point to a structural shift.
+   **example_fail**: this (bare pronoun, no cohesive chain) | I went out. I saw a friend. I ate (no anaphoric reference) | The weather is nice (off-topic, no cohesion target)
 
 3. **id**: 3
    **label_pt**: "Sumativa com 'such'"
@@ -379,6 +407,8 @@
    **hidden_prompt**: "user uses 'Such + noun' summatively"
    **hint_pt**: "Such trade-offs make the choice less about cities than about which version of one's own life one is willing to live."
    **hint_en**: "Such trade-offs make the choice less about cities than about which version of one's own life one is willing to live."
+   **example_pass**: Such trade-offs make the choice less about cities than about which version of one's own life one is willing to live. | These developments, far from being isolated, reflect a broader trend. | The argument, although compelling, rests on shaky assumptions.
+   **example_fail**: this (bare pronoun, no cohesive chain) | I went out. I saw a friend. I ate (no anaphoric reference) | The weather is nice (off-topic, no cohesion target)
 
 **Closing cue**: Charlotte closes with "Three formal anaphoric devices." once obj_3 lands.
 
@@ -414,6 +444,8 @@
    **hidden_prompt**: "user uses 'The former + verb'"
    **hint_pt**: "The former tends to favour markets where competitive position is still up for grabs and capital is patient."
    **hint_en**: "The former tends to favour markets where competitive position is still up for grabs and capital is patient."
+   **example_pass**: The former tends to favour markets where competitive position is still up for grabs and capital is patient. | The project, which we launched last year, has exceeded all expectations. | This approach, as mentioned earlier, has clear limitations.
+   **example_fail**: this (bare pronoun, no cohesive chain) | I went out. I saw a friend. I ate (no anaphoric reference) | The weather is nice (off-topic, no cohesion target)
 
 2. **id**: 2
    **label_pt**: "'The latter' caracterizando segundo"
@@ -421,6 +453,8 @@
    **hidden_prompt**: "user uses 'The latter + verb'"
    **hint_pt**: "The latter tends to suit moments when the underlying assets are strong but the operating model is straining under its own complexity."
    **hint_en**: "The latter tends to suit moments when the underlying assets are strong but the operating model is straining under its own complexity."
+   **example_pass**: The latter tends to suit moments when the underlying assets are strong but the operating model is straining under its own complexity. | Such challenges, however significant, can be overcome with planning. | The findings, taken together, point to a structural shift.
+   **example_fail**: this (bare pronoun, no cohesive chain) | I went out. I saw a friend. I ate (no anaphoric reference) | The weather is nice (off-topic, no cohesion target)
 
 3. **id**: 3
    **label_pt**: "Perguntar a Charlotte"
@@ -428,6 +462,8 @@
    **hidden_prompt**: "user asks Charlotte which moment her business is in"
    **hint_pt**: "Which moment are you in?"
    **hint_en**: "Which moment are you in?"
+   **example_pass**: Which moment are you in? | These developments, far from being isolated, reflect a broader trend. | The argument, although compelling, rests on shaky assumptions.
+   **example_fail**: this (bare pronoun, no cohesive chain) | I went out. I saw a friend. I ate (no anaphoric reference) | The weather is nice (off-topic, no cohesion target)
 
 **Closing cue**: Charlotte closes with "Former and latter, properly placed." once obj_3 lands.
 
@@ -506,6 +542,8 @@
    **hidden_prompt**: "user starts second sentence with old info reference"
    **hint_pt**: "First: 'The interview lasted ninety minutes.' Follow: 'That length was deliberate — the panel wanted to see how she handled fatigue.'"
    **hint_en**: "First: 'The interview lasted ninety minutes.' Follow: 'That length was deliberate — the panel wanted to see how she handled fatigue.'"
+   **example_pass**: First: 'The interview lasted ninety minutes.' Follow: 'That length was deliberate — the panel wanted to see how she handled fatigue.' | The project, which we launched last year, has exceeded all expectations. | This approach, as mentioned earlier, has clear limitations.
+   **example_fail**: this (bare pronoun, no cohesive chain) | I went out. I saw a friend. I ate (no anaphoric reference) | The weather is nice (off-topic, no cohesion target)
 
 2. **id**: 2
    **label_pt**: "Outro exemplo de fluxo"
@@ -513,6 +551,8 @@
    **hidden_prompt**: "user uses theme-rheme correctly"
    **hint_pt**: "First: 'We launched the new product in June.' Follow: 'The launch went smoother than any in the previous three years.'"
    **hint_en**: "First: 'We launched the new product in June.' Follow: 'The launch went smoother than any in the previous three years.'"
+   **example_pass**: First: 'We launched the new product in June.' Follow: 'The launch went smoother than any in the previous three years.' | Such challenges, however significant, can be overcome with planning. | The findings, taken together, point to a structural shift.
+   **example_fail**: this (bare pronoun, no cohesive chain) | I went out. I saw a friend. I ate (no anaphoric reference) | The weather is nice (off-topic, no cohesion target)
 
 3. **id**: 3
    **label_pt**: "Inverter como contra-exemplo"
@@ -520,6 +560,8 @@
    **hidden_prompt**: "user demonstrates wrong order and corrects it"
    **hint_pt**: "Wrong order: 'A clear winner emerged from the discussion.' Better: 'The discussion produced a clear winner.'"
    **hint_en**: "Wrong order: 'A clear winner emerged from the discussion.' Better: 'The discussion produced a clear winner.'"
+   **example_pass**: Wrong order: 'A clear winner emerged from the discussion.' Better: 'The discussion produced a clear winner.' | These developments, far from being isolated, reflect a broader trend. | The argument, although compelling, rests on shaky assumptions.
+   **example_fail**: this (bare pronoun, no cohesive chain) | I went out. I saw a friend. I ate (no anaphoric reference) | The weather is nice (off-topic, no cohesion target)
 
 **Closing cue**: Charlotte closes with "Information flow, naturally forward." once obj_3 lands.
 
@@ -555,6 +597,8 @@
    **hidden_prompt**: "user reverses to old-info first"
    **hint_pt**: "Try: 'The new strategy produced significant gains.'"
    **hint_en**: "Try: 'The new strategy produced significant gains.'"
+   **example_pass**: Try: 'The new strategy produced significant gains.' | The project, which we launched last year, has exceeded all expectations. | This approach, as mentioned earlier, has clear limitations.
+   **example_fail**: this (bare pronoun, no cohesive chain) | I went out. I saw a friend. I ate (no anaphoric reference) | The weather is nice (off-topic, no cohesion target)
 
 2. **id**: 2
    **label_pt**: "Reverter segunda frase"
@@ -562,6 +606,8 @@
    **hidden_prompt**: "user reverses second sentence to old-info first"
    **hint_pt**: "Then: 'These gains required a complete restructuring of the sales team.'"
    **hint_en**: "Then: 'These gains required a complete restructuring of the sales team.'"
+   **example_pass**: Then: 'These gains required a complete restructuring of the sales team.' | Such challenges, however significant, can be overcome with planning. | The findings, taken together, point to a structural shift.
+   **example_fail**: this (bare pronoun, no cohesive chain) | I went out. I saw a friend. I ate (no anaphoric reference) | The weather is nice (off-topic, no cohesion target)
 
 3. **id**: 3
    **label_pt**: "Perguntar a Charlotte"
@@ -569,6 +615,8 @@
    **hidden_prompt**: "user asks Charlotte why she defaulted to passive"
    **hint_pt**: "What made you reach for passive first?"
    **hint_en**: "What made you reach for passive first?"
+   **example_pass**: What made you reach for passive first? | These developments, far from being isolated, reflect a broader trend. | The argument, although compelling, rests on shaky assumptions.
+   **example_fail**: this (bare pronoun, no cohesive chain) | I went out. I saw a friend. I ate (no anaphoric reference) | The weather is nice (off-topic, no cohesion target)
 
 **Closing cue**: Charlotte closes with "Flow reordered." once obj_3 lands.
 
@@ -647,6 +695,8 @@
    **hidden_prompt**: "user bridges with definite article + inferable noun"
    **hint_pt**: "First: 'We rented a flat in central Lisbon. The landlord was rarely there.' (Bridging — 'the landlord' inferred to belong to the flat.)"
    **hint_en**: "First: 'We rented a flat in central Lisbon. The landlord was rarely there.' (Bridging — 'the landlord' inferred to belong to the flat.)"
+   **example_pass**: First: 'We rented a flat in central Lisbon. The landlord was rarely there.' (Bridging — 'the landlord' inferred to belong to the flat.) | The project, which we launched last year, has exceeded all expectations. | This approach, as mentioned earlier, has clear limitations.
+   **example_fail**: this (bare pronoun, no cohesive chain) | I went out. I saw a friend. I ate (no anaphoric reference) | The weather is nice (off-topic, no cohesion target)
 
 2. **id**: 2
    **label_pt**: "Desambiguar pronome"
@@ -654,6 +704,8 @@
    **hidden_prompt**: "user names the referent instead of 'she / he / it'"
    **hint_pt**: "Ambiguous: 'Anna spoke to her mother, and she was angry.' Disambiguated: 'Anna spoke to her mother — Anna was angry, though her mother seemed to know why before Anna said a word.'"
    **hint_en**: "Ambiguous: 'Anna spoke to her mother, and she was angry.' Disambiguated: 'Anna spoke to her mother — Anna was angry, though her mother seemed to know why before Anna said a word.'"
+   **example_pass**: Ambiguous: 'Anna spoke to her mother, and she was angry.' Disambiguated: 'Anna spoke to her mother — Anna was angry, though her mother seemed to know why before Anna said a word.' | Such challenges, however significant, can be overcome with planning. | The findings, taken together, point to a structural shift.
+   **example_fail**: this (bare pronoun, no cohesive chain) | I went out. I saw a friend. I ate (no anaphoric reference) | The weather is nice (off-topic, no cohesion target)
 
 3. **id**: 3
    **label_pt**: "Bridging com 'the X'"
@@ -661,6 +713,8 @@
    **hidden_prompt**: "user bridges via inference"
    **hint_pt**: "First: 'I drove to the lake for the weekend. The water was warmer than expected.' (Bridging — 'the water' = the lake's water, inferred.)"
    **hint_en**: "First: 'I drove to the lake for the weekend. The water was warmer than expected.' (Bridging — 'the water' = the lake's water, inferred.)"
+   **example_pass**: First: 'I drove to the lake for the weekend. The water was warmer than expected.' (Bridging — 'the water' = the lake's water, inferred.) | These developments, far from being isolated, reflect a broader trend. | The argument, although compelling, rests on shaky assumptions.
+   **example_fail**: this (bare pronoun, no cohesive chain) | I went out. I saw a friend. I ate (no anaphoric reference) | The weather is nice (off-topic, no cohesion target)
 
 **Closing cue**: Charlotte closes with "References, clean and clear." once obj_3 lands.
 
@@ -696,6 +750,8 @@
    **hidden_prompt**: "user names which 'she' said it"
    **hint_pt**: "Try: 'The CEO told the head of legal that the deal would close.'"
    **hint_en**: "Try: 'The CEO told the head of legal that the deal would close.'"
+   **example_pass**: Try: 'The CEO told the head of legal that the deal would close.' | The project, which we launched last year, has exceeded all expectations. | This approach, as mentioned earlier, has clear limitations.
+   **example_fail**: this (bare pronoun, no cohesive chain) | I went out. I saw a friend. I ate (no anaphoric reference) | The weather is nice (off-topic, no cohesion target)
 
 2. **id**: 2
    **label_pt**: "Esclarecer 'they' e 'it'"
@@ -703,6 +759,8 @@
    **hidden_prompt**: "user names referents"
    **hint_pt**: "Continue: 'The two disagreed on the timeline. Now the decision rests with the executive team.'"
    **hint_en**: "Continue: 'The two disagreed on the timeline. Now the decision rests with the executive team.'"
+   **example_pass**: Continue: 'The two disagreed on the timeline. Now the decision rests with the executive team.' | Such challenges, however significant, can be overcome with planning. | The findings, taken together, point to a structural shift.
+   **example_fail**: this (bare pronoun, no cohesive chain) | I went out. I saw a friend. I ate (no anaphoric reference) | The weather is nice (off-topic, no cohesion target)
 
 3. **id**: 3
    **label_pt**: "Perguntar a Charlotte"
@@ -710,6 +768,8 @@
    **hidden_prompt**: "user asks Charlotte why she'd left it ambiguous"
    **hint_pt**: "Was the ambiguity deliberate?"
    **hint_en**: "Was the ambiguity deliberate?"
+   **example_pass**: Was the ambiguity deliberate? | These developments, far from being isolated, reflect a broader trend. | The argument, although compelling, rests on shaky assumptions.
+   **example_fail**: this (bare pronoun, no cohesive chain) | I went out. I saw a friend. I ate (no anaphoric reference) | The weather is nice (off-topic, no cohesion target)
 
 **Closing cue**: Charlotte closes with "Cohesion sharpened, ambiguity dispelled." once obj_3 lands.
 

@@ -83,6 +83,8 @@
    **hidden_prompt**: "user writes formal opener like 'Dear...' + 'I hope this email finds you well'"
    **hint_pt**: "Dear Ms. Costa, I hope this email finds you well. I'm reaching out to ask whether..."
    **hint_en**: "Dear Ms. Costa, I hope this email finds you well. I'm reaching out to ask whether..."
+   **example_pass**: Dear Ms. Costa, I hope this email finds you well. I'm reaching out to ask whether... | I hope this email finds you well. | Please find attached the revised proposal for your review.
+   **example_fail**: ok (bare reply, no email register) | Send me the report now (blunt, not email-appropriate) | I had a coffee (off-topic, no business email tone)
 
 2. **id**: 2
    **label_pt**: "Abertura semi-formal"
@@ -90,6 +92,8 @@
    **hidden_prompt**: "user writes semi-formal opener like 'Hi Marta, Hope you're doing well'"
    **hint_pt**: "Hi Marta, Hope you're doing well. Just wanted to ask if..."
    **hint_en**: "Hi Marta, Hope you're doing well. Just wanted to ask if..."
+   **example_pass**: Hi Marta, Hope you're doing well. Just wanted to ask if... | I would appreciate your feedback at your earliest convenience. | Thank you in advance for your kind cooperation.
+   **example_fail**: ok (bare reply, no email register) | Send me the report now (blunt, not email-appropriate) | I had a coffee (off-topic, no business email tone)
 
 3. **id**: 3
    **label_pt**: "Abertura casual"
@@ -97,6 +101,8 @@
    **hidden_prompt**: "user writes casual opener like 'Hey João, Quick favour?'"
    **hint_pt**: "Hey João! Quick favour — can you...?"
    **hint_en**: "Hey João! Quick favour — can you...?"
+   **example_pass**: Hey João! Quick favour — can you...? | I look forward to hearing from you soon. | Should you require further clarification, please don't hesitate to ask.
+   **example_fail**: ok (bare reply, no email register) | Send me the report now (blunt, not email-appropriate) | I had a coffee (off-topic, no business email tone)
 
 **Closing cue**: Charlotte closes with "Three registers, three audiences. Nailed it." once obj_3 lands.
 
@@ -132,6 +138,8 @@
    **hidden_prompt**: "user suggests formal opening + greeting"
    **hint_pt**: "Definitely go formal — open with 'Dear [Mr./Ms. Surname]' followed by 'I hope this email finds you well'."
    **hint_en**: "Definitely go formal — open with 'Dear [Mr./Ms. Surname]' followed by 'I hope this email finds you well'."
+   **example_pass**: Definitely go formal — open with 'Dear [Mr./Ms. Surname]' followed by 'I hope this email finds you well'. | I hope this email finds you well. | Please find attached the revised proposal for your review.
+   **example_fail**: ok (bare reply, no email register) | Send me the report now (blunt, not email-appropriate) | I had a coffee (off-topic, no business email tone)
 
 2. **id**: 2
    **label_pt**: "Sugerir transição para o assunto"
@@ -139,6 +147,8 @@
    **hidden_prompt**: "user suggests 'I'm reaching out regarding...' or 'I'm writing to...'"
    **hint_pt**: "Then a clean transition: 'I'm reaching out regarding our potential collaboration on...' Keep the body tight."
    **hint_en**: "Then a clean transition: 'I'm reaching out regarding our potential collaboration on...' Keep the body tight."
+   **example_pass**: Then a clean transition: 'I'm reaching out regarding our potential collaboration on...' Keep the body tight. | I would appreciate your feedback at your earliest convenience. | Thank you in advance for your kind cooperation.
+   **example_fail**: ok (bare reply, no email register) | Send me the report now (blunt, not email-appropriate) | I had a coffee (off-topic, no business email tone)
 
 3. **id**: 3
    **label_pt**: "Sugerir fechamento"
@@ -146,6 +156,8 @@
    **hidden_prompt**: "user suggests formal closing like 'Kind regards'"
    **hint_pt**: "Close with 'Kind regards' followed by your full name and title. Avoid 'Best' — too casual for first contact at that level."
    **hint_en**: "Close with 'Kind regards' followed by your full name and title. Avoid 'Best' — too casual for first contact at that level."
+   **example_pass**: Close with 'Kind regards' followed by your full name and title. Avoid 'Best' — too casual for first contact at that level. | I look forward to hearing from you soon. | Should you require further clarification, please don't hesitate to ask.
+   **example_fail**: ok (bare reply, no email register) | Send me the report now (blunt, not email-appropriate) | I had a coffee (off-topic, no business email tone)
 
 **Closing cue**: Charlotte closes with "Got it. Writing it now." once obj_3 lands.
 
@@ -223,6 +235,8 @@
    **hidden_prompt**: "user writes 'I am writing to apply for [position]'"
    **hint_pt**: "I am writing to apply for the Senior Marketing Manager position advertised on LinkedIn."
    **hint_en**: "I am writing to apply for the Senior Marketing Manager position advertised on LinkedIn."
+   **example_pass**: I am writing to apply for the Senior Marketing Manager position advertised on LinkedIn. | I hope this email finds you well. | Please find attached the revised proposal for your review.
+   **example_fail**: ok (bare reply, no email register) | Send me the report now (blunt, not email-appropriate) | I had a coffee (off-topic, no business email tone)
 
 2. **id**: 2
    **label_pt**: "Parágrafo de fit com experiência quantificada"
@@ -230,6 +244,8 @@
    **hidden_prompt**: "user writes experience paragraph with specific years and results"
    **hint_pt**: "I bring six years of experience in B2B marketing, with a track record of doubling lead conversion at two consecutive companies."
    **hint_en**: "I bring six years of experience in B2B marketing, with a track record of doubling lead conversion at two consecutive companies."
+   **example_pass**: I bring six years of experience in B2B marketing, with a track record of doubling lead conversion at two consecutive companies. | I would appreciate your feedback at your earliest convenience. | Thank you in advance for your kind cooperation.
+   **example_fail**: ok (bare reply, no email register) | Send me the report now (blunt, not email-appropriate) | I had a coffee (off-topic, no business email tone)
 
 3. **id**: 3
    **label_pt**: "Fechamento com 'would welcome'"
@@ -237,6 +253,8 @@
    **hidden_prompt**: "user writes 'I would welcome the opportunity to discuss'"
    **hint_pt**: "I would welcome the opportunity to discuss how my approach to marketing aligns with your team's growth goals."
    **hint_en**: "I would welcome the opportunity to discuss how my approach to marketing aligns with your team's growth goals."
+   **example_pass**: I would welcome the opportunity to discuss how my approach to marketing aligns with your team's growth goals. | I look forward to hearing from you soon. | Should you require further clarification, please don't hesitate to ask.
+   **example_fail**: ok (bare reply, no email register) | Send me the report now (blunt, not email-appropriate) | I had a coffee (off-topic, no business email tone)
 
 **Closing cue**: Charlotte closes with "That's a tight application. Send it." once obj_3 lands.
 
@@ -272,6 +290,8 @@
    **hidden_prompt**: "user adds specific quantified achievement"
    **hint_pt**: "I led a team of eight engineers to deliver a platform migration that reduced infrastructure costs by 40%."
    **hint_en**: "I led a team of eight engineers to deliver a platform migration that reduced infrastructure costs by 40%."
+   **example_pass**: I led a team of eight engineers to deliver a platform migration that reduced infrastructure costs by 40%. | I hope this email finds you well. | Please find attached the revised proposal for your review.
+   **example_fail**: ok (bare reply, no email register) | Send me the report now (blunt, not email-appropriate) | I had a coffee (off-topic, no business email tone)
 
 2. **id**: 2
    **label_pt**: "Conectar à vaga"
@@ -279,6 +299,8 @@
    **hidden_prompt**: "user explicitly connects experience to the job description"
    **hint_pt**: "That experience maps directly to your team's current focus on scalable infrastructure."
    **hint_en**: "That experience maps directly to your team's current focus on scalable infrastructure."
+   **example_pass**: That experience maps directly to your team's current focus on scalable infrastructure. | I would appreciate your feedback at your earliest convenience. | Thank you in advance for your kind cooperation.
+   **example_fail**: ok (bare reply, no email register) | Send me the report now (blunt, not email-appropriate) | I had a coffee (off-topic, no business email tone)
 
 3. **id**: 3
    **label_pt**: "Fechar com 'I would welcome'"
@@ -286,6 +308,8 @@
    **hidden_prompt**: "user closes with formal 'I would welcome the opportunity'"
    **hint_pt**: "I would welcome the opportunity to discuss how I could contribute to your next phase of growth."
    **hint_en**: "I would welcome the opportunity to discuss how I could contribute to your next phase of growth."
+   **example_pass**: I would welcome the opportunity to discuss how I could contribute to your next phase of growth. | I look forward to hearing from you soon. | Should you require further clarification, please don't hesitate to ask.
+   **example_fail**: ok (bare reply, no email register) | Send me the report now (blunt, not email-appropriate) | I had a coffee (off-topic, no business email tone)
 
 **Closing cue**: Charlotte closes with "Now it reads like the candidate they want." once obj_3 lands.
 
@@ -363,6 +387,8 @@
    **hidden_prompt**: "user rewrites bullet with strong verb + scope + quantified outcome"
    **hint_pt**: "Led a 15-person engineering team to ship four major releases in 18 months, increasing platform reliability by 35%."
    **hint_en**: "Led a 15-person engineering team to ship four major releases in 18 months, increasing platform reliability by 35%."
+   **example_pass**: Led a 15-person engineering team to ship four major releases in 18 months, increasing platform reliability by 35%. | I hope this email finds you well. | Please find attached the revised proposal for your review.
+   **example_fail**: ok (bare reply, no email register) | Send me the report now (blunt, not email-appropriate) | I had a coffee (off-topic, no business email tone)
 
 2. **id**: 2
    **label_pt**: "Reescrever bullet de iniciativa"
@@ -370,6 +396,8 @@
    **hidden_prompt**: "user rewrites with 'Spearheaded' or 'Drove' + outcome"
    **hint_pt**: "Spearheaded the migration from monolith to microservices, cutting deployment time from days to hours."
    **hint_en**: "Spearheaded the migration from monolith to microservices, cutting deployment time from days to hours."
+   **example_pass**: Spearheaded the migration from monolith to microservices, cutting deployment time from days to hours. | I would appreciate your feedback at your earliest convenience. | Thank you in advance for your kind cooperation.
+   **example_fail**: ok (bare reply, no email register) | Send me the report now (blunt, not email-appropriate) | I had a coffee (off-topic, no business email tone)
 
 3. **id**: 3
    **label_pt**: "Reescrever bullet de impacto financeiro"
@@ -377,6 +405,8 @@
    **hidden_prompt**: "user rewrites with quantified financial outcome"
    **hint_pt**: "Negotiated supplier contracts that reduced annual operating costs by $1.2M."
    **hint_en**: "Negotiated supplier contracts that reduced annual operating costs by $1.2M."
+   **example_pass**: Negotiated supplier contracts that reduced annual operating costs by $1.2M. | I look forward to hearing from you soon. | Should you require further clarification, please don't hesitate to ask.
+   **example_fail**: ok (bare reply, no email register) | Send me the report now (blunt, not email-appropriate) | I had a coffee (off-topic, no business email tone)
 
 **Closing cue**: Charlotte closes with "Three bullets, three stories of impact. That's a CV." once obj_3 lands.
 
@@ -412,6 +442,8 @@
    **hidden_prompt**: "user uses 'What draws me to [Company] is...' with specific reason"
    **hint_pt**: "What draws me to NorthPath is your commitment to open-source infrastructure — I've contributed to two of your projects on GitHub."
    **hint_en**: "What draws me to NorthPath is your commitment to open-source infrastructure — I've contributed to two of your projects on GitHub."
+   **example_pass**: What draws me to NorthPath is your commitment to open-source infrastructure — I've contributed to two of your projects on GitHub. | I hope this email finds you well. | Please find attached the revised proposal for your review.
+   **example_fail**: ok (bare reply, no email register) | Send me the report now (blunt, not email-appropriate) | I had a coffee (off-topic, no business email tone)
 
 2. **id**: 2
    **label_pt**: "Conectar com sua experiência"
@@ -419,6 +451,8 @@
    **hidden_prompt**: "user connects company specifics to their own work"
    **hint_pt**: "In my current role, I've built three open-source tools that align with your team's release model."
    **hint_en**: "In my current role, I've built three open-source tools that align with your team's release model."
+   **example_pass**: In my current role, I've built three open-source tools that align with your team's release model. | I would appreciate your feedback at your earliest convenience. | Thank you in advance for your kind cooperation.
+   **example_fail**: ok (bare reply, no email register) | Send me the report now (blunt, not email-appropriate) | I had a coffee (off-topic, no business email tone)
 
 3. **id**: 3
    **label_pt**: "Fechamento com motivação clara"
@@ -426,6 +460,8 @@
    **hidden_prompt**: "user closes with personal motivation tied to mission"
    **hint_pt**: "Working at NorthPath would let me combine my open-source ethos with the kind of scale your platform offers."
    **hint_en**: "Working at NorthPath would let me combine my open-source ethos with the kind of scale your platform offers."
+   **example_pass**: Working at NorthPath would let me combine my open-source ethos with the kind of scale your platform offers. | I look forward to hearing from you soon. | Should you require further clarification, please don't hesitate to ask.
+   **example_fail**: ok (bare reply, no email register) | Send me the report now (blunt, not email-appropriate) | I had a coffee (off-topic, no business email tone)
 
 **Closing cue**: Charlotte closes with "Now you sound like you actually want the job — not just any job." once obj_3 lands.
 
@@ -503,6 +539,8 @@
    **hidden_prompt**: "user uses 'just following up on the proposal'"
    **hint_pt**: "Just following up on the proposal I sent on Tuesday — wondering if you've had a chance to review it."
    **hint_en**: "Just following up on the proposal I sent on Tuesday — wondering if you've had a chance to review it."
+   **example_pass**: Just following up on the proposal I sent on Tuesday — wondering if you've had a chance to review it. | I hope this email finds you well. | Please find attached the revised proposal for your review.
+   **example_fail**: ok (bare reply, no email register) | Send me the report now (blunt, not email-appropriate) | I had a coffee (off-topic, no business email tone)
 
 2. **id**: 2
    **label_pt**: "Follow-up para candidatura"
@@ -510,6 +548,8 @@
    **hidden_prompt**: "user uses 'just checking in on the application'"
    **hint_pt**: "Just checking in on the Senior Designer application I submitted two weeks ago. Any update on next steps would be appreciated."
    **hint_en**: "Just checking in on the Senior Designer application I submitted two weeks ago. Any update on next steps would be appreciated."
+   **example_pass**: Just checking in on the Senior Designer application I submitted two weeks ago. Any update on next steps would be appreciated. | I would appreciate your feedback at your earliest convenience. | Thank you in advance for your kind cooperation.
+   **example_fail**: ok (bare reply, no email register) | Send me the report now (blunt, not email-appropriate) | I had a coffee (off-topic, no business email tone)
 
 3. **id**: 3
    **label_pt**: "Follow-up pós-reunião"
@@ -517,6 +557,8 @@
    **hidden_prompt**: "user uses 'following up on our conversation'"
    **hint_pt**: "Following up on our conversation last Friday — happy to share the case studies we discussed if useful."
    **hint_en**: "Following up on our conversation last Friday — happy to share the case studies we discussed if useful."
+   **example_pass**: Following up on our conversation last Friday — happy to share the case studies we discussed if useful. | I look forward to hearing from you soon. | Should you require further clarification, please don't hesitate to ask.
+   **example_fail**: ok (bare reply, no email register) | Send me the report now (blunt, not email-appropriate) | I had a coffee (off-topic, no business email tone)
 
 **Closing cue**: Charlotte closes with "Three follow-ups, no pestering. Well played." once obj_3 lands.
 
@@ -552,6 +594,8 @@
    **hidden_prompt**: "user encourages writing a follow-up with 'just following up'"
    **hint_pt**: "Three weeks is the perfect window for a soft follow-up. Open with 'Just following up on my email from earlier this month'."
    **hint_en**: "Three weeks is the perfect window for a soft follow-up. Open with 'Just following up on my email from earlier this month'."
+   **example_pass**: Three weeks is the perfect window for a soft follow-up. Open with 'Just following up on my email from earlier this month'. | I hope this email finds you well. | Please find attached the revised proposal for your review.
+   **example_fail**: ok (bare reply, no email register) | Send me the report now (blunt, not email-appropriate) | I had a coffee (off-topic, no business email tone)
 
 2. **id**: 2
    **label_pt**: "Adicionar valor — reason to re-engage"
@@ -559,6 +603,8 @@
    **hidden_prompt**: "user suggests adding a value-add reason"
    **hint_pt**: "Add a reason to re-engage — something like 'I came across a case study that might interest you' or 'Just released something relevant'."
    **hint_en**: "Add a reason to re-engage — something like 'I came across a case study that might interest you' or 'Just released something relevant'."
+   **example_pass**: Add a reason to re-engage — something like 'I came across a case study that might interest you' or 'Just released something relevant'. | I would appreciate your feedback at your earliest convenience. | Thank you in advance for your kind cooperation.
+   **example_fail**: ok (bare reply, no email register) | Send me the report now (blunt, not email-appropriate) | I had a coffee (off-topic, no business email tone)
 
 3. **id**: 3
    **label_pt**: "Liberar pressão no fechamento"
@@ -566,6 +612,8 @@
    **hidden_prompt**: "user advises 'no rush on my end' close"
    **hint_pt**: "Close with 'No rush on my end — just wanted to keep the conversation open'. Gives them an easy yes or easy out."
    **hint_en**: "Close with 'No rush on my end — just wanted to keep the conversation open'. Gives them an easy yes or easy out."
+   **example_pass**: Close with 'No rush on my end — just wanted to keep the conversation open'. Gives them an easy yes or easy out. | I look forward to hearing from you soon. | Should you require further clarification, please don't hesitate to ask.
+   **example_fail**: ok (bare reply, no email register) | Send me the report now (blunt, not email-appropriate) | I had a coffee (off-topic, no business email tone)
 
 **Closing cue**: Charlotte closes with "Sending it now." once obj_3 lands.
 
@@ -643,6 +691,8 @@
    **hidden_prompt**: "user writes professional decline with thanks + reason + door open"
    **hint_pt**: "Thank you for thinking of me. Unfortunately, my current commitments don't allow me to take this on right now, but I'd love to revisit when my workload shifts in Q2."
    **hint_en**: "Thank you for thinking of me. Unfortunately, my current commitments don't allow me to take this on right now, but I'd love to revisit when my workload shifts in Q2."
+   **example_pass**: Thank you for thinking of me. Unfortunately, my current commitments don't allow me to take this on right now, but I'd love to revisit when my workload shifts in Q2. | I hope this email finds you well. | Please find attached the revised proposal for your review.
+   **example_fail**: ok (bare reply, no email register) | Send me the report now (blunt, not email-appropriate) | I had a coffee (off-topic, no business email tone)
 
 2. **id**: 2
    **label_pt**: "Entrega de notícia ruim"
@@ -650,6 +700,8 @@
    **hidden_prompt**: "user delivers bad news softly with 'unfortunately' + reason + path forward"
    **hint_pt**: "Unfortunately, the leadership team has decided to postpone the project until next year. I know this isn't the news anyone wanted, and I'm happy to discuss what this means for next steps."
    **hint_en**: "Unfortunately, the leadership team has decided to postpone the project until next year. I know this isn't the news anyone wanted, and I'm happy to discuss what this means for next steps."
+   **example_pass**: Unfortunately, the leadership team has decided to postpone the project until next year. I know this isn't the news anyone wanted, and I'm happy to discuss what this means for next steps. | I would appreciate your feedback at your earliest convenience. | Thank you in advance for your kind cooperation.
+   **example_fail**: ok (bare reply, no email register) | Send me the report now (blunt, not email-appropriate) | I had a coffee (off-topic, no business email tone)
 
 3. **id**: 3
    **label_pt**: "Pedido de aumento"
@@ -657,6 +709,8 @@
    **hidden_prompt**: "user requests raise with specific framing + impact + ask"
    **hint_pt**: "I'd like to discuss compensation given my expanded scope over the past year — taking on the regional portfolio and growing the team by 40%. Could we find time next week to talk?"
    **hint_en**: "I'd like to discuss compensation given my expanded scope over the past year — taking on the regional portfolio and growing the team by 40%. Could we find time next week to talk?"
+   **example_pass**: I'd like to discuss compensation given my expanded scope over the past year — taking on the regional portfolio and growing the team by 40%. Could we find time next week to talk? | I look forward to hearing from you soon. | Should you require further clarification, please don't hesitate to ask.
+   **example_fail**: ok (bare reply, no email register) | Send me the report now (blunt, not email-appropriate) | I had a coffee (off-topic, no business email tone)
 
 **Closing cue**: Charlotte closes with "Three hard emails, three professional moves. Hit send." once obj_3 lands.
 
@@ -692,6 +746,8 @@
    **hidden_prompt**: "user suggests gratitude + softener"
    **hint_pt**: "Open with appreciation: 'Thank you for thinking of us for this — the relationship means a lot.' Then soften the no: 'Unfortunately, the timing doesn't work on our end right now.'"
    **hint_en**: "Open with appreciation: 'Thank you for thinking of us for this — the relationship means a lot.' Then soften the no: 'Unfortunately, the timing doesn't work on our end right now.'"
+   **example_pass**: Open with appreciation: 'Thank you for thinking of us for this — the relationship means a lot.' Then soften the no: 'Unfortunately, the timing doesn't work on our end right now.' | I hope this email finds you well. | Please find attached the revised proposal for your review.
+   **example_fail**: ok (bare reply, no email register) | Send me the report now (blunt, not email-appropriate) | I had a coffee (off-topic, no business email tone)
 
 2. **id**: 2
    **label_pt**: "Adicionar razão real"
@@ -699,6 +755,8 @@
    **hidden_prompt**: "user suggests adding a brief honest reason"
    **hint_pt**: "Give a real but brief reason — 'we're at capacity through Q3' or 'we're shifting focus on internal work this year'. Honesty preserves trust."
    **hint_en**: "Give a real but brief reason — 'we're at capacity through Q3' or 'we're shifting focus on internal work this year'. Honesty preserves trust."
+   **example_pass**: Give a real but brief reason — 'we're at capacity through Q3' or 'we're shifting focus on internal work this year'. Honesty preserves trust. | I would appreciate your feedback at your earliest convenience. | Thank you in advance for your kind cooperation.
+   **example_fail**: ok (bare reply, no email register) | Send me the report now (blunt, not email-appropriate) | I had a coffee (off-topic, no business email tone)
 
 3. **id**: 3
    **label_pt**: "Manter porta aberta"
@@ -706,6 +764,8 @@
    **hidden_prompt**: "user advises closing with future option"
    **hint_pt**: "Close with: 'I'd love to keep the conversation open for Q4 or beyond — when the timing aligns, we'd jump at the chance to work with you again.'"
    **hint_en**: "Close with: 'I'd love to keep the conversation open for Q4 or beyond — when the timing aligns, we'd jump at the chance to work with you again.'"
+   **example_pass**: Close with: 'I'd love to keep the conversation open for Q4 or beyond — when the timing aligns, we'd jump at the chance to work with you again.' | I look forward to hearing from you soon. | Should you require further clarification, please don't hesitate to ask.
+   **example_fail**: ok (bare reply, no email register) | Send me the report now (blunt, not email-appropriate) | I had a coffee (off-topic, no business email tone)
 
 **Closing cue**: Charlotte closes with "OK, drafting it now. Thanks for the structure." once obj_3 lands.
 

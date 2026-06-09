@@ -88,6 +88,8 @@
    **hidden_prompt**: "user uses 'I was wondering if + clause'"
    **hint_pt**: "I was wondering if you'd have twenty minutes this week to talk through my project."
    **hint_en**: "I was wondering if you'd have twenty minutes this week to talk through my project."
+   **example_pass**: I was wondering if you'd have twenty minutes this week to talk through my project. | It seems that there might be some room for improvement. | I'd suggest we perhaps consider another approach.
+   **example_fail**: no (bare refusal, no hedging) | That is wrong, you must change it (direct, no diplomacy) | I think it's fine (off-topic, no hedge)
 
 2. **id**: 2
    **label_pt**: "Pedido de conselho com 'I was hoping'"
@@ -95,6 +97,8 @@
    **hidden_prompt**: "user uses 'I was hoping + clause'"
    **hint_pt**: "I was hoping you might share your view on the new structure."
    **hint_en**: "I was hoping you might share your view on the new structure."
+   **example_pass**: I was hoping you might share your view on the new structure. | Would you mind if I shared a slightly different view? | Perhaps it might be worth revisiting that point.
+   **example_fail**: no (bare refusal, no hedging) | That is wrong, you must change it (direct, no diplomacy) | I think it's fine (off-topic, no hedge)
 
 3. **id**: 3
    **label_pt**: "Pedido sensível"
@@ -102,6 +106,8 @@
    **hidden_prompt**: "user uses another softened hedge ('I was wondering whether...')"
    **hint_pt**: "I was wondering whether there's room to revisit the timeline."
    **hint_en**: "I was wondering whether there's room to revisit the timeline."
+   **example_pass**: I was wondering whether there's room to revisit the timeline. | I'm afraid I might have to disagree on that one. | It could be argued that another perspective is also valid.
+   **example_fail**: no (bare refusal, no hedging) | That is wrong, you must change it (direct, no diplomacy) | I think it's fine (off-topic, no hedge)
 
 **Closing cue**: Charlotte closes with "Soft asks placed." once obj_3 lands.
 
@@ -137,6 +143,8 @@
    **hidden_prompt**: "user uses 'I was wondering if / I was hoping' to open"
    **hint_pt**: "I was wondering if you could give me feedback on my proposal before Friday."
    **hint_en**: "I was wondering if you could give me feedback on my proposal before Friday."
+   **example_pass**: I was wondering if you could give me feedback on my proposal before Friday. | It seems that there might be some room for improvement. | I'd suggest we perhaps consider another approach.
+   **example_fail**: no (bare refusal, no hedging) | That is wrong, you must change it (direct, no diplomacy) | I think it's fine (off-topic, no hedge)
 
 2. **id**: 2
    **label_pt**: "Aprofundar com hedge"
@@ -144,6 +152,8 @@
    **hidden_prompt**: "user uses another hedged structure"
    **hint_pt**: "I was hoping for your view on which sections to prioritise."
    **hint_en**: "I was hoping for your view on which sections to prioritise."
+   **example_pass**: I was hoping for your view on which sections to prioritise. | Would you mind if I shared a slightly different view? | Perhaps it might be worth revisiting that point.
+   **example_fail**: no (bare refusal, no hedging) | That is wrong, you must change it (direct, no diplomacy) | I think it's fine (off-topic, no hedge)
 
 3. **id**: 3
    **label_pt**: "Fechar com agradecimento suave"
@@ -151,6 +161,8 @@
    **hidden_prompt**: "user closes politely"
    **hint_pt**: "Thank you for taking the time."
    **hint_en**: "Thank you for taking the time."
+   **example_pass**: Thank you for taking the time. | I'm afraid I might have to disagree on that one. | It could be argued that another perspective is also valid.
+   **example_fail**: no (bare refusal, no hedging) | That is wrong, you must change it (direct, no diplomacy) | I think it's fine (off-topic, no hedge)
 
 **Closing cue**: Charlotte closes with "Conversation handled with grace." once obj_3 lands.
 
@@ -230,6 +242,8 @@
    **hidden_prompt**: "user uses 'It might be worth + -ing'"
    **hint_pt**: "It might be worth tightening the second paragraph."
    **hint_en**: "It might be worth tightening the second paragraph."
+   **example_pass**: It might be worth tightening the second paragraph. | It seems that there might be some room for improvement. | I'd suggest we perhaps consider another approach.
+   **example_fail**: no (bare refusal, no hedging) | That is wrong, you must change it (direct, no diplomacy) | I think it's fine (off-topic, no hedge)
 
 2. **id**: 2
    **label_pt**: "Sugestão com 'You might want to + base'"
@@ -237,6 +251,8 @@
    **hidden_prompt**: "user uses 'You might want to + base'"
    **hint_pt**: "You might want to lead with the strongest example."
    **hint_en**: "You might want to lead with the strongest example."
+   **example_pass**: You might want to lead with the strongest example. | Would you mind if I shared a slightly different view? | Perhaps it might be worth revisiting that point.
+   **example_fail**: no (bare refusal, no hedging) | That is wrong, you must change it (direct, no diplomacy) | I think it's fine (off-topic, no hedge)
 
 3. **id**: 3
    **label_pt**: "Sugestão como pergunta ('Have you considered + -ing?')"
@@ -244,6 +260,8 @@
    **hidden_prompt**: "user uses 'Have you considered + -ing?'"
    **hint_pt**: "Have you considered moving the conclusion earlier?"
    **hint_en**: "Have you considered moving the conclusion earlier?"
+   **example_pass**: Have you considered moving the conclusion earlier? | I'm afraid I might have to disagree on that one. | It could be argued that another perspective is also valid.
+   **example_fail**: no (bare refusal, no hedging) | That is wrong, you must change it (direct, no diplomacy) | I think it's fine (off-topic, no hedge)
 
 **Closing cue**: Charlotte closes with "Edits given, pride intact." once obj_3 lands.
 
@@ -279,6 +297,8 @@
    **hidden_prompt**: "user uses 'It might be worth' or 'You might want to'"
    **hint_pt**: "It might be worth clarifying who the primary audience is."
    **hint_en**: "It might be worth clarifying who the primary audience is."
+   **example_pass**: It might be worth clarifying who the primary audience is. | It seems that there might be some room for improvement. | I'd suggest we perhaps consider another approach.
+   **example_fail**: no (bare refusal, no hedging) | That is wrong, you must change it (direct, no diplomacy) | I think it's fine (off-topic, no hedge)
 
 2. **id**: 2
    **label_pt**: "Outra sugestão como pergunta"
@@ -286,6 +306,8 @@
    **hidden_prompt**: "user uses 'Have you considered + -ing?' or 'Perhaps + clause'"
    **hint_pt**: "Have you considered adding a single metric of success?"
    **hint_en**: "Have you considered adding a single metric of success?"
+   **example_pass**: Have you considered adding a single metric of success? | Would you mind if I shared a slightly different view? | Perhaps it might be worth revisiting that point.
+   **example_fail**: no (bare refusal, no hedging) | That is wrong, you must change it (direct, no diplomacy) | I think it's fine (off-topic, no hedge)
 
 3. **id**: 3
    **label_pt**: "Encerramento positivo"
@@ -293,6 +315,8 @@
    **hidden_prompt**: "user offers positive close"
    **hint_pt**: "Overall, the structure works well — these are small tweaks."
    **hint_en**: "Overall, the structure works well — these are small tweaks."
+   **example_pass**: Overall, the structure works well — these are small tweaks. | I'm afraid I might have to disagree on that one. | It could be argued that another perspective is also valid.
+   **example_fail**: no (bare refusal, no hedging) | That is wrong, you must change it (direct, no diplomacy) | I think it's fine (off-topic, no hedge)
 
 **Closing cue**: Charlotte closes with "Feedback received, edges softened." once obj_3 lands.
 
@@ -371,6 +395,8 @@
    **hidden_prompt**: "user uses 'With respect, + counter'"
    **hint_pt**: "With respect, I'd see the timeline issue rather differently."
    **hint_en**: "With respect, I'd see the timeline issue rather differently."
+   **example_pass**: With respect, I'd see the timeline issue rather differently. | It seems that there might be some room for improvement. | I'd suggest we perhaps consider another approach.
+   **example_fail**: no (bare refusal, no hedging) | That is wrong, you must change it (direct, no diplomacy) | I think it's fine (off-topic, no hedge)
 
 2. **id**: 2
    **label_pt**: "Reconhecer e pivotar"
@@ -378,6 +404,8 @@
    **hidden_prompt**: "user uses 'I take your point, but + counter'"
    **hint_pt**: "I take your point about cost, but the long-term return justifies it."
    **hint_en**: "I take your point about cost, but the long-term return justifies it."
+   **example_pass**: I take your point about cost, but the long-term return justifies it. | Would you mind if I shared a slightly different view? | Perhaps it might be worth revisiting that point.
+   **example_fail**: no (bare refusal, no hedging) | That is wrong, you must change it (direct, no diplomacy) | I think it's fine (off-topic, no hedge)
 
 3. **id**: 3
    **label_pt**: "Soft denial com 'I'm not entirely sure'"
@@ -385,6 +413,8 @@
    **hidden_prompt**: "user uses 'I'm not entirely + counter'"
    **hint_pt**: "I'm not entirely convinced that's the root cause."
    **hint_en**: "I'm not entirely convinced that's the root cause."
+   **example_pass**: I'm not entirely convinced that's the root cause. | I'm afraid I might have to disagree on that one. | It could be argued that another perspective is also valid.
+   **example_fail**: no (bare refusal, no hedging) | That is wrong, you must change it (direct, no diplomacy) | I think it's fine (off-topic, no hedge)
 
 **Closing cue**: Charlotte closes with "Disagreed without damage." once obj_3 lands.
 
@@ -420,6 +450,8 @@
    **hidden_prompt**: "user uses 'With respect' or 'I take your point but' or 'I'm not entirely'"
    **hint_pt**: "With respect, the productivity data hasn't really shown that."
    **hint_en**: "With respect, the productivity data hasn't really shown that."
+   **example_pass**: With respect, the productivity data hasn't really shown that. | It seems that there might be some room for improvement. | I'd suggest we perhaps consider another approach.
+   **example_fail**: no (bare refusal, no hedging) | That is wrong, you must change it (direct, no diplomacy) | I think it's fine (off-topic, no hedge)
 
 2. **id**: 2
    **label_pt**: "Aprofundar contra-argumento"
@@ -427,6 +459,8 @@
    **hidden_prompt**: "user adds another hedged disagreement"
    **hint_pt**: "I take your point about collaboration, but most of that happens through screens anyway now."
    **hint_en**: "I take your point about collaboration, but most of that happens through screens anyway now."
+   **example_pass**: I take your point about collaboration, but most of that happens through screens anyway now. | Would you mind if I shared a slightly different view? | Perhaps it might be worth revisiting that point.
+   **example_fail**: no (bare refusal, no hedging) | That is wrong, you must change it (direct, no diplomacy) | I think it's fine (off-topic, no hedge)
 
 3. **id**: 3
    **label_pt**: "Perguntar a Charlotte"
@@ -434,6 +468,8 @@
    **hidden_prompt**: "user asks Charlotte what evidence convinced her"
    **hint_pt**: "What's making you think this?"
    **hint_en**: "What's making you think this?"
+   **example_pass**: What's making you think this? | I'm afraid I might have to disagree on that one. | It could be argued that another perspective is also valid.
+   **example_fail**: no (bare refusal, no hedging) | That is wrong, you must change it (direct, no diplomacy) | I think it's fine (off-topic, no hedge)
 
 **Closing cue**: Charlotte closes with "Argument held, civility preserved." once obj_3 lands.
 
@@ -512,6 +548,8 @@
    **hidden_prompt**: "user uses 'It could be argued that + clause'"
    **hint_pt**: "It could be argued that social media has changed how we form opinions."
    **hint_en**: "It could be argued that social media has changed how we form opinions."
+   **example_pass**: It could be argued that social media has changed how we form opinions. | It seems that there might be some room for improvement. | I'd suggest we perhaps consider another approach.
+   **example_fail**: no (bare refusal, no hedging) | That is wrong, you must change it (direct, no diplomacy) | I think it's fine (off-topic, no hedge)
 
 2. **id**: 2
    **label_pt**: "'One might say' ou 'In a sense'"
@@ -519,6 +557,8 @@
    **hidden_prompt**: "user uses 'One might say + clause' or 'In a sense, + clause'"
    **hint_pt**: "In a sense, every generation thinks the next one has it easier."
    **hint_en**: "In a sense, every generation thinks the next one has it easier."
+   **example_pass**: In a sense, every generation thinks the next one has it easier. | Would you mind if I shared a slightly different view? | Perhaps it might be worth revisiting that point.
+   **example_fail**: no (bare refusal, no hedging) | That is wrong, you must change it (direct, no diplomacy) | I think it's fine (off-topic, no hedge)
 
 3. **id**: 3
    **label_pt**: "'Arguably' como advérbio"
@@ -526,6 +566,8 @@
    **hidden_prompt**: "user uses 'Arguably, + clause' or 'It's arguably + adj'"
    **hint_pt**: "Arguably, the best companies are built in downturns."
    **hint_en**: "Arguably, the best companies are built in downturns."
+   **example_pass**: Arguably, the best companies are built in downturns. | I'm afraid I might have to disagree on that one. | It could be argued that another perspective is also valid.
+   **example_fail**: no (bare refusal, no hedging) | That is wrong, you must change it (direct, no diplomacy) | I think it's fine (off-topic, no hedge)
 
 **Closing cue**: Charlotte closes with "Positions floated, not planted." once obj_3 lands.
 
@@ -561,6 +603,8 @@
    **hidden_prompt**: "user uses 'One might say' or 'In a sense'"
    **hint_pt**: "In a sense, focus matters more than hours."
    **hint_en**: "In a sense, focus matters more than hours."
+   **example_pass**: In a sense, focus matters more than hours. | It seems that there might be some room for improvement. | I'd suggest we perhaps consider another approach.
+   **example_fail**: no (bare refusal, no hedging) | That is wrong, you must change it (direct, no diplomacy) | I think it's fine (off-topic, no hedge)
 
 2. **id**: 2
    **label_pt**: "Nuance impessoal"
@@ -568,6 +612,8 @@
    **hidden_prompt**: "user uses 'It could be argued' or 'Arguably'"
    **hint_pt**: "Arguably, the four-day week works only in certain industries."
    **hint_en**: "Arguably, the four-day week works only in certain industries."
+   **example_pass**: Arguably, the four-day week works only in certain industries. | Would you mind if I shared a slightly different view? | Perhaps it might be worth revisiting that point.
+   **example_fail**: no (bare refusal, no hedging) | That is wrong, you must change it (direct, no diplomacy) | I think it's fine (off-topic, no hedge)
 
 3. **id**: 3
    **label_pt**: "Perguntar a Charlotte"
@@ -575,6 +621,8 @@
    **hidden_prompt**: "user asks Charlotte where she'd apply it"
    **hint_pt**: "Where would you apply it?"
    **hint_en**: "Where would you apply it?"
+   **example_pass**: Where would you apply it? | I'm afraid I might have to disagree on that one. | It could be argued that another perspective is also valid.
+   **example_fail**: no (bare refusal, no hedging) | That is wrong, you must change it (direct, no diplomacy) | I think it's fine (off-topic, no hedge)
 
 **Closing cue**: Charlotte closes with "Debated with distance." once obj_3 lands.
 
@@ -654,6 +702,8 @@
    **hidden_prompt**: "user uses 'roughly', 'about', or 'give or take'"
    **hint_pt**: "Roughly thirty people came, give or take a few."
    **hint_en**: "Roughly thirty people came, give or take a few."
+   **example_pass**: Roughly thirty people came, give or take a few. | It seems that there might be some room for improvement. | I'd suggest we perhaps consider another approach.
+   **example_fail**: no (bare refusal, no hedging) | That is wrong, you must change it (direct, no diplomacy) | I think it's fine (off-topic, no hedge)
 
 2. **id**: 2
    **label_pt**: "Sentimento aproximado ('sort of', 'kind of')"
@@ -661,6 +711,8 @@
    **hidden_prompt**: "user uses 'sort of' or 'kind of'"
    **hint_pt**: "I'm sort of relieved and sort of disappointed."
    **hint_en**: "I'm sort of relieved and sort of disappointed."
+   **example_pass**: I'm sort of relieved and sort of disappointed. | Would you mind if I shared a slightly different view? | Perhaps it might be worth revisiting that point.
+   **example_fail**: no (bare refusal, no hedging) | That is wrong, you must change it (direct, no diplomacy) | I think it's fine (off-topic, no hedge)
 
 3. **id**: 3
    **label_pt**: "Resumo geral ('more or less', 'somewhat')"
@@ -668,6 +720,8 @@
    **hidden_prompt**: "user uses 'more or less' or 'somewhat'"
    **hint_pt**: "More or less, the year went as planned."
    **hint_en**: "More or less, the year went as planned."
+   **example_pass**: More or less, the year went as planned. | I'm afraid I might have to disagree on that one. | It could be argued that another perspective is also valid.
+   **example_fail**: no (bare refusal, no hedging) | That is wrong, you must change it (direct, no diplomacy) | I think it's fine (off-topic, no hedge)
 
 **Closing cue**: Charlotte closes with "Imprecision, native-level." once obj_3 lands.
 
@@ -703,6 +757,8 @@
    **hidden_prompt**: "user uses 'roughly', 'about', or 'give or take' for numbers"
    **hint_pt**: "I had about twelve, give or take the ones that got cancelled."
    **hint_en**: "I had about twelve, give or take the ones that got cancelled."
+   **example_pass**: I had about twelve, give or take the ones that got cancelled. | It seems that there might be some room for improvement. | I'd suggest we perhaps consider another approach.
+   **example_fail**: no (bare refusal, no hedging) | That is wrong, you must change it (direct, no diplomacy) | I think it's fine (off-topic, no hedge)
 
 2. **id**: 2
    **label_pt**: "Sentimento com 'sort of'"
@@ -710,6 +766,8 @@
    **hidden_prompt**: "user uses 'sort of' or 'kind of' for feeling"
    **hint_pt**: "I'm sort of fried but sort of proud of what we got done."
    **hint_en**: "I'm sort of fried but sort of proud of what we got done."
+   **example_pass**: I'm sort of fried but sort of proud of what we got done. | Would you mind if I shared a slightly different view? | Perhaps it might be worth revisiting that point.
+   **example_fail**: no (bare refusal, no hedging) | That is wrong, you must change it (direct, no diplomacy) | I think it's fine (off-topic, no hedge)
 
 3. **id**: 3
    **label_pt**: "Resumo com 'more or less'"
@@ -717,6 +775,8 @@
    **hidden_prompt**: "user uses 'more or less' for summary"
    **hint_pt**: "More or less, the week went the way I planned."
    **hint_en**: "More or less, the week went the way I planned."
+   **example_pass**: More or less, the week went the way I planned. | I'm afraid I might have to disagree on that one. | It could be argued that another perspective is also valid.
+   **example_fail**: no (bare refusal, no hedging) | That is wrong, you must change it (direct, no diplomacy) | I think it's fine (off-topic, no hedge)
 
 **Closing cue**: Charlotte closes with "Casual register, properly vague." once obj_3 lands.
 

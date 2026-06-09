@@ -125,19 +125,49 @@
             "id": 1,
             "label_en": "Apology with 'apologise for + -ing'",
             "hidden_prompt": "user uses 'X apologised for + -ing'",
-            "hint_en": "He apologised for sending the email to the wrong list."
+            "hint_en": "He apologised for sending the email to the wrong list.",
+            "examples_pass": [
+              "He apologised for sending the email to the wrong list.",
+              "She told me she was going to leave the next day.",
+              "He claimed he had finished the work earlier."
+            ],
+            "examples_fail": [
+              "she said (bare reporting, no backshift)",
+              "She said 'I am tired' (direct speech, not reported)",
+              "She is tired now (off-topic, no reporting verb)"
+            ]
           },
           {
             "id": 2,
             "label_en": "Accusation with 'accuse of + -ing'",
             "hidden_prompt": "user uses 'X accused Y of + -ing'",
-            "hint_en": "She accused him of taking credit for her work."
+            "hint_en": "She accused him of taking credit for her work.",
+            "examples_pass": [
+              "She accused him of taking credit for her work.",
+              "They mentioned that they were considering the offer.",
+              "She admitted that she had made a mistake."
+            ],
+            "examples_fail": [
+              "she said (bare reporting, no backshift)",
+              "She said 'I am tired' (direct speech, not reported)",
+              "She is tired now (off-topic, no reporting verb)"
+            ]
           },
           {
             "id": 3,
             "label_en": "Congratulations with 'congratulate on'",
             "hidden_prompt": "user uses 'X congratulated Y on + noun/-ing'",
-            "hint_en": "The whole team congratulated her on winning the award."
+            "hint_en": "The whole team congratulated her on winning the award.",
+            "examples_pass": [
+              "The whole team congratulated her on winning the award.",
+              "He insisted that he had nothing to do with it.",
+              "My boss asked whether I had completed the report."
+            ],
+            "examples_fail": [
+              "she said (bare reporting, no backshift)",
+              "She said 'I am tired' (direct speech, not reported)",
+              "She is tired now (off-topic, no reporting verb)"
+            ]
           }
         ],
         "closing_cue": "Charlotte closes with \"Verb patterns honoured.\" once obj_3 lands.",
@@ -160,19 +190,49 @@
             "id": 1,
             "label_en": "Reply with verb pattern",
             "hidden_prompt": "user uses 'I would have + reported verb + preposition + -ing'",
-            "hint_en": "I would have apologised for any role in the misunderstanding, then asked for evidence."
+            "hint_en": "I would have apologised for any role in the misunderstanding, then asked for evidence.",
+            "examples_pass": [
+              "I would have apologised for any role in the misunderstanding, then asked for evidence.",
+              "She told me she was going to leave the next day.",
+              "He claimed he had finished the work earlier."
+            ],
+            "examples_fail": [
+              "she said (bare reporting, no backshift)",
+              "She said 'I am tired' (direct speech, not reported)",
+              "She is tired now (off-topic, no reporting verb)"
+            ]
           },
           {
             "id": 2,
             "label_en": "Another observation with verb pattern",
             "hidden_prompt": "user uses another reporting verb + preposition + -ing",
-            "hint_en": "I'd blame the lack of clear ownership for situations like this."
+            "hint_en": "I'd blame the lack of clear ownership for situations like this.",
+            "examples_pass": [
+              "I'd blame the lack of clear ownership for situations like this.",
+              "They mentioned that they were considering the offer.",
+              "She admitted that she had made a mistake."
+            ],
+            "examples_fail": [
+              "she said (bare reporting, no backshift)",
+              "She said 'I am tired' (direct speech, not reported)",
+              "She is tired now (off-topic, no reporting verb)"
+            ]
           },
           {
             "id": 3,
             "label_en": "Ask Charlotte",
             "hidden_prompt": "user asks Charlotte what she actually did",
-            "hint_en": "What did you actually do?"
+            "hint_en": "What did you actually do?",
+            "examples_pass": [
+              "What did you actually do?",
+              "He insisted that he had nothing to do with it.",
+              "My boss asked whether I had completed the report."
+            ],
+            "examples_fail": [
+              "she said (bare reporting, no backshift)",
+              "She said 'I am tired' (direct speech, not reported)",
+              "She is tired now (off-topic, no reporting verb)"
+            ]
           }
         ],
         "closing_cue": "Charlotte closes with \"Patterns hold the line.\" once obj_3 lands.",
@@ -275,19 +335,49 @@
             "id": 1,
             "label_en": "Admission with '+ -ing'",
             "hidden_prompt": "user uses 'X admitted + -ing'",
-            "hint_en": "I have to admit losing track of time during that meeting."
+            "hint_en": "I have to admit losing track of time during that meeting.",
+            "examples_pass": [
+              "I have to admit losing track of time during that meeting.",
+              "She told me she was going to leave the next day.",
+              "He claimed he had finished the work earlier."
+            ],
+            "examples_fail": [
+              "she said (bare reporting, no backshift)",
+              "She said 'I am tired' (direct speech, not reported)",
+              "She is tired now (off-topic, no reporting verb)"
+            ]
           },
           {
             "id": 2,
             "label_en": "Denial with '+ -ing'",
             "hidden_prompt": "user uses 'X denied + -ing'",
-            "hint_en": "She denied having seen the email at all."
+            "hint_en": "She denied having seen the email at all.",
+            "examples_pass": [
+              "She denied having seen the email at all.",
+              "They mentioned that they were considering the offer.",
+              "She admitted that she had made a mistake."
+            ],
+            "examples_fail": [
+              "she said (bare reporting, no backshift)",
+              "She said 'I am tired' (direct speech, not reported)",
+              "She is tired now (off-topic, no reporting verb)"
+            ]
           },
           {
             "id": 3,
             "label_en": "Suggestion with '+ -ing'",
             "hidden_prompt": "user uses 'I suggest + -ing'",
-            "hint_en": "I suggest taking a break before we decide anything."
+            "hint_en": "I suggest taking a break before we decide anything.",
+            "examples_pass": [
+              "I suggest taking a break before we decide anything.",
+              "He insisted that he had nothing to do with it.",
+              "My boss asked whether I had completed the report."
+            ],
+            "examples_fail": [
+              "she said (bare reporting, no backshift)",
+              "She said 'I am tired' (direct speech, not reported)",
+              "She is tired now (off-topic, no reporting verb)"
+            ]
           }
         ],
         "closing_cue": "Charlotte closes with \"Patterns held, finely.\" once obj_3 lands.",
@@ -310,19 +400,49 @@
             "id": 1,
             "label_en": "Honest admission with '+ -ing'",
             "hidden_prompt": "user uses 'I'd admit/I admit + -ing'",
-            "hint_en": "I have to admit checking my phone first thing in the morning."
+            "hint_en": "I have to admit checking my phone first thing in the morning.",
+            "examples_pass": [
+              "I have to admit checking my phone first thing in the morning.",
+              "She told me she was going to leave the next day.",
+              "He claimed he had finished the work earlier."
+            ],
+            "examples_fail": [
+              "she said (bare reporting, no backshift)",
+              "She said 'I am tired' (direct speech, not reported)",
+              "She is tired now (off-topic, no reporting verb)"
+            ]
           },
           {
             "id": 2,
             "label_en": "Suggestion with '+ -ing'",
             "hidden_prompt": "user uses 'I suggest/recommend + -ing'",
-            "hint_en": "I'd suggest leaving the phone in another room for the first hour."
+            "hint_en": "I'd suggest leaving the phone in another room for the first hour.",
+            "examples_pass": [
+              "I'd suggest leaving the phone in another room for the first hour.",
+              "They mentioned that they were considering the offer.",
+              "She admitted that she had made a mistake."
+            ],
+            "examples_fail": [
+              "she said (bare reporting, no backshift)",
+              "She said 'I am tired' (direct speech, not reported)",
+              "She is tired now (off-topic, no reporting verb)"
+            ]
           },
           {
             "id": 3,
             "label_en": "Ask Charlotte",
             "hidden_prompt": "user asks Charlotte why Mondays changed",
-            "hint_en": "What changed about Mondays?"
+            "hint_en": "What changed about Mondays?",
+            "examples_pass": [
+              "What changed about Mondays?",
+              "He insisted that he had nothing to do with it.",
+              "My boss asked whether I had completed the report."
+            ],
+            "examples_fail": [
+              "she said (bare reporting, no backshift)",
+              "She said 'I am tired' (direct speech, not reported)",
+              "She is tired now (off-topic, no reporting verb)"
+            ]
           }
         ],
         "closing_cue": "Charlotte closes with \"Admissions, in pattern.\" once obj_3 lands.",
@@ -428,19 +548,49 @@
             "id": 1,
             "label_en": "Promise with 'promise to'",
             "hidden_prompt": "user uses 'X promised to + base'",
-            "hint_en": "My manager promised to give me feedback by Friday."
+            "hint_en": "My manager promised to give me feedback by Friday.",
+            "examples_pass": [
+              "My manager promised to give me feedback by Friday.",
+              "She told me she was going to leave the next day.",
+              "He claimed he had finished the work earlier."
+            ],
+            "examples_fail": [
+              "she said (bare reporting, no backshift)",
+              "She said 'I am tired' (direct speech, not reported)",
+              "She is tired now (off-topic, no reporting verb)"
+            ]
           },
           {
             "id": 2,
             "label_en": "Refusal with 'refuse to'",
             "hidden_prompt": "user uses 'X refused to + base'",
-            "hint_en": "The customer refused to pay until the issue was fixed."
+            "hint_en": "The customer refused to pay until the issue was fixed.",
+            "examples_pass": [
+              "The customer refused to pay until the issue was fixed.",
+              "They mentioned that they were considering the offer.",
+              "She admitted that she had made a mistake."
+            ],
+            "examples_fail": [
+              "she said (bare reporting, no backshift)",
+              "She said 'I am tired' (direct speech, not reported)",
+              "She is tired now (off-topic, no reporting verb)"
+            ]
           },
           {
             "id": 3,
             "label_en": "Offer with 'offer to'",
             "hidden_prompt": "user uses 'X offered to + base'",
-            "hint_en": "My neighbour offered to water the plants while we're away."
+            "hint_en": "My neighbour offered to water the plants while we're away.",
+            "examples_pass": [
+              "My neighbour offered to water the plants while we're away.",
+              "He insisted that he had nothing to do with it.",
+              "My boss asked whether I had completed the report."
+            ],
+            "examples_fail": [
+              "she said (bare reporting, no backshift)",
+              "She said 'I am tired' (direct speech, not reported)",
+              "She is tired now (off-topic, no reporting verb)"
+            ]
           }
         ],
         "closing_cue": "Charlotte closes with \"Three verbs, three commitments.\" once obj_3 lands.",
@@ -463,19 +613,49 @@
             "id": 1,
             "label_en": "Promise or commitment",
             "hidden_prompt": "user uses 'I promised to + base' or 'agreed to + base'",
-            "hint_en": "I promised to call my mother every Sunday, and so far I've kept it."
+            "hint_en": "I promised to call my mother every Sunday, and so far I've kept it.",
+            "examples_pass": [
+              "I promised to call my mother every Sunday, and so far I've kept it.",
+              "She told me she was going to leave the next day.",
+              "He claimed he had finished the work earlier."
+            ],
+            "examples_fail": [
+              "she said (bare reporting, no backshift)",
+              "She said 'I am tired' (direct speech, not reported)",
+              "She is tired now (off-topic, no reporting verb)"
+            ]
           },
           {
             "id": 2,
             "label_en": "Personal refusal",
             "hidden_prompt": "user uses 'I refused to + base'",
-            "hint_en": "I refused to take work calls after eight PM, and it changed my evenings."
+            "hint_en": "I refused to take work calls after eight PM, and it changed my evenings.",
+            "examples_pass": [
+              "I refused to take work calls after eight PM, and it changed my evenings.",
+              "They mentioned that they were considering the offer.",
+              "She admitted that she had made a mistake."
+            ],
+            "examples_fail": [
+              "she said (bare reporting, no backshift)",
+              "She said 'I am tired' (direct speech, not reported)",
+              "She is tired now (off-topic, no reporting verb)"
+            ]
           },
           {
             "id": 3,
             "label_en": "Ask Charlotte",
             "hidden_prompt": "user asks Charlotte why she delayed the appointment",
-            "hint_en": "Why did you delay?"
+            "hint_en": "Why did you delay?",
+            "examples_pass": [
+              "Why did you delay?",
+              "He insisted that he had nothing to do with it.",
+              "My boss asked whether I had completed the report."
+            ],
+            "examples_fail": [
+              "she said (bare reporting, no backshift)",
+              "She said 'I am tired' (direct speech, not reported)",
+              "She is tired now (off-topic, no reporting verb)"
+            ]
           }
         ],
         "closing_cue": "Charlotte closes with \"Commitments, with patterns held.\" once obj_3 lands.",
@@ -578,19 +758,49 @@
             "id": 1,
             "label_en": "Warning with 'warn + about / not to'",
             "hidden_prompt": "user uses 'X warned + person + about/not to'",
-            "hint_en": "My boss warned me not to commit to that timeline."
+            "hint_en": "My boss warned me not to commit to that timeline.",
+            "examples_pass": [
+              "My boss warned me not to commit to that timeline.",
+              "She told me she was going to leave the next day.",
+              "He claimed he had finished the work earlier."
+            ],
+            "examples_fail": [
+              "she said (bare reporting, no backshift)",
+              "She said 'I am tired' (direct speech, not reported)",
+              "She is tired now (off-topic, no reporting verb)"
+            ]
           },
           {
             "id": 2,
             "label_en": "Persuasion with 'persuade to' or 'talk into'",
             "hidden_prompt": "user uses 'X persuaded Y to + base' or 'talked Y into + -ing'",
-            "hint_en": "My sister talked me into trying the new restaurant."
+            "hint_en": "My sister talked me into trying the new restaurant.",
+            "examples_pass": [
+              "My sister talked me into trying the new restaurant.",
+              "They mentioned that they were considering the offer.",
+              "She admitted that she had made a mistake."
+            ],
+            "examples_fail": [
+              "she said (bare reporting, no backshift)",
+              "She said 'I am tired' (direct speech, not reported)",
+              "She is tired now (off-topic, no reporting verb)"
+            ]
           },
           {
             "id": 3,
             "label_en": "Discouragement with 'discourage from'",
             "hidden_prompt": "user uses 'X discouraged + person + from + -ing'",
-            "hint_en": "Our mentor discouraged us from rushing the launch."
+            "hint_en": "Our mentor discouraged us from rushing the launch.",
+            "examples_pass": [
+              "Our mentor discouraged us from rushing the launch.",
+              "He insisted that he had nothing to do with it.",
+              "My boss asked whether I had completed the report."
+            ],
+            "examples_fail": [
+              "she said (bare reporting, no backshift)",
+              "She said 'I am tired' (direct speech, not reported)",
+              "She is tired now (off-topic, no reporting verb)"
+            ]
           }
         ],
         "closing_cue": "Charlotte closes with \"Patterns sharper than instinct.\" once obj_3 lands.",
@@ -613,19 +823,49 @@
             "id": 1,
             "label_en": "Who persuaded/discouraged",
             "hidden_prompt": "user uses 'X talked me into + -ing' or 'X persuaded me to + base'",
-            "hint_en": "My old boss talked me into applying for a role I thought was too senior."
+            "hint_en": "My old boss talked me into applying for a role I thought was too senior.",
+            "examples_pass": [
+              "My old boss talked me into applying for a role I thought was too senior.",
+              "She told me she was going to leave the next day.",
+              "He claimed he had finished the work earlier."
+            ],
+            "examples_fail": [
+              "she said (bare reporting, no backshift)",
+              "She said 'I am tired' (direct speech, not reported)",
+              "She is tired now (off-topic, no reporting verb)"
+            ]
           },
           {
             "id": 2,
             "label_en": "Warning received",
             "hidden_prompt": "user uses 'X warned me + about/not to/against'",
-            "hint_en": "A friend warned me against committing to anything in my first month."
+            "hint_en": "A friend warned me against committing to anything in my first month.",
+            "examples_pass": [
+              "A friend warned me against committing to anything in my first month.",
+              "They mentioned that they were considering the offer.",
+              "She admitted that she had made a mistake."
+            ],
+            "examples_fail": [
+              "she said (bare reporting, no backshift)",
+              "She said 'I am tired' (direct speech, not reported)",
+              "She is tired now (off-topic, no reporting verb)"
+            ]
           },
           {
             "id": 3,
             "label_en": "Ask Charlotte",
             "hidden_prompt": "user asks Charlotte where she studied abroad",
-            "hint_en": "Where did you go?"
+            "hint_en": "Where did you go?",
+            "examples_pass": [
+              "Where did you go?",
+              "He insisted that he had nothing to do with it.",
+              "My boss asked whether I had completed the report."
+            ],
+            "examples_fail": [
+              "she said (bare reporting, no backshift)",
+              "She said 'I am tired' (direct speech, not reported)",
+              "She is tired now (off-topic, no reporting verb)"
+            ]
           }
         ],
         "closing_cue": "Charlotte closes with \"Influence reported, correctly framed.\" once obj_3 lands.",
@@ -729,19 +969,49 @@
             "id": 1,
             "label_en": "Attribution with 'According to'",
             "hidden_prompt": "user uses 'According to + source, + clause'",
-            "hint_en": "According to the financial filing, profits doubled in the third quarter."
+            "hint_en": "According to the financial filing, profits doubled in the third quarter.",
+            "examples_pass": [
+              "According to the financial filing, profits doubled in the third quarter.",
+              "She told me she was going to leave the next day.",
+              "He claimed he had finished the work earlier."
+            ],
+            "examples_fail": [
+              "she said (bare reporting, no backshift)",
+              "She said 'I am tired' (direct speech, not reported)",
+              "She is tired now (off-topic, no reporting verb)"
+            ]
           },
           {
             "id": 2,
             "label_en": "'Allegedly' (legal-news)",
             "hidden_prompt": "user uses 'X allegedly + verb'",
-            "hint_en": "The accountant allegedly transferred funds to a personal account."
+            "hint_en": "The accountant allegedly transferred funds to a personal account.",
+            "examples_pass": [
+              "The accountant allegedly transferred funds to a personal account.",
+              "They mentioned that they were considering the offer.",
+              "She admitted that she had made a mistake."
+            ],
+            "examples_fail": [
+              "she said (bare reporting, no backshift)",
+              "She said 'I am tired' (direct speech, not reported)",
+              "She is tired now (off-topic, no reporting verb)"
+            ]
           },
           {
             "id": 3,
             "label_en": "'Apparently' or 'reportedly'",
             "hidden_prompt": "user uses 'Apparently/Reportedly + clause'",
-            "hint_en": "Apparently, two board members have already resigned."
+            "hint_en": "Apparently, two board members have already resigned.",
+            "examples_pass": [
+              "Apparently, two board members have already resigned.",
+              "He insisted that he had nothing to do with it.",
+              "My boss asked whether I had completed the report."
+            ],
+            "examples_fail": [
+              "she said (bare reporting, no backshift)",
+              "She said 'I am tired' (direct speech, not reported)",
+              "She is tired now (off-topic, no reporting verb)"
+            ]
           }
         ],
         "closing_cue": "Charlotte closes with \"Story filed, hedges intact.\" once obj_3 lands.",
@@ -764,19 +1034,49 @@
             "id": 1,
             "label_en": "Reply with hedging",
             "hidden_prompt": "user uses 'According to' or 'allegedly' or 'apparently'",
-            "hint_en": "According to a colleague, three teams are being merged."
+            "hint_en": "According to a colleague, three teams are being merged.",
+            "examples_pass": [
+              "According to a colleague, three teams are being merged.",
+              "She told me she was going to leave the next day.",
+              "He claimed he had finished the work earlier."
+            ],
+            "examples_fail": [
+              "she said (bare reporting, no backshift)",
+              "She said 'I am tired' (direct speech, not reported)",
+              "She is tired now (off-topic, no reporting verb)"
+            ]
           },
           {
             "id": 2,
             "label_en": "Add another source",
             "hidden_prompt": "user uses another hedging device",
-            "hint_en": "Reportedly, leadership wants the announcement done before Friday."
+            "hint_en": "Reportedly, leadership wants the announcement done before Friday.",
+            "examples_pass": [
+              "Reportedly, leadership wants the announcement done before Friday.",
+              "They mentioned that they were considering the offer.",
+              "She admitted that she had made a mistake."
+            ],
+            "examples_fail": [
+              "she said (bare reporting, no backshift)",
+              "She said 'I am tired' (direct speech, not reported)",
+              "She is tired now (off-topic, no reporting verb)"
+            ]
           },
           {
             "id": 3,
             "label_en": "Ask Charlotte",
             "hidden_prompt": "user asks Charlotte where she heard it",
-            "hint_en": "Where did you hear it?"
+            "hint_en": "Where did you hear it?",
+            "examples_pass": [
+              "Where did you hear it?",
+              "He insisted that he had nothing to do with it.",
+              "My boss asked whether I had completed the report."
+            ],
+            "examples_fail": [
+              "she said (bare reporting, no backshift)",
+              "She said 'I am tired' (direct speech, not reported)",
+              "She is tired now (off-topic, no reporting verb)"
+            ]
           }
         ],
         "closing_cue": "Charlotte closes with \"News traded, hedges preserved.\" once obj_3 lands.",
