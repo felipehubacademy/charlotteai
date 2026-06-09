@@ -420,14 +420,16 @@ const MessageBubble: React.FC<{
           >
             <View style={{ width: 36, height: 4, borderRadius: 2, backgroundColor: 'rgba(22,21,58,0.15)', alignSelf: 'center', marginBottom: 14 }} />
 
-            <ActionRow
-              icon={<Globe size={20} color="#4B4A72" weight="regular" />}
-              label={isNovice ? 'Traduzir' : 'Translate'}
-              onPress={() => {
-                setShowActions(false);
-                setTimeout(() => handleTranslation(), 200);
-              }}
-            />
+            {userLevel !== 'Advanced' && (
+              <ActionRow
+                icon={<Globe size={20} color="#4B4A72" weight="regular" />}
+                label={isNovice ? 'Traduzir' : 'Translate'}
+                onPress={() => {
+                  setShowActions(false);
+                  setTimeout(() => handleTranslation(), 200);
+                }}
+              />
+            )}
             <ActionRow
               icon={<Copy size={20} color="#4B4A72" weight="regular" />}
               label={isNovice ? 'Copiar' : 'Copy'}

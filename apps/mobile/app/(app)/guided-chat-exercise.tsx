@@ -529,9 +529,16 @@ export default function GuidedChatExerciseScreen() {
               flexDirection: 'row', gap: 10, alignItems: 'flex-start',
             }}>
               <Lightbulb size={18} color="#FFD27A" weight="fill" />
-              <AppText style={{ flex: 1, color: '#FFF', fontSize: 14, fontWeight: '600', lineHeight: 18 }}>
-                {interLabel}
-              </AppText>
+              <View style={{ flex: 1 }}>
+                <AppText style={{ color: '#FFF', fontSize: 14, fontWeight: '600', lineHeight: 18 }}>
+                  {interLabel}
+                </AppText>
+                {en && (
+                  <AppText style={{ color: 'rgba(255,255,255,0.5)', fontSize: 12, fontWeight: '400', lineHeight: 15, marginTop: 3 }}>
+                    Ex.: {en}
+                  </AppText>
+                )}
+              </View>
             </View>
           );
         }
