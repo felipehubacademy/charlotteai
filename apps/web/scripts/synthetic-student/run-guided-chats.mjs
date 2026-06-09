@@ -146,6 +146,15 @@ async function runGuidedChat(modId, unit) {
     let studentReply;
     try {
       studentReply = await generateStudentTurn(history, gc, nextObj);
+      // Persona LLM as vezes retorna vazio com prompts complexos (Advanced).
+      // Retry uma vez, fallback pra hint_en se vier vazio de novo.
+      if (!studentReply || studentReply.length < 2) {
+        studentReply = await generateStudentTurn(history, gc, nextObj);
+        if (!studentReply || studentReply.length < 2) {
+          studentReply = (nextObj?.hint_en ?? 'Sorry, can you rephrase?').trim();
+          transcript.push(`  [persona-fallback] empty -> hint_en`);
+        }
+      }
     } catch (e) {
       transcript.push(`[STUDENT-ERR] ${e.message}`);
       break;
