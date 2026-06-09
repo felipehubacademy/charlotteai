@@ -408,15 +408,35 @@ export async function POST(request: NextRequest) {
     // ANTI-STEAL POST-CHECK (deterministico): se a Charlotte respondeu com
     // um chunk que pertence a um objetivo "user asks/uses X" ainda nao
     // batido, ela roubou o turno. Sobrescreve com ack curto.
-    // (gpt-4o-mini ignora a regra mesmo com prompt forte, entao guard
-    // server-side eh necessario.)
+    //
+    // Match em 2 niveis:
+    // 1. Substring exato do hint_en (caso facil)
+    // 2. Primeiros 3-4 words do hint (cobre parafrase tipo Charlotte
+    //    dizendo "Where are you going on your trip?" quando hint eh
+    //    "Where are you going?") — bug visto no synthetic Inter iter2.
     const repliedLower = reply.toLowerCase().replace(/[''']/g, "'");
-    const unmetUserAsk = gc.objectives.find(o =>
-      !objectivesMet.includes(o.id) &&
-      /\buser\s+(asks?|perguntar)\b/i.test(o.hidden_prompt) &&
-      o.hint_en &&
-      repliedLower.includes(o.hint_en.toLowerCase().replace(/[''']/g, "'"))
-    );
+    const stripPunct = (s: string) => s.replace(/[?.,!]/g, '').replace(/\s+/g, ' ').trim();
+    const firstNWords = (s: string, n: number) =>
+      stripPunct(s).split(' ').slice(0, n).join(' ');
+    const unmetUserAsk = gc.objectives.find(o => {
+      if (objectivesMet.includes(o.id)) return false;
+      if (!/\buser\s+(asks?|perguntar)\b/i.test(o.hidden_prompt)) return false;
+      if (!o.hint_en) return false;
+      const hintLower = o.hint_en.toLowerCase().replace(/[''']/g, "'");
+      // Nivel 1: substring exato
+      if (repliedLower.includes(hintLower)) return true;
+      // Nivel 2: prefixo de 3-4 words (suficiente pra cobrir WH/AUX patterns)
+      const repliedNorm = stripPunct(repliedLower);
+      const hintPrefix4 = firstNWords(hintLower, 4);
+      const hintPrefix3 = firstNWords(hintLower, 3);
+      // Hint precisa ter >=3 words pra usar prefix match (evita false positives)
+      const hintWords = stripPunct(hintLower).split(' ').filter(Boolean);
+      if (hintWords.length >= 3 && hintPrefix3.length >= 6) {
+        if (hintWords.length >= 4 && repliedNorm.includes(hintPrefix4)) return true;
+        if (repliedNorm.includes(hintPrefix3)) return true;
+      }
+      return false;
+    });
     if (unmetUserAsk) {
       console.warn('[guided-chat/turn] anti-steal violation — Charlotte said the student chunk', {
         objectiveId: unmetUserAsk.id,

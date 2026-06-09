@@ -478,15 +478,31 @@ export async function POST(request: NextRequest) {
 
     // ANTI-STEAL POST-CHECK (deterministico): se Charlotte respondeu com
     // chunk que pertence a um objetivo "user asks/uses X" nao batido,
-    // sobrescreve com ack curto. gpt-4o-mini ignora a regra mesmo com
-    // prompt forte — guard server-side eh necessario.
+    // sobrescreve com ack curto.
+    //
+    // Match em 2 niveis: substring exato OU primeiros 3-4 words do hint
+    // (cobre parafrase tipo "Where are you going on your trip?" vs
+    // hint "Where are you going?")
     const repliedLower = clean.toLowerCase().replace(/[''']/g, "'");
-    const unmetUserAsk = rp.objectives.find(o =>
-      !objectivesMet.includes(o.id) &&
-      /\buser\s+(asks?|perguntar)\b/i.test(o.hidden_prompt) &&
-      o.hint_en &&
-      repliedLower.includes(o.hint_en.toLowerCase().replace(/[''']/g, "'"))
-    );
+    const stripPunct = (s: string) => s.replace(/[?.,!]/g, '').replace(/\s+/g, ' ').trim();
+    const firstNWords = (s: string, n: number) =>
+      stripPunct(s).split(' ').slice(0, n).join(' ');
+    const unmetUserAsk = rp.objectives.find(o => {
+      if (objectivesMet.includes(o.id)) return false;
+      if (!/\buser\s+(asks?|perguntar)\b/i.test(o.hidden_prompt)) return false;
+      if (!o.hint_en) return false;
+      const hintLower = o.hint_en.toLowerCase().replace(/[''']/g, "'");
+      if (repliedLower.includes(hintLower)) return true;
+      const repliedNorm = stripPunct(repliedLower);
+      const hintPrefix4 = firstNWords(hintLower, 4);
+      const hintPrefix3 = firstNWords(hintLower, 3);
+      const hintWords = stripPunct(hintLower).split(' ').filter(Boolean);
+      if (hintWords.length >= 3 && hintPrefix3.length >= 6) {
+        if (hintWords.length >= 4 && repliedNorm.includes(hintPrefix4)) return true;
+        if (repliedNorm.includes(hintPrefix3)) return true;
+      }
+      return false;
+    });
     if (unmetUserAsk) {
       console.warn('[roleplay/turn] anti-steal violation — Charlotte said student chunk', {
         objectiveId: unmetUserAsk.id,
