@@ -74,12 +74,20 @@ async function generateStudentTurn(history, gc, nextObj, profile = STUDENT_PROFI
   const passLine = nextObj?.examples_pass?.length
     ? `Examples that satisfy the obj: ${nextObj.examples_pass.map(e => `"${e}"`).join(', ')}.`
     : '';
+  // Persona scale por level — aluno tipicamente APRENDENDO o nivel,
+  // nao dominando ele. Novice = A1-A2 learner. Inter = B1-B2 learner.
+  // Advanced = B2-C1 learner (transitioning to mastery).
+  const levelPersona = LEVEL === 'Advanced'
+    ? "Brazilian upper-intermediate learner transitioning to advanced English (CEFR B2-C1). You CAN use complex structures (reported speech, conditionals, inversions, hedging, idioms) but sometimes still hesitate or simplify."
+    : LEVEL === 'Inter'
+      ? "Brazilian intermediate learner (CEFR B1-B2). Comfortable with present perfect, past continuous, basic conditionals; still building modals and phrasal verbs fluency."
+      : "Brazilian absolute beginner (CEFR A1-A2). Very limited vocabulary, simple present mostly, short sentences.";
   const profileDesc = profile === 'bare'
     ? "Always reply with just ONE BARE word/noun (no subject, no verb structure). E.g. if asked about food, just say 'pasta' alone. This tests if the system requires structure."
     : profile === 'sloppy'
       ? "Sometimes reply with the full hint, sometimes with bare words/fragments. Mix it up."
-      : "Reply with the suggested hint structure. Aluno A1 disciplinado.";
-  const persona = `You are a Brazilian beginner learning English (CEFR A1-A2). ${profileDesc}\n${hintLine}\n${passLine}`;
+      : "Reply with the suggested hint structure, naturally matching the persona's level.";
+  const persona = `You are a ${levelPersona}\n${profileDesc}\n${hintLine}\n${passLine}`;
   const histText = history.map(h => `${h.role === 'assistant' ? 'Charlotte' : 'You'}: ${h.content}`).join('\n');
   const res = await fetch('https://api.openai.com/v1/chat/completions', {
     method: 'POST',
