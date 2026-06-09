@@ -548,7 +548,7 @@
    **hidden_prompt**: "user uses 'It could be argued that + clause'"
    **hint_pt**: "It could be argued that social media has changed how we form opinions."
    **hint_en**: "It could be argued that social media has changed how we form opinions."
-   **example_pass**: It could be argued that social media has changed how we form opinions. | It seems that there might be some room for improvement. | I'd suggest we perhaps consider another approach.
+   **example_pass**: It could be argued that social media has changed how we form opinions. | It seems that there might be some room for improvement. | I'd suggest we perhaps consider another approach. | It could be argued that the original strategy was always too cautious for this market. | It could be argued that the problem isn't the product but the way we talk about it. | It could be argued that the company's strongest asset is the loyalty of its longest customers. | It could be argued that we have been measuring success against the wrong benchmark all along.
    **example_fail**: no (bare refusal, no hedging) | That is wrong, you must change it (direct, no diplomacy) | I think it's fine (off-topic, no hedge)
 
 2. **id**: 2
@@ -557,7 +557,7 @@
    **hidden_prompt**: "user uses 'One might say + clause' or 'In a sense, + clause'"
    **hint_pt**: "In a sense, every generation thinks the next one has it easier."
    **hint_en**: "In a sense, every generation thinks the next one has it easier."
-   **example_pass**: In a sense, every generation thinks the next one has it easier. | Would you mind if I shared a slightly different view? | Perhaps it might be worth revisiting that point.
+   **example_pass**: In a sense, every generation thinks the next one has it easier. | Would you mind if I shared a slightly different view? | Perhaps it might be worth revisiting that point. | In a sense, every successful company has to reinvent itself at least once a decade. | One might say that the founder's greatest skill is knowing when to step out of the way. | In a sense, this is less a strategy question and more a question of identity. | One could argue that the team learned more from the failed launch than from any of the successful ones.
    **example_fail**: no (bare refusal, no hedging) | That is wrong, you must change it (direct, no diplomacy) | I think it's fine (off-topic, no hedge)
 
 3. **id**: 3
@@ -566,7 +566,7 @@
    **hidden_prompt**: "user uses 'Arguably, + clause' or 'It's arguably + adj'"
    **hint_pt**: "Arguably, the best companies are built in downturns."
    **hint_en**: "Arguably, the best companies are built in downturns."
-   **example_pass**: Arguably, the best companies are built in downturns. | I'm afraid I might have to disagree on that one. | It could be argued that another perspective is also valid.
+   **example_pass**: Arguably, the best companies are built in downturns. | I'm afraid I might have to disagree on that one. | It could be argued that another perspective is also valid. | Arguably, the best decisions this company has made were the ones we almost didn't make. | Arguably, the most important hire of the year was the one nobody noticed at the time. | Arguably, the policy is more about signalling than about actual enforcement. | Arguably, the real innovation here is the business model, not the technology.
    **example_fail**: no (bare refusal, no hedging) | That is wrong, you must change it (direct, no diplomacy) | I think it's fine (off-topic, no hedge)
 
 **Closing cue**: Charlotte closes with "Positions floated, not planted." once obj_3 lands.
@@ -603,7 +603,7 @@
    **hidden_prompt**: "user uses 'One might say' or 'In a sense'"
    **hint_pt**: "In a sense, focus matters more than hours."
    **hint_en**: "In a sense, focus matters more than hours."
-   **example_pass**: In a sense, focus matters more than hours. | It seems that there might be some room for improvement. | I'd suggest we perhaps consider another approach.
+   **example_pass**: In a sense, focus matters more than hours. | It seems that there might be some room for improvement. | I'd suggest we perhaps consider another approach. | In a sense, every successful company has to reinvent itself at least once a decade. | One might say that the founder's greatest skill is knowing when to step out of the way. | In a sense, this is less a strategy question and more a question of identity. | One could argue that the team learned more from the failed launch than from any of the successful ones.
    **example_fail**: no (bare refusal, no hedging) | That is wrong, you must change it (direct, no diplomacy) | I think it's fine (off-topic, no hedge)
 
 2. **id**: 2
@@ -612,7 +612,7 @@
    **hidden_prompt**: "user uses 'It could be argued' or 'Arguably'"
    **hint_pt**: "Arguably, the four-day week works only in certain industries."
    **hint_en**: "Arguably, the four-day week works only in certain industries."
-   **example_pass**: Arguably, the four-day week works only in certain industries. | Would you mind if I shared a slightly different view? | Perhaps it might be worth revisiting that point.
+   **example_pass**: Arguably, the four-day week works only in certain industries. | Would you mind if I shared a slightly different view? | Perhaps it might be worth revisiting that point. | Arguably, the best decisions this company has made were the ones we almost didn't make. | Arguably, the most important hire of the year was the one nobody noticed at the time. | Arguably, the policy is more about signalling than about actual enforcement. | Arguably, the real innovation here is the business model, not the technology.
    **example_fail**: no (bare refusal, no hedging) | That is wrong, you must change it (direct, no diplomacy) | I think it's fine (off-topic, no hedge)
 
 3. **id**: 3
@@ -621,7 +621,7 @@
    **hidden_prompt**: "user asks Charlotte where she'd apply it"
    **hint_pt**: "Where would you apply it?"
    **hint_en**: "Where would you apply it?"
-   **example_pass**: Where would you apply it? | I'm afraid I might have to disagree on that one. | It could be argued that another perspective is also valid.
+   **example_pass**: Where would you apply it? | I'm afraid I might have to disagree on that one. | It could be argued that another perspective is also valid. | And you? | What about you? | How about yourself? | Same for you? | What's your take on it?
    **example_fail**: no (bare refusal, no hedging) | That is wrong, you must change it (direct, no diplomacy) | I think it's fine (off-topic, no hedge)
 
 **Closing cue**: Charlotte closes with "Debated with distance." once obj_3 lands.

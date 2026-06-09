@@ -88,7 +88,7 @@
    **hidden_prompt**: "user uses 'The case for + noun/-ing'"
    **hint_pt**: "The case for sustained public library funding rests on three independent grounds."
    **hint_en**: "The case for sustained public library funding rests on three independent grounds."
-   **example_pass**: The case for sustained public library funding rests on three independent grounds. | While some argue that X, the evidence clearly suggests otherwise. | It is precisely for this reason that we must act now.
+   **example_pass**: The case for sustained public library funding rests on three independent grounds. | While some argue that X, the evidence clearly suggests otherwise. | It is precisely for this reason that we must act now. | The case for a four-day workweek is stronger than the conventional debate would suggest. | The case for early intervention is supported by both economic and developmental evidence. | The case for transparency in this domain becomes harder to argue against with every passing scandal.
    **example_fail**: yes (bare agreement, no argumentation) | I think so (simple statement, no argumentative structure) | The food was great (off-topic, no persuasion)
 
 2. **id**: 2
@@ -97,7 +97,7 @@
    **hidden_prompt**: "user uses 'First / Second / Most importantly'"
    **hint_pt**: "First, libraries close measurable literacy gaps in underserved communities. Second, they remain the most cost-effective public learning infrastructure. Most importantly, they offer something no algorithm can — a space without commercial intent."
    **hint_en**: "First, libraries close measurable literacy gaps in underserved communities. Second, they remain the most cost-effective public learning infrastructure. Most importantly, they offer something no algorithm can — a space without commercial intent."
-   **example_pass**: First, libraries close measurable literacy gaps in underserved communities. Second, they remain the most cost-effective public learning infrastructure. Most importantly, they offer something no algorithm can — a space without commercial intent. | Far from being a luxury, education is a fundamental right. | One could easily counter that argument by pointing to the data.
+   **example_pass**: First, libraries close measurable literacy gaps in underserved communities. Second, they remain the most cost-effective public learning infrastructure. Most importantly, they offer something no algorithm can — a space without commercial intent. | Far from being a luxury, education is a fundamental right. | One could easily counter that argument by pointing to the data. | First, the policy reduces measurable inequality. Second, it pays for itself within a decade. Most importantly, it restores public trust in institutions that have been quietly losing it for years. | First, the team has the technical capability. Second, the market is ready. Most importantly, the timing aligns with a regulatory window that won't last. | First, the data is consistent. Second, the methodology is sound. Most importantly, the implications hold up under hostile scrutiny. | First, the proposal is fundable. Second, it's achievable. Most importantly, it solves a problem the current alternatives don't even acknowledge.
    **example_fail**: yes (bare agreement, no argumentation) | I think so (simple statement, no argumentative structure) | The food was great (off-topic, no persuasion)
 
 3. **id**: 3
@@ -106,7 +106,7 @@
    **hidden_prompt**: "user uses 'The evidence is unambiguous' or similar"
    **hint_pt**: "The evidence is unambiguous: the question is not whether to fund them, but how generously."
    **hint_en**: "The evidence is unambiguous: the question is not whether to fund them, but how generously."
-   **example_pass**: The evidence is unambiguous: the question is not whether to fund them, but how generously. | The implications of inaction are simply too serious to ignore. | We owe it to future generations to take this seriously.
+   **example_pass**: The evidence is unambiguous: the question is not whether to fund them, but how generously. | The implications of inaction are simply too serious to ignore. | We owe it to future generations to take this seriously. | The evidence is unambiguous: the question is no longer whether to act, but how generously. | The data leaves little room for doubt — the harder question is what to do with the conclusion. | The evidence is unambiguous, even if the political implications remain uncomfortable. | The case is no longer in dispute among researchers — what remains is the question of implementation.
    **example_fail**: yes (bare agreement, no argumentation) | I think so (simple statement, no argumentative structure) | The food was great (off-topic, no persuasion)
 
 **Closing cue**: Charlotte closes with "Case built, three pillars." once obj_3 lands.
@@ -143,7 +143,7 @@
    **hidden_prompt**: "user uses 'The case for + noun/-ing'"
    **hint_pt**: "The case for piloting a four-day workweek rests on what we already know about attention and output."
    **hint_en**: "The case for piloting a four-day workweek rests on what we already know about attention and output."
-   **example_pass**: The case for piloting a four-day workweek rests on what we already know about attention and output. | While some argue that X, the evidence clearly suggests otherwise. | It is precisely for this reason that we must act now.
+   **example_pass**: The case for piloting a four-day workweek rests on what we already know about attention and output. | While some argue that X, the evidence clearly suggests otherwise. | It is precisely for this reason that we must act now. | The case for sustained public library funding rests on three independent grounds. | The case for a four-day workweek is stronger than the conventional debate would suggest. | The case for early intervention is supported by both economic and developmental evidence. | The case for transparency in this domain becomes harder to argue against with every passing scandal.
    **example_fail**: yes (bare agreement, no argumentation) | I think so (simple statement, no argumentative structure) | The food was great (off-topic, no persuasion)
 
 2. **id**: 2
@@ -152,7 +152,7 @@
    **hidden_prompt**: "user uses 'First / Second / Most importantly'"
    **hint_pt**: "First, every published trial — Iceland, Belgium, New Zealand — has reported sustained or improved productivity. Second, the recruitment advantage in a tight labour market is undeniable. Most importantly, exhausted people make worse decisions, and we make a lot of decisions."
    **hint_en**: "First, every published trial — Iceland, Belgium, New Zealand — has reported sustained or improved productivity. Second, the recruitment advantage in a tight labour market is undeniable. Most importantly, exhausted people make worse decisions, and we make a lot of decisions."
-   **example_pass**: First, every published trial — Iceland, Belgium, New Zealand — has reported sustained or improved productivity. Second, the recruitment advantage in a tight labour market is undeniable. Most importantly, exhausted people make worse decisions, and we make a lot of decisions. | Far from being a luxury, education is a fundamental right. | One could easily counter that argument by pointing to the data.
+   **example_pass**: First, every published trial — Iceland, Belgium, New Zealand — has reported sustained or improved productivity. Second, the recruitment advantage in a tight labour market is undeniable. Most importantly, exhausted people make worse decisions, and we make a lot of decisions. | Far from being a luxury, education is a fundamental right. | One could easily counter that argument by pointing to the data. | First, the policy reduces measurable inequality. Second, it pays for itself within a decade. Most importantly, it restores public trust in institutions that have been quietly losing it for years. | First, the team has the technical capability. Second, the market is ready. Most importantly, the timing aligns with a regulatory window that won't last. | First, the data is consistent. Second, the methodology is sound. Most importantly, the implications hold up under hostile scrutiny. | First, the proposal is fundable. Second, it's achievable. Most importantly, it solves a problem the current alternatives don't even acknowledge.
    **example_fail**: yes (bare agreement, no argumentation) | I think so (simple statement, no argumentative structure) | The food was great (off-topic, no persuasion)
 
 3. **id**: 3
@@ -161,7 +161,7 @@
    **hidden_prompt**: "user asks Charlotte what objection she expects"
    **hint_pt**: "What's the loudest objection in your team?"
    **hint_en**: "What's the loudest objection in your team?"
-   **example_pass**: What's the loudest objection in your team? | The implications of inaction are simply too serious to ignore. | We owe it to future generations to take this seriously.
+   **example_pass**: What's the loudest objection in your team? | The implications of inaction are simply too serious to ignore. | We owe it to future generations to take this seriously. | And you? | What about you? | How about yourself? | Same for you? | What's your take on it?
    **example_fail**: yes (bare agreement, no argumentation) | I think so (simple statement, no argumentative structure) | The food was great (off-topic, no persuasion)
 
 **Closing cue**: Charlotte closes with "Argument constructed, climax delivered." once obj_3 lands.
@@ -240,7 +240,7 @@
    **hidden_prompt**: "user uses 'Some may object that... However...'"
    **hint_pt**: "Some may object that the programme is unaffordable. However, the cost over a decade is less than the current annual overrun on a single highway project."
    **hint_en**: "Some may object that the programme is unaffordable. However, the cost over a decade is less than the current annual overrun on a single highway project."
-   **example_pass**: Some may object that the programme is unaffordable. However, the cost over a decade is less than the current annual overrun on a single highway project. | While some argue that X, the evidence clearly suggests otherwise. | It is precisely for this reason that we must act now.
+   **example_pass**: Some may object that the programme is unaffordable. However, the cost over a decade is less than the current annual overrun on a single highway project. | While some argue that X, the evidence clearly suggests otherwise. | It is precisely for this reason that we must act now. | By contrast, longitudinal studies in similar populations have shown a weaker effect over time. | However, the same effect was not observed in the control population. | By contrast, earlier studies relying on cross-sectional data reached the opposite conclusion. | However, the methodology used in the present study differs from earlier work in two important respects.
    **example_fail**: yes (bare agreement, no argumentation) | I think so (simple statement, no argumentative structure) | The food was great (off-topic, no persuasion)
 
 2. **id**: 2
@@ -249,7 +249,7 @@
    **hidden_prompt**: "user uses 'Critics might argue... but this overlooks...'"
    **hint_pt**: "Critics might argue the evidence is preliminary, but this overlooks the consistency of findings across three independent trials in different countries."
    **hint_en**: "Critics might argue the evidence is preliminary, but this overlooks the consistency of findings across three independent trials in different countries."
-   **example_pass**: Critics might argue the evidence is preliminary, but this overlooks the consistency of findings across three independent trials in different countries. | Far from being a luxury, education is a fundamental right. | One could easily counter that argument by pointing to the data.
+   **example_pass**: Critics might argue the evidence is preliminary, but this overlooks the consistency of findings across three independent trials in different countries. | Far from being a luxury, education is a fundamental right. | One could easily counter that argument by pointing to the data. | Critics might argue the evidence is mixed, but this overlooks the convergence across three independent trials. | Critics might argue the policy is too expensive, but this overlooks the long-term cost of doing nothing. | Critics might argue that the model is unrealistic, but this overlooks decades of similar dynamics in adjacent fields. | Critics might argue the timing is wrong, but this overlooks how rarely the right timing presents itself in retrospect.
    **example_fail**: yes (bare agreement, no argumentation) | I think so (simple statement, no argumentative structure) | The food was great (off-topic, no persuasion)
 
 3. **id**: 3
@@ -258,7 +258,7 @@
    **hidden_prompt**: "user uses 'It would be a mistake to' or 'The deeper question is'"
    **hint_pt**: "It would be a mistake to fixate on isolated risks while the systemic costs of inaction accumulate quietly. The deeper question is what we choose to lose."
    **hint_en**: "It would be a mistake to fixate on isolated risks while the systemic costs of inaction accumulate quietly. The deeper question is what we choose to lose."
-   **example_pass**: It would be a mistake to fixate on isolated risks while the systemic costs of inaction accumulate quietly. The deeper question is what we choose to lose. | The implications of inaction are simply too serious to ignore. | We owe it to future generations to take this seriously.
+   **example_pass**: It would be a mistake to fixate on isolated risks while the systemic costs of inaction accumulate quietly. The deeper question is what we choose to lose. | The implications of inaction are simply too serious to ignore. | We owe it to future generations to take this seriously. | And you? | What about you? | How about yourself? | Same for you? | What's your take on it?
    **example_fail**: yes (bare agreement, no argumentation) | I think so (simple statement, no argumentative structure) | The food was great (off-topic, no persuasion)
 
 **Closing cue**: Charlotte closes with "Objections answered, position strengthened." once obj_3 lands.
@@ -295,7 +295,7 @@
    **hidden_prompt**: "user uses 'Critics might argue / Some may object / this overlooks'"
    **hint_pt**: "Critics might frame it that way, but this overlooks a basic distinction: outsourcing is about cost arbitrage; remote-first hiring is about talent access. They overlap, but they are not the same."
    **hint_en**: "Critics might frame it that way, but this overlooks a basic distinction: outsourcing is about cost arbitrage; remote-first hiring is about talent access. They overlap, but they are not the same."
-   **example_pass**: Critics might frame it that way, but this overlooks a basic distinction: outsourcing is about cost arbitrage; remote-first hiring is about talent access. They overlap, but they are not the same. | While some argue that X, the evidence clearly suggests otherwise. | It is precisely for this reason that we must act now.
+   **example_pass**: Critics might frame it that way, but this overlooks a basic distinction: outsourcing is about cost arbitrage; remote-first hiring is about talent access. They overlap, but they are not the same. | While some argue that X, the evidence clearly suggests otherwise. | It is precisely for this reason that we must act now. | Critics might frame it that way, but this overlooks a basic distinction: outsourcing is about cost arbitrage; remote-first hiring is about talent access. | Critics might argue the evidence is preliminary, but this overlooks the convergence of findings across three independent studies. | Critics might argue the policy is too expensive, but this overlooks the long-term cost of continued inaction. | Critics might argue the model is unrealistic, but this overlooks how similar dynamics have played out in adjacent fields.
    **example_fail**: yes (bare agreement, no argumentation) | I think so (simple statement, no argumentative structure) | The food was great (off-topic, no persuasion)
 
 2. **id**: 2
@@ -304,7 +304,7 @@
    **hidden_prompt**: "user uses 'The deeper question is' or 'It would be a mistake to assume'"
    **hint_pt**: "The deeper question is whether we are willing to define talent narrowly enough to fit inside one city — and whether that narrow definition has served us."
    **hint_en**: "The deeper question is whether we are willing to define talent narrowly enough to fit inside one city — and whether that narrow definition has served us."
-   **example_pass**: The deeper question is whether we are willing to define talent narrowly enough to fit inside one city — and whether that narrow definition has served us. | Far from being a luxury, education is a fundamental right. | One could easily counter that argument by pointing to the data.
+   **example_pass**: The deeper question is whether we are willing to define talent narrowly enough to fit inside one city — and whether that narrow definition has served us. | Far from being a luxury, education is a fundamental right. | One could easily counter that argument by pointing to the data. | And you? | What about you? | How about yourself? | Same for you? | What's your take on it?
    **example_fail**: yes (bare agreement, no argumentation) | I think so (simple statement, no argumentative structure) | The food was great (off-topic, no persuasion)
 
 3. **id**: 3
@@ -313,7 +313,7 @@
    **hidden_prompt**: "user asks Charlotte what objection she'd raise next"
    **hint_pt**: "What's your next push?"
    **hint_en**: "What's your next push?"
-   **example_pass**: What's your next push? | The implications of inaction are simply too serious to ignore. | We owe it to future generations to take this seriously.
+   **example_pass**: What's your next push? | The implications of inaction are simply too serious to ignore. | We owe it to future generations to take this seriously. | And you? | What about you? | How about yourself? | Same for you? | What's your take on it?
    **example_fail**: yes (bare agreement, no argumentation) | I think so (simple statement, no argumentative structure) | The food was great (off-topic, no persuasion)
 
 **Closing cue**: Charlotte closes with "Refutation under pressure." once obj_3 lands.

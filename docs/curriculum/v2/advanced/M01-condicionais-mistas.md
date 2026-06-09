@@ -82,7 +82,7 @@
    **hidden_prompt**: "user uses 'If I had + past participle, I would + base' for present career state"
    **hint_pt**: "If I had taken that internship, I'd be working in tech now."
    **hint_en**: "If I had taken that internship, I'd be working in tech now."
-   **example_pass**: If I had taken that internship, I'd be working in tech now. | If I had studied harder, I would have a better job today. | Had I accepted that offer, I'd be earning much more right now.
+   **example_pass**: If I had taken that internship, I'd be working in tech now. | If I had studied harder, I would have a better job today. | Had I accepted that offer, I'd be earning much more right now. | If I had picked the other offer, I'd be living in Berlin right now. | If I had finished that degree, I would be running a lab today. | Had I committed to that startup, I'd probably be a founder by now. | If I'd listened to my mentor back then, I'd be three years further along.
    **example_fail**: internship (bare word, no structure) | If I take it, I would work in tech (first conditional, not mixed) | I work in tech now (no conditional at all)
 
 2. **id**: 2
@@ -91,7 +91,7 @@
    **hidden_prompt**: "user uses another mixed conditional"
    **hint_pt**: "If I had stayed in Rio, I wouldn't know my partner today."
    **hint_en**: "If I had stayed in Rio, I wouldn't know my partner today."
-   **example_pass**: If I had stayed in Rio, I wouldn't know my partner today. | If I hadn't moved to São Paulo, I wouldn't have met my partner today. | I'd be debt-free now if I had saved more in my twenties.
+   **example_pass**: If I had stayed in Rio, I wouldn't know my partner today. | If I hadn't moved to São Paulo, I wouldn't have met my partner today. | I'd be debt-free now if I had saved more in my twenties. | If I hadn't left São Paulo, I'd still be running the same shop today. | Had I picked the other path, I'd be living an entirely different life right now. | If I weren't so attached to routine, I would have moved abroad years ago. | If I had taken the consulting offer, I'd probably be a partner by now.
    **example_fail**: internship (bare word, no structure) | If I take it, I would work in tech (first conditional, not mixed) | I work in tech now (no conditional at all)
 
 3. **id**: 3
@@ -100,7 +100,7 @@
    **hidden_prompt**: "user uses 'I would + base now... if I had + past participle'"
    **hint_pt**: "I'd be financially independent now if I'd started investing earlier."
    **hint_en**: "I'd be financially independent now if I'd started investing earlier."
-   **example_pass**: I'd be financially independent now if I'd started investing earlier. | Had we bought that apartment, we'd own it outright today. | If I weren't so cautious, I would have invested earlier.
+   **example_pass**: I'd be financially independent now if I'd started investing earlier. | Had we bought that apartment, we'd own it outright today. | If I weren't so cautious, I would have invested earlier. | I'd be running my own firm now if I had started saving in my twenties. | I'd be in much better health today if I had taken sleep seriously a decade ago. | We'd be debt-free now if we had bought the apartment instead of renting. | He'd be a tenured professor today if he had finished the dissertation back then.
    **example_fail**: internship (bare word, no structure) | If I take it, I would work in tech (first conditional, not mixed) | I work in tech now (no conditional at all)
 
 **Closing cue**: Charlotte closes with "Parallel selves mapped." once obj_3 lands.
@@ -137,7 +137,7 @@
    **hidden_prompt**: "user uses 'If I had + past participle, I would + base' anchored to present"
    **hint_pt**: "If I hadn't moved abroad, I wouldn't speak three languages today."
    **hint_en**: "If I hadn't moved abroad, I wouldn't speak three languages today."
-   **example_pass**: If I hadn't moved abroad, I wouldn't speak three languages today. | If I had studied harder, I would have a better job today. | Had I accepted that offer, I'd be earning much more right now.
+   **example_pass**: If I hadn't moved abroad, I wouldn't speak three languages today. | If I had studied harder, I would have a better job today. | Had I accepted that offer, I'd be earning much more right now. | If I had picked the other offer, I'd be living in Berlin right now. | If I had finished that degree, I would be running a lab today. | Had I committed to that startup, I'd probably be a founder by now. | If I'd listened to my mentor back then, I'd be three years further along.
    **example_fail**: internship (bare word, no structure) | If I take it, I would work in tech (first conditional, not mixed) | I work in tech now (no conditional at all)
 
 2. **id**: 2
@@ -146,7 +146,7 @@
    **hidden_prompt**: "user adds another mixed conditional that builds on the first"
    **hint_pt**: "If I had stayed, I'd probably still be in the same job."
    **hint_en**: "If I had stayed, I'd probably still be in the same job."
-   **example_pass**: If I had stayed, I'd probably still be in the same job. | If I hadn't moved to São Paulo, I wouldn't have met my partner today. | I'd be debt-free now if I had saved more in my twenties.
+   **example_pass**: If I had stayed, I'd probably still be in the same job. | If I hadn't moved to São Paulo, I wouldn't have met my partner today. | I'd be debt-free now if I had saved more in my twenties. | If I hadn't left São Paulo, I'd still be running the same shop today. | Had I picked the other path, I'd be living an entirely different life right now. | If I weren't so attached to routine, I would have moved abroad years ago. | If I had taken the consulting offer, I'd probably be a partner by now.
    **example_fail**: internship (bare word, no structure) | If I take it, I would work in tech (first conditional, not mixed) | I work in tech now (no conditional at all)
 
 3. **id**: 3
@@ -155,7 +155,7 @@
    **hidden_prompt**: "user asks Charlotte about her own pivot"
    **hint_pt**: "What pivot shaped you?"
    **hint_en**: "What pivot shaped you?"
-   **example_pass**: What pivot shaped you? | Had we bought that apartment, we'd own it outright today. | If I weren't so cautious, I would have invested earlier.
+   **example_pass**: What pivot shaped you? | Had we bought that apartment, we'd own it outright today. | If I weren't so cautious, I would have invested earlier. | And you? | What about you? | How about yourself? | Same for you? | What's your take on it?
    **example_fail**: internship (bare word, no structure) | If I take it, I would work in tech (first conditional, not mixed) | I work in tech now (no conditional at all)
 
 **Closing cue**: Charlotte closes with "Decisions echo." once obj_3 lands.
@@ -542,7 +542,7 @@
    **hidden_prompt**: "user uses 'Were I to + base, I would + base'"
    **hint_pt**: "Were I to lead the project, I would restructure the team first."
    **hint_en**: "Were I to lead the project, I would restructure the team first."
-   **example_pass**: Were I to lead the project, I would restructure the team first. | If I had studied harder, I would have a better job today. | Had I accepted that offer, I'd be earning much more right now.
+   **example_pass**: Were I to lead the project, I would restructure the team first. | If I had studied harder, I would have a better job today. | Had I accepted that offer, I'd be earning much more right now. | Were I to start over today, I would build something simpler from day one. | Were I to step into that role, I'd restructure the reporting lines immediately. | Were we to enter the European market, we would have to localise far more than we expect. | Were I to give one piece of advice, it would be to write things down sooner.
    **example_fail**: internship (bare word, no structure) | If I take it, I would work in tech (first conditional, not mixed) | I work in tech now (no conditional at all)
 
 2. **id**: 2
@@ -551,7 +551,7 @@
    **hidden_prompt**: "user uses 'Should you + base, ...'"
    **hint_pt**: "Should you require further details, I'm happy to elaborate."
    **hint_en**: "Should you require further details, I'm happy to elaborate."
-   **example_pass**: Should you require further details, I'm happy to elaborate. | If I hadn't moved to São Paulo, I wouldn't have met my partner today. | I'd be debt-free now if I had saved more in my twenties.
+   **example_pass**: Should you require further details, I'm happy to elaborate. | If I hadn't moved to São Paulo, I wouldn't have met my partner today. | I'd be debt-free now if I had saved more in my twenties. | Should you need additional context, I'm available all week. | Should the funding fall through, we have a backup plan ready. | Should the timeline shift, please let me know as early as possible. | Should circumstances change, we'd reopen the conversation immediately.
    **example_fail**: internship (bare word, no structure) | If I take it, I would work in tech (first conditional, not mixed) | I work in tech now (no conditional at all)
 
 3. **id**: 3
@@ -560,7 +560,7 @@
    **hidden_prompt**: "user uses another 'Were' or 'Should' inversion"
    **hint_pt**: "Were the budget approved, we could launch in Q3."
    **hint_en**: "Were the budget approved, we could launch in Q3."
-   **example_pass**: Were the budget approved, we could launch in Q3. | Had we bought that apartment, we'd own it outright today. | If I weren't so cautious, I would have invested earlier.
+   **example_pass**: Were the budget approved, we could launch in Q3. | Had we bought that apartment, we'd own it outright today. | If I weren't so cautious, I would have invested earlier. | Were I to relocate next year, I'd take the job in Berlin without hesitating. | Should the funding come through, we'd be ready to break ground by spring. | Were the project approved tomorrow, the team could begin within the same week. | Should the conditions shift, we'd revisit the entire plan from scratch.
    **example_fail**: internship (bare word, no structure) | If I take it, I would work in tech (first conditional, not mixed) | I work in tech now (no conditional at all)
 
 **Closing cue**: Charlotte closes with "Boardroom voice rehearsed." once obj_3 lands.
@@ -597,7 +597,7 @@
    **hidden_prompt**: "user uses 'Should you' or 'Were I to'"
    **hint_pt**: "Should the agenda allow, we'd be glad to attend."
    **hint_en**: "Should the agenda allow, we'd be glad to attend."
-   **example_pass**: Should the agenda allow, we'd be glad to attend. | If I had studied harder, I would have a better job today. | Had I accepted that offer, I'd be earning much more right now.
+   **example_pass**: Should the agenda allow, we'd be glad to attend. | If I had studied harder, I would have a better job today. | Had I accepted that offer, I'd be earning much more right now. | Were I to relocate next year, I'd take the job in Berlin without hesitating. | Should the funding come through, we'd be ready to break ground by spring. | Were the project approved tomorrow, the team could begin within the same week. | Should the conditions shift, we'd revisit the entire plan from scratch.
    **example_fail**: internship (bare word, no structure) | If I take it, I would work in tech (first conditional, not mixed) | I work in tech now (no conditional at all)
 
 2. **id**: 2
@@ -606,7 +606,7 @@
    **hidden_prompt**: "user adds another inverted conditional"
    **hint_pt**: "Were the meeting moved to Wednesday, we could send two representatives."
    **hint_en**: "Were the meeting moved to Wednesday, we could send two representatives."
-   **example_pass**: Were the meeting moved to Wednesday, we could send two representatives. | If I hadn't moved to São Paulo, I wouldn't have met my partner today. | I'd be debt-free now if I had saved more in my twenties.
+   **example_pass**: Were the meeting moved to Wednesday, we could send two representatives. | If I hadn't moved to São Paulo, I wouldn't have met my partner today. | I'd be debt-free now if I had saved more in my twenties. | Were I to relocate next year, I'd take the job in Berlin without hesitating. | Should the funding come through, we'd be ready to break ground by spring. | Were the project approved tomorrow, the team could begin within the same week. | Should the conditions shift, we'd revisit the entire plan from scratch.
    **example_fail**: internship (bare word, no structure) | If I take it, I would work in tech (first conditional, not mixed) | I work in tech now (no conditional at all)
 
 3. **id**: 3
@@ -615,7 +615,7 @@
    **hidden_prompt**: "user asks Charlotte for an alternative or detail"
    **hint_pt**: "Would Tuesday afternoon work?"
    **hint_en**: "Would Tuesday afternoon work?"
-   **example_pass**: Would Tuesday afternoon work? | Had we bought that apartment, we'd own it outright today. | If I weren't so cautious, I would have invested earlier.
+   **example_pass**: Would Tuesday afternoon work? | Had we bought that apartment, we'd own it outright today. | If I weren't so cautious, I would have invested earlier. | And you? | What about you? | How about yourself? | Same for you? | What's your take on it?
    **example_fail**: internship (bare word, no structure) | If I take it, I would work in tech (first conditional, not mixed) | I work in tech now (no conditional at all)
 
 **Closing cue**: Charlotte closes with "Correspondence drafted." once obj_3 lands.
@@ -695,7 +695,7 @@
    **hidden_prompt**: "user uses 'Suppose + clause' for hypothetical"
    **hint_pt**: "Suppose you had a free year — where would you go?"
    **hint_en**: "Suppose you had a free year — where would you go?"
-   **example_pass**: Suppose you had a free year — where would you go? | If I had studied harder, I would have a better job today. | Had I accepted that offer, I'd be earning much more right now.
+   **example_pass**: Suppose you had a free year — where would you go? | If I had studied harder, I would have a better job today. | Had I accepted that offer, I'd be earning much more right now. | And you? | What about you? | How about yourself? | Same for you? | What's your take on it?
    **example_fail**: internship (bare word, no structure) | If I take it, I would work in tech (first conditional, not mixed) | I work in tech now (no conditional at all)
 
 2. **id**: 2
@@ -704,7 +704,7 @@
    **hidden_prompt**: "user uses 'But for + noun, would have + past participle'"
    **hint_pt**: "But for that scholarship, I wouldn't have finished college."
    **hint_en**: "But for that scholarship, I wouldn't have finished college."
-   **example_pass**: But for that scholarship, I wouldn't have finished college. | If I hadn't moved to São Paulo, I wouldn't have met my partner today. | I'd be debt-free now if I had saved more in my twenties.
+   **example_pass**: But for that scholarship, I wouldn't have finished college. | If I hadn't moved to São Paulo, I wouldn't have met my partner today. | I'd be debt-free now if I had saved more in my twenties. | But for that one mentor, I wouldn't have finished the program at all. | But for a stroke of luck, we would have missed the entire opportunity. | But for her intervention, the contract would never have been signed. | But for the pandemic, that whole industry would still look very different.
    **example_fail**: internship (bare word, no structure) | If I take it, I would work in tech (first conditional, not mixed) | I work in tech now (no conditional at all)
 
 3. **id**: 3
@@ -713,7 +713,7 @@
    **hidden_prompt**: "user uses 'Unless' or 'Provided that' + clause"
    **hint_pt**: "Provided that the team agrees, we'll move forward Monday."
    **hint_en**: "Provided that the team agrees, we'll move forward Monday."
-   **example_pass**: Provided that the team agrees, we'll move forward Monday. | Had we bought that apartment, we'd own it outright today. | If I weren't so cautious, I would have invested earlier.
+   **example_pass**: Provided that the team agrees, we'll move forward Monday. | Had we bought that apartment, we'd own it outright today. | If I weren't so cautious, I would have invested earlier. | Provided we hit the milestones, the next tranche releases automatically. | Unless something changes drastically, we'll close the round by end of month. | As long as the data holds up, I'm comfortable scaling the experiment. | Unless legal flags something, we ship Friday.
    **example_fail**: internship (bare word, no structure) | If I take it, I would work in tech (first conditional, not mixed) | I work in tech now (no conditional at all)
 
 **Closing cue**: Charlotte closes with "Three scaffolds, no 'if'." once obj_3 lands.
@@ -750,7 +750,7 @@
    **hidden_prompt**: "user uses 'But for' or 'Without' or another non-if structure"
    **hint_pt**: "Without that constraint, I'd open a small bookstore."
    **hint_en**: "Without that constraint, I'd open a small bookstore."
-   **example_pass**: Without that constraint, I'd open a small bookstore. | If I had studied harder, I would have a better job today. | Had I accepted that offer, I'd be earning much more right now.
+   **example_pass**: Without that constraint, I'd open a small bookstore. | If I had studied harder, I would have a better job today. | Had I accepted that offer, I'd be earning much more right now. | Without that single conversation, I'd never have applied for the role at all. | But for the generosity of one mentor, the entire project would have fallen apart. | Without my sister's encouragement, I'd still be in the same dead-end job. | But for that chance meeting, the whole direction of my career would be different.
    **example_fail**: internship (bare word, no structure) | If I take it, I would work in tech (first conditional, not mixed) | I work in tech now (no conditional at all)
 
 2. **id**: 2
@@ -759,7 +759,7 @@
    **hidden_prompt**: "user uses 'Provided that' or 'Unless' or 'As long as'"
    **hint_pt**: "Provided that I could still travel, I'd happily live above the shop."
    **hint_en**: "Provided that I could still travel, I'd happily live above the shop."
-   **example_pass**: Provided that I could still travel, I'd happily live above the shop. | If I hadn't moved to São Paulo, I wouldn't have met my partner today. | I'd be debt-free now if I had saved more in my twenties.
+   **example_pass**: Provided that I could still travel, I'd happily live above the shop. | If I hadn't moved to São Paulo, I wouldn't have met my partner today. | I'd be debt-free now if I had saved more in my twenties. | Provided that I could still write every morning, I'd happily live anywhere quieter. | As long as the team holds together, the strategy will work itself out over time. | Unless something changes drastically, I'm staying put for at least another year. | Provided that the timing makes sense, I'd seriously consider relocating.
    **example_fail**: internship (bare word, no structure) | If I take it, I would work in tech (first conditional, not mixed) | I work in tech now (no conditional at all)
 
 3. **id**: 3
@@ -768,7 +768,7 @@
    **hidden_prompt**: "user asks Charlotte her own answer"
    **hint_pt**: "Suppose the same for you — what then?"
    **hint_en**: "Suppose the same for you — what then?"
-   **example_pass**: Suppose the same for you — what then? | Had we bought that apartment, we'd own it outright today. | If I weren't so cautious, I would have invested earlier.
+   **example_pass**: Suppose the same for you — what then? | Had we bought that apartment, we'd own it outright today. | If I weren't so cautious, I would have invested earlier. | And you? | What about you? | How about yourself? | Same for you? | What's your take on it?
    **example_fail**: internship (bare word, no structure) | If I take it, I would work in tech (first conditional, not mixed) | I work in tech now (no conditional at all)
 
 **Closing cue**: Charlotte closes with "Hypothetical range full." once obj_3 lands.

@@ -545,7 +545,7 @@
    **hidden_prompt**: "user uses 'did the same' to echo action"
    **hint_pt**: "My brother went vegetarian last year, and my sister-in-law did the same a few months later."
    **hint_en**: "My brother went vegetarian last year, and my sister-in-law did the same a few months later."
-   **example_pass**: My brother went vegetarian last year, and my sister-in-law did the same a few months later. | I will if you will. | She likes jazz, and so do I.
+   **example_pass**: My brother went vegetarian last year, and my sister-in-law did the same a few months later. | I will if you will. | She likes jazz, and so do I. | She quit smoking in January, and her partner did the same by March. | He moved abroad in his thirties, and his sister did the same a few years later. | I switched to the new system at the start of the year, and most of the team did the same within a month.
    **example_fail**: yes I do (bare response, no ellipsis context) | I will go to the party and I will dance and I will sing (full repetition, no ellipsis) | I love parties (off-topic, no ellipsis demonstrated)
 
 2. **id**: 2
@@ -554,7 +554,7 @@
    **hidden_prompt**: "user uses 'did so' formally"
    **hint_pt**: "The chief executive resigned in March. The chief financial officer did so two weeks later, citing personal reasons."
    **hint_en**: "The chief executive resigned in March. The chief financial officer did so two weeks later, citing personal reasons."
-   **example_pass**: The chief executive resigned in March. The chief financial officer did so two weeks later, citing personal reasons. | I haven't read it, but my sister has. | He said he'd come, but he didn't.
+   **example_pass**: The chief executive resigned in March. The chief financial officer did so two weeks later, citing personal reasons. | I haven't read it, but my sister has. | He said he'd come, but he didn't. | The first witness took the stand in the morning, and the second did so shortly after the lunch break. | She submitted her notice on Friday; two of her senior reports did so by the following Monday. | He retired in the autumn; his deputy did so just before the new year.
    **example_fail**: yes I do (bare response, no ellipsis context) | I will go to the party and I will dance and I will sing (full repetition, no ellipsis) | I love parties (off-topic, no ellipsis demonstrated)
 
 3. **id**: 3
@@ -563,7 +563,7 @@
    **hidden_prompt**: "user uses 'do likewise'"
    **hint_pt**: "If I were you, I'd switch to the new system this quarter — the early adopters have, and the rest will need to do likewise by year-end."
    **hint_en**: "If I were you, I'd switch to the new system this quarter — the early adopters have, and the rest will need to do likewise by year-end."
-   **example_pass**: If I were you, I'd switch to the new system this quarter — the early adopters have, and the rest will need to do likewise by year-end. | Do you want some? — Yes, please. | Some students passed; others didn't.
+   **example_pass**: If I were you, I'd switch to the new system this quarter — the early adopters have, and the rest will need to do likewise by year-end. | Do you want some? — Yes, please. | Some students passed; others didn't. | Half the industry has adopted the new standard. The rest will need to do likewise within eighteen months. | The senior team made the difficult call to take a pay cut, and we asked the rest of leadership to do likewise. | Several of our peers have publicly committed to the goal. We've quietly decided to do likewise.
    **example_fail**: yes I do (bare response, no ellipsis context) | I will go to the party and I will dance and I will sing (full repetition, no ellipsis) | I love parties (off-topic, no ellipsis demonstrated)
 
 **Closing cue**: Charlotte closes with "Do-substitutes, register-tuned." once obj_3 lands.
@@ -600,7 +600,7 @@
    **hidden_prompt**: "user describes their change, with possible echo"
    **hint_pt**: "I cut my caffeine in half last spring. My partner did the same a few weeks later — sympathy headaches, mostly."
    **hint_en**: "I cut my caffeine in half last spring. My partner did the same a few weeks later — sympathy headaches, mostly."
-   **example_pass**: I cut my caffeine in half last spring. My partner did the same a few weeks later — sympathy headaches, mostly. | I will if you will. | She likes jazz, and so do I.
+   **example_pass**: I cut my caffeine in half last spring. My partner did the same a few weeks later — sympathy headaches, mostly. | I will if you will. | She likes jazz, and so do I. | I stopped working on Sundays last quarter. Two of my colleagues did the same within a month. | I switched to longer-form deep work in the mornings. Half the team did the same once they saw it working. | I moved my standing call to Friday afternoons. My counterpart did the same the following week without us discussing it.
    **example_fail**: yes I do (bare response, no ellipsis context) | I will go to the party and I will dance and I will sing (full repetition, no ellipsis) | I love parties (off-topic, no ellipsis demonstrated)
 
 2. **id**: 2
@@ -609,7 +609,7 @@
    **hidden_prompt**: "user uses 'do so' or 'did so'"
    **hint_pt**: "Two of my friends had been thinking of doing so for months — my switch seemed to give them permission."
    **hint_en**: "Two of my friends had been thinking of doing so for months — my switch seemed to give them permission."
-   **example_pass**: Two of my friends had been thinking of doing so for months — my switch seemed to give them permission. | I haven't read it, but my sister has. | He said he'd come, but he didn't.
+   **example_pass**: Two of my friends had been thinking of doing so for months — my switch seemed to give them permission. | I haven't read it, but my sister has. | He said he'd come, but he didn't. | Her colleague had been considering doing so since the previous quarter; the announcement simply forced the timing. | He did so quietly, without making any public announcement; most people didn't notice for weeks. | She did so reluctantly, but the alternative was worse — and she knew it before anyone else in the room.
    **example_fail**: yes I do (bare response, no ellipsis context) | I will go to the party and I will dance and I will sing (full repetition, no ellipsis) | I love parties (off-topic, no ellipsis demonstrated)
 
 3. **id**: 3
@@ -618,7 +618,7 @@
    **hidden_prompt**: "user asks Charlotte if anyone copied her four-day week"
    **hint_pt**: "Who copied your four-day week?"
    **hint_en**: "Who copied your four-day week?"
-   **example_pass**: Who copied your four-day week? | Do you want some? — Yes, please. | Some students passed; others didn't.
+   **example_pass**: Who copied your four-day week? | Do you want some? — Yes, please. | Some students passed; others didn't. | And you? | What about you? | How about yourself? | Same for you? | What's your take on it?
    **example_fail**: yes I do (bare response, no ellipsis context) | I will go to the party and I will dance and I will sing (full repetition, no ellipsis) | I love parties (off-topic, no ellipsis demonstrated)
 
 **Closing cue**: Charlotte closes with "Echoes, registered correctly." once obj_3 lands.
@@ -700,7 +700,7 @@
    **hidden_prompt**: "user echoes positive with 'So + aux + I'"
    **hint_pt**: "Q: 'I work from home on Fridays.' A: 'So do I — it's the only day I get anything done.'"
    **hint_en**: "Q: 'I work from home on Fridays.' A: 'So do I — it's the only day I get anything done.'"
-   **example_pass**: Q: 'I work from home on Fridays.' A: 'So do I — it's the only day I get anything done.' | I will if you will. | She likes jazz, and so do I.
+   **example_pass**: Q: 'I work from home on Fridays.' A: 'So do I — it's the only day I get anything done.' | I will if you will. | She likes jazz, and so do I. | Q: 'I work from home on Fridays.' A: 'So do I — it's the only day I get any real work done.' | Q: 'I love that new podcast.' A: 'So do I — I've already recommended it to half the team.' | Q: 'I usually skip breakfast.' A: 'So do I, though my doctor keeps telling me to stop.' | Q: 'I really enjoyed the conference.' A: 'So did I — the second day in particular was excellent.'
    **example_fail**: yes I do (bare response, no ellipsis context) | I will go to the party and I will dance and I will sing (full repetition, no ellipsis) | I love parties (off-topic, no ellipsis demonstrated)
 
 2. **id**: 2
@@ -709,7 +709,7 @@
    **hidden_prompt**: "user echoes positive past with 'So did I / So was I'"
    **hint_pt**: "Q: 'I loved the trip to Lisbon.' A: 'So did I — it was the best vacation I've taken in years.'"
    **hint_en**: "Q: 'I loved the trip to Lisbon.' A: 'So did I — it was the best vacation I've taken in years.'"
-   **example_pass**: Q: 'I loved the trip to Lisbon.' A: 'So did I — it was the best vacation I've taken in years.' | I haven't read it, but my sister has. | He said he'd come, but he didn't.
+   **example_pass**: Q: 'I loved the trip to Lisbon.' A: 'So did I — it was the best vacation I've taken in years.' | I haven't read it, but my sister has. | He said he'd come, but he didn't. | Q: 'I loved the Lisbon trip.' A: 'So did I — best vacation I've taken in years.' | Q: 'I was completely shocked by the result.' A: 'So was I — nobody saw it coming.' | Q: 'I missed the last train.' A: 'So did I — we ended up sharing a taxi.' | Q: 'I was exhausted after that week.' A: 'So was I — I slept for nearly twelve hours on Saturday.'
    **example_fail**: yes I do (bare response, no ellipsis context) | I will go to the party and I will dance and I will sing (full repetition, no ellipsis) | I love parties (off-topic, no ellipsis demonstrated)
 
 3. **id**: 3
@@ -718,7 +718,7 @@
    **hidden_prompt**: "user echoes negative with 'Neither / Nor + aux + I'"
    **hint_pt**: "Q: 'I haven't been to that restaurant yet.' A: 'Neither have I — let's go this weekend.'"
    **hint_en**: "Q: 'I haven't been to that restaurant yet.' A: 'Neither have I — let's go this weekend.'"
-   **example_pass**: Q: 'I haven't been to that restaurant yet.' A: 'Neither have I — let's go this weekend.' | Do you want some? — Yes, please. | Some students passed; others didn't.
+   **example_pass**: Q: 'I haven't been to that restaurant yet.' A: 'Neither have I — let's go this weekend.' | Do you want some? — Yes, please. | Some students passed; others didn't. | Q: 'I don't usually drink coffee in the afternoon.' A: 'Nor do I, but today is a special case.' | Q: 'I haven't read his new book.' A: 'Neither have I, though everyone keeps recommending it.' | Q: 'I wouldn't move back to the city now.' A: 'Nor would I — we've finally settled into a good rhythm here.'
    **example_fail**: yes I do (bare response, no ellipsis context) | I will go to the party and I will dance and I will sing (full repetition, no ellipsis) | I love parties (off-topic, no ellipsis demonstrated)
 
 **Closing cue**: Charlotte closes with "Echoes match, registers tune. C2 ellipsis complete." once obj_3 lands.
@@ -755,7 +755,7 @@
    **hidden_prompt**: "user echoes with 'Neither do I'"
    **hint_pt**: "Neither do I — the first hour belongs to me, not to whoever wrote at 6 a.m."
    **hint_en**: "Neither do I — the first hour belongs to me, not to whoever wrote at 6 a.m."
-   **example_pass**: Neither do I — the first hour belongs to me, not to whoever wrote at 6 a.m. | I will if you will. | She likes jazz, and so do I.
+   **example_pass**: Neither do I — the first hour belongs to me, not to whoever wrote at 6 a.m. | I will if you will. | She likes jazz, and so do I. | Neither do I — the first hour belongs to me, not to whoever wrote at six in the morning. | Neither do I — I learned years ago that checking email before nine just rewires the whole day. | Neither do I — though I'll admit I cheat occasionally on Monday mornings. | Neither do I — and the best part is that nobody seems to notice or care.
    **example_fail**: yes I do (bare response, no ellipsis context) | I will go to the party and I will dance and I will sing (full repetition, no ellipsis) | I love parties (off-topic, no ellipsis demonstrated)
 
 2. **id**: 2
@@ -764,7 +764,7 @@
    **hidden_prompt**: "user uses 'So do I' for another preference"
    **hint_pt**: "I always read for twenty minutes before bed — and so do I, even when the day was a wreck."
    **hint_en**: "I always read for twenty minutes before bed — and so do I, even when the day was a wreck."
-   **example_pass**: I always read for twenty minutes before bed — and so do I, even when the day was a wreck. | I haven't read it, but my sister has. | He said he'd come, but he didn't.
+   **example_pass**: I always read for twenty minutes before bed — and so do I, even when the day was a wreck. | I haven't read it, but my sister has. | He said he'd come, but he didn't. | I always read for twenty minutes before bed — and so do I, even on the nights I'm exhausted. | I keep a single notebook for everything — so do I, and I'm convinced it's saved me hours of looking for things. | I take the long way home most evenings — so do I, even when I'm running late. | I write the day's plan on paper before I touch the laptop — so do I, and the habit has changed how the morning feels.
    **example_fail**: yes I do (bare response, no ellipsis context) | I will go to the party and I will dance and I will sing (full repetition, no ellipsis) | I love parties (off-topic, no ellipsis demonstrated)
 
 3. **id**: 3
@@ -773,7 +773,7 @@
    **hidden_prompt**: "user asks Charlotte for one more habit"
    **hint_pt**: "What else do you protect?"
    **hint_en**: "What else do you protect?"
-   **example_pass**: What else do you protect? | Do you want some? — Yes, please. | Some students passed; others didn't.
+   **example_pass**: What else do you protect? | Do you want some? — Yes, please. | Some students passed; others didn't. | And you? | What about you? | How about yourself? | Same for you? | What's your take on it?
    **example_fail**: yes I do (bare response, no ellipsis context) | I will go to the party and I will dance and I will sing (full repetition, no ellipsis) | I love parties (off-topic, no ellipsis demonstrated)
 
 **Closing cue**: Charlotte closes with "Habits matched, echoes tuned." once obj_3 lands.

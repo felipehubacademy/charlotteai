@@ -552,7 +552,7 @@
    **hidden_prompt**: "user uses 'X talks down to + person'"
    **hint_pt**: "He doesn't realise he talks down to people who haven't been in the industry as long as he has — it's a blind spot."
    **hint_en**: "He doesn't realise he talks down to people who haven't been in the industry as long as he has — it's a blind spot."
-   **example_pass**: He doesn't realise he talks down to people who haven't been in the industry as long as he has — it's a blind spot. | I need to come up with a better plan. | We should put off the meeting until next week.
+   **example_pass**: He doesn't realise he talks down to people who haven't been in the industry as long as he has — it's a blind spot. | I need to come up with a better plan. | We should put off the meeting until next week. | He doesn't realise he talks down to people who haven't been in the industry as long as he has. | Nobody enjoys being talked down to by someone half their experience. | She has a habit of talking down to junior colleagues, even when she doesn't mean to. | He talks down to almost everyone outside his core circle, which limits him in ways he doesn't see.
    **example_fail**: give (bare verb, no phrasal) | I quit smoking (bare verb, no phrasal verb pattern) | I like coffee (off-topic, no phrasal verb)
 
 2. **id**: 2
@@ -561,7 +561,7 @@
    **hidden_prompt**: "user uses 'X wore + person + down'"
    **hint_pt**: "Three years of negotiating with that supplier wore me down — I lost the will to fight even small line items."
    **hint_en**: "Three years of negotiating with that supplier wore me down — I lost the will to fight even small line items."
-   **example_pass**: Three years of negotiating with that supplier wore me down — I lost the will to fight even small line items. | She finally got over her fear of public speaking. | I can't put up with this noise anymore.
+   **example_pass**: Three years of negotiating with that supplier wore me down — I lost the will to fight even small line items. | She finally got over her fear of public speaking. | I can't put up with this noise anymore. | Three years of negotiating with that supplier wore me down in ways I didn't fully notice at the time. | The constant criticism in those meetings wore down even the most resilient people on the team. | Working with such an indecisive client gradually wore down our project lead. | Two consecutive launches wore the team down to the point where everyone needed time off.
    **example_fail**: give (bare verb, no phrasal) | I quit smoking (bare verb, no phrasal verb pattern) | I like coffee (off-topic, no phrasal verb)
 
 3. **id**: 3
@@ -570,7 +570,7 @@
    **hidden_prompt**: "user uses 'shake off' or 'bear out'"
    **hint_pt**: "I couldn't shake off the feeling that the project would fail — and three months later, the numbers bore it out."
    **hint_en**: "I couldn't shake off the feeling that the project would fail — and three months later, the numbers bore it out."
-   **example_pass**: I couldn't shake off the feeling that the project would fail — and three months later, the numbers bore it out. | Let's get down to business and stop wasting time. | He turned down the offer without hesitation.
+   **example_pass**: I couldn't shake off the feeling that the project would fail — and three months later, the numbers bore it out. | Let's get down to business and stop wasting time. | He turned down the offer without hesitation. | It took me a long time to shake off the disappointment of that interview, even after I found a better role. | The data eventually bore out exactly what the senior engineer had been quietly saying for months. | She couldn't shake off the suspicion that something was wrong, and the audit later bore her out.
    **example_fail**: give (bare verb, no phrasal) | I quit smoking (bare verb, no phrasal verb pattern) | I like coffee (off-topic, no phrasal verb)
 
 **Closing cue**: Charlotte closes with "Interpersonal phrasals, sharp." once obj_3 lands.
@@ -607,7 +607,7 @@
    **hidden_prompt**: "user uses 'talk down to' to validate"
    **hint_pt**: "People who talk down to others rarely see it because the people they patronise don't push back — silence reads to them as agreement."
    **hint_en**: "People who talk down to others rarely see it because the people they patronise don't push back — silence reads to them as agreement."
-   **example_pass**: People who talk down to others rarely see it because the people they patronise don't push back — silence reads to them as agreement. | I need to come up with a better plan. | We should put off the meeting until next week.
+   **example_pass**: People who talk down to others rarely see it because the people they patronise don't push back — silence reads to them as agreement. | I need to come up with a better plan. | We should put off the meeting until next week. | People who talk down to others rarely see it — the people they patronise don't push back, so silence reads as agreement. | Talking down to people is rarely deliberate — it's almost always a blind spot rather than a strategy. | He talks down to nearly everyone outside his core circle, and the cost is invisible to him but visible to everyone else. | Once you notice yourself being talked down to, the relationship rarely recovers — even if the other person never realises.
    **example_fail**: give (bare verb, no phrasal) | I quit smoking (bare verb, no phrasal verb pattern) | I like coffee (off-topic, no phrasal verb)
 
 2. **id**: 2
@@ -616,7 +616,7 @@
    **hidden_prompt**: "user uses 'wear/wore down' for cumulative effect"
    **hint_pt**: "Five years of that kind of behaviour wears you down without you realising it — the small daily costs add up."
    **hint_en**: "Five years of that kind of behaviour wears you down without you realising it — the small daily costs add up."
-   **example_pass**: Five years of that kind of behaviour wears you down without you realising it — the small daily costs add up. | She finally got over her fear of public speaking. | I can't put up with this noise anymore.
+   **example_pass**: Five years of that kind of behaviour wears you down without you realising it — the small daily costs add up. | She finally got over her fear of public speaking. | I can't put up with this noise anymore. | Five years of that kind of behaviour wears you down without you realising it — the small daily costs add up quietly. | Constant micro-criticism wore me down over the course of a single project; I left the company a few months after it ended. | Working with an indecisive client gradually wore down our project lead until she stopped pushing back at all. | The cumulative effect of those weekly meetings wore the team down in ways nobody acknowledged until people started leaving.
    **example_fail**: give (bare verb, no phrasal) | I quit smoking (bare verb, no phrasal verb pattern) | I like coffee (off-topic, no phrasal verb)
 
 3. **id**: 3
@@ -625,7 +625,7 @@
    **hidden_prompt**: "user asks Charlotte if she shook it off after leaving"
    **hint_pt**: "Have you shaken it off, now that you're out?"
    **hint_en**: "Have you shaken it off, now that you're out?"
-   **example_pass**: Have you shaken it off, now that you're out? | Let's get down to business and stop wasting time. | He turned down the offer without hesitation.
+   **example_pass**: Have you shaken it off, now that you're out? | Let's get down to business and stop wasting time. | He turned down the offer without hesitation. | And you? | What about you? | How about yourself? | Same for you? | What's your take on it?
    **example_fail**: give (bare verb, no phrasal) | I quit smoking (bare verb, no phrasal verb pattern) | I like coffee (off-topic, no phrasal verb)
 
 **Closing cue**: Charlotte closes with "Hard relationships, phrasally named." once obj_3 lands.

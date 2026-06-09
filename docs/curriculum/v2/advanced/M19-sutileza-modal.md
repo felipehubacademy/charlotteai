@@ -240,7 +240,7 @@
    **hidden_prompt**: "user uses 'X might well + base'"
    **hint_pt**: "Given how the conversation has been going, the negotiation might well end this week."
    **hint_en**: "Given how the conversation has been going, the negotiation might well end this week."
-   **example_pass**: Given how the conversation has been going, the negotiation might well end this week. | He must have forgotten about the meeting. | She might have been delayed by traffic.
+   **example_pass**: Given how the conversation has been going, the negotiation might well end this week. | He must have forgotten about the meeting. | She might have been delayed by traffic. | Given how the negotiation has been progressing, it might well close before the weekend. | She might well decide to take the offer, despite all her hesitation up to now. | The team might well finish ahead of schedule if the next phase goes as smoothly as the first. | He might well end up as the next CFO, even though nobody is talking about it openly yet.
    **example_fail**: must (bare modal, no nuance) | He did it (no modal at all) | I'm tired (off-topic, no speculative modal)
 
 2. **id**: 2
@@ -249,7 +249,7 @@
    **hidden_prompt**: "user uses 'X could well + base'"
    **hint_pt**: "If oil prices stay high for another quarter, inflation could well force another rate hike before year-end."
    **hint_en**: "If oil prices stay high for another quarter, inflation could well force another rate hike before year-end."
-   **example_pass**: If oil prices stay high for another quarter, inflation could well force another rate hike before year-end. | They could have been trying to reach us. | It can't have been easy for them.
+   **example_pass**: If oil prices stay high for another quarter, inflation could well force another rate hike before year-end. | They could have been trying to reach us. | It can't have been easy for them. | If oil prices stay this high for another quarter, inflation could well force another rate hike before year-end. | This new product could well be the one that finally breaks through internationally. | She could well end up running the entire division within two or three years. | The startup could well be acquired before it even launches its second product.
    **example_fail**: must (bare modal, no nuance) | He did it (no modal at all) | I'm tired (off-topic, no speculative modal)
 
 3. **id**: 3
@@ -258,7 +258,7 @@
    **hidden_prompt**: "user uses 'X may well + base' formally"
    **hint_pt**: "The committee may well reject the proposal — the political winds have shifted since the original submission."
    **hint_en**: "The committee may well reject the proposal — the political winds have shifted since the original submission."
-   **example_pass**: The committee may well reject the proposal — the political winds have shifted since the original submission. | He may well have misunderstood the instructions. | She might possibly have changed her mind.
+   **example_pass**: The committee may well reject the proposal — the political winds have shifted since the original submission. | He may well have misunderstood the instructions. | She might possibly have changed her mind. | The court may well rule in favour of the plaintiff, given the precedent set last year. | The board may well take a more conservative position once they have the audit findings in hand. | The regulator may well request additional disclosures before approving the merger.
    **example_fail**: must (bare modal, no nuance) | He did it (no modal at all) | I'm tired (off-topic, no speculative modal)
 
 **Closing cue**: Charlotte closes with "Hedged probabilities, calibrated." once obj_3 lands.
@@ -295,7 +295,7 @@
    **hidden_prompt**: "user uses 'might well / could well / may well'"
    **hint_pt**: "It could well be a coordinated signal that input costs have finally moved beyond what any of them can absorb."
    **hint_en**: "It could well be a coordinated signal that input costs have finally moved beyond what any of them can absorb."
-   **example_pass**: It could well be a coordinated signal that input costs have finally moved beyond what any of them can absorb. | He must have forgotten about the meeting. | She might have been delayed by traffic.
+   **example_pass**: It could well be a coordinated signal that input costs have finally moved beyond what any of them can absorb. | He must have forgotten about the meeting. | She might have been delayed by traffic. | She might well decide to take the offer, despite all her hesitation up to this point. | The committee may well reject the proposal — the political winds have shifted since the original submission. | Given the trajectory, the company might well announce a pivot before the end of the quarter.
    **example_fail**: must (bare modal, no nuance) | He did it (no modal at all) | I'm tired (off-topic, no speculative modal)
 
 2. **id**: 2
@@ -304,7 +304,7 @@
    **hidden_prompt**: "user uses another well-modal"
    **hint_pt**: "And if that's the case, we may well find ourselves under pressure to follow within six weeks — or risk looking like we don't share their pricing power."
    **hint_en**: "And if that's the case, we may well find ourselves under pressure to follow within six weeks — or risk looking like we don't share their pricing power."
-   **example_pass**: And if that's the case, we may well find ourselves under pressure to follow within six weeks — or risk looking like we don't share their pricing power. | They could have been trying to reach us. | It can't have been easy for them.
+   **example_pass**: And if that's the case, we may well find ourselves under pressure to follow within six weeks — or risk looking like we don't share their pricing power. | They could have been trying to reach us. | It can't have been easy for them. | We could well end up with a much larger problem on our hands by mid-quarter if nobody acts now. | She may well outlast all of us at this company — she's been here longer than any single product line. | He might well be the right person for the role, even if his profile doesn't match the standard template.
    **example_fail**: must (bare modal, no nuance) | He did it (no modal at all) | I'm tired (off-topic, no speculative modal)
 
 3. **id**: 3
@@ -313,7 +313,7 @@
    **hidden_prompt**: "user asks Charlotte if her team has discussed it"
    **hint_pt**: "Has your team modelled the move yet?"
    **hint_en**: "Has your team modelled the move yet?"
-   **example_pass**: Has your team modelled the move yet? | He may well have misunderstood the instructions. | She might possibly have changed her mind.
+   **example_pass**: Has your team modelled the move yet? | He may well have misunderstood the instructions. | She might possibly have changed her mind. | And you? | What about you? | How about yourself? | Same for you? | What's your take on it?
    **example_fail**: must (bare modal, no nuance) | He did it (no modal at all) | I'm tired (off-topic, no speculative modal)
 
 **Closing cue**: Charlotte closes with "Probabilities, evenly hedged." once obj_3 lands.
@@ -545,7 +545,7 @@
    **hidden_prompt**: "user uses 'X is/was bound to + base'"
    **hint_pt**: "With the surplus they've accumulated, the company is bound to announce a dividend by year-end."
    **hint_en**: "With the surplus they've accumulated, the company is bound to announce a dividend by year-end."
-   **example_pass**: With the surplus they've accumulated, the company is bound to announce a dividend by year-end. | He must have forgotten about the meeting. | She might have been delayed by traffic.
+   **example_pass**: With the surplus they've accumulated, the company is bound to announce a dividend by year-end. | He must have forgotten about the meeting. | She might have been delayed by traffic. | Given the data we've already seen, the regulator is bound to require additional disclosures. | She was bound to take that job offer — the alternative would have meant moving back home. | The market is bound to react sharply to the announcement, regardless of how it's framed.
    **example_fail**: must (bare modal, no nuance) | He did it (no modal at all) | I'm tired (off-topic, no speculative modal)
 
 2. **id**: 2
@@ -554,7 +554,7 @@
    **hidden_prompt**: "user uses 'X was/were supposed to + base'"
    **hint_pt**: "We were supposed to finalise the design last Friday, but the client added two new requirements at the eleventh hour."
    **hint_en**: "We were supposed to finalise the design last Friday, but the client added two new requirements at the eleventh hour."
-   **example_pass**: We were supposed to finalise the design last Friday, but the client added two new requirements at the eleventh hour. | They could have been trying to reach us. | It can't have been easy for them.
+   **example_pass**: We were supposed to finalise the design last Friday, but the client added two new requirements at the eleventh hour. | They could have been trying to reach us. | It can't have been easy for them. | We were supposed to finalise the design last Friday, but the client added two new requirements at the last moment. | She was supposed to be on vacation this week, but she's been answering emails from the airport. | The launch was supposed to happen in May, but it's been pushed back to August twice already. | He was supposed to send the contract on Monday — it's now Thursday and there's still no sign of it.
    **example_fail**: must (bare modal, no nuance) | He did it (no modal at all) | I'm tired (off-topic, no speculative modal)
 
 3. **id**: 3
@@ -563,7 +563,7 @@
    **hidden_prompt**: "user uses 'X is/are (un)likely to + base'"
    **hint_pt**: "Given the current market sentiment, the regulator is unlikely to approve the merger before the spring at the earliest."
    **hint_en**: "Given the current market sentiment, the regulator is unlikely to approve the merger before the spring at the earliest."
-   **example_pass**: Given the current market sentiment, the regulator is unlikely to approve the merger before the spring at the earliest. | He may well have misunderstood the instructions. | She might possibly have changed her mind.
+   **example_pass**: Given the current market sentiment, the regulator is unlikely to approve the merger before the spring at the earliest. | He may well have misunderstood the instructions. | She might possibly have changed her mind. | Given the current market sentiment, the regulator is unlikely to approve the merger before spring at the earliest. | The team is likely to push back if we don't involve them in the decision from the beginning. | She's unlikely to accept the role unless the compensation package is substantially improved. | The legal review is likely to take at least another two weeks, possibly longer.
    **example_fail**: must (bare modal, no nuance) | He did it (no modal at all) | I'm tired (off-topic, no speculative modal)
 
 **Closing cue**: Charlotte closes with "Quasi-modals, three expectations." once obj_3 lands.
@@ -600,7 +600,7 @@
    **hidden_prompt**: "user uses 'is likely to / is unlikely to'"
    **hint_pt**: "If three weeks have already slipped, March is unlikely to hold — June is starting to look like the realistic baseline."
    **hint_en**: "If three weeks have already slipped, March is unlikely to hold — June is starting to look like the realistic baseline."
-   **example_pass**: If three weeks have already slipped, March is unlikely to hold — June is starting to look like the realistic baseline. | He must have forgotten about the meeting. | She might have been delayed by traffic.
+   **example_pass**: If three weeks have already slipped, March is unlikely to hold — June is starting to look like the realistic baseline. | He must have forgotten about the meeting. | She might have been delayed by traffic. | Given the leading indicators, adoption is likely to plateau before the end of the year. | The fundraise is unlikely to close at the original valuation, given the broader market conditions. | She's likely to leave by the end of the quarter unless something changes in how the team is run.
    **example_fail**: must (bare modal, no nuance) | He did it (no modal at all) | I'm tired (off-topic, no speculative modal)
 
 2. **id**: 2
@@ -609,7 +609,7 @@
    **hidden_prompt**: "user uses 'is/are bound to'"
    **hint_pt**: "And once a date slips publicly, the next one is bound to be questioned — credibility is the hidden cost of these delays."
    **hint_en**: "And once a date slips publicly, the next one is bound to be questioned — credibility is the hidden cost of these delays."
-   **example_pass**: And once a date slips publicly, the next one is bound to be questioned — credibility is the hidden cost of these delays. | They could have been trying to reach us. | It can't have been easy for them.
+   **example_pass**: And once a date slips publicly, the next one is bound to be questioned — credibility is the hidden cost of these delays. | They could have been trying to reach us. | It can't have been easy for them. | With the surplus they've accumulated, the company is bound to announce a dividend by year-end. | Given the data we've already seen, the regulator is bound to require additional disclosures. | She was bound to take that job offer — the alternative would have meant moving back home. | The market is bound to react sharply to the announcement, regardless of how it's framed.
    **example_fail**: must (bare modal, no nuance) | He did it (no modal at all) | I'm tired (off-topic, no speculative modal)
 
 3. **id**: 3
@@ -618,7 +618,7 @@
    **hidden_prompt**: "user asks Charlotte what was supposed to be ready by March"
    **hint_pt**: "What specifically was supposed to be ready?"
    **hint_en**: "What specifically was supposed to be ready?"
-   **example_pass**: What specifically was supposed to be ready? | He may well have misunderstood the instructions. | She might possibly have changed her mind.
+   **example_pass**: What specifically was supposed to be ready? | He may well have misunderstood the instructions. | She might possibly have changed her mind. | And you? | What about you? | How about yourself? | Same for you? | What's your take on it?
    **example_fail**: must (bare modal, no nuance) | He did it (no modal at all) | I'm tired (off-topic, no speculative modal)
 
 **Closing cue**: Charlotte closes with "Timing, modally weighed." once obj_3 lands.

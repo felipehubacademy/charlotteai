@@ -90,7 +90,7 @@ This module does not introduce new chunks. Instead, it asks the student to deplo
    **hidden_prompt**: "user opens with 'It was + element + that...'"
    **hint_pt**: "It was a Sunday in late August that I finally decided to apply — three months later than I should have, and only because my sister sent me a single text I couldn't ignore."
    **hint_en**: "It was a Sunday in late August that I finally decided to apply — three months later than I should have, and only because my sister sent me a single text I couldn't ignore."
-   **example_pass**: It was a Sunday in late August that I finally decided to apply — three months later than I should have, and only because my sister sent me a single text I couldn't ignore. | Had I known then what I know now, I'd have approached it differently. | It is precisely this nuance that makes the issue so complex.
+   **example_pass**: It was a Sunday in late August that I finally decided to apply — three months later than I should have, and only because my sister sent me a single text I couldn't ignore. | Had I known then what I know now, I'd have approached it differently. | It is precisely this nuance that makes the issue so complex. | It was on a quiet Sunday in late August that I finally decided to apply — three months later than I should have, and only because my sister sent me a single text I couldn't ignore. | It was a single conversation in a tiny café in Porto that quietly reshaped the next decade of my life. | It was at the most uneventful all-hands meeting of the year that the founder, almost casually, announced his decision to step down. | It was on the train back from the conference that I finally understood what the keynote had actually been about.
    **example_fail**: yes (bare reply, no synthesis) | I agree with that (simple statement, no integrated C1-C2 structures) | The food was good (off-topic, no advanced synthesis)
 
 2. **id**: 2
@@ -99,7 +99,7 @@ This module does not introduce new chunks. Instead, it asks the student to deplo
    **hidden_prompt**: "user uses participle clause + filler"
    **hint_pt**: "Sitting on the floor of my living room, I read the requirements three times, hoping — you know — that something would tell me whether I was qualified or just stubborn."
    **hint_en**: "Sitting on the floor of my living room, I read the requirements three times, hoping — you know — that something would tell me whether I was qualified or just stubborn."
-   **example_pass**: Sitting on the floor of my living room, I read the requirements three times, hoping — you know — that something would tell me whether I was qualified or just stubborn. | Never have I encountered a more compelling argument. | Were we to adopt this approach, the results could be transformative.
+   **example_pass**: Sitting on the floor of my living room, I read the requirements three times, hoping — you know — that something would tell me whether I was qualified or just stubborn. | Never have I encountered a more compelling argument. | Were we to adopt this approach, the results could be transformative. | Walking through the empty office at the end of the year, I realised — sort of — that I'd been more attached to the place than I'd ever admitted out loud. | Reading her resignation letter on the train, I felt — honestly — a kind of relief I wasn't expecting to feel. | Standing on the balcony, watching the city wake up, I knew — in some quiet way — that the next year was going to be very different from the last.
    **example_fail**: yes (bare reply, no synthesis) | I agree with that (simple statement, no integrated C1-C2 structures) | The food was good (off-topic, no advanced synthesis)
 
 3. **id**: 3
@@ -108,7 +108,7 @@ This module does not introduce new chunks. Instead, it asks the student to deplo
    **hidden_prompt**: "user closes with sentence fragment"
    **hint_pt**: "I clicked submit before I could change my mind. Done. Whatever happened next, it would not be the version of me that had spent the year not trying."
    **hint_en**: "I clicked submit before I could change my mind. Done. Whatever happened next, it would not be the version of me that had spent the year not trying."
-   **example_pass**: I clicked submit before I could change my mind. Done. Whatever happened next, it would not be the version of me that had spent the year not trying. | What truly sets this apart is the depth of its analysis. | Having considered all angles, I remain convinced of my position.
+   **example_pass**: I clicked submit before I could change my mind. Done. Whatever happened next, it would not be the version of me that had spent the year not trying. | What truly sets this apart is the depth of its analysis. | Having considered all angles, I remain convinced of my position. | I sent the email. Two minutes later, the reply. Then everything moved very fast. | I packed the apartment in a single weekend. Three boxes. One car. A new city by Tuesday. | I left the meeting without saying a word. Walked the long way home. Then made the call I'd been avoiding for months.
    **example_fail**: yes (bare reply, no synthesis) | I agree with that (simple statement, no integrated C1-C2 structures) | The food was good (off-topic, no advanced synthesis)
 
 **Closing cue**: Charlotte closes with "Narrative threaded with C2 moves." once obj_3 lands.
@@ -145,7 +145,7 @@ This module does not introduce new chunks. Instead, it asks the student to deplo
    **hidden_prompt**: "user uses participle clause + cleft"
    **hint_pt**: "Opening the email, I knew before I'd read a word. It was the second sentence that confirmed it — three lines down, between the formalities and the contract details."
    **hint_en**: "Opening the email, I knew before I'd read a word. It was the second sentence that confirmed it — three lines down, between the formalities and the contract details."
-   **example_pass**: Opening the email, I knew before I'd read a word. It was the second sentence that confirmed it — three lines down, between the formalities and the contract details. | Had I known then what I know now, I'd have approached it differently. | It is precisely this nuance that makes the issue so complex.
+   **example_pass**: Opening the email, I knew before I'd read a word. It was the second sentence that confirmed it — three lines down, between the formalities and the contract details. | Had I known then what I know now, I'd have approached it differently. | It is precisely this nuance that makes the issue so complex. | Walking into the meeting, I sensed the shift immediately. It was the way the room went quiet that told me what was about to happen. | Reading her message on the train, I already knew the answer. It was the closing line, written so casually, that left no room for doubt. | Sitting across from him at lunch, I understood before he spoke. It was the small pause before each sentence that gave the news away.
    **example_fail**: yes (bare reply, no synthesis) | I agree with that (simple statement, no integrated C1-C2 structures) | The food was good (off-topic, no advanced synthesis)
 
 2. **id**: 2
@@ -154,7 +154,7 @@ This module does not introduce new chunks. Instead, it asks the student to deplo
    **hidden_prompt**: "user uses 'What surprised me was...'"
    **hint_pt**: "What surprised me was how immediately my body knew before my mind had read the words — shoulders dropping, breath finally arriving without being asked."
    **hint_en**: "What surprised me was how immediately my body knew before my mind had read the words — shoulders dropping, breath finally arriving without being asked."
-   **example_pass**: What surprised me was how immediately my body knew before my mind had read the words — shoulders dropping, breath finally arriving without being asked. | Never have I encountered a more compelling argument. | Were we to adopt this approach, the results could be transformative.
+   **example_pass**: What surprised me was how immediately my body knew before my mind had read the words — shoulders dropping, breath finally arriving without being asked. | Never have I encountered a more compelling argument. | Were we to adopt this approach, the results could be transformative. | What surprised me was how quickly the whole room shifted opinion. | What struck me most was how little anyone questioned the plan. | What caught me off guard was how willing she was to admit she'd been wrong. | What stayed with me was the silence after he asked the question.
    **example_fail**: yes (bare reply, no synthesis) | I agree with that (simple statement, no integrated C1-C2 structures) | The food was good (off-topic, no advanced synthesis)
 
 3. **id**: 3
@@ -163,7 +163,7 @@ This module does not introduce new chunks. Instead, it asks the student to deplo
    **hidden_prompt**: "user asks Charlotte for her version of the moment"
    **hint_pt**: "What about you — what was the email that changed your year?"
    **hint_en**: "What about you — what was the email that changed your year?"
-   **example_pass**: What about you — what was the email that changed your year? | What truly sets this apart is the depth of its analysis. | Having considered all angles, I remain convinced of my position.
+   **example_pass**: What about you — what was the email that changed your year? | What truly sets this apart is the depth of its analysis. | Having considered all angles, I remain convinced of my position. | And you? | What about you? | How about yourself? | Same for you? | What's your take on it?
    **example_fail**: yes (bare reply, no synthesis) | I agree with that (simple statement, no integrated C1-C2 structures) | The food was good (off-topic, no advanced synthesis)
 
 **Closing cue**: Charlotte closes with "Narrative continues, mastery intact." once obj_3 lands.
@@ -549,7 +549,7 @@ This module does not introduce new chunks. Instead, it asks the student to deplo
    **hidden_prompt**: "user uses contractions and informal register"
    **hint_pt**: "Yeah, I've been swamped — barely had time to eat properly. You been busy too, or just chilling this week?"
    **hint_en**: "Yeah, I've been swamped — barely had time to eat properly. You been busy too, or just chilling this week?"
-   **example_pass**: Yeah, I've been swamped — barely had time to eat properly. You been busy too, or just chilling this week? | Had I known then what I know now, I'd have approached it differently. | It is precisely this nuance that makes the issue so complex.
+   **example_pass**: Yeah, I've been swamped — barely had time to eat properly. You been busy too, or just chilling this week? | Had I known then what I know now, I'd have approached it differently. | It is precisely this nuance that makes the issue so complex. | And you? | What about you? | How about yourself? | Same for you? | What's your take on it?
    **example_fail**: yes (bare reply, no synthesis) | I agree with that (simple statement, no integrated C1-C2 structures) | The food was good (off-topic, no advanced synthesis)
 
 2. **id**: 2
@@ -558,7 +558,7 @@ This module does not introduce new chunks. Instead, it asks the student to deplo
    **hidden_prompt**: "user adds tag and casual filler"
    **hint_pt**: "We're still doing the thing on Saturday, right? I want to make sure I haven't double-booked myself."
    **hint_en**: "We're still doing the thing on Saturday, right? I want to make sure I haven't double-booked myself."
-   **example_pass**: We're still doing the thing on Saturday, right? I want to make sure I haven't double-booked myself. | Never have I encountered a more compelling argument. | Were we to adopt this approach, the results could be transformative.
+   **example_pass**: We're still doing the thing on Saturday, right? I want to make sure I haven't double-booked myself. | Never have I encountered a more compelling argument. | Were we to adopt this approach, the results could be transformative. | You're coming to the dinner on Friday, aren't you? I'd love to actually catch up properly. | We're meeting at noon, right? I want to leave enough time to grab coffee on the way. | You've already booked the hotel, haven't you? Or did you want me to handle that?
    **example_fail**: yes (bare reply, no synthesis) | I agree with that (simple statement, no integrated C1-C2 structures) | The food was good (off-topic, no advanced synthesis)
 
 3. **id**: 3
@@ -567,7 +567,7 @@ This module does not introduce new chunks. Instead, it asks the student to deplo
    **hidden_prompt**: "user closes casually with filler"
    **hint_pt**: "Cool. I'll, you know, text you Friday afternoon — make sure we're still on."
    **hint_en**: "Cool. I'll, you know, text you Friday afternoon — make sure we're still on."
-   **example_pass**: Cool. I'll, you know, text you Friday afternoon — make sure we're still on. | What truly sets this apart is the depth of its analysis. | Having considered all angles, I remain convinced of my position.
+   **example_pass**: Cool. I'll, you know, text you Friday afternoon — make sure we're still on. | What truly sets this apart is the depth of its analysis. | Having considered all angles, I remain convinced of my position. | Alright, sounds good. I'll, like, drop you a note tomorrow once I've thought about it more. | Yeah, no, that works. I'll, you know, send something over by the end of the week and we'll go from there. | Cool, cool. Talk soon — I'll, you know, ping you when I've heard back from the team.
    **example_fail**: yes (bare reply, no synthesis) | I agree with that (simple statement, no integrated C1-C2 structures) | The food was good (off-topic, no advanced synthesis)
 
 **Closing cue**: Charlotte closes with "Casual register, fully native." once obj_3 lands.
@@ -604,7 +604,7 @@ This module does not introduce new chunks. Instead, it asks the student to deplo
    **hidden_prompt**: "user replies casually with contractions and filler"
    **hint_pt**: "Yeah, I know — it's been months, hasn't it? I've been buried under this project, honestly."
    **hint_en**: "Yeah, I know — it's been months, hasn't it? I've been buried under this project, honestly."
-   **example_pass**: Yeah, I know — it's been months, hasn't it? I've been buried under this project, honestly. | Had I known then what I know now, I'd have approached it differently. | It is precisely this nuance that makes the issue so complex.
+   **example_pass**: Yeah, I know — it's been months, hasn't it? I've been buried under this project, honestly. | Had I known then what I know now, I'd have approached it differently. | It is precisely this nuance that makes the issue so complex. | Yeah, no, I'm okay. Tired, but okay. You? How's that whole thing with the new boss going? | Honestly, it's been a weird month — lots of small fires, nothing huge, but the weight is starting to show. | Yeah, sorry, I know I've been quiet. Things have just been kind of relentless on my end since the new launch.
    **example_fail**: yes (bare reply, no synthesis) | I agree with that (simple statement, no integrated C1-C2 structures) | The food was good (off-topic, no advanced synthesis)
 
 2. **id**: 2
@@ -613,7 +613,7 @@ This module does not introduce new chunks. Instead, it asks the student to deplo
    **hidden_prompt**: "user asks casual reciprocal question"
    **hint_pt**: "How's stuff with you? Still doing the freelance thing, or did the full-time offer come through?"
    **hint_en**: "How's stuff with you? Still doing the freelance thing, or did the full-time offer come through?"
-   **example_pass**: How's stuff with you? Still doing the freelance thing, or did the full-time offer come through? | Never have I encountered a more compelling argument. | Were we to adopt this approach, the results could be transformative.
+   **example_pass**: How's stuff with you? Still doing the freelance thing, or did the full-time offer come through? | Never have I encountered a more compelling argument. | Were we to adopt this approach, the results could be transformative. | And you? | What about you? | How about yourself? | Same for you? | What's your take on it?
    **example_fail**: yes (bare reply, no synthesis) | I agree with that (simple statement, no integrated C1-C2 structures) | The food was good (off-topic, no advanced synthesis)
 
 3. **id**: 3
@@ -622,7 +622,7 @@ This module does not introduce new chunks. Instead, it asks the student to deplo
    **hidden_prompt**: "user proposes a casual catch-up plan"
    **hint_pt**: "We should grab dinner before another six months go by — I'm free, like, two Fridays from now?"
    **hint_en**: "We should grab dinner before another six months go by — I'm free, like, two Fridays from now?"
-   **example_pass**: We should grab dinner before another six months go by — I'm free, like, two Fridays from now? | What truly sets this apart is the depth of its analysis. | Having considered all angles, I remain convinced of my position.
+   **example_pass**: We should grab dinner before another six months go by — I'm free, like, two Fridays from now? | What truly sets this apart is the depth of its analysis. | Having considered all angles, I remain convinced of my position. | And you? | What about you? | How about yourself? | Same for you? | What's your take on it?
    **example_fail**: yes (bare reply, no synthesis) | I agree with that (simple statement, no integrated C1-C2 structures) | The food was good (off-topic, no advanced synthesis)
 
 **Closing cue**: Charlotte closes with "Casual mastery, end of M21+M20 integration." once obj_3 lands.

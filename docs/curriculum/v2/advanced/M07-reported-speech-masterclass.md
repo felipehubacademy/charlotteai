@@ -544,7 +544,7 @@
    **hidden_prompt**: "user uses 'X warned + person + about/not to'"
    **hint_pt**: "My boss warned me not to commit to that timeline."
    **hint_en**: "My boss warned me not to commit to that timeline."
-   **example_pass**: My boss warned me not to commit to that timeline. | She told me she was going to leave the next day. | He claimed he had finished the work earlier.
+   **example_pass**: My boss warned me not to commit to that timeline. | She told me she was going to leave the next day. | He claimed he had finished the work earlier. | My mentor warned me not to take on too much in my first year. | She warned the team about the risk of underestimating the competitor's pace. | He warned me not to make any irreversible commitments before the audit cleared. | Legal warned us about exposing internal data in the press release.
    **example_fail**: she said (bare reporting, no backshift) | She said 'I am tired' (direct speech, not reported) | She is tired now (off-topic, no reporting verb)
 
 2. **id**: 2
@@ -553,7 +553,7 @@
    **hidden_prompt**: "user uses 'X persuaded Y to + base' or 'talked Y into + -ing'"
    **hint_pt**: "My sister talked me into trying the new restaurant."
    **hint_en**: "My sister talked me into trying the new restaurant."
-   **example_pass**: My sister talked me into trying the new restaurant. | They mentioned that they were considering the offer. | She admitted that she had made a mistake.
+   **example_pass**: My sister talked me into trying the new restaurant. | They mentioned that they were considering the offer. | She admitted that she had made a mistake. | She finally persuaded the board to fund the second phase. | He talked me into taking the longer route, and I'm glad he did. | My sister persuaded our parents to spend a winter in Lisbon. | The product manager persuaded engineering to delay the launch by two weeks.
    **example_fail**: she said (bare reporting, no backshift) | She said 'I am tired' (direct speech, not reported) | She is tired now (off-topic, no reporting verb)
 
 3. **id**: 3
@@ -562,7 +562,7 @@
    **hidden_prompt**: "user uses 'X discouraged + person + from + -ing'"
    **hint_pt**: "Our mentor discouraged us from rushing the launch."
    **hint_en**: "Our mentor discouraged us from rushing the launch."
-   **example_pass**: Our mentor discouraged us from rushing the launch. | He insisted that he had nothing to do with it. | My boss asked whether I had completed the report.
+   **example_pass**: Our mentor discouraged us from rushing the launch. | He insisted that he had nothing to do with it. | My boss asked whether I had completed the report. | Our mentor discouraged us from raising more capital than we actually needed. | She discouraged the team from making any structural changes during the launch window. | He discouraged me from accepting the first offer without negotiating. | Legal discouraged us from issuing a public statement before the investigation closed.
    **example_fail**: she said (bare reporting, no backshift) | She said 'I am tired' (direct speech, not reported) | She is tired now (off-topic, no reporting verb)
 
 **Closing cue**: Charlotte closes with "Patterns sharper than instinct." once obj_3 lands.
@@ -599,7 +599,7 @@
    **hidden_prompt**: "user uses 'X talked me into + -ing' or 'X persuaded me to + base'"
    **hint_pt**: "My old boss talked me into applying for a role I thought was too senior."
    **hint_en**: "My old boss talked me into applying for a role I thought was too senior."
-   **example_pass**: My old boss talked me into applying for a role I thought was too senior. | She told me she was going to leave the next day. | He claimed he had finished the work earlier.
+   **example_pass**: My old boss talked me into applying for a role I thought was too senior. | She told me she was going to leave the next day. | He claimed he had finished the work earlier. | My old boss talked me into applying for a role I'd already convinced myself was too senior. | She talked me into giving the talk despite my long-standing aversion to public speaking. | He persuaded me to spend the weekend reading the report — and it turned out to matter enormously. | My sister talked me into trying the new restaurant, and we've been going back nearly every week since.
    **example_fail**: she said (bare reporting, no backshift) | She said 'I am tired' (direct speech, not reported) | She is tired now (off-topic, no reporting verb)
 
 2. **id**: 2
@@ -608,7 +608,7 @@
    **hidden_prompt**: "user uses 'X warned me + about/not to/against'"
    **hint_pt**: "A friend warned me against committing to anything in my first month."
    **hint_en**: "A friend warned me against committing to anything in my first month."
-   **example_pass**: A friend warned me against committing to anything in my first month. | They mentioned that they were considering the offer. | She admitted that she had made a mistake.
+   **example_pass**: A friend warned me against committing to anything in my first month. | They mentioned that they were considering the offer. | She admitted that she had made a mistake. | A friend warned me against committing to anything in my first month at the new company. | My mentor warned me about taking on too much, but I didn't listen until it was almost too late. | Legal warned me not to put anything in writing until the contract had been countersigned. | An old colleague warned me about the political dynamics on the team before I even started.
    **example_fail**: she said (bare reporting, no backshift) | She said 'I am tired' (direct speech, not reported) | She is tired now (off-topic, no reporting verb)
 
 3. **id**: 3
@@ -617,7 +617,7 @@
    **hidden_prompt**: "user asks Charlotte where she studied abroad"
    **hint_pt**: "Where did you go?"
    **hint_en**: "Where did you go?"
-   **example_pass**: Where did you go? | He insisted that he had nothing to do with it. | My boss asked whether I had completed the report.
+   **example_pass**: Where did you go? | He insisted that he had nothing to do with it. | My boss asked whether I had completed the report. | And you? | What about you? | How about yourself? | Same for you? | What's your take on it?
    **example_fail**: she said (bare reporting, no backshift) | She said 'I am tired' (direct speech, not reported) | She is tired now (off-topic, no reporting verb)
 
 **Closing cue**: Charlotte closes with "Influence reported, correctly framed." once obj_3 lands.
@@ -697,7 +697,7 @@
    **hidden_prompt**: "user uses 'According to + source, + clause'"
    **hint_pt**: "According to the financial filing, profits doubled in the third quarter."
    **hint_en**: "According to the financial filing, profits doubled in the third quarter."
-   **example_pass**: According to the financial filing, profits doubled in the third quarter. | She told me she was going to leave the next day. | He claimed he had finished the work earlier.
+   **example_pass**: According to the financial filing, profits doubled in the third quarter. | She told me she was going to leave the next day. | He claimed he had finished the work earlier. | According to the internal report, the issue had been flagged twice before it became public. | According to the latest filing, the company's revenue grew by eighteen percent year-over-year. | According to two people close to the negotiations, the deal nearly fell apart on the final night. | According to the official statement, the change will take effect by the first of the month.
    **example_fail**: she said (bare reporting, no backshift) | She said 'I am tired' (direct speech, not reported) | She is tired now (off-topic, no reporting verb)
 
 2. **id**: 2
@@ -706,7 +706,7 @@
    **hidden_prompt**: "user uses 'X allegedly + verb'"
    **hint_pt**: "The accountant allegedly transferred funds to a personal account."
    **hint_en**: "The accountant allegedly transferred funds to a personal account."
-   **example_pass**: The accountant allegedly transferred funds to a personal account. | They mentioned that they were considering the offer. | She admitted that she had made a mistake.
+   **example_pass**: The accountant allegedly transferred funds to a personal account. | They mentioned that they were considering the offer. | She admitted that she had made a mistake. | The executive allegedly approved the transfers without informing the board. | The supplier allegedly inflated the invoices over a period of three years. | The candidate allegedly withheld key details about his previous role. | The platform allegedly throttled traffic from competing applications.
    **example_fail**: she said (bare reporting, no backshift) | She said 'I am tired' (direct speech, not reported) | She is tired now (off-topic, no reporting verb)
 
 3. **id**: 3
@@ -715,7 +715,7 @@
    **hidden_prompt**: "user uses 'Apparently/Reportedly + clause'"
    **hint_pt**: "Apparently, two board members have already resigned."
    **hint_en**: "Apparently, two board members have already resigned."
-   **example_pass**: Apparently, two board members have already resigned. | He insisted that he had nothing to do with it. | My boss asked whether I had completed the report.
+   **example_pass**: Apparently, two board members have already resigned. | He insisted that he had nothing to do with it. | My boss asked whether I had completed the report. | Apparently, two senior partners have already submitted their notice. | Reportedly, the negotiations broke down over a single non-financial clause. | Apparently, the founder had been planning this exit for nearly a year. | Reportedly, the merger talks resumed quietly last month.
    **example_fail**: she said (bare reporting, no backshift) | She said 'I am tired' (direct speech, not reported) | She is tired now (off-topic, no reporting verb)
 
 **Closing cue**: Charlotte closes with "Story filed, hedges intact." once obj_3 lands.
@@ -752,7 +752,7 @@
    **hidden_prompt**: "user uses 'According to' or 'allegedly' or 'apparently'"
    **hint_pt**: "According to a colleague, three teams are being merged."
    **hint_en**: "According to a colleague, three teams are being merged."
-   **example_pass**: According to a colleague, three teams are being merged. | She told me she was going to leave the next day. | He claimed he had finished the work earlier.
+   **example_pass**: According to a colleague, three teams are being merged. | She told me she was going to leave the next day. | He claimed he had finished the work earlier. | According to a colleague, three teams are quietly being merged into a single org. | Apparently, two senior partners have already given notice, though it hasn't been announced yet. | According to people close to the negotiation, the deal nearly fell apart on the final night. | Allegedly, the executive approved the transfer without informing the rest of the board.
    **example_fail**: she said (bare reporting, no backshift) | She said 'I am tired' (direct speech, not reported) | She is tired now (off-topic, no reporting verb)
 
 2. **id**: 2
@@ -761,7 +761,7 @@
    **hidden_prompt**: "user uses another hedging device"
    **hint_pt**: "Reportedly, leadership wants the announcement done before Friday."
    **hint_en**: "Reportedly, leadership wants the announcement done before Friday."
-   **example_pass**: Reportedly, leadership wants the announcement done before Friday. | They mentioned that they were considering the offer. | She admitted that she had made a mistake.
+   **example_pass**: Reportedly, leadership wants the announcement done before Friday. | They mentioned that they were considering the offer. | She admitted that she had made a mistake. | Reportedly, leadership wants the announcement done before Friday, but nobody has confirmed that publicly. | It's understood that the CFO has been quietly opposed to the move for some time. | Word is that the founder is preparing for a much larger restructure in the new year. | From what I've heard, the board has already voted, but the official statement won't go out until next week.
    **example_fail**: she said (bare reporting, no backshift) | She said 'I am tired' (direct speech, not reported) | She is tired now (off-topic, no reporting verb)
 
 3. **id**: 3
@@ -770,7 +770,7 @@
    **hidden_prompt**: "user asks Charlotte where she heard it"
    **hint_pt**: "Where did you hear it?"
    **hint_en**: "Where did you hear it?"
-   **example_pass**: Where did you hear it? | He insisted that he had nothing to do with it. | My boss asked whether I had completed the report.
+   **example_pass**: Where did you hear it? | He insisted that he had nothing to do with it. | My boss asked whether I had completed the report. | And you? | What about you? | How about yourself? | Same for you? | What's your take on it?
    **example_fail**: she said (bare reporting, no backshift) | She said 'I am tired' (direct speech, not reported) | She is tired now (off-topic, no reporting verb)
 
 **Closing cue**: Charlotte closes with "News traded, hedges preserved." once obj_3 lands.

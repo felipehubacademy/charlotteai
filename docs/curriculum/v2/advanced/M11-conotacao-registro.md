@@ -92,7 +92,7 @@
    **hidden_prompt**: "user uses 'assertive' / 'confident' positively for someone direct"
    **hint_pt**: "Positively, I'd say she's assertive — she states her view clearly without apology."
    **hint_en**: "Positively, I'd say she's assertive — she states her view clearly without apology."
-   **example_pass**: Positively, I'd say she's assertive — she states her view clearly without apology. | I'd like to express my sincere appreciation for your support. | The dude totally nailed it, no kidding.
+   **example_pass**: Positively, I'd say she's assertive — she states her view clearly without apology. | I'd like to express my sincere appreciation for your support. | The dude totally nailed it, no kidding. | Positively framed, she's assertive — she names what she sees clearly and without apology. | Positively, you'd say he's direct — willing to say what others are only thinking. | Generously read, she's confident and decisive in moments when the team needs someone to be. | Positively, I'd describe her as forthright — she doesn't dress up her opinions, and the team trusts her for it.
    **example_fail**: good (neutral word, no register marking) | It was nice (informal register only, no shift) | I had dinner (off-topic, no register choice)
 
 2. **id**: 2
@@ -101,7 +101,7 @@
    **hidden_prompt**: "user uses 'aggressive' / 'pushy' / 'domineering' for the same behaviour"
    **hint_pt**: "Negatively, someone less generous might call her aggressive or pushy."
    **hint_en**: "Negatively, someone less generous might call her aggressive or pushy."
-   **example_pass**: Negatively, someone less generous might call her aggressive or pushy. | It would be a pleasure to make your acquaintance. | Yeah, that was pretty awesome, gotta say.
+   **example_pass**: Negatively, someone less generous might call her aggressive or pushy. | It would be a pleasure to make your acquaintance. | Yeah, that was pretty awesome, gotta say. | Negatively framed, someone less generous would call her aggressive — even domineering at times. | The unkind version of the same trait is pushy — and she occasionally tips into that. | Less charitably, he's bossy and refuses to let anyone else lead a conversation. | Read uncharitably, the same behaviour comes across as overbearing rather than confident.
    **example_fail**: good (neutral word, no register marking) | It was nice (informal register only, no shift) | I had dinner (off-topic, no register choice)
 
 3. **id**: 3
@@ -110,7 +110,7 @@
    **hidden_prompt**: "user contrasts 'thrifty/frugal' with 'stingy/cheap'"
    **hint_pt**: "He's thrifty rather than stingy — the difference is whether he resents spending or just thinks before doing it."
    **hint_en**: "He's thrifty rather than stingy — the difference is whether he resents spending or just thinks before doing it."
-   **example_pass**: He's thrifty rather than stingy — the difference is whether he resents spending or just thinks before doing it. | May I request your assistance with this matter? | Honestly, it was a complete disaster, mate.
+   **example_pass**: He's thrifty rather than stingy — the difference is whether he resents spending or just thinks before doing it. | May I request your assistance with this matter? | Honestly, it was a complete disaster, mate. | He's thrifty rather than stingy — the difference is whether he resents the money or simply thinks before spending it. | She's frugal in a principled way, not cheap in a small-minded one. | There's a difference between being economical and being miserly, and he sits squarely on the right side of it. | Calling him cheap would be unfair; he's careful with money in the way someone who once didn't have any tends to be.
    **example_fail**: good (neutral word, no register marking) | It was nice (informal register only, no shift) | I had dinner (off-topic, no register choice)
 
 **Closing cue**: Charlotte closes with "Connotation moves the verdict." once obj_3 lands.
@@ -147,7 +147,7 @@
    **hidden_prompt**: "user uses 'assertive' or 'self-assured' positively"
    **hint_pt**: "If you admire it, she's probably more assertive than aggressive — direct without making you feel attacked."
    **hint_en**: "If you admire it, she's probably more assertive than aggressive — direct without making you feel attacked."
-   **example_pass**: If you admire it, she's probably more assertive than aggressive — direct without making you feel attacked. | I'd like to express my sincere appreciation for your support. | The dude totally nailed it, no kidding.
+   **example_pass**: If you admire it, she's probably more assertive than aggressive — direct without making you feel attacked. | I'd like to express my sincere appreciation for your support. | The dude totally nailed it, no kidding. | Charitably, you'd describe him as self-assured rather than arrogant — he simply doesn't perform humility. | Positively, she's confident in the kind of way that makes everyone in the room slightly braver. | The flattering version of the same trait is decisive — moving forward while others are still talking.
    **example_fail**: good (neutral word, no register marking) | It was nice (informal register only, no shift) | I had dinner (off-topic, no register choice)
 
 2. **id**: 2
@@ -156,7 +156,7 @@
    **hidden_prompt**: "user uses 'pushy' or 'domineering' or 'cocky'"
    **hint_pt**: "If it's exhausting, the line you're feeling is between assertive and pushy — when directness stops leaving room for the other person."
    **hint_en**: "If it's exhausting, the line you're feeling is between assertive and pushy — when directness stops leaving room for the other person."
-   **example_pass**: If it's exhausting, the line you're feeling is between assertive and pushy — when directness stops leaving room for the other person. | It would be a pleasure to make your acquaintance. | Yeah, that was pretty awesome, gotta say.
+   **example_pass**: If it's exhausting, the line you're feeling is between assertive and pushy — when directness stops leaving room for the other person. | It would be a pleasure to make your acquaintance. | Yeah, that was pretty awesome, gotta say. | Less charitably, the line you're feeling is between assertive and pushy — when directness stops leaving room for the other person. | Read uncharitably, he comes across as cocky rather than confident — too sure of himself for the room. | The unkind version of the same behaviour is domineering — taking up all the available space. | Negatively, she sometimes reads as pushy, even when she's just impatient with how slowly the rest of us are moving.
    **example_fail**: good (neutral word, no register marking) | It was nice (informal register only, no shift) | I had dinner (off-topic, no register choice)
 
 3. **id**: 3
@@ -165,7 +165,7 @@
    **hidden_prompt**: "user asks Charlotte which side she's actually on"
    **hint_pt**: "Which version feels closer to true?"
    **hint_en**: "Which version feels closer to true?"
-   **example_pass**: Which version feels closer to true? | May I request your assistance with this matter? | Honestly, it was a complete disaster, mate.
+   **example_pass**: Which version feels closer to true? | May I request your assistance with this matter? | Honestly, it was a complete disaster, mate. | And you? | What about you? | How about yourself? | Same for you? | What's your take on it?
    **example_fail**: good (neutral word, no register marking) | It was nice (informal register only, no shift) | I had dinner (off-topic, no register choice)
 
 **Closing cue**: Charlotte closes with "Word chosen, judgement clarified." once obj_3 lands.
@@ -244,7 +244,7 @@
    **hidden_prompt**: "user uses 'commence' / 'initiate' / 'begin' formally"
    **hint_pt**: "Informal: 'We'll start the audit Monday.' Formal: 'We will commence the audit on Monday.'"
    **hint_en**: "Informal: 'We'll start the audit Monday.' Formal: 'We will commence the audit on Monday.'"
-   **example_pass**: Informal: 'We'll start the audit Monday.' Formal: 'We will commence the audit on Monday.' | I'd like to express my sincere appreciation for your support. | The dude totally nailed it, no kidding.
+   **example_pass**: Informal: 'We'll start the audit Monday.' Formal: 'We will commence the audit on Monday.' | I'd like to express my sincere appreciation for your support. | The dude totally nailed it, no kidding. | Formal: 'We will commence the audit on Monday.' Informal: 'We'll kick the audit off Monday.' | Formal: 'The committee will commence its review on the first of the month.' Informal: 'The committee starts on the first.' | Formal: 'Operations are scheduled to commence at six.' Informal: 'We kick off at six.' | Formal: 'We will commence implementation in stages.' Informal: 'We're rolling this out bit by bit.'
    **example_fail**: good (neutral word, no register marking) | It was nice (informal register only, no shift) | I had dinner (off-topic, no register choice)
 
 2. **id**: 2
@@ -253,7 +253,7 @@
    **hidden_prompt**: "user uses 'ascertain' formally"
    **hint_pt**: "Informal: 'We need to find out what happened.' Formal: 'We need to ascertain what happened.'"
    **hint_en**: "Informal: 'We need to find out what happened.' Formal: 'We need to ascertain what happened.'"
-   **example_pass**: Informal: 'We need to find out what happened.' Formal: 'We need to ascertain what happened.' | It would be a pleasure to make your acquaintance. | Yeah, that was pretty awesome, gotta say.
+   **example_pass**: Informal: 'We need to find out what happened.' Formal: 'We need to ascertain what happened.' | It would be a pleasure to make your acquaintance. | Yeah, that was pretty awesome, gotta say. | Formal: 'We must ascertain the precise sequence of events.' Informal: 'We need to figure out what actually happened.' | Formal: 'It is necessary to ascertain the projected cost.' Informal: 'We need to find out how much this is going to cost.' | Formal: 'Ascertain who authorised the original transaction.' Informal: 'Find out who signed off on this.' | Formal: 'The address has yet to be ascertained.' Informal: 'We haven't worked out the address yet.'
    **example_fail**: good (neutral word, no register marking) | It was nice (informal register only, no shift) | I had dinner (off-topic, no register choice)
 
 3. **id**: 3
@@ -262,7 +262,7 @@
    **hidden_prompt**: "user uses 'demonstrate' formally"
    **hint_pt**: "Informal: 'The data shows the trend.' Formal: 'The data demonstrates the trend.'"
    **hint_en**: "Informal: 'The data shows the trend.' Formal: 'The data demonstrates the trend.'"
-   **example_pass**: Informal: 'The data shows the trend.' Formal: 'The data demonstrates the trend.' | May I request your assistance with this matter? | Honestly, it was a complete disaster, mate.
+   **example_pass**: Informal: 'The data shows the trend.' Formal: 'The data demonstrates the trend.' | May I request your assistance with this matter? | Honestly, it was a complete disaster, mate. | Formal: 'The data demonstrate a clear directional trend.' Informal: 'The data shows the trend clearly.' | Formal: 'This demonstrates the unusual diligence she brings to the work.' Informal: 'It just shows how careful she is.' | Formal: 'The figures demonstrate the validity of the original hypothesis.' Informal: 'These numbers prove the point.' | Formal: 'The metrics demonstrate measurable progress over the quarter.' Informal: 'The numbers show we're making real progress.'
    **example_fail**: good (neutral word, no register marking) | It was nice (informal register only, no shift) | I had dinner (off-topic, no register choice)
 
 **Closing cue**: Charlotte closes with "Register elevated, precision intact." once obj_3 lands.
@@ -299,7 +299,7 @@
    **hidden_prompt**: "user replaces 'kick off' with 'commence' or 'initiate'"
    **hint_pt**: "Try: 'We will commence the new programme and investigate the feedback we received.'"
    **hint_en**: "Try: 'We will commence the new programme and investigate the feedback we received.'"
-   **example_pass**: Try: 'We will commence the new programme and investigate the feedback we received.' | I'd like to express my sincere appreciation for your support. | The dude totally nailed it, no kidding.
+   **example_pass**: Try: 'We will commence the new programme and investigate the feedback we received.' | I'd like to express my sincere appreciation for your support. | The dude totally nailed it, no kidding. | Formal: 'We will commence the audit on Monday.' Informal: 'We'll kick the audit off Monday.' | Formal: 'The committee will commence its review on the first of the month.' Informal: 'The committee starts on the first.' | Formal: 'Operations are scheduled to commence at six.' Informal: 'We kick off at six.' | Formal: 'We will commence implementation in stages.' Informal: 'We're rolling this out bit by bit.'
    **example_fail**: good (neutral word, no register marking) | It was nice (informal register only, no shift) | I had dinner (off-topic, no register choice)
 
 2. **id**: 2
@@ -308,7 +308,7 @@
    **hidden_prompt**: "user proposes another formal verb swap"
    **hint_pt**: "If you want it even more formal, 'investigate' becomes 'ascertain the substance of the feedback'."
    **hint_en**: "If you want it even more formal, 'investigate' becomes 'ascertain the substance of the feedback'."
-   **example_pass**: If you want it even more formal, 'investigate' becomes 'ascertain the substance of the feedback'. | It would be a pleasure to make your acquaintance. | Yeah, that was pretty awesome, gotta say.
+   **example_pass**: If you want it even more formal, 'investigate' becomes 'ascertain the substance of the feedback'. | It would be a pleasure to make your acquaintance. | Yeah, that was pretty awesome, gotta say. | Even more formal: 'investigate' becomes 'ascertain the substance of the feedback received.' | Push it further: 'inform' becomes 'apprise the board of the latest developments.' | Push it further: 'discuss' becomes 'deliberate on the matter at the next available opportunity.' | Push it further: 'agree' becomes 'reach a consensus on the proposed course of action.'
    **example_fail**: good (neutral word, no register marking) | It was nice (informal register only, no shift) | I had dinner (off-topic, no register choice)
 
 3. **id**: 3
@@ -317,7 +317,7 @@
    **hidden_prompt**: "user asks Charlotte how formal the document needs to be"
    **hint_pt**: "How formal is the audience?"
    **hint_en**: "How formal is the audience?"
-   **example_pass**: How formal is the audience? | May I request your assistance with this matter? | Honestly, it was a complete disaster, mate.
+   **example_pass**: How formal is the audience? | May I request your assistance with this matter? | Honestly, it was a complete disaster, mate. | And you? | What about you? | How about yourself? | Same for you? | What's your take on it?
    **example_fail**: good (neutral word, no register marking) | It was nice (informal register only, no shift) | I had dinner (off-topic, no register choice)
 
 **Closing cue**: Charlotte closes with "Register, deliberately tuned." once obj_3 lands.
@@ -552,7 +552,7 @@
    **hidden_prompt**: "user uses 'not bad' / 'not half bad' for praise"
    **hint_pt**: "The food at that new place is not half bad — I'll be going back."
    **hint_en**: "The food at that new place is not half bad — I'll be going back."
-   **example_pass**: The food at that new place is not half bad — I'll be going back. | I'd like to express my sincere appreciation for your support. | The dude totally nailed it, no kidding.
+   **example_pass**: The food at that new place is not half bad — I'll be going back. | I'd like to express my sincere appreciation for your support. | The dude totally nailed it, no kidding. | The food at that place is not half bad — I'll happily go back. | Honestly, the new product line isn't bad at all — better than most of the reviews would suggest. | The restaurant wasn't half bad, considering how skeptical I was walking in. | Their offer wasn't bad — better than I'd been expecting given the market.
    **example_fail**: good (neutral word, no register marking) | It was nice (informal register only, no shift) | I had dinner (off-topic, no register choice)
 
 2. **id**: 2
@@ -561,7 +561,7 @@
    **hidden_prompt**: "user uses 'no small feat' or 'no mean achievement'"
    **hint_pt**: "Finishing the project a week early was no small feat with a team this size."
    **hint_en**: "Finishing the project a week early was no small feat with a team this size."
-   **example_pass**: Finishing the project a week early was no small feat with a team this size. | It would be a pleasure to make your acquaintance. | Yeah, that was pretty awesome, gotta say.
+   **example_pass**: Finishing the project a week early was no small feat with a team this size. | It would be a pleasure to make your acquaintance. | Yeah, that was pretty awesome, gotta say. | Launching three markets in a single quarter is no mean achievement, especially given the conditions. | Bringing the budget in under target two years in a row is no small feat. | Keeping the team together through that transition was no mean achievement on her part.
    **example_fail**: good (neutral word, no register marking) | It was nice (informal register only, no shift) | I had dinner (off-topic, no register choice)
 
 3. **id**: 3
@@ -570,7 +570,7 @@
    **hidden_prompt**: "user uses 'not exactly + adjective'"
    **hint_pt**: "The view from the room was not exactly disappointing — it overlooked the whole bay."
    **hint_en**: "The view from the room was not exactly disappointing — it overlooked the whole bay."
-   **example_pass**: The view from the room was not exactly disappointing — it overlooked the whole bay. | May I request your assistance with this matter? | Honestly, it was a complete disaster, mate.
+   **example_pass**: The view from the room was not exactly disappointing — it overlooked the whole bay. | May I request your assistance with this matter? | Honestly, it was a complete disaster, mate. | The view from the hotel was not exactly disappointing — it overlooked the entire bay. | Her feedback wasn't exactly gentle, but it was exactly what the team needed. | The conversation wasn't exactly easy, but we both came out of it better aligned. | Her résumé isn't exactly modest — three patents and four languages before turning thirty.
    **example_fail**: good (neutral word, no register marking) | It was nice (informal register only, no shift) | I had dinner (off-topic, no register choice)
 
 **Closing cue**: Charlotte closes with "Praise, by negation." once obj_3 lands.
@@ -607,7 +607,7 @@
    **hidden_prompt**: "user uses 'not bad' / 'not without' / 'not exactly'"
    **hint_pt**: "Not without its moments — got through three deadlines and only one of them tried to kill me."
    **hint_en**: "Not without its moments — got through three deadlines and only one of them tried to kill me."
-   **example_pass**: Not without its moments — got through three deadlines and only one of them tried to kill me. | I'd like to express my sincere appreciation for your support. | The dude totally nailed it, no kidding.
+   **example_pass**: Not without its moments — got through three deadlines and only one of them tried to kill me. | I'd like to express my sincere appreciation for your support. | The dude totally nailed it, no kidding. | The food at that place is not half bad — I'll happily go back. | Honestly, the new product line isn't bad at all — better than most of the reviews would suggest. | The restaurant wasn't half bad, considering how skeptical I was walking in. | Their offer wasn't bad — better than I'd been expecting given the market.
    **example_fail**: good (neutral word, no register marking) | It was nice (informal register only, no shift) | I had dinner (off-topic, no register choice)
 
 2. **id**: 2
@@ -616,7 +616,7 @@
    **hidden_prompt**: "user uses 'no small feat' or 'I wouldn't say no'"
    **hint_pt**: "Finishing the redesign in a week was no small feat — and I wouldn't say no to a quiet weekend now."
    **hint_en**: "Finishing the redesign in a week was no small feat — and I wouldn't say no to a quiet weekend now."
-   **example_pass**: Finishing the redesign in a week was no small feat — and I wouldn't say no to a quiet weekend now. | It would be a pleasure to make your acquaintance. | Yeah, that was pretty awesome, gotta say.
+   **example_pass**: Finishing the redesign in a week was no small feat — and I wouldn't say no to a quiet weekend now. | It would be a pleasure to make your acquaintance. | Yeah, that was pretty awesome, gotta say. | Finishing the project a week early was no small feat with a team this size. | Launching three markets in a single quarter is no mean achievement, especially given the conditions. | Bringing the budget in under target two years in a row is no small feat. | Keeping the team together through that transition was no mean achievement on her part.
    **example_fail**: good (neutral word, no register marking) | It was nice (informal register only, no shift) | I had dinner (off-topic, no register choice)
 
 3. **id**: 3
@@ -625,7 +625,7 @@
    **hidden_prompt**: "user asks Charlotte more about the film"
    **hint_pt**: "What was the film?"
    **hint_en**: "What was the film?"
-   **example_pass**: What was the film? | May I request your assistance with this matter? | Honestly, it was a complete disaster, mate.
+   **example_pass**: What was the film? | May I request your assistance with this matter? | Honestly, it was a complete disaster, mate. | And you? | What about you? | How about yourself? | Same for you? | What's your take on it?
    **example_fail**: good (neutral word, no register marking) | It was nice (informal register only, no shift) | I had dinner (off-topic, no register choice)
 
 **Closing cue**: Charlotte closes with "Deadpan, sustained." once obj_3 lands.
@@ -859,7 +859,7 @@
    **hidden_prompt**: "user mentions a UK/US vocabulary pair"
    **hint_pt**: "I always pause when I hear 'flat' instead of 'apartment'. And 'pavement' instead of 'sidewalk' threw me off the first time."
    **hint_en**: "I always pause when I hear 'flat' instead of 'apartment'. And 'pavement' instead of 'sidewalk' threw me off the first time."
-   **example_pass**: I always pause when I hear 'flat' instead of 'apartment'. And 'pavement' instead of 'sidewalk' threw me off the first time. | I'd like to express my sincere appreciation for your support. | The dude totally nailed it, no kidding.
+   **example_pass**: I always pause when I hear 'flat' instead of 'apartment'. And 'pavement' instead of 'sidewalk' threw me off the first time. | I'd like to express my sincere appreciation for your support. | The dude totally nailed it, no kidding. | I still pause when I hear 'flat' instead of 'apartment', or 'pavement' instead of 'sidewalk'. | It took me a while to get used to 'lift' instead of 'elevator' and 'queue' instead of 'line'. | Saying 'lorry' instead of 'truck' still feels strange to me, even after two years in London. | My team in New York uses 'trash' and 'truck'; my London colleagues use 'rubbish' and 'lorry'.
    **example_fail**: good (neutral word, no register marking) | It was nice (informal register only, no shift) | I had dinner (off-topic, no register choice)
 
 2. **id**: 2
@@ -868,7 +868,7 @@
    **hidden_prompt**: "user uses 'intend', 'actually', or 'realise' correctly"
    **hint_pt**: "I actually intend to spend more time studying British English — I'm planning a trip there next year."
    **hint_en**: "I actually intend to spend more time studying British English — I'm planning a trip there next year."
-   **example_pass**: I actually intend to spend more time studying British English — I'm planning a trip there next year. | It would be a pleasure to make your acquaintance. | Yeah, that was pretty awesome, gotta say.
+   **example_pass**: I actually intend to spend more time studying British English — I'm planning a trip there next year. | It would be a pleasure to make your acquaintance. | Yeah, that was pretty awesome, gotta say. | I actually intend to spend more time on British English this year — I'm planning a trip there next spring. | I hadn't realised how much my pronunciation had drifted until I listened back to an old recording of myself. | I actually meant to send that yesterday, but the day got away from me completely. | I hadn't realised how different the two accents really were until I lived between them for a year.
    **example_fail**: good (neutral word, no register marking) | It was nice (informal register only, no shift) | I had dinner (off-topic, no register choice)
 
 3. **id**: 3
@@ -877,7 +877,7 @@
    **hidden_prompt**: "user uses 'gotten' (American) or comments on the difference"
    **hint_pt**: "I've gotten more comfortable with both versions now — my speech mixes them, which is probably wrong but feels natural."
    **hint_en**: "I've gotten more comfortable with both versions now — my speech mixes them, which is probably wrong but feels natural."
-   **example_pass**: I've gotten more comfortable with both versions now — my speech mixes them, which is probably wrong but feels natural. | May I request your assistance with this matter? | Honestly, it was a complete disaster, mate.
+   **example_pass**: I've gotten more comfortable with both versions now — my speech mixes them, which is probably wrong but feels natural. | May I request your assistance with this matter? | Honestly, it was a complete disaster, mate. | I've gotten used to switching registers depending on who I'm speaking to. | I've gotten better at noticing the differences, even if my own speech mixes both. | American English uses 'gotten' where British English mostly uses 'got' — I switch without noticing now. | I've gotten more comfortable with the American pattern, though my writing still leans British.
    **example_fail**: good (neutral word, no register marking) | It was nice (informal register only, no shift) | I had dinner (off-topic, no register choice)
 
 **Closing cue**: Charlotte fecha com "Same here — purity is overrated. C1 fluency over consistency." quando obj_3 bater.
@@ -914,7 +914,7 @@
    **hidden_prompt**: "user mentions which variant they prefer or default to"
    **hint_pt**: "I default to American English because that's what my schoolbooks used, but I've gotten more flexible after working with British colleagues."
    **hint_en**: "I default to American English because that's what my schoolbooks used, but I've gotten more flexible after working with British colleagues."
-   **example_pass**: I default to American English because that's what my schoolbooks used, but I've gotten more flexible after working with British colleagues. | I'd like to express my sincere appreciation for your support. | The dude totally nailed it, no kidding.
+   **example_pass**: I default to American English because that's what my schoolbooks used, but I've gotten more flexible after working with British colleagues. | I'd like to express my sincere appreciation for your support. | The dude totally nailed it, no kidding. | I lean British because of the writers I grew up reading — but my speech is a mix that probably annoys both camps. | I prefer American English in conversation and British English in writing — I'm not sure why, but it feels right. | I default to American because most of my colleagues are American — but my instincts are quietly British.
    **example_fail**: good (neutral word, no register marking) | It was nice (informal register only, no shift) | I had dinner (off-topic, no register choice)
 
 2. **id**: 2
@@ -923,7 +923,7 @@
    **hidden_prompt**: "user mentions a tricky false cognate"
    **hint_pt**: "Honestly, 'realise' still catches me — in Portuguese 'realizar' means 'to carry out', but in English it usually means 'to understand'. I've to consciously pause."
    **hint_en**: "Honestly, 'realise' still catches me — in Portuguese 'realizar' means 'to carry out', but in English it usually means 'to understand'. I've to consciously pause."
-   **example_pass**: Honestly, 'realise' still catches me — in Portuguese 'realizar' means 'to carry out', but in English it usually means 'to understand'. I've to consciously pause. | It would be a pleasure to make your acquaintance. | Yeah, that was pretty awesome, gotta say.
+   **example_pass**: Honestly, 'realise' still catches me — in Portuguese 'realizar' means 'to carry out', but in English it usually means 'to understand'. I've to consciously pause. | It would be a pleasure to make your acquaintance. | Yeah, that was pretty awesome, gotta say. | Honestly, 'realise' still catches me — in Portuguese 'realizar' means 'to carry out', but in English it usually means 'to understand'. | 'Eventually' was a long one for me — in Portuguese 'eventualmente' means 'occasionally', but in English it means 'in the end'. | 'Pretend' tripped me up for years — 'pretender' in Portuguese means 'to intend', but in English it means 'to fake'. | 'Actually' is the classic one — 'atualmente' means 'currently' in Portuguese, but 'actually' in English means 'in fact'.
    **example_fail**: good (neutral word, no register marking) | It was nice (informal register only, no shift) | I had dinner (off-topic, no register choice)
 
 3. **id**: 3
@@ -932,7 +932,7 @@
    **hidden_prompt**: "user asks Charlotte about her preference or strategy"
    **hint_pt**: "Which version do you write in by default?"
    **hint_en**: "Which version do you write in by default?"
-   **example_pass**: Which version do you write in by default? | May I request your assistance with this matter? | Honestly, it was a complete disaster, mate.
+   **example_pass**: Which version do you write in by default? | May I request your assistance with this matter? | Honestly, it was a complete disaster, mate. | And you? | What about you? | How about yourself? | Same for you? | What's your take on it?
    **example_fail**: good (neutral word, no register marking) | It was nice (informal register only, no shift) | I had dinner (off-topic, no register choice)
 
 **Closing cue**: Charlotte fecha com "Same — flexible across, depending on the reader." quando obj_3 bater.

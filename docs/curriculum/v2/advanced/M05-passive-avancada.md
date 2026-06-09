@@ -84,7 +84,7 @@
    **hidden_prompt**: "user uses 'It is reported that + clause'"
    **hint_pt**: "It is reported that the minister will step down by the end of the month."
    **hint_en**: "It is reported that the minister will step down by the end of the month."
-   **example_pass**: It is reported that the minister will step down by the end of the month. | The report has been reviewed by the committee. | The decision should have been made earlier.
+   **example_pass**: It is reported that the minister will step down by the end of the month. | The report has been reviewed by the committee. | The decision should have been made earlier. | It is reported that the regulator will issue new guidance before the quarter ends. | It is reported that the company has begun preliminary talks with two potential acquirers. | It has been reported that several senior executives are considering early retirement. | It is widely reported that the policy change will take effect by year-end.
    **example_fail**: built (bare participle, no agent or structure) | They built the bridge in 1900 (active voice, not passive) | The bridge is nice (off-topic, no passive construction)
 
 2. **id**: 2
@@ -93,7 +93,7 @@
    **hidden_prompt**: "user uses 'It is believed that + clause'"
    **hint_pt**: "It is believed that the suspect crossed the border two days ago."
    **hint_en**: "It is believed that the suspect crossed the border two days ago."
-   **example_pass**: It is believed that the suspect crossed the border two days ago. | The project is said to have been delayed. | She had her car repaired last week.
+   **example_pass**: It is believed that the suspect crossed the border two days ago. | The project is said to have been delayed. | She had her car repaired last week. | It is believed that the breach originated from a third-party vendor. | It is believed that fewer than ten people knew about the merger in advance. | It is widely believed that the founder will step down within the next twelve months. | It is believed that the manuscript dates from the early 1700s.
    **example_fail**: built (bare participle, no agent or structure) | They built the bridge in 1900 (active voice, not passive) | The bridge is nice (off-topic, no passive construction)
 
 3. **id**: 3
@@ -102,7 +102,7 @@
    **hidden_prompt**: "user uses another impersonal passive variant"
    **hint_pt**: "It cannot be denied that the system has been failing for years."
    **hint_en**: "It cannot be denied that the system has been failing for years."
-   **example_pass**: It cannot be denied that the system has been failing for years. | The contract was signed by both parties. | Mistakes were made during the process.
+   **example_pass**: It cannot be denied that the system has been failing for years. | The contract was signed by both parties. | Mistakes were made during the process. | It cannot be denied that the new strategy has produced uneven results. | It has been argued that the original timeline was always unrealistic. | It is generally accepted that the field has shifted significantly in the last five years. | It is understood that several board members opposed the decision behind closed doors.
    **example_fail**: built (bare participle, no agent or structure) | They built the bridge in 1900 (active voice, not passive) | The bridge is nice (off-topic, no passive construction)
 
 **Closing cue**: Charlotte closes with "Bylines dressed." once obj_3 lands.
@@ -139,7 +139,7 @@
    **hidden_prompt**: "user uses 'It is + past participle + that-clause'"
    **hint_pt**: "It is believed that most jobs will change rather than disappear."
    **hint_en**: "It is believed that most jobs will change rather than disappear."
-   **example_pass**: It is believed that most jobs will change rather than disappear. | The report has been reviewed by the committee. | The decision should have been made earlier.
+   **example_pass**: It is believed that most jobs will change rather than disappear. | The report has been reviewed by the committee. | The decision should have been made earlier. | It is rumoured that the founder is planning to step down by the end of the year. | It is widely accepted that the original framework needs significant updating. | It is generally understood that performance reviews will be redesigned next quarter. | It is believed that the leak came from inside the company.
    **example_fail**: built (bare participle, no agent or structure) | They built the bridge in 1900 (active voice, not passive) | The bridge is nice (off-topic, no passive construction)
 
 2. **id**: 2
@@ -148,7 +148,7 @@
    **hidden_prompt**: "user uses another impersonal passive or 'It cannot be denied'"
    **hint_pt**: "It cannot be denied that adaptation will be uneven across industries."
    **hint_en**: "It cannot be denied that adaptation will be uneven across industries."
-   **example_pass**: It cannot be denied that adaptation will be uneven across industries. | The project is said to have been delayed. | She had her car repaired last week.
+   **example_pass**: It cannot be denied that adaptation will be uneven across industries. | The project is said to have been delayed. | She had her car repaired last week. | It cannot be denied that the system has been failing quietly for years. | It cannot be denied that the original framework no longer fits the data. | It cannot be denied that public trust has eroded significantly over the past decade.
    **example_fail**: built (bare participle, no agent or structure) | They built the bridge in 1900 (active voice, not passive) | The bridge is nice (off-topic, no passive construction)
 
 3. **id**: 3
@@ -157,7 +157,7 @@
    **hidden_prompt**: "user asks Charlotte for her field's outlook"
    **hint_pt**: "What's the outlook in teaching?"
    **hint_en**: "What's the outlook in teaching?"
-   **example_pass**: What's the outlook in teaching? | The contract was signed by both parties. | Mistakes were made during the process.
+   **example_pass**: What's the outlook in teaching? | The contract was signed by both parties. | Mistakes were made during the process. | And you? | What about you? | How about yourself? | Same for you? | What's your take on it?
    **example_fail**: built (bare participle, no agent or structure) | They built the bridge in 1900 (active voice, not passive) | The bridge is nice (off-topic, no passive construction)
 
 **Closing cue**: Charlotte closes with "Hedged, honestly." once obj_3 lands.
@@ -237,7 +237,7 @@
    **hidden_prompt**: "user uses 'X is said/believed to be + complement'"
    **hint_pt**: "The new minister is said to be a careful negotiator."
    **hint_en**: "The new minister is said to be a careful negotiator."
-   **example_pass**: The new minister is said to be a careful negotiator. | The report has been reviewed by the committee. | The decision should have been made earlier.
+   **example_pass**: The new minister is said to be a careful negotiator. | The report has been reviewed by the committee. | The decision should have been made earlier. | The chief executive is said to be considering an early exit. | She is widely believed to be the strongest negotiator on the leadership team. | The minister is said to be deeply opposed to the new directive. | He is reported to be one of the few people the founder still trusts.
    **example_fail**: built (bare participle, no agent or structure) | They built the bridge in 1900 (active voice, not passive) | The bridge is nice (off-topic, no passive construction)
 
 2. **id**: 2
@@ -246,7 +246,7 @@
    **hidden_prompt**: "user uses 'X is believed/thought to have + past participle'"
    **hint_pt**: "The executive is believed to have signed off on the deal last spring."
    **hint_en**: "The executive is believed to have signed off on the deal last spring."
-   **example_pass**: The executive is believed to have signed off on the deal last spring. | The project is said to have been delayed. | She had her car repaired last week.
+   **example_pass**: The executive is believed to have signed off on the deal last spring. | The project is said to have been delayed. | She had her car repaired last week. | The executive is believed to have approved the transfer last spring. | She is thought to have been involved in the early planning stages. | The board is said to have rejected an earlier version of the proposal. | He is believed to have authored the original strategy document in 2019.
    **example_fail**: built (bare participle, no agent or structure) | They built the bridge in 1900 (active voice, not passive) | The bridge is nice (off-topic, no passive construction)
 
 3. **id**: 3
@@ -255,7 +255,7 @@
    **hidden_prompt**: "user uses 'X is reported/thought to be + -ing'"
    **hint_pt**: "The board is reported to be reviewing all senior contracts."
    **hint_en**: "The board is reported to be reviewing all senior contracts."
-   **example_pass**: The board is reported to be reviewing all senior contracts. | The contract was signed by both parties. | Mistakes were made during the process.
+   **example_pass**: The board is reported to be reviewing all senior contracts. | The contract was signed by both parties. | Mistakes were made during the process. | The company is reported to be exploring acquisitions in two new markets. | Several investors are said to be reconsidering their commitments. | The CFO is thought to be preparing for a difficult earnings call. | The team is reported to be working around the clock to meet the deadline.
    **example_fail**: built (bare participle, no agent or structure) | They built the bridge in 1900 (active voice, not passive) | The bridge is nice (off-topic, no passive construction)
 
 **Closing cue**: Charlotte closes with "Three claims, properly framed." once obj_3 lands.
@@ -292,7 +292,7 @@
    **hidden_prompt**: "user uses 'X is said/thought to be...'"
    **hint_pt**: "Two of the cofounders are thought to be against the sale."
    **hint_en**: "Two of the cofounders are thought to be against the sale."
-   **example_pass**: Two of the cofounders are thought to be against the sale. | The report has been reviewed by the committee. | The decision should have been made earlier.
+   **example_pass**: Two of the cofounders are thought to be against the sale. | The report has been reviewed by the committee. | The decision should have been made earlier. | Two of the co-founders are thought to be against the sale. | The new minister is said to be a careful negotiator behind closed doors. | Several senior executives are reported to be considering early retirement. | She is widely thought to be the strongest internal candidate for the open role.
    **example_fail**: built (bare participle, no agent or structure) | They built the bridge in 1900 (active voice, not passive) | The bridge is nice (off-topic, no passive construction)
 
 2. **id**: 2
@@ -301,7 +301,7 @@
    **hidden_prompt**: "user uses 'X is believed/reported to have + past participle'"
    **hint_pt**: "An early investor is reported to have already exited his position."
    **hint_en**: "An early investor is reported to have already exited his position."
-   **example_pass**: An early investor is reported to have already exited his position. | The project is said to have been delayed. | She had her car repaired last week.
+   **example_pass**: An early investor is reported to have already exited his position. | The project is said to have been delayed. | She had her car repaired last week. | An early investor is reported to have exited his position quietly last quarter. | The executive is believed to have signed off on the transfer last spring. | She is thought to have been involved in the early planning stages. | The board is said to have considered a more aggressive version of the strategy.
    **example_fail**: built (bare participle, no agent or structure) | They built the bridge in 1900 (active voice, not passive) | The bridge is nice (off-topic, no passive construction)
 
 3. **id**: 3
@@ -310,7 +310,7 @@
    **hidden_prompt**: "user asks Charlotte for one more rumour"
    **hint_pt**: "Any names yet?"
    **hint_en**: "Any names yet?"
-   **example_pass**: Any names yet? | The contract was signed by both parties. | Mistakes were made during the process.
+   **example_pass**: Any names yet? | The contract was signed by both parties. | Mistakes were made during the process. | And you? | What about you? | How about yourself? | Same for you? | What's your take on it?
    **example_fail**: built (bare participle, no agent or structure) | They built the bridge in 1900 (active voice, not passive) | The bridge is nice (off-topic, no passive construction)
 
 **Closing cue**: Charlotte closes with "Column drafted." once obj_3 lands.
@@ -541,7 +541,7 @@
    **hidden_prompt**: "user uses 'I had + object + stolen/lost/taken'"
    **hint_pt**: "I had my bag snatched at a café in Lisbon."
    **hint_en**: "I had my bag snatched at a café in Lisbon."
-   **example_pass**: I had my bag snatched at a café in Lisbon. | The report has been reviewed by the committee. | The decision should have been made earlier.
+   **example_pass**: I had my bag snatched at a café in Lisbon. | The report has been reviewed by the committee. | The decision should have been made earlier. | I had my bag stolen on the metro during rush hour. | I had my wallet pickpocketed at the train station in Rome. | I had my passport taken at the border for a routine check. | I had my phone snatched right out of my hand on the street.
    **example_fail**: built (bare participle, no agent or structure) | They built the bridge in 1900 (active voice, not passive) | The bridge is nice (off-topic, no passive construction)
 
 2. **id**: 2
@@ -550,7 +550,7 @@
    **hidden_prompt**: "user uses 'I had/got + object + ruined/cancelled/lost'"
    **hint_pt**: "I had my flight rerouted to a different city."
    **hint_en**: "I had my flight rerouted to a different city."
-   **example_pass**: I had my flight rerouted to a different city. | The project is said to have been delayed. | She had her car repaired last week.
+   **example_pass**: I had my flight rerouted to a different city. | The project is said to have been delayed. | She had her car repaired last week. | I had my flight cancelled twice in the same week. | I had my booking lost by the hotel and ended up in a worse room. | I got my reservation rebooked at the last minute when the restaurant overbooked. | I had my whole evening ruined by a single bad phone call.
    **example_fail**: built (bare participle, no agent or structure) | They built the bridge in 1900 (active voice, not passive) | The bridge is nice (off-topic, no passive construction)
 
 3. **id**: 3
@@ -559,7 +559,7 @@
    **hidden_prompt**: "user uses 'I got + object + broken/scratched/damaged'"
    **hint_pt**: "I got my laptop screen cracked when my bag fell."
    **hint_en**: "I got my laptop screen cracked when my bag fell."
-   **example_pass**: I got my laptop screen cracked when my bag fell. | The contract was signed by both parties. | Mistakes were made during the process.
+   **example_pass**: I got my laptop screen cracked when my bag fell. | The contract was signed by both parties. | Mistakes were made during the process. | I got my phone screen cracked when I dropped it on the stone floor. | I got my car scratched in the parking lot by someone who didn't leave a note. | I got my luggage damaged on the connecting flight. | I got my new glasses broken on the very first day.
    **example_fail**: built (bare participle, no agent or structure) | They built the bridge in 1900 (active voice, not passive) | The bridge is nice (off-topic, no passive construction)
 
 **Closing cue**: Charlotte closes with "Year's hardships, archived." once obj_3 lands.
@@ -596,7 +596,7 @@
    **hidden_prompt**: "user uses 'I had/got + object + past participle' for misfortune"
    **hint_pt**: "I had my package marked as delivered when it never arrived."
    **hint_en**: "I had my package marked as delivered when it never arrived."
-   **example_pass**: I had my package marked as delivered when it never arrived. | The report has been reviewed by the committee. | The decision should have been made earlier.
+   **example_pass**: I had my package marked as delivered when it never arrived. | The report has been reviewed by the committee. | The decision should have been made earlier. | I had my package marked as delivered when it had never actually arrived. | I had my reservation cancelled at the last minute without any real explanation. | I had my flight rerouted three times before I finally landed in the right city. | I got my luggage damaged on the connecting flight, and the airline barely acknowledged it.
    **example_fail**: built (bare participle, no agent or structure) | They built the bridge in 1900 (active voice, not passive) | The bridge is nice (off-topic, no passive construction)
 
 2. **id**: 2
@@ -605,7 +605,7 @@
    **hidden_prompt**: "user uses another have/got + past participle event"
    **hint_pt**: "I had my reservation cancelled at the last minute."
    **hint_en**: "I had my reservation cancelled at the last minute."
-   **example_pass**: I had my reservation cancelled at the last minute. | The project is said to have been delayed. | She had her car repaired last week.
+   **example_pass**: I had my reservation cancelled at the last minute. | The project is said to have been delayed. | She had her car repaired last week. | I had my package marked as delivered when it had never actually arrived. | I had my reservation cancelled at the last minute without any real explanation. | I had my flight rerouted three times before I finally landed in the right city. | I got my luggage damaged on the connecting flight, and the airline barely acknowledged it.
    **example_fail**: built (bare participle, no agent or structure) | They built the bridge in 1900 (active voice, not passive) | The bridge is nice (off-topic, no passive construction)
 
 3. **id**: 3
@@ -614,7 +614,7 @@
    **hidden_prompt**: "user asks Charlotte how she resolved the passport mess"
    **hint_pt**: "How did you sort the passport?"
    **hint_en**: "How did you sort the passport?"
-   **example_pass**: How did you sort the passport? | The contract was signed by both parties. | Mistakes were made during the process.
+   **example_pass**: How did you sort the passport? | The contract was signed by both parties. | Mistakes were made during the process. | And you? | What about you? | How about yourself? | Same for you? | What's your take on it?
    **example_fail**: built (bare participle, no agent or structure) | They built the bridge in 1900 (active voice, not passive) | The bridge is nice (off-topic, no passive construction)
 
 **Closing cue**: Charlotte closes with "Minor agonies, mutual." once obj_3 lands.

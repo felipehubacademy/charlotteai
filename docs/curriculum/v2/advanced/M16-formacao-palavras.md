@@ -241,7 +241,7 @@
    **hidden_prompt**: "user uses noun form of a verb"
    **hint_pt**: "From 'They decided to expand' → 'The decision to expand was made unanimously.'"
    **hint_en**: "From 'They decided to expand' → 'The decision to expand was made unanimously.'"
-   **example_pass**: From 'They decided to expand' → 'The decision to expand was made unanimously.' | Her unwavering commitment was truly inspirational. | The misunderstanding led to widespread misinformation.
+   **example_pass**: From 'They decided to expand' → 'The decision to expand was made unanimously.' | Her unwavering commitment was truly inspirational. | The misunderstanding led to widespread misinformation. | From 'decided' → 'decision': The decision to expand was made unanimously by the board. | From 'invest' → 'investment': The investment in early-stage research is finally beginning to show results. | From 'arrived' → 'arrival': His arrival shifted the dynamic of the entire meeting. | From 'develop' → 'development': The development of the new platform took three years longer than planned.
    **example_fail**: happy (bare root, no derivation) | I am happy today (no derived form used) | The day was sunny (off-topic, no word formation)
 
 2. **id**: 2
@@ -250,7 +250,7 @@
    **hidden_prompt**: "user uses noun form of adjective"
    **hint_pt**: "From 'She was kind to the new hires' → 'Her kindness to the new hires set the tone for their entire onboarding.'"
    **hint_en**: "From 'She was kind to the new hires' → 'Her kindness to the new hires set the tone for their entire onboarding.'"
-   **example_pass**: From 'She was kind to the new hires' → 'Her kindness to the new hires set the tone for their entire onboarding.' | Industrialisation transformed the countryside dramatically. | The reorganisation was both costly and disruptive.
+   **example_pass**: From 'She was kind to the new hires' → 'Her kindness to the new hires set the tone for their entire onboarding.' | Industrialisation transformed the countryside dramatically. | The reorganisation was both costly and disruptive. | From 'kind' → 'kindness': Her kindness to the new hires set the tone for the rest of the year. | From 'creative' → 'creativity': The team's creativity carried the campaign through a difficult market. | From 'patient' → 'patience': His patience with even the most difficult clients is genuinely unusual. | From 'clear' → 'clarity': The clarity of her presentation made the executive team's decision unusually fast.
    **example_fail**: happy (bare root, no derivation) | I am happy today (no derived form used) | The day was sunny (off-topic, no word formation)
 
 3. **id**: 3
@@ -259,7 +259,7 @@
    **hidden_prompt**: "user uses -ship or -hood form"
    **hint_pt**: "From 'They worked as partners for ten years' → 'Their partnership lasted ten years, surviving three industries and two countries.'"
    **hint_en**: "From 'They worked as partners for ten years' → 'Their partnership lasted ten years, surviving three industries and two countries.'"
-   **example_pass**: From 'They worked as partners for ten years' → 'Their partnership lasted ten years, surviving three industries and two countries.' | His thoughtfulness made the gesture unforgettable. | A meaningful collaboration produced remarkable results.
+   **example_pass**: From 'They worked as partners for ten years' → 'Their partnership lasted ten years, surviving three industries and two countries.' | His thoughtfulness made the gesture unforgettable. | A meaningful collaboration produced remarkable results. | From 'partner' → 'partnership': Their partnership lasted ten years and survived two industries. | From 'friend' → 'friendship': Our friendship has outlasted three different cities and two careers each. | From 'leader' → 'leadership': Her leadership turned the company around within a single year. | From 'neighbour' → 'neighbourhood': The neighbourhood changed completely in the decade after we moved in.
    **example_fail**: happy (bare root, no derivation) | I am happy today (no derived form used) | The day was sunny (off-topic, no word formation)
 
 **Closing cue**: Charlotte closes with "Abstractions, fitted." once obj_3 lands.
@@ -296,7 +296,7 @@
    **hidden_prompt**: "user uses 'decision' and 'performance'"
    **hint_pt**: "Try: 'The decision to expand was followed by a measurable improvement in team performance.'"
    **hint_en**: "Try: 'The decision to expand was followed by a measurable improvement in team performance.'"
-   **example_pass**: Try: 'The decision to expand was followed by a measurable improvement in team performance.' | Her unwavering commitment was truly inspirational. | The misunderstanding led to widespread misinformation.
+   **example_pass**: Try: 'The decision to expand was followed by a measurable improvement in team performance.' | Her unwavering commitment was truly inspirational. | The misunderstanding led to widespread misinformation. | Try: 'The decision to expand was followed by a measurable improvement in team performance over the next two quarters.' | Try: 'The decision turned out to be costly, but the performance metrics eventually justified it.' | Try: 'Her decision to delay the launch protected the long-term performance of the brand.' | Try: 'The decision and its consequences shaped the team's performance for years afterwards.'
    **example_fail**: happy (bare root, no derivation) | I am happy today (no derived form used) | The day was sunny (off-topic, no word formation)
 
 2. **id**: 2
@@ -305,7 +305,7 @@
    **hidden_prompt**: "user uses 'growth'"
    **hint_pt**: "Then: 'Subsequent growth outpaced that of competitors over the same period.'"
    **hint_en**: "Then: 'Subsequent growth outpaced that of competitors over the same period.'"
-   **example_pass**: Then: 'Subsequent growth outpaced that of competitors over the same period.' | Industrialisation transformed the countryside dramatically. | The reorganisation was both costly and disruptive.
+   **example_pass**: Then: 'Subsequent growth outpaced that of competitors over the same period.' | Industrialisation transformed the countryside dramatically. | The reorganisation was both costly and disruptive. | Then: 'The company's growth in that region was largely driven by a single key partnership.' | Then: 'Growth slowed in the second half of the year, but margins improved considerably.' | Then: 'Growth came in waves, with each new market opening producing its own distinct rhythm.'
    **example_fail**: happy (bare root, no derivation) | I am happy today (no derived form used) | The day was sunny (off-topic, no word formation)
 
 3. **id**: 3
@@ -314,7 +314,7 @@
    **hidden_prompt**: "user asks Charlotte who the audience is"
    **hint_pt**: "Who is the audience — internal board or shareholders?"
    **hint_en**: "Who is the audience — internal board or shareholders?"
-   **example_pass**: Who is the audience — internal board or shareholders? | His thoughtfulness made the gesture unforgettable. | A meaningful collaboration produced remarkable results.
+   **example_pass**: Who is the audience — internal board or shareholders? | His thoughtfulness made the gesture unforgettable. | A meaningful collaboration produced remarkable results. | And you? | What about you? | How about yourself? | Same for you? | What's your take on it?
    **example_fail**: happy (bare root, no derivation) | I am happy today (no derived form used) | The day was sunny (off-topic, no word formation)
 
 **Closing cue**: Charlotte closes with "Verbs to nouns, register lifted." once obj_3 lands.
@@ -700,7 +700,7 @@
    **hidden_prompt**: "user uses 'message' as verb"
    **hint_pt**: "I'll message you the details once the venue is confirmed."
    **hint_en**: "I'll message you the details once the venue is confirmed."
-   **example_pass**: I'll message you the details once the venue is confirmed. | Her unwavering commitment was truly inspirational. | The misunderstanding led to widespread misinformation.
+   **example_pass**: I'll message you the details once the venue is confirmed. | Her unwavering commitment was truly inspirational. | The misunderstanding led to widespread misinformation. | She messaged me at midnight just to say the show had been wonderful. | He hardly ever messages first, but he always responds within minutes. | Can you message the team and ask them to log off early today?
    **example_fail**: happy (bare root, no derivation) | I am happy today (no derived form used) | The day was sunny (off-topic, no word formation)
 
 2. **id**: 2
@@ -709,7 +709,7 @@
    **hidden_prompt**: "user uses 'gift' as verb"
    **hint_pt**: "She gifted me a first edition for my birthday — a single book that meant more than any wrapped pile."
    **hint_en**: "She gifted me a first edition for my birthday — a single book that meant more than any wrapped pile."
-   **example_pass**: She gifted me a first edition for my birthday — a single book that meant more than any wrapped pile. | Industrialisation transformed the countryside dramatically. | The reorganisation was both costly and disruptive.
+   **example_pass**: She gifted me a first edition for my birthday — a single book that meant more than any wrapped pile. | Industrialisation transformed the countryside dramatically. | The reorganisation was both costly and disruptive. | He gifted his old guitar to a younger cousin who actually had time to play it. | They gifted the new hires hand-written notes on their first day, which set the tone perfectly. | She gifted the painting back to the artist when she found out it was the last one he had.
    **example_fail**: happy (bare root, no derivation) | I am happy today (no derived form used) | The day was sunny (off-topic, no word formation)
 
 3. **id**: 3
@@ -718,7 +718,7 @@
    **hidden_prompt**: "user uses 'screenshot' as verb"
    **hint_pt**: "I screenshotted the conversation just in case anyone needed proof of the timeline."
    **hint_en**: "I screenshotted the conversation just in case anyone needed proof of the timeline."
-   **example_pass**: I screenshotted the conversation just in case anyone needed proof of the timeline. | His thoughtfulness made the gesture unforgettable. | A meaningful collaboration produced remarkable results.
+   **example_pass**: I screenshotted the conversation just in case anyone needed proof of the timeline. | His thoughtfulness made the gesture unforgettable. | A meaningful collaboration produced remarkable results. | He screenshotted the press release the second it went live and sent it to half the office. | She screenshotted the chart and dropped it into the deck without asking permission. | I screenshotted the error and sent it to support before I forgot what I had been doing.
    **example_fail**: happy (bare root, no derivation) | I am happy today (no derived form used) | The day was sunny (off-topic, no word formation)
 
 **Closing cue**: Charlotte closes with "Conversions, fully fluent." once obj_3 lands.
@@ -755,7 +755,7 @@
    **hidden_prompt**: "user suggests 'text' as verb"
    **hint_pt**: "She probably laughed at 'send a text message' — natives just say 'I'll text you'. The noun has become its own verb."
    **hint_en**: "She probably laughed at 'send a text message' — natives just say 'I'll text you'. The noun has become its own verb."
-   **example_pass**: She probably laughed at 'send a text message' — natives just say 'I'll text you'. The noun has become its own verb. | Her unwavering commitment was truly inspirational. | The misunderstanding led to widespread misinformation.
+   **example_pass**: She probably laughed at 'send a text message' — natives just say 'I'll text you'. The noun has become its own verb. | Her unwavering commitment was truly inspirational. | The misunderstanding led to widespread misinformation. | She probably laughed at 'send a text message' — natives just say 'I'll text you' these days. | Same goes for 'send her an email' → 'email her'. And 'do a Google search' → 'google it'. | Conversion makes English faster: 'message me' instead of 'send me a message'; 'mic me' instead of 'attach a microphone'. | I had to retrain myself: 'I'll WhatsApp you', 'I'll Slack you', 'I'll DM you' — all verbs now, all from nouns.
    **example_fail**: happy (bare root, no derivation) | I am happy today (no derived form used) | The day was sunny (off-topic, no word formation)
 
 2. **id**: 2
@@ -764,7 +764,7 @@
    **hidden_prompt**: "user adds other conversion verbs"
    **hint_pt**: "Same goes for 'send her an email' → 'email her'. And 'do a Google search' → 'google it'. Conversion makes English faster."
    **hint_en**: "Same goes for 'send her an email' → 'email her'. And 'do a Google search' → 'google it'. Conversion makes English faster."
-   **example_pass**: Same goes for 'send her an email' → 'email her'. And 'do a Google search' → 'google it'. Conversion makes English faster. | Industrialisation transformed the countryside dramatically. | The reorganisation was both costly and disruptive.
+   **example_pass**: Same goes for 'send her an email' → 'email her'. And 'do a Google search' → 'google it'. Conversion makes English faster. | Industrialisation transformed the countryside dramatically. | The reorganisation was both costly and disruptive. | She probably laughed at 'send a text message' — natives just say 'I'll text you' these days. | Same goes for 'send her an email' → 'email her'. And 'do a Google search' → 'google it'. | Conversion makes English faster: 'message me' instead of 'send me a message'; 'mic me' instead of 'attach a microphone'. | I had to retrain myself: 'I'll WhatsApp you', 'I'll Slack you', 'I'll DM you' — all verbs now, all from nouns.
    **example_fail**: happy (bare root, no derivation) | I am happy today (no derived form used) | The day was sunny (off-topic, no word formation)
 
 3. **id**: 3
@@ -773,7 +773,7 @@
    **hidden_prompt**: "user asks Charlotte how old her daughter is"
    **hint_pt**: "How old is your daughter?"
    **hint_en**: "How old is your daughter?"
-   **example_pass**: How old is your daughter? | His thoughtfulness made the gesture unforgettable. | A meaningful collaboration produced remarkable results.
+   **example_pass**: How old is your daughter? | His thoughtfulness made the gesture unforgettable. | A meaningful collaboration produced remarkable results. | And you? | What about you? | How about yourself? | Same for you? | What's your take on it?
    **example_fail**: happy (bare root, no derivation) | I am happy today (no derived form used) | The day was sunny (off-topic, no word formation)
 
 **Closing cue**: Charlotte closes with "Modern English speeds up — conversions everywhere." once obj_3 lands.

@@ -544,7 +544,7 @@
    **hidden_prompt**: "user uses 'It wasn't until + clause + that + main'"
    **hint_pt**: "It wasn't until I changed jobs that I understood how unhappy I had been."
    **hint_en**: "It wasn't until I changed jobs that I understood how unhappy I had been."
-   **example_pass**: It wasn't until I changed jobs that I understood how unhappy I had been. | It was her dedication that impressed me most. | What I really value is honest feedback.
+   **example_pass**: It wasn't until I changed jobs that I understood how unhappy I had been. | It was her dedication that impressed me most. | What I really value is honest feedback. | It wasn't until I read the whole report that I understood what they were proposing. | It wasn't until I started teaching that I really learned the material myself. | It wasn't until the third meeting that anyone admitted the project was in trouble. | It wasn't until I lost the client that I realised how much I'd been coasting.
    **example_fail**: money (bare word, no cleft structure) | I value family most (simple sentence, no cleft) | I like cooking (off-topic, no 'it is' or 'what')
 
 2. **id**: 2
@@ -553,7 +553,7 @@
    **hidden_prompt**: "user uses 'It wasn't until + time + that + event'"
    **hint_pt**: "It wasn't until 30 that I learned to cook properly."
    **hint_en**: "It wasn't until 30 that I learned to cook properly."
-   **example_pass**: It wasn't until 30 that I learned to cook properly. | It was in 2010 that we first met. | What surprised me was his calm reaction.
+   **example_pass**: It wasn't until 30 that I learned to cook properly. | It was in 2010 that we first met. | What surprised me was his calm reaction. | It wasn't until my forties that I learned how to take a real holiday. | It wasn't until last winter that the doctor finally gave me a proper diagnosis. | It wasn't until 2018 that the company turned its first real profit. | It wasn't until after the move that we noticed how much lighter we both felt.
    **example_fail**: money (bare word, no cleft structure) | I value family most (simple sentence, no cleft) | I like cooking (off-topic, no 'it is' or 'what')
 
 3. **id**: 3
@@ -562,7 +562,7 @@
    **hidden_prompt**: "user uses 'It wasn't until + clause + that + he/she + clause'"
    **hint_pt**: "It wasn't until last week that my brother told me the whole story."
    **hint_en**: "It wasn't until last week that my brother told me the whole story."
-   **example_pass**: It wasn't until last week that my brother told me the whole story. | It is the silence that bothers me, not the noise. | All I want is a quiet weekend.
+   **example_pass**: It wasn't until last week that my brother told me the whole story. | It is the silence that bothers me, not the noise. | All I want is a quiet weekend. | It wasn't until I read the whole report that I understood what they were proposing. | It wasn't until I started teaching that I really learned the material myself. | It wasn't until the third meeting that anyone admitted the project was in trouble. | It wasn't until I lost the client that I realised how much I'd been coasting.
    **example_fail**: money (bare word, no cleft structure) | I value family most (simple sentence, no cleft) | I like cooking (off-topic, no 'it is' or 'what')
 
 **Closing cue**: Charlotte closes with "Late but legible." once obj_3 lands.
@@ -599,7 +599,7 @@
    **hidden_prompt**: "user uses 'It wasn't until X that Y'"
    **hint_pt**: "It wasn't until I lost a friend that I started replying to texts on the same day."
    **hint_en**: "It wasn't until I lost a friend that I started replying to texts on the same day."
-   **example_pass**: It wasn't until I lost a friend that I started replying to texts on the same day. | It was her dedication that impressed me most. | What I really value is honest feedback.
+   **example_pass**: It wasn't until I lost a friend that I started replying to texts on the same day. | It was her dedication that impressed me most. | What I really value is honest feedback. | It wasn't until I left the country that I really appreciated how much it had shaped me. | It wasn't until I quit that I realised how unhappy the job had been making me. | It wasn't until I changed manager that I started enjoying my work again. | It wasn't until my forties that I finally learned to take real holidays.
    **example_fail**: money (bare word, no cleft structure) | I value family most (simple sentence, no cleft) | I like cooking (off-topic, no 'it is' or 'what')
 
 2. **id**: 2
@@ -608,7 +608,7 @@
    **hidden_prompt**: "user uses another 'It wasn't until' cleft"
    **hint_pt**: "It wasn't until I tried therapy that I noticed how angry I was."
    **hint_en**: "It wasn't until I tried therapy that I noticed how angry I was."
-   **example_pass**: It wasn't until I tried therapy that I noticed how angry I was. | It was in 2010 that we first met. | What surprised me was his calm reaction.
+   **example_pass**: It wasn't until I tried therapy that I noticed how angry I was. | It was in 2010 that we first met. | What surprised me was his calm reaction. | It wasn't until I left the country that I really appreciated how much it had shaped me. | It wasn't until I quit that I realised how unhappy the job had been making me. | It wasn't until I changed manager that I started enjoying my work again. | It wasn't until my forties that I finally learned to take real holidays.
    **example_fail**: money (bare word, no cleft structure) | I value family most (simple sentence, no cleft) | I like cooking (off-topic, no 'it is' or 'what')
 
 3. **id**: 3
@@ -617,7 +617,7 @@
    **hidden_prompt**: "user asks Charlotte what made her finally take sleep seriously"
    **hint_pt**: "What flipped the switch on sleep for you?"
    **hint_en**: "What flipped the switch on sleep for you?"
-   **example_pass**: What flipped the switch on sleep for you? | It is the silence that bothers me, not the noise. | All I want is a quiet weekend.
+   **example_pass**: What flipped the switch on sleep for you? | It is the silence that bothers me, not the noise. | All I want is a quiet weekend. | And you? | What about you? | How about yourself? | Same for you? | What's your take on it?
    **example_fail**: money (bare word, no cleft structure) | I value family most (simple sentence, no cleft) | I like cooking (off-topic, no 'it is' or 'what')
 
 **Closing cue**: Charlotte closes with "Late, not lost." once obj_3 lands.
@@ -698,7 +698,7 @@
    **hidden_prompt**: "user uses 'The reason (why) + clause + is + that-clause/element'"
    **hint_pt**: "The reason I started running is that my back wouldn't stop hurting."
    **hint_en**: "The reason I started running is that my back wouldn't stop hurting."
-   **example_pass**: The reason I started running is that my back wouldn't stop hurting. | It was her dedication that impressed me most. | What I really value is honest feedback.
+   **example_pass**: The reason I started running is that my back wouldn't stop hurting. | It was her dedication that impressed me most. | What I really value is honest feedback. | The reason I left wasn't the salary — it was the silence after every difficult question. | The reason this is taking so long is that no two people have agreed on the brief. | The reason she's so good at this is that she's done it for fifteen years quietly. | The reason the project failed is that nobody owned the integration layer.
    **example_fail**: money (bare word, no cleft structure) | I value family most (simple sentence, no cleft) | I like cooking (off-topic, no 'it is' or 'what')
 
 2. **id**: 2
@@ -707,7 +707,7 @@
    **hidden_prompt**: "user uses 'The thing that + clause + is/was + element'"
    **hint_pt**: "The thing that kept me going was a single email from a stranger."
    **hint_en**: "The thing that kept me going was a single email from a stranger."
-   **example_pass**: The thing that kept me going was a single email from a stranger. | It was in 2010 that we first met. | What surprised me was his calm reaction.
+   **example_pass**: The thing that kept me going was a single email from a stranger. | It was in 2010 that we first met. | What surprised me was his calm reaction. | The thing that kept me going through that year was a single line my therapist said. | The thing that broke the team wasn't workload — it was the lack of honest feedback. | The thing that finally made the difference was hiring one senior engineer. | The thing that surprised everyone was how quickly she rebuilt the team after the layoffs.
    **example_fail**: money (bare word, no cleft structure) | I value family most (simple sentence, no cleft) | I like cooking (off-topic, no 'it is' or 'what')
 
 3. **id**: 3
@@ -716,7 +716,7 @@
    **hidden_prompt**: "user uses 'The place where + clause + is/was' or 'The time when + clause + was'"
    **hint_pt**: "The time when I felt most myself was the year I lived alone in Lisbon."
    **hint_en**: "The time when I felt most myself was the year I lived alone in Lisbon."
-   **example_pass**: The time when I felt most myself was the year I lived alone in Lisbon. | It is the silence that bothers me, not the noise. | All I want is a quiet weekend.
+   **example_pass**: The time when I felt most myself was the year I lived alone in Lisbon. | It is the silence that bothers me, not the noise. | All I want is a quiet weekend. | The time when I felt most alive was the year I lived above a bakery in Lisbon. | The place where I think most clearly is a small park near my old apartment. | The moment when everything shifted was the morning I finally said no. | The year when the whole company turned around was the one nobody wants to talk about anymore.
    **example_fail**: money (bare word, no cleft structure) | I value family most (simple sentence, no cleft) | I like cooking (off-topic, no 'it is' or 'what')
 
 **Closing cue**: Charlotte closes with "Three frames, three spotlights." once obj_3 lands.
@@ -753,7 +753,7 @@
    **hidden_prompt**: "user uses 'The reason + clause + is + that-clause'"
    **hint_pt**: "The reason I write every morning is that I think better when nobody's watching."
    **hint_en**: "The reason I write every morning is that I think better when nobody's watching."
-   **example_pass**: The reason I write every morning is that I think better when nobody's watching. | It was her dedication that impressed me most. | What I really value is honest feedback.
+   **example_pass**: The reason I write every morning is that I think better when nobody's watching. | It was her dedication that impressed me most. | What I really value is honest feedback. | The reason I left wasn't the salary — it was the silence after every difficult question. | The reason she's so good at this is that she's been doing it quietly for fifteen years. | The reason the project failed is that nobody owned the integration layer end-to-end. | The reason this is taking so long is that no two people have agreed on the brief yet.
    **example_fail**: money (bare word, no cleft structure) | I value family most (simple sentence, no cleft) | I like cooking (off-topic, no 'it is' or 'what')
 
 2. **id**: 2
@@ -762,7 +762,7 @@
    **hidden_prompt**: "user uses 'The thing that + clause + is/was + element'"
    **hint_pt**: "The thing that changed me most was my first proper failure."
    **hint_en**: "The thing that changed me most was my first proper failure."
-   **example_pass**: The thing that changed me most was my first proper failure. | It was in 2010 that we first met. | What surprised me was his calm reaction.
+   **example_pass**: The thing that changed me most was my first proper failure. | It was in 2010 that we first met. | What surprised me was his calm reaction. | The thing that kept me going through that year was a single line my therapist said. | The thing that broke the team wasn't workload — it was the lack of honest feedback. | The thing that finally made the difference was hiring one senior engineer. | The thing that surprised everyone was how quickly she rebuilt the team after the layoffs.
    **example_fail**: money (bare word, no cleft structure) | I value family most (simple sentence, no cleft) | I like cooking (off-topic, no 'it is' or 'what')
 
 3. **id**: 3
@@ -771,7 +771,7 @@
    **hidden_prompt**: "user asks Charlotte about her teacher"
    **hint_pt**: "Who was the teacher?"
    **hint_en**: "Who was the teacher?"
-   **example_pass**: Who was the teacher? | It is the silence that bothers me, not the noise. | All I want is a quiet weekend.
+   **example_pass**: Who was the teacher? | It is the silence that bothers me, not the noise. | All I want is a quiet weekend. | And you? | What about you? | How about yourself? | Same for you? | What's your take on it?
    **example_fail**: money (bare word, no cleft structure) | I value family most (simple sentence, no cleft) | I like cooking (off-topic, no 'it is' or 'what')
 
 **Closing cue**: Charlotte closes with "Self-portrait, in clefts." once obj_3 lands.

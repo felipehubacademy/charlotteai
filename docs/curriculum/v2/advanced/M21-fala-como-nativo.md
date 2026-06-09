@@ -85,7 +85,7 @@
    **hidden_prompt**: "user adds one 'you know' to sound casual"
    **hint_pt**: "It was, you know, the kind of meeting where everyone had something to say and nobody was actually listening."
    **hint_en**: "It was, you know, the kind of meeting where everyone had something to say and nobody was actually listening."
-   **example_pass**: It was, you know, the kind of meeting where everyone had something to say and nobody was actually listening. | Honestly, that's a total game-changer. | I'm not gonna lie, it threw me off completely.
+   **example_pass**: It was, you know, the kind of meeting where everyone had something to say and nobody was actually listening. | Honestly, that's a total game-changer. | I'm not gonna lie, it threw me off completely. | She's, you know, the sort of manager who reads the room before saying anything herself. | It's, you know, one of those situations where the right answer is also the least convenient one. | He's, you know, brilliant — but in a way that takes a while to notice.
    **example_fail**: cool (bare slang, no sentence) | That is acceptable (formal register, not native-like) | I had lunch (off-topic, no native-style phrasing)
 
 2. **id**: 2
@@ -94,7 +94,7 @@
    **hidden_prompt**: "user opens or pivots with 'I mean'"
    **hint_pt**: "I mean, the project wasn't bad — it just wasn't what anyone hoped it would be."
    **hint_en**: "I mean, the project wasn't bad — it just wasn't what anyone hoped it would be."
-   **example_pass**: I mean, the project wasn't bad — it just wasn't what anyone hoped it would be. | That's super interesting, actually. | To be fair, it could've gone either way.
+   **example_pass**: I mean, the project wasn't bad — it just wasn't what anyone hoped it would be. | That's super interesting, actually. | To be fair, it could've gone either way. | I mean, she's a strong candidate, but she's clearly being courted by three other companies. | I mean, we could push the launch back, but then we'd lose the entire holiday window. | I mean, the data is good — the question is whether anyone in leadership is going to actually act on it.
    **example_fail**: cool (bare slang, no sentence) | That is acceptable (formal register, not native-like) | I had lunch (off-topic, no native-style phrasing)
 
 3. **id**: 3
@@ -103,7 +103,7 @@
    **hidden_prompt**: "user uses 'kind of' or 'sort of' to soften"
    **hint_pt**: "It's sort of one of those situations where there isn't a right answer, just a less wrong one."
    **hint_en**: "It's sort of one of those situations where there isn't a right answer, just a less wrong one."
-   **example_pass**: It's sort of one of those situations where there isn't a right answer, just a less wrong one. | I'm low-key obsessed with that show. | It's kind of a big deal, ngl.
+   **example_pass**: It's sort of one of those situations where there isn't a right answer, just a less wrong one. | I'm low-key obsessed with that show. | It's kind of a big deal, ngl. | She kind of inherited the role without anyone formally giving it to her. | It was kind of a strange meeting — friendly on the surface, but no one really said what they meant. | He's sort of running the team now, even though nobody has officially announced it.
    **example_fail**: cool (bare slang, no sentence) | That is acceptable (formal register, not native-like) | I had lunch (off-topic, no native-style phrasing)
 
 **Closing cue**: Charlotte closes with "Fillers, strategically placed." once obj_3 lands.
@@ -140,7 +140,7 @@
    **hidden_prompt**: "user uses 'I mean' or 'you know' once"
    **hint_pt**: "I mean, week three is when those problems usually surface — early enough to be visible, late enough that pulling back feels expensive."
    **hint_en**: "I mean, week three is when those problems usually surface — early enough to be visible, late enough that pulling back feels expensive."
-   **example_pass**: I mean, week three is when those problems usually surface — early enough to be visible, late enough that pulling back feels expensive. | Honestly, that's a total game-changer. | I'm not gonna lie, it threw me off completely.
+   **example_pass**: I mean, week three is when those problems usually surface — early enough to be visible, late enough that pulling back feels expensive. | Honestly, that's a total game-changer. | I'm not gonna lie, it threw me off completely. | I mean, the project wasn't bad — it just wasn't what anyone hoped it would be. | I mean, she's a strong candidate, but she's clearly being courted by three other companies. | I mean, we could push the launch back, but then we'd lose the entire holiday window. | I mean, the data is good — the question is whether anyone in leadership is going to actually act on it.
    **example_fail**: cool (bare slang, no sentence) | That is acceptable (formal register, not native-like) | I had lunch (off-topic, no native-style phrasing)
 
 2. **id**: 2
@@ -149,7 +149,7 @@
    **hidden_prompt**: "user uses 'kind of' or 'sort of' softener"
    **hint_pt**: "It's sort of the design version of compound interest — small wrong calls in the first week add up by the third."
    **hint_en**: "It's sort of the design version of compound interest — small wrong calls in the first week add up by the third."
-   **example_pass**: It's sort of the design version of compound interest — small wrong calls in the first week add up by the third. | That's super interesting, actually. | To be fair, it could've gone either way.
+   **example_pass**: It's sort of the design version of compound interest — small wrong calls in the first week add up by the third. | That's super interesting, actually. | To be fair, it could've gone either way. | It's kind of one of those situations where the right answer is also the most uncomfortable one. | It's sort of like managing a team — you don't really know what works until you try it on a real project. | It's kind of frustrating, honestly — we keep ending up in the same conversation in slightly different rooms.
    **example_fail**: cool (bare slang, no sentence) | That is acceptable (formal register, not native-like) | I had lunch (off-topic, no native-style phrasing)
 
 3. **id**: 3
@@ -158,7 +158,7 @@
    **hidden_prompt**: "user asks Charlotte what specifically broke"
    **hint_pt**: "What was the one decision that did it?"
    **hint_en**: "What was the one decision that did it?"
-   **example_pass**: What was the one decision that did it? | I'm low-key obsessed with that show. | It's kind of a big deal, ngl.
+   **example_pass**: What was the one decision that did it? | I'm low-key obsessed with that show. | It's kind of a big deal, ngl. | And you? | What about you? | How about yourself? | Same for you? | What's your take on it?
    **example_fail**: cool (bare slang, no sentence) | That is acceptable (formal register, not native-like) | I had lunch (off-topic, no native-style phrasing)
 
 **Closing cue**: Charlotte closes with "Fillers carry register." once obj_3 lands.

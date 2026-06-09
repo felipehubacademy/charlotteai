@@ -387,7 +387,7 @@
    **hidden_prompt**: "user rewrites bullet with strong verb + scope + quantified outcome"
    **hint_pt**: "Led a 15-person engineering team to ship four major releases in 18 months, increasing platform reliability by 35%."
    **hint_en**: "Led a 15-person engineering team to ship four major releases in 18 months, increasing platform reliability by 35%."
-   **example_pass**: Led a 15-person engineering team to ship four major releases in 18 months, increasing platform reliability by 35%. | I hope this email finds you well. | Please find attached the revised proposal for your review.
+   **example_pass**: Led a 15-person engineering team to ship four major releases in 18 months, increasing platform reliability by 35%. | I hope this email finds you well. | Please find attached the revised proposal for your review. | Managed a $4M annual marketing budget across five regions, delivering a 22% increase in qualified leads year-over-year. | Drove the redesign of the onboarding flow, reducing time-to-first-value from 14 days to 3 days for new enterprise customers. | Built and led a team of eight product designers, shipping a complete UI overhaul that increased weekly active users by 40%.
    **example_fail**: ok (bare reply, no email register) | Send me the report now (blunt, not email-appropriate) | I had a coffee (off-topic, no business email tone)
 
 2. **id**: 2
@@ -396,7 +396,7 @@
    **hidden_prompt**: "user rewrites with 'Spearheaded' or 'Drove' + outcome"
    **hint_pt**: "Spearheaded the migration from monolith to microservices, cutting deployment time from days to hours."
    **hint_en**: "Spearheaded the migration from monolith to microservices, cutting deployment time from days to hours."
-   **example_pass**: Spearheaded the migration from monolith to microservices, cutting deployment time from days to hours. | I would appreciate your feedback at your earliest convenience. | Thank you in advance for your kind cooperation.
+   **example_pass**: Spearheaded the migration from monolith to microservices, cutting deployment time from days to hours. | I would appreciate your feedback at your earliest convenience. | Thank you in advance for your kind cooperation. | Drove the launch of the new product line, generating $8M in first-year revenue and three follow-on enterprise contracts. | Spearheaded the company's expansion into the Latin American market, growing revenue from zero to $5M in eighteen months. | Drove the redesign of the customer support workflow, reducing average ticket resolution time by 47%.
    **example_fail**: ok (bare reply, no email register) | Send me the report now (blunt, not email-appropriate) | I had a coffee (off-topic, no business email tone)
 
 3. **id**: 3
@@ -405,7 +405,7 @@
    **hidden_prompt**: "user rewrites with quantified financial outcome"
    **hint_pt**: "Negotiated supplier contracts that reduced annual operating costs by $1.2M."
    **hint_en**: "Negotiated supplier contracts that reduced annual operating costs by $1.2M."
-   **example_pass**: Negotiated supplier contracts that reduced annual operating costs by $1.2M. | I look forward to hearing from you soon. | Should you require further clarification, please don't hesitate to ask.
+   **example_pass**: Negotiated supplier contracts that reduced annual operating costs by $1.2M. | I look forward to hearing from you soon. | Should you require further clarification, please don't hesitate to ask. | Negotiated supplier contracts that reduced annual operating costs by $1.2M without compromising service quality. | Restructured the licensing model, generating $3.5M in incremental revenue within the first year of implementation. | Led the cost-reduction initiative that delivered $4.8M in annual savings while improving customer satisfaction scores. | Closed three enterprise contracts totalling $7.2M, including the company's largest single deal to date.
    **example_fail**: ok (bare reply, no email register) | Send me the report now (blunt, not email-appropriate) | I had a coffee (off-topic, no business email tone)
 
 **Closing cue**: Charlotte closes with "Three bullets, three stories of impact. That's a CV." once obj_3 lands.
@@ -442,7 +442,7 @@
    **hidden_prompt**: "user uses 'What draws me to [Company] is...' with specific reason"
    **hint_pt**: "What draws me to NorthPath is your commitment to open-source infrastructure — I've contributed to two of your projects on GitHub."
    **hint_en**: "What draws me to NorthPath is your commitment to open-source infrastructure — I've contributed to two of your projects on GitHub."
-   **example_pass**: What draws me to NorthPath is your commitment to open-source infrastructure — I've contributed to two of your projects on GitHub. | I hope this email finds you well. | Please find attached the revised proposal for your review.
+   **example_pass**: What draws me to NorthPath is your commitment to open-source infrastructure — I've contributed to two of your projects on GitHub. | I hope this email finds you well. | Please find attached the revised proposal for your review. | What draws me to your company specifically is the technical depth of the engineering blog — it's clear the team writes for itself first. | What draws me to this role is the chance to apply the work I've been doing on platform scaling to a much larger problem set. | What draws me to your team is the unusual combination of engineering rigour and product instinct that's visible in everything you ship.
    **example_fail**: ok (bare reply, no email register) | Send me the report now (blunt, not email-appropriate) | I had a coffee (off-topic, no business email tone)
 
 2. **id**: 2
@@ -451,7 +451,7 @@
    **hidden_prompt**: "user connects company specifics to their own work"
    **hint_pt**: "In my current role, I've built three open-source tools that align with your team's release model."
    **hint_en**: "In my current role, I've built three open-source tools that align with your team's release model."
-   **example_pass**: In my current role, I've built three open-source tools that align with your team's release model. | I would appreciate your feedback at your earliest convenience. | Thank you in advance for your kind cooperation.
+   **example_pass**: In my current role, I've built three open-source tools that align with your team's release model. | I would appreciate your feedback at your earliest convenience. | Thank you in advance for your kind cooperation. | In my current role, I've built three open-source tools that align with your team's release model and developer-first philosophy. | In my last role, I led the migration that closely mirrors what your engineering blog describes as your platform's biggest challenge. | In my current work, I've been solving a smaller version of the same problem your team has written publicly about. | In my recent projects, I've spent significant time on the exact kind of distributed-systems work your team is known for.
    **example_fail**: ok (bare reply, no email register) | Send me the report now (blunt, not email-appropriate) | I had a coffee (off-topic, no business email tone)
 
 3. **id**: 3
@@ -460,7 +460,7 @@
    **hidden_prompt**: "user closes with personal motivation tied to mission"
    **hint_pt**: "Working at NorthPath would let me combine my open-source ethos with the kind of scale your platform offers."
    **hint_en**: "Working at NorthPath would let me combine my open-source ethos with the kind of scale your platform offers."
-   **example_pass**: Working at NorthPath would let me combine my open-source ethos with the kind of scale your platform offers. | I look forward to hearing from you soon. | Should you require further clarification, please don't hesitate to ask.
+   **example_pass**: Working at NorthPath would let me combine my open-source ethos with the kind of scale your platform offers. | I look forward to hearing from you soon. | Should you require further clarification, please don't hesitate to ask. | Joining your team would allow me to bring my technical work into closer alignment with the mission I care about most. | Working with your team would give me the chance to spend the next phase of my career on a problem I genuinely want to solve. | Joining your company would let me apply what I've learned to a problem that's bigger than anything I've worked on before.
    **example_fail**: ok (bare reply, no email register) | Send me the report now (blunt, not email-appropriate) | I had a coffee (off-topic, no business email tone)
 
 **Closing cue**: Charlotte closes with "Now you sound like you actually want the job — not just any job." once obj_3 lands.

@@ -86,7 +86,7 @@
    **hidden_prompt**: "user uses 'As a matter of fact, + clause'"
    **hint_pt**: "As a matter of fact, the launch was last Tuesday, not Wednesday."
    **hint_en**: "As a matter of fact, the launch was last Tuesday, not Wednesday."
-   **example_pass**: As a matter of fact, the launch was last Tuesday, not Wednesday. | On the one hand, it's expensive; on the other hand, it lasts forever. | Having said that, there are still some concerns.
+   **example_pass**: As a matter of fact, the launch was last Tuesday, not Wednesday. | On the one hand, it's expensive; on the other hand, it lasts forever. | Having said that, there are still some concerns. | As a matter of fact, the deadline was extended on Friday afternoon. | As a matter of fact, she was the one who first suggested the new structure. | As a matter of fact, the data shows the opposite of what we'd been assuming. | As a matter of fact, that policy was rolled back two months ago.
    **example_fail**: and (bare connector, no discourse marker) | I like it. I bought it (simple statements, no markers) | The weather is nice (off-topic, no discourse organisation)
 
 2. **id**: 2
@@ -95,7 +95,7 @@
    **hidden_prompt**: "user uses 'In fact, + clause' to intensify"
    **hint_pt**: "She didn't just attend the meeting — in fact, she led most of it."
    **hint_en**: "She didn't just attend the meeting — in fact, she led most of it."
-   **example_pass**: She didn't just attend the meeting — in fact, she led most of it. | As a matter of fact, I had the same experience. | To put it differently, we need a fresh approach.
+   **example_pass**: She didn't just attend the meeting — in fact, she led most of it. | As a matter of fact, I had the same experience. | To put it differently, we need a fresh approach. | The launch wasn't merely successful; in fact, it exceeded every internal target by a wide margin. | He didn't just disagree — in fact, he wrote a three-page memo explaining why. | The project wasn't behind schedule; in fact, we shipped a full week early.
    **example_fail**: and (bare connector, no discourse marker) | I like it. I bought it (simple statements, no markers) | The weather is nice (off-topic, no discourse organisation)
 
 3. **id**: 3
@@ -104,7 +104,7 @@
    **hidden_prompt**: "user uses 'Actually, + clause'"
    **hint_pt**: "Actually, the deadline was extended on Friday afternoon."
    **hint_en**: "Actually, the deadline was extended on Friday afternoon."
-   **example_pass**: Actually, the deadline was extended on Friday afternoon. | In any case, the deadline remains the same. | That said, we should still consider the alternatives.
+   **example_pass**: Actually, the deadline was extended on Friday afternoon. | In any case, the deadline remains the same. | That said, we should still consider the alternatives. | Actually, the meeting was rescheduled to Thursday — I should have updated the calendar. | Actually, she made that call before consulting the rest of the leadership team. | Actually, the numbers from last quarter were significantly better than we'd reported internally. | Actually, that wasn't his decision to make in the first place.
    **example_fail**: and (bare connector, no discourse marker) | I like it. I bought it (simple statements, no markers) | The weather is nice (off-topic, no discourse organisation)
 
 **Closing cue**: Charlotte closes with "Refinements landed." once obj_3 lands.
@@ -141,7 +141,7 @@
    **hidden_prompt**: "user uses 'In fact / As a matter of fact / Actually + clause'"
    **hint_pt**: "Actually, most measured studies show productivity rose or held steady, not fell."
    **hint_en**: "Actually, most measured studies show productivity rose or held steady, not fell."
-   **example_pass**: Actually, most measured studies show productivity rose or held steady, not fell. | On the one hand, it's expensive; on the other hand, it lasts forever. | Having said that, there are still some concerns.
+   **example_pass**: Actually, most measured studies show productivity rose or held steady, not fell. | On the one hand, it's expensive; on the other hand, it lasts forever. | Having said that, there are still some concerns. | As a matter of fact, the deadline was extended on Friday afternoon. | As a matter of fact, she was the one who first suggested the new structure. | As a matter of fact, the data shows the opposite of what we'd been assuming. | As a matter of fact, that policy was rolled back two months ago.
    **example_fail**: and (bare connector, no discourse marker) | I like it. I bought it (simple statements, no markers) | The weather is nice (off-topic, no discourse organisation)
 
 2. **id**: 2
@@ -150,7 +150,7 @@
    **hidden_prompt**: "user uses another nuancing marker"
    **hint_pt**: "In fact, the productivity dip people remember was driven by the pandemic itself, not by where people worked."
    **hint_en**: "In fact, the productivity dip people remember was driven by the pandemic itself, not by where people worked."
-   **example_pass**: In fact, the productivity dip people remember was driven by the pandemic itself, not by where people worked. | As a matter of fact, I had the same experience. | To put it differently, we need a fresh approach.
+   **example_pass**: In fact, the productivity dip people remember was driven by the pandemic itself, not by where people worked. | As a matter of fact, I had the same experience. | To put it differently, we need a fresh approach. | That said, the data tells a more complicated story than the headline number would suggest. | Then again, you could argue the opposite case with almost the same evidence. | Granted, the early signal is mixed — but the underlying trend is hard to dismiss.
    **example_fail**: and (bare connector, no discourse marker) | I like it. I bought it (simple statements, no markers) | The weather is nice (off-topic, no discourse organisation)
 
 3. **id**: 3
@@ -159,7 +159,7 @@
    **hidden_prompt**: "user asks Charlotte where she's hearing it"
    **hint_pt**: "Who's saying it?"
    **hint_en**: "Who's saying it?"
-   **example_pass**: Who's saying it? | In any case, the deadline remains the same. | That said, we should still consider the alternatives.
+   **example_pass**: Who's saying it? | In any case, the deadline remains the same. | That said, we should still consider the alternatives. | And you? | What about you? | How about yourself? | Same for you? | What's your take on it?
    **example_fail**: and (bare connector, no discourse marker) | I like it. I bought it (simple statements, no markers) | The weather is nice (off-topic, no discourse organisation)
 
 **Closing cue**: Charlotte closes with "Assumption properly nuanced." once obj_3 lands.
@@ -238,7 +238,7 @@
    **hidden_prompt**: "user uses 'That said, + clause'"
    **hint_pt**: "The product launch was successful. That said, the support tickets tell a more complicated story."
    **hint_en**: "The product launch was successful. That said, the support tickets tell a more complicated story."
-   **example_pass**: The product launch was successful. That said, the support tickets tell a more complicated story. | On the one hand, it's expensive; on the other hand, it lasts forever. | Having said that, there are still some concerns.
+   **example_pass**: The product launch was successful. That said, the support tickets tell a more complicated story. | On the one hand, it's expensive; on the other hand, it lasts forever. | Having said that, there are still some concerns. | The launch went well overall. That said, the support volume tells a more complicated story. | I agree with most of the analysis. That said, I'd be careful about the framing in the public version. | The team is talented. That said, they've never operated at this scale before. | The proposal is bold. That said, it needs a much tighter budget to be credible.
    **example_fail**: and (bare connector, no discourse marker) | I like it. I bought it (simple statements, no markers) | The weather is nice (off-topic, no discourse organisation)
 
 2. **id**: 2
@@ -247,7 +247,7 @@
    **hidden_prompt**: "user uses 'Mind you, + clause'"
    **hint_pt**: "He's a strong negotiator. Mind you, he sometimes wins the battle and loses the relationship."
    **hint_en**: "He's a strong negotiator. Mind you, he sometimes wins the battle and loses the relationship."
-   **example_pass**: He's a strong negotiator. Mind you, he sometimes wins the battle and loses the relationship. | As a matter of fact, I had the same experience. | To put it differently, we need a fresh approach.
+   **example_pass**: He's a strong negotiator. Mind you, he sometimes wins the battle and loses the relationship. | As a matter of fact, I had the same experience. | To put it differently, we need a fresh approach. | She gives generously. Mind you, she also keeps detailed records of every favour she's done. | The product is genuinely innovative. Mind you, it's also five years too early for the market. | The team delivered. Mind you, three of them have already given notice.
    **example_fail**: and (bare connector, no discourse marker) | I like it. I bought it (simple statements, no markers) | The weather is nice (off-topic, no discourse organisation)
 
 3. **id**: 3
@@ -256,7 +256,7 @@
    **hidden_prompt**: "user uses 'Then again, + clause' or 'Granted, + clause'"
    **hint_pt**: "Granted, the data is preliminary — but the trend is hard to dismiss."
    **hint_en**: "Granted, the data is preliminary — but the trend is hard to dismiss."
-   **example_pass**: Granted, the data is preliminary — but the trend is hard to dismiss. | In any case, the deadline remains the same. | That said, we should still consider the alternatives.
+   **example_pass**: Granted, the data is preliminary — but the trend is hard to dismiss. | In any case, the deadline remains the same. | That said, we should still consider the alternatives. | Granted, the data is preliminary — but the direction of the trend is hard to dismiss. | Then again, the same argument was made before the last reorg, and very little changed. | Granted, I've been wrong about her before, but this time the pattern is unmistakable. | Then again, maybe the timing was never going to be right.
    **example_fail**: and (bare connector, no discourse marker) | I like it. I bought it (simple statements, no markers) | The weather is nice (off-topic, no discourse organisation)
 
 **Closing cue**: Charlotte closes with "Argument balanced, edges shown." once obj_3 lands.
@@ -293,7 +293,7 @@
    **hidden_prompt**: "user uses 'That said' or 'Mind you' or 'Granted'"
    **hint_pt**: "There's something to that. That said, 'most' is doing a lot of work in that sentence."
    **hint_en**: "There's something to that. That said, 'most' is doing a lot of work in that sentence."
-   **example_pass**: There's something to that. That said, 'most' is doing a lot of work in that sentence. | On the one hand, it's expensive; on the other hand, it lasts forever. | Having said that, there are still some concerns.
+   **example_pass**: There's something to that. That said, 'most' is doing a lot of work in that sentence. | On the one hand, it's expensive; on the other hand, it lasts forever. | Having said that, there are still some concerns. | The launch went well overall. That said, the support volume tells a more complicated story. | I agree with most of the analysis. That said, I'd be careful about the framing in the public version. | The team is talented. That said, they've never operated at this scale before. | The proposal is bold. That said, it needs a much tighter budget to be credible.
    **example_fail**: and (bare connector, no discourse marker) | I like it. I bought it (simple statements, no markers) | The weather is nice (off-topic, no discourse organisation)
 
 2. **id**: 2
@@ -302,7 +302,7 @@
    **hidden_prompt**: "user uses 'Then again' or 'Mind you' or 'Admittedly'"
    **hint_pt**: "Then again, every major shift looked total in advance and partial in retrospect."
    **hint_en**: "Then again, every major shift looked total in advance and partial in retrospect."
-   **example_pass**: Then again, every major shift looked total in advance and partial in retrospect. | As a matter of fact, I had the same experience. | To put it differently, we need a fresh approach.
+   **example_pass**: Then again, every major shift looked total in advance and partial in retrospect. | As a matter of fact, I had the same experience. | To put it differently, we need a fresh approach. | He's a strong negotiator. Mind you, he sometimes wins the battle and loses the relationship. | She gives generously. Mind you, she also keeps detailed records of every favour she's done. | The product is genuinely innovative. Mind you, it's also five years too early for the market. | The team delivered. Mind you, three of them have already given notice.
    **example_fail**: and (bare connector, no discourse marker) | I like it. I bought it (simple statements, no markers) | The weather is nice (off-topic, no discourse organisation)
 
 3. **id**: 3
@@ -311,7 +311,7 @@
    **hidden_prompt**: "user asks Charlotte how she'd hedge her own claim"
    **hint_pt**: "What's the strongest counter you'd make to yourself?"
    **hint_en**: "What's the strongest counter you'd make to yourself?"
-   **example_pass**: What's the strongest counter you'd make to yourself? | In any case, the deadline remains the same. | That said, we should still consider the alternatives.
+   **example_pass**: What's the strongest counter you'd make to yourself? | In any case, the deadline remains the same. | That said, we should still consider the alternatives. | And you? | What about you? | How about yourself? | Same for you? | What's your take on it?
    **example_fail**: and (bare connector, no discourse marker) | I like it. I bought it (simple statements, no markers) | The weather is nice (off-topic, no discourse organisation)
 
 **Closing cue**: Charlotte closes with "Position complicated, fairly." once obj_3 lands.
@@ -542,7 +542,7 @@
    **hidden_prompt**: "user uses 'What's more, + clause' in a pitch"
    **hint_pt**: "The neighbourhood is quiet and full of small bakeries. What's more, the metro stops two minutes from the door."
    **hint_en**: "The neighbourhood is quiet and full of small bakeries. What's more, the metro stops two minutes from the door."
-   **example_pass**: The neighbourhood is quiet and full of small bakeries. What's more, the metro stops two minutes from the door. | On the one hand, it's expensive; on the other hand, it lasts forever. | Having said that, there are still some concerns.
+   **example_pass**: The neighbourhood is quiet and full of small bakeries. What's more, the metro stops two minutes from the door. | On the one hand, it's expensive; on the other hand, it lasts forever. | Having said that, there are still some concerns. | The location is excellent and the rent is reasonable. What's more, the building has its own gym. | The product is faster and cheaper than the alternative. What's more, the support team is genuinely responsive. | She's experienced and articulate. What's more, she has the rare ability to admit when she's wrong. | The market is large and growing. What's more, there's no dominant incumbent yet.
    **example_fail**: and (bare connector, no discourse marker) | I like it. I bought it (simple statements, no markers) | The weather is nice (off-topic, no discourse organisation)
 
 2. **id**: 2
@@ -551,7 +551,7 @@
    **hidden_prompt**: "user uses 'Not least, + clause'"
    **hint_pt**: "She's experienced, articulate, and — not least — calm under pressure."
    **hint_en**: "She's experienced, articulate, and — not least — calm under pressure."
-   **example_pass**: She's experienced, articulate, and — not least — calm under pressure. | As a matter of fact, I had the same experience. | To put it differently, we need a fresh approach.
+   **example_pass**: She's experienced, articulate, and — not least — calm under pressure. | As a matter of fact, I had the same experience. | To put it differently, we need a fresh approach. | She's experienced, articulate, and — not least — remarkably calm under pressure. | The new building has natural light, modern kitchens, and — not least — actual quiet zones. | He's smart, kind, and — not least — almost impossible to embarrass. | The product is fast, beautiful, and — not least — surprisingly affordable.
    **example_fail**: and (bare connector, no discourse marker) | I like it. I bought it (simple statements, no markers) | The weather is nice (off-topic, no discourse organisation)
 
 3. **id**: 3
@@ -560,7 +560,7 @@
    **hidden_prompt**: "user uses 'Above all, + clause'"
    **hint_pt**: "The idea is fundable, timely, and — above all — solves a problem nobody else is looking at."
    **hint_en**: "The idea is fundable, timely, and — above all — solves a problem nobody else is looking at."
-   **example_pass**: The idea is fundable, timely, and — above all — solves a problem nobody else is looking at. | In any case, the deadline remains the same. | That said, we should still consider the alternatives.
+   **example_pass**: The idea is fundable, timely, and — above all — solves a problem nobody else is looking at. | In any case, the deadline remains the same. | That said, we should still consider the alternatives. | The proposal is timely, fundable, and — above all — addresses a problem no one else is solving. | She's thorough, reliable, and — above all — completely honest about what she doesn't know. | The team is talented, motivated, and — above all — aligned on what we're actually building. | Above all, the strategy needs to be something the team can explain to a customer in one sentence.
    **example_fail**: and (bare connector, no discourse marker) | I like it. I bought it (simple statements, no markers) | The weather is nice (off-topic, no discourse organisation)
 
 **Closing cue**: Charlotte closes with "Pitches stacked, climax landed." once obj_3 lands.
@@ -597,7 +597,7 @@
    **hidden_prompt**: "user uses 'What's more, + clause'"
    **hint_pt**: "The work itself still excites me. What's more, my manager has actually been listening to my career goals."
    **hint_en**: "The work itself still excites me. What's more, my manager has actually been listening to my career goals."
-   **example_pass**: The work itself still excites me. What's more, my manager has actually been listening to my career goals. | On the one hand, it's expensive; on the other hand, it lasts forever. | Having said that, there are still some concerns.
+   **example_pass**: The work itself still excites me. What's more, my manager has actually been listening to my career goals. | On the one hand, it's expensive; on the other hand, it lasts forever. | Having said that, there are still some concerns. | The location is excellent and the rent is reasonable. What's more, the building has its own gym. | The product is faster and cheaper than the alternative. What's more, the support team is genuinely responsive. | She's experienced and articulate. What's more, she has the rare ability to admit when she's wrong. | The market is large and growing. What's more, there's no dominant incumbent yet.
    **example_fail**: and (bare connector, no discourse marker) | I like it. I bought it (simple statements, no markers) | The weather is nice (off-topic, no discourse organisation)
 
 2. **id**: 2
@@ -606,7 +606,7 @@
    **hidden_prompt**: "user uses 'Not least, + clause'"
    **hint_pt**: "Not least, the team I built took years to assemble and I'd be starting from zero somewhere else."
    **hint_en**: "Not least, the team I built took years to assemble and I'd be starting from zero somewhere else."
-   **example_pass**: Not least, the team I built took years to assemble and I'd be starting from zero somewhere else. | As a matter of fact, I had the same experience. | To put it differently, we need a fresh approach.
+   **example_pass**: Not least, the team I built took years to assemble and I'd be starting from zero somewhere else. | As a matter of fact, I had the same experience. | To put it differently, we need a fresh approach. | She's experienced, articulate, and — not least — remarkably calm under pressure. | The new building has natural light, modern kitchens, and — not least — actual quiet zones. | He's smart, kind, and — not least — almost impossible to embarrass. | The product is fast, beautiful, and — not least — surprisingly affordable.
    **example_fail**: and (bare connector, no discourse marker) | I like it. I bought it (simple statements, no markers) | The weather is nice (off-topic, no discourse organisation)
 
 3. **id**: 3
@@ -615,7 +615,7 @@
    **hidden_prompt**: "user uses 'Above all, + clause'"
    **hint_pt**: "Above all, the fancier offer was about title — and I've already learned that's the thinnest reason to move."
    **hint_en**: "Above all, the fancier offer was about title — and I've already learned that's the thinnest reason to move."
-   **example_pass**: Above all, the fancier offer was about title — and I've already learned that's the thinnest reason to move. | In any case, the deadline remains the same. | That said, we should still consider the alternatives.
+   **example_pass**: Above all, the fancier offer was about title — and I've already learned that's the thinnest reason to move. | In any case, the deadline remains the same. | That said, we should still consider the alternatives. | The proposal is timely, fundable, and — above all — addresses a problem no one else is solving. | She's thorough, reliable, and — above all — completely honest about what she doesn't know. | The team is talented, motivated, and — above all — aligned on what we're actually building. | Above all, the strategy needs to be something the team can explain to a customer in one sentence.
    **example_fail**: and (bare connector, no discourse marker) | I like it. I bought it (simple statements, no markers) | The weather is nice (off-topic, no discourse organisation)
 
 **Closing cue**: Charlotte closes with "Defended, with proper climax." once obj_3 lands.
@@ -694,7 +694,7 @@
    **hidden_prompt**: "user uses 'All things considered, + clause'"
    **hint_pt**: "All things considered, leaving that job a year early was the right call."
    **hint_en**: "All things considered, leaving that job a year early was the right call."
-   **example_pass**: All things considered, leaving that job a year early was the right call. | On the one hand, it's expensive; on the other hand, it lasts forever. | Having said that, there are still some concerns.
+   **example_pass**: All things considered, leaving that job a year early was the right call. | On the one hand, it's expensive; on the other hand, it lasts forever. | Having said that, there are still some concerns. | All things considered, leaving that job a year earlier than planned was the right call. | All things considered, the quarter went better than the leading indicators had suggested. | All things considered, the move abroad gave the family far more than it cost. | All things considered, we should be proud of how the team handled an impossible year.
    **example_fail**: and (bare connector, no discourse marker) | I like it. I bought it (simple statements, no markers) | The weather is nice (off-topic, no discourse organisation)
 
 2. **id**: 2
@@ -703,7 +703,7 @@
    **hidden_prompt**: "user uses 'On balance, + clause'"
    **hint_pt**: "On balance, the move abroad cost more than I expected but gave more than I imagined."
    **hint_en**: "On balance, the move abroad cost more than I expected but gave more than I imagined."
-   **example_pass**: On balance, the move abroad cost more than I expected but gave more than I imagined. | As a matter of fact, I had the same experience. | To put it differently, we need a fresh approach.
+   **example_pass**: On balance, the move abroad cost more than I expected but gave more than I imagined. | As a matter of fact, I had the same experience. | To put it differently, we need a fresh approach. | On balance, the move abroad cost more than expected but gave more than we'd hoped. | On balance, the new strategy is better — though the transition will be uncomfortable for a year. | On balance, the trade-offs of the acquisition still favour the deal. | On balance, the year was harder than I'd like to admit, but I'm grateful for almost all of it.
    **example_fail**: and (bare connector, no discourse marker) | I like it. I bought it (simple statements, no markers) | The weather is nice (off-topic, no discourse organisation)
 
 3. **id**: 3
@@ -712,7 +712,7 @@
    **hidden_prompt**: "user uses 'Hence, + clause' or 'Accordingly, + clause'"
    **hint_pt**: "The model has proven robust across markets. Hence, we're rolling it out company-wide."
    **hint_en**: "The model has proven robust across markets. Hence, we're rolling it out company-wide."
-   **example_pass**: The model has proven robust across markets. Hence, we're rolling it out company-wide. | In any case, the deadline remains the same. | That said, we should still consider the alternatives.
+   **example_pass**: The model has proven robust across markets. Hence, we're rolling it out company-wide. | In any case, the deadline remains the same. | That said, we should still consider the alternatives. | The model has held up across three markets. Accordingly, we'll roll it out company-wide next quarter. | The original assumption no longer holds. Hence, the strategy needs to be rebuilt from the ground up. | The team has consistently exceeded expectations. Accordingly, we should be willing to expand their mandate. | Customer churn has stabilised. Hence, we can finally focus on growth without losing the back door.
    **example_fail**: and (bare connector, no discourse marker) | I like it. I bought it (simple statements, no markers) | The weather is nice (off-topic, no discourse organisation)
 
 **Closing cue**: Charlotte closes with "Verdicts properly weighted." once obj_3 lands.
@@ -749,7 +749,7 @@
    **hidden_prompt**: "user uses 'On balance / On the whole / All things considered'"
    **hint_pt**: "On balance, the year was harder than the last one but more meaningful."
    **hint_en**: "On balance, the year was harder than the last one but more meaningful."
-   **example_pass**: On balance, the year was harder than the last one but more meaningful. | On the one hand, it's expensive; on the other hand, it lasts forever. | Having said that, there are still some concerns.
+   **example_pass**: On balance, the year was harder than the last one but more meaningful. | On the one hand, it's expensive; on the other hand, it lasts forever. | Having said that, there are still some concerns. | All things considered, leaving that job a year earlier than planned was the right call. | All things considered, the quarter went better than the leading indicators had suggested. | All things considered, the move abroad gave the family far more than it cost. | All things considered, we should be proud of how the team handled an impossible year.
    **example_fail**: and (bare connector, no discourse marker) | I like it. I bought it (simple statements, no markers) | The weather is nice (off-topic, no discourse organisation)
 
 2. **id**: 2
@@ -758,7 +758,7 @@
    **hidden_prompt**: "user uses 'Granted / That said' + 'Above all / Not least'"
    **hint_pt**: "Granted, two big bets failed. That said, the lesson from each was probably worth the cost. Above all, I learned where my actual limits are."
    **hint_en**: "Granted, two big bets failed. That said, the lesson from each was probably worth the cost. Above all, I learned where my actual limits are."
-   **example_pass**: Granted, two big bets failed. That said, the lesson from each was probably worth the cost. Above all, I learned where my actual limits are. | As a matter of fact, I had the same experience. | To put it differently, we need a fresh approach.
+   **example_pass**: Granted, two big bets failed. That said, the lesson from each was probably worth the cost. Above all, I learned where my actual limits are. | As a matter of fact, I had the same experience. | To put it differently, we need a fresh approach. | The launch went well overall. That said, the support volume tells a more complicated story. | I agree with most of the analysis. That said, I'd be careful about the framing in the public version. | The team is talented. That said, they've never operated at this scale before. | The proposal is bold. That said, it needs a much tighter budget to be credible.
    **example_fail**: and (bare connector, no discourse marker) | I like it. I bought it (simple statements, no markers) | The weather is nice (off-topic, no discourse organisation)
 
 3. **id**: 3
@@ -767,7 +767,7 @@
    **hidden_prompt**: "user asks Charlotte for her own retrospective"
    **hint_pt**: "How would you sum up yours?"
    **hint_en**: "How would you sum up yours?"
-   **example_pass**: How would you sum up yours? | In any case, the deadline remains the same. | That said, we should still consider the alternatives.
+   **example_pass**: How would you sum up yours? | In any case, the deadline remains the same. | That said, we should still consider the alternatives. | And you? | What about you? | How about yourself? | Same for you? | What's your take on it?
    **example_fail**: and (bare connector, no discourse marker) | I like it. I bought it (simple statements, no markers) | The weather is nice (off-topic, no discourse organisation)
 
 **Closing cue**: Charlotte closes with "Year, summed properly." once obj_3 lands.
