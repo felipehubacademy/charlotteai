@@ -233,16 +233,24 @@ export default function RolePlayExerciseScreen() {
   }, [userId]);
 
   // Save attempt to learn_history_v2 when session completes (or timer expires).
-  // Score = % objectives met. completed=true only when score === 100 (threshold).
+  // Score = % objectives met. COMPLETION-BASED: threshold roleplay=0,
+  // ou seja qualquer save destrava proxima activity.
+  // Engagement guard: so salva se aluno mandou >= 1 mensagem. Evita save
+  // quando aluno entrou e saiu sem nada (back btn imediato).
   const savedRef = useRef(false);
   useEffect(() => {
     if (!sessionComplete || savedRef.current || !rp) return;
+    const userMsgCount = messages.filter(m => m.role === 'user').length;
+    if (userMsgCount < 1) {
+      console.info('[roleplay] skip saveAttempt — no user engagement');
+      return;
+    }
     savedRef.current = true;
     const total = rp.objectives.length || 1;
     const score = Math.round((objectivesMet.size / total) * 100);
     v2Progress.saveAttempt(moduleId, unitId, 'roleplay', score)
       .catch(e => console.warn('[roleplay] saveAttempt failed', e));
-  }, [sessionComplete, rp, objectivesMet, moduleId, unitId, v2Progress]);
+  }, [sessionComplete, rp, objectivesMet, moduleId, unitId, v2Progress, messages]);
 
   // ── Audio recorder ──────────────────────────────────────────────
   const recorder = useAudioRecorder(RECORDING_OPTIONS, 30);
@@ -984,9 +992,10 @@ export default function RolePlayExerciseScreen() {
               </TouchableOpacity>
               <TouchableOpacity
                 onPress={() => {
-                  // Se passou (todos objetivos), avanca pro Guided Chat da mesma unit.
-                  // Senao, volta pra trilha (banner refazer ja esta no card).
-                  if (allObjectivesDone && moduleId && unitId) {
+                  // Completion-based: avanca pro Guided Chat da mesma unit
+                  // mesmo sem 100% objs met (so precisa ter engagement >= 1 msg,
+                  // o que ja eh garantido se chegou ao card final).
+                  if (moduleId && unitId) {
                     router.replace({
                       pathname: '/(app)/guided-chat-exercise' as any,
                       params: { level, moduleId, unitId } as any,
@@ -1002,7 +1011,7 @@ export default function RolePlayExerciseScreen() {
                 }}
               >
                 <AppText style={{ fontSize: 14, fontWeight: '700', color: '#FFF' }}>
-                  {allObjectivesDone ? (isPt ? 'Continuar' : 'Continue') : (isPt ? 'Voltar' : 'Back')}
+                  {isPt ? 'Continuar' : 'Continue'}
                 </AppText>
               </TouchableOpacity>
             </View>

@@ -182,16 +182,23 @@ export default function GuidedChatExerciseScreen() {
     return () => clearInterval(tick);
   }, [gc, level, sessionComplete]);
 
-  // Save attempt to learn_history_v2 on completion
+  // Save attempt to learn_history_v2 on completion.
+  // COMPLETION-BASED: threshold chat=0 — qualquer save destrava proxima.
+  // Engagement guard: so salva se aluno mandou >= 1 mensagem.
   const savedRef = useRef(false);
   useEffect(() => {
     if (!sessionComplete || savedRef.current || !gc) return;
+    const userMsgCount = messages.filter(m => m.role === 'user').length;
+    if (userMsgCount < 1) {
+      console.info('[guided-chat] skip saveAttempt — no user engagement');
+      return;
+    }
     savedRef.current = true;
     const total = gc.objectives.length || 1;
     const score = Math.round((objectivesMet.size / total) * 100);
     v2Progress.saveAttempt(moduleId, unitId, 'chat', score)
       .catch(e => console.warn('[guided-chat] saveAttempt failed', e));
-  }, [sessionComplete, gc, objectivesMet, moduleId, unitId, v2Progress]);
+  }, [sessionComplete, gc, objectivesMet, moduleId, unitId, v2Progress, messages]);
 
   // Restart session (Refazer button)
   const restartSession = useCallback(() => {

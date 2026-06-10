@@ -28,11 +28,17 @@ interface V2Row {
   attempts:      number;
 }
 
+// COMPLETION-BASED gating pra roleplay e chat (decisao 2026-06-10):
+// Aluno trava na trilha quando LLM judge falha ocasional — frustrante e
+// gera ticket. Mudamos pra: terminou a sessao com engajamento minimo
+// (>= 1 mensagem) -> unlock proxima activity. Score continua salvo pra
+// telemetria e XP escalonado, mas NAO bloqueia progressao.
+// Grammar e Speaking continuam com threshold (objetivos determinsiticos).
 const THRESHOLD: Record<V2Activity, number> = {
   grammar:  70,
   speaking: 60,
-  roleplay: 100,
-  chat:     100,
+  roleplay: 0,
+  chat:     0,
 };
 
 const ACTIVITY_ORDER: V2Activity[] = ['grammar', 'speaking', 'roleplay', 'chat'];
