@@ -500,30 +500,25 @@ export default function HomeTab() {
         />
       </ScrollView>
 
-      {/* FAB scroll toggle: no topo → ir pro topico ativo; embaixo → voltar pro topo.
-          Mostra se activeTopicY foi medido (>200) OU aluno ja scrollou (>200).
-          O 'OR scrollY' eh safety net pra Inter/Advanced onde measureLayout
-          as vezes falha (trail muito grande, 23+ modulos) — sem isso, FAB nunca
-          aparecia naqueles niveis. */}
-      {(activeTopicY > 200 || scrollY > 200) && (
-        <TouchableOpacity
-          activeOpacity={0.85}
-          onPress={isNearTop ? goActive : goTop}
-          style={{
-            position: 'absolute', bottom: 80, right: 18,
-            width: 52, height: 52, borderRadius: 26,
-            backgroundColor: C.navy,
-            alignItems: 'center', justifyContent: 'center',
-            shadowColor: '#000', shadowOpacity: 0.25, shadowRadius: 10,
-            shadowOffset: { width: 0, height: 4 }, elevation: 8,
-          }}
-          accessibilityLabel={isNearTop ? 'Ir para tópico atual' : 'Voltar ao topo'}
-        >
-          {isNearTop
-            ? <ArrowDown size={22} color="#FFF" weight="bold" />
-            : <ArrowUp size={22} color="#FFF" weight="bold" />}
-        </TouchableOpacity>
-      )}
+      {/* FAB scroll toggle: SEMPRE visivel. No topo -> ir pro topico ativo;
+          embaixo -> voltar pro topo. */}
+      <TouchableOpacity
+        activeOpacity={0.85}
+        onPress={isNearTop ? goActive : goTop}
+        style={{
+          position: 'absolute', bottom: 80, right: 18,
+          width: 52, height: 52, borderRadius: 26,
+          backgroundColor: C.navy,
+          alignItems: 'center', justifyContent: 'center',
+          shadowColor: '#000', shadowOpacity: 0.25, shadowRadius: 10,
+          shadowOffset: { width: 0, height: 4 }, elevation: 8,
+        }}
+        accessibilityLabel={isNearTop ? 'Ir para tópico atual' : 'Voltar ao topo'}
+      >
+        {isNearTop
+          ? <ArrowDown size={22} color="#FFF" weight="bold" />
+          : <ArrowUp size={22} color="#FFF" weight="bold" />}
+      </TouchableOpacity>
 
       <NewLayoutWelcomeSheet
         visible={showWelcomeSheet}
