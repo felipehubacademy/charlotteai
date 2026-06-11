@@ -28,10 +28,11 @@ import { useAuth } from '@/hooks/useAuth';
 // TODO: subir audio orchestral pro Supabase Storage e plugar URL aqui.
 // Ate la, fica null e a fase reveal usa SFX `level_promotion` em volume alto.
 const GRADUATION_AUDIO_URL: string | null = null;
-// TODO: video Charlotte graduation premium (capelo + beca formal + diploma).
-// Por enquanto usa o video Inter->Advanced como placeholder.
+// Video Charlotte graduation premium — capelo + beca formal + honor cord
+// dourado + diploma fita dourada. Lip-sync com TTS "You did it. You
+// graduated. I'm so proud of you." (audio integrado no video).
 const GRADUATION_VIDEO_URL: string =
-  'https://fnvjibzreepubageztoi.supabase.co/storage/v1/object/public/promotion-videos/inter-to-advanced.mp4';
+  'https://fnvjibzreepubageztoi.supabase.co/storage/v1/object/public/promotion-videos/graduation-final.mp4';
 
 const { width: SCREEN_W, height: SCREEN_H } = Dimensions.get('window');
 
