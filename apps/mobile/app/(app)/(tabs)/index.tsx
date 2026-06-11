@@ -496,6 +496,11 @@ export default function HomeTab() {
           level={level}
           showBanner={false}
           onCurrentTopicRef={handleCurrentTopicRef}
+          onActiveModuleY={(y) => {
+            // Backup via onLayout — confiavel pra Inter/Advanced onde
+            // measureLayout (tryScroll) as vezes falha silencioso.
+            if (y > 0) activeTopicYRef.current = y;
+          }}
           useV2={profile?.beta_features?.includes('curriculum_v2') ?? false}
         />
       </ScrollView>
