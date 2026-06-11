@@ -10,7 +10,7 @@
 
 import React, { useCallback, useEffect, useMemo, useRef, useState } from 'react';
 import { View, Modal, TouchableOpacity, Animated, Platform, Dimensions, Easing } from 'react-native';
-import AsyncStorage from '@react-native-async-storage/async-storage';
+import * as SecureStore from 'expo-secure-store';
 import * as Haptics from 'expo-haptics';
 import { GraduationCap, ArrowRight } from 'phosphor-react-native';
 import { VideoView, useVideoPlayer } from 'expo-video';
@@ -21,7 +21,9 @@ import type { PromotionEvent } from '@/lib/curriculum-v2/usePromotion';
 
 // Persist flag "ja viu" pra nao re-disparar a cada app boot.
 // Advanced nao bumpa de level (terminal), entao precisa de flag externa.
-const GRAD_SEEN_KEY = (userId: string) => `graduation_seen_v1:${userId}`;
+// SecureStore (encryptado) — userId fica embutido na chave pra
+// multi-account safety.
+const GRAD_SEEN_KEY = (userId: string) => `graduation_seen_v1_${userId.replace(/-/g, '')}`;
 
 const GRADUATION_VIDEO_URL =
   'https://fnvjibzreepubageztoi.supabase.co/storage/v1/object/public/promotion-videos/graduation-final.mp4';
@@ -132,7 +134,7 @@ export function GraduationModal({ event, onClose }: Props) {
   useEffect(() => {
     if (!event || !userId) return;
     let cancelled = false;
-    AsyncStorage.getItem(GRAD_SEEN_KEY(userId)).then(v => {
+    SecureStore.getItemAsync(GRAD_SEEN_KEY(userId)).then((v: string | null) => {
       if (cancelled) return;
       if (v === 'true') {
         setAlreadySeen(true);
@@ -147,7 +149,7 @@ export function GraduationModal({ event, onClose }: Props) {
   // Marca como visto antes de fechar (so na primeira vez).
   const markSeen = useCallback(() => {
     if (!userId) return;
-    AsyncStorage.setItem(GRAD_SEEN_KEY(userId), 'true').catch(() => {});
+    SecureStore.setItemAsync(GRAD_SEEN_KEY(userId), 'true').catch(() => {});
   }, [userId]);
 
   const useVideo = !!event && !videoFailed && alreadySeen === false;
