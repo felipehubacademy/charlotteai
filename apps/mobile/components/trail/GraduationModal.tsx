@@ -89,7 +89,7 @@ export function GraduationModal({ event, onClose }: Props) {
   const videoPlayer = useVideoPlayer(videoUri, p => {
     if (videoUri) {
       p.loop = false;
-      p.muted = true; // audio vem do swell orchestral overlayed
+      p.muted = false; // audio do lip-sync ("You did it. You graduated...") embedded no video
     }
   });
 
