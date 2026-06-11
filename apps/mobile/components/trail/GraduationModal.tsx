@@ -130,7 +130,9 @@ export function GraduationModal({ event, onClose }: Props) {
   const [showConfetti, setShowConfetti] = useState(false);
   const [alreadySeen, setAlreadySeen] = useState<boolean | null>(null);
 
-  // Check AsyncStorage flag — se ja viu, dispara onClose imediato (sem render).
+  // Check SecureStore flag. Se ja viu -> onClose imediato. Se primeira vez,
+  // MARCA SEEN IMEDIATAMENTE (nao espera autoClose) — assim mesmo se aluno
+  // crasha/sai antes do video acabar, proximo boot nao re-dispara.
   useEffect(() => {
     if (!event || !userId) return;
     let cancelled = false;
@@ -141,16 +143,12 @@ export function GraduationModal({ event, onClose }: Props) {
         onClose();
       } else {
         setAlreadySeen(false);
+        // Marca seen JA — robusto contra crashes/exits.
+        SecureStore.setItemAsync(GRAD_SEEN_KEY(userId), 'true').catch(() => {});
       }
     });
     return () => { cancelled = true; };
   }, [event, userId, onClose]);
-
-  // Marca como visto antes de fechar (so na primeira vez).
-  const markSeen = useCallback(() => {
-    if (!userId) return;
-    SecureStore.setItemAsync(GRAD_SEEN_KEY(userId), 'true').catch(() => {});
-  }, [userId]);
 
   const useVideo = !!event && !videoFailed && alreadySeen === false;
 
@@ -165,11 +163,10 @@ export function GraduationModal({ event, onClose }: Props) {
       videoPlayer?.pause();
       videoPlayer?.replace(null);
     } catch {}
-    markSeen();
     Animated.timing(fade, { toValue: 0, duration: 800, useNativeDriver: true }).start(() => {
       onClose();
     });
-  }, [fade, onClose, videoPlayer, markSeen]);
+  }, [fade, onClose, videoPlayer]);
 
   useEffect(() => {
     if (!useVideo || !videoPlayer) return;
@@ -184,8 +181,12 @@ export function GraduationModal({ event, onClose }: Props) {
   }, [useVideo, videoPlayer, autoClose]);
 
   const triggeredForEvent = useRef<string | null>(null);
+  // CRITICO: trigger so dispara quando alreadySeen tem valor definido.
+  // Se rodar com alreadySeen=null, useVideo eh false e cai no branch
+  // sem video; quando alreadySeen flipa pra false, deps [event] nao
+  // re-roda e video nunca recebe play(). Por isso depende de alreadySeen.
   useEffect(() => {
-    if (!event) return;
+    if (!event || alreadySeen !== false) return;
     const key = `graduation:${event.fromLevel}`;
     if (triggeredForEvent.current === key) return;
     triggeredForEvent.current = key;
@@ -193,13 +194,12 @@ export function GraduationModal({ event, onClose }: Props) {
     fade.setValue(1);
     scale.setValue(1);
 
-    if (!useVideo) {
+    if (useVideo && videoPlayer) {
+      try { videoPlayer.play(); } catch {}
+    } else {
+      // Fallback path (sem video): SFX + confete diretos.
       soundEngine.play('level_promotion', { volume: 1.0 }).catch(() => {});
       setShowConfetti(true);
-    }
-
-    if (useVideo) {
-      try { videoPlayer.play(); } catch {}
     }
     Haptics.notificationAsync(Haptics.NotificationFeedbackType.Success).catch(() => {});
     const t = setTimeout(() => {
@@ -207,7 +207,7 @@ export function GraduationModal({ event, onClose }: Props) {
     }, 350);
     return () => clearTimeout(t);
     // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [event]);
+  }, [event, alreadySeen, useVideo]);
 
   if (!event) return null;
   // Enquanto check de AsyncStorage roda, nao renderiza (evita flash).
