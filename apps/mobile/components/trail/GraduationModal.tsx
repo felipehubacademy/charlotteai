@@ -10,12 +10,18 @@
 
 import React, { useCallback, useEffect, useMemo, useRef, useState } from 'react';
 import { View, Modal, TouchableOpacity, Animated, Platform, Dimensions, Easing } from 'react-native';
+import AsyncStorage from '@react-native-async-storage/async-storage';
 import * as Haptics from 'expo-haptics';
 import { GraduationCap, ArrowRight } from 'phosphor-react-native';
 import { VideoView, useVideoPlayer } from 'expo-video';
 import { AppText } from '@/components/ui/Text';
 import { soundEngine } from '@/lib/soundEngine';
+import { useAuth } from '@/hooks/useAuth';
 import type { PromotionEvent } from '@/lib/curriculum-v2/usePromotion';
+
+// Persist flag "ja viu" pra nao re-disparar a cada app boot.
+// Advanced nao bumpa de level (terminal), entao precisa de flag externa.
+const GRAD_SEEN_KEY = (userId: string) => `graduation_seen_v1:${userId}`;
 
 const GRADUATION_VIDEO_URL =
   'https://fnvjibzreepubageztoi.supabase.co/storage/v1/object/public/promotion-videos/graduation-final.mp4';
@@ -114,12 +120,37 @@ interface Props {
 }
 
 export function GraduationModal({ event, onClose }: Props) {
+  const { profile } = useAuth();
+  const userId = profile?.id;
   const scale = useRef(new Animated.Value(0.92)).current;
   const fade  = useRef(new Animated.Value(0)).current;
   const [videoFailed, setVideoFailed] = useState(false);
   const [showConfetti, setShowConfetti] = useState(false);
+  const [alreadySeen, setAlreadySeen] = useState<boolean | null>(null);
 
-  const useVideo = !!event && !videoFailed;
+  // Check AsyncStorage flag — se ja viu, dispara onClose imediato (sem render).
+  useEffect(() => {
+    if (!event || !userId) return;
+    let cancelled = false;
+    AsyncStorage.getItem(GRAD_SEEN_KEY(userId)).then(v => {
+      if (cancelled) return;
+      if (v === 'true') {
+        setAlreadySeen(true);
+        onClose();
+      } else {
+        setAlreadySeen(false);
+      }
+    });
+    return () => { cancelled = true; };
+  }, [event, userId, onClose]);
+
+  // Marca como visto antes de fechar (so na primeira vez).
+  const markSeen = useCallback(() => {
+    if (!userId) return;
+    AsyncStorage.setItem(GRAD_SEEN_KEY(userId), 'true').catch(() => {});
+  }, [userId]);
+
+  const useVideo = !!event && !videoFailed && alreadySeen === false;
 
   const videoPlayer = useVideoPlayer(useVideo ? GRADUATION_VIDEO_URL : null, (player) => {
     player.loop = false;
@@ -132,10 +163,11 @@ export function GraduationModal({ event, onClose }: Props) {
       videoPlayer?.pause();
       videoPlayer?.replace(null);
     } catch {}
+    markSeen();
     Animated.timing(fade, { toValue: 0, duration: 800, useNativeDriver: true }).start(() => {
       onClose();
     });
-  }, [fade, onClose, videoPlayer]);
+  }, [fade, onClose, videoPlayer, markSeen]);
 
   useEffect(() => {
     if (!useVideo || !videoPlayer) return;
@@ -176,12 +208,17 @@ export function GraduationModal({ event, onClose }: Props) {
   }, [event]);
 
   if (!event) return null;
+  // Enquanto check de AsyncStorage roda, nao renderiza (evita flash).
+  if (alreadySeen === null) return null;
+  // Ja viu — onClose ja foi chamado no useEffect.
+  if (alreadySeen === true) return null;
 
   return (
-    <Modal visible transparent animationType="none" onRequestClose={onClose}>
+    <Modal visible transparent animationType="none" onRequestClose={() => { markSeen(); onClose(); }}>
       {useVideo ? (
-        // FULLSCREEN — Charlotte toma a tela toda, confete por cima, fade ao
-        // final do video. Sem texto/botao (audio narra tudo).
+        // FULLSCREEN — Charlotte centralizada com aspect ratio preservado
+        // (contain). Bracos levantados nao cortam. Bg cinza claro casa com
+        // o fundo do video.
         <Animated.View style={{
           flex: 1,
           backgroundColor: '#F4F3FA',
@@ -190,11 +227,8 @@ export function GraduationModal({ event, onClose }: Props) {
           <View style={{ flex: 1, overflow: 'hidden' }}>
             <VideoView
               player={videoPlayer}
-              style={{
-                width: '100%', height: '100%',
-                transform: [{ scale: 1.06 }, { translateX: 12 }],
-              }}
-              contentFit="cover"
+              style={{ width: '100%', height: '100%' }}
+              contentFit="contain"
               nativeControls={false}
               allowsFullscreen={false}
               allowsPictureInPicture={false}
