@@ -21,7 +21,7 @@ import type { PromotionEvent } from '@/lib/curriculum-v2/usePromotion';
 // usePromotionVideoPrefetch). Modal usa URI local quando disponivel.
 const PROMOTION_VIDEO_REMOTE: Record<string, string> = {
   Inter:    'https://fnvjibzreepubageztoi.supabase.co/storage/v1/object/public/promotion-videos/novice-to-inter.mp4',
-  // Advanced: aguardando geracao do video Inter→Advanced.
+  Advanced: 'https://fnvjibzreepubageztoi.supabase.co/storage/v1/object/public/promotion-videos/inter-to-advanced.mp4',
 };
 
 const { width: SCREEN_W, height: SCREEN_H } = Dimensions.get('window');

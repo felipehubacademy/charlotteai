@@ -10,7 +10,7 @@ import * as FileSystem from 'expo-file-system/legacy';
 
 const PROMOTION_VIDEO_REMOTE: Record<string, string> = {
   Inter:    'https://fnvjibzreepubageztoi.supabase.co/storage/v1/object/public/promotion-videos/novice-to-inter.mp4',
-  // Advanced: pendente
+  Advanced: 'https://fnvjibzreepubageztoi.supabase.co/storage/v1/object/public/promotion-videos/inter-to-advanced.mp4',
 };
 
 // Module-level Set: rastreia quais niveis ja terminaram de baixar nesta
