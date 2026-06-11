@@ -501,9 +501,11 @@ export default function HomeTab() {
       </ScrollView>
 
       {/* FAB scroll toggle: no topo → ir pro topico ativo; embaixo → voltar pro topo.
-          bottom: 140 (lift) pra nao overlap o botao Start do guided chat
-          do ultimo modulo (caso Advanced/last unit). */}
-      {activeTopicY > 200 && (
+          Mostra se activeTopicY foi medido (>200) OU aluno ja scrollou (>200).
+          O 'OR scrollY' eh safety net pra Inter/Advanced onde measureLayout
+          as vezes falha (trail muito grande, 23+ modulos) — sem isso, FAB nunca
+          aparecia naqueles niveis. */}
+      {(activeTopicY > 200 || scrollY > 200) && (
         <TouchableOpacity
           activeOpacity={0.85}
           onPress={isNearTop ? goActive : goTop}
