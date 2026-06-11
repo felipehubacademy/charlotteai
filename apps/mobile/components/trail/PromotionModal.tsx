@@ -124,8 +124,12 @@ const shadow = Platform.select({
   android: { elevation: 12 },
 });
 
+// Apenas eventos de level-up renderizam neste modal.
+// Graduation usa <GraduationModal> separado (3-fase coreografada).
+type LevelUpEvent = Extract<PromotionEvent, { type: 'level-up' }>;
+
 interface Props {
-  event: PromotionEvent | null;
+  event: LevelUpEvent | null;
   onClose: () => void;
 }
 

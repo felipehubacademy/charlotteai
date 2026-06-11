@@ -27,10 +27,12 @@ const NEXT_LEVEL: Record<Level, Level | null> = {
 const FULL_LEVEL_MODULE_COUNT = 22;
 const ACTIVITIES = ['grammar', 'speaking', 'roleplay', 'chat'] as const;
 
-export interface PromotionEvent {
-  fromLevel: Level;
-  toLevel:   Level;
-}
+// Discriminated union: level-up promove pra proximo nivel; graduation eh
+// o final do Advanced (sem proximo). Mantemos um unico hook+state pra
+// simplicidade — UI decide qual modal renderizar via discriminator.
+export type PromotionEvent =
+  | { type: 'level-up';    fromLevel: Level;       toLevel: Level }
+  | { type: 'graduation';  fromLevel: 'Advanced' };
 
 /**
  * Hook que checa se o aluno deve ser promovido e faz a mutacao.
@@ -48,7 +50,7 @@ export function usePromotion() {
   const nextLevel    = NEXT_LEVEL[currentLevel];
 
   async function checkAndPromote() {
-    if (!userId || !nextLevel || checking.current) return;
+    if (!userId || checking.current) return;
     // Evita re-checar para o mesmo (user, level) ate o perfil mudar
     const key = `${userId}:${currentLevel}`;
     if (checkedForCurrent.current === key) return;
@@ -76,7 +78,17 @@ export function usePromotion() {
       if (error || count == null) return;
       if (count < expectedTotal) return;
 
-      // 4. Promover: bump charlotte_level
+      // 4a. GRADUATION: terminou Advanced (sem proximo nivel).
+      // Nao bumpa charlotte_level. Apenas dispara evento de graduation.
+      if (!nextLevel && currentLevel === 'Advanced') {
+        checkedForCurrent.current = key;
+        setEvent({ type: 'graduation', fromLevel: 'Advanced' });
+        return;
+      }
+
+      if (!nextLevel) return;
+
+      // 4b. LEVEL-UP: bump charlotte_level
       const { error: updErr } = await supabase
         .from('charlotte_users')
         .update({ charlotte_level: nextLevel })
@@ -87,7 +99,7 @@ export function usePromotion() {
       }
 
       checkedForCurrent.current = key;
-      setEvent({ fromLevel: currentLevel, toLevel: nextLevel });
+      setEvent({ type: 'level-up', fromLevel: currentLevel, toLevel: nextLevel });
       // NAO chamamos refreshProfile aqui — fariamos o profile.charlotte_level
       // mudar enquanto o modal ainda esta abrindo, e o TrailContent
       // detectaria a mudanca de nivel e mostraria seu proprio spinner

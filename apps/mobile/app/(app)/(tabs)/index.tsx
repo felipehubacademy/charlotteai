@@ -29,6 +29,7 @@ import { ArrowDown, ArrowUp } from 'phosphor-react-native';
 import { TrailContent } from '@/components/trail/TrailContent';
 import { TrailBanner } from '@/components/trail/TrailBanner';
 import { PromotionModal } from '@/components/trail/PromotionModal';
+import { GraduationModal } from '@/components/trail/GraduationModal';
 import { usePromotion } from '@/lib/curriculum-v2/usePromotion';
 import { usePromotionVideoPrefetch } from '@/hooks/usePromotionVideoPrefetch';
 import { usePromotionPending } from '@/lib/promotionState';
@@ -525,7 +526,16 @@ export default function HomeTab() {
         onClose={closeWelcomeSheet}
       />
 
-      <PromotionModal event={promotionEvent} onClose={ackPromotion} />
+      {/* Promotion (level-up) vs Graduation (terminal): renderiza um ou outro
+          baseado no discriminator do evento. */}
+      <PromotionModal
+        event={promotionEvent?.type === 'level-up' ? promotionEvent : null}
+        onClose={ackPromotion}
+      />
+      <GraduationModal
+        event={promotionEvent?.type === 'graduation' ? promotionEvent : null}
+        onClose={ackPromotion}
+      />
 
       {/* Overlay enquanto promocao esta pendente — esconde TrailContent
           loading + qualquer flash visual ate o modal mostrar o video.
