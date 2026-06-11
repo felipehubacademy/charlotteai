@@ -47,6 +47,11 @@ const SCRIPTS = [
     text: "You did it! I'm incredibly proud. Welcome to Advanced!",
     label: 'Intermediate → Advanced',
   },
+  {
+    file: 'promotion-graduation-final.mp3',
+    text: "You did it. You graduated. I'm so proud of you.",
+    label: 'Final Graduation (Advanced complete)',
+  },
 ];
 
 async function generate({ file, text, label }) {
