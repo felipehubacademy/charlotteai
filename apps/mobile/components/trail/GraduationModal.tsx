@@ -216,7 +216,7 @@ export function GraduationModal({ event, onClose }: Props) {
   if (alreadySeen === true) return null;
 
   return (
-    <Modal visible transparent animationType="none" onRequestClose={() => { markSeen(); onClose(); }}>
+    <Modal visible transparent animationType="none" onRequestClose={onClose}>
       {useVideo ? (
         // FULLSCREEN — Charlotte centralizada com aspect ratio preservado
         // (contain). Bracos levantados nao cortam. Bg cinza claro casa com
