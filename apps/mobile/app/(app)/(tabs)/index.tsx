@@ -500,8 +500,10 @@ export default function HomeTab() {
         />
       </ScrollView>
 
-      {/* FAB scroll toggle: no topo → ir pro topico ativo; embaixo → voltar pro topo */}
-      {activeTopicY > 200 && (
+      {/* FAB scroll toggle: no topo → ir pro topico ativo; embaixo → voltar pro topo.
+          Hide quando user JA esta proximo do topico ativo (comfort zone) — evita
+          overlapping com o botao Start do guided chat do ultimo modulo (Advanced). */}
+      {activeTopicY > 200 && !(scrollY > activeTopicY - 200 && scrollY < activeTopicY + 400) && (
         <TouchableOpacity
           activeOpacity={0.85}
           onPress={isNearTop ? goActive : goTop}

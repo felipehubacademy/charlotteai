@@ -994,9 +994,7 @@
             "hidden_prompt": "user uses 'hit the nail on the head'",
             "hint_en": "When Maria summarised the problem in one sentence, she hit the nail on the head — everyone in the room nodded at the same time.",
             "examples_pass": [
-              "When Maria summarised the problem in one sentence, she hit the nail on the head — everyone in the room nodded at the same time.",
-              "Don't cry over spilt milk — it's done.",
-              "We're really in the same boat on this one."
+              "When Maria summarised the problem in one sentence, she hit the nail on the head — everyone in the room nodded at the same time."
             ],
             "examples_fail": [
               "good morning (bare greeting, no cultural idiom)",
@@ -1010,9 +1008,7 @@
             "hidden_prompt": "user uses 'piece of cake' or 'rule of thumb'",
             "hint_en": "As a rule of thumb, the first half of a meeting is for context, the second half for decisions — and if we keep to that, this one's going to be a piece of cake.",
             "examples_pass": [
-              "As a rule of thumb, the first half of a meeting is for context, the second half for decisions — and if we keep to that, this one's going to be a piece of cake.",
-              "Let's call it a day and pick up tomorrow.",
-              "He really has a chip on his shoulder about it."
+              "As a rule of thumb, the first half of a meeting is for context, the second half for decisions — and if we keep to that, this one's going to be a piece of cake."
             ],
             "examples_fail": [
               "good morning (bare greeting, no cultural idiom)",
@@ -1043,9 +1039,10 @@
             "hidden_prompt": "user uses 'piece of cake'",
             "hint_en": "Sounds like it ended up being a piece of cake — funny how the things we dread for weeks turn out to be the easiest part.",
             "examples_pass": [
-              "Sounds like it ended up being a piece of cake — funny how the things we dread for weeks turn out to be the easiest part.",
-              "It's raining cats and dogs out there.",
-              "Break a leg with your presentation tomorrow!"
+              "Sounds like it ended up being a piece of cake.",
+              "It was a piece of cake at the end.",
+              "Turned out to be a piece of cake.",
+              "Yeah, ended up being a piece of cake."
             ],
             "examples_fail": [
               "good morning (bare greeting, no cultural idiom)",
@@ -1059,9 +1056,10 @@
             "hidden_prompt": "user asks about how she broke the ice",
             "hint_en": "How did you break the ice with the board? That first thirty seconds usually decides how the rest of the room sits with you.",
             "examples_pass": [
-              "How did you break the ice with the board? That first thirty seconds usually decides how the rest of the room sits with you.",
-              "Don't cry over spilt milk — it's done.",
-              "We're really in the same boat on this one."
+              "How did you break the ice with the board?",
+              "Did you break the ice with a joke?",
+              "How do you usually break the ice?",
+              "What did you say to break the ice?"
             ],
             "examples_fail": [
               "good morning (bare greeting, no cultural idiom)",
@@ -1075,9 +1073,10 @@
             "hidden_prompt": "user uses 'speak of the devil' or 'hit the nail on the head'",
             "hint_en": "Speak of the devil — your assistant just walked in with what looks like the board's written feedback. Hopefully someone hit the nail on the head with the praise.",
             "examples_pass": [
-              "Speak of the devil — your assistant just walked in with what looks like the board's written feedback. Hopefully someone hit the nail on the head with the praise.",
-              "Let's call it a day and pick up tomorrow.",
-              "He really has a chip on his shoulder about it."
+              "Speak of the devil — your assistant just walked in.",
+              "You hit the nail on the head with that.",
+              "Speak of the devil, here she comes.",
+              "She really hit the nail on the head."
             ],
             "examples_fail": [
               "good morning (bare greeting, no cultural idiom)",
